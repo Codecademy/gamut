@@ -1,4 +1,5 @@
 import { Box } from '@codecademy/gamut';
+import { useTheme } from '@emotion/react';
 import React from 'react';
 
 import { AppHeader } from '../../AppHeader';
@@ -94,24 +95,36 @@ const getMobileAppHeaderItems = (
 };
 
 export const BasicGlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
+  const theme = useTheme();
+
   return (
     <>
       <Box
         display={{ base: 'none', md: 'block' }}
-        height="80"
-        className={props.animated ? props.className : undefined}
+        height={theme.elements.headerHeight}
+        className={props.className}
       >
-        <AppHeader action={props.action} items={getAppHeaderItems(props)} />
+        <AppHeader
+          action={props.action}
+          items={getAppHeaderItems(props)}
+          redirectParam={
+            props.type === 'anon' ? props.redirectParam : undefined
+          }
+        />
       </Box>
       <Box
         display={{ base: 'block', md: 'none' }}
-        height="64"
-        className={props.animated ? props.className : undefined}
+        height={theme.elements.headerHeight}
+        zIndex={0}
+        className={props.className}
       >
         <AppHeaderMobile
           action={props.action}
           items={getMobileAppHeaderItems(props)}
           renderSearch={props.renderSearch?.mobile}
+          redirectParam={
+            props.type === 'anon' ? props.redirectParam : undefined
+          }
         />
       </Box>
     </>
