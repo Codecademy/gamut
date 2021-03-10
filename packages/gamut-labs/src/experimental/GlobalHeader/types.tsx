@@ -11,6 +11,7 @@ type RenderSearch = { desktop: () => ReactNode; mobile: () => ReactNode };
 
 type BaseHeader = {
   action: AppHeaderClickHandler;
+  redirectParam?: string;
   renderSearch?: RenderSearch;
 };
 
@@ -34,7 +35,6 @@ type LoggedInHeader = BaseHeader & {
 export type AnonHeaderVariant = 'landing' | 'login' | 'signup';
 
 export type AnonHeader = BaseHeader & {
-  redirectParam?: string;
   type: 'anon';
   variant?: AnonHeaderVariant;
 };
