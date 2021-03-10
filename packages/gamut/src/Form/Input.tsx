@@ -53,7 +53,7 @@ export const ReactRecurlyStyles = ({
   text-indent: 0;
 `;
 
-const InputElement = styled.input<StyledInputProps>`
+export const InputElement = styled.input<StyledInputProps>`
   ${formFieldStyles}
   ${conditionalStyles}
   box-sizing: border-box;
