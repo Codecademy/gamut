@@ -19,13 +19,16 @@ import {
   iconStyles,
 } from './styles/shared';
 
-export type SelectProps = SelectHTMLAttributes<HTMLSelectElement> & {
+export type SelectWrapperProps = SelectHTMLAttributes<HTMLSelectElement> & {
   error?: boolean;
-  activated?: boolean;
   htmlFor?: string;
   options?: string[] | Record<string, number | string>;
   id?: string;
   sizeVariant?: 'small' | 'base';
+};
+
+export type SelectProps = SelectWrapperProps & {
+  activated?: boolean;
 };
 
 const selectSizeVariants = variant({
@@ -72,7 +75,7 @@ const SelectBase = styled.select<SelectProps>`
   appearance: none;
 `;
 
-export const Select = forwardRef<HTMLSelectElement, SelectProps>(
+export const Select = forwardRef<HTMLSelectElement, SelectWrapperProps>(
   (
     { className, defaultValue, options, error, id, sizeVariant, ...rest },
     ref

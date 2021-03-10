@@ -4,9 +4,8 @@ import React, { forwardRef, TextareaHTMLAttributes, useState } from 'react';
 import { Box } from '../Box';
 import { conditionalStyles, formFieldStyles } from './styles/shared';
 
-export type TextAreaProps = TextareaHTMLAttributes<HTMLTextAreaElement> & {
+export type TextWrapperProps = TextareaHTMLAttributes<HTMLTextAreaElement> & {
   className?: string;
-  activated?: boolean;
   error?: boolean;
   htmlFor?: string;
   name?: string;
@@ -14,13 +13,17 @@ export type TextAreaProps = TextareaHTMLAttributes<HTMLTextAreaElement> & {
   value?: string;
 };
 
-const StyledTextArea = styled.textarea`
+export type TextAreaProps = TextWrapperProps & {
+  activated?: boolean;
+};
+
+const StyledTextArea = styled.textarea<TextAreaProps>`
   ${formFieldStyles}
   ${conditionalStyles}
   position: initial;
 `;
 
-export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
+export const TextArea = forwardRef<HTMLTextAreaElement, TextWrapperProps>(
   ({ error, className, id, ...rest }, ref) => {
     const [activated, setActivated] = useState(false);
     return (
