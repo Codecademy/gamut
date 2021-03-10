@@ -31,6 +31,10 @@ This repository is a monorepo that we manage using [Lerna](https://lernajs.io/).
 
 [`styleguide`: Styleguide Documentation & storybook development sandbox](/packages/styleguide/README.md)
 
+[`gamut-kit`: Include this package in your application instead of the individual packages to simplify version management. ](/packages/gamut-kit/README.md)
+
+- [![npm version](https://badge.fury.io/js/%40codecademy%2Fgamut-kit.svg)](https://badge.fury.io/js/%40codecademy%2Fgamut-kit)
+
 ## Local development
 
 1.  Run `yarn` in the root directory
