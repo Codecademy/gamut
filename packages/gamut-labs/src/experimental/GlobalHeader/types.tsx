@@ -21,6 +21,7 @@ export type User = {
   isCustomerSupport?: boolean;
   isAccountManager?: boolean;
   isPaused?: boolean;
+  hasCompletedTrial?: boolean;
   proTrialCheckoutUrl?: string;
 };
 

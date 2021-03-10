@@ -90,10 +90,12 @@ The following are available variations for the GlobalHeader component.
   </Story>
 </Canvas>
 
-#### Free User - Show Trial CTA
+#### Free User - Custom Trial CTA URL
+
+The Try Pro For Free button can take in an optional custom path.
 
 <Canvas>
-  <Story name="Free User - Show Trial CTA">
+  <Story name="Free User - Custom Trial CTA URL">
     {(args) => (
       <GlobalHeader
         action={() => {}}
@@ -103,6 +105,25 @@ The following are available variations for the GlobalHeader component.
             'https://www.gravatar.com/avatar/1c959a9a1e2f9f9f1ac06b05cccc1d60?s=150&d=retro',
           displayName: 'Codey',
           proTrialCheckoutUrl: 'https://www.codecademy.com',
+        }}
+      />
+    )}
+  </Story>
+</Canvas>
+
+#### Free User - Trial Completed
+
+<Canvas>
+  <Story name="Free User - Trial Completed">
+    {(args) => (
+      <GlobalHeader
+        action={() => {}}
+        type="free"
+        user={{
+          avatar:
+            'https://www.gravatar.com/avatar/1c959a9a1e2f9f9f1ac06b05cccc1d60?s=150&d=retro',
+          displayName: 'Codey',
+          hasCompletedTrial: true,
         }}
       />
     )}

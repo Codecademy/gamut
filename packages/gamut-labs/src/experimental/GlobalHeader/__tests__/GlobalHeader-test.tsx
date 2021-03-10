@@ -65,11 +65,20 @@ const freeHeaderProps: GlobalHeaderProps = {
   user,
 };
 
-const freeShowTrialCTAHeaderProps: GlobalHeaderProps = {
+const freeCustomCheckoutUrlHeaderProps: GlobalHeaderProps = {
   action,
   type: 'free',
   user: {
     proTrialCheckoutUrl: 'test-url',
+    ...user,
+  },
+};
+
+const freeCompletedTrialHeaderProps: GlobalHeaderProps = {
+  action,
+  type: 'free',
+  user: {
+    hasCompletedTrial: true,
     ...user,
   },
 };
@@ -216,81 +225,92 @@ describe('GlobalHeader', () => {
   });
 
   describe('free users', () => {
-    beforeEach(() => {
-      renderGlobalHeader(freeHeaderProps);
-    });
+    describe('default', () => {
+      beforeEach(() => {
+        renderGlobalHeader(freeHeaderProps);
+      });
 
-    test('logo', () => {
-      screen.getAllByTestId('header-logo');
-    });
+      test('logo', () => {
+        screen.getAllByTestId('header-logo');
+      });
 
-    test('myHome', () => {
-      screen.getByText(myHome.text);
-    });
+      test('myHome', () => {
+        screen.getByText(myHome.text);
+      });
 
-    test('courseCatalog', () => {
-      screen.getByText(courseCatalog.text);
-    });
+      test('courseCatalog', () => {
+        screen.getByText(courseCatalog.text);
+      });
 
-    test('resourcesDropdown', () => {
-      screen.getByText(resourcesDropdown.text);
-    });
+      test('resourcesDropdown', () => {
+        screen.getByText(resourcesDropdown.text);
+      });
 
-    test('communityDropdown', () => {
-      screen.getByText(communityDropdown.text);
-    });
+      test('communityDropdown', () => {
+        screen.getByText(communityDropdown.text);
+      });
 
-    test('plansPricingDropdown', () => {
-      screen.getByText(pricingDropdown.text);
-    });
+      test('plansPricingDropdown', () => {
+        screen.getByText(pricingDropdown.text);
+      });
 
-    test('forEnterprise', () => {
-      screen.getByText(forBusiness.text);
-    });
+      test('forEnterprise', () => {
+        screen.getByText(forBusiness.text);
+      });
 
-    test('profileDropdown', () => {
-      screen.getByTestId('avatar');
-    });
+      test('profileDropdown', () => {
+        screen.getByTestId('avatar');
+      });
 
-    test('upgradeToPro', () => {
-      screen.getByText(upgradeToPro.text);
-    });
-
-    describe('show trial CTA', () => {
       test('tryProForFree', () => {
-        renderGlobalHeader(freeShowTrialCTAHeaderProps);
-        screen.getByText(tryProForFree('').text);
+        screen.getByText(tryProForFree().text);
+      });
+    });
+
+    describe('custom checkout url', () => {
+      test('tryProForFree', () => {
+        renderGlobalHeader(freeCustomCheckoutUrlHeaderProps);
+        screen.getByText(tryProForFree().text);
+      });
+    });
+
+    describe('has completed trial', () => {
+      test('upgradeToPro', () => {
+        renderGlobalHeader(freeCompletedTrialHeaderProps);
+        screen.getByText(upgradeToPro.text);
       });
     });
   });
 
   describe('pro users', () => {
-    beforeEach(() => {
-      renderGlobalHeader(proHeaderProps);
-    });
+    describe('default', () => {
+      beforeEach(() => {
+        renderGlobalHeader(proHeaderProps);
+      });
 
-    test('proLogo', () => {
-      screen.getAllByTestId('header-pro-logo');
-    });
+      test('proLogo', () => {
+        screen.getAllByTestId('header-pro-logo');
+      });
 
-    test('myHome', () => {
-      screen.getByText(myHome.text);
-    });
+      test('myHome', () => {
+        screen.getByText(myHome.text);
+      });
 
-    test('courseCatalog', () => {
-      screen.getByText(courseCatalog.text);
-    });
+      test('courseCatalog', () => {
+        screen.getByText(courseCatalog.text);
+      });
 
-    test('resourcesDropdown', () => {
-      screen.getByText(resourcesDropdown.text);
-    });
+      test('resourcesDropdown', () => {
+        screen.getByText(resourcesDropdown.text);
+      });
 
-    test('communityDropdown', () => {
-      screen.getByText(communityDropdown.text);
-    });
+      test('communityDropdown', () => {
+        screen.getByText(communityDropdown.text);
+      });
 
-    test('profileDropdown', () => {
-      screen.getByTestId('avatar');
+      test('profileDropdown', () => {
+        screen.getByTestId('avatar');
+      });
     });
 
     describe('is paused', () => {
