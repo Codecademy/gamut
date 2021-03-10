@@ -1,7 +1,7 @@
 import { pxRem, theme } from '@codecademy/gamut-styles';
 import { css } from '@emotion/react';
 
-const colorStates = {
+export const colorStates = {
   base: {
     color: theme.colors.navy,
     placeholder: theme.colors[`gray-500`],
