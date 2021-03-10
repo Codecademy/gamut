@@ -43,14 +43,15 @@ const inputIconStyles = css`
   ${iconStyles}
 `;
 
-export const ReactRecurlyStyles = ({
-  error,
-  activated,
-}: conditionalStyleProps) => css`
+const iFrameStyles = ({ error, activated }: conditionalStyleProps) => css`
   ${formBaseFieldStyles}
   ${conditionalStyles({ error, activated })}
   box-sizing: border-box;
   text-indent: 0;
+`;
+
+export const iFrameWrapper = styled.div`
+  ${iFrameStyles}
 `;
 
 const InputElement = styled.input<StyledInputProps>`
