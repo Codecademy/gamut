@@ -1,10 +1,4 @@
-import {
-  color,
-  space,
-  timing,
-  typography,
-  variant,
-} from '@codecademy/gamut-styles';
+import { color, space, typography, variant } from '@codecademy/gamut-styles';
 import { compose, HandlerProps } from '@codecademy/gamut-system';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
