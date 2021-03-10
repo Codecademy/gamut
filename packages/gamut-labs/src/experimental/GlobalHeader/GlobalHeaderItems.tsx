@@ -338,11 +338,32 @@ export const proProfile = (
   };
 };
 
-export const upgradeToPro: AppHeaderFillButtonItem = {
-  id: 'upgrade-to-pro',
+export const tryProForFree = (
+  checkoutUrl?: string
+): AppHeaderFillButtonItem => ({
+  dataTestId: 'upgrade-link',
+  id: 'try-pro',
   text: 'Try Pro For Free',
-  href: '/pro/membership',
+  href: checkoutUrl || '/pro/membership',
   trackingTarget: 'topnav_pro_trial',
+  type: 'fill-button',
+});
+
+export const upgradeToPro: AppHeaderFillButtonItem = {
+  dataTestId: 'upgrade-link',
+  id: 'upgrade-to-pro',
+  text: 'Upgrade to Pro',
+  href: '/pro/membership',
+  trackingTarget: 'topnav_pro_upgrade',
+  type: 'fill-button',
+};
+
+export const unpausePro: AppHeaderFillButtonItem = {
+  dataTestId: 'unpause-link',
+  id: 'unpause-pro',
+  text: 'Unpause Now',
+  href: '/account/billing',
+  trackingTarget: 'topnav_pro_unpause',
   type: 'fill-button',
 };
 
