@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [30.4.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@30.4.1...@codecademy/styleguide@30.4.2) (2021-03-09)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [30.4.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@30.4.0...@codecademy/styleguide@30.4.1) (2021-03-09)
+
+
+### Bug Fixes
+
+* Replace focus-trap with focus-lock-on ([d65e3de](https://github.com/Codecademy/client-modules/commit/d65e3de3149a16603039218c81204a914da6c7cd))
+
+
+
 ## [30.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@30.3.0...@codecademy/styleguide@30.4.0) (2021-03-09)
 
 

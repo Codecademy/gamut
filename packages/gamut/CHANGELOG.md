@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [26.2.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@26.2.1...@codecademy/gamut@26.2.2) (2021-03-09)
+
+
+### Bug Fixes
+
+* Replace focus-trap with focus-lock-on ([d65e3de](https://github.com/Codecademy/client-modules/commit/d65e3de3149a16603039218c81204a914da6c7cd))
+
+
+
 ### [26.2.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@26.2.0...@codecademy/gamut@26.2.1) (2021-03-09)
 
 **Note:** Version bump only for package @codecademy/gamut
