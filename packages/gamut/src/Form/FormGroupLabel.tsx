@@ -41,22 +41,19 @@ const disabledLabelStyle = ({ disabled }: disabledLabelStyleProps) => {
   }
 };
 
-const formLabelStyles = css`
+const formLabelStyles = ({ size, disabled }: FormGroupLabelProps) => css`
+  ${formBaseStyles}
+  ${disabledLabelStyle({ disabled })}
+  ${labelSizeVariants({ size })}
   display: block;
 `;
 
 const StyledLabel = styled.label<FormGroupLabelProps>`
-  ${formBaseStyles}
   ${formLabelStyles}
-  ${disabledLabelStyle}
-    ${labelSizeVariants}
 `;
 
 const StyledDiv = styled.div<FormGroupLabelProps>`
-  ${formBaseStyles}
   ${formLabelStyles}
-  ${disabledLabelStyle}
-  ${labelSizeVariants}
 `;
 
 export const FormGroupLabel: React.FC<FormGroupLabelProps> = ({
