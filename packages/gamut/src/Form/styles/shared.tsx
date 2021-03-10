@@ -4,15 +4,15 @@ import { css } from '@emotion/react';
 export const colorStates = {
   base: {
     color: theme.colors.navy,
-    placeholder: theme.colors[`gray-500`],
+    placeholder: theme.colors[`gray-700`],
     backgroundColor: theme.colors.white,
-    borderColor: theme.colors['gray-200'],
+    borderColor: theme.colors['gray-700'],
   },
   hover: { borderColor: theme.colors.hyper },
   disabled: {
-    color: theme.colors[`gray-500`],
+    color: theme.colors[`gray-700`],
     backgroundColor: theme.colors[`gray-100`],
-    borderColor: theme.colors[`gray-500`],
+    borderColor: theme.colors[`gray-700`],
   },
   error: { color: theme.colors.red, borderColor: theme.colors.red },
   activated: { borderColor: theme.colors.navy },
