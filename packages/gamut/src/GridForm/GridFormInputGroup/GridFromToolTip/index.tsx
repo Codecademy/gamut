@@ -11,6 +11,7 @@ export type GridFormToolTipProps = {
 const StyledToolTip = styled.span`
   position: absolute;
   left: calc(100% - 1.1rem);
+  top: 0.25rem;
 `;
 
 export const GridFormToolTip: React.FC<GridFormToolTipProps> = ({
