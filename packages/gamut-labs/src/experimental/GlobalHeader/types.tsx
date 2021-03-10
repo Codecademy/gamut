@@ -11,7 +11,6 @@ type RenderSearch = { desktop: () => ReactNode; mobile: () => ReactNode };
 
 type BaseHeader = {
   action: AppHeaderClickHandler;
-  animated?: boolean;
   className?: string;
   renderSearch?: RenderSearch;
 };
