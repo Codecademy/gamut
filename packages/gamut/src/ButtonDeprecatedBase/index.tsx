@@ -16,7 +16,7 @@ const propKeys = [
 ];
 
 export type ButtonDeprecatedBaseProps = Omit<
-  HTMLProps<HTMLLinkElement> & HTMLProps<HTMLButtonElement>,
+  HTMLProps<HTMLAnchorElement> & HTMLProps<HTMLButtonElement>,
   'as' | 'size'
 > & {
   /**

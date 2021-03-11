@@ -2,6 +2,7 @@ import { color, space, typography, variant } from '@codecademy/gamut-styles';
 import { compose, HandlerProps } from '@codecademy/gamut-system';
 import { css, Theme } from '@emotion/react';
 import styled from '@emotion/styled';
+import React, { HTMLProps } from 'react';
 
 const createModeVariants = ({
   text,
@@ -52,20 +53,49 @@ const modes = {
   light: createModeVariants({ text: 'navy', primary: 'hyper' }),
 } as const;
 
+const anchorProps = compose(typography, color, space);
+
+const AnchorElement: React.FC<
+  Omit<
+    HTMLProps<HTMLAnchorElement> & HTMLProps<HTMLButtonElement>,
+    keyof AnchorProps
+  > &
+    AnchorProps
+> = (props) => {
+  const { href, disabled, children, as, ...rest } = props;
+  if (!href || href.length === 0) {
+    return (
+      <button {...rest} type="button" aria-disabled={disabled}>
+        {children}
+      </button>
+    );
+  }
+  return (
+    <a {...rest} href={href}>
+      {children}
+    </a>
+  );
+};
+
 export type AnchorProps = {
+  href?: string;
+  as?: never;
   mode?: 'light' | 'dark';
   variant?: 'standard' | 'inline' | 'interface';
 } & HandlerProps<typeof anchorProps>;
 
-const anchorProps = compose(typography, color, space);
-
-export const Anchor = styled.a<AnchorProps>(
+const Link = styled.a<AnchorProps>(
   anchorProps,
   ({ theme, mode = 'light', variant }) => {
     const { base, hover, focus } = modes[mode];
     return css`
       ${base({ theme, variant })};
       position: relative;
+      background: none;
+      box-shadow: none;
+      border: none;
+      padding: 0;
+      font: inherit;
 
       &:after {
         content: '';
@@ -83,6 +113,7 @@ export const Anchor = styled.a<AnchorProps>(
       &:hover,
       &:focus {
         text-decoration: none;
+        cursor: pointer;
         ${hover({ theme, variant })}
       }
       &:disabled,
@@ -106,6 +137,8 @@ export const Anchor = styled.a<AnchorProps>(
     `;
   }
 );
+
+export const Anchor = Link.withComponent(AnchorElement);
 
 Anchor.defaultProps = {
   variant: 'inline',

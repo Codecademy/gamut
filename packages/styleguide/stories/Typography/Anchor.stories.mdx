@@ -14,6 +14,10 @@ import { PropsTable } from '~styleguide/blocks';
     status: 'stable',
     source: 'gamut',
   }}
+  args={{
+    href: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+    target: '_blank',
+  }}
 />
 
 It applies `text-decoration: underline` per our accessibility guidelines to distiguish them with more than just a purple color from body text.
@@ -23,15 +27,7 @@ It applies `text-decoration: underline` per our accessibility guidelines to dist
     {(args) => {
       return (
         <Text>
-          This is a{' '}
-          <Anchor
-            {...args}
-            href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-            target="_blank"
-          >
-            great video
-          </Anchor>
-          .
+          This is a <Anchor {...args}>great video</Anchor>.
         </Text>
       );
     }}
