@@ -36,7 +36,7 @@ export * from './Modal';
 export * from './NotificationList';
 export * from './NotificationList/NotificationIcon';
 export * from './NotificationList/NotificationItem';
-export { Notification } from './NotificationList/typings';
+export type { Notification } from './NotificationList/typings';
 export * from './NotificationListNew';
 export * from './NotificationListNew/NotificationItemNew';
 export * from './Overlay';
