@@ -1,5 +1,4 @@
-import { Box, IconButton } from '@codecademy/gamut/src';
-import { BellIcon, SearchIcon } from '@codecademy/gamut-icons/src';
+import { Box } from '@codecademy/gamut/src';
 import { GlobalHeader } from '@codecademy/gamut-labs/src';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/dist/blocks';
 import LinkTo from '@storybook/addon-links/dist/react/components/link';
@@ -11,12 +10,18 @@ import { PropsTable } from '~styleguide/blocks';
   component={GlobalHeader}
   decorators={[
     (Story) => {
-      return <Box style={{ minHeight: '500px' }}>{Story()}</Box>;
+      return (
+        <Box style={{ minHeight: '500px', width: '100%' }}>
+          {Story()}
+          <div>Page content!</div>
+        </Box>
+      );
     },
   ]}
   parameters={{
     layout: 'padded',
     status: 'volatile',
+    docs: { inlineStories: false },
     subtitle:
       'Header for a unified Codecademy global navigation system, meant to be consumed by any entity which requires a standard Codecademy header.',
   }}
@@ -25,7 +30,7 @@ import { PropsTable } from '~styleguide/blocks';
 <Canvas withSource="open">
   <Story name="GlobalHeader">
     {(args) => (
-      <Box position="relative" zIndex={0}>
+      <Box position="relative" zIndex={0} width="100%">
         <GlobalHeader
           action={() => {}}
           type="free"
