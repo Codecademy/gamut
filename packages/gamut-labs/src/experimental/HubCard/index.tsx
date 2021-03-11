@@ -1,8 +1,7 @@
-import { Box } from '@codecademy/gamut';
+import { Box, Card } from '@codecademy/gamut';
 import styled from '@emotion/styled';
 import React from 'react';
 
-import { Card } from '../Card';
 import { Text } from '../Text';
 
 export type HubCardProps = {
