@@ -8,6 +8,7 @@ import {
   FormattedMobileAppHeaderItems,
 } from '../../AppHeader/types';
 import { AppHeaderMobile } from '../../AppHeaderMobile';
+import { GlobalHeaderProps } from '..';
 import {
   anonDefaultHeaderItems,
   anonDefaultMobileHeaderItems,
@@ -24,13 +25,10 @@ import {
   proHeaderItems,
   proMobileHeaderItems,
 } from '../GlobalHeaderVariants';
-import { AnonHeader, FreeHeader, LoadingHeader, ProHeader } from '../types';
 
-export type GlobalHeaderProps =
-  | AnonHeader
-  | FreeHeader
-  | ProHeader
-  | LoadingHeader;
+type BasicGlobalHeaderProps = GlobalHeaderProps & {
+  pauseAnimation?: boolean;
+};
 
 const getAppHeaderItems = (
   props: GlobalHeaderProps
@@ -94,7 +92,7 @@ const getMobileAppHeaderItems = (
   }
 };
 
-export const BasicGlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
+export const BasicGlobalHeader: React.FC<BasicGlobalHeaderProps> = (props) => {
   const theme = useTheme();
 
   return (
@@ -102,7 +100,7 @@ export const BasicGlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
       <Box
         display={{ base: 'none', md: 'block' }}
         height={theme.elements.headerHeight}
-        className={props.className}
+        className={props.pauseAnimation ? undefined : props.className}
       >
         <AppHeader
           action={props.action}
@@ -115,7 +113,7 @@ export const BasicGlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
       <Box
         display={{ base: 'block', md: 'none' }}
         height={theme.elements.headerHeight}
-        className={props.className}
+        className={props.pauseAnimation ? undefined : props.className}
       >
         <AppHeaderMobile
           action={props.action}
