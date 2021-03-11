@@ -17,6 +17,7 @@ import { PropsTable } from '~styleguide/blocks';
   args={{
     href: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
     target: '_blank',
+    fontWeight: 'title',
   }}
 />
 
@@ -26,7 +27,7 @@ It applies `text-decoration: underline` per our accessibility guidelines to dist
   <Story name="Anchor">
     {(args) => {
       return (
-        <Text>
+        <Text fontSize={22}>
           This is a <Anchor {...args}>great video</Anchor>.
         </Text>
       );
