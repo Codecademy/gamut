@@ -56,16 +56,16 @@ const modes = {
 const anchorProps = compose(typography, color, space);
 
 const AnchorElement: React.FC<
-  Omit<
-    HTMLProps<HTMLAnchorElement> & HTMLProps<HTMLButtonElement>,
-    keyof AnchorProps
-  > &
-    AnchorProps
+  Omit<HTMLProps<HTMLAnchorElement>, keyof AnchorProps> & AnchorProps
 > = (props) => {
   const { href, disabled, children, as, ...rest } = props;
   if (!href || href.length === 0) {
     return (
-      <button {...rest} type="button" aria-disabled={disabled}>
+      <button
+        {...(rest as HTMLProps<HTMLButtonElement>)}
+        type="button"
+        aria-disabled={disabled}
+      >
         {children}
       </button>
     );
