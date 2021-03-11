@@ -1,6 +1,6 @@
 import { variant } from '@codecademy/gamut-styles';
 import { HandlerProps } from '@codecademy/gamut-system';
-import { css, SerializedStyles } from '@emotion/react';
+import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 
 import { Box } from '../Box';
@@ -44,21 +44,6 @@ export const Card = styled(Box)<CardProps>(
   ({ theme, variant, shadowOffset: offset = 0 }) => {
     const outline = variant === 'navy';
     const timing = TRANSITION_COEFFICIENT * offset;
-    let hoverEffect: SerializedStyles | string = '';
-
-    if (offset) {
-      const [fgX, fgY] = SHADOWS.foreground.map((x) => x * offset);
-      const [bgX, bgY] = SHADOWS.background.map((x) => x * offset);
-      hoverEffect = css`
-        &:hover {
-          transform: translate(${fgX}px, ${fgY}px);
-
-          &:after {
-            transform: translate(${bgX}px, ${bgY}px);
-          }
-        }
-      `;
-    }
 
     return css`
       position: relative;
@@ -88,12 +73,25 @@ export const Card = styled(Box)<CardProps>(
       }
 
       &:before {
-        ${outline && 'box-shadow: -1px 1px 0 currentColor;'}
+        box-shadow: ${outline ? '-1px 1px 0 currentColor' : 'none'};
         z-index: -1;
       }
-
-      ${hoverEffect}
     `;
+  },
+  ({ shadowOffset: offset = 0 }) => {
+    if (offset) {
+      const [fgX, fgY] = SHADOWS.foreground.map((x) => x * offset);
+      const [bgX, bgY] = SHADOWS.background.map((x) => x * offset);
+      return css`
+        &:hover {
+          transform: translate(${fgX}px, ${fgY}px);
+
+          &:after {
+            transform: translate(${bgX}px, ${bgY}px);
+          }
+        }
+      `;
+    }
   }
 );
 
