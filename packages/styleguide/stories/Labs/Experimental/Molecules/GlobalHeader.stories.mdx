@@ -70,8 +70,10 @@ The following are available variations for the GlobalHeader component.
 
 ### Free User
 
+#### Free User - Default
+
 <Canvas>
-  <Story name="Free User">
+  <Story name="Free User - Default">
     {(args) => (
       <Box position="relative" zIndex={0}>
         <GlobalHeader
@@ -84,6 +86,46 @@ The following are available variations for the GlobalHeader component.
           }}
         />
       </Box>
+    )}
+  </Story>
+</Canvas>
+
+#### Free User - Custom Trial CTA URL
+
+The Try Pro For Free button can take in an optional custom path.
+
+<Canvas>
+  <Story name="Free User - Custom Trial CTA URL">
+    {(args) => (
+      <GlobalHeader
+        action={() => {}}
+        type="free"
+        user={{
+          avatar:
+            'https://www.gravatar.com/avatar/1c959a9a1e2f9f9f1ac06b05cccc1d60?s=150&d=retro',
+          displayName: 'Codey',
+          proTrialCheckoutUrl: 'https://www.codecademy.com',
+        }}
+      />
+    )}
+  </Story>
+</Canvas>
+
+#### Free User - Pro Upgrade
+
+<Canvas>
+  <Story name="Free User - Pro Upgrade">
+    {(args) => (
+      <GlobalHeader
+        action={() => {}}
+        type="free"
+        user={{
+          avatar:
+            'https://www.gravatar.com/avatar/1c959a9a1e2f9f9f1ac06b05cccc1d60?s=150&d=retro',
+          displayName: 'Codey',
+          showProUpgrade: true,
+        }}
+      />
     )}
   </Story>
 </Canvas>
@@ -102,6 +144,25 @@ The following are available variations for the GlobalHeader component.
           avatar:
             'https://www.gravatar.com/avatar/1c959a9a1e2f9f9f1ac06b05cccc1d60?s=150&d=retro',
           displayName: 'Codey',
+        }}
+      />
+    )}
+  </Story>
+</Canvas>
+
+#### Pro User - Paused
+
+<Canvas>
+  <Story name="Pro User - Paused">
+    {(args) => (
+      <GlobalHeader
+        action={() => {}}
+        type="pro"
+        user={{
+          avatar:
+            'https://www.gravatar.com/avatar/1c959a9a1e2f9f9f1ac06b05cccc1d60?s=150&d=retro',
+          displayName: 'Codey',
+          isPaused: true,
         }}
       />
     )}

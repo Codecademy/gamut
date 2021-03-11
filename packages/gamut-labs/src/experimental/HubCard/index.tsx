@@ -11,12 +11,6 @@ export type HubCardProps = {
   backgroundPosition: 'left' | 'right';
 };
 
-const StyledText = styled(Text)`
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
-`;
-
 const StyledCard = styled(Card)`
   &:before {
     background: inherit;
@@ -42,12 +36,12 @@ export const HubCard: React.FC<HubCardProps> = ({
     height="11.25rem"
   >
     <Box padding={24} backgroundColor="white" width="100%" maxWidth="17.5rem">
-      <StyledText as="div" fontSize={16}>
+      <Text as="div" fontSize={16}>
         {eyebrowTitle}
-      </StyledText>
-      <StyledText as="div" fontSize={22}>
+      </Text>
+      <Text as="div" fontSize={22} fontWeight="title">
         {title}
-      </StyledText>
+      </Text>
     </Box>
   </StyledCard>
 );

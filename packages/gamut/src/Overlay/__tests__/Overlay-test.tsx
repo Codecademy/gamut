@@ -72,7 +72,7 @@ describe('Overlay', () => {
     });
 
     // focus-trap listens to mouseDown, not click
-    fireEvent.mouseDown(screen.getByTestId('overlay-content').parentElement!);
+    fireEvent.mouseDown(screen.getByTestId('overlay-content-container'));
     expect(onRequestClose.mock.calls.length).toBe(1);
   });
 

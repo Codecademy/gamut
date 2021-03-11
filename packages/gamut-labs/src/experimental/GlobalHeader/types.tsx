@@ -20,6 +20,9 @@ export type User = {
   isAdmin?: boolean;
   isCustomerSupport?: boolean;
   isAccountManager?: boolean;
+  isPaused?: boolean;
+  proTrialCheckoutUrl?: string;
+  showProUpgrade?: boolean;
 };
 
 type LoggedInHeader = BaseHeader & {
@@ -31,6 +34,7 @@ type LoggedInHeader = BaseHeader & {
 export type AnonHeaderVariant = 'landing' | 'login' | 'signup';
 
 export type AnonHeader = BaseHeader & {
+  redirectParam?: string;
   type: 'anon';
   variant?: AnonHeaderVariant;
 };
