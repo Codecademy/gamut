@@ -10,11 +10,6 @@ const mockRender = (props: mockRenderProp) =>
   render(<ContentContainer {...props} />);
 
 describe('ContentContainer', () => {
-  it('has maxWidth of 0 when size is wide', () => {
-    const { container } = mockRender({ size: 'wide' });
-    expect(container.firstChild).toHaveStyle(`maxWidth: 0`);
-  });
-
   it('has maxWidth of contentWidths.max when size is medium', () => {
     const { container } = mockRender({ size: 'medium' });
     expect(container.firstChild).toHaveStyle(`maxWidth: ${contentWidths.max}`);
