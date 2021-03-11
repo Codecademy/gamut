@@ -102,7 +102,7 @@ export const renderGridFormCheckboxInput = (
 export const renderGridFormToolTip = (
   extraProps: ToolTipProps
 ): ReactWrapper => {
-  return mount(<GridFormToolTip tooltip={extraProps} />);
+  return mount(<GridFormToolTip {...extraProps} />);
 };
 
 export const getComponent = (componentName: string, extraProps: any) => {
