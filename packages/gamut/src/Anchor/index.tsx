@@ -1,68 +1,87 @@
 import { color, space, typography, variant } from '@codecademy/gamut-styles';
 import { compose, HandlerProps } from '@codecademy/gamut-system';
-import { css } from '@emotion/react';
+import { css, Theme } from '@emotion/react';
 import styled from '@emotion/styled';
 
-const anchorVariants = variant({
-  standard: {
-    textColor: 'hyper',
-  },
-  inline: {
-    textDecoration: 'underline',
-    textColor: 'hyper',
-  },
-  interface: {
-    textColor: 'navy',
-  },
-});
+const createModeVariants = ({
+  text,
+  primary,
+}: Record<'text' | 'primary', keyof Theme['colors']>) => {
+  const base = variant({
+    standard: {
+      textColor: primary,
+      borderColor: primary,
+    },
+    inline: {
+      textDecoration: 'underline',
+      textColor: primary,
+      borderColor: primary,
+    },
+    interface: {
+      textColor: text,
+      borderColor: primary,
+    },
+  });
 
-const hoverVariants = variant({
-  standard: {
-    textDecoration: 'underline',
-  },
-  inline: {},
-  interface: {
-    textColor: 'hyper',
-  },
-});
+  const hover = variant({
+    standard: {
+      textDecoration: 'underline',
+    },
+    inline: {},
+    interface: {
+      textColor: primary,
+    },
+  });
 
-const focusVariants = variant({
-  standard: {
-    textColor: 'navy',
-  },
-  inline: {
-    textDecoration: 'underline',
-  },
-  interface: {},
-});
+  const focus = variant({
+    standard: {
+      textColor: text,
+    },
+    inline: {
+      textDecoration: 'underline',
+    },
+    interface: {},
+  });
 
-export type AnchorProps = HandlerProps<typeof anchorVariants> &
-  HandlerProps<typeof anchorProps>;
+  return { base, hover, focus };
+};
+
+const modes = {
+  dark: createModeVariants({ text: 'white', primary: 'yellow' }),
+  light: createModeVariants({ text: 'navy', primary: 'hyper' }),
+} as const;
+
+export type AnchorProps = {
+  mode?: 'light' | 'dark';
+  variant?: 'standard' | 'inline' | 'interface';
+} & HandlerProps<typeof anchorProps>;
 
 const anchorProps = compose(typography, color, space);
 
 export const Anchor = styled.a<AnchorProps>(
   anchorProps,
-  anchorVariants,
-  ({ theme, variant }) => {
+  ({ theme, mode = 'light', variant }) => {
+    const { base, hover, focus } = modes[mode];
     return css`
+      ${base({ theme, variant })};
       position: relative;
+
       &:after {
         content: '';
         position: absolute;
-        left: -0.15em;
-        top: -0.25em;
-        width: calc(100% + 0.3em);
-        height: calc(100% + 0.5em);
+        left: -2px;
+        top: -2px;
+        width: calc(100% + ${theme.spacing[4]});
+        height: calc(100% + ${theme.spacing[4]});
         border-radius: 4px;
-        border: 2px solid ${theme.colors.hyper};
+        border: 2px solid inherit;
         opacity: 0;
       }
 
       &:hover,
       &:focus {
         text-decoration: none;
-        ${hoverVariants({ theme, variant })}
+        ${hover({ theme, variant })}
       }
       &:disabled,
       &[disabled] {
@@ -76,7 +95,7 @@ export const Anchor = styled.a<AnchorProps>(
       }
 
       &:focus-visible {
-        ${focusVariants({ theme, variant })}
+        ${focus({ theme, variant })}
 
         &:after {
           opacity: 1;
