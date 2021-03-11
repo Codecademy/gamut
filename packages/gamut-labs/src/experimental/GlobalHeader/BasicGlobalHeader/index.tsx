@@ -26,10 +26,6 @@ import {
   proMobileHeaderItems,
 } from '../GlobalHeaderVariants';
 
-type BasicGlobalHeaderProps = GlobalHeaderProps & {
-  pauseAnimation?: boolean;
-};
-
 const getAppHeaderItems = (
   props: GlobalHeaderProps
 ): FormattedAppHeaderItems => {
@@ -92,7 +88,7 @@ const getMobileAppHeaderItems = (
   }
 };
 
-export const BasicGlobalHeader: React.FC<BasicGlobalHeaderProps> = (props) => {
+export const BasicGlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
   const theme = useTheme();
 
   return (
@@ -100,7 +96,7 @@ export const BasicGlobalHeader: React.FC<BasicGlobalHeaderProps> = (props) => {
       <Box
         display={{ base: 'none', md: 'block' }}
         height={theme.elements.headerHeight}
-        className={props.pauseAnimation ? undefined : props.className}
+        className={props.className}
       >
         <AppHeader
           action={props.action}
@@ -113,7 +109,7 @@ export const BasicGlobalHeader: React.FC<BasicGlobalHeaderProps> = (props) => {
       <Box
         display={{ base: 'block', md: 'none' }}
         height={theme.elements.headerHeight}
-        className={props.pauseAnimation ? undefined : props.className}
+        className={props.className}
       >
         <AppHeaderMobile
           action={props.action}
