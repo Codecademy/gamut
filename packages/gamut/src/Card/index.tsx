@@ -61,13 +61,13 @@ export const Card = styled(Box)<CardProps>(
         left: -1px;
         width: calc(100% + 2px);
         height: calc(100% + 2px);
+        backface-visibility: hidden;
+        transition: inherit;
       }
 
       &:after {
         z-index: -2;
-        backface-visibility: hidden;
         background-color: ${theme.colors.navy};
-        transition: inherit;
       }
 
       &:before {
@@ -83,7 +83,7 @@ export const Card = styled(Box)<CardProps>(
       const [fgX, fgY] = SHADOWS.foreground.map((x) => x * offset);
       const [bgX, bgY] = SHADOWS.background.map((x) => x * offset);
       return css`
-        transition: ${timing}ms transform ease-in-out;
+        transition: ${timing}ms transform ease;
 
         &:hover {
           transform: translate(${fgX}px, ${fgY}px);
