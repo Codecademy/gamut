@@ -36,6 +36,7 @@ const createModeVariants = ({
   const focus = variant({
     standard: {
       textColor: text,
+      textDecoration: 'none',
     },
     inline: {
       textDecoration: 'underline',
@@ -69,12 +70,13 @@ export const Anchor = styled.a<AnchorProps>(
       &:after {
         content: '';
         position: absolute;
-        left: -2px;
-        top: -2px;
-        width: calc(100% + ${theme.spacing[4]});
-        height: calc(100% + ${theme.spacing[4]});
+        left: -${theme.spacing[4]};
+        top: -${theme.spacing[4]};
+        width: calc(100% + ${theme.spacing[8]});
+        height: calc(100% + ${theme.spacing[8]});
         border-radius: 4px;
-        border: 2px solid inherit;
+        border: 2px solid;
+        border-color: inherit;
         opacity: 0;
       }
 
