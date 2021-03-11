@@ -1,6 +1,8 @@
-import { Anchor, Text } from '@codecademy/gamut/src';
+import { Anchor, Box } from '@codecademy/gamut/src';
+import { Text } from '@codecademy/gamut-labs';
 import title from '@codecademy/macros/lib/title.macro';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/dist/blocks';
+import { startCase } from 'lodash';
 
 import { PropsTable } from '~styleguide/blocks';
 
@@ -40,75 +42,67 @@ It applies `text-decoration: underline` per our accessibility guidelines to dist
 
 ## Variants
 
-We provide 3 style variants for Anchor.
+We provide 3 variants for links for various use cases
+
+### Interface
+
+The menu link should be used in instances where the context of the link makes it clear that it is clickable. Examples of these contexts include our catalog menu, navigation bar, and footer.
+
+### Standard
+
+For use outside of a ‘menu’ instance where (for a good reason) you can’t use the Text Button with the included button-padding.
+
+### Inline
+
+For use in paragraphs, underlined for extra readability to stand out more beyond just the different color.
+
+export const variants = ['interface', 'standard', 'inline'];
+
+## Modes
+
+### Light
 
 <Canvas>
-  <Story name="Inline" args={{ variant: 'inline' }}>
-    {(args) => {
+  <Story name="light">
+    {() => {
       return (
-        <Text>
-          This inline style is the default style and should be used when link is
-          part of the body text, like this. Check out this{' '}
-          <Anchor
-            {...args}
-            href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-            target="_blank"
-          >
-            great video
-          </Anchor>
-          .
-        </Text>
+        <Box padding={16}>
+          {variants.map((variant) => (
+            <Box key={`${variant}-light`} display="inline-block" padding={8}>
+              <Text as="p">{startCase(variant)} Link</Text>
+              <Anchor
+                marginRight={8}
+                variant={variant}
+                key={`${variant}-light`}
+                href={`#${variant}`}
+              >
+                Click Me
+              </Anchor>
+            </Box>
+          ))}
+        </Box>
       );
     }}
   </Story>
 </Canvas>
 
-This interface style should only be used when link is not part of the body text and
-it doesn&apos;t make sense to use Text Button. Color can be customized by using textColor
-prop
+### Dark
 
 <Canvas>
-  <Story name="Interface" args={{ variant: 'interface' }}>
-    {(args) => {
-      return (
-        <Text>
-          <Anchor
-            {...args}
-            href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-            target="_blank"
-            fontSize={22}
-            fontWeight="title"
-          >
-            great video 1
-          </Anchor>{' '}
-          |{' '}
-          <Anchor
-            {...args}
-            href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-            target="_blank"
-            fontSize={22}
-            fontWeight="title"
-          >
-            great video 2
-          </Anchor>
-        </Text>
-      );
-    }}
+  <Story name="dark">
+    {() => (
+      <Box padding={16} backgroundColor="navy">
+        {variants.map((variant) => (
+          <Box key={`${variant}-dark`} display="inline-block" padding={8}>
+            <Text as="p" textColor="white" textTransform="uppercase">
+              {startCase(variant)} Link
+            </Text>
+            <Anchor mode="dark" variant={variant} href={`#${variant}`}>
+              Click Me
+            </Anchor>
+          </Box>
+        ))}
+      </Box>
+    )}
   </Story>
 </Canvas>
-
-## Anchor Guidelines
-
-Links are really hard to get right for accessibility!
-Most importantly: links must be _visually distinct_ from body text.
-For general links in body text, we use a visual underline to make it clear that they're links.
-
-<Story name="Guidelines">
-  <Text>
-    <Anchor href="/">This is a link</Anchor>. This is not.
-  </Text>
-</Story>
-
-Only use the `interface` variant when your link text is clearly separated from body text in a way that implies a link. Otherwise, use the default (`inline`) Anchor style.
-
-Remember [color contrast](https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum.html) and [non-color visual distinction](https://www.w3.org/TR/WCAG20-TECHS/F73.html): users who are color-blind and/or low vision should still be able to see the link and text distinction.
