@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [26.2.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@26.2.2...@codecademy/gamut@26.2.3) (2021-03-11)
+
+
+### Bug Fixes
+
+* **Modal:** add aria-label prop ([403f4d4](https://github.com/Codecademy/client-modules/commit/403f4d46fd957f170264956dd118a5c47cc9d91f))
+
+
+
 ### [26.2.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@26.2.1...@codecademy/gamut@26.2.2) (2021-03-09)
 
 
