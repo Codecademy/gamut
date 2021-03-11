@@ -8,6 +8,7 @@ import {
   FormattedMobileAppHeaderItems,
 } from '../../AppHeader/types';
 import { AppHeaderMobile } from '../../AppHeaderMobile';
+import { GlobalHeaderProps } from '..';
 import {
   anonDefaultHeaderItems,
   anonDefaultMobileHeaderItems,
@@ -24,13 +25,6 @@ import {
   proHeaderItems,
   proMobileHeaderItems,
 } from '../GlobalHeaderVariants';
-import { AnonHeader, FreeHeader, LoadingHeader, ProHeader } from '../types';
-
-export type GlobalHeaderProps =
-  | AnonHeader
-  | FreeHeader
-  | ProHeader
-  | LoadingHeader;
 
 const getAppHeaderItems = (
   props: GlobalHeaderProps
