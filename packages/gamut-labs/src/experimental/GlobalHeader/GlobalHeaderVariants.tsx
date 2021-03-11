@@ -20,6 +20,8 @@ import {
   resourcesDropdown,
   search,
   signUp,
+  tryProForFree,
+  unpausePro,
   upgradeToPro,
 } from './GlobalHeaderItems';
 import { User } from './types';
@@ -133,7 +135,9 @@ export const freeHeaderItems = (
   renderSearch && rightItems.push(search(renderSearch));
   renderNotifications && rightItems.push(notifications(renderNotifications));
   rightItems.push(freeProfile(user));
-  rightItems.push(upgradeToPro);
+  rightItems.push(
+    user.showProUpgrade ? upgradeToPro : tryProForFree(user.proTrialCheckoutUrl)
+  );
 
   return {
     left: leftItems,
@@ -157,9 +161,12 @@ export const freeMobileHeaderItems = (
     communityDropdown,
     pricingDropdown,
     forBusiness,
-    freeProfile(user),
-    upgradeToPro,
+    freeProfile(user, true),
   ];
+
+  mainMenuItems.push(
+    user.showProUpgrade ? upgradeToPro : tryProForFree(user.proTrialCheckoutUrl)
+  );
 
   return {
     left: leftItems,
@@ -185,6 +192,7 @@ export const proHeaderItems = (
   renderSearch && rightItems.push(search(renderSearch));
   renderNotifications && rightItems.push(notifications(renderNotifications));
   rightItems.push(proProfile(user));
+  user.isPaused && rightItems.push(unpausePro);
 
   return {
     left: leftItems,
@@ -206,8 +214,10 @@ export const proMobileHeaderItems = (
     courseCatalog,
     resourcesDropdown,
     communityDropdown,
-    proProfile(user),
+    proProfile(user, true),
   ];
+
+  user.isPaused && mainMenuItems.push(unpausePro);
 
   return {
     left: leftItems,

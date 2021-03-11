@@ -224,7 +224,7 @@ const profileMyHome: AppHeaderLinkItem = {
   type: 'link',
 };
 
-const profileBusiness: AppHeaderLinkItem = {
+const profileBusinessAccount: AppHeaderLinkItem = {
   id: 'business',
   icon: PieLineGraphIcon,
   href: '/business/plans',
@@ -277,38 +277,20 @@ const profileLogOut: AppHeaderLinkItem = {
   type: 'link',
 };
 
-export const freeProfile = (user: User): AppHeaderProfileDropdownItem => {
-  return {
-    avatar: user.avatar,
-    userDisplayName: user.displayName,
-    id: 'profile',
-    text: 'Profile',
-    popover: [
-      [profileMyProfile, profileAccount, profileMyHome, profileHelpCenter],
-      [profileLogOut],
-    ],
-    trackingTarget: 'topnav_profile',
-    type: 'profile-dropdown',
-  };
-};
+export const freeProfile = (
+  user: User,
+  isMobile?: boolean
+): AppHeaderProfileDropdownItem => {
+  const topSection = [profileMyProfile, profileAccount, profileMyHome];
+  if (!isMobile && user.isAccountManager) {
+    topSection.push(profileBusinessAccount);
+  }
+  topSection.push(profileHelpCenter);
 
-export const proProfile = (user: User): AppHeaderProfileDropdownItem => {
-  const popover = [];
-  popover.push([
-    profileMyProfile,
-    profileAccount,
-    profileMyHome,
-    profileBusiness,
-    profileHelpCenter,
-  ]);
+  const bottomSection = [profileLogOut];
 
-  const adminSection = [];
-  user.isAdmin && adminSection.push(profileAdmin);
-  user.isCustomerSupport && adminSection.push(profileCustomerSupport);
-  user.isAdmin && adminSection.push(profileReportBug);
-  popover.push(adminSection);
+  const popover = [topSection, bottomSection];
 
-  popover.push([profileLogOut]);
   return {
     avatar: user.avatar,
     userDisplayName: user.displayName,
@@ -320,11 +302,68 @@ export const proProfile = (user: User): AppHeaderProfileDropdownItem => {
   };
 };
 
-export const upgradeToPro: AppHeaderFillButtonItem = {
-  id: 'upgrade-to-pro',
+export const proProfile = (
+  user: User,
+  isMobile?: boolean
+): AppHeaderProfileDropdownItem => {
+  const topSection = [profileMyProfile, profileAccount, profileMyHome];
+  if (!isMobile && (user.isAccountManager || user.isAdmin)) {
+    topSection.push(profileBusinessAccount);
+  }
+  topSection.push(profileHelpCenter);
+
+  const middleSection = [];
+  if (user.isAdmin) {
+    middleSection.push(profileAdmin);
+  }
+  if (user.isCustomerSupport) {
+    middleSection.push(profileCustomerSupport);
+  }
+  if (user.isAdmin) {
+    middleSection.push(profileReportBug);
+  }
+
+  const bottomSection = [profileLogOut];
+
+  const popover = [topSection, middleSection, bottomSection];
+
+  return {
+    avatar: user.avatar,
+    userDisplayName: user.displayName,
+    id: 'profile',
+    text: 'Profile',
+    popover,
+    trackingTarget: 'topnav_profile',
+    type: 'profile-dropdown',
+  };
+};
+
+export const tryProForFree = (
+  checkoutUrl?: string
+): AppHeaderFillButtonItem => ({
+  dataTestId: 'upgrade-link',
+  id: 'try-pro',
   text: 'Try Pro For Free',
-  href: '/pro/membership',
+  href: checkoutUrl || '/pro/membership',
   trackingTarget: 'topnav_pro_trial',
+  type: 'fill-button',
+});
+
+export const upgradeToPro: AppHeaderFillButtonItem = {
+  dataTestId: 'upgrade-link',
+  id: 'upgrade-to-pro',
+  text: 'Upgrade to Pro',
+  href: '/pro/membership',
+  trackingTarget: 'topnav_pro_upgrade',
+  type: 'fill-button',
+};
+
+export const unpausePro: AppHeaderFillButtonItem = {
+  dataTestId: 'unpause-link',
+  id: 'unpause-pro',
+  text: 'Unpause Now',
+  href: '/account/billing',
+  trackingTarget: 'topnav_pro_unpause',
   type: 'fill-button',
 };
 
@@ -335,6 +374,7 @@ export const login: AppHeaderTextButtonItem = {
   href: '/login',
   trackingTarget: 'topnav_login',
   type: 'text-button',
+  redirect: true,
 };
 
 export const signUp: AppHeaderFillButtonItem = {
@@ -344,4 +384,5 @@ export const signUp: AppHeaderFillButtonItem = {
   href: '/register',
   trackingTarget: 'topnav_signup',
   type: 'fill-button',
+  redirect: true,
 };
