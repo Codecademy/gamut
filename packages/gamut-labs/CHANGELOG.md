@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [11.2.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@11.2.0...@codecademy/gamut-labs@11.2.1) (2021-03-10)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+## [11.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@11.1.1...@codecademy/gamut-labs@11.2.0) (2021-03-10)
+
+
+### Features
+
+* **GlobalHeader:** Add pro paused and trial completed header types ([3cf3323](https://github.com/Codecademy/client-modules/commit/3cf33236f7f06457095cd1096949d21622734185))
+
+
+
+### [11.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@11.1.0...@codecademy/gamut-labs@11.1.1) (2021-03-10)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
 ## [11.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@11.0.5...@codecademy/gamut-labs@11.1.0) (2021-03-09)
 
 
