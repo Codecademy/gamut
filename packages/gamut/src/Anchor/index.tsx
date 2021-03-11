@@ -84,18 +84,18 @@ export type AnchorProps = {
   variant?: 'standard' | 'inline' | 'interface';
 } & HandlerProps<typeof anchorProps>;
 
-const Link = styled.a<AnchorProps>(
-  anchorProps,
-  ({ theme, mode = 'light', variant }) => {
+const Link = styled.a<AnchorProps>`
+  background: none;
+  box-shadow: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  ${anchorProps}
+  ${({ theme, mode = 'light', variant }) => {
     const { base, hover, focus } = modes[mode];
     return css`
       ${base({ theme, variant })};
       position: relative;
-      background: none;
-      box-shadow: none;
-      border: none;
-      padding: 0;
-      font: inherit;
 
       &:after {
         content: '';
@@ -135,8 +135,8 @@ const Link = styled.a<AnchorProps>(
         }
       }
     `;
-  }
-);
+  }}
+`;
 
 export const Anchor = Link.withComponent(AnchorElement);
 
