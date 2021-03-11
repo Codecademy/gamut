@@ -1,15 +1,6 @@
-import cx from 'classnames';
+import { Box, FlexBox } from '@codecademy/gamut';
+import { LocationPinIcon } from '@codecademy/gamut-icons';
 import React from 'react';
-
-import networkPin from './assets/networkPin.svg';
-import styles from './styles.module.scss';
-
-type BylineClassNamesProps = {
-  bylineContainer?: string;
-  author?: string;
-  jobContainer?: string;
-  location?: string;
-};
 
 export type BylineProps = {
   firstName: string;
@@ -17,12 +8,6 @@ export type BylineProps = {
   location?: string;
   company?: string;
   lastName?: string;
-  /**
-   * an object to overwrite any combo of, or all, of the default styles. Structured as:
-   * `{bylineContainer: styles.className, author: styles.className,
-   * jobContainer:styles.className, location: styles.className}`
-   */
-  classNames?: BylineClassNamesProps;
 };
 
 export const Byline: React.FC<BylineProps> = ({
@@ -31,29 +16,38 @@ export const Byline: React.FC<BylineProps> = ({
   location,
   company,
   lastName,
-  classNames = {},
 }) => (
-  <div className={cx(styles.bylineContainer, classNames.bylineContainer)}>
-    <span
+  <FlexBox flexDirection="column">
+    <Box
+      as="span"
       data-testid="author-container"
-      className={cx(styles.author, classNames.author)}
+      fontSize={18}
+      fontWeight="title"
     >
       <span>{firstName}</span>
-      {lastName && <span className={styles.lastName}>{` ${lastName}`}</span>}
-    </span>
-    <div data-testid="job-container" className={classNames.jobContainer}>
+      {lastName && (
+        <Box
+          as="span"
+          display={{ base: 'none', xs: 'contents' }}
+        >{` ${lastName}`}</Box>
+      )}
+    </Box>
+    <div data-testid="job-container">
       <span>{occupation}</span>
-      {company && <span className={styles.company}>{` @ ${company}`}</span>}
+      {company && (
+        <Box
+          as="span"
+          display={{ base: 'none', xs: 'contents' }}
+        >{` @ ${company}`}</Box>
+      )}
     </div>
     {location && (
-      <div className={styles.locationContainer}>
-        <img
-          alt="Location pin icon"
-          className={styles.networkPin}
-          src={networkPin}
-        />
-        <span className={classNames.location}>{location}</span>
-      </div>
+      <FlexBox alignItems="center">
+        <LocationPinIcon size={12} />
+        <Box as="span" marginLeft={12}>
+          {location}
+        </Box>
+      </FlexBox>
     )}
-  </div>
+  </FlexBox>
 );
