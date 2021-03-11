@@ -41,13 +41,11 @@ export type CardProps = HandlerProps<typeof cardVariants> & {
 
 export const Card = styled(Box)<CardProps>(
   cardVariants,
-  ({ theme, variant, shadowOffset: offset = 0 }) => {
+  ({ theme, variant }) => {
     const outline = variant === 'navy';
-    const timing = TRANSITION_COEFFICIENT * offset;
 
     return css`
       position: relative;
-      transition: ${timing}ms transform ease-in-out;
       backface-visibility: hidden;
 
       &:after,
@@ -79,10 +77,14 @@ export const Card = styled(Box)<CardProps>(
     `;
   },
   ({ shadowOffset: offset = 0 }) => {
+    const timing = TRANSITION_COEFFICIENT * offset;
+
     if (offset) {
       const [fgX, fgY] = SHADOWS.foreground.map((x) => x * offset);
       const [bgX, bgY] = SHADOWS.background.map((x) => x * offset);
       return css`
+        transition: ${timing}ms transform ease-in-out;
+
         &:hover {
           transform: translate(${fgX}px, ${fgY}px);
 
