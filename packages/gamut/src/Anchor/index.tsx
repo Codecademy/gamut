@@ -2,18 +2,31 @@ import {
   color,
   shouldForwardProp,
   space,
+  theme,
   typography,
   variant,
 } from '@codecademy/gamut-styles';
 import { compose, HandlerProps } from '@codecademy/gamut-system';
 import { css, Theme } from '@emotion/react';
 import styled from '@emotion/styled';
-import React, { HTMLProps } from 'react';
+import React, { forwardRef, HTMLProps, MutableRefObject } from 'react';
+
+export type LinkElements = HTMLAnchorElement | HTMLButtonElement;
+export interface AnchorProps extends HandlerProps<typeof anchorProps> {
+  href?: string;
+  as?: never;
+  mode?: 'light' | 'dark';
+  variant?: 'standard' | 'inline' | 'interface';
+}
+interface ForwardedProps
+  extends Omit<HTMLProps<LinkElements>, keyof AnchorProps>,
+    AnchorProps {}
 
 const createModeVariants = ({
   text,
   primary,
-}: Record<'text' | 'primary', keyof Theme['colors']>) => {
+  dull,
+}: Record<'text' | 'primary' | 'dull', keyof Theme['colors']>) => {
   const base = variant({
     standard: {
       textColor: primary,
@@ -51,17 +64,28 @@ const createModeVariants = ({
     interface: {},
   });
 
-  return { base, hover, focus };
+  const disabled = ({ theme }: { theme?: Theme }) => ({
+    color: theme?.colors?.[dull],
+  });
+  return { base, hover, focus, disabled };
 };
 
 const modes = {
-  dark: createModeVariants({ text: 'white', primary: 'yellow' }),
-  light: createModeVariants({ text: 'navy', primary: 'hyper' }),
+  dark: createModeVariants({
+    text: 'white',
+    primary: 'yellow',
+    dull: 'gray-200',
+  }),
+  light: createModeVariants({
+    text: 'navy',
+    primary: 'hyper',
+    dull: 'gray-700',
+  }),
 } as const;
 
 const anchorProps = compose(typography, color, space);
 
-const BareButton = styled.button`
+const ButtonReset = styled.button`
   background: none;
   box-shadow: none;
   border: none;
@@ -69,50 +93,51 @@ const BareButton = styled.button`
   font-size: inherit;
 `;
 
-const AnchorElement: React.FC<
-  Omit<HTMLProps<HTMLAnchorElement>, keyof AnchorProps> & AnchorProps
-> = (props) => {
-  const {
-    href,
-    disabled,
-    children,
-    as,
-    rel = 'noopener noreferrer',
-    ...rest
-  } = props;
-  if (!href || href.length === 0) {
+const AnchorElement = forwardRef<LinkElements, ForwardedProps>(
+  (
+    { href, disabled, children, as, rel = 'noopener noreferrer', ...rest },
+    ref
+  ) => {
+    if (!href || href.length === 0) {
+      return (
+        <ButtonReset
+          {...rest}
+          ref={ref as MutableRefObject<HTMLButtonElement>}
+          type="button"
+          aria-disabled={disabled}
+        >
+          {children}
+        </ButtonReset>
+      );
+    }
+
     return (
-      <BareButton
-        {...(rest as Omit<HTMLProps<HTMLButtonElement>, keyof AnchorProps>)}
-        type="button"
-        aria-disabled={disabled}
+      <a
+        {...rest}
+        href={href}
+        rel={rel}
+        ref={ref as MutableRefObject<HTMLAnchorElement>}
       >
         {children}
-      </BareButton>
+      </a>
     );
   }
-
-  return (
-    <a {...rest} href={href} rel={rel}>
-      {children}
-    </a>
-  );
-};
-
-export type AnchorProps = {
-  href?: string;
-  as?: never;
-  mode?: 'light' | 'dark';
-  variant?: 'standard' | 'inline' | 'interface';
-} & HandlerProps<typeof anchorProps>;
+);
 
 export const AnchorBase = styled('a', {
   shouldForwardProp,
 })<AnchorProps>`
   display: inline-block;
+  white-space: nowrap;
+
+  > * {
+    vertical-align: middle;
+  }
+
   ${anchorProps}
   ${({ theme, mode = 'light', variant }) => {
-    const { base, hover, focus } = modes[mode];
+    const { base, hover, disabled, focus } = modes[mode];
+
     return css`
       ${base({ theme, variant })};
       position: relative;
@@ -140,7 +165,7 @@ export const AnchorBase = styled('a', {
       &[disabled] {
         cursor: not-allowed;
         text-decoration: none;
-        color: ${theme.colors['gray-700']};
+        ${disabled({ theme })}
       }
       &:focus,
       &:focus-visible {
