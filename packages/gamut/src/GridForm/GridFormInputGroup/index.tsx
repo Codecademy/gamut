@@ -14,6 +14,7 @@ import { GridFormRadioGroupInput } from './GridFormRadioGroupInput';
 import { GridFormSelectInput } from './GridFormSelectInput';
 import { GridFormTextArea } from './GridFormTextArea';
 import { GridFormTextInput } from './GridFormTextInput';
+import { GridFormToolTipWrapper } from './GridFormToolTipWrapper';
 
 export type GridFormInputGroupProps = {
   error?: string;
@@ -105,13 +106,15 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
   };
 
   const label = (
-    <StyledFormGroupLabel
-      disabled={field.disabled}
-      htmlFor={field.id || field.name}
-      showRequired={showRequired}
-    >
-      {field.label}
-    </StyledFormGroupLabel>
+    <GridFormToolTipWrapper field={field}>
+      <StyledFormGroupLabel
+        disabled={field.disabled}
+        htmlFor={field.id || field.name}
+        showRequired={showRequired}
+      >
+        {field.label}
+      </StyledFormGroupLabel>
+    </GridFormToolTipWrapper>
   );
 
   return (
