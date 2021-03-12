@@ -65,10 +65,10 @@ export const NotificationItemNew: React.FC<NotificationItemNewProps> = ({
       <FlexBox paddingY={24} justifyContent="space-between" paddingX={32}>
         {getIcon()}
         <Box flexBasis={0} flexGrow={1} paddingLeft={12} textColor="navy">
-          <Text as="span" fontSize="sm">
+          <Text as="span" fontSize={14}>
             {text}
           </Text>
-          <DateText as="span" fontSize="sm">
+          <DateText as="span" fontSize={14}>
             {date}
           </DateText>
         </Box>

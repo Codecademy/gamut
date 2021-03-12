@@ -1,4 +1,4 @@
-import { Heading, Text } from '@codecademy/gamut';
+import { Text } from '@codecademy/gamut';
 import React from 'react';
 
 export const elements = {
@@ -10,15 +10,9 @@ export const elements = {
   CustomElement: {
     component: ({ title }: { title: string }) => {
       return (
-        <Heading
-          as="h3"
-          fontSize="md"
-          style={{
-            color: 'rebeccapurple',
-          }}
-        >
+        <Text as="h3" textColor="hyper">
           {title}
-        </Heading>
+        </Text>
       );
     },
     allowedAttributes: ['title'],
@@ -27,6 +21,6 @@ export const elements = {
 
 export const tags = {
   h3: {
-    component: (props: any) => <Heading {...props} as="h3" size="xs" />,
+    component: (props: any) => <Text {...props} as="h3" fontSize={22} />,
   },
 };
