@@ -13,6 +13,7 @@ import { GridFormRadioGroupInput } from './GridFormRadioGroupInput';
 import { GridFormSelectInput } from './GridFormSelectInput';
 import { GridFormTextArea } from './GridFormTextArea';
 import { GridFormTextInput } from './GridFormTextInput';
+import { GridFormToolTipWrapper } from './GridFormToolTipWrapper';
 
 export type GridFormInputGroupProps = {
   error?: string;
@@ -36,92 +37,89 @@ const StyledFormGroupLabel = styled(FormGroupLabel)`
   margin-right: 0.5rem;
 `;
 
-export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = (
-  props
-) => {
+export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
+  field,
+  isFirstError,
+  register,
+  setValue,
+  error,
+}) => {
   const getInput = () => {
-    switch (props.field.type) {
+    switch (field.type) {
       case 'checkbox':
-        return (
-          <GridFormCheckboxInput
-            field={props.field}
-            register={props.register}
-          />
-        );
+        return <GridFormCheckboxInput field={field} register={register} />;
 
       case 'custom':
         return (
           <GridFormCustomInput
-            field={props.field}
-            register={props.register}
-            setValue={props.setValue}
-            error={props.error}
+            field={field}
+            register={register}
+            setValue={setValue}
+            error={error}
           />
         );
 
       case 'radio-group':
         return (
           <GridFormRadioGroupInput
-            field={props.field}
-            register={props.register}
-            setValue={props.setValue}
+            field={field}
+            register={register}
+            setValue={setValue}
           />
         );
 
       case 'select':
         return (
           <GridFormSelectInput
-            error={!!props.error}
-            field={props.field}
-            register={props.register}
+            error={!!error}
+            field={field}
+            register={register}
           />
         );
 
       case 'file':
         return (
           <GridFormFileInput
-            error={!!props.error}
-            field={props.field}
-            register={props.register}
+            error={!!error}
+            field={field}
+            register={register}
           />
         );
 
       case 'textarea':
         return (
-          <GridFormTextArea
-            error={!!props.error}
-            field={props.field}
-            register={props.register}
-          />
+          <GridFormTextArea error={!!error} field={field} register={register} />
         );
 
       default:
         return (
           <GridFormTextInput
-            error={!!props.error}
-            field={props.field}
-            register={props.register}
+            error={!!error}
+            field={field}
+            register={register}
           />
         );
     }
   };
 
   const label = (
-    <StyledFormGroupLabel
-      disabled={props.field.disabled}
-      htmlFor={props.field.id || props.field.name}
-    >
-      {props.field.label}
-    </StyledFormGroupLabel>
+    <GridFormToolTipWrapper field={field}>
+      <StyledFormGroupLabel
+        disabled={field.disabled}
+        htmlFor={field.id || field.name}
+      >
+        {field.label}
+      </StyledFormGroupLabel>
+    </GridFormToolTipWrapper>
   );
 
   return (
-    <Column size={props.field.size}>
+    <Column size={field.size}>
       <StyledFormGroup>
-        {props.field.hideLabel ? <HiddenText>{label}</HiddenText> : label}
-        {props.error && (
-          <FormError aria-live={props.isFirstError ? 'assertive' : 'off'}>
-            {props.error}
+        {field.hideLabel ? <HiddenText>{label}</HiddenText> : label}
+        {error && (
+          <FormError aria-live={isFirstError ? 'assertive' : 'off'}>
+            {error}
           </FormError>
         )}
         {getInput()}

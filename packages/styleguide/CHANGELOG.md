@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [30.6.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@30.5.2...@codecademy/styleguide@30.6.0) (2021-03-12)
+
+
+### Features
+
+* **GridForm:** Add tooltip to gridform fields ([e4245d5](https://github.com/Codecademy/client-modules/commit/e4245d517b4612e4da0bf215bb98c10d261ae091))
+
+
+
+### [30.5.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@30.5.1...@codecademy/styleguide@30.5.2) (2021-03-11)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
 ### [30.5.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@30.5.0...@codecademy/styleguide@30.5.1) (2021-03-10)
 
 **Note:** Version bump only for package @codecademy/styleguide
