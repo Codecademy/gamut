@@ -1,43 +1,78 @@
-import { FillButton, Modal } from '@codecademy/gamut/src';
+import { Modal } from '@codecademy/gamut/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
-import { useState } from 'react';
 
 <Meta
   title={title}
   component={Modal}
   parameters={{
-    subtitle: `Simple Modal portal to escape current DOM Context.`,
-    status: 'volatile',
+    subtitle: `Constrained Modal Dialogue`,
+    status: 'stable',
     source: 'gamut',
-    figmaId: 'yt7NdZTETDRPUn0CtRu3v0',
+    figmaId: 'lIQbbBHl6v80CevfWogVhr',
     docs: {
       inlineStories: false,
     },
   }}
+  args={{
+    isOpen: true,
+    title: 'Depeche Modal',
+    children: 'All I ever wanted, all I ever needed is here in my',
+    confirmCta: { children: 'Arms' },
+  }}
 />
+
+## Use cases
+
+- Use regular modals to have users accept a specific state of the system or force a user to see something.
+- Use warning modals to warn the user of the consequences of the action they may take
+
+## Key principles
+
+- Modals appear unprompted and require confirmation before the user can continue.
+- Use the modal component sparingly. This is the most dispruptive tool in our arsenal. We should only have a small handful of these in our system at any given time.
 
 <Canvas>
   <Story name="Modal" height="600px">
     {(args) => {
-      const [isOpen, setIsOpen] = useState(false);
-      return (
-        <>
-          <FillButton onClick={() => setIsOpen(true)}>Open</FillButton>
-          <Modal
-            {...args}
-            isOpen={isOpen}
-            title="I am a modal"
-            onRequestClose={() => setIsOpen(false)}
-            confirmCta={{ children: 'Okay' }}
-            cancelCta={{ children: 'Cancel' }}
-          >
-            Close the modal!
-          </Modal>
-        </>
-      );
+      return <Modal {...args} />;
     }}
   </Story>
 </Canvas>
 
 <Props story="Modal" />
+
+## Style
+
+- Modals have a min-width of 400px
+- Modal height changes depending on the body-text length.
+- Modal has light and dark theme variants and each mode is colored differently.
+- Warning Modals should use a red CTA button (light mode: white text on #E91C11 background, dark mode: navy text on #E85D7F background)
+- Modals use pattern at 80% opacity to give component depth.
+- Modals should always be displayed over an overlay. The overlay in light mode should be white at 95% opacity, the overlay in dark mode should be black at 75% opacity.
+
+## Location
+
+- Modals should be centered inside of the window.
+
+## Color Modes
+
+### Light
+
+<Canvas>
+  <Story name="Modal" height="600px">
+    {(args) => {
+      return <Modal {...args} />;
+    }}
+  </Story>
+</Canvas>
+
+### Dark
+
+<Canvas>
+  <Story name="Modal" height="600px" args={{ mode: 'dark' }}>
+    {(args) => {
+      return <Modal {...args} />;
+    }}
+  </Story>
+</Canvas>
