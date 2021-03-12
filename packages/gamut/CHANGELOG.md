@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [26.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@26.2.3...@codecademy/gamut@26.3.0) (2021-03-12)
+
+
+### Features
+
+* **GridForm:** Add tooltip to gridform fields ([e4245d5](https://github.com/Codecademy/client-modules/commit/e4245d517b4612e4da0bf215bb98c10d261ae091))
+
+
+
 ### [26.2.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@26.2.2...@codecademy/gamut@26.2.3) (2021-03-11)
 
 
