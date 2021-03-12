@@ -10,6 +10,17 @@ import { css, Theme } from '@emotion/react';
 import styled from '@emotion/styled';
 import React, { forwardRef, HTMLProps, MutableRefObject } from 'react';
 
+export type LinkElements = HTMLAnchorElement | HTMLButtonElement;
+export interface AnchorProps extends HandlerProps<typeof anchorProps> {
+  href?: string;
+  as?: never;
+  mode?: 'light' | 'dark';
+  variant?: 'standard' | 'inline' | 'interface';
+}
+interface ForwardedProps
+  extends Omit<HTMLProps<LinkElements>, keyof AnchorProps>,
+    AnchorProps {}
+
 const createModeVariants = ({
   text,
   primary,
@@ -55,13 +66,19 @@ const createModeVariants = ({
 };
 
 const modes = {
-  dark: createModeVariants({ text: 'white', primary: 'yellow' }),
-  light: createModeVariants({ text: 'navy', primary: 'hyper' }),
+  dark: createModeVariants({
+    text: 'white',
+    primary: 'yellow',
+  }),
+  light: createModeVariants({
+    text: 'navy',
+    primary: 'hyper',
+  }),
 } as const;
 
 const anchorProps = compose(typography, color, space);
 
-const BareButton = styled.button`
+const ButtonReset = styled.button`
   background: none;
   box-shadow: none;
   border: none;
@@ -69,61 +86,51 @@ const BareButton = styled.button`
   font-size: inherit;
 `;
 
-type ForwardAbleProps = Omit<HTMLProps<HTMLAnchorElement>, keyof AnchorProps> &
-  AnchorProps;
-type Elements = HTMLAnchorElement | HTMLButtonElement;
+const AnchorElement = forwardRef<LinkElements, ForwardedProps>(
+  (
+    { href, disabled, children, as, rel = 'noopener noreferrer', ...rest },
+    ref
+  ) => {
+    if (!href || href.length === 0) {
+      return (
+        <ButtonReset
+          {...rest}
+          ref={ref as MutableRefObject<HTMLButtonElement>}
+          type="button"
+          aria-disabled={disabled}
+        >
+          {children}
+        </ButtonReset>
+      );
+    }
 
-const AnchorElement = forwardRef<Elements, ForwardAbleProps>((props, ref) => {
-  const {
-    href,
-    disabled,
-    children,
-    as,
-    rel = 'noopener noreferrer',
-    ...rest
-  } = props;
-  if (!href || href.length === 0) {
     return (
-      <BareButton
-        {...(rest as Omit<HTMLProps<HTMLButtonElement>, keyof AnchorProps>)}
-        ref={ref as MutableRefObject<HTMLButtonElement>}
-        type="button"
-        aria-disabled={disabled}
+      <a
+        {...rest}
+        href={href}
+        rel={rel}
+        ref={ref as MutableRefObject<HTMLAnchorElement>}
       >
         {children}
-      </BareButton>
+      </a>
     );
   }
-
-  return (
-    <a
-      {...rest}
-      href={href}
-      rel={rel}
-      ref={ref as MutableRefObject<HTMLAnchorElement>}
-    >
-      {children}
-    </a>
-  );
-});
-
-export type AnchorProps = {
-  href?: string;
-  as?: never;
-  mode?: 'light' | 'dark';
-  variant?: 'standard' | 'inline' | 'interface';
-} & HandlerProps<typeof anchorProps>;
+);
 
 export const AnchorBase = styled('a', {
   shouldForwardProp,
 })<AnchorProps>`
   display: inline-block;
   white-space: nowrap;
-  min-width: 0;
+
+  > * {
+    vertical-align: middle;
+  }
 
   ${anchorProps}
   ${({ theme, mode = 'light', variant }) => {
     const { base, hover, focus } = modes[mode];
+
     return css`
       ${base({ theme, variant })};
       position: relative;
