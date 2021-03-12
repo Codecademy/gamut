@@ -1,4 +1,10 @@
-import { color, space, typography, variant } from '@codecademy/gamut-styles';
+import {
+  color,
+  shouldForwardProp,
+  space,
+  typography,
+  variant,
+} from '@codecademy/gamut-styles';
 import { compose, HandlerProps } from '@codecademy/gamut-system';
 import { css, Theme } from '@emotion/react';
 import styled from '@emotion/styled';
@@ -55,23 +61,39 @@ const modes = {
 
 const anchorProps = compose(typography, color, space);
 
+const BareButton = styled.button`
+  background: none;
+  box-shadow: none;
+  border: none;
+  padding: 0;
+  font-size: inherit;
+`;
+
 const AnchorElement: React.FC<
   Omit<HTMLProps<HTMLAnchorElement>, keyof AnchorProps> & AnchorProps
 > = (props) => {
-  const { href, disabled, children, as, ...rest } = props;
+  const {
+    href,
+    disabled,
+    children,
+    as,
+    rel = 'noopener noreferrer',
+    ...rest
+  } = props;
   if (!href || href.length === 0) {
     return (
-      <button
-        {...(rest as HTMLProps<HTMLButtonElement>)}
+      <BareButton
+        {...(rest as Omit<HTMLProps<HTMLButtonElement>, keyof AnchorProps>)}
         type="button"
         aria-disabled={disabled}
       >
         {children}
-      </button>
+      </BareButton>
     );
   }
+
   return (
-    <a {...rest} href={href}>
+    <a {...rest} href={href} rel={rel}>
       {children}
     </a>
   );
@@ -84,14 +106,10 @@ export type AnchorProps = {
   variant?: 'standard' | 'inline' | 'interface';
 } & HandlerProps<typeof anchorProps>;
 
-export const AnchorBase = styled.a<AnchorProps>`
-  background: none;
-  box-shadow: none;
-  border: none;
-  padding: 0;
+export const AnchorBase = styled('a', {
+  shouldForwardProp,
+})<AnchorProps>`
   display: inline-block;
-  font-size: inherit;
-
   ${anchorProps}
   ${({ theme, mode = 'light', variant }) => {
     const { base, hover, focus } = modes[mode];
