@@ -33,7 +33,7 @@ have a particular set of gaps at small viewports and bigger ones on large viewpo
   >
     {(args) => (
       <LayoutGrid {...args}>
-        <Column size={12}>
+        <Column>
           <ExampleBox>12</ExampleBox>
         </Column>
         <Column size={6}>
@@ -128,7 +128,7 @@ Both these properties can take a [responsive size](?path=/docs/foundations-layou
   <Story name="Grid Gaps" args={{ rowGap: 'sm', columnGap: 'sm' }}>
     {(args) => (
       <LayoutGrid {...args}>
-        <Column size={12}>
+        <Column>
           <ExampleBox>12</ExampleBox>
         </Column>
         <Column size={6}>

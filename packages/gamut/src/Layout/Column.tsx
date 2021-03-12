@@ -82,4 +82,5 @@ export const Column = styled('div', createStyledConfig(columnProps.propNames))(
   `,
   columnProps
 );
-Column.defaultProps = { display: 'grid' };
+
+Column.defaultProps = { display: 'grid', size: 12 };
