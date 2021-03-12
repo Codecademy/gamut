@@ -87,10 +87,7 @@ const ButtonReset = styled.button`
 `;
 
 const AnchorElement = forwardRef<LinkElements, ForwardedProps>(
-  (
-    { href, disabled, children, as, rel = 'noopener noreferrer', ...rest },
-    ref
-  ) => {
+  ({ href, disabled, children, as, ...rest }, ref) => {
     if (!href || href.length === 0) {
       return (
         <ButtonReset
@@ -105,12 +102,7 @@ const AnchorElement = forwardRef<LinkElements, ForwardedProps>(
     }
 
     return (
-      <a
-        {...rest}
-        href={href}
-        rel={rel}
-        ref={ref as MutableRefObject<HTMLAnchorElement>}
-      >
+      <a {...rest} href={href} ref={ref as MutableRefObject<HTMLAnchorElement>}>
         {children}
       </a>
     );
