@@ -35,6 +35,8 @@ export type ModalProps = {
    * Whether to hide the default close button and pass your own through children
    */
   hideDefaultCloseButton?: boolean;
+
+  ariaLabel?: string;
 };
 
 export const Modal: React.FC<ModalProps> = ({
@@ -44,6 +46,7 @@ export const Modal: React.FC<ModalProps> = ({
   overlayProps,
   isOpen,
   hideDefaultCloseButton,
+  ariaLabel,
 }) => {
   return (
     <Overlay
@@ -57,6 +60,7 @@ export const Modal: React.FC<ModalProps> = ({
         className={cx(styles.modalBody, className)}
         aria-hidden="false"
         aria-modal="true"
+        aria-label={ariaLabel}
         role="dialog"
       >
         {!hideDefaultCloseButton && (
