@@ -84,7 +84,7 @@ export type AnchorProps = {
   variant?: 'standard' | 'inline' | 'interface';
 } & HandlerProps<typeof anchorProps>;
 
-const Link = styled.a<AnchorProps>`
+export const AnchorBase = styled.a<AnchorProps>`
   background: none;
   box-shadow: none;
   border: none;
@@ -140,7 +140,7 @@ const Link = styled.a<AnchorProps>`
   }}
 `;
 
-export const Anchor = Link.withComponent(AnchorElement);
+export const Anchor = AnchorBase.withComponent(AnchorElement);
 
 Anchor.defaultProps = {
   variant: 'inline',
