@@ -8,7 +8,7 @@ import {
 import { compose, HandlerProps } from '@codecademy/gamut-system';
 import { css, Theme } from '@emotion/react';
 import styled from '@emotion/styled';
-import React, { HTMLProps } from 'react';
+import React, { forwardRef, HTMLProps, MutableRefObject } from 'react';
 
 const createModeVariants = ({
   text,
@@ -69,9 +69,11 @@ const BareButton = styled.button`
   font-size: inherit;
 `;
 
-const AnchorElement: React.FC<
-  Omit<HTMLProps<HTMLAnchorElement>, keyof AnchorProps> & AnchorProps
-> = (props) => {
+type ForwardAbleProps = Omit<HTMLProps<HTMLAnchorElement>, keyof AnchorProps> &
+  AnchorProps;
+type Elements = HTMLAnchorElement | HTMLButtonElement;
+
+const AnchorElement = forwardRef<Elements, ForwardAbleProps>((props, ref) => {
   const {
     href,
     disabled,
@@ -84,6 +86,7 @@ const AnchorElement: React.FC<
     return (
       <BareButton
         {...(rest as Omit<HTMLProps<HTMLButtonElement>, keyof AnchorProps>)}
+        ref={ref as MutableRefObject<HTMLButtonElement>}
         type="button"
         aria-disabled={disabled}
       >
@@ -93,11 +96,16 @@ const AnchorElement: React.FC<
   }
 
   return (
-    <a {...rest} href={href} rel={rel}>
+    <a
+      {...rest}
+      href={href}
+      rel={rel}
+      ref={ref as MutableRefObject<HTMLAnchorElement>}
+    >
       {children}
     </a>
   );
-};
+});
 
 export type AnchorProps = {
   href?: string;
@@ -110,6 +118,9 @@ export const AnchorBase = styled('a', {
   shouldForwardProp,
 })<AnchorProps>`
   display: inline-block;
+  white-space: nowrap;
+  min-width: 0;
+
   ${anchorProps}
   ${({ theme, mode = 'light', variant }) => {
     const { base, hover, focus } = modes[mode];

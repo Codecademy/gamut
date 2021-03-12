@@ -3,10 +3,6 @@ import styled from '@emotion/styled';
 import React from 'react';
 
 import {
-  focusStyles,
-  hoverStyles,
-} from '../../AppHeader/AppHeaderElements/SharedStyles';
-import {
   AppHeaderClickHandler,
   AppHeaderLinkItem,
 } from '../../AppHeader/AppHeaderElements/types';
@@ -23,21 +19,11 @@ const SeparatorOuter = styled(Box)<AppHeaderLinkButtonProps>`
   border-top: ${({ theme, topSeparator }) =>
     topSeparator ? `1px solid ${theme.colors['gray-400']}` : ''};
   margin-top: ${({ topSeparator }) => (topSeparator ? '0.5rem' : '')};
-`;
 
-const SeparatorInner = styled(Box)<AppHeaderLinkButtonProps>`
-  margin-top: ${({ topSeparator }) => (topSeparator ? '0.5rem' : '')};
-`;
-
-const AppHeaderLinkButtonOuter = styled(Anchor)`
-  padding: 1rem 0;
-  color: ${({ theme }) => theme.colors.navy};
-  ${hoverStyles}
-  ${focusStyles}
-`;
-
-const AppHeaderLinkButtonInner = styled(Box)`
-  white-space: nowrap;
+  ${Anchor} {
+    display: flex;
+    width: 100%;
+  }
 `;
 
 export const AppHeaderLinkMobile: React.FC<AppHeaderLinkMobileProps> = ({
@@ -49,31 +35,24 @@ export const AppHeaderLinkMobile: React.FC<AppHeaderLinkMobileProps> = ({
 
   return (
     <SeparatorOuter topSeparator={topSeparator}>
-      <SeparatorInner topSeparator={topSeparator}>
-        <AppHeaderLinkButtonOuter
-          data-intellimize={item.dataIntellimizeId}
-          data-testid={item.dataTestId}
-          href={item.href}
-          onClick={(event) => action(event, item)}
-          target={item.newTab ? 'blank' : ''}
-          variant="interface"
-        >
-          <AppHeaderLinkButtonInner
-            lineHeight="base"
-            minWidth="0"
-            paddingY={16}
-            textAlign="left"
-            display="flex"
-          >
-            {Icon && (
-              <Box display="flex" alignContent="center" marginRight={16}>
-                <Icon size={24} aria-hidden />
-              </Box>
-            )}
-            {item.text}
-          </AppHeaderLinkButtonInner>
-        </AppHeaderLinkButtonOuter>
-      </SeparatorInner>
+      <Anchor
+        data-intellimize={item.dataIntellimizeId}
+        data-testid={item.dataTestId}
+        href={item.href}
+        onClick={(event) => action(event, item)}
+        target={item.newTab ? 'blank' : ''}
+        variant="interface"
+        paddingY={(16 + (topSeparator ? 8 : 0)) as 24 | 16}
+        lineHeight="base"
+        textAlign="left"
+      >
+        {Icon && (
+          <Box display="flex" alignContent="center" marginRight={16}>
+            <Icon size={24} aria-hidden />
+          </Box>
+        )}
+        {item.text}
+      </Anchor>
     </SeparatorOuter>
   );
 };

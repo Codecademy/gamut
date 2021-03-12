@@ -1,41 +1,30 @@
-import { Box } from '@codecademy/gamut';
+import { Anchor, Box, FlexBox } from '@codecademy/gamut';
 import { ArrowChevronDownFilledIcon } from '@codecademy/gamut-icons';
 import styled from '@emotion/styled';
-import cx from 'classnames';
 import React, { useRef, useState } from 'react';
 
 import { Popover } from '../../../Popover';
 import { AppHeaderAvatar } from '../AppHeaderAvatar';
 import { AppHeaderLinkSections } from '../AppHeaderLinkSections';
-import { focusStyles, hoverStyles, textButtonStyles } from '../SharedStyles';
 import { AppHeaderClickHandler, AppHeaderDropdownItem } from '../types';
-import styles from './styles.module.scss';
-
-const AppHeaderTextTargetButton = styled.button`
-  ${textButtonStyles}
-  ${hoverStyles}
-  ${focusStyles}
-`;
-
-const AppHeaderAvatarTargetButton = styled.button`
-  background-color: transparent;
-  border: transparent;
-  font-weight: normal;
-  padding: 2px 0;
-  ${hoverStyles}
-  ${focusStyles}
-`;
 
 export type AppHeaderDropdownProps = {
   action: AppHeaderClickHandler;
   item: AppHeaderDropdownItem;
 };
 
+const Caret = styled(ArrowChevronDownFilledIcon)<{ isOpen?: boolean }>`
+  margin-left: ${({ theme }) => theme.spacing[8]};
+  color: currentColor;
+  transition: transform 0.35s ease-out;
+  transform: ${({ isOpen }) => (isOpen ? 'rotate(-180deg)' : 'none')};
+`;
+
 export const AppHeaderDropdown: React.FC<AppHeaderDropdownProps> = ({
   action,
   item,
 }) => {
-  const headerDropdownRef = useRef<HTMLDivElement>(null);
+  const headerDropdownRef = useRef<HTMLAnchorElement>(null);
   const [isOpen, setIsOpen] = useState(false);
   const toggleIsOpen = (event: React.MouseEvent) => {
     setIsOpen(!isOpen);
@@ -46,28 +35,34 @@ export const AppHeaderDropdown: React.FC<AppHeaderDropdownProps> = ({
   };
   const clickTarget =
     item.type === 'profile-dropdown' ? (
-      <AppHeaderAvatarTargetButton onClick={(event) => toggleIsOpen(event)}>
-        <AppHeaderAvatar imageUrl={item.avatar} />
-      </AppHeaderAvatarTargetButton>
-    ) : (
-      <AppHeaderTextTargetButton
-        className={cx(styles.target, isOpen && styles.open)}
+      <Anchor
+        ref={headerDropdownRef}
+        variant="interface"
+        paddingY={4}
         onClick={(event) => toggleIsOpen(event)}
       >
-        <span title={item.text} className={styles.copy}>
+        <FlexBox display="inline-flex" alignItems="center">
+          <AppHeaderAvatar imageUrl={item.avatar} />
+        </FlexBox>
+      </Anchor>
+    ) : (
+      <Anchor
+        ref={headerDropdownRef}
+        variant="interface"
+        paddingY={8}
+        fontWeight={isOpen ? 'title' : 'base'}
+        onClick={(event) => toggleIsOpen(event)}
+      >
+        <FlexBox display="inline-flex" alignItems="center">
           {item.text}
-        </span>
-        <ArrowChevronDownFilledIcon
-          size={12}
-          className={styles.icon}
-          aria-label="dropdown"
-        />
-      </AppHeaderTextTargetButton>
+          <Caret size={12} aria-label="dropdown" isOpen={isOpen} />
+        </FlexBox>
+      </Anchor>
     );
 
   return (
     <>
-      <div ref={headerDropdownRef}>{clickTarget}</div>
+      {clickTarget}
       <Popover
         align={item.type === 'profile-dropdown' ? 'right' : 'left'}
         verticalOffset={item.type === 'profile-dropdown' ? 0 : -2}

@@ -1,19 +1,7 @@
-import { Anchor, Box } from '@codecademy/gamut';
-import styled from '@emotion/styled';
+import { Anchor } from '@codecademy/gamut';
 import React from 'react';
 
-import { focusStyles, hoverStyles } from '../SharedStyles';
 import { AppHeaderClickHandler, AppHeaderLinkItem } from '../types';
-
-const AppHeaderLinkButtonOuter = styled(Anchor)`
-  color: ${({ theme }) => theme.colors.navy};
-  ${hoverStyles}
-  ${focusStyles}
-`;
-
-const AppHeaderLinkButtonInner = styled(Box)`
-  white-space: nowrap;
-`;
 
 export type AppHeaderLinkProps = {
   action: AppHeaderClickHandler;
@@ -25,22 +13,18 @@ export const AppHeaderLink: React.FC<AppHeaderLinkProps> = ({
   item,
 }) => {
   return (
-    <AppHeaderLinkButtonOuter
+    <Anchor
       data-testid={item.dataTestId}
       data-intellimize={item.dataIntellimizeId}
       href={item.href}
       onClick={(event) => action(event, item)}
       target={item.newTab ? 'blank' : ''}
       variant="interface"
+      lineHeight="base"
+      paddingY={8}
+      textAlign="left"
     >
-      <AppHeaderLinkButtonInner
-        lineHeight="base"
-        minWidth="0"
-        paddingY={8}
-        textAlign="left"
-      >
-        {item.text}
-      </AppHeaderLinkButtonInner>
-    </AppHeaderLinkButtonOuter>
+      {item.text}
+    </Anchor>
   );
 };
