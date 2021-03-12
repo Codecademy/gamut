@@ -2,6 +2,7 @@ import { Box } from '@codecademy/gamut';
 import { ArrowChevronDownFilledIcon } from '@codecademy/gamut-icons';
 import styled from '@emotion/styled';
 import cx from 'classnames';
+import { AnimatePresence, motion } from 'framer-motion';
 import React, { useRef, useState } from 'react';
 
 import { Popover } from '../../../Popover';
@@ -68,18 +69,30 @@ export const AppHeaderDropdown: React.FC<AppHeaderDropdownProps> = ({
   return (
     <>
       <div ref={headerDropdownRef}>{clickTarget}</div>
-      <Popover
-        align={item.type === 'profile-dropdown' ? 'right' : 'left'}
-        verticalOffset={item.type === 'profile-dropdown' ? 0 : -2}
-        outline
-        isOpen={isOpen}
-        onRequestClose={handleClose}
-        targetRef={headerDropdownRef}
-      >
-        <Box paddingX={24} paddingY={12}>
-          <AppHeaderLinkSections action={action} item={item} />
-        </Box>
-      </Popover>
+      <AnimatePresence>
+        {isOpen && (
+          <Popover
+            align={item.type === 'profile-dropdown' ? 'right' : 'left'}
+            verticalOffset={item.type === 'profile-dropdown' ? 0 : -2}
+            outline
+            isOpen={isOpen}
+            onRequestClose={handleClose}
+            targetRef={headerDropdownRef}
+          >
+            <motion.div
+              style={{ overflow: 'hidden' }}
+              initial={{ height: 0 }}
+              animate={{ height: 'auto' }}
+              exit={{ height: 0 }}
+              transition={{ duration: 0.2, ease: 'easeInOut' }}
+            >
+              <Box paddingX={24} paddingY={12}>
+                <AppHeaderLinkSections action={action} item={item} />
+              </Box>
+            </motion.div>
+          </Popover>
+        )}
+      </AnimatePresence>
     </>
   );
 };
