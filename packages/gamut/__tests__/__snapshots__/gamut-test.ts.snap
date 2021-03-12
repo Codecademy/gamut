@@ -51,6 +51,7 @@ Array [
   "Markdown",
   "MenuItem",
   "Modal",
+  "ModalDeprecated",
   "NotificationIcon",
   "NotificationItem",
   "NotificationItemNew",
