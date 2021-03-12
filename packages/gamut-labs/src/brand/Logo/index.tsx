@@ -1,10 +1,6 @@
 import React, { SVGProps } from 'react';
 
 import { CodecademyLogo } from './CodecademyLogo';
-import { CodecademyPremiumLogo } from './CodecademyPremiumLogo';
-import { CodecademyProAltLogo } from './CodecademyProAltLogo';
-import { CodecademyProgramLogo } from './CodecademyProgramLogo';
-import { CodecademyProLockupLogo } from './CodecademyProLockupLogo';
 import { CodecademyProLogo } from './CodecademyProLogo';
 import { CodecademyProMonoLogo } from './CodecademyProMonoLogo';
 
@@ -15,22 +11,11 @@ const defaultProps: LogoProps = {
 
 const logos = {
   pro: CodecademyProLogo,
-  proAlt: CodecademyProAltLogo,
-  proLockup: CodecademyProLockupLogo,
   proMono: CodecademyProMonoLogo,
-  program: CodecademyProgramLogo,
-  premium: CodecademyPremiumLogo,
   default: CodecademyLogo,
 };
 
-export type LogoType =
-  | 'default'
-  | 'pro'
-  | 'proAlt'
-  | 'proLockup'
-  | 'program'
-  | 'proMono'
-  | 'premium';
+export type LogoType = keyof typeof logos;
 
 export type LogoProps = SVGProps<SVGSVGElement> & {
   height?: number;
