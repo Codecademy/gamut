@@ -37,6 +37,10 @@ export const conditionalStyles = ({
       color: ${colorStates.error.color};
       border-color: ${colorStates.error.borderColor};
 
+      &:hover {
+        border-color: ${colorStates.error.borderColor};
+      }
+
       &:focus {
         border-color: ${colorStates.error.borderColor};
         box-shadow: inset 0 0 0 1px ${colorStates.error.borderColor};
@@ -70,9 +74,9 @@ export const iconBaseStyles = css`
 
 export const iconStyles = css`
   ${iconBaseStyles}
-  right: 16px;
-  height: 16px;
-  width: 16px;
+  right: 1rem;
+  height: 1rem;
+  width: 1rem;
   top: calc(50% - ${pxRem(8)});
 `;
 
@@ -106,7 +110,8 @@ export const formBaseFieldStyles = css`
     font-style: italic;
   }
 
-  &:disabled {
+  &:disabled,
+  [disabled] {
     opacity: 1;
     background-color: ${colorStates.disabled.backgroundColor};
     border-color: ${colorStates.disabled.borderColor};
