@@ -1,5 +1,6 @@
 import { pxRem, theme } from '@codecademy/gamut-styles';
 import { css } from '@emotion/react';
+import { StandardPropertiesHyphen } from 'csstype';
 
 export const colorStates = {
   base: {
@@ -24,7 +25,7 @@ export type conditionalStyleProps = {
 };
 
 export type transitionConcatenatorProps = {
-  arrayOfProperties: Array<string>;
+  arrayOfProperties: Array<keyof StandardPropertiesHyphen>;
   transition: string;
 };
 

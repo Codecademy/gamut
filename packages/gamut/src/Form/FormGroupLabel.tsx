@@ -48,13 +48,14 @@ const formLabelStyles = ({ size, disabled }: FormGroupLabelProps) => css`
   display: block;
 `;
 
-const StyledLabel = styled.label<FormGroupLabelProps>`
-  ${formLabelStyles}
-`;
-
-const StyledDiv = styled.div<FormGroupLabelProps>`
-  ${formLabelStyles}
-`;
+const Label = styled
+  .label(formLabelStyles)
+  .withComponent((props: FormGroupLabelProps) => {
+    if (props.htmlFor) {
+      return <label {...props} />;
+    }
+    return <div {...props} />;
+  });
 
 export const FormGroupLabel: React.FC<FormGroupLabelProps> = ({
   children,
@@ -65,25 +66,16 @@ export const FormGroupLabel: React.FC<FormGroupLabelProps> = ({
   size,
   ...rest
 }) => {
-  if (htmlFor) {
-    return (
-      <StyledLabel
-        {...rest}
-        htmlFor={htmlFor}
-        disabled={disabled}
-        className={className}
-        size={size}
-      >
-        {children}
-        {showRequired ? ' *' : ''}
-      </StyledLabel>
-    );
-  }
-
   return (
-    <StyledDiv {...rest} disabled={disabled} className={className} size={size}>
+    <Label
+      {...rest}
+      htmlFor={htmlFor}
+      disabled={disabled}
+      className={className}
+      size={size}
+    >
       {children}
       {showRequired ? ' *' : ''}
-    </StyledDiv>
+    </Label>
   );
 };
