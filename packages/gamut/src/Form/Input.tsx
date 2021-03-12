@@ -30,7 +30,7 @@ export type StyledInputProps = InputProps & {
 };
 
 export type InputWrapperProps = InputProps & {
-  component?: StyledComponent<
+  as?: StyledComponent<
     StyledInputProps,
     React.DetailedHTMLProps<
       InputHTMLAttributes<HTMLInputElement>,
@@ -66,30 +66,20 @@ const StyledAlertIcon = styled(AlertIcon)(inputIconStyles);
 const StyledCheckCircledIcon = styled(CheckCircledIcon)(inputIconStyles);
 
 export const Input = forwardRef<HTMLInputElement, InputWrapperProps>(
-  ({ error, className, id, valid, component: Component, ...rest }, ref) => {
+  ({ error, className, id, valid, as: As, ...rest }, ref) => {
     const [activated, setActivated] = useState(false);
+    const AsComponent = As || InputElement;
 
     return (
       <Box position="relative" onChange={() => setActivated(true)}>
-        {Component ? (
-          <Component
-            {...rest}
-            id={id || rest.htmlFor}
-            ref={ref}
-            error={error}
-            activated={activated}
-            className={className}
-          />
-        ) : (
-          <InputElement
-            {...rest}
-            id={id || rest.htmlFor}
-            ref={ref}
-            error={error}
-            className={className}
-            activated={activated}
-          />
-        )}
+        <AsComponent
+          {...rest}
+          id={id || rest.htmlFor}
+          ref={ref}
+          error={error}
+          activated={activated}
+          className={className}
+        />
         {error && <StyledAlertIcon color="red" />}
         {valid && <StyledCheckCircledIcon color="green" />}
       </Box>

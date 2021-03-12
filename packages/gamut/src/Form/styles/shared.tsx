@@ -6,7 +6,7 @@ export const colorStates = {
     color: theme.colors.navy,
     placeholder: theme.colors[`gray-700`],
     backgroundColor: theme.colors.white,
-    borderColor: theme.colors['gray-300'],
+    borderColor: theme.colors['gray-400'],
   },
   hover: { borderColor: theme.colors.hyper },
   disabled: {
