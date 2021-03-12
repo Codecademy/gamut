@@ -1,18 +1,36 @@
+import { MiniInfoOutlineIcon } from '@codecademy/gamut-icons';
+import styled from '@emotion/styled';
 import cx from 'classnames';
-import React, { HTMLAttributes } from 'react';
+import React, { HTMLAttributes, ReactNode } from 'react';
 
+import { ToolTip, ToolTipProps } from '../ToolTip';
 import styles from './styles/FormGroupLabel.module.scss';
+
+const StyledLabel = styled.label`
+  position: relative;
+  width: 100%;
+`;
+
+const StyledToolTip = styled.span`
+  position: absolute;
+  left: calc(100% - 1.1rem);
+  z-index: 1;
+`;
 
 export type FormGroupLabelProps = HTMLAttributes<HTMLDivElement> &
   HTMLAttributes<HTMLLabelElement> & {
     disabled?: boolean;
     htmlFor?: string;
+    tooltip?: ToolTipProps;
+    text: ReactNode;
   };
 
 export const FormGroupLabel: React.FC<FormGroupLabelProps> = ({
   className,
   disabled,
   htmlFor,
+  tooltip,
+  text,
   ...rest
 }) => {
   const classNames = cx(
@@ -22,7 +40,20 @@ export const FormGroupLabel: React.FC<FormGroupLabelProps> = ({
   );
 
   if (htmlFor) {
-    return <label {...rest} htmlFor={htmlFor} className={classNames} />;
+    return (
+      <StyledLabel {...rest} htmlFor={htmlFor} className={classNames}>
+        {text}
+        {tooltip && (
+          <StyledToolTip>
+            <ToolTip
+              {...tooltip}
+              id={`${htmlFor}-tooltip`}
+              target={<MiniInfoOutlineIcon height="0.8rem" width="0.8rem" />}
+            />
+          </StyledToolTip>
+        )}
+      </StyledLabel>
+    );
   }
 
   return <div {...rest} className={classNames} />;
