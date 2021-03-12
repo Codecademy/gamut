@@ -50,7 +50,7 @@ const SelectWrapper = styled(Box)`
   position: relative;
   width: 100%;
   font-weight: normal;
-  min-width: 110px;
+  min-width: 7rem;
 `;
 
 const StyledDownIcon = styled(ArrowChevronDownIcon)`
@@ -59,9 +59,9 @@ const StyledDownIcon = styled(ArrowChevronDownIcon)`
 
 const StyledMiniDownIcon = styled(MiniChevronDownIcon)`
   ${iconStyles}
-  right: 12px;
-  height: 12px;
-  width: 12px;
+  right: .75rem;
+  height: 0.75rem;
+  width: 0.75rem;
   top: calc(50% - ${pxRem(6)});
 `;
 
