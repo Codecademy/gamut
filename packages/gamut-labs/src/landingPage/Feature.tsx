@@ -1,9 +1,8 @@
-import { Box, Markdown } from '@codecademy/gamut';
+import { Box, Markdown, Text } from '@codecademy/gamut';
 import { mediaQueries } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React from 'react';
 
-import { Text } from '../experimental/Text';
 import { BaseProps } from './types';
 
 const Img = styled.img`
@@ -27,7 +26,8 @@ export const FeaturedIcon: React.FC<FeaturedIconProps> = ({ src, alt }) => (
 
 export const FeaturedStat: React.FC = ({ children }) => (
   <Text
-    as="div"
+    as="p"
+    margin={0}
     fontSize={{ base: 44, lg: 64 }}
     fontWeight="title"
     data-testid="feature-stat"
