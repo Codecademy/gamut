@@ -54,11 +54,13 @@ export const conditionalStyles = ({
   }
 };
 
-export const transitionConcatenator = (
+const transitionConcatenator = (
   arrayOfProperties: Array<string>,
   transition: string
 ) => {
-  let cssString = `${arrayOfProperties.join(` ${transition},`)} ${transition}`;
+  const cssString = `${arrayOfProperties.join(
+    ` ${transition},`
+  )} ${transition}`;
 
   return css`
     transition: ${cssString};
