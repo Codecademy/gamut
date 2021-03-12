@@ -58,8 +58,7 @@ export const transitionConcatenator = (
   arrayOfProperties: Array<string>,
   transition: string
 ) => {
-  let cssString = `${arrayOfProperties.join(` ${transition},`)}`;
-  cssString += ` ${transition}`;
+  let cssString = `${arrayOfProperties.join(` ${transition},`)} ${transition}`;
 
   return css`
     transition: ${cssString};
