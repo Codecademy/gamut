@@ -16,13 +16,17 @@ const StyledToolTip = styled.span`
   left: calc(100% - 1.1rem);
   z-index: 1;
 `;
+const StyledFormGroupLabelText = styled.span`
+  display: inline-block;
+  margin-right: 0.5rem;
+`;
 
 export type FormGroupLabelProps = HTMLAttributes<HTMLDivElement> &
   HTMLAttributes<HTMLLabelElement> & {
     disabled?: boolean;
     htmlFor?: string;
     tooltip?: ToolTipProps;
-    text: ReactNode;
+    children: ReactNode;
   };
 
 export const FormGroupLabel: React.FC<FormGroupLabelProps> = ({
@@ -30,7 +34,7 @@ export const FormGroupLabel: React.FC<FormGroupLabelProps> = ({
   disabled,
   htmlFor,
   tooltip,
-  text,
+  children,
   ...rest
 }) => {
   const classNames = cx(
@@ -42,7 +46,7 @@ export const FormGroupLabel: React.FC<FormGroupLabelProps> = ({
   if (htmlFor) {
     return (
       <StyledLabel {...rest} htmlFor={htmlFor} className={classNames}>
-        {text}
+        <StyledFormGroupLabelText>{children}</StyledFormGroupLabelText>
         {tooltip && (
           <StyledToolTip>
             <ToolTip

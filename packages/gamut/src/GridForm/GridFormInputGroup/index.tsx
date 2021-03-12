@@ -31,11 +31,6 @@ const StyledFormGroup = styled(FormGroup)`
   }
 `;
 
-const StyledFormGroupLabel = styled(FormGroupLabel)`
-  display: inline-block;
-  margin-right: 0.5rem;
-`;
-
 export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
   field,
   isFirstError,
@@ -102,12 +97,13 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
   };
 
   const label = (
-    <StyledFormGroupLabel
+    <FormGroupLabel
       disabled={field.disabled}
       htmlFor={field.id || field.name}
-      text={field.label}
       tooltip={field.toolTip}
-    />
+    >
+      {field.label}
+    </FormGroupLabel>
   );
 
   return (
