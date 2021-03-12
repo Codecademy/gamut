@@ -47,7 +47,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
   setValue,
   showRequired,
 }) => {
-  const errorMessage = error || field.error;
+  const errorMessage = error || field.customError;
 
   const getInput = () => {
     switch (field.type) {
