@@ -191,7 +191,7 @@ import { PropsTable } from '~styleguide/blocks';
 
 ### iFrame Inputs
 
-In order to style the iframe, we leverage the (withComponent)[https://styled-components.com/docs/api] API from styled-components and our iFrameWrapper.
+In order to style the iframe, we leverage the [withComponent](https://styled-components.com/docs/api) API from styled-components and our iFrameWrapper.
 
 ```tsx
 import { Input, iFrameWrapper, FormGroup } from '@codecademy/gamut';
@@ -203,7 +203,7 @@ export const CustomFormGroup: React.FC = ({ errorMessaged, disabled }) => {
   return (
     <FormGroup error={errorMessage} disabled={disabled}>
       <Input
-        component={StylediFrame}
+        as={StylediFrame}
         onChange={() => {}}
         onBlur={() => {}}
         placeholder="Placeholder"
