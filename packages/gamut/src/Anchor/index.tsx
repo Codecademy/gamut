@@ -2,7 +2,6 @@ import {
   color,
   shouldForwardProp,
   space,
-  theme,
   typography,
   variant,
 } from '@codecademy/gamut-styles';
@@ -25,8 +24,7 @@ interface ForwardedProps
 const createModeVariants = ({
   text,
   primary,
-  dull,
-}: Record<'text' | 'primary' | 'dull', keyof Theme['colors']>) => {
+}: Record<'text' | 'primary', keyof Theme['colors']>) => {
   const base = variant({
     standard: {
       textColor: primary,
@@ -64,22 +62,17 @@ const createModeVariants = ({
     interface: {},
   });
 
-  const disabled = ({ theme }: { theme?: Theme }) => ({
-    color: theme?.colors?.[dull],
-  });
-  return { base, hover, focus, disabled };
+  return { base, hover, focus };
 };
 
 const modes = {
   dark: createModeVariants({
     text: 'white',
     primary: 'yellow',
-    dull: 'gray-200',
   }),
   light: createModeVariants({
     text: 'navy',
     primary: 'hyper',
-    dull: 'gray-700',
   }),
 } as const;
 
@@ -136,7 +129,7 @@ export const AnchorBase = styled('a', {
 
   ${anchorProps}
   ${({ theme, mode = 'light', variant }) => {
-    const { base, hover, disabled, focus } = modes[mode];
+    const { base, hover, focus } = modes[mode];
 
     return css`
       ${base({ theme, variant })};
@@ -165,7 +158,7 @@ export const AnchorBase = styled('a', {
       &[disabled] {
         cursor: not-allowed;
         text-decoration: none;
-        ${disabled({ theme })}
+        color: ${theme.colors['gray-700']};
       }
       &:focus,
       &:focus-visible {
