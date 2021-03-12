@@ -109,36 +109,34 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
   );
 
   return (
-    <Box height={theme.elements.headerHeight}>
-      <>
-        <Box
-          display={{ base: 'none', md: 'block' }}
-          height={theme.elements.headerHeight}
-          className={headerClasses}
-        >
-          <AppHeader
-            action={props.action}
-            items={getAppHeaderItems(props)}
-            redirectParam={
-              props.type === 'anon' ? props.redirectParam : undefined
-            }
-          />
-        </Box>
-        <Box
-          display={{ base: 'block', md: 'none' }}
-          height={theme.elements.headerHeight}
-          className={headerClasses}
-        >
-          <AppHeaderMobile
-            action={props.action}
-            items={getMobileAppHeaderItems(props)}
-            renderSearch={props.renderSearch?.mobile}
-            redirectParam={
-              props.type === 'anon' ? props.redirectParam : undefined
-            }
-          />
-        </Box>
-      </>
-    </Box>
+    <>
+      <Box
+        display={{ base: 'none', md: 'block' }}
+        height={theme.elements.headerHeight}
+        className={headerClasses}
+      >
+        <AppHeader
+          action={props.action}
+          items={getAppHeaderItems(props)}
+          redirectParam={
+            props.type === 'anon' ? props.redirectParam : undefined
+          }
+        />
+      </Box>
+      <Box
+        display={{ base: 'block', md: 'none' }}
+        height={theme.elements.headerHeight}
+        className={headerClasses}
+      >
+        <AppHeaderMobile
+          action={props.action}
+          items={getMobileAppHeaderItems(props)}
+          renderSearch={props.renderSearch?.mobile}
+          redirectParam={
+            props.type === 'anon' ? props.redirectParam : undefined
+          }
+        />
+      </Box>
+    </>
   );
 };
