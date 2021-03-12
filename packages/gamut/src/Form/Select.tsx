@@ -69,6 +69,7 @@ const SelectBase = styled.select<SelectProps>`
   ${formFieldStyles}
   ${conditionalStyles}
   ${selectSizeVariants}
+  cursor: pointer;
   display: block;
   -moz-appearance: none;
   -webkit-appearance: none;
