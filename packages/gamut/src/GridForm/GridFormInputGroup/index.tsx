@@ -102,16 +102,12 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
   };
 
   const label = (
-    // <GridFormToolTipWrapper field={field}>
     <StyledFormGroupLabel
       disabled={field.disabled}
       htmlFor={field.id || field.name}
       text={field.label}
       tooltip={field.toolTip}
-    >
-      {field.label}
-    </StyledFormGroupLabel>
-    // </GridFormToolTipWrapper>
+    />
   );
 
   return (
