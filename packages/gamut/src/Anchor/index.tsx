@@ -17,7 +17,7 @@ export interface AnchorProps extends HandlerProps<typeof anchorProps> {
   mode?: 'light' | 'dark';
   variant?: 'standard' | 'inline' | 'interface';
 }
-interface ForwardedProps
+export interface ForwardedProps
   extends Omit<HTMLProps<LinkElements>, keyof AnchorProps>,
     AnchorProps {}
 
