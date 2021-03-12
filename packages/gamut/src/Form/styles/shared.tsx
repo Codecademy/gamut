@@ -4,15 +4,15 @@ import { css } from '@emotion/react';
 export const colorStates = {
   base: {
     color: theme.colors.navy,
-    placeholder: theme.colors[`gray-700`],
+    placeholder: theme.colors[`gray-800`],
     backgroundColor: theme.colors.white,
-    borderColor: theme.colors['gray-700'],
+    borderColor: theme.colors['gray-300'],
   },
   hover: { borderColor: theme.colors.hyper },
   disabled: {
-    color: theme.colors[`gray-700`],
+    color: theme.colors[`gray-800`],
     backgroundColor: theme.colors[`gray-100`],
-    borderColor: theme.colors[`gray-700`],
+    borderColor: theme.colors[`gray-800`],
   },
   error: { color: theme.colors.red, borderColor: theme.colors.red },
   activated: { borderColor: theme.colors.navy },
@@ -21,6 +21,11 @@ export const colorStates = {
 export type conditionalStyleProps = {
   error?: boolean;
   activated?: boolean;
+};
+
+export type transitionConcatenatorProps = {
+  arrayOfProperties: Array<string>;
+  transition: string;
 };
 
 export const conditionalStyles = ({
@@ -45,6 +50,18 @@ export const conditionalStyles = ({
   }
 };
 
+export const transitionConcatenator = (
+  arrayOfProperties: Array<string>,
+  transition: string
+) => {
+  let cssString = `${arrayOfProperties.join(` ${transition},`)}`;
+  cssString += ` ${transition}`;
+
+  return css`
+    transition: ${cssString};
+  `;
+};
+
 export const iconBaseStyles = css`
   position: absolute;
   pointer-events: none;
@@ -67,12 +84,12 @@ export const formBaseStyles = css`
 
 export const formBaseFieldStyles = css`
   ${formBaseStyles}
+  ${transitionConcatenator(['border-color', 'box-shadow'], '0.8s ease-in-out')}
   width: 100%;
   outline: none;
   background-color: ${colorStates.base.backgroundColor};
   border: 1px solid ${colorStates.base.borderColor};
   border-radius: 2px;
-  transition: all 0.2s ease-in-out;
   padding-right: 2.5rem;
   min-width: auto;
 
