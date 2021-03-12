@@ -47,6 +47,8 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
   setValue,
   showRequired,
 }) => {
+  const errorMessage = error || field.error;
+
   const getInput = () => {
     switch (field.type) {
       case 'checkbox':
@@ -58,7 +60,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
             field={field}
             register={register}
             setValue={setValue}
-            error={error}
+            error={errorMessage}
           />
         );
 
@@ -74,7 +76,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
       case 'select':
         return (
           <GridFormSelectInput
-            error={!!error}
+            error={!!errorMessage}
             field={field}
             register={register}
           />
@@ -83,7 +85,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
       case 'file':
         return (
           <GridFormFileInput
-            error={!!error}
+            error={!!errorMessage}
             field={field}
             register={register}
           />
@@ -91,13 +93,17 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
 
       case 'textarea':
         return (
-          <GridFormTextArea error={!!error} field={field} register={register} />
+          <GridFormTextArea
+            error={!!errorMessage}
+            field={field}
+            register={register}
+          />
         );
 
       default:
         return (
           <GridFormTextInput
-            error={!!error}
+            error={!!errorMessage}
             field={field}
             register={register}
           />
@@ -123,9 +129,9 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
         <StyledFormGroup>
           {field.hideLabel ? <HiddenText>{label}</HiddenText> : label}
           {getInput()}
-          {error && (
+          {errorMessage && (
             <FormError aria-live={isFirstError ? 'assertive' : 'off'}>
-              {error}
+              {errorMessage}
             </FormError>
           )}
         </StyledFormGroup>
