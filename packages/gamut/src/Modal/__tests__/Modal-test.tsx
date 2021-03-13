@@ -1,17 +1,17 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import React from 'react';
 
-import { ModalDeprecated, ModalDeprecatedProps } from '..';
+import { Modal, ModalProps } from '..';
 
-const renderModal = (props?: Partial<ModalDeprecatedProps>) => {
+const renderModal = (props?: Partial<ModalProps>) => {
   return render(
-    <ModalDeprecated isOpen onRequestClose={() => {}} {...props}>
+    <Modal isOpen onRequestClose={() => {}} {...props}>
       <div data-testid="modal-content">{props?.children}</div>
-    </ModalDeprecated>
+    </Modal>
   );
 };
 
-describe('ModalDeprecated>', () => {
+describe('Modal>', () => {
   it('renders children when isOpen is true', () => {
     const children = 'Hey';
     const { baseElement } = renderModal({ children });

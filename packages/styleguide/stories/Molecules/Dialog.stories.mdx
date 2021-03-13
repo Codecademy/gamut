@@ -1,12 +1,12 @@
-import { Modal } from '@codecademy/gamut/src';
+import { Dialog } from '@codecademy/gamut/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
 
 <Meta
   title={title}
-  component={Modal}
+  component={Dialog}
   parameters={{
-    subtitle: `Constrained Modal Dialogue`,
+    subtitle: `Constrained Modal Dialog`,
     status: 'stable',
     source: 'gamut',
     figmaId: 'lIQbbBHl6v80CevfWogVhr',
@@ -34,9 +34,9 @@ import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
 - Use the modal component sparingly. This is the most dispruptive tool in our arsenal. We should only have a small handful of these in our system at any given time.
 
 <Canvas>
-  <Story name="Modal" height="600px">
+  <Story name="Dialog" height="600px">
     {(args) => {
-      return <Modal {...args} />;
+      return <Dialog {...args} />;
     }}
   </Story>
 </Canvas>
@@ -63,7 +63,7 @@ import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
 <Canvas>
   <Story name="Light" height="600px">
     {(args) => {
-      return <Modal {...args} />;
+      return <Dialog {...args} />;
     }}
   </Story>
 </Canvas>
@@ -73,7 +73,7 @@ import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
 <Canvas>
   <Story name="Dark" height="600px" args={{ mode: 'dark' }}>
     {(args) => {
-      return <Modal {...args} />;
+      return <Dialog {...args} />;
     }}
   </Story>
 </Canvas>
