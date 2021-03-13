@@ -136,7 +136,12 @@ export const Dialog: React.FC<DialogProps> = ({
 
   return (
     <ShroudedOverlay mode={mode} onRequestClose={handleClose} {...rest}>
-      <ModalWrapper mode={mode}>
+      <ModalWrapper
+        mode={mode}
+        aria-hidden="false"
+        aria-modal="true"
+        role="dialog"
+      >
         <ModalShadow name="dotsDense" />
         <ModalForeground />
         <ModalBody>
