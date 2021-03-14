@@ -2,7 +2,7 @@ import { colors, swatches, variant } from '@codecademy/gamut-styles';
 import type { HTMLProps } from 'react';
 
 export type ButtonProps = Omit<
-  HTMLProps<HTMLLinkElement> & HTMLProps<HTMLButtonElement>,
+  HTMLProps<HTMLAnchorElement> & HTMLProps<HTMLButtonElement>,
   'size'
 > & {
   mode?: 'dark' | 'light';

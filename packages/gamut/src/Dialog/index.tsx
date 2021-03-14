@@ -2,7 +2,7 @@ import { MiniDeleteIcon } from '@codecademy/gamut-icons';
 import { variant } from '@codecademy/gamut-styles';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import React, { useCallback } from 'react';
+import React, { HTMLProps, KeyboardEvent, useCallback } from 'react';
 
 import { Box, FlexBox } from '../Box';
 import { FillButton, IconButton, TextButton } from '../Button';
@@ -114,10 +114,14 @@ export interface DialogProps
   extends Pick<OverlayProps, 'clickOutsideCloses' | 'escapeCloses'> {
   mode?: VisualTheme;
   isOpen: boolean;
-  title: string;
+  title: string | React.ReactNode;
   children: React.ReactNode;
-  confirmCta: React.ComponentProps<typeof FillButton>;
-  cancelCta?: React.ComponentProps<typeof TextButton>;
+  confirmCta: React.ComponentProps<typeof FillButton> & {
+    onClick?: () => void;
+  };
+  cancelCta?: React.ComponentProps<typeof TextButton> & {
+    onClick?: () => void;
+  };
   onRequestClose: () => void;
 }
 
@@ -130,12 +134,18 @@ export const Dialog: React.FC<DialogProps> = ({
   onRequestClose,
   ...rest
 }) => {
-  const handleClose = useCallback(() => {
+  const onConfirm = () => {
+    confirmCta.onClick?.();
     onRequestClose?.();
-  }, [onRequestClose]);
+  };
+
+  const onCancel = () => {
+    cancelCta?.onClick?.();
+    onRequestClose?.();
+  };
 
   return (
-    <ShroudedOverlay mode={mode} onRequestClose={handleClose} {...rest}>
+    <ShroudedOverlay mode={mode} onRequestClose={onCancel} {...rest}>
       <ModalWrapper
         mode={mode}
         aria-hidden="false"
@@ -158,15 +168,15 @@ export const Dialog: React.FC<DialogProps> = ({
             mode={mode}
             size="small"
             icon={MiniDeleteIcon}
-            onClick={handleClose}
+            onClick={onCancel}
           />
           <Content fontSize={16} lineHeight="base">
             {children}
           </Content>
           {cancelCta && (
-            <CancelButton mode={mode} onClick={handleClose} {...cancelCta} />
+            <CancelButton mode={mode} onClick={onCancel} {...cancelCta} />
           )}
-          <ConfirmButton mode={mode} onClick={handleClose} {...confirmCta} />
+          <ConfirmButton mode={mode} onClick={onConfirm} {...confirmCta} />
         </ModalBody>
       </ModalWrapper>
     </ShroudedOverlay>
