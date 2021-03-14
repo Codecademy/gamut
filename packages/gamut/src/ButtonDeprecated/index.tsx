@@ -15,6 +15,7 @@ export const buttonPresetThemes = {
   secondary: 'mint',
   platform: 'greyblue',
   lantern: 'darkmint',
+  royalblue: 'brand-purple',
 } as const;
 
 export const themes = [
@@ -31,8 +32,9 @@ export const themes = [
   'darkmint',
   'grey',
   'greyblue',
-  'royalblue',
 ] as const;
+
+type ValidThemes = keyof typeof buttonPresetThemes | typeof themes[number];
 
 const propKeys = [
   'theme',
@@ -110,7 +112,7 @@ export type ButtonDeprecatedProps = ButtonDeprecatedBaseProps & {
   /**
    * Variant that controls the background and text color of the button
    * */
-  theme?: typeof themes[number];
+  theme?: ValidThemes;
   type?: string;
   /**
    * Variant that underlines the text of the button.
