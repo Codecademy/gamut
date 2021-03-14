@@ -34,7 +34,7 @@ const themes = [
   'greyblue',
 ] as const;
 
-export type ValidThemes =
+export type ButtonDeprecatedThemes =
   | keyof typeof buttonPresetThemes
   | typeof themes[number];
 
@@ -114,7 +114,7 @@ export type ButtonDeprecatedProps = ButtonDeprecatedBaseProps & {
   /**
    * Variant that controls the background and text color of the button
    * */
-  theme?: ValidThemes;
+  theme?: ButtonDeprecatedThemes;
   type?: string;
   /**
    * Variant that underlines the text of the button.
