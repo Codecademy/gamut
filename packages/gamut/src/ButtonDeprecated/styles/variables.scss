@@ -39,26 +39,16 @@ $btn-swatches: (
   "red": $color-red,
   "navy": $color-navy,
   "white": $color-white,
-  // Gamut Classic
   "grey": $color-gray-300,
+  // Gamut Classic
   "brand-blue": $color-blue-500,
   "brand-red": $brand-red,
-  "brand-orange": $brand-orange,
   "brand-yellow": $brand-yellow,
   "brand-purple": $brand-purple,
-  "brand-pink": $brand-pink,
-  "brand-mint": $brand-mint,
-  "brand-beige": $brand-beige,
   "brand-dark-blue": $brand-dark-blue,
+  // Editor
   "mint": $deprecated-swatches-mint-700,
   "darkmint": $deprecated-swatches-mint-800,
   "greyblue": $deprecated-swatches-grey-blue-600,
-  "royalblue": $deprecated-gamut-royal-blue,
-  "purple": $deprecated-gamut-purple,
-  // Alerts
-  "notice": $color-yellow-300,
-  "error": $color-red-300,
-  "announcement": $color-purple-300,
-  "success": $color-green-200,
-  "info": $color-gray-100
+  "royalblue": $deprecated-gamut-royal-blue
 );
