@@ -2,7 +2,7 @@ import { MiniDeleteIcon } from '@codecademy/gamut-icons';
 import { variant } from '@codecademy/gamut-styles';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import React, { HTMLProps, KeyboardEvent, useCallback } from 'react';
+import React from 'react';
 
 import { Box, FlexBox } from '../Box';
 import { FillButton, IconButton, TextButton } from '../Button';
