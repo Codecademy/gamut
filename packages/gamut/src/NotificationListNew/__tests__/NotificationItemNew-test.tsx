@@ -89,6 +89,21 @@ describe('NotificationItemNew', () => {
     view.getByTitle('Bell Icon');
   });
 
+  it('renders the chatbox icon for forum comment notifications', () => {
+    const { view } = renderView(getPropsByType());
+    view.getByTitle('ChatBox Icon');
+  });
+
+  it('renders the envelope icon for forum message notifications', () => {
+    const { view } = renderView(getPropsByType());
+    view.getByTitle('Envelope Icon');
+  });
+
+  it('renders the heart icon for forum like notifications', () => {
+    const { view } = renderView(getPropsByType());
+    view.getByTitle('Heart Icon');
+  });
+
   it('renders an image if image is provided', () => {
     const { view } = renderView();
     expect(view.getByRole('img')).toHaveAttribute('src', imageUrl);
