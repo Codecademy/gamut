@@ -81,11 +81,14 @@ export const AppHeaderDropdown: React.FC<AppHeaderDropdownProps> = ({
           >
             <motion.div
               style={{ overflow: 'hidden' }}
-              animate={{ maxHeight: '32rem' }}
-              transition={{ duration: 0.5 }}
-              exit={{ maxHeight: '0rem' }}
+              initial={{ height: 0 }}
+              // animate={{ maxHeight: '32rem' }}
+              animate={{ height: 'auto' }}
+              transition={{ duration: 0.25 }}
+              // exit={{ maxHeight: '0rem' }}
+              exit={{ height: 0 }}
             >
-              <Box paddingX={24} paddingY={12}>
+              <Box paddingX={24} paddingY={12} backgroundColor="green">
                 <AppHeaderLinkSections action={action} item={item} />
               </Box>
             </motion.div>
