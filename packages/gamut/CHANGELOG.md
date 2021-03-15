@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [26.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@26.3.0...@codecademy/gamut@26.4.0) (2021-03-15)
+
+
+### Features
+
+* **GlobalHeader:** header animation on scroll ([#1430](https://github.com/Codecademy/client-modules/issues/1430)) ([3c46b5a](https://github.com/Codecademy/client-modules/commit/3c46b5ada775471e021de2ead4e2b03b9d4fe126))
+
+
+
 ## [26.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@26.2.3...@codecademy/gamut@26.3.0) (2021-03-12)
 
 
