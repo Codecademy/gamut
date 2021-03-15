@@ -143,8 +143,11 @@ const ToolTipBody = styled.div<{ variant: VisualTheme }>`
   padding: 0.6rem 0.75rem;
 
   ${variant({
-    dark: { backgroundColor: 'black', textColor: 'white' },
-    light: { backgroundColor: 'white', textColor: 'black' },
+    prop: 'mode',
+    variants: {
+      dark: { backgroundColor: 'black', textColor: 'white' },
+      light: { backgroundColor: 'white', textColor: 'black' },
+    },
   })}
 `;
 

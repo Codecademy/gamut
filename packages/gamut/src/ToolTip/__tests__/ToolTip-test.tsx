@@ -1,33 +1,24 @@
-import { theme } from '@codecademy/gamut-styles';
-import { ThemeProvider } from '@emotion/react';
-import { render } from '@testing-library/react';
-import React from 'react';
+import { setupRtl } from '@codecademy/gamut-tests';
 
-import { ToolTip, ToolTipProps } from '..';
+import { ToolTip } from '..';
 
-const renderToolTip = (props: ToolTipProps) => {
-  return render(
-    <ThemeProvider theme={theme}>
-      <ToolTip {...props} />
-    </ThemeProvider>
-  );
-};
+const renderView = setupRtl(ToolTip, {
+  children: 'Hello',
+});
 
 describe('ToolTip', () => {
   it('does not give its container a tabIndex when it is not focusable', () => {
-    const children = 'Hello';
-    const view = renderToolTip({ children, id: 'test-id' });
+    const { props, view } = renderView({ id: 'test-id' });
 
-    const container = view.getByLabelText(children);
+    const container = view.getByLabelText(props.children);
 
     expect(container).not.toHaveAttribute('tabIndex');
   });
 
   it('gives the container a tabIndex when it is focusable', () => {
-    const children = 'Hello';
-    const view = renderToolTip({ children, focusable: true, id: 'test-id' });
+    const { props, view } = renderView({ focusable: true, id: 'test-id' });
 
-    const container = view.getByLabelText(children);
+    const container = view.getByLabelText(props.children);
 
     expect(container).toHaveAttribute('tabIndex', '0');
   });
