@@ -51,6 +51,7 @@ $slight-shadow: rgba(0, 0, 0, 0.15);
     position: absolute;
     transform: rotate(45deg);
     width: $arrow-height;
+    z-index: 1;
   }
 
   &::after {
@@ -131,7 +132,7 @@ $slight-shadow: rgba(0, 0, 0, 0.15);
   font-size: px-rem(14px);
   line-height: px-rem(18px);
   padding: 0.6rem 0.75rem;
-  z-index: 2;
+  z-index: 1;
 
   .toolTipContainerLight & {
     background: $color-white;
