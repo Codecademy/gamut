@@ -1,7 +1,6 @@
 import {
   color,
   layout,
-  properties,
   shouldForwardProp,
   space,
   typography,
