@@ -3,7 +3,7 @@ import React from 'react';
 
 const FONT_ASSET_PATH = `https://static-assets.codecademy.com/gamut`;
 
-const FONTS = [
+export const FONTS = [
   {
     filePath: '/apercu-regular-pro',
     extensions: ['woff', 'woff2'],
@@ -67,15 +67,17 @@ const createLinkProps = (url: string) => ({
   type: `font/${url.split('.')[1]}`,
 });
 
-export const FontLinks = () => (
-  <>
-    {FONTS.map(({ filePath, extensions }) =>
-      extensions.map((ext) => (
+export const createFontLinks = () => {
+  const links: React.ReactNode[] = [];
+  FONTS.forEach(({ filePath, extensions }) =>
+    extensions.forEach((ext) =>
+      links.push(
         <link
           key={`${filePath}-${ext}`}
           {...createLinkProps(`${FONT_ASSET_PATH}/${filePath}.${ext}`)}
         />
-      ))
-    )}
-  </>
-);
+      )
+    )
+  );
+  return links;
+};
