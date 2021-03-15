@@ -1,7 +1,3 @@
-# TODO: set up automerging in GHA
-# Automerge Settings:
-#   1. in-range updates
-#   2. All development updates
 version: 2
 updates:
 - package-ecosystem: npm
