@@ -20,6 +20,7 @@ export type AppHeaderMobileProps = {
   action: AppHeaderClickHandler;
   items: FormattedMobileAppHeaderItems;
   renderSearch?: () => ReactNode;
+  redirectParam?: string;
 };
 
 const IconButton = styled.button`
@@ -51,6 +52,7 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
   action,
   items,
   renderSearch,
+  redirectParam,
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
 
@@ -65,7 +67,7 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
         marginLeft={index === 0 ? 0 : 4}
         marginRight={index === items.length - 1 ? 0 : 4}
       >
-        {mapItemToElement(action, item)}
+        {mapItemToElement(action, item, redirectParam)}
       </Box>
     ));
   };

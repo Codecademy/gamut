@@ -3,6 +3,91 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [30.6.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@30.5.2...@codecademy/styleguide@30.6.0) (2021-03-12)
+
+
+### Features
+
+* **GridForm:** Add tooltip to gridform fields ([e4245d5](https://github.com/Codecademy/client-modules/commit/e4245d517b4612e4da0bf215bb98c10d261ae091))
+
+
+
+### [30.5.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@30.5.1...@codecademy/styleguide@30.5.2) (2021-03-11)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [30.5.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@30.5.0...@codecademy/styleguide@30.5.1) (2021-03-10)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [30.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@30.4.3...@codecademy/styleguide@30.5.0) (2021-03-10)
+
+
+### Features
+
+* **GlobalHeader:** Add pro paused and trial completed header types ([3cf3323](https://github.com/Codecademy/client-modules/commit/3cf33236f7f06457095cd1096949d21622734185))
+
+
+
+### [30.4.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@30.4.2...@codecademy/styleguide@30.4.3) (2021-03-10)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [30.4.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@30.4.1...@codecademy/styleguide@30.4.2) (2021-03-09)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [30.4.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@30.4.0...@codecademy/styleguide@30.4.1) (2021-03-09)
+
+
+### Bug Fixes
+
+* Replace focus-trap with focus-lock-on ([d65e3de](https://github.com/Codecademy/client-modules/commit/d65e3de3149a16603039218c81204a914da6c7cd))
+
+
+
+## [30.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@30.3.0...@codecademy/styleguide@30.4.0) (2021-03-09)
+
+
+### Features
+
+* **Icons:** Adds new icons for Form updates ([5a21007](https://github.com/Codecademy/client-modules/commit/5a21007c5dc0a89a824ad6e561195af78e94513b))
+
+
+
+## [30.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@30.2.1...@codecademy/styleguide@30.3.0) (2021-03-09)
+
+
+### Features
+
+* **SkipToContent:** SkipToContent + SkipToContent target visual identity + emotion [GM-158] [EGG-701]  ([6e35189](https://github.com/Codecademy/client-modules/commit/6e351891cf499968d2ebd846c36cb299788b0ab5))
+
+
+
+### [30.2.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@30.2.0...@codecademy/styleguide@30.2.1) (2021-03-09)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
 ## [30.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@30.1.3...@codecademy/styleguide@30.2.0) (2021-03-08)
 
 
