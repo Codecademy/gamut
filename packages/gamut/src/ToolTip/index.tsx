@@ -136,10 +136,10 @@ const ToolTipContainer = styled.div<ToolTipContainerProps>`
     `}
 `;
 
-const ToolTipBody = styled.div<{ variant: VisualTheme }>`
+const ToolTipBody = styled.div<{ mode: VisualTheme }>`
   display: inline-block;
   font-size: ${pxRem(14)};
-  line-height: ${pxRem(18)};
+  line-height: ${({ theme }) => theme.lineHeight.base};
   padding: 0.6rem 0.75rem;
 
   ${variant({
@@ -195,7 +195,7 @@ export const ToolTip: React.FC<ToolTipProps> = ({
         role="tooltip"
         variant={variant}
       >
-        <ToolTipBody variant={variant}>{children}</ToolTipBody>
+        <ToolTipBody mode={variant}>{children}</ToolTipBody>
       </ToolTipContainer>
     </TooltipWrapper>
   );
