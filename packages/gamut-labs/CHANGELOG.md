@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [11.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@11.2.3...@codecademy/gamut-labs@11.3.0) (2021-03-15)
+
+
+### Features
+
+* **GlobalHeader:** header animation on scroll ([#1430](https://github.com/Codecademy/client-modules/issues/1430)) ([3c46b5a](https://github.com/Codecademy/client-modules/commit/3c46b5ada775471e021de2ead4e2b03b9d4fe126))
+
+
+
 ### [11.2.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@11.2.2...@codecademy/gamut-labs@11.2.3) (2021-03-12)
 
 **Note:** Version bump only for package @codecademy/gamut-labs
