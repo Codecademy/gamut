@@ -13,7 +13,7 @@ import {
   iconStyles,
 } from './styles/shared';
 
-type InputBaseProps = {
+export type InputProps = InputHTMLAttributes<HTMLInputElement> & {
   id?: string;
   className?: string;
   error?: boolean;
@@ -26,16 +26,19 @@ type InputBaseProps = {
   valid?: boolean;
 };
 
-type StyledInputProps = { activated?: boolean; icon?: boolean };
-
-export type InputProps = InputHTMLAttributes<HTMLInputElement> & InputBaseProps;
-
-export type StyledInputElementProps = InputProps & StyledInputProps;
-
-export type StyledAsInputProps = InputBaseProps & StyledInputProps;
+export type StyledInputProps = InputProps & {
+  activated?: boolean;
+  icon?: boolean;
+};
 
 export type InputWrapperProps = InputProps & {
-  as?: StyledComponent<StyledAsInputProps>;
+  as?: StyledComponent<
+    StyledInputProps,
+    React.DetailedHTMLProps<
+      InputHTMLAttributes<HTMLInputElement>,
+      HTMLInputElement
+    >
+  >;
 };
 
 const inputIconStyles = css`
