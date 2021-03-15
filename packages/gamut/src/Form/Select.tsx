@@ -2,10 +2,11 @@ import {
   ArrowChevronDownIcon,
   MiniChevronDownIcon,
 } from '@codecademy/gamut-icons';
-import { pxRem, variant } from '@codecademy/gamut-styles';
+import { properties, pxRem, variant } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import { each, isArray, isObject } from 'lodash';
 import React, {
+  ChangeEvent,
   forwardRef,
   ReactNode,
   SelectHTMLAttributes,
@@ -53,9 +54,10 @@ const SelectWrapper = styled(Box)`
   min-width: 7rem;
 `;
 
-const StyledDownIcon = styled(ArrowChevronDownIcon)`
-  ${iconStyles}
-`;
+const StyledDownIcon = styled(ArrowChevronDownIcon)(
+  properties.textColor,
+  iconStyles
+);
 
 const StyledMiniDownIcon = styled(MiniChevronDownIcon)`
   ${iconStyles}
@@ -82,6 +84,12 @@ export const Select = forwardRef<HTMLSelectElement, SelectWrapperProps>(
     ref
   ) => {
     const [activated, setActivated] = useState(false);
+
+    const changeHandler = (event: ChangeEvent<HTMLSelectElement>) => {
+      rest?.onChange?.(event);
+      setActivated(true);
+    };
+
     let selectOptions: ReactNode[] = [];
 
     if (isArray(options)) {
@@ -105,12 +113,8 @@ export const Select = forwardRef<HTMLSelectElement, SelectWrapperProps>(
     }
 
     return (
-      <SelectWrapper className={className} onChange={() => setActivated(true)}>
-        {sizeVariant === 'small' ? (
-          <StyledMiniDownIcon color={error ? 'red' : 'navy'} />
-        ) : (
-          <StyledDownIcon color={error ? 'red' : 'navy'} />
-        )}
+      <SelectWrapper className={className} textColor={error ? 'red' : 'navy'}>
+        {sizeVariant === 'small' ? <StyledMiniDownIcon /> : <StyledDownIcon />}
         <SelectBase
           {...rest}
           defaultValue={defaultValue || ''}
@@ -119,6 +123,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectWrapperProps>(
           error={error}
           sizeVariant={sizeVariant}
           activated={activated}
+          onChange={(event) => changeHandler(event)}
         >
           {selectOptions}
         </SelectBase>

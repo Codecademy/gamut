@@ -32,7 +32,7 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextWrapperProps>(
     const [activated, setActivated] = useState(false);
 
     const changeHandler = (event: ChangeEvent<HTMLTextAreaElement>) => {
-      rest.onChange ? rest.onChange(event) : null;
+      rest?.onChange?.(event);
       setActivated(true);
     };
 

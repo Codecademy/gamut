@@ -1,7 +1,11 @@
 import { AlertIcon, CheckCircledIcon } from '@codecademy/gamut-icons';
-import { css } from '@emotion/react';
 import styled, { StyledComponent } from '@emotion/styled';
-import React, { forwardRef, InputHTMLAttributes, useState } from 'react';
+import React, {
+  ChangeEvent,
+  forwardRef,
+  InputHTMLAttributes,
+  useState,
+} from 'react';
 
 import { Box } from '../Box';
 import {
@@ -26,12 +30,11 @@ export type InputProps = InputHTMLAttributes<HTMLInputElement> & {
   valid?: boolean;
 };
 
-export type StyledInputProps = InputProps & {
+export interface StyledInputProps extends InputProps {
   activated?: boolean;
   icon?: boolean;
-};
-
-export type InputWrapperProps = InputProps & {
+}
+export interface InputWrapperProps extends InputProps {
   as?: StyledComponent<
     StyledInputProps,
     React.DetailedHTMLProps<
@@ -39,41 +42,39 @@ export type InputWrapperProps = InputProps & {
       HTMLInputElement
     >
   >;
-};
+}
 
-const inputIconStyles = css`
-  ${iconStyles}
+export const iFrameWrapper = styled.div<conditionalInputStyleProps>`
+  ${formBaseFieldStyles}
+  ${conditionalStyles}
+    ${iconPadding}
+  text-indent: 0;
 `;
-
-export const iFrameWrapper = styled.div<conditionalInputStyleProps>(
-  ({ error, activated, icon }) => css`
-    ${formBaseFieldStyles}
-    ${conditionalStyles({ error, activated })}
-    ${iconPadding({ icon })}
-  box-sizing: border-box;
-    text-indent: 0;
-  `
-);
 
 const InputElement = styled.input<StyledInputProps>`
   ${formFieldStyles}
   ${conditionalStyles}
   ${iconPadding}
-  box-sizing: border-box;
   text-indent: 0;
 `;
 
-const StyledAlertIcon = styled(AlertIcon)(inputIconStyles);
+const StyledAlertIcon = styled(AlertIcon)(iconStyles);
 
-const StyledCheckCircledIcon = styled(CheckCircledIcon)(inputIconStyles);
+const StyledCheckCircledIcon = styled(CheckCircledIcon)(iconStyles);
 
 export const Input = forwardRef<HTMLInputElement, InputWrapperProps>(
   ({ error, className, id, valid, as: As, ...rest }, ref) => {
     const [activated, setActivated] = useState(false);
+
+    const changeHandler = (event: ChangeEvent<HTMLTextAreaElement>) => {
+      rest?.onChange?.(event);
+      setActivated(true);
+    };
+
     const AsComponent = As || InputElement;
 
     return (
-      <Box position="relative" onChange={() => setActivated(true)}>
+      <Box position="relative">
         <AsComponent
           {...rest}
           id={id || rest.htmlFor}
@@ -82,6 +83,7 @@ export const Input = forwardRef<HTMLInputElement, InputWrapperProps>(
           activated={activated}
           icon={error || valid}
           className={className}
+          onChange={(event) => changeHandler(event)}
         />
         {error && <StyledAlertIcon color="red" />}
         {valid && <StyledCheckCircledIcon color="green" />}
