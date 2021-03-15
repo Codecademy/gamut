@@ -90,17 +90,17 @@ describe('NotificationItemNew', () => {
   });
 
   it('renders the chatbox icon for forum comment notifications', () => {
-    const { view } = renderView(getPropsByType());
+    const { view } = renderView(getPropsByType('forum_comment'));
     view.getByTitle('ChatBox Icon');
   });
 
   it('renders the envelope icon for forum message notifications', () => {
-    const { view } = renderView(getPropsByType());
+    const { view } = renderView(getPropsByType('forum_message'));
     view.getByTitle('Envelope Icon');
   });
 
   it('renders the heart icon for forum like notifications', () => {
-    const { view } = renderView(getPropsByType());
+    const { view } = renderView(getPropsByType('forum_like'));
     view.getByTitle('Heart Icon');
   });
 
