@@ -1,38 +1,12 @@
-import { mount } from 'enzyme';
+import { render } from '@testing-library/react';
 import React from 'react';
 
 import { Quote } from '..';
-import styles from '../styles.module.scss';
 
 describe('Quote', () => {
-  it('adds the light class to the container as a default', () => {
-    const wrapper = mount(<Quote text="Timshel!" />);
+  it('should render text when it is provided', () => {
+    const wrapper = render(<Quote text="Timshel!" />);
 
-    const containerClassName = wrapper.find(`div`).prop('className');
-
-    expect(containerClassName).toContain(styles.lightContainer);
-  });
-
-  it('adds the light class to the container when its theme is light', () => {
-    const wrapper = mount(
-      <Quote
-        text="The reason I will not exhibit this picture is that I am afraid that I have shown in it the secret of my own soul."
-        theme="light"
-      />
-    );
-
-    const containerClassName = wrapper.find(`div`).prop('className');
-
-    expect(containerClassName).toContain(styles.lightContainer);
-  });
-
-  it('adds the dark class to the container when its theme is dark', () => {
-    const wrapper = mount(
-      <Quote text="One fish, two fish, red fish, blue fish" theme="dark" />
-    );
-
-    const containerClassName = wrapper.find(`div`).prop('className');
-
-    expect(containerClassName).toContain(styles.darkContainer);
+    wrapper.getByText('Timshel!');
   });
 });

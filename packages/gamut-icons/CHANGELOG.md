@@ -3,6 +3,33 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@4.2.0...@codecademy/gamut-icons@4.3.0) (2021-03-09)
+
+
+### Features
+
+* **Icons:** Adds new icons for Form updates ([5a21007](https://github.com/Codecademy/client-modules/commit/5a21007c5dc0a89a824ad6e561195af78e94513b))
+
+
+
+## [4.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@4.1.0...@codecademy/gamut-icons@4.2.0) (2021-03-09)
+
+
+### Features
+
+* **SkipToContent:** SkipToContent + SkipToContent target visual identity + emotion [GM-158] [EGG-701]  ([6e35189](https://github.com/Codecademy/client-modules/commit/6e351891cf499968d2ebd846c36cb299788b0ab5))
+
+
+
+## [4.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@4.0.0...@codecademy/gamut-icons@4.1.0) (2021-03-04)
+
+
+### Features
+
+* LocationPinIcon ([d327380](https://github.com/Codecademy/client-modules/commit/d32738000630d9437a97d570f807626b4f5ec937))
+
+
+
 ## [4.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@3.15.0...@codecademy/gamut-icons@4.0.0) (2021-02-18)
 
 

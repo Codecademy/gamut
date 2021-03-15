@@ -15,6 +15,8 @@ import {
   pricingDropdown,
   resourcesDropdown,
   signUp,
+  tryProForFree,
+  unpausePro,
   upgradeToPro,
 } from '../GlobalHeaderItems';
 import { User } from '../types';
@@ -63,10 +65,37 @@ const freeHeaderProps: GlobalHeaderProps = {
   user,
 };
 
+const freeCustomCheckoutUrlHeaderProps: GlobalHeaderProps = {
+  action,
+  type: 'free',
+  user: {
+    proTrialCheckoutUrl: 'test-url',
+    ...user,
+  },
+};
+
+const freeCompletedTrialHeaderProps: GlobalHeaderProps = {
+  action,
+  type: 'free',
+  user: {
+    showProUpgrade: true,
+    ...user,
+  },
+};
+
 const proHeaderProps: GlobalHeaderProps = {
   action,
   type: 'pro',
   user,
+};
+
+const proPausedHeaderProps: GlobalHeaderProps = {
+  action,
+  type: 'pro',
+  user: {
+    isPaused: true,
+    ...user,
+  },
 };
 
 const loadingHeaderProps: GlobalHeaderProps = {
@@ -196,74 +225,99 @@ describe('GlobalHeader', () => {
   });
 
   describe('free users', () => {
-    beforeEach(() => {
-      renderGlobalHeader(freeHeaderProps);
+    describe('default', () => {
+      beforeEach(() => {
+        renderGlobalHeader(freeHeaderProps);
+      });
+
+      test('logo', () => {
+        screen.getAllByTestId('header-logo');
+      });
+
+      test('myHome', () => {
+        screen.getByText(myHome.text);
+      });
+
+      test('courseCatalog', () => {
+        screen.getByText(courseCatalog.text);
+      });
+
+      test('resourcesDropdown', () => {
+        screen.getByText(resourcesDropdown.text);
+      });
+
+      test('communityDropdown', () => {
+        screen.getByText(communityDropdown.text);
+      });
+
+      test('plansPricingDropdown', () => {
+        screen.getByText(pricingDropdown.text);
+      });
+
+      test('forEnterprise', () => {
+        screen.getByText(forBusiness.text);
+      });
+
+      test('profileDropdown', () => {
+        screen.getByTestId('avatar');
+      });
+
+      test('tryProForFree', () => {
+        screen.getByText(tryProForFree().text);
+      });
     });
 
-    test('logo', () => {
-      screen.getAllByTestId('header-logo');
+    describe('custom checkout url', () => {
+      test('tryProForFree', () => {
+        renderGlobalHeader(freeCustomCheckoutUrlHeaderProps);
+        screen.getByText(tryProForFree().text);
+      });
     });
 
-    test('myHome', () => {
-      screen.getByText(myHome.text);
-    });
-
-    test('courseCatalog', () => {
-      screen.getByText(courseCatalog.text);
-    });
-
-    test('resourcesDropdown', () => {
-      screen.getByText(resourcesDropdown.text);
-    });
-
-    test('communityDropdown', () => {
-      screen.getByText(communityDropdown.text);
-    });
-
-    test('plansPricingDropdown', () => {
-      screen.getByText(pricingDropdown.text);
-    });
-
-    test('forEnterprise', () => {
-      screen.getByText(forBusiness.text);
-    });
-
-    test('profileDropdown', () => {
-      screen.getByTestId('avatar');
-    });
-
-    test('upgradeToPro', () => {
-      screen.getByText(upgradeToPro.text);
+    describe('has completed trial', () => {
+      test('upgradeToPro', () => {
+        renderGlobalHeader(freeCompletedTrialHeaderProps);
+        screen.getByText(upgradeToPro.text);
+      });
     });
   });
 
   describe('pro users', () => {
-    beforeEach(() => {
-      renderGlobalHeader(proHeaderProps);
+    describe('default', () => {
+      beforeEach(() => {
+        renderGlobalHeader(proHeaderProps);
+      });
+
+      test('proLogo', () => {
+        screen.getAllByTestId('header-pro-logo');
+      });
+
+      test('myHome', () => {
+        screen.getByText(myHome.text);
+      });
+
+      test('courseCatalog', () => {
+        screen.getByText(courseCatalog.text);
+      });
+
+      test('resourcesDropdown', () => {
+        screen.getByText(resourcesDropdown.text);
+      });
+
+      test('communityDropdown', () => {
+        screen.getByText(communityDropdown.text);
+      });
+
+      test('profileDropdown', () => {
+        screen.getByTestId('avatar');
+      });
     });
 
-    test('proLogo', () => {
-      screen.getAllByTestId('header-pro-logo');
-    });
-
-    test('myHome', () => {
-      screen.getByText(myHome.text);
-    });
-
-    test('courseCatalog', () => {
-      screen.getByText(courseCatalog.text);
-    });
-
-    test('resourcesDropdown', () => {
-      screen.getByText(resourcesDropdown.text);
-    });
-
-    test('communityDropdown', () => {
-      screen.getByText(communityDropdown.text);
-    });
-
-    test('profileDropdown', () => {
-      screen.getByTestId('avatar');
+    describe('is paused', () => {
+      test('unpause', () => {
+        renderGlobalHeader(proPausedHeaderProps);
+        screen.getByText(unpausePro.text);
+      });
     });
   });
 

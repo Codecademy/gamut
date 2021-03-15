@@ -3,6 +3,129 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [26.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@26.2.3...@codecademy/gamut@26.3.0) (2021-03-12)
+
+
+### Features
+
+* **GridForm:** Add tooltip to gridform fields ([e4245d5](https://github.com/Codecademy/client-modules/commit/e4245d517b4612e4da0bf215bb98c10d261ae091))
+
+
+
+### [26.2.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@26.2.2...@codecademy/gamut@26.2.3) (2021-03-11)
+
+
+### Bug Fixes
+
+* **Modal:** add aria-label prop ([403f4d4](https://github.com/Codecademy/client-modules/commit/403f4d46fd957f170264956dd118a5c47cc9d91f))
+
+
+
+### [26.2.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@26.2.1...@codecademy/gamut@26.2.2) (2021-03-09)
+
+
+### Bug Fixes
+
+* Replace focus-trap with focus-lock-on ([d65e3de](https://github.com/Codecademy/client-modules/commit/d65e3de3149a16603039218c81204a914da6c7cd))
+
+
+
+### [26.2.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@26.2.0...@codecademy/gamut@26.2.1) (2021-03-09)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [26.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@26.1.0...@codecademy/gamut@26.2.0) (2021-03-09)
+
+
+### Features
+
+* **SkipToContent:** SkipToContent + SkipToContent target visual identity + emotion [GM-158] [EGG-701]  ([6e35189](https://github.com/Codecademy/client-modules/commit/6e351891cf499968d2ebd846c36cb299788b0ab5))
+
+
+
+## [26.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@26.0.1...@codecademy/gamut@26.1.0) (2021-03-08)
+
+
+### Features
+
+* **NotificationItemNew:** map notif type to icon if no image url provided ([7198f23](https://github.com/Codecademy/client-modules/commit/7198f23e64b79ab7b68489c7ea1df11d7c62a704))
+
+
+
+### [26.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@26.0.0...@codecademy/gamut@26.0.1) (2021-03-04)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [26.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@25.5.1...@codecademy/gamut@26.0.0) (2021-03-04)
+
+
+### ⚠ BREAKING CHANGES
+
+* **Alert:** New Visual Identity Alert [GM-119]
+
+### Features
+
+* **Alert:** New Visual Identity Alert [GM-119] ([c170e6f](https://github.com/Codecademy/client-modules/commit/c170e6ff3e78327ccc6f4875940ea19e26dd65b9))
+
+
+
+### [25.5.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@25.5.0...@codecademy/gamut@25.5.1) (2021-03-04)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [25.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@25.4.4...@codecademy/gamut@25.5.0) (2021-03-04)
+
+
+### Features
+
+* **StackingContext:** Adds consistent reset for root nodes [WEB-1329] ([c107fec](https://github.com/Codecademy/client-modules/commit/c107fec7ab2e57e5d706d25f2ff22caaab05a297))
+
+
+
+### [25.4.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@25.4.3...@codecademy/gamut@25.4.4) (2021-03-04)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [25.4.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@25.4.2...@codecademy/gamut@25.4.3) (2021-03-04)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [25.4.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@25.4.1...@codecademy/gamut@25.4.2) (2021-03-04)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [25.4.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@25.4.0...@codecademy/gamut@25.4.1) (2021-03-02)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
 ## [25.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@25.3.6...@codecademy/gamut@25.4.0) (2021-03-02)
 
 

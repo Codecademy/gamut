@@ -4,6 +4,8 @@ export * from './Browser';
 export * from './BrowserLock';
 export * from './Confetti';
 export * from './HomeOffice';
+export * from './Megaphone';
+export * from './New';
 export * from './NumberBlocks';
 export * from './Onboarding';
 export * from './Plant';
