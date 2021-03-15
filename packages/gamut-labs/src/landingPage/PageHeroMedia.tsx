@@ -1,5 +1,5 @@
 import { Column, ColumnSizes, Video } from '@codecademy/gamut';
-import { breakpoints } from '@codecademy/gamut-styles';
+import { mediaQueries } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import { omit } from 'lodash';
 import React from 'react';
@@ -12,11 +12,12 @@ const Image = styled.img`
 
 const RightColumn = styled(Column)<{ hideOnMobile?: boolean }>`
   align-items: center;
-  margin-left: 1rem;
+  margin-left: 0;
+  ${({ hideOnMobile }) => hideOnMobile && 'display: none;'}
 
-  @media only screen and (max-width: ${breakpoints.sm}) {
-    ${({ hideOnMobile }) =>
-      hideOnMobile ? 'display: none;' : 'margin-left: 0;'}
+  ${mediaQueries.sm} {
+    margin-left: 1rem;
+    ${({ hideOnMobile }) => hideOnMobile && 'display: grid;'}
   }
 `;
 
