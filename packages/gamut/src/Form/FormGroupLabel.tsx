@@ -14,7 +14,6 @@ const StyledLabel = styled.label`
 const StyledToolTip = styled.span`
   position: absolute;
   left: calc(100% - 1.1rem);
-  z-index: 1;
 `;
 const StyledFormGroupLabelText = styled.span`
   display: inline-block;
