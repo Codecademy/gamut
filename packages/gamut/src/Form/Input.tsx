@@ -43,12 +43,14 @@ const inputIconStyles = css`
   ${iconStyles}
 `;
 
-export const iFrameWrapper = styled.div<conditionalStyleProps>( ({ error, activated }) => css`
-  ${formBaseFieldStyles}
-  ${conditionalStyles({ error, activated })}
+export const iFrameWrapper = styled.div<conditionalStyleProps>(
+  ({ error, activated }) => css`
+    ${formBaseFieldStyles}
+    ${conditionalStyles({ error, activated })}
   box-sizing: border-box;
-  text-indent: 0;
-`);
+    text-indent: 0;
+  `
+);
 
 const InputElement = styled.input<StyledInputProps>`
   ${formFieldStyles}
