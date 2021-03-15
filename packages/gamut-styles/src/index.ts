@@ -2,6 +2,7 @@ import '@emotion/react';
 
 import { theme } from './theme';
 
+export * from './fonts';
 export * from './cache';
 export * from './variables';
 export * from './utilities';
