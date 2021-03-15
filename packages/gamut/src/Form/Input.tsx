@@ -66,11 +66,10 @@ export const Input = forwardRef<HTMLInputElement, InputWrapperProps>(
   ({ error, className, id, valid, as: As, ...rest }, ref) => {
     const [activated, setActivated] = useState(false);
 
-    const changeHandler = (event: ChangeEvent<HTMLTextAreaElement>) => {
+    const changeHandler = (event: ChangeEvent<HTMLInputElement>) => {
       rest?.onChange?.(event);
       setActivated(true);
     };
-
     const AsComponent = As || InputElement;
 
     return (
