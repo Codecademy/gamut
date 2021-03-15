@@ -17,9 +17,9 @@ export type TextWrapperProps = TextareaHTMLAttributes<HTMLTextAreaElement> & {
   value?: string;
 };
 
-export type TextAreaProps = TextWrapperProps & {
+export interface TextAreaProps extends TextWrapperProps {
   activated?: boolean;
-};
+}
 
 const StyledTextArea = styled.textarea<TextAreaProps>`
   ${formFieldStyles}

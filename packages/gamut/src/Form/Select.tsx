@@ -28,9 +28,9 @@ export type SelectWrapperProps = SelectHTMLAttributes<HTMLSelectElement> & {
   sizeVariant?: 'small' | 'base';
 };
 
-export type SelectProps = SelectWrapperProps & {
+export interface SelectProps extends SelectWrapperProps {
   activated?: boolean;
-};
+}
 
 const selectSizeVariants = variant({
   default: 'base',
