@@ -5,10 +5,11 @@ import React, { forwardRef, InputHTMLAttributes, useState } from 'react';
 
 import { Box } from '../Box';
 import {
-  conditionalStyleProps,
+  conditionalInputStyleProps,
   conditionalStyles,
   formBaseFieldStyles,
   formFieldStyles,
+  iconPadding,
   iconStyles,
 } from './styles/shared';
 
@@ -27,6 +28,7 @@ export type InputProps = InputHTMLAttributes<HTMLInputElement> & {
 
 export type StyledInputProps = InputProps & {
   activated?: boolean;
+  icon?: boolean;
 };
 
 export type InputWrapperProps = InputProps & {
@@ -43,10 +45,11 @@ const inputIconStyles = css`
   ${iconStyles}
 `;
 
-export const iFrameWrapper = styled.div<conditionalStyleProps>(
-  ({ error, activated }) => css`
+export const iFrameWrapper = styled.div<conditionalInputStyleProps>(
+  ({ error, activated, icon }) => css`
     ${formBaseFieldStyles}
     ${conditionalStyles({ error, activated })}
+    ${iconPadding({ icon })}
   box-sizing: border-box;
     text-indent: 0;
   `
@@ -55,6 +58,7 @@ export const iFrameWrapper = styled.div<conditionalStyleProps>(
 const InputElement = styled.input<StyledInputProps>`
   ${formFieldStyles}
   ${conditionalStyles}
+  ${iconPadding}
   box-sizing: border-box;
   text-indent: 0;
 `;
@@ -76,6 +80,7 @@ export const Input = forwardRef<HTMLInputElement, InputWrapperProps>(
           ref={ref}
           error={error}
           activated={activated}
+          icon={error || valid}
           className={className}
         />
         {error && <StyledAlertIcon color="red" />}

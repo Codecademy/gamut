@@ -24,6 +24,12 @@ export type conditionalStyleProps = {
   activated?: boolean;
 };
 
+type iconPadding = {
+  icon?: boolean;
+};
+
+export type conditionalInputStyleProps = conditionalStyleProps & iconPadding;
+
 export type transitionConcatenatorProps = {
   arrayOfProperties: Array<keyof StandardPropertiesHyphen>;
   transition: string;
@@ -51,6 +57,14 @@ export const conditionalStyles = ({
   if (activated) {
     return css`
       border-color: ${colorStates.activated.borderColor};
+    `;
+  }
+};
+
+export const iconPadding = ({ icon }: iconPadding) => {
+  if (icon) {
+    return css`
+      padding-right: 2.3rem; ;
     `;
   }
 };
