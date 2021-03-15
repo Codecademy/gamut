@@ -1,5 +1,7 @@
 import {
   color,
+  layout,
+  properties,
   shouldForwardProp,
   space,
   typography,
@@ -76,7 +78,7 @@ const modes = {
   }),
 } as const;
 
-const anchorProps = compose(typography, color, space);
+const anchorProps = compose(layout, typography, color, space);
 
 const ButtonReset = styled.button`
   background: none;
