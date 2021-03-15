@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [30.7.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@30.6.0...@codecademy/styleguide@30.7.0) (2021-03-15)
+
+
+### Features
+
+* **GlobalHeader:** header animation on scroll ([#1430](https://github.com/Codecademy/client-modules/issues/1430)) ([3c46b5a](https://github.com/Codecademy/client-modules/commit/3c46b5ada775471e021de2ead4e2b03b9d4fe126))
+
+
+
 ## [30.6.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@30.5.2...@codecademy/styleguide@30.6.0) (2021-03-12)
 
 
