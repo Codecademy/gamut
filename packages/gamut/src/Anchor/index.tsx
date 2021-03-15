@@ -113,11 +113,6 @@ export const AnchorBase = styled('a', {
   shouldForwardProp,
 })<AnchorProps>`
   display: inline-block;
-  white-space: nowrap;
-
-  > * {
-    vertical-align: middle;
-  }
 
   ${anchorProps}
   ${({ theme, mode = 'light', variant }) => {
@@ -126,6 +121,7 @@ export const AnchorBase = styled('a', {
     return css`
       ${base({ theme, variant })};
       position: relative;
+      ${variant !== 'interface' && 'white-space: nowrap;'}
 
       &:after {
         content: '';
