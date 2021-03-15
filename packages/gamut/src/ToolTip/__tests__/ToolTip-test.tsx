@@ -2,23 +2,24 @@ import { setupRtl } from '@codecademy/gamut-tests';
 
 import { ToolTip } from '..';
 
-const renderView = setupRtl(ToolTip, {
-  children: 'Hello',
-});
+const children = 'Hello';
+
+const renderView = setupRtl(ToolTip, { children });
 
 describe('ToolTip', () => {
   it('does not give its container a tabIndex when it is not focusable', () => {
-    const { props, view } = renderView({ id: 'test-id' });
+    const { view } = renderView({ children, id: 'test-id' });
 
-    const container = view.getByLabelText(props.children);
+    const container = view.getByLabelText(children);
 
     expect(container).not.toHaveAttribute('tabIndex');
   });
 
   it('gives the container a tabIndex when it is focusable', () => {
-    const { props, view } = renderView({ focusable: true, id: 'test-id' });
+    const children = 'Hello';
+    const { view } = renderView({ children, focusable: true, id: 'test-id' });
 
-    const container = view.getByLabelText(props.children);
+    const container = view.getByLabelText(children);
 
     expect(container).toHaveAttribute('tabIndex', '0');
   });
