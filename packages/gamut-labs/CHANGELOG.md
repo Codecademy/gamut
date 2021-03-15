@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [11.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@11.3.0...@codecademy/gamut-labs@11.4.0) (2021-03-15)
+
+
+### Features
+
+* **PageHero:** don't hide video on xs screens ([#1505](https://github.com/Codecademy/client-modules/issues/1505)) ([0260108](https://github.com/Codecademy/client-modules/commit/026010825c5d159a918665c083eacd5ed6e07915))
+
+
+
 ## [11.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@11.2.3...@codecademy/gamut-labs@11.3.0) (2021-03-15)
 
 
