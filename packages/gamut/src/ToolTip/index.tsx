@@ -36,7 +36,7 @@ const TargetContainer = styled.div`
 
 type ToolTipContainerProps = {
   position: ToolTipPosition;
-  variant: VisualTheme;
+  mode: VisualTheme;
 };
 
 const ToolTipContainer = styled.div<ToolTipContainerProps>`
@@ -160,10 +160,10 @@ export type ToolTipProps = {
    */
   focusable?: boolean;
   id: string;
+  mode?: VisualTheme;
   position?: ToolTipPosition;
   target?: ReactNode;
   tipClassName?: string;
-  variant?: VisualTheme;
 };
 
 export const ToolTip: React.FC<ToolTipProps> = ({
@@ -174,7 +174,7 @@ export const ToolTip: React.FC<ToolTipProps> = ({
   position = 'top-right',
   target,
   tipClassName,
-  variant = 'light',
+  mode = 'light',
 }) => {
   return (
     <TooltipWrapper className={className}>
@@ -193,9 +193,9 @@ export const ToolTip: React.FC<ToolTipProps> = ({
         id={id}
         position={position}
         role="tooltip"
-        variant={variant}
+        mode={mode}
       >
-        <ToolTipBody mode={variant}>{children}</ToolTipBody>
+        <ToolTipBody mode={mode}>{children}</ToolTipBody>
       </ToolTipContainer>
     </TooltipWrapper>
   );

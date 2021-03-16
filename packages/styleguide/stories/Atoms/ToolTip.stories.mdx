@@ -67,21 +67,21 @@ Note that you the implementer will need to adjust their horizontal position to m
   </Story>
 </Canvas>
 
-## Variant
+## Mode
 
-Tooltips can be of a `dark` or `light` visual variant.
+Tooltips can be of a `dark` or `light` visual mode.
 
 <Canvas>
-  <Story name="Variant">
+  <Story name="Mode">
     {(args) => (
       <>
         <TooltipArea tipPosition={args.position}>
           Dark: &nbsp;
-          <ToolTip {...args} variant="dark" />
+          <ToolTip {...args} mode="dark" />
         </TooltipArea>
         <TooltipArea tipPosition={args.position}>
           Light: &nbsp;
-          <ToolTip {...args} variant="light" />
+          <ToolTip {...args} mode="light" />
         </TooltipArea>
       </>
     )}
