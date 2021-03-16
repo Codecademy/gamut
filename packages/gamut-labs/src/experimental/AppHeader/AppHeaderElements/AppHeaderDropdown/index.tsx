@@ -90,7 +90,7 @@ export const AppHeaderDropdown: React.FC<AppHeaderDropdownProps> = ({
               transition={{ duration: 0.25 }}
               exit={{ height: 0, paddingTop: 0, paddingBottom: 0 }}
             >
-              <Box paddingX={24} backgroundColor="green">
+              <Box paddingX={24}>
                 <AppHeaderLinkSections action={action} item={item} />
               </Box>
             </motion.div>
