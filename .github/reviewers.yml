@@ -1,7 +1,0 @@
-# config for auto-request-review action
-# Sets up config for auto assigning reviewers based on code changes
-# See https://github.com/necojackarc/auto-request-review for more config options
-
-options:
-  ignore_draft: true
-  number_of_reviewers: 3
