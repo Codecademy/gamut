@@ -1,4 +1,5 @@
 import { FormGroup, Input, ReactRecurlyStyles } from '@codecademy/gamut';
+import { AmexIcon } from '@codecademy/gamut-icons';
 import title from '@codecademy/macros/lib/title.macro';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/dist/blocks';
 
@@ -113,6 +114,18 @@ import { PropsTable } from '~styleguide/blocks';
       placeholder: 'Disabled',
       disabled: true,
       defaultValue: undefined,
+    }}
+  >
+    {(args) => <Input {...args} />}
+  </Story>
+  <Story
+    name="CustomIcon"
+    args={{
+      htmlFor: 'example-custom',
+      name: 'example-custom',
+      placeholder: 'Bling Bling',
+      defaultValue: undefined,
+      icon: AmexIcon,
     }}
   >
     {(args) => <Input {...args} />}

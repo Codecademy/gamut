@@ -42,6 +42,7 @@ export interface InputWrapperProps extends InputProps {
       HTMLInputElement
     >
   >;
+  icon?: any;
 }
 
 export const iFrameWrapper = styled.div<conditionalInputStyleProps>`
@@ -63,13 +64,14 @@ const StyledAlertIcon = styled(AlertIcon)(iconStyles);
 const StyledCheckCircledIcon = styled(CheckCircledIcon)(iconStyles);
 
 export const Input = forwardRef<HTMLInputElement, InputWrapperProps>(
-  ({ error, className, id, valid, as: As, ...rest }, ref) => {
+  ({ error, className, id, valid, as: As, icon: Icon, ...rest }, ref) => {
     const [activated, setActivated] = useState(false);
 
     const changeHandler = (event: ChangeEvent<HTMLInputElement>) => {
       rest?.onChange?.(event);
       setActivated(true);
     };
+
     const AsComponent = As || InputElement;
 
     return (
@@ -80,12 +82,13 @@ export const Input = forwardRef<HTMLInputElement, InputWrapperProps>(
           ref={ref}
           error={error}
           activated={activated}
-          icon={error || valid}
+          icon={error || valid || !!Icon}
           className={className}
           onChange={(event) => changeHandler(event)}
         />
         {error && <StyledAlertIcon color="red" />}
         {valid && <StyledCheckCircledIcon color="green" />}
+        {Icon && <Icon />}
       </Box>
     );
   }
