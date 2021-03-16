@@ -1,5 +1,5 @@
 import { FormGroup, Input, ReactRecurlyStyles } from '@codecademy/gamut';
-import { AmexIcon } from '@codecademy/gamut-icons';
+import { ViewIcon, AmexIcon, StreakIcon } from '@codecademy/gamut-icons';
 import title from '@codecademy/macros/lib/title.macro';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/dist/blocks';
 
@@ -118,18 +118,6 @@ import { PropsTable } from '~styleguide/blocks';
   >
     {(args) => <Input {...args} />}
   </Story>
-  <Story
-    name="CustomIcon"
-    args={{
-      htmlFor: 'example-custom',
-      name: 'example-custom',
-      placeholder: 'Bling Bling',
-      defaultValue: undefined,
-      icon: AmexIcon,
-    }}
-  >
-    {(args) => <Input {...args} />}
-  </Story>
 </Canvas>
 
 ### Form Groups + Inputs
@@ -202,6 +190,84 @@ import { PropsTable } from '~styleguide/blocks';
   </Story>
 </Canvas>
 
+### Custom Icons
+
+You can use a custom icon (from gamut-icons) in your Input elements. The error and valid icons will overwrite the custom icon if those states are applied to the element.
+
+<Canvas>
+  <Story
+    name="FormCusomtExamples"
+    args={{
+      htmlFor: 'example-12dfsa3',
+      defaultValue: '12asdf3',
+      name: 'example-1asf23',
+      icon: ViewIcon,
+    }}
+  >
+    {(args) => (
+      <FormGroup label="i see all">
+        <Input {...args} />{' '}
+      </FormGroup>
+    )}
+  </Story>
+  <Story
+    name="CustomIcon"
+    args={{
+      htmlFor: 'example-custom',
+      name: 'example-custom',
+      placeholder: 'Bling Bling',
+      defaultValue: undefined,
+      icon: AmexIcon,
+    }}
+  >
+    {(args) => <Input {...args} />}
+  </Story>
+  <Story
+    name="CustomDisabledIcon"
+    args={{
+      htmlFor: 'example-custom',
+      name: 'example-custom',
+      placeholder: 'Ouch',
+      defaultValue: undefined,
+      disabled: true,
+      icon: StreakIcon,
+    }}
+  >
+    {(args) => <Input {...args} />}
+  </Story>
+</Canvas>
+
+```tsx
+import { Input, FormGroup } from '@codecademy/gamut';
+import { AmexIcon, StreakIcon } from '@codecademy/gamut-icons';
+
+export const CustomFormIconGroup: React.FC = ({
+  labelText,
+  errorMessage,
+  disabled,
+  htmlFor,
+}) => {
+  return (
+    <FormGroup
+      label={labelText}
+      error={errorMessage}
+      disabled={disabled}
+      htmlFor={htmlFor}
+    >
+      <Input
+        onChange={() => {}}
+        onBlur={() => {}}
+        htmlFor={htmlFor}
+        placeholder="Bling bling"
+        error={!!errorMessage}
+        disabled={disabled}
+        icon={AmexIcon}
+      />
+    </FormGroup>
+  );
+};
+```
+
 ### iFrame Inputs
 
 In order to style the iframe, we leverage the [withComponent](https://styled-components.com/docs/api) API from styled-components and our iFrameWrapper.
@@ -220,7 +286,7 @@ export const CustomFormGroup: React.FC = ({ errorMessaged, disabled }) => {
         onChange={() => {}}
         onBlur={() => {}}
         placeholder="Placeholder"
-        error={errorMessage ? true : false}
+        error={!!errorMessage}
       />
     </FormGroup>
   );

@@ -1,5 +1,6 @@
+import { AlertIcon } from '@codecademy/gamut-icons';
 import { properties, pxRem, theme } from '@codecademy/gamut-styles';
-import { css } from '@emotion/react';
+import { css, SerializedStyles } from '@emotion/react';
 import styled from '@emotion/styled';
 import { StandardPropertiesHyphen } from 'csstype';
 
@@ -31,11 +32,6 @@ type iconPadding = {
 
 export type conditionalInputStyleProps = conditionalStyleProps & iconPadding;
 
-export type transitionConcatenatorProps = {
-  arrayOfProperties: Array<keyof StandardPropertiesHyphen>;
-  transition: string;
-};
-
 export const conditionalStyles = ({
   error,
   activated,
@@ -61,7 +57,6 @@ export const conditionalStyles = ({
     `;
   }
 };
-
 export const iconPadding = ({ icon }: iconPadding) => {
   if (icon) {
     return css`
@@ -71,7 +66,7 @@ export const iconPadding = ({ icon }: iconPadding) => {
 };
 
 const transitionConcatenator = (
-  arrayOfProperties: Array<string>,
+  arrayOfProperties: Array<keyof StandardPropertiesHyphen>,
   transition: string
 ) => {
   const cssString = `${arrayOfProperties.join(
@@ -83,7 +78,10 @@ const transitionConcatenator = (
   `;
 };
 
-export const styledIconCreator = (Icon, styles) => {
+export const styledIconCreator = (
+  Icon: typeof AlertIcon,
+  styles: SerializedStyles
+) => {
   const StyledIcon = styled(Icon)(styles, properties.textColor);
   return StyledIcon;
 };

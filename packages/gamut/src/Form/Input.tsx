@@ -44,7 +44,10 @@ export interface InputWrapperProps extends InputProps {
       HTMLInputElement
     >
   >;
-  icon?: any;
+  /**
+   * An custom icon svg from gamut-icons.
+   */
+  icon?: typeof AlertIcon;
 }
 
 export const iFrameWrapper = styled.div<conditionalInputStyleProps>`
@@ -83,7 +86,7 @@ export const Input = forwardRef<HTMLInputElement, InputWrapperProps>(
       ? styledIconCreator(Icon, customIconStyles)
       : null;
 
-    const iconColor = error ? 'red' : valid ? 'green' : 'currentColor';
+    const iconColor = error ? 'red' : valid ? 'green' : 'navy';
 
     return (
       <Box position="relative">
