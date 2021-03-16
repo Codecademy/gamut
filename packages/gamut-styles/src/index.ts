@@ -1,6 +1,5 @@
 import '@emotion/react';
 
-import isPropValid from '@emotion/is-prop-valid';
 import createStyled, { CreateStyled, StyledOptions } from '@emotion/styled';
 
 import { tags } from './constants/tags';
@@ -22,7 +21,7 @@ export const styled: CreateStyled = Object.assign(
     return createStyled(tag, {
       ...options,
       shouldForwardProp: (prop: string) =>
-        shouldForwardProp(prop) && options?.shouldForwardProp?.(prop),
+        shouldForwardProp(prop) && Boolean(options?.shouldForwardProp?.(prop)),
     });
   }
 );
