@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [27.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@26.5.1...@codecademy/gamut@27.0.0) (2021-03-16)
+
+
+### ⚠ BREAKING CHANGES
+
+* **Card:** Animation Fixes and Gamut migration
+
+### Bug Fixes
+
+* **Card:** Animation Fixes and Gamut migration ([c44ac2f](https://github.com/Codecademy/client-modules/commit/c44ac2f096ed36018c5eb41eac5d56ffca8bd74f))
+
+
+
 ### [26.5.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@26.5.0...@codecademy/gamut@26.5.1) (2021-03-16)
 
 
