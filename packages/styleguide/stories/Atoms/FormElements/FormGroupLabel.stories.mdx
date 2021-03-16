@@ -16,7 +16,9 @@ import { PropsTable } from '~styleguide/blocks';
 />
 
 <Canvas>
-  <Story name="FormGroupLabel">{(args) => <FormGroupLabel {...args} />}</Story>
+  <Story name="FormGroupLabel">
+    {(args) => <FormGroupLabel htmlFor="label-default" {...args} />}
+  </Story>
 </Canvas>
 
 <PropsTable story="FormGroupLabel" />
@@ -25,12 +27,35 @@ import { PropsTable } from '~styleguide/blocks';
 
 <Canvas>
   <Story name="FormGroupLabelLarge">
-    {(args) => <FormGroupLabel size="large" {...args} />}
+    {(args) => <FormGroupLabel htmlFor="label-large" size="large" {...args} />}
   </Story>
   <Story name="FormGroupLabelRequired">
-    {(args) => <FormGroupLabel showRequired {...args} />}
+    {(args) => (
+      <FormGroupLabel htmlFor="label-required" showRequired {...args} />
+    )}
   </Story>
   <Story name="FormGroupLabeldisabled">
-    {(args) => <FormGroupLabel disabled {...args} />}
+    {(args) => <FormGroupLabel htmlFor="label-disabled" disabled {...args} />}
+  </Story>
+</Canvas>
+
+### Label htmlFor
+
+In some instances, we want our labels to actually be divs. If you're not sure, it's best to provide htmlFor to both the FormGroup + inner form element to make it super accessible.
+
+<Canvas>
+  <Story name="FormGroupLabelasLabel">
+    {(args) => (
+      <FormGroupLabel htmlFor="label">
+        I look like a label, and I am a label.
+      </FormGroupLabel>
+    )}
+  </Story>
+  <Story name="FormGroupLabelasDiv">
+    {(args) => (
+      <FormGroupLabel>
+        I may look like a label, but I'm actually a div.
+      </FormGroupLabel>
+    )}
   </Story>
 </Canvas>
