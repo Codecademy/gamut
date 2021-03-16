@@ -6,7 +6,7 @@ import {
   createEmotionCache,
 } from '@codecademy/gamut-styles';
 
-const cache = createEmotionCache();
+const cache = createEmotionCache({ speedy: false });
 
 /**
  * Story functions must be called as a regular function to avoid full-remounts
