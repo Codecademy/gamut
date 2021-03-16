@@ -1,6 +1,7 @@
 import { mount, ReactWrapper } from 'enzyme';
 import React from 'react';
 
+import { ToolTipProps } from '../../../ToolTip';
 import {
   stubCheckboxField,
   stubFileField,
@@ -23,6 +24,7 @@ import { GridFormRadioGroupInput } from '../GridFormRadioGroupInput';
 import { GridFormSelectInput } from '../GridFormSelectInput';
 import { GridFormTextArea } from '../GridFormTextArea';
 import { GridFormTextInput } from '../GridFormTextInput';
+import { GridFormToolTip } from '../GridFromToolTip';
 
 export const renderGridFormSelectInput = (
   extraProps: Partial<GridFormSelectField> = {}
@@ -97,6 +99,12 @@ export const renderGridFormCheckboxInput = (
   );
 };
 
+export const renderGridFormToolTip = (
+  extraProps: ToolTipProps
+): ReactWrapper => {
+  return mount(<GridFormToolTip {...extraProps} />);
+};
+
 export const getComponent = (componentName: string, extraProps: any) => {
   switch (componentName) {
     case 'GridFormTextInput':
@@ -111,6 +119,8 @@ export const getComponent = (componentName: string, extraProps: any) => {
       return renderGridFormFileInput(extraProps);
     case 'GridFormCheckboxInput':
       return renderGridFormCheckboxInput(extraProps);
+    case 'GridFormToolTip':
+      return renderGridFormToolTip(extraProps);
     default:
       throw new Error(`Unknown component name: ${componentName}`);
   }

@@ -66,7 +66,7 @@ export const Testimonial: React.FC<TestimonialProps> = ({
             />
           </div>
           <div className={styles.quoteContainer}>
-            <Quote text={quote} theme={theme} />
+            <Quote text={quote} mode={theme} />
           </div>
         </div>
       </div>

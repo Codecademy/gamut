@@ -1,6 +1,7 @@
 import {
   AccountingCoinsIcon,
   BookFlipPageIcon,
+  BriefcaseIcon,
   CommunityIcon,
   GearIcon,
   HouseEntranceIcon,
@@ -12,12 +13,12 @@ import {
 import { ReactNode } from 'react';
 
 import {
-  AppHeaderDropdownItem,
   AppHeaderFillButtonItem,
   AppHeaderLinkItem,
   AppHeaderLogoItem,
   AppHeaderProfileDropdownItem,
   AppHeaderRenderElementItem,
+  AppHeaderSimpleDropdownItem,
   AppHeaderTextButtonItem,
 } from '../AppHeader/AppHeaderElements/types';
 import { User } from './types';
@@ -42,6 +43,7 @@ export const proLogo: AppHeaderLogoItem = {
 
 export const myHome: AppHeaderLinkItem = {
   dataTestId: 'header-home',
+  dataIntellimizeId: 'header-home',
   icon: HouseEntranceIcon,
   id: 'my-home',
   text: 'My Home',
@@ -52,15 +54,16 @@ export const myHome: AppHeaderLinkItem = {
 
 export const courseCatalog: AppHeaderLinkItem = {
   dataTestId: 'header-catalog',
+  dataIntellimizeId: 'header-catalog',
   icon: BookFlipPageIcon,
   id: 'course-catalog',
-  text: 'Course Catalog',
+  text: 'Catalog',
   href: '/catalog',
   trackingTarget: 'topnav_catalog',
   type: 'link',
 };
 
-export const resourcesDropdown: AppHeaderDropdownItem = {
+export const resourcesDropdown: AppHeaderSimpleDropdownItem = {
   icon: NotebookIcon,
   id: 'resources',
   text: 'Resources',
@@ -73,6 +76,13 @@ export const resourcesDropdown: AppHeaderDropdownItem = {
       type: 'link',
     },
     {
+      id: 'projects',
+      href: '/projects',
+      trackingTarget: 'topnav_resources_projects',
+      text: 'Projects',
+      type: 'link',
+    },
+    {
       id: 'articles',
       href: '/articles',
       trackingTarget: 'topnav_resources_articles',
@@ -82,6 +92,7 @@ export const resourcesDropdown: AppHeaderDropdownItem = {
     {
       id: 'blog',
       href: 'https://news.codecademy.com/',
+      newTab: true,
       trackingTarget: 'topnav_resources_blog',
       text: 'Blog',
       type: 'link',
@@ -91,7 +102,7 @@ export const resourcesDropdown: AppHeaderDropdownItem = {
   type: 'dropdown',
 };
 
-export const communityDropdown: AppHeaderDropdownItem = {
+export const communityDropdown: AppHeaderSimpleDropdownItem = {
   icon: CommunityIcon,
   id: 'community',
   text: 'Community',
@@ -100,6 +111,7 @@ export const communityDropdown: AppHeaderDropdownItem = {
       id: 'forums',
       href: 'https://discuss.codecademy.com/',
       trackingTarget: 'topnav_community_forums',
+      newTab: true,
       text: 'Forums',
       type: 'link',
     },
@@ -114,7 +126,8 @@ export const communityDropdown: AppHeaderDropdownItem = {
     {
       id: 'chapters',
       href: 'https://community.codecademy.com/',
-      trackingTarget: 'topnav_community_forums',
+      newTab: true,
+      trackingTarget: 'topnav_community_chapters',
       text: 'Chapters',
       type: 'link',
     },
@@ -130,29 +143,22 @@ export const communityDropdown: AppHeaderDropdownItem = {
   type: 'dropdown',
 };
 
-export const plansPricingDropdown: AppHeaderDropdownItem = {
+export const pricingDropdown: AppHeaderSimpleDropdownItem = {
   icon: AccountingCoinsIcon,
-  id: 'plans-pricing',
-  text: 'Plans + Pricing',
+  id: 'pricing',
+  text: 'Pro Pricing',
   popover: [
     {
       id: 'pro-membership',
       href: '/pricing',
       trackingTarget: 'topnav_pro_membership',
-      text: 'Pro Membership',
-      type: 'link',
-    },
-    {
-      id: 'for-business',
-      href: '/business',
-      trackingTarget: 'topnav_pricing_business',
-      text: 'For Business',
+      text: 'For Individuals',
       type: 'link',
     },
     {
       id: 'for-students',
       href: '/student-center',
-      trackingTarget: 'topnav_pricing_business',
+      trackingTarget: 'topnav_pricing_students',
       text: 'For Students',
       type: 'link',
     },
@@ -161,10 +167,12 @@ export const plansPricingDropdown: AppHeaderDropdownItem = {
   type: 'dropdown',
 };
 
-export const forEnterprise: AppHeaderLinkItem = {
-  id: 'for-enterprise',
+export const forBusiness: AppHeaderLinkItem = {
+  icon: BriefcaseIcon,
+  id: 'for-business',
+  dataIntellimizeId: 'header-business',
   trackingTarget: 'topnav_business',
-  text: 'For Enterprise',
+  text: 'For Business',
   href: '/business',
   type: 'link',
 };
@@ -216,7 +224,7 @@ const profileMyHome: AppHeaderLinkItem = {
   type: 'link',
 };
 
-const profileBusiness: AppHeaderLinkItem = {
+const profileBusinessAccount: AppHeaderLinkItem = {
   id: 'business',
   icon: PieLineGraphIcon,
   href: '/business/plans',
@@ -237,6 +245,7 @@ const profileHelpCenter: AppHeaderLinkItem = {
 
 const profileAdmin: AppHeaderLinkItem = {
   id: 'admin',
+  dataTestId: 'admin-link',
   href: '/admin',
   trackingTarget: 'avatar_admin',
   text: 'Admin',
@@ -254,6 +263,7 @@ const profileCustomerSupport: AppHeaderLinkItem = {
 const profileReportBug: AppHeaderLinkItem = {
   id: 'report-bug',
   href: 'https://codecademy.atlassian.net/servicedesk/customer/portal/9',
+  newTab: true,
   trackingTarget: 'avatar_report_bug',
   text: 'Report a Bug [ADMIN]',
   type: 'link',
@@ -267,54 +277,93 @@ const profileLogOut: AppHeaderLinkItem = {
   type: 'link',
 };
 
-export const freeProfile = (user: User): AppHeaderProfileDropdownItem => {
+export const freeProfile = (
+  user: User,
+  isMobile?: boolean
+): AppHeaderProfileDropdownItem => {
+  const topSection = [profileMyProfile, profileAccount, profileMyHome];
+  if (!isMobile && user.isAccountManager) {
+    topSection.push(profileBusinessAccount);
+  }
+  topSection.push(profileHelpCenter);
+
+  const bottomSection = [profileLogOut];
+
+  const popover = [topSection, bottomSection];
+
   return {
     avatar: user.avatar,
-    displayName: user.displayName,
-    id: 'profile',
-    text: 'Profile',
-    popover: [
-      [profileMyProfile, profileAccount, profileMyHome, profileHelpCenter],
-      [profileLogOut],
-    ],
-    trackingTarget: 'topnav_pricing',
-    type: 'profile-dropdown',
-  };
-};
-
-export const proProfile = (user: User): AppHeaderProfileDropdownItem => {
-  const popover = [];
-  popover.push([
-    profileMyProfile,
-    profileAccount,
-    profileMyHome,
-    profileBusiness,
-    profileHelpCenter,
-  ]);
-
-  const adminSection = [];
-  user.isAdmin && adminSection.push(profileAdmin);
-  user.isCustomerSupport && adminSection.push(profileCustomerSupport);
-  user.isAdmin && adminSection.push(profileReportBug);
-  popover.push(adminSection);
-
-  popover.push([profileLogOut]);
-  return {
-    avatar: user.avatar,
-    displayName: user.displayName,
+    userDisplayName: user.displayName,
     id: 'profile',
     text: 'Profile',
     popover,
-    trackingTarget: 'topnav_pricing',
+    trackingTarget: 'topnav_profile',
     type: 'profile-dropdown',
   };
 };
 
-export const upgradeToPro: AppHeaderFillButtonItem = {
-  id: 'upgrade-to-pro',
+export const proProfile = (
+  user: User,
+  isMobile?: boolean
+): AppHeaderProfileDropdownItem => {
+  const topSection = [profileMyProfile, profileAccount, profileMyHome];
+  if (!isMobile && (user.isAccountManager || user.isAdmin)) {
+    topSection.push(profileBusinessAccount);
+  }
+  topSection.push(profileHelpCenter);
+
+  const middleSection = [];
+  if (user.isAdmin) {
+    middleSection.push(profileAdmin);
+  }
+  if (user.isCustomerSupport) {
+    middleSection.push(profileCustomerSupport);
+  }
+  if (user.isAdmin) {
+    middleSection.push(profileReportBug);
+  }
+
+  const bottomSection = [profileLogOut];
+
+  const popover = [topSection, middleSection, bottomSection];
+
+  return {
+    avatar: user.avatar,
+    userDisplayName: user.displayName,
+    id: 'profile',
+    text: 'Profile',
+    popover,
+    trackingTarget: 'topnav_profile',
+    type: 'profile-dropdown',
+  };
+};
+
+export const tryProForFree = (
+  checkoutUrl?: string
+): AppHeaderFillButtonItem => ({
+  dataTestId: 'upgrade-link',
+  id: 'try-pro',
   text: 'Try Pro For Free',
-  href: '/pro/membership',
+  href: checkoutUrl || '/pro/membership',
   trackingTarget: 'topnav_pro_trial',
+  type: 'fill-button',
+});
+
+export const upgradeToPro: AppHeaderFillButtonItem = {
+  dataTestId: 'upgrade-link',
+  id: 'upgrade-to-pro',
+  text: 'Upgrade to Pro',
+  href: '/pro/membership',
+  trackingTarget: 'topnav_pro_upgrade',
+  type: 'fill-button',
+};
+
+export const unpausePro: AppHeaderFillButtonItem = {
+  dataTestId: 'unpause-link',
+  id: 'unpause-pro',
+  text: 'Unpause Now',
+  href: '/account/billing',
+  trackingTarget: 'topnav_pro_unpause',
   type: 'fill-button',
 };
 
@@ -325,6 +374,7 @@ export const login: AppHeaderTextButtonItem = {
   href: '/login',
   trackingTarget: 'topnav_login',
   type: 'text-button',
+  redirect: true,
 };
 
 export const signUp: AppHeaderFillButtonItem = {
@@ -334,4 +384,5 @@ export const signUp: AppHeaderFillButtonItem = {
   href: '/register',
   trackingTarget: 'topnav_signup',
   type: 'fill-button',
+  redirect: true,
 };

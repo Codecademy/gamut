@@ -1,6 +1,6 @@
 {
   "name": "@codecademy/gamut-system",
-  "version": "0.2.3",
+  "version": "0.5.1",
   "description": "Typesafe styled component utilities",
   "author": "codecademy",
   "main": "dist/index.js",
@@ -19,7 +19,7 @@
   },
   "peerDependencies": {
     "csstype": ">=3.0.0",
-    "lodash": "^>=4.0.0"
+    "lodash": "^4.0.0"
   },
   "devDependencies": {
     "@emotion/jest": "^11.1.0",

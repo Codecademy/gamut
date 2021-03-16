@@ -1,4 +1,5 @@
-import { buttonPresetThemes } from '@codecademy/gamut/src';
+import { buttonPresetThemes } from '@codecademy/gamut';
+
 export const newThemeKeys = ['hyper', 'navy', 'red'];
 
 export const brandThemeKeys = [

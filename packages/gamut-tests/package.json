@@ -1,0 +1,35 @@
+{
+  "author": "Codecademy Engineering <dev@codecademy.com>",
+  "dependencies": {
+    "@codecademy/gamut-styles": "^8.3.2"
+  },
+  "description": "Shared component test setup for Gamut applications",
+  "keywords": [
+    "gamut",
+    "test",
+    "component-test-setup",
+    "enzyme",
+    "rtl"
+  ],
+  "name": "@codecademy/gamut-tests",
+  "version": "2.2.2",
+  "license": "MIT",
+  "main": "./dist/index.js",
+  "module": "dist/index.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Codecademy/client-modules.git"
+  },
+  "scripts": {
+    "verify": "tsc --noEmit",
+    "build:compile": "babel ./src --out-dir ./dist --copy-files --copy-ignored --extensions \".ts,.tsx\"",
+    "build:clean": "rm -rf dist",
+    "build:types": "tsc --emitDeclarationOnly",
+    "build": "yarn build:clean && yarn build:compile && yarn build:types",
+    "lernaBuildTask": "yarn build"
+  },
+  "types": "./dist/index.d.ts"
+}

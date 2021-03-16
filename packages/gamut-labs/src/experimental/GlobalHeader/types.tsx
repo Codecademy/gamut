@@ -2,9 +2,17 @@ import { ReactNode } from 'react';
 
 import { AppHeaderClickHandler } from '../AppHeader/AppHeaderElements/types';
 
+type RenderNotifications = {
+  desktop: () => ReactNode;
+  mobile: () => ReactNode;
+};
+type RenderProfile = { desktop: () => ReactNode; mobile: () => ReactNode };
+type RenderSearch = { desktop: () => ReactNode; mobile: () => ReactNode };
+
 type BaseHeader = {
   action: AppHeaderClickHandler;
-  renderSearch?: () => ReactNode;
+  className?: string;
+  renderSearch?: RenderSearch;
 };
 
 export type User = {
@@ -12,17 +20,24 @@ export type User = {
   displayName: string;
   isAdmin?: boolean;
   isCustomerSupport?: boolean;
+  isAccountManager?: boolean;
+  isPaused?: boolean;
+  proTrialCheckoutUrl?: string;
+  showProUpgrade?: boolean;
 };
 
 type LoggedInHeader = BaseHeader & {
-  renderNotifications?: () => ReactNode;
-  renderProfile?: () => ReactNode;
+  renderNotifications?: RenderNotifications;
+  renderProfile?: RenderProfile;
   user: User;
 };
 
+export type AnonHeaderVariant = 'landing' | 'login' | 'signup';
+
 export type AnonHeader = BaseHeader & {
+  redirectParam?: string;
   type: 'anon';
-  variant?: 'landing' | 'login' | 'signup';
+  variant?: AnonHeaderVariant;
 };
 
 export type FreeHeader = LoggedInHeader & {
@@ -31,4 +46,8 @@ export type FreeHeader = LoggedInHeader & {
 
 export type ProHeader = LoggedInHeader & {
   type: 'pro';
+};
+
+export type LoadingHeader = BaseHeader & {
+  type: 'loading';
 };

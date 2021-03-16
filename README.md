@@ -9,6 +9,10 @@ _Shared node modules for codecademy.com & co_
 
 This repository is a monorepo that we manage using [Lerna](https://lernajs.io/). That means that we publish several packages to npm from the same codebase, including:
 
+[`gamut-kit`: Include in your application instead of the individual packages to simplify version management. ](/packages/gamut-kit/README.md)
+
+- [![npm version](https://badge.fury.io/js/%40codecademy%2Fgamut-kit.svg)](https://badge.fury.io/js/%40codecademy%2Fgamut-kit)
+
 [`gamut`: Our React UI component library](/packages/gamut/README.md)
 
 - [![npm version](https://badge.fury.io/js/%40codecademy%2Fgamut.svg)](https://badge.fury.io/js/%40codecademy%2Fgamut)
@@ -62,6 +66,23 @@ Every PR that changes files in a package publishes alpha releases that you can u
 
 ### Working with pre-published changes
 
+Due to the inconsistencies of `yarn link` and symlinks in general in a lerna repo, we recommend using the `npm-link-better` package instead of `yarn link`.
+
+To use it, follow these instructions:
+
+1. in the terminal, `cd` into the root directory of the application that uses gamut (or any other client-modules package)
+1. Run `yarn build-all` (optional, but it rules out some other issues down the line)
+1. Run `npm-link-better` to link the package you're working on and start watching for changes
+1. `npx npm-link-better@0.6.0 --copy --watch ../client-modules/packages/gamut` (`../client-modules` or wherever your client-modules repo is)
+1. Make changes in the package client-modules repo and build the package, and you should see the changes reflected in your application
+
+To run a watcher and build Gamut on changes, in `client_modules/packages/gamut` use `yarn build:watch`. Similar watch scripts exist in the other packages, but if not feel free to add one!
+
+You may need to run `yarn build:all` before running the build task in gamut or another package, if that package depends on the other built packages existing to be built.
+
+<details>
+  <summary>Instructions for using `yarn link` instead (not recommended)</summary>
+
 For quicker development cycles, it's possible to run a pre-published version of Gamut in another project. We do that using
 symlinks (the following instructions assume you have set up and built client-modules):
 
@@ -83,7 +104,7 @@ If your other project uses React, you must link that copy of React in Gamut:
 [See the docs](https://reactjs.org/warnings/invalid-hook-call-warning.html#duplicate-react)
 for more information for why you have to do this.
 
-To run a watcher and build Gamut on changes, in `client_modules/packages/gamut` use `yarn build:watch`
+</details>
 
 #### Troubleshooting
 

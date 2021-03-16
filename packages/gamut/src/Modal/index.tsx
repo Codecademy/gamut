@@ -3,15 +3,12 @@ import cx from 'classnames';
 import React from 'react';
 
 import { ButtonDeprecated } from '../ButtonDeprecated';
-import { CardShell } from '../Card';
+import { CardShell } from '../DeprecatedCard';
 import { Overlay, OverlayProps } from '../Overlay';
 import styles from './styles.module.scss';
 
 export type ModalOverlayProps = Partial<
-  Pick<
-    OverlayProps,
-    'clickOutsideCloses' | 'escapeCloses' | 'className' | 'allowOutsideClick'
-  >
+  Pick<OverlayProps, 'clickOutsideCloses' | 'escapeCloses' | 'className'>
 >;
 
 export type ModalProps = {
@@ -38,6 +35,8 @@ export type ModalProps = {
    * Whether to hide the default close button and pass your own through children
    */
   hideDefaultCloseButton?: boolean;
+
+  ariaLabel?: string;
 };
 
 export const Modal: React.FC<ModalProps> = ({
@@ -47,6 +46,7 @@ export const Modal: React.FC<ModalProps> = ({
   overlayProps,
   isOpen,
   hideDefaultCloseButton,
+  ariaLabel,
 }) => {
   return (
     <Overlay
@@ -60,8 +60,8 @@ export const Modal: React.FC<ModalProps> = ({
         className={cx(styles.modalBody, className)}
         aria-hidden="false"
         aria-modal="true"
+        aria-label={ariaLabel}
         role="dialog"
-        tabIndex={0}
       >
         {!hideDefaultCloseButton && (
           <div

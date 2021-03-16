@@ -1,103 +1,110 @@
 import {
   AppBar,
   AppBarSection,
+  Box,
   FillButton,
   TextButton,
 } from '@codecademy/gamut';
 import styled from '@emotion/styled';
 import React, { ReactNode } from 'react';
 
+import { formatUrlWithRedirect } from '../GlobalHeader/urlHelpers';
 import { AppHeaderDropdown } from './AppHeaderElements/AppHeaderDropdown';
 import { AppHeaderLink } from './AppHeaderElements/AppHeaderLink';
 import { AppHeaderLogo } from './AppHeaderElements/AppHeaderLogo';
-import { AppHeaderTab } from './AppHeaderElements/AppHeaderTab';
 import { focusStyles } from './AppHeaderElements/SharedStyles';
 import {
   AppHeaderClickHandler,
   AppHeaderItem,
 } from './AppHeaderElements/types';
+import { FormattedAppHeaderItems } from './types';
 
 export type AppHeaderProps = {
   action: AppHeaderClickHandler;
-  className?: string;
-  items: AppHeaderItemsProp;
+  items: FormattedAppHeaderItems;
+  redirectParam?: string;
 };
 
-export type AppHeaderItemsProp = {
-  left: AppHeaderItem[];
-  right: AppHeaderItem[];
-};
+export const StyledAppBar = styled(AppBar)`
+  padding: 0.75rem 0;
+  box-shadow: none;
+  width: 100%;
+`;
 
-const AppHeaderTextButton = styled(TextButton)(focusStyles);
-const AppHeaderFillButton = styled(FillButton)(focusStyles);
+export const AppHeaderTextButton = styled(TextButton)(focusStyles);
+export const AppHeaderFillButton = styled(FillButton)(focusStyles);
 
-const mapItemToElement = (
+export const mapItemToElement = (
   action: AppHeaderClickHandler,
-  item: AppHeaderItem
+  item: AppHeaderItem,
+  redirectParam?: string
 ): ReactNode => {
   switch (item.type) {
     case 'logo':
-      return (
-        <AppHeaderTab key={item.id}>
-          <AppHeaderLogo action={action} item={item} />
-        </AppHeaderTab>
-      );
+      return <AppHeaderLogo action={action} item={item} />;
     case 'link':
-      return (
-        <AppHeaderTab key={item.id}>
-          <AppHeaderLink action={action} item={item} />
-        </AppHeaderTab>
-      );
+      return <AppHeaderLink action={action} item={item} />;
     case 'dropdown':
     case 'profile-dropdown':
-      return (
-        <AppHeaderTab key={item.id}>
-          <AppHeaderDropdown action={action} item={item} />
-        </AppHeaderTab>
-      );
-
+      return <AppHeaderDropdown action={action} item={item} />;
     case 'render-element':
-      return <AppHeaderTab key={item.id}>{item.renderElement()}</AppHeaderTab>;
+      return item.renderElement();
     case 'text-button':
       return (
-        <AppHeaderTab key={item.id}>
-          <AppHeaderTextButton
-            onClick={(event: React.MouseEvent) => action(event, item)}
-            data-testid={item.dataTestId}
-            href={item.href}
-          >
-            {item.text}
-          </AppHeaderTextButton>
-        </AppHeaderTab>
+        <AppHeaderTextButton
+          onClick={(event: React.MouseEvent) => action(event, item)}
+          data-testid={item.dataTestId}
+          href={
+            item.redirect
+              ? formatUrlWithRedirect(item.href, redirectParam)
+              : item.href
+          }
+        >
+          {item.text}
+        </AppHeaderTextButton>
       );
     case 'fill-button':
       return (
-        <AppHeaderTab key={item.id}>
-          <AppHeaderFillButton
-            data-testid={item.dataTestId}
-            href={item.href}
-            onClick={(event: React.MouseEvent) => action(event, item)}
-          >
-            {item.text}
-          </AppHeaderFillButton>
-        </AppHeaderTab>
+        <AppHeaderFillButton
+          data-testid={item.dataTestId}
+          href={
+            item.redirect
+              ? formatUrlWithRedirect(item.href, redirectParam)
+              : item.href
+          }
+          onClick={(event: React.MouseEvent) => action(event, item)}
+        >
+          {item.text}
+        </AppHeaderFillButton>
       );
   }
 };
 
 export const AppHeader: React.FC<AppHeaderProps> = ({
-  items,
-  className,
   action,
+  items,
+  redirectParam,
 }) => {
+  const mapItemsToElement = <T extends AppHeaderItem[]>(items: T) => {
+    return items.map((item, index) => (
+      <Box
+        key={item.id}
+        marginLeft={index === 0 ? 0 : 8}
+        marginRight={index === items.length - 1 ? 0 : 8}
+      >
+        {mapItemToElement(action, item, redirectParam)}
+      </Box>
+    ));
+  };
+
   return (
-    <AppBar className={className}>
+    <StyledAppBar>
       <AppBarSection position="left">
-        {items.left.map((item) => mapItemToElement(action, item))}
+        {mapItemsToElement(items.left)}
       </AppBarSection>
       <AppBarSection position="right">
-        {items.right.map((item) => mapItemToElement(action, item))}
+        {mapItemsToElement(items.right)}
       </AppBarSection>
-    </AppBar>
+    </StyledAppBar>
   );
 };

@@ -1,32 +1,50 @@
-import { VisualTheme } from '@codecademy/gamut';
-import cx from 'classnames';
+import { Box } from '@codecademy/gamut';
+import { pxRem, variant } from '@codecademy/gamut-styles';
+import { HandlerProps } from '@codecademy/gamut-system';
+import styled from '@emotion/styled';
 import React from 'react';
 
 import orangeQuotes from '../assets/orangeQuotes.svg';
 import purpleQuotes from '../assets/purpleQuotes.svg';
-import styles from './styles.module.scss';
+
+const quoteVariants = variant({
+  prop: 'mode',
+  default: 'light',
+  variants: {
+    dark: {
+      textColor: 'white',
+    },
+    light: {
+      textColor: 'blue-900',
+    },
+  },
+});
+
+type QuoteStyleProps = HandlerProps<typeof quoteVariants>;
 
 type QuoteProps = {
   text: string;
-  theme?: VisualTheme;
-  classNames?: { text?: string; icon?: string };
-};
+} & QuoteStyleProps;
 
-export const Quote: React.FC<QuoteProps> = ({
-  text,
-  theme = 'light',
-  classNames = {},
-}) => (
-  <div
-    className={cx(
-      theme === 'dark' ? styles.darkContainer : styles.lightContainer
-    )}
-  >
-    <img
-      src={theme === 'dark' ? purpleQuotes : orangeQuotes}
-      alt=""
-      className={cx(styles.icon, classNames.icon)}
-    />
-    <q className={cx(styles.text, classNames.text)}>{text}</q>
-  </div>
+const Container = styled(Box)<QuoteStyleProps>`
+  ${quoteVariants}
+`;
+
+const QuoteIcon = styled.img`
+  display: block;
+  margin-bottom: -2.5rem;
+`;
+
+const Text = styled.q`
+  position: relative;
+  quotes: none;
+  font-size: ${pxRem(30)};
+  line-height: ${pxRem(42)};
+`;
+
+export const Quote: React.FC<QuoteProps> = ({ text, mode }) => (
+  <Container position="relative" mode={mode}>
+    <QuoteIcon alt="" src={mode === 'dark' ? purpleQuotes : orangeQuotes} />
+    <Text>{text}</Text>
+  </Container>
 );

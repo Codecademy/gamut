@@ -1,4 +1,4 @@
-import { FormGroup } from '@codecademy/gamut';
+import { FormGroup, Input } from '@codecademy/gamut';
 import title from '@codecademy/macros/lib/title.macro';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/dist/blocks';
 
@@ -8,7 +8,8 @@ import { PropsTable } from '~styleguide/blocks';
   title={title}
   component={FormGroup}
   parameters={{
-    subtitle: 'A label and description wrapper for a form element',
+    subtitle:
+      'A label and description wrapper for a form element that provides conditional styling',
     source: 'gamut',
     status: 'stable',
   }}
@@ -23,3 +24,38 @@ import { PropsTable } from '~styleguide/blocks';
 </Canvas>
 
 <PropsTable story="FormGroup" />
+
+### Form Group States
+
+<Canvas>
+  <Story name="FormGroupRequired">
+    {(args) => (
+      <FormGroup
+        required
+        label="I am required!!"
+        description="You can tell by the asterisk."
+      >
+        <Input />
+      </FormGroup>
+    )}
+  </Story>
+  <Story name="FormGroupError">
+    {(args) => (
+      <FormGroup
+        required
+        label="I am also required!!"
+        description="You can tell by the asterisk."
+        error="You messed up dude."
+      >
+        <Input defaultValue=">_>" error />
+      </FormGroup>
+    )}
+  </Story>
+  <Story name="FormGroupValidated">
+    {(args) => (
+      <FormGroup label="I am also required!!" required>
+        <Input defaultValue="Good job!" valid />
+      </FormGroup>
+    )}
+  </Story>
+</Canvas>

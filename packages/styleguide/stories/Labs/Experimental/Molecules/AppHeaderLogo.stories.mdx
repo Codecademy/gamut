@@ -7,7 +7,12 @@ import { PropsTable } from '~styleguide/blocks';
 <Meta
   title={title}
   component={AppHeaderLogo}
-  parameters={{ layout: 'padded', status: 'volatile', source: 'gamut-labs' }}
+  parameters={{
+    layout: 'padded',
+    status: 'volatile',
+    source: 'gamut-labs',
+    subtitle: 'A Codecademy logo button for use in AppHeader.',
+  }}
   args={{
     item: {
       pro: true,
@@ -17,8 +22,6 @@ import { PropsTable } from '~styleguide/blocks';
     },
   }}
 />
-
-A Codecademy logo button for use in AppHeader.
 
 <Canvas>
   <Story name="AppHeaderLogo">{(args) => <AppHeaderLogo {...args} />}</Story>

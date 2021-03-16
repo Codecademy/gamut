@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import { FlexBox } from '@codecademy/gamut';
+import React, { ReactNode, useState } from 'react';
 
+import { AppHeaderFillButton, AppHeaderTextButton } from '../..';
 import {
   AppHeaderClickHandler,
   AppHeaderDropdownItem,
@@ -12,11 +14,13 @@ import { AppHeaderSubMenuTarget } from '../AppHeaderSubMenuTarget';
 export type AppHeaderMainMenuMobileProps = {
   action: AppHeaderClickHandler;
   items: AppHeaderItem[];
+  renderSearch?: () => ReactNode;
 };
 
 export const AppHeaderMainMenuMobile: React.FC<AppHeaderMainMenuMobileProps> = ({
   items,
   action,
+  renderSearch,
 }) => {
   const [subMenuItem, setSubMenuItem] = useState<AppHeaderDropdownItem>();
 
@@ -42,6 +46,7 @@ export const AppHeaderMainMenuMobile: React.FC<AppHeaderMainMenuMobileProps> = (
           <AppHeaderLinkMobile key={item.id} item={item} action={action} />
         );
       case 'dropdown':
+      case 'profile-dropdown':
         return (
           <AppHeaderSubMenuTarget
             key={item.id}
@@ -49,19 +54,46 @@ export const AppHeaderMainMenuMobile: React.FC<AppHeaderMainMenuMobileProps> = (
             openSubMenu={openSubMenu}
           />
         );
+      case 'fill-button':
+        return (
+          <FlexBox justifyContent="center" marginTop={32} key={item.id}>
+            <AppHeaderFillButton
+              data-testid={item.dataTestId}
+              href={item.href}
+              onClick={(event: React.MouseEvent) => action(event, item)}
+            >
+              {item.text}
+            </AppHeaderFillButton>
+          </FlexBox>
+        );
+      case 'text-button':
+        return (
+          <FlexBox justifyContent="center" marginTop={16} key={item.id}>
+            <AppHeaderTextButton
+              data-testid={item.dataTestId}
+              href={item.href}
+              onClick={(event: React.MouseEvent) => action(event, item)}
+            >
+              {item.text}
+            </AppHeaderTextButton>
+          </FlexBox>
+        );
     }
   };
 
   return (
     <>
-      {!!subMenuItem ? (
+      {subMenuItem ? (
         <AppHeaderSubMenuMobile
           handleClose={closeSubMenu}
           action={action}
           item={subMenuItem}
         />
       ) : (
-        items.map((item) => mapItemToElement(item, action))
+        <>
+          {renderSearch && renderSearch()}
+          {items.map((item) => mapItemToElement(item, action))}
+        </>
       )}
     </>
   );

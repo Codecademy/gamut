@@ -1,8 +1,17 @@
 @import "~@codecademy/gamut-styles/utils";
 
-.globalHeader {
-  padding: 0.5rem 0;
+.stickyHeader {
   border-bottom: 1px solid $color-navy;
-  box-shadow: none;
+  background: $color-white;
+  top: 0;
+  z-index: 2;
   width: 100%;
+  transition: background 0.15s ease-in-out,
+    border-bottom-color 0.15s ease-in-out;
+}
+
+.transitionFadeOut {
+  background: transparent;
+  border-bottom: 1px solid transparent;
+  transition: background 0.5s ease-in-out, border-bottom-color 0.5s ease-in-out;
 }

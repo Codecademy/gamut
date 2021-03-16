@@ -1,15 +1,23 @@
 import { Box } from '@codecademy/gamut';
-import { GearIcon, PersonIcon } from '@codecademy/gamut-icons';
 import { AppHeaderDropdown } from '@codecademy/gamut-labs/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/dist/blocks';
+import LinkTo from '@storybook/addon-links/dist/react/components/link';
 
 import { PropsTable } from '~styleguide/blocks';
+
+import { MOCK_PROFILE_DROPDOWN } from './MockAppHeaderElements';
 
 <Meta
   title={title}
   component={AppHeaderDropdown}
-  parameters={{ layout: 'padded', status: 'volatile', source: 'gamut-labs' }}
+  parameters={{
+    layout: 'padded',
+    status: 'volatile',
+    source: 'gamut-labs',
+    subtitle:
+      'An AppHeader subcomponent, used for basic header dropdowns and the profile dropdown.',
+  }}
   args={{
     item: {
       id: 'target',
@@ -36,7 +44,7 @@ import { PropsTable } from '~styleguide/blocks';
   }}
 />
 
-A dropdown menu for use in AppHeader.
+A dropdown menu for use in <LinkTo kind="Labs/Experimental/Molecules/AppHeader" story="AppHeader">AppHeader</LinkTo>.
 
 <Canvas>
   <Story name="AppHeaderDropdown">
@@ -46,63 +54,14 @@ A dropdown menu for use in AppHeader.
 
 <PropsTable story="AppHeaderDropdown" />
 
-### Dropdown - Profile
+### Dropdown With Separators
 
 <Canvas>
   <Story
     args={{
-      item: {
-        avatar:
-          'https://www.gravatar.com/avatar/1c959a9a1e2f9f9f1ac06b05cccc1d60?s=150&d=retro',
-        displayName: 'Codey',
-        id: 'profile',
-        text: 'Profile',
-        popover: [
-          {
-            id: 'sublink-1',
-            icon: PersonIcon,
-            text: 'A Link With Icon',
-            href: 'http://codecademy.com',
-            trackingTarget: '',
-            type: 'link',
-          },
-          {
-            id: 'sublink-2',
-            icon: GearIcon,
-            text: 'Another Link With Icon',
-            href: 'http://codecademy.com',
-            trackingTarget: '',
-            type: 'link',
-          },
-          {
-            id: 'sublink-3',
-            text: 'A Link In Another Section',
-            href: 'http://codecademy.com',
-            topSeparator: true,
-            trackingTarget: '',
-            type: 'link',
-          },
-          {
-            id: 'sublink-4',
-            text: 'Another Link',
-            href: 'http://codecademy.com',
-            trackingTarget: '',
-            type: 'link',
-          },
-          {
-            id: 'sublink-5',
-            text: 'One More Link',
-            topSeparator: true,
-            href: 'http://codecademy.com',
-            trackingTarget: '',
-            type: 'link',
-          },
-        ],
-        trackingTarget: '',
-        type: 'profile-dropdown',
-      },
+      item: MOCK_PROFILE_DROPDOWN,
     }}
-    name="AppHeaderProfileDropdown"
+    name="AppHeaderSeparatedDropdown"
   >
     {(args) => (
       <Box height="200">

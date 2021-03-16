@@ -3,8 +3,8 @@ import { mediaQueries } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React from 'react';
 
-import { CTA, Description, Title } from './';
-import { BaseProps } from './types';
+import { CTA, Description, Title } from '.';
+import { BaseProps, DarkModeProps } from './types';
 
 const Grid = styled.div`
   display: grid;
@@ -45,12 +45,14 @@ export type PageVideo = {
   placeholderImage?: string;
 };
 
-export type PageVideoGalleryProps = BaseProps & {
-  videos: PageVideo[];
-};
+export type PageVideoGalleryProps = BaseProps &
+  DarkModeProps & {
+    videos: PageVideo[];
+  };
 
 export const PageVideoGallery: React.FC<PageVideoGalleryProps> = ({
   videos,
+  mode,
   title,
   desc,
   onAnchorClick,
@@ -58,8 +60,14 @@ export const PageVideoGallery: React.FC<PageVideoGalleryProps> = ({
   testId,
 }) => (
   <div>
-    {title && <Title isPageHeading>{title}</Title>}
-    {desc && <StyledDesc text={desc} onAnchorClick={onAnchorClick} />}
+    {title && (
+      <Title mode={mode} isPageHeading>
+        {title}
+      </Title>
+    )}
+    {desc && (
+      <StyledDesc text={desc} onAnchorClick={onAnchorClick} mode={mode} />
+    )}
     <Grid data-testid={testId}>
       {videos.map((video) => (
         <GridVideo
@@ -71,7 +79,7 @@ export const PageVideoGallery: React.FC<PageVideoGalleryProps> = ({
       ))}
     </Grid>
     {cta && (
-      <CTA href={cta.href} onCtaButtonClick={cta.onClick}>
+      <CTA href={cta.href} onCtaButtonClick={cta.onClick} mode={mode}>
         {cta.text}
       </CTA>
     )}

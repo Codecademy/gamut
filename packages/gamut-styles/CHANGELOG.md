@@ -3,6 +3,104 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [8.3.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@8.3.1...@codecademy/gamut-styles@8.3.2) (2021-03-16)
+
+**Note:** Version bump only for package @codecademy/gamut-styles
+
+
+
+
+
+### [8.3.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@8.3.0...@codecademy/gamut-styles@8.3.1) (2021-03-04)
+
+
+### Bug Fixes
+
+* **styles:** Run emotion plugin ([c79b818](https://github.com/Codecademy/client-modules/commit/c79b818865a6ce370393543863ccbdf3cb46f5b7))
+
+
+
+## [8.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@8.2.2...@codecademy/gamut-styles@8.3.0) (2021-03-04)
+
+
+### Features
+
+* **ThemeProvider:**  Adds GamutThemeProvider component and initial Global styles ([f4fd13c](https://github.com/Codecademy/client-modules/commit/f4fd13ce04762f75517117372c76d189ee0f0b99))
+
+
+
+### [8.2.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@8.2.1...@codecademy/gamut-styles@8.2.2) (2021-03-04)
+
+**Note:** Version bump only for package @codecademy/gamut-styles
+
+
+
+
+
+### [8.2.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@8.2.0...@codecademy/gamut-styles@8.2.1) (2021-03-04)
+
+**Note:** Version bump only for package @codecademy/gamut-styles
+
+
+
+
+
+## [8.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@8.1.1...@codecademy/gamut-styles@8.2.0) (2021-03-02)
+
+
+### Features
+
+* **props:** Adds custom shouldForwardProp to omit system props ([2048045](https://github.com/Codecademy/client-modules/commit/2048045c2710333a79b4b1f60a41d74128029cfd))
+
+
+
+### [8.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@8.1.0...@codecademy/gamut-styles@8.1.1) (2021-02-23)
+
+
+### Bug Fixes
+
+* **emotion:** Cache changes ([35b4ab7](https://github.com/Codecademy/client-modules/commit/35b4ab7a933a0bdad80e5641d9e191234a22a3ff))
+
+
+
+## [8.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@8.0.1...@codecademy/gamut-styles@8.1.0) (2021-02-17)
+
+
+### Features
+
+* **Button:** Alternative (secondary) modes and consistent height [GM-126] ([d96d47f](https://github.com/Codecademy/client-modules/commit/d96d47fbdc8b94f9251ec7c123d101d38c4e3667))
+
+
+
+### [8.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@8.0.0...@codecademy/gamut-styles@8.0.1) (2021-02-16)
+
+**Note:** Version bump only for package @codecademy/gamut-styles
+
+
+
+
+
+## [8.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@7.7.3...@codecademy/gamut-styles@8.0.0) (2021-02-12)
+
+
+### ⚠ BREAKING CHANGES
+
+* bumped ESLint packages to latest and added recommended & Jest linting
+
+### Features
+
+* bumped ESLint packages to latest and added recommended & Jest linting ([2e8af11](https://github.com/Codecademy/client-modules/commit/2e8af111b372f35f1cfca28cbc22744f7489615d))
+
+
+
+### [7.7.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@7.7.2...@codecademy/gamut-styles@7.7.3) (2021-02-05)
+
+**Note:** Version bump only for package @codecademy/gamut-styles
+
+
+
+
+
 ### [7.7.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@7.7.1...@codecademy/gamut-styles@7.7.2) (2021-02-04)
 
 **Note:** Version bump only for package @codecademy/gamut-styles

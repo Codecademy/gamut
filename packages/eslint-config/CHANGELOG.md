@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [4.0.1](http://github.com///compare/@codecademy/eslint-config@4.0.0...@codecademy/eslint-config@4.0.1) (2021-02-25)
+
+
+### Bug Fixes
+
+* use separate eslint-fix config ([f36e791](http://github.com///commit/f36e791b83249b0922b2cf55121fcf8e76796c8e))
+
+
+
+## [4.0.0](http://github.com///compare/@codecademy/eslint-config@3.1.7...@codecademy/eslint-config@4.0.0) (2021-02-12)
+
+
+### ⚠ BREAKING CHANGES
+
+* bumped ESLint packages to latest and added recommended & Jest linting
+
+### Features
+
+* bumped ESLint packages to latest and added recommended & Jest linting ([2e8af11](http://github.com///commit/2e8af111b372f35f1cfca28cbc22744f7489615d))
+
+
+
 ### [3.1.7](http://github.com///compare/@codecademy/eslint-config@3.1.6...@codecademy/eslint-config@3.1.7) (2021-02-04)
 
 **Note:** Version bump only for package @codecademy/eslint-config

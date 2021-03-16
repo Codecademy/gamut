@@ -1,30 +1,81 @@
-import cx from 'classnames';
+import { theme, variant } from '@codecademy/gamut-styles';
+import { css } from '@emotion/react';
+import styled from '@emotion/styled';
 import React, { HTMLAttributes } from 'react';
 
-import styles from './styles/FormGroupLabel.module.scss';
+import { formBaseStyles } from './styles/shared';
 
-export type FormGroupLabelProps = FormGroupLabelPropsWithFor &
-  FormGroupLabelPropsPlain;
+export type FormGroupLabelProps = HTMLAttributes<HTMLDivElement> &
+  HTMLAttributes<HTMLLabelElement> & {
+    disabled?: boolean;
+    htmlFor?: string;
+    showRequired?: boolean;
+    size?: 'small' | 'large';
+  };
 
-export type FormGroupLabelPropsWithFor = HTMLAttributes<HTMLLabelElement> & {
-  className?: string;
-  htmlFor?: string;
+type disabledLabelStyleProps = {
+  disabled?: boolean;
 };
 
-export type FormGroupLabelPropsPlain = HTMLAttributes<HTMLDivElement> & {
-  className?: string;
+const labelSizeVariants = variant({
+  default: 'small',
+  prop: 'size',
+  variants: {
+    small: {
+      lineHeight: 'title',
+      marginBottom: 4,
+    },
+    large: {
+      fontSize: 22,
+      lineHeight: 'base',
+      fontWeight: 'title',
+    },
+  },
+});
+
+const disabledLabelStyle = ({ disabled }: disabledLabelStyleProps) => {
+  if (disabled) {
+    return css`
+      color: ${theme.colors[`gray-400`]};
+    `;
+  }
 };
+
+const formLabelStyles = ({ size, disabled }: FormGroupLabelProps) => css`
+  ${formBaseStyles}
+  ${disabledLabelStyle({ disabled })}
+  ${labelSizeVariants({ size })}
+  display: block;
+`;
+
+const Label = styled
+  .label(formLabelStyles)
+  .withComponent((props: FormGroupLabelProps) => {
+    if (props.htmlFor) {
+      return <label {...props} />;
+    }
+    return <div {...props} />;
+  });
 
 export const FormGroupLabel: React.FC<FormGroupLabelProps> = ({
-  htmlFor,
+  children,
   className,
+  disabled,
+  htmlFor,
+  showRequired,
+  size,
   ...rest
 }) => {
-  const classNames = cx(styles.FormGroupLabel, className);
-
-  if (htmlFor) {
-    return <label {...rest} htmlFor={htmlFor} className={classNames} />;
-  }
-
-  return <div {...rest} className={classNames} />;
+  return (
+    <Label
+      {...rest}
+      htmlFor={htmlFor}
+      disabled={disabled}
+      className={className}
+      size={size}
+    >
+      {children}
+      {showRequired ? ' *' : ''}
+    </Label>
+  );
 };

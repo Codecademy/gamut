@@ -2,7 +2,8 @@ import { mapValues, isNumber, map } from 'lodash/fp';
 import { ArgTypesEnhancer } from '@storybook/client-api';
 import { kebabCase } from 'lodash';
 import { ALL_PROPS, PROP_META, PROP_GROUPS } from './propMeta';
-import { Theme, theme } from '@codecademy/gamut-styles/src/theme';
+import { theme } from '@codecademy/gamut-styles/src/theme';
+import { Theme } from '@emotion/react';
 
 export type SystemControls = 'text' | 'select' | 'radio' | 'inline-radio';
 
@@ -12,7 +13,7 @@ export type ControlType = {
 };
 
 const MDN_URL = 'https://developer.mozilla.org/en-US/docs/Web/CSS/';
-const THEME_PATH = '/?path=/docs/foundations-theme';
+const THEME_PATH = '/?path=/docs/foundations-theme--page';
 
 const createDescription = (name: string) => {
   const description: string[] = [];
@@ -59,7 +60,7 @@ const getControlType = (args: unknown[]): SystemControls => {
 
 const getPropCategory = (name: string) => {
   const [groupName] =
-    Object.entries(PROP_GROUPS).find(([key, { propNames }]) =>
+    Object.entries(PROP_GROUPS).find(([key, { propNames = [] }]) =>
       propNames.includes(name)
     ) || [];
   return groupName;
@@ -67,6 +68,7 @@ const getPropCategory = (name: string) => {
 
 const formatSystemProps: ArgTypesEnhancer = ({ parameters }) => {
   const { argTypes } = parameters;
+  const parsedOptions: Record<string, any> = {};
 
   return mapValues((arg) => {
     // Update theme props
@@ -114,23 +116,25 @@ const formatSystemProps: ArgTypesEnhancer = ({ parameters }) => {
     if (ALL_PROPS.includes(arg.name) && arg.description === '') {
       const { name } = arg;
       const control: ControlType = { type: 'text' };
+      const scaleKey = PROP_META?.[name as keyof typeof PROP_META]
+        ?.scale as keyof Theme;
+      const scale = theme?.[scaleKey];
 
-      const rawScale = arg?.table?.type?.summary ?? '';
-      const options = rawScale && sortScale(getScale(rawScale).split(' | '));
+      const rawScale = arg?.table?.type?.summary || '';
+      let argOptions = [];
 
-      const isStringControl =
-        rawScale.indexOf('string') > -1 || options.length < 2;
+      if (!rawScale.includes('string')) {
+        argOptions = rawScale && sortScale(getScale(rawScale).split(' | '));
 
-      if (!isStringControl) {
-        const scaleKey = PROP_META?.[name as keyof typeof PROP_META]
-          ?.scale as keyof Theme;
-        const scale = theme?.[scaleKey];
-        const argOptions = scale
-          ? Object.keys(scale)
-          : sanitizeOptions(options);
+        if (scale && parsedOptions[scaleKey]) {
+          argOptions = parsedOptions[scaleKey];
+        } else if (scale) {
+          parsedOptions[scaleKey] = sortScale(Object.keys(scale));
+          argOptions = parsedOptions[scaleKey];
+        }
 
         control.type = getControlType(argOptions);
-        control.options = argOptions;
+        control.options = sanitizeOptions(argOptions);
       }
 
       return {
@@ -141,7 +145,7 @@ const formatSystemProps: ArgTypesEnhancer = ({ parameters }) => {
           category: getPropCategory(name),
           type: {
             ...arg?.table?.type,
-            summary: options.join(' | ') || rawScale,
+            summary: argOptions.join(' | ') || rawScale,
           },
         },
         control,
