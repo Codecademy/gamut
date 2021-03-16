@@ -7,12 +7,11 @@ import {
   layout,
   positioning,
   shadow,
-  shouldForwardProp,
   space,
+  styled,
   typography,
 } from '@codecademy/gamut-styles';
 import { compose, HandlerProps } from '@codecademy/gamut-system';
-import styled from '@emotion/styled';
 
 const boxStyles = compose(
   space,
@@ -30,6 +29,4 @@ const boxStyles = compose(
 export type BoxStyles = HandlerProps<typeof boxStyles>;
 export interface BoxProps extends BoxStyles {}
 
-export const Box = styled('div', {
-  shouldForwardProp,
-})<BoxProps>(boxStyles);
+export const Box = styled.div<BoxProps>(boxStyles);

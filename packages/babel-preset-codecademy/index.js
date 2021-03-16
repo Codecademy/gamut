@@ -10,6 +10,8 @@ const PACKAGE_APPLICATION = 'application';
 const packageTypes = [PACKAGE_LIBRARY, PACKAGE_APPLICATION];
 
 module.exports = (api, { type = PACKAGE_LIBRARY } = {}) => {
+  api.cache(true);
+
   if (!packageTypes.includes(type)) {
     throw new Error(
       `babel-preset-codecademy: option 'type' should be one of: ${[
@@ -84,6 +86,22 @@ module.exports = (api, { type = PACKAGE_LIBRARY } = {}) => {
       isEnvTest &&
         // Transform dynamic import to require
         require('babel-plugin-transform-dynamic-import').default,
+      [
+        require('@emotion/babel-plugin').default,
+        {
+          sourceMap: true,
+          autoLabel: 'always',
+          labelFormat: '[local]',
+          importMap: {
+            '@codecademy/gamut-styles': {
+              styled: {
+                canonicalImport: ['@emotion/styled', 'default'],
+                styledBaseImport: ['@codecademy/gamut-styles', 'styled'],
+              },
+            },
+          },
+        },
+      ],
     ].filter(Boolean),
   };
 };

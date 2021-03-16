@@ -98,6 +98,8 @@ const alertVariants = variant({
   },
 });
 
+const Blah = styled.div``;
+
 const AlertBanner = styled(Box)<Pick<AlertProps, 'type' | 'placement'>>(
   css`
     display: grid;
@@ -105,6 +107,10 @@ const AlertBanner = styled(Box)<Pick<AlertProps, 'type' | 'placement'>>(
     max-width: calc(${breakpoints.md} - 4rem);
     border: 2px solid currentColor;
     border-radius: 3px;
+
+    ${Blah} {
+      color: blue;
+    }
   `,
   alertVariants,
   placementVariants

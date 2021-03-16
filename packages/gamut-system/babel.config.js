@@ -1,5 +1,6 @@
 module.exports = {
-  presets: ['codecademy', '@babel/preset-typescript'],
+  extends: '../../babel.config.js',
+  presets: ['@babel/preset-typescript'],
   include: ['./src/**/*'],
   ignore: ['__tests__', './**/*.d.ts'],
 };

@@ -8,6 +8,12 @@ module.exports = {
         sourceMap: true,
         autoLabel: 'always',
         labelFormat: '[local]',
+        '@codecademy/gamut-styles': {
+          styled: {
+            canonicalImport: ['@emotion/styled', 'default'],
+            styledBaseImport: ['@codecademy/gamut-styles', 'styled'],
+          },
+        },
       },
     ],
   ],
