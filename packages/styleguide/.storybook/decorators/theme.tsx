@@ -13,13 +13,10 @@ export const withEmotion = (Story: any, parameters) => {
     return <GamutProvider>{Story()}</GamutProvider>;
   }
 
-  // Wrap tested stories always
-  if (process.env.NODE_ENV === 'test') {
-    <GamutProvider useCache={false} preload={false}>
+  // Wrap all stories in minimal provider
+  return (
+    <GamutProvider useCache={false} preload={false} useGlobals={false}>
       {Story()}
-    </GamutProvider>;
-  }
-
-  // Docs mode stories do not need this
-  return Story();
+    </GamutProvider>
+  );
 };
