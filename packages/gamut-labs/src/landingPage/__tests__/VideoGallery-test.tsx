@@ -1,5 +1,5 @@
-import { fireEvent, render } from '@testing-library/react';
-import React from 'react';
+import { setupRtl } from '@codecademy/gamut-tests';
+import { fireEvent } from '@testing-library/react';
 
 import { PageVideoGallery } from '..';
 
@@ -24,28 +24,30 @@ describe('PageVideoGallery', () => {
     },
   ];
 
+  const renderView = setupRtl(PageVideoGallery, { videos });
+
   it('should render a title when one is provided', () => {
-    const wrapper = render(<PageVideoGallery videos={videos} title="title" />);
-    wrapper.getByText('title');
+    const { view } = renderView({ title: 'title' });
+
+    view.getByText('title');
   });
 
   it('should render a description when one is provided', () => {
-    const wrapper = render(<PageVideoGallery videos={videos} desc="desc" />);
-    wrapper.getByText('desc');
+    const { view } = renderView({ desc: 'desc' });
+
+    view.getByText('desc');
   });
 
   it('can pass a callback for when anchor tags in the description are clicked', () => {
     const testOnClick = jest.fn();
 
-    const wrapper = render(
-      <PageVideoGallery
-        videos={videos}
-        desc="[Rob Thomas of Matchbox Twenty](https://en.wikipedia.org/wiki/Rob_Thomas_(musician))"
-        onAnchorClick={testOnClick}
-      />
-    );
+    const { view } = renderView({
+      desc:
+        '[Rob Thomas of Matchbox Twenty](https://en.wikipedia.org/wiki/Rob_Thomas_(musician))',
+      onAnchorClick: testOnClick,
+    });
 
-    const link = wrapper.getByText('Rob Thomas of Matchbox Twenty');
+    const link = view.getByText('Rob Thomas of Matchbox Twenty');
 
     fireEvent.click(link);
 
@@ -53,12 +55,9 @@ describe('PageVideoGallery', () => {
   });
 
   it('should render a button when cta prop is provided', () => {
-    const wrapper = render(
-      <PageVideoGallery
-        videos={videos}
-        cta={{ text: 'cta', href: 'https://codecademy.com' }}
-      />
-    );
-    wrapper.getByText('cta');
+    const { view } = renderView({
+      cta: { text: 'cta', href: 'https://codecademy.com' },
+    });
+    view.getByText('cta');
   });
 });
