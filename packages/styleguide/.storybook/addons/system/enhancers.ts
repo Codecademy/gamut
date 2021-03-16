@@ -112,6 +112,16 @@ const formatSystemProps: ArgTypesEnhancer = ({ parameters }) => {
       };
     }
 
+    if (arg.name === 'htmlFor') {
+      const description =
+        '[The for/id string of a label or labelable form-related element](https://github.com/theKashey/react-focus-on). The outer FormGroup or FormLabel should have an identical string as the inner FormElement for accessibility purposes. ';
+
+      return {
+        ...arg,
+        description,
+      };
+    }
+
     // Find all system props that do not have a description
     if (ALL_PROPS.includes(arg.name) && arg.description === '') {
       const { name } = arg;
