@@ -1,6 +1,8 @@
 import { css, Global } from '@emotion/react';
 import React from 'react';
 
+import { theme } from '../theme';
+
 export const Reboot = () => (
   <Global
     styles={css`
@@ -63,12 +65,12 @@ export const Reboot = () => (
 
       body {
         margin: 0;
-        font-family: $font-family-base;
-        font-weight: $font-weight-base;
-        line-height: $line-height-base;
-        color: $color-body;
+        font-family: ${theme.fontFamily.base};
+        font-weight: ${theme.fontWeight.base};
+        line-height: ${theme.lineHeight.base};
+        color: ${theme.colors.navy};
         text-align: left;
-        background-color: $bg-body;
+        background-color: ${theme.colors.white};
       }
       /*
         Suppress the focus outline on elements that cannot be accessed via keyboard.
@@ -111,7 +113,6 @@ export const Reboot = () => (
       h5,
       h6 {
         margin-top: 0;
-        margin-bottom: $margin-bottom-headings;
       }
 
       /*
@@ -123,7 +124,7 @@ export const Reboot = () => (
 
       p {
         margin-top: 0;
-        margin-bottom: $margin-bottom-paragraph;
+        margin-bottom: ${theme.spacing[16]};
       }
 
       /*
@@ -164,7 +165,7 @@ export const Reboot = () => (
       }
 
       dt {
-        font-weight: $font-weight-dt;
+        font-weight: ${theme.fontWeight.title};
       }
 
       dd {
@@ -185,12 +186,12 @@ export const Reboot = () => (
       b,
       strong {
         /* Add the correct font weight in Chrome, Edge, and Safari */
-        font-weight: $font-weight-bold;
+        font-weight: ${theme.fontWeight.title};
       }
 
       small {
         /* Add the correct font size in all browsers */
-        font-size: $font-size-small;
+        font-size: ${theme.fontSize[14]};
       }
 
       /*
@@ -219,14 +220,14 @@ export const Reboot = () => (
       */
 
       a {
-        color: $color-link;
-        text-decoration: $decoration-link;
+        color: ${theme.colors.hyper};
+        text-decoration: underline;
 
         background-color: transparent;
         -webkit-text-decoration-skip: objects;
 
         &:hover {
-          text-decoration: $hover-decoration-link;
+          text-decoration: underline;
         }
       }
       /*
@@ -308,9 +309,9 @@ export const Reboot = () => (
       }
 
       caption {
-        padding-top: $spacer;
-        padding-bottom: $spacer;
-        color: $spacer;
+        padding-top: ${theme.spacing[16]};
+        padding-bottom: ${theme.spacing[16]};
+        color: ${theme.spacing[16]};
         text-align: left;
         caption-side: bottom;
       }
@@ -326,7 +327,7 @@ export const Reboot = () => (
       label {
         /* Allow labels to use \`margin\` for spacing. */
         display: inline-block;
-        margin-bottom: $margin-bottom-label;
+        margin-bottom: 0;
       }
 
       /* Remove the default \`border-radius\` that macOS Chrome adds.
