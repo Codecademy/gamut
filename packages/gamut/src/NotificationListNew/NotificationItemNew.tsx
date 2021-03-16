@@ -65,13 +65,13 @@ export const NotificationItemNew: React.FC<NotificationItemNewProps> = ({
       return <New height={48} width={48} aria-label="curriculum update" />;
     }
     if (type === 'forum_comment') {
-      return <ChatBox height={48} width={48} aria-label="forum comment" />;
+      return <ChatBox aria-hidden height={48} width={48} />;
     }
     if (type === 'forum_message') {
-      return <Envelope height={48} width={48} aria-label="forum message" />;
+      return <Envelope aria-hidden height={48} width={48} />;
     }
     if (type === 'forum_like') {
-      return <Heart height={48} width={48} aria-label="forum like" />;
+      return <Heart aria-hidden height={48} width={48} />;
     }
     return <Bell height={48} width={48} />;
   };
