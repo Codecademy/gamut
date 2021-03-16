@@ -1,6 +1,5 @@
-import { fontFamily } from '@codecademy/gamut-styles';
+import { fontFamily, styled } from '@codecademy/gamut-styles';
 import { css } from '@emotion/react';
-import styled from '@emotion/styled';
 import React from 'react';
 
 import { ButtonInner } from './ButtonInner';

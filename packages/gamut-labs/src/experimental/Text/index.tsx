@@ -2,10 +2,10 @@ import {
   color,
   shouldForwardProp,
   space,
+  styled,
   typography,
 } from '@codecademy/gamut-styles';
 import { compose, HandlerProps } from '@codecademy/gamut-system';
-import styled from '@emotion/styled';
 
 export const textStyles = compose(typography, color, space);
 

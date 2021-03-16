@@ -1,5 +1,5 @@
 import { Box } from '@codecademy/gamut';
-import styled from '@emotion/styled';
+import { styled } from '@codecademy/gamut-styles';
 import React from 'react';
 
 import { Text } from '../experimental/Text';

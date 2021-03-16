@@ -1,6 +1,5 @@
 import { Column, Video } from '@codecademy/gamut';
-import { breakpoints } from '@codecademy/gamut-styles';
-import styled from '@emotion/styled';
+import { breakpoints, styled } from '@codecademy/gamut-styles';
 import { omit } from 'lodash';
 import React from 'react';
 

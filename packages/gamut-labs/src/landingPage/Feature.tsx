@@ -1,6 +1,5 @@
 import { Box, Markdown } from '@codecademy/gamut';
-import { mediaQueries } from '@codecademy/gamut-styles';
-import styled from '@emotion/styled';
+import { mediaQueries, styled } from '@codecademy/gamut-styles';
 import React from 'react';
 
 import { Text } from '../experimental/Text';

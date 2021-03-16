@@ -1,6 +1,6 @@
 import { Box } from '@codecademy/gamut';
 import { ArrowChevronDownFilledIcon } from '@codecademy/gamut-icons';
-import styled from '@emotion/styled';
+import { styled } from '@codecademy/gamut-styles';
 import cx from 'classnames';
 import React, { useRef, useState } from 'react';
 

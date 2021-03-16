@@ -1,5 +1,5 @@
 import { MiniInfoOutlineIcon } from '@codecademy/gamut-icons';
-import styled from '@emotion/styled';
+import { styled } from '@codecademy/gamut-styles';
 import React from 'react';
 
 import { ToolTip, ToolTipProps } from '../../../ToolTip';

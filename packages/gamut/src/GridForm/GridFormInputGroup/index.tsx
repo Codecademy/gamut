@@ -1,4 +1,4 @@
-import styled from '@emotion/styled';
+import { styled } from '@codecademy/gamut-styles';
 import React from 'react';
 import { UseFormMethods } from 'react-hook-form';
 

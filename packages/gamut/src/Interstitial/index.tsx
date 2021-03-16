@@ -1,5 +1,4 @@
-import { colors } from '@codecademy/gamut-styles';
-import styled from '@emotion/styled';
+import { colors, styled } from '@codecademy/gamut-styles';
 import React, { useEffect, useRef, useState } from 'react';
 
 export type InterstitialProps = {

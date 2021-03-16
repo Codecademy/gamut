@@ -1,7 +1,6 @@
 import { Box } from '@codecademy/gamut';
-import { pxRem, variant } from '@codecademy/gamut-styles';
+import { pxRem, styled, variant } from '@codecademy/gamut-styles';
 import { HandlerProps } from '@codecademy/gamut-system';
-import styled from '@emotion/styled';
 import React from 'react';
 
 import orangeQuotes from '../assets/orangeQuotes.svg';

@@ -1,4 +1,4 @@
-import styled from '@emotion/styled';
+import { styled } from '@codecademy/gamut-styles';
 import { motion } from 'framer-motion';
 import React, { useState } from 'react';
 import { useIsomorphicLayoutEffect } from 'react-use';

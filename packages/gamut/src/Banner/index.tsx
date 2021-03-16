@@ -1,7 +1,6 @@
 import { MiniDeleteIcon } from '@codecademy/gamut-icons';
-import { variant } from '@codecademy/gamut-styles';
+import { styled, variant } from '@codecademy/gamut-styles';
 import { css } from '@emotion/react';
-import styled from '@emotion/styled';
 import React, { useMemo } from 'react';
 
 import { IconButton, TextButton } from '../Button';

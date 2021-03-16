@@ -1,7 +1,6 @@
 import { GamutIconProps } from '@codecademy/gamut-icons';
-import { pxRem } from '@codecademy/gamut-styles';
+import { pxRem, styled } from '@codecademy/gamut-styles';
 import { css } from '@emotion/react';
-import styled from '@emotion/styled';
 import React from 'react';
 
 import { SizedButtonProps } from './shared';

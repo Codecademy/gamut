@@ -1,6 +1,6 @@
+import { styled } from '@codecademy/gamut-styles';
 import { matchers } from '@emotion/jest';
 import { ThemeProvider } from '@emotion/react';
-import styled from '@emotion/styled';
 import React from 'react';
 import renderer from 'react-test-renderer';
 

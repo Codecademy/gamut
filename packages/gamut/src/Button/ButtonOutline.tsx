@@ -1,7 +1,6 @@
-import { timing } from '@codecademy/gamut-styles';
+import { styled, timing } from '@codecademy/gamut-styles';
 import isPropValid from '@emotion/is-prop-valid';
 import { css } from '@emotion/react';
-import styled from '@emotion/styled';
 import React from 'react';
 
 import { ButtonProps, modeColorGroups } from './shared';

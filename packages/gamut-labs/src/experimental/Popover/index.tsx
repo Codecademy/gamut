@@ -1,5 +1,5 @@
 import { BodyPortal, FocusTrap, Pattern, PatternName } from '@codecademy/gamut';
-import styled from '@emotion/styled';
+import { styled } from '@codecademy/gamut-styles';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useWindowScroll, useWindowSize } from 'react-use';
 

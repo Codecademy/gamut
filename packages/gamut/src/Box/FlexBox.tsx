@@ -1,4 +1,4 @@
-import styled from '@emotion/styled';
+import { styled } from '@codecademy/gamut-styles';
 
 import { Box, BoxProps } from './Box';
 

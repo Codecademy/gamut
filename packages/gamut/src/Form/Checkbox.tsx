@@ -3,8 +3,8 @@ import {
   noSelect,
   pxRem,
   screenReaderOnly,
+  styled,
 } from '@codecademy/gamut-styles';
-import styled from '@emotion/styled';
 import React, { forwardRef, InputHTMLAttributes, ReactNode } from 'react';
 
 import { variables } from './_variables';

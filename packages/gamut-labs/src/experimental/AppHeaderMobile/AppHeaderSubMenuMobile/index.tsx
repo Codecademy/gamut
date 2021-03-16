@@ -1,7 +1,6 @@
 import { Box } from '@codecademy/gamut';
 import { ArrowChevronLeftIcon } from '@codecademy/gamut-icons';
-import { pxRem } from '@codecademy/gamut-styles';
-import styled from '@emotion/styled';
+import { pxRem, styled } from '@codecademy/gamut-styles';
 import React from 'react';
 
 import { Text } from '../../../experimental/Text';

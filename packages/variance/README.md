@@ -8,7 +8,7 @@ Configure your props with a simple configuration object. The keys of your object
 
 ```tsx
 import { Theme } from '@emotion/react';
-import styled from '@emotion/styled';
+import { styled }  from '@codecademy/gamut-styles';
 import { variance } from '@codecademy/variance';
 
 const varianceProps = variance.withTheme<Theme>();

@@ -1,7 +1,6 @@
 import { AppBarSection, Box, FlexBox, Overlay } from '@codecademy/gamut';
 import { CloseIcon, MenuIcon } from '@codecademy/gamut-icons';
-import { breakpoints } from '@codecademy/gamut-styles';
-import styled from '@emotion/styled';
+import { breakpoints, styled } from '@codecademy/gamut-styles';
 import React, { ReactNode, useState } from 'react';
 
 import { mapItemToElement, StyledAppBar } from '../AppHeader';

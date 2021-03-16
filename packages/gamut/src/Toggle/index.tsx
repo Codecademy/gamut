@@ -1,5 +1,4 @@
-import { screenReaderOnly } from '@codecademy/gamut-styles';
-import styled from '@emotion/styled';
+import { screenReaderOnly, styled } from '@codecademy/gamut-styles';
 import React from 'react';
 
 import { Box } from '../Box';

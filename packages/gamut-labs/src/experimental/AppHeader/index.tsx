@@ -5,7 +5,7 @@ import {
   FillButton,
   TextButton,
 } from '@codecademy/gamut';
-import styled from '@emotion/styled';
+import { styled } from '@codecademy/gamut-styles';
 import React, { ReactNode } from 'react';
 
 import { formatUrlWithRedirect } from '../GlobalHeader/urlHelpers';

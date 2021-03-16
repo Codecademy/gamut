@@ -1,5 +1,4 @@
-import { flex } from '@codecademy/gamut-styles';
-import styled from '@emotion/styled';
+import { flex, styled } from '@codecademy/gamut-styles';
 import React from 'react';
 
 import {

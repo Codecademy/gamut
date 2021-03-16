@@ -1,6 +1,6 @@
 import { Box, FlexBox } from '@codecademy/gamut';
 import { ArrowChevronRightIcon } from '@codecademy/gamut-icons';
-import styled from '@emotion/styled';
+import { styled } from '@codecademy/gamut-styles';
 import React from 'react';
 
 import { AppHeaderAvatar } from '../../AppHeader/AppHeaderElements/AppHeaderAvatar';

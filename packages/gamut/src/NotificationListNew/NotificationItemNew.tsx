@@ -1,7 +1,6 @@
 import { MiniDeleteIcon } from '@codecademy/gamut-icons';
 import { Bell, Megaphone, New } from '@codecademy/gamut-illustrations';
-import { colors } from '@codecademy/gamut-styles';
-import styled from '@emotion/styled';
+import { colors, styled } from '@codecademy/gamut-styles';
 import React, { ReactElement } from 'react';
 
 import { Box, FlexBox, IconButton, Text } from '..';

@@ -1,6 +1,5 @@
-import { properties, variant } from '@codecademy/gamut-styles';
+import { properties, styled, variant } from '@codecademy/gamut-styles';
 import { HandlerProps } from '@codecademy/gamut-system';
-import styled from '@emotion/styled';
 
 const anchorVariants = variant({
   inline: {

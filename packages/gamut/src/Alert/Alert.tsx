@@ -7,9 +7,8 @@ import {
   MiniStarIcon,
   MiniWarningTriangleIcon,
 } from '@codecademy/gamut-icons';
-import { breakpoints, variant } from '@codecademy/gamut-styles';
+import { breakpoints, styled, variant } from '@codecademy/gamut-styles';
 import { css } from '@emotion/react';
-import styled from '@emotion/styled';
 import { motion } from 'framer-motion';
 import React, { useMemo, useState } from 'react';
 
