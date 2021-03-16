@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [26.5.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@26.5.0...@codecademy/gamut@26.5.1) (2021-03-16)
+
+
+### Bug Fixes
+
+* **NotificationItemNew:** tracking fix & accessibility improvement ([52c73f8](https://github.com/Codecademy/client-modules/commit/52c73f884206f404aacd072106dc5024ab9225f0))
+
+
+
 ## [26.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@26.4.0...@codecademy/gamut@26.5.0) (2021-03-16)
 
 
