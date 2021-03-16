@@ -65,7 +65,7 @@ export const conditionalStyles = ({
 export const iconPadding = ({ icon }: iconPadding) => {
   if (icon) {
     return css`
-      padding-right: 2.75rem; ;
+      padding-right: 2.5rem; ;
     `;
   }
 };
@@ -81,6 +81,11 @@ const transitionConcatenator = (
   return css`
     transition: ${cssString};
   `;
+};
+
+export const styledIconCreator = (Icon, styles) => {
+  const StyledIcon = styled(Icon)(styles, properties.textColor);
+  return StyledIcon;
 };
 
 export const iconBaseStyles = css`
@@ -107,16 +112,11 @@ export const miniIconStyles = css`
 
 export const customIconStyles = css`
   ${iconBaseStyles}
-  right: 1.25rem;
+  right: .8rem;
   height: 1.25rem;
   width: 1.25rem;
   top: calc(50% - ${pxRem(10)});
 `;
-
-export const styledIconCreator = (Icon, styles) => {
-  const StyledIcon = styled(Icon)(styles, properties.textColor);
-  return StyledIcon;
-};
 
 export const formBaseStyles = css`
   color: ${colorStates.base.color};
