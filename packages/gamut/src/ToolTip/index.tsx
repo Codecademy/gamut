@@ -9,6 +9,7 @@ export enum ToolTipPosition {
   BottomRight = 'bottom-right',
   TopLeft = 'top-left',
   TopRight = 'top-right',
+  GridFormIcon = 'grid-form-icon',
 }
 
 export type ToolTipProps = {

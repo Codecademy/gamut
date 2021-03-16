@@ -5,6 +5,7 @@ import styled from '@emotion/styled';
 import React, { HTMLAttributes, ReactNode } from 'react';
 
 import { ToolTip, ToolTipProps } from '..';
+import { ToolTipPosition } from '../ToolTip';
 import { formBaseStyles } from './styles/shared';
 
 const StyledToolTip = styled.span`
@@ -91,6 +92,7 @@ export const FormGroupLabel: React.FC<FormGroupLabelProps> = ({
           <ToolTip
             {...tooltip}
             id={`${htmlFor}-tooltip`}
+            position={ToolTipPosition.GridFormIcon}
             target={<MiniInfoOutlineIcon height="0.8rem" width="0.8rem" />}
           />
         </StyledToolTip>

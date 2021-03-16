@@ -9,6 +9,11 @@ $arrow-padding-vertical: 0.25rem;
 $container-offset-horizontal: calc(
   100% - #{($arrow-width / 2) + $arrow-padding-horizontal}
 );
+
+$container-offset-horizontal-grid-form-icon: calc(
+  100% - #{($arrow-width / $arrow-padding-horizontal) + $arrow-padding-horizontal}
+);
+
 $container-offset-vertical: calc(
   100% + #{$arrow-height + $arrow-padding-vertical}
 );
@@ -142,5 +147,34 @@ $slight-shadow: rgba(0, 0, 0, 0.15);
   .toolTipContainerDark & {
     background: $color-black;
     color: $color-white;
+  }
+}
+
+.grid-form-icon,
+.top-left {
+  justify-content: flex-end;
+  left: $container-offset-horizontal-grid-form-icon;
+
+  &::after,
+  &::before {
+    left: $arrow-padding-horizontal;
+  }
+}
+
+.grid-form-icon,
+.bottom-right {
+  top: $container-offset-vertical;
+
+  &::after,
+  &::before {
+    top: $arrow-offset-vertical;
+  }
+
+  &::before {
+    box-shadow: -2px -2px 4px 0 $slight-shadow;
+  }
+
+  .toolTipBody {
+    box-shadow: 0 0 4px 0 $slight-shadow;
   }
 }
