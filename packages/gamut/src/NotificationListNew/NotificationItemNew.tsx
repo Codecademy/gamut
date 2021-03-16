@@ -1,5 +1,12 @@
 import { MiniDeleteIcon } from '@codecademy/gamut-icons';
-import { Bell, Megaphone, New } from '@codecademy/gamut-illustrations';
+import {
+  Bell,
+  ChatBox,
+  Envelope,
+  Heart,
+  Megaphone,
+  New,
+} from '@codecademy/gamut-illustrations';
 import { colors } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React, { ReactElement } from 'react';
@@ -57,6 +64,15 @@ export const NotificationItemNew: React.FC<NotificationItemNewProps> = ({
     }
     if (type === 'curriculum_blast') {
       return <New aria-hidden height={48} width={48} />;
+    }
+    if (type === 'forum_comment') {
+      return <ChatBox aria-hidden height={48} width={48} />;
+    }
+    if (type === 'forum_message') {
+      return <Envelope aria-hidden height={48} width={48} />;
+    }
+    if (type === 'forum_like') {
+      return <Heart aria-hidden height={48} width={48} />;
     }
     return <Bell aria-hidden height={48} width={48} />;
   };
