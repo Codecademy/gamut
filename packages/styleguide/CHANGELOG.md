@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [31.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@31.0.1...@codecademy/styleguide@31.1.0) (2021-03-16)
+
+
+### Features
+
+* **NotificationItemNew:** add new forum notification icons ([cc10d77](https://github.com/Codecademy/client-modules/commit/cc10d7773b145c7b11f54e0be9603000d86f4735))
+
+
+
 ### [31.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@31.0.0...@codecademy/styleguide@31.0.1) (2021-03-16)
 
 **Note:** Version bump only for package @codecademy/styleguide
