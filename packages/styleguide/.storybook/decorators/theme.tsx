@@ -8,8 +8,9 @@ import { GamutProvider } from '@codecademy/gamut-styles';
  */
 
 export const withEmotion = (Story: any) => {
+  const isBuild = process.env.NODE_ENV !== 'test';
   return (
-    <GamutProvider useCache={process.env.NODE_ENV !== 'test'}>
+    <GamutProvider useCache={isBuild} preload={isBuild}>
       {Story()}
     </GamutProvider>
   );
