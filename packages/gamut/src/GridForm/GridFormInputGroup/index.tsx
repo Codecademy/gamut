@@ -2,6 +2,7 @@ import styled from '@emotion/styled';
 import React from 'react';
 import { UseFormMethods } from 'react-hook-form';
 
+import { Box } from '../../Box';
 import { FormError, FormGroup, FormGroupLabel } from '../../Form';
 import { HiddenText } from '../../HiddenText';
 import { Column } from '../../Layout';
@@ -21,11 +22,12 @@ export type GridFormInputGroupProps = {
   field: GridFormField;
   register: UseFormMethods['register'];
   setValue: (value: any) => void;
+  required?: boolean;
+  showRequired?: boolean;
 };
 
 const StyledFormGroup = styled(FormGroup)`
   margin-bottom: 0;
-
   // This is always the input
   > *:last-child {
     width: 100%;
@@ -38,12 +40,15 @@ const StyledFormGroupLabel = styled(FormGroupLabel)`
 `;
 
 export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
-  field,
+  error,
   isFirstError,
+  field,
   register,
   setValue,
-  error,
+  showRequired,
 }) => {
+  const errorMessage = error || field.customError;
+
   const getInput = () => {
     switch (field.type) {
       case 'checkbox':
@@ -55,7 +60,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
             field={field}
             register={register}
             setValue={setValue}
-            error={error}
+            error={errorMessage}
           />
         );
 
@@ -71,7 +76,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
       case 'select':
         return (
           <GridFormSelectInput
-            error={!!error}
+            error={!!errorMessage}
             field={field}
             register={register}
           />
@@ -80,7 +85,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
       case 'file':
         return (
           <GridFormFileInput
-            error={!!error}
+            error={!!errorMessage}
             field={field}
             register={register}
           />
@@ -88,13 +93,17 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
 
       case 'textarea':
         return (
-          <GridFormTextArea error={!!error} field={field} register={register} />
+          <GridFormTextArea
+            error={!!errorMessage}
+            field={field}
+            register={register}
+          />
         );
 
       default:
         return (
           <GridFormTextInput
-            error={!!error}
+            error={!!errorMessage}
             field={field}
             register={register}
           />
@@ -107,6 +116,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
       <StyledFormGroupLabel
         disabled={field.disabled}
         htmlFor={field.id || field.name}
+        showRequired={showRequired}
       >
         {field.label}
       </StyledFormGroupLabel>
@@ -115,15 +125,17 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
 
   return (
     <Column size={field.size}>
-      <StyledFormGroup>
-        {field.hideLabel ? <HiddenText>{label}</HiddenText> : label}
-        {error && (
-          <FormError aria-live={isFirstError ? 'assertive' : 'off'}>
-            {error}
-          </FormError>
-        )}
-        {getInput()}
-      </StyledFormGroup>
+      <Box>
+        <StyledFormGroup>
+          {field.hideLabel ? <HiddenText>{label}</HiddenText> : label}
+          {getInput()}
+          {errorMessage && (
+            <FormError aria-live={isFirstError ? 'assertive' : 'off'}>
+              {errorMessage}
+            </FormError>
+          )}
+        </StyledFormGroup>
+      </Box>
     </Column>
   );
 };
