@@ -11,12 +11,13 @@ import { PropsTable } from '~styleguide/blocks';
   component={GlobalHeader}
   decorators={[
     (Story) => {
-      return <Box style={{ minHeight: '500px' }}>{Story()}</Box>;
+      return <Box style={{ width: '100%' }}>{Story()}</Box>;
     },
   ]}
   parameters={{
     layout: 'padded',
     status: 'volatile',
+    docs: { inlineStories: false, iframeHeight: 500 },
     subtitle:
       'Header for a unified Codecademy global navigation system, meant to be consumed by any entity which requires a standard Codecademy header.',
   }}
@@ -85,6 +86,7 @@ The following are available variations for the GlobalHeader component.
             displayName: 'Codey',
           }}
         />
+        <Box>Page content would go here</Box>
       </Box>
     )}
   </Story>

@@ -1,11 +1,11 @@
 import { sample } from 'lodash';
-import React from 'react';
+import React, { useMemo } from 'react';
 
 import { FlexBox, Text } from '../..';
 import { emptyNotificationContents } from './emptyNotificationContents';
 
 export const EmptyNotification = () => {
-  const content = sample(emptyNotificationContents)!;
+  const content = useMemo(() => sample(emptyNotificationContents), [])!;
 
   const Image = content.image;
 
