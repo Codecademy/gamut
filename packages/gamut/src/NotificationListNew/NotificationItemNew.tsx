@@ -1,5 +1,12 @@
 import { MiniDeleteIcon } from '@codecademy/gamut-icons';
-import { Bell, Megaphone, New } from '@codecademy/gamut-illustrations';
+import {
+  Bell,
+  ChatBox,
+  Envelope,
+  Heart,
+  Megaphone,
+  New,
+} from '@codecademy/gamut-illustrations';
 import { colors } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React, { ReactElement } from 'react';
@@ -44,6 +51,7 @@ export const NotificationItemNew: React.FC<NotificationItemNewProps> = ({
 
   const dismissNotification = (event: React.MouseEvent) => {
     event.preventDefault();
+    event.stopPropagation();
     handleDismiss && handleDismiss();
   };
 
@@ -52,12 +60,21 @@ export const NotificationItemNew: React.FC<NotificationItemNewProps> = ({
       return <StyledImg src={imageUrl} alt="" />;
     }
     if (type === 'marketing_blast') {
-      return <Megaphone height={48} width={48} aria-label="marketing update" />;
+      return <Megaphone aria-hidden height={48} width={48} />;
     }
     if (type === 'curriculum_blast') {
-      return <New height={48} width={48} aria-label="curriculum update" />;
+      return <New aria-hidden height={48} width={48} />;
     }
-    return <Bell height={48} width={48} />;
+    if (type === 'forum_comment') {
+      return <ChatBox aria-hidden height={48} width={48} />;
+    }
+    if (type === 'forum_message') {
+      return <Envelope aria-hidden height={48} width={48} />;
+    }
+    if (type === 'forum_like') {
+      return <Heart aria-hidden height={48} width={48} />;
+    }
+    return <Bell aria-hidden height={48} width={48} />;
   };
 
   const renderNotificationContent = (): ReactElement => {
@@ -93,6 +110,7 @@ export const NotificationItemNew: React.FC<NotificationItemNewProps> = ({
       {link ? (
         <StyledLink
           href={link}
+          aria-label={`${text}, ${date} ago`}
           rel="noopener noreferrer"
           target="_blank"
           onClick={(event) => handleClick?.(event)}
