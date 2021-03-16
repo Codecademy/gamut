@@ -53,6 +53,10 @@ export const parameters = {
   viewport: {
     defaultViewport: 'responsive',
     viewports: {
+      responsive: {
+        name: 'Responsive',
+        type: 'desktop',
+      },
       xs: {
         name: `XS - ${breakpoints.xs}`,
         styles: {

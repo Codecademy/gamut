@@ -7,11 +7,14 @@ import { GamutProvider } from '@codecademy/gamut-styles';
  * See: https://github.com/storybookjs/storybook/issues/12255
  */
 
-export const withEmotion = (Story: any) => {
-  const isBuild = process.env.NODE_ENV !== 'test';
-  return (
-    <GamutProvider useCache={isBuild} preload={isBuild}>
-      {Story()}
-    </GamutProvider>
-  );
+export const withEmotion = (Story: any, parameters) => {
+  if (parameters.viewMode === 'canvas') {
+    const isBuild = process.env.NODE_ENV !== 'test';
+    return (
+      <GamutProvider useCache={isBuild} preload={isBuild}>
+        {Story()}
+      </GamutProvider>
+    );
+  }
+  return Story();
 };

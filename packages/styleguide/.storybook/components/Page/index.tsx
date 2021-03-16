@@ -6,6 +6,7 @@ import { styled } from '@storybook/theming';
 import { Parameters } from '@storybook/addons';
 import { useKind } from '../TableOfContents/utils';
 import { Box, SectionLink } from '../TableOfContents/elements';
+import { GamutProvider } from '@codecademy/gamut-styles';
 
 export const Link = styled.a`
   display: inline-flex;
@@ -97,7 +98,7 @@ export const Page: React.FC = ({ children }) => {
   const figmaLink = `https://www.figma.com/file/${figmaId}`;
 
   return (
-    <>
+    <GamutProvider>
       <Header marginBottom="1rem">
         <BreadCrumbs path={path} />
         <HeaderRow>
@@ -144,6 +145,6 @@ export const Page: React.FC = ({ children }) => {
       </Header>
       <Description>{subtitle}</Description>
       {children}
-    </>
+    </GamutProvider>
   );
 };
