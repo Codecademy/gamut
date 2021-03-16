@@ -12,8 +12,6 @@ import { focusStyles, hoverStyles, textButtonStyles } from '../SharedStyles';
 import { AppHeaderClickHandler, AppHeaderDropdownItem } from '../types';
 import styles from './styles.module.scss';
 
-const DropdownContainer = Box.withComponent(motion.div);
-
 const AppHeaderTextTargetButton = styled.button`
   ${textButtonStyles}
   ${hoverStyles}
@@ -71,7 +69,6 @@ export const AppHeaderDropdown: React.FC<AppHeaderDropdownProps> = ({
   const animationSpeed = 708;
   const popoverHeight = item.popover.length * 56 + 24;
   const animationDuration = popoverHeight / animationSpeed;
-  console.log({ animationSpeed, popoverHeight, animationDuration });
 
   return (
     <>
