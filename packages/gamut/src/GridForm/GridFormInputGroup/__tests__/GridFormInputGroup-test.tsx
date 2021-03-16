@@ -1,3 +1,5 @@
+import { theme } from '@codecademy/gamut-styles';
+import { ThemeProvider } from '@emotion/react';
 import { mount } from 'enzyme';
 import React from 'react';
 
@@ -19,7 +21,11 @@ const renderComponent = (overrides: Partial<GridFormInputGroupProps>) => {
     ...overrides,
   };
 
-  const wrapped = mount(<GridFormInputGroup {...props} />);
+  const wrapped = mount(
+    <ThemeProvider theme={theme}>
+      <GridFormInputGroup {...props} />
+    </ThemeProvider>
+  );
 
   return { props, wrapped };
 };
