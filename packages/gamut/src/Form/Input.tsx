@@ -11,9 +11,9 @@ import { Box } from '../Box';
 import {
   conditionalInputStyleProps,
   conditionalStyles,
+  customIconStyles,
   formBaseFieldStyles,
   formFieldStyles,
-  iconBaseStyles,
   iconPadding,
   iconStyles,
   styledIconCreator,
@@ -46,13 +46,6 @@ export interface InputWrapperProps extends InputProps {
   >;
   icon?: any;
 }
-export const customIconStyles = css`
-  ${iconBaseStyles}
-  right: 1.25rem;
-  height: 1.25rem;
-  width: 1.25rem;
-  top: calc(50% - ${pxRem(10)});
-`;
 
 export const iFrameWrapper = styled.div<conditionalInputStyleProps>`
   ${formBaseFieldStyles}
