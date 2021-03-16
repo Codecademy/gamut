@@ -16,7 +16,7 @@
   "dependencies": {
     "@codecademy/gamut-styles": "^8.3.2",
     "classnames": "^2.2.5",
-    "katex": "0.9.0"
+    "katex": "0.13.0"
   },
   "devDependencies": {
     "@types/katex": "0.11.0"
