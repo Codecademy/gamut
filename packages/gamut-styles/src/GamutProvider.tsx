@@ -9,7 +9,7 @@ import React, { useEffect, useRef } from 'react';
 import { Helmet } from 'react-helmet';
 
 import { createEmotionCache } from './cache';
-import { Typography } from './globals';
+import { Reboot, Typography } from './globals';
 import { FONT_ASSET_PATH, Fonts, WEB_FONTS } from './globals/Fonts';
 import { theme, themeCssVariables } from './theme';
 

@@ -1,7 +1,7 @@
 import { css, Global } from '@emotion/react';
 import React from 'react';
 
-export const Typography = () => (
+export const Reboot = () => (
   <Global
     styles={css`
       /**https://raw.githubusercontent.com/twbs/bootstrap/v4-dev/scss/_reboot.scss
