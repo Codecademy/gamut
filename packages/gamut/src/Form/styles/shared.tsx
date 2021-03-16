@@ -60,7 +60,7 @@ export const conditionalStyles = ({
 export const iconPadding = ({ icon }: iconPadding) => {
   if (icon) {
     return css`
-      padding-right: 2.5rem; ;
+      padding-right: 2.3rem; ;
     `;
   }
 };
@@ -130,7 +130,6 @@ export const formBaseFieldStyles = css`
   background-color: ${colorStates.base.backgroundColor};
   border: 1px solid ${colorStates.base.borderColor};
   border-radius: 2px;
-  padding-right: 2.5rem;
   min-width: auto;
 
   &:hover {
