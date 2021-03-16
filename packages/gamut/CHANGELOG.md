@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [26.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@26.4.0...@codecademy/gamut@26.5.0) (2021-03-16)
+
+
+### Features
+
+* **Form:** Input, Select, TextArea, + Error Updates ([#1439](https://github.com/Codecademy/client-modules/issues/1439)) ([68f955a](https://github.com/Codecademy/client-modules/commit/68f955ae05bfdd76aac64630377298c9d9b2d288))
+
+
+
 ## [26.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@26.3.0...@codecademy/gamut@26.4.0) (2021-03-15)
 
 

@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [30.8.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@30.7.1...@codecademy/styleguide@30.8.0) (2021-03-16)
+
+
+### Features
+
+* **Form:** Input, Select, TextArea, + Error Updates ([#1439](https://github.com/Codecademy/client-modules/issues/1439)) ([68f955a](https://github.com/Codecademy/client-modules/commit/68f955ae05bfdd76aac64630377298c9d9b2d288))
+
+
+
 ### [30.7.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@30.7.0...@codecademy/styleguide@30.7.1) (2021-03-15)
 
 **Note:** Version bump only for package @codecademy/styleguide
