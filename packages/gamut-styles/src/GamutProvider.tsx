@@ -32,6 +32,7 @@ export const createFontLinks = () => {
 };
 
 interface GamutProviderProps {
+  useGlobals?: boolean;
   useCache?: boolean;
   preload?: boolean;
   cache?: EmotionCache;
@@ -40,6 +41,7 @@ interface GamutProviderProps {
 export const GamutProvider: React.FC<GamutProviderProps> = ({
   children,
   cache,
+  useGlobals = true,
   useCache = true,
   preload = true,
 }) => {
@@ -53,10 +55,14 @@ export const GamutProvider: React.FC<GamutProviderProps> = ({
     }
   }, [useCache, cache]);
 
-  const nodes = (
+  const tree = (
     <ThemeProvider theme={theme}>
-      <Global styles={css({ ':root': themeCssVariables })} />
-      <Fonts />
+      {useGlobals && (
+        <>
+          <Global styles={css({ ':root': themeCssVariables })} />
+          <Fonts />
+        </>
+      )}
       {children}
     </ThemeProvider>
   );
@@ -65,9 +71,9 @@ export const GamutProvider: React.FC<GamutProviderProps> = ({
     <>
       {preload && <Helmet>{createFontLinks()}</Helmet>}
       {activeCache.current ? (
-        <CacheProvider value={activeCache.current}>{nodes}</CacheProvider>
+        <CacheProvider value={activeCache.current}>{tree}</CacheProvider>
       ) : (
-        nodes
+        tree
       )}
     </>
   );
