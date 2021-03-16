@@ -12,6 +12,8 @@ import { focusStyles, hoverStyles, textButtonStyles } from '../SharedStyles';
 import { AppHeaderClickHandler, AppHeaderDropdownItem } from '../types';
 import styles from './styles.module.scss';
 
+const DropdownContainer = Box.withComponent(motion.div);
+
 const AppHeaderTextTargetButton = styled.button`
   ${textButtonStyles}
   ${hoverStyles}
@@ -66,6 +68,11 @@ export const AppHeaderDropdown: React.FC<AppHeaderDropdownProps> = ({
       </AppHeaderTextTargetButton>
     );
 
+  const animationSpeed = 708;
+  const popoverHeight = item.popover.length * 56 + 24;
+  const animationDuration = popoverHeight / animationSpeed;
+  console.log({ animationSpeed, popoverHeight, animationDuration });
+
   return (
     <>
       <div ref={headerDropdownRef}>{clickTarget}</div>
@@ -81,14 +88,10 @@ export const AppHeaderDropdown: React.FC<AppHeaderDropdownProps> = ({
           >
             <motion.div
               style={{ overflow: 'hidden' }}
-              initial={{ height: 0, paddingTop: 0, paddingBottom: 0 }}
-              animate={{
-                height: 'auto',
-                paddingTop: '12px',
-                paddingBottom: '12px',
-              }}
-              transition={{ duration: 0.25 }}
-              exit={{ height: 0, paddingTop: 0, paddingBottom: 0 }}
+              initial={{ maxHeight: 0 }}
+              animate={{ maxHeight: popoverHeight }}
+              transition={{ duration: animationDuration }}
+              exit={{ maxHeight: 0 }}
             >
               <Box paddingX={24}>
                 <AppHeaderLinkSections action={action} item={item} />
