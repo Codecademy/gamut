@@ -1,23 +1,15 @@
 import { MiniInfoOutlineIcon } from '@codecademy/gamut-icons';
+import { theme, variant } from '@codecademy/gamut-styles';
+import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import cx from 'classnames';
 import React, { HTMLAttributes, ReactNode } from 'react';
 
-import { ToolTip, ToolTipProps } from '../ToolTip';
-import styles from './styles/FormGroupLabel.module.scss';
-
-const StyledLabel = styled.label`
-  position: relative;
-  width: 100%;
-`;
+import { ToolTip, ToolTipProps } from '..';
+import { formBaseStyles } from './styles/shared';
 
 const StyledToolTip = styled.span`
   position: absolute;
   left: calc(100% - 1.1rem);
-`;
-const StyledFormGroupLabelText = styled.span`
-  display: inline-block;
-  margin-right: 0.5rem;
 `;
 
 export type FormGroupLabelProps = HTMLAttributes<HTMLDivElement> &
@@ -26,38 +18,84 @@ export type FormGroupLabelProps = HTMLAttributes<HTMLDivElement> &
     htmlFor?: string;
     tooltip?: ToolTipProps;
     children: ReactNode;
+    showRequired?: boolean;
+    size?: 'small' | 'large';
   };
 
+type disabledLabelStyleProps = {
+  disabled?: boolean;
+};
+
+const labelSizeVariants = variant({
+  default: 'small',
+  prop: 'size',
+  variants: {
+    small: {
+      lineHeight: 'title',
+      marginBottom: 4,
+    },
+    large: {
+      fontSize: 22,
+      lineHeight: 'base',
+      fontWeight: 'title',
+    },
+  },
+});
+
+const disabledLabelStyle = ({ disabled }: disabledLabelStyleProps) => {
+  if (disabled) {
+    return css`
+      color: ${theme.colors[`gray-400`]};
+    `;
+  }
+};
+
+const formLabelStyles = ({ size, disabled }: FormGroupLabelProps) => css`
+  ${formBaseStyles}
+  ${disabledLabelStyle({ disabled })}
+  ${labelSizeVariants({ size })}
+  display: block;
+`;
+
+const Label = styled
+  .label(formLabelStyles)
+  .withComponent((props: FormGroupLabelProps) => {
+    if (props.htmlFor) {
+      return <label {...props} />;
+    }
+    return <div {...props} />;
+  });
+
 export const FormGroupLabel: React.FC<FormGroupLabelProps> = ({
+  children,
   className,
   disabled,
   htmlFor,
   tooltip,
-  children,
+  showRequired,
+  size,
   ...rest
 }) => {
-  const classNames = cx(
-    styles.FormGroupLabel,
-    disabled && styles.disabled,
-    className
+  return (
+    <Label
+      {...rest}
+      htmlFor={htmlFor}
+      disabled={disabled}
+      className={className}
+      size={size}
+    >
+      {children}
+      {showRequired ? ' *' : ''}
+
+      {tooltip && (
+        <StyledToolTip>
+          <ToolTip
+            {...tooltip}
+            id={`${htmlFor}-tooltip`}
+            target={<MiniInfoOutlineIcon height="0.8rem" width="0.8rem" />}
+          />
+        </StyledToolTip>
+      )}
+    </Label>
   );
-
-  if (htmlFor) {
-    return (
-      <StyledLabel {...rest} htmlFor={htmlFor} className={classNames}>
-        <StyledFormGroupLabelText>{children}</StyledFormGroupLabelText>
-        {tooltip && (
-          <StyledToolTip>
-            <ToolTip
-              {...tooltip}
-              id={`${htmlFor}-tooltip`}
-              target={<MiniInfoOutlineIcon height="0.8rem" width="0.8rem" />}
-            />
-          </StyledToolTip>
-        )}
-      </StyledLabel>
-    );
-  }
-
-  return <div {...rest} className={classNames} />;
 };
