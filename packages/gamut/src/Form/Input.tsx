@@ -13,8 +13,10 @@ import {
   conditionalStyles,
   formBaseFieldStyles,
   formFieldStyles,
+  iconBaseStyles,
   iconPadding,
   iconStyles,
+  styledIconCreator,
 } from './styles/shared';
 
 export type InputProps = InputHTMLAttributes<HTMLInputElement> & {
@@ -44,6 +46,13 @@ export interface InputWrapperProps extends InputProps {
   >;
   icon?: any;
 }
+export const customIconStyles = css`
+  ${iconBaseStyles}
+  right: 1.25rem;
+  height: 1.25rem;
+  width: 1.25rem;
+  top: calc(50% - ${pxRem(10)});
+`;
 
 export const iFrameWrapper = styled.div<conditionalInputStyleProps>`
   ${formBaseFieldStyles}
@@ -59,9 +68,8 @@ const InputElement = styled.input<StyledInputProps>`
   text-indent: 0;
 `;
 
-const StyledAlertIcon = styled(AlertIcon)(iconStyles);
-
-const StyledCheckCircledIcon = styled(CheckCircledIcon)(iconStyles);
+const StyledAlertIcon = styledIconCreator(AlertIcon, iconStyles);
+const StyledCheckCircledIcon = styledIconCreator(CheckCircledIcon, iconStyles);
 
 export const Input = forwardRef<HTMLInputElement, InputWrapperProps>(
   ({ error, className, id, valid, as: As, icon: Icon, ...rest }, ref) => {
@@ -73,6 +81,16 @@ export const Input = forwardRef<HTMLInputElement, InputWrapperProps>(
     };
 
     const AsComponent = As || InputElement;
+
+    const ShownIcon = error
+      ? StyledAlertIcon
+      : valid
+      ? StyledCheckCircledIcon
+      : Icon
+      ? styledIconCreator(Icon, customIconStyles)
+      : null;
+
+    const iconColor = error ? 'red' : valid ? 'green' : 'currentColor';
 
     return (
       <Box position="relative">
@@ -86,9 +104,7 @@ export const Input = forwardRef<HTMLInputElement, InputWrapperProps>(
           className={className}
           onChange={(event) => changeHandler(event)}
         />
-        {error && <StyledAlertIcon color="red" />}
-        {valid && <StyledCheckCircledIcon color="green" />}
-        {Icon && <Icon />}
+        {ShownIcon && <ShownIcon textColor={iconColor} />}
       </Box>
     );
   }

@@ -2,7 +2,7 @@ import {
   ArrowChevronDownIcon,
   MiniChevronDownIcon,
 } from '@codecademy/gamut-icons';
-import { properties, pxRem, variant } from '@codecademy/gamut-styles';
+import { variant } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import { each, isArray, isObject } from 'lodash';
 import React, {
@@ -18,6 +18,8 @@ import {
   conditionalStyles,
   formFieldStyles,
   iconStyles,
+  miniIconStyles,
+  styledIconCreator,
 } from './styles/shared';
 
 export type SelectWrapperProps = SelectHTMLAttributes<HTMLSelectElement> & {
@@ -54,18 +56,12 @@ const SelectWrapper = styled(Box)`
   min-width: 7rem;
 `;
 
-const StyledDownIcon = styled(ArrowChevronDownIcon)(
-  properties.textColor,
-  iconStyles
-);
+const StyledDownIcon = styledIconCreator(ArrowChevronDownIcon, iconStyles);
 
-const StyledMiniDownIcon = styled(MiniChevronDownIcon)`
-  ${iconStyles}
-  right: .75rem;
-  height: 0.75rem;
-  width: 0.75rem;
-  top: calc(50% - ${pxRem(6)});
-`;
+const StyledMiniDownIcon = styledIconCreator(
+  MiniChevronDownIcon,
+  miniIconStyles
+);
 
 const SelectBase = styled.select<SelectProps>`
   ${formFieldStyles}

@@ -1,5 +1,6 @@
-import { pxRem, theme } from '@codecademy/gamut-styles';
+import { properties, pxRem, theme } from '@codecademy/gamut-styles';
 import { css } from '@emotion/react';
+import styled from '@emotion/styled';
 import { StandardPropertiesHyphen } from 'csstype';
 
 export const colorStates = {
@@ -64,7 +65,7 @@ export const conditionalStyles = ({
 export const iconPadding = ({ icon }: iconPadding) => {
   if (icon) {
     return css`
-      padding-right: 2.3rem; ;
+      padding-right: 2.75rem; ;
     `;
   }
 };
@@ -95,6 +96,27 @@ export const iconStyles = css`
   width: 1rem;
   top: calc(50% - ${pxRem(8)});
 `;
+
+export const miniIconStyles = css`
+  ${iconBaseStyles}
+  right: 0.75rem;
+  height: 0.75rem;
+  width: 0.75rem;
+  top: calc(50% - ${pxRem(6)});
+`;
+
+export const customIconStyles = css`
+  ${iconBaseStyles}
+  right: 1.25rem;
+  height: 1.25rem;
+  width: 1.25rem;
+  top: calc(50% - ${pxRem(10)});
+`;
+
+export const styledIconCreator = (Icon, styles) => {
+  const StyledIcon = styled(Icon)(styles, properties.textColor);
+  return StyledIcon;
+};
 
 export const formBaseStyles = css`
   color: ${colorStates.base.color};
