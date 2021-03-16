@@ -1,4 +1,4 @@
-import { GamutThemeProvider } from '@codecademy/gamut-styles';
+import { GamutProvider } from '@codecademy/gamut-styles';
 import {
   setupEnzyme as setupEnzymeBase,
   setupRtl as setupRtlBase,
@@ -12,9 +12,9 @@ function withThemeProvider<Props>(
   WrappedComponent: React.ComponentType<Props>
 ) {
   const WithBoundaryComponent: React.FC<Props> = (props) => (
-    <GamutThemeProvider>
+    <GamutProvider useCache={false} preload={false}>
       <WrappedComponent {...props} />
-    </GamutThemeProvider>
+    </GamutProvider>
   );
 
   return WithBoundaryComponent;

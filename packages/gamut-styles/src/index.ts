@@ -2,11 +2,13 @@ import '@emotion/react';
 
 import { theme } from './theme';
 
-export * from './fonts';
+export * from './GamutProvider';
+
 export * from './cache';
 export * from './variables';
+export * from './styles';
+export * from './globals';
 export * from './utilities';
-export * from './theme';
 
 export type ThemeShape = typeof theme;
 

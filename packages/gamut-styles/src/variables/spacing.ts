@@ -1,4 +1,4 @@
-import { pxRem } from '../utilities/pxRem';
+import { pxRem } from '../styles/pxRem';
 import { base } from './base';
 
 export const baseUnit = pxRem(base);
