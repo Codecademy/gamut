@@ -102,9 +102,7 @@ export const NotificationItemNew: React.FC<NotificationItemNewProps> = ({
           {renderNotificationContent()}
         </StyledLink>
       ) : (
-        <div aria-label={`${text}, ${date} ago`}>
-          {renderNotificationContent()}
-        </div>
+        <div>{renderNotificationContent()}</div>
       )}
     </>
   );
