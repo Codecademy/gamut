@@ -3,7 +3,7 @@ import cx from 'classnames';
 import React from 'react';
 
 import { ButtonDeprecated } from '../ButtonDeprecated';
-import { CardShell } from '../Card';
+import { CardShell } from '../DeprecatedCard';
 import { Overlay, OverlayProps } from '../Overlay';
 import styles from './styles.module.scss';
 

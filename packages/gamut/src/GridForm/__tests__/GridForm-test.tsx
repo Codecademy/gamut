@@ -1,3 +1,5 @@
+import { theme } from '@codecademy/gamut-styles';
+import { ThemeProvider } from '@emotion/react';
 import { mount } from 'enzyme';
 import React from 'react';
 import { act } from 'react-dom/test-utils';
@@ -23,11 +25,13 @@ describe('GridForm', () => {
     const textValue = 'Hooray!';
 
     const wrapped = mount(
-      <GridForm
-        fields={fields}
-        onSubmit={onSubmit}
-        submit={{ contents: <>Submit</>, size: 6 }}
-      />
+      <ThemeProvider theme={theme}>
+        <GridForm
+          fields={fields}
+          onSubmit={onSubmit}
+          submit={{ contents: <>Submit</>, size: 6 }}
+        />
+      </ThemeProvider>
     );
 
     const newValues = [
@@ -73,11 +77,13 @@ describe('GridForm', () => {
     const api = createPromise<{}>();
     const onSubmit = async (values: {}) => api.resolve(values);
     const wrapped = mount(
-      <GridForm
-        fields={fields}
-        onSubmit={onSubmit}
-        submit={{ contents: <>Submit</>, size: 6 }}
-      />
+      <ThemeProvider theme={theme}>
+        <GridForm
+          fields={fields}
+          onSubmit={onSubmit}
+          submit={{ contents: <>Submit</>, size: 6 }}
+        />
+      </ThemeProvider>
     );
 
     wrapped.setProps(wrapped.props());
@@ -100,12 +106,14 @@ describe('GridForm', () => {
       const onSubmit = async (values: {}) => api.resolve(values);
 
       const wrapped = mount(
-        <GridForm
-          fields={fields}
-          onSubmit={onSubmit}
-          submit={{ contents: <>Submit</>, size: 6 }}
-          validation="onSubmit"
-        />
+        <ThemeProvider theme={theme}>
+          <GridForm
+            fields={fields}
+            onSubmit={onSubmit}
+            submit={{ contents: <>Submit</>, size: 6 }}
+            validation="onSubmit"
+          />
+        </ThemeProvider>
       );
 
       wrapped.setProps(wrapped.props());
@@ -125,15 +133,20 @@ describe('GridForm', () => {
       const onSubmit = async (values: {}) => api.resolve(values);
 
       const wrapped = mount(
-        <GridForm
-          fields={fields}
-          onSubmit={onSubmit}
-          submit={{ contents: <>Submit</>, size: 6 }}
-          validation="onChange"
-        />
+        <ThemeProvider theme={theme}>
+          <GridForm
+            fields={fields}
+            onSubmit={onSubmit}
+            submit={{ contents: <>Submit</>, size: 6 }}
+            validation="onChange"
+          />
+        </ThemeProvider>
       );
 
-      wrapped.setProps(wrapped.props());
+      await act(async () => {
+        await wrapped.setProps(wrapped.props());
+      });
+      wrapped.update();
 
       expect(
         wrapped.find('button[type="submit"]').prop('disabled')
@@ -148,12 +161,14 @@ describe('GridForm', () => {
       const onSubmit = async (values: {}) => api.resolve(values);
 
       const wrapped = mount(
-        <GridForm
-          fields={fields}
-          onSubmit={onSubmit}
-          submit={{ contents: <>Submit</>, size: 6 }}
-          validation="onChange"
-        />
+        <ThemeProvider theme={theme}>
+          <GridForm
+            fields={fields}
+            onSubmit={onSubmit}
+            submit={{ contents: <>Submit</>, size: 6 }}
+            validation="onChange"
+          />
+        </ThemeProvider>
       );
 
       await act(async () => {
@@ -175,12 +190,13 @@ describe('GridForm', () => {
       const onSubmit = async (values: {}) => api.resolve(values);
 
       const wrapped = mount(
-        <GridForm
-          fields={[]}
-          onSubmit={onSubmit}
-          submit={{ contents: <>Submit</>, disabled: true, size: 6 }}
-          validation="onChange"
-        />
+        <ThemeProvider theme={theme}>
+          <GridForm
+            fields={[]}
+            onSubmit={onSubmit}
+            submit={{ contents: <>Submit</>, disabled: true, size: 6 }}
+          />
+        </ThemeProvider>
       );
 
       wrapped.setProps(wrapped.props());
@@ -191,37 +207,39 @@ describe('GridForm', () => {
 
   it('passes custom ids to the fields', () => {
     const form = mount(
-      <GridForm
-        fields={[
-          {
-            ...stubTextField,
-            id: 'mycoolid',
-          },
-          {
-            ...stubSelectField,
-            id: 'swaggy-id',
-          },
-          {
-            ...stubCheckboxField,
-            id: 'another-dank-id',
-          },
-          {
-            ...stubRadioGroupField,
-            id: 'and-another-one',
-            name: 'name',
-          },
-          {
-            ...stubTextareaField,
-            id: 'id-2-the-ego',
-          },
-          {
-            ...stubFileField,
-            id: 'fire-file',
-          },
-        ]}
-        onSubmit={jest.fn()}
-        submit={{ contents: <>Submit</>, size: 6 }}
-      />
+      <ThemeProvider theme={theme}>
+        <GridForm
+          fields={[
+            {
+              ...stubTextField,
+              id: 'mycoolid',
+            },
+            {
+              ...stubSelectField,
+              id: 'swaggy-id',
+            },
+            {
+              ...stubCheckboxField,
+              id: 'another-dank-id',
+            },
+            {
+              ...stubRadioGroupField,
+              id: 'and-another-one',
+              name: 'name',
+            },
+            {
+              ...stubTextareaField,
+              id: 'id-2-the-ego',
+            },
+            {
+              ...stubFileField,
+              id: 'fire-file',
+            },
+          ]}
+          onSubmit={jest.fn()}
+          submit={{ contents: <>Submit</>, size: 6 }}
+        />
+      </ThemeProvider>
     );
 
     expect(form.find('input#mycoolid').length).toBe(1);
