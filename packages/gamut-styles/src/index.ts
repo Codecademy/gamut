@@ -10,6 +10,7 @@ export * from './styles';
 export * from './globals';
 export * from './utilities';
 export * from './props';
+export { theme } from './theme';
 
 export type ThemeShape = typeof theme;
 
