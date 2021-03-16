@@ -4,7 +4,6 @@ import {
   styled,
   timing,
 } from '@codecademy/gamut-styles';
-import isPropValid from '@emotion/is-prop-valid';
 import { css } from '@emotion/react';
 
 export const ButtonInner = styled('span', {
