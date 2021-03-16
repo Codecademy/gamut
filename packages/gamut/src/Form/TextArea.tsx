@@ -1,9 +1,14 @@
-import cx from 'classnames';
-import React, { forwardRef, TextareaHTMLAttributes } from 'react';
+import styled from '@emotion/styled';
+import React, {
+  ChangeEvent,
+  forwardRef,
+  TextareaHTMLAttributes,
+  useState,
+} from 'react';
 
-import styles from './styles/TextArea.module.scss';
+import { conditionalStyles, formFieldStyles } from './styles/shared';
 
-export type TextAreaProps = TextareaHTMLAttributes<HTMLTextAreaElement> & {
+export type TextWrapperProps = TextareaHTMLAttributes<HTMLTextAreaElement> & {
   className?: string;
   error?: boolean;
   htmlFor?: string;
@@ -12,18 +17,35 @@ export type TextAreaProps = TextareaHTMLAttributes<HTMLTextAreaElement> & {
   value?: string;
 };
 
-export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
-  ({ error, htmlFor, className, id, ...rest }, ref) => {
-    const classNames = cx(
-      styles.TextArea,
-      {
-        [styles.error]: error,
-      },
-      className
-    );
+export interface TextAreaProps extends TextWrapperProps {
+  activated?: boolean;
+}
+
+const StyledTextArea = styled.textarea<TextAreaProps>`
+  ${formFieldStyles}
+  ${conditionalStyles}
+  position: initial;
+`;
+
+export const TextArea = forwardRef<HTMLTextAreaElement, TextWrapperProps>(
+  ({ error, className, id, ...rest }, ref) => {
+    const [activated, setActivated] = useState(false);
+
+    const changeHandler = (event: ChangeEvent<HTMLTextAreaElement>) => {
+      rest?.onChange?.(event);
+      setActivated(true);
+    };
 
     return (
-      <textarea {...rest} id={id || htmlFor} className={classNames} ref={ref} />
+      <StyledTextArea
+        {...rest}
+        id={id || rest.htmlFor}
+        className={className}
+        ref={ref}
+        error={error}
+        activated={activated}
+        onChange={(event) => changeHandler(event)}
+      />
     );
   }
 );

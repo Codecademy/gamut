@@ -5,7 +5,7 @@ import { ToolTipProps } from '../ToolTip';
 
 export type BaseFormField<Value> = {
   defaultValue?: Value;
-
+  customError?: string;
   disabled?: boolean;
 
   /**
