@@ -86,7 +86,7 @@ export const Input = forwardRef<HTMLInputElement, InputWrapperProps>(
       ? styledIconCreator(Icon, customIconStyles)
       : null;
 
-    const iconColor = error ? 'red' : valid ? 'green' : 'navy';
+    const iconColor = error ? 'red' : valid ? 'green' : 'gray-600';
 
     return (
       <Box position="relative">
