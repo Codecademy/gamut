@@ -7,6 +7,7 @@ Array [
   "AccordionButton",
   "Alert",
   "Anchor",
+  "AnchorBase",
   "AppBar",
   "AppBarSection",
   "AppWrapper",
