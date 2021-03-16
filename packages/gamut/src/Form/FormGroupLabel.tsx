@@ -86,7 +86,6 @@ export const FormGroupLabel: React.FC<FormGroupLabelProps> = ({
     >
       {children}
       {showRequired ? ' *' : ''}
-
       {tooltip && (
         <StyledToolTip>
           <ToolTip
