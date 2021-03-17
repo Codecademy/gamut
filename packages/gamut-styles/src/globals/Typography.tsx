@@ -21,6 +21,12 @@ const typographyGlobals = css`
     `
   )}
 
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box; /** 1 */
+  }
+
   h1,
   h2,
   h3,

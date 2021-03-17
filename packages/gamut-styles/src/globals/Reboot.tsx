@@ -11,7 +11,7 @@ const rebootStyles = css`
   * styles targeting irrelevant browsers while applying new styles.
   * Normalize is licensed MIT. https://github.com/necolas/normalize.css
   * Document
-  * 1 Change from 'box-sizing: content-box' so that 'width' is not affected by 'padding' or 'border'.
+  * 1 Change from 'box-sizing: content-box' so that 'width' is affected by 'padding' and 'border'.
   * 2 Change the default font family in all browsers.
   * 3 Correct the line height in all browsers.
   * 4 Prevent adjustments of font size after orientation changes in IE on Windows Phone and in iOS.
@@ -23,11 +23,11 @@ const rebootStyles = css`
   *,
   *::before,
   *::after {
-    box-sizing: inherit; /** 1 */
+    /* This is changed from content-box to border-box as all of our css relies on it */
+    box-sizing: border-box; /** 1 */
   }
 
   html {
-    box-sizing: border-box;
     font-family: sans-serif; /** 2 */
     line-height: 1.15; /** 3 */
     -webkit-text-size-adjust: 100%; /** 4 */
