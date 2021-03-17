@@ -14,6 +14,7 @@ export const createFontLinks = () => {
           href={`${filePath}.${ext}`}
           crossOrigin="anonymous"
           as="font"
+          type={`font/${ext}`}
         />
       )
     )

@@ -8,14 +8,20 @@ const { fontSize, spacing, fontWeight, lineHeight } = theme;
 
 const typographyGlobals = css`
   ${webFonts.map(
-    ({ name, style = 'normal', weight = 'normal', extensions, filePath }) => `
+    ({
+      name,
+      style = 'normal',
+      weight = 'normal',
+      extensions,
+      filePath,
+    }) => css`
       @font-face {
         font-display: swap;
-        font-family: "${name}";
+        font-family: '${name}';
         font-style: ${style};
         font-weight: ${weight};
         src: ${extensions
-          .map((ext) => `url(${filePath}.${ext}) format(${ext})`)
+          .map((ext) => `url(${filePath}.${ext}) format("${ext}")`)
           .join(', ')};
       }
     `

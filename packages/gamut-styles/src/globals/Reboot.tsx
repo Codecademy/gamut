@@ -276,7 +276,8 @@ Figures
     margin: 0 0 1rem;
   }
 
-  Images and content */ img {
+  /* Images and content */
+  img {
     vertical-align: middle;
     /* Remove the border on images inside links in IE 10-. */
     border-style: none;
@@ -371,12 +372,14 @@ Figures
   }
 
   /* Remove inner border and padding from Firefox, but don't restore the outline like Normalize. */
-  button::-moz-focus-inner,
-  [type='button']::-moz-focus-inner,
-  [type='reset']::-moz-focus-inner,
-  [type='submit']::-moz-focus-inner {
-    padding: 0;
-    border-style: none;
+  button,
+  [type='button'],
+  [type='reset'],
+  [type='submit'] {
+    &::-moz-focus-inner {
+      padding: 0;
+      border-style: none;
+    }
   }
 
   input[type='radio'],
