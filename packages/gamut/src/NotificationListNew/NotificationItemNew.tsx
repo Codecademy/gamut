@@ -31,6 +31,12 @@ const StyledImg = styled.img`
   width: 3rem;
 `;
 
+const StyledIconButton = styled(IconButton)`
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+`;
+
 const DateText = styled(Text)`
   margin-left: 4px;
   color: ${({ theme }) => theme.colors['gray-600']};
@@ -91,7 +97,7 @@ export const NotificationItemNew: React.FC<NotificationItemNewProps> = ({
         </Box>
         {handleDismiss && (
           <FlexBox alignSelf="end" paddingLeft={8}>
-            <IconButton
+            <StyledIconButton
               icon={MiniDeleteIcon}
               color={colors.navy}
               onClick={dismissNotification}
