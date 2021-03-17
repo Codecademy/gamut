@@ -11,7 +11,7 @@ const renderModal = (props?: Partial<ModalProps>) => {
   );
 };
 
-describe('Modal>', () => {
+describe('Modal', () => {
   it('renders children when isOpen is true', () => {
     const children = 'Hey';
     const { baseElement } = renderModal({ children });

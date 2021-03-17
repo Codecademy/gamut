@@ -1,5 +1,5 @@
 import { MiniDeleteIcon } from '@codecademy/gamut-icons';
-import { variant } from '@codecademy/gamut-styles';
+import { pxRem, variant } from '@codecademy/gamut-styles';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import React from 'react';
@@ -41,8 +41,8 @@ const ModalWrapper = styled.div(modes, ({ theme }) => {
   return css`
     position: relative;
     z-index: 1;
-    max-width: calc(100vw - 2rem);
-    width: 400px;
+    max-width: calc(100vw - ${theme.spacing[32]});
+    width: ${pxRem(400)};
     border-width: 1px;
     border-style: solid;
     border-radius: 2px;
@@ -73,10 +73,10 @@ const ModalBody = styled.div(({ theme }) => {
     background-color: inherit;
     display: grid;
     padding: ${theme.spacing[24]};
-    grid-template-columns: 1fr min-content 2rem;
-    grid-template-rows: repeat(3, auto);
     grid-row-gap: ${theme.spacing[12]};
     grid-column-gap: ${theme.spacing[16]};
+    grid-template-columns: 1fr min-content ${theme.spacing[32]};
+    grid-template-rows: repeat(3, auto);
     grid-template-areas:
       'title title close'
       'children children children'
@@ -114,7 +114,7 @@ export interface DialogProps
   extends Pick<OverlayProps, 'clickOutsideCloses' | 'escapeCloses'> {
   mode?: VisualTheme;
   isOpen: boolean;
-  title: string | React.ReactNode;
+  title: React.ReactNode;
   children: React.ReactNode;
   confirmCta: React.ComponentProps<typeof FillButton> & {
     onClick?: () => void;

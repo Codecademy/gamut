@@ -6,7 +6,7 @@ import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
   title={title}
   component={Dialog}
   parameters={{
-    subtitle: `Constrained Modal Dialog`,
+    subtitle: `Constrained Dialog Dialog`,
     status: 'stable',
     source: 'gamut',
     figmaId: 'lIQbbBHl6v80CevfWogVhr',
@@ -25,12 +25,12 @@ import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
 
 ## Use cases
 
-- Use regular modals to have users accept a specific state of the system or force a user to see something.
-- Use warning modals to warn the user of the consequences of the action they may take
+- Use regular Dialogs to have users accept a specific state of the system or force a user to see something.
+- Use warning Dialogs to warn the user of the consequences of the action they may take
 
 ## Key principles
 
-- Modals appear unprompted and require confirmation before the user can continue.
+- Dialogs appear unprompted and require confirmation before the user can continue.
 - Use the modal component sparingly. This is the most dispruptive tool in our arsenal. We should only have a small handful of these in our system at any given time.
 
 <Canvas>
@@ -41,22 +41,24 @@ import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
   </Story>
 </Canvas>
 
-<Props story="Modal" />
+<Props story="Dialog" />
 
-## Style
+## Usage Guidelines
 
-- Modals have a min-width of 400px
-- Modal height changes depending on the body-text length.
-- Modal has light and dark theme variants and each mode is colored differently.
-- Warning Modals should use a red CTA button (light mode: white text on #E91C11 background, dark mode: navy text on #E85D7F background)
-- Modals use pattern at 80% opacity to give component depth.
-- Modals should always be displayed over an overlay. The overlay in light mode should be white at 95% opacity, the overlay in dark mode should be black at 75% opacity.
+- Dialogs have a min-width of 400px
+- Dialog height changes depending on the body-text length.
+- Dialog has light and dark theme variants and each mode is colored differently.
+- Warning Dialogs should use a red CTA button (light mode: white text on #E91C11 background, dark mode: navy text on #E85D7F background)
+- Dialogs use pattern at 80% opacity to give component depth.
+- Dialogs should always be displayed over an overlay. The overlay in light mode should be white at 95% opacity, the overlay in dark mode should be black at 75% opacity.
 
 ## Location
 
-- Modals should be centered inside of the window.
+- Dialogs should be centered inside of the window.
 
 ## Color Modes
+
+We currently support 2 color modes for Dialog `dark` and `light`.
 
 ### Light
 
