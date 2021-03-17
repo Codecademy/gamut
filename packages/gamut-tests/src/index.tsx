@@ -12,7 +12,7 @@ function withThemeProvider<Props>(
   WrappedComponent: React.ComponentType<Props>
 ) {
   const WithBoundaryComponent: React.FC<Props> = (props) => (
-    <GamutProvider>
+    <GamutProvider useGlobals={false} useCache={false}>
       <WrappedComponent {...props} />
     </GamutProvider>
   );
