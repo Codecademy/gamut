@@ -12,6 +12,8 @@ import styled from '@emotion/styled';
 import React, { ReactElement } from 'react';
 
 import { Box, FlexBox, IconButton, Text } from '..';
+import { TextButtonInner } from '../Button';
+import { ButtonInner } from '../Button/ButtonInner';
 import { Notification } from '../NotificationList/typings';
 
 const StyledLink = styled.a`
@@ -35,9 +37,9 @@ const StyledImg = styled.img`
  this practice should not be replicated elsewhere */
 const StyledIconButton = styled(IconButton)`
   &:hover {
-    background-color: rgba(0, 0, 0, 0.05);
-    span {
-      background-color: rgba(0, 0, 0, 0.05) !important;
+    ${TextButtonInner} {
+      background-color: ${({ theme }) =>
+        theme.colors['gray-300']} !important; // this will break on darkmode
     }
   }
 `;
