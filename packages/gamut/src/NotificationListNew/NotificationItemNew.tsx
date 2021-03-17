@@ -31,9 +31,14 @@ const StyledImg = styled.img`
   width: 3rem;
 `;
 
+/* this targeted hover effect is needed for a specific case (dismiss icon is within another link, with its own background color change on hover)
+ this practice should not be replicated elsewhere */
 const StyledIconButton = styled(IconButton)`
   &:hover {
     background-color: rgba(0, 0, 0, 0.05);
+    span {
+      background-color: rgba(0, 0, 0, 0.05) !important;
+    }
   }
 `;
 
