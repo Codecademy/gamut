@@ -3,29 +3,29 @@ import React from 'react';
 
 export const FONT_ASSET_PATH = `https://static-assets.codecademy.com/gamut`;
 
-export const WEB_FONTS = [
+export const webFonts = [
   {
-    filePath: '/apercu-regular-pro',
+    filePath: `${FONT_ASSET_PATH}/apercu-regular-pro`,
     extensions: ['woff', 'woff2'],
     name: 'Apercu',
     rel: 'preload',
   },
   {
-    filePath: '/apercu-italic-pro',
+    filePath: `${FONT_ASSET_PATH}/apercu-italic-pro`,
     extensions: ['woff', 'woff2'],
     name: 'Apercu',
     style: 'italic',
     rel: 'prefetch',
   },
   {
-    filePath: '/apercu-bold-pro',
+    filePath: `${FONT_ASSET_PATH}/apercu-bold-pro`,
     extensions: ['woff', 'woff2'],
     name: 'Apercu',
     weight: 'bold',
     rel: 'preload',
   },
   {
-    filePath: '/apercu-bold-italic-pro',
+    filePath: `${FONT_ASSET_PATH}/apercu-bold-italic-pro`,
     extensions: ['woff', 'woff2'],
     name: 'Apercu',
     weight: 'bold',
@@ -33,14 +33,14 @@ export const WEB_FONTS = [
     rel: 'prefetch',
   },
   {
-    filePath: '/SuisseIntlMono-Bold-WebS',
+    filePath: `${FONT_ASSET_PATH}/SuisseIntlMono-Bold-WebS`,
     extensions: ['woff', 'woff2'],
     name: 'Suisse',
     weight: 'bold',
     rel: 'preload',
   },
   {
-    filePath: '/SuisseIntlMono-Regular-WebS',
+    filePath: `${FONT_ASSET_PATH}/SuisseIntlMono-Regular-WebS`,
     extensions: ['woff', 'woff2'],
     name: 'Suisse',
     rel: 'prefetch',
@@ -50,7 +50,7 @@ export const WEB_FONTS = [
 export const Fonts = () => (
   <Global
     styles={css(
-      WEB_FONTS.map(
+      webFonts.map(
         ({
           name,
           style = 'normal',
@@ -64,7 +64,7 @@ export const Fonts = () => (
             font-style: ${style};
             font-weight: ${weight};
             src: ${extensions
-              .map((ext) => `url(${FONT_ASSET_PATH}${filePath}.${ext})`)
+              .map((ext) => `url(${filePath}.${ext})`)
               .join(', ')};
           }
         `

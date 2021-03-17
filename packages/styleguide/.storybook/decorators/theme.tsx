@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { GamutProvider } from '@codecademy/gamut-styles';
+import { GamutThemeProvider } from '@codecademy/gamut-styles';
 
 /**
  * Story functions must be called as a regular function to avoid full-remounts
@@ -10,13 +10,13 @@ import { GamutProvider } from '@codecademy/gamut-styles';
 export const withEmotion = (Story: any, parameters) => {
   // Always give iframes the full provider
   if (parameters.viewMode === 'canvas') {
-    return <GamutProvider>{Story()}</GamutProvider>;
+    return <GamutThemeProvider useAssets>{Story()}</GamutThemeProvider>;
   }
 
   // Wrap all stories in minimal provider
   return (
-    <GamutProvider useCache={false} preload={false} useGlobals={false}>
+    <GamutThemeProvider useCache={false} useGlobals={false}>
       {Story()}
-    </GamutProvider>
+    </GamutThemeProvider>
   );
 };

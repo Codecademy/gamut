@@ -6,45 +6,27 @@ import {
   ThemeProvider,
 } from '@emotion/react';
 import React, { useEffect, useRef } from 'react';
-import { Helmet } from 'react-helmet';
 
 import { createEmotionCache } from './cache';
 import { Reboot, Typography } from './globals';
-import { FONT_ASSET_PATH, Fonts, WEB_FONTS } from './globals/Fonts';
+import { Fonts } from './globals/Fonts';
 import { theme, themeCssVariables } from './theme';
 
-export const createFontLinks = () => {
-  const links: React.ReactNode[] = [];
-  WEB_FONTS.forEach(({ filePath, extensions, rel }) =>
-    extensions.forEach((ext) =>
-      links.push(
-        <link
-          key={`${filePath}-${ext}`}
-          rel={ext === 'woff2' ? rel : 'prefetch'}
-          href={`${FONT_ASSET_PATH}${filePath}.${ext}`}
-          crossOrigin="anonymous"
-          as="font"
-          type={`font/${ext}`}
-        />
-      )
-    )
-  );
-  return links;
-};
-
-interface GamutProviderProps {
+export interface GamutProviderProps {
   useGlobals?: boolean;
   useCache?: boolean;
-  preload?: boolean;
+  useAssets?: boolean;
   cache?: EmotionCache;
 }
+
+const AssetProvider = React.lazy(() => import('./AssetProvider'));
 
 export const GamutProvider: React.FC<GamutProviderProps> = ({
   children,
   cache,
+  useAssets = false,
   useGlobals = true,
   useCache = true,
-  preload = true,
 }) => {
   const activeCache = useRef<EmotionCache>();
 
@@ -72,7 +54,7 @@ export const GamutProvider: React.FC<GamutProviderProps> = ({
 
   return (
     <>
-      {preload && <Helmet>{createFontLinks()}</Helmet>}
+      {useAssets && <AssetProvider />}
       {activeCache.current ? (
         <CacheProvider value={activeCache.current}>{tree}</CacheProvider>
       ) : (
