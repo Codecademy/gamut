@@ -28,22 +28,27 @@ export const GamutProvider: React.FC<GamutProviderProps> = ({
     useCache && (cache ?? createEmotionCache())
   );
 
-  const tree = (
-    <ThemeProvider theme={theme}>
-      {useGlobals && (
-        <>
-          <Global styles={css({ ':root': themeCssVariables })} />
-          <Reboot />
-          <Typography />
-        </>
-      )}
-      {children}
-    </ThemeProvider>
+  const globals = useGlobals && (
+    <>
+      <Typography />
+      <Reboot />
+      <Global styles={css({ ':root': themeCssVariables })} />
+    </>
   );
 
   if (activeCache.current) {
-    return <CacheProvider value={activeCache.current}>{tree}</CacheProvider>;
+    return (
+      <CacheProvider value={activeCache.current}>
+        {globals}
+        <ThemeProvider theme={theme}>{children}</ThemeProvider>
+      </CacheProvider>
+    );
   }
 
-  return tree;
+  return (
+    <>
+      {globals}
+      <ThemeProvider theme={theme}>{children}</ThemeProvider>
+    </>
+  );
 };

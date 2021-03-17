@@ -5,16 +5,15 @@ import { webFonts } from './remoteAssets/fonts';
 
 export const createFontLinks = () => {
   const links: React.ReactNode[] = [];
-  webFonts.forEach(({ filePath, extensions, rel }) =>
+  webFonts.forEach(({ filePath, extensions }) =>
     extensions.forEach((ext) =>
       links.push(
         <link
           key={`${filePath}-${ext}`}
-          rel={ext === 'woff2' ? rel : 'prefetch'}
+          rel="preload"
           href={`${filePath}.${ext}`}
           crossOrigin="anonymous"
           as="font"
-          type={`font/${ext}`}
         />
       )
     )
