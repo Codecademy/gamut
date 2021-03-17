@@ -28,17 +28,50 @@ const FlexContainer = styled(Container)`
   }
 `;
 
+type FeaturedInfoProps = {
+  mediaType: never;
+  title?: string;
+  desc?: string;
+};
+type FeaturedImageProps = {
+  mediaType: 'image';
+  imgSrc: string;
+  imgAlt: string;
+  title?: string;
+  desc?: string;
+};
+type FeaturedIconProps = {
+  mediaType: 'icon';
+  imgSrc: string;
+  imgAlt: string;
+  title?: string;
+  desc?: string;
+};
+type FeaturedStatProps = {
+  mediaType: 'stat';
+  statText: string;
+  title?: string;
+  desc?: string;
+};
+type FeaturedSomethingProps = {
+  mediaType: never;
+  imgSrc?: string;
+  imgAlt?: string;
+  statText?: string;
+  title?: string;
+  desc?: string;
+};
+type FeatureProps = { testId?: string } & (
+  | FeaturedInfoProps
+  | FeaturedImageProps
+  | FeaturedIconProps
+  | FeaturedStatProps
+  | FeaturedSomethingProps
+);
 export type PageFeaturesProps = BaseProps & {
   maxCols?: 1 | 2 | 3 | 4;
   featuresMedia?: 'image' | 'icon' | 'stat';
-  features: {
-    title?: string;
-    desc?: string;
-    imgSrc?: string;
-    imgAlt?: string;
-    statText?: string;
-    testId?: string;
-  }[];
+  features: FeatureProps[];
 };
 
 const rowRenderEach = (
@@ -113,15 +146,23 @@ export const PageFeatures: React.FC<PageFeaturesProps> = ({
       {renderEach(
         maxCols,
         features,
-        ({ testId, imgSrc, imgAlt, statText, title: featTitle, desc }) => (
+        ({
+          testId,
+          title: featTitle,
+          desc,
+          mediaType,
+          imgSrc,
+          imgAlt,
+          statText,
+        }) => (
           <Feature testId={testId}>
-            {featuresMedia === 'image' && (
-              <FeaturedImage src={imgSrc!} alt={imgAlt!} />
+            {(mediaType === 'image' || featuresMedia === 'image') && (
+              <FeaturedImage src={imgSrc} alt={imgAlt} />
             )}
-            {featuresMedia === 'icon' && (
-              <FeaturedIcon src={imgSrc!} alt={imgAlt!} />
+            {(mediaType === 'icon' || featuresMedia === 'icon') && (
+              <FeaturedIcon src={imgSrc} alt={imgAlt} />
             )}
-            {featuresMedia === 'stat' && (
+            {(mediaType === 'stat' || featuresMedia === 'stat') && (
               <FeaturedStat>{statText}</FeaturedStat>
             )}
             {featTitle && (
