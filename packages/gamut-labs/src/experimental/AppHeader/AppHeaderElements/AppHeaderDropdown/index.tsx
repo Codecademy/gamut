@@ -66,9 +66,7 @@ export const AppHeaderDropdown: React.FC<AppHeaderDropdownProps> = ({
       </AppHeaderTextTargetButton>
     );
 
-  const animationSpeed = 708;
   const popoverHeight = item.popover.length * 56 + 24;
-  const animationDuration = popoverHeight / animationSpeed;
 
   return (
     <>
@@ -84,11 +82,11 @@ export const AppHeaderDropdown: React.FC<AppHeaderDropdownProps> = ({
             targetRef={headerDropdownRef}
           >
             <motion.div
-              style={{ overflow: 'hidden' }}
-              initial={{ maxHeight: 0 }}
-              animate={{ maxHeight: popoverHeight }}
-              transition={{ duration: animationDuration }}
-              exit={{ maxHeight: 0 }}
+              style={{ overflow: 'hidden', top: '12px', position: 'relative' }}
+              initial={{ height: 0 }}
+              animate={{ height: popoverHeight }}
+              transition={{ duration: 0.175 }}
+              exit={{ height: 0 }}
             >
               <Box paddingX={24}>
                 <AppHeaderLinkSections action={action} item={item} />
