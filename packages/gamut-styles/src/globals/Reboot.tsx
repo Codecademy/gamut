@@ -4,7 +4,8 @@ import React from 'react';
 import { theme } from '../theme';
 
 const rebootStyles = css`
-  /**https://raw.githubusercontent.com/twbs/bootstrap/v4-dev/scss/_reboot.scss
+  /**
+  * https://raw.githubusercontent.com/twbs/bootstrap/v4-dev/scss/_reboot.scss
   * Reboot
   * Normalization of HTML elements, manually forked from Normalize.css to remove
   * styles targeting irrelevant browsers while applying new styles.
@@ -17,8 +18,6 @@ const rebootStyles = css`
   * 5 Setting @viewport causes scrollbars to overlap content in IE11 and Edge, so
   *    we force a non-overlapping, non-auto-hiding scrollbar to counteract.
   * 6 Change the default tap highlight to be completely transparent in iOS.
-
-
 */
 
   *,
@@ -37,8 +36,7 @@ const rebootStyles = css`
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0); /** 6 */
   }
 
-  /**stylelint-disable selector-list-comma-newline-after
-  Shim for "new" HTML5 structural elements to display correctly (IE10, older browsers) */
+  /**Shim for "new" HTML5 structural elements to display correctly (IE10, older browsers) */
 
   article,
   aside,
@@ -53,13 +51,12 @@ const rebootStyles = css`
   section {
     display: block;
   }
-  /* Body
-
+  /** Body
    1. Remove the margin in all browsers.
    2. As a best practice, apply a default \`background-color\`.
    3. Set an explicit initial text-align value so that we can later use the
       the \`inherit\` value on things like \`<th>\` elements.
-  */
+   */
 
   body {
     margin: 0;
@@ -70,12 +67,11 @@ const rebootStyles = css`
     text-align: left;
     background-color: ${theme.colors.white};
   }
-  /*
-  Suppress the focus outline on elements that cannot be accessed via keyboard.
+
+  /* Suppress the focus outline on elements that cannot be accessed via keyboard.
   This prevents an unwanted focus outline from appearing around elements that
   might still respond to pointer events.
- Credit: https://github.com/suitcss/base
-*/
+ Credit: https://github.com/suitcss/base */
 
   [tabindex='-1']:focus {
     outline: 0 !important;
@@ -94,14 +90,11 @@ const rebootStyles = css`
     /* 2 */
     overflow: visible;
   }
+  /* Typography */
   /*
- Typography
-
-
   Remove top margins from headings
- By default, \`<h1>\`-\`<h6>\` all receive top and bottom margins. We nuke the top
+   By default, \`<h1>\`-\`<h6>\` all receive top and bottom margins. We nuke the top
   margin for easier control within type scales as it avoids margin collapsing.
-  stylelint-disable selector-list-comma-newline-after
 */
 
   h1,
@@ -114,11 +107,10 @@ const rebootStyles = css`
   }
 
   /*
-
   Reset margins on paragraphs
- Similarly, the top margin on \`<p>\`s get reset. However, we also reset the
+  Similarly, the top margin on \`<p>\`s get reset. However, we also reset the
   bottom margin to use \`rem\` units instead of \`em\`.
-*/
+  */
 
   p {
     margin-top: 0;
@@ -127,11 +119,11 @@ const rebootStyles = css`
 
   /*
   Abbreviations
- 1. Remove the bottom border in Firefox 39-.
+  1. Remove the bottom border in Firefox 39-.
   2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
   3. Add explicit cursor to indicate changed behavior.
   4. Duplicate behavior to the data-* attribute for our tooltip plugin
-*/
+  */
 
   abbr[title],
   abbr[data-original-title] {
@@ -228,12 +220,13 @@ const rebootStyles = css`
       text-decoration: underline;
     }
   }
+
   /*
-And undo these styles for placeholder links/named anchors (without href)
-which have not been made explicitly keyboard-focusable (without tabindex).
-It would be more straightforward to just use a[href] in previous block, but that
-causes specificity issues in many other styles that are too complex to fix.
-*/
+  And undo these styles for placeholder links/named anchors (without href)
+  which have not been made explicitly keyboard-focusable (without tabindex).
+  It would be more straightforward to just use a[href] in previous block, but that
+  causes specificity issues in many other styles that are too complex to fix.
+  */
 
   a:not([href]):not([tabindex]) {
     color: inherit;
@@ -277,19 +270,13 @@ causes specificity issues in many other styles that are too complex to fix.
 
   /*
 Figures
-
-
-figure {
-  Apply a consistent margin strategy (matches our type styles).
-  margin: 0 0 1rem;
-}
-
-
-Images and content
-
 */
+  figure {
+    /* Apply a consistent margin strategy (matches our type styles). */
+    margin: 0 0 1rem;
+  }
 
-  img {
+  Images and content */ img {
     vertical-align: middle;
     /* Remove the border on images inside links in IE 10-. */
     border-style: none;
@@ -334,11 +321,13 @@ Images and content
   button {
     border-radius: 0;
   }
+
   /*
-Work around a Firefox/IE bug where the transparent \`button\` background
-results in a loss of the default \`button\` focus styles.
-Credit: https://github.com/suitcss/base/
-*/
+  Work around a Firefox/IE bug where the transparent \`button\` background
+  results in a loss of the default \`button\` focus styles.
+  Credit: https://github.com/suitcss/base/
+  */
+
   button:focus-visible {
     outline: 1px dotted;
     outline: 5px auto -webkit-focus-ring-color;
@@ -369,10 +358,10 @@ Credit: https://github.com/suitcss/base/
   }
 
   /*
-1. Prevent a WebKit bug where (2) destroys native \`audio\` and \`video\`
-   controls in Android 4.
-2. Correct the inability to style clickable types in iOS and Safari.
-*/
+  1. Prevent a WebKit bug where (2) destroys native \`audio\` and \`video\`
+    controls in Android 4.
+  2. Correct the inability to style clickable types in iOS and Safari.
+  */
   button,
   html [type='button'],
   [type='reset'],
@@ -403,10 +392,10 @@ Credit: https://github.com/suitcss/base/
   input[type='datetime-local'],
   input[type='month'] {
     /* Remove the default appearance of temporal inputs to avoid a Mobile Safari
-  bug where setting a custom line-height prevents text from being vertically
-  centered within the input.
-  See https://bugs.webkit.org/show_bug.cgi?id=139848
-  and https://github.com/twbs/bootstrap/issues/11266 */
+    bug where setting a custom line-height prevents text from being vertically
+    centered within the input.
+    See https://bugs.webkit.org/show_bug.cgi?id=139848
+    and https://github.com/twbs/bootstrap/issues/11266 */
     -webkit-appearance: listbox;
   }
 
@@ -459,10 +448,12 @@ Credit: https://github.com/suitcss/base/
   }
 
   [type='search'] {
-    /*This overrides the extra rounded corners on search inputs in iOS so that our
-  \`.form-control\` class can properly style them. Note that this cannot simply
-  be added to \`.form-control\` as it's not specific enough. For details, see
-  https://github.com/twbs/bootstrap/issues/11586.*/
+    /*
+    This overrides the extra rounded corners on search inputs in iOS so that our
+    \`.form-control\` class can properly style them. Note that this cannot simply
+    be added to \`.form-control\` as it's not specific enough. For details, see
+    https://github.com/twbs/bootstrap/issues/11586.
+    */
     /* 2. Correct the outline style in Safari. */
     outline-offset: -2px;
     -webkit-appearance: none;
@@ -475,8 +466,10 @@ Credit: https://github.com/suitcss/base/
     -webkit-appearance: none;
   }
 
-  /* 1. Correct the inability to style clickable types in iOS and Safari.
-2. Change font properties to \`inherit\` in Safari.  */
+  /*
+  1. Correct the inability to style clickable types in iOS and Safari.
+  2. Change font properties to \`inherit\` in Safari.
+  */
   ::-webkit-file-upload-button {
     /* 2 */
     font: inherit;
@@ -501,8 +494,10 @@ Credit: https://github.com/suitcss/base/
     display: none;
   }
 
-  /* Always hide an element with the \`hidden\` HTML attribute (from PureCSS).
-Needed for proper display in IE 10-. */
+  /*
+  Always hide an element with the \`hidden\` HTML attribute (from PureCSS).
+  Needed for proper display in IE 10-.
+  */
   [hidden] {
     display: none !important;
   }
