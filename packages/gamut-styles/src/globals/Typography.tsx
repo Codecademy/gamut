@@ -21,7 +21,7 @@ const typographyGlobals = css`
         font-style: ${style};
         font-weight: ${weight};
         src: ${extensions
-          .map((ext) => `url(${filePath}.${ext}) format("${ext}")`)
+          .map((ext) => `url("${filePath}.${ext}") format("${ext}")`)
           .join(', ')};
       }
     `
