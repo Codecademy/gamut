@@ -45,7 +45,7 @@ export interface InputWrapperProps extends InputProps {
     >
   >;
   /**
-   * An custom icon svg from gamut-icons.
+   * A custom icon svg from gamut-icons.
    */
   icon?: typeof icons[keyof typeof icons];
 }
