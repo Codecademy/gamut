@@ -7,6 +7,7 @@ import { Parameters } from '@storybook/addons';
 import { useKind } from '../TableOfContents/utils';
 import { Box, SectionLink } from '../TableOfContents/elements';
 import { GamutProvider } from '@codecademy/gamut-styles';
+import AssetProvider from '@codecademy/gamut-styles/src/AssetProvider';
 
 export const Link = styled.a`
   display: inline-flex;
@@ -99,6 +100,7 @@ export const Page: React.FC = ({ children }) => {
 
   return (
     <GamutProvider>
+      <AssetProvider />
       <Header marginBottom="1rem">
         <BreadCrumbs path={path} />
         <HeaderRow>

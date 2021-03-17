@@ -10,7 +10,7 @@ import { GamutProvider } from '@codecademy/gamut-styles';
 export const withEmotion = (Story: any, parameters) => {
   // Always give iframes the full provider
   if (parameters.viewMode === 'canvas') {
-    return <GamutProvider useAssets>{Story()}</GamutProvider>;
+    return <GamutProvider>{Story()}</GamutProvider>;
   }
 
   // Wrap all stories in minimal provider

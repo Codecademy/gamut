@@ -14,14 +14,12 @@ import { theme, themeCssVariables } from './theme';
 export interface GamutProviderProps {
   useGlobals?: boolean;
   useCache?: boolean;
-  useAssets?: boolean;
   cache?: EmotionCache;
 }
 
 export const GamutProvider: React.FC<GamutProviderProps> = ({
   children,
   cache,
-  useAssets = false,
   useGlobals = true,
   useCache = true,
 }) => {
