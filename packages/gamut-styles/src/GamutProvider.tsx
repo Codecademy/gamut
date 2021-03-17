@@ -5,7 +5,7 @@ import {
   Global,
   ThemeProvider,
 } from '@emotion/react';
-import React, { useEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 
 import { createEmotionCache } from './cache';
 import { Reboot, Typography } from './globals';
@@ -18,8 +18,6 @@ export interface GamutProviderProps {
   cache?: EmotionCache;
 }
 
-const AssetProvider = React.lazy(() => import('./AssetProvider'));
-
 export const GamutProvider: React.FC<GamutProviderProps> = ({
   children,
   cache,
@@ -27,17 +25,12 @@ export const GamutProvider: React.FC<GamutProviderProps> = ({
   useGlobals = true,
   useCache = true,
 }) => {
-  const activeCache = useRef<EmotionCache>();
+  // Do not initialize a new cache if one has been provided as props
+  const activeCache = useRef<EmotionCache | false>(
+    useCache && (cache ?? createEmotionCache())
+  );
 
-  useEffect(() => {
-    if (cache) {
-      activeCache.current = cache;
-    } else if (useCache) {
-      activeCache.current = createEmotionCache();
-    }
-  }, [useCache, cache]);
-
-  const tree = (
+  let tree = (
     <ThemeProvider theme={theme}>
       {useGlobals && (
         <>
@@ -50,14 +43,9 @@ export const GamutProvider: React.FC<GamutProviderProps> = ({
     </ThemeProvider>
   );
 
-  return (
-    <>
-      {useAssets && <AssetProvider />}
-      {activeCache.current ? (
-        <CacheProvider value={activeCache.current}>{tree}</CacheProvider>
-      ) : (
-        tree
-      )}
-    </>
-  );
+  if (activeCache.current) {
+    return <CacheProvider value={activeCache.current}>{tree}</CacheProvider>;
+  }
+
+  return tree;
 };
