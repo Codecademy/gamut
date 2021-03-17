@@ -1,55 +1,52 @@
 import { setupEnzyme } from '@codecademy/gamut-tests';
 
-import { Select } from '../Select';
+import { FormGroup } from '../FormGroup';
 
-const selectOptions = ['red', 'yellow', 'green'];
-const defaultProps = {
-  options: selectOptions,
-  id: 'colors',
-};
+const renderWrapper = setupEnzyme(FormGroup, {});
 
-const selectOptionsObject = {
-  red: 'red',
-  yellow: 'yellow',
-  green: 'green',
-};
-
-const renderWrapper = setupEnzyme(Select, {
-  options: selectOptionsObject,
-  id: 'colors',
-});
-
-describe('Select', () => {
-  it('sets the id prop on the select tag', () => {
-    const { wrapper } = renderWrapper();
-    expect(wrapper.find('SelectBase').props().id).toBe(defaultProps.id);
+describe('FormGroup', () => {
+  it('renders Label as a label when htmlFor is provided', () => {
+    const { wrapper } = renderWrapper({ label: 'up dog', htmlFor: 'up-dog' });
+    expect(wrapper.find('label').text()).toBe('up dog');
   });
 
-  it('renders the same number of option as options', () => {
-    const { wrapper } = renderWrapper();
+  it('renders Label as a div when no htmlFor is provided', () => {
+    const { wrapper } = renderWrapper({ label: 'up dog' });
+    const labelWrapper = wrapper.find('Label');
 
-    expect(wrapper.find('SelectBase').props().children).toHaveLength(
-      defaultProps.options.length
+    expect(labelWrapper.find('label').exists()).toBe(false);
+    expect(labelWrapper.find('div').text()).toBe('up dog');
+  });
+
+  it('adds an asterisk to showRequired labels', () => {
+    const { wrapper } = renderWrapper({
+      label: 'up dog',
+      htmlFor: 'up-dog',
+      showRequired: true,
+    });
+    expect(wrapper.find('label').text()).toBe('up dog *');
+  });
+
+  it('renders description', () => {
+    const { wrapper } = renderWrapper({
+      label: 'up dog',
+      description:
+        "i don't know what up dog is and at this point i'm too afraid to ask.",
+    });
+    expect(wrapper.find('FormGroupDescription').text()).toBe(
+      "i don't know what up dog is and at this point i'm too afraid to ask."
     );
   });
 
-  it('sets the key of option tags using the form of `${id}-${value} when the prop id is passed`', () => {
-    const { wrapper } = renderWrapper();
+  it('renders error text', () => {
+    const { wrapper } = renderWrapper({
+      label: 'up dog',
+      error: 'there is no up dog here...',
+    });
+    const labelWrapper = wrapper.find('FormError');
 
-    const keyWithId = `${defaultProps.id}-${selectOptions[0]}`;
-
-    const getByTestId = wrapper.find(`option[data-testid="${keyWithId}"]`);
-
-    expect(getByTestId.exists()).toBe(true);
-  });
-
-  it('renders options when options is an object', () => {
-    const { wrapper } = renderWrapper();
-
-    const keyWithId = `${defaultProps.id}-${selectOptions[0]}`;
-
-    const getByTestId = wrapper.find(`option[data-testid="${keyWithId}"]`);
-
-    expect(getByTestId.exists()).toBe(true);
+    expect(labelWrapper.find('FormError').text()).toBe(
+      'there is no up dog here...'
+    );
   });
 });
