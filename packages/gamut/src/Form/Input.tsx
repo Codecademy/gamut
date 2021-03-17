@@ -1,4 +1,4 @@
-import { AlertIcon, CheckCircledIcon } from '@codecademy/gamut-icons';
+import * as icons from '@codecademy/gamut-icons';
 import styled, { StyledComponent } from '@emotion/styled';
 import React, {
   ChangeEvent,
@@ -47,7 +47,7 @@ export interface InputWrapperProps extends InputProps {
   /**
    * An custom icon svg from gamut-icons.
    */
-  icon?: typeof AlertIcon;
+  icon?: typeof icons[keyof typeof icons];
 }
 
 export const iFrameWrapper = styled.div<conditionalInputStyleProps>`
@@ -64,8 +64,11 @@ const InputElement = styled.input<StyledInputProps>`
   text-indent: 0;
 `;
 
-const StyledAlertIcon = styledIconCreator(AlertIcon, iconStyles);
-const StyledCheckCircledIcon = styledIconCreator(CheckCircledIcon, iconStyles);
+const StyledAlertIcon = styledIconCreator(icons.AlertIcon, iconStyles);
+const StyledCheckCircledIcon = styledIconCreator(
+  icons.CheckCircledIcon,
+  iconStyles
+);
 
 export const Input = forwardRef<HTMLInputElement, InputWrapperProps>(
   ({ error, className, id, valid, as: As, icon: Icon, ...rest }, ref) => {

@@ -1,5 +1,10 @@
 import { AlertIcon } from '@codecademy/gamut-icons';
-import { properties, pxRem, theme } from '@codecademy/gamut-styles';
+import {
+  properties,
+  pxRem,
+  shouldForwardProp,
+  theme,
+} from '@codecademy/gamut-styles';
 import { css, SerializedStyles } from '@emotion/react';
 import styled from '@emotion/styled';
 import { StandardPropertiesHyphen } from 'csstype';
@@ -82,7 +87,10 @@ export const styledIconCreator = (
   Icon: typeof AlertIcon,
   styles: SerializedStyles
 ) => {
-  const StyledIcon = styled(Icon)(styles, properties.textColor);
+  const StyledIcon = styled(Icon, { shouldForwardProp })(
+    styles,
+    properties.textColor
+  );
   return StyledIcon;
 };
 
