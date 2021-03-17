@@ -13,7 +13,6 @@ import React, { ReactElement } from 'react';
 
 import { Box, FlexBox, IconButton, Text } from '..';
 import { TextButtonInner } from '../Button';
-import { ButtonInner } from '../Button/ButtonInner';
 import { Notification } from '../NotificationList/typings';
 
 const StyledLink = styled.a`
