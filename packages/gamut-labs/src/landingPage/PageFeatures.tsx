@@ -113,7 +113,7 @@ const renderEach = (
   items: PageFeaturesProps['features'],
   itemRenderer: (item: PageFeaturesProps['features'][0]) => ReactNode
 ): ReactNode => {
-  if (maxCols === undefined) {
+  if (maxCols === undefined || maxCols === null) {
     return rowRenderEach(items, itemRenderer);
   }
   if (maxCols > 0 && maxCols <= 4) {
