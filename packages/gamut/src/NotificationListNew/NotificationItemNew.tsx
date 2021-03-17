@@ -7,12 +7,11 @@ import {
   Megaphone,
   New,
 } from '@codecademy/gamut-illustrations';
-import { Text } from '@codecademy/gamut-labs';
 import { colors } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React, { ReactElement } from 'react';
 
-import { Box, FlexBox, IconButton } from '..';
+import { Box, FlexBox, IconButton, Text } from '..';
 import { Notification } from '../NotificationList/typings';
 
 const StyledLink = styled.a`
@@ -30,6 +29,11 @@ const StyledImg = styled.img`
   border: 1px solid ${({ theme }) => theme.colors.navy};
   height: 3rem;
   width: 3rem;
+`;
+
+const DateText = styled(Text)`
+  margin-left: 4px;
+  color: ${({ theme }) => theme.colors['gray-600']};
 `;
 
 export type NotificationItemNewProps = {
@@ -78,12 +82,12 @@ export const NotificationItemNew: React.FC<NotificationItemNewProps> = ({
       <FlexBox paddingY={24} justifyContent="space-between" paddingX={32}>
         {getIcon()}
         <Box flexBasis={0} flexGrow={1} paddingLeft={12} textColor="navy">
-          <Text as="span" fontSize={14}>
+          <Text as="span" fontSize="sm">
             {text}
           </Text>
-          <Text as="span" fontSize={14} textColor="gray-600" marginLeft={4}>
+          <DateText as="span" fontSize="sm">
             {date}
-          </Text>
+          </DateText>
         </Box>
         {handleDismiss && (
           <FlexBox alignSelf="end" paddingLeft={8}>
