@@ -221,7 +221,7 @@ export const Reboot = () => (
 
       a {
         color: ${theme.colors.hyper};
-        text-decoration: underline;
+        text-decoration: none;
 
         background-color: transparent;
         -webkit-text-decoration-skip: objects;

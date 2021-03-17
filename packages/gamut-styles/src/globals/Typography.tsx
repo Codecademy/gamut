@@ -1,13 +1,30 @@
 import { css, Global } from '@emotion/react';
 import React from 'react';
 
+import { webFonts } from '../remoteAssets/fonts';
 import { theme } from '../theme';
 
 const { fontSize, spacing, fontWeight, lineHeight } = theme;
 
+const fontFaces = css`
+  ${webFonts.map(
+    ({ name, style = 'normal', weight = 'normal', extensions, filePath }) => `
+      @font-face {
+        font-display: swap;
+        font-family: '${name}';
+        font-style: ${style};
+        font-weight: ${weight};
+        src: ${extensions.map((ext) => `url(${filePath}.${ext})`).join(', ')};
+      }
+    `
+  )}
+`;
+
 export const Typography = () => (
   <Global
     styles={css`
+      ${fontFaces}
+
       h1,
       h2,
       h3,

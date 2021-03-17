@@ -1,7 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 
-import { webFonts } from './globals';
+import { webFonts } from './remoteAssets/fonts';
 
 export const createFontLinks = () => {
   const links: React.ReactNode[] = [];

@@ -9,7 +9,6 @@ import React, { useEffect, useRef } from 'react';
 
 import { createEmotionCache } from './cache';
 import { Reboot, Typography } from './globals';
-import { Fonts } from './globals/Fonts';
 import { theme, themeCssVariables } from './theme';
 
 export interface GamutProviderProps {
@@ -45,7 +44,6 @@ export const GamutProvider: React.FC<GamutProviderProps> = ({
           <Global styles={css({ ':root': themeCssVariables })} />
           <Reboot />
           <Typography />
-          <Fonts />
         </>
       )}
       {children}
