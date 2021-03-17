@@ -30,7 +30,7 @@ export const GamutProvider: React.FC<GamutProviderProps> = ({
     useCache && (cache ?? createEmotionCache())
   );
 
-  let tree = (
+  const tree = (
     <ThemeProvider theme={theme}>
       {useGlobals && (
         <>
