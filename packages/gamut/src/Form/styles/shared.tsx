@@ -148,6 +148,7 @@ export const formBaseFieldStyles = css`
     border-color: ${colorStates.hover.borderColor};
     box-shadow: inset 0 0 0 1px ${colorStates.hover.borderColor};
   }
+
   &::placeholder {
     color: ${colorStates.base.placeholder};
     font-style: italic;
