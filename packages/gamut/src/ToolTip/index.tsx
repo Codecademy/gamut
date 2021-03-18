@@ -12,12 +12,7 @@ export type ToolTipPosition =
 
 const arrowWidth = `1rem`;
 const arrowHeight = `0.5rem`;
-const arrowPaddingHorizontal = `1.5rem`;
-
 const containerOffsetVertical = `0.75rem`;
-
-const arrowOffsetHorizontal = `calc(${arrowPaddingHorizontal} - (${arrowWidth} / 2))`;
-const arrowOffsetVertical = `calc(-${arrowHeight} / 2)`;
 
 const slightShadow = `rgba(0, 0, 0, 0.15)`;
 
@@ -126,7 +121,7 @@ const ToolTipContainer = styled.div<ToolTipContainerProps>`
 
       &::after,
       &::before {
-        right: ${arrowOffsetHorizontal};
+        right: ${arrowWidth};
       }
     `}
 
@@ -135,7 +130,7 @@ const ToolTipContainer = styled.div<ToolTipContainerProps>`
     `
       &::after,
       &::before {
-        left: ${arrowOffsetHorizontal};
+        left: ${arrowWidth};
       }
     `}
 `;
