@@ -4,31 +4,17 @@ import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import React, { HTMLAttributes } from 'react';
 
-import { ToolTip, ToolTipProps } from '..';
+import { ToolTip, ToolTipProps } from '../ToolTip';
 import { formBaseStyles } from './styles/shared';
 
-// type StyledToolTipProps = {
-//   zIndex: number;
-// };
-
-// const StyledToolTipContainer = styled.span<StyledToolTipProps>`
-//   position: absolute;
-//   left: calc(100% - 1.1rem);
-
-//   /* div {
-//     > *:last-child {
-//       z-index: ${({ zIndex }) => zIndex};
-//       left: calc(100% - 1.7rem);
-//     }
-//     &::after,
-//     &::before {
-//       z-index: ${({ zIndex }) => zIndex};
-//     }
-//   } */
-// `;
+const StyledToolTipContainer = styled.span`
+  position: absolute;
+  left: calc(100% - 1.1rem);
+`;
 
 const StyledToolTip = styled(ToolTip)`
-  margin-left: 23px;
+  margin-left: -0.9rem;
+  z-index: 1;
 `;
 
 export type FormGroupLabelProps = HTMLAttributes<HTMLDivElement> &
@@ -105,14 +91,14 @@ export const FormGroupLabel: React.FC<FormGroupLabelProps> = ({
       {children}
       {showRequired ? ' *' : ''}
       {tooltip && (
-        // <StyledToolTipContainer zIndex={1}>
-        <StyledToolTip
-          {...tooltip}
-          id={`${htmlFor}-tooltip`}
-          position="bottom-right"
-          target={<MiniInfoOutlineIcon height="0.8rem" width="0.8rem" />}
-        />
-        // </StyledToolTipContainer>
+        <StyledToolTipContainer>
+          <StyledToolTip
+            {...tooltip}
+            id={`${htmlFor}-tooltip`}
+            position="bottom-right"
+            target={<MiniInfoOutlineIcon height="0.8rem" width="0.8rem" />}
+          />
+        </StyledToolTipContainer>
       )}
     </Label>
   );
