@@ -37,7 +37,9 @@ export const AppHeaderSubMenuTarget: React.FC<AppHeaderSubMenuTargetProps> = ({
 
   return (
     <Anchor
+      display="inline-flex"
       variant="interface"
+      width="100%"
       data-testid={item.dataTestId}
       onClick={(event: React.MouseEvent) => openSubMenu(event, item)}
       aria-label={`open ${item} submenu`}

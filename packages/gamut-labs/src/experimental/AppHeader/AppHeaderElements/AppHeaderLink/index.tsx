@@ -9,7 +9,9 @@ export type AppHeaderLinkProps = {
   item: AppHeaderLinkItem;
 };
 
-const Link = styled(Anchor)`
+export const HeaderLink = styled(Anchor)`
+  display: inline-flex;
+  align-items: center;
   white-space: nowrap;
 `;
 
@@ -18,7 +20,7 @@ export const AppHeaderLink: React.FC<AppHeaderLinkProps> = ({
   item,
 }) => {
   return (
-    <Link
+    <HeaderLink
       data-testid={item.dataTestId}
       data-intellimize={item.dataIntellimizeId}
       href={item.href}
@@ -30,6 +32,6 @@ export const AppHeaderLink: React.FC<AppHeaderLinkProps> = ({
       textAlign="left"
     >
       {item.text}
-    </Link>
+    </HeaderLink>
   );
 };

@@ -5,6 +5,7 @@ import React from 'react';
 
 import { Text } from '../../../experimental/Text';
 import { AppHeaderDropdownProps } from '../../AppHeader/AppHeaderElements/AppHeaderDropdown';
+import { HeaderLink } from '../../AppHeader/AppHeaderElements/AppHeaderLink';
 import { AppHeaderLinkSections } from '../../AppHeader/AppHeaderElements/AppHeaderLinkSections';
 
 export type AppHeaderSubMenuMobileProps = AppHeaderDropdownProps & {
@@ -22,7 +23,7 @@ export const AppHeaderSubMenuMobile: React.FC<AppHeaderSubMenuMobileProps> = ({
 }) => {
   return (
     <Box aria-labelledby={`${item.text} menu`}>
-      <Anchor
+      <HeaderLink
         onClick={handleClose}
         type="button"
         variant="interface"
@@ -32,7 +33,7 @@ export const AppHeaderSubMenuMobile: React.FC<AppHeaderSubMenuMobileProps> = ({
         <Box fontSize={16} marginLeft={8}>
           Full Menu
         </Box>
-      </Anchor>
+      </HeaderLink>
       <Heading as="h1" fontSize={22} marginBottom={16} fontWeight="title">
         {item.type === 'profile-dropdown' ? item.userDisplayName : item.text}
       </Heading>

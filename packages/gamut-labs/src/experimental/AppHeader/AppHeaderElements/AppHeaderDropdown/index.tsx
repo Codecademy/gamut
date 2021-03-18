@@ -1,10 +1,11 @@
-import { Anchor, Box, FlexBox } from '@codecademy/gamut';
+import { Box, FlexBox } from '@codecademy/gamut';
 import { ArrowChevronDownFilledIcon } from '@codecademy/gamut-icons';
 import styled from '@emotion/styled';
 import React, { useRef, useState } from 'react';
 
 import { Popover } from '../../../Popover';
 import { AppHeaderAvatar } from '../AppHeaderAvatar';
+import { HeaderLink } from '../AppHeaderLink';
 import { AppHeaderLinkSections } from '../AppHeaderLinkSections';
 import { AppHeaderClickHandler, AppHeaderDropdownItem } from '../types';
 
@@ -35,7 +36,7 @@ export const AppHeaderDropdown: React.FC<AppHeaderDropdownProps> = ({
   };
   const clickTarget =
     item.type === 'profile-dropdown' ? (
-      <Anchor
+      <HeaderLink
         ref={headerDropdownRef}
         variant="interface"
         paddingY={4}
@@ -44,12 +45,13 @@ export const AppHeaderDropdown: React.FC<AppHeaderDropdownProps> = ({
         <FlexBox display="inline-flex" alignItems="center">
           <AppHeaderAvatar imageUrl={item.avatar} />
         </FlexBox>
-      </Anchor>
+      </HeaderLink>
     ) : (
-      <Anchor
+      <HeaderLink
         ref={headerDropdownRef}
         variant="interface"
         paddingY={8}
+        paddingRight={isOpen ? 0 : 4}
         fontWeight={isOpen ? 'title' : 'base'}
         onClick={(event) => toggleIsOpen(event)}
       >
@@ -57,7 +59,7 @@ export const AppHeaderDropdown: React.FC<AppHeaderDropdownProps> = ({
           {item.text}
           <Caret size={12} aria-label="dropdown" isOpen={isOpen} />
         </FlexBox>
-      </Anchor>
+      </HeaderLink>
     );
 
   return (
