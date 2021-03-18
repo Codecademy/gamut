@@ -11,8 +11,9 @@ import { colors } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React, { ReactElement } from 'react';
 
-import { Box, FlexBox, IconButton, Text } from '..';
+import { Box, FlexBox, IconButton } from '..';
 import { Notification } from '../NotificationList/typings';
+import { Text } from '../Typography/Text';
 
 const StyledLink = styled.a`
   text-decoration: none;
