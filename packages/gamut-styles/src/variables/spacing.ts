@@ -15,4 +15,5 @@ export const spacing = {
   32: pxRem(32),
   48: pxRem(48),
   64: pxRem(64),
+  96: pxRem(96),
 } as const;
