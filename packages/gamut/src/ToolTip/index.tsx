@@ -157,7 +157,20 @@ const ToolTipBody = styled.div<{ mode: VisualTheme }>`
 
 export type ToolTipProps = {
   children?: ReactNode;
+
+  /**
+   * Class name for the hidden-by-default contents.
+   *
+   * @remarks
+   * This is an inner element, not the outermost positioning element.
+   * That element is styled with `containerClassName`.
+   */
   className?: string;
+
+  /**
+   * Class name for the outermost positioning element.
+   */
+  containerClassName?: string;
 
   /**
    * Whether to manually add a tabIndex of 0, such as for tooltips containing actual buttons.
@@ -167,21 +180,20 @@ export type ToolTipProps = {
   mode?: VisualTheme;
   position?: ToolTipPosition;
   target?: ReactNode;
-  tipClassName?: string;
 };
 
 export const ToolTip: React.FC<ToolTipProps> = ({
   children,
   className,
+  containerClassName,
   focusable,
   id,
+  mode = 'light',
   position = 'top-right',
   target,
-  tipClassName,
-  mode = 'light',
 }) => {
   return (
-    <TooltipWrapper className={className}>
+    <TooltipWrapper className={containerClassName}>
       <TargetContainer
         aria-labelledby={id}
         // ToolTips sometimes contain actual <button>s, which cannot be a child of a button.
@@ -193,7 +205,7 @@ export const ToolTip: React.FC<ToolTipProps> = ({
         {target}
       </TargetContainer>
       <ToolTipContainer
-        className={tipClassName}
+        className={className}
         id={id}
         position={position}
         role="tooltip"
