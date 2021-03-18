@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [32.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@31.1.1...@codecademy/styleguide@32.0.0) (2021-03-18)
+
+
+### ⚠ BREAKING CHANGES
+
+* **ContentContainer:** update responsive padding
+
+### Features
+
+* **ContentContainer:** update responsive padding ([4f66f22](https://github.com/Codecademy/client-modules/commit/4f66f22a3572f1e721b5da0a8c41ebe3dd385279))
+
+
+
 ### [31.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@31.1.0...@codecademy/styleguide@31.1.1) (2021-03-18)
 
 
