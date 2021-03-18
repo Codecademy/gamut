@@ -1,4 +1,4 @@
-import { Anchor, Box } from '@codecademy/gamut';
+import { Box } from '@codecademy/gamut';
 import { ArrowChevronLeftIcon } from '@codecademy/gamut-icons';
 import styled from '@emotion/styled';
 import React from 'react';

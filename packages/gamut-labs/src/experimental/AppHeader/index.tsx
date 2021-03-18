@@ -12,7 +12,6 @@ import { formatUrlWithRedirect } from '../GlobalHeader/urlHelpers';
 import { AppHeaderDropdown } from './AppHeaderElements/AppHeaderDropdown';
 import { AppHeaderLink } from './AppHeaderElements/AppHeaderLink';
 import { AppHeaderLogo } from './AppHeaderElements/AppHeaderLogo';
-import { focusStyles } from './AppHeaderElements/SharedStyles';
 import {
   AppHeaderClickHandler,
   AppHeaderItem,
@@ -31,9 +30,6 @@ export const StyledAppBar = styled(AppBar)`
   width: 100%;
 `;
 
-export const AppHeaderTextButton = styled(TextButton)(focusStyles);
-export const AppHeaderFillButton = styled(FillButton)(focusStyles);
-
 export const mapItemToElement = (
   action: AppHeaderClickHandler,
   item: AppHeaderItem,
@@ -51,7 +47,7 @@ export const mapItemToElement = (
       return item.renderElement();
     case 'text-button':
       return (
-        <AppHeaderTextButton
+        <TextButton
           onClick={(event: React.MouseEvent) => action(event, item)}
           data-testid={item.dataTestId}
           href={
@@ -61,11 +57,11 @@ export const mapItemToElement = (
           }
         >
           {item.text}
-        </AppHeaderTextButton>
+        </TextButton>
       );
     case 'fill-button':
       return (
-        <AppHeaderFillButton
+        <FillButton
           data-testid={item.dataTestId}
           href={
             item.redirect
@@ -75,7 +71,7 @@ export const mapItemToElement = (
           onClick={(event: React.MouseEvent) => action(event, item)}
         >
           {item.text}
-        </AppHeaderFillButton>
+        </FillButton>
       );
   }
 };

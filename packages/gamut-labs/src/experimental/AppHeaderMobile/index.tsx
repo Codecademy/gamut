@@ -1,8 +1,8 @@
 import {
-  Anchor,
   AppBarSection,
   Box,
   FlexBox,
+  IconButton,
   Overlay,
 } from '@codecademy/gamut';
 import { CloseIcon, MenuIcon } from '@codecademy/gamut-icons';
@@ -11,10 +11,6 @@ import styled from '@emotion/styled';
 import React, { ReactNode, useState } from 'react';
 
 import { mapItemToElement, StyledAppBar } from '../AppHeader';
-import {
-  focusStyles,
-  hoverStyles,
-} from '../AppHeader/AppHeaderElements/SharedStyles';
 import {
   AppHeaderClickHandler,
   AppHeaderItem,
@@ -28,15 +24,6 @@ export type AppHeaderMobileProps = {
   renderSearch?: () => ReactNode;
   redirectParam?: string;
 };
-
-const IconButton = styled.button`
-  background-color: transparent;
-  border: transparent;
-  color: ${({ theme }) => theme.colors.navy};
-  line-height: 0.5rem;
-  ${hoverStyles}
-  ${focusStyles}
-`;
 
 const StyledOverlay = styled(Overlay)`
   display: block;
@@ -90,15 +77,14 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
 
             <FlexBox marginLeft={24}>
               <IconButton
-                type="button"
+                variant="secondary"
                 data-testid="header-mobile-menu"
                 aria-label="open navigation menu"
+                icon={MenuIcon}
                 onClick={() => {
                   openMobileMenu();
                 }}
-              >
-                <MenuIcon height={20} width={20} />
-              </IconButton>
+              />
             </FlexBox>
           </AppBarSection>
         </StyledAppBar>
@@ -116,16 +102,14 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
             </AppBarSection>
             <AppBarSection position="right">
               <FlexBox height="2.5rem" width="2.5rem">
-                <Anchor
-                  variant="interface"
+                <IconButton
+                  variant="secondary"
+                  icon={CloseIcon}
                   aria-label="close menu"
-                  padding={4}
                   onClick={() => {
                     setMobileMenuOpen(false);
                   }}
-                >
-                  <CloseIcon width={20} height={20} />
-                </Anchor>
+                />
               </FlexBox>
             </AppBarSection>
           </StyledAppBar>
