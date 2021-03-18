@@ -2,14 +2,10 @@ import { variant } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React from 'react';
 
-import { FlexBox } from '..';
+import { FlexBox } from '../Box/FlexBox';
 import { ContentContainer } from '../ContentContainer';
 
 export type AppBarProps = {
-  className?: string;
-  /**
-   * Whether the container should be larger than the default content size.
-   */
   wide?: boolean;
 };
 
@@ -30,14 +26,6 @@ const AppBarLayout: React.FC<AppBarProps> = ({ wide, children }) => {
 };
 
 export const AppBar = AppBarContainer.withComponent(AppBarLayout);
-
-export type AppBarSectionProps = {
-  /**
-   * Position of the the section within the AppBar.
-   */
-  position?: 'left' | 'center' | 'right';
-  className?: string;
-};
 
 export const AppBarSection = styled(FlexBox)(
   variant({
