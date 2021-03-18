@@ -70,10 +70,10 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
     <>
       {!mobileMenuOpen && ( // need this bc AppBar has a hardcoded z-Index of 15
         <StyledAppBar>
-          <AppBarSection position="left">
+          <AppBarSection alignment="left">
             {mapItemsToElement(items.left)}
           </AppBarSection>
-          <AppBarSection position="right">
+          <AppBarSection alignment="right">
             {mapItemsToElement(items.right)}
 
             <FlexBox marginLeft={24}>
@@ -98,10 +98,10 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
       >
         <div data-testid="header-mobile-menu-dropdown">
           <StyledAppBar>
-            <AppBarSection position="left">
+            <AppBarSection alignment="left">
               {mapItemsToElement(items.left)}
             </AppBarSection>
-            <AppBarSection position="right">
+            <AppBarSection alignment="right">
               <FlexBox height="2.5rem" width="2.5rem">
                 <IconButton
                   variant="secondary"

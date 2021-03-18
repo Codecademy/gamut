@@ -23,8 +23,8 @@ export const HeaderContainer: React.FC<HeaderContainerProps> = ({
   return (
     <header className={cx(styles.container, className)} data-testid="AppHeader">
       <AppBar className={styles.appBar}>
-        <AppBarSection position="left">{left}</AppBarSection>
-        <AppBarSection position="right">{right}</AppBarSection>
+        <AppBarSection alignment="left">{left}</AppBarSection>
+        <AppBarSection alignment="right">{right}</AppBarSection>
       </AppBar>
       {after}
     </header>

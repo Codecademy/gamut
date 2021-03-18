@@ -41,7 +41,7 @@ export type AppBarSectionProps = {
 
 export const AppBarSection = styled(FlexBox)(
   variant({
-    prop: 'position',
+    prop: 'alignment',
     variants: {
       right: { justifyContent: 'flex-end' },
       left: {},
@@ -56,4 +56,5 @@ AppBarSection.defaultProps = {
   flexGrow: 1,
   flexShrink: 1,
   flexBasis: '0',
+  alignment: 'left',
 };

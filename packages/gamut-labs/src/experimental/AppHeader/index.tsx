@@ -95,10 +95,10 @@ export const AppHeader: React.FC<AppHeaderProps> = ({
 
   return (
     <StyledAppBar>
-      <AppBarSection position="left">
+      <AppBarSection alignment="left">
         {mapItemsToElement(items.left)}
       </AppBarSection>
-      <AppBarSection position="right">
+      <AppBarSection alignment="right">
         {mapItemsToElement(items.right)}
       </AppBarSection>
     </StyledAppBar>
