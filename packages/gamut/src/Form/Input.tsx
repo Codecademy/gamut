@@ -45,7 +45,7 @@ export interface InputWrapperProps extends InputProps {
     >
   >;
   /**
-   * An custom icon svg from gamut-icons.
+   * A custom icon svg from gamut-icons.
    */
   icon?: typeof icons[keyof typeof icons];
 }
@@ -103,7 +103,7 @@ export const Input = forwardRef<HTMLInputElement, InputWrapperProps>(
           className={className}
           onChange={(event) => changeHandler(event)}
         />
-        {ShownIcon && <ShownIcon textColor={iconColor} />}
+        {!!ShownIcon && <ShownIcon textColor={iconColor} />}
       </Box>
     );
   }
