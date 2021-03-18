@@ -10,10 +10,6 @@ $container-offset-horizontal: calc(
   100% - #{($arrow-width / 2) + $arrow-padding-horizontal}
 );
 
-$container-offset-horizontal-grid-form-icon: calc(
-  100% - #{($arrow-width / $arrow-padding-horizontal) + $arrow-padding-horizontal}
-);
-
 $container-offset-vertical: calc(
   100% + #{$arrow-height + $arrow-padding-vertical}
 );
@@ -56,7 +52,6 @@ $slight-shadow: rgba(0, 0, 0, 0.15);
     position: absolute;
     transform: rotate(45deg);
     width: $arrow-height;
-    z-index: 1;
   }
 
   &::after {
@@ -137,7 +132,6 @@ $slight-shadow: rgba(0, 0, 0, 0.15);
   font-size: px-rem(14px);
   line-height: px-rem(18px);
   padding: 0.6rem 0.75rem;
-  z-index: 1;
 
   .toolTipContainerLight & {
     background: $color-white;
@@ -147,34 +141,5 @@ $slight-shadow: rgba(0, 0, 0, 0.15);
   .toolTipContainerDark & {
     background: $color-black;
     color: $color-white;
-  }
-}
-
-.grid-form-icon,
-.top-left {
-  justify-content: flex-end;
-  left: $container-offset-horizontal-grid-form-icon;
-
-  &::after,
-  &::before {
-    left: $arrow-padding-horizontal;
-  }
-}
-
-.grid-form-icon,
-.bottom-right {
-  top: $container-offset-vertical;
-
-  &::after,
-  &::before {
-    top: $arrow-offset-vertical;
-  }
-
-  &::before {
-    box-shadow: -2px -2px 4px 0 $slight-shadow;
-  }
-
-  .toolTipBody {
-    box-shadow: 0 0 4px 0 $slight-shadow;
   }
 }

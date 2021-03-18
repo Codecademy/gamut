@@ -8,9 +8,24 @@ import { ToolTip, ToolTipProps } from '..';
 import { ToolTipPosition } from '../ToolTip';
 import { formBaseStyles } from './styles/shared';
 
-const StyledToolTip = styled.span`
+type StyledToolTipProps = {
+  zIndex: number;
+};
+
+const StyledToolTip = styled.span<StyledToolTipProps>`
   position: absolute;
   left: calc(100% - 1.1rem);
+
+  div {
+    > *:last-child {
+      z-index: ${({ zIndex }) => zIndex};
+      left: calc(100% - 1.7rem);
+    }
+    &::after,
+    &::before {
+      z-index: ${({ zIndex }) => zIndex};
+    }
+  }
 `;
 
 export type FormGroupLabelProps = HTMLAttributes<HTMLDivElement> &
@@ -88,11 +103,11 @@ export const FormGroupLabel: React.FC<FormGroupLabelProps> = ({
       {children}
       {showRequired ? ' *' : ''}
       {tooltip && (
-        <StyledToolTip>
+        <StyledToolTip zIndex={1}>
           <ToolTip
             {...tooltip}
             id={`${htmlFor}-tooltip`}
-            position={ToolTipPosition.GridFormIcon}
+            position={ToolTipPosition.BottomRight}
             target={<MiniInfoOutlineIcon height="0.8rem" width="0.8rem" />}
           />
         </StyledToolTip>
