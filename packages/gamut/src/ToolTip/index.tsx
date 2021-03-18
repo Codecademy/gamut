@@ -1,4 +1,9 @@
-import { fontSmoothing, pxRem, variant } from '@codecademy/gamut-styles';
+import {
+  fontSmoothing,
+  pxRem,
+  timing,
+  variant,
+} from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React, { ReactNode } from 'react';
 
@@ -38,8 +43,7 @@ const ToolTipContainer = styled.div<ToolTipContainerProps>`
 
   display: flex;
   opacity: 0;
-  transition: opacity 0ms;
-  transition-delay: 750ms;
+  transition: opacity ${timing.fast};
   position: absolute;
   width: 16rem;
   visibility: hidden;
