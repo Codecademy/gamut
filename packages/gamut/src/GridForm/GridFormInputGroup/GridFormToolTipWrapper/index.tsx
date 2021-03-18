@@ -16,11 +16,13 @@ export const GridFormToolTipWrapper: React.FC<GridForToolTipWrapper> = ({
   children,
   field,
 }) => {
+  const id = field.name || field.id;
+
   return (
     <StyledWrapper>
       {children}
       {field.toolTip && (
-        <GridFormToolTip {...field.toolTip} id={`${field.id}-tooltip`} />
+        <GridFormToolTip {...field.toolTip} id={`${id}-tooltip`} />
       )}
     </StyledWrapper>
   );
