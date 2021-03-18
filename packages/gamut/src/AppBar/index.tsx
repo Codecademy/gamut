@@ -23,7 +23,9 @@ export const AppBar: React.FC<AppBarProps> = ({
   return (
     <div className={classes}>
       <ContentContainer size={wide ? 'wide' : 'medium'}>
-        <FlexBox alignItems="center">{children}</FlexBox>
+        <FlexBox alignItems="center" height="100%">
+          {children}
+        </FlexBox>
       </ContentContainer>
     </div>
   );
