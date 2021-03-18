@@ -1,7 +1,7 @@
 {
   "name": "@codecademy/gamut",
   "description": "Styleguide & Component library for Codecademy",
-  "version": "27.1.0",
+  "version": "28.0.0",
   "author": "Codecademy Engineering <dev@codecademy.com>",
   "sideEffects": [
     "**/*.css",
@@ -23,9 +23,9 @@
   },
   "dependencies": {
     "@codecademy/gamut-icons": "^4.3.0",
-    "@codecademy/gamut-illustrations": "^0.9.0",
-    "@codecademy/gamut-styles": "^8.3.2",
-    "@codecademy/gamut-tests": "^2.2.2",
+    "@codecademy/gamut-illustrations": "^0.9.1",
+    "@codecademy/gamut-styles": "^9.0.0",
+    "@codecademy/gamut-tests": "^2.2.3",
     "@types/marked": "^1.1.0",
     "classnames": "^2.2.5",
     "framer-motion": "^2.7.9",
