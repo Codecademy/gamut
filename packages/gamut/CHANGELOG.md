@@ -3,6 +3,85 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [28.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@27.1.1...@codecademy/gamut@28.0.0) (2021-03-18)
+
+
+### ⚠ BREAKING CHANGES
+
+* **ContentContainer:** update responsive padding
+
+### Features
+
+* **ContentContainer:** update responsive padding ([4f66f22](https://github.com/Codecademy/client-modules/commit/4f66f22a3572f1e721b5da0a8c41ebe3dd385279))
+
+
+
+### [27.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@27.1.0...@codecademy/gamut@27.1.1) (2021-03-18)
+
+
+### Bug Fixes
+
+* **NotificationItemNew:** dismiss icon hover ([fe3740e](https://github.com/Codecademy/client-modules/commit/fe3740e400e053d1390d0f242dfba5a87aedea81))
+
+
+
+## [27.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@27.0.1...@codecademy/gamut@27.1.0) (2021-03-16)
+
+
+### Features
+
+* **NotificationItemNew:** add new forum notification icons ([cc10d77](https://github.com/Codecademy/client-modules/commit/cc10d7773b145c7b11f54e0be9603000d86f4735))
+
+
+
+### [27.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@27.0.0...@codecademy/gamut@27.0.1) (2021-03-16)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [27.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@26.5.1...@codecademy/gamut@27.0.0) (2021-03-16)
+
+
+### ⚠ BREAKING CHANGES
+
+* **Card:** Animation Fixes and Gamut migration
+
+### Bug Fixes
+
+* **Card:** Animation Fixes and Gamut migration ([c44ac2f](https://github.com/Codecademy/client-modules/commit/c44ac2f096ed36018c5eb41eac5d56ffca8bd74f))
+
+
+
+### [26.5.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@26.5.0...@codecademy/gamut@26.5.1) (2021-03-16)
+
+
+### Bug Fixes
+
+* **NotificationItemNew:** tracking fix & accessibility improvement ([52c73f8](https://github.com/Codecademy/client-modules/commit/52c73f884206f404aacd072106dc5024ab9225f0))
+
+
+
+## [26.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@26.4.0...@codecademy/gamut@26.5.0) (2021-03-16)
+
+
+### Features
+
+* **Form:** Input, Select, TextArea, + Error Updates ([#1439](https://github.com/Codecademy/client-modules/issues/1439)) ([68f955a](https://github.com/Codecademy/client-modules/commit/68f955ae05bfdd76aac64630377298c9d9b2d288))
+
+
+
+## [26.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@26.3.0...@codecademy/gamut@26.4.0) (2021-03-15)
+
+
+### Features
+
+* **GlobalHeader:** header animation on scroll ([#1430](https://github.com/Codecademy/client-modules/issues/1430)) ([3c46b5a](https://github.com/Codecademy/client-modules/commit/3c46b5ada775471e021de2ead4e2b03b9d4fe126))
+
+
+
 ## [26.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@26.2.3...@codecademy/gamut@26.3.0) (2021-03-12)
 
 

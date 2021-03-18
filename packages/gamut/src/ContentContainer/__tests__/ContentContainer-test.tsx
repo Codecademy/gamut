@@ -1,14 +1,16 @@
-import { mount } from 'enzyme';
-import React from 'react';
+import { contentWidths } from '@codecademy/gamut-styles';
+import { setupRtl } from '@codecademy/gamut-tests';
 
 import { ContentContainer } from '..';
 
+const renderView = setupRtl(ContentContainer);
+
 describe('ContentContainer', () => {
-  it('contains a wide container class when the "wide" prop is passed in as true', () => {
-    const wrapper = mount(<ContentContainer wide />);
+  it('has maxWidth of contentWidths.max when size is medium', () => {
+    const { view } = renderView({ size: 'medium' });
 
-    const rootClassNames = wrapper.childAt(0).prop('className');
-
-    expect(rootClassNames).toBe('contentContainerWide contentContainer');
+    expect(view.container.firstChild).toHaveStyle(
+      `maxWidth: ${contentWidths.max}`
+    );
   });
 });
