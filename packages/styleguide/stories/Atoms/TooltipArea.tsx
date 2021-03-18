@@ -1,4 +1,4 @@
-import { Box } from '@codecademy/gamut';
+import { Box, ToolTipPosition } from '@codecademy/gamut';
 import styled from '@emotion/styled';
 import React from 'react';
 
