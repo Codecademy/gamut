@@ -53,18 +53,6 @@ const StyledImg = styled.img`
   width: 3rem;
 `;
 
-/* this targeted hover effect is needed for a specific case (dismiss icon is within another link, with its own background color change on hover)
- this practice should not be replicated elsewhere */
-const StyledIconButton = styled(IconButton)`
-  z-index: 1;
-  &:hover {
-    span {
-      background-color: ${({ theme }) =>
-        theme.colors['gray-300']}; // this will break on darkmode
-    }
-  }
-`;
-
 const DateText = styled(Text)`
   margin-left: 4px;
   color: ${({ theme }) => theme.colors['gray-600']};
@@ -120,13 +108,14 @@ export const NotificationItemNew: React.FC<NotificationItemNewProps> = ({
   );
 
   const dismissIcon: ReactElement = (
-    <StyledIconButton
+    <IconButton
       icon={MiniDeleteIcon}
       color={colors.navy}
       onClick={handleDismiss}
       aria-label="dismiss notification"
       size="small"
       variant="secondary"
+      z-index={1}
     />
   );
 
@@ -134,6 +123,7 @@ export const NotificationItemNew: React.FC<NotificationItemNewProps> = ({
     <FlexBox
       paddingY={24}
       paddingX={32}
+      alignItems="flex-start"
       justifyContent="space-between"
       position="relative"
     >
@@ -152,7 +142,9 @@ export const NotificationItemNew: React.FC<NotificationItemNewProps> = ({
       ) : (
         <>{notificationContent}</>
       )}
-      {handleDismiss && dismissIcon}
+      <FlexBox alignItems="flex-start" zIndex={1}>
+        {handleDismiss && dismissIcon}
+      </FlexBox>
     </FlexBox>
   );
 };
