@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [28.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@27.1.1...@codecademy/gamut@28.0.0) (2021-03-18)
+
+
+### ⚠ BREAKING CHANGES
+
+* **ContentContainer:** update responsive padding
+
+### Features
+
+* **ContentContainer:** update responsive padding ([4f66f22](https://github.com/Codecademy/client-modules/commit/4f66f22a3572f1e721b5da0a8c41ebe3dd385279))
+
+
+
+### [27.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@27.1.0...@codecademy/gamut@27.1.1) (2021-03-18)
+
+
+### Bug Fixes
+
+* **NotificationItemNew:** dismiss icon hover ([fe3740e](https://github.com/Codecademy/client-modules/commit/fe3740e400e053d1390d0f242dfba5a87aedea81))
+
+
+
 ## [27.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@27.0.1...@codecademy/gamut@27.1.0) (2021-03-16)
 
 
