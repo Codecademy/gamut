@@ -66,7 +66,19 @@ export const AppHeaderDropdown: React.FC<AppHeaderDropdownProps> = ({
       </AppHeaderTextTargetButton>
     );
 
-  const popoverHeight = item.popover.length * 56 + 24;
+  const paddingY = 24;
+  const linkHeight = 56;
+  const separatorHeight = 16;
+  const getPopoverHeight = () => {
+    if (item.type === 'dropdown')
+      return item.popover.length * linkHeight + paddingY;
+    const numberOfLinks = item.popover.reduce(
+      (sum, linksArray) => sum + linksArray.length,
+      0
+    );
+    const totalSeparatorHeight = separatorHeight * (item.popover.length - 1);
+    return numberOfLinks * linkHeight + totalSeparatorHeight + paddingY;
+  };
 
   return (
     <>
@@ -84,7 +96,7 @@ export const AppHeaderDropdown: React.FC<AppHeaderDropdownProps> = ({
             <motion.div
               style={{ overflow: 'hidden', top: '12px', position: 'relative' }}
               initial={{ height: 0 }}
-              animate={{ height: popoverHeight }}
+              animate={{ height: getPopoverHeight() }}
               transition={{ duration: 0.175 }}
               exit={{ height: 0 }}
             >
