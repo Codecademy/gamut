@@ -13,9 +13,8 @@ export type ToolTipPosition =
 const arrowWidth = `1rem`;
 const arrowHeight = `0.5rem`;
 const arrowPaddingHorizontal = `1.5rem`;
-const arrowPaddingVertical = `0.25rem`;
 
-const containerOffsetVertical = `calc(100% + ${arrowHeight} + ${arrowPaddingVertical})`;
+const containerOffsetVertical = `0.75rem`;
 
 const arrowOffsetHorizontal = `calc(${arrowPaddingHorizontal} - (${arrowWidth} / 2))`;
 const arrowOffsetVertical = `calc(-${arrowHeight} / 2)`;
@@ -62,10 +61,13 @@ const ToolTipContainer = styled.div<ToolTipContainerProps>`
     width: ${arrowHeight};
   }
 
-  &::after {
+  &::before {
     ${variant({
-      dark: { backgroundColor: 'black' },
-      light: { backgroundColor: 'white' },
+      prop: 'mode',
+      variants: {
+        dark: { backgroundColor: 'black' },
+        light: { backgroundColor: 'white' },
+      },
     })}
   }
 
@@ -79,11 +81,12 @@ const ToolTipContainer = styled.div<ToolTipContainerProps>`
   ${({ position }) =>
     ['top-left', 'top-right'].includes(position) &&
     `
-      bottom: ${containerOffsetVertical};
+      bottom: 100%;
+      padding-bottom: ${containerOffsetVertical};
 
       &::after,
       &::before {
-        bottom: ${arrowOffsetVertical};
+        bottom: ${arrowHeight};
       }
 
       &::before {
@@ -98,11 +101,12 @@ const ToolTipContainer = styled.div<ToolTipContainerProps>`
   ${({ position }) =>
     ['bottom-left', 'bottom-right'].includes(position) &&
     `
-      top: ${containerOffsetVertical};
+      top: 100%;
+      padding-top: ${containerOffsetVertical};
 
       &::after,
       &::before {
-        top: ${arrowOffsetVertical};
+        top: ${arrowHeight};
       }
 
       &::before {
