@@ -1,5 +1,6 @@
 import {
   fontSmoothing,
+  lineHeight,
   pxRem,
   timing,
   variant,
@@ -142,7 +143,7 @@ const ToolTipContainer = styled.div<ToolTipContainerProps>`
 const ToolTipBody = styled.div<{ mode: VisualTheme }>`
   display: inline-block;
   font-size: ${pxRem(14)};
-  line-height: ${({ theme }) => theme.lineHeight.base};
+  line-height: ${lineHeight.base};
   padding: 0.6rem 0.75rem;
 
   ${variant({
