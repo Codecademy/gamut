@@ -1,6 +1,8 @@
 import { ContentContainer } from '@codecademy/gamut/src';
 import title from '@codecademy/macros/lib/title.macro';
-import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/dist/blocks';
+
+import { PropsTable } from '~styleguide/blocks';
 
 <Meta
   title={title}
@@ -8,19 +10,33 @@ import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
   args={{ children: 'Some random content yo' }}
   parameters={{
     subtitle:
-      'A container element meant to hold all content on the page, and provide the correct padding.',
+      'A container element meant to hold all content on the page, and provide the correct horizontal padding.',
     source: 'gamut',
+    figmaId: 'ZUJ7cfVgyoh1kiQYNN8Hbt',
   }}
 />
 
-ContentContainer can used when creating page layouts to contain content
-within a maximum width, as well as centering that content and providing
-responsive padding at our different breakpoints.
+ContentContainer can be used when creating page layouts to contain content
+within a maximum width, as well as centering that content. By default, it provides responsive padding according to the updated grid system (see figma link above).
+
+Note: AppBar (used in Global Header) and Footer also use ContentContainer.
+Check with the design team if different padding/margin is required on a page layout as additional spacing may cause misalignment with the Header and Footer.
+
+## Default: Medium
 
 <Canvas>
-  <Story name="Content Container">
+  <Story name="Medium">{(args) => <ContentContainer {...args} />}</Story>
+</Canvas>
+
+## Variant: Wide
+
+Use `ContentContainer` to keep page _content_ at a consistent maximum content width across various screen sizes and zooms.
+See [the Student Center](https://codecademy.com/student-center) for an example.
+
+<Canvas>
+  <Story name="Wide" args={{ variant: 'wide' }}>
     {(args) => <ContentContainer {...args} />}
   </Story>
 </Canvas>
 
-<Props story="Content Container" />
+<PropsTable story="Content Container" />

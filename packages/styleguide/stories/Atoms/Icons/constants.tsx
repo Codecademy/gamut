@@ -1,3 +1,4 @@
+// eslint-disable-next-line local-rules/gamut-import-paths
 import * as icons from '@codecademy/gamut-icons/src/icons/regular';
 import { keys, omit, pick } from 'lodash';
 
@@ -23,6 +24,9 @@ export const VENDOR_ICONS = pick(
     'FaviconIcon',
     'FaviconSolidIcon',
     'JavaIcon',
+    'AmexIcon',
+    'MastercardIcon',
+    'VisaIcon',
   ].sort()
 );
 

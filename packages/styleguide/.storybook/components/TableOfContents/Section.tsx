@@ -4,13 +4,20 @@ import { getTitle, useKind } from './utils';
 import { Box, Reset, SectionLink, SectionStatus } from './elements';
 
 export const Section = ({ kind }: { kind: string }) => {
-  const { title, subtitle, status, childrenKinds, components } = useKind(kind);
+  const {
+    title,
+    subtitle,
+    status,
+    childrenKinds,
+    components,
+    indexStory,
+  } = useKind(kind);
   const renderSubsection = () => {
     let links: JSX.Element[] = [];
 
     if (childrenKinds.length > 0) {
       links = childrenKinds.map(({ kind }) => (
-        <SectionLink key={`${kind}-story`} kind={kind}>
+        <SectionLink key={`${kind}-story`} kind={kind} story={indexStory}>
           {getTitle(kind)}
         </SectionLink>
       ));
@@ -34,17 +41,13 @@ export const Section = ({ kind }: { kind: string }) => {
           <Box
             width="100%"
             position="absolute"
-            display="inline-block"
             boxShadow="rgba(0,0,0,.1) 0 -1px 0 0 inset"
-            left="0"
-            right="0"
             top="0"
             minHeight="1px"
           />
           <Box
-            maxWidth="100%"
-            columnGap="1rem"
             display="flex"
+            columnGap="1rem"
             maxHeight="1rem"
             fontWeight="bold"
             flexWrap="wrap"
@@ -59,25 +62,28 @@ export const Section = ({ kind }: { kind: string }) => {
     }
   };
 
-  const content = (
+  const subsection = renderSubsection();
+
+  return (
     <Box
       padding="1.5rem"
       paddingBottom=".5rem"
       rowGap="0.4rem"
       display="grid"
       gridTemplateRows="min-content 4.5rem 3rem"
-      overflow="hidden"
       position="relative"
     >
-      <Box
-        fontSize="22px"
-        lineHeight="1.1"
-        fontWeight="bold"
-        position="relative"
-      >
-        {title}
-        {status && <SectionStatus status={status} />}
-      </Box>
+      <SectionLink box kind={kind} story={indexStory}>
+        <Box
+          fontSize="22px"
+          lineHeight="1.1"
+          fontWeight="bold"
+          position="relative"
+        >
+          {title}
+          {status && <SectionStatus status={status} />}
+        </Box>
+      </SectionLink>
       <Box overflowY="hidden">
         <Reset>{subtitle && <Description>{subtitle}</Description>}</Reset>
       </Box>
@@ -87,19 +93,13 @@ export const Section = ({ kind }: { kind: string }) => {
         paddingX="1.5rem"
         paddingBottom=".25rem"
         position="absolute"
-        left="0"
-        right="0"
+        zIndex={subsection ? 1 : -1}
         bottom="0"
         height="3rem"
+        width="100%"
       >
         {renderSubsection()}
       </Box>
     </Box>
-  );
-
-  return (
-    <SectionLink box kind={kind}>
-      {content}
-    </SectionLink>
   );
 };

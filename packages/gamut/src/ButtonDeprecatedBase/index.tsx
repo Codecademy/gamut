@@ -16,7 +16,7 @@ const propKeys = [
 ];
 
 export type ButtonDeprecatedBaseProps = Omit<
-  HTMLProps<HTMLLinkElement> & HTMLProps<HTMLButtonElement>,
+  HTMLProps<HTMLAnchorElement> & HTMLProps<HTMLButtonElement>,
   'as' | 'size'
 > & {
   /**
@@ -63,7 +63,7 @@ export const ButtonDeprecatedBase: React.FC<ButtonDeprecatedBaseProps> = (
   const defaultProps = {
     ...propsToTransfer,
     className: classes,
-    onClick: onClick,
+    onClick,
     'data-btn': true,
   };
 

@@ -2,13 +2,20 @@ import { IconButton } from '@codecademy/gamut/src';
 import { FaviconIcon } from '@codecademy/gamut-icons/src';
 import { AppHeader } from '@codecademy/gamut-labs/src';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/dist/blocks';
+import LinkTo from '@storybook/addon-links/dist/react/components/link';
 
 import { PropsTable } from '~styleguide/blocks';
+
+import { MOCK_DROPDOWN_1 } from './MockAppHeaderElements';
 
 <Meta
   title="Labs/Experimental/Molecules/AppHeader"
   component={AppHeader}
-  parameters={{ layout: 'padded', status: 'volatile' }}
+  parameters={{
+    layout: 'padded',
+    status: 'volatile',
+    subtitle: `A flexible header component, used by GlobalHeader. Takes in an object with AppHeaderItems and maps those items to their corresponding AppHeader components.`,
+  }}
   args={{
     items: {
       left: [
@@ -26,28 +33,7 @@ import { PropsTable } from '~styleguide/blocks';
           text: 'AppHeaderLink',
           type: 'link',
         },
-        {
-          id: 'dropdown',
-          text: 'AppHeaderDropdown',
-          popover: [
-            {
-              id: 'sublink-1',
-              href: 'http://codecademy.com',
-              trackingTarget: 'tracking-target',
-              text: 'AppHeaderLink',
-              type: 'link',
-            },
-            {
-              id: 'sublink-2',
-              href: 'http://codecademy.com',
-              trackingTarget: 'tracking-target',
-              text: 'AppHeaderLink',
-              type: 'link',
-            },
-          ],
-          trackingTarget: 'tracking-target',
-          type: 'dropdown',
-        },
+        MOCK_DROPDOWN_1,
       ],
       right: [
         {
@@ -74,9 +60,9 @@ import { PropsTable } from '~styleguide/blocks';
   }}
 />
 
-AppHeader component for use in GlobalHeader. Uses AppBar to arrange items to the left or right side of the navigation bar. These items are passed in as objects of type AppHeaderItem, and map to AppHeaderLogo, AppHeaderLink, AppHeaderDropdown, TextButton, FillButton, or a custom component passed in by the consumer.
+Uses <LinkTo kind='Molecules/AppBar' story="Header">AppBar</LinkTo> to arrange items determined by <LinkTo kind="Labs/Experimental/Molecules/GlobalHeader" story="GlobalHeader">GlobalHeader</LinkTo> to the left or right side of the navigation bar. These items are passed in as objects of type AppHeaderItem, and map to <LinkTo kind="Labs/Experimental/Molecules/AppHeaderLogo" story="AppHeaderLogo">AppHeaderLogo</LinkTo>, <LinkTo kind="Labs/Experimental/Molecules/AppHeaderLink" story="AppHeaderLink">AppHeaderLink</LinkTo>, <LinkTo kind="Labs/Experimental/Molecules/AppHeaderDropdown" story="AppHeaderDropdown">AppHeaderDropdown</LinkTo>, <LinkTo kind="Atoms/Button" story="TextButton">TextButton</LinkTo>, <LinkTo kind="Atoms/Button" story="FillButton">FillButton</LinkTo>, or a custom component passed in by the consumer.
 
-AppHeader is not intended to be used alone, but rather by GlobalHeader which determines the composition of each of the Pro, Free, and Anon versions of Codecademy's global navigation header and passes the corresponding items to AppHeader.
+AppHeader is not intended to be used directly by the consumer, but rather by <LinkTo kind="Labs/Experimental/Molecules/GlobalHeader" story="GlobalHeader">GlobalHeader</LinkTo> which determines the composition of each version of Codecademy's global navigation header and passes the corresponding items to this component.
 
 ## AppHeader
 

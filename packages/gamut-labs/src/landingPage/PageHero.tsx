@@ -1,10 +1,14 @@
-import { VideoProps } from '@codecademy/gamut';
-import { Column, LayoutGrid } from '@codecademy/gamut';
+import { Column, ColumnSizes, LayoutGrid, VideoProps } from '@codecademy/gamut';
+import styled from '@emotion/styled';
 import React from 'react';
 
-import { CTA, Description, Title } from './';
+import { CTA, Description, Title } from '.';
 import { PageHeroMedia } from './PageHeroMedia';
 import { BaseProps } from './types';
+
+const LeftColumn = styled(Column)`
+  align-content: center;
+`;
 
 export type ImageProps = {
   src: string;
@@ -19,16 +23,32 @@ export type MediaProps =
       type: 'video';
     } & VideoProps);
 
+type ColumnLayout = {
+  left: ColumnSizes;
+  right: ColumnSizes;
+};
+
 export type PageHeroProps = BaseProps & {
   media?: MediaProps;
 };
 
-const columnSize = (type: string | undefined) => {
-  if (!type) return 12;
-  if (type === 'image') {
-    return 9;
-  } else if (type === 'video') {
-    return 5;
+const getColumnLayout = (media: MediaProps | undefined): ColumnLayout => {
+  switch (media?.type) {
+    case 'image':
+      return {
+        left: 9,
+        right: 3,
+      };
+    case 'video':
+      return {
+        left: 7,
+        right: 5,
+      };
+    default:
+      return {
+        left: 12,
+        right: 12,
+      };
   }
 };
 
@@ -40,12 +60,14 @@ export const PageHero: React.FC<PageHeroProps> = ({
   testId,
   onAnchorClick,
 }) => {
+  const layout = getColumnLayout(media);
+
   return (
-    <LayoutGrid testId={testId} rowGap="md">
-      <Column
+    <LayoutGrid testId={testId} rowGap="md" columnGap={{ xs: 'sm', sm: 'lg' }}>
+      <LeftColumn
         size={{
           xs: 12,
-          sm: columnSize(media?.type),
+          sm: layout.left,
         }}
       >
         {title && <Title isPageHeading>{title}</Title>}
@@ -55,8 +77,8 @@ export const PageHero: React.FC<PageHeroProps> = ({
             {cta.text}
           </CTA>
         )}
-      </Column>
-      {media && <PageHeroMedia media={media} />}
+      </LeftColumn>
+      {media && <PageHeroMedia media={media} size={layout.right} />}
     </LayoutGrid>
   );
 };

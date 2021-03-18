@@ -4,10 +4,7 @@ import { render, screen } from '@testing-library/react';
 import React from 'react';
 
 import { createMockAppHeaderLinkItem } from '../../../AppHeader/mockAppHeaderItems';
-import {
-  AppHeaderSubMenuMobile,
-  AppHeaderSubMenuMobileProps,
-} from './../index';
+import { AppHeaderSubMenuMobile, AppHeaderSubMenuMobileProps } from '../index';
 
 const sublink1Href = 'https://google.com';
 const sublink2Href = 'https://medium.com';
@@ -27,7 +24,7 @@ const props: AppHeaderSubMenuMobileProps = {
       createMockAppHeaderLinkItem('sublink-2', sublink2Href, 'blog'),
     ],
   },
-  handleClose: handleClose,
+  handleClose,
 };
 
 const renderAppHeaderSubMenuMobile = () => {

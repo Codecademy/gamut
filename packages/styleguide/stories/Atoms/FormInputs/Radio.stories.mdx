@@ -41,6 +41,18 @@ import { PropsTable } from '~styleguide/blocks';
     {(args) => <Radio {...args} />}
   </Story>
   <Story
+    name="Disabled"
+    args={{
+      htmlFor: 'example-disabled-checked',
+      name: 'example-disabled-checked',
+      label: 'Disabled and Checked',
+      disabled: true,
+      checked: true,
+    }}
+  >
+    {(args) => <Radio {...args} />}
+  </Story>
+  <Story
     name="Error"
     args={{
       htmlFor: 'example-error',

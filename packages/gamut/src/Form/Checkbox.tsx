@@ -1,6 +1,9 @@
-import { pxRem, screenReaderOnly } from '@codecademy/gamut-styles';
-import { noSelect } from '@codecademy/gamut-styles';
-import { colors } from '@codecademy/gamut-styles';
+import {
+  colors,
+  noSelect,
+  pxRem,
+  screenReaderOnly,
+} from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React, { forwardRef, InputHTMLAttributes, ReactNode } from 'react';
 
@@ -21,7 +24,7 @@ export type CheckboxProps = InputHTMLAttributes<HTMLInputElement> &
 
 type Multiline = { multiline?: boolean };
 
-const activeColor = colors['blue-500'];
+const activeColor = colors.hyper;
 
 const CheckboxLabel = styled.label`
   ${noSelect}

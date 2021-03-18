@@ -51,6 +51,14 @@ module.exports = {
           '../../gamut-system/src'
         ),
         '@codecademy/gamut$': path.resolve(__dirname, '../../gamut/src'),
+        '@codecademy/gamut-labs$': path.resolve(
+          __dirname,
+          '../../gamut-labs/src'
+        ),
+        '@codecademy/gamut-illustrations$': path.resolve(
+          __dirname,
+          '../../gamut-illustrations/src'
+        ),
       },
     };
 

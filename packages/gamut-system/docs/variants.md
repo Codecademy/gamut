@@ -1,14 +1,17 @@
 # Variants
 
-There may be cases where you want to change many props at the same time to achieve a different effect. Coordinating these different prop variations can be a bit frustrating to do manually, in both typescript and plain javascript. To make this easier we have `variant`, a function that is meant to make creating these combinations easy and scalable.
+There may be cases where you want to change many props at the same time to achieve a different effect. Coordinating these different prop variations can be a bit frustrating to do manually, in both typescript and plain javascript. To make this easier we have
+
+- `variant`, a function that is meant to make creating these combinations easy and scalable
+- `HandlerProps`, a generic type that can be applied to styled components consuming a variant
 
 ```tsx
 import styled from '@emotion/styled';
 import { system, HandlerProps } from '@codecademy/gamut-system';
 
-export const { variants } = system.create({});
+export const { variant } = system.create({});
 
-const buttonVariants = variants({
+const buttonVariants = variant({
   variants: {
     primary: {
       borderStyle: 'solid',
@@ -34,21 +37,22 @@ export const Button = styled.button<ButtonProps>`
 `;
 ```
 
-Using your variants:
+Using your variant:
 
 ```tsx
-  <Button variant="primary" />
+<Button variant="primary" />
 
-  <Button variant="secondary" />
+<Button variant="secondary" />
 ```
 
-There may be cases where you want to use a special key for your variants instead of the default `variant`. You may pass an arbitrary key for your prop to customize the prop type.
+You can define a default variant to apply when no variant prop is passed.
 
 ```tsx
-const colorVariant = variants({
-  key: 'colorVariant',
+const colorVariant = variant({
+  default: 'primary',
   variants: {
     primary: { color: 'blue' },
+    secondary: { color: 'green' },
   },
 });
 
@@ -56,10 +60,29 @@ const Text = styled.p`
   ${colorVariant}
 `;
 
+<Text />; // color: blue
+```
+
+There may be cases where you want to use a special prop for your variant instead of the default `variant`. You may pass an arbitrary name for your prop to customize the prop type.
+
+```tsx
+const colorVariant = variant({
+  prop: 'colorVariant',
+  variants: {
+    primary: { color: 'blue' },
+  },
+});
+
+export type TextProps = HandlerProps<typeof colorVariant>;
+
+const Text = styled.p<TextProps>`
+  ${colorVariant}
+`;
+
 <Text colorVariant="primary" />;
 ```
 
-This also allows you to use multiple variants in the same component to have combinatorial styles.
+This also allows you to use multiple variant in the same component to have combinatorial styles.
 
 ```tsx
 import { HandlerProps } from '@codecademy/gamut-system';

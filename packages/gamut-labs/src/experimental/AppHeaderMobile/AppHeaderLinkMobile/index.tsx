@@ -1,4 +1,4 @@
-import { Anchor, Box } from '@codecademy/gamut';
+import { Box } from '@codecademy/gamut';
 import styled from '@emotion/styled';
 import React from 'react';
 
@@ -29,8 +29,9 @@ const SeparatorInner = styled(Box)<AppHeaderLinkButtonProps>`
   margin-top: ${({ topSeparator }) => (topSeparator ? '0.5rem' : '')};
 `;
 
-const AppHeaderLinkButtonOuter = styled(Anchor)`
-  padding: 0.5px 0;
+const AppHeaderLinkButtonOuter = styled.a`
+  text-decoration: none;
+  padding: 1rem 0;
   color: ${({ theme }) => theme.colors.navy};
   ${hoverStyles}
   ${focusStyles}
@@ -51,15 +52,16 @@ export const AppHeaderLinkMobile: React.FC<AppHeaderLinkMobileProps> = ({
     <SeparatorOuter topSeparator={topSeparator}>
       <SeparatorInner topSeparator={topSeparator}>
         <AppHeaderLinkButtonOuter
+          data-intellimize={item.dataIntellimizeId}
           data-testid={item.dataTestId}
           href={item.href}
-          onClick={(event: React.MouseEvent) => action(event, item)}
-          variant="interface"
+          onClick={(event) => action(event, item)}
+          target={item.newTab ? 'blank' : ''}
         >
           <AppHeaderLinkButtonInner
             lineHeight="base"
             minWidth="0"
-            paddingY={8}
+            paddingY={16}
             textAlign="left"
             display="flex"
           >

@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [0.5.1](https://github.com/Codecademy/client-modules/compare/@codecademy/tracking@0.5.0...@codecademy/tracking@0.5.1) (2021-03-04)
+
+**Note:** Version bump only for package @codecademy/tracking
+
+
+
+
+
+## [0.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/tracking@0.4.3...@codecademy/tracking@0.5.0) (2021-02-18)
+
+
+### Features
+
+* add container_slugs to UserClickData tracking type ([ebb2d18](https://github.com/Codecademy/client-modules/commit/ebb2d1873505d7c09e14a0f714e5661914e8dd4a))
+
+
+
+### [0.4.3](https://github.com/Codecademy/client-modules/compare/@codecademy/tracking@0.4.2...@codecademy/tracking@0.4.3) (2021-02-10)
+
+
+### Reverts
+
+* Revert "feat(tracking): Add a fullstory boolean to TrackingOptions type" (#1381) ([f04d8b5](https://github.com/Codecademy/client-modules/commit/f04d8b57cac13dfffc8951641e52c2593827aba9)), closes [#1381](https://github.com/Codecademy/client-modules/issues/1381)
+
+
+
 ### [0.4.2](https://github.com/Codecademy/client-modules/compare/@codecademy/tracking@0.4.1...@codecademy/tracking@0.4.2) (2021-02-04)
 
 **Note:** Version bump only for package @codecademy/tracking

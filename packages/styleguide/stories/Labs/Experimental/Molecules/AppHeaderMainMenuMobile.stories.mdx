@@ -1,6 +1,5 @@
 import {
   BookFlipPageIcon,
-  CommunityIcon,
   HouseEntranceIcon,
 } from '@codecademy/gamut-icons/src';
 import { AppHeaderMainMenuMobile } from '@codecademy/gamut-labs/src';
@@ -10,12 +9,19 @@ import LinkTo from '@storybook/addon-links/dist/react/components/link';
 
 import { PropsTable } from '~styleguide/blocks';
 
+import {
+  MOCK_DROPDOWN_1,
+  MOCK_DROPDOWN_2,
+  MOCK_PROFILE_DROPDOWN,
+} from './MockAppHeaderElements';
+
 <Meta
   title={title}
   component={AppHeaderMainMenuMobile}
   parameters={{
     layout: 'padded',
     status: 'volatile',
+    subtitle: 'The main menu of the mobile AppHeader.',
   }}
   args={{
     action: () => {},
@@ -38,61 +44,18 @@ import { PropsTable } from '~styleguide/blocks';
         trackingTarget: 'topnav_home',
         type: 'link',
       },
-      {
-        id: 'target',
-        text: 'Community',
-        icon: CommunityIcon,
-        popover: [
-          {
-            id: 'sublink-1',
-            text: 'forum',
-            href: 'http://codecademy.com',
-            trackingTarget: '',
-            type: 'link',
-          },
-          {
-            id: 'sublink-2',
-            text: 'chapters',
-            href: 'http://codecademy.com',
-            trackingTarget: '',
-            type: 'link',
-          },
-        ],
-        trackingTarget: '',
-        type: 'dropdown',
-      },
-      {
-        id: 'dropdown-target-2',
-        text: 'Resources',
-        icon: HouseEntranceIcon,
-        popover: [
-          {
-            id: 'sublink-1',
-            text: 'cheatsheets',
-            href: 'http://codecademy.com',
-            trackingTarget: '',
-            type: 'link',
-          },
-          {
-            id: 'sublink-2',
-            text: 'blog',
-            href: 'http://codecademy.com',
-            trackingTarget: '',
-            type: 'link',
-          },
-        ],
-        trackingTarget: '',
-        type: 'dropdown',
-      },
+      MOCK_DROPDOWN_1,
+      MOCK_DROPDOWN_2,
+      MOCK_PROFILE_DROPDOWN,
     ],
   }}
 />
 
-The AppHeaderMainMenuMobile component is used in the mobile version of the AppHeader. It takes in as a prop an array of app header items. It renders items of type "link" as <LinkTo kind="Labs/Experimental/Molecules/AppHeaderLinkMobile" story="AppHeaderLinkMobile">AppHeaderLinkMobile</LinkTo> and items of type "dropdown" as target components that open the <LinkTo kind="Labs/Experimental/Molecules/AppHeaderSubMenuMobile" story="AppHeaderSubMenuMobile">AppHeaderSubMenuMobile</LinkTo> when clicked. The two types - the links & targets - look almost the same to the user: they have an icon & text. The targets show an arrow to indicate that they're expandable. When the target component is clicked, it opens + populates the AppHeaderSubMenuMobile. (For example, resources is of type dropdown; when clicked it opens the submenu which contains links to the cheasheets + blog)
+The AppHeaderMainMenuMobile component is used in the mobile version of the AppHeader. It takes in as a prop an array of app header items. It renders items of type "link" as <LinkTo kind="Labs/Experimental/Molecules/AppHeaderLinkMobile" story="AppHeaderLinkMobile">AppHeaderLinkMobile</LinkTo> and items of type "dropdown" or "profile-dropdown" as target components that open the <LinkTo kind="Labs/Experimental/Molecules/AppHeaderSubMenuMobile" story="AppHeaderSubMenuMobile">AppHeaderSubMenuMobile</LinkTo> when clicked. The two types of rendered components - the links & targets - look almost the same to the user: they have an icon & text. The targets show an arrow to indicate that they're expandable. When the target component is clicked, it opens and populates the <LinkTo kind="Labs/Experimental/Molecules/AppHeaderSubMenuMobile" story="AppHeaderSubMenuMobile">AppHeaderSubMenuMobile</LinkTo>.
+
+These items in `mainMenu` are passed in as objects of type AppHeaderItem, and map to <LinkTo kind="Labs/Experimental/Molecules/AppHeaderLogo" story="AppHeaderLogo">AppHeaderLogo</LinkTo>, <LinkTo kind="Labs/Experimental/Molecules/AppHeaderLink" story="AppHeaderLink">AppHeaderLink</LinkTo>, <LinkTo kind="Labs/Experimental/Molecules/AppHeaderDropdown" story="AppHeaderDropdown">AppHeaderDropdown</LinkTo>, <LinkTo kind="Atoms/Button" story="TextButton">TextButton</LinkTo>, <LinkTo kind="Atoms/Button" story="FillButton">FillButton</LinkTo>, or a custom component passed in by the consumer.)
 
 The AppHeaderMainMenuMobile component uses state to control which view you are in: the main screen (the links with icons) or the submenu view.
-
-### AppHeaderMainMenuMobile
 
 <Canvas>
   <Story name="AppHeaderMainMenuMobile">

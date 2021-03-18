@@ -1,9 +1,12 @@
 import { UseFormMethods, ValidationRules } from 'react-hook-form';
 
 import { ColumnProps } from '../Layout/Column';
+import { ToolTipProps } from '../ToolTip';
 
 export type BaseFormField<Value> = {
   defaultValue?: Value;
+  customError?: string;
+  disabled?: boolean;
 
   /**
    * Whether the label should be hidden visually and not take up space.
@@ -14,6 +17,8 @@ export type BaseFormField<Value> = {
    * HTML id to use instead of the name.
    */
   id?: string;
+
+  toolTip?: ToolTipProps;
 
   name: string;
   onUpdate?: (value: Value) => void;
@@ -71,7 +76,7 @@ export type GridFormRadioOption = {
 };
 
 export type GridFormRadioGroupField = BaseFormField<string> & {
-  label: React.ReactNode;
+  label: string;
   options: GridFormRadioOption[];
   validation?: ValidationRules;
   type: 'radio-group';
