@@ -7,7 +7,6 @@ import { ToolTip, ToolTipProps } from '../../../ToolTip';
 const StyledToolTip = styled.span`
   position: absolute;
   left: calc(100% - 1.1rem);
-  z-index: 1;
 `;
 
 export const GridFormToolTip: React.FC<ToolTipProps> = (props) => {

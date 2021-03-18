@@ -40,6 +40,7 @@ $slight-shadow: rgba(0, 0, 0, 0.15);
   position: absolute;
   width: 16rem;
   visibility: hidden;
+  z-index: 1;
 
   // Both before and after psuedo-elements are used because ::after's background should go over the container's
   // and ::before's box-shadow should be behind the container itself
