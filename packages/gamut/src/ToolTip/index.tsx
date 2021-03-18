@@ -13,13 +13,11 @@ export type ToolTipPosition =
 const arrowWidth = `1rem`;
 const arrowHeight = `0.5rem`;
 const arrowPaddingHorizontal = `1.5rem`;
-const arrowPaddingVertical = `0.25rem`;
 
 const containerOffsetHorizontal = `calc(100% - (${arrowWidth} / 2) + ${arrowPaddingHorizontal})`;
-const containerOffsetVertical = `calc(100% + ${arrowHeight} + ${arrowPaddingVertical})`;
+const containerOffsetVertical = `0.75rem`;
 
 const arrowOffsetHorizontal = `calc(${arrowPaddingHorizontal} - (${arrowWidth} / 2))`;
-const arrowOffsetVertical = `calc(-${arrowHeight} / 2)`;
 
 const slightShadow = `rgba(0, 0, 0, 0.15)`;
 
@@ -51,11 +49,6 @@ const ToolTipContainer = styled.div<ToolTipContainerProps>`
   width: 16rem;
   visibility: hidden;
 
-  ${variant({
-    dark: { backgroundColor: 'black', textColor: 'white' },
-    light: { backgroundColor: 'white', textColor: 'black' },
-  })}
-
   // Both before and after psuedo-elements are used because ::after's background should go over the container's
   // and ::before's box-shadow should be behind the container itself
   &::after,
@@ -69,7 +62,10 @@ const ToolTipContainer = styled.div<ToolTipContainerProps>`
   }
 
   &::after {
-    background: inherit;
+    ${variant({
+      dark: { backgroundColor: 'black' },
+      light: { backgroundColor: 'white' },
+    })}
   }
 
   ${TargetContainer}:hover + &,
@@ -82,18 +78,19 @@ const ToolTipContainer = styled.div<ToolTipContainerProps>`
   ${({ position }) =>
     ['top-left', 'top-right'].includes(position) &&
     `
-      bottom: ${containerOffsetVertical};
+      bottom: 100%;
+      padding-bottom: ${containerOffsetVertical};
 
       &::after,
       &::before {
-        bottom: ${arrowOffsetVertical};
+        bottom: ${arrowHeight};
       }
 
       &::before {
         box-shadow: 2px 2px 4px 0 ${slightShadow};
       }
 
-      ${ToolTipBody} {
+      ${ToolTipBody}::before {
         box-shadow: 0 2px 4px 0 ${slightShadow};
       }
     `}
@@ -101,18 +98,19 @@ const ToolTipContainer = styled.div<ToolTipContainerProps>`
   ${({ position }) =>
     ['bottom-left', 'bottom-right'].includes(position) &&
     `
-      top: ${containerOffsetVertical};
+      padding-top: ${containerOffsetVertical};
+      top: 100%;
 
       &::after,
       &::before {
-        top: ${arrowOffsetVertical};
+        top: ${arrowHeight};
       }
 
       &::before {
         box-shadow: -2px -2px 4px 0 ${slightShadow};
       }
 
-      ${ToolTipBody} {
+      ${ToolTipBody}::before {
         box-shadow: 0 0 4px 0 ${slightShadow};
       }
     `}
@@ -141,13 +139,30 @@ const ToolTipContainer = styled.div<ToolTipContainerProps>`
     `}
 `;
 
-const ToolTipBody = styled.div<{ variant: VisualTheme }>`
-  background: inherit;
-  color: inherit;
+type ToolTipBodyProps = {
+  variant: VisualTheme;
+};
+
+const ToolTipBody = styled.div<ToolTipBodyProps>`
+  ${variant({
+    dark: { backgroundColor: 'black', textColor: 'white' },
+    light: { backgroundColor: 'white', textColor: 'black' },
+  })}
+
   display: inline-block;
   font-size: ${pxRem(14)};
   line-height: ${pxRem(18)};
   padding: 0.6rem 0.75rem;
+  position: relative;
+
+  &::before {
+    content: '';
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
 `;
 
 export type ToolTipProps = {
