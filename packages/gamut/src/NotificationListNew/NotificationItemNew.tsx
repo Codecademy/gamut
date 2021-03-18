@@ -17,10 +17,32 @@ import { Notification } from '../NotificationList/typings';
 const StyledLink = styled.a`
   text-decoration: none;
   display: block;
-
+  z-index: 1;
+  &:before,
+  &:after {
+    top: -1px;
+    left: 0;
+    z-index: 0;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: calc(100% + 2px);
+    transition: background 250ms;
+  }
+  &:focus {
+    outline: none;
+  }
+  &:focus-visible {
+    &:after {
+      border-radius: 4px;
+      border: 2px solid ${({ theme }) => theme.colors.navy};
+    }
+  }
   &:hover {
     text-decoration: none;
-    background-color: ${({ theme }) => theme.colors['gray-100']};
+    &:before {
+      background-color: ${({ theme }) => theme.colors['gray-100']};
+    }
   }
 `;
 
@@ -34,10 +56,11 @@ const StyledImg = styled.img`
 /* this targeted hover effect is needed for a specific case (dismiss icon is within another link, with its own background color change on hover)
  this practice should not be replicated elsewhere */
 const StyledIconButton = styled(IconButton)`
+  z-index: 1;
   &:hover {
     span {
       background-color: ${({ theme }) =>
-        theme.colors['gray-300']} !important; // this will break on darkmode
+        theme.colors['gray-300']}; // this will break on darkmode
     }
   }
 `;
@@ -60,13 +83,7 @@ export const NotificationItemNew: React.FC<NotificationItemNewProps> = ({
 }) => {
   const { date, imageUrl, link, text, type } = notification;
 
-  const dismissNotification = (event: React.MouseEvent) => {
-    event.preventDefault();
-    event.stopPropagation();
-    handleDismiss && handleDismiss();
-  };
-
-  const getIcon = () => {
+  const renderIcon = () => {
     if (imageUrl) {
       return <StyledImg src={imageUrl} alt="" />;
     }
@@ -88,49 +105,54 @@ export const NotificationItemNew: React.FC<NotificationItemNewProps> = ({
     return <Bell aria-hidden height={48} width={48} />;
   };
 
-  const renderNotificationContent = (): ReactElement => {
-    return (
-      <FlexBox paddingY={24} justifyContent="space-between" paddingX={32}>
-        {getIcon()}
-        <Box flexBasis={0} flexGrow={1} paddingLeft={12} textColor="navy">
-          <Text as="span" fontSize="sm">
-            {text}
-          </Text>
-          <DateText as="span" fontSize="sm">
-            {date}
-          </DateText>
-        </Box>
-        {handleDismiss && (
-          <FlexBox alignSelf="end" paddingLeft={8}>
-            <StyledIconButton
-              icon={MiniDeleteIcon}
-              color={colors.navy}
-              onClick={dismissNotification}
-              aria-label="dismiss notification"
-              size="small"
-              variant="secondary"
-            />
-          </FlexBox>
-        )}
-      </FlexBox>
-    );
-  };
+  const notificationContent: ReactElement = (
+    <FlexBox zIndex={1} position="relative">
+      {renderIcon()}
+      <Box flexBasis={0} flexGrow={1} paddingLeft={12} textColor="navy">
+        <Text as="span" fontSize="sm">
+          {text}
+        </Text>
+        <DateText as="span" fontSize="sm">
+          {date}
+        </DateText>
+      </Box>
+    </FlexBox>
+  );
+
+  const dismissIcon: ReactElement = (
+    <StyledIconButton
+      icon={MiniDeleteIcon}
+      color={colors.navy}
+      onClick={handleDismiss}
+      aria-label="dismiss notification"
+      size="small"
+      variant="secondary"
+    />
+  );
 
   return (
-    <>
+    <FlexBox
+      paddingY={24}
+      paddingX={32}
+      justifyContent="space-between"
+      position="relative"
+    >
       {link ? (
-        <StyledLink
-          href={link}
-          aria-label={`${text}, ${date} ago`}
-          rel="noopener noreferrer"
-          target="_blank"
-          onClick={(event) => handleClick?.(event)}
-        >
-          {renderNotificationContent()}
-        </StyledLink>
+        <>
+          <StyledLink
+            href={link}
+            aria-label={`${text}, ${date} ago`}
+            rel="noopener noreferrer"
+            target="_blank"
+            onClick={(event) => handleClick?.(event)}
+          >
+            {notificationContent}
+          </StyledLink>
+        </>
       ) : (
-        <div>{renderNotificationContent()}</div>
+        <>{notificationContent}</>
       )}
-    </>
+      {handleDismiss && dismissIcon}
+    </FlexBox>
   );
 };
