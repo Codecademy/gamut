@@ -4,11 +4,6 @@ import styled from '@emotion/styled';
 import React from 'react';
 
 import { AppHeaderAvatar } from '../../AppHeader/AppHeaderElements/AppHeaderAvatar';
-import {
-  focusStyles,
-  hoverStyles,
-  textButtonStyles,
-} from '../../AppHeader/AppHeaderElements/SharedStyles';
 import { AppHeaderDropdownItem } from '../../AppHeader/AppHeaderElements/types';
 
 export type AppHeaderSubMenuTargetProps = {

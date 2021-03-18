@@ -1,4 +1,5 @@
 import { Anchor, Box } from '@codecademy/gamut';
+import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import React from 'react';
 
@@ -13,18 +14,16 @@ export type AppHeaderLinkMobileProps = {
   topSeparator?: boolean;
 };
 
-type AppHeaderLinkButtonProps = { topSeparator: boolean };
-
-const SeparatorOuter = styled(Box)<AppHeaderLinkButtonProps>`
-  border-top: ${({ theme, topSeparator }) =>
-    topSeparator ? `1px solid ${theme.colors['gray-400']}` : ''};
-  margin-top: ${({ topSeparator }) => (topSeparator ? '0.5rem' : '')};
-
-  ${Anchor} {
+const AppHeaderLink = styled(Anchor)(
+  ({ theme }) => css`
     display: flex;
     width: 100%;
-  }
-`;
+    &:first-of-type {
+      border-top: 1px solid ${theme.colors['gray-400']};
+      margin-top: ${theme.spacing[8]};
+    }
+  `
+);
 
 export const AppHeaderLinkMobile: React.FC<AppHeaderLinkMobileProps> = ({
   action,
@@ -34,25 +33,23 @@ export const AppHeaderLinkMobile: React.FC<AppHeaderLinkMobileProps> = ({
   const Icon = item.icon;
 
   return (
-    <SeparatorOuter topSeparator={topSeparator}>
-      <Anchor
-        data-intellimize={item.dataIntellimizeId}
-        data-testid={item.dataTestId}
-        href={item.href}
-        onClick={(event) => action(event, item)}
-        target={item.newTab ? 'blank' : ''}
-        variant="interface"
-        paddingY={(16 + (topSeparator ? 8 : 0)) as 24 | 16}
-        lineHeight="base"
-        textAlign="left"
-      >
-        {Icon && (
-          <Box display="flex" alignContent="center" marginRight={16}>
-            <Icon size={24} aria-hidden />
-          </Box>
-        )}
-        {item.text}
-      </Anchor>
-    </SeparatorOuter>
+    <AppHeaderLink
+      data-intellimize={item.dataIntellimizeId}
+      data-testid={item.dataTestId}
+      href={item.href}
+      onClick={(event) => action(event, item)}
+      target={item.newTab ? 'blank' : ''}
+      variant="interface"
+      paddingY={(16 + (topSeparator ? 8 : 0)) as 24 | 16}
+      lineHeight="base"
+      textAlign="left"
+    >
+      {Icon && (
+        <Box display="flex" alignContent="center" marginRight={16}>
+          <Icon size={24} aria-hidden />
+        </Box>
+      )}
+      {item.text}
+    </AppHeaderLink>
   );
 };

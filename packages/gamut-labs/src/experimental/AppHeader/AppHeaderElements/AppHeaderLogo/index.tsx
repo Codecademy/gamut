@@ -1,11 +1,11 @@
-import { Anchor } from '@codecademy/gamut';
 import styled from '@emotion/styled';
 import React from 'react';
 
 import { Logo } from '../../../../brand/Logo';
 import { AppHeaderClickHandler, AppHeaderLogoItem } from '../types';
 
-const LogoButton = styled(Anchor)`
+const LogoButton = styled.a`
+  display: inline-block;
   padding: 0.375rem 0;
 `;
 

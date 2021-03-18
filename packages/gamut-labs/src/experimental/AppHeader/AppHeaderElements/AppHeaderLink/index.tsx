@@ -1,4 +1,5 @@
 import { Anchor } from '@codecademy/gamut';
+import styled from '@emotion/styled';
 import React from 'react';
 
 import { AppHeaderClickHandler, AppHeaderLinkItem } from '../types';
@@ -8,12 +9,16 @@ export type AppHeaderLinkProps = {
   item: AppHeaderLinkItem;
 };
 
+const Link = styled(Anchor)`
+  white-space: nowrap;
+`;
+
 export const AppHeaderLink: React.FC<AppHeaderLinkProps> = ({
   action,
   item,
 }) => {
   return (
-    <Anchor
+    <Link
       data-testid={item.dataTestId}
       data-intellimize={item.dataIntellimizeId}
       href={item.href}
@@ -25,6 +30,6 @@ export const AppHeaderLink: React.FC<AppHeaderLinkProps> = ({
       textAlign="left"
     >
       {item.text}
-    </Anchor>
+    </Link>
   );
 };
