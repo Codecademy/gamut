@@ -1,6 +1,7 @@
 import {
   AppBarSection,
   Box,
+  ContentContainer,
   FlexBox,
   IconButton,
   Overlay,
@@ -113,13 +114,13 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
               </FlexBox>
             </AppBarSection>
           </StyledAppBar>
-          <Box paddingX={{ base: 16, sm: 32 }}>
+          <ContentContainer>
             <AppHeaderMainMenuMobile
               items={items.mainMenu}
               action={action}
               renderSearch={renderSearch}
             />
-          </Box>
+          </ContentContainer>
         </div>
       </StyledOverlay>
     </>

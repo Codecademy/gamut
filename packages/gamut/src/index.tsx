@@ -4,7 +4,6 @@ export * from './Accordion';
 export * from './AccordionArea';
 export * from './AccordionButton';
 export * from './AppBar';
-export * from './AppBar/AppBarSection';
 export * from './AppWrapper';
 export * from './Badge';
 export * from './Banner';

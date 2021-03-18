@@ -1,8 +1,9 @@
-import cx from 'classnames';
+import { variant } from '@codecademy/gamut-styles';
+import styled from '@emotion/styled';
 import React from 'react';
 
+import { FlexBox } from '..';
 import { ContentContainer } from '../ContentContainer';
-import styles from './styles/index.module.scss';
 
 export type AppBarProps = {
   className?: string;
@@ -12,18 +13,47 @@ export type AppBarProps = {
   wide?: boolean;
 };
 
-export const AppBar: React.FC<AppBarProps> = ({
-  wide,
-  children,
-  className,
-}) => {
-  const classes = cx(styles.wrapper, className);
+const AppBarContainer = styled.div`
+  display: flex;
+  align-items: center;
+  height: 100%;
+`;
 
+const AppBarLayout: React.FC<AppBarProps> = ({ wide, children }) => {
   return (
-    <div className={classes}>
-      <ContentContainer className={styles.contentWrapper} wide={wide}>
+    <ContentContainer size={wide ? 'wide' : 'medium'}>
+      <FlexBox alignItems="center" height="100%">
         {children}
-      </ContentContainer>
-    </div>
+      </FlexBox>
+    </ContentContainer>
   );
+};
+
+export const AppBar = AppBarContainer.withComponent(AppBarLayout);
+
+export type AppBarSectionProps = {
+  /**
+   * Position of the the section within the AppBar.
+   */
+  position?: 'left' | 'center' | 'right';
+  className?: string;
+};
+
+export const AppBarSection = styled(FlexBox)(
+  variant({
+    prop: 'position',
+    variants: {
+      right: { justifyContent: 'flex-end' },
+      left: {},
+      center: { flexGrow: 2, justifyContent: 'center', textAlign: 'center' },
+    },
+  })
+);
+
+AppBarSection.defaultProps = {
+  alignItems: 'center',
+  height: '100%',
+  flexGrow: 1,
+  flexShrink: 1,
+  flexBasis: '0',
 };
