@@ -2,7 +2,7 @@ import { MiniInfoOutlineIcon } from '@codecademy/gamut-icons';
 import { theme, variant } from '@codecademy/gamut-styles';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import React, { HTMLAttributes, ReactNode } from 'react';
+import React, { HTMLAttributes } from 'react';
 
 import { ToolTip, ToolTipProps } from '..';
 import { ToolTipPosition } from '../ToolTip';
@@ -33,7 +33,6 @@ export type FormGroupLabelProps = HTMLAttributes<HTMLDivElement> &
     disabled?: boolean;
     htmlFor?: string;
     tooltip?: ToolTipProps;
-    children: ReactNode;
     showRequired?: boolean;
     size?: 'small' | 'large';
   };

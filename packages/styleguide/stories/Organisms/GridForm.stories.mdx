@@ -499,7 +499,7 @@ field's value in a parent component before onSubmit gets triggered.
 
 ## With tooltip
 
-A field can now include a tooltip
+A field can now include - [our existing `ToolTip`](/?path=/docs/atoms-tooltip--tool-tip). The position of the tooltip on each field is always set to the bottom-right. You also have the option to render each tooltip in dark or light mode. The id of the tooltip is automtaically generated to be the id or name of the field with `-tooltip`.
 
 <Canvas>
   <Story name="Tooltip">
@@ -509,7 +509,6 @@ A field can now include a tooltip
           fields={[
             {
               toolTip: {
-                id: 'tooltip-input',
                 children:
                   'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
               },
@@ -520,7 +519,6 @@ A field can now include a tooltip
             },
             {
               toolTip: {
-                id: 'tooltip-select',
                 theme: 'dark',
                 children: (
                   <Markdown text="My grandmother used to tell me stories..." />
@@ -536,7 +534,6 @@ A field can now include a tooltip
             },
             {
               toolTip: {
-                id: 'tooltip-textarea',
                 children:
                   'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
               },
@@ -550,7 +547,6 @@ A field can now include a tooltip
             },
             {
               toolTip: {
-                id: 'tooltip-radio-group',
                 children:
                   'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
               },
@@ -574,7 +570,6 @@ A field can now include a tooltip
             },
             {
               toolTip: {
-                id: 'tooltip-checkbox',
                 children:
                   'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
               },
