@@ -40,6 +40,7 @@ export type MarkdownProps = {
   inline?: boolean;
   overrides?: ManyOverrideSettings;
   skipDefaultOverrides?: SkipDefaultOverridesSettings;
+  headerIds: boolean;
   spacing?: 'loose' | 'tight' | 'none';
   text?: string;
   /**
@@ -57,6 +58,7 @@ export class Markdown extends PureComponent<MarkdownProps> {
       overrides: userOverrides = {},
       skipDefaultOverrides = {},
       inline = false,
+      headerIds = false,
       onAnchorClick,
     } = this.props;
 
@@ -108,6 +110,8 @@ export class Markdown extends PureComponent<MarkdownProps> {
 
     const markedOptions = {
       smartypants: true,
+      headerIds,
+      headerPrefix: 'md-',
     };
 
     // Render markdown to html
