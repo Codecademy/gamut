@@ -240,7 +240,6 @@ describe('css', () => {
     const returnedFn = css({
       '&:hover': {
         width: ['100%', '200%'],
-        margin: 'initial',
       },
     });
 

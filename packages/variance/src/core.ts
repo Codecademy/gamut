@@ -91,7 +91,7 @@ export const variance = {
             switch (typeof config.scale) {
               case 'string': {
                 const path = `theme.${config.scale}.${value}`;
-                scaleVal = get(props, path, value);
+                scaleVal = get(props, path);
                 break;
               }
               case 'object': {
@@ -105,7 +105,7 @@ export const variance = {
             // for each property look up the scale value from theme if passed and apply any
             // final transforms to the value
             properties.forEach((property) => {
-              styles[property] = transform(scaleVal, property, props);
+              styles[property] = transform(scaleVal ?? value, property, props);
             });
             // return the resulting styles object
             return styles;
