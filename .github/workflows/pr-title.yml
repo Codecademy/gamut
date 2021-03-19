@@ -21,4 +21,4 @@ jobs:
           context-name: conventional-pr-title
           preset: conventional-changelog-conventionalcommits@latest
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.ACTIONS_GITHUB_TOKEN }}
