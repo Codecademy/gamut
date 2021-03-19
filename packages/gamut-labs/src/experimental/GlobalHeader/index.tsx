@@ -1,4 +1,4 @@
-import { Box, FlexBox } from '@codecademy/gamut';
+import { FlexBox } from '@codecademy/gamut';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import React from 'react';
@@ -118,7 +118,6 @@ const StickHeader = styled.div<{ faded: boolean }>(
 
 export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
   const { y } = useWindowScroll();
-
   const isInHeaderRegion = y === 0;
 
   return (
