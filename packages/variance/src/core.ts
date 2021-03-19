@@ -1,12 +1,14 @@
-import { get, identity, merge } from 'lodash';
+import { get, identity, isObject, merge } from 'lodash';
 
 import {
   AbstractParser,
   AbstractPropTransformer,
+  CSS,
   Parser,
   Prop,
   PropTransformer,
   TransformerMap,
+  Variant,
 } from './types/config';
 import { AbstractTheme, CSSObject, ThemeProps } from './types/props';
 import { AllUnionKeys, KeyFromUnion } from './types/utils';
@@ -123,6 +125,63 @@ export const variance = {
             {}
           ) as MergedParser
         );
+      },
+      createCss<
+        Config extends Record<string, Prop<T>>,
+        P extends Parser<T, TransformerMap<T, Config>>
+      >(config: Config): CSS<T, P> {
+        const parser = this.create(config);
+
+        return (cssProps) => {
+          let cache: CSSObject;
+          const selectors = Object.keys(cssProps).filter((key) =>
+            key.match(/(&|>|\+|~)/g)
+          );
+
+          return ({ theme }) => {
+            if (cache) return cache;
+            const css = parser({ ...cssProps, theme } as any);
+            selectors.forEach((selector) => {
+              const selectorConfig = cssProps[selector];
+              if (isObject(selectorConfig)) {
+                css[selector] = parser(
+                  Object.assign(selectorConfig, { theme }) as any
+                );
+              }
+            });
+            cache = css;
+
+            return cache;
+          };
+        };
+      },
+      createVariant<
+        Config extends Record<string, Prop<T>>,
+        P extends Parser<T, TransformerMap<T, Config>>
+      >(config: Config): Variant<T, P> {
+        const css: CSS<T, P> = this.createCss(config);
+
+        return (variants, options) => {
+          type Keys = keyof typeof variants;
+          const prop = options?.prop || 'variant';
+          const defaultVariant = options?.defaultVariant;
+
+          const variantFns = {} as Record<
+            Keys,
+            (props: ThemeProps<T>) => CSSObject
+          >;
+
+          Object.keys(variants).forEach((key) => {
+            const variantKey = key as Keys;
+            const cssProps = variants[variantKey];
+            variantFns[variantKey] = css(cssProps as any);
+          });
+
+          return ({ [prop]: selected = defaultVariant, ...props }) => {
+            if (!selected) return {};
+            return variantFns[selected](props);
+          };
+        };
       },
       create<Config extends Record<string, Prop<T>>>(config: Config) {
         const transforms = {} as TransformerMap<T, Config>;
