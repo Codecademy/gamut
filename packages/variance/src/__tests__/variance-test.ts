@@ -240,12 +240,14 @@ describe('css', () => {
     const returnedFn = css({
       '&:hover': {
         width: ['100%', '200%'],
+        margin: 'initial',
       },
     });
 
     expect(returnedFn({ theme })).toEqual({
       '&:hover': {
         width: '100%',
+        margin: 'initial',
         XS: { width: '200%' },
       },
     });
