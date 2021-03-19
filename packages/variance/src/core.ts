@@ -105,7 +105,12 @@ export const variance = {
             // for each property look up the scale value from theme if passed and apply any
             // final transforms to the value
             properties.forEach((property) => {
-              styles[property] = transform(scaleVal ?? value, property, props);
+              const finalValue = transform(scaleVal ?? value, property, props);
+              const mergeStyles = isObject(finalValue)
+                ? finalValue
+                : { [property]: finalValue };
+
+              Object.assign(styles, mergeStyles);
             });
             // return the resulting styles object
             return styles;

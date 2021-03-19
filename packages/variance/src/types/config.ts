@@ -23,7 +23,7 @@ export interface Prop<T extends AbstractTheme> extends BaseProperty {
     val: string | number,
     prop?: string,
     props?: AbstractProps
-  ) => string | number;
+  ) => string | number | CSSObject;
 }
 
 export interface AbstractPropTransformer<T extends AbstractTheme>
