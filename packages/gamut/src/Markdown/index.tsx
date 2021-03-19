@@ -44,7 +44,7 @@ export type MarkdownProps = {
    * Enables generated header ids for H1-6 tags
    * Can generate duplicate IDs if used on separate markdown components on the same page
    */
-  headerIds: boolean;
+  headerIds?: boolean;
   spacing?: 'loose' | 'tight' | 'none';
   text?: string;
   /**
