@@ -3,7 +3,6 @@ import {
   layout,
   shouldForwardProp,
   space,
-  timing,
   typography,
   variant,
 } from '@codecademy/gamut-styles';
@@ -128,7 +127,10 @@ export const AnchorBase = styled('a', {
       &:after {
         content: '';
         position: absolute;
-        inset: 0;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
         border-radius: 4px;
         border: 2px solid;
         border-color: inherit;
@@ -157,7 +159,10 @@ export const AnchorBase = styled('a', {
         ${focus({ theme, variant })}
 
         &:after {
-          inset: -${theme.spacing[4]} -${theme.spacing[8]};
+          top: -${theme.spacing[4]};
+          bottom: -${theme.spacing[4]};
+          left: -${theme.spacing[8]};
+          right: -${theme.spacing[8]};
           opacity: 1;
         }
       }
