@@ -4,7 +4,6 @@ import React from 'react';
 
 const AreaBox = styled(Box)`
   margin: 2rem 10rem;
-  ${({ theme }) => theme.breakpoints.sm}
 `;
 
 export const TooltipArea: React.FC = ({ children }) => {
