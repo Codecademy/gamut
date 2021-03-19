@@ -1,6 +1,6 @@
 {
   "name": "@codecademy/gamut-system",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "description": "Typesafe styled component utilities",
   "author": "codecademy",
   "main": "dist/index.js",
