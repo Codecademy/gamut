@@ -1,7 +1,7 @@
 {
   "name": "@codecademy/styleguide",
   "description": "Styleguide & Component library for codecademy.com",
-  "version": "32.0.2",
+  "version": "32.0.3",
   "author": "Codecademy Engineering",
   "scripts": {
     "start": "yarn storybook",
