@@ -100,9 +100,9 @@ export const miniIconStyles = css`
 
 export const customIconStyles = css`
   ${iconBaseStyles}
-  right: .8rem;
-  height: 1.25rem;
-  width: 1.25rem;
+  right: .75rem;
+  height: 1.375rem;
+  width: 1.375rem;
   top: calc(50% - ${pxRem(10)});
 `;
 
