@@ -1,12 +1,5 @@
-import { AlertIcon } from '@codecademy/gamut-icons';
-import {
-  properties,
-  pxRem,
-  shouldForwardProp,
-  theme,
-} from '@codecademy/gamut-styles';
-import { css, SerializedStyles } from '@emotion/react';
-import styled from '@emotion/styled';
+import { pxRem, theme } from '@codecademy/gamut-styles';
+import { css } from '@emotion/react';
 import { StandardPropertiesHyphen } from 'csstype';
 
 export const colorStates = {
@@ -81,17 +74,6 @@ const transitionConcatenator = (
   return css`
     transition: ${cssString};
   `;
-};
-
-export const styledIconCreator = (
-  Icon: typeof AlertIcon,
-  styles: SerializedStyles
-) => {
-  const StyledIcon = styled(Icon, { shouldForwardProp })(
-    styles,
-    properties.textColor
-  );
-  return StyledIcon;
 };
 
 export const iconBaseStyles = css`

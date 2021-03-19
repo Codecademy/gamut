@@ -19,7 +19,6 @@ import {
   formFieldStyles,
   iconStyles,
   miniIconStyles,
-  styledIconCreator,
 } from './styles/shared';
 
 export type SelectWrapperProps = SelectHTMLAttributes<HTMLSelectElement> & {
@@ -49,19 +48,8 @@ const selectSizeVariants = variant({
   },
 });
 
-const SelectWrapper = styled(Box)`
-  position: relative;
-  width: 100%;
-  font-weight: normal;
-  min-width: 7rem;
-`;
-
-const StyledDownIcon = styledIconCreator(ArrowChevronDownIcon, iconStyles);
-
-const StyledMiniDownIcon = styledIconCreator(
-  MiniChevronDownIcon,
-  miniIconStyles
-);
+const StyledDownIcon = styled(ArrowChevronDownIcon)(iconStyles);
+const StyledMiniDownIcon = styled(MiniChevronDownIcon)(miniIconStyles);
 
 const SelectBase = styled.select<SelectProps>`
   ${formFieldStyles}
@@ -109,7 +97,14 @@ export const Select = forwardRef<HTMLSelectElement, SelectWrapperProps>(
     }
 
     return (
-      <SelectWrapper className={className} textColor={error ? 'red' : 'navy'}>
+      <Box
+        position="relative"
+        width="100%"
+        textColor={error ? 'red' : 'navy'}
+        fontWeight="normal"
+        minWidth="7rem"
+        className={className}
+      >
         {sizeVariant === 'small' ? <StyledMiniDownIcon /> : <StyledDownIcon />}
         <SelectBase
           {...rest}
@@ -123,7 +118,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectWrapperProps>(
         >
           {selectOptions}
         </SelectBase>
-      </SelectWrapper>
+      </Box>
     );
   }
 );
