@@ -1,6 +1,6 @@
-import { Box } from '@codecademy/gamut';
-import { useTheme } from '@emotion/react';
-import cx from 'classnames';
+import { Box, FlexBox } from '@codecademy/gamut';
+import { css } from '@emotion/react';
+import styled from '@emotion/styled';
 import React from 'react';
 import { useWindowScroll } from 'react-use';
 
@@ -25,7 +25,6 @@ import {
   proHeaderItems,
   proMobileHeaderItems,
 } from './GlobalHeaderVariants';
-import styles from './styles.module.scss';
 import { AnonHeader, FreeHeader, LoadingHeader, ProHeader } from './types';
 
 export type GlobalHeaderProps =
@@ -96,25 +95,35 @@ const getMobileAppHeaderItems = (
   }
 };
 
+const StickHeader = styled.div<{ faded: boolean }>(
+  ({ theme, faded }) => css`
+    height: ${theme.elements.headerHeight};
+    border-bottom: 1px solid ${theme.colors.navy};
+    background-color: ${theme.colors.white};
+    top: 0;
+    z-index: 2;
+    width: 100%;
+    transition: background 0.15s ease-in-out,
+      border-bottom-color 0.15s ease-in-out;
+
+    ${faded &&
+    css`
+      background: transparent;
+      border-bottom: 1px solid transparent;
+      transition: background 0.5s ease-in-out,
+        border-bottom-color 0.5s ease-in-out;
+    `}
+  `
+);
+
 export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
   const { y } = useWindowScroll();
 
   const isInHeaderRegion = y === 0;
 
-  const theme = useTheme();
-
-  const headerClasses = cx(
-    styles.stickyHeader,
-    isInHeaderRegion && styles.transitionFadeOut
-  );
-
   return (
-    <>
-      <Box
-        display={{ base: 'none', md: 'block' }}
-        height={theme.elements.headerHeight}
-        className={headerClasses}
-      >
+    <StickHeader faded={isInHeaderRegion}>
+      <FlexBox height="100%" display={{ base: 'none', md: 'block' }}>
         <AppHeader
           action={props.action}
           items={getAppHeaderItems(props)}
@@ -122,12 +131,8 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
             props.type === 'anon' ? props.redirectParam : undefined
           }
         />
-      </Box>
-      <Box
-        display={{ base: 'block', md: 'none' }}
-        height={theme.elements.headerHeight}
-        className={headerClasses}
-      >
+      </FlexBox>
+      <FlexBox height="100%" display={{ base: 'block', md: 'none' }}>
         <AppHeaderMobile
           action={props.action}
           items={getMobileAppHeaderItems(props)}
@@ -136,7 +141,7 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
             props.type === 'anon' ? props.redirectParam : undefined
           }
         />
-      </Box>
-    </>
+      </FlexBox>
+    </StickHeader>
   );
 };
