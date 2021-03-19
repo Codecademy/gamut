@@ -101,7 +101,6 @@ export const Select = forwardRef<HTMLSelectElement, SelectWrapperProps>(
         position="relative"
         width="100%"
         textColor={error ? 'red' : 'navy'}
-        fontWeight="normal"
         minWidth="7rem"
         className={className}
       >
