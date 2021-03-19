@@ -2,7 +2,7 @@ import { variant } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React from 'react';
 
-import { Box } from '../Box';
+import { Box, FlexBox } from '../Box';
 import { ContentContainer } from '../ContentContainer';
 
 export type AppBarProps = {
@@ -18,9 +18,9 @@ const AppBarContainer = styled.div`
 const AppBarLayout: React.FC<AppBarProps> = ({ wide, children }) => {
   return (
     <ContentContainer size={wide ? 'wide' : 'medium'}>
-      <Box alignItems="center" height="100%">
+      <FlexBox alignItems="center" height="100%">
         {children}
-      </Box>
+      </FlexBox>
     </ContentContainer>
   );
 };

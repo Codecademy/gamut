@@ -1,5 +1,5 @@
 import { Box } from '@codecademy/gamut';
-import { ArrowChevronLeftIcon } from '@codecademy/gamut-icons';
+import { MiniArrowLeftIcon } from '@codecademy/gamut-icons';
 import styled from '@emotion/styled';
 import React from 'react';
 
@@ -27,9 +27,11 @@ export const AppHeaderSubMenuMobile: React.FC<AppHeaderSubMenuMobileProps> = ({
         onClick={handleClose}
         type="button"
         variant="interface"
-        marginBottom={24}
+        paddingY={16}
+        marginBottom={12}
+        width="100%"
       >
-        <ArrowChevronLeftIcon size={12} aria-hidden />
+        <MiniArrowLeftIcon size={12} aria-hidden />
         <Box fontSize={16} marginLeft={8}>
           Full Menu
         </Box>

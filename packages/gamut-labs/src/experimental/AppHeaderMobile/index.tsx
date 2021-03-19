@@ -6,7 +6,7 @@ import {
   IconButton,
   Overlay,
 } from '@codecademy/gamut';
-import { CloseIcon, MenuIcon } from '@codecademy/gamut-icons';
+import { MiniDeleteIcon, MiniMenuIcon } from '@codecademy/gamut-icons';
 import { breakpoints } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React, { ReactNode, useState } from 'react';
@@ -76,12 +76,13 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
           <AppBarSection alignment="right">
             {mapItemsToElement(items.right)}
 
-            <FlexBox marginLeft={24}>
+            <FlexBox marginLeft={24} alignItems="center">
               <IconButton
+                size="small"
                 variant="secondary"
                 data-testid="header-mobile-menu"
                 aria-label="open navigation menu"
-                icon={MenuIcon}
+                icon={MiniMenuIcon}
                 onClick={() => {
                   openMobileMenu();
                 }}
@@ -102,10 +103,11 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
               {mapItemsToElement(items.left)}
             </AppBarSection>
             <AppBarSection alignment="right">
-              <FlexBox height="2.5rem" width="2.5rem">
+              <FlexBox alignItems="center">
                 <IconButton
                   variant="secondary"
-                  icon={CloseIcon}
+                  size="small"
+                  icon={MiniDeleteIcon}
                   aria-label="close menu"
                   onClick={() => {
                     setMobileMenuOpen(false);

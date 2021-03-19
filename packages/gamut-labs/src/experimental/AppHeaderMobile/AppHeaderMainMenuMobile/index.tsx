@@ -90,7 +90,7 @@ export const AppHeaderMainMenuMobile: React.FC<AppHeaderMainMenuMobileProps> = (
         />
       ) : (
         <>
-          {renderSearch && renderSearch()}
+          {renderSearch?.()}
           {items.map((item) => mapItemToElement(item, action))}
         </>
       )}

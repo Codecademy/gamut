@@ -1,5 +1,5 @@
-import { Anchor, Box, FlexBox } from '@codecademy/gamut';
-import { ArrowChevronRightIcon } from '@codecademy/gamut-icons';
+import { Anchor, FlexBox } from '@codecademy/gamut';
+import { MiniArrowRightIcon } from '@codecademy/gamut-icons';
 import styled from '@emotion/styled';
 import React from 'react';
 
@@ -10,12 +10,6 @@ export type AppHeaderSubMenuTargetProps = {
   item: AppHeaderDropdownItem;
   openSubMenu: (event: React.MouseEvent, item: AppHeaderDropdownItem) => void;
 };
-
-const AppHeaderLinkButtonInner = styled(Box)`
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-`;
 
 const DisplayNameText = styled.div`
   max-width: 70vw;
@@ -43,29 +37,21 @@ export const AppHeaderSubMenuTarget: React.FC<AppHeaderSubMenuTargetProps> = ({
       data-testid={item.dataTestId}
       onClick={(event: React.MouseEvent) => openSubMenu(event, item)}
       aria-label={`open ${item} submenu`}
+      paddingY={16}
+      minWidth="0"
+      textAlign="left"
     >
-      <AppHeaderLinkButtonInner
-        lineHeight="base"
-        minWidth="0"
-        paddingY={16}
-        textAlign="left"
-        display="flex"
-      >
-        <FlexBox alignItems="center">
-          <FlexBox marginRight={16}>{getIcon()}</FlexBox>
-
-          {item.type === 'profile-dropdown' ? (
-            <DisplayNameText>{item.userDisplayName}</DisplayNameText>
-          ) : (
-            item.text
-          )}
-        </FlexBox>
-        <FlexBox alignSelf="end">
-          <Box>
-            <ArrowChevronRightIcon size={12} aria-hidden />
-          </Box>
-        </FlexBox>
-      </AppHeaderLinkButtonInner>
+      <FlexBox alignItems="center" flexGrow={1} flexShrink={1} flexBasis="0">
+        <FlexBox marginRight={16}>{getIcon()}</FlexBox>
+        {item.type === 'profile-dropdown' ? (
+          <DisplayNameText>{item.userDisplayName}</DisplayNameText>
+        ) : (
+          item.text
+        )}
+      </FlexBox>
+      <FlexBox alignItems="center" alignSelf="stretch" paddingRight={8}>
+        <MiniArrowRightIcon size={12} aria-hidden color="currentColor" />
+      </FlexBox>
     </Anchor>
   );
 };
