@@ -38,7 +38,7 @@
     "babel-plugin-transform-dynamic-import": "^2.1.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.12.1",
-    "@babel/core": "^7.12.3"
+    "@babel/cli": "^7.13.10",
+    "@babel/core": "^7.13.10"
   }
 }
