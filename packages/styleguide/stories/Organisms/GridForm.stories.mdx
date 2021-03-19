@@ -499,7 +499,7 @@ field's value in a parent component before onSubmit gets triggered.
 
 ## With tooltip
 
-A field can now include - [our existing `ToolTip`](/?path=/docs/atoms-tooltip--tool-tip). The position of the tooltip on each field is always set to the bottom-right. You also have the option to render each tooltip in dark or light mode. The id of the tooltip is automtaically generated to be the id or name of the field with `-tooltip`.
+A field can now include [our existing `ToolTip`](/?path=/docs/atoms-tooltip--tool-tip). The position of the tooltip on each field is always set to the bottom-right. You also have the option to render each tooltip in dark or light mode. The id of the tooltip is automtaically generated to be the id or name of the field with `-tooltip`.
 
 <Canvas>
   <Story name="Tooltip">
@@ -513,7 +513,7 @@ A field can now include - [our existing `ToolTip`](/?path=/docs/atoms-tooltip--t
                   'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
               },
               label: 'Tool input',
-              name: 'tooltip-input',
+              name: 'input-field',
               size: 6,
               type: 'text',
             },
@@ -531,6 +531,7 @@ A field can now include - [our existing `ToolTip`](/?path=/docs/atoms-tooltip--t
               validation: {
                 required: 'Please select an option',
               },
+              name: 'select-field',
             },
             {
               toolTip: {
@@ -538,7 +539,7 @@ A field can now include - [our existing `ToolTip`](/?path=/docs/atoms-tooltip--t
                   'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
               },
               label: 'Write a paragraph about tooltips',
-              name: 'textarea-input',
+              name: 'textarea-field',
               size: 6,
               type: 'textarea',
               validation: {
