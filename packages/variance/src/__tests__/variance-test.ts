@@ -290,11 +290,13 @@ describe('variants', () => {
 
   it('creates a variant function', () => {
     const myVariant = variant({
-      cool: {
-        margin: 4,
-        width: ['100%', '200%'],
-        '&:hover': {
-          width: '150%',
+      variants: {
+        cool: {
+          margin: 4,
+          width: ['100%', '200%'],
+          '&:hover': {
+            width: '150%',
+          },
         },
       },
     });
@@ -309,8 +311,9 @@ describe('variants', () => {
     });
   });
   it('has a default variant', () => {
-    const myVariant = variant(
-      {
+    const myVariant = variant({
+      defaultVariant: 'cool',
+      variants: {
         cool: {
           width: ['100%', '200%'],
           '&:hover': {
@@ -318,10 +321,7 @@ describe('variants', () => {
           },
         },
       },
-      {
-        defaultVariant: 'cool',
-      }
-    );
+    });
 
     expect(myVariant({ theme, variant: 'cool' })).toEqual({
       width: '100%',
@@ -332,16 +332,14 @@ describe('variants', () => {
     });
   });
   it('has a customized key', () => {
-    const myVariant = variant(
-      {
+    const myVariant = variant({
+      prop: 'sweet',
+      variants: {
         cool: {
           width: '100%',
         },
       },
-      {
-        prop: 'sweet',
-      }
-    );
+    });
 
     expect(myVariant({ theme, sweet: 'cool' })).toEqual({
       width: '100%',
@@ -349,8 +347,10 @@ describe('variants', () => {
   });
   it('caches the variant once called', () => {
     const myVariant = variant({
-      cool: {
-        margin: 4,
+      variants: {
+        cool: {
+          margin: 4,
+        },
       },
     });
 
@@ -366,14 +366,16 @@ describe('variants', () => {
   });
   it('caches each variant individually', () => {
     const myVariant = variant({
-      cool: {
-        margin: 4,
-      },
-      beans: {
-        margin: 8,
-      },
-      world: {
-        margin: 16,
+      variants: {
+        cool: {
+          margin: 4,
+        },
+        beans: {
+          margin: 8,
+        },
+        world: {
+          margin: 16,
+        },
       },
     });
 

@@ -112,16 +112,14 @@ export interface Variant<
     X extends Selectors<keyof Props>,
     Keys extends string,
     PropKey extends Readonly<string> = 'variant'
-  >(
+  >(options: {
+    prop?: PropKey;
+    defaultVariant?: Keys;
     variants: {
       [P in Keys]: Parameters<Parser>[0] &
         SelectorMap<Props, X, Parameters<Parser>[0]>;
-    },
-    options?: {
-      prop?: PropKey;
-      defaultVariant?: Keys;
-    }
-  ): (props: Record<PropKey, Keys> & { theme?: T }) => CSSObject;
+    };
+  }): (props: Record<PropKey, Keys> & { theme?: T }) => CSSObject;
 }
 export interface CSS<T extends AbstractTheme, P extends AbstractParser<T>> {
   <Props extends AbstractProps, X extends Selectors<keyof Props>>(
