@@ -50,7 +50,7 @@ export const ColorModeExample = () => {
   const [mode, setMode] = useState(false);
   return (
     <Box marginY={16} marginBottom={32}>
-      <Box fontWeight="title">
+      <Box fontWeight="title" marginBottom={8}>
         Use Dark Mode <BooleanControl value={mode} onChange={setMode} />
       </Box>
       <ColorMode mode={mode ? 'dark' : 'light'}>
