@@ -6,9 +6,11 @@ import { styled } from '@storybook/theming';
 import { Parameters } from '@storybook/addons';
 import { useKind } from '../TableOfContents/utils';
 import { Box, SectionLink } from '../TableOfContents/elements';
-import { GamutProvider } from '@codecademy/gamut-styles';
 import { AssetProvider } from '@codecademy/gamut-styles/src/AssetProvider';
-import { createEmotionCache } from '@codecademy/gamut-styles/src';
+import {
+  createEmotionCache,
+  GamutProvider,
+} from '@codecademy/gamut-styles/src';
 
 const emotionCache = createEmotionCache({ speedy: false });
 
