@@ -1,0 +1,64 @@
+import { Box } from '@codecademy/gamut/src';
+import { Text } from '@codecademy/gamut-labs/src';
+import { ColorMode } from '@codecademy/gamut-styles/src';
+import title from '@codecademy/macros/lib/title.macro';
+import { Meta } from '@storybook/addon-docs/dist/blocks';
+
+<Meta
+  title={title}
+  parameters={{
+    subtitle: 'Context Based Colors',
+  }}
+/>
+
+## Example
+
+<ColorMode mode="dark">
+  <Box
+    backgroundColor="background"
+    textColor="text"
+    minHeight="25rem"
+    padding={32}
+  >
+    <Text as="h1" fontSize={26} fontWeight="title" marginBottom={16}>
+      Dark Mode
+    </Text>
+    <Text as="p" marginBottom={16}>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+      veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+      commodo consequat.
+    </Text>
+    <Text as="p" marginBottom={16}>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+      veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+      commodo consequat.
+    </Text>
+  </Box>
+</ColorMode>
+
+<ColorMode mode="light">
+  <Box
+    backgroundColor="background"
+    textColor="text"
+    minHeight="25rem"
+    padding={32}
+  >
+    <Text as="h1" fontSize={26} fontWeight="title" marginBottom={16}>
+      Light Mode
+    </Text>
+    <Text as="p" marginBottom={16}>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+      veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+      commodo consequat.
+    </Text>
+    <Text as="p" marginBottom={16}>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+      veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+      commodo consequat.
+    </Text>
+  </Box>
+</ColorMode>
