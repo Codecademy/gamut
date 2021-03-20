@@ -135,13 +135,13 @@ export const Dialog: React.FC<DialogProps> = ({
   ...rest
 }) => {
   const onConfirm = () => {
+    onRequestClose();
     confirmCta.onClick?.();
-    onRequestClose?.();
   };
 
   const onCancel = () => {
+    onRequestClose();
     cancelCta?.onClick?.();
-    onRequestClose?.();
   };
 
   return (
@@ -165,6 +165,7 @@ export const Dialog: React.FC<DialogProps> = ({
             {title}
           </Title>
           <CloseButton
+            aria-label="Close Dialog"
             mode={mode}
             size="small"
             icon={MiniDeleteIcon}
@@ -174,9 +175,9 @@ export const Dialog: React.FC<DialogProps> = ({
             {children}
           </Content>
           {cancelCta && (
-            <CancelButton mode={mode} onClick={onCancel} {...cancelCta} />
+            <CancelButton mode={mode} {...cancelCta} onClick={onCancel} />
           )}
-          <ConfirmButton mode={mode} onClick={onConfirm} {...confirmCta} />
+          <ConfirmButton mode={mode} {...confirmCta} onClick={onConfirm} />
         </ModalBody>
       </ModalWrapper>
     </ShroudedOverlay>
