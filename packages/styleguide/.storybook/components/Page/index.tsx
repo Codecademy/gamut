@@ -7,10 +7,8 @@ import { Parameters } from '@storybook/addons';
 import { useKind } from '../TableOfContents/utils';
 import { Box, SectionLink } from '../TableOfContents/elements';
 import { AssetProvider } from '@codecademy/gamut-styles/src/AssetProvider';
-import {
-  createEmotionCache,
-  GamutProvider,
-} from '@codecademy/gamut-styles/src';
+import { GamutProvider } from '@codecademy/gamut-styles/src/GamutProvider';
+import { createEmotionCache } from '@codecademy/gamut-styles/src/cache';
 
 const emotionCache = createEmotionCache({ speedy: false });
 
