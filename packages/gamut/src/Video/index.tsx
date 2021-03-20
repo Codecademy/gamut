@@ -89,7 +89,7 @@ export const Video: React.FC<VideoProps> = ({
   );
   return (
     <ApspectRatio ratio="16:9" {...rest} textColor="white">
-      <Box zIndex={placeholderImage && initialized ? 1 : 0}>
+      <Box zIndex={placeholderImage && initialized ? 1 : 0} title={videoTitle}>
         <ReactPlayer
           width="100%"
           height="100%"
