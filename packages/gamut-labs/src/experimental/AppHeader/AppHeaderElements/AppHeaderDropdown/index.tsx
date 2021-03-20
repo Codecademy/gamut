@@ -1,5 +1,6 @@
 import { Box, FlexBox } from '@codecademy/gamut';
 import { ArrowChevronDownFilledIcon } from '@codecademy/gamut-icons';
+import isPropValid from '@emotion/is-prop-valid';
 import styled from '@emotion/styled';
 import React, { useRef, useState } from 'react';
 
@@ -14,9 +15,10 @@ export type AppHeaderDropdownProps = {
   item: AppHeaderDropdownItem;
 };
 
-const Caret = styled(ArrowChevronDownFilledIcon)<{ isOpen?: boolean }>`
+const Caret = styled(ArrowChevronDownFilledIcon, {
+  shouldForwardProp: isPropValid,
+})<{ isOpen?: boolean }>`
   margin-left: ${({ theme }) => theme.spacing[8]};
-  color: currentColor;
   transition: transform 0.35s ease-out;
   transform: ${({ isOpen }) => (isOpen ? 'rotate(-180deg)' : 'none')};
 `;

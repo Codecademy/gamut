@@ -1,6 +1,6 @@
 import { variant } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
-import React from 'react';
+import React, { ComponentProps } from 'react';
 
 import { Box, FlexBox } from '../Box';
 import { ContentContainer } from '../ContentContainer';
@@ -9,23 +9,15 @@ export type AppBarProps = {
   wide?: boolean;
 };
 
-const AppBarContainer = styled.div`
-  display: flex;
-  align-items: center;
-  height: 100%;
-`;
-
-const AppBarLayout: React.FC<AppBarProps> = ({ wide, children }) => {
-  return (
-    <ContentContainer size={wide ? 'wide' : 'medium'}>
-      <FlexBox alignItems="center" height="100%">
+export const AppBar = ContentContainer.withComponent(
+  ({ children, ...props }: ComponentProps<typeof ContentContainer>) => (
+    <ContentContainer {...props}>
+      <FlexBox alignItems="center" paddingY={12} height="100%">
         {children}
       </FlexBox>
     </ContentContainer>
-  );
-};
-
-export const AppBar = AppBarContainer.withComponent(AppBarLayout);
+  )
+);
 
 export const AppBarSection = styled(Box)(
   variant({

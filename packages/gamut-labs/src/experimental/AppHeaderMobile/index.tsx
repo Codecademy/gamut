@@ -1,4 +1,5 @@
 import {
+  AppBar,
   AppBarSection,
   Box,
   ContentContainer,
@@ -6,12 +7,12 @@ import {
   IconButton,
   Overlay,
 } from '@codecademy/gamut';
-import { MiniDeleteIcon, MiniMenuIcon } from '@codecademy/gamut-icons';
+import { MenuIcon, MiniDeleteIcon } from '@codecademy/gamut-icons';
 import { breakpoints } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React, { ReactNode, useState } from 'react';
 
-import { mapItemToElement, StyledAppBar } from '../AppHeader';
+import { mapItemToElement } from '../AppHeader';
 import {
   AppHeaderClickHandler,
   AppHeaderItem,
@@ -69,7 +70,7 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
   return (
     <>
       {!mobileMenuOpen && ( // need this bc AppBar has a hardcoded z-Index of 15
-        <StyledAppBar>
+        <AppBar>
           <AppBarSection alignment="left">
             {mapItemsToElement(items.left)}
           </AppBarSection>
@@ -82,14 +83,14 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
                 variant="secondary"
                 data-testid="header-mobile-menu"
                 aria-label="open navigation menu"
-                icon={MiniMenuIcon}
+                icon={MenuIcon}
                 onClick={() => {
                   openMobileMenu();
                 }}
               />
             </FlexBox>
           </AppBarSection>
-        </StyledAppBar>
+        </AppBar>
       )}
       <StyledOverlay
         clickOutsideCloses
@@ -98,7 +99,7 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
         onRequestClose={() => setMobileMenuOpen(false)}
       >
         <div data-testid="header-mobile-menu-dropdown">
-          <StyledAppBar>
+          <AppBar>
             <AppBarSection alignment="left">
               {mapItemsToElement(items.left)}
             </AppBarSection>
@@ -115,7 +116,7 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
                 />
               </FlexBox>
             </AppBarSection>
-          </StyledAppBar>
+          </AppBar>
           <ContentContainer>
             <AppHeaderMainMenuMobile
               items={items.mainMenu}

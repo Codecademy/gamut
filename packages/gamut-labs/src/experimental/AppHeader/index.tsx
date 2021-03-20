@@ -5,7 +5,6 @@ import {
   FillButton,
   TextButton,
 } from '@codecademy/gamut';
-import styled from '@emotion/styled';
 import React, { ReactNode } from 'react';
 
 import { formatUrlWithRedirect } from '../GlobalHeader/urlHelpers';
@@ -23,12 +22,6 @@ export type AppHeaderProps = {
   items: FormattedAppHeaderItems;
   redirectParam?: string;
 };
-
-export const StyledAppBar = styled(AppBar)`
-  padding: 0.75rem 0;
-  box-shadow: none;
-  width: 100%;
-`;
 
 export const mapItemToElement = (
   action: AppHeaderClickHandler,
@@ -94,13 +87,13 @@ export const AppHeader: React.FC<AppHeaderProps> = ({
   };
 
   return (
-    <StyledAppBar>
+    <AppBar>
       <AppBarSection alignment="left">
         {mapItemsToElement(items.left)}
       </AppBarSection>
       <AppBarSection alignment="right">
         {mapItemsToElement(items.right)}
       </AppBarSection>
-    </StyledAppBar>
+    </AppBar>
   );
 };

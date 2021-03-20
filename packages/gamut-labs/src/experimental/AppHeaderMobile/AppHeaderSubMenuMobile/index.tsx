@@ -22,8 +22,8 @@ export const AppHeaderSubMenuMobile: React.FC<AppHeaderSubMenuMobileProps> = ({
         onClick={handleClose}
         type="button"
         variant="interface"
-        paddingY={16}
-        marginBottom={12}
+        paddingY={4}
+        marginBottom={16}
         width="100%"
       >
         <MiniArrowLeftIcon size={12} aria-hidden />
