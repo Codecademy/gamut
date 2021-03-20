@@ -3,6 +3,8 @@ import { Text } from '@codecademy/gamut-labs/src';
 import { ColorMode } from '@codecademy/gamut-styles/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { Meta, Story } from '@storybook/addon-docs/dist/blocks';
+import { BooleanControl } from '@storybook/components';
+import { useState } from 'react';
 
 import { DataTable } from '~styleguide/blocks';
 
@@ -44,6 +46,40 @@ const myStyles = css`
 
 We've created several color modes by default for light and dark context. Each color is a semantic alias for a color on our full color palette.
 
+export const ColorModeExample = () => {
+  const [mode, setMode] = useState(false);
+  return (
+    <Box marginY={16} marginBottom={32}>
+      <Box fontWeight="title">
+        Use Dark Mode <BooleanControl value={mode} onChange={setMode} />
+      </Box>
+      <ColorMode mode={mode ? 'dark' : 'light'}>
+        <Box
+          backgroundColor="background"
+          textColor="text"
+          padding={32}
+          borderColor="text"
+          borderStyle="solid"
+          borderWidth="1px"
+        >
+          <Text as="h1" fontSize={26} fontWeight="title" marginBottom={16}>
+            Light Mode
+          </Text>
+          <Text as="p" marginBottom={16}>
+            Lorem ipsum dolor sit amet,{' '}
+            <Anchor>consectetur adipiscing elit</Anchor>, sed do eiusmod tempor
+            incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+            veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+            ea commodo consequat.
+          </Text>
+        </Box>
+      </ColorMode>
+    </Box>
+  );
+};
+
+<ColorModeExample />
+
 ### Light Mode
 
 <Story name="light mode">
@@ -52,27 +88,6 @@ We've created several color modes by default for light and dark context. Each co
 
 **Example**
 
-<ColorMode mode="light">
-  <Box
-    backgroundColor="background"
-    textColor="text"
-    padding={32}
-    borderColor="text"
-    borderStyle="solid"
-    borderWidth="1px"
-  >
-    <Text as="h1" fontSize={26} fontWeight="title" marginBottom={16}>
-      Light Mode
-    </Text>
-    <Text as="p" marginBottom={16}>
-      Lorem ipsum dolor sit amet, <Anchor>consectetur adipiscing elit</Anchor>,
-      sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-      ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-      ex ea commodo consequat.
-    </Text>
-  </Box>
-</ColorMode>
-
 ### Dark Mode
 
 <Story name="dark mode">
@@ -80,27 +95,6 @@ We've created several color modes by default for light and dark context. Each co
 </Story>
 
 **Example**
-
-<ColorMode mode="dark">
-  <Box
-    backgroundColor="background"
-    textColor="text"
-    padding={32}
-    borderColor="text"
-    borderStyle="solid"
-    borderWidth="1px"
-  >
-    <Text as="h1" fontSize={26} fontWeight="title" marginBottom={16}>
-      Dark Mode
-    </Text>
-    <Text as="p" marginBottom={16}>
-      Lorem ipsum dolor sit amet, <Anchor>consectetur adipiscing elit</Anchor>,
-      sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-      ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-      ex ea commodo consequat.
-    </Text>
-  </Box>
-</ColorMode>
 
 ## Color
 

@@ -1,3 +1,4 @@
+/* eslint-disable local-rules/gamut-import-paths */
 import {
   colorModes,
   swatches,
