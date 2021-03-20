@@ -7,7 +7,10 @@ import { Parameters } from '@storybook/addons';
 import { useKind } from '../TableOfContents/utils';
 import { Box, SectionLink } from '../TableOfContents/elements';
 import { GamutProvider } from '@codecademy/gamut-styles';
-import AssetProvider from '@codecademy/gamut-styles/src/AssetProvider';
+import { AssetProvider } from '@codecademy/gamut-styles/src/AssetProvider';
+import { createEmotionCache } from '@codecademy/gamut-styles/src';
+
+const emotionCache = createEmotionCache({ speedy: false });
 
 export const Link = styled.a`
   display: inline-flex;
@@ -99,7 +102,7 @@ export const Page: React.FC = ({ children }) => {
   const figmaLink = `https://www.figma.com/file/${figmaId}`;
 
   return (
-    <GamutProvider>
+    <GamutProvider cache={emotionCache}>
       <AssetProvider />
       <Header marginBottom="1rem">
         <BreadCrumbs path={path} />
