@@ -3,7 +3,7 @@ import {
   swatches,
   theme,
   trueColors,
-} from '@codecademy/gamut-styles';
+} from '@codecademy/gamut-styles/src';
 import React from 'react';
 
 import { Box, Code, ColorScale } from '~styleguide/blocks';
