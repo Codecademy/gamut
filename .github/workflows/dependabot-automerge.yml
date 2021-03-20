@@ -1,9 +1,7 @@
 name: dependabot-automerge
 
 on:
-  pull_request:
-    branches:
-      - dependencies
+  pull_request_target:
 
 jobs:
   auto-merge:
@@ -12,5 +10,4 @@ jobs:
       - uses: actions/checkout@v2
       - uses: ahmadnassri/action-dependabot-auto-merge@v2
         with:
-          target: minor
           github-token: ${{ secrets.ACTIONS_GITHUB_TOKEN }}
