@@ -5,7 +5,7 @@ import {
   fontSize,
   fontWeight,
   lineHeight,
-} from '@codecademy/gamut-styles';
+} from '@codecademy/gamut-styles/src';
 import { fontFamily } from '@codecademy/gamut-styles/src';
 import { ScaleColumn, ScaleRow } from './Scale';
 type TextProps = {

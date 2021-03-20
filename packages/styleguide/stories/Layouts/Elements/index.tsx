@@ -1,5 +1,5 @@
 import { Box } from '@codecademy/gamut';
-import { colors } from '@codecademy/gamut-styles';
+import { colors } from '@codecademy/gamut-styles/src';
 import React from 'react';
 
 export const ExampleBox: React.FC = ({ children }) => (

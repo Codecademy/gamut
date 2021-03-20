@@ -1,6 +1,6 @@
 import { styled } from '@storybook/theming';
 import { variant } from './styles';
-import { colors, fontBase, fontSmoothing } from '@codecademy/gamut-styles';
+import { colors, fontBase, fontSmoothing } from '@codecademy/gamut-styles/src';
 
 export const badgeVariants = variant({
   prop: 'status',

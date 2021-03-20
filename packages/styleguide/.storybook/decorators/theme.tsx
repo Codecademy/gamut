@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { GamutProvider } from '@codecademy/gamut-styles';
+import { GamutProvider } from '@codecademy/gamut-styles/src';
 
 /**
  * Story functions must be called as a regular function to avoid full-remounts
