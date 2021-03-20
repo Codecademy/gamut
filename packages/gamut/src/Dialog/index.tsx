@@ -26,6 +26,7 @@ const modes = variant({
   },
 });
 
+/** These effects should be moved to theme */
 const shroudColor = {
   dark: 'rgba(0,0,0, .75)',
   light: 'rgba(255, 255, 255, 0.95)',
@@ -49,6 +50,7 @@ const ModalWrapper = styled.div(modes, ({ theme }) => {
   `;
 });
 
+/** This will need to be consolidated with Card / CoachMark / Toast  */
 const ModalShadow = styled(Pattern)(
   ({ theme }) => css`
     width: 100%;
