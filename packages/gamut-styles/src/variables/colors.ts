@@ -166,15 +166,11 @@ export const colorModes = {
     text: colors.navy,
     primary: colors.hyper,
     secondary: colors.navy,
-    danger: colors.red,
-    success: colors.green,
   },
   dark: {
     background: colors.navy,
     text: colors.white,
     primary: colors.yellow,
     secondary: colors.white,
-    danger: colors.red,
-    success: colors.green,
   },
 };

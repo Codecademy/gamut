@@ -210,7 +210,7 @@ const rebootStyles = css`
 */
 
   a {
-    color: ${theme.colors.hyper};
+    color: ${theme.colors.primary};
     text-decoration: none;
 
     background-color: transparent;

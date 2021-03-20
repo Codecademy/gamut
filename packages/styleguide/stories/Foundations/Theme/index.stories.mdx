@@ -1,3 +1,6 @@
+import { Anchor, Box } from '@codecademy/gamut/src';
+import { Text } from '@codecademy/gamut-labs/src';
+import { ColorMode } from '@codecademy/gamut-styles/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { Meta, Story } from '@storybook/addon-docs/dist/blocks';
 
@@ -36,6 +39,68 @@ const myStyles = css`
   font-size: ${theme.fontSize[14]};
 `;
 ```
+
+## Color Modes
+
+We've created several color modes by default for light and dark context. Each color is a semantic alias for a color on our full color palette.
+
+### Light Mode
+
+<Story name="light mode">
+  <DataTable {...TABLES.lightMode} />
+</Story>
+
+**Example**
+
+<ColorMode mode="light">
+  <Box
+    backgroundColor="background"
+    textColor="text"
+    padding={32}
+    borderColor="text"
+    borderStyle="solid"
+    borderWidth="1px"
+  >
+    <Text as="h1" fontSize={26} fontWeight="title" marginBottom={16}>
+      Light Mode
+    </Text>
+    <Text as="p" marginBottom={16}>
+      Lorem ipsum dolor sit amet, <Anchor>consectetur adipiscing elit</Anchor>,
+      sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+      ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+      ex ea commodo consequat.
+    </Text>
+  </Box>
+</ColorMode>
+
+### Dark Mode
+
+<Story name="dark mode">
+  <DataTable {...TABLES.darkMode} />
+</Story>
+
+**Example**
+
+<ColorMode mode="dark">
+  <Box
+    backgroundColor="background"
+    textColor="text"
+    padding={32}
+    borderColor="text"
+    borderStyle="solid"
+    borderWidth="1px"
+  >
+    <Text as="h1" fontSize={26} fontWeight="title" marginBottom={16}>
+      Dark Mode
+    </Text>
+    <Text as="p" marginBottom={16}>
+      Lorem ipsum dolor sit amet, <Anchor>consectetur adipiscing elit</Anchor>,
+      sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+      ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+      ex ea commodo consequat.
+    </Text>
+  </Box>
+</ColorMode>
 
 ## Color
 
