@@ -4,7 +4,6 @@ import styled from '@emotion/styled';
 import React, { useState } from 'react';
 import ReactPlayer from 'react-player';
 
-import { Anchor } from '../Anchor';
 import { Box } from '../Box';
 
 /**
@@ -64,12 +63,12 @@ const PlayerShroud = styled.div`
   position: relative;
 `;
 
-const PlayButton = styled(Anchor)`
+const PlayButton = styled(PlayIcon)`
   width: 15%;
   height: 26.7%;
   min-width: ${pxRem(75)};
   min-height: ${pxRem(75)};
-`.withComponent(PlayIcon);
+`;
 
 export const Video: React.FC<VideoProps> = ({
   videoUrl,
@@ -103,7 +102,7 @@ export const Video: React.FC<VideoProps> = ({
           muted={muted}
           playIcon={
             <PlayerShroud>
-              <PlayButton mode="dark" />
+              <PlayButton />
             </PlayerShroud>
           }
           onReady={(player: ReactPlayerWithWrapper) => {
