@@ -73,6 +73,7 @@ const ModalBody = styled.div(({ theme }) => {
   return css`
     position: relative;
     background-color: inherit;
+    color: inherit;
     display: grid;
     padding: ${theme.spacing[24]};
     grid-row-gap: ${theme.spacing[12]};
@@ -87,7 +88,6 @@ const ModalBody = styled.div(({ theme }) => {
 });
 
 const Title = styled(Box)`
-  color: inherit;
   grid-area: title;
 `;
 
@@ -96,7 +96,6 @@ const CloseButton = styled.div`
 `.withComponent(IconButton);
 
 const Content = styled(Box)`
-  color: inherit;
   grid-area: children;
 `;
 
@@ -118,10 +117,12 @@ export interface DialogProps
   isOpen: boolean;
   title: React.ReactNode;
   children: React.ReactNode;
-  confirmCta: React.ComponentProps<typeof FillButton> & {
+  confirmCta: {
+    children: React.ReactNode;
     onClick?: () => void;
   };
-  cancelCta?: React.ComponentProps<typeof TextButton> & {
+  cancelCta?: {
+    children: React.ReactNode;
     onClick?: () => void;
   };
   onRequestClose: () => void;
