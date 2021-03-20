@@ -1,4 +1,10 @@
-import { AppBarSection, Box, FlexBox, Overlay } from '@codecademy/gamut';
+import {
+  AppBarSection,
+  Box,
+  ContentContainer,
+  FlexBox,
+  Overlay,
+} from '@codecademy/gamut';
 import { CloseIcon, MenuIcon } from '@codecademy/gamut-icons';
 import { breakpoints } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
@@ -122,13 +128,13 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
               </FlexBox>
             </AppBarSection>
           </StyledAppBar>
-          <Box paddingX={{ base: 16, sm: 32 }}>
+          <ContentContainer>
             <AppHeaderMainMenuMobile
               items={items.mainMenu}
               action={action}
               renderSearch={renderSearch}
             />
-          </Box>
+          </ContentContainer>
         </div>
       </StyledOverlay>
     </>
