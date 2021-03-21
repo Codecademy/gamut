@@ -1,4 +1,4 @@
-import { Anchor, Box } from '@codecademy/gamut/src';
+import { Anchor, Background, Box } from '@codecademy/gamut/src';
 import { Text } from '@codecademy/gamut-labs/src';
 import { ColorMode } from '@codecademy/gamut-styles/src';
 import title from '@codecademy/macros/lib/title.macro';
@@ -79,6 +79,50 @@ export const ColorModeExample = () => {
 };
 
 <ColorModeExample />
+
+### Automatic Mode Swaps
+
+There may be times where must specify a specifc background color. We've added a `<Background />` component to detect the contrast requirements of the current color mode, and detect if it needs to be changed for the specific color allowing you to be sure that all components inside your background will meet contrast requirements and designs without any extra configuration.
+
+<Background backgroundColor="hyper">
+  <Box
+    textColor="text"
+    padding={32}
+    borderColor="text"
+    borderStyle="solid"
+    borderWidth="1px"
+  >
+    <Text as="h1" fontSize={26} fontWeight="title" marginBottom={16}>
+      Hyper
+    </Text>
+    <Text as="p" marginBottom={16}>
+      Lorem ipsum dolor sit amet, <Anchor>consectetur adipiscing elit</Anchor>,
+      sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+      ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+      ex ea commodo consequat.
+    </Text>
+    <Background backgroundColor="paleBlue">
+      <Box
+        textColor="text"
+        padding={32}
+        borderColor="text"
+        borderStyle="solid"
+        borderWidth="1px"
+      >
+        <Text as="h1" fontSize={26} fontWeight="title" marginBottom={16}>
+          PaleBlue
+        </Text>
+        <Text as="p" marginBottom={16}>
+          Lorem ipsum dolor sit amet,{' '}
+          <Anchor>consectetur adipiscing elit</Anchor>, sed do eiusmod tempor
+          incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+          commodo consequat.
+        </Text>
+      </Box>
+    </Background>
+  </Box>
+</Background>
 
 ### Light Mode
 
