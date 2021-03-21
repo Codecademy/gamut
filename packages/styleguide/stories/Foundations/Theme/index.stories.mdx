@@ -82,31 +82,45 @@ export const ColorModeExample = () => {
 
 ### Automatic Mode Swaps
 
-There may be times where must specify a specifc background color. We've added a `<Background />` component to detect the contrast requirements of the current color mode, and detect if it needs to be changed. Allowing you to be sure that all components inside your background will meet contrast requirements and designs without any extra configuration.
+There are many cases where you may need a specifc background color for a section of a page, like a card or a landing page. Instead of having to guess the right mode for the background, we've added a `<Background />` component to automatically detect the contrast of the background and change the mode to an acessible one. Allowing you to be sure that all components inside your background will meet contrast requirements and designs without any configuration!
+
+export const content = (
+  <Text as="p" marginBottom={16}>
+    Lorem ipsum dolor sit amet, <Anchor>consectetur adipiscing elit</Anchor>,
+    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+    ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+    ex ea commodo consequat.
+  </Text>
+);
 
 <Background backgroundColor="hyper">
   <Box padding={32}>
-    <Text as="h1" fontSize={26} fontWeight="title" marginBottom={16}>
+    <Text fontSize={26} fontWeight="title" marginBottom={16}>
       Hyper
     </Text>
-    <Text as="p" marginBottom={16}>
-      Lorem ipsum dolor sit amet, <Anchor>consectetur adipiscing elit</Anchor>,
-      sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-      ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-      ex ea commodo consequat.
-    </Text>
+    {content}
     <Background backgroundColor="paleBlue">
       <Box padding={32}>
-        <Text as="h1" fontSize={26} fontWeight="title" marginBottom={16}>
+        <Text fontSize={26} fontWeight="title" marginBottom={16}>
           PaleBlue
         </Text>
-        <Text as="p" marginBottom={16}>
-          Lorem ipsum dolor sit amet,{' '}
-          <Anchor>consectetur adipiscing elit</Anchor>, sed do eiusmod tempor
-          incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-          commodo consequat.
-        </Text>
+        {content}
+        <Background backgroundColor="black">
+          <Box padding={32}>
+            <Text fontSize={26} fontWeight="title" marginBottom={16}>
+              Black
+            </Text>
+            {content}
+            <Background backgroundColor="beige">
+              <Box padding={32}>
+                <Text fontSize={26} fontWeight="title" marginBottom={16}>
+                  Beige
+                </Text>
+                {content}
+              </Box>
+            </Background>
+          </Box>
+        </Background>
       </Box>
     </Background>
   </Box>
