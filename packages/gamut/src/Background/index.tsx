@@ -23,7 +23,9 @@ export const Background: React.FC<{ backgroundColor: keyof typeof colors }> = ({
           Object.keys(omit(colorModes, active))[0] as keyof typeof colorModes
         }
       >
-        <Box backgroundColor={backgroundColor}>{children}</Box>
+        <Box backgroundColor={backgroundColor} textColor="text">
+          {children}
+        </Box>
       </ColorMode>
     );
   }
