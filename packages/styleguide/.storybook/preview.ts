@@ -19,7 +19,7 @@ export const parameters = {
         [
           'About',
           'Theme',
-          'Color Modes',
+          'ColorMode',
           'System',
           'Design Guidelines',
           'Legacy',
