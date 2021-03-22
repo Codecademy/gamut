@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [29.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@29.0.0...@codecademy/gamut@29.0.1) (2021-03-22)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [29.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@28.0.1...@codecademy/gamut@29.0.0) (2021-03-22)
+
+
+### ⚠ BREAKING CHANGES
+
+* converted ToolTip to Emotion (#1409)
+
+### Code Refactoring
+
+* converted ToolTip to Emotion ([#1409](https://github.com/Codecademy/client-modules/issues/1409)) ([0a8428f](https://github.com/Codecademy/client-modules/commit/0a8428fb59998e98d053b880c92d884fe5639a1d))
+
+
+
 ### [28.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@28.0.0...@codecademy/gamut@28.0.1) (2021-03-19)
 
 **Note:** Version bump only for package @codecademy/gamut
