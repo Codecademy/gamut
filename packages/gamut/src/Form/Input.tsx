@@ -55,7 +55,7 @@ export interface InputWrapperProps extends InputProps {
 export const iFrameWrapper = styled.div<conditionalInputStyleProps>`
   ${formBaseFieldStyles}
   ${conditionalStyles}
-    ${iconPadding}
+  ${iconPadding}
   text-indent: 0;
 `;
 
