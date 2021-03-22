@@ -1,5 +1,4 @@
 import { AlertIcon, CheckCircledIcon } from '@codecademy/gamut-icons';
-import { colors } from '@codecademy/gamut-styles';
 import styled, { StyledComponent } from '@emotion/styled';
 import React, {
   ChangeEvent,
@@ -78,7 +77,7 @@ const inputStates = {
     color: 'gray-600',
     icon: undefined,
   },
-};
+} as const;
 
 const getInputState = (error: boolean, valid: boolean) => {
   if (error) return 'error';
@@ -90,7 +89,9 @@ export const Input = forwardRef<HTMLInputElement, InputWrapperProps>(
   ({ error, className, id, valid, as: As, icon: Icon, ...rest }, ref) => {
     const [activated, setActivated] = useState(false);
 
-    const { color, icon } = inputStates[getInputState(!!error, !!valid)];
+    const { color, icon } = inputStates[
+      getInputState(Boolean(error), Boolean(valid))
+    ];
 
     const changeHandler = (event: ChangeEvent<HTMLInputElement>) => {
       rest?.onChange?.(event);
