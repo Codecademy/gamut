@@ -21,6 +21,9 @@ export type InputProps = InputHTMLAttributes<HTMLInputElement> & {
   id?: string;
   className?: string;
   error?: boolean;
+  /**
+   * [The for/id string of a label or labelable form-related element](https://github.com/theKashey/react-focus-on). The outer FormGroup or FormLabel should have an identical string as the inner FormElement for accessibility purposes.
+   */
   htmlFor?: string;
   label?: string;
   name?: string;
