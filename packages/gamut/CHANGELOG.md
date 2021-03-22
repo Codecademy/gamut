@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [29.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@29.0.1...@codecademy/gamut@29.1.0) (2021-03-22)
+
+
+### Features
+
+* **FormDescription:** it is now navy ([513b714](https://github.com/Codecademy/client-modules/commit/513b7144c3055047920255bb2418ab4d7ef8c075))
+
+
+
 ### [29.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@29.0.0...@codecademy/gamut@29.0.1) (2021-03-22)
 
 **Note:** Version bump only for package @codecademy/gamut
