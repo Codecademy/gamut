@@ -25,7 +25,7 @@ export type conditionalStyleProps = {
   activated?: boolean;
 };
 
-type iconPadding = {
+type iconPaddingProps = {
   icon?: boolean;
 };
 
@@ -57,7 +57,7 @@ export const conditionalStyles = ({
   }
 };
 
-export const iconPadding = ({ icon }: iconPadding) => {
+export const iconPadding = ({ icon }: iconPaddingProps) => {
   if (icon) {
     return css`
       padding-right: 2.3rem; ;

@@ -1,5 +1,6 @@
 import { AlertIcon, CheckCircledIcon } from '@codecademy/gamut-icons';
 import { colors } from '@codecademy/gamut-styles';
+import { css } from '@emotion/react';
 import styled, { StyledComponent } from '@emotion/styled';
 import React, {
   ChangeEvent,
@@ -11,6 +12,7 @@ import React, {
 import { Box, FlexBox } from '../Box';
 import {
   conditionalInputStyleProps,
+  conditionalStyleProps,
   conditionalStyles,
   formBaseFieldStyles,
   formFieldStyles,
@@ -51,6 +53,18 @@ export interface InputWrapperProps extends InputProps {
    */
   icon?: typeof AlertIcon;
 }
+
+export const iFrameStyles = ({
+  error,
+  activated,
+  icon,
+}: conditionalInputStyleProps) => {
+  return css`
+    ${formBaseFieldStyles}
+    ${conditionalStyles({ error, activated })}
+    ${iconPadding({ icon })}
+  `;
+};
 
 export const iFrameWrapper = styled.div<conditionalInputStyleProps>`
   ${formBaseFieldStyles}
