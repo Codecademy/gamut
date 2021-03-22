@@ -1,4 +1,5 @@
-import { mount, ReactWrapper } from 'enzyme';
+import { GamutThemeProvider } from '@codecademy/gamut-styles';
+import { mount } from 'enzyme';
 import React from 'react';
 
 import { ToolTipProps } from '../../../ToolTip';
@@ -26,10 +27,14 @@ import { GridFormTextArea } from '../GridFormTextArea';
 import { GridFormTextInput } from '../GridFormTextInput';
 import { GridFormToolTip } from '../GridFromToolTip';
 
+const mountWithTheme = (component: React.ReactNode) => {
+  return mount(<GamutThemeProvider>{component}</GamutThemeProvider>);
+};
+
 export const renderGridFormSelectInput = (
   extraProps: Partial<GridFormSelectField> = {}
-): ReactWrapper => {
-  return mount(
+) => {
+  return mountWithTheme(
     <GridFormSelectInput
       field={{ ...stubSelectField, ...extraProps }}
       register={jest.fn()}
@@ -41,7 +46,7 @@ export const renderGridFormSelectInput = (
 export const renderGridFormTextInput = (
   extraProps: Partial<GridFormTextField> = {}
 ) => {
-  return mount(
+  return mountWithTheme(
     <GridFormTextInput
       field={{ ...stubTextField, ...extraProps }}
       register={jest.fn()}
@@ -53,7 +58,7 @@ export const renderGridFormTextInput = (
 export const renderGridFormTextArea = (
   extraProps: Partial<GridFormTextAreaField> = {}
 ) => {
-  return mount(
+  return mountWithTheme(
     <GridFormTextArea
       field={{ ...stubTextareaField, ...extraProps }}
       register={jest.fn()}
@@ -65,7 +70,7 @@ export const renderGridFormTextArea = (
 export const renderGridFormRadioGroupInput = (
   extraProps: Partial<GridFormRadioGroupField> = {}
 ) => {
-  return mount(
+  return mountWithTheme(
     <GridFormRadioGroupInput
       field={{ ...stubRadioGroupField, ...extraProps }}
       setValue={jest.fn()}
@@ -77,8 +82,8 @@ export const renderGridFormRadioGroupInput = (
 
 export const renderGridFormFileInput = (
   extraProps: Partial<GridFormFileField> = {}
-): ReactWrapper => {
-  return mount(
+) => {
+  return mountWithTheme(
     <GridFormFileInput
       field={{ ...stubFileField, ...extraProps }}
       register={jest.fn()}
@@ -89,8 +94,8 @@ export const renderGridFormFileInput = (
 
 export const renderGridFormCheckboxInput = (
   extraProps: Partial<GridFormCheckboxField> = {}
-): ReactWrapper => {
-  return mount(
+) => {
+  return mountWithTheme(
     <GridFormCheckboxInput
       field={{ ...stubCheckboxField, ...extraProps }}
       register={jest.fn()}
@@ -99,10 +104,8 @@ export const renderGridFormCheckboxInput = (
   );
 };
 
-export const renderGridFormToolTip = (
-  extraProps: ToolTipProps
-): ReactWrapper => {
-  return mount(<GridFormToolTip {...extraProps} />);
+export const renderGridFormToolTip = (extraProps: ToolTipProps) => {
+  return mountWithTheme(<GridFormToolTip {...extraProps} />);
 };
 
 export const getComponent = (componentName: string, extraProps: any) => {
