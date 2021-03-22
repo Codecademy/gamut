@@ -12,7 +12,6 @@ import React, {
 import { Box, FlexBox } from '../Box';
 import {
   conditionalInputStyleProps,
-  conditionalStyleProps,
   conditionalStyles,
   formBaseFieldStyles,
   formFieldStyles,
