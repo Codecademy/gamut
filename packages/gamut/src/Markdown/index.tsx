@@ -62,7 +62,7 @@ export class Markdown extends PureComponent<MarkdownProps> {
       overrides: userOverrides = {},
       skipDefaultOverrides = {},
       inline = false,
-      headerIds = false,
+      headerIds,
       onAnchorClick,
     } = this.props;
 
