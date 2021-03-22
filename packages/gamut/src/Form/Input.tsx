@@ -1,5 +1,4 @@
 import { AlertIcon, CheckCircledIcon } from '@codecademy/gamut-icons';
-import { colors } from '@codecademy/gamut-styles';
 import { css } from '@emotion/react';
 import styled, { StyledComponent } from '@emotion/styled';
 import React, {
@@ -16,7 +15,6 @@ import {
   formBaseFieldStyles,
   formFieldStyles,
   iconPadding,
-  iconStyles,
 } from './styles/shared';
 
 export type InputProps = InputHTMLAttributes<HTMLInputElement> & {
@@ -79,34 +77,20 @@ const InputElement = styled.input<StyledInputProps>`
   text-indent: 0;
 `;
 
-export const StyledAlertIcon = styled(AlertIcon)(iconStyles);
-export const StyledCheckCircledIcon = styled(CheckCircledIcon)(iconStyles);
-
-type inputState = {
-  color: keyof typeof colors;
-  icon?: typeof StyledAlertIcon;
-};
-
-type inputStatesObj = {
-  error: inputState;
-  valid: inputState;
-  clean: inputState;
-};
-
-const inputStates: inputStatesObj = {
+const inputStates = {
   error: {
     color: 'red',
-    icon: StyledAlertIcon,
+    icon: AlertIcon,
   },
   valid: {
     color: 'green',
-    icon: StyledCheckCircledIcon,
+    icon: CheckCircledIcon,
   },
   clean: {
     color: 'gray-600',
     icon: undefined,
   },
-};
+} as const;
 
 const getInputState = (error: boolean, valid: boolean) => {
   if (error) return 'error';
@@ -118,7 +102,9 @@ export const Input = forwardRef<HTMLInputElement, InputWrapperProps>(
   ({ error, className, id, valid, as: As, icon: Icon, ...rest }, ref) => {
     const [activated, setActivated] = useState(false);
 
-    const { color, icon } = inputStates[getInputState(!!error, !!valid)];
+    const { color, icon } = inputStates[
+      getInputState(Boolean(error), Boolean(valid))
+    ];
 
     const changeHandler = (event: ChangeEvent<HTMLInputElement>) => {
       rest?.onChange?.(event);
@@ -126,7 +112,7 @@ export const Input = forwardRef<HTMLInputElement, InputWrapperProps>(
     };
 
     const AsComponent = As || InputElement;
-    const ShownIcon = Icon ? styled(Icon)(iconStyles) : icon;
+    const ShownIcon = Icon ? Icon : icon;
 
     return (
       <Box position="relative" textColor={color}>
@@ -142,7 +128,7 @@ export const Input = forwardRef<HTMLInputElement, InputWrapperProps>(
         />
         {!!ShownIcon && (
           <FlexBox
-            paddingRight={error || valid ? 24 : 32}
+            paddingRight={error || valid ? 16 : 12}
             alignItems="center"
             position="absolute"
             right="0"

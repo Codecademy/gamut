@@ -3,6 +3,7 @@ import {
   MiniChevronDownIcon,
 } from '@codecademy/gamut-icons';
 import { variant } from '@codecademy/gamut-styles';
+import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { each, isArray, isObject } from 'lodash';
 import React, {
@@ -14,11 +15,7 @@ import React, {
 } from 'react';
 
 import { Box, FlexBox } from '../Box';
-import {
-  conditionalStyles,
-  formFieldStyles,
-  iconStyles,
-} from './styles/shared';
+import { conditionalStyles, formFieldStyles } from './styles/shared';
 
 export type SelectWrapperProps = SelectHTMLAttributes<HTMLSelectElement> & {
   error?: boolean;
@@ -47,9 +44,6 @@ const selectSizeVariants = variant({
   },
 });
 
-const StyledDownIcon = styled(ArrowChevronDownIcon)(iconStyles);
-const StyledMiniDownIcon = styled(MiniChevronDownIcon)(iconStyles);
-
 const SelectBase = styled.select<SelectProps>`
   ${formFieldStyles}
   ${conditionalStyles}
@@ -60,6 +54,13 @@ const SelectBase = styled.select<SelectProps>`
   -webkit-appearance: none;
   appearance: none;
 `;
+
+const selectIconStyles = css`
+  pointer-events: none;
+`;
+
+const SelectIcon = styled(ArrowChevronDownIcon)(selectIconStyles);
+const MiniSelectIcon = styled(MiniChevronDownIcon)(selectIconStyles);
 
 export const Select = forwardRef<HTMLSelectElement, SelectWrapperProps>(
   (
@@ -104,7 +105,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectWrapperProps>(
         className={className}
       >
         <FlexBox
-          paddingRight={sizeVariant === 'small' ? 24 : 32}
+          paddingRight={12}
           alignItems="center"
           position="absolute"
           right="0"
@@ -112,9 +113,9 @@ export const Select = forwardRef<HTMLSelectElement, SelectWrapperProps>(
           bottom="0"
         >
           {sizeVariant === 'small' ? (
-            <StyledMiniDownIcon size={12} />
+            <MiniSelectIcon size={12} />
           ) : (
-            <StyledDownIcon size={16} />
+            <SelectIcon size={16} />
           )}
         </FlexBox>
         <SelectBase
