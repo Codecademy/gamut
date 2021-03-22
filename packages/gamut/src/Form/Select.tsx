@@ -61,7 +61,6 @@ const StyledDownIcon = styled(ArrowChevronDownIcon)(
 
 const StyledMiniDownIcon = styled(MiniChevronDownIcon)`
   ${iconStyles}
-  ${properties.textColor}
   right: .75rem;
   height: 0.75rem;
   width: 0.75rem;
