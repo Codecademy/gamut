@@ -5,7 +5,7 @@ import {
   Global,
   ThemeProvider,
 } from '@emotion/react';
-import React, { useRef } from 'react';
+import React, { useContext, useRef } from 'react';
 
 import { createEmotionCache } from './cache';
 import { Reboot, Typography } from './globals';
@@ -17,18 +17,29 @@ export interface GamutProviderProps {
   cache?: EmotionCache;
 }
 
+export const GamutContext = React.createContext({
+  hasGlobals: false,
+  hasCache: false,
+});
+
+GamutContext.displayName = 'GamutContext';
+
 export const GamutProvider: React.FC<GamutProviderProps> = ({
   children,
   cache,
   useGlobals = true,
   useCache = true,
 }) => {
+  const { hasGlobals, hasCache } = useContext(GamutContext);
+  const shouldCreateCache = useCache && !hasCache;
+  const shouldInsertGlobals = useGlobals && !hasGlobals;
+
   // Do not initialize a new cache if one has been provided as props
   const activeCache = useRef<EmotionCache | false>(
-    useCache && (cache ?? createEmotionCache())
+    shouldCreateCache && (cache ?? createEmotionCache())
   );
 
-  const globals = useGlobals && (
+  const globals = shouldInsertGlobals && (
     <>
       <Typography />
       <Reboot />
@@ -38,17 +49,29 @@ export const GamutProvider: React.FC<GamutProviderProps> = ({
 
   if (activeCache.current) {
     return (
-      <CacheProvider value={activeCache.current}>
-        {globals}
-        <ThemeProvider theme={theme}>{children}</ThemeProvider>
-      </CacheProvider>
+      <GamutContext.Provider
+        value={{
+          hasGlobals: shouldInsertGlobals,
+          hasCache: shouldCreateCache,
+        }}
+      >
+        <CacheProvider value={activeCache.current}>
+          {globals}
+          <ThemeProvider theme={theme}>{children}</ThemeProvider>
+        </CacheProvider>
+      </GamutContext.Provider>
     );
   }
 
   return (
-    <>
+    <GamutContext.Provider
+      value={{
+        hasGlobals: shouldInsertGlobals,
+        hasCache: shouldCreateCache,
+      }}
+    >
       {globals}
       <ThemeProvider theme={theme}>{children}</ThemeProvider>
-    </>
+    </GamutContext.Provider>
   );
 };
