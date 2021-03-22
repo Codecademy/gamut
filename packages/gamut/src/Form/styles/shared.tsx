@@ -1,4 +1,4 @@
-import { pxRem, theme } from '@codecademy/gamut-styles';
+import { pxRem, theme, variant } from '@codecademy/gamut-styles';
 import { css } from '@emotion/react';
 import { StandardPropertiesHyphen } from 'csstype';
 
@@ -76,34 +76,10 @@ const transitionConcatenator = (
   `;
 };
 
-export const iconBaseStyles = css`
+export const iconStyles = css`
   position: absolute;
   pointer-events: none;
   color: currentColor;
-`;
-
-export const iconStyles = css`
-  ${iconBaseStyles}
-  right: 1rem;
-  height: 1rem;
-  width: 1rem;
-  top: calc(50% - ${pxRem(8)});
-`;
-
-export const miniIconStyles = css`
-  ${iconBaseStyles}
-  right: 0.75rem;
-  height: 0.75rem;
-  width: 0.75rem;
-  top: calc(50% - ${pxRem(6)});
-`;
-
-export const customIconStyles = css`
-  ${iconBaseStyles}
-  right: .75rem;
-  height: 1.375rem;
-  width: 1.375rem;
-  top: calc(50% - ${pxRem(10)});
 `;
 
 export const formBaseStyles = css`

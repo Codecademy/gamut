@@ -13,12 +13,11 @@ import React, {
   useState,
 } from 'react';
 
-import { Box } from '../Box';
+import { Box, FlexBox } from '../Box';
 import {
   conditionalStyles,
   formFieldStyles,
   iconStyles,
-  miniIconStyles,
 } from './styles/shared';
 
 export type SelectWrapperProps = SelectHTMLAttributes<HTMLSelectElement> & {
@@ -49,7 +48,7 @@ const selectSizeVariants = variant({
 });
 
 const StyledDownIcon = styled(ArrowChevronDownIcon)(iconStyles);
-const StyledMiniDownIcon = styled(MiniChevronDownIcon)(miniIconStyles);
+const StyledMiniDownIcon = styled(MiniChevronDownIcon)(iconStyles);
 
 const SelectBase = styled.select<SelectProps>`
   ${formFieldStyles}
@@ -96,6 +95,8 @@ export const Select = forwardRef<HTMLSelectElement, SelectWrapperProps>(
       });
     }
 
+    const iconSize = sizeVariant === 'small' ? 12 : 16;
+
     return (
       <Box
         position="relative"
@@ -104,7 +105,20 @@ export const Select = forwardRef<HTMLSelectElement, SelectWrapperProps>(
         minWidth="7rem"
         className={className}
       >
-        {sizeVariant === 'small' ? <StyledMiniDownIcon /> : <StyledDownIcon />}
+        <FlexBox
+          paddingRight={iconSize + 12}
+          alignItems="center"
+          position="absolute"
+          right="0"
+          top="0"
+          bottom="0"
+        >
+          {sizeVariant === 'small' ? (
+            <StyledMiniDownIcon size={iconSize} />
+          ) : (
+            <StyledDownIcon size={iconSize} />
+          )}
+        </FlexBox>
         <SelectBase
           {...rest}
           defaultValue={defaultValue || ''}

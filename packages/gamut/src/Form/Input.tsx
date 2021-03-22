@@ -7,11 +7,10 @@ import React, {
   useState,
 } from 'react';
 
-import { Box } from '../Box';
+import { Box, FlexBox } from '../Box';
 import {
   conditionalInputStyleProps,
   conditionalStyles,
-  customIconStyles,
   formBaseFieldStyles,
   formFieldStyles,
   iconPadding,
@@ -66,9 +65,33 @@ const InputElement = styled.input<StyledInputProps>`
 const StyledAlertIcon = styled(icons.AlertIcon)(iconStyles);
 const StyledCheckCircledIcon = styled(icons.CheckCircledIcon)(iconStyles);
 
+const inputStates = {
+  error: {
+    color: 'red',
+    icon: StyledAlertIcon,
+  },
+  valid: {
+    color: 'green',
+    icon: StyledCheckCircledIcon,
+  },
+  clean: {
+    color: 'gray-600',
+    icon: undefined,
+  },
+};
+
+const getInputState = (error: boolean, valid: boolean) => {
+  if (error) return 'error';
+  if (valid) return 'valid';
+  return 'clean';
+};
+
 export const Input = forwardRef<HTMLInputElement, InputWrapperProps>(
   ({ error, className, id, valid, as: As, icon: Icon, ...rest }, ref) => {
     const [activated, setActivated] = useState(false);
+
+    const { color, icon } = inputStates[getInputState(!!error, !!valid)];
+    const iconSize = error || valid ? 16 : 22;
 
     const changeHandler = (event: ChangeEvent<HTMLInputElement>) => {
       rest?.onChange?.(event);
@@ -76,19 +99,10 @@ export const Input = forwardRef<HTMLInputElement, InputWrapperProps>(
     };
 
     const AsComponent = As || InputElement;
-
-    const ShownIcon = error
-      ? StyledAlertIcon
-      : valid
-      ? StyledCheckCircledIcon
-      : Icon
-      ? styled(Icon)(customIconStyles)
-      : null;
-
-    const iconColor = error ? 'red' : valid ? 'green' : 'gray-600';
+    const ShownIcon = Icon ? Icon : icon;
 
     return (
-      <Box position="relative" textColor={iconColor}>
+      <Box position="relative" textColor={color}>
         <AsComponent
           {...rest}
           id={id || rest.htmlFor}
@@ -99,7 +113,18 @@ export const Input = forwardRef<HTMLInputElement, InputWrapperProps>(
           className={className}
           onChange={(event) => changeHandler(event)}
         />
-        {!!ShownIcon && <ShownIcon />}
+        {!!ShownIcon && (
+          <FlexBox
+            paddingRight={iconSize + 8}
+            alignItems="center"
+            position="absolute"
+            right="0"
+            top="0"
+            bottom="0"
+          >
+            <ShownIcon size={iconSize} />
+          </FlexBox>
+        )}
       </Box>
     );
   }
