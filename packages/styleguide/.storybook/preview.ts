@@ -16,7 +16,14 @@ export const parameters = {
       order: [
         'Gamut',
         'Foundations',
-        ['About', 'Theme', 'System', 'Design Guidelines', 'Legacy'],
+        [
+          'About',
+          'Theme',
+          'Color Modes',
+          'System',
+          'Design Guidelines',
+          'Legacy',
+        ],
         'Typography',
         'Layouts',
         'Atoms',

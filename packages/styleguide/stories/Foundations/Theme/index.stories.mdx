@@ -1,10 +1,5 @@
-import { Anchor, Background, Box } from '@codecademy/gamut/src';
-import { Text } from '@codecademy/gamut-labs/src';
-import { ColorMode } from '@codecademy/gamut-styles/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { Meta, Story } from '@storybook/addon-docs/dist/blocks';
-import { BooleanControl } from '@storybook/components';
-import { useState } from 'react';
 
 import { DataTable } from '~styleguide/blocks';
 
@@ -42,114 +37,6 @@ const myStyles = css`
 `;
 ```
 
-## Color Modes
-
-We've created several color modes by default for light and dark context. Each color is a semantic alias for a color on our full color palette.
-
-export const ColorModeExample = () => {
-  const [mode, setMode] = useState(false);
-  return (
-    <Box marginY={16} marginBottom={32}>
-      <Box fontWeight="title" marginBottom={8}>
-        Use Dark Mode <BooleanControl value={mode} onChange={setMode} />
-      </Box>
-      <ColorMode mode={mode ? 'dark' : 'light'}>
-        <Box
-          backgroundColor="background"
-          textColor="text"
-          padding={24}
-          borderColor="text"
-          borderStyle="solid"
-          borderWidth="1px"
-        >
-          <Text as="h1" fontSize={26} fontWeight="title" marginBottom={16}>
-            Light Mode
-          </Text>
-          <Text as="p" marginBottom={16}>
-            Lorem ipsum dolor sit amet,{' '}
-            <Anchor>consectetur adipiscing elit</Anchor>, sed do eiusmod tempor
-            incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-            veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-            ea commodo consequat.
-          </Text>
-        </Box>
-      </ColorMode>
-    </Box>
-  );
-};
-
-<ColorModeExample />
-
-### Automatic Mode Swaps
-
-There are many cases where you may need a specifc background color for a section of a page, like a card or a landing page. Instead of having to guess the right mode for the background, we've added a `<Background />` component to automatically detect the contrast of the background and change the mode to an acessible one. Allowing you to be sure that all components inside your background will meet contrast requirements and designs without any configuration!
-
-export const content = (
-  <Text as="p" marginBottom={16}>
-    Lorem ipsum dolor sit amet, <Anchor>consectetur adipiscing elit</Anchor>,
-    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-    ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-    ex ea commodo consequat.
-  </Text>
-);
-
-<Background backgroundColor="hyper">
-  <Box padding={24}>
-    <Text fontSize={26} fontWeight="title" marginBottom={16}>
-      Hyper
-    </Text>
-    {content}
-    <Background backgroundColor="paleBlue">
-      <Box padding={24}>
-        <Text fontSize={26} fontWeight="title" marginBottom={16}>
-          PaleBlue
-        </Text>
-        {content}
-        <Background backgroundColor="black">
-          <Box padding={24}>
-            <Text fontSize={26} fontWeight="title" marginBottom={16}>
-              Black
-            </Text>
-            {content}
-            <Background backgroundColor="beige">
-              <Box padding={24}>
-                <Text fontSize={26} fontWeight="title" marginBottom={16}>
-                  Beige
-                </Text>
-                {content}
-                <Background backgroundColor="blue">
-                  <Box padding={24}>
-                    <Text fontSize={26} fontWeight="title" marginBottom={16}>
-                      Blue
-                    </Text>
-                    {content}
-                  </Box>
-                </Background>
-              </Box>
-            </Background>
-          </Box>
-        </Background>
-      </Box>
-    </Background>
-  </Box>
-</Background>
-
-### Light Mode
-
-<Story name="light mode">
-  <DataTable {...TABLES.lightMode} />
-</Story>
-
-**Example**
-
-### Dark Mode
-
-<Story name="dark mode">
-  <DataTable {...TABLES.darkMode} />
-</Story>
-
-**Example**
-
 ## Color
 
 **Key**: `theme.colors`
@@ -169,6 +56,33 @@ Standard color atoms we select from in creating designs. All colors on Codecadem
 Swatch colors are accessible with a dashcase key `theme.colors['${color}-${weight}']`. Here's a full list of all the swatches available.
 
 <DataTable {...TABLES.swatch} />
+
+## Color Modes
+
+We have 2 core color modes that we support: `light` and `dark`.
+
+Each color mode consists of a set of aliased color tokens. Each alias has semantic meaning for how the color is used throughout our design system:
+
+- `text`: The standard text color for all type.
+- `background`: The base background color.
+- `primary`: The color used for interactive elements with a primary action.
+- `secondary`: The color used for interactive elements with a secondary action.
+
+For more on Color Modes please checkout the [full color mode documentation](/?path=/docs/foundations-color-modes--page)
+
+### Light Mode
+
+<Story name="light mode">
+  <DataTable {...TABLES.lightMode} />
+</Story>
+
+**Example**
+
+### Dark Mode
+
+<Story name="dark mode">
+  <DataTable {...TABLES.darkMode} />
+</Story>
 
 ## Typography
 
