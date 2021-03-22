@@ -65,18 +65,7 @@ const InputElement = styled.input<StyledInputProps>`
   text-indent: 0;
 `;
 
-type inputState = {
-  color: keyof typeof colors;
-  icon?: typeof AlertIcon;
-};
-
-type inputStatesObj = {
-  error: inputState;
-  valid: inputState;
-  clean: inputState;
-};
-
-const inputStates: inputStatesObj = {
+const inputStates = {
   error: {
     color: 'red',
     icon: AlertIcon,

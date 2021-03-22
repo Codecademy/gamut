@@ -14,11 +14,7 @@ import React, {
 } from 'react';
 
 import { Box, FlexBox } from '../Box';
-import {
-  conditionalStyles,
-  formFieldStyles,
-  iconStyles,
-} from './styles/shared';
+import { conditionalStyles, formFieldStyles } from './styles/shared';
 
 export type SelectWrapperProps = SelectHTMLAttributes<HTMLSelectElement> & {
   error?: boolean;
@@ -46,9 +42,6 @@ const selectSizeVariants = variant({
     },
   },
 });
-
-const StyledDownIcon = styled(ArrowChevronDownIcon)(iconStyles);
-const StyledMiniDownIcon = styled(MiniChevronDownIcon)(iconStyles);
 
 const SelectBase = styled.select<SelectProps>`
   ${formFieldStyles}
