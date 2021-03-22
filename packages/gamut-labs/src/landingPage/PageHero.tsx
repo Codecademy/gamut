@@ -23,17 +23,32 @@ export type MediaProps =
       type: 'video';
     } & VideoProps);
 
+type ColumnLayout = {
+  left: number;
+  right: number;
+};
+
 export type PageHeroProps = BaseProps & {
   media?: MediaProps;
 };
 
-const columnSize = (type: string | undefined) => {
-  if (!type) return 12;
-  if (type === 'image') {
-    return 9;
-  }
-  if (type === 'video') {
-    return 7;
+const getColumnLayout = (media: MediaProps | undefined): ColumnLayout => {
+  switch (media?.type) {
+    case 'image':
+      return {
+        left: 9,
+        right: 3,
+      };
+    case 'video':
+      return {
+        left: 7,
+        right: 5,
+      };
+    default:
+      return {
+        left: 12,
+        right: 12,
+      };
   }
 };
 
@@ -45,6 +60,8 @@ export const PageHero: React.FC<PageHeroProps> = ({
   testId,
   onAnchorClick,
 }) => {
+  const layout = getColumnLayout(media);
+
   return (
     <LayoutGrid
       data-testid={testId}
@@ -54,7 +71,7 @@ export const PageHero: React.FC<PageHeroProps> = ({
       <LeftColumn
         size={{
           base: 12,
-          sm: columnSize(media?.type),
+          sm: layout.left as any,
         }}
       >
         {title && <Title isPageHeading>{title}</Title>}
@@ -65,7 +82,7 @@ export const PageHero: React.FC<PageHeroProps> = ({
           </CTA>
         )}
       </LeftColumn>
-      {media && <PageHeroMedia media={media} />}
+      {media && <PageHeroMedia media={media} size={layout.right} />}
     </LayoutGrid>
   );
 };

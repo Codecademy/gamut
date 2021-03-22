@@ -2,7 +2,7 @@ import { pxRem } from '@codecademy/gamut-styles';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 
-import { createStyledConfig, props } from '../utils/variance';
+import { createStyledConfig, margin, padding, props } from '../utils/variance';
 
 const gutters = {
   sm: 8,
@@ -11,7 +11,7 @@ const gutters = {
   xl: 32,
 };
 
-const gridProps = props.create({
+const grid = props.create({
   gap: {
     property: 'gap',
     properties: ['rowGap', 'columnGap'],
@@ -22,9 +22,11 @@ const gridProps = props.create({
   columnGap: { property: 'columnGap', scale: gutters, transform: pxRem },
   rowHeight: {
     property: 'gridAutoRows',
-    transform: (height: string) => `minmax(${height}, 1fr)`,
+    transform: (height: string) => `minmax(${pxRem(height)}, 1fr)`,
   },
 });
+
+const gridProps = props.compose(margin, padding, grid);
 
 export const LayoutGrid = styled(
   'div',

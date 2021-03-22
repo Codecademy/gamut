@@ -1,7 +1,14 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 
-import { createStyledConfig, props } from '../utils/variance';
+import {
+  createStyledConfig,
+  dimensions,
+  layout,
+  margin,
+  padding,
+  props,
+} from '../utils/variance';
 
 const rows = { 1: 1, 2: 2, 3: 3 };
 
@@ -18,38 +25,6 @@ const columns = {
   10: 10,
   11: 11,
 };
-
-const layoutProps = props.create({
-  display: { property: 'display' },
-  w: { property: 'width' },
-  maxW: { property: 'maxWidth' },
-  minW: { property: 'minWidth' },
-  h: { property: 'height' },
-  maxH: { property: 'maxHeight' },
-  minH: { property: 'minHeight' },
-});
-
-const paddingProps = props.create({
-  p: {
-    property: 'padding',
-    properties: ['paddingLeft', 'paddingRight', 'paddingTop', 'paddingBottom'],
-    scale: 'spacing',
-  },
-  pX: {
-    property: 'padding',
-    properties: ['paddingLeft', 'paddingRight'],
-    scale: 'spacing',
-  },
-  pY: {
-    property: 'padding',
-    properties: ['paddingTop', 'paddingBottom'],
-    scale: 'spacing',
-  },
-  pT: { property: 'paddingTop', scale: 'spacing' },
-  pB: { property: 'paddingBottom', scale: 'spacing' },
-  pR: { property: 'paddingRight', scale: 'spacing' },
-  pL: { property: 'paddingLeft', scale: 'spacing' },
-});
 
 const gridProps = props.create({
   rowOffset: {
@@ -74,7 +49,13 @@ const gridProps = props.create({
   },
 });
 
-const columnProps = props.compose(layoutProps, paddingProps, gridProps);
+const columnProps = props.compose(
+  layout,
+  dimensions,
+  padding,
+  margin,
+  gridProps
+);
 
 export const Column = styled('div', createStyledConfig(columnProps.propNames))(
   css`

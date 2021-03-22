@@ -3,6 +3,39 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [0.9.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-illustrations@0.9.1...@codecademy/gamut-illustrations@0.9.2) (2021-03-19)
+
+**Note:** Version bump only for package @codecademy/gamut-illustrations
+
+
+
+
+
+### [0.9.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-illustrations@0.9.0...@codecademy/gamut-illustrations@0.9.1) (2021-03-18)
+
+**Note:** Version bump only for package @codecademy/gamut-illustrations
+
+
+
+
+
+## [0.9.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-illustrations@0.8.1...@codecademy/gamut-illustrations@0.9.0) (2021-03-16)
+
+
+### Features
+
+* **NotificationItemNew:** add new forum notification icons ([cc10d77](https://github.com/Codecademy/client-modules/commit/cc10d7773b145c7b11f54e0be9603000d86f4735))
+
+
+
+### [0.8.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-illustrations@0.8.0...@codecademy/gamut-illustrations@0.8.1) (2021-03-16)
+
+**Note:** Version bump only for package @codecademy/gamut-illustrations
+
+
+
+
+
 ## [0.8.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-illustrations@0.7.6...@codecademy/gamut-illustrations@0.8.0) (2021-03-08)
 
 

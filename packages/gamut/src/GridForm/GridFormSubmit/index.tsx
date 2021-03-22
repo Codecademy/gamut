@@ -2,6 +2,7 @@ import { flex } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React from 'react';
 
+import { Box } from '../../Box';
 import {
   ButtonDeprecated,
   ButtonDeprecatedProps,
@@ -43,14 +44,16 @@ export const GridFormSubmit: React.FC<GridFormSubmitProps> = ({
       alignItems="center"
       size={size}
     >
-      <ButtonDeprecated
-        disabled={disabled}
-        outline={outline}
-        theme={theme}
-        type="submit"
-      >
-        {contents}
-      </ButtonDeprecated>
+      <Box marginBottom={8}>
+        <ButtonDeprecated
+          disabled={disabled}
+          outline={outline}
+          theme={theme}
+          type="submit"
+        >
+          {contents}
+        </ButtonDeprecated>
+      </Box>
     </StyledColumn>
   );
 };

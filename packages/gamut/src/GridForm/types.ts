@@ -9,7 +9,7 @@ export type LayoutGridProps = ComponentProps<typeof LayoutGrid>;
 
 export type BaseFormField<Value> = {
   defaultValue?: Value;
-
+  customError?: string;
   disabled?: boolean;
 
   /**

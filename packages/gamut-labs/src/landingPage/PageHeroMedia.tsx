@@ -1,45 +1,47 @@
 import { Column, Video } from '@codecademy/gamut';
-import { breakpoints } from '@codecademy/gamut-styles';
+import { mediaQueries } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import { omit } from 'lodash';
 import React from 'react';
 
 import { MediaProps } from './PageHero';
 
-const RightColumn = styled(Column)`
-  margin-left: 1rem;
-
-  @media only screen and (max-width: ${breakpoints.sm}) {
-    display: none;
-  }
-`;
-
 const Image = styled.img`
-  align-self: center;
   width: 100%;
 `;
 
-const StyledVideo = styled(Video)`
-  align-self: center;
+const RightColumn = styled(Column)<{ hideOnMobile?: boolean }>`
+  align-items: center;
+  margin-left: 0;
+  ${({ hideOnMobile }) => hideOnMobile && 'display: none;'}
+
+  ${mediaQueries.sm} {
+    margin-left: 1rem;
+    ${({ hideOnMobile }) => hideOnMobile && 'display: grid;'}
+  }
 `;
 
 export type PageHeroMediaProps = {
   media: MediaProps;
+  size: number;
 };
 
-export const PageHeroMedia: React.FC<PageHeroMediaProps> = ({ media }) => {
+export const PageHeroMedia: React.FC<PageHeroMediaProps> = ({
+  media,
+  size,
+}) => {
   switch (media.type) {
     case 'image':
       return (
-        <RightColumn size={3}>
+        <RightColumn size={size as any} display={{ base: 'none', sm: 'grid' }}>
           <Image src={media.src} alt={media.alt} />
         </RightColumn>
       );
     case 'video':
       const videoArgs = omit(media, 'type');
       return (
-        <RightColumn size={5}>
-          <StyledVideo {...videoArgs} />
+        <RightColumn size={{ base: 12, sm: size as any }}>
+          <Video {...videoArgs} />
         </RightColumn>
       );
   }

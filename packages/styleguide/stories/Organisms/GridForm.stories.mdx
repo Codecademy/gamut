@@ -149,6 +149,7 @@ responsive layouts.
         submit={{
           contents: 'Submit Me!?',
         }}
+        showRequired
       />
     )}
   </Story>
@@ -586,5 +587,44 @@ A field can now include a tooltip
         />
       </>
     )}
+  </Story>
+</Canvas>
+
+## Custom Error
+
+A field can take a custom error in addition to validation errors. The validation error will always take precedence to the custom error.
+
+<Canvas>
+  <Story name="Custom ">
+    {(args) => {
+      return (
+        <GridForm
+          fields={[
+            {
+              label: 'Who is the best at bending?',
+              name: 'custom-error',
+              size: 5,
+              type: 'text',
+              customError: 'NOT Flexo.',
+              validation: {
+                required: true,
+                pattern: {
+                  value: /Bender/,
+                  message: 'Just type Bender...',
+                },
+              },
+            },
+          ]}
+          onSubmit={async (values) => {
+            action('Form Submitted')(values);
+          }}
+          submit={{
+            contents: 'Submit Me!?',
+            size: 12,
+          }}
+          showRequired
+        />
+      );
+    }}
   </Story>
 </Canvas>

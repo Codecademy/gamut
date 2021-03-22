@@ -1,19 +1,49 @@
 import { MiniDeleteIcon } from '@codecademy/gamut-icons';
-import { Bell, Megaphone, New } from '@codecademy/gamut-illustrations';
+import {
+  Bell,
+  ChatBox,
+  Envelope,
+  Heart,
+  Megaphone,
+  New,
+} from '@codecademy/gamut-illustrations';
 import { colors } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React, { ReactElement } from 'react';
 
-import { Box, FlexBox, IconButton, Text } from '..';
+import { Box, FlexBox, IconButton } from '..';
 import { Notification } from '../NotificationList/typings';
+import { Text } from '../Typography/Text';
 
 const StyledLink = styled.a`
   text-decoration: none;
   display: block;
-
+  z-index: 1;
+  &:before,
+  &:after {
+    top: -1px;
+    left: 0;
+    z-index: 0;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: calc(100% + 2px);
+    transition: background 250ms;
+  }
+  &:focus {
+    outline: none;
+  }
+  &:focus-visible {
+    &:after {
+      border-radius: 4px;
+      border: 2px solid ${({ theme }) => theme.colors.navy};
+    }
+  }
   &:hover {
     text-decoration: none;
-    background-color: ${({ theme }) => theme.colors['gray-100']};
+    &:before {
+      background-color: ${({ theme }) => theme.colors['gray-100']};
+    }
   }
 `;
 
@@ -42,66 +72,80 @@ export const NotificationItemNew: React.FC<NotificationItemNewProps> = ({
 }) => {
   const { date, imageUrl, link, text, type } = notification;
 
-  const dismissNotification = (event: React.MouseEvent) => {
-    event.preventDefault();
-    handleDismiss && handleDismiss();
-  };
-
-  const getIcon = () => {
+  const renderIcon = () => {
     if (imageUrl) {
       return <StyledImg src={imageUrl} alt="" />;
     }
     if (type === 'marketing_blast') {
-      return <Megaphone height={48} width={48} aria-label="marketing update" />;
+      return <Megaphone aria-hidden height={48} width={48} />;
     }
     if (type === 'curriculum_blast') {
-      return <New height={48} width={48} aria-label="curriculum update" />;
+      return <New aria-hidden height={48} width={48} />;
     }
-    return <Bell height={48} width={48} />;
+    if (type === 'forum_comment') {
+      return <ChatBox aria-hidden height={48} width={48} />;
+    }
+    if (type === 'forum_message') {
+      return <Envelope aria-hidden height={48} width={48} />;
+    }
+    if (type === 'forum_like') {
+      return <Heart aria-hidden height={48} width={48} />;
+    }
+    return <Bell aria-hidden height={48} width={48} />;
   };
 
-  const renderNotificationContent = (): ReactElement => {
-    return (
-      <FlexBox paddingY={24} justifyContent="space-between" paddingX={32}>
-        {getIcon()}
-        <Box flexBasis={0} flexGrow={1} paddingLeft={12} textColor="navy">
-          <Text as="span" fontSize="sm">
-            {text}
-          </Text>
-          <DateText as="span" fontSize="sm">
-            {date}
-          </DateText>
-        </Box>
-        {handleDismiss && (
-          <FlexBox alignSelf="end" paddingLeft={8}>
-            <IconButton
-              icon={MiniDeleteIcon}
-              color={colors.navy}
-              onClick={dismissNotification}
-              aria-label="dismiss notification"
-              size="small"
-              variant="secondary"
-            />
-          </FlexBox>
-        )}
-      </FlexBox>
-    );
-  };
+  const notificationContent: ReactElement = (
+    <FlexBox zIndex={1} position="relative">
+      {renderIcon()}
+      <Box flexBasis={0} flexGrow={1} paddingLeft={12} textColor="navy">
+        <Text as="span" fontSize="sm">
+          {text}
+        </Text>
+        <DateText as="span" fontSize="sm">
+          {date}
+        </DateText>
+      </Box>
+    </FlexBox>
+  );
+
+  const dismissIcon: ReactElement = (
+    <IconButton
+      icon={MiniDeleteIcon}
+      color={colors.navy}
+      onClick={handleDismiss}
+      aria-label="dismiss notification"
+      size="small"
+      variant="secondary"
+      z-index={1}
+    />
+  );
 
   return (
-    <>
+    <FlexBox
+      paddingY={24}
+      paddingX={32}
+      alignItems="flex-start"
+      justifyContent="space-between"
+      position="relative"
+    >
       {link ? (
-        <StyledLink
-          href={link}
-          rel="noopener noreferrer"
-          target="_blank"
-          onClick={(event) => handleClick?.(event)}
-        >
-          {renderNotificationContent()}
-        </StyledLink>
+        <>
+          <StyledLink
+            href={link}
+            aria-label={`${text}, ${date} ago`}
+            rel="noopener noreferrer"
+            target="_blank"
+            onClick={(event) => handleClick?.(event)}
+          >
+            {notificationContent}
+          </StyledLink>
+        </>
       ) : (
-        <div>{renderNotificationContent()}</div>
+        <>{notificationContent}</>
       )}
-    </>
+      <FlexBox alignItems="flex-start" zIndex={1}>
+        {handleDismiss && dismissIcon}
+      </FlexBox>
+    </FlexBox>
   );
 };
