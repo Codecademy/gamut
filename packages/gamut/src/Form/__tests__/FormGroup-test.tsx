@@ -38,7 +38,7 @@ describe('FormGroup', () => {
     );
   });
 
-  it('renders error text', () => {
+  it('renders error text when there is an error', () => {
     const { wrapper } = renderWrapper({
       label: 'up dog',
       error: 'there is no up dog here...',
