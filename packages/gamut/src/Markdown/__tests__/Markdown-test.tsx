@@ -103,6 +103,18 @@ describe('<Markdown />', () => {
     expect(wrapper.find('h1').length).toEqual(1);
   });
 
+  it('Does not render id attributes on headers by default', () => {
+    const { wrapper } = renderWrapper({ text: basicMarkdown });
+    expect(wrapper.find('h1').get(0).props.id).toBeUndefined();
+    expect(wrapper.find('h3').get(0).props.id).toBeUndefined();
+  });
+
+  it('Renders id attributes on headers with the headerIds prop enabled', () => {
+    const { wrapper } = renderWrapper({ text: basicMarkdown, headerIds: true });
+    expect(wrapper.find('h1').get(0).props.id).toEqual('cc-heading-1');
+    expect(wrapper.find('h3').get(0).props.id).toEqual('cc-heading-3');
+  });
+
   describe('Allows passing in a custom CodeBlock override', () => {
     it('Accepts a CodeBlock component directly', () => {
       const text = `
