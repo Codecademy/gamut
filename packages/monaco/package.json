@@ -1,0 +1,29 @@
+{
+  "name": "@codecademy/monaco",
+  "description": "Monaco overrides React Components for Codecademy",
+  "version": "0.0.1",
+  "author": "Codecademy Engineering",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Codecademy/client-modules.git"
+  },
+  "peerDependencies": {
+    "react": ">=16.8.1",
+    "react-dom": ">=16.8.1"
+  },
+  "dependencies": {
+    "monaco-editor": "^0.23.0",
+    "react-monaco-editor": "^0.43.0",
+    "react-resize-detector": "^6.6.4"
+  },
+  "scripts": {
+    "build:clean": "rm -rf dist",
+    "build:compile": "babel ./src --out-dir ./dist --copy-files --extensions \".ts,.tsx\"",
+    "build:types": "tsc --emitDeclarationOnly",
+    "build": "yarn build:clean && yarn build:compile && yarn build:types",
+    "lernaBuildTask": "yarn build"
+  },
+  "license": "MIT"
+}
