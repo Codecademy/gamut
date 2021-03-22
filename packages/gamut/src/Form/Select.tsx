@@ -3,6 +3,7 @@ import {
   MiniChevronDownIcon,
 } from '@codecademy/gamut-icons';
 import { variant } from '@codecademy/gamut-styles';
+import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { each, isArray, isObject } from 'lodash';
 import React, {
@@ -53,6 +54,13 @@ const SelectBase = styled.select<SelectProps>`
   -webkit-appearance: none;
   appearance: none;
 `;
+
+const selectIconStyles = css`
+  pointer-events: none;
+`;
+
+const SelectIcon = styled(ArrowChevronDownIcon)(selectIconStyles);
+const MiniSelectIcon = styled(MiniChevronDownIcon)(selectIconStyles);
 
 export const Select = forwardRef<HTMLSelectElement, SelectWrapperProps>(
   (
@@ -105,9 +113,9 @@ export const Select = forwardRef<HTMLSelectElement, SelectWrapperProps>(
           bottom="0"
         >
           {sizeVariant === 'small' ? (
-            <MiniChevronDownIcon size={12} />
+            <MiniSelectIcon size={12} />
           ) : (
-            <ArrowChevronDownIcon size={16} />
+            <SelectIcon size={16} />
           )}
         </FlexBox>
         <SelectBase
