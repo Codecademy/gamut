@@ -29,6 +29,10 @@ const mountWithTheme = (component: React.ReactNode) => {
   return mount(<GamutThemeProvider>{component}</GamutThemeProvider>);
 };
 
+const mountWithTheme = (component: React.ReactNode) => {
+  return mount(<GamutThemeProvider>{component}</GamutThemeProvider>);
+};
+
 export const renderGridFormSelectInput = (
   extraProps: Partial<GridFormSelectField> = {}
 ) => {

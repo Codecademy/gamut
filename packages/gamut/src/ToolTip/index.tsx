@@ -45,6 +45,7 @@ const ToolTipContainer = styled.div<ToolTipContainerProps>`
   display: flex;
   opacity: 0;
   transition: opacity ${timing.fast};
+  transition-delay: ${timing.fast};
   position: absolute;
   width: 16rem;
   visibility: hidden;
