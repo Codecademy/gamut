@@ -15,7 +15,6 @@ import {
   formBaseFieldStyles,
   formFieldStyles,
   iconPadding,
-  iconStyles,
 } from './styles/shared';
 
 export type InputProps = InputHTMLAttributes<HTMLInputElement> & {
@@ -66,12 +65,9 @@ const InputElement = styled.input<StyledInputProps>`
   text-indent: 0;
 `;
 
-const StyledAlertIcon = styled(AlertIcon)(iconStyles);
-const StyledCheckCircledIcon = styled(CheckCircledIcon)(iconStyles);
-
 type inputState = {
   color: keyof typeof colors;
-  icon?: typeof StyledAlertIcon;
+  icon?: typeof AlertIcon;
 };
 
 type inputStatesObj = {
@@ -83,11 +79,11 @@ type inputStatesObj = {
 const inputStates: inputStatesObj = {
   error: {
     color: 'red',
-    icon: StyledAlertIcon,
+    icon: AlertIcon,
   },
   valid: {
     color: 'green',
-    icon: StyledCheckCircledIcon,
+    icon: CheckCircledIcon,
   },
   clean: {
     color: 'gray-600',
@@ -113,7 +109,7 @@ export const Input = forwardRef<HTMLInputElement, InputWrapperProps>(
     };
 
     const AsComponent = As || InputElement;
-    const ShownIcon = Icon ? styled(Icon)(iconStyles) : icon;
+    const ShownIcon = Icon ? Icon : icon;
 
     return (
       <Box position="relative" textColor={color}>
@@ -129,7 +125,7 @@ export const Input = forwardRef<HTMLInputElement, InputWrapperProps>(
         />
         {!!ShownIcon && (
           <FlexBox
-            paddingRight={error || valid ? 24 : 32}
+            paddingRight={error || valid ? 16 : 12}
             alignItems="center"
             position="absolute"
             right="0"

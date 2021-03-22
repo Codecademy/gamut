@@ -104,7 +104,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectWrapperProps>(
         className={className}
       >
         <FlexBox
-          paddingRight={sizeVariant === 'small' ? 24 : 32}
+          paddingRight={12}
           alignItems="center"
           position="absolute"
           right="0"
@@ -112,9 +112,9 @@ export const Select = forwardRef<HTMLSelectElement, SelectWrapperProps>(
           bottom="0"
         >
           {sizeVariant === 'small' ? (
-            <StyledMiniDownIcon size={12} />
+            <MiniChevronDownIcon size={12} />
           ) : (
-            <StyledDownIcon size={16} />
+            <ArrowChevronDownIcon size={16} />
           )}
         </FlexBox>
         <SelectBase

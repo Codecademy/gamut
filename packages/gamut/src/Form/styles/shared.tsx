@@ -79,12 +79,6 @@ const transitionConcatenator = (
   `;
 };
 
-export const iconStyles = css`
-  position: absolute;
-  pointer-events: none;
-  color: currentColor;
-`;
-
 export const formBaseStyles = css`
   color: ${colorStates.base.color};
   font-weight: normal;
