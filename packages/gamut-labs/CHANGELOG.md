@@ -3,6 +3,113 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [13.0.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@13.0.3...@codecademy/gamut-labs@13.0.4) (2021-03-22)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [13.0.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@13.0.2...@codecademy/gamut-labs@13.0.3) (2021-03-22)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [13.0.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@13.0.1...@codecademy/gamut-labs@13.0.2) (2021-03-22)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [13.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@13.0.0...@codecademy/gamut-labs@13.0.1) (2021-03-19)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+## [13.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@12.0.3...@codecademy/gamut-labs@13.0.0) (2021-03-18)
+
+
+### ⚠ BREAKING CHANGES
+
+* **ContentContainer:** update responsive padding
+
+### Features
+
+* **ContentContainer:** update responsive padding ([4f66f22](https://github.com/Codecademy/client-modules/commit/4f66f22a3572f1e721b5da0a8c41ebe3dd385279))
+
+
+
+### [12.0.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@12.0.2...@codecademy/gamut-labs@12.0.3) (2021-03-18)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [12.0.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@12.0.1...@codecademy/gamut-labs@12.0.2) (2021-03-16)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [12.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@12.0.0...@codecademy/gamut-labs@12.0.1) (2021-03-16)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+## [12.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@11.4.2...@codecademy/gamut-labs@12.0.0) (2021-03-16)
+
+
+### ⚠ BREAKING CHANGES
+
+* **Card:** Animation Fixes and Gamut migration
+
+### Bug Fixes
+
+* **Card:** Animation Fixes and Gamut migration ([c44ac2f](https://github.com/Codecademy/client-modules/commit/c44ac2f096ed36018c5eb41eac5d56ffca8bd74f))
+
+
+
+### [11.4.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@11.4.1...@codecademy/gamut-labs@11.4.2) (2021-03-16)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [11.4.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@11.4.0...@codecademy/gamut-labs@11.4.1) (2021-03-16)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+## [11.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@11.3.0...@codecademy/gamut-labs@11.4.0) (2021-03-15)
+
+
+### Features
+
+* **PageHero:** don't hide video on xs screens ([#1505](https://github.com/Codecademy/client-modules/issues/1505)) ([0260108](https://github.com/Codecademy/client-modules/commit/026010825c5d159a918665c083eacd5ed6e07915))
+
+
+
 ## [11.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@11.2.3...@codecademy/gamut-labs@11.3.0) (2021-03-15)
 
 

@@ -3,6 +3,136 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [33.0.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@33.0.1...@codecademy/styleguide@33.0.2) (2021-03-22)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [33.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@33.0.0...@codecademy/styleguide@33.0.1) (2021-03-22)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [33.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@32.0.3...@codecademy/styleguide@33.0.0) (2021-03-22)
+
+
+### ⚠ BREAKING CHANGES
+
+* converted ToolTip to Emotion (#1409)
+
+### Code Refactoring
+
+* converted ToolTip to Emotion ([#1409](https://github.com/Codecademy/client-modules/issues/1409)) ([0a8428f](https://github.com/Codecademy/client-modules/commit/0a8428fb59998e98d053b880c92d884fe5639a1d))
+
+
+
+### [32.0.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@32.0.2...@codecademy/styleguide@32.0.3) (2021-03-19)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [32.0.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@32.0.1...@codecademy/styleguide@32.0.2) (2021-03-19)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [32.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@32.0.0...@codecademy/styleguide@32.0.1) (2021-03-18)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [32.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@31.1.1...@codecademy/styleguide@32.0.0) (2021-03-18)
+
+
+### ⚠ BREAKING CHANGES
+
+* **ContentContainer:** update responsive padding
+
+### Features
+
+* **ContentContainer:** update responsive padding ([4f66f22](https://github.com/Codecademy/client-modules/commit/4f66f22a3572f1e721b5da0a8c41ebe3dd385279))
+
+
+
+### [31.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@31.1.0...@codecademy/styleguide@31.1.1) (2021-03-18)
+
+
+### Bug Fixes
+
+* **NotificationItemNew:** dismiss icon hover ([fe3740e](https://github.com/Codecademy/client-modules/commit/fe3740e400e053d1390d0f242dfba5a87aedea81))
+
+
+
+## [31.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@31.0.1...@codecademy/styleguide@31.1.0) (2021-03-16)
+
+
+### Features
+
+* **NotificationItemNew:** add new forum notification icons ([cc10d77](https://github.com/Codecademy/client-modules/commit/cc10d7773b145c7b11f54e0be9603000d86f4735))
+
+
+
+### [31.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@31.0.0...@codecademy/styleguide@31.0.1) (2021-03-16)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [31.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@30.8.1...@codecademy/styleguide@31.0.0) (2021-03-16)
+
+
+### ⚠ BREAKING CHANGES
+
+* **Card:** Animation Fixes and Gamut migration
+
+### Bug Fixes
+
+* **Card:** Animation Fixes and Gamut migration ([c44ac2f](https://github.com/Codecademy/client-modules/commit/c44ac2f096ed36018c5eb41eac5d56ffca8bd74f))
+
+
+
+### [30.8.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@30.8.0...@codecademy/styleguide@30.8.1) (2021-03-16)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [30.8.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@30.7.1...@codecademy/styleguide@30.8.0) (2021-03-16)
+
+
+### Features
+
+* **Form:** Input, Select, TextArea, + Error Updates ([#1439](https://github.com/Codecademy/client-modules/issues/1439)) ([68f955a](https://github.com/Codecademy/client-modules/commit/68f955ae05bfdd76aac64630377298c9d9b2d288))
+
+
+
+### [30.7.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@30.7.0...@codecademy/styleguide@30.7.1) (2021-03-15)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
 ## [30.7.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@30.6.0...@codecademy/styleguide@30.7.0) (2021-03-15)
 
 

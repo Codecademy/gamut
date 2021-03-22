@@ -42,18 +42,46 @@ export const fruitOptions = [
 
 <PropsTable story="Select" />
 
-### Input States
+### Select States
 
 <Canvas>
   <Story
     name="Disabled"
-    args={{ options: ['Disabled'], defaultValue: 'Disabled', disabled: true }}
+    args={{
+      options: ['Disabled'],
+      defaultValue: 'Disabled',
+      disabled: true,
+    }}
   >
     {(args) => <Select {...args} />}
   </Story>
   <Story
     name="Error"
     args={{ options: ['Error'], defaultValue: 'Error', error: true }}
+  >
+    {(args) => <Select {...args} />}
+  </Story>
+</Canvas>
+
+### Select Size Variant
+
+<Canvas>
+  <Story
+    name="Base"
+    args={{
+      options: ['Base', 'Regular Size', '"Normal'],
+      defaultValue: 'Base',
+    }}
+  >
+    {(args) => <Select {...args} />}
+  </Story>
+  <Story
+    name="Small"
+    args={{
+      options: ['Small', 'Quite little'],
+      defaultValue: 'Small',
+      sizeVariant: 'small',
+    }}
   >
     {(args) => <Select {...args} />}
   </Story>
