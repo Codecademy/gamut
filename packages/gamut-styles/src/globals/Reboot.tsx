@@ -63,9 +63,9 @@ const rebootStyles = css`
     font-family: ${theme.fontFamily.base};
     font-weight: ${theme.fontWeight.base};
     line-height: ${theme.lineHeight.base};
-    color: ${theme.colors.text};
+    color: ${theme.colors.navy};
     text-align: left;
-    background-color: ${theme.colors.background};
+    background-color: ${theme.colors.white};
   }
 
   /* Suppress the focus outline on elements that cannot be accessed via keyboard.
@@ -210,7 +210,7 @@ const rebootStyles = css`
 */
 
   a {
-    color: ${theme.colors.primary};
+    color: ${theme.colors.hyper};
     text-decoration: none;
 
     background-color: transparent;
