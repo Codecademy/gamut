@@ -29,7 +29,8 @@ type iconPaddingProps = {
   icon?: boolean;
 };
 
-export type conditionalInputStyleProps = conditionalStyleProps & iconPadding;
+export type conditionalInputStyleProps = conditionalStyleProps &
+  iconPaddingProps;
 
 export const conditionalStyles = ({
   error,
