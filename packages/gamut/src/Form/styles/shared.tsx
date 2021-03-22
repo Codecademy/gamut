@@ -1,4 +1,4 @@
-import { pxRem, theme, variant } from '@codecademy/gamut-styles';
+import { pxRem, theme } from '@codecademy/gamut-styles';
 import { css } from '@emotion/react';
 import { StandardPropertiesHyphen } from 'csstype';
 
@@ -55,6 +55,7 @@ export const conditionalStyles = ({
     `;
   }
 };
+
 export const iconPadding = ({ icon }: iconPadding) => {
   if (icon) {
     return css`
