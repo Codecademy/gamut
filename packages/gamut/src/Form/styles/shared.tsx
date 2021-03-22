@@ -16,6 +16,7 @@ export const colorStates = {
     borderColor: theme.colors[`gray-700`],
   },
   error: { color: theme.colors.red, borderColor: theme.colors.red },
+  valid: { color: theme.colors.green },
   activated: { borderColor: theme.colors.navy },
 };
 

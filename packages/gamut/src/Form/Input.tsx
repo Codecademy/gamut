@@ -1,8 +1,5 @@
-import {
-  AlertIcon,
-  CheckCircledIcon,
-  GamutIconProps,
-} from '@codecademy/gamut-icons';
+import { AlertIcon, CheckCircledIcon } from '@codecademy/gamut-icons';
+import { colors } from '@codecademy/gamut-styles';
 import styled, { StyledComponent } from '@emotion/styled';
 import React, {
   ChangeEvent,
@@ -52,7 +49,7 @@ export interface InputWrapperProps extends InputProps {
   /**
    * A custom icon svg from gamut-icons.
    */
-  icon?: StyledComponent<GamutIconProps>;
+  icon?: typeof AlertIcon;
 }
 
 export const iFrameWrapper = styled.div<conditionalInputStyleProps>`
@@ -72,7 +69,18 @@ const InputElement = styled.input<StyledInputProps>`
 const StyledAlertIcon = styled(AlertIcon)(iconStyles);
 const StyledCheckCircledIcon = styled(CheckCircledIcon)(iconStyles);
 
-const inputStates = {
+type inputState = {
+  color: keyof typeof colors;
+  icon?: typeof StyledAlertIcon;
+};
+
+type inputStatesObj = {
+  error: inputState;
+  valid: inputState;
+  clean: inputState;
+};
+
+const inputStates: inputStatesObj = {
   error: {
     color: 'red',
     icon: StyledAlertIcon,
@@ -98,7 +106,8 @@ export const Input = forwardRef<HTMLInputElement, InputWrapperProps>(
     const [activated, setActivated] = useState(false);
 
     const { color, icon } = inputStates[getInputState(!!error, !!valid)];
-    const iconSize = error || valid ? 16 : 22;
+    const iconSize = error || valid ? 16 : 24;
+    const iconPadding = iconSize + 8;
 
     const changeHandler = (event: ChangeEvent<HTMLInputElement>) => {
       rest?.onChange?.(event);
@@ -122,7 +131,7 @@ export const Input = forwardRef<HTMLInputElement, InputWrapperProps>(
         />
         {!!ShownIcon && (
           <FlexBox
-            paddingRight={iconSize + 8}
+            paddingRight={iconPadding}
             alignItems="center"
             position="absolute"
             right="0"
