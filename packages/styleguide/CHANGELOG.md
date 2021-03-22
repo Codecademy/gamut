@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [33.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@32.0.3...@codecademy/styleguide@33.0.0) (2021-03-22)
+
+
+### ⚠ BREAKING CHANGES
+
+* converted ToolTip to Emotion (#1409)
+
+### Code Refactoring
+
+* converted ToolTip to Emotion ([#1409](https://github.com/Codecademy/client-modules/issues/1409)) ([0a8428f](https://github.com/Codecademy/client-modules/commit/0a8428fb59998e98d053b880c92d884fe5639a1d))
+
+
+
 ### [32.0.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@32.0.2...@codecademy/styleguide@32.0.3) (2021-03-19)
 
 **Note:** Version bump only for package @codecademy/styleguide
