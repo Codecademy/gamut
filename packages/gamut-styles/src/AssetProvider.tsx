@@ -25,6 +25,3 @@ export const createFontLinks = () => {
 export const AssetProvider = () => {
   return <Helmet>{createFontLinks()}</Helmet>;
 };
-
-// required for lazy
-export default AssetProvider;
