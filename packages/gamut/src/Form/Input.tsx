@@ -106,8 +106,6 @@ export const Input = forwardRef<HTMLInputElement, InputWrapperProps>(
     const [activated, setActivated] = useState(false);
 
     const { color, icon } = inputStates[getInputState(!!error, !!valid)];
-    const iconSize = error || valid ? 16 : 24;
-    const iconPadding = iconSize + 8;
 
     const changeHandler = (event: ChangeEvent<HTMLInputElement>) => {
       rest?.onChange?.(event);
@@ -131,14 +129,14 @@ export const Input = forwardRef<HTMLInputElement, InputWrapperProps>(
         />
         {!!ShownIcon && (
           <FlexBox
-            paddingRight={iconPadding}
+            paddingRight={error || valid ? 24 : 32}
             alignItems="center"
             position="absolute"
             right="0"
             top="0"
             bottom="0"
           >
-            <ShownIcon size={iconSize} />
+            <ShownIcon size={error || valid ? 16 : 24} />
           </FlexBox>
         )}
       </Box>
