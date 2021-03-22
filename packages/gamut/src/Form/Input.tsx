@@ -99,7 +99,7 @@ export const Input = forwardRef<HTMLInputElement, InputWrapperProps>(
     };
 
     const AsComponent = As || InputElement;
-    const ShownIcon = Icon ? Icon : icon;
+    const ShownIcon = Icon ? styled(Icon)(iconStyles) : icon;
 
     return (
       <Box position="relative" textColor={color}>
