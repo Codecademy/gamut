@@ -6,7 +6,7 @@ import { Input } from '../Input';
 const renderWrapper = setupEnzyme(Input, {});
 
 describe('Input', () => {
-  it('renders a text input type', () => {
+  it('renders a text input type when the type is text', () => {
     const { wrapper } = renderWrapper({ type: 'text' });
     expect(wrapper.find('input').props().type).toBe('text');
   });
