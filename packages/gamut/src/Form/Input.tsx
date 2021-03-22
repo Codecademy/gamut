@@ -1,4 +1,4 @@
-import * as icons from '@codecademy/gamut-icons';
+import GamutIconProps from '@codecademy/gamut-icons';
 import styled, { StyledComponent } from '@emotion/styled';
 import React, {
   ChangeEvent,
