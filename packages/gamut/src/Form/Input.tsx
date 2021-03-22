@@ -79,8 +79,8 @@ const InputElement = styled.input<StyledInputProps>`
   text-indent: 0;
 `;
 
-const StyledAlertIcon = styled(AlertIcon)(iconStyles);
-const StyledCheckCircledIcon = styled(CheckCircledIcon)(iconStyles);
+export const StyledAlertIcon = styled(AlertIcon)(iconStyles);
+export const StyledCheckCircledIcon = styled(CheckCircledIcon)(iconStyles);
 
 type inputState = {
   color: keyof typeof colors;
