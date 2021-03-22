@@ -59,3 +59,37 @@ import { PropsTable } from '~styleguide/blocks';
     )}
   </Story>
 </Canvas>
+
+### Form Group with tooltip
+
+A field can now include [our existing `ToolTip`](/?path=/docs/atoms-tooltip--tool-tip). The position of the tooltip on each field is always set to the bottom-right. You also have the option to render each tooltip in dark or light mode. The id of the tooltip is automtaically generated to be the id or name of the field with `-tooltip`.
+
+<Canvas>
+  <Story name="FormGroupTooltip">
+    {(args) => (
+      <FormGroup
+        label="light mode"
+        tooltip={{
+          children:
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+        }}
+      >
+        <Input defaultValue="Good job!" valid />
+      </FormGroup>
+    )}
+  </Story>
+  <Story name="FormGroupTooltipDark">
+    {(args) => (
+      <FormGroup
+        label="dark mode"
+        tooltip={{
+          mode: 'dark',
+          children:
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+        }}
+      >
+        <Input />
+      </FormGroup>
+    )}
+  </Story>
+</Canvas>
