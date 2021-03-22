@@ -115,7 +115,7 @@ export class Markdown extends PureComponent<MarkdownProps> {
     const markedOptions = {
       smartypants: true,
       headerIds,
-      headerPrefix: 'cc-',
+      headerPrefix: 'heading-',
     };
 
     // Render markdown to html

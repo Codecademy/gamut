@@ -111,8 +111,8 @@ describe('<Markdown />', () => {
 
   it('Renders id attributes on headers with the headerIds prop enabled', () => {
     const { wrapper } = renderWrapper({ text: basicMarkdown, headerIds: true });
-    expect(wrapper.find('h1').get(0).props.id).toEqual('cc-heading-1');
-    expect(wrapper.find('h3').get(0).props.id).toEqual('cc-heading-3');
+    expect(wrapper.find('h1').get(0).props.id).toEqual('heading-heading-1');
+    expect(wrapper.find('h3').get(0).props.id).toEqual('heading-heading-3');
   });
 
   describe('Allows passing in a custom CodeBlock override', () => {
