@@ -33,6 +33,7 @@ export * from './Layout';
 export * from './Markdown';
 export * from './Menus/MenuItem';
 export * from './Menus/SideMenu';
+export * from './Dialog';
 export * from './Modal';
 export * from './NotificationList';
 export * from './NotificationList/NotificationIcon';
