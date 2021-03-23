@@ -63,13 +63,15 @@ export const iFrameStyles = ({
   `;
 };
 
+/*
+to be picked back up re: GM-188
 export const iFrameWrapper = styled.div<conditionalInputStyleProps>`
   ${formBaseFieldStyles}
   ${conditionalStyles}
   ${iconPadding}
   text-indent: 0;
 `;
-
+*/
 const InputElement = styled.input<StyledInputProps>`
   ${formFieldStyles}
   ${conditionalStyles}
