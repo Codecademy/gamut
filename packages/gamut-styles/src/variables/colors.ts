@@ -159,3 +159,18 @@ export const platformColors = {
     '900': '#15141f',
   },
 } as const;
+
+export const colorModes = {
+  light: {
+    background: colors.white,
+    text: colors.navy,
+    primary: colors.hyper,
+    secondary: colors.navy,
+  },
+  dark: {
+    background: colors.navy,
+    text: colors.white,
+    primary: colors.yellow,
+    secondary: colors.white,
+  },
+};

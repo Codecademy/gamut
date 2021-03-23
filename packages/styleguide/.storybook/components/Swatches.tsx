@@ -1,6 +1,6 @@
 import React from 'react';
 import { styled } from '@storybook/theming';
-import { colors, swatches } from '@codecademy/gamut-styles';
+import { colors, swatches } from '@codecademy/gamut-styles/src';
 import { meetsContrastGuidelines } from 'polished';
 
 export const parseCamelCase = (string: string) =>

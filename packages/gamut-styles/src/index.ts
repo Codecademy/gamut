@@ -3,6 +3,7 @@ import '@emotion/react';
 import { theme } from './theme';
 
 export * from './GamutProvider';
+export * from './ColorMode';
 
 export * from './cache';
 export * from './variables';
