@@ -29,6 +29,7 @@ Array [
   "ContentContainer",
   "createPromise",
   "CTAButton",
+  "Dialog",
   "FillButton",
   "FlexBox",
   "FlexGrid",

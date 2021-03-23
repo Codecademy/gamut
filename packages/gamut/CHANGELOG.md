@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [29.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@29.1.0...@codecademy/gamut@29.2.0) (2021-03-23)
+
+
+### Features
+
+* **Dialog:** Add new Dialog Modal component [GM-18] ([349faa9](https://github.com/Codecademy/client-modules/commit/349faa911f61fbf08aa14234d8dfc7ae50135fd7))
+* **Markdown:** allow generated heading ids [CET-617] ([34148f4](https://github.com/Codecademy/client-modules/commit/34148f4207d7a4ed7ad476a53121f3c2a53b9c0e))
+
+
+
 ## [29.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@29.0.1...@codecademy/gamut@29.1.0) (2021-03-22)
 
 
