@@ -45,7 +45,8 @@ export const conditionalStyles = ({
         border-color: ${colorStates.error.borderColor};
       }
 
-      &:focus {
+      &:focus,
+      &::focus-within {
         border-color: ${colorStates.error.borderColor};
         box-shadow: inset 0 0 0 1px ${colorStates.error.borderColor};
       }
@@ -99,7 +100,8 @@ export const formBaseFieldStyles = css`
     border-color: ${colorStates.hover.borderColor};
   }
 
-  &:focus {
+  &:focus,
+  &::focus-within {
     border-color: ${colorStates.hover.borderColor};
     box-shadow: inset 0 0 0 1px ${colorStates.hover.borderColor};
   }

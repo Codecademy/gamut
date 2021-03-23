@@ -1,4 +1,5 @@
 import { AlertIcon, CheckCircledIcon } from '@codecademy/gamut-icons';
+import { css } from '@emotion/react';
 import styled, { StyledComponent } from '@emotion/styled';
 import React, {
   ChangeEvent,
@@ -50,6 +51,18 @@ export interface InputWrapperProps extends InputProps {
   icon?: typeof AlertIcon;
 }
 
+export const iFrameStyles = ({
+  error,
+  activated,
+  icon,
+}: conditionalInputStyleProps) => {
+  return css`
+    ${formBaseFieldStyles}
+    ${conditionalStyles({ error, activated })}
+    ${iconPadding({ icon })}
+  `;
+};
+
 export const iFrameWrapper = styled.div<conditionalInputStyleProps>`
   ${formBaseFieldStyles}
   ${conditionalStyles}
@@ -62,10 +75,6 @@ const InputElement = styled.input<StyledInputProps>`
   ${conditionalStyles}
   ${iconPadding}
   text-indent: 0;
-`;
-
-const StyledFlexBox = styled(FlexBox)`
-  align-items: center !important;
 `;
 
 const inputStates = {
@@ -118,7 +127,7 @@ export const Input = forwardRef<HTMLInputElement, InputWrapperProps>(
           onChange={(event) => changeHandler(event)}
         />
         {!!ShownIcon && (
-          <StyledFlexBox
+          <FlexBox
             paddingRight={Icon ? 12 : 16}
             position="absolute"
             right="0"
@@ -126,7 +135,7 @@ export const Input = forwardRef<HTMLInputElement, InputWrapperProps>(
             bottom="0"
           >
             <ShownIcon size={Icon ? 24 : 16} />
-          </StyledFlexBox>
+          </FlexBox>
         )}
       </Box>
     );
