@@ -165,7 +165,6 @@ jobs:
             JEST_JUNIT_ADD_FILE_ATTRIBUTE: 'true'
       - codecov/upload:
           file: /tmp/test-results/jest/*
-          conf: codecov.yml
       - store_test_results:
           path: /tmp/test-results
       - store_artifacts:
