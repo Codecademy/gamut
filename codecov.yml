@@ -1,13 +1,20 @@
 codecov:
   require_ci_to_pass: yes
   notify:
-    after_n_builds: 4 # Must be the # of parallel test builds in CircleCI
+    after_n_builds: 7 # Must be the # of parallel test builds in CircleCI
     wait_for_ci: yes
 
 comment:
-  after_n_builds: 4 # Must be the # of parallel test builds in CircleCI
+  after_n_builds: 7 # Must be the # of parallel test builds in CircleCI
   layout: "diff, files"
   require_changes: true
+
+coverage:
+  status:
+    project:
+      gamut:
+        target: 89%
+        paths: "packages/gamut/"
 
 ignore:
   - "**/*.js"
