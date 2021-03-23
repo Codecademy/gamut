@@ -1,4 +1,4 @@
-import * as system from '@codecademy/gamut-styles/src/theme/props';
+import * as system from '@codecademy/gamut-styles/src/props';
 
 const { properties: props, variant, ...groups } = system;
 

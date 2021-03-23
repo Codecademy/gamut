@@ -1,4 +1,4 @@
-import { pxRem } from '../utilities/pxRem';
+import { pxRem } from '../styles/pxRem';
 import { deprecatedColors as colorSwatch } from './deprecated-colors';
 
 export const fontAccent = `"Suisse", "Apercu", -apple-system, BlinkMacSystemFont,
