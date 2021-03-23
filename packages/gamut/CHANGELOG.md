@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [29.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@29.3.1...@codecademy/gamut@29.4.0) (2021-03-23)
+
+
+### Features
+
+* **Input:** Add custom gamut-icons to Input components ([cfb3fbe](https://github.com/Codecademy/client-modules/commit/cfb3fbe390a88f7e2e513bc76ef90a54051de665))
+
+
+
 ### [29.3.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@29.3.0...@codecademy/gamut@29.3.1) (2021-03-23)
 
 **Note:** Version bump only for package @codecademy/gamut
