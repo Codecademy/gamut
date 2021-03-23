@@ -112,7 +112,7 @@ export const Input = forwardRef<HTMLInputElement, InputWrapperProps>(
     };
 
     const AsComponent = As || InputElement;
-    const ShownIcon = Icon ? Icon : icon;
+    const ShownIcon = Icon || icon;
 
     return (
       <Box position="relative" textColor={color}>
@@ -128,14 +128,13 @@ export const Input = forwardRef<HTMLInputElement, InputWrapperProps>(
         />
         {!!ShownIcon && (
           <FlexBox
-            paddingRight={error || valid ? 16 : 12}
-            alignItems="center"
+            paddingRight={Icon ? 12 : 16}
             position="absolute"
             right="0"
             top="0"
             bottom="0"
           >
-            <ShownIcon size={error || valid ? 16 : 24} />
+            <ShownIcon size={Icon ? 24 : 16} />
           </FlexBox>
         )}
       </Box>

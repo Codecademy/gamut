@@ -1,4 +1,5 @@
-import { GamutThemeProvider } from '@codecademy/gamut-styles';
+import { theme } from '@codecademy/gamut-styles';
+import { ThemeProvider } from '@emotion/react';
 import { mount } from 'enzyme';
 import React from 'react';
 
@@ -28,7 +29,7 @@ import { GridFormTextInput } from '../GridFormTextInput';
 import { GridFormToolTip } from '../GridFromToolTip';
 
 const mountWithTheme = (component: React.ReactNode) => {
-  return mount(<GamutThemeProvider>{component}</GamutThemeProvider>);
+  return mount(<ThemeProvider theme={theme}>{component}</ThemeProvider>);
 };
 
 export const renderGridFormSelectInput = (
