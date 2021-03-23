@@ -16,6 +16,7 @@ export const colorStates = {
     borderColor: theme.colors[`gray-700`],
   },
   error: { color: theme.colors.red, borderColor: theme.colors.red },
+  valid: { color: theme.colors.green },
   activated: { borderColor: theme.colors.navy },
 };
 
@@ -24,16 +25,12 @@ export type conditionalStyleProps = {
   activated?: boolean;
 };
 
-type iconPadding = {
+type iconPaddingProps = {
   icon?: boolean;
 };
 
-export type conditionalInputStyleProps = conditionalStyleProps & iconPadding;
-
-export type transitionConcatenatorProps = {
-  arrayOfProperties: Array<keyof StandardPropertiesHyphen>;
-  transition: string;
-};
+export type conditionalInputStyleProps = conditionalStyleProps &
+  iconPaddingProps;
 
 export const conditionalStyles = ({
   error,
@@ -61,7 +58,7 @@ export const conditionalStyles = ({
   }
 };
 
-export const iconPadding = ({ icon }: iconPadding) => {
+export const iconPadding = ({ icon }: iconPaddingProps) => {
   if (icon) {
     return css`
       padding-right: 2.3rem; ;
@@ -70,7 +67,7 @@ export const iconPadding = ({ icon }: iconPadding) => {
 };
 
 const transitionConcatenator = (
-  arrayOfProperties: Array<string>,
+  arrayOfProperties: Array<keyof StandardPropertiesHyphen>,
   transition: string
 ) => {
   const cssString = `${arrayOfProperties.join(
@@ -81,20 +78,6 @@ const transitionConcatenator = (
     transition: ${cssString};
   `;
 };
-
-export const iconBaseStyles = css`
-  position: absolute;
-  pointer-events: none;
-  color: currentColor;
-`;
-
-export const iconStyles = css`
-  ${iconBaseStyles}
-  right: 1rem;
-  height: 1rem;
-  width: 1rem;
-  top: calc(50% - ${pxRem(8)});
-`;
 
 export const formBaseStyles = css`
   color: ${colorStates.base.color};
@@ -110,7 +93,6 @@ export const formBaseFieldStyles = css`
   background-color: ${colorStates.base.backgroundColor};
   border: 1px solid ${colorStates.base.borderColor};
   border-radius: 2px;
-  padding-right: 2.5rem;
   min-width: auto;
 
   &:hover {
@@ -121,6 +103,7 @@ export const formBaseFieldStyles = css`
     border-color: ${colorStates.hover.borderColor};
     box-shadow: inset 0 0 0 1px ${colorStates.hover.borderColor};
   }
+
   &::placeholder {
     color: ${colorStates.base.placeholder};
     font-style: italic;
