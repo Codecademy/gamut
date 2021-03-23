@@ -49,7 +49,7 @@ const buttonThemes = {
     component: ButtonDeprecatedBase,
     props: {},
   },
-};
+} as const;
 
 export const AccordionButton: React.FC<AccordionButtonProps> = ({
   children,
