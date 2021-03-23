@@ -1,15 +1,11 @@
 import { buttonPresetThemes } from '@codecademy/gamut';
 
-export const newThemeKeys = ['hyper', 'navy', 'red'];
+export const newThemeKeys = ['hyper', 'navy', 'red', 'white'];
 
 export const brandThemeKeys = [
   'brand-red',
-  'brand-orange',
   'brand-yellow',
   'brand-purple',
-  'brand-pink',
-  'brand-mint',
-  'brand-beige',
   'brand-dark-blue',
   'brand-blue',
 ];
@@ -20,17 +16,7 @@ export const deprecatedThemeKeys = [
   'darkmint',
   'grey',
   'greyblue',
-  'white',
   'royalblue',
-  'purple',
-];
-
-export const statusThemeKeys = [
-  'success',
-  'notice',
-  'error',
-  'announcement',
-  'info',
 ];
 
 export const themes = brandThemeKeys.reduce<Record<string, string>>(

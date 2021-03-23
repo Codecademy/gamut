@@ -3,6 +3,72 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-tests@2.2.4...@codecademy/gamut-tests@2.3.0) (2021-03-23)
+
+
+### Features
+
+* **GamutProvider:** Adds single provider for Theme + Cache + Globals + Assets [WEB-1352] [GM-173] ([9eac700](https://github.com/Codecademy/client-modules/commit/9eac7009b4d773621a0993cc125d6878b76977ce))
+
+
+
+### [2.2.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-tests@2.2.3...@codecademy/gamut-tests@2.2.4) (2021-03-19)
+
+**Note:** Version bump only for package @codecademy/gamut-tests
+
+
+
+
+
+### [2.2.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-tests@2.2.2...@codecademy/gamut-tests@2.2.3) (2021-03-18)
+
+**Note:** Version bump only for package @codecademy/gamut-tests
+
+
+
+
+
+### [2.2.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-tests@2.2.1...@codecademy/gamut-tests@2.2.2) (2021-03-16)
+
+**Note:** Version bump only for package @codecademy/gamut-tests
+
+
+
+
+
+### [2.2.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-tests@2.2.0...@codecademy/gamut-tests@2.2.1) (2021-03-04)
+
+**Note:** Version bump only for package @codecademy/gamut-tests
+
+
+
+
+
+## [2.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-tests@2.1.5...@codecademy/gamut-tests@2.2.0) (2021-03-04)
+
+
+### Features
+
+* **ThemeProvider:**  Adds GamutThemeProvider component and initial Global styles ([f4fd13c](https://github.com/Codecademy/client-modules/commit/f4fd13ce04762f75517117372c76d189ee0f0b99))
+
+
+
+### [2.1.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-tests@2.1.4...@codecademy/gamut-tests@2.1.5) (2021-03-04)
+
+**Note:** Version bump only for package @codecademy/gamut-tests
+
+
+
+
+
+### [2.1.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-tests@2.1.3...@codecademy/gamut-tests@2.1.4) (2021-03-04)
+
+**Note:** Version bump only for package @codecademy/gamut-tests
+
+
+
+
+
 ### [2.1.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-tests@2.1.2...@codecademy/gamut-tests@2.1.3) (2021-03-02)
 
 **Note:** Version bump only for package @codecademy/gamut-tests

@@ -1,4 +1,10 @@
-import { AppBarSection, Box, FlexBox, Overlay } from '@codecademy/gamut';
+import {
+  AppBarSection,
+  Box,
+  ContentContainer,
+  FlexBox,
+  Overlay,
+} from '@codecademy/gamut';
 import { CloseIcon, MenuIcon } from '@codecademy/gamut-icons';
 import { breakpoints } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
@@ -20,6 +26,7 @@ export type AppHeaderMobileProps = {
   action: AppHeaderClickHandler;
   items: FormattedMobileAppHeaderItems;
   renderSearch?: () => ReactNode;
+  redirectParam?: string;
 };
 
 const IconButton = styled.button`
@@ -51,6 +58,7 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
   action,
   items,
   renderSearch,
+  redirectParam,
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
 
@@ -65,7 +73,7 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
         marginLeft={index === 0 ? 0 : 4}
         marginRight={index === items.length - 1 ? 0 : 4}
       >
-        {mapItemToElement(action, item)}
+        {mapItemToElement(action, item, redirectParam)}
       </Box>
     ));
   };
@@ -120,13 +128,13 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
               </FlexBox>
             </AppBarSection>
           </StyledAppBar>
-          <Box paddingX={{ base: 16, sm: 32 }}>
+          <ContentContainer>
             <AppHeaderMainMenuMobile
               items={items.mainMenu}
               action={action}
               renderSearch={renderSearch}
             />
-          </Box>
+          </ContentContainer>
         </div>
       </StyledOverlay>
     </>

@@ -1,12 +1,14 @@
 import { Box } from '@codecademy/gamut';
+import { useTheme } from '@emotion/react';
+import cx from 'classnames';
 import React from 'react';
+import { useWindowScroll } from 'react-use';
 
-import { AppHeader } from '../AppHeader';
+import { AppHeader, AppHeaderMobile } from '..';
 import {
   FormattedAppHeaderItems,
   FormattedMobileAppHeaderItems,
 } from '../AppHeader/types';
-import { AppHeaderMobile } from '../AppHeaderMobile';
 import {
   anonDefaultHeaderItems,
   anonDefaultMobileHeaderItems,
@@ -23,6 +25,7 @@ import {
   proHeaderItems,
   proMobileHeaderItems,
 } from './GlobalHeaderVariants';
+import styles from './styles.module.scss';
 import { AnonHeader, FreeHeader, LoadingHeader, ProHeader } from './types';
 
 export type GlobalHeaderProps =
@@ -93,22 +96,47 @@ const getMobileAppHeaderItems = (
   }
 };
 
-export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => (
-  <>
-    <Box display={{ base: 'none', md: 'block' }} height="80">
-      <AppHeader action={props.action} items={getAppHeaderItems(props)} />
-    </Box>
-    <Box
-      display={{ base: 'block', md: 'none' }}
-      height="64"
-      position="relative"
-      zIndex={0}
-    >
-      <AppHeaderMobile
-        action={props.action}
-        items={getMobileAppHeaderItems(props)}
-        renderSearch={props.renderSearch?.mobile}
-      />
-    </Box>
-  </>
-);
+export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
+  const { y } = useWindowScroll();
+
+  const isInHeaderRegion = y === 0;
+
+  const theme = useTheme();
+
+  const headerClasses = cx(
+    styles.stickyHeader,
+    isInHeaderRegion && styles.transitionFadeOut
+  );
+
+  return (
+    <>
+      <Box
+        display={{ base: 'none', md: 'block' }}
+        height={theme.elements.headerHeight}
+        className={headerClasses}
+      >
+        <AppHeader
+          action={props.action}
+          items={getAppHeaderItems(props)}
+          redirectParam={
+            props.type === 'anon' ? props.redirectParam : undefined
+          }
+        />
+      </Box>
+      <Box
+        display={{ base: 'block', md: 'none' }}
+        height={theme.elements.headerHeight}
+        className={headerClasses}
+      >
+        <AppHeaderMobile
+          action={props.action}
+          items={getMobileAppHeaderItems(props)}
+          renderSearch={props.renderSearch?.mobile}
+          redirectParam={
+            props.type === 'anon' ? props.redirectParam : undefined
+          }
+        />
+      </Box>
+    </>
+  );
+};

@@ -49,16 +49,15 @@
     ]
   },
   "dependencies": {
-    "babel-plugin-react-anonymous-display-name": "^0.0.1",
     "conventional-changelog-cli": "^2.0.34",
     "conventional-changelog-conventionalcommits": "^4.3.0",
     "gh-pages": "^2.2.0",
     "lerna": "3.22.1"
   },
   "devDependencies": {
-    "@babel/cli": "7.8.3",
-    "@babel/core": "7.12.9",
-    "@babel/preset-typescript": "^7.12.7",
+    "@babel/cli": "7.13.10",
+    "@babel/core": "7.13.10",
+    "@babel/preset-typescript": "^7.13.0",
     "@emotion/babel-plugin": "^11.1.2",
     "@emotion/react": "^11.1.4",
     "@emotion/styled": "^11.0.0",
@@ -75,7 +74,7 @@
     "babel-plugin-macros": "3.0.1",
     "babel-preset-codecademy": "2.3.0",
     "component-test-setup": "^0.1.1",
-    "core-js": "3.6.5",
+    "core-js": "3.7.0",
     "enzyme": "3.11.0",
     "enzyme-adapter-react-16": "1.15.5",
     "enzyme-to-json": "3.3.5",
@@ -92,6 +91,7 @@
     "prettier": "2.2.1",
     "react": "16.13.1",
     "react-dom": "16.13.1",
+    "react-helmet": "6.1.0",
     "react-test-renderer": "16.13.1",
     "typescript": "4.1.3"
   },

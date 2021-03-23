@@ -1,16 +1,31 @@
-import cx from 'classnames';
+import styled from '@emotion/styled';
 import React, { HTMLAttributes } from 'react';
 
+import { Box } from '../Box';
+import { FormError } from './FormError';
 import { FormGroupDescription } from './FormGroupDescription';
 import { FormGroupLabel } from './FormGroupLabel';
-import styles from './styles/FormGroup.module.scss';
 
 export type FormGroupProps = HTMLAttributes<HTMLDivElement> & {
   label?: string;
+  /**
+   * [The for/id string of a label or labelable form-related element](https://developer.mozilla.org/en-US/docs/Web/API/HTMLLabelElement/htmlFor). The outer FormGroup or FormLabel should have an identical string as the inner FormElement for accessibility purposes.
+   */
   htmlFor?: string;
   className?: string;
   description?: string;
+  showRequired?: boolean;
+  error?: string;
+  disabled?: boolean;
+  labelSize?: 'small' | 'large';
 };
+
+const FormGroupContainer = styled(Box)<FormGroupProps>`
+  position: relative;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
+  width: 100%;
+`;
 
 export const FormGroup: React.FC<FormGroupProps> = ({
   label,
@@ -18,12 +33,21 @@ export const FormGroup: React.FC<FormGroupProps> = ({
   htmlFor,
   children,
   className,
+  showRequired,
+  error,
+  labelSize,
+  disabled,
   ...rest
 }) => {
-  const classNames = cx(styles.FormGroup, className);
-
   const labelComponent = label ? (
-    <FormGroupLabel htmlFor={htmlFor}>{label}</FormGroupLabel>
+    <FormGroupLabel
+      htmlFor={htmlFor}
+      showRequired={showRequired}
+      size={labelSize}
+      disabled={disabled}
+    >
+      {label}
+    </FormGroupLabel>
   ) : null;
 
   const descriptionComponent = description ? (
@@ -33,10 +57,11 @@ export const FormGroup: React.FC<FormGroupProps> = ({
   ) : null;
 
   return (
-    <div {...rest} className={classNames}>
+    <FormGroupContainer {...rest} className={className}>
       {labelComponent}
       {descriptionComponent}
       {children}
-    </div>
+      {error && <FormError aria-live="polite">{error}</FormError>}
+    </FormGroupContainer>
   );
 };

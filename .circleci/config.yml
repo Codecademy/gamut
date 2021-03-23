@@ -1,6 +1,6 @@
 version: 2.1
 orbs:
-  codecov: codecov/codecov@1.0.5
+  codecov: codecov/codecov@1.1.3
   queue: eddiewebb/queue@1.5.0
 
 references:
@@ -9,7 +9,7 @@ references:
       - image: circleci/node:12.16.0
     working_directory: ~/repo
     environment:
-      GITHUB_BOT_USERNAME: codecademydev
+      IGNORE_COMMIT_MESSAGE: 'chore(release): publish'
       NODE_OPTIONS: '--max_old_space_size=8196'
       CIRCLE_TEST_REPORTS: /tmp/test-results
 
@@ -86,8 +86,9 @@ references:
     run:
       name: Skip build from automated commit
       command: |
-        echo "Build started due to commit by ${CIRCLE_USERNAME}, blocking builds started by ${GITHUB_BOT_USERNAME}"
-        if [ $CIRCLE_USERNAME == $GITHUB_BOT_USERNAME ] ; then circleci-agent step halt ; fi
+        export COMMIT_MESSAGE=$(git log --format=oneline -n 1 $CIRCLE_SHA1)
+        echo "Build started due to commit with message $COMMIT_MESSAGE, blocking builds started by ${IGNORE_COMMIT_MESSAGE}"
+        if [[ $COMMIT_MESSAGE == *"${IGNORE_COMMIT_MESSAGE}"* ]] ; then circleci-agent step halt ; fi
 
   skip_if_not_pr: &skip_if_not_pr
     run:
@@ -164,7 +165,6 @@ jobs:
             JEST_JUNIT_ADD_FILE_ATTRIBUTE: 'true'
       - codecov/upload:
           file: /tmp/test-results/jest/*
-          conf: codecov.yml
       - store_test_results:
           path: /tmp/test-results
       - store_artifacts:
@@ -185,21 +185,6 @@ jobs:
       - run:
           name: Lerna Publish
           command: yarn lerna publish --yes --conventional-commits --changelog-preset conventionalcommits --include-merged-tags --create-release=github
-
-  publish_next:
-    <<: *default_env
-    resource_class: large
-    steps:
-      - *skip_on_automated_commit
-      - *add_github_ssh_key
-      - *set_git_user
-      - checkout
-      - *restore_node_modules
-      - *set_npm_token
-      - *build_changed_packages
-      - run:
-          name: Lerna Publish
-          command: yarn lerna publish --canary --preid=next --dist-tag=next
 
   deploy:
     <<: *default_env
@@ -332,18 +317,11 @@ workflows:
           filters:
             branches:
               only: main
-      - publish_next:
-          requires:
-            - checkout_code
-          filters:
-            branches:
-              only: next
       - publish_alpha:
           filters:
             branches:
               ignore:
                 - main
-                - next
                 - gh-pages
           requires:
             - checkout_code
@@ -366,7 +344,6 @@ workflows:
             branches:
               ignore:
                 - main
-                - next
                 - gh-pages
           requires:
             - checkout_code

@@ -11,6 +11,7 @@ type RenderSearch = { desktop: () => ReactNode; mobile: () => ReactNode };
 
 type BaseHeader = {
   action: AppHeaderClickHandler;
+  className?: string;
   renderSearch?: RenderSearch;
 };
 
@@ -19,6 +20,10 @@ export type User = {
   displayName: string;
   isAdmin?: boolean;
   isCustomerSupport?: boolean;
+  isAccountManager?: boolean;
+  isPaused?: boolean;
+  proTrialCheckoutUrl?: string;
+  showProUpgrade?: boolean;
 };
 
 type LoggedInHeader = BaseHeader & {
@@ -30,6 +35,7 @@ type LoggedInHeader = BaseHeader & {
 export type AnonHeaderVariant = 'landing' | 'login' | 'signup';
 
 export type AnonHeader = BaseHeader & {
+  redirectParam?: string;
   type: 'anon';
   variant?: AnonHeaderVariant;
 };

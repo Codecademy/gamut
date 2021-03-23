@@ -1,14 +1,15 @@
 {
   "name": "@codecademy/gamut-styles",
   "description": "Styleguide & Component library for codecademy.com",
-  "version": "8.2.0",
+  "version": "9.1.0",
   "author": "Jake Hiller <jake@codecademy.com>",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "scripts": {
     "build:clean": "rm -rf ./dist",
     "build:compile": "tsc",
-    "build": "yarn build:clean && yarn build:compile",
+    "build:transpile": "babel ./src --out-dir ./dist --copy-files --extensions \".ts,.tsx\"",
+    "build": "yarn build:clean && yarn build:compile && yarn build:transpile",
     "lernaBuildTask": "yarn build"
   },
   "repository": {
@@ -16,15 +17,17 @@
     "url": "git@github.com:Codecademy/client-modules.git"
   },
   "dependencies": {
-    "@codecademy/gamut-system": "^0.5.0"
+    "@codecademy/gamut-system": "^0.5.2"
   },
   "peerDependencies": {
     "@emotion/react": "^11.1.4",
-    "@emotion/styled": "^11.0.0"
+    "@emotion/styled": "^11.0.0",
+    "react-helmet": "^6.1.0"
   },
   "devDependencies": {
     "@emotion/react": "^11.1.4",
-    "@emotion/styled": "^11.0.0"
+    "@emotion/styled": "^11.0.0",
+    "@types/react-helmet": "^6.1.0"
   },
   "license": "MIT",
   "publishConfig": {

@@ -1,6 +1,6 @@
-import * as system from '@codecademy/gamut-styles/src/system';
+import * as system from '@codecademy/gamut-styles/src/props';
 
-const { shouldForwardProp, properties: props, variant, ...groups } = system;
+const { properties: props, variant, ...groups } = system;
 
 export const properties = Object.entries(props).reduce<string[]>(
   (carry, [key, handler]) => {
