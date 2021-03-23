@@ -6,7 +6,7 @@ import { createVariables } from './utilities';
 
 export const VariableProvider = styled.div<{
   variables: Parameters<typeof createVariables>[0];
-}>(({ variables }) => createVariables(variables));
+}>(({ variables }) => createVariables(variables, 'colors'));
 
 export const ColorMode: React.FC<{
   mode: keyof Theme['colorModes']['modes'];
