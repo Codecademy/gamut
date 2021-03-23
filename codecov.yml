@@ -9,6 +9,13 @@ comment:
   layout: "diff, files"
   require_changes: true
 
+coverage:
+  status:
+    project:
+      gamut:  # declare a new status context "tests"
+        target: 100%  # we always want 100% coverage here
+        paths: "packages/gamut/"  # only include coverage in "tests/" folder
+
 ignore:
   - "**/*.js"
   - "**/*.md"
