@@ -7,14 +7,13 @@ import React, {
   useState,
 } from 'react';
 
-import { Box } from '../Box';
+import { Box, FlexBox } from '../Box';
 import {
   conditionalInputStyleProps,
   conditionalStyles,
   formBaseFieldStyles,
   formFieldStyles,
   iconPadding,
-  iconStyles,
 } from './styles/shared';
 
 export type InputProps = InputHTMLAttributes<HTMLInputElement> & {
@@ -45,12 +44,16 @@ export interface InputWrapperProps extends InputProps {
       HTMLInputElement
     >
   >;
+  /**
+   * A custom icon svg from gamut-icons.
+   */
+  icon?: typeof AlertIcon;
 }
 
 export const iFrameWrapper = styled.div<conditionalInputStyleProps>`
   ${formBaseFieldStyles}
   ${conditionalStyles}
-    ${iconPadding}
+  ${iconPadding}
   text-indent: 0;
 `;
 
@@ -61,34 +64,70 @@ const InputElement = styled.input<StyledInputProps>`
   text-indent: 0;
 `;
 
-const StyledAlertIcon = styled(AlertIcon)(iconStyles);
+const StyledFlexBox = styled(FlexBox)`
+  align-items: center !important;
+`;
 
-const StyledCheckCircledIcon = styled(CheckCircledIcon)(iconStyles);
+const inputStates = {
+  error: {
+    color: 'red',
+    icon: AlertIcon,
+  },
+  valid: {
+    color: 'green',
+    icon: CheckCircledIcon,
+  },
+  clean: {
+    color: 'gray-600',
+    icon: undefined,
+  },
+} as const;
+
+const getInputState = (error: boolean, valid: boolean) => {
+  if (error) return 'error';
+  if (valid) return 'valid';
+  return 'clean';
+};
 
 export const Input = forwardRef<HTMLInputElement, InputWrapperProps>(
-  ({ error, className, id, valid, as: As, ...rest }, ref) => {
+  ({ error, className, id, valid, as: As, icon: Icon, ...rest }, ref) => {
     const [activated, setActivated] = useState(false);
+
+    const { color, icon } = inputStates[
+      getInputState(Boolean(error), Boolean(valid))
+    ];
 
     const changeHandler = (event: ChangeEvent<HTMLInputElement>) => {
       rest?.onChange?.(event);
       setActivated(true);
     };
+
     const AsComponent = As || InputElement;
+    const ShownIcon = Icon || icon;
 
     return (
-      <Box position="relative">
+      <Box position="relative" textColor={color}>
         <AsComponent
           {...rest}
           id={id || rest.htmlFor}
           ref={ref}
           error={error}
           activated={activated}
-          icon={error || valid}
+          icon={error || valid || !!Icon}
           className={className}
           onChange={(event) => changeHandler(event)}
         />
-        {error && <StyledAlertIcon color="red" />}
-        {valid && <StyledCheckCircledIcon color="green" />}
+        {!!ShownIcon && (
+          <StyledFlexBox
+            paddingRight={Icon ? 12 : 16}
+            position="absolute"
+            right="0"
+            top="0"
+            bottom="0"
+          >
+            <ShownIcon size={Icon ? 24 : 16} />
+          </StyledFlexBox>
+        )}
       </Box>
     );
   }

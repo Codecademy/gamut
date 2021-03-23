@@ -1,6 +1,7 @@
-import * as tokens from '../variables';
+import { createThemeVariables } from './utilities';
+import * as tokens from './variables';
 
-export const theme = {
+export const baseTheme = {
   boxShadows: tokens.boxShadows,
   breakpoints: tokens.mediaQueries,
   fontSize: tokens.fontSize,
@@ -11,3 +12,8 @@ export const theme = {
   spacing: tokens.spacing,
   elements: tokens.elements,
 } as const;
+
+export const {
+  theme,
+  cssVariables: themeCssVariables,
+} = createThemeVariables(baseTheme, ['elements']);

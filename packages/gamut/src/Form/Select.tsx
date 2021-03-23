@@ -2,7 +2,8 @@ import {
   ArrowChevronDownIcon,
   MiniChevronDownIcon,
 } from '@codecademy/gamut-icons';
-import { properties, pxRem, variant } from '@codecademy/gamut-styles';
+import { variant } from '@codecademy/gamut-styles';
+import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { each, isArray, isObject } from 'lodash';
 import React, {
@@ -13,12 +14,8 @@ import React, {
   useState,
 } from 'react';
 
-import { Box } from '../Box';
-import {
-  conditionalStyles,
-  formFieldStyles,
-  iconStyles,
-} from './styles/shared';
+import { Box, FlexBox } from '../Box';
+import { conditionalStyles, formFieldStyles } from './styles/shared';
 
 export type SelectWrapperProps = SelectHTMLAttributes<HTMLSelectElement> & {
   error?: boolean;
@@ -47,26 +44,6 @@ const selectSizeVariants = variant({
   },
 });
 
-const SelectWrapper = styled(Box)`
-  position: relative;
-  width: 100%;
-  font-weight: normal;
-  min-width: 7rem;
-`;
-
-const StyledDownIcon = styled(ArrowChevronDownIcon)(
-  properties.textColor,
-  iconStyles
-);
-
-const StyledMiniDownIcon = styled(MiniChevronDownIcon)`
-  ${iconStyles}
-  right: .75rem;
-  height: 0.75rem;
-  width: 0.75rem;
-  top: calc(50% - ${pxRem(6)});
-`;
-
 const SelectBase = styled.select<SelectProps>`
   ${formFieldStyles}
   ${conditionalStyles}
@@ -77,6 +54,13 @@ const SelectBase = styled.select<SelectProps>`
   -webkit-appearance: none;
   appearance: none;
 `;
+
+const selectIconStyles = css`
+  pointer-events: none;
+`;
+
+const SelectIcon = styled(ArrowChevronDownIcon)(selectIconStyles);
+const MiniSelectIcon = styled(MiniChevronDownIcon)(selectIconStyles);
 
 export const Select = forwardRef<HTMLSelectElement, SelectWrapperProps>(
   (
@@ -113,8 +97,27 @@ export const Select = forwardRef<HTMLSelectElement, SelectWrapperProps>(
     }
 
     return (
-      <SelectWrapper className={className} textColor={error ? 'red' : 'navy'}>
-        {sizeVariant === 'small' ? <StyledMiniDownIcon /> : <StyledDownIcon />}
+      <Box
+        position="relative"
+        width="100%"
+        textColor={error ? 'red' : 'navy'}
+        minWidth="7rem"
+        className={className}
+      >
+        <FlexBox
+          paddingRight={12}
+          alignItems="center"
+          position="absolute"
+          right="0"
+          top="0"
+          bottom="0"
+        >
+          {sizeVariant === 'small' ? (
+            <MiniSelectIcon size={12} />
+          ) : (
+            <SelectIcon size={16} />
+          )}
+        </FlexBox>
         <SelectBase
           {...rest}
           defaultValue={defaultValue || ''}
@@ -127,7 +130,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectWrapperProps>(
         >
           {selectOptions}
         </SelectBase>
-      </SelectWrapper>
+      </Box>
     );
   }
 );
