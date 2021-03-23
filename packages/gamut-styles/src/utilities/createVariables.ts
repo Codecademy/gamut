@@ -2,14 +2,15 @@ import { CSSObject } from '@emotion/react';
 import { hasIn, merge } from 'lodash';
 
 export const createVariables = (
-  tokens: Record<string, string | number | CSSObject>
+  tokens: Record<string, string | number | CSSObject>,
+  prefix: string | symbol | number
 ) => {
   const cssVariables: CSSObject = {};
 
   for (const variable in tokens) {
     if (!hasIn(tokens, variable)) continue;
 
-    const varName = `--${variable}`;
+    const varName = `--${String(prefix)}-${variable}`;
     const valuesToRegister = tokens[variable];
 
     // For all variables in the theme scale add theme to the resulting CSS Object
