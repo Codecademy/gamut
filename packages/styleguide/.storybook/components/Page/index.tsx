@@ -6,6 +6,11 @@ import { styled } from '@storybook/theming';
 import { Parameters } from '@storybook/addons';
 import { useKind } from '../TableOfContents/utils';
 import { Box, SectionLink } from '../TableOfContents/elements';
+import { AssetProvider } from '@codecademy/gamut-styles/src/AssetProvider';
+import { GamutProvider } from '@codecademy/gamut-styles/src/GamutProvider';
+import { createEmotionCache } from '@codecademy/gamut-styles/src/cache';
+
+const emotionCache = createEmotionCache({ speedy: false });
 
 export const Link = styled.a`
   display: inline-flex;
@@ -97,7 +102,8 @@ export const Page: React.FC = ({ children }) => {
   const figmaLink = `https://www.figma.com/file/${figmaId}`;
 
   return (
-    <>
+    <GamutProvider cache={emotionCache}>
+      <AssetProvider />
       <Header marginBottom="1rem">
         <BreadCrumbs path={path} />
         <HeaderRow>
@@ -144,6 +150,6 @@ export const Page: React.FC = ({ children }) => {
       </Header>
       <Description>{subtitle}</Description>
       {children}
-    </>
+    </GamutProvider>
   );
 };
