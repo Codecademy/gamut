@@ -46,7 +46,7 @@ export const BackgroundExample: React.FC<ComponentProps<typeof Background>> = ({
     <Background {...rest}>
       <Box padding={24}>
         <Text fontSize={26} fontWeight="title" marginBottom={16}>
-          Hyper
+          {rest.color}
         </Text>
         <Text as="p" marginBottom={16}>
           Lorem ipsum dolor sit amet,{' '}
