@@ -21,11 +21,13 @@
   },
   "peerDependencies": {
     "@emotion/react": "^11.1.4",
-    "@emotion/styled": "^11.0.0"
+    "@emotion/styled": "^11.0.0",
+    "react-helmet": "^6.1.0"
   },
   "devDependencies": {
     "@emotion/react": "^11.1.4",
-    "@emotion/styled": "^11.0.0"
+    "@emotion/styled": "^11.0.0",
+    "@types/react-helmet": "^6.1.0"
   },
   "license": "MIT",
   "publishConfig": {

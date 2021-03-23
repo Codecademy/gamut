@@ -14,16 +14,6 @@ When considering whether to add a component to Gamut, answer these questions:
 
 ## Required CSS
 
-### box-sizing
-
-Gamut components expect `box-sizing: border-box` to be applied to all elements on the page globally. If it isn't there already, add something like this to your application's global stylesheet:
-
-```css
-*, *::before, *::after {
-  box-sizing: border-box;
-}
-```
-
 ### `:focus-visible`
 
 Components are written using the [`:focus-visible`](https://drafts.csswg.org/selectors-4/#the-focus-visible-pseudo) selector, which is not supported in all major browsers.
