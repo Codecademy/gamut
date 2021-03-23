@@ -1,0 +1,81 @@
+import { Dialog } from '@codecademy/gamut/src';
+import title from '@codecademy/macros/lib/title.macro';
+import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
+
+<Meta
+  title={title}
+  component={Dialog}
+  parameters={{
+    subtitle: `Constrained Dialog Dialog`,
+    status: 'stable',
+    source: 'gamut',
+    figmaId: 'lIQbbBHl6v80CevfWogVhr',
+    docs: {
+      inlineStories: false,
+    },
+  }}
+  args={{
+    isOpen: true,
+    title: 'Depeche Modal',
+    children: 'All I ever wanted, all I ever needed is here in my',
+    confirmCta: { children: 'Arms!' },
+    cancelCta: { children: 'Heart?' },
+  }}
+/>
+
+## Use cases
+
+- Use regular Dialogs to have users accept a specific state of the system or force a user to see something.
+- Use warning Dialogs to warn the user of the consequences of the action they may take
+
+## Key principles
+
+- Dialogs appear unprompted and require confirmation before the user can continue.
+- Use the modal component sparingly. This is the most dispruptive tool in our arsenal. We should only have a small handful of these in our system at any given time.
+
+<Canvas>
+  <Story name="Dialog" height="600px">
+    {(args) => {
+      return <Dialog {...args} />;
+    }}
+  </Story>
+</Canvas>
+
+<Props story="Dialog" />
+
+## Usage Guidelines
+
+- Dialogs have a min-width of 400px
+- Dialog height changes depending on the body-text length.
+- Dialog has light and dark theme variants and each mode is colored differently.
+- Warning Dialogs should use a red CTA button (light mode: white text on #E91C11 background, dark mode: navy text on #E85D7F background)
+- Dialogs use pattern at 80% opacity to give component depth.
+- Dialogs should always be displayed over an overlay. The overlay in light mode should be white at 95% opacity, the overlay in dark mode should be black at 75% opacity.
+
+## Location
+
+- Dialogs should be centered inside of the window.
+
+## Color Modes
+
+We currently support 2 color modes for Dialog `dark` and `light`.
+
+### Light
+
+<Canvas>
+  <Story name="Light" height="600px">
+    {(args) => {
+      return <Dialog {...args} />;
+    }}
+  </Story>
+</Canvas>
+
+### Dark
+
+<Canvas>
+  <Story name="Dark" height="600px" args={{ mode: 'dark' }}>
+    {(args) => {
+      return <Dialog {...args} />;
+    }}
+  </Story>
+</Canvas>

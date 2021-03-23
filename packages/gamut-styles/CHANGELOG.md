@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@9.0.1...@codecademy/gamut-styles@9.1.0) (2021-03-23)
+
+
+### Features
+
+* **GamutProvider:** Adds single provider for Theme + Cache + Globals + Assets [WEB-1352] [GM-173] ([9eac700](https://github.com/Codecademy/client-modules/commit/9eac7009b4d773621a0993cc125d6878b76977ce))
+
+
+
+### [9.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@9.0.0...@codecademy/gamut-styles@9.0.1) (2021-03-19)
+
+**Note:** Version bump only for package @codecademy/gamut-styles
+
+
+
+
+
 ## [9.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@8.3.2...@codecademy/gamut-styles@9.0.0) (2021-03-18)
 
 
