@@ -13,7 +13,7 @@ coverage:
   status:
     project:
       gamut:
-        target: 100%
+        target: 95%
         paths: "packages/gamut/"
 
 ignore:
