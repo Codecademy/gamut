@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [33.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@33.0.2...@codecademy/styleguide@33.1.0) (2021-03-23)
+
+
+### Features
+
+* **Dialog:** Add new Dialog Modal component [GM-18] ([349faa9](https://github.com/Codecademy/client-modules/commit/349faa911f61fbf08aa14234d8dfc7ae50135fd7))
+
+
+
 ### [33.0.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@33.0.1...@codecademy/styleguide@33.0.2) (2021-03-22)
 
 **Note:** Version bump only for package @codecademy/styleguide
