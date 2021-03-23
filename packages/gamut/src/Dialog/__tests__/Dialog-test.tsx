@@ -41,7 +41,7 @@ describe('Modal', () => {
     expect(view.queryByRole('dialog')).toBe(null);
   });
 
-  it('renders a close button', () => {
+  it('requests closing the dialog when the close button is clicked', () => {
     const { view } = renderView();
 
     fireEvent.click(view.getByLabelText('Close Dialog'));
