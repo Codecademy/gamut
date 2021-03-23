@@ -12,9 +12,9 @@ comment:
 coverage:
   status:
     project:
-      gamut:  # declare a new status context "tests"
-        target: 100%  # we always want 100% coverage here
-        paths: "packages/gamut/"  # only include coverage in "tests/" folder
+      gamut:
+        target: 100%
+        paths: "packages/gamut/"
 
 ignore:
   - "**/*.js"
