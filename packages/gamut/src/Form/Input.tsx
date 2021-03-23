@@ -64,6 +64,10 @@ const InputElement = styled.input<StyledInputProps>`
   text-indent: 0;
 `;
 
+const StyledFlexBox = styled(FlexBox)`
+  align-items: center !important;
+`;
+
 const inputStates = {
   error: {
     color: 'red',
@@ -114,16 +118,15 @@ export const Input = forwardRef<HTMLInputElement, InputWrapperProps>(
           onChange={(event) => changeHandler(event)}
         />
         {!!ShownIcon && (
-          <FlexBox
-            paddingRight={error || valid ? 16 : 12}
-            alignItems="center"
+          <StyledFlexBox
+            paddingRight={Icon ? 12 : 16}
             position="absolute"
             right="0"
             top="0"
             bottom="0"
           >
-            <ShownIcon size={error || valid ? 16 : 24} />
-          </FlexBox>
+            <ShownIcon size={Icon ? 24 : 16} />
+          </StyledFlexBox>
         )}
       </Box>
     );
