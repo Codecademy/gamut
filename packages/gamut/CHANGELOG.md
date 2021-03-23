@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [29.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@29.2.0...@codecademy/gamut@29.3.0) (2021-03-23)
+
+
+### Features
+
+* **GamutProvider:** Adds single provider for Theme + Cache + Globals + Assets [WEB-1352] [GM-173] ([9eac700](https://github.com/Codecademy/client-modules/commit/9eac7009b4d773621a0993cc125d6878b76977ce))
+
+
+
 ## [29.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@29.1.0...@codecademy/gamut@29.2.0) (2021-03-23)
 
 
