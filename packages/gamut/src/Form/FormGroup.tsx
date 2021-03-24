@@ -2,6 +2,7 @@ import styled from '@emotion/styled';
 import React, { HTMLAttributes } from 'react';
 
 import { Box } from '../Box';
+import { ToolTipProps } from '../ToolTip';
 import { FormError } from './FormError';
 import { FormGroupDescription } from './FormGroupDescription';
 import { FormGroupLabel } from './FormGroupLabel';
@@ -18,6 +19,7 @@ export type FormGroupProps = HTMLAttributes<HTMLDivElement> & {
   error?: string;
   disabled?: boolean;
   labelSize?: 'small' | 'large';
+  tooltip?: ToolTipProps;
 };
 
 const FormGroupContainer = styled(Box)<FormGroupProps>`
@@ -28,6 +30,7 @@ const FormGroupContainer = styled(Box)<FormGroupProps>`
 `;
 
 export const FormGroup: React.FC<FormGroupProps> = ({
+  tooltip,
   label,
   description,
   htmlFor,
@@ -45,6 +48,7 @@ export const FormGroup: React.FC<FormGroupProps> = ({
       showRequired={showRequired}
       size={labelSize}
       disabled={disabled}
+      tooltip={tooltip}
     >
       {label}
     </FormGroupLabel>
