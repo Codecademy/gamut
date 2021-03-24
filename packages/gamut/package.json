@@ -37,6 +37,7 @@
     "react-focus-on": "^3.5.1",
     "react-hook-form": "6.0.6",
     "react-player": "^2.3.1",
+    "react-select": "^4.3.0",
     "react-truncate-markup": "^5.1.0",
     "react-use": "^15.3.8",
     "sanitize-markdown": "^2.6.6"
