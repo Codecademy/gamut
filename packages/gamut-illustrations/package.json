@@ -4,8 +4,8 @@
     "url": "https://github.com/Codecademy/client-modules/issues"
   },
   "dependencies": {
-    "@codecademy/gamut-styles": "^8.3.2",
-    "@codecademy/gamut-system": "^0.5.1",
+    "@codecademy/gamut-styles": "^9.1.0",
+    "@codecademy/gamut-system": "^0.5.2",
     "classnames": "^2.2.5"
   },
   "description": "Illustrations library for Codecademy",
@@ -29,7 +29,7 @@
   },
   "scripts": {
     "verify": "tsc --noEmit",
-    "build:compile": "babel ./src --out-dir ./dist --copy-files --copy-ignored --extensions \".ts,.tsx\"",
+    "build:compile": "babel ./src --out-dir ./dist --copy-files --extensions \".ts,.tsx\"",
     "build:clean": "rm -rf dist",
     "build:types": "tsc --emitDeclarationOnly",
     "build": "yarn build:clean && yarn build:compile && yarn build:types",
@@ -39,5 +39,5 @@
     "dist/**/[A-Z]**/[A-Z]*.js",
     "dist/**/[A-Z]**/index.js"
   ],
-  "version": "0.9.0"
+  "version": "0.9.3"
 }

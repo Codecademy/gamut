@@ -499,7 +499,7 @@ field's value in a parent component before onSubmit gets triggered.
 
 ## With tooltip
 
-A field can now include a tooltip
+A field can include [our existing `ToolTip`](/?path=/docs/atoms-tooltip--tool-tip). The position of the tooltip on each field is always set to the bottom-right. You also have the option to render each tooltip in dark or light mode.
 
 <Canvas>
   <Story name="Tooltip">
@@ -508,54 +508,49 @@ A field can now include a tooltip
         <GridForm
           fields={[
             {
-              toolTip: {
-                id: 'tooltip-input',
-                position: 'bottom-left',
+              tooltip: {
+                id: 'text-tooltip',
                 children:
                   'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
               },
               label: 'Tool input',
-              name: 'tooltip-input',
+              name: 'input-field',
               size: 6,
               type: 'text',
             },
             {
-              toolTip: {
-                id: 'tooltip-select',
-                theme: 'dark',
-                position: 'bottom-right',
+              tooltip: {
+                id: 'select-tooltip',
+                mode: 'dark',
                 children: (
                   <Markdown text="My grandmother used to tell me stories..." />
                 ),
               },
               label: 'Select with tooltip',
-              name: 'tooltip-select',
               options: ['', 'Water', 'Earth', 'Fire', 'Air', 'Boomerang'],
               size: 3,
               type: 'select',
               validation: {
                 required: 'Please select an option',
               },
+              name: 'select-field',
             },
             {
-              toolTip: {
-                id: 'tooltip-textarea',
-                position: 'bottom-left',
+              tooltip: {
+                id: 'textarea-tooltip',
                 children:
                   'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
               },
               label: 'Write a paragraph about tooltips',
-              name: 'textarea-input',
-              size: 12,
+              name: 'textarea-field',
+              size: 6,
               type: 'textarea',
               validation: {
                 required: 'Please write something about tooltips!',
               },
             },
             {
-              toolTip: {
-                id: 'tooltip-radio-group',
-                position: 'bottom-left',
+              tooltip: {
                 children:
                   'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
               },
@@ -578,9 +573,8 @@ A field can now include a tooltip
               },
             },
             {
-              toolTip: {
-                id: 'tooltip-checkbox',
-                position: 'bottom-left',
+              tooltip: {
+                id: 'checkbox-tooltip',
                 children:
                   'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
               },
