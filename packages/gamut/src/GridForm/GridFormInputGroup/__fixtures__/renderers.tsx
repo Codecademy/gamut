@@ -3,7 +3,6 @@ import { ThemeProvider } from '@emotion/react';
 import { mount } from 'enzyme';
 import React from 'react';
 
-import { ToolTipProps } from '../../../ToolTip';
 import {
   stubCheckboxField,
   stubFileField,
@@ -26,7 +25,6 @@ import { GridFormRadioGroupInput } from '../GridFormRadioGroupInput';
 import { GridFormSelectInput } from '../GridFormSelectInput';
 import { GridFormTextArea } from '../GridFormTextArea';
 import { GridFormTextInput } from '../GridFormTextInput';
-import { GridFormToolTip } from '../GridFromToolTip';
 
 const mountWithTheme = (component: React.ReactNode) => {
   return mount(<ThemeProvider theme={theme}>{component}</ThemeProvider>);
@@ -105,10 +103,6 @@ export const renderGridFormCheckboxInput = (
   );
 };
 
-export const renderGridFormToolTip = (extraProps: ToolTipProps) => {
-  return mountWithTheme(<GridFormToolTip {...extraProps} />);
-};
-
 export const getComponent = (componentName: string, extraProps: any) => {
   switch (componentName) {
     case 'GridFormTextInput':
@@ -123,8 +117,6 @@ export const getComponent = (componentName: string, extraProps: any) => {
       return renderGridFormFileInput(extraProps);
     case 'GridFormCheckboxInput':
       return renderGridFormCheckboxInput(extraProps);
-    case 'GridFormToolTip':
-      return renderGridFormToolTip(extraProps);
     default:
       throw new Error(`Unknown component name: ${componentName}`);
   }
