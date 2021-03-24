@@ -499,7 +499,7 @@ field's value in a parent component before onSubmit gets triggered.
 
 ## With tooltip
 
-A field can include [our existing `ToolTip`](/?path=/docs/atoms-tooltip--tool-tip). The position of the tooltip on each field is always set to the bottom-right. You also have the option to render each tooltip in dark or light mode. The id of the tooltip is automatically generated to be the id or name of the field with `-tooltip`.
+A field can include [our existing `ToolTip`](/?path=/docs/atoms-tooltip--tool-tip). The position of the tooltip on each field is always set to the bottom-right. You also have the option to render each tooltip in dark or light mode.
 
 <Canvas>
   <Story name="Tooltip">
@@ -509,6 +509,7 @@ A field can include [our existing `ToolTip`](/?path=/docs/atoms-tooltip--tool-ti
           fields={[
             {
               tooltip: {
+                id: 'text-tooltip',
                 children:
                   'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
               },
@@ -519,6 +520,7 @@ A field can include [our existing `ToolTip`](/?path=/docs/atoms-tooltip--tool-ti
             },
             {
               tooltip: {
+                id: 'select-tooltip',
                 mode: 'dark',
                 children: (
                   <Markdown text="My grandmother used to tell me stories..." />
@@ -535,6 +537,7 @@ A field can include [our existing `ToolTip`](/?path=/docs/atoms-tooltip--tool-ti
             },
             {
               tooltip: {
+                id: 'textarea-tooltip',
                 children:
                   'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
               },
@@ -571,6 +574,7 @@ A field can include [our existing `ToolTip`](/?path=/docs/atoms-tooltip--tool-ti
             },
             {
               tooltip: {
+                id: 'checkbox-tooltip',
                 children:
                   'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
               },
