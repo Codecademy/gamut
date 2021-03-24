@@ -3,6 +3,49 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [33.3.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@33.3.0...@codecademy/styleguide@33.3.1) (2021-03-24)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [33.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@33.2.1...@codecademy/styleguide@33.3.0) (2021-03-23)
+
+
+### Features
+
+* **Input:** Add custom gamut-icons to Input components ([cfb3fbe](https://github.com/Codecademy/client-modules/commit/cfb3fbe390a88f7e2e513bc76ef90a54051de665))
+
+
+
+### [33.2.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@33.2.0...@codecademy/styleguide@33.2.1) (2021-03-23)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [33.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@33.1.0...@codecademy/styleguide@33.2.0) (2021-03-23)
+
+
+### Features
+
+* **GamutProvider:** Adds single provider for Theme + Cache + Globals + Assets [WEB-1352] [GM-173] ([9eac700](https://github.com/Codecademy/client-modules/commit/9eac7009b4d773621a0993cc125d6878b76977ce))
+
+
+
+## [33.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@33.0.2...@codecademy/styleguide@33.1.0) (2021-03-23)
+
+
+### Features
+
+* **Dialog:** Add new Dialog Modal component [GM-18] ([349faa9](https://github.com/Codecademy/client-modules/commit/349faa911f61fbf08aa14234d8dfc7ae50135fd7))
+
+
+
 ### [33.0.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@33.0.1...@codecademy/styleguide@33.0.2) (2021-03-22)
 
 **Note:** Version bump only for package @codecademy/styleguide

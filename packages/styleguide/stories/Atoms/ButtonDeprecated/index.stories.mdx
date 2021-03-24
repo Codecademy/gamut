@@ -2,12 +2,7 @@ import { ButtonDeprecated, ButtonDeprecatedBase } from '@codecademy/gamut/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
 
-import {
-  brandThemeKeys,
-  deprecatedThemeKeys,
-  newThemeKeys,
-  statusThemeKeys,
-} from './helpers';
+import { brandThemeKeys, deprecatedThemeKeys, newThemeKeys } from './helpers';
 
 <Meta
   title={title}
@@ -65,22 +60,6 @@ There are several theme sets you can use with `ButtonDeprecated`
     {(args) =>
       brandThemeKeys.map((theme) => (
         <ButtonDeprecated key={theme} {...args} theme={theme}>
-          {theme}
-        </ButtonDeprecated>
-      ))
-    }
-  </Story>
-</Canvas>
-
-### Status
-
-We also have feedback specific button themes best paired with `Alert`
-
-<Canvas>
-  <Story name="Status Buttons" args={{ style: { margin: '1rem' } }}>
-    {(args) =>
-      statusThemeKeys.map((theme) => (
-        <ButtonDeprecated key={`${theme}`} {...args} theme={theme}>
           {theme}
         </ButtonDeprecated>
       ))
