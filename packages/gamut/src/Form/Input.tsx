@@ -53,7 +53,7 @@ export interface InputWrapperProps extends InputProps {
   icon?: typeof AlertIcon;
 }
 
-//These styles will be eventually moved into use with the Input higher order component: see GM-188.
+// These styles will be eventually moved into use with the Input higher order component: see GM-188.
 export const reactRecurlyFormFieldStyles = ({
   error,
   activated,
@@ -66,7 +66,7 @@ export const reactRecurlyFormFieldStyles = ({
   `;
 };
 
-//ReactRecurly demands separate styles for focus.
+// ReactRecurly demands separate styles for focus.
 export const reactRecurlyFormFieldBaseFocusStyles = css`
   ${formFieldBaseFocusStyles}
 `;
