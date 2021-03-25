@@ -4,6 +4,7 @@ import { theme } from './theme';
 
 export * from './GamutProvider';
 export * from './ColorMode';
+export * from './Background';
 
 export * from './cache';
 export * from './variables';

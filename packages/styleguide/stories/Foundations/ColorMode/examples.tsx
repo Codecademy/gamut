@@ -1,19 +1,19 @@
 /* eslint-disable local-rules/gamut-import-paths */
-import { Anchor, Background, Box } from '@codecademy/gamut/src';
+import { Anchor, Box } from '@codecademy/gamut/src';
 import { Text } from '@codecademy/gamut-labs/src';
-import { ColorMode } from '@codecademy/gamut-styles/src';
+import { Background, ColorMode } from '@codecademy/gamut-styles/src';
 import { BooleanControl } from '@storybook/components';
 import React, { ComponentProps, useState } from 'react';
 
 export const ColorModeExample = () => {
-  const [mode, setMode] = useState(false);
+  const [isDark, setIsDark] = useState(false);
   return (
     <Box marginY={16} marginBottom={32}>
       <Box fontWeight="title" marginBottom={8}>
         Use Dark Mode{' '}
-        <BooleanControl name="color-mode" value={mode} onChange={setMode} />
+        <BooleanControl name="color-mode" value={isDark} onChange={setIsDark} />
       </Box>
-      <ColorMode mode={mode ? 'dark' : 'light'}>
+      <ColorMode mode={isDark ? 'dark' : 'light'}>
         <Box
           backgroundColor="background"
           textColor="text"
@@ -23,7 +23,7 @@ export const ColorModeExample = () => {
           borderWidth="1px"
         >
           <Text as="h1" fontSize={26} fontWeight="title" marginBottom={16}>
-            Light Mode
+            {isDark ? 'Dark' : 'Light'} Mode
           </Text>
           <Text as="p" marginBottom={16}>
             Lorem ipsum dolor sit amet,{' '}

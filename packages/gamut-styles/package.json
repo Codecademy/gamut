@@ -28,7 +28,9 @@
   "devDependencies": {
     "@emotion/react": "^11.1.5",
     "@emotion/styled": "^11.1.5",
-    "@types/react-helmet": "^6.1.0"
+    "@emotion/jest": "11.2.1",
+    "@types/react-helmet": "^6.1.0",
+    "component-test-setup": "^0.1.1"
   },
   "license": "MIT",
   "publishConfig": {
