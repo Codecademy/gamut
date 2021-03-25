@@ -62,7 +62,7 @@ const placementVariants = variant({
   variants: {
     inline: {
       padding: 4,
-      paddingY: 12,
+      paddingY: 8,
     },
     floating: {
       padding: 4,
