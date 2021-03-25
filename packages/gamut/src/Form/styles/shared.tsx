@@ -117,10 +117,8 @@ export const formBaseFieldStyles = css`
 
 // these are split for now because ReactRecurly demands separate styles for focus.
 export const formFieldFocusStyles = css`
-  &:focus {
-    border-color: ${colorStates.hover.borderColor};
-    box-shadow: inset 0 0 0 1px ${colorStates.hover.borderColor};
-  }
+  border-color: ${colorStates.hover.borderColor};
+  box-shadow: inset 0 0 0 1px ${colorStates.hover.borderColor};
 `;
 
 // ReactRecurly needs to apply padding in a very particular way
@@ -130,6 +128,8 @@ export const formFieldPaddingStyles = css`
 
 export const formFieldStyles = css`
   ${formBaseFieldStyles}
-  ${formFieldFocusStyles}
+  &:focus {
+    ${formFieldFocusStyles}
+  }
   ${formFieldPaddingStyles}
 `;
