@@ -1,7 +1,7 @@
 {
   "name": "@codecademy/markdown-overrides",
   "description": "Markdown overrides React Components for Codecademy",
-  "version": "0.5.12",
+  "version": "0.5.13",
   "author": "Codecademy Engineering",
   "main": "dist/index.js",
   "module": "dist/index.js",
