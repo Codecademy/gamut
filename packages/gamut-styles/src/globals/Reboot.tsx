@@ -63,6 +63,7 @@ const rebootStyles = css`
     font-family: ${theme.fontFamily.base};
     font-weight: ${theme.fontWeight.base};
     line-height: ${theme.lineHeight.base};
+    color: ${theme.colors.text};
     text-align: left;
     background-color: ${theme.colors.background};
   }

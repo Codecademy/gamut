@@ -16,7 +16,6 @@ export const ColorModeExample = () => {
       <ColorMode mode={isDark ? 'dark' : 'light'}>
         <Box
           backgroundColor="background"
-          textColor="text"
           padding={24}
           borderColor="text"
           borderStyle="solid"
