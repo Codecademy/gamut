@@ -20,6 +20,9 @@
   "devDependencies": {
     "@codecademy/gamut-tests": "^2.3.0"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build:clean": "rm -rf dist",
     "build:compile": "babel ./src --out-dir ./dist --copy-files --extensions \".ts,.tsx\"",
