@@ -40,6 +40,7 @@ export interface StyledInputProps extends InputProps {
   activated?: boolean;
   icon?: boolean;
 }
+
 export interface InputWrapperProps extends InputProps {
   as?: StyledComponent<
     StyledInputProps,
@@ -97,6 +98,8 @@ const getInputState = (error: boolean, valid: boolean) => {
   return 'clean';
 };
 
+//to do: properly type onFocus + onChange events
+
 export const Input = forwardRef<HTMLInputElement, InputWrapperProps>(
   ({ error, className, id, valid, as: As, icon: Icon, ...rest }, ref) => {
     const [activated, setActivated] = useState(false);
@@ -106,12 +109,12 @@ export const Input = forwardRef<HTMLInputElement, InputWrapperProps>(
       getInputState(Boolean(error), Boolean(valid))
     ];
 
-    const focusHandler = (event: FocusEvent<HTMLInputElement>) => {
+    const focusHandler = (event: FocusEvent<any>) => {
       rest?.onFocus?.(event);
       setHasBeenFocused(true);
     };
 
-    const changeHandler = (event: ChangeEvent<HTMLInputElement>) => {
+    const changeHandler = (event: ChangeEvent<any>) => {
       rest?.onChange?.(event);
       hasBeenFocused ? setActivated(true) : null;
     };
