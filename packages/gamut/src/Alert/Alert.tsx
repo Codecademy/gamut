@@ -61,11 +61,11 @@ const placementVariants = variant({
   prop: 'placement',
   variants: {
     inline: {
-      padding: 8,
+      padding: 4,
       paddingY: 12,
     },
     floating: {
-      padding: 8,
+      padding: 4,
       borderColor: 'navy',
     },
   },
