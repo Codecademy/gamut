@@ -122,7 +122,7 @@ export const formFieldFocusStyles = css`
 `;
 
 export const reactRecurlyformFieldFocusStyles = css`
-  outline: solid ${colorStates.hover.borderColor} 1px;
+  border: solid ${colorStates.hover.borderColor} 1px;
   box-shadow: inset 0 0 0 1px ${colorStates.hover.borderColor};
 `;
 
