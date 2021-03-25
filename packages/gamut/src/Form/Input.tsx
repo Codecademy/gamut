@@ -3,6 +3,7 @@ import { css } from '@emotion/react';
 import styled, { StyledComponent } from '@emotion/styled';
 import React, {
   ChangeEvent,
+  FocusEvent,
   forwardRef,
   InputHTMLAttributes,
   useState,
