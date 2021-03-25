@@ -14,7 +14,7 @@
     "react-dom": ">=16.8.1"
   },
   "dependencies": {
-    "emojisplosion": "^2.5.0",
+    "emojisplosion": "^2.6.0",
     "konami-code-js": "^0.8.1"
   },
   "devDependencies": {

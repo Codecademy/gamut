@@ -7202,10 +7202,10 @@ emojis-list@^3.0.0:
   resolved "https://registry.npmjs.org/emojis-list/-/emojis-list-3.0.0.tgz#5570662046ad29e2e916e71aae260abdff4f6a78"
   integrity sha512-/kyM18EfinwXZbno9FyUGeFh87KC8HRQBQGildHZbEuRyWFOmv1U10o9BBp8XVZDVNNuQKyIGIu5ZYAAXJ0V2Q==
 
-emojisplosion@^2.5.0:
-  version "2.5.0"
-  resolved "https://registry.npmjs.org/emojisplosion/-/emojisplosion-2.5.0.tgz#74ffcd89da7b2a005b84ddf7007ebae16ff80f73"
-  integrity sha512-pjS8dFMJK0lOAPGNBPa/XdovYOrBQwmXBeYAmqN81c/b1d8g/KsRyKXsX9/uUc4SY4DOarUtOmCHzDAUeBB3iw==
+emojisplosion@^2.6.0:
+  version "2.6.0"
+  resolved "https://registry.npmjs.org/emojisplosion/-/emojisplosion-2.6.0.tgz#4355db92a0209f2b117742fde4bc35113397edd5"
+  integrity sha512-EDz3ru9LCtfgt5nY8u9v6GNYzRKItzLNkwFCUEibzGhgizv7h4bLYH7NkoeFRiGe8IkPdxt+vXGqYNfVjg8kpA==
 
 emotion-theming@^10.0.19:
   version "10.0.27"
