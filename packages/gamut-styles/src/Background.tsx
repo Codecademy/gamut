@@ -1,7 +1,6 @@
 import { useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
-import { omit } from 'lodash';
-import { meetsContrastGuidelines } from 'polished';
+import { getContrast, meetsContrastGuidelines } from 'polished';
 import React, { useMemo } from 'react';
 
 import { ColorMode } from './ColorMode';
@@ -21,16 +20,27 @@ export const Background: React.FC<{ color: keyof typeof colors }> = ({
     colors: themeColors,
     colorModes: { active, modes },
   } = useTheme();
-  const { text } = modes[active];
   const accessibleMode = useMemo(() => {
-    const { AA } = meetsContrastGuidelines(text, colors[color]);
+    const { light, dark } = modes;
 
-    // Minimum Contrast Requirement is 4.5 for AA (this will not be a perfect metric since there are multiple standards but should meet most of our needss)
+    const lightModeContrast = getContrast(light.text, colors[color]);
+    const darkModeContrast = getContrast(dark.text, colors[color]);
+
+    // Minimum Contrast Requirement is 4.5 for AA (this will not be a perfect metric since there are multiple standards but should meet most of our needs)
+    const highestContrastMode =
+      lightModeContrast > darkModeContrast ? 'light' : 'dark';
+    const { AA } = meetsContrastGuidelines(
+      modes[highestContrastMode].text,
+      colors[color]
+    );
     if (!AA) {
-      return Object.keys(omit(modes, active))[0] as keyof typeof modes;
+      // eslint-disable-next-line no-console
+      console.warn(
+        'You are using an inaccessible background color for color contrast'
+      );
     }
-    return active;
-  }, [color, active, modes, text]);
+    return highestContrastMode;
+  }, [color, modes]);
 
   if (accessibleMode === active) {
     return <Reset color={themeColors[color]}>{children}</Reset>;
