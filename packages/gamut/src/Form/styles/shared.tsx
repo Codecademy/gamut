@@ -115,7 +115,7 @@ export const formBaseFieldStyles = css`
   }
 `;
 
-//these are split for now because they must be split out for ReactRecurly field elements
+//these are split for now because ReactRecurly demands separate styles for focus.
 export const formFieldBaseFocusStyles = css`
   &:focus {
     border-color: ${colorStates.hover.borderColor};
