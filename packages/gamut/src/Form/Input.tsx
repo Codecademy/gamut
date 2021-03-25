@@ -13,6 +13,7 @@ import {
   conditionalInputStyleProps,
   conditionalStyles,
   formBaseFieldStyles,
+  formFieldFocusStyles,
   formFieldStyles,
   iconPadding,
 } from './styles/shared';
@@ -51,7 +52,8 @@ export interface InputWrapperProps extends InputProps {
   icon?: typeof AlertIcon;
 }
 
-export const iFrameStyles = ({
+//These styles will be eventually moved into use with the Input higher order component: see GM-188.
+export const reactRecurlyFormFieldStyles = ({
   error,
   activated,
   icon,
@@ -63,15 +65,18 @@ export const iFrameStyles = ({
   `;
 };
 
-/*
-to be picked back up re: GM-188
+//ReactRecurly demands separate styles for focus.
+export const reactRecurlyFormFieldFocusStyles = css`
+  ${formFieldFocusStyles}
+`;
+
 export const iFrameWrapper = styled.div<conditionalInputStyleProps>`
   ${formBaseFieldStyles}
   ${conditionalStyles}
   ${iconPadding}
   text-indent: 0;
 `;
-*/
+
 const InputElement = styled.input<StyledInputProps>`
   ${formFieldStyles}
   ${conditionalStyles}

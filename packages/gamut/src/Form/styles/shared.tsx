@@ -100,12 +100,6 @@ export const formBaseFieldStyles = css`
     border-color: ${colorStates.hover.borderColor};
   }
 
-  &:focus,
-  &::focus-within {
-    border-color: ${colorStates.hover.borderColor};
-    box-shadow: inset 0 0 0 1px ${colorStates.hover.borderColor};
-  }
-
   &::placeholder {
     color: ${colorStates.base.placeholder};
     font-style: italic;
@@ -122,7 +116,16 @@ export const formBaseFieldStyles = css`
   }
 `;
 
+//these are split for now because they must be split out for ReactRecurly field elements
+export const formFieldFocusStyles = css`
+  &:focus {
+    border-color: ${colorStates.hover.borderColor};
+    box-shadow: inset 0 0 0 1px ${colorStates.hover.borderColor};
+  }
+`;
+
 export const formFieldStyles = css`
   ${formBaseFieldStyles}
+  ${formFieldFocusStyles}
   padding: ${pxRem(11)} ${theme.spacing[8]};
 `;
