@@ -3467,6 +3467,11 @@
   resolved "https://registry.npmjs.org/@types/katex/-/katex-0.11.0.tgz#b16c54ee670925ffef0616beae9e90c557e17334"
   integrity sha512-27BfE8zASRLYfSBNMk5/+KIjr2CBBrH0i5lhsO04fca4TGirIIMay73v3zNkzqmsaeIa/Mi5kejWDcxPLAmkvA==
 
+"@types/konami-code-js@^0.8.0":
+  version "0.8.0"
+  resolved "https://registry.npmjs.org/@types/konami-code-js/-/konami-code-js-0.8.0.tgz#dd7b3bd23266d0d1c6bfcad870232b1a3788a883"
+  integrity sha512-7fhuggz5XuuQJxWhVL/5i3oQEQ80jjp3yvwaWlwNjFbM40BELnzV4qKeyPDLtjsHC9NG6E7XT22epH9eDZC3zg==
+
 "@types/lodash@4.14.168":
   version "4.14.168"
   resolved "https://registry.npmjs.org/@types/lodash/-/lodash-4.14.168.tgz#fe24632e79b7ade3f132891afff86caa5e5ce008"
