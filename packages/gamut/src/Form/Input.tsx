@@ -54,7 +54,7 @@ export interface InputWrapperProps extends InputProps {
 }
 
 // ReactRecurly has some specific needs around padding and focus.
-export const reactRecurlyFormFieldBaseFocusStyles = css`
+export const reactRecurlyFormFieldFocusStyles = css`
   ${formFieldFocusStyles}
 `;
 
