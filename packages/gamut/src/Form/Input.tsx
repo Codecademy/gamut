@@ -13,10 +13,10 @@ import {
   conditionalInputStyleProps,
   conditionalStyles,
   formBaseFieldStyles,
-  formFieldFocusStyles,
   formFieldPaddingStyles,
   formFieldStyles,
   iconPadding,
+  reactRecurlyformFieldFocusStyles,
 } from './styles/shared';
 
 export type InputProps = InputHTMLAttributes<HTMLInputElement> & {
@@ -55,7 +55,7 @@ export interface InputWrapperProps extends InputProps {
 
 // ReactRecurly has some specific needs around padding and focus.
 export const reactRecurlyFormFieldFocusStyles = css`
-  ${formFieldFocusStyles}
+  ${reactRecurlyformFieldFocusStyles}
 `;
 
 export const reactRecurlyFormFieldPaddingStyles = css`
