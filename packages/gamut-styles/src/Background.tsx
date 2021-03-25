@@ -36,7 +36,7 @@ export const Background: React.FC<{ color: keyof typeof colors }> = ({
     if (!AA) {
       // eslint-disable-next-line no-console
       console.warn(
-        'You are using an inaccessible background color for color contrast'
+        `You are using an inaccessible background color ${color} (${colors[color]}) for color contrast`
       );
     }
     return highestContrastMode;
