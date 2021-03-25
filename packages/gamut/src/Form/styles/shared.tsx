@@ -45,8 +45,7 @@ export const conditionalStyles = ({
         border-color: ${colorStates.error.borderColor};
       }
 
-      &:focus,
-      &::focus-within {
+      &:focus {
         border-color: ${colorStates.error.borderColor};
         box-shadow: inset 0 0 0 1px ${colorStates.error.borderColor};
       }
@@ -117,15 +116,22 @@ export const formBaseFieldStyles = css`
 `;
 
 //these are split for now because they must be split out for ReactRecurly field elements
-export const formFieldFocusStyles = css`
+export const formFieldBaseFocusStyles = css`
   &:focus {
     border-color: ${colorStates.hover.borderColor};
     box-shadow: inset 0 0 0 1px ${colorStates.hover.borderColor};
   }
 `;
 
+export const formFieldErrorFocusStyles = css`
+  &:focus {
+    border-color: ${colorStates.error.borderColor};
+    box-shadow: inset 0 0 0 1px ${colorStates.error.borderColor};
+  }
+`;
+
 export const formFieldStyles = css`
   ${formBaseFieldStyles}
-  ${formFieldFocusStyles}
+  ${formFieldBaseFocusStyles}
   padding: ${pxRem(11)} ${theme.spacing[8]};
 `;

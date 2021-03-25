@@ -13,7 +13,8 @@ import {
   conditionalInputStyleProps,
   conditionalStyles,
   formBaseFieldStyles,
-  formFieldFocusStyles,
+  formFieldBaseFocusStyles,
+  formFieldErrorFocusStyles,
   formFieldStyles,
   iconPadding,
 } from './styles/shared';
@@ -66,8 +67,12 @@ export const reactRecurlyFormFieldStyles = ({
 };
 
 //ReactRecurly demands separate styles for focus.
-export const reactRecurlyFormFieldFocusStyles = css`
-  ${formFieldFocusStyles}
+export const reactRecurlyFormFieldBaseFocusStyles = css`
+  ${formFieldBaseFocusStyles}
+`;
+
+export const reactRecurlyFormFieldErrorFocusStyles = css`
+  ${formFieldErrorFocusStyles}
 `;
 
 export const iFrameWrapper = styled.div<conditionalInputStyleProps>`
