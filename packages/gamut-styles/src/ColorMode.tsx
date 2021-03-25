@@ -4,9 +4,15 @@ import React from 'react';
 
 import { createVariables } from './utilities';
 
-export const VariableProvider = styled.div<{
+type VariableProviderProps = {
   variables: Parameters<typeof createVariables>[0];
-}>(({ variables }) => createVariables(variables, 'colors'));
+};
+
+export const VariableProvider = styled.div<VariableProviderProps>`
+  ${({ variables }) => createVariables(variables, 'colors')}
+  /** reset the currentColor to the mode specified */
+  color: ${({ theme }) => theme.colors.text}
+`;
 
 export const ColorMode: React.FC<{
   mode: keyof Theme['colorModes']['modes'];

@@ -6,10 +6,8 @@ import React, { useMemo } from 'react';
 import { ColorMode } from './ColorMode';
 import { colors } from './variables';
 
-/** This is needed to ensure that the rule for `color` is in the new context */
-const Reset = styled.div<{ color: string; reset?: boolean }>`
+const Reset = styled.div<{ color: string }>`
   background-color: ${({ color }) => color};
-  ${({ theme, reset }) => reset && `color: ${theme.colors.text};`}
 `;
 
 export const Background: React.FC<{ color: keyof typeof colors }> = ({
@@ -48,9 +46,7 @@ export const Background: React.FC<{ color: keyof typeof colors }> = ({
 
   return (
     <ColorMode mode={accessibleMode}>
-      <Reset color={themeColors[color]} reset>
-        {children}
-      </Reset>
+      <Reset color={themeColors[color]}>{children}</Reset>
     </ColorMode>
   );
 };

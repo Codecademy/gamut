@@ -66,20 +66,22 @@ describe('Background', () => {
       'background-color',
       theme.colors.beige
     );
-    expect(view.getByTestId('nested-content').parentElement).toHaveStyleRule(
-      'color',
-      theme.colors.text
-    );
+
+    /** text color reset should be on the variable provisioner if needed */
+    expect(
+      view.getByTestId('nested-content').parentElement?.parentElement
+    ).toHaveStyleRule('color', theme.colors.text);
   });
 
   it('does not change the color mode when contrasts do not conflict', () => {
     const { view } = renderView({
       color: 'white',
     });
-    expect(view.getByTestId('content').parentElement).not.toHaveStyleRule(
-      'color',
-      theme.colors.text
-    );
+
+    // Grand parent
+    expect(
+      view.getByTestId('content').parentElement?.parentElement
+    ).not.toHaveStyleRule('color', theme.colors.text);
   });
 
   it('updates the theme context to the current mode', () => {
