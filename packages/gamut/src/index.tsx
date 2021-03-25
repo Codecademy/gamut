@@ -7,7 +7,6 @@ export * from './AppBar';
 export * from './AppBar/AppBarSection';
 export * from './AppWrapper';
 export * from './Badge';
-export * from './Background';
 export * from './Banner';
 export * from './Box';
 export * from './Button';
