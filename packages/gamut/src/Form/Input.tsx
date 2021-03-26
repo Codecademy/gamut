@@ -112,12 +112,12 @@ export const Input = forwardRef<HTMLInputElement, InputWrapperProps>(
       getInputState(Boolean(error), Boolean(valid))
     ];
 
-    const focusHandler = (event: FocusEvent<HTMLInputElement>) => {
+    const focusHandler = (event: FocusEvent<any>) => {
       rest?.onFocus?.(event);
       setHasBeenFocused(true);
     };
 
-    const changeHandler = (event: ChangeEvent<HTMLInputElement>) => {
+    const changeHandler = (event: ChangeEvent<any>) => {
       rest?.onChange?.(event);
       hasBeenFocused ? setActivated(true) : null;
     };
@@ -135,10 +135,8 @@ export const Input = forwardRef<HTMLInputElement, InputWrapperProps>(
           activated={activated}
           icon={error || valid || !!Icon}
           className={className}
-          onChange={(event: ChangeEvent<HTMLInputElement>) =>
-            changeHandler(event)
-          }
-          onFocus={(event: FocusEvent<HTMLInputElement>) => focusHandler(event)}
+          onChange={(event: ChangeEvent<any>) => changeHandler(event)}
+          onFocus={(event: FocusEvent<any>) => focusHandler(event)}
         />
         {!!ShownIcon && (
           <FlexBox
