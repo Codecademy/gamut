@@ -34,8 +34,6 @@ export type InputProps = InputHTMLAttributes<HTMLInputElement> & {
   required?: boolean;
   type?: string;
   valid?: boolean;
-  onChange?: ChangeEvent;
-  onFocus?: FocusEvent;
 };
 
 export interface StyledInputProps extends InputProps {
@@ -114,16 +112,12 @@ export const Input = forwardRef<HTMLInputElement, InputWrapperProps>(
       getInputState(Boolean(error), Boolean(valid))
     ];
 
-    const focusHandler = (
-      event: FocusEvent<HTMLInputElement> & FocusEvent<Element>
-    ) => {
+    const focusHandler = (event: FocusEvent<HTMLInputElement>) => {
       rest?.onFocus?.(event);
       setHasBeenFocused(true);
     };
 
-    const changeHandler = (
-      event: ChangeEvent<HTMLInputElement> & ChangeEvent<Element>
-    ) => {
+    const changeHandler = (event: ChangeEvent<HTMLInputElement>) => {
       rest?.onChange?.(event);
       hasBeenFocused ? setActivated(true) : null;
     };
