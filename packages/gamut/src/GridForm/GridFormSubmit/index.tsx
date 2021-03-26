@@ -33,23 +33,22 @@ const StyledColumn = styled(Column)(flex);
 
 export const GridFormSubmit: React.FC<GridFormSubmitProps> = ({
   contents,
-  disabled,
   position = 'left',
   size,
-  mode = 'light',
   buttonType,
+  ...rest
 }) => {
   const getButton = () => {
     if (buttonType === 'cta-button') {
       return (
-        <CTAButton type="submit" mode={mode} disabled={disabled}>
+        <CTAButton type="submit" {...rest}>
           {contents}
         </CTAButton>
       );
     }
 
     return (
-      <FillButton type="submit" mode={mode} disabled={disabled}>
+      <FillButton type="submit" {...rest}>
         {contents}
       </FillButton>
     );
