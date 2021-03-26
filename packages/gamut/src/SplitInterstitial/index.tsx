@@ -25,6 +25,10 @@ export type SplitInterstitialProps = {
   };
 };
 
+/**
+ * @deprecated
+ */
+
 export const SplitInterstitial: React.FC<SplitInterstitialProps> = ({
   className,
   left = {},

@@ -17,6 +17,10 @@ export type FlexGridProps = {
   as?: React.ElementType;
 };
 
+/**
+ * @deprecated
+ */
+
 export const FlexGrid: React.FC<FlexGridProps> = ({
   as: Element = 'div',
   ...props
