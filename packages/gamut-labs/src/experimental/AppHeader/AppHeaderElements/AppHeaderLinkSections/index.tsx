@@ -34,9 +34,16 @@ export const AppHeaderLinkSections: React.FC<AppHeaderLinkSectionsProps> = ({
           })
         : item.popover.map((link: AppHeaderLinkItem) => {
             return (
-              <AppHeaderLinkMobile action={action} item={link} key={link.id} />
+              <Box>
+                <AppHeaderLinkMobile
+                  action={action}
+                  item={link}
+                  key={link.id}
+                />
+              </Box>
             );
           })}
+      <Box height="0.75rem" />
     </Box>
   );
 };

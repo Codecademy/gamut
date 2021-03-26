@@ -50,7 +50,7 @@ export const AppHeaderSubMenuTarget: React.FC<AppHeaderSubMenuTargetProps> = ({
         )}
       </FlexBox>
       <FlexBox alignItems="center" alignSelf="stretch" paddingRight={8}>
-        <MiniArrowRightIcon size={12} aria-hidden color="currentColor" />
+        <MiniArrowRightIcon size={12} aria-hidden />
       </FlexBox>
     </Anchor>
   );

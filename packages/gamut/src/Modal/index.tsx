@@ -39,6 +39,10 @@ export type ModalProps = {
   ariaLabel?: string;
 };
 
+/**
+ * @deprecated
+ */
+
 export const Modal: React.FC<ModalProps> = ({
   children,
   className,
@@ -60,8 +64,8 @@ export const Modal: React.FC<ModalProps> = ({
         className={cx(styles.modalBody, className)}
         aria-hidden="false"
         aria-modal="true"
-        aria-label={ariaLabel}
         role="dialog"
+        aria-label={ariaLabel}
       >
         {!hideDefaultCloseButton && (
           <div

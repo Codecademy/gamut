@@ -19,6 +19,10 @@ type TextProps = {
   style?: AllowedStyles;
 } & ContainerElementProps;
 
+/**
+ * @deprecated
+ */
+
 export const Text: React.FC<TextProps> = ({
   children,
   as: Element = 'p',

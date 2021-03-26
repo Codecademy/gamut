@@ -2,6 +2,7 @@ import { Box, FlexBox } from '@codecademy/gamut';
 import { ArrowChevronDownFilledIcon } from '@codecademy/gamut-icons';
 import isPropValid from '@emotion/is-prop-valid';
 import styled from '@emotion/styled';
+import { AnimatePresence, motion } from 'framer-motion';
 import React, { useRef, useState } from 'react';
 
 import { Popover } from '../../../Popover';
@@ -64,21 +65,47 @@ export const AppHeaderDropdown: React.FC<AppHeaderDropdownProps> = ({
       </HeaderLink>
     );
 
+  const paddingY = 24;
+  const linkHeight = 56;
+  const separatorHeight = 16;
+  const getPopoverHeight = () => {
+    if (item.type === 'dropdown')
+      return item.popover.length * linkHeight + paddingY;
+    const numberOfLinks = item.popover.reduce(
+      (sum, linksArray) => sum + linksArray.length,
+      0
+    );
+    const totalSeparatorHeight = separatorHeight * (item.popover.length - 1);
+    return numberOfLinks * linkHeight + totalSeparatorHeight + paddingY;
+  };
+
   return (
     <>
       {clickTarget}
-      <Popover
-        align={item.type === 'profile-dropdown' ? 'right' : 'left'}
-        verticalOffset={item.type === 'profile-dropdown' ? 0 : -2}
-        outline
-        isOpen={isOpen}
-        onRequestClose={handleClose}
-        targetRef={headerDropdownRef}
-      >
-        <Box paddingX={24} paddingY={12}>
-          <AppHeaderLinkSections action={action} item={item} />
-        </Box>
-      </Popover>
+      <AnimatePresence>
+        {isOpen && (
+          <Popover
+            align={item.type === 'profile-dropdown' ? 'right' : 'left'}
+            verticalOffset={item.type === 'profile-dropdown' ? 0 : -2}
+            outline
+            isOpen={isOpen}
+            onRequestClose={handleClose}
+            targetRef={headerDropdownRef}
+          >
+            <motion.div
+              style={{ overflow: 'hidden', top: '12px', position: 'relative' }}
+              initial={{ height: 0 }}
+              animate={{ height: getPopoverHeight() }}
+              transition={{ duration: 0.175 }}
+              exit={{ height: 0 }}
+            >
+              <Box paddingX={24}>
+                <AppHeaderLinkSections action={action} item={item} />
+              </Box>
+            </motion.div>
+          </Popover>
+        )}
+      </AnimatePresence>
     </>
   );
 };

@@ -40,6 +40,11 @@ export type MarkdownProps = {
   inline?: boolean;
   overrides?: ManyOverrideSettings;
   skipDefaultOverrides?: SkipDefaultOverridesSettings;
+  /**
+   * Enables generated header ids for H1-6 tags
+   * Can generate duplicate IDs if used on separate markdown components on the same page
+   */
+  headerIds?: boolean;
   spacing?: 'loose' | 'tight' | 'none';
   text?: string;
   /**
@@ -57,6 +62,7 @@ export class Markdown extends PureComponent<MarkdownProps> {
       overrides: userOverrides = {},
       skipDefaultOverrides = {},
       inline = false,
+      headerIds,
       onAnchorClick,
     } = this.props;
 
@@ -108,6 +114,8 @@ export class Markdown extends PureComponent<MarkdownProps> {
 
     const markedOptions = {
       smartypants: true,
+      headerIds,
+      headerPrefix: 'heading-',
     };
 
     // Render markdown to html
