@@ -9,6 +9,10 @@ export type HighlightedTextProps = {
   children?: string;
 };
 
+/**
+ * @deprecated
+ */
+
 export const HighlightedText = ({ children = '' }: HighlightedTextProps) => {
   const words = children
     .split(/(\s+)(\S+)/g)

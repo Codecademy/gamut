@@ -83,6 +83,10 @@ export type RowProps = {
   top?: ModificatorType;
 };
 
+/**
+ * @deprecated
+ */
+
 export const Row: React.FC<RowProps> = ({ as: Element = 'div', ...props }) => {
   const className = getClassNames(props);
   return <Element {...omitProps(propKeys, { ...props, className })} />;
