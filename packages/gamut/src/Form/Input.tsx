@@ -137,7 +137,6 @@ export const Input = forwardRef<HTMLInputElement, InputWrapperProps>(
           className={className}
           onChange={(event: ChangeEvent<any>) => changeHandler(event)}
           onFocus={(event: FocusEvent<any>) => focusHandler(event)}
-          onInput={(event) => console.log('updog')}
         />
         {!!ShownIcon && (
           <FlexBox
