@@ -47,6 +47,10 @@ export type AccordionProps = {
   top: ChildrenOrExpandedRender;
 };
 
+/**
+ * @deprecated
+ */
+
 export const Accordion: React.FC<AccordionProps> = ({
   children,
   className,

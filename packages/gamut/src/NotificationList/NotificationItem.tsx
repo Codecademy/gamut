@@ -11,6 +11,10 @@ export type NotificationItemProps = {
   notification: Notification;
 };
 
+/**
+ * @deprecated
+ */
+
 export const NotificationItem: React.FC<NotificationItemProps> = (props) => {
   const { notification, onClick } = props;
   const {
