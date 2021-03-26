@@ -34,6 +34,8 @@ export type InputProps = InputHTMLAttributes<HTMLInputElement> & {
   required?: boolean;
   type?: string;
   valid?: boolean;
+  onChange?: ChangeEvent;
+  onFocus?: FocusEvent;
 };
 
 export interface StyledInputProps extends InputProps {
@@ -112,12 +114,16 @@ export const Input = forwardRef<HTMLInputElement, InputWrapperProps>(
       getInputState(Boolean(error), Boolean(valid))
     ];
 
-    const focusHandler = (event: FocusEvent<any>) => {
+    const focusHandler = (
+      event: FocusEvent<HTMLInputElement> & FocusEvent<Element>
+    ) => {
       rest?.onFocus?.(event);
       setHasBeenFocused(true);
     };
 
-    const changeHandler = (event: ChangeEvent<any>) => {
+    const changeHandler = (
+      event: ChangeEvent<HTMLInputElement> & ChangeEvent<Element>
+    ) => {
       rest?.onChange?.(event);
       hasBeenFocused ? setActivated(true) : null;
     };
@@ -135,8 +141,12 @@ export const Input = forwardRef<HTMLInputElement, InputWrapperProps>(
           activated={activated}
           icon={error || valid || !!Icon}
           className={className}
-          onChange={(event: ChangeEvent<any>) => changeHandler(event)}
-          onFocus={(event: FocusEvent<any>) => focusHandler(event)}
+          onChange={(
+            event: ChangeEvent<HTMLInputElement> & ChangeEvent<Element>
+          ) => changeHandler(event)}
+          onFocus={(
+            event: FocusEvent<HTMLInputElement> & FocusEvent<Element>
+          ) => focusHandler(event)}
         />
         {!!ShownIcon && (
           <FlexBox
