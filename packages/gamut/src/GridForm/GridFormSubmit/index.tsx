@@ -3,22 +3,21 @@ import styled from '@emotion/styled';
 import React from 'react';
 
 import { Box } from '../../Box';
-import {
-  ButtonDeprecated,
-  ButtonDeprecatedProps,
-} from '../../ButtonDeprecated';
+import { CTAButton, FillButton } from '../../Button';
+import { ButtonDeprecatedProps } from '../../ButtonDeprecated';
 import { Column, ColumnSizes } from '../../Layout';
+import { VisualTheme } from '../../theming/VisualTheme';
 import { ResponsiveProperty } from '../../typings/responsive-properties';
 
 export type GridFormSubmitPosition = keyof typeof positions;
 
 export type GridFormSubmitProps = {
   contents: React.ReactNode;
+  buttonType: string;
   disabled?: ButtonDeprecatedProps['disabled'];
   position?: GridFormSubmitPosition;
-  outline?: ButtonDeprecatedProps['outline'];
   size: ResponsiveProperty<ColumnSizes>;
-  theme?: ButtonDeprecatedProps['theme'];
+  mode?: VisualTheme;
 };
 
 const positions = {
@@ -33,27 +32,34 @@ const StyledColumn = styled(Column)(flex);
 export const GridFormSubmit: React.FC<GridFormSubmitProps> = ({
   contents,
   disabled,
-  outline,
   position = 'left',
   size,
-  theme = 'brand-purple',
+  mode = 'light',
+  buttonType,
 }) => {
+  const getButton = () => {
+    if (buttonType === 'cta') {
+      return (
+        <CTAButton mode={mode} disabled={disabled}>
+          {contents}
+        </CTAButton>
+      );
+    }
+
+    return (
+      <FillButton mode={mode} disabled={disabled}>
+        {contents}
+      </FillButton>
+    );
+  };
+
   return (
     <StyledColumn
       justifyContent={positions[position]}
       alignItems="center"
       size={size}
     >
-      <Box marginBottom={8}>
-        <ButtonDeprecated
-          disabled={disabled}
-          outline={outline}
-          theme={theme}
-          type="submit"
-        >
-          {contents}
-        </ButtonDeprecated>
-      </Box>
+      <Box marginBottom={8}>{getButton()}</Box>
     </StyledColumn>
   );
 };
