@@ -114,6 +114,7 @@ If your PR contains breaking changes that might affect other users, please menti
 4. Replace its `src/` directory with one only containing a `src/index.ts`
 5. Remove all content from its `CHANGELOG.md` after the _"See Conventional Commits ..."_ line
 6. From the root of the directory, run `yarn`, `yarn lerna bootstrap`, and `yarn build-all`
+7. Double-check that the directory contains a `.gitignore` including `dist`
 
 At this point, you can start developing on the new package.
 Send a pull request on GitHub and the CI job will auto-publish your package to npm. 🚀
