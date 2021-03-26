@@ -30,6 +30,7 @@ const VARIANT_META = {
 } as const;
 
 export type AlertType = 'general' | 'success' | 'error' | 'notice' | 'feature';
+export type InlineAlertType = Exclude<AlertType, 'notice' | 'feature'>;
 export type AlertPlacements = 'inline' | 'floating';
 
 export type AlertBase = {
@@ -51,7 +52,7 @@ export type FloatingAlert = AlertBase & {
 };
 
 export type InlineAlert = AlertBase & {
-  type?: Exclude<AlertType, 'notice' | 'feature'>;
+  type?: InlineAlertType;
   placement?: 'inline';
 };
 
