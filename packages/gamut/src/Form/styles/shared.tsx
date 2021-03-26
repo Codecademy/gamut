@@ -121,11 +121,6 @@ export const formFieldFocusStyles = css`
   box-shadow: inset 0 0 0 1px ${colorStates.hover.borderColor};
 `;
 
-export const reactRecurlyformFieldFocusStyles = css`
-  border: solid ${colorStates.hover.borderColor} 1px;
-  box-shadow: inset 0 0 0 1px ${colorStates.hover.borderColor};
-`;
-
 // ReactRecurly needs to apply padding in a very particular way
 export const formFieldPaddingStyles = css`
   padding: ${pxRem(11)} ${theme.spacing[8]};

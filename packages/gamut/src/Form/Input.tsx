@@ -14,10 +14,10 @@ import {
   conditionalInputStyleProps,
   conditionalStyles,
   formBaseFieldStyles,
+  formFieldFocusStyles,
   formFieldPaddingStyles,
   formFieldStyles,
   iconPadding,
-  reactRecurlyformFieldFocusStyles,
 } from './styles/shared';
 
 export type InputProps = InputHTMLAttributes<HTMLInputElement> & {
@@ -60,7 +60,7 @@ export interface InputWrapperProps extends InputProps {
 
 // ReactRecurly has some specific needs around padding and focus.
 export const reactRecurlyFormFieldFocusStyles = css`
-  ${reactRecurlyformFieldFocusStyles}
+  ${formFieldFocusStyles}
 `;
 
 export const reactRecurlyFormFieldPaddingStyles = css`
@@ -112,12 +112,12 @@ export const Input = forwardRef<HTMLInputElement, InputWrapperProps>(
       getInputState(Boolean(error), Boolean(valid))
     ];
 
-    const focusHandler = (event: FocusEvent<any>) => {
+    const focusHandler = (event: FocusEvent<HTMLInputElement>) => {
       rest?.onFocus?.(event);
       setHasBeenFocused(true);
     };
 
-    const changeHandler = (event: ChangeEvent<any>) => {
+    const changeHandler = (event: ChangeEvent<HTMLInputElement>) => {
       rest?.onChange?.(event);
       hasBeenFocused ? setActivated(true) : null;
     };
@@ -135,8 +135,9 @@ export const Input = forwardRef<HTMLInputElement, InputWrapperProps>(
           activated={activated}
           icon={error || valid || !!Icon}
           className={className}
-          onChange={(event) => changeHandler(event)}
-          onFocus={(event) => focusHandler(event)}
+          onChange={(event: ChangeEvent<any>) => changeHandler(event)}
+          onFocus={(event: FocusEvent<any>) => focusHandler(event)}
+          onInput={(event) => console.log('updog')}
         />
         {!!ShownIcon && (
           <FlexBox
