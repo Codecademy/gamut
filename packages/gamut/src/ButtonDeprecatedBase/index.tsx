@@ -49,6 +49,10 @@ export type ButtonDeprecatedBaseProps = Omit<
   ) => void;
 };
 
+/**
+ * @deprecated
+ */
+
 export const ButtonDeprecatedBase: React.FC<ButtonDeprecatedBaseProps> = (
   props
 ) => {

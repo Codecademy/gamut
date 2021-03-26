@@ -16,6 +16,10 @@ export type CardBodyProps = {
   standardPadding?: boolean;
 };
 
+/**
+ * @deprecated
+ */
+
 export const CardBody = ({
   children,
   standardPadding,

@@ -28,6 +28,10 @@ export type MenuItemProps = {
   ariaLabel?: string;
 };
 
+/**
+ * @deprecated
+ */
+
 export const MenuItem: React.FC<MenuItemProps> = ({
   as: As = 'a',
   asProps = {},
