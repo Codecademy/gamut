@@ -11,7 +11,7 @@ This repository is a monorepo that we manage using [Lerna](https://lernajs.io/).
 
 ## Gamut Kit
 
-We provide a single package to manage the versions of a few core dependnecies `gamut`, `gamut-styles`, `gamut-icons`, `gamut-illustrations`, `gamut-system`, `gamut-labs`. Since these packages are highly intertwined we suggest only installing `@codecademy/gamut-kit` when your app needs all of these.
+We provide a single package to manage the versions of a few core dependencies: `gamut`, `gamut-styles`, `gamut-icons`, `gamut-illustrations`, `gamut-system`, `gamut-labs`. Since these packages are highly intertwined we suggest only installing `@codecademy/gamut-kit` when your app needs all of these.
 
 [`gamut-kit`: Include in your application instead of the individual packages to simplify version management. ](/packages/gamut-kit/README.md)
 
