@@ -51,10 +51,7 @@ export interface StyledInputProps extends InputProps {
   */
 
 export interface InputWrapperProps extends InputProps {
-  as?: StyledComponent<
-    StyledInputProps,
-    React.ComponentPropsWithRef<'div' | 'input'>
-  >;
+  as?: StyledComponent<StyledInputProps, React.PropsWithChildren<any>>;
   /**
    * A custom icon svg from gamut-icons.
    */
