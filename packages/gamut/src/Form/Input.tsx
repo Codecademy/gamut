@@ -101,7 +101,7 @@ const getInputState = (error: boolean, valid: boolean) => {
   return 'clean';
 };
 
-//to do: properly type onFocus + onChange events: originally FocusEvent<HTMLInputElement>
+// to do: properly type onFocus + onChange events: originally FocusEvent<HTMLInputElement>
 
 export const Input = forwardRef<HTMLInputElement, InputWrapperProps>(
   ({ error, className, id, valid, as: As, icon: Icon, ...rest }, ref) => {
@@ -117,7 +117,7 @@ export const Input = forwardRef<HTMLInputElement, InputWrapperProps>(
       setHasBeenFocused(true);
     };
 
-    const changeHandler = (event: ChangeEvent<any>) => {
+    const changeHandler: React.ChangeEventHandler<any> = (event) => {
       rest?.onChange?.(event);
       hasBeenFocused ? setActivated(true) : null;
     };
