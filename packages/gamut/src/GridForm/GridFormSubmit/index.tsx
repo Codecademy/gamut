@@ -11,9 +11,11 @@ import { ResponsiveProperty } from '../../typings/responsive-properties';
 
 export type GridFormSubmitPosition = keyof typeof positions;
 
+export type ButtonType = 'cta-button' | 'fill-button';
+
 export type GridFormSubmitProps = {
   contents: React.ReactNode;
-  buttonType: string;
+  buttonType: ButtonType;
   disabled?: ButtonDeprecatedProps['disabled'];
   position?: GridFormSubmitPosition;
   size: ResponsiveProperty<ColumnSizes>;
@@ -38,7 +40,7 @@ export const GridFormSubmit: React.FC<GridFormSubmitProps> = ({
   buttonType,
 }) => {
   const getButton = () => {
-    if (buttonType === 'cta') {
+    if (buttonType === 'cta-button') {
       return (
         <CTAButton mode={mode} disabled={disabled}>
           {contents}

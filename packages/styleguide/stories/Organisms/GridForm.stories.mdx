@@ -149,6 +149,7 @@ responsive layouts.
           action('Form Submitted')(values);
         }}
         submit={{
+          buttonType: 'fill-button',
           contents: 'Submit Me!?',
           size: 12,
         }}
@@ -187,6 +188,7 @@ If an input is not meant to be usable, such as when a portion of a form is disab
           action('Form Submitted')(values);
         }}
         submit={{
+          buttonType: 'fill-button',
           contents: 'Right Submit!?',
           position: 'right',
           size: 12,
@@ -219,6 +221,7 @@ value of left, center, right, or stretch.
               action('Form Submitted')(values);
             }}
             submit={{
+              buttonType: 'fill-button',
               contents: 'Right Submit!?',
               position: 'right',
               size: 12,
@@ -239,6 +242,7 @@ value of left, center, right, or stretch.
               action('Form Submitted')(values);
             }}
             submit={{
+              buttonType: 'fill-button',
               contents: 'Center Submit!?',
               position: 'center',
               size: 12,
@@ -259,6 +263,7 @@ value of left, center, right, or stretch.
               action('Form Submitted')(values);
             }}
             submit={{
+              buttonType: 'fill-button',
               contents: 'Left Submit!?',
               position: 'left',
               size: 12,
@@ -279,6 +284,7 @@ value of left, center, right, or stretch.
               action('Form Submitted')(values);
             }}
             submit={{
+              buttonType: 'fill-button',
               contents: 'Stretch Submit!?',
               position: 'stretch',
               size: 12,
@@ -290,14 +296,13 @@ value of left, center, right, or stretch.
   </Story>
 </Canvas>
 
-## Submit Button color
+## Submit Button Options
 
-We can specify the color of our button by passing the theme prop with a
-button atom theme prop value. i.e. 'brand-blue', 'brand-purple'. The
-default value is 'brand-purple'.
+We can specify the version of our button by passing the buttonType prop. WE can choose between
+the [`FillButton`](/?path=/docs/atoms-button--fill-button) or [`CTAButton`](?path=/docs/atoms-button--cta-button).
 
 <Canvas>
-  <Story name="Submit button color">
+  <Story name="Submit Button Options">
     {(args) => (
       <>
         <GridForm
@@ -305,7 +310,7 @@ default value is 'brand-purple'.
             {
               label: 'Simple text',
               name: 'simple-text',
-              size: 12,
+              size: 6,
               type: 'text',
             },
           ]}
@@ -313,7 +318,26 @@ default value is 'brand-purple'.
             action('Form Submitted')(values);
           }}
           submit={{
-            contents: 'Default Purple Submit!?',
+            buttonType: 'fill-button',
+            contents: 'Fill Button',
+            size: 6,
+          }}
+        />
+        <GridForm
+          fields={[
+            {
+              label: 'Simple text',
+              name: 'simple-text',
+              size: 6,
+              type: 'text',
+            },
+          ]}
+          onSubmit={async (values) => {
+            action('Form Submitted')(values);
+          }}
+          submit={{
+            buttonType: 'cta-button',
+            contents: 'CTA Button',
             size: 12,
           }}
         />
@@ -322,7 +346,7 @@ default value is 'brand-purple'.
             {
               label: 'Simple text',
               name: 'simple-text',
-              size: 12,
+              size: 6,
               type: 'text',
             },
           ]}
@@ -330,9 +354,29 @@ default value is 'brand-purple'.
             action('Form Submitted')(values);
           }}
           submit={{
-            contents: 'Blue Submit!?',
+            buttonType: 'fill-button',
+            contents: 'Fill Button Dark Mode',
             size: 12,
-            theme: 'brand-blue',
+            mode: 'dark',
+          }}
+        />
+        <GridForm
+          fields={[
+            {
+              label: 'Simple text',
+              name: 'simple-text',
+              size: 6,
+              type: 'text',
+            },
+          ]}
+          onSubmit={async (values) => {
+            action('Form Submitted')(values);
+          }}
+          submit={{
+            buttonType: 'cta-button',
+            contents: 'CTA Button Dark Mode',
+            size: 12,
+            mode: 'dark',
           }}
         />
       </>
@@ -369,6 +413,7 @@ align nicely with the input.
           action('Form Submitted')(values);
         }}
         submit={{
+          buttonType: 'fill-button',
           contents: 'Inline Submit!?',
           size: 4,
           position: 'right',
@@ -417,6 +462,7 @@ their own inputs. We can specify a 'custom' field type to with a [render prop](h
           action('Form Submitted')(values);
         }}
         submit={{
+          buttonType: 'fill-button',
           contents: 'Submit Me!?',
         }}
       />
@@ -454,6 +500,7 @@ more details on why using placeholders is often bad.
           action('Form Submitted')(values);
         }}
         submit={{
+          buttonType: 'fill-button',
           contents: 'Submit Me!?',
         }}
       />
@@ -488,6 +535,7 @@ field's value in a parent component before onSubmit gets triggered.
               action('Form Submitted')(values);
             }}
             submit={{
+              buttonType: 'fill-button',
               contents: 'Submit Me!?',
             }}
           />
@@ -592,6 +640,7 @@ A field can include [our existing `ToolTip`](/?path=/docs/atoms-tooltip--tool-ti
             action('Form Submitted')(values);
           }}
           submit={{
+            buttonType: 'fill-button',
             contents: 'Submit',
             size: 12,
             theme: 'hyper',
@@ -631,6 +680,7 @@ A field can take a custom error in addition to validation errors. The validation
             action('Form Submitted')(values);
           }}
           submit={{
+            buttonType: 'fill-button',
             contents: 'Submit Me!?',
             size: 12,
           }}
