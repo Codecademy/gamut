@@ -35,20 +35,10 @@ export type InputProps = InputHTMLAttributes<HTMLInputElement> & {
   type?: string;
   valid?: boolean;
 };
-
 export interface StyledInputProps extends InputProps {
   activated?: boolean;
   icon?: boolean;
 }
-/*
-  as?: StyledComponent<
-    StyledInputProps,
-    React.DetailedHTMLProps<
-      InputHTMLAttributes<HTMLInputElement>,
-      HTMLInputElement
-    >
-  >;
-  */
 
 export interface InputWrapperProps extends InputProps {
   as?: StyledComponent<StyledInputProps, React.PropsWithChildren<any>>;
@@ -100,8 +90,6 @@ const getInputState = (error: boolean, valid: boolean) => {
   if (valid) return 'valid';
   return 'clean';
 };
-
-// to do: properly type onFocus + onChange events: originally FocusEvent<HTMLInputElement>
 
 export const Input = forwardRef<HTMLInputElement, InputWrapperProps>(
   ({ error, className, id, valid, as: As, icon: Icon, ...rest }, ref) => {
