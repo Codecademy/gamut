@@ -42,14 +42,14 @@ export const GridFormSubmit: React.FC<GridFormSubmitProps> = ({
   const getButton = () => {
     if (buttonType === 'cta-button') {
       return (
-        <CTAButton mode={mode} disabled={disabled}>
+        <CTAButton type="submit" mode={mode} disabled={disabled}>
           {contents}
         </CTAButton>
       );
     }
 
     return (
-      <FillButton mode={mode} disabled={disabled}>
+      <FillButton type="submit" mode={mode} disabled={disabled}>
         {contents}
       </FillButton>
     );
