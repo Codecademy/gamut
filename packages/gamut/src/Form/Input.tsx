@@ -141,12 +141,10 @@ export const Input = forwardRef<HTMLInputElement, InputWrapperProps>(
           activated={activated}
           icon={error || valid || !!Icon}
           className={className}
-          onChange={(
-            event: ChangeEvent<HTMLInputElement> & ChangeEvent<Element>
-          ) => changeHandler(event)}
-          onFocus={(
-            event: FocusEvent<HTMLInputElement> & FocusEvent<Element>
-          ) => focusHandler(event)}
+          onChange={(event: ChangeEvent<HTMLInputElement>) =>
+            changeHandler(event)
+          }
+          onFocus={(event: FocusEvent<HTMLInputElement>) => focusHandler(event)}
         />
         {!!ShownIcon && (
           <FlexBox
