@@ -41,7 +41,7 @@ export interface StyledInputProps extends InputProps {
   icon?: boolean;
 }
 
-export interface InputWrapperProps extends InputProps {
+/*
   as?: StyledComponent<
     StyledInputProps,
     React.DetailedHTMLProps<
@@ -49,6 +49,9 @@ export interface InputWrapperProps extends InputProps {
       HTMLInputElement
     >
   >;
+  */
+export interface InputWrapperProps extends InputProps {
+  as?: StyledComponent<StyledInputProps, React.DetailedHTMLProps<any, any>>;
   /**
    * A custom icon svg from gamut-icons.
    */
@@ -98,7 +101,7 @@ const getInputState = (error: boolean, valid: boolean) => {
   return 'clean';
 };
 
-//to do: properly type onFocus + onChange events
+//to do: properly type onFocus + onChange events: originally FocusEvent<HTMLInputElement>
 
 export const Input = forwardRef<HTMLInputElement, InputWrapperProps>(
   ({ error, className, id, valid, as: As, icon: Icon, ...rest }, ref) => {
