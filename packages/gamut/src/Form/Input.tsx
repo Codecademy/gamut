@@ -40,7 +40,6 @@ export interface StyledInputProps extends InputProps {
   activated?: boolean;
   icon?: boolean;
 }
-
 /*
   as?: StyledComponent<
     StyledInputProps,
@@ -50,8 +49,12 @@ export interface StyledInputProps extends InputProps {
     >
   >;
   */
+
 export interface InputWrapperProps extends InputProps {
-  as?: StyledComponent<StyledInputProps, React.DetailedHTMLProps<any, any>>;
+  as?: StyledComponent<
+    StyledInputProps,
+    React.ComponentPropsWithRef<'div' | 'input'>
+  >;
   /**
    * A custom icon svg from gamut-icons.
    */
@@ -112,12 +115,12 @@ export const Input = forwardRef<HTMLInputElement, InputWrapperProps>(
       getInputState(Boolean(error), Boolean(valid))
     ];
 
-    const focusHandler = (event: FocusEvent<HTMLInputElement>) => {
+    const focusHandler = (event: FocusEvent<any>) => {
       rest?.onFocus?.(event);
       setHasBeenFocused(true);
     };
 
-    const changeHandler = (event: ChangeEvent<HTMLInputElement>) => {
+    const changeHandler = (event: ChangeEvent<any>) => {
       rest?.onChange?.(event);
       hasBeenFocused ? setActivated(true) : null;
     };
