@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [13.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@13.1.6...@codecademy/gamut-labs@13.2.0) (2021-03-25)
+
+
+### Features
+
+* add height animation to dropdown ([bfb22ad](https://github.com/Codecademy/client-modules/commit/bfb22adea29c756a4f2d046f19a4605f9658ad79))
+
+
+
 ### [13.1.6](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@13.1.5...@codecademy/gamut-labs@13.1.6) (2021-03-25)
 
 **Note:** Version bump only for package @codecademy/gamut-labs
