@@ -10,6 +10,10 @@ interface CardContentProps {
   textClassName?: string;
 }
 
+/**
+ * @deprecated
+ */
+
 export function CardContent(props: CardContentProps) {
   return (
     <div className={cx(styles.contentContainer, props.className)}>

@@ -11,6 +11,10 @@ export type TabPanelProps = {
   renderAllPanels?: boolean;
 };
 
+/**
+ * @deprecated
+ */
+
 export const TabPanel: FunctionComponent<TabPanelProps> = ({
   children,
   active,
