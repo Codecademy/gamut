@@ -1,6 +1,7 @@
 import { IconButton } from '@codecademy/gamut/src';
 import { FaviconIcon } from '@codecademy/gamut-icons/src';
 import { AppHeader } from '@codecademy/gamut-labs/src';
+import title from '@codecademy/macros/lib/title.macro';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/dist/blocks';
 import LinkTo from '@storybook/addon-links/dist/react/components/link';
 
@@ -9,7 +10,7 @@ import { PropsTable } from '~styleguide/blocks';
 import { MOCK_DROPDOWN_1 } from './MockAppHeaderElements';
 
 <Meta
-  title="Labs/Experimental/Molecules/AppHeader"
+  title={title}
   component={AppHeader}
   parameters={{
     layout: 'padded',
@@ -60,9 +61,9 @@ import { MOCK_DROPDOWN_1 } from './MockAppHeaderElements';
   }}
 />
 
-Uses <LinkTo kind='Molecules/AppBar' story="Header">AppBar</LinkTo> to arrange items determined by <LinkTo kind="Labs/Experimental/Molecules/GlobalHeader" story="GlobalHeader">GlobalHeader</LinkTo> to the left or right side of the navigation bar. These items are passed in as objects of type AppHeaderItem, and map to <LinkTo kind="Labs/Experimental/Molecules/AppHeaderLogo" story="AppHeaderLogo">AppHeaderLogo</LinkTo>, <LinkTo kind="Labs/Experimental/Molecules/AppHeaderLink" story="AppHeaderLink">AppHeaderLink</LinkTo>, <LinkTo kind="Labs/Experimental/Molecules/AppHeaderDropdown" story="AppHeaderDropdown">AppHeaderDropdown</LinkTo>, <LinkTo kind="Atoms/Button" story="TextButton">TextButton</LinkTo>, <LinkTo kind="Atoms/Button" story="FillButton">FillButton</LinkTo>, or a custom component passed in by the consumer.
+Uses <LinkTo kind='Molecules/AppBar' story="Header">AppBar</LinkTo> to arrange items determined by <LinkTo kind="Molecules/GlobalHeader" story="GlobalHeader">GlobalHeader</LinkTo> to the left or right side of the navigation bar. These items are passed in as objects of type AppHeaderItem, and map to <LinkTo kind="Molecules/AppHeaderLogo" story="AppHeaderLogo">AppHeaderLogo</LinkTo>, <LinkTo kind="Molecules/AppHeaderLink" story="AppHeaderLink">AppHeaderLink</LinkTo>, <LinkTo kind="Molecules/AppHeaderDropdown" story="AppHeaderDropdown">AppHeaderDropdown</LinkTo>, <LinkTo kind="Atoms/Button" story="TextButton">TextButton</LinkTo>, <LinkTo kind="Atoms/Button" story="FillButton">FillButton</LinkTo>, or a custom component passed in by the consumer.
 
-AppHeader is not intended to be used directly by the consumer, but rather by <LinkTo kind="Labs/Experimental/Molecules/GlobalHeader" story="GlobalHeader">GlobalHeader</LinkTo> which determines the composition of each version of Codecademy's global navigation header and passes the corresponding items to this component.
+AppHeader is not intended to be used directly by the consumer, but rather by <LinkTo kind="Molecules/GlobalHeader" story="GlobalHeader">GlobalHeader</LinkTo> which determines the composition of each version of Codecademy's global navigation header and passes the corresponding items to this component.
 
 ## AppHeader
 
