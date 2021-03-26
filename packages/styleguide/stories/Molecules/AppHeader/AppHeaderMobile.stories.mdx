@@ -1,4 +1,5 @@
 import { AppHeaderMobile } from '@codecademy/gamut-labs/src';
+import title from '@codecademy/macros/lib/title.macro';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/dist/blocks';
 import LinkTo from '@storybook/addon-links/dist/react/components/link';
 
@@ -12,7 +13,7 @@ import {
 } from './MockAppHeaderElements';
 
 <Meta
-  title="Labs/Experimental/Molecules/AppHeaderMobile"
+  title={title}
   component={AppHeaderMobile}
   parameters={{
     layout: 'padded',
@@ -57,9 +58,9 @@ import {
   }}
 />
 
-A mobile header component for use in <LinkTo kind="Labs/Experimental/Molecules/GlobalHeader" story="GlobalHeader">GlobalHeader</LinkTo>. Similarly to the desktop version, it uses <LinkTo kind='Molecules/AppBar' story="Header">AppBar</LinkTo> to arrange items to the left or right side of the navigation bar. Besides `left` and `right`, this component also has a `mainMenu` key in the `items` object. The items in `mainMenu` are passed to <LinkTo kind="Labs/Experimental/Molecules/AppHeaderMainMenuMobile" story="AppHeaderMainMenuMobile">AppHeaderMainMenuMobile</LinkTo>.
+A mobile header component for use in <LinkTo kind="Molecules/GlobalHeader" story="GlobalHeader">GlobalHeader</LinkTo>. Similarly to the desktop version, it uses <LinkTo kind='Molecules/AppBar' story="Header">AppBar</LinkTo> to arrange items to the left or right side of the navigation bar. Besides `left` and `right`, this component also has a `mainMenu` key in the `items` object. The items in `mainMenu` are passed to <LinkTo kind="Molecules/AppHeaderMainMenuMobile" story="AppHeaderMainMenuMobile">AppHeaderMainMenuMobile</LinkTo>.
 
-AppHeaderMobile is not intended to be used alone, but rather by <LinkTo kind="Labs/Experimental/Molecules/GlobalHeader" story="GlobalHeader">GlobalHeader</LinkTo> which determines the composition of each of the Pro, Free, and Anon versions of Codecademy's global navigation header and passes the corresponding items to AppHeader.
+AppHeaderMobile is not intended to be used alone, but rather by <LinkTo kind="Molecules/GlobalHeader" story="GlobalHeader">GlobalHeader</LinkTo> which determines the composition of each of the Pro, Free, and Anon versions of Codecademy's global navigation header and passes the corresponding items to AppHeader.
 
 <Canvas>
   <Story name="AppHeaderMobile">

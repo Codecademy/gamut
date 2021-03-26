@@ -1,13 +1,14 @@
 import { Box, IconButton } from '@codecademy/gamut/src';
 import { BellIcon, SearchIcon } from '@codecademy/gamut-icons/src';
 import { GlobalHeader } from '@codecademy/gamut-labs/src';
+import title from '@codecademy/macros/lib/title.macro';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/dist/blocks';
 import LinkTo from '@storybook/addon-links/dist/react/components/link';
 
 import { PropsTable } from '~styleguide/blocks';
 
 <Meta
-  title="Labs/Experimental/Molecules/GlobalHeader"
+  title={title}
   component={GlobalHeader}
   decorators={[
     (Story) => {
@@ -42,7 +43,7 @@ import { PropsTable } from '~styleguide/blocks';
   </Story>
 </Canvas>
 
-GlobalHeader determines whether to render the desktop or mobile version of the global header (<LinkTo kind="Labs/Experimental/Molecules/AppHeader" story="AppHeader">AppHeader</LinkTo> or <LinkTo kind="Labs/Experimental/Molecules/AppHeaderMobile" story="AppHeaderMobile">AppHeaderMobile</LinkTo>, respectively) based on the viewport size.
+GlobalHeader determines whether to render the desktop or mobile version of the global header (<LinkTo kind="Molecules/AppHeader" story="AppHeader">AppHeader</LinkTo> or <LinkTo kind="Molecules/AppHeaderMobile" story="AppHeaderMobile">AppHeaderMobile</LinkTo>, respectively) based on the viewport size.
 
 GlobalHeader takes in several props. `type` determines which header to render based on the user role (anonymous, free, or pro), or a loading state. `type` will also determine which of Search and/or Notification components need to be passed in: Search will appear for all users, whereas Notifications will only appear for logged-in users. The consumer must pass components for both the desktop and mobile header for either of these render props. `action` is a function which will be defined by the consumer and handles any routing/tracking that needs to be done. `variant` is a prop which may only be used when `type="anon"`, and provides variations of the anonymous header based on the user's location: there are different headers for the landing page, login page, and signup page.
 
@@ -50,12 +51,12 @@ GlobalHeader takes in several props. `type` determines which header to render ba
 
 ## How It's All Connected in Gamut
 
-First, <LinkTo kind="Labs/Experimental/Molecules/GlobalHeader" story="GlobalHeader">GlobalHeader</LinkTo> determines which items to pass to <LinkTo kind="Labs/Experimental/Molecules/AppHeader" story="AppHeader">AppHeader</LinkTo> based on the props. Then <LinkTo kind="Labs/Experimental/Molecules/AppHeader" story="AppHeader">AppHeader</LinkTo> renders the
-header content using <LinkTo kind='Molecules/AppBar' story="Header">AppBar</LinkTo> (with a `left` and `right` `AppBarSection`). The <LinkTo kind="Labs/Experimental/Molecules/AppHeader" story="AppHeader">AppHeader</LinkTo>
+First, <LinkTo kind="Molecules/GlobalHeader" story="GlobalHeader">GlobalHeader</LinkTo> determines which items to pass to <LinkTo kind="Molecules/AppHeader" story="AppHeader">AppHeader</LinkTo> based on the props. Then <LinkTo kind="Molecules/AppHeader" story="AppHeader">AppHeader</LinkTo> renders the
+header content using <LinkTo kind='Molecules/AppBar' story="Header">AppBar</LinkTo> (with a `left` and `right` `AppBarSection`). The <LinkTo kind="Molecules/AppHeader" story="AppHeader">AppHeader</LinkTo>
 has no knowledge of the user; it just takes as a prop an object that has a left property
 (an array of `AppHeaderItem`) to render on the left side of the header and a right
 property (an array of `AppHeaderItem`) to render on the right side of the header.
-These item objects which are passed in are mapped to <LinkTo kind="Labs/Experimental/Molecules/AppHeader" story="AppHeader">AppHeader</LinkTo> components. Things work in a similar way for the mobile menu, except there is an additional key, `mainMenu` passed into <LinkTo kind="Labs/Experimental/Molecules/AppHeaderMobile" story="AppHeaderMobile">AppHeaderMobile</LinkTo> which determines which elements are rendered within the main mobile menu and the mobile submenus.
+These item objects which are passed in are mapped to <LinkTo kind="Molecules/AppHeader" story="AppHeader">AppHeader</LinkTo> components. Things work in a similar way for the mobile menu, except there is an additional key, `mainMenu` passed into <LinkTo kind="Molecules/AppHeaderMobile" story="AppHeaderMobile">AppHeaderMobile</LinkTo> which determines which elements are rendered within the main mobile menu and the mobile submenus.
 
 ## How to Add a New Item to GlobalHeader
 
