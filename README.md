@@ -9,9 +9,30 @@ _Shared node modules for codecademy.com & co_
 
 This repository is a monorepo that we manage using [Lerna](https://lernajs.io/). That means that we publish several packages to npm from the same codebase, including:
 
+## Gamut Kit
+
+We provide a single package to manage the versions of a few core dependnecies `gamut`, `gamut-styles`, `gamut-icons`, `gamut-illustrations`, `gamut-system`, `gamut-labs`. Since these packages are highly intertwined we suggest only installing `@codecademy/gamut-kit` when your app needs all of these.
+
 [`gamut-kit`: Include in your application instead of the individual packages to simplify version management. ](/packages/gamut-kit/README.md)
 
 - [![npm version](https://badge.fury.io/js/%40codecademy%2Fgamut-kit.svg)](https://badge.fury.io/js/%40codecademy%2Fgamut-kit)
+
+1. Run `yarn add @codecademy/gamut-kit`
+2. Add each of the managed packages to your peer dependencies (this is requried for enabling intellisense with these packages and does not affect installation)
+
+```json
+  "peerDependencies": {
+    "@codecademy/gamut": "*",
+    "@codecademy/gamut-icons": "*",
+    "@codecademy/gamut-illustrations": "*",
+    "@codecademy/gamut-labs": "*",
+    "@codecademy/gamut-styles": "*",
+    "@codecademy/gamut-system": "*",
+    "@codecademy/gamut-tests": "*"
+  },
+```
+
+## Individual Packages
 
 [`gamut`: Our React UI component library](/packages/gamut/README.md)
 
