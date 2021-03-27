@@ -21,6 +21,10 @@ export type HeadingProps = {
   hideMargin?: boolean;
 } & ContainerElementProps;
 
+/**
+ * @deprecated
+ */
+
 export const Heading: React.FC<HeadingProps> = ({
   children,
   as: Element,

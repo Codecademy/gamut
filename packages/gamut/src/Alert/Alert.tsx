@@ -61,8 +61,12 @@ export type AlertProps = FloatingAlert | InlineAlert;
 const placementVariants = variant({
   prop: 'placement',
   variants: {
-    inline: {},
+    inline: {
+      padding: 4,
+      paddingY: 8,
+    },
     floating: {
+      padding: 4,
       borderColor: 'navy',
     },
   },
@@ -175,7 +179,6 @@ export const Alert: React.FC<AlertProps> = ({
 
   return (
     <AlertBanner
-      padding={4}
       alignItems="start"
       columnGap={[4, 8, , 12]}
       gridTemplateColumns={columns}

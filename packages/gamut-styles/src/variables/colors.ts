@@ -1,6 +1,10 @@
 const black = '#000000';
 const white = '#ffffff';
 
+/**
+ * @deprecated
+ */
+
 export const swatches = {
   beige: {
     '0': '#FFF0E5',
@@ -125,6 +129,10 @@ export const colorNames = {
   black: 'Black',
   white: 'White',
 } as const;
+
+/**
+ * @deprecated
+ */
 
 export const interactiveColors = {
   dark: colors.hyper,

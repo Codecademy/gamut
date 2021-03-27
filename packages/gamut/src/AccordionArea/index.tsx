@@ -26,6 +26,10 @@ const variants = {
   folded: { height: '0' },
 };
 
+/**
+ * @deprecated
+ */
+
 export const AccordionArea: React.FC<AccordionAreaProps> = ({
   children,
   className,
