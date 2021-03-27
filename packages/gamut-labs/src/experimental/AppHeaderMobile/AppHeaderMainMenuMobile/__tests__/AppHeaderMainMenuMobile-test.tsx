@@ -2,10 +2,7 @@ import { setupRtl } from '@codecademy/gamut-tests';
 import { screen } from '@testing-library/react';
 
 import { createMockAppHeaderLinkItem } from '../../../AppHeader/mockAppHeaderItems';
-import {
-  AppHeaderMainMenuMobile,
-  AppHeaderMainMenuMobileProps,
-} from '../index';
+import { AppHeaderMainMenuMobile } from '../index';
 
 const action = jest.fn();
 
