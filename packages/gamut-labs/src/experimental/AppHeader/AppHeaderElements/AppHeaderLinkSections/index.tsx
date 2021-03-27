@@ -46,7 +46,7 @@ const LinkList: React.FC<{
     >
       {links.map((link: AppHeaderLinkItem) => {
         return (
-          <ListItem as="li" key={link.id}>
+          <ListItem as="li" key={link.id} width="100%" display="flex">
             <AppHeaderLinkMobile action={action} item={link} />
           </ListItem>
         );

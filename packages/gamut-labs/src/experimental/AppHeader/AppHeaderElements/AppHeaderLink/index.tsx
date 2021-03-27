@@ -16,7 +16,6 @@ HeaderLink.defaultProps = {
   variant: 'interface',
   width: { base: '100%', md: 'auto' },
   paddingY: 12,
-  marginY: { base: 4, md: 0 },
 };
 
 export const AppHeaderLink: React.FC<AppHeaderLinkProps> = ({

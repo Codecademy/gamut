@@ -45,14 +45,13 @@ export const AppHeaderDropdown: React.FC<AppHeaderDropdownProps> = ({
         onClick={(event) => toggleIsOpen(event)}
         aria-haspopup="true"
       >
-        <FlexBox display="inline-flex" alignItems="center">
-          <AppHeaderAvatar imageUrl={item.avatar} />
-        </FlexBox>
+        <AppHeaderAvatar imageUrl={item.avatar} />
       </HeaderLink>
     ) : (
       <HeaderLink
         ref={headerDropdownRef}
         fontWeight={isOpen ? 'title' : 'base'}
+        letterSpacing={isOpen ? '0px' : '0.25px'}
         onClick={(event) => toggleIsOpen(event)}
         aria-haspopup="true"
       >
