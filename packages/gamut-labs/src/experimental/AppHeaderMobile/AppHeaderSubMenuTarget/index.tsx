@@ -37,7 +37,7 @@ export const AppHeaderSubMenuTarget: React.FC<AppHeaderSubMenuTargetProps> = ({
       data-testid={item.dataTestId}
       onClick={(event: React.MouseEvent) => openSubMenu(event, item)}
       aria-label={`open ${item} submenu`}
-      paddingY={16}
+      paddingY={12}
       minWidth="0"
       textAlign="left"
     >

@@ -138,18 +138,19 @@ export const AnchorBase = styled('a', {
         transition: opacity 75ms ease-in, inset 75ms ease-in;
       }
 
-      &:hover,
-      &:focus {
+      &:hover {
         text-decoration: none;
         cursor: pointer;
         ${hover({ theme, variant })}
       }
+
       &:disabled,
       &[disabled] {
         cursor: not-allowed;
         text-decoration: none;
         color: ${theme.colors['gray-700']};
       }
+
       &:focus,
       &:focus-visible {
         outline: none;
