@@ -9,11 +9,10 @@ export type AppHeaderLinkProps = {
   item: AppHeaderLinkItem;
 };
 
-export const HeaderLink = styled(Anchor)`
-  white-space: nowrap;
-`;
+export const HeaderLink = styled(Anchor)();
 
 HeaderLink.defaultProps = {
+  whiteSpace: 'nowrap',
   variant: 'interface',
   width: { base: '100%', md: 'auto' },
   paddingY: 12,

@@ -31,12 +31,14 @@ const createModeVariants = ({
       textColor: primary,
       borderColor: primary,
       display: 'inline-block',
+      whiteSpace: 'nowrap',
     },
     inline: {
       textDecoration: 'underline',
       textColor: primary,
       borderColor: primary,
       display: 'inline-block',
+      whiteSpace: 'nowrap',
     },
     interface: {
       textColor: text,
@@ -124,7 +126,6 @@ export const AnchorBase = styled('a', {
     return css`
       ${base({ theme, variant })};
       position: relative;
-      ${variant !== 'interface' && 'white-space: nowrap;'}
 
       &:after {
         content: '';
