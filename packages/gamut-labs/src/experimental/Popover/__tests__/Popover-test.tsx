@@ -1,7 +1,7 @@
 import { theme } from '@codecademy/gamut-styles';
+import { setupEnzyme } from '@codecademy/gamut-tests';
 import { ThemeProvider } from '@emotion/react';
 import { fireEvent, render, screen } from '@testing-library/react';
-import { mount } from 'enzyme';
 import React from 'react';
 
 import { Popover, PopoverProps } from '..';
@@ -41,18 +41,21 @@ const renderPopover = (props?: Partial<PopoverProps>) => {
   );
 };
 
-const mountPopover = (props?: Partial<PopoverProps>) => {
-  return mount(
-    <ThemeProvider theme={theme}>
-      <Popover isOpen targetRef={targetRefObj} {...props}>
-        <div data-testid="popover-content">
-          Howdy!
-          <button aria-label="Click me!" type="button" />
-        </div>
-      </Popover>
-    </ThemeProvider>
-  );
-};
+const renderWrapper = setupEnzyme(Popover, {
+  isOpen: true,
+  targetRef: targetRefObj,
+  children: (
+    <div data-testid="popover-content">
+      Howdy!
+      <button aria-label="Click me!" type="button" />
+    </div>
+  ),
+});
+
+const getPopoverProps = (
+  wrapper: ReturnType<typeof renderWrapper>['wrapper']
+) =>
+  wrapper.find('[data-testid="popover-content-container"]').hostNodes().props();
 
 const popoverIsRendered = () => {
   return Boolean(screen.queryByTestId('popover-content'));
@@ -180,16 +183,9 @@ describe('Popover', () => {
     Object.defineProperty(window, 'scrollY', { value: 1 });
     Object.defineProperty(window, 'scrollX', { value: 1 });
 
-    const wrapped = mountPopover({
-      isOpen: true,
-    });
+    const { wrapper } = renderWrapper();
 
-    expect(
-      wrapped
-        .find('[data-testid="popover-content-container"]')
-        .hostNodes()
-        .props()
-    ).toMatchObject({
+    expect(getPopoverProps(wrapper)).toMatchObject({
       style: {
         top: 318,
         left: 58,
@@ -201,18 +197,12 @@ describe('Popover', () => {
     Object.defineProperty(window, 'scrollY', { value: 1 });
     Object.defineProperty(window, 'scrollX', { value: 1 });
 
-    const wrapped = mountPopover({
-      isOpen: true,
+    const { wrapper } = renderWrapper({
       position: 'above',
       align: 'right',
     });
 
-    expect(
-      wrapped
-        .find('[data-testid="popover-content-container"]')
-        .hostNodes()
-        .props()
-    ).toMatchObject({
+    expect(getPopoverProps(wrapper)).toMatchObject({
       style: {
         top: 240,
         left: 841,
@@ -224,19 +214,13 @@ describe('Popover', () => {
     Object.defineProperty(window, 'scrollY', { value: 1 });
     Object.defineProperty(window, 'scrollX', { value: 1 });
 
-    const wrapped = mountPopover({
-      isOpen: true,
+    const { wrapper } = renderWrapper({
       position: 'above',
       align: 'right',
       verticalOffset: 29,
     });
 
-    expect(
-      wrapped
-        .find('[data-testid="popover-content-container"]')
-        .hostNodes()
-        .props()
-    ).toMatchObject({
+    expect(getPopoverProps(wrapper)).toMatchObject({
       style: {
         top: 231,
         left: 841,
@@ -248,19 +232,13 @@ describe('Popover', () => {
     Object.defineProperty(window, 'scrollY', { value: 1 });
     Object.defineProperty(window, 'scrollX', { value: 1 });
 
-    const wrapped = mountPopover({
-      isOpen: true,
+    const { wrapper } = renderWrapper({
       position: 'above',
       align: 'right',
       horizontalOffset: 30,
     });
 
-    expect(
-      wrapped
-        .find('[data-testid="popover-content-container"]')
-        .hostNodes()
-        .props()
-    ).toMatchObject({
+    expect(getPopoverProps(wrapper)).toMatchObject({
       style: {
         top: 240,
         left: 871,
@@ -272,19 +250,13 @@ describe('Popover', () => {
     Object.defineProperty(window, 'scrollY', { value: 1.5 });
     Object.defineProperty(window, 'scrollX', { value: 1.5 });
 
-    const wrapped = mountPopover({
-      isOpen: true,
+    const { wrapper } = renderWrapper({
       position: 'above',
       align: 'right',
       verticalOffset: 30,
     });
 
-    expect(
-      wrapped
-        .find('[data-testid="popover-content-container"]')
-        .hostNodes()
-        .props()
-    ).toMatchObject({
+    expect(getPopoverProps(wrapper)).toMatchObject({
       style: {
         top: 230,
         left: 842,
