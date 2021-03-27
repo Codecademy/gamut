@@ -46,6 +46,11 @@ export const GamutProvider: React.FC<GamutProviderProps> = ({
     return vars;
   }, [mode]);
 
+  const rootTheme = useMemo(
+    () => ({ ...theme, colorModes: { ...theme.colorModes, active: mode } }),
+    [mode]
+  );
+
   // Do not initialize a new cache if one has been provided as props
   const activeCache = useRef<EmotionCache | false>(
     shouldCreateCache && (cache ?? createEmotionCache())
@@ -69,7 +74,7 @@ export const GamutProvider: React.FC<GamutProviderProps> = ({
       >
         <CacheProvider value={activeCache.current}>
           {globals}
-          <ThemeProvider theme={theme}>{children}</ThemeProvider>
+          <ThemeProvider theme={rootTheme}>{children}</ThemeProvider>
         </CacheProvider>
       </GamutContext.Provider>
     );
@@ -83,11 +88,7 @@ export const GamutProvider: React.FC<GamutProviderProps> = ({
       }}
     >
       {globals}
-      <ThemeProvider
-        theme={{ ...theme, colorModes: { ...theme.colorModes, active: mode } }}
-      >
-        {children}
-      </ThemeProvider>
+      <ThemeProvider theme={rootTheme}>{children}</ThemeProvider>
     </GamutContext.Provider>
   );
 };
