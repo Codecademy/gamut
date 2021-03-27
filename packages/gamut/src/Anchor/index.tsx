@@ -39,6 +39,8 @@ const createModeVariants = ({
     interface: {
       textColor: text,
       borderColor: primary,
+      display: 'inline-flex',
+      alignItems: 'center',
     },
   });
 

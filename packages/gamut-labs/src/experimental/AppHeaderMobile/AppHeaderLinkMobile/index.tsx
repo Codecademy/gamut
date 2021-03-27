@@ -26,13 +26,11 @@ export const AppHeaderLinkMobile: React.FC<AppHeaderLinkMobileProps> = ({
       href={item.href}
       onClick={(event) => action(event, item)}
       target={item.newTab ? 'blank' : ''}
-      variant="interface"
-      paddingY={16}
-      lineHeight="base"
-      textAlign="left"
+      paddingY={{ base: 8, md: 16 }}
+      marginY={{ base: 8, md: 0 }}
     >
       {Icon && (
-        <Box display="flex" alignContent="center" marginRight={16}>
+        <Box marginRight={16}>
           <Icon size={24} aria-hidden />
         </Box>
       )}

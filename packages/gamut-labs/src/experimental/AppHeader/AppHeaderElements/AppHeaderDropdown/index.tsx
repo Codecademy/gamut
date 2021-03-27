@@ -41,9 +41,9 @@ export const AppHeaderDropdown: React.FC<AppHeaderDropdownProps> = ({
     item.type === 'profile-dropdown' ? (
       <HeaderLink
         ref={headerDropdownRef}
-        variant="interface"
         paddingY={4}
         onClick={(event) => toggleIsOpen(event)}
+        aria-haspopup="true"
       >
         <FlexBox display="inline-flex" alignItems="center">
           <AppHeaderAvatar imageUrl={item.avatar} />
@@ -52,16 +52,12 @@ export const AppHeaderDropdown: React.FC<AppHeaderDropdownProps> = ({
     ) : (
       <HeaderLink
         ref={headerDropdownRef}
-        variant="interface"
-        paddingY={8}
-        paddingRight={isOpen ? 0 : 4}
         fontWeight={isOpen ? 'title' : 'base'}
         onClick={(event) => toggleIsOpen(event)}
+        aria-haspopup="true"
       >
-        <FlexBox display="inline-flex" alignItems="center">
-          {item.text}
-          <Caret size={12} aria-label="dropdown" isOpen={isOpen} />
-        </FlexBox>
+        {item.text}
+        <Caret size={12} aria-label="dropdown" isOpen={isOpen} />
       </HeaderLink>
     );
 

@@ -10,10 +10,13 @@ export type AppHeaderLinkProps = {
 };
 
 export const HeaderLink = styled(Anchor)`
-  display: inline-flex;
-  align-items: center;
   white-space: nowrap;
 `;
+
+HeaderLink.defaultProps = {
+  variant: 'interface',
+  paddingY: 8,
+};
 
 export const AppHeaderLink: React.FC<AppHeaderLinkProps> = ({
   action,
@@ -26,10 +29,6 @@ export const AppHeaderLink: React.FC<AppHeaderLinkProps> = ({
       href={item.href}
       onClick={(event) => action(event, item)}
       target={item.newTab ? 'blank' : ''}
-      variant="interface"
-      lineHeight="base"
-      paddingY={8}
-      textAlign="left"
     >
       {item.text}
     </HeaderLink>
