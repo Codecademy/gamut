@@ -30,11 +30,13 @@ const createModeVariants = ({
     standard: {
       textColor: primary,
       borderColor: primary,
+      display: 'inline-block',
     },
     inline: {
       textDecoration: 'underline',
       textColor: primary,
       borderColor: primary,
+      display: 'inline-block',
     },
     interface: {
       textColor: text,
@@ -115,8 +117,6 @@ const AnchorElement = forwardRef<LinkElements, ForwardedProps>(
 export const AnchorBase = styled('a', {
   shouldForwardProp,
 })<AnchorProps>`
-  display: inline-block;
-
   ${anchorProps}
   ${({ theme, mode = 'light', variant }) => {
     const { base, hover, focus } = modes[mode];
@@ -162,10 +162,8 @@ export const AnchorBase = styled('a', {
         ${focus({ theme, variant })}
 
         &:after {
-          top: -${theme.spacing[4]};
-          bottom: -${theme.spacing[4]};
-          left: -${theme.spacing[8]};
-          right: -${theme.spacing[8]};
+          left: -${theme.spacing[4]};
+          right: -${theme.spacing[4]};
           opacity: 1;
         }
       }
