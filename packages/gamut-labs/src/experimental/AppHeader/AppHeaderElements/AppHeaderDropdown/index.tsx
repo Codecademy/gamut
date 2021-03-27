@@ -1,7 +1,5 @@
 import { FlexBox } from '@codecademy/gamut';
 import { ArrowChevronDownFilledIcon } from '@codecademy/gamut-icons';
-import isPropValid from '@emotion/is-prop-valid';
-import styled from '@emotion/styled';
 import { AnimatePresence, motion } from 'framer-motion';
 import React, { useRef, useState } from 'react';
 
@@ -16,14 +14,6 @@ export type AppHeaderDropdownProps = {
   item: AppHeaderDropdownItem;
 };
 
-const Caret = styled(ArrowChevronDownFilledIcon, {
-  shouldForwardProp: isPropValid,
-})<{ isOpen?: boolean }>`
-  margin-left: ${({ theme }) => theme.spacing[8]};
-  transition: transform 0.35s ease-out;
-  transform: ${({ isOpen }) => (isOpen ? 'rotate(-180deg)' : 'none')};
-`;
-
 export const AppHeaderDropdown: React.FC<AppHeaderDropdownProps> = ({
   action,
   item,
@@ -31,12 +21,12 @@ export const AppHeaderDropdown: React.FC<AppHeaderDropdownProps> = ({
   const headerDropdownRef = useRef<HTMLAnchorElement>(null);
   const [isOpen, setIsOpen] = useState(false);
   const toggleIsOpen = (event: React.MouseEvent) => {
-    setIsOpen(!isOpen);
     !isOpen && action(event, item);
+    setIsOpen(!isOpen);
   };
-  const handleClose = () => {
-    setIsOpen(false);
-  };
+  const handleClose = () => setIsOpen(false);
+
+  const activeVariant = isOpen ? 'open' : 'closed';
   const clickTarget =
     item.type === 'profile-dropdown' ? (
       <HeaderLink
@@ -50,13 +40,23 @@ export const AppHeaderDropdown: React.FC<AppHeaderDropdownProps> = ({
     ) : (
       <HeaderLink
         ref={headerDropdownRef}
-        fontWeight={isOpen ? 'title' : 'base'}
-        letterSpacing={isOpen ? '0px' : '0.25px'}
+        menuVariant={activeVariant}
         onClick={(event) => toggleIsOpen(event)}
         aria-haspopup="true"
       >
         {item.text}
-        <Caret size={12} aria-label="dropdown" isOpen={isOpen} />
+        <FlexBox marginLeft={8} alignItems="center">
+          <motion.div
+            initial="closed"
+            animate={activeVariant}
+            variants={{
+              closed: { transform: 'rotate(0deg)' },
+              open: { transform: 'rotate(-180deg)' },
+            }}
+          >
+            <ArrowChevronDownFilledIcon size={12} aria-label="dropdown" />
+          </motion.div>
+        </FlexBox>
       </HeaderLink>
     );
 
