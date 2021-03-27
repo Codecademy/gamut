@@ -15,7 +15,9 @@ export const HeaderLink = styled(Anchor)`
 
 HeaderLink.defaultProps = {
   variant: 'interface',
-  paddingY: 8,
+  width: { base: '100%', md: 'auto' },
+  paddingY: 12,
+  marginY: { base: 4, md: 0 },
 };
 
 export const AppHeaderLink: React.FC<AppHeaderLinkProps> = ({

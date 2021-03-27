@@ -1,8 +1,7 @@
-import { Anchor } from '@codecademy/gamut';
-import styled from '@emotion/styled';
 import React from 'react';
 
 import { Logo } from '../../../../brand/Logo';
+import { HeaderLink } from '../AppHeaderLink';
 import { AppHeaderClickHandler, AppHeaderLogoItem } from '../types';
 
 export type AppHeaderLogoProps = {
@@ -10,26 +9,20 @@ export type AppHeaderLogoProps = {
   item: AppHeaderLogoItem;
 };
 
-const StyledLogo = styled(Logo)`
-  padding-top: 2px;
-  padding-bottom: 2px;
-`;
-
 export const AppHeaderLogo: React.FC<AppHeaderLogoProps> = ({
   action,
   item,
 }) => {
   return (
-    <Anchor
-      variant="interface"
-      display="inline-flex"
-      height="2.5rem"
-      paddingY={4}
+    <HeaderLink
+      height="3rem"
+      paddingTop={0}
+      paddingBottom={4}
       data-testid={item.dataTestId}
       onClick={(event) => action(event, item)}
       href={item.href}
     >
-      <StyledLogo type={item.pro ? 'proMono' : 'default'} height={32} />
-    </Anchor>
+      <Logo type={item.pro ? 'proMono' : 'default'} height={27} />
+    </HeaderLink>
   );
 };

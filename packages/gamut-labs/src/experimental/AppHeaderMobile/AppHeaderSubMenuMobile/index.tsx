@@ -18,12 +18,7 @@ export const AppHeaderSubMenuMobile: React.FC<AppHeaderSubMenuMobileProps> = ({
 }) => {
   return (
     <Box aria-labelledby={`${item.text} menu`}>
-      <HeaderLink
-        onClick={handleClose}
-        paddingY={4}
-        marginBottom={16}
-        width="100%"
-      >
+      <HeaderLink onClick={handleClose} marginBottom={16}>
         <MiniArrowLeftIcon size={12} aria-hidden />
         <Box fontSize={16} marginLeft={8}>
           Full Menu

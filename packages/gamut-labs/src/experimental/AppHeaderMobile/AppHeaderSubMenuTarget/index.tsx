@@ -1,9 +1,10 @@
-import { Anchor, FlexBox } from '@codecademy/gamut';
+import { FlexBox } from '@codecademy/gamut';
 import { MiniArrowRightIcon } from '@codecademy/gamut-icons';
 import styled from '@emotion/styled';
 import React from 'react';
 
 import { AppHeaderAvatar } from '../../AppHeader/AppHeaderElements/AppHeaderAvatar';
+import { HeaderLink } from '../../AppHeader/AppHeaderElements/AppHeaderLink';
 import { AppHeaderDropdownItem } from '../../AppHeader/AppHeaderElements/types';
 
 export type AppHeaderSubMenuTargetProps = {
@@ -30,28 +31,26 @@ export const AppHeaderSubMenuTarget: React.FC<AppHeaderSubMenuTargetProps> = ({
   };
 
   return (
-    <Anchor
-      display="inline-flex"
-      variant="interface"
-      width="100%"
+    <HeaderLink
       data-testid={item.dataTestId}
       onClick={(event: React.MouseEvent) => openSubMenu(event, item)}
       aria-label={`open ${item} submenu`}
-      paddingY={12}
-      minWidth="0"
-      textAlign="left"
     >
-      <FlexBox alignItems="center" flexGrow={1} flexShrink={1} flexBasis="0">
-        <FlexBox marginRight={16}>{getIcon()}</FlexBox>
+      {getIcon()}
+      <FlexBox
+        alignItems="center"
+        flexGrow={1}
+        flexShrink={1}
+        flexBasis="0"
+        marginLeft={16}
+      >
         {item.type === 'profile-dropdown' ? (
           <DisplayNameText>{item.userDisplayName}</DisplayNameText>
         ) : (
           item.text
         )}
       </FlexBox>
-      <FlexBox alignItems="center" alignSelf="stretch" paddingRight={8}>
-        <MiniArrowRightIcon size={12} aria-hidden />
-      </FlexBox>
-    </Anchor>
+      <MiniArrowRightIcon size={12} aria-hidden />
+    </HeaderLink>
   );
 };
