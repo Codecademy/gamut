@@ -59,7 +59,11 @@ export const AppHeaderLinkSections: React.FC<AppHeaderLinkSectionsProps> = ({
       return (
         <>
           {item.popover.map((linkSection, i) => (
-            <LinkList links={linkSection} action={action} />
+            <LinkList
+              links={linkSection}
+              action={action}
+              key={linkSection.map(({ id }) => id).join('-')}
+            />
           ))}
         </>
       );
