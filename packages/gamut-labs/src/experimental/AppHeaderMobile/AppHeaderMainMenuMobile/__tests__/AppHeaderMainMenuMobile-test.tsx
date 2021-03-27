@@ -1,7 +1,5 @@
-import { theme } from '@codecademy/gamut-styles';
-import { ThemeProvider } from '@emotion/react';
-import { render, screen } from '@testing-library/react';
-import React from 'react';
+import { setupRtl } from '@codecademy/gamut-tests';
+import { screen } from '@testing-library/react';
 
 import { createMockAppHeaderLinkItem } from '../../../AppHeader/mockAppHeaderItems';
 import {
@@ -32,7 +30,7 @@ const idToTestId = (id: string) => {
   return `app-header-link-${id}`;
 };
 
-const props: AppHeaderMainMenuMobileProps = {
+const renderView = setupRtl(AppHeaderMainMenuMobile, {
   action,
   items: [
     {
@@ -82,19 +80,13 @@ const props: AppHeaderMainMenuMobileProps = {
       trackingTarget: 'sign-up-tracking',
     },
   ],
-};
-
-const renderAppHeaderMainMenuMobile = () => {
-  return render(
-    <ThemeProvider theme={theme}>
-      <AppHeaderMainMenuMobile {...props} />
-    </ThemeProvider>
-  );
-};
+});
 
 describe('AppHeaderMainMenuMobile', () => {
+  beforeEach(() => {
+    renderView();
+  });
   it('renders links for the items with type link and type fill-button', () => {
-    renderAppHeaderMainMenuMobile();
     const linkArray = screen
       .getAllByRole('link')
       .map((node) => node.getAttribute('href'));
@@ -102,7 +94,6 @@ describe('AppHeaderMainMenuMobile', () => {
   });
 
   it('renders a target button for the items with type dropdown', () => {
-    renderAppHeaderMainMenuMobile();
     const targetButton = screen.getAllByRole('button')[0];
     expect(targetButton).toHaveTextContent('resources target');
   });
@@ -117,7 +108,6 @@ describe('AppHeaderMainMenuMobile', () => {
   });
 
   it('renders a submenu when its target button is clicked', () => {
-    renderAppHeaderMainMenuMobile();
     const targetButton = screen.getByText('resources target');
     targetButton.click();
     expect(action).toHaveBeenCalled();
@@ -126,7 +116,6 @@ describe('AppHeaderMainMenuMobile', () => {
   });
 
   it('renders the profile submenu when its target button is clicked', () => {
-    renderAppHeaderMainMenuMobile();
     const targetButton = screen.getByText('user name');
     targetButton.click();
     expect(action).toHaveBeenCalled();

@@ -74,12 +74,7 @@ export const AppHeaderDropdown: React.FC<AppHeaderDropdownProps> = ({
             targetRef={headerDropdownRef}
           >
             <motion.div
-              initial={{
-                height: 0,
-                padding: 0,
-                overflow: 'hidden',
-                minHeight: '100%',
-              }}
+              initial={{ height: 0, overflow: 'hidden' }}
               animate={{ height: 'auto' }}
               transition={{ duration: 0.175 }}
               exit={{ height: 0 }}

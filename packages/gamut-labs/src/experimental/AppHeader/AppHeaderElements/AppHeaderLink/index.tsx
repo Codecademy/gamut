@@ -16,12 +16,10 @@ export const HeaderLink = styled(Anchor)(
     default: 'closed',
     variants: {
       open: {
-        letterSpacing: '0px',
+        letterSpacing: '-0.25px',
         fontWeight: 'title',
       },
-      closed: {
-        letterSpacing: '0.35px',
-      },
+      closed: {},
     },
   })
 );

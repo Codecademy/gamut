@@ -1,5 +1,4 @@
 import { Box } from '@codecademy/gamut';
-import { variant } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React from 'react';
 
@@ -15,26 +14,23 @@ export type AppHeaderLinkSectionsProps = {
   item: AppHeaderDropdownItem;
 };
 
-const List = styled(Box)<{ variant?: 'separated' }>`
+const List = styled(Box)`
   list-style: none;
-  ${variant({
-    separated: {
-      borderStyleTop: 'solid',
-      borderWidthTop: '1px',
-      borderColorTop: 'navy',
-      paddingTop: 16,
-      marginTop: 8,
-    },
-  })}
+  & + & {
+    border-top: 1px solid ${({ theme }) => theme.colors.navy};
+    margin-top: ${({ theme }) => theme.spacing[8]};
+    padding-top: ${({ theme }) => theme.spacing[8]};
+  }
 `;
 
 const ListItem = styled(Box)();
 
-const LinkList: React.FC<{
+type LinkListProps = {
   links: AppHeaderLinkItem[];
   action: AppHeaderClickHandler;
-  variant?: 'separated';
-}> = ({ links, action, ...rest }) => {
+};
+
+const LinkList: React.FC<LinkListProps> = ({ links, action }) => {
   return (
     <List
       as="ul"
@@ -42,7 +38,6 @@ const LinkList: React.FC<{
       margin={0}
       paddingX={{ md: 8 }}
       marginX={{ md: 16 }}
-      {...rest}
     >
       {links.map((link: AppHeaderLinkItem) => {
         return (
@@ -62,17 +57,11 @@ export const AppHeaderLinkSections: React.FC<AppHeaderLinkSectionsProps> = ({
   switch (item.type) {
     case 'profile-dropdown':
       return (
-        <div>
-          {item.popover.map((linkSection: AppHeaderLinkItem[], i) => {
-            return (
-              <LinkList
-                links={linkSection}
-                action={action}
-                variant={i !== 0 ? 'separated' : undefined}
-              />
-            );
-          })}
-        </div>
+        <>
+          {item.popover.map((linkSection, i) => (
+            <LinkList links={linkSection} action={action} />
+          ))}
+        </>
       );
     default:
       return <LinkList links={item.popover} action={action} />;

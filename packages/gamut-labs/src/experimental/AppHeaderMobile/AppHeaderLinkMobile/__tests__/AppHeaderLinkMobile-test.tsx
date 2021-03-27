@@ -1,14 +1,12 @@
-import { theme } from '@codecademy/gamut-styles';
-import { ThemeProvider } from '@emotion/react';
-import { render, screen } from '@testing-library/react';
+import { setupRtl } from '@codecademy/gamut-tests';
 import React from 'react';
 
-import { AppHeaderLinkMobile, AppHeaderLinkMobileProps } from '..';
+import { AppHeaderLinkMobile } from '..';
 
 const testText = 'Test Link';
 const action = jest.fn();
 
-const props: AppHeaderLinkMobileProps = {
+const renderView = setupRtl(AppHeaderLinkMobile, {
   action,
   item: {
     dataTestId: '',
@@ -19,20 +17,11 @@ const props: AppHeaderLinkMobileProps = {
     type: 'link',
     icon: () => <svg />,
   },
-};
-
-const renderAppHeaderLinkMobile = () => {
-  return render(
-    <ThemeProvider theme={theme}>
-      <AppHeaderLinkMobile {...props} />
-    </ThemeProvider>
-  );
-};
+});
 
 describe('AppHeaderLinkMobile', () => {
   it('calls action() when clicked', () => {
-    renderAppHeaderLinkMobile();
-    screen.getByRole('link').click();
+    renderView().view.getByRole('link').click();
     expect(action).toHaveBeenCalled();
   });
 });

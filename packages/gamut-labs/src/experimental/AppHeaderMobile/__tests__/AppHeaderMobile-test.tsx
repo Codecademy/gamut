@@ -1,7 +1,5 @@
-import { theme } from '@codecademy/gamut-styles';
-import { ThemeProvider } from '@emotion/react';
-import { render, screen } from '@testing-library/react';
-import React from 'react';
+import { setupRtl } from '@codecademy/gamut-tests';
+import { screen } from '@testing-library/react';
 
 import { AppHeaderMobile, AppHeaderMobileProps } from '..';
 
@@ -65,33 +63,27 @@ const mainMenuProps: AppHeaderMobileProps = {
   },
 };
 
-const renderAppHeader = (props: AppHeaderMobileProps) => {
-  return render(
-    <ThemeProvider theme={theme}>
-      <AppHeaderMobile {...props} />
-    </ThemeProvider>
-  );
-};
+const renderView = setupRtl(AppHeaderMobile);
 
 describe('AppHeaderMobile', () => {
   it('renders an AppHeaderLogo when the item type is logo', () => {
-    renderAppHeader(logoProps);
+    renderView(logoProps);
     screen.getByTitle('Codecademy Logo');
   });
 
   it('renders an AppHeaderLink when the item type is link', () => {
-    renderAppHeader(linkProps);
+    renderView(linkProps);
     screen.getByText('AppHeaderLink');
   });
 
   it('renders a button to open the mobile menu', () => {
-    renderAppHeader(linkProps);
+    renderView(linkProps);
     screen.getByText('AppHeaderLink');
   });
 
   describe('Mobile Menu Open', () => {
     beforeEach(() => {
-      renderAppHeader(mainMenuProps);
+      renderView(mainMenuProps);
       screen.getByTestId('header-mobile-menu').click();
     });
 
