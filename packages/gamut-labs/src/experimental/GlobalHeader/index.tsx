@@ -95,7 +95,7 @@ const getMobileAppHeaderItems = (
   }
 };
 
-const StickHeader = styled.div<{ faded: boolean }>(
+const StickyHeader = styled.div<{ faded: boolean }>(
   ({ theme, faded }) => css`
     height: ${theme.elements.headerHeight};
     border-bottom: 1px solid ${theme.colors.navy};
@@ -121,7 +121,7 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
   const isInHeaderRegion = y === 0;
 
   return (
-    <StickHeader faded={isInHeaderRegion}>
+    <StickyHeader faded={isInHeaderRegion}>
       <FlexBox height="100%" display={{ base: 'none', md: 'block' }}>
         <AppHeader
           action={props.action}
@@ -141,6 +141,6 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
           }
         />
       </FlexBox>
-    </StickHeader>
+    </StickyHeader>
   );
 };
