@@ -1,6 +1,5 @@
 import { styled } from '@storybook/theming';
-import { swatches, fontSize } from '@codecademy/gamut-styles';
-import { fontFamily } from '@codecademy/gamut-styles/src';
+import { fontFamily, swatches, fontSize } from '@codecademy/gamut-styles/src';
 
 export const ScaleColumn = styled.div`
   font-size: ${fontSize[14]};

@@ -7,8 +7,11 @@ import { createVariables } from './createVariables';
 /**
  * Returns an type of any object with { key: 'var(--key) }
  */
-export type KeyAsVariable<T extends Record<string, any>> = {
-  [V in keyof T]: `var(--${Extract<V, string>})`;
+export type KeyAsVariable<
+  T extends Record<string, any>,
+  Prefix extends string
+> = {
+  [V in keyof T]: `var(--${Prefix}-${Extract<V, string>})`;
 };
 
 /**
@@ -19,7 +22,7 @@ export type ThemeWithVariables<
   VariableKeys extends (keyof Theme)[]
 > = {
   [Key in keyof Theme]: Key extends VariableKeys[number]
-    ? KeyAsVariable<Theme[Key]>
+    ? KeyAsVariable<Theme[Key], Key extends string ? Key : never>
     : Theme[Key];
 };
 
@@ -50,7 +53,7 @@ export const createThemeVariables: CreateThemeVars = (theme, keys) => {
     // Update the theme object with the new tokens
     for (const variable in tokensToSerialize) {
       if (hasIn(tokensToSerialize, variable)) {
-        const variableReference = `var(--${variable})`;
+        const variableReference = `var(--${key}-${variable})`;
         updatedTheme[key][variable] = variableReference;
       }
     }
@@ -68,7 +71,7 @@ export const createThemeVariables: CreateThemeVars = (theme, keys) => {
     });
 
     // Create the variables and merge with the rest of the vars
-    merge(cssVariables, createVariables(replacedBreakpointAliases));
+    merge(cssVariables, createVariables(replacedBreakpointAliases, key));
   });
 
   return { cssVariables, theme: updatedTheme };

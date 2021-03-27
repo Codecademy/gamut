@@ -7,7 +7,7 @@ import {
   variant,
 } from '@codecademy/gamut-styles';
 import { compose, HandlerProps } from '@codecademy/gamut-system';
-import { css, Theme } from '@emotion/react';
+import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import React, { forwardRef, HTMLProps, MutableRefObject } from 'react';
 
@@ -15,73 +15,54 @@ export type LinkElements = HTMLAnchorElement | HTMLButtonElement;
 export interface AnchorProps extends HandlerProps<typeof anchorProps> {
   href?: string;
   as?: never;
-  mode?: 'light' | 'dark';
   variant?: 'standard' | 'inline' | 'interface';
 }
 export interface ForwardedProps
   extends Omit<HTMLProps<LinkElements>, keyof AnchorProps>,
     AnchorProps {}
 
-const createModeVariants = ({
-  text,
-  primary,
-}: Record<'text' | 'primary', keyof Theme['colors']>) => {
-  const base = variant({
-    standard: {
-      textColor: primary,
-      borderColor: primary,
-      display: 'inline-block',
-      whiteSpace: 'nowrap',
-    },
-    inline: {
-      textDecoration: 'underline',
-      textColor: primary,
-      borderColor: primary,
-      display: 'inline-block',
-      whiteSpace: 'nowrap',
-    },
-    interface: {
-      textColor: text,
-      borderColor: primary,
-      display: 'inline-flex',
-      alignItems: 'center',
-    },
-  });
+const base = variant({
+  standard: {
+    textColor: 'primary',
+    borderColor: 'primary',
+    display: 'inline-block',
+    whiteSpace: 'nowrap',
+  },
+  inline: {
+    textDecoration: 'underline',
+    textColor: 'primary',
+    borderColor: 'primary',
+    display: 'inline-block',
+    whiteSpace: 'nowrap',
+  },
+  interface: {
+    textColor: 'text',
+    borderColor: 'primary',
+    display: 'inline-flex',
+    alignItems: 'center',
+  },
+});
 
-  const hover = variant({
-    standard: {
-      textDecoration: 'underline',
-    },
-    inline: {},
-    interface: {
-      textColor: primary,
-    },
-  });
+const hover = variant({
+  standard: {
+    textDecoration: 'underline',
+  },
+  inline: {},
+  interface: {
+    textColor: 'primary',
+  },
+});
 
-  const focus = variant({
-    standard: {
-      textColor: text,
-      textDecoration: 'none',
-    },
-    inline: {
-      textDecoration: 'underline',
-    },
-    interface: {},
-  });
-
-  return { base, hover, focus };
-};
-
-const modes = {
-  dark: createModeVariants({
-    text: 'white',
-    primary: 'yellow',
-  }),
-  light: createModeVariants({
-    text: 'navy',
-    primary: 'hyper',
-  }),
-} as const;
+const focus = variant({
+  standard: {
+    textColor: 'text',
+    textDecoration: 'none',
+  },
+  inline: {
+    textDecoration: 'underline',
+  },
+  interface: {},
+});
 
 const anchorProps = compose(layout, typography, color, space);
 
@@ -120,9 +101,7 @@ export const AnchorBase = styled('a', {
   shouldForwardProp,
 })<AnchorProps>`
   ${anchorProps}
-  ${({ theme, mode = 'light', variant }) => {
-    const { base, hover, focus } = modes[mode];
-
+  ${({ theme, variant }) => {
     return css`
       ${base({ theme, variant })};
       position: relative;
