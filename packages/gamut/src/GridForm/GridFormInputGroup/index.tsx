@@ -1,8 +1,6 @@
-import styled from '@emotion/styled';
 import React from 'react';
 import { UseFormMethods } from 'react-hook-form';
 
-import { Box } from '../../Box';
 import { FormError, FormGroup, FormGroupLabel } from '../../Form';
 import { HiddenText } from '../../HiddenText';
 import { Column } from '../../Layout';
@@ -20,18 +18,10 @@ export type GridFormInputGroupProps = {
   isFirstError?: boolean;
   field: GridFormField;
   register: UseFormMethods['register'];
-  setValue: (value: any) => void;
+  setValue: UseFormMethods['setValue'];
   required?: boolean;
   showRequired?: boolean;
 };
-
-const StyledFormGroup = styled(FormGroup)`
-  margin-bottom: 0;
-  // This is always the input
-  > *:last-child {
-    width: 100%;
-  }
-`;
 
 export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
   error,
@@ -118,17 +108,18 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
 
   return (
     <Column size={field.size}>
-      <Box>
-        <StyledFormGroup>
-          {field.hideLabel ? <HiddenText>{label}</HiddenText> : label}
-          {getInput()}
-          {errorMessage && (
-            <FormError aria-live={isFirstError ? 'assertive' : 'off'}>
-              {errorMessage}
-            </FormError>
-          )}
-        </StyledFormGroup>
-      </Box>
+      <FormGroup>
+        {field.hideLabel ? <HiddenText>{label}</HiddenText> : label}
+        {getInput()}
+        {errorMessage && (
+          <FormError
+            role={isFirstError ? 'alert' : 'status'}
+            aria-live={isFirstError ? 'assertive' : 'off'}
+          >
+            {errorMessage}
+          </FormError>
+        )}
+      </FormGroup>
     </Column>
   );
 };
