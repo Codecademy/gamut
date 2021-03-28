@@ -2,6 +2,7 @@ import { variant } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React, { ComponentProps } from 'react';
 
+import { Anchor } from '../Anchor';
 import { Box, FlexBox } from '../Box';
 import { ContentContainer } from '../ContentContainer';
 
@@ -38,4 +39,32 @@ AppBarSection.defaultProps = {
   flexShrink: 1,
   flexBasis: '0',
   alignment: 'left',
+};
+
+export const AppBarTab = styled(Box)`
+  & + & {
+    margin-left: ${({ theme }) => theme.spacing[8]};
+  }
+`;
+
+export const AppBarButton = styled(Anchor)(
+  variant({
+    prop: 'menuVariant',
+    default: 'closed',
+    variants: {
+      open: {
+        letterSpacing: '-0.25px',
+        fontWeight: 'title',
+      },
+      closed: {},
+    },
+  })
+);
+
+AppBarButton.defaultProps = {
+  whiteSpace: 'nowrap',
+  variant: 'interface',
+  display: 'inline-flex',
+  width: { base: '100%', md: 'auto' },
+  paddingY: 12,
 };

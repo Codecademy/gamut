@@ -7,7 +7,6 @@ import {
   variant,
 } from '@codecademy/gamut-styles';
 import { compose, HandlerProps } from '@codecademy/gamut-system';
-import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import React, { forwardRef, HTMLProps, MutableRefObject } from 'react';
 
@@ -38,7 +37,7 @@ const base = variant({
   interface: {
     textColor: 'text',
     borderColor: 'primary',
-    display: 'inline-flex',
+    display: 'inline-block',
     alignItems: 'center',
   },
 });
@@ -97,58 +96,52 @@ const AnchorElement = forwardRef<LinkElements, ForwardedProps>(
   }
 );
 
-export const AnchorBase = styled('a', {
-  shouldForwardProp,
-})<AnchorProps>`
+export const AnchorBase = styled('a', { shouldForwardProp })<AnchorProps>`
+  ${base};
+  position: relative;
+
+  &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-radius: 4px;
+    border: 2px solid;
+    border-color: inherit;
+    opacity: 0;
+    transition: opacity 75ms ease-in, inset 75ms ease-in;
+  }
+
+  &:hover {
+    text-decoration: none;
+    cursor: pointer;
+    ${hover}
+  }
+
+  &:disabled,
+  &[disabled] {
+    cursor: not-allowed;
+    text-decoration: none;
+    color: ${({ theme }) => theme.colors['gray-700']};
+  }
+
+  &:focus,
+  &:focus-visible {
+    outline: none;
+  }
+
+  &:focus-visible {
+    ${focus}
+
+    &:after {
+      left: -${({ theme }) => theme.spacing[4]};
+      right: -${({ theme }) => theme.spacing[4]};
+      opacity: 1;
+    }
+  }
   ${anchorProps}
-  ${({ theme, variant }) => {
-    return css`
-      ${base({ theme, variant })};
-      position: relative;
-
-      &:after {
-        content: '';
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        border-radius: 4px;
-        border: 2px solid;
-        border-color: inherit;
-        opacity: 0;
-        transition: opacity 75ms ease-in, inset 75ms ease-in;
-      }
-
-      &:hover {
-        text-decoration: none;
-        cursor: pointer;
-        ${hover({ theme, variant })}
-      }
-
-      &:disabled,
-      &[disabled] {
-        cursor: not-allowed;
-        text-decoration: none;
-        color: ${theme.colors['gray-700']};
-      }
-
-      &:focus,
-      &:focus-visible {
-        outline: none;
-      }
-
-      &:focus-visible {
-        ${focus({ theme, variant })}
-
-        &:after {
-          left: -${theme.spacing[4]};
-          right: -${theme.spacing[4]};
-          opacity: 1;
-        }
-      }
-    `;
-  }}
 `;
 
 export const Anchor = AnchorBase.withComponent(AnchorElement);

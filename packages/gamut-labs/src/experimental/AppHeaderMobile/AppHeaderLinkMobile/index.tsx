@@ -1,7 +1,6 @@
-import { FlexBox } from '@codecademy/gamut';
+import { AppBarButton, FlexBox } from '@codecademy/gamut';
 import React from 'react';
 
-import { HeaderLink } from '../../AppHeader/AppHeaderElements/AppHeaderLink';
 import {
   AppHeaderClickHandler,
   AppHeaderLinkItem,
@@ -19,7 +18,7 @@ export const AppHeaderLinkMobile: React.FC<AppHeaderLinkMobileProps> = ({
   const Icon = item.icon;
 
   return (
-    <HeaderLink
+    <AppBarButton
       width="100%"
       data-intellimize={item.dataIntellimizeId}
       data-testid={item.dataTestId}
@@ -33,6 +32,6 @@ export const AppHeaderLinkMobile: React.FC<AppHeaderLinkMobileProps> = ({
         </FlexBox>
       )}
       {item.text}
-    </HeaderLink>
+    </AppBarButton>
   );
 };

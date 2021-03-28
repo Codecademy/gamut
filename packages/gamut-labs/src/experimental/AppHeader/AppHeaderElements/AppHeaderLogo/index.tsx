@@ -1,7 +1,7 @@
+import { AppBarButton } from '@codecademy/gamut';
 import React from 'react';
 
 import { Logo } from '../../../../brand/Logo';
-import { HeaderLink } from '../AppHeaderLink';
 import { AppHeaderClickHandler, AppHeaderLogoItem } from '../types';
 
 export type AppHeaderLogoProps = {
@@ -14,7 +14,7 @@ export const AppHeaderLogo: React.FC<AppHeaderLogoProps> = ({
   item,
 }) => {
   return (
-    <HeaderLink
+    <AppBarButton
       height="3rem"
       paddingTop={0}
       paddingBottom={4}
@@ -23,6 +23,6 @@ export const AppHeaderLogo: React.FC<AppHeaderLogoProps> = ({
       href={item.href}
     >
       <Logo type={item.pro ? 'proMono' : 'default'} height={27} />
-    </HeaderLink>
+    </AppBarButton>
   );
 };

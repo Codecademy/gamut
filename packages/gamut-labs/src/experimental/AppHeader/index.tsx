@@ -1,7 +1,7 @@
 import {
   AppBar,
   AppBarSection,
-  Box,
+  AppBarTab,
   FillButton,
   TextButton,
 } from '@codecademy/gamut';
@@ -76,13 +76,9 @@ export const AppHeader: React.FC<AppHeaderProps> = ({
 }) => {
   const mapItemsToElement = <T extends AppHeaderItem[]>(items: T) => {
     return items.map((item, index) => (
-      <Box
-        key={item.id}
-        marginLeft={index === 0 ? 0 : 8}
-        marginRight={index === items.length - 1 ? 0 : 8}
-      >
+      <AppBarTab key={item.id}>
         {mapItemToElement(action, item, redirectParam)}
-      </Box>
+      </AppBarTab>
     ));
   };
 
