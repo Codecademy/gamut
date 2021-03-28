@@ -55,7 +55,7 @@ There are many cases where you may need a specific background color for a sectio
 import { Background } from '@codecademy/gamut';
 
 const Page = ({ children }) => (
-  <Background color="hyper">{children}</Background>;
+  <Background initialBackground="hyper">{children}</Background>;
 );
 ```
 
@@ -63,12 +63,12 @@ const Page = ({ children }) => (
 
 Sometimes you may just want to wrap a page in a different background color than the base color mode.
 
-<BackgroundExample color="hyper" />
+<BackgroundExample initialBackground="hyper" />
 
-<BackgroundExample color="beige" />
+<BackgroundExample initialBackground="beige" />
 
 In some cases you may want to use multiple areas with different backgrounds. `<Background />` makes this a simple task by provisioning a new color context for all components inside.
 
-<BackgroundExample color="black">
-  <BackgroundExample color="paleGreen" />
+<BackgroundExample initialBackground="black">
+  <BackgroundExample initialBackground="paleGreen" />
 </BackgroundExample>

@@ -4,49 +4,64 @@ import { getContrast, meetsContrastGuidelines } from 'polished';
 import React, { useMemo } from 'react';
 
 import { ColorMode } from './ColorMode';
+import { properties } from './props';
 import { colors } from './variables';
 
-const Reset = styled.div<{ color: string }>`
-  background-color: ${({ color }) => color};
-`;
+const Reset = styled.div(properties.backgroundColor);
 
-export const Background: React.FC<{ color: keyof typeof colors }> = ({
+export type BackgroundProps = {
+  initialBackground: keyof typeof colors;
+  className?: string;
+};
+
+export const Background: React.FC<BackgroundProps> = ({
   children,
-  color,
+  className,
+  initialBackground,
 }) => {
   const {
-    colors: themeColors,
     colorModes: { active, modes },
   } = useTheme();
   const accessibleMode = useMemo(() => {
     const { light, dark } = modes;
 
-    const lightModeContrast = getContrast(light.text, colors[color]);
-    const darkModeContrast = getContrast(dark.text, colors[color]);
+    const lightModeContrast = getContrast(
+      light.text,
+      colors[initialBackground]
+    );
+    const darkModeContrast = getContrast(dark.text, colors[initialBackground]);
 
     // Minimum Contrast Requirement is 4.5 for AA (this will not be a perfect metric since there are multiple standards but should meet most of our needs)
     const highestContrastMode =
       lightModeContrast > darkModeContrast ? 'light' : 'dark';
     const { AA } = meetsContrastGuidelines(
       modes[highestContrastMode].text,
-      colors[color]
+      colors[initialBackground]
     );
     if (!AA) {
       // eslint-disable-next-line no-console
       console.warn(
-        `You are using an inaccessible background color ${color} (${colors[color]}) for color contrast`
+        `You are using an inaccessible background color ${initialBackground} (${colors[initialBackground]}) for color contrast`
       );
     }
     return highestContrastMode;
-  }, [color, modes]);
+  }, [initialBackground, modes]);
 
   if (accessibleMode === active) {
-    return <Reset color={themeColors[color]}>{children}</Reset>;
+    return (
+      <Reset className={className} backgroundColor={initialBackground}>
+        {children}
+      </Reset>
+    );
   }
 
   return (
-    <ColorMode mode={accessibleMode}>
-      <Reset color={themeColors[color]}>{children}</Reset>
+    <ColorMode
+      className={className}
+      mode={accessibleMode}
+      initialBackground={initialBackground}
+    >
+      {children}
     </ColorMode>
   );
 };
