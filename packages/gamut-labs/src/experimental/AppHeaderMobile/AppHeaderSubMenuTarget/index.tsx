@@ -11,8 +11,7 @@ export type AppHeaderSubMenuTargetProps = {
   openSubMenu: (event: React.MouseEvent, item: AppHeaderDropdownItem) => void;
 };
 
-const DisplayNameText = styled.div`
-  max-width: 70vw;
+const DisplayNameText = styled(FlexBox)`
   overflow: hidden;
   text-overflow: ellipsis;
 `;
@@ -36,19 +35,16 @@ export const AppHeaderSubMenuTarget: React.FC<AppHeaderSubMenuTargetProps> = ({
       aria-label={`open ${item} submenu`}
     >
       {getIcon()}
-      <FlexBox
+      <DisplayNameText
+        maxWidth="100%"
         alignItems="center"
         flexGrow={1}
         flexShrink={1}
         flexBasis="0"
-        marginLeft={16}
+        marginX={16}
       >
-        {item.type === 'profile-dropdown' ? (
-          <DisplayNameText>{item.userDisplayName}</DisplayNameText>
-        ) : (
-          item.text
-        )}
-      </FlexBox>
+        {item.type === 'profile-dropdown' ? item.userDisplayName : item.text}
+      </DisplayNameText>
       <MiniArrowRightIcon size={12} aria-hidden />
     </AppBarButton>
   );
