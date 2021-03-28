@@ -43,7 +43,7 @@ AppBarSection.defaultProps = {
 
 export const AppBarTab = styled(Box)`
   & + & {
-    margin-left: ${({ theme }) => theme.spacing[8]};
+    margin-left: ${({ theme }) => theme.spacing[16]};
   }
 `;
 
@@ -66,5 +66,5 @@ AppBarButton.defaultProps = {
   variant: 'interface',
   display: 'inline-flex',
   width: { base: '100%', md: 'auto' },
-  paddingY: 12,
+  paddingY: [12, , , 8],
 };

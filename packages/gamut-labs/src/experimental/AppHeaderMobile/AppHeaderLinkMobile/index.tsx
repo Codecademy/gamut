@@ -20,6 +20,7 @@ export const AppHeaderLinkMobile: React.FC<AppHeaderLinkMobileProps> = ({
   return (
     <AppBarButton
       width="100%"
+      paddingY={12}
       data-intellimize={item.dataIntellimizeId}
       data-testid={item.dataTestId}
       href={item.href}
