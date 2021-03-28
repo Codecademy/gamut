@@ -1,10 +1,9 @@
-import { Box } from '@codecademy/gamut';
+import { AppBarButton, Box } from '@codecademy/gamut';
 import { MiniArrowLeftIcon } from '@codecademy/gamut-icons';
 import React from 'react';
 
 import { Text } from '../../../experimental/Text';
 import { AppHeaderDropdownProps } from '../../AppHeader/AppHeaderElements/AppHeaderDropdown';
-import { HeaderLink } from '../../AppHeader/AppHeaderElements/AppHeaderLink';
 import { AppHeaderLinkSections } from '../../AppHeader/AppHeaderElements/AppHeaderLinkSections';
 
 export type AppHeaderSubMenuMobileProps = AppHeaderDropdownProps & {
@@ -18,12 +17,12 @@ export const AppHeaderSubMenuMobile: React.FC<AppHeaderSubMenuMobileProps> = ({
 }) => {
   return (
     <Box aria-labelledby={`${item.text} menu`}>
-      <HeaderLink onClick={handleClose} marginBottom={16}>
+      <AppBarButton onClick={handleClose} marginBottom={16}>
         <MiniArrowLeftIcon size={12} aria-hidden />
         <Box fontSize={16} marginLeft={8}>
           Full Menu
         </Box>
-      </HeaderLink>
+      </AppBarButton>
       <Text
         as="h1"
         fontSize={22}

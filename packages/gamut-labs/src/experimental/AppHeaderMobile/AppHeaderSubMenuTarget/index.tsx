@@ -1,10 +1,9 @@
-import { FlexBox } from '@codecademy/gamut';
+import { AppBarButton, FlexBox } from '@codecademy/gamut';
 import { MiniArrowRightIcon } from '@codecademy/gamut-icons';
 import styled from '@emotion/styled';
 import React from 'react';
 
 import { AppHeaderAvatar } from '../../AppHeader/AppHeaderElements/AppHeaderAvatar';
-import { HeaderLink } from '../../AppHeader/AppHeaderElements/AppHeaderLink';
 import { AppHeaderDropdownItem } from '../../AppHeader/AppHeaderElements/types';
 
 export type AppHeaderSubMenuTargetProps = {
@@ -31,7 +30,7 @@ export const AppHeaderSubMenuTarget: React.FC<AppHeaderSubMenuTargetProps> = ({
   };
 
   return (
-    <HeaderLink
+    <AppBarButton
       data-testid={item.dataTestId}
       onClick={(event: React.MouseEvent) => openSubMenu(event, item)}
       aria-label={`open ${item} submenu`}
@@ -51,6 +50,6 @@ export const AppHeaderSubMenuTarget: React.FC<AppHeaderSubMenuTargetProps> = ({
         )}
       </FlexBox>
       <MiniArrowRightIcon size={12} aria-hidden />
-    </HeaderLink>
+    </AppBarButton>
   );
 };
