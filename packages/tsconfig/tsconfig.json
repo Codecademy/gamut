@@ -7,7 +7,7 @@
     "module": "esnext",
     "moduleResolution": "node",
     "noUnusedLocals": true,
-    "noUnusedParameters": false,
+    "noUnusedParameters": true,
     "skipLibCheck": true,
     "strict": true,
     "target": "esnext"
