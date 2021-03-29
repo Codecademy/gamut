@@ -3,7 +3,6 @@ import { css } from '@emotion/react';
 import styled, { StyledComponent } from '@emotion/styled';
 import React, {
   ChangeEvent,
-  FocusEvent,
   forwardRef,
   InputHTMLAttributes,
   useState,
@@ -34,9 +33,12 @@ export type InputProps = InputHTMLAttributes<HTMLInputElement> & {
   required?: boolean;
   type?: string;
   valid?: boolean;
+  /**
+   * Allows Inputs to manage their own activated style state to acccount for some edge-cases.
+   */
+  activated?: boolean;
 };
 export interface StyledInputProps extends InputProps {
-  activated?: boolean;
   icon?: boolean;
 }
 
@@ -97,22 +99,19 @@ const getInputState = (error: boolean, valid: boolean) => {
 };
 
 export const Input = forwardRef<HTMLInputElement, InputWrapperProps>(
-  ({ error, className, id, valid, as: As, icon: Icon, ...rest }, ref) => {
-    const [activated, setActivated] = useState(false);
-    const [hasBeenFocused, setHasBeenFocused] = useState(false);
+  (
+    { error, className, id, valid, activated, as: As, icon: Icon, ...rest },
+    ref
+  ) => {
+    const [activatedStyle, setActivatedStyle] = useState(false);
 
     const { color, icon } = inputStates[
       getInputState(Boolean(error), Boolean(valid))
     ];
 
-    const focusHandler = (event: FocusEvent<HTMLInputElement>) => {
-      rest?.onFocus?.(event);
-      setHasBeenFocused(true);
-    };
-
     const changeHandler = (event: ChangeEvent<HTMLInputElement>) => {
       rest?.onChange?.(event);
-      hasBeenFocused ? setActivated(true) : null;
+      setActivatedStyle(true);
     };
 
     const AsComponent = As || InputElement;
@@ -125,11 +124,10 @@ export const Input = forwardRef<HTMLInputElement, InputWrapperProps>(
           id={id || rest.htmlFor}
           ref={ref}
           error={error}
-          activated={activated}
+          activated={activated === undefined ? activatedStyle : activated}
           icon={error || valid || !!Icon}
           className={className}
           onChange={changeHandler}
-          onFocus={(event: FocusEvent<HTMLInputElement>) => focusHandler(event)}
         />
         {!!ShownIcon && (
           <FlexBox
