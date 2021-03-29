@@ -36,10 +36,10 @@ export const HubCard: React.FC<HubCardProps> = ({
     height="11.25rem"
   >
     <Box padding={24} backgroundColor="white" width="100%" maxWidth="17.5rem">
-      <Text as="p" fontSize={16}>
+      <Text as="div" fontSize={16}>
         {eyebrowTitle}
       </Text>
-      <Text as="p" fontSize={22} fontWeight="title">
+      <Text as="div" fontSize={22} fontWeight="title">
         {title}
       </Text>
     </Box>
