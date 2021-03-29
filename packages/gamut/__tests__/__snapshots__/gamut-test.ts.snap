@@ -83,7 +83,6 @@ Array [
   "TextArea",
   "TextButton",
   "TextDeprecated",
-  "textProps",
   "Toggle",
   "ToolTip",
   "Truncate",

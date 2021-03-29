@@ -63,7 +63,7 @@ const textVariants = variant({
   },
 });
 
-export const textProps = compose(layout, typography, color, space);
+const textProps = compose(layout, typography, color, space);
 
 export interface TextProps
   extends HandlerProps<typeof textProps>,
