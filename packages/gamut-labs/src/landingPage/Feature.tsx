@@ -1,4 +1,4 @@
-import { Box, Markdown, NewText } from '@codecademy/gamut';
+import { Box, Markdown, Text } from '@codecademy/gamut';
 import { mediaQueries } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React from 'react';
@@ -25,14 +25,14 @@ export const FeaturedIcon: React.FC<FeaturedIconProps> = ({ src, alt }) => (
 );
 
 export const FeaturedStat: React.FC = ({ children }) => (
-  <NewText
+  <Text
     as="p"
     fontSize={{ base: 44, lg: 64 }}
     fontWeight="title"
     data-testid="feature-stat"
   >
     {children}
-  </NewText>
+  </Text>
 );
 
 export type FeaturedTitleProps = {
@@ -42,9 +42,9 @@ export const FeaturedTitle: React.FC<FeaturedTitleProps> = ({
   as,
   children,
 }) => (
-  <NewText as={as || 'h3'} fontSize={{ base: 22, lg: 26 }}>
+  <Text as={as || 'h3'} fontSize={{ base: 22, lg: 26 }}>
     {children}
-  </NewText>
+  </Text>
 );
 
 const StyledMarkdown = styled(Markdown)`

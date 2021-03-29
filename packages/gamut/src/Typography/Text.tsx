@@ -66,12 +66,12 @@ export interface TextProps
   extends HandlerProps<typeof textProps>,
     HandlerProps<typeof textVariants> {}
 
-export const NewText = styled('span', { shouldForwardProp })<TextProps>(
+export const Text = styled('span', { shouldForwardProp })<TextProps>(
   textVariants,
   textProps
 );
 
-NewText.defaultProps = {
+Text.defaultProps = {
   as: 'span',
   margin: 0,
 };
