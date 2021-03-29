@@ -44,15 +44,18 @@ const textVariants = variant({
     },
     small: {
       fontSize: 14,
+      display: 'inline-block',
     },
     p: {
       fontSize: 16,
     },
     strong: {
       fontWeight: 'title',
+      display: 'inline-block',
     },
     code: {
       fontFamily: 'monospace',
+      display: 'inline-block',
     },
     span: {
       display: 'inline-block',
