@@ -379,6 +379,25 @@ the [`FillButton`](/?path=/docs/atoms-button--fill-button) or [`CTAButton`](?pat
             mode: 'dark',
           }}
         />
+        <GridForm
+          fields={[
+            {
+              label: 'Simple text',
+              name: 'simple-text',
+              size: 6,
+              type: 'text',
+            },
+          ]}
+          onSubmit={async (values) => {
+            action('Form Submitted')(values);
+          }}
+          submit={{
+            buttonType: 'deprecated-button',
+            contents: 'Deprecated Button',
+            size: 12,
+            theme: 'brand-purple',
+          }}
+        />
       </>
     )}
   </Story>

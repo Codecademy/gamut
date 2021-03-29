@@ -4,14 +4,17 @@ import React from 'react';
 
 import { Box } from '../../Box';
 import { CTAButton, FillButton } from '../../Button';
-import { ButtonDeprecatedProps } from '../../ButtonDeprecated';
+import {
+  ButtonDeprecated,
+  ButtonDeprecatedProps,
+} from '../../ButtonDeprecated';
 import { Column, ColumnSizes } from '../../Layout';
 import { VisualTheme } from '../../theming/VisualTheme';
 import { ResponsiveProperty } from '../../typings/responsive-properties';
 
 export type GridFormSubmitPosition = keyof typeof positions;
 
-export type ButtonType = 'cta-button' | 'fill-button';
+export type ButtonType = 'cta-button' | 'fill-button' | 'deprecated-button';
 
 export type GridFormSubmitProps = {
   contents: React.ReactNode;
@@ -20,6 +23,8 @@ export type GridFormSubmitProps = {
   position?: GridFormSubmitPosition;
   size: ResponsiveProperty<ColumnSizes>;
   mode?: VisualTheme;
+  theme?: ButtonDeprecatedProps['theme'];
+  outline?: ButtonDeprecatedProps['outline'];
 };
 
 const positions = {
@@ -36,22 +41,38 @@ export const GridFormSubmit: React.FC<GridFormSubmitProps> = ({
   position = 'left',
   size,
   buttonType,
-  ...rest
+  disabled,
+  mode,
+  outline,
+  theme = 'brand-purple',
 }) => {
   const getButton = () => {
-    if (buttonType === 'cta-button') {
-      return (
-        <CTAButton type="submit" {...rest}>
-          {contents}
-        </CTAButton>
-      );
+    switch (buttonType) {
+      case 'cta-button':
+        return (
+          <CTAButton type="submit" mode={mode} disabled={disabled}>
+            {contents}
+          </CTAButton>
+        );
+      case 'fill-button':
+        return (
+          <FillButton type="submit" mode={mode} disabled={disabled}>
+            {contents}
+          </FillButton>
+        );
+      case 'deprecated-button':
+        // There are current designs that currently rely on the deprecated button
+        return (
+          <ButtonDeprecated
+            disabled={disabled}
+            outline={outline}
+            theme={theme}
+            type="submit"
+          >
+            {contents}
+          </ButtonDeprecated>
+        );
     }
-
-    return (
-      <FillButton type="submit" {...rest}>
-        {contents}
-      </FillButton>
-    );
   };
 
   return (
