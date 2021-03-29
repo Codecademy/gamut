@@ -13,7 +13,7 @@ import React, { ReactElement } from 'react';
 
 import { Box, FlexBox, IconButton } from '..';
 import { Notification } from '../NotificationList/typings';
-import { Text } from '../Typography/Text';
+import { NewText } from '../Typography/Text';
 
 const StyledLink = styled.a`
   text-decoration: none;
@@ -93,10 +93,10 @@ export const NotificationItemNew: React.FC<NotificationItemNewProps> = ({
     <FlexBox zIndex={1} position="relative">
       {renderIcon()}
       <Box flexBasis={0} flexGrow={1} paddingLeft={12}>
-        <Text as="span">{text}</Text>
-        <Text as="span" marginLeft={4} textColor="gray-600">
+        <NewText as="span">{text}</NewText>
+        <NewText as="span" marginLeft={4} textColor="gray-600">
           {date}
-        </Text>
+        </NewText>
       </Box>
     </FlexBox>
   );
