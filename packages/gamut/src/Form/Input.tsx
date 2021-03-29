@@ -56,13 +56,9 @@ export interface InputWrapperProps extends InputProps {
 }
 
 // ReactRecurly has some specific needs around padding and focus.
-export const reactRecurlyFormFieldFocusStyles = css`
-  ${formFieldFocusStyles}
-`;
+export const reactRecurlyFormFieldFocusStyles = formFieldFocusStyles
 
-export const reactRecurlyFormFieldPaddingStyles = css`
-  ${formFieldPaddingStyles}
-`;
+export const reactRecurlyFormFieldPaddingStyles = formFieldPaddingStyles
 
 export const iFrameWrapper = styled.div<conditionalInputStyleProps>`
   ${formBaseFieldStyles}
