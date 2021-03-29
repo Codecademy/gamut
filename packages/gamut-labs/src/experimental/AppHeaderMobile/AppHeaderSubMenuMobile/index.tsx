@@ -25,10 +25,6 @@ const FullMenuButton = styled.button`
   ${focusStyles}
 `;
 
-const Heading = styled(Text)`
-  line-height: 1.25;
-`;
-
 export const AppHeaderSubMenuMobile: React.FC<AppHeaderSubMenuMobileProps> = ({
   action,
   handleClose,
@@ -42,9 +38,9 @@ export const AppHeaderSubMenuMobile: React.FC<AppHeaderSubMenuMobileProps> = ({
           Full Menu
         </Box>
       </FullMenuButton>
-      <Heading as="h1" fontSize={22} marginBottom={16} fontWeight="title">
+      <Text as="h1" fontSize={22} marginBottom={16}>
         {item.type === 'profile-dropdown' ? item.userDisplayName : item.text}
-      </Heading>
+      </Text>
       <AppHeaderLinkSections action={action} item={item} />
     </Box>
   );

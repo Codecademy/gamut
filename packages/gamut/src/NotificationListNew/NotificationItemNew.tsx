@@ -54,11 +54,6 @@ const StyledImg = styled.img`
   width: 3rem;
 `;
 
-const DateText = styled(Text)`
-  margin-left: 4px;
-  color: ${({ theme }) => theme.colors['gray-600']};
-`;
-
 export type NotificationItemNewProps = {
   notification: Notification;
   handleClick?: (event: object) => void;
@@ -97,13 +92,11 @@ export const NotificationItemNew: React.FC<NotificationItemNewProps> = ({
   const notificationContent: ReactElement = (
     <FlexBox zIndex={1} position="relative">
       {renderIcon()}
-      <Box flexBasis={0} flexGrow={1} paddingLeft={12} textColor="navy">
-        <Text as="span" fontSize="sm">
-          {text}
-        </Text>
-        <DateText as="span" fontSize="sm">
+      <Box flexBasis={0} flexGrow={1} paddingLeft={12}>
+        <Text as="span">{text}</Text>
+        <Text as="span" marginLeft={4} textColor="gray-600">
           {date}
-        </DateText>
+        </Text>
       </Box>
     </FlexBox>
   );

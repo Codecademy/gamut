@@ -1,9 +1,8 @@
-import { Box, Markdown } from '@codecademy/gamut';
+import { Box, Markdown, Text } from '@codecademy/gamut';
 import { mediaQueries } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React from 'react';
 
-import { Text } from '../experimental/Text';
 import { BaseProps } from './types';
 
 const Img = styled.img`
@@ -27,11 +26,10 @@ export const FeaturedIcon: React.FC<FeaturedIconProps> = ({ src, alt }) => (
 
 export const FeaturedStat: React.FC = ({ children }) => (
   <Text
-    as="div"
+    as="p"
     fontSize={{ base: 44, lg: 64 }}
     fontWeight="title"
     data-testid="feature-stat"
-    textColor="navy"
   >
     {children}
   </Text>
@@ -44,12 +42,7 @@ export const FeaturedTitle: React.FC<FeaturedTitleProps> = ({
   as,
   children,
 }) => (
-  <Text
-    as={as || 'h3'}
-    fontSize={{ base: 22, lg: 26 }}
-    fontWeight="title"
-    textColor="navy"
-  >
+  <Text as={as || 'h3'} fontSize={{ base: 22, lg: 26 }}>
     {children}
   </Text>
 );
@@ -69,7 +62,7 @@ export const FeaturedDescription: React.FC<FeaturedDescriptionProps> = ({
   desc,
   onAnchorClick,
 }) => (
-  <Box textColor="navy">
+  <Box>
     <StyledMarkdown text={desc} spacing="none" onAnchorClick={onAnchorClick} />
   </Box>
 );
