@@ -8,15 +8,13 @@ import styled from '@emotion/styled';
 import { each, isArray, isObject } from 'lodash';
 import React, {
   ChangeEvent,
-  ElementConfig,
   forwardRef,
-  ReactNode,
   SelectHTMLAttributes,
   useState,
 } from 'react';
 import ReactSelect, { components } from 'react-select';
 
-import { Box, FlexBox } from '../Box';
+import { Box } from '../Box';
 import {
   colorStates,
   conditionalStyles,
@@ -93,6 +91,10 @@ export const formBaseStyles = css`
 
 const newFormBase = css(formBaseStyles);
 
+function styleFunction(provided, state) {
+  return { ...provided, color: state.isFocused ? 'blue' : 'red' };
+}
+
 const customStyles = {
   dropdownIndicator: (provided, state) => ({
     ...provided,
@@ -104,8 +106,10 @@ const customStyles = {
     color: state.isSelected ? 'yellow' : 'black',
     backgroundColor: state.isSelected ? 'green' : 'white',
   }),
-  control: (provided) => ({
-    ...css(provided, selectBaseStyles),
+  control: (provided, state) => ({
+    ...provided,
+    border: state.isFocused ? 'solid 1px red' : null,
+    // ...css(provided, selectBaseStyles),
   }),
   container: (provided) => ({
     ...provided,
