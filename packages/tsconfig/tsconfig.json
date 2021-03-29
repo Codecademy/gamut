@@ -8,6 +8,7 @@
     "moduleResolution": "node",
     "noUnusedLocals": true,
     "noUnusedParameters": false,
+    "skipLibCheck": true,
     "strict": true,
     "target": "esnext"
   }
