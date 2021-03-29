@@ -54,7 +54,7 @@ const textVariants = variant({
     code: {
       fontFamily: 'monospace',
       backgroundColor: 'gray-100',
-      textColor: 'gray-600',
+      textColor: 'gray-700',
       paddingX: 4,
       borderRadius: '4px',
     },

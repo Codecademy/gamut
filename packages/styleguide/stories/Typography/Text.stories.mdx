@@ -1,6 +1,7 @@
 import { Box, GridBox, Text } from '@codecademy/gamut/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/dist/blocks';
+import { Fragment } from 'react';
 
 import { PropsTable } from '~styleguide/blocks';
 
@@ -51,7 +52,7 @@ export const tags = [
         alignItems="center"
       >
         {tags.map((tag) => (
-          <>
+          <Fragment key={tag}>
             <Box>
               <Text as="code" fontSize={18}>
                 {tag}
@@ -60,7 +61,7 @@ export const tags = [
             <Box>
               <Text as={tag}>Lorem Ipsum Dolor</Text>
             </Box>
-          </>
+          </Fragment>
         ))}
       </GridBox>
     )}
