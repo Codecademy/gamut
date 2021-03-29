@@ -70,7 +70,8 @@ export const NotificationItemNew: React.FC<NotificationItemNewProps> = ({
   notification,
   handleClick,
 }) => {
-  const { date, imageUrl, link, text, type } = notification;
+  const { date, imageUrl, link, text, type, id } = notification;
+  const notificationItemId = `NotificationItem${id}`;
 
   const renderIcon = () => {
     if (imageUrl) {
@@ -98,9 +99,9 @@ export const NotificationItemNew: React.FC<NotificationItemNewProps> = ({
     <FlexBox zIndex={1} position="relative">
       {renderIcon()}
       <Box flexBasis={0} flexGrow={1} paddingLeft={12} textColor="navy">
-        <Text as="span" fontSize="sm">
+        <Box as="span" fontSize={14} id={notificationItemId}>
           {text}
-        </Text>
+        </Box>
         <DateText as="span" fontSize="sm">
           {date}
         </DateText>
@@ -114,6 +115,7 @@ export const NotificationItemNew: React.FC<NotificationItemNewProps> = ({
       color={colors.navy}
       onClick={handleDismiss}
       aria-label="dismiss notification"
+      aria-describedby={notificationItemId}
       size="small"
       variant="secondary"
       z-index={1}
