@@ -1,3 +1,3 @@
-export * from './DeprecatedHeading';
-export * from './DeprecatedText';
+export * from './HeadingDeprecated';
+export * from './TextDeprecated';
 export * from './Text';

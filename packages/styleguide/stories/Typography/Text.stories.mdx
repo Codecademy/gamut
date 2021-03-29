@@ -1,4 +1,4 @@
-import { Text } from '@codecademy/gamut/src';
+import { NewText } from '@codecademy/gamut/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/dist/blocks';
 
@@ -6,7 +6,7 @@ import { PropsTable } from '~styleguide/blocks';
 
 <Meta
   title={title}
-  component={Text}
+  component={NewText}
   parameters={{
     subtitle: `This is a single primitive to handle all \`<p>\` and
 \`<span>\` tags with defined size intervals. Renders a \`<span>\` by default.`,
@@ -15,8 +15,8 @@ import { PropsTable } from '~styleguide/blocks';
 />
 
 <Canvas>
-  <Story name="Text" args={{ children: 'Hello World' }}>
-    {(args) => <Text {...args} />}
+  <Story name="NewText" args={{ children: 'Hello World' }}>
+    {(args) => <NewText {...args} />}
   </Story>
 </Canvas>
 

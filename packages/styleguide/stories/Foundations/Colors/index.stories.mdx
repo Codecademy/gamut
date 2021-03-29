@@ -1,7 +1,7 @@
 import {
   Column,
   Container,
-  DeprecatedHeading,
+  HeadingDeprecated,
   LayoutGrid,
 } from '@codecademy/gamut/src';
 import {
@@ -69,9 +69,9 @@ colors.blue;
     {objectKeys(trueColors).map((color) => (
       <Column key={color} size={{ xs: 6, sm: 3 }}>
         <Container flex={false}>
-          <DeprecatedHeading as="h2" fontSize="xs">
+          <HeadingDeprecated as="h2" fontSize="xs">
             {startCase(color)}
-          </DeprecatedHeading>
+          </HeadingDeprecated>
           <Swatch
             alias={colorNames[color].toUpperCase()}
             name={`$color-${parseCamelCase(color)}`}
@@ -94,9 +94,9 @@ For usage on links, buttons, and other interactive elements on dark and light ba
     {Object.keys(interactiveColors).map((color) => (
       <Column key={color} size={{ xs: 6, sm: 3 }}>
         <Container flex={false}>
-          <DeprecatedHeading as="h2" fontSize="xs">
+          <HeadingDeprecated as="h2" fontSize="xs">
             {startCase(color)}
-          </DeprecatedHeading>
+          </HeadingDeprecated>
           <Swatch
             name={`$color-interactive-${parseCamelCase(color)}`}
             hex={interactiveColors[color]}
@@ -116,9 +116,9 @@ For usage on links, buttons, and other interactive elements on dark and light ba
     {['black', 'white'].map((color) => (
       <Column key={color} size={{ xs: 6, sm: 3 }}>
         <Container flex={false}>
-          <DeprecatedHeading as="h2" fontSize="xs">
+          <HeadingDeprecated as="h2" fontSize="xs">
             {startCase(color)}
-          </DeprecatedHeading>
+          </HeadingDeprecated>
           <Swatch
             name={`$color-${parseCamelCase(color)}`}
             hex={colors[color]}
@@ -157,9 +157,9 @@ swatches.beige[0];
       {objectKeys(swatches).map((color) => (
         <Column key={color} size={{ xs: 6, sm: 3 }}>
           <Container flex={false}>
-            <DeprecatedHeading as="h2" fontSize="xs">
+            <HeadingDeprecated as="h2" fontSize="xs">
               {parseCamelCase(`color-${color}`)}
-            </DeprecatedHeading>
+            </HeadingDeprecated>
             <SwatchPalette
               variablePrefix={`color-${color}`}
               data={swatches[color]}
@@ -195,9 +195,9 @@ deprecatedColors.blue[900];
         .map((color) => (
           <Column key={color} size={{ xs: 6, sm: 3 }}>
             <Container flex={false}>
-              <DeprecatedHeading as="h2" fontSize="xs">
+              <HeadingDeprecated as="h2" fontSize="xs">
                 {parseCamelCase(`color-${color}`)}
-              </DeprecatedHeading>
+              </HeadingDeprecated>
               <SwatchPalette
                 variablePrefix={`color-${color}`}
                 data={deprecatedColors[color]}
@@ -221,9 +221,9 @@ grayish purples and a few mid-range minty greens.
       {objectKeys(platformColors).map((color) => (
         <Column key={color} size={{ xs: 6, sm: 3 }}>
           <Container flex={false}>
-            <DeprecatedHeading as="h2" fontSize="xs">
+            <HeadingDeprecated as="h2" fontSize="xs">
               Platform {startCase(color)}
-            </DeprecatedHeading>
+            </HeadingDeprecated>
             <SwatchPalette
               variablePrefix={`platform-${color}`}
               data={platformColors[color]}
@@ -247,9 +247,9 @@ The LE's code editor uses its own colors for text.
       {objectKeys(editorColors).map((color) => (
         <Column key={color} size={{ xs: 6, sm: 3 }}>
           <Container flex={false}>
-            <DeprecatedHeading as="h2" fontSize="xs">
+            <HeadingDeprecated as="h2" fontSize="xs">
               Editor {startCase(color)}
-            </DeprecatedHeading>
+            </HeadingDeprecated>
             <Swatch
               name={`color-editor-${parseCamelCase(color)}`}
               hex={editorColors[color]}
@@ -270,9 +270,9 @@ The LE's code editor uses its own colors for text.
     {objectKeys(brandColors).map((color) => (
       <Column key={color} size={{ xs: 6, sm: 3 }}>
         <Container flex={false}>
-          <DeprecatedHeading as="h2" fontSize="xs">
+          <HeadingDeprecated as="h2" fontSize="xs">
             {startCase(color)}
-          </DeprecatedHeading>
+          </HeadingDeprecated>
           <Swatch
             name={`$brand-${parseCamelCase(color)}`}
             hex={brandColors[color]}

@@ -4,39 +4,45 @@ import React from 'react';
 import { ContainerElementProps } from '../Layout/types';
 import { ResponsiveProperty } from '../typings/responsive-properties';
 import { generateResponsiveClassnames } from '../utils/generateResponsiveClassnames';
-import styles from './styles/Text.module.scss';
+import styles from './styles/Heading.module.scss';
 import { AllowedStyles } from './types';
 
-export type TextTags = 'p' | 'span' | 'div';
-export type TextSizes = 'sm' | 'md' | 'lg';
+export type HeadingTags = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+export type FontSizes = 'xxs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
 
-type TextProps = {
-  /** Text based tags */
-  as?: TextTags;
+export type HeadingDeprecatedProps = {
+  /** Heading tags h1 - h6 */
+  as: HeadingTags;
   /** A font-size/font-family pair */
-  fontSize?: ResponsiveProperty<TextSizes>;
+  fontSize: ResponsiveProperty<FontSizes>;
   /** Allows you to pass color attributes directly to the tag */
   style?: AllowedStyles;
+  /** Toggle default heading margin */
+  hideMargin?: boolean;
 } & ContainerElementProps;
 
 /**
  * @deprecated
  */
 
-export const DeprecatedText: React.FC<TextProps> = ({
+export const HeadingDeprecated: React.FC<HeadingDeprecatedProps> = ({
   children,
-  as: Element = 'p',
-  fontSize = 'md',
+  as: Element,
   className,
-  testId,
+  fontSize = 'md',
   style,
+  testId,
+  hideMargin = false,
 }) => {
   return (
     <Element
       className={cx(
-        styles.text,
+        styles.heading,
         className,
-        generateResponsiveClassnames({ fontSize }, styles)
+        generateResponsiveClassnames({ fontSize }, styles),
+        {
+          [styles.hideMargin]: hideMargin,
+        }
       )}
       data-testid={testId}
       style={style}
