@@ -1,11 +1,11 @@
-import { TextDeprecated } from '@codecademy/gamut/src';
+import { DeprecatedText } from '@codecademy/gamut/src';
 import { brandColors } from '@codecademy/gamut-styles';
 import title from '@codecademy/macros/lib/title.macro';
 import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
 
 <Meta
   title={title}
-  component={TextDeprecated}
+  component={DeprecatedText}
   parameters={{
     subtitle: `This primitive can be configured as any possible combination of our typography tokens`,
     status: 'deprecated',
@@ -20,23 +20,23 @@ import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
 />
 
 <Canvas>
-  <Story name="TextDeprecated" args={{ children: 'Hello World' }}>
-    {(args) => <TextDeprecated {...args} />}
+  <Story name="DeprecatedText" args={{ children: 'Hello World' }}>
+    {(args) => <DeprecatedText {...args} />}
   </Story>
 </Canvas>
 
 ## Props
 
-<Props story="TextDeprecated" />
+<Props story="DeprecatedText" />
 
 ## Custom colors
 
 <Canvas>
   <Story name="Custom Colors">
     {(args) => (
-      <TextDeprecated fontSize="md" style={{ color: brandColors.purple }}>
+      <DeprecatedText fontSize="md" style={{ color: brandColors.purple }}>
         Brand Purple
-      </TextDeprecated>
+      </DeprecatedText>
     )}
   </Story>
 </Canvas>
