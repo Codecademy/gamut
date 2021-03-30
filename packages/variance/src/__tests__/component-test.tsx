@@ -99,3 +99,90 @@ describe('style props', () => {
     });
   });
 });
+describe('static styles', () => {
+  describe('Variant integration', () => {
+    const variant = testVariance.createVariant({
+      bg: { property: 'background' },
+    });
+
+    const Test = styled.div`
+      background: yellow;
+    `;
+
+    const Div = styled.div(
+      variant({
+        variants: {
+          hi: {
+            bg: 'blue',
+            '&:hover': {
+              bg: 'green',
+            },
+          },
+          ho: {
+            bg: 'blue',
+            [`> *`]: {
+              bg: 'navy',
+            },
+          },
+        },
+      })
+    );
+
+    it('generates pseudo selector styles', () => {
+      const renderView = renderer
+        .create(
+          <Div variant="hi">
+            <Test>Hello</Test>
+          </Div>
+        )
+        .toJSON();
+      expect(renderView).toHaveStyleRule('background', 'blue');
+      expect(renderView).toHaveStyleRule('background', 'green', {
+        target: ':hover',
+      });
+    });
+
+    it('generates selector styles', () => {
+      const renderView = renderer
+        .create(
+          <Div variant="ho">
+            <Test>Hello</Test>
+          </Div>
+        )
+        .toJSON();
+      expect(renderView).toHaveStyleRule('background', 'blue');
+      expect(renderView).toHaveStyleRule('background', 'navy', {
+        target: '*',
+      });
+    });
+  });
+
+  describe('CSS integration', () => {
+    const css = testVariance.createCss({
+      bg: { property: 'background' },
+    });
+
+    const Div = styled.div(
+      css({
+        bg: 'blue',
+        '&:hover': {
+          bg: 'green',
+        },
+        '> *': {
+          bg: 'navy',
+        },
+      })
+    );
+
+    it('generates pseudo selector styles', () => {
+      const renderView = renderer.create(<Div>Hello</Div>).toJSON();
+      expect(renderView).toHaveStyleRule('background', 'blue');
+      expect(renderView).toHaveStyleRule('background', 'green', {
+        target: ':hover',
+      });
+      expect(renderView).toHaveStyleRule('background', 'navy', {
+        target: '*',
+      });
+    });
+  });
+});
