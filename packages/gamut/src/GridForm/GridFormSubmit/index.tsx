@@ -14,18 +14,29 @@ import { ResponsiveProperty } from '../../typings/responsive-properties';
 
 export type GridFormSubmitPosition = keyof typeof positions;
 
-export type ButtonType = 'cta' | 'fill' | 'business';
+export type ButtonType = 'cta' | 'fill';
+export type ButtonDeprecatedType = 'business';
 
-export type GridFormSubmitProps = {
+type GridFormBase = {
   contents: React.ReactNode;
-  type?: ButtonType;
-  disabled?: ButtonDeprecatedProps['disabled'];
   position?: GridFormSubmitPosition;
   size: ResponsiveProperty<ColumnSizes>;
-  mode?: VisualTheme;
+  disabled?: ButtonDeprecatedProps['disabled'];
+};
+
+type GridFormButtonSubmitPropsDeprecated = GridFormBase & {
+  type: ButtonDeprecatedType;
   theme?: ButtonDeprecatedProps['theme'];
   outline?: ButtonDeprecatedProps['outline'];
 };
+
+type GridFormSubmitPropsStandard = GridFormBase & {
+  type: ButtonType;
+  mode?: VisualTheme;
+};
+export type GridFormSubmitProps =
+  | GridFormButtonSubmitPropsDeprecated
+  | GridFormSubmitPropsStandard;
 
 const positions = {
   left: 'flex-start',
@@ -36,22 +47,13 @@ const positions = {
 
 const StyledColumn = styled(Column)(flex);
 
-export const GridFormSubmit: React.FC<GridFormSubmitProps> = ({
-  contents,
-  size,
-  disabled,
-  outline,
-  mode = 'light',
-  position = 'left',
-  type = 'fill',
-  theme = 'brand-purple',
-}) => {
+export const GridFormSubmit: React.FC<GridFormSubmitProps> = (props) => {
   const getButton = () => {
-    switch (type) {
+    switch (props.type) {
       case 'cta':
         return (
-          <CTAButton type="submit" mode={mode} disabled={disabled}>
-            {contents}
+          <CTAButton type="submit" mode={props.mode} disabled={props.disabled}>
+            {props.contents}
           </CTAButton>
         );
       case 'business':
@@ -65,18 +67,18 @@ export const GridFormSubmit: React.FC<GridFormSubmitProps> = ({
          */
         return (
           <ButtonDeprecated
-            disabled={disabled}
-            outline={outline}
-            theme={theme}
+            disabled={props.disabled}
+            outline={props.outline}
+            theme={props.theme}
             type="submit"
           >
-            {contents}
+            {props.contents}
           </ButtonDeprecated>
         );
       default:
         return (
-          <FillButton type="submit" mode={mode} disabled={disabled}>
-            {contents}
+          <FillButton type="submit" mode={props.mode} disabled={props.disabled}>
+            {props.contents}
           </FillButton>
         );
     }
@@ -84,9 +86,9 @@ export const GridFormSubmit: React.FC<GridFormSubmitProps> = ({
 
   return (
     <StyledColumn
-      justifyContent={positions[position]}
+      justifyContent={positions[props.position || 'left']}
       alignItems="center"
-      size={size}
+      size={props.size}
     >
       <Box marginBottom={8}>{getButton()}</Box>
     </StyledColumn>
