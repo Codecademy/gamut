@@ -1,5 +1,6 @@
 import { theme } from '@codecademy/gamut-styles';
 import { ThemeProvider } from '@emotion/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import { mount } from 'enzyme';
 import React from 'react';
 import { act } from 'react-dom/test-utils';
@@ -76,7 +77,7 @@ describe('GridForm', () => {
     ];
     const api = createPromise<{}>();
     const onSubmit = async (values: {}) => api.resolve(values);
-    const wrapped = mount(
+    render(
       <ThemeProvider theme={theme}>
         <GridForm
           fields={fields}
@@ -86,15 +87,13 @@ describe('GridForm', () => {
       </ThemeProvider>
     );
 
-    wrapped.setProps(wrapped.props());
-
     await act(async () => {
-      wrapped.find('form').simulate('submit');
+      fireEvent.click(screen.getByRole('button'));
     });
-    wrapped.update();
 
     // there should only be a single "assertive" error from the form submission
-    expect(wrapped.find('span[aria-live="assertive"]').length).toBe(1);
+    expect(await screen.queryAllByRole('alert').length).toBe(1);
+    expect(await screen.queryAllByRole('status').length).toBe(1);
   });
 
   describe('when "onSubmit" validation is selected', () => {
