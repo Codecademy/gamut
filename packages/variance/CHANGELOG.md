@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [0.2.1](https://github.com/Codecademy/client-modules/compare/@codecademy/variance@0.2.0...@codecademy/variance@0.2.1) (2021-03-30)
+
+**Note:** Version bump only for package @codecademy/variance
+
+
+
+
+
 ## [0.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/variance@0.1.2...@codecademy/variance@0.2.0) (2021-03-30)
 
 
