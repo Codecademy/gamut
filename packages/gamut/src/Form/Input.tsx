@@ -54,7 +54,7 @@ export interface InputWrapperProps extends InputProps {
   icon?: typeof AlertIcon;
 }
 
-/**  We greatly prefer NOT to do this but ReactRecurly has some specific needs around focus-styles + padding that force us to export them seperately. If we everystop using React-Recurly, this code will be 🔪.
+/**  We greatly prefer NOT to do this but ReactRecurly has some specific needs around focus-styles + padding that force us to export them seperately. If we ever stop using React-Recurly, this code will be 🔪.
  *tldr: Do not do this unless you have already talked to Web-Plat and have failed to find any alternate (and better) solutions. */
 export const reactRecurlyFormFieldFocusStyles = formFieldFocusStyles;
 export const reactRecurlyFormFieldPaddingStyles = formFieldPaddingStyles;
