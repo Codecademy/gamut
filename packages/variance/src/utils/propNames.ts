@@ -30,6 +30,17 @@ const SORT = {
   EQUAL: 1,
 };
 
+const compare = (a: number, b: number) => {
+  switch (Math.sign(a - b)) {
+    case -1:
+      return SORT.B_BEFORE_A;
+    case 1:
+      return SORT.A_BEFORE_B;
+    default:
+      return SORT.EQUAL;
+  }
+};
+
 /**
  * Orders all properties by the most dependent props
  * @param config
@@ -47,27 +58,14 @@ export const orderPropNames = (config: Record<string, BaseProperty>) =>
     // True shorthands go first (border etc)
     if (aIsShorthand && !bIsShorthand) return SORT.A_BEFORE_B;
     if (bIsShorthand && !aIsShorthand) return SORT.B_BEFORE_A;
+
     if (aIsShorthand && bIsShorthand) {
       const aPriority = SHORTHAND_PROPERTIES.indexOf(aProp);
       const bPriority = SHORTHAND_PROPERTIES.indexOf(bProp);
 
-      switch (Math.sign(aPriority - bPriority)) {
-        case -1:
-          return SORT.B_BEFORE_A;
-        case 1:
-          return SORT.A_BEFORE_B;
-        default:
-          return SORT.EQUAL;
-      }
+      return compare(aPriority, bPriority);
     }
 
     // If its not a true short hand compare number of properties the prop is responsible for, longest first.
-    switch (Math.sign(aProps - bProps)) {
-      case -1:
-        return SORT.B_BEFORE_A;
-      case 1:
-        return SORT.A_BEFORE_B;
-      default:
-        return SORT.EQUAL;
-    }
+    return compare(aProps, bProps);
   });
