@@ -1,5 +1,4 @@
 import { AlertIcon, CheckCircledIcon } from '@codecademy/gamut-icons';
-import { css } from '@emotion/react';
 import styled, { StyledComponent } from '@emotion/styled';
 import React, {
   ChangeEvent,
@@ -55,10 +54,10 @@ export interface InputWrapperProps extends InputProps {
   icon?: typeof AlertIcon;
 }
 
-// ReactRecurly has some specific needs around padding and focus.
-export const reactRecurlyFormFieldFocusStyles = formFieldFocusStyles
-
-export const reactRecurlyFormFieldPaddingStyles = formFieldPaddingStyles
+/**  We greatly prefer NOT to do this but ReactRecurly has some specific needs around focus-styles + padding that force us to export them seperately. If we everystop using React-Recurly, this code will be 🔪.
+ *tldr: Do not do this unless you have already talked to Web-Plat and have failed to find any alternate (and better) solutions. */
+export const reactRecurlyFormFieldFocusStyles = formFieldFocusStyles;
+export const reactRecurlyFormFieldPaddingStyles = formFieldPaddingStyles;
 
 export const iFrameWrapper = styled.div<conditionalInputStyleProps>`
   ${formBaseFieldStyles}
