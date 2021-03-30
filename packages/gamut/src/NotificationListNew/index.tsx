@@ -1,3 +1,4 @@
+import styled from '@emotion/styled';
 import { isEmpty } from 'lodash';
 import React from 'react';
 
@@ -12,18 +13,24 @@ export type NotificationListNewProps = {
   onNotificationClick?: (notification: Notification) => void;
 };
 
+const UnstyledUnorderedList = styled.ul`
+  list-style: none;
+  padding: 0;
+  margin: 0;
+`;
+
 export const NotificationListNew: React.FC<NotificationListNewProps> = ({
   notifications,
   onNotificationClick,
   onDismiss,
 }) => {
   const pattern = (
-    <Box paddingX={32}>
+    <Box as="li" paddingX={32} margin={0} aria-hidden="true">
       <Pattern name="dotsDense" height="1px" display="flex" />
     </Box>
   );
   return (
-    <div>
+    <UnstyledUnorderedList>
       {pattern}
       {isEmpty(notifications) ? (
         <EmptyNotification />
@@ -41,6 +48,6 @@ export const NotificationListNew: React.FC<NotificationListNewProps> = ({
           );
         })
       )}
-    </div>
+    </UnstyledUnorderedList>
   );
 };
