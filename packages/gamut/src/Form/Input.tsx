@@ -104,7 +104,11 @@ export const Input = forwardRef<HTMLInputElement, InputWrapperProps>(
       getInputState(Boolean(error), Boolean(valid))
     ];
 
-    const changeHandler = (event: ChangeEvent<HTMLInputElement>) => {
+    /*
+     * @remarks We would love to properly type this with generics, but, alas, we cannot yet. See comments on lines 45-47 for more detail.
+     */
+
+    const changeHandler = (event: ChangeEvent<any>) => {
       rest?.onChange?.(event);
       setActivatedStyle(true);
     };
