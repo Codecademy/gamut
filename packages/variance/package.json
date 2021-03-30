@@ -1,7 +1,7 @@
 {
   "name": "@codecademy/variance",
   "description": "Constraint based CSS in JS for building scalable design systems",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "keywords": [
     "emotion",
     "css",
@@ -37,8 +37,8 @@
   },
   "devDependencies": {
     "@emotion/jest": "^11.1.0",
-    "@emotion/react": "^11.1.4",
-    "@emotion/styled": "^11.0.0",
+    "@emotion/react": "^11.1.5",
+    "@emotion/styled": "^11.1.5",
     "@types/react-test-renderer": "^17.0.1"
   }
 }
