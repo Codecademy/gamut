@@ -24,7 +24,6 @@ export const NotificationListNew: React.FC<NotificationListNewProps> = ({
   );
   return (
     <div>
-      {pattern}
       {isEmpty(notifications) ? (
         <EmptyNotification />
       ) : (
