@@ -50,7 +50,7 @@ export const variance = {
                 );
               // handle any props configured with the responsive notation
               case 'object':
-                // If it is an array the order of values is smallest to largest: [base, xs, ...]
+                // If it is an array the order of values is smallest to largest: [_, xs, ...]
                 if (isMediaArray(value)) {
                   return merge(
                     styles,
