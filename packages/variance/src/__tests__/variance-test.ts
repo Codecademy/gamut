@@ -281,9 +281,6 @@ describe('variants', () => {
       width: '100%',
       margin: '0.25rem',
       XS: { width: '200%' },
-      '&:hover': {
-        width: '150%',
-      },
     });
   });
   it('has a default variant', () => {
@@ -299,9 +296,6 @@ describe('variants', () => {
     expect(myVariant({ theme, variant: 'cool' })).toEqual({
       width: '100%',
       XS: { width: '200%' },
-      '&:hover': {
-        width: '150%',
-      },
     });
   });
   it('has a customized key', () => {
