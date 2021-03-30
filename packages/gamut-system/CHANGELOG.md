@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-system@0.5.2...@codecademy/gamut-system@0.6.0) (2021-03-30)
+
+
+### Features
+
+* **Text:** Deprecate Text / Heading and add more robust UI Text Component [GM-162] ([78e284f](https://github.com/Codecademy/client-modules/commit/78e284f3ce80f14e583af3133f692a7cd91e2196))
+
+
+
 ### [0.5.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-system@0.5.1...@codecademy/gamut-system@0.5.2) (2021-03-19)
 
 **Note:** Version bump only for package @codecademy/gamut-system
