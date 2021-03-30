@@ -30,7 +30,7 @@ describe('GridForm', () => {
         <GridForm
           fields={fields}
           onSubmit={onSubmit}
-          submit={{ buttonType: 'fill-button', contents: <>Submit</>, size: 6 }}
+          submit={{ type: 'fill', contents: <>Submit</>, size: 6 }}
         />
       </ThemeProvider>
     );
@@ -82,7 +82,7 @@ describe('GridForm', () => {
         <GridForm
           fields={fields}
           onSubmit={onSubmit}
-          submit={{ buttonType: 'fill-button', contents: <>Submit</>, size: 6 }}
+          submit={{ type: 'fill', contents: <>Submit</>, size: 6 }}
         />
       </ThemeProvider>
     );
@@ -110,7 +110,7 @@ describe('GridForm', () => {
             fields={fields}
             onSubmit={onSubmit}
             submit={{
-              buttonType: 'fill-button',
+              type: 'fill',
               contents: <>Submit</>,
               size: 6,
             }}
@@ -139,7 +139,7 @@ describe('GridForm', () => {
             fields={fields}
             onSubmit={onSubmit}
             submit={{
-              buttonType: 'fill-button',
+              type: 'fill',
               contents: <>Submit</>,
               size: 6,
             }}
@@ -169,7 +169,7 @@ describe('GridForm', () => {
             fields={fields}
             onSubmit={onSubmit}
             submit={{
-              buttonType: 'fill-button',
+              type: 'fill',
               contents: <>Submit</>,
               size: 6,
             }}
@@ -200,7 +200,7 @@ describe('GridForm', () => {
             fields={[]}
             onSubmit={onSubmit}
             submit={{
-              buttonType: 'fill-button',
+              type: 'fill',
               contents: <>Submit</>,
               disabled: true,
               size: 6,
@@ -247,7 +247,7 @@ describe('GridForm', () => {
             },
           ]}
           onSubmit={jest.fn()}
-          submit={{ buttonType: 'fill-button', contents: <>Submit</>, size: 6 }}
+          submit={{ type: 'fill', contents: <>Submit</>, size: 6 }}
         />
       </ThemeProvider>
     );

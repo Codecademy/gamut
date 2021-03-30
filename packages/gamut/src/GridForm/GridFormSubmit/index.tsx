@@ -55,7 +55,14 @@ export const GridFormSubmit: React.FC<GridFormSubmitProps> = ({
           </CTAButton>
         );
       case 'business':
-        // There are current designs that currently rely on the deprecated button
+        /**
+         * There are current designs that currently rely on the deprecated button.
+         * Primarily business components such as /WorkerSupportApplication/index.tsx,
+         * /PlanInvitationBulkForm/PlanInvitationBulkForm.tsx and /PlanInvitationForm/PlanInvitationForm.tsx
+         * currently using brand-blue variant of the deprecated button. With the later two also using the also
+         * using the outline button. Once work is finished for the colorMode changes for buttons the deprecated button
+         * can be removed.
+         */
         return (
           <ButtonDeprecated
             disabled={disabled}
