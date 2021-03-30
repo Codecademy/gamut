@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [29.5.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@29.5.1...@codecademy/gamut@29.5.2) (2021-03-30)
+
+
+### Bug Fixes
+
+* **NotificationListNew:** remove top pattern ([84c7750](https://github.com/Codecademy/client-modules/commit/84c775054992491e57a8b82f62365517fd216c78))
+
+
+
 ### [29.5.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@29.5.0...@codecademy/gamut@29.5.1) (2021-03-30)
 
 **Note:** Version bump only for package @codecademy/gamut
