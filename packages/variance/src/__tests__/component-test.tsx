@@ -52,7 +52,9 @@ describe('style props', () => {
     const renderView = renderer
       .create(
         <ThemeProvider theme={theme}>
-          <Test margin={[4, 8, 16]}>Hello</Test>
+          <Test margin={[4, 8, 16]} padding={{ _: 0 }}>
+            Hello
+          </Test>
         </ThemeProvider>
       )
       .toJSON();
