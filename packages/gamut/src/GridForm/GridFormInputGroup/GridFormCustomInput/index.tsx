@@ -8,7 +8,7 @@ export type GridFormCustomInputProps = {
   error?: string;
   field: GridFormCustomField;
   register: UseFormMethods['register'];
-  setValue: (name: string, value: any) => void;
+  setValue: UseFormMethods['setValue'];
 };
 
 export const GridFormCustomInput: React.FC<GridFormCustomInputProps> = ({
