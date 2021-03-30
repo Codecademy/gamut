@@ -275,7 +275,9 @@ In order to style iframe Inputs, we leverage the [withComponent](https://styled-
 ```tsx
 import { Input, iFrameWrapper, FormGroup } from '@codecademy/gamut';
 import { GnarlyiFrame } from './constants';
+
 const StylediFrame = iFrameWrapper.withComponent(GnarlyiFrame);
+
 export const CustomFormGroup: React.FC = ({ errorMessaged, disabled }) => {
   return (
     <FormGroup error={errorMessage} disabled={disabled}>
