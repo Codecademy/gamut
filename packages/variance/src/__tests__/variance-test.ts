@@ -1,4 +1,5 @@
 import { variance } from '../core';
+import { parseSize } from '../transforms/parseSize';
 
 const theme = {
   breakpoints: {
@@ -176,5 +177,202 @@ describe('style props', () => {
         },
       });
     });
+  });
+});
+
+describe('css', () => {
+  const marginTransform = jest.fn();
+
+  const css = testVariance.createCss({
+    width: { property: 'width', transform: parseSize },
+    height: { property: 'height', transform: parseSize },
+    margin: {
+      property: 'margin',
+      scale: 'spacing',
+      transform: marginTransform,
+    },
+    padding: { property: 'padding', scale: 'spacing' },
+  });
+
+  beforeEach(() => {
+    jest.resetAllMocks();
+    marginTransform.mockImplementation((val) => val);
+  });
+
+  it('creates a CSS Function', () => {
+    expect(css).toBeDefined();
+  });
+  it('produces css', () => {
+    const returnedFn = css({ margin: 4, width: '100%', height: '50' });
+
+    expect(returnedFn({ theme })).toEqual({
+      margin: '0.25rem',
+      width: '100%',
+      height: '50px',
+    });
+  });
+  it('works with media queries', () => {
+    const returnedFn = css({ width: ['100%', '200%'], height: '50' });
+
+    expect(returnedFn({ theme })).toEqual({
+      width: '100%',
+      XS: { width: '200%' },
+      height: '50px',
+    });
+  });
+  it('allows selectors', () => {
+    const returnedFn = css({
+      width: ['100%', '200%'],
+    });
+
+    expect(returnedFn({ theme })).toEqual({
+      width: '100%',
+      XS: { width: '200%' },
+    });
+  });
+
+  it('caches the response', () => {
+    const returnedFn = css({
+      margin: 4,
+    });
+
+    expect(marginTransform).toHaveBeenCalledTimes(0);
+
+    returnedFn({ theme });
+
+    expect(marginTransform).toHaveBeenCalledTimes(1);
+
+    returnedFn({ theme });
+
+    expect(marginTransform).toHaveBeenCalledTimes(1);
+  });
+});
+
+describe('variants', () => {
+  const marginTransform = jest.fn();
+
+  const variant = testVariance.createVariant({
+    width: { property: 'width', transform: parseSize },
+    height: { property: 'height', transform: parseSize },
+    margin: {
+      property: 'margin',
+      scale: 'spacing',
+      transform: marginTransform,
+    },
+    padding: { property: 'padding', scale: 'spacing' },
+  });
+
+  beforeEach(() => {
+    jest.resetAllMocks();
+    marginTransform.mockImplementation((val) => val);
+  });
+
+  it('creates a variant function', () => {
+    const myVariant = variant({
+      variants: {
+        cool: {
+          margin: 4,
+          width: ['100%', '200%'],
+        },
+      },
+    });
+
+    expect(myVariant({ theme, variant: 'cool' })).toEqual({
+      width: '100%',
+      margin: '0.25rem',
+      XS: { width: '200%' },
+      '&:hover': {
+        width: '150%',
+      },
+    });
+  });
+  it('has a default variant', () => {
+    const myVariant = variant({
+      defaultVariant: 'cool',
+      variants: {
+        cool: {
+          width: ['100%', '200%'],
+        },
+      },
+    });
+
+    expect(myVariant({ theme, variant: 'cool' })).toEqual({
+      width: '100%',
+      XS: { width: '200%' },
+      '&:hover': {
+        width: '150%',
+      },
+    });
+  });
+  it('has a customized key', () => {
+    const myVariant = variant({
+      prop: 'sweet',
+      variants: {
+        cool: {
+          width: '100%',
+        },
+      },
+    });
+
+    expect(myVariant({ theme, sweet: 'cool' })).toEqual({
+      width: '100%',
+    });
+  });
+  it('caches the variant once called', () => {
+    const myVariant = variant({
+      variants: {
+        cool: {
+          margin: 4,
+        },
+      },
+    });
+
+    expect(marginTransform).toHaveBeenCalledTimes(0);
+
+    myVariant({ theme, variant: 'cool' });
+
+    expect(marginTransform).toHaveBeenCalledTimes(1);
+
+    myVariant({ theme, variant: 'cool' });
+
+    expect(marginTransform).toHaveBeenCalledTimes(1);
+  });
+  it('caches each variant individually', () => {
+    const myVariant = variant({
+      variants: {
+        cool: {
+          margin: 4,
+        },
+        beans: {
+          margin: 8,
+        },
+        world: {
+          margin: 16,
+        },
+      },
+    });
+
+    expect(marginTransform).toHaveBeenCalledTimes(0);
+
+    myVariant({ theme, variant: 'cool' });
+
+    expect(marginTransform).toHaveBeenCalledTimes(1);
+
+    myVariant({ theme, variant: 'cool' });
+    myVariant({ theme, variant: 'beans' });
+
+    expect(marginTransform).toHaveBeenCalledTimes(2);
+
+    myVariant({ theme, variant: 'cool' });
+    myVariant({ theme, variant: 'beans' });
+    myVariant({ theme, variant: 'world' });
+
+    expect(marginTransform).toHaveBeenCalledTimes(3);
+
+    myVariant({ theme, variant: 'cool' });
+    myVariant({ theme, variant: 'beans' });
+    myVariant({ theme, variant: 'world' });
+
+    expect(marginTransform).toHaveBeenCalledTimes(3);
   });
 });

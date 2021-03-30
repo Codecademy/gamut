@@ -1,12 +1,14 @@
-import { get, identity, merge } from 'lodash';
+import { get, identity, isObject, merge } from 'lodash';
 
 import {
   AbstractParser,
   AbstractPropTransformer,
+  CSS,
   Parser,
   Prop,
   PropTransformer,
   TransformerMap,
+  Variant,
 } from './types/config';
 import { AbstractTheme, CSSObject, ThemeProps } from './types/props';
 import { AllUnionKeys, KeyFromUnion } from './types/utils';
@@ -89,7 +91,7 @@ export const variance = {
             switch (typeof config.scale) {
               case 'string': {
                 const path = `theme.${config.scale}.${value}`;
-                scaleVal = get(props, path, value);
+                scaleVal = get(props, path);
                 break;
               }
               case 'object': {
@@ -103,7 +105,12 @@ export const variance = {
             // for each property look up the scale value from theme if passed and apply any
             // final transforms to the value
             properties.forEach((property) => {
-              styles[property] = transform(scaleVal, property, props);
+              const finalValue = transform(scaleVal ?? value, property, props);
+              const mergeStyles = isObject(finalValue)
+                ? finalValue
+                : { [property]: finalValue };
+
+              Object.assign(styles, mergeStyles);
             });
             // return the resulting styles object
             return styles;
@@ -123,6 +130,52 @@ export const variance = {
             {}
           ) as MergedParser
         );
+      },
+      createCss<
+        Config extends Record<string, Prop<T>>,
+        P extends Parser<T, TransformerMap<T, Config>>
+      >(config: Config): CSS<T, P> {
+        const parser = this.create(config);
+
+        return (cssProps) => {
+          let cache: CSSObject;
+
+          return ({ theme }) => {
+            if (cache) return cache;
+            const css = parser({ ...cssProps, theme } as any);
+            cache = css;
+
+            return cache;
+          };
+        };
+      },
+      createVariant<
+        Config extends Record<string, Prop<T>>,
+        P extends Parser<T, TransformerMap<T, Config>>
+      >(config: Config): Variant<T, P> {
+        const css: CSS<T, P> = this.createCss(config);
+
+        return (options) => {
+          type Keys = keyof typeof options.variants;
+          const prop = options?.prop || 'variant';
+          const defaultVariant = options?.defaultVariant;
+
+          const variantFns = {} as Record<
+            Keys,
+            (props: ThemeProps<T>) => CSSObject
+          >;
+
+          Object.keys(options.variants).forEach((key) => {
+            const variantKey = key as Keys;
+            const cssProps = options.variants[variantKey];
+            variantFns[variantKey] = css(cssProps);
+          });
+
+          return ({ [prop]: selected = defaultVariant, ...props }) => {
+            if (!selected) return {};
+            return variantFns[selected](props);
+          };
+        };
       },
       create<Config extends Record<string, Prop<T>>>(config: Config) {
         const transforms = {} as TransformerMap<T, Config>;
