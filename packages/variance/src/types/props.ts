@@ -46,24 +46,10 @@ export interface CSSObject {
 }
 
 /** These are currently unused but will be used for pseudo selector support in the near future */
-export type Chained = `&` | `>` | '~' | '+';
+export type SelectorMap<Props, System> = {
+  [K in keyof Props]?: SelectorProps<Props[K], System>;
+};
 
-export type SelectorLiterals =
-  | `[${string}]`
-  | `&:${string}`
-  | `${Chained} ${string}`
-  | `${string} ${Chained} ${string}`;
-
-export type Selectors<T> = T extends SelectorLiterals ? T : never;
-
-export type SelectorMap<
-  Config extends AbstractProps,
-  SelectorKeys extends Selectors<keyof Config>,
-  Props extends AbstractProps
-> = {
-  [K in keyof Config]: K extends SelectorKeys
-    ? Props
-    : K extends keyof Props
-    ? Props[K]
-    : never;
+export type SelectorProps<Props, System> = {
+  [K in keyof Props]?: K extends keyof System ? System[K] : System;
 };

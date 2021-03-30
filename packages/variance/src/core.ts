@@ -136,15 +136,25 @@ export const variance = {
         P extends Parser<T, TransformerMap<T, Config>>
       >(config: Config): CSS<T, P> {
         const parser = this.create(config);
-
+        const filteredProps: string[] = [...parser.propNames];
         return (cssProps) => {
           let cache: CSSObject;
+          const selectors = Object.keys(cssProps).filter(
+            (key) => !filteredProps.includes(key)
+          );
 
           return ({ theme }) => {
             if (cache) return cache;
             const css = parser({ ...cssProps, theme } as any);
+            selectors.forEach((selector) => {
+              const selectorConfig = cssProps[selector];
+              if (isObject(selectorConfig)) {
+                css[selector] = parser(
+                  Object.assign(selectorConfig, { theme }) as any
+                );
+              }
+            });
             cache = css;
-
             return cache;
           };
         };
@@ -168,7 +178,7 @@ export const variance = {
           Object.keys(options.variants).forEach((key) => {
             const variantKey = key as Keys;
             const cssProps = options.variants[variantKey];
-            variantFns[variantKey] = css(cssProps);
+            variantFns[variantKey] = css(cssProps as any);
           });
 
           return ({ [prop]: selected = defaultVariant, ...props }) => {
