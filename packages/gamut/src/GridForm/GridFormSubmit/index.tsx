@@ -22,17 +22,17 @@ type GridFormBase = {
   position?: GridFormSubmitPosition;
   size: ResponsiveProperty<ColumnSizes>;
   disabled?: ButtonDeprecatedProps['disabled'];
+  mode?: VisualTheme;
 };
 
 type GridFormButtonSubmitPropsDeprecated = GridFormBase & {
-  type: ButtonDeprecatedType;
+  type?: ButtonDeprecatedType;
   theme?: ButtonDeprecatedProps['theme'];
   outline?: ButtonDeprecatedProps['outline'];
 };
 
 type GridFormSubmitPropsStandard = GridFormBase & {
-  type: ButtonType;
-  mode?: VisualTheme;
+  type?: ButtonType;
 };
 export type GridFormSubmitProps =
   | GridFormButtonSubmitPropsDeprecated
