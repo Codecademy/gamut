@@ -11,6 +11,7 @@ export type NotificationListNewProps = {
   onDismiss?: (notification: Notification) => void;
   notifications: Notification[];
   onNotificationClick?: (notification: Notification) => void;
+  headerElementId?: string; // Used for aria-labelledby for the list.
 };
 
 const UnstyledUnorderedList = styled.ul`
@@ -23,6 +24,7 @@ export const NotificationListNew: React.FC<NotificationListNewProps> = ({
   notifications,
   onNotificationClick,
   onDismiss,
+  headerElementId,
 }) => {
   const pattern = (
     <Box as="li" paddingX={32} margin={0} aria-hidden="true">
@@ -30,7 +32,7 @@ export const NotificationListNew: React.FC<NotificationListNewProps> = ({
     </Box>
   );
   return (
-    <UnstyledUnorderedList>
+    <UnstyledUnorderedList aria-labelledby={headerElementId}>
       {pattern}
       {isEmpty(notifications) ? (
         <EmptyNotification />
