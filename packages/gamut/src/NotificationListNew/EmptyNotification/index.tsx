@@ -1,7 +1,7 @@
 import { sample } from 'lodash';
 import React, { useMemo } from 'react';
 
-import { FlexBox, Text } from '../..';
+import { FlexBox, TextDeprecated } from '../..';
 import { emptyNotificationContents } from './emptyNotificationContents';
 
 export const EmptyNotification = () => {
@@ -21,8 +21,8 @@ export const EmptyNotification = () => {
         <Image width={80} height={60} />
       </FlexBox>
       <FlexBox flexDirection="column" alignItems="center">
-        <Text>{content.text}</Text>
-        <Text>{content.subtext}</Text>
+        <TextDeprecated>{content.text}</TextDeprecated>
+        <TextDeprecated>{content.subtext}</TextDeprecated>
       </FlexBox>
     </FlexBox>
   );

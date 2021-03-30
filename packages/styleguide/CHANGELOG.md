@@ -3,6 +3,39 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [33.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@33.3.9...@codecademy/styleguide@33.4.0) (2021-03-30)
+
+
+### Features
+
+* **Text:** Deprecate Text / Heading and add more robust UI Text Component [GM-162] ([78e284f](https://github.com/Codecademy/client-modules/commit/78e284f3ce80f14e583af3133f692a7cd91e2196))
+
+
+
+### [33.3.9](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@33.3.8...@codecademy/styleguide@33.3.9) (2021-03-30)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [33.3.8](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@33.3.7...@codecademy/styleguide@33.3.8) (2021-03-29)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [33.3.7](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@33.3.6...@codecademy/styleguide@33.3.7) (2021-03-26)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
 ### [33.3.6](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@33.3.5...@codecademy/styleguide@33.3.6) (2021-03-26)
 
 **Note:** Version bump only for package @codecademy/styleguide

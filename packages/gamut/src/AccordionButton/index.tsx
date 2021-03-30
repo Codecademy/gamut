@@ -51,6 +51,10 @@ const buttonThemes = {
   },
 } as const;
 
+/**
+ * @deprecated
+ */
+
 export const AccordionButton: React.FC<AccordionButtonProps> = ({
   children,
   className,

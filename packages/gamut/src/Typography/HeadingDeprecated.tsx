@@ -10,7 +10,7 @@ import { AllowedStyles } from './types';
 export type HeadingTags = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 export type FontSizes = 'xxs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
 
-export type HeadingProps = {
+export type HeadingDeprecatedProps = {
   /** Heading tags h1 - h6 */
   as: HeadingTags;
   /** A font-size/font-family pair */
@@ -21,7 +21,11 @@ export type HeadingProps = {
   hideMargin?: boolean;
 } & ContainerElementProps;
 
-export const Heading: React.FC<HeadingProps> = ({
+/**
+ * @deprecated
+ */
+
+export const HeadingDeprecated: React.FC<HeadingDeprecatedProps> = ({
   children,
   as: Element,
   className,
