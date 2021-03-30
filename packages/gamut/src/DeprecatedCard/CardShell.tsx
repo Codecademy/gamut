@@ -14,6 +14,10 @@ export type CardShellProps = HTMLAttributes<HTMLDivElement> & {
   hoverShadow?: boolean;
 };
 
+/**
+ * @deprecated
+ */
+
 export const CardShell = React.forwardRef<HTMLDivElement, CardShellProps>(
   ({ children, hoverShadow, className, ...props }, ref) => {
     const shellClasses = cx(

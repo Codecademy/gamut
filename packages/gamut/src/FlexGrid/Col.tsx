@@ -80,6 +80,10 @@ export type ColProps = ColSizing & {
   reverse?: boolean;
 };
 
+/**
+ * @deprecated
+ */
+
 export const Col: React.FC<ColProps> = ({ as: Element = 'div', ...props }) => {
   const className = getClassNames(props);
 

@@ -10,6 +10,10 @@ interface CardHeaderProps {
   className?: string;
 }
 
+/**
+ * @deprecated
+ */
+
 export function CardHeader(props: CardHeaderProps) {
   let backgroundStyles = {
     background: props.backgroundColor,
