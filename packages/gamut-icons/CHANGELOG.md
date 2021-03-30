@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@4.4.0...@codecademy/gamut-icons@4.5.0) (2021-03-30)
+
+
+### Features
+
+* new @codecademy/tsconfig package ([#1570](https://github.com/Codecademy/client-modules/issues/1570)) ([e6e0ada](https://github.com/Codecademy/client-modules/commit/e6e0adab28050efe5a98107c83ec8bd35e6ea249))
+
+
+
 ## [4.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@4.3.2...@codecademy/gamut-icons@4.4.0) (2021-03-25)
 
 
