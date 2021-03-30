@@ -13,7 +13,7 @@ import React, { ReactElement } from 'react';
 
 import { Box, FlexBox, IconButton } from '..';
 import { Notification } from '../NotificationList/typings';
-import { Text } from '../Typography/Text';
+import { TextDeprecated } from '../Typography/TextDeprecated';
 
 const StyledLink = styled.a`
   text-decoration: none;
@@ -54,7 +54,7 @@ const StyledImg = styled.img`
   width: 3rem;
 `;
 
-const DateText = styled(Text)`
+const DateText = styled(TextDeprecated)`
   margin-left: 4px;
   color: ${({ theme }) => theme.colors['gray-600']};
 `;
@@ -98,9 +98,9 @@ export const NotificationItemNew: React.FC<NotificationItemNewProps> = ({
     <FlexBox zIndex={1} position="relative">
       {renderIcon()}
       <Box flexBasis={0} flexGrow={1} paddingLeft={12} textColor="navy">
-        <Text as="span" fontSize="sm">
+        <TextDeprecated as="span" fontSize="sm">
           {text}
-        </Text>
+        </TextDeprecated>
         <DateText as="span" fontSize="sm">
           {date}
         </DateText>
