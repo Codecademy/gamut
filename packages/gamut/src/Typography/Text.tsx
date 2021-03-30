@@ -1,47 +1,80 @@
-import cx from 'classnames';
-import React from 'react';
+import {
+  color,
+  layout,
+  shouldForwardProp,
+  space,
+  typography,
+  variant,
+} from '@codecademy/gamut-styles';
+import { compose, HandlerProps } from '@codecademy/gamut-system';
+import styled from '@emotion/styled';
 
-import { ContainerElementProps } from '../Layout/types';
-import { ResponsiveProperty } from '../typings/responsive-properties';
-import { generateResponsiveClassnames } from '../utils/generateResponsiveClassnames';
-import styles from './styles/Text.module.scss';
-import { AllowedStyles } from './types';
+const textVariants = variant({
+  prop: 'as',
+  variants: {
+    h1: {
+      fontSize: 64,
+      fontWeight: 'title',
+      lineHeight: 'title',
+    },
+    h2: {
+      fontSize: 44,
+      fontWeight: 'title',
+      lineHeight: 'title',
+    },
+    h3: {
+      fontSize: 34,
+      fontWeight: 'title',
+      lineHeight: 'title',
+    },
+    h4: {
+      fontSize: 26,
+      fontWeight: 'title',
+      lineHeight: 'title',
+    },
+    h5: {
+      fontSize: 22,
+      fontWeight: 'title',
+      lineHeight: 'title',
+    },
+    h6: {
+      fontSize: 20,
+      fontWeight: 'title',
+      lineHeight: 'title',
+    },
+    small: {
+      fontSize: 14,
+      display: 'inline-block',
+    },
+    p: {
+      fontSize: 16,
+    },
+    strong: {
+      fontWeight: 'title',
+      display: 'inline-block',
+    },
+    code: {
+      fontFamily: 'monospace',
+      display: 'inline-block',
+    },
+    span: {
+      display: 'inline-block',
+    },
+  },
+});
 
-export type TextTags = 'p' | 'span' | 'div';
-export type TextSizes = 'sm' | 'md' | 'lg';
+const textProps = compose(layout, typography, color, space);
 
-type TextProps = {
-  /** Text based tags */
-  as?: TextTags;
-  /** A font-size/font-family pair */
-  fontSize?: ResponsiveProperty<TextSizes>;
-  /** Allows you to pass color attributes directly to the tag */
-  style?: AllowedStyles;
-} & ContainerElementProps;
+export interface TextProps
+  extends HandlerProps<typeof textProps>,
+    HandlerProps<typeof textVariants> {}
 
-/**
- * @deprecated
- */
+export const Text = styled('span', { shouldForwardProp })<TextProps>(
+  textVariants,
+  textProps
+);
 
-export const Text: React.FC<TextProps> = ({
-  children,
-  as: Element = 'p',
-  fontSize = 'md',
-  className,
-  testId,
-  style,
-}) => {
-  return (
-    <Element
-      className={cx(
-        styles.text,
-        className,
-        generateResponsiveClassnames({ fontSize }, styles)
-      )}
-      data-testid={testId}
-      style={style}
-    >
-      {children}
-    </Element>
-  );
+Text.defaultProps = {
+  as: 'span',
+  margin: 0,
 };

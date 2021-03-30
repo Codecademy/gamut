@@ -75,6 +75,12 @@ export interface Properties {
   textDecoration: {
     defaultScale: CSS.Properties['textDecoration'];
   };
+  textTransform: {
+    defaultScale: CSS.Properties['textTransform'];
+  };
+  whiteSpace: {
+    defaultScale: CSS.Properties['whiteSpace'];
+  };
 
   /** Spacing */
   margin: {
@@ -150,6 +156,9 @@ export interface Properties {
   };
   zIndex: {
     defaultScale: CSS.Properties['zIndex'];
+  };
+  opacity: {
+    defaultScale: CSS.Properties['opacity'];
   };
   /** Grid */
   gridAutoColumns: {
