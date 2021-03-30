@@ -257,6 +257,33 @@ describe('css', () => {
     });
   });
 
+  it('allows static valid CSS to pass through', () => {
+    const returnedFn = css({
+      display: 'grid',
+      width: ['100%', '200%'],
+    });
+
+    expect(returnedFn({ theme })).toEqual({
+      display: 'grid',
+      width: '100%',
+      XS: { width: '200%' },
+    });
+  });
+
+  it('allows static valid CSS to pass through within selectors', () => {
+    const returnedFn = css({
+      display: 'grid',
+      '&:hover': {
+        display: 'none',
+      },
+    });
+
+    expect(returnedFn({ theme })).toEqual({
+      display: 'grid',
+      '&:hover': { display: 'none' },
+    });
+  });
+
   it('caches the response', () => {
     const returnedFn = css({
       margin: 4,

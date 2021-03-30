@@ -1,3 +1,5 @@
+import { PropertyTypes } from './properties';
+
 export type AbstractProps = Record<string, unknown>;
 
 interface BreakpointKeys<T = string> {
@@ -51,5 +53,9 @@ export type SelectorMap<Props, System> = {
 };
 
 export type SelectorProps<Props, System> = {
-  [K in keyof Props]?: K extends keyof System ? System[K] : System;
+  [K in keyof Props]?: K extends keyof System
+    ? System[K]
+    : K extends keyof PropertyTypes
+    ? PropertyTypes[K]
+    : Omit<PropertyTypes, keyof System> & System;
 };
