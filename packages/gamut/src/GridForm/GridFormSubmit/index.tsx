@@ -18,7 +18,7 @@ export type ButtonType = 'cta' | 'fill' | 'business';
 
 export type GridFormSubmitProps = {
   contents: React.ReactNode;
-  type: ButtonType;
+  type?: ButtonType;
   disabled?: ButtonDeprecatedProps['disabled'];
   position?: GridFormSubmitPosition;
   size: ResponsiveProperty<ColumnSizes>;
