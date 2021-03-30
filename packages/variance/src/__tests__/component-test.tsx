@@ -184,5 +184,20 @@ describe('static styles', () => {
         target: '*',
       });
     });
+
+    it('merges selector styles', () => {
+      const Div = styled.div(
+        css({ '&:hover': { color: 'green' } }),
+        css({ '&:hover': { background: 'orange' } })
+      );
+      const renderView = renderer.create(<Div>Hello</Div>).toJSON();
+
+      expect(renderView).toHaveStyleRule('background', 'orange', {
+        target: ':hover',
+      });
+      expect(renderView).toHaveStyleRule('color', 'green', {
+        target: ':hover',
+      });
+    });
   });
 });
