@@ -14,7 +14,7 @@ import { ResponsiveProperty } from '../../typings/responsive-properties';
 
 export type GridFormSubmitPosition = keyof typeof positions;
 
-export type ButtonType = 'cta-button' | 'fill-button' | 'deprecated-button';
+export type ButtonType = 'cta' | 'fill' | 'business';
 
 export type GridFormSubmitProps = {
   contents: React.ReactNode;
@@ -38,29 +38,23 @@ const StyledColumn = styled(Column)(flex);
 
 export const GridFormSubmit: React.FC<GridFormSubmitProps> = ({
   contents,
-  position = 'left',
   size,
-  buttonType,
   disabled,
-  mode,
   outline,
+  mode = 'light',
+  position = 'left',
+  buttonType = 'fill',
   theme = 'brand-purple',
 }) => {
   const getButton = () => {
     switch (buttonType) {
-      case 'cta-button':
+      case 'cta':
         return (
           <CTAButton type="submit" mode={mode} disabled={disabled}>
             {contents}
           </CTAButton>
         );
-      case 'fill-button':
-        return (
-          <FillButton type="submit" mode={mode} disabled={disabled}>
-            {contents}
-          </FillButton>
-        );
-      case 'deprecated-button':
+      case 'business':
         // There are current designs that currently rely on the deprecated button
         return (
           <ButtonDeprecated
@@ -71,6 +65,12 @@ export const GridFormSubmit: React.FC<GridFormSubmitProps> = ({
           >
             {contents}
           </ButtonDeprecated>
+        );
+      default:
+        return (
+          <FillButton type="submit" mode={mode} disabled={disabled}>
+            {contents}
+          </FillButton>
         );
     }
   };

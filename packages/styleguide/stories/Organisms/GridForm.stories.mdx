@@ -149,7 +149,6 @@ responsive layouts.
           action('Form Submitted')(values);
         }}
         submit={{
-          buttonType: 'fill-button',
           contents: 'Submit Me!?',
           size: 12,
         }}
@@ -188,7 +187,6 @@ If an input is not meant to be usable, such as when a portion of a form is disab
           action('Form Submitted')(values);
         }}
         submit={{
-          buttonType: 'fill-button',
           contents: 'Right Submit!?',
           position: 'right',
           size: 12,
@@ -221,7 +219,6 @@ value of left, center, right, or stretch.
               action('Form Submitted')(values);
             }}
             submit={{
-              buttonType: 'fill-button',
               contents: 'Right Submit!?',
               position: 'right',
               size: 12,
@@ -242,7 +239,6 @@ value of left, center, right, or stretch.
               action('Form Submitted')(values);
             }}
             submit={{
-              buttonType: 'fill-button',
               contents: 'Center Submit!?',
               position: 'center',
               size: 12,
@@ -263,7 +259,6 @@ value of left, center, right, or stretch.
               action('Form Submitted')(values);
             }}
             submit={{
-              buttonType: 'fill-button',
               contents: 'Left Submit!?',
               position: 'left',
               size: 12,
@@ -284,7 +279,6 @@ value of left, center, right, or stretch.
               action('Form Submitted')(values);
             }}
             submit={{
-              buttonType: 'fill-button',
               contents: 'Stretch Submit!?',
               position: 'stretch',
               size: 12,
@@ -299,7 +293,7 @@ value of left, center, right, or stretch.
 ## Submit Button Options
 
 We can specify the version of our button by passing the buttonType prop. WE can choose between
-the [`FillButton`](/?path=/docs/atoms-button--fill-button) or [`CTAButton`](?path=/docs/atoms-button--cta-button).
+the [`FillButton`](/?path=/docs/atoms--fill) or [`CTAButton`](?path=/docs/atoms--cta).
 
 <Canvas>
   <Story name="Submit Button Options">
@@ -318,7 +312,6 @@ the [`FillButton`](/?path=/docs/atoms-button--fill-button) or [`CTAButton`](?pat
             action('Form Submitted')(values);
           }}
           submit={{
-            buttonType: 'fill-button',
             contents: 'Fill Button',
             size: 6,
           }}
@@ -336,7 +329,7 @@ the [`FillButton`](/?path=/docs/atoms-button--fill-button) or [`CTAButton`](?pat
             action('Form Submitted')(values);
           }}
           submit={{
-            buttonType: 'cta-button',
+            buttonType: 'cta',
             contents: 'CTA Button',
             size: 12,
           }}
@@ -354,7 +347,6 @@ the [`FillButton`](/?path=/docs/atoms-button--fill-button) or [`CTAButton`](?pat
             action('Form Submitted')(values);
           }}
           submit={{
-            buttonType: 'fill-button',
             contents: 'Fill Button Dark Mode',
             size: 12,
             mode: 'dark',
@@ -373,7 +365,7 @@ the [`FillButton`](/?path=/docs/atoms-button--fill-button) or [`CTAButton`](?pat
             action('Form Submitted')(values);
           }}
           submit={{
-            buttonType: 'cta-button',
+            buttonType: 'cta',
             contents: 'CTA Button Dark Mode',
             size: 12,
             mode: 'dark',
@@ -392,7 +384,7 @@ the [`FillButton`](/?path=/docs/atoms-button--fill-button) or [`CTAButton`](?pat
             action('Form Submitted')(values);
           }}
           submit={{
-            buttonType: 'deprecated-button',
+            buttonType: 'business',
             contents: 'Deprecated Button',
             size: 12,
             theme: 'brand-purple',
@@ -432,7 +424,6 @@ align nicely with the input.
           action('Form Submitted')(values);
         }}
         submit={{
-          buttonType: 'fill-button',
           contents: 'Inline Submit!?',
           size: 4,
           position: 'right',
@@ -481,7 +472,6 @@ their own inputs. We can specify a 'custom' field type to with a [render prop](h
           action('Form Submitted')(values);
         }}
         submit={{
-          buttonType: 'fill-button',
           contents: 'Submit Me!?',
         }}
       />
@@ -519,7 +509,6 @@ more details on why using placeholders is often bad.
           action('Form Submitted')(values);
         }}
         submit={{
-          buttonType: 'fill-button',
           contents: 'Submit Me!?',
         }}
       />
@@ -554,7 +543,6 @@ field's value in a parent component before onSubmit gets triggered.
               action('Form Submitted')(values);
             }}
             submit={{
-              buttonType: 'fill-button',
               contents: 'Submit Me!?',
             }}
           />
@@ -659,7 +647,6 @@ A field can include [our existing `ToolTip`](/?path=/docs/atoms-tooltip--tool-ti
             action('Form Submitted')(values);
           }}
           submit={{
-            buttonType: 'fill-button',
             contents: 'Submit',
             size: 12,
             theme: 'hyper',
@@ -699,7 +686,6 @@ A field can take a custom error in addition to validation errors. The validation
             action('Form Submitted')(values);
           }}
           submit={{
-            buttonType: 'fill-button',
             contents: 'Submit Me!?',
             size: 12,
           }}
