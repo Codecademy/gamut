@@ -13,6 +13,10 @@ export type NotificationListProps = {
   onNotificationClick?: (notification: Notification) => void;
 };
 
+/**
+ * @deprecated
+ */
+
 export const NotificationList = (props: NotificationListProps) => {
   const { className, notifications, onNotificationClick } = props;
 

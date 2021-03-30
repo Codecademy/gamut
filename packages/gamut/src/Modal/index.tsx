@@ -39,6 +39,10 @@ export type ModalProps = {
   ariaLabel?: string;
 };
 
+/**
+ * @deprecated
+ */
+
 export const Modal: React.FC<ModalProps> = ({
   children,
   className,

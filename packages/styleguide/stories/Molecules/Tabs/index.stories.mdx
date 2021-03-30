@@ -1,5 +1,5 @@
 import {
-  Heading,
+  HeadingDeprecated,
   Tab,
   TabList,
   TabPanel,
@@ -18,6 +18,7 @@ import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
 to show, but only one should be visible at a time.`,
     source: 'gamut',
     figmaId: 'fiLDZMjifzDmg70aYRUisW',
+    status: 'deprecated',
   }}
   args={{
     renderAllPanels: false,
@@ -36,15 +37,15 @@ to show, but only one should be visible at a time.`,
           <Tab>Tab 3</Tab>
         </TabList>
         <TabPanel>
-          <Heading as="h2">Welcome to Tab 1</Heading>
+          <HeadingDeprecated as="h2">Welcome to Tab 1</HeadingDeprecated>
           <Text>Hi there! I&apos;m the contents inside Tab 1. Yippee!</Text>
         </TabPanel>
         <TabPanel>
-          <Heading as="h2">Welcome to Tab 2</Heading>
+          <HeadingDeprecated as="h2">Welcome to Tab 2</HeadingDeprecated>
           <Text>Hi there! I&apos;m the contents inside Tab 2. Yippee!</Text>
         </TabPanel>
         <TabPanel>
-          <Heading as="h2">Welcome to Tab 3</Heading>
+          <HeadingDeprecated as="h2">Welcome to Tab 3</HeadingDeprecated>
           <Text>Hi there! I&apos;m the contents inside Tab 3. Yippee!</Text>
         </TabPanel>
       </Tabs>
@@ -74,15 +75,15 @@ instead notify of a request to change using `onChange`.
           <Tab>Tab 3</Tab>
         </TabList>
         <TabPanel>
-          <Heading as="h2">Welcome to Tab 2</Heading>
+          <HeadingDeprecated as="h2">Welcome to Tab 2</HeadingDeprecated>
           <Text>Hi there! I&apos;m the contents inside Tab 2. Yippee!</Text>
         </TabPanel>
         <TabPanel>
-          <Heading as="h2">Welcome to Tab 1</Heading>
+          <HeadingDeprecated as="h2">Welcome to Tab 1</HeadingDeprecated>
           <Text>Hi there! I&apos;m the contents inside Tab 1. Yippee!</Text>
         </TabPanel>
         <TabPanel>
-          <Heading as="h2">Welcome to Tab 3</Heading>
+          <HeadingDeprecated as="h2">Welcome to Tab 3</HeadingDeprecated>
           <Text>Hi there! I&apos;m the contents inside Tab 3. Yippee!</Text>
         </TabPanel>
       </Tabs>

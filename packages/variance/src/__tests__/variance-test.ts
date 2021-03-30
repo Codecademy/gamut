@@ -223,35 +223,14 @@ describe('css', () => {
   it('allows selectors', () => {
     const returnedFn = css({
       width: ['100%', '200%'],
-      '&:hover': {
-        width: '150%',
-      },
     });
 
     expect(returnedFn({ theme })).toEqual({
       width: '100%',
       XS: { width: '200%' },
-      '&:hover': {
-        width: '150%',
-      },
     });
   });
-  it('allows selectors', () => {
-    const returnedFn = css({
-      '&:hover': {
-        width: ['100%', '200%'],
-        margin: 'initial',
-      },
-    });
 
-    expect(returnedFn({ theme })).toEqual({
-      '&:hover': {
-        width: '100%',
-        margin: 'initial',
-        XS: { width: '200%' },
-      },
-    });
-  });
   it('caches the response', () => {
     const returnedFn = css({
       margin: 4,
@@ -294,9 +273,6 @@ describe('variants', () => {
         cool: {
           margin: 4,
           width: ['100%', '200%'],
-          '&:hover': {
-            width: '150%',
-          },
         },
       },
     });
@@ -316,9 +292,6 @@ describe('variants', () => {
       variants: {
         cool: {
           width: ['100%', '200%'],
-          '&:hover': {
-            width: '150%',
-          },
         },
       },
     });

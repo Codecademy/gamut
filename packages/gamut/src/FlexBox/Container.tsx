@@ -70,6 +70,10 @@ export interface ContainerProps extends HTMLAttributes<HTMLDivElement> {
   wrap?: boolean;
 }
 
+/**
+ * @deprecated
+ */
+
 export const Container: React.FC<ContainerProps> = (props) => {
   const classes = cx(props.className, {
     [styles.flex]: props.flex && !props.inline,

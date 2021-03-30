@@ -1,6 +1,7 @@
-import { Text } from '@codecademy/gamut-labs/src';
+import { Box, GridBox, Text } from '@codecademy/gamut/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/dist/blocks';
+import { Fragment } from 'react';
 
 import { PropsTable } from '~styleguide/blocks';
 
@@ -10,7 +11,7 @@ import { PropsTable } from '~styleguide/blocks';
   parameters={{
     subtitle: `This is a single primitive to handle all \`<p>\` and
 \`<span>\` tags with defined size intervals. Renders a \`<span>\` by default.`,
-    source: 'gamut-labs',
+    source: 'gamut',
   }}
 />
 
@@ -23,3 +24,46 @@ import { PropsTable } from '~styleguide/blocks';
 ## Props
 
 <PropsTable story="Text" defaultGroups={['typography']} />
+
+## Variants
+
+export const tags = [
+  'h1',
+  'h2',
+  'h3',
+  'h4',
+  'h5',
+  'h6',
+  'small',
+  'p',
+  'strong',
+  'code',
+  'span',
+];
+
+<Canvas>
+  <Story name="Variants">
+    {(args) => (
+      <GridBox
+        padding={8}
+        rowGap={24}
+        columnGap={32}
+        gridTemplateColumns="max-content 1fr"
+        alignItems="center"
+      >
+        {tags.map((tag) => (
+          <Fragment key={tag}>
+            <Box>
+              <Text as="code" fontSize={18}>
+                {tag}
+              </Text>
+            </Box>
+            <Box>
+              <Text as={tag}>Lorem Ipsum Dolor</Text>
+            </Box>
+          </Fragment>
+        ))}
+      </GridBox>
+    )}
+  </Story>
+</Canvas>

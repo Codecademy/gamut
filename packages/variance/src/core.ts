@@ -139,21 +139,10 @@ export const variance = {
 
         return (cssProps) => {
           let cache: CSSObject;
-          const selectors = Object.keys(cssProps).filter((key) =>
-            key.match(/(&|>|\+|~)/g)
-          );
 
           return ({ theme }) => {
             if (cache) return cache;
             const css = parser({ ...cssProps, theme } as any);
-            selectors.forEach((selector) => {
-              const selectorConfig = cssProps[selector];
-              if (isObject(selectorConfig)) {
-                css[selector] = parser(
-                  Object.assign(selectorConfig, { theme }) as any
-                );
-              }
-            });
             cache = css;
 
             return cache;
@@ -179,7 +168,7 @@ export const variance = {
           Object.keys(options.variants).forEach((key) => {
             const variantKey = key as Keys;
             const cssProps = options.variants[variantKey];
-            variantFns[variantKey] = css(cssProps as any);
+            variantFns[variantKey] = css(cssProps);
           });
 
           return ({ [prop]: selected = defaultVariant, ...props }) => {

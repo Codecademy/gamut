@@ -4,8 +4,6 @@ import {
   AbstractTheme,
   CSSObject,
   ResponsiveProp,
-  SelectorMap,
-  Selectors,
   ThemeProps,
 } from './props';
 import { Key } from './utils';
@@ -107,22 +105,14 @@ export interface Variant<
   T extends AbstractTheme,
   Parser extends AbstractParser<T>
 > {
-  <
-    Props extends AbstractProps,
-    X extends Selectors<keyof Props>,
-    Keys extends string,
-    PropKey extends Readonly<string> = 'variant'
-  >(options: {
+  <Keys extends string, PropKey extends Readonly<string> = 'variant'>(options: {
     prop?: PropKey;
     defaultVariant?: Keys;
     variants: {
-      [P in Keys]: Parameters<Parser>[0] &
-        SelectorMap<Props, X, Parameters<Parser>[0]>;
+      [P in Keys]: Parameters<Parser>[0];
     };
   }): (props: Record<PropKey, Keys> & { theme?: T }) => CSSObject;
 }
 export interface CSS<T extends AbstractTheme, P extends AbstractParser<T>> {
-  <Props extends AbstractProps, X extends Selectors<keyof Props>>(
-    config: Parameters<P>[0] & SelectorMap<Props, X, Parameters<P>[0]>
-  ): (props: ThemeProps<T>) => CSSObject;
+  (config: Parameters<P>[0]): (props: ThemeProps<T>) => CSSObject;
 }

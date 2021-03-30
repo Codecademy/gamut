@@ -45,6 +45,7 @@ export interface CSSObject {
   [key: string]: string | number | CSSObject | undefined;
 }
 
+/** These are currently unused but will be used for pseudo selector support in the near future */
 export type Chained = `&` | `>` | '~' | '+';
 
 export type SelectorLiterals =

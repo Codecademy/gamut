@@ -34,6 +34,10 @@ export type CardFooterProps = {
   standardPadding?: boolean;
 };
 
+/**
+ * @deprecated
+ */
+
 export const CardFooter = ({
   children,
   border,
