@@ -18,7 +18,7 @@ export type ButtonType = 'cta' | 'fill' | 'business';
 
 export type GridFormSubmitProps = {
   contents: React.ReactNode;
-  buttonType: ButtonType;
+  type: ButtonType;
   disabled?: ButtonDeprecatedProps['disabled'];
   position?: GridFormSubmitPosition;
   size: ResponsiveProperty<ColumnSizes>;
@@ -43,11 +43,11 @@ export const GridFormSubmit: React.FC<GridFormSubmitProps> = ({
   outline,
   mode = 'light',
   position = 'left',
-  buttonType = 'fill',
+  type = 'fill',
   theme = 'brand-purple',
 }) => {
   const getButton = () => {
-    switch (buttonType) {
+    switch (type) {
       case 'cta':
         return (
           <CTAButton type="submit" mode={mode} disabled={disabled}>
