@@ -15,7 +15,7 @@ export type LiteralScale = Record<string | number, string | number>;
 
 export interface BaseProperty {
   property: keyof PropertyTypes;
-  properties?: (keyof PropertyTypes)[];
+  properties?: readonly (keyof PropertyTypes)[];
 }
 
 export interface Prop extends BaseProperty {
