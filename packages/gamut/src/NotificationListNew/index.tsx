@@ -26,14 +26,15 @@ export const NotificationListNew: React.FC<NotificationListNewProps> = ({
   onDismiss,
   headerElementId,
 }) => {
-  const pattern = (
+  const separatorPattern = (
     <Box as="li" paddingX={32} margin={0} aria-hidden="true">
       <Pattern name="dotsDense" height="1px" display="flex" />
     </Box>
   );
+
   return (
-    <UnstyledUnorderedList aria-labelledby={headerElementId}>
-      {pattern}
+    <UnstyledUnorderedList aria-labelledby={headerElementId} aria-live="polite">
+      {separatorPattern}
       {isEmpty(notifications) ? (
         <EmptyNotification />
       ) : (
@@ -45,7 +46,7 @@ export const NotificationListNew: React.FC<NotificationListNewProps> = ({
                 handleClick={() => onNotificationClick?.(notification)}
                 handleDismiss={() => onDismiss?.(notification)}
               />
-              {pattern}
+              {separatorPattern}
             </React.Fragment>
           );
         })
