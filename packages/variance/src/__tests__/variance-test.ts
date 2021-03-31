@@ -212,7 +212,10 @@ describe('css', () => {
     });
   });
   it('works with media queries', () => {
-    const returnedFn = css({ width: ['100%', '200%'], height: '50' });
+    const returnedFn = css({
+      width: ['100%', '200%'],
+      height: '50',
+    });
 
     expect(returnedFn({ theme })).toEqual({
       width: '100%',
@@ -223,11 +226,61 @@ describe('css', () => {
   it('allows selectors', () => {
     const returnedFn = css({
       width: ['100%', '200%'],
+      '&:hover': {
+        width: '50%',
+      },
     });
 
     expect(returnedFn({ theme })).toEqual({
       width: '100%',
       XS: { width: '200%' },
+      '&:hover': {
+        width: '50%',
+      },
+    });
+  });
+  it('allows selectors with media queries', () => {
+    const returnedFn = css({
+      width: ['100%', '200%'],
+      '&:hover': {
+        width: ['50%', '25%'],
+      },
+    });
+
+    expect(returnedFn({ theme })).toEqual({
+      width: '100%',
+      XS: { width: '200%' },
+      '&:hover': {
+        width: '50%',
+        XS: { width: '25%' },
+      },
+    });
+  });
+
+  it('allows static valid CSS to pass through', () => {
+    const returnedFn = css({
+      display: 'grid',
+      width: ['100%', '200%'],
+    });
+
+    expect(returnedFn({ theme })).toEqual({
+      display: 'grid',
+      width: '100%',
+      XS: { width: '200%' },
+    });
+  });
+
+  it('allows static valid CSS to pass through within selectors', () => {
+    const returnedFn = css({
+      display: 'grid',
+      '&:hover': {
+        display: 'none',
+      },
+    });
+
+    expect(returnedFn({ theme })).toEqual({
+      display: 'grid',
+      '&:hover': { display: 'none' },
     });
   });
 
@@ -310,6 +363,53 @@ describe('variants', () => {
 
     expect(myVariant({ theme, sweet: 'cool' })).toEqual({
       width: '100%',
+    });
+  });
+  it('allows variant props with selectors', () => {
+    const myVariant = variant({
+      prop: 'sweet',
+      variants: {
+        cool: {
+          width: '100%',
+          '&:hover': {
+            width: '50%',
+          },
+        },
+      },
+    });
+
+    expect(myVariant({ theme, sweet: 'cool' })).toEqual({
+      width: '100%',
+      '&:hover': {
+        width: '50%',
+      },
+    });
+  });
+
+  it('allows variant props with selectors with media queries', () => {
+    const myVariant = variant({
+      prop: 'sweet',
+      variants: {
+        cool: {
+          width: '100%',
+          '&:hover': {
+            width: ['50%', '25%'],
+          },
+        },
+        story: {
+          margin: 0,
+        },
+      },
+    });
+
+    expect(myVariant({ theme, sweet: 'cool' })).toEqual({
+      width: '100%',
+      '&:hover': {
+        width: '50%',
+        XS: {
+          width: '25%',
+        },
+      },
     });
   });
   it('caches the variant once called', () => {
