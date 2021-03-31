@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/variance@0.3.0...@codecademy/variance@0.4.0) (2021-03-31)
+
+
+### Features
+
+* **Variance:** base => _ for un scoped style [WEB-1381] ([f3d254c](https://github.com/Codecademy/client-modules/commit/f3d254cccc3dc3cd074df070a51ed8a2ca232a74))
+
+
+
+## [0.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/variance@0.2.1...@codecademy/variance@0.3.0) (2021-03-31)
+
+
+### Features
+
+* **Variance:** `css` - Standard CSS Property Passthrough + Selector System Props [WEB-1117] ([6c2c48d](https://github.com/Codecademy/client-modules/commit/6c2c48dc96012bc685ca4ab93d189d1e39d266b1))
+
+
+
+### [0.2.1](https://github.com/Codecademy/client-modules/compare/@codecademy/variance@0.2.0...@codecademy/variance@0.2.1) (2021-03-30)
+
+**Note:** Version bump only for package @codecademy/variance
+
+
+
+
+
 ## [0.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/variance@0.1.2...@codecademy/variance@0.2.0) (2021-03-30)
 
 

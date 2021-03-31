@@ -1,3 +1,5 @@
+import { PropertyTypes } from './properties';
+
 export type AbstractProps = Record<string, unknown>;
 
 interface BreakpointKeys<T = string> {
@@ -32,7 +34,7 @@ export interface MediaQueryArray<T> {
   5?: T;
 }
 export interface MediaQueryMap<T> {
-  base?: T;
+  _?: T;
   xs?: T;
   sm?: T;
   md?: T;
@@ -45,25 +47,14 @@ export interface CSSObject {
   [key: string]: string | number | CSSObject | undefined;
 }
 
-/** These are currently unused but will be used for pseudo selector support in the near future */
-export type Chained = `&` | `>` | '~' | '+';
+export type SelectorMap<Props, System> = {
+  [K in keyof Props]?: SelectorProps<Props[K], System>;
+};
 
-export type SelectorLiterals =
-  | `[${string}]`
-  | `&:${string}`
-  | `${Chained} ${string}`
-  | `${string} ${Chained} ${string}`;
-
-export type Selectors<T> = T extends SelectorLiterals ? T : never;
-
-export type SelectorMap<
-  Config extends AbstractProps,
-  SelectorKeys extends Selectors<keyof Config>,
-  Props extends AbstractProps
-> = {
-  [K in keyof Config]: K extends SelectorKeys
-    ? Props
-    : K extends keyof Props
-    ? Props[K]
-    : never;
+export type SelectorProps<Props, System> = {
+  [K in keyof Props]?: K extends keyof System
+    ? System[K]
+    : K extends keyof PropertyTypes
+    ? PropertyTypes[K]
+    : Omit<PropertyTypes, keyof System> & System;
 };
