@@ -39,7 +39,7 @@ const ActiveMode = () => {
 
 describe('Background', () => {
   it('switches the default colormode when contrast standards are not met', () => {
-    const { view } = renderView({ color: 'navy' });
+    const { view } = renderView({ initialBackground: 'navy' });
     expect(view.getByTestId('content').parentElement).toHaveStyleRule(
       'background-color',
       theme.colors.navy
@@ -48,10 +48,10 @@ describe('Background', () => {
 
   it('allows for changing the color mode while nested', () => {
     const { view } = renderView({
-      color: 'navy',
+      initialBackground: 'navy',
       children: (
         <div data-testid="content">
-          <Background color="beige">
+          <Background initialBackground="beige">
             <div data-testid="nested-content" />
           </Background>
         </div>
@@ -75,7 +75,7 @@ describe('Background', () => {
 
   it('does not change the color mode when contrasts do not conflict', () => {
     const { view } = renderView({
-      color: 'white',
+      initialBackground: 'white',
     });
 
     // Grand parent
@@ -86,7 +86,7 @@ describe('Background', () => {
 
   it('updates the theme context to the current mode', () => {
     const { view } = renderView({
-      color: 'navy',
+      initialBackground: 'navy',
       children: <ActiveMode />,
     });
 
@@ -95,7 +95,7 @@ describe('Background', () => {
 
   it('does not update the theme context when the color mode has not changed', () => {
     const { view } = renderView({
-      color: 'white',
+      initialBackground: 'white',
       children: <ActiveMode />,
     });
 
