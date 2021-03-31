@@ -1,3 +1,5 @@
+import { Theme } from '@emotion/react';
+
 import { PropertyTypes } from './properties';
 
 export type AbstractProps = Record<string, unknown>;
@@ -14,16 +16,9 @@ export interface BreakpointCache {
   array: string[];
 }
 
-export interface AbstractTheme {
-  breakpoints: BreakpointKeys;
-}
-
-export type ThemeProps<
-  T extends AbstractTheme = AbstractTheme,
-  Props extends AbstractProps = {}
-> = {
-  theme?: T;
-} & Props;
+export type ThemeProps<Props = {}> = Props & {
+  theme?: Theme;
+};
 
 export interface MediaQueryArray<T> {
   0?: T;
@@ -43,6 +38,7 @@ export interface MediaQueryMap<T> {
 }
 
 export type ResponsiveProp<T> = T | MediaQueryMap<T> | MediaQueryArray<T>;
+
 export interface CSSObject {
   [key: string]: string | number | CSSObject | undefined;
 }
@@ -56,5 +52,5 @@ export type SelectorProps<Props, System> = {
     ? System[K]
     : K extends keyof PropertyTypes
     ? PropertyTypes[K]
-    : Omit<PropertyTypes, keyof System> & System;
+    : Omit<PropertyTypes, keyof System> & Omit<System, 'theme'>;
 };
