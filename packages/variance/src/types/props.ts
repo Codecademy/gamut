@@ -44,3 +44,26 @@ export type ResponsiveProp<T> = T | MediaQueryMap<T> | MediaQueryArray<T>;
 export interface CSSObject {
   [key: string]: string | number | CSSObject | undefined;
 }
+
+/** These are currently unused but will be used for pseudo selector support in the near future */
+export type Chained = `&` | `>` | '~' | '+';
+
+export type SelectorLiterals =
+  | `[${string}]`
+  | `&:${string}`
+  | `${Chained} ${string}`
+  | `${string} ${Chained} ${string}`;
+
+export type Selectors<T> = T extends SelectorLiterals ? T : never;
+
+export type SelectorMap<
+  Config extends AbstractProps,
+  SelectorKeys extends Selectors<keyof Config>,
+  Props extends AbstractProps
+> = {
+  [K in keyof Config]: K extends SelectorKeys
+    ? Props
+    : K extends keyof Props
+    ? Props[K]
+    : never;
+};

@@ -21,7 +21,7 @@ export interface Prop<T extends AbstractTheme> extends BaseProperty {
     val: string | number,
     prop?: string,
     props?: AbstractProps
-  ) => string | number;
+  ) => string | number | CSSObject;
 }
 
 export interface AbstractPropTransformer<T extends AbstractTheme>
@@ -99,4 +99,20 @@ export interface Parser<
   (props: ParserProps<T, Config>): CSSObject;
   propNames: (keyof Config)[];
   config: Config;
+}
+
+export interface Variant<
+  T extends AbstractTheme,
+  Parser extends AbstractParser<T>
+> {
+  <Keys extends string, PropKey extends Readonly<string> = 'variant'>(options: {
+    prop?: PropKey;
+    defaultVariant?: Keys;
+    variants: {
+      [P in Keys]: Parameters<Parser>[0];
+    };
+  }): (props: Record<PropKey, Keys> & { theme?: T }) => CSSObject;
+}
+export interface CSS<T extends AbstractTheme, P extends AbstractParser<T>> {
+  (config: Parameters<P>[0]): (props: ThemeProps<T>) => CSSObject;
 }
