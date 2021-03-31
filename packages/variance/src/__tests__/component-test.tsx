@@ -5,7 +5,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 
 import { variance } from '../core';
-import { theme } from './localTheme';
+import { theme } from './__fixtures__/theme';
 
 expect.extend(matchers);
 
@@ -17,11 +17,13 @@ const space = variance.create({
 const layout = variance.create({
   width: {
     property: 'width',
-    transform: (val: string) => `${parseInt(val, 10) / 16}rem`,
+    transform: (val) =>
+      `${typeof val === 'string' ? parseInt(val, 10) : val / 16}rem`,
   },
   height: {
     property: 'height',
-    transform: (val: string) => `${parseInt(val, 10) / 16}rem`,
+    transform: (val) =>
+      `${typeof val === 'string' ? parseInt(val, 10) : val / 16}rem`,
   },
 });
 

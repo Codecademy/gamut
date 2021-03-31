@@ -1,0 +1,9 @@
+{
+  "extends": "../tsconfig.base.json",
+  "compilerOptions": {
+    "composite": true,
+    "rootDir": ".."
+  },
+  "include": ["./**/*.ts", "./**/*.tsx"],
+  "exclude": ["./__tests__/**/*.ts", "/__tests__/**/*.tsx"]
+}

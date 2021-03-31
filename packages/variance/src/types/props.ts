@@ -17,7 +17,7 @@ export interface BreakpointCache {
 }
 
 export type ThemeProps<Props = {}> = Props & {
-  theme: Theme;
+  theme?: Theme;
 };
 
 export interface MediaQueryArray<T> {

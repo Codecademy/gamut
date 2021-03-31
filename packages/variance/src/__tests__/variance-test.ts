@@ -1,6 +1,6 @@
 import { variance } from '../core';
 import { parseSize } from '../transforms/parseSize';
-import { theme } from './localTheme';
+import { theme } from './__fixtures__/theme';
 
 const space = variance.create({
   margin: { property: 'margin', scale: 'spacing' },
@@ -16,6 +16,10 @@ const layout = variance.create({
     property: 'height',
     transform: (val: string) => `${parseInt(val, 10) / 16}rem`,
   },
+});
+
+const color = variance.create({
+  color: { property: 'color' },
 });
 
 type Assert<X, Y> = X extends Y ? true : false;
@@ -145,9 +149,16 @@ describe('style props', () => {
   });
   describe('compose', () => {
     it('combines multiple parsers into one parser', () => {
-      const composed = variance.compose(layout, space);
+      const composed = variance.compose(layout, space, color);
 
-      expect(composed({ height: '24px', padding: [4, 16], theme })).toEqual({
+      expect(
+        composed({
+          height: '24px',
+          padding: [4, 16],
+          color: 'currentColor',
+          theme,
+        })
+      ).toEqual({
         height: '1.5rem',
         padding: '0.25rem',
         XS: {
@@ -398,6 +409,7 @@ describe('variants', () => {
         },
       },
     });
+    myVariant({ theme });
 
     expect(marginTransform).toHaveBeenCalledTimes(0);
 

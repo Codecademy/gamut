@@ -1,4 +1,4 @@
-import { get, identity, isObject, merge } from 'lodash';
+import { get, hasIn, identity, isObject, merge } from 'lodash';
 
 import {
   AbstractParser,
@@ -31,7 +31,7 @@ export const variance = {
 
     const parser = (props: ThemeProps) => {
       const styles = {};
-      const { map, array } = parseBreakpoints(props.theme);
+      const breakpoints = props.theme ? parseBreakpoints(props.theme) : null;
 
       // Loops over all prop names on the configured config to check for configured styles
       propNames.forEach((prop) => {
@@ -44,13 +44,22 @@ export const variance = {
             return Object.assign(styles, property.styleFn(value, prop, props));
           // handle any props configured with the responsive notation
           case 'object':
+            if (!breakpoints) {
+              return;
+            }
             // If it is an array the order of values is smallest to largest: [_, xs, ...]
             if (isMediaArray(value)) {
-              return merge(styles, arrayParser(value, props, property, array));
+              return merge(
+                styles,
+                arrayParser(value, props, property, breakpoints.array)
+              );
             }
             // Check to see if value is an object matching the responsive syntax and generate the styles.
             if (isMediaMap(value)) {
-              return merge(styles, objectParser(value, props, property, map));
+              return merge(
+                styles,
+                objectParser(value, props, property, breakpoints.map)
+              );
             }
         }
       });
@@ -183,7 +192,7 @@ export const variance = {
 
       return (props) => {
         const { [prop]: selected = defaultVariant } = props;
-        return selected ? variantFns[selected](props) : {};
+        return selected ? variantFns[selected as Keys](props) : {};
       };
     };
   },

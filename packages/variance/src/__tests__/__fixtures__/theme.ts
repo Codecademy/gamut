@@ -1,4 +1,4 @@
-import { BaseTheme } from '../types/theme';
+import { BaseTheme } from '../../types/theme';
 
 export const theme = {
   breakpoints: {
