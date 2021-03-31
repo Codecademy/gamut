@@ -1,4 +1,4 @@
-import { get, hasIn, identity, isObject, merge } from 'lodash';
+import { get, identity, isObject, merge } from 'lodash';
 
 import {
   AbstractParser,
