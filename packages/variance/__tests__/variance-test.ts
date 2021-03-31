@@ -18,10 +18,6 @@ const layout = variance.create({
   },
 });
 
-const color = variance.create({
-  color: { property: 'color' },
-});
-
 type Assert<X, Y> = X extends Y ? true : false;
 
 describe('style props', () => {
@@ -149,13 +145,12 @@ describe('style props', () => {
   });
   describe('compose', () => {
     it('combines multiple parsers into one parser', () => {
-      const composed = variance.compose(layout, space, color);
+      const composed = variance.compose(layout, space);
 
       expect(
         composed({
           height: '24px',
           padding: [4, 16],
-          color: 'currentColor',
           theme,
         })
       ).toEqual({

@@ -17,13 +17,11 @@ const space = variance.create({
 const layout = variance.create({
   width: {
     property: 'width',
-    transform: (val) =>
-      `${typeof val === 'string' ? parseInt(val, 10) : val / 16}rem`,
+    transform: (val: string) => `${parseInt(val, 10) / 16}rem`,
   },
   height: {
     property: 'height',
-    transform: (val) =>
-      `${typeof val === 'string' ? parseInt(val, 10) : val / 16}rem`,
+    transform: (val: string) => `${parseInt(val, 10) / 16}rem`,
   },
 });
 
