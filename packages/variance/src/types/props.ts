@@ -34,7 +34,7 @@ export interface MediaQueryArray<T> {
   5?: T;
 }
 export interface MediaQueryMap<T> {
-  base?: T;
+  _?: T;
   xs?: T;
   sm?: T;
   md?: T;

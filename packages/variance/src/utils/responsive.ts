@@ -9,7 +9,7 @@ import {
   ThemeProps,
 } from '../types/props';
 
-const BREAKPOINT_KEYS = ['base', 'xs', 'sm', 'md', 'lg', 'xl'];
+const BREAKPOINT_KEYS = ['_', 'xs', 'sm', 'md', 'lg', 'xl'];
 
 /**
  * Destructures the themes breakpoints into an ordered structure to traverse
@@ -51,9 +51,9 @@ export const objectParser: ResponsiveParser<MediaQueryMap<string | number>> = (
 ) => {
   const styles: CSSObject = {};
   const { styleFn, prop } = config;
-  const { base, ...rest } = value;
+  const { _, ...rest } = value;
   // the keyof 'base' is base styles
-  if (base) Object.assign(styles, styleFn(base, prop, props));
+  if (_) Object.assign(styles, styleFn(_, prop, props));
 
   // Map over remaining keys and merge the corresponding breakpoint styles
   // for that property.
@@ -76,9 +76,9 @@ export const arrayParser: ResponsiveParser<(string | number)[]> = (
 ): CSSObject => {
   const styles: CSSObject = {};
   const { styleFn, prop } = config;
-  const [base, ...rest] = value;
+  const [_, ...rest] = value;
   // the first index is base styles
-  if (base) Object.assign(styles, styleFn(base, prop, props));
+  if (_) Object.assign(styles, styleFn(_, prop, props));
 
   // Map over each value in the array and merge the corresponding breakpoint styles
   // for that property.

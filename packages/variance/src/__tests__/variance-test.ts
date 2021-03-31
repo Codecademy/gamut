@@ -109,11 +109,11 @@ describe('style props', () => {
       });
     });
     it('renders media map arrays styles', () => {
-      const sizes = { base: 4, xs: 8, sm: 16, md: 24, lg: 32, xl: 48 } as const;
+      const sizes = { _: 4, xs: 8, sm: 16, md: 24, lg: 32, xl: 48 } as const;
       const rem = (val: number) => `${val / 16}rem`;
 
       expect(space({ margin: sizes, theme })).toEqual({
-        margin: rem(sizes.base),
+        margin: rem(sizes._),
         XS: {
           margin: rem(sizes.xs),
         },
@@ -132,12 +132,12 @@ describe('style props', () => {
       });
     });
     it('renders media map arrays styles', () => {
-      const sizes = { base: 4, xs: 8, sm: 16, md: 24, lg: 32, xl: 48 } as const;
+      const sizes = { _: 4, xs: 8, sm: 16, md: 24, lg: 32, xl: 48 } as const;
       const rem = (val: number) => `${val / 16}rem`;
 
       expect(space({ margin: sizes, padding: sizes, theme })).toEqual({
-        margin: rem(sizes.base),
-        padding: rem(sizes.base),
+        margin: rem(sizes._),
+        padding: rem(sizes._),
         XS: {
           margin: rem(sizes.xs),
           padding: rem(sizes.xs),
