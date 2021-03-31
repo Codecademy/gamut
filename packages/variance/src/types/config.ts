@@ -1,7 +1,8 @@
+import { Theme } from '@emotion/react';
+
 import { PropertyTypes } from './properties';
 import {
   AbstractProps,
-  AbstractTheme,
   CSSObject,
   ResponsiveProp,
   SelectorMap,
@@ -17,8 +18,8 @@ export interface BaseProperty {
   properties?: (keyof PropertyTypes)[];
 }
 
-export interface Prop<T extends AbstractTheme> extends BaseProperty {
-  scale?: keyof T | LiteralScale;
+export interface Prop extends BaseProperty {
+  scale?: keyof Theme | LiteralScale;
   transform?: (
     val: string | number,
     prop?: string,
@@ -26,25 +27,21 @@ export interface Prop<T extends AbstractTheme> extends BaseProperty {
   ) => string | number | CSSObject;
 }
 
-export interface AbstractPropTransformer<T extends AbstractTheme>
-  extends Prop<T> {
+export interface AbstractPropTransformer extends Prop {
   prop: string;
   styleFn: (value: unknown, prop: string, props: AbstractProps) => CSSObject;
 }
 
-export interface AbstractParser<T extends AbstractTheme> {
+export interface AbstractParser {
   (props: AbstractProps): CSSObject;
   propNames: string[];
-  config: Record<string, AbstractPropTransformer<T>>;
+  config: Record<string, AbstractPropTransformer>;
 }
 
-export type Scale<
-  T extends AbstractTheme,
-  Config extends Prop<T>
-> = ResponsiveProp<
-  Config['scale'] extends keyof T
+export type Scale<Config extends Prop> = ResponsiveProp<
+  Config['scale'] extends keyof Theme
     ?
-        | keyof T[Config['scale']]
+        | keyof Theme[Config['scale']]
         | Exclude<PropertyTypes[Config['property']], object | any[]>
     : Config['scale'] extends LiteralScale
     ?
@@ -53,40 +50,28 @@ export type Scale<
     : PropertyTypes[Config['property']]
 >;
 
-export interface TransformFn<
-  T extends AbstractTheme,
-  P extends string,
-  Config extends Prop<T>
-> {
+export interface TransformFn<P extends string, Config extends Prop> {
   (
-    value: Scale<T, Config>,
+    value: Scale<Config>,
     prop: P,
-    props: ThemeProps<T, { [K in P]?: Scale<T, Config> }>
+    props: ThemeProps<{ [K in P]?: Scale<Config> }>
   ): CSSObject;
 }
 
-export interface PropTransformer<
-  T extends AbstractTheme,
-  P extends string,
-  C extends Prop<T>
-> extends AbstractPropTransformer<T>,
-    Prop<T> {
+export interface PropTransformer<P extends string, C extends Prop>
+  extends AbstractPropTransformer,
+    Prop {
   prop: P;
-  styleFn: TransformFn<T, P, C>;
+  styleFn: TransformFn<P, C>;
 }
 
-export type TransformerMap<
-  T extends AbstractTheme,
-  Config extends Record<string, Prop<T>>
-> = {
-  [P in Key<keyof Config>]: PropTransformer<T, Key<P>, Config[P]>;
+export type TransformerMap<Config extends Record<string, Prop>> = {
+  [P in Key<keyof Config>]: PropTransformer<Key<P>, Config[P]>;
 };
 
 export type ParserProps<
-  T extends AbstractTheme,
-  Config extends Record<string, AbstractPropTransformer<T>>
+  Config extends Record<string, AbstractPropTransformer>
 > = ThemeProps<
-  T,
   {
     [P in keyof Config]?: Parameters<
       Config[P]['styleFn']
@@ -95,18 +80,14 @@ export type ParserProps<
 >;
 
 export interface Parser<
-  T extends AbstractTheme,
-  Config extends Record<string, AbstractPropTransformer<T>>
+  Config extends Record<string, AbstractPropTransformer>
 > {
-  (props: ParserProps<T, Config>): CSSObject;
+  (props: ParserProps<Config>): CSSObject;
   propNames: (keyof Config)[];
   config: Config;
 }
 
-export interface Variant<
-  T extends AbstractTheme,
-  Parser extends AbstractParser<T>
-> {
+export interface Variant<Parser extends AbstractParser> {
   <
     Keys extends string,
     Props extends Record<Keys, AbstractProps>,
@@ -115,11 +96,11 @@ export interface Variant<
     prop?: PropKey;
     defaultVariant?: Keys;
     variants: SelectorMap<Props, Parameters<Parser>[0]>;
-  }): (props: Record<PropKey, Keys> & { theme?: T }) => CSSObject;
+  }): (props: ThemeProps<Record<PropKey, Keys>>) => CSSObject;
 }
 
-export interface CSS<T extends AbstractTheme, P extends AbstractParser<T>> {
+export interface CSS<P extends AbstractParser> {
   <Props extends AbstractProps>(
     config: SelectorProps<Props, Parameters<P>[0]>
-  ): (props: ThemeProps<T>) => CSSObject;
+  ): (props: ThemeProps) => CSSObject;
 }

@@ -5,37 +5,16 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 
 import { variance } from '../core';
+import { theme } from './localTheme';
 
 expect.extend(matchers);
 
-const theme = {
-  breakpoints: {
-    xs: 'XS',
-    sm: 'SM',
-    md: 'MD',
-    lg: 'LG',
-    xl: 'XL',
-  },
-  spacing: {
-    0: 0,
-    4: '0.25rem',
-    8: '0.5rem',
-    12: '0.75rem',
-    16: '1rem',
-    24: '1.5rem',
-    32: '2rem',
-    48: '3rem',
-    64: '4rem',
-  },
-};
-const testVariance = variance.withTheme(theme);
-
-const space = testVariance.create({
+const space = variance.create({
   margin: { property: 'margin', scale: 'spacing' },
   padding: { property: 'padding', scale: 'spacing' },
 });
 
-const layout = testVariance.create({
+const layout = variance.create({
   width: {
     property: 'width',
     transform: (val: string) => `${parseInt(val, 10) / 16}rem`,
@@ -80,7 +59,7 @@ describe('style props', () => {
     expect(renderView).toHaveStyleRule('width', '3rem');
   });
   it('composes props', () => {
-    const Test = styled.div(testVariance.compose(layout, space));
+    const Test = styled.div(variance.compose(layout, space));
     const renderView = renderer
       .create(
         <ThemeProvider theme={theme}>
@@ -103,7 +82,7 @@ describe('style props', () => {
 });
 describe('static styles', () => {
   describe('Variant integration', () => {
-    const variant = testVariance.createVariant({
+    const variant = variance.createVariant({
       bg: { property: 'background' },
     });
 
@@ -133,9 +112,11 @@ describe('static styles', () => {
     it('generates pseudo selector styles', () => {
       const renderView = renderer
         .create(
-          <Div variant="hi">
-            <Test>Hello</Test>
-          </Div>
+          <ThemeProvider theme={theme}>
+            <Div variant="hi">
+              <Test>Hello</Test>
+            </Div>
+          </ThemeProvider>
         )
         .toJSON();
       expect(renderView).toHaveStyleRule('background', 'blue');
@@ -147,9 +128,11 @@ describe('static styles', () => {
     it('generates selector styles', () => {
       const renderView = renderer
         .create(
-          <Div variant="ho">
-            <Test>Hello</Test>
-          </Div>
+          <ThemeProvider theme={theme}>
+            <Div variant="ho">
+              <Test>Hello</Test>
+            </Div>
+          </ThemeProvider>
         )
         .toJSON();
       expect(renderView).toHaveStyleRule('background', 'blue');
@@ -160,7 +143,7 @@ describe('static styles', () => {
   });
 
   describe('CSS integration', () => {
-    const css = testVariance.createCss({
+    const css = variance.createCss({
       bg: { property: 'background' },
     });
 
@@ -177,7 +160,13 @@ describe('static styles', () => {
     );
 
     it('generates pseudo selector styles', () => {
-      const renderView = renderer.create(<Div>Hello</Div>).toJSON();
+      const renderView = renderer
+        .create(
+          <ThemeProvider theme={theme}>
+            <Div>Hello</Div>
+          </ThemeProvider>
+        )
+        .toJSON();
       expect(renderView).toHaveStyleRule('background', 'blue');
       expect(renderView).toHaveStyleRule('background', 'green', {
         target: ':hover',
@@ -192,7 +181,13 @@ describe('static styles', () => {
         css({ '&:hover': { color: 'green' } }),
         css({ '&:hover': { background: 'orange' } })
       );
-      const renderView = renderer.create(<Div>Hello</Div>).toJSON();
+      const renderView = renderer
+        .create(
+          <ThemeProvider theme={theme}>
+            <Div>Hello</Div>
+          </ThemeProvider>
+        )
+        .toJSON();
 
       expect(renderView).toHaveStyleRule('background', 'orange', {
         target: ':hover',

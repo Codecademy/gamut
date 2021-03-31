@@ -1,35 +1,13 @@
 import { variance } from '../core';
 import { parseSize } from '../transforms/parseSize';
+import { theme } from './localTheme';
 
-const theme = {
-  breakpoints: {
-    xs: 'XS',
-    sm: 'SM',
-    md: 'MD',
-    lg: 'LG',
-    xl: 'XL',
-  },
-  spacing: {
-    0: 0,
-    4: '0.25rem',
-    8: '0.5rem',
-    12: '0.75rem',
-    16: '1rem',
-    24: '1.5rem',
-    32: '2rem',
-    48: '3rem',
-    64: '4rem',
-  },
-};
-
-const testVariance = variance.withTheme(theme);
-
-const space = testVariance.create({
+const space = variance.create({
   margin: { property: 'margin', scale: 'spacing' },
   padding: { property: 'padding', scale: 'spacing' },
 });
 
-const layout = testVariance.create({
+const layout = variance.create({
   width: {
     property: 'width',
     transform: (val: string) => `${parseInt(val, 10) / 16}rem`,
@@ -167,7 +145,7 @@ describe('style props', () => {
   });
   describe('compose', () => {
     it('combines multiple parsers into one parser', () => {
-      const composed = testVariance.compose(layout, space);
+      const composed = variance.compose(layout, space);
 
       expect(composed({ height: '24px', padding: [4, 16], theme })).toEqual({
         height: '1.5rem',
@@ -183,15 +161,15 @@ describe('style props', () => {
 describe('css', () => {
   const marginTransform = jest.fn();
 
-  const css = testVariance.createCss({
+  const css = variance.createCss({
     width: { property: 'width', transform: parseSize },
     height: { property: 'height', transform: parseSize },
     margin: {
       property: 'margin',
-      scale: 'spacing',
+      scale: theme.spacing,
       transform: marginTransform,
     },
-    padding: { property: 'padding', scale: 'spacing' },
+    padding: { property: 'padding', scale: theme.spacing },
   });
 
   beforeEach(() => {
@@ -304,7 +282,7 @@ describe('css', () => {
 describe('variants', () => {
   const marginTransform = jest.fn();
 
-  const variant = testVariance.createVariant({
+  const variant = variance.createVariant({
     width: { property: 'width', transform: parseSize },
     height: { property: 'height', transform: parseSize },
     margin: {
