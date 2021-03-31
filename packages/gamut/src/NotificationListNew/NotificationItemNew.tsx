@@ -4,6 +4,7 @@ import {
   ChatBox,
   Envelope,
   Heart,
+  IllustrationProps,
   Megaphone,
   New,
 } from '@codecademy/gamut-illustrations';
@@ -13,7 +14,6 @@ import React, { ReactElement } from 'react';
 
 import { Box, FlexBox, IconButton } from '..';
 import { Notification } from '../NotificationList/typings';
-import { Text } from '../Typography/Text';
 
 const StyledLink = styled.a`
   text-decoration: none;
@@ -54,11 +54,6 @@ const StyledImg = styled.img`
   width: 3rem;
 `;
 
-const DateText = styled(Text)`
-  margin-left: 4px;
-  color: ${({ theme }) => theme.colors['gray-600']};
-`;
-
 export type NotificationItemNewProps = {
   notification: Notification;
   handleClick?: (event: object) => void;
@@ -74,25 +69,28 @@ export const NotificationItemNew: React.FC<NotificationItemNewProps> = ({
   const notificationItemId = `NotificationItem${id}`;
 
   const renderIcon = () => {
-    if (imageUrl) {
-      return <StyledImg src={imageUrl} alt="" />;
+    const renderIllustration = (Illustration: React.FC<IllustrationProps>) => (
+      <Box display="inline-flex" aria-hidden="true">
+        <Illustration height={48} width={48} />
+      </Box>
+    );
+
+    if (imageUrl) return <StyledImg src={imageUrl} alt="" />;
+
+    switch (type) {
+      case 'marketing_blast':
+        return renderIllustration(Megaphone);
+      case 'curriculum_blast':
+        return renderIllustration(New);
+      case 'forum_comment':
+        return renderIllustration(ChatBox);
+      case 'forum_message':
+        return renderIllustration(Envelope);
+      case 'forum_like':
+        return renderIllustration(Heart);
+      default:
+        return renderIllustration(Bell);
     }
-    if (type === 'marketing_blast') {
-      return <Megaphone aria-hidden height={48} width={48} />;
-    }
-    if (type === 'curriculum_blast') {
-      return <New aria-hidden height={48} width={48} />;
-    }
-    if (type === 'forum_comment') {
-      return <ChatBox aria-hidden height={48} width={48} />;
-    }
-    if (type === 'forum_message') {
-      return <Envelope aria-hidden height={48} width={48} />;
-    }
-    if (type === 'forum_like') {
-      return <Heart aria-hidden height={48} width={48} />;
-    }
-    return <Bell aria-hidden height={48} width={48} />;
   };
 
   const notificationContent: ReactElement = (
@@ -102,9 +100,15 @@ export const NotificationItemNew: React.FC<NotificationItemNewProps> = ({
         <Box as="span" fontSize={14} id={notificationItemId}>
           {text}
         </Box>
-        <DateText as="span" fontSize="sm">
+        <Box
+          as="span"
+          fontSize={14}
+          color="gray-600"
+          marginLeft={4}
+          aria-hidden="true"
+        >
           {date}
-        </DateText>
+        </Box>
       </Box>
     </FlexBox>
   );
