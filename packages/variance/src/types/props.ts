@@ -16,11 +16,7 @@ export interface BreakpointCache {
   array: string[];
 }
 
-export interface AbstractTheme {
-  breakpoints: BreakpointKeys;
-}
-
-export type ThemeProps<Props extends AbstractProps = {}> = Props & {
+export type ThemeProps<Props = {}> = Props & {
   theme: Theme;
 };
 
@@ -42,6 +38,7 @@ export interface MediaQueryMap<T> {
 }
 
 export type ResponsiveProp<T> = T | MediaQueryMap<T> | MediaQueryArray<T>;
+
 export interface CSSObject {
   [key: string]: string | number | CSSObject | undefined;
 }

@@ -38,16 +38,17 @@ export interface AbstractParser {
   config: Record<string, AbstractPropTransformer>;
 }
 
+type PropertyValues<
+  Property extends keyof PropertyTypes,
+  All extends boolean = false
+> = Exclude<PropertyTypes[Property], All extends true ? never : object | any[]>;
+
 export type Scale<Config extends Prop> = ResponsiveProp<
   Config['scale'] extends keyof Theme
-    ?
-        | keyof Theme[Config['scale']]
-        | Exclude<PropertyTypes[Config['property']], object | any[]>
+    ? keyof Theme[Config['scale']] | PropertyValues<Config['property']>
     : Config['scale'] extends LiteralScale
-    ?
-        | keyof Config['scale']
-        | Exclude<PropertyTypes[Config['property']], object | any[]>
-    : PropertyTypes[Config['property']]
+    ? keyof Config['scale'] | PropertyValues<Config['property']>
+    : PropertyValues<Config['property'], true>
 >;
 
 export interface TransformFn<P extends string, Config extends Prop> {
@@ -87,7 +88,12 @@ export interface Parser<
   config: Config;
 }
 
-export interface Variant<Parser extends AbstractParser> {
+export type SystemProps<P extends AbstractParser> = Omit<
+  Parameters<P>[0],
+  'theme'
+>;
+
+export interface Variant<P extends AbstractParser> {
   <
     Keys extends string,
     Props extends Record<Keys, AbstractProps>,
@@ -95,12 +101,12 @@ export interface Variant<Parser extends AbstractParser> {
   >(options: {
     prop?: PropKey;
     defaultVariant?: Keys;
-    variants: SelectorMap<Props, Parameters<Parser>[0]>;
+    variants: SelectorMap<Props, SystemProps<P>>;
   }): (props: ThemeProps<Record<PropKey, Keys>>) => CSSObject;
 }
 
 export interface CSS<P extends AbstractParser> {
-  <Props extends AbstractProps>(
-    config: SelectorProps<Props, Parameters<P>[0]>
-  ): (props: ThemeProps) => CSSObject;
+  <Props extends AbstractProps>(config: SelectorProps<Props, SystemProps<P>>): (
+    props: ThemeProps
+  ) => CSSObject;
 }
