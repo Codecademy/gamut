@@ -24,6 +24,7 @@ export * from './FocusTrap';
 export * from './Form';
 export * from './GridForm';
 export * from './HiddenText';
+export * from './List';
 export * from './Typography/Heading';
 export * from './Typography/Text';
 export * from './HighlightedText';
