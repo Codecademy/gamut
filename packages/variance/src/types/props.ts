@@ -47,7 +47,6 @@ export interface CSSObject {
   [key: string]: string | number | CSSObject | undefined;
 }
 
-/** These are currently unused but will be used for pseudo selector support in the near future */
 export type SelectorMap<Props, System> = {
   [K in keyof Props]?: SelectorProps<Props[K], System>;
 };
