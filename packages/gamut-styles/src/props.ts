@@ -1,85 +1,18 @@
-import { system } from '@codecademy/gamut-system';
-import { Theme } from '@emotion/react';
+import { variance } from '@codecademy/variance';
 
-const {
-  variant,
-  properties,
-  typography,
-  grid,
-  flex,
-  layout,
-  positioning,
-  background,
-  color,
-  shadow,
-  spacing: space,
-  border,
-} = system.withTheme<Theme>().create({
-  typography: {
-    fontSize: {
-      propName: 'fontSize',
-      scale: 'fontSize',
-    },
-    fontFamily: {
-      propName: 'fontFamily',
-      scale: 'fontFamily',
-    },
-    fontWeight: {
-      propName: 'fontWeight',
-      scale: 'fontWeight',
-    },
-    lineHeight: {
-      propName: 'lineHeight',
-      scale: 'lineHeight',
-    },
-  },
-  spacing: {
-    margin: {
-      propName: 'margin',
-      scale: 'spacing',
-    },
-    padding: {
-      propName: 'padding',
-      scale: 'spacing',
-    },
-  },
-  color: {
-    textColor: {
-      propName: 'textColor',
-      scale: 'colors',
-    },
-    backgroundColor: {
-      propName: 'backgroundColor',
-      scale: 'colors',
-    },
-    borderColor: {
-      propName: 'borderColor',
-      scale: 'colors',
-    },
-  },
-  grid: {
-    columnGap: {
-      propName: 'columnGap',
-      scale: 'spacing',
-    },
-    rowGap: {
-      propName: 'rowGap',
-      scale: 'spacing',
-    },
-  },
-});
+import * as PROPERTIES from './props/config';
 
-export {
-  variant,
-  properties,
-  typography,
-  grid,
-  flex,
-  layout,
-  positioning,
-  background,
-  color,
-  shadow,
-  space,
-  border,
-};
+export const typography = variance.create(PROPERTIES.typography);
+export const grid = variance.create(PROPERTIES.grid);
+export const flex = variance.create(PROPERTIES.flex);
+export const layout = variance.create(PROPERTIES.layout);
+export const positioning = variance.create(PROPERTIES.positioning);
+export const background = variance.create(PROPERTIES.background);
+export const color = variance.create(PROPERTIES.color);
+export const shadow = variance.create(PROPERTIES.shadows);
+export const space = variance.create(PROPERTIES.space);
+export const border = variance.create(PROPERTIES.border);
+
+export const css = variance.createCss(PROPERTIES.systemProps);
+
+export const variant = variance.createVariant(PROPERTIES.systemProps);

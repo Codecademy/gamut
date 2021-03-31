@@ -1,13 +1,8 @@
 import isPropValid from '@emotion/is-prop-valid';
 
-import { properties } from '../props';
+import { systemProps } from '../props/config';
 
-const allProps = Object.keys(properties).reduce<string[]>(
-  (carry, prop: keyof typeof properties) => {
-    return [...carry, ...properties[prop].propNames];
-  },
-  []
-);
+const allSystemProps = Object.keys(systemProps);
 
 export const shouldForwardProp = (prop: string) =>
-  isPropValid(prop) && !allProps.includes(prop);
+  isPropValid(prop) && !allSystemProps.includes(prop);

@@ -10,11 +10,11 @@ const space = variance.create({
 const layout = variance.create({
   width: {
     property: 'width',
-    transform: (val: string) => `${parseInt(val, 10) / 16}rem`,
+    transform: (val) => `${parseInt(val as string, 10) / 16}rem`,
   },
   height: {
     property: 'height',
-    transform: (val: string) => `${parseInt(val, 10) / 16}rem`,
+    transform: (val) => `${parseInt(val as string, 10) / 16}rem`,
   },
 });
 
@@ -166,10 +166,10 @@ describe('css', () => {
     height: { property: 'height', transform: parseSize },
     margin: {
       property: 'margin',
-      scale: theme.spacing,
+      scale: 'spacing',
       transform: marginTransform,
     },
-    padding: { property: 'padding', scale: theme.spacing },
+    padding: { property: 'padding', scale: 'spacing' },
   });
 
   beforeEach(() => {

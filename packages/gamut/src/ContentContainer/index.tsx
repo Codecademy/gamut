@@ -4,14 +4,14 @@ import styled from '@emotion/styled';
 
 const contentContainerVariants = variant({
   prop: 'size',
-  default: 'medium',
+  defaultVariant: 'medium',
   variants: {
     medium: {
-      paddingX: [16, 32, 64, , 96],
+      px: [16, 32, 64, , 96],
       maxWidth: contentWidths.max,
     },
     wide: {
-      paddingX: [, , 24, 32],
+      px: [, , 24, 32],
     },
   },
 });

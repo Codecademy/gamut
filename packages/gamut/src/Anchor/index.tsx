@@ -6,13 +6,14 @@ import {
   typography,
   variant,
 } from '@codecademy/gamut-styles';
-import { compose, HandlerProps } from '@codecademy/gamut-system';
+import { variance } from '@codecademy/variance';
+import { SystemProps } from '@codecademy/variance/dist/types/config';
 import { css, Theme } from '@emotion/react';
 import styled from '@emotion/styled';
 import React, { forwardRef, HTMLProps, MutableRefObject } from 'react';
 
 export type LinkElements = HTMLAnchorElement | HTMLButtonElement;
-export interface AnchorProps extends HandlerProps<typeof anchorProps> {
+export interface AnchorProps extends SystemProps<typeof anchorProps> {
   href?: string;
   as?: never;
   mode?: 'light' | 'dark';
@@ -26,44 +27,42 @@ const createModeVariants = ({
   text,
   primary,
 }: Record<'text' | 'primary', keyof Theme['colors']>) => {
-  const base = variant({
-    standard: {
-      textColor: primary,
-      borderColor: primary,
-    },
-    inline: {
-      textDecoration: 'underline',
-      textColor: primary,
-      borderColor: primary,
-    },
-    interface: {
-      textColor: text,
-      borderColor: primary,
+  return variant({
+    prop: 'variant',
+    variants: {
+      standard: {
+        whiteSpace: 'nowrap',
+        color: primary,
+        borderColor: primary,
+        '&:hover': {
+          textDecoration: 'underline',
+        },
+        '&:focus-visible': {
+          color: text,
+          textDecoration: 'none',
+        },
+      },
+      inline: {
+        whiteSpace: 'nowrap',
+        textDecoration: 'underline',
+        color: primary,
+        borderColor: primary,
+        '&:focus-visible': {
+          textDecoration: 'underline',
+        },
+      },
+      interface: {
+        color: text,
+        borderColor: primary,
+        '&:hover': {
+          color: primary,
+        },
+        '&:focus-visible': {
+          color: text,
+        },
+      },
     },
   });
-
-  const hover = variant({
-    standard: {
-      textDecoration: 'underline',
-    },
-    inline: {},
-    interface: {
-      textColor: primary,
-    },
-  });
-
-  const focus = variant({
-    standard: {
-      textColor: text,
-      textDecoration: 'none',
-    },
-    inline: {
-      textDecoration: 'underline',
-    },
-    interface: {},
-  });
-
-  return { base, hover, focus };
 };
 
 const modes = {
@@ -77,7 +76,7 @@ const modes = {
   }),
 } as const;
 
-const anchorProps = compose(layout, typography, color, space);
+const anchorProps = variance.compose(layout, typography, color, space);
 
 const ButtonReset = styled.button`
   background: none;
@@ -89,10 +88,12 @@ const ButtonReset = styled.button`
 
 const AnchorElement = forwardRef<LinkElements, ForwardedProps>(
   ({ href, disabled, children, as, ...rest }, ref) => {
+    const propsToForward = Object.keys(rest).filter(shouldForwardProp);
+
     if (!href || href.length === 0) {
       return (
         <ButtonReset
-          {...rest}
+          {...propsToForward}
           ref={ref as MutableRefObject<HTMLButtonElement>}
           type="button"
           aria-disabled={disabled}
@@ -103,26 +104,26 @@ const AnchorElement = forwardRef<LinkElements, ForwardedProps>(
     }
 
     return (
-      <a {...rest} href={href} ref={ref as MutableRefObject<HTMLAnchorElement>}>
+      <a
+        {...propsToForward}
+        href={href}
+        ref={ref as MutableRefObject<HTMLAnchorElement>}
+      >
         {children}
       </a>
     );
   }
 );
 
-export const AnchorBase = styled('a', {
-  shouldForwardProp,
-})<AnchorProps>`
+export const AnchorBase = styled('a', { shouldForwardProp })<AnchorProps>`
   display: inline-block;
-
   ${anchorProps}
   ${({ theme, mode = 'light', variant }) => {
-    const { base, hover, focus } = modes[mode];
+    const modeVariant = modes[mode];
 
     return css`
-      ${base({ theme, variant })};
+      ${modeVariant({ theme, variant })};
       position: relative;
-      ${variant !== 'interface' && 'white-space: nowrap;'}
 
       &:after {
         content: '';
@@ -141,7 +142,6 @@ export const AnchorBase = styled('a', {
       &:focus {
         text-decoration: none;
         cursor: pointer;
-        ${hover({ theme, variant })}
       }
       &:disabled,
       &[disabled] {
@@ -155,8 +155,6 @@ export const AnchorBase = styled('a', {
       }
 
       &:focus-visible {
-        ${focus({ theme, variant })}
-
         &:after {
           opacity: 1;
         }

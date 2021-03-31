@@ -46,10 +46,7 @@ module.exports = {
           __dirname,
           '../../gamut-styles/src'
         ),
-        '@codecademy/gamut-system$': path.resolve(
-          __dirname,
-          '../../gamut-system/src'
-        ),
+        '@codecademy/variance$': path.resolve(__dirname, '../../variance/src'),
         '@codecademy/gamut$': path.resolve(__dirname, '../../gamut/src'),
         '@codecademy/gamut-labs$': path.resolve(
           __dirname,

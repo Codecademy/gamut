@@ -17,7 +17,7 @@
     "url": "git@github.com:Codecademy/client-modules.git"
   },
   "dependencies": {
-    "@codecademy/gamut-system": "^0.6.0"
+    "@codecademy/variance": "^0.4.0"
   },
   "peerDependencies": {
     "@emotion/react": "^11.1.4",

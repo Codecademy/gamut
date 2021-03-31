@@ -11,10 +11,10 @@ import {
   space,
   typography,
 } from '@codecademy/gamut-styles';
-import { compose, HandlerProps } from '@codecademy/gamut-system';
+import { variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
 
-const boxStyles = compose(
+const boxStyles = variance.compose(
   space,
   layout,
   border,
@@ -27,7 +27,7 @@ const boxStyles = compose(
   grid
 );
 
-export type BoxStyles = HandlerProps<typeof boxStyles>;
+export type BoxStyles = Parameters<typeof boxStyles>[0];
 export interface BoxProps extends BoxStyles {}
 
 export const Box = styled('div', {

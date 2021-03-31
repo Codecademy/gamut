@@ -15,7 +15,7 @@ export type LiteralScale = Record<string | number, string | number>;
 
 export interface BaseProperty {
   property: keyof PropertyTypes;
-  properties?: (keyof PropertyTypes)[];
+  properties?: readonly (keyof PropertyTypes)[];
 }
 
 export interface Prop extends BaseProperty {
@@ -96,13 +96,13 @@ export type SystemProps<P extends AbstractParser> = Omit<
 export interface Variant<P extends AbstractParser> {
   <
     Keys extends string,
-    Props extends Record<Keys, AbstractProps>,
+    Props extends Record<string, AbstractProps>,
     PropKey extends Readonly<string> = 'variant'
   >(options: {
     prop?: PropKey;
-    defaultVariant?: Keys;
+    defaultVariant?: keyof Props;
     variants: SelectorMap<Props, SystemProps<P>>;
-  }): (props: ThemeProps<Record<PropKey, Keys>>) => CSSObject;
+  }): (props: ThemeProps<Record<PropKey, Keys | undefined>>) => CSSObject;
 }
 
 export interface CSS<P extends AbstractParser> {
