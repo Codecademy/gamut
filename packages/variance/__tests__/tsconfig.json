@@ -4,5 +4,6 @@
     "composite": true,
     "rootDir": ".."
   },
-  "include": ["./**/*.ts", "./**/*.tsx"]
+  "include": ["./**/*.ts", "./**/*.tsx"],
+  "references": [{ "path": "../src" }]
 }

@@ -1,5 +1,5 @@
-import { variance } from '../core';
-import { parseSize } from '../transforms/parseSize';
+import { variance } from '../src/core';
+import { parseSize } from '../src/transforms/parseSize';
 import { theme } from './__fixtures__/theme';
 
 const space = variance.create({
