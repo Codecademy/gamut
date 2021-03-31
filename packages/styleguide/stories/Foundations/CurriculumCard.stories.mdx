@@ -1,0 +1,26 @@
+import { CurriculumCard } from '@codecademy/gamut-labs/src';
+import title from '@codecademy/macros/lib/title.macro';
+import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
+
+<Meta
+  title={title}
+  component={CurriculumCard}
+  args={{
+    title: 'Learn Java',
+    difficulty: 0,
+    tag: 'Hi',
+    tagColor: 'blue',
+    scope: '',
+    text: '',
+  }}
+  parameters={{
+    subtitle: `Curriculum cards for paths and courses.`,
+    source: 'gamut-labs',
+  }}
+/>
+
+<Canvas withSource="open">
+  <Story name="CurriculumCard">{(args) => <CurriculumCard {...args} />}</Story>
+</Canvas>
+
+<Props story="CurriculumCard" />
