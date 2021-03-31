@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/variance@0.3.0...@codecademy/variance@0.4.0) (2021-03-31)
+
+
+### Features
+
+* **Variance:** base => _ for un scoped style [WEB-1381] ([f3d254c](https://github.com/Codecademy/client-modules/commit/f3d254cccc3dc3cd074df070a51ed8a2ca232a74))
+
+
+
 ## [0.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/variance@0.2.1...@codecademy/variance@0.3.0) (2021-03-31)
 
 
