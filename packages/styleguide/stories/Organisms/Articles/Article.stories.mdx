@@ -23,7 +23,7 @@ import { stub } from './stubArticle';
     (Story, args) => (
       <Background
         initialBackground={
-          args?.globals?.backgrounds?.value === 'dark' ? 'navy' : 'washBeige'
+          args?.parameters.mode === 'dark' ? 'navy' : 'washBeige'
         }
         minHeight="100vh"
         position="relative"
@@ -47,7 +47,15 @@ import { stub } from './stubArticle';
 />
 
 <Canvas>
-  <Story name="Article">{(args) => <Article {...args} />}</Story>
+  <Story name="Light" parameters={{ mode: 'light' }}>
+    {(args) => <Article {...args} />}
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="Dark" parameters={{ mode: 'dark' }}>
+    {(args) => <Article {...args} />}
+  </Story>
 </Canvas>
 
 <PropsTable story="Article" />
