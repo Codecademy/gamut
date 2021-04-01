@@ -13,7 +13,7 @@ export const MadeIn = () => {
   return (
     <Box
       display={{ md: 'inline-block' }}
-      textAlign={{ xs: 'center', md: 'right' }}
+      textAlign={{ base: 'center', md: 'right' }}
     >
       Made with
       <HeartContainer aria-label="love">️❤️</HeartContainer>

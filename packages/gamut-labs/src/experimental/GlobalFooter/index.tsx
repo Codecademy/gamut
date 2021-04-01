@@ -5,7 +5,7 @@ import React from 'react';
 import { FooterLegal } from './FooterLegal';
 import { FooterNavLinks } from './FooterNavLinks';
 
-export type FooterProps = {
+export type GlobalFooterProps = {
   className?: string;
 };
 
@@ -17,7 +17,7 @@ const FooterContainer = styled.footer`
   }
 `;
 
-export const Footer: React.FC<FooterProps> = ({ className }) => {
+export const GlobalFooter: React.FC<GlobalFooterProps> = ({ className }) => {
   return (
     <FooterContainer className={className} role="contentinfo">
       <ContentContainer>

@@ -1,4 +1,4 @@
-import { Anchor } from '@codecademy/gamut';
+import { Anchor, Box } from '@codecademy/gamut';
 import { theme } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React from 'react';
@@ -6,6 +6,7 @@ import React from 'react';
 import { FooterHeading } from '../FooterHeading';
 import { LinkArea } from '../FooterLinkArea';
 import { FooterLinkItem } from '../FooterLinkItem';
+import { SocialMediaLinks } from './SocialMediaLinks';
 
 export type CompanyLinksProps = {
   userGeo?: string;
@@ -14,20 +15,21 @@ export type CompanyLinksProps = {
 const CompanyLinksContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-row-gap: 0.875rem;
-  grid-column-gap: 1.5rem;
 
   ${theme.breakpoints.sm} {
     grid-template-columns: 1fr 1fr 1fr;
   }
 `;
 
-const MobileImageLink = styled.a`
-  display: inline-block;
-  width: 50%;
-
+const IndividualPlansLinkArea = styled(LinkArea)`
   ${theme.breakpoints.sm} {
-    width: auto;
+    grid-row-start: 2;
+  }
+`;
+
+const SupportLinkArea = styled(LinkArea)`
+  ${theme.breakpoints.sm} {
+    grid-row-start: 3;
   }
 `;
 
@@ -36,8 +38,18 @@ const MobileLinkArea = styled(LinkArea)`
 
   ${theme.breakpoints.sm} {
     grid-column-end: 1;
-    grid-row-start: 2;
+    grid-row: 2 / 4;
+    padding-top: 2rem;
   }
+`;
+
+const MobileFooterHeading = styled(FooterHeading)`
+  margin-bottom: 0;
+`;
+
+const MobileImageLink = styled.a`
+  display: inline-block;
+  width: 50%;
 `;
 
 const AndroidMobileAppImage = styled.img`
@@ -62,13 +74,14 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({ userGeo }) => {
         {userGeo !== 'IN' && (
           <FooterLinkItem>
             <Anchor href="/shop" variant="interface">
-              About
+              Shop
             </Anchor>
           </FooterLinkItem>
         )}
+        <SocialMediaLinks />
       </LinkArea>
       <LinkArea>
-        <FooterHeading>Resouces</FooterHeading>
+        <FooterHeading>Resources</FooterHeading>
         <FooterLinkItem>
           <Anchor href="https://news.codecademy.com" variant="interface">
             Blog
@@ -85,12 +98,14 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({ userGeo }) => {
           </Anchor>
         </FooterLinkItem>
       </LinkArea>
-      <LinkArea>
+      <SupportLinkArea>
         <FooterHeading>Support</FooterHeading>
-        <Anchor href="https://help.codecademy.com" variant="interface">
-          Help Center
-        </Anchor>
-      </LinkArea>
+        <FooterLinkItem>
+          <Anchor href="https://help.codecademy.com" variant="interface">
+            Help Center
+          </Anchor>
+        </FooterLinkItem>
+      </SupportLinkArea>
       <LinkArea>
         <FooterHeading>Community</FooterHeading>
         <FooterLinkItem>
@@ -112,7 +127,7 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({ userGeo }) => {
           </Anchor>
         </FooterLinkItem>
       </LinkArea>
-      <LinkArea>
+      <IndividualPlansLinkArea>
         <FooterHeading>Individual Plans</FooterHeading>
         <FooterLinkItem>
           <Anchor href="/pro/membership" variant="interface">
@@ -124,7 +139,7 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({ userGeo }) => {
             For Students
           </Anchor>
         </FooterLinkItem>
-      </LinkArea>
+      </IndividualPlansLinkArea>
       <LinkArea>
         <FooterHeading>Enterprise Plans</FooterHeading>
         <FooterLinkItem>
@@ -134,8 +149,8 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({ userGeo }) => {
         </FooterLinkItem>
       </LinkArea>
       <MobileLinkArea>
-        <FooterHeading>Mobile</FooterHeading>
-        <div>
+        <MobileFooterHeading>Mobile</MobileFooterHeading>
+        <Box display={[, 'flex']} flexDirection="column">
           <MobileImageLink
             href="https://itunes.apple.com/us/app/codecademy-go/id1376029326"
             target="_blank"
@@ -158,7 +173,7 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({ userGeo }) => {
               width="155px"
             />
           </MobileImageLink>
-        </div>
+        </Box>
       </MobileLinkArea>
     </CompanyLinksContainer>
   );

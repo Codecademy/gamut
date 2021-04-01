@@ -1,19 +1,19 @@
-import { Footer } from '@codecademy/gamut-labs/src';
+import { GlobalFooter } from '@codecademy/gamut-labs/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
 
 <Meta
   title={title}
   parameters={{
-    subtitle: `Footer navigation bar and tabs with configurable areas.`,
+    subtitle: `Global footer to be displayed on the bottom of each page.`,
     status: 'volatile',
     source: 'gamut-labs',
-    figmaId: 'TemYhRWOavsERWprDzRJCx',
+    figmaId: 'as1W6qIWUlibYKiSUWB2S4',
   }}
 />
 
 <Canvas withSource="open">
-  <Story name="Footer">{(args) => <Footer />}</Story>
+  <Story name="GlobalFooter">{(args) => <GlobalFooter />}</Story>
 </Canvas>
 
-<Props story="Footer" />
+<Props story="GlobalFooter" />
