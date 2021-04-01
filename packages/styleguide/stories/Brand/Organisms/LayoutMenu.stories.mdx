@@ -1,0 +1,112 @@
+import { Anchor, Box } from '@codecademy/gamut';
+import { LayoutMenu } from '@codecademy/gamut-labs/src';
+import title from '@codecademy/macros/lib/title.macro';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/dist/blocks';
+
+import { PropsTable } from '~styleguide/blocks';
+
+<Meta
+  title={title}
+  component={LayoutMenu}
+  args={{
+    allMenuData: [
+      {
+        title: 'Languages',
+        items: [
+          {
+            title: 'HTML & CSS',
+            slug: 'html-css',
+          },
+          {
+            title: 'Python',
+            slug: 'python',
+          },
+        ],
+      },
+      {
+        title: 'Subjects',
+        items: [
+          {
+            title: 'Data Science',
+            slug: 'data-science',
+          },
+          {
+            title: 'Computer Science',
+            slug: 'computer-science',
+          },
+        ],
+      },
+    ],
+    onSectionToggle: (slug) => {
+      // eslint-disable-next-line no-console
+      console.log(
+        `You could add event tracking here. You have access to the slug: ${slug}`
+      );
+    },
+    onMenuItemClick: (menuItem) => {
+      // eslint-disable-next-line no-console
+      console.log(
+        `You should handle where the link goes here and also could add event tracking. You have access to the menu item: ${menuItem}`
+      );
+    },
+  }}
+  parameters={{
+    subtitle: `An accordion menu, currently used in the Catalog and Cheatsheets Index`,
+    source: 'gamut-labs',
+    status: 'volatile',
+  }}
+/>
+
+<Canvas>
+  <Story name="LayoutMenu">{(args) => <LayoutMenu {...args} />}</Story>
+</Canvas>
+
+<PropsTable story="LayoutMenu" />
+
+## With Additional Links
+
+<Canvas>
+  <Story name="LayoutMenuWithAdditionalLinks">
+    {(args) => (
+      <LayoutMenu
+        {...args}
+        additionalLinks={
+          <>
+            <Box paddingBottom={32}>
+              <Anchor
+                variant="interface"
+                display="block"
+                onClick={() =>
+                  (window.location.href =
+                    'https://www.codecademy.com/catalog/all')
+                }
+              >
+                Full Catalog
+              </Anchor>
+            </Box>
+            <Box paddingBottom={32}>
+              <Anchor
+                variant="interface"
+                display="block"
+                onClick={() =>
+                  (window.location.href =
+                    'https://www.codecademy.com/explore/sorting-quiz')
+                }
+              >
+                Where do I begin?
+              </Anchor>
+            </Box>
+          </>
+        }
+      />
+    )}
+  </Story>
+</Canvas>
+
+## With Selected Item
+
+<Canvas>
+  <Story name="LayoutMenuWithSelectedItem">
+    {(args) => <LayoutMenu {...args} selectedItem="python" />}
+  </Story>
+</Canvas>

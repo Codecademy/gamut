@@ -13,6 +13,7 @@ export * from './CurriculumCard';
 export * from './GlobalFooter';
 export * from './GlobalHeader';
 export * from './HubCard';
+export * from './LayoutMenu';
 export * from './Popover';
 export * from './Text';
 export { AnonHeaderVariant } from './GlobalHeader/types';
