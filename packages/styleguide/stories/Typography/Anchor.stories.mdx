@@ -1,5 +1,6 @@
 import { Anchor, Box } from '@codecademy/gamut/src';
-import { Text } from '@codecademy/gamut-labs';
+import { Text } from '@codecademy/gamut-labs/src';
+import { ColorMode } from '@codecademy/gamut-styles/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/dist/blocks';
 import { startCase } from 'lodash';
@@ -15,7 +16,6 @@ import { PropsTable } from '~styleguide/blocks';
     source: 'gamut',
   }}
   args={{
-    mode: 'light',
     href: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
     target: '_blank',
     fontWeight: 'title',
@@ -60,49 +60,29 @@ export const variants = ['interface', 'standard', 'inline'];
 
 ## Modes
 
-### Light
-
 <Canvas>
-  <Story name="light">
-    {() => {
-      return (
-        <Box padding={16}>
-          {variants.map((variant) => (
-            <Box key={`${variant}-light`} display="inline-block" padding={8}>
-              <Text as="p">{startCase(variant)} Link</Text>
-              <Anchor
-                marginRight={8}
-                variant={variant}
-                key={`${variant}-light`}
-                href={`#${variant}`}
-              >
-                Click Me
-              </Anchor>
-            </Box>
-          ))}
-        </Box>
-      );
-    }}
-  </Story>
-</Canvas>
-
-### Dark
-
-<Canvas>
-  <Story name="dark">
+  <Story name="modes">
     {() => (
-      <Box padding={16} backgroundColor="navy">
-        {variants.map((variant) => (
-          <Box key={`${variant}-dark`} display="inline-block" padding={8}>
-            <Text as="p" textColor="white" textTransform="uppercase">
-              {startCase(variant)} Link
-            </Text>
-            <Anchor mode="dark" variant={variant} href={`#${variant}`}>
-              Click Me
-            </Anchor>
-          </Box>
+      <>
+        {['light', 'dark'].map((mode) => (
+          <ColorMode mode={mode} key={mode}>
+            <Box padding={16} backgroundColor="background" textColor="text">
+              {variants.map((variant) => (
+                <Box key={variant} display="inline-block" padding={8}>
+                  <Text as="p">{startCase(variant)} Link</Text>
+                  <Anchor
+                    marginRight={8}
+                    variant={variant}
+                    href={`#${variant}`}
+                  >
+                    Click Me
+                  </Anchor>
+                </Box>
+              ))}
+            </Box>
+          </ColorMode>
         ))}
-      </Box>
+      </>
     )}
   </Story>
 </Canvas>

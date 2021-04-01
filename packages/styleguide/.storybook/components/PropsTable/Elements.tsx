@@ -1,5 +1,5 @@
 import { styled } from '@storybook/theming';
-import { boxShadow, spacing } from '@codecademy/gamut-styles';
+import { boxShadow, spacing } from '@codecademy/gamut-styles/src';
 import { css } from '@emotion/react';
 
 export const PropGroupTooltip = styled.ul`

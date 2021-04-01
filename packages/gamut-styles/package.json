@@ -17,17 +17,20 @@
     "url": "git@github.com:Codecademy/client-modules.git"
   },
   "dependencies": {
-    "@codecademy/gamut-system": "^0.6.0"
+    "@codecademy/gamut-system": "^0.6.0",
+    "polished": "^4.1.1"
   },
   "peerDependencies": {
-    "@emotion/react": "^11.1.4",
-    "@emotion/styled": "^11.0.0",
+    "@emotion/react": "^11.15",
+    "@emotion/styled": "^11.1.5",
     "react-helmet": "^6.1.0"
   },
   "devDependencies": {
-    "@emotion/react": "^11.1.4",
-    "@emotion/styled": "^11.0.0",
-    "@types/react-helmet": "^6.1.0"
+    "@emotion/react": "^11.1.5",
+    "@emotion/styled": "^11.1.5",
+    "@emotion/jest": "11.2.1",
+    "@types/react-helmet": "^6.1.0",
+    "component-test-setup": "^0.1.1"
   },
   "license": "MIT",
   "publishConfig": {

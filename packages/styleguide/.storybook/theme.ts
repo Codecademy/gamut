@@ -1,5 +1,5 @@
 import { create } from '@storybook/theming';
-import { theme as gamutTheme } from '@codecademy/gamut-styles';
+import { theme as gamutTheme } from '@codecademy/gamut-styles/src';
 import logo from './assets/logo.svg';
 
 export const theme = create({

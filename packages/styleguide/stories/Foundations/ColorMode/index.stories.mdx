@@ -1,0 +1,74 @@
+import title from '@codecademy/macros/lib/title.macro';
+import { Meta } from '@storybook/addon-docs/dist/blocks';
+
+import { BackgroundExample, ColorModeExample } from './examples';
+
+<Meta
+  title={title}
+  parameters={{
+    status: 'stable',
+    description: 'Semantic color palette configuration',
+  }}
+/>
+
+We've created several color modes by default for light and dark context.
+
+Each color mode consists of a set of aliased color tokens. Each alias has semantic meaning for how the color is used throughout our design system:
+
+- `text`: The standard text color for all type.
+- `background`: The base background color.
+- `primary`: The color used for interactive elements with a primary action.
+- `secondary`: The color used for interactive elements with a secondary action.
+
+**Note**: This set is not final and is likely to expand as our needs grow.
+
+Gamut components are built using these aliases instead of referring to specific tokens directly, guaranteeing that:
+
+- Components can be used in ANY context without configuration and work correctly.
+- Consistent color scheme and accessibility between contexts.
+- Colors usage more meaningful when reading through code as aliases hint to usage.
+- Dead simple configuration.
+
+### Example
+
+Here's an example using `<Anchor />` and `<Text />` components in context. By toggling dark mode you can see all the colors map to a new color that is accessible for the mode by default.
+
+<ColorModeExample />
+
+### Usage
+
+```tsx
+import { ColorMode } from '@codecademy/gamut-styles';
+
+const Page = ({ children }) => (
+  <ColorMode mode="light">{children}</ColorMode>;
+);
+```
+
+## Custom Background Colors
+
+There are many cases where you may need a specific background color for a section of a page, like a card or a landing page. Instead of having to guess the right mode for the background, we've added a `<Background />` component to detect if contrast of the background and current mode's text color meet an accessible standard. If not, we will automatically change the mode to an accessible one, allowing you to be sure that all components inside your background will meet contrast requirements and designs without any configuration!
+
+### Usage
+
+```tsx
+import { Background } from '@codecademy/gamut';
+
+const Page = ({ children }) => (
+  <Background initialBackground="hyper">{children}</Background>;
+);
+```
+
+### Examples
+
+Sometimes you may just want to wrap a page in a different background color than the base color mode.
+
+<BackgroundExample initialBackground="hyper" />
+
+<BackgroundExample initialBackground="beige" />
+
+In some cases you may want to use multiple areas with different backgrounds. `<Background />` makes this a simple task by provisioning a new color context for all components inside.
+
+<BackgroundExample initialBackground="black">
+  <BackgroundExample initialBackground="paleGreen" />
+</BackgroundExample>

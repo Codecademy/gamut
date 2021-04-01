@@ -1,5 +1,5 @@
 import React from 'react';
-import { boxShadows } from '@codecademy/gamut-styles';
+import { boxShadows } from '@codecademy/gamut-styles/src';
 import { css, styled } from '@storybook/theming';
 import { Box } from '../Box';
 
