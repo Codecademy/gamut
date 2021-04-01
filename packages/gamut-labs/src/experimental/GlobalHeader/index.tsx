@@ -98,8 +98,8 @@ const getMobileAppHeaderItems = (
 const StickyHeader = styled.div<{ faded: boolean }>(
   ({ theme, faded }) => css`
     height: ${theme.elements.headerHeight};
-    border-bottom: 1px solid ${theme.colors.navy};
-    background-color: ${theme.colors.white};
+    border-bottom: 1px solid ${theme.colors.secondary};
+    background-color: ${theme.colors.headerBg};
     top: 0;
     z-index: 2;
     width: 100%;

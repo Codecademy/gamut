@@ -1,5 +1,7 @@
 import { Markdown, Text } from '@codecademy/gamut';
+import { themed } from '@codecademy/gamut-styles';
 import { useTheme } from '@emotion/react';
+import styled from '@emotion/styled';
 import React from 'react';
 
 export type ArticleProps = {
@@ -7,6 +9,32 @@ export type ArticleProps = {
   description: string;
   content: string;
 };
+
+const ResetMarkdown = styled(Markdown)``;
+
+const Reset = styled.div`
+  ${Text} {
+    max-width: 60%;
+  }
+
+  ${ResetMarkdown} {
+    color: ${themed('colors.text')};
+
+    > *:not(pre):not(code) {
+      max-width: 60%;
+    }
+
+    pre {
+      background-color: ${themed('colors.codeBlockBg')};
+      padding: ${themed('spacing.12')};
+    }
+
+    code {
+      color: ${themed('colors.codeText')};
+      background-color: ${themed('colors.codeBg')};
+    }
+  }
+`;
 
 export const Article: React.FC<ArticleProps> = ({
   title,
@@ -19,7 +47,7 @@ export const Article: React.FC<ArticleProps> = ({
   const titleColors = active === 'dark' ? 'lightBlue' : 'navy';
 
   return (
-    <>
+    <Reset>
       <Text as="strong" fontFamily="accent" textColor={titleColors}>
         Article
       </Text>
@@ -29,7 +57,7 @@ export const Article: React.FC<ArticleProps> = ({
       <Text as="h2" fontSize={22} fontWeight="base" textColor={titleColors}>
         {description}
       </Text>
-      <Markdown text={content} />
-    </>
+      <ResetMarkdown text={content} />
+    </Reset>
   );
 };

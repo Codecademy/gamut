@@ -24,9 +24,9 @@ const cardVariants = variant({
     borderColor: 'navy',
   },
   white: {
-    backgroundColor: 'white',
-    textColor: 'navy',
-    borderColor: 'navy',
+    backgroundColor: 'background',
+    textColor: 'text',
+    borderColor: 'secondary',
   },
   hyper: {
     backgroundColor: 'hyper',
@@ -67,7 +67,7 @@ export const Card = styled(Box)<CardProps>(
 
       &:after {
         z-index: -2;
-        background-color: ${theme.colors.navy};
+        background-color: ${theme.colors.secondary};
       }
 
       &:before {
