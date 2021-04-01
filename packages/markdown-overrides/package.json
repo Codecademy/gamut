@@ -10,11 +10,15 @@
     "url": "git+https://github.com/Codecademy/client-modules.git"
   },
   "peerDependencies": {
+    "@emotion/react": "^11.0.0",
+    "@emotion/styled": "^11.0.0",
     "react": ">=16.8.1",
     "react-dom": ">=16.8.1"
   },
   "dependencies": {
     "@codecademy/gamut-styles": "^9.1.3",
+    "@codecademy/gamut-labs": "^7.6.2",
+    "@codecademy/gamut": "^19.7.3",
     "classnames": "^2.2.5",
     "katex": "0.9.0"
   },
