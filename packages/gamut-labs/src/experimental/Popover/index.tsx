@@ -1,4 +1,5 @@
 import { BodyPortal, FocusTrap, Pattern, PatternName } from '@codecademy/gamut';
+import { themed } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useWindowScroll, useWindowSize } from 'react-use';
@@ -26,8 +27,9 @@ const PopoverContainer = styled.div<StyleProps>`
 const RaisedDiv = styled.div<StyleProps>`
   position: relative;
   border-radius: 2px;
-  border: 1px ${({ outline }) => (outline ? 'solid' : 'none')} black;
-  background-color: ${({ theme }) => theme.colors.white};
+  border: 1px ${({ outline }) => (outline ? 'solid' : 'none')}
+    ${themed('colors.secondary')};
+  background-color: ${({ theme }) => themed('colors.headerBg')};
   ${({ outline }) =>
     !outline &&
     'box-shadow: 0 0 16px rgba(0, 0, 0, 0.1), 0 0 24px rgba(0, 0, 0, 0.15)'};
