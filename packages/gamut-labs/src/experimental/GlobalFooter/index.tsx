@@ -3,9 +3,9 @@ import styled from '@emotion/styled';
 import React from 'react';
 
 import { FooterLegal } from './FooterLegal';
-import { FooterNavLinks } from './FooterNavLinks';
+import { FooterNavLinks, FooterNavLinksProps } from './FooterNavLinks';
 
-export type GlobalFooterProps = {
+export type GlobalFooterProps = FooterNavLinksProps & {
   className?: string;
 };
 
@@ -17,11 +17,14 @@ const FooterContainer = styled.footer`
   }
 `;
 
-export const GlobalFooter: React.FC<GlobalFooterProps> = ({ className }) => {
+export const GlobalFooter: React.FC<GlobalFooterProps> = ({
+  className,
+  userGeo,
+}) => {
   return (
     <FooterContainer className={className} role="contentinfo">
       <ContentContainer>
-        <FooterNavLinks />
+        <FooterNavLinks userGeo={userGeo} />
       </ContentContainer>
       <FooterLegal />
     </FooterContainer>

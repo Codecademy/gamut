@@ -3,17 +3,24 @@ import title from '@codecademy/macros/lib/title.macro';
 import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
 
 <Meta
-  title={title}
+  component={GlobalFooter}
   parameters={{
-    subtitle: `Global footer to be displayed on the bottom of each page.`,
-    status: 'volatile',
-    source: 'gamut-labs',
     figmaId: 'as1W6qIWUlibYKiSUWB2S4',
+    source: 'gamut-labs',
+    status: 'volatile',
+    subtitle: `Global footer to be displayed on the bottom of each page.`,
   }}
+  title={title}
 />
 
-<Canvas withSource="open">
-  <Story name="GlobalFooter">{(args) => <GlobalFooter />}</Story>
+<Canvas>
+  <Story name="GlobalFooter">{(args) => <GlobalFooter {...args} />}</Story>
 </Canvas>
 
 <Props story="GlobalFooter" />
+
+This general bottom-of-the-page component should be at the bottom of roughly every page in the site, excluding specialized contexts such as the Learning Environment.
+
+Users with `userGeo` set to `"IN"` will not see the _Shop_ link.
+
+> This story is best viewed in Canvas mode.

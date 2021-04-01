@@ -9,7 +9,10 @@ import { FooterLinkItem } from '../FooterLinkItem';
 import { SocialMediaLinks } from './SocialMediaLinks';
 
 export type CompanyLinksProps = {
-  userGeo?: string;
+  /**
+   * Geographic region of the user viewing the footer, such as "IN" or "US".
+   */
+  userGeo: string;
 };
 
 const CompanyLinksContainer = styled.div`
