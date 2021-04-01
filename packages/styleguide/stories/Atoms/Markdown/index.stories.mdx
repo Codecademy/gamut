@@ -119,7 +119,7 @@ Used to render inline information from [Codepedia](https://codecademy.github.io/
     {(args) => (
       <Codepedia
         concept="comments"
-        language="js"
+        language="javascript"
         align="left"
         position="above"
         verticalOffset={12}
@@ -135,7 +135,7 @@ Used to render inline information from [Codepedia](https://codecademy.github.io/
   <Story name="Codepedia (Override)">
     {(args) => (
       <Markdown
-        text='This is an example of an embedded <Codepedia concept="comments" language="js">Codepedia link</Codepedia>. It will render inline for anything that uses the markdown field.'
+        text='This is an example of an embedded <Codepedia concept="comments" language="javascript">Codepedia link</Codepedia>. It will render inline for anything that uses the markdown field.'
         overrides={{
           Codepedia: {
             component: Codepedia,
