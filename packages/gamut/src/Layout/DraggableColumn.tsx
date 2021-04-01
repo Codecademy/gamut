@@ -16,11 +16,20 @@ export type DraggablColumnProps = {
   offset?: OptionalResponsiveProperty<OffsetColumnSizes>;
   /** The number of rows this element should span */
   rowspan?: OptionalResponsiveProperty<1 | 2 | 3>;
-} & HTMLDivElement &
+} & any &
   ContainerElementProps;
 
 export const DraggableColumn = forwardRef<HTMLDivElement, DraggablColumnProps>(
-  ({ children, className, size, offset, rowspan, testId, ...rest }, ref) => {
+  (props, ref) => {
+    const {
+      children,
+      className,
+      size,
+      offset,
+      rowspan,
+      testId,
+      ...rest
+    } = props;
     const classNames = cx(
       styles.container,
       className,
