@@ -1096,6 +1096,93 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
+"@codecademy/gamut-icons@^3.14.0":
+  version "3.15.0"
+  resolved "https://registry.npmjs.org/@codecademy/gamut-icons/-/gamut-icons-3.15.0.tgz#8210144b433b9e673ef3894547437d0ef2522458"
+  integrity sha512-SBAqfjzsFBxZyBxRc1ofUvqpTWTklJegHW77ybeCcaEWNy54enK7pQM7lFBL2IYaK5JuCXwDGOiFGooaEXX5vA==
+
+"@codecademy/gamut-labs@^7.6.2":
+  version "7.16.5"
+  resolved "https://registry.npmjs.org/@codecademy/gamut-labs/-/gamut-labs-7.16.5.tgz#df8a5cb3606624dda0ecb3b489db7ac7928577e2"
+  integrity sha512-tgHmJH8uY+7495V2dADqf8Hx8HgpDdiUsd6QF74IHaTbdjsX1fq+u0tfz2yaufAn2qAuVLyUBWt0s8rUMvhEZg==
+  dependencies:
+    "@codecademy/gamut" "^20.0.4"
+    "@codecademy/gamut-styles" "^7.6.3"
+    "@codecademy/gamut-system" "^0.2.1"
+    classnames "^2.2.5"
+    react-hotkeys-hook "^2.3.1"
+    react-use "15.3.4"
+
+"@codecademy/gamut-styles@^7.6.3", "@codecademy/gamut-styles@^7.7.0", "@codecademy/gamut-styles@^7.7.3":
+  version "7.7.3"
+  resolved "https://registry.npmjs.org/@codecademy/gamut-styles/-/gamut-styles-7.7.3.tgz#368aea23eb0e438a5c0ea2f60fad51aafc4ebe01"
+  integrity sha512-T/8EK1rmEp/4NLNANz+k0oeYHpMIRVGBwNia3M9ZH5BM6gm+ohgHwEjiJYsoPToh9eMjtlXGx5J/74CwnL159w==
+  dependencies:
+    "@codecademy/gamut-system" "^0.3.0"
+
+"@codecademy/gamut-system@^0.2.1":
+  version "0.2.3"
+  resolved "https://registry.npmjs.org/@codecademy/gamut-system/-/gamut-system-0.2.3.tgz#dadde1bc1ec2acd0abf2dba08e4ca9f58260be46"
+  integrity sha512-s0H1GXmPuyT1FAacPkPbg9svWbfbdt/3myCBD2u8uOAJ/Xky6Q/Qn2fNDcXIhUUQDAa4W92np7B7Dw2Gk1huRQ==
+
+"@codecademy/gamut-system@^0.3.0":
+  version "0.3.0"
+  resolved "https://registry.npmjs.org/@codecademy/gamut-system/-/gamut-system-0.3.0.tgz#86584777aaa9aea58f7d65e4d65ef65865680b45"
+  integrity sha512-MFT4b9aEyqWb+VuLzEfzfaSwcwhRMGai+POoUmnW5SH9cUiZmnIZ9T941KDKXUQXp3QBzV0KH2WVxrqDHYHrlA==
+
+"@codecademy/gamut@^19.7.3":
+  version "19.12.0"
+  resolved "https://registry.npmjs.org/@codecademy/gamut/-/gamut-19.12.0.tgz#358600b54b93371ab764511b3e156c67986c211d"
+  integrity sha512-qg4vuOEycpGrww6qMLdVqs7O8DK23Q9bZOpuxT2cBtSWY3yxQiy2WSpd97SHWbMx+9Y3heuN0AnNILZwxfF9OQ==
+  dependencies:
+    "@codecademy/gamut-icons" "^3.14.0"
+    "@codecademy/gamut-styles" "^7.6.3"
+    "@types/marked" "^1.1.0"
+    classnames "^2.2.5"
+    focus-trap-react "^8.3.1"
+    framer-motion "^2.7.9"
+    html-to-react "^1.4.2"
+    insane "^2.6.2"
+    invariant "^2.2.4"
+    lodash "^4.17.5"
+    marked "^0.7.0"
+    react-aria-tabpanel "^4.4.0"
+    react-hook-form "6.0.6"
+    react-player "^2.3.1"
+    react-truncate-markup "^5.0.1"
+    react-use "^15.3.4"
+
+"@codecademy/gamut@^20.0.4":
+  version "20.1.0"
+  resolved "https://registry.npmjs.org/@codecademy/gamut/-/gamut-20.1.0.tgz#35940a08e4ba8e2833f33380d6a2ef72687dfd06"
+  integrity sha512-OFtT8LEqA6Q4Snc/hBtHtgR07qhT81qD1sORkXb/Pm/SlTDszw0wUc1EyPOYf8sju/dvOIYpSmGMXeYwrQ7TFg==
+  dependencies:
+    "@codecademy/gamut-icons" "^3.14.0"
+    "@codecademy/gamut-styles" "^7.7.0"
+    "@types/marked" "^1.1.0"
+    classnames "^2.2.5"
+    focus-trap-react "^8.3.1"
+    framer-motion "^2.7.9"
+    html-to-react "^1.4.2"
+    insane "^2.6.2"
+    invariant "^2.2.4"
+    lodash "^4.17.5"
+    marked "^0.7.0"
+    react-aria-tabpanel "^4.4.0"
+    react-hook-form "6.0.6"
+    react-player "^2.3.1"
+    react-truncate-markup "^5.1.0"
+    react-use "^15.3.4"
+
+"@codecademy/markdown-overrides@^0.4.2":
+  version "0.4.7"
+  resolved "https://registry.npmjs.org/@codecademy/markdown-overrides/-/markdown-overrides-0.4.7.tgz#23315711b5f94b5734ecee3cf645266a7e6c5dc0"
+  integrity sha512-NusKkurjw/jD3GxviP/oJIXmv9swCAnYXTgoJrTOMRx5zqkaPZDcHrzWXDLSfrX/ZV3jQ3JfzKyAJymkX2xMZg==
+  dependencies:
+    "@codecademy/gamut-styles" "^7.7.3"
+    classnames "^2.2.5"
+    katex "0.9.0"
+
 "@emotion/babel-plugin@^11.1.2":
   version "11.1.2"
   resolved "https://registry.npmjs.org/@emotion/babel-plugin/-/babel-plugin-11.1.2.tgz#68fe1aa3130099161036858c64ee92056c6730b7"
@@ -8257,6 +8344,20 @@ focus-lock@^0.8.1:
   dependencies:
     tslib "^1.9.3"
 
+focus-trap-react@^8.3.1:
+  version "8.4.2"
+  resolved "https://registry.npmjs.org/focus-trap-react/-/focus-trap-react-8.4.2.tgz#5b313605e0789a7beee1467785e455dc63388a98"
+  integrity sha512-yuItOIwgriOBMrbHDqbWMpQjGVs9SbtugYrT0vs0yPjHiPKja3NZ9dBMxDQrV1JhyojGK5d6j7ayqBS7Kcm9xQ==
+  dependencies:
+    focus-trap "^6.3.0"
+
+focus-trap@^6.3.0:
+  version "6.3.0"
+  resolved "https://registry.npmjs.org/focus-trap/-/focus-trap-6.3.0.tgz#31c08f0b6099705f71f6e0a16d88fbcc4c012586"
+  integrity sha512-BBzvFfkPg5PqrVVCdQ1YOIVNKGvqG9YNVkiAUQFuDM66N8J9uADhs6mlYKrd30ofDJIzEniBnBKM7GO45iCzKQ==
+  dependencies:
+    tabbable "^5.1.5"
+
 focus-visible@^5.2.0:
   version "5.2.0"
   resolved "https://registry.npmjs.org/focus-visible/-/focus-visible-5.2.0.tgz#3a9e41fccf587bd25dcc2ef045508284f0a4d6b3"
@@ -9552,6 +9653,14 @@ inquirer@^7.0.0:
     strip-ansi "^6.0.0"
     through "^2.3.6"
 
+insane@^2.6.2:
+  version "2.6.2"
+  resolved "https://registry.npmjs.org/insane/-/insane-2.6.2.tgz#c2ab68bb3e006ab451560d1b446917329c0a8120"
+  integrity sha1-wqtouz4AarRRVg0bRGkXMpwKgSA=
+  dependencies:
+    assignment "2.0.0"
+    he "0.5.0"
+
 internal-slot@^1.0.2:
   version "1.0.3"
   resolved "https://registry.npmjs.org/internal-slot/-/internal-slot-1.0.3.tgz#7347e307deeea2faac2ac6205d4bc7d34967f59c"
@@ -10741,6 +10850,13 @@ katex@0.9.0:
   integrity sha512-lp3x90LT1tDZBW2tjLheJ98wmRMRjUHwk4QpaswT9bhqoQZ+XA4cPcjcQBxgOQNwaOSt6ZeL/a6GKQ1of3LFxQ==
   dependencies:
     match-at "^0.1.1"
+
+katex@^0.12.0:
+  version "0.12.0"
+  resolved "https://registry.npmjs.org/katex/-/katex-0.12.0.tgz#2fb1c665dbd2b043edcf8a1f5c555f46beaa0cb9"
+  integrity sha512-y+8btoc/CK70XqcHqjxiGWBOeIL8upbS0peTPXTvgrh21n1RiWWcIpSWM+4uXq+IAgNh9YYQWdc7LVDPDAEEAg==
+  dependencies:
+    commander "^2.19.0"
 
 kind-of@^3.0.2, kind-of@^3.0.3, kind-of@^3.2.0:
   version "3.2.2"
@@ -13744,6 +13860,11 @@ react-helmet@6.1.0:
     react-fast-compare "^3.1.1"
     react-side-effect "^2.1.0"
 
+react-hook-form@6.0.6:
+  version "6.0.6"
+  resolved "https://registry.npmjs.org/react-hook-form/-/react-hook-form-6.0.6.tgz#72ac1668aeaddfd642bcfb324cebe1ba237fb13e"
+  integrity sha512-qxWhV++1V7SKKlr2hHFsessGwATCdexgVsByxOHltDyO9F0VWB1WN4ZvxnKuHTVGwjj6CLZo0mL+Hgy0QH1sAw==
+
 react-hook-form@6.8.5:
   version "6.8.5"
   resolved "https://registry.npmjs.org/react-hook-form/-/react-hook-form-6.8.5.tgz#77cb5f208038605ed36c0645d7676d0cb2014403"
@@ -13921,7 +14042,7 @@ react-textarea-autosize@^8.1.1:
     use-composed-ref "^1.0.0"
     use-latest "^1.0.0"
 
-react-truncate-markup@^5.1.0:
+react-truncate-markup@^5.0.1, react-truncate-markup@^5.1.0:
   version "5.1.0"
   resolved "https://registry.npmjs.org/react-truncate-markup/-/react-truncate-markup-5.1.0.tgz#632f263a7d70925ab6368d5620ef32f066c2857a"
   integrity sha512-TTp8gj63w/o5jQC7HnLMEeAHp9jjSxFlA5lzklvPzcSubcurkEI4g0YjW67YG1yNAJHqQwCadj4mTUvz58S1wQ==
@@ -13936,7 +14057,27 @@ react-universal-interface@^0.6.2:
   resolved "https://registry.npmjs.org/react-universal-interface/-/react-universal-interface-0.6.2.tgz#5e8d438a01729a4dbbcbeeceb0b86be146fe2b3b"
   integrity sha512-dg8yXdcQmvgR13RIlZbTRQOoUrDciFVoSBZILwjE2LFISxZZ8loVJKAkuzswl5js8BHda79bIb2b84ehU8IjXw==
 
-react-use@15.3.8, react-use@^15.3.8:
+react-use@15.3.4:
+  version "15.3.4"
+  resolved "https://registry.npmjs.org/react-use/-/react-use-15.3.4.tgz#f853d310bd71f75b38900a8caa3db93f6dc6e872"
+  integrity sha512-cHq1dELW6122oi1+xX7lwNyE/ugZs5L902BuO8eFJCfn2api1KeuPVG1M/GJouVARoUf54S2dYFMKo5nQXdTag==
+  dependencies:
+    "@types/js-cookie" "2.2.6"
+    "@xobotyi/scrollbar-width" "1.9.5"
+    copy-to-clipboard "^3.2.0"
+    fast-deep-equal "^3.1.3"
+    fast-shallow-equal "^1.0.0"
+    js-cookie "^2.2.1"
+    nano-css "^5.2.1"
+    react-universal-interface "^0.6.2"
+    resize-observer-polyfill "^1.5.1"
+    screenfull "^5.0.0"
+    set-harmonic-interval "^1.0.1"
+    throttle-debounce "^2.1.0"
+    ts-easing "^0.2.0"
+    tslib "^2.0.0"
+
+react-use@15.3.8, react-use@^15.3.4, react-use@^15.3.8:
   version "15.3.8"
   resolved "https://registry.npmjs.org/react-use/-/react-use-15.3.8.tgz#ca839ac7fb3d696e5ccbeabbc8dadc2698969d30"
   integrity sha512-GeGcrmGuUvZrY5wER3Lnph9DSYhZt5nEjped4eKDq8BRGr2CnLf9bDQWG9RFc7oCPphnscUUdOovzq0E5F2c6Q==
@@ -15644,6 +15785,11 @@ symbol.prototype.description@^1.0.0:
     es-abstract "^1.18.0-next.1"
     has-symbols "^1.0.1"
     object.getownpropertydescriptors "^2.1.0"
+
+tabbable@^5.1.5:
+  version "5.1.6"
+  resolved "https://registry.npmjs.org/tabbable/-/tabbable-5.1.6.tgz#dd495abe81d5e41e003fbfa70952e20d5e1e1e89"
+  integrity sha512-KSlGaSX9PbL7FHDTn2dB+zv61prkY8BeGioTsKfeN7dKhw5uz1S4U2iFaWMK4GR8oU+5OFBkFuxbMsaUxVVlrQ==
 
 table@^6.0.4:
   version "6.0.7"

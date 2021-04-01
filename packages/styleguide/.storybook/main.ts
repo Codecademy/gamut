@@ -33,9 +33,9 @@ module.exports = {
   },
 
   webpackFinal: (config: any) => {
-    config.module.rules = config.module.rules.concat(
-      configs.css().module.rules
-    );
+    config.module.rules = config.module.rules
+      .filter(({ test }) => !test.test('.css'))
+      .concat(configs.css().module.rules);
 
     config.resolve = {
       ...config.resolve,
@@ -58,6 +58,10 @@ module.exports = {
         '@codecademy/gamut-illustrations$': path.resolve(
           __dirname,
           '../../gamut-illustrations/src'
+        ),
+        '@codecademy/markdown-overrides$': path.resolve(
+          __dirname,
+          '../../markdown-overrides/src'
         ),
       },
     };
