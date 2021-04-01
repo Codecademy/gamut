@@ -13,6 +13,6 @@ export const shadowProps = variance.create(PROPERTIES.shadows);
 export const spaceProps = variance.create(PROPERTIES.space);
 export const borderProps = variance.create(PROPERTIES.border);
 
-export const css = variance.createCss(PROPERTIES.systemProps);
+export const css = variance.createCss(PROPERTIES.all);
 
-export const varia = variance.createVariant(PROPERTIES.systemProps);
+export const varia = variance.createVariant(PROPERTIES.all);

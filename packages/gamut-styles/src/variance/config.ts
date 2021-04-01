@@ -1,7 +1,6 @@
 export const color = {
   color: { property: 'color', scale: 'colors' },
   bg: { property: 'backgroundColor', scale: 'colors' },
-  backgroundColor: { property: 'backgroundColor', scale: 'colors' },
   borderColor: { property: 'borderColor', scale: 'colors' },
   borderColorX: {
     property: 'borderColor',
@@ -99,6 +98,7 @@ export const grid = {
   gridAutoRows: { property: 'gridAutoRows' },
   gridTemplateColumns: { property: 'gridTemplateColumns' },
   gridTemplateRows: { property: 'gridTemplateRows' },
+  gridTemplateAreas: { property: 'gridTemplateAreas' },
   gridAutoFlow: { property: 'gridAutoFlow' },
   gap: { property: 'gap', scale: 'spacing' },
   rowGap: { property: 'rowGap', scale: 'spacing' },
@@ -121,18 +121,10 @@ export const background = {
 
 export const positioning = {
   position: { property: 'position' },
-  top: {
-    property: 'top',
-  },
-  right: {
-    property: 'right',
-  },
-  bottom: {
-    property: 'bottom',
-  },
-  left: {
-    property: 'left',
-  },
+  top: { property: 'top' },
+  right: { property: 'right' },
+  bottom: { property: 'bottom' },
+  left: { property: 'left' },
   zIndex: { property: 'zIndex' },
   opacity: { property: 'opacity' },
 } as const;
@@ -147,27 +139,16 @@ export const layout = {
   overflow: { property: 'overflow' },
   overflowX: { property: 'overflowX' },
   overflowY: { property: 'overflowY' },
-  width: {
-    property: 'width',
-  },
-  minWidth: {
-    property: 'minWidth',
-  },
-  maxWidth: {
-    property: 'maxWidth',
-  },
-  height: {
-    property: 'height',
-  },
-  minHeight: {
-    property: 'minHeight',
-  },
-  maxHeight: {
-    property: 'maxHeight',
-  },
+  width: { property: 'width' },
+  minWidth: { property: 'minWidth' },
+  maxWidth: { property: 'maxWidth' },
+  height: { property: 'height' },
+  minHeight: { property: 'minHeight' },
+  maxHeight: { property: 'maxHeight' },
   verticalAlign: { property: 'verticalAlign' },
   justifySelf: { property: 'justifySelf' },
   alignSelf: { property: 'alignSelf' },
+  gridArea: { property: 'gridArea' },
 } as const;
 
 export const typography = {
@@ -184,11 +165,8 @@ export const typography = {
 } as const;
 
 export const space = {
-  p: {
-    property: 'padding',
-    properties: ['paddingLeft', 'paddingRight', 'paddingTop', 'paddingBottom'],
-    scale: 'spacing',
-  },
+  /** Testing Docgen */
+  p: { property: 'padding', scale: 'spacing' },
   px: {
     property: 'padding',
     properties: ['paddingLeft', 'paddingRight'],
@@ -203,11 +181,7 @@ export const space = {
   pb: { property: 'paddingBottom', scale: 'spacing' },
   pr: { property: 'paddingRight', scale: 'spacing' },
   pl: { property: 'paddingLeft', scale: 'spacing' },
-  m: {
-    property: 'margin',
-    properties: ['marginLeft', 'marginRight', 'marginTop', 'marginBottom'],
-    scale: 'spacing',
-  },
+  m: { property: 'margin', scale: 'spacing' },
   mx: {
     property: 'margin',
     properties: ['marginLeft', 'marginRight'],
@@ -224,7 +198,7 @@ export const space = {
   ml: { property: 'marginLeft', scale: 'spacing' },
 } as const;
 
-export const systemProps = {
+export const all = {
   ...typography,
   ...space,
   ...shadows,

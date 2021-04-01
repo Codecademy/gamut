@@ -327,13 +327,17 @@ describe('variants', () => {
         cool: {
           width: ['100%', '200%'],
         },
+        beans: {
+          height: 16,
+        },
       },
     });
 
-    expect(myVariant({ theme, variant: 'cool' })).toEqual({
+    expect(myVariant({ theme })).toEqual({
       width: '100%',
       XS: { width: '200%' },
     });
+    expect(myVariant({ theme, variant: 'beans' })).toEqual({ height: '1rem' });
   });
   it('has a customized key', () => {
     const myVariant = variant({

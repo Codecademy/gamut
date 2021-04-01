@@ -4,6 +4,7 @@ import { theme } from './theme';
 
 export * from './GamutProvider';
 
+export * from './variance/utils';
 export * from './variance/props';
 export * from './cache';
 export * from './variables';
