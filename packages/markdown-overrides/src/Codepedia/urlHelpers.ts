@@ -7,5 +7,5 @@ export const getLoadUrl = (concept: string, language?: string) => {
 };
 
 export const getViewUrl = (concept: string, language?: string) => {
-  return `${VIEW_ROOT}/${concept}/${language ? language : ''}`;
+  return `${VIEW_ROOT}/${concept}/${language || ''}`;
 };

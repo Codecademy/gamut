@@ -1,12 +1,12 @@
-import React, { useCallback, useRef, useState } from 'react';
 import { TextButton } from '@codecademy/gamut';
 import { SupportFilledIcon } from '@codecademy/gamut-icons';
-
+import { PopoverProps } from '@codecademy/gamut-labs';
 import { colors } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
+import React, { useCallback, useRef, useState } from 'react';
+
 import { CodepediaPopover, LinkProperties } from './Popover';
 import { getLoadUrl, getViewUrl } from './urlHelpers';
-import { PopoverProps } from '@codecademy/gamut-labs';
 
 export type CodepediaProps = Omit<PopoverProps, 'isOpen' | 'targetRef'> & {
   concept: string;

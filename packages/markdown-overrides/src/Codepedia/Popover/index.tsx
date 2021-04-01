@@ -1,12 +1,14 @@
-import React, { RefObject } from 'react';
-import styled from '@emotion/styled';
 import { Box, Container } from '@codecademy/gamut';
-import { Loading, Popover, PopoverProps } from '@codecademy/gamut-labs';
-import { CloseIcon } from '@codecademy/gamut-icons';
+// eslint-disable-next-line local-rules/gamut-import-paths
 import { ManyOverrideSettings } from '@codecademy/gamut/dist/Markdown/libs/overrides';
+import { CloseIcon } from '@codecademy/gamut-icons';
+import { Loading, Popover, PopoverProps } from '@codecademy/gamut-labs';
 import { colors } from '@codecademy/gamut-styles';
-import { NeutralTextButton } from '../NeutralTextButton';
+import styled from '@emotion/styled';
+import React, { RefObject } from 'react';
+
 import { MiniMarkdown } from '../MiniMarkdown';
+import { NeutralTextButton } from '../NeutralTextButton';
 
 export type LinkProperties = {
   label?: string;

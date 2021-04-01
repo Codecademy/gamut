@@ -1,5 +1,5 @@
-import styled from '@emotion/styled';
 import { Markdown as GamutMarkdown } from '@codecademy/gamut';
+import styled from '@emotion/styled';
 
 export const MiniMarkdown = styled(GamutMarkdown)`
   margin: 0;
