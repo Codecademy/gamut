@@ -42,6 +42,9 @@ AppBarSection.defaultProps = {
 };
 
 export const AppBarTab = styled(Box)`
+  display: flex;
+  align-items: center;
+
   & + & {
     margin-left: ${({ theme }) => theme.spacing[16]};
   }

@@ -31,6 +31,7 @@ export const AppHeaderDropdown: React.FC<AppHeaderDropdownProps> = ({
       <AppBarButton
         ref={headerDropdownRef}
         paddingY={4}
+        alignSelf="center"
         onClick={(event) => toggleIsOpen(event)}
         aria-haspopup="true"
       >
