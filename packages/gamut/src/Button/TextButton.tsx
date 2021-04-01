@@ -1,4 +1,4 @@
-import { css } from '@emotion/react';
+import { css, useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
 import React from 'react';
 
@@ -38,9 +38,12 @@ const TextButtonOuter = styled(ButtonOutline)();
 export const TextButton: React.FC<
   SizedButtonProps & React.ComponentProps<typeof TextButtonOuter>
 > = ({ children, mode, size, variant, ...props }) => {
+  const {
+    colorModes: { active },
+  } = useTheme();
   return (
-    <TextButtonOuter mode={mode} variant={variant} {...props}>
-      <TextButtonInner mode={mode} variant={variant} size={size}>
+    <TextButtonOuter mode={active} variant={variant} {...props}>
+      <TextButtonInner mode={active} variant={variant} size={size}>
         {children}
       </TextButtonInner>
     </TextButtonOuter>

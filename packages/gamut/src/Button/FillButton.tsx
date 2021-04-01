@@ -1,4 +1,4 @@
-import { css } from '@emotion/react';
+import { css, useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
 import React from 'react';
 
@@ -36,9 +36,12 @@ const FillButtonOuter = styled(ButtonOutline)();
 export const FillButton: React.FC<
   SizedButtonProps & React.ComponentProps<typeof FillButtonOuter>
 > = ({ children, mode, size, variant, ...props }) => {
+  const {
+    colorModes: { active },
+  } = useTheme();
   return (
-    <FillButtonOuter mode={mode} variant={variant} {...props}>
-      <FillButtonInner mode={mode} variant={variant} size={size}>
+    <FillButtonOuter mode={active} variant={variant} {...props}>
+      <FillButtonInner mode={active} variant={variant} size={size}>
         {children}
       </FillButtonInner>
     </FillButtonOuter>
