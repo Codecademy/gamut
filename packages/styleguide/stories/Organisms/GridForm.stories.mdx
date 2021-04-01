@@ -290,14 +290,13 @@ value of left, center, right, or stretch.
   </Story>
 </Canvas>
 
-## Submit Button color
+## Submit Button Options
 
-We can specify the color of our button by passing the theme prop with a
-button atom theme prop value. i.e. 'brand-blue', 'brand-purple'. The
-default value is 'brand-purple'.
+We can specify the version of our button by passing the type prop. WE can choose between
+the [`FillButton`](/?path=/docs/atoms--fill) or [`CTAButton`](?path=/docs/atoms--cta).
 
 <Canvas>
-  <Story name="Submit button color">
+  <Story name="Submit Button Options">
     {(args) => (
       <>
         <GridForm
@@ -305,7 +304,7 @@ default value is 'brand-purple'.
             {
               label: 'Simple text',
               name: 'simple-text',
-              size: 12,
+              size: 6,
               type: 'text',
             },
           ]}
@@ -313,7 +312,25 @@ default value is 'brand-purple'.
             action('Form Submitted')(values);
           }}
           submit={{
-            contents: 'Default Purple Submit!?',
+            contents: 'Fill Button',
+            size: 6,
+          }}
+        />
+        <GridForm
+          fields={[
+            {
+              label: 'Simple text',
+              name: 'simple-text',
+              size: 6,
+              type: 'text',
+            },
+          ]}
+          onSubmit={async (values) => {
+            action('Form Submitted')(values);
+          }}
+          submit={{
+            type: 'cta',
+            contents: 'CTA Button',
             size: 12,
           }}
         />
@@ -322,7 +339,7 @@ default value is 'brand-purple'.
             {
               label: 'Simple text',
               name: 'simple-text',
-              size: 12,
+              size: 6,
               type: 'text',
             },
           ]}
@@ -330,9 +347,47 @@ default value is 'brand-purple'.
             action('Form Submitted')(values);
           }}
           submit={{
-            contents: 'Blue Submit!?',
+            contents: 'Fill Button Dark Mode',
             size: 12,
-            theme: 'brand-blue',
+            mode: 'dark',
+          }}
+        />
+        <GridForm
+          fields={[
+            {
+              label: 'Simple text',
+              name: 'simple-text',
+              size: 6,
+              type: 'text',
+            },
+          ]}
+          onSubmit={async (values) => {
+            action('Form Submitted')(values);
+          }}
+          submit={{
+            type: 'cta',
+            contents: 'CTA Button Dark Mode',
+            size: 12,
+            mode: 'dark',
+          }}
+        />
+        <GridForm
+          fields={[
+            {
+              label: 'Simple text',
+              name: 'simple-text',
+              size: 6,
+              type: 'text',
+            },
+          ]}
+          onSubmit={async (values) => {
+            action('Form Submitted')(values);
+          }}
+          submit={{
+            type: 'business',
+            contents: 'Deprecated Button',
+            size: 12,
+            theme: 'brand-purple',
           }}
         />
       </>
