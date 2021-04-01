@@ -13,10 +13,6 @@ export type ArticleProps = {
 const ResetMarkdown = styled(Markdown)``;
 
 const Reset = styled.div`
-  ${Text} {
-    max-width: 60%;
-  }
-
   ${ResetMarkdown} {
     color: ${themed('colors.text')};
 
@@ -54,7 +50,13 @@ export const Article: React.FC<ArticleProps> = ({
       <Text as="h1" lineHeight="base" textColor={titleColors}>
         {title}
       </Text>
-      <Text as="h2" fontSize={22} fontWeight="base" textColor={titleColors}>
+      <Text
+        as="h2"
+        fontSize={20}
+        lineHeight="base"
+        fontWeight="base"
+        textColor={titleColors}
+      >
         {description}
       </Text>
       <ResetMarkdown text={content} />
