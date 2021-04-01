@@ -4,10 +4,6 @@ import { AccordionMenu, MenuData, MenuItemData } from './AccordionMenu';
 
 export type LayoutMenuProps = {
   /**
-   * The aria label on the nav element
-   */
-  ariaLabel: string;
-  /**
    * An array of menu data including the title, slug, and items, each of which will become an accordion
    */
   allMenuData: MenuData[];
@@ -30,7 +26,6 @@ export type LayoutMenuProps = {
 };
 
 export const LayoutMenu: React.FC<LayoutMenuProps> = ({
-  ariaLabel,
   allMenuData,
   additionalLinks,
   onSectionToggle,
@@ -38,7 +33,7 @@ export const LayoutMenu: React.FC<LayoutMenuProps> = ({
   selectedItem,
 }) => {
   return (
-    <nav aria-label={ariaLabel}>
+    <nav>
       {allMenuData.map((data) => (
         <AccordionMenu
           key={data.slug}
