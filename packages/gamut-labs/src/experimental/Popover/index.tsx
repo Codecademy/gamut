@@ -19,13 +19,12 @@ const transform = {
 
 const PopoverContainer = styled.div<StyleProps>`
   position: fixed;
-  display: flex;
   transform: ${({ position, align }) =>
     position && align && `${transform[position]} ${transform[align]}`};
 `;
 
 const RaisedDiv = styled.div<StyleProps>`
-  z-index: 1;
+  position: relative;
   border-radius: 2px;
   border: 1px ${({ outline }) => (outline ? 'solid' : 'none')} black;
   background-color: ${({ theme }) => theme.colors.white};

@@ -1,18 +1,16 @@
 import {
   AppBar,
   AppBarSection,
-  Box,
+  AppBarTab,
   FillButton,
   TextButton,
 } from '@codecademy/gamut';
-import styled from '@emotion/styled';
 import React, { ReactNode } from 'react';
 
 import { formatUrlWithRedirect } from '../GlobalHeader/urlHelpers';
 import { AppHeaderDropdown } from './AppHeaderElements/AppHeaderDropdown';
 import { AppHeaderLink } from './AppHeaderElements/AppHeaderLink';
 import { AppHeaderLogo } from './AppHeaderElements/AppHeaderLogo';
-import { focusStyles } from './AppHeaderElements/SharedStyles';
 import {
   AppHeaderClickHandler,
   AppHeaderItem,
@@ -24,15 +22,6 @@ export type AppHeaderProps = {
   items: FormattedAppHeaderItems;
   redirectParam?: string;
 };
-
-export const StyledAppBar = styled(AppBar)`
-  padding: 0.75rem 0;
-  box-shadow: none;
-  width: 100%;
-`;
-
-export const AppHeaderTextButton = styled(TextButton)(focusStyles);
-export const AppHeaderFillButton = styled(FillButton)(focusStyles);
 
 export const mapItemToElement = (
   action: AppHeaderClickHandler,
@@ -51,7 +40,7 @@ export const mapItemToElement = (
       return item.renderElement();
     case 'text-button':
       return (
-        <AppHeaderTextButton
+        <TextButton
           onClick={(event: React.MouseEvent) => action(event, item)}
           data-testid={item.dataTestId}
           href={
@@ -61,11 +50,11 @@ export const mapItemToElement = (
           }
         >
           {item.text}
-        </AppHeaderTextButton>
+        </TextButton>
       );
     case 'fill-button':
       return (
-        <AppHeaderFillButton
+        <FillButton
           data-testid={item.dataTestId}
           href={
             item.redirect
@@ -75,7 +64,7 @@ export const mapItemToElement = (
           onClick={(event: React.MouseEvent) => action(event, item)}
         >
           {item.text}
-        </AppHeaderFillButton>
+        </FillButton>
       );
   }
 };
@@ -87,24 +76,20 @@ export const AppHeader: React.FC<AppHeaderProps> = ({
 }) => {
   const mapItemsToElement = <T extends AppHeaderItem[]>(items: T) => {
     return items.map((item, index) => (
-      <Box
-        key={item.id}
-        marginLeft={index === 0 ? 0 : 8}
-        marginRight={index === items.length - 1 ? 0 : 8}
-      >
+      <AppBarTab key={item.id}>
         {mapItemToElement(action, item, redirectParam)}
-      </Box>
+      </AppBarTab>
     ));
   };
 
   return (
-    <StyledAppBar>
-      <AppBarSection position="left">
+    <AppBar>
+      <AppBarSection alignment="left">
         {mapItemsToElement(items.left)}
       </AppBarSection>
-      <AppBarSection position="right">
+      <AppBarSection alignment="right">
         {mapItemsToElement(items.right)}
       </AppBarSection>
-    </StyledAppBar>
+    </AppBar>
   );
 };

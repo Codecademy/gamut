@@ -1,0 +1,26 @@
+import { AppBarTab } from '@codecademy/gamut';
+import title from '@codecademy/macros/lib/title.macro';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/dist/blocks';
+
+import { PropsTable } from '~styleguide/blocks';
+
+<Meta
+  title={title}
+  component={AppBarTab}
+  parameters={{
+    subtitle:
+      'An AppBar Item Component that wraps Nav Items in the correct offsets',
+    source: 'gamut',
+    status: 'stable',
+    figmaId: '',
+  }}
+  args={{
+    children: 'I am a tab',
+  }}
+/>
+
+<Canvas>
+  <Story name="AppBarTab">{(args) => <AppBarTab {...args} />}</Story>
+</Canvas>
+
+<PropsTable story="AppBarTab" />

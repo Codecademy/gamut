@@ -1,20 +1,18 @@
 import {
+  AppBar,
   AppBarSection,
   Box,
   ContentContainer,
   FlexBox,
+  IconButton,
   Overlay,
 } from '@codecademy/gamut';
-import { CloseIcon, MenuIcon } from '@codecademy/gamut-icons';
+import { MenuIcon, MiniDeleteIcon } from '@codecademy/gamut-icons';
 import { breakpoints } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React, { ReactNode, useState } from 'react';
 
-import { mapItemToElement, StyledAppBar } from '../AppHeader';
-import {
-  focusStyles,
-  hoverStyles,
-} from '../AppHeader/AppHeaderElements/SharedStyles';
+import { mapItemToElement } from '../AppHeader';
 import {
   AppHeaderClickHandler,
   AppHeaderItem,
@@ -28,15 +26,6 @@ export type AppHeaderMobileProps = {
   renderSearch?: () => ReactNode;
   redirectParam?: string;
 };
-
-const IconButton = styled.button`
-  background-color: transparent;
-  border: transparent;
-  color: ${({ theme }) => theme.colors.navy};
-  line-height: 0.5rem;
-  ${hoverStyles}
-  ${focusStyles}
-`;
 
 const StyledOverlay = styled(Overlay)`
   display: block;
@@ -81,27 +70,27 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
   return (
     <>
       {!mobileMenuOpen && ( // need this bc AppBar has a hardcoded z-Index of 15
-        <StyledAppBar>
-          <AppBarSection position="left">
+        <AppBar>
+          <AppBarSection alignment="left">
             {mapItemsToElement(items.left)}
           </AppBarSection>
-          <AppBarSection position="right">
+          <AppBarSection alignment="right">
             {mapItemsToElement(items.right)}
 
-            <FlexBox marginLeft={24}>
+            <FlexBox marginLeft={24} alignItems="center">
               <IconButton
-                type="button"
+                size="small"
+                variant="secondary"
                 data-testid="header-mobile-menu"
                 aria-label="open navigation menu"
+                icon={MenuIcon}
                 onClick={() => {
                   openMobileMenu();
                 }}
-              >
-                <MenuIcon height={20} width={20} />
-              </IconButton>
+              />
             </FlexBox>
           </AppBarSection>
-        </StyledAppBar>
+        </AppBar>
       )}
       <StyledOverlay
         clickOutsideCloses
@@ -110,24 +99,24 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
         onRequestClose={() => setMobileMenuOpen(false)}
       >
         <div data-testid="header-mobile-menu-dropdown">
-          <StyledAppBar>
-            <AppBarSection position="left">
+          <AppBar>
+            <AppBarSection alignment="left">
               {mapItemsToElement(items.left)}
             </AppBarSection>
-            <AppBarSection position="right">
-              <FlexBox>
+            <AppBarSection alignment="right">
+              <FlexBox alignItems="center">
                 <IconButton
-                  type="button"
+                  variant="secondary"
+                  size="small"
+                  icon={MiniDeleteIcon}
                   aria-label="close menu"
                   onClick={() => {
                     setMobileMenuOpen(false);
                   }}
-                >
-                  <CloseIcon width={20} height={20} />
-                </IconButton>
+                />
               </FlexBox>
             </AppBarSection>
-          </StyledAppBar>
+          </AppBar>
           <ContentContainer>
             <AppHeaderMainMenuMobile
               items={items.mainMenu}

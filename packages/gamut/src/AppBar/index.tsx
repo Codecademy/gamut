@@ -1,32 +1,70 @@
-import cx from 'classnames';
-import React from 'react';
+import { variant } from '@codecademy/gamut-styles';
+import styled from '@emotion/styled';
+import React, { ComponentProps } from 'react';
 
-import { FlexBox } from '..';
+import { Anchor } from '../Anchor';
+import { Box, FlexBox } from '../Box';
 import { ContentContainer } from '../ContentContainer';
-import styles from './styles/index.module.scss';
 
 export type AppBarProps = {
-  className?: string;
-  /**
-   * Whether the container should be larger than the default content size.
-   */
   wide?: boolean;
 };
 
-export const AppBar: React.FC<AppBarProps> = ({
-  wide,
-  children,
-  className,
-}) => {
-  const classes = cx(styles.wrapper, className);
+export const AppBar = ContentContainer.withComponent(
+  ({ children, ...props }: ComponentProps<typeof ContentContainer>) => (
+    <ContentContainer {...props}>
+      <FlexBox alignItems="center" paddingY={12} height="100%">
+        {children}
+      </FlexBox>
+    </ContentContainer>
+  )
+);
 
-  return (
-    <div className={classes}>
-      <ContentContainer size={wide ? 'wide' : 'medium'}>
-        <FlexBox alignItems="center" height="100%">
-          {children}
-        </FlexBox>
-      </ContentContainer>
-    </div>
-  );
+export const AppBarSection = styled(Box)(
+  variant({
+    prop: 'alignment',
+    variants: {
+      right: { justifyContent: 'flex-end' },
+      left: {},
+      center: { flexGrow: 2, justifyContent: 'center', textAlign: 'center' },
+    },
+  })
+);
+
+AppBarSection.defaultProps = {
+  display: 'flex',
+  alignItems: 'center',
+  height: '100%',
+  flexGrow: 1,
+  flexShrink: 1,
+  flexBasis: '0',
+  alignment: 'left',
+};
+
+export const AppBarTab = styled(Box)`
+  & + & {
+    margin-left: ${({ theme }) => theme.spacing[16]};
+  }
+`;
+
+export const AppBarButton = styled(Anchor)(
+  variant({
+    prop: 'menuVariant',
+    default: 'closed',
+    variants: {
+      open: {
+        letterSpacing: '-0.25px',
+        fontWeight: 'title',
+      },
+      closed: {},
+    },
+  })
+);
+
+AppBarButton.defaultProps = {
+  whiteSpace: 'nowrap',
+  variant: 'interface',
+  display: 'inline-flex',
+  width: { base: '100%', md: 'auto' },
+  paddingY: [12, , , 8],
 };

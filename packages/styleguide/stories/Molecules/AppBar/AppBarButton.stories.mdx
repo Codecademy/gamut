@@ -1,0 +1,25 @@
+import { AppBarButton } from '@codecademy/gamut';
+import title from '@codecademy/macros/lib/title.macro';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/dist/blocks';
+
+import { PropsTable } from '~styleguide/blocks';
+
+<Meta
+  title={title}
+  component={AppBarButton}
+  parameters={{
+    subtitle: 'A Button / Link Component for AppBars with structured padding',
+    source: 'gamut',
+    status: 'stable',
+    figmaId: '',
+  }}
+  args={{
+    children: 'Button',
+  }}
+/>
+
+<Canvas>
+  <Story name="AppBarButton">{(args) => <AppBarButton {...args} />}</Story>
+</Canvas>
+
+<PropsTable story="AppBarButton" />

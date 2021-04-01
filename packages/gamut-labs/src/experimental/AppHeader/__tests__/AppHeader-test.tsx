@@ -1,8 +1,7 @@
 import { IconButton } from '@codecademy/gamut';
 import { FaviconIcon } from '@codecademy/gamut-icons';
-import { theme } from '@codecademy/gamut-styles';
-import { ThemeProvider } from '@emotion/react';
-import { render, screen } from '@testing-library/react';
+import { setupRtl } from '@codecademy/gamut-tests';
+import { screen } from '@testing-library/react';
 import React from 'react';
 
 import { AppHeader, AppHeaderProps } from '..';
@@ -118,43 +117,37 @@ const fillButtonProps: AppHeaderProps = {
   },
 };
 
-const renderAppHeader = (props: AppHeaderProps) => {
-  return render(
-    <ThemeProvider theme={theme}>
-      <AppHeader {...props} />
-    </ThemeProvider>
-  );
-};
+const renderView = setupRtl(AppHeader);
 
 describe('AppHeader', () => {
   it('renders an AppHeaderLogo when the item type is logo', () => {
-    renderAppHeader(logoProps);
+    renderView(logoProps);
     screen.getByTitle('Codecademy Logo');
   });
 
   it('renders an AppHeaderLink when the item type is link', () => {
-    renderAppHeader(linkProps);
+    renderView(linkProps);
     screen.getByText('AppHeaderLink');
   });
 
   it('renders an AppHeaderDropdown when the item type is dropdown', () => {
-    renderAppHeader(dropdownProps);
+    renderView(dropdownProps);
     screen.getByText('AppHeaderDropdown');
   });
 
   it('renders a custom component when the item type is render-element', () => {
-    renderAppHeader(renderElementProps);
+    renderView(renderElementProps);
     screen.getByTitle('Favicon Icon');
   });
 
   it('calls action() when a TextButton is clicked', () => {
-    renderAppHeader(textButtonProps);
+    renderView(textButtonProps);
     screen.getByText('TextButton').click();
     expect(action).toHaveBeenCalled();
   });
 
   it('calls action() when a FillButton clicked', () => {
-    renderAppHeader(fillButtonProps);
+    renderView(fillButtonProps);
     screen.getByText('FillButton').click();
     expect(action).toHaveBeenCalled();
   });

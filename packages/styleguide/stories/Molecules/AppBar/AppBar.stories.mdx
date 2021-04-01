@@ -1,0 +1,54 @@
+import {
+  AppBar,
+  AppBarButton,
+  AppBarSection,
+  AppBarTab,
+} from '@codecademy/gamut/src';
+import title from '@codecademy/macros/lib/title.macro';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/dist/blocks';
+
+import { PropsTable } from '~styleguide/blocks';
+
+<Meta
+  title={title}
+  component={AppBar}
+  parameters={{
+    subtitle: `Components that provide
+spacing and layout help that you can use for something like a footer or
+header`,
+    status: 'stable',
+    source: 'gamut',
+  }}
+/>
+
+This is an example of an AppBar component that contains one left-oriented
+AppBarSection that holds one AppBar Tab.
+
+<Canvas>
+  <Story name="AppBar">
+    {(args) => (
+      <AppBar>
+        <AppBarSection alignment="left">
+          <AppBarTab>Left</AppBarTab>
+          <AppBarTab>
+            <AppBarButton>Left Button</AppBarButton>
+          </AppBarTab>
+        </AppBarSection>
+        <AppBarSection alignment="center">
+          <AppBarTab>Center</AppBarTab>
+          <AppBarTab>
+            <AppBarButton>Center Button</AppBarButton>
+          </AppBarTab>
+        </AppBarSection>
+        <AppBarSection alignment="right">
+          <AppBarTab>Right</AppBarTab>
+          <AppBarTab>
+            <AppBarButton>Right Button</AppBarButton>
+          </AppBarTab>
+        </AppBarSection>
+      </AppBar>
+    )}
+  </Story>
+</Canvas>
+
+<PropsTable of={AppBar} />

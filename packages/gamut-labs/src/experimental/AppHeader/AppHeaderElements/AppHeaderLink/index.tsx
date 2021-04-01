@@ -1,20 +1,7 @@
-import { Box } from '@codecademy/gamut';
-import styled from '@emotion/styled';
+import { AppBarButton } from '@codecademy/gamut';
 import React from 'react';
 
-import { focusStyles, hoverStyles } from '../SharedStyles';
 import { AppHeaderClickHandler, AppHeaderLinkItem } from '../types';
-
-const AppHeaderLinkButtonOuter = styled.a`
-  text-decoration: none;
-  color: ${({ theme }) => theme.colors.navy};
-  ${hoverStyles}
-  ${focusStyles}
-`;
-
-const AppHeaderLinkButtonInner = styled(Box)`
-  white-space: nowrap;
-`;
 
 export type AppHeaderLinkProps = {
   action: AppHeaderClickHandler;
@@ -26,21 +13,14 @@ export const AppHeaderLink: React.FC<AppHeaderLinkProps> = ({
   item,
 }) => {
   return (
-    <AppHeaderLinkButtonOuter
+    <AppBarButton
       data-testid={item.dataTestId}
       data-intellimize={item.dataIntellimizeId}
       href={item.href}
       onClick={(event) => action(event, item)}
       target={item.newTab ? 'blank' : ''}
     >
-      <AppHeaderLinkButtonInner
-        lineHeight="base"
-        minWidth="0"
-        paddingY={8}
-        textAlign="left"
-      >
-        {item.text}
-      </AppHeaderLinkButtonInner>
-    </AppHeaderLinkButtonOuter>
+      {item.text}
+    </AppBarButton>
   );
 };

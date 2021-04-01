@@ -1,8 +1,7 @@
 import { IconButton } from '@codecademy/gamut';
 import { BellIcon, SearchIcon } from '@codecademy/gamut-icons';
-import { theme } from '@codecademy/gamut-styles';
-import { ThemeProvider } from '@emotion/react';
-import { render, screen } from '@testing-library/react';
+import { setupRtl } from '@codecademy/gamut-tests';
+import { screen } from '@testing-library/react';
 import React from 'react';
 
 import { GlobalHeader, GlobalHeaderProps } from '..';
@@ -117,18 +116,12 @@ const renderElementProps: GlobalHeaderProps = {
   user,
 };
 
-const renderGlobalHeader = (props: GlobalHeaderProps) => {
-  return render(
-    <ThemeProvider theme={theme}>
-      <GlobalHeader {...props} />
-    </ThemeProvider>
-  );
-};
+const renderView = setupRtl(GlobalHeader);
 
 describe('GlobalHeader', () => {
   describe('anonymous users', () => {
     beforeEach(() => {
-      renderGlobalHeader(anonHeaderProps);
+      renderView(anonHeaderProps);
     });
 
     /* since we're using css to toggle the display of the header between desktop & mobile, these tests check for visibility of elements
@@ -171,7 +164,7 @@ describe('GlobalHeader', () => {
   describe('anonymous users (variants)', () => {
     describe('landing page', () => {
       beforeEach(() => {
-        renderGlobalHeader(anonLandingHeaderProps);
+        renderView(anonLandingHeaderProps);
       });
 
       test('does not show search', () => {
@@ -189,7 +182,7 @@ describe('GlobalHeader', () => {
 
     describe('login page', () => {
       beforeEach(() => {
-        renderGlobalHeader(anonLoginHeaderProps);
+        renderView(anonLoginHeaderProps);
       });
 
       test('shows search', () => {
@@ -207,7 +200,7 @@ describe('GlobalHeader', () => {
 
     describe('sign up page', () => {
       beforeEach(() => {
-        renderGlobalHeader(anonSignUpHeaderProps);
+        renderView(anonSignUpHeaderProps);
       });
 
       test('shows search', () => {
@@ -227,7 +220,7 @@ describe('GlobalHeader', () => {
   describe('free users', () => {
     describe('default', () => {
       beforeEach(() => {
-        renderGlobalHeader(freeHeaderProps);
+        renderView(freeHeaderProps);
       });
 
       test('logo', () => {
@@ -269,14 +262,14 @@ describe('GlobalHeader', () => {
 
     describe('custom checkout url', () => {
       test('tryProForFree', () => {
-        renderGlobalHeader(freeCustomCheckoutUrlHeaderProps);
+        renderView(freeCustomCheckoutUrlHeaderProps);
         screen.getByText(tryProForFree().text);
       });
     });
 
     describe('has completed trial', () => {
       test('upgradeToPro', () => {
-        renderGlobalHeader(freeCompletedTrialHeaderProps);
+        renderView(freeCompletedTrialHeaderProps);
         screen.getByText(upgradeToPro.text);
       });
     });
@@ -285,7 +278,7 @@ describe('GlobalHeader', () => {
   describe('pro users', () => {
     describe('default', () => {
       beforeEach(() => {
-        renderGlobalHeader(proHeaderProps);
+        renderView(proHeaderProps);
       });
 
       test('proLogo', () => {
@@ -315,7 +308,7 @@ describe('GlobalHeader', () => {
 
     describe('is paused', () => {
       test('unpause', () => {
-        renderGlobalHeader(proPausedHeaderProps);
+        renderView(proPausedHeaderProps);
         screen.getByText(unpausePro.text);
       });
     });
@@ -323,7 +316,7 @@ describe('GlobalHeader', () => {
 
   describe('loading', () => {
     beforeEach(() => {
-      renderGlobalHeader(loadingHeaderProps);
+      renderView(loadingHeaderProps);
     });
 
     test('logo', () => {
@@ -333,7 +326,7 @@ describe('GlobalHeader', () => {
 
   describe('renders a custom element when provided one', () => {
     beforeEach(() => {
-      renderGlobalHeader(renderElementProps);
+      renderView(renderElementProps);
     });
 
     test('search', () => {
@@ -346,7 +339,7 @@ describe('GlobalHeader', () => {
   });
 
   test('fires action() upon clicking an element', () => {
-    renderGlobalHeader(renderElementProps);
+    renderView(renderElementProps);
     screen.getAllByRole('link')[0].click();
     expect(action).toHaveBeenCalled();
   });

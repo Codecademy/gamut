@@ -29,7 +29,6 @@ export type AppHeaderLinkItem = AppHeaderBaseItem & {
   icon?: React.ComponentType<GamutIconProps>;
   newTab?: boolean;
   text: string;
-  topSeparator?: boolean;
   trackingTarget: string;
   type: 'link';
 };

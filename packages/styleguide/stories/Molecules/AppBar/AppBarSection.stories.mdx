@@ -1,0 +1,22 @@
+import { AppBarSection } from '@codecademy/gamut';
+import title from '@codecademy/macros/lib/title.macro';
+import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
+
+<Meta
+  title={title}
+  component={AppBarSection}
+  parameters={{
+    subtitle:
+      'A section for navigation items that can be aligned to specific parts of a AppBar',
+    source: 'gamut',
+    status: 'stable',
+    figmaId: '',
+  }}
+  args={{}}
+/>
+
+<Canvas>
+  <Story name="AppBarSection">{(args) => <AppBarSection {...args} />}</Story>
+</Canvas>
+
+<Props story="AppBarSection" />

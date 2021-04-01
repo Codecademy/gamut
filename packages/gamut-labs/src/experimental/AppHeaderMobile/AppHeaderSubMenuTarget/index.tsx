@@ -1,14 +1,9 @@
-import { Box, FlexBox } from '@codecademy/gamut';
-import { ArrowChevronRightIcon } from '@codecademy/gamut-icons';
+import { AppBarButton, FlexBox } from '@codecademy/gamut';
+import { MiniArrowRightIcon } from '@codecademy/gamut-icons';
 import styled from '@emotion/styled';
 import React from 'react';
 
 import { AppHeaderAvatar } from '../../AppHeader/AppHeaderElements/AppHeaderAvatar';
-import {
-  focusStyles,
-  hoverStyles,
-  textButtonStyles,
-} from '../../AppHeader/AppHeaderElements/SharedStyles';
 import { AppHeaderDropdownItem } from '../../AppHeader/AppHeaderElements/types';
 
 export type AppHeaderSubMenuTargetProps = {
@@ -16,21 +11,7 @@ export type AppHeaderSubMenuTargetProps = {
   openSubMenu: (event: React.MouseEvent, item: AppHeaderDropdownItem) => void;
 };
 
-const AppHeaderTextTargetButton = styled.button`
-  padding: 0;
-  ${textButtonStyles}
-  ${hoverStyles}
-  ${focusStyles}
-`;
-
-const AppHeaderLinkButtonInner = styled(Box)`
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-`;
-
-const DisplayNameText = styled.div`
-  max-width: 70vw;
+const DisplayNameText = styled(FlexBox)`
   overflow: hidden;
   text-overflow: ellipsis;
 `;
@@ -48,33 +29,23 @@ export const AppHeaderSubMenuTarget: React.FC<AppHeaderSubMenuTargetProps> = ({
   };
 
   return (
-    <AppHeaderTextTargetButton
+    <AppBarButton
       data-testid={item.dataTestId}
       onClick={(event: React.MouseEvent) => openSubMenu(event, item)}
       aria-label={`open ${item} submenu`}
     >
-      <AppHeaderLinkButtonInner
-        lineHeight="base"
-        minWidth="0"
-        paddingY={16}
-        textAlign="left"
-        display="flex"
+      {getIcon()}
+      <DisplayNameText
+        maxWidth="100%"
+        alignItems="center"
+        flexGrow={1}
+        flexShrink={1}
+        flexBasis="0"
+        marginX={16}
       >
-        <FlexBox alignItems="center">
-          <FlexBox marginRight={16}>{getIcon()}</FlexBox>
-
-          {item.type === 'profile-dropdown' ? (
-            <DisplayNameText>{item.userDisplayName}</DisplayNameText>
-          ) : (
-            item.text
-          )}
-        </FlexBox>
-        <FlexBox alignSelf="end">
-          <Box>
-            <ArrowChevronRightIcon size={12} aria-hidden />
-          </Box>
-        </FlexBox>
-      </AppHeaderLinkButtonInner>
-    </AppHeaderTextTargetButton>
+        {item.type === 'profile-dropdown' ? item.userDisplayName : item.text}
+      </DisplayNameText>
+      <MiniArrowRightIcon size={12} aria-hidden />
+    </AppBarButton>
   );
 };
