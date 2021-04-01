@@ -75,15 +75,15 @@ export const AccordionMenu: React.FC<AccordionMenuProps> = ({
           );
         }
         return (
-          <Anchor
-            key={item.slug}
-            variant="interface"
-            display="block"
-            paddingY={8}
-            onClick={() => onMenuItemClick(item)}
-          >
-            {item.title}
-          </Anchor>
+          <Box key={item.slug} paddingY={8}>
+            <Anchor
+              variant="interface"
+              display="block"
+              onClick={() => onMenuItemClick(item)}
+            >
+              {item.title}
+            </Anchor>
+          </Box>
         );
       })}
     </StyledAccordionArea>

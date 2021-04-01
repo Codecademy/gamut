@@ -1,4 +1,4 @@
-import { Anchor } from '@codecademy/gamut';
+import { Anchor, Box } from '@codecademy/gamut';
 import { LayoutMenu } from '@codecademy/gamut-labs/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/dist/blocks';
@@ -72,28 +72,30 @@ import { PropsTable } from '~styleguide/blocks';
         {...args}
         additionalLinks={
           <>
-            <Anchor
-              variant="interface"
-              display="block"
-              paddingBottom={32}
-              onClick={() =>
-                (window.location.href =
-                  'https://www.codecademy.com/catalog/all')
-              }
-            >
-              Full Catalog
-            </Anchor>
-            <Anchor
-              variant="interface"
-              display="block"
-              paddingBottom={32}
-              onClick={() =>
-                (window.location.href =
-                  'https://www.codecademy.com/explore/sorting-quiz')
-              }
-            >
-              Where do I begin?
-            </Anchor>
+            <Box paddingBottom={32}>
+              <Anchor
+                variant="interface"
+                display="block"
+                onClick={() =>
+                  (window.location.href =
+                    'https://www.codecademy.com/catalog/all')
+                }
+              >
+                Full Catalog
+              </Anchor>
+            </Box>
+            <Box paddingBottom={32}>
+              <Anchor
+                variant="interface"
+                display="block"
+                onClick={() =>
+                  (window.location.href =
+                    'https://www.codecademy.com/explore/sorting-quiz')
+                }
+              >
+                Where do I begin?
+              </Anchor>
+            </Box>
           </>
         }
       />
