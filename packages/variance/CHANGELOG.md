@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/variance@0.4.0...@codecademy/variance@0.5.0) (2021-03-31)
+
+
+### Features
+
+* **Variance:** Use only the global emotion theme type (Stage 5: Acceptance) [WEB-1382] ([e4215e9](https://github.com/Codecademy/client-modules/commit/e4215e9aacb2092ed77cd530822c5389c7b47123)), closes [/github.com/Codecademy/client-modules/blob/609bc7f3ab936d856225fb9885d0ae5afeac8b58/packages/variance/src/__tests__/localTheme.ts#L28-L29](https://github.com/Codecademy//github.com/Codecademy/client-modules/blob/609bc7f3ab936d856225fb9885d0ae5afeac8b58/packages/variance/src/__tests__/localTheme.ts/issues/L28-L29)
+
+
+
 ## [0.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/variance@0.3.0...@codecademy/variance@0.4.0) (2021-03-31)
 
 

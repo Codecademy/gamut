@@ -1,8 +1,8 @@
+import { Theme } from '@emotion/react';
 import { intersection } from 'lodash';
 
 import { AbstractPropTransformer } from '../types/config';
 import {
-  AbstractTheme,
   BreakpointCache,
   CSSObject,
   MediaQueryMap,
@@ -14,9 +14,7 @@ const BREAKPOINT_KEYS = ['_', 'xs', 'sm', 'md', 'lg', 'xl'];
 /**
  * Destructures the themes breakpoints into an ordered structure to traverse
  */
-export const parseBreakpoints = ({
-  breakpoints,
-}: AbstractTheme): BreakpointCache => {
+export const parseBreakpoints = ({ breakpoints }: Theme): BreakpointCache => {
   const { xs, sm, md, lg, xl } = breakpoints;
   return {
     map: breakpoints,
@@ -35,9 +33,9 @@ export const isMediaMap = (
 interface ResponsiveParser<
   Bp extends MediaQueryMap<string | number> | (string | number)[]
 > {
-  <T extends AbstractTheme, C extends AbstractPropTransformer<T>>(
+  <C extends AbstractPropTransformer>(
     value: Bp,
-    props: ThemeProps<T>,
+    props: ThemeProps,
     config: C,
     breakpoints: Bp
   ): CSSObject;

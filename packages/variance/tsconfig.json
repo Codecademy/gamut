@@ -1,11 +1,5 @@
 {
-  "extends": "../../tsconfig.json",
-  "compilerOptions": {
-    "allowJs": true,
-    "declaration": true,
-    "skipLibCheck": true,
-    "module": "esnext",
-    "outDir": "dist"
-  },
-  "include": ["src/**/*.ts", "src/**/*.tsx"]
+  "extends": "./tsconfig.base.json",
+  "files": [],
+  "references": [{ "path": "./src" }]
 }
