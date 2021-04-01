@@ -44,3 +44,25 @@ import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
     {(args) => <CurriculumCard {...args} />}
   </Story>
 </Canvas>
+
+<Canvas withSource="closed">
+  <Story
+    name="Curriculum Card Enrolled"
+    args={{
+      progressState: 'inProgress',
+    }}
+  >
+    {(args) => <CurriculumCard {...args} />}
+  </Story>
+</Canvas>
+
+<Canvas withSource="closed">
+  <Story
+    name="Curriculum Card Completed"
+    args={{
+      progressState: 'completed',
+    }}
+  >
+    {(args) => <CurriculumCard {...args} />}
+  </Story>
+</Canvas>
