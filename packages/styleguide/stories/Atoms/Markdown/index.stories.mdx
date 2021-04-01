@@ -1,10 +1,10 @@
 import { Markdown, TextDeprecated } from '@codecademy/gamut/src';
 import title from '@codecademy/macros/lib/title.macro';
+import { Codepedia, ErrorBlock } from '@codecademy/markdown-overrides';
 import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
 
 import { elements, tags } from './examples';
 import exampleMarkdown from './markdown-example.md';
-import { ErrorBlock, Codepedia } from '@codecademy/markdown-overrides';
 
 <Meta
   title={title}
@@ -110,8 +110,6 @@ export const overrides = {
 
 ### Codepedia
 
-<StoryStatus status="volatile" />
-
 Used to render inline information from [Codepedia](https://codecademy.github.io/codepedia) (a hackathon project!)
 
 <Canvas>
@@ -148,8 +146,6 @@ Used to render inline information from [Codepedia](https://codecademy.github.io/
 </Canvas>
 
 ### Error Block
-
-<StoryStatus status="stable" />
 
 Used to render errors
 

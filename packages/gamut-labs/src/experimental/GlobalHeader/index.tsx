@@ -100,6 +100,7 @@ const StickyHeader = styled.div<{ faded: boolean }>(
     height: ${theme.elements.headerHeight};
     border-bottom: 1px solid ${theme.colors.secondary};
     background-color: ${theme.colors.headerBg};
+    position: sticky;
     top: 0;
     z-index: 2;
     width: 100%;
