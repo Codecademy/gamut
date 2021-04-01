@@ -1,0 +1,19 @@
+import { Footer } from '@codecademy/gamut-labs/src';
+import title from '@codecademy/macros/lib/title.macro';
+import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
+
+<Meta
+  title={title}
+  parameters={{
+    subtitle: `Footer navigation bar and tabs with configurable areas.`,
+    status: 'volatile',
+    source: 'gamut-labs',
+    figmaId: 'TemYhRWOavsERWprDzRJCx',
+  }}
+/>
+
+<Canvas withSource="open">
+  <Story name="Footer">{(args) => <Footer />}</Story>
+</Canvas>
+
+<Props story="Footer" />
