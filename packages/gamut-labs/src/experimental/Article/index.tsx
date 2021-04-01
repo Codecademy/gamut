@@ -9,7 +9,6 @@ export type ArticleProps = {
 };
 
 export const Article: React.FC<ArticleProps> = ({
-  children,
   title,
   description,
   content,

@@ -1,18 +1,18 @@
 import { Box, ContentContainer } from '@codecademy/gamut';
-import { Article, GlobalHeader } from '@codecademy/gamut-labs';
+import { ArticleHub, GlobalHeader } from '@codecademy/gamut-labs';
 import { Background } from '@codecademy/gamut-styles';
 import title from '@codecademy/macros/lib/title.macro';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/dist/blocks';
 
 import { PropsTable } from '~styleguide/blocks';
 
-import { stub } from './stubArticle';
+import { articles } from './stubArticle';
 
 <Meta
   title={title}
-  component={Article}
+  component={ArticleHub}
   parameters={{
-    subtitle: 'Articles',
+    subtitle: 'ArticleHub',
     source: 'gamut-labs',
     status: '',
     figmaId: '',
@@ -23,10 +23,9 @@ import { stub } from './stubArticle';
     (Story, args) => (
       <Background
         initialBackground={
-          args?.globals?.backgrounds?.value === 'dark' ? 'navy' : 'beige'
+          args?.globals?.backgrounds?.value === 'dark' ? 'navy' : 'paleGreen'
         }
-        height="100%"
-        minHeight="100%"
+        minHeight="100vh"
         position="relative"
       >
         <GlobalHeader
@@ -44,11 +43,11 @@ import { stub } from './stubArticle';
       </Background>
     ),
   ]}
-  args={stub}
+  args={{ articles }}
 />
 
 <Canvas>
-  <Story name="Article">{(args) => <Article {...args} />}</Story>
+  <Story name="Article">{(args) => <ArticleHub {...args} />}</Story>
 </Canvas>
 
 <PropsTable story="Article" />
