@@ -1,0 +1,42 @@
+import { ContentContainer } from '@codecademy/gamut';
+import { Article } from '@codecademy/gamut-labs';
+import { Background } from '@codecademy/gamut-styles';
+import title from '@codecademy/macros/lib/title.macro';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/dist/blocks';
+
+import { PropsTable } from '~styleguide/blocks';
+
+import { stub } from './stubArticle';
+
+<Meta
+  title={title}
+  component={Article}
+  parameters={{
+    subtitle: 'Articles',
+    source: 'gamut-labs',
+    status: '',
+    figmaId: '',
+    viewMode: 'canvas',
+    layout: 'fullscreen',
+  }}
+  decorators={[
+    (Story, args) => (
+      <Background
+        initialBackground={
+          args?.globals?.backgrounds?.value === 'dark' ? 'navy' : 'beige'
+        }
+        minHeight="100vh"
+        p={32}
+      >
+        <ContentContainer>{Story()}</ContentContainer>
+      </Background>
+    ),
+  ]}
+  args={stub}
+/>
+
+<Canvas>
+  <Story name="Article">{(args) => <Article {...args} />}</Story>
+</Canvas>
+
+<PropsTable story="Article" />

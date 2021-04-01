@@ -1,6 +1,9 @@
 import React from 'react';
 
-import { GamutProvider } from '@codecademy/gamut-styles/src';
+import {
+  createEmotionCache,
+  GamutProvider,
+} from '@codecademy/gamut-styles/src';
 
 /**
  * Story functions must be called as a regular function to avoid full-remounts
@@ -18,5 +21,9 @@ export const withEmotion = (Story: any) => {
   }
 
   // Wrap all stories in minimal provider
-  return <GamutProvider>{Story()}</GamutProvider>;
+  return (
+    <GamutProvider cache={createEmotionCache({ speedy: false })}>
+      {Story()}
+    </GamutProvider>
+  );
 };

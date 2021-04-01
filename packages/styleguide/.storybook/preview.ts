@@ -46,6 +46,17 @@ export const parameters = {
     },
   },
   backgrounds: {
+    default: 'light',
+    values: [
+      {
+        name: 'light',
+        value: 'light',
+      },
+      {
+        name: 'dark',
+        value: 'dark',
+      },
+    ],
     grid: {
       cellSize: 8,
       opacity: 0.5,

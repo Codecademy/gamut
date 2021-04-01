@@ -6,6 +6,7 @@ import React, { useMemo } from 'react';
 import { ColorMode } from './ColorMode';
 import { properties } from './props';
 import { colors } from './variables';
+import { layoutProps, spaceProps } from './variance/props';
 
 const Reset = styled.div(properties.backgroundColor);
 
@@ -14,7 +15,7 @@ export type BackgroundProps = {
   className?: string;
 };
 
-export const Background: React.FC<BackgroundProps> = ({
+export const Bg: React.FC<BackgroundProps> = ({
   children,
   className,
   initialBackground,
@@ -65,3 +66,5 @@ export const Background: React.FC<BackgroundProps> = ({
     </ColorMode>
   );
 };
+
+export const Background = styled(Bg)(layoutProps, spaceProps);
