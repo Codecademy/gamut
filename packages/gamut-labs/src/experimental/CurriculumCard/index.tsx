@@ -66,7 +66,7 @@ export const CurriculumCard: React.FC<CurriculumCardProps> = ({
         textColor={progressState === 'completed' ? 'white' : 'navy'}
         marginBottom={4}
         fontFamily="base"
-        fontWeight="bold"
+        fontWeight="title"
         fontSize={20}
       >
         {title}
