@@ -93,16 +93,22 @@ export type SystemProps<P extends AbstractParser> = Omit<
   'theme'
 >;
 
+type VariantProps<T extends string, V> = {
+  [Key in T]?: V;
+};
+
 export interface Variant<P extends AbstractParser> {
   <
     Keys extends keyof Props,
+    Base extends AbstractProps,
     Props extends Record<Keys, AbstractProps>,
     PropKey extends Readonly<string> = 'variant'
   >(options: {
     prop?: PropKey;
     defaultVariant?: keyof Props;
+    base?: SelectorProps<Base, SystemProps<P>>;
     variants: SelectorMap<Props, SystemProps<P>>;
-  }): (props: ThemeProps<Partial<Record<PropKey, Keys>>>) => CSSObject;
+  }): (props: VariantProps<PropKey, Keys> & ThemeProps) => CSSObject;
 }
 
 export interface CSS<P extends AbstractParser> {

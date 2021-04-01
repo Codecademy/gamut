@@ -177,22 +177,26 @@ export const variance = {
   >(config: Config): Variant<P> {
     const css: CSS<P> = this.createCss(config);
 
-    return (options) => {
-      type Keys = keyof typeof options.variants;
-      const prop = options?.prop || 'variant';
-      const defaultVariant = options?.defaultVariant;
-
+    return ({ prop = 'variant', defaultVariant, base = {}, variants }) => {
+      type Keys = keyof typeof variants;
+      const baseFn = css(base);
       const variantFns = {} as Record<Keys, (props: ThemeProps) => CSSObject>;
 
-      Object.keys(options.variants).forEach((key) => {
+      Object.keys(variants).forEach((key) => {
         const variantKey = key as Keys;
-        const cssProps = options.variants[variantKey];
+        const cssProps = variants[variantKey];
         variantFns[variantKey] = css(cssProps as any);
       });
 
       return (props) => {
         const { [prop]: selected = defaultVariant } = props;
-        return selected ? variantFns[selected as Keys](props) : {};
+        const styles = {};
+
+        return merge(
+          styles,
+          baseFn(props),
+          variantFns?.[selected as Keys]?.(props)
+        );
       };
     };
   },
