@@ -10,6 +10,7 @@ export * from './AppHeaderMobile/AppHeaderSubMenuMobile';
 export * from './DeferredRender';
 export * from './Coachmark';
 export * from './CurriculumCard';
+export * from './GlobalFooter';
 export * from './GlobalHeader';
 export * from './HubCard';
 export * from './Popover';
