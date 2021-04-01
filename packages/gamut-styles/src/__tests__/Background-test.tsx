@@ -68,9 +68,10 @@ describe('Background', () => {
     );
 
     /** text color reset should be on the variable provisioner if needed */
-    expect(
-      view.getByTestId('nested-content').parentElement?.parentElement
-    ).toHaveStyleRule('color', theme.colors.text);
+    expect(view.getByTestId('nested-content').parentElement).toHaveStyleRule(
+      'color',
+      theme.colors.text
+    );
   });
 
   it('does not change the color mode when contrasts do not conflict', () => {
