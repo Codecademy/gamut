@@ -12,4 +12,5 @@ export * from './AppHeaderMobile/AppHeaderLinkMobile';
 export * from './AppHeaderMobile/AppHeaderMainMenuMobile';
 export * from './AppHeaderMobile/AppHeaderSubMenuMobile';
 export * from './GlobalHeader';
+export * from './LayoutMenu';
 export { AnonHeaderVariant } from './GlobalHeader/types';
