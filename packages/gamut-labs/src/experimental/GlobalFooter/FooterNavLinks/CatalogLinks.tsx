@@ -12,12 +12,17 @@ const CatalogLinksContainer = styled.div`
   border-top: 1px solid ${({ theme }) => theme.colors.navy};
   margin-top: 2rem;
 
+  ${theme.breakpoints.sm} {
+    padding-top: 2rem;
+  }
+
   ${theme.breakpoints.md} {
     border-left: 1px solid ${({ theme }) => theme.colors.navy};
     border-top: none;
     margin-left: 0;
     margin-top: 0;
     padding-left: 2rem;
+    padding-top: 0;
   }
 
   ${theme.breakpoints.lg} {
