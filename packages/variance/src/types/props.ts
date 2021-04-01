@@ -2,7 +2,7 @@ import { Theme } from '@emotion/react';
 
 import { PropertyTypes } from './properties';
 
-export type AbstractProps = Record<string, unknown>;
+export type AbstractProps = ThemeProps<Record<string, unknown>>;
 
 interface BreakpointKeys<T = string> {
   xs: T;
