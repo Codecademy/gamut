@@ -177,7 +177,7 @@ export const colorModes = {
     secondary: colors.navy,
     headerBg: colors.white,
     codeBg: colors.beige,
-    codeText: colors['blue-800'],
+    codeText: colors.black,
     codeBlockBg: colors.white,
   },
   dark: {

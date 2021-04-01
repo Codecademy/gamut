@@ -26,6 +26,8 @@ const Reset = styled.div`
     }
 
     code {
+      border-radius: 2px;
+      padding: 2px 4px;
       color: ${themed('colors.codeText')};
       background-color: ${themed('colors.codeBg')};
     }
