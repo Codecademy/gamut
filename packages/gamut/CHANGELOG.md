@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [29.7.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@29.6.0...@codecademy/gamut@29.7.0) (2021-04-01)
+
+
+### Features
+
+* **Input:** React-Recurly edits ([1d2a286](https://github.com/Codecademy/client-modules/commit/1d2a28670b6b218a891462191a80e97a982482c9))
+
+
+
+## [29.6.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@29.5.2...@codecademy/gamut@29.6.0) (2021-04-01)
+
+
+### Features
+
+* **GridForm:** Update the buttons for GridForm submit ([cb03dd2](https://github.com/Codecademy/client-modules/commit/cb03dd2a7bce0d2b9baa99349bae22824c0e614b))
+
+
+
 ### [29.5.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@29.5.1...@codecademy/gamut@29.5.2) (2021-03-30)
 
 

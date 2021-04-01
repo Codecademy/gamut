@@ -1,22 +1,20 @@
+import { Theme } from '@emotion/react';
 import { intersection } from 'lodash';
 
 import { AbstractPropTransformer } from '../types/config';
 import {
-  AbstractTheme,
   BreakpointCache,
   CSSObject,
   MediaQueryMap,
   ThemeProps,
 } from '../types/props';
 
-const BREAKPOINT_KEYS = ['base', 'xs', 'sm', 'md', 'lg', 'xl'];
+const BREAKPOINT_KEYS = ['_', 'xs', 'sm', 'md', 'lg', 'xl'];
 
 /**
  * Destructures the themes breakpoints into an ordered structure to traverse
  */
-export const parseBreakpoints = ({
-  breakpoints,
-}: AbstractTheme): BreakpointCache => {
+export const parseBreakpoints = ({ breakpoints }: Theme): BreakpointCache => {
   const { xs, sm, md, lg, xl } = breakpoints;
   return {
     map: breakpoints,
@@ -35,9 +33,9 @@ export const isMediaMap = (
 interface ResponsiveParser<
   Bp extends MediaQueryMap<string | number> | (string | number)[]
 > {
-  <T extends AbstractTheme, C extends AbstractPropTransformer<T>>(
+  <C extends AbstractPropTransformer>(
     value: Bp,
-    props: ThemeProps<T>,
+    props: ThemeProps,
     config: C,
     breakpoints: Bp
   ): CSSObject;
@@ -51,9 +49,9 @@ export const objectParser: ResponsiveParser<MediaQueryMap<string | number>> = (
 ) => {
   const styles: CSSObject = {};
   const { styleFn, prop } = config;
-  const { base, ...rest } = value;
+  const { _, ...rest } = value;
   // the keyof 'base' is base styles
-  if (base) Object.assign(styles, styleFn(base, prop, props));
+  if (_) Object.assign(styles, styleFn(_, prop, props));
 
   // Map over remaining keys and merge the corresponding breakpoint styles
   // for that property.
@@ -76,9 +74,9 @@ export const arrayParser: ResponsiveParser<(string | number)[]> = (
 ): CSSObject => {
   const styles: CSSObject = {};
   const { styleFn, prop } = config;
-  const [base, ...rest] = value;
+  const [_, ...rest] = value;
   // the first index is base styles
-  if (base) Object.assign(styles, styleFn(base, prop, props));
+  if (_) Object.assign(styles, styleFn(_, prop, props));
 
   // Map over each value in the array and merge the corresponding breakpoint styles
   // for that property.

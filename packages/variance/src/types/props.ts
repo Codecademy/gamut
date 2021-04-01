@@ -1,3 +1,7 @@
+import { Theme } from '@emotion/react';
+
+import { PropertyTypes } from './properties';
+
 export type AbstractProps = Record<string, unknown>;
 
 interface BreakpointKeys<T = string> {
@@ -12,16 +16,9 @@ export interface BreakpointCache {
   array: string[];
 }
 
-export interface AbstractTheme {
-  breakpoints: BreakpointKeys;
-}
-
-export type ThemeProps<
-  T extends AbstractTheme = AbstractTheme,
-  Props extends AbstractProps = {}
-> = {
-  theme?: T;
-} & Props;
+export type ThemeProps<Props = {}> = Props & {
+  theme?: Theme;
+};
 
 export interface MediaQueryArray<T> {
   0?: T;
@@ -32,7 +29,7 @@ export interface MediaQueryArray<T> {
   5?: T;
 }
 export interface MediaQueryMap<T> {
-  base?: T;
+  _?: T;
   xs?: T;
   sm?: T;
   md?: T;
@@ -41,29 +38,19 @@ export interface MediaQueryMap<T> {
 }
 
 export type ResponsiveProp<T> = T | MediaQueryMap<T> | MediaQueryArray<T>;
+
 export interface CSSObject {
   [key: string]: string | number | CSSObject | undefined;
 }
 
-/** These are currently unused but will be used for pseudo selector support in the near future */
-export type Chained = `&` | `>` | '~' | '+';
+export type SelectorMap<Props, System> = {
+  [K in keyof Props]?: SelectorProps<Props[K], System>;
+};
 
-export type SelectorLiterals =
-  | `[${string}]`
-  | `&:${string}`
-  | `${Chained} ${string}`
-  | `${string} ${Chained} ${string}`;
-
-export type Selectors<T> = T extends SelectorLiterals ? T : never;
-
-export type SelectorMap<
-  Config extends AbstractProps,
-  SelectorKeys extends Selectors<keyof Config>,
-  Props extends AbstractProps
-> = {
-  [K in keyof Config]: K extends SelectorKeys
-    ? Props
-    : K extends keyof Props
-    ? Props[K]
-    : never;
+export type SelectorProps<Props, System> = {
+  [K in keyof Props]?: K extends keyof System
+    ? System[K]
+    : K extends keyof PropertyTypes
+    ? PropertyTypes[K]
+    : Omit<PropertyTypes, keyof System> & Omit<System, 'theme'>;
 };

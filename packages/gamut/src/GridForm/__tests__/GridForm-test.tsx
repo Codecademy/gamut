@@ -30,7 +30,7 @@ describe('GridForm', () => {
         <GridForm
           fields={fields}
           onSubmit={onSubmit}
-          submit={{ contents: <>Submit</>, size: 6 }}
+          submit={{ type: 'fill', contents: <>Submit</>, size: 6 }}
         />
       </ThemeProvider>
     );
@@ -82,7 +82,7 @@ describe('GridForm', () => {
         <GridForm
           fields={fields}
           onSubmit={onSubmit}
-          submit={{ contents: <>Submit</>, size: 6 }}
+          submit={{ type: 'fill', contents: <>Submit</>, size: 6 }}
         />
       </ThemeProvider>
     );
@@ -109,7 +109,11 @@ describe('GridForm', () => {
           <GridForm
             fields={fields}
             onSubmit={onSubmit}
-            submit={{ contents: <>Submit</>, size: 6 }}
+            submit={{
+              type: 'fill',
+              contents: <>Submit</>,
+              size: 6,
+            }}
             validation="onSubmit"
           />
         </ThemeProvider>
@@ -117,9 +121,7 @@ describe('GridForm', () => {
 
       wrapped.setProps(wrapped.props());
 
-      expect(
-        wrapped.find('button[type="submit"]').prop('disabled')
-      ).not.toBeTruthy();
+      expect(wrapped.find('button').prop('disabled')).not.toBeTruthy();
     });
   });
 
@@ -136,7 +138,11 @@ describe('GridForm', () => {
           <GridForm
             fields={fields}
             onSubmit={onSubmit}
-            submit={{ contents: <>Submit</>, size: 6 }}
+            submit={{
+              type: 'fill',
+              contents: <>Submit</>,
+              size: 6,
+            }}
             validation="onChange"
           />
         </ThemeProvider>
@@ -147,9 +153,7 @@ describe('GridForm', () => {
       });
       wrapped.update();
 
-      expect(
-        wrapped.find('button[type="submit"]').prop('disabled')
-      ).toBeTruthy();
+      expect(wrapped.find('button').prop('disabled')).toBeTruthy();
     });
 
     it('enables the submit button after the required fields are completed', async () => {
@@ -164,7 +168,11 @@ describe('GridForm', () => {
           <GridForm
             fields={fields}
             onSubmit={onSubmit}
-            submit={{ contents: <>Submit</>, size: 6 }}
+            submit={{
+              type: 'fill',
+              contents: <>Submit</>,
+              size: 6,
+            }}
             validation="onChange"
           />
         </ThemeProvider>
@@ -179,9 +187,7 @@ describe('GridForm', () => {
 
       wrapped.setProps(wrapped.props());
 
-      expect(
-        wrapped.find('button[type="submit"]').prop('disabled')
-      ).not.toBeTruthy();
+      expect(wrapped.find('button').prop('disabled')).not.toBeTruthy();
     });
 
     it('keeps the submit button disabled when overridden and there are no incomplete fields', async () => {
@@ -193,14 +199,19 @@ describe('GridForm', () => {
           <GridForm
             fields={[]}
             onSubmit={onSubmit}
-            submit={{ contents: <>Submit</>, disabled: true, size: 6 }}
+            submit={{
+              type: 'fill',
+              contents: <>Submit</>,
+              disabled: true,
+              size: 6,
+            }}
           />
         </ThemeProvider>
       );
 
       wrapped.setProps(wrapped.props());
 
-      expect(wrapped.find('button[type="submit"]').prop('disabled')).toBe(true);
+      expect(wrapped.find('button').prop('disabled')).toBe(true);
     });
   });
 
@@ -236,7 +247,7 @@ describe('GridForm', () => {
             },
           ]}
           onSubmit={jest.fn()}
-          submit={{ contents: <>Submit</>, size: 6 }}
+          submit={{ type: 'fill', contents: <>Submit</>, size: 6 }}
         />
       </ThemeProvider>
     );
