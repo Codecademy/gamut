@@ -28,9 +28,13 @@
     "@codecademy/gamut-system": "^0.6.0",
     "@codecademy/gamut-tests": "^2.3.3",
     "classnames": "^2.2.5",
+    "pluralize": "8.0.0",
     "react-focus-on": "^3.5.1",
     "react-hotkeys-hook": "^2.3.1",
     "react-use": "15.3.8"
+  },
+  "devDependencies": {
+    "@types/pluralize": "0.0.29"
   },
   "scripts": {
     "verify": "tsc --noEmit",
