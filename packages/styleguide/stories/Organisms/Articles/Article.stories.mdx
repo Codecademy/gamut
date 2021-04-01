@@ -1,8 +1,14 @@
-import { AppWrapper, Box, ContentContainer } from '@codecademy/gamut';
+import {
+  AppWrapper,
+  Box,
+  ContentContainer,
+  StrokeButton,
+} from '@codecademy/gamut';
 import { Article, GlobalHeader } from '@codecademy/gamut-labs';
 import { Background } from '@codecademy/gamut-styles';
 import title from '@codecademy/macros/lib/title.macro';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/dist/blocks';
+import { useState } from 'react';
 
 import { PropsTable } from '~styleguide/blocks';
 
@@ -20,44 +26,53 @@ import { stub } from './stubArticle';
     layout: 'fullscreen',
   }}
   decorators={[
-    (Story, args) => (
-      <Background
-        initialBackground={
-          args?.parameters.mode === 'dark' ? 'navy' : 'washBeige'
-        }
-        minHeight="100vh"
-        position="relative"
-      >
-        <AppWrapper>
-          <GlobalHeader
-            action={() => {}}
-            type="free"
-            user={{
-              avatar:
-                'https://www.gravatar.com/avatar/1c959a9a1e2f9f9f1ac06b05cccc1d60?s=150&d=retro',
-              displayName: 'Codey',
-            }}
-          />
-          <Box paddingY={32}>
-            <ContentContainer>{Story()}</ContentContainer>
-          </Box>
-        </AppWrapper>
-      </Background>
-    ),
+    (Story, args) => {
+      const [mode, setMode] = useState('light');
+      return (
+        <Background
+          initialBackground={mode === 'dark' ? 'navy' : 'washBeige'}
+          minHeight="100vh"
+          position="relative"
+        >
+          <AppWrapper>
+            <GlobalHeader
+              action={() => {}}
+              type="free"
+              user={{
+                avatar:
+                  'https://www.gravatar.com/avatar/1c959a9a1e2f9f9f1ac06b05cccc1d60?s=150&d=retro',
+                displayName: 'Codey',
+              }}
+            />
+            <Box paddingY={32}>
+              <ContentContainer>
+                {Story()}
+                <AppWrapper>
+                  <Box position="fixed" left="0" right="0" bottom="2rem">
+                    <Box display="flex" justifyContent="flex-end" padding={48}>
+                      <StrokeButton
+                        onClick={() =>
+                          setMode(mode === 'light' ? 'dark' : 'light')
+                        }
+                        variant="primary"
+                      >
+                        {mode}
+                      </StrokeButton>
+                    </Box>
+                  </Box>
+                </AppWrapper>
+              </ContentContainer>
+            </Box>
+          </AppWrapper>
+        </Background>
+      );
+    },
   ]}
   args={stub}
 />
 
 <Canvas>
-  <Story name="Light" parameters={{ mode: 'light' }}>
-    {(args) => <Article {...args} />}
-  </Story>
-</Canvas>
-
-<Canvas>
-  <Story name="Dark" parameters={{ mode: 'dark' }}>
-    {(args) => <Article {...args} />}
-  </Story>
+  <Story name="Article">{(args) => <Article {...args} />}</Story>
 </Canvas>
 
 <PropsTable story="Article" />
