@@ -104,6 +104,7 @@ export const trueColors = {
   yellow: swatches.yellow[500],
   black,
   white,
+  washBeige: '#FFFBF8',
 } as const;
 
 export const colors = {

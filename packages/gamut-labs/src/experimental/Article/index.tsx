@@ -22,7 +22,7 @@ const Reset = styled.div`
 
     pre {
       background-color: ${themed('colors.codeBlockBg')};
-      padding: ${themed('spacing.12')};
+      padding: ${themed('spacing.16')};
     }
 
     code {
