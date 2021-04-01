@@ -1,12 +1,10 @@
-import { Box, ContentContainer } from '@codecademy/gamut';
-import { ArticleHub, GlobalHeader } from '@codecademy/gamut-labs';
-import { Background } from '@codecademy/gamut-styles';
+import { ArticleHub } from '@codecademy/gamut-labs';
 import title from '@codecademy/macros/lib/title.macro';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/dist/blocks';
 
 import { PropsTable } from '~styleguide/blocks';
 
-import { articles } from './stubArticle';
+import { AppDecorator, articles } from './utils';
 
 <Meta
   title={title}
@@ -19,30 +17,7 @@ import { articles } from './stubArticle';
     viewMode: 'canvas',
     layout: 'fullscreen',
   }}
-  decorators={[
-    (Story, args) => (
-      <Background
-        initialBackground={
-          args?.globals?.backgrounds?.value === 'dark' ? 'navy' : 'paleGreen'
-        }
-        minHeight="100vh"
-        position="relative"
-      >
-        <GlobalHeader
-          action={() => {}}
-          type="free"
-          user={{
-            avatar:
-              'https://www.gravatar.com/avatar/1c959a9a1e2f9f9f1ac06b05cccc1d60?s=150&d=retro',
-            displayName: 'Codey',
-          }}
-        />
-        <Box paddingY={32}>
-          <ContentContainer>{Story()}</ContentContainer>
-        </Box>
-      </Background>
-    ),
-  ]}
+  decorators={[(Story, args) => <AppDecorator>{Story()}</AppDecorator>]}
   args={{ articles }}
 />
 
