@@ -6,12 +6,13 @@ import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
   title={title}
   component={CurriculumCard}
   args={{
-    title: 'Learn Java',
+    title: 'Learn JavaScript',
     difficulty: 0,
-    tag: 'Hi',
+    tag: 'Language Flunecy',
     tagColor: 'blue',
-    scope: '',
-    text: '',
+    scope: 'Lessons',
+    scopeCount: 25,
+    text: 'Course',
   }}
   parameters={{
     subtitle: `Curriculum cards for paths and courses.`,
@@ -20,7 +21,26 @@ import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
 />
 
 <Canvas withSource="open">
-  <Story name="CurriculumCard">{(args) => <CurriculumCard {...args} />}</Story>
+  <Story name="Curriculum Card">{(args) => <CurriculumCard {...args} />}</Story>
 </Canvas>
 
-<Props story="CurriculumCard" />
+<Props story="Curriculum Card" />
+
+<Canvas withSource="closed">
+  <Story
+    name="Curriculum Card with Image"
+    args={{
+      text: 'Career Path',
+      title: 'Front-End Engineer',
+      image:
+        'https://static-assets.codecademy.com/components/curriculum/path/front-end-engineer-career-path/curriculum-card.svg',
+      scopeCount: 94,
+      isFullSize: true,
+      color: 'pink',
+      tag: 'Job Essentials',
+      showProLogo: true,
+    }}
+  >
+    {(args) => <CurriculumCard {...args} />}
+  </Story>
+</Canvas>
