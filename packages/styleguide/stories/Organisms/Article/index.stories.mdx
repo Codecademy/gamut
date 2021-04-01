@@ -1,5 +1,5 @@
-import { ContentContainer } from '@codecademy/gamut';
-import { Article } from '@codecademy/gamut-labs';
+import { Box, ContentContainer } from '@codecademy/gamut';
+import { Article, GlobalHeader } from '@codecademy/gamut-labs';
 import { Background } from '@codecademy/gamut-styles';
 import title from '@codecademy/macros/lib/title.macro';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/dist/blocks';
@@ -25,10 +25,22 @@ import { stub } from './stubArticle';
         initialBackground={
           args?.globals?.backgrounds?.value === 'dark' ? 'navy' : 'beige'
         }
-        minHeight="100vh"
-        p={32}
+        height="100%"
+        minHeight="100%"
+        position="relative"
       >
-        <ContentContainer>{Story()}</ContentContainer>
+        <GlobalHeader
+          action={() => {}}
+          type="free"
+          user={{
+            avatar:
+              'https://www.gravatar.com/avatar/1c959a9a1e2f9f9f1ac06b05cccc1d60?s=150&d=retro',
+            displayName: 'Codey',
+          }}
+        />
+        <Box paddingY={32}>
+          <ContentContainer>{Story()}</ContentContainer>
+        </Box>
       </Background>
     ),
   ]}

@@ -1,5 +1,4 @@
 import { Markdown, Text } from '@codecademy/gamut';
-import { ThemeShape } from '@codecademy/gamut-styles';
 import { useTheme } from '@emotion/react';
 import React from 'react';
 
