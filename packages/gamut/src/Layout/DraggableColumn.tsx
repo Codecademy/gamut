@@ -27,7 +27,7 @@ export const DraggableColumn = forwardRef<HTMLDivElement, DraggablColumnProps>(
       generateResponsiveClassnames({ size, offset, rowspan }, styles)
     );
     return (
-      <div className={classNames} data-testid={testId} ref={ref}>
+      <div className={classNames} data-testid={testId} ref={ref} {...rest}>
         {children}
       </div>
     );
