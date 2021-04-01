@@ -20,9 +20,9 @@ export const BodyPortal: React.FC = ({ children }) => {
   if (!ready) return null;
 
   return ReactDOM.createPortal(
-    <ColorMode mode={active}>
-      <AppWrapper>{children}</AppWrapper>
-    </ColorMode>,
+    <AppWrapper>
+      <ColorMode mode={active}>{children}</ColorMode>
+    </AppWrapper>,
     document.body
   );
 };
