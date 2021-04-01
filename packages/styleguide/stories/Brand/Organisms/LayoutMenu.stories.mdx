@@ -37,8 +37,18 @@ import { PropsTable } from '~styleguide/blocks';
         ],
       },
     ],
-    onSectionToggle: (slug) => console.log(slug),
-    onMenuItemClick: (menuItem) => console.log(menuItem),
+    onSectionToggle: (slug) => {
+      // eslint-disable-next-line no-console
+      console.log(
+        `You could add event tracking here. You have access to the slug: ${slug}`
+      );
+    },
+    onMenuItemClick: (menuItem) => {
+      // eslint-disable-next-line no-console
+      console.log(
+        `You should handle where the link goes here and also could add event tracking. You have access to the menu item: ${menuItem}`
+      );
+    },
   }}
   parameters={{
     subtitle: `An accordion menu, currently used in the Catalog and Cheatsheets Index`,
