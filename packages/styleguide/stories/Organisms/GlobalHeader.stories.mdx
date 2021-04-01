@@ -1,5 +1,9 @@
 import { Box, IconButton } from '@codecademy/gamut/src';
-import { BellIcon, SearchIcon } from '@codecademy/gamut-icons/src';
+import {
+  BellIcon,
+  NotebookIcon,
+  SearchIcon,
+} from '@codecademy/gamut-icons/src';
 import { GlobalHeader } from '@codecademy/gamut-labs/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/dist/blocks';
@@ -333,6 +337,10 @@ To mock this, IconButtons are provided as placeholders.
         renderNotifications={{
           desktop: () => <IconButton icon={BellIcon} />,
           mobile: () => <IconButton icon={BellIcon} />,
+        }}
+        renderLearnerBackpack={{
+          desktop: () => <IconButton icon={NotebookIcon} />,
+          mobile: () => <IconButton icon={NotebookIcon} />,
         }}
         renderSearch={{
           desktop: () => <IconButton icon={SearchIcon} />,

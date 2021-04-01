@@ -6,6 +6,10 @@ type RenderNotifications = {
   desktop: () => ReactNode;
   mobile: () => ReactNode;
 };
+type RenderLearnerBackpack = {
+  desktop: () => ReactNode;
+};
+
 type RenderProfile = { desktop: () => ReactNode; mobile: () => ReactNode };
 type RenderSearch = { desktop: () => ReactNode; mobile: () => ReactNode };
 
@@ -29,6 +33,7 @@ export type User = {
 type LoggedInHeader = BaseHeader & {
   renderNotifications?: RenderNotifications;
   renderProfile?: RenderProfile;
+  renderLearnerBackpack?: RenderLearnerBackpack;
   user: User;
 };
 

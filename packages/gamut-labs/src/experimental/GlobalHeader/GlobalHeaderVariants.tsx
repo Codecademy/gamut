@@ -10,6 +10,7 @@ import {
   courseCatalog,
   forBusiness,
   freeProfile,
+  learnerBackpack,
   login,
   logo,
   myHome,
@@ -119,7 +120,8 @@ export const anonSignupMobileHeaderItems = (): FormattedMobileAppHeaderItems => 
 export const freeHeaderItems = (
   user: User,
   renderSearch?: () => ReactNode,
-  renderNotifications?: () => ReactNode
+  renderNotifications?: () => ReactNode,
+  renderLearnerBackpack?: () => ReactNode
 ): FormattedAppHeaderItems => {
   const leftItems: AppHeaderItem[] = [
     logo,
@@ -134,6 +136,9 @@ export const freeHeaderItems = (
   const rightItems: AppHeaderItem[] = [];
   renderSearch && rightItems.push(search(renderSearch));
   renderNotifications && rightItems.push(notifications(renderNotifications));
+  renderLearnerBackpack &&
+    rightItems.push(learnerBackpack(renderLearnerBackpack));
+
   rightItems.push(freeProfile(user));
   rightItems.push(
     user.showProUpgrade ? upgradeToPro : tryProForFree(user.proTrialCheckoutUrl)
@@ -178,7 +183,8 @@ export const freeMobileHeaderItems = (
 export const proHeaderItems = (
   user: User,
   renderSearch?: () => ReactNode,
-  renderNotifications?: () => ReactNode
+  renderNotifications?: () => ReactNode,
+  renderLearnerBackpack?: () => ReactNode
 ): FormattedAppHeaderItems => {
   const leftItems: AppHeaderItem[] = [
     proLogo,
@@ -191,6 +197,9 @@ export const proHeaderItems = (
   const rightItems: AppHeaderItem[] = [];
   renderSearch && rightItems.push(search(renderSearch));
   renderNotifications && rightItems.push(notifications(renderNotifications));
+  renderLearnerBackpack &&
+    rightItems.push(learnerBackpack(renderLearnerBackpack));
+
   rightItems.push(proProfile(user));
   user.isPaused && rightItems.push(unpausePro);
 

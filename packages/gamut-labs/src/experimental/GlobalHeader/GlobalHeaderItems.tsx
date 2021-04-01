@@ -197,6 +197,16 @@ export const notifications = (
   };
 };
 
+export const learnerBackpack = (
+  renderLearnerBackpack: () => ReactNode
+): AppHeaderRenderElementItem => {
+  return {
+    id: 'learner-backpack',
+    renderElement: renderLearnerBackpack,
+    type: 'render-element',
+  };
+};
+
 const profileMyProfile: AppHeaderLinkItem = {
   id: 'my-profile',
   icon: PersonIcon,

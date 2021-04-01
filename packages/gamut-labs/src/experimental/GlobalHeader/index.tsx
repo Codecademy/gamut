@@ -53,13 +53,15 @@ const getAppHeaderItems = (
       return freeHeaderItems(
         props.user,
         props.renderSearch?.desktop,
-        props.renderNotifications?.desktop
+        props.renderNotifications?.desktop,
+        props.renderLearnerBackpack?.desktop
       );
     case 'pro':
       return proHeaderItems(
         props.user,
         props.renderSearch?.desktop,
-        props.renderNotifications?.desktop
+        props.renderNotifications?.desktop,
+        props.renderLearnerBackpack?.desktop
       );
     case 'loading':
       return loadingHeaderItems;
