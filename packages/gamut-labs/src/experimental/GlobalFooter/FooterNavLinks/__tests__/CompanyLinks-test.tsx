@@ -10,7 +10,7 @@ describe('CompanyLinks', () => {
       userGeo: 'IN',
     });
 
-    expect(view.getAllByText('Shop')).toHaveLength(0);
+    expect(view.queryByText('Shop')).toBeNull();
   });
 
   it('includes a shop link when the user geo is not IN', () => {
