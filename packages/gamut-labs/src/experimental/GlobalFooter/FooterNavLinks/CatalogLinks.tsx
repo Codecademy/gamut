@@ -119,7 +119,7 @@ export const CatalogLinks: React.FC = () => {
             </CatalogFooterLinkItem>
             <CatalogFooterLinkItem>
               <Anchor href="/learn/beta-content" variant="interface">
-                Full Catalog
+                Beta Content
               </Anchor>
             </CatalogFooterLinkItem>
             <CatalogFooterLinkItem>
