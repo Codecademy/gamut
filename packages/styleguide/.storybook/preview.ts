@@ -1,11 +1,11 @@
 import 'focus-visible/dist/focus-visible.min.js';
 
-import { withEmotion } from './decorators/theme';
+import { withContext, withEmotion } from './decorators/theme';
 import { Page } from './components';
 import { theme as gamutTheme } from '@codecademy/gamut-styles/src';
 import { theme } from './theme';
 
-const { colors, breakpoints } = gamutTheme;
+const { breakpoints } = gamutTheme;
 
 export const parameters = {
   viewMode: 'docs',
@@ -109,6 +109,19 @@ export const parameters = {
   },
   actions: { argTypesRegex: '^on.*' },
   controls: { expanded: true },
+  layout: 'fullscreen',
 };
 
-export const decorators = [withEmotion];
+export const globalTypes = {
+  colorModes: {
+    name: 'Color Modes',
+    description: 'Global theme for components',
+    defaultValue: 'light',
+    toolbar: {
+      icon: 'circlehollow',
+      items: ['light', 'dark'],
+    },
+  },
+};
+
+export const decorators = [withContext, withEmotion];
