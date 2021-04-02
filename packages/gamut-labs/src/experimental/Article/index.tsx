@@ -22,9 +22,9 @@ const Reset = styled.div`
       max-width: 50%;
     }
 
-    pre {
+    > pre {
       padding: ${themed('spacing.16')};
-      background
+      background-color: ${themed('colors.codeBlockBg')};
     }
 
     code {
@@ -60,7 +60,9 @@ export const Article: React.FC<ArticleProps> = ({
         {description}
       </Text>
       {socialIcons ? (
-        <FlexBox justifyContent="flex-end">{socialIcons}</FlexBox>
+        <FlexBox justifyContent="flex-end" marginY={16}>
+          {socialIcons}
+        </FlexBox>
       ) : null}
       <ResetMarkdown text={content} {...mdProps} />
     </Reset>
