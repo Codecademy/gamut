@@ -1,6 +1,6 @@
 import { allProps } from '../styles';
 import { styled, css } from '@storybook/theming';
-import LinkTo from '@storybook/addon-links/dist/react/components/link';
+import LinkTo from '@storybook/addon-links/react';
 import { boxShadows } from '@codecademy/gamut-styles/src';
 import { badgeVariants } from '../Badge';
 
