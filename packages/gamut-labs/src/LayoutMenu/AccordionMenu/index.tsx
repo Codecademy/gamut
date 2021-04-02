@@ -18,8 +18,8 @@ export type MenuItemData = {
 
 export type AccordionMenuProps = {
   menuData: MenuData;
-  onSectionToggle: (section: string) => void;
-  onMenuItemClick: (item: MenuItemData) => void;
+  onSectionToggle: (sectionSlug: string) => void;
+  onMenuItemClick: (item: MenuItemData, sectionSlug: string) => void;
   selectedItem?: string;
 };
 
@@ -79,7 +79,7 @@ export const AccordionMenu: React.FC<AccordionMenuProps> = ({
             <Anchor
               variant="interface"
               display="block"
-              onClick={() => onMenuItemClick(item)}
+              onClick={() => onMenuItemClick(item, menuData.slug)}
             >
               {item.title}
             </Anchor>

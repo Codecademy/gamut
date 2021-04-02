@@ -14,11 +14,11 @@ export type LayoutMenuProps = {
   /**
    * Callback to be run on click of the accordion button
    */
-  onSectionToggle: (section: string) => void;
+  onSectionToggle: (sectionSlug: string) => void;
   /**
    * Callback to be run on click of a menu item. This should include where the link should go
    */
-  onMenuItemClick: (item: MenuItemData) => void;
+  onMenuItemClick: (item: MenuItemData, sectionSlug: string) => void;
   /**
    * The slug of the current selected menu item
    */
