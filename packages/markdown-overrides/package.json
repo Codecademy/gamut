@@ -16,9 +16,9 @@
     "react-dom": ">=16.8.1"
   },
   "dependencies": {
+    "@codecademy/gamut": "^29.5.2",
+    "@codecademy/gamut-labs": "^13.2.7",
     "@codecademy/gamut-styles": "^9.1.3",
-    "@codecademy/gamut-labs": "^7.6.2",
-    "@codecademy/gamut": "^19.7.3",
     "classnames": "^2.2.5",
     "katex": "0.9.0"
   },
