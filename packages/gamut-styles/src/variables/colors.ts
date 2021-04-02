@@ -59,6 +59,7 @@ export const flatSwatches = {
   'blue-0': '#F5FCFF',
   'blue-300': '#66C4FF',
   'blue-500': '#1557FF',
+  'blue-700': '#2C3249',
   'blue-800': '#1D2340',
   'blue-900': '#10162f',
   'green-0': '#F5FFE3',
@@ -103,6 +104,8 @@ export const trueColors = {
   yellow: swatches.yellow[500],
   black,
   white,
+  washBeige: '#FFFBF8',
+  washNavy: '#34394E',
 } as const;
 
 export const colors = {
@@ -174,11 +177,19 @@ export const colorModes = {
     text: colors.navy,
     primary: colors.hyper,
     secondary: colors.navy,
+    headerBg: colors.white,
+    codeBg: colors.beige,
+    codeText: colors.black,
+    codeBlockBg: colors.white,
   },
   dark: {
     background: colors.navy,
     text: colors.white,
     primary: colors.yellow,
     secondary: colors.white,
+    headerBg: colors.black,
+    codeBg: colors['blue-700'],
+    codeText: colors['gray-200'],
+    codeBlockBg: colors.black,
   },
 };

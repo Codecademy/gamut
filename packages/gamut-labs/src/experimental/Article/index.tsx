@@ -1,17 +1,47 @@
-import { Markdown, Text } from '@codecademy/gamut';
+import { FlexBox, Markdown, MarkdownProps, Text } from '@codecademy/gamut';
+import { themed } from '@codecademy/gamut-styles';
 import { useTheme } from '@emotion/react';
-import React from 'react';
+import styled from '@emotion/styled';
+import React, { ReactElement } from 'react';
 
 export type ArticleProps = {
   title: string;
   description: string;
   content: string;
+  socialIcons?: ReactElement;
+  mdProps?: MarkdownProps;
 };
+
+const ResetMarkdown = styled(Markdown)``;
+
+const Reset = styled.div`
+  ${ResetMarkdown} {
+    color: ${themed('colors.text')};
+
+    > *:not(pre):not(code):not(.overrideWidth) {
+      max-width: 50%;
+    }
+
+    pre {
+      padding: ${themed('spacing.16')};
+      background
+    }
+
+    code {
+      border-radius: 2px;
+      padding: 2px 4px;
+      color: ${themed('colors.codeText')};
+      background-color: ${themed('colors.codeBg')};
+    }
+  }
+`;
 
 export const Article: React.FC<ArticleProps> = ({
   title,
   description,
   content,
+  socialIcons,
+  mdProps,
 }) => {
   const {
     colorModes: { active },
@@ -19,7 +49,7 @@ export const Article: React.FC<ArticleProps> = ({
   const titleColors = active === 'dark' ? 'lightBlue' : 'navy';
 
   return (
-    <>
+    <Reset>
       <Text as="strong" fontFamily="accent" textColor={titleColors}>
         Article
       </Text>
@@ -29,7 +59,10 @@ export const Article: React.FC<ArticleProps> = ({
       <Text as="h2" fontSize={22} fontWeight="base" textColor={titleColors}>
         {description}
       </Text>
-      <Markdown text={content} />
-    </>
+      {socialIcons ? (
+        <FlexBox justifyContent="flex-end">{socialIcons}</FlexBox>
+      ) : null}
+      <ResetMarkdown text={content} {...mdProps} />
+    </Reset>
   );
 };
