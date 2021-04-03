@@ -1,0 +1,111 @@
+import React, { useContext } from 'react';
+import { Description, DocsContext, Title } from '@storybook/addon-docs/blocks';
+
+import styled from '@emotion/styled';
+import { Parameters } from '@storybook/addons';
+import { NavigationContext } from './NavigationProvider';
+
+import { Anchor, Box, ContentContainer, Text } from '@codecademy/gamut/src';
+import { BreadCrumbs } from './TableOfContents';
+import { OpenIcon } from '@codecademy/gamut-icons';
+import { themed } from '@codecademy/gamut-styles';
+
+const MetaContainer = styled(Box)`
+  display: grid;
+  background-color: ${themed('colors.white')};
+  padding: 1.5rem 1rem;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(0, max-content);
+  grid-column-gap: 2rem;
+`;
+
+export interface GamutParameters extends Parameters {
+  subtitle?: string;
+  status?: 'stable' | 'volatile' | 'deprecated' | 'unknown';
+  figmaId?: string;
+  source?: string;
+}
+
+const STATUS = {
+  deprecated: {
+    children: 'Old Style',
+    textColor: 'orange',
+  },
+  stable: {
+    children: 'Up to date',
+    textColor: 'green',
+  },
+  volatile: {
+    children: 'Updating',
+    textColor: 'blue',
+  },
+  unknown: {
+    children: 'Backlog',
+    textColor: 'gray-500',
+  },
+} as const;
+
+export const Page: React.FC = ({ children }) => {
+  const { kind, storyStore } = useContext(DocsContext);
+  const { getTableOfContents, getBreadCrumbs }: any = useContext(
+    NavigationContext
+  );
+
+  if (!kind) {
+    return <>{children}</>;
+  }
+
+  const {
+    parameters: { figmaId, source },
+  } = storyStore?._kinds[kind];
+
+  const { title, subtitle, status } = getTableOfContents(kind);
+  const breadcrumbs = getBreadCrumbs(kind);
+  const showMeta = Boolean(figmaId || source);
+  const npmLink = `https://www.npmjs.com/package/@codecademy/${source}`;
+  const figmaLink = `https://www.figma.com/file/${figmaId}`;
+
+  const linkIcon = (
+    <Box
+      display="inline-block"
+      marginLeft={8}
+      verticalAlign="baseline"
+      height="16px"
+    >
+      <OpenIcon size={18} />
+    </Box>
+  );
+  return (
+    <Box minHeight="100vh" backgroundColor="paleBlue" paddingY={48}>
+      <ContentContainer>
+        <BreadCrumbs links={breadcrumbs} />
+        <Title>{title}</Title>
+        {showMeta && (
+          <MetaContainer backgroundColor="paleBlue">
+            <Text fontSize={16} as="strong">
+              Status: <Text {...STATUS[status as keyof typeof STATUS]} />
+            </Text>
+            <Anchor
+              fontSize={16}
+              fontWeight="title"
+              target="_blank"
+              href={npmLink}
+            >
+              NPM @codecademy/{source} {linkIcon}
+            </Anchor>
+            <Anchor
+              fontSize={16}
+              fontWeight="title"
+              target="_blank"
+              href={figmaLink}
+            >
+              Figma Source File {linkIcon}
+            </Anchor>
+          </MetaContainer>
+        )}
+        <Description>{subtitle}</Description>
+        {children}
+      </ContentContainer>
+    </Box>
+  );
+};

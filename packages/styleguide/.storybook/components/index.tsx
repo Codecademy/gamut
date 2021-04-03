@@ -1,5 +1,6 @@
 export * from './Badge';
 export * from './Swatches';
+export * from './TextExample';
 export * from './Box';
 export * from './Scale';
 export * from './PropsTable';
@@ -10,3 +11,4 @@ export * from './ColorScale';
 export * from './Page';
 export * from './TableOfContents';
 export * from './utils';
+export * from './DocsContainer';

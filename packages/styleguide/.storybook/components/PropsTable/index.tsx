@@ -13,7 +13,7 @@ import {
 } from './Elements';
 import { useSystemProps } from './useSystemProps';
 import { Box } from '../TableOfContents/elements';
-import { Link } from '../Page';
+import { Anchor } from '@codecademy/gamut/src';
 
 type PropTagProps = {
   prop: PropGroups;
@@ -58,9 +58,9 @@ export const PropsTable: React.FC<PropsTableProps> = ({
           <Box display="grid" gridTemplateColumns="minmax(0, 1fr) max-content">
             <Title>
               System Props -{' '}
-              <Link href="/?path=/docs/foundations-system-props--page">
+              <Anchor href="/?path=/docs/foundations-system-props--page">
                 Learn More
-              </Link>
+              </Anchor>
             </Title>
             <ToggleContainer>
               <ToggleLabel htmlFor="toggle-props">

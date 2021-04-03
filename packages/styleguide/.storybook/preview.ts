@@ -1,7 +1,7 @@
 import 'focus-visible/dist/focus-visible.min.js';
 
 import { withEmotion } from './decorators/theme';
-import { Page } from './components';
+import { Page, DocsContainer } from './components';
 import { theme as gamutTheme } from '@codecademy/gamut-styles/src';
 import { theme } from './theme';
 
@@ -34,6 +34,7 @@ export const parameters = {
   // Addon Options
   docs: {
     theme,
+    container: DocsContainer,
     components: {
       wrapper: Page,
     },

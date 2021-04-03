@@ -1,8 +1,10 @@
 import { allProps } from '../styles';
-import { styled, css } from '@storybook/theming';
+import { styled } from '@storybook/theming';
 import LinkTo from '@storybook/addon-links/react';
-import { boxShadows } from '@codecademy/gamut-styles/src';
+import { boxShadows, shouldForwardProp } from '@codecademy/gamut-styles/src';
 import { badgeVariants } from '../Badge';
+import { Anchor } from '@codecademy/gamut/src';
+import React from 'react';
 
 export const Box = styled.div`
   ${allProps}
@@ -34,39 +36,35 @@ interface SectionLinkProps {
   box?: boolean;
 }
 
-export const SectionLink = styled(LinkTo, {
-  shouldForwardProp: (prop) => prop !== 'box',
-})<SectionLinkProps>(({ box, theme }) => {
-  if (box) {
-    return css`
-      color: inherit;
+export const SectionLink = styled(LinkTo as any, {
+  shouldForwardProp,
+})<SectionLinkProps>`
+  color: inherit;
 
-      &:after {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        box-shadow: ${boxShadows[1]};
-        border-radius: 4px;
-        transition: 200ms box-shadow;
-      }
-
-      &:hover {
-        text-decoration: none;
-
-        &:after {
-          box-shadow: ${boxShadows[2]};
-        }
-      }
-    `;
+  &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    box-shadow: ${boxShadows[1]};
+    border-radius: 4px;
+    transition: 200ms box-shadow;
   }
-  return css`
-    font-size: inherit;
-    color: ${theme.color.secondary};
-  `;
-});
+
+  &:hover {
+    text-decoration: none;
+
+    &:after {
+      box-shadow: ${boxShadows[2]};
+    }
+  }
+`;
+
+export const Link = Anchor.withComponent(
+  (props: { kind?: string; story?: string }) => <LinkTo {...props} />
+);
 
 SectionLink.defaultProps = {
   story: 'page',

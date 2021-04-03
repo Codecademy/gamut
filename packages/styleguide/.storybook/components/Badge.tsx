@@ -14,6 +14,9 @@ export const badgeVariants = variant({
     deprecated: {
       backgroundColor: colors.red,
     },
+    unknown: {
+      backgroundColor: colors['gray-500'],
+    },
   },
 });
 

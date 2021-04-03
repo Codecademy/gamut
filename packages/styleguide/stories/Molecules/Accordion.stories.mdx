@@ -9,7 +9,6 @@ import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/blocks';
 <Meta
   title={title}
   component={Accordion}
-  subcomponents={{ AccordionArea, AccordionButton }}
   parameters={{
     subtitle: `A molecule consisting of a "top" section and an expandable body,
 such as a "hint" section in the LE or a list of department jobs on a careers page.
@@ -19,7 +18,7 @@ such as a "hint" section in the LE or a list of department jobs on a careers pag
   }}
 />
 
-<Canvas withSource="open">
+<Canvas>
   <Story name="Accordion">
     {(args) => (
       <Accordion top="Click me!" {...args}>
