@@ -1,6 +1,7 @@
+import { themed } from '@codecademy/gamut-styles';
+import { variant } from '@codecademy/gamut-styles/src';
 import { HandlerProps } from '@codecademy/gamut-system';
-import { styled } from '@storybook/theming';
-import { variant } from '../styles';
+import styled from '@emotion/styled';
 
 export const Table = styled.div`
   display: grid;
@@ -11,16 +12,16 @@ const rowVariants = variant({
     borderStyle: 'solid',
     borderStyleTop: 'none',
     borderWidth: '1px',
-    borderColor: '#eeeeee',
-    backgroundColor: '#F6F9FC',
-    padding: '2rem',
+    borderColor: 'gray-200',
+    backgroundColor: 'gray-100',
+    padding: 32,
   },
 });
 
-export const Row = styled.div`
+export const Row = styled.div<Parameters<typeof rowVariants>[0]>`
   display: flex;
   max-width: 100%;
-  border-bottom: 1px solid #eeeeee;
+  border-bottom: 1px solid ${themed('colors.gray-200')};
   ${rowVariants}
 
   &:last-child {
@@ -61,8 +62,8 @@ type ColVariants = HandlerProps<typeof colVariants>;
 
 const colVariants = variant({
   header: {
-    fontWeight: 700,
-    fontSize: '1rem',
+    fontWeight: 'title',
+    fontSize: 16,
   },
 });
 

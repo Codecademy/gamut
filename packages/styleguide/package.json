@@ -52,6 +52,7 @@
     "access": "public"
   },
   "devDependencies": {
+    "@types/mdx-js__react": "^1.5.3",
     "css-loader": "^3.5.2",
     "glob": "^7.1.6",
     "postcss-loader": "^3.0.0",

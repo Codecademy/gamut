@@ -1,7 +1,8 @@
+import { Box } from '@codecademy/gamut';
 import { swatches, theme, trueColors } from '@codecademy/gamut-styles';
 import React from 'react';
 
-import { Box, Code, ColorScale } from '~styleguide/blocks';
+import { Code, ColorScale } from '~styleguide/blocks';
 
 const PROP_COLUMN = {
   key: 'key',
@@ -183,7 +184,7 @@ export const space = {
           display="inline-block"
           height="1rem"
           width={value}
-          backgroundColor={theme.colors['blue-300']}
+          backgroundColor="blue-300"
         />
       ),
     },
@@ -220,9 +221,9 @@ export const boxShadow = {
           width="1.5rem"
           height="1.5rem"
           borderStyle="solid"
-          borderColor="grey"
+          borderColor="gray-400"
           borderWidth="1px"
-          marginBottom="2rem"
+          marginBottom={32}
         />
       ),
     },

@@ -1,18 +1,13 @@
-import { allProps } from '../styles';
-import { styled } from '@storybook/theming';
 import LinkTo from '@storybook/addon-links/react';
-import { boxShadows, shouldForwardProp } from '@codecademy/gamut-styles/src';
-import { badgeVariants } from '../Badge';
+import {
+  boxShadows,
+  shouldForwardProp,
+  themed,
+} from '@codecademy/gamut-styles/src';
+import { badgeVariants } from './Badge';
 import { Anchor } from '@codecademy/gamut/src';
 import React from 'react';
-
-export const Box = styled.div`
-  ${allProps}
-
-  ::-webkit-scrollbar {
-    background-color: transparent;
-  }
-`;
+import styled from '@emotion/styled';
 
 export const Reset = styled.div`
   *:first-of-type {
@@ -20,7 +15,7 @@ export const Reset = styled.div`
   }
 `;
 
-export const SectionStatus = styled.div`
+export const SectionStatus = styled.div<Parameters<typeof badgeVariants>[0]>`
   position: absolute;
   left: calc(100% + 1rem);
   top: 0;
@@ -62,10 +57,38 @@ export const SectionLink = styled(LinkTo as any, {
   }
 `;
 
-export const Link = Anchor.withComponent(
-  (props: { kind?: string; story?: string }) => <LinkTo {...props} />
-);
+export const Link = Anchor.withComponent((props: SectionLinkProps) => (
+  <LinkTo {...props} />
+));
 
 SectionLink.defaultProps = {
   story: 'page',
 };
+
+export const Code = styled.code`
+  max-width: 100%;
+  overflow-x: auto;
+  line-height: 1;
+  padding: 5px 7px 1px;
+  white-space: nowrap;
+  border-radius: 3px;
+  font-size: 13px;
+  border: 1px solid #eeeeee;
+  color: rgba(51, 51, 51, 0.8);
+  background-color: ${themed('colors.gray-100')};
+  display: inline-block;
+  overflow-x: scroll;
+
+  ::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #eeeeee;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+`;

@@ -2,13 +2,14 @@ import React, { useContext } from 'react';
 import { DocsContext } from '@storybook/addon-docs/blocks';
 
 import { Description } from '@storybook/addon-docs/blocks';
-import { Box, Link, Reset, SectionLink, SectionStatus } from './elements';
 import {
-  ContentItem,
-  ContentLink,
-  NavigationContext,
-} from '../NavigationProvider';
-import { Card } from '@codecademy/gamut/src';
+  Link,
+  Reset,
+  SectionLink,
+  SectionStatus,
+} from './Markdown/MarkdownElements';
+import { ContentItem, ContentLink, NavigationContext } from './Navigation';
+import { Box, Card, Text } from '@codecademy/gamut/src';
 
 export const TableOfContents = () => {
   const { kind } = useContext(DocsContext);
@@ -16,7 +17,7 @@ export const TableOfContents = () => {
   const { children } = getTableOfContents(kind);
   return (
     <Box
-      paddingTop="1rem"
+      paddingTop={16}
       display="grid"
       maxWidth="100%"
       gridTemplateColumns={{
@@ -24,8 +25,8 @@ export const TableOfContents = () => {
         md: 'repeat(2, 1fr)',
         lg: 'repeat(3, 1fr)',
       }}
-      columnGap="2rem"
-      rowGap="2rem"
+      columnGap={32}
+      rowGap={32}
     >
       {children.map((link: ContentItem) => (
         <ToCItem {...link} key={`toc-item-${link.story}`} />
@@ -38,10 +39,10 @@ export const BreadCrumbs: React.FC<{ links: ContentLink[] }> = ({ links }) => {
   return (
     <Box
       display="flex"
-      columnGap="0.5rem"
-      marginBottom="0.5rem"
-      fontWeight="bold"
-      fontSize="16px"
+      columnGap={8}
+      marginBottom={8}
+      fontWeight="title"
+      fontSize={16}
     >
       {links.map(({ title, story, kind }, i) => {
         const current = i === links.length - 1;
@@ -82,18 +83,18 @@ export const ToCItem: React.FC<ContentItem> = ({
           <Box
             width="100%"
             position="absolute"
-            boxShadow="rgba(0,0,0,.1) 0 -1px 0 0 inset"
+            backgroundColor="navy"
             top="0"
             minHeight="1px"
           />
           <Box
             display="flex"
-            columnGap="1rem"
+            columnGap={16}
             maxHeight="1rem"
-            fontWeight="bold"
+            fontWeight="title"
             flexWrap="wrap"
             overflow="hidden"
-            fontSize="14px"
+            fontSize={14}
             onClick={(e) => e.stopPropagation()}
           >
             {links.map((link) => (
@@ -125,14 +126,11 @@ export const ToCItem: React.FC<ContentItem> = ({
       position="relative"
     >
       <SectionLink box kind={kind} story={story}>
-        <Box
-          fontSize="22px"
-          lineHeight="1.1"
-          fontWeight="bold"
-          position="relative"
-        >
-          {title}
-          {status && <SectionStatus status={status} />}
+        <Box position="relative">
+          <Text as="h2" fontSize={22}>
+            {title}
+            {status && <SectionStatus status={status} />}
+          </Text>
         </Box>
       </SectionLink>
       <Box overflowY="hidden">
@@ -141,8 +139,8 @@ export const ToCItem: React.FC<ContentItem> = ({
       <Box
         display="grid"
         alignItems="center"
-        paddingX="1.5rem"
-        paddingBottom=".25rem"
+        paddingX={24}
+        paddingBottom={4}
         position="absolute"
         zIndex={subsection ? 1 : -1}
         bottom="0"

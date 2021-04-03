@@ -1,19 +1,23 @@
 import React from 'react';
 import { propGroups, PropGroups } from './constants';
 import { ArgsTable } from '@storybook/addon-docs/blocks';
-import { BooleanControl } from '@storybook/components';
 
 import {
   PropItem,
   PropGroupTooltip,
   PropGroupTag,
-  Title,
-  ToggleContainer,
   ToggleLabel,
 } from './Elements';
 import { useSystemProps } from './useSystemProps';
-import { Box } from '../TableOfContents/elements';
-import { Anchor } from '@codecademy/gamut/src';
+import {
+  Box,
+  Anchor,
+  GridBox,
+  FlexBox,
+  Text,
+  Toggle,
+} from '@codecademy/gamut/src';
+import { Link } from '../Markdown/MarkdownElements';
 
 type PropTagProps = {
   prop: PropGroups;
@@ -23,8 +27,9 @@ type PropTagProps = {
 
 export const PropTag: React.FC<PropTagProps> = ({ prop, active, onClick }) => {
   const { propNames } = propGroups[prop];
+  const variant = active ? 'selected' : 'normal';
   return (
-    <PropGroupTag active={active} onClick={onClick}>
+    <PropGroupTag variant={variant} onClick={onClick}>
       {prop}
       <PropGroupTooltip>
         {propNames.map((propName) => (
@@ -55,40 +60,35 @@ export const PropsTable: React.FC<PropsTableProps> = ({
     <>
       {hasSystemProps && (
         <Box>
-          <Box display="grid" gridTemplateColumns="minmax(0, 1fr) max-content">
-            <Title>
+          <GridBox gridTemplateColumns="minmax(0, 1fr) max-content">
+            <Text fontWeight="title" as="p">
               System Props -{' '}
-              <Anchor href="/?path=/docs/foundations-system-props--page">
+              <Link kind="Foundations/System/Props" story="page">
                 Learn More
-              </Anchor>
-            </Title>
-            <ToggleContainer>
+              </Link>
+            </Text>
+            <FlexBox alignItems="center">
               <ToggleLabel htmlFor="toggle-props">
                 Show all in table:
               </ToggleLabel>
-              <BooleanControl
-                name="toggle-props"
-                value={showAll}
-                defaultValue={showAll}
+              <Toggle
+                variant="hyper"
+                label="toggle-props"
+                checked={showAll}
                 onChange={toggleAll}
               />
-            </ToggleContainer>
-          </Box>
-          <Box
-            display="flex"
-            columnGap="0.5rem"
-            rowGap="0.5rem"
-            flexWrap="wrap"
-          >
+            </FlexBox>
+          </GridBox>
+          <FlexBox columnGap={8} rowGap={8} flexWrap="wrap">
             {allGroups.map((group) => (
               <PropTag
                 key={`${group}-group`}
                 prop={group}
                 onClick={() => toggleGroup(group)}
-                active={!showAll && activeGroups.includes(group)}
+                active={showAll || activeGroups.includes(group)}
               />
             ))}
-          </Box>
+          </FlexBox>
         </Box>
       )}
       <ArgsTable {...props} exclude={excludedProps} />

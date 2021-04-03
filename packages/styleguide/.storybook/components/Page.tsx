@@ -3,7 +3,7 @@ import { Description, DocsContext, Title } from '@storybook/addon-docs/blocks';
 
 import styled from '@emotion/styled';
 import { Parameters } from '@storybook/addons';
-import { NavigationContext } from './NavigationProvider';
+import { NavigationContext } from './Navigation/NavigationProvider';
 
 import { Anchor, Box, ContentContainer, Text } from '@codecademy/gamut/src';
 import { BreadCrumbs } from './TableOfContents';
@@ -13,7 +13,7 @@ import { themed } from '@codecademy/gamut-styles';
 const MetaContainer = styled(Box)`
   display: grid;
   background-color: ${themed('colors.white')};
-  padding: 1.5rem 1rem;
+  padding: ${themed('spacing.16')};
   grid-auto-flow: column;
   grid-auto-columns: minmax(0, max-content);
   grid-column-gap: 2rem;

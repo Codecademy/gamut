@@ -3,7 +3,6 @@ function managerEntries(entry: any[] = [], options: any) {
 }
 
 function config(entry: any[] = []) {
-  console.log(entry);
   return [...entry, require.resolve('./enhancers')];
 }
 
