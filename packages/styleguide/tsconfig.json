@@ -3,7 +3,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "~styleguide/blocks": ["./.storybook/components"]
+      "~styleguide/blocks": [".storybook/components"]
     },
     "allowJs": true,
     "noEmit": true,
