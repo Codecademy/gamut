@@ -1,9 +1,5 @@
 import LinkTo from '@storybook/addon-links/react';
-import {
-  boxShadows,
-  shouldForwardProp,
-  themed,
-} from '@codecademy/gamut-styles/src';
+import { shouldForwardProp, themed } from '@codecademy/gamut-styles/src';
 import { badgeVariants } from './Badge';
 import { Anchor } from '@codecademy/gamut/src';
 import styled from '@emotion/styled';

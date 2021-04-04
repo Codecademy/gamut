@@ -1,5 +1,6 @@
 import { DocsContextProps } from '@storybook/addon-docs/blocks';
-import { set, head, keyBy, isEmpty, tail } from 'lodash';
+import { set, head, keyBy, isEmpty, tail, update } from 'lodash';
+import { merge } from 'lodash/fp';
 import { ContentItem, Heirarchy, Taxonomy, TaxonomyStatus } from './types';
 
 export const INDEX_KIND = 'About';
@@ -18,8 +19,8 @@ export function getChildLinks(children: Heirarchy): ContentItem[] {
       title: child.title,
       subtitle: child?.subtitle,
       status: child?.status,
-      story: child?.index.split('--')[1],
-      kind: child?.index.split('--')[0],
+      story: child?.index?.split('--')[1],
+      kind: child?.index?.split('--')[0],
       links: getChildLinks(child?.children),
     }))
     .sort(sortByStatus);
@@ -111,25 +112,24 @@ export const createTaxonomy = (context: DocsContextProps): Taxonomy => {
         });
         break;
       case 'index':
-        set(heirarchy, heirarchyOrder, {
-          title,
-          index: path,
-          subtitle,
-        });
+        update(
+          heirarchy,
+          heirarchyOrder,
+          merge({
+            title,
+            index: path,
+            subtitle,
+          })
+        );
         break;
       default:
+        let components = {};
         const subStories = storyStore.getStoriesForKind(id);
         const firstIndex = subStories[0] || {
           id: path.concat('--page'),
         };
-        set(heirarchy, heirarchyOrder, {
-          index: firstIndex.id,
-          title,
-          subtitle,
-          status,
-        });
         if (component || !isEmpty(subcomponents)) {
-          const components = keyBy(
+          components = keyBy(
             [component?.name, ...Object.keys(subcomponents)]
               .filter(Boolean)
               .map((component) => ({
@@ -140,9 +140,19 @@ export const createTaxonomy = (context: DocsContextProps): Taxonomy => {
               })),
             ({ title }) => title
           );
-
-          set(heirarchy, `${heirarchyOrder}.children`, components);
         }
+
+        update(
+          heirarchy,
+          heirarchyOrder,
+          merge({
+            index: firstIndex.id,
+            title,
+            subtitle,
+            status,
+            children: components,
+          })
+        );
     }
   });
 

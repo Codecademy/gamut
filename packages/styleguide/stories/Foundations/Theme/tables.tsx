@@ -2,7 +2,7 @@ import { Box } from '@codecademy/gamut';
 import { swatches, theme, trueColors } from '@codecademy/gamut-styles';
 import React from 'react';
 
-import { Code, ColorScale } from '~styleguide/blocks';
+import { Code, ColorScale } from '../../../.storybook/components';
 
 const PROP_COLUMN = {
   key: 'key',

@@ -1,11 +1,17 @@
 import React, { useContext } from 'react';
-import { Description, DocsContext, Title } from '@storybook/addon-docs/blocks';
+import { DocsContext, Title } from '@storybook/addon-docs/blocks';
 
 import styled from '@emotion/styled';
 import { Parameters } from '@storybook/addons';
 import { NavigationContext } from './Navigation/NavigationProvider';
 
-import { Anchor, Box, ContentContainer, Text } from '@codecademy/gamut/src';
+import {
+  Anchor,
+  Box,
+  ContentContainer,
+  Markdown,
+  Text,
+} from '@codecademy/gamut/src';
 import { BreadCrumbs } from './TableOfContents';
 import { OpenIcon } from '@codecademy/gamut-icons';
 import { themed } from '@codecademy/gamut-styles';
@@ -79,6 +85,9 @@ export const Page: React.FC = ({ children }) => {
       <ContentContainer>
         <BreadCrumbs links={breadcrumbs} />
         <Title>{title}</Title>
+        <Text as="p" fontSize={20} marginBottom={16}>
+          <Markdown inline text={subtitle} />
+        </Text>
         {showMeta && (
           <MetaContainer
             backgroundColor="paleBlue"
@@ -112,7 +121,6 @@ export const Page: React.FC = ({ children }) => {
             )}
           </MetaContainer>
         )}
-        <Description>{subtitle}</Description>
         {children}
       </ContentContainer>
     </Box>
