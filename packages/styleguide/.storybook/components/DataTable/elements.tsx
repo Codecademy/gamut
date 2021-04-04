@@ -20,8 +20,9 @@ const rowVariants = variant({
 
 export const Row = styled.div<Parameters<typeof rowVariants>[0]>`
   display: flex;
+  justify-content: space-between;
   max-width: 100%;
-  border-bottom: 1px solid ${themed('colors.gray-200')};
+  border-bottom: 1px solid ${themed('colors.navy')};
   ${rowVariants}
 
   &:last-child {
@@ -47,8 +48,8 @@ const colSizes = variant({
       maxWidth: '12rem',
     },
     xl: {
-      flexBasis: '14rem',
-      maxWidth: '14rem',
+      flexBasis: '20rem',
+      maxWidth: '20rem',
     },
     fill: {
       flexGrow: 1,
@@ -72,13 +73,13 @@ export type ColProps = ColVariants & ColSize;
 export const Col = styled.div<ColProps>`
   ${colSizes}
   ${colVariants}
-  padding: 16px 12px;
+  padding: ${themed('spacing.12')} ${themed('spacing.24')};
 
   &:first-of-type {
-    padding-left: 4px;
+    padding-left: ${themed('spacing.4')};
   }
 
   &:last-of-type {
-    padding-right: 4px;
+    padding-right: ${themed('spacing.4')};
   }
 `;

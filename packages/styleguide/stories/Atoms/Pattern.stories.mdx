@@ -7,11 +7,13 @@ import { PropsTable } from '~styleguide/blocks';
 <Meta
   title={title}
   component={Pattern}
-  parameters={{ source: 'gamut', status: 'updating' }}
+  parameters={{
+    source: 'gamut',
+    status: 'updating',
+    subtitle: 'Repeatedable pattern backgrounds for multiple uses.',
+  }}
   args={{ height: 200, width: 200, name: 'diagonalStripesLoose' }}
 />
-
-Our new SVG pattern component.
 
 <Canvas>
   <Story name="Pattern" args={{ width: '100%', height: 200 }}>

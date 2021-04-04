@@ -14,7 +14,7 @@ const PROP_COLUMN = {
 const VALUE_COLUMN = {
   key: 'value',
   name: 'Value',
-  size: 'xl',
+  size: 'lg',
   render: ({ value }: any) => <Code>{value}</Code>,
 };
 
@@ -80,7 +80,11 @@ const createExampleColumn = ({
   key: 'example',
   name: 'Example',
   size: 'fill',
-  render: ({ value }: any) => <Box {...{ [prop]: value }}>{text}</Box>,
+  render: ({ value }: any) => (
+    <Box fontSize={20} {...{ [prop]: value }}>
+      {text}
+    </Box>
+  ),
 });
 
 export const fontFamily = {
@@ -92,20 +96,21 @@ export const fontFamily = {
     PROP_COLUMN,
     {
       ...PATH_COLUMN,
+      size: 'xl',
       render: ({ id }: any) => <Code>theme.fontFamily.{id}</Code>,
     },
     {
       ...VALUE_COLUMN,
       render: ({ value }: any) => (
         <Box maxWidth="24rem">
-          <Code>{value}</Code>
+          <Code>{value.split(',')[0]}</Code>
         </Box>
       ),
-      size: 'fill',
+      size: 'lg',
     },
     {
       ...createExampleColumn({ text: 'Example Text', prop: 'fontFamily' }),
-      size: 'lg',
+      size: 'fill',
     },
   ],
 };
@@ -121,7 +126,7 @@ export const fontWeight = {
       ...PATH_COLUMN,
       render: ({ id }: any) => <Code>theme.fontWeight.{id}</Code>,
     },
-    VALUE_COLUMN,
+    { ...VALUE_COLUMN, size: 'lg' },
     createExampleColumn({ text: 'Example Text', prop: 'fontWeight' }),
   ],
 };
@@ -137,7 +142,7 @@ export const fontSize = {
       ...PATH_COLUMN,
       render: ({ id }: any) => <Code>theme.fontSize[{id}]</Code>,
     },
-    VALUE_COLUMN,
+    { ...VALUE_COLUMN, size: 'lg' },
     createExampleColumn({ text: 'Example Text', prop: 'fontSize' }),
   ],
 };
@@ -182,9 +187,9 @@ export const space = {
       render: ({ value }: any) => (
         <Box
           display="inline-block"
-          height="1rem"
+          height={value}
           width={value}
-          backgroundColor="blue-300"
+          backgroundColor="navy"
         />
       ),
     },
@@ -206,7 +211,7 @@ export const boxShadow = {
       ...VALUE_COLUMN,
       render: ({ value }: any) => (
         <Box maxWidth="24rem">
-          <Code>{value}</Code>
+          <Code>{value.split('),')}</Code>
         </Box>
       ),
       size: 'fill',
@@ -214,7 +219,7 @@ export const boxShadow = {
     {
       key: 'example',
       name: 'Example',
-      size: 'md',
+      size: 'lg',
       render: ({ value }: any) => (
         <Box
           boxShadow={value}

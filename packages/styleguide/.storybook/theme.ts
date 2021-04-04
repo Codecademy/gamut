@@ -21,6 +21,7 @@ export const theme = create({
   // Text colors
   textColor: gamutTheme.colors.navy,
   textInverseColor: gamutTheme.colors.white,
+  textMutedColor: gamutTheme.colors['gray-800'],
 
   // Toolbar default and active colors
   barTextColor: gamutTheme.colors['gray-600'],
