@@ -1,7 +1,7 @@
 export type TaxonomyStatus =
-  | 'stable'
+  | 'current'
   | 'deprecated'
-  | 'volatile'
+  | 'updating'
   | 'unknown'
   | 'static';
 

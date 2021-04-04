@@ -7,8 +7,8 @@ export const INDEX_KIND = 'About';
 
 const STATUS_ORDER: Record<TaxonomyStatus, number> = {
   static: 0,
-  stable: 1,
-  volatile: 2,
+  current: 1,
+  updating: 2,
   unknown: 3,
   deprecated: 4,
 };
@@ -119,6 +119,7 @@ export const createTaxonomy = (context: DocsContextProps): Taxonomy => {
             title,
             index: path,
             subtitle,
+            status: 'static',
           })
         );
         break;

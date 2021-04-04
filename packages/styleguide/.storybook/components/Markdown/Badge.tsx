@@ -5,12 +5,12 @@ export const badgeVariants = variant({
   prop: 'status',
   variants: {
     static: {
-      backgroundColor: 'pink',
+      backgroundColor: 'gray-200',
     },
-    stable: {
+    current: {
       backgroundColor: 'green',
     },
-    volatile: {
+    updating: {
       backgroundColor: 'blue',
     },
     deprecated: {

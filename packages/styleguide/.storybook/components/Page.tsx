@@ -26,7 +26,7 @@ const MetaContainer = styled(Box)`
 
 export interface GamutParameters extends Parameters {
   subtitle?: string;
-  status?: 'stable' | 'volatile' | 'deprecated' | 'unknown';
+  status?: 'current' | 'updating' | 'deprecated' | 'unknown' | 'static';
   figmaId?: string;
   source?: string;
 }
@@ -36,11 +36,11 @@ const STATUS = {
     children: 'Old Style',
     textColor: 'orange',
   },
-  stable: {
+  current: {
     children: 'Up to date',
     textColor: 'green',
   },
-  volatile: {
+  updating: {
     children: 'Updating',
     textColor: 'blue',
   },
