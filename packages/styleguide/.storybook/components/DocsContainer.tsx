@@ -18,7 +18,7 @@ import { NavigationProvider } from './Navigation/NavigationProvider';
 import React from 'react';
 import { merge } from 'lodash';
 
-const emotionCache = createEmotionCache();
+const emotionCache = createEmotionCache({ speedy: false });
 
 const defaultComponents = {
   ...htmlComponents,
