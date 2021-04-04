@@ -94,7 +94,7 @@ export const Page: React.FC = ({ children }) => {
             gridAutoFlow={['row', , 'column']}
             gridAutoColumns={['minmax(0, 1fr)', , 'minmax(0, max-content)']}
           >
-            {status && (
+            {status && status !== 'static' && (
               <Text fontSize={16} as="strong">
                 Status: <Text {...STATUS[status as keyof typeof STATUS]} />
               </Text>
