@@ -31,6 +31,10 @@ export const parameters = {
       locales: 'en-US',
     },
   },
+  taxonomy: {
+    root: 'gamut',
+    indexPage: 'about',
+  },
   // Addon Options
   docs: {
     theme,

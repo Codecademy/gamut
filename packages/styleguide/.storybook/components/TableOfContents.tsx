@@ -13,8 +13,8 @@ import { Box, Card, Text } from '@codecademy/gamut/src';
 
 export const TableOfContents = () => {
   const { kind } = useContext(DocsContext);
-  const { getTableOfContents }: any = useContext(NavigationContext);
-  const { children } = getTableOfContents(kind);
+  const storyNavigation = useContext(NavigationContext);
+  const { children = [] } = storyNavigation?.getTableOfContents?.(kind!) || {};
   return (
     <Box
       paddingTop={16}
@@ -29,7 +29,7 @@ export const TableOfContents = () => {
       rowGap={32}
     >
       {children.map((link: ContentItem) => (
-        <ToCItem {...link} key={`toc-item-${link.story}`} />
+        <ToCItem {...link} key={`toc-item-${link.kind}-${link.story}`} />
       ))}
     </Box>
   );
@@ -46,7 +46,10 @@ export const BreadCrumbs: React.FC<{ links: ContentLink[] }> = ({ links }) => {
     >
       {links.map(({ title, story, kind }, i) => {
         const current = i === links.length - 1;
-        const key = `breadcrumb-${story}`;
+        const key = `breadcrumb-${kind}-${story}`;
+        if (!story || !kind) {
+          return null;
+        }
         if (current) {
           return <span key={key}>{title}</span>;
         }
@@ -56,7 +59,7 @@ export const BreadCrumbs: React.FC<{ links: ContentLink[] }> = ({ links }) => {
               variant="standard"
               disabled={current}
               kind={kind}
-              story={story}
+              name={story}
             >
               {title}
             </Link>
@@ -83,8 +86,8 @@ export const ToCItem: React.FC<ContentItem> = ({
           <Box
             width="100%"
             position="absolute"
-            backgroundColor="navy"
             top="0"
+            backgroundColor="navy"
             minHeight="1px"
           />
           <Box
@@ -97,23 +100,25 @@ export const ToCItem: React.FC<ContentItem> = ({
             fontSize={14}
             onClick={(e) => e.stopPropagation()}
           >
-            {links.map((link) => (
-              <Link
-                variant="standard"
-                key={`${title}-story-${story}`}
-                kind={link.kind}
-                story={link.story}
-              >
-                {link.title}
-              </Link>
-            ))}
+            {links.map(({ title, kind, story }) => {
+              return (
+                <Link
+                  variant="standard"
+                  key={`${title}-story-${story}`}
+                  kind={kind}
+                  name={story}
+                >
+                  {title}
+                </Link>
+              );
+            })}
           </Box>
         </>
       );
     }
   };
 
-  const subsection = renderSubsection();
+  const subsection = links.length > 1 && renderSubsection();
 
   return (
     <Card
@@ -125,7 +130,7 @@ export const ToCItem: React.FC<ContentItem> = ({
       gridTemplateRows="min-content 4.5rem 3rem"
       position="relative"
     >
-      <SectionLink box kind={kind} story={story}>
+      <SectionLink box kind={kind} name={story}>
         <Box position="relative">
           <Text as="h2" fontSize={22}>
             {title}
@@ -147,7 +152,7 @@ export const ToCItem: React.FC<ContentItem> = ({
         height="3rem"
         width="100%"
       >
-        {renderSubsection()}
+        {subsection}
       </Box>
     </Card>
   );

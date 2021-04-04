@@ -1,17 +1,28 @@
+export type TaxonomyStatus =
+  | 'stable'
+  | 'deprecated'
+  | 'volatile'
+  | 'unknown'
+  | 'static';
+
+export interface Taxonomy {
+  root: Heirarchy;
+  heirarchy: Heirarchy;
+}
+
 export interface Heirarchy {
   title: string;
   index: string;
   subtitle: string;
-  status: string;
+  status: TaxonomyStatus;
   children: Heirarchy;
 }
-
 export interface ContentLink {
   title: string;
   subtitle: string;
   story: string;
   kind: string;
-  status: 'stable' | 'deprecated' | 'volatile' | 'unknown';
+  status: TaxonomyStatus;
 }
 
 export interface ContentItem extends ContentLink {

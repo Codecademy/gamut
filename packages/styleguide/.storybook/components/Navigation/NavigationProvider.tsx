@@ -2,7 +2,7 @@ import { DocsContext } from '@storybook/addon-docs/blocks';
 import { get } from 'lodash';
 import React, { useContext, createContext } from 'react';
 import { ContentItem, ContentLink, Heirarchy, TableOfContents } from './types';
-import { getChildLinks, sanitizeKind, createHeirarchy } from './utils';
+import { getChildLinks, createTaxonomy, getKind } from './utils';
 
 export const NavigationContext = createContext<{
   heirarchy?: Heirarchy;
@@ -12,51 +12,70 @@ export const NavigationContext = createContext<{
 }>({});
 
 export const NavigationProvider: React.FC = ({ children }) => {
-  const { storyStore } = useContext(DocsContext);
-  const heirarchy = createHeirarchy(storyStore);
+  const context = useContext(DocsContext);
+  const {
+    parameters: {
+      taxonomy: { root, indexPage },
+    },
+  } = context;
+  const { root: rootToC, heirarchy } = createTaxonomy(context);
 
   const getTableOfContents = (kind: string): TableOfContents => {
-    if (!kind.includes('/')) {
-      return {
-        ...heirarchy,
-        children: getChildLinks(heirarchy.children!),
-      };
+    const { type, heirarchyOrder = '' } = getKind(kind, {
+      root: root.toLowerCase(),
+      indexPage: indexPage.toLowerCase(),
+    });
+
+    switch (type) {
+      case 'root':
+        return {
+          ...rootToC,
+          children: getChildLinks(heirarchy!),
+        };
+      default:
+        const toc = get(heirarchy, heirarchyOrder, heirarchy);
+        return {
+          ...toc,
+          children: getChildLinks(toc.children),
+        };
     }
-    const parsedKind = sanitizeKind(kind);
-    const toc = get(
-      heirarchy,
-      parsedKind.replace('/', '.children.'),
-      heirarchy
-    );
-    return {
-      ...toc,
-      children: getChildLinks(toc.children),
-    };
   };
 
   const getBreadCrumbs = (kind: string): ContentLink[] => {
-    const parsedKind = sanitizeKind(kind);
-    const path = parsedKind.split('/');
-    const currentPath: string[] = [];
-    const links: any = {};
-    path.forEach((path, i) => {
-      currentPath.push(path);
-      const section = get(heirarchy, currentPath.join('.children.'));
-      links[section.title] = section;
+    const { type, heirarchyOrder = '' } = getKind(kind, {
+      root: root.toLowerCase(),
+      indexPage: indexPage.toLowerCase(),
     });
+    const path = heirarchyOrder.split('.children.');
+    if (type !== 'root' && path.length > 1) {
+      const currentPath: string[] = [];
+      const links: any = {};
 
-    return getChildLinks(links);
-  };
+      if (path.length === 1) {
+        return [];
+      }
 
-  const context = {
-    heirarchy,
-    getTableOfContents,
-    getBreadCrumbs,
-    getChildLinks,
+      path.forEach((path) => {
+        currentPath.push(path);
+
+        const section = get(heirarchy, currentPath.join('.children.'), {});
+        links[section.title] = section;
+      });
+      return getChildLinks(links);
+    }
+
+    return [];
   };
 
   return (
-    <NavigationContext.Provider value={context}>
+    <NavigationContext.Provider
+      value={{
+        heirarchy,
+        getTableOfContents,
+        getBreadCrumbs,
+        getChildLinks,
+      }}
+    >
       {children}
     </NavigationContext.Provider>
   );

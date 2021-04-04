@@ -4,6 +4,9 @@ import { variant, fontSmoothing, themed } from '@codecademy/gamut-styles';
 export const badgeVariants = variant({
   prop: 'status',
   variants: {
+    static: {
+      backgroundColor: 'pink',
+    },
     stable: {
       backgroundColor: 'green',
     },

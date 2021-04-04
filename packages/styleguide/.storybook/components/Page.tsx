@@ -14,9 +14,8 @@ const MetaContainer = styled(Box)`
   display: grid;
   background-color: ${themed('colors.white')};
   padding: ${themed('spacing.16')};
-  grid-auto-flow: column;
-  grid-auto-columns: minmax(0, max-content);
   grid-column-gap: 2rem;
+  grid-row-gap: 0.5rem;
 `;
 
 export interface GamutParameters extends Parameters {
@@ -81,26 +80,36 @@ export const Page: React.FC = ({ children }) => {
         <BreadCrumbs links={breadcrumbs} />
         <Title>{title}</Title>
         {showMeta && (
-          <MetaContainer backgroundColor="paleBlue">
-            <Text fontSize={16} as="strong">
-              Status: <Text {...STATUS[status as keyof typeof STATUS]} />
-            </Text>
-            <Anchor
-              fontSize={16}
-              fontWeight="title"
-              target="_blank"
-              href={npmLink}
-            >
-              NPM @codecademy/{source} {linkIcon}
-            </Anchor>
-            <Anchor
-              fontSize={16}
-              fontWeight="title"
-              target="_blank"
-              href={figmaLink}
-            >
-              Figma Source File {linkIcon}
-            </Anchor>
+          <MetaContainer
+            backgroundColor="paleBlue"
+            gridAutoFlow={['row', , 'column']}
+            gridAutoColumns={['minmax(0, 1fr)', , 'minmax(0, max-content)']}
+          >
+            {status && (
+              <Text fontSize={16} as="strong">
+                Status: <Text {...STATUS[status as keyof typeof STATUS]} />
+              </Text>
+            )}
+            {source && (
+              <Anchor
+                fontSize={16}
+                fontWeight="title"
+                target="_blank"
+                href={npmLink}
+              >
+                @codecademy/{source} {linkIcon}
+              </Anchor>
+            )}
+            {figmaId && (
+              <Anchor
+                fontSize={16}
+                fontWeight="title"
+                target="_blank"
+                href={figmaLink}
+              >
+                Figma Source File {linkIcon}
+              </Anchor>
+            )}
           </MetaContainer>
         )}
         <Description>{subtitle}</Description>
