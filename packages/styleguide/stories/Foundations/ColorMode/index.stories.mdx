@@ -29,17 +29,17 @@ Gamut components are built using these aliases instead of referring to specific 
 - Colors usage more meaningful when reading through code as aliases hint to usage.
 - Dead simple configuration.
 
-#### Light Mode
+### Light Mode
 
 <Story id="foundations-theme--light" />
 
-#### Dark Mode
+### Dark Mode
 
 <Story id="foundations-theme--dark" />
 
-### Example
+## `<ColorMode />`
 
-Here's an example using `<Anchor />` and `<Text />` components in context. By toggling dark mode you can see all the colors map to a new color that is accessible for the mode by default.
+Here's an example using components in context. By toggling dark mode you can see all the colors map to a new color that is accessible for the mode by default.
 
 <ColorModeExample />
 
@@ -53,7 +53,7 @@ const Page = ({ children }) => (
 );
 ```
 
-## Custom Background Colors
+## `<Background />`
 
 There are many cases where you may need a specific background color for a section of a page, like a card or a landing page. Instead of having to guess the right mode for the background, we've added a `<Background />` component to detect if contrast of the background and current mode's text color meet an accessible standard. If not, we will automatically change the mode to an accessible one, allowing you to be sure that all components inside your background will meet contrast requirements and designs without any configuration!
 
