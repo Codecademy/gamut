@@ -3,6 +3,7 @@ import { variance } from '@codecademy/variance';
 import * as PROPERTIES from './config';
 
 /**
+ * TODO: Export these
  * These are not exported yet, but will be used when gamut-system is deprecated
  */
 
@@ -19,7 +20,4 @@ export const borderProps = variance.create(PROPERTIES.border);
 
 export const css = variance.createCss(PROPERTIES.all);
 
-/**
- * TODO: Rename variant when we remove gamut-system version
- */
-export const varia = variance.createVariant(PROPERTIES.all);
+export const variant = variance.createVariant(PROPERTIES.all);
