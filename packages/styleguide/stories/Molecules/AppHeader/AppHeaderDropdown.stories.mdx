@@ -1,8 +1,8 @@
 import { Box } from '@codecademy/gamut';
 import { AppHeaderDropdown } from '@codecademy/gamut-labs/src';
 import title from '@codecademy/macros/lib/title.macro';
-import { Canvas, Meta, Story } from '@storybook/addon-docs/dist/blocks';
-import LinkTo from '@storybook/addon-links/dist/react/components/link';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import LinkTo from '@storybook/addon-links/react';
 
 import { PropsTable } from '~styleguide/blocks';
 
@@ -13,7 +13,7 @@ import { MOCK_PROFILE_DROPDOWN } from './MockAppHeaderElements';
   component={AppHeaderDropdown}
   parameters={{
     layout: 'padded',
-    status: 'volatile',
+    status: 'updating',
     source: 'gamut-labs',
     subtitle:
       'An AppHeader subcomponent, used for basic header dropdowns and the profile dropdown.',
