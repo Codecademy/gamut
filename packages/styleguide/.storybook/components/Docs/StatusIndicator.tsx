@@ -22,7 +22,7 @@ export const badgeVariants = variant({
   },
 });
 
-export const StatusIndicator = styled.div(badgeVariants);
+export const StatusIndicator = styled.span(badgeVariants);
 
 export const StatusTab = styled.div<Parameters<typeof badgeVariants>[0]>`
   position: absolute;

@@ -63,10 +63,6 @@ export const parameters = {
       responsive: {
         name: 'Responsive',
         type: 'desktop',
-        styles: {
-          width: '100%',
-          height: '100%',
-        },
       },
       xs: {
         name: `XS - ${breakpoints.xs}`,

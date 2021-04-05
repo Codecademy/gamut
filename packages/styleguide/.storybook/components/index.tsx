@@ -7,6 +7,6 @@ export * from './DataTable';
 export * from './Markdown/MarkdownElements';
 export * from './Scales/ColorScale';
 export * from './Docs/DocsPage';
+export * from './Docs/DocsContainer';
 export * from './Navigation';
 export * from './utils';
-export * from './Docs/DocsContainer';

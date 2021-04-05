@@ -17,7 +17,7 @@ import { OpenIcon } from '@codecademy/gamut-icons';
 import { themed } from '@codecademy/gamut-styles';
 import { StatusIndicator } from './StatusIndicator';
 
-const MetaContainer = styled(Box)`
+export const MetaContainer = styled(Box)`
   display: grid;
   background-color: ${themed('colors.white')};
   padding: ${themed('spacing.16')};
@@ -35,19 +35,19 @@ export interface GamutParameters extends Parameters {
 const STATUS = {
   deprecated: {
     children: 'Old Style',
-    variant: 'deprecated',
+    status: 'deprecated',
   },
   current: {
     children: 'Up to date',
-    variant: 'current',
+    status: 'current',
   },
   updating: {
     children: 'Updating',
-    variant: 'updating',
+    status: 'updating',
   },
   unknown: {
     children: 'Backlog',
-    variant: 'unknown',
+    status: 'unknown',
   },
 } as const;
 
