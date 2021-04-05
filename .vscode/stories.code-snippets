@@ -4,7 +4,7 @@
     "body": [
       "import { $1 } from '@codecademy/$2';",
       "import title from '@codecademy/macros/lib/title.macro';",
-      "import { Canvas, Meta, Story } from '@storybook/addon-docs/dist/blocks';",
+      "import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';",
       "",
       "import { PropsTable } from '~styleguide/blocks';",
       "",
@@ -34,7 +34,7 @@
     "prefix": "toc-story",
     "body": [
       "import title from '@codecademy/macros/lib/title.macro';",
-      "import { Meta } from '@storybook/addon-docs/dist/blocks';",
+      "import { Meta } from '@storybook/addon-docs/blocks';",
       "",
       "import { TableOfContents } from '~styleguide/blocks';",
       "",

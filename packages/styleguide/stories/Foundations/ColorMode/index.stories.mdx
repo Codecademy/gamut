@@ -1,12 +1,12 @@
 import title from '@codecademy/macros/lib/title.macro';
-import { Meta } from '@storybook/addon-docs/dist/blocks';
+import { Meta, Story } from '@storybook/addon-docs/blocks';
 
 import { BackgroundExample, ColorModeExample } from './examples';
 
 <Meta
   title={title}
   parameters={{
-    status: 'stable',
+    status: 'updating',
     description: 'Semantic color palette configuration',
   }}
 />
@@ -28,6 +28,14 @@ Gamut components are built using these aliases instead of referring to specific 
 - Consistent color scheme and accessibility between contexts.
 - Colors usage more meaningful when reading through code as aliases hint to usage.
 - Dead simple configuration.
+
+#### Light Mode
+
+<Story id="foundations-theme--light" />
+
+#### Dark Mode
+
+<Story id="foundations-theme--dark" />
 
 ### Example
 

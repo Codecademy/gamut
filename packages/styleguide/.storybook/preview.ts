@@ -1,7 +1,7 @@
 import 'focus-visible/dist/focus-visible.min.js';
 
-import { withContext, withEmotion } from './decorators/theme';
-import { Page } from './components';
+import { withEmotion } from './decorators/theme';
+import { DocsPage, DocsContainer } from './components';
 import { theme as gamutTheme } from '@codecademy/gamut-styles/src';
 import { theme } from './theme';
 
@@ -25,7 +25,9 @@ export const parameters = {
           'Legacy',
         ],
         'Typography',
+        ['About', 'Text', 'Anchor'],
         'Layouts',
+        ['About', 'Box', 'LayoutGrid', 'ContentContainer'],
         'Atoms',
         'Molecules',
         'Organisms',
@@ -38,16 +40,21 @@ export const parameters = {
       locales: 'en-US',
     },
   },
+  taxonomy: {
+    root: 'gamut',
+    indexPage: 'about',
+  },
   // Addon Options
   docs: {
     theme,
+    container: DocsContainer,
     components: {
-      wrapper: Page,
+      wrapper: DocsPage,
     },
   },
   backgrounds: {
     grid: {
-      cellSize: 8,
+      cellSize: 16,
       opacity: 0.5,
       cellAmount: 5,
     },
@@ -112,16 +119,4 @@ export const parameters = {
   layout: 'fullscreen',
 };
 
-export const globalTypes = {
-  colorModes: {
-    name: 'Color Modes',
-    description: 'Global theme for components',
-    defaultValue: 'light',
-    toolbar: {
-      icon: 'circlehollow',
-      items: ['light', 'dark'],
-    },
-  },
-};
-
-export const decorators = [withContext, withEmotion];
+export const decorators = [withEmotion];

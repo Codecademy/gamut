@@ -1,18 +1,24 @@
 /* eslint-disable local-rules/gamut-import-paths */
-import { Box } from '@codecademy/gamut/src';
-import { Text } from '@codecademy/gamut-labs/src';
+import { Box, FlexBox, Text, Toggle } from '@codecademy/gamut/src';
 import { Background, ColorMode } from '@codecademy/gamut-styles/src';
-import { BooleanControl } from '@storybook/components';
 import React, { ComponentProps, useState } from 'react';
 
 export const ColorModeExample = () => {
   const [isDark, setIsDark] = useState(false);
   return (
     <Box marginY={16} marginBottom={32}>
-      <Box fontWeight="title" marginBottom={8}>
-        Use Dark Mode{' '}
-        <BooleanControl name="color-mode" value={isDark} onChange={setIsDark} />
-      </Box>
+      <FlexBox fontWeight="title" marginBottom={8} alignItems="center">
+        <Text marginRight={8} as="strong">
+          Use Dark Mode
+        </Text>
+        <Toggle
+          label="color-mode"
+          size="small"
+          variant="hyper"
+          checked={isDark}
+          onChange={() => setIsDark(!isDark)}
+        />
+      </FlexBox>
       <ColorMode mode={isDark ? 'dark' : 'light'}>
         <Box
           backgroundColor="background"
@@ -21,7 +27,7 @@ export const ColorModeExample = () => {
           borderStyle="solid"
           borderWidth="1px"
         >
-          <Text as="h1" fontSize={26} fontWeight="title" marginBottom={16}>
+          <Text as="h5" fontSize={26} fontWeight="title" marginBottom={16}>
             {isDark ? 'Dark' : 'Light'} Mode
           </Text>
           <Text as="p" marginBottom={16}>
@@ -43,7 +49,7 @@ export const BackgroundExample: React.FC<ComponentProps<typeof Background>> = ({
   return (
     <Background {...rest}>
       <Box padding={24}>
-        <Text fontSize={26} fontWeight="title" marginBottom={16}>
+        <Text as="p" fontSize={26} fontWeight="title" marginBottom={16}>
           {rest.initialBackground}
         </Text>
         <Text as="p" marginBottom={16}>
