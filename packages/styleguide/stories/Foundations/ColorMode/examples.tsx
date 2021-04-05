@@ -1,5 +1,5 @@
 /* eslint-disable local-rules/gamut-import-paths */
-import { Anchor, Box } from '@codecademy/gamut/src';
+import { Box } from '@codecademy/gamut/src';
 import { Text } from '@codecademy/gamut-labs/src';
 import { Background, ColorMode } from '@codecademy/gamut-styles/src';
 import { BooleanControl } from '@storybook/components';
@@ -25,11 +25,10 @@ export const ColorModeExample = () => {
             {isDark ? 'Dark' : 'Light'} Mode
           </Text>
           <Text as="p" marginBottom={16}>
-            Lorem ipsum dolor sit amet,{' '}
-            <Anchor>consectetur adipiscing elit</Anchor>, sed do eiusmod tempor
-            incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-            veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-            ea commodo consequat.
+            Lorem ipsum dolor sit amet, sed do eiusmod tempor incididunt ut
+            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+            exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat.
           </Text>
         </Box>
       </ColorMode>
@@ -48,11 +47,9 @@ export const BackgroundExample: React.FC<ComponentProps<typeof Background>> = ({
           {rest.initialBackground}
         </Text>
         <Text as="p" marginBottom={16}>
-          Lorem ipsum dolor sit amet,{' '}
-          <Anchor>consectetur adipiscing elit</Anchor>, sed do eiusmod tempor
-          incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-          commodo consequat.
+          Lorem ipsum dolor sit amet, sed do eiusmod tempor incididunt ut labore
+          et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+          exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
         </Text>
         {children}
       </Box>
