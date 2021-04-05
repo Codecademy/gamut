@@ -1,5 +1,5 @@
 import title from '@codecademy/macros/lib/title.macro';
-import { Meta } from '@storybook/addon-docs/blocks';
+import { Meta, Story } from '@storybook/addon-docs/blocks';
 
 import { DataTable, LinkTo } from '~styleguide/blocks';
 
@@ -29,19 +29,13 @@ contrast requirements too!
 
 ### Standard Colors
 
-<DataTable {...TABLES.standard} />
-
-### Interactive Colors
-
-For usage on links, buttons, and other interactive elements on dark and light backgrounds
-
-<DataTable {...TABLES.interactive} />
+<Story id="foundations-theme--colors" />
 
 ### Full Color Swatches
 
 Full-color swatches.
 
-<DataTable {...TABLES.swatch} />
+<Story id="foundations-theme--swatches" />
 
 ## Platform Specific Palettes
 

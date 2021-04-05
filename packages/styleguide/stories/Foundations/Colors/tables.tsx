@@ -2,10 +2,7 @@ import {
   brandColors,
   deprecatedColors,
   editorColors,
-  interactiveColors,
   platformColors,
-  swatches,
-  trueColors,
 } from '@codecademy/gamut-styles';
 import { isString } from 'lodash';
 import React from 'react';
@@ -49,9 +46,3 @@ export const brand = createColorTable('brand', brandColors);
 export const editor = createColorTable('color-editor', editorColors);
 export const platform = createColorTable('platform', platformColors);
 export const deprecated = createColorTable('color', deprecatedColors);
-export const interactive = createColorTable(
-  'color-interactive',
-  interactiveColors
-);
-export const standard = createColorTable('color', trueColors);
-export const swatch = createColorTable('color', swatches);
