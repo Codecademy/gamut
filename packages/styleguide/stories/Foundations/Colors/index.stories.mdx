@@ -1,61 +1,89 @@
-import {
-  Column,
-  Container,
-  HeadingDeprecated,
-  LayoutGrid,
-} from '@codecademy/gamut/src';
-import {
-  brandColors,
-  colorNames,
-  colors,
-  deprecatedColors,
-  editorColors,
-  interactiveColors,
-  platformColors,
-  swatches,
-  trueColors,
-} from '@codecademy/gamut-styles';
 import title from '@codecademy/macros/lib/title.macro';
-import { Meta, Story } from '@storybook/addon-docs/blocks';
-import { startCase } from 'lodash';
+import { Meta } from '@storybook/addon-docs/blocks';
 
-import {
-  Link as LinkTo,
-  objectKeys,
-  parseCamelCase,
-  Swatch,
-  SwatchPalette,
-} from '~styleguide/blocks';
+import { DataTable, LinkTo } from '~styleguide/blocks';
 
-import { excludedColors } from './constants';
+import * as TABLES from './tables';
 
 <Meta
   title={title}
-  component="Colors"
   parameters={{
-    status: 'updating',
     subtitle:
       'Past and present color palettes used by both design and engineering.',
+    source: 'gamut-styles',
+    status: 'updating',
   }}
 />
 
 **Deprecation Notice** These variables and access patterns are now deprecated. Please refer to <LinkTo id="foundations-theme--colors">Theme</LinkTo> for the most up to date documentation when using the new visual identity.
 
-## Common Color Sets
+## Usage
 
-Standard color atoms we select from in creating designs. All colors on
+For the core color palette please use the emotion theme to access them.
+
+## Core Color Palette
+
+Standard color tokens we select from in creating designs. All colors on
 Codecademy properties should adhere to these. Remember your accessibility
 contrast requirements too!
 
-### Usage
+### Standard Colors
+
+<DataTable {...TABLES.standard} />
+
+### Interactive Colors
+
+For usage on links, buttons, and other interactive elements on dark and light backgrounds
+
+<DataTable {...TABLES.interactive} />
+
+### Full Color Swatches
+
+Full-color swatches.
+
+<DataTable {...TABLES.swatch} />
+
+## Platform Specific Palettes
+
+Some applications require more colors than we use in other parts of the application in conjunction with our core palette. These colors should only be used in the learning environment.
+
+These colors are not available on the emotion theme **yet**, but will be soon!
+
+### Standard Colors
+
+Our Learning Environment ("LE") is, for now, an exception to the rule
+about containing only brand and grid colors. It uses a selection of muted
+grayish purples and a few mid-range minty greens.
 
 ```tsx
-import { colors } from '@codecademy/gamut-styles';
-
-colors.blue;
+import { platformColors } from '@codecademy/gamut-styles';
 ```
 
-```scss
+<DataTable {...TABLES.platform} />
+
+### Editor Colors
+
+The LE's code editor uses its own colors for text.
+
+```tsx
+import { editorColors } from '@codecademy/gamut-styles';
+```
+
+<DataTable {...TABLES.editor} />
+
+## Legacy Colors
+
+These are older colors that are not in our current visual identity, but may still exist in various parts of our application. They are not available on the `Theme` but can still be accessed in typescript.
+
+If you are using deprecated colors but require them in a typescript file you can import them directly:
+
+```js
+import { brandColors } from '@codecademy/styles';
+```
+
+For maintaining older `scss` code that we have not migrated yet, these color variables require you to add the import somewhere in your import tree. This will be necessary to import for all CSS Module style files.
+
+```css
 @import '@codecademy/gamut-styles/utils';
 
 .standardRed {
@@ -63,223 +91,22 @@ colors.blue;
 }
 ```
 
-### Standard Colors
+### Brand Colors
 
-<Story name="Standard">
-  <LayoutGrid rowGap="md" columnGap="md">
-    {objectKeys(trueColors).map((color) => (
-      <Column key={color} size={{ xs: 6, sm: 3 }}>
-        <Container flex={false}>
-          <HeadingDeprecated as="h2" fontSize="xs">
-            {startCase(color)}
-          </HeadingDeprecated>
-          <Swatch
-            alias={colorNames[color].toUpperCase()}
-            name={`$color-${parseCamelCase(color)}`}
-            hex={colors[color]}
-          />
-        </Container>
-      </Column>
-    ))}
-  </LayoutGrid>
-</Story>
+These are old brand colors and still exist in many places while we try to deprecate them.
 
-<br />
-
-### Interactive Colors
-
-For usage on links, buttons, and other interactive elements on dark and light backgrounds
-
-<Story name="Interactive">
-  <LayoutGrid rowGap="md" columnGap="md">
-    {Object.keys(interactiveColors).map((color) => (
-      <Column key={color} size={{ xs: 6, sm: 3 }}>
-        <Container flex={false}>
-          <HeadingDeprecated as="h2" fontSize="xs">
-            {startCase(color)}
-          </HeadingDeprecated>
-          <Swatch
-            name={`$color-interactive-${parseCamelCase(color)}`}
-            hex={interactiveColors[color]}
-          />
-        </Container>
-      </Column>
-    ))}
-  </LayoutGrid>
-</Story>
-
-<br />
-
-### Base Colors
-
-<Story name="Base">
-  <LayoutGrid rowGap="md" columnGap="md">
-    {['black', 'white'].map((color) => (
-      <Column key={color} size={{ xs: 6, sm: 3 }}>
-        <Container flex={false}>
-          <HeadingDeprecated as="h2" fontSize="xs">
-            {startCase(color)}
-          </HeadingDeprecated>
-          <Swatch
-            name={`$color-${parseCamelCase(color)}`}
-            hex={colors[color]}
-          />
-        </Container>
-      </Column>
-    ))}
-  </LayoutGrid>
-</Story>
-
-<br />
-
-## Swatches
-
-Full-color swatches.
-
-### Usage
-
-```tsx
-import { swatches } from '@codecademy/gamut-styles';
-
-swatches.beige[0];
+```js
+import { brandColors } from '@codecademy/styles';
 ```
 
-```scss
-@import '@codecademy/gamut-styles/utils';
+<DataTable {...TABLES.brand} />
 
-.darkBlue {
-  color: $color-beige;
-}
+### Deprecated Colors
+
+These are the oldest colors we currently use, and are severely out of date.
+
+```js
+import { deprecatedColors } from '@codecademy/styles';
 ```
 
-<Story name="Color Swatches">
-  {(args) => (
-    <LayoutGrid rowGap="md" columnGap="md">
-      {objectKeys(swatches).map((color) => (
-        <Column key={color} size={{ xs: 6, sm: 3 }}>
-          <Container flex={false}>
-            <HeadingDeprecated as="h2" fontSize="xs">
-              {parseCamelCase(`color-${color}`)}
-            </HeadingDeprecated>
-            <SwatchPalette
-              variablePrefix={`color-${color}`}
-              data={swatches[color]}
-            />
-          </Container>
-        </Column>
-      ))}
-    </LayoutGrid>
-  )}
-</Story>
-
-### Legacy Color Swatches
-
-```tsx
-import { deprecatedColors } from '@codecademy/gamut-styles';
-
-deprecatedColors.blue[900];
-```
-
-```scss
-@import '@codecademy/gamut-styles/utils';
-
-.darkBlue {
-  color: $color-blue-900;
-}
-```
-
-<Story name="Rest">
-  {(args) => (
-    <LayoutGrid rowGap="md" columnGap="md">
-      {objectKeys(deprecatedColors)
-        .filter((color) => !excludedColors.includes(color))
-        .map((color) => (
-          <Column key={color} size={{ xs: 6, sm: 3 }}>
-            <Container flex={false}>
-              <HeadingDeprecated as="h2" fontSize="xs">
-                {parseCamelCase(`color-${color}`)}
-              </HeadingDeprecated>
-              <SwatchPalette
-                variablePrefix={`color-${color}`}
-                data={deprecatedColors[color]}
-              />
-            </Container>
-          </Column>
-        ))}
-    </LayoutGrid>
-  )}
-</Story>
-
-## Platform Colors (Learning Environment)
-
-Our Learning Environment ("LE") is, for now, an exception to the rule
-about containing only brand and grid colors. It uses a selection of muted
-grayish purples and a few mid-range minty greens.
-
-<Story name="Platform ">
-  {(args) => (
-    <LayoutGrid rowGap="md" columnGap="md">
-      {objectKeys(platformColors).map((color) => (
-        <Column key={color} size={{ xs: 6, sm: 3 }}>
-          <Container flex={false}>
-            <HeadingDeprecated as="h2" fontSize="xs">
-              Platform {startCase(color)}
-            </HeadingDeprecated>
-            <SwatchPalette
-              variablePrefix={`platform-${color}`}
-              data={platformColors[color]}
-            />
-          </Container>
-        </Column>
-      ))}
-    </LayoutGrid>
-  )}
-</Story>
-
-<br />
-
-## Editor Colors
-
-The LE's code editor uses its own colors for text.
-
-<Story name="Editor">
-  {(args) => (
-    <LayoutGrid rowGap="md" columnGap="md">
-      {objectKeys(editorColors).map((color) => (
-        <Column key={color} size={{ xs: 6, sm: 3 }}>
-          <Container flex={false}>
-            <HeadingDeprecated as="h2" fontSize="xs">
-              Editor {startCase(color)}
-            </HeadingDeprecated>
-            <Swatch
-              name={`color-editor-${parseCamelCase(color)}`}
-              hex={editorColors[color]}
-            />
-          </Container>
-        </Column>
-      ))}
-    </LayoutGrid>
-  )}
-</Story>
-
-<br />
-
-## Brand Colors (deprecated)
-
-<Story name="Brand">
-  <LayoutGrid rowGap="md" columnGap="md">
-    {objectKeys(brandColors).map((color) => (
-      <Column key={color} size={{ xs: 6, sm: 3 }}>
-        <Container flex={false}>
-          <HeadingDeprecated as="h2" fontSize="xs">
-            {startCase(color)}
-          </HeadingDeprecated>
-          <Swatch
-            name={`$brand-${parseCamelCase(color)}`}
-            hex={brandColors[color]}
-          />
-        </Container>
-      </Column>
-    ))}
-  </LayoutGrid>
-</Story>
+<DataTable {...TABLES.deprecated} />
