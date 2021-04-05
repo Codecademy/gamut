@@ -5,7 +5,9 @@ import {
   ProgressBar,
 } from '@codecademy/gamut/src';
 import title from '@codecademy/macros/lib/title.macro';
-import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/blocks';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+
+import { PropsTable } from '~styleguide/blocks';
 
 import { bars } from './constants';
 
@@ -15,7 +17,7 @@ import { bars } from './constants';
   parameters={{
     subtitle: 'A horizontal bar for displaying progress',
     source: 'gamut',
-    status: 'volatile',
+    status: 'updating',
   }}
   args={{ minimumPercent: 5, percent: 5 }}
 />
@@ -46,7 +48,7 @@ percentage label.
   </Story>
 </Canvas>
 
-<Props story="ProgressBar" />
+<PropsTable story="ProgressBar" />
 
 ## Minimum Percent
 

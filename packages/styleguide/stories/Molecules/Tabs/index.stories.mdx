@@ -7,7 +7,9 @@ import {
   Text,
 } from '@codecademy/gamut/src';
 import title from '@codecademy/macros/lib/title.macro';
-import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/blocks';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+
+import { PropsTable } from '~styleguide/blocks';
 
 <Meta
   title={title}
@@ -53,7 +55,7 @@ to show, but only one should be visible at a time.`,
   </Story>
 </Canvas>
 
-<Props story="Tabs" />
+<PropsTable story="Tabs" />
 
 ## Usage
 

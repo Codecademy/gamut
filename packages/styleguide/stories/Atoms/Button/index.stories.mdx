@@ -7,7 +7,9 @@ import {
 } from '@codecademy/gamut/src';
 import { SearchIcon } from '@codecademy/gamut-icons/src';
 import title from '@codecademy/macros/lib/title.macro';
-import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/blocks';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+
+import { PropsTable } from '~styleguide/blocks';
 
 import { ButtonScale } from './examples';
 
@@ -23,6 +25,7 @@ import { ButtonScale } from './examples';
   parameters={{
     subtitle: 'Button atoms for specfic use cases',
     source: 'gamut',
+    status: 'current',
     figmaId: 'N6TfoPI5OA7GanX6Zl8nWj',
   }}
   component={TextButton}
@@ -57,7 +60,7 @@ All but CTA button support a size of either `normal` (default) or `small`.
   <Story name="CTAButton">{(args) => <CTAButton {...args} />}</Story>
 </Canvas>
 
-<Props exclude={['size']} story="CTAButton" />
+<PropsTable exclude={['size']} story="CTAButton" />
 
 ## Fill Button
 
@@ -65,7 +68,7 @@ All but CTA button support a size of either `normal` (default) or `small`.
   <Story name="FillButton">{(args) => <FillButton {...args} />}</Story>
 </Canvas>
 
-<Props story="FillButton" />
+<PropsTable story="FillButton" />
 
 ## Stroke Button
 
@@ -73,7 +76,7 @@ All but CTA button support a size of either `normal` (default) or `small`.
   <Story name="StrokeButton">{(args) => <StrokeButton {...args} />}</Story>
 </Canvas>
 
-<Props story="StrokeButton" />
+<PropsTable story="StrokeButton" />
 
 ## Text Button
 
@@ -81,7 +84,7 @@ All but CTA button support a size of either `normal` (default) or `small`.
   <Story name="TextButton">{(args) => <TextButton {...args} />}</Story>
 </Canvas>
 
-<Props story="TextButton" />
+<PropsTable story="TextButton" />
 
 ## Icon Button
 
@@ -91,7 +94,7 @@ All but CTA button support a size of either `normal` (default) or `small`.
   </Story>
 </Canvas>
 
-<Props story="IconButton" />
+<PropsTable story="IconButton" />
 
 ## Button Variants
 

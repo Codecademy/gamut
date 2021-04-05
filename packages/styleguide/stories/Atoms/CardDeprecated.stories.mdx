@@ -1,6 +1,8 @@
 import { CardBody, CardFooter, CardShell, Text } from '@codecademy/gamut/src';
 import title from '@codecademy/macros/lib/title.macro';
-import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/blocks';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+
+import { PropsTable } from '~styleguide/blocks';
 
 <Meta
   title={title}
@@ -30,4 +32,4 @@ import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/blocks';
   </Story>
 </Canvas>
 
-<Props story="Card" />
+<PropsTable story="Card" />
