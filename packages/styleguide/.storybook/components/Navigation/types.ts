@@ -28,6 +28,6 @@ export interface ContentItem extends ContentLink {
   links: ContentLink[];
 }
 
-export interface TableOfContents extends Omit<Heirarchy, 'children'> {
-  children: ContentLink[];
+export interface TableOfContentsShape extends Omit<Heirarchy, 'children'> {
+  children: ContentItem[];
 }

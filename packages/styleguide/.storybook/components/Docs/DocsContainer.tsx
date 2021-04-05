@@ -14,7 +14,7 @@ import {
   createEmotionCache,
   GamutProvider,
 } from '@codecademy/gamut-styles/src';
-import { NavigationProvider } from './Navigation/NavigationProvider';
+import { NavigationProvider } from '../Navigation/NavigationProvider';
 import React from 'react';
 import { merge } from 'lodash';
 

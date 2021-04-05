@@ -1,7 +1,7 @@
 import 'focus-visible/dist/focus-visible.min.js';
 
 import { withEmotion } from './decorators/theme';
-import { Page, DocsContainer } from './components';
+import { DocsPage, DocsContainer } from './components';
 import { theme as gamutTheme } from '@codecademy/gamut-styles/src';
 import { theme } from './theme';
 
@@ -42,12 +42,12 @@ export const parameters = {
     theme,
     container: DocsContainer,
     components: {
-      wrapper: Page,
+      wrapper: DocsPage,
     },
   },
   backgrounds: {
     grid: {
-      cellSize: 20,
+      cellSize: 16,
       opacity: 0.5,
       cellAmount: 5,
     },
@@ -63,6 +63,10 @@ export const parameters = {
       responsive: {
         name: 'Responsive',
         type: 'desktop',
+        styles: {
+          width: '100%',
+          height: '100%',
+        },
       },
       xs: {
         name: `XS - ${breakpoints.xs}`,

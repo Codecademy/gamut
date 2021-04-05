@@ -1,12 +1,17 @@
 import { DocsContext } from '@storybook/addon-docs/blocks';
 import { get } from 'lodash';
 import React, { useContext, createContext, useMemo } from 'react';
-import { ContentItem, ContentLink, Heirarchy, TableOfContents } from './types';
+import {
+  ContentItem,
+  ContentLink,
+  Heirarchy,
+  TableOfContentsShape,
+} from './types';
 import { getChildLinks, createTaxonomy, getKind } from './utils';
 
 export type NavigationContextShape = {
   heirarchy: Heirarchy;
-  getTableOfContents: (kind: string) => TableOfContents;
+  getTableOfContents: (kind: string) => TableOfContentsShape;
   getBreadCrumbs: (kind: string) => ContentLink[];
   getChildLinks: (kind: Heirarchy) => ContentItem[];
 };
@@ -24,7 +29,7 @@ export const NavigationProvider: React.FC = ({ children }) => {
   } = context;
   const { root: rootToC, heirarchy } = createTaxonomy(context);
 
-  const getTableOfContents = (kind: string): TableOfContents => {
+  const getTableOfContents = (kind: string): TableOfContentsShape => {
     const { type, heirarchyOrder = '' } = getKind(kind, {
       root: root.toLowerCase(),
       indexPage: indexPage.toLowerCase(),

@@ -3,7 +3,7 @@ import { DocsContext, Title } from '@storybook/addon-docs/blocks';
 
 import styled from '@emotion/styled';
 import { Parameters } from '@storybook/addons';
-import { useNavigation } from './Navigation/NavigationProvider';
+import { useNavigation } from '../Navigation/NavigationProvider';
 
 import {
   Anchor,
@@ -12,9 +12,10 @@ import {
   Markdown,
   Text,
 } from '@codecademy/gamut/src';
-import { BreadCrumbs } from './TableOfContents';
+import { BreadCrumbs } from '../Navigation/BreadCrumbs';
 import { OpenIcon } from '@codecademy/gamut-icons';
 import { themed } from '@codecademy/gamut-styles';
+import { StatusIndicator } from './StatusIndicator';
 
 const MetaContainer = styled(Box)`
   display: grid;
@@ -34,23 +35,23 @@ export interface GamutParameters extends Parameters {
 const STATUS = {
   deprecated: {
     children: 'Old Style',
-    textColor: 'orange',
+    variant: 'deprecated',
   },
   current: {
     children: 'Up to date',
-    textColor: 'green',
+    variant: 'current',
   },
   updating: {
     children: 'Updating',
-    textColor: 'blue',
+    variant: 'updating',
   },
   unknown: {
     children: 'Backlog',
-    textColor: 'gray-500',
+    variant: 'unknown',
   },
 } as const;
 
-export const Page: React.FC = ({ children }) => {
+export const DocsPage: React.FC = ({ children }) => {
   const { kind, storyStore } = useContext(DocsContext);
   const {
     toc: { title, subtitle, status },
@@ -94,7 +95,8 @@ export const Page: React.FC = ({ children }) => {
           >
             {status && status !== 'static' && (
               <Text fontSize={16} as="strong">
-                Status: <Text {...STATUS[status as keyof typeof STATUS]} />
+                Status:{' '}
+                <StatusIndicator {...STATUS[status as keyof typeof STATUS]} />
               </Text>
             )}
             {source && (

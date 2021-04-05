@@ -13,7 +13,7 @@
     "../../typings/*.d.ts",
     "./.storybook/**/*.ts",
     "./.storybook/**/*.tsx",
-    "./stories.**/*.tsx",
-    "./stories.**/*.ts"
+    "./stories/**/*.tsx",
+    "./stories/**/*.ts"
   ]
 }

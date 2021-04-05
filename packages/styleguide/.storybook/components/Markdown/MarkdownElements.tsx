@@ -1,5 +1,4 @@
 import { themed } from '@codecademy/gamut-styles/src';
-import { badgeVariants } from './Badge';
 import { Anchor } from '@codecademy/gamut/src';
 import styled from '@emotion/styled';
 import React, { ComponentProps } from 'react';
@@ -9,16 +8,6 @@ export const Reset = styled.div`
   *:first-of-type {
     margin-top: 0;
   }
-`;
-
-export const SectionStatus = styled.div<Parameters<typeof badgeVariants>[0]>`
-  position: absolute;
-  left: calc(100% + 1rem);
-  top: 0;
-  height: 100%;
-  width: 0.5rem;
-  border-radius: 0.25rem 0 0 0.25rem;
-  ${badgeVariants}
 `;
 
 const AreaLink = styled.a`

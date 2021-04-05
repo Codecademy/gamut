@@ -1,4 +1,4 @@
-export * from './Markdown/Badge';
+export * from './Docs/StatusIndicator';
 export * from './Scales/Swatches';
 export * from './Scales/TextExample';
 export * from './Scales/Scale';
@@ -6,7 +6,7 @@ export * from './PropsTable';
 export * from './DataTable';
 export * from './Markdown/MarkdownElements';
 export * from './Scales/ColorScale';
-export * from './Page';
-export * from './TableOfContents';
+export * from './Docs/DocsPage';
+export * from './Navigation';
 export * from './utils';
-export * from './DocsContainer';
+export * from './Docs/DocsContainer';

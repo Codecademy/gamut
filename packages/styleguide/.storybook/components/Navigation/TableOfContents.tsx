@@ -1,10 +1,11 @@
 import React from 'react';
 
 import { Description } from '@storybook/addon-docs/blocks';
-import { Link, Reset, SectionStatus } from './Markdown/MarkdownElements';
-import { ContentItem, useNavigation } from './Navigation';
+import { Link, Reset } from '../Markdown/MarkdownElements';
+import { ContentItem, useNavigation } from '.';
 import { Box, Card, FlexBox, GridBox, Text } from '@codecademy/gamut/src';
 import { pxRem } from '@codecademy/gamut-styles/src';
+import { StatusTab } from '../Docs/StatusIndicator';
 
 export const TableOfContents = () => {
   const { toc } = useNavigation();
@@ -24,47 +25,6 @@ export const TableOfContents = () => {
       {toc.children.map((link: ContentItem) => (
         <Section {...link} key={`toc-item-${link.id}`} />
       ))}
-    </Box>
-  );
-};
-
-export const BreadCrumbs: React.FC = () => {
-  const { breadcrumbs } = useNavigation();
-
-  return (
-    <Box
-      display="flex"
-      columnGap={8}
-      marginBottom={8}
-      fontWeight="title"
-      fontSize={16}
-    >
-      {breadcrumbs.map(({ title, id }, i) => {
-        const key = `breadcrumb-${title}-${id}`;
-        const current = i === breadcrumbs.length - 1;
-
-        if (current) {
-          return (
-            <Text as="strong" key={key}>
-              {title}
-            </Text>
-          );
-        }
-
-        return (
-          <React.Fragment key={key}>
-            <Link
-              fontWeight="title"
-              variant="standard"
-              disabled={current}
-              id={id}
-            >
-              {title}
-            </Link>
-            <Text as="strong">&gt;</Text>
-          </React.Fragment>
-        );
-      })}
     </Box>
   );
 };
@@ -110,7 +70,7 @@ export const Section: React.FC<ContentItem> = ({
           <Box position="relative">
             <Text as="h2" fontSize={22}>
               {title}
-              {status && <SectionStatus status={status} />}
+              {status && <StatusTab status={status} />}
             </Text>
           </Box>
         </Link>
