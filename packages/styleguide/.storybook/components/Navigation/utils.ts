@@ -1,7 +1,7 @@
 import { DocsContextProps } from '@storybook/addon-docs/blocks';
 import { set, head, keyBy, isEmpty, tail, update } from 'lodash';
 import { merge } from 'lodash/fp';
-import { ContentItem, Heirarchy, Taxonomy, TaxonomyStatus } from './types';
+import { ContentItem, Hierarchy, Taxonomy, TaxonomyStatus } from './types';
 
 export const INDEX_KIND = 'About';
 
@@ -13,7 +13,7 @@ const STATUS_ORDER: Record<TaxonomyStatus, number> = {
   deprecated: 4,
 };
 
-export function getChildLinks(children: Heirarchy): ContentItem[] {
+export function getChildLinks(children: Hierarchy): ContentItem[] {
   return Object.entries(children ?? {})
     .map(([_, { children, ...rest }]) => ({
       ...rest,
@@ -44,7 +44,7 @@ export const getKind = (
       type: 'index',
       id: indexPath,
       title: tail(kind.split('/').reverse())[0],
-      heirarchyOrder: heirarchyPath.replaceAll('-', '.children.'),
+      hierarchyOrder: heirarchyPath.replaceAll('-', '.children.'),
     };
   }
 
@@ -52,7 +52,7 @@ export const getKind = (
     type: 'element',
     id: path.replace(/\s/g, '-'),
     title: head(kind.split('/').reverse()),
-    heirarchyOrder: path.replaceAll('-', '.children.'),
+    hierarchyOrder: path.replaceAll('-', '.children.'),
   };
 };
 
@@ -82,7 +82,7 @@ export const createTaxonomy = (context: DocsContextProps): Taxonomy => {
   const stories = storyStore._stories;
   const allKinds = Object.keys(kinds);
   const taxonomy = {} as Taxonomy;
-  const heirarchy = {} as Heirarchy;
+  const hierarchy = {} as Hierarchy;
 
   const config = {
     root: root.toLowerCase() as string,
@@ -96,7 +96,7 @@ export const createTaxonomy = (context: DocsContextProps): Taxonomy => {
       component,
       subcomponents = {},
     } = kinds[kind]?.parameters;
-    const { type, heirarchyOrder = '', ...rest } = getKind(kind, config);
+    const { type, hierarchyOrder = '', ...rest } = getKind(kind, config);
 
     switch (type) {
       case 'root':
@@ -108,8 +108,8 @@ export const createTaxonomy = (context: DocsContextProps): Taxonomy => {
         break;
       case 'index':
         update(
-          heirarchy,
-          heirarchyOrder,
+          hierarchy,
+          hierarchyOrder,
           merge({
             ...rest,
             subtitle,
@@ -138,8 +138,8 @@ export const createTaxonomy = (context: DocsContextProps): Taxonomy => {
         }
 
         update(
-          heirarchy,
-          heirarchyOrder,
+          hierarchy,
+          hierarchyOrder,
           merge({
             ...rest,
             id: firstIndex.id,
@@ -151,7 +151,7 @@ export const createTaxonomy = (context: DocsContextProps): Taxonomy => {
     }
   });
 
-  set(taxonomy, 'heirarchy', heirarchy);
+  set(taxonomy, 'hierarchy', hierarchy);
 
   return taxonomy;
 };

@@ -6,16 +6,16 @@ export type TaxonomyStatus =
   | 'static';
 
 export interface Taxonomy {
-  root: Heirarchy;
-  heirarchy: Heirarchy;
+  root: Hierarchy;
+  hierarchy: Hierarchy;
 }
 
-export interface Heirarchy {
+export interface Hierarchy {
   title: string;
   id: string;
   subtitle: string;
   status: TaxonomyStatus;
-  children: Heirarchy;
+  children: Hierarchy;
 }
 export interface ContentLink {
   title: string;
@@ -28,6 +28,6 @@ export interface ContentItem extends ContentLink {
   links: ContentLink[];
 }
 
-export interface TableOfContentsShape extends Omit<Heirarchy, 'children'> {
+export interface TableOfContentsShape extends Omit<Hierarchy, 'children'> {
   children: ContentItem[];
 }

@@ -4,16 +4,16 @@ import React, { useContext, createContext, useMemo } from 'react';
 import {
   ContentItem,
   ContentLink,
-  Heirarchy,
+  Hierarchy,
   TableOfContentsShape,
 } from './types';
 import { getChildLinks, createTaxonomy, getKind } from './utils';
 
 export type NavigationContextShape = {
-  heirarchy: Heirarchy;
+  hierarchy: Hierarchy;
   getTableOfContents: (kind: string) => TableOfContentsShape;
   getBreadCrumbs: (kind: string) => ContentLink[];
-  getChildLinks: (kind: Heirarchy) => ContentItem[];
+  getChildLinks: (kind: Hierarchy) => ContentItem[];
 };
 
 export const NavigationContext = createContext<NavigationContextShape>(
@@ -27,10 +27,10 @@ export const NavigationProvider: React.FC = ({ children }) => {
       taxonomy: { root, indexPage },
     },
   } = context;
-  const { root: rootToC, heirarchy } = createTaxonomy(context);
+  const { root: rootToC, hierarchy } = createTaxonomy(context);
 
   const getTableOfContents = (kind: string): TableOfContentsShape => {
-    const { type, heirarchyOrder = '' } = getKind(kind, {
+    const { type, hierarchyOrder = '' } = getKind(kind, {
       root: root.toLowerCase(),
       indexPage: indexPage.toLowerCase(),
     });
@@ -39,10 +39,10 @@ export const NavigationProvider: React.FC = ({ children }) => {
       case 'root':
         return {
           ...rootToC,
-          children: getChildLinks(heirarchy!),
+          children: getChildLinks(hierarchy!),
         };
       default:
-        const toc = get(heirarchy, heirarchyOrder, heirarchy);
+        const toc = get(hierarchy, hierarchyOrder, hierarchy);
         return {
           ...toc,
           children: getChildLinks(toc.children),
@@ -51,11 +51,11 @@ export const NavigationProvider: React.FC = ({ children }) => {
   };
 
   const getBreadCrumbs = (kind: string): ContentLink[] => {
-    const { type, heirarchyOrder = '' } = getKind(kind, {
+    const { type, hierarchyOrder = '' } = getKind(kind, {
       root: root.toLowerCase(),
       indexPage: indexPage.toLowerCase(),
     });
-    const path = heirarchyOrder.split('.children.');
+    const path = hierarchyOrder.split('.children.');
     if (type !== 'root' && path.length > 1) {
       const currentPath: string[] = [];
       const links: any = {};
@@ -67,7 +67,7 @@ export const NavigationProvider: React.FC = ({ children }) => {
       path.forEach((path) => {
         currentPath.push(path);
 
-        const section = get(heirarchy, currentPath.join('.children.'), {});
+        const section = get(hierarchy, currentPath.join('.children.'), {});
         links[section.title] = section;
       });
       return getChildLinks(links);
@@ -79,7 +79,7 @@ export const NavigationProvider: React.FC = ({ children }) => {
   return (
     <NavigationContext.Provider
       value={{
-        heirarchy,
+        hierarchy,
         getTableOfContents,
         getBreadCrumbs,
         getChildLinks,
