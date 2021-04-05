@@ -70,7 +70,7 @@ export const NavigationProvider: React.FC = ({ children }) => {
         const section = get(hierarchy, currentPath.join('.children.'), {});
         links[section.title] = section;
       });
-      return getChildLinks(links);
+      return [rootToC, ...getChildLinks(links)];
     }
 
     return [];
