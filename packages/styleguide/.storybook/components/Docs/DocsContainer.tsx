@@ -6,7 +6,6 @@ import {
   SourceContainer,
   DocsContextProps,
   CodeOrSourceMdx,
-  AnchorMdx,
   HeadersMdx,
 } from '@storybook/addon-docs/blocks';
 import { AssetProvider } from '@codecademy/gamut-styles/src/AssetProvider';
@@ -17,13 +16,14 @@ import {
 import { NavigationProvider } from '../Navigation/NavigationProvider';
 import React from 'react';
 import { merge } from 'lodash';
+import { Link } from '../Markdown/Elements';
 
 const emotionCache = createEmotionCache({ speedy: false });
 
 const defaultComponents = {
   ...htmlComponents,
   code: CodeOrSourceMdx,
-  a: AnchorMdx,
+  a: Link,
   ...HeadersMdx,
 };
 

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Link } from '../Markdown/MarkdownElements';
+import { Link } from '../Markdown/Elements';
 import { useNavigation } from '.';
 import { Box, Text } from '@codecademy/gamut/src';
 

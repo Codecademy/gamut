@@ -28,16 +28,20 @@ const AreaLink = styled.a`
   }
 `;
 
-export const Link: React.FC<
-  Omit<ComponentProps<typeof Anchor>, 'variant'> & {
-    id: string;
-    variant?: ComponentProps<typeof Anchor>['variant'] | 'area';
+type LinkProps = Omit<ComponentProps<typeof Anchor>, 'variant'> & {
+  id: string;
+  variant?: ComponentProps<typeof Anchor>['variant'] | 'area';
+};
+
+export const Link: React.FC<LinkProps> = ({ ref, id, variant, ...props }) => {
+  const computedProps = {} as Pick<LinkProps, 'onClick'>;
+  if (id) {
+    computedProps.onClick = linkTo(id);
   }
-> = ({ ref, href, id, variant, ...props }) => {
   if (variant === 'area') {
-    return <AreaLink {...props} onClick={linkTo(id)} />;
+    return <AreaLink {...props} {...computedProps} />;
   }
-  return <Anchor {...props} variant={variant} onClick={linkTo(id)} />;
+  return <Anchor {...props} {...computedProps} variant={variant} />;
 };
 
 export const Code = styled.code`

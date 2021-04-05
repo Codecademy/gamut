@@ -4,7 +4,7 @@ export * from './Scales/TextExample';
 export * from './Scales/Scale';
 export * from './PropsTable';
 export * from './DataTable';
-export * from './Markdown/MarkdownElements';
+export * from './Markdown/Elements';
 export * from './Scales/ColorScale';
 export * from './Docs/DocsPage';
 export * from './Docs/DocsContainer';

@@ -10,7 +10,7 @@ import {
 } from './Elements';
 import { useSystemProps } from './useSystemProps';
 import { Box, GridBox, FlexBox, Text, Toggle } from '@codecademy/gamut/src';
-import { Link } from '../Markdown/MarkdownElements';
+import { Link } from '../Markdown/Elements';
 
 type PropTagProps = {
   prop: PropGroups;
@@ -56,9 +56,7 @@ export const PropsTable: React.FC<PropsTableProps> = ({
           <GridBox gridTemplateColumns="minmax(0, 1fr) max-content">
             <Text fontWeight="title" as="p">
               System Props -{' '}
-              <Link kind="Foundations/System/Props" name="page">
-                Learn More
-              </Link>
+              <Link id="foundations-system-props--page">Learn More</Link>
             </Text>
             <FlexBox alignItems="center">
               <ToggleLabel htmlFor="toggle-props">
