@@ -1,6 +1,6 @@
 import { DocsContext } from '@storybook/addon-docs/blocks';
 import { get } from 'lodash';
-import React, { useContext, createContext } from 'react';
+import React, { useContext, createContext, useMemo } from 'react';
 import { ContentItem, ContentLink, Heirarchy, TableOfContents } from './types';
 import { getChildLinks, createTaxonomy, getKind } from './utils';
 
@@ -84,3 +84,15 @@ export const NavigationProvider: React.FC = ({ children }) => {
     </NavigationContext.Provider>
   );
 };
+
+export function useNavigation() {
+  const { kind } = useContext(DocsContext);
+  const { getTableOfContents, getBreadCrumbs } = useContext(NavigationContext);
+  return useMemo(
+    () => ({
+      toc: getTableOfContents(kind!),
+      breadcrumbs: getBreadCrumbs(kind!),
+    }),
+    [kind]
+  );
+}

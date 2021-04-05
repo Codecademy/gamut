@@ -3,7 +3,7 @@ import { DocsContext, Title } from '@storybook/addon-docs/blocks';
 
 import styled from '@emotion/styled';
 import { Parameters } from '@storybook/addons';
-import { NavigationContext } from './Navigation/NavigationProvider';
+import { useNavigation } from './Navigation/NavigationProvider';
 
 import {
   Anchor,
@@ -52,8 +52,9 @@ const STATUS = {
 
 export const Page: React.FC = ({ children }) => {
   const { kind, storyStore } = useContext(DocsContext);
-  const { getTableOfContents } = useContext(NavigationContext);
-  const { title, subtitle, status } = getTableOfContents(kind!);
+  const {
+    toc: { title, subtitle, status },
+  } = useNavigation();
 
   if (!kind) {
     return <>{children}</>;

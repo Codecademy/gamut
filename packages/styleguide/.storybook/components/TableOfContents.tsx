@@ -1,16 +1,13 @@
-import React, { useContext } from 'react';
-import { DocsContext } from '@storybook/addon-docs/blocks';
+import React from 'react';
 
 import { Description } from '@storybook/addon-docs/blocks';
 import { Link, Reset, SectionStatus } from './Markdown/MarkdownElements';
-import { ContentItem, NavigationContext } from './Navigation';
+import { ContentItem, useNavigation } from './Navigation';
 import { Box, Card, FlexBox, GridBox, Text } from '@codecademy/gamut/src';
 import { pxRem } from '@codecademy/gamut-styles/src';
 
 export const TableOfContents = () => {
-  const { kind } = useContext(DocsContext);
-  const storyNavigation = useContext(NavigationContext);
-  const { children = [] } = storyNavigation?.getTableOfContents?.(kind!) || {};
+  const { toc } = useNavigation();
   return (
     <Box
       paddingTop={16}
@@ -24,7 +21,7 @@ export const TableOfContents = () => {
       columnGap={32}
       rowGap={32}
     >
-      {children.map((link: ContentItem) => (
+      {toc.children.map((link: ContentItem) => (
         <Section {...link} key={`toc-item-${link.id}`} />
       ))}
     </Box>
@@ -32,9 +29,7 @@ export const TableOfContents = () => {
 };
 
 export const BreadCrumbs: React.FC = () => {
-  const { kind } = useContext(DocsContext);
-  const { getBreadCrumbs } = useContext(NavigationContext);
-  const links = getBreadCrumbs(kind!) || [];
+  const { breadcrumbs } = useNavigation();
 
   return (
     <Box
@@ -44,14 +39,18 @@ export const BreadCrumbs: React.FC = () => {
       fontWeight="title"
       fontSize={16}
     >
-      {links.map(({ title, id }, i) => {
-        const current = i === links.length - 1;
-        const key = `breadcrumb-${kind}-${id}`;
-        if (!id) return null;
+      {breadcrumbs.map(({ title, id }, i) => {
+        const key = `breadcrumb-${title}-${id}`;
+        const current = i === breadcrumbs.length - 1;
 
         if (current) {
-          return <span key={key}>{title}</span>;
+          return (
+            <Text as="strong" key={key}>
+              {title}
+            </Text>
+          );
         }
+
         return (
           <React.Fragment key={key}>
             <Link
@@ -62,7 +61,7 @@ export const BreadCrumbs: React.FC = () => {
             >
               {title}
             </Link>
-            <span>&gt;</span>
+            <Text as="strong">&gt;</Text>
           </React.Fragment>
         );
       })}
