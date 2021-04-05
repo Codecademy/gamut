@@ -35,7 +35,7 @@ export const getKind = (
       type: 'root',
       id: indexPath,
       title: kind,
-      heirarchyOrder: 'root',
+      hierarchyOrder: 'root',
     };
   }
   if (lowerCaseKind.includes(indexPage)) {
@@ -97,7 +97,7 @@ export const createTaxonomy = (context: DocsContextProps): Taxonomy => {
       component,
       subcomponents = {},
     } = kinds[kind]?.parameters;
-    const { type, hierarchyOrder = '', ...rest } = getKind(kind, config);
+    const { type, hierarchyOrder, ...rest } = getKind(kind, config);
 
     switch (type) {
       case 'root':
