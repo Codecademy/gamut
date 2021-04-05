@@ -94,7 +94,7 @@ export const NotificationItemNew: React.FC<NotificationItemNewProps> = ({
   };
 
   const notificationContent: ReactElement = (
-    <FlexBox zIndex={1} position="relative" backgroundColor="paleBlue">
+    <FlexBox zIndex={1} position="relative">
       {renderIcon()}
       <Box flexBasis={0} flexGrow={1} paddingLeft={12} textColor="navy">
         <Box as="span" fontSize={14} id={notificationItemId}>
