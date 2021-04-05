@@ -100,13 +100,7 @@ export const NotificationItemNew: React.FC<NotificationItemNewProps> = ({
         <Box as="span" fontSize={14} id={notificationItemId}>
           {text}
         </Box>
-        <Box
-          as="span"
-          fontSize={14}
-          color="gray-600"
-          marginLeft={4}
-          aria-hidden="true"
-        >
+        <Box as="span" fontSize={14} color="gray-600" marginLeft={4}>
           {date}
         </Box>
       </Box>
