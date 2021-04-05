@@ -60,16 +60,13 @@ export const NavigationProvider: React.FC = ({ children }) => {
       const currentPath: string[] = [];
       const links: any = {};
 
-      if (path.length === 1) {
-        return [];
-      }
-
       path.forEach((path) => {
         currentPath.push(path);
 
         const section = get(hierarchy, currentPath.join('.children.'), {});
         links[section.title] = section;
       });
+
       return [rootToC, ...getChildLinks(links)];
     }
 

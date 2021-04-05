@@ -84,7 +84,6 @@ export const Section: React.FC<ContentItem> = ({
         borderColorTop="navy"
         paddingX={24}
         paddingY={12}
-        onClick={(e) => e.stopPropagation()}
       >
         <FlexBox
           flexWrap="wrap"
