@@ -1,6 +1,8 @@
 import { Box, SkipToContent, SkipToContentTarget } from '@codecademy/gamut/src';
 import title from '@codecademy/macros/lib/title.macro';
-import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/blocks';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+
+import { PropsTable } from '~styleguide/blocks';
 
 <Meta
   title={title}
@@ -19,6 +21,7 @@ import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/blocks';
     ),
   ]}
 />
+;
 
 A hidden-by-default link that becomes visible when the user <kbd>Tab</kbd>s over it (gives it focus).
 It takes in the ID of the element it will scroll to and focus ([dev.to article explaining why](https://dev.to/robdodson/managing-focus-64l)) on click (via mouse or keyboard).
@@ -36,4 +39,4 @@ To see it, keep tabbing around on this page or visit [the catalog](https://www.c
   </Story>
 </Canvas>
 
-<Props story="SkipToContent" />
+<PropsTable story="SkipToContent" />

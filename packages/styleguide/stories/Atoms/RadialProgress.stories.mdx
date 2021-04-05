@@ -1,6 +1,8 @@
 import { Box, RadialProgress, Video } from '@codecademy/gamut/src';
 import title from '@codecademy/macros/lib/title.macro';
-import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/blocks';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+
+import { PropsTable } from '~styleguide/blocks';
 
 <Meta
   title={title}
@@ -17,6 +19,7 @@ import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/blocks';
     size: 120,
   }}
 />
+;
 
 A circular display of progress meant to convey a
 percentage out of a whole.
@@ -25,7 +28,7 @@ percentage out of a whole.
   <Story name="RadialProgress">{(args) => <RadialProgress {...args} />}</Story>
 </Canvas>
 
-<Props story="RadialProgress" />
+<PropsTable story="RadialProgress" />
 
 ## Children
 

@@ -2,14 +2,10 @@ import React, { useContext } from 'react';
 import { DocsContext } from '@storybook/addon-docs/blocks';
 
 import { Description } from '@storybook/addon-docs/blocks';
-import {
-  Link,
-  Reset,
-  SectionLink,
-  SectionStatus,
-} from './Markdown/MarkdownElements';
-import { ContentItem, ContentLink, NavigationContext } from './Navigation';
+import { Link, Reset, SectionStatus } from './Markdown/MarkdownElements';
+import { ContentItem, NavigationContext } from './Navigation';
 import { Box, Card, FlexBox, GridBox, Text } from '@codecademy/gamut/src';
+import { pxRem } from '@codecademy/gamut-styles/src';
 
 export const TableOfContents = () => {
   const { kind } = useContext(DocsContext);
@@ -29,13 +25,17 @@ export const TableOfContents = () => {
       rowGap={32}
     >
       {children.map((link: ContentItem) => (
-        <Section {...link} key={`toc-item-${link.kind}-${link.story}`} />
+        <Section {...link} key={`toc-item-${link.id}`} />
       ))}
     </Box>
   );
 };
 
-export const BreadCrumbs: React.FC<{ links: ContentLink[] }> = ({ links }) => {
+export const BreadCrumbs: React.FC = () => {
+  const { kind } = useContext(DocsContext);
+  const { getBreadCrumbs } = useContext(NavigationContext);
+  const links = getBreadCrumbs(kind!) || [];
+
   return (
     <Box
       display="flex"
@@ -44,22 +44,21 @@ export const BreadCrumbs: React.FC<{ links: ContentLink[] }> = ({ links }) => {
       fontWeight="title"
       fontSize={16}
     >
-      {links.map(({ title, story, kind }, i) => {
+      {links.map(({ title, id }, i) => {
         const current = i === links.length - 1;
-        const key = `breadcrumb-${kind}-${story}`;
-        if (!story || !kind) {
-          return null;
-        }
+        const key = `breadcrumb-${kind}-${id}`;
+        if (!id) return null;
+
         if (current) {
           return <span key={key}>{title}</span>;
         }
         return (
           <React.Fragment key={key}>
             <Link
+              fontWeight="title"
               variant="standard"
               disabled={current}
-              kind={kind}
-              name={story}
+              id={id}
             >
               {title}
             </Link>
@@ -74,24 +73,24 @@ export const BreadCrumbs: React.FC<{ links: ContentLink[] }> = ({ links }) => {
 export const Section: React.FC<ContentItem> = ({
   title,
   subtitle,
-  story,
-  kind,
+  id,
   status,
   links,
 }) => {
   const renderSubsection = () =>
-    links.map(({ title, kind, story }) => (
+    links.map(({ title, id }) => (
       <Link
         fontSize={14}
         fontWeight="title"
         variant="standard"
-        key={`${title}-story-${story}`}
-        kind={kind}
-        name={story}
+        key={`section_${title}-${id}`}
+        id={id}
       >
         {title}
       </Link>
     ));
+
+  const hasSubsections = links.length > 1;
 
   return (
     <Card
@@ -99,28 +98,29 @@ export const Section: React.FC<ContentItem> = ({
       padding={0}
       rowGap={8}
       display="grid"
+      gridTemplateRows={`max-content ${pxRem(14 * 1.5 + 24)}`}
       position="relative"
     >
       <GridBox
-        gridTemplateRows="min-content 4.5rem"
-        position="relative"
+        gridTemplateRows={`min-content 4.5rem`}
+        position={hasSubsections ? 'relative' : 'initial'}
         rowGap={8}
         padding={24}
       >
-        <SectionLink kind={kind} name={story}>
+        <Link variant="area" id={id}>
           <Box position="relative">
             <Text as="h2" fontSize={22}>
               {title}
               {status && <SectionStatus status={status} />}
             </Text>
           </Box>
-        </SectionLink>
+        </Link>
         <Box overflowY="hidden">
           <Reset>{subtitle && <Description>{subtitle}</Description>}</Reset>
         </Box>
       </GridBox>
       <FlexBox
-        borderStyleTop="solid"
+        borderStyleTop={hasSubsections ? 'solid' : 'none'}
         borderWidthTop="1px"
         borderColorTop="navy"
         paddingX={24}
@@ -130,10 +130,10 @@ export const Section: React.FC<ContentItem> = ({
         <FlexBox
           flexWrap="wrap"
           overflow="hidden"
-          maxHeight={`${14 * 1.5}px`}
+          maxHeight={pxRem(14 * 1.5)}
           columnGap={16}
         >
-          {links.length > 1 && renderSubsection()}
+          {hasSubsections && renderSubsection()}
         </FlexBox>
       </FlexBox>
     </Card>

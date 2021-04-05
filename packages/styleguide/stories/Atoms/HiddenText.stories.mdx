@@ -1,6 +1,8 @@
 import { HiddenText } from '@codecademy/gamut/src';
 import title from '@codecademy/macros/lib/title.macro';
-import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/blocks';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+
+import { PropsTable } from '~styleguide/blocks';
 
 <Meta
   title={title}
@@ -10,6 +12,7 @@ import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/blocks';
     source: 'gamut',
   }}
 />
+;
 
 This is useful for cases where we visually indicate something not easily conveyed through semantic HTML.
 Ideally those cases should be exceedingly rare; unfortunately, some of our older pages aren't set up well for this.
@@ -22,4 +25,4 @@ See https://wdn.unl.edu/page-title-h1-best-practices for more information.
   </Story>
 </Canvas>
 
-<Props story="HiddenText" />
+<PropsTable story="HiddenText" />

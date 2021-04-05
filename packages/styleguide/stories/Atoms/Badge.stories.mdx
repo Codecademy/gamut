@@ -1,6 +1,6 @@
 import { Anchor, Badge } from '@codecademy/gamut/src';
 import title from '@codecademy/macros/lib/title.macro';
-import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/blocks';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 
 <Meta
   title={title}
@@ -18,7 +18,7 @@ import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/blocks';
   <Story name="Badge">{(args) => <Badge {...args} />}</Story>
 </Canvas>
 
-<Props story="Badge" />
+<PropsTable story="Badge" />
 
 Badges are generally used as a standard way to highlight a short piece of text, likely a single word.
 Badges are inline and generally found next to some interface element to be called out.

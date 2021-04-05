@@ -1,6 +1,8 @@
 import { Video } from '@codecademy/gamut/src';
 import title from '@codecademy/macros/lib/title.macro';
-import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/blocks';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+
+import { PropsTable } from '~styleguide/blocks';
 
 <Meta
   title={title}
@@ -19,12 +21,13 @@ given a video URL`,
     },
   }}
 />
+;
 
 <Canvas>
   <Story name="Video">{(args) => <Video {...args} />}</Story>
 </Canvas>
 
-<Props story="Video" />
+<PropsTable story="Video" />
 
 # Video with PlaceholderImage
 

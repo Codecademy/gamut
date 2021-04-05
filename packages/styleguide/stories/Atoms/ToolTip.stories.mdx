@@ -1,7 +1,7 @@
 import { ToolTip } from '@codecademy/gamut/src';
 import { InfoCircleIcon } from '@codecademy/gamut-icons/src';
 import title from '@codecademy/macros/lib/title.macro';
-import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/blocks';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 import { upperFirst } from 'lodash';
 
 import { TooltipArea } from './TooltipArea';
@@ -43,7 +43,7 @@ Great for surfacing additional information that may or may not be relevant _with
   </Story>
 </Canvas>
 
-<Props exclude={['target']} story="ToolTip" />
+<PropsTable exclude={['target']} story="ToolTip" />
 
 ## Position
 

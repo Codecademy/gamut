@@ -1,6 +1,8 @@
 import { PageFeatures } from '@codecademy/gamut-labs/src';
 import title from '@codecademy/macros/lib/title.macro';
-import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/blocks';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+
+import { PropsTable } from '~styleguide/blocks';
 
 <Meta
   title={title}
@@ -53,6 +55,7 @@ import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/blocks';
     status: 'updating',
   }}
 />
+;
 
 ## Featured Info
 
@@ -62,7 +65,7 @@ Display text-only featurettes with no media associated.
   <Story name="Featured Info">{(args) => <PageFeatures {...args} />}</Story>
 </Canvas>
 
-<Props story="Featured Info" />
+<PropsTable story="Featured Info" />
 
 ## Featured Images
 

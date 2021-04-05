@@ -1,7 +1,9 @@
 import { AppBar, AppBarSection } from '@codecademy/gamut/src';
 import { Logo } from '@codecademy/gamut-labs/src';
 import title from '@codecademy/macros/lib/title.macro';
-import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/blocks';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+
+import { PropsTable } from '~styleguide/blocks';
 
 <Meta
   title={title}
@@ -15,6 +17,7 @@ header`,
     source: 'gamut-labs',
   }}
 />
+;
 
 This is an example of an AppBar component that contains one left-oriented
 AppBarSection that holds one AppBar Tab.
@@ -29,7 +32,7 @@ AppBarSection that holds one AppBar Tab.
   </Story>
 </Canvas>
 
-<Props of={AppBar} />
+<PropsTable of={AppBar} />
 
 ## Header
 

@@ -1,6 +1,8 @@
 import { HighlightedText, Text } from '@codecademy/gamut/src';
 import title from '@codecademy/macros/lib/title.macro';
-import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/blocks';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+
+import { PropsTable } from '~styleguide/blocks';
 
 <Meta
   title={title}
@@ -13,6 +15,7 @@ showcase important words in a sentence.  Works with white-space or end-lines.`,
   }}
   args={{ children: 'superpowers' }}
 />
+;
 
 <Canvas>
   <Story name="HighlightedText">
@@ -24,4 +27,4 @@ showcase important words in a sentence.  Works with white-space or end-lines.`,
   </Story>
 </Canvas>
 
-<Props story="HighlightedText" />
+<PropsTable story="HighlightedText" />

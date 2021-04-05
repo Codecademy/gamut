@@ -15,13 +15,9 @@ const STATUS_ORDER: Record<TaxonomyStatus, number> = {
 
 export function getChildLinks(children: Heirarchy): ContentItem[] {
   return Object.entries(children ?? {})
-    .map(([_, child]) => ({
-      title: child.title,
-      subtitle: child?.subtitle,
-      status: child?.status,
-      story: child?.index?.split('--')[1],
-      kind: child?.index?.split('--')[0],
-      links: getChildLinks(child?.children),
+    .map(([_, { children, ...rest }]) => ({
+      ...rest,
+      links: getChildLinks(children),
     }))
     .sort(sortByStatus);
 }
@@ -37,8 +33,8 @@ export const getKind = (
 
     return {
       type: 'root',
+      id: indexPath,
       title: kind,
-      path: indexPath,
     };
   }
   if (lowerCaseKind.includes(indexPage)) {
@@ -46,17 +42,17 @@ export const getKind = (
     const heirarchyPath = path.replace(`-${indexPage}`, '');
     return {
       type: 'index',
+      id: indexPath,
       title: tail(kind.split('/').reverse())[0],
       heirarchyOrder: heirarchyPath.replaceAll('-', '.children.'),
-      path: indexPath,
     };
   }
 
   return {
     type: 'element',
+    id: path.replace(/\s/g, '-'),
     title: head(kind.split('/').reverse()),
     heirarchyOrder: path.replaceAll('-', '.children.'),
-    path: path.replace(/\s/g, '-'),
   };
 };
 
@@ -93,22 +89,21 @@ export const createTaxonomy = (context: DocsContextProps): Taxonomy => {
     indexPage: indexPage.toLowerCase() as string,
   };
 
-  allKinds.forEach((id) => {
+  allKinds.forEach((kind) => {
     const {
       status = 'unknown',
       subtitle,
       component,
       subcomponents = {},
-    } = kinds[id]?.parameters;
-    const { type, title, heirarchyOrder = '', path } = getKind(id, config);
+    } = kinds[kind]?.parameters;
+    const { type, heirarchyOrder = '', ...rest } = getKind(kind, config);
 
     switch (type) {
       case 'root':
         set(taxonomy, 'root', {
-          status: 'static',
+          ...rest,
           subtitle,
-          title: id,
-          index: path,
+          status: 'static',
         });
         break;
       case 'index':
@@ -116,8 +111,7 @@ export const createTaxonomy = (context: DocsContextProps): Taxonomy => {
           heirarchy,
           heirarchyOrder,
           merge({
-            title,
-            index: path,
+            ...rest,
             subtitle,
             status: 'static',
           })
@@ -125,9 +119,9 @@ export const createTaxonomy = (context: DocsContextProps): Taxonomy => {
         break;
       default:
         let components = {};
-        const subStories = storyStore.getStoriesForKind(id);
+        const subStories = storyStore.getStoriesForKind(kind);
         const firstIndex = subStories[0] || {
-          id: path.concat('--page'),
+          id: rest.id.concat('--page'),
         };
         if (component || !isEmpty(subcomponents)) {
           components = keyBy(
@@ -135,8 +129,8 @@ export const createTaxonomy = (context: DocsContextProps): Taxonomy => {
               .filter(Boolean)
               .map((component) => ({
                 title: component,
-                index:
-                  stories[`${path}--${component.toLowerCase()}`]?.id ||
+                id:
+                  stories[`${rest.id}--${component.toLowerCase()}`]?.id ||
                   firstIndex.id,
               })),
             ({ title }) => title
@@ -147,8 +141,8 @@ export const createTaxonomy = (context: DocsContextProps): Taxonomy => {
           heirarchy,
           heirarchyOrder,
           merge({
-            index: firstIndex.id,
-            title,
+            ...rest,
+            id: firstIndex.id,
             subtitle,
             status,
             children: components,

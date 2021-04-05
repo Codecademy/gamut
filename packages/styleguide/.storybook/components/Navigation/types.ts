@@ -12,7 +12,7 @@ export interface Taxonomy {
 
 export interface Heirarchy {
   title: string;
-  index: string;
+  id: string;
   subtitle: string;
   status: TaxonomyStatus;
   children: Heirarchy;
@@ -20,8 +20,7 @@ export interface Heirarchy {
 export interface ContentLink {
   title: string;
   subtitle: string;
-  story: string;
-  kind: string;
+  id: string;
   status: TaxonomyStatus;
 }
 

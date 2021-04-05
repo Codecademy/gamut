@@ -1,8 +1,8 @@
 import { ProLogo } from '@codecademy/gamut-labs/src';
 import title from '@codecademy/macros/lib/title.macro';
-import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/blocks';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 
-import { selectableColorNames } from '~styleguide/blocks';
+import { PropsTable, selectableColorNames } from '~styleguide/blocks';
 
 <Meta
   title={title}
@@ -29,4 +29,4 @@ import { selectableColorNames } from '~styleguide/blocks';
   <Story name="ProLogo">{(args) => <ProLogo {...args} />}</Story>
 </Canvas>
 
-<Props story="ProLogo" />
+<PropsTable story="ProLogo" />

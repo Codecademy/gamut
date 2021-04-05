@@ -4,7 +4,9 @@ import {
   AccordionButton,
 } from '@codecademy/gamut/src';
 import title from '@codecademy/macros/lib/title.macro';
-import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/blocks';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+
+import { PropsTable } from '~styleguide/blocks';
 
 <Meta
   title={title}
@@ -17,6 +19,7 @@ such as a "hint" section in the LE or a list of department jobs on a careers pag
     source: 'gamut',
   }}
 />
+;
 
 <Canvas>
   <Story name="Accordion">
@@ -28,7 +31,7 @@ such as a "hint" section in the LE or a list of department jobs on a careers pag
   </Story>
 </Canvas>
 
-<Props story="Accordion" />
+<PropsTable story="Accordion" />
 
 > Note that accordions will fit to `100%` of the the height of their parent container.
 > If you need a fixed height container, wrap the accordion in a `<div>`.

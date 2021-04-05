@@ -1,6 +1,8 @@
 import { Logo } from '@codecademy/gamut-labs/src';
 import title from '@codecademy/macros/lib/title.macro';
-import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/blocks';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+
+import { PropsTable } from '~styleguide/blocks';
 
 <Meta
   title={title}
@@ -13,12 +15,13 @@ it has a lot of visual distinction to stand out appropriately.`,
   }}
   args={{ width: 256, type: 'default', color: 'black' }}
 />
+;
 
 <Canvas withSource="open">
   <Story name="Logo">{(args) => <Logo {...args} />}</Story>
 </Canvas>
 
-<Props story="Logo" />
+<PropsTable story="Logo" />
 
 Variants of the Codecademy logo you can play around with.
 

@@ -4,12 +4,16 @@ import React, { useContext, createContext } from 'react';
 import { ContentItem, ContentLink, Heirarchy, TableOfContents } from './types';
 import { getChildLinks, createTaxonomy, getKind } from './utils';
 
-export const NavigationContext = createContext<{
-  heirarchy?: Heirarchy;
-  getTableOfContents?: (kind: string) => TableOfContents;
-  getBreadCrumbs?: (kind: string) => ContentLink[];
-  getChildLinks?: (kind: Heirarchy) => ContentItem[];
-}>({});
+export type NavigationContextShape = {
+  heirarchy: Heirarchy;
+  getTableOfContents: (kind: string) => TableOfContents;
+  getBreadCrumbs: (kind: string) => ContentLink[];
+  getChildLinks: (kind: Heirarchy) => ContentItem[];
+};
+
+export const NavigationContext = createContext<NavigationContextShape>(
+  {} as NavigationContextShape
+);
 
 export const NavigationProvider: React.FC = ({ children }) => {
   const context = useContext(DocsContext);

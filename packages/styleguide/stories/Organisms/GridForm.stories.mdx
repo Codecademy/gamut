@@ -7,8 +7,10 @@ import {
 } from '@codecademy/gamut/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { action } from '@storybook/addon-actions';
-import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/blocks';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 import { useState } from '@storybook/addons';
+
+import { PropsTable } from '~styleguide/blocks';
 
 <Meta
   title={title}
@@ -159,7 +161,7 @@ responsive layouts.
   </Story>
 </Canvas>
 
-<Props of={GridForm} />
+<PropsTable of={GridForm} />
 
 ## Disabled Inputs
 

@@ -1,9 +1,9 @@
-import LinkTo from '@storybook/addon-links/react';
-import { shouldForwardProp, themed } from '@codecademy/gamut-styles/src';
+import { themed } from '@codecademy/gamut-styles/src';
 import { badgeVariants } from './Badge';
 import { Anchor } from '@codecademy/gamut/src';
 import styled from '@emotion/styled';
-import React from 'react';
+import React, { ComponentProps } from 'react';
+import { linkTo } from '@storybook/addon-links';
 
 export const Reset = styled.div`
   *:first-of-type {
@@ -21,18 +21,10 @@ export const SectionStatus = styled.div<Parameters<typeof badgeVariants>[0]>`
   ${badgeVariants}
 `;
 
-interface SectionLinkProps {
-  story?: string;
-  name?: string;
-  kind?: string;
-  box?: boolean;
-}
-
-export const SectionLink = styled('a', {
-  shouldForwardProp: (prop) =>
-    prop === 'story' || shouldForwardProp(prop as string),
-})<SectionLinkProps>`
+const AreaLink = styled.a`
   color: inherit;
+  cursor: pointer;
+
   &:hover {
     text-decoration: none;
   }
@@ -45,16 +37,18 @@ export const SectionLink = styled('a', {
     width: 100%;
     height: 100%;
   }
-`.withComponent((props) => <LinkTo {...props} story={props.name} />);
+`;
 
-export const Link = Anchor.withComponent(
-  (props: { name?: string; kind?: string }) => (
-    <LinkTo {...props} story={props.name} />
-  )
-);
-
-SectionLink.defaultProps = {
-  story: 'page',
+export const Link: React.FC<
+  Omit<ComponentProps<typeof Anchor>, 'variant'> & {
+    id: string;
+    variant?: ComponentProps<typeof Anchor>['variant'] | 'area';
+  }
+> = ({ ref, href, id, variant, ...props }) => {
+  if (variant === 'area') {
+    return <AreaLink {...props} onClick={linkTo(id)} />;
+  }
+  return <Anchor {...props} variant={variant} onClick={linkTo(id)} />;
 };
 
 export const Code = styled.code`

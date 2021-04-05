@@ -52,9 +52,8 @@ const STATUS = {
 
 export const Page: React.FC = ({ children }) => {
   const { kind, storyStore } = useContext(DocsContext);
-  const { getTableOfContents, getBreadCrumbs }: any = useContext(
-    NavigationContext
-  );
+  const { getTableOfContents } = useContext(NavigationContext);
+  const { title, subtitle, status } = getTableOfContents(kind!);
 
   if (!kind) {
     return <>{children}</>;
@@ -64,8 +63,6 @@ export const Page: React.FC = ({ children }) => {
     parameters: { figmaId, source },
   } = storyStore?._kinds[kind];
 
-  const { title, subtitle, status } = getTableOfContents(kind);
-  const breadcrumbs = getBreadCrumbs(kind);
   const showMeta = Boolean(figmaId || source);
   const npmLink = `https://www.npmjs.com/package/@codecademy/${source}`;
   const figmaLink = `https://www.figma.com/file/${figmaId}`;
@@ -83,7 +80,7 @@ export const Page: React.FC = ({ children }) => {
   return (
     <Box minHeight="100vh" backgroundColor="paleBlue" paddingY={48}>
       <ContentContainer>
-        <BreadCrumbs links={breadcrumbs} />
+        <BreadCrumbs />
         <Title>{title}</Title>
         <Text as="p" fontSize={20} marginBottom={16}>
           <Markdown inline text={subtitle} />

@@ -1,6 +1,8 @@
 import { PageVideoGallery } from '@codecademy/gamut-labs/src';
 import title from '@codecademy/macros/lib/title.macro';
-import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/blocks';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+
+import { PropsTable } from '~styleguide/blocks';
 
 <Meta
   title={title}
@@ -40,6 +42,7 @@ import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/blocks';
     status: 'updating',
   }}
 />
+;
 
 ## With title, desc, and CTA
 
@@ -49,7 +52,7 @@ import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/blocks';
   </Story>
 </Canvas>
 
-<Props story="With Title, Desc, CTA" />
+<PropsTable story="With Title, Desc, CTA" />
 
 ## Gallery only
 

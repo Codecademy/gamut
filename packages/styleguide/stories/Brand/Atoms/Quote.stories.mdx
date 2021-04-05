@@ -1,6 +1,8 @@
 import { Quote } from '@codecademy/gamut-labs/src';
 import title from '@codecademy/macros/lib/title.macro';
-import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/blocks';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+
+import { PropsTable } from '~styleguide/blocks';
 
 <Meta
   title={title}
@@ -16,9 +18,10 @@ Often with an \`Avatar\` or \`Testimonial\`.`,
     source: 'gamut-labs',
   }}
 />
+;
 
 <Canvas withSource="open">
   <Story name="Quote">{(args) => <Quote {...args} />}</Story>
 </Canvas>
 
-<Props story="Quote" />
+<PropsTable story="Quote" />
