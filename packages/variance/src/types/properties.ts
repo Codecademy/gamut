@@ -6,6 +6,7 @@ type ColorProperties = {
     : never}`]:
     | Extract<StandardProperties[K], Globals>
     | 'currentColor'
+    | 'transparent'
     | (string & {});
 };
 
