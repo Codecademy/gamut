@@ -25,18 +25,21 @@ import { PropsTable } from '~styleguide/blocks';
 />
 
 <Canvas>
-  <Story name="GlobalHeader">
+  <Story
+    name="GlobalHeader"
+    args={{
+      type: 'free',
+      user: {
+        avatar:
+          'https://www.gravatar.com/avatar/1c959a9a1e2f9f9f1ac06b05cccc1d60?s=150&d=retro',
+        displayName: 'Codey',
+      },
+      action: () => {},
+    }}
+  >
     {(args) => (
       <Box position="relative" zIndex={0}>
-        <GlobalHeader
-          action={() => {}}
-          type="free"
-          user={{
-            avatar:
-              'https://www.gravatar.com/avatar/1c959a9a1e2f9f9f1ac06b05cccc1d60?s=150&d=retro',
-            displayName: 'Codey',
-          }}
-        />
+        <GlobalHeader {...args} />
       </Box>
     )}
   </Story>
