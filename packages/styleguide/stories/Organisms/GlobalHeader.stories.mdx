@@ -2,8 +2,8 @@ import { Box, IconButton } from '@codecademy/gamut/src';
 import { BellIcon, SearchIcon } from '@codecademy/gamut-icons/src';
 import { GlobalHeader } from '@codecademy/gamut-labs/src';
 import title from '@codecademy/macros/lib/title.macro';
-import { Canvas, Meta, Story } from '@storybook/addon-docs/dist/blocks';
-import LinkTo from '@storybook/addon-links/dist/react/components/link';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import LinkTo from '@storybook/addon-links/react';
 
 import { PropsTable } from '~styleguide/blocks';
 
@@ -24,20 +24,22 @@ import { PropsTable } from '~styleguide/blocks';
   }}
 />
 
-<Canvas withSource="open">
-  <Story name="GlobalHeader">
+<Canvas>
+  <Story
+    name="GlobalHeader"
+    args={{
+      type: 'free',
+      user: {
+        avatar:
+          'https://www.gravatar.com/avatar/1c959a9a1e2f9f9f1ac06b05cccc1d60?s=150&d=retro',
+        displayName: 'Codey',
+      },
+      action: () => {},
+    }}
+  >
     {(args) => (
       <Box position="relative" zIndex={0}>
-        <GlobalHeader
-          action={() => {}}
-          type="free"
-          user={{
-            avatar:
-              'https://www.gravatar.com/avatar/1c959a9a1e2f9f9f1ac06b05cccc1d60?s=150&d=retro',
-            displayName: 'Codey',
-          }}
-          {...args}
-        />
+        <GlobalHeader {...args} />
       </Box>
     )}
   </Story>
