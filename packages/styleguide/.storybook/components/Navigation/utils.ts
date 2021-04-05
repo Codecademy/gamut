@@ -9,7 +9,6 @@ const STATUS_ORDER: Record<TaxonomyStatus, number> = {
   static: 0,
   current: 1,
   updating: 2,
-  unknown: 3,
   deprecated: 4,
 };
 
