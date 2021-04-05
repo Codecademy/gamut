@@ -9,7 +9,7 @@ import {
   SectionStatus,
 } from './Markdown/MarkdownElements';
 import { ContentItem, ContentLink, NavigationContext } from './Navigation';
-import { Box, Card, Text } from '@codecademy/gamut/src';
+import { Box, Card, FlexBox, GridBox, Text } from '@codecademy/gamut/src';
 
 export const TableOfContents = () => {
   const { kind } = useContext(DocsContext);
@@ -29,7 +29,7 @@ export const TableOfContents = () => {
       rowGap={32}
     >
       {children.map((link: ContentItem) => (
-        <ToCItem {...link} key={`toc-item-${link.kind}-${link.story}`} />
+        <Section {...link} key={`toc-item-${link.kind}-${link.story}`} />
       ))}
     </Box>
   );
@@ -71,7 +71,7 @@ export const BreadCrumbs: React.FC<{ links: ContentLink[] }> = ({ links }) => {
   );
 };
 
-export const ToCItem: React.FC<ContentItem> = ({
+export const Section: React.FC<ContentItem> = ({
   title,
   subtitle,
   story,
@@ -79,81 +79,63 @@ export const ToCItem: React.FC<ContentItem> = ({
   status,
   links,
 }) => {
-  const renderSubsection = () => {
-    if (links.length > 0) {
-      return (
-        <>
-          <Box
-            width="100%"
-            position="absolute"
-            top="0"
-            backgroundColor="navy"
-            minHeight="1px"
-          />
-          <Box
-            display="flex"
-            columnGap={16}
-            maxHeight="1rem"
-            fontWeight="title"
-            flexWrap="wrap"
-            overflow="hidden"
-            fontSize={14}
-            onClick={(e) => e.stopPropagation()}
-          >
-            {links.map(({ title, kind, story }) => {
-              return (
-                <Link
-                  variant="standard"
-                  key={`${title}-story-${story}`}
-                  kind={kind}
-                  name={story}
-                >
-                  {title}
-                </Link>
-              );
-            })}
-          </Box>
-        </>
-      );
-    }
-  };
-
-  const subsection = links.length > 1 && renderSubsection();
+  const renderSubsection = () =>
+    links.map(({ title, kind, story }) => (
+      <Link
+        fontSize={14}
+        fontWeight="title"
+        variant="standard"
+        key={`${title}-story-${story}`}
+        kind={kind}
+        name={story}
+      >
+        {title}
+      </Link>
+    ));
 
   return (
     <Card
       shadowOffset={4}
-      padding={24}
-      paddingBottom={8}
+      padding={0}
       rowGap={8}
       display="grid"
-      gridTemplateRows="min-content 4.5rem 3rem"
       position="relative"
     >
-      <SectionLink box kind={kind} name={story}>
-        <Box position="relative">
-          <Text as="h2" fontSize={22}>
-            {title}
-            {status && <SectionStatus status={status} />}
-          </Text>
-        </Box>
-      </SectionLink>
-      <Box overflowY="hidden">
-        <Reset>{subtitle && <Description>{subtitle}</Description>}</Reset>
-      </Box>
-      <Box
-        display="grid"
-        alignItems="center"
-        paddingX={24}
-        paddingBottom={4}
-        position="absolute"
-        zIndex={subsection ? 1 : -1}
-        bottom="0"
-        height="3rem"
-        width="100%"
+      <GridBox
+        gridTemplateRows="min-content 4.5rem"
+        position="relative"
+        rowGap={8}
+        padding={24}
       >
-        {subsection}
-      </Box>
+        <SectionLink kind={kind} name={story}>
+          <Box position="relative">
+            <Text as="h2" fontSize={22}>
+              {title}
+              {status && <SectionStatus status={status} />}
+            </Text>
+          </Box>
+        </SectionLink>
+        <Box overflowY="hidden">
+          <Reset>{subtitle && <Description>{subtitle}</Description>}</Reset>
+        </Box>
+      </GridBox>
+      <FlexBox
+        borderStyleTop="solid"
+        borderWidthTop="1px"
+        borderColorTop="navy"
+        paddingX={24}
+        paddingY={12}
+        onClick={(e) => e.stopPropagation()}
+      >
+        <FlexBox
+          flexWrap="wrap"
+          overflow="hidden"
+          maxHeight={`${14 * 1.5}px`}
+          columnGap={16}
+        >
+          {links.length > 1 && renderSubsection()}
+        </FlexBox>
+      </FlexBox>
     </Card>
   );
 };

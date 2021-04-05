@@ -15,7 +15,7 @@ export const SectionStatus = styled.div<Parameters<typeof badgeVariants>[0]>`
   position: absolute;
   left: calc(100% + 1rem);
   top: 0;
-  bottom: 0;
+  height: 100%;
   width: 0.5rem;
   border-radius: 0.25rem 0 0 0.25rem;
   ${badgeVariants}
@@ -64,9 +64,9 @@ export const Code = styled.code`
   padding: 5px 7px 1px;
   white-space: nowrap;
   border-radius: 3px;
-  font-size: 13px;
-  border: 1px solid #eeeeee;
-  color: rgba(51, 51, 51, 0.8);
+  font-size: 0.8em;
+  border: 1px solid ${themed('colors.gray-200')};
+  color: ${themed('colors.gray-700')};
   background-color: ${themed('colors.gray-100')};
   display: inline-block;
   overflow-x: scroll;
@@ -77,7 +77,7 @@ export const Code = styled.code`
   }
 
   ::-webkit-scrollbar-thumb {
-    background: #eeeeee;
+    background: themed('colors.gray-200');
   }
 
   ::-webkit-scrollbar-track {
