@@ -20,6 +20,7 @@ import { Meta, Story } from '@storybook/addon-docs/blocks';
 import { startCase } from 'lodash';
 
 import {
+  Link as LinkTo,
   objectKeys,
   parseCamelCase,
   Swatch,
@@ -32,13 +33,13 @@ import { excludedColors } from './constants';
   title={title}
   component="Colors"
   parameters={{
-    status: 'deprecated',
+    status: 'updating',
     subtitle:
       'Past and present color palettes used by both design and engineering.',
   }}
 />
 
-**Deprecation Notice** These variables and access patterns are now deprecated. Please refer to [Theme](?path=/docs/foundations-theme--colors) for the most up to date documentation when using the new visual identity.
+**Deprecation Notice** These variables and access patterns are now deprecated. Please refer to <LinkTo id="foundations-theme--colors">Theme</LinkTo> for the most up to date documentation when using the new visual identity.
 
 ## Common Color Sets
 

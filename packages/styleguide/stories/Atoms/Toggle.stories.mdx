@@ -1,7 +1,9 @@
 import { Toggle } from '@codecademy/gamut/src';
 import title from '@codecademy/macros/lib/title.macro';
-import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/blocks';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 import { useState } from '@storybook/addons';
+
+import { PropsTable } from '~styleguide/blocks';
 
 <Meta
   title={title}
@@ -9,7 +11,7 @@ import { useState } from '@storybook/addons';
   parameters={{
     subtitle: 'A completely controlled boolean Toggle component (checkbox)',
     source: 'gamut',
-    status: 'stable',
+    status: 'current',
   }}
 />
 
@@ -20,7 +22,7 @@ Receives its `checked` prop from its parent. This is the default theme and size.
   <Story name="Toggle">{(args) => <Toggle {...args} />}</Story>
 </Canvas>
 
-<Props story="Toggle" />
+<PropsTable story="Toggle" />
 
 ## Color Variants
 

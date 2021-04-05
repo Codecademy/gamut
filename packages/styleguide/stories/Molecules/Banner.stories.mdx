@@ -1,13 +1,15 @@
 import { Banner } from '@codecademy/gamut/src';
 import title from '@codecademy/macros/lib/title.macro';
-import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/blocks';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+
+import { PropsTable } from '~styleguide/blocks';
 
 <Meta
   title={title}
   component={Banner}
   parameters={{
     subtitle: `Full-width banner to indicate important messaging at the top of a page or section.`,
-    status: 'stable',
+    status: 'current',
     source: 'gamut',
     figmaId: 'wTwIV8YfAgZ8eNpKSEd0Gn',
   }}
@@ -21,7 +23,7 @@ import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/blocks';
   <Story name="Banner">{(args) => <Banner {...args} />}</Story>
 </Canvas>
 
-<Props story="Banner" />
+<PropsTable story="Banner" />
 
 ## Variants
 

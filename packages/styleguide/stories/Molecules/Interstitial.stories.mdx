@@ -1,7 +1,9 @@
 import { ButtonDeprecated, Interstitial } from '@codecademy/gamut/src';
 import title from '@codecademy/macros/lib/title.macro';
 import styled from '@emotion/styled';
-import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/blocks';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+
+import { PropsTable } from '~styleguide/blocks';
 
 <Meta
   title={title}
@@ -27,7 +29,7 @@ a full-screen [Overlay](?path=/docs/atoms-overlay--overlay) in the LE between le
   <Story name="Interstitial">{(args) => <Interstitial {...args} />}</Story>
 </Canvas>
 
-<Props story="Interstitial" />
+<PropsTable story="Interstitial" />
 
 ## With Buttons
 
