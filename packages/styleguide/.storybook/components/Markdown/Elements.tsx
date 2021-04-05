@@ -5,7 +5,7 @@ import React, { ComponentProps } from 'react';
 import { linkTo } from '@storybook/addon-links';
 
 export const Reset = styled.div`
-  *:first-of-type {
+  p:first-of-type {
     margin-top: 0;
   }
 `;
@@ -43,6 +43,8 @@ export const Link: React.FC<LinkProps> = ({ ref, id, variant, ...props }) => {
   }
   return <Anchor {...props} {...computedProps} variant={variant} />;
 };
+
+export const LinkTo = Link;
 
 export const Code = styled.code`
   max-width: 100%;

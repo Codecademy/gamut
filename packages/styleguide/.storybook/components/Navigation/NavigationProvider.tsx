@@ -90,6 +90,7 @@ export const NavigationProvider: React.FC = ({ children }) => {
 export function useNavigation() {
   const { kind } = useContext(DocsContext);
   const { getTableOfContents, getBreadCrumbs } = useContext(NavigationContext);
+
   return useMemo(
     () => ({
       toc: getTableOfContents(kind!),

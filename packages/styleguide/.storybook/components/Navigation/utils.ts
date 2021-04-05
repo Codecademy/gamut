@@ -92,17 +92,17 @@ export const createTaxonomy = (context: DocsContextProps): Taxonomy => {
 
   allKinds.forEach((kind) => {
     const {
-      status = 'unknown',
+      status = 'static',
       subtitle,
       component,
       subcomponents = {},
     } = kinds[kind]?.parameters;
-    const { type, hierarchyOrder, ...rest } = getKind(kind, config);
+    const kindMeta = getKind(kind, config);
 
-    switch (type) {
+    switch (kindMeta.type) {
       case 'root':
-        set(taxonomy, hierarchyOrder, {
-          ...rest,
+        set(taxonomy, kindMeta.hierarchyOrder, {
+          ...kindMeta,
           subtitle,
           status: 'static',
         });
@@ -110,11 +110,11 @@ export const createTaxonomy = (context: DocsContextProps): Taxonomy => {
       case 'index':
         update(
           hierarchy,
-          hierarchyOrder,
+          kindMeta.hierarchyOrder,
           merge({
-            ...rest,
+            ...kindMeta,
             subtitle,
-            status: 'static',
+            status,
           })
         );
         break;
@@ -122,7 +122,7 @@ export const createTaxonomy = (context: DocsContextProps): Taxonomy => {
         let components = {};
         const subStories = storyStore.getStoriesForKind(kind);
         const firstIndex = subStories[0] || {
-          id: rest.id.concat('--page'),
+          id: kindMeta.id.concat('--page'),
         };
         if (component || !isEmpty(subcomponents)) {
           components = keyBy(
@@ -131,7 +131,7 @@ export const createTaxonomy = (context: DocsContextProps): Taxonomy => {
               .map((component) => ({
                 title: component,
                 id:
-                  stories[`${rest.id}--${component.toLowerCase()}`]?.id ||
+                  stories[`${kindMeta.id}--${component.toLowerCase()}`]?.id ||
                   firstIndex.id,
               })),
             ({ title }) => title
@@ -140,9 +140,9 @@ export const createTaxonomy = (context: DocsContextProps): Taxonomy => {
 
         update(
           hierarchy,
-          hierarchyOrder,
+          kindMeta.hierarchyOrder,
           merge({
-            ...rest,
+            ...kindMeta,
             id: firstIndex.id,
             subtitle,
             status,

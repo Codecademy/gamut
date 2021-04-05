@@ -11,6 +11,7 @@ import {
   ContentContainer,
   Markdown,
   Text,
+  ToolTip,
 } from '@codecademy/gamut/src';
 import { BreadCrumbs } from '../Navigation/BreadCrumbs';
 import { OpenIcon } from '@codecademy/gamut-icons';
@@ -27,34 +28,36 @@ export const MetaContainer = styled(Box)`
 
 export interface GamutParameters extends Parameters {
   subtitle?: string;
-  status?: 'current' | 'updating' | 'deprecated' | 'unknown' | 'static';
+  status?: 'current' | 'updating' | 'deprecated' | 'static';
   figmaId?: string;
   source?: string;
 }
 
 const STATUS = {
   deprecated: {
-    children: 'Old Style',
+    tooltip:
+      'This component uses our old visual identity or uses CSS Modules for styling and should not be used in new work',
+    label: 'Old Style',
     status: 'deprecated',
   },
   current: {
-    children: 'Up to date',
+    tooltip:
+      'This component is up to date with out latest visual identity and styling standards',
+    label: 'Up to date',
     status: 'current',
   },
   updating: {
-    children: 'Updating',
+    tooltip:
+      "We're actively working on updating this component! This is safe to use, but may change in behavior.",
+    label: 'Updating',
     status: 'updating',
-  },
-  unknown: {
-    children: 'Backlog',
-    status: 'unknown',
   },
 } as const;
 
 export const DocsPage: React.FC = ({ children }) => {
   const { kind, storyStore } = useContext(DocsContext);
   const {
-    toc: { title, subtitle, status },
+    toc: { type, title, subtitle, status: storyStatus },
   } = useNavigation();
 
   if (!kind) {
@@ -65,9 +68,26 @@ export const DocsPage: React.FC = ({ children }) => {
     parameters: { figmaId, source },
   } = storyStore?._kinds[kind];
 
-  const showMeta = Boolean(figmaId || source);
+  const showMeta = type === 'element';
   const npmLink = `https://www.npmjs.com/package/@codecademy/${source}`;
   const figmaLink = `https://www.figma.com/file/${figmaId}`;
+
+  const renderStatus = () => {
+    if (storyStatus === 'static') return null;
+    const { label, status, tooltip } = STATUS[storyStatus];
+
+    return (
+      <Text fontSize={16} as="strong">
+        Status:{' '}
+        <ToolTip
+          id="status"
+          target={<StatusIndicator status={status}>{label}</StatusIndicator>}
+        >
+          <Text fontWeight="base">{tooltip}</Text>
+        </ToolTip>
+      </Text>
+    );
+  };
 
   const linkIcon = (
     <Box
@@ -93,12 +113,7 @@ export const DocsPage: React.FC = ({ children }) => {
             gridAutoFlow={['row', , 'column']}
             gridAutoColumns={['minmax(0, 1fr)', , 'minmax(0, max-content)']}
           >
-            {status && status !== 'static' && (
-              <Text fontSize={16} as="strong">
-                Status:{' '}
-                <StatusIndicator {...STATUS[status as keyof typeof STATUS]} />
-              </Text>
-            )}
+            {renderStatus()}
             {source && (
               <Anchor
                 fontSize={16}

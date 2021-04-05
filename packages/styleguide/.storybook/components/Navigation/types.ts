@@ -1,9 +1,4 @@
-export type TaxonomyStatus =
-  | 'current'
-  | 'deprecated'
-  | 'updating'
-  | 'unknown'
-  | 'static';
+export type TaxonomyStatus = 'current' | 'deprecated' | 'updating' | 'static';
 
 export interface Taxonomy {
   root: Hierarchy;
@@ -11,6 +6,7 @@ export interface Taxonomy {
 }
 
 export interface Hierarchy {
+  type: 'root' | 'index' | 'element';
   title: string;
   id: string;
   subtitle: string;

@@ -5,7 +5,7 @@ export const badgeVariants = variant({
   prop: 'status',
   variants: {
     static: {
-      textColor: 'gray-200',
+      textColor: 'green',
     },
     current: {
       textColor: 'green',
@@ -15,9 +15,6 @@ export const badgeVariants = variant({
     },
     deprecated: {
       textColor: 'orange',
-    },
-    unknown: {
-      textColor: 'gray-500',
     },
   },
 });
