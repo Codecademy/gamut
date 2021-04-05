@@ -34,7 +34,6 @@ export const NotificationListNew: React.FC<NotificationListNewProps> = ({
 
   return (
     <UnstyledUnorderedList aria-labelledby={headerElementId} aria-live="polite">
-      {separatorPattern}
       {isEmpty(notifications) ? (
         <EmptyNotification />
       ) : (

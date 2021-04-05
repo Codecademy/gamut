@@ -1,6 +1,8 @@
 import { HeaderContainer, HeaderTab } from '@codecademy/gamut-labs/src';
 import title from '@codecademy/macros/lib/title.macro';
-import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+
+import { PropsTable } from '~styleguide/blocks';
 
 <Meta
   title={title}
@@ -27,4 +29,4 @@ import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
   </Story>
 </Canvas>
 
-<Props story="Header" />
+<PropsTable story="Header" />

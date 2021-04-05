@@ -1,11 +1,13 @@
-import { Heading, Text } from '@codecademy/gamut/src';
+import { HeadingDeprecated, Text } from '@codecademy/gamut/src';
 import { brandColors } from '@codecademy/gamut-styles';
 import title from '@codecademy/macros/lib/title.macro';
-import { Meta, Preview, Props, Story } from '@storybook/addon-docs/dist/blocks';
+import { Meta, Preview, Story } from '@storybook/addon-docs/blocks';
+
+import { PropsTable } from '~styleguide/blocks';
 
 <Meta
   title={title}
-  component={Heading}
+  component={HeadingDeprecated}
   parameters={{
     subtitle: `This is a primitive to handle all \`h1-h6\` tags
 with defined size intervals to allow for semantic html that also
@@ -36,25 +38,29 @@ Note: Please only [increase heading levels by 1](https://dequeuniversity.com/rul
 
 <Preview>
   <Story
-    name="Heading"
+    name="HeadingDeprecated"
     args={{ children: 'Hello World', as: 'h1', hideMargin: true }}
   >
-    {(args) => <Heading {...args} />}
+    {(args) => <HeadingDeprecated {...args} />}
   </Story>
 </Preview>
 
 ## Props
 
-<Props story="Heading" />
+<PropsTable story="HeadingDeprecated" />
 
 ## Custom colors
 
 <Preview>
   <Story name="Custom Colors">
     {(args) => (
-      <Heading fontSize="md" as="h3" style={{ color: brandColors.purple }}>
+      <HeadingDeprecated
+        fontSize="md"
+        as="h3"
+        style={{ color: brandColors.purple }}
+      >
         Brand Purple
-      </Heading>
+      </HeadingDeprecated>
     )}
   </Story>
 </Preview>
@@ -65,9 +71,9 @@ Note: Please only [increase heading levels by 1](https://dequeuniversity.com/rul
   <Story name="No Margin">
     {(args) => (
       <>
-        <Heading fontSize="md" as="h3" hideMargin>
+        <HeadingDeprecated fontSize="md" as="h3" hideMargin>
           Without Margin
-        </Heading>
+        </HeadingDeprecated>
         <Text>Random other text</Text>
       </>
     )}

@@ -3,6 +3,90 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [33.6.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@33.6.2...@codecademy/styleguide@33.6.3) (2021-04-05)
+
+
+### Bug Fixes
+
+* Typo... ([16a6eec](https://github.com/Codecademy/client-modules/commit/16a6eecf9e8bedefcec73d26f84af2bc456c80a2))
+
+
+
+### [33.6.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@33.6.1...@codecademy/styleguide@33.6.2) (2021-04-05)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [33.6.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@33.6.0...@codecademy/styleguide@33.6.1) (2021-04-05)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [33.6.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@33.5.0...@codecademy/styleguide@33.6.0) (2021-04-01)
+
+
+### Features
+
+* **Input:** React-Recurly edits ([1d2a286](https://github.com/Codecademy/client-modules/commit/1d2a28670b6b218a891462191a80e97a982482c9))
+
+
+
+## [33.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@33.4.2...@codecademy/styleguide@33.5.0) (2021-04-01)
+
+
+### Features
+
+* **GridForm:** Update the buttons for GridForm submit ([cb03dd2](https://github.com/Codecademy/client-modules/commit/cb03dd2a7bce0d2b9baa99349bae22824c0e614b))
+
+
+
+### [33.4.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@33.4.1...@codecademy/styleguide@33.4.2) (2021-03-30)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [33.4.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@33.4.0...@codecademy/styleguide@33.4.1) (2021-03-30)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [33.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@33.3.9...@codecademy/styleguide@33.4.0) (2021-03-30)
+
+
+### Features
+
+* **Text:** Deprecate Text / Heading and add more robust UI Text Component [GM-162] ([78e284f](https://github.com/Codecademy/client-modules/commit/78e284f3ce80f14e583af3133f692a7cd91e2196))
+
+
+
+### [33.3.9](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@33.3.8...@codecademy/styleguide@33.3.9) (2021-03-30)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [33.3.8](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@33.3.7...@codecademy/styleguide@33.3.8) (2021-03-29)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
 ### [33.3.7](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@33.3.6...@codecademy/styleguide@33.3.7) (2021-03-26)
 
 **Note:** Version bump only for package @codecademy/styleguide

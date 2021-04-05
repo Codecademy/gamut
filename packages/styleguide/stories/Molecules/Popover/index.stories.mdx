@@ -1,6 +1,8 @@
 import { Popover } from '@codecademy/gamut-labs/src';
 import title from '@codecademy/macros/lib/title.macro';
-import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+
+import { PropsTable } from '~styleguide/blocks';
 
 import {
   PatternedPopoversGrid,
@@ -15,7 +17,7 @@ import {
     subtitle: `Popover is a surface which takes a target element and shows an overlay
 positioned around that element.`,
     source: 'gamut-labs',
-    status: 'volatile',
+    status: 'updating',
   }}
 />
 
@@ -27,7 +29,7 @@ positioned around that element.`,
   </Story>
 </Canvas>
 
-<Props story="Popover" />
+<PropsTable story="Popover" />
 
 ## Beak
 
