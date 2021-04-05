@@ -1,3 +1,5 @@
+import { transformSize } from '@codecademy/variance';
+
 export const color = {
   color: { property: 'color', scale: 'colors' },
   bg: { property: 'backgroundColor', scale: 'colors' },
@@ -121,10 +123,10 @@ export const background = {
 
 export const positioning = {
   position: { property: 'position' },
-  top: { property: 'top' },
-  right: { property: 'right' },
-  bottom: { property: 'bottom' },
-  left: { property: 'left' },
+  top: { property: 'top', transform: transformSize },
+  right: { property: 'right', transform: transformSize },
+  bottom: { property: 'bottom', transform: transformSize },
+  left: { property: 'left', transform: transformSize },
   zIndex: { property: 'zIndex' },
   opacity: { property: 'opacity' },
 } as const;
@@ -139,12 +141,12 @@ export const layout = {
   overflow: { property: 'overflow' },
   overflowX: { property: 'overflowX' },
   overflowY: { property: 'overflowY' },
-  width: { property: 'width' },
-  minWidth: { property: 'minWidth' },
-  maxWidth: { property: 'maxWidth' },
-  height: { property: 'height' },
-  minHeight: { property: 'minHeight' },
-  maxHeight: { property: 'maxHeight' },
+  width: { property: 'width', transform: transformSize },
+  minWidth: { property: 'minWidth', transform: transformSize },
+  maxWidth: { property: 'maxWidth', transform: transformSize },
+  height: { property: 'height', transform: transformSize },
+  minHeight: { property: 'minHeight', transform: transformSize },
+  maxHeight: { property: 'maxHeight', transform: transformSize },
   verticalAlign: { property: 'verticalAlign' },
   justifySelf: { property: 'justifySelf' },
   alignSelf: { property: 'alignSelf' },

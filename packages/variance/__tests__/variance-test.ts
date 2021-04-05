@@ -1,5 +1,5 @@
 import { variance } from '../src/core';
-import { parseSize } from '../src/transforms/parseSize';
+import { transformSize } from '../src/transforms/transformSize';
 import { theme } from './__fixtures__/theme';
 
 const space = variance.create({
@@ -165,8 +165,8 @@ describe('css', () => {
   const marginTransform = jest.fn();
 
   const css = variance.createCss({
-    width: { property: 'width', transform: parseSize },
-    height: { property: 'height', transform: parseSize },
+    width: { property: 'width', transform: transformSize },
+    height: { property: 'height', transform: transformSize },
     margin: {
       property: 'margin',
       scale: theme.spacing,
@@ -286,8 +286,8 @@ describe('variants', () => {
   const marginTransform = jest.fn();
 
   const variant = variance.createVariant({
-    width: { property: 'width', transform: parseSize },
-    height: { property: 'height', transform: parseSize },
+    width: { property: 'width', transform: transformSize },
+    height: { property: 'height', transform: transformSize },
     margin: {
       property: 'margin',
       scale: 'spacing',

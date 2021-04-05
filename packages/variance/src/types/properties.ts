@@ -15,7 +15,7 @@ type InsetProperties = 'left' | 'right' | 'top' | 'bottom' | 'inset';
 
 type NumberSyntax = WidthProperties | HeightProperties | InsetProperties;
 
-type DimensionProperties = {
+type SizeProperties = {
   [K in keyof StandardProperties as `${K extends NumberSyntax ? K : never}`]:
     | StandardProperties[K]
     | (number & {});
@@ -24,7 +24,7 @@ type DimensionProperties = {
 export interface PropertyTypes<Overrides = never>
   extends Omit<
       StandardProperties<Overrides>,
-      keyof ColorProperties | keyof DimensionProperties
+      keyof ColorProperties | keyof SizeProperties
     >,
     ColorProperties,
-    DimensionProperties {}
+    SizeProperties {}
