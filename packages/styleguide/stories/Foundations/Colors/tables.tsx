@@ -7,11 +7,15 @@ import {
 import { isString } from 'lodash';
 import React from 'react';
 
-import { Code, ColorScale } from '../../../.storybook/components';
+import { Code, ColorScale } from '~styleguide/blocks';
 
-export const excludedColors = ['black', 'white', 'beige', 'royalBlue'];
+type Colors = ColorScale | Record<string, ColorScale | string>;
 
-const createColorTable = (prefix: string, colors: any) => {
+type ColorScale = Record<string | number, string>;
+
+type HexShape = { id: string; hex: string };
+
+const createColorTable = (prefix: string, colors: Colors) => {
   return {
     rows: Object.entries(colors).map(([id, value]) => ({
       id,
@@ -22,7 +26,7 @@ const createColorTable = (prefix: string, colors: any) => {
         key: 'id',
         name: 'Variable',
         size: 'xl',
-        render: ({ id, hex }: any) => {
+        render: ({ id, hex }: HexShape) => {
           const name = isString(hex)
             ? `$${prefix}-${id}`
             : `$${prefix}-${id}-#{WEIGHT}`;
@@ -33,7 +37,7 @@ const createColorTable = (prefix: string, colors: any) => {
         key: 'swatch',
         name: 'Swatch',
         size: 'fill',
-        render: ({ hex }: any) => {
+        render: ({ hex }: HexShape) => {
           const colors = isString(hex) ? { hex } : hex;
           return <ColorScale colors={colors} />;
         },
