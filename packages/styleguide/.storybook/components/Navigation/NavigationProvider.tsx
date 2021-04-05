@@ -60,9 +60,7 @@ export const NavigationProvider: React.FC = ({ children }) => {
     if (type !== 'root' && path.length > 1) {
       const currentPath: string[] = [];
       const links: any = {};
-      if (path.length === 1) {
-        return [];
-      }
+
       path.forEach((path) => {
         currentPath.push(path);
 
