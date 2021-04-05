@@ -33,6 +33,7 @@ const IndividualPlansLinkArea = styled(LinkArea)`
 const SupportLinkArea = styled(LinkArea)`
   ${theme.breakpoints.sm} {
     grid-row-start: 3;
+    margin-top: 2rem;
   }
 `;
 
@@ -47,7 +48,15 @@ const MobileLinkArea = styled(LinkArea)`
 `;
 
 const MobileFooterHeading = styled(FooterHeading)`
-  margin-bottom: 0;
+  margin-bottom: 0.5rem;
+
+  ${theme.breakpoints.sm} {
+    margin-bottom: 1rem;
+  }
+
+  ${theme.breakpoints.lg} {
+    margin-bottom: 0;
+  }
 `;
 
 const MobileImageLink = styled.a`
@@ -153,7 +162,7 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({ userGeo }) => {
       </LinkArea>
       <MobileLinkArea>
         <MobileFooterHeading>Mobile</MobileFooterHeading>
-        <Box display={[, 'flex']} flexDirection="column">
+        <Box display={{ sm: 'flex' }} flexDirection={{ sm: 'column' }}>
           <MobileImageLink
             href="https://itunes.apple.com/us/app/codecademy-go/id1376029326"
             target="_blank"

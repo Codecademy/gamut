@@ -9,7 +9,7 @@ import { CompanyLinks, CompanyLinksProps } from './CompanyLinks';
 export type FooterNavLinksProps = CompanyLinksProps;
 
 const FooterNavLinksGrid = styled(LayoutGrid)`
-  ${theme.breakpoints.md} {
+  ${theme.breakpoints.sm} {
     padding: 2rem 0;
   }
 `;

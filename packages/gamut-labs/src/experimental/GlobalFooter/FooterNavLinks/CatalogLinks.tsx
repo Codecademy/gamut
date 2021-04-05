@@ -94,7 +94,7 @@ export const CatalogLinks: React.FC = () => {
     <CatalogLinksContainer>
       <FooterHeading>Course Catalog</FooterHeading>
       <CatalogContents>
-        <Box width="50%">
+        <Box width={{ base: '100%', md: '50%' }}>
           <FooterSubHeading as="h3">Languages</FooterSubHeading>
           <CatalogLinkArea>
             {languages.map(([slug, text]) => (
@@ -106,7 +106,7 @@ export const CatalogLinks: React.FC = () => {
             ))}
           </CatalogLinkArea>
         </Box>
-        <Box width="50%">
+        <Box width={{ base: '100%', md: '50%' }}>
           <FooterSubHeading as="h3">Subjects</FooterSubHeading>
           <CatalogLinkArea fullHeight>
             {subjects.map(([slug, text]) => (
