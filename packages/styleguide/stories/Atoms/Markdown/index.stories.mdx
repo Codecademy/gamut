@@ -1,6 +1,8 @@
 import { Markdown, TextDeprecated } from '@codecademy/gamut/src';
 import title from '@codecademy/macros/lib/title.macro';
-import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/blocks';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+
+import { PropsTable } from '~styleguide/blocks';
 
 import { elements, tags } from './examples';
 import exampleMarkdown from './markdown-example.md';
@@ -11,6 +13,7 @@ import exampleMarkdown from './markdown-example.md';
   parameters={{
     subtitle: 'Markdown renderer for all your markdown needs.',
     source: 'gamut',
+    status: 'updating',
   }}
   args={{
     text: `
@@ -25,7 +28,7 @@ This is markdown
   <Story name="Basics">{(args) => <Markdown {...args} />}</Story>
 </Canvas>
 
-<Props story="Basics" />
+<PropsTable story="Basics" />
 
 ## Full example
 
