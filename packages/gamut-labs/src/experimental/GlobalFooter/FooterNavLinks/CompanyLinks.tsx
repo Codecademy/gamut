@@ -1,5 +1,4 @@
 import { Anchor, Box, GridBox } from '@codecademy/gamut';
-import { theme } from '@codecademy/gamut-styles';
 import { ResponsiveProp } from '@codecademy/gamut-system';
 import styled from '@emotion/styled';
 import * as CSS from 'csstype';
@@ -14,16 +13,6 @@ export type CompanyLinksProps = {
   onClick: GlobalFooterClickHandler;
   userGeo: string;
 };
-
-const MobileLinkArea = styled(FooterLinkArea)`
-  grid-column: 1 / 3;
-
-  ${theme.breakpoints.sm} {
-    grid-column-end: 1;
-    grid-row: 2 / 4;
-    padding-top: 2rem;
-  }
-`;
 
 const MobileImageLink = styled(Anchor)();
 
@@ -127,7 +116,12 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
   );
 
   const mobile = (
-    <MobileLinkArea>
+    <FooterLinkArea
+      gridColumn="1 / 3"
+      gridColumnEnd={{ sm: '1' }}
+      gridRow={{ sm: '2 / 4' }}
+      paddingTop={{ sm: 32 }}
+    >
       <FooterHeading marginBottom={{ base: 8, sm: 16, lg: 0 }}>
         Mobile
       </FooterHeading>
@@ -157,7 +151,7 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
           />
         </MobileImageLink>
       </Box>
-    </MobileLinkArea>
+    </FooterLinkArea>
   );
 
   const resources = (
