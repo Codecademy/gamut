@@ -191,6 +191,7 @@ export const variance = {
       return (props) => {
         const { [prop]: selected = defaultVariant } = props;
         const styles = {};
+        if (!selected) return styles;
 
         return merge(
           styles,

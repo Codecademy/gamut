@@ -142,6 +142,14 @@ describe('static styles', () => {
         target: '*',
       });
     });
+
+    it('handles falsey values', () => {
+      const reseult = render({ variant: false });
+      expect(reseult).not.toHaveStyleRule('background', 'blue');
+      expect(reseult).not.toHaveStyleRule('background', 'navy', {
+        target: '*',
+      });
+    });
   });
 
   describe('CSS integration', () => {

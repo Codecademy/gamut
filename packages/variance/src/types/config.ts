@@ -108,7 +108,7 @@ export interface Variant<P extends AbstractParser> {
     defaultVariant?: keyof Props;
     base?: SelectorProps<Base, SystemProps<P>>;
     variants: SelectorMap<Props, SystemProps<P>>;
-  }): (props: VariantProps<PropKey, Keys> & ThemeProps) => CSSObject;
+  }): (props: VariantProps<PropKey, Keys | false> & ThemeProps) => CSSObject;
 }
 
 export interface CSS<P extends AbstractParser> {
