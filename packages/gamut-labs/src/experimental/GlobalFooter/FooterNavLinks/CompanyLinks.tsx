@@ -1,9 +1,10 @@
 import { Anchor, Box, GridBox } from '@codecademy/gamut';
 import { theme } from '@codecademy/gamut-styles';
+import { ResponsiveProp } from '@codecademy/gamut-system';
 import styled from '@emotion/styled';
+import * as CSS from 'csstype';
 import React from 'react';
 
-import { useBreakpointAtOrAbove } from '../../../lib/breakpointHooks';
 import { FooterHeading } from '../FooterHeading';
 import { FooterLinkArea, FooterLinkItem } from '../FooterLinks';
 import { GlobalFooterClickHandler } from '../types';
@@ -21,18 +22,6 @@ const MobileLinkArea = styled(FooterLinkArea)`
     grid-column-end: 1;
     grid-row: 2 / 4;
     padding-top: 2rem;
-  }
-`;
-
-const MobileFooterHeading = styled(FooterHeading)`
-  margin-bottom: 0.5rem;
-
-  ${theme.breakpoints.sm} {
-    margin-bottom: 1rem;
-  }
-
-  ${theme.breakpoints.lg} {
-    margin-bottom: 0;
   }
 `;
 
@@ -57,8 +46,6 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
   onClick,
   userGeo,
 }) => {
-  const smOrHigher = useBreakpointAtOrAbove('sm');
-
   const community = (
     <FooterLinkArea>
       <FooterHeading>Community</FooterHeading>
@@ -85,6 +72,30 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
           Events
         </Anchor>
       </FooterLinkItem>
+    </FooterLinkArea>
+  );
+
+  const company = (
+    <FooterLinkArea>
+      <FooterHeading>Company</FooterHeading>
+      <FooterLinkItem>
+        <Anchor href="/about" onClick={onClick} variant="interface">
+          About
+        </Anchor>
+      </FooterLinkItem>
+      <FooterLinkItem>
+        <Anchor href="/about/careers" onClick={onClick} variant="interface">
+          We&apos;re Hiring
+        </Anchor>
+      </FooterLinkItem>
+      {userGeo !== 'IN' && (
+        <FooterLinkItem>
+          <Anchor href="/shop" onClick={onClick} variant="interface">
+            Shop
+          </Anchor>
+        </FooterLinkItem>
+      )}
+      <SocialMediaLinks />
     </FooterLinkArea>
   );
 
@@ -117,7 +128,9 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
 
   const mobile = (
     <MobileLinkArea>
-      <MobileFooterHeading>Mobile</MobileFooterHeading>
+      <FooterHeading marginBottom={{ base: 8, sm: 16, lg: 0 }}>
+        Mobile
+      </FooterHeading>
       <Box display={{ sm: 'flex' }} flexDirection={{ sm: 'column' }}>
         <MobileImageLink
           href="https://itunes.apple.com/us/app/codecademy-go/id1376029326"
@@ -176,8 +189,8 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
     </FooterLinkArea>
   );
 
-  const support = (
-    <FooterLinkArea marginTop={{ sm: 16 }} order={{ sm: 3 }}>
+  const support = (display: ResponsiveProp<CSS.Properties['display']>) => (
+    <FooterLinkArea display={display} marginTop={{ sm: 16 }} order={{ sm: 3 }}>
       <FooterHeading>Support</FooterHeading>
       <FooterLinkItem>
         <Anchor
@@ -198,47 +211,14 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
         sm: 'repeat(3, minmax(0, 1fr))',
       }}
     >
-      <FooterLinkArea>
-        <FooterHeading>Company</FooterHeading>
-        <FooterLinkItem>
-          <Anchor href="/about" onClick={onClick} variant="interface">
-            About
-          </Anchor>
-        </FooterLinkItem>
-        <FooterLinkItem>
-          <Anchor href="/about/careers" onClick={onClick} variant="interface">
-            We&apos;re Hiring
-          </Anchor>
-        </FooterLinkItem>
-        {userGeo !== 'IN' && (
-          <FooterLinkItem>
-            <Anchor href="/shop" onClick={onClick} variant="interface">
-              Shop
-            </Anchor>
-          </FooterLinkItem>
-        )}
-        <SocialMediaLinks />
-      </FooterLinkArea>
-
-      {smOrHigher ? (
-        <>
-          {resources}
-          {community}
-          {individualPlans}
-          {enterprisePlans}
-          {mobile}
-          {support}
-        </>
-      ) : (
-        <>
-          {resources}
-          {support}
-          {community}
-          {individualPlans}
-          {enterprisePlans}
-          {mobile}
-        </>
-      )}
+      {company}
+      {resources}
+      {support({ base: 'unset', sm: 'none' })}
+      {community}
+      {individualPlans}
+      {enterprisePlans}
+      {mobile}
+      {support({ base: 'none', sm: 'unset' })}
     </GridBox>
   );
 };
