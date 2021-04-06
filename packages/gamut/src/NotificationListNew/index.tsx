@@ -2,7 +2,6 @@ import styled from '@emotion/styled';
 import { isEmpty } from 'lodash';
 import React from 'react';
 
-import { Box, Pattern } from '..';
 import { Notification } from '../NotificationList/typings';
 import { EmptyNotification } from './EmptyNotification';
 import { NotificationItemNew } from './NotificationItemNew';
@@ -26,30 +25,18 @@ export const NotificationListNew: React.FC<NotificationListNewProps> = ({
   onDismiss,
   headerElementId,
 }) => {
-  const separatorPattern = (
-    <Box as="li" paddingX={32} margin={0} aria-hidden="true">
-      <Pattern name="dotsDense" height="1px" display="flex" />
-    </Box>
-  );
-
-  return (
+  return isEmpty(notifications) ? (
+    <EmptyNotification />
+  ) : (
     <UnstyledUnorderedList aria-labelledby={headerElementId} aria-live="polite">
-      {isEmpty(notifications) ? (
-        <EmptyNotification />
-      ) : (
-        notifications.map((notification: Notification) => {
-          return (
-            <React.Fragment key={notification.id}>
-              <NotificationItemNew
-                notification={notification}
-                handleClick={() => onNotificationClick?.(notification)}
-                handleDismiss={() => onDismiss?.(notification)}
-              />
-              {separatorPattern}
-            </React.Fragment>
-          );
-        })
-      )}
+      {notifications.map((notification: Notification) => (
+        <NotificationItemNew
+          key={notification.id}
+          notification={notification}
+          handleClick={() => onNotificationClick?.(notification)}
+          handleDismiss={() => onDismiss?.(notification)}
+        />
+      ))}
     </UnstyledUnorderedList>
   );
 };

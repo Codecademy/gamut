@@ -12,7 +12,7 @@ import { colors } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React, { ReactElement } from 'react';
 
-import { Box, FlexBox, IconButton, Text } from '..';
+import { Box, FlexBox, IconButton, Pattern, Text } from '..';
 import { Notification } from '../NotificationList/typings';
 
 const StyledLink = styled.a`
@@ -68,13 +68,13 @@ export const NotificationItemNew: React.FC<NotificationItemNewProps> = ({
   const { date, imageUrl, link, text, type, id } = notification;
   const notificationItemId = `NotificationItem${id}`;
 
-  const renderIcon = () => {
-    const renderIllustration = (Illustration: React.FC<IllustrationProps>) => (
-      <Box display="inline-flex" aria-hidden="true">
-        <Illustration height={48} width={48} />
-      </Box>
-    );
+  const renderIllustration = (Illustration: React.FC<IllustrationProps>) => (
+    <Box display="inline-flex" aria-hidden="true">
+      <Illustration height={48} width={48} />
+    </Box>
+  );
 
+  const renderIcon = () => {
     if (imageUrl) return <StyledImg src={imageUrl} alt="" />;
 
     switch (type) {
@@ -120,33 +120,41 @@ export const NotificationItemNew: React.FC<NotificationItemNewProps> = ({
     />
   );
 
+  const separatorPattern = (
+    <Box paddingX={32} margin={0} aria-hidden="true">
+      <Pattern name="dotsDense" height="1px" display="flex" />
+    </Box>
+  );
+
   return (
-    <FlexBox
-      as="li"
-      paddingY={24}
-      paddingX={32}
-      alignItems="flex-start"
-      justifyContent="space-between"
-      position="relative"
-    >
-      {link ? (
-        <>
-          <StyledLink
-            href={link}
-            aria-label={`${text}, ${date} ago`}
-            rel="noopener noreferrer"
-            target="_blank"
-            onClick={(event) => handleClick?.(event)}
-          >
-            {notificationContent}
-          </StyledLink>
-        </>
-      ) : (
-        <>{notificationContent}</>
-      )}
-      <FlexBox alignItems="flex-start" zIndex={1}>
-        {handleDismiss && dismissIcon}
+    <li>
+      <FlexBox
+        paddingY={24}
+        paddingX={32}
+        alignItems="flex-start"
+        justifyContent="space-between"
+        position="relative"
+      >
+        {link ? (
+          <>
+            <StyledLink
+              href={link}
+              aria-label={`${text}, ${date} ago`}
+              rel="noopener noreferrer"
+              target="_blank"
+              onClick={(event) => handleClick?.(event)}
+            >
+              {notificationContent}
+            </StyledLink>
+          </>
+        ) : (
+          <>{notificationContent}</>
+        )}
+        <FlexBox alignItems="flex-start" zIndex={1}>
+          {handleDismiss && dismissIcon}
+        </FlexBox>
       </FlexBox>
-    </FlexBox>
+      {separatorPattern}
+    </li>
   );
 };
