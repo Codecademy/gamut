@@ -1,7 +1,7 @@
 import { theme } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 
-import { Text } from '../Text';
+import { Text } from '@codecademy/gamut';
 
 export const FooterSubHeading = styled(Text)`
   font-size: 0.875rem;
