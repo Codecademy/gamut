@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [33.7.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@33.6.3...@codecademy/styleguide@33.7.0) (2021-04-06)
+
+
+### Features
+
+* **Docs:** Docs refresh (Grid, Legacy Colors, Typography) [GM-118] [GM-194]  ([623e7b3](https://github.com/Codecademy/client-modules/commit/623e7b3c4fd3b22006af5dc19780aadb2f235f18))
+
+
+
 ### [33.6.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@33.6.2...@codecademy/styleguide@33.6.3) (2021-04-05)
 
 
