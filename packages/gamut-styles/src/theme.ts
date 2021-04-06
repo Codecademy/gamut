@@ -11,12 +11,12 @@ export const baseTheme = {
   colors: tokens.colors,
   spacing: tokens.spacing,
   timing: tokens.timing,
-  header: tokens.header,
-  content: tokens.contentWidth,
   borders: tokens.borders,
+  header: tokens.header,
+  contentWidth: tokens.contentWidth,
 } as const;
 
 export const {
   theme,
   cssVariables: themeCssVariables,
-} = createThemeVariables(baseTheme, ['header', 'content']);
+} = createThemeVariables(baseTheme, ['header', 'contentWidth']);
