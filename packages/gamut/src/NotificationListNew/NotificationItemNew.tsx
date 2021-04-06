@@ -12,7 +12,7 @@ import { colors } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React, { ReactElement } from 'react';
 
-import { Box, FlexBox, IconButton } from '..';
+import { Box, FlexBox, IconButton, Text } from '..';
 import { Notification } from '../NotificationList/typings';
 
 const StyledLink = styled.a`
@@ -96,13 +96,13 @@ export const NotificationItemNew: React.FC<NotificationItemNewProps> = ({
   const notificationContent: ReactElement = (
     <FlexBox zIndex={1} position="relative">
       {renderIcon()}
-      <Box flexBasis={0} flexGrow={1} paddingLeft={12} textColor="navy">
-        <Box as="span" fontSize={14} id={notificationItemId}>
+      <Box flexBasis={0} flexGrow={1} paddingLeft={12}>
+        <Text id={notificationItemId} fontSize={14} textColor="navy">
           {text}
-        </Box>
-        <Box as="span" fontSize={14} color="gray-600" marginLeft={4}>
+        </Text>
+        <Text fontSize={14} textColor="gray-600" marginLeft={4}>
           {date}
-        </Box>
+        </Text>
       </Box>
     </FlexBox>
   );
