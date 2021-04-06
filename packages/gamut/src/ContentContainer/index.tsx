@@ -8,7 +8,7 @@ const contentContainerVariants = variant({
   variants: {
     medium: {
       paddingX: [16, 32, 64, , 96],
-      maxWidth: theme.content.md,
+      maxWidth: theme.contentWidths.md,
     },
     wide: {
       paddingX: [, , 24, 32],

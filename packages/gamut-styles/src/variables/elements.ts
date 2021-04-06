@@ -1,7 +1,7 @@
 import { pxRem } from '../styles';
 import { breakpoints } from './responsive';
 
-export const contentWidth = {
+export const contentWidths = {
   md: pxRem(breakpoints.lg),
   max: pxRem(breakpoints.xl),
 };

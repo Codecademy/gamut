@@ -13,10 +13,10 @@ export const baseTheme = {
   timing: tokens.timing,
   borders: tokens.borders,
   header: tokens.header,
-  contentWidth: tokens.contentWidth,
+  contentWidths: tokens.contentWidths,
 } as const;
 
 export const {
   theme,
   cssVariables: themeCssVariables,
-} = createThemeVariables(baseTheme, ['header', 'contentWidth']);
+} = createThemeVariables(baseTheme, ['header', 'contentWidths']);
