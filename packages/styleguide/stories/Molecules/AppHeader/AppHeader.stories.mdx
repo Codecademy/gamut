@@ -2,8 +2,8 @@ import { IconButton } from '@codecademy/gamut/src';
 import { FaviconIcon } from '@codecademy/gamut-icons/src';
 import { AppHeader } from '@codecademy/gamut-labs/src';
 import title from '@codecademy/macros/lib/title.macro';
-import { Canvas, Meta, Story } from '@storybook/addon-docs/dist/blocks';
-import LinkTo from '@storybook/addon-links/dist/react/components/link';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import LinkTo from '@storybook/addon-links/react';
 
 import { PropsTable } from '~styleguide/blocks';
 
@@ -14,7 +14,7 @@ import { MOCK_DROPDOWN_1 } from './MockAppHeaderElements';
   component={AppHeader}
   parameters={{
     layout: 'padded',
-    status: 'volatile',
+    status: 'updating',
     subtitle: `A flexible header component, used by GlobalHeader. Takes in an object with AppHeaderItems and maps those items to their corresponding AppHeader components.`,
   }}
   args={{

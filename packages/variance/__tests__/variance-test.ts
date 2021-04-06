@@ -1,35 +1,13 @@
-import { variance } from '../core';
-import { parseSize } from '../transforms/parseSize';
+import { variance } from '../src/core';
+import { parseSize } from '../src/transforms/parseSize';
+import { theme } from './__fixtures__/theme';
 
-const theme = {
-  breakpoints: {
-    xs: 'XS',
-    sm: 'SM',
-    md: 'MD',
-    lg: 'LG',
-    xl: 'XL',
-  },
-  spacing: {
-    0: 0,
-    4: '0.25rem',
-    8: '0.5rem',
-    12: '0.75rem',
-    16: '1rem',
-    24: '1.5rem',
-    32: '2rem',
-    48: '3rem',
-    64: '4rem',
-  },
-};
-
-const testVariance = variance.withTheme(theme);
-
-const space = testVariance.create({
+const space = variance.create({
   margin: { property: 'margin', scale: 'spacing' },
   padding: { property: 'padding', scale: 'spacing' },
 });
 
-const layout = testVariance.create({
+const layout = variance.create({
   width: {
     property: 'width',
     transform: (val: string) => `${parseInt(val, 10) / 16}rem`,
@@ -109,11 +87,11 @@ describe('style props', () => {
       });
     });
     it('renders media map arrays styles', () => {
-      const sizes = { base: 4, xs: 8, sm: 16, md: 24, lg: 32, xl: 48 } as const;
+      const sizes = { _: 4, xs: 8, sm: 16, md: 24, lg: 32, xl: 48 } as const;
       const rem = (val: number) => `${val / 16}rem`;
 
       expect(space({ margin: sizes, theme })).toEqual({
-        margin: rem(sizes.base),
+        margin: rem(sizes._),
         XS: {
           margin: rem(sizes.xs),
         },
@@ -132,12 +110,12 @@ describe('style props', () => {
       });
     });
     it('renders media map arrays styles', () => {
-      const sizes = { base: 4, xs: 8, sm: 16, md: 24, lg: 32, xl: 48 } as const;
+      const sizes = { _: 4, xs: 8, sm: 16, md: 24, lg: 32, xl: 48 } as const;
       const rem = (val: number) => `${val / 16}rem`;
 
       expect(space({ margin: sizes, padding: sizes, theme })).toEqual({
-        margin: rem(sizes.base),
-        padding: rem(sizes.base),
+        margin: rem(sizes._),
+        padding: rem(sizes._),
         XS: {
           margin: rem(sizes.xs),
           padding: rem(sizes.xs),
@@ -167,9 +145,15 @@ describe('style props', () => {
   });
   describe('compose', () => {
     it('combines multiple parsers into one parser', () => {
-      const composed = testVariance.compose(layout, space);
+      const composed = variance.compose(layout, space);
 
-      expect(composed({ height: '24px', padding: [4, 16], theme })).toEqual({
+      expect(
+        composed({
+          height: '24px',
+          padding: [4, 16],
+          theme,
+        })
+      ).toEqual({
         height: '1.5rem',
         padding: '0.25rem',
         XS: {
@@ -183,15 +167,15 @@ describe('style props', () => {
 describe('css', () => {
   const marginTransform = jest.fn();
 
-  const css = testVariance.createCss({
+  const css = variance.createCss({
     width: { property: 'width', transform: parseSize },
     height: { property: 'height', transform: parseSize },
     margin: {
       property: 'margin',
-      scale: 'spacing',
+      scale: theme.spacing,
       transform: marginTransform,
     },
-    padding: { property: 'padding', scale: 'spacing' },
+    padding: { property: 'padding', scale: theme.spacing },
   });
 
   beforeEach(() => {
@@ -212,7 +196,10 @@ describe('css', () => {
     });
   });
   it('works with media queries', () => {
-    const returnedFn = css({ width: ['100%', '200%'], height: '50' });
+    const returnedFn = css({
+      width: ['100%', '200%'],
+      height: '50',
+    });
 
     expect(returnedFn({ theme })).toEqual({
       width: '100%',
@@ -223,11 +210,61 @@ describe('css', () => {
   it('allows selectors', () => {
     const returnedFn = css({
       width: ['100%', '200%'],
+      '&:hover': {
+        width: '50%',
+      },
     });
 
     expect(returnedFn({ theme })).toEqual({
       width: '100%',
       XS: { width: '200%' },
+      '&:hover': {
+        width: '50%',
+      },
+    });
+  });
+  it('allows selectors with media queries', () => {
+    const returnedFn = css({
+      width: ['100%', '200%'],
+      '&:hover': {
+        width: ['50%', '25%'],
+      },
+    });
+
+    expect(returnedFn({ theme })).toEqual({
+      width: '100%',
+      XS: { width: '200%' },
+      '&:hover': {
+        width: '50%',
+        XS: { width: '25%' },
+      },
+    });
+  });
+
+  it('allows static valid CSS to pass through', () => {
+    const returnedFn = css({
+      display: 'grid',
+      width: ['100%', '200%'],
+    });
+
+    expect(returnedFn({ theme })).toEqual({
+      display: 'grid',
+      width: '100%',
+      XS: { width: '200%' },
+    });
+  });
+
+  it('allows static valid CSS to pass through within selectors', () => {
+    const returnedFn = css({
+      display: 'grid',
+      '&:hover': {
+        display: 'none',
+      },
+    });
+
+    expect(returnedFn({ theme })).toEqual({
+      display: 'grid',
+      '&:hover': { display: 'none' },
     });
   });
 
@@ -251,7 +288,7 @@ describe('css', () => {
 describe('variants', () => {
   const marginTransform = jest.fn();
 
-  const variant = testVariance.createVariant({
+  const variant = variance.createVariant({
     width: { property: 'width', transform: parseSize },
     height: { property: 'height', transform: parseSize },
     margin: {
@@ -312,6 +349,53 @@ describe('variants', () => {
       width: '100%',
     });
   });
+  it('allows variant props with selectors', () => {
+    const myVariant = variant({
+      prop: 'sweet',
+      variants: {
+        cool: {
+          width: '100%',
+          '&:hover': {
+            width: '50%',
+          },
+        },
+      },
+    });
+
+    expect(myVariant({ theme, sweet: 'cool' })).toEqual({
+      width: '100%',
+      '&:hover': {
+        width: '50%',
+      },
+    });
+  });
+
+  it('allows variant props with selectors with media queries', () => {
+    const myVariant = variant({
+      prop: 'sweet',
+      variants: {
+        cool: {
+          width: '100%',
+          '&:hover': {
+            width: ['50%', '25%'],
+          },
+        },
+        story: {
+          margin: 0,
+        },
+      },
+    });
+
+    expect(myVariant({ theme, sweet: 'cool' })).toEqual({
+      width: '100%',
+      '&:hover': {
+        width: '50%',
+        XS: {
+          width: '25%',
+        },
+      },
+    });
+  });
   it('caches the variant once called', () => {
     const myVariant = variant({
       variants: {
@@ -320,6 +404,7 @@ describe('variants', () => {
         },
       },
     });
+    myVariant({ theme });
 
     expect(marginTransform).toHaveBeenCalledTimes(0);
 

@@ -67,6 +67,8 @@ Array [
   "RadialProgress",
   "Radio",
   "RadioGroup",
+  "reactRecurlyFormFieldFocusStyles",
+  "reactRecurlyFormFieldPaddingStyles",
   "Row",
   "Select",
   "SideMenu",
