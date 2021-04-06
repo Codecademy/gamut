@@ -3,6 +3,7 @@ import { theme } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React from 'react';
 
+import { useBreakpointAtOrAbove } from '../../../lib/breakpointHooks';
 import { FooterHeading } from '../FooterHeading';
 import { FooterLinkArea, FooterLinkItem } from '../FooterLinks';
 import { GlobalFooterClickHandler } from '../types';
@@ -12,19 +13,6 @@ export type CompanyLinksProps = {
   onClick: GlobalFooterClickHandler;
   userGeo: string;
 };
-
-const IndividualPlansLinkArea = styled(FooterLinkArea)`
-  ${theme.breakpoints.sm} {
-    grid-row-start: 2;
-  }
-`;
-
-const SupportLinkArea = styled(FooterLinkArea)`
-  ${theme.breakpoints.sm} {
-    grid-row-start: 3;
-    margin-top: 2rem;
-  }
-`;
 
 const MobileLinkArea = styled(FooterLinkArea)`
   grid-column: 1 / 3;
@@ -69,6 +57,140 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
   onClick,
   userGeo,
 }) => {
+  const smOrHigher = useBreakpointAtOrAbove('sm');
+
+  const community = (
+    <FooterLinkArea>
+      <FooterHeading>Community</FooterHeading>
+      <FooterLinkItem>
+        <Anchor
+          href="https://discuss.codecademy.com"
+          onClick={onClick}
+          variant="interface"
+        >
+          Forums
+        </Anchor>
+      </FooterLinkItem>
+      <FooterLinkItem>
+        <Anchor
+          href="https://community.codecademy.com/chapters"
+          onClick={onClick}
+          variant="interface"
+        >
+          Chapters
+        </Anchor>
+      </FooterLinkItem>
+      <FooterLinkItem>
+        <Anchor href="/events" onClick={onClick} variant="interface">
+          Events
+        </Anchor>
+      </FooterLinkItem>
+    </FooterLinkArea>
+  );
+
+  const enterprisePlans = (
+    <FooterLinkArea>
+      <FooterHeading>Enterprise Plans</FooterHeading>
+      <FooterLinkItem>
+        <Anchor href="/business" onClick={onClick} variant="interface">
+          For Business
+        </Anchor>
+      </FooterLinkItem>
+    </FooterLinkArea>
+  );
+
+  const individualPlans = (
+    <FooterLinkArea>
+      <FooterHeading>Individual Plans</FooterHeading>
+      <FooterLinkItem>
+        <Anchor href="/pro/membership" onClick={onClick} variant="interface">
+          Pro Membership
+        </Anchor>
+      </FooterLinkItem>
+      <FooterLinkItem>
+        <Anchor href="/student-center" onClick={onClick} variant="interface">
+          For Students
+        </Anchor>
+      </FooterLinkItem>
+    </FooterLinkArea>
+  );
+
+  const mobile = (
+    <MobileLinkArea>
+      <MobileFooterHeading>Mobile</MobileFooterHeading>
+      <Box display={{ sm: 'flex' }} flexDirection={{ sm: 'column' }}>
+        <MobileImageLink
+          href="https://itunes.apple.com/us/app/codecademy-go/id1376029326"
+          onClick={onClick}
+          target="_blank"
+        >
+          <AppleMobileAppImage
+            alt="Download on the App Store"
+            height="calc(40px + 1rem)"
+            src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-US?size=140x20&amp;releaseDate=1533168000"
+            width="calc(120px + 1.5rem)"
+          />
+        </MobileImageLink>
+        <MobileImageLink
+          href="https://play.google.com/store/apps/details?id=com.ryzac.codecademygo"
+          onClick={onClick}
+          target="_blank"
+        >
+          <AndroidMobileAppImage
+            alt="Get it on Google Play"
+            height="60px"
+            src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
+            width="155px"
+          />
+        </MobileImageLink>
+      </Box>
+    </MobileLinkArea>
+  );
+
+  const resources = (
+    <FooterLinkArea>
+      <FooterHeading>Resources</FooterHeading>
+      <FooterLinkItem>
+        <Anchor
+          href="https://news.codecademy.com"
+          onClick={onClick}
+          variant="interface"
+        >
+          Blog
+        </Anchor>
+      </FooterLinkItem>
+      <FooterLinkItem>
+        <Anchor
+          href="/resources/cheatsheets/all"
+          onClick={onClick}
+          variant="interface"
+        >
+          Cheatsheets
+        </Anchor>
+      </FooterLinkItem>
+      <FooterLinkItem>
+        <Anchor href="/articles" onClick={onClick} variant="interface">
+          Articles
+        </Anchor>
+      </FooterLinkItem>
+    </FooterLinkArea>
+  );
+
+  const support = (
+    <FooterLinkArea marginTop={{ sm: 16 }} order={{ sm: 3 }}>
+      <FooterHeading>Support</FooterHeading>
+      <FooterLinkItem>
+        <Anchor
+          href="https://help.codecademy.com"
+          onClick={onClick}
+          variant="interface"
+        >
+          Help Center
+        </Anchor>
+      </FooterLinkItem>
+    </FooterLinkArea>
+  );
+
   return (
     <GridBox
       gridTemplateColumns={{
@@ -97,120 +219,26 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
         )}
         <SocialMediaLinks />
       </FooterLinkArea>
-      <FooterLinkArea>
-        <FooterHeading>Resources</FooterHeading>
-        <FooterLinkItem>
-          <Anchor
-            href="https://news.codecademy.com"
-            onClick={onClick}
-            variant="interface"
-          >
-            Blog
-          </Anchor>
-        </FooterLinkItem>
-        <FooterLinkItem>
-          <Anchor
-            href="/resources/cheatsheets/all"
-            onClick={onClick}
-            variant="interface"
-          >
-            Cheatsheets
-          </Anchor>
-        </FooterLinkItem>
-        <FooterLinkItem>
-          <Anchor href="/articles" onClick={onClick} variant="interface">
-            Articles
-          </Anchor>
-        </FooterLinkItem>
-      </FooterLinkArea>
-      <SupportLinkArea>
-        <FooterHeading>Support</FooterHeading>
-        <FooterLinkItem>
-          <Anchor
-            href="https://help.codecademy.com"
-            onClick={onClick}
-            variant="interface"
-          >
-            Help Center
-          </Anchor>
-        </FooterLinkItem>
-      </SupportLinkArea>
-      <FooterLinkArea>
-        <FooterHeading>Community</FooterHeading>
-        <FooterLinkItem>
-          <Anchor
-            href="https://discuss.codecademy.com"
-            onClick={onClick}
-            variant="interface"
-          >
-            Forums
-          </Anchor>
-        </FooterLinkItem>
-        <FooterLinkItem>
-          <Anchor
-            href="https://community.codecademy.com/chapters"
-            onClick={onClick}
-            variant="interface"
-          >
-            Chapters
-          </Anchor>
-        </FooterLinkItem>
-        <FooterLinkItem>
-          <Anchor href="/events" onClick={onClick} variant="interface">
-            Events
-          </Anchor>
-        </FooterLinkItem>
-      </FooterLinkArea>
-      <IndividualPlansLinkArea>
-        <FooterHeading>Individual Plans</FooterHeading>
-        <FooterLinkItem>
-          <Anchor href="/pro/membership" onClick={onClick} variant="interface">
-            Pro Membership
-          </Anchor>
-        </FooterLinkItem>
-        <FooterLinkItem>
-          <Anchor href="/student-center" onClick={onClick} variant="interface">
-            For Students
-          </Anchor>
-        </FooterLinkItem>
-      </IndividualPlansLinkArea>
-      <FooterLinkArea>
-        <FooterHeading>Enterprise Plans</FooterHeading>
-        <FooterLinkItem>
-          <Anchor href="/business" onClick={onClick} variant="interface">
-            For Business
-          </Anchor>
-        </FooterLinkItem>
-      </FooterLinkArea>
-      <MobileLinkArea>
-        <MobileFooterHeading>Mobile</MobileFooterHeading>
-        <Box display={{ sm: 'flex' }} flexDirection={{ sm: 'column' }}>
-          <MobileImageLink
-            href="https://itunes.apple.com/us/app/codecademy-go/id1376029326"
-            onClick={onClick}
-            target="_blank"
-          >
-            <AppleMobileAppImage
-              alt="Download on the App Store"
-              height="calc(40px + 1rem)"
-              src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-US?size=140x20&amp;releaseDate=1533168000"
-              width="calc(120px + 1.5rem)"
-            />
-          </MobileImageLink>
-          <MobileImageLink
-            href="https://play.google.com/store/apps/details?id=com.ryzac.codecademygo"
-            onClick={onClick}
-            target="_blank"
-          >
-            <AndroidMobileAppImage
-              alt="Get it on Google Play"
-              height="60px"
-              src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
-              width="155px"
-            />
-          </MobileImageLink>
-        </Box>
-      </MobileLinkArea>
+
+      {smOrHigher ? (
+        <>
+          {resources}
+          {community}
+          {individualPlans}
+          {enterprisePlans}
+          {mobile}
+          {support}
+        </>
+      ) : (
+        <>
+          {resources}
+          {support}
+          {community}
+          {individualPlans}
+          {enterprisePlans}
+          {mobile}
+        </>
+      )}
     </GridBox>
   );
 };
