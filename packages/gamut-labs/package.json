@@ -29,7 +29,7 @@
     "@codecademy/gamut-tests": "^2.3.4",
     "classnames": "^2.2.5",
     "react-focus-on": "^3.5.1",
-    "react-hotkeys-hook": "^2.3.1",
+    "react-hotkeys-hook": "^3.3.0",
     "react-use": "15.3.8"
   },
   "scripts": {
