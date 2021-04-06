@@ -64,7 +64,7 @@ export const SkipToContent: React.FC<SkipToContentProps> = ({
 };
 
 export const SkipToContentTarget = styled.div(({ theme, children }) => {
-  const offset = theme.elements.headerHeight;
+  const offset = theme.header.height;
   if (children) {
     return css`
       padding-top: calc(${offset} + 1rem);

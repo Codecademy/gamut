@@ -18,8 +18,3 @@ export const mediaQueries = {
   lg: createMediaQuery('lg', 'min'),
   xl: createMediaQuery('xl', 'min'),
 };
-
-export const contentWidths = {
-  md: breakpoints.lg,
-  max: breakpoints.xl,
-};

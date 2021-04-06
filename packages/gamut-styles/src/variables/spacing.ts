@@ -1,9 +1,4 @@
 import { pxRem } from '../styles/pxRem';
-import { base } from './base';
-
-export const baseUnit = pxRem(base);
-
-export const headerHeight = pxRem(base * 4);
 
 export const spacing = {
   0: 0,

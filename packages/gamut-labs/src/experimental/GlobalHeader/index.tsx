@@ -112,7 +112,7 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
     <>
       <Box
         display={{ base: 'none', md: 'block' }}
-        height={theme.elements.headerHeight}
+        height={theme.header.height}
         className={headerClasses}
       >
         <AppHeader
@@ -125,7 +125,7 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
       </Box>
       <Box
         display={{ base: 'block', md: 'none' }}
-        height={theme.elements.headerHeight}
+        height={theme.header.height}
         className={headerClasses}
       >
         <AppHeaderMobile

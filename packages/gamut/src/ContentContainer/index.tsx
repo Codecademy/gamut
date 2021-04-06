@@ -1,4 +1,4 @@
-import { contentWidths, variant } from '@codecademy/gamut-styles';
+import { theme, variant } from '@codecademy/gamut-styles';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 
@@ -8,7 +8,7 @@ const contentContainerVariants = variant({
   variants: {
     medium: {
       paddingX: [16, 32, 64, , 96],
-      maxWidth: contentWidths.max,
+      maxWidth: theme.content.md,
     },
     wide: {
       paddingX: [, , 24, 32],

@@ -1,5 +1,4 @@
 import { pxRem } from '../styles/pxRem';
-import { deprecatedColors as colorSwatch } from './deprecated-colors';
 
 export const fontAccent = `"Suisse", "Apercu", -apple-system, BlinkMacSystemFont,
 "Segoe UI", "Roboto", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
@@ -20,18 +19,6 @@ export const fontFamily = {
   base: fontBase,
   monospace: fontMonospace,
   system: fontSystem,
-};
-
-export const fontColor = {
-  base: colorSwatch.gray[800],
-  heading: colorSwatch.gray[900],
-  link: colorSwatch.blue[500],
-  linkHover: colorSwatch.blue[700],
-};
-
-export const fontDecoration = {
-  link: 'none',
-  linkHover: 'underline',
 };
 
 export const fontSize = {

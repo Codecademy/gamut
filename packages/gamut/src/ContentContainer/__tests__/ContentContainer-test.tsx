@@ -1,4 +1,4 @@
-import { contentWidths } from '@codecademy/gamut-styles';
+import { theme } from '@codecademy/gamut-styles';
 import { setupRtl } from '@codecademy/gamut-tests';
 
 import { ContentContainer } from '..';
@@ -10,7 +10,7 @@ describe('ContentContainer', () => {
     const { view } = renderView({ size: 'medium' });
 
     expect(view.container.firstChild).toHaveStyle(
-      `maxWidth: ${contentWidths.max}`
+      `maxWidth: ${theme.content.md}`
     );
   });
 });
