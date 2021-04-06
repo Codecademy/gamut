@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [33.7.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@33.6.3...@codecademy/styleguide@33.7.0) (2021-04-06)
+
+
+### Features
+
+* **Docs:** Docs refresh (Grid, Legacy Colors, Typography) [GM-118] [GM-194]  ([623e7b3](https://github.com/Codecademy/client-modules/commit/623e7b3c4fd3b22006af5dc19780aadb2f235f18))
+
+
+
+### [33.6.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@33.6.2...@codecademy/styleguide@33.6.3) (2021-04-05)
+
+
+### Bug Fixes
+
+* Typo... ([16a6eec](https://github.com/Codecademy/client-modules/commit/16a6eecf9e8bedefcec73d26f84af2bc456c80a2))
+
+
+
 ### [33.6.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@33.6.1...@codecademy/styleguide@33.6.2) (2021-04-05)
 
 **Note:** Version bump only for package @codecademy/styleguide
