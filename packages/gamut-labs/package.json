@@ -27,6 +27,7 @@
     "@codecademy/gamut-styles": "^9.1.4",
     "@codecademy/gamut-system": "^0.6.1",
     "@codecademy/gamut-tests": "^2.3.4",
+    "@codecademy/variance": "^0.5.0",
     "classnames": "^2.2.5",
     "react-focus-on": "^3.5.1",
     "react-hotkeys-hook": "^2.3.1",

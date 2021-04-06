@@ -14,7 +14,8 @@
     "@codecademy/gamut-labs": "^13.2.10",
     "@codecademy/gamut-styles": "^9.1.4",
     "@codecademy/gamut-system": "^0.6.1",
-    "@codecademy/gamut-tests": "^2.3.4"
+    "@codecademy/gamut-tests": "^2.3.4",
+    "@codecademy/variance": "^0.5.0"
   },
   "license": "MIT",
   "publishConfig": {
