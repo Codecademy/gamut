@@ -3,6 +3,7 @@ import { get, identity, isObject, merge } from 'lodash';
 import {
   AbstractParser,
   AbstractPropTransformer,
+  Compose,
   CSS,
   Parser,
   Prop,
@@ -11,7 +12,6 @@ import {
   Variant,
 } from './types/config';
 import { CSSObject, ThemeProps } from './types/props';
-import { AllUnionKeys, KeyFromUnion } from './types/utils';
 import { getStaticCss } from './utils/getStaticProperties';
 import { orderPropNames } from './utils/propNames';
 import {
@@ -115,17 +115,11 @@ export const variance = {
     };
   },
   compose<Args extends AbstractParser[]>(...parsers: Args) {
-    type MergedParser = {
-      [K in AllUnionKeys<Args[number]['config']>]: KeyFromUnion<
-        Args[number]['config'],
-        K
-      >;
-    };
     return this.createParser(
       parsers.reduce(
         (carry, parser) => ({ ...carry, ...parser.config }),
         {}
-      ) as MergedParser
+      ) as Compose<Args>
     );
   },
   createCss<

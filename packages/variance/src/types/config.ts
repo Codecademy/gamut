@@ -9,7 +9,7 @@ import {
   SelectorProps,
   ThemeProps,
 } from './props';
-import { Key } from './utils';
+import { AllUnionKeys, Key, KeyFromUnion } from './utils';
 
 export type LiteralScale = Record<string | number, string | number>;
 
@@ -38,7 +38,7 @@ export interface AbstractParser {
   config: Record<string, AbstractPropTransformer>;
 }
 
-type PropertyValues<
+export type PropertyValues<
   Property extends keyof PropertyTypes,
   All extends boolean = false
 > = Exclude<PropertyTypes[Property], All extends true ? never : object | any[]>;
@@ -69,17 +69,6 @@ export interface PropTransformer<P extends string, C extends Prop>
 export type TransformerMap<Config extends Record<string, Prop>> = {
   [P in Key<keyof Config>]: PropTransformer<Key<P>, Config[P]>;
 };
-
-export type ParserProps<
-  Config extends Record<string, AbstractPropTransformer>
-> = ThemeProps<
-  {
-    [P in keyof Config]?: Parameters<
-      Config[P]['styleFn']
-    >[2][Config[P]['prop']];
-  }
->;
-
 export interface Parser<
   Config extends Record<string, AbstractPropTransformer>
 > {
@@ -88,15 +77,12 @@ export interface Parser<
   config: Config;
 }
 
-export type SystemProps<P extends AbstractParser> = Omit<
-  Parameters<P>[0],
-  'theme'
->;
-
-type VariantProps<T extends string, V> = {
-  [Key in T]?: V;
+export type Compose<Args extends AbstractParser[]> = {
+  [K in AllUnionKeys<Args[number]['config']>]: KeyFromUnion<
+    Args[number]['config'],
+    K
+  >;
 };
-
 export interface Variant<P extends AbstractParser> {
   <
     Keys extends keyof Props,
@@ -116,3 +102,22 @@ export interface CSS<P extends AbstractParser> {
     props: ThemeProps
   ) => CSSObject;
 }
+
+export type ParserProps<
+  Config extends Record<string, AbstractPropTransformer>
+> = ThemeProps<
+  {
+    [P in keyof Config]?: Parameters<
+      Config[P]['styleFn']
+    >[2][Config[P]['prop']];
+  }
+>;
+
+export type SystemProps<P extends AbstractParser> = Omit<
+  Parameters<P>[0],
+  'theme'
+>;
+
+type VariantProps<T extends string, V> = {
+  [Key in T]?: V;
+};
