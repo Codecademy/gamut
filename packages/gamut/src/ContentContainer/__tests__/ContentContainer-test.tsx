@@ -10,7 +10,7 @@ describe('ContentContainer', () => {
     const { view } = renderView({ size: 'medium' });
 
     expect(view.container.firstChild).toHaveStyle(
-      `maxWidth: ${theme.content.md}`
+      `maxWidth: ${theme.contentWidths.md}`
     );
   });
 });
