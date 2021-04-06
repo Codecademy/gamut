@@ -1,23 +1,18 @@
-import { pxRem, styledConfig, system } from '@codecademy/gamut-styles';
+import { pxRem, styledConfig, system, theme } from '@codecademy/gamut-styles';
 import { StyleProps, variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
+import { pick } from 'lodash';
 
-const gutters = {
-  sm: 8,
-  md: 16,
-  lg: 24,
-  xl: 32,
-};
+const gutters = pick(theme.spacing, [8, 16, 24, 32]);
 
 const grid = variance.create({
   gap: {
     property: 'gap',
     properties: ['rowGap', 'columnGap'],
     scale: gutters,
-    transform: pxRem,
   },
-  rowGap: { property: 'rowGap', scale: gutters, transform: pxRem },
-  columnGap: { property: 'columnGap', scale: gutters, transform: pxRem },
+  rowGap: { property: 'rowGap', scale: gutters },
+  columnGap: { property: 'columnGap', scale: gutters },
   rowHeight: {
     property: 'gridAutoRows',
     transform: (height: string) => `minmax(${pxRem(height)}, 1fr)`,
@@ -35,7 +30,7 @@ export const LayoutGrid = styled(
   system.css({
     display: 'grid',
     width: '100%',
-    gridTemplateColumns: `repeact(12, minmax(0, 1fr))`,
+    gridTemplateColumns: `repeat(12, minmax(0, 1fr))`,
   }),
   gridProps
 );

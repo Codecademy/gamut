@@ -24,7 +24,7 @@ const gridProps = variance.create({
     scale: rows,
     transform: (row: number) => (row === 0 ? 'auto' : row),
   },
-  rowSize: {
+  rowspan: {
     property: 'gridRowEnd',
     scale: rows,
     transform: (row) => `span ${row}`,
