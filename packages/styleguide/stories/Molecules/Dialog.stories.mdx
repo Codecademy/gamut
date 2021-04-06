@@ -1,13 +1,15 @@
 import { Dialog } from '@codecademy/gamut/src';
 import title from '@codecademy/macros/lib/title.macro';
-import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+
+import { PropsTable } from '~styleguide/blocks';
 
 <Meta
   title={title}
   component={Dialog}
   parameters={{
     subtitle: `Constrained Dialog Dialog`,
-    status: 'stable',
+    status: 'current',
     source: 'gamut',
     figmaId: 'lIQbbBHl6v80CevfWogVhr',
     docs: {
@@ -41,7 +43,7 @@ import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
   </Story>
 </Canvas>
 
-<Props story="Dialog" />
+<PropsTable story="Dialog" />
 
 ## Usage Guidelines
 

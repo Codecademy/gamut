@@ -1,17 +1,19 @@
 import { Pattern } from '@codecademy/gamut/src';
 import title from '@codecademy/macros/lib/title.macro';
-import { Canvas, Meta, Story } from '@storybook/addon-docs/dist/blocks';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 
 import { PropsTable } from '~styleguide/blocks';
 
 <Meta
   title={title}
   component={Pattern}
-  parameters={{ source: 'gamut' }}
+  parameters={{
+    source: 'gamut',
+    status: 'updating',
+    subtitle: 'Repeatedable pattern backgrounds for multiple uses.',
+  }}
   args={{ height: 200, width: 200, name: 'diagonalStripesLoose' }}
 />
-
-Our new SVG pattern component.
 
 <Canvas>
   <Story name="Pattern" args={{ width: '100%', height: 200 }}>

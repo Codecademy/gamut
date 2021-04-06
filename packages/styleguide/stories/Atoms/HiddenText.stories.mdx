@@ -1,6 +1,8 @@
 import { HiddenText } from '@codecademy/gamut/src';
 import title from '@codecademy/macros/lib/title.macro';
-import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+
+import { PropsTable } from '~styleguide/blocks';
 
 <Meta
   title={title}
@@ -8,6 +10,7 @@ import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
   parameters={{
     subtitle: `Visually hidden text that should still be narrated by screenreaders.`,
     source: 'gamut',
+    status: 'deprecated',
   }}
 />
 
@@ -22,4 +25,4 @@ See https://wdn.unl.edu/page-title-h1-best-practices for more information.
   </Story>
 </Canvas>
 
-<Props story="HiddenText" />
+<PropsTable story="HiddenText" />
