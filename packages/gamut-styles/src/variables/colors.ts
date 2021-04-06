@@ -168,17 +168,24 @@ export const platformColors = {
   },
 } as const;
 
+export const shroudColor = {
+  dark: 'rgba(0,0,0, .75)',
+  light: 'rgba(255, 255, 255, 0.95)',
+} as const;
+
 export const colorModes = {
   light: {
     background: colors.white,
     text: colors.navy,
     primary: colors.hyper,
     secondary: colors.navy,
+    shadow: shroudColor.light,
   },
   dark: {
     background: colors.navy,
     text: colors.white,
     primary: colors.yellow,
     secondary: colors.white,
+    shadow: shroudColor.dark,
   },
 };
