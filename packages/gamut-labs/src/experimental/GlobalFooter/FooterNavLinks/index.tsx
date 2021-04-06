@@ -14,11 +14,14 @@ const FooterNavLinksGrid = styled(LayoutGrid)`
   }
 `;
 
-export const FooterNavLinks: React.FC<FooterNavLinksProps> = ({ userGeo }) => {
+export const FooterNavLinks: React.FC<FooterNavLinksProps> = ({
+  onClick,
+  userGeo,
+}) => {
   return (
     <FooterNavLinksGrid>
       <Column size={{ xs: 12, md: 6 }}>
-        <CompanyLinks userGeo={userGeo} />
+        <CompanyLinks onClick={onClick} userGeo={userGeo} />
       </Column>
       <Column size={{ xs: 12, md: 6 }}>
         <CatalogLinks />

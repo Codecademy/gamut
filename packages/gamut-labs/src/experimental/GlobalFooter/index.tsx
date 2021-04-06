@@ -3,10 +3,21 @@ import styled from '@emotion/styled';
 import React from 'react';
 
 import { FooterLegal } from './FooterLegal';
-import { FooterNavLinks, FooterNavLinksProps } from './FooterNavLinks';
+import { FooterNavLinks } from './FooterNavLinks';
+import { GlobalFooterClickHandler } from './types';
 
-export type GlobalFooterProps = FooterNavLinksProps & {
+export type GlobalFooterProps = {
   className?: string;
+
+  /**
+   * Called whenever a link is clicked.
+   */
+  onClick: GlobalFooterClickHandler;
+
+  /**
+   * Geographic region of the user viewing the footer, such as "IN" or "US".
+   */
+  userGeo: string;
 };
 
 const FooterContainer = styled.footer`
@@ -19,14 +30,15 @@ const FooterContainer = styled.footer`
 
 export const GlobalFooter: React.FC<GlobalFooterProps> = ({
   className,
+  onClick,
   userGeo,
 }) => {
   return (
     <FooterContainer className={className} role="contentinfo">
       <ContentContainer>
-        <FooterNavLinks userGeo={userGeo} />
+        <FooterNavLinks onClick={onClick} userGeo={userGeo} />
       </ContentContainer>
-      <FooterLegal />
+      <FooterLegal onClick={onClick} />
     </FooterContainer>
   );
 };

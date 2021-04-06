@@ -3,6 +3,8 @@ import { theme } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React from 'react';
 
+import { GlobalFooterClickHandler } from '../types';
+
 const urls = [
   ['Privacy Policy', '/policy'],
   ['Cookie Policy', '/cookie-policy'],
@@ -37,13 +39,17 @@ const LinksItem = styled.li`
   }
 `;
 
-export const LegalLinks = () => {
+export type LegalLinksProps = {
+  onClick: GlobalFooterClickHandler;
+};
+
+export const LegalLinks: React.FC<LegalLinksProps> = ({ onClick }) => {
   return (
     <LinksList aria-label="Legal" role="list">
       {urls.map(([children, href]) => {
         return (
           <LinksItem key={href}>
-            <Anchor variant="interface" href={href}>
+            <Anchor href={href} onClick={onClick} variant="interface">
               {children}
             </Anchor>
           </LinksItem>

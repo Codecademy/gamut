@@ -5,12 +5,11 @@ import React from 'react';
 
 import { FooterHeading } from '../FooterHeading';
 import { FooterLinkArea, FooterLinkItem } from '../FooterLinks';
+import { GlobalFooterClickHandler } from '../types';
 import { SocialMediaLinks } from './SocialMediaLinks';
 
 export type CompanyLinksProps = {
-  /**
-   * Geographic region of the user viewing the footer, such as "IN" or "US".
-   */
+  onClick: GlobalFooterClickHandler;
   userGeo: string;
 };
 
@@ -66,7 +65,10 @@ const AndroidMobileAppImage = styled.img`
   margin-left: -10px;
 `;
 
-export const CompanyLinks: React.FC<CompanyLinksProps> = ({ userGeo }) => {
+export const CompanyLinks: React.FC<CompanyLinksProps> = ({
+  onClick,
+  userGeo,
+}) => {
   return (
     <GridBox
       gridTemplateColumns={{
@@ -77,18 +79,18 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({ userGeo }) => {
       <FooterLinkArea>
         <FooterHeading>Company</FooterHeading>
         <FooterLinkItem>
-          <Anchor href="/about" variant="interface">
+          <Anchor href="/about" onClick={onClick} variant="interface">
             About
           </Anchor>
         </FooterLinkItem>
         <FooterLinkItem>
-          <Anchor href="/about/careers" variant="interface">
+          <Anchor href="/about/careers" onClick={onClick} variant="interface">
             We&apos;re Hiring
           </Anchor>
         </FooterLinkItem>
         {userGeo !== 'IN' && (
           <FooterLinkItem>
-            <Anchor href="/shop" variant="interface">
+            <Anchor href="/shop" onClick={onClick} variant="interface">
               Shop
             </Anchor>
           </FooterLinkItem>
@@ -98,17 +100,25 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({ userGeo }) => {
       <FooterLinkArea>
         <FooterHeading>Resources</FooterHeading>
         <FooterLinkItem>
-          <Anchor href="https://news.codecademy.com" variant="interface">
+          <Anchor
+            href="https://news.codecademy.com"
+            onClick={onClick}
+            variant="interface"
+          >
             Blog
           </Anchor>
         </FooterLinkItem>
         <FooterLinkItem>
-          <Anchor href="/resources/cheatsheets/all" variant="interface">
+          <Anchor
+            href="/resources/cheatsheets/all"
+            onClick={onClick}
+            variant="interface"
+          >
             Cheatsheets
           </Anchor>
         </FooterLinkItem>
         <FooterLinkItem>
-          <Anchor href="/articles" variant="interface">
+          <Anchor href="/articles" onClick={onClick} variant="interface">
             Articles
           </Anchor>
         </FooterLinkItem>
@@ -116,7 +126,11 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({ userGeo }) => {
       <SupportLinkArea>
         <FooterHeading>Support</FooterHeading>
         <FooterLinkItem>
-          <Anchor href="https://help.codecademy.com" variant="interface">
+          <Anchor
+            href="https://help.codecademy.com"
+            onClick={onClick}
+            variant="interface"
+          >
             Help Center
           </Anchor>
         </FooterLinkItem>
@@ -124,20 +138,25 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({ userGeo }) => {
       <FooterLinkArea>
         <FooterHeading>Community</FooterHeading>
         <FooterLinkItem>
-          <Anchor href="https://discuss.codecademy.com" variant="interface">
+          <Anchor
+            href="https://discuss.codecademy.com"
+            onClick={onClick}
+            variant="interface"
+          >
             Forums
           </Anchor>
         </FooterLinkItem>
         <FooterLinkItem>
           <Anchor
             href="https://community.codecademy.com/chapters"
+            onClick={onClick}
             variant="interface"
           >
             Chapters
           </Anchor>
         </FooterLinkItem>
         <FooterLinkItem>
-          <Anchor href="/events" variant="interface">
+          <Anchor href="/events" onClick={onClick} variant="interface">
             Events
           </Anchor>
         </FooterLinkItem>
@@ -145,12 +164,12 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({ userGeo }) => {
       <IndividualPlansLinkArea>
         <FooterHeading>Individual Plans</FooterHeading>
         <FooterLinkItem>
-          <Anchor href="/pro/membership" variant="interface">
+          <Anchor href="/pro/membership" onClick={onClick} variant="interface">
             Pro Membership
           </Anchor>
         </FooterLinkItem>
         <FooterLinkItem>
-          <Anchor href="/student-center" variant="interface">
+          <Anchor href="/student-center" onClick={onClick} variant="interface">
             For Students
           </Anchor>
         </FooterLinkItem>
@@ -158,7 +177,7 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({ userGeo }) => {
       <FooterLinkArea>
         <FooterHeading>Enterprise Plans</FooterHeading>
         <FooterLinkItem>
-          <Anchor href="/business" variant="interface">
+          <Anchor href="/business" onClick={onClick} variant="interface">
             For Business
           </Anchor>
         </FooterLinkItem>
@@ -168,6 +187,7 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({ userGeo }) => {
         <Box display={{ sm: 'flex' }} flexDirection={{ sm: 'column' }}>
           <MobileImageLink
             href="https://itunes.apple.com/us/app/codecademy-go/id1376029326"
+            onClick={onClick}
             target="_blank"
           >
             <AppleMobileAppImage
@@ -179,6 +199,7 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({ userGeo }) => {
           </MobileImageLink>
           <MobileImageLink
             href="https://play.google.com/store/apps/details?id=com.ryzac.codecademygo"
+            onClick={onClick}
             target="_blank"
           >
             <AndroidMobileAppImage
