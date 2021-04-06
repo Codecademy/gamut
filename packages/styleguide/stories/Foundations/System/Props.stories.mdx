@@ -1,8 +1,6 @@
-import docs from '@codecademy/gamut-system/docs/properties.md';
+import * as varianceProps from '@codecademy/gamut-styles/src/variance/config';
 import title from '@codecademy/macros/lib/title.macro';
-import { Description, Meta } from '@storybook/addon-docs/blocks';
-
-import { formatExternalMarkdown } from '~styleguide/blocks';
+import { Meta } from '@storybook/addon-docs/blocks';
 
 <Meta
   title={title}
@@ -14,4 +12,46 @@ import { formatExternalMarkdown } from '~styleguide/blocks';
   }}
 />
 
-<Description>{formatExternalMarkdown(docs)}</Description>
+<>
+  {Object.keys(varianceProps).map((key) => {
+    if (key === 'all') return null;
+    return (
+      <>
+        <h2>{key}</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Prop</th>
+              <th>Properties</th>
+              <th>Scale</th>
+              <th>Transform</th>
+            </tr>
+          </thead>
+          <tbody>
+            {Object.keys(varianceProps[key]).map((prop) => {
+              return (
+                <tr>
+                  <td>{prop}</td>
+                  <td>
+                    {varianceProps[key][prop]?.properties?.map(
+                      (property, i) => (
+                        <span>
+                          {property}
+                          {i <
+                            varianceProps[key][prop]?.properties.length - 1 &&
+                            ', '}
+                        </span>
+                      )
+                    ) || varianceProps[key][prop].property}
+                  </td>
+                  <td>{varianceProps[key][prop].scale}</td>
+                  <td>{varianceProps[key][prop]?.transform?.name}</td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </>
+    );
+  })}
+</>
