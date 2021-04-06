@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [29.8.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@29.7.1...@codecademy/gamut@29.8.0) (2021-04-06)
+
+
+### Features
+
+* **Variance:** Initial Props and Refactor Tests [WEB-1390] ([e4b5177](https://github.com/Codecademy/client-modules/commit/e4b5177544643fec274d20f37be594b140a4cba3))
+
+
+
 ### [29.7.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@29.7.0...@codecademy/gamut@29.7.1) (2021-04-05)
 
 **Note:** Version bump only for package @codecademy/gamut
