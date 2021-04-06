@@ -69,9 +69,9 @@ export const border = {
     property: 'borderRadius',
     properties: ['borderTopRightRadius', 'borderBottomRightRadius'],
   },
-  borderTopLeftRadius: { property: 'borderTopLeftRadius' },
-  borderTopRightRadius: { property: 'borderTopRightRadius' },
-  borderBottomRightRadius: { property: 'borderBottomRightRadius' },
+  borderRadiusTopLeft: { property: 'borderTopLeftRadius' },
+  borderRadiusTopRight: { property: 'borderTopRightRadius' },
+  borderRadiusBottomRight: { property: 'borderBottomRightRadius' },
   borderRadiusBottomLeft: { property: 'borderBottomLeftRadius' },
   // Style
   borderStyle: { property: 'borderStyle' },
