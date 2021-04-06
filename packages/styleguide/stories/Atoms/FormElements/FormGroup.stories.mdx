@@ -1,6 +1,6 @@
 import { FormGroup, Input } from '@codecademy/gamut';
 import title from '@codecademy/macros/lib/title.macro';
-import { Canvas, Meta, Story } from '@storybook/addon-docs/dist/blocks';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 
 import { PropsTable } from '~styleguide/blocks';
 
@@ -11,7 +11,7 @@ import { PropsTable } from '~styleguide/blocks';
     subtitle:
       'A label and description wrapper for a form element that provides conditional styling',
     source: 'gamut',
-    status: 'stable',
+    status: 'current',
   }}
   args={{
     label: "Don't you label me!",
@@ -25,36 +25,99 @@ import { PropsTable } from '~styleguide/blocks';
 
 <PropsTable story="FormGroup" />
 
+### Form Group htmlFor
+
+It is best to provide `htmlFor` to both the FormGroup + inner form element to make it super accessible. If this is not provided, the FormLabel will default to `<div>`. If an `htmlFor` is provided, it will be a `<label>`.
+
+<Canvas>
+  <Story name="FormGroupLabel">
+    {(args) => (
+      <FormGroup label="I am a label!!" htmlFor="example1">
+        <Input htmlFor="example1" />
+      </FormGroup>
+    )}
+  </Story>
+  <Story name="FormGroupLabelDiv">
+    {(args) => (
+      <FormGroup label="I look like a label, but I'm actually a div...">
+        <Input defaultValue="😔" />
+      </FormGroup>
+    )}
+  </Story>
+</Canvas>
+
 ### Form Group States
 
 <Canvas>
   <Story name="FormGroupRequired">
     {(args) => (
       <FormGroup
-        required
+        showRequired
         label="I am required!!"
         description="You can tell by the asterisk."
+        htmlFor="required1"
       >
-        <Input />
+        <Input htmlFor="required1" />
       </FormGroup>
     )}
   </Story>
   <Story name="FormGroupError">
     {(args) => (
       <FormGroup
-        required
+        showRequired
         label="I am also required!!"
         description="You can tell by the asterisk."
         error="You messed up dude."
+        htmlFor="required-error"
       >
-        <Input defaultValue=">_>" error />
+        <Input defaultValue=">_>" htmlFor="required-error" error />
       </FormGroup>
     )}
   </Story>
   <Story name="FormGroupValidated">
     {(args) => (
-      <FormGroup label="I am also required!!" required>
+      <FormGroup
+        showRequired
+        label="I am also required!!"
+        htmlFor="required-valid"
+      >
+        <Input defaultValue="Good job!" htmlFor="required-valid" valid />
+      </FormGroup>
+    )}
+  </Story>
+</Canvas>
+
+### Form Group with tooltip
+
+A field can include [our existing `ToolTip`](/?path=/docs/atoms-tooltip--tool-tip). The position of the tooltip on each field is always set to the bottom-right. You also have the option to render each tooltip in dark or light mode.
+
+<Canvas>
+  <Story name="FormGroupTooltip">
+    {(args) => (
+      <FormGroup
+        label="light mode"
+        tooltip={{
+          id: 'light-mode-tooltip',
+          children:
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+        }}
+      >
         <Input defaultValue="Good job!" valid />
+      </FormGroup>
+    )}
+  </Story>
+  <Story name="FormGroupTooltipDark">
+    {(args) => (
+      <FormGroup
+        label="dark mode"
+        tooltip={{
+          id: 'dark-mode-tooltip',
+          mode: 'dark',
+          children:
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+        }}
+      >
+        <Input />
       </FormGroup>
     )}
   </Story>

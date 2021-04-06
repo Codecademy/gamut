@@ -7,8 +7,10 @@ import {
 } from '@codecademy/gamut/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { action } from '@storybook/addon-actions';
-import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 import { useState } from '@storybook/addons';
+
+import { PropsTable } from '~styleguide/blocks';
 
 <Meta
   title={title}
@@ -17,6 +19,7 @@ import { useState } from '@storybook/addons';
     subtitle: `This organism takes in plain JSON-like props and uses them to string
 together a validated form`,
     source: 'gamut',
+    status: 'updating',
   }}
 />
 
@@ -155,7 +158,7 @@ responsive layouts.
   </Story>
 </Canvas>
 
-<Props of={GridForm} />
+<PropsTable of={GridForm} />
 
 ## Disabled Inputs
 
@@ -278,14 +281,13 @@ value of left, center, right, or stretch.
   </Story>
 </Canvas>
 
-## Submit Button color
+## Submit Button Options
 
-We can specify the color of our button by passing the theme prop with a
-button atom theme prop value. i.e. 'brand-blue', 'brand-purple'. The
-default value is 'brand-purple'.
+We can specify the version of our button by passing the type prop. WE can choose between
+the [`FillButton`](/?path=/docs/atoms--fill) or [`CTAButton`](?path=/docs/atoms--cta).
 
 <Canvas>
-  <Story name="Submit button color">
+  <Story name="Submit Button Options">
     {(args) => (
       <>
         <GridForm
@@ -293,6 +295,7 @@ default value is 'brand-purple'.
             {
               label: 'Simple text',
               name: 'simple-text',
+              size: 6,
               type: 'text',
             },
           ]}
@@ -300,7 +303,8 @@ default value is 'brand-purple'.
             action('Form Submitted')(values);
           }}
           submit={{
-            contents: 'Default Purple Submit!?',
+            contents: 'Fill Button',
+            size: 6,
           }}
         />
         <GridForm
@@ -308,6 +312,7 @@ default value is 'brand-purple'.
             {
               label: 'Simple text',
               name: 'simple-text',
+              size: 6,
               type: 'text',
             },
           ]}
@@ -315,8 +320,65 @@ default value is 'brand-purple'.
             action('Form Submitted')(values);
           }}
           submit={{
-            contents: 'Blue Submit!?',
-            theme: 'brand-blue',
+            type: 'cta',
+            contents: 'CTA Button',
+            size: 12,
+          }}
+        />
+        <GridForm
+          fields={[
+            {
+              label: 'Simple text',
+              name: 'simple-text',
+              size: 6,
+              type: 'text',
+            },
+          ]}
+          onSubmit={async (values) => {
+            action('Form Submitted')(values);
+          }}
+          submit={{
+            contents: 'Fill Button Dark Mode',
+            size: 12,
+            mode: 'dark',
+          }}
+        />
+        <GridForm
+          fields={[
+            {
+              label: 'Simple text',
+              name: 'simple-text',
+              size: 6,
+              type: 'text',
+            },
+          ]}
+          onSubmit={async (values) => {
+            action('Form Submitted')(values);
+          }}
+          submit={{
+            type: 'cta',
+            contents: 'CTA Button Dark Mode',
+            size: 12,
+            mode: 'dark',
+          }}
+        />
+        <GridForm
+          fields={[
+            {
+              label: 'Simple text',
+              name: 'simple-text',
+              size: 6,
+              type: 'text',
+            },
+          ]}
+          onSubmit={async (values) => {
+            action('Form Submitted')(values);
+          }}
+          submit={{
+            type: 'business',
+            contents: 'Deprecated Button',
+            size: 12,
+            theme: 'brand-purple',
           }}
         />
       </>
@@ -481,7 +543,7 @@ field's value in a parent component before onSubmit gets triggered.
 
 ## With tooltip
 
-A field can now include a tooltip
+A field can include [our existing `ToolTip`](/?path=/docs/atoms-tooltip--tool-tip). The position of the tooltip on each field is always set to the bottom-right. You also have the option to render each tooltip in dark or light mode.
 
 <Canvas>
   <Story name="Tooltip">
@@ -490,54 +552,49 @@ A field can now include a tooltip
         <GridForm
           fields={[
             {
-              toolTip: {
-                id: 'tooltip-input',
-                position: 'bottom-left',
+              tooltip: {
+                id: 'text-tooltip',
                 children:
                   'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
               },
               label: 'Tool input',
-              name: 'tooltip-input',
+              name: 'input-field',
               size: 6,
               type: 'text',
             },
             {
-              toolTip: {
-                id: 'tooltip-select',
-                theme: 'dark',
-                position: 'bottom-right',
+              tooltip: {
+                id: 'select-tooltip',
+                mode: 'dark',
                 children: (
                   <Markdown text="My grandmother used to tell me stories..." />
                 ),
               },
               label: 'Select with tooltip',
-              name: 'tooltip-select',
               options: ['', 'Water', 'Earth', 'Fire', 'Air', 'Boomerang'],
               size: 3,
               type: 'select',
               validation: {
                 required: 'Please select an option',
               },
+              name: 'select-field',
             },
             {
-              toolTip: {
-                id: 'tooltip-textarea',
-                position: 'bottom-left',
+              tooltip: {
+                id: 'textarea-tooltip',
                 children:
                   'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
               },
               label: 'Write a paragraph about tooltips',
-              name: 'textarea-input',
-              size: 12,
+              name: 'textarea-field',
+              size: 6,
               type: 'textarea',
               validation: {
                 required: 'Please write something about tooltips!',
               },
             },
             {
-              toolTip: {
-                id: 'tooltip-radio-group',
-                position: 'bottom-left',
+              tooltip: {
                 children:
                   'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
               },
@@ -560,9 +617,8 @@ A field can now include a tooltip
               },
             },
             {
-              toolTip: {
-                id: 'tooltip-checkbox',
-                position: 'bottom-left',
+              tooltip: {
+                id: 'checkbox-tooltip',
                 children:
                   'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
               },

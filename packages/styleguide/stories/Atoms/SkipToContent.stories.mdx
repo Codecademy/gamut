@@ -1,6 +1,8 @@
 import { Box, SkipToContent, SkipToContentTarget } from '@codecademy/gamut/src';
 import title from '@codecademy/macros/lib/title.macro';
-import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+
+import { PropsTable } from '~styleguide/blocks';
 
 <Meta
   title={title}
@@ -9,6 +11,7 @@ import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
   parameters={{
     subtitle: 'An invisible component to make pages more keyboard accessible.',
     source: 'gamut',
+    status: 'current',
   }}
   decorators={[
     (Story) => (
@@ -35,4 +38,4 @@ To see it, keep tabbing around on this page or visit [the catalog](https://www.c
   </Story>
 </Canvas>
 
-<Props story="SkipToContent" />
+<PropsTable story="SkipToContent" />

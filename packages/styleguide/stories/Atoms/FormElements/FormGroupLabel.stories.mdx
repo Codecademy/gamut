@@ -1,6 +1,6 @@
 import { FormGroupLabel } from '@codecademy/gamut';
 import title from '@codecademy/macros/lib/title.macro';
-import { Canvas, Meta, Story } from '@storybook/addon-docs/dist/blocks';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 
 import { PropsTable } from '~styleguide/blocks';
 
@@ -10,13 +10,15 @@ import { PropsTable } from '~styleguide/blocks';
   parameters={{
     subtitle: 'A label element to be tied to a group of elements',
     source: 'gamut',
-    status: 'stable',
+    status: 'current',
   }}
   args={{ children: 'I am a label' }}
 />
 
 <Canvas>
-  <Story name="FormGroupLabel">{(args) => <FormGroupLabel {...args} />}</Story>
+  <Story name="FormGroupLabel">
+    {(args) => <FormGroupLabel htmlFor="label-default" {...args} />}
+  </Story>
 </Canvas>
 
 <PropsTable story="FormGroupLabel" />
@@ -25,12 +27,35 @@ import { PropsTable } from '~styleguide/blocks';
 
 <Canvas>
   <Story name="FormGroupLabelLarge">
-    {(args) => <FormGroupLabel size="large" {...args} />}
+    {(args) => <FormGroupLabel htmlFor="label-large" size="large" {...args} />}
   </Story>
   <Story name="FormGroupLabelRequired">
-    {(args) => <FormGroupLabel showRequired {...args} />}
+    {(args) => (
+      <FormGroupLabel htmlFor="label-required" showRequired {...args} />
+    )}
   </Story>
   <Story name="FormGroupLabeldisabled">
-    {(args) => <FormGroupLabel disabled {...args} />}
+    {(args) => <FormGroupLabel htmlFor="label-disabled" disabled {...args} />}
+  </Story>
+</Canvas>
+
+### Label htmlFor
+
+It is best to provide `htmlFor` to both the FormGroup + inner form element to make it super accessible. If this is not provided, the FormLabel will default to `<div>`. If an `htmlFor` is provided, it will be a `<label>`.
+
+<Canvas>
+  <Story name="FormGroupLabelasLabel">
+    {(args) => (
+      <FormGroupLabel htmlFor="label">
+        I look like a label, and I am a label.
+      </FormGroupLabel>
+    )}
+  </Story>
+  <Story name="FormGroupLabelasDiv">
+    {(args) => (
+      <FormGroupLabel>
+        I may look like a label, but I'm actually a div.
+      </FormGroupLabel>
+    )}
   </Story>
 </Canvas>

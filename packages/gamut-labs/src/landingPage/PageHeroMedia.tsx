@@ -27,8 +27,8 @@ export const PageHeroMedia: React.FC<PageHeroMediaProps> = ({
       return (
         <RightColumn
           size={size as any}
-          ml={{ base: 0, sm: 16 }}
-          display={{ base: 'none', sm: 'grid' }}
+          ml={{ _: 0, sm: 16 }}
+          display={{ _: 'none', sm: 'grid' }}
         >
           <Image src={media.src} alt={media.alt} />
         </RightColumn>
@@ -36,7 +36,7 @@ export const PageHeroMedia: React.FC<PageHeroMediaProps> = ({
     case 'video':
       const videoArgs = omit(media, 'type');
       return (
-        <RightColumn size={{ base: 12, sm: size as any }}>
+        <RightColumn size={{ _: 12, sm: size as any }}>
           <Video {...videoArgs} />
         </RightColumn>
       );

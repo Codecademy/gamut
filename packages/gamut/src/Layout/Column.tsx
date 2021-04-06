@@ -1,14 +1,6 @@
-import { css } from '@emotion/react';
+import { styledConfig, system } from '@codecademy/gamut-styles';
+import { variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
-
-import {
-  createStyledConfig,
-  dimensions,
-  layout,
-  margin,
-  padding,
-  props,
-} from '../utils/variance';
 
 const rows = { 1: 1, 2: 2, 3: 3 };
 
@@ -26,7 +18,7 @@ const columns = {
   11: 11,
 };
 
-const gridProps = props.create({
+const gridProps = variance.create({
   rowOffset: {
     property: 'gridRowStart',
     scale: rows,
@@ -49,19 +41,40 @@ const gridProps = props.create({
   },
 });
 
-const columnProps = props.compose(
-  layout,
-  dimensions,
-  padding,
-  margin,
+const columnVariants = system.variant({
+  variants: {
+    grid: {
+      display: 'grid',
+      gridTemplateColumns: 'minmax(0, 1fr)',
+    },
+  },
+});
+
+const columnProps = variance.compose(
+  system.layout,
+  system.space,
+  system.grid,
   gridProps
 );
 
-export const Column = styled('div', createStyledConfig(columnProps.propNames))(
-  css`
-    grid-template-columns: minmax(0, 1fr);
-  `,
+type ColumnVariantProps = Parameters<typeof columnVariants>[0];
+type ColumnStyleProps = Parameters<typeof columnProps>[0];
+
+interface ColumnProps extends ColumnVariantProps, ColumnStyleProps {}
+
+export const Column = styled(
+  'div',
+  styledConfig(columnProps.propNames)
+)<ColumnProps>(
+  system.variant({
+    variants: {
+      grid: {
+        display: 'grid',
+        gridTemplateColumns: 'minmax(0, 1fr)',
+      },
+    },
+  }),
   columnProps
 );
 
-Column.defaultProps = { display: 'grid', size: 12 };
+Column.defaultProps = { variant: 'grid', size: 12 };

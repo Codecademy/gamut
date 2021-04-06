@@ -1,8 +1,6 @@
-import { pxRem } from '@codecademy/gamut-styles';
-import { css } from '@emotion/react';
+import { pxRem, styledConfig, system } from '@codecademy/gamut-styles';
+import { StyleProps, variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
-
-import { createStyledConfig, margin, padding, props } from '../utils/variance';
 
 const gutters = {
   sm: 8,
@@ -11,7 +9,7 @@ const gutters = {
   xl: 32,
 };
 
-const grid = props.create({
+const grid = variance.create({
   gap: {
     property: 'gap',
     properties: ['rowGap', 'columnGap'],
@@ -26,16 +24,18 @@ const grid = props.create({
   },
 });
 
-const gridProps = props.compose(margin, padding, grid);
+const gridProps = variance.compose(system.space, grid);
+
+interface GridProps extends StyleProps<typeof gridProps> {}
 
 export const LayoutGrid = styled(
   'div',
-  createStyledConfig(gridProps.propNames)
-)(
-  gridProps,
-  css`
-    display: grid;
-    width: 100%;
-    grid-template-columns: repeat(12, minmax(0, 1fr));
-  `
+  styledConfig(grid.propNames)
+)<GridProps>(
+  system.css({
+    display: 'grid',
+    width: '100%',
+    gridTemplateColumns: `repeact(12, minmax(0, 1fr))`,
+  }),
+  gridProps
 );

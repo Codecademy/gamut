@@ -1,0 +1,34 @@
+{
+  "name": "@codecademy/konamimojisplosion",
+  "description": "React component that hooks up the Konami Code to Emojisplosion.",
+  "version": "0.2.5",
+  "author": "Codecademy Engineering",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Codecademy/client-modules.git"
+  },
+  "peerDependencies": {
+    "react": ">=16.8.1",
+    "react-dom": ">=16.8.1"
+  },
+  "dependencies": {
+    "emojisplosion": "^2.6.0",
+    "konami-code-js": "^0.8.1"
+  },
+  "devDependencies": {
+    "@codecademy/gamut-tests": "^2.3.5"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build:clean": "rm -rf dist",
+    "build:compile": "babel ./src --out-dir ./dist --copy-files --extensions \".ts,.tsx\"",
+    "build:types": "tsc --emitDeclarationOnly",
+    "build": "yarn build:clean && yarn build:compile && yarn build:types",
+    "lernaBuildTask": "yarn build"
+  },
+  "license": "MIT"
+}

@@ -1,4 +1,5 @@
 import cx from 'classnames';
+import { hasIn } from 'lodash';
 import React, { ReactNode } from 'react';
 
 import {
@@ -10,11 +11,32 @@ import styles from './styles/index.module.scss';
 
 // themes can be an alias to a color
 // or a unique button type
-export const buttonPresetThemes: { [i: string]: string } = {
+export const buttonPresetThemes = {
   secondary: 'mint',
   platform: 'greyblue',
   lantern: 'darkmint',
-};
+  royalblue: 'brand-purple',
+} as const;
+
+const themes = [
+  'hyper',
+  'navy',
+  'red',
+  'white',
+  'brand-red',
+  'brand-yellow',
+  'brand-purple',
+  'brand-dark-blue',
+  'brand-blue',
+  'mint',
+  'darkmint',
+  'grey',
+  'greyblue',
+] as const;
+
+export type ButtonDeprecatedThemes =
+  | keyof typeof buttonPresetThemes
+  | typeof themes[number];
 
 const propKeys = [
   'theme',
@@ -92,7 +114,7 @@ export type ButtonDeprecatedProps = ButtonDeprecatedBaseProps & {
   /**
    * Variant that controls the background and text color of the button
    * */
-  theme?: string;
+  theme?: ButtonDeprecatedThemes;
   type?: string;
   /**
    * Variant that underlines the text of the button.
@@ -104,10 +126,18 @@ export type ButtonDeprecatedProps = ButtonDeprecatedBaseProps & {
   fitText?: boolean;
 };
 
+const isPreset = (theme: string): theme is keyof typeof buttonPresetThemes => {
+  return hasIn(buttonPresetThemes, theme);
+};
+
+/**
+ * @deprecated
+ */
+
 export const ButtonDeprecated: React.FC<ButtonDeprecatedProps> = (props) => {
   let { theme = 'brand-red' } = props;
 
-  if (theme && buttonPresetThemes[theme]) {
+  if (isPreset(theme)) {
     theme = buttonPresetThemes[theme];
   }
 

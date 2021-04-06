@@ -16,6 +16,10 @@ export type TabProps = {
   defaultTheme?: boolean;
 };
 
+/**
+ * @deprecated
+ */
+
 export const Tab: FunctionComponent<TabProps> = ({
   active,
   children,

@@ -22,7 +22,7 @@ export type BaseFormField<Value> = {
    */
   id?: string;
 
-  toolTip?: ToolTipProps;
+  tooltip?: ToolTipProps;
 
   name: string;
   onUpdate?: (value: Value) => void;

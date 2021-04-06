@@ -1,6 +1,6 @@
 import { Select } from '@codecademy/gamut';
 import title from '@codecademy/macros/lib/title.macro';
-import { Canvas, Meta, Story } from '@storybook/addon-docs/dist/blocks';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 
 import { PropsTable } from '~styleguide/blocks';
 
@@ -18,7 +18,7 @@ export const fruitOptions = [
   parameters={{
     subtitle: 'A `<select />` element for picking from exclusive options',
     source: 'gamut',
-    status: 'stable',
+    status: 'current',
   }}
   args={{
     htmlFor: 'example-select',
@@ -42,14 +42,14 @@ export const fruitOptions = [
 
 <PropsTable story="Select" />
 
-### Input States
+### Select States
 
 <Canvas>
   <Story
     name="Disabled"
     args={{
       options: ['Disabled'],
-      defaultValue: 'Disableddddddddddd',
+      defaultValue: 'Disabled',
       disabled: true,
     }}
   >
@@ -63,7 +63,7 @@ export const fruitOptions = [
   </Story>
 </Canvas>
 
-### Input Size Variant
+### Select Size Variant
 
 <Canvas>
   <Story

@@ -1,3 +1,4 @@
+import { ColumnProps } from '@codecademy/gamut';
 import { Box, Column, Container, LayoutGrid } from '@codecademy/gamut';
 import { mediaQueries } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
@@ -54,10 +55,13 @@ const gridRenderEach = (
   items: PageFeaturesProps['features'],
   itemRenderer: (item: PageFeaturesProps['features'][0]) => ReactNode
 ): ReactNode => {
-  const size = { base: 12, sm: (12 / maxCols) as 12 | 6 | 4 | 3 } as const;
+  const size = {
+    _: 12,
+    sm: 12 / maxCols,
+  } as ColumnProps['size'];
   /* eslint-disable react/no-array-index-key */
   return (
-    <LayoutGrid columnGap={{ base: 'sm', sm: 'xl' }}>
+    <LayoutGrid columnGap={{ _: 'sm', sm: 'xl' }}>
       {items.map((item, i) => (
         <Column key={i} size={size}>
           {itemRenderer(item)}

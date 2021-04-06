@@ -30,6 +30,7 @@ const VARIANT_META = {
 } as const;
 
 export type AlertType = 'general' | 'success' | 'error' | 'notice' | 'feature';
+export type InlineAlertType = Exclude<AlertType, 'notice' | 'feature'>;
 export type AlertPlacements = 'inline' | 'floating';
 
 export type AlertBase = {
@@ -51,7 +52,7 @@ export type FloatingAlert = AlertBase & {
 };
 
 export type InlineAlert = AlertBase & {
-  type?: Exclude<AlertType, 'notice' | 'feature'>;
+  type?: InlineAlertType;
   placement?: 'inline';
 };
 
@@ -60,8 +61,12 @@ export type AlertProps = FloatingAlert | InlineAlert;
 const placementVariants = variant({
   prop: 'placement',
   variants: {
-    inline: {},
+    inline: {
+      padding: 4,
+      paddingY: 8,
+    },
     floating: {
+      padding: 4,
       borderColor: 'navy',
     },
   },
@@ -174,7 +179,6 @@ export const Alert: React.FC<AlertProps> = ({
 
   return (
     <AlertBanner
-      padding={4}
       alignItems="start"
       columnGap={[4, 8, , 12]}
       gridTemplateColumns={columns}
