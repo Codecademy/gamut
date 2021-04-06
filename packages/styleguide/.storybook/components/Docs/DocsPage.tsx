@@ -42,7 +42,7 @@ const STATUS = {
   },
   current: {
     tooltip:
-      'This component is up to date with out latest visual identity and styling standards',
+      'This component is up to date with our latest visual identity and styling standards',
     label: 'Up to date',
     status: 'current',
   },
