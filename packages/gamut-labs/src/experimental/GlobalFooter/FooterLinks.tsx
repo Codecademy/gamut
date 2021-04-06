@@ -1,6 +1,12 @@
 import { theme } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 
+export const FooterLinkArea = styled.ul`
+  list-style-type: none;
+  padding-left: 0;
+  margin-bottom: 0;
+`;
+
 export const FooterLinkItem = styled.li`
   font-size: 0.875rem;
   margin: 0.5rem 0;

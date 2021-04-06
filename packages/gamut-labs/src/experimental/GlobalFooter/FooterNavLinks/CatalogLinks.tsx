@@ -1,11 +1,10 @@
 import { Anchor, Box } from '@codecademy/gamut';
-import { theme } from '@codecademy/gamut-styles';
+import { theme, variant } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React from 'react';
 
 import { FooterHeading } from '../FooterHeading';
-import { LinkArea } from '../FooterLinkArea';
-import { FooterLinkItem } from '../FooterLinkItem';
+import { FooterLinkArea, FooterLinkItem } from '../FooterLinks';
 import { FooterSubHeading } from '../FooterSubHeading';
 
 const CatalogLinksContainer = styled.div`
@@ -43,19 +42,14 @@ const CatalogContents = styled.div`
   }
 `;
 
-const CatalogLinkArea = styled(LinkArea)<{ fullHeight?: boolean }>`
+const CatalogLinkArea = styled(FooterLinkArea)<{ variant?: 'fullHeight' }>`
   display: flex;
   max-height: 14rem;
   flex-direction: column;
   flex-wrap: wrap;
   margin-bottom: 1rem;
 
-  ${({ fullHeight }) =>
-    fullHeight &&
-    `${theme.breakpoints.md} {
-      max-height: none;
-    }
-  `}
+  ${variant({ fullHeight: { maxHeight: { md: 'none' } } })}
 `;
 
 const CatalogFooterLinkItem = styled(FooterLinkItem)`
@@ -108,7 +102,7 @@ export const CatalogLinks: React.FC = () => {
         </Box>
         <Box width={{ base: '100%', md: '50%' }}>
           <FooterSubHeading as="h3">Subjects</FooterSubHeading>
-          <CatalogLinkArea fullHeight>
+          <CatalogLinkArea variant="fullHeight">
             {subjects.map(([slug, text]) => (
               <CatalogFooterLinkItem key={slug}>
                 <Anchor href={`/catalog/subject/${slug}`} variant="interface">

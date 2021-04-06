@@ -1,11 +1,10 @@
-import { Anchor, Box } from '@codecademy/gamut';
+import { Anchor, Box, GridBox } from '@codecademy/gamut';
 import { theme } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React from 'react';
 
 import { FooterHeading } from '../FooterHeading';
-import { LinkArea } from '../FooterLinkArea';
-import { FooterLinkItem } from '../FooterLinkItem';
+import { FooterLinkArea, FooterLinkItem } from '../FooterLinks';
 import { SocialMediaLinks } from './SocialMediaLinks';
 
 export type CompanyLinksProps = {
@@ -15,29 +14,20 @@ export type CompanyLinksProps = {
   userGeo: string;
 };
 
-const CompanyLinksContainer = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-
-  ${theme.breakpoints.sm} {
-    grid-template-columns: 1fr 1fr 1fr;
-  }
-`;
-
-const IndividualPlansLinkArea = styled(LinkArea)`
+const IndividualPlansLinkArea = styled(FooterLinkArea)`
   ${theme.breakpoints.sm} {
     grid-row-start: 2;
   }
 `;
 
-const SupportLinkArea = styled(LinkArea)`
+const SupportLinkArea = styled(FooterLinkArea)`
   ${theme.breakpoints.sm} {
     grid-row-start: 3;
     margin-top: 2rem;
   }
 `;
 
-const MobileLinkArea = styled(LinkArea)`
+const MobileLinkArea = styled(FooterLinkArea)`
   grid-column: 1 / 3;
 
   ${theme.breakpoints.sm} {
@@ -59,9 +49,17 @@ const MobileFooterHeading = styled(FooterHeading)`
   }
 `;
 
-const MobileImageLink = styled.a`
-  display: inline-block;
-  width: 50%;
+const MobileImageLink = styled(Anchor)();
+
+MobileImageLink.defaultProps = {
+  display: 'inline-block',
+  variant: 'interface',
+  width: '50%',
+};
+
+const AppleMobileAppImage = styled.img`
+  padding: 0.5rem 0.75rem;
+  margin-left: -0.75rem;
 `;
 
 const AndroidMobileAppImage = styled.img`
@@ -70,8 +68,13 @@ const AndroidMobileAppImage = styled.img`
 
 export const CompanyLinks: React.FC<CompanyLinksProps> = ({ userGeo }) => {
   return (
-    <CompanyLinksContainer>
-      <LinkArea>
+    <GridBox
+      gridTemplateColumns={{
+        base: 'repeat(2, minmax(0, 1fr))',
+        sm: 'repeat(3, minmax(0, 1fr))',
+      }}
+    >
+      <FooterLinkArea>
         <FooterHeading>Company</FooterHeading>
         <FooterLinkItem>
           <Anchor href="/about" variant="interface">
@@ -91,8 +94,8 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({ userGeo }) => {
           </FooterLinkItem>
         )}
         <SocialMediaLinks />
-      </LinkArea>
-      <LinkArea>
+      </FooterLinkArea>
+      <FooterLinkArea>
         <FooterHeading>Resources</FooterHeading>
         <FooterLinkItem>
           <Anchor href="https://news.codecademy.com" variant="interface">
@@ -109,7 +112,7 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({ userGeo }) => {
             Articles
           </Anchor>
         </FooterLinkItem>
-      </LinkArea>
+      </FooterLinkArea>
       <SupportLinkArea>
         <FooterHeading>Support</FooterHeading>
         <FooterLinkItem>
@@ -118,7 +121,7 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({ userGeo }) => {
           </Anchor>
         </FooterLinkItem>
       </SupportLinkArea>
-      <LinkArea>
+      <FooterLinkArea>
         <FooterHeading>Community</FooterHeading>
         <FooterLinkItem>
           <Anchor href="https://discuss.codecademy.com" variant="interface">
@@ -138,7 +141,7 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({ userGeo }) => {
             Events
           </Anchor>
         </FooterLinkItem>
-      </LinkArea>
+      </FooterLinkArea>
       <IndividualPlansLinkArea>
         <FooterHeading>Individual Plans</FooterHeading>
         <FooterLinkItem>
@@ -152,14 +155,14 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({ userGeo }) => {
           </Anchor>
         </FooterLinkItem>
       </IndividualPlansLinkArea>
-      <LinkArea>
+      <FooterLinkArea>
         <FooterHeading>Enterprise Plans</FooterHeading>
         <FooterLinkItem>
           <Anchor href="/business" variant="interface">
             For Business
           </Anchor>
         </FooterLinkItem>
-      </LinkArea>
+      </FooterLinkArea>
       <MobileLinkArea>
         <MobileFooterHeading>Mobile</MobileFooterHeading>
         <Box display={{ sm: 'flex' }} flexDirection={{ sm: 'column' }}>
@@ -167,11 +170,11 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({ userGeo }) => {
             href="https://itunes.apple.com/us/app/codecademy-go/id1376029326"
             target="_blank"
           >
-            <img
+            <AppleMobileAppImage
               alt="Download on the App Store"
-              height="40px"
+              height="calc(40px + 1rem)"
               src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-US?size=140x20&amp;releaseDate=1533168000"
-              width="120px"
+              width="calc(120px + 1.5rem)"
             />
           </MobileImageLink>
           <MobileImageLink
@@ -187,6 +190,6 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({ userGeo }) => {
           </MobileImageLink>
         </Box>
       </MobileLinkArea>
-    </CompanyLinksContainer>
+    </GridBox>
   );
 };
