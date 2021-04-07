@@ -5,7 +5,7 @@ import * as CSS from 'csstype';
 import React from 'react';
 
 import { FooterHeading } from '../FooterHeading';
-import { FooterLinkArea, FooterLinkItem } from '../FooterLinks';
+import { FooterLinkItem, FooterLinkItems } from '../FooterLinks';
 import { GlobalFooterClickHandler } from '../types';
 import { SocialMediaLinks } from './SocialMediaLinks';
 
@@ -39,115 +39,123 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
   userGeo,
 }) => {
   const community = (
-    <FooterLinkArea>
+    <Box>
       <FooterHeading>Community</FooterHeading>
-      <FooterLinkItem>
-        <Anchor
-          href="https://discuss.codecademy.com"
-          onClick={(event) => onClick({ event, target: 'forums' })}
-          variant="interface"
-        >
-          Forums
-        </Anchor>
-      </FooterLinkItem>
-      <FooterLinkItem>
-        <Anchor
-          href="https://community.codecademy.com/chapters"
-          onClick={(event) => onClick({ event, target: 'chapters' })}
-          variant="interface"
-        >
-          Chapters
-        </Anchor>
-      </FooterLinkItem>
-      <FooterLinkItem>
-        <Anchor
-          href="/events"
-          onClick={(event) => onClick({ event, target: 'events' })}
-          variant="interface"
-        >
-          Events
-        </Anchor>
-      </FooterLinkItem>
-    </FooterLinkArea>
+      <FooterLinkItems>
+        <FooterLinkItem>
+          <Anchor
+            href="https://discuss.codecademy.com"
+            onClick={(event) => onClick({ event, target: 'forums' })}
+            variant="interface"
+          >
+            Forums
+          </Anchor>
+        </FooterLinkItem>
+        <FooterLinkItem>
+          <Anchor
+            href="https://community.codecademy.com/chapters"
+            onClick={(event) => onClick({ event, target: 'chapters' })}
+            variant="interface"
+          >
+            Chapters
+          </Anchor>
+        </FooterLinkItem>
+        <FooterLinkItem>
+          <Anchor
+            href="/events"
+            onClick={(event) => onClick({ event, target: 'events' })}
+            variant="interface"
+          >
+            Events
+          </Anchor>
+        </FooterLinkItem>
+      </FooterLinkItems>
+    </Box>
   );
 
   const company = (
-    <FooterLinkArea>
+    <Box>
       <FooterHeading>Company</FooterHeading>
-      <FooterLinkItem>
-        <Anchor
-          href="/about"
-          onClick={(event) => onClick({ event, target: 'about' })}
-          variant="interface"
-        >
-          About
-        </Anchor>
-      </FooterLinkItem>
-      <FooterLinkItem>
-        <Anchor
-          href="/about/careers"
-          onClick={(event) => onClick({ event, target: 'jobs' })}
-          variant="interface"
-        >
-          We&apos;re Hiring
-        </Anchor>
-      </FooterLinkItem>
-      {userGeo !== 'IN' && (
+      <FooterLinkItems>
         <FooterLinkItem>
           <Anchor
-            href="/shop"
-            onClick={(event) => onClick({ event, target: 'shop' })}
+            href="/about"
+            onClick={(event) => onClick({ event, target: 'about' })}
             variant="interface"
           >
-            Shop
+            About
           </Anchor>
         </FooterLinkItem>
-      )}
-      <SocialMediaLinks />
-    </FooterLinkArea>
+        <FooterLinkItem>
+          <Anchor
+            href="/about/careers"
+            onClick={(event) => onClick({ event, target: 'jobs' })}
+            variant="interface"
+          >
+            We&apos;re Hiring
+          </Anchor>
+        </FooterLinkItem>
+        {userGeo !== 'IN' && (
+          <FooterLinkItem>
+            <Anchor
+              href="/shop"
+              onClick={(event) => onClick({ event, target: 'shop' })}
+              variant="interface"
+            >
+              Shop
+            </Anchor>
+          </FooterLinkItem>
+        )}
+        <SocialMediaLinks />
+      </FooterLinkItems>
+    </Box>
   );
 
   const enterprisePlans = (
-    <FooterLinkArea>
+    <Box>
       <FooterHeading>Enterprise Plans</FooterHeading>
-      <FooterLinkItem>
-        <Anchor
-          href="/business"
-          onClick={(event) => onClick({ event, target: 'business_landing' })}
-          variant="interface"
-        >
-          For Business
-        </Anchor>
-      </FooterLinkItem>
-    </FooterLinkArea>
+      <FooterLinkItems>
+        <FooterLinkItem>
+          <Anchor
+            href="/business"
+            onClick={(event) => onClick({ event, target: 'business_landing' })}
+            variant="interface"
+          >
+            For Business
+          </Anchor>
+        </FooterLinkItem>
+      </FooterLinkItems>
+    </Box>
   );
 
   const individualPlans = (
-    <FooterLinkArea>
+    <Box>
       <FooterHeading>Individual Plans</FooterHeading>
-      <FooterLinkItem>
-        <Anchor
-          href="/pro/membership"
-          onClick={(event) => onClick({ event, target: 'pro_membership' })}
-          variant="interface"
-        >
-          Pro Membership
-        </Anchor>
-      </FooterLinkItem>
-      <FooterLinkItem>
-        <Anchor
-          href="/student-center"
-          onClick={(event) => onClick({ event, target: 'students' })}
-          variant="interface"
-        >
-          For Students
-        </Anchor>
-      </FooterLinkItem>
-    </FooterLinkArea>
+      <FooterLinkItems>
+        <FooterLinkItem>
+          <Anchor
+            href="/pro/membership"
+            onClick={(event) => onClick({ event, target: 'pro_membership' })}
+            variant="interface"
+          >
+            Pro Membership
+          </Anchor>
+        </FooterLinkItem>
+        <FooterLinkItem>
+          <Anchor
+            href="/student-center"
+            onClick={(event) => onClick({ event, target: 'students' })}
+            variant="interface"
+          >
+            For Students
+          </Anchor>
+        </FooterLinkItem>
+      </FooterLinkItems>
+    </Box>
   );
 
   const mobile = (
-    <FooterLinkArea
+    <Box
       gridColumn="1 / 3"
       gridColumnEnd={{ sm: '1' }}
       gridRow={{ sm: '2 / 4' }}
@@ -182,55 +190,59 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
           />
         </MobileImageLink>
       </Box>
-    </FooterLinkArea>
+    </Box>
   );
 
   const resources = (
-    <FooterLinkArea>
+    <Box>
       <FooterHeading>Resources</FooterHeading>
-      <FooterLinkItem>
-        <Anchor
-          href="https://news.codecademy.com"
-          onClick={(event) => onClick({ event, target: '' })}
-          variant="interface"
-        >
-          Blog
-        </Anchor>
-      </FooterLinkItem>
-      <FooterLinkItem>
-        <Anchor
-          href="/resources/cheatsheets/all"
-          onClick={(event) => onClick({ event, target: '' })}
-          variant="interface"
-        >
-          Cheatsheets
-        </Anchor>
-      </FooterLinkItem>
-      <FooterLinkItem>
-        <Anchor
-          href="/articles"
-          onClick={(event) => onClick({ event, target: '' })}
-          variant="interface"
-        >
-          Articles
-        </Anchor>
-      </FooterLinkItem>
-    </FooterLinkArea>
+      <FooterLinkItems>
+        <FooterLinkItem>
+          <Anchor
+            href="https://news.codecademy.com"
+            onClick={(event) => onClick({ event, target: '' })}
+            variant="interface"
+          >
+            Blog
+          </Anchor>
+        </FooterLinkItem>
+        <FooterLinkItem>
+          <Anchor
+            href="/resources/cheatsheets/all"
+            onClick={(event) => onClick({ event, target: '' })}
+            variant="interface"
+          >
+            Cheatsheets
+          </Anchor>
+        </FooterLinkItem>
+        <FooterLinkItem>
+          <Anchor
+            href="/articles"
+            onClick={(event) => onClick({ event, target: '' })}
+            variant="interface"
+          >
+            Articles
+          </Anchor>
+        </FooterLinkItem>
+      </FooterLinkItems>
+    </Box>
   );
 
   const support = (display: ResponsiveProp<CSS.Properties['display']>) => (
-    <FooterLinkArea display={display} marginTop={{ sm: 16 }} order={{ sm: 3 }}>
+    <Box display={display} marginTop={{ sm: 16 }} order={{ sm: 3 }}>
       <FooterHeading>Support</FooterHeading>
-      <FooterLinkItem>
-        <Anchor
-          href="https://help.codecademy.com"
-          onClick={(event) => onClick({ event, target: 'help' })}
-          variant="interface"
-        >
-          Help Center
-        </Anchor>
-      </FooterLinkItem>
-    </FooterLinkArea>
+      <FooterLinkItems>
+        <FooterLinkItem>
+          <Anchor
+            href="https://help.codecademy.com"
+            onClick={(event) => onClick({ event, target: 'help' })}
+            variant="interface"
+          >
+            Help Center
+          </Anchor>
+        </FooterLinkItem>
+      </FooterLinkItems>
+    </Box>
   );
 
   return (

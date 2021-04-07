@@ -2,11 +2,11 @@ import { Box } from '@codecademy/gamut';
 import { theme } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 
-export const FooterLinkArea = styled(Box)`
+export const FooterLinkItems = styled(Box)`
   list-style-type: none;
 `;
 
-FooterLinkArea.defaultProps = {
+FooterLinkItems.defaultProps = {
   as: 'ul',
   paddingLeft: 0,
   marginBottom: 0,

@@ -4,7 +4,7 @@ import styled from '@emotion/styled';
 import React from 'react';
 
 import { FooterHeading } from '../FooterHeading';
-import { FooterLinkArea, FooterLinkItem } from '../FooterLinks';
+import { FooterLinkItem, FooterLinkItems } from '../FooterLinks';
 import { FooterSubHeading } from '../FooterSubHeading';
 import { GlobalFooterClickHandler } from '../types';
 
@@ -30,7 +30,7 @@ const CatalogLinksContainer = styled.div`
   }
 `;
 
-const CatalogLinkArea = styled(FooterLinkArea)<{ variant?: 'fullHeight' }>`
+const CatalogLinkArea = styled(FooterLinkItems)<{ variant?: 'fullHeight' }>`
   display: flex;
   max-height: 14rem;
   flex-direction: column;

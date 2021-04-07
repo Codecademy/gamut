@@ -47,5 +47,5 @@ export const SocialMediaLinks: React.FC = () => {
     </Anchor>
   ));
 
-  return <div>{icons}</div>;
+  return <li>{icons}</li>;
 };
