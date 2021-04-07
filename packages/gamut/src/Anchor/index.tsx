@@ -89,7 +89,7 @@ const ButtonReset = styled.button`
 
 const AnchorElement = forwardRef<LinkElements, ForwardedProps>(
   ({ href, disabled, children, as, ...rest }, ref) => {
-    if (!href || href.length === 0) {
+    if (href == null) {
       return (
         <ButtonReset
           {...rest}
