@@ -6,6 +6,7 @@ import React from 'react';
 import { FooterHeading } from '../FooterHeading';
 import { FooterLinkArea, FooterLinkItem } from '../FooterLinks';
 import { FooterSubHeading } from '../FooterSubHeading';
+import { GlobalFooterClickHandler } from '../types';
 
 const CatalogLinksContainer = styled.div`
   border-top: 1px solid ${({ theme }) => theme.colors.navy};
@@ -83,7 +84,11 @@ const subjects = [
   ['web-design', 'Web Design'],
 ];
 
-export const CatalogLinks: React.FC = () => {
+export type CatalogLinksProps = {
+  onClick: GlobalFooterClickHandler;
+};
+
+export const CatalogLinks: React.FC<CatalogLinksProps> = ({ onClick }) => {
   return (
     <CatalogLinksContainer>
       <FooterHeading>Course Catalog</FooterHeading>
@@ -93,7 +98,11 @@ export const CatalogLinks: React.FC = () => {
           <CatalogLinkArea>
             {languages.map(([slug, text]) => (
               <CatalogFooterLinkItem key={slug}>
-                <Anchor href={`/catalog/language/${slug}`} variant="interface">
+                <Anchor
+                  href={`/catalog/language/${slug}`}
+                  onClick={(event) => onClick({ event, target: slug })}
+                  variant="interface"
+                >
                   {text}
                 </Anchor>
               </CatalogFooterLinkItem>
@@ -105,25 +114,38 @@ export const CatalogLinks: React.FC = () => {
           <CatalogLinkArea variant="fullHeight">
             {subjects.map(([slug, text]) => (
               <CatalogFooterLinkItem key={slug}>
-                <Anchor href={`/catalog/subject/${slug}`} variant="interface">
+                <Anchor
+                  href={`/catalog/subject/${slug}`}
+                  onClick={(event) => onClick({ event, target: '' })}
+                  variant="interface"
+                >
                   {text}
                 </Anchor>
               </CatalogFooterLinkItem>
             ))}
             <CatalogFooterLinkItem>—</CatalogFooterLinkItem>
             <CatalogFooterLinkItem>
-              <Anchor href="/catalog/subject/all" variant="interface">
+              <Anchor
+                href="/catalog/subject/all"
+                onClick={(event) => onClick({ event, target: 'fullCatalog' })}
+                variant="interface"
+              >
                 Full Catalog
               </Anchor>
             </CatalogFooterLinkItem>
             <CatalogFooterLinkItem>
-              <Anchor href="/learn/beta-content" variant="interface">
+              <Anchor
+                href="/learn/beta-content"
+                onClick={(event) => onClick({ event, target: 'betaContent' })}
+                variant="interface"
+              >
                 Beta Content
               </Anchor>
             </CatalogFooterLinkItem>
             <CatalogFooterLinkItem>
               <Anchor
                 href="https://trello.com/b/vAgDXtT6/codecademy-releases-roadmap"
+                onClick={(event) => onClick({ event, target: 'roadmap' })}
                 variant="interface"
               >
                 Roadmap

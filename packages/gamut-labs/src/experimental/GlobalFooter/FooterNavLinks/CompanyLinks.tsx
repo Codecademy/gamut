@@ -41,7 +41,7 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
       <FooterLinkItem>
         <Anchor
           href="https://discuss.codecademy.com"
-          onClick={onClick}
+          onClick={(event) => onClick({ event, target: 'forums' })}
           variant="interface"
         >
           Forums
@@ -50,14 +50,18 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
       <FooterLinkItem>
         <Anchor
           href="https://community.codecademy.com/chapters"
-          onClick={onClick}
+          onClick={(event) => onClick({ event, target: 'chapters' })}
           variant="interface"
         >
           Chapters
         </Anchor>
       </FooterLinkItem>
       <FooterLinkItem>
-        <Anchor href="/events" onClick={onClick} variant="interface">
+        <Anchor
+          href="/events"
+          onClick={(event) => onClick({ event, target: 'events' })}
+          variant="interface"
+        >
           Events
         </Anchor>
       </FooterLinkItem>
@@ -68,18 +72,30 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
     <FooterLinkArea>
       <FooterHeading>Company</FooterHeading>
       <FooterLinkItem>
-        <Anchor href="/about" onClick={onClick} variant="interface">
+        <Anchor
+          href="/about"
+          onClick={(event) => onClick({ event, target: 'about' })}
+          variant="interface"
+        >
           About
         </Anchor>
       </FooterLinkItem>
       <FooterLinkItem>
-        <Anchor href="/about/careers" onClick={onClick} variant="interface">
+        <Anchor
+          href="/about/careers"
+          onClick={(event) => onClick({ event, target: 'jobs' })}
+          variant="interface"
+        >
           We&apos;re Hiring
         </Anchor>
       </FooterLinkItem>
       {userGeo !== 'IN' && (
         <FooterLinkItem>
-          <Anchor href="/shop" onClick={onClick} variant="interface">
+          <Anchor
+            href="/shop"
+            onClick={(event) => onClick({ event, target: 'shop' })}
+            variant="interface"
+          >
             Shop
           </Anchor>
         </FooterLinkItem>
@@ -92,7 +108,11 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
     <FooterLinkArea>
       <FooterHeading>Enterprise Plans</FooterHeading>
       <FooterLinkItem>
-        <Anchor href="/business" onClick={onClick} variant="interface">
+        <Anchor
+          href="/business"
+          onClick={(event) => onClick({ event, target: 'business_landing' })}
+          variant="interface"
+        >
           For Business
         </Anchor>
       </FooterLinkItem>
@@ -103,12 +123,20 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
     <FooterLinkArea>
       <FooterHeading>Individual Plans</FooterHeading>
       <FooterLinkItem>
-        <Anchor href="/pro/membership" onClick={onClick} variant="interface">
+        <Anchor
+          href="/pro/membership"
+          onClick={(event) => onClick({ event, target: 'pro_membership' })}
+          variant="interface"
+        >
           Pro Membership
         </Anchor>
       </FooterLinkItem>
       <FooterLinkItem>
-        <Anchor href="/student-center" onClick={onClick} variant="interface">
+        <Anchor
+          href="/student-center"
+          onClick={(event) => onClick({ event, target: 'students' })}
+          variant="interface"
+        >
           For Students
         </Anchor>
       </FooterLinkItem>
@@ -128,7 +156,7 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
       <Box display={{ sm: 'flex' }} flexDirection={{ sm: 'column' }}>
         <MobileImageLink
           href="https://itunes.apple.com/us/app/codecademy-go/id1376029326"
-          onClick={onClick}
+          onClick={(event) => onClick({ event, target: '' })}
           target="_blank"
         >
           <AppleMobileAppImage
@@ -140,7 +168,7 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
         </MobileImageLink>
         <MobileImageLink
           href="https://play.google.com/store/apps/details?id=com.ryzac.codecademygo"
-          onClick={onClick}
+          onClick={(event) => onClick({ event, target: '' })}
           target="_blank"
         >
           <AndroidMobileAppImage
@@ -160,7 +188,7 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
       <FooterLinkItem>
         <Anchor
           href="https://news.codecademy.com"
-          onClick={onClick}
+          onClick={(event) => onClick({ event, target: '' })}
           variant="interface"
         >
           Blog
@@ -169,14 +197,18 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
       <FooterLinkItem>
         <Anchor
           href="/resources/cheatsheets/all"
-          onClick={onClick}
+          onClick={(event) => onClick({ event, target: '' })}
           variant="interface"
         >
           Cheatsheets
         </Anchor>
       </FooterLinkItem>
       <FooterLinkItem>
-        <Anchor href="/articles" onClick={onClick} variant="interface">
+        <Anchor
+          href="/articles"
+          onClick={(event) => onClick({ event, target: '' })}
+          variant="interface"
+        >
           Articles
         </Anchor>
       </FooterLinkItem>
@@ -189,7 +221,7 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
       <FooterLinkItem>
         <Anchor
           href="https://help.codecademy.com"
-          onClick={onClick}
+          onClick={(event) => onClick({ event, target: 'help' })}
           variant="interface"
         >
           Help Center

@@ -6,10 +6,14 @@ import React from 'react';
 import { GlobalFooterClickHandler } from '../types';
 
 const urls = [
-  ['Privacy Policy', '/policy'],
-  ['Cookie Policy', '/cookie-policy'],
-  ['Do Not Sell My Personal Information', 'https://privacy.codecademy.com'],
-  ['Terms', '/terms'],
+  ['Privacy Policy', '/policy', 'policy'],
+  ['Cookie Policy', '/cookie-policy', 'cookie_policy'],
+  [
+    'Do Not Sell My Personal Information',
+    'https://privacy.codecademy.com',
+    'data_privacy',
+  ],
+  ['Terms', '/terms', 'terms'],
 ];
 
 const LinksList = styled.ul`
@@ -46,10 +50,14 @@ export type LegalLinksProps = {
 export const LegalLinks: React.FC<LegalLinksProps> = ({ onClick }) => {
   return (
     <LinksList aria-label="Legal" role="list">
-      {urls.map(([children, href]) => {
+      {urls.map(([children, href, target]) => {
         return (
           <LinksItem key={href}>
-            <Anchor href={href} onClick={onClick} variant="interface">
+            <Anchor
+              href={href}
+              onClick={(event) => onClick({ event, target })}
+              variant="interface"
+            >
               {children}
             </Anchor>
           </LinksItem>
