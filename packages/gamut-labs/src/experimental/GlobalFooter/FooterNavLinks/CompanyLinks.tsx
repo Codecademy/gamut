@@ -19,7 +19,10 @@ const MobileImageLink = styled(Anchor)();
 MobileImageLink.defaultProps = {
   display: 'inline-block',
   variant: 'interface',
-  width: '50%',
+  width: {
+    base: '50%',
+    md: '90%',
+  },
 };
 
 const AppleMobileAppImage = styled.img`
