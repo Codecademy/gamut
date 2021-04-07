@@ -1,6 +1,8 @@
 import { PageFeatures } from '@codecademy/gamut-labs/src';
 import title from '@codecademy/macros/lib/title.macro';
-import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+
+import { PropsTable } from '~styleguide/blocks';
 
 <Meta
   title={title}
@@ -50,7 +52,7 @@ import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
   }}
   parameters={{
     subtitle: `A features section for use in landing pages created in Contentful.  It consists of an array of features and optional title, description, cta, test id, features media, and max columns.  Featured media can be full size images, icons, stats, or none via \`featuresMedia\` prop.`,
-    status: 'volatile',
+    status: 'updating',
   }}
 />
 
@@ -62,7 +64,7 @@ Display text-only featurettes with no media associated.
   <Story name="Featured Info">{(args) => <PageFeatures {...args} />}</Story>
 </Canvas>
 
-<Props story="Featured Info" />
+<PropsTable story="Featured Info" />
 
 ## Featured Images
 

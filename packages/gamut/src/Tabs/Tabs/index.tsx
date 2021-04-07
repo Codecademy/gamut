@@ -33,6 +33,9 @@ export interface TabsState {
   activeTabIndex: number;
 }
 
+/**
+ * @deprecated
+ */
 export class Tabs extends Component<TabsProps> {
   state: TabsState = {
     activeTabIndex: this.props.defaultActiveTabIndex || 0,

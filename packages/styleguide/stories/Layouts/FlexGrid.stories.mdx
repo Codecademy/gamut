@@ -1,6 +1,8 @@
 import { Col, FlexGrid, Row } from '@codecademy/gamut/src';
 import title from '@codecademy/macros/lib/title.macro';
-import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+
+import { PropsTable } from '~styleguide/blocks';
 
 import { defaultGridProps, ExampleBox } from './Elements';
 
@@ -9,7 +11,7 @@ import { defaultGridProps, ExampleBox } from './Elements';
   component={FlexGrid}
   subcomponents={{ FlexGrid, Row, Col }}
   parameters={{
-    status: 'volatile',
+    status: 'deprecated',
     source: 'gamut',
     subtitle: 'A flex based Grid System with Rows and Columns',
   }}
@@ -63,7 +65,7 @@ not shrink to the size of its container.
   </Story>
 </Canvas>
 
-<Props story="Fixed Grid Default" />
+<PropsTable story="Fixed Grid Default" />
 
 ## Fluid container
 

@@ -4,7 +4,9 @@ import {
   NotificationList,
 } from '@codecademy/gamut/src';
 import title from '@codecademy/macros/lib/title.macro';
-import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+
+import { PropsTable } from '~styleguide/blocks';
 
 <Meta
   title={title}
@@ -15,6 +17,7 @@ import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
 menu from a header.`,
     source: 'gamut',
     figmaId: 'KIqFTtIa7WoDA8G1owEvYL',
+    status: 'deprecated',
   }}
 />
 
@@ -62,7 +65,7 @@ export const examples = [
   </Story>
 </Canvas>
 
-<Props story="NotificationList" />
+<PropsTable story="NotificationList" />
 
 ## Empty
 

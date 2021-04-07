@@ -1,0 +1,35 @@
+import { InfoCircleIcon } from '@codecademy/gamut-icons/src';
+import { AppHeaderLinkMobile } from '@codecademy/gamut-labs/src';
+import title from '@codecademy/macros/lib/title.macro';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+
+import { PropsTable } from '~styleguide/blocks';
+
+<Meta
+  title={title}
+  component={AppHeaderLinkMobile}
+  parameters={{
+    layout: 'padded',
+    status: 'updating',
+    subtitle:
+      'A styled Anchor with an optional icon and top separator for use in AppHeaderLinkSections and the mobile menu.',
+  }}
+  args={{
+    item: {
+      id: 'link',
+      icon: InfoCircleIcon,
+      href: 'http://codecademy.com',
+      text: 'Nav Link',
+      trackingTarget: 'track-link',
+      type: 'link',
+    },
+  }}
+/>
+
+<Canvas>
+  <Story name="AppHeaderLinkMobile">
+    {(args) => <AppHeaderLinkMobile {...args} />}
+  </Story>
+</Canvas>
+
+<PropsTable story="AppHeaderLinkMobile" />

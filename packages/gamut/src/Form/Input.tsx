@@ -12,6 +12,8 @@ import {
   conditionalInputStyleProps,
   conditionalStyles,
   formBaseFieldStyles,
+  formFieldFocusStyles,
+  formFieldPaddingStyles,
   formFieldStyles,
   iconPadding,
 } from './styles/shared';
@@ -30,30 +32,36 @@ export type InputProps = InputHTMLAttributes<HTMLInputElement> & {
   required?: boolean;
   type?: string;
   valid?: boolean;
-};
-
-export interface StyledInputProps extends InputProps {
+  /**
+   * Allows Inputs to manage their own activated style state to acccount for some edge-cases.
+   */
   activated?: boolean;
+};
+export interface StyledInputProps extends InputProps {
   icon?: boolean;
 }
+
+/*
+ * @remarks We would love to properly type this with generics, but, alas, we cannot yet.
+ * @see https://github.com/Codecademy/client-modules/pull/270#discussion_r270917147
+ * @see https://github.com/Microsoft/TypeScript/issues/21048
+ */
 export interface InputWrapperProps extends InputProps {
-  as?: StyledComponent<
-    StyledInputProps,
-    React.DetailedHTMLProps<
-      InputHTMLAttributes<HTMLInputElement>,
-      HTMLInputElement
-    >
-  >;
+  as?: StyledComponent<StyledInputProps, React.PropsWithChildren<any>>;
   /**
    * A custom icon svg from gamut-icons.
    */
   icon?: typeof AlertIcon;
 }
 
+/**  We greatly prefer NOT to do this but ReactRecurly has some specific needs around focus-styles + padding that force us to export them seperately. If we ever stop using React-Recurly, this code will be 🔪.
+ *tldr: Do not do this unless you have already talked to Web-Plat and have failed to find any alternate (and better) solutions. */
+export const reactRecurlyFormFieldFocusStyles = formFieldFocusStyles;
+export const reactRecurlyFormFieldPaddingStyles = formFieldPaddingStyles;
+
 export const iFrameWrapper = styled.div<conditionalInputStyleProps>`
   ${formBaseFieldStyles}
   ${conditionalStyles}
-  ${iconPadding}
   text-indent: 0;
 `;
 
@@ -62,10 +70,6 @@ const InputElement = styled.input<StyledInputProps>`
   ${conditionalStyles}
   ${iconPadding}
   text-indent: 0;
-`;
-
-const StyledFlexBox = styled(FlexBox)`
-  align-items: center !important;
 `;
 
 const inputStates = {
@@ -90,16 +94,23 @@ const getInputState = (error: boolean, valid: boolean) => {
 };
 
 export const Input = forwardRef<HTMLInputElement, InputWrapperProps>(
-  ({ error, className, id, valid, as: As, icon: Icon, ...rest }, ref) => {
-    const [activated, setActivated] = useState(false);
+  (
+    { error, className, id, valid, activated, as: As, icon: Icon, ...rest },
+    ref
+  ) => {
+    const [activatedStyle, setActivatedStyle] = useState(false);
 
     const { color, icon } = inputStates[
       getInputState(Boolean(error), Boolean(valid))
     ];
 
-    const changeHandler = (event: ChangeEvent<HTMLInputElement>) => {
+    /*
+     * @remarks We would love to properly type this with generics, but, alas, we cannot yet. See comments on lines 45-47 for more detail.
+     */
+
+    const changeHandler = (event: ChangeEvent<any>) => {
       rest?.onChange?.(event);
-      setActivated(true);
+      setActivatedStyle(true);
     };
 
     const AsComponent = As || InputElement;
@@ -112,21 +123,22 @@ export const Input = forwardRef<HTMLInputElement, InputWrapperProps>(
           id={id || rest.htmlFor}
           ref={ref}
           error={error}
-          activated={activated}
+          activated={activated === undefined ? activatedStyle : activated}
           icon={error || valid || !!Icon}
           className={className}
-          onChange={(event) => changeHandler(event)}
+          onChange={changeHandler}
         />
         {!!ShownIcon && (
-          <StyledFlexBox
+          <FlexBox
             paddingRight={Icon ? 12 : 16}
             position="absolute"
+            alignItems="center"
             right="0"
             top="0"
             bottom="0"
           >
             <ShownIcon size={Icon ? 24 : 16} />
-          </StyledFlexBox>
+          </FlexBox>
         )}
       </Box>
     );
