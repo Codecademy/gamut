@@ -15,12 +15,7 @@ import React, {
 import ReactSelect, { components } from 'react-select';
 
 import { Box } from '../Box';
-import {
-  colorStates,
-  conditionalStyles,
-  formBaseFieldStyles,
-  formFieldStyles,
-} from './styles/shared';
+import { conditionalStyles, formBaseFieldStyles } from './styles/shared';
 
 export type SelectDropdownWrapperProps = SelectHTMLAttributes<HTMLSelectElement> & {
   error?: boolean;
@@ -49,7 +44,7 @@ const selectSizeVariants = variant({
   },
 });
 
-const SelectBase = styled.select<SelectProps>`
+const SelectBase = styled.select<SelectDropdownProps>`
   ${formBaseFieldStyles}
   ${conditionalStyles}
   ${selectSizeVariants}
@@ -61,22 +56,10 @@ const SelectBase = styled.select<SelectProps>`
   appearance: none;
 `;
 
-const selectStyles = ({ error, activated, sizeVariant }) => css`
-  ${formFieldStyles}
-  ${conditionalStyles({ error, activated })}
-  ${selectSizeVariants({ sizeVariant })}
-    display: flex;
-  cursor: pointer;
-  display: block;
-  -moz-appearance: none;
-  -webkit-appearance: none;
-  appearance: none;
-`;
-
 const selectBaseStyles = (error, activated, isFocused) => css`
   ${formBaseFieldStyles}
   ${conditionalStyles({ error, activated, isFocused })}
-  padding: 0.55rem ${theme.spacing[8]};
+  padding: ${theme.spacing[8]};
   cursor: pointer;
   display: flex;
   -moz-appearance: none;

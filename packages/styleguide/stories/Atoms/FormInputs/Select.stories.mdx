@@ -1,4 +1,4 @@
-import { Select } from '@codecademy/gamut';
+import { Select, SelectDropdown } from '@codecademy/gamut';
 import title from '@codecademy/macros/lib/title.macro';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/dist/blocks';
 
@@ -15,6 +15,7 @@ export const fruitOptions = [
 <Meta
   title={title}
   component={Select}
+  subcomponent={SelectDropdown}
   parameters={{
     subtitle: 'A `<select />` element for picking from exclusive options',
     source: 'gamut',
@@ -84,5 +85,29 @@ export const fruitOptions = [
     }}
   >
     {(args) => <Select {...args} />}
+  </Story>
+</Canvas>
+
+### SelectDropdown
+
+<Canvas>
+  <Story
+    name="BaseDropdown"
+    args={{
+      options: ['Base', 'Regular Size', '"Normal'],
+      defaultValue: 'Base',
+    }}
+  >
+    {(args) => <SelectDropdown {...args} />}
+  </Story>
+  <Story
+    name="ErrorDropdown"
+    args={{
+      options: ['Small', 'Quite little'],
+      defaultValue: 'Small',
+      error: true,
+    }}
+  >
+    {(args) => <SelectDropdown {...args} />}
   </Story>
 </Canvas>
