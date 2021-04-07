@@ -1,4 +1,4 @@
-import { Select, SelectDropdown } from '@codecademy/gamut';
+import { Box, Select, SelectDropdown } from '@codecademy/gamut';
 import title from '@codecademy/macros/lib/title.macro';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 
@@ -24,7 +24,6 @@ export const fruitOptions = [
   args={{
     htmlFor: 'example-select',
     name: 'example-select',
-    value: 'Apple',
     options: fruitOptions,
   }}
   argTypes={{
@@ -38,7 +37,7 @@ export const fruitOptions = [
 />
 
 <Canvas>
-  <Story name="Select">{(args) => <Select {...args} />}</Story>
+  <Story name="Select">{(args) => <Select value="Apple" {...args} />}</Story>
 </Canvas>
 
 <PropsTable story="Select" />
@@ -95,10 +94,14 @@ export const fruitOptions = [
     name="BaseDropdown"
     args={{
       options: ['Base', 'Regular Size', '"Normal'],
-      defaultValue: 'Base',
+      placeholder: 'all about that',
     }}
   >
-    {(args) => <SelectDropdown {...args} />}
+    {(args) => (
+      <Box width="10rem">
+        <SelectDropdown {...args} />
+      </Box>
+    )}
   </Story>
   <Story
     name="ErrorDropdown"
@@ -106,6 +109,16 @@ export const fruitOptions = [
       options: ['Small', 'Quite little'],
       defaultValue: 'Small',
       error: true,
+    }}
+  >
+    {(args) => <SelectDropdown {...args} />}
+  </Story>
+  <Story
+    name="DisabledDropdown"
+    args={{
+      options: ['Disabled'],
+      defaultValue: 'Disabled',
+      disabled: true,
     }}
   >
     {(args) => <SelectDropdown {...args} />}

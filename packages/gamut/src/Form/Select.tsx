@@ -59,7 +59,7 @@ const selectIconStyles = css`
   pointer-events: none;
 `;
 
-const SelectIcon = styled(ArrowChevronDownIcon)(selectIconStyles);
+export const SelectIcon = styled(ArrowChevronDownIcon)(selectIconStyles);
 const MiniSelectIcon = styled(MiniChevronDownIcon)(selectIconStyles);
 
 export const Select = forwardRef<HTMLSelectElement, SelectWrapperProps>(

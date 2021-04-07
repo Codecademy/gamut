@@ -36,15 +36,7 @@ export type conditionalInputStyleProps = conditionalStyleProps &
 export const conditionalStyles = ({
   error,
   activated,
-  isFocused,
 }: conditionalStyleProps) => {
-  if (error && isFocused) {
-    return css`
-      border-color: ${colorStates.error.borderColor};
-      box-shadow: inset 0 0 0 1px ${colorStates.error.borderColor};
-    `;
-  }
-
   if (error) {
     return css`
       color: ${colorStates.error.color};
@@ -61,6 +53,35 @@ export const conditionalStyles = ({
     `;
   }
 
+  if (activated) {
+    return css`
+      border-color: ${colorStates.activated.borderColor};
+    `;
+  }
+};
+
+export const conditionalBorderStyles = ({
+  error,
+  activated,
+  isFocused,
+}: conditionalStyleProps) => {
+  if (error && isFocused) {
+    return css`
+      border-color: ${colorStates.error.borderColor};
+      box-shadow: inset 0 0 0 1px ${colorStates.error.borderColor};
+    `;
+  }
+
+  if (error) {
+    return css`
+      border-color: ${colorStates.error.borderColor};
+
+      &:hover {
+        border-color: ${colorStates.error.borderColor};
+      }
+    `;
+  }
+
   if (isFocused) {
     return css`
       border-color: ${colorStates.hover.borderColor};
@@ -73,6 +94,19 @@ export const conditionalStyles = ({
       border-color: ${colorStates.activated.borderColor};
     `;
   }
+};
+
+export const conditionalColorStyles = (error: conditionalStyleProps) => {
+  console.log(error);
+  if (error) {
+    return css`
+      color: ${colorStates.error.color};
+    `;
+  }
+
+  return css`
+    color: ${colorStates.base.color};
+  `;
 };
 
 export const iconPadding = ({ icon }: iconPaddingProps) => {

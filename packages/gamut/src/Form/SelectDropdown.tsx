@@ -1,10 +1,5 @@
-import {
-  ArrowChevronDownIcon,
-  MiniChevronDownIcon,
-} from '@codecademy/gamut-icons';
-import { themed, variant } from '@codecademy/gamut-styles';
+import { variant } from '@codecademy/gamut-styles';
 import { css } from '@emotion/react';
-import styled from '@emotion/styled';
 import { each, isArray, isObject } from 'lodash';
 import React, {
   ChangeEvent,
@@ -15,7 +10,13 @@ import React, {
 import ReactSelect, { components } from 'react-select';
 
 import { Box } from '../Box';
-import { conditionalStyles, formBaseFieldStyles } from './styles/shared';
+import { SelectIcon } from './Select';
+import {
+  colorStates,
+  conditionalBorderStyles,
+  conditionalColorStyles,
+  formBaseFieldStyles,
+} from './styles/shared';
 
 export type SelectDropdownWrapperProps = SelectHTMLAttributes<HTMLSelectElement> & {
   error?: boolean;
@@ -44,21 +45,9 @@ const selectSizeVariants = variant({
   },
 });
 
-const SelectBase = styled.select<SelectDropdownProps>`
-  ${formBaseFieldStyles}
-  ${conditionalStyles}
-  ${selectSizeVariants}
-  display: flex;
-  cursor: pointer;
-  display: block;
-  -moz-appearance: none;
-  -webkit-appearance: none;
-  appearance: none;
-`;
-
 const selectBaseStyles = (error, activated, isFocused) => css`
   ${formBaseFieldStyles}
-  ${conditionalStyles({ error, activated, isFocused })}
+  ${conditionalBorderStyles({ error, activated, isFocused })}
   padding: .5rem;
   cursor: pointer;
   display: flex;
@@ -67,16 +56,10 @@ const selectBaseStyles = (error, activated, isFocused) => css`
   appearance: none;
 `;
 
-const selectIconStyles = css`
-  pointer-events: none;
-`;
-
-const SelectIcon = styled(ArrowChevronDownIcon)(selectIconStyles);
-const MiniSelectIcon = styled(MiniChevronDownIcon)(selectIconStyles);
-
 const customStyles = {
   dropdownIndicator: (provided, state) => ({
     ...provided,
+    // ...conditionalColorStyles(state.selectProps.error),
     padding: '0',
   }),
   option: (provided, state) => ({
@@ -112,7 +95,6 @@ export const SelectDropdown = forwardRef<
     ref
   ) => {
     const [activated, setActivated] = useState(false);
-    console.log(customStyles);
 
     const changeHandler = (event: ChangeEvent<HTMLSelectElement>) => {
       rest?.onChange?.(event);
@@ -159,6 +141,8 @@ export const SelectDropdown = forwardRef<
         className={className}
       >
         <ReactSelect
+          {...rest}
+          defaultValue={selectOptions[0]}
           styles={customStyles}
           activated={activated}
           error={error}
