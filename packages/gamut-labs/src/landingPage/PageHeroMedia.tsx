@@ -1,4 +1,4 @@
-import { Column, Video } from '@codecademy/gamut';
+import { Column, ColumnProps, Video } from '@codecademy/gamut';
 import styled from '@emotion/styled';
 import { omit } from 'lodash';
 import React from 'react';
@@ -15,7 +15,7 @@ const RightColumn = styled(Column)`
 
 export type PageHeroMediaProps = {
   media: MediaProps;
-  size: number;
+  size: Extract<ColumnProps['size'], number>;
 };
 
 export const PageHeroMedia: React.FC<PageHeroMediaProps> = ({
@@ -26,7 +26,7 @@ export const PageHeroMedia: React.FC<PageHeroMediaProps> = ({
     case 'image':
       return (
         <RightColumn
-          size={size as any}
+          size={size}
           ml={{ _: 0, sm: 16 }}
           display={{ _: 'none', sm: 'grid' }}
         >
@@ -36,7 +36,7 @@ export const PageHeroMedia: React.FC<PageHeroMediaProps> = ({
     case 'video':
       const videoArgs = omit(media, 'type');
       return (
-        <RightColumn size={{ _: 12, sm: size as any }}>
+        <RightColumn size={{ _: 12, sm: size }}>
           <Video {...videoArgs} />
         </RightColumn>
       );
