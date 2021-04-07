@@ -10,8 +10,8 @@ import { GridFormField, LayoutGridProps } from './types';
 export * from './types';
 
 const defaultColumnGap = {
-  base: 'sm',
-  sm: 'lg',
+  _: 8,
+  sm: 32,
 } as const;
 
 export type GridFormProps<Values extends {}> = {
@@ -69,7 +69,7 @@ export function GridForm<
   columnGap = defaultColumnGap,
   fields = [],
   onSubmit,
-  rowGap = 'md',
+  rowGap = 16,
   submit,
   validation = 'onSubmit',
   showRequired = false,
