@@ -50,9 +50,10 @@ const selectSizeVariants = variant({
 });
 
 const SelectBase = styled.select<SelectProps>`
-  ${formFieldStyles}
+  ${formBaseFieldStyles}
   ${conditionalStyles}
   ${selectSizeVariants}
+  display: flex;
   cursor: pointer;
   display: block;
   -moz-appearance: none;
@@ -64,17 +65,31 @@ const selectStyles = ({ error, activated, sizeVariant }) => css`
   ${formFieldStyles}
   ${conditionalStyles({ error, activated })}
   ${selectSizeVariants({ sizeVariant })}
+    display: flex;
   cursor: pointer;
   display: block;
   -moz-appearance: none;
   -webkit-appearance: none;
   appearance: none;
 `;
+export const focusStyles = (isFocused) => {
+  if (isFocused) {
+    return css`
+      color: ${colorStates.error.color};
+      border-color: ${colorStates.error.borderColor};
+    `;
+  }
+};
 
-const selectBaseStyles = css`
+const selectBaseStyles = (isFocused) => css`
   ${formBaseFieldStyles}
-  padding: .55rem ${theme.spacing[8]};
+  ${focusStyles(isFocused)}
+  padding: 0.55rem ${theme.spacing[8]};
   cursor: pointer;
+  display: flex;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
 `;
 
 const selectIconStyles = css`
@@ -83,17 +98,6 @@ const selectIconStyles = css`
 
 const SelectIcon = styled(ArrowChevronDownIcon)(selectIconStyles);
 const MiniSelectIcon = styled(MiniChevronDownIcon)(selectIconStyles);
-
-export const formBaseStyles = css`
-  background-color: ${colorStates.error.color};
-  border: 1px solid ${colorStates.error.borderColor};
-`;
-
-const newFormBase = css(formBaseStyles);
-
-function styleFunction(provided, state) {
-  return { ...provided, color: state.isFocused ? 'blue' : 'red' };
-}
 
 const customStyles = {
   dropdownIndicator: (provided, state) => ({
@@ -107,9 +111,7 @@ const customStyles = {
     backgroundColor: state.isSelected ? 'green' : 'white',
   }),
   control: (provided, state) => ({
-    ...provided,
-    border: state.isFocused ? 'solid 1px red' : null,
-    // ...css(provided, selectBaseStyles),
+    ...selectBaseStyles(state.isFocused),
   }),
   container: (provided) => ({
     ...provided,
