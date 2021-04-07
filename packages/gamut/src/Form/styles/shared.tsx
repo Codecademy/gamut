@@ -38,11 +38,13 @@ export const conditionalStyles = ({
   activated,
   isFocused,
 }: conditionalStyleProps) => {
-  if (isFocused) {
+  if (error && isFocused) {
     return css`
-      border-color: ${colorStates.hover.borderColor};
+      border-color: ${colorStates.error.borderColor};
+      box-shadow: inset 0 0 0 1px ${colorStates.error.borderColor};
     `;
   }
+
   if (error) {
     return css`
       color: ${colorStates.error.color};
@@ -58,6 +60,14 @@ export const conditionalStyles = ({
       }
     `;
   }
+
+  if (isFocused) {
+    return css`
+      border-color: ${colorStates.hover.borderColor};
+      box-shadow: inset 0 0 0 1px ${colorStates.hover.borderColor};
+    `;
+  }
+
   if (activated) {
     return css`
       border-color: ${colorStates.activated.borderColor};
