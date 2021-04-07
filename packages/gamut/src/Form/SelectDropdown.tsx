@@ -3,7 +3,7 @@ import {
   MiniChevronDownIcon,
 } from '@codecademy/gamut-icons';
 import { theme, variant } from '@codecademy/gamut-styles';
-import { css } from '@emotion/react';
+import { css, Theme } from '@emotion/react';
 import styled from '@emotion/styled';
 import { each, isArray, isObject } from 'lodash';
 import React, {
@@ -56,10 +56,14 @@ const SelectBase = styled.select<SelectDropdownProps>`
   appearance: none;
 `;
 
+const spacing = ({ theme }: { theme: Theme }) => css`
+  padding-top: ${theme.spacing[4]};
+`;
+
 const selectBaseStyles = (error, activated, isFocused) => css`
   ${formBaseFieldStyles}
   ${conditionalStyles({ error, activated, isFocused })}
-  padding: ${theme.spacing[8]};
+${spacing}
   cursor: pointer;
   display: flex;
   -moz-appearance: none;
