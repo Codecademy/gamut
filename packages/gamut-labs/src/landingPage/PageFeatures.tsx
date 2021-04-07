@@ -66,7 +66,7 @@ const gridRenderEach = (
   } as ColumnProps['size'];
   /* eslint-disable react/no-array-index-key */
   return (
-    <LayoutGrid columnGap={{ _: 'sm', sm: 'xl' }}>
+    <LayoutGrid columnGap={{ _: 8, sm: 32 }}>
       {items.map((item, i) => (
         <Column key={i} size={size}>
           {itemRenderer(item)}
