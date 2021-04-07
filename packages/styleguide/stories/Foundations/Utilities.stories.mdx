@@ -1,7 +1,5 @@
-import { boxShadow } from '@codecademy/gamut-styles';
 import title from '@codecademy/macros/lib/title.macro';
-import styled from '@emotion/styled';
-import { Canvas, Meta } from '@storybook/addon-docs/blocks';
+import { Meta } from '@storybook/addon-docs/blocks';
 
 <Meta
   title={title}
@@ -45,46 +43,6 @@ pxRem('30px'); // => 1.875rem;
 
 We also support various style partials to help you consistently achieve affects, like box shadows and screen reader content.
 
-### Box Shadow
-
-We have 5 depths of box shadows that we use.
-
-export const Box = styled.div`
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  ${({ shadow }) => shadow}
-`;
-
-<Canvas column={5} withSource="none">
-  <Box shadow={boxShadow(1)}>1</Box>
-  <Box shadow={boxShadow(2)}>2</Box>
-  <Box shadow={boxShadow(3)}>3</Box>
-  <Box shadow={boxShadow(4)}>4</Box>
-  <Box shadow={boxShadow(5)}>5</Box>
-</Canvas>
-
-#### TS - `boxShadow`
-
-```tsx
-import { boxShadow } from '@codecademy/gamut-styles';
-
-const Example = `
-  ${boxShadow(3)}
-`;
-```
-
-#### SCSS - `box-shadow`
-
-```scss
-@import '@codecademy/gamut-styles/utils';
-
-.box {
-  @include box-shadow(3);
-}
-```
-
 ### `fontSmoothing`
 
 We enable font smoothing in some places to make typography more readable.
@@ -95,11 +53,11 @@ We enable font smoothing in some places to make typography more readable.
 import { fontSmoothing } from '@codecademy/gamut-styles';
 
 const Smooth = `
-  ${fontSmoothing()}
+  ${fontSmoothing}
 `;
 
 const Smooth = `
-  ${fontSmoothing(false)}
+  ${fontSmoothing}
 `;
 ```
 

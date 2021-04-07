@@ -2,6 +2,7 @@ import {
   fontSmoothing,
   lineHeight,
   pxRem,
+  themed,
   timing,
   variant,
 } from '@codecademy/gamut-styles';
@@ -40,18 +41,17 @@ type ToolTipContainerProps = {
 };
 
 const ToolTipContainer = styled.div<ToolTipContainerProps>`
-  ${fontSmoothing()}
-
+  ${fontSmoothing}
   display: flex;
   opacity: 0;
-  transition: opacity ${timing.fast};
-  transition-delay: ${timing.fast};
+  transition: opacity ${themed('timing.fast')};
+  transition-delay: ${themed('timing.fast')};
   position: absolute;
   width: 16rem;
   visibility: hidden;
 
-  // Both before and after psuedo-elements are used because ::after's background should go over the container's
-  // and ::before's box-shadow should be behind the container itself
+  /* Both before and after psuedo-elements are used because ::after's background should go over the container's
+  * and ::before's box-shadow should be behind the container itself */
   &::after,
   &::before {
     content: '';

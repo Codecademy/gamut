@@ -1,5 +1,3 @@
-import { css } from '@emotion/react';
-
 export type ShadowDepth = 1 | 2 | 3 | 4 | 5;
 
 const shadowsForDepth = {
@@ -34,8 +32,6 @@ export const createShadow = (depth: ShadowDepth) => {
   0 ${o3}px ${o4}px rgba(0, 0, 0, ${s2})`;
 };
 
-export const boxShadow = (depth: ShadowDepth = 1) => {
-  return css`
-    box-shadow: ${createShadow(depth)};
-  `;
-};
+export const boxShadow = (depth: ShadowDepth = 1) => ({
+  boxShadow: createShadow(depth),
+});

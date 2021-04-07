@@ -1,6 +1,9 @@
 import { MiniArrowDownIcon } from '@codecademy/gamut-icons';
-import { timing } from '@codecademy/gamut-styles';
-import { css } from '@emotion/react';
+import {
+  theme,
+  themed,
+  transitionConcatenator,
+} from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React from 'react';
 
@@ -11,40 +14,39 @@ export type SkipToContentProps = {
   contentId: string;
 };
 
-const animateFunction = `cubic-bezier(0.075, 0.82, 0.165, 1)`;
+const SkipToContentLink = styled.a`
+  color: ${themed('colors.navy')};
+  background-color: ${themed('colors.white')};
+  cursor: pointer;
+  display: flex;
+  font-weight: ${themed('fontWeight.title')};
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  padding: ${themed('spacing.24')} ${themed('spacing.16')};
+  position: absolute;
+  text-decoration: none;
+  transform: translate(-50%, -100%);
+  top: 0;
+  left: 50%;
+  z-index: 15;
+  width: 12rem;
+  transition: ${transitionConcatenator(
+    ['opacity', 'transform'],
+    theme.timing.fast,
+    'cubic-bezier(0.075, 0.82, 0.165, 1)'
+  )};
 
-const SkipToContentLink = styled.a(
-  ({ theme }) => css`
-    color: ${theme.colors.navy};
-    background-color: ${theme.colors.white};
-    cursor: pointer;
-    display: flex;
-    font-weight: ${theme.fontWeight.title};
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    padding: ${theme.spacing[24]} ${theme.spacing[16]};
-    position: absolute;
+  &:hover {
     text-decoration: none;
-    transform: translate(-50%, -100%);
-    top: 0;
-    left: 50%;
-    z-index: 15;
-    width: 12rem;
-    transition: opacity ${timing.fast} ${animateFunction},
-      transform ${timing.fast} ${animateFunction};
+  }
 
-    &:hover {
-      text-decoration: none;
-    }
-
-    &:focus {
-      outline-color: ${theme.colors.hyper};
-      opacity: 1;
-      transform: translate(-50%, 1rem);
-    }
-  `
-);
+  &:focus {
+    outline-color: ${themed('colors.hyper')};
+    opacity: 1;
+    transform: translate(-50%, 1rem);
+  }
+`;
 
 export const SkipToContent: React.FC<SkipToContentProps> = ({
   contentId,
@@ -63,19 +65,10 @@ export const SkipToContent: React.FC<SkipToContentProps> = ({
   );
 };
 
-export const SkipToContentTarget = styled.div(({ theme, children }) => {
-  const offset = theme.header.height;
-  if (children) {
-    return css`
-      padding-top: calc(${offset} + 1rem);
-      margin-top: calc(${offset} * -1);
-    `;
-  }
-  return css`
-    margin-top: calc(${offset} * -1);
-    position: absolute;
-  `;
-});
+export const SkipToContentTarget = styled.div`
+  margin-top: calc(${themed('header.height')} * -1);
+  position: absolute;
+`;
 
 SkipToContentTarget.defaultProps = {
   tabIndex: -1,

@@ -1,4 +1,7 @@
-import { screenReaderOnly } from '@codecademy/gamut-styles';
+import {
+  screenReaderOnly,
+  transitionConcatenator,
+} from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React from 'react';
 
@@ -60,7 +63,11 @@ const ToggleTrack = styled(Box)`
   }
 
   ${Box} {
-    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    transition: ${transitionConcatenator(
+      ['left'],
+      '500ms',
+      'cubic-bezier(0.23, 1, 0.32, 1)'
+    )};
   }
 `;
 

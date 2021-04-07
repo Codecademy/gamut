@@ -7,7 +7,7 @@ import {
   MiniStarIcon,
   MiniWarningTriangleIcon,
 } from '@codecademy/gamut-icons';
-import { breakpoints, variant } from '@codecademy/gamut-styles';
+import { breakpoints, themed, variant } from '@codecademy/gamut-styles';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { motion } from 'framer-motion';
@@ -137,7 +137,7 @@ const contentVariants = {
 
 const CollapseButton = styled(IconButton)<{ expanded?: boolean }>`
   svg {
-    transition: ${transitionDuration * 1000}ms transform;
+    transition: ${themed('timing.fast')} transform;
     transform: rotate(${({ expanded }) => (expanded ? '180deg' : '0deg')});
   }
 `;

@@ -1,35 +1,35 @@
-import { fontSmoothing, fontWeight, timing } from '@codecademy/gamut-styles';
-import isPropValid from '@emotion/is-prop-valid';
-import { css } from '@emotion/react';
+import {
+  styledConfig,
+  theme,
+  themed,
+  transitionConcatenator,
+} from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 
-export const ButtonInner = styled('span', {
-  shouldForwardProp: (prop: string) =>
-    isPropValid(prop) && !['mode', 'size'].includes(prop),
-})(() => {
-  return css`
-    ${fontSmoothing()}
+export const ButtonInner = styled('span', styledConfig(['mode', 'size']))`
+  display: inline-block;
+  border: 2px solid transparent;
+  border-radius: 3px;
+  font-weight: ${themed('fontWeight.title')};
+  text-align: center;
+  transition: ${transitionConcatenator(
+    ['background-color', 'box-shadow', 'color'],
+    theme.timing.fast,
+    'ease'
+  )};
+
+  &:before,
+  &:after {
+    content: '';
     display: inline-block;
-    border: 2px solid transparent;
-    border-radius: 3px;
-    font-weight: ${fontWeight.title};
-    text-align: center;
-    transition: ${timing.fast} background-color, ${timing.fast} box-shadow,
-      ${timing.fast} color;
+    width: 1px;
+    height: 100%;
+    margin-left: -1px;
+    margin-right: -1px;
+    vertical-align: middle;
+  }
 
-    &:before,
-    &:after {
-      content: '';
-      display: inline-block;
-      width: 1px;
-      height: 100%;
-      margin-left: -1px;
-      margin-right: -1px;
-      vertical-align: middle;
-    }
-
-    > * {
-      vertical-align: middle;
-    }
-  `;
-});
+  > * {
+    vertical-align: middle;
+  }
+`;

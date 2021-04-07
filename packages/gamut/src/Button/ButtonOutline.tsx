@@ -1,4 +1,3 @@
-import { timing } from '@codecademy/gamut-styles';
 import isPropValid from '@emotion/is-prop-valid';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
@@ -8,7 +7,7 @@ import { ButtonProps, modeColorGroups } from './shared';
 
 export const StyledButtonOutline = styled('button', {
   shouldForwardProp: (prop: string) => isPropValid(prop) && prop !== 'mode',
-})<ButtonProps>(({ mode = 'light', variant = 'primary' }) => {
+})<ButtonProps>(({ mode = 'light', variant = 'primary', theme }) => {
   const modeColors = modeColorGroups[mode][variant];
 
   return css`
@@ -26,7 +25,7 @@ export const StyledButtonOutline = styled('button', {
     padding: 1px;
     text-align: center;
     text-decoration: none;
-    transition: ${timing.fast} box-shadow;
+    transition: ${theme.timing.fast} box-shadow;
     vertical-align: middle;
     white-space: nowrap;
 

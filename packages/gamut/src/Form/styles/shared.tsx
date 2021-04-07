@@ -1,6 +1,5 @@
-import { pxRem, theme } from '@codecademy/gamut-styles';
+import { pxRem, theme, transitionConcatenator } from '@codecademy/gamut-styles';
 import { css } from '@emotion/react';
-import { StandardPropertiesHyphen } from 'csstype';
 
 export const colorStates = {
   base: {
@@ -66,19 +65,6 @@ export const iconPadding = ({ icon }: iconPaddingProps) => {
   }
 };
 
-const transitionConcatenator = (
-  arrayOfProperties: Array<keyof StandardPropertiesHyphen>,
-  transition: string
-) => {
-  const cssString = `${arrayOfProperties.join(
-    ` ${transition},`
-  )} ${transition}`;
-
-  return css`
-    transition: ${cssString};
-  `;
-};
-
 export const formBaseStyles = css`
   color: ${colorStates.base.color};
   font-weight: normal;
@@ -87,7 +73,11 @@ export const formBaseStyles = css`
 
 export const formBaseFieldStyles = css`
   ${formBaseStyles}
-  ${transitionConcatenator(['border-color', 'box-shadow'], '0.2s ease-in-out')}
+  ${transitionConcatenator(
+    ['border-color', 'box-shadow'],
+    theme.timing.fast,
+    'ease-in-out'
+  )}
   width: 100%;
   outline: none;
   background-color: ${colorStates.base.backgroundColor};
