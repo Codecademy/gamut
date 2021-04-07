@@ -63,27 +63,15 @@ Both these properties can take a <LinkTo id="foundations-system-responsive-prope
   <Story name="Grid Gaps">
     {(args) => (
       <LayoutGrid {...args}>
-        <Column>
-          <Example>12</Example>
-        </Column>
-        <Column size={6}>
-          <Example>6</Example>
-        </Column>
-        <Column size={6}>
-          <Example>6</Example>
-        </Column>
-        <Column size={3}>
-          <Example>3</Example>
-        </Column>
-        <Column size={3}>
-          <Example>3</Example>
-        </Column>
-        <Column size={3}>
-          <Example>3</Example>
-        </Column>
-        <Column size={3}>
-          <Example>3</Example>
-        </Column>
+        {[
+          { size: 12 },
+          ...new Array(2).fill({ size: 6 }),
+          ...new Array(3).fill({ size: 4 }),
+        ].map((props, i) => (
+          <Column key={`gap-${i * props.size}`} {...props}>
+            <Example />
+          </Column>
+        ))}
       </LayoutGrid>
     )}
   </Story>
@@ -114,27 +102,19 @@ As with column and row gaps, those numbers may be static or responsive.
   <Story name="Column Offsets">
     {(args) => (
       <LayoutGrid {...args}>
-        <Column offset={2} size={4}>
-          <Example>2 Column offset</Example>
-        </Column>
-        <Column size={2}>
-          <Example />
-        </Column>
-        <Column size={2}>
-          <Example />
-        </Column>
-        <Column size={4}>
-          <Example>No offset</Example>
-        </Column>
-        <Column size={8}>
-          <Example />
-        </Column>
-        <Column offset={{ base: 6, md: 4, lg: 2 }} size={6}>
-          <Example>sm: 6, md: 4, lg: 2</Example>
-        </Column>
-        <Column offset={{ base: 0, md: 4 }} size={6}>
-          <Example>no offset sm, md: 4</Example>
-        </Column>
+        {[
+          { offset: 2, size: 4 },
+          { size: 2 },
+          { size: 2 },
+          { size: 4 },
+          { size: 8 },
+          { offset: { _: 6, md: 4, lg: 2 }, size: 6 },
+          { offset: { _: 0, md: 4 }, size: 6 },
+        ].map((props) => (
+          <Column {...props}>
+            <Example />
+          </Column>
+        ))}
       </LayoutGrid>
     )}
   </Story>
@@ -145,13 +125,21 @@ As with column and row gaps, those numbers may be static or responsive.
 Columns may be span multiple rows. Make sure you have a consistent row height when using rowspans.
 
 <Canvas>
-  <Story name="Column Rowspans">
+  <Story name="Column Rowspans" args={{ rowHeight: 48 }}>
     {(args) => {
-      const children = new Array(16).fill({ size: 3 }).map((props, i) => (
-        <Column {...props} rowspan={(i % 2) + 1}>
-          <Example>{props.size}</Example>
-        </Column>
-      ));
+      const children = new Array(12).fill({ size: 3 }).map((props, i) => {
+        const span = {
+          3: 3,
+          2: 2,
+          4: 3,
+          0: 4,
+        };
+        return (
+          <Column {...props} rowspan={span[i]}>
+            <Example>{}</Example>
+          </Column>
+        );
+      });
       return <LayoutGrid {...args}>{children}</LayoutGrid>;
     }}
   </Story>
