@@ -22,7 +22,7 @@ import {
   formFieldStyles,
 } from './styles/shared';
 
-export type SelectWrapperProps = SelectHTMLAttributes<HTMLSelectElement> & {
+export type SelectDropdownWrapperProps = SelectHTMLAttributes<HTMLSelectElement> & {
   error?: boolean;
   htmlFor?: string;
   options?: string[] | Record<string, number | string>;
@@ -30,7 +30,7 @@ export type SelectWrapperProps = SelectHTMLAttributes<HTMLSelectElement> & {
   sizeVariant?: 'small' | 'base';
 };
 
-export interface SelectProps extends SelectWrapperProps {
+export interface SelectDropdownProps extends SelectDropdownWrapperProps {
   activated?: boolean;
 }
 
@@ -123,7 +123,7 @@ const DropdownIndicator = (props: any) => {
   );
 };
 
-export const Select = forwardRef<HTMLSelectElement, SelectWrapperProps>(
+export const SelectDropdown = forwardRef<HTMLSelectElement, SelectWrapperProps>(
   (
     { className, defaultValue, options, error, id, sizeVariant, ...rest },
     ref
