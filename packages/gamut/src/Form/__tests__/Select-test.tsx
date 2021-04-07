@@ -1,6 +1,6 @@
 import { setupEnzyme } from '@codecademy/gamut-tests';
 
-import { Select } from '../SelectDropdown';
+import { Select } from '../Select';
 
 const selectOptions = ['red', 'yellow', 'green'];
 const defaultProps = {

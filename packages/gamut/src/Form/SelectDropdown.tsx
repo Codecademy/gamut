@@ -2,8 +2,8 @@ import {
   ArrowChevronDownIcon,
   MiniChevronDownIcon,
 } from '@codecademy/gamut-icons';
-import { theme, variant } from '@codecademy/gamut-styles';
-import { css, Theme } from '@emotion/react';
+import { themed, variant } from '@codecademy/gamut-styles';
+import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { each, isArray, isObject } from 'lodash';
 import React, {
@@ -56,14 +56,10 @@ const SelectBase = styled.select<SelectDropdownProps>`
   appearance: none;
 `;
 
-const spacing = ({ theme }: { theme: Theme }) => css`
-  padding-top: ${theme.spacing[4]};
-`;
-
 const selectBaseStyles = (error, activated, isFocused) => css`
   ${formBaseFieldStyles}
   ${conditionalStyles({ error, activated, isFocused })}
-${spacing}
+  padding: .5rem;
   cursor: pointer;
   display: flex;
   -moz-appearance: none;
@@ -85,9 +81,6 @@ const customStyles = {
   }),
   option: (provided, state) => ({
     ...provided,
-    borderBottom: '2px dotted green',
-    color: state.isSelected ? 'yellow' : 'black',
-    backgroundColor: state.isSelected ? 'green' : 'white',
   }),
   control: (provided, state) => ({
     ...selectBaseStyles(
@@ -96,9 +89,9 @@ const customStyles = {
       state.isFocused
     ),
   }),
-  container: (provided) => ({
+  valueContainer: (provided) => ({
     ...provided,
-    // ...formBaseFieldStyles,
+    padding: 0,
   }),
 };
 
@@ -110,7 +103,10 @@ const DropdownIndicator = (props: any) => {
   );
 };
 
-export const SelectDropdown = forwardRef<HTMLSelectElement, SelectWrapperProps>(
+export const SelectDropdown = forwardRef<
+  HTMLSelectElement,
+  SelectDropdownWrapperProps
+>(
   (
     { className, defaultValue, options, error, id, sizeVariant, ...rest },
     ref
