@@ -73,7 +73,7 @@ const ToolTipContainer = styled.div<ToolTipContainerProps>`
   }
 
   ${TargetContainer}:hover + &,
-  ${TargetContainer}:focus + &,
+  ${TargetContainer}:focus-within + &,
   &:hover {
     opacity: 1;
     visibility: visible;
@@ -211,6 +211,7 @@ export const ToolTip: React.FC<ToolTipProps> = ({
         position={position}
         role="tooltip"
         mode={mode}
+        aria-live="polite"
       >
         <ToolTipBody mode={mode}>{children}</ToolTipBody>
       </ToolTipContainer>
