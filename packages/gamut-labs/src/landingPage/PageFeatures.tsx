@@ -1,5 +1,10 @@
-import { ColumnProps } from '@codecademy/gamut';
-import { Box, Column, Container, LayoutGrid } from '@codecademy/gamut';
+import {
+  Box,
+  Column,
+  ColumnProps,
+  Container,
+  LayoutGrid,
+} from '@codecademy/gamut';
 import { mediaQueries } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React, { ReactNode } from 'react';
