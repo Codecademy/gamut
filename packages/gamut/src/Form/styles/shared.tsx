@@ -23,6 +23,7 @@ export const colorStates = {
 export type conditionalStyleProps = {
   error?: boolean;
   activated?: boolean;
+  isFocused?: boolean;
 };
 
 type iconPaddingProps = {
@@ -35,7 +36,13 @@ export type conditionalInputStyleProps = conditionalStyleProps &
 export const conditionalStyles = ({
   error,
   activated,
+  isFocused,
 }: conditionalStyleProps) => {
+  if (isFocused) {
+    return css`
+      border-color: ${colorStates.hover.borderColor};
+    `;
+  }
   if (error) {
     return css`
       color: ${colorStates.error.color};

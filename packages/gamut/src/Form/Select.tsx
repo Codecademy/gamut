@@ -72,18 +72,10 @@ const selectStyles = ({ error, activated, sizeVariant }) => css`
   -webkit-appearance: none;
   appearance: none;
 `;
-export const focusStyles = (isFocused) => {
-  if (isFocused) {
-    return css`
-      border-color: ${colorStates.hover.borderColor};
-    `;
-  }
-};
 
-const selectBaseStyles = (isFocused) => css`
+const selectBaseStyles = (error, activated, isFocused) => css`
   ${formBaseFieldStyles}
-  ${focusStyles(isFocused)}
-  /* ${conditionalStyles({ error, activated })} */
+  ${conditionalStyles({ error, activated, isFocused })}
   padding: 0.55rem ${theme.spacing[8]};
   cursor: pointer;
   display: flex;
@@ -111,7 +103,11 @@ const customStyles = {
     backgroundColor: state.isSelected ? 'green' : 'white',
   }),
   control: (provided, state) => ({
-    ...selectBaseStyles(state.isFocused),
+    ...selectBaseStyles(
+      state.selectProps.error,
+      state.selectProps.activated,
+      state.isFocused
+    ),
   }),
   container: (provided) => ({
     ...provided,
@@ -181,8 +177,10 @@ export const Select = forwardRef<HTMLSelectElement, SelectWrapperProps>(
       >
         <ReactSelect
           styles={customStyles}
-          selectProps={{ error, activated }}
+          activated={activated}
+          error={error}
           components={{ DropdownIndicator, IndicatorSeparator: () => null }}
+          onChange={changeHandler}
           options={selectOptions}
           theme={(theme) => ({
             ...theme,
