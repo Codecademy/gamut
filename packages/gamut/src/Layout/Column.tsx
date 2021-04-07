@@ -1,5 +1,5 @@
 import { styledConfig, system } from '@codecademy/gamut-styles';
-import { variance } from '@codecademy/variance';
+import { StyleProps, variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
 
 const rows = { 1: 1, 2: 2, 3: 3 };
@@ -43,7 +43,7 @@ const gridProps = variance.create({
 
 const columnVariants = system.variant({
   variants: {
-    grid: {
+    fitContent: {
       display: 'grid',
       gridTemplateColumns: 'minmax(0, 1fr)',
     },
@@ -57,24 +57,14 @@ const columnProps = variance.compose(
   gridProps
 );
 
-type ColumnVariantProps = Parameters<typeof columnVariants>[0];
-type ColumnStyleProps = Parameters<typeof columnProps>[0];
+type ColumnVariantProps = StyleProps<typeof columnVariants>;
+type ColumnStyleProps = StyleProps<typeof columnProps>;
 
 interface ColumnProps extends ColumnVariantProps, ColumnStyleProps {}
 
 export const Column = styled(
   'div',
   styledConfig(columnProps.propNames)
-)<ColumnProps>(
-  system.variant({
-    variants: {
-      grid: {
-        display: 'grid',
-        gridTemplateColumns: 'minmax(0, 1fr)',
-      },
-    },
-  }),
-  columnProps
-);
+)<ColumnProps>(columnVariants, columnProps);
 
-Column.defaultProps = { variant: 'grid', size: 12 };
+Column.defaultProps = { variant: 'fitContent', size: 12 };
