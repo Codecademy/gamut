@@ -30,19 +30,6 @@ const CatalogLinksContainer = styled.div`
   }
 `;
 
-const CatalogContents = styled.div`
-  display: flex;
-  flex-direction: column;
-
-  ${theme.breakpoints.sm} {
-    flex-direction: row;
-  }
-
-  ${theme.breakpoints.md} {
-    flex-direction: row-reverse;
-  }
-`;
-
 const CatalogLinkArea = styled(FooterLinkArea)<{ variant?: 'fullHeight' }>`
   display: flex;
   max-height: 14rem;
@@ -89,71 +76,90 @@ export type CatalogLinksProps = {
 };
 
 export const CatalogLinks: React.FC<CatalogLinksProps> = ({ onClick }) => {
+  const languagesList = (
+    <>
+      <FooterSubHeading as="h3">Languages</FooterSubHeading>
+      <CatalogLinkArea>
+        {languages.map(([slug, text]) => (
+          <CatalogFooterLinkItem key={slug}>
+            <Anchor
+              href={`/catalog/language/${slug}`}
+              onClick={(event) => onClick({ event, target: slug })}
+              variant="interface"
+            >
+              {text}
+            </Anchor>
+          </CatalogFooterLinkItem>
+        ))}
+      </CatalogLinkArea>
+    </>
+  );
+
+  const subjectsList = (
+    <Box width={{ base: '100%', md: '50%' }}>
+      <FooterSubHeading as="h3">Subjects</FooterSubHeading>
+      <CatalogLinkArea variant="fullHeight">
+        {subjects.map(([slug, text]) => (
+          <CatalogFooterLinkItem key={slug}>
+            <Anchor
+              href={`/catalog/subject/${slug}`}
+              onClick={(event) => onClick({ event, target: '' })}
+              variant="interface"
+            >
+              {text}
+            </Anchor>
+          </CatalogFooterLinkItem>
+        ))}
+        <CatalogFooterLinkItem>—</CatalogFooterLinkItem>
+        <CatalogFooterLinkItem>
+          <Anchor
+            href="/catalog/subject/all"
+            onClick={(event) => onClick({ event, target: 'fullCatalog' })}
+            variant="interface"
+          >
+            Full Catalog
+          </Anchor>
+        </CatalogFooterLinkItem>
+        <CatalogFooterLinkItem>
+          <Anchor
+            href="/learn/beta-content"
+            onClick={(event) => onClick({ event, target: 'betaContent' })}
+            variant="interface"
+          >
+            Beta Content
+          </Anchor>
+        </CatalogFooterLinkItem>
+        <CatalogFooterLinkItem>
+          <Anchor
+            href="https://trello.com/b/vAgDXtT6/codecademy-releases-roadmap"
+            onClick={(event) => onClick({ event, target: 'roadmap' })}
+            variant="interface"
+          >
+            Roadmap
+          </Anchor>
+        </CatalogFooterLinkItem>
+      </CatalogLinkArea>
+    </Box>
+  );
+
   return (
     <CatalogLinksContainer>
       <FooterHeading>Course Catalog</FooterHeading>
-      <CatalogContents>
-        <Box width={{ base: '100%', md: '50%' }}>
-          <FooterSubHeading as="h3">Languages</FooterSubHeading>
-          <CatalogLinkArea>
-            {languages.map(([slug, text]) => (
-              <CatalogFooterLinkItem key={slug}>
-                <Anchor
-                  href={`/catalog/language/${slug}`}
-                  onClick={(event) => onClick({ event, target: slug })}
-                  variant="interface"
-                >
-                  {text}
-                </Anchor>
-              </CatalogFooterLinkItem>
-            ))}
-          </CatalogLinkArea>
+      <Box display="flex" flexDirection={{ base: 'column', sm: 'row' }}>
+        <Box
+          display={{ base: 'block', md: 'none' }}
+          width={{ base: '100%', md: '50%' }}
+        >
+          {languagesList}
         </Box>
-        <Box width={{ base: '100%', md: '50%' }}>
-          <FooterSubHeading as="h3">Subjects</FooterSubHeading>
-          <CatalogLinkArea variant="fullHeight">
-            {subjects.map(([slug, text]) => (
-              <CatalogFooterLinkItem key={slug}>
-                <Anchor
-                  href={`/catalog/subject/${slug}`}
-                  onClick={(event) => onClick({ event, target: '' })}
-                  variant="interface"
-                >
-                  {text}
-                </Anchor>
-              </CatalogFooterLinkItem>
-            ))}
-            <CatalogFooterLinkItem>—</CatalogFooterLinkItem>
-            <CatalogFooterLinkItem>
-              <Anchor
-                href="/catalog/subject/all"
-                onClick={(event) => onClick({ event, target: 'fullCatalog' })}
-                variant="interface"
-              >
-                Full Catalog
-              </Anchor>
-            </CatalogFooterLinkItem>
-            <CatalogFooterLinkItem>
-              <Anchor
-                href="/learn/beta-content"
-                onClick={(event) => onClick({ event, target: 'betaContent' })}
-                variant="interface"
-              >
-                Beta Content
-              </Anchor>
-            </CatalogFooterLinkItem>
-            <CatalogFooterLinkItem>
-              <Anchor
-                href="https://trello.com/b/vAgDXtT6/codecademy-releases-roadmap"
-                onClick={(event) => onClick({ event, target: 'roadmap' })}
-                variant="interface"
-              >
-                Roadmap
-              </Anchor>
-            </CatalogFooterLinkItem>
-          </CatalogLinkArea>
+        {subjectsList}
+        <Box
+          display={{ base: 'none', md: 'block' }}
+          width={{ base: '100%', md: '50%' }}
+        >
+          {languagesList}
         </Box>
-      </CatalogContents>
+      </Box>
     </CatalogLinksContainer>
   );
 };
