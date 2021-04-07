@@ -174,11 +174,6 @@ export const typography = {
   textDecoration: { property: 'textDecoration' },
   textTransform: { property: 'textTransform' },
   whiteSpace: { property: 'whiteSpace' },
-  fontSmooth: {
-    property: 'fontSmooth',
-    scale: { pixel: 'pixel', subpixel: 'subpixel' },
-    transform: fontSmoothing,
-  },
 } as const;
 
 export const space = {
@@ -215,6 +210,14 @@ export const space = {
   ml: { property: 'marginLeft', scale: 'spacing' },
 } as const;
 
+const special = {
+  fontSmooth: {
+    property: 'fontSmooth',
+    scale: { pixel: 'pixel', subpixel: 'subpixel' },
+    transform: fontSmoothing,
+  },
+};
+
 export const all = {
   ...typography,
   ...space,
@@ -226,4 +229,5 @@ export const all = {
   ...border,
   ...background,
   ...color,
+  ...special,
 };
