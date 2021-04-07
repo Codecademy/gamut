@@ -7,7 +7,8 @@ const white = '#ffffff';
 
 export const swatches = {
   beige: {
-    '0': '#FFF0E5',
+    '0': '#FFFBF8',
+    '200': '#FFF0E5',
   },
   blue: {
     '0': '#F5FCFF',
@@ -15,6 +16,18 @@ export const swatches = {
     '500': '#1557FF',
     '800': '#1D2340',
     '900': '#10162f',
+  },
+  navy: {
+    '300': '#585C6D',
+    '600': '#232940',
+    '800': '#10162F',
+    '900': '#0B0F21',
+  },
+  gold: {
+    '400': `#8A7300`,
+  },
+  teal: {
+    '600': '#027E97',
   },
   green: {
     '0': '#F5FFE3',
@@ -29,12 +42,15 @@ export const swatches = {
   pink: {
     '0': '#FFF5FF',
     '400': '#F966FF',
+    '600': '#CA00D1',
   },
   red: {
     '500': '#E91C11',
+    '600': '#F03329',
   },
   orange: {
     '500': '#FF8C00',
+    '700': '#D14900',
   },
   hyper: {
     '400': '#5533FF',
@@ -75,18 +91,17 @@ export const flatSwatches = {
   'hyper-500': '#3A10E5',
   'gray-0': '#ffffff',
   'gray-100': '#f6f5fa',
-  'gray-200': '#dddce0',
-  'gray-300': '#c4c3c7',
+  'gray-200': '#EEEEEE',
+  'gray-300': '#E0E0E0',
   'gray-400': '#a2a2a6',
   'gray-500': '#828285',
-  'gray-600': '#646466',
-  'gray-700': '#4b4b4d',
-  'gray-800': '#323233',
-  'gray-900': '#19191a',
+  'gray-600': '#9E9E9E',
+  'gray-800': '#616161',
+  'gray-900': '#424242',
 } as const;
 
 export const trueColors = {
-  beige: swatches.beige[0],
+  beige: swatches.beige[200],
   blue: swatches.blue[500],
   green: swatches.green[700],
   hyper: swatches.hyper[500],
@@ -109,6 +124,14 @@ export const colors = {
   ...flatSwatches,
   ...trueColors,
 } as const;
+
+export const platform = {
+  ...colors,
+  beige: swatches.beige[0],
+  'navy-300': swatches.navy[300],
+  'navy-600': swatches.navy[600],
+  'navy-900': swatches.navy[900],
+};
 
 export const colorNames = {
   beige: 'Bagel',
@@ -140,13 +163,13 @@ export const interactiveColors = {
 } as const;
 
 export const editorColors = {
-  blue: '#83fff5',
-  deepPurple: '#cc7bc2',
+  blue: colors['blue-300'],
+  pink: colors.pink,
   gray: '#939598',
-  green: '#b4d353',
-  orange: '#ff8973',
+  green: colors.lightGreen,
+  orange: colors.orange,
   purple: '#b3ccff',
-  red: '#e85d7f',
+  red: '#E85D7F',
   yellow: '#ffe083',
 } as const;
 
