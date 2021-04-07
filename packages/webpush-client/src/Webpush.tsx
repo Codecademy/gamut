@@ -1,41 +1,103 @@
+/* eslint-disable no-console */
+
 import 'firebase/messaging';
 
 import firebase from 'firebase/app';
-import React from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 
-const firebaseInstance = firebase.initializeApp({
-  apiKey: 'AIzaSyB8tgEIT0XyekbN16Jj9GNCJNHqDD0Dwjk',
-  authDomain: 'test-6d14f.firebaseapp.com',
-  projectId: 'test-6d14f',
-  storageBucket: 'test-6d14f.appspot.com',
-  messagingSenderId: '149303097575',
-  appId: '1:149303097575:web:db8588938667a030caca42',
-  measurementId: 'G-DQFSL3TWP6',
-});
+export interface FirebaseConfig {
+  apiKey: string;
+  authDomain: string;
+  projectId: string;
+  storageBucket: string;
+  messagingSenderId: string;
+  appId: string;
+  measurementId: string;
+}
 
-const Webpush: React.FC = () => {
-  useEffect(() => {
-    Notification.requestPermission()
-      .then(async function () {
-        const token = await messaging.getToken(
-          'BEDDRXxlIaF_sQq7AnF_Lv2EF9p-oUaYsdJgOD0FShn5kybvRD8NlxJE6C8yxMXrjLEpCKeNDfhqknW8uJpVjdIs'
-        );
-        messaging.onMessage((message) => {
-          console.log(message);
-        });
+export interface WebpushProps {
+  config: FirebaseConfig;
+  vapidKey: string;
+  /** Determines if we request for permissions */
+  requestPermission: boolean;
+  /** Called on a succesful retrieval of a users token from firebase */
+  onRegisterSuccess: (token?: string) => void;
+  /** Called when a message has been recieved in the foreground instead of the background */
+  onMessageRecieved: (message: unknown) => void;
+}
 
-        navigator.serviceWorker.ready.then(function (registration) {
-          console.log('This runs');
-          registration.showNotification('Vibration Sample', {
-            body: 'Buzz! Buzz!',
-            icon: '../images/touch/chrome-touch-icon-192x192.png',
-            vibrate: [200, 100, 200, 100, 200, 100, 200],
-            tag: 'vibration-sample',
+export const Webpush: React.FC<WebpushProps> = ({
+  vapidKey,
+  config,
+  requestPermission = false,
+  onRegisterSuccess = () => {},
+  onMessageRecieved = () => {},
+}) => {
+  const appRef = useRef<firebase.app.App>();
+  const messagingRef = useRef<firebase.messaging.Messaging>();
+  const [initialized, setInitialized] = useState(false);
+  const [userToken, setUserToken] = useState<string>();
+
+  const shouldRequestPermision = requestPermission && initialized;
+
+  const getUserPermissions = useCallback(() => {
+    Notification.requestPermission().then((permission) => {
+      if (permission === 'granted' && messagingRef.current)
+        messagingRef.current
+          .getToken({ vapidKey })
+          .then((token) => {
+            console.log('User token retrieved:', token);
+            setUserToken(token);
+          })
+          .catch((err) => {
+            console.warn('Could not retrieve webpush token');
+            return err;
           });
-        });
-      })
-      .catch(function (err) {
-        console.log('Unable to get permission to notify.', err);
+    });
+  }, [messagingRef, vapidKey]);
+
+  // We guard against possible reinitialization between HMR and reloading here.
+  useEffect(() => {
+    if (!vapidKey || !config) return;
+
+    if (!appRef.current) {
+      const instance = firebase.initializeApp(config);
+      console.log('Firebase initialized', instance);
+      appRef.current = instance;
+    }
+
+    if (!messagingRef.current) {
+      const messaging = appRef.current.messaging();
+      console.log('messaging initialized', messaging);
+
+      // Listen for messages that were caught in the foreground
+      messaging.onMessage((message) => {
+        console.log('Webpush recieved in foreground', message);
+
+        // handle extra foreground delivery events
+        onMessageRecieved(message);
       });
-  }, []);
+
+      messagingRef.current = messaging;
+    }
+
+    setInitialized(true);
+  }, [config, vapidKey, onMessageRecieved]);
+
+  // Only attempt to request permission if we should
+  useEffect(() => {
+    if (shouldRequestPermision) {
+      getUserPermissions();
+    }
+  }, [shouldRequestPermision, getUserPermissions]);
+
+  // Handler the register success callback once if we have a token to send
+  useEffect(() => {
+    if (userToken) {
+      // TODO: send user token `/api/users/registerBrowserToken`  https://api.iterable.com/api/docs#users_registerBrowserToken
+      onRegisterSuccess(userToken);
+    }
+  }, [userToken, onRegisterSuccess]);
+
+  return <></>;
 };
