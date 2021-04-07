@@ -1,0 +1,56 @@
+{
+  "name": "@codecademy/webpush-client",
+  "description": "Pluggable webpush integration.",
+  "version": "0.1.0",
+  "author": "Codecademy Engineering <dev@codecademy.com>",
+  "module": "./dist/index.js",
+  "main": "./dist/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/Codecademy/client-modules.git"
+  },
+  "peerDependencies": {
+    "react": ">=16.8.1",
+    "react-dom": ">=16.8.1"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.12.1",
+    "firebase": "^8.2.9"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.13.10",
+    "@types/jest": "^26.0.15",
+    "babel-preset-codecademy": "^2.3.0",
+    "typescript": "*"
+  },
+  "scripts": {
+    "verify": "tsc --noEmit",
+    "test": "jest",
+    "test-watch": "jest --watch",
+    "build:compile": "babel ./src --out-dir ./dist --copy-files --extensions \".ts,.tsx\"",
+    "build:clean": "rm -rf dist",
+    "build:types": "tsc --emitDeclarationOnly",
+    "build": "yarn build:clean && yarn build:compile && yarn build:types",
+    "lernaBuildTask": "yarn build"
+  },
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "bugs": {
+    "url": "https://github.com/Codecademy/client-modules/issues"
+  },
+  "homepage": "https://github.com/Codecademy/client-modules#readme",
+  "keywords": [
+    "firebase",
+    "webpush",
+    "react"
+  ],
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ]
+}
