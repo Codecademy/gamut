@@ -1,12 +1,3 @@
-import { variance } from '@codecademy/variance';
-
-type FontSmoothing = 'pixel' | 'subpixel';
-
-const smoothing = {
-  pixel: 'pixel',
-  subpixel: 'subpixel',
-} as const;
-
 const smoothingVariants = {
   pixel: {
     '-webkit-font-smoothing': 'antialiased',
@@ -18,10 +9,5 @@ const smoothingVariants = {
   },
 };
 
-export const fontSmoothing = variance.create({
-  fontSmooth: {
-    property: 'fontSmooth',
-    scale: smoothing,
-    transform: (value = 'pixel') => smoothingVariants[value as FontSmoothing],
-  },
-});
+export const fontSmoothing = (value: number | string = 'pixel') =>
+  smoothingVariants[value as 'pixel' | 'subpixel'];

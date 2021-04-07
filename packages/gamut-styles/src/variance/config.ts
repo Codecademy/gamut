@@ -1,5 +1,7 @@
 import { transformSize } from '@codecademy/variance';
 
+import { fontSmoothing } from '../styles';
+
 export const color = {
   color: { property: 'color', scale: 'colors' },
   bg: { property: 'backgroundColor', scale: 'colors' },
@@ -172,6 +174,11 @@ export const typography = {
   textDecoration: { property: 'textDecoration' },
   textTransform: { property: 'textTransform' },
   whiteSpace: { property: 'whiteSpace' },
+  fontSmooth: {
+    property: 'fontSmooth',
+    scale: { pixel: 'pixel', subpixel: 'subpixel' },
+    transform: fontSmoothing,
+  },
 } as const;
 
 export const space = {

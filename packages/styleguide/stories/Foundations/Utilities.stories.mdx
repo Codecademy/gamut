@@ -52,12 +52,12 @@ We enable font smoothing in some places to make typography more readable.
 ```tsx
 import { fontSmoothing } from '@codecademy/gamut-styles';
 
-const Smooth = `
+const Smooth = styled.div`
   ${fontSmoothing}
 `;
 
-const Smooth = `
-  ${fontSmoothing}
+const Smooth = styled.div`
+  ${fontSmoothing('subpixel')}
 `;
 ```
 
