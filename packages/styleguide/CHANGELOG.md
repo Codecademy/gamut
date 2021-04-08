@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [33.8.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@33.7.4...@codecademy/styleguide@33.8.0) (2021-04-08)
+
+
+### Features
+
+* **ColorModes:** Base ColorMode support and serialization of color variables [GM-177] ([b588132](https://github.com/Codecademy/client-modules/commit/b5881326ace09f0b1b7052f24e59ecb5b8326aef))
+
+
+
 ### [33.7.4](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@33.7.3...@codecademy/styleguide@33.7.4) (2021-04-07)
 
 
