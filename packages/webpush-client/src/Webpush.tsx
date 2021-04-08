@@ -3,7 +3,7 @@
 import 'firebase/messaging';
 
 import firebase from 'firebase/app';
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 
 export interface FirebaseConfig {
   apiKey: string;
@@ -17,87 +17,127 @@ export interface FirebaseConfig {
 
 export interface WebpushProps {
   config: FirebaseConfig;
-  vapidKey: string;
+  messengerConfig: {
+    workerName?: string;
+    senderKey: string;
+  };
   /** Determines if we request for permissions */
-  requestPermission: boolean;
+  prompt: boolean;
   /** Called on a succesful retrieval of a users token from firebase */
-  onRegisterSuccess: (token?: string) => void;
+  onPromptReady: () => void;
+  /** Called when a message has been recieved in the foreground instead of the background */
+  onPermissionDenied: () => void;
+  /** Called when a message has been recieved in the foreground instead of the background */
+  onPermissionGranted: () => void;
+  /** Called on a succesful retrieval of a users token from firebase */
+  onTokenRecieved: (token?: string) => void;
   /** Called when a message has been recieved in the foreground instead of the background */
   onMessageRecieved: (message: unknown) => void;
 }
 
-export const Webpush: React.FC<WebpushProps> = ({
-  vapidKey,
+const WEBPUSH_ENABLED =
+  typeof Notification !== 'undefined' && 'serviceWorker' in navigator;
+
+const registerWorker = (name?: string) => {
+  return navigator.serviceWorker
+    .register(`${name}.js`, {
+      scope: './',
+    })
+    .catch((e) => {
+      console.warn(
+        `Failed to register service worker ${name}, using default:`,
+        e
+      );
+      return undefined;
+    });
+};
+
+export const WebpushClient: React.FC<WebpushProps> = ({
+  messengerConfig,
   config,
-  requestPermission = false,
-  onRegisterSuccess = () => {},
+  prompt = false,
+  onPromptReady = () => {},
+  onPermissionDenied = () => {},
+  onPermissionGranted = () => {},
+  onTokenRecieved = () => {},
   onMessageRecieved = () => {},
 }) => {
-  const appRef = useRef<firebase.app.App>();
-  const messagingRef = useRef<firebase.messaging.Messaging>();
+  const firebaseApp = useMemo(() => {
+    if (messengerConfig && config && WEBPUSH_ENABLED) {
+      return firebase.apps.length > 0
+        ? firebase.app()
+        : firebase.initializeApp(config);
+    }
+  }, [messengerConfig, config]);
+  const messaging = useMemo(() => firebaseApp?.messaging(), [firebaseApp]);
   const [initialized, setInitialized] = useState(false);
-  const [userToken, setUserToken] = useState<string>();
 
-  const shouldRequestPermision = requestPermission && initialized;
+  /**
+   * Register foreground message listener
+   */
+  useEffect(() => {
+    if (messaging) {
+      messaging.onMessage(onMessageRecieved);
+      setInitialized(true);
+    }
+  }, [messaging, onMessageRecieved, setInitialized]);
 
-  const getUserPermissions = useCallback(() => {
-    Notification.requestPermission().then((permission) => {
-      if (permission === 'granted' && messagingRef.current)
-        messagingRef.current
-          .getToken({ vapidKey })
-          .then((token) => {
-            console.log('User token retrieved:', token);
-            setUserToken(token);
-          })
-          .catch((err) => {
-            console.warn('Could not retrieve webpush token');
-            return err;
-          });
+  const canPrompt = initialized;
+
+  /**
+   * While messinging.getToken() will request permission if we do not have it yet
+   * Controlling the flow of permissioning is important if we want to customize the experience.
+   *
+   * 1. If we do not have the correct permissions prompt the user to allow notifications
+   * 2. If we still do not have permissions exit immediately.
+   * 3. Request the token from firebase.
+   */
+  const getUserPermissions = useCallback(async () => {
+    if (Notification.permission !== 'granted') {
+      const updatedPermission = await Notification.requestPermission();
+      if (updatedPermission === 'granted') {
+        onPermissionGranted();
+      } else {
+        onPermissionDenied();
+        return;
+      }
+    }
+    const { senderKey, workerName } = messengerConfig;
+
+    /**
+     * 1. If we have a custom worker name, register it.
+     * 2. Else use the default firebase-messaging-sw.js
+     */
+    const serviceWorkerRegistration = workerName
+      ? await registerWorker(workerName)
+      : undefined;
+
+    // Get user device token and allow the user to do something with it.
+    const token = await messaging?.getToken({
+      vapidKey: senderKey,
+      serviceWorkerRegistration,
     });
-  }, [messagingRef, vapidKey]);
+    onTokenRecieved(token);
+  }, [
+    messaging,
+    messengerConfig,
+    onTokenRecieved,
+    onPermissionGranted,
+    onPermissionDenied,
+  ]);
 
-  // We guard against possible reinitialization between HMR and reloading here.
+  /**
+   * Trigger our prompt flow
+   * 1. Prompt if we can
+   * 2. Otherwise trigger callback to let the parent component do something with that information
+   */
   useEffect(() => {
-    if (!vapidKey || !config) return;
-
-    if (!appRef.current) {
-      const instance = firebase.initializeApp(config);
-      console.log('Firebase initialized', instance);
-      appRef.current = instance;
-    }
-
-    if (!messagingRef.current) {
-      const messaging = appRef.current.messaging();
-      console.log('messaging initialized', messaging);
-
-      // Listen for messages that were caught in the foreground
-      messaging.onMessage((message) => {
-        console.log('Webpush recieved in foreground', message);
-
-        // handle extra foreground delivery events
-        onMessageRecieved(message);
-      });
-
-      messagingRef.current = messaging;
-    }
-
-    setInitialized(true);
-  }, [config, vapidKey, onMessageRecieved]);
-
-  // Only attempt to request permission if we should
-  useEffect(() => {
-    if (shouldRequestPermision) {
+    if (canPrompt && prompt) {
       getUserPermissions();
+    } else if (canPrompt && !prompt) {
+      onPromptReady();
     }
-  }, [shouldRequestPermision, getUserPermissions]);
-
-  // Handler the register success callback once if we have a token to send
-  useEffect(() => {
-    if (userToken) {
-      // TODO: send user token `/api/users/registerBrowserToken`  https://api.iterable.com/api/docs#users_registerBrowserToken
-      onRegisterSuccess(userToken);
-    }
-  }, [userToken, onRegisterSuccess]);
+  }, [canPrompt, prompt, onPromptReady, getUserPermissions]);
 
   return <></>;
 };

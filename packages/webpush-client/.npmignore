@@ -3,6 +3,3 @@ src/
 *.ts
 *.tsx
 !*.d.ts
-__tests__
-tsconfig.json
-tsconfig.tsbuildinfo
