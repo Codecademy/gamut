@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { GamutProvider } from '@codecademy/gamut-styles/src';
 
 /**
@@ -7,7 +6,7 @@ import { GamutProvider } from '@codecademy/gamut-styles/src';
  * See: https://github.com/storybookjs/storybook/issues/12255
  */
 
-export const withEmotion = (Story: any) => {
+export const withEmotion = (Story: any, context: any) => {
   // Always give iframes the full provider
   if (process.env.NODE_ENV === 'test') {
     return (

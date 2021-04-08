@@ -1,6 +1,10 @@
 const black = '#000000';
 const white = '#ffffff';
 
+/**
+ * @deprecated
+ */
+
 export const swatches = {
   beige: {
     '0': '#FFF0E5',
@@ -126,6 +130,10 @@ export const colorNames = {
   white: 'White',
 } as const;
 
+/**
+ * @deprecated
+ */
+
 export const interactiveColors = {
   dark: colors.hyper,
   light: colors.yellow,
@@ -159,3 +167,25 @@ export const platformColors = {
     '900': '#15141f',
   },
 } as const;
+
+export const shroudColor = {
+  dark: 'rgba(0,0,0, .75)',
+  light: 'rgba(255, 255, 255, 0.95)',
+} as const;
+
+export const colorModes = {
+  light: {
+    background: colors.white,
+    text: colors.navy,
+    primary: colors.hyper,
+    secondary: colors.navy,
+    shadow: shroudColor.light,
+  },
+  dark: {
+    background: colors.navy,
+    text: colors.white,
+    primary: colors.yellow,
+    secondary: colors.white,
+    shadow: shroudColor.dark,
+  },
+};

@@ -1,6 +1,6 @@
 import { FormGroup, Input } from '@codecademy/gamut';
 import title from '@codecademy/macros/lib/title.macro';
-import { Canvas, Meta, Story } from '@storybook/addon-docs/dist/blocks';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 
 import { PropsTable } from '~styleguide/blocks';
 
@@ -11,7 +11,7 @@ import { PropsTable } from '~styleguide/blocks';
     subtitle:
       'A label and description wrapper for a form element that provides conditional styling',
     source: 'gamut',
-    status: 'stable',
+    status: 'current',
   }}
   args={{
     label: "Don't you label me!",
@@ -82,6 +82,42 @@ It is best to provide `htmlFor` to both the FormGroup + inner form element to ma
         htmlFor="required-valid"
       >
         <Input defaultValue="Good job!" htmlFor="required-valid" valid />
+      </FormGroup>
+    )}
+  </Story>
+</Canvas>
+
+### Form Group with tooltip
+
+A field can include [our existing `ToolTip`](/?path=/docs/atoms-tooltip--tool-tip). The position of the tooltip on each field is always set to the bottom-right. You also have the option to render each tooltip in dark or light mode.
+
+<Canvas>
+  <Story name="FormGroupTooltip">
+    {(args) => (
+      <FormGroup
+        label="light mode"
+        tooltip={{
+          id: 'light-mode-tooltip',
+          children:
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+        }}
+      >
+        <Input defaultValue="Good job!" valid />
+      </FormGroup>
+    )}
+  </Story>
+  <Story name="FormGroupTooltipDark">
+    {(args) => (
+      <FormGroup
+        label="dark mode"
+        tooltip={{
+          id: 'dark-mode-tooltip',
+          mode: 'dark',
+          children:
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+        }}
+      >
+        <Input />
       </FormGroup>
     )}
   </Story>

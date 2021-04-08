@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.7.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-system@0.6.1...@codecademy/gamut-system@0.7.0) (2021-04-08)
+
+
+### Features
+
+* **ColorModes:** Base ColorMode support and serialization of color variables [GM-177] ([b588132](https://github.com/Codecademy/client-modules/commit/b5881326ace09f0b1b7052f24e59ecb5b8326aef))
+
+
+
+### [0.6.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-system@0.6.0...@codecademy/gamut-system@0.6.1) (2021-04-05)
+
+**Note:** Version bump only for package @codecademy/gamut-system
+
+
+
+
+
+## [0.6.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-system@0.5.2...@codecademy/gamut-system@0.6.0) (2021-03-30)
+
+
+### Features
+
+* **Text:** Deprecate Text / Heading and add more robust UI Text Component [GM-162] ([78e284f](https://github.com/Codecademy/client-modules/commit/78e284f3ce80f14e583af3133f692a7cd91e2196))
+
+
+
 ### [0.5.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-system@0.5.1...@codecademy/gamut-system@0.5.2) (2021-03-19)
 
 **Note:** Version bump only for package @codecademy/gamut-system

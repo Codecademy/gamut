@@ -130,6 +130,10 @@ const isPreset = (theme: string): theme is keyof typeof buttonPresetThemes => {
   return hasIn(buttonPresetThemes, theme);
 };
 
+/**
+ * @deprecated
+ */
+
 export const ButtonDeprecated: React.FC<ButtonDeprecatedProps> = (props) => {
   let { theme = 'brand-red' } = props;
 

@@ -23,4 +23,7 @@ export const positioning = {
   zIndex: {
     propName: 'zIndex',
   },
+  opacity: {
+    propName: 'opacity',
+  },
 } as const;

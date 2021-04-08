@@ -3,6 +3,9 @@ import React from 'react';
 
 import styles from './styles.module.scss';
 
+/**
+ * @deprecated
+ */
 export function CardStack() {
   return (
     <div className={styles.container}>
