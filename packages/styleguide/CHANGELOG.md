@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [33.8.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@33.8.0...@codecademy/styleguide@33.8.1) (2021-04-08)
+
+
+### Bug Fixes
+
+* **ToolTip:** A11y Updates (revert of revert) ([074cdd6](https://github.com/Codecademy/client-modules/commit/074cdd6df37dd63b1950ee533c96281d24f4a6b0))
+
+
+
 ## [33.8.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@33.7.4...@codecademy/styleguide@33.8.0) (2021-04-08)
 
 
