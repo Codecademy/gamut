@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [29.9.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@29.9.0...@codecademy/gamut@29.9.1) (2021-04-08)
+
+
+### Bug Fixes
+
+* **ToolTip:** A11y Updates (revert of revert) ([074cdd6](https://github.com/Codecademy/client-modules/commit/074cdd6df37dd63b1950ee533c96281d24f4a6b0))
+
+
+
 ## [29.9.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@29.8.3...@codecademy/gamut@29.9.0) (2021-04-08)
 
 
