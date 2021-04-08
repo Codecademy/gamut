@@ -1,13 +1,35 @@
 import { Globals, StandardProperties } from 'csstype';
 
-type ColorProperties = {
-  [K in keyof StandardProperties as `${K extends 'color' | `${string}Color`
-    ? K
-    : never}`]:
-    | Extract<StandardProperties[K], Globals>
+type ColorProperties = 'color' | `${string}Color`;
+
+type ColorGlobals = {
+  [K in Extract<keyof StandardProperties, ColorProperties>]?:
+    | Globals
     | 'currentColor'
+    | 'transparent'
     | (string & {});
 };
+
+type SizeProperties =
+  | 'left'
+  | 'right'
+  | 'top'
+  | 'bottom'
+  | 'inset'
+  | 'width'
+  | 'height'
+  | `${string}${'Width' | 'Height'}`;
+
+type SizeGlobals = {
+  [K in Extract<keyof StandardProperties, SizeProperties>]?:
+    | StandardProperties[K]
+    | (number & {});
+};
+
 export interface PropertyTypes<Overrides = never>
-  extends Omit<StandardProperties<Overrides>, keyof ColorProperties>,
-    ColorProperties {}
+  extends Omit<
+      StandardProperties<Overrides>,
+      keyof ColorGlobals | keyof SizeGlobals
+    >,
+    ColorGlobals,
+    SizeGlobals {}

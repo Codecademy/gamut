@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@9.1.4...@codecademy/gamut-styles@9.2.0) (2021-04-06)
+
+
+### Features
+
+* **Variance:** Initial Props and Refactor Tests [WEB-1390] ([e4b5177](https://github.com/Codecademy/client-modules/commit/e4b5177544643fec274d20f37be594b140a4cba3))
+
+
+
 ### [9.1.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@9.1.3...@codecademy/gamut-styles@9.1.4) (2021-04-05)
 
 **Note:** Version bump only for package @codecademy/gamut-styles

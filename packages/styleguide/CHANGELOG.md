@@ -3,6 +3,40 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [33.7.4](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@33.7.3...@codecademy/styleguide@33.7.4) (2021-04-07)
+
+
+### Bug Fixes
+
+* **ToolTip:** Revert A11y Update ([995da1a](https://github.com/Codecademy/client-modules/commit/995da1a757862f7523844786c9d4199f75f3f130)), closes [Codecademy/client-modules#1604](https://github.com/Codecademy/client-modules/issues/1604)
+
+
+
+### [33.7.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@33.7.2...@codecademy/styleguide@33.7.3) (2021-04-07)
+
+
+### Bug Fixes
+
+* **ToolTip:** A11y Update ([8cca675](https://github.com/Codecademy/client-modules/commit/8cca675e69d421f44d4e910ae75769f3b45d01cf))
+
+
+
+### [33.7.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@33.7.1...@codecademy/styleguide@33.7.2) (2021-04-07)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [33.7.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@33.7.0...@codecademy/styleguide@33.7.1) (2021-04-06)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
 ## [33.7.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@33.6.3...@codecademy/styleguide@33.7.0) (2021-04-06)
 
 
