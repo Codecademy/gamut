@@ -55,12 +55,13 @@ const SelectBase = styled.select<SelectProps>`
   appearance: none;
 `;
 
-const selectIconStyles = css`
+const allowClickStyle = css`
   pointer-events: none;
 `;
 
-export const SelectIcon = styled(ArrowChevronDownIcon)(selectIconStyles);
-const MiniSelectIcon = styled(MiniChevronDownIcon)(selectIconStyles);
+export const StyledFlexbox = styled(FlexBox)(allowClickStyle);
+export const SelectIcon = styled(ArrowChevronDownIcon)(allowClickStyle);
+const MiniSelectIcon = styled(MiniChevronDownIcon)(allowClickStyle);
 
 export const Select = forwardRef<HTMLSelectElement, SelectWrapperProps>(
   (
@@ -104,7 +105,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectWrapperProps>(
         minWidth="7rem"
         className={className}
       >
-        <FlexBox
+        <StyledFlexbox
           paddingRight={12}
           alignItems="center"
           position="absolute"
@@ -117,7 +118,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectWrapperProps>(
           ) : (
             <SelectIcon size={16} />
           )}
-        </FlexBox>
+        </StyledFlexbox>
         <SelectBase
           {...rest}
           defaultValue={defaultValue || ''}

@@ -12,10 +12,9 @@ import ReactSelect, { components } from 'react-select';
 import { Box } from '../Box';
 import { SelectIcon } from './Select';
 import {
-  colorStates,
   conditionalBorderStyles,
   conditionalColorStyles,
-  formBaseFieldStyles,
+  formFieldStyles,
 } from './styles/shared';
 
 export type SelectDropdownWrapperProps = SelectHTMLAttributes<HTMLSelectElement> & {
@@ -45,10 +44,9 @@ const selectSizeVariants = variant({
   },
 });
 
-const selectBaseStyles = (error, activated, isFocused) => css`
-  ${formBaseFieldStyles}
+const selectBaseStyles = (error: any, activated: any, isFocused: any) => css`
+  ${formFieldStyles}
   ${conditionalBorderStyles({ error, activated, isFocused })}
-  padding: .5rem;
   cursor: pointer;
   display: flex;
   -moz-appearance: none;
@@ -56,23 +54,36 @@ const selectBaseStyles = (error, activated, isFocused) => css`
   appearance: none;
 `;
 
+const selectIconStyles = (error: any) => css`
+  ${conditionalColorStyles(error)};
+  display: flex;
+  padding: 0;
+`;
+
 const customStyles = {
-  dropdownIndicator: (provided, state) => ({
-    ...provided,
-    // ...conditionalColorStyles(state.selectProps.error),
+  dropdownIndicator: (provided: any, state: any) => ({
+    // ...provided,
+    ...selectIconStyles(state.selectProps.error),
     padding: '0',
   }),
-  option: (provided, state) => ({
+  menu: (provided: any, state: any) => ({
+    ...provided,
+    marginTop: 0,
+  }),
+  option: (provided: any, state: any) => ({
     ...provided,
   }),
-  control: (provided, state) => ({
+  control: (provided: any, state: any) => ({
     ...selectBaseStyles(
       state.selectProps.error,
       state.selectProps.activated,
       state.isFocused
     ),
   }),
-  valueContainer: (provided) => ({
+  singleValue: (provided: any, state: any) => ({
+    ...conditionalColorStyles(state.selectProps.error),
+  }),
+  valueContainer: (provided: any, state: any) => ({
     ...provided,
     padding: 0,
   }),
@@ -101,7 +112,7 @@ export const SelectDropdown = forwardRef<
       setActivated(true);
     };
 
-    let selectOptions = [];
+    let selectOptions: any = [];
     if (isArray(options)) {
       options.map((option) => {
         const key = id ? `${id}-${option}` : option;
@@ -113,26 +124,6 @@ export const SelectDropdown = forwardRef<
       });
     }
 
-    // if (isArray(options)) {
-    //   selectOptions = options.map((option) => {
-    //     const key = id ? `${id}-${option}` : option;
-    //     return (
-    //       <option key={key} value={option} data-testid={key}>
-    //         {option}
-    //       </option>
-    //     );
-    //   });
-    // } else if (isObject(options)) {
-    //   each(options, (text, val) => {
-    //     const key = id ? `${id}-${val}` : val;
-    //     selectOptions.push(
-    //       <option key={key} value={val} data-testid={key}>
-    //         {text}
-    //       </option>
-    //     );
-    //   });
-    // }
-
     return (
       <Box
         width="100%"
@@ -141,45 +132,19 @@ export const SelectDropdown = forwardRef<
         className={className}
       >
         <ReactSelect
-          {...rest}
           defaultValue={selectOptions[0]}
           styles={customStyles}
           activated={activated}
           error={error}
           components={{ DropdownIndicator, IndicatorSeparator: () => null }}
           onChange={changeHandler}
+          isSearchable={false}
           options={selectOptions}
           theme={(theme) => ({
             ...theme,
           })}
         />
       </Box>
-      //<FlexBox
-      //     paddingRight={12}
-      //     alignItems="center"
-      //     position="absolute"
-      //     right="0"
-      //     top="0"
-      //     bottom="0"
-      //   >
-      //     {sizeVariant === 'small' ? (
-      //       <MiniSelectIcon size={12} />
-      //     ) : (
-      //       <SelectIcon size={16} />
-      //     )}
-      //   </FlexBox>
-      //   <SelectBase
-      //     {...rest}
-      //     defaultValue={defaultValue || ''}
-      //     id={id || rest.htmlFor}
-      //     ref={ref}
-      //     error={error}
-      //     sizeVariant={sizeVariant}
-      //     activated={activated}
-      //     onChange={(event) => changeHandler(event)}
-      //   >
-      //     {selectOptions}
-      //   </SelectBase>
     );
   }
 );
