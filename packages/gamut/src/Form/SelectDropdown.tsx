@@ -60,6 +60,7 @@ const selectIconStyles = (error: any) => css`
   ${conditionalColorStyles(error)};
   display: flex;
   padding: 0;
+  pointer-events: ;
 `;
 
 const customStyles = {
@@ -73,6 +74,7 @@ const customStyles = {
   }),
   option: (provided: any, state: any) => ({
     padding: '14px 11px 14px 11px',
+    cursor: 'pointer',
     '&:hover': {
       backgroundColor: colorStates.dropdownHover.backgroundColor,
     },

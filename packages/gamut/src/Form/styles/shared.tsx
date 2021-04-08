@@ -151,7 +151,9 @@ export const formBaseComponentStyles = css`
 
 export const formDropdownStyles = css`
   ${formBaseComponentStyles}
+  margin-top: -2px;
   border: 1px solid ${colorStates.activated.borderColor};
+  border-top: 1px solid ${colorStates.hover.borderColor};
 `;
 
 export const formBaseFieldStyles = css`
