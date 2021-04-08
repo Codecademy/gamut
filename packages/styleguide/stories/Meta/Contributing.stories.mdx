@@ -1,6 +1,6 @@
 import title from '@codecademy/macros/lib/title.macro';
-import { Meta } from '@storybook/addon-docs/dist/blocks';
-import LinkTo from '@storybook/addon-links/dist/react/components/link';
+import { Meta } from '@storybook/addon-docs/blocks';
+import LinkTo from '@storybook/addon-links/react';
 
 <Meta
   title={title}
@@ -9,8 +9,6 @@ import LinkTo from '@storybook/addon-links/dist/react/components/link';
 We love working with Codecademy employees across all our teams.`,
   }}
 />
-
-> 🏗 We're still building these opinions out; some of this information might still be in flux!
 
 ## Pre-Work
 
@@ -95,7 +93,7 @@ Please fill out the pull request template, including links to the corresponding 
 
 ### Publishing Updates
 
-If you know your PR has breaking changes and/or is meant to be used in at least one downstream repository soon _(read: almost all PRs)_:
+If you know your PR has breaking changes in at least one downstream repository:
 
 1. Before merging it, create PRs in those downstream repositories using your PR's published alpha package versions
 2. Verify those PRs work as expected and get them signed off normally
@@ -104,3 +102,19 @@ If you know your PR has breaking changes and/or is meant to be used in at least 
 5. Merge and deploy those PRs as soon as possible
 
 If your PR contains breaking changes that might affect other users, please mention them in the `#frontend` Slack channel.
+
+## Creating a New Package
+
+1. Copy and paste a similar existing package under `packages/`
+
+   > We recommend `markdown-overrides` for most basic packages.
+
+2. Modify its `package.json`'s `dependencies`, `description`, and `name` to match your new package
+3. Set its version to `0.1.0`
+4. Replace its `src/` directory with one only containing a `src/index.ts`
+5. Remove all content from its `CHANGELOG.md` after the _"See Conventional Commits ..."_ line
+6. From the root of the directory, run `yarn`, `yarn lerna bootstrap`, and `yarn build-all`
+7. Double-check that the directory contains a `.gitignore` including `dist`
+
+At this point, you can start developing on the new package.
+Send a pull request on GitHub and the CI job will auto-publish your package to npm. 🚀

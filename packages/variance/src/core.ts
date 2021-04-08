@@ -3,6 +3,7 @@ import { get, identity, isObject, merge } from 'lodash';
 import {
   AbstractParser,
   AbstractPropTransformer,
+  Compose,
   CSS,
   Parser,
   Prop,
@@ -11,7 +12,6 @@ import {
   Variant,
 } from './types/config';
 import { CSSObject, ThemeProps } from './types/props';
-import { AllUnionKeys, KeyFromUnion } from './types/utils';
 import { getStaticCss } from './utils/getStaticProperties';
 import { orderPropNames } from './utils/propNames';
 import {
@@ -115,17 +115,11 @@ export const variance = {
     };
   },
   compose<Args extends AbstractParser[]>(...parsers: Args) {
-    type MergedParser = {
-      [K in AllUnionKeys<Args[number]['config']>]: KeyFromUnion<
-        Args[number]['config'],
-        K
-      >;
-    };
     return this.createParser(
       parsers.reduce(
         (carry, parser) => ({ ...carry, ...parser.config }),
         {}
-      ) as MergedParser
+      ) as Compose<Args>
     );
   },
   createCss<
@@ -177,22 +171,27 @@ export const variance = {
   >(config: Config): Variant<P> {
     const css: CSS<P> = this.createCss(config);
 
-    return (options) => {
-      type Keys = keyof typeof options.variants;
-      const prop = options?.prop || 'variant';
-      const defaultVariant = options?.defaultVariant;
-
+    return ({ prop = 'variant', defaultVariant, base = {}, variants }) => {
+      type Keys = keyof typeof variants;
+      const baseFn = css(base);
       const variantFns = {} as Record<Keys, (props: ThemeProps) => CSSObject>;
 
-      Object.keys(options.variants).forEach((key) => {
+      Object.keys(variants).forEach((key) => {
         const variantKey = key as Keys;
-        const cssProps = options.variants[variantKey];
+        const cssProps = variants[variantKey];
         variantFns[variantKey] = css(cssProps as any);
       });
 
       return (props) => {
         const { [prop]: selected = defaultVariant } = props;
-        return selected ? variantFns[selected as Keys](props) : {};
+        const styles = {};
+        if (!selected) return styles;
+
+        return merge(
+          styles,
+          baseFn(props),
+          variantFns?.[selected as Keys]?.(props)
+        );
       };
     };
   },

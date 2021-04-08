@@ -1,8 +1,10 @@
 import { ButtonDeprecated, Modal, Overlay } from '@codecademy/gamut/src';
 import title from '@codecademy/macros/lib/title.macro';
-import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 import LinkTo from '@storybook/addon-links/dist/react/components/link';
 import { useState } from 'react';
+
+import { PropsTable } from '~styleguide/blocks';
 
 <Meta
   title={title}
@@ -36,7 +38,7 @@ import { useState } from 'react';
 
 > Prefer <LinkTo kind="Molecules/Dialog" story="Dialog">Dialog</LinkTo> instead.
 
-<Props components={{ Modal, Overlay }} />
+<PropsTable components={{ Modal, Overlay }} />
 
 ### Creating a custom close button
 
