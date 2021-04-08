@@ -1,7 +1,8 @@
 {
   "author": "Codecademy Engineering <dev@codecademy.com>",
   "dependencies": {
-    "@codecademy/gamut-styles": "^9.3.0"
+    "@codecademy/gamut-styles": "^9.3.0",
+    "component-test-setup": "*"
   },
   "description": "Shared component test setup for Gamut applications",
   "keywords": [
