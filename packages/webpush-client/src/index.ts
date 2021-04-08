@@ -1,1 +1,1 @@
-export * from './Webpush';
+export * from './WebPushClient';

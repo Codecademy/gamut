@@ -52,7 +52,7 @@ const registerWorker = (name?: string) => {
     });
 };
 
-export const WebpushClient: React.FC<WebpushProps> = ({
+export const WebPushClient: React.FC<WebpushProps> = ({
   messengerConfig,
   config,
   prompt = false,
