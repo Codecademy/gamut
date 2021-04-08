@@ -16,8 +16,8 @@
     "url": "git@github.com:Codecademy/client-modules.git"
   },
   "peerDependencies": {
-    "@emotion/react": "^11.1.4",
-    "@emotion/styled": "^11.0.0",
+    "@emotion/react": "^11.1.5",
+    "@emotion/styled": "^11.1.5",
     "react": ">=16.8.1",
     "react-dom": ">=16.8.1"
   },
@@ -34,6 +34,7 @@
     "invariant": "^2.2.4",
     "lodash": "^4.17.5",
     "marked": "^0.7.0",
+    "polished": "^4.1.1",
     "react-aria-tabpanel": "^4.4.0",
     "react-focus-on": "^3.5.1",
     "react-hook-form": "6.8.5",
