@@ -14,15 +14,22 @@ export type CompanyLinksProps = {
   userGeo: string;
 };
 
+const MobileImageItem = styled(Box)();
+
+MobileImageItem.defaultProps = {
+  as: 'li',
+  display: 'inline-block',
+  width: {
+    base: '50%',
+    md: '90%',
+  },
+};
+
 const MobileImageLink = styled(Anchor)();
 
 MobileImageLink.defaultProps = {
   display: 'inline-block',
   variant: 'interface',
-  width: {
-    base: '50%',
-    md: '90%',
-  },
 };
 
 const AppleMobileAppImage = styled.img`
@@ -164,32 +171,39 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
       <FooterHeading marginBottom={{ base: 8, sm: 16, lg: 0 }}>
         Mobile
       </FooterHeading>
-      <Box display={{ sm: 'flex' }} flexDirection={{ sm: 'column' }}>
-        <MobileImageLink
-          href="https://itunes.apple.com/us/app/codecademy-go/id1376029326"
-          onClick={(event) => onClick({ event, target: '' })}
-          target="_blank"
-        >
-          <AppleMobileAppImage
-            alt="Download on the App Store"
-            height="calc(40px + 1rem)"
-            src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-US?size=140x20&amp;releaseDate=1533168000"
-            width="calc(120px + 1.5rem)"
-          />
-        </MobileImageLink>
-        <MobileImageLink
-          href="https://play.google.com/store/apps/details?id=com.ryzac.codecademygo"
-          onClick={(event) => onClick({ event, target: '' })}
-          target="_blank"
-        >
-          <AndroidMobileAppImage
-            alt="Get it on Google Play"
-            height="60px"
-            src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
-            width="155px"
-          />
-        </MobileImageLink>
-      </Box>
+      <FooterLinkItems
+        display={{ sm: 'flex' }}
+        flexDirection={{ sm: 'column' }}
+      >
+        <MobileImageItem>
+          <MobileImageLink
+            href="https://itunes.apple.com/us/app/codecademy-go/id1376029326"
+            onClick={(event) => onClick({ event, target: '' })}
+            target="_blank"
+          >
+            <AppleMobileAppImage
+              alt="Download on the App Store"
+              height="calc(40px + 1rem)"
+              src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-US?size=140x20&amp;releaseDate=1533168000"
+              width="calc(120px + 1.5rem)"
+            />
+          </MobileImageLink>
+        </MobileImageItem>
+        <MobileImageItem>
+          <MobileImageLink
+            href="https://play.google.com/store/apps/details?id=com.ryzac.codecademygo"
+            onClick={(event) => onClick({ event, target: '' })}
+            target="_blank"
+          >
+            <AndroidMobileAppImage
+              alt="Get it on Google Play"
+              height="60px"
+              src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
+              width="155px"
+            />
+          </MobileImageLink>
+        </MobileImageItem>
+      </FooterLinkItems>
     </Box>
   );
 

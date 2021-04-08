@@ -1,4 +1,4 @@
-import { Anchor } from '@codecademy/gamut';
+import { Anchor, Box } from '@codecademy/gamut';
 import {
   FacebookIcon,
   InstagramIcon,
@@ -6,6 +6,8 @@ import {
   YoutubeIcon,
 } from '@codecademy/gamut-icons';
 import React from 'react';
+
+import { FooterLinkItems } from '../FooterLinks';
 
 const media = [
   {
@@ -32,20 +34,24 @@ const media = [
 ];
 
 export const SocialMediaLinks: React.FC = () => {
-  const icons = media.map(({ label, url, icon: IconComponent }) => (
-    <Anchor
-      aria-label={label}
-      fontSize={20}
-      href={url}
-      key={label}
-      marginRight={8}
-      rel="noopener noreferrer"
-      target="_blank"
-      variant="interface"
-    >
-      <IconComponent />
-    </Anchor>
-  ));
-
-  return <li>{icons}</li>;
+  return (
+    <FooterLinkItems aria-label="Social Media">
+      {media.map(({ label, url, icon: IconComponent }) => (
+        <Box as="li" display="inline-block">
+          <Anchor
+            aria-label={label}
+            fontSize={20}
+            href={url}
+            key={label}
+            marginRight={8}
+            rel="noopener noreferrer"
+            target="_blank"
+            variant="interface"
+          >
+            <IconComponent />
+          </Anchor>
+        </Box>
+      ))}
+    </FooterLinkItems>
+  );
 };

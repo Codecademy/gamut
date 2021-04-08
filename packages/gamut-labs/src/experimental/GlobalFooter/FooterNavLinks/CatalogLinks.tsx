@@ -110,7 +110,7 @@ export const CatalogLinks: React.FC<CatalogLinksProps> = ({ onClick }) => {
             </Anchor>
           </CatalogFooterLinkItem>
         ))}
-        <CatalogFooterLinkItem>—</CatalogFooterLinkItem>
+        <CatalogFooterLinkItem aria-hidden>—</CatalogFooterLinkItem>
         <CatalogFooterLinkItem>
           <Anchor
             href="/catalog/subject/all"
