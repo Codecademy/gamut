@@ -1,4 +1,4 @@
-import { Box, Select, SelectDropdown } from '@codecademy/gamut';
+import { Box, FlexBox, Select, SelectDropdown } from '@codecademy/gamut';
 import title from '@codecademy/macros/lib/title.macro';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 
@@ -69,7 +69,12 @@ export const fruitOptions = [
   <Story
     name="Base"
     args={{
-      options: ['Base', 'Regular Size', '"Normal'],
+      options: [
+        'Base',
+        'Regular Size',
+        '"Normal',
+        'lorem lorem lorem ipsum ipsum ipsum lorem',
+      ],
       defaultValue: 'Base',
     }}
   >
@@ -98,9 +103,9 @@ export const fruitOptions = [
     }}
   >
     {(args) => (
-      <Box width="10rem" height="25rem">
+      <FlexBox width="10rem" height="25rem">
         <SelectDropdown {...args} />
-      </Box>
+      </FlexBox>
     )}
   </Story>
   <Story
@@ -111,7 +116,16 @@ export const fruitOptions = [
       error: true,
     }}
   >
-    {(args) => <SelectDropdown {...args} />}
+    {(args) => (
+      <FlexBox
+        width="10rem"
+        height="25rem"
+        backgroundColor="palePink"
+        padding="1rem"
+      >
+        <SelectDropdown {...args} />
+      </FlexBox>
+    )}
   </Story>
   <Story
     name="DisabledDropdown"
@@ -121,6 +135,15 @@ export const fruitOptions = [
       disabled: true,
     }}
   >
-    {(args) => <SelectDropdown {...args} />}
+    {(args) => (
+      <FlexBox
+        width="10rem"
+        height="25rem"
+        backgroundColor="paleGreen"
+        padding="1rem"
+      >
+        <SelectDropdown {...args} />
+      </FlexBox>
+    )}
   </Story>
 </Canvas>

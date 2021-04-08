@@ -12,8 +12,10 @@ import ReactSelect, { components } from 'react-select';
 import { Box } from '../Box';
 import { SelectIcon } from './Select';
 import {
+  colorStates,
   conditionalBorderStyles,
   conditionalColorStyles,
+  formDropdownStyles,
   formFieldStyles,
 } from './styles/shared';
 
@@ -67,11 +69,13 @@ const customStyles = {
     padding: '0',
   }),
   menu: (provided: any, state: any) => ({
-    ...provided,
-    marginTop: 0,
+    ...formDropdownStyles,
   }),
   option: (provided: any, state: any) => ({
-    ...provided,
+    padding: '14px 11px 14px 11px',
+    '&:hover': {
+      backgroundColor: colorStates.dropdownHover.backgroundColor,
+    },
   }),
   control: (provided: any, state: any) => ({
     ...selectBaseStyles(

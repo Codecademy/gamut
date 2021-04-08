@@ -18,6 +18,7 @@ export const colorStates = {
   error: { color: theme.colors.red, borderColor: theme.colors.red },
   valid: { color: theme.colors.green },
   activated: { borderColor: theme.colors.navy },
+  dropdownHover: { backgroundColor: theme.colors.paleBlue },
 };
 
 export type conditionalStyleProps = {
@@ -140,15 +141,24 @@ export const formBaseStyles = css`
   font-size: ${theme.fontSize[16]};
 `;
 
-export const formBaseFieldStyles = css`
+export const formBaseComponentStyles = css`
   ${formBaseStyles}
-  ${transitionConcatenator(['border-color', 'box-shadow'], '0.2s ease-in-out')}
   width: 100%;
   outline: none;
   background-color: ${colorStates.base.backgroundColor};
+  min-width: auto;
+`;
+
+export const formDropdownStyles = css`
+  ${formBaseComponentStyles}
+  border: 1px solid ${colorStates.activated.borderColor};
+`;
+
+export const formBaseFieldStyles = css`
+  ${formBaseComponentStyles}
+  ${transitionConcatenator(['border-color', 'box-shadow'], '0.2s ease-in-out')}
   border: 1px solid ${colorStates.base.borderColor};
   border-radius: 2px;
-  min-width: auto;
 
   &:hover {
     border-color: ${colorStates.hover.borderColor};
