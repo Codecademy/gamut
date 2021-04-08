@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [29.9.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@29.8.3...@codecademy/gamut@29.9.0) (2021-04-08)
+
+
+### Features
+
+* **ColorModes:** Base ColorMode support and serialization of color variables [GM-177] ([b588132](https://github.com/Codecademy/client-modules/commit/b5881326ace09f0b1b7052f24e59ecb5b8326aef))
+
+
+
 ### [29.8.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@29.8.2...@codecademy/gamut@29.8.3) (2021-04-07)
 
 
