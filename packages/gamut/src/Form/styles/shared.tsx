@@ -69,6 +69,10 @@ export const conditionalBorderStyles = ({
     return css`
       border-color: ${colorStates.error.borderColor};
       box-shadow: inset 0 0 0 1px ${colorStates.error.borderColor};
+
+      &:hover {
+        border-color: ${colorStates.error.borderColor};
+      }
     `;
   }
 
