@@ -1,6 +1,4 @@
-import { BaseTheme } from '../../src/types/theme';
-
-export const theme = {
+const theme = {
   breakpoints: {
     xs: 'XS',
     sm: 'SM',
@@ -20,9 +18,3 @@ export const theme = {
     64: '4rem',
   },
 } as const;
-
-type LocalTheme = typeof theme;
-
-declare module '@emotion/react' {
-  export interface Theme extends BaseTheme, LocalTheme {}
-}

@@ -4,8 +4,7 @@ import styled from '@emotion/styled';
 import React, { ComponentProps } from 'react';
 import renderer from 'react-test-renderer';
 
-import { variance } from '../src/core';
-import { theme } from './__fixtures__/theme';
+import { variance } from '../../src/core';
 
 expect.extend(matchers);
 
