@@ -1,7 +1,7 @@
 {
   "name": "@codecademy/styleguide",
   "description": "Styleguide & Component library for codecademy.com",
-  "version": "33.8.3",
+  "version": "33.8.4",
   "author": "Codecademy Engineering",
   "scripts": {
     "start": "yarn storybook",
@@ -18,7 +18,7 @@
     "@babel/core": "^7.13.10",
     "@codecademy/gamut": "^29.9.2",
     "@codecademy/gamut-icons": "^4.5.0",
-    "@codecademy/gamut-labs": "^13.3.6",
+    "@codecademy/gamut-labs": "^13.3.7",
     "@codecademy/gamut-styles": "^9.3.0",
     "@codecademy/macros": "^2.1.1",
     "@codecademy/webpack-config": "^6.0.0",
