@@ -18,13 +18,17 @@ export const colorStates = {
   error: { color: theme.colors.red, borderColor: theme.colors.red },
   valid: { color: theme.colors.green },
   activated: { borderColor: theme.colors.navy },
-  dropdownHover: { backgroundColor: theme.colors.paleBlue },
+  dropdown: {
+    hover: { backgroundColor: theme.colors[`gray-100`] },
+    isSelected: { backgroundColor: theme.colors[`gray-300`] },
+  },
 };
 
 export type conditionalStyleProps = {
   error?: boolean;
   activated?: boolean;
   isFocused?: boolean;
+  isDisabled?: boolean;
 };
 
 type iconPaddingProps = {
@@ -33,6 +37,23 @@ type iconPaddingProps = {
 
 export type conditionalInputStyleProps = conditionalStyleProps &
   iconPaddingProps;
+
+// these are split for now because ReactRecurly demands separate styles for focus.
+export const formFieldFocusStyles = css`
+  border-color: ${colorStates.hover.borderColor};
+  box-shadow: inset 0 0 0 1px ${colorStates.hover.borderColor};
+`;
+
+const formFieldDisabledStyles = css`
+  background-color: ${colorStates.disabled.backgroundColor};
+  border-color: ${colorStates.disabled.borderColor};
+  color: ${colorStates.disabled.color};
+  font-style: italic;
+  cursor: not-allowed;
+  &:hover {
+    border-color: ${colorStates.disabled.borderColor};
+  }
+`;
 
 export const conditionalStyles = ({
   error,
@@ -65,7 +86,12 @@ export const conditionalBorderStyles = ({
   error,
   activated,
   isFocused,
+  isDisabled,
 }: conditionalStyleProps) => {
+  if (isDisabled) {
+    return formFieldDisabledStyles;
+  }
+
   if (error && isFocused) {
     return css`
       border-color: ${colorStates.error.borderColor};
@@ -101,8 +127,7 @@ export const conditionalBorderStyles = ({
   }
 };
 
-export const conditionalColorStyles = (error: conditionalStyleProps) => {
-  console.log(error);
+export const conditionalColorStyles = (error?: boolean) => {
   if (error) {
     return css`
       color: ${colorStates.error.color};
@@ -139,6 +164,7 @@ export const formBaseStyles = css`
   color: ${colorStates.base.color};
   font-weight: normal;
   font-size: ${theme.fontSize[16]};
+  cursor: pointer;
 `;
 
 export const formBaseComponentStyles = css`
@@ -151,9 +177,10 @@ export const formBaseComponentStyles = css`
 
 export const formDropdownStyles = css`
   ${formBaseComponentStyles}
-  margin-top: -2px;
+  position: absolute;
+  margin-top: -1px;
   border: 1px solid ${colorStates.activated.borderColor};
-  border-top: 1px solid ${colorStates.hover.borderColor};
+  border-top: none;
 `;
 
 export const formBaseFieldStyles = css`
@@ -173,19 +200,9 @@ export const formBaseFieldStyles = css`
 
   &:disabled,
   [disabled] {
+    ${formFieldDisabledStyles};
     opacity: 1;
-    background-color: ${colorStates.disabled.backgroundColor};
-    border-color: ${colorStates.disabled.borderColor};
-    color: ${colorStates.disabled.color};
-    font-style: italic;
-    cursor: not-allowed;
   }
-`;
-
-// these are split for now because ReactRecurly demands separate styles for focus.
-export const formFieldFocusStyles = css`
-  border-color: ${colorStates.hover.borderColor};
-  box-shadow: inset 0 0 0 1px ${colorStates.hover.borderColor};
 `;
 
 // ReactRecurly needs to apply padding in a very particular way
