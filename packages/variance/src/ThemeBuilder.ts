@@ -1,4 +1,4 @@
-import { mapValues, merge } from 'lodash';
+import { mapValues, merge, pick } from 'lodash';
 
 import { AbstractTheme } from './types/theme';
 import { KeyAsVariable, serializeTokens } from './utils/serializeTokens';
@@ -35,19 +35,21 @@ export class ThemeBuilder<
   serialize<Key extends keyof Omit<BaseTheme, 'breakpoints'> & string>(
     key: Key
   ) {
-    const { theme, variables, staticTokens } = this;
+    const { theme } = this;
 
-    const serialized = serializeTokens(theme[key], key, theme);
+    const { variables, tokens } = serializeTokens(theme[key], key, theme);
 
     return new ThemeBuilder<
-      Merge<BaseTheme, Record<Key, typeof serialized.tokens>>,
+      Merge<BaseTheme, Record<Key, typeof tokens>>,
       typeof variables,
-      StaticTokens & BaseTheme[Key]
-    >({
-      theme: merge({}, theme, { [key]: serialized.tokens }),
-      variables: merge({}, variables, { root: variables }),
-      staticTokens: merge({}, staticTokens, theme[key]),
-    });
+      StaticTokens & Pick<BaseTheme, Key>
+    >(
+      merge({}, this, {
+        theme: { [key]: tokens },
+        variables: { root: variables },
+        staticTokens: pick(theme, [key]),
+      })
+    );
   }
 
   createColorMode<
@@ -56,7 +58,7 @@ export class ThemeBuilder<
     Colors extends keyof BaseTheme['colors'],
     Config extends Record<Modes, Record<string, Colors>>
   >(initialMode: InitialMode, modes: Config) {
-    const { theme, variables } = this;
+    const { theme } = this;
     const serialized = serializeTokens(
       mapValues(modes[initialMode], (color) => theme.colors[color]),
       'colors',
@@ -74,14 +76,15 @@ export class ThemeBuilder<
       >,
       Variables,
       StaticTokens
-    >({
-      ...this,
-      theme: merge({}, theme, {
-        colors: serialized.tokens,
-        colorModes: { active: initialMode, modes },
-      }),
-      variables: merge({}, variables, { colorMode: serialized.variables }),
-    });
+    >(
+      merge({}, this, {
+        theme: {
+          colors: serialized.tokens,
+          colorModes: { active: initialMode, modes },
+        },
+        variables: { colorMode: serialized.variables },
+      })
+    );
   }
 
   updateTheme<T extends Record<string, any>>(
@@ -89,27 +92,25 @@ export class ThemeBuilder<
   ) {
     const { theme } = this;
 
-    return new ThemeBuilder<Merge<BaseTheme, T>, Variables, StaticTokens>({
-      ...this,
-      theme: merge({}, theme, computeTheme(theme)),
-    });
+    return new ThemeBuilder<Merge<BaseTheme, T>, Variables, StaticTokens>(
+      merge({}, this, {
+        theme: computeTheme(theme),
+      })
+    );
   }
   updateTokenSet<Key extends keyof BaseTheme, T extends Record<string, any>>(
     key: Key,
     computeTokens: (tokens: BaseTheme[Key]) => T
   ) {
-    const { theme, variables, staticTokens } = this;
+    const { theme } = this;
     return new ThemeBuilder<
       Merge<BaseTheme, { [K in Key]: Merge<BaseTheme[K], T> }>,
       Variables,
       StaticTokens
-    >({
-      ...this,
-      theme: merge({}, theme, {
+    >(
+      merge({}, this, {
         [key]: merge({}, theme[key], computeTokens(theme[key])),
-      }),
-      variables,
-      staticTokens,
-    });
+      })
+    );
   }
 }
