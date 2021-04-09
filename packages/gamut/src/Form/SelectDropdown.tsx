@@ -18,7 +18,7 @@ import {
   formFieldStyles,
 } from './styles/shared';
 
-type optionsType = Array<any>;
+type optionsType = Array<{ value: string | number; label: string | number }>;
 
 const selectBaseStyles = ({
   error,
@@ -107,7 +107,7 @@ export const SelectDropdown = forwardRef<
     setActivated(true);
   };
 
-  let selectOptions: optionsType = [];
+  let selectOptions;
 
   if (isArray(options)) {
     options.map((option) => {
