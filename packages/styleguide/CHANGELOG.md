@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [33.8.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@33.8.2...@codecademy/styleguide@33.8.3) (2021-04-08)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [33.8.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@33.8.1...@codecademy/styleguide@33.8.2) (2021-04-08)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
 ### [33.8.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@33.8.0...@codecademy/styleguide@33.8.1) (2021-04-08)
 
 
