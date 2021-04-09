@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [13.3.7](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@13.3.6...@codecademy/gamut-labs@13.3.7) (2021-04-09)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [13.3.6](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@13.3.5...@codecademy/gamut-labs@13.3.6) (2021-04-08)
+
+
+### Bug Fixes
+
+* switch gamut-tests to an internal devDependency ([#1460](https://github.com/Codecademy/client-modules/issues/1460)) ([e12d005](https://github.com/Codecademy/client-modules/commit/e12d00501bff58e0a5365b950793201fb9f6c640))
+
+
+
 ### [13.3.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@13.3.4...@codecademy/gamut-labs@13.3.5) (2021-04-08)
 
 **Note:** Version bump only for package @codecademy/gamut-labs
