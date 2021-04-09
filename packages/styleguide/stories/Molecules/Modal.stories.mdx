@@ -1,6 +1,7 @@
 import { ButtonDeprecated, Modal, Overlay } from '@codecademy/gamut/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import LinkTo from '@storybook/addon-links/dist/react/components/link';
 import { useState } from 'react';
 
 import { PropsTable } from '~styleguide/blocks';
@@ -34,6 +35,8 @@ import { PropsTable } from '~styleguide/blocks';
     }}
   </Story>
 </Canvas>
+
+> Prefer <LinkTo kind="Molecules/Dialog" story="Dialog">Dialog</LinkTo> instead.
 
 <PropsTable components={{ Modal, Overlay }} />
 
