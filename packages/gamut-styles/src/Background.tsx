@@ -21,11 +21,11 @@ export const Background: React.FC<BackgroundProps> = ({
     colorModes: { modes },
   } = useTheme();
   const { staticTokens } = useContext(GamutContext);
-  const background = get(staticTokens, ['colors', bg]);
+  const background = get(staticTokens, ['colors', bg]) as string;
   const accessibleMode = useMemo(() => {
     const { light, dark } = modes;
-    const lightText = get(staticTokens, ['colors', light.text]);
-    const darkText = get(staticTokens, ['colors', dark.text]);
+    const lightText = get(staticTokens, ['colors', light.text]) as string;
+    const darkText = get(staticTokens, ['colors', dark.text]) as string;
 
     const lightModeContrast = getContrast(lightText, background);
     const darkModeContrast = getContrast(darkText, background);
