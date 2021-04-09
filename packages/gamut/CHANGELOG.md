@@ -3,6 +3,69 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [29.9.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@29.9.1...@codecademy/gamut@29.9.2) (2021-04-08)
+
+
+### Bug Fixes
+
+* switch gamut-tests to an internal devDependency ([#1460](https://github.com/Codecademy/client-modules/issues/1460)) ([e12d005](https://github.com/Codecademy/client-modules/commit/e12d00501bff58e0a5365b950793201fb9f6c640))
+
+
+
+### [29.9.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@29.9.0...@codecademy/gamut@29.9.1) (2021-04-08)
+
+
+### Bug Fixes
+
+* **ToolTip:** A11y Updates (revert of revert) ([074cdd6](https://github.com/Codecademy/client-modules/commit/074cdd6df37dd63b1950ee533c96281d24f4a6b0))
+
+
+
+## [29.9.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@29.8.3...@codecademy/gamut@29.9.0) (2021-04-08)
+
+
+### Features
+
+* **ColorModes:** Base ColorMode support and serialization of color variables [GM-177] ([b588132](https://github.com/Codecademy/client-modules/commit/b5881326ace09f0b1b7052f24e59ecb5b8326aef))
+
+
+
+### [29.8.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@29.8.2...@codecademy/gamut@29.8.3) (2021-04-07)
+
+
+### Bug Fixes
+
+* **ToolTip:** Revert A11y Update ([995da1a](https://github.com/Codecademy/client-modules/commit/995da1a757862f7523844786c9d4199f75f3f130)), closes [Codecademy/client-modules#1604](https://github.com/Codecademy/client-modules/issues/1604)
+
+
+
+### [29.8.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@29.8.1...@codecademy/gamut@29.8.2) (2021-04-07)
+
+
+### Bug Fixes
+
+* **ToolTip:** A11y Update ([8cca675](https://github.com/Codecademy/client-modules/commit/8cca675e69d421f44d4e910ae75769f3b45d01cf))
+
+
+
+### [29.8.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@29.8.0...@codecademy/gamut@29.8.1) (2021-04-07)
+
+
+### Bug Fixes
+
+* allow empty strings for anchor and button hrefs ([#1601](https://github.com/Codecademy/client-modules/issues/1601)) ([3d6c342](https://github.com/Codecademy/client-modules/commit/3d6c342c8a4074ee95d137031cec1c41fb5f4101))
+
+
+
+## [29.8.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@29.7.1...@codecademy/gamut@29.8.0) (2021-04-06)
+
+
+### Features
+
+* **Variance:** Initial Props and Refactor Tests [WEB-1390] ([e4b5177](https://github.com/Codecademy/client-modules/commit/e4b5177544643fec274d20f37be594b140a4cba3))
+
+
+
 ### [29.7.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@29.7.0...@codecademy/gamut@29.7.1) (2021-04-05)
 
 **Note:** Version bump only for package @codecademy/gamut

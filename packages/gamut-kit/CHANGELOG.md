@@ -3,6 +3,79 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [0.3.8](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-kit@0.3.7...@codecademy/gamut-kit@0.3.8) (2021-04-09)
+
+**Note:** Version bump only for package @codecademy/gamut-kit
+
+
+
+
+
+### [0.3.7](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-kit@0.3.6...@codecademy/gamut-kit@0.3.7) (2021-04-09)
+
+**Note:** Version bump only for package @codecademy/gamut-kit
+
+
+
+
+
+### [0.3.6](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-kit@0.3.5...@codecademy/gamut-kit@0.3.6) (2021-04-08)
+
+**Note:** Version bump only for package @codecademy/gamut-kit
+
+
+
+
+
+### [0.3.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-kit@0.3.4...@codecademy/gamut-kit@0.3.5) (2021-04-08)
+
+**Note:** Version bump only for package @codecademy/gamut-kit
+
+
+
+
+
+### [0.3.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-kit@0.3.3...@codecademy/gamut-kit@0.3.4) (2021-04-08)
+
+**Note:** Version bump only for package @codecademy/gamut-kit
+
+
+
+
+
+### [0.3.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-kit@0.3.2...@codecademy/gamut-kit@0.3.3) (2021-04-07)
+
+**Note:** Version bump only for package @codecademy/gamut-kit
+
+
+
+
+
+### [0.3.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-kit@0.3.1...@codecademy/gamut-kit@0.3.2) (2021-04-07)
+
+**Note:** Version bump only for package @codecademy/gamut-kit
+
+
+
+
+
+### [0.3.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-kit@0.3.0...@codecademy/gamut-kit@0.3.1) (2021-04-07)
+
+**Note:** Version bump only for package @codecademy/gamut-kit
+
+
+
+
+
+## [0.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-kit@0.2.47...@codecademy/gamut-kit@0.3.0) (2021-04-06)
+
+
+### Features
+
+* **Variance:** Initial Props and Refactor Tests [WEB-1390] ([e4b5177](https://github.com/Codecademy/client-modules/commit/e4b5177544643fec274d20f37be594b140a4cba3))
+
+
+
 ### [0.2.47](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-kit@0.2.46...@codecademy/gamut-kit@0.2.47) (2021-04-05)
 
 **Note:** Version bump only for package @codecademy/gamut-kit

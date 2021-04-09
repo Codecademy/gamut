@@ -1,155 +1,176 @@
 import { Box } from '@codecademy/gamut/src';
-import { breakpoints, spacing } from '@codecademy/gamut-styles/src';
 import title from '@codecademy/macros/lib/title.macro';
-import { Canvas, Meta } from '@storybook/addon-docs/blocks';
-import LinkTo from '@storybook/addon-links/react';
+import { Meta } from '@storybook/addon-docs/blocks';
 
-import { ScaleColumn, ScaleRow } from '~styleguide/blocks';
+import { DataTable, LinkTo } from '~styleguide/blocks';
 
 <Meta
   title={title}
   parameters={{
-    status: 'updating',
-    subtitle: 'Our spacing and layout design tokens and guidelines',
+    subtitle: 'Design Guidelines for overall page layout',
+    status: 'current',
+    figmaId: 'ZUJ7cfVgyoh1kiQYNN8Hbt',
   }}
 />
 
-**Deprecation Notice** These variables and access patterns are now deprecated. Please refer to [Theme](?path=/docs/foundations-theme--breakpoints) for the most up to date documentation when using the new visual identity.
+These are the grids we use for all the screen sizes we design for. We use a 12-column grid approach, meaning every layout can be divided in sections of 2 or 3. It’s important to design with the in mind to create structured and consistent experiences. On smaller screensizes try to avoid using smaller components while using the grid as a guide.
 
-## Screensizes and Media Queries
+## Screensizes
 
-We have 5 specific screens that we design for. Ideally we do not deviate in design or code
-for these specific sizes to avoid unintended side effects. Here are their respective values.
+We have 6 main screensizes we design for, these are not the same thing as `breakpoints` which are used to help us achieve these guidelines. You can checkout our <LinkTo id="foundations-theme--breakpoints">Theme</LinkTo>
 
-<Canvas withSource="none" isColumn>
-  {Object.entries(breakpoints).map(([alias, value]) => (
-    <ScaleRow key={alias} hasAlias>
-      <ScaleColumn>{alias}</ScaleColumn>
-      <strong>{value}</strong>
-    </ScaleRow>
-  ))}
-</Canvas>
+<DataTable
+  rows={[
+    {
+      id: 'XL',
+      dimensions: '1440x900',
+      maxContent: '1248px',
+      foldHeight: '680px',
+    },
+    {
+      id: 'LG',
+      dimensions: '1200x900',
+      maxContent: '1072px',
+      foldHeight: '680px',
+    },
+    {
+      id: 'MD',
+      dimensions: '1024x768',
+      maxContent: '896px',
+      foldHeight: '680px',
+    },
+    {
+      id: 'SM',
+      dimensions: '480x900',
+      maxContent: '704px',
+      foldHeight: '680px',
+    },
+    {
+      id: 'XS',
+      dimensions: '480x900',
+      maxContent: '448px',
+      foldHeight: '440px',
+    },
+    {
+      id: 'Base',
+      dimensions: '320x480',
+      maxContent: '288px',
+      foldHeight: '440px',
+    },
+  ]}
+  columns={[
+    {
+      name: 'Alias',
+      key: 'id',
+      size: 'md',
+      render: ({ id }) => <strong>{id}</strong>,
+    },
+    {
+      name: 'Dimensions',
+      key: 'dimensions',
+      size: 'fill',
+      render: ({ dimensions }) => <strong>{dimensions}</strong>,
+    },
+    {
+      name: 'Max Content',
+      key: 'maxContent',
+      size: 'fill',
+    },
+    {
+      name: 'Fold Height',
+      key: 'foldHeight',
+      size: 'fill',
+    },
+  ]}
+/>
 
-### Usage - Typescript
+<br />
 
-These can be used on their own arbitrarily as direct values through the `breakpoint` map:
+### Breakpoints
 
-```ts
-import { breakpoints } from '@codecademy/gamut-styles';
-
-const MyStyles = `
-  @media screen and (min-width: ${breakpoints.sm}) {
-    display: none;
-  }
-`;
-```
-
-However we do provide specific mobile first media queries out of the box to make this even easier with `mediaQueries`:
-
-```ts
-import { mediaQueries } from '@codecademy/gamut-styles';
-
-const MyStyles = `
-  ${mediaQueries.sm} {
-    display: none;
-  }
-`;
-```
-
-We also provide a `atViewport` utility for a more functional pattern
-
-```ts
-import { atViewport } from '@codecademy/gamut-styles';
-
-const mobileStyles = atViewport('xs', `background-color: blue;`);
-const tabletStyles = atViewport('sm', `background-color: green;`);
-
-const MyStyles = `
-  ${mobileStyles}
-  ${tabletStyles}
-`;
-```
-
-### Usage - SCSS
-
-For SCSS we have similiar equivalents matching the pattern `$grid-<SIZE_ALIAS>-min`
-
-```scss
-@import '@codecademy/gamut-styles/utils';
-
-.container {
-  @media only screen and (min-width: $grid-sm-min) {
-    // my styles
-  }
-}
-```
-
-And provide mixins that do the work for you matching the pattern `@include <SIZE_ALIAS>-viewport`:
-
-```scss
-@import '@codecademy/gamut-styles/utils';
-
-.container {
-  @include md-viewport {
-    // my styles
-  }
-}
-```
-
-## Max Content Width
-
-We generally like to keep all content outside of full width screens to a few specific sizes. We recommend using <LinkTo kind="Layouts" story="ContentContainer">ContentContainer</LinkTo> in most cases,
-but if you need to use these sizes outside of that component you can find them here:
-
-#### TS - contentWidths
+The designer decides how many columns at each breakpoint a section should span. The grid will allow the engineer to set a minimum amount of columns for each breakpoint.
 
 ```tsx
-import { contentWidths } from '@codecademy/gamut-styles';
+// Object syntax
+<Column size={{ base: 6, xs: 4 }}>Content</Column>
 
-// 1440px
-const MediumWidth = `
-  max-width: ${contentWidths.md};
-`;
-
-// 1200px
-const MaxWidth = `
-  max-width: ${contentWidths.max};
-`;
+// Array syntax
+<Column size={[6, 4]} />
 ```
 
-#### SCSS - \$max-content-width | \$medium-content-width;
+This section would be 6 columns at the smallest screen size and 4 columns at anything larger than the 4th breakpoint.
 
-```scss
-@import '@codecademy/gamut-styles/utils';
+### Best Practices
 
-.container {
-  max-width: $max-content-width;
-}
-
-.container__medium {
-  max-width: $medium-content-width;
-}
-```
+- You should begin most design work with a target viewport of 1440px width, using the `XL` column grid.
+- Make sure you adjust each design to the viewports and take into account their respective screenheights (the ‘fold’).
+- Wider layouts should maintain proper line-lengths and component widths by adjusting arrangements to take advantage of the increased area—do not simply stretch to fill.
+- Elements that are not placed in an explicit lockup (like catalog cards) do not need to fill entire column widths. Alignment to gridlines on on axis (usually left side) is often enough
 
 ## Spacing
 
-We have a basic spacing scale that we like to adhere to. These can be used for padding / margins / grid gaps.
+For spacing between components and sections use these as a guide. Each of these scales is a subset of our `spacing` sizes found on <LinkTo id="foundations-theme--spacing">our theme</LinkTo>. While you will have access to all of them in your code use these sets as a practical guide.
 
-<Canvas withSource="none" isColumn>
-  {Object.entries(spacing).map(([alias, value]) => (
-    <ScaleRow key={alias} hasAlias>
-      <ScaleColumn>{alias}</ScaleColumn>
-      <Box size={value} />
-    </ScaleRow>
-  ))}
-</Canvas>
+<DataTable
+  rows={[
+    {
+      id: 'horizontal',
+      title: 'Horizontal Spacing',
+      sizes: [64, 48, 32, 16],
+    },
+    {
+      id: 'gutters',
+      title: 'Column Gaps (Gutters)',
+      sizes: [32, 24, 16, 8],
+    },
+    {
+      id: 'vertical',
+      title: 'Row Gaps',
+      sizes: [32, 24, 16, 8],
+    },
+  ]}
+  columns={[
+    {
+      name: 'Spacing',
+      key: 'title',
+      size: 'md',
+    },
+    {
+      name: 'Sizes',
+      key: 'sizes',
+      size: 'fill',
+      render: ({ sizes }) => (
+        <>
+          <Box
+            display="grid"
+            gridTemplateColumns={`repeat(${sizes.length}, max-content)`}
+            columnGap="2rem"
+            rowGap="0.5rem"
+            alignItems="end"
+          >
+            {sizes.map((size) => (
+              <Box
+                width={`${size}px`}
+                height={`${size}px`}
+                display="inline-block"
+                backgroundColor="navy"
+              />
+            ))}
+            {sizes.map((size) => (
+              <Box textAlign="center" fontSize={14}>
+                {size}
+              </Box>
+            ))}
+          </Box>
+        </>
+      ),
+    },
+  ]}
+/>
 
-#### TS - spacing
+### Best Practices
 
-```tsx
-import { spacing } from '@codecademy/gamut-styles';
-
-const myStyles = `
-  padding: ${spacing[8]} ${spacing[16]};
-`;
-```
+- The smallest unit of space for block elements is 8px.
+- Type can be placed with greater precision within elements or in relation to other lines of type (eg. Headlines/text or information in cards) using the 4px baseline grid.
+- Spaces between elements should use default units in multiples of 8px. The default spacing amount for margins and padding is 16px.
+- Use additional spacing in order to conceptually group or distance design elements, to create more negative space in a composition, or to assist with rhythm. Whenever possible, make sure that objects line up, both vertically and horizontally.

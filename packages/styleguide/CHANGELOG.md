@@ -3,6 +3,100 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [33.9.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@33.8.4...@codecademy/styleguide@33.9.0) (2021-04-09)
+
+
+### Features
+
+* added GlobalFooter molecule ([#1598](https://github.com/Codecademy/client-modules/issues/1598)) ([b17603c](https://github.com/Codecademy/client-modules/commit/b17603c296918c09f0c8a350b07056227287c74e))
+
+
+
+### [33.8.4](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@33.8.3...@codecademy/styleguide@33.8.4) (2021-04-09)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [33.8.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@33.8.2...@codecademy/styleguide@33.8.3) (2021-04-08)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [33.8.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@33.8.1...@codecademy/styleguide@33.8.2) (2021-04-08)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [33.8.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@33.8.0...@codecademy/styleguide@33.8.1) (2021-04-08)
+
+
+### Bug Fixes
+
+* **ToolTip:** A11y Updates (revert of revert) ([074cdd6](https://github.com/Codecademy/client-modules/commit/074cdd6df37dd63b1950ee533c96281d24f4a6b0))
+
+
+
+## [33.8.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@33.7.4...@codecademy/styleguide@33.8.0) (2021-04-08)
+
+
+### Features
+
+* **ColorModes:** Base ColorMode support and serialization of color variables [GM-177] ([b588132](https://github.com/Codecademy/client-modules/commit/b5881326ace09f0b1b7052f24e59ecb5b8326aef))
+
+
+
+### [33.7.4](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@33.7.3...@codecademy/styleguide@33.7.4) (2021-04-07)
+
+
+### Bug Fixes
+
+* **ToolTip:** Revert A11y Update ([995da1a](https://github.com/Codecademy/client-modules/commit/995da1a757862f7523844786c9d4199f75f3f130)), closes [Codecademy/client-modules#1604](https://github.com/Codecademy/client-modules/issues/1604)
+
+
+
+### [33.7.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@33.7.2...@codecademy/styleguide@33.7.3) (2021-04-07)
+
+
+### Bug Fixes
+
+* **ToolTip:** A11y Update ([8cca675](https://github.com/Codecademy/client-modules/commit/8cca675e69d421f44d4e910ae75769f3b45d01cf))
+
+
+
+### [33.7.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@33.7.1...@codecademy/styleguide@33.7.2) (2021-04-07)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [33.7.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@33.7.0...@codecademy/styleguide@33.7.1) (2021-04-06)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [33.7.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@33.6.3...@codecademy/styleguide@33.7.0) (2021-04-06)
+
+
+### Features
+
+* **Docs:** Docs refresh (Grid, Legacy Colors, Typography) [GM-118] [GM-194]  ([623e7b3](https://github.com/Codecademy/client-modules/commit/623e7b3c4fd3b22006af5dc19780aadb2f235f18))
+
+
+
 ### [33.6.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@33.6.2...@codecademy/styleguide@33.6.3) (2021-04-05)
 
 
