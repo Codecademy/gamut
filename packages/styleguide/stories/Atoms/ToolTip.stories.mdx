@@ -16,9 +16,10 @@ import { TooltipArea } from './TooltipArea';
       'A floating text component that positions itself relative to its target.',
     source: 'gamut',
     figmaId: 'cTJDwsS9s3I0KkLpKaETn2',
-    status: 'updating',
+    status: 'current',
   }}
   args={{
+    alignment: 'top-right',
     children: `Like the term fortnight, a term for a two week period, antantwig refers to a three week period.`,
     focusable: true,
     id: 'tooltip',
@@ -28,13 +29,13 @@ import { TooltipArea } from './TooltipArea';
 
 Small piece of extra information triggered on the focus or hover of a button or icon,
 such as extra requirements for a form surfaced from an informative (i) icon.
-They dissapear when the focus or hover are no longer active.
+They disappear when the focus or hover are no longer active.
 Great for surfacing additional information that may or may not be relevant _without_ cluttering the core interface.
 
 <Canvas>
   <Story name="ToolTip">
     {(args) => (
-      <TooltipArea tipPosition={args.position}>
+      <TooltipArea tipAlignment={args.alignment}>
         Hello! &nbsp;
         <ToolTip {...args} />
       </TooltipArea>
@@ -44,24 +45,45 @@ Great for surfacing additional information that may or may not be relevant _with
 
 <PropsTable exclude={['target']} story="ToolTip" />
 
-## Position
+## Alignment
 
-Tooltips can be positioned both horizontally and vertically relative to their target.
-
-Note that you the implementer will need to adjust their horizontal position to match up to their target's focus point.
+Tooltips can be aligned both horizontally and vertically relative to their target.
+The caret tip will be centered horizontally on the target.
 
 <Canvas>
-  <Story name="Position">
+  <Story name="Alignment">
     {(args) => {
       return ['bottom-left', 'bottom-right', 'top-left', 'top-right'].map(
-        (position) => {
+        (alignment) => {
           return (
-            <TooltipArea key={position} tipPosition={position}>
-              {position.split('-').map(upperFirst).join(' ')}: &nbsp;
-              <ToolTip {...args} position={position} />
+            <TooltipArea key={alignment} tipAlignment={alignment}>
+              {alignment.split('-').map(upperFirst).join(' ')}: &nbsp;
+              <ToolTip {...args} alignment={alignment} />
+              <ToolTip
+                {...args}
+                alignment={alignment}
+                target={<>Hi: {args.target}</>}
+              />
             </TooltipArea>
           );
         }
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Focusable
+
+ToolTip targets are often buttons or other natively focusable elements.
+If the target is not focusable, such as for plain text or icons, use the `focusable` prop so keyboard users can still trigger the ToolTip.
+
+<Canvas>
+  <Story name="Focusable">
+    {(args) => {
+      return (
+        <TooltipArea tipAlignment={args.alignment}>
+          <ToolTip {...args} target="Information!" />
+        </TooltipArea>
       );
     }}
   </Story>
@@ -73,17 +95,19 @@ Tooltips can be of a `dark` or `light` visual mode.
 
 <Canvas>
   <Story name="Mode">
-    {(args) => (
-      <>
-        <TooltipArea tipPosition={args.position}>
-          Dark: &nbsp;
-          <ToolTip {...args} mode="dark" />
-        </TooltipArea>
-        <TooltipArea tipPosition={args.position}>
-          Light: &nbsp;
-          <ToolTip {...args} mode="light" />
-        </TooltipArea>
-      </>
-    )}
+    {(args) => {
+      return (
+        <>
+          <TooltipArea tipAlignment={args.alignment}>
+            Dark: &nbsp;
+            <ToolTip {...args} mode="dark" />
+          </TooltipArea>
+          <TooltipArea tipAlignment={args.alignment}>
+            Light: &nbsp;
+            <ToolTip {...args} mode="light" />
+          </TooltipArea>
+        </>
+      );
+    }}
   </Story>
 </Canvas>
