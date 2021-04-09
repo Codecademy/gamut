@@ -99,49 +99,55 @@ const DropdownIndicator = (props: IndicatorProps<any, any>) => {
 export const SelectDropdown = forwardRef<
   HTMLSelectElement,
   SelectWrapperBaseProps
->(({ className, defaultValue, options, error, id, disabled, ...rest }, ref) => {
-  const [activated, setActivated] = useState(false);
+>(
+  (
+    { className, defaultValue, options, error, id, disabled, onClick, ...rest },
+    ref
+  ) => {
+    const [activated, setActivated] = useState(false);
 
-  const changeHandler = (event: ChangeEvent<HTMLSelectElement>) => {
-    rest?.onChange?.(event);
-    setActivated(true);
-  };
+    const changeHandler = (event: ChangeEvent<HTMLSelectElement>) => {
+      rest?.onChange?.(event);
+      setActivated(true);
+    };
 
-  let selectOptions: ReactNode[] = [];
+    let selectOptions: ReactNode[] = [];
 
-  if (isArray(options)) {
-    options.map((option) => {
-      const key = id ? `${id}-${option}` : option;
-      selectOptions.push({ value: option, label: key });
-    });
-  } else if (isObject(options)) {
-    each(options, (text, val) => {
-      selectOptions.push({ value: val, label: text });
-    });
+    if (isArray(options)) {
+      options.map((option) => {
+        const key = id ? `${id}-${option}` : option;
+        selectOptions.push({ value: option, label: key });
+      });
+    } else if (isObject(options)) {
+      each(options, (text, val) => {
+        selectOptions.push({ value: val, label: text });
+      });
+    }
+
+    return (
+      <Box
+        width="100%"
+        textColor={error ? 'red' : 'navy'}
+        minWidth="7rem"
+        className={className}
+      >
+        <ReactSelect
+          id={id || rest.htmlFor}
+          defaultValue={defaultValue || ''}
+          styles={customStyles}
+          activated={activated}
+          error={Boolean(error)}
+          components={{ DropdownIndicator, IndicatorSeparator: () => null }}
+          onChange={changeHandler}
+          onClick={() => onClick}
+          isSearchable={false}
+          isDisabled={disabled}
+          options={selectOptions}
+          theme={(theme) => ({
+            ...theme,
+          })}
+        />
+      </Box>
+    );
   }
-
-  return (
-    <Box
-      width="100%"
-      textColor={error ? 'red' : 'navy'}
-      minWidth="7rem"
-      className={className}
-    >
-      <ReactSelect
-        id={id || rest.htmlFor}
-        defaultValue={defaultValue || ''}
-        styles={customStyles}
-        activated={activated}
-        error={Boolean(error)}
-        components={{ DropdownIndicator, IndicatorSeparator: () => null }}
-        onChange={changeHandler}
-        isSearchable={false}
-        isDisabled={disabled}
-        options={selectOptions}
-        theme={(theme) => ({
-          ...theme,
-        })}
-      />
-    </Box>
-  );
-});
+);
