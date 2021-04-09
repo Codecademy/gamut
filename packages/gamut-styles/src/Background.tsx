@@ -1,4 +1,5 @@
 import { Theme, useTheme } from '@emotion/react';
+import { get } from 'lodash';
 import { getContrast } from 'polished';
 import React, { useContext, useMemo } from 'react';
 
@@ -20,12 +21,11 @@ export const Background: React.FC<BackgroundProps> = ({
     colorModes: { modes },
   } = useTheme();
   const { staticTokens } = useContext(GamutContext);
-
-  const background = staticTokens?.[bg] as string;
+  const background = get(staticTokens, ['colors', bg]);
   const accessibleMode = useMemo(() => {
     const { light, dark } = modes;
-    const lightText = staticTokens?.[light.text] as string;
-    const darkText = staticTokens?.[dark.text] as string;
+    const lightText = get(staticTokens, ['colors', light.text]);
+    const darkText = get(staticTokens, ['colors', dark.text]);
 
     const lightModeContrast = getContrast(lightText, background);
     const darkModeContrast = getContrast(darkText, background);

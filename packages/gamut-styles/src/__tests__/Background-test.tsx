@@ -5,7 +5,9 @@ import { overArgs } from 'lodash';
 import React from 'react';
 
 import { Background } from '../Background';
+import { GamutContext } from '../GamutProvider';
 import { theme } from '../theme';
+import { colors } from '../variables';
 
 expect.extend(matchers);
 
@@ -13,9 +15,13 @@ function withThemeProvider<Props>(
   WrappedComponent: React.ComponentType<Props>
 ) {
   const WithBoundaryComponent: React.FC<Props> = (props) => (
-    <ThemeProvider theme={theme}>
-      <WrappedComponent {...props} />
-    </ThemeProvider>
+    <GamutContext.Provider
+      value={{ hasCache: false, hasGlobals: false, staticTokens: { colors } }}
+    >
+      <ThemeProvider theme={theme}>
+        <WrappedComponent {...props} />
+      </ThemeProvider>
+    </GamutContext.Provider>
   );
 
   return WithBoundaryComponent;
