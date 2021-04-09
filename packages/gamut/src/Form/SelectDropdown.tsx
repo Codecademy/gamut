@@ -1,7 +1,7 @@
 import { theme } from '@codecademy/gamut-styles';
 import { css } from '@emotion/react';
 import { each, isArray, isObject } from 'lodash';
-import React, { ChangeEvent, forwardRef, useState } from 'react';
+import React, { ChangeEvent, forwardRef, ReactNode, useState } from 'react';
 import ReactSelect, {
   components,
   IndicatorProps,
@@ -88,7 +88,7 @@ const customStyles: StylesConfig<optionsType, false> = {
   }),
 };
 
-const DropdownIndicator = (props: IndicatorProps<optionsType, false>) => {
+const DropdownIndicator = (props: IndicatorProps<any, any>) => {
   return (
     <components.DropdownIndicator {...props}>
       <SelectIcon size={16} />
@@ -107,7 +107,7 @@ export const SelectDropdown = forwardRef<
     setActivated(true);
   };
 
-  let selectOptions;
+  let selectOptions: ReactNode[] = [];
 
   if (isArray(options)) {
     options.map((option) => {
@@ -128,7 +128,8 @@ export const SelectDropdown = forwardRef<
       className={className}
     >
       <ReactSelect
-        defaultValue={selectOptions[0]}
+        id={id || rest.htmlFor}
+        defaultValue={defaultValue || ''}
         styles={customStyles}
         activated={activated}
         error={Boolean(error)}
