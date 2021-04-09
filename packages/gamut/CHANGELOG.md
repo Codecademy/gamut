@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [29.9.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@29.9.1...@codecademy/gamut@29.9.2) (2021-04-08)
+
+
+### Bug Fixes
+
+* switch gamut-tests to an internal devDependency ([#1460](https://github.com/Codecademy/client-modules/issues/1460)) ([e12d005](https://github.com/Codecademy/client-modules/commit/e12d00501bff58e0a5365b950793201fb9f6c640))
+
+
+
 ### [29.9.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@29.9.0...@codecademy/gamut@29.9.1) (2021-04-08)
 
 
