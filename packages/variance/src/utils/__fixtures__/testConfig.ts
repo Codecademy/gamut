@@ -1,4 +1,4 @@
-const testConfig = {
+export const testConfig = {
   textColor: { property: 'color' },
   bg: { property: 'backgroundColor' },
   borderColor: { property: 'borderColor' },

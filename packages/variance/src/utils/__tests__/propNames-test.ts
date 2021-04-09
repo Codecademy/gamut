@@ -1,3 +1,4 @@
+import { testConfig } from '../__fixtures__/testConfig';
 import { orderPropNames } from '../propNames';
 
 describe('orderPropNames', () => {

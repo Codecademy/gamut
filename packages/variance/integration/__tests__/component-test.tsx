@@ -5,6 +5,7 @@ import React, { ComponentProps } from 'react';
 import renderer from 'react-test-renderer';
 
 import { variance } from '../../src/core';
+import { theme } from '../__fixtures__/theme';
 
 expect.extend(matchers);
 

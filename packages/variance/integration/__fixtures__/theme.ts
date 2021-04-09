@@ -1,4 +1,4 @@
-const theme = {
+export const theme = {
   breakpoints: {
     xs: 'XS',
     sm: 'SM',
