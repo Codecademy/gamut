@@ -1,5 +1,6 @@
 import { Anchor, Box } from '@codecademy/gamut/src';
 import { Text } from '@codecademy/gamut-labs/src';
+import { Background } from '@codecademy/gamut-styles/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 import { startCase } from 'lodash';
@@ -59,12 +60,12 @@ export const variants = ['interface', 'standard', 'inline'];
 
 ## Modes
 
-<Canvas>
-  <Story name="modes">
-    {() => (
-      <Box padding={16} backgroundColor="background" textColor="text">
+<Story name="modes">
+  {() => (
+    <>
+      <Box padding={16}>
         {variants.map((variant) => (
-          <Box key={variant} display="inline-block" padding={8}>
+          <Box key={variant + 'light'} display="inline-block" padding={8}>
             <Text as="p">{startCase(variant)} Link</Text>
             <Anchor marginRight={8} variant={variant} href={`#${variant}`}>
               Click Me
@@ -72,6 +73,18 @@ export const variants = ['interface', 'standard', 'inline'];
           </Box>
         ))}
       </Box>
-    )}
-  </Story>
-</Canvas>
+      <Background initialBackground="navy">
+        <Box padding={16}>
+          {variants.map((variant) => (
+            <Box key={variant + 'dark'} display="inline-block" padding={8}>
+              <Text as="p">{startCase(variant)} Link</Text>
+              <Anchor marginRight={8} variant={variant} href={`#${variant}`}>
+                Click Me
+              </Anchor>
+            </Box>
+          ))}
+        </Box>
+      </Background>
+    </>
+  )}
+</Story>
