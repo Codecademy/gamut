@@ -2,6 +2,8 @@ import { create } from '@storybook/theming';
 import { theme as gamutTheme, colors } from '@codecademy/gamut-styles/src';
 import logo from './assets/logo.svg';
 
+console.log(colors);
+
 export const theme = create({
   base: 'light',
   brandTitle: 'Gamut',

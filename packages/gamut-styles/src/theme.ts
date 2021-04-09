@@ -1,35 +1,36 @@
-import { createThemeVariables } from './utilities';
+import { ThemeBuilder } from '@codecademy/variance';
+import { cloneDeep } from 'lodash';
+
 import * as tokens from './variables';
 
-const themeColors = {
-  ...tokens.colors,
-  ...tokens.colorModes.light,
-};
-
-export interface ColorModes<T extends Record<string, Record<string, string>>> {
-  active: keyof T;
-  modes: T;
-}
-
-const colorModes: ColorModes<typeof tokens['colorModes']> = {
-  active: 'light',
-  modes: tokens.colorModes,
-};
-
-export const baseTheme = {
+export const baseTheme = cloneDeep({
   boxShadows: tokens.boxShadows,
   breakpoints: tokens.mediaQueries,
   fontSize: tokens.fontSize,
   fontFamily: tokens.fontFamily,
   lineHeight: tokens.lineHeight,
   fontWeight: tokens.fontWeight,
-  colors: themeColors,
+  colors: tokens.colors,
   spacing: tokens.spacing,
   elements: tokens.elements,
-  colorModes,
-} as const;
+} as const);
 
-export const {
-  theme,
-  cssVariables: themeCssVariables,
-} = createThemeVariables(baseTheme, ['elements', 'colors']);
+export const { theme, variables, staticTokens } = new ThemeBuilder({
+  theme: baseTheme,
+})
+  .serialize('elements')
+  .serialize('colors')
+  .createColorMode('light', {
+    light: {
+      primary: 'hyper',
+      secondary: 'navy',
+      text: 'navy',
+      background: 'white',
+    },
+    dark: {
+      primary: 'yellow',
+      secondary: 'white',
+      text: 'white',
+      background: 'navy',
+    },
+  });
