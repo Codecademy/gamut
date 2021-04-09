@@ -1,3 +1,4 @@
+import { color } from '@codecademy/gamut-system/dist/props';
 import { css } from '@emotion/react';
 import { each, isArray, isObject } from 'lodash';
 import React, {
@@ -6,7 +7,11 @@ import React, {
   SelectHTMLAttributes,
   useState,
 } from 'react';
-import ReactSelect, { components, StylesConfig } from 'react-select';
+import ReactSelect, {
+  components,
+  IndicatorProps,
+  StylesConfig,
+} from 'react-select';
 
 import { Box } from '../Box';
 import { SelectIcon } from './Select';
@@ -68,11 +73,12 @@ const customStyles: StylesConfig<optionsType, false> = {
   option: (provided, state) => ({
     padding: '14px 11px 14px 11px',
     cursor: 'pointer',
-    backgroundColor: state.isSelected
-      ? colorStates.dropdown.isSelected.backgroundColor
-      : colorStates.base.backgroundColor,
+    backgroundColor:
+      (state.isSelected && colorStates.dropdown.selected.backgroundColor) ||
+      (state.isFocused && colorStates.dropdown.focused.backgroundColor) ||
+      'transparent',
     '&:hover': {
-      backgroundColor: colorStates.dropdown.hover.backgroundColor,
+      backgroundColor: colorStates.dropdown.focused.backgroundColor,
     },
   }),
 
@@ -98,8 +104,7 @@ const customStyles: StylesConfig<optionsType, false> = {
   }),
 };
 
-const DropdownIndicator = (props: any) => {
-  console.log(props);
+const DropdownIndicator = (props: IndicatorProps<optionsType, false>) => {
   return (
     <components.DropdownIndicator {...props}>
       <SelectIcon size={16} />

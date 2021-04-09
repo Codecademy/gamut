@@ -19,8 +19,8 @@ export const colorStates = {
   valid: { color: theme.colors.green },
   activated: { borderColor: theme.colors.navy },
   dropdown: {
-    hover: { backgroundColor: theme.colors[`gray-100`] },
-    isSelected: { backgroundColor: theme.colors[`gray-300`] },
+    focused: { backgroundColor: theme.colors[`gray-100`] },
+    selected: { backgroundColor: theme.colors[`gray-300`] },
   },
 };
 
