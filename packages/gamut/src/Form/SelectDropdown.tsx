@@ -1,4 +1,3 @@
-import { variant } from '@codecademy/gamut-styles';
 import { css } from '@emotion/react';
 import { each, isArray, isObject } from 'lodash';
 import React, {
@@ -7,7 +6,7 @@ import React, {
   SelectHTMLAttributes,
   useState,
 } from 'react';
-import ReactSelect, { components } from 'react-select';
+import ReactSelect, { components, StylesConfig } from 'react-select';
 
 import { Box } from '../Box';
 import { SelectIcon } from './Select';
@@ -25,12 +24,13 @@ export type SelectDropdownWrapperProps = SelectHTMLAttributes<HTMLSelectElement>
   htmlFor?: string;
   options?: string[] | Record<string, number | string>;
   id?: string;
-  sizeVariant?: 'small' | 'base';
 };
 
 export interface SelectDropdownProps extends SelectDropdownWrapperProps {
   activated?: boolean;
 }
+
+type optionsType = Array<any>;
 
 const selectBaseStyles = ({
   error,
@@ -52,29 +52,31 @@ const selectIconStyles = (error: boolean) => css`
   padding: 0;
 `;
 
-const customStyles = {
-  dropdownIndicator: (provided, state: any) => ({
-    // ...provided,
+const customStyles: StylesConfig<optionsType, false> = {
+  dropdownIndicator: (provided, state) => ({
     ...selectIconStyles(state.selectProps.error),
     padding: '0',
   }),
-  container: (provided: any, state: any) => ({
+  container: (provided) => ({
     ...provided,
     pointerEvents: 'visible',
   }),
-  menu: (provided: any, state: any) => ({
+  menu: (provided) => ({
+    ...provided,
     ...formDropdownStyles,
   }),
-  option: (provided: any, state: any) => ({
+  option: (provided, state) => ({
     padding: '14px 11px 14px 11px',
     cursor: 'pointer',
-    backgroundColor:
-      state.isSelected && colorStates.dropdown.isSelected.backgroundColor,
+    backgroundColor: state.isSelected
+      ? colorStates.dropdown.isSelected.backgroundColor
+      : colorStates.base.backgroundColor,
     '&:hover': {
       backgroundColor: colorStates.dropdown.hover.backgroundColor,
     },
   }),
-  control: (provided: any, state: any) => ({
+
+  control: (provided, state) => ({
     ...selectBaseStyles({
       error: state.selectProps.error,
       activated: state.selectProps.activated,
@@ -82,16 +84,22 @@ const customStyles = {
       isDisabled: state.isDisabled,
     }),
   }),
-  singleValue: (provided: any, state: any) => ({
-    ...conditionalColorStyles(state.selectProps.error),
-  }),
-  valueContainer: (provided: any, state: any) => ({
+
+  singleValue: (provided, state) => {
+    const { error } = state.selectProps ?? false;
+
+    return {
+      ...conditionalColorStyles(error),
+    };
+  },
+  valueContainer: (provided) => ({
     ...provided,
     padding: 0,
   }),
 };
 
 const DropdownIndicator = (props: any) => {
+  console.log(props);
   return (
     <components.DropdownIndicator {...props}>
       <SelectIcon size={16} />
@@ -102,62 +110,48 @@ const DropdownIndicator = (props: any) => {
 export const SelectDropdown = forwardRef<
   HTMLSelectElement,
   SelectDropdownWrapperProps
->(
-  (
-    {
-      className,
-      defaultValue,
-      options,
-      error,
-      id,
-      sizeVariant,
-      disabled,
-      ...rest
-    },
-    ref
-  ) => {
-    const [activated, setActivated] = useState(false);
+>(({ className, defaultValue, options, error, id, disabled, ...rest }, ref) => {
+  const [activated, setActivated] = useState(false);
 
-    const changeHandler = (event: ChangeEvent<HTMLSelectElement>) => {
-      rest?.onChange?.(event);
-      setActivated(true);
-    };
+  const changeHandler = (event: ChangeEvent<HTMLSelectElement>) => {
+    rest?.onChange?.(event);
+    setActivated(true);
+  };
 
-    let selectOptions: any = [];
+  let selectOptions: optionsType = [];
 
-    if (isArray(options)) {
-      options.map((option) => {
-        const key = id ? `${id}-${option}` : option;
-        selectOptions.push({ value: option, label: key });
-      });
-    } else if (isObject(options)) {
-      each(options, (text, val) => {
-        selectOptions.push({ value: val, label: text });
-      });
-    }
-
-    return (
-      <Box
-        width="100%"
-        textColor={error ? 'red' : 'navy'}
-        minWidth="7rem"
-        className={className}
-      >
-        <ReactSelect
-          defaultValue={selectOptions[0]}
-          styles={customStyles}
-          activated={activated}
-          error={error}
-          components={{ DropdownIndicator, IndicatorSeparator: () => null }}
-          onChange={changeHandler}
-          isSearchable={false}
-          isDisabled={disabled}
-          options={selectOptions}
-          theme={(theme) => ({
-            ...theme,
-          })}
-        />
-      </Box>
-    );
+  if (isArray(options)) {
+    options.map((option) => {
+      const key = id ? `${id}-${option}` : option;
+      selectOptions.push({ value: option, label: key });
+    });
+  } else if (isObject(options)) {
+    each(options, (text, val) => {
+      selectOptions.push({ value: val, label: text });
+    });
   }
-);
+
+  return (
+    <Box
+      width="100%"
+      textColor={error ? 'red' : 'navy'}
+      minWidth="7rem"
+      className={className}
+    >
+      <ReactSelect
+        defaultValue={selectOptions[0]}
+        styles={customStyles}
+        activated={activated}
+        error={Boolean(error)}
+        components={{ DropdownIndicator, IndicatorSeparator: () => null }}
+        onChange={changeHandler}
+        isSearchable={false}
+        isDisabled={disabled}
+        options={selectOptions}
+        theme={(theme) => ({
+          ...theme,
+        })}
+      />
+    </Box>
+  );
+});

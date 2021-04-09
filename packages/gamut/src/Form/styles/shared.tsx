@@ -27,8 +27,8 @@ export const colorStates = {
 export type conditionalStyleProps = {
   error?: boolean;
   activated?: boolean;
-  isFocused?: boolean;
-  isDisabled?: boolean;
+  isFocused?: boolean | null;
+  isDisabled?: boolean | null;
 };
 
 type iconPaddingProps = {
