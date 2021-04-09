@@ -127,22 +127,10 @@ export const conditionalBorderStyles = ({
   }
 };
 
-export const conditionalColorStyles = (error?: boolean) => {
-  if (error) {
-    return css`
-      color: ${colorStates.error.color};
-    `;
-  }
-
-  return css`
-    color: ${colorStates.base.color};
-  `;
-};
-
 export const iconPadding = ({ icon }: iconPaddingProps) => {
   if (icon) {
     return css`
-      padding-right: 2.3rem; ;
+      padding-right: 2.3rem;
     `;
   }
 };

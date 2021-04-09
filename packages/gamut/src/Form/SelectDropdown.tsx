@@ -1,12 +1,7 @@
-import { color } from '@codecademy/gamut-system/dist/props';
+import { theme } from '@codecademy/gamut-styles';
 import { css } from '@emotion/react';
 import { each, isArray, isObject } from 'lodash';
-import React, {
-  ChangeEvent,
-  forwardRef,
-  SelectHTMLAttributes,
-  useState,
-} from 'react';
+import React, { ChangeEvent, forwardRef, useState } from 'react';
 import ReactSelect, {
   components,
   IndicatorProps,
@@ -14,26 +9,14 @@ import ReactSelect, {
 } from 'react-select';
 
 import { Box } from '../Box';
-import { SelectIcon } from './Select';
+import { SelectIcon, SelectWrapperBaseProps } from './Select';
 import {
   colorStates,
   conditionalBorderStyles,
-  conditionalColorStyles,
   conditionalStyleProps,
   formDropdownStyles,
   formFieldStyles,
 } from './styles/shared';
-
-export type SelectDropdownWrapperProps = SelectHTMLAttributes<HTMLSelectElement> & {
-  error?: boolean;
-  htmlFor?: string;
-  options?: string[] | Record<string, number | string>;
-  id?: string;
-};
-
-export interface SelectDropdownProps extends SelectDropdownWrapperProps {
-  activated?: boolean;
-}
 
 type optionsType = Array<any>;
 
@@ -45,31 +28,35 @@ const selectBaseStyles = ({
 }: conditionalStyleProps) => css`
   ${formFieldStyles}
   ${conditionalBorderStyles({ error, activated, isFocused, isDisabled })}
+  line-height: ${theme.lineHeight['base']};
   display: flex;
   -moz-appearance: none;
   -webkit-appearance: none;
   appearance: none;
 `;
 
-const selectIconStyles = (error: boolean) => css`
-  ${conditionalColorStyles(error)};
-  display: flex;
-  padding: 0;
-`;
+const errorColorState = (error: boolean) => {
+  const color = error ? colorStates.error.color : colorStates.base.color;
+  return color;
+};
 
 const customStyles: StylesConfig<optionsType, false> = {
   dropdownIndicator: (provided, state) => ({
-    ...selectIconStyles(state.selectProps.error),
+    color: errorColorState(state.selectProps.error),
+    display: 'flex',
     padding: '0',
   }),
+
   container: (provided) => ({
     ...provided,
     pointerEvents: 'visible',
   }),
+
   menu: (provided) => ({
     ...provided,
     ...formDropdownStyles,
   }),
+
   option: (provided, state) => ({
     padding: '14px 11px 14px 11px',
     cursor: 'pointer',
@@ -91,13 +78,10 @@ const customStyles: StylesConfig<optionsType, false> = {
     }),
   }),
 
-  singleValue: (provided, state) => {
-    const { error } = state.selectProps ?? false;
+  singleValue: (provided, state) => ({
+    color: errorColorState(state.selectProps.error),
+  }),
 
-    return {
-      ...conditionalColorStyles(error),
-    };
-  },
   valueContainer: (provided) => ({
     ...provided,
     padding: 0,
@@ -114,7 +98,7 @@ const DropdownIndicator = (props: IndicatorProps<optionsType, false>) => {
 
 export const SelectDropdown = forwardRef<
   HTMLSelectElement,
-  SelectDropdownWrapperProps
+  SelectWrapperBaseProps
 >(({ className, defaultValue, options, error, id, disabled, ...rest }, ref) => {
   const [activated, setActivated] = useState(false);
 

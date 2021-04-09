@@ -17,11 +17,14 @@ import React, {
 import { Box, FlexBox } from '../Box';
 import { conditionalStyles, formFieldStyles } from './styles/shared';
 
-export type SelectWrapperProps = SelectHTMLAttributes<HTMLSelectElement> & {
+export type SelectWrapperBaseProps = SelectHTMLAttributes<HTMLSelectElement> & {
   error?: boolean;
   htmlFor?: string;
   options?: string[] | Record<string, number | string>;
   id?: string;
+};
+
+export type SelectWrapperProps = SelectWrapperBaseProps & {
   sizeVariant?: 'small' | 'base';
 };
 
