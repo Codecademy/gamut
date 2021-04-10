@@ -1,4 +1,4 @@
-import { ThemeBuilder } from '@codecademy/variance';
+import { createTheme } from '@codecademy/variance';
 import { cloneDeep } from 'lodash';
 
 import * as tokens from './variables';
@@ -15,9 +15,7 @@ export const baseTheme = cloneDeep({
   elements: tokens.elements,
 } as const);
 
-export const { theme, variables, staticTokens } = new ThemeBuilder({
-  theme: baseTheme,
-})
+export const { theme, variables, staticTokens } = createTheme(baseTheme)
   .serialize('elements')
   .serialize('colors')
   .createColorMode('light', {
