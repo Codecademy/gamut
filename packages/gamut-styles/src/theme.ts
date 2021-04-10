@@ -10,14 +10,13 @@ export const baseTheme = cloneDeep({
   fontFamily: tokens.fontFamily,
   lineHeight: tokens.lineHeight,
   fontWeight: tokens.fontWeight,
-  colors: tokens.colors,
   spacing: tokens.spacing,
   elements: tokens.elements,
 } as const);
 
-export const { theme, variables, staticTokens } = createTheme(baseTheme)
+export const { theme, variables, getColorValue } = createTheme(baseTheme)
   .serialize('elements')
-  .serialize('colors')
+  .addColors(tokens.colors)
   .createColorMode('light', {
     light: {
       primary: 'hyper',
@@ -31,4 +30,5 @@ export const { theme, variables, staticTokens } = createTheme(baseTheme)
       text: 'white',
       background: 'navy',
     },
-  });
+  })
+  .build();

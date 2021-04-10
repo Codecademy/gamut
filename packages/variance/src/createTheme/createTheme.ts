@@ -131,10 +131,13 @@ class ThemeBuilder<
   build(): {
     theme: T;
     variables: V;
+    getColorValue: (color: keyof T['colors']) => string;
   } {
     return {
       theme: this.theme,
       variables: this.variables,
+      getColorValue: (color: keyof T['colors']) =>
+        this.staticTokens?.colors?.[color],
     };
   }
 }

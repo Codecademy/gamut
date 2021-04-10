@@ -11,29 +11,22 @@ import React, { useContext, useRef } from 'react';
 
 import { createEmotionCache } from './cache';
 import { Reboot, Typography } from './globals';
-import {
-  staticTokens as baseStaticTokens,
-  theme as baseTheme,
-  variables as baseVariables,
-} from './theme';
+import { theme as baseTheme, variables as baseVariables } from './theme';
 
 export interface GamutProviderProps {
   useGlobals?: boolean;
   useCache?: boolean;
   theme?: Theme;
   variables?: CSSObject;
-  staticTokens?: Record<string, string | CSSObject>;
   cache?: EmotionCache;
 }
 
 export const GamutContext = React.createContext<{
   hasGlobals?: boolean;
   hasCache?: boolean;
-  staticTokens: GamutProviderProps['staticTokens'];
 }>({
   hasGlobals: false,
   hasCache: false,
-  staticTokens: {},
 });
 
 GamutContext.displayName = 'GamutContext';
@@ -43,7 +36,6 @@ export const GamutProvider: React.FC<GamutProviderProps> = ({
   cache,
   theme = baseTheme,
   variables = baseVariables,
-  staticTokens = baseStaticTokens,
   useGlobals = true,
   useCache = true,
 }) => {
@@ -61,7 +53,6 @@ export const GamutProvider: React.FC<GamutProviderProps> = ({
   const contextValue = {
     hasGlobals: shouldInsertGlobals,
     hasCache: shouldCreateCache,
-    staticTokens,
   };
 
   const globals = shouldInsertGlobals && (

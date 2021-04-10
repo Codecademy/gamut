@@ -1,10 +1,9 @@
 import { Theme, useTheme } from '@emotion/react';
-import { get } from 'lodash';
 import { getContrast } from 'polished';
-import React, { useContext, useMemo } from 'react';
+import React, { useMemo } from 'react';
 
 import { ColorMode, ProviderProps } from './ColorMode';
-import { GamutContext } from './GamutProvider';
+import { getColorValue } from './theme';
 
 export interface BackgroundProps extends ProviderProps {
   bg: keyof Theme['colors'];
@@ -20,12 +19,11 @@ export const Background: React.FC<BackgroundProps> = ({
   const {
     colorModes: { modes },
   } = useTheme();
-  const { staticTokens } = useContext(GamutContext);
-  const background = get(staticTokens, ['colors', bg]) as string;
+  const background = getColorValue(bg);
   const accessibleMode = useMemo(() => {
     const { light, dark } = modes;
-    const lightText = get(staticTokens, ['colors', light.text]) as string;
-    const darkText = get(staticTokens, ['colors', dark.text]) as string;
+    const lightText = getColorValue(light.text);
+    const darkText = getColorValue(dark.text);
 
     const lightModeContrast = getContrast(lightText, background);
     const darkModeContrast = getContrast(darkText, background);
@@ -34,7 +32,7 @@ export const Background: React.FC<BackgroundProps> = ({
       lightModeContrast > darkModeContrast ? 'light' : 'dark';
 
     return highestContrastMode;
-  }, [modes, staticTokens, background]);
+  }, [modes, background]);
 
   return (
     <ColorMode className={className} mode={accessibleMode} bg={bg} {...rest}>
