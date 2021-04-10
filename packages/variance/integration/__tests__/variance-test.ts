@@ -1,6 +1,6 @@
-import { variance } from '../src/core';
-import { transformSize } from '../src/transforms/transformSize';
-import { theme } from './__fixtures__/theme';
+import { variance } from '../../src/core';
+import { transformSize } from '../../src/transforms/transformSize';
+import { theme } from '../__fixtures__/theme';
 
 const space = variance.create({
   margin: { property: 'margin', scale: 'spacing' },
