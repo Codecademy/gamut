@@ -41,7 +41,7 @@ export interface VariableProviderProps
 export const VariableProvider = styled(
   'div',
   styledConfig
-)<VariableProviderProps>(providerProps, ({ variables }) => variables);
+)<VariableProviderProps>(({ variables }) => variables, providerProps);
 
 export const ColorMode: React.FC<ColorModeProps & ProviderProps> = ({
   mode,
@@ -56,7 +56,7 @@ export const ColorMode: React.FC<ColorModeProps & ProviderProps> = ({
     () =>
       serializeTokens(
         mapValues(modes[mode], (color) => colors[color]),
-        'colors',
+        'color',
         theme
       ),
     [colors, mode, modes, theme]
