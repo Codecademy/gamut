@@ -29,5 +29,9 @@ export const { theme, variables, getColorValue } = createTheme({
       shadow: 'darkShadow',
     },
   })
+  .addScale('borders', ({ colors }) => ({
+    1: `1px solid ${colors.secondary}`,
+    2: `2px solid ${colors.secondary}`,
+  }))
   .createScaleVariables('elements')
   .build();
