@@ -13,7 +13,7 @@ export const { theme, variables, getColorValue } = createTheme({
   elements: tokens.elements,
 })
   .addColors(tokens.colors)
-  .createColorModes('light', {
+  .addColorModes('light', {
     light: {
       primary: 'hyper',
       secondary: 'navy',
@@ -29,5 +29,5 @@ export const { theme, variables, getColorValue } = createTheme({
       shadow: 'darkShadow',
     },
   })
-  .createVariables('elements')
+  .createScaleVariables('elements')
   .build();

@@ -33,7 +33,7 @@ class ThemeBuilder<
     this.theme = baseTheme;
   }
 
-  createVariables<Key extends keyof Omit<T, 'breakpoints'> & string>(
+  createScaleVariables<Key extends keyof Omit<T, 'breakpoints'> & string>(
     key: Key
   ): ThemeBuilder<
     Merge<T, Record<Key, KeyAsVariable<T[Key], Key>>>,
@@ -70,7 +70,7 @@ class ThemeBuilder<
     return this;
   }
 
-  createColorModes<
+  addColorModes<
     Modes extends string,
     InitialMode extends keyof Config,
     Colors extends keyof T['colors'],
