@@ -105,9 +105,15 @@ export const trueColors = {
   white,
 } as const;
 
+export const shadows = {
+  darkShadow: 'rgba(0,0,0, .75)',
+  lightShadow: 'rgba(255, 255, 255, 0.95)',
+} as const;
+
 export const colors = {
   ...flatSwatches,
   ...trueColors,
+  ...shadows,
 } as const;
 
 export const colorNames = {
@@ -167,25 +173,3 @@ export const platformColors = {
     '900': '#15141f',
   },
 } as const;
-
-export const shroudColor = {
-  dark: 'rgba(0,0,0, .75)',
-  light: 'rgba(255, 255, 255, 0.95)',
-} as const;
-
-export const colorModes = {
-  light: {
-    background: colors.white,
-    text: colors.navy,
-    primary: colors.hyper,
-    secondary: colors.navy,
-    shadow: shroudColor.light,
-  },
-  dark: {
-    background: colors.navy,
-    text: colors.white,
-    primary: colors.yellow,
-    secondary: colors.white,
-    shadow: shroudColor.dark,
-  },
-};

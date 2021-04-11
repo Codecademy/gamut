@@ -1,9 +1,8 @@
 import { createTheme } from '@codecademy/variance';
-import { cloneDeep } from 'lodash';
 
 import * as tokens from './variables';
 
-export const baseTheme = cloneDeep({
+export const { theme, variables, getColorValue } = createTheme({
   boxShadows: tokens.boxShadows,
   breakpoints: tokens.mediaQueries,
   fontSize: tokens.fontSize,
@@ -12,9 +11,7 @@ export const baseTheme = cloneDeep({
   fontWeight: tokens.fontWeight,
   spacing: tokens.spacing,
   elements: tokens.elements,
-} as const);
-
-export const { theme, variables, getColorValue } = createTheme(baseTheme)
+})
   .addColors(tokens.colors)
   .createColorModes('light', {
     light: {
@@ -22,12 +19,14 @@ export const { theme, variables, getColorValue } = createTheme(baseTheme)
       secondary: 'navy',
       text: 'navy',
       background: 'white',
+      shadow: 'lightShadow',
     },
     dark: {
       primary: 'yellow',
       secondary: 'white',
       text: 'white',
       background: 'navy',
+      shadow: 'darkShadow',
     },
   })
   .createVariables('elements')
