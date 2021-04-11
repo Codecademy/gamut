@@ -40,7 +40,7 @@ describe('createTheme', () => {
         test: 1,
         test2: 2,
       }))
-      .serialize('test')
+      .createVariables('test')
       .build();
     expect(theme.test).toEqual({
       test: 'var(--test-test)',
@@ -70,7 +70,7 @@ describe('createTheme', () => {
     it('adds colorModes', () => {
       const { theme, variables } = builder
         .addColors(staticColors)
-        .createColorMode('light', {
+        .createColorModes('light', {
           light: {
             primary: 'red',
           },
@@ -93,7 +93,7 @@ describe('createTheme', () => {
     it('returns value checker for colors', () => {
       const { theme, getColorValue } = builder
         .addColors({ black: '#000000', white: '#FFFFFF' })
-        .createColorMode('light', {
+        .createColorModes('light', {
           light: {
             primary: 'black',
           },

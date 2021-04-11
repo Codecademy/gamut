@@ -13,7 +13,7 @@ export type Merge<
       ? Next[K]
       : K extends keyof Base
       ? Base[K]
-      : {};
+      : never;
   };
 
 export type CSSVariables<T, Prefix extends string> = {
@@ -33,7 +33,7 @@ class ThemeBuilder<
     this.theme = baseTheme;
   }
 
-  serialize<Key extends keyof Omit<T, 'breakpoints'> & string>(
+  createVariables<Key extends keyof Omit<T, 'breakpoints'> & string>(
     key: Key
   ): ThemeBuilder<
     Merge<T, Record<Key, KeyAsVariable<T[Key], Key>>>,
@@ -70,7 +70,7 @@ class ThemeBuilder<
     return this;
   }
 
-  createColorMode<
+  createColorModes<
     Modes extends string,
     InitialMode extends keyof Config,
     Colors extends keyof T['colors'],

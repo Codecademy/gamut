@@ -15,9 +15,8 @@ export const baseTheme = cloneDeep({
 } as const);
 
 export const { theme, variables, getColorValue } = createTheme(baseTheme)
-  .serialize('elements')
   .addColors(tokens.colors)
-  .createColorMode('light', {
+  .createColorModes('light', {
     light: {
       primary: 'hyper',
       secondary: 'navy',
@@ -31,4 +30,5 @@ export const { theme, variables, getColorValue } = createTheme(baseTheme)
       background: 'navy',
     },
   })
+  .createVariables('elements')
   .build();
