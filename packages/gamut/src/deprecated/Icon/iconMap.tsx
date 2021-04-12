@@ -73,7 +73,8 @@ import { VideoIcon } from './icons/VideoIcon';
 import { WatsonIcon } from './icons/WatsonIcon';
 
 /**
- * @deprecated Directly import icons from @codecademy/gamut-icons instead.
+ * @deprecated
+ * Directly import icons from [@codecademy/gamut-icons](https://gamut.codecademy.com/storybook/?path=/docs/atoms-icons-regular--editable-icon) instead.
  */
 export const iconMap = {
   accessibility: AccessibilityIcon,

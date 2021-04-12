@@ -3,7 +3,8 @@ import { colors } from './colors';
 const { black, white } = colors;
 
 /**
- * @deprecated Using these variables directly is no longer supported.
+ * @deprecated
+ * Using these variables directly is no longer supported.
  *
  * Please use [`theme.colors`](https://gamut.codecademy.com/storybook/?path=/docs/foundations-theme--colors#standard-colors)
  */
@@ -105,7 +106,8 @@ export const deprecatedColors = {
 } as const;
 
 /**
- * @deprecated Using these variables directly is no longer supported.
+ * @deprecated
+ * Using these variables directly is no longer supported.
  *
  * Please use [`theme.colors`](https://gamut.codecademy.com/storybook/?path=/docs/foundations-theme--colors#standard-colors)
  */

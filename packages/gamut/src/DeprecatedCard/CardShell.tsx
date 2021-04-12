@@ -15,7 +15,8 @@ export type CardShellProps = HTMLAttributes<HTMLDivElement> & {
 };
 
 /**
- * @deprecated  This component is deprecated and is no longer supported.
+ * @deprecated
+ * This component is deprecated and is no longer supported.
  *
  * See [Card](https://gamut.codecademy.com/storybook/?path=/docs/atoms-card--card) for similiar functionality
  */

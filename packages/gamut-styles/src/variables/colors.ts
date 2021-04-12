@@ -2,7 +2,8 @@ const black = '#000000';
 const white = '#ffffff';
 
 /**
- * @deprecated Using these variables directly is no longer supported.
+ * @deprecated
+ * Using these variables directly is no longer supported.
  *
  * Please use [`theme.colors`](https://gamut.codecademy.com/storybook/?path=/docs/foundations-theme--colors#standard-colors)
  */
@@ -133,7 +134,8 @@ export const colorNames = {
 } as const;
 
 /**
- * @deprecated Using these variables directly is no longer supported.
+ * @deprecated
+ * Using these variables directly is no longer supported.
  *
  * Please use [`theme.colors`](https://gamut.codecademy.com/storybook/?path=/docs/foundations-theme--colors#standard-colors)
  */

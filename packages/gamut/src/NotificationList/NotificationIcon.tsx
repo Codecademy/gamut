@@ -39,7 +39,8 @@ export type NotificationIconProps = {
 };
 
 /**
- * @deprecated  This component is deprecated and is no longer supported..
+ * @deprecated
+ * This component is deprecated and is no longer supported.
  *
  * See [NotificationsListNew](https://gamut.codecademy.com/storybook/?path=/docs/molecules-notificationlistnew--notification-list-new)
  */
