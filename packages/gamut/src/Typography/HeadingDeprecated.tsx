@@ -11,7 +11,7 @@ export type HeadingTags = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 export type FontSizes = 'xxs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
 
 export type HeadingDeprecatedProps = {
-  /** @param */
+  /** Heading tags h1 - h6 */
   as: HeadingTags;
   /** A font-size/font-family pair */
   fontSize: ResponsiveProperty<FontSizes>;

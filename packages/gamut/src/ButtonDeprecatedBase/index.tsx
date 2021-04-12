@@ -55,11 +55,11 @@ export type ButtonDeprecatedBaseProps = Omit<
  *
  * See [Anchor](https://gamut.codecademy.com/storybook/?path=/docs/typography-anchor--anchor) for similiar functionality
  *
- * ```
+ * @example
  * import { Anchor } from '@codecademy/gamut';
  *
  * <Anchor variant="interface">Button</Anchor>
- * ```
+ *
  */
 
 export const ButtonDeprecatedBase: React.FC<ButtonDeprecatedBaseProps> = (

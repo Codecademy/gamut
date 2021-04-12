@@ -136,11 +136,10 @@ const isPreset = (theme: string): theme is keyof typeof buttonPresetThemes => {
  *
  * See [FillButon](https://gamut.codecademy.com/storybook/?path=/docs/atoms-button--fill-button#fill-button)
  *
- * ```
- * import { FillButton } fom '@codecademy/gamut'l
+ * @example
+ * import { FillButton } fom '@codecademy/gamut';
  *
  * <FillButton variant="primary" />
- * ```
  */
 
 export const ButtonDeprecated: React.FC<ButtonDeprecatedProps> = (props) => {
