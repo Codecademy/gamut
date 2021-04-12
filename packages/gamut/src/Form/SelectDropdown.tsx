@@ -1,14 +1,14 @@
 import { theme } from '@codecademy/gamut-styles';
 import { css } from '@emotion/react';
 import { each, isArray, isObject } from 'lodash';
-import React, { ChangeEvent, forwardRef, ReactNode, useState } from 'react';
+import React, { ChangeEvent, useState } from 'react';
 import ReactSelect, {
   components,
   IndicatorProps,
+  NamedProps,
   StylesConfig,
 } from 'react-select';
 
-import { Box } from '../Box';
 import { SelectIcon, SelectWrapperBaseProps } from './Select';
 import {
   colorStates,
@@ -18,7 +18,12 @@ import {
   formFieldStyles,
 } from './styles/shared';
 
-type optionsType = Array<{ value: string | number; label: string | number }>;
+type OptionsType = Array<{
+  label: string;
+  value: string | number;
+}>;
+
+type SelectDropdownProps = NamedProps & SelectWrapperBaseProps;
 
 const selectBaseStyles = ({
   error,
@@ -40,7 +45,7 @@ const errorColorState = (error: boolean) => {
   return color;
 };
 
-const customStyles: StylesConfig<optionsType, false> = {
+const customStyles: StylesConfig<OptionsType, false> = {
   dropdownIndicator: (provided, state) => ({
     color: errorColorState(state.selectProps.error),
     display: 'flex',
@@ -50,6 +55,8 @@ const customStyles: StylesConfig<optionsType, false> = {
   container: (provided) => ({
     ...provided,
     pointerEvents: 'visible',
+    width: '100%',
+    minWidth: '7rem',
   }),
 
   menu: (provided) => ({
@@ -96,58 +103,52 @@ const DropdownIndicator = (props: IndicatorProps<any, any>) => {
   );
 };
 
-export const SelectDropdown = forwardRef<
-  HTMLSelectElement,
-  SelectWrapperBaseProps
->(
-  (
-    { className, defaultValue, options, error, id, disabled, onClick, ...rest },
-    ref
-  ) => {
-    const [activated, setActivated] = useState(false);
+export const SelectDropdown: React.FC<SelectDropdownProps> = ({
+  defaultValue,
+  options,
+  error,
+  id,
+  disabled,
+  ...rest
+}) => {
+  const [activated, setActivated] = useState(false);
 
-    const changeHandler = (event: ChangeEvent<HTMLSelectElement>) => {
-      rest?.onChange?.(event);
-      setActivated(true);
-    };
+  const changeHandler = (event: ChangeEvent<HTMLSelectElement>) => {
+    rest?.onChange?.(event);
+    setActivated(true);
+  };
 
-    let selectOptions: ReactNode[] = [];
+  const selectOptions: OptionsType = [];
 
-    if (isArray(options)) {
-      options.map((option) => {
-        const key = id ? `${id}-${option}` : option;
-        selectOptions.push({ value: option, label: key });
-      });
-    } else if (isObject(options)) {
-      each(options, (text, val) => {
-        selectOptions.push({ value: val, label: text });
-      });
-    }
-
-    return (
-      <Box
-        width="100%"
-        textColor={error ? 'red' : 'navy'}
-        minWidth="7rem"
-        className={className}
-      >
-        <ReactSelect
-          id={id || rest.htmlFor}
-          defaultValue={defaultValue || ''}
-          styles={customStyles}
-          activated={activated}
-          error={Boolean(error)}
-          components={{ DropdownIndicator, IndicatorSeparator: () => null }}
-          onChange={changeHandler}
-          onClick={() => onClick}
-          isSearchable={false}
-          isDisabled={disabled}
-          options={selectOptions}
-          theme={(theme) => ({
-            ...theme,
-          })}
-        />
-      </Box>
-    );
+  if (isArray(options)) {
+    options.map((option) => {
+      const value = option.value ?? option;
+      const key = id ? `${id}-${option}` : value;
+      selectOptions.push({ label: key, value: value });
+    });
+  } else if (isObject(options)) {
+    each(options, (option, val) => {
+      const text = option.value ?? option;
+      selectOptions.push({ label: text, value: val });
+    });
   }
-);
+
+  return (
+    <ReactSelect
+      id={id || rest.htmlFor}
+      styles={customStyles}
+      activated={activated}
+      error={Boolean(error)}
+      components={{ DropdownIndicator, IndicatorSeparator: () => null }}
+      onChange={changeHandler}
+      isSearchable={false}
+      isMulti={false}
+      isDisabled={disabled}
+      options={selectOptions}
+      theme={(theme) => ({
+        ...theme,
+      })}
+      {...rest}
+    />
+  );
+};
