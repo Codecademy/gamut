@@ -19,7 +19,7 @@ export const parseBreakpoints = ({ breakpoints }: Theme): BreakpointCache => {
 
   // Ensure order for mapping
   return {
-    map: { xs, sm, md, lg, xl },
+    map: breakpoints,
     array: [xs, sm, md, lg, xl],
   };
 };
