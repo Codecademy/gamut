@@ -36,8 +36,11 @@ export type CardFooterProps = {
 
 /**
  * @deprecated
+ * This component is deprecated and is no longer supported.
+ *
+ * See [Card](https://gamut.codecademy.com/storybook/?path=/docs/atoms-card--card) for similiar functionality
+ *
  */
-
 export const CardFooter = ({
   children,
   border,
