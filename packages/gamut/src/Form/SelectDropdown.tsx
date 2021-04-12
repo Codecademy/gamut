@@ -4,7 +4,9 @@ import { each, isArray, isObject } from 'lodash';
 import React, { ChangeEvent, useState } from 'react';
 import ReactSelect, {
   components,
+  IndicatorProps,
   NamedProps,
+  OptionTypeBase,
   StylesConfig,
 } from 'react-select';
 
@@ -16,11 +18,6 @@ import {
   formDropdownStyles,
   formFieldStyles,
 } from './styles/shared';
-
-type OptionsType = Array<{
-  label: string;
-  value: string | number;
-}>;
 
 type SelectDropdownProps = NamedProps & SelectWrapperBaseProps;
 
@@ -44,7 +41,7 @@ const errorColorState = (error: boolean) => {
   return color;
 };
 
-const customStyles: StylesConfig<OptionsType, false> = {
+const customStyles: StylesConfig<OptionTypeBase, false> = {
   dropdownIndicator: (provided, state) => ({
     color: errorColorState(state.selectProps.error),
     display: 'flex',
@@ -94,9 +91,7 @@ const customStyles: StylesConfig<OptionsType, false> = {
   }),
 };
 
-const DropdownIndicator = (
-  props: ElementConfig<typeof components.DropdownIndicator>
-) => {
+const DropdownIndicator = (props: IndicatorProps<OptionTypeBase, false>) => {
   return (
     <components.DropdownIndicator {...props}>
       <SelectIcon size={16} />
@@ -105,11 +100,11 @@ const DropdownIndicator = (
 };
 
 export const SelectDropdown: React.FC<SelectDropdownProps> = ({
-  defaultValue,
   options,
   error,
   id,
   disabled,
+  defaultValue,
   ...rest
 }) => {
   const [activated, setActivated] = useState(false);
@@ -119,7 +114,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
     setActivated(true);
   };
 
-  const selectOptions: OptionsType = [];
+  const selectOptions: Array<OptionTypeBase> = [];
 
   if (isArray(options)) {
     options.map((option) => {
@@ -134,22 +129,32 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
     });
   }
 
+  const setDefaultValue = rest.placeholder
+    ? null
+    : defaultValue
+    ? defaultValue
+    : selectOptions[0];
+
   return (
-    <ReactSelect
-      id={id || rest.htmlFor}
-      styles={customStyles}
-      activated={activated}
-      error={Boolean(error)}
-      components={{ DropdownIndicator, IndicatorSeparator: () => null }}
-      onChange={changeHandler}
-      isSearchable={false}
-      isMulti={false}
-      isDisabled={disabled}
-      options={selectOptions}
-      theme={(theme) => ({
-        ...theme,
-      })}
-      {...rest}
-    />
+    <>
+      {console.log(rest.placeholder)}
+      <ReactSelect
+        id={id || rest.htmlFor}
+        defaultValue={setDefaultValue}
+        styles={customStyles}
+        activated={activated}
+        error={Boolean(error)}
+        components={{ DropdownIndicator, IndicatorSeparator: () => null }}
+        onChange={changeHandler}
+        isSearchable={false}
+        isMulti={false}
+        isDisabled={disabled}
+        options={selectOptions}
+        theme={(theme) => ({
+          ...theme,
+        })}
+        {...rest}
+      />
+    </>
   );
 };
