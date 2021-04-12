@@ -1,7 +1,7 @@
 {
   "name": "@codecademy/konamimojisplosion",
   "description": "React component that hooks up the Konami Code to Emojisplosion.",
-  "version": "0.2.6",
+  "version": "0.2.7",
   "author": "Codecademy Engineering",
   "main": "dist/index.js",
   "module": "dist/index.js",
@@ -18,7 +18,7 @@
     "konami-code-js": "^0.8.1"
   },
   "devDependencies": {
-    "@codecademy/gamut-tests": "^2.3.6"
+    "@codecademy/gamut-tests": "^2.3.7"
   },
   "publishConfig": {
     "access": "public"
