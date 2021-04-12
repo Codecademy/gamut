@@ -69,7 +69,7 @@ export const NotificationItemNew: React.FC<NotificationItemNewProps> = ({
   const notificationItemId = `NotificationItem${id}`;
 
   const renderIllustration = (Illustration: React.FC<IllustrationProps>) => (
-    <Box display="inline-flex" aria-hidden="true">
+    <Box display="inline-flex" aria-hidden>
       <Illustration height={48} width={48} />
     </Box>
   );
