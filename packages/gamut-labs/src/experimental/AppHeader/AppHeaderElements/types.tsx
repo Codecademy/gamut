@@ -11,7 +11,6 @@ export type AppHeaderItem =
   | AppHeaderRenderElementItem;
 
 type AppHeaderBaseItem = {
-  dataIntellimizeId?: string;
   dataTestId?: string;
   id: string;
   redirect?: boolean;
