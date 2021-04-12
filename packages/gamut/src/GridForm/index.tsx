@@ -2,10 +2,10 @@ import React from 'react';
 import { FieldError, Mode, SubmitHandler, useForm } from 'react-hook-form';
 
 import { Form } from '../Form';
-import { LayoutGrid } from '../Layout';
+import { LayoutGrid, LayoutGridProps } from '../Layout';
 import { GridFormInputGroup } from './GridFormInputGroup';
 import { GridFormSubmit, GridFormSubmitProps } from './GridFormSubmit';
-import { GridFormField, LayoutGridProps } from './types';
+import { GridFormField } from './types';
 
 export * from './types';
 

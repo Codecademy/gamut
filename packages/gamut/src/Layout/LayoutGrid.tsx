@@ -21,12 +21,12 @@ const grid = variance.create({
 
 const gridProps = variance.compose(system.space, grid);
 
-export interface GridProps extends StyleProps<typeof gridProps> {}
+export interface LayoutGridProps extends StyleProps<typeof gridProps> {}
 
 export const LayoutGrid = styled(
   'div',
   styledConfig(grid.propNames)
-)<GridProps>(
+)<LayoutGridProps>(
   system.css({
     display: 'grid',
     width: '100%',
