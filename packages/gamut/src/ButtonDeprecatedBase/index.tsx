@@ -50,7 +50,7 @@ export type ButtonDeprecatedBaseProps = Omit<
 };
 
 /**
- * @deprecated  This component is deprecated and is no longer supported
+ * @deprecated  This component is deprecated and is no longer supported.
  *
  * See [Anchor](https://gamut.codecademy.com/storybook/?path=/docs/typography-anchor--anchor) for similiar functionality
  *

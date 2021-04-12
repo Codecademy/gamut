@@ -26,7 +26,7 @@ export type SplitInterstitialProps = {
 };
 
 /**
- * @deprecated  This component is deprecated and is no longer supported .
+ * @deprecated  This component is deprecated and is no longer supported..
  */
 
 export const SplitInterstitial: React.FC<SplitInterstitialProps> = ({

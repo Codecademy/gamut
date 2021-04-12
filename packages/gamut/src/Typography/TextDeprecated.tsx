@@ -20,7 +20,7 @@ type TextDeprecatedProps = {
 } & ContainerElementProps;
 
 /**
- * @deprecated  This component is deprecated and is no longer supported
+ * @deprecated  This component is deprecated and is no longer supported.
  *
  * Please use the new [Text](https://gamut.codecademy.com/storybook/?path=/docs/typography-text--text) typography component
  * ```
@@ -28,7 +28,6 @@ type TextDeprecatedProps = {
  *
  * <Text as="p">paragraph text</Text>
  * ```
- * {@link https://gamut.codecademy.com/storybook/?path=/docs/typography-text--text}
  */
 
 export const TextDeprecated: React.FC<TextDeprecatedProps> = ({

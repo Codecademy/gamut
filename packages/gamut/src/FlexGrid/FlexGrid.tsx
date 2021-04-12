@@ -18,7 +18,7 @@ export type FlexGridProps = {
 };
 
 /**
- * @deprecated  This component is deprecated and is no longer supported
+ * @deprecated  This component is deprecated and is no longer supported.
  *
  * See [LayoutGrid + Col](https://gamut.codecademy.com/storybook/?path=/docs/layouts-layoutgrid--layout-grid)
  */
