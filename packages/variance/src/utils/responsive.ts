@@ -15,7 +15,7 @@ const BREAKPOINT_KEYS = ['_', 'xs', 'sm', 'md', 'lg', 'xl'];
  * Destructures the themes breakpoints into an ordered structure to traverse
  */
 export const parseBreakpoints = ({ breakpoints }: Theme): BreakpointCache => {
-  const { xs, sm, md, lg, xl } = breakpoints;
+  const { xs, sm, md, lg, xl } = breakpoints ?? {};
 
   // Ensure order for mapping
   return {
