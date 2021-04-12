@@ -3,7 +3,8 @@ import React, { HTMLAttributes, SVGProps } from 'react';
 import { iconMap } from './iconMap';
 
 /**
- * @deprecated Directly import icons from @codecademy/gamut-icons instead.
+ * @deprecated
+ * Directly import icons from [@codecademy/gamut-icons](https://gamut.codecademy.com/storybook/?path=/docs/atoms-icons-regular--editable-icon) instead.
  */
 export type IconPropsDeprecated = HTMLAttributes<SVGElement> &
   SVGProps<SVGSVGElement> & {
@@ -15,7 +16,8 @@ export type IconPropsDeprecated = HTMLAttributes<SVGElement> &
   };
 
 /**
- * @deprecated Directly import icons from @codecademy/gamut-icons instead.
+ * @deprecated
+ * Directly import icons from [@codecademy/gamut-icons](https://gamut.codecademy.com/storybook/?path=/docs/atoms-icons-regular--editable-icon) instead.
  */
 export const Icon: React.FC<IconPropsDeprecated> = ({
   name,

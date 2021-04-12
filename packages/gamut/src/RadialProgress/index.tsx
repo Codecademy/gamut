@@ -20,6 +20,7 @@ const convertPercentToOffset = (percent: number) =>
 
 /**
  * @deprecated
+ * This component is deprecated and is no longer supported.
  */
 
 export const RadialProgress: React.FC<RadialProgressProps> = ({
