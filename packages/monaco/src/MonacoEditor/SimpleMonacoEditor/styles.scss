@@ -1,0 +1,17 @@
+@import "~styles/cc";
+
+/*
+Until monaco-editor implements custom padding,
+we'll need to include this padding here,
+along with absolute positiong
+to keep the editor footer from slipping under:
+https://github.com/microsoft/monaco-editor/issues/1368
+*/
+.editorInner {
+  padding-top: 0.95rem;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}

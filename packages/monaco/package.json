@@ -1,0 +1,35 @@
+{
+  "name": "@codecademy/monaco",
+  "description": "Monaco editor with Codecademy specific configuration",
+  "version": "0.0.1",
+  "author": "Codecademy Engineering",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Codecademy/client-modules.git"
+  },
+  "peerDependencies": {
+    "react": ">=16.8.1",
+    "react-dom": ">=16.8.1"
+  },
+  "dependencies": {
+    "@loadable/component": "5.10.1",
+    "monaco-editor": "0.20.0",
+    "react-monaco-editor": "0.34.0",
+    "react-resize-detector": "5.2.0"
+  },
+  "devDependencies": {
+    "@types/loadable__component": "5.13.3",
+    "@types/react-resize-detector": "5.0.0",
+    "monaco-editor-webpack-plugin": "1.9.1"
+  },
+  "scripts": {
+    "build:clean": "rm -rf dist",
+    "build:compile": "babel ./src --out-dir ./dist --copy-files --extensions \".ts,.tsx\"",
+    "build:types": "tsc --emitDeclarationOnly",
+    "build": "yarn build:clean && yarn build:compile && yarn build:types",
+    "lernaBuildTask": "yarn build"
+  },
+  "license": "MIT"
+}
