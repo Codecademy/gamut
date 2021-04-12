@@ -131,7 +131,15 @@ const isPreset = (theme: string): theme is keyof typeof buttonPresetThemes => {
 };
 
 /**
- * @deprecated
+ * @deprecated  This component is deprecated and is no longer supported
+ *
+ * See [FillButon](https://gamut.codecademy.com/storybook/?path=/docs/atoms-button--fill-button#fill-button)
+ *
+ * ```
+ * import { FillButton } fom '@codecademy/gamut'l
+ *
+ * <FillButton variant="primary" />
+ * ```
  */
 
 export const ButtonDeprecated: React.FC<ButtonDeprecatedProps> = (props) => {

@@ -3,8 +3,11 @@ import { colors } from './colors';
 const { black, white } = colors;
 
 /**
- * @deprecated please use the `colors` export for the latest colors
+ * @deprecated Using these variables directly is no longer supported.
+ *
+ * Please use [`theme.colors`](https://gamut.codecademy.com/storybook/?path=/docs/foundations-theme--colors#standard-colors)
  */
+
 export const deprecatedColors = {
   blue: {
     '100': '#c8d7fa',
@@ -102,9 +105,11 @@ export const deprecatedColors = {
 } as const;
 
 /**
- * @deprecated
- * use the standard color set
+ * @deprecated Using these variables directly is no longer supported.
+ *
+ * Please use [`theme.colors`](https://gamut.codecademy.com/storybook/?path=/docs/foundations-theme--colors#standard-colors)
  */
+
 export const brandColors = {
   red: deprecatedColors.red[500],
   orange: deprecatedColors.orange[400],

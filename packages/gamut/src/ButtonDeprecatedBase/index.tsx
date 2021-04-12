@@ -50,7 +50,15 @@ export type ButtonDeprecatedBaseProps = Omit<
 };
 
 /**
- * @deprecated
+ * @deprecated  This component is deprecated and is no longer supported
+ *
+ * See [Anchor](https://gamut.codecademy.com/storybook/?path=/docs/typography-anchor--anchor) for similiar functionality
+ *
+ * ```
+ * import { Anchor } from '@codecademy/gamut';
+ *
+ * <Anchor variant="interface">Button</Anchor>
+ * ```
  */
 
 export const ButtonDeprecatedBase: React.FC<ButtonDeprecatedBaseProps> = (

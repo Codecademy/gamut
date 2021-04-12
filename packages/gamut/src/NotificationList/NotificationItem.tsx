@@ -12,7 +12,9 @@ export type NotificationItemProps = {
 };
 
 /**
- * @deprecated
+ * @deprecated  This component is deprecated and is no longer supported .
+ *
+ * See [NotificationsListNew](https://gamut.codecademy.com/storybook/?path=/docs/molecules-notificationlistnew--notification-list-new)
  */
 
 export const NotificationItem: React.FC<NotificationItemProps> = (props) => {

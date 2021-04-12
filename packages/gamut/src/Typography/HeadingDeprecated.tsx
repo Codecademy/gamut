@@ -11,7 +11,7 @@ export type HeadingTags = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 export type FontSizes = 'xxs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
 
 export type HeadingDeprecatedProps = {
-  /** Heading tags h1 - h6 */
+  /** @param */
   as: HeadingTags;
   /** A font-size/font-family pair */
   fontSize: ResponsiveProperty<FontSizes>;
@@ -22,7 +22,14 @@ export type HeadingDeprecatedProps = {
 } & ContainerElementProps;
 
 /**
- * @deprecated
+ * @deprecated  This component is deprecated and is no longer supported
+ *
+ * Please use the new [Text](https://gamut.codecademy.com/storybook/?path=/docs/typography-text--text) typography component
+ * ```
+ * import { Text } from '@codecademy/gamut';
+ *
+ * <Text as="h3">paragraph text</Text>
+ * ```
  */
 
 export const HeadingDeprecated: React.FC<HeadingDeprecatedProps> = ({
