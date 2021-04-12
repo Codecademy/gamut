@@ -57,10 +57,10 @@ const columnProps = variance.compose(
   gridProps
 );
 
-type ColumnVariantProps = StyleProps<typeof columnVariants>;
-type ColumnStyleProps = StyleProps<typeof columnProps>;
+export type ColumnVariantProps = StyleProps<typeof columnVariants>;
+export type ColumnStyleProps = StyleProps<typeof columnProps>;
 
-interface ColumnProps extends ColumnVariantProps, ColumnStyleProps {}
+export interface ColumnProps extends ColumnVariantProps, ColumnStyleProps {}
 
 export const Column = styled(
   'div',
