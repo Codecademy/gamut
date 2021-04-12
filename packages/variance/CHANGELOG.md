@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [0.7.1](https://github.com/Codecademy/client-modules/compare/@codecademy/variance@0.7.0...@codecademy/variance@0.7.1) (2021-04-09)
+
+
+### Bug Fixes
+
+* **Variance:** Add better prop sorting tests ([c5e7d49](https://github.com/Codecademy/client-modules/commit/c5e7d494930ff4cb1bd304d2d220148a0bbe2fad))
+
+
+
+## [0.7.0](https://github.com/Codecademy/client-modules/compare/@codecademy/variance@0.6.0...@codecademy/variance@0.7.0) (2021-04-08)
+
+
+### Features
+
+* **ColorModes:** Base ColorMode support and serialization of color variables [GM-177] ([b588132](https://github.com/Codecademy/client-modules/commit/b5881326ace09f0b1b7052f24e59ecb5b8326aef))
+
+
+
 ## [0.6.0](https://github.com/Codecademy/client-modules/compare/@codecademy/variance@0.5.0...@codecademy/variance@0.6.0) (2021-04-06)
 
 

@@ -31,14 +31,9 @@ const SORT = {
 };
 
 const compare = (a: number, b: number) => {
-  switch (Math.sign(a - b)) {
-    case -1:
-      return SORT.B_BEFORE_A;
-    case 1:
-      return SORT.A_BEFORE_B;
-    default:
-      return SORT.EQUAL;
-  }
+  if (a < b) return SORT.A_BEFORE_B;
+  if (b < a) return SORT.B_BEFORE_A;
+  return SORT.EQUAL;
 };
 
 /**
@@ -47,25 +42,35 @@ const compare = (a: number, b: number) => {
  */
 export const orderPropNames = (config: Record<string, BaseProperty>) =>
   Object.keys(config).sort((a, b) => {
-    const aProp = config?.[a].property;
-    const bProp = config?.[b].property;
+    const { [a]: aConf, [b]: bConf } = config;
 
-    const aProps = config?.[a].properties?.length ?? 0;
-    const bProps = config?.[b].properties?.length ?? 0;
-    const aIsShorthand = SHORTHAND_PROPERTIES.includes(aProp) && aProps === 0;
-    const bIsShorthand = SHORTHAND_PROPERTIES.includes(bProp) && bProps === 0;
+    const { property: aProp, properties: aProperties = [] } = aConf;
+    const { property: bProp, properties: bProperties = [] } = bConf;
 
-    // True shorthands go first (border etc)
-    if (aIsShorthand && !bIsShorthand) return SORT.A_BEFORE_B;
-    if (bIsShorthand && !aIsShorthand) return SORT.B_BEFORE_A;
+    const aIsShorthand = SHORTHAND_PROPERTIES.includes(aProp);
+    const bIsShorthand = SHORTHAND_PROPERTIES.includes(bProp);
 
     if (aIsShorthand && bIsShorthand) {
-      const aPriority = SHORTHAND_PROPERTIES.indexOf(aProp);
-      const bPriority = SHORTHAND_PROPERTIES.indexOf(bProp);
+      const aNum = aProperties.length;
+      const bNum = bProperties.length;
 
-      return compare(aPriority, bPriority);
+      if (aProp !== bProp) {
+        return compare(
+          SHORTHAND_PROPERTIES.indexOf(aProp),
+          SHORTHAND_PROPERTIES.indexOf(bProp)
+        );
+      }
+
+      if (aProp === bProp) {
+        if (aNum === 0) return SORT.A_BEFORE_B;
+        if (bNum === 0) return SORT.B_BEFORE_A;
+      }
+
+      return compare(bNum, aNum);
     }
 
-    // If its not a true short hand compare number of properties the prop is responsible for, longest first.
-    return compare(aProps, bProps);
+    if (aIsShorthand) return SORT.A_BEFORE_B;
+    if (bIsShorthand) return SORT.B_BEFORE_A;
+
+    return SORT.EQUAL;
   });

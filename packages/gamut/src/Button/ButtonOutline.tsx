@@ -64,7 +64,7 @@ export const ButtonOutline: React.FC<ButtonOutlineProps> = ({
     as,
   };
   // Switch to an anchor tag if href is defined and the default component is unchanged
-  if (buttonProps.as === buttonTag && props.href) {
+  if (buttonProps.as === buttonTag && props.href != null) {
     buttonProps.as = linkTag;
   }
 
@@ -73,7 +73,7 @@ export const ButtonOutline: React.FC<ButtonOutlineProps> = ({
     buttonProps.type = props.type ?? 'button';
     buttonProps.disabled = disabled;
   } else {
-    if (buttonProps.as !== linkTag || !props.href) {
+    if (buttonProps.as !== linkTag || props.href == null) {
       buttonProps.role = props.role ?? 'button';
     }
     buttonProps['aria-disabled'] = disabled;
