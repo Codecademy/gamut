@@ -4,7 +4,6 @@ import { each, isArray, isObject } from 'lodash';
 import React, { ChangeEvent, useState } from 'react';
 import ReactSelect, {
   components,
-  IndicatorProps,
   NamedProps,
   StylesConfig,
 } from 'react-select';
@@ -95,7 +94,9 @@ const customStyles: StylesConfig<OptionsType, false> = {
   }),
 };
 
-const DropdownIndicator = (props: IndicatorProps<any, any>) => {
+const DropdownIndicator = (
+  props: ElementConfig<typeof components.DropdownIndicator>
+) => {
   return (
     <components.DropdownIndicator {...props}>
       <SelectIcon size={16} />
