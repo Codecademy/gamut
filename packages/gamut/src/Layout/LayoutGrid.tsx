@@ -3,7 +3,7 @@ import { StyleProps, variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
 import { pick } from 'lodash';
 
-const gutters = pick(theme.spacing, [8, 16, 24, 32]);
+const gutters = pick(theme.spacing, [8, 16, 24, 32, 48]);
 
 const grid = variance.create({
   gap: {
