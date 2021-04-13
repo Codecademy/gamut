@@ -11,7 +11,7 @@ import {
   TransformerMap,
   Variant,
 } from './types/config';
-import { CSSObject, ThemeProps } from './types/props';
+import { BreakpointCache, CSSObject, ThemeProps } from './types/props';
 import { getStaticCss } from './utils/getStaticProperties';
 import { orderPropNames } from './utils/propNames';
 import {
@@ -28,10 +28,18 @@ export const variance = {
     config: Config
   ): Parser<Config> {
     const propNames = orderPropNames(config);
+    let breakpoints: BreakpointCache | null | undefined;
 
     const parser = (props: ThemeProps) => {
       const styles = {};
-      const breakpoints = props.theme ? parseBreakpoints(props.theme) : null;
+      // Attempt to cache the breakpoints if we have not yet or if theme has become available.
+      if (
+        typeof breakpoints === 'undefined' ||
+        (breakpoints === null && props.theme?.breakpoints)
+      ) {
+        // Save the breakpoints if we can
+        breakpoints = props.theme ? parseBreakpoints(props.theme) : null;
+      }
 
       // Loops over all prop names on the configured config to check for configured styles
       propNames.forEach((prop) => {
