@@ -33,7 +33,7 @@ export const TooltipArea: React.FC<ToolTipAreaProps> = ({
   tipAlignment,
 }) => {
   return (
-    <AreaBox as="span" display="inline-block" tipAlignment={tipAlignment}>
+    <AreaBox as="span" display="block" tipAlignment={tipAlignment}>
       {children}
     </AreaBox>
   );

@@ -1,4 +1,4 @@
-import { ToolTip } from '@codecademy/gamut/src';
+import { Box, ToolTip } from '@codecademy/gamut/src';
 import { InfoCircleIcon } from '@codecademy/gamut-icons/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
@@ -62,7 +62,7 @@ The caret tip will be centered horizontally on the target.
               <ToolTip
                 {...args}
                 alignment={alignment}
-                target={<>Hi: {args.target}</>}
+                target={<Box marginLeft={32}>Hi: {args.target}</Box>}
               />
             </TooltipArea>
           );
