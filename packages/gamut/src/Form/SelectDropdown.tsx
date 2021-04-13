@@ -121,7 +121,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
 
   const selectOptions: OptionsType = [];
 
-  if (isArray(options)) {
+  if (options instanceof Array) {
     options.map((option) => {
       const value = option.value ?? option;
       const key = id ? `${id}-${option}` : value;
