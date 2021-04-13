@@ -3,6 +3,47 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [29.9.7](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@29.9.6...@codecademy/gamut@29.9.7) (2021-04-13)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [29.9.6](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@29.9.5...@codecademy/gamut@29.9.6) (2021-04-13)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [29.9.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@29.9.4...@codecademy/gamut@29.9.5) (2021-04-12)
+
+
+### Bug Fixes
+
+* Adding a11y fixes to NotificationListNew ([fe3a757](https://github.com/Codecademy/client-modules/commit/fe3a757a4c98965f0cacd743961bd71b59fd000c))
+
+
+
+### [29.9.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@29.9.3...@codecademy/gamut@29.9.4) (2021-04-12)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [29.9.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@29.9.2...@codecademy/gamut@29.9.3) (2021-04-09)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
 ### [29.9.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@29.9.1...@codecademy/gamut@29.9.2) (2021-04-08)
 
 

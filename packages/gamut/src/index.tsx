@@ -47,7 +47,6 @@ export * from './ProgressBar';
 export * from './RadialProgress';
 export * from './SkipToContent';
 export * from './Spinner';
-export * from './SplitInterstitial';
 export * from './theming/VisualTheme';
 export * from './Tabs';
 export * from './Toggle';
