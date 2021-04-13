@@ -31,9 +31,6 @@ const selectBaseStyles = ({
   ${conditionalBorderStyles({ error, activated, isFocused, isDisabled })}
   line-height: ${theme.lineHeight['base']};
   display: flex;
-  -moz-appearance: none;
-  -webkit-appearance: none;
-  appearance: none;
 `;
 
 const errorColorState = (error: boolean) => {
@@ -118,9 +115,8 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
 
   if (isArray(options)) {
     options.map((option) => {
-      const value = option.value ?? option;
-      const key = id ? `${id}-${option}` : value;
-      selectOptions.push({ label: key, value: value });
+      const key = id ? `${id}-${option}` : option;
+      selectOptions.push({ label: key, value: option });
     });
   } else if (isObject(options)) {
     each(options, (option, val) => {
