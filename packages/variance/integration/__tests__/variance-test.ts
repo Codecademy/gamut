@@ -1,6 +1,6 @@
-import { variance } from '../src/core';
-import { parseSize } from '../src/transforms/parseSize';
-import { theme } from './__fixtures__/theme';
+import { variance } from '../../src/core';
+import { transformSize } from '../../src/transforms/transformSize';
+import { theme } from '../__fixtures__/theme';
 
 const space = variance.create({
   margin: { property: 'margin', scale: 'spacing' },
@@ -17,6 +17,7 @@ const layout = variance.create({
     transform: (val: string) => `${parseInt(val, 10) / 16}rem`,
   },
 });
+const rem = (val: number) => `${val / 16}rem`;
 
 type Assert<X, Y> = X extends Y ? true : false;
 
@@ -37,7 +38,6 @@ describe('style props', () => {
     });
     it('renders media query arrays styles', () => {
       const sizes = [4, 8, 16, 24, 32, 48] as const;
-      const rem = (val: number) => `${val / 16}rem`;
       expect(space({ margin: sizes, theme })).toEqual({
         margin: rem(sizes[0]),
         XS: {
@@ -59,7 +59,6 @@ describe('style props', () => {
     });
     it('renders media query arrays styles', () => {
       const sizes = [4, 8, 16, 24, 32, 48] as const;
-      const rem = (val: number) => `${val / 16}rem`;
 
       expect(space({ margin: sizes, padding: sizes, theme })).toEqual({
         margin: rem(sizes[0]),
@@ -88,7 +87,6 @@ describe('style props', () => {
     });
     it('renders media map arrays styles', () => {
       const sizes = { _: 4, xs: 8, sm: 16, md: 24, lg: 32, xl: 48 } as const;
-      const rem = (val: number) => `${val / 16}rem`;
 
       expect(space({ margin: sizes, theme })).toEqual({
         margin: rem(sizes._),
@@ -111,7 +109,6 @@ describe('style props', () => {
     });
     it('renders media map arrays styles', () => {
       const sizes = { _: 4, xs: 8, sm: 16, md: 24, lg: 32, xl: 48 } as const;
-      const rem = (val: number) => `${val / 16}rem`;
 
       expect(space({ margin: sizes, padding: sizes, theme })).toEqual({
         margin: rem(sizes._),
@@ -168,8 +165,8 @@ describe('css', () => {
   const marginTransform = jest.fn();
 
   const css = variance.createCss({
-    width: { property: 'width', transform: parseSize },
-    height: { property: 'height', transform: parseSize },
+    width: { property: 'width', transform: transformSize },
+    height: { property: 'height', transform: transformSize },
     margin: {
       property: 'margin',
       scale: theme.spacing,
@@ -289,8 +286,8 @@ describe('variants', () => {
   const marginTransform = jest.fn();
 
   const variant = variance.createVariant({
-    width: { property: 'width', transform: parseSize },
-    height: { property: 'height', transform: parseSize },
+    width: { property: 'width', transform: transformSize },
+    height: { property: 'height', transform: transformSize },
     margin: {
       property: 'margin',
       scale: 'spacing',
@@ -327,13 +324,18 @@ describe('variants', () => {
         cool: {
           width: ['100%', '200%'],
         },
+        beans: {
+          height: 16,
+        },
       },
     });
 
-    expect(myVariant({ theme, variant: 'cool' })).toEqual({
+    expect(myVariant({ theme })).toEqual({
       width: '100%',
       XS: { width: '200%' },
     });
+
+    expect(myVariant({ theme, variant: 'beans' })).toEqual({ height: '16px' });
   });
   it('has a customized key', () => {
     const myVariant = variant({
@@ -453,5 +455,55 @@ describe('variants', () => {
     myVariant({ theme, variant: 'world' });
 
     expect(marginTransform).toHaveBeenCalledTimes(3);
+  });
+  it('takes base style css object', () => {
+    const baseVariants = variant({
+      base: {
+        margin: 4,
+        padding: [, 8],
+        '&:hover': {
+          padding: [, 32],
+        },
+      },
+      variants: {
+        big: {
+          padding: 16,
+          margin: [, 8],
+          '&:hover': {
+            margin: [, 16],
+          },
+        },
+        small: {
+          padding: [, 16],
+        },
+      },
+    });
+
+    expect(baseVariants({ variant: 'big', theme })).toEqual({
+      margin: '0.25rem',
+      padding: '1rem',
+      XS: {
+        padding: '0.5rem',
+        margin: '0.5rem',
+      },
+      '&:hover': {
+        XS: {
+          padding: '2rem',
+          margin: '1rem',
+        },
+      },
+    });
+
+    expect(baseVariants({ variant: 'small', theme })).toEqual({
+      margin: '0.25rem',
+      XS: {
+        padding: '1rem',
+      },
+      '&:hover': {
+        XS: {
+          padding: '2rem',
+        },
+      },
+    });
   });
 });

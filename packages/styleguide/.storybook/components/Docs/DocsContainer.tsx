@@ -18,8 +18,6 @@ import React from 'react';
 import { merge } from 'lodash';
 import { Link } from '../Markdown/Elements';
 
-const emotionCache = createEmotionCache({ speedy: false });
-
 const defaultComponents = {
   ...htmlComponents,
   code: CodeOrSourceMdx,
@@ -34,10 +32,7 @@ export const DocsContainer: React.FC<{ context: DocsContextProps }> = ({
   const { parameters = {} } = context || {};
   const { docs = {} } = parameters;
 
-  let themeVars = docs.theme;
-
-  const theme = ensureTheme(themeVars);
-  const overrides = merge({}, theme, {
+  const overrides = merge({}, ensureTheme(docs.theme), {
     appBorderRadius: 2,
     typography: {
       size: {
@@ -49,7 +44,7 @@ export const DocsContainer: React.FC<{ context: DocsContextProps }> = ({
 
   return (
     <DocsContext.Provider value={context}>
-      <GamutProvider cache={emotionCache}>
+      <GamutProvider cache={createEmotionCache({ speedy: false })}>
         <AssetProvider />
         <NavigationProvider>
           <SourceContainer>

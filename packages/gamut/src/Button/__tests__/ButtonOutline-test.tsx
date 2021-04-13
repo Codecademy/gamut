@@ -24,6 +24,14 @@ describe('ButtonOutline', () => {
     expect(el.tagName).toEqual('A');
   });
 
+  it('renders an anchor tag if a blank href prop is used', () => {
+    const buttonText = 'Refresh this page';
+    const view = render(<ButtonOutline href="">{buttonText}</ButtonOutline>);
+
+    const el = view.getByText(buttonText);
+    expect(el.tagName).toEqual('A');
+  });
+
   it('assigns a role of button when a non-button tag is used and it is not a link', () => {
     const buttonText = 'Submit';
     const view = render(<ButtonOutline as="span">{buttonText}</ButtonOutline>);

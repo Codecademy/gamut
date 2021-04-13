@@ -3,6 +3,9 @@ const white = '#ffffff';
 
 /**
  * @deprecated
+ * Using these variables directly is no longer supported.
+ *
+ * Please use [`theme.colors`](https://gamut.codecademy.com/storybook/?path=/docs/foundations-theme--colors#standard-colors)
  */
 
 export const swatches = {
@@ -132,6 +135,9 @@ export const colorNames = {
 
 /**
  * @deprecated
+ * Using these variables directly is no longer supported.
+ *
+ * Please use [`theme.colors`](https://gamut.codecademy.com/storybook/?path=/docs/foundations-theme--colors#standard-colors)
  */
 
 export const interactiveColors = {
@@ -167,3 +173,25 @@ export const platformColors = {
     '900': '#15141f',
   },
 } as const;
+
+export const shroudColor = {
+  dark: 'rgba(0,0,0, .75)',
+  light: 'rgba(255, 255, 255, 0.95)',
+} as const;
+
+export const colorModes = {
+  light: {
+    background: colors.white,
+    text: colors.navy,
+    primary: colors.hyper,
+    secondary: colors.navy,
+    shadow: shroudColor.light,
+  },
+  dark: {
+    background: colors.navy,
+    text: colors.white,
+    primary: colors.yellow,
+    secondary: colors.white,
+    shadow: shroudColor.dark,
+  },
+};
