@@ -1,6 +1,6 @@
 import { theme } from '@codecademy/gamut-styles';
 import { css } from '@emotion/react';
-import { each, isArray, isObject } from 'lodash';
+import { each, isObject } from 'lodash';
 import React, { ChangeEvent, useState } from 'react';
 import ReactSelect, {
   components,
@@ -19,7 +19,8 @@ import {
   formFieldStyles,
 } from './styles/shared';
 
-type SelectDropdownProps = SelectWrapperBaseProps & NamedProps;
+type ReactSelectNamedProps = Omit<NamedProps, 'options'>;
+type SelectDropdownProps = SelectWrapperBaseProps & ReactSelectNamedProps;
 
 const selectBaseStyles = ({
   error,
@@ -119,8 +120,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
       selectOptions.push({ label: key, value: option });
     });
   } else if (isObject(options)) {
-    each(options, (option, val) => {
-      const text = option.value ?? option;
+    each(options, (text, val) => {
       selectOptions.push({ label: text, value: val });
     });
   }
