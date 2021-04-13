@@ -1,5 +1,5 @@
 import { Theme } from '@emotion/react';
-import { intersection } from 'lodash';
+import { intersection, omit } from 'lodash';
 
 import { AbstractPropTransformer } from '../types/config';
 import {
@@ -93,4 +93,14 @@ export const arrayParser: ResponsiveParser<(string | number)[]> = (
   });
 
   return styles;
+};
+
+export const orderBreakpoints = (styles: CSSObject, breakpoints: string[]) => {
+  const orderedStyles: CSSObject = omit(styles, breakpoints);
+  breakpoints.forEach((bp) => {
+    if (styles[bp]) {
+      orderedStyles[bp] = styles[bp] as CSSObject;
+    }
+  });
+  return orderedStyles;
 };

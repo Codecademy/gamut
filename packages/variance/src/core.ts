@@ -19,6 +19,7 @@ import {
   isMediaArray,
   isMediaMap,
   objectParser,
+  orderBreakpoints,
   parseBreakpoints,
 } from './utils/responsive';
 
@@ -71,7 +72,8 @@ export const variance = {
             }
         }
       });
-      return styles;
+
+      return breakpoints ? orderBreakpoints(styles, breakpoints.array) : styles;
     };
     // return the parser function with the resulting meta information for further composition
     return Object.assign(parser, { propNames, config });
