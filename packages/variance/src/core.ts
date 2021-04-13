@@ -108,7 +108,9 @@ export const variance = {
           case 'undefined':
           default:
         }
-        const useTransform = typeof scaleVal !== 'undefined';
+        const useTransform =
+          typeof scaleVal !== 'undefined' ||
+          typeof config.scale === 'undefined';
         const usedValue = scaleVal ?? (value as string | number);
 
         // for each property look up the scale value from theme if passed and apply any
