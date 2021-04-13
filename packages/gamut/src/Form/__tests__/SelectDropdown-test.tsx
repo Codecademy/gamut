@@ -10,9 +10,9 @@ const defaultProps = {
 };
 
 const selectOptionsObject = {
-  redLabel: 'red',
-  yellowLabel: 'yellow',
-  greenLabel: 'green',
+  red: 'red',
+  yellow: 'yellow',
+  green: 'green',
 };
 
 const renderWrapper = setupEnzyme(SelectDropdown, {
@@ -43,8 +43,7 @@ describe('Select', () => {
       button: 0,
     });
 
-    const getByTestId = wrapper.find(`greenLabel`);
-    console.log(wrapper.debug());
+    const getByTestId = wrapper.find(`[label="green"]`);
 
     expect(getByTestId.exists()).toBe(true);
   });
