@@ -4,6 +4,7 @@ import {
   ChatBox,
   Envelope,
   Heart,
+  IllustrationProps,
   Megaphone,
   New,
 } from '@codecademy/gamut-illustrations';
@@ -11,9 +12,8 @@ import { colors } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React, { ReactElement } from 'react';
 
-import { Box, FlexBox, IconButton } from '..';
+import { Box, FlexBox, IconButton, Pattern, Text } from '..';
 import { Notification } from '../NotificationList/typings';
-import { TextDeprecated } from '../Typography/TextDeprecated';
 
 const StyledLink = styled.a`
   text-decoration: none;
@@ -54,11 +54,6 @@ const StyledImg = styled.img`
   width: 3rem;
 `;
 
-const DateText = styled(TextDeprecated)`
-  margin-left: 4px;
-  color: ${({ theme }) => theme.colors['gray-600']};
-`;
-
 export type NotificationItemNewProps = {
   notification: Notification;
   handleClick?: (event: object) => void;
@@ -70,40 +65,44 @@ export const NotificationItemNew: React.FC<NotificationItemNewProps> = ({
   notification,
   handleClick,
 }) => {
-  const { date, imageUrl, link, text, type } = notification;
+  const { date, imageUrl, link, text, type, id } = notification;
+  const notificationItemId = `NotificationItem${id}`;
+
+  const renderIllustration = (Illustration: React.FC<IllustrationProps>) => (
+    <Box display="inline-flex" aria-hidden>
+      <Illustration height={48} width={48} />
+    </Box>
+  );
 
   const renderIcon = () => {
-    if (imageUrl) {
-      return <StyledImg src={imageUrl} alt="" />;
+    if (imageUrl) return <StyledImg src={imageUrl} alt="" />;
+
+    switch (type) {
+      case 'marketing_blast':
+        return renderIllustration(Megaphone);
+      case 'curriculum_blast':
+        return renderIllustration(New);
+      case 'forum_comment':
+        return renderIllustration(ChatBox);
+      case 'forum_message':
+        return renderIllustration(Envelope);
+      case 'forum_like':
+        return renderIllustration(Heart);
+      default:
+        return renderIllustration(Bell);
     }
-    if (type === 'marketing_blast') {
-      return <Megaphone aria-hidden height={48} width={48} />;
-    }
-    if (type === 'curriculum_blast') {
-      return <New aria-hidden height={48} width={48} />;
-    }
-    if (type === 'forum_comment') {
-      return <ChatBox aria-hidden height={48} width={48} />;
-    }
-    if (type === 'forum_message') {
-      return <Envelope aria-hidden height={48} width={48} />;
-    }
-    if (type === 'forum_like') {
-      return <Heart aria-hidden height={48} width={48} />;
-    }
-    return <Bell aria-hidden height={48} width={48} />;
   };
 
   const notificationContent: ReactElement = (
     <FlexBox zIndex={1} position="relative">
       {renderIcon()}
-      <Box flexBasis={0} flexGrow={1} paddingLeft={12} textColor="navy">
-        <TextDeprecated as="span" fontSize="sm">
+      <Box flexBasis={0} flexGrow={1} paddingLeft={12}>
+        <Text id={notificationItemId} fontSize={14} textColor="navy">
           {text}
-        </TextDeprecated>
-        <DateText as="span" fontSize="sm">
+        </Text>
+        <Text fontSize={14} textColor="gray-600" marginLeft={4}>
           {date}
-        </DateText>
+        </Text>
       </Box>
     </FlexBox>
   );
@@ -114,38 +113,48 @@ export const NotificationItemNew: React.FC<NotificationItemNewProps> = ({
       color={colors.navy}
       onClick={handleDismiss}
       aria-label="dismiss notification"
+      aria-describedby={notificationItemId}
       size="small"
       variant="secondary"
       z-index={1}
     />
   );
 
+  const separatorPattern = (
+    <Box paddingX={32} margin={0} aria-hidden="true">
+      <Pattern name="dotsDense" height="1px" display="flex" />
+    </Box>
+  );
+
   return (
-    <FlexBox
-      paddingY={24}
-      paddingX={32}
-      alignItems="flex-start"
-      justifyContent="space-between"
-      position="relative"
-    >
-      {link ? (
-        <>
-          <StyledLink
-            href={link}
-            aria-label={`${text}, ${date} ago`}
-            rel="noopener noreferrer"
-            target="_blank"
-            onClick={(event) => handleClick?.(event)}
-          >
-            {notificationContent}
-          </StyledLink>
-        </>
-      ) : (
-        <>{notificationContent}</>
-      )}
-      <FlexBox alignItems="flex-start" zIndex={1}>
-        {handleDismiss && dismissIcon}
+    <li>
+      <FlexBox
+        paddingY={24}
+        paddingX={32}
+        alignItems="flex-start"
+        justifyContent="space-between"
+        position="relative"
+      >
+        {link ? (
+          <>
+            <StyledLink
+              href={link}
+              aria-label={`${text}, ${date} ago`}
+              rel="noopener noreferrer"
+              target="_blank"
+              onClick={(event) => handleClick?.(event)}
+            >
+              {notificationContent}
+            </StyledLink>
+          </>
+        ) : (
+          <>{notificationContent}</>
+        )}
+        <FlexBox alignItems="flex-start" zIndex={1}>
+          {handleDismiss && dismissIcon}
+        </FlexBox>
       </FlexBox>
-    </FlexBox>
+      {separatorPattern}
+    </li>
   );
 };
