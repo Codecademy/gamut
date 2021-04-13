@@ -154,6 +154,23 @@ describe('style props', () => {
       const res = { height: '1.5rem' };
       expect(layout({ height: '24px', theme })).toEqual(res);
     });
+    it('transforms scalar values only if scale is present', () => {
+      const doubleSpace = variance.create({
+        p: {
+          property: 'padding',
+          scale: 'spacing',
+          transform: (val: number) => `calc(${val} * 2)`,
+        },
+      });
+
+      expect(doubleSpace({ theme, p: 16 })).toEqual({
+        padding: 'calc(1rem * 2)',
+      });
+
+      expect(doubleSpace({ theme, p: 'initial' })).toEqual({
+        padding: 'initial',
+      });
+    });
   });
   describe('compose', () => {
     it('combines multiple parsers into one parser', () => {
