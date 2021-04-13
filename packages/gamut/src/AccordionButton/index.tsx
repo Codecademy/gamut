@@ -53,6 +53,9 @@ const buttonThemes = {
 
 /**
  * @deprecated
+ * This component is in the old visual identity and will be updated soon.
+ *
+ * Check the [Gamut Board](https://www.notion.so/codecademy/Gamut-Status-Timeline-dd3c135d3848464ea6eb1b48e68fbb1d) for component status
  */
 
 export const AccordionButton: React.FC<AccordionButtonProps> = ({

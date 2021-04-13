@@ -3,6 +3,87 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [33.9.7](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@33.9.6...@codecademy/styleguide@33.9.7) (2021-04-13)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [33.9.6](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@33.9.5...@codecademy/styleguide@33.9.6) (2021-04-13)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [33.9.5](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@33.9.4...@codecademy/styleguide@33.9.5) (2021-04-13)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [33.9.4](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@33.9.3...@codecademy/styleguide@33.9.4) (2021-04-12)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [33.9.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@33.9.2...@codecademy/styleguide@33.9.3) (2021-04-12)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [33.9.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@33.9.1...@codecademy/styleguide@33.9.2) (2021-04-12)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [33.9.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@33.9.0...@codecademy/styleguide@33.9.1) (2021-04-09)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [33.9.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@33.8.4...@codecademy/styleguide@33.9.0) (2021-04-09)
+
+
+### Features
+
+* added GlobalFooter molecule ([#1598](https://github.com/Codecademy/client-modules/issues/1598)) ([b17603c](https://github.com/Codecademy/client-modules/commit/b17603c296918c09f0c8a350b07056227287c74e))
+
+
+
+### [33.8.4](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@33.8.3...@codecademy/styleguide@33.8.4) (2021-04-09)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [33.8.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@33.8.2...@codecademy/styleguide@33.8.3) (2021-04-08)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
 ### [33.8.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@33.8.1...@codecademy/styleguide@33.8.2) (2021-04-08)
 
 **Note:** Version bump only for package @codecademy/styleguide

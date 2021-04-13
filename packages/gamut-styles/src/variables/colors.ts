@@ -3,6 +3,9 @@ const white = '#ffffff';
 
 /**
  * @deprecated
+ * Using these variables directly is no longer supported.
+ *
+ * Please use [`theme.colors`](https://gamut.codecademy.com/storybook/?path=/docs/foundations-theme--colors#standard-colors)
  */
 
 export const swatches = {
@@ -132,6 +135,9 @@ export const colorNames = {
 
 /**
  * @deprecated
+ * Using these variables directly is no longer supported.
+ *
+ * Please use [`theme.colors`](https://gamut.codecademy.com/storybook/?path=/docs/foundations-theme--colors#standard-colors)
  */
 
 export const interactiveColors = {
