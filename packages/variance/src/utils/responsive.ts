@@ -60,7 +60,7 @@ export const objectParser: ResponsiveParser<MediaQueryMap<string | number>> = (
   Object.keys(breakpoints).forEach(
     (breakpointKey: keyof typeof breakpoints) => {
       const bpStyles = rest[breakpointKey as keyof typeof rest];
-      if (!bpStyles) return;
+      if (typeof bpStyles === 'undefined') return;
       Object.assign(styles, {
         [breakpoints[breakpointKey] as string]: styleFn(bpStyles, prop, props),
       });
@@ -86,7 +86,7 @@ export const arrayParser: ResponsiveParser<(string | number)[]> = (
   // for that property.
   rest.forEach((val, i) => {
     const breakpointKey = breakpoints[i];
-    if (!breakpointKey) return;
+    if (!breakpointKey || typeof val === 'undefined') return;
     Object.assign(styles, {
       [breakpointKey]: styleFn(val, prop, props),
     });
