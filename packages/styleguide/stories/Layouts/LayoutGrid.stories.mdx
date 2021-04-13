@@ -1,6 +1,8 @@
 import { Column, LayoutGrid } from '@codecademy/gamut/src';
 import title from '@codecademy/macros/lib/title.macro';
-import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/blocks';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+
+import { PropsTable } from '~styleguide/blocks';
 
 import { ExampleBox } from './Elements';
 
@@ -10,7 +12,7 @@ import { ExampleBox } from './Elements';
   subcomponents={{ Column }}
   parameters={{
     subtitle: 'A CSS grid based 12 Column grid system using just grid items.',
-    status: 'stable',
+    status: 'updating',
     source: 'gamut',
   }}
 />
@@ -110,7 +112,7 @@ have a particular set of gaps at small viewports and bigger ones on large viewpo
   </Story>
 </Canvas>
 
-<Props story="LayoutGrid" />
+<PropsTable story="LayoutGrid" />
 
 ## Grid Gaps
 

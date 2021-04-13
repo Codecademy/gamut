@@ -1,6 +1,8 @@
 import { PagePrefooter } from '@codecademy/gamut-labs/src';
 import title from '@codecademy/macros/lib/title.macro';
-import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/blocks';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+
+import { PropsTable } from '~styleguide/blocks';
 
 <Meta
   title={title}
@@ -23,7 +25,7 @@ import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/blocks';
   }}
   parameters={{
     subtitle: `Prefooter component for landing pages created in Contentful. All props are optional.`,
-    status: 'volatile',
+    status: 'updating',
   }}
 />
 
@@ -33,7 +35,7 @@ import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/blocks';
   <Story name="With CTA">{(args) => <PagePrefooter {...args} />}</Story>
 </Canvas>
 
-<Props story="With CTA" />
+<PropsTable story="With CTA" />
 
 ## Without CTA
 
