@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [13.4.6](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@13.4.5...@codecademy/gamut-labs@13.4.6) (2021-04-13)
+
+
+### Bug Fixes
+
+* accessibility and key violations in GlobalFooter ([3e636f4](https://github.com/Codecademy/client-modules/commit/3e636f4a4c08f6d72d33e68c5245971fe4b70e43))
+
+
+
 ### [13.4.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@13.4.4...@codecademy/gamut-labs@13.4.5) (2021-04-13)
 
 **Note:** Version bump only for package @codecademy/gamut-labs
