@@ -37,12 +37,11 @@ export const SocialMediaLinks: React.FC = () => {
   return (
     <FooterLinkItems aria-label="Social Media">
       {media.map(({ label, url, icon: IconComponent }) => (
-        <Box as="li" display="inline-block">
+        <Box as="li" display="inline-block" key={label}>
           <Anchor
             aria-label={label}
             fontSize={20}
             href={url}
-            key={label}
             marginRight={8}
             rel="noopener noreferrer"
             target="_blank"
