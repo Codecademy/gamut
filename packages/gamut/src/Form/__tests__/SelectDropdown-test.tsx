@@ -3,52 +3,48 @@ import { setupEnzyme } from '@codecademy/gamut-tests';
 import { SelectDropdown } from '../SelectDropdown';
 
 const selectOptions = ['red', 'yellow', 'green'];
+
 const defaultProps = {
   options: selectOptions,
   id: 'colors',
 };
 
 const selectOptionsObject = {
-  red: 'red',
-  yellow: 'yellow',
-  green: 'green',
+  redLabel: 'red',
+  yellowLabel: 'yellow',
+  greenLabel: 'green',
 };
 
 const renderWrapper = setupEnzyme(SelectDropdown, {
-  options: selectOptionsObject,
+  options: selectOptions,
   id: 'colors',
 });
 
 describe('Select', () => {
   it('sets the id prop on the select tag', () => {
     const { wrapper } = renderWrapper();
-    expect(wrapper.find('SelectBase').props().id).toBe(defaultProps.id);
+    expect(wrapper.find('SelectDropdown').props().id).toBe(defaultProps.id);
   });
 
-  it('renders the same number of option as options', () => {
+  it('renders the same number of options as options', () => {
     const { wrapper } = renderWrapper();
 
-    expect(wrapper.find('SelectBase').props().children).toHaveLength(
-      defaultProps.options.length
-    );
-  });
+    wrapper.find('DropdownIndicator').first().simulate('mouseDown', {
+      button: 0,
+    });
 
-  it('sets the key of option tags using the form of `${id}-${value} when the prop id is passed`', () => {
-    const { wrapper } = renderWrapper();
-
-    const keyWithId = `${defaultProps.id}-${selectOptions[0]}`;
-
-    const getByTestId = wrapper.find(`option[data-testid="${keyWithId}"]`);
-
-    expect(getByTestId.exists()).toBe(true);
+    expect(wrapper.find('Option').length).toEqual(3);
   });
 
   it('renders options when options is an object', () => {
-    const { wrapper } = renderWrapper();
+    const { wrapper } = renderWrapper({ options: selectOptionsObject });
 
-    const keyWithId = `${defaultProps.id}-${selectOptions[0]}`;
+    wrapper.find('DropdownIndicator').first().simulate('mouseDown', {
+      button: 0,
+    });
 
-    const getByTestId = wrapper.find(`option[data-testid="${keyWithId}"]`);
+    const getByTestId = wrapper.find(`greenLabel`);
+    console.log(wrapper.debug());
 
     expect(getByTestId.exists()).toBe(true);
   });
