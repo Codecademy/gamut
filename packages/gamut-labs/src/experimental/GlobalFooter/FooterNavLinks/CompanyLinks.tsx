@@ -113,7 +113,9 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
             </Anchor>
           </FooterLinkItem>
         )}
-        <SocialMediaLinks />
+        <FooterLinkItem>
+          <SocialMediaLinks />
+        </FooterLinkItem>
       </FooterLinkItems>
     </Box>
   );
