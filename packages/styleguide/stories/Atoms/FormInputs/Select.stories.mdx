@@ -1,4 +1,10 @@
-import { Box, FlexBox, Select, SelectDropdown } from '@codecademy/gamut';
+import {
+  Box,
+  FlexBox,
+  Select,
+  SelectDropdown,
+  FormGroup,
+} from '@codecademy/gamut';
 import title from '@codecademy/macros/lib/title.macro';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 
@@ -19,7 +25,7 @@ export const fruitOptions = [
   parameters={{
     subtitle: 'A `<select />` element for picking from exclusive options',
     source: 'gamut',
-    status: 'current',
+    status: 'updating',
   }}
   args={{
     htmlFor: 'example-select',
@@ -69,12 +75,7 @@ export const fruitOptions = [
   <Story
     name="Base"
     args={{
-      options: [
-        'Base',
-        'Regular Size',
-        'Normal',
-        'lorem lorem lorem ipsum ipsum ipsum lorem',
-      ],
+      options: ['Base', 'Regular Size', 'Normal'],
       defaultValue: 'Regular Size',
     }}
   >
@@ -119,12 +120,7 @@ This is a variant of our Select component with a styled dropdown menu. This is s
     }}
   >
     {(args) => (
-      <FlexBox
-        width="10rem"
-        height="25rem"
-        backgroundColor="palePink"
-        padding="1rem"
-      >
+      <FlexBox width="10rem" height="25rem">
         <SelectDropdown {...args} />
       </FlexBox>
     )}
@@ -137,14 +133,54 @@ This is a variant of our Select component with a styled dropdown menu. This is s
     }}
   >
     {(args) => (
-      <FlexBox
-        width="10rem"
-        height="25rem"
-        backgroundColor="paleGreen"
-        padding="1rem"
-      >
+      <FlexBox width="10rem" height="25rem">
         <SelectDropdown {...args} />
       </FlexBox>
+    )}
+  </Story>
+</Canvas>
+
+### Form Group + Select
+
+<Canvas>
+  <Story
+    name="FormGroupBase"
+    args={{
+      options: ['Error', 'oh no', ':('],
+      defaultValue: 'oh no',
+    }}
+  >
+    {(args) => (
+      <FormGroup label="i am a large label" labelSize="large" error="error!">
+        <Select error {...args} />{' '}
+      </FormGroup>
+    )}
+  </Story>
+  <Story
+    name="FormGroupStyled"
+    args={{
+      options: ['Error', 'oh no', ':('],
+      defaultValue: 'oh no',
+    }}
+  >
+    {(args) => (
+      <FormGroup label="i am ~styled" error="error!">
+        <SelectDropdown error {...args} />
+      </FormGroup>
+    )}
+  </Story>
+  <Story
+    name="FormGroupSmall"
+    args={{
+      options: ['Small', 'Quite little'],
+      defaultValue: 'Small',
+      sizeVariant: 'small',
+    }}
+  >
+    {(args) => (
+      <FormGroup label="i am small and have a label" showRequired>
+        <Select {...args} />
+      </FormGroup>
     )}
   </Story>
 </Canvas>

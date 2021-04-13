@@ -43,6 +43,7 @@ const selectSizeVariants = variant({
     },
     base: {
       height: 'auto',
+      paddingRight: 48,
     },
   },
 });

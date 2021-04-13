@@ -169,6 +169,7 @@ export const formDropdownStyles = css`
   margin-top: -1px;
   border: 1px solid ${colorStates.activated.borderColor};
   border-top: none;
+  z-index: 2;
 `;
 
 export const formBaseFieldStyles = css`
