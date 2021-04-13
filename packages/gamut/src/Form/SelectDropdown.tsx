@@ -19,7 +19,7 @@ import {
   formFieldStyles,
 } from './styles/shared';
 
-type SelectDropdownProps = NamedProps & SelectWrapperBaseProps;
+type SelectDropdownProps = SelectWrapperBaseProps & NamedProps;
 
 const selectBaseStyles = ({
   error,
@@ -132,29 +132,28 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
   const setDefaultValue = rest.placeholder
     ? null
     : defaultValue
-    ? defaultValue
+    ? selectOptions[
+        selectOptions.findIndex((option) => option.value === defaultValue)
+      ]
     : selectOptions[0];
 
   return (
-    <>
-      {console.log(rest.placeholder)}
-      <ReactSelect
-        id={id || rest.htmlFor}
-        defaultValue={setDefaultValue}
-        styles={customStyles}
-        activated={activated}
-        error={Boolean(error)}
-        components={{ DropdownIndicator, IndicatorSeparator: () => null }}
-        onChange={changeHandler}
-        isSearchable={false}
-        isMulti={false}
-        isDisabled={disabled}
-        options={selectOptions}
-        theme={(theme) => ({
-          ...theme,
-        })}
-        {...rest}
-      />
-    </>
+    <ReactSelect
+      id={id || rest.htmlFor}
+      defaultValue={setDefaultValue}
+      styles={customStyles}
+      activated={activated}
+      error={Boolean(error)}
+      components={{ DropdownIndicator, IndicatorSeparator: () => null }}
+      onChange={changeHandler}
+      isSearchable={false}
+      isMulti={false}
+      isDisabled={disabled}
+      options={selectOptions}
+      theme={(theme) => ({
+        ...theme,
+      })}
+      {...rest}
+    />
   );
 };
