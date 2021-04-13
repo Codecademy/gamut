@@ -108,16 +108,18 @@ export const variance = {
           case 'undefined':
           default:
         }
+
         const useTransform =
           typeof scaleVal !== 'undefined' ||
           typeof config.scale === 'undefined';
+
         const usedValue = scaleVal ?? (value as string | number);
 
         // for each property look up the scale value from theme if passed and apply any
         // final transforms to the value
         properties.forEach((property) => {
           const finalValue = useTransform
-            ? transform(usedValue, prop, props)
+            ? transform(usedValue, property, props)
             : usedValue;
           const mergeStyles = isObject(finalValue)
             ? finalValue
