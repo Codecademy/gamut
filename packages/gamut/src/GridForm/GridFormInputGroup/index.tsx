@@ -36,7 +36,13 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
   const getInput = () => {
     switch (field.type) {
       case 'checkbox':
-        return <GridFormCheckboxInput field={field} register={register} />;
+        return (
+          <GridFormCheckboxInput
+            field={field}
+            register={register}
+            showRequired={showRequired}
+          />
+        );
 
       case 'custom':
         return (
@@ -53,6 +59,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
           <GridFormRadioGroupInput
             field={field}
             register={register}
+            showRequired={showRequired}
             setValue={setValue}
           />
         );
@@ -63,6 +70,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
             error={!!errorMessage}
             field={field}
             register={register}
+            showRequired={showRequired}
           />
         );
 
@@ -72,6 +80,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
             error={!!errorMessage}
             field={field}
             register={register}
+            showRequired={showRequired}
           />
         );
 
@@ -81,6 +90,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
             error={!!errorMessage}
             field={field}
             register={register}
+            showRequired={showRequired}
           />
         );
 
@@ -90,6 +100,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
             error={!!errorMessage}
             field={field}
             register={register}
+            showRequired={showRequired}
           />
         );
     }
