@@ -11,16 +11,15 @@ import React, { ReactNode } from 'react';
 import { VisualTheme } from '../theming/VisualTheme';
 
 export type ToolTipAlignment =
+  | 'bottom-center'
   | 'bottom-left'
   | 'bottom-right'
+  | 'top-center'
   | 'top-left'
   | 'top-right';
 
-const arrowWidth = `1rem`;
-const arrowHeight = `0.5rem`;
+const arrowHeight = `1rem`;
 const containerOffsetVertical = `0.75rem`;
-
-const slightShadow = `rgba(0, 0, 0, 0.15)`;
 
 const TooltipWrapper = styled.div`
   position: relative;
@@ -47,13 +46,13 @@ const ToolTipContainer = styled.div<ToolTipContainerProps>`
   transition: opacity ${timing.fast};
   transition-delay: ${timing.fast};
   position: absolute;
-  width: 16rem;
+  max-width: ${({ alignment }) =>
+    alignment.includes('center') ? '8rem' : '16rem'};
   visibility: hidden;
+  width: 70vw;
+  z-index: 1;
 
-  // Both before and after psuedo-elements are used because ::after's background should go over the container's
-  // and ::before's box-shadow should be behind the container itself
-  &::after,
-  &::before {
+  &::after {
     content: '';
     display: block;
     height: ${arrowHeight};
@@ -62,12 +61,14 @@ const ToolTipContainer = styled.div<ToolTipContainerProps>`
     width: ${arrowHeight};
   }
 
-  &::before {
+  &::after {
+    border-style: solid;
+
     ${variant({
       prop: 'mode',
       variants: {
-        dark: { backgroundColor: 'black' },
-        light: { backgroundColor: 'white' },
+        dark: { backgroundColor: 'black', borderColor: 'white' },
+        light: { backgroundColor: 'white', borderColor: 'black' },
       },
     })}
   }
@@ -80,81 +81,95 @@ const ToolTipContainer = styled.div<ToolTipContainerProps>`
   }
 
   ${({ alignment }) =>
-    ['top-left', 'top-right'].includes(alignment) &&
+    alignment.includes('top') &&
     `
       bottom: 100%;
       padding-bottom: ${containerOffsetVertical};
 
-      &::after,
-      &::before {
-        bottom: ${arrowHeight};
-      }
-
-      &::before {
-        box-shadow: 2px 2px 4px 0 ${slightShadow};
-      }
-
-      ${ToolTipBody} {
-        box-shadow: 0 2px 4px 0 ${slightShadow};
+      &::after {
+        border-bottom-right-radius: 4px;
+        border-width: 0 1px 1px 0;
+        bottom: 0.25rem;
       }
     `}
 
   ${({ alignment }) =>
-    ['bottom-left', 'bottom-right'].includes(alignment) &&
+    alignment.includes('bottom') &&
     `
       top: 100%;
       padding-top: ${containerOffsetVertical};
 
-      &::after,
-      &::before {
-        top: ${arrowHeight};
+      &::after {
+        border-top-left-radius: 4px;
+        border-width: 1px 0 0 1px;
+        top: 0.25rem;
       }
+    `}
 
-      &::before {
-        box-shadow: -2px -2px 4px 0 ${slightShadow};
-      }
+${({ alignment }) =>
+    alignment.includes('center') &&
+    `
+      left: calc(50% - 4rem);
 
-      ${ToolTipBody} {
-        box-shadow: 0 0 4px 0 ${slightShadow};
+      &::after {
+        left: calc(50% - 0.5rem);
       }
     `}
 
   ${({ alignment }) =>
-    ['bottom-left', 'top-left'].includes(alignment) &&
+    alignment.includes('left') &&
     `
       justify-content: flex-end;
 
-      &::after,
-      &::before {
-        right: ${arrowWidth};
+      &::after {
+        right: 1.5rem;
       }
 
-      left: calc(50% - 14.75rem)
+      left: calc(50% - 14rem)
     `}
 
   ${({ alignment }) =>
-    ['bottom-right', 'top-right'].includes(alignment) &&
+    alignment.includes('right') &&
     `
-      &::after,
-      &::before {
-        left: ${arrowWidth};
+      &::after {
+        left: 1.5rem;
       }
 
-      left: calc(50% - 1.25rem);
+      left: calc(50% - 2rem);
     `}
 `;
 
-const ToolTipBody = styled.div<{ mode: VisualTheme }>`
+const ToolTipBody = styled.div<ToolTipContainerProps>`
+  border: 1px solid;
+  border-radius: 3px;
   display: inline-block;
   font-size: ${pxRem(14)};
   line-height: ${lineHeight.base};
-  padding: 0.6rem 0.75rem;
+  ${({ alignment }) =>
+    alignment.includes('center')
+      ? `
+      padding: 0.5rem;
+      text-align: center;
+    `
+      : `
+      padding: 1rem;
+    `}
+  margin: auto;
+  min-width: 4rem;
 
   ${variant({
     prop: 'mode',
     variants: {
-      dark: { backgroundColor: 'black', textColor: 'white' },
-      light: { backgroundColor: 'white', textColor: 'black' },
+      dark: {
+        backgroundColor: 'black',
+        borderColor: 'white',
+        textColor: 'white',
+      },
+      light: {
+        backgroundColor: 'white',
+        borderColor: 'black',
+        textColor: 'black',
+      },
     },
   })}
 `;
@@ -220,7 +235,9 @@ export const ToolTip: React.FC<ToolTipProps> = ({
         mode={mode}
         aria-live="polite"
       >
-        <ToolTipBody mode={mode}>{children}</ToolTipBody>
+        <ToolTipBody alignment={alignment} mode={mode}>
+          {children}
+        </ToolTipBody>
       </ToolTipContainer>
     </TooltipWrapper>
   );

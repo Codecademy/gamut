@@ -50,8 +50,40 @@ Great for surfacing additional information that may or may not be relevant _with
 Tooltips can be aligned both horizontally and vertically relative to their target.
 The caret tip will be centered horizontally on the target.
 
+### Smaller Alignments
+
+Tooltips with _centered_ alignments -`bottom-center` or `top-center`- are smaller sized and meant for a single small number of words, like keyboard shortcuts.
+
 <Canvas>
-  <Story name="Alignment">
+  <Story name="Smaller Alignment">
+    {(args) => {
+      return ['bottom-center', 'top-center'].map((alignment) => {
+        return (
+          <TooltipArea key={alignment} tipAlignment={alignment}>
+            {alignment.split('-').map(upperFirst).join(' ')}: &nbsp;
+            <ToolTip {...args} alignment={alignment}>
+              Shift + Return
+            </ToolTip>
+            <ToolTip
+              {...args}
+              alignment={alignment}
+              target={<Box marginLeft={32}>Hi: {args.target}</Box>}
+            >
+              Hi!
+            </ToolTip>
+          </TooltipArea>
+        );
+      });
+    }}
+  </Story>
+</Canvas>
+
+### Larger Alignments
+
+Tooltips with _corner_ alignments -`*-left` or `*-right`- are larger sized and meant for the occasional longer explanation, like form field validation explainers.
+
+<Canvas>
+  <Story name="Larger Alignment">
     {(args) => {
       return ['bottom-left', 'bottom-right', 'top-left', 'top-right'].map(
         (alignment) => {
