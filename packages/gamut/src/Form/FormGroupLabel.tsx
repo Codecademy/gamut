@@ -13,7 +13,6 @@ const StyledToolTipContainer = styled.span`
 `;
 
 const StyledToolTip = styled(ToolTip)`
-  margin-left: -0.9rem;
   z-index: 1;
 `;
 
