@@ -48,7 +48,7 @@ const languages = [
   ['html-css', 'HTML & CSS'],
   ['python', 'Python'],
   ['javascript', 'JavaScript'],
-  ['java', 'java'],
+  ['java', 'Java'],
   ['sql', 'SQL'],
   ['bash', 'Bash/Shell'],
   ['ruby', 'Ruby'],

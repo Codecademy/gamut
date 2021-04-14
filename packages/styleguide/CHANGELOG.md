@@ -3,6 +3,35 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [34.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@33.9.12...@codecademy/styleguide@34.0.0) (2021-04-14)
+
+
+### ⚠ BREAKING CHANGES
+
+* **NotificationList:** Replaced old NotificationList & NotificationListItem w/ upgraded components
+
+### Features
+
+* **NotificationList:** Replaced old NotificationList & NotificationListItem w/ upgraded components ([063fd39](https://github.com/Codecademy/client-modules/commit/063fd39c95d6355ae711953d8cd8818285ae2f53))
+
+
+
+### [33.9.12](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@33.9.11...@codecademy/styleguide@33.9.12) (2021-04-14)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [33.9.11](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@33.9.10...@codecademy/styleguide@33.9.11) (2021-04-14)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
 ### [33.9.10](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@33.9.9...@codecademy/styleguide@33.9.10) (2021-04-14)
 
 **Note:** Version bump only for package @codecademy/styleguide
