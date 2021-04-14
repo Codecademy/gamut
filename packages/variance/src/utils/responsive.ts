@@ -1,4 +1,3 @@
-import { Theme } from '@emotion/react';
 import { intersection, omit } from 'lodash';
 
 import { AbstractPropTransformer } from '../types/config';
