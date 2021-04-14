@@ -122,10 +122,69 @@ describe('GridForm', () => {
       wrapped.setProps(wrapped.props());
 
       expect(wrapped.find('button').prop('disabled')).not.toBeTruthy();
+      expect(wrapped.find('input').prop('aria-required')).toBeFalsy();
+    });
+
+    it('sets aria-required to true ', () => {
+      const fields = [
+        { ...stubTextField, validation: { required: 'Please enter text' } },
+      ];
+      const api = createPromise<{}>();
+      const onSubmit = async (values: {}) => api.resolve(values);
+
+      const wrapped = mount(
+        <ThemeProvider theme={theme}>
+          <GridForm
+            fields={fields}
+            onSubmit={onSubmit}
+            submit={{
+              type: 'fill',
+              contents: <>Submit</>,
+              size: 6,
+            }}
+            validation="onSubmit"
+            showRequired
+          />
+        </ThemeProvider>
+      );
+
+      wrapped.setProps(wrapped.props());
+
+      expect(wrapped.find('button').prop('disabled')).not.toBeTruthy();
+      expect(wrapped.find('input').prop('aria-required')).toBeTruthy();
     });
   });
 
   describe('when "onChange" validation is selected', () => {
+    it('sets aria-required to true ', () => {
+      const fields = [
+        { ...stubTextField, validation: { required: 'Please enter text' } },
+      ];
+      const api = createPromise<{}>();
+      const onSubmit = async (values: {}) => api.resolve(values);
+
+      const wrapped = mount(
+        <ThemeProvider theme={theme}>
+          <GridForm
+            fields={fields}
+            onSubmit={onSubmit}
+            submit={{
+              type: 'fill',
+              contents: <>Submit</>,
+              size: 6,
+            }}
+            validation="onSubmit"
+            showRequired
+          />
+        </ThemeProvider>
+      );
+
+      wrapped.setProps(wrapped.props());
+
+      expect(wrapped.find('button').prop('disabled')).not.toBeTruthy();
+      expect(wrapped.find('input').prop('aria-required')).toBeTruthy();
+    });
+
     it('disables the submit button when required fields are incomplete', async () => {
       const fields = [
         { ...stubTextField, validation: { required: 'Please enter text' } },
@@ -154,6 +213,7 @@ describe('GridForm', () => {
       wrapped.update();
 
       expect(wrapped.find('button').prop('disabled')).toBeTruthy();
+      expect(wrapped.find('input').prop('aria-required')).toBeFalsy();
     });
 
     it('enables the submit button after the required fields are completed', async () => {
@@ -188,6 +248,7 @@ describe('GridForm', () => {
       wrapped.setProps(wrapped.props());
 
       expect(wrapped.find('button').prop('disabled')).not.toBeTruthy();
+      expect(wrapped.find('input').prop('aria-required')).toBeFalsy();
     });
 
     it('keeps the submit button disabled when overridden and there are no incomplete fields', async () => {
@@ -211,7 +272,7 @@ describe('GridForm', () => {
 
       wrapped.setProps(wrapped.props());
 
-      expect(wrapped.find('button').prop('disabled')).toBe(true);
+      expect(wrapped.find('button').prop('disabled')).toBeTruthy();
     });
   });
 
