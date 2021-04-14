@@ -99,7 +99,7 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
         {userGeo !== 'IN' && (
           <FooterLinkItem>
             <Anchor
-              href="/shop"
+              href="https://codecademy.com/shop"
               onClick={(event) => onClick({ event, target: 'shop' })}
               variant="interface"
             >
