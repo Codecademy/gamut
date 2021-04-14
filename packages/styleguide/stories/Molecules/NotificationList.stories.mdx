@@ -1,10 +1,10 @@
-import { NotificationListNew } from '@codecademy/gamut/src';
+import { NotificationList } from '@codecademy/gamut/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 
 import { PropsTable } from '~styleguide/blocks';
 
-export const notificationList = [
+export const notifications = [
   {
     campaign: 'python-livestream',
     date: '5 minutes',
@@ -61,7 +61,7 @@ export const notificationList = [
 
 <Meta
   title={title}
-  component={NotificationListNew}
+  component={NotificationList}
   parameters={{
     subtitle: '',
     source: 'gamut',
@@ -69,7 +69,7 @@ export const notificationList = [
     figmaId: '',
   }}
   args={{
-    notifications: notificationList,
+    notifications,
     onDismiss: () => {
       // eslint-disable-next-line no-console
       console.log('delete notification');
@@ -82,12 +82,12 @@ New notifications list component. Each notification displays an icon correspondi
 Sometimes the teams sending a notification would like to choose a unique icon for their notification. We still support this. If an imageUrl is provided, the notification will show the chosen image instead of the type icon. The recommendation from design, however, is to use the designated types.
 
 <Canvas>
-  <Story name="NotificationListNew">
-    {(args) => <NotificationListNew {...args} />}
+  <Story name="NotificationList">
+    {(args) => <NotificationList {...args} />}
   </Story>
 </Canvas>
 
-<PropsTable story="NotificationListNew" />
+<PropsTable story="NotificationList" />
 
 ## Empty Notification
 
@@ -95,6 +95,6 @@ Empty Notification content (message and image) is selected at random.
 
 <Canvas>
   <Story name="Empty" args={{ notifications: [] }}>
-    {(args) => <NotificationListNew {...args} />}
+    {(args) => <NotificationList {...args} />}
   </Story>
 </Canvas>

@@ -13,7 +13,7 @@ import styled from '@emotion/styled';
 import React, { ReactElement } from 'react';
 
 import { Box, FlexBox, IconButton, Pattern, Text } from '..';
-import { Notification } from '../NotificationList/typings';
+import { Notification } from './typings';
 
 const StyledLink = styled.a`
   text-decoration: none;
@@ -54,13 +54,13 @@ const StyledImg = styled.img`
   width: 3rem;
 `;
 
-export type NotificationItemNewProps = {
+export type NotificationItemProps = {
   notification: Notification;
   handleClick?: (event: object) => void;
   handleDismiss?: () => void;
 };
 
-export const NotificationItemNew: React.FC<NotificationItemNewProps> = ({
+export const NotificationItem: React.FC<NotificationItemProps> = ({
   handleDismiss,
   notification,
   handleClick,

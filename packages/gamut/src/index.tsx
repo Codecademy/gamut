@@ -37,7 +37,7 @@ export * from './Menus/SideMenu';
 export * from './Dialog';
 export * from './Modal';
 export * from './NotificationList';
-export * from './NotificationList/NotificationItemNew';
+export * from './NotificationList/NotificationItem';
 export * from './Overlay';
 export * from './Pattern';
 export * from './ProgressBar';

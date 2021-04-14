@@ -3,10 +3,10 @@ import { isEmpty } from 'lodash';
 import React from 'react';
 
 import { EmptyNotification } from './EmptyNotification';
-import { NotificationItemNew } from './NotificationItemNew';
+import { NotificationItem } from './NotificationItem';
 import { Notification } from './typings';
 
-export type NotificationListNewProps = {
+export type NotificationListProps = {
   onDismiss?: (notification: Notification) => void;
   notifications: Notification[];
   onNotificationClick?: (notification: Notification) => void;
@@ -19,7 +19,7 @@ const UnstyledUnorderedList = styled.ul`
   margin: 0;
 `;
 
-export const NotificationListNew: React.FC<NotificationListNewProps> = ({
+export const NotificationList: React.FC<NotificationListProps> = ({
   notifications,
   onNotificationClick,
   onDismiss,
@@ -30,7 +30,7 @@ export const NotificationListNew: React.FC<NotificationListNewProps> = ({
   ) : (
     <UnstyledUnorderedList aria-labelledby={headerElementId} aria-live="polite">
       {notifications.map((notification: Notification) => (
-        <NotificationItemNew
+        <NotificationItem
           key={notification.id}
           notification={notification}
           handleClick={() => onNotificationClick?.(notification)}
