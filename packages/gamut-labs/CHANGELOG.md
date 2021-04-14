@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [13.4.11](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@13.4.10...@codecademy/gamut-labs@13.4.11) (2021-04-14)
+
+
+### Bug Fixes
+
+* straight to main, j to J in CatalogLinks.tsx ([bc65aa7](https://github.com/Codecademy/client-modules/commit/bc65aa7be1244c1442546f96bed532f80479ef63))
+
+
+
 ### [13.4.10](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@13.4.9...@codecademy/gamut-labs@13.4.10) (2021-04-14)
 
 
