@@ -38,6 +38,8 @@ export const PageSection: React.FC<PageSectionProps> = ({
   };
 
   const renderSectionHeader = () => (
+    // Setting height directly to height of the buttons so if they are omitted
+    // the header remains the same height.
     <FlexBox height="2.5rem" marginBottom={8} justifyContent="space-between">
       <FlexBox alignItems="center">
         <Text as="h2" fontSize={22}>
