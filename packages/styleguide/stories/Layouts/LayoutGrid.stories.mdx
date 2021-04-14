@@ -40,8 +40,8 @@ export const columns = [
 <Canvas>
   <Story name="LayoutGrid">
     {(args) => {
-      const children = columns.map((props) => (
-        <Column {...props}>
+      const children = columns.map((props, i) => (
+        <Column key={`rowspan-${i * 1}`} {...props}>
           <Example>{props.size}</Example>
         </Column>
       ));
@@ -68,7 +68,7 @@ Both these properties can take a <LinkTo id="foundations-system-responsive-prope
           ...new Array(2).fill({ size: 6 }),
           ...new Array(3).fill({ size: 4 }),
         ].map((props, i) => (
-          <Column key={`gap-${i * props.size}`} {...props}>
+          <Column key={`gap-${i * 1}`} {...props}>
             <Example />
           </Column>
         ))}
@@ -83,8 +83,8 @@ Both these properties can take a <LinkTo id="foundations-system-responsive-prope
   <Story name="Row Height" args={{ rowHeight: 75 }}>
     {(args) => (
       <LayoutGrid {...args}>
-        {new Array(12).fill({ size: 3 }).map((props) => (
-          <Column {...props}>
+        {new Array(12).fill({ size: 3 }).map((props, i) => (
+          <Column key={`rowHeight-${i * 1}`} {...props}>
             <Example />
           </Column>
         ))}
@@ -110,8 +110,8 @@ As with column and row gaps, those numbers may be static or responsive.
           { size: 8 },
           { offset: { _: 6, md: 4, lg: 2 }, size: 6 },
           { offset: { _: 0, md: 4 }, size: 6 },
-        ].map((props) => (
-          <Column {...props}>
+        ].map((props, i) => (
+          <Column key={`rowspan-${i * 1}`} {...props}>
             <Example />
           </Column>
         ))}
@@ -135,7 +135,7 @@ Columns may be span multiple rows. Make sure you have a consistent row height wh
           0: 4,
         };
         return (
-          <Column {...props} rowspan={span[i]}>
+          <Column key={`rowspan-${i * 1}`} {...props} rowspan={span[i]}>
             <Example>{}</Example>
           </Column>
         );

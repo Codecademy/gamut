@@ -33,13 +33,14 @@ export const variance = {
 
     const parser = (props: ThemeProps) => {
       const styles = {};
+      const { theme } = props;
       // Attempt to cache the breakpoints if we have not yet or if theme has become available.
       if (
-        typeof breakpoints === 'undefined' ||
-        (breakpoints === null && props.theme?.breakpoints)
+        breakpoints === undefined ||
+        (breakpoints === null && theme?.breakpoints)
       ) {
         // Save the breakpoints if we can
-        breakpoints = props.theme ? parseBreakpoints(props.theme) : null;
+        breakpoints = parseBreakpoints(theme?.breakpoints);
       }
 
       // Loops over all prop names on the configured config to check for configured styles
@@ -84,10 +85,12 @@ export const variance = {
     prop: P,
     config: Config
   ): PropTransformer<P, Config> {
-    const transform = config.transform ?? identity;
-    const properties = config.properties
-      ? config.properties
-      : [config.property];
+    const {
+      transform = identity,
+      property,
+      properties = [property],
+      scale,
+    } = config;
 
     return {
       ...config,
@@ -95,23 +98,21 @@ export const variance = {
       styleFn: (value, prop, props) => {
         const styles: CSSObject = {};
         let scaleVal: string | number | undefined;
-        switch (typeof config.scale) {
+        switch (typeof scale) {
           case 'string': {
-            const path = `theme.${config.scale}.${value}`;
+            const path = `theme.${scale}.${value}`;
             scaleVal = get(props, path);
             break;
           }
           case 'object': {
-            scaleVal = get(config.scale, `${value}`);
+            scaleVal = get(scale, `${value}`);
             break;
           }
           case 'undefined':
           default:
         }
 
-        const useTransform =
-          typeof scaleVal !== 'undefined' ||
-          typeof config.scale === 'undefined';
+        const useTransform = scaleVal !== undefined || scale === undefined;
 
         const usedValue = scaleVal ?? (value as string | number);
 
