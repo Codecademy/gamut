@@ -1,14 +1,10 @@
-import {
-  Box,
-  FlexBox,
-  Text,
-  TextButton,
-  TextButtonProps,
-} from '@codecademy/gamut';
+import { Box, FlexBox, Text, TextButton } from '@codecademy/gamut';
 import React from 'react';
 
-type SectionButton = TextButtonProps & {
+type SectionButton = {
   text: string;
+  href?: string;
+  onClick?: () => void;
 };
 
 export type PageSectionProps = {
@@ -25,38 +21,49 @@ export const PageSection: React.FC<PageSectionProps> = ({
   footerButton,
   children,
 }) => {
-  const renderSectionButton = (button: SectionButton) => {
-    const { text, ...textButtonProps } = button;
-    return <TextButton {...textButtonProps}>{text}</TextButton>;
-  };
-
   const maybeRenderHeaderButton = () => {
     if (!headerButton) return null;
-    renderSectionButton(headerButton);
+    const { text, ...buttonProps } = headerButton;
+    return (
+      <Box marginLeft={4} display="inline">
+        <TextButton {...buttonProps}>{text}</TextButton>
+      </Box>
+    );
   };
 
   const maybeRenderHeaderSecondaryButton = () => {
     if (!headerSecondaryButton) return null;
-    renderSectionButton(headerSecondaryButton);
+    const { text, ...buttonProps } = headerSecondaryButton;
+    return <TextButton {...buttonProps}>{text}</TextButton>;
   };
 
-  const maybeRenderFooter = () => {
+  const renderSectionHeader = () => (
+    <FlexBox paddingBottom={8}>
+      <FlexBox justifyContent="space-between">
+        <Text as="h2" fontSize={22} paddingTop={8}>
+          {title}
+        </Text>
+        {maybeRenderHeaderButton()}
+      </FlexBox>
+      {maybeRenderHeaderSecondaryButton()}
+    </FlexBox>
+  );
+
+  const maybeRenderSectionFooter = () => {
     if (!footerButton) return null;
-    return <Box>{renderSectionButton(footerButton)}</Box>;
+    const { text, ...buttonProps } = footerButton;
+    return (
+      <FlexBox justifyContent="flex-end">
+        <TextButton {...buttonProps}>{text}</TextButton>
+      </FlexBox>
+    );
   };
 
   return (
     <FlexBox flexDirection="column">
-      <Box paddingBottom={4}>
-        <Text as="h5" paddingBottom={4}>
-          {' '}
-          {title}{' '}
-        </Text>
-        {maybeRenderHeaderButton()}
-        {maybeRenderHeaderSecondaryButton()}
-      </Box>
+      {renderSectionHeader()}
       {children}
-      {maybeRenderFooter()}
+      {maybeRenderSectionFooter()}
     </FlexBox>
   );
 };

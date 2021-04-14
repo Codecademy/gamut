@@ -47,7 +47,18 @@ import { PropsTable } from '~styleguide/blocks';
 <Canvas>
   <Story name="PageSection with Header Buttons">
     {(args) => (
-      <PageSection {...args}>
+      <PageSection
+        {...args}
+        headerButton={{
+          text: 'Edit',
+        }}
+        headerSecondaryButton={{
+          text: 'My Goals',
+        }}
+        footerButton={{
+          text: 'Show more >',
+        }}
+      >
         <p>This is the body of the section</p>
       </PageSection>
     )}
