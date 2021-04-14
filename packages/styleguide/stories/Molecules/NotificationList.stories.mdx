@@ -1,5 +1,6 @@
 import { NotificationList } from '@codecademy/gamut/src';
 import title from '@codecademy/macros/lib/title.macro';
+import { action } from '@storybook/addon-actions';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 
 import { PropsTable } from '~styleguide/blocks';
@@ -71,15 +72,14 @@ export const notifications = [
   args={{
     notifications,
     onDismiss: () => {
-      // eslint-disable-next-line no-console
-      console.log('delete notification');
+      action('notification dismissed');
     },
   }}
 />
 
-New notifications list component. Each notification displays an icon corresponding to its notification type (ex. curriculum_blast or marketing_blast). If no type is provided, a default bell icon will be displayed.
+Displays a list of notifications. Each notification displays an icon corresponding to its notification type (ex. curriculum_blast or marketing_blast). If no type is provided, a default bell icon will be displayed.
 
-Sometimes the teams sending a notification would like to choose a unique icon for their notification. We still support this. If an imageUrl is provided, the notification will show the chosen image instead of the type icon. The recommendation from design, however, is to use the designated types.
+Sometimes the teams sending a notification would like to choose a unique icon for their notification. If an imageUrl is provided, the notification will show the chosen image instead of the type icon. The recommendation from design, however, is to use the designated types.
 
 <Canvas>
   <Story name="NotificationList">
@@ -91,6 +91,7 @@ Sometimes the teams sending a notification would like to choose a unique icon fo
 
 ## Empty Notification
 
+Notifications are not always present, so this has an empty state.
 Empty Notification content (message and image) is selected at random.
 
 <Canvas>
