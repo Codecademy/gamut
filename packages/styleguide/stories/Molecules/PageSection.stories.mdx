@@ -42,10 +42,10 @@ import { PropsTable } from '~styleguide/blocks';
 
 <PropsTable story="PageSection" />
 
-## With Header Buttons
+## PageSection with Header and Footer Buttons
 
 <Canvas>
-  <Story name="PageSection with Header Buttons">
+  <Story name="PageSection with Header and Footer Buttons">
     {(args) => (
       <PageSection
         {...args}
@@ -53,13 +53,26 @@ import { PropsTable } from '~styleguide/blocks';
           text: 'Edit',
         }}
         headerSecondaryButton={{
-          text: 'My Goals',
+          text: 'Share',
         }}
         footerButton={{
-          text: 'Show more >',
+          text: 'Show more',
         }}
       >
-        <p>This is the body of the section</p>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum
+          pulvinar urna at orci bibendum pharetra. Sed nec nibh id nulla
+          molestie vestibulum. Proin efficitur venenatis vulputate. Morbi dolor
+          odio, efficitur in volutpat nec, pharetra at dolor. Maecenas
+          imperdiet, augue eget congue feugiat, diam sapien consequat tellus, id
+          rutrum odio velit eu libero. Suspendisse auctor mauris metus, sed
+          convallis ipsum facilisis id. Proin et justo urna. Sed non ipsum
+          posuere, tristique velit vel, rutrum sapien. Proin ligula arcu, tempus
+          ut arcu at, pellentesque cursus enim. Donec laoreet congue arcu, at
+          ultrices velit posuere et. Integer finibus quam arcu. Quisque lacinia
+          placerat metus, sed malesuada diam porta iaculis. Cras vulputate
+          elementum dapibus. Sed ac varius elit...
+        </p>
       </PageSection>
     )}
   </Story>
