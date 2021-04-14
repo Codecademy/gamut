@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [13.4.10](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@13.4.9...@codecademy/gamut-labs@13.4.10) (2021-04-14)
+
+
+### Bug Fixes
+
+* use internal App Store and Google Play images ([#1625](https://github.com/Codecademy/client-modules/issues/1625)) ([46ff9d9](https://github.com/Codecademy/client-modules/commit/46ff9d91cd1aea085b42a78a6cc8b5805a418cc5))
+
+
+
 ### [13.4.9](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@13.4.8...@codecademy/gamut-labs@13.4.9) (2021-04-14)
 
 
