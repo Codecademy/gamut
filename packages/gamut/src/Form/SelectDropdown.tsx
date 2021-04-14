@@ -81,6 +81,7 @@ const customStyles: StylesConfig<OptionTypeBase, false> = {
 
   singleValue: (provided, state) => ({
     color: errorColorState(state.selectProps.error),
+    display: 'flex',
   }),
 
   valueContainer: (provided) => ({

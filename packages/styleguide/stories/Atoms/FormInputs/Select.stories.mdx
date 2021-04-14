@@ -5,6 +5,7 @@ import {
   SelectDropdown,
   FormGroup,
 } from '@codecademy/gamut';
+import { ProLogo } from '@codecademy/gamut-labs/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 
@@ -101,7 +102,14 @@ This is a variant of our `Select` component with a styled dropdown menu. `Select
   <Story
     name="BaseDropdown"
     args={{
-      options: ['Base', 'Regular Size', '"Normal'],
+      options: [
+        <>
+          <ProLogo backgroundColor="navy" variant="transparent" />
+          Based
+        </>,
+        'Regular Size',
+        '"Normal',
+      ],
       placeholder: 'all about that',
     }}
   >
