@@ -38,9 +38,9 @@ export const PageSection: React.FC<PageSectionProps> = ({
   };
 
   const renderSectionHeader = () => (
-    <FlexBox paddingBottom={8}>
-      <FlexBox justifyContent="space-between">
-        <Text as="h2" fontSize={22} paddingTop={8}>
+    <FlexBox height="2.5rem" marginBottom={8} justifyContent="space-between">
+      <FlexBox alignItems="center">
+        <Text as="h2" fontSize={22}>
           {title}
         </Text>
         {maybeRenderHeaderButton()}
