@@ -7,6 +7,8 @@ import React from 'react';
 import { FooterHeading } from '../FooterHeading';
 import { FooterLinkItem, FooterLinkItems } from '../FooterLinks';
 import { GlobalFooterClickHandler } from '../types';
+import downloadOnTheAppStore from './assets/download-on-the-app-store.svg';
+import getItOnGooglePlay from './assets/get-it-on-google-play.png';
 import { SocialMediaLinks } from './SocialMediaLinks';
 
 export type CompanyLinksProps = {
@@ -19,6 +21,7 @@ const MobileImageItem = styled(Box)();
 MobileImageItem.defaultProps = {
   as: 'li',
   display: 'inline-block',
+  marginY: 8,
   width: {
     base: '50%',
     md: '90%',
@@ -31,15 +34,6 @@ MobileImageLink.defaultProps = {
   display: 'inline-block',
   variant: 'interface',
 };
-
-const AppleMobileAppImage = styled.img`
-  padding: 0.5rem 0.75rem;
-  margin-left: -0.75rem;
-`;
-
-const AndroidMobileAppImage = styled.img`
-  margin-left: -10px;
-`;
 
 export const CompanyLinks: React.FC<CompanyLinksProps> = ({
   onClick,
@@ -105,7 +99,7 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
         {userGeo !== 'IN' && (
           <FooterLinkItem>
             <Anchor
-              href="/shop"
+              href="https://shop.codecademy.com"
               onClick={(event) => onClick({ event, target: 'shop' })}
               variant="interface"
             >
@@ -183,10 +177,10 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
             onClick={(event) => onClick({ event, target: '' })}
             target="_blank"
           >
-            <AppleMobileAppImage
+            <img
               alt="Download on the App Store"
               height="calc(40px + 1rem)"
-              src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-US?size=140x20&amp;releaseDate=1533168000"
+              src={downloadOnTheAppStore}
               width="calc(120px + 1.5rem)"
             />
           </MobileImageLink>
@@ -197,11 +191,11 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
             onClick={(event) => onClick({ event, target: '' })}
             target="_blank"
           >
-            <AndroidMobileAppImage
+            <img
               alt="Get it on Google Play"
-              height="60px"
-              src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
-              width="155px"
+              height="calc(40px + 1rem)"
+              src={getItOnGooglePlay}
+              width="calc(133px + 1.5rem)"
             />
           </MobileImageLink>
         </MobileImageItem>

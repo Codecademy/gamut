@@ -3,6 +3,42 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [13.4.12](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@13.4.11...@codecademy/gamut-labs@13.4.12) (2021-04-14)
+
+
+### Bug Fixes
+
+* corrected GlobalFooter shop link ([#1629](https://github.com/Codecademy/client-modules/issues/1629)) ([3da9db9](https://github.com/Codecademy/client-modules/commit/3da9db9767b966188bbabc3054ab7b400a2586c3))
+
+
+
+### [13.4.11](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@13.4.10...@codecademy/gamut-labs@13.4.11) (2021-04-14)
+
+
+### Bug Fixes
+
+* straight to main, j to J in CatalogLinks.tsx ([bc65aa7](https://github.com/Codecademy/client-modules/commit/bc65aa7be1244c1442546f96bed532f80479ef63))
+
+
+
+### [13.4.10](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@13.4.9...@codecademy/gamut-labs@13.4.10) (2021-04-14)
+
+
+### Bug Fixes
+
+* use internal App Store and Google Play images ([#1625](https://github.com/Codecademy/client-modules/issues/1625)) ([46ff9d9](https://github.com/Codecademy/client-modules/commit/46ff9d91cd1aea085b42a78a6cc8b5805a418cc5))
+
+
+
+### [13.4.9](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@13.4.8...@codecademy/gamut-labs@13.4.9) (2021-04-14)
+
+
+### Bug Fixes
+
+* mismatched footer links ([#1624](https://github.com/Codecademy/client-modules/issues/1624)) ([97a4e9e](https://github.com/Codecademy/client-modules/commit/97a4e9e32729c25d4b215e63f918f162fd0913fd))
+
+
+
 ### [13.4.8](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@13.4.7...@codecademy/gamut-labs@13.4.8) (2021-04-14)
 
 **Note:** Version bump only for package @codecademy/gamut-labs
