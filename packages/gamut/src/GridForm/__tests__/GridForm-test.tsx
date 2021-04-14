@@ -203,6 +203,7 @@ describe('GridForm', () => {
               size: 6,
             }}
             validation="onChange"
+            showRequired
           />
         </ThemeProvider>
       );
@@ -213,7 +214,7 @@ describe('GridForm', () => {
       wrapped.update();
 
       expect(wrapped.find('button').prop('disabled')).toBeTruthy();
-      expect(wrapped.find('input').prop('aria-required')).toBeFalsy();
+      expect(wrapped.find('input').prop('aria-required')).toBeTruthy();
     });
 
     it('enables the submit button after the required fields are completed', async () => {
@@ -234,6 +235,7 @@ describe('GridForm', () => {
               size: 6,
             }}
             validation="onChange"
+            showRequired
           />
         </ThemeProvider>
       );
@@ -248,7 +250,7 @@ describe('GridForm', () => {
       wrapped.setProps(wrapped.props());
 
       expect(wrapped.find('button').prop('disabled')).not.toBeTruthy();
-      expect(wrapped.find('input').prop('aria-required')).toBeFalsy();
+      expect(wrapped.find('input').prop('aria-required')).toBeTruthy();
     });
 
     it('keeps the submit button disabled when overridden and there are no incomplete fields', async () => {
