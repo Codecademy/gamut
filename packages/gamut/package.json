@@ -1,7 +1,7 @@
 {
   "name": "@codecademy/gamut",
   "description": "Styleguide & Component library for Codecademy",
-  "version": "29.9.7",
+  "version": "29.9.8",
   "author": "Codecademy Engineering <dev@codecademy.com>",
   "sideEffects": [
     "**/*.css",
@@ -53,7 +53,7 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@codecademy/gamut-tests": "^2.3.8",
+    "@codecademy/gamut-tests": "^2.3.9",
     "onchange": "^7.0.2"
   },
   "publishConfig": {
