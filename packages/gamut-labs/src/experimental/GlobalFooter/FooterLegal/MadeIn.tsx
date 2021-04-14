@@ -16,7 +16,7 @@ const ClickableSpan = styled.span`
 `;
 
 export type MadeInProps = {
-  onClick: (e: React.MouseEvent | React.KeyEvent) => void;
+  onClick: (e: React.MouseEvent | React.KeyboardEvent) => void;
 };
 
 export const MadeIn: React.FC<MadeInProps> = ({ onClick }) => {
