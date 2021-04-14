@@ -17,7 +17,6 @@ import {
   conditionalStyleProps,
   formDropdownStyles,
   formFieldStyles,
-  iconPaddingBase,
 } from './styles/shared';
 
 type ReactSelectNamedProps = Omit<NamedProps, 'options'>;
