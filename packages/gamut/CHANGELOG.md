@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [30.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@29.9.8...@codecademy/gamut@30.0.0) (2021-04-14)
+
+
+### ⚠ BREAKING CHANGES
+
+* **NotificationList:** Replaced old NotificationList & NotificationListItem w/ upgraded components
+
+### Features
+
+* **NotificationList:** Replaced old NotificationList & NotificationListItem w/ upgraded components ([063fd39](https://github.com/Codecademy/client-modules/commit/063fd39c95d6355ae711953d8cd8818285ae2f53))
+
+
+
 ### [29.9.8](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@29.9.7...@codecademy/gamut@29.9.8) (2021-04-14)
 
 
