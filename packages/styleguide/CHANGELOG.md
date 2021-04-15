@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [35.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@34.2.2...@codecademy/styleguide@35.0.0) (2021-04-15)
+
+
+### ⚠ BREAKING CHANGES
+
+* auto-centered ToolTips (#1614)
+
+### Features
+
+* auto-centered ToolTips ([#1614](https://github.com/Codecademy/client-modules/issues/1614)) ([1a257b4](https://github.com/Codecademy/client-modules/commit/1a257b4381f5b2f093baa7ee3a598c637c276898))
+
+
+
 ### [34.2.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@34.2.1...@codecademy/styleguide@34.2.2) (2021-04-15)
 
 **Note:** Version bump only for package @codecademy/styleguide
