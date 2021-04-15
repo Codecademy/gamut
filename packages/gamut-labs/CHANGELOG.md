@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [13.5.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@13.5.4...@codecademy/gamut-labs@13.5.5) (2021-04-15)
+
+
+### Bug Fixes
+
+* used _, not xs, for lowest size in GlobalFooter ([#1633](https://github.com/Codecademy/client-modules/issues/1633)) ([c776e33](https://github.com/Codecademy/client-modules/commit/c776e332df36a45d05dab9281cd872b6726644f3))
+
+
+
 ### [13.5.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@13.5.3...@codecademy/gamut-labs@13.5.4) (2021-04-15)
 
 **Note:** Version bump only for package @codecademy/gamut-labs
