@@ -1,18 +1,25 @@
-import cx from 'classnames';
+import { effectColors, system } from '@codecademy/gamut-styles';
+import styled from '@emotion/styled';
 import React, { HTMLAttributes } from 'react';
 
-import styles from './styles/CardShell.module.scss';
-
-const defaultProps = {
-  hoverShadow: false,
-};
-
-export type CardShellProps = HTMLAttributes<HTMLDivElement> & {
-  /**
-   * Hover effect to show indicate depth and interactivity.
-   */
-  hoverShadow?: boolean;
-};
+const Shell = styled.div(
+  system.variant({
+    base: {
+      background: 'white',
+      borderRadius: '2px',
+      boxShadow: `0 2px 8px 0 ${effectColors.slightShadow}`,
+      position: 'relative',
+      transition: 'box-shadow 250ms ease-in',
+    },
+    variants: {
+      hoverable: {
+        '&:hover': {
+          boxShadow: `-2px 8px 22px 0 ${effectColors.slightShadow}`,
+        },
+      },
+    },
+  })
+);
 
 /**
  * @deprecated
@@ -21,22 +28,28 @@ export type CardShellProps = HTMLAttributes<HTMLDivElement> & {
  * See [Card](https://gamut.codecademy.com/storybook/?path=/docs/atoms-card--card) for similiar functionality
  */
 
+export type CardShellProps = HTMLAttributes<HTMLDivElement> & {
+  /**
+   * Hover effect to show indicate depth and interactivity.
+   */
+  hoverShadow?: boolean;
+};
+
 export const CardShell = React.forwardRef<HTMLDivElement, CardShellProps>(
   ({ children, hoverShadow, className, ...props }, ref) => {
-    const shellClasses = cx(
-      styles.shell,
-      {
-        [styles.hoverShadow]: hoverShadow,
-      },
-      className
-    );
-
     return (
-      <div ref={ref} className={shellClasses} {...props}>
+      <Shell
+        ref={ref}
+        className={className}
+        variant={hoverShadow && 'hoverable'}
+        {...props}
+      >
         {children}
-      </div>
+      </Shell>
     );
   }
 );
 
-CardShell.defaultProps = defaultProps;
+CardShell.defaultProps = {
+  hoverShadow: false,
+};
