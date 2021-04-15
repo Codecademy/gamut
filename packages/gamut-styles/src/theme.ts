@@ -1,35 +1,37 @@
-import { createThemeVariables } from './utilities';
+import { createTheme } from '@codecademy/variance';
+
 import * as tokens from './variables';
 
-const themeColors = {
-  ...tokens.colors,
-  ...tokens.colorModes.light,
-};
-
-export interface ColorModes<T extends Record<string, Record<string, string>>> {
-  active: keyof T;
-  modes: T;
-}
-
-const colorModes: ColorModes<typeof tokens['colorModes']> = {
-  active: 'light',
-  modes: tokens.colorModes,
-};
-
-export const baseTheme = {
+export const { theme, variables, getColorValue } = createTheme({
   boxShadows: tokens.boxShadows,
   breakpoints: tokens.mediaQueries,
   fontSize: tokens.fontSize,
   fontFamily: tokens.fontFamily,
   lineHeight: tokens.lineHeight,
   fontWeight: tokens.fontWeight,
-  colors: themeColors,
   spacing: tokens.spacing,
   elements: tokens.elements,
-  colorModes,
-} as const;
-
-export const {
-  theme,
-  cssVariables: themeCssVariables,
-} = createThemeVariables(baseTheme, ['elements', 'colors']);
+})
+  .addColors(tokens.colors)
+  .addColorModes('light', {
+    light: {
+      primary: 'hyper',
+      secondary: 'navy',
+      text: 'navy',
+      background: 'white',
+      shadow: 'lightShadow',
+    },
+    dark: {
+      primary: 'yellow',
+      secondary: 'white',
+      text: 'white',
+      background: 'navy',
+      shadow: 'darkShadow',
+    },
+  })
+  .addScale('borders', ({ colors }) => ({
+    1: `1px solid ${colors.secondary}`,
+    2: `2px solid ${colors.secondary}`,
+  }))
+  .createScaleVariables('elements')
+  .build();

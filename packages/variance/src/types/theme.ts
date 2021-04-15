@@ -10,6 +10,10 @@ export interface BaseTheme {
   breakpoints: Breakpoints;
 }
 
+export interface AbstractTheme extends BaseTheme {
+  readonly [key: string]: any;
+}
+
 declare module '@emotion/react' {
   export interface Theme extends BaseTheme {}
 }
