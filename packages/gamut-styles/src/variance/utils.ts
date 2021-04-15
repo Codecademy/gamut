@@ -8,9 +8,9 @@ const baseConfig = {
 };
 
 export const styledConfig = Object.assign(
-  baseConfig,
   (additionalProps: string[] = []) => ({
     shouldForwardProp: (prop: string) =>
       baseConfig.shouldForwardProp(prop) && !additionalProps.includes(prop),
-  })
+  }),
+  baseConfig
 );
