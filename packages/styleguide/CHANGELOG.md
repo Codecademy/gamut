@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [34.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@34.1.0...@codecademy/styleguide@34.2.0) (2021-04-15)
+
+
+### Features
+
+* **LayoutGrid:** LayoutGrid conversion + Initial Variance Props [GM-81] ([2b51494](https://github.com/Codecademy/client-modules/commit/2b514940871759b66f91aa1f333be558e1ee517a))
+
+
+
+## [34.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@34.0.0...@codecademy/styleguide@34.1.0) (2021-04-15)
+
+
+### Features
+
+* **ThemeBuilder:**  TypeSafe theme construction + variable serialization [WEB-1401] ([8ccae3d](https://github.com/Codecademy/client-modules/commit/8ccae3d2081df94525269e443ac1b335953597c7))
+
+
+
 ## [34.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@33.9.12...@codecademy/styleguide@34.0.0) (2021-04-14)
 
 

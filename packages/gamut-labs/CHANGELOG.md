@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [13.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@13.4.14...@codecademy/gamut-labs@13.5.0) (2021-04-15)
+
+
+### Features
+
+* **LayoutGrid:** LayoutGrid conversion + Initial Variance Props [GM-81] ([2b51494](https://github.com/Codecademy/client-modules/commit/2b514940871759b66f91aa1f333be558e1ee517a))
+
+
+
+### [13.4.14](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@13.4.13...@codecademy/gamut-labs@13.4.14) (2021-04-15)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
 ### [13.4.13](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@13.4.12...@codecademy/gamut-labs@13.4.13) (2021-04-14)
 
 **Note:** Version bump only for package @codecademy/gamut-labs
