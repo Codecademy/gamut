@@ -1,4 +1,4 @@
-interface Breakpoints<T = string> {
+export interface Breakpoints<T = string> {
   xs: T;
   sm: T;
   md: T;
@@ -8,6 +8,10 @@ interface Breakpoints<T = string> {
 
 export interface BaseTheme {
   breakpoints: Breakpoints;
+}
+
+export interface AbstractTheme extends BaseTheme {
+  readonly [key: string]: any;
 }
 
 declare module '@emotion/react' {

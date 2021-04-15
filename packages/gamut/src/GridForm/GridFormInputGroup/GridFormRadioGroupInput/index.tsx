@@ -9,6 +9,7 @@ export type GridFormRadioGroupInputProps = {
   field: GridFormRadioGroupField;
   register: UseFormMethods['register'];
   setValue: (name: string, value: string) => void;
+  showRequired?: boolean;
 };
 
 export const GridFormRadioGroupInput: React.FC<GridFormRadioGroupInputProps> = ({
@@ -16,6 +17,7 @@ export const GridFormRadioGroupInput: React.FC<GridFormRadioGroupInputProps> = (
   field,
   register,
   setValue,
+  showRequired,
 }) => {
   return (
     <RadioGroup
@@ -24,6 +26,7 @@ export const GridFormRadioGroupInput: React.FC<GridFormRadioGroupInputProps> = (
       name={field.name}
       role="radiogroup"
       aria-label={field.label}
+      aria-required={showRequired}
       onChange={(event) => {
         const { value } = event.target;
         setValue(field.name, value);
