@@ -78,12 +78,12 @@ We provide a single package to manage the versions of a few core dependencies: `
 
 ### Publishing an alpha version of a module
 
-Every PR that changes files in a package publishes alpha releases that you can use to test your changes across applications
+Every PR that changes files in a package publishes alpha releases that you can use to test your changes across applications.
 
-1.  Create a PR
-1.  In the github "checks" UI, find the "Publish Alpha" task
-1.  Once this check has passed, click on it, and look through the output for the alpha version number
-1.  Use this version in the other application you want to test your changes on
+1.  Create a PR or Draft PR.
+    - This will kickoff the "Deploy" github action which will publish an alpha build.
+1.  After the alpha build is published, the `codecademydev` bot should comment on your PR with the names of the published alpha packages.
+1.  Install this version of the package in your application you wish to test your changes on.
 
 ### Working with pre-published changes
 
@@ -92,20 +92,20 @@ Every PR that changes files in a package publishes alpha releases that you can u
 **Initial Setup:**
 
 1. Ensure you have npm-link-better installed: `npm install -g npm-link-better`
-2. Ensure you've built the entire `client-modules` repo since you last synced: `yarn build-all`
+1. Ensure you've built the entire `client-modules` repo since you last synced: `yarn build-all`
 
 **Instructions:**
 
-For each of your local packages (e.g. `gamut`), you'll need to do 2 things to get it working in your local repo:
+For each of your local `client-modules` packages (e.g. `gamut`), you'll need to do 2 things to get it working in your project:
 
 1. Make sure your package changes have been built into the `client-modules/packages/[package]/dist` folder.
 
    - `yarn build`<br/>or<br/>
-     `yarn build:watch` (not all packages support this)
+     `yarn build:watch` (not all packages support this yet)
 
-2. Copy that `/dist` folder to your local repo's `node_modules/@codecademy/[package]` folder.
+1. Copy that built `/dist` folder to your project's `node_modules/@codecademy/[package]` folder.
    ```bash
-   cd myRepo
+   cd myProjectRepo
    npm-link-better --copy --watch path/to/client-modules/packages/[package]
    ```
    > NOTE: The `--watch` flag will automatically copy your package into `node_modules` everytime it is built.
