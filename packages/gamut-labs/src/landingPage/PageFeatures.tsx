@@ -1,10 +1,9 @@
 import {
   Box,
   Column,
-  ColumnSizes,
+  ColumnProps,
   Container,
   LayoutGrid,
-  ResponsiveProperty,
 } from '@codecademy/gamut';
 import { mediaQueries } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
@@ -61,10 +60,13 @@ const gridRenderEach = (
   items: PageFeaturesProps['features'],
   itemRenderer: (item: PageFeaturesProps['features'][0]) => ReactNode
 ): ReactNode => {
-  const size = { xs: 12, sm: 12 / maxCols } as ResponsiveProperty<ColumnSizes>;
+  const size = {
+    _: 12,
+    sm: 12 / maxCols,
+  } as ColumnProps['size'];
   /* eslint-disable react/no-array-index-key */
   return (
-    <LayoutGrid columnGap={{ xs: 'sm', sm: 'xl' }}>
+    <LayoutGrid columnGap={{ _: 8, sm: 32 }}>
       {items.map((item, i) => (
         <Column key={i} size={size}>
           {itemRenderer(item)}

@@ -1,75 +1,98 @@
-import {
-  NotificationIcon,
-  NotificationItem,
-  NotificationList,
-} from '@codecademy/gamut/src';
+import { NotificationList } from '@codecademy/gamut/src';
 import title from '@codecademy/macros/lib/title.macro';
+import { action } from '@storybook/addon-actions';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 
 import { PropsTable } from '~styleguide/blocks';
 
-<Meta
-  title={title}
-  component={NotificationList}
-  subcomponents={{ NotificationItem, NotificationIcon }}
-  parameters={{
-    subtitle: `List of time-sensitive user notifications, such as in a top-right dropdown
-menu from a header.`,
-    source: 'gamut',
-    figmaId: 'KIqFTtIa7WoDA8G1owEvYL',
-    status: 'deprecated',
-  }}
-/>
-
-export const examples = [
+export const notifications = [
   {
     campaign: 'python-livestream',
     date: '5 minutes',
-    iconSettings: {
-      color: '#3069f0',
-      backgroundColor: '#ffd500',
-    },
-    iconSlug: 'python',
+    type: 'curriculum_blast',
     id: 'abc',
     link:
       'https://www.codecademy.com/courses/livestreams/projects/livestream-intro-to-statistics-in-python',
     text: 'Check out our Python livestream!',
-    unread: true,
+  },
+  {
+    campaign: 'pro-trial',
+    type: 'marketing_blast',
+    date: '3 hours',
+    id: '1237',
+    text:
+      "It's your last day of Pro Trial! Sign up with Codecademy Pro to get helpful features like quizzes and projects and practice on the Codecademy Go mobile app!",
+  },
+  {
+    campaign: 'other-notification',
+    date: '2 days',
+    id: '1234',
+    link: 'http://google.com',
+    imageUrl: 'https://bit.ly/2Ckp4eW',
+    text: 'notiifcation with img url provided',
+  },
+  {
+    campaign: 'discourse-comment',
+    date: '1 hour',
+    id: '333',
+    text: 'discourse comment notification',
+    type: 'forum_comment',
+  },
+  {
+    campaign: 'discourse-message',
+    date: '1 minute',
+    id: '444',
+    text: 'discourse message notification',
+    type: 'forum_message',
+  },
+  {
+    campaign: 'discourse-like',
+    date: '3 minutes',
+    id: '555',
+    text: 'discourse like notification',
+    type: 'forum_like',
   },
   {
     campaign: 'pro-trial',
     date: '3 hours',
     id: '123',
-    imageUrl: 'https://bit.ly/2Ckp4eW',
-    text:
-      "It's your last day of Pro Trial! Sign up with Codecademy Pro to get helpful features like quizzes and projects and practice on the Codecademy Go mobile app!",
-  },
-  {
-    campaign: 'pro-trial',
-    date: '2 days',
-    id: '1234',
-    link: 'http://google.com',
-    imageUrl: 'https://bit.ly/2Ckp4eW',
-    text: 'Short notification example',
+    text: 'Notification with no image or type provided; default Bell icon!',
   },
 ];
 
+<Meta
+  title={title}
+  component={NotificationList}
+  parameters={{
+    subtitle: '',
+    source: 'gamut',
+    status: 'current',
+    figmaId: '',
+  }}
+  args={{
+    notifications,
+    onDismiss: () => {
+      action('notification dismissed');
+    },
+  }}
+/>
+
+Displays a list of notifications. Each notification displays an icon corresponding to its notification type (ex. curriculum_blast or marketing_blast). If no type is provided, a default bell icon will be displayed.
+
+Sometimes the teams sending a notification would like to choose a unique icon for their notification. If an imageUrl is provided, the notification will show the chosen image instead of the type icon. The recommendation from design, however, is to use the designated types.
+
 <Canvas>
-  <Story
-    name="NotificationsList"
-    args={{
-      notifications: examples,
-    }}
-  >
+  <Story name="NotificationList">
     {(args) => <NotificationList {...args} />}
   </Story>
 </Canvas>
 
 <PropsTable story="NotificationList" />
 
-## Empty
+## Empty Notification
 
 Notifications are not always present, so this has an empty state.
+Empty Notification content (message and image) is selected at random.
 
 <Canvas>
   <Story name="Empty" args={{ notifications: [] }}>

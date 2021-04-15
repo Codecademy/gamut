@@ -1,7 +1,7 @@
 {
   "name": "@codecademy/gamut-labs",
   "description": "Brand and experimental component library for Codecademy",
-  "version": "13.3.0",
+  "version": "13.5.2",
   "author": "Codecademy Engineering <dev@codecademy.com>",
   "sideEffects": [
     "*.css",
@@ -16,22 +16,23 @@
     "url": "git@github.com:Codecademy/client-modules.git"
   },
   "peerDependencies": {
-    "@codecademy/gamut-tests": "^1.0.0",
     "@emotion/react": "^11.1.4",
     "@emotion/styled": "^11.0.0",
     "react": ">=16.8.1",
     "react-dom": ">=16.8.1"
   },
   "dependencies": {
-    "@codecademy/gamut": "^29.8.0",
-    "@codecademy/gamut-styles": "^9.2.0",
-    "@codecademy/gamut-system": "^0.6.1",
-    "@codecademy/gamut-tests": "^2.3.5",
-    "@codecademy/variance": "^0.6.0",
+    "@codecademy/gamut": "^30.1.2",
+    "@codecademy/gamut-styles": "^9.5.0",
+    "@codecademy/gamut-system": "^0.7.0",
+    "@codecademy/variance": "^0.9.0",
     "classnames": "^2.2.5",
     "react-focus-on": "^3.5.1",
     "react-hotkeys-hook": "^2.3.1",
     "react-use": "15.3.8"
+  },
+  "devDependencies": {
+    "@codecademy/gamut-tests": "^2.3.11"
   },
   "scripts": {
     "verify": "tsc --noEmit",
@@ -39,6 +40,7 @@
     "build:clean": "rm -rf dist",
     "build:types": "tsc --emitDeclarationOnly",
     "build": "yarn build:clean && yarn build:compile && yarn build:types",
+    "build:watch": "yarn build && onchange ./src -- yarn build:compile && yarn build:types",
     "lernaBuildTask": "yarn build"
   },
   "license": "MIT",
