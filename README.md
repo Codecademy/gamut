@@ -87,19 +87,74 @@ Every PR that changes files in a package publishes alpha releases that you can u
 
 ### Working with pre-published changes
 
-Due to the inconsistencies of `yarn link` and symlinks in general in a lerna repo, we recommend using the `npm-link-better` package instead of `yarn link`.
+> NOTE: Due to the inconsistencies of symlinks in a lerna repo, _instead_ of using `yarn link`, we recommend using the `npm-link-better` package with the `--copy` flag to copy packages into your local repo's `node_modules` directory.
 
-To use it, follow these instructions:
+**Initial Setup:**
 
-1. in the terminal, `cd` into the root directory of the application that uses gamut (or any other client-modules package)
-1. Run `yarn build-all` (optional, but it rules out some other issues down the line)
-1. Run `npm-link-better` to link the package you're working on and start watching for changes
-1. `npx npm-link-better@0.6.0 --copy --watch ../client-modules/packages/gamut` (`../client-modules` or wherever your client-modules repo is)
-1. Make changes in the package client-modules repo and build the package, and you should see the changes reflected in your application
+1. Ensure you have npm-link-better installed: `npm install -g npm-link-better`
+2. Ensure you've built the entire `client-modules` repo since you last synced: `yarn build-all`
 
-To run a watcher and build Gamut on changes, in `client_modules/packages/gamut` use `yarn build:watch`. Similar watch scripts exist in the other packages, but if not feel free to add one!
+**Instructions:**
 
-You may need to run `yarn build:all` before running the build task in gamut or another package, if that package depends on the other built packages existing to be built.
+For each of your local packages (e.g. `gamut`), you'll need to do 2 things to get it working in your local repo:
+
+1. Make sure your package changes have been built into the `client-modules/packages/[package]/dist` folder.
+
+   - `yarn build`<br/>or<br/>
+     `yarn build:watch` (not all packages support this)
+
+2. Copy that `/dist` folder to your local repo's `node_modules/@codecademy/[package]` folder.
+   ```bash
+   cd myRepo
+   npm-link-better --copy --watch path/to/client-modules/packages/[package]
+   ```
+   > NOTE: The `--watch` flag will automatically copy your package into `node_modules` everytime it is built.
+
+<details>
+<summary>Example Workflow</summary>
+
+Let's say we are making changes to the `gamut` package, and our app that uses the `gamut` package uses `yarn start` to build, serve, and watch our app for changes.
+
+Let's also assume these two repos are sibling directories inside of a folder called `repos`
+
+```
+repos
+  |- client-modules
+  |- my-app
+```
+
+We would run the following commands in 3 separate shells
+
+```bash
+# Shell 1: Auto-build gamut changes
+cd repos/client-modules/packages/gamut
+yarn build:watch
+
+# Shell 2: Auto-copy built gamut changes to my-app.
+cd repos/my-app
+npm-link-better --copy --watch ../client-modules/packages/gamut
+
+# Shell 3: Auto-update app when anything changes.
+cd repos/my-app
+yarn start
+```
+
+This would allow us to make a change in our `gamut` package, and see that change automatically reflected in our local app in the browser.
+
+</details>
+
+<details>
+  <summary>Troubleshooting</summary>
+
+- If you see compilation issues in your project's dev server after running `npm-link-better`, you may have to restart your app's dev server.
+- If you are seeing compilation issues in a `client-modules` package, you may need to rebuild the whole repository via
+
+  ```bash
+  cd client-modules
+  yarn build-all
+  ```
+
+</details>
 
 <details>
   <summary>Instructions for using `yarn link` instead (not recommended)</summary>
@@ -126,11 +181,7 @@ If your other project uses React, you must link that copy of React in Gamut:
 for more information for why you have to do this.
 
 </details>
-
-#### Troubleshooting
-
-If you run into compilation issues after linking, try `yarn install` in your other project and restarting its dev server
-or running `yarn build-all` in this repo.
+<br/>
 
 ### Adding a New Package
 
