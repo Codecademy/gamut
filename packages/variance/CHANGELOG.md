@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.9.0](https://github.com/Codecademy/client-modules/compare/@codecademy/variance@0.8.0...@codecademy/variance@0.9.0) (2021-04-15)
+
+
+### Features
+
+* **LayoutGrid:** LayoutGrid conversion + Initial Variance Props [GM-81] ([2b51494](https://github.com/Codecademy/client-modules/commit/2b514940871759b66f91aa1f333be558e1ee517a))
+
+
+
 ## [0.8.0](https://github.com/Codecademy/client-modules/compare/@codecademy/variance@0.7.1...@codecademy/variance@0.8.0) (2021-04-15)
 
 
