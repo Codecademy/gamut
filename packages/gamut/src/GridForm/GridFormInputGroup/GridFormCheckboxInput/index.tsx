@@ -8,12 +8,14 @@ export type GridFormCheckboxInputProps = {
   className?: string;
   field: GridFormCheckboxField;
   register: UseFormMethods['register'];
+  showRequired?: boolean;
 };
 
 export const GridFormCheckboxInput: React.FC<GridFormCheckboxInputProps> = ({
   className,
   field,
   register,
+  showRequired,
 }) => {
   return (
     <Checkbox
@@ -27,6 +29,7 @@ export const GridFormCheckboxInput: React.FC<GridFormCheckboxInputProps> = ({
       multiline={field.multiline}
       ref={register(field.validation)}
       id={field.id}
+      aria-required={showRequired}
     />
   );
 };
