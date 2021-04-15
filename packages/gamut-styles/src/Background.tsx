@@ -1,66 +1,41 @@
-import { useTheme } from '@emotion/react';
-import styled from '@emotion/styled';
-import { getContrast, meetsContrastGuidelines } from 'polished';
+import { Theme, useTheme } from '@emotion/react';
+import { getContrast } from 'polished';
 import React, { useMemo } from 'react';
 
-import { ColorMode } from './ColorMode';
-import { properties } from './props';
-import { colors } from './variables';
+import { ColorMode, ProviderProps } from './ColorMode';
+import { getColorValue } from './theme';
 
-const Reset = styled.div(properties.backgroundColor);
-
-export type BackgroundProps = {
-  initialBackground: keyof typeof colors;
+export interface BackgroundProps extends ProviderProps {
+  bg: keyof Theme['colors'];
   className?: string;
-};
+}
 
 export const Background: React.FC<BackgroundProps> = ({
   children,
   className,
-  initialBackground,
+  bg,
+  ...rest
 }) => {
   const {
-    colorModes: { active, modes },
+    colorModes: { modes },
   } = useTheme();
+  const background = getColorValue(bg);
   const accessibleMode = useMemo(() => {
     const { light, dark } = modes;
+    const lightText = getColorValue(light.text);
+    const darkText = getColorValue(dark.text);
 
-    const lightModeContrast = getContrast(
-      light.text,
-      colors[initialBackground]
-    );
-    const darkModeContrast = getContrast(dark.text, colors[initialBackground]);
-
+    const lightModeContrast = getContrast(lightText, background);
+    const darkModeContrast = getContrast(darkText, background);
     // Minimum Contrast Requirement is 4.5 for AA (this will not be a perfect metric since there are multiple standards but should meet most of our needs)
     const highestContrastMode =
       lightModeContrast > darkModeContrast ? 'light' : 'dark';
-    const { AA } = meetsContrastGuidelines(
-      modes[highestContrastMode].text,
-      colors[initialBackground]
-    );
-    if (!AA) {
-      // eslint-disable-next-line no-console
-      console.warn(
-        `You are using an inaccessible background color ${initialBackground} (${colors[initialBackground]}) for color contrast`
-      );
-    }
-    return highestContrastMode;
-  }, [initialBackground, modes]);
 
-  if (accessibleMode === active) {
-    return (
-      <Reset className={className} backgroundColor={initialBackground}>
-        {children}
-      </Reset>
-    );
-  }
+    return highestContrastMode;
+  }, [modes, background]);
 
   return (
-    <ColorMode
-      className={className}
-      mode={accessibleMode}
-      initialBackground={initialBackground}
-    >
+    <ColorMode className={className} mode={accessibleMode} bg={bg} {...rest}>
       {children}
     </ColorMode>
   );
