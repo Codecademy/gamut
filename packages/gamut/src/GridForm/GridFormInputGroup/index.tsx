@@ -30,13 +30,21 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
   register,
   setValue,
   showRequired,
+  required,
 }) => {
   const errorMessage = error || field.customError;
+  const isRequired = showRequired && required;
 
   const getInput = () => {
     switch (field.type) {
       case 'checkbox':
-        return <GridFormCheckboxInput field={field} register={register} />;
+        return (
+          <GridFormCheckboxInput
+            field={field}
+            register={register}
+            showRequired={isRequired}
+          />
+        );
 
       case 'custom':
         return (
@@ -53,6 +61,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
           <GridFormRadioGroupInput
             field={field}
             register={register}
+            showRequired={isRequired}
             setValue={setValue}
           />
         );
@@ -63,6 +72,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
             error={!!errorMessage}
             field={field}
             register={register}
+            showRequired={isRequired}
           />
         );
 
@@ -72,6 +82,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
             error={!!errorMessage}
             field={field}
             register={register}
+            showRequired={isRequired}
           />
         );
 
@@ -81,6 +92,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
             error={!!errorMessage}
             field={field}
             register={register}
+            showRequired={isRequired}
           />
         );
 
@@ -90,6 +102,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
             error={!!errorMessage}
             field={field}
             register={register}
+            showRequired={isRequired}
           />
         );
     }
@@ -100,7 +113,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
       disabled={field.disabled}
       htmlFor={field.id || field.name}
       tooltip={field.tooltip}
-      showRequired={showRequired}
+      showRequired={isRequired}
     >
       {field.label}
     </FormGroupLabel>

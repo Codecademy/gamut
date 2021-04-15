@@ -1,7 +1,7 @@
 import { setupRtl } from '@codecademy/gamut-tests';
 
 import { Notification } from '../../NotificationList/typings';
-import { NotificationListNew, NotificationListNewProps } from '..';
+import { NotificationList, NotificationListProps } from '..';
 
 const onNotificationClick = jest.fn();
 const onDismiss = jest.fn();
@@ -21,25 +21,19 @@ const noLinkNotification: Notification = {
   campaign: 'new campaign 2',
 };
 
-const NotificationListProps: NotificationListNewProps = {
+const listProps: NotificationListProps = {
   notifications: [linkedNotification, noLinkNotification],
   onDismiss,
   onNotificationClick,
 };
 
-const EmptyNotificationslistProps: NotificationListNewProps = {
+const emptyListProps: NotificationListProps = {
   notifications: [],
 };
 
-const renderNotificationsList = setupRtl(
-  NotificationListNew,
-  NotificationListProps
-);
+const renderNotificationsList = setupRtl(NotificationList, listProps);
 
-const renderEmptyNotificationsList = setupRtl(
-  NotificationListNew,
-  EmptyNotificationslistProps
-);
+const renderEmptyNotificationsList = setupRtl(NotificationList, emptyListProps);
 
 describe('NotificationListNew', () => {
   it('renders a list of notifications', () => {
