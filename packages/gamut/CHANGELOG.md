@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [30.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@30.1.0...@codecademy/gamut@30.1.1) (2021-04-15)
+
+
+### Bug Fixes
+
+* adding aria-required for required GridForm fields ([fe41e4b](https://github.com/Codecademy/client-modules/commit/fe41e4bf3548cc8c8d9049c8f973660d8b1f12f7))
+
+
+
 ## [30.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@30.0.1...@codecademy/gamut@30.1.0) (2021-04-15)
 
 
