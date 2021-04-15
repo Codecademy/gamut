@@ -1,6 +1,4 @@
-import { flex } from '@codecademy/gamut-styles';
-import styled from '@emotion/styled';
-import React from 'react';
+import React, { ComponentProps } from 'react';
 
 import { Box } from '../../Box';
 import { CTAButton, FillButton } from '../../Button';
@@ -8,9 +6,8 @@ import {
   ButtonDeprecated,
   ButtonDeprecatedProps,
 } from '../../ButtonDeprecated';
-import { Column, ColumnSizes } from '../../Layout';
+import { Column } from '../../Layout';
 import { VisualTheme } from '../../theming/VisualTheme';
-import { ResponsiveProperty } from '../../typings/responsive-properties';
 
 export type GridFormSubmitPosition = keyof typeof positions;
 
@@ -20,7 +17,7 @@ export type ButtonDeprecatedType = 'business';
 type GridFormBase = {
   contents: React.ReactNode;
   position?: GridFormSubmitPosition;
-  size: ResponsiveProperty<ColumnSizes>;
+  size: ComponentProps<typeof Column>['size'];
   disabled?: ButtonDeprecatedProps['disabled'];
   mode?: VisualTheme;
 };
@@ -44,8 +41,6 @@ const positions = {
   right: 'flex-end',
   stretch: 'stretch',
 };
-
-const StyledColumn = styled(Column)(flex);
 
 export const GridFormSubmit: React.FC<GridFormSubmitProps> = (props) => {
   const getButton = () => {
@@ -85,12 +80,14 @@ export const GridFormSubmit: React.FC<GridFormSubmitProps> = (props) => {
   };
 
   return (
-    <StyledColumn
-      justifyContent={positions[props.position || 'left']}
-      alignItems="center"
-      size={props.size}
-    >
-      <Box marginBottom={8}>{getButton()}</Box>
-    </StyledColumn>
+    <Column size={props.size}>
+      <Box
+        marginBottom={8}
+        alignSelf="center"
+        justifySelf={positions[props.position || 'left']}
+      >
+        {getButton()}
+      </Box>
+    </Column>
   );
 };

@@ -1,16 +1,13 @@
 import { setupRtl } from '@codecademy/gamut-tests';
 
-import {
-  NotificationItemNew,
-  NotificationItemNewProps,
-} from '../NotificationItemNew';
+import { NotificationItem, NotificationItemProps } from '../NotificationItem';
 
 const linkHref = 'https://codecademy.com';
 const imageUrl = 'photo.png';
 const handleClick = jest.fn();
 const handleDismiss = jest.fn();
 
-const notificationProps: NotificationItemNewProps = {
+const notificationProps: NotificationItemProps = {
   notification: {
     text: 'notification text',
     id: 'abc2',
@@ -48,9 +45,9 @@ const getPropsByType = (type?: string) => {
   };
 };
 
-const renderView = setupRtl(NotificationItemNew, notificationProps);
+const renderView = setupRtl(NotificationItem, notificationProps);
 
-describe('NotificationItemNew', () => {
+describe('NotificationItem', () => {
   it('renders a link if an href is specified', () => {
     const { view } = renderView(getPropsByLink(linkHref));
     const href = view.getByRole('link').getAttribute('href');

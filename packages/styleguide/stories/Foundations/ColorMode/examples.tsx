@@ -47,18 +47,16 @@ export const BackgroundExample: React.FC<ComponentProps<typeof Background>> = ({
   ...rest
 }) => {
   return (
-    <Background {...rest}>
-      <Box padding={24}>
-        <Text as="p" fontSize={26} fontWeight="title" marginBottom={16}>
-          {rest.initialBackground}
-        </Text>
-        <Text as="p" marginBottom={16}>
-          Lorem ipsum dolor sit amet, sed do eiusmod tempor incididunt ut labore
-          et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-          exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-        </Text>
-        {children}
-      </Box>
+    <Background {...rest} p={24}>
+      <Text as="p" fontSize={26} fontWeight="title" marginBottom={16}>
+        {rest.bg}
+      </Text>
+      <Text as="p" marginBottom={16}>
+        Lorem ipsum dolor sit amet, sed do eiusmod tempor incididunt ut labore
+        et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+        exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+      </Text>
+      {children}
     </Background>
   );
 };
