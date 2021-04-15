@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [31.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@31.0.0...@codecademy/gamut@31.0.1) (2021-04-15)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [31.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@30.1.2...@codecademy/gamut@31.0.0) (2021-04-15)
+
+
+### ⚠ BREAKING CHANGES
+
+* auto-centered ToolTips (#1614)
+
+### Features
+
+* auto-centered ToolTips ([#1614](https://github.com/Codecademy/client-modules/issues/1614)) ([1a257b4](https://github.com/Codecademy/client-modules/commit/1a257b4381f5b2f093baa7ee3a598c637c276898))
+
+
+
 ### [30.1.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@30.1.1...@codecademy/gamut@30.1.2) (2021-04-15)
 
 **Note:** Version bump only for package @codecademy/gamut

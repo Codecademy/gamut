@@ -10,7 +10,7 @@ import React, { ReactNode } from 'react';
 
 import { VisualTheme } from '../theming/VisualTheme';
 
-export type ToolTipPosition =
+export type ToolTipAlignment =
   | 'bottom-left'
   | 'bottom-right'
   | 'top-left'
@@ -35,7 +35,7 @@ const TargetContainer = styled.div`
 `;
 
 type ToolTipContainerProps = {
-  position: ToolTipPosition;
+  alignment: ToolTipAlignment;
   mode: VisualTheme;
 };
 
@@ -79,8 +79,8 @@ const ToolTipContainer = styled.div<ToolTipContainerProps>`
     visibility: visible;
   }
 
-  ${({ position }) =>
-    ['top-left', 'top-right'].includes(position) &&
+  ${({ alignment }) =>
+    ['top-left', 'top-right'].includes(alignment) &&
     `
       bottom: 100%;
       padding-bottom: ${containerOffsetVertical};
@@ -99,8 +99,8 @@ const ToolTipContainer = styled.div<ToolTipContainerProps>`
       }
     `}
 
-  ${({ position }) =>
-    ['bottom-left', 'bottom-right'].includes(position) &&
+  ${({ alignment }) =>
+    ['bottom-left', 'bottom-right'].includes(alignment) &&
     `
       top: 100%;
       padding-top: ${containerOffsetVertical};
@@ -119,25 +119,28 @@ const ToolTipContainer = styled.div<ToolTipContainerProps>`
       }
     `}
 
-  ${({ position }) =>
-    ['bottom-left', 'top-left'].includes(position) &&
+  ${({ alignment }) =>
+    ['bottom-left', 'top-left'].includes(alignment) &&
     `
       justify-content: flex-end;
-      right: $container-offset-horizontal;
 
       &::after,
       &::before {
         right: ${arrowWidth};
       }
+
+      left: calc(50% - 14.75rem)
     `}
 
-  ${({ position }) =>
-    ['bottom-right', 'top-right'].includes(position) &&
+  ${({ alignment }) =>
+    ['bottom-right', 'top-right'].includes(alignment) &&
     `
       &::after,
       &::before {
         left: ${arrowWidth};
       }
+
+      left: calc(50% - 1.25rem);
     `}
 `;
 
@@ -157,6 +160,11 @@ const ToolTipBody = styled.div<{ mode: VisualTheme }>`
 `;
 
 export type ToolTipProps = {
+  /**
+   * How to align the tooltip relative to the target.
+   */
+  alignment?: ToolTipAlignment;
+
   children?: ReactNode;
 
   /**
@@ -174,23 +182,23 @@ export type ToolTipProps = {
   containerClassName?: string;
 
   /**
-   * Whether to manually add a tabIndex of 0, such as for tooltips containing actual buttons.
+   * Whether to manually add a tabIndex of 0 to the target container, for tooltips without focusable children.
    */
   focusable?: boolean;
+
   id: string;
   mode?: VisualTheme;
-  position?: ToolTipPosition;
   target?: ReactNode;
 };
 
 export const ToolTip: React.FC<ToolTipProps> = ({
+  alignment = 'top-right',
   children,
   className,
   containerClassName,
   focusable,
   id,
   mode = 'light',
-  position = 'top-right',
   target,
 }) => {
   return (
@@ -198,17 +206,16 @@ export const ToolTip: React.FC<ToolTipProps> = ({
       <TargetContainer
         aria-labelledby={id}
         // ToolTips sometimes contain actual <button>s, which cannot be a child of a button.
-        // This element still needs tab focus so we must use the `tabIndex=0` hack. Sigh.
-        // This behavior is considered deprecated; we recommend using Popover instead.
+        // This element still needs tab focus so we must use the `tabIndex=0` hack.
         // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
         tabIndex={focusable ? 0 : undefined}
       >
         {target}
       </TargetContainer>
       <ToolTipContainer
+        alignment={alignment}
         className={className}
         id={id}
-        position={position}
         role="tooltip"
         mode={mode}
         aria-live="polite"
