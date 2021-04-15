@@ -82,7 +82,8 @@ Every PR that changes files in a package publishes alpha releases that you can u
 
 1.  Create a PR or Draft PR.
     - This will kickoff the "Deploy" github action which will publish an alpha build.
-1.  After the alpha build is published, the `codecademydev` bot should comment on your PR with the names of the published alpha packages.
+1.  After the alpha build is published, the `codecademydev` bot should comment on your PR with the names of the published alpha packages. <br/> 
+    <img width="290" height="auto" src="https://user-images.githubusercontent.com/4298857/114948632-3fa88a80-9e04-11eb-89ef-d016a1c9c572.png">
 1.  Install this version of the package in your application you wish to test your changes on.
 
 ### Working with pre-published changes
