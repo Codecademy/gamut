@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@9.3.2...@codecademy/gamut-styles@9.4.0) (2021-04-15)
+
+
+### Features
+
+* **ThemeBuilder:**  TypeSafe theme construction + variable serialization [WEB-1401] ([8ccae3d](https://github.com/Codecademy/client-modules/commit/8ccae3d2081df94525269e443ac1b335953597c7))
+
+
+
 ### [9.3.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@9.3.1...@codecademy/gamut-styles@9.3.2) (2021-04-12)
 
 **Note:** Version bump only for package @codecademy/gamut-styles
