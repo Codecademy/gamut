@@ -1,7 +1,7 @@
 {
   "name": "@codecademy/variance",
   "description": "Constraint based CSS in JS for building scalable design systems",
-  "version": "0.7.0",
+  "version": "0.9.0",
   "keywords": [
     "emotion",
     "css",
