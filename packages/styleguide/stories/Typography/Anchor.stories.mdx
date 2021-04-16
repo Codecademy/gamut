@@ -67,18 +67,18 @@ export const variants = ['interface', 'standard', 'inline'];
         {variants.map((variant) => (
           <Box key={variant + 'light'} display="inline-block" padding={8}>
             <Text as="p">{startCase(variant)} Link</Text>
-            <Anchor marginRight={8} variant={variant} href={`#${variant}`}>
+            <Anchor mr={8} variant={variant} href={`#${variant}`}>
               Click Me
             </Anchor>
           </Box>
         ))}
       </Box>
-      <Background initialBackground="navy">
+      <Background bg="navy">
         <Box padding={16}>
           {variants.map((variant) => (
             <Box key={variant + 'dark'} display="inline-block" padding={8}>
               <Text as="p">{startCase(variant)} Link</Text>
-              <Anchor marginRight={8} variant={variant} href={`#${variant}`}>
+              <Anchor mr={8} variant={variant} href={`#${variant}`}>
                 Click Me
               </Anchor>
             </Box>
