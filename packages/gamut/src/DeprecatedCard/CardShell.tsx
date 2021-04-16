@@ -10,6 +10,7 @@ import styled from '@emotion/styled';
 
 export const CardShell = styled.div(
   system.variant({
+    defaultVariant: 'shadowed',
     base: {
       background: 'white',
       borderRadius: '2px',
@@ -18,6 +19,7 @@ export const CardShell = styled.div(
       transition: 'box-shadow 250ms ease-in',
     },
     variants: {
+      shadowed: {},
       flat: {
         boxShadow: 'none',
       },
