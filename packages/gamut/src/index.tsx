@@ -53,3 +53,5 @@ export * from './Truncate';
 export * from './utils';
 export * from './Video';
 export * from './typings/responsive-properties';
+export * from './Logo';
+export * from './ProLabel';
