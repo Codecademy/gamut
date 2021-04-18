@@ -1,14 +1,11 @@
-import { Box } from '@codecademy/gamut';
+import { Box, Text } from '@codecademy/gamut';
 import styled from '@emotion/styled';
 import React from 'react';
 
-import { Text } from '../experimental/Text';
 import { DarkModeProps } from './types';
 import { darkModeVariants } from './variants';
 
-const StyledText = styled(Text)<DarkModeProps>`
-  ${darkModeVariants}
-`;
+const StyledText = styled(Text)(darkModeVariants);
 
 export type TitleProps = DarkModeProps & {
   isPageHeading?: boolean;
@@ -24,7 +21,6 @@ export const Title: React.FC<TitleProps> = ({
   <Box maxWidth="58rem" className={className}>
     <StyledText
       as={isPageHeading ? 'h1' : 'h2'}
-      fontWeight="title"
       fontSize={
         isPageHeading
           ? {
