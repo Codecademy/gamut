@@ -11,19 +11,20 @@ const cardVariants = system.variant({
   },
   variants: {
     yellow: {
-      backgroundColor: 'yellow',
+      bg: 'yellow',
       textColor: 'navy',
     },
     navy: {
-      backgroundColor: 'navy',
+      bg: 'navy',
       textColor: 'white',
+      outline: '1px solid currentColor',
     },
     white: {
-      backgroundColor: 'white',
+      bg: 'white',
       textColor: 'navy',
     },
     hyper: {
-      backgroundColor: 'hyper',
+      bg: 'hyper',
       textColor: 'white',
     },
   },
