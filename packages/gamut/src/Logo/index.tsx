@@ -39,7 +39,12 @@ const Logo = ({ variant, ...props }: LogoProps) => {
   const svgProps = logoProps[variant];
 
   return (
-    <Svg mode={active} {...svgProps} {...props}>
+    <Svg
+      mode={active}
+      {...svgProps}
+      {...props}
+      xmlns="http://www.w3.org/2000/svg"
+    >
       {variant === 'default' && (
         <g fill="currentColor" fillRule="evenodd">
           <path
