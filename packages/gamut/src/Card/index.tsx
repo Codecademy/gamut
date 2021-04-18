@@ -1,5 +1,5 @@
-import { variant } from '@codecademy/gamut-styles';
-import { HandlerProps } from '@codecademy/gamut-system';
+import { system } from '@codecademy/gamut-styles';
+import { StyleProps } from '@codecademy/variance';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 
@@ -12,30 +12,47 @@ const SHADOWS = {
   background: [-2, 2],
 };
 
-const cardVariants = variant({
-  yellow: {
-    backgroundColor: 'yellow',
-    textColor: 'navy',
-    borderColor: 'navy',
+const cardVariants = system.variant({
+  base: {
+    border: 1,
+    borderRadius: '2px',
   },
-  navy: {
-    backgroundColor: 'navy',
-    textColor: 'white',
-    borderColor: 'navy',
-  },
-  white: {
-    backgroundColor: 'white',
-    textColor: 'navy',
-    borderColor: 'navy',
-  },
-  hyper: {
-    backgroundColor: 'hyper',
-    textColor: 'white',
-    borderColor: 'navy',
+  variants: {
+    yellow: {
+      backgroundColor: 'yellow',
+      textColor: 'navy',
+      borderColor: 'navy',
+    },
+    navy: {
+      backgroundColor: 'navy',
+      textColor: 'white',
+      borderColor: 'navy',
+    },
+    white: {
+      backgroundColor: 'white',
+      textColor: 'navy',
+      borderColor: 'navy',
+    },
+    hyper: {
+      backgroundColor: 'hyper',
+      textColor: 'white',
+      borderColor: 'navy',
+    },
   },
 });
 
-export type CardProps = HandlerProps<typeof cardVariants> & {
+const shadowVariants = system.variant({
+  prop: 'shadowOffset',
+  base: {
+    transition: '200ms transform ease',
+  },
+  variants: {
+    2: {},
+    4: {},
+  },
+});
+
+export type CardProps = StyleProps<typeof cardVariants> & {
   shadowOffset?: 2 | 4;
 };
 
