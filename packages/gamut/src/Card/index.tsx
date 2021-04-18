@@ -17,7 +17,9 @@ const cardVariants = system.variant({
     navy: {
       bg: 'navy',
       textColor: 'white',
-      outline: '1px solid currentColor',
+      '&:hover': {
+        outline: '1px solid currentColor',
+      },
     },
     white: {
       bg: 'white',
