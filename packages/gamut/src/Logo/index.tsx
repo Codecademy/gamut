@@ -31,7 +31,7 @@ const Svg = styled.svg(
   })
 );
 
-const Logo = ({ variant, ...props }: LogoProps) => {
+export const Logo = ({ variant, ...props }: LogoProps) => {
   const {
     colors,
     colorModes: { active },
