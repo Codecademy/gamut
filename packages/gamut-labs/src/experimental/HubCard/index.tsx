@@ -1,5 +1,4 @@
 import { Box, Card } from '@codecademy/gamut';
-import styled from '@emotion/styled';
 import React from 'react';
 
 import { Text } from '../Text';
@@ -11,28 +10,21 @@ export type HubCardProps = {
   backgroundPosition: 'left' | 'right';
 };
 
-const StyledCard = styled(Card)`
-  &:before {
-    background: inherit;
-  }
-`;
-
 export const HubCard: React.FC<HubCardProps> = ({
   eyebrowTitle,
   title,
   backgroundPosition,
   backgroundImage,
 }) => (
-  <StyledCard
-    shadowOffset={4}
-    padding={0}
+  <Card
+    shadow="medium"
     display="flex"
     justifyContent="center"
+    alignItems="center"
+    backgroundSize="cover"
     backgroundRepeat="no-repeat"
     backgroundPosition={backgroundPosition}
     backgroundImage={`url(${backgroundImage})`}
-    alignItems="center"
-    paddingX={24}
     height="11.25rem"
   >
     <Box padding={24} backgroundColor="white" width="100%" maxWidth="17.5rem">
@@ -43,5 +35,5 @@ export const HubCard: React.FC<HubCardProps> = ({
         {title}
       </Text>
     </Box>
-  </StyledCard>
+  </Card>
 );

@@ -1,16 +1,8 @@
-import { system } from '@codecademy/gamut-styles';
+import { system, theme } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
-import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 
 import { Box } from '../Box';
-
-const TRANSITION_COEFFICIENT = 50;
-
-const SHADOWS = {
-  foreground: [1, -1],
-  background: [-2, 2],
-};
 
 const cardVariants = system.variant({
   base: {
@@ -21,103 +13,50 @@ const cardVariants = system.variant({
     yellow: {
       backgroundColor: 'yellow',
       textColor: 'navy',
-      borderColor: 'navy',
     },
     navy: {
       backgroundColor: 'navy',
       textColor: 'white',
-      borderColor: 'navy',
     },
     white: {
       backgroundColor: 'white',
       textColor: 'navy',
-      borderColor: 'navy',
     },
     hyper: {
       backgroundColor: 'hyper',
       textColor: 'white',
-      borderColor: 'navy',
     },
   },
 });
 
 const shadowVariants = system.variant({
-  prop: 'shadowOffset',
+  prop: 'shadow',
   base: {
-    transition: '200ms transform ease',
+    boxShadow: `0px 0px 0 ${theme.colors.navy}`,
+    transition: 'box-shadow 200ms ease, transform 200ms ease',
   },
   variants: {
-    2: {},
-    4: {},
+    small: {
+      '&:hover': {
+        transform: 'translate(2px, -2px)',
+        boxShadow: `-4px 4px 0 ${theme.colors.navy}`,
+      },
+    },
+    medium: {
+      '&:hover': {
+        transform: 'translate(4px, -4px)',
+        boxShadow: `-8px 8px 0 ${theme.colors.navy}`,
+      },
+    },
   },
 });
 
-export type CardProps = StyleProps<typeof cardVariants> & {
-  shadowOffset?: 2 | 4;
-};
+export type CardProps = StyleProps<typeof cardVariants> &
+  StyleProps<typeof shadowVariants>;
 
-export const Card = styled(Box)<CardProps>(
-  cardVariants,
-  ({ theme, variant }) => {
-    const outline = variant === 'navy';
-
-    return css`
-      position: relative;
-      backface-visibility: hidden;
-
-      &:after,
-      &:before {
-        content: '';
-        position: absolute;
-        background-color: inherit;
-        border-width: inherit;
-        border-color: inherit;
-        border-radius: inherit;
-        border-style: inherit;
-        top: -1px;
-        left: -1px;
-        width: calc(100% + 2px);
-        height: calc(100% + 2px);
-        backface-visibility: hidden;
-        transition: inherit;
-      }
-
-      &:after {
-        z-index: -2;
-        background-color: ${theme.colors.navy};
-      }
-
-      &:before {
-        box-shadow: ${outline ? '-1px 1px 0 currentColor' : 'none'};
-        z-index: -1;
-      }
-    `;
-  },
-  ({ shadowOffset: offset = 0 }) => {
-    const timing = TRANSITION_COEFFICIENT * offset;
-
-    if (offset) {
-      const [fgX, fgY] = SHADOWS.foreground.map((x) => x * offset);
-      const [bgX, bgY] = SHADOWS.background.map((x) => x * offset);
-      return css`
-        transition: ${timing}ms transform ease;
-
-        &:hover {
-          transform: translate(${fgX}px, ${fgY}px);
-
-          &:after {
-            transform: translate(${bgX}px, ${bgY}px);
-          }
-        }
-      `;
-    }
-  }
-);
+export const Card = styled(Box)<CardProps>(cardVariants, shadowVariants);
 
 Card.defaultProps = {
   padding: 16,
   variant: 'white',
-  borderRadius: '2px',
-  borderWidth: '1px',
-  borderStyle: 'solid',
 };

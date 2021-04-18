@@ -53,7 +53,7 @@ export const Section: React.FC<ContentItem> = ({
   console.log(status);
   return (
     <Card
-      shadowOffset={4}
+      shadow="medium"
       padding={0}
       rowGap={8}
       display="grid"
