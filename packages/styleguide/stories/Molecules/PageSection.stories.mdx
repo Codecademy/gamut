@@ -1,3 +1,5 @@
+import { FillButton, IconButton, StrokeButton } from '@codecademy/gamut/src';
+import { SearchIcon } from '@codecademy/gamut-icons';
 import { PageSection } from '@codecademy/gamut-labs/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
@@ -17,37 +19,31 @@ import { PropsTable } from '~styleguide/blocks';
   }}
 />
 
+You will want to use this when the main content of your page is easily divided/organized into multiple semantic sections. You would use one PageSection component to wrap each of these semantic sections. They're meant to stack vertically on the page and scroll nicely into each other.
+
+It's suggested to utilize the optional header and footer buttons for Call To Actions that your section content might have.
+
 <Canvas>
   <Story name="PageSection">
     {(args) => (
       <>
-        <PageSection {...args}>
+        <PageSection {...args} title="Section 1 Title">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum
           pulvinar urna at orci bibendum pharetra. Sed nec nibh id nulla
           molestie vestibulum. Proin efficitur venenatis vulputate. Morbi dolor
           odio, efficitur in volutpat nec, pharetra at dolor. Maecenas
           imperdiet, augue eget congue feugiat, diam sapien consequat tellus, id
           rutrum odio velit eu libero. Suspendisse auctor mauris metus, sed
-          convallis ipsum facilisis id. Proin et justo urna. Sed non ipsum
-          posuere, tristique velit vel, rutrum sapien. Proin ligula arcu, tempus
-          ut arcu at, pellentesque cursus enim. Donec laoreet congue arcu, at
-          ultrices velit posuere et. Integer finibus quam arcu. Quisque lacinia
-          placerat metus, sed malesuada diam porta iaculis. Cras vulputate
-          elementum dapibus. Sed ac varius elit.
+          convallis ipsum facilisis id.
         </PageSection>
-        <PageSection {...args}>
+        <PageSection {...args} title="Section 2 Title">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum
           pulvinar urna at orci bibendum pharetra. Sed nec nibh id nulla
           molestie vestibulum. Proin efficitur venenatis vulputate. Morbi dolor
           odio, efficitur in volutpat nec, pharetra at dolor. Maecenas
           imperdiet, augue eget congue feugiat, diam sapien consequat tellus, id
           rutrum odio velit eu libero. Suspendisse auctor mauris metus, sed
-          convallis ipsum facilisis id. Proin et justo urna. Sed non ipsum
-          posuere, tristique velit vel, rutrum sapien. Proin ligula arcu, tempus
-          ut arcu at, pellentesque cursus enim. Donec laoreet congue arcu, at
-          ultrices velit posuere et. Integer finibus quam arcu. Quisque lacinia
-          placerat metus, sed malesuada diam porta iaculis. Cras vulputate
-          elementum dapibus. Sed ac varius elit.
+          convallis ipsum facilisis id.
         </PageSection>
       </>
     )}
@@ -58,20 +54,16 @@ import { PropsTable } from '~styleguide/blocks';
 
 ## PageSection with Header and Footer Buttons
 
+By default, all of the optional buttons are rendered with the `<TextButton>` component.
+
 <Canvas>
   <Story name="PageSection with Header and Footer Buttons">
     {(args) => (
       <PageSection
         {...args}
-        headerButton={{
-          text: 'Edit',
-        }}
-        headerSecondaryButton={{
-          text: 'Share',
-        }}
-        footerButton={{
-          text: 'Show more',
-        }}
+        headerButton={{ text: 'Edit', href: '', onClick: () => {} }}
+        headerSecondaryButton={{ text: 'Share', href: '', onClick: () => {} }}
+        footerButton={{ text: 'Show more', href: '', onClick: () => {} }}
       >
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum
         pulvinar urna at orci bibendum pharetra. Sed nec nibh id nulla molestie
@@ -79,12 +71,30 @@ import { PropsTable } from '~styleguide/blocks';
         efficitur in volutpat nec, pharetra at dolor. Maecenas imperdiet, augue
         eget congue feugiat, diam sapien consequat tellus, id rutrum odio velit
         eu libero. Suspendisse auctor mauris metus, sed convallis ipsum
-        facilisis id. Proin et justo urna. Sed non ipsum posuere, tristique
-        velit vel, rutrum sapien. Proin ligula arcu, tempus ut arcu at,
-        pellentesque cursus enim. Donec laoreet congue arcu, at ultrices velit
-        posuere et. Integer finibus quam arcu. Quisque lacinia placerat metus,
-        sed malesuada diam porta iaculis. Cras vulputate elementum dapibus. Sed
-        ac varius elit...
+        facilisis id...
+      </PageSection>
+    )}
+  </Story>
+</Canvas>
+
+All of these buttons are overrideable however by passing a ReactNode as a prop instead.
+
+<Canvas>
+  <Story name="PageSection with custom Header and Footer Buttons">
+    {(args) => (
+      <PageSection
+        {...args}
+        headerButton={<IconButton icon={SearchIcon} />}
+        headerSecondaryButton={<FillButton>Share</FillButton>}
+        footerButton={<StrokeButton>NEXT</StrokeButton>}
+      >
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum
+        pulvinar urna at orci bibendum pharetra. Sed nec nibh id nulla molestie
+        vestibulum. Proin efficitur venenatis vulputate. Morbi dolor odio,
+        efficitur in volutpat nec, pharetra at dolor. Maecenas imperdiet, augue
+        eget congue feugiat, diam sapien consequat tellus, id rutrum odio velit
+        eu libero. Suspendisse auctor mauris metus, sed convallis ipsum
+        facilisis id...
       </PageSection>
     )}
   </Story>
