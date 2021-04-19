@@ -39,7 +39,7 @@ export type ProgressBarProps = {
 };
 
 const progressBarSizeVariants = system.variant({
-  default: 'small',
+  defaultVariant: 'small',
   prop: 'size',
   variants: {
     small: {
@@ -58,7 +58,7 @@ const progressBarSizeVariants = system.variant({
 });
 
 const progressBarBackgroundVariants = system.variant({
-  default: 'blue',
+  defaultVariant: 'blue',
   variants: {
     blue: {
       bg: 'navy',
@@ -76,7 +76,7 @@ const progressBarBackgroundVariants = system.variant({
 });
 
 const progressBarBorderVariants = system.variant({
-  default: 'basic',
+  defaultVariant: 'basic',
   prop: 'border',
   variants: {
     basic: {
@@ -90,7 +90,15 @@ const progressBarBorderVariants = system.variant({
 });
 
 const progressBarForegroundVariants = system.variant({
-  default: 'blue',
+  defaultVariant: 'blue',
+  base: {
+    alignItems: 'center',
+    height: '100%',
+    display: 'flex',
+    transition: 'width 0.5s',
+    position: 'relative',
+    borderRadius: 'inherit',
+  },
   variants: {
     blue: {
       bg: 'blue',
@@ -126,12 +134,6 @@ const ProgressBarWrapper = styled.div<ProgressBarElementWrapperProps>`
 `;
 
 const Bar = styled.div<ProgressBarElementProps>`
-  align-items: center;
-  display: flex;
-  height: 100%;
-  transition: width 0.5s;
-  position: relative;
-  border-radius: inherit;
   ${progressBarForegroundVariants};
 `;
 

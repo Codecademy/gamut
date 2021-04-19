@@ -40,7 +40,7 @@ percentage label.
         {[0, 25, 50, 75, 100].map((percent) =>
           bars.map(({ size, variant }) => (
             <Column key={[percent, size, variant].join()} size={4}>
-              <Box margin={4}>
+              <Box margin={2}>
                 <ProgressBar size={size} percent={percent} variant={variant} />
               </Box>
             </Column>
