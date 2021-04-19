@@ -1,3 +1,4 @@
+import { ArrowChevronDownIcon } from '@codecademy/gamut-icons';
 import { theme } from '@codecademy/gamut-styles';
 import { css } from '@emotion/react';
 import { each, isObject } from 'lodash';
@@ -10,7 +11,7 @@ import ReactSelect, {
   StylesConfig,
 } from 'react-select';
 
-import { SelectIcon, SelectWrapperBaseProps } from './Select';
+import { SelectWrapperBaseProps } from './Select';
 import {
   colorStates,
   conditionalBorderStyles,
@@ -51,6 +52,7 @@ const customStyles: StylesConfig<OptionTypeBase, false> = {
     color: errorColorState(state.selectProps.error),
     display: 'flex',
     padding: '0',
+    pointerEvents: 'none',
   }),
 
   container: (provided) => ({
@@ -100,7 +102,7 @@ const customStyles: StylesConfig<OptionTypeBase, false> = {
 const ChevronDropdown = (props: IndicatorProps<OptionTypeBase, false>) => {
   return (
     <DropdownIndicator {...props}>
-      <SelectIcon size={16} />
+      <ArrowChevronDownIcon size={16} />
     </DropdownIndicator>
   );
 };

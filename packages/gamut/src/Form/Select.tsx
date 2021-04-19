@@ -64,8 +64,6 @@ const allowClickStyle = css`
 `;
 
 export const StyledFlexbox = styled(FlexBox)(allowClickStyle);
-export const SelectIcon = styled(ArrowChevronDownIcon)(allowClickStyle);
-const MiniSelectIcon = styled(MiniChevronDownIcon)(allowClickStyle);
 
 export const Select = forwardRef<HTMLSelectElement, SelectWrapperProps>(
   (
@@ -118,9 +116,9 @@ export const Select = forwardRef<HTMLSelectElement, SelectWrapperProps>(
           bottom="0"
         >
           {sizeVariant === 'small' ? (
-            <MiniSelectIcon size={12} />
+            <MiniChevronDownIcon size={12} />
           ) : (
-            <SelectIcon size={16} />
+            <ArrowChevronDownIcon size={16} />
           )}
         </StyledFlexbox>
         <SelectBase
