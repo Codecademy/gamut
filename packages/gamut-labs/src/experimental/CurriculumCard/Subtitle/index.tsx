@@ -1,6 +1,5 @@
 import { FlexBox } from '@codecademy/gamut';
 import { capitalize } from 'lodash';
-import pluralize from 'pluralize';
 import React from 'react';
 
 import { Difficulty, DifficultyProps } from '../Difficulty';
@@ -9,6 +8,10 @@ export type SubtitleProps = DifficultyProps & {
   scope: string;
   scopeCount?: number;
 };
+
+/* Quick and easy credit: https://stackoverflow.com/a/39835908 */
+const pluralizeWithS = (scope: string, scopeCount: number) =>
+  `${scope}${scopeCount !== 1 ? 's' : ''}`;
 
 export const Subtitle: React.FC<SubtitleProps> = ({
   difficulty,
@@ -22,7 +25,7 @@ export const Subtitle: React.FC<SubtitleProps> = ({
         <>
           ,&nbsp;
           <span data-testid="scope-count">
-            <b>{scopeCount}</b> {capitalize(pluralize(scope, scopeCount))}
+            <b>{scopeCount}</b> {capitalize(pluralizeWithS(scope, scopeCount))}
           </span>
         </>
       )}
