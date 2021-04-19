@@ -62,9 +62,9 @@ const customStyles: StylesConfig<OptionTypeBase, false> = {
     minWidth: '7rem',
   }),
 
-  menu: (provided) => ({
+  menu: (provided, state) => ({
     ...provided,
-    ...formDropdownStyles,
+    ...formDropdownStyles(state.selectProps.error),
   }),
 
   option: (provided, state) => ({

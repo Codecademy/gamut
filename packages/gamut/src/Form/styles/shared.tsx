@@ -163,12 +163,13 @@ export const formBaseComponentStyles = css`
   min-width: auto;
 `;
 
-export const formDropdownStyles = css`
+export const formDropdownStyles = (error: boolean) => css`
   ${formBaseComponentStyles}
   position: absolute;
   margin-top: -2px;
   border: 1px solid ${colorStates.activated.borderColor};
-  border-top: none;
+  border-top: 1px solid
+    ${error ? colorStates.error.borderColor : colorStates.hover.borderColor};
   z-index: 2;
 `;
 
