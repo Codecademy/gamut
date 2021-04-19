@@ -1,8 +1,5 @@
-import docs from '@codecademy/gamut-system/docs/compose.md';
 import title from '@codecademy/macros/lib/title.macro';
-import { Description, Meta } from '@storybook/addon-docs/blocks';
-
-import { formatExternalMarkdown } from '~styleguide/blocks';
+import { Meta } from '@storybook/addon-docs/blocks';
 
 <Meta
   title={title}
@@ -14,4 +11,15 @@ import { formatExternalMarkdown } from '~styleguide/blocks';
   }}
 />
 
-<Description>{formatExternalMarkdown(docs)}</Description>
+There may be instances where you would like to combine properties for ease of sharing or performance to batch their computations. To make this easy we've added a compose function to combine returned style functions into a single one with the intersection of all of their props.
+
+By default system will return a few groups of composed or group functions `typography`, `layout`, `spacing`,`border`, `background`, `color`, `flexbox`,`grid`.
+
+However, we expose a `compose` function to combine any style functions as necessary.
+
+```tsx
+import { variance } from '@codecademy/variance';
+import { layout, grid } from '@codecademy/gamut-styles';
+
+const Grid = styled.div(variance.compose(layout, grid));
+```

@@ -1,8 +1,5 @@
-import docs from '@codecademy/gamut-system/docs/responsive.md';
 import title from '@codecademy/macros/lib/title.macro';
-import { Description, Meta } from '@storybook/addon-docs/blocks';
-
-import { formatExternalMarkdown } from '~styleguide/blocks';
+import { Meta } from '@storybook/addon-docs/blocks';
 
 <Meta
   title={title}
@@ -14,4 +11,53 @@ import { formatExternalMarkdown } from '~styleguide/blocks';
   }}
 />
 
-<Description>{formatExternalMarkdown(docs)}</Description>
+Being able to configure your styles for multiple screensizes is often very necessary. We make all style functions accept valid configurations of our responsive property spec.
+
+Responsive configurations are two basic shape a map of breakpoint aliases / values or an array of values:
+
+```tsx
+export interface MediaQueryArray<T> {
+  0?: T;
+  1?: T;
+  2?: T;
+  3?: T;
+  4?: T;
+  5?: T;
+}
+export interface MediaQueryMap<T> {
+  _?: T;
+  xs?: T;
+  sm?: T;
+  md?: T;
+  lg?: T;
+  xl?: T;
+}
+
+export type ResponsiveProp<T> = T | MediaQueryMap<T> | MediaQueryArray<T>;
+```
+
+What this looks like in practice:
+
+```tsx
+const Box = styled.div`
+  ${display}
+`
+
+// Array Syntax
+<Box display={['none', ,'block']} />
+
+// Alias Syntax
+<Box display={{ _: 'none', sm: 'block' }} />
+```
+
+Output styles:
+
+```scss
+.Box {
+  display: 'none';
+
+  @media (min-width: 480px) {
+    display: 'block';
+  }
+}
+```
