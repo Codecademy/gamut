@@ -81,6 +81,13 @@ export const border = {
   borderStyleBottom: { property: 'borderBottomStyle' },
 } as const;
 
+const alignments = {
+  justifyContent: { property: 'justifyContent' },
+  justifyItems: { property: 'justifyItems' },
+  alignItems: { property: 'alignItems' },
+  alignContent: { property: 'alignContent' },
+} as const;
+
 export const flex = {
   flex: { property: 'flex' },
   flexBasis: { property: 'flexBasis' },
@@ -89,10 +96,7 @@ export const flex = {
   flexShrink: { property: 'flexShrink' },
   flexGrow: { property: 'flexGrow' },
   order: { property: 'order' },
-  justifyContent: { property: 'justifyContent' },
-  justifyItems: { property: 'justifyItems' },
-  alignItems: { property: 'alignItems' },
-  alignContent: { property: 'alignContent' },
+  ...alignments,
 } as const;
 
 export const grid = {
@@ -111,6 +115,7 @@ export const grid = {
   gridRowStart: { property: 'gridRowStart' },
   gridColumnEnd: { property: 'gridColumnEnd' },
   gridRowEnd: { property: 'gridRowEnd' },
+  ...alignments,
 } as const;
 
 export const background = {
