@@ -1,11 +1,19 @@
 import { Box, FlexBox, Text, TextButton } from '@codecademy/gamut';
-import React from 'react';
+import React, { ReactNode } from 'react';
 
-type SectionButton = {
+type TextButtonMinimumProps = {
   text: string;
   href?: string;
   onClick?: () => void;
 };
+
+type SectionButton = TextButtonMinimumProps | ReactNode;
+
+function isSectionButtonATextButton(
+  button: SectionButton
+): button is TextButtonMinimumProps {
+  return (button as TextButtonMinimumProps).text !== undefined;
+}
 
 export type PageSectionProps = {
   title: string;
@@ -21,19 +29,10 @@ export const PageSection: React.FC<PageSectionProps> = ({
   footerButton,
   children,
 }) => {
-  const maybeRenderHeaderButton = () => {
-    if (!headerButton) return null;
-    const { text, ...buttonProps } = headerButton;
-    return (
-      <Box marginLeft={4} display="inline">
-        <TextButton {...buttonProps}>{text}</TextButton>
-      </Box>
-    );
-  };
+  const renderSectionButton = (sectionButton: SectionButton) => {
+    if (!isSectionButtonATextButton(sectionButton)) return sectionButton;
 
-  const maybeRenderHeaderSecondaryButton = () => {
-    if (!headerSecondaryButton) return null;
-    const { text, ...buttonProps } = headerSecondaryButton;
+    const { text, ...buttonProps } = sectionButton;
     return <TextButton {...buttonProps}>{text}</TextButton>;
   };
 
@@ -45,27 +44,28 @@ export const PageSection: React.FC<PageSectionProps> = ({
         <Text as="h2" fontSize={22}>
           {title}
         </Text>
-        {maybeRenderHeaderButton()}
+        {Boolean(headerButton) && (
+          <Box marginLeft={4} display="inline">
+            {renderSectionButton(headerButton)}
+          </Box>
+        )}
       </FlexBox>
-      {maybeRenderHeaderSecondaryButton()}
+      {Boolean(headerSecondaryButton) &&
+        renderSectionButton(headerSecondaryButton)}
     </FlexBox>
   );
 
-  const maybeRenderSectionFooter = () => {
-    if (!footerButton) return null;
-    const { text, ...buttonProps } = footerButton;
-    return (
-      <FlexBox justifyContent="flex-end">
-        <TextButton {...buttonProps}>{text}</TextButton>
-      </FlexBox>
-    );
-  };
+  const renderSectionFooter = () => (
+    <FlexBox justifyContent="flex-end">
+      {renderSectionButton(footerButton)}
+    </FlexBox>
+  );
 
   return (
     <FlexBox flexDirection="column">
       {renderSectionHeader()}
       {children}
-      {maybeRenderSectionFooter()}
+      {!!footerButton && renderSectionFooter()}
     </FlexBox>
   );
 };
