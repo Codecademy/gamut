@@ -1,5 +1,5 @@
 export * from './Anchor';
-export * from './Alert';
+export * from './Alert/Alert';
 export * from './Accordion';
 export * from './AccordionArea';
 export * from './AccordionButton';

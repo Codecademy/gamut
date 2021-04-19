@@ -61,6 +61,7 @@ const placementVariants = system.variant({
   prop: 'placement',
   variants: {
     inline: {
+      borderColor: 'transparent',
       p: 4,
       py: 8,
     },
@@ -85,27 +86,22 @@ const alertVariants = system.variant({
   variants: {
     general: {
       bg: 'blue',
-      borderColor: 'blue',
       textColor: 'white',
     },
     success: {
       bg: 'green',
-      borderColor: 'green',
       textColor: 'white',
     },
     error: {
       bg: 'red',
-      borderColor: 'red',
       textColor: 'white',
     },
     notice: {
       bg: 'orange',
-      borderColor: 'orange',
       textColor: 'navy',
     },
     feature: {
       bg: 'blue-300',
-      borderColor: 'blue-300',
       textColor: 'navy',
     },
   },
