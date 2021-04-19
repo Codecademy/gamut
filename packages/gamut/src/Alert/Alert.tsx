@@ -7,8 +7,7 @@ import {
   MiniStarIcon,
   MiniWarningTriangleIcon,
 } from '@codecademy/gamut-icons';
-import { breakpoints, variant } from '@codecademy/gamut-styles';
-import { css } from '@emotion/react';
+import { breakpoints, system } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import { motion } from 'framer-motion';
 import React, { useMemo, useState } from 'react';
@@ -58,45 +57,54 @@ export type InlineAlert = AlertBase & {
 
 export type AlertProps = FloatingAlert | InlineAlert;
 
-const placementVariants = variant({
+const placementVariants = system.variant({
   prop: 'placement',
   variants: {
     inline: {
-      padding: 4,
-      paddingY: 8,
+      p: 4,
+      py: 8,
     },
     floating: {
-      padding: 4,
+      p: 4,
       borderColor: 'navy',
     },
   },
 });
 
-const alertVariants = variant({
+const alertVariants = system.variant({
   prop: 'type',
+  base: {
+    display: 'grid',
+    alignItems: 'start',
+    width: 1,
+    maxWidth: `calc(${breakpoints.md} - 4rem)`,
+    border: 2,
+    borderRadius: '3px',
+    columnGap: [4, 8, , 12],
+  },
   variants: {
     general: {
-      backgroundColor: 'blue',
+      bg: 'blue',
       borderColor: 'blue',
       textColor: 'white',
     },
     success: {
-      backgroundColor: 'green',
+      bg: 'green',
       borderColor: 'green',
       textColor: 'white',
     },
     error: {
-      backgroundColor: 'red',
+      bg: 'red',
       borderColor: 'red',
       textColor: 'white',
     },
     notice: {
-      backgroundColor: 'orange',
+      bg: 'orange',
       borderColor: 'orange',
       textColor: 'navy',
     },
     feature: {
-      backgroundColor: 'blue-300',
+      bg: 'blue-300',
       borderColor: 'blue-300',
       textColor: 'navy',
     },
@@ -104,13 +112,6 @@ const alertVariants = variant({
 });
 
 const AlertBanner = styled(Box)<Pick<AlertProps, 'type' | 'placement'>>(
-  css`
-    display: grid;
-    width: 100%;
-    max-width: calc(${breakpoints.md} - 4rem);
-    border: 2px solid currentColor;
-    border-radius: 3px;
-  `,
   alertVariants,
   placementVariants
 );
@@ -120,13 +121,6 @@ AlertBanner.defaultProps = {
   'aria-label': 'alert box',
   'aria-live': 'polite',
 };
-
-const AlertContent = styled(motion.div)(
-  ({ theme }) => css`
-    padding: ${theme.spacing[4]} 0;
-    overflow-y: hidden;
-  `
-);
 
 const transitionDuration = 0.2;
 
@@ -149,7 +143,7 @@ export const Alert: React.FC<AlertProps> = ({
   ...props
 }) => {
   const type = props.type ?? 'general';
-  const { icon: Icon, mode } = VARIANT_META[type];
+  const { icon: Icon, mode } = VARIANT_META[type] || {};
   const [expanded, setExpanded] = useState(false);
   const [truncated, setTruncated] = useState(false);
 
@@ -160,12 +154,15 @@ export const Alert: React.FC<AlertProps> = ({
   }, [truncated, cta]);
 
   const columns = `max-content minmax(0, 1fr) repeat(${numberOfColumns}, max-content)`;
-  const content =
-    props.placement === 'inline' ? (
-      <Box paddingY={4}>{children}</Box>
-    ) : (
-      <AlertContent
+  const renderContent = () => {
+    if (props.placement === 'inline') {
+      return <Box paddingY={4}>{children}</Box>;
+    }
+
+    return (
+      <motion.div
         variants={contentVariants}
+        style={{ overflow: 'hidden', padding: '0.25rem 0' }}
         transition={{ duration: transitionDuration, ease: 'easeInOut' }}
         aria-expanded={expanded}
         initial={expanded ? 'expanded' : 'truncated'}
@@ -174,16 +171,12 @@ export const Alert: React.FC<AlertProps> = ({
         <Truncate expanded={expanded} onTruncate={setTruncated} lines={1}>
           {children}
         </Truncate>
-      </AlertContent>
+      </motion.div>
     );
+  };
 
   return (
-    <AlertBanner
-      alignItems="start"
-      columnGap={[4, 8, , 12]}
-      gridTemplateColumns={columns}
-      {...props}
-    >
+    <AlertBanner gridTemplateColumns={columns} {...props}>
       <FlexBox
         height="2rem"
         width="2rem"
@@ -192,7 +185,7 @@ export const Alert: React.FC<AlertProps> = ({
       >
         <Icon size={16} aria-hidden="true" />
       </FlexBox>
-      {content}
+      {renderContent()}
       {truncated && (
         <CollapseButton
           aria-label={expanded ? 'Collapse' : 'Expand'}
