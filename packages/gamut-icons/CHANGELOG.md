@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.8.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@4.7.0...@codecademy/gamut-icons@4.8.0) (2021-04-19)
+
+
+### Features
+
+* **Icons:** Add checkout icons ([c89c84c](https://github.com/Codecademy/client-modules/commit/c89c84c4fea2abfdafeaf55e6873718e83901fef))
+
+
+
 ## [4.7.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@4.6.0...@codecademy/gamut-icons@4.7.0) (2021-04-15)
 
 

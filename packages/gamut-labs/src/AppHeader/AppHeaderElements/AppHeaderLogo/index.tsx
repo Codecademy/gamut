@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import React from 'react';
 
-import { Logo } from '../../../../brand/Logo';
+import { Logo } from '../../../Logo';
 import { focusStyles } from '../SharedStyles';
 import { AppHeaderClickHandler, AppHeaderLogoItem } from '../types';
 

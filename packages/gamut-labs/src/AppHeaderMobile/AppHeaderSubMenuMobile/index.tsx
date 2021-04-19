@@ -4,7 +4,6 @@ import { pxRem } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React from 'react';
 
-import { Text } from '../../../experimental/Text';
 import { AppHeaderDropdownProps } from '../../AppHeader/AppHeaderElements/AppHeaderDropdown';
 import { AppHeaderLinkSections } from '../../AppHeader/AppHeaderElements/AppHeaderLinkSections';
 import {
@@ -12,6 +11,7 @@ import {
   hoverStyles,
   textButtonStyles,
 } from '../../AppHeader/AppHeaderElements/SharedStyles';
+import { Text } from '../../Text';
 
 export type AppHeaderSubMenuMobileProps = AppHeaderDropdownProps & {
   handleClose: () => void;
