@@ -19,7 +19,7 @@ import {
   formFieldStyles,
 } from './styles/shared';
 
-type ReactSelectNamedProps = Omit<NamedProps, 'options'>;
+type ReactSelectNamedProps = Omit<NamedProps, 'options' | 'defaultValue'>;
 type SelectDropdownBaseProps = Omit<SelectWrapperBaseProps, 'onChange'>;
 type SelectDropdownProps = SelectDropdownBaseProps & ReactSelectNamedProps;
 type OptionStrict = {
