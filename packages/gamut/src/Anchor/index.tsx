@@ -1,19 +1,16 @@
 import { styledConfig, system } from '@codecademy/gamut-styles';
-import { variance } from '@codecademy/variance';
+import { StyleProps, variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
-import React, { forwardRef, HTMLProps, MutableRefObject } from 'react';
 
-export type AnchorStyleProps = Parameters<typeof anchorProps>[0];
-export type LinkElements = HTMLAnchorElement | HTMLButtonElement;
-export interface AnchorProps extends AnchorStyleProps {
-  href?: string;
-  as?: never;
-  mode?: 'light' | 'dark';
-  variant?: 'standard' | 'inline' | 'interface';
-}
-export interface ForwardedProps
-  extends Omit<HTMLProps<LinkElements>, keyof AnchorProps>,
-    AnchorProps {}
+import {
+  ButtonBase,
+  ButtonBaseProps,
+  SafeButtonProps,
+} from '../ButtonBase/ButtonBase';
+
+export type AnchorProps = SafeButtonProps<
+  StyleProps<typeof anchorProps> & StyleProps<typeof anchorVariants>
+>;
 
 const anchorVariants = system.variant({
   base: {
@@ -71,7 +68,6 @@ const anchorVariants = system.variant({
     interface: {
       textColor: 'text',
       whiteSpace: 'initial',
-      '&:after': {},
       '&:hover': {
         textDecoration: 'underline',
       },
@@ -85,35 +81,14 @@ const anchorProps = variance.compose(
   system.space
 );
 
-const AnchorElement = forwardRef<LinkElements, ForwardedProps>(
-  ({ href, disabled, children, as, ...rest }, ref) => {
-    if (href == null) {
-      return (
-        <button
-          {...rest}
-          ref={ref as MutableRefObject<HTMLButtonElement>}
-          type="button"
-          aria-disabled={disabled}
-        >
-          {children}
-        </button>
-      );
-    }
-
-    return (
-      <a {...rest} href={href} ref={ref as MutableRefObject<HTMLAnchorElement>}>
-        {children}
-      </a>
-    );
-  }
-);
-
 export const AnchorBase = styled('a', styledConfig)<AnchorProps>(
   anchorVariants,
   anchorProps
 );
 
-export const Anchor = AnchorBase.withComponent(AnchorElement);
+export const Anchor = AnchorBase.withComponent(
+  ButtonBase as ButtonBaseProps<AnchorProps>
+);
 
 Anchor.defaultProps = {
   variant: 'inline',
