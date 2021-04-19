@@ -3,6 +3,122 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [35.0.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@35.0.1...@codecademy/styleguide@35.0.2) (2021-04-15)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [35.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@35.0.0...@codecademy/styleguide@35.0.1) (2021-04-15)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [35.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@34.2.2...@codecademy/styleguide@35.0.0) (2021-04-15)
+
+
+### ⚠ BREAKING CHANGES
+
+* auto-centered ToolTips (#1614)
+
+### Features
+
+* auto-centered ToolTips ([#1614](https://github.com/Codecademy/client-modules/issues/1614)) ([1a257b4](https://github.com/Codecademy/client-modules/commit/1a257b4381f5b2f093baa7ee3a598c637c276898))
+
+
+
+### [34.2.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@34.2.1...@codecademy/styleguide@34.2.2) (2021-04-15)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [34.2.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@34.2.0...@codecademy/styleguide@34.2.1) (2021-04-15)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [34.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@34.1.0...@codecademy/styleguide@34.2.0) (2021-04-15)
+
+
+### Features
+
+* **LayoutGrid:** LayoutGrid conversion + Initial Variance Props [GM-81] ([2b51494](https://github.com/Codecademy/client-modules/commit/2b514940871759b66f91aa1f333be558e1ee517a))
+
+
+
+## [34.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@34.0.0...@codecademy/styleguide@34.1.0) (2021-04-15)
+
+
+### Features
+
+* **ThemeBuilder:**  TypeSafe theme construction + variable serialization [WEB-1401] ([8ccae3d](https://github.com/Codecademy/client-modules/commit/8ccae3d2081df94525269e443ac1b335953597c7))
+
+
+
+## [34.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@33.9.12...@codecademy/styleguide@34.0.0) (2021-04-14)
+
+
+### ⚠ BREAKING CHANGES
+
+* **NotificationList:** Replaced old NotificationList & NotificationListItem w/ upgraded components
+
+### Features
+
+* **NotificationList:** Replaced old NotificationList & NotificationListItem w/ upgraded components ([063fd39](https://github.com/Codecademy/client-modules/commit/063fd39c95d6355ae711953d8cd8818285ae2f53))
+
+
+
+### [33.9.12](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@33.9.11...@codecademy/styleguide@33.9.12) (2021-04-14)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [33.9.11](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@33.9.10...@codecademy/styleguide@33.9.11) (2021-04-14)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [33.9.10](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@33.9.9...@codecademy/styleguide@33.9.10) (2021-04-14)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [33.9.9](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@33.9.8...@codecademy/styleguide@33.9.9) (2021-04-14)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [33.9.8](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@33.9.7...@codecademy/styleguide@33.9.8) (2021-04-14)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
 ### [33.9.7](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@33.9.6...@codecademy/styleguide@33.9.7) (2021-04-13)
 
 **Note:** Version bump only for package @codecademy/styleguide

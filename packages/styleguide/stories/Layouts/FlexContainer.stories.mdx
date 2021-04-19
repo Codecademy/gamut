@@ -4,7 +4,7 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 
 import { PropsTable } from '~styleguide/blocks';
 
-import { defaultGridProps, ExampleBox } from './Elements';
+import { RowExample } from './Elements';
 
 <Meta
   title={title}
@@ -23,9 +23,9 @@ A flex box primitive that allows you create markup configurable flex containers
   <Story name="Flex Container">
     {(args) => {
       return (
-        <Container {...defaultGridProps} {...args}>
-          <ExampleBox>Element 1</ExampleBox>
-          <ExampleBox>Element 2</ExampleBox>
+        <Container {...args}>
+          <RowExample>Element 1</RowExample>
+          <RowExample>Element 2</RowExample>
         </Container>
       );
     }}
