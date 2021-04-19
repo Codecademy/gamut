@@ -1,5 +1,5 @@
 import title from '@codecademy/macros/lib/title.macro';
-import { Meta } from '@storybook/addon-docs/blocks';
+import { Meta, Story } from '@storybook/addon-docs/blocks';
 
 import { DataTable } from '~styleguide/blocks';
 
@@ -15,42 +15,82 @@ import { defaultColumns, getPropRows } from './tables';
   }}
 />
 
-## Layout
+# Layout
 
-<DataTable rows={getPropRows('layout')} columns={defaultColumns} />
+Props for handling dimensions and other layout specific properties.
 
-## Space
+<Story name="layout">
+  <DataTable rows={getPropRows('layout')} columns={defaultColumns} />
+</Story>
 
-<DataTable rows={getPropRows('space')} columns={defaultColumns} />
+# Space
 
-## Typography
+Props for maintaining specific vertical and horizontal rhythms
 
-<DataTable rows={getPropRows('typography')} columns={defaultColumns} />
+<Story name="space">
+  <DataTable rows={getPropRows('space')} columns={defaultColumns} />
+</Story>
+
+# Typography
+
+Props for text manipulation
+
+<Story name="typography">
+  <DataTable rows={getPropRows('typography')} columns={defaultColumns} />
+</Story>
 
 ## Color
 
-<DataTable rows={getPropRows('color')} columns={defaultColumns} />
+Specific color properties
+
+<Story name="color">
+  <DataTable rows={getPropRows('color')} columns={defaultColumns} />
+</Story>
 
 ## Border
 
-<DataTable rows={getPropRows('border')} columns={defaultColumns} />
+Border styles
+
+<Story name="border">
+  <DataTable rows={getPropRows('border')} columns={defaultColumns} />
+</Story>
 
 ## Flex
 
-<DataTable rows={getPropRows('flex')} columns={defaultColumns} />
+Flex specific properties
+
+<Story name="flex">
+  <DataTable rows={getPropRows('flex')} columns={defaultColumns} />
+</Story>
 
 ## Grid
 
-<DataTable rows={getPropRows('grid')} columns={defaultColumns} />
+Grid specific properties
 
-## Background
+<Story name="grid">
+  <DataTable rows={getPropRows('grid')} columns={defaultColumns} />
+</Story>
 
-<DataTable rows={getPropRows('background')} columns={defaultColumns} />
+# Background
 
-## Positioning
+Props for more complex backgrounds, for background color see `colors`.
 
-<DataTable rows={getPropRows('positioning')} columns={defaultColumns} />
+<Story name="background">
+  <DataTable rows={getPropRows('background')} columns={defaultColumns} />
+</Story>
 
-## Shadows
+# Positioning
 
-<DataTable rows={getPropRows('shadows')} columns={defaultColumns} />
+Props that affect positioning contexts.
+
+<Story name="positioning">
+  <DataTable rows={getPropRows('positioning')} columns={defaultColumns} />
+</Story>
+
+# Shadows
+
+Shadow props.
+
+<Story name="shadows">
+  <DataTable rows={getPropRows('shadows')} columns={defaultColumns} />
+</Story>
