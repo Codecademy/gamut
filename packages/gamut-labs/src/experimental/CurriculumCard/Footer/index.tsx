@@ -1,7 +1,6 @@
-import { Box, FlexBox } from '@codecademy/gamut';
+import { Box, FlexBox, Text } from '@codecademy/gamut';
 import React from 'react';
 
-import { Text } from '../..';
 import { BottomTag, TagColor } from '../BottomTag/index';
 
 export type FooterProps = {

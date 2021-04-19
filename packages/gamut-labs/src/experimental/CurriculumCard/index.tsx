@@ -1,8 +1,7 @@
-import { Card, FlexBox, HeadingTags } from '@codecademy/gamut';
+import { Card, FlexBox, HeadingTags, Text } from '@codecademy/gamut';
 import { pxRem } from '@codecademy/gamut-styles';
 import React, { ComponentProps } from 'react';
 
-import { Text } from '../Text';
 import { TagColor } from './BottomTag/index';
 import { Footer } from './Footer/index';
 import { Header, HeaderProps } from './Header';

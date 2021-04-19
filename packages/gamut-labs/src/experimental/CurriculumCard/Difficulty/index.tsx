@@ -1,8 +1,6 @@
-import { Box } from '@codecademy/gamut';
+import { Box, Text } from '@codecademy/gamut';
 import styled from '@emotion/styled';
 import React from 'react';
-
-import { Text } from '../../Text';
 
 export type DifficultyProps = {
   difficulty: 0 | 1;
