@@ -20,10 +20,10 @@ export const FooterNavLinks: React.FC<FooterNavLinksProps> = ({
 }) => {
   return (
     <FooterNavLinksGrid>
-      <Column size={{ xs: 12, md: 6 }}>
+      <Column size={{ _: 12, md: 6 }}>
         <CompanyLinks onClick={onClick} userGeo={userGeo} />
       </Column>
-      <Column size={{ xs: 12, md: 6 }}>
+      <Column size={{ _: 12, md: 6 }}>
         <CatalogLinks onClick={onClick} />
       </Column>
     </FooterNavLinksGrid>
