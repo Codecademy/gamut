@@ -1,4 +1,4 @@
-import { variant } from '@codecademy/gamut-styles';
+import { system } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React from 'react';
 
@@ -38,7 +38,7 @@ export type ProgressBarProps = {
   pattern?: PatternName;
 };
 
-const progressBarSizeVariants = variant({
+const progressBarSizeVariants = system.variant({
   default: 'small',
   prop: 'size',
   variants: {
@@ -57,14 +57,14 @@ const progressBarSizeVariants = variant({
   },
 });
 
-const progressBarBackgroundVariants = variant({
+const progressBarBackgroundVariants = system.variant({
   default: 'blue',
   variants: {
     blue: {
-      backgroundColor: 'navy',
+      bg: 'navy',
     },
     yellow: {
-      backgroundColor: `gray-100`,
+      bg: `gray-100`,
     },
     dark: {
       textColor: 'white',
@@ -75,7 +75,7 @@ const progressBarBackgroundVariants = variant({
   },
 });
 
-const progressBarBorderVariants = variant({
+const progressBarBorderVariants = system.variant({
   default: 'basic',
   prop: 'border',
   variants: {
@@ -89,23 +89,23 @@ const progressBarBorderVariants = variant({
   },
 });
 
-const progressBarForegroundVariants = variant({
+const progressBarForegroundVariants = system.variant({
   default: 'blue',
   variants: {
     blue: {
-      backgroundColor: 'blue',
+      bg: 'blue',
       textColor: 'white',
     },
     yellow: {
-      backgroundColor: `yellow`,
+      bg: `yellow`,
       textColor: `black`,
     },
     light: {
-      backgroundColor: 'navy',
+      bg: 'navy',
       textColor: 'navy',
     },
     dark: {
-      backgroundColor: 'white',
+      bg: 'white',
       textColor: 'white',
     },
   },
