@@ -1,15 +1,17 @@
-import title from '@codecademy/macros/lib/title.macro';
-import { Meta } from '@storybook/addon-docs/blocks';
+## `createVariant` + `createCss`
 
-<Meta
-  title={title}
-  parameters={{
-    subtitle:
-      'The variant API lets you conditionally add complex styles to any component with a single prop.',
-    source: 'gamut-styles',
-    status: 'updating',
-  }}
-/>
+Creates `css` and `variant` functions that are typed and locked to the specific configuration.
+
+```tsx
+const config = {
+  m: { property: 'margin' },
+  p: { property: 'padding' },
+} as const;
+const varianceInstance = variance.withTheme(theme);
+
+const variant = varianceInstance.createVariant(config);
+const css = varianceInstance.createCss(config);
+```
 
 ## `css`
 
@@ -18,8 +20,6 @@ A standalone theme aware method that accepts and object of system props and retu
 **Usage**
 
 ```tsx
-import { css } from '@codecademy/gamut-styles';
-
 const CoolStuff = styled.a(
   css({
     margin: [16, 24],
@@ -41,8 +41,6 @@ Built on top of `css` that accepts a number of mutually exclusive states a compo
 **Usage**
 
 ```tsx
-import { variant } from '@codecademy/gamut-styles';
-
 const Anchor = styled.a(variant({
    defaultVariant: 'interface',
    variants: {
