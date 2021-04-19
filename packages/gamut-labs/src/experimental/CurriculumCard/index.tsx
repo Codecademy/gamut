@@ -4,7 +4,7 @@ import React, { ComponentProps } from 'react';
 
 import { TagColor } from './BottomTag/index';
 import { Footer } from './Footer/index';
-import { Header, HeaderProps } from './Header';
+import { Header } from './Header';
 import { Image } from './Image/index';
 import { Subtitle, SubtitleProps } from './Subtitle';
 
@@ -20,16 +20,17 @@ const cardStyles: Record<
   completed: 'navy',
 };
 
-type CurriculumCardProps = HeaderProps &
-  SubtitleProps & {
-    headingLevel?: HeadingTags;
-    image?: string;
-    isFullSize?: boolean;
-    progressState?: ProgressState;
-    title: string;
-    tag?: string;
-    tagColor?: TagColor;
-  };
+type CurriculumCardProps = SubtitleProps & {
+  text: string;
+  title: string;
+  headingLevel?: HeadingTags;
+  image?: string;
+  isFullSize?: boolean;
+  progressState?: ProgressState;
+  showProLogo?: boolean;
+  tag?: string;
+  tagColor?: TagColor;
+};
 
 export const CurriculumCard: React.FC<CurriculumCardProps> = ({
   difficulty,
@@ -62,7 +63,6 @@ export const CurriculumCard: React.FC<CurriculumCardProps> = ({
       />
       <Text
         as={headingLevel}
-        textColor={progressState === 'completed' ? 'white' : 'navy'}
         marginBottom={4}
         fontFamily="base"
         fontWeight="title"
