@@ -2,15 +2,11 @@ import { styledConfig, system } from '@codecademy/gamut-styles';
 import { StyleProps, variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
 
-import {
-  ButtonBase,
-  ButtonBaseProps,
-  SafeButtonProps,
-} from '../ButtonBase/ButtonBase';
+import { ButtonBase, ButtonBaseProps } from '../ButtonBase/ButtonBase';
 
-export type AnchorProps = SafeButtonProps<
-  StyleProps<typeof anchorProps> & StyleProps<typeof anchorVariants>
->;
+export interface AnchorProps
+  extends StyleProps<typeof anchorProps>,
+    StyleProps<typeof anchorVariants> {}
 
 const anchorVariants = system.variant({
   base: {
