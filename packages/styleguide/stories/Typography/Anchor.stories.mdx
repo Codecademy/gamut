@@ -1,5 +1,4 @@
-import { Anchor, Box } from '@codecademy/gamut/src';
-import { Text } from '@codecademy/gamut-labs/src';
+import { Anchor, Box, Text } from '@codecademy/gamut/src';
 import { Background } from '@codecademy/gamut-styles/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
@@ -63,27 +62,37 @@ export const variants = ['interface', 'standard', 'inline'];
 <Story name="modes">
   {() => (
     <>
-      <Box padding={16}>
+      <Background p={32} bg="white">
         {variants.map((variant) => (
-          <Box key={variant + 'light'} display="inline-block" padding={8}>
-            <Text as="p">{startCase(variant)} Link</Text>
+          <Box
+            key={variant + 'light'}
+            display="inline-flex"
+            flexDirection="column"
+            fontSize={18}
+            marginRight={16}
+          >
+            <Text fontWeight="title">{startCase(variant)}</Text>
             <Anchor mr={8} variant={variant} href={`#${variant}`}>
               Click Me
             </Anchor>
           </Box>
         ))}
-      </Box>
-      <Background bg="navy">
-        <Box padding={16}>
-          {variants.map((variant) => (
-            <Box key={variant + 'dark'} display="inline-block" padding={8}>
-              <Text as="p">{startCase(variant)} Link</Text>
-              <Anchor mr={8} variant={variant} href={`#${variant}`}>
-                Click Me
-              </Anchor>
-            </Box>
-          ))}
-        </Box>
+      </Background>
+      <Background p={32} bg="navy">
+        {variants.map((variant) => (
+          <Box
+            key={variant + 'dark'}
+            display="inline-flex"
+            flexDirection="column"
+            fontSize={18}
+            marginRight={16}
+          >
+            <Text fontWeight="title">{startCase(variant)}</Text>
+            <Anchor mr={8} variant={variant} href={`#${variant}`}>
+              Click Me
+            </Anchor>
+          </Box>
+        ))}
       </Background>
     </>
   )}
