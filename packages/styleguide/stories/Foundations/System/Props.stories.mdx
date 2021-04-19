@@ -1,6 +1,9 @@
-import * as varianceProps from '@codecademy/gamut-styles/src/variance/config';
 import title from '@codecademy/macros/lib/title.macro';
 import { Meta } from '@storybook/addon-docs/blocks';
+
+import { DataTable } from '~styleguide/blocks';
+
+import { defaultColumns, getPropRows } from './tables';
 
 <Meta
   title={title}
@@ -12,46 +15,42 @@ import { Meta } from '@storybook/addon-docs/blocks';
   }}
 />
 
-<>
-  {Object.keys(varianceProps).map((key) => {
-    if (key === 'all') return null;
-    return (
-      <>
-        <h2>{key}</h2>
-        <table>
-          <thead>
-            <tr>
-              <th>Prop</th>
-              <th>Properties</th>
-              <th>Scale</th>
-              <th>Transform</th>
-            </tr>
-          </thead>
-          <tbody>
-            {Object.keys(varianceProps[key]).map((prop) => {
-              return (
-                <tr>
-                  <td>{prop}</td>
-                  <td>
-                    {varianceProps[key][prop]?.properties?.map(
-                      (property, i) => (
-                        <span>
-                          {property}
-                          {i <
-                            varianceProps[key][prop]?.properties.length - 1 &&
-                            ', '}
-                        </span>
-                      )
-                    ) || varianceProps[key][prop].property}
-                  </td>
-                  <td>{varianceProps[key][prop].scale}</td>
-                  <td>{varianceProps[key][prop]?.transform?.name}</td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
-      </>
-    );
-  })}
-</>
+## Layout
+
+<DataTable rows={getPropRows('layout')} columns={defaultColumns} />
+
+## Space
+
+<DataTable rows={getPropRows('space')} columns={defaultColumns} />
+
+## Typography
+
+<DataTable rows={getPropRows('typography')} columns={defaultColumns} />
+
+## Color
+
+<DataTable rows={getPropRows('color')} columns={defaultColumns} />
+
+## Border
+
+<DataTable rows={getPropRows('border')} columns={defaultColumns} />
+
+## Flex
+
+<DataTable rows={getPropRows('flex')} columns={defaultColumns} />
+
+## Grid
+
+<DataTable rows={getPropRows('grid')} columns={defaultColumns} />
+
+## Background
+
+<DataTable rows={getPropRows('background')} columns={defaultColumns} />
+
+## Positioning
+
+<DataTable rows={getPropRows('positioning')} columns={defaultColumns} />
+
+## Shadows
+
+<DataTable rows={getPropRows('shadows')} columns={defaultColumns} />
