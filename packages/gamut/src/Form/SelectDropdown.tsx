@@ -20,7 +20,12 @@ import {
 } from './styles/shared';
 
 type ReactSelectNamedProps = Omit<NamedProps, 'options'>;
-type SelectDropdownProps = SelectWrapperBaseProps & ReactSelectNamedProps;
+type SelectDropdownBaseProps = Omit<SelectWrapperBaseProps, 'onChange'>;
+type SelectDropdownProps = SelectDropdownBaseProps & ReactSelectNamedProps;
+type OptionStrict = {
+  label: string;
+  value: string;
+};
 
 const selectBaseStyles = ({
   error,
@@ -108,9 +113,11 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
 }) => {
   const [activated, setActivated] = useState(false);
 
-  const changeHandler = (event: any) => {
-    console.log('change', event);
-    rest?.onChange?.(event);
+  const changeHandler = (optionEvent: OptionStrict) => {
+    rest?.onChange?.(optionEvent, {
+      action: 'select-option',
+      option: optionEvent,
+    });
     setActivated(true);
   };
 
