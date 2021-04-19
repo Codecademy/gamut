@@ -129,10 +129,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
   const setDefaultValue = rest.placeholder
     ? null
     : defaultValue
-    ? selectOptions[
-        selectOptions.findIndex((option) => option.value === defaultValue)
-      ]
-    : selectOptions[0];
+    ? selectOptions.find((option) => option.value === defaultValue) ?? selectOptions[0];
 
   return (
     <ReactSelect
