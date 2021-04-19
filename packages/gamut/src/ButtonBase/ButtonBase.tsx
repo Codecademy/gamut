@@ -3,10 +3,9 @@ import React, { forwardRef, HTMLProps, MutableRefObject } from 'react';
 
 export type ButtonBaseElements = HTMLAnchorElement | HTMLButtonElement;
 
-export type ButtonBaseElementProps = (
-  | HTMLProps<HTMLAnchorElement>
-  | HTMLProps<HTMLButtonElement>
-) & { as?: never };
+export type ButtonBaseElementProps = HTMLProps<
+  HTMLAnchorElement | HTMLButtonElement
+> & { as?: never };
 
 export type SafeButtonProps<T> = T & Omit<ButtonBaseElementProps, keyof T>;
 
