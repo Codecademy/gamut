@@ -36,6 +36,20 @@ export const PageSection: React.FC<PageSectionProps> = ({
     return <TextButton {...buttonProps}>{text}</TextButton>;
   };
 
+  const maybeRenderHeaderButton = () => {
+    if (!headerButton) return null;
+    return (
+      <Box marginLeft={4} display="inline">
+        {renderSectionButton(headerButton)}
+      </Box>
+    );
+  };
+
+  const maybeRenderHeaderSecondaryButton = () => {
+    if (!headerSecondaryButton) return null;
+    return renderSectionButton(headerSecondaryButton);
+  };
+
   const renderSectionHeader = () => (
     // Setting height directly to height of the buttons so if they are omitted
     // the header remains the same height.
@@ -44,28 +58,26 @@ export const PageSection: React.FC<PageSectionProps> = ({
         <Text as="h2" fontSize={22}>
           {title}
         </Text>
-        {Boolean(headerButton) && (
-          <Box marginLeft={4} display="inline">
-            {renderSectionButton(headerButton)}
-          </Box>
-        )}
+        {maybeRenderHeaderButton()}
       </FlexBox>
-      {Boolean(headerSecondaryButton) &&
-        renderSectionButton(headerSecondaryButton)}
+      {maybeRenderHeaderSecondaryButton()}
     </FlexBox>
   );
 
-  const renderSectionFooter = () => (
-    <FlexBox justifyContent="flex-end">
-      {renderSectionButton(footerButton)}
-    </FlexBox>
-  );
+  const maybeRenderSectionFooter = () => {
+    if (!footerButton) return null;
+    return (
+      <FlexBox justifyContent="flex-end">
+        {renderSectionButton(footerButton)}
+      </FlexBox>
+    );
+  };
 
   return (
     <FlexBox flexDirection="column" marginBottom={48}>
       {renderSectionHeader()}
       {children}
-      {!!footerButton && renderSectionFooter()}
+      {maybeRenderSectionFooter()}
     </FlexBox>
   );
 };
