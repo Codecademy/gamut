@@ -61,13 +61,12 @@ const placementVariants = system.variant({
   prop: 'placement',
   variants: {
     inline: {
-      borderColor: 'transparent',
+      border: 'none',
       p: 4,
       py: 8,
     },
     floating: {
       p: 4,
-      borderColor: 'navy',
     },
   },
 });
