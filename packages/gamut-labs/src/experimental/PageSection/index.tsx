@@ -62,7 +62,7 @@ export const PageSection: React.FC<PageSectionProps> = ({
   );
 
   return (
-    <FlexBox flexDirection="column">
+    <FlexBox flexDirection="column" marginBottom={48}>
       {renderSectionHeader()}
       {children}
       {!!footerButton && renderSectionFooter()}
