@@ -1,7 +1,7 @@
 import { theme } from '@codecademy/gamut-styles';
 import { css } from '@emotion/react';
 import { each, isObject } from 'lodash';
-import React, { ChangeEvent, useState } from 'react';
+import React, { useState } from 'react';
 import ReactSelect, {
   components,
   IndicatorProps,
