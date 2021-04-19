@@ -6,7 +6,7 @@ import React from 'react';
 import { Code, LinkTo } from '~styleguide/blocks';
 
 const PROP_COLUMN = {
-  key: 'prop',
+  key: 'id',
   name: 'Prop',
   size: 'lg',
 };
@@ -49,6 +49,6 @@ export const defaultColumns = [
 
 export const getPropRows = (key: keyof typeof ALL_PROPS) =>
   Object.entries(ALL_PROPS[key]).map(([prop, config]) => ({
-    prop,
+    id: prop,
     ...config,
   }));
