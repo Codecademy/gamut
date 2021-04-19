@@ -3,6 +3,7 @@ import {
   GridBox,
   LayoutGrid,
   ProgressBar,
+  Box,
 } from '@codecademy/gamut/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
@@ -39,7 +40,9 @@ percentage label.
         {[0, 25, 50, 75, 100].map((percent) =>
           bars.map(({ size, variant }) => (
             <Column key={[percent, size, variant].join()} size={4}>
-              <ProgressBar size={size} percent={percent} variant={variant} />
+              <Box margin={4}>
+                <ProgressBar size={size} percent={percent} variant={variant} />
+              </Box>
             </Column>
           ))
         )}
