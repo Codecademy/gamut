@@ -30,7 +30,7 @@ const selectBaseStyles = ({
 }: conditionalStyleProps) => css`
   ${formFieldStyles}
   ${conditionalBorderStyles({ error, activated, isFocused, isDisabled })}
-  line-height: ${theme.lineHeight['base']};
+  line-height: ${theme.lineHeight.base};
   display: flex;
 `;
 
