@@ -3,6 +3,8 @@ import styled from '@emotion/styled';
 import React, { useState } from 'react';
 import { useIsomorphicLayoutEffect } from 'react-use';
 
+import { BASE_STATIC_ASSET_PATH } from '../../../remoteAssets/components';
+
 const StyledImg = styled.img`
   display: block;
   margin: 0 auto;
@@ -10,9 +12,6 @@ const StyledImg = styled.img`
 `;
 
 type ProgressState = 'inProgress' | 'completed';
-
-const BASE_STATIC_ASSET_PATH =
-  'https://static-assets.codecademy.com/components';
 
 const getPlaceholderAssetPath = (pathProgressState?: ProgressState) => {
   const progressState = pathProgressState ? `-${pathProgressState}` : '';
