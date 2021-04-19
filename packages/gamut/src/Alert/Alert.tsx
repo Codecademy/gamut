@@ -138,7 +138,8 @@ export const Alert: React.FC<AlertProps> = ({
   ...props
 }) => {
   const type = props.type ?? 'general';
-  const { icon: Icon, mode = 'light' } = VARIANT_META[type] || {};
+  const { icon: Icon, mode = 'light' } =
+    VARIANT_META[type] || VARIANT_META.general;
   const [expanded, setExpanded] = useState(false);
   const [truncated, setTruncated] = useState(false);
 
@@ -178,7 +179,7 @@ export const Alert: React.FC<AlertProps> = ({
         alignItems="center"
         justifyContent="center"
       >
-        {Icon && <Icon size={16} aria-hidden="true" />}
+        <Icon size={16} aria-hidden="true" />
       </FlexBox>
       {renderContent()}
       {truncated && (
