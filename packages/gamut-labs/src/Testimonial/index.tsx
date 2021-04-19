@@ -2,7 +2,9 @@ import { VisualTheme } from '@codecademy/gamut';
 import cx from 'classnames';
 import React from 'react';
 
-import { Avatar, Byline, Quote } from '../../index';
+import { Avatar } from '../Avatar';
+import { Byline } from '../Byline';
+import { Quote } from '../Quote';
 import styles from './styles.module.scss';
 
 export type Testimonial = {
