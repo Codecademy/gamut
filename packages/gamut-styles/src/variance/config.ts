@@ -1,7 +1,7 @@
 import { transformSize } from '@codecademy/variance';
 
 export const color = {
-  color: { property: 'color', scale: 'colors' },
+  textColor: { property: 'color', scale: 'colors' },
   bg: { property: 'backgroundColor', scale: 'colors' },
   borderColor: { property: 'borderColor', scale: 'colors' },
   borderColorX: {

@@ -7,6 +7,7 @@ import { GridFormTextField } from '../../types';
 export type GridFormTextInputProps = {
   className?: string;
   error?: boolean;
+  showRequired?: boolean;
   field: Omit<GridFormTextField, 'label'>;
   register: UseFormMethods['register'];
 };
@@ -16,6 +17,7 @@ export const GridFormTextInput: React.FC<GridFormTextInputProps> = ({
   error,
   field,
   register,
+  showRequired,
 }) => {
   return (
     <Input
@@ -30,6 +32,7 @@ export const GridFormTextInput: React.FC<GridFormTextInputProps> = ({
       type={field.type}
       id={field.id}
       aria-invalid={error}
+      aria-required={showRequired}
     />
   );
 };

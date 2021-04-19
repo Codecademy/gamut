@@ -1,163 +1,47 @@
-import * as DesignTokens from '@codecademy/gamut-styles';
 import title from '@codecademy/macros/lib/title.macro';
-import { Canvas, Meta } from '@storybook/addon-docs/blocks';
-import LinkTo from '@storybook/addon-links/react';
+import { Meta, Story } from '@storybook/addon-docs/blocks';
 
-import { ScaleColumn, ScaleRow, Text } from '~styleguide/blocks';
+import { LinkTo } from '~styleguide/blocks';
 
 <Meta
   title={title}
-  component="Typography"
   parameters={{
-    status: 'updating',
-    subtitle: 'Our typography design tokens and guidelines',
+    subtitle: 'Typography design guidelines and token scales',
+    status: 'current',
+    figmaId: 'rNsdbOwlw6L0ea3uAJrrz7',
   }}
 />
 
-**Deprecation Notice** These variables and access patterns are now deprecated. Please refer to [Theme](?path=/docs/foundations-theme--font-family) for the most up to date documentation when using the new visual identity.
+# Typography
 
-This page is meant as a reference for Typography variables and scales that are available
-through both **Typescript** and **SCSS** variables in [`@codecademy/gamut-styles`](https://www.npmjs.com/package/@codecademy/gamut-styles). We heavily recommend
-you use the <LinkTo kind="Typography" story="Heading">`Heading`</LinkTo> and <LinkTo kind="Typography" story="Text">`Text`</LinkTo>
-primitives that we provide for your needs. They are built using these standards, so you should not need to recreate them.
+For more checkout out our theme documentation for how to access and use all <LinkTo id="foundations-theme--font-family">typography design tokens</LinkTo>
 
-## Font Stacks
+## Typefaces (`fontFamily`)
 
-We have 4 main font-stacks that are used through out our front end apps. They are roughly separated by functionality.
+- Most of our designs use Aperçu Pro Bold, (Headlines, Titles) Regular (Paragraph Text, Menu Items, UI) or Italic (for emphasis)
+- Do not use Aperçu Bold to emphasize text within a line/paragraph of Aperçu Regular
+- Suisse Int’l Mono is used as an accent, in cases where items are listed/enumerated, for quotations, labels, and in other special cases.
+- Suisse Int’l Mono reads quite large for its point size, and requires extra line-height in order to be readable as text. Styles have been adjusted to account for these features.
+- Text should be left-aligned by default, using centering in some cases for Marketing emphasis or Interface specifics. You should never right-align text under normal circumstances
 
-1. `Base` for all body text.
-2. `Heading` for all headings and subheadings `h1`-`h6`
-3. `Monospace` for code and other space-sensitive or themed content.
-4. `System` largely unused but still defined for when system fonts are necessary.
+<Story id="foundations-theme--font-family" />
 
-We're about to swap out the font stacks used in `Base` and `Heading`.
-You can use the new stacks ahead of time with:
+## Font sizes
 
-1. `Apercu` will replace the majority of both body text and headings.
-2. `Suisse` will be an occasional "accent" stack.
+- We use the term “Title” to distinguish our visual sizing from semantic designations like “H1”
 
-<Canvas withSource="none" isColumn>
-  {Object.entries(DesignTokens.fontFamily).map(([alias, value]) => (
-    <ScaleRow key={alias} hasAlias>
-      <ScaleColumn>{alias}</ScaleColumn>
-      <Text family={value}>{value.split(',')[0].replace(/"/g, '')}</Text>
-    </ScaleRow>
-  ))}
-</Canvas>
+<Story id="foundations-theme--font-size" />
 
-### Usage
+## Line heights
 
-```tsx
-import { fontFamily } from '@codecademy/gamut-styles';
+- Line heights are limited to multiples of 4px
+- Type boxes should be placed on the 8px placement grid like all other elements.
 
-fontFamily.base; // base | heading | monospace | system
-```
+<Story id="foundations-theme--line-height" />
 
-```scss
-@import '@codecademy/gamut-styles/utils';
+## Line Length
 
-.text {
-  font-family: $font-family-base; // $font-family-base | $font-monospace | $font-system
-}
-```
-
-## Font Sizes
-
-We use a single scale for font sizes that are aliased to their most appropriate use case.
-
-<Canvas withSource="none" isColumn>
-  {Object.entries(DesignTokens.fontSize).map(([key, size]) => {
-    return (
-      <ScaleRow key={key} hasAlias>
-        <ScaleColumn>{key}</ScaleColumn>
-        <Text size={size}>{size}</Text>
-      </ScaleRow>
-    );
-  })}
-</Canvas>
-
-### Usage
-
-```tsx
-import { fontSize } from '@codecademy/gamut-styles';
-
-fontSize[14];
-```
-
-```scss
-@import '@codecademy/gamut-styles/utils';
-
-.heading {
-  font-size: $font-size-h1; // h1 - h6
-}
-.body {
-  font-size: $font-size-base; // small | base
-}
-```
-
-## Font Weights
-
-We support two basic `font-weight` values for both body text `400` and headings `700`, while lighter or bolder variations may be
-available for some font stacks, these will be the safest for their desired effects.
-
-<Canvas withSource="none" isColumn>
-  {Object.entries(DesignTokens.fontWeight).map(([key, size]) => {
-    return (
-      <ScaleRow key={key} hasAlias>
-        <ScaleColumn>{key}</ScaleColumn>
-        <Text weight={size}>Do andriods dream of electric sheep?</Text>
-      </ScaleRow>
-    );
-  })}
-</Canvas>
-
-### Usage
-
-```tsx
-import { fontWeight } from '@codecademy/gamut-styles';
-
-fontWeight.base; // base | title
-```
-
-```scss
-@import '@codecademy/gamut-styles/utils';
-
-.text {
-  font-weight: $font-weight-base; // base | headings
-}
-```
-
-## Line Heights
-
-We generally like to keep body text at 1.5 and headings at 1.15.
-
-<Canvas withSource="none" isColumn>
-  {Object.entries(DesignTokens.lineHeight).map(([key, height]) => {
-    return (
-      <ScaleRow key={key} hasAlias>
-        <ScaleColumn>{key}</ScaleColumn>
-        <Text line={height} size={22}>
-          Children know perfectly well that unicorns aren’t real, but they also
-          know that books about unicorns, if they are good books, are true
-          books.
-        </Text>
-      </ScaleRow>
-    );
-  })}
-</Canvas>
-
-### Usage
-
-```tsx
-import { lineHeight } from '@codecademy/gamut-styles';
-
-lineHeight.base; // base | title
-```
-
-```scss
-@import '@codecademy/gamut-styles/utils';
-
-.text {
-  line-height: $line-height-base; // $line-height-headings | $line-height-base
-}
-```
+- Controlling line-length is necessary to ensure text is readable and are layouts well-ordered.
+- For most multi-line text areas, keep lines to an average of 66 characters (including spaces).
+- For multi-column layouts, do not exceed 50 characters per line (including spaces).
+- The best way to control line-length is by starting with the appropriately sized text style for your design, then adjust the width / column-count of the type area until your lines fall within acceptable character counts.

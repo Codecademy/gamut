@@ -1,34 +1,36 @@
-import cx from 'classnames';
-import React from 'react';
+import { pxRem, styledConfig, system, theme } from '@codecademy/gamut-styles';
+import { StyleProps, variance } from '@codecademy/variance';
+import styled from '@emotion/styled';
+import { pick } from 'lodash';
 
-import { ResponsiveProperty } from '../typings/responsive-properties';
-import { generateResponsiveClassnames } from '../utils/generateResponsiveClassnames';
-import styles from './styles/Grid.module.scss';
-import { ContainerElementProps, GapSizes } from './types';
+const gutters = pick(theme.spacing, [8, 16, 24, 32, 48]);
 
-export type LayoutGridProps = {
-  /** The grid-gap size that should be present between rows */
-  rowGap?: ResponsiveProperty<GapSizes>;
-  /** The grid-gap size that should be present between columns */
-  columnGap?: ResponsiveProperty<GapSizes>;
-} & ContainerElementProps;
+const grid = variance.create({
+  gap: {
+    property: 'gap',
+    properties: ['rowGap', 'columnGap'],
+    scale: gutters,
+  },
+  rowGap: { property: 'rowGap', scale: gutters },
+  columnGap: { property: 'columnGap', scale: gutters },
+  rowHeight: {
+    property: 'gridAutoRows',
+    transform: (height: string) => `minmax(${pxRem(height)}, 1fr)`,
+  },
+});
 
-export const LayoutGrid: React.FC<Partial<LayoutGridProps>> = ({
-  children,
-  testId,
-  className,
-  rowGap,
-  columnGap,
-}) => {
-  const classes = cx(
-    styles.container,
-    className,
-    generateResponsiveClassnames({ rowGap, columnGap }, styles)
-  );
+const gridProps = variance.compose(system.space, grid);
 
-  return (
-    <div className={classes} data-testid={testId}>
-      {children}
-    </div>
-  );
-};
+export interface LayoutGridProps extends StyleProps<typeof gridProps> {}
+
+export const LayoutGrid = styled(
+  'div',
+  styledConfig(grid.propNames)
+)<LayoutGridProps>(
+  system.css({
+    display: 'grid',
+    width: '100%',
+    gridTemplateColumns: `repeat(12, minmax(0, 1fr))`,
+  }),
+  gridProps
+);

@@ -1,23 +1,30 @@
 import {
   CacheProvider,
   css,
+  CSSObject,
   EmotionCache,
   Global,
+  Theme,
   ThemeProvider,
 } from '@emotion/react';
 import React, { useContext, useRef } from 'react';
 
 import { createEmotionCache } from './cache';
 import { Reboot, Typography } from './globals';
-import { theme, themeCssVariables } from './theme';
+import { theme as baseTheme, variables as baseVariables } from './theme';
 
 export interface GamutProviderProps {
   useGlobals?: boolean;
   useCache?: boolean;
+  theme?: Theme;
+  variables?: CSSObject;
   cache?: EmotionCache;
 }
 
-export const GamutContext = React.createContext({
+export const GamutContext = React.createContext<{
+  hasGlobals?: boolean;
+  hasCache?: boolean;
+}>({
   hasGlobals: false,
   hasCache: false,
 });
@@ -27,6 +34,8 @@ GamutContext.displayName = 'GamutContext';
 export const GamutProvider: React.FC<GamutProviderProps> = ({
   children,
   cache,
+  theme = baseTheme,
+  variables = baseVariables,
   useGlobals = true,
   useCache = true,
 }) => {
@@ -39,22 +48,25 @@ export const GamutProvider: React.FC<GamutProviderProps> = ({
     shouldCreateCache && (cache ?? createEmotionCache())
   );
 
+  const { root = {}, colorMode = {} } = variables as Record<string, CSSObject>;
+
+  const contextValue = {
+    hasGlobals: shouldInsertGlobals,
+    hasCache: shouldCreateCache,
+  };
+
   const globals = shouldInsertGlobals && (
     <>
       <Typography />
       <Reboot />
-      <Global styles={css({ ':root': themeCssVariables })} />
+      <Global styles={css({ ':root': root })} />
+      <Global styles={css({ ':root': colorMode })} />
     </>
   );
 
   if (activeCache.current) {
     return (
-      <GamutContext.Provider
-        value={{
-          hasGlobals: shouldInsertGlobals,
-          hasCache: shouldCreateCache,
-        }}
-      >
+      <GamutContext.Provider value={contextValue}>
         <CacheProvider value={activeCache.current}>
           {globals}
           <ThemeProvider theme={theme}>{children}</ThemeProvider>
@@ -64,12 +76,7 @@ export const GamutProvider: React.FC<GamutProviderProps> = ({
   }
 
   return (
-    <GamutContext.Provider
-      value={{
-        hasGlobals: shouldInsertGlobals,
-        hasCache: shouldCreateCache,
-      }}
-    >
+    <GamutContext.Provider value={contextValue}>
       {globals}
       <ThemeProvider theme={theme}>{children}</ThemeProvider>
     </GamutContext.Provider>

@@ -1,53 +1,42 @@
-import cx from 'classnames';
+import styled from '@emotion/styled';
 import { isEmpty } from 'lodash';
 import React from 'react';
 
-import { omitProps } from '../utils/omitProps';
+import { EmptyNotification } from './EmptyNotification';
 import { NotificationItem } from './NotificationItem';
-import styles from './styles/index.module.scss';
 import { Notification } from './typings';
 
 export type NotificationListProps = {
-  className?: string;
+  onDismiss?: (notification: Notification) => void;
   notifications: Notification[];
   onNotificationClick?: (notification: Notification) => void;
+  headerElementId?: string; // Used for aria-labelledby for the list.
 };
 
-/**
- * @deprecated
- */
+const UnstyledUnorderedList = styled.ul`
+  list-style: none;
+  padding: 0;
+  margin: 0;
+`;
 
-export const NotificationList = (props: NotificationListProps) => {
-  const { className, notifications, onNotificationClick } = props;
-
-  const notificationClasses = cx(
-    styles.notificationsContainer,
-    { [styles.emptyContainer]: isEmpty(notifications) },
-    className
-  );
-
-  return (
-    <div
-      {...omitProps(Object.keys(props), props)}
-      className={notificationClasses}
-    >
-      {isEmpty(notifications) ? (
-        <button className={styles.emptyText} type="button">
-          No new notifications.
-          <br />
-          You&apos;re all caught up!
-        </button>
-      ) : (
-        notifications.map((notification: Notification) => {
-          return (
-            <NotificationItem
-              key={notification.id}
-              notification={notification}
-              onClick={() => onNotificationClick?.(notification)}
-            />
-          );
-        })
-      )}
-    </div>
+export const NotificationList: React.FC<NotificationListProps> = ({
+  notifications,
+  onNotificationClick,
+  onDismiss,
+  headerElementId,
+}) => {
+  return isEmpty(notifications) ? (
+    <EmptyNotification />
+  ) : (
+    <UnstyledUnorderedList aria-labelledby={headerElementId} aria-live="polite">
+      {notifications.map((notification: Notification) => (
+        <NotificationItem
+          key={notification.id}
+          notification={notification}
+          handleClick={() => onNotificationClick?.(notification)}
+          handleDismiss={() => onDismiss?.(notification)}
+        />
+      ))}
+    </UnstyledUnorderedList>
   );
 };

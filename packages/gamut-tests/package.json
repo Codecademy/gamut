@@ -1,7 +1,8 @@
 {
   "author": "Codecademy Engineering <dev@codecademy.com>",
   "dependencies": {
-    "@codecademy/gamut-styles": "^9.1.4"
+    "@codecademy/gamut-styles": "^9.5.1",
+    "component-test-setup": "*"
   },
   "description": "Shared component test setup for Gamut applications",
   "keywords": [
@@ -12,7 +13,7 @@
     "rtl"
   ],
   "name": "@codecademy/gamut-tests",
-  "version": "2.3.4",
+  "version": "2.3.12",
   "license": "MIT",
   "main": "./dist/index.js",
   "module": "dist/index.js",
