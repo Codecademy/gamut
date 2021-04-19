@@ -61,6 +61,7 @@ const customStyles: StylesConfig<OptionTypeBase, false> = {
   menu: (provided) => ({
     ...provided,
     ...formDropdownStyles,
+    marginTop: '-2px',
   }),
 
   option: (provided, state) => ({
@@ -153,9 +154,6 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
       isMulti={false}
       isDisabled={disabled}
       options={selectOptions}
-      theme={(theme) => ({
-        ...theme,
-      })}
       {...rest}
     />
   );

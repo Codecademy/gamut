@@ -166,7 +166,7 @@ export const formBaseComponentStyles = css`
 export const formDropdownStyles = css`
   ${formBaseComponentStyles}
   position: absolute;
-  margin-top: -1px;
+  margin-top: -2px;
   border: 1px solid ${colorStates.activated.borderColor};
   border-top: none;
   z-index: 2;
