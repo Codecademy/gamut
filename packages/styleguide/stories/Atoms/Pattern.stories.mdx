@@ -1,4 +1,4 @@
-import { Pattern } from '@codecademy/gamut/src';
+import { Container, Pattern, Text } from '@codecademy/gamut/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 
@@ -12,7 +12,7 @@ import { PropsTable } from '~styleguide/blocks';
     status: 'updating',
     subtitle: 'Repeatedable pattern backgrounds for multiple uses.',
   }}
-  args={{ height: 200, width: 200, name: 'diagonalStripesLoose' }}
+  args={{ height: 200, width: 200, name: 'diagonalStripeBLoose' }}
 />
 
 <Canvas>
@@ -23,21 +23,160 @@ import { PropsTable } from '~styleguide/blocks';
 
 <PropsTable story="Pattern" />
 
-<Canvas withSource="open">
-  <Story name="Pattern Loose">{(args) => <Pattern {...args} />}</Story>
-  <Story name="Pattern Regular" args={{ name: 'diagonalStripesRegular' }}>
+Diagonal Stripe B:
+
+<Canvas>
+  <Story name="Pattern Diagonal Stripe B Loose">
     {(args) => <Pattern {...args} />}
   </Story>
-  <Story name="Pattern Dense" args={{ name: 'diagonalStripesDense' }}>
+  <Story
+    name="Pattern Diagonal Stripe B Regular"
+    args={{ name: 'diagonalStripeBRegular' }}
+  >
     {(args) => <Pattern {...args} />}
   </Story>
-  <Story name="Pattern: Dots Loose" args={{ name: 'dotsLoose' }}>
+  <Story
+    name="Pattern Diagonal Stripe B Dense"
+    args={{ name: 'diagonalStripeBDense' }}
+  >
     {(args) => <Pattern {...args} />}
   </Story>
-  <Story name="Pattern: Dots Regular" args={{ name: 'dotsRegular' }}>
+</Canvas>
+
+Checker:
+
+<Canvas>
+  <Story name="Pattern: Checker Loose" args={{ name: 'checkerLoose' }}>
     {(args) => <Pattern {...args} />}
   </Story>
-  <Story name="Pattern: Dots Dense" args={{ name: 'dotsDense' }}>
+  <Story name="Pattern: Checker Regular" args={{ name: 'checkerRegular' }}>
+    {(args) => <Pattern {...args} />}
+  </Story>
+  <Story name="Pattern: Checker Dense" args={{ name: 'checkerDense' }}>
+    {(args) => <Pattern {...args} />}
+  </Story>
+</Canvas>
+
+Diagonal Stripe A:
+
+<Canvas>
+  <Story
+    name="Pattern: Diagonal Stripe A Loose"
+    args={{ name: 'diagonalStripeALoose' }}
+  >
+    {(args) => <Pattern {...args} />}
+  </Story>
+  <Story
+    name="Pattern: Diagonal Stripe A Regular"
+    args={{ name: 'diagonalStripeARegular' }}
+  >
+    {(args) => <Pattern {...args} />}
+  </Story>
+  <Story
+    name="Pattern: Diagonal Stripe A Dense"
+    args={{ name: 'diagonalStripeADense' }}
+  >
+    {(args) => <Pattern {...args} />}
+  </Story>
+</Canvas>
+
+Dot:
+
+<Canvas>
+  <Story name="Pattern: Dot Loose" args={{ name: 'dotLoose' }}>
+    {(args) => <Pattern {...args} />}
+  </Story>
+  <Story name="Pattern: Dot Regular" args={{ name: 'dotRegular' }}>
+    {(args) => <Pattern {...args} />}
+  </Story>
+  <Story name="Pattern: Dot Dense" args={{ name: 'dotDense' }}>
+    {(args) => <Pattern {...args} />}
+  </Story>
+</Canvas>
+
+X:
+
+<Canvas>
+  <Story name="Pattern: X Loose" args={{ name: 'xLoose' }}>
+    {(args) => <Pattern {...args} />}
+  </Story>
+  <Story name="Pattern: X Regular" args={{ name: 'xRegular' }}>
+    {(args) => <Pattern {...args} />}
+  </Story>
+  <Story name="Pattern: X Dense" args={{ name: 'xDense' }}>
+    {(args) => <Pattern {...args} />}
+  </Story>
+</Canvas>
+
+Flower:
+
+<Canvas>
+  <Story name="Pattern: Flower Loose" args={{ name: 'flowerLoose' }}>
+    {(args) => <Pattern {...args} />}
+  </Story>
+  <Story name="Pattern: Flower Regular" args={{ name: 'flowerRegular' }}>
+    {(args) => <Pattern {...args} />}
+  </Story>
+  <Story name="Pattern: Flower Dense" args={{ name: 'flowerDense' }}>
+    {(args) => <Pattern {...args} />}
+  </Story>
+</Canvas>
+
+Grid:
+
+<Canvas>
+  <Story name="Pattern: Grid Loose" args={{ name: 'gridLoose' }}>
+    {(args) => <Pattern {...args} />}
+  </Story>
+  <Story name="Pattern: Grid Regular" args={{ name: 'gridRegular' }}>
+    {(args) => <Pattern {...args} />}
+  </Story>
+  <Story name="Pattern: Grid Dense" args={{ name: 'gridDense' }}>
+    {(args) => <Pattern {...args} />}
+  </Story>
+</Canvas>
+
+Herringbone:
+
+<Canvas>
+  <Story name="Pattern: Herringbone Loose" args={{ name: 'herringboneLoose' }}>
+    {(args) => <Pattern {...args} />}
+  </Story>
+  <Story
+    name="Pattern: Herringbone Regular"
+    args={{ name: 'herringboneRegular' }}
+  >
+    {(args) => <Pattern {...args} />}
+  </Story>
+  <Story name="Pattern: Herringbone Dense" args={{ name: 'herringboneDense' }}>
+    {(args) => <Pattern {...args} />}
+  </Story>
+</Canvas>
+
+Rain:
+
+<Canvas>
+  <Story name="Pattern: Rain Loose" args={{ name: 'rainLoose' }}>
+    {(args) => <Pattern {...args} />}
+  </Story>
+  <Story name="Pattern: Rain Regular" args={{ name: 'rainRegular' }}>
+    {(args) => <Pattern {...args} />}
+  </Story>
+  <Story name="Pattern: Rain Dense" args={{ name: 'rainDense' }}>
+    {(args) => <Pattern {...args} />}
+  </Story>
+</Canvas>
+
+Stripe:
+
+<Canvas>
+  <Story name="Pattern: Stripe Loose" args={{ name: 'stripeLoose' }}>
+    {(args) => <Pattern {...args} />}
+  </Story>
+  <Story name="Pattern: Stripe Regular" args={{ name: 'stripeRegular' }}>
+    {(args) => <Pattern {...args} />}
+  </Story>
+  <Story name="Pattern: Stripe Dense" args={{ name: 'stripeDense' }}>
     {(args) => <Pattern {...args} />}
   </Story>
 </Canvas>

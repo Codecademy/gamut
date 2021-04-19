@@ -5,12 +5,36 @@ import { Box, BoxProps } from '../Box';
 import { defs } from './defs';
 
 export type PatternName =
-  | 'diagonalStripesLoose'
-  | 'diagonalStripesRegular'
-  | 'diagonalStripesDense'
-  | 'dotsLoose'
-  | 'dotsRegular'
-  | 'dotsDense';
+  | 'diagonalStripeBLoose'
+  | 'diagonalStripeBRegular'
+  | 'diagonalStripeBDense'
+  | 'checkerLoose'
+  | 'checkerRegular'
+  | 'checkerDense'
+  | 'diagonalStripeALoose'
+  | 'diagonalStripeARegular'
+  | 'diagonalStripeADense'
+  | 'dotLoose'
+  | 'dotRegular'
+  | 'dotDense'
+  | 'xLoose'
+  | 'xRegular'
+  | 'xDense'
+  | 'flowerLoose'
+  | 'flowerRegular'
+  | 'flowerDense'
+  | 'gridLoose'
+  | 'gridRegular'
+  | 'gridDense'
+  | 'herringboneLoose'
+  | 'herringboneRegular'
+  | 'herringboneDense'
+  | 'rainLoose'
+  | 'rainRegular'
+  | 'rainDense'
+  | 'stripeLoose'
+  | 'stripeRegular'
+  | 'stripeDense';
 
 export interface PatternProps extends BoxProps {
   name: PatternName;
