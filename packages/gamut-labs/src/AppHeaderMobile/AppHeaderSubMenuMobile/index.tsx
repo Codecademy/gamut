@@ -1,4 +1,4 @@
-import { Box, Text } from '@codecademy/gamut';
+import { Box } from '@codecademy/gamut';
 import { ArrowChevronLeftIcon } from '@codecademy/gamut-icons';
 import { pxRem } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
@@ -11,6 +11,7 @@ import {
   hoverStyles,
   textButtonStyles,
 } from '../../AppHeader/AppHeaderElements/SharedStyles';
+import { Text } from '../../Text';
 
 export type AppHeaderSubMenuMobileProps = AppHeaderDropdownProps & {
   handleClose: () => void;
@@ -22,6 +23,10 @@ const FullMenuButton = styled.button`
   ${textButtonStyles}
   ${hoverStyles}
   ${focusStyles}
+`;
+
+const Heading = styled(Text)`
+  line-height: 1.25;
 `;
 
 export const AppHeaderSubMenuMobile: React.FC<AppHeaderSubMenuMobileProps> = ({
@@ -37,9 +42,9 @@ export const AppHeaderSubMenuMobile: React.FC<AppHeaderSubMenuMobileProps> = ({
           Full Menu
         </Box>
       </FullMenuButton>
-      <Text as="h1" fontSize={22} marginBottom={16} fontWeight="title">
+      <Heading as="h1" fontSize={22} marginBottom={16} fontWeight="title">
         {item.type === 'profile-dropdown' ? item.userDisplayName : item.text}
-      </Text>
+      </Heading>
       <AppHeaderLinkSections action={action} item={item} />
     </Box>
   );
