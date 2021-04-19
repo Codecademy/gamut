@@ -13,7 +13,7 @@ const PROP_COLUMN = {
 
 const PROPERTIES_COLUMN = {
   key: 'properties',
-  name: 'Value',
+  name: 'Properties',
   size: 'xl',
   render: ({
     property,
@@ -21,7 +21,10 @@ const PROPERTIES_COLUMN = {
   }: {
     property: string;
     properties: string[];
-  }) => properties.map(kebabCase).join(', '),
+  }) =>
+    properties.map((property) => (
+      <Code key={property}>{kebabCase(property)}</Code>
+    )),
 };
 
 const SCALE_COLUMN = {
