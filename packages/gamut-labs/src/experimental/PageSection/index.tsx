@@ -7,7 +7,7 @@ type TextButtonMinimumProps = {
   onClick?: () => void;
 };
 
-type SectionButton = TextButtonMinimumProps | ReactNode;
+export type SectionButton = TextButtonMinimumProps | ReactNode;
 
 function isSectionButtonATextButton(
   button: SectionButton
