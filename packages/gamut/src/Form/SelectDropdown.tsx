@@ -108,7 +108,8 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
 }) => {
   const [activated, setActivated] = useState(false);
 
-  const changeHandler = (event: ChangeEvent<HTMLSelectElement>) => {
+  const changeHandler = (event: any) => {
+    console.log('change', event);
     rest?.onChange?.(event);
     setActivated(true);
   };
@@ -129,7 +130,8 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
   const setDefaultValue = rest.placeholder
     ? null
     : defaultValue
-    ? selectOptions.find((option) => option.value === defaultValue) ?? selectOptions[0];
+    ? selectOptions.find((option) => option.value === defaultValue)
+    : selectOptions[0];
 
   return (
     <ReactSelect
