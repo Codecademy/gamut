@@ -3,7 +3,7 @@ import { css } from '@emotion/react';
 import { each, isObject } from 'lodash';
 import React, { useState } from 'react';
 import ReactSelect, {
-  components,
+  components as SelectDropdownElements,
   IndicatorProps,
   NamedProps,
   OptionTypeBase,
@@ -26,6 +26,8 @@ type OptionStrict = {
   label: string;
   value: string;
 };
+
+const { DropdownIndicator } = SelectDropdownElements;
 
 const selectBaseStyles = ({
   error,
@@ -61,7 +63,6 @@ const customStyles: StylesConfig<OptionTypeBase, false> = {
   menu: (provided) => ({
     ...provided,
     ...formDropdownStyles,
-    marginTop: '-2px',
   }),
 
   option: (provided, state) => ({
@@ -96,11 +97,11 @@ const customStyles: StylesConfig<OptionTypeBase, false> = {
   }),
 };
 
-const DropdownIndicator = (props: IndicatorProps<OptionTypeBase, false>) => {
+const ChevronDropdown = (props: IndicatorProps<OptionTypeBase, false>) => {
   return (
-    <components.DropdownIndicator {...props}>
+    <DropdownIndicator {...props}>
       <SelectIcon size={16} />
-    </components.DropdownIndicator>
+    </DropdownIndicator>
   );
 };
 
@@ -148,7 +149,10 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
       styles={customStyles}
       activated={activated}
       error={Boolean(error)}
-      components={{ DropdownIndicator, IndicatorSeparator: () => null }}
+      components={{
+        DropdownIndicator: ChevronDropdown,
+        IndicatorSeparator: () => null,
+      }}
       onChange={changeHandler}
       isSearchable={false}
       isMulti={false}
