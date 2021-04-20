@@ -22,7 +22,7 @@ export * from './FocusTrap';
 export * from './Form';
 export * from './GridForm';
 export * from './HiddenText';
-export * from './Typography/Text';
+export { Text, TextProps } from './Typography/Text';
 export * from './Typography/HeadingDeprecated';
 export * from './Typography/TextDeprecated';
 export * from './HighlightedText';
