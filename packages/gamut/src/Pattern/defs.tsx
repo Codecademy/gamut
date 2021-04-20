@@ -82,9 +82,9 @@ export const defs = (name: PatternName) => {
           </defs>
         </pattern>
       )}
-      {name === 'dotsLoose' && (
+      {name === 'checkerLoose' && (
         <pattern
-          id="dotsLoose"
+          id="checkerLoose"
           x="0"
           y="0"
           width="16"
@@ -95,9 +95,9 @@ export const defs = (name: PatternName) => {
           <rect x="8" y="8" width="1" height="1" fill="currentColor" />
         </pattern>
       )}
-      {name === 'dotsRegular' && (
+      {name === 'checkerRegular' && (
         <pattern
-          id="dotsRegular"
+          id="checkerRegular"
           x="0"
           y="0"
           width="8"
@@ -108,9 +108,9 @@ export const defs = (name: PatternName) => {
           <rect x="4" y="4" width="1" height="1" fill="currentColor" />
         </pattern>
       )}
-      {name === 'dotsDense' && (
+      {name === 'checkerDense' && (
         <pattern
-          id="dotsDense"
+          id="checkerDense"
           x="0"
           y="0"
           width="4"
@@ -119,6 +119,50 @@ export const defs = (name: PatternName) => {
         >
           <rect width="1" height="1" fill="currentColor" />
           <rect x="2" y="2" width="1" height="1" fill="currentColor" />
+        </pattern>
+      )}
+      {name === 'dotLoose' && (
+        <pattern
+          id="dotLoose"
+          x="0"
+          y="0"
+          width="16"
+          height="16"
+          patternUnits="userSpaceOnUse"
+        >
+          <rect
+            width="0.5"
+            height="0.5"
+            fill="currentColor"
+            fill-opacity="0.5"
+          />
+          <rect
+            y="1"
+            width="0.5"
+            height="0.5"
+            fill="currentColor"
+            fill-opacity="0.5"
+          />
+          <rect y="0.5" width="0.5" height="0.5" fill="currentColor" />
+          <rect
+            x="1"
+            width="0.5"
+            height="0.5"
+            fill="currentColor"
+            fill-opacity="0.5"
+          />
+          <rect
+            x="1"
+            y="1"
+            width="0.5"
+            height="0.5"
+            fill="currentColor"
+            fill-opacity="0.5"
+          />
+          <rect x="1" y="0.5" width="0.5" height="0.5" fill="currentColor" />
+          <rect x="0.5" width="0.5" height="0.5" fill="currentColor" />
+          <rect x="0.5" y="1" width="0.5" height="0.5" fill="currentColor" />
+          <rect x="0.5" y="0.5" width="0.5" height="0.5" fill="currentColor" />
         </pattern>
       )}
     </defs>
