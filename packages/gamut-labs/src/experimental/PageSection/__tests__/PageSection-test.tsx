@@ -1,35 +1,32 @@
 import { Text } from '@codecademy/gamut';
 import { setupRtl } from '@codecademy/gamut-tests';
-import { fireEvent, render, screen } from '@testing-library/react';
+import { fireEvent } from '@testing-library/react';
 import React from 'react';
 
-import { PageSection, PageSectionProps } from '..';
+import { PageSection } from '..';
 
-const renderPageSection = (props: Partial<PageSectionProps>) =>
-  setupRtl(PageSection, { title: 'Default Section Title', ...props })();
+const renderView = setupRtl(PageSection, { title: 'Default Section Title' });
 
 describe('PageSection', () => {
   it('renders the title in a heading role', () => {
     const title = 'Page Section Title';
-    render(<PageSection title={title} />);
-    expect(screen.getByRole('heading').textContent).toBe(title);
+    const { view } = renderView({ title });
+    expect(view.getByRole('heading').textContent).toBe(title);
   });
 
   it('renders the body of the section.', () => {
     const bodyText = 'This is the body of the section.';
 
-    render(
-      <PageSection title="Section title">
-        <Text>{bodyText}</Text>
-      </PageSection>
-    );
+    const { view } = renderView({
+      children: <Text>{bodyText}</Text>,
+    });
 
-    expect(screen.queryByText(bodyText)).toBeTruthy();
+    expect(view.queryByText(bodyText)).toBeTruthy();
   });
 
   it('does not render any optional link buttons if they are not specified', () => {
-    render(<PageSection title="Section title" />);
-    expect(screen.queryByRole('link')).toBeFalsy();
+    const { view } = renderView();
+    expect(view.queryByRole('link')).toBeFalsy();
   });
 
   it.each([['headerButton'], ['headerSecondaryButton'], ['footerButton']])(
@@ -39,7 +36,7 @@ describe('PageSection', () => {
       const buttonOnClick = jest.fn();
       const buttonHref = 'codecademy.com';
 
-      renderPageSection({
+      const { view } = renderView({
         [buttonName]: {
           text: buttonText,
           onClick: buttonOnClick,
@@ -47,7 +44,7 @@ describe('PageSection', () => {
         },
       });
 
-      const button = screen.getByText(buttonText);
+      const button = view.getByText(buttonText);
       fireEvent.click(button);
 
       expect(button.closest('a')).toHaveAttribute('href', buttonHref);
@@ -61,11 +58,11 @@ describe('PageSection', () => {
       const buttonText = 'Button text';
       const buttonNode = <Text>{buttonText}</Text>;
 
-      renderPageSection({
+      const { view } = renderView({
         [buttonName]: buttonNode,
       });
 
-      expect(screen.queryByText(buttonText)).toBeTruthy();
+      expect(view.queryByText(buttonText)).toBeTruthy();
     }
   );
 });
