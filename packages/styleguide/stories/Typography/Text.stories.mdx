@@ -1,4 +1,8 @@
 import { Box, GridBox, Text } from '@codecademy/gamut/src';
+import {
+  typographyElementVariants,
+  typographyStyleVariants,
+} from '@codecademy/gamut/src/Typography/Text';
 import title from '@codecademy/macros/lib/title.macro';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 import { Fragment } from 'react';
@@ -28,19 +32,7 @@ import { PropsTable } from '~styleguide/blocks';
 
 ## Variants
 
-export const tags = [
-  'h1',
-  'h2',
-  'h3',
-  'h4',
-  'h5',
-  'h6',
-  'small',
-  'p',
-  'strong',
-  'code',
-  'span',
-];
+These are our base semantic font scales.
 
 <Canvas>
   <Story name="Variants">
@@ -52,7 +44,40 @@ export const tags = [
         gridTemplateColumns="max-content 1fr"
         alignItems="center"
       >
-        {tags.map((tag) => (
+        {Object.keys(typographyStyleVariants).map((variant) => (
+          <Fragment key={variant}>
+            <Box>
+              <Text as="code" fontSize={18}>
+                {variant}
+              </Text>
+            </Box>
+            <Box>
+              <Text as="span" variant={variant}>
+                Lorem Ipsum Dolor
+              </Text>
+            </Box>
+          </Fragment>
+        ))}
+      </GridBox>
+    )}
+  </Story>
+</Canvas>
+
+## Element Preset Variants
+
+When you use a specific element Text will style it with overridable defaults as our best guess behavior. To customize this you may use `variant` and other `typography` system props.
+
+<Canvas>
+  <Story name="Element Variants">
+    {(args) => (
+      <GridBox
+        padding={8}
+        rowGap={24}
+        columnGap={32}
+        gridTemplateColumns="max-content 1fr"
+        alignItems="center"
+      >
+        {Object.keys(typographyElementVariants).map((tag) => (
           <Fragment key={tag}>
             <Box>
               <Text as="code" fontSize={18}>

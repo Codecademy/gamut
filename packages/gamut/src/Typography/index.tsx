@@ -1,3 +1,3 @@
 export * from './HeadingDeprecated';
 export * from './TextDeprecated';
-export * from './Text';
+export { Text, TextProps } from './Text';
