@@ -122,7 +122,7 @@ export const NotificationItem: React.FC<NotificationItemProps> = ({
 
   const separatorPattern = (
     <Box paddingX={32} margin={0} aria-hidden="true">
-      <Pattern name="dotsDense" height="1px" display="flex" />
+      <Pattern name="checkerDense" height="1px" display="flex" />
     </Box>
   );
 

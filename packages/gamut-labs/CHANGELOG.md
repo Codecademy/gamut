@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [14.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@13.5.14...@codecademy/gamut-labs@14.0.0) (2021-04-20)
+
+
+### ⚠ BREAKING CHANGES
+
+* add new dot Pattern and rename old dots to checker
+
+### Features
+
+* add new dot Pattern and rename old dots to checker ([cd1919b](https://github.com/Codecademy/client-modules/commit/cd1919bbe5552991b336db4f5857082040d1debe))
+
+
+
 ### [13.5.14](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@13.5.13...@codecademy/gamut-labs@13.5.14) (2021-04-20)
 
 **Note:** Version bump only for package @codecademy/gamut-labs
