@@ -27,6 +27,7 @@
     "@codecademy/gamut-styles": "^9.5.3",
     "@codecademy/variance": "^0.9.0",
     "@types/marked": "^1.1.0",
+    "@types/react-select": "^4.0.13",
     "classnames": "^2.2.5",
     "framer-motion": "^2.7.9",
     "html-to-react": "^1.4.2",
@@ -38,6 +39,7 @@
     "react-focus-on": "^3.5.1",
     "react-hook-form": "6.8.5",
     "react-player": "^2.3.1",
+    "react-select": "^4.3.0",
     "react-truncate-markup": "^5.1.0",
     "react-use": "^15.3.8",
     "sanitize-markdown": "^2.6.6"
