@@ -28,3 +28,4 @@ export * from './AppHeaderMobile/AppHeaderSubMenuMobile';
 export * from './GlobalFooter';
 export * from './GlobalHeader';
 export { AnonHeaderVariant } from './GlobalHeader/types';
+export * from './PageSection';
