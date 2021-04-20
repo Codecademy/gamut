@@ -22,13 +22,21 @@ export const color = {
 
 export const border = {
   // Border
-  border: { property: 'border' },
-  borderX: { property: 'border', properties: ['borderLeft', 'borderRight'] },
-  borderY: { property: 'border', properties: ['borderTop', 'borderBottom'] },
-  borderTop: { property: 'borderTop' },
-  borderRight: { property: 'borderRight' },
-  borderBottom: { property: 'borderBottom' },
-  borderLeft: { property: 'borderLeft' },
+  border: { property: 'border', scale: 'borders' },
+  borderX: {
+    property: 'border',
+    properties: ['borderLeft', 'borderRight'],
+    scale: 'borders',
+  },
+  borderY: {
+    property: 'border',
+    properties: ['borderTop', 'borderBottom'],
+    scale: 'borders',
+  },
+  borderTop: { property: 'borderTop', scale: 'borders' },
+  borderRight: { property: 'borderRight', scale: 'borders' },
+  borderBottom: { property: 'borderBottom', scale: 'borders' },
+  borderLeft: { property: 'borderLeft', scale: 'borders' },
   // Width
   borderWidth: { property: 'borderWidth' },
   borderWidthX: {
@@ -81,6 +89,13 @@ export const border = {
   borderStyleBottom: { property: 'borderBottomStyle' },
 } as const;
 
+const alignments = {
+  justifyContent: { property: 'justifyContent' },
+  justifyItems: { property: 'justifyItems' },
+  alignItems: { property: 'alignItems' },
+  alignContent: { property: 'alignContent' },
+} as const;
+
 export const flex = {
   flex: { property: 'flex' },
   flexBasis: { property: 'flexBasis' },
@@ -89,10 +104,7 @@ export const flex = {
   flexShrink: { property: 'flexShrink' },
   flexGrow: { property: 'flexGrow' },
   order: { property: 'order' },
-  justifyContent: { property: 'justifyContent' },
-  justifyItems: { property: 'justifyItems' },
-  alignItems: { property: 'alignItems' },
-  alignContent: { property: 'alignContent' },
+  ...alignments,
 } as const;
 
 export const grid = {
@@ -111,6 +123,7 @@ export const grid = {
   gridRowStart: { property: 'gridRowStart' },
   gridColumnEnd: { property: 'gridColumnEnd' },
   gridRowEnd: { property: 'gridRowEnd' },
+  ...alignments,
 } as const;
 
 export const background = {

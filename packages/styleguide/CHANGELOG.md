@@ -3,6 +3,92 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [36.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@35.1.0...@codecademy/styleguide@36.0.0) (2021-04-20)
+
+
+### ⚠ BREAKING CHANGES
+
+* add new dot Pattern and rename old dots to checker
+
+### Features
+
+* add new dot Pattern and rename old dots to checker ([cd1919b](https://github.com/Codecademy/client-modules/commit/cd1919bbe5552991b336db4f5857082040d1debe))
+
+
+
+## [35.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@35.0.10...@codecademy/styleguide@35.1.0) (2021-04-20)
+
+
+### Features
+
+* **SelectDropdown:** Select with styled dropdown ([a362de9](https://github.com/Codecademy/client-modules/commit/a362de94527a5a438ba8e3e93047feccfbc89daf))
+
+
+
+### [35.0.10](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@35.0.9...@codecademy/styleguide@35.0.10) (2021-04-20)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [35.0.9](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@35.0.8...@codecademy/styleguide@35.0.9) (2021-04-20)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [35.0.8](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@35.0.7...@codecademy/styleguide@35.0.8) (2021-04-19)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [35.0.7](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@35.0.6...@codecademy/styleguide@35.0.7) (2021-04-19)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [35.0.6](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@35.0.5...@codecademy/styleguide@35.0.6) (2021-04-19)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [35.0.5](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@35.0.4...@codecademy/styleguide@35.0.5) (2021-04-19)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [35.0.4](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@35.0.3...@codecademy/styleguide@35.0.4) (2021-04-19)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [35.0.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@35.0.2...@codecademy/styleguide@35.0.3) (2021-04-19)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
 ### [35.0.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@35.0.1...@codecademy/styleguide@35.0.2) (2021-04-15)
 
 **Note:** Version bump only for package @codecademy/styleguide
