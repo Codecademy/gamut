@@ -170,6 +170,8 @@ export type UserClickData = UserSharedData & {
   course_progress?: number;
   assessment_id?: string;
   container_slugs?: string[];
+  goal_setting?: string;
+  longterm_goal?: string;
 };
 
 /**
