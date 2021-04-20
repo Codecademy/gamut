@@ -3,7 +3,7 @@ import { mediaQueries } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React from 'react';
 
-import { Text } from '../experimental/Text';
+import { Text } from '../Text';
 import { BaseProps } from './types';
 
 const Img = styled.img`
