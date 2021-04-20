@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [31.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@31.0.7...@codecademy/gamut@31.1.0) (2021-04-20)
+
+
+### Features
+
+* **SelectDropdown:** Select with styled dropdown ([a362de9](https://github.com/Codecademy/client-modules/commit/a362de94527a5a438ba8e3e93047feccfbc89daf))
+
+
+
 ### [31.0.7](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@31.0.6...@codecademy/gamut@31.0.7) (2021-04-20)
 
 **Note:** Version bump only for package @codecademy/gamut
