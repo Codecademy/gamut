@@ -5,9 +5,9 @@ import {
   FillButton,
   FlexBox,
   LayoutGrid,
-  PatternName,
 } from '@codecademy/gamut';
 import { Popover, PopoverProps } from '@codecademy/gamut-labs';
+import * as patterns from '@codecademy/gamut-patterns';
 import React, { useRef, useState } from 'react';
 
 export const PopoverExample = (args: PopoverProps) => {
@@ -73,13 +73,14 @@ export const PatternedPopoversGrid = (args: PopoverProps) => {
   return (
     <LayoutGrid columnGap="sm" rowGap="xl">
       {[
-        'diagonalStripesLoose',
-        'diagonalStripesRegular',
-        'diagonalStripesDense',
-        'checkerLoose',
-        'checkerRegular',
-        'checkerDense',
-      ].map((pattern: PatternName) => (
+        'DiagonalStripeBLoose',
+        'DiagonalStripeBRegular',
+        'DiagonalStripeBDense',
+        'CheckerLoose',
+        'CheckerRegular',
+        'CheckerDense',
+        'DotLoose',
+      ].map((pattern: typeof patterns) => (
         <Column key={pattern} size={4}>
           <FlexBox justifyContent="center">
             <PopoverExample {...args} pattern={pattern} />

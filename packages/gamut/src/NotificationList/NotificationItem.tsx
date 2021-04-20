@@ -8,11 +8,12 @@ import {
   Megaphone,
   New,
 } from '@codecademy/gamut-illustrations';
+import { CheckerDense } from '@codecademy/gamut-patterns';
 import { colors } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React, { ReactElement } from 'react';
 
-import { Box, FlexBox, IconButton, Pattern, Text } from '..';
+import { Box, FlexBox, IconButton, Text } from '..';
 import { Notification } from './typings';
 
 const StyledLink = styled.a`
@@ -122,7 +123,7 @@ export const NotificationItem: React.FC<NotificationItemProps> = ({
 
   const separatorPattern = (
     <Box paddingX={32} margin={0} aria-hidden="true">
-      <Pattern name="checkerDense" height="1px" display="flex" />
+      <CheckerDense height="1px" display="flex" />
     </Box>
   );
 

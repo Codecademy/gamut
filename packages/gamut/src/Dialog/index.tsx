@@ -1,4 +1,5 @@
 import { MiniDeleteIcon } from '@codecademy/gamut-icons';
+import { CheckerDense } from '@codecademy/gamut-patterns';
 import { pxRem, variant } from '@codecademy/gamut-styles';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
@@ -7,7 +8,6 @@ import React from 'react';
 import { Box, FlexBox } from '../Box';
 import { FillButton, IconButton, TextButton } from '../Button';
 import { Overlay, OverlayProps } from '../Overlay';
-import { Pattern } from '../Pattern';
 import { VisualTheme } from '../theming/VisualTheme';
 
 const modes = variant({
@@ -51,7 +51,7 @@ const ModalWrapper = styled.div(modes, ({ theme }) => {
 });
 
 /** This will need to be consolidated with Card / CoachMark / Toast  */
-const ModalShadow = styled(Pattern)(
+const ModalShadow = styled(CheckerDense)(
   ({ theme }) => css`
     width: 100%;
     height: 100%;
@@ -155,7 +155,7 @@ export const Dialog: React.FC<DialogProps> = ({
         aria-modal="true"
         role="dialog"
       >
-        <ModalShadow name="checkerDense" />
+        <ModalShadow />
         <ModalForeground />
         <ModalBody>
           <Title

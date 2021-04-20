@@ -1,0 +1,45 @@
+import * as patterns from '@codecademy/gamut-patterns/src';
+import title from '@codecademy/macros/lib/title.macro';
+import {
+  IconGallery,
+  IconItem,
+  Meta,
+  Preview,
+  Story,
+} from '@storybook/addon-docs/blocks';
+
+import { PropsTable } from '~styleguide/blocks';
+
+<Meta
+  title={title}
+  parameters={{
+    subtitle: `We're developing a set of fun patterns.`,
+    source: 'gamut-patterns',
+    status: 'current',
+  }}
+  component={patterns.DotLoose}
+/>
+
+## General Infomation
+
+These are intended to be able to take in any Box props.
+
+## Sandbox
+
+<Preview>
+  <Story name="Pattern">
+    <patterns.DotLoose width={200} height={200} />
+  </Story>
+</Preview>
+
+<PropsTable of={patterns.DotLoose} />
+
+## Usage
+
+<IconGallery>
+  {Object.entries(patterns).map(([patternName, Pattern]) => (
+    <IconItem key={patternName} name={patternName}>
+      <Pattern width="128px" />
+    </IconItem>
+  ))}
+</IconGallery>

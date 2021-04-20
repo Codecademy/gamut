@@ -59,6 +59,10 @@ module.exports = {
           __dirname,
           '../../gamut-illustrations/src'
         ),
+        '@codecademy/gamut-patterns$': path.resolve(
+          __dirname,
+          '../../gamut-patterns/src'
+        ),
       },
     };
 

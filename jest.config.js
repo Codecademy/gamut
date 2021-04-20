@@ -31,6 +31,7 @@ module.exports = {
     '^@codecademy\\/gamut-illustrations$':
       '<rootDir>/packages/gamut-illustrations/src',
     '^@codecademy\\/macros$': '<rootDir>/packages/macros',
+    '^@codecademy\\/gamut-patterns$': '<rootDir>/packages/gamut-patterns/src',
   },
   testPathIgnorePatterns: ['/node_modules/', '/dist/'],
   transform: {

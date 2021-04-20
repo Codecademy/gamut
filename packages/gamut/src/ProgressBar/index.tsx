@@ -1,8 +1,7 @@
+import * as patterns from '@codecademy/gamut-patterns';
 import { variant } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React from 'react';
-
-import { Pattern, PatternName } from '../Pattern';
 
 export type ProgressBarProps = {
   className?: string;
@@ -35,7 +34,7 @@ export type ProgressBarProps = {
   /**
    * Whether to use a pattern background
    */
-  pattern?: PatternName;
+  pattern?: typeof patterns;
 };
 
 const progressBarSizeVariants = variant({
@@ -150,6 +149,8 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
   size = 'small',
   variant = 'blue',
 }) => {
+  const PatternComponent = pattern ? patterns[pattern] : null;
+
   return (
     <ProgressBarWrapper
       aria-label={`Progress: ${percent}%`}
@@ -160,7 +161,7 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
       variant={variant}
     >
       {pattern && (
-        <Pattern width="100%" position="absolute" zIndex={0} name={pattern} />
+        <PatternComponent width="100%" position="absolute" zIndex={0} />
       )}
       <Bar
         variant={variant}
