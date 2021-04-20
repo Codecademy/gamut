@@ -47,13 +47,13 @@ These are our base semantic font scales.
         {Object.keys(typographyStyleVariants).map((variant) => (
           <Fragment key={variant}>
             <Box>
-              <Text as="code" fontSize={18}>
-                {variant}
+              <Text as="code" fontSize={14}>
+                {typographyStyleVariants[variant].fontSize}
               </Text>
             </Box>
             <Box>
               <Text as="span" variant={variant}>
-                Lorem Ipsum Dolor
+                {variant}
               </Text>
             </Box>
           </Fragment>
@@ -80,7 +80,7 @@ When you use a specific element Text will style it with overridable defaults as 
         {Object.keys(typographyElementVariants).map((tag) => (
           <Fragment key={tag}>
             <Box>
-              <Text as="code" fontSize={18}>
+              <Text as="code" fontSize={14}>
                 {tag}
               </Text>
             </Box>
