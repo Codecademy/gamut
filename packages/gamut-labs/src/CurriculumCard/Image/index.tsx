@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 import React, { useState } from 'react';
 import { useIsomorphicLayoutEffect } from 'react-use';
 
-import { BASE_STATIC_ASSET_PATH } from '../../../remoteAssets/components';
+import { BASE_STATIC_ASSET_PATH } from '../../remoteAssets/components';
 
 const StyledImg = styled.img`
   display: block;

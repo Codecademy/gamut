@@ -1,7 +1,7 @@
 import { Box, FlexBox, Text } from '@codecademy/gamut';
 import React from 'react';
 
-import { ProLogo } from '../../../brand';
+import { ProLogo } from '../../ProLogo';
 
 export type HeaderProps = {
   invertColors?: boolean;
