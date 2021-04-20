@@ -1,3 +1,5 @@
+import { theme } from '@codecademy/gamut-styles';
+import { ThemeProvider } from '@emotion/react';
 import { fireEvent, render, screen } from '@testing-library/react';
 import { mount } from 'enzyme';
 import React from 'react';
@@ -6,23 +8,27 @@ import { Overlay, OverlayProps } from '..';
 
 const renderOverlay = (props?: Partial<OverlayProps>) => {
   return render(
-    <Overlay onRequestClose={() => {}} {...props}>
-      <div data-testid="overlay-content">
-        Howdy!
-        <button aria-label="Button" type="button" />
-      </div>
-    </Overlay>
+    <ThemeProvider theme={theme}>
+      <Overlay onRequestClose={() => {}} {...props}>
+        <div data-testid="overlay-content">
+          Howdy!
+          <button aria-label="Button" type="button" />
+        </div>
+      </Overlay>
+    </ThemeProvider>
   );
 };
 
 const mountOverlay = (props?: Partial<OverlayProps>) => {
   return mount(
-    <Overlay onRequestClose={() => {}} {...props}>
-      <div data-testid="overlay-content">
-        Howdy!
-        <button aria-label="Button" type="button" />
-      </div>
-    </Overlay>
+    <ThemeProvider theme={theme}>
+      <Overlay onRequestClose={() => {}} {...props}>
+        <div data-testid="overlay-content">
+          Howdy!
+          <button aria-label="Button" type="button" />
+        </div>
+      </Overlay>
+    </ThemeProvider>
   );
 };
 
