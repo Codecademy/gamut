@@ -3,6 +3,499 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [13.5.13](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@13.5.12...@codecademy/gamut-labs@13.5.13) (2021-04-20)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [13.5.12](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@13.5.11...@codecademy/gamut-labs@13.5.12) (2021-04-20)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [13.5.11](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@13.5.10...@codecademy/gamut-labs@13.5.11) (2021-04-19)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [13.5.10](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@13.5.9...@codecademy/gamut-labs@13.5.10) (2021-04-19)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [13.5.9](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@13.5.8...@codecademy/gamut-labs@13.5.9) (2021-04-19)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [13.5.8](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@13.5.7...@codecademy/gamut-labs@13.5.8) (2021-04-19)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [13.5.7](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@13.5.6...@codecademy/gamut-labs@13.5.7) (2021-04-19)
+
+
+### Bug Fixes
+
+* **labs:** Fix missing exported type ([a45e2bf](https://github.com/Codecademy/client-modules/commit/a45e2bf940b07a540002be575610ddab8ef8b604))
+
+
+
+### [13.5.6](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@13.5.5...@codecademy/gamut-labs@13.5.6) (2021-04-19)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [13.5.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@13.5.4...@codecademy/gamut-labs@13.5.5) (2021-04-15)
+
+
+### Bug Fixes
+
+* used _, not xs, for lowest size in GlobalFooter ([#1633](https://github.com/Codecademy/client-modules/issues/1633)) ([c776e33](https://github.com/Codecademy/client-modules/commit/c776e332df36a45d05dab9281cd872b6726644f3))
+
+
+
+### [13.5.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@13.5.3...@codecademy/gamut-labs@13.5.4) (2021-04-15)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [13.5.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@13.5.2...@codecademy/gamut-labs@13.5.3) (2021-04-15)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [13.5.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@13.5.1...@codecademy/gamut-labs@13.5.2) (2021-04-15)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [13.5.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@13.5.0...@codecademy/gamut-labs@13.5.1) (2021-04-15)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+## [13.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@13.4.14...@codecademy/gamut-labs@13.5.0) (2021-04-15)
+
+
+### Features
+
+* **LayoutGrid:** LayoutGrid conversion + Initial Variance Props [GM-81] ([2b51494](https://github.com/Codecademy/client-modules/commit/2b514940871759b66f91aa1f333be558e1ee517a))
+
+
+
+### [13.4.14](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@13.4.13...@codecademy/gamut-labs@13.4.14) (2021-04-15)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [13.4.13](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@13.4.12...@codecademy/gamut-labs@13.4.13) (2021-04-14)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [13.4.12](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@13.4.11...@codecademy/gamut-labs@13.4.12) (2021-04-14)
+
+
+### Bug Fixes
+
+* corrected GlobalFooter shop link ([#1629](https://github.com/Codecademy/client-modules/issues/1629)) ([3da9db9](https://github.com/Codecademy/client-modules/commit/3da9db9767b966188bbabc3054ab7b400a2586c3))
+
+
+
+### [13.4.11](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@13.4.10...@codecademy/gamut-labs@13.4.11) (2021-04-14)
+
+
+### Bug Fixes
+
+* straight to main, j to J in CatalogLinks.tsx ([bc65aa7](https://github.com/Codecademy/client-modules/commit/bc65aa7be1244c1442546f96bed532f80479ef63))
+
+
+
+### [13.4.10](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@13.4.9...@codecademy/gamut-labs@13.4.10) (2021-04-14)
+
+
+### Bug Fixes
+
+* use internal App Store and Google Play images ([#1625](https://github.com/Codecademy/client-modules/issues/1625)) ([46ff9d9](https://github.com/Codecademy/client-modules/commit/46ff9d91cd1aea085b42a78a6cc8b5805a418cc5))
+
+
+
+### [13.4.9](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@13.4.8...@codecademy/gamut-labs@13.4.9) (2021-04-14)
+
+
+### Bug Fixes
+
+* mismatched footer links ([#1624](https://github.com/Codecademy/client-modules/issues/1624)) ([97a4e9e](https://github.com/Codecademy/client-modules/commit/97a4e9e32729c25d4b215e63f918f162fd0913fd))
+
+
+
+### [13.4.8](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@13.4.7...@codecademy/gamut-labs@13.4.8) (2021-04-14)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [13.4.7](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@13.4.6...@codecademy/gamut-labs@13.4.7) (2021-04-13)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [13.4.6](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@13.4.5...@codecademy/gamut-labs@13.4.6) (2021-04-13)
+
+
+### Bug Fixes
+
+* accessibility and key violations in GlobalFooter ([3e636f4](https://github.com/Codecademy/client-modules/commit/3e636f4a4c08f6d72d33e68c5245971fe4b70e43))
+
+
+
+### [13.4.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@13.4.4...@codecademy/gamut-labs@13.4.5) (2021-04-13)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [13.4.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@13.4.3...@codecademy/gamut-labs@13.4.4) (2021-04-12)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [13.4.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@13.4.2...@codecademy/gamut-labs@13.4.3) (2021-04-12)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [13.4.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@13.4.1...@codecademy/gamut-labs@13.4.2) (2021-04-12)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [13.4.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@13.4.0...@codecademy/gamut-labs@13.4.1) (2021-04-09)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+## [13.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@13.3.7...@codecademy/gamut-labs@13.4.0) (2021-04-09)
+
+
+### Features
+
+* added GlobalFooter molecule ([#1598](https://github.com/Codecademy/client-modules/issues/1598)) ([b17603c](https://github.com/Codecademy/client-modules/commit/b17603c296918c09f0c8a350b07056227287c74e))
+
+
+
+### [13.3.7](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@13.3.6...@codecademy/gamut-labs@13.3.7) (2021-04-09)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [13.3.6](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@13.3.5...@codecademy/gamut-labs@13.3.6) (2021-04-08)
+
+
+### Bug Fixes
+
+* switch gamut-tests to an internal devDependency ([#1460](https://github.com/Codecademy/client-modules/issues/1460)) ([e12d005](https://github.com/Codecademy/client-modules/commit/e12d00501bff58e0a5365b950793201fb9f6c640))
+
+
+
+### [13.3.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@13.3.4...@codecademy/gamut-labs@13.3.5) (2021-04-08)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [13.3.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@13.3.3...@codecademy/gamut-labs@13.3.4) (2021-04-08)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [13.3.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@13.3.2...@codecademy/gamut-labs@13.3.3) (2021-04-07)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [13.3.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@13.3.1...@codecademy/gamut-labs@13.3.2) (2021-04-07)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [13.3.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@13.3.0...@codecademy/gamut-labs@13.3.1) (2021-04-07)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+## [13.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@13.2.10...@codecademy/gamut-labs@13.3.0) (2021-04-06)
+
+
+### Features
+
+* **Variance:** Initial Props and Refactor Tests [WEB-1390] ([e4b5177](https://github.com/Codecademy/client-modules/commit/e4b5177544643fec274d20f37be594b140a4cba3))
+
+
+
+### [13.2.10](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@13.2.9...@codecademy/gamut-labs@13.2.10) (2021-04-05)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [13.2.9](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@13.2.8...@codecademy/gamut-labs@13.2.9) (2021-04-01)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [13.2.8](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@13.2.7...@codecademy/gamut-labs@13.2.8) (2021-04-01)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [13.2.7](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@13.2.6...@codecademy/gamut-labs@13.2.7) (2021-03-30)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [13.2.6](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@13.2.5...@codecademy/gamut-labs@13.2.6) (2021-03-30)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [13.2.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@13.2.4...@codecademy/gamut-labs@13.2.5) (2021-03-30)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [13.2.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@13.2.3...@codecademy/gamut-labs@13.2.4) (2021-03-30)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [13.2.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@13.2.2...@codecademy/gamut-labs@13.2.3) (2021-03-29)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [13.2.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@13.2.1...@codecademy/gamut-labs@13.2.2) (2021-03-26)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [13.2.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@13.2.0...@codecademy/gamut-labs@13.2.1) (2021-03-26)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+## [13.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@13.1.6...@codecademy/gamut-labs@13.2.0) (2021-03-25)
+
+
+### Features
+
+* add height animation to dropdown ([bfb22ad](https://github.com/Codecademy/client-modules/commit/bfb22adea29c756a4f2d046f19a4605f9658ad79))
+
+
+
+### [13.1.6](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@13.1.5...@codecademy/gamut-labs@13.1.6) (2021-03-25)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [13.1.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@13.1.4...@codecademy/gamut-labs@13.1.5) (2021-03-25)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [13.1.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@13.1.3...@codecademy/gamut-labs@13.1.4) (2021-03-24)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [13.1.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@13.1.2...@codecademy/gamut-labs@13.1.3) (2021-03-24)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [13.1.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@13.1.1...@codecademy/gamut-labs@13.1.2) (2021-03-23)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [13.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@13.1.0...@codecademy/gamut-labs@13.1.1) (2021-03-23)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+## [13.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@13.0.5...@codecademy/gamut-labs@13.1.0) (2021-03-23)
+
+
+### Features
+
+* **GamutProvider:** Adds single provider for Theme + Cache + Globals + Assets [WEB-1352] [GM-173] ([9eac700](https://github.com/Codecademy/client-modules/commit/9eac7009b4d773621a0993cc125d6878b76977ce))
+
+
+
+### [13.0.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@13.0.4...@codecademy/gamut-labs@13.0.5) (2021-03-23)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [13.0.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@13.0.3...@codecademy/gamut-labs@13.0.4) (2021-03-22)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [13.0.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@13.0.2...@codecademy/gamut-labs@13.0.3) (2021-03-22)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [13.0.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@13.0.1...@codecademy/gamut-labs@13.0.2) (2021-03-22)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [13.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@13.0.0...@codecademy/gamut-labs@13.0.1) (2021-03-19)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
 ## [13.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@12.0.3...@codecademy/gamut-labs@13.0.0) (2021-03-18)
 
 

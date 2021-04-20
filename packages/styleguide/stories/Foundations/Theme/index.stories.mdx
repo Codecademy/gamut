@@ -1,7 +1,7 @@
 import title from '@codecademy/macros/lib/title.macro';
-import { Meta, Story } from '@storybook/addon-docs/dist/blocks';
+import { Meta, Story } from '@storybook/addon-docs/blocks';
 
-import { DataTable } from '~styleguide/blocks';
+import { DataTable, LinkTo } from '~styleguide/blocks';
 
 import * as TABLES from './tables';
 
@@ -9,7 +9,7 @@ import * as TABLES from './tables';
   title={title}
   parameters={{
     subtitle: 'The Emotion theme for codecademy',
-    status: 'stable',
+    status: 'current',
     source: 'gamut-styles',
   }}
 />
@@ -41,7 +41,7 @@ const myStyles = css`
 
 **Key**: `theme.colors`
 
-All current visual identity colors are available on the `colors` key on the Theme object, this includes named standard colors and their respective swatches. This object will not include older or more specific design tokens; if you need to access these color variables please check out the [full colors documentation](/?path=/docs/foundations-colors--standard)
+All current visual identity colors are available on the `colors` key on the Theme object, this includes named standard colors and their respective swatches. This object will not include older or more specific design tokens; if you need to access these color variables please check out the <LinkTo id="foundations-colors--standard">full colors documentation</LinkTo>
 
 ### Standard Colors
 
@@ -55,7 +55,36 @@ Standard color atoms we select from in creating designs. All colors on Codecadem
 
 Swatch colors are accessible with a dashcase key `theme.colors['${color}-${weight}']`. Here's a full list of all the swatches available.
 
-<DataTable {...TABLES.swatch} />
+<Story name="swatches">
+  <DataTable {...TABLES.swatch} />
+</Story>
+
+## Color Modes
+
+We have 2 core color modes that we support: `light` and `dark`.
+
+Each color mode consists of a set of aliased color tokens. Each alias has semantic meaning for how the color is used throughout our design system:
+
+- `text`: The standard text color for all type.
+- `background`: The base background color.
+- `primary`: The color used for interactive elements with a primary action.
+- `secondary`: The color used for interactive elements with a secondary action.
+
+For more on Color Modes please checkout the [full color mode documentation](/?path=/docs/foundations-colormode--page)
+
+### Light Mode
+
+<Story name="light">
+  <DataTable {...TABLES.lightMode} />
+</Story>
+
+**Example**
+
+### Dark Mode
+
+<Story name="dark">
+  <DataTable {...TABLES.darkMode} />
+</Story>
 
 ## Typography
 

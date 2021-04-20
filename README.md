@@ -9,9 +9,30 @@ _Shared node modules for codecademy.com & co_
 
 This repository is a monorepo that we manage using [Lerna](https://lernajs.io/). That means that we publish several packages to npm from the same codebase, including:
 
+## Gamut Kit
+
+We provide a single package to manage the versions of a few core dependencies: `gamut`, `gamut-styles`, `gamut-icons`, `gamut-illustrations`, `gamut-system`, `gamut-labs`. Since these packages are highly intertwined we suggest only installing `@codecademy/gamut-kit` when your app needs all of these.
+
 [`gamut-kit`: Include in your application instead of the individual packages to simplify version management. ](/packages/gamut-kit/README.md)
 
 - [![npm version](https://badge.fury.io/js/%40codecademy%2Fgamut-kit.svg)](https://badge.fury.io/js/%40codecademy%2Fgamut-kit)
+
+1. Run `yarn add @codecademy/gamut-kit`
+2. Add each of the managed packages to your peer dependencies (this is required for enabling intellisense for these packages and does not have any effect on version resolution)
+
+```json
+  "peerDependencies": {
+    "@codecademy/gamut": "*",
+    "@codecademy/gamut-icons": "*",
+    "@codecademy/gamut-illustrations": "*",
+    "@codecademy/gamut-labs": "*",
+    "@codecademy/gamut-styles": "*",
+    "@codecademy/gamut-system": "*",
+    "@codecademy/gamut-tests": "*"
+  },
+```
+
+## Individual Packages
 
 [`gamut`: Our React UI component library](/packages/gamut/README.md)
 
@@ -57,28 +78,84 @@ This repository is a monorepo that we manage using [Lerna](https://lernajs.io/).
 
 ### Publishing an alpha version of a module
 
-Every PR that changes files in a package publishes alpha releases that you can use to test your changes across applications
+Every PR that changes files in a package publishes alpha releases that you can use to test your changes across applications.
 
-1.  Create a PR
-1.  In the github "checks" UI, find the "Publish Alpha" task
-1.  Once this check has passed, click on it, and look through the output for the alpha version number
-1.  Use this version in the other application you want to test your changes on
+1.  Create a PR or Draft PR.
+    - This will kickoff a Circle-CI workflow which will publish an alpha build. (This will appear in Github as the "Deploy")
+1.  After the alpha build is published, the `codecademydev` bot should comment on your PR with the names of the published alpha packages. <br/>
+    <img width="290" height="auto" src="https://user-images.githubusercontent.com/4298857/114948632-3fa88a80-9e04-11eb-89ef-d016a1c9c572.png">
+1.  Install this version of the package in your application you wish to test your changes on.
 
 ### Working with pre-published changes
 
-Due to the inconsistencies of `yarn link` and symlinks in general in a lerna repo, we recommend using the `npm-link-better` package instead of `yarn link`.
+> NOTE: Due to the inconsistencies of symlinks in a lerna repo, _instead_ of using `yarn link`, we recommend using the `npm-link-better` package with the `--copy` flag to copy packages into your local repo's `node_modules` directory.
 
-To use it, follow these instructions:
+**Initial Setup:**
 
-1. in the terminal, `cd` into the root directory of the application that uses gamut (or any other client-modules package)
-1. Run `yarn build-all` (optional, but it rules out some other issues down the line)
-1. Run `npm-link-better` to link the package you're working on and start watching for changes
-1. `npx npm-link-better@0.6.0 --copy --watch ../client-modules/packages/gamut` (`../client-modules` or wherever your client-modules repo is)
-1. Make changes in the package client-modules repo and build the package, and you should see the changes reflected in your application
+1. Ensure you have npm-link-better installed: `npm install -g npm-link-better`
+1. Ensure you've built the entire `client-modules` repo since you last synced: `yarn build-all`
 
-To run a watcher and build Gamut on changes, in `client_modules/packages/gamut` use `yarn build:watch`. Similar watch scripts exist in the other packages, but if not feel free to add one!
+**Instructions:**
 
-You may need to run `yarn build:all` before running the build task in gamut or another package, if that package depends on the other built packages existing to be built.
+For each of your local `client-modules` packages (e.g. `gamut`), you'll need to do 2 things to get it working in your project:
+
+1. Make sure your package changes have been built into the `client-modules/packages/[package]/dist` folder.
+
+   - `yarn build`<br/>or<br/>
+     `yarn build:watch` (not all packages support this yet)
+
+1. Copy that built `/dist` folder to your project's `node_modules/@codecademy/[package]` folder.
+   ```bash
+   cd myProjectRepo
+   npm-link-better --copy --watch path/to/client-modules/packages/[package]
+   ```
+   > NOTE: The `--watch` flag will automatically copy your package into `node_modules` everytime it is built.
+
+<details>
+<summary>Example Workflow</summary>
+
+Let's say we are making changes to the `gamut` package, and our app that uses the `gamut` package uses `yarn start` to build, serve, and watch our app for changes.
+
+Let's also assume these two repos are sibling directories inside of a folder called `repos`
+
+```
+repos
+  |- client-modules
+  |- my-app
+```
+
+We would run the following commands in 3 separate shells
+
+```bash
+# Shell 1: Auto-build gamut changes
+cd repos/client-modules/packages/gamut
+yarn build:watch
+
+# Shell 2: Auto-copy built gamut changes to my-app.
+cd repos/my-app
+npm-link-better --copy --watch ../client-modules/packages/gamut
+
+# Shell 3: Auto-update app when anything changes.
+cd repos/my-app
+yarn start
+```
+
+This would allow us to make a change in our `gamut` package, and see that change automatically reflected in our local app in the browser.
+
+</details>
+
+<details>
+  <summary>Troubleshooting</summary>
+
+- If you see compilation issues in your project's dev server after running `npm-link-better`, you may have to restart your app's dev server.
+- If you are seeing compilation issues in a `client-modules` package, you may need to rebuild the whole repository via
+
+  ```bash
+  cd client-modules
+  yarn build-all
+  ```
+
+</details>
 
 <details>
   <summary>Instructions for using `yarn link` instead (not recommended)</summary>
@@ -105,11 +182,7 @@ If your other project uses React, you must link that copy of React in Gamut:
 for more information for why you have to do this.
 
 </details>
-
-#### Troubleshooting
-
-If you run into compilation issues after linking, try `yarn install` in your other project and restarting its dev server
-or running `yarn build-all` in this repo.
+<br/>
 
 ### Adding a New Package
 

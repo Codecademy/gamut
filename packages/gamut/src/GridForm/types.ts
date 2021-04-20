@@ -1,6 +1,6 @@
 import { UseFormMethods, ValidationRules } from 'react-hook-form';
 
-import { ColumnProps } from '../Layout/Column';
+import { ColumnProps } from '../Layout';
 import { ToolTipProps } from '../ToolTip';
 
 export type BaseFormField<Value> = {
@@ -18,7 +18,7 @@ export type BaseFormField<Value> = {
    */
   id?: string;
 
-  toolTip?: ToolTipProps;
+  tooltip?: ToolTipProps;
 
   name: string;
   onUpdate?: (value: Value) => void;

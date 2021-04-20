@@ -1,6 +1,8 @@
 import { HighlightedText, Text } from '@codecademy/gamut/src';
 import title from '@codecademy/macros/lib/title.macro';
-import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+
+import { PropsTable } from '~styleguide/blocks';
 
 <Meta
   title={title}
@@ -9,6 +11,7 @@ import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
     subtitle: `Emphasized (bold) text with a light background color behind it. Use to
 showcase important words in a sentence.  Works with white-space or end-lines.`,
     source: 'gamut',
+    status: 'deprecated',
   }}
   args={{ children: 'superpowers' }}
 />
@@ -23,4 +26,4 @@ showcase important words in a sentence.  Works with white-space or end-lines.`,
   </Story>
 </Canvas>
 
-<Props story="HighlightedText" />
+<PropsTable story="HighlightedText" />

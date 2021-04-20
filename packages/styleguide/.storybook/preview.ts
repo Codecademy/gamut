@@ -1,11 +1,11 @@
 import 'focus-visible/dist/focus-visible.min.js';
 
-import './decorators/wrapper';
 import { withEmotion } from './decorators/theme';
-import { Page } from './components';
-import { colors } from '@codecademy/gamut-styles/src';
+import { DocsPage, DocsContainer } from './components';
+import { theme as gamutTheme } from '@codecademy/gamut-styles/src';
 import { theme } from './theme';
-import { breakpoints } from '@codecademy/gamut-styles';
+
+const { breakpoints } = gamutTheme;
 
 export const parameters = {
   viewMode: 'docs',
@@ -16,9 +16,11 @@ export const parameters = {
       order: [
         'Gamut',
         'Foundations',
-        ['About', 'Theme', 'System', 'Design Guidelines', 'Legacy'],
+        ['About', 'Theme', 'System', 'ColorMode', 'Colors', 'Layout'],
         'Typography',
+        ['About', 'Text', 'Anchor'],
         'Layouts',
+        ['About', 'Box', 'LayoutGrid', 'ContentContainer'],
         'Atoms',
         'Molecules',
         'Organisms',
@@ -31,28 +33,32 @@ export const parameters = {
       locales: 'en-US',
     },
   },
+  taxonomy: {
+    root: 'gamut',
+    indexPage: 'about',
+  },
   // Addon Options
   docs: {
     theme,
+    container: DocsContainer,
     components: {
-      wrapper: Page,
+      wrapper: DocsPage,
     },
   },
   backgrounds: {
     grid: {
-      cellSize: 20,
+      cellSize: 16,
       opacity: 0.5,
       cellAmount: 5,
     },
-    values: [
-      { name: 'White', value: colors.white },
-      { name: 'Navy', value: colors.navy },
-      { name: 'Beige', value: colors.beige },
-    ],
   },
   viewport: {
     defaultViewport: 'responsive',
     viewports: {
+      responsive: {
+        name: 'Responsive',
+        type: 'desktop',
+      },
       xs: {
         name: `XS - ${breakpoints.xs}`,
         styles: {
@@ -103,6 +109,7 @@ export const parameters = {
   },
   actions: { argTypesRegex: '^on.*' },
   controls: { expanded: true },
+  layout: 'fullscreen',
 };
 
 export const decorators = [withEmotion];

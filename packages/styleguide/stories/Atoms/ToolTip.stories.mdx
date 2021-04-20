@@ -1,8 +1,10 @@
-import { ToolTip, ToolTipPosition } from '@codecademy/gamut/src';
+import { Box, ToolTip } from '@codecademy/gamut/src';
 import { InfoCircleIcon } from '@codecademy/gamut-icons/src';
 import title from '@codecademy/macros/lib/title.macro';
-import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 import { upperFirst } from 'lodash';
+
+import { PropsTable } from '~styleguide/blocks';
 
 import { TooltipArea } from './TooltipArea';
 
@@ -14,8 +16,10 @@ import { TooltipArea } from './TooltipArea';
       'A floating text component that positions itself relative to its target.',
     source: 'gamut',
     figmaId: 'cTJDwsS9s3I0KkLpKaETn2',
+    status: 'current',
   }}
   args={{
+    alignment: 'top-right',
     children: `Like the term fortnight, a term for a two week period, antantwig refers to a three week period.`,
     focusable: true,
     id: 'tooltip',
@@ -24,18 +28,14 @@ import { TooltipArea } from './TooltipArea';
 />
 
 Small piece of extra information triggered on the focus or hover of a button or icon,
-such as extra requirements for a form surfaced from an informative (i) icon. They
-dissapear when the focus or hover are no longer active.
-
-Tooltips cannot contain clickable elements (if your solution
-requires clickable elements, we suggest using a “Popover” instead) - Great for
-surfacing additional information that may or may not be relevant _without_ cluttering
-the core interface.
+such as extra requirements for a form surfaced from an informative (i) icon.
+They disappear when the focus or hover are no longer active.
+Great for surfacing additional information that may or may not be relevant _without_ cluttering the core interface.
 
 <Canvas>
   <Story name="ToolTip">
     {(args) => (
-      <TooltipArea>
+      <TooltipArea tipAlignment={args.alignment}>
         Hello! &nbsp;
         <ToolTip {...args} />
       </TooltipArea>
@@ -43,44 +43,71 @@ the core interface.
   </Story>
 </Canvas>
 
-<Props exclude={['target']} story="ToolTip" />
+<PropsTable exclude={['target']} story="ToolTip" />
 
-## Position
+## Alignment
 
-Tooltips can be positioned both horizontally and vertically relative to their target.
+Tooltips can be aligned both horizontally and vertically relative to their target.
+The caret tip will be centered horizontally on the target.
 
 <Canvas>
-  <Story name="Position">
+  <Story name="Alignment">
     {(args) => {
-      return Object.values(ToolTipPosition).map((position) => {
-        return (
-          <TooltipArea key={position}>
-            {position.split('-').map(upperFirst).join(' ')}: &nbsp;
-            <ToolTip {...args} position={position} />
-          </TooltipArea>
-        );
-      });
+      return ['bottom-left', 'bottom-right', 'top-left', 'top-right'].map(
+        (alignment) => {
+          return (
+            <TooltipArea key={alignment} tipAlignment={alignment}>
+              {alignment.split('-').map(upperFirst).join(' ')}: &nbsp;
+              <ToolTip {...args} alignment={alignment} />
+              <ToolTip
+                {...args}
+                alignment={alignment}
+                target={<Box marginLeft={32}>Hi: {args.target}</Box>}
+              />
+            </TooltipArea>
+          );
+        }
+      );
     }}
   </Story>
 </Canvas>
 
-## Theme
+## Focusable
 
-Tooltips can be of a `dark` or `light` visual theme.
+ToolTip targets are often buttons or other natively focusable elements.
+If the target is not focusable, such as for plain text or icons, use the `focusable` prop so keyboard users can still trigger the ToolTip.
 
 <Canvas>
-  <Story name="Theme">
-    {(args) => (
-      <>
-        <TooltipArea>
-          Dark: &nbsp;
-          <ToolTip {...args} theme="dark" />
+  <Story name="Focusable">
+    {(args) => {
+      return (
+        <TooltipArea tipAlignment={args.alignment}>
+          <ToolTip {...args} target="Information!" />
         </TooltipArea>
-        <TooltipArea>
-          Light: &nbsp;
-          <ToolTip {...args} theme="light" />
-        </TooltipArea>
-      </>
-    )}
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Mode
+
+Tooltips can be of a `dark` or `light` visual mode.
+
+<Canvas>
+  <Story name="Mode">
+    {(args) => {
+      return (
+        <>
+          <TooltipArea tipAlignment={args.alignment}>
+            Dark: &nbsp;
+            <ToolTip {...args} mode="dark" />
+          </TooltipArea>
+          <TooltipArea tipAlignment={args.alignment}>
+            Light: &nbsp;
+            <ToolTip {...args} mode="light" />
+          </TooltipArea>
+        </>
+      );
+    }}
   </Story>
 </Canvas>

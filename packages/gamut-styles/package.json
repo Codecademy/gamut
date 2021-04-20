@@ -1,14 +1,14 @@
 {
   "name": "@codecademy/gamut-styles",
   "description": "Styleguide & Component library for codecademy.com",
-  "version": "9.0.0",
+  "version": "9.5.3",
   "author": "Jake Hiller <jake@codecademy.com>",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "scripts": {
     "build:clean": "rm -rf ./dist",
     "build:compile": "tsc",
-    "build:transpile": "babel ./src --out-dir ./dist --copy-files --copy-ignored --extensions \".ts,.tsx\"",
+    "build:transpile": "babel ./src --out-dir ./dist --copy-files --extensions \".ts,.tsx\"",
     "build": "yarn build:clean && yarn build:compile && yarn build:transpile",
     "lernaBuildTask": "yarn build"
   },
@@ -17,15 +17,20 @@
     "url": "git@github.com:Codecademy/client-modules.git"
   },
   "dependencies": {
-    "@codecademy/gamut-system": "^0.5.1"
+    "@codecademy/gamut-system": "^0.7.0",
+    "@codecademy/variance": "^0.9.0"
   },
   "peerDependencies": {
-    "@emotion/react": "^11.1.4",
-    "@emotion/styled": "^11.0.0"
+    "@emotion/react": "^11.15",
+    "@emotion/styled": "^11.1.5",
+    "react-helmet": "^6.1.0"
   },
   "devDependencies": {
-    "@emotion/react": "^11.1.4",
-    "@emotion/styled": "^11.0.0"
+    "@emotion/jest": "11.2.1",
+    "@emotion/react": "^11.1.5",
+    "@emotion/styled": "^11.1.5",
+    "@types/react-helmet": "^6.1.0",
+    "component-test-setup": "^0.2.4"
   },
   "license": "MIT",
   "publishConfig": {

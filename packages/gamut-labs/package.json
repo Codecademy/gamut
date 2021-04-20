@@ -1,7 +1,7 @@
 {
   "name": "@codecademy/gamut-labs",
   "description": "Brand and experimental component library for Codecademy",
-  "version": "13.0.0",
+  "version": "13.5.13",
   "author": "Codecademy Engineering <dev@codecademy.com>",
   "sideEffects": [
     "*.css",
@@ -16,28 +16,31 @@
     "url": "git@github.com:Codecademy/client-modules.git"
   },
   "peerDependencies": {
-    "@codecademy/gamut-tests": "^1.0.0",
     "@emotion/react": "^11.1.4",
     "@emotion/styled": "^11.0.0",
     "react": ">=16.8.1",
     "react-dom": ">=16.8.1"
   },
   "dependencies": {
-    "@codecademy/gamut": "^28.0.0",
-    "@codecademy/gamut-styles": "^9.0.0",
-    "@codecademy/gamut-system": "^0.5.1",
-    "@codecademy/gamut-tests": "^2.2.3",
+    "@codecademy/gamut": "^31.0.7",
+    "@codecademy/gamut-styles": "^9.5.3",
+    "@codecademy/gamut-system": "^0.7.0",
+    "@codecademy/variance": "^0.9.0",
     "classnames": "^2.2.5",
     "react-focus-on": "^3.5.1",
     "react-hotkeys-hook": "^2.3.1",
     "react-use": "15.3.8"
   },
+  "devDependencies": {
+    "@codecademy/gamut-tests": "^2.3.14"
+  },
   "scripts": {
     "verify": "tsc --noEmit",
-    "build:compile": "babel ./src --out-dir ./dist --copy-files --copy-ignored --extensions \".ts,.tsx\"",
+    "build:compile": "babel ./src --out-dir ./dist --copy-files --extensions \".ts,.tsx\"",
     "build:clean": "rm -rf dist",
     "build:types": "tsc --emitDeclarationOnly",
     "build": "yarn build:clean && yarn build:compile && yarn build:types",
+    "build:watch": "yarn build && onchange ./src -- yarn build:compile && yarn build:types",
     "lernaBuildTask": "yarn build"
   },
   "license": "MIT",

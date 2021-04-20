@@ -1,19 +1,14 @@
-import {
-  CardBody,
-  CardFooter,
-  CardShell,
-  Heading,
-  Text,
-} from '@codecademy/gamut/src';
+import { CardShell, Text } from '@codecademy/gamut/src';
 import title from '@codecademy/macros/lib/title.macro';
-import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+
+import { PropsTable } from '~styleguide/blocks';
 
 <Meta
   title={title}
   component={CardShell}
-  subcomponents={{ CardBody, CardFooter }}
   parameters={{
-    subtitle: `A set of components for displaying a consistently spaced raised card.`,
+    subtitle: `A shadowed shell`,
     status: 'deprecated',
     source: 'gamut',
   }}
@@ -23,17 +18,13 @@ import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
   <Story name="Card" args={{ hoverShadow: false }}>
     {(args) => (
       <CardShell>
-        <CardBody>
-          <Heading as="h3">Card Body</Heading>
-          <Text>This is some body text</Text>
-          <Text>Blah blah blurgha blurgha</Text>
-        </CardBody>
-        <CardFooter>
-          <Text>Footer Text</Text>
-        </CardFooter>
+        <Text as="h3">Card Body</Text>
+        <Text>This is some body text</Text>
+        <Text>Blah blah blurgha blurgha</Text>
+        <Text>Footer Text</Text>
       </CardShell>
     )}
   </Story>
 </Canvas>
 
-<Props story="Card" />
+<PropsTable story="Card" />

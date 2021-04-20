@@ -7,20 +7,24 @@ import React, {
   useState,
 } from 'react';
 
-import { Box } from '../Box';
+import { Box, FlexBox } from '../Box';
 import {
   conditionalInputStyleProps,
   conditionalStyles,
   formBaseFieldStyles,
+  formFieldFocusStyles,
+  formFieldPaddingStyles,
   formFieldStyles,
   iconPadding,
-  iconStyles,
 } from './styles/shared';
 
 export type InputProps = InputHTMLAttributes<HTMLInputElement> & {
   id?: string;
   className?: string;
   error?: boolean;
+  /**
+   * [The for/id string of a label or labelable form-related element](https://developer.mozilla.org/en-US/docs/Web/API/HTMLLabelElement/htmlFor). The outer FormGroup or FormLabel should have an identical string as the inner FormElement for accessibility purposes.
+   */
   htmlFor?: string;
   label?: string;
   name?: string;
@@ -28,26 +32,36 @@ export type InputProps = InputHTMLAttributes<HTMLInputElement> & {
   required?: boolean;
   type?: string;
   valid?: boolean;
-};
-
-export interface StyledInputProps extends InputProps {
+  /**
+   * Allows Inputs to manage their own activated style state to acccount for some edge-cases.
+   */
   activated?: boolean;
+};
+export interface StyledInputProps extends InputProps {
   icon?: boolean;
 }
+
+/*
+ * @remarks We would love to properly type this with generics, but, alas, we cannot yet.
+ * @see https://github.com/Codecademy/client-modules/pull/270#discussion_r270917147
+ * @see https://github.com/Microsoft/TypeScript/issues/21048
+ */
 export interface InputWrapperProps extends InputProps {
-  as?: StyledComponent<
-    StyledInputProps,
-    React.DetailedHTMLProps<
-      InputHTMLAttributes<HTMLInputElement>,
-      HTMLInputElement
-    >
-  >;
+  as?: StyledComponent<StyledInputProps, React.PropsWithChildren<any>>;
+  /**
+   * A custom icon svg from gamut-icons.
+   */
+  icon?: typeof AlertIcon;
 }
+
+/**  We greatly prefer NOT to do this but ReactRecurly has some specific needs around focus-styles + padding that force us to export them seperately. If we ever stop using React-Recurly, this code will be 🔪.
+ *tldr: Do not do this unless you have already talked to Web-Plat and have failed to find any alternate (and better) solutions. */
+export const reactRecurlyFormFieldFocusStyles = formFieldFocusStyles;
+export const reactRecurlyFormFieldPaddingStyles = formFieldPaddingStyles;
 
 export const iFrameWrapper = styled.div<conditionalInputStyleProps>`
   ${formBaseFieldStyles}
   ${conditionalStyles}
-    ${iconPadding}
   text-indent: 0;
 `;
 
@@ -58,34 +72,74 @@ const InputElement = styled.input<StyledInputProps>`
   text-indent: 0;
 `;
 
-const StyledAlertIcon = styled(AlertIcon)(iconStyles);
+const inputStates = {
+  error: {
+    color: 'red',
+    icon: AlertIcon,
+  },
+  valid: {
+    color: 'green',
+    icon: CheckCircledIcon,
+  },
+  clean: {
+    color: 'gray-600',
+    icon: undefined,
+  },
+} as const;
 
-const StyledCheckCircledIcon = styled(CheckCircledIcon)(iconStyles);
+const getInputState = (error: boolean, valid: boolean) => {
+  if (error) return 'error';
+  if (valid) return 'valid';
+  return 'clean';
+};
 
 export const Input = forwardRef<HTMLInputElement, InputWrapperProps>(
-  ({ error, className, id, valid, as: As, ...rest }, ref) => {
-    const [activated, setActivated] = useState(false);
+  (
+    { error, className, id, valid, activated, as: As, icon: Icon, ...rest },
+    ref
+  ) => {
+    const [activatedStyle, setActivatedStyle] = useState(false);
 
-    const changeHandler = (event: ChangeEvent<HTMLInputElement>) => {
+    const { color, icon } = inputStates[
+      getInputState(Boolean(error), Boolean(valid))
+    ];
+
+    /*
+     * @remarks We would love to properly type this with generics, but, alas, we cannot yet. See comments on lines 45-47 for more detail.
+     */
+
+    const changeHandler = (event: ChangeEvent<any>) => {
       rest?.onChange?.(event);
-      setActivated(true);
+      setActivatedStyle(true);
     };
+
     const AsComponent = As || InputElement;
+    const ShownIcon = Icon || icon;
 
     return (
-      <Box position="relative">
+      <Box position="relative" textColor={color}>
         <AsComponent
           {...rest}
           id={id || rest.htmlFor}
           ref={ref}
           error={error}
-          activated={activated}
-          icon={error || valid}
+          activated={activated === undefined ? activatedStyle : activated}
+          icon={error || valid || !!Icon}
           className={className}
-          onChange={(event) => changeHandler(event)}
+          onChange={changeHandler}
         />
-        {error && <StyledAlertIcon color="red" />}
-        {valid && <StyledCheckCircledIcon color="green" />}
+        {!!ShownIcon && (
+          <FlexBox
+            paddingRight={Icon ? 12 : 16}
+            position="absolute"
+            alignItems="center"
+            right="0"
+            top="0"
+            bottom="0"
+          >
+            <ShownIcon size={Icon ? 24 : 16} />
+          </FlexBox>
+        )}
       </Box>
     );
   }

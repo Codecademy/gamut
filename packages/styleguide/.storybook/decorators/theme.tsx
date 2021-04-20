@@ -1,24 +1,21 @@
 import React from 'react';
-import { CacheProvider } from '@emotion/react';
-
-import {
-  GamutThemeProvider,
-  createEmotionCache,
-} from '@codecademy/gamut-styles';
-
-const cache = createEmotionCache({ speedy: false });
+import { GamutProvider } from '@codecademy/gamut-styles/src';
 
 /**
  * Story functions must be called as a regular function to avoid full-remounts
  * See: https://github.com/storybookjs/storybook/issues/12255
  */
 
-export const withEmotion = (Story: any) => {
-  return process.env.NODE_ENV === 'test' ? (
-    <GamutThemeProvider>{Story()}</GamutThemeProvider>
-  ) : (
-    <CacheProvider value={cache}>
-      <GamutThemeProvider>{Story()}</GamutThemeProvider>
-    </CacheProvider>
-  );
+export const withEmotion = (Story: any, context: any) => {
+  // Always give iframes the full provider
+  if (process.env.NODE_ENV === 'test') {
+    return (
+      <GamutProvider useCache={false} useGlobals={false}>
+        {Story()}
+      </GamutProvider>
+    );
+  }
+
+  // Wrap all stories in minimal provider
+  return <GamutProvider>{Story()}</GamutProvider>;
 };

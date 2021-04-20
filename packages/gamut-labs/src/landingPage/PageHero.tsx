@@ -1,4 +1,4 @@
-import { Column, ColumnSizes, LayoutGrid, VideoProps } from '@codecademy/gamut';
+import { Column, ColumnProps, LayoutGrid, VideoProps } from '@codecademy/gamut';
 import styled from '@emotion/styled';
 import React from 'react';
 
@@ -24,8 +24,8 @@ export type MediaProps =
     } & VideoProps);
 
 type ColumnLayout = {
-  left: ColumnSizes;
-  right: ColumnSizes;
+  left: Extract<ColumnProps['size'], number>;
+  right: Extract<ColumnProps['size'], number>;
 };
 
 export type PageHeroProps = BaseProps & {
@@ -60,14 +60,14 @@ export const PageHero: React.FC<PageHeroProps> = ({
   testId,
   onAnchorClick,
 }) => {
-  const layout = getColumnLayout(media);
+  const { right, left } = getColumnLayout(media);
 
   return (
-    <LayoutGrid testId={testId} rowGap="md" columnGap={{ xs: 'sm', sm: 'lg' }}>
+    <LayoutGrid data-testid={testId} rowGap={16} columnGap={{ _: 8, sm: 32 }}>
       <LeftColumn
         size={{
-          xs: 12,
-          sm: layout.left,
+          _: 12,
+          sm: left,
         }}
       >
         {title && <Title isPageHeading>{title}</Title>}
@@ -78,7 +78,7 @@ export const PageHero: React.FC<PageHeroProps> = ({
           </CTA>
         )}
       </LeftColumn>
-      {media && <PageHeroMedia media={media} size={layout.right} />}
+      {media && <PageHeroMedia media={media} size={right} />}
     </LayoutGrid>
   );
 };

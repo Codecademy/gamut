@@ -83,6 +83,13 @@ export type RowProps = {
   top?: ModificatorType;
 };
 
+/**
+ * @deprecated
+ * This component is deprecated and is no longer supported.
+ *
+ * See [LayoutGrid + Col](https://gamut.codecademy.com/storybook/?path=/docs/layouts-layoutgrid--layout-grid)
+ */
+
 export const Row: React.FC<RowProps> = ({ as: Element = 'div', ...props }) => {
   const className = getClassNames(props);
   return <Element {...omitProps(propKeys, { ...props, className })} />;

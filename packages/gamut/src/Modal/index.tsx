@@ -39,6 +39,12 @@ export type ModalProps = {
   ariaLabel?: string;
 };
 
+/**
+ * @deprecated  This component is deprecated and will be updated soon.
+ *
+ * Please check the gamut board for updates on the new version of Modal
+ */
+
 export const Modal: React.FC<ModalProps> = ({
   children,
   className,
@@ -60,8 +66,8 @@ export const Modal: React.FC<ModalProps> = ({
         className={cx(styles.modalBody, className)}
         aria-hidden="false"
         aria-modal="true"
-        aria-label={ariaLabel}
         role="dialog"
+        aria-label={ariaLabel}
       >
         {!hideDefaultCloseButton && (
           <div

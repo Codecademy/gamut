@@ -18,6 +18,11 @@ const offsetDelta = offsetForEmptyProgress - offsetForFullProgress;
 const convertPercentToOffset = (percent: number) =>
   offsetForEmptyProgress - Math.floor(offsetDelta * (percent / 100));
 
+/**
+ * @deprecated
+ * This component is deprecated and is no longer supported.
+ */
+
 export const RadialProgress: React.FC<RadialProgressProps> = ({
   children,
   className,

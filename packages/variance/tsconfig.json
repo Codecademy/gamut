@@ -1,11 +1,8 @@
 {
-  "extends": "../../tsconfig.json",
+  "extends": "./tsconfig.base.json",
   "compilerOptions": {
-    "allowJs": true,
-    "declaration": true,
-    "skipLibCheck": true,
-    "module": "esnext",
     "outDir": "dist"
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx"]
+  "exclude": ["./integration"],
+  "references": [{ "path": "./src" }]
 }

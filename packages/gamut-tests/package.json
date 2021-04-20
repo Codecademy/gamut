@@ -1,7 +1,8 @@
 {
   "author": "Codecademy Engineering <dev@codecademy.com>",
   "dependencies": {
-    "@codecademy/gamut-styles": "^9.0.0"
+    "@codecademy/gamut-styles": "^9.5.3",
+    "component-test-setup": "*"
   },
   "description": "Shared component test setup for Gamut applications",
   "keywords": [
@@ -12,7 +13,7 @@
     "rtl"
   ],
   "name": "@codecademy/gamut-tests",
-  "version": "2.2.3",
+  "version": "2.3.14",
   "license": "MIT",
   "main": "./dist/index.js",
   "module": "dist/index.js",
@@ -25,7 +26,7 @@
   },
   "scripts": {
     "verify": "tsc --noEmit",
-    "build:compile": "babel ./src --out-dir ./dist --copy-files --copy-ignored --extensions \".ts,.tsx\"",
+    "build:compile": "babel ./src --out-dir ./dist --copy-files --extensions \".ts,.tsx\"",
     "build:clean": "rm -rf dist",
     "build:types": "tsc --emitDeclarationOnly",
     "build": "yarn build:clean && yarn build:compile && yarn build:types",

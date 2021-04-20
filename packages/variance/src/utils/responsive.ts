@@ -1,23 +1,26 @@
-import { intersection } from 'lodash';
+import { intersection, omit } from 'lodash';
 
 import { AbstractPropTransformer } from '../types/config';
 import {
-  AbstractTheme,
   BreakpointCache,
   CSSObject,
   MediaQueryMap,
   ThemeProps,
 } from '../types/props';
+import { Breakpoints } from '../types/theme';
 
-const BREAKPOINT_KEYS = ['base', 'xs', 'sm', 'md', 'lg', 'xl'];
+const BREAKPOINT_KEYS = ['_', 'xs', 'sm', 'md', 'lg', 'xl'];
 
 /**
  * Destructures the themes breakpoints into an ordered structure to traverse
  */
-export const parseBreakpoints = ({
-  breakpoints,
-}: AbstractTheme): BreakpointCache => {
-  const { xs, sm, md, lg, xl } = breakpoints;
+export const parseBreakpoints = (
+  breakpoints?: Breakpoints | undefined
+): BreakpointCache | null => {
+  if (breakpoints === undefined) return null;
+  const { xs, sm, md, lg, xl } = breakpoints ?? {};
+
+  // Ensure order for mapping
   return {
     map: breakpoints,
     array: [xs, sm, md, lg, xl],
@@ -35,9 +38,9 @@ export const isMediaMap = (
 interface ResponsiveParser<
   Bp extends MediaQueryMap<string | number> | (string | number)[]
 > {
-  <T extends AbstractTheme, C extends AbstractPropTransformer<T>>(
+  <C extends AbstractPropTransformer>(
     value: Bp,
-    props: ThemeProps<T>,
+    props: ThemeProps,
     config: C,
     breakpoints: Bp
   ): CSSObject;
@@ -51,19 +54,21 @@ export const objectParser: ResponsiveParser<MediaQueryMap<string | number>> = (
 ) => {
   const styles: CSSObject = {};
   const { styleFn, prop } = config;
-  const { base, ...rest } = value;
+  const { _, ...rest } = value;
   // the keyof 'base' is base styles
-  if (base) Object.assign(styles, styleFn(base, prop, props));
+  if (_) Object.assign(styles, styleFn(_, prop, props));
 
   // Map over remaining keys and merge the corresponding breakpoint styles
   // for that property.
-  Object.keys(rest).forEach((bp: keyof typeof rest) => {
-    const breakpointKey = breakpoints?.[bp];
-    if (!breakpointKey) return;
-    Object.assign(styles, {
-      [breakpointKey]: styleFn(rest[bp], prop, props),
-    });
-  });
+  Object.keys(breakpoints).forEach(
+    (breakpointKey: keyof typeof breakpoints) => {
+      const bpStyles = rest[breakpointKey as keyof typeof rest];
+      if (typeof bpStyles === 'undefined') return;
+      Object.assign(styles, {
+        [breakpoints[breakpointKey] as string]: styleFn(bpStyles, prop, props),
+      });
+    }
+  );
 
   return styles;
 };
@@ -76,19 +81,29 @@ export const arrayParser: ResponsiveParser<(string | number)[]> = (
 ): CSSObject => {
   const styles: CSSObject = {};
   const { styleFn, prop } = config;
-  const [base, ...rest] = value;
+  const [_, ...rest] = value;
   // the first index is base styles
-  if (base) Object.assign(styles, styleFn(base, prop, props));
+  if (_) Object.assign(styles, styleFn(_, prop, props));
 
   // Map over each value in the array and merge the corresponding breakpoint styles
   // for that property.
   rest.forEach((val, i) => {
     const breakpointKey = breakpoints[i];
-    if (!breakpointKey) return;
+    if (!breakpointKey || typeof val === 'undefined') return;
     Object.assign(styles, {
       [breakpointKey]: styleFn(val, prop, props),
     });
   });
 
   return styles;
+};
+
+export const orderBreakpoints = (styles: CSSObject, breakpoints: string[]) => {
+  const orderedStyles: CSSObject = omit(styles, breakpoints);
+  breakpoints.forEach((bp) => {
+    if (styles[bp]) {
+      orderedStyles[bp] = styles[bp] as CSSObject;
+    }
+  });
+  return orderedStyles;
 };
