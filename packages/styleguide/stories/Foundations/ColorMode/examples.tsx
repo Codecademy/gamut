@@ -1,5 +1,5 @@
 /* eslint-disable local-rules/gamut-import-paths */
-import { Box, FlexBox, Text, Toggle } from '@codecademy/gamut/src';
+import { Anchor, Box, FlexBox, Text, Toggle } from '@codecademy/gamut/src';
 import { Background, ColorMode } from '@codecademy/gamut-styles/src';
 import React, { ComponentProps, useState } from 'react';
 
@@ -32,9 +32,9 @@ export const ColorModeExample = () => {
           </Text>
           <Text as="p" marginBottom={16}>
             Lorem ipsum dolor sit amet, sed do eiusmod tempor incididunt ut
-            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-            exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat.
+            labore et dolore <Anchor>magna aliqua</Anchor>. Ut enim ad minim
+            veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+            ea commodo consequat.
           </Text>
         </Box>
       </ColorMode>
@@ -53,8 +53,9 @@ export const BackgroundExample: React.FC<ComponentProps<typeof Background>> = ({
       </Text>
       <Text as="p" marginBottom={16}>
         Lorem ipsum dolor sit amet, sed do eiusmod tempor incididunt ut labore
-        et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-        exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        et dolore <Anchor>magna aliqua</Anchor>. Ut enim ad minim veniam, quis
+        nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat.
       </Text>
       {children}
     </Background>
