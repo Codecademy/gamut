@@ -27,7 +27,7 @@ const anchorVariants = system.variant({
       width: `calc(100% + 0.5rem)`,
       height: '100%',
       borderRadius: '4px',
-      border: '2px solid',
+      border: 2,
       borderColor: 'primary',
       opacity: 0,
     },
