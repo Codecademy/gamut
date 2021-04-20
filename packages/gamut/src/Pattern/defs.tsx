@@ -134,14 +134,14 @@ export const defs = (name: PatternName) => {
             width="0.5"
             height="0.5"
             fill="currentColor"
-            fill-opacity="0.5"
+            fillOpacity="0.5"
           />
           <rect
             y="1"
             width="0.5"
             height="0.5"
             fill="currentColor"
-            fill-opacity="0.5"
+            fillOpacity="0.5"
           />
           <rect y="0.5" width="0.5" height="0.5" fill="currentColor" />
           <rect
@@ -149,7 +149,7 @@ export const defs = (name: PatternName) => {
             width="0.5"
             height="0.5"
             fill="currentColor"
-            fill-opacity="0.5"
+            fillOpacity="0.5"
           />
           <rect
             x="1"
@@ -157,7 +157,7 @@ export const defs = (name: PatternName) => {
             width="0.5"
             height="0.5"
             fill="currentColor"
-            fill-opacity="0.5"
+            fillOpacity="0.5"
           />
           <rect x="1" y="0.5" width="0.5" height="0.5" fill="currentColor" />
           <rect x="0.5" width="0.5" height="0.5" fill="currentColor" />
