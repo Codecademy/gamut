@@ -54,7 +54,8 @@ export const CurriculumCard: React.FC<CurriculumCardProps> = ({
       gridTemplateRows="repeat(3, max-content) 1fr max-content"
       minHeight={isFullSize ? pxRem(cardHeight * 2 + 32) : pxRem(cardHeight)}
       variant={boxVariant ?? 'white'}
-      shadowOffset={4}
+      shadow="medium"
+      position="relative"
     >
       <Header
         invertColors={progressState === 'completed'}
