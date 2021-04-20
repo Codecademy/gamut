@@ -35,17 +35,14 @@ export const typographyStyleVariants = {
   },
   'p-large': {
     fontSize: 18,
-    fontWeight: 'base',
     lineHeight: 'base',
   },
   'p-base': {
     fontSize: 16,
-    fontWeight: 'base',
     lineHeight: 'base',
   },
   'p-small': {
     fontSize: 14,
-    fontWeight: 'base',
     lineHeight: 'base',
   },
 } as const;
