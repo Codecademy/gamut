@@ -26,7 +26,13 @@ type SizeGlobals = {
     | (number & {});
 };
 
-export interface PropertyTypes<Overrides = (string & {}) | 0>
+/** This is a placeholder type for CSS properties that may not have any specific global values (outlineOffset).
+ * (string & {}) will allow strings but not generalize the union type to just a string if other string literals exist in the union.
+ *
+ * This ensures that autosuggestions will still work for literal types but still allow any string for certain properties.
+ */
+type DefaultCSSPropertyValue = (string & {}) | 0;
+export interface PropertyTypes<Overrides = DefaultCSSPropertyValue>
   extends Omit<
       StandardProperties<Overrides>,
       keyof ColorGlobals | keyof SizeGlobals
