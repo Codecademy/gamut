@@ -96,7 +96,7 @@ export const CatalogLinks: React.FC<CatalogLinksProps> = ({ onClick }) => {
   );
 
   const subjectsList = (
-    <Box width={{ base: '100%', md: '50%' }}>
+    <Box width={{ _: '100%', md: '50%' }}>
       <FooterSubHeading as="h3">Subjects</FooterSubHeading>
       <CatalogLinkArea variant="fullHeight">
         {subjects.map(([slug, text]) => (
@@ -145,17 +145,17 @@ export const CatalogLinks: React.FC<CatalogLinksProps> = ({ onClick }) => {
   return (
     <CatalogLinksContainer>
       <FooterHeading>Course Catalog</FooterHeading>
-      <Box display="flex" flexDirection={{ base: 'column', sm: 'row' }}>
+      <Box display="flex" flexDirection={{ _: 'column', sm: 'row' }}>
         <Box
-          display={{ base: 'block', md: 'none' }}
-          width={{ base: '100%', md: '50%' }}
+          display={{ _: 'block', md: 'none' }}
+          width={{ _: '100%', md: '50%' }}
         >
           {languagesList}
         </Box>
         {subjectsList}
         <Box
-          display={{ base: 'none', md: 'block' }}
-          width={{ base: '100%', md: '50%' }}
+          display={{ _: 'none', md: 'block' }}
+          width={{ _: '100%', md: '50%' }}
         >
           {languagesList}
         </Box>

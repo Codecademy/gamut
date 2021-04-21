@@ -130,7 +130,7 @@ export const Input = forwardRef<HTMLInputElement, InputWrapperProps>(
         />
         {!!ShownIcon && (
           <FlexBox
-            paddingRight={Icon ? 12 : 16}
+            pr={Icon ? 12 : 16}
             position="absolute"
             alignItems="center"
             right="0"
