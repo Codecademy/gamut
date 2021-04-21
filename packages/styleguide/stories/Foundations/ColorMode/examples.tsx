@@ -1,5 +1,16 @@
 /* eslint-disable local-rules/gamut-import-paths */
-import { Anchor, Box, FlexBox, Text, Toggle } from '@codecademy/gamut/src';
+import {
+  Anchor,
+  Box,
+  CTAButton,
+  FillButton,
+  FlexBox,
+  IconButton,
+  Text,
+  TextButton,
+  Toggle,
+} from '@codecademy/gamut/src';
+import { MiniDeleteIcon } from '@codecademy/gamut-icons';
 import { Background, ColorMode } from '@codecademy/gamut-styles/src';
 import React, { ComponentProps, useState } from 'react';
 
@@ -36,6 +47,10 @@ export const ColorModeExample = () => {
             veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
             ea commodo consequat.
           </Text>
+          <CTAButton>CTA</CTAButton>
+          <FillButton>Fill</FillButton>
+          <TextButton>Text</TextButton>
+          <IconButton icon={MiniDeleteIcon} />
         </Box>
       </ColorMode>
     </Box>
