@@ -1,28 +1,31 @@
-import { render } from '@testing-library/react';
-import React from 'react';
+import { setupRtl } from '@codecademy/gamut-tests';
 
 import { PagePrefooter } from '..';
 
+const renderView = setupRtl(PagePrefooter);
+
 describe('PagePrefooter', () => {
   it('should render a title when one is provided', () => {
-    const wrapper = render(<PagePrefooter title="title" />);
-    wrapper.getByText('title');
+    const { view } = renderView({ title: 'title' });
+    view.getByText('title');
   });
 
   it('should render a description when one is provided', () => {
-    const wrapper = render(<PagePrefooter desc="desc" />);
-    wrapper.getByText('desc');
+    const { view } = renderView({ desc: 'desc' });
+
+    view.getByText('desc');
   });
 
   it('should render a button when cta prop is provided', () => {
-    const wrapper = render(
-      <PagePrefooter cta={{ text: 'cta', href: 'https://codecademy.com' }} />
-    );
-    wrapper.getByText('cta');
+    const { view } = renderView({
+      cta: { text: 'cta', href: 'https://codecademy.com' },
+    });
+
+    view.getByText('cta');
   });
 
   it('should not render anything when no props are provided', () => {
-    const wrapper = render(<PagePrefooter />);
-    expect(wrapper.queryByText(/.+/)).not.toBeInTheDocument();
+    const { view } = renderView();
+    expect(view.queryByText(/.+/)).not.toBeInTheDocument();
   });
 });
