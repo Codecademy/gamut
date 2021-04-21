@@ -1,6 +1,7 @@
 export * from './landingPage';
 export * from './lib/breakpointHooks';
 export * from './Avatar';
+export * from './CurriculumCard';
 export * from './Byline';
 export * from './EditorialImage';
 export * from './EditorialQuote';

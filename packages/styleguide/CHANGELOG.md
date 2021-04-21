@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [36.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@36.0.0...@codecademy/styleguide@36.1.0) (2021-04-21)
+
+
+### Features
+
+* **Curriculum Card:** Port from monolith ([80ff2f6](https://github.com/Codecademy/client-modules/commit/80ff2f6250675dbba8ee41e9c729818d2de08859))
+
+
+
 ## [36.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@35.1.0...@codecademy/styleguide@36.0.0) (2021-04-20)
 
 
