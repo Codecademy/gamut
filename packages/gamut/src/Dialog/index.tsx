@@ -46,7 +46,7 @@ const ModalBody = styled.div(
     gridTemplateColumns: '1fr min-content 2rem',
     gridTemplateRows: 'repeact(3, auto)',
     gridTemplateAreas: `'title title close'
-    'children children children'
+    'content content content'
     'cancel confirm confirm'`,
   })
 );
