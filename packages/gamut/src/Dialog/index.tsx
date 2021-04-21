@@ -51,30 +51,6 @@ const ModalBody = styled.div(
   })
 );
 
-const Title = styled(Text)`
-  grid-area: title;
-`;
-
-const CloseButton = styled.div`
-  grid-area: close;
-`.withComponent(IconButton);
-
-const Content = styled(Box)`
-  grid-area: children;
-`;
-
-const ConfirmButton = styled(FillButton)`
-  grid-area: confirm;
-`;
-
-const CancelButton = styled(TextButton)`
-  grid-area: cancel;
-`.withComponent((props: DialogProps['cancelCta']) => (
-  <FlexBox justifyContent="flex-end">
-    <TextButton {...props} />
-  </FlexBox>
-));
-
 export interface DialogProps
   extends Pick<OverlayProps, 'clickOutsideCloses' | 'escapeCloses'> {
   isOpen: boolean;
@@ -118,23 +94,31 @@ export const Dialog: React.FC<DialogProps> = ({
       <ModalWrapper aria-hidden="false" aria-modal="true" role="dialog">
         <ModalShadow name="checkerDense" />
         <ModalBody>
-          <Title as="h2" fontSize={20} lineHeight="base">
-            {title}
-          </Title>
-          <CloseButton
-            aria-label="Close Dialog"
-            mode={active}
-            size="small"
-            icon={MiniDeleteIcon}
-            onClick={onCancel}
-          />
-          <Content>
+          <Box gridArea="title">
+            <Text as="h2" fontSize={20} lineHeight="base">
+              {title}
+            </Text>
+          </Box>
+          <Box gridArea="close">
+            <IconButton
+              aria-label="Close Dialog"
+              mode={active}
+              size="small"
+              icon={MiniDeleteIcon}
+              onClick={onCancel}
+            />
+          </Box>
+          <Box gridArea="content">
             <Text as="p">{children}</Text>
-          </Content>
+          </Box>
           {cancelCta && (
-            <CancelButton mode={active} {...cancelCta} onClick={onCancel} />
+            <FlexBox justifyContent="flex-end" gridArea="cancel">
+              <TextButton mode={active} {...cancelCta} onClick={onCancel} />
+            </FlexBox>
           )}
-          <ConfirmButton mode={active} {...confirmCta} onClick={onConfirm} />
+          <Box gridArea="confirm">
+            <FillButton mode={active} {...confirmCta} onClick={onConfirm} />
+          </Box>
         </ModalBody>
       </ModalWrapper>
     </ShroudedOverlay>
