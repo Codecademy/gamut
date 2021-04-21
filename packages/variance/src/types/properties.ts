@@ -26,7 +26,10 @@ type SizeGlobals = {
     | (number & {});
 };
 
-export interface PropertyTypes
-  extends Omit<StandardProperties, keyof ColorGlobals | keyof SizeGlobals>,
+export interface PropertyTypes<Overrides = (string & {}) | 0>
+  extends Omit<
+      StandardProperties<Overrides>,
+      keyof ColorGlobals | keyof SizeGlobals
+    >,
     ColorGlobals,
     SizeGlobals {}
