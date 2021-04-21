@@ -236,7 +236,7 @@ export const space = {
       name: 'Example',
       size: 'fill',
       render: ({ value }: any) => (
-        <Box display="inline-block" height={value} width={value} bg="navy" />
+        <Box display="inline-block" size={value} bg="navy" />
       ),
     },
   ],
