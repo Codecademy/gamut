@@ -25,11 +25,24 @@ import { PropsTable } from '~styleguide/blocks';
 
 ## Usage Guidelines
 
-`<Text />` is the preferred component for customizing typography. The API is progressively specific. In order to achieve the effect you are looking for there are 3 levels of precedence.
+This is the preferred component for customizing typography. The API is progressively specific. In order to achieve the effect you are looking for there are 3 levels of precedence.
 
 1. `as` Any HTML tag that might have semantic meaning and imply specific style `h1` - `h6` and `strong`. These have default styles that will match up with the tag in normative circumstances. For example an `h1` will be the largest type style etc.
 2. `variant` In many cases we use heading tags in different ways than a text document might to maintain semantic and accessible HTML structure. In cases where this is required, you may specify a variant to overwrite the default tag styles. For example if you had an `h1` that needed to look like an `h4` you can specify `<Text as="h1" variant="title-4" /> to achieve the effect.
 3. `props` In all other cases where we might need to change typography related styles you can use system props to change behavior.
+
+```tsx
+import { Text } from '@codecademy/gamut';
+
+// Regular h1
+<Text as="h1" />
+
+// An extra large h4
+<Text as="h4" variant="title-1" />
+
+// An extra small subheading
+<Text as="h2" fontSize={14} fontFamily="accent" />
+```
 
 <br />
 
