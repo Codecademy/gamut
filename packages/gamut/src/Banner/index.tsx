@@ -3,6 +3,7 @@ import { Background, system } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React, { HTMLProps, useMemo } from 'react';
 
+import { Box } from '../Box';
 import { IconButton, TextButton } from '../Button';
 import { Markdown } from '../Markdown';
 
@@ -43,12 +44,7 @@ const BannerLink = styled(TextButton)(
 );
 
 const BannerContent = styled(Markdown)`
-  grid-area: content;
   font-size: inherit;
-`;
-
-const CloseButton = styled(IconButton)`
-  grid-area: close;
 `;
 
 export const Banner: React.FC<BannerProps> = ({
@@ -85,19 +81,23 @@ export const Banner: React.FC<BannerProps> = ({
 
   return (
     <BannerContainer bg={variant} {...rest}>
-      <BannerContent
-        overrides={overrides}
-        text={children}
-        skipDefaultOverrides={{ a: true }}
-      />
-      <CloseButton
-        mode={mode}
-        variant="secondary"
-        size="small"
-        aria-label="dismiss"
-        icon={MiniDeleteIcon}
-        onClick={onClose}
-      />
+      <Box gridArea="content">
+        <BannerContent
+          overrides={overrides}
+          text={children}
+          skipDefaultOverrides={{ a: true }}
+        />
+      </Box>
+      <Box gridArea="close">
+        <IconButton
+          mode={mode}
+          variant="secondary"
+          size="small"
+          aria-label="dismiss"
+          icon={MiniDeleteIcon}
+          onClick={onClose}
+        />
+      </Box>
     </BannerContainer>
   );
 };
