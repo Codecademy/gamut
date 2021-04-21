@@ -5,12 +5,14 @@ import {
   CTAButton,
   FillButton,
   FlexBox,
+  GridBox,
   IconButton,
+  StrokeButton,
   Text,
   TextButton,
   Toggle,
 } from '@codecademy/gamut/src';
-import { MiniDeleteIcon } from '@codecademy/gamut-icons';
+import { CloseIcon, MiniDeleteIcon } from '@codecademy/gamut-icons';
 import { Background, ColorMode } from '@codecademy/gamut-styles/src';
 import React, { ComponentProps, useState } from 'react';
 
@@ -47,10 +49,25 @@ export const ColorModeExample = () => {
             veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
             ea commodo consequat.
           </Text>
-          <CTAButton>CTA</CTAButton>
-          <FillButton>Fill</FillButton>
-          <TextButton>Text</TextButton>
-          <IconButton icon={MiniDeleteIcon} />
+          <Box paddingY={16}>
+            <CTAButton>CTA</CTAButton>
+          </Box>
+          <GridBox
+            rowGap={16}
+            columnGap={16}
+            gridTemplateColumns="repeat(4, max-content)"
+            alignItems="start"
+            justifyItems="start"
+          >
+            <FillButton>Fill</FillButton>
+            <StrokeButton>Stroke</StrokeButton>
+            <TextButton>Text</TextButton>
+            <IconButton icon={CloseIcon} />
+            <FillButton size="small">Fill</FillButton>
+            <StrokeButton size="small">Stroke</StrokeButton>
+            <TextButton size="small">Text</TextButton>
+            <IconButton size="small" icon={MiniDeleteIcon} />
+          </GridBox>
         </Box>
       </ColorMode>
     </Box>
