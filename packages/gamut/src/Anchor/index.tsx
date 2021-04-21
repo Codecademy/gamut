@@ -57,13 +57,13 @@ const anchorVariants = system.variant({
       },
       '&:focus-visible': {
         textColor: 'text',
-        textDecoration: 'none',
       },
     },
     inline: {
       textDecoration: 'underline',
       '&:focus-visible': {
         outline: 'currentColor auto 4px',
+        textDecoration: 'underline',
       },
     },
     interface: {
