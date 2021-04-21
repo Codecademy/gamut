@@ -10,7 +10,6 @@ export interface AnchorProps
 
 const anchorVariants = system.variant({
   base: {
-    display: 'inline-block',
     bg: 'transparent',
     boxShadow: 'none',
     border: 'none',
@@ -20,7 +19,6 @@ const anchorVariants = system.variant({
     textColor: 'primary',
     whiteSpace: 'nowrap',
     '&:after': {
-      content: "''",
       position: 'absolute',
       top: 0,
       left: -4,
@@ -49,7 +47,11 @@ const anchorVariants = system.variant({
   },
   variants: {
     standard: {
+      display: 'inline-block',
       textColor: 'primary',
+      '&:after': {
+        content: "''",
+      },
       '&:hover': {
         textDecoration: 'underline',
       },
@@ -60,10 +62,18 @@ const anchorVariants = system.variant({
     },
     inline: {
       textDecoration: 'underline',
+      '&:focus-visible': {
+        outline: 'currentColor auto 4px',
+        outlineOffset: '4px',
+      },
     },
     interface: {
+      display: 'inline-block',
       textColor: 'text',
       whiteSpace: 'initial',
+      '&:after': {
+        content: "''",
+      },
       '&:hover': {
         textDecoration: 'underline',
       },
