@@ -120,16 +120,25 @@ AlertBanner.defaultProps = {
 const transitionDuration = 0.2;
 
 const contentVariants = {
-  truncated: { height: '2rem' },
+  collapsed: { height: '2rem' },
   expanded: { height: 'auto' },
 };
 
-const CollapseButton = styled(IconButton)<{ expanded?: boolean }>`
-  svg {
-    transition: ${transitionDuration * 1000}ms transform;
-    transform: rotate(${({ expanded }) => (expanded ? '180deg' : '0deg')});
-  }
-`;
+const CollapseButton = styled(IconButton)(
+  system.variant({
+    prop: 'toggleState',
+    defaultVariant: 'collapsed',
+    base: { svg: { transition: '200ms transform' } },
+    variants: {
+      collapsed: {},
+      expanded: {
+        svg: {
+          transform: 'rotate(180deg)',
+        },
+      },
+    },
+  })
+);
 
 export const Alert: React.FC<AlertProps> = ({
   children,
@@ -142,6 +151,7 @@ export const Alert: React.FC<AlertProps> = ({
     VARIANT_META[type] || VARIANT_META.general;
   const [expanded, setExpanded] = useState(false);
   const [truncated, setTruncated] = useState(false);
+  const contentVariant = expanded ? 'expanded' : 'collapsed';
 
   const numberOfColumns = useMemo(() => {
     if (truncated && Boolean(cta)) return 3;
@@ -152,7 +162,7 @@ export const Alert: React.FC<AlertProps> = ({
   const columns = `max-content minmax(0, 1fr) repeat(${numberOfColumns}, max-content)`;
   const renderContent = () => {
     if (props.placement === 'inline') {
-      return <Box paddingY={4}>{children}</Box>;
+      return <Box py={4}>{children}</Box>;
     }
 
     return (
@@ -161,8 +171,8 @@ export const Alert: React.FC<AlertProps> = ({
         style={{ overflow: 'hidden', padding: '0.25rem 0' }}
         transition={{ duration: transitionDuration, ease: 'easeInOut' }}
         aria-expanded={expanded}
-        initial={expanded ? 'expanded' : 'truncated'}
-        animate={expanded ? 'expanded' : 'truncated'}
+        initial={contentVariant}
+        animate={contentVariant}
       >
         <Truncate expanded={expanded} onTruncate={setTruncated} lines={1}>
           {children}
@@ -173,12 +183,7 @@ export const Alert: React.FC<AlertProps> = ({
 
   return (
     <AlertBanner gridTemplateColumns={columns} {...props}>
-      <FlexBox
-        height="2rem"
-        width="2rem"
-        alignItems="center"
-        justifyContent="center"
-      >
+      <FlexBox size="2rem" alignments="center">
         <Icon size={16} aria-hidden="true" />
       </FlexBox>
       {renderContent()}
@@ -186,9 +191,9 @@ export const Alert: React.FC<AlertProps> = ({
         <CollapseButton
           aria-label={expanded ? 'Collapse' : 'Expand'}
           mode={mode}
+          toggleState={contentVariant}
           variant="secondary"
           size="small"
-          expanded={expanded}
           icon={MiniChevronDownIcon}
           onClick={() => setExpanded(!expanded)}
         />

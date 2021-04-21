@@ -26,8 +26,8 @@ export const PopoverExample = (args: PopoverProps) => {
           targetRef={activeElRef}
           onRequestClose={() => setOpen(false)}
         >
-          <FlexBox flexDirection="column" padding={16} alignItems="flex-start">
-            <Box fontSize={16} marginBottom={8}>
+          <FlexBox flexDirection="column" p={16} alignItems="flex-start">
+            <Box fontSize={16} mb={8}>
               Hooray!
             </Box>
             <FillButton size="small" onClick={() => setOpen(false)}>
@@ -58,8 +58,8 @@ export const PopoverWithoutFocus = (args: PopoverProps) => {
           targetRef={activeElRef}
           onRequestClose={() => setOpen(false)}
         >
-          <FlexBox flexDirection="column" padding={16} alignItems="flex-start">
-            <Box fontSize={16} marginBottom={8}>
+          <FlexBox flexDirection="column" p={16} alignItems="flex-start">
+            <Box fontSize={16} mb={8}>
               Nothing clickable here but the container has fallback focus
             </Box>
           </FlexBox>
@@ -71,14 +71,14 @@ export const PopoverWithoutFocus = (args: PopoverProps) => {
 
 export const PatternedPopoversGrid = (args: PopoverProps) => {
   return (
-    <LayoutGrid columnGap="sm" rowGap="xl">
+    <LayoutGrid columnGap={8} rowGap={48}>
       {[
         'diagonalStripesLoose',
         'diagonalStripesRegular',
         'diagonalStripesDense',
-        'dotsLoose',
-        'dotsRegular',
-        'dotsDense',
+        'checkerLoose',
+        'checkerRegular',
+        'checkerDense',
       ].map((pattern: PatternName) => (
         <Column key={pattern} size={4}>
           <FlexBox justifyContent="center">

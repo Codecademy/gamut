@@ -60,6 +60,6 @@ export type CardProps = StyleProps<typeof cardVariants> &
 export const Card = styled(Box)<CardProps>(cardVariants, shadowVariants);
 
 Card.defaultProps = {
-  padding: 16,
+  p: 16,
   variant: 'white',
 };

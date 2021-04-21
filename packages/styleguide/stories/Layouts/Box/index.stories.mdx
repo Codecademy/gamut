@@ -52,16 +52,14 @@ While the component really has no default styles or props, it can be hard to ima
 
 ### Bordered Containers
 
-One of the main uses of box is to create bordered containers with their own borders and internal padding. Many times when we want to achieve this kind of bordered container effect it can be tempting to just reinvent the wheel, but as requirements mount and differ between contexts we end up with a lot of variety in implementation. The flexibility of `<Box />` can help limit the amount of redundancy and account for a wild range of possibilities.
+One of the main uses of box is to create bordered containers with their own borders and internal p. Many times when we want to achieve this kind of bordered container effect it can be tempting to just reinvent the wheel, but as requirements mount and differ between contexts we end up with a lot of variety in implementation. The flexibility of `<Box />` can help limit the amount of redundancy and account for a wild range of possibilities.
 
 <Canvas>
   <Story
     name="Bordered"
     args={{
-      borderStyle: 'solid',
-      borderColor: 'navy',
-      borderWidth: '1px',
-      padding: 8,
+      border: 1,
+      p: 8,
       children: 'I am a bordered box',
     }}
   >
@@ -79,13 +77,12 @@ Another great example of how we can use `<Box />` as a swiss army knife is recre
       <Box>
         {args.elements.map((el) => (
           <Box
-            as="span"
             key={el}
-            margin={4}
-            paddingY={4}
-            padding={8}
+            m={4}
+            py={4}
+            p={8}
             display="inline-block"
-            backgroundColor="blue-500"
+            bg="blue-500"
             textColor="white"
             borderRadius="4px"
           >
@@ -109,40 +106,16 @@ Positioning elements and maintaining stacking contexts can be annoying, especial
   <Story name="Positioning">
     {(args) => (
       <Box position="relative" height="500px">
-        <Box
-          position="absolute"
-          left="0"
-          top="0"
-          backgroundColor="gray-200"
-          padding={16}
-        >
+        <Box position="absolute" left="0" top="0" bg="gray-200" p={16}>
           Top Left
         </Box>
-        <Box
-          position="absolute"
-          bottom="0"
-          left="0"
-          backgroundColor="gray-200"
-          padding={16}
-        >
+        <Box position="absolute" bottom="0" left="0" bg="gray-200" p={16}>
           Bottom Left
         </Box>
-        <Box
-          position="absolute"
-          right="0"
-          top="0"
-          backgroundColor="gray-200"
-          padding={16}
-        >
+        <Box position="absolute" right="0" top="0" bg="gray-200" p={16}>
           Top Right
         </Box>
-        <Box
-          position="absolute"
-          right="0"
-          bottom="0"
-          backgroundColor="gray-200"
-          padding={16}
-        >
+        <Box position="absolute" right="0" bottom="0" bg="gray-200" p={16}>
           Bottom Right
         </Box>
       </Box>
