@@ -5,4 +5,4 @@ import { boxProps } from './props';
 
 export const Box = styled('div', styledConfig)(boxProps);
 
-export { BoxProps } from './props';
+export type { BoxProps } from './props';
