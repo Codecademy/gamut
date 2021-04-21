@@ -32,6 +32,7 @@ type SizeGlobals = {
  * This ensures that autosuggestions will still work for literal types but still allow any string for certain properties.
  */
 type DefaultCSSPropertyValue = (string & {}) | 0;
+
 export interface PropertyTypes<Overrides = DefaultCSSPropertyValue>
   extends Omit<
       StandardProperties<Overrides>,
