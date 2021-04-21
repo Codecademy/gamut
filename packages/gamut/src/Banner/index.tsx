@@ -1,15 +1,14 @@
 import { MiniDeleteIcon } from '@codecademy/gamut-icons';
-import { variant } from '@codecademy/gamut-styles';
-import { css } from '@emotion/react';
+import { Background, system } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
-import React, { useMemo } from 'react';
+import React, { HTMLProps, useMemo } from 'react';
 
 import { IconButton, TextButton } from '../Button';
 import { Markdown } from '../Markdown';
 
-type BannerVariants = 'navy' | 'yellow';
+export type BannerVariants = 'navy' | 'yellow';
 
-export interface BannerProps {
+export interface BannerProps extends HTMLProps<HTMLDivElement> {
   className?: string;
   /** Markdown content */
   children: string;
@@ -21,43 +20,38 @@ export interface BannerProps {
   onCtaClick?: () => void;
 }
 
-const BannerContainer = styled.div(
-  variant({
-    navy: { textColor: 'white', backgroundColor: 'navy' },
-    yellow: { textColor: 'navy', backgroundColor: 'yellow' },
-  }),
-  ({ theme }) => css`
-    display: grid;
-    width: 100%;
-    padding: ${theme.spacing[4]};
-    column-gap: ${theme.spacing[8]};
-    grid-template-columns: 2rem 1fr 2rem;
-    align-items: center;
-    text-align: center;
-
-    &:before {
-      content: '';
-    }
-  `
+const BannerContainer = styled(Background)(
+  system.css({
+    width: '100%',
+    p: 4,
+    display: 'grid',
+    gridTemplateColumns: '2rem 1fr 2rem',
+    gridTemplateAreas: "'empty content close'",
+    columnGap: 8,
+    alignItems: 'center',
+    textAlign: 'center',
+  })
 );
 
 const BannerLink = styled(TextButton)(
-  ({ theme }) => css`
-    margin: 0 ${theme.spacing[4]};
-
-    &:last-of-type {
-      margin-right: 0;
-    }
-  `
+  system.css({
+    mx: 4,
+    '&:last-of-type': {
+      mr: 0,
+    },
+  })
 );
 
 const BannerContent = styled(Markdown)`
+  grid-area: content;
   font-size: inherit;
 `;
 
-export const Banner: React.FC<
-  React.ComponentProps<typeof BannerContainer> & BannerProps
-> = ({
+const CloseButton = styled(IconButton)`
+  grid-area: close;
+`;
+
+export const Banner: React.FC<BannerProps> = ({
   children,
   variant = 'navy',
   onCtaClick,
@@ -90,13 +84,13 @@ export const Banner: React.FC<
   );
 
   return (
-    <BannerContainer variant={variant} {...rest}>
+    <BannerContainer bg={variant} {...rest}>
       <BannerContent
         overrides={overrides}
         text={children}
         skipDefaultOverrides={{ a: true }}
       />
-      <IconButton
+      <CloseButton
         mode={mode}
         variant="secondary"
         size="small"
