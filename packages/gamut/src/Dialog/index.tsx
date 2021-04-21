@@ -1,6 +1,6 @@
 import { MiniDeleteIcon } from '@codecademy/gamut-icons';
-import { pxRem, variant } from '@codecademy/gamut-styles';
-import { css } from '@emotion/react';
+import { system } from '@codecademy/gamut-styles';
+import { useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
 import React from 'react';
 
@@ -8,86 +8,50 @@ import { Box, FlexBox } from '../Box';
 import { FillButton, IconButton, TextButton } from '../Button';
 import { Overlay, OverlayProps } from '../Overlay';
 import { Pattern } from '../Pattern';
-import { VisualTheme } from '../theming/VisualTheme';
+import { Text } from '../Typography';
 
-const modes = variant({
-  prop: 'mode',
-  variants: {
-    light: {
-      textColor: 'navy',
-      backgroundColor: 'white',
-      borderColor: 'navy',
-    },
-    dark: {
-      textColor: 'white',
-      backgroundColor: 'navy',
-      borderColor: 'white',
-    },
-  },
-});
+const ShroudedOverlay = styled(Overlay)(system.css({ bg: 'shadow' }));
 
-/** These effects should be moved to theme */
-const shroudColor = {
-  dark: 'rgba(0,0,0, .75)',
-  light: 'rgba(255, 255, 255, 0.95)',
-};
-
-const ShroudedOverlay = styled(Overlay)<{ mode?: VisualTheme }>(
-  ({ mode = 'light' }) => `
-  background-color: ${shroudColor[mode]};
-`
+const ModalWrapper = styled.div(
+  system.css({
+    position: 'relative',
+    zIndex: 1,
+    maxWidth: 'calc(100vw - 2rem)',
+    borderRadius: '2px',
+  })
 );
-
-const ModalWrapper = styled.div(modes, ({ theme }) => {
-  return css`
-    position: relative;
-    z-index: 1;
-    max-width: calc(100vw - ${theme.spacing[32]});
-    width: ${pxRem(400)};
-    border-width: 1px;
-    border-style: solid;
-    border-radius: 2px;
-  `;
-});
 
 /** This will need to be consolidated with Card / CoachMark / Toast  */
 const ModalShadow = styled(Pattern)(
-  ({ theme }) => css`
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: ${theme.spacing[8]};
-    left: -${theme.spacing[8]};
-  `
+  system.css({
+    textColor: 'text',
+    width: 1,
+    height: 1,
+    position: 'absolute',
+    top: '.5rem',
+    left: '-.5rem',
+  })
 );
 
-const ModalForeground = styled.div`
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-`;
+const ModalBody = styled.div(
+  system.css({
+    border: 1,
+    position: 'relative',
+    bg: 'background',
+    textColor: 'text',
+    display: 'grid',
+    p: 24,
+    rowGap: 12,
+    columnGap: 16,
+    gridTemplateColumns: '1fr min-content 2rem',
+    gridTemplateRows: 'repeact(3, auto)',
+    gridTemplateAreas: `'title title close'
+    'children children children'
+    'cancel confirm confirm'`,
+  })
+);
 
-const ModalBody = styled.div(({ theme }) => {
-  return css`
-    position: relative;
-    background-color: inherit;
-    color: inherit;
-    display: grid;
-    padding: ${theme.spacing[24]};
-    grid-row-gap: ${theme.spacing[12]};
-    grid-column-gap: ${theme.spacing[16]};
-    grid-template-columns: 1fr min-content ${theme.spacing[32]};
-    grid-template-rows: repeat(3, auto);
-    grid-template-areas:
-      'title title close'
-      'children children children'
-      'cancel confirm confirm';
-  `;
-});
-
-const Title = styled(Box)`
+const Title = styled(Text)`
   grid-area: title;
 `;
 
@@ -113,7 +77,6 @@ const CancelButton = styled(TextButton)`
 
 export interface DialogProps
   extends Pick<OverlayProps, 'clickOutsideCloses' | 'escapeCloses'> {
-  mode?: VisualTheme;
   isOpen: boolean;
   title: React.ReactNode;
   children: React.ReactNode;
@@ -129,7 +92,6 @@ export interface DialogProps
 }
 
 export const Dialog: React.FC<DialogProps> = ({
-  mode = 'light',
   title,
   children,
   confirmCta,
@@ -137,6 +99,10 @@ export const Dialog: React.FC<DialogProps> = ({
   onRequestClose,
   ...rest
 }) => {
+  const {
+    colorModes: { active },
+  } = useTheme();
+
   const onConfirm = () => {
     onRequestClose();
     confirmCta.onClick?.();
@@ -148,39 +114,27 @@ export const Dialog: React.FC<DialogProps> = ({
   };
 
   return (
-    <ShroudedOverlay mode={mode} onRequestClose={onCancel} {...rest}>
-      <ModalWrapper
-        mode={mode}
-        aria-hidden="false"
-        aria-modal="true"
-        role="dialog"
-      >
+    <ShroudedOverlay onRequestClose={onCancel} {...rest}>
+      <ModalWrapper aria-hidden="false" aria-modal="true" role="dialog">
         <ModalShadow name="checkerDense" />
-        <ModalForeground />
         <ModalBody>
-          <Title
-            as="h2"
-            margin={0}
-            fontSize={20}
-            lineHeight="base"
-            fontWeight="title"
-          >
+          <Title as="h2" fontSize={20} lineHeight="base">
             {title}
           </Title>
           <CloseButton
             aria-label="Close Dialog"
-            mode={mode}
+            mode={active}
             size="small"
             icon={MiniDeleteIcon}
             onClick={onCancel}
           />
-          <Content fontSize={16} lineHeight="base">
-            {children}
+          <Content>
+            <Text as="p">{children}</Text>
           </Content>
           {cancelCta && (
-            <CancelButton mode={mode} {...cancelCta} onClick={onCancel} />
+            <CancelButton mode={active} {...cancelCta} onClick={onCancel} />
           )}
-          <ConfirmButton mode={mode} {...confirmCta} onClick={onConfirm} />
+          <ConfirmButton mode={active} {...confirmCta} onClick={onConfirm} />
         </ModalBody>
       </ModalWrapper>
     </ShroudedOverlay>
