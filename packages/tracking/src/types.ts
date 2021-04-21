@@ -128,8 +128,9 @@ export type UserSharedData = BaseEventData & {
 
 /**
  * Data sent to user click event table
- * Note: any additional properties are added
- * to all rows of the table
+ * NOTE: avoid adding additional properties to these objects
+ * Instead, reuse existing properties, or make any additional properties generic so that they can be reused.
+ * https://www.notion.so/codecademy/Guide-to-Event-Tracking-Schema-5d40b09a297743f7a30a2690208194c8#800bbf6cdf2e44de9823cd75bcc574e5
  */
 export type UserClickData = UserSharedData & {
   /* required */
@@ -170,14 +171,13 @@ export type UserClickData = UserSharedData & {
   course_progress?: number;
   assessment_id?: string;
   container_slugs?: string[];
-  goal_setting?: string;
-  longterm_goal?: string;
 };
 
 /**
  * Data sent to user visit event table
- * Note: any additional properties are added
- * to all rows of the table
+ * NOTE: avoid adding additional properties to these objects
+ * Instead, reuse existing properties, or make any additional properties generic so that they can be reused.
+ * https://www.notion.so/codecademy/Guide-to-Event-Tracking-Schema-5d40b09a297743f7a30a2690208194c8#800bbf6cdf2e44de9823cd75bcc574e5
  */
 export type UserVisitData = UserSharedData & {
   /* required */
