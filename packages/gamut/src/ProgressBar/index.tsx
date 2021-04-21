@@ -1,4 +1,4 @@
-import * as patterns from '@codecademy/gamut-patterns';
+import { getPattern } from '@codecademy/gamut-patterns';
 import { variant } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React from 'react';
@@ -34,7 +34,7 @@ export type ProgressBarProps = {
   /**
    * Whether to use a pattern background
    */
-  pattern?: typeof patterns;
+  pattern?: string;
 };
 
 const progressBarSizeVariants = variant({
@@ -149,7 +149,7 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
   size = 'small',
   variant = 'blue',
 }) => {
-  const PatternComponent = pattern ? patterns[pattern] : null;
+  const PatternComponent = pattern ? getPattern(pattern) : null;
 
   return (
     <ProgressBarWrapper

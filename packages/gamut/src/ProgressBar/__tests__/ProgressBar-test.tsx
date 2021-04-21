@@ -45,7 +45,7 @@ describe('ProgressBar', () => {
   });
 
   it('uses an svg when given a pattern', () => {
-    const { wrapper } = renderWrapper({ pattern: 'diagonalStripesRegular' });
+    const { wrapper } = renderWrapper({ pattern: 'DiagonalStripeBRegular' });
 
     expect(wrapper.find('svg').length).toBe(1);
   });

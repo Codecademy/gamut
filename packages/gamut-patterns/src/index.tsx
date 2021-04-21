@@ -5,4 +5,5 @@ export * from './DiagonalStripeBDense';
 export * from './DiagonalStripeBLoose';
 export * from './DiagonalStripeBRegular';
 export * from './DotLoose';
+export * from './helpers';
 export * from './types';
