@@ -72,21 +72,7 @@ export const PopoverWithoutFocus = (args: PopoverProps) => {
 export const PatternedPopoversGrid = (args: PopoverProps) => {
   return (
     <LayoutGrid columnGap="sm" rowGap="xl">
-      {[
-        'DiagonalStripeBLoose',
-        'DiagonalStripeBRegular',
-        'DiagonalStripeBDense',
-        'CheckerLoose',
-        'CheckerRegular',
-        'CheckerDense',
-        'DotLoose',
-      ].map((pattern: typeof patterns) => (
-        <Column key={pattern} size={4}>
-          <FlexBox justifyContent="center">
-            <PopoverExample {...args} pattern={pattern} />
-          </FlexBox>
-        </Column>
-      ))}
+      <PopoverExample {...args} pattern />
     </LayoutGrid>
   );
 };

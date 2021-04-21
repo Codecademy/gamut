@@ -1,5 +1,5 @@
 import { BodyPortal, FocusTrap } from '@codecademy/gamut';
-import { getPattern, PatternName } from '@codecademy/gamut-patterns';
+import { CheckerDense } from '@codecademy/gamut-patterns';
 import styled from '@emotion/styled';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useWindowScroll, useWindowSize } from 'react-use';
@@ -100,7 +100,7 @@ export type PopoverProps = {
   /**
    * Whether to add a pattern background.
    */
-  pattern?: PatternName;
+  pattern?: boolean;
   /**
    * Called when the Popover requests to be closed,
    * this could be due to clicking outside of the popover, or by clicking the escape key.
@@ -185,7 +185,6 @@ export const Popover: React.FC<PopoverProps> = ({
 
   if (!isOpen || !targetRef) return null;
 
-  const PatternComponent = pattern ? getPattern(pattern) : null;
   return (
     <BodyPortal>
       <FocusTrap
@@ -215,7 +214,7 @@ export const Popover: React.FC<PopoverProps> = ({
           </RaisedDiv>
           {pattern && (
             <PatternContainer position={position} align={align}>
-              <PatternComponent
+              <CheckerDense
                 data-testid="popover-pattern"
                 width="100%"
                 height="100%"
