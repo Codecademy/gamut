@@ -13,11 +13,11 @@ export const EmptyNotification = () => {
     <FlexBox
       flexDirection="column"
       alignItems="center"
-      paddingTop={32}
-      paddingBottom={48}
+      pt={32}
+      pb={48}
       data-testid="empty-notification"
     >
-      <FlexBox paddingBottom={16}>
+      <FlexBox pb={16}>
         <Image width={80} height={60} />
       </FlexBox>
       <FlexBox flexDirection="column" alignItems="center">

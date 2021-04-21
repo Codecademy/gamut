@@ -269,8 +269,7 @@ export const boxShadow = {
       render: ({ value }: any) => (
         <Box
           boxShadow={value}
-          width="1.5rem"
-          height="1.5rem"
+          size="1.5rem"
           border={1}
           borderColor="gray-400"
           mb={32}

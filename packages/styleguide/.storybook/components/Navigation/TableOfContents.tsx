@@ -18,8 +18,7 @@ export const TableOfContents = () => {
         md: 'repeat(2, 1fr)',
         lg: 'repeat(3, 1fr)',
       }}
-      columnGap={32}
-      rowGap={32}
+      gap={32}
     >
       {toc.children.map((link: ContentItem) => (
         <Section {...link} key={`toc-item-${link.id}`} />
