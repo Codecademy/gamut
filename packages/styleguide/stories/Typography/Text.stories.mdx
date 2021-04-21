@@ -1,4 +1,4 @@
-import { Box, GridBox, Text } from '@codecademy/gamut/src';
+import { Column, LayoutGrid, Text } from '@codecademy/gamut/src';
 import {
   typographyElementVariants,
   typographyStyleVariants,
@@ -14,11 +14,94 @@ import { PropsTable } from '~styleguide/blocks';
   component={Text}
   parameters={{
     status: 'updating',
-    subtitle: `This is a single primitive to handle all \`<p>\` and
-\`<span>\` tags with defined size intervals. Renders a \`<span>\` by default.`,
+    subtitle:
+      'This component is a specific primitive for handling UI Text in predictable and flexible ways.',
     source: 'gamut',
+    figmaId: 'rNsdbOwlw6L0ea3uAJrrz7',
   }}
 />
+
+<br />
+
+## Usage Guidelines
+
+`<Text />` is the preferred component for customizing typography. The API is progressively specific. In order to achieve the effect you are looking for there are 3 levels of precedence.
+
+1. `as` Any HTML tag that might have semantic meaning and imply specific style `h1` - `h6` and `strong`. These have default styles that will match up with the tag in normative circumstances. For example an `h1` will be the largest type style etc.
+2. `variant` In many cases we use heading tags in different ways than a text document might to maintain semantic and accessible HTML structure. In cases where this is required, you may specify a variant to overwrite the default tag styles. For example if you had an `h1` that needed to look like an `h4` you can specify `<Text as="h1" variant="title-4" /> to achieve the effect.
+3. `props` In all other cases where we might need to change typography related styles you can use system props to change behavior.
+
+<br />
+
+## 1. Element Variants
+
+When you use a specific element Text will style it with overridable defaults as our best guess behavior. These styles take lowest priority as they are merely meant to act as a useful default, both `variant` and any system prop will override the styles specified here.
+
+### Usage
+
+```tsx
+import { Text } from '@codecademy/gamut';
+
+<Text as="h1" />;
+```
+
+<Story name="Element Variants">
+  {(args) => (
+    <LayoutGrid gap={32} my={48}>
+      {Object.keys(typographyElementVariants).map((tag) => (
+        <Fragment key={tag}>
+          <Column size={1} alignItems="center">
+            <Text as="code" fontSize={14}>
+              {tag}
+            </Text>
+          </Column>
+          <Column size={11}>
+            <Text as={tag}>Lorem Ipsum Dolor</Text>
+          </Column>
+        </Fragment>
+      ))}
+    </LayoutGrid>
+  )}
+</Story>
+
+## 2. Style Variants
+
+These are our base semantic font scales. These apply directly to the typography scales in figma and can be used with any arbitrary tag. These take precedence over any element based variants if configured. If none of these specifically match your need you can also override behavior with any system prop (such as `lineHeight` and `fontSize`).
+
+### Usage
+
+```tsx
+import { Text } from '@codecademy/gamut';
+
+<Text as="h4" variant="title-1" />;
+```
+
+**Note**: Be aware that you must replicate any default behavior if you override these props with responsive values.
+
+<Story name="Variants">
+  {(args) => (
+    <LayoutGrid gap={32} my={48}>
+      {Object.keys(typographyStyleVariants).map((variant) => (
+        <Fragment key={variant}>
+          <Column size={1} alignItems="center">
+            <Text as="code" fontSize={14}>
+              {typographyStyleVariants[variant].fontSize}
+            </Text>
+          </Column>
+          <Column size={11}>
+            <Text as="span" variant={variant}>
+              {variant}
+            </Text>
+          </Column>
+        </Fragment>
+      ))}
+    </LayoutGrid>
+  )}
+</Story>
+
+## Code Playground
+
+Edit attributes and see what’s possible to do with this component or get the exact output you want.
 
 <Canvas>
   <Story name="Text" args={{ children: 'Hello World' }}>
@@ -26,70 +109,4 @@ import { PropsTable } from '~styleguide/blocks';
   </Story>
 </Canvas>
 
-## Props
-
 <PropsTable story="Text" defaultGroups={['typography']} />
-
-## Variants
-
-These are our base semantic font scales.
-
-<Canvas>
-  <Story name="Variants">
-    {(args) => (
-      <GridBox
-        padding={8}
-        rowGap={24}
-        columnGap={32}
-        gridTemplateColumns="max-content 1fr"
-        alignItems="center"
-      >
-        {Object.keys(typographyStyleVariants).map((variant) => (
-          <Fragment key={variant}>
-            <Box>
-              <Text as="code" fontSize={14}>
-                {typographyStyleVariants[variant].fontSize}
-              </Text>
-            </Box>
-            <Box>
-              <Text as="span" variant={variant}>
-                {variant}
-              </Text>
-            </Box>
-          </Fragment>
-        ))}
-      </GridBox>
-    )}
-  </Story>
-</Canvas>
-
-## Element Preset Variants
-
-When you use a specific element Text will style it with overridable defaults as our best guess behavior. To customize this you may use `variant` and other `typography` system props.
-
-<Canvas>
-  <Story name="Element Variants">
-    {(args) => (
-      <GridBox
-        padding={8}
-        rowGap={24}
-        columnGap={32}
-        gridTemplateColumns="max-content 1fr"
-        alignItems="center"
-      >
-        {Object.keys(typographyElementVariants).map((tag) => (
-          <Fragment key={tag}>
-            <Box>
-              <Text as="code" fontSize={14}>
-                {tag}
-              </Text>
-            </Box>
-            <Box>
-              <Text as={tag}>Lorem Ipsum Dolor</Text>
-            </Box>
-          </Fragment>
-        ))}
-      </GridBox>
-    )}
-  </Story>
-</Canvas>
