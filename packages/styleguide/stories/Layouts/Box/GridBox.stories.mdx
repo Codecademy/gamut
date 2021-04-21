@@ -29,10 +29,8 @@ import { PropsTable } from '~styleguide/blocks';
   >
     {({ as = 'div', ...args }) => {
       const elProps = {
-        borderWidth: '1px',
-        borderStyle: 'solid',
-        borderColor: 'navy',
-        padding: 16,
+        border: 1,
+        p: 16,
       };
       return (
         <GridBox {...args}>
@@ -52,10 +50,8 @@ import { PropsTable } from '~styleguide/blocks';
   <Story name="4 Column Grid">
     {(args) => {
       const elProps = {
-        borderWidth: '1px',
-        borderStyle: 'solid',
-        borderColor: 'navy',
-        padding: 16,
+        border: 1,
+        p: 16,
       };
       return (
         <GridBox gridAutoFlow="column" gridAutoColumns="1fr" columnGap={16}>

@@ -1,7 +1,5 @@
-import { Anchor, Box, GridBox } from '@codecademy/gamut';
-import { ResponsiveProp } from '@codecademy/gamut-system';
+import { Anchor, Box, BoxProps, GridBox } from '@codecademy/gamut';
 import styled from '@emotion/styled';
-import * as CSS from 'csstype';
 import React from 'react';
 
 import { FooterHeading } from '../FooterHeading';
@@ -21,9 +19,9 @@ const MobileImageItem = styled(Box)();
 MobileImageItem.defaultProps = {
   as: 'li',
   display: 'inline-block',
-  marginY: 8,
+  my: 8,
   width: {
-    base: '50%',
+    _: '50%',
     md: '90%',
   },
 };
@@ -162,7 +160,7 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
       gridColumn="1 / 3"
       gridColumnEnd={{ sm: '1' }}
       gridRow={{ sm: '2 / 4' }}
-      paddingTop={{ sm: 32 }}
+      pt={{ sm: 32 }}
     >
       <FooterHeading marginBottom={{ base: 8, sm: 16, lg: 0 }}>
         Mobile
@@ -238,8 +236,8 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
     </Box>
   );
 
-  const support = (display: ResponsiveProp<CSS.Properties['display']>) => (
-    <Box display={display} marginTop={{ sm: 16 }} order={{ sm: 3 }}>
+  const support = (display: BoxProps['display']) => (
+    <Box display={display} mt={{ sm: 16 }} order={{ sm: 3 }}>
       <FooterHeading>Support</FooterHeading>
       <FooterLinkItems>
         <FooterLinkItem>
@@ -258,18 +256,18 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
   return (
     <GridBox
       gridTemplateColumns={{
-        base: 'repeat(2, minmax(0, 1fr))',
+        _: 'repeat(2, minmax(0, 1fr))',
         sm: 'repeat(3, minmax(0, 1fr))',
       }}
     >
       {company}
       {resources}
-      {support({ base: 'unset', sm: 'none' })}
+      {support({ _: 'unset', sm: 'none' })}
       {community}
       {individualPlans}
       {enterprisePlans}
       {mobile}
-      {support({ base: 'none', sm: 'unset' })}
+      {support({ _: 'none', sm: 'unset' })}
     </GridBox>
   );
 };

@@ -8,7 +8,7 @@ export const CoachmarkExample = (args: CoachmarkProps) => {
   );
 
   const renderPopover = () => (
-    <FlexBox flexDirection="column" padding={16} alignItems="flex-start">
+    <FlexBox flexDirection="column" p={16} alignItems="flex-start">
       <Text marginBottom={8}>You should click the button.</Text>
       <FillButton
         onClick={() => {

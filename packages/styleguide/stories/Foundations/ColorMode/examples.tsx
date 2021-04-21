@@ -6,8 +6,8 @@ import React, { ComponentProps, useState } from 'react';
 export const ColorModeExample = () => {
   const [isDark, setIsDark] = useState(false);
   return (
-    <Box marginY={16} marginBottom={32}>
-      <FlexBox fontWeight="title" marginBottom={8} alignItems="center">
+    <Box mt={16} mb={32}>
+      <FlexBox fontWeight="title" mb={8} alignItems="center">
         <Text marginRight={8} as="strong">
           Use Dark Mode
         </Text>
@@ -20,13 +20,7 @@ export const ColorModeExample = () => {
         />
       </FlexBox>
       <ColorMode mode={isDark ? 'dark' : 'light'}>
-        <Box
-          backgroundColor="background"
-          padding={24}
-          borderColor="text"
-          borderStyle="solid"
-          borderWidth="1px"
-        >
+        <Box bg="background" p={24} border={1}>
           <Text as="h5" fontSize={26} fontWeight="title" marginBottom={16}>
             {isDark ? 'Dark' : 'Light'} Mode
           </Text>
