@@ -2,7 +2,7 @@ import { BoxProps } from '@codecademy/gamut';
 
 export type PatternProps = BoxProps & {};
 
-export type PatternName =
+export type PatternName = 'CheckerDense'
   | 'CheckerLoose'
   | 'CheckerRegular'
   | 'DiagonalStripeBDense'
