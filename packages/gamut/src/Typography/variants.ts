@@ -1,30 +1,30 @@
 export const typographyStyleVariants = {
-  'title-1': {
+  'title-xxl': {
     fontSize: 64,
     fontWeight: 'title',
     lineHeight: 'title',
   },
-  'title-2': {
+  'title-xl': {
     fontSize: 44,
     fontWeight: 'title',
     lineHeight: 'title',
   },
-  'title-3': {
+  'title-lg': {
     fontSize: 34,
     fontWeight: 'title',
     lineHeight: 'title',
   },
-  'title-4': {
+  'title-md': {
     fontSize: 26,
     fontWeight: 'title',
     lineHeight: 'title',
   },
-  'title-5': {
+  'title-sm': {
     fontSize: 22,
     fontWeight: 'title',
     lineHeight: 'title',
   },
-  'title-6': {
+  'title-xs': {
     fontSize: 20,
     fontWeight: 'title',
     lineHeight: 'title',
@@ -44,12 +44,12 @@ export const typographyStyleVariants = {
 } as const;
 
 export const typographyElementVariants = {
-  h1: typographyStyleVariants['title-1'],
-  h2: typographyStyleVariants['title-2'],
-  h3: typographyStyleVariants['title-3'],
-  h4: typographyStyleVariants['title-4'],
-  h5: typographyStyleVariants['title-5'],
-  h6: typographyStyleVariants['title-6'],
+  h1: typographyStyleVariants['title-xxl'],
+  h2: typographyStyleVariants['title-xl'],
+  h3: typographyStyleVariants['title-lg'],
+  h4: typographyStyleVariants['title-md'],
+  h5: typographyStyleVariants['title-sm'],
+  h6: typographyStyleVariants['title-xs'],
   p: {
     ...typographyStyleVariants['p-base'],
     fontSize: 16,
