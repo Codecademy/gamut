@@ -1,7 +1,6 @@
 import { serializeTokens, StyleProps, variance } from '@codecademy/variance';
 import { CSSObject, Theme, ThemeProvider, useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
-import { HTMLAttributes } from 'enzyme';
 import { mapValues } from 'lodash';
 import React, { useMemo } from 'react';
 
@@ -34,9 +33,7 @@ export interface ProviderProps extends StyleProps<typeof providerProps> {
   setVariables?: boolean;
 }
 
-export interface VariableProviderProps
-  extends Omit<HTMLAttributes, keyof ProviderProps>,
-    ProviderProps {
+export interface VariableProviderProps extends ProviderProps {
   variables?: CSSObject;
 }
 
