@@ -38,7 +38,7 @@ export const DiagonalStripeBDense: React.FC<PatternProps> = ({ ...props }) => (
         y="0"
         width="100%"
         height="100%"
-        fill={`url(#diagonalStripeBDense)`}
+        fill="url(#diagonalStripeBDense)"
       />
     </Svg>
   </Box>

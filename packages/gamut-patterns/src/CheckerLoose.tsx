@@ -23,13 +23,7 @@ export const CheckerLoose: React.FC<PatternProps> = ({ ...props }) => (
         <rect width="1" height="1" fill="currentColor" />
         <rect x="8" y="8" width="1" height="1" fill="currentColor" />
       </pattern>
-      <rect
-        x="0"
-        y="0"
-        width="100%"
-        height="100%"
-        fill={`url(#checkerLoose)`}
-      />
+      <rect x="0" y="0" width="100%" height="100%" fill="url(#checkerLoose)" />
     </Svg>
   </Box>
 );

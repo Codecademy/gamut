@@ -44,7 +44,7 @@ export const DiagonalStripeBRegular: React.FC<PatternProps> = ({
         y="0"
         width="100%"
         height="100%"
-        fill={`url(#diagonalStripeBRegular)`}
+        fill="url(#diagonalStripeBRegular)"
       />
     </Svg>
   </Box>

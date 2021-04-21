@@ -49,7 +49,7 @@ export const DotLoose: React.FC<PatternProps> = ({ ...props }) => (
         <rect x="0.5" y="1" width="0.5" height="0.5" fill="currentColor" />
         <rect x="0.5" y="0.5" width="0.5" height="0.5" fill="currentColor" />
       </pattern>
-      <rect x="0" y="0" width="100%" height="100%" fill={`url(#dotLoose)`} />
+      <rect x="0" y="0" width="100%" height="100%" fill="url(#dotLoose)" />
     </Svg>
   </Box>
 );
