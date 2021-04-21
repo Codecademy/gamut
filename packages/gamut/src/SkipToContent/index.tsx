@@ -56,7 +56,7 @@ export const SkipToContent: React.FC<SkipToContentProps> = ({
   return (
     <SkipToContentLink href={href} onClick={onClick} type="button" {...rest}>
       Skip to Content
-      <Box marginLeft={8}>
+      <Box ml={8}>
         <MiniArrowDownIcon aria-hidden />
       </Box>
     </SkipToContentLink>

@@ -111,7 +111,7 @@ export const PageFeatures: React.FC<PageFeaturesProps> = ({
         </CTA>
       )}
     </div>
-    <Box marginTop={16}>
+    <Box mt={16}>
       {renderEach(
         maxCols,
         features,

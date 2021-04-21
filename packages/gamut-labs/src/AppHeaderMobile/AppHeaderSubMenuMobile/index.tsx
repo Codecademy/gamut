@@ -38,7 +38,7 @@ export const AppHeaderSubMenuMobile: React.FC<AppHeaderSubMenuMobileProps> = ({
     <Box aria-labelledby={`${item.text} menu`}>
       <FullMenuButton onClick={handleClose} type="button">
         <ArrowChevronLeftIcon size={12} aria-hidden />
-        <Box fontSize={16} marginLeft={8}>
+        <Box fontSize={16} ml={8}>
           Full Menu
         </Box>
       </FullMenuButton>

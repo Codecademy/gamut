@@ -29,10 +29,8 @@ import { PropsTable } from '~styleguide/blocks';
   >
     {({ as = 'div', ...args }) => {
       const elProps = {
-        borderWidth: '1px',
-        borderStyle: 'solid',
-        borderColor: 'navy',
-        padding: 16,
+        border: 1,
+        p: 16,
       };
       return (
         <FlexBox {...args}>
@@ -57,10 +55,8 @@ import { PropsTable } from '~styleguide/blocks';
   >
     {(args) => {
       const elProps = {
-        borderWidth: '1px',
-        borderStyle: 'solid',
-        borderColor: 'navy',
-        padding: 16,
+        border: 1,
+        p: 16,
       };
       return (
         <FlexBox justifyContent="space-between">

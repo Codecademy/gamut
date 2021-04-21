@@ -29,8 +29,8 @@ const FormGroupContainer = styled(Box)`
 `;
 
 FormGroupContainer.defaultProps = {
-  paddingBottom: 8,
-  marginBottom: 24,
+  pb: 8,
+  mb: 24,
 };
 
 export const FormGroup: React.FC<FormGroupProps> = ({

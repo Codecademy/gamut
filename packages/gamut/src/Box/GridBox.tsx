@@ -1,9 +1,10 @@
+import { styledConfig, system } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 
-import { Box, BoxProps } from './Box';
+import { boxProps, GridBoxProps, gridVariants } from './props';
 
-export const GridBox = styled(Box)<BoxProps>();
-
-GridBox.defaultProps = {
-  display: 'grid',
-} as BoxProps;
+export const GridBox = styled('div', styledConfig)<GridBoxProps>(
+  system.css({ display: 'grid' }),
+  gridVariants,
+  boxProps
+);

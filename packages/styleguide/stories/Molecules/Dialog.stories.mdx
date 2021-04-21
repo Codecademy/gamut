@@ -1,8 +1,9 @@
 import { Dialog } from '@codecademy/gamut/src';
+import { ColorMode } from '@codecademy/gamut-styles/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 
-import { PropsTable } from '~styleguide/blocks';
+import { LinkTo, PropsTable } from '~styleguide/blocks';
 
 <Meta
   title={title}
@@ -60,7 +61,8 @@ import { PropsTable } from '~styleguide/blocks';
 
 ## Color Modes
 
-We currently support 2 color modes for Dialog `dark` and `light`.
+Dialog components respond to the current <LinkTo id="foundations-color-mode--page">Color Mode</LinkTo> they are used in. Each component inside of dialog will correctly display for the current color mode without any extra configuration.
+Check it out:
 
 ### Light
 
@@ -77,7 +79,11 @@ We currently support 2 color modes for Dialog `dark` and `light`.
 <Canvas>
   <Story name="Dark" height="600px" args={{ mode: 'dark' }}>
     {(args) => {
-      return <Dialog {...args} />;
+      return (
+        <ColorMode mode="dark">
+          <Dialog {...args} />
+        </ColorMode>
+      );
     }}
   </Story>
 </Canvas>

@@ -27,7 +27,7 @@ export const HubCard: React.FC<HubCardProps> = ({
     backgroundImage={`url(${backgroundImage})`}
     height="11.25rem"
   >
-    <Box padding={24} backgroundColor="white" width="100%" maxWidth="17.5rem">
+    <Box p={24} bg="white" width="100%" maxWidth="17.5rem">
       <Text as="div" fontSize={16}>
         {eyebrowTitle}
       </Text>

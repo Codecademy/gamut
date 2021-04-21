@@ -100,7 +100,7 @@ export const AppHeaderDropdown: React.FC<AppHeaderDropdownProps> = ({
               transition={{ duration: 0.175 }}
               exit={{ height: 0 }}
             >
-              <Box paddingX={24}>
+              <Box px={24}>
                 <AppHeaderLinkSections action={action} item={item} />
               </Box>
             </motion.div>

@@ -1,6 +1,7 @@
 import {
   Box,
   FillButton,
+  GridBox,
   IconButton,
   StrokeButton,
   TextButton,
@@ -37,19 +38,18 @@ export const ButtonScale = ({ mode }: { mode: 'dark' | 'light' }) => {
   });
 
   return (
-    <Box
-      display="grid"
+    <GridBox
       alignItems="center"
       justifyItems="start"
       gridTemplateColumns="repeat(4, minmax(50px, max-content))"
       gridAutoRows="3rem"
       columnGap={32}
       rowGap={16}
-      padding={32}
-      backgroundColor={mode === 'dark' ? 'navy' : 'white'}
+      p={32}
+      bg={mode === 'dark' ? 'navy' : 'white'}
       textColor={mode === 'dark' ? 'white' : 'navy'}
     >
       {grid}
-    </Box>
+    </GridBox>
   );
 };

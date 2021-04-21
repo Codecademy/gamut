@@ -82,7 +82,7 @@ export const GridFormSubmit: React.FC<GridFormSubmitProps> = (props) => {
   return (
     <Column size={props.size}>
       <Box
-        marginBottom={8}
+        mb={8}
         alignSelf="center"
         justifySelf={positions[props.position || 'left']}
       >

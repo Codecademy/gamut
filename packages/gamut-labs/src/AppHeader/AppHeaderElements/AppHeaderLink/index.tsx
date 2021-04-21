@@ -35,7 +35,7 @@ export const AppHeaderLink: React.FC<AppHeaderLinkProps> = ({
       <AppHeaderLinkButtonInner
         lineHeight="base"
         minWidth="0"
-        paddingY={8}
+        py={8}
         textAlign="left"
       >
         {item.text}
