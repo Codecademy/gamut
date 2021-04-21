@@ -1,0 +1,68 @@
+import { CurriculumCard } from '@codecademy/gamut-labs/src';
+import title from '@codecademy/macros/lib/title.macro';
+import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/blocks';
+
+<Meta
+  title={title}
+  component={CurriculumCard}
+  args={{
+    title: 'Learn JavaScript',
+    difficulty: 0,
+    tag: 'Language Fluency',
+    tagColor: 'blue',
+    scope: 'Lesson',
+    scopeCount: 25,
+    text: 'Course',
+  }}
+  parameters={{
+    subtitle: `Curriculum cards for paths and courses.`,
+    source: 'gamut-labs',
+  }}
+/>
+
+<Canvas withSource="open">
+  <Story name="Curriculum Card">{(args) => <CurriculumCard {...args} />}</Story>
+</Canvas>
+
+<Props story="Curriculum Card" />
+
+<Canvas withSource="closed">
+  <Story
+    name="Curriculum Card with Image"
+    args={{
+      text: 'Career Path',
+      title: 'Front-End Engineer',
+      image:
+        'https://static-assets.codecademy.com/components/curriculum/path/front-end-engineer-career-path/curriculum-card.svg',
+      scopeCount: 94,
+      isFullSize: true,
+      color: 'pink',
+      tag: 'Job Essentials',
+      showProLogo: true,
+    }}
+  >
+    {(args) => <CurriculumCard {...args} />}
+  </Story>
+</Canvas>
+
+<Canvas withSource="closed">
+  <Story
+    name="Curriculum Card Enrolled"
+    args={{
+      progressState: 'inProgress',
+    }}
+  >
+    {(args) => <CurriculumCard {...args} />}
+  </Story>
+</Canvas>
+
+<Canvas withSource="closed">
+  <Story
+    name="Curriculum Card Completed"
+    args={{
+      progressState: 'completed',
+    }}
+  >
+    {(args) => <CurriculumCard {...args} />}
+  </Story>
+</Canvas>
