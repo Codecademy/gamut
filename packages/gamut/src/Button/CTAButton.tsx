@@ -53,7 +53,9 @@ export const CTAButton: React.FC<
 
   return (
     <CTAButtonOuter mode={currentMode} {...props}>
-      <CTAButtonInner mode={currentMode}>{children}</CTAButtonInner>
+      <CTAButtonInner mode={currentMode} {...props}>
+        {children}
+      </CTAButtonInner>
     </CTAButtonOuter>
   );
 };
