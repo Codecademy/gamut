@@ -54,7 +54,7 @@ export const modeColorGroups = {
       backgroundMuted: swatches.gray[600],
       foregroundMuted: swatches.gray[200],
       foreground: colors.navy,
-      shadow: colors.white,
+      shadow: colors['gray-200'],
     },
   },
   light: {
@@ -65,7 +65,7 @@ export const modeColorGroups = {
       backgroundMuted: swatches.gray[200],
       foregroundMuted: swatches.gray[600],
       foreground: colors.white,
-      shadow: colors.black,
+      shadow: colors.navy,
     },
     secondary: {
       background: colors.navy,
@@ -74,7 +74,7 @@ export const modeColorGroups = {
       backgroundMuted: swatches.gray[200],
       foregroundMuted: swatches.gray[600],
       foreground: colors.white,
-      shadow: colors.navy,
+      shadow: colors.black,
     },
   },
 };

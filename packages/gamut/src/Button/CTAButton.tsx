@@ -1,5 +1,5 @@
 import { fontFamily } from '@codecademy/gamut-styles';
-import { css } from '@emotion/react';
+import { css, useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
 import React from 'react';
 
@@ -46,9 +46,16 @@ const CTAButtonOuter = styled(ButtonOutline)<{ variant?: 'primary' }>`
 export const CTAButton: React.FC<
   React.ComponentProps<typeof CTAButtonOuter> & { variant?: never }
 > = ({ children, mode, ...props }) => {
+  const {
+    colorModes: { active },
+  } = useTheme();
+  const currentMode = mode ?? active;
+
   return (
-    <CTAButtonOuter mode={mode} {...props}>
-      <CTAButtonInner mode={mode}>{children}</CTAButtonInner>
+    <CTAButtonOuter mode={currentMode} {...props}>
+      <CTAButtonInner mode={currentMode} {...props}>
+        {children}
+      </CTAButtonInner>
     </CTAButtonOuter>
   );
 };

@@ -1,5 +1,18 @@
 /* eslint-disable local-rules/gamut-import-paths */
-import { Anchor, Box, FlexBox, Text, Toggle } from '@codecademy/gamut/src';
+import {
+  Anchor,
+  Box,
+  CTAButton,
+  FillButton,
+  FlexBox,
+  GridBox,
+  IconButton,
+  StrokeButton,
+  Text,
+  TextButton,
+  Toggle,
+} from '@codecademy/gamut/src';
+import { CloseIcon, MiniDeleteIcon } from '@codecademy/gamut-icons';
 import { Background, ColorMode } from '@codecademy/gamut-styles/src';
 import React, { ComponentProps, useState } from 'react';
 
@@ -30,6 +43,62 @@ export const ColorModeExample = () => {
             veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
             ea commodo consequat.
           </Text>
+          <GridBox
+            rowGap={16}
+            columnGap={16}
+            gridTemplateColumns="repeat(1, max-content)"
+            alignItems="start"
+            justifyItems="start"
+            paddingTop={16}
+          >
+            {' '}
+            <CTAButton>CTA</CTAButton>
+            <CTAButton variant="secondary">CTA</CTAButton>
+          </GridBox>
+          <GridBox
+            rowGap={16}
+            columnGap={16}
+            gridTemplateColumns="repeat(4, max-content)"
+            alignItems="start"
+            justifyItems="start"
+            paddingTop={16}
+          >
+            <FillButton>Fill</FillButton>
+            <StrokeButton>Stroke</StrokeButton>
+            <TextButton>Text</TextButton>
+            <IconButton icon={CloseIcon} />
+            <FillButton size="small">Fill</FillButton>
+            <StrokeButton size="small">Stroke</StrokeButton>
+            <TextButton size="small">Text</TextButton>
+            <IconButton size="small" icon={MiniDeleteIcon} />
+          </GridBox>
+          <GridBox
+            rowGap={16}
+            columnGap={16}
+            gridTemplateColumns="repeat(4, max-content)"
+            alignItems="start"
+            justifyItems="start"
+            paddingTop={16}
+          >
+            <FillButton variant="secondary">Fill</FillButton>
+            <StrokeButton variant="secondary">Stroke</StrokeButton>
+            <TextButton variant="secondary">Text</TextButton>
+            <IconButton variant="secondary" icon={CloseIcon} />
+            <FillButton variant="secondary" size="small">
+              Fill
+            </FillButton>
+            <StrokeButton variant="secondary" size="small">
+              Stroke
+            </StrokeButton>
+            <TextButton variant="secondary" size="small">
+              Text
+            </TextButton>
+            <IconButton
+              variant="secondary"
+              size="small"
+              icon={MiniDeleteIcon}
+            />
+          </GridBox>
         </Box>
       </ColorMode>
     </Box>
