@@ -64,7 +64,6 @@ const anchorVariants = system.variant({
       textDecoration: 'underline',
       '&:focus-visible': {
         outline: 'currentColor auto 4px',
-        outlineOffset: '4px',
       },
     },
     interface: {
