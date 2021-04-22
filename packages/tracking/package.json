@@ -15,8 +15,10 @@
   "devDependencies": {
     "@babel/cli": "^7.13.10",
     "@types/jest": "^26.0.15",
+    "@types/fetch-mock": "^7.3.3",
     "babel-preset-codecademy": "^2.3.0",
-    "jest-fetch-mock": "^3.0.3",
+    "fetch-mock": "^9.11.0",
+    "react-use": "^15.3.8",
     "ts-jest": "^26.4.1",
     "typescript": "*"
   },
