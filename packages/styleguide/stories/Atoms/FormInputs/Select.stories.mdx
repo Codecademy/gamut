@@ -132,19 +132,6 @@ This is a variant of our `Select` component with a styled dropdown menu. `Select
       </FlexBox>
     )}
   </Story>
-  <Story
-    name="onChangeDropdown"
-    args={{
-      options: ['Small', 'Quite little'],
-      defaultValue: 'Quite little',
-    }}
-  >
-    {(args) => (
-      <FlexBox width="10rem" height="25rem">
-        <SelectDropdown onChange={(e) => console.log(e)} {...args} />
-      </FlexBox>
-    )}
-  </Story>
 </Canvas>
 
 ### Form Group + Select
