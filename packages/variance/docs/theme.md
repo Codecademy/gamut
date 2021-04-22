@@ -93,7 +93,8 @@ export const {
 /**
  * To use your new theme you must do 3 things.
  * 1. Declare your theme shape as the emotion theme.
- * 2.
+ * 2. Wrap your application in a ThemeProvider
+ * 3. And add your variables to the global styles.
  */
 
 export type ThemeShape = typeof theme;
@@ -105,8 +106,8 @@ declare module '@emotion/react' {
 const App = () => {
   return (
     <ThemeProvider theme={theme}>
-      <Global styles={css(variables.root)} />
-      <Global styles={css(variables.colorMode)} />
+      <Global styles={css({ ':root': root })} />
+      <Global styles={css({ ':root': colorMode })} />
       <Component />
     </ThemeProvider>
   );
