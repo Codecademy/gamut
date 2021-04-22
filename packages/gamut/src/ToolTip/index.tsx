@@ -148,13 +148,13 @@ const ToolTipBody = styled.div<ToolTipContainerProps>`
   ${({ alignment }) =>
     alignment.includes('center')
       ? `
+      margin: auto;
       padding: 0.5rem;
       text-align: center;
     `
       : `
       padding: 1rem;
     `}
-  margin: auto;
   min-width: 4rem;
 
   ${variant({
