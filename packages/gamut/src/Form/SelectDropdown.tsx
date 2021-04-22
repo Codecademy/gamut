@@ -22,7 +22,7 @@ import {
 
 type ReactSelectNamedProps = Omit<NamedProps, 'options' | 'defaultValue'>;
 type SelectDropdownBaseProps = Omit<SelectWrapperBaseProps, 'onChange'>;
-type SelectDropdownProps = SelectDropdownBaseProps & ReactSelectNamedProps;
+type SelectDropdownProps = any & ReactSelectNamedProps;
 type OptionStrict = {
   label: string;
   value: string;
