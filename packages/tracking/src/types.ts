@@ -128,20 +128,28 @@ export type UserSharedData = BaseEventData & {
 
 /**
  * Data sent to user click event table
- * Note: any additional properties are added
- * to all rows of the table
+ * NOTE: avoid adding additional properties to these objects
+ * Instead, reuse existing properties, or make any additional properties generic so that they can be reused.
+ * https://www.notion.so/codecademy/Guide-to-Event-Tracking-Schema-5d40b09a297743f7a30a2690208194c8#800bbf6cdf2e44de9823cd75bcc574e5
  */
 export type UserClickData = UserSharedData & {
   /* required */
   target: string;
 
-  /* additional properties */
+  /* optional */
   id?: string;
+  distinct_id?: string;
   content_id?: string;
-  weekly_goal?: string | number;
-  element?: string;
-  complete?: string;
+  slug?: string;
+  name?: string;
+  action?: string;
+  type?: string;
   location?: string;
+  element?: string;
+
+  /* additional properties */
+  weekly_goal?: string | number;
+  complete?: string;
   video_url?: string;
   path_id?: string;
   path_slug?: string;
@@ -152,20 +160,16 @@ export type UserClickData = UserSharedData & {
   track_slug?: string;
   module_slug?: string;
   button?: string;
-  type?: string;
   current_challenge_day?: string | number;
   track_id?: string;
   course?: string;
   path_name?: string;
   event_id?: string;
-  distinct_id?: string;
   unit?: string;
-  slug?: string;
   lesson?: string;
   community_prompt?: string;
   contentItem?: any;
   unit_slug?: string;
-  action?: string;
   course_slug?: string;
   course_progress?: number;
   assessment_id?: string;
@@ -174,12 +178,20 @@ export type UserClickData = UserSharedData & {
 
 /**
  * Data sent to user visit event table
- * Note: any additional properties are added
- * to all rows of the table
+ * NOTE: avoid adding additional properties to these objects
+ * Instead, reuse existing properties, or make any additional properties generic so that they can be reused.
+ * https://www.notion.so/codecademy/Guide-to-Event-Tracking-Schema-5d40b09a297743f7a30a2690208194c8#800bbf6cdf2e44de9823cd75bcc574e5
  */
 export type UserVisitData = UserSharedData & {
   /* required */
   page_name: string;
+
+  /* optional */
+  category?: string;
+  distinct_id?: string;
+  type?: string;
+  target?: string;
+  section?: string;
 
   /* additional properties */
   plan?: string;
@@ -187,18 +199,13 @@ export type UserVisitData = UserSharedData & {
   post?: string;
   story_type?: string;
   path_title?: string;
-  category?: string;
-  type?: string;
   onboarding_entrypoint?: string;
   course_slug?: string;
   course?: string;
   interstitial_name?: string;
   content_id?: string;
-  section?: string;
   story_slug?: string;
-  target?: string;
   unit?: string;
-  distinct_id?: string;
   lesson?: string;
 };
 

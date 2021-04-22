@@ -25,7 +25,7 @@ const getEmotionNode = () => {
 export const createEmotionCache = (overrides?: Partial<Options>) =>
   createCache({
     key: EMOTION_KEY,
-    speedy: true,
+    speedy: process.env.NODE_ENV !== 'development',
     container: getEmotionNode(),
     ...overrides,
     stylisPlugins: [
