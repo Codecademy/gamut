@@ -3,16 +3,30 @@ import { StyleProps, variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
 import { pick } from 'lodash';
 
+const columns = 12;
+
 const gutters = pick(theme.spacing, [8, 16, 24, 32, 48]);
+
+const gutterGuard = (gap: string, property: string) => {
+  if (property === 'columnGap') {
+    return `min(calc(100% / ${columns - 1}), ${gap})`;
+  }
+  return gap;
+};
 
 const grid = variance.create({
   gap: {
     property: 'gap',
     properties: ['rowGap', 'columnGap'],
     scale: gutters,
+    transform: gutterGuard,
   },
   rowGap: { property: 'rowGap', scale: gutters },
-  columnGap: { property: 'columnGap', scale: gutters },
+  columnGap: {
+    property: 'columnGap',
+    scale: gutters,
+    transform: gutterGuard,
+  },
   rowHeight: {
     property: 'gridAutoRows',
     transform: (height: string) => `minmax(${pxRem(height)}, 1fr)`,
@@ -30,7 +44,7 @@ export const LayoutGrid = styled(
   system.css({
     display: 'grid',
     width: '100%',
-    gridTemplateColumns: `repeat(12, minmax(0, 1fr))`,
+    gridTemplateColumns: `repeat(${columns}, minmax(0, 1fr))`,
   }),
   gridProps
 );
