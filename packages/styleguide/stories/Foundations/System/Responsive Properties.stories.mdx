@@ -88,6 +88,40 @@ Both are valid syntaxes for all stystem props:
 export type ResponsiveProp<T> = T | MediaQueryMap<T> | MediaQueryArray<T>;
 ```
 
+Here are some examples of what the expected out put will be for certain configurations:
+
+```tsx
+// 1
+<Box p={[16, 24]} py={12} />
+// 2
+<Box width={{ _: '100%', xl: '50%' }} />
+// 3
+<Box display={{ lg: 'none' }} />
+```
+
+```css
+/** 1 */
+.Box {
+  padding: 12px 16px;
+  @media (min-width: 480px) {
+    padding: 12px 24px;
+  }
+}
+/** 2 */
+.Box {
+  width: 100%;
+  @media (min-width: 1440px) {
+    width: 50%;
+  }
+}
+/** 3 */
+.Box {
+  @media (min-width: 1200px) {
+    display: none;
+  }
+}
+```
+
 ### What Syntax should I use?
 
 Since both syntaxes perform the same task it can be unclear which syntax is preferrable to another, heres some best practices for picking the syntax that will be most readable.
