@@ -47,6 +47,11 @@ export const AlertArea: React.FC<AlertAreaProps> = ({
     );
   }, [alerts]);
 
+  const hiddenAlertProps = {
+    'aria-hidden': true,
+    tabIndex: -1,
+  };
+
   return (
     <Container variant={variant}>
       <Box position="relative">
@@ -54,24 +59,23 @@ export const AlertArea: React.FC<AlertAreaProps> = ({
           {orderedAlerts?.map((alert, i) => {
             if (!alert.children) return null;
             const alertId = alert.children?.toString();
+            const props = i === 0 ? {} : hiddenAlertProps;
+            const offset = 4 * i;
 
             return (
               <motion.div
-                aria-hidden={i !== 0}
+                {...props}
                 style={{
                   width: `calc(${breakpoints.md} - 4rem)`,
                   top: 0,
-                  maxWidth: '100%',
-                  display: 'flex',
-                  x: -4 * i,
-                  y: 4 * i,
-                  justifyContent: 'center',
+                  x: -offset,
+                  y: offset,
                   position: i === 0 ? 'relative' : 'absolute',
                   zIndex: -(i + 1),
                   opacity: i > 2 ? 0 : 1,
                 }}
                 initial={{ y: 50, scale: 0.3 }}
-                animate={{ y: 4 * i, scale: 1 }}
+                animate={{ y: offset, scale: 1 }}
                 exit={{
                   x: 50,
                   y: -50,
