@@ -1,20 +1,13 @@
-import {
-  MiniCheckCircleIcon,
-  MiniChevronDownIcon,
-  MiniDeleteIcon,
-  MiniInfoCircleIcon,
-  MiniRemoveCircleIcon,
-  MiniStarIcon,
-  MiniWarningTriangleIcon,
-} from '@codecademy/gamut-icons';
-import { Background, breakpoints, system } from '@codecademy/gamut-styles';
+import { MiniChevronDownIcon, MiniDeleteIcon } from '@codecademy/gamut-icons';
+import { Background, system } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import { motion } from 'framer-motion';
 import React, { useMemo, useState } from 'react';
 
 import { Box, FlexBox } from '../Box';
-import { FillButton, IconButton, StrokeButton } from '../Button';
+import { FillButton, IconButton } from '../Button';
 import { Truncate } from '../Truncate';
+import { alertVariants, placementVariants } from './variants';
 
 export type AlertType = keyof typeof alertVariants;
 export type InlineAlertType = Exclude<AlertType, 'notice' | 'feature'>;
@@ -44,64 +37,6 @@ export type InlineAlert = AlertBase & {
 };
 
 export type AlertProps = FloatingAlert | InlineAlert;
-
-const alertVariants = {
-  general: {
-    order: 4,
-    icon: MiniInfoCircleIcon,
-    bg: 'blue',
-    button: FillButton,
-  },
-  success: {
-    order: 2,
-    icon: MiniCheckCircleIcon,
-    bg: 'green',
-    button: FillButton,
-  },
-  error: {
-    order: 1,
-    icon: MiniRemoveCircleIcon,
-    bg: 'red',
-    button: FillButton,
-  },
-  notice: {
-    order: 3,
-    icon: MiniWarningTriangleIcon,
-    bg: 'orange',
-    button: StrokeButton,
-  },
-  feature: {
-    order: 5,
-    icon: MiniStarIcon,
-    bg: 'blue-300',
-    button: StrokeButton,
-  },
-} as const;
-
-const placementVariants = system.variant({
-  prop: 'placement',
-  base: {
-    borderColor: 'navy',
-    display: 'grid',
-    alignItems: 'start',
-    width: 1,
-    maxWidth: `calc(${breakpoints.md} - 4rem)`,
-    border: 2,
-    borderRadius: '3px',
-    columnGap: [4, 8, , 12],
-    gridTemplateColumns: 'max-content minmax(0, 1fr) repeat(3, max-content)',
-  },
-  variants: {
-    inline: {
-      border: 'none',
-      p: 4,
-      py: 8,
-    },
-    floating: {
-      p: 4,
-    },
-  },
-});
 
 const AlertBanner = styled(Background)<Pick<AlertProps, 'type' | 'placement'>>(
   placementVariants
@@ -160,9 +95,7 @@ export const Alert: React.FC<AlertProps> = ({
           collapsed: { height: '1.5rem' },
           expanded: { height: 'auto' },
         }}
-        style={{
-          overflow: 'hidden',
-        }}
+        style={{ overflow: 'hidden' }}
         transition={{ duration: '200ms', ease: 'easeInOut' }}
         aria-expanded={expanded}
         initial={toggleState}
