@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [32.1.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@32.1.1...@codecademy/gamut@32.1.2) (2021-04-22)
+
+
+### Bug Fixes
+
+* stop providing flat to ButtonDeprecatedBase in AccordionButton ([8426ec7](https://github.com/Codecademy/client-modules/commit/8426ec7280d891e71cb7e54fc236d28bdcf09086))
+
+
+
 ### [32.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@32.1.0...@codecademy/gamut@32.1.1) (2021-04-22)
 
 **Note:** Version bump only for package @codecademy/gamut
