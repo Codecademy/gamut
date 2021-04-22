@@ -16,6 +16,7 @@ export type AlertPlacements = 'inline' | 'floating';
 export type AlertBase = {
   type?: AlertType;
   placement?: AlertPlacements;
+  hidden?: boolean;
   className?: string;
   /** Callback to be called when the close icon is clicked */
   onClose?: () => void;
@@ -68,6 +69,7 @@ export const Alert: React.FC<AlertProps> = ({
   children,
   cta,
   onClose,
+  hidden,
   type = 'general',
   ...props
 }) => {
@@ -77,7 +79,7 @@ export const Alert: React.FC<AlertProps> = ({
   const [expanded, setExpanded] = useState(false);
   const [truncated, setTruncated] = useState(false);
   const toggleState = expanded ? 'expanded' : 'collapsed';
-
+  const tabIndex = hidden ? -1 : undefined;
   const renderContent = () => {
     if (props.placement === 'inline') {
       return children;
@@ -104,6 +106,7 @@ export const Alert: React.FC<AlertProps> = ({
 
   const expandButton = truncated && (
     <CollapseButton
+      tabIndex={tabIndex}
       aria-label={expanded ? 'Collapse' : 'Expand'}
       toggleState={toggleState}
       variant="secondary"
@@ -115,7 +118,7 @@ export const Alert: React.FC<AlertProps> = ({
 
   const ctaButton = cta && Boolean(cta.children ?? cta.text) && (
     <Box gridColumn={['2', , 'auto']} gridRow={['2', , 'auto']}>
-      <Button {...cta} variant="secondary" size="small">
+      <Button {...cta} variant="secondary" size="small" tabIndex={tabIndex}>
         {cta.children ?? cta.text}
       </Button>
     </Box>
@@ -123,6 +126,7 @@ export const Alert: React.FC<AlertProps> = ({
 
   const closeButton = onClose && (
     <IconButton
+      tabIndex={tabIndex}
       aria-label="Close Alert"
       variant="secondary"
       size="small"

@@ -13,6 +13,7 @@ const areaVariants = system.variant({
   base: {
     position: 'relative',
     display: 'flex',
+    maxWidth: 1,
     minHeight: '5rem',
     p: 16,
     width: 1,
@@ -54,7 +55,7 @@ export const AlertArea: React.FC<AlertAreaProps> = ({
 
   return (
     <Container variant={variant}>
-      <Box position="relative">
+      <Box size={1} position="relative">
         <AnimatePresence>
           {orderedAlerts?.map((alert, i) => {
             if (!alert.children) return null;
@@ -68,6 +69,7 @@ export const AlertArea: React.FC<AlertAreaProps> = ({
                 {...props}
                 style={{
                   width: `calc(${breakpoints.md} - 4rem)`,
+                  maxWidth: '100%',
                   top: 0,
                   x: -offset,
                   y: offset,
@@ -87,7 +89,7 @@ export const AlertArea: React.FC<AlertAreaProps> = ({
                 }}
                 key={alertId}
               >
-                <Alert {...alert} />
+                <Alert {...alert} hidden={i !== 0} />
               </motion.div>
             );
           })}
