@@ -7,37 +7,30 @@ import {
 } from '@codecademy/gamut-icons';
 import { breakpoints, system } from '@codecademy/gamut-styles';
 
-import { FillButton, StrokeButton } from '../Button';
-
 export const alertVariants = {
   general: {
     order: 4,
     bg: 'blue',
-    button: FillButton,
     icon: MiniInfoCircleIcon,
   },
   success: {
     order: 2,
     bg: 'green',
-    button: FillButton,
     icon: MiniCheckCircleIcon,
   },
   error: {
     order: 1,
     bg: 'red',
-    button: FillButton,
     icon: MiniRemoveCircleIcon,
   },
   notice: {
     order: 3,
     bg: 'orange',
-    button: StrokeButton,
     icon: MiniWarningTriangleIcon,
   },
   feature: {
     order: 5,
     bg: 'blue-300',
-    button: StrokeButton,
     icon: MiniStarIcon,
   },
 } as const;

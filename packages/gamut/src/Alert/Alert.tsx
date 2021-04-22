@@ -74,7 +74,7 @@ export const Alert: React.FC<AlertProps> = ({
   ...props
 }) => {
   const activeAlert = alertVariants?.[type] ?? alertVariants.general;
-  const { icon: Icon, button: Button, bg } = activeAlert;
+  const { icon: Icon, bg } = activeAlert;
 
   const [expanded, setExpanded] = useState(false);
   const [truncated, setTruncated] = useState(false);
@@ -118,9 +118,15 @@ export const Alert: React.FC<AlertProps> = ({
 
   const ctaButton = cta && Boolean(cta.children ?? cta.text) && (
     <Box gridColumn={['2', , 'auto']} gridRow={['2', , 'auto']}>
-      <Button {...cta} variant="secondary" size="small" tabIndex={tabIndex}>
+      <FillButton
+        {...cta}
+        mode="dark"
+        variant="secondary"
+        size="small"
+        tabIndex={tabIndex}
+      >
         {cta.children ?? cta.text}
-      </Button>
+      </FillButton>
     </Box>
   );
 
