@@ -134,6 +134,10 @@ A theme creator method that progressively build and decorate a type safe theme o
 
 - `build()` - Called when all mutations are finished and we get the finalized and fully typed design system objects.
 
+# Other Utilities
+
+These are some under the hood utilities that you can use outside of root theme creation. `createTheme` may use some of these internally but they can also be used independently.
+
 ## `serializeTokens()`
 
 ### Arguments
@@ -144,7 +148,7 @@ A theme creator method that progressively build and decorate a type safe theme o
 
 This method predictably maps token literal values to CSS variables. We use this to store relational or contextual information in a single reference.
 
-### Usage \*\*\*\*
+### Usage
 
 ```tsx
 const { tokens, variables } = serializeTokens({
