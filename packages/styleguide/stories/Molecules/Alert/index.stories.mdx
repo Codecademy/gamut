@@ -1,7 +1,6 @@
-import { Alert, AlertArea, Box, FillButton } from '@codecademy/gamut/src';
+import { Alert, AlertArea, Box } from '@codecademy/gamut/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
-import { useState } from 'react';
 
 import { PropsTable } from '~styleguide/blocks';
 
@@ -122,32 +121,16 @@ A max of 3 alerts can be shown at a time They will be stacked by importance.
     ],
   }}
 >
-  {(args) => {
-    const [alerts, setAlerts] = useState(args.alerts);
-    return (
-      <Box position="relative">
-        <AlertArea
-          alerts={alerts.map((alert, i) => ({
-            ...alert,
-            onClose: () =>
-              setAlerts((prev) => {
-                const [first, ...rest] = prev;
-                return rest;
-              }),
-          }))}
-        />
-        <Box mt={16}>
-          <FillButton
-            size="small"
-            variant="secondary"
-            onClick={() => setAlerts(args.alerts)}
-          >
-            Reset
-          </FillButton>
-        </Box>
-      </Box>
-    );
-  }}
+  {(args) => (
+    <Box position="relative">
+      <AlertArea
+        alerts={args.alerts.map((alert, i) => ({
+          ...alert,
+          onClose: () => {},
+        }))}
+      />
+    </Box>
+  )}
 </Story>
 
 ## Code Playground
