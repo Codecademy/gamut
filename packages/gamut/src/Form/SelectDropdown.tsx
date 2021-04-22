@@ -11,7 +11,7 @@ import ReactSelect, {
   StylesConfig,
 } from 'react-select';
 
-import { SelectWrapperBaseProps } from './Select';
+// import { SelectWrapperBaseProps } from './Select';
 import {
   colorStates,
   conditionalBorderStyles,
