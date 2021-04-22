@@ -1,4 +1,7 @@
-import { DiagonalStripeBDense, DiagonalStripeBRegular } from '@codecademy/gamut-patterns';
+import {
+  DiagonalStripeBDense,
+  DiagonalStripeBRegular,
+} from '@codecademy/gamut-patterns';
 import { variant } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React from 'react';
@@ -158,8 +161,12 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
       size={size}
       variant={variant}
     >
-      {pattern && (size === 'large' ? <DiagonalStripeBRegular width="100%" position="absolute" zIndex={0} /> : <DiagonalStripeBDense width="100%" position="absolute" zIndex={0} />
-      )}
+      {pattern &&
+        (size === 'large' ? (
+          <DiagonalStripeBRegular width="100%" position="absolute" zIndex={0} />
+        ) : (
+          <DiagonalStripeBDense width="100%" position="absolute" zIndex={0} />
+        ))}
       <Bar
         variant={variant}
         data-testid="progress-bar-bar"
