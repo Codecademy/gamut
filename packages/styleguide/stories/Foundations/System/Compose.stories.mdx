@@ -1,6 +1,8 @@
 import title from '@codecademy/macros/lib/title.macro';
 import { Meta } from '@storybook/addon-docs/blocks';
 
+import { LinkTo } from '~styleguide/blocks';
+
 <Meta
   title={title}
   parameters={{
@@ -13,13 +15,108 @@ import { Meta } from '@storybook/addon-docs/blocks';
 
 There may be instances where you would like to combine properties for ease of sharing or performance to batch their computations. To make this easy we've added a compose function to combine returned style functions into a single one with the intersection of all of their props.
 
-By default system will return a few groups of composed or group functions `typography`, `layout`, `spacing`,`border`, `background`, `color`, `flexbox`,`grid`.
+We've provided some basic groups of props that are pre-composed through gamut-styles, which you can find <LinkTo id="foundations-system-props--page">here</LinkTo>.
 
-However, we expose a `compose` function to combine any style functions as necessary.
+However there are many cases where we want to combine or add new props to a single function to increase performance and guard against possible property collisions. To help with this `variance` comes with a `compose` method to help with the combination.
+
+## Usage
+
+Using `variance.compose()` will take any number of system prop functions and merge them left to right (the last argument takes precedence if props conflict) and returns a new prop function with the intersection of these pieces.
 
 ```tsx
 import { variance } from '@codecademy/variance';
 import { layout, grid } from '@codecademy/gamut-styles';
 
 const Grid = styled.div(variance.compose(layout, grid));
+
+<Grid width="100%" gridTemplateColumns="1fr 1fr" />;
+```
+
+## Why compose?
+
+There are a few benefits to composition:
+
+### Type simplification
+
+Composing style functions handles the type inference for you making your styled components easier to write.
+
+If you pass more than a single function to `styled` emotion is unable to infer the intersection of both functions on its own forcing you to pass the type manually.
+
+```tsx
+// plain inference
+const Grid = styled.div(layout, grid);
+<Grid width="100%" justifyContent="center" />; // typeerror justifyContent is not a prop
+
+// manual inference
+type GridProps = StyleProps<typeof grid> & StyleProps<typeof layout>;
+const Grid = styled.div<GridProps>(layout, grid);
+
+<Grid width="100%" justifyContent="center" />; // works but we did it manually :(
+
+// composition inference
+const Grid = styled.div(variance.compose(layout, grid));
+
+<Grid width="100%" justifyContent="center" />; // works but no manual config :)
+```
+
+### Style merging
+
+When emotion serializes styles it does not attempt to merge styles and allows all styles to exist and be progressively overriden. This can create issues with styles that might conflict between scopes.
+
+With uncombined props this can produce multiple sets of media queries that are not ordered, or in cases where 2 style functions template the same property unmerged styles.
+
+```tsx
+// non composed style functions
+<Grid width={['100%', '80%']} justifyContent={{ xs: 'center' }} />
+```
+
+This outputs several media queries
+
+```css
+.Grid {
+  width: '100%';
+}
+
+@media (min-width: 480px) {
+  .Grid {
+    width: 80%;
+  }
+}
+
+@media (min-width: 480px) {
+  .Grid {
+    justify-content: center;
+  }
+}
+```
+
+However if we've composed these functions our scopes will be combined preventing unexpected behavior.
+
+```css
+.Grid {
+  width: '100%';
+}
+
+@media (min-width: 480px) {
+  .Grid {
+    width: 80%;
+    justify-content: center;
+  }
+}
+```
+
+This important as some props and shorthands depend on order to ensure they apply. IE `border` and `borderColor`.
+
+```css
+/** uncomposed */
+.Box {
+  border-color: blue; /** this never applies */
+  border: 1px solid navy;
+}
+
+/** composed */
+.Box {
+  border: 1px solid navy;
+  border-color: blue; /** props are correctly ordered */
+}
 ```
