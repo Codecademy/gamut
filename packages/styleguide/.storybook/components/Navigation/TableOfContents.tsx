@@ -50,10 +50,10 @@ export const Section: React.FC<ContentItem> = ({
     ));
 
   const hasSubsections = links.length > 1;
-  console.log(status);
+
   return (
     <Card
-      shadowOffset={4}
+      shadow="medium"
       padding={0}
       rowGap={8}
       display="grid"
