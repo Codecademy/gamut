@@ -65,10 +65,6 @@ export interface ColumnProps extends ColumnVariantProps, ColumnStyleProps {}
 export const Column = styled(
   'div',
   styledConfig(columnProps.propNames)
-)<ColumnProps>(
-  system.css({ gridColumnEnd: 'span 12' }),
-  columnVariants,
-  columnProps
-);
+)<ColumnProps>(columnProps({ size: 12 }), columnVariants, columnProps);
 
 Column.defaultProps = { variant: 'fitContent' };
