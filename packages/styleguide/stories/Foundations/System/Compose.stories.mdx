@@ -61,7 +61,7 @@ const Grid = styled.div(variance.compose(layout, grid));
 
 ### Style merging
 
-When emotion serializes styles it does not attempt to merge styles and allows all styles to exist and be progressively overriden. This can create issues with styles that might conflict between scopes.
+When Emotion serializes styles it does not attempt to merge styles and allows all styles to exist and be progressively overriden. This can create issues with styles that might conflict between scopes.
 
 With uncombined props this can produce multiple sets of media queries that are not ordered, or in cases where 2 style functions template the same property unmerged styles.
 
