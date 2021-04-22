@@ -7,7 +7,7 @@ const columns = 12;
 
 const gutters = pick(theme.spacing, [8, 16, 24, 32, 48]);
 
-/** This prevents grid blowut by ensuring that column gaps never exceed the size of their container */
+/** This prevents grid blowout by ensuring that column gaps never exceed the size of their container */
 const gutterGuard = (gap: string, property: string) => {
   if (property === 'columnGap') {
     return `min(calc(100% / ${columns - 1}), ${gap})`;
