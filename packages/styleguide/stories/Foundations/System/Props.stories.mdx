@@ -19,6 +19,15 @@ import { defaultColumns, getPropRows } from './tables';
 
 Props for handling dimensions and other layout specific properties.
 
+```tsx
+import styled from '@emotion/styled';
+import { layout } from '@codecademy/gamut-styles';
+
+const Box = styled.div(layout);
+
+<Box display="flex" width="50%" height="300px" verticalAlign="middle" />;
+```
+
 <Story name="layout">
   <DataTable rows={getPropRows('layout')} columns={defaultColumns} />
 </Story>
@@ -26,6 +35,15 @@ Props for handling dimensions and other layout specific properties.
 # Space
 
 Props for maintaining specific vertical and horizontal rhythms
+
+```tsx
+import styled from '@emotion/styled';
+import { space } from '@codecademy/gamut-styles';
+
+const Spacer = styled.div(space);
+
+<Spacer p={8} my={[16, 24, 32]} />;
+```
 
 <Story name="space">
   <DataTable rows={getPropRows('space')} columns={defaultColumns} />
@@ -35,6 +53,15 @@ Props for maintaining specific vertical and horizontal rhythms
 
 Props for text manipulation
 
+```tsx
+import styled from '@emotion/styled';
+import { typography } from '@codecademy/gamut-styles';
+
+const Text = styled.p(typography);
+
+<Text fontSize={16} fontFamily="accent" textTransform="uppercase" />;
+```
+
 <Story name="typography">
   <DataTable rows={getPropRows('typography')} columns={defaultColumns} />
 </Story>
@@ -42,6 +69,15 @@ Props for text manipulation
 ## Color
 
 Specific color properties
+
+```tsx
+import styled from '@emotion/styled';
+import { color } from '@codecademy/gamut-styles';
+
+const Background = styled.div(color);
+
+<Background bg="navy" textColor="gray-100" borderColor="blue" />;
+```
 
 <Story name="color">
   <DataTable rows={getPropRows('color')} columns={defaultColumns} />
@@ -51,6 +87,20 @@ Specific color properties
 
 Border styles
 
+```tsx
+import styled from '@emotion/styled';
+import { border } from '@codecademy/gamut-styles';
+
+const Box = styled.div(border);
+
+<Box
+  border={1}
+  borderLeft="none"
+  borderRightStyle="dotted"
+  borderRadius="4px"
+/>;
+```
+
 <Story name="border">
   <DataTable rows={getPropRows('border')} columns={defaultColumns} />
 </Story>
@@ -58,6 +108,15 @@ Border styles
 ## Flex
 
 Flex specific properties
+
+```tsx
+import styled from '@emotion/styled';
+import { flex } from '@codecademy/gamut-styles';
+
+const FlexBox = styled.div(flex);
+
+<FlexBox flex={1} justifyContent="center" alignItems="flex-start" />;
+```
 
 <Story name="flex">
   <DataTable rows={getPropRows('flex')} columns={defaultColumns} />
@@ -67,6 +126,15 @@ Flex specific properties
 
 Grid specific properties
 
+```tsx
+import styled from '@emotion/styled';
+import { grid } from '@codecademy/gamut-styles';
+
+const GridBox = styled.div(grid);
+
+<GridBox gridTemplateColumns="max-content 1fr max-content" columnGap={32} />;
+```
+
 <Story name="grid">
   <DataTable rows={getPropRows('grid')} columns={defaultColumns} />
 </Story>
@@ -74,6 +142,16 @@ Grid specific properties
 # Background
 
 Props for more complex backgrounds, for background color see `colors`.
+
+```tsx
+import styled from '@emotion/styled';
+import { background } from '@codecademy/gamut-styles';
+import myBg from './myBg.png';
+
+const Box = styled.div(background);
+
+<Box background={`url(${myBg}`} backgroundSize="cover" />;
+```
 
 <Story name="background">
   <DataTable rows={getPropRows('background')} columns={defaultColumns} />
@@ -83,13 +161,34 @@ Props for more complex backgrounds, for background color see `colors`.
 
 Props that affect positioning contexts.
 
+```tsx
+import styled from '@emotion/styled';
+import { positioning } from '@codecademy/gamut-styles';
+
+const Box = styled.div(positioning);
+
+<Box position="absolute" zIndex={2} top="0" left="0" />;
+```
+
 <Story name="positioning">
   <DataTable rows={getPropRows('positioning')} columns={defaultColumns} />
 </Story>
 
-# Shadows
+# Shadow
 
 Shadow props.
+
+```tsx
+import styled from '@emotion/styled';
+import { shadow } from '@codecademy/gamut-styles';
+
+const Box = styled.div(shadow);
+
+<Box
+  boxShadow="0 0 4px rgba(0, 0, 0, .15)"
+  textShadow="0 0 4px rgba(0, 0, 0, .15)"
+/>;
+```
 
 <Story name="shadows">
   <DataTable rows={getPropRows('shadows')} columns={defaultColumns} />
