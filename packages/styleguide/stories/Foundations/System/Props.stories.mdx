@@ -15,6 +15,25 @@ import { defaultColumns, getPropRows } from './tables';
   }}
 />
 
+We provide a set of out of style functions out of the box through `@codecademy/gamut-styles` that are standardized throughout all of our components. These props are strongly typed and can be included as necessary on any styled component.
+
+System props have a few facets that are important to note:
+
+- They can some times represent multiple properties.
+- They may be restricted to specific token scales but will always have access to global css values like `initial` and `none`.
+- They may have a function that transforms the given value into a standardized value (e.g. `width={.5}` => `width: 50%`)
+
+We've grouped these into a few main groups that affect simliar behaviors: `layout`, `space`, `color`, `border`, `background`, `typography`, `positioning`, `grid`, `flex`, `shadow`.
+
+You may import these groups directly from `gamut-styles`.
+
+```tsx
+import { variance } from '@codecademy/variance';
+import { layout, positioning } from '@codecademy/gamut-styles';
+
+const Box = styled.div(variance.compose(layout, positioning));
+```
+
 # Layout
 
 Props for handling dimensions and other layout specific properties.
