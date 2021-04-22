@@ -113,12 +113,13 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
   id,
   disabled,
   defaultValue,
+  onChange,
   ...rest
 }) => {
   const [activated, setActivated] = useState(false);
 
   const changeHandler = (optionEvent: OptionStrict) => {
-    rest?.onChange?.(optionEvent, {
+    onChange?.(optionEvent, {
       action: 'select-option',
       option: optionEvent,
     });
