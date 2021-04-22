@@ -1,17 +1,19 @@
 import { ArrowChevronDownIcon } from '@codecademy/gamut-icons';
 import { theme } from '@codecademy/gamut-styles';
 import { css } from '@emotion/react';
+import styled from '@emotion/styled';
 import { each, isObject } from 'lodash';
 import React, { useState } from 'react';
 import ReactSelect, {
   components as SelectDropdownElements,
   IndicatorProps,
+  InputProps,
   NamedProps,
   OptionTypeBase,
   StylesConfig,
 } from 'react-select';
 
-// import { SelectWrapperBaseProps } from './Select';
+import { SelectWrapperBaseProps } from './Select';
 import {
   colorStates,
   conditionalBorderStyles,
@@ -21,14 +23,19 @@ import {
 } from './styles/shared';
 
 type ReactSelectNamedProps = Omit<NamedProps, 'options' | 'defaultValue'>;
-// type SelectDropdownBaseProps = Omit<SelectWrapperBaseProps, 'onChange'>;
-type SelectDropdownProps = any & ReactSelectNamedProps;
+type SelectDropdownBaseProps = Omit<SelectWrapperBaseProps, 'onChange'>;
+type SelectDropdownProps = SelectDropdownBaseProps & ReactSelectNamedProps;
 type OptionStrict = {
   label: string;
   value: string;
 };
 
-const { DropdownIndicator } = SelectDropdownElements;
+// type ReactRecurlyInput = InputProps & {
+//   'data-recurly'?: string;
+//   id?: string;
+// };
+
+const { DropdownIndicator, Input } = SelectDropdownElements;
 
 const selectBaseStyles = ({
   error,
@@ -107,6 +114,14 @@ const ChevronDropdown = (props: IndicatorProps<OptionTypeBase, false>) => {
   );
 };
 
+const CustomInput = (props: InputProps) => {
+  return (
+    <div data-recurly="country">
+      <Input data-recurly="country" id="countrySelect" {...props} />
+    </div>
+  );
+};
+
 export const SelectDropdown: React.FC<SelectDropdownProps> = ({
   options,
   error,
@@ -154,10 +169,11 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
       error={Boolean(error)}
       components={{
         DropdownIndicator: ChevronDropdown,
+        Input: CustomInput,
         IndicatorSeparator: () => null,
       }}
       onChange={changeHandler}
-      isSearchable={false}
+      isSearchable={true}
       isMulti={false}
       isDisabled={disabled}
       options={selectOptions}
