@@ -13,7 +13,7 @@ const areaVariants = system.variant({
   base: {
     position: 'relative',
     display: 'flex',
-    justifyContent: 'center',
+    minHeight: '5rem',
     p: 16,
     width: 1,
     zIndex: 1,
@@ -58,6 +58,7 @@ export const AlertArea: React.FC<AlertAreaProps> = ({
         <AnimatePresence>
           {orderedAlerts?.map((alert, i) => {
             if (!alert.children) return null;
+
             const alertId = alert.children?.toString();
             const props = i === 0 ? {} : hiddenAlertProps;
             const offset = 4 * i;
@@ -71,16 +72,17 @@ export const AlertArea: React.FC<AlertAreaProps> = ({
                   x: -offset,
                   y: offset,
                   position: i === 0 ? 'relative' : 'absolute',
-                  zIndex: -(i + 1),
+                  zIndex: -i,
                   opacity: i > 2 ? 0 : 1,
                 }}
-                initial={{ y: 50, scale: 0.3 }}
+                initial={{ y: offset, scale: 0.3, position: 'absolute' }}
                 animate={{ y: offset, scale: 1 }}
                 exit={{
                   x: 50,
                   y: -50,
                   zIndex: 1,
                   opacity: 0,
+                  position: 'absolute',
                   transition: { duration: 0.2 },
                 }}
                 key={alertId}

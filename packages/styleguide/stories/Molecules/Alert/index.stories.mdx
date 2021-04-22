@@ -1,6 +1,7 @@
-import { Alert, AlertArea } from '@codecademy/gamut/src';
+import { Alert, AlertArea, Box, FillButton } from '@codecademy/gamut/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { useState } from 'react';
 
 import { PropsTable } from '~styleguide/blocks';
 
@@ -109,16 +110,44 @@ For inline use you can use these non-stroked versions for the General, Success a
 
 A max of 3 alerts can be shown at a time They will be stacked by importance.
 
-<Story name="multiple">
-  <AlertArea
-    alerts={[
+<Story
+  name="multiple"
+  args={{
+    alerts: [
       ALERTS.error,
-      ALERTS.general,
       ALERTS.success,
-      ALERTS.feature,
       ALERTS.notice,
-    ]}
-  />
+      ALERTS.general,
+      ALERTS.feature,
+    ],
+  }}
+>
+  {(args) => {
+    const [alerts, setAlerts] = useState(args.alerts);
+    return (
+      <Box position="relative">
+        <AlertArea
+          alerts={alerts.map((alert, i) => ({
+            ...alert,
+            onClose: () =>
+              setAlerts((prev) => {
+                const [first, ...rest] = prev;
+                return rest;
+              }),
+          }))}
+        />
+        <Box mt={16}>
+          <FillButton
+            size="small"
+            variant="secondary"
+            onClick={() => setAlerts(args.alerts)}
+          >
+            Reset
+          </FillButton>
+        </Box>
+      </Box>
+    );
+  }}
 </Story>
 
 ## Code Playground

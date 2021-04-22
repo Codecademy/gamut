@@ -137,8 +137,8 @@ export const Alert: React.FC<AlertProps> = ({
         <Icon size={16} aria-hidden="true" />
       </FlexBox>
       <Box py={4}>{renderContent()}</Box>
-      {expandButton}
-      {ctaButton}
+      <Box>{expandButton}</Box>
+      <Box>{ctaButton}</Box>
       {closeButton}
     </AlertBanner>
   );
