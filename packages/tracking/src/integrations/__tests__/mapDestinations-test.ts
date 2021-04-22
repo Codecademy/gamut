@@ -100,14 +100,7 @@ describe('mapDestinations', () => {
       testCase({}, { FullStory: false });
     });
 
-    it('does not include FullStory when the user id is not a random hit', () => {
-      testCase(
-        { user: { email: 'test@test.com', id: 'abc123' } },
-        { FullStory: false }
-      );
-    });
-
-    it('includes FullStory when the user id is a random hit', () => {
+    it('includes FullStory when there is a user', () => {
       testCase(
         { user: { email: 'test@test.com', id: 'bcd234' } },
         { FullStory: true }

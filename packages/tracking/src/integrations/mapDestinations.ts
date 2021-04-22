@@ -16,8 +16,8 @@ export const mapDestinations = ({
   user,
 }: DestinationMapOptions) => {
   // See GROW-1111, GROW-1137 for FullStory context
-  // The intention is to enable fullstory for half of users. See GROW-1501
-  const enableFullStory = !!user && parseInt(user.id.slice(-1), 16) % 2 === 0;
+  // The intention is to enable fullstory for logged-in users. See GROW-2292
+  const enableFullStory = !!user;
 
   const destinationPreferences: Record<string, boolean> = Object.assign(
     {
