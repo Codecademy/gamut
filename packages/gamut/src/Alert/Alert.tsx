@@ -2,7 +2,7 @@ import { MiniChevronDownIcon, MiniDeleteIcon } from '@codecademy/gamut-icons';
 import { Background, system } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import { motion } from 'framer-motion';
-import React, { useMemo, useState } from 'react';
+import React, { useState } from 'react';
 
 import { Box, FlexBox } from '../Box';
 import { FillButton, IconButton } from '../Button';
@@ -78,12 +78,6 @@ export const Alert: React.FC<AlertProps> = ({
   const [truncated, setTruncated] = useState(false);
   const toggleState = expanded ? 'expanded' : 'collapsed';
 
-  const contentSize = useMemo(() => {
-    if (truncated && Boolean(cta)) return 'span 1';
-    if (truncated || Boolean(cta)) return 'span 2';
-    return 'span 3';
-  }, [truncated, cta]);
-
   const renderContent = () => {
     if (props.placement === 'inline') {
       return children;
@@ -142,9 +136,7 @@ export const Alert: React.FC<AlertProps> = ({
       <FlexBox size="2rem" alignments="center">
         <Icon size={16} aria-hidden="true" />
       </FlexBox>
-      <Box py={4} gridColumnEnd={contentSize}>
-        {renderContent()}
-      </Box>
+      <Box py={4}>{renderContent()}</Box>
       {expandButton}
       {ctaButton}
       {closeButton}
