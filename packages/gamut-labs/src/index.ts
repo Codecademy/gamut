@@ -1,6 +1,7 @@
 export * from './landingPage';
 export * from './lib/breakpointHooks';
 export * from './Avatar';
+export * from './CurriculumCard';
 export * from './Byline';
 export * from './EditorialImage';
 export * from './EditorialQuote';
@@ -28,3 +29,4 @@ export * from './AppHeaderMobile/AppHeaderSubMenuMobile';
 export * from './GlobalFooter';
 export * from './GlobalHeader';
 export { AnonHeaderVariant } from './GlobalHeader/types';
+export * from './PageSection';
