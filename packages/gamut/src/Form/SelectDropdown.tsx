@@ -35,7 +35,7 @@ type OptionStrict = {
 //   id?: string;
 // };
 
-const { DropdownIndicator, Input } = SelectDropdownElements;
+const { DropdownIndicator, Input, ValueContainer } = SelectDropdownElements;
 
 const selectBaseStyles = ({
   error,
@@ -117,6 +117,7 @@ const ChevronDropdown = (props: IndicatorProps<OptionTypeBase, false>) => {
 const CustomInput = (props: InputProps) => {
   return (
     <div data-recurly="country">
+      {console.log(props)}
       <Input data-recurly="country" id="countrySelect" {...props} />
     </div>
   );
@@ -169,11 +170,11 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
       error={Boolean(error)}
       components={{
         DropdownIndicator: ChevronDropdown,
-        Input: CustomInput,
+        // Input: CustomInput,
         IndicatorSeparator: () => null,
       }}
       onChange={changeHandler}
-      isSearchable={true}
+      isSearchable={false}
       isMulti={false}
       isDisabled={disabled}
       options={selectOptions}
