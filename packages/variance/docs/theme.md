@@ -18,21 +18,61 @@ To help you create this strongly typed theme we've provided a few helpers to mak
 
 This method is a set of chainable methods that will progressively add tokens, relationships, and core features to a theme object.
 
-While many frameworks restrict theme scales to very specific sets we leave many of the particulars up to the user to define. There are only 3 required keys for variance specific utilities to behave correctly.
+While many frameworks restrict theme scales to very specific sets we leave many of the particulars up to the user to define as the only key that we require for baseline functionality is `breakpoints`.
 
-- `breakpoints` - Used for responsive properties.
-- `colors` + `colorModes` - Color tokens for ColorMode computations
+We do however offer optional but opinionated handling of both `colors` + `colorModes`.
 
 ### Usage
 
 ```tsx
-import * as tokens from './tokens';
+import { ThemeProvider, Global, css } from '@emotion/react';
 
-export const { theme, variables, getColorValue } = createTheme({
-  breakpoints: tokens.mediaQueries,
-  spacing: tokens.spacing,
+export const {
+  /**
+   * A variance compatible theme with strong typings.
+   * Values on theme may include references to more complex CSS variables
+   * without using the variables through a provider.
+   */
+  theme,
+  /**
+   * Serialized CSS variables that correspond with theme references.
+   * These are scoped to 2 main areas currently root and colorMode
+   */
+  variables: {
+    /**
+     *  Top level variables to available for all HTML
+     */
+    root,
+    /** This is still placed on the root but is kept separate from the
+     * general variables as they are context dependent.
+     */
+    colorMode,
+  },
+  /**
+   * Method that returns the static value for a named color without having to check the computed value or importing tokens and possible nested references.
+   */
+  getColorValue,
+} = createTheme({
+  breakpoints: {
+    xs: '@media screen and (min-width: 480px)',
+    sm: '@media screen and (min-width: 768px)',
+    md: '@media screen and (min-width: 1024px)',
+    lg: '@media screen and (min-width: 1200px)',
+    xl: '@media screen and (min-width: 1440px)',
+  },
+  spacing: {
+    4: '0.25rem',
+    8: '0.5rem',
+    12: '0.75rem',
+    16: '1rem',
+  },
 })
-  .addColors('colors', tokens.colors)
+  .addColors({
+    white: '#ffffff',
+    hyper: '3A10E5',
+    navy: '#10162f',
+    yellow: '#FFD300',
+  })
   .createColorModes('light', {
     light: {
       primary: 'hyper',
@@ -49,16 +89,29 @@ export const { theme, variables, getColorValue } = createTheme({
   })
   .addVariables('spacing')
   .build();
+
+/**
+ * To use your new theme you must do 3 things.
+ * 1. Declare your theme shape as the emotion theme.
+ * 2.
+ */
+
+export type ThemeShape = typeof theme;
+
+declare module '@emotion/react' {
+  export interface Theme extends ThemeShape {}
+}
+
+const App = () => {
+  return (
+    <ThemeProvider theme={theme}>
+      <Global styles={css(variables.root)} />
+      <Global styles={css(variables.colorMode)} />
+      <Component />
+    </ThemeProvider>
+  );
+};
 ```
-
-### Return Values
-
-- `theme` - A variance compatible theme with strong typings.
-  - Values on theme may include references to more complex CSS variables without using the variables through a provider.
-- `variables` - Serialized CSS variables that correspond with theme references. These are scoped to 2 main areas currently:
-  - `root` - Top level variables to available for all HTML
-  - `colorMode` - This is still placed on the root but is kept separate from the general variables as they are context dependent.
-- `getColorValue` - Method that returns the static value for a named color without having to check the computed value or importing tokens and possible nested references.
 
 ### Methods
 
@@ -72,7 +125,7 @@ A theme creator method that progressively build and decorate a type safe theme o
 
 **Special Methods** - these have specific behavior that is non standard, these are both required for all features to work
 
-- `addColors(tokens)` - Adds color tokens to the theme and creates root color variables by default. Since this key is required by `getColorValue` and `addColorModes` it is differentiated.
+- `addColors(tokens)` - Adds color tokens to the theme and creates root color variables by default. Calling this method required to access `getColorValue` and `addColorModes`. You will not be able to add colors through `addScale` and be able to build color modes as they have different internal behaviors. However if you do not want either features you may use it without any issue.
 - `addColorModes(initialMode, colorModes)` - This method takes a configuration of color aliases that have semantic meaning between contexts such as `light` and `dark` modes. This will take a map of modes and an initial mode.
   - Colors must exist on the theme for this to work, call this method after `addColors` to ensure this works correctly.
   - This creates CSS variables for the initial color mode and adds them to the specific bucket at the root scope and ensures that nested color variable references behave correctly (if variables change these will too).
@@ -82,6 +135,12 @@ A theme creator method that progressively build and decorate a type safe theme o
 - `build()` - Called when all mutations are finished and we get the finalized and fully typed design system objects.
 
 ## `serializeTokens()`
+
+### Arguments
+
+- `tokens` any set of tokens.
+- `prefix` a string to prefix any tokens
+- `theme` to reference existing tokens specifically for breakpoints.
 
 This method predictably maps token literal values to CSS variables. We use this to store relational or contextual information in a single reference.
 
@@ -103,7 +162,10 @@ const { tokens, variables } = serializeTokens({
 This will also work with possible nested selectors like breakpoints:
 
 ```tsx
-const { tokens, variables } = serializeTokens({
+const {
+  tokens, //An object of the same keys as the first argument but with values that point to variable references
+  variables // Valid CSS variables that are prefixed with the same keys.
+} = serializeTokens({
   height: { _: '4rem', lg: '5rem' },
 }, 'header', theme);
 
@@ -118,14 +180,3 @@ const { tokens, variables } = serializeTokens({
   }
 }
 ```
-
-### Arguments
-
-- `tokens` any set of tokens.
-- `prefix` a string to prefix any tokens
-- `theme` to reference existing tokens specifically for breakpoints.
-
-### Return Values
-
-- `tokens` \*\*\*\*- An object of the same keys as the first argument but with values that point to variable references
-- `variables` - Valid CSS variables that are prefixed with the same keys.
