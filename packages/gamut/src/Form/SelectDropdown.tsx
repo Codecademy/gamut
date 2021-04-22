@@ -1,13 +1,11 @@
 import { ArrowChevronDownIcon } from '@codecademy/gamut-icons';
 import { theme } from '@codecademy/gamut-styles';
 import { css } from '@emotion/react';
-import styled from '@emotion/styled';
 import { each, isObject } from 'lodash';
 import React, { useState } from 'react';
 import ReactSelect, {
   components as SelectDropdownElements,
   IndicatorProps,
-  InputProps,
   NamedProps,
   OptionTypeBase,
   StylesConfig,
@@ -35,7 +33,7 @@ type OptionStrict = {
 //   id?: string;
 // };
 
-const { DropdownIndicator, Input, ValueContainer } = SelectDropdownElements;
+const { DropdownIndicator } = SelectDropdownElements;
 
 const selectBaseStyles = ({
   error,
@@ -114,15 +112,6 @@ const ChevronDropdown = (props: IndicatorProps<OptionTypeBase, false>) => {
   );
 };
 
-const CustomInput = (props: InputProps) => {
-  return (
-    <div data-recurly="country">
-      {console.log(props)}
-      <Input data-recurly="country" id="countrySelect" {...props} />
-    </div>
-  );
-};
-
 export const SelectDropdown: React.FC<SelectDropdownProps> = ({
   options,
   error,
@@ -170,7 +159,6 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
       error={Boolean(error)}
       components={{
         DropdownIndicator: ChevronDropdown,
-        // Input: CustomInput,
         IndicatorSeparator: () => null,
       }}
       onChange={changeHandler}
