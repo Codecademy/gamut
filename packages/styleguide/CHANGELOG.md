@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [36.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@36.1.0...@codecademy/styleguide@36.2.0) (2021-04-21)
+
+
+### Features
+
+* Add PageSection molecule ([ccfb21f](https://github.com/Codecademy/client-modules/commit/ccfb21fd77c4741256ee4d282248033680f17fdc))
+
+
+
 ## [36.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@36.0.0...@codecademy/styleguide@36.1.0) (2021-04-21)
 
 
