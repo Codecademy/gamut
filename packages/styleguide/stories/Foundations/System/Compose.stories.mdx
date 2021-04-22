@@ -45,7 +45,7 @@ If you pass more than a single function to `styled` emotion is unable to infer t
 ```tsx
 // plain inference
 const Grid = styled.div(layout, grid);
-<Grid width="100%" justifyContent="center" />; // typeerror justifyContent is not a prop
+<Grid width="100%" justifyContent="center" />; // TypeError: justifyContent is not a prop
 
 // manual inference
 type GridProps = StyleProps<typeof grid> & StyleProps<typeof layout>;
