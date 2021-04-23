@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [9.5.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@9.5.3...@codecademy/gamut-styles@9.5.4) (2021-04-22)
+
+**Note:** Version bump only for package @codecademy/gamut-styles
+
+
+
+
+
+### [9.5.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@9.5.2...@codecademy/gamut-styles@9.5.3) (2021-04-20)
+
+**Note:** Version bump only for package @codecademy/gamut-styles
+
+
+
+
+
+### [9.5.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@9.5.1...@codecademy/gamut-styles@9.5.2) (2021-04-19)
+
+
+### Bug Fixes
+
+* **Props:**  Adds alignment props to both grid and flex ([05a4f76](https://github.com/Codecademy/client-modules/commit/05a4f76044accaf07eebad2ed2047c13e62f407f))
+
+
+
 ### [9.5.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@9.5.0...@codecademy/gamut-styles@9.5.1) (2021-04-15)
 
 **Note:** Version bump only for package @codecademy/gamut-styles

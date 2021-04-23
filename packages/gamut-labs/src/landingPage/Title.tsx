@@ -2,7 +2,7 @@ import { Box } from '@codecademy/gamut';
 import styled from '@emotion/styled';
 import React from 'react';
 
-import { Text } from '../experimental/Text';
+import { Text } from '../Text';
 import { DarkModeProps } from './types';
 import { darkModeVariants } from './variants';
 
