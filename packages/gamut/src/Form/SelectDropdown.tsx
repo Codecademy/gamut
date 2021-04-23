@@ -2,7 +2,7 @@ import { ArrowChevronDownIcon } from '@codecademy/gamut-icons';
 import { theme } from '@codecademy/gamut-styles';
 import { css } from '@emotion/react';
 import { each, isObject } from 'lodash';
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import ReactSelect, {
   components as SelectDropdownElements,
   IndicatorProps,
@@ -119,6 +119,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
   disabled,
   defaultValue,
   onChange,
+  value,
   ...rest
 }) => {
   const [activated, setActivated] = useState(false);
@@ -131,29 +132,41 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
     setActivated(true);
   };
 
-  const selectOptions: Array<OptionTypeBase> = [];
+  const selectOptions: Array<OptionTypeBase> = useMemo(() => {
+    const parsedOptions: Array<OptionTypeBase> = [];
+    if (options instanceof Array) {
+      options.forEach((option) => {
+        const key = id ? `${id}-${option}` : option;
+        parsedOptions.push({ label: key, value: option });
+      });
+    } else if (isObject(options)) {
+      each(options, (text, val) => {
+        parsedOptions.push({ label: text, value: val });
+      });
+    }
+    return parsedOptions;
+  }, [options, id]);
 
-  if (options instanceof Array) {
-    options.forEach((option) => {
-      const key = id ? `${id}-${option}` : option;
-      selectOptions.push({ label: key, value: option });
-    });
-  } else if (isObject(options)) {
-    each(options, (text, val) => {
-      selectOptions.push({ label: text, value: val });
-    });
-  }
+  const parsedDefaultValue = useMemo(() => {
+    const currentValue = selectOptions.find(
+      ({ value: optionValue }) => optionValue === defaultValue
+    );
 
-  const setDefaultValue = rest.placeholder
-    ? null
-    : defaultValue
-    ? selectOptions.find((option) => option.value === defaultValue)
-    : selectOptions[0];
+    return currentValue ? currentValue[0] : null;
+  }, [selectOptions, defaultValue]);
+
+  const parsedValue = useMemo(() => {
+    const currentValue = selectOptions.find(
+      ({ value: optionValue }) => optionValue === value
+    );
+
+    return currentValue ? currentValue[0] : null;
+  }, [selectOptions, value]);
 
   return (
     <ReactSelect
       id={id || rest.htmlFor}
-      defaultValue={setDefaultValue}
+      value={parsedValue}
       styles={customStyles}
       activated={activated}
       error={Boolean(error)}
