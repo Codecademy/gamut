@@ -25,9 +25,20 @@ type SelectDropdownBaseProps = Omit<
   SelectWrapperBaseProps,
   'onChange' | 'options'
 >;
+
+type OptionWithHiddenElement = {
+  element: JSX.Element;
+  hidden: JSX.Element;
+};
+
+type ComplicatedOptions =
+  | string[]
+  | Record<string, number | string | JSX.Element | OptionWithHiddenElement>;
+
 type SelectDropdownProps = SelectDropdownBaseProps &
   ReactSelectNamedProps & {
-    options?: string[] | Record<string, number | string | JSX.Element>;
+    hiddenElements?: boolean;
+    options?: ComplicatedOptions;
   };
 
 type OptionStrict = {
@@ -35,7 +46,7 @@ type OptionStrict = {
   value: string;
 };
 
-const { DropdownIndicator } = SelectDropdownElements;
+const { DropdownIndicator, SingleValue } = SelectDropdownElements;
 
 const selectBaseStyles = ({
   error,
@@ -117,12 +128,34 @@ const ChevronDropdown = (props: IndicatorProps<OptionTypeBase, false>) => {
   );
 };
 
+const CustomSingleValue = ({ children, data, ...rest }) => {
+  return (
+    <>
+      <SingleValue {...rest}>
+        {children}
+        {data.hidden}
+      </SingleValue>
+    </>
+  );
+};
+
+const customComponents = (hiddenElements: boolean) => {
+  const components = {
+    DropdownIndicator: ChevronDropdown,
+    IndicatorSeparator: () => null,
+  };
+
+  hiddenElements ? (components.SingleValue = CustomSingleValue) : null;
+
+  return components;
+};
 export const SelectDropdown: React.FC<SelectDropdownProps> = ({
   options,
   error,
   id,
   disabled,
   defaultValue,
+  hiddenElements,
   ...rest
 }) => {
   const [activated, setActivated] = useState(false);
@@ -137,7 +170,15 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
 
   const selectOptions: Array<OptionTypeBase> = [];
 
-  if (options instanceof Array) {
+  if (hiddenElements) {
+    each(options, (text, val) => {
+      selectOptions.push({
+        label: text.element,
+        value: val,
+        hidden: text.hidden,
+      });
+    });
+  } else if (options instanceof Array) {
     options.forEach((option) => {
       const key = id ? `${id}-${option}` : option;
       selectOptions.push({ label: key, value: option });
@@ -161,10 +202,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
       styles={customStyles}
       activated={activated}
       error={Boolean(error)}
-      components={{
-        DropdownIndicator: ChevronDropdown,
-        IndicatorSeparator: () => null,
-      }}
+      components={customComponents(Boolean(hiddenElements))}
       onChange={changeHandler}
       isSearchable={false}
       isMulti={false}

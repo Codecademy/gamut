@@ -5,7 +5,13 @@ import {
   SelectDropdown,
   Text,
 } from '@codecademy/gamut';
-import { MiniStarIcon } from '@codecademy/gamut-icons';
+import {
+  MiniStarIcon,
+  BulbIcon,
+  AccountingCoinsIcon,
+  MiniArrowRightIcon,
+  Badge,
+} from '@codecademy/gamut-icons';
 import title from '@codecademy/macros/lib/title.macro';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 
@@ -145,6 +151,8 @@ This is a variant of our `Select` component with a styled dropdown menu. `Select
 
 Our `SelectDropdown` can show JSX Elements - neat! These should be passed into options as an `object`, with the JSX Element as the value of the key/value pair like so -
 
+[{label: 'hi', option: 'hello'}]
+
 <Canvas>
   <Story
     name="JSXElementDropdown"
@@ -163,6 +171,44 @@ Our `SelectDropdown` can show JSX Elements - neat! These should be passed into o
   >
     {(args) => (
       <FlexBox width="10rem" height="25rem">
+        <SelectDropdown {...args} />
+      </FlexBox>
+    )}
+  </Story>
+</Canvas>
+
+click me for a surprise
+
+<Canvas>
+  <Story
+    name="JSXElementHidden"
+    args={{
+      options: {
+        hi: { element: 'hi', hidden: <BulbIcon color="blue" /> },
+        hello: {
+          element: 'hello',
+          hidden: (
+            <>
+              <MiniArrowRightIcon color="red" /> cash and prizes
+              <AccountingCoinsIcon color="gold" />
+            </>
+          ),
+        },
+        howdy: {
+          element: 'howdy',
+          hidden: (
+            <>
+              🤠 🐮<Badge>badge</Badge>
+            </>
+          ),
+        },
+      },
+      placeholder: 'all about that',
+      hiddenElements: true,
+    }}
+  >
+    {(args) => (
+      <FlexBox width="25rem" height="25rem">
         <SelectDropdown {...args} />
       </FlexBox>
     )}
