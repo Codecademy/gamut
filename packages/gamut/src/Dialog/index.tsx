@@ -155,7 +155,7 @@ export const Dialog: React.FC<DialogProps> = ({
         aria-modal="true"
         role="dialog"
       >
-        <ModalShadow name="dotsDense" />
+        <ModalShadow name="checkerDense" />
         <ModalForeground />
         <ModalBody>
           <Title

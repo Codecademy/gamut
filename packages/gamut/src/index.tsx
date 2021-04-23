@@ -14,8 +14,6 @@ export * from './ButtonDeprecated';
 export * from './ButtonDeprecatedBase';
 export * from './BodyPortal';
 export * from './Card';
-export * from './DeprecatedCard/CardBody';
-export * from './DeprecatedCard/CardFooter';
 export * from './DeprecatedCard/CardShell';
 export * from './ContentContainer';
 export * from './FlexBox';

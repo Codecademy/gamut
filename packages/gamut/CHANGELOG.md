@@ -3,6 +3,86 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [32.1.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@32.1.1...@codecademy/gamut@32.1.2) (2021-04-22)
+
+
+### Bug Fixes
+
+* stop providing flat to ButtonDeprecatedBase in AccordionButton ([8426ec7](https://github.com/Codecademy/client-modules/commit/8426ec7280d891e71cb7e54fc236d28bdcf09086))
+
+
+
+### [32.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@32.1.0...@codecademy/gamut@32.1.1) (2021-04-22)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [32.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@32.0.0...@codecademy/gamut@32.1.0) (2021-04-21)
+
+
+### Features
+
+* Add PageSection molecule ([ccfb21f](https://github.com/Codecademy/client-modules/commit/ccfb21fd77c4741256ee4d282248033680f17fdc))
+
+
+
+## [32.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@31.1.0...@codecademy/gamut@32.0.0) (2021-04-20)
+
+
+### ⚠ BREAKING CHANGES
+
+* add new dot Pattern and rename old dots to checker
+
+### Features
+
+* add new dot Pattern and rename old dots to checker ([cd1919b](https://github.com/Codecademy/client-modules/commit/cd1919bbe5552991b336db4f5857082040d1debe))
+
+
+
+## [31.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@31.0.7...@codecademy/gamut@31.1.0) (2021-04-20)
+
+
+### Features
+
+* **SelectDropdown:** Select with styled dropdown ([a362de9](https://github.com/Codecademy/client-modules/commit/a362de94527a5a438ba8e3e93047feccfbc89daf))
+
+
+
+### [31.0.7](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@31.0.6...@codecademy/gamut@31.0.7) (2021-04-20)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [31.0.6](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@31.0.5...@codecademy/gamut@31.0.6) (2021-04-20)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [31.0.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@31.0.4...@codecademy/gamut@31.0.5) (2021-04-19)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [31.0.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@31.0.3...@codecademy/gamut@31.0.4) (2021-04-19)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
 ### [31.0.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@31.0.2...@codecademy/gamut@31.0.3) (2021-04-19)
 
 **Note:** Version bump only for package @codecademy/gamut
