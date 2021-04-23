@@ -28,7 +28,7 @@ export type InitializeIntegrationsSettings = {
   writeKey: string;
 };
 
-const initializeIntegrations = async ({
+export const initializeIntegrations = async ({
   onError,
   scope,
   user,

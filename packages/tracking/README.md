@@ -82,10 +82,26 @@ Those steps require OneTrust to have already been initialized on the page.
 > Soon, we plan on prepending OneTrust initialization to those steps, so consuming apps won't have to set it up themselves.
 
 ```ts
+import { useIntegrations } from '@codecademy/tracking';
+
 useIntegrations({
   onError: logger.error,
   scope: window,
   user: { email: 'my@email.com', id: 'my-user-id' },
   writeKey: 'my-segment-write-key',
 });
+```
+
+### `initializeIntegrations`
+
+You can directly call the logic delay-run inside `useIntegrations` if your consuming app is not initializing with React hooks:
+
+```ts
+import { initializeIntegrations } from '@codecademy/tracking';
+
+setTimeout(() => {
+  initializeIntegrations({
+    /* ... */
+  });
+}, 1000);
 ```
