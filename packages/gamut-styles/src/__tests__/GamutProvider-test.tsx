@@ -1,5 +1,4 @@
 import createCache from '@emotion/cache';
-import { matchers } from '@emotion/jest';
 import { Global, ThemeContext } from '@emotion/react';
 import { setupEnzyme } from 'component-test-setup';
 import React from 'react';
@@ -12,8 +11,6 @@ jest.mock('../cache', () => {
   const cacheMock = jest.fn();
   return { createEmotionCache: cacheMock };
 });
-
-expect.extend(matchers);
 
 const renderWrapper = setupEnzyme(GamutProvider, { theme });
 
