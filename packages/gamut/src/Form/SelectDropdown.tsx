@@ -109,13 +109,13 @@ const ChevronDropdown = (props: IndicatorProps<OptionTypeBase, false>) => {
   );
 };
 
-const CustomOption = (props) => {
-  return (
-    <>
-      <Option {...props} />
-    </>
-  );
-};
+// const CustomOption = (props) => {
+//   return (
+//     <>
+//       <Option {...props} />
+//     </>
+//   );
+// };
 
 export const SelectDropdown: React.FC<SelectDropdownProps> = ({
   options,
@@ -146,7 +146,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
     each(options, (text, val) => {
       selectOptions.push({ label: text, value: val });
     });
-    console.log(selectOptions);
+    console.log(selectOptions); // eslint-disable-line no-eval
   }
 
   const setDefaultValue = rest.placeholder
@@ -164,7 +164,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
       error={Boolean(error)}
       components={{
         DropdownIndicator: ChevronDropdown,
-        Option: CustomOption,
+        // Option: CustomOption,
         IndicatorSeparator: () => null,
       }}
       onChange={changeHandler}
