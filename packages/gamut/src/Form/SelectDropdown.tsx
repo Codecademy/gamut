@@ -21,8 +21,16 @@ import {
 } from './styles/shared';
 
 type ReactSelectNamedProps = Omit<NamedProps, 'options' | 'defaultValue'>;
-type SelectDropdownBaseProps = Omit<SelectWrapperBaseProps, 'onChange'>;
-type SelectDropdownProps = SelectDropdownBaseProps & ReactSelectNamedProps;
+type SelectDropdownBaseProps = Omit<
+  SelectWrapperBaseProps,
+  'onChange' | 'defaultValue'
+>;
+interface SelectDropdownProps
+  extends SelectDropdownBaseProps,
+    ReactSelectNamedProps {
+  defaultValue: never;
+}
+
 type OptionStrict = {
   label: string;
   value: string;
@@ -117,7 +125,6 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
   error,
   id,
   disabled,
-  defaultValue,
   onChange,
   value,
   ...rest
@@ -147,20 +154,12 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
     return parsedOptions;
   }, [options, id]);
 
-  const parsedDefaultValue = useMemo(() => {
-    const currentValue = selectOptions.find(
-      ({ value: optionValue }) => optionValue === defaultValue
-    );
-
-    return currentValue ? currentValue[0] : null;
-  }, [selectOptions, defaultValue]);
-
   const parsedValue = useMemo(() => {
     const currentValue = selectOptions.find(
       ({ value: optionValue }) => optionValue === value
     );
 
-    return currentValue ? currentValue[0] : null;
+    return currentValue;
   }, [selectOptions, value]);
 
   return (
