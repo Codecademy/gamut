@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [9.5.6](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@9.5.5...@codecademy/gamut-styles@9.5.6) (2021-04-23)
+
+
+### Bug Fixes
+
+* cache constants missing ([de8094b](https://github.com/Codecademy/client-modules/commit/de8094bd0b21c671f75ae8b6a6b895260b66c2de))
+
+
+
 ### [9.5.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@9.5.4...@codecademy/gamut-styles@9.5.5) (2021-04-23)
 
 
