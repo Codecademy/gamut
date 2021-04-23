@@ -1,5 +1,3 @@
-import createCache from '@emotion/cache';
-
 import { createEmotionCache } from '../createEmotionCache';
 
 describe(createEmotionCache, () => {
