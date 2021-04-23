@@ -2,7 +2,7 @@ import { ArrowChevronDownIcon } from '@codecademy/gamut-icons';
 import { theme } from '@codecademy/gamut-styles';
 import { css } from '@emotion/react';
 import { each, isObject } from 'lodash';
-import React, { useMemo, useState } from 'react';
+import React, { SelectHTMLAttributes, useMemo, useState } from 'react';
 import ReactSelect, {
   components as SelectDropdownElements,
   IndicatorProps,
@@ -11,7 +11,7 @@ import ReactSelect, {
   StylesConfig,
 } from 'react-select';
 
-import { SelectWrapperBaseProps } from './Select';
+import { SelectComponentProps } from './Select';
 import {
   colorStates,
   conditionalBorderStyles,
@@ -20,16 +20,14 @@ import {
   formFieldStyles,
 } from './styles/shared';
 
-type ReactSelectNamedProps = Omit<NamedProps, 'options' | 'defaultValue'>;
 type SelectDropdownBaseProps = Omit<
-  SelectWrapperBaseProps,
+  SelectComponentProps,
   'onChange' | 'defaultValue'
 >;
 interface SelectDropdownProps
   extends SelectDropdownBaseProps,
-    ReactSelectNamedProps {
-  defaultValue: never;
-}
+    Pick<NamedProps, 'onChange'>,
+    Pick<SelectHTMLAttributes<HTMLSelectElement>, 'value' | 'disabled'> {}
 
 type OptionStrict = {
   label: string;

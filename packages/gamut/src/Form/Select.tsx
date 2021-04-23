@@ -17,16 +17,20 @@ import React, {
 import { Box, FlexBox } from '../Box';
 import { conditionalStyles, formFieldStyles } from './styles/shared';
 
-export type SelectWrapperBaseProps = SelectHTMLAttributes<HTMLSelectElement> & {
+export type SelectComponentProps = Pick<
+  SelectHTMLAttributes<HTMLSelectElement>,
+  'disabled'
+> & {
   error?: boolean;
   htmlFor?: string;
   options?: string[] | Record<string, number | string>;
   id?: string;
 };
 
-export type SelectWrapperProps = SelectWrapperBaseProps & {
-  sizeVariant?: 'small' | 'base';
-};
+export type SelectWrapperProps = SelectComponentProps &
+  SelectHTMLAttributes<HTMLSelectElement> & {
+    sizeVariant?: 'small' | 'base';
+  };
 
 export interface SelectProps extends SelectWrapperProps {
   activated?: boolean;
@@ -98,7 +102,6 @@ export const Select = forwardRef<HTMLSelectElement, SelectWrapperProps>(
         );
       });
     }
-
     return (
       <Box
         position="relative"
