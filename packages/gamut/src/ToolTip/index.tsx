@@ -162,8 +162,8 @@ const ToolTipBody = styled.div<ToolTipContainerProps>`
     variants: {
       dark: {
         backgroundColor: 'black',
-        borderColor: 'white',
-        textColor: 'white',
+        borderColor: 'beige',
+        textColor: 'beige',
       },
       light: {
         backgroundColor: 'white',
