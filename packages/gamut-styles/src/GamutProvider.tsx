@@ -5,7 +5,7 @@ import {
   Theme,
   ThemeProvider,
 } from '@emotion/react';
-import React, { useContext, useMemo, useRef } from 'react';
+import React, { useContext, useRef } from 'react';
 
 import { createEmotionCache } from './cache';
 import { Reboot, Typography } from './globals';
