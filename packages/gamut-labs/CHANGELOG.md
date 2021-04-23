@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [14.2.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@14.2.1...@codecademy/gamut-labs@14.2.2) (2021-04-22)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [14.2.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@14.2.0...@codecademy/gamut-labs@14.2.1) (2021-04-22)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+## [14.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@14.1.0...@codecademy/gamut-labs@14.2.0) (2021-04-21)
+
+
+### Features
+
+* Add PageSection molecule ([ccfb21f](https://github.com/Codecademy/client-modules/commit/ccfb21fd77c4741256ee4d282248033680f17fdc))
+
+
+
 ## [14.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@14.0.0...@codecademy/gamut-labs@14.1.0) (2021-04-21)
 
 
