@@ -30,7 +30,7 @@ export const providerProps = variance.compose(
 );
 
 export interface ProviderProps extends StyleProps<typeof providerProps> {
-  setVariables?: boolean;
+  alwaysSetVariables?: boolean;
 }
 
 export interface VariableProviderProps extends ProviderProps {
@@ -44,7 +44,7 @@ export const VariableProvider = styled(
 
 export const ColorMode: React.FC<ColorModeProps & ProviderProps> = ({
   mode,
-  setVariables,
+  alwaysSetVariables,
   ...rest
 }) => {
   const theme = useTheme();
@@ -65,7 +65,7 @@ export const ColorMode: React.FC<ColorModeProps & ProviderProps> = ({
     return (
       <VariableProvider
         {...rest}
-        variables={setVariables ? variables : undefined}
+        variables={alwaysSetVariables ? variables : undefined}
       />
     );
   }
