@@ -26,19 +26,19 @@ type SelectDropdownBaseProps = Omit<
   'onChange' | 'options'
 >;
 
-type OptionWithHiddenElement = {
-  element: JSX.Element;
-  hidden: JSX.Element;
-};
+// type OptionWithHiddenElement = {
+//   element: JSX.Element;
+//   hidden: JSX.Element;
+// };
 
-type ComplicatedOptions =
-  | string[]
-  | Record<string, number | string | JSX.Element | OptionWithHiddenElement>;
+// type ComplicatedOptions =
+//   | string[]
+//   | Record<string, number | string | JSX.Element | OptionWithHiddenElement>;
 
 type SelectDropdownProps = SelectDropdownBaseProps &
   ReactSelectNamedProps & {
     hiddenElements?: boolean;
-    options?: ComplicatedOptions;
+    options?: any;
   };
 
 type OptionStrict = {
@@ -128,7 +128,7 @@ const ChevronDropdown = (props: IndicatorProps<OptionTypeBase, false>) => {
   );
 };
 
-const CustomSingleValue = ({ children, data, ...rest }) => {
+const CustomSingleValue = ({ children, data, ...rest }: any) => {
   return (
     <>
       <SingleValue {...rest}>
@@ -140,7 +140,7 @@ const CustomSingleValue = ({ children, data, ...rest }) => {
 };
 
 const customComponents = (hiddenElements: boolean) => {
-  const components = {
+  const components: any = {
     DropdownIndicator: ChevronDropdown,
     IndicatorSeparator: () => null,
   };
