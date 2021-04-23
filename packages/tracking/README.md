@@ -108,3 +108,5 @@ setTimeout(() => {
   });
 }, 1000);
 ```
+
+`initializeIntegrations` takes all the same settings as `useIntegrations`.
