@@ -83,7 +83,7 @@ However if we've composed these functions our scopes will be combined preventing
 }
 ```
 
-This important as some props and shorthands depend on order to ensure they apply. IE `border` and `borderColor`.
+This is important, as some props and shorthands depend on order to ensure they apply. IE `border` and `borderColor`.
 
 ```css
 /** uncomposed */
@@ -101,9 +101,9 @@ This important as some props and shorthands depend on order to ensure they apply
 
 ### Type Simplification
 
-Composing style functions handles the type inference for you making your styled components easier to write.
+Composing style functions handles the type inference for you. This makes your styled components easier to read and write.
 
-If you pass more than a single function to `styled` emotion is unable to infer the intersection of both functions on its own forcing you to pass the type manually.
+If you pass more than a single function to `styled`, Emotion is unable to infer the intersection of these functions on its own forcing you to pass the type manually.
 
 ```tsx
 // plain inference

@@ -1,4 +1,5 @@
 /* eslint-disable local-rules/gamut-import-paths */
+import { Anchor } from '@codecademy/gamut/src';
 import * as ALL_PROPS from '@codecademy/gamut-styles/src/variance/config';
 import { kebabCase } from 'lodash';
 import React from 'react';
@@ -23,7 +24,13 @@ const PROPERTIES_COLUMN = {
     properties: string[];
   }) =>
     properties.map((property) => (
-      <Code key={property}>{kebabCase(property)}</Code>
+      <Anchor
+        href={`https://developer.mozilla.org/en-US/docs/Web/CSS/${property}`}
+        target="_blank"
+        rel=""
+      >
+        <Code key={property}>{kebabCase(property)}</Code>
+      </Anchor>
     )),
 };
 
