@@ -21,9 +21,9 @@ export const Subtitle: React.FC<SubtitleProps> = ({
   return (
     <FlexBox flexWrap="wrap">
       <Difficulty difficulty={difficulty} />
+      {scopeCount && ','}
       {scopeCount && (
-        <Text variant="p-small">
-          {', '}
+        <Text ml={4} variant="p-small">
           <b>{scopeCount}</b>{' '}
           <Text textColor="gray-700">
             {capitalize(pluralizeWithS(scope, scopeCount))}
