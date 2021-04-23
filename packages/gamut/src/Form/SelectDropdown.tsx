@@ -21,8 +21,15 @@ import {
 } from './styles/shared';
 
 type ReactSelectNamedProps = Omit<NamedProps, 'options' | 'defaultValue'>;
-type SelectDropdownBaseProps = Omit<SelectWrapperBaseProps, 'onChange'>;
-type SelectDropdownProps = SelectDropdownBaseProps & ReactSelectNamedProps;
+type SelectDropdownBaseProps = Omit<
+  SelectWrapperBaseProps,
+  'onChange' | 'options'
+>;
+type SelectDropdownProps = SelectDropdownBaseProps &
+  ReactSelectNamedProps & {
+    options?: string[] | Record<string, number | string | JSX.Element>;
+  };
+
 type OptionStrict = {
   label: string;
   value: string;
@@ -69,6 +76,7 @@ const customStyles: StylesConfig<OptionTypeBase, false> = {
 
   option: (provided, state) => ({
     display: 'flex',
+    alignItems: 'center',
     padding: '14px 11px 14px 11px',
     cursor: 'pointer',
     backgroundColor:

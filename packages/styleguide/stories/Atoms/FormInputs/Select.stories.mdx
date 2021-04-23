@@ -3,7 +3,7 @@ import {
   FormGroup,
   Select,
   SelectDropdown,
-  // Text,
+  Text,
 } from '@codecademy/gamut';
 import { MiniStarIcon } from '@codecademy/gamut-icons';
 import title from '@codecademy/macros/lib/title.macro';
@@ -141,11 +141,9 @@ This is a variant of our `Select` component with a styled dropdown menu. `Select
   </Story>
 </Canvas>
 
-### JSXElement Options
+### JSX.Element Options
 
-Our `SelectDropdown` can show JSX Elements - neat! These should always be passed in as React Fragments and passed into options as an `object`, with the JSX Element as the value of the key/value pair like so -
-
-Do not wrap these elements in a `<Box>` or `<FlexBox>`.
+Our `SelectDropdown` can show JSX Elements - neat! These should be passed into options as an `object`, with the JSX Element as the value of the key/value pair like so -
 
 <Canvas>
   <Story
@@ -154,8 +152,7 @@ Do not wrap these elements in a `<Box>` or `<FlexBox>`.
       options: {
         hi: (
           <>
-            <MiniStarIcon color="pink" />
-            <div>'hello'</div>
+            <MiniStarIcon color="pink" /> hello
           </>
         ),
         hey: 'no worries',
