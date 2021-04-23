@@ -146,7 +146,6 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
     each(options, (text, val) => {
       selectOptions.push({ label: text, value: val });
     });
-    console.log(selectOptions); // eslint-disable-line no-eval
   }
 
   const setDefaultValue = rest.placeholder
