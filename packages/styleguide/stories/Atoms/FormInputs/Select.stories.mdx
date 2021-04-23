@@ -1,4 +1,11 @@
-import { FlexBox, FormGroup, Select, SelectDropdown } from '@codecademy/gamut';
+import {
+  FlexBox,
+  FormGroup,
+  Select,
+  SelectDropdown,
+  // Text,
+} from '@codecademy/gamut';
+import { MiniStarIcon } from '@codecademy/gamut-icons';
 import title from '@codecademy/macros/lib/title.macro';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 
@@ -124,6 +131,37 @@ This is a variant of our `Select` component with a styled dropdown menu. `Select
     args={{
       options: ['Disabled'],
       disabled: true,
+    }}
+  >
+    {(args) => (
+      <FlexBox width="10rem" height="25rem">
+        <SelectDropdown {...args} />
+      </FlexBox>
+    )}
+  </Story>
+</Canvas>
+
+### JSXElement Options
+
+Our `SelectDropdown` can show JSX Elements - neat! These should always be passed in as React Fragments and passed into options as an `object`, with the JSX Element as the value of the key/value pair like so -
+
+Do not wrap these elements in a `<Box>` or `<FlexBox>`.
+
+<Canvas>
+  <Story
+    name="JSXElementDropdown"
+    args={{
+      options: {
+        hi: (
+          <>
+            <MiniStarIcon color="pink" />
+            <Text>'hello'</Text>
+          </>
+        ),
+        hey: 'no worries',
+        updog: 'its chill',
+      },
+      placeholder: 'all about that',
     }}
   >
     {(args) => (

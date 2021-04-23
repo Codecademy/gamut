@@ -28,7 +28,7 @@ type OptionStrict = {
   value: string;
 };
 
-const { DropdownIndicator } = SelectDropdownElements;
+const { DropdownIndicator, Option } = SelectDropdownElements;
 
 const selectBaseStyles = ({
   error,
@@ -68,6 +68,7 @@ const customStyles: StylesConfig<OptionTypeBase, false> = {
   }),
 
   option: (provided, state) => ({
+    display: 'flex',
     padding: '14px 11px 14px 11px',
     cursor: 'pointer',
     backgroundColor:
@@ -91,6 +92,7 @@ const customStyles: StylesConfig<OptionTypeBase, false> = {
   singleValue: (provided, state) => ({
     color: errorColorState(state.selectProps.error),
     display: 'flex',
+    alignItems: 'center',
   }),
 
   valueContainer: (provided) => ({
@@ -104,6 +106,14 @@ const ChevronDropdown = (props: IndicatorProps<OptionTypeBase, false>) => {
     <DropdownIndicator {...props}>
       <ArrowChevronDownIcon size={16} />
     </DropdownIndicator>
+  );
+};
+
+const CustomOption = (props) => {
+  return (
+    <>
+      <Option {...props} />
+    </>
   );
 };
 
@@ -136,6 +146,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
     each(options, (text, val) => {
       selectOptions.push({ label: text, value: val });
     });
+    console.log(selectOptions);
   }
 
   const setDefaultValue = rest.placeholder
@@ -153,6 +164,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
       error={Boolean(error)}
       components={{
         DropdownIndicator: ChevronDropdown,
+        Option: CustomOption,
         IndicatorSeparator: () => null,
       }}
       onChange={changeHandler}
