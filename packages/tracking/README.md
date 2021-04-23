@@ -101,7 +101,10 @@ import { initializeIntegrations } from '@codecademy/tracking';
 
 setTimeout(() => {
   initializeIntegrations({
-    /* ... */
+    onError: logger.error,
+    scope: window,
+    user: { email: 'my@email.com', id: 'my-user-id' },
+    writeKey: 'my-segment-write-key',
   });
 }, 1000);
 ```
