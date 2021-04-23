@@ -28,7 +28,7 @@ type OptionStrict = {
   value: string;
 };
 
-const { DropdownIndicator, Option } = SelectDropdownElements;
+const { DropdownIndicator } = SelectDropdownElements;
 
 const selectBaseStyles = ({
   error,
