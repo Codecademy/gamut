@@ -1,1 +1,1 @@
-export { createEmotionCache } from './createEmotionCache';
+export * from './createEmotionCache';
