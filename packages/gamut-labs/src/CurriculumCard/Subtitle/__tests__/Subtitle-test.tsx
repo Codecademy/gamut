@@ -11,7 +11,8 @@ const renderView = setupRtl(Subtitle, {
 describe('CurriculumCard > Subtitle', () => {
   it('displays scope count', () => {
     const { view } = renderView();
-    view.getByText('10 Lessons');
+    view.getByText('10');
+    view.getByText('Lessons');
   });
 
   it('does not display scope count if scope count is undefined', () => {
