@@ -109,14 +109,6 @@ const ChevronDropdown = (props: IndicatorProps<OptionTypeBase, false>) => {
   );
 };
 
-// const CustomOption = (props) => {
-//   return (
-//     <>
-//       <Option {...props} />
-//     </>
-//   );
-// };
-
 export const SelectDropdown: React.FC<SelectDropdownProps> = ({
   options,
   error,
@@ -163,7 +155,6 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
       error={Boolean(error)}
       components={{
         DropdownIndicator: ChevronDropdown,
-        // Option: CustomOption,
         IndicatorSeparator: () => null,
       }}
       onChange={changeHandler}
