@@ -11,12 +11,12 @@ const renderView = setupRtl(Subtitle, {
 describe('CurriculumCard > Subtitle', () => {
   it('displays scope count', () => {
     const { view } = renderView();
-    expect(view.getByTestId('scope-count').textContent).toBe('10 Lessons');
+    view.getByText('10 Lessons');
   });
 
   it('does not display scope count if scope count is undefined', () => {
     const { view } = renderView({ scopeCount: undefined });
 
-    expect(view.queryByTestId('scope-count')).toBeFalsy();
+    expect(view.queryByText('lesson')).toBeFalsy();
   });
 });

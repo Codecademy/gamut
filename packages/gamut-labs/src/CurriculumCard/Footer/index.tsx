@@ -26,18 +26,15 @@ export const Footer: React.FC<FooterProps> = ({
       )}
       {progressState === 'inProgress' && (
         <FlexBox
-          as="p"
-          textColor="hyper"
           flexWrap="wrap"
           justifyContent="space-between"
           alignItems="flex-end"
-          marginBottom={0}
           width="100%"
         >
-          <Box as="span" textColor="navy" fontFamily="accent" fontSize={14}>
+          <Text fontFamily="accent" fontSize={14}>
             Enrolled...
-          </Box>
-          <Box as="span">Keep Going</Box>
+          </Text>
+          <Text textColor="hyper">Keep Going</Text>
         </FlexBox>
       )}
     </div>
