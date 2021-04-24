@@ -78,7 +78,6 @@ export const AccordionButton: React.FC<AccordionButtonProps> = ({
         styles[size],
         className
       )}
-      flat
       {...baseProps}
       {...props}
     >
