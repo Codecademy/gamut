@@ -62,13 +62,7 @@ export const CurriculumCard: React.FC<CurriculumCardProps> = ({
         showProLogo={showProLogo}
         text={text}
       />
-      <Text
-        as={headingLevel}
-        marginBottom={4}
-        fontFamily="base"
-        fontWeight="title"
-        fontSize={20}
-      >
+      <Text as={headingLevel} mb={4} fontSize={20}>
         {title}
       </Text>
       <div>
@@ -80,7 +74,7 @@ export const CurriculumCard: React.FC<CurriculumCardProps> = ({
           />
         )}
       </div>
-      <FlexBox alignItems="center" justifyContent="center" paddingBottom={16}>
+      <FlexBox alignments="center" pb={16}>
         {isFullSize && image && (
           <Image image={image} progressState={progressState} />
         )}

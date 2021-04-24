@@ -99,7 +99,7 @@ export const DocsPage: React.FC = ({ children }) => {
       <ContentContainer>
         <BreadCrumbs />
         <Title>{title}</Title>
-        <Text as="p" fontSize={20} marginBottom={16}>
+        <Text as="p" fontSize={20} mb={16}>
           <Markdown inline text={subtitle} />
         </Text>
         {showMeta && (

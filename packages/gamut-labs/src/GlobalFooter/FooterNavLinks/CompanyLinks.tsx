@@ -162,9 +162,7 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
       gridRow={{ sm: '2 / 4' }}
       pt={{ sm: 32 }}
     >
-      <FooterHeading marginBottom={{ base: 8, sm: 16, lg: 0 }}>
-        Mobile
-      </FooterHeading>
+      <FooterHeading mb={{ _: 8, sm: 16, lg: 0 }}>Mobile</FooterHeading>
       <FooterLinkItems
         display={{ sm: 'flex' }}
         flexDirection={{ sm: 'column' }}
