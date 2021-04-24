@@ -22,7 +22,7 @@ export const BodyPortal: React.FC = ({ children }) => {
   if (!ready) return null;
 
   return ReactDOM.createPortal(
-    <PortalWrapper mode={active} setVariables>
+    <PortalWrapper mode={active} alwaysSetVariables>
       {children}
     </PortalWrapper>,
     document.body

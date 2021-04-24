@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [9.5.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@9.5.4...@codecademy/gamut-styles@9.5.5) (2021-04-23)
+
+
+### Bug Fixes
+
+* Add GamutProvider Tests and Remove .storybook from coverage ([87bbb73](https://github.com/Codecademy/client-modules/commit/87bbb737a0cd2a9f5430c65b44cd82071b186668))
+
+
+
+### [9.5.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@9.5.3...@codecademy/gamut-styles@9.5.4) (2021-04-22)
+
+**Note:** Version bump only for package @codecademy/gamut-styles
+
+
+
+
+
 ### [9.5.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@9.5.2...@codecademy/gamut-styles@9.5.3) (2021-04-20)
 
 **Note:** Version bump only for package @codecademy/gamut-styles

@@ -1,7 +1,6 @@
 import { serializeTokens, StyleProps, variance } from '@codecademy/variance';
 import { CSSObject, Theme, ThemeProvider, useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
-import { HTMLAttributes } from 'enzyme';
 import { mapValues } from 'lodash';
 import React, { useMemo } from 'react';
 
@@ -31,12 +30,10 @@ export const providerProps = variance.compose(
 );
 
 export interface ProviderProps extends StyleProps<typeof providerProps> {
-  setVariables?: boolean;
+  alwaysSetVariables?: boolean;
 }
 
-export interface VariableProviderProps
-  extends Omit<HTMLAttributes, keyof ProviderProps>,
-    ProviderProps {
+export interface VariableProviderProps extends ProviderProps {
   variables?: CSSObject;
 }
 
@@ -47,7 +44,7 @@ export const VariableProvider = styled(
 
 export const ColorMode: React.FC<ColorModeProps & ProviderProps> = ({
   mode,
-  setVariables,
+  alwaysSetVariables,
   ...rest
 }) => {
   const theme = useTheme();
@@ -68,7 +65,7 @@ export const ColorMode: React.FC<ColorModeProps & ProviderProps> = ({
     return (
       <VariableProvider
         {...rest}
-        variables={setVariables ? variables : undefined}
+        variables={alwaysSetVariables ? variables : undefined}
       />
     );
   }
