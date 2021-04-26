@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.6.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@9.5.6...@codecademy/gamut-styles@9.6.0) (2021-04-26)
+
+
+### Features
+
+* **Anchor:** Variance Migration + ColorMode [GM-203] ([d5ae675](https://github.com/Codecademy/client-modules/commit/d5ae6758c65a837066562eb0ed8b964176889148))
+
+
+
 ### [9.5.6](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@9.5.5...@codecademy/gamut-styles@9.5.6) (2021-04-23)
 
 
