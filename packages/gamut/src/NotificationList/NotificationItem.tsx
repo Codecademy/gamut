@@ -8,7 +8,7 @@ import {
   Megaphone,
   New,
 } from '@codecademy/gamut-illustrations';
-import { colors, themed } from '@codecademy/gamut-styles';
+import { colors } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React, { ReactElement } from 'react';
 
@@ -19,7 +19,6 @@ const StyledLink = styled.a`
   text-decoration: none;
   display: block;
   z-index: 1;
-  color: ${themed('colors.text')};
 
   &:before,
   &:after {
@@ -96,7 +95,7 @@ export const NotificationItem: React.FC<NotificationItemProps> = ({
   };
 
   const notificationContent: ReactElement = (
-    <FlexBox zIndex={1} position="relative">
+    <FlexBox zIndex={1} position="relative" textColor="text">
       {renderIcon()}
       <Box flexBasis={0} flexGrow={1} paddingLeft={12}>
         <Text id={notificationItemId} variant="p-small">
