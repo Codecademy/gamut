@@ -168,7 +168,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
       components={{
         DropdownIndicator: ChevronDropdown,
         Input: (props) => {
-          return <Input {...props} {...inputProps} value={'hello'} />;
+          return <Input {...props} {...inputProps} />;
         },
         IndicatorSeparator: () => null,
       }}
