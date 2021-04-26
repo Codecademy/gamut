@@ -3,6 +3,7 @@ import {
   Anchor,
   Box,
   FlexBox,
+  GridBox,
   Logo,
   ProLabel,
   Text,
@@ -35,12 +36,11 @@ export const ColorModeExample = () => {
           borderStyle="solid"
           borderWidth="1px"
         >
-          <Logo variant="default" />
           <Text as="h5" fontSize={26} fontWeight="title" mb={16}>
             {isDark ? 'Dark' : 'Light'} Mode
           </Text>
-          <Text as="h6">
-            Cool <ProLabel width={24} />
+          <Text as="h6" fontFamily="accent" mb={16}>
+            <ProLabel width={32} /> Cool Feature
           </Text>
           <Text as="p" mb={16}>
             Lorem ipsum dolor sit amet, sed do eiusmod tempor incididunt ut
@@ -48,6 +48,14 @@ export const ColorModeExample = () => {
             veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
             ea commodo consequat.
           </Text>
+          <GridBox
+            columnGap={16}
+            paddingBottom={16}
+            gridTemplateColumns="max-content max-content max-content"
+          >
+            <Logo variant="default" /> <Logo variant="pro" />{' '}
+            <Logo variant="mini" />
+          </GridBox>
         </Box>
       </ColorMode>
     </Box>

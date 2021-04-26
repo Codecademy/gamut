@@ -12,7 +12,7 @@ export type LogoProps = SVGProps<SVGSVGElement> & {
 
 const logoProps = {
   default: { viewBox: '0 0 285 60' },
-  pro: { viewBox: '0 0 139 22.5' },
+  pro: { viewBox: '0 0 139 21.705' },
   mini: { viewBox: '0 0 28 22' },
 };
 
