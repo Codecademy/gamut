@@ -5,8 +5,7 @@ import styled from '@emotion/styled';
 import React, { SVGProps } from 'react';
 
 export type LogoProps = SVGProps<SVGSVGElement> &
-  StyleProps<typeof logoStyles> &
-  StyleProps<typeof modeVariants> & {
+  StyleProps<typeof logoStyles> & {
     height?: number;
     width?: number;
     variant: keyof typeof logoProps;
@@ -30,16 +29,8 @@ const accent = {
   dark: 'white',
 } as const;
 
-const modeVariants = system.variant({
-  prop: 'mode',
-  variants: {
-    light: { bg: 'white', textColor: 'navy' },
-    dark: { bg: 'navy', textColor: 'white' },
-  },
-});
-
 const Svg = styled('svg', styledConfig)<Omit<LogoProps, 'variant'>>(
-  modeVariants,
+  system.css({ textColor: 'text' }),
   logoStyles
 );
 
