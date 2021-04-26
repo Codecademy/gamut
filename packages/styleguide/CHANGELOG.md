@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [36.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@36.2.6...@codecademy/styleguide@36.3.0) (2021-04-26)
+
+
+### Features
+
+* **Text:** Migrate to variance and add new semantic variants [GM-204] ([463b873](https://github.com/Codecademy/client-modules/commit/463b87341bf6692ffc103ca87ad0989d1fd5408d))
+
+
+
+### [36.2.6](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@36.2.5...@codecademy/styleguide@36.2.6) (2021-04-23)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
 ### [36.2.5](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@36.2.4...@codecademy/styleguide@36.2.5) (2021-04-23)
 
 **Note:** Version bump only for package @codecademy/styleguide

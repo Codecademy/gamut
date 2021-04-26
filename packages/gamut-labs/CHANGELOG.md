@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [14.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@14.2.5...@codecademy/gamut-labs@14.3.0) (2021-04-26)
+
+
+### Features
+
+* **Text:** Migrate to variance and add new semantic variants [GM-204] ([463b873](https://github.com/Codecademy/client-modules/commit/463b87341bf6692ffc103ca87ad0989d1fd5408d))
+
+
+
+### [14.2.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@14.2.4...@codecademy/gamut-labs@14.2.5) (2021-04-23)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
 ### [14.2.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@14.2.3...@codecademy/gamut-labs@14.2.4) (2021-04-23)
 
 
