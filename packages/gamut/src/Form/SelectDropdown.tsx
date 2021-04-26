@@ -36,7 +36,7 @@ interface SelectDropdownProps
   extends SelectDropdownBaseProps,
     Pick<NamedProps, 'onChange'>,
     Pick<SelectHTMLAttributes<HTMLSelectElement>, 'value' | 'disabled'> {
-  inputProps?: any;
+  inputProps?: { [key: string]: string | number };
   name?: string;
   placeholder?: string;
 }
@@ -147,7 +147,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
   id,
   disabled,
   onChange,
-  value,
+  value = undefined,
   name,
   placeholder = 'Select an option',
   inputProps,
