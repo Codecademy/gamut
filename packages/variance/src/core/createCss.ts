@@ -1,9 +1,36 @@
+import { Theme } from '@emotion/react';
 import { isObject } from 'lodash';
 
-import { CSS, Parser, Prop, TransformerMap } from '../types/config';
+import {
+  AbstractParser,
+  CSS,
+  Parser,
+  Prop,
+  TransformerMap,
+} from '../types/config';
 import { CSSObject } from '../types/props';
 import { getStaticCss } from '../utils/getStaticProperties';
 import { createProps } from './createProps';
+
+const templateSelectorCss = <Props extends Record<string, unknown>>(
+  parser: AbstractParser,
+  cssProps: Props,
+  selectors: string[],
+  filters: string[],
+  theme?: Theme
+) => {
+  const css = parser({ ...cssProps, theme });
+  selectors.forEach((selector) => {
+    const selectorConfig = cssProps[selector];
+    if (isObject(selectorConfig)) {
+      css[selector] = {
+        ...getStaticCss(selectorConfig, filters),
+        ...parser(Object.assign(selectorConfig, { theme })),
+      };
+    }
+  });
+  return css;
+};
 
 export function createCss<
   Config extends Record<string, Prop>,
@@ -25,21 +52,19 @@ export function createCss<
 
     return ({ theme }) => {
       if (cache) return cache;
-      const css = parser({ ...cssProps, theme } as any);
-      selectors.forEach((selector) => {
-        const selectorConfig = cssProps[selector];
-        if (isObject(selectorConfig)) {
-          css[selector] = {
-            ...getStaticCss(selectorConfig, filteredProps),
-            ...parser(Object.assign(selectorConfig, { theme }) as any),
-          };
-        }
-      });
+
+      const systemCss = templateSelectorCss(
+        parser,
+        cssProps,
+        selectors,
+        filteredProps,
+        theme
+      );
 
       /** Merge the static and generated css and save it to the cache */
       cache = {
         ...staticCss,
-        ...css,
+        ...systemCss,
       };
       return cache;
     };

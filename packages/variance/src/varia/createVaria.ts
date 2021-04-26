@@ -14,14 +14,6 @@ export class VariaBuilder {
   withVariants() {
     return new VariaBuilderWithBase();
   }
-
-  withModes() {
-    return new VariaBuilderWithModes();
-  }
-
-  withStates() {
-    return new VariaBuilderWithStates();
-  }
 }
 
 export class VariaBuilderWithProps {
@@ -36,14 +28,6 @@ export class VariaBuilderWithProps {
   withVariants() {
     return new VariaBuilderWithBase();
   }
-
-  withModes() {
-    return new VariaBuilderWithModes();
-  }
-
-  withStates() {
-    return new VariaBuilderWithStates();
-  }
 }
 
 export class VariaBuilderWithCustomProps {
@@ -53,14 +37,6 @@ export class VariaBuilderWithCustomProps {
 
   withVariants() {
     return new VariaBuilderWithBase();
-  }
-
-  withModes() {
-    return new VariaBuilderWithModes();
-  }
-
-  withStates() {
-    return new VariaBuilderWithStates();
   }
 }
 
@@ -109,9 +85,7 @@ export class VariaBuilderWithStates {
  * createVaria()
  *  .withProps()
  *  .withCustomProps()
- *  .withModes()
  *  .withBase()
- *  .withStates()
  *  .withVariants();
  */
 
