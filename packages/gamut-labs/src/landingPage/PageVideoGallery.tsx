@@ -15,6 +15,7 @@ const Grid = styled.div`
     // there must be a mathematical explanation for why ~12:5 is the correct ratio for
     // the column widths but I do not know what it is. Regardless, the effect is that
     // all three videos will maintain a 16:9 aspect ratio with an even gap between them.
+
     grid-template: 1fr 1fr / 12fr 5fr;
 
     gap: 16px;

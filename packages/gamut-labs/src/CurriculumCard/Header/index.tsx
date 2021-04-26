@@ -16,7 +16,7 @@ export const Header: React.FC<HeaderProps> = ({
 }) => {
   return (
     <FlexBox marginBottom={12} alignItems="center">
-      <Text as="span" fontSize={14} fontFamily="accent">
+      <Text fontSize={14} fontFamily="accent">
         {showProLogo && (
           <Box display="inline-flex" verticalAlign="middle">
             <ProLogo

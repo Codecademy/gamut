@@ -19,6 +19,7 @@ const StyledLink = styled.a`
   text-decoration: none;
   display: block;
   z-index: 1;
+
   &:before,
   &:after {
     top: -1px;
@@ -94,13 +95,13 @@ export const NotificationItem: React.FC<NotificationItemProps> = ({
   };
 
   const notificationContent: ReactElement = (
-    <FlexBox zIndex={1} position="relative">
+    <FlexBox zIndex={1} position="relative" textColor="text">
       {renderIcon()}
       <Box flexBasis={0} flexGrow={1} paddingLeft={12}>
-        <Text id={notificationItemId} fontSize={14} textColor="navy">
+        <Text id={notificationItemId} variant="p-small">
           {text}
         </Text>
-        <Text fontSize={14} textColor="gray-600" marginLeft={4}>
+        <Text variant="p-small" textColor="gray-600" ml={4}>
           {date}
         </Text>
       </Box>
