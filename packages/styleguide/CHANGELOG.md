@@ -3,6 +3,54 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [36.2.6](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@36.2.5...@codecademy/styleguide@36.2.6) (2021-04-23)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [36.2.5](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@36.2.4...@codecademy/styleguide@36.2.5) (2021-04-23)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [36.2.4](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@36.2.3...@codecademy/styleguide@36.2.4) (2021-04-23)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [36.2.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@36.2.2...@codecademy/styleguide@36.2.3) (2021-04-23)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [36.2.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@36.2.1...@codecademy/styleguide@36.2.2) (2021-04-22)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [36.2.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@36.2.0...@codecademy/styleguide@36.2.1) (2021-04-22)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
 ## [36.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@36.1.0...@codecademy/styleguide@36.2.0) (2021-04-21)
 
 
