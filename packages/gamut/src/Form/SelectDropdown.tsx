@@ -34,11 +34,6 @@ type OptionStrict = {
   value: string;
 };
 
-// type ReactRecurlyInput = InputProps & {
-//   'data-recurly'?: string;
-//   id?: string;
-// };
-
 const { DropdownIndicator } = SelectDropdownElements;
 
 const selectBaseStyles = ({
