@@ -40,7 +40,7 @@ export const ColorModeExample = () => {
             {isDark ? 'Dark' : 'Light'} Mode
           </Text>
           <Text as="h6" fontFamily="accent" mb={16}>
-            <ProLabel width={32} /> Cool Feature
+            <ProLabel height={16} /> Cool Feature
           </Text>
           <Text as="p" mb={16}>
             Lorem ipsum dolor sit amet, sed do eiusmod tempor incididunt ut

@@ -1,16 +1,21 @@
-import { pxRem, system } from '@codecademy/gamut-styles';
+import { system } from '@codecademy/gamut-styles';
+import { transformSize, variance } from '@codecademy/variance';
 import { Theme, useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
 import React, { SVGProps } from 'react';
 
 export type ProLabelProps = SVGProps<SVGSVGElement> & {
   mode?: keyof Theme['colorModes']['modes'];
-  width?: number;
+  height?: number;
 };
 
 const Svg = styled.svg<ProLabelProps>`
-  width: ${({ width = 30 }) => pxRem(width)};
-  height: ${({ width = 30 }) => pxRem((8 / 15) * width)};
+  ${variance.create({
+    height: {
+      property: 'height',
+      transform: transformSize,
+    },
+  })}
   ${system.variant({
     prop: 'mode',
     variants: {

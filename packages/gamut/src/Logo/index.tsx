@@ -1,4 +1,5 @@
 import { system } from '@codecademy/gamut-styles';
+import { transformSize, variance } from '@codecademy/variance';
 import { Theme, useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
 import React, { SVGProps } from 'react';
@@ -21,7 +22,13 @@ const accent = {
   dark: 'white',
 } as const;
 
-const Svg = styled.svg(
+const Svg = styled.svg<Omit<LogoProps, 'variant'>>(
+  variance.create({
+    width: {
+      property: 'width',
+      transform: transformSize,
+    },
+  }),
   system.variant({
     prop: 'mode',
     variants: {
