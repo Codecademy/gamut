@@ -1,4 +1,4 @@
-import { FlexBox, Text } from '@codecademy/gamut';
+import { Text } from '@codecademy/gamut';
 import { capitalize } from 'lodash';
 import React from 'react';
 
@@ -19,7 +19,7 @@ export const Subtitle: React.FC<SubtitleProps> = ({
   scopeCount,
 }) => {
   return (
-    <FlexBox flexWrap="wrap">
+    <>
       <Difficulty difficulty={difficulty} />
       {scopeCount && ','}
       {scopeCount && (
@@ -30,6 +30,6 @@ export const Subtitle: React.FC<SubtitleProps> = ({
           </Text>
         </Text>
       )}
-    </FlexBox>
+    </>
   );
 };
