@@ -3,6 +3,58 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [32.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@32.2.1...@codecademy/gamut@32.3.0) (2021-04-26)
+
+
+### Features
+
+* **Anchor:** Variance Migration + ColorMode [GM-203] ([d5ae675](https://github.com/Codecademy/client-modules/commit/d5ae6758c65a837066562eb0ed8b964176889148))
+
+
+
+### [32.2.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@32.2.0...@codecademy/gamut@32.2.1) (2021-04-26)
+
+
+### Bug Fixes
+
+* **Column:** Make Columns statically 12 on the base ([0933f31](https://github.com/Codecademy/client-modules/commit/0933f31842bdb282908687bc31063098d0ef8ddd))
+
+
+
+## [32.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@32.1.4...@codecademy/gamut@32.2.0) (2021-04-26)
+
+
+### Features
+
+* **Text:** Migrate to variance and add new semantic variants [GM-204] ([463b873](https://github.com/Codecademy/client-modules/commit/463b87341bf6692ffc103ca87ad0989d1fd5408d))
+
+
+
+### [32.1.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@32.1.3...@codecademy/gamut@32.1.4) (2021-04-23)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [32.1.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@32.1.2...@codecademy/gamut@32.1.3) (2021-04-23)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [32.1.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@32.1.1...@codecademy/gamut@32.1.2) (2021-04-22)
+
+
+### Bug Fixes
+
+* stop providing flat to ButtonDeprecatedBase in AccordionButton ([8426ec7](https://github.com/Codecademy/client-modules/commit/8426ec7280d891e71cb7e54fc236d28bdcf09086))
+
+
+
 ### [32.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@32.1.0...@codecademy/gamut@32.1.1) (2021-04-22)
 
 **Note:** Version bump only for package @codecademy/gamut

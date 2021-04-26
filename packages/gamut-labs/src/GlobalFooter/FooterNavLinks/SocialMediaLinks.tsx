@@ -42,7 +42,7 @@ export const SocialMediaLinks: React.FC = () => {
             aria-label={label}
             fontSize={20}
             href={url}
-            marginRight={8}
+            mr={8}
             rel="noopener noreferrer"
             target="_blank"
             variant="interface"
