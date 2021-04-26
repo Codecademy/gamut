@@ -2,7 +2,7 @@ import { serializeTokens, StyleProps, variance } from '@codecademy/variance';
 import { CSSObject, Theme, ThemeProvider, useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
 import { mapValues } from 'lodash';
-import React, { useMemo } from 'react';
+import React, { ComponentProps, useMemo } from 'react';
 
 import {
   color,
@@ -42,11 +42,9 @@ export const VariableProvider = styled(
   styledConfig
 )<VariableProviderProps>(({ variables }) => variables, providerProps);
 
-export const ColorMode: React.FC<ColorModeProps & ProviderProps> = ({
-  mode,
-  alwaysSetVariables,
-  ...rest
-}) => {
+export const ColorMode: React.FC<
+  ColorModeProps & ComponentProps<typeof VariableProvider>
+> = ({ mode, alwaysSetVariables, ...rest }) => {
   const theme = useTheme();
   const {
     colorModes: { modes, active },

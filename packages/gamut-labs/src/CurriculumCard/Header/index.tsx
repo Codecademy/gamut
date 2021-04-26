@@ -1,7 +1,5 @@
-import { Box, FlexBox, Text } from '@codecademy/gamut';
+import { ProLabel, Text } from '@codecademy/gamut';
 import React from 'react';
-
-import { ProLogo } from '../../ProLogo';
 
 export type HeaderProps = {
   invertColors?: boolean;
@@ -15,20 +13,16 @@ export const Header: React.FC<HeaderProps> = ({
   text,
 }) => {
   return (
-    <FlexBox marginBottom={12} alignItems="center">
-      <Text fontSize={14} fontFamily="accent">
-        {showProLogo && (
-          <Box display="inline-flex" verticalAlign="middle">
-            <ProLogo
-              backgroundColor={invertColors ? 'white' : 'navy'}
-              cutoutColor={invertColors ? 'navy' : 'white'}
-              data-testid="pro-logo"
-              variant="cutout"
-            />
-          </Box>
-        )}{' '}
-        {text}
-      </Text>
-    </FlexBox>
+    <Text display="flex" fontSize={14} mb={12} fontFamily="accent">
+      {showProLogo && (
+        <ProLabel
+          alignSelf="center"
+          mr={8}
+          mode={invertColors ? 'dark' : 'light'}
+          data-testid="pro-logo"
+        />
+      )}
+      {text}
+    </Text>
   );
 };

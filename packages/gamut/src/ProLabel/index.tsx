@@ -43,6 +43,7 @@ const Svg = styled('svg', styledConfig)<ProLabelProps>(
 
 export const ProLabel: React.FC<React.ComponentProps<typeof Svg>> = ({
   mode,
+  height = 16,
   ...props
 }) => {
   const {
@@ -51,6 +52,7 @@ export const ProLabel: React.FC<React.ComponentProps<typeof Svg>> = ({
   return (
     <Svg
       {...props}
+      height={height}
       mode={mode ?? active}
       viewBox="0 0 30 16"
       xmlns="http://www.w3.org/2000/svg"

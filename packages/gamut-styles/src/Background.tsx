@@ -1,11 +1,13 @@
 import { Theme, useTheme } from '@emotion/react';
 import { getContrast } from 'polished';
-import React, { useMemo } from 'react';
+import React, { ComponentProps, useMemo } from 'react';
 
 import { ColorMode, ProviderProps } from './ColorMode';
 import { getColorValue } from './theme';
 
-export interface BackgroundProps extends ProviderProps {
+export interface BackgroundProps
+  extends ProviderProps,
+    Omit<ComponentProps<typeof ColorMode>, 'alwaysSetVariables' | 'mode'> {
   bg: keyof Theme['colors'];
   className?: string;
 }
