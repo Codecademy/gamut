@@ -27,7 +27,7 @@
     "@codecademy/gamut-styles": "^9.5.4",
     "@codecademy/variance": "^0.9.0",
     "@types/marked": "^1.1.0",
-    "@types/react-select": "^4.0.13",
+    "@types/react-select": "^4.0.15",
     "classnames": "^2.2.5",
     "framer-motion": "^2.7.9",
     "html-to-react": "^1.4.2",

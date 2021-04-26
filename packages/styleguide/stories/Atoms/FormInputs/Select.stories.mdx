@@ -101,7 +101,7 @@ This is a variant of our `Select` component with a styled dropdown menu. `Select
   >
     {(args) => (
       <FlexBox width="10rem" height="25rem">
-        <SelectDropdown {...args} />
+        <SelectDropdown {...args} inputProps={{ 'data-test-id': 'hello' }} />
       </FlexBox>
     )}
   </Story>

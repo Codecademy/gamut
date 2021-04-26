@@ -1,17 +1,17 @@
 import { ArrowChevronDownIcon } from '@codecademy/gamut-icons';
 import { theme } from '@codecademy/gamut-styles';
 import { css } from '@emotion/react';
+import styled from '@emotion/styled';
 import { each, isObject } from 'lodash';
-import React, { SelectHTMLAttributes, useMemo, useState } from 'react';
+import React, { ComponentProps, HTMLProps, useMemo, useState } from 'react';
 import ReactSelect, {
-  components as SelectDropdownElements,
+  components as SelectComponents,
   IndicatorProps,
   NamedProps,
   OptionTypeBase,
   StylesConfig,
 } from 'react-select';
 
-import { SelectComponentProps } from './Select';
 import {
   colorStates,
   conditionalBorderStyles,
@@ -20,26 +20,18 @@ import {
   formFieldStyles,
 } from './styles/shared';
 
-type SelectDropdownBaseProps = Omit<
-  SelectComponentProps,
-  'onChange' | 'defaultValue'
->;
-interface SelectDropdownProps
-  extends SelectDropdownBaseProps,
-    Pick<NamedProps, 'onChange'>,
-    Pick<SelectHTMLAttributes<HTMLSelectElement>, 'value' | 'disabled'> {}
+type SelectDropdownProps = Omit<NamedProps, 'onChange' | 'value'> &
+  Omit<HTMLProps<HTMLInputElement>, keyof NamedProps | 'ref'> & {
+    error?: string;
+    onChange?: NamedProps['onChange'];
+    value?: NamedProps['value'];
+    inputProps?: ComponentProps<typeof Input>;
+  };
 
 type OptionStrict = {
   label: string;
   value: string;
 };
-
-// type ReactRecurlyInput = InputProps & {
-//   'data-recurly'?: string;
-//   id?: string;
-// };
-
-const { DropdownIndicator } = SelectDropdownElements;
 
 const selectBaseStyles = ({
   error,
@@ -111,12 +103,10 @@ const customStyles: StylesConfig<OptionTypeBase, false> = {
 };
 
 const ChevronDropdown = (props: IndicatorProps<OptionTypeBase, false>) => {
-  return (
-    <DropdownIndicator {...props}>
-      <ArrowChevronDownIcon size={16} />
-    </DropdownIndicator>
-  );
+  return <ArrowChevronDownIcon size={16} />;
 };
+
+const Input = styled.input``;
 
 export const SelectDropdown: React.FC<SelectDropdownProps> = ({
   options,
@@ -125,6 +115,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
   disabled,
   onChange,
   value,
+  inputProps,
   ...rest
 }) => {
   const [activated, setActivated] = useState(false);
@@ -168,11 +159,11 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
       activated={activated}
       error={Boolean(error)}
       components={{
+        Input: (props) => <SelectComponents.Input {...inputProps} {...props} />,
         DropdownIndicator: ChevronDropdown,
         IndicatorSeparator: () => null,
       }}
       onChange={changeHandler}
-      isSearchable={false}
       isMulti={false}
       isDisabled={disabled}
       options={selectOptions}
