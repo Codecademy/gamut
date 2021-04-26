@@ -46,7 +46,7 @@ type OptionStrict = {
   value: string;
 };
 
-type Help = ContainerProps<OptionStrict, false> & {
+type CustomContainerProps = ContainerProps<OptionStrict, false> & {
   children?: ReactNode[];
 };
 
@@ -127,7 +127,7 @@ const ChevronDropdown = (props: IndicatorProps<OptionTypeBase, false>) => {
   );
 };
 
-const CustomContainer = ({ children, ...rest }: Help) => {
+const CustomContainer = ({ children, ...rest }: CustomContainerProps) => {
   const inputProps = rest.selectProps.inputProps;
   const value = rest.hasValue ? rest.getValue()[0].value : '';
 
