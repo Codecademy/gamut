@@ -122,10 +122,11 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
   disabled,
   onChange,
   value,
-  inputProps,
+  // inputProps,
   ...rest
 }) => {
   const [activated, setActivated] = useState(false);
+  const inputProps = { 'data-recurly': 'country', id: 'countrySelect' };
   const changeHandler = (optionEvent: OptionStrict) => {
     onChange?.(optionEvent, {
       action: 'select-option',
@@ -167,7 +168,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
       components={{
         DropdownIndicator: ChevronDropdown,
         Input: (props) => {
-          return <Input {...inputProps} {...props} value={parsedValue} />;
+          return <Input {...props} {...inputProps} value={'hello'} />;
         },
         IndicatorSeparator: () => null,
       }}
@@ -175,6 +176,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
       isSearchable={true}
       isMulti={false}
       isDisabled={disabled}
+      name={id || rest.htmlFor}
       options={selectOptions}
       {...rest}
     />
