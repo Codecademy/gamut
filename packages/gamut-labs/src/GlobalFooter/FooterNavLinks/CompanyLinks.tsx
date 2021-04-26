@@ -164,9 +164,7 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
       gridRow={{ sm: '2 / 4' }}
       paddingTop={{ sm: 32 }}
     >
-      <FooterHeading marginBottom={{ base: 8, sm: 16, lg: 0 }}>
-        Mobile
-      </FooterHeading>
+      <FooterHeading mb={{ _: 8, sm: 16, lg: 0 }}>Mobile</FooterHeading>
       <FooterLinkItems
         display={{ sm: 'flex' }}
         flexDirection={{ sm: 'column' }}
@@ -174,7 +172,7 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
         <MobileImageItem>
           <MobileImageLink
             href="https://itunes.apple.com/us/app/codecademy-go/id1376029326"
-            onClick={(event) => onClick({ event, target: '' })}
+            onClick={(event) => onClick({ event, target: 'apple_store' })}
             target="_blank"
           >
             <img
@@ -188,7 +186,7 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
         <MobileImageItem>
           <MobileImageLink
             href="https://play.google.com/store/apps/details?id=com.ryzac.codecademygo"
-            onClick={(event) => onClick({ event, target: '' })}
+            onClick={(event) => onClick({ event, target: 'google_play' })}
             target="_blank"
           >
             <img
@@ -210,7 +208,7 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
         <FooterLinkItem>
           <Anchor
             href="https://news.codecademy.com"
-            onClick={(event) => onClick({ event, target: '' })}
+            onClick={(event) => onClick({ event, target: 'blog' })}
             variant="interface"
           >
             Blog
@@ -219,7 +217,7 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
         <FooterLinkItem>
           <Anchor
             href="/resources/cheatsheets/all"
-            onClick={(event) => onClick({ event, target: '' })}
+            onClick={(event) => onClick({ event, target: 'cheatsheets_home' })}
             variant="interface"
           >
             Cheatsheets
@@ -228,7 +226,7 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
         <FooterLinkItem>
           <Anchor
             href="/articles"
-            onClick={(event) => onClick({ event, target: '' })}
+            onClick={(event) => onClick({ event, target: 'articles' })}
             variant="interface"
           >
             Articles

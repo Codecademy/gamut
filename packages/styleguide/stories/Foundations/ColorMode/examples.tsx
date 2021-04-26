@@ -21,7 +21,7 @@ export const ColorModeExample = () => {
   return (
     <Box marginY={16} marginBottom={32}>
       <FlexBox fontWeight="title" marginBottom={8} alignItems="center">
-        <Text marginRight={8} as="strong">
+        <Text mr={8} as="strong">
           Use Dark Mode
         </Text>
         <Toggle
@@ -40,10 +40,10 @@ export const ColorModeExample = () => {
           borderStyle="solid"
           borderWidth="1px"
         >
-          <Text as="h5" fontSize={26} fontWeight="title" marginBottom={16}>
+          <Text as="h5" fontSize={26} fontWeight="title" mb={16}>
             {isDark ? 'Dark' : 'Light'} Mode
           </Text>
-          <Text as="p" marginBottom={16}>
+          <Text as="p" mb={16}>
             Lorem ipsum dolor sit amet, sed do eiusmod tempor incididunt ut
             labore et dolore <Anchor>magna aliqua</Anchor>. Ut enim ad minim
             veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
@@ -117,10 +117,10 @@ export const BackgroundExample: React.FC<ComponentProps<typeof Background>> = ({
 }) => {
   return (
     <Background {...rest} p={24}>
-      <Text as="p" fontSize={26} fontWeight="title" marginBottom={16}>
+      <Text as="p" fontSize={26} fontWeight="title" mb={16}>
         {rest.bg}
       </Text>
-      <Text as="p" marginBottom={16}>
+      <Text as="p" mb={16}>
         Lorem ipsum dolor sit amet, sed do eiusmod tempor incididunt ut labore
         et dolore <Anchor>magna aliqua</Anchor>. Ut enim ad minim veniam, quis
         nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo

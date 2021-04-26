@@ -35,9 +35,16 @@ const TextButtonInner = styled(ButtonInner)<SizedButtonProps>(
 
 const TextButtonOuter = styled(ButtonOutline)();
 
-export const TextButton: React.FC<
-  SizedButtonProps & React.ComponentProps<typeof TextButtonOuter>
-> = ({ children, mode, size, variant, ...props }) => {
+export type TextButtonProps = SizedButtonProps &
+  React.ComponentProps<typeof TextButtonOuter>;
+
+export const TextButton: React.FC<TextButtonProps> = ({
+  children,
+  mode,
+  size,
+  variant,
+  ...props
+}) => {
   const {
     colorModes: { active },
   } = useTheme();
