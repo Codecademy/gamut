@@ -54,6 +54,25 @@ describe('NotificationItem', () => {
     expect(href).toStrictEqual(linkHref);
   });
 
+  it('renders when passed an invalid link', () => {
+    const { view } = renderView(getPropsByLink('not-a-link'));
+    view.getByText('notification 1');
+  });
+
+  it('opens an internal link in the same tab', () => {
+    const { view } = renderView(
+      getPropsByLink(`${window.location.origin}/other-page`)
+    );
+    const href = view.getByRole('link').getAttribute('target');
+    expect(href).toBeFalsy();
+  });
+
+  it('opens an external link in a new tab', () => {
+    const { view } = renderView(getPropsByLink('https://help.codecademy.com'));
+    const href = view.getByRole('link').getAttribute('target');
+    expect(href).toStrictEqual('_blank');
+  });
+
   it('calls handleClick upon clicking a link', () => {
     const { view } = renderView(getPropsByLink(linkHref));
     view.getByRole('link').click();
