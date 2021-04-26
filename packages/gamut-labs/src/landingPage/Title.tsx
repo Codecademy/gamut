@@ -1,45 +1,41 @@
-import { Box } from '@codecademy/gamut';
+import { Text } from '@codecademy/gamut';
 import styled from '@emotion/styled';
 import React from 'react';
 
-import { Text } from '../experimental/Text';
 import { DarkModeProps } from './types';
 import { darkModeVariants } from './variants';
 
-const StyledText = styled(Text)<DarkModeProps>`
-  ${darkModeVariants}
-`;
+const TitleText = styled(Text)(darkModeVariants);
 
 export type TitleProps = DarkModeProps & {
   isPageHeading?: boolean;
   className?: string;
 };
 
-export const Title: React.FC<TitleProps> = ({
-  isPageHeading,
-  mode,
-  className,
-  children,
-}) => (
-  <Box maxWidth="58rem" className={className}>
-    <StyledText
-      as={isPageHeading ? 'h1' : 'h2'}
-      fontWeight="title"
-      fontSize={
-        isPageHeading
-          ? {
-              base: 34,
-              sm: 44,
-              lg: 64,
-            }
-          : {
-              base: 26,
-              lg: 34,
-            }
-      }
-      mode={mode}
-    >
-      {children}
-    </StyledText>
-  </Box>
-);
+const titleProps = {
+  heading: {
+    as: 'h1',
+    fontSize: {
+      _: 34,
+      sm: 44,
+      lg: 64,
+    },
+  },
+  subheading: {
+    as: 'h2',
+    fontSize: {
+      _: 26,
+      lg: 34,
+    },
+  },
+} as const;
+
+export const Title: React.FC<TitleProps> = ({ isPageHeading, ...rest }) => {
+  return (
+    <TitleText
+      maxWidth="58rem"
+      {...titleProps[isPageHeading ? 'heading' : 'subheading']}
+      {...rest}
+    />
+  );
+};

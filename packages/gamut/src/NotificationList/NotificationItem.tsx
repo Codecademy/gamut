@@ -97,10 +97,10 @@ export const NotificationItem: React.FC<NotificationItemProps> = ({
     <FlexBox zIndex={1} position="relative">
       {renderIcon()}
       <Box flexBasis={0} flexGrow={1} paddingLeft={12}>
-        <Text id={notificationItemId} fontSize={14} textColor="navy">
+        <Text id={notificationItemId} variant="p-small">
           {text}
         </Text>
-        <Text fontSize={14} textColor="gray-600" marginLeft={4}>
+        <Text variant="p-small" textColor="gray-600" ml={4}>
           {date}
         </Text>
       </Box>
@@ -122,7 +122,7 @@ export const NotificationItem: React.FC<NotificationItemProps> = ({
 
   const separatorPattern = (
     <Box paddingX={32} margin={0} aria-hidden="true">
-      <Pattern name="dotsDense" height="1px" display="flex" />
+      <Pattern name="checkerDense" height="1px" display="flex" />
     </Box>
   );
 
