@@ -60,6 +60,7 @@ const anchorVariants = system.variant({
       },
     },
     inline: {
+      whiteSpace: 'initial',
       textDecoration: 'underline',
       '&:focus-visible': {
         outline: 'currentColor auto 4px',
