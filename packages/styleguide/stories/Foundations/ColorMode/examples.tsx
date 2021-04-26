@@ -39,7 +39,7 @@ export const ColorModeExample = () => {
           <Text as="h5" fontSize={26} fontWeight="title" mb={16}>
             {isDark ? 'Dark' : 'Light'} Mode
           </Text>
-          <Text as="h6" mb={16}>
+          <Text as="p" fontSize={16} fontFamily="accent" mb={16}>
             <ProLabel height={22} verticalAlign="text-bottom" /> Cool Feature
           </Text>
           <Text as="p" mb={16}>
