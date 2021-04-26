@@ -8,7 +8,7 @@ import {
   Megaphone,
   New,
 } from '@codecademy/gamut-illustrations';
-import { colors } from '@codecademy/gamut-styles';
+import { colors, themed } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React, { ReactElement } from 'react';
 
@@ -19,6 +19,8 @@ const StyledLink = styled.a`
   text-decoration: none;
   display: block;
   z-index: 1;
+  color: ${themed('colors.text')};
+
   &:before,
   &:after {
     top: -1px;
