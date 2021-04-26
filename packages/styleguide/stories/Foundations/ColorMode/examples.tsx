@@ -1,5 +1,13 @@
 /* eslint-disable local-rules/gamut-import-paths */
-import { Anchor, Box, FlexBox, Text, Toggle } from '@codecademy/gamut/src';
+import {
+  Anchor,
+  Box,
+  FlexBox,
+  Logo,
+  ProLabel,
+  Text,
+  Toggle,
+} from '@codecademy/gamut/src';
 import { Background, ColorMode } from '@codecademy/gamut-styles/src';
 import React, { ComponentProps, useState } from 'react';
 
@@ -27,8 +35,12 @@ export const ColorModeExample = () => {
           borderStyle="solid"
           borderWidth="1px"
         >
+          <Logo variant="default" />
           <Text as="h5" fontSize={26} fontWeight="title" mb={16}>
             {isDark ? 'Dark' : 'Light'} Mode
+          </Text>
+          <Text as="h6">
+            Cool <ProLabel width={24} />
           </Text>
           <Text as="p" mb={16}>
             Lorem ipsum dolor sit amet, sed do eiusmod tempor incididunt ut

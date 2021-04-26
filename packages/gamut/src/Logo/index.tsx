@@ -12,7 +12,7 @@ export type LogoProps = SVGProps<SVGSVGElement> & {
 
 const logoProps = {
   default: { viewBox: '0 0 285 60' },
-  pro: { viewBox: '0 0 285 60' },
+  pro: { viewBox: '0 0 139 22.5' },
   mini: { viewBox: '0 0 28 22' },
 };
 
@@ -25,13 +25,18 @@ const Svg = styled.svg(
   system.variant({
     prop: 'mode',
     variants: {
-      light: { bg: 'white', color: 'navy' },
-      dark: { bg: 'navy', color: 'white' },
+      light: { bg: 'white', textColor: 'navy' },
+      dark: { bg: 'navy', textColor: 'white' },
     },
   })
 );
 
-export const Logo = ({ variant, ...props }: LogoProps) => {
+export const Logo = ({
+  variant = 'default',
+  height = 30,
+  mode,
+  ...props
+}: LogoProps) => {
   const {
     colors,
     colorModes: { active },
@@ -40,7 +45,8 @@ export const Logo = ({ variant, ...props }: LogoProps) => {
 
   return (
     <Svg
-      mode={active}
+      mode={mode ?? active}
+      height={height}
       {...svgProps}
       {...props}
       xmlns="http://www.w3.org/2000/svg"
@@ -78,5 +84,3 @@ export const Logo = ({ variant, ...props }: LogoProps) => {
     </Svg>
   );
 };
-
-Logo.defaultProps = { height: 30 };
