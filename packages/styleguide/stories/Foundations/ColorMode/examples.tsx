@@ -48,10 +48,24 @@ const renderButtons = (variant?: 'primary' | 'secondary') => {
   );
 };
 
+const renderLinks = () => {
+  return (
+    <GridBox
+      marginTop={16}
+      columnGap={16}
+      gridTemplateColumns="repeat(3, max-content)"
+    >
+      <Anchor>Inline Link</Anchor>
+      <Anchor variant="standard">Standard Link</Anchor>
+      <Anchor variant="interface">Interface Link</Anchor>
+    </GridBox>
+  );
+};
+
 export const ColorModeExample = () => {
   const [isDark, setIsDark] = useState(false);
   return (
-    <Box marginY={16} marginBottom={32}>
+    <Box marginY={8} marginBottom={32}>
       <FlexBox fontWeight="title" marginBottom={8} alignItems="center">
         <Text mr={8} as="strong">
           Use Dark Mode
@@ -72,16 +86,21 @@ export const ColorModeExample = () => {
           borderStyle="solid"
           borderWidth="1px"
         >
-          <Text as="h5" fontSize={26} fontWeight="title" mb={16}>
+          <Text as="h3" mb={24}>
             {isDark ? 'Dark' : 'Light'} Mode
           </Text>
-          <Text as="p" mb={16}>
-            Lorem ipsum dolor sit amet, sed do eiusmod tempor incididunt ut
-            labore et dolore <Anchor>magna aliqua</Anchor>. Ut enim ad minim
-            veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-            ea commodo consequat.
+          <Text as="h4" mb={8}>
+            Typography
           </Text>
-
+          <Text>
+            Lorem ipsum dolor sit amet, sed do{' '}
+            <em> eiusmod tempor incididunt</em> ut labore et dolore{' '}
+            <b>magna aliqua</b>. Ut enim ad minim veniam, quis nostrud
+            exercitation ullamco laboris nisi ut <u>aliquip ex ea commodo</u>{' '}
+            consequat.
+          </Text>
+          <Text mb={24}>{renderLinks()}</Text>
+          <Text as="h4">Buttons</Text>
           {renderButtons('primary')}
           {renderButtons('secondary')}
         </Box>
