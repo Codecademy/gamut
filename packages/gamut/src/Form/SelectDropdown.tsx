@@ -29,6 +29,7 @@ interface SelectDropdownProps
     Pick<NamedProps, 'onChange'>,
     Pick<SelectHTMLAttributes<HTMLSelectElement>, 'value' | 'disabled'> {
   inputProps?: any;
+  name?: string;
 }
 
 type OptionStrict = {
@@ -36,7 +37,7 @@ type OptionStrict = {
   value: string;
 };
 
-const { DropdownIndicator, Input } = SelectDropdownElements;
+const { DropdownIndicator, SelectContainer } = SelectDropdownElements;
 
 const selectBaseStyles = ({
   error,
@@ -115,6 +116,25 @@ const ChevronDropdown = (props: IndicatorProps<OptionTypeBase, false>) => {
   );
 };
 
+const CustomContainer = ({ children, ...rest }: any) => {
+  const inputProps = rest.selectProps.inputProps;
+
+  return (
+    <>
+      {console.log(inputProps)}
+      <SelectContainer {...rest}>
+        {children}
+        <input
+          type="hidden"
+          name="updog"
+          value={rest.selectProps.value?.value}
+          {...inputProps}
+        />
+      </SelectContainer>
+    </>
+  );
+};
+
 export const SelectDropdown: React.FC<SelectDropdownProps> = ({
   options,
   error,
@@ -122,11 +142,16 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
   disabled,
   onChange,
   value,
+  name,
   // inputProps,
   ...rest
 }) => {
   const [activated, setActivated] = useState(false);
-  const inputProps = { 'data-recurly': 'country', id: 'countrySelect' };
+  const inputProps = {
+    'data-recurly': 'country',
+    id: 'countrySelect',
+    name: name,
+  };
   const changeHandler = (optionEvent: OptionStrict) => {
     onChange?.(optionEvent, {
       action: 'select-option',
@@ -167,16 +192,15 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
       error={Boolean(error)}
       components={{
         DropdownIndicator: ChevronDropdown,
-        Input: (props) => {
-          return <Input {...props} {...inputProps} />;
-        },
         IndicatorSeparator: () => null,
+        SelectContainer: CustomContainer,
       }}
       onChange={changeHandler}
-      isSearchable={true}
+      inputProps={inputProps}
+      name={undefined}
+      isSearchable={false}
       isMulti={false}
       isDisabled={disabled}
-      name={id || rest.htmlFor}
       options={selectOptions}
       {...rest}
     />
