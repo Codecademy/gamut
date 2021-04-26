@@ -27,7 +27,9 @@ type SelectDropdownBaseProps = Omit<
 interface SelectDropdownProps
   extends SelectDropdownBaseProps,
     Pick<NamedProps, 'onChange'>,
-    Pick<SelectHTMLAttributes<HTMLSelectElement>, 'value' | 'disabled'> {}
+    Pick<SelectHTMLAttributes<HTMLSelectElement>, 'value' | 'disabled'> {
+  inputProps?: any;
+}
 
 type OptionStrict = {
   label: string;
@@ -120,10 +122,10 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
   disabled,
   onChange,
   value,
+  inputProps,
   ...rest
 }) => {
   const [activated, setActivated] = useState(false);
-  const inputProps = { 'data-recurly': 'country' };
   const changeHandler = (optionEvent: OptionStrict) => {
     onChange?.(optionEvent, {
       action: 'select-option',
