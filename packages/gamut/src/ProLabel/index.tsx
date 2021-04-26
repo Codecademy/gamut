@@ -30,8 +30,8 @@ const placementVariants = system.variant({
 const modeVariants = system.variant({
   prop: 'mode',
   variants: {
-    light: { bg: 'navy', color: 'beige' },
-    dark: { bg: 'beige', color: 'navy' },
+    light: { bg: 'navy', textColor: 'beige' },
+    dark: { bg: 'beige', textColor: 'navy' },
   },
 });
 
