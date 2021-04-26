@@ -9,6 +9,8 @@ const renderView = setupRtl(GlobalFooter, {
 
 describe('GlobalFooter', () => {
   it('does not explode', () => {
-    renderView();
+    const { view } = renderView();
+
+    view.getByRole('contentinfo');
   });
 });
