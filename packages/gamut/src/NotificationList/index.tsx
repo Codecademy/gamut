@@ -1,3 +1,4 @@
+import { Background } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import { isEmpty } from 'lodash';
 import React from 'react';
@@ -17,7 +18,7 @@ const UnstyledUnorderedList = styled.ul`
   list-style: none;
   padding: 0;
   margin: 0;
-`;
+`.withComponent(Background);
 
 export const NotificationList: React.FC<NotificationListProps> = ({
   notifications,
@@ -28,7 +29,11 @@ export const NotificationList: React.FC<NotificationListProps> = ({
   return isEmpty(notifications) ? (
     <EmptyNotification />
   ) : (
-    <UnstyledUnorderedList aria-labelledby={headerElementId} aria-live="polite">
+    <UnstyledUnorderedList
+      bg="white"
+      aria-labelledby={headerElementId}
+      aria-live="polite"
+    >
       {notifications.map((notification: Notification) => (
         <NotificationItem
           key={notification.id}
