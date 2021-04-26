@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.10.0](https://github.com/Codecademy/client-modules/compare/@codecademy/variance@0.9.0...@codecademy/variance@0.10.0) (2021-04-26)
+
+
+### Features
+
+* **Anchor:** Variance Migration + ColorMode [GM-203] ([d5ae675](https://github.com/Codecademy/client-modules/commit/d5ae6758c65a837066562eb0ed8b964176889148))
+
+
+
 ## [0.9.0](https://github.com/Codecademy/client-modules/compare/@codecademy/variance@0.8.0...@codecademy/variance@0.9.0) (2021-04-15)
 
 

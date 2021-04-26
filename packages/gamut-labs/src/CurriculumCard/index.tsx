@@ -62,13 +62,7 @@ export const CurriculumCard: React.FC<CurriculumCardProps> = ({
         showProLogo={showProLogo}
         text={text}
       />
-      <Text
-        as={headingLevel}
-        marginBottom={4}
-        fontFamily="base"
-        fontWeight="title"
-        fontSize={20}
-      >
+      <Text as={headingLevel} mb={4} fontSize={20}>
         {title}
       </Text>
       <div>
