@@ -1,15 +1,23 @@
-import { system } from '@codecademy/gamut-styles';
-import { transformSize, variance } from '@codecademy/variance';
+import { styledConfig, system } from '@codecademy/gamut-styles';
+import { StyleProps, variance } from '@codecademy/variance';
 import { Theme, useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
 import React, { SVGProps } from 'react';
 
-export type LogoProps = SVGProps<SVGSVGElement> & {
-  height?: number;
-  width?: number;
-  variant: keyof typeof logoProps;
-  mode?: keyof Theme['colorModes']['modes'];
-};
+export type LogoProps = SVGProps<SVGSVGElement> &
+  StyleProps<typeof logoStyles> &
+  StyleProps<typeof modeVariants> & {
+    height?: number;
+    width?: number;
+    variant: keyof typeof logoProps;
+    mode?: keyof Theme['colorModes']['modes'];
+  };
+
+const logoStyles = variance.compose(
+  system.layout,
+  system.positioning,
+  system.space
+);
 
 const logoProps = {
   default: { viewBox: '0 0 285 60' },
@@ -22,20 +30,17 @@ const accent = {
   dark: 'white',
 } as const;
 
-const Svg = styled.svg<Omit<LogoProps, 'variant'>>(
-  variance.create({
-    width: {
-      property: 'width',
-      transform: transformSize,
-    },
-  }),
-  system.variant({
-    prop: 'mode',
-    variants: {
-      light: { bg: 'white', textColor: 'navy' },
-      dark: { bg: 'navy', textColor: 'white' },
-    },
-  })
+const modeVariants = system.variant({
+  prop: 'mode',
+  variants: {
+    light: { bg: 'white', textColor: 'navy' },
+    dark: { bg: 'navy', textColor: 'white' },
+  },
+});
+
+const Svg = styled('svg', styledConfig)<Omit<LogoProps, 'variant'>>(
+  modeVariants,
+  logoStyles
 );
 
 export const Logo = ({

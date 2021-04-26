@@ -1,29 +1,45 @@
-import { system } from '@codecademy/gamut-styles';
-import { transformSize, variance } from '@codecademy/variance';
+import { styledConfig, system } from '@codecademy/gamut-styles';
+import { StyleProps, variance } from '@codecademy/variance';
 import { Theme, useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
 import React, { SVGProps } from 'react';
 
-export type ProLabelProps = SVGProps<SVGSVGElement> & {
-  mode?: keyof Theme['colorModes']['modes'];
-  height?: number;
-};
+export type ProLabelProps = SVGProps<SVGSVGElement> &
+  StyleProps<typeof logoStyles> &
+  StyleProps<typeof placementVariants> &
+  StyleProps<typeof modeVariants> & {
+    mode?: keyof Theme['colorModes']['modes'];
+    height?: number;
+  };
 
-const Svg = styled.svg<ProLabelProps>`
-  ${variance.create({
-    height: {
-      property: 'height',
-      transform: transformSize,
+const logoStyles = variance.compose(
+  system.layout,
+  system.positioning,
+  system.space
+);
+
+const placementVariants = system.variant({
+  prop: 'placement',
+  variants: {
+    inline: {
+      verticalAlign: 'text-bottom',
     },
-  })}
-  ${system.variant({
-    prop: 'mode',
-    variants: {
-      light: { bg: 'navy', color: 'beige' },
-      dark: { bg: 'beige', color: 'navy' },
-    },
-  })}
-`;
+  },
+});
+
+const modeVariants = system.variant({
+  prop: 'mode',
+  variants: {
+    light: { bg: 'navy', color: 'beige' },
+    dark: { bg: 'beige', color: 'navy' },
+  },
+});
+
+const Svg = styled('svg', styledConfig)<ProLabelProps>(
+  placementVariants,
+  modeVariants,
+  logoStyles
+);
 
 export const ProLabel: React.FC<React.ComponentProps<typeof Svg>> = ({
   mode,
