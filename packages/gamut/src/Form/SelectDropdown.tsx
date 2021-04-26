@@ -24,8 +24,12 @@ type SelectDropdownBaseProps = Omit<
   SelectComponentProps,
   'onChange' | 'defaultValue'
 >;
+
+type SelectDropdownRecurlyProps = SelectDropdownBaseProps & {
+  inputProps?: any;
+};
 interface SelectDropdownProps
-  extends SelectDropdownBaseProps,
+  extends SelectDropdownRecurlyProps,
     Pick<NamedProps, 'onChange'>,
     Pick<SelectHTMLAttributes<HTMLSelectElement>, 'value' | 'disabled'> {}
 
@@ -34,7 +38,7 @@ type OptionStrict = {
   value: string;
 };
 
-const { DropdownIndicator } = SelectDropdownElements;
+const { DropdownIndicator, Input } = SelectDropdownElements;
 
 const selectBaseStyles = ({
   error,
@@ -113,6 +117,15 @@ const ChevronDropdown = (props: IndicatorProps<OptionTypeBase, false>) => {
   );
 };
 
+const CustomInput = (props) => {
+  const newProps = { ...props, ...props.selectProps.inputProps };
+  return (
+    <>
+      {console.log(props.selectProps.inputProps)} <Input {...newProps} />
+    </>
+  );
+};
+
 export const SelectDropdown: React.FC<SelectDropdownProps> = ({
   options,
   error,
@@ -120,6 +133,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
   disabled,
   onChange,
   value,
+  inputProps,
   ...rest
 }) => {
   const [activated, setActivated] = useState(false);
@@ -164,10 +178,12 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
       error={Boolean(error)}
       components={{
         DropdownIndicator: ChevronDropdown,
+        Input: CustomInput,
         IndicatorSeparator: () => null,
       }}
       onChange={changeHandler}
-      isSearchable={false}
+      inputProps={{ 'data-recurly': 'country' }}
+      isSearchable={true}
       isMulti={false}
       isDisabled={disabled}
       options={selectOptions}
