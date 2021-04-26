@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [32.2.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@32.2.0...@codecademy/gamut@32.2.1) (2021-04-26)
+
+
+### Bug Fixes
+
+* **Column:** Make Columns statically 12 on the base ([0933f31](https://github.com/Codecademy/client-modules/commit/0933f31842bdb282908687bc31063098d0ef8ddd))
+
+
+
 ## [32.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@32.1.4...@codecademy/gamut@32.2.0) (2021-04-26)
 
 
