@@ -24,12 +24,8 @@ type SelectDropdownBaseProps = Omit<
   SelectComponentProps,
   'onChange' | 'defaultValue'
 >;
-
-type SelectDropdownRecurlyProps = SelectDropdownBaseProps & {
-  inputProps?: any;
-};
 interface SelectDropdownProps
-  extends SelectDropdownRecurlyProps,
+  extends SelectDropdownBaseProps,
     Pick<NamedProps, 'onChange'>,
     Pick<SelectHTMLAttributes<HTMLSelectElement>, 'value' | 'disabled'> {}
 
@@ -117,15 +113,6 @@ const ChevronDropdown = (props: IndicatorProps<OptionTypeBase, false>) => {
   );
 };
 
-const CustomInput = (props) => {
-  const newProps = { ...props, ...props.selectProps.inputProps };
-  return (
-    <>
-      {console.log(props.selectProps.inputProps)} <Input {...newProps} />
-    </>
-  );
-};
-
 export const SelectDropdown: React.FC<SelectDropdownProps> = ({
   options,
   error,
@@ -133,11 +120,10 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
   disabled,
   onChange,
   value,
-  inputProps,
   ...rest
 }) => {
   const [activated, setActivated] = useState(false);
-
+  const inputProps = { 'data-recurly': 'country' };
   const changeHandler = (optionEvent: OptionStrict) => {
     onChange?.(optionEvent, {
       action: 'select-option',
@@ -178,11 +164,12 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
       error={Boolean(error)}
       components={{
         DropdownIndicator: ChevronDropdown,
-        Input: CustomInput,
+        Input: (props) => {
+          return <Input {...inputProps} {...props} />;
+        },
         IndicatorSeparator: () => null,
       }}
       onChange={changeHandler}
-      inputProps={{ 'data-recurly': 'country' }}
       isSearchable={true}
       isMulti={false}
       isDisabled={disabled}
