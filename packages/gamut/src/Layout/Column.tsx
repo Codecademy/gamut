@@ -65,6 +65,6 @@ export interface ColumnProps extends ColumnVariantProps, ColumnStyleProps {}
 export const Column = styled(
   'div',
   styledConfig(columnProps.propNames)
-)<ColumnProps>(columnVariants, columnProps);
+)<ColumnProps>(columnProps({ size: 12 }), columnVariants, columnProps);
 
-Column.defaultProps = { variant: 'fitContent', size: 12 };
+Column.defaultProps = { variant: 'fitContent' };

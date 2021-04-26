@@ -1,3 +1,5 @@
+import { theme } from '@codecademy/gamut-styles';
+import { ThemeProvider } from '@emotion/react';
 import { fireEvent, render, screen } from '@testing-library/react';
 import React from 'react';
 
@@ -5,9 +7,11 @@ import { Modal, ModalProps } from '..';
 
 const renderModal = (props?: Partial<ModalProps>) => {
   return render(
-    <Modal isOpen onRequestClose={() => {}} {...props}>
-      <div data-testid="modal-content">{props?.children}</div>
-    </Modal>
+    <ThemeProvider theme={theme}>
+      <Modal isOpen onRequestClose={() => {}} {...props}>
+        <div data-testid="modal-content">{props?.children}</div>
+      </Modal>
+    </ThemeProvider>
   );
 };
 
