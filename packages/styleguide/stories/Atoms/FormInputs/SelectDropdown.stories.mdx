@@ -1,0 +1,127 @@
+import { FlexBox, FormGroup, Select, SelectDropdown } from '@codecademy/gamut';
+import title from '@codecademy/macros/lib/title.macro';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+
+import { PropsTable } from '~styleguide/blocks';
+
+export const fruitOptions = [
+  'Apple',
+  'Banana',
+  'Cherry',
+  'Dragonfruit',
+  'Eggplant',
+];
+
+<Meta
+  title={title}
+  component={SelectDropdown}
+  parameters={{
+    subtitle:
+      'A variant of our `Select` component with a styled dropdown menu.',
+    source: 'gamut',
+    status: 'updating',
+  }}
+  args={{
+    htmlFor: 'example-select',
+    options: fruitOptions,
+  }}
+  argTypes={{
+    value: {
+      control: {
+        type: 'select',
+        options: fruitOptions,
+      },
+    },
+  }}
+/>
+
+<Canvas>
+  <Story name="SelectDropdown">{(args) => <SelectDropdown {...args} />}</Story>
+</Canvas>
+
+<PropsTable story="SelectDropdown" />
+
+### SelectDropdown
+
+This is a variant of our `Select` component with a styled dropdown menu. `SelectDropdown` has a larger JavaScript dependency size than our standard `Select` component so should not be used unless specified in designs.
+
+<Canvas>
+  <Story
+    name="BaseDropdown"
+    args={{
+      options: ['Based', 'Regular Size', 'Normal'],
+      placeholder: 'all about that',
+    }}
+  >
+    {(args) => (
+      <FlexBox width="10rem" height="25rem">
+        <SelectDropdown {...args} />
+      </FlexBox>
+    )}
+  </Story>
+  <Story
+    name="ErrorDropdown"
+    args={{
+      options: ['Small', 'Quite little'],
+      value: 'Quite little',
+      error: true,
+    }}
+  >
+    {(args) => (
+      <FlexBox width="10rem" height="25rem">
+        <SelectDropdown {...args} />
+      </FlexBox>
+    )}
+  </Story>
+  <Story
+    name="DisabledDropdown"
+    args={{
+      options: ['Disabled'],
+      disabled: true,
+      placeholder: 'Disabled',
+    }}
+  >
+    {(args) => (
+      <FlexBox width="10rem" height="25rem">
+        <SelectDropdown {...args} />
+      </FlexBox>
+    )}
+  </Story>
+</Canvas>
+
+### Form Group + Select
+
+<Canvas>
+  <Story
+    name="FormGroupStyled"
+    args={{
+      options: ['Error', 'oh no', ':('],
+      value: 'oh no',
+    }}
+  >
+    {(args) => (
+      <FormGroup label="i am ~styled" error="error!">
+        <SelectDropdown error {...args} />
+      </FormGroup>
+    )}
+  </Story>
+</Canvas>
+
+### Custom inputProps
+
+<Canvas>
+  <Story
+    name="CustomInputProps"
+    args={{
+      options: ['I am special', 'yes I am!', ':)'],
+      inputProps: { hello: 'updog' },
+      name: 'updog',
+    }}
+  >
+    {(args) => (
+      <FormGroup label="i am ~styled" error="error!">
+        <SelectDropdown {...args} />
+      </FormGroup>
+    )}
+  </Story>
+</Canvas>

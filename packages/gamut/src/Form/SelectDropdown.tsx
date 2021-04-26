@@ -2,9 +2,15 @@ import { ArrowChevronDownIcon } from '@codecademy/gamut-icons';
 import { theme } from '@codecademy/gamut-styles';
 import { css } from '@emotion/react';
 import { each, isObject } from 'lodash';
-import React, { SelectHTMLAttributes, useMemo, useState } from 'react';
+import React, {
+  ReactNode,
+  SelectHTMLAttributes,
+  useMemo,
+  useState,
+} from 'react';
 import ReactSelect, {
   components as SelectDropdownElements,
+  ContainerProps,
   IndicatorProps,
   NamedProps,
   OptionTypeBase,
@@ -20,6 +26,8 @@ import {
   formFieldStyles,
 } from './styles/shared';
 
+const { DropdownIndicator, SelectContainer } = SelectDropdownElements;
+
 type SelectDropdownBaseProps = Omit<
   SelectComponentProps,
   'onChange' | 'defaultValue'
@@ -30,6 +38,7 @@ interface SelectDropdownProps
     Pick<SelectHTMLAttributes<HTMLSelectElement>, 'value' | 'disabled'> {
   inputProps?: any;
   name?: string;
+  placeholder?: string;
 }
 
 type OptionStrict = {
@@ -37,7 +46,9 @@ type OptionStrict = {
   value: string;
 };
 
-const { DropdownIndicator, SelectContainer } = SelectDropdownElements;
+type Help = ContainerProps<OptionStrict, false> & {
+  children?: ReactNode[];
+};
 
 const selectBaseStyles = ({
   error,
@@ -116,20 +127,15 @@ const ChevronDropdown = (props: IndicatorProps<OptionTypeBase, false>) => {
   );
 };
 
-const CustomContainer = ({ children, ...rest }: any) => {
+const CustomContainer = ({ children, ...rest }: Help) => {
   const inputProps = rest.selectProps.inputProps;
+  const value = rest.hasValue ? rest.getValue()[0].value : '';
 
   return (
     <>
-      {console.log(inputProps)}
       <SelectContainer {...rest}>
         {children}
-        <input
-          type="hidden"
-          name="updog"
-          value={rest.selectProps.value?.value}
-          {...inputProps}
-        />
+        <input type="hidden" value={value} {...inputProps} />
       </SelectContainer>
     </>
   );
@@ -143,15 +149,13 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
   onChange,
   value,
   name,
-  // inputProps,
+  placeholder = 'Select an option',
+  inputProps,
   ...rest
 }) => {
   const [activated, setActivated] = useState(false);
-  const inputProps = {
-    'data-recurly': 'country',
-    id: 'countrySelect',
-    name: name,
-  };
+  const baseInputProps = { name: name };
+
   const changeHandler = (optionEvent: OptionStrict) => {
     onChange?.(optionEvent, {
       action: 'select-option',
@@ -196,12 +200,15 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
         SelectContainer: CustomContainer,
       }}
       onChange={changeHandler}
-      inputProps={inputProps}
+      inputProps={
+        inputProps ? { ...inputProps, ...baseInputProps } : baseInputProps
+      }
       name={undefined}
       isSearchable={false}
       isMulti={false}
       isDisabled={disabled}
       options={selectOptions}
+      placeholder={placeholder}
       {...rest}
     />
   );
