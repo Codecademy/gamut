@@ -1,5 +1,5 @@
 import { styledConfig, system } from '@codecademy/gamut-styles';
-import { StyleProps, variance } from '@codecademy/variance';
+import { compose, createProps, StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
 
 const rows = { 1: 1, 2: 2, 3: 3 };
@@ -18,7 +18,7 @@ const columns = {
   11: 11,
 };
 
-const gridProps = variance.create({
+const gridProps = createProps({
   rowOffset: {
     property: 'gridRowStart',
     scale: rows,
@@ -50,7 +50,7 @@ const columnVariants = system.variant({
   },
 });
 
-const columnProps = variance.compose(
+const columnProps = compose(
   system.layout,
   system.space,
   system.grid,

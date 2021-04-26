@@ -1,4 +1,4 @@
-import { variance } from '@codecademy/variance';
+import { createCss, createProps, createVariants } from '@codecademy/variance';
 
 import * as PROPERTIES from './config';
 
@@ -7,17 +7,17 @@ import * as PROPERTIES from './config';
  * These are not exported yet, but will be used when gamut-system is deprecated
  */
 
-export const typography = variance.create(PROPERTIES.typography);
-export const grid = variance.create(PROPERTIES.grid);
-export const flex = variance.create(PROPERTIES.flex);
-export const layout = variance.create(PROPERTIES.layout);
-export const positioning = variance.create(PROPERTIES.positioning);
-export const background = variance.create(PROPERTIES.background);
-export const color = variance.create(PROPERTIES.color);
-export const shadow = variance.create(PROPERTIES.shadows);
-export const space = variance.create(PROPERTIES.space);
-export const border = variance.create(PROPERTIES.border);
+export const typography = createProps(PROPERTIES.typography);
+export const grid = createProps(PROPERTIES.grid);
+export const flex = createProps(PROPERTIES.flex);
+export const layout = createProps(PROPERTIES.layout);
+export const positioning = createProps(PROPERTIES.positioning);
+export const background = createProps(PROPERTIES.background);
+export const color = createProps(PROPERTIES.color);
+export const shadow = createProps(PROPERTIES.shadows);
+export const space = createProps(PROPERTIES.space);
+export const border = createProps(PROPERTIES.border);
 
-export const css = variance.createCss(PROPERTIES.all);
+export const css = createCss(PROPERTIES.all);
 
-export const variant = variance.createVariant(PROPERTIES.all);
+export const variant = createVariants(PROPERTIES.all);

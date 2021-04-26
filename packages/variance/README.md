@@ -8,10 +8,10 @@ Configure your props with a simple configuration object. The keys of your object
 
 ```tsx
 import styled from '@emotion/styled';
-import { variance } from '@codecademy/variance';
+import { createProps } from '@codecademy/variance';
 
 const Container = styled.div(
-  variance.create({
+  createProps({
     w: { property: 'width' },
     p: { property: 'padding', scale: 'spacing' },
   })
@@ -27,19 +27,19 @@ const Container = styled.div(
 You can compose props that you've created seperately to create new prop functions.
 
 ```tsx
-import { variance } from '@codecademy/variance';
+import { compose, createProps } from '@codecademy/variance';
 
-const spacing = variance.create({
+const spacing = createProps({
   m: { property: 'padding', scale: 'margin' },
   p: { property: 'padding', scale: 'spacing' },
 });
 
-const dimensions = variance.create({
+const dimensions = createProps({
   w: { property: 'width' },
   h: { property: 'height' },
 });
 
-const combinedProps = variance.compose(spacing, dimensions);
+const combinedProps = compose(spacing, dimensions);
 
 const Box = styled.div(combinedProps);
 ```
@@ -48,9 +48,9 @@ const Box = styled.div(combinedProps);
 
 ```tsx
 import styled from '@emotion/styled';
-import { variance } from '@codecademy/variance';
+import { createCss, createVariants } from '@codecademy/variance';
 
-const css = variance.createCss({
+const css = createCss({
   m: { property: 'padding', scale: 'margin' },
   p: { property: 'padding', scale: 'spacing' },
 });
@@ -63,7 +63,7 @@ const MyCoolThing = styled.div(
   })
 );
 
-const variant = variance.createVariant({
+const variant = createVariants({
   m: { property: 'padding', scale: 'margin' },
   p: { property: 'padding', scale: 'spacing' },
 });

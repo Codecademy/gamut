@@ -1,13 +1,18 @@
-import { variance } from '../../src/core';
+import {
+  compose,
+  createCss,
+  createProps,
+  createVariants,
+} from '../../src/core';
 import { transformSize } from '../../src/transforms/transformSize';
 import { theme } from '../__fixtures__/theme';
 
-const space = variance.create({
+const space = createProps({
   margin: { property: 'margin', scale: 'spacing' },
   padding: { property: 'padding', scale: 'spacing' },
 });
 
-const layout = variance.create({
+const layout = createProps({
   width: {
     property: 'width',
     transform: (val: string) => `${parseInt(val, 10) / 16}rem`,
@@ -155,7 +160,7 @@ describe('style props', () => {
       expect(layout({ height: '24px', theme })).toEqual(res);
     });
     it('transforms scalar values only if scale is present', () => {
-      const doubleSpace = variance.create({
+      const doubleSpace = createProps({
         p: {
           property: 'padding',
           scale: 'spacing',
@@ -174,7 +179,7 @@ describe('style props', () => {
   });
   describe('compose', () => {
     it('combines multiple parsers into one parser', () => {
-      const composed = variance.compose(layout, space);
+      const composed = compose(layout, space);
 
       expect(
         composed({
@@ -196,7 +201,7 @@ describe('style props', () => {
 describe('css', () => {
   const marginTransform = jest.fn();
 
-  const css = variance.createCss({
+  const css = createCss({
     width: { property: 'width', transform: transformSize },
     height: { property: 'height', transform: transformSize },
     margin: {
@@ -317,7 +322,7 @@ describe('css', () => {
 describe('variants', () => {
   const marginTransform = jest.fn();
 
-  const variant = variance.createVariant({
+  const variant = createVariants({
     width: { property: 'width', transform: transformSize },
     height: { property: 'height', transform: transformSize },
     margin: {

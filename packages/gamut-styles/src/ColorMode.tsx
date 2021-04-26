@@ -1,4 +1,4 @@
-import { serializeTokens, variance } from '@codecademy/variance';
+import { compose, serializeTokens } from '@codecademy/variance';
 import { CSSObject, Theme, ThemeProvider, useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
 import { HTMLAttributes } from 'enzyme';
@@ -21,7 +21,7 @@ export type ColorModeProps = {
   className?: string;
 };
 
-export const providerProps = variance.compose(
+export const providerProps = compose(
   layout,
   color,
   grid,

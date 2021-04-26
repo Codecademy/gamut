@@ -4,12 +4,12 @@ import styled from '@emotion/styled';
 import React, { ComponentProps } from 'react';
 import renderer from 'react-test-renderer';
 
-import { variance } from '../../src/core';
+import { compose, createProps } from '../../src/core';
 import { theme } from '../__fixtures__/theme';
 
 expect.extend(matchers);
 
-const styles = variance.create({
+const styles = createProps({
   margin: { property: 'margin', scale: 'spacing' },
   padding: { property: 'padding', scale: 'spacing' },
   width: {
@@ -64,10 +64,7 @@ describe('style props', () => {
   it('composes props', () => {
     const render = setupRender(
       styled.div(
-        variance.compose(
-          styles,
-          variance.create({ color: { property: 'color' } })
-        )
+        compose(styles, variance.create({ color: { property: 'color' } }))
       ),
       {
         color: 'inherit',

@@ -1,11 +1,11 @@
 import { pxRem, styledConfig, system, theme } from '@codecademy/gamut-styles';
-import { StyleProps, variance } from '@codecademy/variance';
+import { compose, createProps, StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
 import { pick } from 'lodash';
 
 const gutters = pick(theme.spacing, [8, 16, 24, 32, 48]);
 
-const grid = variance.create({
+const grid = createProps({
   gap: {
     property: 'gap',
     properties: ['rowGap', 'columnGap'],
@@ -19,7 +19,7 @@ const grid = variance.create({
   },
 });
 
-const gridProps = variance.compose(system.space, grid);
+const gridProps = compose(system.space, grid);
 
 export interface LayoutGridProps extends StyleProps<typeof gridProps> {}
 

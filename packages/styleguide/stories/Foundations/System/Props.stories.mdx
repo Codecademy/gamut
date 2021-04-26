@@ -28,10 +28,10 @@ We've grouped these into a few main groups that affect simliar behaviors: `layou
 You may import these groups directly from `gamut-styles`.
 
 ```tsx
-import { variance } from '@codecademy/variance';
+import { compose } from '@codecademy/variance';
 import { layout, positioning } from '@codecademy/gamut-styles';
 
-const Box = styled.div(variance.compose(layout, positioning));
+const Box = styled.div(compose(layout, positioning));
 
 <Box position="absolute" width="50px" height="50px" />;
 ```
