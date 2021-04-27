@@ -96,6 +96,15 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
             We&apos;re Hiring
           </Anchor>
         </FooterLinkItem>
+        <FooterLinkItem>
+          <Anchor
+            href="https://www.codecademy.com/pages/codecademy-affiliate-program"
+            onClick={(event) => onClick({ event, target: 'affiliate program' })}
+            variant="interface"
+          >
+            Affiliates
+          </Anchor>
+        </FooterLinkItem>
         {userGeo !== 'IN' && (
           <FooterLinkItem>
             <Anchor
