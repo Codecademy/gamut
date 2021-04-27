@@ -19,10 +19,10 @@ const logoStyles = variance.compose(
 );
 
 const logoProps = {
-  default: { viewBox: '0 0 102 21.705' },
-  pro: { viewBox: '0 0 139 21.705' },
-  proAlt: { viewBox: '0 0 139 21.705' },
-  mini: { viewBox: '0 0 28 22' },
+  default: { title: 'Codecademy Logo', viewBox: '0 0 102 21.705' },
+  pro: { title: 'Codecademy Pro Logo', viewBox: '0 0 139 21.705' },
+  proAlt: { title: 'Codecademy Pro Logo', viewBox: '0 0 139 21.705' },
+  mini: { title: 'Codecademy Logo', viewBox: '0 0 28 22' },
 };
 
 const accent = {
@@ -45,18 +45,19 @@ export const Logo = ({
     colors,
     colorModes: { active },
   } = useTheme();
-  const svgProps = logoProps[variant];
+  const { viewBox, title } = logoProps[variant];
   const accentColor =
     variant === 'proAlt' ? colors[accent[active]] : 'currentColor';
 
   return (
     <Svg
-      mode={mode ?? active}
-      height={height}
-      {...svgProps}
       {...props}
       xmlns="http://www.w3.org/2000/svg"
+      viewBox={viewBox}
+      mode={mode ?? active}
+      height={height}
     >
+      <title>{title}</title>
       {variant !== 'mini' && (
         <g fill="none" fillRule="nonzero">
           <path
