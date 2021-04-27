@@ -4,45 +4,65 @@ import styled from '@emotion/styled';
 import React, { ComponentProps, forwardRef } from 'react';
 
 import { ButtonBaseElements } from '../ButtonBase/ButtonBase';
-import { config, SizedButtonProps } from './shared';
-import { TextButton } from './TextButton';
+import { ButtonInner } from './ButtonInner';
+import { ButtonOutline } from './ButtonOutline';
+import {
+  buttonColors,
+  createStates,
+  SizedButtonProps,
+  useColorMode,
+} from './shared';
 
-const IconWrapper = styled(
-  'div',
-  config
-)(
+const { background, foregroundMuted, backgroundEmphasized } = buttonColors;
+
+const IconButtonInner = styled(ButtonInner)<SizedButtonProps>(
+  createStates({
+    base: { color: background },
+    hover: { backgroundColor: backgroundEmphasized },
+    active: { color: background },
+    disabled: {
+      color: foregroundMuted,
+      backgroundColor: 'transparent',
+    },
+  }),
   system.variant({
     prop: 'size',
-    base: {
-      display: 'inline-flex',
-      alignItems: 'center',
-      margin: '0 -1px',
-      '> svg': {
-        width: 1,
-        height: 1,
-      },
-    },
     variants: {
-      normal: { width: 24, height: 24 },
-      small: { width: 16, height: 16 },
+      normal: {
+        height: 40,
+        width: 40,
+        '> svg': {
+          width: 24,
+          height: 24,
+        },
+      },
+      small: {
+        height: 32,
+        width: 32,
+        '> svg': {
+          width: 16,
+          height: 16,
+        },
+      },
     },
   })
 );
 
 export type IconButtonProps = SizedButtonProps &
-  ComponentProps<typeof TextButton> & {
+  ComponentProps<typeof ButtonOutline> & {
     children?: never;
     icon: React.ComponentType<GamutIconProps>;
   };
 
 export const IconButton = forwardRef<ButtonBaseElements, IconButtonProps>(
-  ({ icon: Icon, size = 'normal', ...props }, ref) => {
+  ({ icon: Icon, size = 'normal', mode, ...props }, ref) => {
+    const currentMode = useColorMode(mode);
     return (
-      <TextButton size={size} {...props} ref={ref}>
-        <IconWrapper size={size}>
+      <ButtonOutline mode={currentMode} size={size} {...props} ref={ref}>
+        <IconButtonInner mode={currentMode} size={size} {...props}>
           <Icon aria-hidden />
-        </IconWrapper>
-      </TextButton>
+        </IconButtonInner>
+      </ButtonOutline>
     );
   }
 );
