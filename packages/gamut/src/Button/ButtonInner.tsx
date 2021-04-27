@@ -1,4 +1,4 @@
-import { system, timing } from '@codecademy/gamut-styles';
+import { fontSmoothPixel, system, timing } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 
 import { config } from './shared';
