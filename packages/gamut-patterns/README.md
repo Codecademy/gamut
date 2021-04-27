@@ -1,11 +1,12 @@
 # `@codecademy/gamut-patterns`
 
-> TODO: description
+Patterns for the Gamut component library
 
 ## Usage
 
 ```
-const gamutPatterns = require('@codecademy/gamut-patterns');
+import { DotLoose } from '@codecademy/gamut-patterns';
 
-// TODO: DEMONSTRATE API
+const MyComponent = () => <DotLoose />;
+
 ```

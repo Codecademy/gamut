@@ -1,27 +1,25 @@
-import { mount } from 'enzyme';
-import React from 'react';
+import { setupEnzyme } from '@codecademy/gamut-tests';
 
 import { DotLoose } from '../src/index';
 
+const renderWrapper = setupEnzyme(DotLoose);
+
 describe('Compiled gamut-icons:', () => {
   it('Allows passing a custom color', () => {
-    const wrapper = mount(<DotLoose color="red" />);
+    const { wrapper } = renderWrapper({ color: 'red' });
 
-    const svgEl = wrapper.find('svg');
-    expect(svgEl.props().color).toEqual('red');
+    expect(wrapper.find('svg').props().color).toEqual('red');
   });
 
   it('Allows passing a custom height', () => {
-    const wrapper = mount(<DotLoose height={200} />);
+    const { wrapper } = renderWrapper({ height: 200 });
 
-    const svgEl = wrapper.find('svg');
-    expect(svgEl.props().height).toEqual(200);
+    expect(wrapper.find('svg').props().height).toEqual(200);
   });
 
   it('Allows passing a custom display', () => {
-    const wrapper = mount(<DotLoose display="flex" />);
+    const { wrapper } = renderWrapper({ display: 'flex' });
 
-    const svgEl = wrapper.find('svg');
-    expect(svgEl.props().display).toEqual('flex');
+    expect(wrapper.find('svg').props().display).toEqual('flex');
   });
 });
