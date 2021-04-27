@@ -1,10 +1,16 @@
+import { Card } from '@codecademy/gamut/src';
 import { ListSection } from '@codecademy/gamut-labs/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 
 import { PropsTable } from '~styleguide/blocks';
 
-import { ListSectionExample } from './ListSection.examples';
+export const listItems = [
+  { title: '1' },
+  { title: '2' },
+  { title: '3' },
+  { title: '4' },
+];
 
 <Meta
   title={title}
@@ -14,6 +20,9 @@ import { ListSectionExample } from './ListSection.examples';
     subtitle: `An abstract List Section that renders a list of items`,
     status: 'updating',
   }}
+  args={{
+    title: 'List Section Title',
+  }}
 />
 
 You will want to use this when the main content of your page is easily divided/organized into multiple sections. You would use one ListSection component to display a list of items in a section. It has a built in "Show All" functionality. "Show All" button will appear if the number of list items is higher than the initial display amount you wish to show. Once "Show All" button is clicked, it will display all of the list items and the button will change to "Show Less".
@@ -22,9 +31,24 @@ It is built on top of [Page Section](https://gamut.codecademy.com/storybook/?pat
 
 <Canvas>
   <Story name="ListSection">
-    {(args) => {
-      return <ListSectionExample {...args} />;
-    }}
+    {(args) => (
+      <>
+        <ListSection {...args} title="List Section 1">
+          {listItems.map((item) => (
+            <Card>List Item {item.title}</Card>
+          ))}
+        </ListSection>
+        <ListSection {...args} title="List Section 2" initialDisplayAmount={2}>
+          {listItems.map((item) => (
+            <Card>List Item {item.title}</Card>
+          ))}
+        </ListSection>
+        <ListSection {...args} title="List Section 3" initialDisplayAmount={2}>
+          <Card>List Item 1</Card>
+          <Card>List Item 2</Card>
+        </ListSection>
+      </>
+    )}
   </Story>
 </Canvas>
 
