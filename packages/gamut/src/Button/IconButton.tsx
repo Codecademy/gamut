@@ -51,12 +51,12 @@ export type IconButtonProps = SizedButtonProps &
   };
 
 export const IconButton = forwardRef<ButtonBaseElements, IconButtonProps>(
-  ({ icon: Icon = 'span', size = 'normal', mode, ...props }, ref) => {
+  ({ icon: Icon, size = 'normal', mode, ...props }, ref) => {
     const currentMode = useColorMode(mode);
     return (
       <ButtonOutline mode={currentMode} size={size} {...props} ref={ref}>
         <IconButtonInner mode={currentMode} size={size}>
-          <Icon aria-hidden />
+          {Icon && <Icon aria-hidden />}
         </IconButtonInner>
       </ButtonOutline>
     );
