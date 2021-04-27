@@ -2,7 +2,7 @@ import React from 'react';
 
 import { PatternProps } from '../../types';
 
-export const dotDense: React.FC<PatternProps> = ({ ...props }) => (
+export const DotDense: React.FC<PatternProps> = ({ ...props }) => (
   <svg width="100%" height="100%" {...props} aria-hidden>
     <pattern
       id="dotDense"
