@@ -116,11 +116,9 @@ export const createStates = ({
   ${ButtonOutline}:hover & {
     ${hover}
   }
-
   ${ButtonOutline}:active & {
     ${active}
   }
-
   ${ButtonOutline}:disabled &,
   ${ButtonOutline}[aria-disabled='true'] & {
     ${disabled}
