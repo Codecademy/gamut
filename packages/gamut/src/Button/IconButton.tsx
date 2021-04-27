@@ -2,48 +2,51 @@ import { GamutIconProps } from '@codecademy/gamut-icons';
 import { pxRem } from '@codecademy/gamut-styles';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import React from 'react';
+import React, { ComponentProps, forwardRef } from 'react';
 
-import { SizedButtonProps } from './shared';
+import { ButtonBaseElements } from '../ButtonBase/ButtonBase';
+import { config, SizedButtonProps } from './shared';
 import { TextButton } from './TextButton';
-
-export type IconButtonProps = SizedButtonProps & {
-  children?: never;
-  icon: React.ComponentType<GamutIconProps>;
-};
 
 const ICON_SIZES = {
   normal: 24,
   small: 16,
 };
 
-const IconWrapper = styled.div<Pick<SizedButtonProps, 'size'>>(
-  ({ size = 'normal' }) => {
-    const dimensions = pxRem(ICON_SIZES[size]);
+const IconWrapper = styled(
+  'div',
+  config
+)<SizedButtonProps>(({ size }) => {
+  const dimensions = pxRem(ICON_SIZES[size || 'normal']);
 
-    return css`
-      display: inline-flex;
+  return css`
+    display: inline-flex;
+    width: ${dimensions};
+    height: ${dimensions};
+    margin: 0 -1px;
+    align-items: center;
+
+    > svg {
       width: ${dimensions};
       height: ${dimensions};
-      margin: 0 -1px;
-      align-items: center;
+    }
+  `;
+});
 
-      > svg {
-        width: ${dimensions};
-        height: ${dimensions};
-      }
-    `;
+export type IconButtonProps = SizedButtonProps &
+  ComponentProps<typeof TextButton> & {
+    children?: never;
+    icon: React.ComponentType<GamutIconProps>;
+  };
+
+export const IconButton = forwardRef<ButtonBaseElements, IconButtonProps>(
+  ({ icon: Icon, size = 'normal', ...props }, ref) => {
+    return (
+      <TextButton size={size} {...props} ref={ref}>
+        <IconWrapper size={size}>
+          <Icon aria-hidden />
+        </IconWrapper>
+      </TextButton>
+    );
   }
 );
-
-export const IconButton: React.FC<
-  IconButtonProps & React.ComponentProps<typeof TextButton>
-> = ({ icon: Icon, size = 'normal', ...props }) => {
-  return (
-    <TextButton size={size} {...props}>
-      <IconWrapper size={size}>
-        <Icon aria-hidden />
-      </IconWrapper>
-    </TextButton>
-  );
-};

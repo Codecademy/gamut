@@ -1,11 +1,17 @@
-import { colors, swatches, variant } from '@codecademy/gamut-styles';
+import {
+  colors,
+  styledConfig,
+  swatches,
+  system,
+} from '@codecademy/gamut-styles';
+import { Theme } from '@emotion/react';
 import type { HTMLProps } from 'react';
 
 export type ButtonProps = Omit<
   HTMLProps<HTMLAnchorElement> & HTMLProps<HTMLButtonElement>,
-  'size'
+  'size' | 'ref'
 > & {
-  mode?: 'dark' | 'light';
+  mode?: keyof Theme['colorModes']['modes'];
   variant?: 'primary' | 'secondary';
 };
 
@@ -15,23 +21,25 @@ export type ButtonSizeProps = {
 
 export type SizedButtonProps = ButtonProps & ButtonSizeProps;
 
-export const buttonSizing = variant({
+export const config = styledConfig(['mode', 'variant', 'size']);
+
+export const buttonSizing = system.variant({
   prop: 'size',
-  default: 'normal',
+  defaultVariant: 'normal',
   variants: {
     normal: {
       fontSize: 16,
-      height: '40px',
-      minWidth: '40px',
-      paddingY: 4,
-      paddingX: 16,
+      height: 40,
+      minWidth: 40,
+      py: 4,
+      px: 16,
     },
     small: {
       fontSize: 14,
-      height: '32px',
-      minWidth: '32px',
-      paddingY: 4,
-      paddingX: 8,
+      height: 32,
+      minWidth: 32,
+      py: 4,
+      px: 8,
     },
   },
 });

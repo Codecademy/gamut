@@ -1,29 +1,35 @@
 import { css, useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
-import React from 'react';
+import React, { forwardRef } from 'react';
 
+import { ButtonBaseElements } from '../ButtonBase/ButtonBase';
 import { ButtonInner } from './ButtonInner';
-import { ButtonOutline } from './ButtonOutline';
-import { buttonSizing, modeColorGroups, SizedButtonProps } from './shared';
-
-const FillButtonInner = styled(ButtonInner)<SizedButtonProps>(
+import { ButtonOutline, ButtonOutlineProps } from './ButtonOutline';
+import {
   buttonSizing,
-  ({ mode = 'light', variant = 'primary' }: SizedButtonProps) => {
+  config,
+  modeColorGroups,
+  SizedButtonProps,
+} from './shared';
+
+const FillButtonInner = styled(ButtonInner, config)<SizedButtonProps>(
+  buttonSizing,
+  ({ mode = 'light', variant = 'primary' }) => {
     const modeColors = modeColorGroups[mode][variant];
     return css`
       color: ${modeColors.foreground};
       background-color: ${modeColors.background};
 
-      ${FillButtonOuter}:hover & {
+      ${ButtonOutline}:hover & {
         background-color: ${modeColors.backgroundDull};
       }
 
-      ${FillButtonOuter}:active & {
+      ${ButtonOutline}:active & {
         border-color: ${modeColors.background};
       }
 
-      ${FillButtonOuter}:disabled &,
-      ${FillButtonOuter}[aria-disabled='true'] & {
+      ${ButtonOutline}:disabled &,
+      ${ButtonOutline}[aria-disabled='true'] & {
         color: ${modeColors.foregroundMuted};
         background-color: ${modeColors.backgroundMuted};
       }
@@ -31,20 +37,20 @@ const FillButtonInner = styled(ButtonInner)<SizedButtonProps>(
   }
 );
 
-const FillButtonOuter = styled(ButtonOutline)();
+export type FillButtonProps = SizedButtonProps & ButtonOutlineProps;
 
-export const FillButton: React.FC<
-  SizedButtonProps & React.ComponentProps<typeof FillButtonOuter>
-> = ({ children, mode, size, variant, ...props }) => {
-  const {
-    colorModes: { active },
-  } = useTheme();
-  const currentMode = mode ?? active;
-  return (
-    <FillButtonOuter mode={currentMode} variant={variant} {...props}>
-      <FillButtonInner mode={currentMode} variant={variant} size={size}>
-        {children}
-      </FillButtonInner>
-    </FillButtonOuter>
-  );
-};
+export const FillButton = forwardRef<ButtonBaseElements, FillButtonProps>(
+  ({ children, mode, size, variant, ...props }, ref) => {
+    const {
+      colorModes: { active },
+    } = useTheme();
+    const currentMode = mode ?? active;
+    return (
+      <ButtonOutline mode={currentMode} variant={variant} {...props} ref={ref}>
+        <FillButtonInner mode={currentMode} variant={variant} size={size}>
+          {children}
+        </FillButtonInner>
+      </ButtonOutline>
+    );
+  }
+);

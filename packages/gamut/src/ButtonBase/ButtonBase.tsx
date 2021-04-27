@@ -5,7 +5,13 @@ export type ButtonBaseElements = HTMLAnchorElement | HTMLButtonElement;
 
 export type ButtonBaseElementProps = HTMLProps<
   HTMLAnchorElement | HTMLButtonElement
-> & { as?: never };
+> & {
+  as?: never;
+  ref?:
+    | ((instance: ButtonBaseElements | null) => void)
+    | MutableRefObject<ButtonBaseElements | null>
+    | null;
+};
 
 export type SafeButtonProps<T> = T & Omit<ButtonBaseElementProps, keyof T>;
 
@@ -21,32 +27,34 @@ const ButtonReset = styled.button`
   font-size: inherit;
 `;
 
-export const ButtonBase = forwardRef<ButtonBaseElements, any>(
-  ({ href, disabled, children, as, role = 'button', ...rest }, ref) => {
-    if (href == null) {
-      return (
-        <ButtonReset
-          {...rest}
-          disabled={disabled}
-          ref={ref as MutableRefObject<HTMLButtonElement>}
-          type="button"
-          role={role}
-        >
-          {children}
-        </ButtonReset>
-      );
-    }
-
+export const ButtonBase = forwardRef<
+  HTMLButtonElement | HTMLAnchorElement,
+  any
+>(({ href, disabled, children, as, role = 'button', ...rest }, ref) => {
+  if (href == null) {
     return (
-      <a
-        {...rest}
-        href={href}
-        ref={ref as MutableRefObject<HTMLAnchorElement>}
+      <ButtonReset
         disabled={disabled}
         aria-disabled={disabled}
+        ref={ref as MutableRefObject<HTMLButtonElement>}
+        type="button"
+        role={role}
+        {...rest}
       >
         {children}
-      </a>
+      </ButtonReset>
     );
   }
-);
+
+  return (
+    <a
+      {...rest}
+      href={href}
+      ref={ref as MutableRefObject<HTMLAnchorElement>}
+      disabled={disabled}
+      aria-disabled={disabled}
+    >
+      {children}
+    </a>
+  );
+});
