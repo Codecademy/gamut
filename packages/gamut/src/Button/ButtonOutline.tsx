@@ -1,6 +1,5 @@
 import { system, timing } from '@codecademy/gamut-styles';
 import { serializeTokens, StyleProps, ThemeProps } from '@codecademy/variance';
-import { BaseTheme } from '@codecademy/variance/dist/types/theme';
 import styled from '@emotion/styled';
 import { ComponentProps } from 'react';
 
