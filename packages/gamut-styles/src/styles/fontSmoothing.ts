@@ -1,18 +1,20 @@
-import { ThemeProps } from '@codecademy/variance';
+import { variance } from '@codecademy/variance';
 
-const variants = {
+const smoothing = {
   pixel: {
-    '-webkit-font-smoothing': 'antialiased',
-    '-moz-osx-font-smoothing': 'grayscale',
+    WebKitFontSmoothing: 'antialiased',
+    MozOsxFontSmoothing: 'grayscale',
   },
   subpixel: {
-    '-webkit-font-smoothing': 'subpixel-antialiased',
-    '-moz-osx-font-smoothing': 'auto',
+    WebKitFontSmoothing: 'subpixel-antialiased',
+    MozOsxFontSmoothing: 'auto',
   },
 };
 
-export const fontSmoothing = <
-  T extends ThemeProps<Partial<Record<'smoothing', 'pixel' | 'subpixel'>>>
->({
-  smoothing = 'pixel',
-}: T) => variants[smoothing];
+export const fontSmoothing = variance.create({
+  fontSmoothing: {
+    property: 'fontSmooth',
+    scale: { pixel: 'pixel', subpixel: 'subpixel' },
+    transform: (value: keyof typeof smoothing) => smoothing[value],
+  },
+});

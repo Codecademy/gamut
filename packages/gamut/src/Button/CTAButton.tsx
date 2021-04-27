@@ -51,11 +51,11 @@ export type CTAButtonProps = Omit<
 >;
 
 export const CTAButton = forwardRef<ButtonBaseElements, CTAButtonProps>(
-  ({ children, mode, ...props }, ref) => {
+  ({ children, mode, variant, ...props }, ref) => {
     const currentMode = useColorMode(mode);
     return (
       <ButtonOutline mode={currentMode} {...props} padded="medium" ref={ref}>
-        <CTAButtonInner mode={currentMode} {...props}>
+        <CTAButtonInner mode={currentMode} variant={variant}>
           {children}
         </CTAButtonInner>
       </ButtonOutline>

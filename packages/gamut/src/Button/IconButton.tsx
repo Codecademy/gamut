@@ -59,7 +59,7 @@ export const IconButton = forwardRef<ButtonBaseElements, IconButtonProps>(
     const currentMode = useColorMode(mode);
     return (
       <ButtonOutline mode={currentMode} size={size} {...props} ref={ref}>
-        <IconButtonInner mode={currentMode} size={size} {...props}>
+        <IconButtonInner mode={currentMode} size={size}>
           <Icon aria-hidden />
         </IconButtonInner>
       </ButtonOutline>
