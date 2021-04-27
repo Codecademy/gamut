@@ -4,7 +4,7 @@
     "url": "https://github.com/Codecademy/client-modules/issues"
   },
   "dependencies": {
-    "@codecademy/gamut-styles": "^9.5.3",
+    "@codecademy/gamut-styles": "^9.6.2",
     "@codecademy/gamut-system": "^0.7.0",
     "classnames": "^2.2.5"
   },
@@ -16,8 +16,8 @@
   "main": "dist/index.js",
   "license": "MIT",
   "peerDependencies": {
-    "@emotion/react": "^11.0.0",
-    "@emotion/styled": "^11.0.0",
+    "@emotion/react": "^11.1.5",
+    "@emotion/styled": "^11.1.5",
     "react": ">=16.8.1",
     "react-dom": ">=16.8.1"
   },
