@@ -67,7 +67,7 @@ describe('GridForm', () => {
 
   // There is some blocking behavior in this test as the DOM does not rerender correctly
   // Turning this off until a sustainable / transparent pattern can be established for React Hook form updates.
-  xit('only sets aria-live prop on the first validation error in a form', async () => {
+  it('only sets aria-live prop on the first validation error in a form', async () => {
     const fields = [
       { ...stubTextField, validation: { required: 'Please enter text' } },
       {
