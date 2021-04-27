@@ -67,7 +67,7 @@ export const PageSection: React.FC<PageSectionProps> = ({
   const maybeRenderSectionFooter = () => {
     if (!footerButton) return null;
     return (
-      <FlexBox justifyContent="flex-end">
+      <FlexBox justifyContent="flex-end" marginTop={16}>
         {renderSectionButton(footerButton)}
       </FlexBox>
     );
