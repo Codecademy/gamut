@@ -1,0 +1,31 @@
+import { ListSection } from '@codecademy/gamut-labs/src';
+import title from '@codecademy/macros/lib/title.macro';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+
+import { PropsTable } from '~styleguide/blocks';
+
+import { ListSectionExample } from './ListSection.examples';
+
+<Meta
+  title={title}
+  component={ListSection}
+  parameters={{
+    source: 'gamut-labs',
+    subtitle: `An abstract List Section that renders a list of items`,
+    status: 'updating',
+  }}
+/>
+
+You will want to use this when the main content of your page is easily divided/organized into multiple sections. You would use one ListSection component to display a list of items in a section. It has a built in "Show All" functionality. "Show All" button will appear if the number of list items is higher than the initial display amount you wish to show. Once "Show All" button is clicked, it will display all of the list items and the button will change to "Show Less".
+
+It is built on top of [Page Section](https://gamut.codecademy.com/storybook/?path=/docs/molecules-pagesection--page-section) so you may pass in optional header button and header secondary button.
+
+<Canvas>
+  <Story name="ListSection">
+    {(args) => {
+      return <ListSectionExample {...args} />;
+    }}
+  </Story>
+</Canvas>
+
+<PropsTable story="ListSection" />
