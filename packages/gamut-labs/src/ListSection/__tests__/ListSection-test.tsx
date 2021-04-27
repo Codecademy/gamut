@@ -20,8 +20,7 @@ const listSectionProps = (listItems: ListItem[]) => {
   return {
     title: 'List Section',
     initialDisplayAmount: 2,
-    listItems,
-    renderItem: (item: ListItem) => <Text>Title {item.title}</Text>,
+    children: listItems.map((listItem) => <Text>Title {listItem.title}</Text>),
   };
 };
 
