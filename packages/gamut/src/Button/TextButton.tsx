@@ -1,4 +1,4 @@
-import { css, useTheme } from '@emotion/react';
+import { themed } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React, { forwardRef } from 'react';
 
@@ -6,47 +6,37 @@ import { ButtonBaseElements } from '../ButtonBase/ButtonBase';
 import { ButtonInner } from './ButtonInner';
 import { ButtonOutline, ButtonOutlineProps } from './ButtonOutline';
 import {
+  buttonColors,
   buttonSizing,
   config,
-  modeColorGroups,
+  createStates,
   SizedButtonProps,
+  useColorMode,
 } from './shared';
 
-const TextButtonInner = styled(ButtonInner, config)<SizedButtonProps>(
-  buttonSizing,
-  ({ mode = 'light', variant = 'primary', theme }) => {
-    const modeColors = modeColorGroups[mode][variant];
+const { background, foregroundMuted, backgroundEmphasized } = buttonColors;
 
-    return css`
-      padding-left: ${theme.spacing[8]};
-      padding-right: ${theme.spacing[8]};
-      color: ${modeColors.background};
+const TextButtonInner = styled(ButtonInner, config)<SizedButtonProps>`
+  ${buttonSizing}
+  padding-left: ${themed('spacing.8')};
+  padding-right: ${themed('spacing.8')};
+  color: ${background};
+  ${createStates({
+    hover: { backgroundColor: backgroundEmphasized },
+    active: { color: background },
+    disabled: {
+      color: foregroundMuted,
 
-      ${ButtonOutline}:hover & {
-        background-color: ${modeColors.backgroundEmphasized};
-      }
-
-      ${ButtonOutline}:active & {
-        color: ${modeColors.background};
-      }
-
-      ${ButtonOutline}:disabled &,
-      ${ButtonOutline}[aria-disabled='true'] & {
-        color: ${modeColors.foregroundMuted};
-        background-color: transparent;
-      }
-    `;
-  }
-);
+      backgroundColor: 'transparent',
+    },
+  })}
+`;
 
 export type TextButtonProps = SizedButtonProps & ButtonOutlineProps;
 
 export const TextButton = forwardRef<ButtonBaseElements, TextButtonProps>(
   ({ children, mode, size, variant, ...props }, ref) => {
-    const {
-      colorModes: { active },
-    } = useTheme();
-    const currentMode = mode ?? active;
+    const currentMode = useColorMode(mode);
     return (
       <ButtonOutline mode={currentMode} variant={variant} {...props} ref={ref}>
         <TextButtonInner mode={currentMode} variant={variant} size={size}>

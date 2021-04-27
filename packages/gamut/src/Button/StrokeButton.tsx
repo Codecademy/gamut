@@ -1,4 +1,3 @@
-import { css, useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
 import React, { forwardRef } from 'react';
 
@@ -6,47 +5,42 @@ import { ButtonBaseElements } from '../ButtonBase/ButtonBase';
 import { ButtonInner } from './ButtonInner';
 import { ButtonOutline, ButtonOutlineProps } from './ButtonOutline';
 import {
+  buttonColors,
   buttonSizing,
   config,
-  modeColorGroups,
+  createStates,
   SizedButtonProps,
+  useColorMode,
 } from './shared';
 
-const StrokeButtonInner = styled(ButtonInner, config)<SizedButtonProps>(
-  buttonSizing,
-  ({ mode = 'light', variant = 'primary' }) => {
-    const modeColors = modeColorGroups[mode][variant];
-    return css`
-      color: ${modeColors.background};
-      border-color: ${modeColors.background};
+const {
+  background,
+  foreground,
+  backgroundMuted,
+  foregroundMuted,
+  backgroundEmphasized,
+} = buttonColors;
 
-      ${ButtonOutline}:hover & {
-        background-color: ${modeColors.backgroundEmphasized};
-      }
-
-      ${ButtonOutline}:active & {
-        color: ${modeColors.foreground};
-        background-color: ${modeColors.background};
-      }
-
-      ${ButtonOutline}:disabled &,
-      ${ButtonOutline}[aria-disabled='true'] & {
-        color: ${modeColors.foregroundMuted};
-        border-color: ${modeColors.backgroundMuted};
-        background-color: transparent;
-      }
-    `;
-  }
-);
+const StrokeButtonInner = styled(ButtonInner, config)<SizedButtonProps>`
+  ${buttonSizing}
+  color: ${background};
+  border-color: ${background};
+  ${createStates({
+    hover: { backgroundColor: backgroundEmphasized },
+    active: { color: foreground, backgroundColor: background },
+    disabled: {
+      color: foregroundMuted,
+      borderColor: backgroundMuted,
+      backgroundColor: 'transparent',
+    },
+  })}
+`;
 
 export type StrokeButtonProps = SizedButtonProps & ButtonOutlineProps;
 
 export const StrokeButton = forwardRef<ButtonBaseElements, StrokeButtonProps>(
   ({ children, mode, size, variant, ...props }, ref) => {
-    const {
-      colorModes: { active },
-    } = useTheme();
-    const currentMode = mode ?? active;
+    const currentMode = useColorMode(mode);
     return (
       <ButtonOutline mode={currentMode} variant={variant} {...props} ref={ref}>
         <StrokeButtonInner mode={currentMode} variant={variant} size={size}>

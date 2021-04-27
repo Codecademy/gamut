@@ -3,9 +3,13 @@ import {
   styledConfig,
   swatches,
   system,
+  theme,
 } from '@codecademy/gamut-styles';
-import { Theme } from '@emotion/react';
+import { serializeTokens } from '@codecademy/variance';
+import { css, CSSObject, Theme, useTheme } from '@emotion/react';
 import type { HTMLProps } from 'react';
+
+import { ButtonOutline } from './ButtonOutline';
 
 export type ButtonProps = Omit<
   HTMLProps<HTMLAnchorElement> & HTMLProps<HTMLButtonElement>,
@@ -22,6 +26,32 @@ export type ButtonSizeProps = {
 export type SizedButtonProps = ButtonProps & ButtonSizeProps;
 
 export const config = styledConfig(['mode', 'variant', 'size']);
+
+export function useColorMode(mode?: keyof Theme['colorModes']['modes']) {
+  const {
+    colorModes: { active },
+  } = useTheme();
+  return mode ?? active;
+}
+
+export const createStates = ({
+  hover,
+  active,
+  disabled,
+}: Record<'hover' | 'active' | 'disabled', CSSObject>) => css`
+  ${ButtonOutline}:hover & {
+    ${hover}
+  }
+
+  ${ButtonOutline}:active & {
+    ${active}
+  }
+
+  ${ButtonOutline}:disabled &,
+  ${ButtonOutline}[aria-disabled='true'] & {
+    ${disabled}
+  }
+`;
 
 export const buttonSizing = system.variant({
   prop: 'size',
@@ -86,3 +116,9 @@ export const modeColorGroups = {
     },
   },
 };
+
+export const { tokens: buttonColors } = serializeTokens(
+  modeColorGroups.dark.primary,
+  'button',
+  theme
+);

@@ -1,3 +1,4 @@
+import { system } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React, { forwardRef, HTMLProps, MutableRefObject } from 'react';
 
@@ -19,13 +20,22 @@ export type ButtonBaseProps<T> = React.ForwardRefExoticComponent<
   SafeButtonProps<T> & React.RefAttributes<ButtonBaseElements>
 >;
 
-const ButtonReset = styled.button`
-  background: none;
-  box-shadow: none;
-  border: none;
-  padding: 0;
-  font-size: inherit;
-`;
+const reset = system.css({
+  background: 'none',
+  boxShadow: 'none',
+  border: 'none',
+  p: 0,
+  fontSize: 'inherit',
+  cursor: 'pointer',
+  textDecoration: 'none',
+  '&:hover': {
+    textDecoration: 'none',
+  },
+});
+
+const ButtonReset = styled.button(reset);
+
+const AnchorReset = styled.a(reset);
 
 export const ButtonBase = forwardRef<
   HTMLButtonElement | HTMLAnchorElement,
@@ -47,7 +57,7 @@ export const ButtonBase = forwardRef<
   }
 
   return (
-    <a
+    <AnchorReset
       {...rest}
       href={href}
       ref={ref as MutableRefObject<HTMLAnchorElement>}
@@ -55,6 +65,6 @@ export const ButtonBase = forwardRef<
       aria-disabled={disabled}
     >
       {children}
-    </a>
+    </AnchorReset>
   );
 });
