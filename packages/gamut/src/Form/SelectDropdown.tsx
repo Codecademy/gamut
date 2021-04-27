@@ -132,12 +132,10 @@ const CustomContainer = ({ children, ...rest }: CustomContainerProps) => {
   const value = rest.hasValue ? rest.getValue()[0].value : '';
 
   return (
-    <>
-      <SelectContainer {...rest}>
-        {children}
-        <input type="hidden" value={value} {...inputProps} />
-      </SelectContainer>
-    </>
+    <SelectContainer {...rest}>
+      {children}
+      <input type="hidden" value={value} {...inputProps} />
+    </SelectContainer>
   );
 };
 
