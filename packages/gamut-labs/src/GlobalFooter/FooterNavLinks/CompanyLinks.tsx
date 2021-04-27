@@ -99,7 +99,7 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
         <FooterLinkItem>
           <Anchor
             href="https://www.codecademy.com/pages/codecademy-affiliate-program"
-            onClick={(event) => onClick({ event, target: 'affiliate program' })}
+            onClick={(event) => onClick({ event, target: 'affiliate_program' })}
             variant="interface"
           >
             Affiliates
