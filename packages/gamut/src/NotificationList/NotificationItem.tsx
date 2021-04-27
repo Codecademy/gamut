@@ -19,6 +19,7 @@ const StyledLink = styled.a`
   text-decoration: none;
   display: block;
   z-index: 1;
+
   &:before,
   &:after {
     top: -1px;
@@ -53,6 +54,13 @@ const StyledImg = styled.img`
   height: 3rem;
   width: 3rem;
 `;
+
+const isInternalLink = (href: string) => {
+  try {
+    return new URL(href).hostname === window.location.hostname;
+  } catch (e) {}
+  return false;
+};
 
 export type NotificationItemProps = {
   notification: Notification;
@@ -94,7 +102,7 @@ export const NotificationItem: React.FC<NotificationItemProps> = ({
   };
 
   const notificationContent: ReactElement = (
-    <FlexBox zIndex={1} position="relative">
+    <FlexBox zIndex={1} position="relative" textColor="text">
       {renderIcon()}
       <Box flexBasis={0} flexGrow={1} paddingLeft={12}>
         <Text id={notificationItemId} variant="p-small">
@@ -140,8 +148,8 @@ export const NotificationItem: React.FC<NotificationItemProps> = ({
             <StyledLink
               href={link}
               aria-label={`${text}, ${date} ago`}
-              rel="noopener noreferrer"
-              target="_blank"
+              rel={isInternalLink(link) ? '' : 'noopener noreferrer'}
+              target={isInternalLink(link) ? '' : '_blank'}
               onClick={(event) => handleClick?.(event)}
             >
               {notificationContent}
