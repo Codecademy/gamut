@@ -54,6 +54,7 @@ module.exports = {
     '/tmp/',
     '/example/',
     '/typings/',
+    '/.storybook/',
   ],
   reporters: process.env.CI ? ['default', 'jest-junit'] : ['default'],
   coverageReporters: ['json', 'text', 'clover'],
