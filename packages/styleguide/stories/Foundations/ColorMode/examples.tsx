@@ -12,7 +12,7 @@ import {
   TextButton,
   Toggle,
 } from '@codecademy/gamut/src';
-import { CloseIcon, MiniDeleteIcon } from '@codecademy/gamut-icons';
+import { MiniDeleteIcon, SearchIcon } from '@codecademy/gamut-icons';
 import { Background, ColorMode } from '@codecademy/gamut-styles/src';
 import React, { ComponentProps, useState } from 'react';
 
@@ -33,7 +33,7 @@ const renderButtons = (variant?: 'primary' | 'secondary') => {
       <FillButton variant={variant}>Fill</FillButton>
       <StrokeButton variant={variant}>Stroke</StrokeButton>
       <TextButton variant={variant}>Text</TextButton>
-      <IconButton variant={variant} icon={CloseIcon} />
+      <IconButton variant={variant} icon={SearchIcon} />
       <FillButton variant={variant} size="small">
         Fill
       </FillButton>
