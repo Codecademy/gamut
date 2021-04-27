@@ -33,9 +33,7 @@ const reset = system.css({
   },
 });
 
-const ButtonReset = styled.button(reset);
-
-const AnchorReset = styled.a(reset);
+const ResetElement = styled.button(reset);
 
 export const ButtonBase = forwardRef<
   HTMLButtonElement | HTMLAnchorElement,
@@ -43,7 +41,8 @@ export const ButtonBase = forwardRef<
 >(({ href, disabled, children, as, role = 'button', ...rest }, ref) => {
   if (href == null) {
     return (
-      <ButtonReset
+      <ResetElement
+        as="button"
         disabled={disabled}
         aria-disabled={disabled}
         ref={ref as MutableRefObject<HTMLButtonElement>}
@@ -52,12 +51,13 @@ export const ButtonBase = forwardRef<
         {...rest}
       >
         {children}
-      </ButtonReset>
+      </ResetElement>
     );
   }
 
   return (
-    <AnchorReset
+    <ResetElement
+      as="a"
       {...rest}
       href={href}
       ref={ref as MutableRefObject<HTMLAnchorElement>}
@@ -65,6 +65,6 @@ export const ButtonBase = forwardRef<
       aria-disabled={disabled}
     >
       {children}
-    </AnchorReset>
+    </ResetElement>
   );
 });
