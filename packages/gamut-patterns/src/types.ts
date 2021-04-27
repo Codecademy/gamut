@@ -1,6 +1,6 @@
 import { system } from '@codecademy/gamut-styles';
-import { StyleProps, variance } from '@codecademy/variance';
-import { SVGProps } from 'react';
+import { variance } from '@codecademy/variance';
+import styled from '@emotion/styled';
 
 const patternStyles = variance.compose(
   system.layout,
@@ -8,5 +8,8 @@ const patternStyles = variance.compose(
   system.space
 );
 
-export type PatternProps = SVGProps<SVGSVGElement> &
-  StyleProps<typeof patternStyles>;
+export const PatternSvg = styled.svg(patternStyles);
+// Typeforward valid SVG attrs.
+export type PatternComponent = React.FC<
+  React.ComponentProps<typeof PatternSvg>
+>;

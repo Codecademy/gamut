@@ -1,9 +1,9 @@
 import React from 'react';
 
-import { PatternProps } from '../../types';
+import { PatternComponent, PatternSvg } from '../../types';
 
-export const StripeRegular: React.FC<PatternProps> = ({ ...props }) => (
-  <svg width="100%" height="100%" {...props} aria-hidden>
+export const StripeRegular: React.FC<PatternComponent> = ({ ...props }) => (
+  <PatternSvg width="100%" height="100%" {...props} aria-hidden>
     <pattern
       id="stripeRegular"
       x="0"
@@ -30,5 +30,5 @@ export const StripeRegular: React.FC<PatternProps> = ({ ...props }) => (
       <rect x="7" y="4" width="1" height="1" fill="currentColor" />
     </pattern>
     <rect x="0" y="0" width="100%" height="100%" fill="url(#stripeRegular)" />
-  </svg>
+  </PatternSvg>
 );

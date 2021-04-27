@@ -1,20 +1,9 @@
-import { styledConfig, system } from '@codecademy/gamut-styles';
-import { variance } from '@codecademy/variance';
-import styled from '@emotion/styled';
 import React from 'react';
 
-import { PatternProps } from '../../types';
+import { PatternComponent, PatternSvg } from '../../types';
 
-const logoStyles = variance.compose(
-  system.layout,
-  system.positioning,
-  system.space
-);
-
-const Svg = styled('svg', styledConfig)<PatternProps>(logoStyles);
-
-export const DiagonalBRegular: React.FC<PatternProps> = ({ ...props }) => (
-  <Svg width="100%" height="100%" {...props} aria-hidden>
+export const DiagonalBRegular: React.FC<PatternComponent> = ({ ...props }) => (
+  <PatternSvg width="100%" height="100%" {...props} aria-hidden>
     <pattern
       id="diagonalBRegular"
       x="0"
@@ -47,5 +36,5 @@ export const DiagonalBRegular: React.FC<PatternProps> = ({ ...props }) => (
       height="100%"
       fill="url(#diagonalBRegular)"
     />
-  </Svg>
+  </PatternSvg>
 );

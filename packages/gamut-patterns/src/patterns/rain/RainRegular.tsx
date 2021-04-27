@@ -1,20 +1,9 @@
-import { styledConfig, system } from '@codecademy/gamut-styles';
-import { variance } from '@codecademy/variance';
-import styled from '@emotion/styled';
 import React from 'react';
 
-import { PatternProps } from '../../types';
+import { PatternComponent, PatternSvg } from '../../types';
 
-const logoStyles = variance.compose(
-  system.layout,
-  system.positioning,
-  system.space
-);
-
-const Svg = styled('svg', styledConfig)<PatternProps>(logoStyles);
-
-export const RainRegular: React.FC<PatternProps> = ({ ...props }) => (
-  <Svg width="100%" height="100%" {...props} aria-hidden>
+export const RainRegular: React.FC<PatternComponent> = ({ ...props }) => (
+  <PatternSvg width="100%" height="100%" {...props} aria-hidden>
     <pattern
       id="rainRegular"
       x="0"
@@ -27,5 +16,5 @@ export const RainRegular: React.FC<PatternProps> = ({ ...props }) => (
       <rect x="1" y="1" width="1" height="1" fill="currentColor" />
     </pattern>
     <rect x="0" y="0" width="100%" height="100%" fill="url(#rainRegular)" />
-  </Svg>
+  </PatternSvg>
 );
