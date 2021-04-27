@@ -1,8 +1,7 @@
-import { Box } from '@codecademy/gamut';
 import styled from '@emotion/styled';
 import React from 'react';
 
-import { PatternProps } from './types';
+import { PatternProps } from '../../types';
 
 const Svg = styled.svg`
   width: 100%;
@@ -10,8 +9,7 @@ const Svg = styled.svg`
 `;
 
 export const CheckerRegular: React.FC<PatternProps> = ({ ...props }) => (
-  <Box {...props}>
-    <Svg aria-hidden>
+    <Svg {...props} aria-hidden>
       <pattern
         id="checkerRegular"
         x="0"
@@ -31,5 +29,4 @@ export const CheckerRegular: React.FC<PatternProps> = ({ ...props }) => (
         fill="url(#checkerRegular)"
       />
     </Svg>
-  </Box>
 );
