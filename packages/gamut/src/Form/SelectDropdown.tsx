@@ -128,7 +128,7 @@ const ChevronDropdown = (props: IndicatorProps<OptionTypeBase, false>) => {
 };
 
 const CustomContainer = ({ children, ...rest }: CustomContainerProps) => {
-  const inputProps = rest.selectProps.inputProps;
+  const { inputProps } = rest.selectProps;
   const value = rest.hasValue ? rest.getValue()[0].value : '';
 
   return (
@@ -154,7 +154,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
   ...rest
 }) => {
   const [activated, setActivated] = useState(false);
-  const baseInputProps = { name: name };
+  const baseInputProps = { name };
 
   const changeHandler = (optionEvent: OptionStrict) => {
     onChange?.(optionEvent, {
