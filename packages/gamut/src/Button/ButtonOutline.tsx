@@ -15,8 +15,7 @@ const setTokens = ({
   variant = 'primary',
   theme,
 }: ThemeProps<ButtonProps>) =>
-  serializeTokens(modeColorGroups[mode][variant], 'button', theme as BaseTheme)
-    .variables;
+  serializeTokens(modeColorGroups[mode][variant], 'button', theme).variables;
 
 const outlinePadding = system.variant({
   prop: 'padded',
