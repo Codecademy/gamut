@@ -2,12 +2,10 @@ import React from 'react';
 
 import { PatternProps } from '../../types';
 
-export const DiagonalStripeARegular: React.FC<PatternProps> = ({
-  ...props
-}) => (
+export const DiagonalARegular: React.FC<PatternProps> = ({ ...props }) => (
   <svg width="100%" height="100%" {...props} aria-hidden>
     <pattern
-      id="diagonalStripeARegular"
+      id="diagonalARegular"
       x="0"
       y="0"
       width="8"
@@ -36,7 +34,7 @@ export const DiagonalStripeARegular: React.FC<PatternProps> = ({
       y="0"
       width="100%"
       height="100%"
-      fill="url(#diagonalStripeARegular)"
+      fill="url(#diagonalARegular)"
     />
   </svg>
 );

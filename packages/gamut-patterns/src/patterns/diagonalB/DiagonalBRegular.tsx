@@ -2,19 +2,17 @@ import React from 'react';
 
 import { PatternProps } from '../../types';
 
-export const DiagonalStripeBRegular: React.FC<PatternProps> = ({
-  ...props
-}) => (
+export const DiagonalBRegular: React.FC<PatternProps> = ({ ...props }) => (
   <svg width="100%" height="100%" {...props} aria-hidden>
     <pattern
-      id="diagonalStripeBRegular"
+      id="diagonalBRegular"
       x="0"
       y="0"
       width="8"
       height="8"
       patternUnits="userSpaceOnUse"
     >
-      <g clipPath="url(#clipDiagonalStripeBRegular)">
+      <g clipPath="url(#clipDiagonalBRegular)">
         <rect width="8" height="8" fill="white" />
         <rect y="7" width="1" height="1" fill="currentColor" />
         <rect x="1" y="6" width="1" height="1" fill="currentColor" />
@@ -26,7 +24,7 @@ export const DiagonalStripeBRegular: React.FC<PatternProps> = ({
         <rect x="7" width="1" height="1" fill="currentColor" />
       </g>
       <defs>
-        <clipPath id="clipDiagonalStripeBRegular">
+        <clipPath id="clipDiagonalBRegular">
           <rect width="8" height="8" fill="white" />
         </clipPath>
       </defs>
@@ -36,7 +34,7 @@ export const DiagonalStripeBRegular: React.FC<PatternProps> = ({
       y="0"
       width="100%"
       height="100%"
-      fill="url(#diagonalStripeBRegular)"
+      fill="url(#diagonalBRegular)"
     />
   </svg>
 );

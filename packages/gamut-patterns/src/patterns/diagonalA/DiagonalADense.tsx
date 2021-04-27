@@ -2,10 +2,10 @@ import React from 'react';
 
 import { PatternProps } from '../../types';
 
-export const DiagonalStripeADense: React.FC<PatternProps> = ({ ...props }) => (
+export const DiagonalADense: React.FC<PatternProps> = ({ ...props }) => (
   <svg width="100%" height="100%" {...props} aria-hidden>
     <pattern
-      id="diagonalStripeADense"
+      id="diagonalADense"
       x="0"
       y="0"
       width="4"
@@ -21,12 +21,6 @@ export const DiagonalStripeADense: React.FC<PatternProps> = ({ ...props }) => (
       <rect x="3" y="1" width="1" height="1" fill="currentColor" />
       <rect x="2" y="1" width="1" height="1" fill="currentColor" />
     </pattern>
-    <rect
-      x="0"
-      y="0"
-      width="100%"
-      height="100%"
-      fill="url(#diagonalStripeADense)"
-    />
+    <rect x="0" y="0" width="100%" height="100%" fill="url(#diagonalADense)" />
   </svg>
 );
