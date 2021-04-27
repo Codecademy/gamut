@@ -62,10 +62,8 @@ export const { tokens: buttonColors } = serializeTokens(
 export const config = styledConfig(['mode', 'variant', 'size']);
 
 export function useColorMode(mode?: keyof Theme['colorModes']['modes']) {
-  const {
-    colorModes: { active },
-  } = useTheme();
-  return mode ?? active;
+  const theme = useTheme();
+  return mode ?? theme?.colorModes?.active;
 }
 
 export const buttonSizing = system.variant({
