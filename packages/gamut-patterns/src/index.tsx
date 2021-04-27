@@ -6,4 +6,6 @@ export * from './patterns/ex';
 export * from './patterns/flower';
 export * from './patterns/grid';
 export * from './patterns/herringbone';
+export * from './patterns/rain';
+export * from './patterns/stripe';
 export * from './types';
