@@ -7,21 +7,8 @@ import {
 } from '@codecademy/gamut-styles';
 import { serializeTokens } from '@codecademy/variance';
 import { css, CSSObject, Theme, useTheme } from '@emotion/react';
-import type { HTMLProps } from 'react';
 
 import { ButtonOutline } from './ButtonOutline';
-
-export type ButtonProps = Omit<
-  HTMLProps<HTMLAnchorElement> & HTMLProps<HTMLButtonElement>,
-  'size' | 'ref'
-> & {
-  mode?: keyof Theme['colorModes']['modes'];
-  variant?: 'primary' | 'secondary';
-};
-
-export type ButtonSizeProps = {
-  size?: 'normal' | 'small';
-};
 
 export const modeColorGroups = {
   dark: {
@@ -72,8 +59,6 @@ export const { tokens: buttonColors } = serializeTokens(
   theme
 );
 
-export type SizedButtonProps = ButtonProps & ButtonSizeProps;
-
 export const config = styledConfig(['mode', 'variant', 'size']);
 
 export function useColorMode(mode?: keyof Theme['colorModes']['modes']) {
@@ -104,14 +89,14 @@ export const buttonSizing = system.variant({
   },
 });
 
-type ButtonStates = Record<'base' | 'hover' | 'active' | 'disabled', CSSObject>;
+/** This is a temporary tagged template for button hover / active states while they still are multiple elements */
 
 export const createStates = ({
   base,
   hover,
   active,
   disabled,
-}: ButtonStates) => css`
+}: Record<'base' | 'hover' | 'active' | 'disabled', CSSObject>) => css`
   ${base}
   ${ButtonOutline}:hover & {
     ${hover}

@@ -9,9 +9,9 @@ import {
   buttonSizing,
   config,
   createStates,
-  SizedButtonProps,
   useColorMode,
 } from './shared';
+import { SizedButtonProps } from './types';
 
 const {
   background,

@@ -6,12 +6,8 @@ import React, { ComponentProps, forwardRef } from 'react';
 import { ButtonBaseElements } from '../ButtonBase/ButtonBase';
 import { ButtonInner } from './ButtonInner';
 import { ButtonOutline } from './ButtonOutline';
-import {
-  buttonColors,
-  createStates,
-  SizedButtonProps,
-  useColorMode,
-} from './shared';
+import { buttonColors, createStates, useColorMode } from './shared';
+import { SizedButtonProps } from './types';
 
 const { background, foregroundMuted, backgroundEmphasized } = buttonColors;
 

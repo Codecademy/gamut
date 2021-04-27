@@ -5,13 +5,8 @@ import React, { ComponentProps, forwardRef } from 'react';
 import { ButtonBaseElements } from '../ButtonBase/ButtonBase';
 import { ButtonInner } from './ButtonInner';
 import { ButtonOutline } from './ButtonOutline';
-import {
-  buttonColors,
-  ButtonProps,
-  config,
-  createStates,
-  useColorMode,
-} from './shared';
+import { buttonColors, config, createStates, useColorMode } from './shared';
+import { ButtonProps } from './types';
 
 const {
   background,

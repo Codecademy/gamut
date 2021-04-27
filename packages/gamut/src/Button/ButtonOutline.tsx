@@ -5,7 +5,8 @@ import styled from '@emotion/styled';
 import { ComponentProps } from 'react';
 
 import { ButtonBase } from '../ButtonBase/ButtonBase';
-import { buttonColors, ButtonProps, config, modeColorGroups } from './shared';
+import { buttonColors, config, modeColorGroups } from './shared';
+import { ButtonProps } from './types';
 
 export type ButtonOutlineProps = ComponentProps<typeof ButtonOutline>;
 

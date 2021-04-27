@@ -1,5 +1,6 @@
 import { setupEnzyme } from '@codecademy/gamut-tests';
 
+import { FillButton, IconButton } from '../../Button';
 import { Alert } from '../Alert';
 
 describe('Alert', () => {
@@ -25,7 +26,7 @@ describe('Alert', () => {
   it('calls the onClose callback when the close button is clicked', () => {
     const { wrapper } = renderView({});
 
-    const buttons = wrapper.find('IconButton');
+    const buttons = wrapper.find(IconButton);
 
     expect(buttons.length).toBe(2);
 
@@ -37,7 +38,7 @@ describe('Alert', () => {
   it('renders a clickable CTA', () => {
     const { wrapper } = renderView({ cta: { onClick, children: 'Click Me!' } });
 
-    const cta = wrapper.find('FillButton');
+    const cta = wrapper.find(FillButton);
 
     expect(cta.text()).toBe('Click Me!');
 
@@ -61,7 +62,7 @@ describe('Alert', () => {
   it('renders a clickable button to expand the truncated section', () => {
     const { wrapper } = renderView({});
 
-    const buttons = wrapper.find('IconButton');
+    const buttons = wrapper.find(IconButton);
 
     expect(buttons.length).toBe(2);
     expect(wrapper.find('Truncate').prop('expanded')).toBe(false);
