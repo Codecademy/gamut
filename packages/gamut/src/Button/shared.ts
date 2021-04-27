@@ -23,57 +23,6 @@ export type ButtonSizeProps = {
   size?: 'normal' | 'small';
 };
 
-export type SizedButtonProps = ButtonProps & ButtonSizeProps;
-
-export const config = styledConfig(['mode', 'variant', 'size']);
-
-export function useColorMode(mode?: keyof Theme['colorModes']['modes']) {
-  const {
-    colorModes: { active },
-  } = useTheme();
-  return mode ?? active;
-}
-
-export const createStates = ({
-  hover,
-  active,
-  disabled,
-}: Record<'hover' | 'active' | 'disabled', CSSObject>) => css`
-  ${ButtonOutline}:hover & {
-    ${hover}
-  }
-
-  ${ButtonOutline}:active & {
-    ${active}
-  }
-
-  ${ButtonOutline}:disabled &,
-  ${ButtonOutline}[aria-disabled='true'] & {
-    ${disabled}
-  }
-`;
-
-export const buttonSizing = system.variant({
-  prop: 'size',
-  defaultVariant: 'normal',
-  variants: {
-    normal: {
-      fontSize: 16,
-      height: 40,
-      minWidth: 40,
-      py: 4,
-      px: 16,
-    },
-    small: {
-      fontSize: 14,
-      height: 32,
-      minWidth: 32,
-      py: 4,
-      px: 8,
-    },
-  },
-});
-
 export const modeColorGroups = {
   dark: {
     primary: {
@@ -122,3 +71,58 @@ export const { tokens: buttonColors } = serializeTokens(
   'button',
   theme
 );
+
+export type SizedButtonProps = ButtonProps & ButtonSizeProps;
+
+export const config = styledConfig(['mode', 'variant', 'size']);
+
+export function useColorMode(mode?: keyof Theme['colorModes']['modes']) {
+  const {
+    colorModes: { active },
+  } = useTheme();
+  return mode ?? active;
+}
+
+export const buttonSizing = system.variant({
+  prop: 'size',
+  defaultVariant: 'normal',
+  variants: {
+    normal: {
+      fontSize: 16,
+      height: 40,
+      minWidth: 40,
+      py: 4,
+      px: 16,
+    },
+    small: {
+      fontSize: 14,
+      height: 32,
+      minWidth: 32,
+      py: 4,
+      px: 8,
+    },
+  },
+});
+
+type ButtonStates = Record<'base' | 'hover' | 'active' | 'disabled', CSSObject>;
+
+export const createStates = ({
+  base,
+  hover,
+  active,
+  disabled,
+}: ButtonStates) => css`
+  ${base}
+  ${ButtonOutline}:hover & {
+    ${hover}
+  }
+
+  ${ButtonOutline}:active & {
+    ${active}
+  }
+
+  ${ButtonOutline}:disabled &,
+  ${ButtonOutline}[aria-disabled='true'] & {
+    ${disabled}
+  }
+`;

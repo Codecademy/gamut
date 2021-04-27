@@ -1,4 +1,4 @@
-import { themed } from '@codecademy/gamut-styles';
+import { system, themed } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React, { forwardRef } from 'react';
 
@@ -16,12 +16,11 @@ import {
 
 const { background, foregroundMuted, backgroundEmphasized } = buttonColors;
 
-const TextButtonInner = styled(ButtonInner, config)<SizedButtonProps>`
-  ${buttonSizing}
-  padding-left: ${themed('spacing.8')};
-  padding-right: ${themed('spacing.8')};
-  color: ${background};
-  ${createStates({
+const TextButtonInner = styled(ButtonInner, config)<SizedButtonProps>(
+  buttonSizing,
+  system.css({ px: 8 }),
+  createStates({
+    base: { color: background },
     hover: { backgroundColor: backgroundEmphasized },
     active: { color: background },
     disabled: {
@@ -29,8 +28,8 @@ const TextButtonInner = styled(ButtonInner, config)<SizedButtonProps>`
 
       backgroundColor: 'transparent',
     },
-  })}
-`;
+  })
+);
 
 export type TextButtonProps = SizedButtonProps & ButtonOutlineProps;
 

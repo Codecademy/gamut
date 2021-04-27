@@ -21,11 +21,10 @@ const {
   backgroundEmphasized,
 } = buttonColors;
 
-const StrokeButtonInner = styled(ButtonInner, config)<SizedButtonProps>`
-  ${buttonSizing}
-  color: ${background};
-  border-color: ${background};
-  ${createStates({
+const StrokeButtonInner = styled(ButtonInner, config)<SizedButtonProps>(
+  buttonSizing,
+  createStates({
+    base: { color: background, borderColor: background },
     hover: { backgroundColor: backgroundEmphasized },
     active: { color: foreground, backgroundColor: background },
     disabled: {
@@ -33,8 +32,8 @@ const StrokeButtonInner = styled(ButtonInner, config)<SizedButtonProps>`
       borderColor: backgroundMuted,
       backgroundColor: 'transparent',
     },
-  })}
-`;
+  })
+);
 
 export type StrokeButtonProps = SizedButtonProps & ButtonOutlineProps;
 

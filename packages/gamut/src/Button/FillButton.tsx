@@ -21,19 +21,18 @@ const {
   foregroundMuted,
 } = buttonColors;
 
-const FillButtonInner = styled(ButtonInner, config)<SizedButtonProps>`
-  ${buttonSizing}
-  color: ${foreground};
-  background-color: ${background};
-  ${createStates({
+const FillButtonInner = styled(ButtonInner, config)<SizedButtonProps>(
+  buttonSizing,
+  createStates({
+    base: { color: foreground, backgroundColor: background },
     hover: { backgroundColor: backgroundDull },
     active: { borderColor: background },
     disabled: {
       color: foregroundMuted,
       borderColor: backgroundMuted,
     },
-  })}
-`;
+  })
+);
 
 export type FillButtonProps = SizedButtonProps & ButtonOutlineProps;
 

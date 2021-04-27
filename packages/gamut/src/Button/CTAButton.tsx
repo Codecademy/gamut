@@ -1,4 +1,4 @@
-import { themed } from '@codecademy/gamut-styles';
+import { system } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React, { ComponentProps, forwardRef } from 'react';
 
@@ -21,15 +21,20 @@ const {
   foregroundMuted,
 } = buttonColors;
 
-const CTAButtonInner = styled(ButtonInner, config)<ButtonProps>`
-  background-color: ${background};
-  border-radius: 2px;
-  box-shadow: -4px 4px 0 0 ${shadow};
-  color: ${foreground};
-  font-family: ${themed('fontFamily.accent')};
-  font-weight: bold;
-  padding: 0.75rem 1.25rem;
-  ${createStates({
+const CTAButtonInner = styled(ButtonInner, config)<ButtonProps>(
+  system.css({
+    borderRadius: '2px',
+    fontFamily: 'accent',
+    fontWeight: 'title',
+    py: 12,
+    px: 24,
+  }),
+  createStates({
+    base: {
+      color: foreground,
+      boxShadow: `-4px 4px 0 0 ${shadow}`,
+      backgroundColor: background,
+    },
     hover: { boxShadow: `-8px 8px 0 0 ${shadow}` },
     active: { backgroundColor: shadow, boxShadow: 'none' },
     disabled: {
@@ -37,8 +42,8 @@ const CTAButtonInner = styled(ButtonInner, config)<ButtonProps>`
       boxShadow: `-4px 4px 0 1px ${foregroundMuted}`,
       color: foregroundMuted,
     },
-  })}
-`;
+  })
+);
 
 export type CTAButtonProps = Omit<
   ComponentProps<typeof ButtonOutline>,
