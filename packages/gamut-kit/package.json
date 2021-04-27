@@ -12,6 +12,7 @@
     "@codecademy/gamut-icons": "^4.8.0",
     "@codecademy/gamut-illustrations": "^0.10.7",
     "@codecademy/gamut-labs": "^14.4.3",
+    "@codecademy/gamut-patterns": "^0.0.0",
     "@codecademy/gamut-styles": "^9.6.1",
     "@codecademy/gamut-system": "^0.7.0",
     "@codecademy/gamut-tests": "^2.3.19",
