@@ -63,7 +63,10 @@ export const config = styledConfig(['mode', 'variant', 'size']);
 
 export function useColorMode(mode?: keyof Theme['colorModes']['modes']) {
   const theme = useTheme();
-  return mode ?? theme?.colorModes?.active;
+
+  // This is a defense against theme being undefined in specific tests and should not come into play for actual code
+  const { active = 'light' } = theme?.colorModes || {};
+  return mode ?? active;
 }
 
 export const buttonSizing = system.variant({
