@@ -54,7 +54,7 @@ export const CTAButton = forwardRef<ButtonBaseElements, CTAButtonProps>(
   ({ children, mode, ...props }, ref) => {
     const currentMode = useColorMode(mode);
     return (
-      <ButtonOutline mode={currentMode} {...props} padded ref={ref}>
+      <ButtonOutline mode={currentMode} {...props} padded="medium" ref={ref}>
         <CTAButtonInner mode={currentMode} {...props}>
           {children}
         </CTAButtonInner>

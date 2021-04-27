@@ -1,4 +1,4 @@
-import { system, themed } from '@codecademy/gamut-styles';
+import { system } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React, { forwardRef } from 'react';
 
@@ -17,7 +17,6 @@ import {
 const { background, foregroundMuted, backgroundEmphasized } = buttonColors;
 
 const TextButtonInner = styled(ButtonInner, config)<SizedButtonProps>(
-  buttonSizing,
   system.css({ px: 8 }),
   createStates({
     base: { color: background },
@@ -28,7 +27,8 @@ const TextButtonInner = styled(ButtonInner, config)<SizedButtonProps>(
 
       backgroundColor: 'transparent',
     },
-  })
+  }),
+  buttonSizing
 );
 
 export type TextButtonProps = SizedButtonProps & ButtonOutlineProps;

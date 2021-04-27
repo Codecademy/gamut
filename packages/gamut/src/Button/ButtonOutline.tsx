@@ -16,10 +16,9 @@ const setTokens = ({
   serializeTokens(modeColorGroups[mode][variant], 'button', theme!).variables;
 
 export const ButtonOutline = styled('button', config)<
-  ButtonProps & { padded?: boolean }
+  ButtonProps & { padded?: 'small' | 'medium' }
 >(
   setTokens,
-  ({ padded = false }) => ({ padding: padded ? `1px 1px 5px 5px` : '1px' }),
   system.css({
     display: 'inline-block',
     margin: '-1px',
@@ -38,6 +37,14 @@ export const ButtonOutline = styled('button', config)<
     },
     '&:focus-visible': {
       boxShadow: `0 0 0 2px ${buttonColors?.background}`,
+    },
+  }),
+  system.variant({
+    prop: 'padded',
+    defaultVariant: 'small',
+    variants: {
+      small: { padding: '1px' },
+      medium: { padding: '1px 1px 5px 5px' },
     },
   })
 ).withComponent(ButtonBase);
