@@ -172,8 +172,8 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
         parsedOptions.push({ label: key, value: option });
       });
     } else if (isObject(options)) {
-      each(options, (text, val) => {
-        parsedOptions.push({ label: text, value: val });
+      each(options, (label, value) => {
+        parsedOptions.push({ label, value });
       });
     }
     return parsedOptions;
