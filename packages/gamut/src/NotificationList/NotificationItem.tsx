@@ -56,6 +56,13 @@ const StyledImg = styled.img`
   width: 3rem;
 `;
 
+const isInternalLink = (href: string) => {
+  try {
+    return new URL(href).hostname === window.location.hostname;
+  } catch (e) {}
+  return false;
+};
+
 export type NotificationItemProps = {
   notification: Notification;
   handleClick?: (event: object) => void;
@@ -142,8 +149,8 @@ export const NotificationItem: React.FC<NotificationItemProps> = ({
             <StyledLink
               href={link}
               aria-label={`${text}, ${date} ago`}
-              rel="noopener noreferrer"
-              target="_blank"
+              rel={isInternalLink(link) ? '' : 'noopener noreferrer'}
+              target={isInternalLink(link) ? '' : '_blank'}
               onClick={(event) => handleClick?.(event)}
             >
               {notificationContent}

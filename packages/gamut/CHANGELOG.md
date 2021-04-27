@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [32.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@32.3.3...@codecademy/gamut@32.4.0) (2021-04-27)
+
+
+### Features
+
+* **NotificationItem:** Open internal notification links in same tab ([4639cea](https://github.com/Codecademy/client-modules/commit/4639ceae982417585e8b02427bc906b606ba8812))
+
+
+
 ### [32.3.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@32.3.2...@codecademy/gamut@32.3.3) (2021-04-26)
 
 **Note:** Version bump only for package @codecademy/gamut
