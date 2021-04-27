@@ -18,3 +18,7 @@ export const fontSmoothing = variance.create({
     transform: (value: keyof typeof smoothing) => smoothing[value],
   },
 });
+
+export const fontSmoothPixel = fontSmoothing({ fontSmoothing: 'pixel' });
+
+export const fontSmoothSubpixel = fontSmoothing({ fontSmoothing: 'subpixel' });

@@ -94,12 +94,14 @@ We enable font smoothing in some places to make typography more readable.
 ```tsx
 import { fontSmoothing } from '@codecademy/gamut-styles';
 
+// As props
 const Smooth = `
   ${fontSmoothing}
 `;
 
+// As Static
 const Smooth = `
-  ${fontSmoothing({ smoothing: 'subpixel' })}
+  ${fontSmoothing({ fontSmoothing: 'subpixel' })}
 `;
 ```
 

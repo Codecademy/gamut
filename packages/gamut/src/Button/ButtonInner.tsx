@@ -1,10 +1,10 @@
-import { fontSmoothing, system, timing } from '@codecademy/gamut-styles';
+import { system, timing } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 
 import { config } from './shared';
 
 export const ButtonInner = styled('span', config)(
-  fontSmoothing,
+  fontSmoothPixel,
   system.css({
     border: 2,
     borderRadius: '4px',
