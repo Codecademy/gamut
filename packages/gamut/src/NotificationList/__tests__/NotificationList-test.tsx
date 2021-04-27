@@ -1,7 +1,7 @@
 import { setupRtl } from '@codecademy/gamut-tests';
 
-import { Notification } from '../../NotificationList/typings';
 import { NotificationList, NotificationListProps } from '..';
+import { Notification } from '../typings';
 
 const onNotificationClick = jest.fn();
 const onDismiss = jest.fn();
