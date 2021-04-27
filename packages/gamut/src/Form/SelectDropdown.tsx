@@ -167,9 +167,9 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
   const selectOptions: Array<OptionTypeBase> = useMemo(() => {
     const parsedOptions: Array<OptionTypeBase> = [];
     if (options instanceof Array) {
-      options.forEach((option) => {
-        const key = id ? `${id}-${option}` : option;
-        parsedOptions.push({ label: key, value: option });
+      options.forEach((value) => {
+        const label = id ? `${id}-${value}` : value;
+        parsedOptions.push({ label, value });
       });
     } else if (isObject(options)) {
       each(options, (label, value) => {
