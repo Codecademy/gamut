@@ -24,7 +24,6 @@ const TextButtonInner = styled(ButtonInner, config)<SizedButtonProps>(
     active: { color: background },
     disabled: {
       color: foregroundMuted,
-
       backgroundColor: 'transparent',
     },
   }),

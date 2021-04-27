@@ -1,5 +1,6 @@
 import { system, timing } from '@codecademy/gamut-styles';
 import { serializeTokens, StyleProps, ThemeProps } from '@codecademy/variance';
+import { BaseTheme } from '@codecademy/variance/dist/types/theme';
 import styled from '@emotion/styled';
 import { ComponentProps } from 'react';
 
@@ -13,7 +14,8 @@ const setTokens = ({
   variant = 'primary',
   theme,
 }: ThemeProps<ButtonProps>) =>
-  serializeTokens(modeColorGroups[mode][variant], 'button', theme!).variables;
+  serializeTokens(modeColorGroups[mode][variant], 'button', theme as BaseTheme)
+    .variables;
 
 const outlinePadding = system.variant({
   prop: 'padded',
@@ -25,7 +27,7 @@ const outlinePadding = system.variant({
 });
 
 export const ButtonOutline = styled('button', config)<
-  ButtonProps & StyleProps<typeof outlinePadding>
+  ButtonProps & StyleProps<typeof outlinePadding> & { as?: never }
 >(
   setTokens,
   system.css({

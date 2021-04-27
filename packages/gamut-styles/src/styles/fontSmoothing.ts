@@ -1,3 +1,5 @@
+import { ThemeProps } from '@codecademy/variance';
+
 const variants = {
   pixel: {
     '-webkit-font-smoothing': 'antialiased',
@@ -9,6 +11,8 @@ const variants = {
   },
 };
 
-export const fontSmoothing = ({
+export const fontSmoothing = <
+  T extends ThemeProps<Partial<Record<'smoothing', 'pixel' | 'subpixel'>>>
+>({
   smoothing = 'pixel',
-}: Record<'smoothing', 'pixel' | 'subpixel'>) => variants[smoothing];
+}: T) => variants[smoothing];
