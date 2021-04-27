@@ -4,7 +4,7 @@ import styled from '@emotion/styled';
 import { config } from './shared';
 
 export const ButtonInner = styled('span', config)(
-  fontSmoothing(),
+  fontSmoothing,
   system.css({
     border: 2,
     borderRadius: '4px',

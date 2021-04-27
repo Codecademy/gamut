@@ -95,11 +95,11 @@ We enable font smoothing in some places to make typography more readable.
 import { fontSmoothing } from '@codecademy/gamut-styles';
 
 const Smooth = `
-  ${fontSmoothing()}
+  ${fontSmoothing}
 `;
 
 const Smooth = `
-  ${fontSmoothing(false)}
+  ${fontSmoothing({ smoothing: 'subpixel' })}
 `;
 ```
 

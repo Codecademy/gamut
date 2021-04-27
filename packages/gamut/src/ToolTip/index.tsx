@@ -40,8 +40,7 @@ type ToolTipContainerProps = {
 };
 
 const ToolTipContainer = styled.div<ToolTipContainerProps>`
-  ${fontSmoothing()}
-
+  ${fontSmoothing}
   display: flex;
   opacity: 0;
   transition: opacity ${timing.fast};
