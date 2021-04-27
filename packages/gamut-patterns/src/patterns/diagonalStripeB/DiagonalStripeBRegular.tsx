@@ -1,17 +1,11 @@
-import styled from '@emotion/styled';
 import React from 'react';
 
 import { PatternProps } from '../../types';
 
-const Svg = styled.svg`
-  width: 100%;
-  height: 100%;
-`;
-
 export const DiagonalStripeBRegular: React.FC<PatternProps> = ({
   ...props
 }) => (
-  <Svg {...props} aria-hidden>
+  <svg width="100%" height="100%" {...props} aria-hidden>
     <pattern
       id="diagonalStripeBRegular"
       x="0"
@@ -44,5 +38,5 @@ export const DiagonalStripeBRegular: React.FC<PatternProps> = ({
       height="100%"
       fill="url(#diagonalStripeBRegular)"
     />
-  </Svg>
+  </svg>
 );
