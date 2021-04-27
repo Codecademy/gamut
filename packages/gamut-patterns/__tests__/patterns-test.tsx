@@ -1,7 +1,7 @@
 import { mount } from 'enzyme';
 import React from 'react';
 
-import { DotLoose } from '../dist/index';
+import { DotLoose } from '../src/index';
 
 describe('Compiled gamut-icons:', () => {
   it('Allows passing a custom color', () => {
