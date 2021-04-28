@@ -18,6 +18,4 @@ export const PatternSvg = styled(
 )<PatternProps>(patternStyles);
 
 // Typeforward valid SVG attrs.
-export type PatternComponent = React.FC<
-  React.ComponentProps<typeof PatternSvg>
->;
+export type PatternComponent = React.ComponentProps<typeof PatternSvg>;
