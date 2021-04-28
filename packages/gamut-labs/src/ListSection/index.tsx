@@ -4,9 +4,6 @@ import { PageSection, SectionButton } from '..';
 
 export type ListSectionProps = {
   title: string;
-  /**
-   * Children should be an array of react nodes.
-   */
   children: React.ReactNode[];
   /**
    * Number of items to be initally displayed
@@ -34,8 +31,8 @@ export const ListSection: React.FC<ListSectionProps> = ({
   };
 
   const renderItems = () => {
-    const displayLimit = showAll ? listItems.length : initialDisplayAmount;
-    return listItems.slice(0, displayLimit);
+    if (showAll) return listItems;
+    return listItems.slice(0, initialDisplayAmount);
   };
 
   const renderFooterButton = () => {
