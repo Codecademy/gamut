@@ -3,6 +3,40 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [14.5.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@14.5.0...@codecademy/gamut-labs@14.5.1) (2021-04-27)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+## [14.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@14.4.5...@codecademy/gamut-labs@14.5.0) (2021-04-27)
+
+
+### Features
+
+* **Global Footer:** add affiliate program link ([83ae7d7](https://github.com/Codecademy/client-modules/commit/83ae7d7918075e181da7462a53dab7ccffaf2c77))
+
+
+
+### [14.4.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@14.4.4...@codecademy/gamut-labs@14.4.5) (2021-04-27)
+
+
+### Bug Fixes
+
+* **PageSection:** Adding margin-top to footer of PageSection ([7359c18](https://github.com/Codecademy/client-modules/commit/7359c1860fe5e2deae7198b617876ae4df3d916a))
+
+
+
+### [14.4.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@14.4.3...@codecademy/gamut-labs@14.4.4) (2021-04-27)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
 ### [14.4.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@14.4.2...@codecademy/gamut-labs@14.4.3) (2021-04-26)
 
 **Note:** Version bump only for package @codecademy/gamut-labs
