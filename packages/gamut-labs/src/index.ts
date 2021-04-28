@@ -1,4 +1,4 @@
-export * from './landingPage';
+export * from './LandingPage';
 export * from './lib/breakpointHooks';
 export * from './Avatar';
 export * from './CurriculumCard';

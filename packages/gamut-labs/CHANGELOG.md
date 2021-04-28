@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [15.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@14.5.1...@codecademy/gamut-labs@15.0.0) (2021-04-28)
+
+
+### ⚠ BREAKING CHANGES
+
+* update landing page exports
+
+### Code Refactoring
+
+* update landing page exports ([68203b1](https://github.com/Codecademy/client-modules/commit/68203b1f8cffbe7e6b22147e54484e9e2c7bb03c))
+
+
+
 ### [14.5.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@14.5.0...@codecademy/gamut-labs@14.5.1) (2021-04-27)
 
 **Note:** Version bump only for package @codecademy/gamut-labs
