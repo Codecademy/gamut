@@ -30,7 +30,7 @@
     "@emotion/react": "^11.1.5",
     "@emotion/styled": "^11.1.5",
     "@types/react-helmet": "^6.1.0",
-    "component-test-setup": "^0.2.4"
+    "component-test-setup": "^0.2.5"
   },
   "license": "MIT",
   "publishConfig": {

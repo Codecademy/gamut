@@ -5941,10 +5941,10 @@ component-emitter@^1.2.1:
   resolved "https://registry.npmjs.org/component-emitter/-/component-emitter-1.3.0.tgz#16e4070fba8ae29b679f2215853ee181ab2eabc0"
   integrity sha512-Rd3se6QB+sO1TwqZjscQrurpEPIfO0/yYnSin6Q/rD3mOutHvUrCAhJub3r90uNb+SESBuE0QYoB90YdfatsRg==
 
-component-test-setup@*, component-test-setup@^0.2.4:
-  version "0.2.4"
-  resolved "https://registry.npmjs.org/component-test-setup/-/component-test-setup-0.2.4.tgz#a887541f9bea022bbca778fdd132293c425d0b04"
-  integrity sha512-+mLZBqg0SntjEhBXSIL7VB4JFzIjp7/MgYqWWa58ws2TDPUYmf8M/jDMJB9+zPwayw32QoMT6lH8/KyPYvIVug==
+component-test-setup@*, component-test-setup@^0.2.5:
+  version "0.2.5"
+  resolved "https://registry.npmjs.org/component-test-setup/-/component-test-setup-0.2.5.tgz#9c0a024304b44061ac1439438806beb31ff5dab5"
+  integrity sha512-1cSXa9b7r/OnzOgiGEax0AR2gKex6DCgFKbDHpL19wn8ku2TyjJusRsJGzmLubPFQRNLqeMgfA8Y9ZZQq3nxtQ==
 
 compute-scroll-into-view@^1.0.17:
   version "1.0.17"
