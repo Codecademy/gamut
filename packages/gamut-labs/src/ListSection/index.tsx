@@ -4,7 +4,6 @@ import { PageSection, SectionButton } from '..';
 
 export type ListSectionProps = {
   title: string;
-  children: React.ReactNode[];
   /**
    * Number of items to be initally displayed
    *

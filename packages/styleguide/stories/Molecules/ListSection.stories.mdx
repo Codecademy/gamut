@@ -1,4 +1,4 @@
-import { Card, FillButton, IconButton } from '@codecademy/gamut/src';
+import { Card, FillButton, IconButton, Text } from '@codecademy/gamut/src';
 import { SearchIcon } from '@codecademy/gamut-icons';
 import { ListSection } from '@codecademy/gamut-labs/src';
 import title from '@codecademy/macros/lib/title.macro';
@@ -54,6 +54,22 @@ It has a built in `Show All` functionality.`Show All` button will appear if the 
 </Canvas>
 
 <PropsTable story="ListSection" />
+
+## ListSection with Empty State
+
+You can pass in an empty state.
+
+<Canvas>
+  <Story name="ListSection with Empty State">
+    {(args) => (
+      <>
+        <ListSection {...args} title="List Section 1">
+          <Text>I'm an Empty State.</Text>
+        </ListSection>
+      </>
+    )}
+  </Story>
+</Canvas>
 
 ## ListSection with Header and SecondaryHeader Buttons
 
