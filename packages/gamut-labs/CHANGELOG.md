@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [15.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@15.0.0...@codecademy/gamut-labs@15.1.0) (2021-04-28)
+
+
+### Features
+
+* List Section ([2929764](https://github.com/Codecademy/client-modules/commit/29297640df5cca2953749d18d84a010bbf2d7894))
+
+
+
 ## [15.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@14.5.1...@codecademy/gamut-labs@15.0.0) (2021-04-28)
 
 
