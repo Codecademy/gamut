@@ -1,18 +1,17 @@
 import { setupEnzyme } from '@codecademy/gamut-tests';
 
+import { PageFeatures, PageFeaturesProps } from '..';
+import { CTA } from '../CTA';
+import { Description } from '../Description';
 import {
-  CTA,
-  Description,
   Feature,
   FeaturedDescription,
   FeaturedIcon,
   FeaturedImage,
   FeaturedStat,
   FeaturedTitle,
-  PageFeatures,
-  PageFeaturesProps,
-  Title,
-} from '..';
+} from '../Feature';
+import { Title } from '../Title';
 
 const renderWrapper = setupEnzyme(PageFeatures, {
   features: [
