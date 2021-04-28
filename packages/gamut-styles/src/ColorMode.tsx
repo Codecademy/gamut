@@ -4,6 +4,7 @@ import styled from '@emotion/styled';
 import { mapValues } from 'lodash';
 import React, { ComponentProps, forwardRef, useMemo } from 'react';
 
+import { scrollbarColors } from './globals';
 import {
   color,
   flex,
@@ -34,7 +35,7 @@ export const VariableProvider = styled('div', styledConfig)<
     variables?: CSSObject;
     alwaysSetVariables?: boolean;
   }
->(({ variables }) => variables, providerProps);
+>(({ variables }) => variables, scrollbarColors, providerProps);
 
 export const ColorMode = forwardRef<
   HTMLDivElement,
