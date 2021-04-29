@@ -3,6 +3,75 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [32.6.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@32.6.0...@codecademy/gamut@32.6.1) (2021-04-29)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [32.6.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@32.5.0...@codecademy/gamut@32.6.0) (2021-04-29)
+
+
+### Features
+
+* **Buttons:** ColorModes + Props + Refactor + Refs Oh My! [GM-211] [REACH-856] [GM-192] ([c4643db](https://github.com/Codecademy/client-modules/commit/c4643db64d3684319f8d5fc6f68d05197ec1f61e))
+
+
+
+## [32.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@32.4.3...@codecademy/gamut@32.5.0) (2021-04-29)
+
+
+### Features
+
+* **Logo / Labels:** Consolidation + Props + Modes [GM-149] [GM-146] ([9b24a1b](https://github.com/Codecademy/client-modules/commit/9b24a1b7798c604efb3e7b3009fb862f57296cea))
+
+
+
+### [32.4.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@32.4.2...@codecademy/gamut@32.4.3) (2021-04-29)
+
+
+### Bug Fixes
+
+* **Anchor:** Fixes pseudo state text decoration mismatches ([8a33cfd](https://github.com/Codecademy/client-modules/commit/8a33cfd67d762e70021a7d8ef2e30b1726a4c2ab))
+
+
+
+### [32.4.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@32.4.1...@codecademy/gamut@32.4.2) (2021-04-28)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [32.4.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@32.4.0...@codecademy/gamut@32.4.1) (2021-04-27)
+
+
+### Bug Fixes
+
+* **Text:** Fontweight for body text and none scalar typings ([aa113dc](https://github.com/Codecademy/client-modules/commit/aa113dcaee4bffd7a23c9acf87308c32816f07fe))
+
+
+
+## [32.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@32.3.3...@codecademy/gamut@32.4.0) (2021-04-27)
+
+
+### Features
+
+* **NotificationItem:** Open internal notification links in same tab ([4639cea](https://github.com/Codecademy/client-modules/commit/4639ceae982417585e8b02427bc906b606ba8812))
+
+
+
+### [32.3.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@32.3.2...@codecademy/gamut@32.3.3) (2021-04-26)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
 ### [32.3.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@32.3.1...@codecademy/gamut@32.3.2) (2021-04-26)
 
 

@@ -3,6 +3,40 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.7.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@9.6.3...@codecademy/gamut-styles@9.7.0) (2021-04-29)
+
+
+### Features
+
+* **Buttons:** ColorModes + Props + Refactor + Refs Oh My! [GM-211] [REACH-856] [GM-192] ([c4643db](https://github.com/Codecademy/client-modules/commit/c4643db64d3684319f8d5fc6f68d05197ec1f61e))
+
+
+
+### [9.6.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@9.6.2...@codecademy/gamut-styles@9.6.3) (2021-04-28)
+
+**Note:** Version bump only for package @codecademy/gamut-styles
+
+
+
+
+
+### [9.6.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@9.6.1...@codecademy/gamut-styles@9.6.2) (2021-04-27)
+
+**Note:** Version bump only for package @codecademy/gamut-styles
+
+
+
+
+
+### [9.6.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@9.6.0...@codecademy/gamut-styles@9.6.1) (2021-04-26)
+
+
+### Bug Fixes
+
+* **ColorMode:** Ref Forarding for BG + ColorMode ([d2ded46](https://github.com/Codecademy/client-modules/commit/d2ded46456df895e0bfa58ac213c583c2ff934c1))
+
+
+
 ## [9.6.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@9.5.6...@codecademy/gamut-styles@9.6.0) (2021-04-26)
 
 

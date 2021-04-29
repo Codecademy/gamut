@@ -1,7 +1,5 @@
-import { CSSObject } from '@emotion/react';
+import { CSSObject, Theme } from '@emotion/react';
 import { isObject, merge } from 'lodash';
-
-import { BaseTheme } from '../types/theme';
 
 /**
  * Returns an type of any object with { key: 'var(--key) }
@@ -16,18 +14,22 @@ export type KeyAsVariable<
 const templateBreakpoints = (
   value: string | number | CSSObject,
   alias: string,
-  { breakpoints }: BaseTheme
+  theme: Theme | undefined
 ) => {
   if (isObject(value)) {
     const { _, base, ...rest } = value;
     const css = {
       [alias]: _ ?? base,
     };
-    Object.keys(breakpoints).forEach((key) => {
-      css[breakpoints[key as keyof typeof breakpoints]] = {
-        [alias]: rest[key],
-      };
-    });
+
+    if (theme) {
+      const { breakpoints } = theme;
+      Object.keys(breakpoints).forEach((key) => {
+        css[breakpoints[key as keyof typeof breakpoints]] = {
+          [alias]: rest[key],
+        };
+      });
+    }
 
     return css;
   }
@@ -40,7 +42,7 @@ export const serializeTokens = <
 >(
   tokens: T,
   prefix: Prefix,
-  theme: BaseTheme
+  theme: Theme | undefined
 ): {
   tokens: KeyAsVariable<T, Prefix>;
   variables: CSSObject;

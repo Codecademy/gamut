@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.11.0](https://github.com/Codecademy/client-modules/compare/@codecademy/variance@0.10.1...@codecademy/variance@0.11.0) (2021-04-29)
+
+
+### Features
+
+* **Buttons:** ColorModes + Props + Refactor + Refs Oh My! [GM-211] [REACH-856] [GM-192] ([c4643db](https://github.com/Codecademy/client-modules/commit/c4643db64d3684319f8d5fc6f68d05197ec1f61e))
+
+
+
+### [0.10.1](https://github.com/Codecademy/client-modules/compare/@codecademy/variance@0.10.0...@codecademy/variance@0.10.1) (2021-04-27)
+
+
+### Bug Fixes
+
+* **Text:** Fontweight for body text and none scalar typings ([aa113dc](https://github.com/Codecademy/client-modules/commit/aa113dcaee4bffd7a23c9acf87308c32816f07fe))
+
+
+
 ## [0.10.0](https://github.com/Codecademy/client-modules/compare/@codecademy/variance@0.9.0...@codecademy/variance@0.10.0) (2021-04-26)
 
 
