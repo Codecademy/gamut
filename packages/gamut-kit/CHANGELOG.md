@@ -3,6 +3,62 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [0.3.58](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-kit@0.3.57...@codecademy/gamut-kit@0.3.58) (2021-04-28)
+
+**Note:** Version bump only for package @codecademy/gamut-kit
+
+
+
+
+
+### [0.3.57](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-kit@0.3.56...@codecademy/gamut-kit@0.3.57) (2021-04-28)
+
+**Note:** Version bump only for package @codecademy/gamut-kit
+
+
+
+
+
+### [0.3.56](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-kit@0.3.55...@codecademy/gamut-kit@0.3.56) (2021-04-28)
+
+**Note:** Version bump only for package @codecademy/gamut-kit
+
+
+
+
+
+### [0.3.55](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-kit@0.3.54...@codecademy/gamut-kit@0.3.55) (2021-04-27)
+
+**Note:** Version bump only for package @codecademy/gamut-kit
+
+
+
+
+
+### [0.3.54](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-kit@0.3.53...@codecademy/gamut-kit@0.3.54) (2021-04-27)
+
+**Note:** Version bump only for package @codecademy/gamut-kit
+
+
+
+
+
+### [0.3.53](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-kit@0.3.52...@codecademy/gamut-kit@0.3.53) (2021-04-27)
+
+**Note:** Version bump only for package @codecademy/gamut-kit
+
+
+
+
+
+### [0.3.52](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-kit@0.3.51...@codecademy/gamut-kit@0.3.52) (2021-04-27)
+
+**Note:** Version bump only for package @codecademy/gamut-kit
+
+
+
+
+
 ### [0.3.51](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-kit@0.3.50...@codecademy/gamut-kit@0.3.51) (2021-04-26)
 
 **Note:** Version bump only for package @codecademy/gamut-kit

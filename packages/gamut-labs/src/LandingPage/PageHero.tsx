@@ -2,8 +2,10 @@ import { Column, ColumnProps, LayoutGrid, VideoProps } from '@codecademy/gamut';
 import styled from '@emotion/styled';
 import React from 'react';
 
-import { CTA, Description, Title } from '.';
+import { CTA } from './CTA';
+import { Description } from './Description';
 import { PageHeroMedia } from './PageHeroMedia';
+import { Title } from './Title';
 import { BaseProps } from './types';
 
 const LeftColumn = styled(Column)`

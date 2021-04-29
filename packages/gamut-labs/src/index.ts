@@ -1,4 +1,4 @@
-export * from './landingPage';
+export * from './LandingPage';
 export * from './lib/breakpointHooks';
 export * from './Avatar';
 export * from './CurriculumCard';
@@ -29,3 +29,4 @@ export * from './GlobalFooter';
 export * from './GlobalHeader';
 export { AnonHeaderVariant } from './GlobalHeader/types';
 export * from './PageSection';
+export * from './ListSection';
