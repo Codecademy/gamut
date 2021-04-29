@@ -3,12 +3,8 @@ import {
   styledConfig,
   swatches,
   system,
-  theme,
 } from '@codecademy/gamut-styles';
-import { serializeTokens } from '@codecademy/variance';
-import { css, CSSObject, Theme, useTheme } from '@emotion/react';
-
-import { buttonColors, ButtonOutline } from './ButtonOutline';
+import { Theme, useTheme } from '@emotion/react';
 
 export const modeColorGroups = {
   dark: {
