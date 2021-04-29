@@ -50,6 +50,26 @@ type CustomContainerProps = ContainerProps<OptionStrict, false> & {
   children?: ReactNode[];
 };
 
+const ChevronDropdown = (props: IndicatorProps<OptionTypeBase, false>) => {
+  return (
+    <DropdownIndicator {...props}>
+      <ArrowChevronDownIcon size={16} />
+    </DropdownIndicator>
+  );
+};
+
+const CustomContainer = ({ children, ...rest }: CustomContainerProps) => {
+  const { inputProps } = rest.selectProps;
+  const value = rest.hasValue ? rest.getValue()[0].value : '';
+
+  return (
+    <SelectContainer {...rest}>
+      {children}
+      <input type="hidden" value={value} {...inputProps} />
+    </SelectContainer>
+  );
+};
+
 const selectBaseStyles = ({
   error,
   activated,
@@ -119,24 +139,16 @@ const customStyles: StylesConfig<OptionTypeBase, false> = {
   }),
 };
 
-const ChevronDropdown = (props: IndicatorProps<OptionTypeBase, false>) => {
-  return (
-    <DropdownIndicator {...props}>
-      <ArrowChevronDownIcon size={16} />
-    </DropdownIndicator>
-  );
-};
-
-const CustomContainer = ({ children, ...rest }: CustomContainerProps) => {
-  const { inputProps } = rest.selectProps;
-  const value = rest.hasValue ? rest.getValue()[0].value : '';
-
-  return (
-    <SelectContainer {...rest}>
-      {children}
-      <input type="hidden" value={value} {...inputProps} />
-    </SelectContainer>
-  );
+const defaultProps = {
+  name: undefined,
+  isSearchable: false,
+  isMulti: false,
+  styles: customStyles,
+  components: {
+    DropdownIndicator: ChevronDropdown,
+    IndicatorSeparator: () => null,
+    SelectContainer: CustomContainer,
+  },
 };
 
 export const SelectDropdown: React.FC<SelectDropdownProps> = ({
@@ -187,23 +199,15 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
 
   return (
     <ReactSelect
+      {...defaultProps}
       id={id || rest.htmlFor}
       value={parsedValue}
-      styles={customStyles}
       activated={activated}
       error={Boolean(error)}
-      components={{
-        DropdownIndicator: ChevronDropdown,
-        IndicatorSeparator: () => null,
-        SelectContainer: CustomContainer,
-      }}
       onChange={changeHandler}
       inputProps={
         inputProps ? { ...inputProps, ...baseInputProps } : baseInputProps
       }
-      name={undefined}
-      isSearchable={false}
-      isMulti={false}
       isDisabled={disabled}
       options={selectOptions}
       placeholder={placeholder}
