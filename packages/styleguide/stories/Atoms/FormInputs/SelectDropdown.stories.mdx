@@ -47,9 +47,9 @@ export const fruitOptions = [
 
 <PropsTable story="SelectDropdown" />
 
-### SelectDropdown
+## Examples + Usage
 
-`SelectDropdown` has a larger JavaScript dependency size than our standard `Select` component so should not be used unless specified in designs. If you wish to define an intial value, you must format `SelectDropdown` as a [controlled component](https://reactjs.org/docs/forms.html#controlled-components).
+`SelectDropdown` has a larger JavaScript dependency size than our standard `Select` component so should not be used unless specified in designs.
 
 <Canvas>
   <Story
@@ -60,7 +60,7 @@ export const fruitOptions = [
     }}
   >
     {(args) => (
-      <Box width="10rem" height="25rem">
+      <Box width="10rem" height="12rem">
         <SelectDropdown {...args} />
       </Box>
     )}
@@ -74,7 +74,7 @@ export const fruitOptions = [
     }}
   >
     {(args) => (
-      <Box width="10rem" height="25rem">
+      <Box width="10rem">
         <SelectDropdown {...args} />
       </Box>
     )}
@@ -88,7 +88,7 @@ export const fruitOptions = [
     }}
   >
     {(args) => (
-      <Box width="25rem" height="25rem">
+      <Box width="25rem">
         <FormGroup label="You cannot change me, I am controlled.">
           <SelectDropdown {...args} />
         </FormGroup>
@@ -96,6 +96,42 @@ export const fruitOptions = [
     )}
   </Story>
 </Canvas>
+
+### Events and Controlled Components
+
+Instead of a standard HTML Select event return, SelectDropdown returns the selected option. This is formatted as `{label: 'labelText', value: 'valueText' }`. Your event functions should be formatted as `(event) => changeHandler(event.value)` instead of `(event) => changeHandler(event.target.value)`.
+
+If you wish to define an intial value, you must format `SelectDropdown` as a [controlled component](https://reactjs.org/docs/forms.html#controlled-components), like so:
+
+```tsx
+import { Box, SelectDropdown } from '@codecademy/gamut';
+import React, { useState } from 'react';
+
+export const CustomDropdown: React.FC = ({
+  errorMessage,
+  disabled,
+  initialValue,
+  options,
+}) => {
+  const { currentValue, setCurrentValue } = useState(initialValue);
+
+  const changeHandler = (newValue) => {
+    setCurrentValue(newValue);
+  };
+
+  return (
+    <FormGroup error={errorMessage} disabled={disabled}>
+      <SelectDropdown
+        options={options}
+        onChange={(e) => changeHandler(e.value)}
+        placeholder="Placeholder"
+        error={!!errorMessage}
+        disabled={disabled}
+      />
+    </FormGroup>
+  );
+};
+```
 
 ### Form Group + Select
 

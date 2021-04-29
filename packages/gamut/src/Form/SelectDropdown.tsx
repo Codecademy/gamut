@@ -1,7 +1,6 @@
 import { ArrowChevronDownIcon } from '@codecademy/gamut-icons';
 import { theme } from '@codecademy/gamut-styles';
 import { css } from '@emotion/react';
-import { each, isObject } from 'lodash';
 import React, {
   ReactNode,
   SelectHTMLAttributes,
@@ -25,6 +24,7 @@ import {
   formDropdownStyles,
   formFieldStyles,
 } from './styles/shared';
+import { parseOptions } from './utils';
 
 const { DropdownIndicator, SelectContainer } = SelectDropdownElements;
 
@@ -174,19 +174,8 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
     setActivated(true);
   };
 
-  const selectOptions: Array<OptionTypeBase> = useMemo(() => {
-    const parsedOptions: Array<OptionTypeBase> = [];
-    if (options instanceof Array) {
-      options.forEach((value) => {
-        const label = id ? `${id}-${value}` : value;
-        parsedOptions.push({ label, value });
-      });
-    } else if (isObject(options)) {
-      each(options, (label, value) => {
-        parsedOptions.push({ label, value });
-      });
-    }
-    return parsedOptions;
+  const selectOptions = useMemo(() => {
+    return parseOptions({ options, id, selectDropdown: true });
   }, [options, id]);
 
   const parsedValue = useMemo(() => {
