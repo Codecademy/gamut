@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [9.6.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@9.6.2...@codecademy/gamut-styles@9.6.3) (2021-04-28)
+
+**Note:** Version bump only for package @codecademy/gamut-styles
+
+
+
+
+
+### [9.6.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@9.6.1...@codecademy/gamut-styles@9.6.2) (2021-04-27)
+
+**Note:** Version bump only for package @codecademy/gamut-styles
+
+
+
+
+
 ### [9.6.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@9.6.0...@codecademy/gamut-styles@9.6.1) (2021-04-26)
 
 

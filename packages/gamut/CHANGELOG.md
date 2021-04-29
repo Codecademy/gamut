@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [32.4.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@32.4.2...@codecademy/gamut@32.4.3) (2021-04-29)
+
+
+### Bug Fixes
+
+* **Anchor:** Fixes pseudo state text decoration mismatches ([8a33cfd](https://github.com/Codecademy/client-modules/commit/8a33cfd67d762e70021a7d8ef2e30b1726a4c2ab))
+
+
+
+### [32.4.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@32.4.1...@codecademy/gamut@32.4.2) (2021-04-28)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [32.4.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@32.4.0...@codecademy/gamut@32.4.1) (2021-04-27)
+
+
+### Bug Fixes
+
+* **Text:** Fontweight for body text and none scalar typings ([aa113dc](https://github.com/Codecademy/client-modules/commit/aa113dcaee4bffd7a23c9acf87308c32816f07fe))
+
+
+
 ## [32.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@32.3.3...@codecademy/gamut@32.4.0) (2021-04-27)
 
 

@@ -3,7 +3,9 @@ import { mediaQueries } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React from 'react';
 
-import { CTA, Description, Title } from '.';
+import { CTA } from './CTA';
+import { Description } from './Description';
+import { Title } from './Title';
 import { BaseProps, DarkModeProps } from './types';
 
 const Grid = styled.div`
