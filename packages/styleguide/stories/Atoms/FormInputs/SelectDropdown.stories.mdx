@@ -101,7 +101,7 @@ export const fruitOptions = [
 
 Instead of a standard HTML Select event return, SelectDropdown returns the selected option. This is formatted as `{label: 'labelText', value: 'valueText' }`. Your event functions should be formatted as `(event) => changeHandler(event.value)` instead of `(event) => changeHandler(event.target.value)`.
 
-If you wish to define an intial value, you must format `SelectDropdown` as a [controlled component](https://reactjs.org/docs/forms.html#controlled-components), like so:
+SelectDropdown does not take a defaultValue prop. If you wish to define a default value, you must format `SelectDropdown` as a [controlled component](https://reactjs.org/docs/forms.html#controlled-components), like so:
 
 ```tsx
 import { Box, SelectDropdown } from '@codecademy/gamut';
@@ -110,10 +110,10 @@ import React, { useState } from 'react';
 export const CustomDropdown: React.FC = ({
   errorMessage,
   disabled,
-  initialValue,
+  defaultValue,
   options,
 }) => {
-  const { currentValue, setCurrentValue } = useState(initialValue);
+  const { currentValue, setCurrentValue } = useState(defaultValue);
 
   const changeHandler = (newValue) => {
     setCurrentValue(newValue);
@@ -127,6 +127,7 @@ export const CustomDropdown: React.FC = ({
         placeholder="Placeholder"
         error={!!errorMessage}
         disabled={disabled}
+        value={currentValue}
       />
     </FormGroup>
   );
