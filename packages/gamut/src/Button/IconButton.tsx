@@ -5,13 +5,13 @@ import React, { ComponentProps, forwardRef } from 'react';
 
 import { ButtonBaseElements } from '../ButtonBase/ButtonBase';
 import { ButtonInner } from './ButtonInner';
-import { ButtonOutline } from './ButtonOutline';
-import { buttonColors, createStates, useColorMode } from './shared';
+import { buttonColors, ButtonOutline, createStates } from './ButtonOutline';
+import { config, useColorMode } from './shared';
 import { SizedButtonProps } from './types';
 
 const { background, backgroundMuted, backgroundEmphasized } = buttonColors;
 
-const IconButtonInner = styled(ButtonInner)<SizedButtonProps>(
+const IconButtonInner = styled(ButtonInner, config)<SizedButtonProps>(
   createStates({
     base: { color: background },
     hover: { backgroundColor: backgroundEmphasized },
