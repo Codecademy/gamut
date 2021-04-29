@@ -52,9 +52,3 @@ export const parseOptions = <T extends ParseOptionProps>(
 
   return parsedOptions as TypeName<T>[];
 };
-
-const hey = parseOptions({
-  id: 'ok',
-  options: ['red', 'yellow', 'green'],
-  selectDropdown: false,
-});
