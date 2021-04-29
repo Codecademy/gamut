@@ -1,7 +1,7 @@
 {
   "name": "@codecademy/gamut-styles",
   "description": "Styleguide & Component library for codecademy.com",
-  "version": "9.6.1",
+  "version": "9.6.3",
   "author": "Jake Hiller <jake@codecademy.com>",
   "main": "dist/index.js",
   "module": "dist/index.js",
@@ -18,7 +18,7 @@
   },
   "dependencies": {
     "@codecademy/gamut-system": "^0.7.0",
-    "@codecademy/variance": "^0.10.0"
+    "@codecademy/variance": "^0.10.1"
   },
   "peerDependencies": {
     "@emotion/react": "^11.15",
@@ -30,7 +30,7 @@
     "@emotion/react": "^11.1.5",
     "@emotion/styled": "^11.1.5",
     "@types/react-helmet": "^6.1.0",
-    "component-test-setup": "^0.2.4"
+    "component-test-setup": "^0.2.5"
   },
   "license": "MIT",
   "publishConfig": {
