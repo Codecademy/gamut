@@ -4,7 +4,7 @@ import { useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
 import React from 'react';
 
-import { Box, FlexBox } from '../Box';
+import { FlexBox } from '../Box';
 import { FillButton, IconButton, TextButton } from '../Button';
 import { Overlay, OverlayProps } from '../Overlay';
 import { Pattern } from '../Pattern';
