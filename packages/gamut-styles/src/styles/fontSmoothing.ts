@@ -2,11 +2,11 @@ import { variance } from '@codecademy/variance';
 
 const smoothing = {
   pixel: {
-    WebKitFontSmoothing: 'antialiased',
+    WebkitFontSmoothing: 'antialiased',
     MozOsxFontSmoothing: 'grayscale',
   },
   subpixel: {
-    WebKitFontSmoothing: 'subpixel-antialiased',
+    WebkitFontSmoothing: 'subpixel-antialiased',
     MozOsxFontSmoothing: 'auto',
   },
 };
