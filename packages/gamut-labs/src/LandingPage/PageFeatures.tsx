@@ -9,16 +9,17 @@ import { mediaQueries } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React, { ReactNode } from 'react';
 
+import { CTA } from './CTA';
+import { Description } from './Description';
 import {
-  CTA,
-  Description,
   Feature,
+  FeaturedDescription,
   FeaturedIcon,
   FeaturedImage,
   FeaturedStat,
-  Title,
-} from '.';
-import { FeaturedDescription, FeaturedTitle } from './Feature';
+  FeaturedTitle,
+} from './Feature';
+import { Title } from './Title';
 import { BaseProps } from './types';
 
 const FlexContainer = styled(Container)`
