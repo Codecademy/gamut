@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [15.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@15.1.2...@codecademy/gamut-labs@15.2.0) (2021-04-29)
+
+
+### Features
+
+* **Logo / Labels:** Consolidation + Props + Modes [GM-149] [GM-146] ([9b24a1b](https://github.com/Codecademy/client-modules/commit/9b24a1b7798c604efb3e7b3009fb862f57296cea))
+
+
+
 ### [15.1.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@15.1.1...@codecademy/gamut-labs@15.1.2) (2021-04-29)
 
 **Note:** Version bump only for package @codecademy/gamut-labs
