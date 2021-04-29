@@ -16,7 +16,7 @@ import { MiniDeleteIcon, SearchIcon } from '@codecademy/gamut-icons';
 import { Background, ColorMode } from '@codecademy/gamut-styles/src';
 import React, { ComponentProps, useState } from 'react';
 
-const renderButtons = (variant?: 'primary' | 'secondary') => {
+const renderButtons = (variant?: 'primary' | 'secondary', disabled = false) => {
   return (
     <GridBox
       rowGap={16}
@@ -28,22 +28,35 @@ const renderButtons = (variant?: 'primary' | 'secondary') => {
       paddingTop={16}
     >
       <GridBox gridRowEnd="span 2">
-        <CTAButton variant={variant as any}>CTA</CTAButton>
+        <CTAButton variant={variant as any} disabled={disabled}>
+          CTA
+        </CTAButton>
       </GridBox>
-      <FillButton variant={variant}>Fill</FillButton>
-      <StrokeButton variant={variant}>Stroke</StrokeButton>
-      <TextButton variant={variant}>Text</TextButton>
-      <IconButton variant={variant} icon={SearchIcon} />
-      <FillButton variant={variant} size="small">
+      <FillButton variant={variant} disabled={disabled}>
         Fill
       </FillButton>
-      <StrokeButton variant={variant} size="small">
+      <StrokeButton variant={variant} disabled={disabled}>
         Stroke
       </StrokeButton>
-      <TextButton variant={variant} size="small">
+      <TextButton variant={variant} disabled={disabled}>
         Text
       </TextButton>
-      <IconButton variant={variant} size="small" icon={MiniDeleteIcon} />
+      <IconButton variant={variant} icon={SearchIcon} disabled={disabled} />
+      <FillButton variant={variant} size="small" disabled={disabled}>
+        Fill
+      </FillButton>
+      <StrokeButton variant={variant} size="small" disabled={disabled}>
+        Stroke
+      </StrokeButton>
+      <TextButton variant={variant} size="small" disabled={disabled}>
+        Text
+      </TextButton>
+      <IconButton
+        variant={variant}
+        size="small"
+        icon={MiniDeleteIcon}
+        disabled={disabled}
+      />
     </GridBox>
   );
 };
@@ -103,6 +116,7 @@ export const ColorModeExample = () => {
           <Text as="h4">Buttons</Text>
           {renderButtons('primary')}
           {renderButtons('secondary')}
+          {renderButtons('primary', true)}
         </Box>
       </ColorMode>
     </Box>
