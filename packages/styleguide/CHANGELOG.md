@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [36.7.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@36.6.2...@codecademy/styleguide@36.7.0) (2021-04-29)
+
+
+### Features
+
+* **Logo / Labels:** Consolidation + Props + Modes [GM-149] [GM-146] ([9b24a1b](https://github.com/Codecademy/client-modules/commit/9b24a1b7798c604efb3e7b3009fb862f57296cea))
+
+
+
+### [36.6.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@36.6.1...@codecademy/styleguide@36.6.2) (2021-04-29)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
 ### [36.6.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@36.6.0...@codecademy/styleguide@36.6.1) (2021-04-28)
 
 **Note:** Version bump only for package @codecademy/styleguide
