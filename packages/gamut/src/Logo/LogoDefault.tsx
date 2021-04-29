@@ -5,7 +5,6 @@ import { LogoProps, LogoSvg, useColorMode } from './shared';
 export const LogoDefault = forwardRef<SVGSVGElement, LogoProps>(
   ({ mode, ...props }, ref) => {
     const currentMode = useColorMode(mode);
-
     return (
       <LogoSvg {...props} mode={currentMode} ref={ref} viewBox="0 0 102 21.705">
         <title>Codecademy Logo</title>

@@ -14,7 +14,8 @@ const variants = {
 export const Logo = forwardRef<
   SVGSVGElement,
   LogoProps & { variant?: 'default' | 'mini' | 'pro' }
->(({ variant = 'default', ...props }, ref) => {
+>(({ variant = 'default', height = 30, ...props }, ref) => {
   const Logo = variants[variant];
-  return <Logo {...props} ref={ref} />;
+
+  return <Logo {...props} height={height} ref={ref} />;
 });
