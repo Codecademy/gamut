@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [36.9.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@36.8.1...@codecademy/styleguide@36.9.0) (2021-04-29)
+
+
+### Features
+
+* **Dialog:** Migrate to Variance + ColorModes ([f666c81](https://github.com/Codecademy/client-modules/commit/f666c813aa19eccd1d9a9da9e857d88b5e81f128))
+
+
+
 ### [36.8.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@36.8.0...@codecademy/styleguide@36.8.1) (2021-04-29)
 
 **Note:** Version bump only for package @codecademy/styleguide
