@@ -3,14 +3,13 @@ import React, { forwardRef } from 'react';
 
 import { ButtonBaseElements } from '../ButtonBase/ButtonBase';
 import { ButtonInner } from './ButtonInner';
-import { ButtonOutline, ButtonOutlineProps } from './ButtonOutline';
 import {
   buttonColors,
-  buttonSizing,
-  config,
+  ButtonOutline,
+  ButtonOutlineProps,
   createStates,
-  useColorMode,
-} from './shared';
+} from './ButtonOutline';
+import { buttonSizing, config, useColorMode } from './shared';
 import { SizedButtonProps } from './types';
 
 const {

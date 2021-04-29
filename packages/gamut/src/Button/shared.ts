@@ -8,7 +8,7 @@ import {
 import { serializeTokens } from '@codecademy/variance';
 import { css, CSSObject, Theme, useTheme } from '@emotion/react';
 
-import { ButtonOutline } from './ButtonOutline';
+import { buttonColors, ButtonOutline } from './ButtonOutline';
 
 export const modeColorGroups = {
   dark: {
@@ -53,12 +53,6 @@ export const modeColorGroups = {
   },
 };
 
-export const { tokens: buttonColors } = serializeTokens(
-  modeColorGroups.dark.primary,
-  'button',
-  theme
-);
-
 export const config = styledConfig(['mode', 'variant', 'size']);
 
 export function useColorMode(mode?: keyof Theme['colorModes']['modes']) {
@@ -89,24 +83,3 @@ export const buttonSizing = system.variant({
     },
   },
 });
-
-/** This is a temporary tagged template for button hover / active states while they still are multiple elements */
-
-export const createStates = ({
-  base,
-  hover,
-  active,
-  disabled,
-}: Record<'base' | 'hover' | 'active' | 'disabled', CSSObject>) => css`
-  ${base}
-  ${ButtonOutline}:hover & {
-    ${hover}
-  }
-  ${ButtonOutline}:active & {
-    ${active}
-  }
-  ${ButtonOutline}:disabled &,
-  ${ButtonOutline}[aria-disabled='true'] & {
-    ${disabled}
-  }
-`;
