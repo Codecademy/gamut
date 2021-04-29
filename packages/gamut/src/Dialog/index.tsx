@@ -51,17 +51,9 @@ const ModalBody = styled.div(
   })
 );
 
-const Title = styled(Text)`
-  grid-area: title;
-`;
-
 const CloseButton = styled.div`
   grid-area: close;
 `.withComponent(IconButton);
-
-const Content = styled(Box)`
-  grid-area: children;
-`;
 
 const ConfirmButton = styled(FillButton)`
   grid-area: confirm;
@@ -118,9 +110,9 @@ export const Dialog: React.FC<DialogProps> = ({
       <ModalWrapper aria-hidden="false" aria-modal="true" role="dialog">
         <ModalShadow name="checkerDense" />
         <ModalBody>
-          <Title as="h2" fontSize={20} lineHeight="base">
+          <Text as="h2" fontSize={20} lineHeight="base" gridArea="title">
             {title}
-          </Title>
+          </Text>
           <CloseButton
             aria-label="Close Dialog"
             mode={active}
@@ -128,9 +120,9 @@ export const Dialog: React.FC<DialogProps> = ({
             icon={MiniDeleteIcon}
             onClick={onCancel}
           />
-          <Content>
-            <Text as="p">{children}</Text>
-          </Content>
+          <Text as="p" gridArea="children">
+            {children}
+          </Text>
           {cancelCta && (
             <CancelButton mode={active} {...cancelCta} onClick={onCancel} />
           )}
