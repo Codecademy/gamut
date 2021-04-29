@@ -28,7 +28,7 @@ const FillButtonInner = styled(ButtonInner, config)<SizedButtonProps>(
     active: { borderColor: background },
     disabled: {
       color: foregroundMuted,
-      borderColor: backgroundMuted,
+      backgroundColor: backgroundMuted,
     },
   }),
   buttonSizing

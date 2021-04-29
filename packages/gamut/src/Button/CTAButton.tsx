@@ -33,8 +33,8 @@ const CTAButtonInner = styled(ButtonInner, config)<ButtonProps>(
     hover: { boxShadow: `-8px 8px 0 0 ${shadow}` },
     active: { backgroundColor: shadow, boxShadow: 'none' },
     disabled: {
-      backgroudnColor: backgroundMuted,
-      boxShadow: `-4px 4px 0 1px ${foregroundMuted}`,
+      backgroundColor: backgroundMuted,
+      boxShadow: 'none',
       color: foregroundMuted,
     },
   })

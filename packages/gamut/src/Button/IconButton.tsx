@@ -9,7 +9,7 @@ import { ButtonOutline } from './ButtonOutline';
 import { buttonColors, createStates, useColorMode } from './shared';
 import { SizedButtonProps } from './types';
 
-const { background, foregroundMuted, backgroundEmphasized } = buttonColors;
+const { background, backgroundMuted, backgroundEmphasized } = buttonColors;
 
 const IconButtonInner = styled(ButtonInner)<SizedButtonProps>(
   createStates({
@@ -17,7 +17,7 @@ const IconButtonInner = styled(ButtonInner)<SizedButtonProps>(
     hover: { backgroundColor: backgroundEmphasized },
     active: { color: background },
     disabled: {
-      color: foregroundMuted,
+      color: backgroundMuted,
       backgroundColor: 'transparent',
     },
   }),
