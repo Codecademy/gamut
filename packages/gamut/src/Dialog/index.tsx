@@ -85,7 +85,7 @@ export const Dialog: React.FC<DialogProps> = ({
   confirmCta,
   cancelCta,
   onRequestClose,
-  size,
+  size = 'small',
   ...rest
 }) => {
   const onConfirm = () => {
