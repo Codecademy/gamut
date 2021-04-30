@@ -4,7 +4,6 @@ import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
 import React from 'react';
 
-import { Box } from '../Box';
 import { FillButton, IconButton, TextButton } from '../Button';
 import { Overlay, OverlayProps } from '../Overlay';
 import { Pattern } from '../Pattern';
@@ -14,7 +13,6 @@ type SizeVariants = StyleProps<typeof modalSizeVariants>;
 
 const modalSizeVariants = system.variant({
   prop: 'size',
-  defaultVariant: 'small',
   variants: {
     small: { width: '400px', minHeight: '170px' },
     medium: { width: '640px', minHeight: '240px' },
@@ -124,11 +122,14 @@ export const Dialog: React.FC<DialogProps> = ({
             {children}
           </Text>
           {cancelCta && (
-            <TextButton {...cancelCta} onClick={onCancel} justifySelf="end" />
+            <TextButton
+              {...cancelCta}
+              onClick={onCancel}
+              justifySelf="end"
+              gridArea="cancel"
+            />
           )}
-          <Box gridArea="confirm">
-            <FillButton {...confirmCta} onClick={onConfirm} />
-          </Box>
+          <FillButton {...confirmCta} onClick={onConfirm} gridArea="confirm" />
         </ModalBody>
       </ModalWrapper>
     </ShroudedOverlay>

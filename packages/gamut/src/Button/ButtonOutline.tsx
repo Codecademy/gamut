@@ -61,7 +61,7 @@ const outlinePadding = system.variant({
 const buttonProps = variance.compose(
   system.layout,
   system.positioning,
-  system.space
+  system.margin
 );
 
 export const ButtonOutline = styled('button', config)<
