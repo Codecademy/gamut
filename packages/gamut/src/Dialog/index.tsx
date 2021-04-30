@@ -4,7 +4,6 @@ import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
 import React from 'react';
 
-import { Box } from '../Box';
 import { FillButton, IconButton, TextButton } from '../Button';
 import { Overlay, OverlayProps } from '../Overlay';
 import { Pattern } from '../Pattern';
@@ -130,13 +129,7 @@ export const Dialog: React.FC<DialogProps> = ({
               gridArea="confirm"
             />
           )}
-          <Box>
-            <FillButton
-              {...confirmCta}
-              onClick={onConfirm}
-              gridArea="confirm"
-            />
-          </Box>
+          <FillButton {...confirmCta} onClick={onConfirm} gridArea="confirm" />
         </ModalBody>
       </ModalWrapper>
     </ShroudedOverlay>
