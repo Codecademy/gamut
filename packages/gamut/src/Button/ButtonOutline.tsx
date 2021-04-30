@@ -1,13 +1,41 @@
-import { system, timing } from '@codecademy/gamut-styles';
+import { system, theme, timing } from '@codecademy/gamut-styles';
 import { serializeTokens, StyleProps, ThemeProps } from '@codecademy/variance';
-import styled from '@emotion/styled';
+import { css } from '@emotion/react';
+import styled, { CSSObject } from '@emotion/styled';
 import { ComponentProps } from 'react';
 
 import { ButtonBase } from '../ButtonBase/ButtonBase';
-import { buttonColors, config, modeColorGroups } from './shared';
+import { config, modeColorGroups } from './shared';
 import { ButtonProps } from './types';
 
 export type ButtonOutlineProps = ComponentProps<typeof ButtonOutline>;
+
+export const { tokens: buttonColors } = serializeTokens(
+  modeColorGroups.dark.primary,
+  'button',
+  theme
+);
+
+/** This is a temporary tagged template for button hover / active states while they still are multiple elements */
+
+export const createStates = ({
+  base,
+  hover,
+  active,
+  disabled,
+}: Record<'base' | 'hover' | 'active' | 'disabled', CSSObject>) => css`
+  ${base}
+  ${ButtonOutline}:hover & {
+    ${hover}
+  }
+  ${ButtonOutline}:active & {
+    ${active}
+  }
+  ${ButtonOutline}:disabled &,
+  ${ButtonOutline}[aria-disabled='true'] & {
+    ${disabled}
+  }
+`;
 
 const setTokens = ({
   mode = 'light',

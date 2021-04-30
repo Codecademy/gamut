@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [32.7.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@32.7.1...@codecademy/gamut@32.7.2) (2021-04-30)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [32.7.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@32.7.0...@codecademy/gamut@32.7.1) (2021-04-29)
+
+
+### Bug Fixes
+
+* Circular dependency on ButtonOutline Broke focus states ([966d5c5](https://github.com/Codecademy/client-modules/commit/966d5c5ab161d070663fd82902a522583919a1c6))
+
+
+
 ## [32.7.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@32.6.1...@codecademy/gamut@32.7.0) (2021-04-29)
 
 
