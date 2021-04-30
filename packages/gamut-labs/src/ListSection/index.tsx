@@ -31,9 +31,11 @@ type StyledListItemProps = {
   listItemGap?: number;
 };
 
+const defaultListItemGap = 24;
+
 const StyledListItem = styled.li<StyledListItemProps>`
   &:not(:last-child) {
-    margin-bottom: ${(props) => pxRem(props.listItemGap ?? 16)};
+    margin-bottom: ${(props) => pxRem(props.listItemGap ?? defaultListItemGap)};
   }
 `;
 
