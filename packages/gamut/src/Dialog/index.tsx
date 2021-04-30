@@ -126,7 +126,7 @@ export const Dialog: React.FC<DialogProps> = ({
               {...cancelCta}
               onClick={onCancel}
               justifySelf="end"
-              gridArea="confirm"
+              gridArea="cancel"
             />
           )}
           <FillButton {...confirmCta} onClick={onConfirm} gridArea="confirm" />
