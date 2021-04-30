@@ -94,11 +94,9 @@ export const Dialog: React.FC<DialogProps> = ({
       <ModalWrapper aria-hidden="false" aria-modal="true" role="dialog">
         <ModalShadow name="checkerDense" />
         <ModalBody>
-          <Box gridArea="title">
-            <Text as="h2" fontSize={20} lineHeight="base">
-              {title}
-            </Text>
-          </Box>
+          <Text as="h2" fontSize={20} lineHeight="base" gridArea="title">
+            {title}
+          </Text>
           <Box gridArea="close">
             <IconButton
               aria-label="Close Dialog"
@@ -108,9 +106,9 @@ export const Dialog: React.FC<DialogProps> = ({
               onClick={onCancel}
             />
           </Box>
-          <Box gridArea="content">
-            <Text as="p">{children}</Text>
-          </Box>
+          <Text as="p" gridArea="content">
+            {children}
+          </Text>
           {cancelCta && (
             <FlexBox justifyContent="flex-end" gridArea="cancel">
               <TextButton mode={active} {...cancelCta} onClick={onCancel} />

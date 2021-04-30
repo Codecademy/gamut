@@ -52,7 +52,7 @@ const anchorVariants = system.variant({
       '&:after': {
         content: "''",
       },
-      '&:hover': {
+      '&:hover, &:active': {
         textDecoration: 'underline',
       },
       '&:focus-visible': {
@@ -60,6 +60,7 @@ const anchorVariants = system.variant({
       },
     },
     inline: {
+      whiteSpace: 'initial',
       textDecoration: 'underline',
       '&:focus-visible': {
         outline: 'currentColor auto 4px',
@@ -72,9 +73,6 @@ const anchorVariants = system.variant({
       whiteSpace: 'initial',
       '&:after': {
         content: "''",
-      },
-      '&:hover': {
-        textDecoration: 'underline',
       },
     },
   },
