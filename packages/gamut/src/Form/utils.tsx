@@ -6,27 +6,21 @@ type ParseOptionPropsBase = {
   id?: string | number;
   options?:
     | string[]
-    | Record<
-        string,
-        | string
-        | number
-        | JSX.Element
-        | { element: JSX.Element; hidden: JSX.Element }
-      >;
+    | Record<string, string | number | JSX.Element | OptionWithHiddenElement>;
 };
 interface ReactSelectParseOptionsProps extends ParseOptionPropsBase {
   selectDropdown: true;
   hiddenElements?: false;
 }
 
-type OptionWithHiddenElement = {
+interface OptionWithHiddenElement {
   element: JSX.Element;
   hidden: JSX.Element;
-};
+}
 interface ReactSelectParseHiddenOptionsProps extends ParseOptionPropsBase {
   selectDropdown: true;
   hiddenElements: true;
-  options?: Record<string, { element: JSX.Element; hidden: JSX.Element }>;
+  options: Record<string, OptionWithHiddenElement>;
 }
 interface SelectParseOptionsProps extends ParseOptionPropsBase {
   selectDropdown: false;
@@ -40,6 +34,8 @@ type ParseOptionProps =
 
 type TypeName<T> = T extends ReactSelectParseOptionsProps
   ? OptionTypeBase
+  : T extends ReactSelectParseHiddenOptionsProps
+  ? OptionWithHiddenElement
   : JSX.Element;
 
 const formatAsOptions = ({ label, value }: OptionTypeBase) => {
