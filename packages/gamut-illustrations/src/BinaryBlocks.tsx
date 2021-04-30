@@ -14,7 +14,6 @@ export const BinaryBlocks: React.FC<IllustrationProps> = ({
     viewBox="0 0 174 121"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
-    xmlns="http://www.w3.org/2000/svg"
   >
     <title>Binary Blocks Icon</title>
     <path d="M3.5332 119.239L174 119.239" stroke="#10162F" />
