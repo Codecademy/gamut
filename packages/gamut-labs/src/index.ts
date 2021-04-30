@@ -1,4 +1,4 @@
-export * from './landingPage';
+export * from './LandingPage';
 export * from './lib/breakpointHooks';
 export * from './Avatar';
 export * from './CurriculumCard';
@@ -16,7 +16,6 @@ export * from './Testimonial';
 export * from './Coachmark';
 export * from './HubCard';
 export * from './Popover';
-export * from './Text';
 export * from './AppHeader';
 export * from './AppHeader/AppHeaderElements/AppHeaderDropdown';
 export * from './AppHeader/AppHeaderElements/types';
@@ -30,3 +29,4 @@ export * from './GlobalFooter';
 export * from './GlobalHeader';
 export { AnonHeaderVariant } from './GlobalHeader/types';
 export * from './PageSection';
+export * from './ListSection';
