@@ -199,23 +199,7 @@ export const typography = {
   whiteSpace: { property: 'whiteSpace' },
 } as const;
 
-export const space = {
-  /** Testing Docgen */
-  p: { property: 'padding', scale: 'spacing' },
-  px: {
-    property: 'padding',
-    properties: ['paddingLeft', 'paddingRight'],
-    scale: 'spacing',
-  },
-  py: {
-    property: 'padding',
-    properties: ['paddingTop', 'paddingBottom'],
-    scale: 'spacing',
-  },
-  pt: { property: 'paddingTop', scale: 'spacing' },
-  pb: { property: 'paddingBottom', scale: 'spacing' },
-  pr: { property: 'paddingRight', scale: 'spacing' },
-  pl: { property: 'paddingLeft', scale: 'spacing' },
+export const margin = {
   m: { property: 'margin', scale: 'spacing' },
   mx: {
     property: 'margin',
@@ -231,6 +215,29 @@ export const space = {
   mb: { property: 'marginBottom', scale: 'spacing' },
   mr: { property: 'marginRight', scale: 'spacing' },
   ml: { property: 'marginLeft', scale: 'spacing' },
+} as const;
+
+export const padding = {
+  p: { property: 'padding', scale: 'spacing' },
+  px: {
+    property: 'padding',
+    properties: ['paddingLeft', 'paddingRight'],
+    scale: 'spacing',
+  },
+  py: {
+    property: 'padding',
+    properties: ['paddingTop', 'paddingBottom'],
+    scale: 'spacing',
+  },
+  pt: { property: 'paddingTop', scale: 'spacing' },
+  pb: { property: 'paddingBottom', scale: 'spacing' },
+  pr: { property: 'paddingRight', scale: 'spacing' },
+  pl: { property: 'paddingLeft', scale: 'spacing' },
+} as const;
+
+export const space = {
+  ...margin,
+  ...padding,
 } as const;
 
 export const all = {
