@@ -41,7 +41,8 @@ export const parseOptions = <T extends ParseOptionProps>(
       parsedOptions.push({ label, value });
     });
   } else if (isObject(options)) {
-    each(options, (label, value) => {
+    each(options, (rawLabel, value) => {
+      const label = id ? `${id}-${rawLabel}` : rawLabel;
       parsedOptions.push({ label, value });
     });
   }

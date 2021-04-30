@@ -12,6 +12,12 @@ export const fruitOptions = [
   'Eggplant',
 ];
 
+export const selectObject = {
+  red: 'red',
+  yellow: 'yellow',
+  green: 'green',
+};
+
 <Meta
   title={title}
   component={Select}
@@ -58,7 +64,7 @@ export const fruitOptions = [
     name="Error"
     args={{ options: ['Error'], defaultValue: 'Error', error: true }}
   >
-    {(args) => <Select {...args} />}
+    {(args) => <Select options={selectObject} />}
   </Story>
 </Canvas>
 
