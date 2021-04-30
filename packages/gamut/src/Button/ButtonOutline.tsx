@@ -1,5 +1,10 @@
 import { system, theme, timing } from '@codecademy/gamut-styles';
-import { serializeTokens, StyleProps, ThemeProps } from '@codecademy/variance';
+import {
+  serializeTokens,
+  StyleProps,
+  ThemeProps,
+  variance,
+} from '@codecademy/variance';
 import { css } from '@emotion/react';
 import styled, { CSSObject } from '@emotion/styled';
 import { ComponentProps } from 'react';
@@ -53,6 +58,12 @@ const outlinePadding = system.variant({
   },
 });
 
+const buttonProps = variance.compose(
+  system.layout,
+  system.positioning,
+  system.space
+);
+
 export const ButtonOutline = styled('button', config)<
   ButtonProps & StyleProps<typeof outlinePadding> & { as?: never }
 >(
@@ -77,5 +88,6 @@ export const ButtonOutline = styled('button', config)<
       boxShadow: `0 0 0 2px ${buttonColors?.background}`,
     },
   }),
-  outlinePadding
+  outlinePadding,
+  buttonProps
 ).withComponent(ButtonBase);

@@ -89,22 +89,42 @@ export const border = {
   borderStyleBottom: { property: 'borderBottomStyle' },
 } as const;
 
+const selfAlignments = {
+  justifySelf: { property: 'justifySelf' },
+  alignSelf: { property: 'alignSelf' },
+  gridArea: { property: 'gridArea' },
+} as const;
+
 const alignments = {
   justifyContent: { property: 'justifyContent' },
   justifyItems: { property: 'justifyItems' },
   alignItems: { property: 'alignItems' },
   alignContent: { property: 'alignContent' },
+  ...selfAlignments,
 } as const;
 
-export const flex = {
-  flex: { property: 'flex' },
+const flexItems = {
   flexBasis: { property: 'flexBasis' },
-  flexDirection: { property: 'flexDirection' },
-  flexWrap: { property: 'flexWrap' },
   flexShrink: { property: 'flexShrink' },
   flexGrow: { property: 'flexGrow' },
   order: { property: 'order' },
+} as const;
+
+export const flex = {
+  flexDirection: { property: 'flexDirection' },
+  flexWrap: { property: 'flexWrap' },
+  flex: { property: 'flex' },
   ...alignments,
+  ...flexItems,
+} as const;
+
+const gridItems = {
+  gridColumn: { property: 'gridColumn' },
+  gridRow: { property: 'gridRow' },
+  gridColumnStart: { property: 'gridColumnStart' },
+  gridRowStart: { property: 'gridRowStart' },
+  gridColumnEnd: { property: 'gridColumnEnd' },
+  gridRowEnd: { property: 'gridRowEnd' },
 } as const;
 
 export const grid = {
@@ -117,13 +137,8 @@ export const grid = {
   gap: { property: 'gap', scale: 'spacing' },
   rowGap: { property: 'rowGap', scale: 'spacing' },
   columnGap: { property: 'columnGap', scale: 'spacing' },
-  gridColumn: { property: 'gridColumn' },
-  gridRow: { property: 'gridRow' },
-  gridColumnStart: { property: 'gridColumnStart' },
-  gridRowStart: { property: 'gridRowStart' },
-  gridColumnEnd: { property: 'gridColumnEnd' },
-  gridRowEnd: { property: 'gridRowEnd' },
   ...alignments,
+  ...gridItems,
 } as const;
 
 export const background = {
@@ -154,6 +169,11 @@ export const layout = {
   overflow: { property: 'overflow' },
   overflowX: { property: 'overflowX' },
   overflowY: { property: 'overflowY' },
+  size: {
+    property: 'width',
+    properties: ['width', 'height'],
+    transform: transformSize,
+  },
   width: { property: 'width', transform: transformSize },
   minWidth: { property: 'minWidth', transform: transformSize },
   maxWidth: { property: 'maxWidth', transform: transformSize },
@@ -161,9 +181,9 @@ export const layout = {
   minHeight: { property: 'minHeight', transform: transformSize },
   maxHeight: { property: 'maxHeight', transform: transformSize },
   verticalAlign: { property: 'verticalAlign' },
-  justifySelf: { property: 'justifySelf' },
-  alignSelf: { property: 'alignSelf' },
-  gridArea: { property: 'gridArea' },
+  ...selfAlignments,
+  ...gridItems,
+  ...flexItems,
 } as const;
 
 export const typography = {
