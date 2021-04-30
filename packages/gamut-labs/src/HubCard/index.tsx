@@ -1,7 +1,5 @@
-import { Box, Card } from '@codecademy/gamut';
+import { Box, Card, Text } from '@codecademy/gamut';
 import React from 'react';
-
-import { Text } from '../Text';
 
 export type HubCardProps = {
   eyebrowTitle: string;
@@ -28,10 +26,10 @@ export const HubCard: React.FC<HubCardProps> = ({
     height="11.25rem"
   >
     <Box padding={24} backgroundColor="white" width="100%" maxWidth="17.5rem">
-      <Text as="div" fontSize={16}>
+      <Text as="p" fontSize={16}>
         {eyebrowTitle}
       </Text>
-      <Text as="div" fontSize={22} fontWeight="title">
+      <Text as="p" variant="title-sm">
         {title}
       </Text>
     </Box>

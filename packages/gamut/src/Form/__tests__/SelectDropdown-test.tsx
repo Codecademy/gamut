@@ -43,7 +43,7 @@ describe('Select', () => {
       button: 0,
     });
 
-    const getByTestId = wrapper.find(`[label="green"]`);
+    const getByTestId = wrapper.find(`[label="colors-green"]`);
 
     expect(getByTestId.exists()).toBe(true);
   });

@@ -96,6 +96,15 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
             We&apos;re Hiring
           </Anchor>
         </FooterLinkItem>
+        <FooterLinkItem>
+          <Anchor
+            href="/pages/codecademy-affiliate-program"
+            onClick={(event) => onClick({ event, target: 'affiliate_program' })}
+            variant="interface"
+          >
+            Affiliates
+          </Anchor>
+        </FooterLinkItem>
         {userGeo !== 'IN' && (
           <FooterLinkItem>
             <Anchor
@@ -164,9 +173,7 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
       gridRow={{ sm: '2 / 4' }}
       paddingTop={{ sm: 32 }}
     >
-      <FooterHeading marginBottom={{ base: 8, sm: 16, lg: 0 }}>
-        Mobile
-      </FooterHeading>
+      <FooterHeading mb={{ _: 8, sm: 16, lg: 0 }}>Mobile</FooterHeading>
       <FooterLinkItems
         display={{ sm: 'flex' }}
         flexDirection={{ sm: 'column' }}

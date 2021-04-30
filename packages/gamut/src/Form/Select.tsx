@@ -5,28 +5,32 @@ import {
 import { variant } from '@codecademy/gamut-styles';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import { each, isArray, isObject } from 'lodash';
 import React, {
   ChangeEvent,
   forwardRef,
-  ReactNode,
   SelectHTMLAttributes,
+  useMemo,
   useState,
 } from 'react';
 
 import { Box, FlexBox } from '../Box';
 import { conditionalStyles, formFieldStyles } from './styles/shared';
+import { parseOptions } from './utils';
 
-export type SelectWrapperBaseProps = SelectHTMLAttributes<HTMLSelectElement> & {
+export type SelectComponentProps = Pick<
+  SelectHTMLAttributes<HTMLSelectElement>,
+  'disabled'
+> & {
   error?: boolean;
   htmlFor?: string;
   options?: string[] | Record<string, number | string>;
   id?: string;
 };
 
-export type SelectWrapperProps = SelectWrapperBaseProps & {
-  sizeVariant?: 'small' | 'base';
-};
+export type SelectWrapperProps = SelectComponentProps &
+  SelectHTMLAttributes<HTMLSelectElement> & {
+    sizeVariant?: 'small' | 'base';
+  };
 
 export interface SelectProps extends SelectWrapperProps {
   activated?: boolean;
@@ -77,27 +81,9 @@ export const Select = forwardRef<HTMLSelectElement, SelectWrapperProps>(
       setActivated(true);
     };
 
-    let selectOptions: ReactNode[] = [];
-
-    if (isArray(options)) {
-      selectOptions = options.map((option) => {
-        const key = id ? `${id}-${option}` : option;
-        return (
-          <option key={key} value={option} data-testid={key}>
-            {option}
-          </option>
-        );
-      });
-    } else if (isObject(options)) {
-      each(options, (text, val) => {
-        const key = id ? `${id}-${val}` : val;
-        selectOptions.push(
-          <option key={key} value={val} data-testid={key}>
-            {text}
-          </option>
-        );
-      });
-    }
+    const selectOptions = useMemo(() => {
+      return parseOptions({ options, id, selectDropdown: false });
+    }, [options, id]);
 
     return (
       <Box

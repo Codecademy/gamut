@@ -1,40 +1,14 @@
-import { colors, swatches, variant } from '@codecademy/gamut-styles';
-import type { HTMLProps } from 'react';
+import {
+  colors,
+  styledConfig,
+  swatches,
+  system,
+  theme,
+} from '@codecademy/gamut-styles';
+import { serializeTokens } from '@codecademy/variance';
+import { css, CSSObject, Theme, useTheme } from '@emotion/react';
 
-export type ButtonProps = Omit<
-  HTMLProps<HTMLAnchorElement> & HTMLProps<HTMLButtonElement>,
-  'size'
-> & {
-  mode?: 'dark' | 'light';
-  variant?: 'primary' | 'secondary';
-};
-
-export type ButtonSizeProps = {
-  size?: 'normal' | 'small';
-};
-
-export type SizedButtonProps = ButtonProps & ButtonSizeProps;
-
-export const buttonSizing = variant({
-  prop: 'size',
-  default: 'normal',
-  variants: {
-    normal: {
-      fontSize: 16,
-      height: '40px',
-      minWidth: '40px',
-      paddingY: 4,
-      paddingX: 16,
-    },
-    small: {
-      fontSize: 14,
-      height: '32px',
-      minWidth: '32px',
-      paddingY: 4,
-      paddingX: 8,
-    },
-  },
-});
+import { ButtonOutline } from './ButtonOutline';
 
 export const modeColorGroups = {
   dark: {
@@ -54,7 +28,7 @@ export const modeColorGroups = {
       backgroundMuted: swatches.gray[600],
       foregroundMuted: swatches.gray[200],
       foreground: colors.navy,
-      shadow: colors.white,
+      shadow: colors['gray-200'],
     },
   },
   light: {
@@ -65,7 +39,7 @@ export const modeColorGroups = {
       backgroundMuted: swatches.gray[200],
       foregroundMuted: swatches.gray[600],
       foreground: colors.white,
-      shadow: colors.black,
+      shadow: colors.navy,
     },
     secondary: {
       background: colors.navy,
@@ -74,7 +48,65 @@ export const modeColorGroups = {
       backgroundMuted: swatches.gray[200],
       foregroundMuted: swatches.gray[600],
       foreground: colors.white,
-      shadow: colors.navy,
+      shadow: colors.black,
     },
   },
 };
+
+export const { tokens: buttonColors } = serializeTokens(
+  modeColorGroups.dark.primary,
+  'button',
+  theme
+);
+
+export const config = styledConfig(['mode', 'variant', 'size']);
+
+export function useColorMode(mode?: keyof Theme['colorModes']['modes']) {
+  const theme = useTheme();
+
+  // This is a defense against theme being undefined in specific tests and should not come into play for actual code
+  const { active = 'light' } = theme?.colorModes || {};
+  return mode ?? active;
+}
+
+export const buttonSizing = system.variant({
+  prop: 'size',
+  defaultVariant: 'normal',
+  variants: {
+    normal: {
+      fontSize: 16,
+      height: 40,
+      minWidth: 40,
+      py: 4,
+      px: 16,
+    },
+    small: {
+      fontSize: 14,
+      height: 32,
+      minWidth: 32,
+      py: 4,
+      px: 8,
+    },
+  },
+});
+
+/** This is a temporary tagged template for button hover / active states while they still are multiple elements */
+
+export const createStates = ({
+  base,
+  hover,
+  active,
+  disabled,
+}: Record<'base' | 'hover' | 'active' | 'disabled', CSSObject>) => css`
+  ${base}
+  ${ButtonOutline}:hover & {
+    ${hover}
+  }
+  ${ButtonOutline}:active & {
+    ${active}
+  }
+  ${ButtonOutline}:disabled &,
+  ${ButtonOutline}[aria-disabled='true'] & {
+    ${disabled}
+  }
+`;
