@@ -4,19 +4,33 @@ import { OptionTypeBase } from 'react-select';
 
 type ParseOptionPropsBase = {
   id?: string | number;
-  options?: string[] | Record<string, string | number>;
+  options?:
+    | string[]
+    | Record<
+        string,
+        | string
+        | number
+        | JSX.Element
+        | { element: JSX.Element; hidden: JSX.Element }
+      >;
 };
-
 interface ReactSelectParseOptionsProps extends ParseOptionPropsBase {
   selectDropdown: true;
-  hiddenElements: false;
+  hiddenElements?: false;
 }
+
+type OptionWithHiddenElement = {
+  element: JSX.Element;
+  hidden: JSX.Element;
+};
 interface ReactSelectParseHiddenOptionsProps extends ParseOptionPropsBase {
   selectDropdown: true;
   hiddenElements: true;
+  options?: Record<string, { element: JSX.Element; hidden: JSX.Element }>;
 }
 interface SelectParseOptionsProps extends ParseOptionPropsBase {
   selectDropdown: false;
+  hiddenElements?: false;
 }
 
 type ParseOptionProps =
