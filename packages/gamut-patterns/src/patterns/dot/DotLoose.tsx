@@ -3,7 +3,7 @@ import React from 'react';
 import { PatternComponent, PatternSvg } from '../../types';
 
 export const DotLoose: React.FC<PatternComponent> = ({ ...props }) => (
-  <PatternSvg width="100%" height="100%" {...props} aria-hidden>
+  <PatternSvg {...props} aria-hidden>
     <pattern
       id="dotLoose"
       x="0"

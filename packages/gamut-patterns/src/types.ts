@@ -17,5 +17,10 @@ export const PatternSvg = styled(
   styledConfig
 )<PatternProps>(patternStyles);
 
+PatternSvg.defaultProps = {
+  width: '100%',
+  height: '100%',
+};
+
 // Typeforward valid SVG attrs.
 export type PatternComponent = React.ComponentProps<typeof PatternSvg>;
