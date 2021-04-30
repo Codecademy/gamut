@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import { pxRem } from '@codecademy/gamut-styles';
+import styled from '@emotion/styled';
+import React, { Children, useState } from 'react';
 
 import { PageSection, SectionButton } from '..';
 
@@ -13,29 +15,54 @@ export type ListSectionProps = {
   initialDisplayAmount?: number;
   headerButton?: SectionButton;
   headerSecondaryButton?: SectionButton;
+  /**
+   * The spacing between list items.
+   */
+  listItemGap?: number;
 };
+
+const UnstyledUnorderedList = styled.ul`
+  list-style: none;
+  padding: 0;
+  margin: 0;
+`;
+
+type StyledListItemProps = {
+  listItemGap?: number;
+};
+
+const StyledListItem = styled.li<StyledListItemProps>`
+  &:not(:last-child) {
+    margin-bottom: ${(props) => pxRem(props.listItemGap ?? 16)};
+  }
+`;
 
 export const ListSection: React.FC<ListSectionProps> = ({
   title,
   initialDisplayAmount = 3,
   headerButton,
   headerSecondaryButton,
+  listItemGap,
   children,
 }) => {
-  const listItems = React.Children.toArray(children);
   const [showAll, setShowAll] = useState(false);
 
   const handleShowAll = () => {
     setShowAll(!showAll);
   };
 
-  const renderItems = () => {
+  const renderListItems = () => {
+    const listItems = Children.map(children, (child) => (
+      <StyledListItem listItemGap={listItemGap}>{child}</StyledListItem>
+    ));
+
+    if (!listItems) return null;
     if (showAll) return listItems;
     return listItems.slice(0, initialDisplayAmount);
   };
 
   const renderFooterButton = () => {
-    if (listItems.length <= initialDisplayAmount) return null;
+    if (Children.toArray(children).length <= initialDisplayAmount) return null;
     return {
       text: `Show ${showAll ? 'Less' : 'All'}`,
       onClick: handleShowAll,
@@ -49,7 +76,9 @@ export const ListSection: React.FC<ListSectionProps> = ({
       headerButton={headerButton}
       headerSecondaryButton={headerSecondaryButton}
     >
-      {renderItems()}
+      <UnstyledUnorderedList aria-label={title} aria-live="polite">
+        {renderListItems()}
+      </UnstyledUnorderedList>
     </PageSection>
   );
 };
