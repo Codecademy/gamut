@@ -6,6 +6,8 @@ import { PageSection, SectionButton } from '..';
 
 export type ListSectionProps = {
   title: string;
+  headerButton?: SectionButton;
+  headerSecondaryButton?: SectionButton;
   /**
    * Number of items to be initally displayed
    *
@@ -13,10 +15,8 @@ export type ListSectionProps = {
    * If the initial display amount matches the number of list items, Show All button will not appear.
    */
   initialDisplayAmount?: number;
-  headerButton?: SectionButton;
-  headerSecondaryButton?: SectionButton;
   /**
-   * The spacing between list items.
+   * The spacing between list items. Defaults to 24.
    */
   listItemGap?: number;
 };
@@ -28,23 +28,21 @@ const UnstyledUnorderedList = styled.ul`
 `;
 
 type StyledListItemProps = {
-  listItemGap?: number;
+  listItemGap: number;
 };
-
-const defaultListItemGap = 24;
 
 const StyledListItem = styled.li<StyledListItemProps>`
   &:not(:last-child) {
-    margin-bottom: ${(props) => pxRem(props.listItemGap ?? defaultListItemGap)};
+    margin-bottom: ${(props) => pxRem(props.listItemGap)};
   }
 `;
 
 export const ListSection: React.FC<ListSectionProps> = ({
   title,
-  initialDisplayAmount = 3,
   headerButton,
   headerSecondaryButton,
-  listItemGap,
+  initialDisplayAmount = 3,
+  listItemGap = 24,
   children,
 }) => {
   const [showAll, setShowAll] = useState(false);
