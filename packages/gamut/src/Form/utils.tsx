@@ -2,21 +2,22 @@ import { each, isObject } from 'lodash';
 import React from 'react';
 import { OptionTypeBase } from 'react-select';
 
-type ParseOptionPropsBase = {
+export type ParseOptionPropsBase = {
   id?: string | number;
   options?: string[] | Record<string, string | number>;
 };
-
-interface ReactSelectParseOptionsProps extends ParseOptionPropsBase {
+export interface ReactSelectParseOptionsProps extends ParseOptionPropsBase {
   selectDropdown: true;
 }
-
-interface SelectParseOptionsProps extends ParseOptionPropsBase {
+export interface SelectParseOptionsProps extends ParseOptionPropsBase {
   selectDropdown: false;
 }
-type ParseOptionProps = ReactSelectParseOptionsProps | SelectParseOptionsProps;
 
-type ParseOptionsProps<T> = T extends ReactSelectParseOptionsProps
+export type ParseOptionProps =
+  | ReactSelectParseOptionsProps
+  | SelectParseOptionsProps;
+
+export type ParseOptionsProps<T> = T extends ReactSelectParseOptionsProps
   ? OptionTypeBase
   : JSX.Element;
 
