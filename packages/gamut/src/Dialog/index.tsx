@@ -1,5 +1,6 @@
 import { MiniDeleteIcon } from '@codecademy/gamut-icons';
 import { system } from '@codecademy/gamut-styles';
+import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
 import React from 'react';
 
@@ -9,15 +10,28 @@ import { Overlay, OverlayProps } from '../Overlay';
 import { Pattern } from '../Pattern';
 import { Text } from '../Typography';
 
+type SizeVariants = StyleProps<typeof modalSizeVariants>;
+
+const modalSizeVariants = system.variant({
+  prop: 'size',
+  defaultVariant: 'small',
+  variants: {
+    small: { width: '400px', minHeight: '170px' },
+    medium: { width: '640px', minHeight: '240px' },
+  },
+});
+
 const ShroudedOverlay = styled(Overlay)(system.css({ bg: 'shadow' }));
 
-const ModalWrapper = styled.div(
+const ModalWrapper = styled.div<SizeVariants>(
   system.css({
     position: 'relative',
     zIndex: 1,
     maxWidth: 'calc(100vw - 2rem)',
     borderRadius: '2px',
-  })
+    display: 'grid',
+  }),
+  modalSizeVariants
 );
 
 /** This will need to be consolidated with Card / CoachMark / Toast  */
@@ -43,7 +57,7 @@ const ModalBody = styled.div(
     rowGap: 12,
     columnGap: 16,
     gridTemplateColumns: '1fr min-content 2rem',
-    gridTemplateRows: 'repeact(3, auto)',
+    gridTemplateRows: 'max-content 1fr max-content',
     gridTemplateAreas: `'title title close'
     'content content content'
     'cancel confirm confirm'`,
@@ -51,7 +65,8 @@ const ModalBody = styled.div(
 );
 
 export interface DialogProps
-  extends Pick<OverlayProps, 'clickOutsideCloses' | 'escapeCloses'> {
+  extends Pick<OverlayProps, 'clickOutsideCloses' | 'escapeCloses'>,
+    SizeVariants {
   isOpen: boolean;
   title: React.ReactNode;
   children: React.ReactNode;
@@ -72,6 +87,7 @@ export const Dialog: React.FC<DialogProps> = ({
   confirmCta,
   cancelCta,
   onRequestClose,
+  size,
   ...rest
 }) => {
   const onConfirm = () => {
@@ -86,7 +102,12 @@ export const Dialog: React.FC<DialogProps> = ({
 
   return (
     <ShroudedOverlay onRequestClose={onCancel} {...rest}>
-      <ModalWrapper aria-hidden="false" aria-modal="true" role="dialog">
+      <ModalWrapper
+        size={size}
+        aria-hidden="false"
+        aria-modal="true"
+        role="dialog"
+      >
         <ModalShadow name="checkerDense" />
         <ModalBody>
           <Text as="h2" fontSize={20} lineHeight="base" gridArea="title">
