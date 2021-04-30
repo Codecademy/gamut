@@ -3,6 +3,65 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [36.9.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@36.9.2...@codecademy/styleguide@36.9.3) (2021-04-30)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [36.9.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@36.9.1...@codecademy/styleguide@36.9.2) (2021-04-30)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [36.9.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@36.9.0...@codecademy/styleguide@36.9.1) (2021-04-29)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [36.9.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@36.8.1...@codecademy/styleguide@36.9.0) (2021-04-29)
+
+
+### Features
+
+* **Dialog:** Migrate to Variance + ColorModes ([f666c81](https://github.com/Codecademy/client-modules/commit/f666c813aa19eccd1d9a9da9e857d88b5e81f128))
+
+
+
+### [36.8.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@36.8.0...@codecademy/styleguide@36.8.1) (2021-04-29)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [36.8.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@36.7.0...@codecademy/styleguide@36.8.0) (2021-04-29)
+
+
+### Features
+
+* **Buttons:** ColorModes + Props + Refactor + Refs Oh My! [GM-211] [REACH-856] [GM-192] ([c4643db](https://github.com/Codecademy/client-modules/commit/c4643db64d3684319f8d5fc6f68d05197ec1f61e))
+
+
+
+## [36.7.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@36.6.2...@codecademy/styleguide@36.7.0) (2021-04-29)
+
+
+### Features
+
+* **Logo / Labels:** Consolidation + Props + Modes [GM-149] [GM-146] ([9b24a1b](https://github.com/Codecademy/client-modules/commit/9b24a1b7798c604efb3e7b3009fb862f57296cea))
+
+
+
 ### [36.6.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@36.6.1...@codecademy/styleguide@36.6.2) (2021-04-29)
 
 **Note:** Version bump only for package @codecademy/styleguide

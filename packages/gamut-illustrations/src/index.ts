@@ -1,5 +1,6 @@
 export * from './Bee';
 export * from './Bell';
+export * from './BinaryBlocks';
 export * from './Browser';
 export * from './BrowserLock';
 export * from './ChatBox';
