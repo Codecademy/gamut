@@ -1,0 +1,63 @@
+import { GridBox, Toast } from '@codecademy/gamut/src';
+import { ColorMode } from '@codecademy/gamut-styles/src';
+import title from '@codecademy/macros/lib/title.macro';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+
+import { PropsTable } from '~styleguide/blocks';
+
+<Meta
+  title={title}
+  component={Toast}
+  parameters={{
+    subtitle: 'A toast component for asynchronous user feedback.',
+    source: 'gamut',
+    status: 'current',
+    figmaId: '',
+  }}
+  args={{
+    message: 'I am a toast hear me roar!',
+  }}
+/>
+
+### Variants
+
+export const exampleToasts = [
+  { icon: 'test', title: 'I have a toast!', message: "Here's to us :)" },
+  {
+    icon: 'test',
+    message:
+      'This message can be longer than most as we do not have to worry about a title taking all the space.',
+  },
+  { title: 'I have a toast!', message: "Here's to us :)" },
+  {
+    message:
+      'This message can be longer than most as we do not have to worry about a title or icon taking all the space.',
+  },
+];
+
+<Story name="Layouts">
+  <GridBox gridTemplateColumns="1fr 1fr">
+    <ColorMode mode="light" p={48}>
+      <GridBox rowGap={32}>
+        {exampleToasts.map((toast) => (
+          <Toast key={toast.message} {...toast} />
+        ))}
+      </GridBox>
+    </ColorMode>
+    <ColorMode mode="dark" bg="background" p={48}>
+      <GridBox rowGap={32}>
+        {exampleToasts.map((toast) => (
+          <Toast key={`${toast.message}-dark`} {...toast} />
+        ))}
+      </GridBox>
+    </ColorMode>
+  </GridBox>
+</Story>
+
+### Code Playground
+
+<Canvas>
+  <Story name="Toast">{(args) => <Toast {...args} />}</Story>
+</Canvas>
+
+<PropsTable story="Toast" />
