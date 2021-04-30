@@ -1,6 +1,6 @@
 import { UseFormMethods, ValidationRules } from 'react-hook-form';
 
-import { ColumnProps } from '../Layout/Column';
+import { ColumnProps } from '../Layout';
 import { ToolTipProps } from '../ToolTip';
 
 export type BaseFormField<Value> = {

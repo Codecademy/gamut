@@ -17,11 +17,14 @@ import React, {
 import { Box, FlexBox } from '../Box';
 import { conditionalStyles, formFieldStyles } from './styles/shared';
 
-export type SelectWrapperProps = SelectHTMLAttributes<HTMLSelectElement> & {
+export type SelectWrapperBaseProps = SelectHTMLAttributes<HTMLSelectElement> & {
   error?: boolean;
   htmlFor?: string;
   options?: string[] | Record<string, number | string>;
   id?: string;
+};
+
+export type SelectWrapperProps = SelectWrapperBaseProps & {
   sizeVariant?: 'small' | 'base';
 };
 
@@ -40,6 +43,7 @@ const selectSizeVariants = variant({
     },
     base: {
       height: 'auto',
+      paddingRight: 48,
     },
   },
 });
@@ -55,12 +59,11 @@ const SelectBase = styled.select<SelectProps>`
   appearance: none;
 `;
 
-const selectIconStyles = css`
+const allowClickStyle = css`
   pointer-events: none;
 `;
 
-const SelectIcon = styled(ArrowChevronDownIcon)(selectIconStyles);
-const MiniSelectIcon = styled(MiniChevronDownIcon)(selectIconStyles);
+export const StyledFlexbox = styled(FlexBox)(allowClickStyle);
 
 export const Select = forwardRef<HTMLSelectElement, SelectWrapperProps>(
   (
@@ -104,7 +107,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectWrapperProps>(
         minWidth="7rem"
         className={className}
       >
-        <FlexBox
+        <StyledFlexbox
           paddingRight={12}
           alignItems="center"
           position="absolute"
@@ -113,11 +116,11 @@ export const Select = forwardRef<HTMLSelectElement, SelectWrapperProps>(
           bottom="0"
         >
           {sizeVariant === 'small' ? (
-            <MiniSelectIcon size={12} />
+            <MiniChevronDownIcon size={12} />
           ) : (
-            <SelectIcon size={16} />
+            <ArrowChevronDownIcon size={16} />
           )}
-        </FlexBox>
+        </StyledFlexbox>
         <SelectBase
           {...rest}
           defaultValue={defaultValue || ''}

@@ -1,7 +1,4 @@
 export * from './Docs/StatusIndicator';
-export * from './Scales/Swatches';
-export * from './Scales/TextExample';
-export * from './Scales/Scale';
 export * from './PropsTable';
 export * from './DataTable';
 export * from './Markdown/Elements';

@@ -13,4 +13,5 @@ export * from './NumberBlocks';
 export * from './Onboarding';
 export * from './Plant';
 export * from './Sun';
+export * from './Target';
 export * from './types';

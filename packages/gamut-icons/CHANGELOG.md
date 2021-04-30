@@ -3,6 +3,33 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.8.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@4.7.0...@codecademy/gamut-icons@4.8.0) (2021-04-19)
+
+
+### Features
+
+* **Icons:** Add checkout icons ([c89c84c](https://github.com/Codecademy/client-modules/commit/c89c84c4fea2abfdafeaf55e6873718e83901fef))
+
+
+
+## [4.7.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@4.6.0...@codecademy/gamut-icons@4.7.0) (2021-04-15)
+
+
+### Features
+
+* **Icons:** Add GraphStatsAscendIcon ([7f14736](https://github.com/Codecademy/client-modules/commit/7f147363fb4c3d506387eaea9073e03b03419da1))
+
+
+
+## [4.6.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@4.5.0...@codecademy/gamut-icons@4.6.0) (2021-04-13)
+
+
+### Features
+
+* **Icons:** Add MiniArrowRightIcon ([36167e3](https://github.com/Codecademy/client-modules/commit/36167e37c104755efd39397f7f2a3092f70c80af))
+
+
+
 ## [4.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@4.4.0...@codecademy/gamut-icons@4.5.0) (2021-03-30)
 
 

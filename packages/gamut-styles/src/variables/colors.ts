@@ -3,6 +3,9 @@ const white = '#ffffff';
 
 /**
  * @deprecated
+ * Using these variables directly is no longer supported.
+ *
+ * Please use [`theme.colors`](https://gamut.codecademy.com/storybook/?path=/docs/foundations-theme--colors#standard-colors)
  */
 
 export const swatches = {
@@ -105,9 +108,15 @@ export const trueColors = {
   white,
 } as const;
 
+export const shadows = {
+  darkShadow: 'rgba(0,0,0, .75)',
+  lightShadow: 'rgba(255, 255, 255, 0.95)',
+} as const;
+
 export const colors = {
   ...flatSwatches,
   ...trueColors,
+  ...shadows,
 } as const;
 
 export const colorNames = {
@@ -132,6 +141,9 @@ export const colorNames = {
 
 /**
  * @deprecated
+ * Using these variables directly is no longer supported.
+ *
+ * Please use [`theme.colors`](https://gamut.codecademy.com/storybook/?path=/docs/foundations-theme--colors#standard-colors)
  */
 
 export const interactiveColors = {

@@ -40,7 +40,9 @@ export type ModalProps = {
 };
 
 /**
- * @deprecated
+ * @deprecated  This component is deprecated and will be updated soon.
+ *
+ * Please check the gamut board for updates on the new version of Modal
  */
 
 export const Modal: React.FC<ModalProps> = ({

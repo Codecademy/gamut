@@ -1,5 +1,5 @@
 import { create } from '@storybook/theming';
-import { theme as gamutTheme } from '@codecademy/gamut-styles';
+import { theme as gamutTheme, colors } from '@codecademy/gamut-styles/src';
 import logo from './assets/logo.svg';
 
 export const theme = create({
@@ -9,28 +9,28 @@ export const theme = create({
   brandUrl: '/',
   fontBase: gamutTheme.fontFamily.base,
 
-  colorPrimary: gamutTheme.colors.hyper,
-  colorSecondary: gamutTheme.colors.navy,
+  colorPrimary: colors.hyper,
+  colorSecondary: colors.navy,
 
   // UI
-  appBg: gamutTheme.colors.white,
-  appContentBg: gamutTheme.colors.white,
-  appBorderColor: gamutTheme.colors.navy,
+  appBg: colors.white,
+  appContentBg: colors.white,
+  appBorderColor: colors.navy,
   appBorderRadius: 4,
 
   // Text colors
-  textColor: gamutTheme.colors.navy,
-  textInverseColor: gamutTheme.colors.white,
-  textMutedColor: gamutTheme.colors['gray-800'],
+  textColor: colors.navy,
+  textInverseColor: colors.white,
+  textMutedColor: colors['gray-800'],
 
   // Toolbar default and active colors
-  barTextColor: gamutTheme.colors['gray-600'],
-  barSelectedColor: gamutTheme.colors.navy,
-  barBg: gamutTheme.colors.white,
+  barTextColor: colors['gray-600'],
+  barSelectedColor: colors.navy,
+  barBg: colors.white,
 
   // Form colors
-  inputBg: gamutTheme.colors.white,
-  inputBorder: gamutTheme.colors.navy,
-  inputTextColor: gamutTheme.colors.navy,
+  inputBg: colors.white,
+  inputBorder: colors.navy,
+  inputTextColor: colors.navy,
   inputBorderRadius: 2,
 });

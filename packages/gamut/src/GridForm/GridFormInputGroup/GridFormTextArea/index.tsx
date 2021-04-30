@@ -7,6 +7,7 @@ import { GridFormTextAreaField } from '../../types';
 export type GridFormTextAreaProps = {
   className?: string;
   error?: boolean;
+  showRequired?: boolean;
   field: Omit<GridFormTextAreaField, 'label'>;
   register: UseFormMethods['register'];
 };
@@ -16,6 +17,7 @@ export const GridFormTextArea: React.FC<GridFormTextAreaProps> = ({
   error,
   field,
   register,
+  showRequired,
 }) => {
   return (
     <TextArea
@@ -28,6 +30,7 @@ export const GridFormTextArea: React.FC<GridFormTextAreaProps> = ({
       ref={register(field.validation)}
       id={field.id}
       aria-invalid={error}
+      aria-required={showRequired}
     />
   );
 };
