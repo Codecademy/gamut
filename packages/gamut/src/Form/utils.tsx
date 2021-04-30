@@ -9,12 +9,20 @@ type ParseOptionPropsBase = {
 
 interface ReactSelectParseOptionsProps extends ParseOptionPropsBase {
   selectDropdown: true;
+  hiddenElements: false;
 }
-
+interface ReactSelectParseHiddenOptionsProps extends ParseOptionPropsBase {
+  selectDropdown: true;
+  hiddenElements: true;
+}
 interface SelectParseOptionsProps extends ParseOptionPropsBase {
   selectDropdown: false;
 }
-type ParseOptionProps = ReactSelectParseOptionsProps | SelectParseOptionsProps;
+
+type ParseOptionProps =
+  | ReactSelectParseOptionsProps
+  | SelectParseOptionsProps
+  | ReactSelectParseHiddenOptionsProps;
 
 type TypeName<T> = T extends ReactSelectParseOptionsProps
   ? OptionTypeBase
@@ -35,7 +43,15 @@ export const parseOptions = <T extends ParseOptionProps>(
 
   const parsedOptions: Array<OptionTypeBase> = [];
 
-  if (options instanceof Array) {
+  if (args.hiddenElements) {
+    each(options, (text, val) => {
+      parsedOptions.push({
+        label: text.element,
+        value: val,
+        hidden: text.hidden,
+      });
+    });
+  } else if (options instanceof Array) {
     options.forEach((value) => {
       const label = id ? `${id}-${value}` : value;
       parsedOptions.push({ label, value });
