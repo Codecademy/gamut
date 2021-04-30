@@ -66,11 +66,11 @@ describe('ListSection', () => {
     expect(view.getByText('Show Less')).toBeTruthy();
   });
 
-  it('renders the list as an unordered list', () => {
+  it('renders as a semantic list', () => {
     renderListSection().view.getByRole('list');
   });
 
-  it('renders the list elements as list items', () => {
+  it('renders the list elements as semantic list items', () => {
     const { view } = renderListSection();
     expect(view.getAllByRole('listitem').length).toBe(initialDisplayAmount);
   });
