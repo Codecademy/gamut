@@ -1,10 +1,9 @@
 import { MiniDeleteIcon } from '@codecademy/gamut-icons';
 import { system } from '@codecademy/gamut-styles';
-import { useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
 import React from 'react';
 
-import { Box, FlexBox } from '../Box';
+import { Box } from '../Box';
 import { FillButton, IconButton, TextButton } from '../Button';
 import { Overlay, OverlayProps } from '../Overlay';
 import { Pattern } from '../Pattern';
@@ -75,10 +74,6 @@ export const Dialog: React.FC<DialogProps> = ({
   onRequestClose,
   ...rest
 }) => {
-  const {
-    colorModes: { active },
-  } = useTheme();
-
   const onConfirm = () => {
     onRequestClose();
     confirmCta.onClick?.();
@@ -97,25 +92,21 @@ export const Dialog: React.FC<DialogProps> = ({
           <Text as="h2" fontSize={20} lineHeight="base" gridArea="title">
             {title}
           </Text>
-          <Box gridArea="close">
-            <IconButton
-              aria-label="Close Dialog"
-              mode={active}
-              size="small"
-              icon={MiniDeleteIcon}
-              onClick={onCancel}
-            />
-          </Box>
+          <IconButton
+            aria-label="Close Dialog"
+            size="small"
+            icon={MiniDeleteIcon}
+            onClick={onCancel}
+            gridArea="close"
+          />
           <Text as="p" gridArea="content">
             {children}
           </Text>
           {cancelCta && (
-            <FlexBox justifyContent="flex-end" gridArea="cancel">
-              <TextButton mode={active} {...cancelCta} onClick={onCancel} />
-            </FlexBox>
+            <TextButton {...cancelCta} onClick={onCancel} justifySelf="end" />
           )}
           <Box gridArea="confirm">
-            <FillButton mode={active} {...confirmCta} onClick={onConfirm} />
+            <FillButton {...confirmCta} onClick={onConfirm} />
           </Box>
         </ModalBody>
       </ModalWrapper>
