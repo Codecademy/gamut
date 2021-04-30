@@ -4,6 +4,7 @@ export * from './Browser';
 export * from './BrowserLock';
 export * from './ChatBox';
 export * from './Confetti';
+export * from './EmailAt';
 export * from './Envelope';
 export * from './Heart';
 export * from './HomeOffice';

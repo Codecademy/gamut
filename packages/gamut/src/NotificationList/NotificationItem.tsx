@@ -2,6 +2,7 @@ import { MiniDeleteIcon } from '@codecademy/gamut-icons';
 import {
   Bell,
   ChatBox,
+  EmailAt,
   Envelope,
   Heart,
   IllustrationProps,
@@ -96,6 +97,8 @@ export const NotificationItem: React.FC<NotificationItemProps> = ({
         return renderIllustration(Envelope);
       case 'forum_like':
         return renderIllustration(Heart);
+      case 'forum_mention':
+        return renderIllustration(EmailAt);
       default:
         return renderIllustration(Bell);
     }
