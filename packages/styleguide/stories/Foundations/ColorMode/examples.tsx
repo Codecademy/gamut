@@ -66,7 +66,7 @@ const renderButtons = (variant?: 'primary' | 'secondary', disabled = false) => {
 const renderLinks = () => {
   return (
     <GridBox
-      marginTop={16}
+      mt={16}
       columnGap={16}
       gridTemplateColumns="repeat(3, max-content)"
     >
@@ -100,7 +100,7 @@ export const ColorModeExample = () => {
           </Text>
           <GridBox
             columnGap={16}
-            paddingBottom={16}
+            pb={16}
             gridTemplateColumns="max-content max-content max-content"
           >
             <Logo variant="default" />
