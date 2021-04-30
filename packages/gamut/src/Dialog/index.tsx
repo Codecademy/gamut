@@ -14,7 +14,6 @@ type SizeVariants = StyleProps<typeof modalSizeVariants>;
 
 const modalSizeVariants = system.variant({
   prop: 'size',
-  defaultVariant: 'small',
   variants: {
     small: { width: '400px', minHeight: '170px' },
     medium: { width: '640px', minHeight: '240px' },
@@ -124,10 +123,19 @@ export const Dialog: React.FC<DialogProps> = ({
             {children}
           </Text>
           {cancelCta && (
-            <TextButton {...cancelCta} onClick={onCancel} justifySelf="end" />
+            <TextButton
+              {...cancelCta}
+              onClick={onCancel}
+              justifySelf="end"
+              gridArea="confirm"
+            />
           )}
-          <Box gridArea="confirm">
-            <FillButton {...confirmCta} onClick={onConfirm} />
+          <Box>
+            <FillButton
+              {...confirmCta}
+              onClick={onConfirm}
+              gridArea="confirm"
+            />
           </Box>
         </ModalBody>
       </ModalWrapper>
