@@ -4,8 +4,8 @@ import React, { ComponentProps, forwardRef } from 'react';
 
 import { ButtonBaseElements } from '../ButtonBase/ButtonBase';
 import { ButtonInner } from './ButtonInner';
-import { ButtonOutline } from './ButtonOutline';
-import { buttonColors, config, createStates, useColorMode } from './shared';
+import { buttonColors, ButtonOutline, createStates } from './ButtonOutline';
+import { config, useColorMode } from './shared';
 import { ButtonProps } from './types';
 
 const {
