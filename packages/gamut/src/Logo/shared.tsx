@@ -17,9 +17,10 @@ const logoStyles = variance.compose(
   system.space
 );
 
-export const LogoSvg = styled('svg', styledConfig(['mode', 'varaint']))<
-  Omit<LogoProps, 'variant'>
->(system.css({ textColor: 'text' }), logoStyles);
+export const LogoSvg = styled('svg', styledConfig)<Omit<LogoProps, 'variant'>>(
+  system.css({ textColor: 'text' }),
+  logoStyles
+);
 
 export function useColorMode(mode?: keyof Theme['colorModes']['modes']) {
   const {
