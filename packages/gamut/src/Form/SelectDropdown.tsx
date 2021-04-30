@@ -194,9 +194,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
       activated={activated}
       error={Boolean(error)}
       onChange={changeHandler}
-      inputProps={
-        inputProps ? { ...inputProps, ...baseInputProps } : baseInputProps
-      }
+      inputProps={{ ...inputProps, ...baseInputProps }}
       isDisabled={disabled}
       options={selectOptions}
       placeholder={placeholder}
