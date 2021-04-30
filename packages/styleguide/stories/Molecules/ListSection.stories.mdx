@@ -96,41 +96,6 @@ By default, all of the optional buttons are rendered with the `<TextButton>` com
   </Story>
 </Canvas>
 
-## ListSection with custom spacing between list elements.
-
-You can provide the optional `listItemGap` prop to adjust the spacing between list item elements.
-
-<Canvas>
-  <Story name="ListSection with custom spacing between list elements">
-    {(args) => (
-      <>
-        <ListSection
-          {...args}
-          title="List Section with small spacing"
-          headerButton={{ text: 'Edit', href: '', onClick: () => {} }}
-          headerSecondaryButton={{ text: 'Share', href: '', onClick: () => {} }}
-          listItemGap={4}
-        >
-          {listItems.map((item) => (
-            <Card>List Item {item.title}</Card>
-          ))}
-        </ListSection>
-        <ListSection
-          {...args}
-          title="List Section with large spacing"
-          headerButton={{ text: 'Edit', href: '', onClick: () => {} }}
-          headerSecondaryButton={{ text: 'Share', href: '', onClick: () => {} }}
-          listItemGap={32}
-        >
-          {listItems.map((item) => (
-            <Card>List Item {item.title}</Card>
-          ))}
-        </ListSection>
-      </>
-    )}
-  </Story>
-</Canvas>
-
 ## ListSection with Custom Header and SecondaryHeader Buttons
 
 Header and SecondaryHeader buttons are overrideable however by passing a ReactNode as a prop instead.
