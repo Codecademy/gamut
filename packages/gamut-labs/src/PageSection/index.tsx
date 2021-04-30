@@ -1,7 +1,7 @@
 import { Box, FlexBox, Text, TextButton } from '@codecademy/gamut';
-import React, { ReactNode } from 'react';
+import React, { AriaAttributes, ReactNode } from 'react';
 
-type TextButtonMinimumProps = {
+type TextButtonMinimumProps = AriaAttributes & {
   text: string;
   href?: string;
   onClick?: () => void;

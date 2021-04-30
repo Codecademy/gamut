@@ -54,9 +54,11 @@ export const ListSection: React.FC<ListSectionProps> = ({
 
   const renderFooterButton = () => {
     if (Children.toArray(children).length <= initialDisplayAmount) return null;
+    const buttonText = `Show ${showAll ? 'Less' : 'All'}`;
     return {
-      text: `Show ${showAll ? 'Less' : 'All'}`,
+      text: buttonText,
       onClick: handleShowAll,
+      'aria-label': `${buttonText}, ${title}`,
     };
   };
 
