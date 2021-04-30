@@ -4,9 +4,7 @@ import { OptionTypeBase } from 'react-select';
 
 type ParseOptionPropsBase = {
   id?: string | number;
-  options?:
-    | string[]
-    | Record<string, string | number | JSX.Element | OptionWithHiddenElement>;
+  options?: string[] | Record<string, OptionWithHiddenElement>;
 };
 interface ReactSelectParseOptionsProps extends ParseOptionPropsBase {
   selectDropdown: true;
