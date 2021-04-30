@@ -101,8 +101,10 @@ export function GridForm<
     <Form className={className} onSubmit={handleSubmit(onSubmit)} noValidate>
       <LayoutGrid columnGap={columnGap} rowGap={rowGap}>
         {fields.map((field) => {
-          const errorMessage = (errors[field.name] as FieldError)?.message;
+          if (field.type === 'hidden')
+            return <input type="hidden" value={field.value} />;
 
+          const errorMessage = (errors[field.name] as FieldError)?.message;
           const isFirstError = !pastFirstError && errorMessage !== undefined;
           pastFirstError = pastFirstError || isFirstError;
           const requiredBoolean = !!(

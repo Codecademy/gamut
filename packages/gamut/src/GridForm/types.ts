@@ -101,6 +101,11 @@ export type GridFormTextAreaField = BaseFormField<string> & {
   type: 'textarea';
 };
 
+export type GridFormHiddenField = BaseFormField<string> & {
+  label: undefined;
+  type: 'hidden';
+};
+
 export type GridFormField =
   | GridFormCheckboxField
   | GridFormCustomField
@@ -108,4 +113,5 @@ export type GridFormField =
   | GridFormTextField
   | GridFormSelectField
   | GridFormFileField
-  | GridFormTextAreaField;
+  | GridFormTextAreaField
+  | GridFormHiddenField;
