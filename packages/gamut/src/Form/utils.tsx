@@ -16,7 +16,7 @@ interface SelectParseOptionsProps extends ParseOptionPropsBase {
 }
 type ParseOptionProps = ReactSelectParseOptionsProps | SelectParseOptionsProps;
 
-type TypeName<T> = T extends ReactSelectParseOptionsProps
+type ParseOptionsProps<T> = T extends ReactSelectParseOptionsProps
   ? OptionTypeBase
   : JSX.Element;
 
@@ -30,7 +30,7 @@ const formatAsOptions = ({ label, value }: OptionTypeBase) => {
 
 export const parseOptions = <T extends ParseOptionProps>(
   args: T
-): TypeName<T>[] => {
+): ParseOptionsProps<T>[] => {
   const { id, options } = args;
 
   const parsedOptions: Array<OptionTypeBase> = [];
@@ -48,8 +48,8 @@ export const parseOptions = <T extends ParseOptionProps>(
   }
 
   if (args.selectDropdown === false) {
-    return parsedOptions.map(formatAsOptions) as TypeName<T>[];
+    return parsedOptions.map(formatAsOptions) as ParseOptionsProps<T>[];
   }
 
-  return parsedOptions as TypeName<T>[];
+  return parsedOptions as ParseOptionsProps<T>[];
 };
