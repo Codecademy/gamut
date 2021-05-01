@@ -1,9 +1,39 @@
-import { Box } from '@codecademy/gamut';
-import React, { useEffect, useRef, useState } from 'react';
+import { Box, Text, TextButton } from '@codecademy/gamut';
+import { system } from '@codecademy/gamut-styles';
+import { StyleProps } from '@codecademy/variance';
+import styled from '@emotion/styled';
+import React, { ReactNode, useEffect, useRef, useState } from 'react';
 
 import { Popover, PopoverProps } from '../Popover';
 
+const layoutVariants = system.variant({
+  prop: 'layout',
+  variants: {
+    withTitle: {
+      gridTemplateAreas: `"title" "message" "cta"`,
+    },
+  },
+});
+
+const CoachmarkContainer = styled.div<StyleProps<typeof layoutVariants>>(
+  system.css({
+    display: 'grid',
+    width: 300,
+    rowGap: 8,
+    p: 16,
+    gridTemplateRows: 'max-content 1fr, max-content',
+    gridTemplateAreas: `"title" "message" "cta"`,
+  }),
+  layoutVariants
+);
+
 export type CoachmarkProps = {
+  title?: string;
+  message?: ReactNode;
+  cta: {
+    text: string;
+    onClick: () => void;
+  };
   /**
    * Applied to the element to which the coachmark points.
    */
@@ -28,12 +58,19 @@ export const Coachmark: React.FC<CoachmarkProps> = ({
   shouldShow,
   className,
   delay = 500,
-  renderPopover,
+  cta,
+  title,
+  message,
   ...rest
 }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const activeElRef = useRef<HTMLDivElement>(null);
+
+  const onDismiss = () => {
+    setIsOpen(false);
+    cta?.onClick();
+  };
 
   useEffect(() => {
     let timer: NodeJS.Timeout;
@@ -48,11 +85,25 @@ export const Coachmark: React.FC<CoachmarkProps> = ({
     return () => clearTimeout(timer);
   }, [shouldShow, delay]);
 
+  const layoutVariant = title ? 'withTitle' : undefined;
+
   return (
     <Box display="inline-block" ref={activeElRef} className={className}>
       {children}
       <Popover {...rest} beak targetRef={activeElRef} isOpen={isOpen}>
-        {renderPopover()}
+        <CoachmarkContainer layout={layoutVariant}>
+          {title && (
+            <Text variant="title-xs" gridArea="title">
+              {title}
+            </Text>
+          )}
+          <Text variant="p-small" gridArea="message">
+            {message}
+          </Text>
+          <TextButton onClick={onDismiss} gridArea="cta" justifySelf="end">
+            {cta?.text}
+          </TextButton>
+        </CoachmarkContainer>
       </Popover>
     </Box>
   );
