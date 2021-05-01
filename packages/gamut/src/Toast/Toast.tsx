@@ -4,6 +4,7 @@ import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
 import React, { useMemo } from 'react';
 
+import { Box } from '../Box';
 import { IconButton } from '../Button/IconButton';
 import { Pattern } from '../Pattern';
 import { Text } from '../Typography';
@@ -78,20 +79,22 @@ const ToastContent = styled.div<StyleProps<typeof layoutVariants>>(
   layoutVariants
 );
 
-const IconPlaceholder = styled.div(
+const IconContainer = styled(Box)(
   system.css({
     bg: 'text',
     width: 64,
     height: 64,
+    border: 1,
     gridArea: 'icon',
     borderRadius: '50%',
+    backgroundSize: 'contain',
   })
 );
 
 export const Toast: React.FC<{
   title?: string;
   message: string;
-  icon?: React.ReactNode;
+  icon?: string;
   onClose: () => void;
 }> = ({ title, message, icon, onClose }) => {
   const layoutType = useMemo(() => {
@@ -106,7 +109,7 @@ export const Toast: React.FC<{
       <ToastShadow name="checkerDense" />
       <ToastBody>
         <ToastContent layout={layoutType}>
-          {icon && <IconPlaceholder />}
+          {icon && <IconContainer backgroundImage={`url(${icon})`} />}
           {title && (
             <Text variant="p-base" fontWeight="title" gridArea="title">
               {title}
