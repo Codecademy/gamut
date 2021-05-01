@@ -6,75 +6,37 @@ import React, { useMemo } from 'react';
 
 import { Box } from '../Box';
 import { IconButton } from '../Button/IconButton';
-import { Pattern } from '../Pattern';
+import { FloatingCard } from '../Card';
 import { Text } from '../Typography';
-
-const ToastWrapper = styled.div(
-  system.css({
-    width: 360,
-    maxWidth: 360,
-    position: 'relative',
-    zIndex: 1,
-    display: 'grid',
-  })
-);
-
-const ToastShadow = styled(Pattern)(
-  system.css({
-    width: 1,
-    height: 1,
-    position: 'absolute',
-    top: '.5rem',
-    left: '-.5rem',
-  })
-);
 
 const layoutVariants = system.variant({
   prop: 'layout',
   defaultVariant: 'message',
   variants: {
     message: {
-      gridTemplateAreas: `'message message'
-      'message message'`,
-      minHeight: '64px',
-    },
-    'title-message': {
-      gridTemplateAreas: `'title title'
-      'message message'`,
-      minHeight: '92px',
+      minHeight: '80px',
+      gridTemplateAreas: `'message message close'`,
     },
     'icon-message': {
-      gridTemplateAreas: `'icon message'
-      'icon message'`,
-      minHeight: '92px',
+      gridTemplateAreas: `'icon message close'`,
+      minHeight: '104px',
     },
-    'icon-title-message': {
-      gridTemplateAreas: `'icon title'
-      'icon message'`,
-      minHeight: '92px',
+    'title-message': {
+      minHeight: '104px',
+      gridTemplateAreas: `'message message close'`,
     },
   },
 });
 
-const ToastBody = styled.div(
-  system.css({
-    zIndex: 1,
-    bg: 'background',
-    display: 'grid',
-    gridTemplateColumns: '1fr 2rem',
-    p: 4,
-    border: 1,
-  }),
-  layoutVariants
-);
-
-const ToastContent = styled.div<StyleProps<typeof layoutVariants>>(
+const ToastContainer = styled(FloatingCard)<StyleProps<typeof layoutVariants>>(
   system.css({
     display: 'grid',
-    p: 12,
+    width: 360,
+    py: 12,
+    px: 16,
+    pr: 12,
     columnGap: 12,
-    gridTemplateColumns: '4rem 1fr',
-    gridTemplateRows: 'min-content 1fr',
+    gridTemplateColumns: '4rem 1fr 2rem',
   }),
   layoutVariants
 );
@@ -98,35 +60,33 @@ export const Toast: React.FC<{
   onClose: () => void;
 }> = ({ title, message, icon, onClose }) => {
   const layoutType = useMemo(() => {
-    if (title && icon) return 'icon-title-message';
-    if (title) return 'title-message';
     if (icon) return 'icon-message';
+    if (title) return 'title-message';
     return 'message';
   }, [title, icon]);
 
   return (
-    <ToastWrapper>
-      <ToastShadow name="checkerDense" />
-      <ToastBody>
-        <ToastContent layout={layoutType}>
-          {icon && <IconContainer backgroundImage={`url(${icon})`} />}
-          {title && (
-            <Text variant="p-base" fontWeight="title" gridArea="title">
-              {title}
-            </Text>
-          )}
-          <Text variant="p-small" gridArea="message">
-            {message}
+    <ToastContainer layout={layoutType} pattern="checkerDense">
+      {icon && (
+        <IconContainer alignSelf="center" backgroundImage={`url(${icon})`} />
+      )}
+      <Text gridArea="message" py={4}>
+        {title && (
+          <Text variant="p-base" fontWeight="title" mb={4}>
+            {title}
           </Text>
-        </ToastContent>
-        <IconButton
-          onClick={onClose}
-          size="small"
-          variant="secondary"
-          icon={MiniDeleteIcon}
-          alignSelf="start"
-        />
-      </ToastBody>
-    </ToastWrapper>
+        )}
+        <Text as="p" variant="p-small">
+          {message}
+        </Text>
+      </Text>
+      <IconButton
+        onClick={onClose}
+        size="small"
+        variant="secondary"
+        icon={MiniDeleteIcon}
+        alignSelf="start"
+      />
+    </ToastContainer>
   );
 };

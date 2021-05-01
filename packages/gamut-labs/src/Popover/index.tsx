@@ -1,69 +1,63 @@
-import { BodyPortal, FocusTrap, Pattern, PatternName } from '@codecademy/gamut';
+import {
+  BodyPortal,
+  Box,
+  FloatingCard,
+  FocusTrap,
+  PatternName,
+} from '@codecademy/gamut';
+import { system } from '@codecademy/gamut-styles';
+import { variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useWindowScroll, useWindowSize } from 'react-use';
 
-type StyleProps = {
-  outline?: boolean;
-  position?: 'above' | 'below';
-  beak?: 'right' | 'left';
-  align?: 'right' | 'left';
-};
+const BEAK = `--beak`;
 
-const transform = {
-  right: 'translateX(-100%)',
-  left: 'translateX(0%)',
-  above: 'translateY(-100%)',
-  below: 'translateY(0%)',
-};
+const PopoverContainer = styled(Box)(
+  variance.create({
+    offset: {
+      property: 'all',
+      scale: { withBeak: 'calc(-100% + 4rem)', self: '0%' },
+      transform: (val) => ({ [BEAK]: val }),
+    },
+    alignment: {
+      property: 'transform',
+      scale: {
+        'top-right': `translate(calc((-1 * var(${BEAK}) - 100%)), -100%)`,
+        'top-left': `translate(var(${BEAK}), -100%)`,
+        'bottom-right': `translate(calc((-1 * var(${BEAK}) - 100%)), 0%)`,
+        'bottom-left': `translate(var(${BEAK}), 0%)`,
+      },
+    },
+  })
+);
 
-const PopoverContainer = styled.div<StyleProps>`
-  position: fixed;
-  display: flex;
-  transform: ${({ position, align }) =>
-    position && align && `${transform[position]} ${transform[align]}`};
-`;
+const alignmentVariants = system.variant({
+  prop: 'alignment',
+  variants: {
+    bottom: {
+      transform: 'rotate(45deg)',
+    },
+    top: {
+      transform: 'rotate(225deg)',
+    },
+  },
+});
 
-const RaisedDiv = styled.div<StyleProps>`
-  z-index: 1;
-  border-radius: 2px;
-  border: 1px ${({ outline }) => (outline ? 'solid' : 'none')} black;
-  background-color: ${({ theme }) => theme.colors.white};
-  ${({ outline }) =>
-    !outline &&
-    'box-shadow: 0 0 16px rgba(0, 0, 0, 0.1), 0 0 24px rgba(0, 0, 0, 0.15)'};
-`;
-
-const Beak = styled.div<StyleProps>`
-  width: 20px;
-  height: 20px;
-  transform: rotate(45deg);
-  border-${({ position }) => (position === 'below' ? 'left' : 'right')}:
-    1px
-    ${({ outline }) => (outline ? 'solid' : 'none')}
-    ${({ theme }) => theme.colors.black};
-  border-${({ position }) => (position === 'below' ? 'top' : 'bottom')}:
-    1px
-    ${({ outline }) => (outline ? 'solid' : 'none')}
-    ${({ theme }) => theme.colors.black};
-  background-color: ${({ theme }) => theme.colors.white};
-  position: absolute;
-  left: ${({ beak }) => beak === 'left' && '25px'};
-  right: ${({ beak }) => beak === 'right' && '25px'};
-  top: ${({ position }) =>
-    position === 'below' ? '-10px' : 'calc(100% - 10px);'};
-`;
-
-const PatternContainer = styled.div<StyleProps>`
-  width: 100%;
-  height: 100%;
-  border-radius: 2px;
-  overflow: hidden;
-  background-color: ${({ theme }) => theme.colors.white};
-  position: absolute;
-  top: ${({ position }) => (position === 'below' ? '8px' : '-8px')};
-  left: ${({ align }) => (align === 'left' ? '8px' : '-8px')};
-`;
+const Beak = styled(Box)<{ alignment?: 'top' | 'bottom' }>(
+  system.css({
+    width: 20,
+    height: 20,
+    bg: 'background',
+    transform: 'rotate(45deg)',
+    position: 'absolute',
+    borderRadiusTopLeft: '2px',
+    border: 1,
+    borderStyleRight: 'none',
+    borderStyleBottom: 'none',
+  }),
+  alignmentVariants
+);
 
 export type PopoverProps = {
   children: React.ReactElement<any>;
@@ -71,7 +65,7 @@ export type PopoverProps = {
   /**
    * Which vertical edge of the source component to align against.
    */
-  align?: 'left' | 'right';
+  alignment?: 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right';
   /**
    * Number of pixels to offset the popover vertically from the source component.
    */
@@ -85,13 +79,9 @@ export type PopoverProps = {
    */
   outline?: boolean;
   /**
-   * Which horizontal edge of the source componet to align against.
+   * Toggle the beak of the popover, this is aligned to the X alignment.
    */
-  position?: 'above' | 'below';
-  /**
-   * Which side to position the beak. If not provided, beak will not be rendered.
-   */
-  beak?: 'left' | 'right';
+  beak?: boolean;
   /**
    * Whether the popover is rendered.
    */
@@ -116,11 +106,9 @@ export type PopoverProps = {
 export const Popover: React.FC<PopoverProps> = ({
   children,
   className,
-  align = 'left',
+  alignment = 'bottom-left',
   verticalOffset = 20,
   horizontalOffset = 0,
-  outline = false,
-  position = 'below',
   beak,
   isOpen,
   onRequestClose,
@@ -131,23 +119,27 @@ export const Popover: React.FC<PopoverProps> = ({
   const [isInViewport, setIsInViewport] = useState(true);
   const { width, height } = useWindowSize();
   const { x, y } = useWindowScroll();
+  const [yAlign, xAlign] = alignment.split('-') as [
+    'top' | 'bottom',
+    'left' | 'right'
+  ];
 
   const getPopoverPosition = useCallback(() => {
     if (!targetRect) return {};
-
     const positions = {
-      above: Math.round(targetRect.top - verticalOffset),
-      below: Math.round(targetRect.top + targetRect.height + verticalOffset),
+      top: Math.round(targetRect.top - verticalOffset),
+      bottom: Math.round(targetRect.top + targetRect.height + verticalOffset),
     };
     const alignments = {
       right: Math.round(window.scrollX + targetRect.right + horizontalOffset),
       left: Math.round(window.scrollX + targetRect.left - horizontalOffset),
     };
+
     return {
-      top: positions[position],
-      left: alignments[align],
+      top: positions[yAlign],
+      left: alignments[xAlign],
     };
-  }, [targetRect, verticalOffset, horizontalOffset, align, position]);
+  }, [targetRect, verticalOffset, horizontalOffset, xAlign, yAlign]);
 
   useEffect(() => {
     setTargetRect(targetRef?.current?.getBoundingClientRect());
@@ -184,6 +176,12 @@ export const Popover: React.FC<PopoverProps> = ({
 
   if (!isOpen || !targetRef) return null;
 
+  const { top, left } = getPopoverPosition();
+
+  const beakProps = {
+    [xAlign === 'left' ? 'right' : 'left']: '25px',
+    [yAlign === 'top' ? 'bottom' : 'top']: '-11px',
+  };
   return (
     <BodyPortal>
       <FocusTrap
@@ -192,35 +190,28 @@ export const Popover: React.FC<PopoverProps> = ({
         onEscapeKey={onRequestClose}
       >
         <PopoverContainer
-          position={position}
-          align={align}
-          ref={popoverRef}
-          className={className}
-          style={getPopoverPosition()}
-          data-testid="popover-content-container"
-          tabIndex={-1}
+          position="fixed"
+          offset={beak ? 'withBeak' : 'self'}
+          alignment={alignment}
+          top={`${top}`}
+          left={`${left}`}
         >
-          <RaisedDiv outline={outline}>
+          <FloatingCard
+            ref={popoverRef}
+            pattern={pattern || 'checkerDense'}
+            className={className}
+            data-testid="popover-content-container"
+            tabIndex={-1}
+          >
             {beak && (
               <Beak
-                outline={outline}
-                position={position}
-                beak={beak}
+                {...beakProps}
+                alignment={yAlign}
                 data-testid="popover-beak"
               />
             )}
             {children}
-          </RaisedDiv>
-          {pattern && (
-            <PatternContainer position={position} align={align}>
-              <Pattern
-                data-testid="popover-pattern"
-                name={pattern}
-                width="100%"
-                height="100%"
-              />
-            </PatternContainer>
-          )}
+          </FloatingCard>
         </PopoverContainer>
       </FocusTrap>
     </BodyPortal>

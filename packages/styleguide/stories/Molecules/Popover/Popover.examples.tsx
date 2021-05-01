@@ -1,13 +1,13 @@
 import {
   Box,
   Column,
-  Container,
   FillButton,
   FlexBox,
   LayoutGrid,
   PatternName,
 } from '@codecademy/gamut';
 import { Popover, PopoverProps } from '@codecademy/gamut-labs';
+import { Background } from '@codecademy/gamut-styles';
 import React, { useRef, useState } from 'react';
 
 export const PopoverExample = (args: PopoverProps) => {
@@ -15,11 +15,18 @@ export const PopoverExample = (args: PopoverProps) => {
   const activeElRef = useRef<HTMLDivElement>(null);
   const toggleOpen = () => setOpen(!open);
   return (
-    <>
+    <Background
+      bg="navy"
+      display="flex"
+      minHeight="300px"
+      width="100%"
+      alignItems="center"
+      justifyContent="center"
+    >
       <Box ref={activeElRef}>
         <FillButton onClick={toggleOpen}>Open Popover</FillButton>
       </Box>
-      <Container>
+      <Box>
         <Popover
           {...args}
           isOpen={open}
@@ -35,8 +42,8 @@ export const PopoverExample = (args: PopoverProps) => {
             </FillButton>
           </FlexBox>
         </Popover>
-      </Container>
-    </>
+      </Box>
+    </Background>
   );
 };
 
@@ -51,7 +58,7 @@ export const PopoverWithoutFocus = (args: PopoverProps) => {
       <Box ref={activeElRef}>
         <FillButton onClick={toggleOpen}>Open Popover</FillButton>
       </Box>
-      <Container>
+      <Box>
         <Popover
           {...args}
           isOpen={open}
@@ -64,14 +71,14 @@ export const PopoverWithoutFocus = (args: PopoverProps) => {
             </Box>
           </FlexBox>
         </Popover>
-      </Container>
+      </Box>
     </>
   );
 };
 
 export const PatternedPopoversGrid = (args: PopoverProps) => {
   return (
-    <LayoutGrid columnGap="sm" rowGap="xl">
+    <LayoutGrid columnGap={8} rowGap={48}>
       {[
         'diagonalStripesLoose',
         'diagonalStripesRegular',

@@ -86,9 +86,10 @@ export const AppHeaderDropdown: React.FC<AppHeaderDropdownProps> = ({
       <AnimatePresence>
         {isOpen && (
           <Popover
-            align={item.type === 'profile-dropdown' ? 'right' : 'left'}
+            alignment={
+              item.type === 'profile-dropdown' ? 'bottom-right' : 'bottom-left'
+            }
             verticalOffset={item.type === 'profile-dropdown' ? 0 : -2}
-            outline
             isOpen={isOpen}
             onRequestClose={handleClose}
             targetRef={headerDropdownRef}

@@ -18,7 +18,7 @@ import { CoachmarkExample } from './Coachmark.examples';
 />
 
 <Canvas>
-  <Story name="Coachmark">
+  <Story name="Coachmark" args={{ popoverProps: { alignment: 'top-right' } }}>
     {(args) => {
       return <CoachmarkExample {...args} />;
     }}
@@ -40,6 +40,7 @@ For example, you can add an outline, beak, and pattern, as shown below.
           {...args}
           popoverProps={{
             beak: 'left',
+            alignment: 'bottom-right',
             outline: true,
             pattern: 'checkerDense',
           }}

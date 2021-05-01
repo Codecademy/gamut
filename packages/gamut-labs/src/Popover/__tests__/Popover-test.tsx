@@ -170,7 +170,7 @@ describe('Popover', () => {
   it('shows a beak if the prop is true', () => {
     renderPopover({
       isOpen: true,
-      beak: 'right',
+      beak: true,
     });
 
     expect(screen.queryByTestId('popover-beak')).toBeInTheDocument();
@@ -203,8 +203,7 @@ describe('Popover', () => {
 
     const wrapped = mountPopover({
       isOpen: true,
-      position: 'above',
-      align: 'right',
+      alignment: 'top-right',
     });
 
     expect(
@@ -226,8 +225,7 @@ describe('Popover', () => {
 
     const wrapped = mountPopover({
       isOpen: true,
-      position: 'above',
-      align: 'right',
+      alignment: 'top-right',
       verticalOffset: 29,
     });
 
@@ -250,8 +248,7 @@ describe('Popover', () => {
 
     const wrapped = mountPopover({
       isOpen: true,
-      position: 'above',
-      align: 'right',
+      alignment: 'top-right',
       horizontalOffset: 30,
     });
 
@@ -274,8 +271,7 @@ describe('Popover', () => {
 
     const wrapped = mountPopover({
       isOpen: true,
-      position: 'above',
-      align: 'right',
+      alignment: 'top-right',
       verticalOffset: 30,
     });
 

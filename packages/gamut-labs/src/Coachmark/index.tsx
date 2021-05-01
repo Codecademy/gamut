@@ -1,3 +1,4 @@
+import { Box } from '@codecademy/gamut';
 import React, { useEffect, useRef, useState } from 'react';
 
 import { Popover, PopoverProps } from '../Popover';
@@ -6,7 +7,7 @@ export type CoachmarkProps = {
   /**
    * Applied to the element to which the coachmark points.
    */
-  activeElClassName?: string;
+  className?: string;
   /**
    * Amount of time (in ms) to delay rendering the coachmark.
    * @default 500
@@ -20,19 +21,15 @@ export type CoachmarkProps = {
    * Function that returns the contents of the coachmark.
    */
   renderPopover: (onDismiss?: () => void) => JSX.Element;
-  /**
-   * Props to be passed into the popover component.
-   */
-  popoverProps?: Partial<PopoverProps>;
-};
+} & Partial<Omit<PopoverProps, 'isOpen' | 'targetRef' | 'beak'>>;
 
 export const Coachmark: React.FC<CoachmarkProps> = ({
   children,
   shouldShow,
-  activeElClassName,
+  className,
   delay = 500,
   renderPopover,
-  popoverProps,
+  ...rest
 }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
@@ -52,13 +49,11 @@ export const Coachmark: React.FC<CoachmarkProps> = ({
   }, [shouldShow, delay]);
 
   return (
-    <>
-      <div ref={activeElRef} className={activeElClassName}>
-        {children}
-      </div>
-      <Popover {...popoverProps} targetRef={activeElRef} isOpen={isOpen}>
+    <Box display="inline-block" ref={activeElRef} className={className}>
+      {children}
+      <Popover {...rest} beak targetRef={activeElRef} isOpen={isOpen}>
         {renderPopover()}
       </Popover>
-    </>
+    </Box>
   );
 };

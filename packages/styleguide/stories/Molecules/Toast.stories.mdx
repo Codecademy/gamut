@@ -54,7 +54,9 @@ export const exampleToasts = [
         <Text variant="title-xs" mb={16}>
           {Object.keys(toast).join('-')}
         </Text>
-        <Toast key={toast.message} {...toast} />
+        <Box>
+          <Toast key={toast.message} {...toast} />
+        </Box>
       </Box>
     ))}
   </GridBox>
