@@ -12,6 +12,7 @@ import {
   StrokeButton,
   Text,
   TextButton,
+  Toast,
   Toggle,
 } from '@codecademy/gamut/src';
 import { MiniDeleteIcon, SearchIcon } from '@codecademy/gamut-icons';
@@ -126,6 +127,14 @@ export const ColorModeExample = () => {
           {renderButtons('primary')}
           {renderButtons('secondary')}
           {renderButtons('primary', true)}
+          <Box paddingTop={16}>
+            <Toast
+              title="Toast Title"
+              message="This is the message content!"
+              icon="icon"
+              onClose={() => {}}
+            />
+          </Box>
         </Box>
       </ColorMode>
     </Box>

@@ -1,5 +1,4 @@
-import { GridBox, Toast } from '@codecademy/gamut/src';
-import { ColorMode } from '@codecademy/gamut-styles/src';
+import { Box, GridBox, Text, Toast } from '@codecademy/gamut/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 
@@ -19,6 +18,8 @@ import { PropsTable } from '~styleguide/blocks';
   }}
 />
 
+<br />
+
 ### Variants
 
 export const exampleToasts = [
@@ -36,21 +37,20 @@ export const exampleToasts = [
 ];
 
 <Story name="Layouts">
-  <GridBox gridTemplateColumns="1fr 1fr">
-    <ColorMode mode="light" p={48}>
-      <GridBox rowGap={32}>
-        {exampleToasts.map((toast) => (
-          <Toast key={toast.message} {...toast} />
-        ))}
-      </GridBox>
-    </ColorMode>
-    <ColorMode mode="dark" bg="background" p={48}>
-      <GridBox rowGap={32}>
-        {exampleToasts.map((toast) => (
-          <Toast key={`${toast.message}-dark`} {...toast} />
-        ))}
-      </GridBox>
-    </ColorMode>
+  <GridBox
+    paddingY={24}
+    rowGap={32}
+    columnGap={32}
+    gridTemplateColumns="max-content max-content"
+  >
+    {exampleToasts.map((toast) => (
+      <Box>
+        <Text variant="title-xs" mb={16}>
+          {Object.keys(toast).join('-')}
+        </Text>
+        <Toast key={toast.message} {...toast} />
+      </Box>
+    ))}
   </GridBox>
 </Story>
 

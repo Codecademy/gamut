@@ -20,7 +20,6 @@ const ToastWrapper = styled.div(
 
 const ToastShadow = styled(Pattern)(
   system.css({
-    textColor: 'text',
     width: 1,
     height: 1,
     position: 'absolute',
