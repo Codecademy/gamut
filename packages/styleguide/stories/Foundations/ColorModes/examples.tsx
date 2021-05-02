@@ -34,7 +34,11 @@ const renderButtons = (variant?: 'primary' | 'secondary', disabled = false) => {
       alignItems="start"
     >
       <GridBox gridRowEnd="span 2">
-        <CTAButton variant={variant as any} disabled={disabled}>
+        <CTAButton
+          variant={variant}
+          disabled={disabled}
+          opacity={variant === 'primary' ? 1 : 0}
+        >
           CTA
         </CTAButton>
       </GridBox>
