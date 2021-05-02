@@ -27,7 +27,7 @@ const DialogContainer = styled(
     },
     variants: {
       small: { width: '400px', minHeight: '170px' },
-      medium: { width: '640px', minHeight: '240px' },
+      medium: { width: '540px', minHeight: '240px' },
     },
   })
 );
