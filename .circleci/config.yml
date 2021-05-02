@@ -12,10 +12,10 @@ references:
       NODE_OPTIONS: '--max_old_space_size=8196'
       CIRCLE_TEST_REPORTS: /tmp/test-results
 
-  yarn_cache_key_1: &yarn_cache_key_1 v1-yarn-{{ arch}}-{{ checksum "yarn.lock" }}
+  yarn_cache_key_1: &yarn_cache_key_1 v2-yarn-{{ arch }}-{{ checksum "yarn.lock" }}
 
-  webpack_cache_key_1: &webpack_cache_key_1 v1-webpack-{{ arch}}-{{ checksum "yarn.lock" }}-{{ .Branch }}-{{ .Revision }}
-  webpack_cache_key_2: &webpack_cache_key_2 v1-webpack-{{ arch}}-{{ checksum "yarn.lock" }}-{{ .Branch }}
+  webpack_cache_key_1: &webpack_cache_key_1 v1-webpack-{{ arch }}-{{ checksum "yarn.lock" }}-{{ .Branch }}-{{ .Revision }}
+  webpack_cache_key_2: &webpack_cache_key_2 v1-webpack-{{ arch }}-{{ checksum "yarn.lock" }}-{{ .Branch }}
 
   restore_yarn_cache: &restore_yarn_cache
     restore_cache:
