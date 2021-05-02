@@ -1,3 +1,4 @@
+import { Consent } from '../consent';
 import { DestinationMapOptions, mapDestinations } from '../mapDestinations';
 
 describe('mapDestinations', () => {
@@ -15,7 +16,7 @@ describe('mapDestinations', () => {
     it('includes Segment.io when consent includes C0003', () => {
       testCase(
         {
-          consentDecision: ['C0003'],
+          consentDecision: [Consent.Functional],
           destinations: [],
         },
         { 'Segment.io': true }
@@ -40,7 +41,7 @@ describe('mapDestinations', () => {
     it('allows a targeting destination when consent includes C0004', () => {
       testCase(
         {
-          consentDecision: ['C0004'],
+          consentDecision: [Consent.Targeting],
           destinations: [
             {
               category: 'Advertising',
@@ -70,7 +71,7 @@ describe('mapDestinations', () => {
     it('allows a performance destination when consent includes C0002', () => {
       testCase(
         {
-          consentDecision: ['C0002'],
+          consentDecision: [Consent.Performance],
           destinations: [
             {
               category: 'Analytics',
@@ -112,7 +113,7 @@ describe('mapDestinations', () => {
     });
 
     it('includes Hindsight when consent includes C0004', () => {
-      testCase({ consentDecision: ['C0004'] }, { Hindsight: true });
+      testCase({ consentDecision: [Consent.Targeting] }, { Hindsight: true });
     });
 
     it('does not include UserLeap when consent does not include C0002', () => {
@@ -120,7 +121,7 @@ describe('mapDestinations', () => {
     });
 
     it('includes UserLeap when consent includes C0002', () => {
-      testCase({ consentDecision: ['C0002'] }, { UserLeap: true });
+      testCase({ consentDecision: [Consent.Performance] }, { UserLeap: true });
     });
   });
 });

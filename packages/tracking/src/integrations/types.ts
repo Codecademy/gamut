@@ -1,3 +1,5 @@
+import { Consent } from './consent';
+
 export interface UserIntegrationSummary {
   email: string;
   id: string;
@@ -25,5 +27,5 @@ export interface SegmentAnalyticsOptions {
 
 export interface SegmentWindow {
   analytics?: SegmentAnalytics;
-  OnetrustActiveGroups?: string[];
+  OnetrustActiveGroups?: Consent[];
 }
