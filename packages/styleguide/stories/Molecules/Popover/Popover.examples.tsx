@@ -23,7 +23,7 @@ export const PopoverExample = (args: PopoverProps) => {
       alignItems="center"
       justifyContent="center"
     >
-      <Box ref={activeElRef}>
+      <Box ref={activeElRef} width="300px" backgroundColor="black">
         <FillButton onClick={toggleOpen}>Open Popover</FillButton>
       </Box>
       <Box>

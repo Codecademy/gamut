@@ -86,7 +86,13 @@ export const Coachmark: React.FC<CoachmarkProps> = ({
   return (
     <Box display="inline-block" ref={activeElRef} className={className}>
       {children}
-      <Popover {...rest} beak targetRef={activeElRef} isOpen={isOpen}>
+      <Popover
+        {...rest}
+        beak
+        targetRef={activeElRef}
+        isOpen={isOpen}
+        inset={false}
+      >
         <CoachmarkContainer layout={layoutVariant}>
           {title && (
             <Text variant="title-xs" gridArea="title">

@@ -11,25 +11,37 @@ import styled from '@emotion/styled';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useWindowScroll, useWindowSize } from 'react-use';
 
-const BEAK = `--beak`;
+const getTransform = (
+  xAlign: 'left' | 'right',
+  yAlign: 'top' | 'bottom',
+  inset: boolean,
+  beak?: boolean
+) => {
+  const beakOffset = !inset && beak ? '4rem' : '0px';
+  const y = yAlign === 'top' ? '-100%' : '0%';
 
-const PopoverContainer = styled(Box)(
-  variance.create({
-    offset: {
-      property: 'all',
-      scale: { withBeak: 'calc(-100% + 4rem)', self: '0%' },
-      transform: (val) => ({ [BEAK]: val }),
-    },
-    alignment: {
-      property: 'transform',
-      scale: {
-        'top-right': `translate(calc((-1 * var(${BEAK}) - 100%)), -100%)`,
-        'top-left': `translate(var(${BEAK}), -100%)`,
-        'bottom-right': `translate(calc((-1 * var(${BEAK}) - 100%)), 0%)`,
-        'bottom-left': `translate(var(${BEAK}), 0%)`,
+  let beakCooef: string;
+  let x: string;
+  if (inset) {
+    x = xAlign === 'left' ? '0%' : '-100%';
+    beakCooef = xAlign === 'left' ? '-' : '+';
+  } else {
+    x = xAlign === 'left' ? '-100%' : '0%';
+    beakCooef = xAlign === 'left' ? '+' : '-';
+  }
+
+  return `translate(calc(${x} ${beakCooef} ${beakOffset}), ${y})`;
+};
+
+const PopoverContainer = styled.div(
+  variance.compose(
+    system.positioning,
+    variance.create({
+      transform: {
+        property: 'transform',
       },
-    },
-  })
+    })
+  )
 );
 
 const alignmentVariants = system.variant({
@@ -66,6 +78,8 @@ export type PopoverProps = {
    * Which vertical edge of the source component to align against.
    */
   alignment?: 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right';
+  /** Align to the inset of the target div */
+  inset?: boolean;
   /**
    * Number of pixels to offset the popover vertically from the source component.
    */
@@ -110,6 +124,7 @@ export const Popover: React.FC<PopoverProps> = ({
   verticalOffset = 20,
   horizontalOffset = 0,
   beak,
+  inset = true,
   isOpen,
   onRequestClose,
   targetRef,
@@ -178,10 +193,14 @@ export const Popover: React.FC<PopoverProps> = ({
 
   const { top, left } = getPopoverPosition();
 
+  const beakposition = inset ? xAlign : xAlign === 'left' ? 'right' : 'left';
+
   const beakProps = {
-    [xAlign === 'left' ? 'right' : 'left']: '25px',
+    [beakposition]: '25px',
     [yAlign === 'top' ? 'bottom' : 'top']: '-11px',
   };
+  const transform = getTransform(xAlign, yAlign, inset, beak);
+
   return (
     <BodyPortal>
       <FocusTrap
@@ -191,10 +210,9 @@ export const Popover: React.FC<PopoverProps> = ({
       >
         <PopoverContainer
           position="fixed"
-          offset={beak ? 'withBeak' : 'self'}
-          alignment={alignment}
-          top={`${top}`}
-          left={`${left}`}
+          transform={transform}
+          top={top}
+          left={left}
           data-testid="popover-content-container"
         >
           <FloatingCard
