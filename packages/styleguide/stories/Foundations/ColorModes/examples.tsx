@@ -160,7 +160,7 @@ const renderMolecules = () => (
           <Toast
             title="Toast Title"
             message="This is the message content!"
-            icon="icon"
+            icon="https://static-assets.codecademy.com/assets/achievements/weekly-streak-4.svg"
             onClose={() => {}}
           />
         </Box>
