@@ -46,6 +46,7 @@ module.exports = {
 
   rules: {
     // These off-by-default or configurable rules are good and we like having them on
+    '@typescript-eslint/array-type': 'error',
     eqeqeq: 'error',
     'no-console': 'error',
     'no-eval': 'error',
@@ -76,6 +77,8 @@ module.exports = {
     'simple-import-sort/imports': 'error',
 
     // These functional rules are annoying and we generally don't want them on
+    // Note that these are only the rules we don't want in *any* consuming repository
+    // Rules to be temporarily disabled for convenience should be done so in those repositories
     '@typescript-eslint/ban-types': 'off',
     '@typescript-eslint/consistent-type-definitions': 'off',
     '@typescript-eslint/explicit-function-return-type': 'off',
@@ -88,6 +91,7 @@ module.exports = {
     'arrow-body-style': 'off',
     camelcase: 'off',
     'class-methods-use-this': 'off',
+    'default-case': 'off',
     'func-names': 'off',
     'global-require': 'off',
     'import/export': 'off',
@@ -110,6 +114,7 @@ module.exports = {
     'no-underscore-dangle': 'off',
     'no-use-before-define': 'off',
     'no-useless-constructor': 'off',
+    'prefer-template': 'off',
     'react/jsx-filename-extension': 'off',
     'react/jsx-no-bind': 'off',
     'react/jsx-pascal-case': 'off',
