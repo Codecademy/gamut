@@ -25,9 +25,11 @@ module.exports = {
     {
       files: ['**/*.js'],
       rules: {
+        '@typescript-eslint/no-unsafe-assignment': 'off',
         '@typescript-eslint/no-unsafe-call': 'off',
         '@typescript-eslint/no-unsafe-member-access': 'off',
         '@typescript-eslint/no-unsafe-return': 'off',
+        '@typescript-eslint/no-var-requires': 'off',
         '@typescript-eslint/restrict-template-expressions': 'off',
       },
     },
@@ -99,6 +101,7 @@ module.exports = {
     'import/no-default-export': 'off',
     'import/no-unresolved': 'off',
     'import/prefer-default-export': 'off',
+    'lines-between-class-members': 'off',
     'max-classes-per-file': 'off',
     'no-bitwise': 'off',
     'no-case-declarations': 'off',
@@ -111,6 +114,7 @@ module.exports = {
     'no-return-assign': 'off',
     'no-return-await': 'off',
     'no-shadow': 'off',
+    'no-sparse-arrays': 'off',
     'no-underscore-dangle': 'off',
     'no-use-before-define': 'off',
     'no-useless-constructor': 'off',
