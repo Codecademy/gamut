@@ -151,8 +151,8 @@ const renderMolecules = () => (
       </Text>
 
       <Coachmark
-        title="Hello"
-        message="world"
+        title="New Feature"
+        message="Information about the new feature can go here. Here’s an extra sentence if you really need it."
         cta={{ onClick: () => {}, text: 'Click me!' }}
         beak="bottom-left"
       />
@@ -215,7 +215,7 @@ export const ColorModeKitchenSinkExample = () => {
               <Toggle
                 label="color-mode"
                 size="small"
-                variant="hyper"
+                variant="blue"
                 checked={isDark}
                 onChange={() => setIsDark(!isDark)}
               />
