@@ -1,36 +1,9 @@
-import { BodyPortal, FocusTrap } from '@codecademy/gamut';
-import { system } from '@codecademy/gamut-styles';
-import { variance } from '@codecademy/variance';
-import styled from '@emotion/styled';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useWindowScroll, useWindowSize } from 'react-use';
 
-const getTransform = (
-  xAlign: 'left' | 'right',
-  yAlign: 'top' | 'bottom',
-  inset: boolean
-) => {
-  const y = yAlign === 'top' ? '-100%' : '0%';
-  let x: string;
-  if (inset) {
-    x = xAlign === 'left' ? '0%' : '-100%';
-  } else {
-    x = xAlign === 'left' ? '-100%' : '0%';
-  }
-
-  return `translate(${x} , ${y})`;
-};
-
-const PopoverContainer = styled.div(
-  variance.compose(
-    system.positioning,
-    variance.create({
-      transform: {
-        property: 'transform',
-      },
-    })
-  )
-);
+import { BodyPortal } from '../BodyPortal';
+import { FocusTrap } from '../FocusTrap';
+import { getTransform, PopoverContainer } from './PopoverContainer';
 
 export type PopoverProps = {
   className?: string;
@@ -70,16 +43,14 @@ export type PopoverProps = {
 };
 
 export const Popover: React.FC<PopoverProps> = ({
-  children,
-  className,
   alignment = 'bottom-left',
   verticalOffset = 20,
   horizontalOffset = 0,
-  beak,
   inset = true,
   isOpen,
   onRequestClose,
   targetRef,
+  ...rest
 }) => {
   const [targetRect, setTargetRect] = useState<DOMRect>();
   const [isInViewport, setIsInViewport] = useState(true);
@@ -154,17 +125,14 @@ export const Popover: React.FC<PopoverProps> = ({
         onEscapeKey={onRequestClose}
       >
         <PopoverContainer
-          className={className}
           ref={popoverRef}
           tabIndex={-1}
-          position="fixed"
           transform={transform}
           top={top}
           left={left}
           data-testid="popover-content-container"
-        >
-          {children}
-        </PopoverContainer>
+          {...rest}
+        />
       </FocusTrap>
     </BodyPortal>
   );

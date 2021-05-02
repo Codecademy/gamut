@@ -260,7 +260,6 @@ describe('Popover', () => {
   it('shows a pattern if the prop is provided', () => {
     renderPopover({
       isOpen: true,
-      pattern: 'checkerDense',
     });
 
     const pattern = screen.queryAllByTitle('checkerDense')[0];

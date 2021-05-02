@@ -1,11 +1,13 @@
-import { Box, Text, TextButton } from '@codecademy/gamut';
 import { system } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
 import React, { ReactNode, useEffect, useRef, useState } from 'react';
 
+import { Box } from '../Box';
+import { TextButton } from '../Button';
+import { FloatingCard } from '../Card';
 import { Popover, PopoverProps } from '../Popover';
-import { PopoverCard } from '../Popover/PopoverCard';
+import { Text } from '../Typography';
 
 const layoutVariants = system.variant({
   prop: 'layout',
@@ -16,7 +18,7 @@ const layoutVariants = system.variant({
   },
 });
 
-const CoachmarkCard = styled(PopoverCard)<StyleProps<typeof layoutVariants>>(
+const CoachmarkCard = styled(FloatingCard)<StyleProps<typeof layoutVariants>>(
   system.css({
     display: 'grid',
     width: 300,
@@ -89,8 +91,10 @@ export const Coachmark: React.FC<CoachmarkProps> = ({
     'top' | 'bottom',
     'left' | 'right'
   ];
-  const beakposition = inset ? xAlign : xAlign === 'left' ? 'right' : 'left';
-  const beakAlignment = `${yAlign}-${beakposition}` as const;
+
+  const beakY = yAlign === 'top' ? 'bottom' : 'top';
+  const beakX = inset ? xAlign : xAlign === 'left' ? 'right' : 'left';
+  const beakAlignment = `${beakY}-${beakX}` as const;
 
   return (
     <Box display="inline-block" ref={activeElRef} className={className}>

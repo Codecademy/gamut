@@ -1,10 +1,60 @@
 import { system } from '@codecademy/gamut-styles';
+import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
-import React, { ComponentProps, forwardRef, HTMLProps } from 'react';
+import React, { ComponentProps, forwardRef } from 'react';
 
 import { Pattern } from '../Pattern';
 
-const Wrapper = styled.div(
+const beakVariants = system.variant({
+  prop: 'beak',
+  base: {
+    p: 12,
+    '&:after': {
+      content: '""',
+      width: '1.5rem',
+      height: '1.5rem',
+      bg: 'background',
+      transform: 'rotate(45deg)',
+      position: 'absolute',
+      borderRadiusTopLeft: '2px',
+      border: 1,
+      borderStyleRight: 'none',
+      borderStyleBottom: 'none',
+    },
+  },
+  variants: {
+    'bottom-left': {
+      '&:after': {
+        bottom: 'calc(-0.75rem - 1px)',
+        left: '1.5rem',
+        transform: 'rotate(225deg)',
+      },
+    },
+    'bottom-right': {
+      '&:after': {
+        bottom: 'calc(-0.75rem - 1px)',
+        right: '1.5rem',
+        transform: 'rotate(225deg)',
+      },
+    },
+    'top-left': {
+      '&:after': {
+        top: 'calc(-0.75rem - 1px)',
+        left: '1.5rem',
+        transform: 'rotate(45deg)',
+      },
+    },
+    'top-right': {
+      '&:after': {
+        top: 'calc(-0.75rem - 1px)',
+        right: '1.5rem',
+        transform: 'rotate(45deg)',
+      },
+    },
+  },
+});
+
+const CardWrapper = styled.div(
   system.css({
     maxWidth: 'cac(100vw - 2rem)',
     position: 'relative',
@@ -14,7 +64,7 @@ const Wrapper = styled.div(
   })
 );
 
-const Shadow = styled(Pattern)(
+const CardShadow = styled(Pattern)(
   system.css({
     width: 1,
     height: 1,
@@ -24,29 +74,29 @@ const Shadow = styled(Pattern)(
   })
 );
 
-const Body = styled.div(
+const CardBody = styled.div<StyleProps<typeof beakVariants>>(
   system.css({
     zIndex: 1,
     position: 'relative',
     bg: 'background',
     borderRadius: '2px',
     border: 1,
-  })
+  }),
+  beakVariants
 );
 
 export type FloatingCard = {
   className?: string;
   pattern: ComponentProps<typeof Pattern>['name'];
-};
+} & ComponentProps<typeof CardBody>;
 
-export const FloatingCard = forwardRef<
-  HTMLDivElement,
-  FloatingCard & Omit<HTMLProps<HTMLDivElement>, 'as' | 'size'>
->(({ children, className, pattern, ...rest }, ref) => (
-  <Wrapper>
-    <Shadow name={pattern} />
-    <Body className={className} {...rest} ref={ref}>
-      {children}
-    </Body>
-  </Wrapper>
-));
+export const FloatingCard = forwardRef<HTMLDivElement, FloatingCard>(
+  ({ children, className, pattern = 'checkerDense', ...rest }, ref) => (
+    <CardWrapper>
+      <CardShadow name={pattern} />
+      <CardBody className={className} {...rest} ref={ref}>
+        {children}
+      </CardBody>
+    </CardWrapper>
+  )
+);
