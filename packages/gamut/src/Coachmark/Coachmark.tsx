@@ -1,7 +1,7 @@
 import { system } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
-import React, { ComponentProps, ReactNode } from 'react';
+import React, { ComponentProps } from 'react';
 
 import { TextButton } from '../Button';
 import { FloatingCard } from '../Card';
