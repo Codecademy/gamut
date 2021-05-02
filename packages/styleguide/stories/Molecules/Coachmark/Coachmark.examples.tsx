@@ -1,7 +1,5 @@
-/* eslint-disable local-rules/gamut-import-paths */
-import { FillButton } from '@codecademy/gamut/src';
-import { Coachmark, CoachmarkProps } from '@codecademy/gamut-labs/src';
-import { Background } from '@codecademy/gamut-styles/src';
+import { FillButton, FlexBox } from '@codecademy/gamut';
+import { Coachmark, CoachmarkProps, Text } from '@codecademy/gamut-labs';
 import React, { useState } from 'react';
 
 export const CoachmarkExample = (args: CoachmarkProps) => {
@@ -9,26 +7,28 @@ export const CoachmarkExample = (args: CoachmarkProps) => {
     args.shouldShow === undefined ? true : args.shouldShow
   );
 
-  return (
-    <Background
-      bg="navy"
-      display="flex"
-      height={1}
-      width={1}
-      minHeight="500px"
-      justifyContent="center"
-      alignItems="center"
-    >
-      <Coachmark
-        {...args}
-        cta={{ ...args?.cta, onClick: () => setShouldShow(false) }}
-        delay={0}
-        shouldShow={shouldShow}
+  const renderPopover = () => (
+    <FlexBox flexDirection="column" padding={16} alignItems="flex-start">
+      <Text marginBottom={8}>You should click the button.</Text>
+      <FillButton
+        onClick={() => {
+          setShouldShow(false);
+        }}
+        size="small"
       >
-        <FillButton onClick={() => setShouldShow(true)}>
-          {shouldShow ? 'Some New Button' : 'Reset Coachmark'}
-        </FillButton>
-      </Coachmark>
-    </Background>
+        Got it
+      </FillButton>
+    </FlexBox>
+  );
+
+  return (
+    <Coachmark
+      {...args}
+      delay={0}
+      renderPopover={renderPopover}
+      shouldShow={shouldShow}
+    >
+      <FillButton onClick={() => {}}>A Button</FillButton>
+    </Coachmark>
   );
 };

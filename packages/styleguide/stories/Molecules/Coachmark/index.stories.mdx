@@ -15,13 +15,6 @@ import { CoachmarkExample } from './Coachmark.examples';
     source: 'gamut-labs',
     status: 'updating',
   }}
-  args={{
-    alignment: 'top-right',
-    title: 'New Feature',
-    message:
-      'Information about the new feature can go here. Here’s an extra sentence if you really need it.',
-    cta: { text: 'Click Me', onClick: () => {} },
-  }}
 />
 
 <Canvas>
@@ -42,7 +35,16 @@ For example, you can add an outline, beak, and pattern, as shown below.
 <Canvas>
   <Story name="Coachmark Customizations">
     {(args) => {
-      return <CoachmarkExample {...args} />;
+      return (
+        <CoachmarkExample
+          {...args}
+          popoverProps={{
+            beak: 'left',
+            outline: true,
+            pattern: 'checkerDense',
+          }}
+        />
+      );
     }}
   </Story>
 </Canvas>
