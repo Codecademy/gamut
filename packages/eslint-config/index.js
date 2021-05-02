@@ -21,6 +21,18 @@ module.exports = {
     ...localExtends,
   ],
 
+  overrides: [
+    {
+      files: ['**/*.js'],
+      rules: {
+        '@typescript-eslint/no-unsafe-call': 'off',
+        '@typescript-eslint/no-unsafe-member-access': 'off',
+        '@typescript-eslint/no-unsafe-return': 'off',
+        '@typescript-eslint/restrict-template-expressions': 'off',
+      },
+    },
+  ],
+
   plugins: [
     'import',
     'jest',
@@ -64,8 +76,10 @@ module.exports = {
     'simple-import-sort/imports': 'error',
 
     // These functional rules are annoying and we generally don't want them on
+    '@typescript-eslint/ban-types': 'off',
     '@typescript-eslint/consistent-type-definitions': 'off',
     '@typescript-eslint/explicit-function-return-type': 'off',
+    '@typescript-eslint/explicit-module-boundary-types': 'off',
     '@typescript-eslint/no-empty-interface': 'off',
     '@typescript-eslint/no-magic-numbers': 'off',
     '@typescript-eslint/no-type-alias': 'off',
@@ -79,6 +93,7 @@ module.exports = {
     'import/export': 'off',
     'import/extensions': 'off',
     'import/no-default-export': 'off',
+    'import/no-unresolved': 'off',
     'import/prefer-default-export': 'off',
     'max-classes-per-file': 'off',
     'no-bitwise': 'off',
