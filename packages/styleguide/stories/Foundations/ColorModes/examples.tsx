@@ -74,24 +74,8 @@ const renderButtons = (variant?: 'primary' | 'secondary', disabled = false) => {
 const renderAtoms = () => {
   return (
     <>
-      <Column size={6}>
+      <Column size={6} variant={false}>
         <LayoutGrid gap={24}>
-          <Column>
-            <Text as="h4">Logos</Text>
-          </Column>
-          <Column gridTemplateColumns="repeat(3, max-content)" gap={16}>
-            <Logo variant="default" />
-            <Logo variant="pro" />
-            <Logo variant="mini" />
-          </Column>
-          <Column>
-            <Text as="h4">Labels</Text>
-          </Column>
-          <Column>
-            <Text as="p" fontSize={16} fontFamily="accent">
-              <ProLabel height={22} verticalAlign="text-bottom" /> Cool Feature
-            </Text>
-          </Column>
           <Column>
             <Text as="h4">Typography</Text>
           </Column>
@@ -103,10 +87,22 @@ const renderAtoms = () => {
               ex ea commodo consequat.
             </Text>
           </Column>
+          <Column>
+            <Text as="h4">Links</Text>
+          </Column>
           <Column gridTemplateColumns="repeat(3, max-content)" gap={16}>
             <Anchor>Inline Link</Anchor>
             <Anchor variant="standard">Standard Link</Anchor>
             <Anchor variant="interface">Interface Link</Anchor>
+          </Column>
+          <Column>
+            <Text as="h4">Logos</Text>
+          </Column>
+          <Column gridTemplateColumns="repeat(4, max-content)" gap={16}>
+            <Logo variant="default" />
+            <Logo variant="pro" />
+            <Logo variant="mini" />
+            <ProLabel height={30} verticalAlign="text-bottom" />
           </Column>
         </LayoutGrid>
       </Column>
@@ -116,8 +112,8 @@ const renderAtoms = () => {
             <Text as="h4">Buttons</Text>
           </Column>
           {renderButtons('primary')}
-          {renderButtons('secondary')}
           {renderButtons('primary', true)}
+          {renderButtons('secondary')}
         </LayoutGrid>
       </Column>
     </>
