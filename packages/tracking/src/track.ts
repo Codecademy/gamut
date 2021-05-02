@@ -6,16 +6,35 @@ import type {
   UserVisitData,
 } from './types';
 
-export const createTracker = (
-  apiBaseUrl: string,
-  authToken: string,
-  verbose = false
-) => {
+export interface TrackerOptions {
+  apiBaseUrl: string;
+  verbose?: boolean;
+}
+
+export type TrackEvent = <
+  Category extends keyof EventDataTypes,
+  Event extends string & keyof EventDataTypes[Category],
+  Data extends EventDataTypes[Category][Event]
+>(
+  category: Category,
+  event: Event,
+  userData: Data,
+  options?: TrackingOptions
+) => void;
+
+export interface Tracker {
+  click: (data: UserClickData) => void;
+  event: TrackEvent;
+  pushDataLayerEvent: (eventName: string) => void;
+  visit: (data: UserVisitData) => void;
+}
+
+export const createTracker = ({
+  apiBaseUrl,
+  verbose,
+}: TrackerOptions): Tracker => {
   const beacon = (endpoint: string, data: Record<string, string>) => {
     const uri = new URL(endpoint, apiBaseUrl);
-    const searchParams = new URLSearchParams(uri.search);
-    searchParams.set('authentication_token', authToken);
-    uri.search = searchParams.toString();
     const form = new FormData();
     for (const [k, v] of Object.entries(data)) {
       form.append(k, v.toString());
@@ -24,16 +43,7 @@ export const createTracker = (
     navigator.sendBeacon(uri.toString(), form);
   };
 
-  const event = <
-    Category extends keyof EventDataTypes,
-    Event extends string & keyof EventDataTypes[Category],
-    Data extends EventDataTypes[Category][Event]
-  >(
-    category: Category,
-    event: Event,
-    userData: Data,
-    options: TrackingOptions = {}
-  ) => {
+  const event: TrackEvent = (category, event, userData, options = {}) => {
     const properties = {
       ...userData,
       fullpath: window.location.pathname + window.location.search,
@@ -68,8 +78,8 @@ export const createTracker = (
 
   return {
     event,
-    click: (data: UserClickData) => event('user', 'click', data),
-    visit: (data: UserVisitData) => event('user', 'visit', data),
+    click: (data) => event('user', 'click', data),
+    visit: (data) => event('user', 'visit', data),
     pushDataLayerEvent: (eventName: string) => {
       // Set an arbitrary global property on the window variable.
       const w = window as any;
