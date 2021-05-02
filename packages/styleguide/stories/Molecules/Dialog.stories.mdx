@@ -1,4 +1,4 @@
-import { Dialog } from '@codecademy/gamut/src';
+import { Dialog, DialogOverlay } from '@codecademy/gamut/src';
 import { Background } from '@codecademy/gamut-styles/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
@@ -33,9 +33,9 @@ import { LinkTo, PropsTable } from '~styleguide/blocks';
 - Use the modal component sparingly. This is the most dispruptive tool in our arsenal. We should only have a small handful of these in our system at any given time.
 
 <Canvas>
-  <Story name="Dialog">
+  <Story name="Dialog" height="400px">
     {(args) => {
-      return <Dialog {...args} />;
+      return <DialogOverlay isOpen inline {...args} />;
     }}
   </Story>
 </Canvas>
@@ -60,24 +60,18 @@ import { LinkTo, PropsTable } from '~styleguide/blocks';
 Dialog components respond to the current <LinkTo id="foundations-color-mode--page">Color Mode</LinkTo> they are used in. Each component inside of dialog will correctly display for the current color mode without any extra configuration.
 Check it out:
 
-### Light
-
 <Canvas>
-  <Story name="Light">
-    {(args) => {
-      return <Dialog {...args} />;
-    }}
+  <Story name="Light Mode" height="400px">
+    {(args) => <DialogOverlay inset isOpen {...args} />}
   </Story>
 </Canvas>
 
-### Dark
-
 <Canvas>
-  <Story name="Dark">
+  <Story name="Dark Mode" height="400px">
     {(args) => {
       return (
-        <Background bg="navy" p={32}>
-          <Dialog {...args} />
+        <Background bg="navy" height={1}>
+          <DialogOverlay inset isOpen {...args} />
         </Background>
       );
     }}
