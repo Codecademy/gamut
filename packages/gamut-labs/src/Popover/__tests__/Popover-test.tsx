@@ -2,6 +2,7 @@ import { theme } from '@codecademy/gamut-styles';
 import { ThemeProvider } from '@emotion/react';
 import { fireEvent, render, screen } from '@testing-library/react';
 import { mount } from 'enzyme';
+import { pick } from 'lodash';
 import React from 'react';
 
 import { Popover, PopoverProps } from '..';
@@ -23,6 +24,10 @@ const targetRefObj = {
       };
     },
   },
+};
+
+const getOffsetProps = (wrapped: ReturnType<typeof mount>) => {
+  return pick(wrapped.find('PopoverContainer').props(), ['top', 'left']);
 };
 
 const renderPopover = (props?: Partial<PopoverProps>) => {
@@ -184,16 +189,9 @@ describe('Popover', () => {
       isOpen: true,
     });
 
-    expect(
-      wrapped
-        .find('[data-testid="popover-content-container"]')
-        .hostNodes()
-        .props()
-    ).toMatchObject({
-      style: {
-        top: 318,
-        left: 58,
-      },
+    expect(getOffsetProps(wrapped)).toMatchObject({
+      top: '318',
+      left: '58',
     });
   });
 
@@ -206,16 +204,9 @@ describe('Popover', () => {
       alignment: 'top-right',
     });
 
-    expect(
-      wrapped
-        .find('[data-testid="popover-content-container"]')
-        .hostNodes()
-        .props()
-    ).toMatchObject({
-      style: {
-        top: 240,
-        left: 841,
-      },
+    expect(getOffsetProps(wrapped)).toMatchObject({
+      top: '240',
+      left: '841',
     });
   });
 
@@ -229,16 +220,9 @@ describe('Popover', () => {
       verticalOffset: 29,
     });
 
-    expect(
-      wrapped
-        .find('[data-testid="popover-content-container"]')
-        .hostNodes()
-        .props()
-    ).toMatchObject({
-      style: {
-        top: 231,
-        left: 841,
-      },
+    expect(getOffsetProps(wrapped)).toMatchObject({
+      top: '231',
+      left: '841',
     });
   });
 
@@ -251,17 +235,9 @@ describe('Popover', () => {
       alignment: 'top-right',
       horizontalOffset: 30,
     });
-
-    expect(
-      wrapped
-        .find('[data-testid="popover-content-container"]')
-        .hostNodes()
-        .props()
-    ).toMatchObject({
-      style: {
-        top: 240,
-        left: 871,
-      },
+    expect(getOffsetProps(wrapped)).toMatchObject({
+      top: '240',
+      left: '871',
     });
   });
 
@@ -275,25 +251,10 @@ describe('Popover', () => {
       verticalOffset: 30,
     });
 
-    expect(
-      wrapped
-        .find('[data-testid="popover-content-container"]')
-        .hostNodes()
-        .props()
-    ).toMatchObject({
-      style: {
-        top: 230,
-        left: 842,
-      },
+    expect(getOffsetProps(wrapped)).toMatchObject({
+      top: '230',
+      left: '842',
     });
-  });
-
-  it('does not show a pattern if the prop is not provided', () => {
-    renderPopover({
-      isOpen: true,
-    });
-
-    expect(screen.queryByTestId('popover-pattern')).not.toBeInTheDocument();
   });
 
   it('shows a pattern if the prop is provided', () => {
@@ -302,6 +263,7 @@ describe('Popover', () => {
       pattern: 'checkerDense',
     });
 
-    expect(screen.queryByTestId('popover-pattern')).toBeInTheDocument();
+    const pattern = screen.queryAllByTitle('checkerDense')[0];
+    expect(pattern).toBeDefined();
   });
 });

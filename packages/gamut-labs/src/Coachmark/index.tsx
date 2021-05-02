@@ -47,10 +47,6 @@ export type CoachmarkProps = {
    * Whether the coachmark is rendered.
    */
   shouldShow: boolean;
-  /**
-   * Function that returns the contents of the coachmark.
-   */
-  renderPopover: (onDismiss?: () => void) => JSX.Element;
 } & Partial<Omit<PopoverProps, 'isOpen' | 'targetRef' | 'beak'>>;
 
 export const Coachmark: React.FC<CoachmarkProps> = ({

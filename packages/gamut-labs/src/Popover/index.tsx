@@ -195,12 +195,12 @@ export const Popover: React.FC<PopoverProps> = ({
           alignment={alignment}
           top={`${top}`}
           left={`${left}`}
+          data-testid="popover-content-container"
         >
           <FloatingCard
             ref={popoverRef}
             pattern={pattern || 'checkerDense'}
             className={className}
-            data-testid="popover-content-container"
             tabIndex={-1}
           >
             {beak && (

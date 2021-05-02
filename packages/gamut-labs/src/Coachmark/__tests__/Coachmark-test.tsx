@@ -5,19 +5,16 @@ import React from 'react';
 
 import { Coachmark, CoachmarkProps } from '..';
 
-const renderPopover = () => (
-  <div data-testid="coachmark-popover-content">
-    hello again
-    <button type="button" onClick={() => {}}>
-      click me
-    </button>
-  </div>
-);
-
 const renderCoachmark = (props?: Partial<CoachmarkProps>) => {
   return render(
     <ThemeProvider theme={theme}>
-      <Coachmark delay={0} shouldShow renderPopover={renderPopover} {...props}>
+      <Coachmark
+        delay={0}
+        shouldShow
+        message="hello Again"
+        cta={{ text: 'click me', onClick: () => {} }}
+        {...props}
+      >
         <div data-testid="coachmark-ref">hello</div>
       </Coachmark>
     </ThemeProvider>
