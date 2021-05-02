@@ -16,16 +16,11 @@ module.exports = {
     'plugin:react-hooks/recommended',
     'airbnb',
     'plugin:@typescript-eslint/recommended',
+    'plugin:@typescript-eslint/recommended-requiring-type-checking',
     'prettier',
     'prettier/react',
     ...localExtends,
   ],
-
-  globals: {
-    // testcafe
-    fixture: false,
-    test: false,
-  },
 
   plugins: [
     'import',
@@ -69,47 +64,6 @@ module.exports = {
     ],
     'simple-import-sort/imports': 'error',
 
-    // These rules could be useful, but we haven't gotten around to trying them out
-    '@typescript-eslint/array-type': 'off',
-    '@typescript-eslint/ban-types': 'off',
-    '@typescript-eslint/camelcase': 'off',
-    '@typescript-eslint/explicit-member-accessibility': 'off',
-    '@typescript-eslint/explicit-module-boundary-types': 'off',
-    '@typescript-eslint/generic-type-naming': 'off',
-    '@typescript-eslint/member-ordering': 'off',
-    '@typescript-eslint/no-empty-function': 'off',
-    '@typescript-eslint/no-explicit-any': 'off',
-    '@typescript-eslint/no-non-null-assertion': 'off',
-    '@typescript-eslint/no-require-imports': 'off',
-    '@typescript-eslint/no-unnecessary-condition': 'off',
-    '@typescript-eslint/no-use-before-define': 'off',
-    '@typescript-eslint/no-var-requires': 'off',
-    '@typescript-eslint/prefer-includes': 'off',
-    '@typescript-eslint/promise-function-async': 'off',
-    '@typescript-eslint/require-array-sort-compare': 'off',
-    '@typescript-eslint/strict-boolean-expressions': 'off',
-    'no-await-in-loop': 'off',
-    'no-cond-assign': 'off',
-    'no-plusplus': 'off',
-    'no-restricted-globals': 'off',
-    'import/order': 'off',
-    'lines-between-class-members': 'off',
-    'react/no-unused-prop-types': 'off',
-    'consistent-return': 'off',
-    'default-case': 'off',
-    'import/named': 'off',
-    'import/namespace': 'off',
-    'import/no-extraneous-dependencies': 'off',
-    'import/no-unresolved': 'off',
-    'jsx-a11y/label-has-associated-control': 'off',
-    'no-multi-assign': 'off',
-    'no-sparse-arrays': 'off',
-    'no-template-curly-in-string': 'off',
-    'prefer-template': 'off',
-    'react/destructuring-assignment': 'off',
-    'react/display-name': 'off',
-    'react/sort-comp': 'off',
-
     // These functional rules are annoying and we generally don't want them on
     '@typescript-eslint/consistent-type-definitions': 'off',
     '@typescript-eslint/explicit-function-return-type': 'off',
@@ -152,32 +106,6 @@ module.exports = {
     'react/static-property-placement': 'off',
     'react/style-prop-object': 'off',
     strict: 'off',
-
-    // These rules have been deprecated in their plugins or overridden but not yet removed from presets
-    'jsx-a11y/label-has-for': 'off',
-    'jsx-a11y/accessible-emoji': 'off',
-    'no-unused-expressions': 'off',
-
-    // These style rules conflict with Prettier but aren't disabled by its plugins
-    '@typescript-eslint/quotes': 'off',
-
-    'no-restricted-imports': [
-      'warn',
-      {
-        paths: [
-          '@codecademy/gamut/dist/deprecated',
-          {
-            name: 'moment',
-            message: 'Please use date-fns instead.',
-          },
-          {
-            name: 'moment-timezone',
-            message: 'Please use date-fns-tz instead.',
-          },
-        ],
-        patterns: ['@codecademy/gamut/dist/deprecated/*'],
-      },
-    ],
   },
 
   settings: {
