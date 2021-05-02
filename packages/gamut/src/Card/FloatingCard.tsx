@@ -1,4 +1,4 @@
-import { system } from '@codecademy/gamut-styles';
+import { styledConfig, system } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
 import React, { ComponentProps, forwardRef } from 'react';
@@ -74,7 +74,9 @@ const CardShadow = styled(Pattern)(
   })
 );
 
-const CardBody = styled.div<StyleProps<typeof beakVariants>>(
+const CardBody = styled('div', styledConfig(['beak']))<
+  StyleProps<typeof beakVariants>
+>(
   system.css({
     zIndex: 1,
     position: 'relative',

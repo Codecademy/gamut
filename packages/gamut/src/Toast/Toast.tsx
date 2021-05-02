@@ -1,5 +1,5 @@
 import { MiniDeleteIcon } from '@codecademy/gamut-icons';
-import { system } from '@codecademy/gamut-styles';
+import { styledConfig, system } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
 import React, { useMemo } from 'react';
@@ -28,7 +28,9 @@ const layoutVariants = system.variant({
   },
 });
 
-const ToastContainer = styled(FloatingCard)<StyleProps<typeof layoutVariants>>(
+const ToastContainer = styled(FloatingCard, styledConfig(['layout', 'beak']))<
+  StyleProps<typeof layoutVariants>
+>(
   system.css({
     display: 'grid',
     width: 360,

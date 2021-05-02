@@ -1,4 +1,4 @@
-import { system } from '@codecademy/gamut-styles';
+import { styledConfig, system } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
 import React, { ComponentProps, ReactNode } from 'react';
@@ -16,7 +16,9 @@ const layoutVariants = system.variant({
   },
 });
 
-const CoachmarkCard = styled(FloatingCard)<StyleProps<typeof layoutVariants>>(
+const CoachmarkCard = styled(FloatingCard, styledConfig(['layout', 'beak']))<
+  StyleProps<typeof layoutVariants>
+>(
   system.css({
     display: 'grid',
     width: 300,
