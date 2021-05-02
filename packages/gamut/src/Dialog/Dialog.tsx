@@ -61,7 +61,12 @@ export const Dialog: React.FC<DialogProps> = ({
       role="dialog"
       pattern="checkerDense"
     >
-      <Text as="h2" fontSize={20} lineHeight="base" gridArea="title">
+      <Text
+        as="h2"
+        fontSize={size === 'medium' ? 22 : 20}
+        lineHeight="base"
+        gridArea="title"
+      >
         {title}
       </Text>
       <IconButton

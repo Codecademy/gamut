@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { ReactNode, useEffect, useRef, useState } from 'react';
 
 import { Box } from '../Box';
 import { Popover, PopoverProps } from '../Popover';
@@ -19,7 +19,7 @@ export type CoachmarkPopoverProps = {
    */
   shouldShow: boolean;
 } & Partial<Omit<PopoverProps, 'isOpen' | 'targetRef' | 'beak'>> &
-  Omit<CoachmarkProps, 'beak'>;
+  Omit<CoachmarkProps, 'beak'> & { message: ReactNode };
 
 export const CoachmarkPopover: React.FC<CoachmarkPopoverProps> = ({
   children,
@@ -78,9 +78,10 @@ export const CoachmarkPopover: React.FC<CoachmarkPopoverProps> = ({
         <Coachmark
           title={title}
           beak={beakAlignment}
-          message={message}
           cta={{ ...cta, onClick: onDismiss }}
-        />
+        >
+          {message}
+        </Coachmark>
       </Popover>
     </Box>
   );
