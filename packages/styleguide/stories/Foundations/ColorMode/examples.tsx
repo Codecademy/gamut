@@ -25,14 +25,12 @@ import React, { ComponentProps, useState } from 'react';
 
 const renderButtons = (variant?: 'primary' | 'secondary', disabled = false) => {
   return (
-    <GridBox
-      rowGap={16}
-      columnGap={16}
+    <Column
+      gap={16}
       gridTemplateColumns="repeat(5, max-content)"
-      gridAutoRows="3em"
-      alignItems="start"
+      gridAutoRows="3rem"
       justifyItems="start"
-      paddingTop={16}
+      alignItems="start"
     >
       <GridBox gridRowEnd="span 2">
         <CTAButton variant={variant as any} disabled={disabled}>
@@ -64,21 +62,7 @@ const renderButtons = (variant?: 'primary' | 'secondary', disabled = false) => {
         icon={MiniDeleteIcon}
         disabled={disabled}
       />
-    </GridBox>
-  );
-};
-
-const renderLinks = () => {
-  return (
-    <GridBox
-      marginTop={16}
-      columnGap={16}
-      gridTemplateColumns="repeat(3, max-content)"
-    >
-      <Anchor>Inline Link</Anchor>
-      <Anchor variant="standard">Standard Link</Anchor>
-      <Anchor variant="interface">Interface Link</Anchor>
-    </GridBox>
+    </Column>
   );
 };
 
@@ -107,60 +91,90 @@ export const ColorModeExample = () => {
           borderWidth="1px"
         >
           <LayoutGrid gap={24}>
-            <Column size={6}>
-              <Text as="h3" mb={24}>
-                {isDark ? 'Dark' : 'Light'} Mode
-              </Text>
-              <GridBox
-                columnGap={16}
-                paddingBottom={16}
-                gridTemplateColumns="max-content max-content max-content"
-              >
-                <Logo variant="default" />
-                <Logo variant="pro" />
-                <Logo variant="mini" />
-              </GridBox>
-              <Text as="p" fontSize={16} fontFamily="accent" mb={16}>
-                <ProLabel height={22} verticalAlign="text-bottom" /> Cool
-                Feature
-              </Text>
-              <Text as="p" mb={16}>
-                Lorem ipsum dolor sit amet, sed do eiusmod tempor incididunt ut
-                labore et dolore <Anchor>magna aliqua</Anchor>. Ut enim ad minim
-                veniam, quis nostrud exercitation ullamco laboris nisi ut
-                aliquip ex ea commodo consequat.
-              </Text>
-              {renderLinks()}
-              {renderButtons('primary')}
-              {renderButtons('secondary')}
-              {renderButtons('primary', true)}
+            <Column>
+              <Text as="h3">{isDark ? 'Dark' : 'Light'} Mode</Text>
             </Column>
-            <Column size={6} rowGap={24} gridAutoRows="min-content">
-              <Box>
-                <Dialog
-                  title="Hello"
-                  confirmCta={{ children: 'Click Me' }}
-                  cancelCta={{ children: "Or Don't!" }}
-                >
-                  World
-                </Dialog>
-              </Box>
-              <Box>
-                <Coachmark
-                  title="Hello"
-                  message="world"
-                  cta={{ onClick: () => {}, text: 'Click me!' }}
-                  beak="bottom-right"
-                />
-              </Box>
-              <Box>
-                <Toast
-                  title="Toast Title"
-                  message="This is the message content!"
-                  icon="icon"
-                  onClose={() => {}}
-                />
-              </Box>
+            <Column size={6}>
+              <LayoutGrid gap={24}>
+                <Column>
+                  <Text as="h4">Logos</Text>
+                </Column>
+                <Column gridTemplateColumns="repeat(3, max-content)" gap={16}>
+                  <Logo variant="default" />
+                  <Logo variant="pro" />
+                  <Logo variant="mini" />
+                </Column>
+                <Column>
+                  <Text as="h4">Labels</Text>
+                </Column>
+                <Column>
+                  <Text as="p" fontSize={16} fontFamily="accent">
+                    <ProLabel height={22} verticalAlign="text-bottom" /> Cool
+                    Feature
+                  </Text>
+                </Column>
+                <Column>
+                  <Text as="h4">Typography</Text>
+                </Column>
+                <Column>
+                  <Text as="p">
+                    Lorem ipsum dolor sit amet, sed do eiusmod tempor incididunt
+                    ut labore et dolore <Anchor>magna aliqua</Anchor>. Ut enim
+                    ad minim veniam, quis nostrud exercitation ullamco laboris
+                    nisi ut aliquip ex ea commodo consequat.
+                  </Text>
+                </Column>
+                <Column gridTemplateColumns="repeat(3, max-content)" gap={16}>
+                  <Anchor>Inline Link</Anchor>
+                  <Anchor variant="standard">Standard Link</Anchor>
+                  <Anchor variant="interface">Interface Link</Anchor>
+                </Column>
+              </LayoutGrid>
+            </Column>
+            <Column size={6} variant={false}>
+              <LayoutGrid gap={24}>
+                <Column>
+                  <Text as="h4">Buttons</Text>
+                </Column>
+                {renderButtons('primary')}
+                {renderButtons('secondary')}
+                {renderButtons('primary', true)}
+              </LayoutGrid>
+            </Column>
+            <Column size={4} variant={false}>
+              <Text as="h4" mb={24}>
+                Dialog
+              </Text>
+              <Dialog
+                title="Hello"
+                confirmCta={{ children: 'Click Me' }}
+                cancelCta={{ children: "Or Don't!" }}
+              >
+                World
+              </Dialog>
+            </Column>
+            <Column size={4} variant={false}>
+              <Text as="h4" mb={24}>
+                Toast
+              </Text>
+              <Toast
+                title="Toast Title"
+                message="This is the message content!"
+                icon="icon"
+                onClose={() => {}}
+              />
+            </Column>
+            <Column size={4} variant={false}>
+              <Text as="h4" mb={24}>
+                Coachmark
+              </Text>
+
+              <Coachmark
+                title="Hello"
+                message="world"
+                cta={{ onClick: () => {}, text: 'Click me!' }}
+                beak="bottom-left"
+              />
             </Column>
           </LayoutGrid>
         </Box>

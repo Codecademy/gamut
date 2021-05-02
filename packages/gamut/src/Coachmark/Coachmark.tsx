@@ -1,4 +1,4 @@
-import { styledConfig, system } from '@codecademy/gamut-styles';
+import { system } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
 import React, { ComponentProps, ReactNode } from 'react';
@@ -10,22 +10,22 @@ import { Text } from '../Typography';
 const layoutVariants = system.variant({
   prop: 'layout',
   variants: {
-    withTitle: {
+    message: {
+      gridTemplateAreas: '"message" "message" "cta"',
+    },
+    'title-message': {
       gridTemplateAreas: `"title" "message" "cta"`,
     },
   },
 });
 
-const CoachmarkCard = styled(FloatingCard, styledConfig(['layout', 'beak']))<
-  StyleProps<typeof layoutVariants>
->(
+const CoachmarkCard = styled(FloatingCard)<StyleProps<typeof layoutVariants>>(
   system.css({
     display: 'grid',
     width: 300,
     rowGap: 8,
     p: 16,
     gridTemplateRows: 'max-content 1fr, max-content',
-    gridTemplateAreas: `"title" "message" "cta"`,
   }),
   layoutVariants
 );
@@ -46,7 +46,7 @@ export const Coachmark: React.FC<CoachmarkProps> = ({
   cta,
   beak = 'top-left',
 }) => {
-  const layoutVariant = title ? 'withTitle' : undefined;
+  const layoutVariant = title ? 'title-message' : 'message';
 
   return (
     <CoachmarkCard beak={beak} pattern="checkerDense" layout={layoutVariant}>

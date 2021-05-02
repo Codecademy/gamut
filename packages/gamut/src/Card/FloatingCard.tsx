@@ -56,7 +56,7 @@ const beakVariants = system.variant({
 
 const CardWrapper = styled.div(
   system.css({
-    maxWidth: 'cac(100vw - 2rem)',
+    maxWidth: '100%',
     position: 'relative',
     display: 'inline-block',
     textColor: 'text',
@@ -74,15 +74,14 @@ const CardShadow = styled(Pattern)(
   })
 );
 
-const CardBody = styled('div', styledConfig(['beak']))<
-  StyleProps<typeof beakVariants>
->(
+const CardBody = styled('div', styledConfig)<StyleProps<typeof beakVariants>>(
   system.css({
     zIndex: 1,
     position: 'relative',
     bg: 'background',
     borderRadius: '2px',
     border: 1,
+    maxWidth: 1,
   }),
   beakVariants
 );
