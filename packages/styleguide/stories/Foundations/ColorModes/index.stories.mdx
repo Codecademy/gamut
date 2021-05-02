@@ -42,7 +42,9 @@ Gamut components are built using these aliases instead of referring to specific 
 
 Here's an example using components in context. By toggling dark mode you can see all the colors map to a new color that is accessible for the mode by default.
 
-<ColorModeExample />
+<Story name="ColorMode">
+  <ColorModeExample />
+</Story>
 
 ### Usage
 
@@ -72,12 +74,15 @@ const Page = ({ children }) => (
 
 Sometimes you may just want to wrap a page in a different background color than the base color mode.
 
-<BackgroundExample bg="hyper" />
-
-<BackgroundExample bg="beige" />
+<Story name="Adjacent Backgrounds">
+  <BackgroundExample bg="hyper" />
+  <BackgroundExample bg="beige" />
+</Story>
 
 In some cases you may want to use multiple areas with different backgrounds. `<Background />` makes this a simple task by provisioning a new color context for all components inside.
 
-<BackgroundExample bg="black">
-  <BackgroundExample bg="paleGreen" />
-</BackgroundExample>
+<Story name="Nested Backgrounds">
+  <BackgroundExample bg="black">
+    <BackgroundExample bg="paleGreen" />
+  </BackgroundExample>
+</Story>

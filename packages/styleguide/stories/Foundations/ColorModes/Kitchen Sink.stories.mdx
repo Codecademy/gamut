@@ -1,0 +1,22 @@
+import { ColorMode } from '@codecademy/gamut-styles';
+import title from '@codecademy/macros/lib/title.macro';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+
+import { ColorModeKitchenSinkExample } from './examples';
+
+<Meta
+  title={title}
+  component={ColorMode}
+  parameters={{
+    subtitle: '',
+    source: 'gamut-styles',
+    status: 'current',
+    figmaId: '',
+    viewMode: 'canvas',
+  }}
+  args={{}}
+/>
+
+<Canvas>
+  <Story name="Kitchen Sink">{(args) => <ColorModeKitchenSinkExample />}</Story>
+</Canvas>
