@@ -77,7 +77,7 @@ const renderAtoms = () => {
       <Column>
         <Text as="h4">Atoms</Text>
       </Column>
-      <Column size={6} variant={false}>
+      <Column size={[12, , 6]}>
         <LayoutGrid gap={24}>
           <Column>
             <Text as="h5">Typography</Text>
@@ -105,11 +105,16 @@ const renderAtoms = () => {
             <Logo variant="default" />
             <Logo variant="pro" />
             <Logo variant="mini" />
+          </Column>
+          <Column>
+            <Text as="h5">Labels</Text>
+          </Column>
+          <Column>
             <ProLabel height={30} verticalAlign="text-bottom" />
           </Column>
         </LayoutGrid>
       </Column>
-      <Column size={6} variant={false}>
+      <Column size={[12, , 6]}>
         <LayoutGrid gap={24}>
           <Column>
             <Text as="h5">Buttons</Text>
@@ -128,43 +133,51 @@ const renderMolecules = () => (
     <Column>
       <Text as="h4">Molecules</Text>
     </Column>
-    <Column>
-      <FlexBox justifyContent="space-between">
-        <Box>
-          <Text as="h5" mb={24}>
-            Dialog
-          </Text>
-          <Dialog
-            title="Do you want to continue?"
-            confirmCta={{ children: 'Do It!' }}
-            cancelCta={{ children: "Actually Don't!" }}
-          >
-            Please confirm that you really want to to do this action!
-          </Dialog>
-        </Box>
-        <Box>
-          <Text as="h5" mb={24}>
-            Coachmark
-          </Text>
-          <Coachmark
-            title="New Feature"
-            message="Information about the new feature can go here. Here’s an extra sentence if you really need it."
-            cta={{ onClick: () => {}, text: 'Click me!' }}
-            beak="bottom-left"
-          />
-        </Box>
-        <Box>
-          <Text as="h5" mb={24}>
-            Toast
-          </Text>
-          <Toast
-            title="Toast Title"
-            message="This is the message content!"
-            icon="https://static-assets.codecademy.com/assets/achievements/weekly-streak-4.svg"
-            onClose={() => {}}
-          />
-        </Box>
-      </FlexBox>
+    <Column
+      gridTemplateColumns={{
+        _: '1fr',
+        md: 'repeat(2, min-content)',
+        xl: 'repeat(3, min-content)',
+      }}
+      gap={24}
+    >
+      <Box>
+        <Text as="h5" mb={24}>
+          Dialog
+        </Text>
+        <Dialog
+          title="Do you want to continue?"
+          confirmCta={{ children: 'Do It!' }}
+          cancelCta={{ children: "Actually Don't!" }}
+        >
+          Please confirm that you really want to to do this action!
+        </Dialog>
+      </Box>
+      <Box>
+        <Text as="h5" mb={24}>
+          Coachmark
+        </Text>
+        <Coachmark
+          title="New Feature"
+          cta={{ onClick: () => {}, text: 'Click me!' }}
+          beak="bottom-left"
+        >
+          Information about the new feature can go here. Here’s an extra
+          sentence if you really need it.
+        </Coachmark>
+      </Box>
+      <Box>
+        <Text as="h5" mb={24}>
+          Toast
+        </Text>
+        <Toast
+          title="Toast Title"
+          icon="https://static-assets.codecademy.com/assets/achievements/weekly-streak-4.svg"
+          onClose={() => {}}
+        >
+          This is the message content!
+        </Toast>
+      </Box>
     </Column>
   </>
 );

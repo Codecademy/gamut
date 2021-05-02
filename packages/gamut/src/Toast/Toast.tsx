@@ -55,12 +55,18 @@ const IconContainer = styled(Box)(
   })
 );
 
-export const Toast: React.FC<{
+type ToastProps = {
   title?: string;
-  message: string;
   icon?: string;
   onClose: () => void;
-}> = ({ title, message, icon, onClose }) => {
+};
+
+export const Toast: React.FC<ToastProps> = ({
+  title,
+  children,
+  icon,
+  onClose,
+}) => {
   const layoutType = useMemo(() => {
     if (icon) return 'icon-message';
     if (title) return 'title-message';
@@ -78,8 +84,8 @@ export const Toast: React.FC<{
             {title}
           </Text>
         )}
-        <Text as="p" variant="p-small">
-          {message}
+        <Text as="div" variant="p-small">
+          {children}
         </Text>
       </Text>
       <IconButton

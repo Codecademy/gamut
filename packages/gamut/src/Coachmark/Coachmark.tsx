@@ -32,7 +32,6 @@ const CoachmarkCard = styled(FloatingCard)<StyleProps<typeof layoutVariants>>(
 
 export type CoachmarkProps = {
   title?: string;
-  message?: ReactNode;
   beak: ComponentProps<typeof FloatingCard>['beak'];
   cta: {
     text: string;
@@ -42,7 +41,7 @@ export type CoachmarkProps = {
 
 export const Coachmark: React.FC<CoachmarkProps> = ({
   title,
-  message,
+  children,
   cta,
   beak = 'top-left',
 }) => {
@@ -56,7 +55,7 @@ export const Coachmark: React.FC<CoachmarkProps> = ({
         </Text>
       )}
       <Text variant="p-small" gridArea="message">
-        {message}
+        {children}
       </Text>
       <TextButton onClick={cta?.onClick} gridArea="cta" justifySelf="end">
         {cta?.text}
