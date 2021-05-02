@@ -7,6 +7,10 @@ We've consolidated them here for a few reasons:
 - To make sure any third party integrations are CCPA & GDPR compliant
 - Because this repository already has a sweet CI setup for previewing and auto-publishing new versions 😎
 
+There are two kinds of tracking we package in this library:
+* **Internal** tracking ([`createTracker`](#createTracker)): sent directly to our `/analytics/` endpoint
+* **External** tracking ([`useTrackingIntegrations`](#useTrackingIntegrations)): scripts loaded via Google Tag Manager
+
 ## `createTracker`
 
 Creates a "tracker" object that includes methods for user telemetry such as `click` and `visit`.
@@ -64,7 +68,9 @@ If `dataLayer` does not exist, it will be created.
 tracker.pushDataLayerEvent('user_sign_up');
 ```
 
-## `useIntegrations`
+## `useTrackingIntegrations`
+
+> See [GDPR Compliance on Notion](https://www.notion.so/codecademy/GDPR-Compliance-141ebcc7ffa542daa0da56e35f482b41) for full docs on external tracking.
 
 React hook that starts the initialization process for our third-party integrations.
 It runs exactly once with the settings first provided to it.
@@ -82,9 +88,9 @@ Those steps require OneTrust to have already been initialized on the page.
 > Soon, we plan on prepending OneTrust initialization to those steps, so consuming apps won't have to set it up themselves.
 
 ```ts
-import { useIntegrations } from '@codecademy/tracking';
+import { useTrackingIntegrations } from '@codecademy/tracking';
 
-useIntegrations({
+useTrackingIntegrations({
   onError: logger.error,
   scope: window,
   user: { email: 'my@email.com', id: 'my-user-id' },
@@ -92,15 +98,15 @@ useIntegrations({
 });
 ```
 
-### `initializeIntegrations`
+### `initializeTrackingIntegrations`
 
-You can directly call the logic delay-run inside `useIntegrations` if your consuming app is not initializing with React hooks:
+You can directly call the logic delay-run inside `useTrackingIntegrations` if your consuming app is not initializing with React hooks:
 
 ```ts
-import { initializeIntegrations } from '@codecademy/tracking';
+import { initializeTrackingIntegrations } from '@codecademy/tracking';
 
 setTimeout(() => {
-  initializeIntegrations({
+  initializeTrackingIntegrations({
     onError: logger.error,
     scope: window,
     user: { email: 'my@email.com', id: 'my-user-id' },
@@ -109,4 +115,4 @@ setTimeout(() => {
 }, 1000);
 ```
 
-`initializeIntegrations` takes all the same settings as `useIntegrations`.
+`initializeTrackingIntegrations` takes all the same settings as `useTrackingIntegrations`.

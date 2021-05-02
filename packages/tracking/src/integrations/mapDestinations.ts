@@ -10,6 +10,9 @@ export type DestinationMapOptions = {
 const targetingCategories = ['Advertising', 'Attribution', 'Email Marketing'];
 const performanceCategories = ['Analytics', 'Customer Success'];
 
+/**
+ * @see notion.so/codecademy/GDPR-Compliance for docs on categories and consent.
+ */
 export const mapDestinations = ({
   consentDecision = ['C0001'],
   destinations,

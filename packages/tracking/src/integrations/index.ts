@@ -6,7 +6,7 @@ import { mapDestinations } from './mapDestinations';
 import { runSegmentSnippet } from './runSegmentSnippet';
 import { SegmentWindow, UserIntegrationSummary } from './types';
 
-export type InitializeIntegrationsSettings = {
+export type TrackingIntegrationsSettings = {
   /**
    * Called whenever a network request fails.
    */
@@ -28,12 +28,12 @@ export type InitializeIntegrationsSettings = {
   writeKey: string;
 };
 
-export const initializeIntegrations = async ({
+export const initializeTrackingIntegrations = async ({
   onError,
   scope,
   user,
   writeKey,
-}: InitializeIntegrationsSettings) => {
+}: TrackingIntegrationsSettings) => {
   if (!writeKey) {
     return;
   }
@@ -63,10 +63,12 @@ export const initializeIntegrations = async ({
   });
 };
 
-export const useIntegrations = (settings: InitializeIntegrationsSettings) => {
+export const useTrackingIntegrations = (
+  settings: TrackingIntegrationsSettings
+) => {
   useEffectOnce(() => {
     setTimeout(() => {
-      initializeIntegrations(settings).catch(settings.onError);
+      initializeTrackingIntegrations(settings).catch(settings.onError);
     }, 1000);
   });
 };
