@@ -1,5 +1,5 @@
 import { Dialog } from '@codecademy/gamut/src';
-import { ColorMode } from '@codecademy/gamut-styles/src';
+import { Background } from '@codecademy/gamut-styles/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 
@@ -13,12 +13,8 @@ import { LinkTo, PropsTable } from '~styleguide/blocks';
     status: 'current',
     source: 'gamut',
     figmaId: 'lIQbbBHl6v80CevfWogVhr',
-    docs: {
-      inlineStories: false,
-    },
   }}
   args={{
-    isOpen: true,
     title: 'Depeche Modal',
     children: 'All I ever wanted, all I ever needed is here in my',
     confirmCta: { children: 'Arms!' },
@@ -37,7 +33,7 @@ import { LinkTo, PropsTable } from '~styleguide/blocks';
 - Use the modal component sparingly. This is the most dispruptive tool in our arsenal. We should only have a small handful of these in our system at any given time.
 
 <Canvas>
-  <Story name="Dialog" height="600px">
+  <Story name="Dialog">
     {(args) => {
       return <Dialog {...args} />;
     }}
@@ -67,7 +63,7 @@ Check it out:
 ### Light
 
 <Canvas>
-  <Story name="Light" height="600px">
+  <Story name="Light">
     {(args) => {
       return <Dialog {...args} />;
     }}
@@ -77,12 +73,12 @@ Check it out:
 ### Dark
 
 <Canvas>
-  <Story name="Dark" height="600px" args={{ mode: 'dark' }}>
+  <Story name="Dark">
     {(args) => {
       return (
-        <ColorMode mode="dark">
+        <Background bg="navy" p={32}>
           <Dialog {...args} />
-        </ColorMode>
+        </Background>
       );
     }}
   </Story>

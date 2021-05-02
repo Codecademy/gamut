@@ -1,7 +1,7 @@
 import { setupRtl } from '@codecademy/gamut-tests';
 import { fireEvent, screen } from '@testing-library/dom';
 
-import { Dialog } from '..';
+import { DialogOverlay } from '../DialogOverlay';
 
 const onRequestClose = jest.fn();
 const onConfirm = jest.fn();
@@ -22,7 +22,7 @@ const defaultProps = {
   },
 };
 
-const renderView = setupRtl(Dialog, defaultProps);
+const renderView = setupRtl(DialogOverlay, defaultProps);
 
 describe('Modal', () => {
   beforeEach(() => {

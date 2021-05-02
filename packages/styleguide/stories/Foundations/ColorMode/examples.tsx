@@ -2,7 +2,9 @@
 import {
   Anchor,
   Box,
+  Coachmark,
   CTAButton,
+  Dialog,
   FillButton,
   FlexBox,
   GridBox,
@@ -127,7 +129,24 @@ export const ColorModeExample = () => {
           {renderButtons('primary')}
           {renderButtons('secondary')}
           {renderButtons('primary', true)}
-          <Box paddingTop={16}>
+          <Box paddingY={16}>
+            <Dialog
+              title="Hello"
+              confirmCta={{ children: 'Click Me' }}
+              cancelCta={{ children: "Or Don't!" }}
+            >
+              World
+            </Dialog>
+          </Box>
+          <Box paddingY={16}>
+            <Coachmark
+              title="Hello"
+              message="world"
+              cta={{ onClick: () => {}, text: 'Click me!' }}
+              beak="bottom-right"
+            />
+          </Box>
+          <Box paddingY={16}>
             <Toast
               title="Toast Title"
               message="This is the message content!"
