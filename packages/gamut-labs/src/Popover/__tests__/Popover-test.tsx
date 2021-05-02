@@ -27,7 +27,13 @@ const targetRefObj = {
 };
 
 const getOffsetProps = (wrapped: ReturnType<typeof mount>) => {
-  return pick(wrapped.find('PopoverContainer').props(), ['top', 'left']);
+  return pick(
+    wrapped
+      .find('[data-testid="popover-content-container"]')
+      .hostNodes()
+      .prop('style'),
+    ['top', 'left']
+  );
 };
 
 const renderPopover = (props?: Partial<PopoverProps>) => {
@@ -175,7 +181,7 @@ describe('Popover', () => {
   it('shows a beak if the prop is true', () => {
     renderPopover({
       isOpen: true,
-      beak: true,
+      beak: 'right',
     });
 
     expect(screen.queryByTestId('popover-beak')).toBeInTheDocument();
@@ -190,8 +196,8 @@ describe('Popover', () => {
     });
 
     expect(getOffsetProps(wrapped)).toMatchObject({
-      top: '318',
-      left: '58',
+      top: 318,
+      left: 58,
     });
   });
 
@@ -201,12 +207,13 @@ describe('Popover', () => {
 
     const wrapped = mountPopover({
       isOpen: true,
-      alignment: 'top-right',
+      position: 'above',
+      align: 'right',
     });
 
     expect(getOffsetProps(wrapped)).toMatchObject({
-      top: '240',
-      left: '841',
+      top: 240,
+      left: 841,
     });
   });
 
@@ -216,13 +223,14 @@ describe('Popover', () => {
 
     const wrapped = mountPopover({
       isOpen: true,
-      alignment: 'top-right',
+      position: 'above',
+      align: 'right',
       verticalOffset: 29,
     });
 
     expect(getOffsetProps(wrapped)).toMatchObject({
-      top: '231',
-      left: '841',
+      top: 231,
+      left: 841,
     });
   });
 
@@ -232,12 +240,14 @@ describe('Popover', () => {
 
     const wrapped = mountPopover({
       isOpen: true,
-      alignment: 'top-right',
+      position: 'above',
+      align: 'right',
       horizontalOffset: 30,
     });
+
     expect(getOffsetProps(wrapped)).toMatchObject({
-      top: '240',
-      left: '871',
+      top: 240,
+      left: 871,
     });
   });
 
@@ -247,22 +257,31 @@ describe('Popover', () => {
 
     const wrapped = mountPopover({
       isOpen: true,
-      alignment: 'top-right',
+      position: 'above',
+      align: 'right',
       verticalOffset: 30,
     });
 
     expect(getOffsetProps(wrapped)).toMatchObject({
-      top: '230',
-      left: '842',
+      top: 230,
+      left: 842,
     });
+  });
+
+  it('does not show a pattern if the prop is not provided', () => {
+    renderPopover({
+      isOpen: true,
+    });
+
+    expect(screen.queryByTestId('popover-pattern')).not.toBeInTheDocument();
   });
 
   it('shows a pattern if the prop is provided', () => {
     renderPopover({
       isOpen: true,
+      pattern: 'checkerDense',
     });
 
-    const pattern = screen.queryAllByTitle('checkerDense')[0];
-    expect(pattern).toBeDefined();
+    expect(screen.queryByTestId('popover-pattern')).toBeInTheDocument();
   });
 });
