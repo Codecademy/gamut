@@ -74,10 +74,13 @@ const renderButtons = (variant?: 'primary' | 'secondary', disabled = false) => {
 const renderAtoms = () => {
   return (
     <>
+      <Column>
+        <Text as="h4">Atoms</Text>
+      </Column>
       <Column size={6} variant={false}>
         <LayoutGrid gap={24}>
           <Column>
-            <Text as="h4">Typography</Text>
+            <Text as="h5">Typography</Text>
           </Column>
           <Column>
             <Text as="p">
@@ -88,7 +91,7 @@ const renderAtoms = () => {
             </Text>
           </Column>
           <Column>
-            <Text as="h4">Links</Text>
+            <Text as="h5">Links</Text>
           </Column>
           <Column gridTemplateColumns="repeat(3, max-content)" gap={16}>
             <Anchor>Inline Link</Anchor>
@@ -96,7 +99,7 @@ const renderAtoms = () => {
             <Anchor variant="interface">Interface Link</Anchor>
           </Column>
           <Column>
-            <Text as="h4">Logos</Text>
+            <Text as="h5">Logos</Text>
           </Column>
           <Column gridTemplateColumns="repeat(4, max-content)" gap={16}>
             <Logo variant="default" />
@@ -109,7 +112,7 @@ const renderAtoms = () => {
       <Column size={6} variant={false}>
         <LayoutGrid gap={24}>
           <Column>
-            <Text as="h4">Buttons</Text>
+            <Text as="h5">Buttons</Text>
           </Column>
           {renderButtons('primary')}
           {renderButtons('primary', true)}
@@ -122,40 +125,46 @@ const renderAtoms = () => {
 
 const renderMolecules = () => (
   <>
-    <Column size={4} variant={false}>
-      <Text as="h4" mb={24}>
-        Dialog
-      </Text>
-      <Dialog
-        title="Hello"
-        confirmCta={{ children: 'Click Me' }}
-        cancelCta={{ children: "Or Don't!" }}
-      >
-        World
-      </Dialog>
+    <Column>
+      <Text as="h4">Molecules</Text>
     </Column>
-    <Column size={4} variant={false}>
-      <Text as="h4" mb={24}>
-        Toast
-      </Text>
-      <Toast
-        title="Toast Title"
-        message="This is the message content!"
-        icon="icon"
-        onClose={() => {}}
-      />
-    </Column>
-    <Column size={4} variant={false}>
-      <Text as="h4" mb={24}>
-        Coachmark
-      </Text>
-
-      <Coachmark
-        title="New Feature"
-        message="Information about the new feature can go here. Here’s an extra sentence if you really need it."
-        cta={{ onClick: () => {}, text: 'Click me!' }}
-        beak="bottom-left"
-      />
+    <Column>
+      <FlexBox justifyContent="space-between">
+        <Box>
+          <Text as="h5" mb={24}>
+            Dialog
+          </Text>
+          <Dialog
+            title="Do you want to continue?"
+            confirmCta={{ children: 'Do It!' }}
+            cancelCta={{ children: "Actually Don't!" }}
+          >
+            Please confirm that you really want to to do this action!
+          </Dialog>
+        </Box>
+        <Box>
+          <Text as="h5" mb={24}>
+            Coachmark
+          </Text>
+          <Coachmark
+            title="New Feature"
+            message="Information about the new feature can go here. Here’s an extra sentence if you really need it."
+            cta={{ onClick: () => {}, text: 'Click me!' }}
+            beak="bottom-left"
+          />
+        </Box>
+        <Box>
+          <Text as="h5" mb={24}>
+            Toast
+          </Text>
+          <Toast
+            title="Toast Title"
+            message="This is the message content!"
+            icon="icon"
+            onClose={() => {}}
+          />
+        </Box>
+      </FlexBox>
     </Column>
   </>
 );

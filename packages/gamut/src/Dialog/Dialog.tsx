@@ -67,6 +67,8 @@ export const Dialog: React.FC<DialogProps> = ({
       <IconButton
         aria-label="Close Dialog"
         size="small"
+        alignSelf="start"
+        variant="secondary"
         icon={MiniDeleteIcon}
         onClick={confirmCta.onClick}
         gridArea="close"
