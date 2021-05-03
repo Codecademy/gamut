@@ -105,6 +105,7 @@ export type GridFormHiddenField = BaseFormField<any> & {
   validation: never;
   label: never;
   placeholder: never;
+  size: never;
   type: 'hidden';
 };
 

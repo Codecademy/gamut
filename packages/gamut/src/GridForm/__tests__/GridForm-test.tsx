@@ -324,4 +324,5 @@ describe('GridForm', () => {
     expect(form.find('textarea#id-2-the-ego').length).toBe(1);
     expect(form.find('input#fire-file').length).toBe(1);
   });
+  it('submits hidden values', () => {});
 });
