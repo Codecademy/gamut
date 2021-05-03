@@ -1,0 +1,40 @@
+import { FillButton } from '@codecademy/gamut/src';
+import { NumberBlocks } from '@codecademy/gamut-illustrations/src';
+import { EmptySection } from '@codecademy/gamut-labs/src';
+import title from '@codecademy/macros/lib/title.macro';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+
+import { PropsTable } from '~styleguide/blocks';
+
+<Meta
+  title={title}
+  component={EmptySection}
+  parameters={{
+    source: 'gamut-labs',
+    subtitle: `An abstract List Section that renders a list of items`,
+    status: 'updating',
+  }}
+  args={{
+    bodyText: 'Body text',
+    headingText: 'Heading text',
+    illustration: NumberBlocks,
+    illustrationPosition: 'right',
+    innerBGColor: 'white',
+  }}
+/>
+
+## Test
+
+Test
+
+<Canvas>
+  <Story name="EmptySection">
+    {(args) => (
+      <EmptySection {...args}>
+        <FillButton>Click me</FillButton>{' '}
+      </EmptySection>
+    )}
+  </Story>
+</Canvas>
+
+<PropsTable story="EmptySection" />

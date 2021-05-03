@@ -30,3 +30,4 @@ export * from './GlobalHeader';
 export { AnonHeaderVariant } from './GlobalHeader/types';
 export * from './PageSection';
 export * from './ListSection';
+export * from './EmptySection';
