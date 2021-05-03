@@ -213,7 +213,11 @@ export const Popover: React.FC<PopoverProps> = ({
           </RaisedDiv>
           {pattern && (
             <PatternContainer position={position} align={align}>
-              <Pattern data-testid="popover-pattern" name={pattern} size={1} />
+              <Pattern
+                data-testid="popover-pattern"
+                name={pattern}
+                dimensions={1}
+              />
             </PatternContainer>
           )}
         </PopoverContainer>
