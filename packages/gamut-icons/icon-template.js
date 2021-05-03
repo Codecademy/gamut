@@ -9,8 +9,7 @@ function iconTemplate(api, opts, { jsx /* imports, props, exports */ }) {
 
   return template.ast`
     import * as React from 'react';
-    import { IconSvg } from '../../props';
-    import { GamutIconProps } from '../../types';
+    import { GamutIconProps, getAttrValue, IconStyleProps, IconSvg } from '../../props';
     const LocalIcon = React.forwardRef<SVGSVGElement, GamutIconProps>(({
       title = "${title}",
       titleId,
@@ -18,10 +17,11 @@ function iconTemplate(api, opts, { jsx /* imports, props, exports */ }) {
       color,
       width,
       height,
-      ...props
+      ...rest
     },
       svgRef
     ) => {
+      const props = rest as Omit<GamutIconProps, keyof IconStyleProps>;
       return ${jsx};
     });
     export const ${exportName} = IconSvg.withComponent(LocalIcon);
