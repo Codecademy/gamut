@@ -15,14 +15,13 @@ import React, {
 
 import { Box, FlexBox } from '../Box';
 import { conditionalStyles, formFieldStyles } from './styles/shared';
-import { parseSelectOptions } from './utils';
+import { parseOptions } from './utils';
 
 export type SelectComponentProps = Pick<
   SelectHTMLAttributes<HTMLSelectElement>,
-  'disabled' | 'id'
+  'disabled' | 'htmlFor' | 'id'
 > & {
   error?: boolean;
-  htmlFor?: string;
   options?: string[] | Record<string, number | string>;
 };
 
@@ -81,7 +80,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectWrapperProps>(
     };
 
     const selectOptions = useMemo(() => {
-      return parseSelectOptions({ options, id });
+      return parseOptions({ options, id, selectDropdown: false });
     }, [options, id]);
 
     return (
