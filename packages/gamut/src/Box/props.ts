@@ -14,19 +14,8 @@ export const boxProps = variance.compose(
   system.grid
 );
 
-export const boxVariants = system.variant({
-  variants: {
-    fitContainer: {
-      width: 1,
-      height: 1,
-    },
-  },
-});
+export interface BoxProps extends StyleProps<typeof boxProps> {}
 
-export interface BaseBoxProps extends StyleProps<typeof boxProps> {}
+export interface FlexBoxProps extends BoxProps {}
 
-export interface BoxProps extends StyleProps<typeof boxVariants> {}
-
-export interface FlexBoxProps extends BaseBoxProps {}
-
-export interface GridBoxProps extends BaseBoxProps {}
+export interface GridBoxProps extends BoxProps {}
