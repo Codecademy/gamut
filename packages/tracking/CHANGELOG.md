@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.0](https://github.com/Codecademy/client-modules/compare/@codecademy/tracking@0.5.4...@codecademy/tracking@0.6.0) (2021-05-03)
+
+
+### Features
+
+* added useTrackingIntegrations to tracking package ([2d508e2](https://github.com/Codecademy/client-modules/commit/2d508e2efbcb47968a543d7b54363707301ef351))
+
+
+
 ### [0.5.4](https://github.com/Codecademy/client-modules/compare/@codecademy/tracking@0.5.3...@codecademy/tracking@0.5.4) (2021-05-03)
 
 
