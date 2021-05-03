@@ -22,16 +22,14 @@ export const PropTag: React.FC<PropTagProps> = ({ prop, active, onClick }) => {
   const { propNames } = PROP_GROUPS[prop];
   const variant = active ? 'selected' : 'normal';
   return (
-    <>
-      <PropGroupTag variant={variant} onClick={onClick}>
-        {prop}
-      </PropGroupTag>
+    <PropGroupTag variant={variant} onClick={onClick}>
+      {prop}
       <PropGroupTooltip>
         {propNames.map((propName: string) => (
           <PropItem key={`${prop}-${propName}`}>{propName}</PropItem>
         ))}
       </PropGroupTooltip>
-    </>
+    </PropGroupTag>
   );
 };
 

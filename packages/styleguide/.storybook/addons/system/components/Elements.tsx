@@ -7,9 +7,10 @@ export const PropGroupTooltip = styled.ul`
   position: absolute;
   bottom: calc(100% + 10px);
   left: 50%;
+  min-width: 80px;
   transform: translate(-50%, 0);
   padding: ${themed('spacing.8')} ${themed('spacing.12')};
-  border: 1px solid ${themed('colors.navy')};
+  border: ${themed('borders.1')};
   background-color: ${themed('colors.white')};
   list-style: none;
   margin: 0;
@@ -18,8 +19,7 @@ export const PropGroupTooltip = styled.ul`
 
 export const PropItem = styled.li`
   margin: ${themed('spacing.8')} 0;
-  font-size: 11px;
-  font-family: ${themed('fontFamily.accent')};
+  font-size: ${themed('fontSize.14')};
   text-align: center;
   text-transform: none;
   color: ${themed('colors.gray-700')};
@@ -45,14 +45,14 @@ export const PropGroupTag = styled.span<StyleProps<typeof tagVariants>>`
   position: relative;
   display: inline-block;
   padding: ${themed('spacing.4')} ${themed('spacing.8')};
-  font-size: 11px;
-  font-family: ${themed('fontFamily.accent')};
+  font-size: ${themed('fontSize.14')};
+  font-family: ${themed('fontFamily.base')};
   border-radius: 4px;
   cursor: help;
-  border: 1px solid;
+  border: ${themed('borders.1')};
 
   &:hover {
-    & + ul {
+    > * {
       display: block;
     }
   }
