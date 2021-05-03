@@ -1,5 +1,5 @@
 import { each, isObject } from 'lodash';
-import React, { ReactNode } from 'react';
+import React from 'react';
 import { OptionTypeBase } from 'react-select';
 
 export type ParseOptionProps = {
@@ -14,26 +14,7 @@ const formatAsOptions = ({ label, value }: OptionTypeBase) => {
     </option>
   );
 };
-
-export const parseSelectOptions = ({ id, options }: ParseOptionProps) => {
-  const parsedOptions: ReactNode[] = [];
-
-  if (options instanceof Array) {
-    options.forEach((value) => {
-      const label = id ? `${id}-${value}` : value;
-      parsedOptions.push({ label, value });
-    });
-  } else if (isObject(options)) {
-    each(options, (rawLabel, value) => {
-      const label = id ? `${id}-${rawLabel}` : rawLabel;
-      parsedOptions.push({ label, value });
-    });
-  }
-
-  return parsedOptions.map(formatAsOptions);
-};
-
-export const parseDropdownOptions = ({ id, options }: ParseOptionProps) => {
+export const parseOptions = ({ id, options }: ParseOptionProps) => {
   const parsedOptions: Array<OptionTypeBase> = [];
 
   if (options instanceof Array) {
@@ -49,4 +30,8 @@ export const parseDropdownOptions = ({ id, options }: ParseOptionProps) => {
   }
 
   return parsedOptions;
+};
+
+export const parseSelectOptions = (props: ParseOptionProps) => {
+  return parseOptions(props).map(formatAsOptions);
 };
