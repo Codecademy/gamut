@@ -3,6 +3,37 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.7.0](https://github.com/Codecademy/client-modules/compare/@codecademy/tracking@0.6.0...@codecademy/tracking@0.7.0) (2021-05-03)
+
+
+### ⚠ BREAKING CHANGES
+
+* clean up tracker and remove auth token
+
+### Features
+
+* clean up tracker and remove auth token ([d2088e9](https://github.com/Codecademy/client-modules/commit/d2088e9741ffaa3e568bf182fb7bb6156ed5bf18))
+
+
+
+## [0.6.0](https://github.com/Codecademy/client-modules/compare/@codecademy/tracking@0.5.4...@codecademy/tracking@0.6.0) (2021-05-03)
+
+
+### Features
+
+* added useTrackingIntegrations to tracking package ([2d508e2](https://github.com/Codecademy/client-modules/commit/2d508e2efbcb47968a543d7b54363707301ef351))
+
+
+
+### [0.5.4](https://github.com/Codecademy/client-modules/compare/@codecademy/tracking@0.5.3...@codecademy/tracking@0.5.4) (2021-05-03)
+
+
+### Bug Fixes
+
+* bump tracking package babel-preset-codecademy to latest ([e809566](https://github.com/Codecademy/client-modules/commit/e80956648e76c3e0b439d4d3a63b3baafd818064))
+
+
+
 ### [0.5.3](https://github.com/Codecademy/client-modules/compare/@codecademy/tracking@0.5.2...@codecademy/tracking@0.5.3) (2021-04-21)
 
 **Note:** Version bump only for package @codecademy/tracking
