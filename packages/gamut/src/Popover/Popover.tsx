@@ -11,7 +11,9 @@ export type PopoverProps = {
    * Which vertical edge of the source component to align against.
    */
   alignment?: 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right';
-  /** Align to the inset of the target div */
+  /** Align to the inside edge of the target div */
+  inside?: boolean;
+  /** Whether the popover renders inside the current DOM context or escapes with a portal */
   inset?: boolean;
   /**
    * Number of pixels to offset the popover vertically from the source component.
@@ -38,7 +40,15 @@ export type PopoverProps = {
    * The target element around which the popover will be positioned.
    */
   targetRef: React.RefObject<
-    Pick<HTMLDivElement, 'getBoundingClientRect' | 'contains'>
+    Pick<
+      HTMLDivElement,
+      | 'getBoundingClientRect'
+      | 'contains'
+      | 'offsetHeight'
+      | 'offsetWidth'
+      | 'offsetTop'
+      | 'offsetLeft'
+    >
   >;
 };
 
@@ -46,12 +56,14 @@ export const Popover: React.FC<PopoverProps> = ({
   alignment = 'bottom-left',
   verticalOffset = 20,
   horizontalOffset = 0,
-  inset = true,
+  inside = true,
+  inset = false,
   isOpen,
   onRequestClose,
   targetRef,
   ...rest
 }) => {
+  const [boundingRect, setBoundRect] = useState<DOMRect>();
   const [targetRect, setTargetRect] = useState<DOMRect>();
   const [isInViewport, setIsInViewport] = useState(true);
   const { width, height } = useWindowSize();
@@ -62,39 +74,65 @@ export const Popover: React.FC<PopoverProps> = ({
   ];
 
   const getPopoverPosition = useCallback(() => {
-    if (!targetRect) return {};
+    if (!targetRect || !boundingRect) return {};
+    const container = inset ? targetRect : boundingRect;
+    const scrollX = inset ? 0 : window.scrollX;
+
     const positions = {
-      top: Math.round(targetRect.top - verticalOffset),
-      bottom: Math.round(targetRect.top + targetRect.height + verticalOffset),
+      top: Math.round(container.top - verticalOffset),
+      bottom: Math.round(container.top + container.height + verticalOffset),
     };
+
     const alignments = {
-      right: Math.round(window.scrollX + targetRect.right + horizontalOffset),
-      left: Math.round(window.scrollX + targetRect.left - horizontalOffset),
+      right: Math.round(
+        scrollX + container.left + container.width + horizontalOffset
+      ),
+      left: Math.round(scrollX + container.left - horizontalOffset),
     };
 
     return {
       top: positions[yAlign],
       left: alignments[xAlign],
     };
-  }, [targetRect, verticalOffset, horizontalOffset, xAlign, yAlign]);
+  }, [
+    inset,
+    boundingRect,
+    targetRect,
+    verticalOffset,
+    horizontalOffset,
+    xAlign,
+    yAlign,
+  ]);
 
   useEffect(() => {
-    setTargetRect(targetRef?.current?.getBoundingClientRect());
+    setBoundRect(targetRef?.current?.getBoundingClientRect());
   }, [targetRef, isOpen, width, height, x, y]);
 
   useEffect(() => {
-    if (targetRect) {
+    const target = targetRef?.current;
+    if (inset && target) {
+      setTargetRect({
+        width: target.offsetWidth,
+        height: target.offsetHeight,
+        left: target.offsetLeft,
+        top: target.offsetTop,
+      } as DOMRect);
+    }
+  }, [targetRef, isOpen, width, height, x, y, inset, inside, alignment]);
+
+  useEffect(() => {
+    if (boundingRect) {
       const inView =
-        targetRect.top >= 0 &&
-        targetRect.left >= 0 &&
-        targetRect.bottom <=
+        boundingRect.top >= 0 &&
+        boundingRect.left >= 0 &&
+        boundingRect.bottom <=
           (window.innerHeight || document.documentElement.clientHeight) &&
-        targetRect.right <=
+        boundingRect.right <=
           (window.innerWidth || document.documentElement.clientWidth);
       setIsInViewport(inView);
     }
     if (!isInViewport) onRequestClose?.();
-  }, [targetRect, isInViewport, onRequestClose]);
+  }, [boundingRect, isInViewport, onRequestClose]);
 
   const handleClickOutside = useCallback(
     (e) => {
@@ -115,25 +153,27 @@ export const Popover: React.FC<PopoverProps> = ({
 
   const { top, left } = getPopoverPosition();
 
-  const transform = getTransform(xAlign, yAlign, inset);
+  const transform = getTransform(xAlign, yAlign, inside);
 
-  return (
-    <BodyPortal>
-      <FocusTrap
-        allowPageInteraction
-        onClickOutside={handleClickOutside}
-        onEscapeKey={onRequestClose}
-      >
-        <PopoverContainer
-          ref={popoverRef}
-          tabIndex={-1}
-          transform={transform}
-          top={top}
-          left={left}
-          data-testid="popover-content-container"
-          {...rest}
-        />
-      </FocusTrap>
-    </BodyPortal>
+  const content = (
+    <FocusTrap
+      allowPageInteraction
+      onClickOutside={handleClickOutside}
+      onEscapeKey={onRequestClose}
+    >
+      <PopoverContainer
+        ref={popoverRef}
+        tabIndex={-1}
+        transform={transform}
+        position={inset ? 'absolute' : 'fixed'}
+        top={top}
+        left={left}
+        data-testid="popover-content-container"
+        {...rest}
+      />
+    </FocusTrap>
   );
+  if (inset) return content;
+
+  return <BodyPortal>{content}</BodyPortal>;
 };

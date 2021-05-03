@@ -28,8 +28,5 @@ const popoverProps = variance.compose(
 );
 
 export const PopoverContainer = styled.div<StyleProps<typeof popoverProps>>(
-  system.css({
-    position: 'fixed',
-  }),
   popoverProps
 );

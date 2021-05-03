@@ -31,6 +31,7 @@ export const CoachmarkPopover: React.FC<CoachmarkPopoverProps> = ({
   message,
   alignment = 'bottom-left',
   inset,
+  inside,
   ...rest
 }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -61,7 +62,7 @@ export const CoachmarkPopover: React.FC<CoachmarkPopoverProps> = ({
   ];
 
   const beakY = yAlign === 'top' ? 'bottom' : 'top';
-  const beakX = inset ? xAlign : xAlign === 'left' ? 'right' : 'left';
+  const beakX = inside ? xAlign : xAlign === 'left' ? 'right' : 'left';
   const beakAlignment = `${beakY}-${beakX}` as const;
 
   return (
@@ -69,11 +70,12 @@ export const CoachmarkPopover: React.FC<CoachmarkPopoverProps> = ({
       {children}
       <Popover
         {...rest}
-        horizontalOffset={inset ? 0 : -48}
+        horizontalOffset={inside ? 0 : -48}
         targetRef={activeElRef}
         isOpen={isOpen}
         alignment={alignment}
         inset={inset}
+        inside={inside}
       >
         <Coachmark
           title={title}

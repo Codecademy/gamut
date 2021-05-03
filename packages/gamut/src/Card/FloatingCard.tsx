@@ -11,8 +11,8 @@ const beakVariants = system.variant({
     p: 12,
     '&:after': {
       content: '""',
-      width: '1.5rem',
-      height: '1.5rem',
+      width: '1.25rem',
+      height: '1.25rem',
       bg: 'background',
       transform: 'rotate(45deg)',
       position: 'absolute',
@@ -25,28 +25,28 @@ const beakVariants = system.variant({
   variants: {
     'bottom-left': {
       '&:after': {
-        bottom: 'calc(-0.75rem - 1px)',
+        bottom: 'calc(-0.625rem - 1px)',
         left: '1.5rem',
         transform: 'rotate(225deg)',
       },
     },
     'bottom-right': {
       '&:after': {
-        bottom: 'calc(-0.75rem - 1px)',
+        bottom: 'calc(-0.625rem - 1px)',
         right: '1.5rem',
         transform: 'rotate(225deg)',
       },
     },
     'top-left': {
       '&:after': {
-        top: 'calc(-0.75rem - 1px)',
+        top: 'calc(-0.625rem - 1px)',
         left: '1.5rem',
         transform: 'rotate(45deg)',
       },
     },
     'top-right': {
       '&:after': {
-        top: 'calc(-0.75rem - 1px)',
+        top: 'calc(-0.625rem - 1px)',
         right: '1.5rem',
         transform: 'rotate(45deg)',
       },
