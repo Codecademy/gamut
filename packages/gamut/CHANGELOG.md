@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [32.8.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@32.7.3...@codecademy/gamut@32.8.0) (2021-05-03)
+
+
+### Features
+
+* **NotificationItem:** add support for forum mentions ([bb76467](https://github.com/Codecademy/client-modules/commit/bb7646744c87f0d4244135971b51fe047af5ed85))
+
+
+
+### [32.7.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@32.7.2...@codecademy/gamut@32.7.3) (2021-04-30)
+
+
+### Bug Fixes
+
+* **Emotion:** Add mode and variant to base `shouldForwardProp` filters and keep static list of all system props ([19b34e4](https://github.com/Codecademy/client-modules/commit/19b34e40abf9bf1ec2a92f4828c734ec67ee879e))
+
+
+
+### [32.7.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@32.7.1...@codecademy/gamut@32.7.2) (2021-04-30)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
 ### [32.7.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@32.7.0...@codecademy/gamut@32.7.1) (2021-04-29)
 
 
