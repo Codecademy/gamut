@@ -1,6 +1,6 @@
 # `@codecademy/tracking`
 
-This package contains our user telemetry integrations that are shared across multiple web properties.
+This package contains our user "telemetry" (tracking metcics such as `click` and `visit`) integrations that are shared across multiple web properties.
 We've consolidated them here for a few reasons:
 
 - To standardize APIs around events like tracking user clicks
@@ -8,8 +8,9 @@ We've consolidated them here for a few reasons:
 - Because this repository already has a sweet CI setup for previewing and auto-publishing new versions 😎
 
 There are two kinds of tracking we package in this library:
-* **Internal** tracking ([`createTracker`](#createTracker)): sent directly to our `/analytics/` endpoint
-* **External** tracking ([`useTrackingIntegrations`](#useTrackingIntegrations)): scripts loaded via Google Tag Manager
+
+- **Internal** tracking ([`createTracker`](#createTracker)): sent directly to our `/analytics/` endpoint
+- **External** tracking ([`useTrackingIntegrations`](#useTrackingIntegrations)): scripts loaded via Google Tag Manager
 
 ## `createTracker`
 
