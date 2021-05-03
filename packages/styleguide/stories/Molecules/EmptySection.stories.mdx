@@ -1,4 +1,3 @@
-import { FillButton } from '@codecademy/gamut/src';
 import { NumberBlocks } from '@codecademy/gamut-illustrations/src';
 import { EmptySection } from '@codecademy/gamut-labs/src';
 import title from '@codecademy/macros/lib/title.macro';
@@ -16,6 +15,7 @@ import { PropsTable } from '~styleguide/blocks';
   }}
   args={{
     bodyText: 'Body text',
+    button: { text: 'Edit', href: '', onClick: () => {} },
     headingText: 'Heading text',
     illustration: NumberBlocks,
     illustrationPosition: 'right',
@@ -28,13 +28,7 @@ import { PropsTable } from '~styleguide/blocks';
 Test
 
 <Canvas>
-  <Story name="EmptySection">
-    {(args) => (
-      <EmptySection {...args}>
-        <FillButton>Click me</FillButton>{' '}
-      </EmptySection>
-    )}
-  </Story>
+  <Story name="EmptySection">{(args) => <EmptySection {...args} />}</Story>
 </Canvas>
 
 <PropsTable story="EmptySection" />

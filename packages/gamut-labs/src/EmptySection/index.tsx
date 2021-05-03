@@ -1,5 +1,6 @@
 import {
   Box,
+  FillButton,
   FillButtonProps,
   FlexBox,
   Pattern,
@@ -12,7 +13,7 @@ import React from 'react';
 
 export type EmptySectionProps = {
   bodyText: string;
-  children: React.ComponentType<FillButtonProps>;
+  button: FillButtonProps;
   headingText: string;
   illustration: React.ComponentType<IllustrationProps>;
   illustrationPosition: 'left' | 'right';
@@ -46,19 +47,32 @@ const Title = styled(Text)`
   margin-bottom: 0.5rem;
 `;
 
-const IllustrationContainer = styled.div`
-  margin-bottom: 2rem;
+type IllustrationContainerProps = {
+  illustrationPosition: string;
+};
+
+const IllustrationContainer = styled.div<IllustrationContainerProps>`
+  margin: 0 auto 2rem;
+  ${themed('breakpoints.md')} {
+    margin: ${({ illustrationPosition }) =>
+      illustrationPosition === 'right' ? '0 0 0 6rem' : ' 0 6rem 0 0'};
+  }
 `;
 
 export const EmptySection: React.FC<EmptySectionProps> = ({
   bodyText,
-  children,
+  button,
   headingText,
   illustration: Illustration,
   illustrationPosition = 'right',
   innerBGColor,
 }) => {
   const direction = illustrationPosition === 'right' ? 'row-reverse' : 'row';
+
+  const renderButton = () => {
+    const { text, ...buttonProps } = button;
+    return <FillButton {...buttonProps}>{text}</FillButton>;
+  };
 
   return (
     <Box position="relative">
@@ -77,7 +91,7 @@ export const EmptySection: React.FC<EmptySectionProps> = ({
         paddingX={{ base: 16, xs: 48, sm: 96, md: 32 }}
         paddingY={{ base: 32, xs: 48 }}
       >
-        <IllustrationContainer>
+        <IllustrationContainer illustrationPosition={illustrationPosition}>
           <Illustration width={pxRem(100)} />
         </IllustrationContainer>
         <FlexBox
@@ -88,7 +102,7 @@ export const EmptySection: React.FC<EmptySectionProps> = ({
             {headingText}
           </Title>
           <Text mb={32}>{bodyText}</Text>
-          {children}
+          {renderButton()}
         </FlexBox>
       </FlexBox>
     </Box>
