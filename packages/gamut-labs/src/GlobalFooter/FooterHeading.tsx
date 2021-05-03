@@ -5,9 +5,9 @@ export const FooterHeading = styled(Text)();
 
 FooterHeading.defaultProps = {
   as: 'h2',
-  fontSize: [14, , 16],
-  marginTop: [24, , 0],
-  marginBottom: 16,
+  variant: 'p-small',
+  fontSize: { sm: 16 },
+  mt: [24, , 0],
+  mb: 16,
   textTransform: 'uppercase',
-  fontWeight: 'base',
 };

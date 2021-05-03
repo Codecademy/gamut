@@ -23,7 +23,6 @@ export const BottomTag: React.FC<BottomTagProps> = ({ text, color }) => {
       position="absolute"
       bottom={0}
       right={0}
-      textColor="navy"
       fontSize={14}
       lineHeight="title"
       backgroundColor={colorMap[color]}
