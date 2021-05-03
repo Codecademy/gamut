@@ -8,7 +8,7 @@ import type {
 
 export type TrackerOptions = {
   apiBaseUrl: string;
-  verbose?: string;
+  verbose?: boolean;
 };
 
 export const createTracker = ({ apiBaseUrl, verbose }: TrackerOptions) => {

@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [0.7.1](https://github.com/Codecademy/client-modules/compare/@codecademy/tracking@0.7.0...@codecademy/tracking@0.7.1) (2021-05-03)
+
+
+### Bug Fixes
+
+* switch tracking 'verbose' type back to boolean ([8aae870](https://github.com/Codecademy/client-modules/commit/8aae8709b5e755f386f7c9f350ee7a4b86c19bcb))
+
+
+
 ## [0.7.0](https://github.com/Codecademy/client-modules/compare/@codecademy/tracking@0.6.0...@codecademy/tracking@0.7.0) (2021-05-03)
 
 
