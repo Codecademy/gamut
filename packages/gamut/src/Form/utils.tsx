@@ -10,7 +10,7 @@ export type ParseOptionProps = {
 const formatAsOptions = ({ label, value, rawText }: OptionTypeBase) => {
   return (
     <option key={label} value={value} data-testid={label}>
-      {rawText ? rawText : value}
+      {rawText ?? value}
     </option>
   );
 };
