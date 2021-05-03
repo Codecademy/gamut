@@ -15,6 +15,11 @@ export type GlobalFooterProps = {
   onClick: GlobalFooterClickHandler;
 
   /**
+   * Called when the text in the MadeIn component is clicked
+   */
+  onMadeInClick: (e: React.MouseEvent | React.KeyboardEvent) => void;
+
+  /**
    * Geographic region of the user viewing the footer, such as "IN" or "US".
    */
   userGeo: string;
@@ -31,6 +36,7 @@ const FooterContainer = styled.footer`
 export const GlobalFooter: React.FC<GlobalFooterProps> = ({
   className,
   onClick,
+  onMadeInClick,
   userGeo,
 }) => {
   return (
@@ -38,7 +44,7 @@ export const GlobalFooter: React.FC<GlobalFooterProps> = ({
       <ContentContainer>
         <FooterNavLinks onClick={onClick} userGeo={userGeo} />
       </ContentContainer>
-      <FooterLegal onClick={onClick} />
+      <FooterLegal onClick={onClick} onMadeInClick={onMadeInClick} />
     </FooterContainer>
   );
 };
