@@ -22,7 +22,7 @@ const LegalLocalContainer = styled.div`
 
 export type FooterLegalProps = {
   onClick: GlobalFooterClickHandler;
-  onMadeInClick: (e: React.MouseEvent | React.KeyboardEvent) => void;
+  onMadeInClick?: (e: React.MouseEvent | React.KeyboardEvent) => void;
 };
 
 export const FooterLegal: React.FC<FooterLegalProps> = ({
