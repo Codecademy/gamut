@@ -23,34 +23,10 @@ export const boxVariants = system.variant({
   },
 });
 
-export const flexVariants = system.variant({
-  prop: 'alignments',
-  variants: {
-    center: {
-      justifyContent: 'center',
-      alignItems: 'center',
-    },
-  },
-});
-
-export const gridVariants = system.variant({
-  prop: 'alignments',
-  variants: {
-    center: {
-      justifyContent: 'center',
-      alignItems: 'center',
-    },
-  },
-});
-
 export interface BoxProps
   extends StyleProps<typeof boxProps>,
     StyleProps<typeof boxVariants> {}
 
-export interface FlexBoxProps
-  extends BoxProps,
-    StyleProps<typeof flexVariants> {}
+export interface FlexBoxProps extends BoxProps {}
 
-export interface GridBoxProps
-  extends BoxProps,
-    StyleProps<typeof gridVariants> {}
+export interface GridBoxProps extends BoxProps {}
