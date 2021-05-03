@@ -169,7 +169,7 @@ export const layout = {
   overflow: { property: 'overflow' },
   overflowX: { property: 'overflowX' },
   overflowY: { property: 'overflowY' },
-  size: {
+  dimensions: {
     property: 'width',
     properties: ['width', 'height'],
     transform: transformSize,
