@@ -7,10 +7,10 @@ export type ParseOptionProps = {
   options?: string[] | Record<string, string | number>;
 };
 
-const formatAsOptions = ({ label, value }: OptionTypeBase) => {
+const formatAsOptions = ({ label, value, rawText }: OptionTypeBase) => {
   return (
     <option key={label} value={value} data-testid={label}>
-      {value}
+      {rawText}
     </option>
   );
 };
@@ -23,9 +23,9 @@ export const parseOptions = ({ id, options }: ParseOptionProps) => {
       parsedOptions.push({ label, value });
     });
   } else if (isObject(options)) {
-    each(options, (rawLabel, value) => {
-      const label = id ? `${id}-${rawLabel}` : rawLabel;
-      parsedOptions.push({ label, value });
+    each(options, (rawText, value) => {
+      const label = id ? `${id}-${rawText}` : rawText;
+      parsedOptions.push({ label, value, rawText });
     });
   }
 
