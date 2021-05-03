@@ -1,6 +1,7 @@
 import { transformSize } from '@codecademy/variance';
 
 export const color = {
+  color: { property: 'color', scale: 'colors' },
   textColor: { property: 'color', scale: 'colors' },
   bg: { property: 'backgroundColor', scale: 'colors' },
   borderColor: { property: 'borderColor', scale: 'colors' },
@@ -169,7 +170,7 @@ export const layout = {
   overflow: { property: 'overflow' },
   overflowX: { property: 'overflowX' },
   overflowY: { property: 'overflowY' },
-  size: {
+  dimensions: {
     property: 'width',
     properties: ['width', 'height'],
     transform: transformSize,

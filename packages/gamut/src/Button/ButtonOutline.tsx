@@ -1,19 +1,17 @@
 import { system, theme, timing } from '@codecademy/gamut-styles';
 import {
+  CSSObject,
   serializeTokens,
   StyleProps,
   ThemeProps,
   variance,
 } from '@codecademy/variance';
-import { css } from '@emotion/react';
-import styled, { CSSObject } from '@emotion/styled';
-import { ComponentProps } from 'react';
+import { css, Theme } from '@emotion/react';
+import styled from '@emotion/styled';
 
 import { ButtonBase } from '../ButtonBase/ButtonBase';
 import { config, modeColorGroups } from './shared';
 import { ButtonProps } from './types';
-
-export type ButtonOutlineProps = ComponentProps<typeof ButtonOutline>;
 
 export const { tokens: buttonColors } = serializeTokens(
   modeColorGroups.dark.primary,
@@ -64,9 +62,15 @@ const buttonProps = variance.compose(
   system.margin
 );
 
-export const ButtonOutline = styled('button', config)<
-  ButtonProps & StyleProps<typeof outlinePadding> & { as?: never }
->(
+export interface ButtonOutlineProps
+  extends ButtonProps,
+    StyleProps<typeof outlinePadding>,
+    StyleProps<typeof buttonProps> {
+  mode?: Theme['colorModes']['active'];
+  as?: never;
+}
+
+export const ButtonOutline = styled('button', config)<ButtonOutlineProps>(
   setTokens,
   system.css({
     display: 'inline-block',
