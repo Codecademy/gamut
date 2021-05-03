@@ -372,7 +372,6 @@ the [`FillButton`](/?path=/docs/atoms--fill) or [`CTAButton`](?path=/docs/atoms-
             },
           ]}
           onSubmit={async (values) => {
-            console.log(values);
             action('Form Submitted')(values);
           }}
           submit={{
@@ -488,7 +487,6 @@ more details on why using placeholders is often bad.
     {(args) => (
       <GridForm
         fields={[
-          { type: 'hidden', name: 'secret-value', value: 'ok' },
           {
             label: 'Email',
             placeholder: 'Your email',
@@ -504,6 +502,7 @@ more details on why using placeholders is often bad.
         }}
       />
     )}
+
   </Story>
 </Canvas>
 
