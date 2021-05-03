@@ -1,5 +1,5 @@
-import { FillButton, FlexBox } from '@codecademy/gamut';
-import { Coachmark, CoachmarkProps, Text } from '@codecademy/gamut-labs';
+import { FillButton, FlexBox, Text } from '@codecademy/gamut';
+import { Coachmark, CoachmarkProps } from '@codecademy/gamut-labs';
 import React, { useState } from 'react';
 
 export const CoachmarkExample = (args: CoachmarkProps) => {
@@ -9,7 +9,7 @@ export const CoachmarkExample = (args: CoachmarkProps) => {
 
   const renderPopover = () => (
     <FlexBox flexDirection="column" p={16} alignItems="flex-start">
-      <Text marginBottom={8}>You should click the button.</Text>
+      <Text mb={8}>You should click the button.</Text>
       <FillButton
         onClick={() => {
           setShouldShow(false);
