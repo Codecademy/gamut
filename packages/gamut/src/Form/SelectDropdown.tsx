@@ -24,7 +24,7 @@ import {
   formDropdownStyles,
   formFieldStyles,
 } from './styles/shared';
-import { parseOptions } from './utils';
+import { parseDropdownOptions } from './utils';
 
 const { DropdownIndicator, SelectContainer } = SelectDropdownElements;
 
@@ -175,7 +175,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
   };
 
   const selectOptions = useMemo(() => {
-    return parseOptions({ options, id, selectDropdown: true });
+    return parseDropdownOptions({ options, id });
   }, [options, id]);
 
   const parsedValue = useMemo(() => {
