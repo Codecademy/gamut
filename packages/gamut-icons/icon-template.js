@@ -9,7 +9,8 @@ function iconTemplate(api, opts, { jsx /* imports, props, exports */ }) {
 
   return template.ast`
     import * as React from 'react';
-    import { GamutIconProps, getAttrValue, IconStyleProps, IconSvg } from '../../props';
+    import { GamutIconProps } from '../../types';
+    import { getAttrValue, IconStyleProps, IconSvg } from '../../props';
     const LocalIcon = React.forwardRef<SVGSVGElement, GamutIconProps>(({
       title = "${title}",
       titleId,
