@@ -27,8 +27,7 @@ export type SelectComponentProps = Pick<
   id?: string;
 };
 
-export type SelectWrapperProps = SelectComponentProps &
-  SelectHTMLAttributes<HTMLSelectElement> & {
+export type SelectWrapperProps = SelectHTMLAttributes<HTMLSelectElement> & {
     sizeVariant?: 'small' | 'base';
   };
 
