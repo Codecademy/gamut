@@ -1,7 +1,6 @@
 import { createTracker } from '../track';
 
 const apiBaseUrl = 'https://www.codecademy.com';
-const authToken = 'super-secure-token';
 
 const fakeWindow = {
   location: {
@@ -33,7 +32,7 @@ describe('createTracker', () => {
     const {
       location: { href },
     } = fakeWindow;
-    const track = createTracker(apiBaseUrl, authToken);
+    const track = createTracker({ apiBaseUrl });
     const expectedProps = {
       target,
       page_name,
@@ -43,7 +42,7 @@ describe('createTracker', () => {
 
     expect(beaconMock.mock.calls.length).toBe(1);
     expect(beaconMock.mock.calls[0][0]).toBe(
-      `${apiBaseUrl}/analytics/user?utm_source=twitter&authentication_token=${authToken}`
+      `${apiBaseUrl}/analytics/user?utm_source=twitter`
     );
     const formData = beaconMock.mock.calls[0][1];
     expect(formData).toBeInstanceOf(FormData);
