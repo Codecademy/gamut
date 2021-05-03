@@ -19,12 +19,10 @@ import { parseOptions } from './utils';
 
 export type SelectComponentProps = Pick<
   SelectHTMLAttributes<HTMLSelectElement>,
-  'disabled'
+  'disabled' | 'htmlFor' | 'id'
 > & {
   error?: boolean;
-  htmlFor?: string;
   options?: string[] | Record<string, number | string>;
-  id?: string;
 };
 
 export type SelectWrapperProps = SelectComponentProps &
