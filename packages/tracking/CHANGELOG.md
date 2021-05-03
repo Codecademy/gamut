@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.7.0](https://github.com/Codecademy/client-modules/compare/@codecademy/tracking@0.6.0...@codecademy/tracking@0.7.0) (2021-05-03)
+
+
+### ⚠ BREAKING CHANGES
+
+* clean up tracker and remove auth token
+
+### Features
+
+* clean up tracker and remove auth token ([d2088e9](https://github.com/Codecademy/client-modules/commit/d2088e9741ffaa3e568bf182fb7bb6156ed5bf18))
+
+
+
 ## [0.6.0](https://github.com/Codecademy/client-modules/compare/@codecademy/tracking@0.5.4...@codecademy/tracking@0.6.0) (2021-05-03)
 
 
