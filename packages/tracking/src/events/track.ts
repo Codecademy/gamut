@@ -6,16 +6,14 @@ import type {
   UserVisitData,
 } from './types';
 
-export const createTracker = (
-  apiBaseUrl: string,
-  authToken: string,
-  verbose = false
-) => {
+export type TrackerOptions = {
+  apiBaseUrl: string;
+  verbose?: string;
+};
+
+export const createTracker = ({ apiBaseUrl, verbose }: TrackerOptions) => {
   const beacon = (endpoint: string, data: Record<string, string>) => {
     const uri = new URL(endpoint, apiBaseUrl);
-    const searchParams = new URLSearchParams(uri.search);
-    searchParams.set('authentication_token', authToken);
-    uri.search = searchParams.toString();
     const form = new FormData();
     for (const [k, v] of Object.entries(data)) {
       form.append(k, v.toString());
@@ -71,13 +69,7 @@ export const createTracker = (
     click: (data: UserClickData) => event('user', 'click', data),
     visit: (data: UserVisitData) => event('user', 'visit', data),
     pushDataLayerEvent: (eventName: string) => {
-      // Set an arbitrary global property on the window variable.
-      const w = window as any;
-      if (w.dataLayer === undefined) {
-        w.dataLayer = [];
-      }
-
-      w.dataLayer.push({ event: eventName });
+      ((window as any).dataLayer ||= []).push({ event: eventName });
     },
   };
 };

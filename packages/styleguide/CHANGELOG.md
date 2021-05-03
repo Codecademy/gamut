@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [36.10.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@36.9.3...@codecademy/styleguide@36.10.0) (2021-05-03)
+
+
+### Features
+
+* **NotificationItem:** add support for forum mentions ([bb76467](https://github.com/Codecademy/client-modules/commit/bb7646744c87f0d4244135971b51fe047af5ed85))
+
+
+
 ### [36.9.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@36.9.2...@codecademy/styleguide@36.9.3) (2021-04-30)
 
 **Note:** Version bump only for package @codecademy/styleguide
