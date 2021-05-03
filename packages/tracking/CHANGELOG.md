@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [0.5.4](https://github.com/Codecademy/client-modules/compare/@codecademy/tracking@0.5.3...@codecademy/tracking@0.5.4) (2021-05-03)
+
+
+### Bug Fixes
+
+* bump tracking package babel-preset-codecademy to latest ([e809566](https://github.com/Codecademy/client-modules/commit/e80956648e76c3e0b439d4d3a63b3baafd818064))
+
+
+
 ### [0.5.3](https://github.com/Codecademy/client-modules/compare/@codecademy/tracking@0.5.2...@codecademy/tracking@0.5.3) (2021-04-21)
 
 **Note:** Version bump only for package @codecademy/tracking
