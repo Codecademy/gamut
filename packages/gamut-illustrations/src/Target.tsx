@@ -8,6 +8,7 @@ export const Target: React.FC<IllustrationProps> = ({
   width,
 }) => (
   <svg
+    className={className}
     width={width}
     height={height}
     viewBox="0 0 135 97"
