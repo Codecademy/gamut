@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.13.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-illustrations@0.12.0...@codecademy/gamut-illustrations@0.13.0) (2021-05-03)
+
+
+### Features
+
+* add social media icons and update target illustration ([4947e59](https://github.com/Codecademy/client-modules/commit/4947e5903a3747e54c4934f3d7c73443189293e6))
+
+
+
 ## [0.12.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-illustrations@0.11.1...@codecademy/gamut-illustrations@0.12.0) (2021-05-03)
 
 
