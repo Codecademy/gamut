@@ -1,9 +1,8 @@
-import { serializeTokens, variance } from '@codecademy/variance';
+import { serializeTokens, StyleProps, variance } from '@codecademy/variance';
 import { CSSObject, Theme, ThemeProvider, useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
-import { HTMLAttributes } from 'enzyme';
 import { mapValues } from 'lodash';
-import React, { useMemo } from 'react';
+import React, { ComponentProps, forwardRef, useMemo } from 'react';
 
 import {
   color,
@@ -30,23 +29,17 @@ export const providerProps = variance.compose(
   space
 );
 
-export type ProviderProps = Parameters<typeof providerProps>[0];
+export const VariableProvider = styled('div', styledConfig)<
+  StyleProps<typeof providerProps> & {
+    variables?: CSSObject;
+    alwaysSetVariables?: boolean;
+  }
+>(({ variables }) => variables, providerProps);
 
-export interface VariableProviderProps
-  extends Omit<HTMLAttributes, keyof ProviderProps>,
-    ProviderProps {
-  variables?: CSSObject;
-}
-
-export const VariableProvider = styled(
-  'div',
-  styledConfig
-)<VariableProviderProps>(({ variables }) => variables, providerProps);
-
-export const ColorMode: React.FC<ColorModeProps & ProviderProps> = ({
-  mode,
-  ...rest
-}) => {
+export const ColorMode = forwardRef<
+  HTMLDivElement,
+  ColorModeProps & ComponentProps<typeof VariableProvider>
+>(({ mode, alwaysSetVariables, ...rest }, ref) => {
   const theme = useTheme();
   const {
     colorModes: { modes, active },
@@ -62,12 +55,23 @@ export const ColorMode: React.FC<ColorModeProps & ProviderProps> = ({
     [colors, mode, modes, theme]
   );
   if (active === mode) {
-    return <VariableProvider {...rest} />;
+    return (
+      <VariableProvider
+        {...rest}
+        ref={ref}
+        variables={alwaysSetVariables ? variables : undefined}
+      />
+    );
   }
 
   return (
     <ThemeProvider theme={{ colorModes: { modes, active: mode } }}>
-      <VariableProvider variables={variables} textColor="text" {...rest} />
+      <VariableProvider
+        variables={variables}
+        textColor="text"
+        {...rest}
+        ref={ref}
+      />
     </ThemeProvider>
   );
-};
+});
