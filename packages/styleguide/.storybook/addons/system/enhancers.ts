@@ -23,6 +23,9 @@ const baseProps = {
   as: {
     description: 'Change the element this component uses',
     category: 'base',
+    control: {
+      type: 'text',
+    },
   },
   theme: {
     description: `[Emotion Theme](${THEME_PATH}--page)`,
@@ -51,6 +54,9 @@ const createSystemArgType = ({
   options,
   table: {
     category,
+    type: {
+      summary: null,
+    },
   },
   control,
 });
@@ -59,11 +65,14 @@ const createDescription = (name: string) => {
   const description: string[] = [];
   const cssProp = kebabCase(name);
   description.push(`Property: [${cssProp}](${MDN_URL}${cssProp})`);
-
-  const scale = PROP_MAP?.[name]?.scale;
+  const { scale, transform } = PROP_MAP?.[name];
 
   if (isString(scale)) {
     description.push(`Scale: [${scale}](${THEME_PATH}--${kebabCase(scale)})`);
+  }
+
+  if (transform) {
+    description.push(`Transform: ${transform.name}`);
   }
 
   return description.join('<br />');
@@ -127,7 +136,9 @@ const formatSystemProps: ArgTypesEnhancer = ({ parameters }) => {
           type: getControlType(options),
         };
       } else {
-        control = arg.control;
+        control = {
+          type: 'text',
+        };
       }
 
       return merge(
