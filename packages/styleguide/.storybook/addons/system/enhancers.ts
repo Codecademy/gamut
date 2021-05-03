@@ -64,15 +64,17 @@ const createSystemArgType = ({
 const createDescription = (name: string) => {
   const description: string[] = [];
   const cssProp = kebabCase(name);
-  description.push(`Property: [${cssProp}](${MDN_URL}${cssProp})`);
+  description.push(`**Property**: [${cssProp}](${MDN_URL}${cssProp})`);
   const { scale, transform } = PROP_MAP?.[name];
 
   if (isString(scale)) {
-    description.push(`Scale: [${scale}](${THEME_PATH}--${kebabCase(scale)})`);
+    description.push(
+      `**Scale**: [${scale}](${THEME_PATH}--${kebabCase(scale)})`
+    );
   }
 
   if (transform) {
-    description.push(`Transform: ${transform.name}`);
+    description.push(`**Transform**: ${transform.name}`);
   }
 
   return description.join('<br />');
