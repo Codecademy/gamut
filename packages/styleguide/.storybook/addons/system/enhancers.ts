@@ -63,8 +63,13 @@ const createSystemArgType = ({
 
 const createDescription = (name: string) => {
   const description: string[] = [];
-  const cssProp = kebabCase(name);
-  description.push(`**Property**: [${cssProp}](${MDN_URL}${cssProp})`);
+  const { property, properties = [property] } = PROP_MAP[name];
+  const cssProps = properties
+    .map(kebabCase)
+    .map((cssProp) => ` [${cssProp}](${MDN_URL}${cssProp})`)
+    .join(', ');
+
+  description.push(`**Property**: ${cssProps}`);
   const { scale, transform } = PROP_MAP?.[name];
 
   if (isString(scale)) {
