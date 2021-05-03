@@ -1,7 +1,7 @@
-import { mapValues, isNumber, map } from 'lodash/fp';
+import { mapValues } from 'lodash/fp';
 import { ArgTypesEnhancer } from '@storybook/client-api';
-import { kebabCase, merge } from 'lodash';
-import { ALL_PROPS, PROP_META, PROP_GROUPS } from './propMeta';
+import { hasIn, isObject, isString, kebabCase, merge } from 'lodash';
+import { ALL_PROPS, PROP_MAP, PROP_GROUPS } from './propMeta';
 import { theme } from '@codecademy/gamut-styles/src/theme';
 
 export type SystemControls =
@@ -33,7 +33,20 @@ const baseProps = {
   },
 };
 
-const createSystemArgType = ({ description, category, control, options }) => ({
+type AbstractArgType = {
+  name: string;
+  description: string;
+  category: string;
+  options: any;
+  control: any;
+};
+
+const createSystemArgType = ({
+  description,
+  category,
+  control,
+  options,
+}: Partial<AbstractArgType>) => ({
   description,
   options,
   table: {
@@ -47,9 +60,9 @@ const createDescription = (name: string) => {
   const cssProp = kebabCase(name);
   description.push(`Property: [${cssProp}](${MDN_URL}${cssProp})`);
 
-  const scale = PROP_META?.[name]?.scale;
+  const scale = PROP_MAP?.[name]?.scale;
 
-  if (scale) {
+  if (isString(scale)) {
     description.push(`Scale: [${scale}](${THEME_PATH}--${kebabCase(scale)})`);
   }
 
@@ -68,7 +81,7 @@ const getControlType = (args: unknown[]): SystemControls => {
 };
 
 const getPropCategory = (name: string) => {
-  const [groupName] =
+  const [groupName = 'base'] =
     Object.entries(PROP_GROUPS).find(([key, { propNames = [] }]) =>
       propNames.includes(name)
     ) || [];
@@ -79,9 +92,13 @@ const formatSystemProps: ArgTypesEnhancer = ({ parameters }) => {
   const { argTypes } = parameters;
   const parsedOptions: Record<string, any> = {};
 
-  return mapValues((arg) => {
-    if (baseProps[arg.name]) {
-      return merge({}, arg, createSystemArgType(baseProps[arg.name]));
+  return mapValues((arg: AbstractArgType) => {
+    if (arg.name && hasIn(baseProps, arg.name)) {
+      return merge(
+        {},
+        arg,
+        createSystemArgType(baseProps[arg.name as keyof typeof baseProps])
+      );
     }
 
     // Find all system props that do not have a description
@@ -89,13 +106,12 @@ const formatSystemProps: ArgTypesEnhancer = ({ parameters }) => {
       const { name } = arg;
       let control: ControlType;
       let options;
-      const scaleKey = PROP_META?.[name]?.scale;
-      const scale = theme?.[scaleKey];
+      const scaleKey = PROP_MAP?.[name]?.scale;
 
-      if (scale) {
+      if (isString(scaleKey)) {
         // if we have a defined set of options create a specific config for the options
         parsedOptions[scaleKey] =
-          parsedOptions[scaleKey] ?? Object.keys(scale).sort();
+          parsedOptions[scaleKey] ?? Object.keys(theme[scaleKey]).sort();
         const argOptions = parsedOptions[scaleKey];
 
         options = argOptions;
@@ -103,9 +119,15 @@ const formatSystemProps: ArgTypesEnhancer = ({ parameters }) => {
         control = {
           type: getControlType(argOptions),
         };
-      } else {
+      } else if (isObject(scaleKey)) {
+        options = Object.keys(scaleKey).sort();
+
         // Use JSON editor for anything without options
-        control = { type: 'object' };
+        control = {
+          type: getControlType(options),
+        };
+      } else {
+        control = arg.control;
       }
 
       return merge(

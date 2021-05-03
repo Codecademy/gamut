@@ -1,7 +1,7 @@
 import { useReducer, useMemo, useContext } from 'react';
-import { propGroups, properties, PropGroups } from './constants';
 import { intersection } from 'lodash';
 import { DocsContext } from '@storybook/addon-docs/blocks';
+import { ALL_PROPS, PropGroups, PROP_GROUPS } from '../propMeta';
 
 interface PropsTableState {
   activeGroups: string[];
@@ -82,14 +82,14 @@ export const useSystemProps = (
     dispatch({ type: ActionTypes.TOGGLE_GROUP, payload: group });
 
   const usedProps = useMemo<string[]>(
-    () => Object.keys(argTypes).filter((prop) => properties.includes(prop)),
+    () => Object.keys(argTypes).filter((prop) => ALL_PROPS.includes(prop)),
     [argTypes]
   );
 
   const hasSystemProps = usedProps.length > 0;
 
   const groups = useMemo(() => {
-    return Object.entries(propGroups).reduce<PropGroups[]>(
+    return Object.entries(PROP_GROUPS).reduce<PropGroups[]>(
       (carry, [groupKey, { propNames }]) =>
         intersection(propNames, usedProps).length > 0
           ? [...carry, groupKey as PropGroups]
@@ -100,7 +100,7 @@ export const useSystemProps = (
 
   const excludedProps = useMemo<string[]>(() => {
     if (showAll) return [];
-    return Object.entries(propGroups).reduce<string[]>(
+    return Object.entries(PROP_GROUPS).reduce<string[]>(
       (carry, [group, { propNames }]) => {
         return !activeGroups.includes(group) ? [...carry, ...propNames] : carry;
       },

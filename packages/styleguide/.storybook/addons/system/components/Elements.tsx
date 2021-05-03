@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
-import { themed, variant } from '@codecademy/gamut-styles/src';
+import { themed, system } from '@codecademy/gamut-styles/src';
+import { StyleProps } from '@codecademy/variance';
 
 export const PropGroupTooltip = styled.ul`
   display: none;
@@ -24,19 +25,21 @@ export const PropItem = styled.li`
   color: ${themed('colors.gray-700')};
 `;
 
-const tagVariants = variant({
-  normal: {
-    textColor: 'navy',
-    borderColor: 'navy',
-  },
-  selected: {
-    textColor: 'white',
-    backgroundColor: 'navy',
-    borderColor: 'navy',
+const tagVariants = system.variant({
+  variants: {
+    normal: {
+      textColor: 'navy',
+      borderColor: 'navy',
+    },
+    selected: {
+      textColor: 'white',
+      bg: 'navy',
+      borderColor: 'navy',
+    },
   },
 });
 
-export const PropGroupTag = styled.span<Parameters<typeof tagVariants>[0]>`
+export const PropGroupTag = styled.span<StyleProps<typeof tagVariants>>`
   ${tagVariants}
   user-select: none;
   position: relative;
@@ -49,7 +52,7 @@ export const PropGroupTag = styled.span<Parameters<typeof tagVariants>[0]>`
   border: 1px solid;
 
   &:hover {
-    > * {
+    & + ul {
       display: block;
     }
   }
