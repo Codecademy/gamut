@@ -96,13 +96,6 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
           />
         );
 
-      case 'hidden':
-        return (
-          <>
-            <input type="hidden" />
-          </>
-        );
-
       default:
         return (
           <GridFormTextInput
@@ -114,6 +107,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
         );
     }
   };
+  if (field.type === 'hidden') return getInput();
 
   const label = (
     <FormGroupLabel
@@ -125,8 +119,6 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
       {field.label}
     </FormGroupLabel>
   );
-
-  if (field.type === 'hidden') return getInput();
 
   return (
     <Column size={field.size}>

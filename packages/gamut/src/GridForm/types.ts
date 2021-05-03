@@ -101,8 +101,10 @@ export type GridFormTextAreaField = BaseFormField<string> & {
   type: 'textarea';
 };
 
-export type GridFormHiddenField = BaseFormField<string> & {
-  label: undefined;
+export type GridFormHiddenField = BaseFormField<any> & {
+  validation: never;
+  label: never;
+  placeholder: never;
   type: 'hidden';
 };
 
