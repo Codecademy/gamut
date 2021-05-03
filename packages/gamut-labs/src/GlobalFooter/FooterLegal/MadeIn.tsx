@@ -37,7 +37,9 @@ export const MadeIn: React.FC<MadeInProps> = ({ onClick }) => {
       textAlign={{ base: 'center', md: 'right' }}
     >
       <AccessibleSpan>Made</AccessibleSpan> with
-      <HeartContainer aria-label="love">️❤️</HeartContainer>
+      <HeartContainer aria-label="love" onClick={onClick}>
+        ️❤️
+      </HeartContainer>
       in <AccessibleSpan>NYC</AccessibleSpan> ©{` ${new Date().getFullYear()} `}{' '}
       <AccessibleSpan>Codecademy</AccessibleSpan>
     </Box>
