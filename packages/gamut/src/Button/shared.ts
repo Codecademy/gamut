@@ -49,7 +49,7 @@ export const modeColorGroups = {
   },
 };
 
-export const config = styledConfig(['mode', 'variant', 'size']);
+export const config = styledConfig(['size']);
 
 export function useColorMode(mode?: keyof Theme['colorModes']['modes']) {
   const theme = useTheme();
