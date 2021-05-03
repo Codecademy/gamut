@@ -12,6 +12,11 @@ export const fruitOptions = [
   'Eggplant',
 ];
 
+export const fruitObjects = {
+  month: 'Pro Monthly - $39.99 a month',
+  annual: 'Pro Annual - $19.99 a month',
+};
+
 export const selectObject = {
   red: 'red',
   yellow: 'yellow',
@@ -64,7 +69,7 @@ export const selectObject = {
     name="Error"
     args={{ options: ['Error'], defaultValue: 'Error', error: true }}
   >
-    {(args) => <Select options={selectObject} />}
+    {(args) => <Select options={fruitObjects} />}
   </Story>
 </Canvas>
 
