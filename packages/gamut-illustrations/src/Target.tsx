@@ -16,19 +16,19 @@ export const Target: React.FC<IllustrationProps> = ({
   >
     <path
       d="M6.93 24.844L48 1.133l41.07 23.711v47.423L48 95.978 6.93 72.267V24.844z"
-      fill="none"
+      fill="#FFF0E5"
       stroke="#10162F"
       strokeLinejoin="round"
     />
     <path
       d="M24.537 35.009L48 21.462 71.463 35.01v27.093L48 75.65 24.537 62.102V35.01z"
-      fill="none"
+      fill="#FFF0E5"
       stroke="#10162F"
       strokeLinejoin="round"
     />
     <path
       d="M40.11 44.891l7.325-4.229 7.325 4.23v8.457l-7.325 4.23-7.325-4.23v-8.458z"
-      fill="none"
+      fill="#FFF0E5"
       stroke="#10162F"
       strokeLinejoin="round"
     />
@@ -36,7 +36,7 @@ export const Target: React.FC<IllustrationProps> = ({
       fillRule="evenodd"
       clipRule="evenodd"
       d="M56.792 37.243l5.09 14.758-11.902-4.163 6.812-10.595z"
-      fill="none"
+      fill="#FFF0E5"
       stroke="#10162F"
     />
     <path
