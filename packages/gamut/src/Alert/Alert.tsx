@@ -184,7 +184,7 @@ export const Alert: React.FC<AlertProps> = ({
       gridTemplateColumns={columns}
       {...props}
     >
-      <FlexBox size="2rem" alignments="center">
+      <FlexBox dimensions="2rem" alignments="center">
         <Icon size={16} aria-hidden="true" />
       </FlexBox>
       {content}

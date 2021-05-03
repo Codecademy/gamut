@@ -22,9 +22,9 @@ const Svg = styled.svg`
   height: 100%;
 `;
 
-export const Pattern: React.FC<PatternProps> = ({ name, ...props }) => {
+export const Pattern: React.FC<PatternProps> = ({ name, color, ...props }) => {
   return (
-    <Box {...props}>
+    <Box {...props} color={color as any}>
       <Svg aria-hidden>
         {defs(name)}
         <rect x="0" y="0" width="100%" height="100%" fill={`url(#${name})`} />
