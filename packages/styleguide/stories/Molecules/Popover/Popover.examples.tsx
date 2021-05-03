@@ -76,9 +76,9 @@ export const PatternedPopoversGrid = (args: PopoverProps) => {
         'diagonalStripesLoose',
         'diagonalStripesRegular',
         'diagonalStripesDense',
-        'dotsLoose',
-        'dotsRegular',
-        'dotsDense',
+        'checkerLoose',
+        'checkerRegular',
+        'checkerDense',
       ].map((pattern: PatternName) => (
         <Column key={pattern} size={4}>
           <FlexBox justifyContent="center">

@@ -1,6 +1,5 @@
 version: 2.1
 orbs:
-  codecov: codecov/codecov@1.1.3
   queue: eddiewebb/queue@1.5.0
 
 references:
@@ -54,14 +53,14 @@ references:
       at: ~/repo
 
   build_all_packages: &build_all_packages
-      run:
-        name: Build All Packages
-        command: yarn build-all
+    run:
+      name: Build All Packages
+      command: yarn build-all
 
   build_changed_packages: &build_changed_packages
-      run:
-        name: Build Changed Packages
-        command: yarn build-changed
+    run:
+      name: Build Changed Packages
+      command: yarn build-changed
 
   build_required_packages: &build_required_packages
     run:
@@ -163,8 +162,6 @@ jobs:
           environment:
             JEST_JUNIT_OUTPUT_DIR: /tmp/test-results/junit
             JEST_JUNIT_ADD_FILE_ATTRIBUTE: 'true'
-      - codecov/upload:
-          file: /tmp/test-results/jest/*
       - store_test_results:
           path: /tmp/test-results
       - store_artifacts:
@@ -298,7 +295,7 @@ workflows:
           time: '10'
       - checkout_code:
           requires:
-           - queue/block_workflow
+            - queue/block_workflow
       - tests:
           requires:
             - checkout_code
@@ -332,7 +329,7 @@ workflows:
           time: '10'
       - checkout_code:
           requires:
-           - queue/block_workflow
+            - queue/block_workflow
       - deploy:
           requires:
             - checkout_code

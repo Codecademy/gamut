@@ -1,47 +1,77 @@
-import { compose, HandlerProps } from '@codecademy/gamut-system';
-import { Theme, ThemeProvider, useTheme } from '@emotion/react';
+import { serializeTokens, StyleProps, variance } from '@codecademy/variance';
+import { CSSObject, Theme, ThemeProvider, useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
-import React from 'react';
+import { mapValues } from 'lodash';
+import React, { ComponentProps, forwardRef, useMemo } from 'react';
 
-import { properties } from './props';
-import { createVariables } from './utilities';
-import { colors } from './variables';
+import {
+  color,
+  flex,
+  grid,
+  layout,
+  positioning,
+  space,
+} from './variance/props';
+import { styledConfig } from './variance/utils';
 
 export type ColorModeProps = {
   mode: keyof Theme['colorModes']['modes'];
-  initialBackground?: keyof typeof colors;
+  bg?: keyof Theme['colors'];
   className?: string;
 };
 
-const colorProps = compose(properties.backgroundColor, properties.textColor);
-
-export interface VariableProviderProps extends HandlerProps<typeof colorProps> {
-  variables: Parameters<typeof createVariables>[0];
-}
-
-export const VariableProvider = styled.div<VariableProviderProps>(
-  compose(properties.backgroundColor, properties.textColor),
-  ({ variables }) => createVariables(variables, 'colors')
+export const providerProps = variance.compose(
+  layout,
+  color,
+  grid,
+  flex,
+  positioning,
+  space
 );
 
-export const ColorMode: React.FC<ColorModeProps> = ({
-  mode,
-  initialBackground,
-  children,
-  className,
-}) => {
-  const { colorModes } = useTheme();
+export const VariableProvider = styled('div', styledConfig)<
+  StyleProps<typeof providerProps> & {
+    variables?: CSSObject;
+    alwaysSetVariables?: boolean;
+  }
+>(({ variables }) => variables, providerProps);
+
+export const ColorMode = forwardRef<
+  HTMLDivElement,
+  ColorModeProps & ComponentProps<typeof VariableProvider>
+>(({ mode, alwaysSetVariables, ...rest }, ref) => {
+  const theme = useTheme();
+  const {
+    colorModes: { modes, active },
+    colors,
+  } = theme;
+  const { variables } = useMemo(
+    () =>
+      serializeTokens(
+        mapValues(modes[mode], (color) => colors[color]),
+        'color',
+        theme
+      ),
+    [colors, mode, modes, theme]
+  );
+  if (active === mode) {
+    return (
+      <VariableProvider
+        {...rest}
+        ref={ref}
+        variables={alwaysSetVariables ? variables : undefined}
+      />
+    );
+  }
 
   return (
-    <ThemeProvider theme={{ colorModes: { ...colorModes, active: mode } }}>
+    <ThemeProvider theme={{ colorModes: { modes, active: mode } }}>
       <VariableProvider
-        variables={colorModes.modes[mode]}
-        backgroundColor={initialBackground}
+        variables={variables}
         textColor="text"
-        className={className}
-      >
-        {children}
-      </VariableProvider>
+        {...rest}
+        ref={ref}
+      />
     </ThemeProvider>
   );
-};
+});

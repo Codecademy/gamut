@@ -135,9 +135,41 @@ describe('style props', () => {
         },
       });
     });
+    it('passes through falsy values for basic props', () => {
+      expect(space({ margin: 0, theme })).toEqual({ margin: 0 });
+    });
+    it('passes through falsy values for object syntax props', () => {
+      expect(space({ margin: { sm: 16, md: 0 }, theme })).toEqual({
+        SM: { margin: '1rem' },
+        MD: { margin: 0 },
+      });
+    });
+    it('passes through falsy values for array syntax props', () => {
+      expect(space({ margin: [, , 16, 0], theme })).toEqual({
+        SM: { margin: '1rem' },
+        MD: { margin: 0 },
+      });
+    });
     it('transforms props', () => {
       const res = { height: '1.5rem' };
       expect(layout({ height: '24px', theme })).toEqual(res);
+    });
+    it('transforms scalar values only if scale is present', () => {
+      const doubleSpace = variance.create({
+        p: {
+          property: 'padding',
+          scale: 'spacing',
+          transform: (val: number) => `calc(${val} * 2)`,
+        },
+      });
+
+      expect(doubleSpace({ theme, p: 16 })).toEqual({
+        padding: 'calc(1rem * 2)',
+      });
+
+      expect(doubleSpace({ theme, p: 'initial' })).toEqual({
+        padding: 'initial',
+      });
     });
   });
   describe('compose', () => {

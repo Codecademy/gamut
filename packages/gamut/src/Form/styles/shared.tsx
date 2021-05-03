@@ -18,11 +18,17 @@ export const colorStates = {
   error: { color: theme.colors.red, borderColor: theme.colors.red },
   valid: { color: theme.colors.green },
   activated: { borderColor: theme.colors.navy },
+  dropdown: {
+    focused: { backgroundColor: theme.colors[`gray-100`] },
+    selected: { backgroundColor: theme.colors[`gray-300`] },
+  },
 };
 
 export type conditionalStyleProps = {
   error?: boolean;
   activated?: boolean;
+  isFocused?: boolean | null;
+  isDisabled?: boolean | null;
 };
 
 type iconPaddingProps = {
@@ -31,6 +37,23 @@ type iconPaddingProps = {
 
 export type conditionalInputStyleProps = conditionalStyleProps &
   iconPaddingProps;
+
+// these are split for now because ReactRecurly demands separate styles for focus.
+export const formFieldFocusStyles = css`
+  border-color: ${colorStates.hover.borderColor};
+  box-shadow: inset 0 0 0 1px ${colorStates.hover.borderColor};
+`;
+
+const formFieldDisabledStyles = css`
+  background-color: ${colorStates.disabled.backgroundColor};
+  border-color: ${colorStates.disabled.borderColor};
+  color: ${colorStates.disabled.color};
+  font-style: italic;
+  cursor: not-allowed;
+  &:hover {
+    border-color: ${colorStates.disabled.borderColor};
+  }
+`;
 
 export const conditionalStyles = ({
   error,
@@ -51,6 +74,52 @@ export const conditionalStyles = ({
       }
     `;
   }
+
+  if (activated) {
+    return css`
+      border-color: ${colorStates.activated.borderColor};
+    `;
+  }
+};
+
+export const conditionalBorderStyles = ({
+  error,
+  activated,
+  isFocused,
+  isDisabled,
+}: conditionalStyleProps) => {
+  if (isDisabled) {
+    return formFieldDisabledStyles;
+  }
+
+  if (error && isFocused) {
+    return css`
+      border-color: ${colorStates.error.borderColor};
+      box-shadow: inset 0 0 0 1px ${colorStates.error.borderColor};
+
+      &:hover {
+        border-color: ${colorStates.error.borderColor};
+      }
+    `;
+  }
+
+  if (error) {
+    return css`
+      border-color: ${colorStates.error.borderColor};
+
+      &:hover {
+        border-color: ${colorStates.error.borderColor};
+      }
+    `;
+  }
+
+  if (isFocused) {
+    return css`
+      border-color: ${colorStates.hover.borderColor};
+      box-shadow: inset 0 0 0 1px ${colorStates.hover.borderColor};
+    `;
+  }
+
   if (activated) {
     return css`
       border-color: ${colorStates.activated.borderColor};
@@ -61,7 +130,7 @@ export const conditionalStyles = ({
 export const iconPadding = ({ icon }: iconPaddingProps) => {
   if (icon) {
     return css`
-      padding-right: 2.3rem; ;
+      padding-right: 2.3rem;
     `;
   }
 };
@@ -83,17 +152,32 @@ export const formBaseStyles = css`
   color: ${colorStates.base.color};
   font-weight: normal;
   font-size: ${theme.fontSize[16]};
+  cursor: pointer;
 `;
 
-export const formBaseFieldStyles = css`
+export const formBaseComponentStyles = css`
   ${formBaseStyles}
-  ${transitionConcatenator(['border-color', 'box-shadow'], '0.2s ease-in-out')}
   width: 100%;
   outline: none;
   background-color: ${colorStates.base.backgroundColor};
+  min-width: auto;
+`;
+
+export const formDropdownStyles = (error: boolean) => css`
+  ${formBaseComponentStyles}
+  position: absolute;
+  margin-top: -2px;
+  border: 1px solid ${colorStates.activated.borderColor};
+  border-top: 1px solid
+    ${error ? colorStates.error.borderColor : colorStates.hover.borderColor};
+  z-index: 2;
+`;
+
+export const formBaseFieldStyles = css`
+  ${formBaseComponentStyles}
+  ${transitionConcatenator(['border-color', 'box-shadow'], '0.2s ease-in-out')}
   border: 1px solid ${colorStates.base.borderColor};
   border-radius: 2px;
-  min-width: auto;
 
   &:hover {
     border-color: ${colorStates.hover.borderColor};
@@ -106,19 +190,9 @@ export const formBaseFieldStyles = css`
 
   &:disabled,
   [disabled] {
+    ${formFieldDisabledStyles};
     opacity: 1;
-    background-color: ${colorStates.disabled.backgroundColor};
-    border-color: ${colorStates.disabled.borderColor};
-    color: ${colorStates.disabled.color};
-    font-style: italic;
-    cursor: not-allowed;
   }
-`;
-
-// these are split for now because ReactRecurly demands separate styles for focus.
-export const formFieldFocusStyles = css`
-  border-color: ${colorStates.hover.borderColor};
-  box-shadow: inset 0 0 0 1px ${colorStates.hover.borderColor};
 `;
 
 // ReactRecurly needs to apply padding in a very particular way

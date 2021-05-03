@@ -1,11 +1,6 @@
 /* eslint-disable local-rules/gamut-import-paths */
 import { Box } from '@codecademy/gamut/src';
-import {
-  colorModes,
-  swatches,
-  theme,
-  trueColors,
-} from '@codecademy/gamut-styles/src';
+import { swatches, theme, trueColors } from '@codecademy/gamut-styles/src';
 import React from 'react';
 
 import { Code, ColorScale } from '~styleguide/blocks';
@@ -31,7 +26,7 @@ const PATH_COLUMN = {
 };
 
 export const lightMode = {
-  rows: Object.entries(colorModes.light).map(([id, value]) => ({
+  rows: Object.entries(theme.colorModes.modes.light).map(([id, value]) => ({
     id,
     hex: value,
   })),
@@ -45,13 +40,19 @@ export const lightMode = {
       key: 'swatch',
       name: 'Swatch',
       size: 'fill',
-      render: ({ hex }: any) => <ColorScale colors={{ hex }} />,
+      render: ({ hex }: any) => (
+        <ColorScale
+          colors={{
+            hex: theme.colors[hex as keyof typeof theme['colors']],
+          }}
+        />
+      ),
     },
   ],
 };
 
 export const darkMode = {
-  rows: Object.entries(colorModes.dark).map(([id, value]) => ({
+  rows: Object.entries(theme.colorModes.modes.dark).map(([id, value]) => ({
     id,
     hex: value,
   })),
@@ -65,7 +66,11 @@ export const darkMode = {
       key: 'swatch',
       name: 'Swatch',
       size: 'fill',
-      render: ({ hex }: any) => <ColorScale colors={{ hex }} />,
+      render: ({ hex }: any) => (
+        <ColorScale
+          colors={{ hex: theme.colors[hex as keyof typeof theme['colors']] }}
+        />
+      ),
     },
   ],
 };

@@ -1,5 +1,6 @@
 import { Theme } from '@emotion/react';
 
+import { AbstractParser, Scale } from './config';
 import { PropertyTypes } from './properties';
 
 export type AbstractProps = ThemeProps<Record<string, unknown>>;
@@ -54,3 +55,12 @@ export type SelectorProps<Props, System> = {
     ? PropertyTypes[K]
     : Omit<PropertyTypes, keyof System> & Omit<System, 'theme'>;
 };
+
+export type StyleProps<
+  T extends (args: AbstractProps) => CSSObject
+> = Parameters<T>[0];
+
+export type ScaleValue<
+  P extends AbstractParser,
+  Prop extends keyof P['config']
+> = Scale<P['config'][Prop]>;

@@ -1,4 +1,6 @@
-export const theme = {
+import { createTheme } from '../../src/createTheme';
+
+export const { theme } = createTheme({
   breakpoints: {
     xs: 'XS',
     sm: 'SM',
@@ -17,4 +19,4 @@ export const theme = {
     48: '3rem',
     64: '4rem',
   },
-} as const;
+} as const).build();
