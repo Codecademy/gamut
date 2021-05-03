@@ -13,7 +13,7 @@ import styled from '@emotion/styled';
 import { motion } from 'framer-motion';
 import React, { useMemo, useState } from 'react';
 
-import { Box, FlexBox } from '../Box';
+import { Box } from '../Box';
 import { FillButton, IconButton } from '../Button';
 import { Truncate } from '../Truncate';
 
@@ -184,14 +184,7 @@ export const Alert: React.FC<AlertProps> = ({
       gridTemplateColumns={columns}
       {...props}
     >
-      <FlexBox
-        height="2rem"
-        width="2rem"
-        alignItems="center"
-        justifyContent="center"
-      >
-        <Icon size={16} aria-hidden="true" />
-      </FlexBox>
+      <Icon size={32} aria-hidden p={8} />
       {content}
       {truncated && (
         <CollapseButton

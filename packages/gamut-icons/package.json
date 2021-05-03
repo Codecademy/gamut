@@ -28,5 +28,8 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "dependencies": {
+    "@codecademy/gamut-styles": "^9.7.1"
   }
 }
