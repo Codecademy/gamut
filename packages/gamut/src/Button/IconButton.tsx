@@ -1,17 +1,22 @@
 import { GamutIconProps } from '@codecademy/gamut-icons';
 import { system } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
-import React, { ComponentProps, forwardRef } from 'react';
+import React, { forwardRef } from 'react';
 
 import { ButtonBaseElements } from '../ButtonBase/ButtonBase';
 import { ButtonInner } from './ButtonInner';
-import { buttonColors, ButtonOutline, createStates } from './ButtonOutline';
-import { config, useColorMode } from './shared';
+import {
+  buttonColors,
+  ButtonOutline,
+  ButtonOutlineProps,
+  createStates,
+} from './ButtonOutline';
+import { useColorMode } from './shared';
 import { SizedButtonProps } from './types';
 
 const { background, backgroundMuted, backgroundEmphasized } = buttonColors;
 
-const IconButtonInner = styled(ButtonInner, config)<SizedButtonProps>(
+const IconButtonInner = styled(ButtonInner)<SizedButtonProps>(
   createStates({
     base: { color: background },
     hover: { backgroundColor: backgroundEmphasized },
@@ -44,11 +49,10 @@ const IconButtonInner = styled(ButtonInner, config)<SizedButtonProps>(
   })
 );
 
-export type IconButtonProps = SizedButtonProps &
-  ComponentProps<typeof ButtonOutline> & {
-    children?: never;
-    icon: React.ComponentType<GamutIconProps>;
-  };
+export interface IconButtonProps extends SizedButtonProps, ButtonOutlineProps {
+  children?: never;
+  icon: React.ComponentType<GamutIconProps>;
+}
 
 export const IconButton = forwardRef<ButtonBaseElements, IconButtonProps>(
   ({ icon: Icon, size = 'normal', mode, ...props }, ref) => {
