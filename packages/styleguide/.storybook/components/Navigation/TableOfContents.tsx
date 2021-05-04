@@ -10,22 +10,20 @@ import { StatusTab } from '../Docs/StatusIndicator';
 export const TableOfContents = () => {
   const { toc } = useNavigation();
   return (
-    <Box
-      paddingTop={16}
-      display="grid"
+    <GridBox
+      pt={16}
       maxWidth="100%"
       gridTemplateColumns={{
-        base: '1fr',
+        _: '1fr',
         md: 'repeat(2, 1fr)',
         lg: 'repeat(3, 1fr)',
       }}
-      columnGap={32}
-      rowGap={32}
+      gap={32}
     >
       {toc.children.map((link: ContentItem) => (
         <Section {...link} key={`toc-item-${link.id}`} />
       ))}
-    </Box>
+    </GridBox>
   );
 };
 
@@ -54,7 +52,7 @@ export const Section: React.FC<ContentItem> = ({
   return (
     <Card
       shadow="medium"
-      padding={0}
+      p={0}
       rowGap={8}
       display="grid"
       gridTemplateRows={`max-content ${pxRem(14 * 1.5 + 24)}`}
@@ -64,7 +62,7 @@ export const Section: React.FC<ContentItem> = ({
         gridTemplateRows={`min-content 4.5rem`}
         position={hasSubsections ? 'relative' : 'initial'}
         rowGap={8}
-        padding={24}
+        p={24}
       >
         <Link variant="area" id={id}>
           <Box position="relative">
@@ -78,13 +76,7 @@ export const Section: React.FC<ContentItem> = ({
           <Reset>{subtitle && <Description>{subtitle}</Description>}</Reset>
         </Box>
       </GridBox>
-      <FlexBox
-        borderStyleTop={hasSubsections ? 'solid' : 'none'}
-        borderWidthTop="1px"
-        borderColorTop="navy"
-        paddingX={24}
-        paddingY={12}
-      >
+      <FlexBox borderTop={hasSubsections ? 1 : 'none'} px={24} py={12}>
         <FlexBox
           flexWrap="wrap"
           overflow="hidden"

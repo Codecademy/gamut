@@ -1,4 +1,10 @@
+import { shouldForwardProp } from '@codecademy/gamut-styles';
+import { Theme } from '@emotion/react';
 import styled from '@emotion/styled';
+
+export interface AppWrapperProps {
+  backgroundColor?: keyof Theme['colors'];
+}
 
 /**
  *
@@ -6,10 +12,12 @@ import styled from '@emotion/styled';
  * https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Positioning/Understanding_z_index/The_stacking_context
  *
  * **WARNING**: Please do not change the values of position or z-index here or extend this component with overrides
- * to these propertiesas it will no longer guarantee a predictable behavior
+ * to these properties as it will no longer guarantee a predictable behavior
  */
 
-export const AppWrapper = styled.div`
+export const AppWrapper = styled('div', { shouldForwardProp })<AppWrapperProps>`
+  background-color: ${({ backgroundColor = 'white', theme }) =>
+    theme.colors[backgroundColor]};
   position: relative;
   z-index: 1;
 `;
