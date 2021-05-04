@@ -261,7 +261,7 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
   );
 
   return (
-    <GridBox cols={['1:1', , '1:1:1']}>
+    <GridBox cols={[2, , 3]}>
       {company}
       {resources}
       {support({ _: 'unset', sm: 'none' })}
