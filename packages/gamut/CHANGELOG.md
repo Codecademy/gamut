@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [32.9.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@32.9.0...@codecademy/gamut@32.9.1) (2021-05-04)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [32.9.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@32.8.3...@codecademy/gamut@32.9.0) (2021-05-04)
+
+
+### Features
+
+* **Box:** Migration + Simplification [GM-202] ([8e60ea2](https://github.com/Codecademy/client-modules/commit/8e60ea2a0be36cb4443aed2018738ab7e568ae73)), closes [/github.com/Codecademy/client-modules/pull/1658/files#diff-0a88d99d132d11cc2e6fbc3af0befc3973e56db2e35842fe02a35c92d58b9](https://github.com/Codecademy//github.com/Codecademy/client-modules/pull/1658/files/issues/diff-0a88d99d132d11cc2e6fbc3af0befc3973e56db2e35842fe02a35c92d58b9)
+
+
+
+### [32.8.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@32.8.2...@codecademy/gamut@32.8.3) (2021-05-04)
+
+
+### Bug Fixes
+
+* **Props/Dialog/Button:** Prop Fixes for Button / Dialog ([9b03d03](https://github.com/Codecademy/client-modules/commit/9b03d0336f545f5107ba600a953f6f04edcf97da))
+
+
+
 ### [32.8.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@32.8.1...@codecademy/gamut@32.8.2) (2021-05-03)
 
 **Note:** Version bump only for package @codecademy/gamut

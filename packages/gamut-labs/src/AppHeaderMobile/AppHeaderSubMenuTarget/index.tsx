@@ -56,12 +56,12 @@ export const AppHeaderSubMenuTarget: React.FC<AppHeaderSubMenuTargetProps> = ({
       <AppHeaderLinkButtonInner
         lineHeight="base"
         minWidth="0"
-        paddingY={16}
+        py={16}
         textAlign="left"
         display="flex"
       >
         <FlexBox alignItems="center">
-          <FlexBox marginRight={16}>{getIcon()}</FlexBox>
+          <FlexBox mr={16}>{getIcon()}</FlexBox>
 
           {item.type === 'profile-dropdown' ? (
             <DisplayNameText>{item.userDisplayName}</DisplayNameText>

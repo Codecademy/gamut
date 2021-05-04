@@ -216,8 +216,8 @@ export const Popover: React.FC<PopoverProps> = ({
               <Pattern
                 data-testid="popover-pattern"
                 name={pattern}
-                width="100%"
-                height="100%"
+                width={1}
+                height={1}
               />
             </PatternContainer>
           )}
