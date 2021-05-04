@@ -1,5 +1,5 @@
 import {
-  AppWrapper,
+  PageWrapper,
   SkipToContent,
   SkipToContentTarget,
 } from '@codecademy/gamut';
@@ -44,12 +44,12 @@ export const GlobalPage: React.FC<GlobalPageProps> = ({
   skipToContentId,
 }) => {
   return (
-    <AppWrapper backgroundColor={backgroundColor}>
+    <PageWrapper backgroundColor={backgroundColor}>
       <SkipToContent contentId={skipToContentId || defaultSkipToContentId} />
       <GlobalHeader {...header} />
       {!skipToContentId && <SkipToContentTarget id={defaultSkipToContentId} />}
       <AppWrapper as={contentAs}>{children}</AppWrapper>
       <GlobalFooter {...footer} />
-    </AppWrapper>
+    </PageWrapper>
   );
 };
