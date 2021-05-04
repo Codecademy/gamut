@@ -3,6 +3,41 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [36.13.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@36.12.3...@codecademy/styleguide@36.13.0) (2021-05-04)
+
+
+### Features
+
+* added GlobalPage organism ([56075b7](https://github.com/Codecademy/client-modules/commit/56075b78a0b8cc344640656e48a392762a856dcc))
+
+
+
+### [36.12.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@36.12.2...@codecademy/styleguide@36.12.3) (2021-05-04)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [36.12.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@36.12.1...@codecademy/styleguide@36.12.2) (2021-05-04)
+
+
+### Bug Fixes
+
+* **ListSection:** Fixing accessibility and spacing ([43e9420](https://github.com/Codecademy/client-modules/commit/43e9420382f92463b8654c1a983e1b1eabd2bd36))
+
+
+
+### [36.12.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@36.12.0...@codecademy/styleguide@36.12.1) (2021-05-04)
+
+
+### Bug Fixes
+
+* **styleguide:** Updates props table with variance support [WEB-1451] ([426ea22](https://github.com/Codecademy/client-modules/commit/426ea228bab62e98d036a5e9aeeae787c20f3ccd))
+
+
+
 ## [36.12.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@36.11.2...@codecademy/styleguide@36.12.0) (2021-05-04)
 
 
