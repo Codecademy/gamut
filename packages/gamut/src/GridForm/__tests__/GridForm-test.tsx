@@ -325,7 +325,7 @@ describe('GridForm', () => {
     expect(form.find('textarea#id-2-the-ego').length).toBe(1);
     expect(form.find('input#fire-file').length).toBe(1);
   });
-  it('submits hidden input valuea', async () => {
+  it('submits hidden input value', async () => {
     const api = createPromise<{}>();
     const onSubmit = async (values: {}) => api.resolve(values);
 
