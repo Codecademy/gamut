@@ -16,7 +16,7 @@ export const CTA: React.FC<CTAProps> = ({
   onCtaButtonClick,
   children,
 }) => (
-  <Box marginTop={32} className={className}>
+  <Box mt={32} className={className}>
     <CTAButton href={href} onClick={onCtaButtonClick} mode={mode}>
       {children}
     </CTAButton>
