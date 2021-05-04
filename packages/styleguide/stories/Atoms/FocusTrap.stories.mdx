@@ -30,11 +30,10 @@ This component is a wrapper around the [react-focus-on](https://github.com/theKa
             </FillButton>
             <FocusTrap {...args} active={trapActive}>
               <Box
-                padding="24"
-                marginY="24"
+                p="24"
+                mY="24"
+                border={1}
                 borderColor={trapActive ? 'black' : 'gray-200'}
-                borderWidth="1px"
-                borderStyle="solid"
               >
                 <GridForm
                   fields={[
