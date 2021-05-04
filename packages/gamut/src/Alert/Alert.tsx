@@ -162,7 +162,7 @@ export const Alert: React.FC<AlertProps> = ({
   const columns = `max-content minmax(0, 1fr) repeat(${numberOfColumns}, max-content)`;
   const content =
     props.placement === 'inline' ? (
-      <Box paddingY={4}>{children}</Box>
+      <Box py={4}>{children}</Box>
     ) : (
       <AlertContent
         variants={contentVariants}
@@ -187,8 +187,8 @@ export const Alert: React.FC<AlertProps> = ({
       <FlexBox
         height="2rem"
         width="2rem"
-        alignItems="center"
         justifyContent="center"
+        alignItems="center"
       >
         <Icon size={16} aria-hidden="true" />
       </FlexBox>
