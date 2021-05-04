@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [32.10.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@32.10.0...@codecademy/gamut@32.10.1) (2021-05-04)
+
+
+### Bug Fixes
+
+* **LayoutGrid:** Add ordered fallback ([38c64de](https://github.com/Codecademy/client-modules/commit/38c64de38baa5fdbdba8ebf72d95191307e80362))
+
+
+
+## [32.10.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@32.9.1...@codecademy/gamut@32.10.0) (2021-05-04)
+
+
+### Features
+
+* added GlobalPage organism ([56075b7](https://github.com/Codecademy/client-modules/commit/56075b78a0b8cc344640656e48a392762a856dcc))
+
+
+
+### [32.9.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@32.9.0...@codecademy/gamut@32.9.1) (2021-05-04)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
 ## [32.9.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@32.8.3...@codecademy/gamut@32.9.0) (2021-05-04)
 
 

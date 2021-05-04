@@ -1,9 +1,13 @@
-import React, { useState } from 'react';
+import { theme } from '@codecademy/gamut-styles';
+import styled from '@emotion/styled';
+import React, { Children, useState } from 'react';
 
 import { PageSection, SectionButton } from '..';
 
 export type ListSectionProps = {
   title: string;
+  headerButton?: SectionButton;
+  headerSecondaryButton?: SectionButton;
   /**
    * Number of items to be initally displayed
    *
@@ -11,34 +15,50 @@ export type ListSectionProps = {
    * If the initial display amount matches the number of list items, Show All button will not appear.
    */
   initialDisplayAmount?: number;
-  headerButton?: SectionButton;
-  headerSecondaryButton?: SectionButton;
 };
+
+const UnstyledUnorderedList = styled.ul`
+  list-style: none;
+  padding: 0;
+  margin: 0;
+`;
+
+const StyledListItem = styled.li`
+  &:not(:last-child) {
+    margin-bottom: ${theme.spacing[24]};
+  }
+`;
 
 export const ListSection: React.FC<ListSectionProps> = ({
   title,
-  initialDisplayAmount = 3,
   headerButton,
   headerSecondaryButton,
+  initialDisplayAmount = 3,
   children,
 }) => {
-  const listItems = React.Children.toArray(children);
   const [showAll, setShowAll] = useState(false);
 
   const handleShowAll = () => {
     setShowAll(!showAll);
   };
 
-  const renderItems = () => {
+  const renderListItems = () => {
+    const listItems = Children.map(children, (child) => (
+      <StyledListItem>{child}</StyledListItem>
+    ));
+
+    if (!listItems) return null;
     if (showAll) return listItems;
     return listItems.slice(0, initialDisplayAmount);
   };
 
   const renderFooterButton = () => {
-    if (listItems.length <= initialDisplayAmount) return null;
+    if (Children.toArray(children).length <= initialDisplayAmount) return null;
+    const buttonText = `Show ${showAll ? 'Less' : 'All'}`;
     return {
-      text: `Show ${showAll ? 'Less' : 'All'}`,
+      text: buttonText,
       onClick: handleShowAll,
+      'aria-label': `${buttonText}, ${title}`,
     };
   };
 
@@ -49,7 +69,9 @@ export const ListSection: React.FC<ListSectionProps> = ({
       headerButton={headerButton}
       headerSecondaryButton={headerSecondaryButton}
     >
-      {renderItems()}
+      <UnstyledUnorderedList aria-label={title} aria-live="polite">
+        {renderListItems()}
+      </UnstyledUnorderedList>
     </PageSection>
   );
 };
