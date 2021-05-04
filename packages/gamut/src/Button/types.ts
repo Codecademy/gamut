@@ -1,15 +1,16 @@
 import { Theme } from '@emotion/react';
 import { HTMLProps } from 'react';
 
-export type ButtonProps = Omit<
-  HTMLProps<HTMLAnchorElement> & HTMLProps<HTMLButtonElement>,
-  'size' | 'ref'
-> & {
+export interface ButtonProps
+  extends Omit<
+    HTMLProps<HTMLAnchorElement> & HTMLProps<HTMLButtonElement>,
+    'size' | 'ref' | 'height' | 'width' | 'size'
+  > {
+  as?: never;
   mode?: keyof Theme['colorModes']['modes'];
   variant?: 'primary' | 'secondary';
-};
+}
 
-export type ButtonSizeProps = {
+export interface SizedButtonProps extends ButtonProps {
   size?: 'normal' | 'small';
-};
-export type SizedButtonProps = ButtonProps & ButtonSizeProps;
+}
