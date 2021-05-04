@@ -236,12 +236,7 @@ export const space = {
       name: 'Example',
       size: 'fill',
       render: ({ value }: any) => (
-        <Box
-          display="inline-block"
-          height={value}
-          width={value}
-          backgroundColor="navy"
-        />
+        <Box display="inline-block" size={value} bg="navy" />
       ),
     },
   ],
@@ -274,12 +269,10 @@ export const boxShadow = {
       render: ({ value }: any) => (
         <Box
           boxShadow={value}
-          width="1.5rem"
-          height="1.5rem"
-          borderStyle="solid"
+          size="1.5rem"
+          border={1}
           borderColor="gray-400"
-          borderWidth="1px"
-          marginBottom={32}
+          mb={32}
         />
       ),
     },
