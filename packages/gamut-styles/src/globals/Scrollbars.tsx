@@ -12,12 +12,12 @@ const scrollbarSettings = css`
   }
 
   ::-webkit-scrollbar {
-    width: 0.5rem;
-    height: 0.5rem;
+    width: ${theme.spacing[8]};
+    height: ${theme.spacing[8]};
   }
 
   ::-webkit-scrollbar-thumb {
-    border-radius: calc(0.5rem);
+    border-radius: ${theme.spacing[8]};
   }
 `;
 
