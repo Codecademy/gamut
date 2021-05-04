@@ -10,6 +10,7 @@ import { GridForm } from '..';
 import {
   stubCheckboxField,
   stubFileField,
+  stubHiddenField,
   stubRadioGroupField,
   stubSelectField,
   stubSelectOptions,
@@ -324,5 +325,29 @@ describe('GridForm', () => {
     expect(form.find('textarea#id-2-the-ego').length).toBe(1);
     expect(form.find('input#fire-file').length).toBe(1);
   });
-  it('submits hidden values', () => {});
+  it('submits hidden values', async () => {
+    const api = createPromise<{}>();
+    const onSubmit = async (values: {}) => api.resolve(values);
+
+    const wrapped = mount(
+      <ThemeProvider theme={theme}>
+        <GridForm
+          fields={[stubHiddenField]}
+          onSubmit={onSubmit}
+          submit={{ type: 'fill', contents: <>Submit</>, size: 6 }}
+        />
+      </ThemeProvider>
+    );
+
+    await act(async () => {
+      wrapped.find('form').simulate('submit');
+      await api.innerPromise;
+    });
+
+    const result = await api.innerPromise;
+
+    expect(result).toEqual({
+      [stubHiddenField.name]: stubHiddenField.defaultValue,
+    });
+  });
 });

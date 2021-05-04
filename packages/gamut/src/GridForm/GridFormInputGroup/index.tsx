@@ -8,6 +8,7 @@ import { GridFormField } from '../types';
 import { GridFormCheckboxInput } from './GridFormCheckboxInput';
 import { GridFormCustomInput } from './GridFormCustomInput';
 import { GridFormFileInput } from './GridFormFileInput';
+import { GridFormHiddenInput } from './GridFormHiddenInput';
 import { GridFormRadioGroupInput } from './GridFormRadioGroupInput';
 import { GridFormSelectInput } from './GridFormSelectInput';
 import { GridFormTextArea } from './GridFormTextArea';
@@ -95,6 +96,8 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
             showRequired={isRequired}
           />
         );
+      case 'hidden':
+        return <GridFormHiddenInput register={register} field={field} />;
 
       default:
         return (

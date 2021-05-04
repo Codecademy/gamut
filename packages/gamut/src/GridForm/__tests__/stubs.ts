@@ -70,4 +70,5 @@ export const stubTextareaField: GridFormTextAreaField = {
 export const stubHiddenField: GridFormHiddenField = {
   name: 'secret-field',
   type: 'hidden',
+  defaultValue: "you can't see me!",
 };

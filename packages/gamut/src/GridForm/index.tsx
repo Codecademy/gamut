@@ -105,7 +105,9 @@ export function GridForm<
           const isFirstError = !pastFirstError && errorMessage !== undefined;
           pastFirstError = pastFirstError || isFirstError;
           const requiredBoolean = !!(
-            field.validation && field.validation.required
+            field.type !== 'hidden' &&
+            field.validation &&
+            field.validation.required
           );
 
           return (
