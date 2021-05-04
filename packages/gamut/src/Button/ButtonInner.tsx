@@ -2,8 +2,9 @@ import { fontSmoothPixel, system, timing } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 
 import { config } from './shared';
+import { ButtonProps } from './types';
 
-export const ButtonInner = styled('span', config)(
+export const ButtonInner = styled('span', config)<ButtonProps>(
   fontSmoothPixel,
   system.css({
     border: 2,
