@@ -16,7 +16,6 @@ module.exports = {
     'plugin:react-hooks/recommended',
     'airbnb',
     'plugin:@typescript-eslint/recommended',
-    'plugin:@typescript-eslint/recommended-requiring-type-checking',
     'prettier',
     ...localExtends,
   ],
