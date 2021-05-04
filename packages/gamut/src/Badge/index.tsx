@@ -4,14 +4,14 @@ import { Box } from '../Box';
 
 export const Badge: React.FC = ({ children }) => (
   <Box
-    backgroundColor="blue"
+    bg="blue"
     borderRadius="3px"
     textColor="white"
     display="inline-block"
     fontSize={14}
-    marginX={8}
-    paddingY={4}
-    paddingX={12}
+    mx={8}
+    py={4}
+    px={12}
   >
     {children}
   </Box>
