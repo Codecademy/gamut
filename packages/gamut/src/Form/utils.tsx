@@ -16,7 +16,6 @@ const formatAsOptions = ({ label, value, key }: OptionTypeBase) => {
 };
 export const parseOptions = ({ options, id }: ParseOptionProps) => {
   const parsedOptions: Array<OptionTypeBase> = [];
-  g;
 
   if (options instanceof Array) {
     options.forEach((value) => {
