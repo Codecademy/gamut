@@ -8,12 +8,17 @@ export type ParseOptionProps = {
 };
 
 const formatAsOptions = ({ label, value, key }: OptionTypeBase) => {
-  const uniqueKey = key ? key : label;
-  return (
-    <option key={uniqueKey} value={value} data-testid={uniqueKey}>
+  const option = key ? (
+    <option key={key} value={value} data-testid={key}>
+      {label}
+    </option>
+  ) : (
+    <option key={label} value={value} data-testid={label}>
       {value}
     </option>
   );
+
+  return option;
 };
 export const parseOptions = ({ options, id }: ParseOptionProps) => {
   const parsedOptions: Array<OptionTypeBase> = [];
