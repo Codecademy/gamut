@@ -16,7 +16,7 @@
     "@codecademy/gamut-system": "^0.7.1",
     "@codecademy/gamut-tests": "^2.3.24",
     "@codecademy/variance": "^0.11.1",
-    "component-test-setup": "^0.2.5"
+    "component-test-setup": "^0.3.1"
   },
   "license": "MIT",
   "publishConfig": {
