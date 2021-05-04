@@ -10,7 +10,10 @@ export interface BackgroundProps
     ComponentProps<typeof ColorMode>,
     'mode' | 'alwaysSetVariables'
   > {
-  bg: keyof Theme['colors'];
+  bg?: Exclude<
+    keyof Theme['colors'],
+    keyof Theme['colorModes']['modes'][keyof Theme['colorModes']['modes']]
+  >;
   className?: string;
   children: React.ReactNode;
 }
@@ -18,10 +21,12 @@ export interface BackgroundProps
 export const Background = forwardRef<HTMLDivElement, BackgroundProps>(
   ({ children, className, bg, ...rest }, ref) => {
     const {
-      colorModes: { modes },
+      colorModes: { active, modes },
     } = useTheme();
-    const background = getColorValue(bg);
+
     const accessibleMode = useMemo(() => {
+      if (!bg) return;
+      const background = getColorValue(bg);
       const { light, dark } = modes;
       const lightText = getColorValue(light.text);
       const darkText = getColorValue(dark.text);
@@ -33,13 +38,13 @@ export const Background = forwardRef<HTMLDivElement, BackgroundProps>(
         lightModeContrast > darkModeContrast ? 'light' : 'dark';
 
       return highestContrastMode;
-    }, [modes, background]);
+    }, [modes, bg]);
 
     return (
       <ColorMode
         className={className}
-        mode={accessibleMode}
-        bg={bg}
+        mode={accessibleMode ?? active}
+        bg={bg ?? 'background'}
         {...rest}
         ref={ref}
       >

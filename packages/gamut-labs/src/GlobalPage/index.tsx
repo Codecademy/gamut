@@ -4,14 +4,14 @@ import {
   SkipToContent,
   SkipToContentTarget,
 } from '@codecademy/gamut';
-import { theme } from '@codecademy/gamut-styles';
+import { BackgroundProps } from '@codecademy/gamut-styles';
 import React from 'react';
 
 import { GlobalFooter, GlobalFooterProps } from '../GlobalFooter';
 import { GlobalHeader, GlobalHeaderProps } from '../GlobalHeader';
 
 export type GlobalPageProps = {
-  backgroundColor?: keyof typeof theme.colors;
+  backgroundColor?: BackgroundProps['bg'];
 
   /**
    * Element type to render around the children.
@@ -37,7 +37,7 @@ export type GlobalPageProps = {
 const defaultSkipToContentId = 'page-skip-to-content-target';
 
 export const GlobalPage: React.FC<GlobalPageProps> = ({
-  backgroundColor = 'background',
+  backgroundColor,
   children,
   contentAs = 'div',
   footer,
