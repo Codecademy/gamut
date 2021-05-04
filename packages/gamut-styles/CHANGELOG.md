@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [9.7.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@9.7.2...@codecademy/gamut-styles@9.7.3) (2021-05-04)
+
+
+### Bug Fixes
+
+* **Props/Dialog/Button:** Prop Fixes for Button / Dialog ([9b03d03](https://github.com/Codecademy/client-modules/commit/9b03d0336f545f5107ba600a953f6f04edcf97da))
+
+
+
 ### [9.7.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@9.7.1...@codecademy/gamut-styles@9.7.2) (2021-05-03)
 
 **Note:** Version bump only for package @codecademy/gamut-styles
