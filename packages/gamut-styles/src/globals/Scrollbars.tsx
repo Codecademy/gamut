@@ -1,6 +1,7 @@
 import { css, Global } from '@emotion/react';
 import React from 'react';
 
+import { scrollbarColors } from '../styles/scrollbar';
 import { theme } from '../theme';
 
 const scrollbarSettings = css`
@@ -18,15 +19,6 @@ const scrollbarSettings = css`
 
   ::-webkit-scrollbar-thumb {
     border-radius: ${theme.spacing[8]};
-  }
-`;
-
-/** These are separate styles as they must be scoped to color mode */
-export const scrollbarColors = css`
-  scrollbar-color: ${theme.colors.scrollbarThumb} transparent;
-
-  ::-webkit-scrollbar-thumb {
-    background-color: ${theme.colors.scrollbarThumb};
   }
 `;
 
