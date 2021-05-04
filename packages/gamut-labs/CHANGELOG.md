@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [15.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@15.3.2...@codecademy/gamut-labs@15.4.0) (2021-05-04)
+
+
+### Features
+
+* added GlobalPage organism ([56075b7](https://github.com/Codecademy/client-modules/commit/56075b78a0b8cc344640656e48a392762a856dcc))
+
+
+
 ### [15.3.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@15.3.1...@codecademy/gamut-labs@15.3.2) (2021-05-04)
 
 **Note:** Version bump only for package @codecademy/gamut-labs
