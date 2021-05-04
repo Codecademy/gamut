@@ -29,6 +29,8 @@ You will want to use this when the main content of your page is easily divided/o
 
 It has a built in `Show All` functionality.`Show All` button will appear if the number of list items is higher than the initial display amount you wish to show. Once `Show All` button is clicked, it will display all of the list items and the button will change to `Show Less`.
 
+NOTE: Internally, this wraps all children inside `li` elements, so no need to do that yourself. You'll get all the accessibility benefits of the role='listitem' by default out of the box.
+
 <Canvas>
   <Story name="ListSection">
     {(args) => (
