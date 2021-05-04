@@ -37,7 +37,7 @@ export type GlobalPageProps = {
 const defaultSkipToContentId = 'page-skip-to-content-target';
 
 export const GlobalPage: React.FC<GlobalPageProps> = ({
-  backgroundColor,
+  backgroundColor = 'background',
   children,
   contentAs = 'div',
   footer,

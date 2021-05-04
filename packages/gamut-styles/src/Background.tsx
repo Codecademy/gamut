@@ -10,13 +10,12 @@ export interface BackgroundProps
     ComponentProps<typeof ColorMode>,
     'mode' | 'alwaysSetVariables'
   > {
-  bg?: Exclude<
-    keyof Theme['colors'],
-    keyof Theme['colorModes']['modes'][keyof Theme['colorModes']['modes']]
-  >;
+  bg: keyof Theme['colors'];
   className?: string;
   children: React.ReactNode;
 }
+
+type ColorAliases = keyof Theme['colorModes']['modes'][keyof Theme['colorModes']['modes']];
 
 export const Background = forwardRef<HTMLDivElement, BackgroundProps>(
   ({ children, className, bg, ...rest }, ref) => {
@@ -24,10 +23,19 @@ export const Background = forwardRef<HTMLDivElement, BackgroundProps>(
       colorModes: { active, modes },
     } = useTheme();
 
+    /** If a color alias was used then look up the true color key from the active mode */
+    const trueColor = useMemo(() => {
+      return Object.keys(modes[active]).includes(bg)
+        ? modes[active][bg as ColorAliases]
+        : bg;
+    }, [bg, active, modes]);
+
+    /** Determine the most accessible mode for the color picked */
     const accessibleMode = useMemo(() => {
-      if (!bg) return;
-      const background = getColorValue(bg);
       const { light, dark } = modes;
+
+      const background = getColorValue(trueColor);
+
       const lightText = getColorValue(light.text);
       const darkText = getColorValue(dark.text);
 
@@ -38,13 +46,13 @@ export const Background = forwardRef<HTMLDivElement, BackgroundProps>(
         lightModeContrast > darkModeContrast ? 'light' : 'dark';
 
       return highestContrastMode;
-    }, [modes, bg]);
+    }, [modes, trueColor]);
 
     return (
       <ColorMode
         className={className}
-        mode={accessibleMode ?? active}
-        bg={bg ?? 'background'}
+        mode={accessibleMode}
+        bg={bg}
         {...rest}
         ref={ref}
       >
