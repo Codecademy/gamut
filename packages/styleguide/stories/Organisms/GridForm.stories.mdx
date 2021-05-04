@@ -487,7 +487,6 @@ more details on why using placeholders is often bad.
     {(args) => (
       <GridForm
         fields={[
-          { type: 'hidden', name: 'yep', defaultValue: 'good' },
           {
             label: 'Email',
             placeholder: 'Your email',
@@ -683,5 +682,36 @@ A field can take a custom error in addition to validation errors. The validation
         />
       );
     }}
+  </Story>
+</Canvas>
+
+## Hidden Input
+
+Hidden inputs can be used to include data that users can't see or modify with the submission. For this implementation you can simply set the `defaultValue` in the object and it will be submitted with the regular form data.
+
+<Canvas>
+  <Story name="Hidden Input">
+    {(args) => (
+      <GridForm
+        fields={[
+          {
+            type: 'hidden',
+            name: 'secret-stuff',
+            defaultValue: "I'm invisible!",
+          },
+          {
+            label: "There's more than one field here!",
+            name: 'custom-input',
+            type: 'email',
+          },
+        ]}
+        onSubmit={async (values) => {
+          action('Form Submitted')(values);
+        }}
+        submit={{
+          contents: 'Submit',
+        }}
+      />
+    )}
   </Story>
 </Canvas>
