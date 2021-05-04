@@ -279,12 +279,7 @@ The Try Pro For Free button can take in an optional custom path.
         renderSearch={{
           desktop: () => <IconButton icon={SearchIcon} />,
           mobile: () => (
-            <Box
-              borderColor="navy"
-              borderStyle="solid"
-              borderWidth="1px"
-              padding={8}
-            >
+            <Box border={1} p={8}>
               Mobile Search Bar [Placeholder]
             </Box>
           ),
@@ -306,12 +301,7 @@ The Try Pro For Free button can take in an optional custom path.
         renderSearch={{
           desktop: () => <IconButton icon={SearchIcon} />,
           mobile: () => (
-            <Box
-              borderColor="navy"
-              borderStyle="solid"
-              borderWidth="1px"
-              padding={8}
-            >
+            <Box border={1} p={8}>
               Mobile Search Bar [Placeholder]
             </Box>
           ),
@@ -339,12 +329,7 @@ To mock this, IconButtons are provided as placeholders.
         renderSearch={{
           desktop: () => <IconButton icon={SearchIcon} />,
           mobile: () => (
-            <Box
-              borderColor="navy"
-              borderStyle="solid"
-              borderWidth="1px"
-              padding={8}
-            >
+            <Box border={1} p={8}>
               Mobile Search Bar [Placeholder]
             </Box>
           ),
@@ -365,7 +350,7 @@ To mock this, IconButtons are provided as placeholders.
 <Canvas>
   <Story name="GlobalHeader Over Background Color">
     {(args) => (
-      <Box backgroundColor="beige" width="100%">
+      <Box bg="beige" width="100%">
         <GlobalHeader
           action={() => {}}
           type="pro"
