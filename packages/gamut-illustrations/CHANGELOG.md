@@ -3,6 +3,81 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [0.13.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-illustrations@0.13.2...@codecademy/gamut-illustrations@0.13.3) (2021-05-04)
+
+**Note:** Version bump only for package @codecademy/gamut-illustrations
+
+
+
+
+
+### [0.13.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-illustrations@0.13.1...@codecademy/gamut-illustrations@0.13.2) (2021-05-04)
+
+**Note:** Version bump only for package @codecademy/gamut-illustrations
+
+
+
+
+
+### [0.13.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-illustrations@0.13.0...@codecademy/gamut-illustrations@0.13.1) (2021-05-03)
+
+**Note:** Version bump only for package @codecademy/gamut-illustrations
+
+
+
+
+
+## [0.13.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-illustrations@0.12.0...@codecademy/gamut-illustrations@0.13.0) (2021-05-03)
+
+
+### Features
+
+* add social media icons and update target illustration ([4947e59](https://github.com/Codecademy/client-modules/commit/4947e5903a3747e54c4934f3d7c73443189293e6))
+
+
+
+## [0.12.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-illustrations@0.11.1...@codecademy/gamut-illustrations@0.12.0) (2021-05-03)
+
+
+### Features
+
+* **NotificationItem:** add support for forum mentions ([bb76467](https://github.com/Codecademy/client-modules/commit/bb7646744c87f0d4244135971b51fe047af5ed85))
+
+
+
+### [0.11.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-illustrations@0.11.0...@codecademy/gamut-illustrations@0.11.1) (2021-04-30)
+
+**Note:** Version bump only for package @codecademy/gamut-illustrations
+
+
+
+
+
+## [0.11.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-illustrations@0.10.10...@codecademy/gamut-illustrations@0.11.0) (2021-04-30)
+
+
+### Features
+
+* add new BinaryBlocks illustration ([6ef07e4](https://github.com/Codecademy/client-modules/commit/6ef07e4e6dcffc828bfcff09940bd89d06b424ba))
+
+
+
+### [0.10.10](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-illustrations@0.10.9...@codecademy/gamut-illustrations@0.10.10) (2021-04-29)
+
+**Note:** Version bump only for package @codecademy/gamut-illustrations
+
+
+
+
+
+### [0.10.9](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-illustrations@0.10.8...@codecademy/gamut-illustrations@0.10.9) (2021-04-28)
+
+**Note:** Version bump only for package @codecademy/gamut-illustrations
+
+
+
+
+
 ### [0.10.8](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-illustrations@0.10.7...@codecademy/gamut-illustrations@0.10.8) (2021-04-27)
 
 **Note:** Version bump only for package @codecademy/gamut-illustrations

@@ -3,7 +3,10 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "~styleguide/blocks": [".storybook/components"]
+      "~styleguide/blocks": [".storybook/components"],
+      "@codecademy/storybook-addon-variance": [
+        ".storybook/addons/system/components"
+      ]
     },
     "allowJs": true,
     "noEmit": true,

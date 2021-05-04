@@ -1,49 +1,68 @@
 import { GamutIconProps } from '@codecademy/gamut-icons';
-import { pxRem } from '@codecademy/gamut-styles';
-import { css } from '@emotion/react';
+import { system } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
-import React from 'react';
+import React, { forwardRef } from 'react';
 
-import { SizedButtonProps } from './shared';
-import { TextButton } from './TextButton';
+import { ButtonBaseElements } from '../ButtonBase/ButtonBase';
+import { ButtonInner } from './ButtonInner';
+import {
+  buttonColors,
+  ButtonOutline,
+  ButtonOutlineProps,
+  createStates,
+} from './ButtonOutline';
+import { useColorMode } from './shared';
+import { SizedButtonProps } from './types';
 
-export type IconButtonProps = SizedButtonProps & {
-  children?: never;
-  icon: React.ComponentType<GamutIconProps>;
-};
+const { background, backgroundMuted, backgroundEmphasized } = buttonColors;
 
-const ICON_SIZES = {
-  normal: 24,
-  small: 16,
-};
-
-const IconWrapper = styled.div<Pick<SizedButtonProps, 'size'>>(
-  ({ size = 'normal' }) => {
-    const dimensions = pxRem(ICON_SIZES[size]);
-
-    return css`
-      display: inline-flex;
-      width: ${dimensions};
-      height: ${dimensions};
-      margin: 0 -1px;
-      align-items: center;
-
-      > svg {
-        width: ${dimensions};
-        height: ${dimensions};
-      }
-    `;
-  }
+const IconButtonInner = styled(ButtonInner)<SizedButtonProps>(
+  createStates({
+    base: { color: background },
+    hover: { backgroundColor: backgroundEmphasized },
+    active: { color: background },
+    disabled: {
+      color: backgroundMuted,
+      backgroundColor: 'transparent',
+    },
+  }),
+  system.variant({
+    prop: 'size',
+    variants: {
+      normal: {
+        height: 40,
+        width: 40,
+        '> svg': {
+          width: 24,
+          height: 24,
+        },
+      },
+      small: {
+        height: 32,
+        width: 32,
+        '> svg': {
+          width: 16,
+          height: 16,
+        },
+      },
+    },
+  })
 );
 
-export const IconButton: React.FC<
-  IconButtonProps & React.ComponentProps<typeof TextButton>
-> = ({ icon: Icon, size = 'normal', ...props }) => {
-  return (
-    <TextButton size={size} {...props}>
-      <IconWrapper size={size}>
-        <Icon aria-hidden />
-      </IconWrapper>
-    </TextButton>
-  );
-};
+export interface IconButtonProps extends SizedButtonProps, ButtonOutlineProps {
+  children?: never;
+  icon: React.ComponentType<GamutIconProps>;
+}
+
+export const IconButton = forwardRef<ButtonBaseElements, IconButtonProps>(
+  ({ icon: Icon, size = 'normal', mode, ...props }, ref) => {
+    const currentMode = useColorMode(mode);
+    return (
+      <ButtonOutline mode={currentMode} size={size} {...props} ref={ref}>
+        <IconButtonInner mode={currentMode} size={size}>
+          {Icon && <Icon aria-hidden />}
+        </IconButtonInner>
+      </ButtonOutline>
+    );
+  }
+);
