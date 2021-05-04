@@ -108,7 +108,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectWrapperProps>(
         className={className}
       >
         <StyledFlexbox
-          paddingRight={12}
+          pr={12}
           alignItems="center"
           position="absolute"
           right="0"

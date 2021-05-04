@@ -162,7 +162,7 @@ export const Alert: React.FC<AlertProps> = ({
   const columns = `max-content minmax(0, 1fr) repeat(${numberOfColumns}, max-content)`;
   const content =
     props.placement === 'inline' ? (
-      <Box paddingY={4}>{children}</Box>
+      <Box py={4}>{children}</Box>
     ) : (
       <AlertContent
         variants={contentVariants}
