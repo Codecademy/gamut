@@ -15,8 +15,6 @@ export interface BackgroundProps
   children: React.ReactNode;
 }
 
-type ColorAliases = keyof Theme['colorModes']['modes'][keyof Theme['colorModes']['modes']];
-
 export const Background = forwardRef<HTMLDivElement, BackgroundProps>(
   ({ children, className, bg, ...rest }, ref) => {
     const {
@@ -25,9 +23,7 @@ export const Background = forwardRef<HTMLDivElement, BackgroundProps>(
 
     /** If a color alias was used then look up the true color key from the active mode */
     const trueColor = useMemo(() => {
-      return Object.keys(modes[active]).includes(bg)
-        ? modes[active][bg as ColorAliases]
-        : bg;
+      return Object.keys(modes[active]).includes(bg) ? modes[active][bg] : bg;
     }, [bg, active, modes]);
 
     /** Determine the most accessible mode for the color picked */
