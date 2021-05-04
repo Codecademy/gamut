@@ -11,8 +11,8 @@ export const BrowserPuzzle: React.FC<IllustrationProps> = ({
     className={className}
     height={height}
     width={width}
-    fill="none"
     viewBox="0 0 91 80"
+    fill="none"
     xmlns="http://www.w3.org/2000/svg"
   >
     <mask id="a" fill="#fff">
