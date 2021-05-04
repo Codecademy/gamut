@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [32.10.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@32.10.0...@codecademy/gamut@32.10.1) (2021-05-04)
+
+
+### Bug Fixes
+
+* **LayoutGrid:** Add ordered fallback ([38c64de](https://github.com/Codecademy/client-modules/commit/38c64de38baa5fdbdba8ebf72d95191307e80362))
+
+
+
 ## [32.10.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@32.9.1...@codecademy/gamut@32.10.0) (2021-05-04)
 
 
