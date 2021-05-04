@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [36.13.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@36.12.3...@codecademy/styleguide@36.13.0) (2021-05-04)
+
+
+### Features
+
+* added GlobalPage organism ([56075b7](https://github.com/Codecademy/client-modules/commit/56075b78a0b8cc344640656e48a392762a856dcc))
+
+
+
 ### [36.12.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@36.12.2...@codecademy/styleguide@36.12.3) (2021-05-04)
 
 **Note:** Version bump only for package @codecademy/styleguide
