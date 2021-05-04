@@ -1,7 +1,7 @@
 import { styledConfig, system } from '@codecademy/gamut-styles';
 import { StyleProps, variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
-import { toNumber } from 'lodash';
+import { get } from 'lodash';
 
 import { boxProps } from './props';
 
@@ -10,15 +10,13 @@ const gridItemMap: Record<string, string> = {
   min: 'min-content',
 };
 
+const numberRegex = new RegExp(/^[0-9]*$/);
+const isUnitlessNumber = (val: string) => numberRegex.test(val);
+
 const gridItem = (item: string) => `minmax(0, ${item})`;
 
-const templateGridItem = (item: string) => {
-  let fullname = item;
-  if (gridItemMap[item]) fullname = gridItemMap[item];
-  const asNumber = toNumber(item);
-  if (asNumber && `${asNumber}`.length === item.length) fullname = `${item}fr`;
-  return gridItem(fullname);
-};
+const templateGridItem = (item: string) =>
+  gridItem(isUnitlessNumber(item) ? `${item}fr` : get(gridItemMap, item, item));
 
 const repeatGridItem = (item: string, count: number) => {
   const template = templateGridItem(item);
