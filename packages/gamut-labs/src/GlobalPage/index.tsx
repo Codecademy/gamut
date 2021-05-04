@@ -53,5 +53,3 @@ export const GlobalPage: React.FC<GlobalPageProps> = ({
     </AppWrapper>
   );
 };
-
-export default GlobalPage;
