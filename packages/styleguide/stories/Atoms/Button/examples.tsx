@@ -42,7 +42,7 @@ export const ButtonScale = ({ mode }: { mode: 'dark' | 'light' }) => {
       alignItems="center"
       justifyItems="start"
       gridTemplateColumns="repeat(4, minmax(50px, max-content))"
-      gridAutoRows="3rem"
+      autoRows="3rem"
       columnGap={32}
       rowGap={16}
       p={32}

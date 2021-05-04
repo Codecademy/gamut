@@ -17,5 +17,3 @@ export const boxProps = variance.compose(
 export interface BoxProps extends StyleProps<typeof boxProps> {}
 
 export interface FlexBoxProps extends BoxProps {}
-
-export interface GridBoxProps extends BoxProps {}

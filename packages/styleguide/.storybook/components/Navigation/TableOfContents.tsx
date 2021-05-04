@@ -10,16 +10,7 @@ import { StatusTab } from '../Docs/StatusIndicator';
 export const TableOfContents = () => {
   const { toc } = useNavigation();
   return (
-    <GridBox
-      pt={16}
-      maxWidth="100%"
-      gridTemplateColumns={{
-        _: '1fr',
-        md: 'repeat(2, 1fr)',
-        lg: 'repeat(3, 1fr)',
-      }}
-      gap={32}
-    >
+    <GridBox pt={16} maxWidth={1} cols={['1', , , '1:1', '1:1:1']} gap={32}>
       {toc.children.map((link: ContentItem) => (
         <Section {...link} key={`toc-item-${link.id}`} />
       ))}
@@ -48,7 +39,7 @@ export const Section: React.FC<ContentItem> = ({
     ));
 
   const hasSubsections = links.length > 1;
-
+  const position = hasSubsections ? 'relative' : 'initial';
   return (
     <Card
       shadow="medium"
@@ -58,12 +49,7 @@ export const Section: React.FC<ContentItem> = ({
       gridTemplateRows={`max-content ${pxRem(14 * 1.5 + 24)}`}
       position="relative"
     >
-      <GridBox
-        gridTemplateRows={`min-content 4.5rem`}
-        position={hasSubsections ? 'relative' : 'initial'}
-        rowGap={8}
-        p={24}
-      >
+      <GridBox rows="min:4.5rem" position={position} gap={8} p={24}>
         <Link variant="area" id={id}>
           <Box position="relative">
             <Text as="h2" fontSize={22}>

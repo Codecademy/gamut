@@ -261,12 +261,7 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
   );
 
   return (
-    <GridBox
-      gridTemplateColumns={{
-        _: 'repeat(2, minmax(0, 1fr))',
-        sm: 'repeat(3, minmax(0, 1fr))',
-      }}
-    >
+    <GridBox cols={['1:1', , '1:1:1']}>
       {company}
       {resources}
       {support({ _: 'unset', sm: 'none' })}
