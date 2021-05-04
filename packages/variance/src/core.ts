@@ -1,4 +1,4 @@
-import { get, identity, isObject, merge } from 'lodash';
+import { get, identity, isEmpty, isObject, merge } from 'lodash';
 
 import {
   AbstractParser,
@@ -112,7 +112,8 @@ export const variance = {
           default:
         }
 
-        const useTransform = scaleVal !== undefined || scale === undefined;
+        const useTransform =
+          scaleVal !== undefined || scale === undefined || isEmpty(scale);
 
         const usedValue = scaleVal ?? (value as string | number);
 

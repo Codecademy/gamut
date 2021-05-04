@@ -1,9 +1,11 @@
 import { styledConfig, system } from '@codecademy/gamut-styles';
 import { StyleProps, variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
-import { get } from 'lodash';
+import { get, isNumber } from 'lodash';
 
 import { boxProps } from './props';
+
+const SCALE: Record<string | number, string> = {};
 
 const gridItemMap: Record<string, string> = {
   max: 'max-content',
@@ -11,6 +13,7 @@ const gridItemMap: Record<string, string> = {
 };
 
 const numberRegex = new RegExp(/^[0-9]*$/);
+
 const isUnitlessNumber = (val: string) => numberRegex.test(val);
 
 const gridItem = (item: string) => `minmax(0, ${item})`;
@@ -41,6 +44,10 @@ const parseGridRatio = (val: string) => {
   return gridStyle;
 };
 
+const transformGridRatio = (val: string | number) => {
+  return isNumber(val) ? repeatGridItem('1', val) : parseGridRatio(val);
+};
+
 const gridAliasProps = variance.create({
   flow: {
     property: 'gridAutoFlow',
@@ -54,11 +61,13 @@ const gridAliasProps = variance.create({
   },
   cols: {
     property: 'gridTemplateColumns',
-    transform: parseGridRatio,
+    transform: transformGridRatio,
+    scale: SCALE,
   },
   rows: {
     property: 'gridTemplateRows',
-    transform: parseGridRatio,
+    transform: transformGridRatio,
+    scale: SCALE,
   },
   autoRows: {
     property: 'gridAutoRows',

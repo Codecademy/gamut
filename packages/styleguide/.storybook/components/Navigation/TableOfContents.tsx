@@ -10,7 +10,7 @@ import { StatusTab } from '../Docs/StatusIndicator';
 export const TableOfContents = () => {
   const { toc } = useNavigation();
   return (
-    <GridBox pt={16} maxWidth={1} cols={['1', , , '1:1', '1:1:1']} gap={32}>
+    <GridBox pt={16} maxWidth={1} cols={[1, , , 2, 3]} gap={32}>
       {toc.children.map((link: ContentItem) => (
         <Section {...link} key={`toc-item-${link.id}`} />
       ))}
