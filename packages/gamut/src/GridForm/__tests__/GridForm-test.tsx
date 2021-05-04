@@ -325,7 +325,7 @@ describe('GridForm', () => {
     expect(form.find('textarea#id-2-the-ego').length).toBe(1);
     expect(form.find('input#fire-file').length).toBe(1);
   });
-  it('submits hidden values', async () => {
+  it('submits hidden input valuea', async () => {
     const api = createPromise<{}>();
     const onSubmit = async (values: {}) => api.resolve(values);
 
@@ -349,5 +349,17 @@ describe('GridForm', () => {
     expect(result).toEqual({
       [stubHiddenField.name]: stubHiddenField.defaultValue,
     });
+  });
+  it('does not create columns for hidden inputs', () => {
+    const wrapped = mount(
+      <ThemeProvider theme={theme}>
+        <GridForm
+          fields={[stubHiddenField]}
+          onSubmit={jest.fn()}
+          submit={{ type: 'fill', contents: <>Submit</>, size: 6 }}
+        />
+      </ThemeProvider>
+    );
+    expect(wrapped.find('Column').length).toBe(1);
   });
 });
