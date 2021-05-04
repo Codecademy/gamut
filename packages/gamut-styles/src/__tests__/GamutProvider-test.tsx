@@ -5,7 +5,8 @@ import React from 'react';
 
 import { createEmotionCache } from '../cache';
 import { GamutProvider } from '../GamutProvider';
-import { coreTheme as theme } from '../themes';
+import * as StaticGlobals from '../globals';
+import { theme, variables } from '../theme';
 
 jest.mock('../cache', () => {
   const cacheMock = jest.fn();
@@ -13,6 +14,10 @@ jest.mock('../cache', () => {
 });
 
 const renderWrapper = setupEnzyme(GamutProvider, { theme });
+
+const themeGlobalCount = Object.keys(variables).length;
+const staticGlobalCount = Object.keys(StaticGlobals).length;
+const totalGlobalCount = themeGlobalCount + staticGlobalCount;
 
 describe(GamutProvider, () => {
   beforeEach(() => {
@@ -34,7 +39,9 @@ describe(GamutProvider, () => {
   it('renders global styles', () => {
     const { wrapper } = renderWrapper();
 
-    expect(wrapper.find(Global).length).toBeGreaterThan(0);
+    expect(wrapper.find(Global).length).toBe(
+      themeGlobalCount + staticGlobalCount
+    );
   });
   it('does not render global styles when configured', () => {
     const { wrapper } = renderWrapper({ useGlobals: false });
@@ -52,13 +59,11 @@ describe(GamutProvider, () => {
 
     expect(wrapper.find('div').text()).toBe(JSON.stringify(theme));
   });
-  it('it can have another GamutProvider as a child with creating multiple caches or globals', () => {
-    const { wrapper } = renderWrapper({
-      children: <GamutProvider theme={theme} />,
-    });
+  it('it can have another GamutProvider as a child without creating multiple caches or globals', () => {
+    const { wrapper } = renderWrapper({ children: <GamutProvider /> });
 
     expect(createEmotionCache).toHaveBeenCalledTimes(1);
-    expect(wrapper.find(Global).length).toEqual(4);
+    expect(wrapper.find(Global).length).toEqual(totalGlobalCount);
   });
   it('can accept a custom cache', () => {
     renderWrapper({ cache: createCache({ key: 'gamut' }) });
@@ -71,6 +76,6 @@ describe(GamutProvider, () => {
     });
 
     const globals = wrapper.find(Global);
-    expect(globals.length).toBe(5);
+    expect(globals.length).toBe(staticGlobalCount + 1);
   });
 });

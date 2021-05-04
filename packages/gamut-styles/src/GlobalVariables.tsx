@@ -5,7 +5,7 @@ import React from 'react';
 const scopeVariables = (vars: CSSObject, scope = ':root') =>
   css({ [scope]: vars });
 
-export const Variables: React.FC<{
+export const GlobalVariables: React.FC<{
   variables: Record<string, CSSObject>;
 }> = ({ variables }) => {
   return (
