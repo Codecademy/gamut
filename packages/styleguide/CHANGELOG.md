@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [36.12.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@36.12.0...@codecademy/styleguide@36.12.1) (2021-05-04)
+
+
+### Bug Fixes
+
+* **styleguide:** Updates props table with variance support [WEB-1451] ([426ea22](https://github.com/Codecademy/client-modules/commit/426ea228bab62e98d036a5e9aeeae787c20f3ccd))
+
+
+
 ## [36.12.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@36.11.2...@codecademy/styleguide@36.12.0) (2021-05-04)
 
 
