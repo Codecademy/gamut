@@ -10,7 +10,7 @@ export type EmptySectionProps = {
   headingText: string;
   illustration: React.ComponentType<IllustrationProps>;
   illustrationPosition?: 'left' | 'right';
-  innerBGColor: keyof typeof colors;
+  innerBGColor: keyof Theme['colors'];
 };
 
 const Dots = styled(Pattern)`
@@ -86,9 +86,9 @@ export const EmptySection: React.FC<EmptySectionProps> = ({
           flexDirection="column"
           alignItems={{ base: 'center', sm: 'start' }}
         >
-          <Title as="h2" fontSize={22}>
+          <Text as="h2" fontSize={22} mb={8}>
             {headingText}
-          </Title>
+          </Text>
           <Text mb={32}>{bodyText}</Text>
           {children}
         </FlexBox>
