@@ -20,12 +20,12 @@ const renderWrapper = setupEnzyme(Select, {
 });
 
 describe('Select', () => {
-  xit('sets the id prop on the select tag', () => {
+  it('sets the id prop on the select tag', () => {
     const { wrapper } = renderWrapper();
     expect(wrapper.find('SelectBase').props().id).toBe(defaultProps.id);
   });
 
-  xit('renders the same number of option as options', () => {
+  it('renders the same number of option as options', () => {
     const { wrapper } = renderWrapper();
 
     expect(wrapper.find('SelectBase').props().children).toHaveLength(
@@ -33,7 +33,7 @@ describe('Select', () => {
     );
   });
 
-  xit('sets the key of option tags using the form of `${id}-${value} when the prop id is passed`', () => {
+  it('sets the key of option tags using the form of `${id}-${value} when the prop id is passed`', () => {
     const { wrapper } = renderWrapper();
 
     const keyWithId = `${defaultProps.id}-${selectOptions[0]}`;
@@ -43,7 +43,7 @@ describe('Select', () => {
     expect(getByTestId.exists()).toBe(true);
   });
 
-  xit('renders options when options is an object', () => {
+  it('renders options when options is an object', () => {
     const { wrapper } = renderWrapper();
 
     const keyWithId = `${defaultProps.id}-${selectOptions[0]}`;
@@ -59,7 +59,6 @@ describe('Select', () => {
     const getByValue = wrapper.find(`[value="yellowKey"]`);
     const getFirstOption = wrapper.find('option').first();
 
-    console.log(wrapper.debug());
     expect(getByValue.exists()).toBe(true);
     expect(getFirstOption.text()).toBe('red');
   });
