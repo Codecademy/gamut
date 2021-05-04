@@ -14,43 +14,8 @@ export const boxProps = variance.compose(
   system.grid
 );
 
-export const boxVariants = system.variant({
-  variants: {
-    fit: {
-      width: 1,
-      height: 1,
-    },
-  },
-});
+export interface BoxProps extends StyleProps<typeof boxProps> {}
 
-export const flexVariants = system.variant({
-  prop: 'alignments',
-  variants: {
-    center: {
-      justifyContent: 'center',
-      alignItems: 'center',
-    },
-  },
-});
+export interface FlexBoxProps extends BoxProps {}
 
-export const gridVariants = system.variant({
-  prop: 'alignments',
-  variants: {
-    center: {
-      justifyContent: 'center',
-      alignItems: 'center',
-    },
-  },
-});
-
-export interface BoxProps
-  extends StyleProps<typeof boxProps>,
-    StyleProps<typeof boxVariants> {}
-
-export interface FlexBoxProps
-  extends BoxProps,
-    StyleProps<typeof flexVariants> {}
-
-export interface GridBoxProps
-  extends BoxProps,
-    StyleProps<typeof gridVariants> {}
+export interface GridBoxProps extends BoxProps {}
