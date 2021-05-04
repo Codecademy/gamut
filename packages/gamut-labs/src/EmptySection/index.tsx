@@ -1,22 +1,15 @@
-import {
-  Box,
-  FillButton,
-  FillButtonProps,
-  FlexBox,
-  Pattern,
-  Text,
-} from '@codecademy/gamut';
+import { Box, FlexBox, Pattern, Text } from '@codecademy/gamut';
 import { IllustrationProps } from '@codecademy/gamut-illustrations';
 import { colors, pxRem, themed } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
-import React from 'react';
+import React, { ReactNode } from 'react';
 
 export type EmptySectionProps = {
   bodyText: string;
-  button: FillButtonProps;
+  children?: ReactNode;
   headingText: string;
   illustration: React.ComponentType<IllustrationProps>;
-  illustrationPosition: 'left' | 'right';
+  illustrationPosition?: 'left' | 'right';
   innerBGColor: keyof typeof colors;
 };
 
@@ -61,18 +54,13 @@ const IllustrationContainer = styled.div<IllustrationContainerProps>`
 
 export const EmptySection: React.FC<EmptySectionProps> = ({
   bodyText,
-  button,
+  children,
   headingText,
   illustration: Illustration,
   illustrationPosition = 'right',
   innerBGColor,
 }) => {
   const direction = illustrationPosition === 'right' ? 'row-reverse' : 'row';
-
-  const renderButton = () => {
-    const { text, ...buttonProps } = button;
-    return <FillButton {...buttonProps}>{text}</FillButton>;
-  };
 
   return (
     <Box position="relative">
@@ -102,7 +90,7 @@ export const EmptySection: React.FC<EmptySectionProps> = ({
             {headingText}
           </Title>
           <Text mb={32}>{bodyText}</Text>
-          {renderButton()}
+          {children}
         </FlexBox>
       </FlexBox>
     </Box>
