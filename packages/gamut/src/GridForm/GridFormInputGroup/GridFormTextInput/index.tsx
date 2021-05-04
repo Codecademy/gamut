@@ -2,13 +2,13 @@ import React from 'react';
 import { UseFormMethods } from 'react-hook-form';
 
 import { Input } from '../../../Form';
-import { GridFormHiddenField, GridFormTextField } from '../../types';
+import { GridFormTextField } from '../../types';
 
 export type GridFormTextInputProps = {
   className?: string;
   error?: boolean;
   showRequired?: boolean;
-  field: Omit<GridFormTextField | GridFormHiddenField, 'label'>;
+  field: Omit<GridFormTextField, 'label'>;
   register: UseFormMethods['register'];
 };
 
