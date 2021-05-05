@@ -1,46 +1,49 @@
-import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import React from 'react';
+import React, { forwardRef } from 'react';
 
+import { ButtonBaseElements } from '../ButtonBase/ButtonBase';
 import { ButtonInner } from './ButtonInner';
-import { ButtonOutline } from './ButtonOutline';
-import { buttonSizing, modeColorGroups, SizedButtonProps } from './shared';
+import {
+  buttonColors,
+  ButtonOutline,
+  ButtonOutlineProps,
+  createStates,
+} from './ButtonOutline';
+import { buttonSizing, config, useColorMode } from './shared';
+import { SizedButtonProps } from './types';
 
-const FillButtonInner = styled(ButtonInner)<SizedButtonProps>(
-  buttonSizing,
-  ({ mode = 'light', variant = 'primary' }: SizedButtonProps) => {
-    const modeColors = modeColorGroups[mode][variant];
-    return css`
-      color: ${modeColors.foreground};
-      background-color: ${modeColors.background};
+const {
+  background,
+  foreground,
+  backgroundMuted,
+  backgroundDull,
+  foregroundMuted,
+} = buttonColors;
 
-      ${FillButtonOuter}:hover & {
-        background-color: ${modeColors.backgroundDull};
-      }
-
-      ${FillButtonOuter}:active & {
-        border-color: ${modeColors.background};
-      }
-
-      ${FillButtonOuter}:disabled &,
-      ${FillButtonOuter}[aria-disabled='true'] & {
-        color: ${modeColors.foregroundMuted};
-        background-color: ${modeColors.backgroundMuted};
-      }
-    `;
-  }
+const FillButtonInner = styled(ButtonInner, config)<SizedButtonProps>(
+  createStates({
+    base: { color: foreground, backgroundColor: background },
+    hover: { backgroundColor: backgroundDull },
+    active: { borderColor: background },
+    disabled: {
+      color: foregroundMuted,
+      backgroundColor: backgroundMuted,
+    },
+  }),
+  buttonSizing
 );
 
-const FillButtonOuter = styled(ButtonOutline)();
+export type FillButtonProps = SizedButtonProps & ButtonOutlineProps;
 
-export const FillButton: React.FC<
-  SizedButtonProps & React.ComponentProps<typeof FillButtonOuter>
-> = ({ children, mode, size, variant, ...props }) => {
-  return (
-    <FillButtonOuter mode={mode} variant={variant} {...props}>
-      <FillButtonInner mode={mode} variant={variant} size={size}>
-        {children}
-      </FillButtonInner>
-    </FillButtonOuter>
-  );
-};
+export const FillButton = forwardRef<ButtonBaseElements, FillButtonProps>(
+  ({ children, mode, size, variant, ...props }, ref) => {
+    const currentMode = useColorMode(mode);
+    return (
+      <ButtonOutline mode={currentMode} variant={variant} {...props} ref={ref}>
+        <FillButtonInner mode={currentMode} variant={variant} size={size}>
+          {children}
+        </FillButtonInner>
+      </ButtonOutline>
+    );
+  }
+);

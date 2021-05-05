@@ -1,10 +1,9 @@
 import { Box, ToolTip } from '@codecademy/gamut/src';
 import { InfoCircleIcon } from '@codecademy/gamut-icons/src';
 import title from '@codecademy/macros/lib/title.macro';
+import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 import { upperFirst } from 'lodash';
-
-import { PropsTable } from '~styleguide/blocks';
 
 import { TooltipArea } from './TooltipArea';
 
@@ -94,7 +93,7 @@ Tooltips with _corner_ alignments -`*-left` or `*-right`- are larger sized and m
               <ToolTip
                 {...args}
                 alignment={alignment}
-                target={<Box marginLeft={32}>Hi: {args.target}</Box>}
+                target={<Box ml={32}>Hi: {args.target}</Box>}
               />
             </TooltipArea>
           );

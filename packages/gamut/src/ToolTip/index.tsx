@@ -1,5 +1,5 @@
 import {
-  fontSmoothing,
+  fontSmoothPixel,
   lineHeight,
   pxRem,
   timing,
@@ -39,8 +39,7 @@ type ToolTipContainerProps = {
 };
 
 const ToolTipContainer = styled.div<ToolTipContainerProps>`
-  ${fontSmoothing()}
-
+  ${fontSmoothPixel}
   display: flex;
   opacity: 0;
   transition: opacity ${timing.fast};
