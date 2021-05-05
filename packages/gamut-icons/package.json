@@ -30,7 +30,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@codecademy/gamut-styles": "^9.7.4",
+    "@codecademy/gamut-styles": "^9.8.0",
     "@codecademy/variance": "^0.11.1"
   },
   "peerDependencies": {
