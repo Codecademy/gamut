@@ -1,4 +1,4 @@
-import { Box, Anchor } from '@codecademy/gamut';
+import { Anchor, Box } from '@codecademy/gamut';
 import styled from '@emotion/styled';
 import React from 'react';
 
