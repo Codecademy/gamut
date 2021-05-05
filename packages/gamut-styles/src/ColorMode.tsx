@@ -4,7 +4,7 @@ import styled from '@emotion/styled';
 import { mapValues } from 'lodash';
 import React, { ComponentProps, forwardRef, useMemo } from 'react';
 
-import { scrollbarColors } from './globals';
+import { scrollbarColors } from './styles/scrollbar';
 import {
   color,
   flex,
