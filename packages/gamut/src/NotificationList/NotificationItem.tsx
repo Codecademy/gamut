@@ -2,18 +2,18 @@ import { MiniDeleteIcon } from '@codecademy/gamut-icons';
 import {
   Bell,
   ChatBox,
+  EmailAt,
   Envelope,
   Heart,
   IllustrationProps,
   Megaphone,
   New,
 } from '@codecademy/gamut-illustrations';
-import { CheckerDense } from '@codecademy/gamut-patterns';
 import { colors } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React, { ReactElement } from 'react';
 
-import { Box, FlexBox, IconButton, Text } from '..';
+import { Box, FlexBox, IconButton, Pattern, Text } from '..';
 import { Notification } from './typings';
 
 const StyledLink = styled.a`
@@ -97,6 +97,8 @@ export const NotificationItem: React.FC<NotificationItemProps> = ({
         return renderIllustration(Envelope);
       case 'forum_like':
         return renderIllustration(Heart);
+      case 'forum_mention':
+        return renderIllustration(EmailAt);
       default:
         return renderIllustration(Bell);
     }
@@ -105,7 +107,7 @@ export const NotificationItem: React.FC<NotificationItemProps> = ({
   const notificationContent: ReactElement = (
     <FlexBox zIndex={1} position="relative" textColor="text">
       {renderIcon()}
-      <Box flexBasis={0} flexGrow={1} paddingLeft={12}>
+      <Box flex={1} pl={12}>
         <Text id={notificationItemId} variant="p-small">
           {text}
         </Text>
@@ -130,16 +132,16 @@ export const NotificationItem: React.FC<NotificationItemProps> = ({
   );
 
   const separatorPattern = (
-    <Box paddingX={32} margin={0} aria-hidden="true">
-      <CheckerDense height="1px" display="flex" />
+    <Box px={32} m={0} aria-hidden="true">
+      <Pattern name="checkerDense" height="1px" display="flex" />
     </Box>
   );
 
   return (
     <li>
       <FlexBox
-        paddingY={24}
-        paddingX={32}
+        py={24}
+        px={32}
         alignItems="flex-start"
         justifyContent="space-between"
         position="relative"

@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.10.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@4.9.1...@codecademy/gamut-icons@4.10.0) (2021-05-05)
+
+
+### Features
+
+* adding icons for Business repo ([007d386](https://github.com/Codecademy/client-modules/commit/007d386646be73788a9f134a42c800d981df188b))
+
+
+
+### [4.9.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@4.9.0...@codecademy/gamut-icons@4.9.1) (2021-05-03)
+
+**Note:** Version bump only for package @codecademy/gamut-icons
+
+
+
+
+
+## [4.9.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@4.8.0...@codecademy/gamut-icons@4.9.0) (2021-05-03)
+
+
+### Features
+
+* add social media icons and update target illustration ([4947e59](https://github.com/Codecademy/client-modules/commit/4947e5903a3747e54c4934f3d7c73443189293e6))
+
+
+
 ## [4.8.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@4.7.0...@codecademy/gamut-icons@4.8.0) (2021-04-19)
 
 

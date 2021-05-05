@@ -1,5 +1,4 @@
-import { BodyPortal, FocusTrap } from '@codecademy/gamut';
-import { CheckerDense } from '@codecademy/gamut-patterns';
+import { BodyPortal, FocusTrap, Pattern } from '@codecademy/gamut';
 import styled from '@emotion/styled';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useWindowScroll, useWindowSize } from 'react-use';
@@ -214,10 +213,11 @@ export const Popover: React.FC<PopoverProps> = ({
           </RaisedDiv>
           {pattern && (
             <PatternContainer position={position} align={align}>
-              <CheckerDense
+              <Pattern
                 data-testid="popover-pattern"
-                width="100%"
-                height="100%"
+                name={pattern}
+                width={1}
+                height={1}
               />
             </PatternContainer>
           )}
