@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [36.14.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@36.13.3...@codecademy/styleguide@36.14.0) (2021-05-05)
+
+
+### Features
+
+* **GridForm:** added hidden input functionality ([d735b5d](https://github.com/Codecademy/client-modules/commit/d735b5db043fc13fce18f1c89a568b7aa37baea7))
+
+
+
 ### [36.13.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@36.13.2...@codecademy/styleguide@36.13.3) (2021-05-05)
 
 **Note:** Version bump only for package @codecademy/styleguide
