@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.8.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@9.7.4...@codecademy/gamut-styles@9.8.0) (2021-05-05)
+
+
+### Features
+
+* **PageWrapper:** Extend stacking context reset element for pages with a background color ([0a22b34](https://github.com/Codecademy/client-modules/commit/0a22b3489625e524085ffd2076730e05b9a4d898))
+
+
+
+### [9.7.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@9.7.3...@codecademy/gamut-styles@9.7.4) (2021-05-04)
+
+**Note:** Version bump only for package @codecademy/gamut-styles
+
+
+
+
+
 ### [9.7.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@9.7.2...@codecademy/gamut-styles@9.7.3) (2021-05-04)
 
 

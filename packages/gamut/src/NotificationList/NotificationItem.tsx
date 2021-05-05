@@ -107,7 +107,7 @@ export const NotificationItem: React.FC<NotificationItemProps> = ({
   const notificationContent: ReactElement = (
     <FlexBox zIndex={1} position="relative" textColor="text">
       {renderIcon()}
-      <Box flexBasis={0} flexGrow={1} paddingLeft={12}>
+      <Box flex={1} pl={12}>
         <Text id={notificationItemId} variant="p-small">
           {text}
         </Text>
@@ -132,7 +132,7 @@ export const NotificationItem: React.FC<NotificationItemProps> = ({
   );
 
   const separatorPattern = (
-    <Box paddingX={32} margin={0} aria-hidden="true">
+    <Box px={32} m={0} aria-hidden="true">
       <Pattern name="checkerDense" height="1px" display="flex" />
     </Box>
   );
@@ -140,8 +140,8 @@ export const NotificationItem: React.FC<NotificationItemProps> = ({
   return (
     <li>
       <FlexBox
-        paddingY={24}
-        paddingX={32}
+        py={24}
+        px={32}
         alignItems="flex-start"
         justifyContent="space-between"
         position="relative"

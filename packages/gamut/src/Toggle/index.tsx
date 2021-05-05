@@ -115,14 +115,14 @@ export const Toggle: React.FC<ToggleProps> = ({
       <ToggleTrack
         {...sizeStyles}
         borderColor={activeColor}
-        backgroundColor={checkedColor}
+        bg={checkedColor}
         borderRadius="99rem"
         position="relative"
       >
         <Box
           width="40%"
           borderRadius="50%"
-          backgroundColor="white"
+          bg="white"
           position="absolute"
           top="10%"
           bottom="10%"

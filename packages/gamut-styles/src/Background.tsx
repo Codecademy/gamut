@@ -2,7 +2,7 @@ import { Theme, useTheme } from '@emotion/react';
 import { getContrast } from 'polished';
 import React, { ComponentProps, forwardRef, useMemo } from 'react';
 
-import { ColorMode } from './ColorMode';
+import { ColorAlias, ColorMode, ColorModeShape } from './ColorMode';
 import { getColorValue } from './theme';
 
 export interface BackgroundProps
@@ -15,14 +15,34 @@ export interface BackgroundProps
   children: React.ReactNode;
 }
 
+const isColorAlias = (
+  mode: ColorModeShape,
+  color: keyof Theme['colors']
+): color is ColorAlias => {
+  return Object.keys(mode).includes(color);
+};
+
 export const Background = forwardRef<HTMLDivElement, BackgroundProps>(
   ({ children, className, bg, ...rest }, ref) => {
     const {
-      colorModes: { modes },
+      colorModes: { active, modes },
     } = useTheme();
-    const background = getColorValue(bg);
+
+    /** If a color alias was used then look up the true color key from the active mode */
+    const trueColor = useMemo(() => {
+      const activeMode = modes[active];
+      if (isColorAlias(activeMode, bg)) {
+        return activeMode[bg];
+      }
+      return bg;
+    }, [bg, active, modes]);
+
+    /** Determine the most accessible mode for the color picked */
     const accessibleMode = useMemo(() => {
       const { light, dark } = modes;
+
+      const background = getColorValue(trueColor);
+
       const lightText = getColorValue(light.text);
       const darkText = getColorValue(dark.text);
 
@@ -33,7 +53,7 @@ export const Background = forwardRef<HTMLDivElement, BackgroundProps>(
         lightModeContrast > darkModeContrast ? 'light' : 'dark';
 
       return highestContrastMode;
-    }, [modes, background]);
+    }, [modes, trueColor]);
 
     return (
       <ColorMode
