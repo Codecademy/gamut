@@ -63,6 +63,7 @@ Array [
   "Overlay",
   "PageWrapper",
   "Pattern",
+  "Popover",
   "ProgressBar",
   "ProLabel",
   "RadialProgress",
