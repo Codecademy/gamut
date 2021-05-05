@@ -28,9 +28,15 @@ export type ColorModes = keyof ColorModeConfig;
 export type ColorModeShape = ColorModeConfig[ColorModes];
 export type ColorAlias = keyof ColorModeShape;
 
+export type ColorModeConfig = Theme['colorModes']['modes'];
+export type ColorModes = keyof ColorModeConfig;
+export type ColorModeShape = ColorModeConfig[ColorModes];
+export type ColorAlias = keyof ColorModeShape;
+
 export type ColorModeProps = {
   mode: ColorModes;
-  bg?: Colors;
+  bg?: keyof Theme['colors'];
+  className?: string;
 };
 
 export const providerProps = variance.compose(

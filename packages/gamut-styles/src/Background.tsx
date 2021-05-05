@@ -1,14 +1,8 @@
 import { getContrast } from 'polished';
 import React, { ComponentProps, forwardRef, useCallback, useMemo } from 'react';
 
-import {
-  ColorAlias,
-  ColorMode,
-  ColorModes,
-  ColorModeShape,
-  Colors,
-  useColorModes,
-} from './ColorMode';
+import { ColorAlias, ColorMode, ColorModeShape } from './ColorMode';
+import { getColorValue } from './theme';
 
 export interface BackgroundProps
   extends Omit<
@@ -20,43 +14,34 @@ export interface BackgroundProps
 
 const isColorAlias = (
   mode: ColorModeShape,
-  color: Colors
+  color: keyof Theme['colors']
 ): color is ColorAlias => {
   return Object.keys(mode).includes(color);
 };
 
 export const Background = forwardRef<HTMLDivElement, BackgroundProps>(
-  ({ bg, ...rest }, ref) => {
-    const [active, activeColors, modes, getColorValue] = useColorModes();
+  ({ children, className, bg, ...rest }, ref) => {
+    const {
+      colorModes: { active, modes },
+    } = useTheme();
 
     /** If a color alias was used then look up the true color key from the active mode */
     const trueColor = useMemo(() => {
-      if (isColorAlias(activeColors, bg)) {
-        return activeColors[bg];
+      const activeMode = modes[active];
+      if (isColorAlias(activeMode, bg)) {
+        return activeMode[bg];
       }
       return bg;
-    }, [bg, activeColors]);
+    }, [bg, active, modes]);
 
-    const getTextContrast = useCallback(
-      (foreground: Colors) => {
-        return getContrast(getColorValue(foreground), getColorValue(trueColor));
-      },
-      [trueColor, getColorValue]
-    );
-
-    /**
-     * This compares the contrast of the selected background color
-     * and each color modes body text and returns the mode that has
-     * the highest contrast standard. This is not perfect as it is
-     * probable that certain color modes will never be reachable if
-     * there are more than 2 color modes.
-     *
-     * This does not guarantee a level of A/AA/AA compliance.
-     */
-
+    /** Determine the most accessible mode for the color picked */
     const accessibleMode = useMemo(() => {
-      const { [active]: activeMode, ...otherModes } = modes;
-      const possibleModes = Object.entries(otherModes);
+      const { light, dark } = modes;
+
+      const background = getColorValue(trueColor);
+
+      const lightText = getColorValue(light.text);
+      const darkText = getColorValue(dark.text);
 
       /**
        * Reduce all remaining modes to the mode key with the highest contrast
@@ -81,8 +66,18 @@ export const Background = forwardRef<HTMLDivElement, BackgroundProps>(
       );
 
       return highestContrastMode;
-    }, [modes, active, getTextContrast]);
+    }, [modes, trueColor]);
 
-    return <ColorMode {...rest} mode={accessibleMode} bg={bg} ref={ref} />;
+    return (
+      <ColorMode
+        className={className}
+        mode={accessibleMode}
+        bg={bg}
+        {...rest}
+        ref={ref}
+      >
+        {children}
+      </ColorMode>
+    );
   }
 );
