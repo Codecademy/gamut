@@ -8,8 +8,8 @@ export const FooterLinkItems = styled(Box)`
 
 FooterLinkItems.defaultProps = {
   as: 'ul',
-  paddingLeft: 0,
-  marginBottom: 0,
+  pl: 0,
+  mb: 0,
 };
 
 export const FooterLinkItem = styled.li`

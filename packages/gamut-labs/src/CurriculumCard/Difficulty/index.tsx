@@ -18,8 +18,8 @@ const DifficultySpan = styled(Box)`
 
 export const Difficulty: React.FC<DifficultyProps> = ({ difficulty }) => (
   <Text fontSize={14}>
-    <DifficultySpan backgroundColor={difficulty >= 0 ? 'navy' : 'white'} />
-    <DifficultySpan backgroundColor={difficulty >= 1 ? 'navy' : 'white'} />
+    <DifficultySpan bg={difficulty >= 0 ? 'navy' : 'white'} />
+    <DifficultySpan bg={difficulty >= 1 ? 'navy' : 'white'} />
     {difficulty === 0 ? 'Beginner friendly' : 'Intermediate'}
   </Text>
 );

@@ -1,7 +1,7 @@
 import { Box, FlexBox, Text, TextButton } from '@codecademy/gamut';
-import React, { ReactNode } from 'react';
+import React, { AriaAttributes, ReactNode } from 'react';
 
-type TextButtonMinimumProps = {
+type TextButtonMinimumProps = AriaAttributes & {
   text: string;
   href?: string;
   onClick?: () => void;
@@ -39,7 +39,7 @@ export const PageSection: React.FC<PageSectionProps> = ({
   const maybeRenderHeaderButton = () => {
     if (!headerButton) return null;
     return (
-      <Box marginLeft={4} display="inline">
+      <Box ml={4} display="inline">
         {renderSectionButton(headerButton)}
       </Box>
     );
@@ -53,7 +53,7 @@ export const PageSection: React.FC<PageSectionProps> = ({
   const renderSectionHeader = () => (
     // Setting height directly to height of the buttons so if they are omitted
     // the header remains the same height.
-    <FlexBox height="2.5rem" marginBottom={8} justifyContent="space-between">
+    <FlexBox height="2.5rem" mb={8} justifyContent="space-between">
       <FlexBox alignItems="center">
         <Text as="h2" fontSize={22}>
           {title}
@@ -67,14 +67,14 @@ export const PageSection: React.FC<PageSectionProps> = ({
   const maybeRenderSectionFooter = () => {
     if (!footerButton) return null;
     return (
-      <FlexBox justifyContent="flex-end">
+      <FlexBox justifyContent="flex-end" mt={16}>
         {renderSectionButton(footerButton)}
       </FlexBox>
     );
   };
 
   return (
-    <FlexBox flexDirection="column" marginBottom={48}>
+    <FlexBox flexDirection="column" mb={48}>
       {renderSectionHeader()}
       {children}
       {maybeRenderSectionFooter()}

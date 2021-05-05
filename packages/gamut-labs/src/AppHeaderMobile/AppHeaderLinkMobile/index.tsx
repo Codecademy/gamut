@@ -1,4 +1,4 @@
-import { Box } from '@codecademy/gamut';
+import { Box, FlexBox } from '@codecademy/gamut';
 import styled from '@emotion/styled';
 import React from 'react';
 
@@ -37,10 +37,6 @@ const AppHeaderLinkButtonOuter = styled.a`
   ${focusStyles}
 `;
 
-const AppHeaderLinkButtonInner = styled(Box)`
-  white-space: nowrap;
-`;
-
 export const AppHeaderLinkMobile: React.FC<AppHeaderLinkMobileProps> = ({
   action,
   item,
@@ -57,20 +53,21 @@ export const AppHeaderLinkMobile: React.FC<AppHeaderLinkMobileProps> = ({
           onClick={(event) => action(event, item)}
           target={item.newTab ? 'blank' : ''}
         >
-          <AppHeaderLinkButtonInner
+          <FlexBox
             lineHeight="base"
             minWidth="0"
-            paddingY={16}
+            py={16}
+            whiteSpace="nowrap"
             textAlign="left"
             display="flex"
           >
             {Icon && (
-              <Box display="flex" alignContent="center" marginRight={16}>
+              <FlexBox alignContent="center" mr={16}>
                 <Icon size={24} aria-hidden />
-              </Box>
+              </FlexBox>
             )}
             {item.text}
-          </AppHeaderLinkButtonInner>
+          </FlexBox>
         </AppHeaderLinkButtonOuter>
       </SeparatorInner>
     </SeparatorOuter>

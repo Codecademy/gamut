@@ -22,6 +22,8 @@ module.exports = {
     '\\.(css|scss)$': '<rootDir>/script/jest/styleMock',
     '^~styleguide/blocks(.*)$':
       '<rootDir>/packages/styleguide/.storybook/components$1',
+    '^@codecademy\\/storybook-addon-variance(.*)$':
+      '<rootDir>/packages/styleguide/.storybook/addons/system/components$1',
     '^@codecademy\\/gamut$': '<rootDir>/packages/gamut/src',
     '^@codecademy\\/gamut-labs$': '<rootDir>/packages/gamut-labs/src',
     '^@codecademy\\/gamut-styles$': '<rootDir>/packages/gamut-styles/src',
