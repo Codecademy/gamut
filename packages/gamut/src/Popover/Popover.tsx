@@ -5,7 +5,7 @@ import { BodyPortal } from '../BodyPortal';
 import { FocusTrap } from '../FocusTrap';
 import { getTransform, PopoverContainer } from './PopoverContainer';
 
-export type PopoverProps = {
+export interface PopoverProps {
   className?: string;
   /**
    * Which vertical edge of the source component to align against.
@@ -14,7 +14,7 @@ export type PopoverProps = {
   /** Align to the inside edge of the target div */
   inside?: boolean;
   /** Whether the popover renders inside the current DOM context or escapes with a portal */
-  inset?: boolean;
+  inline?: boolean;
   /**
    * Number of pixels to offset the popover vertically from the source component.
    */
@@ -23,10 +23,6 @@ export type PopoverProps = {
    * Number of pixels to offset the popover horizontally from the source component.
    */
   horizontalOffset?: number;
-  /**
-   * Toggle the beak of the popover, this is aligned to the X alignment.
-   */
-  beak?: boolean;
   /**
    * Whether the popover is rendered.
    */
@@ -50,7 +46,7 @@ export type PopoverProps = {
       | 'offsetLeft'
     >
   >;
-};
+}
 
 export const Popover: React.FC<PopoverProps> = ({
   alignment = 'bottom-left',
