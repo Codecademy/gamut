@@ -37,7 +37,7 @@ export const MadeIn: React.FC<MadeInProps> = ({ onClick }) => {
       <Anchor variant="interface" onClick={onNYCClick}>
         NYC
       </Anchor>{' '}
-      ©{` ${new Date().getFullYear()} `}{' '}
+      ©{` ${new Date().getFullYear()} `}
       <Anchor variant="interface" onClick={onCodecademyClick}>
         Codecademy
       </Anchor>
