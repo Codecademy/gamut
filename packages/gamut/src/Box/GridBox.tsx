@@ -1,52 +1,14 @@
-import { styledConfig, system } from '@codecademy/gamut-styles';
+import {
+  scales,
+  styledConfig,
+  system,
+  transformGridItem,
+  transformGridItemRatio,
+} from '@codecademy/gamut-styles';
 import { StyleProps, variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
-import { get, isNumber } from 'lodash';
 
 import { boxProps } from './props';
-
-const SCALE: Record<string | number, string> = {};
-
-const gridItemMap: Record<string, string> = {
-  max: 'max-content',
-  min: 'min-content',
-};
-
-const numberRegex = new RegExp(/^[0-9]*$/);
-
-const isUnitlessNumber = (val: string) => numberRegex.test(val);
-
-const gridItem = (item: string) => `minmax(0, ${item})`;
-
-const templateGridItem = (item: string) =>
-  gridItem(isUnitlessNumber(item) ? `${item}fr` : get(gridItemMap, item, item));
-
-const repeatGridItem = (item: string, count: number) => {
-  const template = templateGridItem(item);
-  return count > 1 ? ` repeat(${count}, ${template})` : template;
-};
-
-const parseGridRatio = (val: string) => {
-  const items = val.split(':');
-  let repeated: [string, number] = ['', 0];
-  let gridStyle = '';
-
-  for (let i = 0; i < items.length + 1; i += 1) {
-    const curr = items[i];
-    if (repeated?.[0] !== curr) {
-      if (repeated[0].length) gridStyle += repeatGridItem(...repeated);
-      if (curr) repeated = [curr, 1];
-    } else {
-      repeated[1] += 1;
-    }
-  }
-
-  return gridStyle;
-};
-
-const transformGridRatio = (val: string | number) => {
-  return isNumber(val) ? repeatGridItem('1', val) : parseGridRatio(val);
-};
 
 const gridAliasProps = variance.create({
   flow: {
@@ -61,21 +23,21 @@ const gridAliasProps = variance.create({
   },
   cols: {
     property: 'gridTemplateColumns',
-    transform: transformGridRatio,
-    scale: SCALE,
+    transform: transformGridItemRatio,
+    scale: scales.STRING_OR_NUMBER,
   },
   rows: {
     property: 'gridTemplateRows',
-    transform: transformGridRatio,
-    scale: SCALE,
+    transform: transformGridItemRatio,
+    scale: scales.STRING_OR_NUMBER,
   },
   autoRows: {
     property: 'gridAutoRows',
-    transform: templateGridItem,
+    transform: transformGridItem,
   },
   autoCols: {
     property: 'gridAutoColumns',
-    transform: templateGridItem,
+    transform: transformGridItem,
   },
   alignAll: {
     property: 'justifyContent',

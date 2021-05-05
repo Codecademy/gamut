@@ -16,3 +16,13 @@ export const styledConfig = Object.assign(
   }),
   baseConfig
 );
+
+const STRING_OR_NUMBER: Record<string | number, string> = {};
+const NUMBER: Record<number, string> = {};
+const STRING: Record<string, string> = {};
+
+export const scales = {
+  STRING_OR_NUMBER,
+  NUMBER,
+  STRING,
+};
