@@ -88,6 +88,7 @@ Array [
   "TextArea",
   "TextButton",
   "TextDeprecated",
+  "Toast",
   "Toggle",
   "ToolTip",
   "Truncate",
