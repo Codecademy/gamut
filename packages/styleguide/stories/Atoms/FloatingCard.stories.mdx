@@ -1,0 +1,44 @@
+import { Box, FloatingCard } from '@codecademy/gamut';
+import title from '@codecademy/macros/lib/title.macro';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+
+import { PropsTable } from '~styleguide/blocks';
+
+<Meta
+  title={title}
+  component={FloatingCard}
+  parameters={{
+    subtitle:
+      'A card with a persistent patterned shadow meant for user feedback or interaction outside the normal flow.',
+    source: 'gamut',
+    status: 'current',
+    figmaId: '',
+  }}
+  args={{
+    children: "Yakety Yak don't don't talk back!",
+    pattern: 'checkerDense',
+  }}
+/>
+
+## Usage Guidelines
+
+Floating cards are generally used for components that are used outside the normal document flow, like `Toast` `Dialog` and `Coachmark`. These Cards have a persistent shadow to make them obvious in relief.
+
+<Story name="User Feedback">
+  <Box minHeight="250px" padding={32} position="relative">
+    <Box position="relative" left="200px">
+      <FloatingCard beak="bottom-right">Hey how are you doing?</FloatingCard>
+    </Box>
+    <Box position="relative" top="2rem">
+      <FloatingCard beak="bottom-left">
+        I'm great, thanks! How about you?
+      </FloatingCard>
+    </Box>
+  </Box>
+</Story>
+
+<Canvas>
+  <Story name="FloatingCard">{(args) => <FloatingCard {...args} />}</Story>
+</Canvas>
+
+<PropsTable story="FloatingCard" />
