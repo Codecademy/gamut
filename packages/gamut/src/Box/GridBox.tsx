@@ -18,7 +18,7 @@ const gridAliasProps = variance.create({
       column: 'column',
       dense: 'dense',
       'column-dense': 'column dense',
-      'row-dense': 'row-dense',
+      'row-dense': 'row dense',
     },
   },
   cols: {
