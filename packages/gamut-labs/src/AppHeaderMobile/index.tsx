@@ -70,8 +70,8 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
     return items.map((item, index) => (
       <Box
         key={item.id}
-        marginLeft={index === 0 ? 0 : 4}
-        marginRight={index === items.length - 1 ? 0 : 4}
+        ml={index === 0 ? 0 : 4}
+        mr={index === items.length - 1 ? 0 : 4}
       >
         {mapItemToElement(action, item, redirectParam)}
       </Box>
@@ -88,7 +88,7 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
           <AppBarSection position="right">
             {mapItemsToElement(items.right)}
 
-            <FlexBox marginLeft={24}>
+            <FlexBox ml={24}>
               <IconButton
                 type="button"
                 data-testid="header-mobile-menu"

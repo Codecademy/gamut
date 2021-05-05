@@ -1,54 +1,59 @@
-import { fontFamily } from '@codecademy/gamut-styles';
-import { css } from '@emotion/react';
+import { system } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
-import React from 'react';
+import React, { ComponentProps, forwardRef } from 'react';
 
+import { ButtonBaseElements } from '../ButtonBase/ButtonBase';
 import { ButtonInner } from './ButtonInner';
-import { ButtonOutline } from './ButtonOutline';
-import { ButtonProps, modeColorGroups } from './shared';
+import { buttonColors, ButtonOutline, createStates } from './ButtonOutline';
+import { config, useColorMode } from './shared';
+import { ButtonProps } from './types';
 
-const CTAButtonInner = styled(ButtonInner)<ButtonProps>(
-  ({ mode = 'light', variant = 'primary' }: ButtonProps) => {
-    const modeColors = modeColorGroups[mode][variant];
+const {
+  background,
+  foreground,
+  shadow,
+  backgroundMuted,
+  foregroundMuted,
+} = buttonColors;
 
-    return css`
-      background-color: ${modeColors.background};
-      border-radius: 2px;
-      box-shadow: -4px 4px 0 0 ${modeColors.shadow};
-      color: ${modeColors.foreground};
-      font-family: ${fontFamily.accent};
-      font-weight: bold;
-      padding: 0.75rem 1.25rem;
-
-      ${CTAButtonOuter}:hover & {
-        box-shadow: -8px 8px 0 0 ${modeColors.shadow};
-      }
-
-      ${CTAButtonOuter}:active & {
-        background: ${modeColors.shadow};
-        box-shadow: none;
-      }
-
-      ${CTAButtonOuter}:disabled &,
-      ${CTAButtonOuter}[aria-disabled='true'] & {
-        background: ${modeColors.backgroundMuted};
-        box-shadow: -4px 4px 0 1px ${modeColors.foregroundMuted};
-        color: ${modeColors.foregroundMuted};
-      }
-    `;
-  }
+const CTAButtonInner = styled(ButtonInner, config)<ButtonProps>(
+  system.css({
+    borderRadius: '2px',
+    fontFamily: 'accent',
+    fontWeight: 'title',
+    py: 12,
+    px: 24,
+  }),
+  createStates({
+    base: {
+      color: foreground,
+      boxShadow: `-4px 4px 0 0 ${shadow}`,
+      backgroundColor: background,
+    },
+    hover: { boxShadow: `-8px 8px 0 0 ${shadow}` },
+    active: { backgroundColor: shadow, boxShadow: 'none' },
+    disabled: {
+      backgroundColor: backgroundMuted,
+      boxShadow: 'none',
+      color: foregroundMuted,
+    },
+  })
 );
 
-const CTAButtonOuter = styled(ButtonOutline)<{ variant?: 'primary' }>`
-  padding: 1px 1px 5px 5px;
-`;
+export type CTAButtonProps = Omit<
+  ComponentProps<typeof ButtonOutline>,
+  'padded'
+>;
 
-export const CTAButton: React.FC<
-  React.ComponentProps<typeof CTAButtonOuter> & { variant?: never }
-> = ({ children, mode, ...props }) => {
-  return (
-    <CTAButtonOuter mode={mode} {...props}>
-      <CTAButtonInner mode={mode}>{children}</CTAButtonInner>
-    </CTAButtonOuter>
-  );
-};
+export const CTAButton = forwardRef<ButtonBaseElements, CTAButtonProps>(
+  ({ children, mode, variant, ...props }, ref) => {
+    const currentMode = useColorMode(mode);
+    return (
+      <ButtonOutline mode={currentMode} {...props} padded="medium" ref={ref}>
+        <CTAButtonInner mode={currentMode} variant={variant}>
+          {children}
+        </CTAButtonInner>
+      </ButtonOutline>
+    );
+  }
+);

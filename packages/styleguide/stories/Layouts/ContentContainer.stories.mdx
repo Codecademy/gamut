@@ -1,8 +1,7 @@
 import { ContentContainer } from '@codecademy/gamut/src';
 import title from '@codecademy/macros/lib/title.macro';
+import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
-
-import { PropsTable } from '~styleguide/blocks';
 
 <Meta
   title={title}
@@ -35,7 +34,15 @@ Use `ContentContainer` to keep page _content_ at a consistent maximum content wi
 See [the Student Center](https://codecademy.com/student-center) for an example.
 
 <Canvas>
-  <Story name="Wide" args={{ variant: 'wide' }}>
+  <Story name="Wide" args={{ size: 'wide' }}>
+    {(args) => <ContentContainer {...args} />}
+  </Story>
+</Canvas>
+
+## Code Playground
+
+<Canvas>
+  <Story name="Content Container">
     {(args) => <ContentContainer {...args} />}
   </Story>
 </Canvas>

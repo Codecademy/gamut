@@ -125,7 +125,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
 
   return (
     <Column size={field.size}>
-      <FormGroup marginBottom={0}>
+      <FormGroup mb={0}>
         {field.hideLabel ? <HiddenText>{label}</HiddenText> : label}
         {getInput()}
         {errorMessage && (
