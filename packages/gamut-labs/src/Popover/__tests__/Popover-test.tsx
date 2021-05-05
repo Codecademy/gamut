@@ -303,7 +303,7 @@ describe('Popover', () => {
   it('shows a pattern if the prop is provided', () => {
     renderPopover({
       isOpen: true,
-      pattern: true,
+      pattern: 'checkerDense',
     });
 
     expect(screen.queryByTestId('popover-pattern')).toBeInTheDocument();

@@ -1,7 +1,8 @@
-import { DiagonalBDense, DiagonalBRegular } from '@codecademy/gamut-patterns';
 import { variant } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React from 'react';
+
+import { Pattern, PatternName } from '../Pattern';
 
 export type ProgressBarProps = {
   className?: string;
@@ -34,7 +35,7 @@ export type ProgressBarProps = {
   /**
    * Whether to use a pattern background
    */
-  pattern?: boolean;
+  pattern?: PatternName;
 };
 
 const progressBarSizeVariants = variant({
@@ -158,12 +159,9 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
       size={size}
       variant={variant}
     >
-      {pattern &&
-        (size === 'large' ? (
-          <DiagonalBRegular width="100%" position="absolute" zIndex={0} />
-        ) : (
-          <DiagonalBDense width="100%" position="absolute" zIndex={0} />
-        ))}
+      {pattern && (
+        <Pattern width="100%" position="absolute" zIndex={0} name={pattern} />
+      )}
       <Bar
         variant={variant}
         data-testid="progress-bar-bar"

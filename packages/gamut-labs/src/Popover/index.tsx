@@ -1,4 +1,4 @@
-import { BodyPortal, FocusTrap, Pattern } from '@codecademy/gamut';
+import { BodyPortal, FocusTrap, Pattern, PatternName } from '@codecademy/gamut';
 import styled from '@emotion/styled';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useWindowScroll, useWindowSize } from 'react-use';
@@ -99,7 +99,7 @@ export type PopoverProps = {
   /**
    * Whether to add a pattern background.
    */
-  pattern?: boolean;
+  pattern?: PatternName;
   /**
    * Called when the Popover requests to be closed,
    * this could be due to clicking outside of the popover, or by clicking the escape key.
