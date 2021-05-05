@@ -9,6 +9,7 @@ import styled from '@emotion/styled';
 import { mapValues, pick } from 'lodash';
 import React, { ComponentProps, forwardRef, useMemo } from 'react';
 
+import { scrollbarColors } from './styles/scrollbar';
 import {
   background,
   border,
