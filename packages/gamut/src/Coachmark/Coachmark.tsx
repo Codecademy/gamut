@@ -4,7 +4,7 @@ import styled from '@emotion/styled';
 import React, { ComponentProps } from 'react';
 
 import { TextButton } from '../Button';
-import { FloatingCard } from '../Card';
+import { FloatingCard } from '../FloatingCard/FloatingCard';
 import { Text } from '../Typography';
 
 const layoutVariants = system.variant({
