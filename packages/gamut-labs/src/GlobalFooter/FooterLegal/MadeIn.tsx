@@ -12,28 +12,35 @@ const HeartContainer = styled(Anchor)`
 `;
 
 export type MadeInProps = {
-  onClick?: (e: React.MouseEvent | React.KeyboardEvent) => void;
+  onClick?: (text: string) => void;
 };
 
-export const MadeIn: React.FC<MadeInProps> = ({ onClick }) => (
-  <Box
-    display={{ md: 'inline-block' }}
-    textAlign={{ _: 'center', md: 'right' }}
-  >
-    <Anchor variant="interface" onClick={onClick}>
-      Made
-    </Anchor>{' '}
-    with
-    <HeartContainer variant="interface" onClick={onClick}>
-      ️❤️
-    </HeartContainer>
-    in{' '}
-    <Anchor variant="interface" onClick={onClick}>
-      NYC
-    </Anchor>{' '}
-    ©{` ${new Date().getFullYear()} `}{' '}
-    <Anchor variant="interface" onClick={onClick}>
-      Codecademy
-    </Anchor>
-  </Box>
-);
+export const MadeIn: React.FC<MadeInProps> = ({ onClick }) => {
+  const onMadeClick = () => onClick?.('Made');
+  const onHeartClick = () => onClick?.('❤');
+  const onNYCClick = () => onClick?.('NYC');
+  const onCodecademyClick = () => onClick?.('Codecademy');
+
+  return (
+    <Box
+      display={{ md: 'inline-block' }}
+      textAlign={{ _: 'center', md: 'right' }}
+    >
+      <Anchor variant="interface" onClick={onMadeClick}>
+        Made
+      </Anchor>{' '}
+      with
+      <HeartContainer variant="interface" onClick={onHeartClick}>
+        ️❤️
+      </HeartContainer>
+      in{' '}
+      <Anchor variant="interface" onClick={onNYCClick}>
+        NYC
+      </Anchor>{' '}
+      ©{` ${new Date().getFullYear()} `}{' '}
+      <Anchor variant="interface" onClick={onCodecademyClick}>
+        Codecademy
+      </Anchor>
+    </Box>
+  );
+};
