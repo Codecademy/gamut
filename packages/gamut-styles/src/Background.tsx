@@ -1,70 +1,90 @@
-import { Theme, useTheme } from '@emotion/react';
+import { useTheme } from '@emotion/react';
 import { getContrast } from 'polished';
-import React, { ComponentProps, forwardRef, useMemo } from 'react';
+import React, { ComponentProps, forwardRef, useCallback, useMemo } from 'react';
 
-import { ColorAlias, ColorMode, ColorModeShape } from './ColorMode';
+import {
+  ColorAlias,
+  ColorMode,
+  ColorModes,
+  ColorModeShape,
+  Colors,
+  useColorMode,
+} from './ColorMode';
 import { getColorValue } from './theme';
 
 export interface BackgroundProps
   extends Omit<
     ComponentProps<typeof ColorMode>,
-    'mode' | 'alwaysSetVariables'
+    'mode' | 'alwaysSetVariables' | 'bg'
   > {
-  bg: keyof Theme['colors'];
-  className?: string;
-  children: React.ReactNode;
+  bg: Colors;
 }
 
 const isColorAlias = (
   mode: ColorModeShape,
-  color: keyof Theme['colors']
+  color: Colors
 ): color is ColorAlias => {
   return Object.keys(mode).includes(color);
 };
 
 export const Background = forwardRef<HTMLDivElement, BackgroundProps>(
   ({ children, className, bg, ...rest }, ref) => {
-    const {
-      colorModes: { active, modes },
-    } = useTheme();
+    const [active, activeColors, modes] = useColorMode();
 
     /** If a color alias was used then look up the true color key from the active mode */
     const trueColor = useMemo(() => {
-      const activeMode = modes[active];
-      if (isColorAlias(activeMode, bg)) {
-        return activeMode[bg];
+      if (isColorAlias(activeColors, bg)) {
+        return activeColors[bg];
       }
       return bg;
-    }, [bg, active, modes]);
+    }, [bg, activeColors]);
 
-    /** Determine the most accessible mode for the color picked */
+    const getTextContrast = useCallback(
+      (foreground: Colors) => {
+        return getContrast(getColorValue(foreground), getColorValue(trueColor));
+      },
+      [trueColor]
+    );
+
+    /**
+     * This compares the contrast of the selected background color
+     * and each color modes body text and returns the mode that has
+     * the highest contrast standard. This is not perfect as it is
+     * probable that certain color modes will never be reachable if
+     * there are more than 2 color modes.
+     *
+     * This does not guarantee a level of A/AA/AA compliance.
+     */
+
     const accessibleMode = useMemo(() => {
-      const { light, dark } = modes;
+      const { [active]: activeMode, ...otherModes } = modes;
+      const possibleModes = Object.entries(otherModes);
 
-      const background = getColorValue(trueColor);
-
-      const lightText = getColorValue(light.text);
-      const darkText = getColorValue(dark.text);
-
-      const lightModeContrast = getContrast(lightText, background);
-      const darkModeContrast = getContrast(darkText, background);
-      // Minimum Contrast Requirement is 4.5 for AA (this will not be a perfect metric since there are multiple standards but should meet most of our needs)
-      const highestContrastMode =
-        lightModeContrast > darkModeContrast ? 'light' : 'dark';
+      /**
+       * Reduce all remaining modes to the mode key with the highest contrast
+       * value.
+       *
+       * TODO: Add a tiebreaker.  This could possibly have other dimensions as
+       * it will likelyfail to return a mode outside of the lighest and
+       * darkest versions.
+       */
+      const [highestContrastMode] = possibleModes.reduce<[ColorModes, number]>(
+        (
+          [prevMode, prevContrast],
+          [mode, { text }]: [ColorModes, ColorModeShape]
+        ) => {
+          const contrast = getTextContrast(text);
+          // Keep the higher contrast mode.
+          return contrast > prevContrast
+            ? [mode, contrast]
+            : [prevMode, prevContrast];
+        },
+        [active, getTextContrast(activeMode.text)]
+      );
 
       return highestContrastMode;
-    }, [modes, trueColor]);
+    }, [modes, active, getTextContrast]);
 
-    return (
-      <ColorMode
-        className={className}
-        mode={accessibleMode}
-        bg={bg}
-        {...rest}
-        ref={ref}
-      >
-        {children}
-      </ColorMode>
-    );
+    return <ColorMode {...rest} mode={accessibleMode} bg={bg} ref={ref} />;
   }
 );

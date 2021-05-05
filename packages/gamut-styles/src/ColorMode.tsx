@@ -14,6 +14,7 @@ import {
 } from './variance/props';
 import { styledConfig } from './variance/utils';
 
+export type Colors = keyof Theme['colors'];
 export type ColorModeConfig = Theme['colorModes']['modes'];
 export type ColorModes = keyof ColorModeConfig;
 export type ColorModeShape = ColorModeConfig[ColorModes];
@@ -33,6 +34,12 @@ export const providerProps = variance.compose(
   positioning,
   space
 );
+
+export function useColorMode(): [ColorModes, ColorModeShape, ColorModeConfig] {
+  const theme = useTheme();
+  const { active, modes } = theme?.colorModes || {};
+  return [active, modes?.[active], modes];
+}
 
 export const VariableProvider = styled('div', styledConfig)<
   StyleProps<typeof providerProps> & {
