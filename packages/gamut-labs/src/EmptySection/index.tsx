@@ -1,44 +1,40 @@
 import { Box, FlexBox, Pattern, Text } from '@codecademy/gamut';
 import { IllustrationProps } from '@codecademy/gamut-illustrations';
-import { colors, pxRem, themed } from '@codecademy/gamut-styles';
+import { pxRem, system, themed } from '@codecademy/gamut-styles';
+import { Theme } from '@emotion/react';
 import styled from '@emotion/styled';
 import React, { ReactNode } from 'react';
 
 export type EmptySectionProps = {
   bodyText: string;
-  children?: ReactNode;
+  children: ReactNode;
   headingText: string;
   illustration: React.ComponentType<IllustrationProps>;
   illustrationPosition?: 'left' | 'right';
   innerBGColor: keyof Theme['colors'];
+  stretchDirection: 'left' | 'right';
 };
 
-const Dots = styled(Pattern)`
-  position: absolute;
-  top: 0;
-  right: -1rem;
-  height: calc(100% + 8rem);
-  width: calc(100% + 2rem);
-  ${themed('breakpoints.xs')} {
-    width: calc(100% + 4rem);
-    right: -2rem;
-  }
-  ${themed('breakpoints.sm')} {
-    width: calc(100% + 8rem);
-    right: -4rem;
-  }
-  ${themed('breakpoints.md')} {
-    width: calc(100% + 4rem);
-    right: 0;
-  }
-  ${themed('breakpoints.lg')} {
-    width: calc(100% + 6rem);
-  }
-`;
-
-const Title = styled(Text)`
-  margin-bottom: 0.5rem;
-`;
+const Dots = styled(Pattern)(
+  system.variant({
+    prop: 'stretchDirection',
+    base: {
+      position: 'absolute',
+      top: 0,
+      bottom: 0,
+    },
+    variants: {
+      left: {
+        right: 0,
+        left: '-100vw',
+      },
+      right: {
+        left: 0,
+        right: '-100vw',
+      },
+    },
+  })
+);
 
 type IllustrationContainerProps = {
   illustrationPosition: string;
@@ -46,9 +42,9 @@ type IllustrationContainerProps = {
 
 const IllustrationContainer = styled.div<IllustrationContainerProps>`
   margin: 0 auto 2rem;
-  ${themed('breakpoints.md')} {
+  ${themed('breakpoints.sm')} {
     margin: ${({ illustrationPosition }) =>
-      illustrationPosition === 'right' ? '0 0 0 6rem' : ' 0 6rem 0 0'};
+      illustrationPosition === 'right' ? '0 0 0 3rem' : ' 0 3rem 0 0'};
   }
 `;
 
@@ -59,32 +55,40 @@ export const EmptySection: React.FC<EmptySectionProps> = ({
   illustration: Illustration,
   illustrationPosition = 'right',
   innerBGColor,
+  stretchDirection = 'left',
 }) => {
   const direction = illustrationPosition === 'right' ? 'row-reverse' : 'row';
+  const paddingDirection = stretchDirection === 'right' ? 'pr' : 'pl';
+  const styleProps = { [paddingDirection]: [0, 0, 0] } as Record<
+    'pr' | 'pl',
+    [0]
+  >;
 
   return (
-    <Box position="relative">
-      <Dots name="dotLoose" />
+    <Box
+      position="relative"
+      px={{ _: 16, xs: 48, sm: 96 }}
+      py={{ _: 32, xs: 48, sm: 96 }}
+      {...styleProps}
+    >
+      <Dots name="dotLoose" stretchDirection={stretchDirection} />
       <FlexBox
-        backgroundColor={innerBGColor}
-        flexDirection={{ base: 'column', sm: direction }}
-        justifyContent={{ base: 'space-around', md: 'space-between' }}
-        alignItems="center"
-        textAlign={{ base: 'center', sm: 'start' }}
         position="relative"
-        top="4rem"
-        marginLeft={{ base: 32, sm: 0 }}
-        marginRight={{ base: 32, sm: 0, md: 64, lg: 96 }}
-        marginBottom={{ base: pxRem(138) as any }}
-        paddingX={{ base: 16, xs: 48, sm: 96, md: 32 }}
-        paddingY={{ base: 32, xs: 48 }}
+        bg={innerBGColor}
+        py={48}
+        px={64}
+        zIndex={1}
+        flexDirection={{ _: 'column', sm: direction }}
+        justifyContent={{ _: 'space-around', md: 'space-between' }}
+        alignItems="center"
+        textAlign={{ _: 'center', sm: 'start' }}
       >
         <IllustrationContainer illustrationPosition={illustrationPosition}>
           <Illustration width={pxRem(100)} />
         </IllustrationContainer>
         <FlexBox
           flexDirection="column"
-          alignItems={{ base: 'center', sm: 'start' }}
+          alignItems={{ _: 'center', sm: 'start' }}
         >
           <Text as="h2" fontSize={22} mb={8}>
             {headingText}
