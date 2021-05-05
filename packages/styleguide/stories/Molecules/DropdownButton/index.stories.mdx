@@ -1,0 +1,21 @@
+import { DropdownButton } from '@codecademy/gamut-labs/src';
+import title from '@codecademy/macros/lib/title.macro';
+import { PropsTable } from '@codecademy/storybook-addon-variance';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+
+<Meta
+  title={title}
+  component={DropdownButton}
+  parameters={{
+    subtitle: 'A button',
+    source: 'gamut-labs',
+    status: 'updating',
+  }}
+  args={{}}
+/>
+
+<Canvas>
+  <Story name="DropdownButton">{(args) => <DropdownButton {...args} />}</Story>
+</Canvas>
+
+<PropsTable story="DropdownButton" />
