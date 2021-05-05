@@ -1,7 +1,7 @@
 import { setupRtl } from '@codecademy/gamut-tests';
 import { fireEvent, screen } from '@testing-library/dom';
 
-import { Dialog } from '../Dialog';
+import { Dialog } from '..';
 
 const onRequestClose = jest.fn();
 const onConfirm = jest.fn();
