@@ -31,6 +31,7 @@ Array [
   "FillButton",
   "FlexBox",
   "FlexGrid",
+  "FloatingCard",
   "FocusTrap",
   "Form",
   "FormError",
