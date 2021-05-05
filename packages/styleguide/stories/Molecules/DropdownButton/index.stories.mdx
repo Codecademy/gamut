@@ -11,7 +11,15 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
     source: 'gamut-labs',
     status: 'updating',
   }}
-  args={{}}
+  args={{
+    buttonText: 'click me',
+    buttonType: 'fill',
+    dropdownItems: [
+      {
+        text: 'Item 1',
+      },
+    ],
+  }}
 />
 
 <Canvas>
