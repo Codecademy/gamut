@@ -6,3 +6,7 @@ declare namespace NodeJS {
     STORYSHOTS_INDEX: number;
   }
 }
+
+declare module '@storybook/addon-links/react' {
+  export declare const LinkTo: React.FC<{ kind: string; id: string }>;
+}

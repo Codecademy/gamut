@@ -111,7 +111,7 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
   return (
     <>
       <Box
-        display={{ base: 'none', md: 'block' }}
+        display={{ _: 'none', md: 'block' }}
         height={theme.elements.headerHeight}
         className={headerClasses}
       >
@@ -124,7 +124,7 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
         />
       </Box>
       <Box
-        display={{ base: 'block', md: 'none' }}
+        display={{ _: 'block', md: 'none' }}
         height={theme.elements.headerHeight}
         className={headerClasses}
       >

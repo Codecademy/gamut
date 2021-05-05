@@ -34,7 +34,7 @@ export const MadeIn: React.FC<MadeInProps> = ({ onClick }) => {
   return (
     <Box
       display={{ md: 'inline-block' }}
-      textAlign={{ base: 'center', md: 'right' }}
+      textAlign={{ _: 'center', md: 'right' }}
     >
       <AccessibleSpan>Made</AccessibleSpan> with
       <HeartContainer

@@ -6,11 +6,10 @@ import {
   Markdown,
 } from '@codecademy/gamut/src';
 import title from '@codecademy/macros/lib/title.macro';
+import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { action } from '@storybook/addon-actions';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 import { useState } from '@storybook/addons';
-
-import { PropsTable } from '~styleguide/blocks';
 
 <Meta
   title={title}
@@ -682,5 +681,36 @@ A field can take a custom error in addition to validation errors. The validation
         />
       );
     }}
+  </Story>
+</Canvas>
+
+## Hidden Input
+
+Hidden inputs can be used to include data that users can't see or modify with the submission. For this implementation you can set the `defaultValue` in the object and it will be submitted with the regular form data.
+
+<Canvas>
+  <Story name="Hidden Input">
+    {(args) => (
+      <GridForm
+        fields={[
+          {
+            type: 'hidden',
+            name: 'secret-stuff',
+            defaultValue: "I'm invisible!",
+          },
+          {
+            label: "There's more than one field here!",
+            name: 'custom-input',
+            type: 'email',
+          },
+        ]}
+        onSubmit={async (values) => {
+          action('Form Submitted')(values);
+        }}
+        submit={{
+          contents: 'Submit',
+        }}
+      />
+    )}
   </Story>
 </Canvas>
