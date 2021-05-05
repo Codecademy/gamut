@@ -24,14 +24,14 @@ export type OverlayProps = {
    * Whether the overlay is rendered.
    */
   isOpen?: boolean;
-  /** Whether the overlay renders inset to its container or creates a portal to the end of the body */
-  inset?: boolean;
+  /** Whether the overlay renders inline to its container or creates a portal to the end of the body */
+  inline?: boolean;
 };
 
 export const Overlay: React.FC<OverlayProps> = ({
   className,
   children,
-  inset = false,
+  inline = false,
   clickOutsideCloses = true,
   escapeCloses = true,
   onRequestClose,
@@ -50,14 +50,14 @@ export const Overlay: React.FC<OverlayProps> = ({
   const content = (
     <FlexBox
       data-testid="overlay-content-container"
-      position={inset ? 'absolute' : 'fixed'}
+      position={inline ? 'absolute' : 'fixed'}
       justifyContent="center"
       alignItems="center"
       inset={0}
       className={className}
     >
       <FocusTrap
-        active={!inset}
+        active={!inline}
         onClickOutside={handleOutsideClick}
         onEscapeKey={handleEscapeKey}
       >
@@ -66,7 +66,7 @@ export const Overlay: React.FC<OverlayProps> = ({
     </FlexBox>
   );
 
-  if (inset) return content;
+  if (inline) return content;
 
   return <BodyPortal>{content}</BodyPortal>;
 };
