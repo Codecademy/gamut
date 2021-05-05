@@ -17,7 +17,7 @@ export type GlobalFooterProps = {
   /**
    * Called when the text in the MadeIn component is clicked
    */
-  onMadeInClick?: (e: React.MouseEvent | React.KeyboardEvent) => void;
+  onMadeInClick?: (text: string) => void;
 
   /**
    * Geographic region of the user viewing the footer, such as "IN" or "US".
