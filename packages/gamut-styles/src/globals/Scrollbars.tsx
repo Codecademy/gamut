@@ -4,8 +4,11 @@ import React from 'react';
 import { scrollbarColors } from '../styles/scrollbar';
 import { theme } from '../theme';
 
-const scrollbarSettings = css`
-  scrollbar-width: thin;
+const globalScrollbarStyles = css`
+  :root {
+    scrollbar-width: thin;
+    ${scrollbarColors}
+  }
 
   ::-webkit-scrollbar-track,
   ::-webkit-scrollbar-corner {
@@ -22,6 +25,4 @@ const scrollbarSettings = css`
   }
 `;
 
-const scrollbarStyles = css(scrollbarColors, scrollbarSettings);
-
-export const Scrollbars = () => <Global styles={scrollbarStyles} />;
+export const Scrollbars = () => <Global styles={globalScrollbarStyles} />;
