@@ -6,7 +6,7 @@ import React, { useMemo } from 'react';
 
 import { Box } from '../Box';
 import { IconButton } from '../Button/IconButton';
-import { FloatingCard } from '../Card';
+import { FloatingCard } from '../FloatingCard/FloatingCard';
 import { Text } from '../Typography';
 
 const layoutVariants = system.variant({
