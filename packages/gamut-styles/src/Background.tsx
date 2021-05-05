@@ -1,4 +1,3 @@
-import { useTheme } from '@emotion/react';
 import { getContrast } from 'polished';
 import React, { ComponentProps, forwardRef, useCallback, useMemo } from 'react';
 
