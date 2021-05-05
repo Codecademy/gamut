@@ -95,7 +95,7 @@ export const Dialog: React.FC<DialogProps> = ({
           alignSelf="start"
           variant="secondary"
           icon={MiniDeleteIcon}
-          onClick={confirmCta.onClick}
+          onClick={onCancel}
           gridArea="close"
         />
         <Text as="p" gridArea="content">
