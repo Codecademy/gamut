@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [32.11.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@32.10.1...@codecademy/gamut@32.11.0) (2021-05-05)
+
+
+### Features
+
+* **PageWrapper:** Extend stacking context reset element for pages with a background color ([0a22b34](https://github.com/Codecademy/client-modules/commit/0a22b3489625e524085ffd2076730e05b9a4d898))
+
+
+
 ### [32.10.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@32.10.0...@codecademy/gamut@32.10.1) (2021-05-04)
 
 
