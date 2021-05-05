@@ -1,7 +1,7 @@
 {
   "name": "@codecademy/gamut-labs",
   "description": "Brand and experimental component library for Codecademy",
-  "version": "15.4.1",
+  "version": "15.5.0",
   "author": "Codecademy Engineering <dev@codecademy.com>",
   "sideEffects": [
     "*.css",
@@ -22,8 +22,8 @@
     "react-dom": ">=16.8.1"
   },
   "dependencies": {
-    "@codecademy/gamut": "^32.10.1",
-    "@codecademy/gamut-styles": "^9.7.4",
+    "@codecademy/gamut": "^32.11.0",
+    "@codecademy/gamut-styles": "^9.8.0",
     "@codecademy/gamut-system": "^0.7.1",
     "@codecademy/variance": "^0.11.1",
     "classnames": "^2.2.5",
@@ -32,7 +32,7 @@
     "react-use": "15.3.8"
   },
   "devDependencies": {
-    "@codecademy/gamut-tests": "^2.3.26"
+    "@codecademy/gamut-tests": "^2.3.27"
   },
   "scripts": {
     "verify": "tsc --noEmit",
