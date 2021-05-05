@@ -27,7 +27,7 @@ const isColorAlias = (
 };
 
 export const Background = forwardRef<HTMLDivElement, BackgroundProps>(
-  ({ children, className, bg, ...rest }, ref) => {
+  ({ bg, ...rest }, ref) => {
     const [active, activeColors, modes] = useColorMode();
 
     /** If a color alias was used then look up the true color key from the active mode */
