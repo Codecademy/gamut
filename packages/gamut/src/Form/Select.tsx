@@ -63,7 +63,7 @@ const allowClickStyle = css`
   pointer-events: none;
 `;
 
-export const StyledFlexbox = styled(FlexBox)(allowClickStyle);
+const StyledFlexbox = styled(FlexBox)(allowClickStyle);
 
 export const Select = forwardRef<HTMLSelectElement, SelectWrapperProps>(
   (
@@ -114,6 +114,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectWrapperProps>(
           right="0"
           top="0"
           bottom="0"
+          aria-hidden
         >
           {sizeVariant === 'small' ? (
             <MiniChevronDownIcon size={12} />
