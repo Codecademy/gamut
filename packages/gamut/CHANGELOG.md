@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [32.12.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@32.12.0...@codecademy/gamut@32.12.1) (2021-05-05)
+
+
+### Bug Fixes
+
+* **Select:** add aria-hidden to ArrowDownChevron ([0da8610](https://github.com/Codecademy/client-modules/commit/0da8610b47362959175482e8329cec7ea7facc83))
+
+
+
 ## [32.12.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@32.11.1...@codecademy/gamut@32.12.0) (2021-05-05)
 
 
