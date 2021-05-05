@@ -57,7 +57,7 @@ export const Popover: React.FC<PopoverProps> = ({
   verticalOffset = 20,
   horizontalOffset = 0,
   inside = true,
-  inset = false,
+  inline = false,
   isOpen,
   onRequestClose,
   targetRef,
@@ -75,8 +75,8 @@ export const Popover: React.FC<PopoverProps> = ({
 
   const getPopoverPosition = useCallback(() => {
     if (!targetRect || !boundingRect) return {};
-    const container = inset ? targetRect : boundingRect;
-    const scrollX = inset ? 0 : window.scrollX;
+    const container = inline ? targetRect : boundingRect;
+    const scrollX = inline ? 0 : window.scrollX;
 
     const positions = {
       top: Math.round(container.top - verticalOffset),
@@ -95,7 +95,7 @@ export const Popover: React.FC<PopoverProps> = ({
       left: alignments[xAlign],
     };
   }, [
-    inset,
+    inline,
     boundingRect,
     targetRect,
     verticalOffset,
@@ -110,7 +110,7 @@ export const Popover: React.FC<PopoverProps> = ({
 
   useEffect(() => {
     const target = targetRef?.current;
-    if (inset && target) {
+    if (inline && target) {
       setTargetRect({
         width: target.offsetWidth,
         height: target.offsetHeight,
@@ -118,7 +118,7 @@ export const Popover: React.FC<PopoverProps> = ({
         top: target.offsetTop,
       } as DOMRect);
     }
-  }, [targetRef, isOpen, width, height, x, y, inset, inside, alignment]);
+  }, [targetRef, isOpen, width, height, x, y, inline, inside, alignment]);
 
   useEffect(() => {
     if (boundingRect) {
@@ -165,7 +165,7 @@ export const Popover: React.FC<PopoverProps> = ({
         ref={popoverRef}
         tabIndex={-1}
         transform={transform}
-        position={inset ? 'absolute' : 'fixed'}
+        position={inline ? 'absolute' : 'fixed'}
         top={top}
         left={left}
         data-testid="popover-content-container"
@@ -173,7 +173,7 @@ export const Popover: React.FC<PopoverProps> = ({
       />
     </FocusTrap>
   );
-  if (inset) return content;
+  if (inline) return content;
 
   return <BodyPortal>{content}</BodyPortal>;
 };
