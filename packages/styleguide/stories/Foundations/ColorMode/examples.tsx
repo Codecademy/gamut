@@ -27,7 +27,7 @@ const renderButtons = (variant?: 'primary' | 'secondary', disabled = false) => {
       gridAutoRows="3em"
       alignItems="start"
       justifyItems="start"
-      paddingTop={16}
+      pt={16}
     >
       <GridBox gridRowEnd="span 2">
         <CTAButton variant={variant as any} disabled={disabled}>
@@ -66,7 +66,7 @@ const renderButtons = (variant?: 'primary' | 'secondary', disabled = false) => {
 const renderLinks = () => {
   return (
     <GridBox
-      marginTop={16}
+      mt={16}
       columnGap={16}
       gridTemplateColumns="repeat(3, max-content)"
     >
@@ -80,8 +80,8 @@ const renderLinks = () => {
 export const ColorModeExample = () => {
   const [isDark, setIsDark] = useState(false);
   return (
-    <Box marginY={8} marginBottom={32}>
-      <FlexBox fontWeight="title" marginBottom={8} alignItems="center">
+    <Box mt={16} mb={32}>
+      <FlexBox mb={8} alignItems="center">
         <Text mr={8} as="strong">
           Use Dark Mode
         </Text>
@@ -94,19 +94,13 @@ export const ColorModeExample = () => {
         />
       </FlexBox>
       <ColorMode mode={isDark ? 'dark' : 'light'}>
-        <Box
-          backgroundColor="background"
-          padding={24}
-          borderColor="text"
-          borderStyle="solid"
-          borderWidth="1px"
-        >
+        <Box bg="background" p={24} border={1}>
           <Text as="h3" mb={24}>
             {isDark ? 'Dark' : 'Light'} Mode
           </Text>
           <GridBox
             columnGap={16}
-            paddingBottom={16}
+            pb={16}
             gridTemplateColumns="max-content max-content max-content"
           >
             <Logo variant="default" />
@@ -138,7 +132,7 @@ export const BackgroundExample: React.FC<ComponentProps<typeof Background>> = ({
 }) => {
   return (
     <Background {...rest} p={24}>
-      <Text as="p" fontSize={26} fontWeight="title" mb={16}>
+      <Text variant="title-md" mb={16}>
         {rest.bg}
       </Text>
       <Text as="p" mb={16}>

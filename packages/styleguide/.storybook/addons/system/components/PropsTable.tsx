@@ -1,5 +1,5 @@
-import React from 'react';
-import { propGroups, PropGroups } from './constants';
+import React, { ComponentProps } from 'react';
+import { PROP_GROUPS } from '../propMeta';
 import { ArgsTable } from '@storybook/addon-docs/blocks';
 
 import {
@@ -10,22 +10,22 @@ import {
 } from './Elements';
 import { useSystemProps } from './useSystemProps';
 import { Box, GridBox, FlexBox, Text, Toggle } from '@codecademy/gamut/src';
-import { Link } from '../Markdown/Elements';
+import { Link } from '~styleguide/blocks';
 
 type PropTagProps = {
-  prop: PropGroups;
+  prop: keyof typeof PROP_GROUPS;
   active: boolean;
   onClick: () => void;
 };
 
 export const PropTag: React.FC<PropTagProps> = ({ prop, active, onClick }) => {
-  const { propNames } = propGroups[prop];
+  const { propNames } = PROP_GROUPS[prop];
   const variant = active ? 'selected' : 'normal';
   return (
     <PropGroupTag variant={variant} onClick={onClick}>
       {prop}
       <PropGroupTooltip>
-        {propNames.map((propName) => (
+        {propNames.map((propName: string) => (
           <PropItem key={`${prop}-${propName}`}>{propName}</PropItem>
         ))}
       </PropGroupTooltip>
@@ -33,7 +33,7 @@ export const PropTag: React.FC<PropTagProps> = ({ prop, active, onClick }) => {
   );
 };
 
-type PropsTableProps = Parameters<typeof ArgsTable>[0] & {
+type PropsTableProps = ComponentProps<typeof ArgsTable> & {
   defaultGroups: string[];
 };
 

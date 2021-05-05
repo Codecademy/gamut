@@ -1,6 +1,7 @@
 import {
   GridFormCheckboxField,
   GridFormFileField,
+  GridFormHiddenField,
   GridFormRadioGroupField,
   GridFormRadioOption,
   GridFormSelectField,
@@ -64,4 +65,10 @@ export const stubTextareaField: GridFormTextAreaField = {
   name: 'stub-textarea',
   size: 6,
   type: 'textarea',
+};
+
+export const stubHiddenField: GridFormHiddenField = {
+  name: 'secret-field',
+  type: 'hidden',
+  defaultValue: "you can't see me!",
 };

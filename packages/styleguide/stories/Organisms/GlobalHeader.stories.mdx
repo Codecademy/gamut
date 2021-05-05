@@ -2,10 +2,9 @@ import { Box, IconButton } from '@codecademy/gamut/src';
 import { BellIcon, SearchIcon } from '@codecademy/gamut-icons/src';
 import { GlobalHeader } from '@codecademy/gamut-labs/src';
 import title from '@codecademy/macros/lib/title.macro';
+import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 import LinkTo from '@storybook/addon-links/react';
-
-import { PropsTable } from '~styleguide/blocks';
 
 <Meta
   title={title}
@@ -279,12 +278,7 @@ The Try Pro For Free button can take in an optional custom path.
         renderSearch={{
           desktop: () => <IconButton icon={SearchIcon} />,
           mobile: () => (
-            <Box
-              borderColor="navy"
-              borderStyle="solid"
-              borderWidth="1px"
-              padding={8}
-            >
+            <Box border={1} p={8}>
               Mobile Search Bar [Placeholder]
             </Box>
           ),
@@ -306,12 +300,7 @@ The Try Pro For Free button can take in an optional custom path.
         renderSearch={{
           desktop: () => <IconButton icon={SearchIcon} />,
           mobile: () => (
-            <Box
-              borderColor="navy"
-              borderStyle="solid"
-              borderWidth="1px"
-              padding={8}
-            >
+            <Box border={1} p={8}>
               Mobile Search Bar [Placeholder]
             </Box>
           ),
@@ -339,12 +328,7 @@ To mock this, IconButtons are provided as placeholders.
         renderSearch={{
           desktop: () => <IconButton icon={SearchIcon} />,
           mobile: () => (
-            <Box
-              borderColor="navy"
-              borderStyle="solid"
-              borderWidth="1px"
-              padding={8}
-            >
+            <Box border={1} p={8}>
               Mobile Search Bar [Placeholder]
             </Box>
           ),
@@ -365,7 +349,7 @@ To mock this, IconButtons are provided as placeholders.
 <Canvas>
   <Story name="GlobalHeader Over Background Color">
     {(args) => (
-      <Box backgroundColor="beige" width="100%">
+      <Box bg="beige" width="100%">
         <GlobalHeader
           action={() => {}}
           type="pro"
