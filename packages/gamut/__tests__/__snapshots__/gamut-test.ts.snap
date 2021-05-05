@@ -61,6 +61,7 @@ Array [
   "NotificationList",
   "omitProps",
   "Overlay",
+  "PageWrapper",
   "Pattern",
   "ProgressBar",
   "ProLabel",
