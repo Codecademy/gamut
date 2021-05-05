@@ -2,7 +2,7 @@ import { Theme, useTheme } from '@emotion/react';
 import { getContrast } from 'polished';
 import React, { ComponentProps, forwardRef, useMemo } from 'react';
 
-import { ColorMode } from './ColorMode';
+import { ColorAlias, ColorMode, ColorModeShape } from './ColorMode';
 import { getColorValue } from './theme';
 
 export interface BackgroundProps
@@ -15,6 +15,13 @@ export interface BackgroundProps
   children: React.ReactNode;
 }
 
+const isColorAlias = (
+  mode: ColorModeShape,
+  color: keyof Theme['colors']
+): color is ColorAlias => {
+  return Object.keys(mode).includes(color);
+};
+
 export const Background = forwardRef<HTMLDivElement, BackgroundProps>(
   ({ children, className, bg, ...rest }, ref) => {
     const {
@@ -23,7 +30,11 @@ export const Background = forwardRef<HTMLDivElement, BackgroundProps>(
 
     /** If a color alias was used then look up the true color key from the active mode */
     const trueColor = useMemo(() => {
-      return Object.keys(modes[active]).includes(bg) ? modes[active][bg] : bg;
+      const activeMode = modes[active];
+      if (isColorAlias(activeMode, bg)) {
+        return activeMode[bg];
+      }
+      return bg;
     }, [bg, active, modes]);
 
     /** Determine the most accessible mode for the color picked */
