@@ -105,6 +105,7 @@ type HiddenField = Omit<BaseFormField<any>, 'size'>;
 
 export type GridFormHiddenField = HiddenField & {
   type: 'hidden';
+  validation?: ValidationRules;
 };
 
 export type GridFormField =
