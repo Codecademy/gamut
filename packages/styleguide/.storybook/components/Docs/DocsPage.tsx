@@ -90,26 +90,21 @@ export const DocsPage: React.FC = ({ children }) => {
   };
 
   const linkIcon = (
-    <Box
-      display="inline-block"
-      marginLeft={8}
-      verticalAlign="baseline"
-      height="16px"
-    >
+    <Box display="inline-block" ml={8} verticalAlign="baseline" height="16px">
       <OpenIcon size={18} />
     </Box>
   );
   return (
-    <Box minHeight="100vh" backgroundColor="paleBlue" paddingY={48}>
+    <Box minHeight="100vh" bg="paleBlue" py={48}>
       <ContentContainer>
         <BreadCrumbs />
         <Title>{title}</Title>
-        <Text as="p" fontSize={20} marginBottom={16}>
+        <Text as="p" fontSize={20} mb={16}>
           <Markdown inline text={subtitle} />
         </Text>
         {showMeta && (
           <MetaContainer
-            backgroundColor="paleBlue"
+            bg="paleBlue"
             gridAutoFlow={['row', , 'column']}
             gridAutoColumns={['minmax(0, 1fr)', , 'minmax(0, max-content)']}
           >
