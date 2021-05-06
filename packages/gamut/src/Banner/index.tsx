@@ -1,7 +1,7 @@
 import { MiniDeleteIcon } from '@codecademy/gamut-icons';
 import { Background, system } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
-import React, { HTMLProps, useMemo } from 'react';
+import React, { HTMLProps } from 'react';
 
 import { Box } from '../Box';
 import { IconButton, TextButton } from '../Button';
@@ -35,18 +35,17 @@ const BannerContainer = styled(Background)(
   })
 );
 
-const BannerLink = styled(TextButton)(
-  system.css({
-    mx: 4,
-    '&:last-of-type': {
-      mr: 0,
-    },
-  })
-);
+const BannerMarkdown = styled(Markdown)(system.css({ fontSize: 'inherit' }));
 
-const BannerContent = styled(Markdown)`
-  font-size: inherit;
-`;
+const overrides = {
+  a: {
+    allowedAttributes: ['href', 'target'],
+    processNode: (node: unknown, props: { onClick?: () => void }) => (
+      <TextButton {...props} mx={4} size="small" target="_BLANK" />
+    ),
+    component: TextButton,
+  },
+};
 
 export const Banner: React.FC<BannerProps> = ({
   children,
@@ -55,32 +54,11 @@ export const Banner: React.FC<BannerProps> = ({
   onClose,
   ...rest
 }: BannerProps) => {
-  // Bind overrides with the correct props
-  const overrides = useMemo(
-    () => ({
-      a: {
-        allowedAttributes: ['href', 'target'],
-        processNode: (node: unknown, props: { onClick?: () => void }) => (
-          <BannerLink
-            {...props}
-            size="small"
-            target="_BLANK"
-            onClick={() => {
-              props.onClick && props.onClick();
-              onCtaClick && onCtaClick();
-            }}
-          />
-        ),
-        component: BannerLink,
-      },
-    }),
-    [onCtaClick]
-  );
-
   return (
     <BannerContainer bg={variant} {...rest}>
-      <Box gridArea="content">
-        <BannerContent
+      <Box gridArea="content" fontSize="inherit">
+        <BannerMarkdown
+          onAnchorClick={onCtaClick}
           overrides={overrides}
           text={children}
           skipDefaultOverrides={{ a: true }}
