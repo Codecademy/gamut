@@ -4,7 +4,7 @@ import styled from '@emotion/styled';
 import { motion } from 'framer-motion';
 import React, { useState } from 'react';
 
-import { Box, FlexBox } from '../Box';
+import { Box } from '../Box';
 import { FillButton, IconButton } from '../Button';
 import { Truncate } from '../Truncate';
 import { alertVariants, placementVariants } from './variants';
@@ -143,9 +143,7 @@ export const Alert: React.FC<AlertProps> = ({
 
   return (
     <AlertBanner bg={bg} {...props}>
-      <FlexBox size="2rem" alignments="center">
-        <Icon size={16} aria-hidden="true" />
-      </FlexBox>
+      <Icon size={32} aria-hidden p={8} />
       <Box py={4}>{renderContent()}</Box>
       <Box>{expandButton}</Box>
       <Box>{ctaButton}</Box>
