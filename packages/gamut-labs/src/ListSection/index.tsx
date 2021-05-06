@@ -15,6 +15,12 @@ export type ListSectionProps = {
    * If the initial display amount matches the number of list items, Show All button will not appear.
    */
   initialDisplayAmount?: number;
+
+  /**
+   * Optional callback function that will be called when the user clicks the "Show All" / "Show less" button.
+   * This is usually used for things like metrics tracking.
+   */
+  onShowAllOrLessClick?: (showAll: boolean) => void;
 };
 
 const UnstyledUnorderedList = styled.ul`
@@ -34,11 +40,13 @@ export const ListSection: React.FC<ListSectionProps> = ({
   headerButton,
   headerSecondaryButton,
   initialDisplayAmount = 3,
+  onShowAllOrLessClick,
   children,
 }) => {
   const [showAll, setShowAll] = useState(false);
 
   const handleShowAll = () => {
+    if (onShowAllOrLessClick) onShowAllOrLessClick(!showAll);
     setShowAll(!showAll);
   };
 
