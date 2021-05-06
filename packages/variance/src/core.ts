@@ -5,6 +5,7 @@ import {
   AbstractPropTransformer,
   Compose,
   CSS,
+  Modes,
   Parser,
   Prop,
   PropTransformer,
@@ -211,6 +212,31 @@ export const variance = {
           baseFn(props),
           variantFns?.[selected as Keys]?.(props)
         );
+      };
+    };
+  },
+  createModes<
+    Config extends Record<string, Prop>,
+    P extends Parser<TransformerMap<Config>>
+  >(config: Config): Modes<P> {
+    const css: CSS<P> = this.createCss(config);
+    return (modes) => {
+      type Modes = keyof typeof modes;
+      console.log(modes);
+      const modeFns = {} as Record<Modes, (props: ThemeProps) => CSSObject>;
+
+      Object.keys(modes).forEach((key) => {
+        const modeKeys = key as Modes;
+        const cssProps = modes[modeKeys];
+        modeFns[modeKeys] = css(cssProps as any);
+      });
+
+      return (props) => {
+        const { theme, mode = get(theme, 'colorModes.active') } = props;
+        const styles = {};
+        if (!mode) return styles;
+
+        return merge(styles, modeFns?.[mode as Modes]?.(props));
       };
     };
   },

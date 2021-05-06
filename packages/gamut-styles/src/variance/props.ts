@@ -19,6 +19,7 @@ export const border = variance.create(PROPERTIES.border);
 
 export const css = variance.createCss(PROPERTIES.all);
 export const variant = variance.createVariant(PROPERTIES.all);
+export const modes = variance.createModes(PROPERTIES.all);
 
 /** Sub Groups */
 

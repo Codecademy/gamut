@@ -539,3 +539,30 @@ describe('variants', () => {
     });
   });
 });
+
+describe('modes', () => {
+  const modes = variance.createModes({
+    color: { property: 'color', scale: 'colors' },
+  });
+  const testMode = modes({
+    light: { color: 'black' },
+    dark: { color: 'white' },
+  });
+
+  it.each([
+    ['active mode', { theme }, { color: theme.colors.black }],
+    [
+      'active mode',
+      {
+        theme: {
+          ...theme,
+          colorModes: { ...theme.colorModes, active: 'dark' },
+        },
+      },
+      { color: theme.colors.white },
+    ],
+    ['with prop', { mode: 'dark', theme }, { color: theme.colors.white }],
+  ])('renders styles for %s', (name, props: any, result: object) => {
+    expect(testMode(props)).toEqual(result);
+  });
+});

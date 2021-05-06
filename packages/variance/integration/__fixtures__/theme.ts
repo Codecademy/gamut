@@ -19,4 +19,7 @@ export const { theme } = createTheme({
     48: '3rem',
     64: '4rem',
   },
-} as const).build();
+} as const)
+  .addColors({ black: '#000000', white: '#ffffff' })
+  .addColorModes('light', { light: { text: 'black' }, dark: { text: 'white' } })
+  .build();
