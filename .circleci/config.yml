@@ -66,7 +66,7 @@ references:
     run:
       name: Build Required Packages
       command: |
-        yarn build-all --scope @codecademy/gamut-icons
+        yarn build-all --scope={@codecademy/gamut-system,@codecademy/variance,@codecademy/gamut-styles,@codecademy/gamut-icons}
 
   set_git_user: &set_git_user
     run:
