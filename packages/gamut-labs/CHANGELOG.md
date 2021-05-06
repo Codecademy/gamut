@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [15.6.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@15.5.6...@codecademy/gamut-labs@15.6.0) (2021-05-06)
+
+
+### Features
+
+* **footer:** Hackathon egg for learn page footer ([b5b4eb3](https://github.com/Codecademy/client-modules/commit/b5b4eb3b0245a5957e89b02fb9f3afde1bc2f8f9))
+
+
+
 ### [15.5.6](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@15.5.5...@codecademy/gamut-labs@15.5.6) (2021-05-06)
 
 **Note:** Version bump only for package @codecademy/gamut-labs
