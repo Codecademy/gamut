@@ -133,7 +133,7 @@ const ProgressBarWrapper = styled.div<ProgressBarElementWrapperProps>`
   ${progressBarBorderVariants};
 `;
 
-const Bar = styled.div<ProgressBarElementProps>`
+const Bar = styled.div(progressBarForegroundVariants);
   ${progressBarForegroundVariants};
 `;
 
