@@ -1,5 +1,5 @@
 import { MiniChevronDownIcon, MiniDeleteIcon } from '@codecademy/gamut-icons';
-import { Background, system } from '@codecademy/gamut-styles';
+import { Background, system, timing } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import { motion } from 'framer-motion';
 import React, { useState } from 'react';
@@ -53,7 +53,7 @@ const CollapseButton = styled(IconButton)(
   system.variant({
     prop: 'toggleState',
     defaultVariant: 'collapsed',
-    base: { svg: { transition: '200ms transform' } },
+    base: { svg: { transition: `${timing.fast} transform` } },
     variants: {
       collapsed: {},
       expanded: {
