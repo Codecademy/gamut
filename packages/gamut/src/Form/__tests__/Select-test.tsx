@@ -9,13 +9,13 @@ const defaultProps = {
 };
 
 const selectOptionsObject = {
-  red: 'red',
-  yellow: 'yellow',
-  green: 'green',
+  redKey: 'red',
+  greenKey: 'green',
+  yellowKey: 'yellow',
 };
 
 const renderWrapper = setupEnzyme(Select, {
-  options: selectOptionsObject,
+  options: selectOptions,
   id: 'colors',
 });
 
@@ -51,5 +51,15 @@ describe('Select', () => {
     const getByTestId = wrapper.find(`option[data-testid="${keyWithId}"]`);
 
     expect(getByTestId.exists()).toBe(true);
+  });
+
+  it('renders options as an object with the correct label + value', () => {
+    const { wrapper } = renderWrapper({ options: selectOptionsObject });
+
+    const getByValue = wrapper.find(`[value="yellowKey"]`);
+    const getFirstOption = wrapper.find('option').first();
+
+    expect(getByValue.exists()).toBe(true);
+    expect(getFirstOption.text()).toBe('red');
   });
 });
