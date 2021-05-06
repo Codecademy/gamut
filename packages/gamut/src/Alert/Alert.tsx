@@ -49,6 +49,18 @@ AlertBanner.defaultProps = {
   'aria-live': 'polite',
 };
 
+const CollapsableContent = styled(motion.div)(
+  system.css({ py: 4, overflowY: 'hidden' })
+);
+
+CollapsableContent.defaultProps = {
+  variants: {
+    collapsed: { height: '2rem' },
+    expanded: { height: 'auto' },
+  },
+  transition: { duration: '200ms', ease: 'easeInOut' },
+};
+
 const CollapseButton = styled(IconButton)(
   system.variant({
     prop: 'toggleState',
@@ -78,31 +90,18 @@ export const Alert: React.FC<AlertProps> = ({
 
   const [expanded, setExpanded] = useState(false);
   const [truncated, setTruncated] = useState(false);
+
   const toggleState = expanded ? 'expanded' : 'collapsed';
   const tabIndex = hidden ? -1 : undefined;
-  const renderContent = () => {
-    if (props.placement === 'inline') {
-      return children;
-    }
 
-    return (
-      <motion.div
-        variants={{
-          collapsed: { height: '1.5rem' },
-          expanded: { height: 'auto' },
-        }}
-        style={{ overflow: 'hidden' }}
-        transition={{ duration: '200ms', ease: 'easeInOut' }}
-        aria-expanded={expanded}
-        initial={toggleState}
-        animate={toggleState}
-      >
-        <Truncate expanded={expanded} onTruncate={setTruncated} lines={1}>
-          {children}
-        </Truncate>
-      </motion.div>
+  const content =
+    props.placement === 'floating' ? (
+      <Truncate expanded={expanded} onTruncate={setTruncated} lines={1}>
+        {children}
+      </Truncate>
+    ) : (
+      children
     );
-  };
 
   const expandButton = truncated && (
     <CollapseButton
@@ -133,7 +132,13 @@ export const Alert: React.FC<AlertProps> = ({
   return (
     <AlertBanner bg={bg} {...props}>
       <Icon size={32} aria-hidden p={8} />
-      <Box py={4}>{renderContent()}</Box>
+      <CollapsableContent
+        aria-expanded={expanded}
+        initial={props.placement === 'inline' ? 'expanded' : 'collapsed'}
+        animate={toggleState}
+      >
+        {content}
+      </CollapsableContent>
       <Box>{expandButton}</Box>
       <Box>{ctaButton}</Box>
       {onClose && (
