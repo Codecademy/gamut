@@ -1,4 +1,3 @@
-import { breakpoints } from '@codecademy/gamut-styles';
 import { motion } from 'framer-motion';
 import React, { ComponentProps } from 'react';
 
@@ -19,8 +18,7 @@ export const FadeInStacked = ({ children, order }: FadeInStacked) => {
     <motion.div
       {...defaultProps}
       style={{
-        width: `calc(${breakpoints.md} - 4rem)`,
-        maxWidth: '100%',
+        width: '100%',
         top: 0,
         x: -offset,
         y: offset,

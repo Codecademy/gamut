@@ -1,4 +1,4 @@
-import { system, theme } from '@codecademy/gamut-styles';
+import { breakpoints, system, theme } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import { AnimatePresence } from 'framer-motion';
 import { filter, hasIn, orderBy } from 'lodash';
@@ -51,7 +51,12 @@ export const AlertArea: React.FC<AlertAreaProps> = ({
 
   return (
     <Container variant={variant}>
-      <Box dimensions={1} display="inline-block" position="relative">
+      <Box
+        dimensions={1}
+        maxWidth={`calc(${breakpoints.md} - 4rem)`}
+        display="inline-block"
+        position="relative"
+      >
         <AnimatePresence>
           {orderedAlerts?.map((alert, i) => {
             if (!alert.children) return null;
