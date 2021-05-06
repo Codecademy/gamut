@@ -9,7 +9,8 @@ import { Markdown } from '../Markdown';
 
 export type BannerVariants = 'navy' | 'yellow';
 
-export interface BannerProps extends HTMLProps<HTMLDivElement> {
+export interface BannerProps
+  extends Omit<HTMLProps<HTMLDivElement>, 'as' | 'ref'> {
   className?: string;
   /** Markdown content */
   children: string;
@@ -26,7 +27,7 @@ const BannerContainer = styled(Background)(
     width: '100%',
     p: 4,
     display: 'grid',
-    gridTemplateColumns: '2rem 1fr 2rem',
+    gridTemplateColumns: '2rem minmax(0, 1fr) 2rem',
     gridTemplateAreas: "'empty content close'",
     columnGap: 8,
     alignItems: 'center',
@@ -54,8 +55,6 @@ export const Banner: React.FC<BannerProps> = ({
   onClose,
   ...rest
 }: BannerProps) => {
-  const mode = variant === 'navy' ? 'dark' : 'light';
-
   // Bind overrides with the correct props
   const overrides = useMemo(
     () => ({
@@ -64,7 +63,6 @@ export const Banner: React.FC<BannerProps> = ({
         processNode: (node: unknown, props: { onClick?: () => void }) => (
           <BannerLink
             {...props}
-            mode={mode}
             size="small"
             target="_BLANK"
             onClick={() => {
@@ -76,7 +74,7 @@ export const Banner: React.FC<BannerProps> = ({
         component: BannerLink,
       },
     }),
-    [onCtaClick, mode]
+    [onCtaClick]
   );
 
   return (
@@ -90,7 +88,6 @@ export const Banner: React.FC<BannerProps> = ({
       </Box>
       <Box gridArea="close">
         <IconButton
-          mode={mode}
           variant="secondary"
           size="small"
           aria-label="dismiss"
