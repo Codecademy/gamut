@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [32.13.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@32.12.2...@codecademy/gamut@32.13.0) (2021-05-06)
+
+
+### Features
+
+* SelectDropdown: controlled component + inputProps + docs restructuring ([e4d6e56](https://github.com/Codecademy/client-modules/commit/e4d6e56c2fd51cf2aa606525bc69913e365010a9))
+
+
+
 ### [32.12.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@32.12.1...@codecademy/gamut@32.12.2) (2021-05-05)
 
 **Note:** Version bump only for package @codecademy/gamut

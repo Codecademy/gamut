@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [36.15.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@36.14.2...@codecademy/styleguide@36.15.0) (2021-05-06)
+
+
+### Features
+
+* SelectDropdown: controlled component + inputProps + docs restructuring ([e4d6e56](https://github.com/Codecademy/client-modules/commit/e4d6e56c2fd51cf2aa606525bc69913e365010a9))
+
+
+
 ### [36.14.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@36.14.1...@codecademy/styleguide@36.14.2) (2021-05-05)
 
 **Note:** Version bump only for package @codecademy/styleguide
