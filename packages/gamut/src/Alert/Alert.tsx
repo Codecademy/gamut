@@ -47,7 +47,7 @@ AlertBanner.defaultProps = {
   role: 'status',
   'aria-label': 'alert box',
   'aria-live': 'polite',
-} as any;
+};
 
 const CollapseButton = styled(IconButton)(
   system.variant({
