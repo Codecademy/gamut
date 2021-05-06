@@ -58,7 +58,7 @@ CollapsableContent.defaultProps = {
     collapsed: { height: '2rem' },
     expanded: { height: 'auto' },
   },
-  transition: { duration: '200ms', ease: 'easeInOut' },
+  transition: { duration: 0.2, ease: 'easeInOut' },
 };
 
 const CollapseButton = styled(IconButton)(
@@ -134,7 +134,7 @@ export const Alert: React.FC<AlertProps> = ({
       <Icon size={32} aria-hidden p={8} />
       <CollapsableContent
         aria-expanded={expanded}
-        initial={props.placement === 'inline' ? 'expanded' : 'collapsed'}
+        initial={toggleState}
         animate={toggleState}
       >
         {content}
