@@ -193,7 +193,7 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 
 You can use a custom icon (from gamut-icons) in your Input elements. The error and valid icons will overwrite the custom icon if those states are applied to the element.
 
-<!-- {/* <Canvas>
+<Canvas>
   <Story
     name="FormCustomIconExamples"
     args={{
@@ -234,7 +234,7 @@ You can use a custom icon (from gamut-icons) in your Input elements. The error a
   >
     {(args) => <Input {...args} />}
   </Story>
-</Canvas> */} -->
+</Canvas>
 
 ```tsx
 import { Input, FormGroup } from '@codecademy/gamut';
@@ -269,7 +269,7 @@ export const CustomFormIconGroup: React.FC = ({
 
 ### iFrame Inputs
 
-In order to style iframe Inputs, we leverage the [withComponent](https://styled-components.com/docs/api) API from styled-components and our iFrameWrapper. You will need to do some further work with the iframe to make it behave but this will get you most of the way there. TEST.
+In order to style iframe Inputs, we leverage the [withComponent](https://styled-components.com/docs/api) API from styled-components and our iFrameWrapper. You will need to do some further work with the iframe to make it behave but this will get you most of the way there.
 
 ```tsx
 import { Input, iFrameWrapper, FormGroup } from '@codecademy/gamut';
