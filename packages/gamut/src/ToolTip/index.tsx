@@ -56,6 +56,11 @@ const ToolTipContainer = styled.div<ToolTipContainerProps>`
   width: 16rem;
   visibility: hidden;
 
+  /**
+   Both before and after psuedo-elements are used because ::after's background should go over the container's
+   and ::before's box-shadow should be behind the container itself
+  */
+
   &::after,
   &::before {
     content: '';
