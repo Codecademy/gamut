@@ -85,23 +85,23 @@ export const Alert: React.FC<AlertProps> = ({
   type = 'general',
   ...props
 }) => {
+  const isInline = props.placement === 'inline';
   const activeAlert = alertVariants?.[type] ?? alertVariants.general;
   const { icon: Icon, bg } = activeAlert;
 
   const [expanded, setExpanded] = useState(false);
   const [truncated, setTruncated] = useState(false);
 
-  const toggleState = expanded ? 'expanded' : 'collapsed';
+  const toggleState = expanded || isInline ? 'expanded' : 'collapsed';
   const tabIndex = hidden ? -1 : undefined;
 
-  const content =
-    props.placement === 'floating' ? (
-      <Truncate expanded={expanded} onTruncate={setTruncated} lines={1}>
-        {children}
-      </Truncate>
-    ) : (
-      children
-    );
+  const content = isInline ? (
+    children
+  ) : (
+    <Truncate expanded={expanded} onTruncate={setTruncated} lines={1}>
+      {children}
+    </Truncate>
+  );
 
   const expandButton = truncated && (
     <CollapseButton
