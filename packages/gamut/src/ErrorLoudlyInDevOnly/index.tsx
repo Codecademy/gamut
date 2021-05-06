@@ -3,6 +3,8 @@ import React, { useEffect } from 'react';
 
 import { Alert } from '../Alert';
 
+const isEnvDev = process.env.NODE_ENV === 'development';
+
 const StyledAlert = styled(Alert)`
   position: fixed;
   width: 100vw;
@@ -10,7 +12,7 @@ const StyledAlert = styled(Alert)`
 
 export type ErrorLoudlyInDevOnlyProps = {
   displayMessage: string;
-  logError: (rawError: Error) => void;
+  logError: (rawError: Error | Error['message']) => void;
 };
 
 /**
@@ -23,12 +25,10 @@ export const ErrorLoudlyInDevOnly: React.FC<ErrorLoudlyInDevOnlyProps> = ({
   logError,
 }) => {
   useEffect(() => {
-    const error = new Error(displayMessage);
-    if (process.env.NODE_ENV !== 'test') logError(error);
-    else throw error;
+    logError(displayMessage);
   }, []);
 
-  return process.env.NODE_ENV === 'test' ? (
+  return isEnvDev ? (
     <StyledAlert type="error" placement="floating">
       {displayMessage}
     </StyledAlert>
