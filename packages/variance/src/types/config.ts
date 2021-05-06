@@ -1,6 +1,6 @@
 import { Theme } from '@emotion/react';
 
-import { PropertyTypes } from './properties';
+import { DefaultCSSPropertyValue, PropertyTypes } from './properties';
 import {
   AbstractProps,
   CSSObject,
@@ -41,7 +41,10 @@ export interface AbstractParser {
 export type PropertyValues<
   Property extends keyof PropertyTypes,
   All extends boolean = false
-> = Exclude<PropertyTypes[Property], All extends true ? never : object | any[]>;
+> = Exclude<
+  PropertyTypes<All extends true ? DefaultCSSPropertyValue : never>[Property],
+  All extends true ? never : object | any[]
+>;
 
 export type Scale<Config extends Prop> = ResponsiveProp<
   Config['scale'] extends keyof Theme

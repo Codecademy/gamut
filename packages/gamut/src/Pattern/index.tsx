@@ -8,9 +8,10 @@ export type PatternName =
   | 'diagonalStripesLoose'
   | 'diagonalStripesRegular'
   | 'diagonalStripesDense'
-  | 'dotsLoose'
-  | 'dotsRegular'
-  | 'dotsDense';
+  | 'checkerLoose'
+  | 'checkerRegular'
+  | 'checkerDense'
+  | 'dotLoose';
 
 export interface PatternProps extends BoxProps {
   name: PatternName;
