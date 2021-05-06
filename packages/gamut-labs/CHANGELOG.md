@@ -3,6 +3,63 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [15.5.6](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@15.5.5...@codecademy/gamut-labs@15.5.6) (2021-05-06)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [15.5.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@15.5.4...@codecademy/gamut-labs@15.5.5) (2021-05-06)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [15.5.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@15.5.3...@codecademy/gamut-labs@15.5.4) (2021-05-05)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [15.5.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@15.5.2...@codecademy/gamut-labs@15.5.3) (2021-05-05)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [15.5.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@15.5.1...@codecademy/gamut-labs@15.5.2) (2021-05-05)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [15.5.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@15.5.0...@codecademy/gamut-labs@15.5.1) (2021-05-05)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+## [15.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@15.4.1...@codecademy/gamut-labs@15.5.0) (2021-05-05)
+
+
+### Features
+
+* **PageWrapper:** Extend stacking context reset element for pages with a background color ([0a22b34](https://github.com/Codecademy/client-modules/commit/0a22b3489625e524085ffd2076730e05b9a4d898))
+
+
+
 ### [15.4.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@15.4.0...@codecademy/gamut-labs@15.4.1) (2021-05-04)
 
 **Note:** Version bump only for package @codecademy/gamut-labs

@@ -1,11 +1,6 @@
-import { shouldForwardProp } from '@codecademy/gamut-styles';
-import { Theme } from '@emotion/react';
+import { Background } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
-
-export interface AppWrapperProps {
-  backgroundColor?: keyof Theme['colors'];
-}
-
+import React, { ComponentProps, forwardRef, HTMLProps } from 'react';
 /**
  *
  * This element safely resets the stacking context with limited side effects.
@@ -15,9 +10,20 @@ export interface AppWrapperProps {
  * to these properties as it will no longer guarantee a predictable behavior
  */
 
-export const AppWrapper = styled('div', { shouldForwardProp })<AppWrapperProps>`
-  background-color: ${({ backgroundColor = 'white', theme }) =>
-    theme.colors[backgroundColor]};
+export const AppWrapper = styled.div`
   position: relative;
   z-index: 1;
 `;
+
+/** This is a special element specifically for GlobalPage */
+
+const RestrictedBackground = forwardRef<
+  HTMLDivElement,
+  Pick<ComponentProps<typeof Background>, 'bg'> & HTMLProps<HTMLDivElement>
+>(({ bg, className, children }, ref) => (
+  <Background bg={bg} className={className} ref={ref}>
+    {children}
+  </Background>
+));
+
+export const PageWrapper = AppWrapper.withComponent(RestrictedBackground);
