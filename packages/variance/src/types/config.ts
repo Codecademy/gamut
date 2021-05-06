@@ -102,8 +102,8 @@ export interface Variant<P extends AbstractParser> {
 
 export interface Modes<P extends AbstractParser> {
   <
-    X extends keyof Theme,
-    Modes extends 'colorModes' extends X
+    ThemeKeys extends keyof Theme,
+    Modes extends 'colorModes' extends ThemeKeys
       ? 'modes' extends keyof Theme['colorModes']
         ? keyof Theme['colorModes']['modes']
         : never
@@ -111,7 +111,7 @@ export interface Modes<P extends AbstractParser> {
     Base extends AbstractProps
   >(
     options: Record<Modes, SelectorProps<Base, SystemProps<P>>>
-  ): (props: Record<'mode', Modes> & ThemeProps) => CSSObject;
+  ): (props: VariantProps<'mode', Modes> & ThemeProps) => CSSObject;
 }
 
 export interface CSS<P extends AbstractParser> {

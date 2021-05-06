@@ -2,9 +2,11 @@ import {
   fontSmoothPixel,
   lineHeight,
   pxRem,
+  system,
   timing,
   variant,
 } from '@codecademy/gamut-styles';
+import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
 import React, { ReactNode } from 'react';
 
@@ -34,12 +36,17 @@ const TargetContainer = styled.div`
   padding: 0;
 `;
 
-type ToolTipContainerProps = {
+type ToolTipContainerProps = StyleProps<typeof modes> & {
   alignment: ToolTipAlignment;
-  mode: VisualTheme;
 };
 
+const modes = system.modes({
+  light: { '> div, &:before': { textColor: 'black', bg: 'background' } },
+  dark: { '> div, &:before': { textColor: 'beige', bg: 'black' } },
+});
+
 const ToolTipContainer = styled.div<ToolTipContainerProps>`
+  ${modes}
   ${fontSmoothPixel}
   display: flex;
   opacity: 0;
@@ -49,8 +56,6 @@ const ToolTipContainer = styled.div<ToolTipContainerProps>`
   width: 16rem;
   visibility: hidden;
 
-  // Both before and after psuedo-elements are used because ::after's background should go over the container's
-  // and ::before's box-shadow should be behind the container itself
   &::after,
   &::before {
     content: '';
@@ -59,16 +64,6 @@ const ToolTipContainer = styled.div<ToolTipContainerProps>`
     position: absolute;
     transform: rotate(45deg);
     width: ${arrowHeight};
-  }
-
-  &::before {
-    ${variant({
-      prop: 'mode',
-      variants: {
-        dark: { backgroundColor: 'black' },
-        light: { backgroundColor: 'white' },
-      },
-    })}
   }
 
   ${TargetContainer}:hover + &,
@@ -143,19 +138,11 @@ const ToolTipContainer = styled.div<ToolTipContainerProps>`
     `}
 `;
 
-const ToolTipBody = styled.div<{ mode: VisualTheme }>`
+const ToolTipBody = styled.div`
   display: inline-block;
   font-size: ${pxRem(14)};
   line-height: ${lineHeight.base};
   padding: 0.6rem 0.75rem;
-
-  ${variant({
-    prop: 'mode',
-    variants: {
-      dark: { backgroundColor: 'black', textColor: 'white' },
-      light: { backgroundColor: 'white', textColor: 'black' },
-    },
-  })}
 `;
 
 export type ToolTipProps = {
@@ -197,7 +184,7 @@ export const ToolTip: React.FC<ToolTipProps> = ({
   containerClassName,
   focusable,
   id,
-  mode = 'light',
+  mode,
   target,
 }) => {
   return (
@@ -219,7 +206,7 @@ export const ToolTip: React.FC<ToolTipProps> = ({
         mode={mode}
         aria-live="polite"
       >
-        <ToolTipBody mode={mode}>{children}</ToolTipBody>
+        <ToolTipBody>{children}</ToolTipBody>
       </ToolTipContainer>
     </TooltipWrapper>
   );
