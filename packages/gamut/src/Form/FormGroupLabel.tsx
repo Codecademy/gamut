@@ -97,7 +97,7 @@ export const FormGroupLabel: React.FC<FormGroupLabelProps> = ({
           <StyledToolTip
             {...tooltip}
             alignment="bottom-right"
-            target={<MiniInfoOutlineIcon height="0.8rem" width="0.8rem" />}
+            target={<MiniInfoOutlineIcon size="0.8rem" />}
           />
         </StyledToolTipContainer>
       )}

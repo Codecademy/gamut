@@ -14,17 +14,19 @@ const variants = ['primary', 'secondary'] as const;
 const sizes = ['normal', 'small'] as const;
 
 export const ButtonScale = ({ mode }: { mode: 'dark' | 'light' }) => {
-  const grid = buttons.map(({ name }) => <Box key={`${name}-key`}>{name}</Box>);
+  const grid = buttons.map(({ displayName }) => (
+    <Box key={`${displayName}-key`}>{displayName}</Box>
+  ));
   variants.forEach((variant: typeof variants[number]) => {
     sizes.forEach((size) => {
       buttons.forEach((Component) => {
         const props = {
-          key: `${Component.name}-${mode}-${variant}-${size}`,
+          key: `${Component.displayName}-${mode}-${variant}-${size}`,
           mode,
           variant,
           size,
         };
-        if (Component.name === 'IconButton') {
+        if (Component.displayName === 'IconButton') {
           return grid.push(
             <IconButton
               {...props}
