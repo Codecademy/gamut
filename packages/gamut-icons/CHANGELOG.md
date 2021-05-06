@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.11.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@4.10.0...@codecademy/gamut-icons@4.11.0) (2021-05-06)
+
+
+### Features
+
+* **Icon:** Adds system props to all icons [GM-218] ([4354d91](https://github.com/Codecademy/client-modules/commit/4354d919a561af58975014c8ff1bfd2d5c72077a))
+
+
+
 ## [4.10.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@4.9.1...@codecademy/gamut-icons@4.10.0) (2021-05-05)
 
 
