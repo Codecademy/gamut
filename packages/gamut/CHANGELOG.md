@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [32.14.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@32.13.0...@codecademy/gamut@32.14.0) (2021-05-06)
+
+
+### Features
+
+* **Icon:** Adds system props to all icons [GM-218] ([4354d91](https://github.com/Codecademy/client-modules/commit/4354d919a561af58975014c8ff1bfd2d5c72077a))
+
+
+
 ## [32.13.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@32.12.2...@codecademy/gamut@32.13.0) (2021-05-06)
 
 
