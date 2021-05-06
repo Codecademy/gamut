@@ -134,8 +134,6 @@ const ProgressBarWrapper = styled.div<ProgressBarElementWrapperProps>`
 `;
 
 const Bar = styled.div(progressBarForegroundVariants);
-  ${progressBarForegroundVariants};
-`;
 
 const DisplayedPercent = styled.span`
   font-weight: bold;
