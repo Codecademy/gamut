@@ -102,11 +102,10 @@ export function GridForm<
       <LayoutGrid columnGap={columnGap} rowGap={rowGap}>
         {fields.map((field) => {
           const errorMessage = (errors[field.name] as FieldError)?.message;
-
           const isFirstError = !pastFirstError && errorMessage !== undefined;
           pastFirstError = pastFirstError || isFirstError;
           const requiredBoolean = !!(
-            field.validation && field.validation.required
+            field.type !== 'hidden' && field.validation?.required
           );
 
           return (

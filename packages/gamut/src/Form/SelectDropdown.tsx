@@ -1,17 +1,22 @@
 import { ArrowChevronDownIcon } from '@codecademy/gamut-icons';
 import { theme } from '@codecademy/gamut-styles';
 import { css } from '@emotion/react';
-import { each, isObject } from 'lodash';
-import React, { useState } from 'react';
+import React, {
+  ReactNode,
+  SelectHTMLAttributes,
+  useMemo,
+  useState,
+} from 'react';
 import ReactSelect, {
   components as SelectDropdownElements,
+  ContainerProps,
   IndicatorProps,
   NamedProps,
   OptionTypeBase,
   StylesConfig,
 } from 'react-select';
 
-import { SelectWrapperBaseProps } from './Select';
+import { SelectComponentProps } from './Select';
 import {
   colorStates,
   conditionalBorderStyles,
@@ -19,16 +24,51 @@ import {
   formDropdownStyles,
   formFieldStyles,
 } from './styles/shared';
+import { parseOptions } from './utils';
 
-type ReactSelectNamedProps = Omit<NamedProps, 'options' | 'defaultValue'>;
-type SelectDropdownBaseProps = Omit<SelectWrapperBaseProps, 'onChange'>;
-type SelectDropdownProps = SelectDropdownBaseProps & ReactSelectNamedProps;
+const { DropdownIndicator, SelectContainer } = SelectDropdownElements;
+
+type SelectDropdownBaseProps = Omit<
+  SelectComponentProps,
+  'onChange' | 'defaultValue'
+>;
+interface SelectDropdownProps
+  extends SelectDropdownBaseProps,
+    Pick<NamedProps, 'onChange'>,
+    Pick<SelectHTMLAttributes<HTMLSelectElement>, 'value' | 'disabled'> {
+  inputProps?: Record<string, string | number | boolean>;
+  name?: string;
+  placeholder?: string;
+}
+
 type OptionStrict = {
   label: string;
   value: string;
 };
 
-const { DropdownIndicator } = SelectDropdownElements;
+type CustomContainerProps = ContainerProps<OptionStrict, false> & {
+  children?: ReactNode[];
+};
+
+const ChevronDropdown = (props: IndicatorProps<OptionTypeBase, false>) => {
+  return (
+    <DropdownIndicator {...props}>
+      <ArrowChevronDownIcon size={16} />
+    </DropdownIndicator>
+  );
+};
+
+const CustomContainer = ({ children, ...rest }: CustomContainerProps) => {
+  const { inputProps } = rest.selectProps;
+  const value = rest.hasValue ? rest.getValue()[0].value : '';
+
+  return (
+    <SelectContainer {...rest}>
+      {children}
+      <input type="hidden" value={value} {...inputProps} />
+    </SelectContainer>
+  );
+};
 
 const selectBaseStyles = ({
   error,
@@ -99,12 +139,16 @@ const customStyles: StylesConfig<OptionTypeBase, false> = {
   }),
 };
 
-const ChevronDropdown = (props: IndicatorProps<OptionTypeBase, false>) => {
-  return (
-    <DropdownIndicator {...props}>
-      <ArrowChevronDownIcon size={16} />
-    </DropdownIndicator>
-  );
+const defaultProps = {
+  name: undefined,
+  isSearchable: false,
+  isMulti: false,
+  styles: customStyles,
+  components: {
+    DropdownIndicator: ChevronDropdown,
+    IndicatorSeparator: () => null,
+    SelectContainer: CustomContainer,
+  },
 };
 
 export const SelectDropdown: React.FC<SelectDropdownProps> = ({
@@ -112,54 +156,48 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
   error,
   id,
   disabled,
-  defaultValue,
+  onChange,
+  value = undefined,
+  name,
+  placeholder = 'Select an option',
+  inputProps,
   ...rest
 }) => {
   const [activated, setActivated] = useState(false);
+  const baseInputProps = { name };
 
   const changeHandler = (optionEvent: OptionStrict) => {
-    rest?.onChange?.(optionEvent, {
+    onChange?.(optionEvent, {
       action: 'select-option',
       option: optionEvent,
     });
     setActivated(true);
   };
 
-  const selectOptions: Array<OptionTypeBase> = [];
+  const selectOptions = useMemo(() => {
+    return parseOptions({ options, id });
+  }, [options, id]);
 
-  if (options instanceof Array) {
-    options.forEach((option) => {
-      const key = id ? `${id}-${option}` : option;
-      selectOptions.push({ label: key, value: option });
-    });
-  } else if (isObject(options)) {
-    each(options, (text, val) => {
-      selectOptions.push({ label: text, value: val });
-    });
-  }
+  const parsedValue = useMemo(() => {
+    const currentValue = selectOptions.find(
+      ({ value: optionValue }) => optionValue === value
+    );
 
-  const setDefaultValue = rest.placeholder
-    ? null
-    : defaultValue
-    ? selectOptions.find((option) => option.value === defaultValue)
-    : selectOptions[0];
+    return currentValue;
+  }, [selectOptions, value]);
 
   return (
     <ReactSelect
+      {...defaultProps}
       id={id || rest.htmlFor}
-      defaultValue={setDefaultValue}
-      styles={customStyles}
+      value={parsedValue}
       activated={activated}
       error={Boolean(error)}
-      components={{
-        DropdownIndicator: ChevronDropdown,
-        IndicatorSeparator: () => null,
-      }}
       onChange={changeHandler}
-      isSearchable={false}
-      isMulti={false}
+      inputProps={{ ...inputProps, ...baseInputProps }}
       isDisabled={disabled}
       options={selectOptions}
+      placeholder={placeholder}
       {...rest}
     />
   );
