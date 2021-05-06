@@ -130,24 +130,22 @@ export const Alert: React.FC<AlertProps> = ({
     </Box>
   );
 
-  const closeButton = onClose && (
-    <IconButton
-      tabIndex={tabIndex}
-      aria-label="Close Alert"
-      variant="secondary"
-      size="small"
-      onClick={onClose}
-      icon={MiniDeleteIcon}
-    />
-  );
-
   return (
     <AlertBanner bg={bg} {...props}>
       <Icon size={32} aria-hidden p={8} />
       <Box py={4}>{renderContent()}</Box>
       <Box>{expandButton}</Box>
       <Box>{ctaButton}</Box>
-      {closeButton}
+      {onClose && (
+        <IconButton
+          tabIndex={tabIndex}
+          aria-label="Close Alert"
+          variant="secondary"
+          size="small"
+          onClick={onClose}
+          icon={MiniDeleteIcon}
+        />
+      )}
     </AlertBanner>
   );
 };

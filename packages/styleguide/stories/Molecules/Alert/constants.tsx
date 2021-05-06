@@ -1,3 +1,6 @@
+import { Anchor } from '@codecademy/gamut';
+import React from 'react';
+
 export const ALERTS = {
   general: {
     type: 'general',
@@ -7,8 +10,12 @@ export const ALERTS = {
   success: {
     type: 'success',
     cta: { children: 'Learn more' },
-    children:
-      'Success notification with an icon, an inline link, a call-to-action and an X',
+    children: (
+      <>
+        Success notification with an icon, an <Anchor>inline link</Anchor>, a
+        call-to-action and an X
+      </>
+    ),
   },
   feature: {
     type: 'feature',
@@ -19,8 +26,12 @@ export const ALERTS = {
   notice: {
     type: 'notice',
     cta: { children: 'Learn more' },
-    children:
-      'Maintenance: Codecademy will be offline between 02:00 AM and 08:00 AM.',
+    children: (
+      <>
+        Maintenance: Codecademy will be <Anchor>offline</Anchor> between 02:00
+        AM and 08:00 AM.
+      </>
+    ),
   },
   error: {
     type: 'error',
