@@ -77,5 +77,5 @@ export const stubHiddenField: GridFormHiddenField = {
 export const stubSweetContainerField: GridFormSweetContainerField = {
   name: 'sweet_container',
   type: 'sweet-container',
-  label: 'Check this input if you are an automated machine, and not a human'
+  label: 'Check this input if you are an automated machine, and not a human',
 };
