@@ -21,10 +21,5 @@
     "csstype": ">=3.0.0",
     "lodash": "^4.0.0"
   },
-  "devDependencies": {
-    "@emotion/jest": "^11.1.0",
-    "@emotion/react": "^11.1.5",
-    "@emotion/styled": "^11.1.5"
-  },
   "license": "MIT"
 }
