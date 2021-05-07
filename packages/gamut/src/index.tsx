@@ -16,7 +16,7 @@ export * from './BodyPortal';
 export * from './Card';
 export * from './DeprecatedCard/CardShell';
 export * from './ContentContainer';
-export * from './ErrorLoudlyInDevOnly';
+export * from './ErrorWithAlertInDev';
 export * from './FlexBox';
 export * from './FlexGrid';
 export * from './FocusTrap';
