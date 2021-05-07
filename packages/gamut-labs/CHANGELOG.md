@@ -3,6 +3,89 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [15.7.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@15.6.1...@codecademy/gamut-labs@15.7.0) (2021-05-07)
+
+
+### Features
+
+* **ListSection:** Updating ListSection to have a ShowAll/ShowLess click handler prop ([1f1a492](https://github.com/Codecademy/client-modules/commit/1f1a492880410c01f245165bcb0a7475750939cd))
+
+
+
+### [15.6.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@15.6.0...@codecademy/gamut-labs@15.6.1) (2021-05-06)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+## [15.6.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@15.5.6...@codecademy/gamut-labs@15.6.0) (2021-05-06)
+
+
+### Features
+
+* **footer:** Hackathon egg for learn page footer ([b5b4eb3](https://github.com/Codecademy/client-modules/commit/b5b4eb3b0245a5957e89b02fb9f3afde1bc2f8f9))
+
+
+
+### [15.5.6](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@15.5.5...@codecademy/gamut-labs@15.5.6) (2021-05-06)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [15.5.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@15.5.4...@codecademy/gamut-labs@15.5.5) (2021-05-06)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [15.5.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@15.5.3...@codecademy/gamut-labs@15.5.4) (2021-05-05)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [15.5.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@15.5.2...@codecademy/gamut-labs@15.5.3) (2021-05-05)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [15.5.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@15.5.1...@codecademy/gamut-labs@15.5.2) (2021-05-05)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [15.5.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@15.5.0...@codecademy/gamut-labs@15.5.1) (2021-05-05)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+## [15.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@15.4.1...@codecademy/gamut-labs@15.5.0) (2021-05-05)
+
+
+### Features
+
+* **PageWrapper:** Extend stacking context reset element for pages with a background color ([0a22b34](https://github.com/Codecademy/client-modules/commit/0a22b3489625e524085ffd2076730e05b9a4d898))
+
+
+
 ### [15.4.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@15.4.0...@codecademy/gamut-labs@15.4.1) (2021-05-04)
 
 **Note:** Version bump only for package @codecademy/gamut-labs

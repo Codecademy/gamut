@@ -14,8 +14,13 @@ import {
 } from './variance/props';
 import { styledConfig } from './variance/utils';
 
+export type ColorModeConfig = Theme['colorModes']['modes'];
+export type ColorModes = keyof ColorModeConfig;
+export type ColorModeShape = ColorModeConfig[ColorModes];
+export type ColorAlias = keyof ColorModeShape;
+
 export type ColorModeProps = {
-  mode: keyof Theme['colorModes']['modes'];
+  mode: ColorModes;
   bg?: keyof Theme['colors'];
   className?: string;
 };
