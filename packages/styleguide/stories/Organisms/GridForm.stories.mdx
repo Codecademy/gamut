@@ -714,3 +714,32 @@ Hidden inputs can be used to include data that users can't see or modify with th
     )}
   </Story>
 </Canvas>
+
+## Sweet Container Input
+
+Sweet container inputs can be used to detect bots by providing a field that is not accessible to human users, but are accessible to bots.
+
+<Canvas>
+  <Story name="Sweet Container Input">
+    {(args) => (
+      <GridForm
+        fields={[
+          {
+            type: 'sweet-container',
+          },
+          {
+            label: "There's something sticky and sweet here!",
+            name: 'custom-input',
+            type: 'email',
+          },
+        ]}
+        onSubmit={async (values) => {
+          action('Form Submitted')(values);
+        }}
+        submit={{
+          contents: 'Submit',
+        }}
+      />
+    )}
+  </Story>
+</Canvas>
