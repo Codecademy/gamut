@@ -9,6 +9,7 @@ export type DropdownItem = {
   icon?: React.ComponentType<GamutIconProps>;
   text: string;
   clickHandler?: (event: React.MouseEvent) => void;
+  href: string;
 };
 
 export type DropdownListProps = {
@@ -34,6 +35,7 @@ export const DropdownList: React.FC<DropdownListProps> = ({
             key={item.id}
             variant="interface"
             onClick={item.clickHandler}
+            href={item.href}
             px={24}
             py={12}
           >
