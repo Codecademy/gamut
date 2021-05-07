@@ -31,6 +31,7 @@ export const ErrorWithAlertInDev: React.FC<ErrorWithAlertInDevProps> = ({
 }) => {
   useEffect(() => {
     logError(displayMessage);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return process.env.NODE_ENV === 'development' ? (
