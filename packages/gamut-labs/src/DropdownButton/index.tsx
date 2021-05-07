@@ -22,8 +22,11 @@ export const DropdownButton: React.FC<DropdownButtonProps> = ({
   const targetRef = useRef<HTMLDivElement>(null);
   const [isOpen, setIsOpen] = useState(false);
   const handleClick = (event: React.MouseEvent) => {
-    onClick && onClick(event);
+    !isOpen && onClick && onClick(event);
     setIsOpen(!isOpen);
+  };
+  const handleRequestClosed = () => {
+    setIsOpen(false);
   };
 
   let clickTarget: React.ReactNode;
@@ -57,6 +60,7 @@ export const DropdownButton: React.FC<DropdownButtonProps> = ({
           <Popover
             targetRef={targetRef}
             isOpen={isOpen}
+            onRequestClose={handleRequestClosed}
             align={align}
             verticalOffset={12}
             outline
