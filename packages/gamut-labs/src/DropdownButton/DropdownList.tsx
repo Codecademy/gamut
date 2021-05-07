@@ -1,5 +1,7 @@
 import { Anchor, Box, FlexBox } from '@codecademy/gamut';
 import { GamutIconProps } from '@codecademy/gamut-icons';
+import { theme } from '@codecademy/gamut-styles';
+import styled from '@emotion/styled';
 import React from 'react';
 
 export type DropdownItem = {
@@ -12,6 +14,12 @@ export type DropdownListProps = {
   dropdownItems: DropdownItem[];
 };
 
+const StyledAnchor = styled(Anchor)`
+  &:hover {
+    color: ${theme.colors.hyper};
+  }
+`;
+
 export const DropdownList: React.FC<DropdownListProps> = ({
   dropdownItems,
 }) => {
@@ -21,7 +29,7 @@ export const DropdownList: React.FC<DropdownListProps> = ({
         const Icon = item.icon;
 
         return (
-          <Anchor
+          <StyledAnchor
             variant="interface"
             onClick={item.clickHandler}
             px={24}
@@ -35,7 +43,7 @@ export const DropdownList: React.FC<DropdownListProps> = ({
               )}
               {item.text}
             </FlexBox>
-          </Anchor>
+          </StyledAnchor>
         );
       })}
     </FlexBox>
