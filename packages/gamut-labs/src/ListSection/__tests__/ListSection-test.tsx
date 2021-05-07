@@ -83,10 +83,9 @@ describe('ListSection', () => {
     const button = view.getByText('Show All');
 
     fireEvent.click(button); // Switch 'Show All' to 'Show Less'
-    onShowAllOrLessClick.mockClear();
     fireEvent.click(button);
 
-    expect(onShowAllOrLessClick).toHaveBeenCalledWith(false);
+    expect(onShowAllOrLessClick).toHaveBeenLastCalledWith(false);
   });
 
   it('renders as a semantic list', () => {

@@ -46,7 +46,7 @@ export const ListSection: React.FC<ListSectionProps> = ({
   const [showAll, setShowAll] = useState(false);
 
   const handleShowAll = () => {
-    if (onShowAllOrLessClick) onShowAllOrLessClick(!showAll);
+    onShowAllOrLessClick?.(!showAll);
     setShowAll(!showAll);
   };
 
