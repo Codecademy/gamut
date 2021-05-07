@@ -2,6 +2,7 @@ import React, { FunctionComponent, SVGProps } from 'react';
 
 export type SpinnerProps = SVGProps<SVGSVGElement> & {
   size?: number | string;
+  dataTestId?: string;
 };
 
 const defaultProps: SpinnerProps = {
@@ -10,10 +11,17 @@ const defaultProps: SpinnerProps = {
 
 export const Spinner: FunctionComponent<SpinnerProps> = ({
   size,
+  dataTestId = 'spinner',
   ...props
 }) => {
   return (
-    <svg viewBox="0 0 1000 1000" height={size} width={size} {...props}>
+    <svg
+      viewBox="0 0 1000 1000"
+      height={size}
+      width={size}
+      data-testid={dataTestId}
+      {...props}
+    >
       <circle fill="currentColor" cx="937.5" cy="500" r="62.5" />
       <path
         fill="currentColor"
