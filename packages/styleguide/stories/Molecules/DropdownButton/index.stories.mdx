@@ -3,6 +3,13 @@ import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 
+export const items = [
+  { text: 'Item 1' },
+  { text: 'Item 2' },
+  { text: 'Item 3' },
+  { text: 'Item 4' },
+];
+
 <Meta
   title={title}
   component={DropdownButton}
@@ -12,18 +19,15 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
     status: 'updating',
   }}
   args={{
-    buttonText: 'click me',
     buttonType: 'fill',
-    dropdownItems: [
-      {
-        text: 'Item 1',
-      },
-    ],
+    dropdownItems: items,
   }}
 />
 
 <Canvas>
-  <Story name="DropdownButton">{(args) => <DropdownButton {...args} />}</Story>
+  <Story name="DropdownButton">
+    {(args) => <DropdownButton {...args}>click me</DropdownButton>}
+  </Story>
 </Canvas>
 
 <PropsTable story="DropdownButton" />

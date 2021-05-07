@@ -5,14 +5,13 @@ import { Popover } from '../Popover';
 import { DropdownItem, DropdownList } from './DropdownList';
 
 export type DropdownButtonProps = {
-  buttonText: string;
   buttonType: 'fill' | 'stroke';
   dropdownItems: DropdownItem[];
 };
 
 export const DropdownButton: React.FC<DropdownButtonProps> = ({
-  buttonText,
   buttonType,
+  children,
   dropdownItems,
 }) => {
   const targetRef = useRef<HTMLDivElement>(null);
@@ -24,15 +23,13 @@ export const DropdownButton: React.FC<DropdownButtonProps> = ({
   let clickTarget: React.ReactNode;
   switch (buttonType) {
     case 'fill':
-      clickTarget = <FillButton onClick={handleClick}>{buttonText}</FillButton>;
+      clickTarget = <FillButton onClick={handleClick}>{children}</FillButton>;
       break;
     case 'stroke':
       clickTarget = (
-        <StrokeButton onClick={handleClick}>{buttonText}</StrokeButton>
+        <StrokeButton onClick={handleClick}>{children}</StrokeButton>
       );
       break;
-    default:
-      clickTarget = null;
   }
 
   return (
