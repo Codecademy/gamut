@@ -56,7 +56,7 @@ export const DropdownButton: React.FC<DropdownButtonProps> = ({
         {clickTarget}
       </Box>
       <AnimatePresence>
-        {isOpen && (
+        {isOpen && dropdownItems.length !== 0 && (
           <Popover
             targetRef={targetRef}
             isOpen={isOpen}
