@@ -222,7 +222,6 @@ export const variance = {
     const css: CSS<P> = this.createCss(config);
     return (modes) => {
       type Modes = keyof typeof modes;
-      console.log(modes);
       const modeFns = {} as Record<Modes, (props: ThemeProps) => CSSObject>;
 
       Object.keys(modes).forEach((key) => {

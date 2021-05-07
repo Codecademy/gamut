@@ -4,7 +4,6 @@ import {
   pxRem,
   system,
   timing,
-  variant,
 } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
