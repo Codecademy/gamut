@@ -16,9 +16,11 @@ export const DropdownList: React.FC<DropdownListProps> = ({
   dropdownItems,
 }) => {
   return (
-    <Box>
+    <Box borderRadius="2px" bg="white" py={12}>
       {dropdownItems.map((item) => (
-        <Box>{item.text}</Box>
+        <Box px={24} py={12}>
+          {item.text}
+        </Box>
       ))}
     </Box>
   );

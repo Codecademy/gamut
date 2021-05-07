@@ -7,7 +7,7 @@ import { DropdownItem, DropdownList } from './DropdownList';
 export type DropdownButtonProps = {
   buttonType: 'fill' | 'stroke';
   dropdownItems: DropdownItem[];
-  align: 'left' | 'right';
+  align?: 'left' | 'right';
 };
 
 export const DropdownButton: React.FC<DropdownButtonProps> = ({
@@ -39,7 +39,13 @@ export const DropdownButton: React.FC<DropdownButtonProps> = ({
       <Box display="inline-block" ref={targetRef}>
         {clickTarget}
       </Box>
-      <Popover targetRef={targetRef} isOpen={isOpen} align={align}>
+      <Popover
+        targetRef={targetRef}
+        isOpen={isOpen}
+        align={align}
+        verticalOffset={12}
+        outline
+      >
         <DropdownList dropdownItems={dropdownItems} />
       </Popover>
     </>
