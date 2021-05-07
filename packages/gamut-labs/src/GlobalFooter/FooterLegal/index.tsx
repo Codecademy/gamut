@@ -22,14 +22,18 @@ const LegalLocalContainer = styled.div`
 
 export type FooterLegalProps = {
   onClick: GlobalFooterClickHandler;
+  onMadeInClick?: (text: string) => void;
 };
 
-export const FooterLegal: React.FC<FooterLegalProps> = ({ onClick }) => {
+export const FooterLegal: React.FC<FooterLegalProps> = ({
+  onClick,
+  onMadeInClick,
+}) => {
   return (
     <ContentContainer>
       <LegalLocalContainer>
         <LegalLinks onClick={onClick} />
-        <MadeIn />
+        <MadeIn onClick={onMadeInClick} />
       </LegalLocalContainer>
     </ContentContainer>
   );

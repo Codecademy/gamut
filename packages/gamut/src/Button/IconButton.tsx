@@ -32,18 +32,10 @@ const IconButtonInner = styled(ButtonInner)<SizedButtonProps>(
       normal: {
         height: 40,
         width: 40,
-        '> svg': {
-          width: 24,
-          height: 24,
-        },
       },
       small: {
         height: 32,
         width: 32,
-        '> svg': {
-          width: 16,
-          height: 16,
-        },
       },
     },
   })
@@ -60,7 +52,13 @@ export const IconButton = forwardRef<ButtonBaseElements, IconButtonProps>(
     return (
       <ButtonOutline mode={currentMode} size={size} {...props} ref={ref}>
         <IconButtonInner mode={currentMode} size={size}>
-          {Icon && <Icon aria-hidden />}
+          {Icon && (
+            <Icon
+              width="calc(100% - 14px)"
+              height="calc(100% - 14px)"
+              aria-hidden
+            />
+          )}
         </IconButtonInner>
       </ButtonOutline>
     );
