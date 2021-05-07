@@ -32,6 +32,12 @@ module.exports = {
         '@typescript-eslint/restrict-template-expressions': 'off',
       },
     },
+    {
+      files: ['*.ts', '*.tsx'],
+      rules: {
+        '@typescript-eslint/prefer-optional-chain': 'error',
+      },
+    },
   ],
 
   plugins: [
