@@ -21,8 +21,8 @@
     "@codecademy/variance": "^0.11.1"
   },
   "peerDependencies": {
-    "@emotion/cache": "^11.1.13",
-    "@emotion/react": "^11.15",
+    "@emotion/cache": "^11.4.0",
+    "@emotion/react": "^11.4.0",
     "@emotion/styled": "^11.3.0",
     "react-helmet": "^6.1.0"
   },
