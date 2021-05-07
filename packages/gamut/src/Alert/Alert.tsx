@@ -1,41 +1,22 @@
-import {
-  MiniCheckCircleIcon,
-  MiniChevronDownIcon,
-  MiniDeleteIcon,
-  MiniInfoCircleIcon,
-  MiniRemoveCircleIcon,
-  MiniStarIcon,
-  MiniWarningTriangleIcon,
-} from '@codecademy/gamut-icons';
-import { breakpoints, variant } from '@codecademy/gamut-styles';
-import { css } from '@emotion/react';
+import { MiniChevronDownIcon, MiniDeleteIcon } from '@codecademy/gamut-icons';
+import { Background, system, timing } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import { motion } from 'framer-motion';
-import React, { useMemo, useState } from 'react';
+import React, { useState } from 'react';
 
 import { Box } from '../Box';
 import { FillButton, IconButton } from '../Button';
 import { Truncate } from '../Truncate';
+import { alertVariants, placementVariants } from './variants';
 
-const VARIANT_META = {
-  general: { order: 4, icon: MiniInfoCircleIcon, mode: 'dark' },
-  success: { order: 2, icon: MiniCheckCircleIcon, mode: 'dark' },
-  error: { order: 1, icon: MiniRemoveCircleIcon, mode: 'dark' },
-  notice: {
-    order: 3,
-    icon: MiniWarningTriangleIcon,
-    mode: 'light',
-  },
-  feature: { order: 5, icon: MiniStarIcon, mode: 'light' },
-} as const;
-
-export type AlertType = 'general' | 'success' | 'error' | 'notice' | 'feature';
+export type AlertType = keyof typeof alertVariants;
 export type InlineAlertType = Exclude<AlertType, 'notice' | 'feature'>;
 export type AlertPlacements = 'inline' | 'floating';
 
 export type AlertBase = {
   type?: AlertType;
   placement?: AlertPlacements;
+  hidden?: boolean;
   className?: string;
   /** Callback to be called when the close icon is clicked */
   onClose?: () => void;
@@ -58,60 +39,7 @@ export type InlineAlert = AlertBase & {
 
 export type AlertProps = FloatingAlert | InlineAlert;
 
-const placementVariants = variant({
-  prop: 'placement',
-  variants: {
-    inline: {
-      padding: 4,
-      paddingY: 8,
-    },
-    floating: {
-      padding: 4,
-      borderColor: 'navy',
-    },
-  },
-});
-
-const alertVariants = variant({
-  prop: 'type',
-  variants: {
-    general: {
-      backgroundColor: 'blue',
-      borderColor: 'blue',
-      textColor: 'white',
-    },
-    success: {
-      backgroundColor: 'green',
-      borderColor: 'green',
-      textColor: 'white',
-    },
-    error: {
-      backgroundColor: 'red',
-      borderColor: 'red',
-      textColor: 'white',
-    },
-    notice: {
-      backgroundColor: 'orange',
-      borderColor: 'orange',
-      textColor: 'navy',
-    },
-    feature: {
-      backgroundColor: 'blue-300',
-      borderColor: 'blue-300',
-      textColor: 'navy',
-    },
-  },
-});
-
-const AlertBanner = styled(Box)<Pick<AlertProps, 'type' | 'placement'>>(
-  css`
-    display: grid;
-    width: 100%;
-    max-width: calc(${breakpoints.md} - 4rem);
-    border: 2px solid currentColor;
-    border-radius: 3px;
-  `,
-  alertVariants,
+const AlertBanner = styled(Background)<Pick<AlertProps, 'type' | 'placement'>>(
   placementVariants
 );
 
@@ -121,92 +49,101 @@ AlertBanner.defaultProps = {
   'aria-live': 'polite',
 };
 
-const AlertContent = styled(motion.div)(
-  ({ theme }) => css`
-    padding: ${theme.spacing[4]} 0;
-    overflow-y: hidden;
-  `
+const CollapsableContent = styled(motion.div)(
+  system.css({ py: 4, overflowY: 'hidden' })
 );
 
-const transitionDuration = 0.2;
-
-const contentVariants = {
-  truncated: { height: '2rem' },
-  expanded: { height: 'auto' },
+CollapsableContent.defaultProps = {
+  variants: {
+    collapsed: { height: '2rem' },
+    expanded: { height: 'auto' },
+  },
+  transition: { duration: 0.2, ease: 'easeInOut' },
 };
 
-const CollapseButton = styled(IconButton)<{ expanded?: boolean }>`
-  svg {
-    transition: ${transitionDuration * 1000}ms transform;
-    transform: rotate(${({ expanded }) => (expanded ? '180deg' : '0deg')});
-  }
-`;
+const CollapseButton = styled(IconButton)(
+  system.variant({
+    prop: 'toggleState',
+    defaultVariant: 'collapsed',
+    base: { svg: { transition: `${timing.fast} transform` } },
+    variants: {
+      collapsed: {},
+      expanded: {
+        svg: {
+          transform: 'rotate(180deg)',
+        },
+      },
+    },
+  })
+);
 
 export const Alert: React.FC<AlertProps> = ({
   children,
   cta,
   onClose,
+  hidden,
+  type = 'general',
   ...props
 }) => {
-  const type = props.type ?? 'general';
-  const { icon: Icon, mode } = VARIANT_META[type];
+  const isInline = props.placement === 'inline';
+  const activeAlert = alertVariants?.[type] ?? alertVariants.general;
+  const { icon: Icon, bg } = activeAlert;
+
   const [expanded, setExpanded] = useState(false);
   const [truncated, setTruncated] = useState(false);
 
-  const numberOfColumns = useMemo(() => {
-    if (truncated && Boolean(cta)) return 3;
-    if (truncated || Boolean(cta)) return 2;
-    return 1;
-  }, [truncated, cta]);
+  const toggleState = expanded || isInline ? 'expanded' : 'collapsed';
+  const tabIndex = hidden ? -1 : undefined;
 
-  const columns = `max-content minmax(0, 1fr) repeat(${numberOfColumns}, max-content)`;
-  const content =
-    props.placement === 'inline' ? (
-      <Box py={4}>{children}</Box>
-    ) : (
-      <AlertContent
-        variants={contentVariants}
-        transition={{ duration: transitionDuration, ease: 'easeInOut' }}
-        aria-expanded={expanded}
-        initial={expanded ? 'expanded' : 'truncated'}
-        animate={expanded ? 'expanded' : 'truncated'}
+  const content = isInline ? (
+    children
+  ) : (
+    <Truncate expanded={expanded} onTruncate={setTruncated} lines={1}>
+      {children}
+    </Truncate>
+  );
+
+  const expandButton = truncated && (
+    <CollapseButton
+      tabIndex={tabIndex}
+      aria-label={expanded ? 'Collapse' : 'Expand'}
+      toggleState={toggleState}
+      variant="secondary"
+      size="small"
+      icon={MiniChevronDownIcon}
+      onClick={() => setExpanded(!expanded)}
+    />
+  );
+
+  const ctaButton = cta && Boolean(cta.children ?? cta.text) && (
+    <Box gridColumn={['2', , 'auto']} gridRow={['2', , 'auto']}>
+      <FillButton
+        {...cta}
+        mode="dark"
+        variant="secondary"
+        size="small"
+        tabIndex={tabIndex}
       >
-        <Truncate expanded={expanded} onTruncate={setTruncated} lines={1}>
-          {children}
-        </Truncate>
-      </AlertContent>
-    );
+        {cta.children ?? cta.text}
+      </FillButton>
+    </Box>
+  );
 
   return (
-    <AlertBanner
-      alignItems="start"
-      columnGap={[4, 8, , 12]}
-      gridTemplateColumns={columns}
-      {...props}
-    >
+    <AlertBanner bg={bg} {...props}>
       <Icon size={32} aria-hidden p={8} />
-      {content}
-      {truncated && (
-        <CollapseButton
-          aria-label={expanded ? 'Collapse' : 'Expand'}
-          mode={mode}
-          variant="secondary"
-          size="small"
-          expanded={expanded}
-          icon={MiniChevronDownIcon}
-          onClick={() => setExpanded(!expanded)}
-        />
-      )}
-      {cta && Boolean(cta.children ?? cta.text) && (
-        <Box gridColumn={['2', , 'auto']} gridRow={['2', , 'auto']}>
-          <FillButton {...cta} mode="dark" variant="secondary" size="small">
-            {cta.children ?? cta.text}
-          </FillButton>
-        </Box>
-      )}
+      <CollapsableContent
+        aria-expanded={expanded}
+        initial={toggleState}
+        animate={toggleState}
+      >
+        {content}
+      </CollapsableContent>
+      <Box>{expandButton}</Box>
+      <Box>{ctaButton}</Box>
       {onClose && (
         <IconButton
-          mode={mode}
+          tabIndex={tabIndex}
           aria-label="Close Alert"
           variant="secondary"
           size="small"
