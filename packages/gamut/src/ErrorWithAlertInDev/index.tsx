@@ -35,7 +35,7 @@ export const ErrorWithAlertInDev: React.FC<ErrorWithAlertInDevProps> = ({
 
   return process.env.NODE_ENV === 'development' ? (
     <StyledAlertContainer>
-      <StyledAlert type="error" placement="floating">
+      <StyledAlert type="error" placement="inline">
         {displayMessage}
       </StyledAlert>
     </StyledAlertContainer>
