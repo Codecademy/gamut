@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [37.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@37.1.0...@codecademy/styleguide@37.1.1) (2021-05-07)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [37.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@37.0.1...@codecademy/styleguide@37.1.0) (2021-05-06)
+
+
+### Features
+
+* **Alert/Banner:** Adds ColorModes for backwards compatibility and uses most recent props [GM-224] ([d2042ad](https://github.com/Codecademy/client-modules/commit/d2042ad8c04e27e26ccfc5bc67422498f7bb0cbd))
+
+
+
 ### [37.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@37.0.0...@codecademy/styleguide@37.0.1) (2021-05-06)
 
 **Note:** Version bump only for package @codecademy/styleguide
