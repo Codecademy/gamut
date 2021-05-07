@@ -110,11 +110,6 @@ export function GridForm<
             field.validation?.required
           );
 
-          if (field.type === 'sweet-container') {
-            field.label =
-              'Check this input if you are an automated machine and not a human';
-          }
-
           return (
             <GridFormInputGroup
               error={errorMessage as string}
