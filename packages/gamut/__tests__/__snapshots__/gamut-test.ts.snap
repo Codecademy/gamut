@@ -28,6 +28,7 @@ Array [
   "createPromise",
   "CTAButton",
   "Dialog",
+  "ErrorWithAlertInDev",
   "FillButton",
   "FlexBox",
   "FlexGrid",
