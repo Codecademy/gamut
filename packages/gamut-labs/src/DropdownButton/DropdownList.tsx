@@ -1,4 +1,4 @@
-import { Box } from '@codecademy/gamut';
+import { Box, FlexBox } from '@codecademy/gamut';
 import { GamutIconProps } from '@codecademy/gamut-icons';
 import React from 'react';
 
@@ -17,11 +17,20 @@ export const DropdownList: React.FC<DropdownListProps> = ({
 }) => {
   return (
     <Box borderRadius="2px" bg="white" py={12}>
-      {dropdownItems.map((item) => (
-        <Box px={24} py={12}>
-          {item.text}
-        </Box>
-      ))}
+      {dropdownItems.map((item) => {
+        const Icon = item.icon;
+
+        return (
+          <FlexBox px={24} py={12}>
+            {Icon && (
+              <Box mr={12}>
+                <Icon size={20} aria-hidden />
+              </Box>
+            )}
+            {item.text}
+          </FlexBox>
+        );
+      })}
     </Box>
   );
 };
