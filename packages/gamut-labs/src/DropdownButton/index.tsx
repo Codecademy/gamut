@@ -9,6 +9,7 @@ export type DropdownButtonProps = {
   buttonType: 'fill' | 'stroke';
   dropdownItems: DropdownItem[];
   align?: 'left' | 'right';
+  onClick?: (event: React.MouseEvent) => void;
 };
 
 export const DropdownButton: React.FC<DropdownButtonProps> = ({
@@ -16,10 +17,12 @@ export const DropdownButton: React.FC<DropdownButtonProps> = ({
   children,
   align = 'left',
   dropdownItems,
+  onClick,
 }) => {
   const targetRef = useRef<HTMLDivElement>(null);
   const [isOpen, setIsOpen] = useState(false);
   const handleClick = (event: React.MouseEvent) => {
+    onClick && onClick(event);
     setIsOpen(!isOpen);
   };
 

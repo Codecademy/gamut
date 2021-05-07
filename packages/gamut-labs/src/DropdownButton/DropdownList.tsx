@@ -9,7 +9,7 @@ export type DropdownItem = {
   icon?: React.ComponentType<GamutIconProps>;
   text: string;
   clickHandler?: (event: React.MouseEvent) => void;
-  href: string;
+  href?: string;
 };
 
 export type DropdownListProps = {
