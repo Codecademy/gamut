@@ -1,4 +1,4 @@
-import { FillButton, StrokeButton } from '@codecademy/gamut';
+import { Box, FillButton, StrokeButton } from '@codecademy/gamut';
 import React, { useRef, useState } from 'react';
 
 import { Popover } from '../Popover';
@@ -7,11 +7,13 @@ import { DropdownItem, DropdownList } from './DropdownList';
 export type DropdownButtonProps = {
   buttonType: 'fill' | 'stroke';
   dropdownItems: DropdownItem[];
+  align: 'left' | 'right';
 };
 
 export const DropdownButton: React.FC<DropdownButtonProps> = ({
   buttonType,
   children,
+  align = 'left',
   dropdownItems,
 }) => {
   const targetRef = useRef<HTMLDivElement>(null);
@@ -34,8 +36,10 @@ export const DropdownButton: React.FC<DropdownButtonProps> = ({
 
   return (
     <>
-      <div ref={targetRef}>{clickTarget}</div>
-      <Popover targetRef={targetRef} isOpen={isOpen}>
+      <Box display="inline-block" ref={targetRef}>
+        {clickTarget}
+      </Box>
+      <Popover targetRef={targetRef} isOpen={isOpen} align={align}>
         <DropdownList dropdownItems={dropdownItems} />
       </Popover>
     </>
