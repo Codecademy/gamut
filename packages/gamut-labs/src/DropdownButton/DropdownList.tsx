@@ -5,6 +5,7 @@ import styled from '@emotion/styled';
 import React from 'react';
 
 export type DropdownItem = {
+  id: string;
   icon?: React.ComponentType<GamutIconProps>;
   text: string;
   clickHandler?: (event: React.MouseEvent) => void;
@@ -30,6 +31,7 @@ export const DropdownList: React.FC<DropdownListProps> = ({
 
         return (
           <StyledAnchor
+            key={item.id}
             variant="interface"
             onClick={item.clickHandler}
             px={24}
