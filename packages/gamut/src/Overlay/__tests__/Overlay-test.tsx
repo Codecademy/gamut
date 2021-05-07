@@ -39,9 +39,6 @@ const overlayIsRendered = () => {
 };
 
 describe('Overlay', () => {
-  afterEach(() => {
-    /** Clean up enzyme  */
-  });
   it('renders null when isOpen is not true', () => {
     renderOverlay();
 
