@@ -12,6 +12,7 @@ const StyledAlertContainer = styled('div')`
 const StyledAlert = styled(Alert)`
   position: fixed;
   width: 100vw;
+  top: 0;
 `;
 
 export type ErrorWithAlertInDevProps = {
