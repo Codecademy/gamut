@@ -6,14 +6,14 @@ import { Popover } from '../Popover';
 import { DropdownItem, DropdownList } from './DropdownList';
 
 export type DropdownButtonProps = {
-  buttonType: 'fill' | 'stroke';
+  buttonType?: 'fill' | 'stroke';
   dropdownItems: DropdownItem[];
   align?: 'left' | 'right';
   onClick?: (event: React.MouseEvent) => void;
 };
 
 export const DropdownButton: React.FC<DropdownButtonProps> = ({
-  buttonType,
+  buttonType = 'fill',
   children,
   align = 'left',
   dropdownItems,
@@ -29,11 +29,20 @@ export const DropdownButton: React.FC<DropdownButtonProps> = ({
   let clickTarget: React.ReactNode;
   switch (buttonType) {
     case 'fill':
-      clickTarget = <FillButton onClick={handleClick}>{children}</FillButton>;
+      clickTarget = (
+        <FillButton onClick={handleClick} data-testid="dropdown-fill-button">
+          {children}
+        </FillButton>
+      );
       break;
     case 'stroke':
       clickTarget = (
-        <StrokeButton onClick={handleClick}>{children}</StrokeButton>
+        <StrokeButton
+          onClick={handleClick}
+          data-testid="dropdown-stroke-button"
+        >
+          {children}
+        </StrokeButton>
       );
       break;
   }

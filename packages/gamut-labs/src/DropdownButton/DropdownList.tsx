@@ -29,13 +29,15 @@ export const DropdownList: React.FC<DropdownListProps> = ({
     <FlexBox flexDirection="column" borderRadius="2px" bg="white" py={12}>
       {dropdownItems.map((item) => {
         const Icon = item.icon;
+        const { id, text, href, clickHandler } = item;
 
         return (
           <StyledAnchor
-            key={item.id}
+            key={id}
+            data-testid={`dropdown-item-${id}`}
             variant="interface"
-            onClick={item.clickHandler}
-            href={item.href}
+            onClick={clickHandler}
+            href={href}
             px={24}
             py={12}
           >
@@ -45,7 +47,7 @@ export const DropdownList: React.FC<DropdownListProps> = ({
                   <Icon size={20} aria-hidden />
                 </Box>
               )}
-              {item.text}
+              {text}
             </FlexBox>
           </StyledAnchor>
         );
