@@ -1,6 +1,5 @@
 import {
   AppWrapper,
-  Box,
   PageWrapper,
   SkipToContent,
   SkipToContentTarget,
@@ -48,9 +47,7 @@ export const GlobalPage: React.FC<GlobalPageProps> = ({
   return (
     <PageWrapper bg={backgroundColor}>
       <SkipToContent contentId={skipToContentId || defaultSkipToContentId} />
-      <Box as="header" position="sticky" top={0} zIndex={2}>
-        <GlobalHeader {...header} />
-      </Box>
+      <GlobalHeader {...header} />
       {!skipToContentId && <SkipToContentTarget id={defaultSkipToContentId} />}
       <AppWrapper as={contentAs}>{children}</AppWrapper>
       <GlobalFooter {...footer} />
