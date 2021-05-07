@@ -26,11 +26,11 @@ const Dots = styled(Pattern)(
     variants: {
       left: {
         right: 0,
-        left: '-100vw',
+        left: { _: '-100vw', xl: '-96px' },
       },
       right: {
         left: 0,
-        right: '-100vw',
+        right: { _: '-100vw', xl: '-96px' },
       },
     },
   })

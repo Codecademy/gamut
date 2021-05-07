@@ -24,6 +24,6 @@ describe('EmptySection', () => {
 
   it('renders the body text', () => {
     const { view } = renderView();
-    expect(view.queryByText(bodyText)).toBeTruthy();
+    expect(view.queryByText(bodyText));
   });
 });
