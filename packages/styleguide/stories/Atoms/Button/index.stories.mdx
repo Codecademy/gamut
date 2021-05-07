@@ -44,6 +44,11 @@ import { ButtonScale } from './examples';
         options: ['normal', 'small'],
       },
     },
+    icon: {
+      control: {
+        options: [SearchIcon],
+      },
+    },
   }}
 />
 
@@ -89,7 +94,7 @@ All but CTA button support a size of either `normal` (default) or `small`.
 
 <Canvas>
   <Story name="IconButton">
-    {(args) => <IconButton icon={SearchIcon} {...args} />}
+    <IconButton icon={SearchIcon} />
   </Story>
 </Canvas>
 

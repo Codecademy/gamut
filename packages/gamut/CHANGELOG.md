@@ -3,6 +3,58 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [32.15.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@32.15.0...@codecademy/gamut@32.15.1) (2021-05-07)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [32.15.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@32.14.0...@codecademy/gamut@32.15.0) (2021-05-06)
+
+
+### Features
+
+* **Alert/Banner:** Adds ColorModes for backwards compatibility and uses most recent props [GM-224] ([d2042ad](https://github.com/Codecademy/client-modules/commit/d2042ad8c04e27e26ccfc5bc67422498f7bb0cbd))
+
+
+
+## [32.14.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@32.13.0...@codecademy/gamut@32.14.0) (2021-05-06)
+
+
+### Features
+
+* **Icon:** Adds system props to all icons [GM-218] ([4354d91](https://github.com/Codecademy/client-modules/commit/4354d919a561af58975014c8ff1bfd2d5c72077a))
+
+
+
+## [32.13.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@32.12.2...@codecademy/gamut@32.13.0) (2021-05-06)
+
+
+### Features
+
+* SelectDropdown: controlled component + inputProps + docs restructuring ([e4d6e56](https://github.com/Codecademy/client-modules/commit/e4d6e56c2fd51cf2aa606525bc69913e365010a9))
+
+
+
+### [32.12.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@32.12.1...@codecademy/gamut@32.12.2) (2021-05-05)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [32.12.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@32.12.0...@codecademy/gamut@32.12.1) (2021-05-05)
+
+
+### Bug Fixes
+
+* **Select:** add aria-hidden to ArrowDownChevron ([0da8610](https://github.com/Codecademy/client-modules/commit/0da8610b47362959175482e8329cec7ea7facc83))
+
+
+
 ## [32.12.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@32.11.1...@codecademy/gamut@32.12.0) (2021-05-05)
 
 

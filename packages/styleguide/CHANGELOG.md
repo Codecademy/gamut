@@ -3,6 +3,86 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [37.1.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@37.1.1...@codecademy/styleguide@37.1.2) (2021-05-07)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [37.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@37.1.0...@codecademy/styleguide@37.1.1) (2021-05-07)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [37.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@37.0.1...@codecademy/styleguide@37.1.0) (2021-05-06)
+
+
+### Features
+
+* **Alert/Banner:** Adds ColorModes for backwards compatibility and uses most recent props [GM-224] ([d2042ad](https://github.com/Codecademy/client-modules/commit/d2042ad8c04e27e26ccfc5bc67422498f7bb0cbd))
+
+
+
+### [37.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@37.0.0...@codecademy/styleguide@37.0.1) (2021-05-06)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [37.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@36.16.0...@codecademy/styleguide@37.0.0) (2021-05-06)
+
+
+### ⚠ BREAKING CHANGES
+
+* add new gamut-patterns package
+
+### Features
+
+* add new gamut-patterns package ([e0b30b1](https://github.com/Codecademy/client-modules/commit/e0b30b102b32b8447a1b4c97f9da63fcce365af6))
+
+
+
+## [36.16.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@36.15.0...@codecademy/styleguide@36.16.0) (2021-05-06)
+
+
+### Features
+
+* **Icon:** Adds system props to all icons [GM-218] ([4354d91](https://github.com/Codecademy/client-modules/commit/4354d919a561af58975014c8ff1bfd2d5c72077a))
+
+
+
+## [36.15.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@36.14.2...@codecademy/styleguide@36.15.0) (2021-05-06)
+
+
+### Features
+
+* SelectDropdown: controlled component + inputProps + docs restructuring ([e4d6e56](https://github.com/Codecademy/client-modules/commit/e4d6e56c2fd51cf2aa606525bc69913e365010a9))
+
+
+
+### [36.14.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@36.14.1...@codecademy/styleguide@36.14.2) (2021-05-05)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [36.14.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@36.14.0...@codecademy/styleguide@36.14.1) (2021-05-05)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
 ## [36.14.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@36.13.3...@codecademy/styleguide@36.14.0) (2021-05-05)
 
 
