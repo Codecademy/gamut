@@ -25,7 +25,7 @@ export interface TargetRef
     | 'offsetTop'
     | 'offsetLeft'
   > {}
-export interface PopoverProps {
+export interface PopoverContainerProps {
   className?: string;
   /**
    * Which vertical edge of the source component to align against.
@@ -58,7 +58,7 @@ export interface PopoverProps {
   targetRef: RefObject<TargetRef>;
 }
 
-export const PopoverContainer = styled.div(
+const PopoverContent = styled.div(
   variance.compose(
     system.positioning,
     variance.create({
@@ -69,7 +69,7 @@ export const PopoverContainer = styled.div(
   )
 );
 
-export const Popover: React.FC<PopoverProps> = ({
+export const PopoverContainer: React.FC<PopoverContainerProps> = ({
   alignment = 'bottom-left',
   y = 20,
   x = 0,
@@ -161,7 +161,7 @@ export const Popover: React.FC<PopoverProps> = ({
       onClickOutside={handleClickOutside}
       onEscapeKey={onRequestClose}
     >
-      <PopoverContainer
+      <PopoverContent
         ref={popoverRef}
         tabIndex={-1}
         transform={transform}

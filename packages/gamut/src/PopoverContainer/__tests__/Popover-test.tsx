@@ -3,7 +3,7 @@ import { matchers } from '@emotion/jest';
 import { fireEvent, screen } from '@testing-library/react';
 import React from 'react';
 
-import { Popover, PopoverProps, TargetRef } from '..';
+import { PopoverContainer, PopoverProps, TargetRef } from '..';
 
 expect.extend(matchers);
 
@@ -43,12 +43,12 @@ const defaultProps = {
 const RenderPopover = (props: PopoverProps) => {
   return (
     <>
-      <Popover {...props}>
+      <PopoverContainer {...props}>
         <div data-testid="popover-content">
           Howdy!
           <button aria-label="Click me!" type="button" />
         </div>
-      </Popover>
+      </PopoverContainer>
       <div>
         <h1 data-testid="outside-popover">hi</h1>
       </div>

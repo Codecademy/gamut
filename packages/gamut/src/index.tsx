@@ -53,4 +53,4 @@ export * from './Video';
 export * from './typings/responsive-properties';
 export * from './Logo';
 export * from './ProLabel';
-export * from './Popover';
+export * from './PopoverContainer';

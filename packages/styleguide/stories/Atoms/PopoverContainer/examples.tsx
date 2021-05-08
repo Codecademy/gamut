@@ -2,12 +2,12 @@ import {
   Box,
   FillButton,
   FlexBox,
-  Popover,
-  PopoverProps,
+  PopoverContainer,
+  PopoverContainerProps,
 } from '@codecademy/gamut';
 import React, { useRef } from 'react';
 
-export const PopoverExample = (props: Partial<PopoverProps>) => {
+export const PopoverExample = (props: Partial<PopoverContainer>) => {
   const targetRef = useRef<HTMLButtonElement>(null);
   return (
     <FlexBox
@@ -17,11 +17,11 @@ export const PopoverExample = (props: Partial<PopoverProps>) => {
       alignItems="center"
     >
       <Box display="inline-block">
-        <Popover isOpen targetRef={targetRef} {...props}>
+        <PopoverContainer isOpen targetRef={targetRef} {...props}>
           <Box border={1} p={8}>
             I am a popover
           </Box>
-        </Popover>
+        </PopoverContainer>
         <FillButton ref={targetRef}>Target</FillButton>
       </Box>
     </FlexBox>
