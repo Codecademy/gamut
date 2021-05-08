@@ -143,6 +143,7 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
           }
         />
       </Box>
+      {props.children}
     </StyledBox>
   );
 };
