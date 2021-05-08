@@ -1,10 +1,30 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { system } from '@codecademy/gamut-styles';
+import { variance } from '@codecademy/variance';
+import styled from '@emotion/styled';
+import React, {
+  RefObject,
+  useCallback,
+  useLayoutEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
 import { useWindowScroll, useWindowSize } from 'react-use';
 
 import { BodyPortal } from '../BodyPortal';
 import { FocusTrap } from '../FocusTrap';
-import { getTransform, PopoverContainer } from './PopoverContainer';
+import { getTransform, isInView } from './utils';
 
+export interface TargetRef
+  extends Pick<
+    HTMLDivElement,
+    | 'getBoundingClientRect'
+    | 'contains'
+    | 'offsetHeight'
+    | 'offsetWidth'
+    | 'offsetTop'
+    | 'offsetLeft'
+  > {}
 export interface PopoverProps {
   className?: string;
   /**
@@ -18,11 +38,11 @@ export interface PopoverProps {
   /**
    * Number of pixels to offset the popover vertically from the source component.
    */
-  verticalOffset?: number;
+  y?: number;
   /**
    * Number of pixels to offset the popover horizontally from the source component.
    */
-  horizontalOffset?: number;
+  x?: number;
   /**
    * Whether the popover is rendered.
    */
@@ -35,121 +55,105 @@ export interface PopoverProps {
   /**
    * The target element around which the popover will be positioned.
    */
-  targetRef: React.RefObject<
-    Pick<
-      HTMLDivElement,
-      | 'getBoundingClientRect'
-      | 'contains'
-      | 'offsetHeight'
-      | 'offsetWidth'
-      | 'offsetTop'
-      | 'offsetLeft'
-    >
-  >;
+  targetRef: RefObject<TargetRef>;
 }
+
+export const PopoverContainer = styled.div(
+  variance.compose(
+    system.positioning,
+    variance.create({
+      transform: {
+        property: 'transform',
+      },
+    })
+  )
+);
 
 export const Popover: React.FC<PopoverProps> = ({
   alignment = 'bottom-left',
-  verticalOffset = 20,
-  horizontalOffset = 0,
-  inside = true,
+  y = 20,
+  x = 0,
+  inside = false,
   inline = false,
   isOpen,
   onRequestClose,
   targetRef,
   ...rest
 }) => {
+  const popoverRef = useRef<HTMLDivElement>(null);
   const [boundingRect, setBoundRect] = useState<DOMRect>();
   const [targetRect, setTargetRect] = useState<DOMRect>();
-  const [isInViewport, setIsInViewport] = useState(true);
-  const { width, height } = useWindowSize();
-  const { x, y } = useWindowScroll();
+  const { width: winW, height: winH } = useWindowSize();
+  const { x: winX, y: winY } = useWindowScroll();
   const [yAlign, xAlign] = alignment.split('-') as [
     'top' | 'bottom',
     'left' | 'right'
   ];
+  const { top: t, height: h, left: l, width: w } =
+    (inline ? targetRect : boundingRect) ?? ({} as DOMRect);
 
-  const getPopoverPosition = useCallback(() => {
-    if (!targetRect || !boundingRect) return {};
-    const container = inline ? targetRect : boundingRect;
-    const scrollX = inline ? 0 : window.scrollX;
-
+  const popoverPosition = useMemo(() => {
+    if (!t && !h && !l && !w) return {};
     const positions = {
-      top: Math.round(container.top - verticalOffset),
-      bottom: Math.round(container.top + container.height + verticalOffset),
-    };
-
-    const alignments = {
-      right: Math.round(
-        scrollX + container.left + container.width + horizontalOffset
-      ),
-      left: Math.round(scrollX + container.left - horizontalOffset),
+      top: Math.round(t - y),
+      bottom: Math.round(t + h + y),
+      right: Math.round(l + w + x),
+      left: Math.round(l - x),
     };
 
     return {
       top: positions[yAlign],
-      left: alignments[xAlign],
+      left: positions[xAlign],
     };
+  }, [t, h, l, w, x, y, xAlign, yAlign]);
+
+  /** transform o */
+  const transform = useMemo(() => {
+    return getTransform(xAlign, yAlign, inside);
+  }, [xAlign, yAlign, inside]);
+
+  useLayoutEffect(() => {
+    const target = targetRef?.current;
+    if (!target) return;
+    const { offsetWidth, offsetHeight, offsetLeft, offsetTop } = target;
+    const scrollX = inline ? 0 : window.scrollX;
+
+    setBoundRect(target?.getBoundingClientRect());
+    setTargetRect({
+      width: offsetWidth,
+      height: offsetHeight,
+      left: scrollX + offsetLeft,
+      top: offsetTop,
+    } as DOMRect);
   }, [
+    targetRef,
+    alignment,
+    inside,
     inline,
-    boundingRect,
-    targetRect,
-    verticalOffset,
-    horizontalOffset,
+    x,
+    y,
     xAlign,
     yAlign,
+    winW,
+    winH,
+    winX,
+    winY,
   ]);
 
-  useEffect(() => {
-    setBoundRect(targetRef?.current?.getBoundingClientRect());
-  }, [targetRef, isOpen, width, height, x, y]);
+  useLayoutEffect(() => {
+    boundingRect && !isInView(boundingRect) && onRequestClose?.();
+  }, [boundingRect, onRequestClose]);
 
-  useEffect(() => {
-    const target = targetRef?.current;
-    if (inline && target) {
-      setTargetRect({
-        width: target.offsetWidth,
-        height: target.offsetHeight,
-        left: target.offsetLeft,
-        top: target.offsetTop,
-      } as DOMRect);
-    }
-  }, [targetRef, isOpen, width, height, x, y, inline, inside, alignment]);
-
-  useEffect(() => {
-    if (boundingRect) {
-      const inView =
-        boundingRect.top >= 0 &&
-        boundingRect.left >= 0 &&
-        boundingRect.bottom <=
-          (window.innerHeight || document.documentElement.clientHeight) &&
-        boundingRect.right <=
-          (window.innerWidth || document.documentElement.clientWidth);
-      setIsInViewport(inView);
-    }
-    if (!isInViewport) onRequestClose?.();
-  }, [boundingRect, isInViewport, onRequestClose]);
-
+  /**
+   * Allows targetRef to be or contain a button that toggles the popover open and closed.
+   * Without this check it would toggle closed then back open immediately.
+   */
   const handleClickOutside = useCallback(
-    (e) => {
-      /**
-       * Allows targetRef to be or contain a button that toggles the popover open and closed.
-       * Without this check it would toggle closed then back open immediately.
-       */
-      if (targetRef.current?.contains(e.target as Node)) return;
-
-      onRequestClose?.();
-    },
+    (e) => !targetRef.current?.contains(e.target as Node) && onRequestClose?.(),
     [onRequestClose, targetRef]
   );
 
-  const popoverRef = useRef<HTMLDivElement>(null);
-
   if (!isOpen || !targetRef) return null;
-
-  const { top, left } = getPopoverPosition();
-
-  const transform = getTransform(xAlign, yAlign, inside);
 
   const content = (
     <FocusTrap
@@ -162,9 +166,8 @@ export const Popover: React.FC<PopoverProps> = ({
         tabIndex={-1}
         transform={transform}
         position={inline ? 'absolute' : 'fixed'}
-        top={top}
-        left={left}
         data-testid="popover-content-container"
+        {...popoverPosition}
         {...rest}
       />
     </FocusTrap>

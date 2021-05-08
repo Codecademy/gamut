@@ -5,6 +5,7 @@ const DEFAULT_STORIES_GLOB = '../stories/**/*.stories.@(mdx|tsx)';
 const EXCLUDED_STORIES = [
   'Truncate',
   'Popover',
+  'PopoverContainer',
   'Coachmark',
   'Modal',
   'Dialog',
