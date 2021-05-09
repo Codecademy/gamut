@@ -1,9 +1,8 @@
 import { PopoverContainer } from '@codecademy/gamut';
 import title from '@codecademy/macros/lib/title.macro';
-import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 
-import { PopoverExample } from './examples.tsx';
+import { SingleDirection } from './examples.tsx';
 
 <Meta
   title={title}
@@ -27,46 +26,17 @@ import { PopoverExample } from './examples.tsx';
     inline: true,
     inside: false,
     x: 0,
-    y: 20,
+    y: 0,
+    offset: 20,
   }}
 />
 
-<Canvas column>
-  <Story name="top-right" args={{ alignment: 'top-right' }} height="500px">
-    {(args) => <PopoverExample {...args} />}
-  </Story>
-</Canvas>
-
 <Canvas>
-  <Story name="top-left" args={{ alignment: 'top-left' }} height="500px">
-    {(args) => <PopoverExample {...args} />}
-  </Story>
-</Canvas>
-
-<Canvas>
-  <Story
-    name="bottom-right"
-    args={{ alignment: 'bottom-right' }}
-    height="500px"
-  >
-    {(args) => <PopoverExample {...args} />}
-  </Story>
-</Canvas>
-
-<Canvas>
-  <Story name="bottom-left" args={{ alignment: 'bottom-left' }} height="500px">
-    {(args) => <PopoverExample {...args} />}
+  <Story name="Single Directions">
+    <SingleDirection />
   </Story>
 </Canvas>
 
 ## Code Playground
 
 Edit attributes and see what’s possible to do with this component or get the exact output you want.
-
-<Canvas>
-  <Story name="Playground" height="500px">
-    {(args) => <PopoverExample {...args} />}
-  </Story>
-</Canvas>
-
-<PropsTable story="Playground" />
