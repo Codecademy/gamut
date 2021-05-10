@@ -4,7 +4,6 @@ import {
   swatches,
   system,
 } from '@codecademy/gamut-styles';
-import { Theme, useTheme } from '@emotion/react';
 
 export const modeColorGroups = {
   dark: {
