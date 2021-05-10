@@ -1,9 +1,8 @@
-import FocusTrap from 'focus-trap-react';
-import React from 'react';
-import { useIsomorphicLayoutEffect } from 'react-use';
+import React, { useCallback } from 'react';
 
 import { BodyPortal } from '../BodyPortal';
 import { FlexBox } from '../Box';
+import { FocusTrap } from '../FocusTrap';
 
 export type OverlayProps = {
   children: React.ReactElement<any>;
@@ -12,10 +11,6 @@ export type OverlayProps = {
    * Whether clicking on the screen outside of the container should close the Overlay.
    */
   clickOutsideCloses?: boolean;
-  /**
-   * Whether to allow outside clicks in the overlay. No effect unless clickOutsideCloses is false. Check before using this prop, as it can have accessiblity implications.
-   */
-  allowOutsideClick?: boolean;
   /**
    * Whether clicking the escape key should close the Overlay.
    */
@@ -29,28 +24,23 @@ export type OverlayProps = {
    * Whether the overlay is rendered.
    */
   isOpen?: boolean;
-  /**
-   * Whether to use static positioning on the overlay. Defaults to false since by default Overlay's position is fixed.
-   * @default false
-   */
-  staticPositioning?: boolean;
 };
 
 export const Overlay: React.FC<OverlayProps> = ({
   className,
   children,
   clickOutsideCloses = true,
-  allowOutsideClick,
   escapeCloses = true,
-  staticPositioning = false,
   onRequestClose,
   isOpen,
 }) => {
-  useIsomorphicLayoutEffect(() => {
-    if (typeof document !== 'undefined') {
-      document.body.style.overflow = isOpen ? 'hidden' : 'visible';
-    }
-  }, [isOpen]);
+  const handleOutsideClick = useCallback(() => {
+    clickOutsideCloses && onRequestClose();
+  }, [clickOutsideCloses, onRequestClose]);
+
+  const handleEscapeKey = useCallback(() => {
+    escapeCloses && onRequestClose();
+  }, [escapeCloses, onRequestClose]);
 
   if (!isOpen) return null;
 
@@ -58,7 +48,7 @@ export const Overlay: React.FC<OverlayProps> = ({
     <BodyPortal>
       <FlexBox
         data-testid="overlay-content-container"
-        position={staticPositioning ? 'static' : 'fixed'}
+        position="fixed"
         justifyContent="center"
         alignItems="center"
         bottom="0"
@@ -68,12 +58,8 @@ export const Overlay: React.FC<OverlayProps> = ({
         className={className}
       >
         <FocusTrap
-          focusTrapOptions={{
-            allowOutsideClick,
-            clickOutsideDeactivates: clickOutsideCloses,
-            escapeDeactivates: escapeCloses,
-            onDeactivate: onRequestClose,
-          }}
+          onClickOutside={handleOutsideClick}
+          onEscapeKey={handleEscapeKey}
         >
           {children}
         </FocusTrap>

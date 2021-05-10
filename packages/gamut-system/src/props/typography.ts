@@ -23,4 +23,10 @@ export const typography = {
   textDecoration: {
     propName: 'textDecoration',
   },
+  textTransform: {
+    propName: 'textTransform',
+  },
+  whiteSpace: {
+    propName: 'whiteSpace',
+  },
 } as const;

@@ -4,11 +4,10 @@ import {
   IconItem,
   Meta,
   Preview,
-  Props,
   Story,
-} from '@storybook/addon-docs/dist/blocks';
+} from '@storybook/addon-docs/blocks';
 
-import { selectableColors } from '~styleguide/blocks';
+import { PropsTable, selectableColors } from '~styleguide/blocks';
 
 import { ICONS, LE_ICONS, UI_ICONS, VENDOR_ICONS } from './constants';
 
@@ -19,6 +18,7 @@ import { ICONS, LE_ICONS, UI_ICONS, VENDOR_ICONS } from './constants';
     subtitle:
       'A regular sized Icon set primarily from [Streamline Regular](https://app.streamlinehq.com/streamline-regular).',
     source: 'gamut-icons',
+    status: 'current',
   }}
   argTypes={{
     iconName: {
@@ -65,7 +65,7 @@ If you cannot find the Icon you would like in the ones that we have specified he
   </Story>
 </Preview>
 
-<Props of={ICONS.AlertIcon} />
+<PropsTable of={ICONS.AlertIcon} />
 
 ## Usage
 

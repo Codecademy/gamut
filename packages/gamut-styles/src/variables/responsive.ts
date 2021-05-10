@@ -8,9 +8,8 @@ export const breakpoints: Record<MediaSize, string> = {
   xl: '1440px',
 };
 
-const createMediaQuery = (size: MediaSize, direction: 'min' | 'max') => `
-  @media only screen and (${direction}-width: ${breakpoints[size]})
-`;
+const createMediaQuery = (size: MediaSize, direction: 'min' | 'max') =>
+  `@media only screen and (${direction}-width: ${breakpoints[size]})`;
 
 export const mediaQueries = {
   xs: createMediaQuery('xs', 'min'),

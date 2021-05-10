@@ -1,6 +1,7 @@
 import { EditorialImage } from '@codecademy/gamut-labs/src';
 import title from '@codecademy/macros/lib/title.macro';
-import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
+import { PropsTable } from '@codecademy/storybook-addon-variance';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 
 <Meta
   title={title}
@@ -21,4 +22,4 @@ import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
   <Story name="EditorialImage">{(args) => <EditorialImage {...args} />}</Story>
 </Canvas>
 
-<Props story="EditorialImage" />
+<PropsTable story="EditorialImage" />

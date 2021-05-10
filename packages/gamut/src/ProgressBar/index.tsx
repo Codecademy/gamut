@@ -160,13 +160,7 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
       variant={variant}
     >
       {pattern && (
-        <Pattern
-          textColor="navy"
-          width="100%"
-          position="absolute"
-          zIndex={0}
-          name={pattern}
-        />
+        <Pattern width="100%" position="absolute" zIndex={0} name={pattern} />
       )}
       <Bar
         variant={variant}

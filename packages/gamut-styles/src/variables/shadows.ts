@@ -1,4 +1,4 @@
-import { createShadow } from '../utilities';
+import { createShadow } from '../styles';
 
 export const boxShadows = {
   1: createShadow(1),

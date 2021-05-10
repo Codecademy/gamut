@@ -1,43 +1,37 @@
-import cx from 'classnames';
-import React from 'react';
+import { styledConfig, system } from '@codecademy/gamut-styles';
+import { StyleProps, variance } from '@codecademy/variance';
+import styled from '@emotion/styled';
 
-import { ContainerElementProps } from '../Layout/types';
-import { ResponsiveProperty } from '../typings/responsive-properties';
-import { generateResponsiveClassnames } from '../utils/generateResponsiveClassnames';
-import styles from './styles/Text.module.scss';
-import { AllowedStyles } from './types';
+import { typographyElementVariants, typographyStyleVariants } from './variants';
 
-export type TextTags = 'p' | 'span' | 'div';
-export type TextSizes = 'sm' | 'md' | 'lg';
+const displayVariants = system.variant({
+  variants: typographyStyleVariants,
+});
 
-type TextProps = {
-  /** Text based tags */
-  as?: TextTags;
-  /** A font-size/font-family pair */
-  fontSize?: ResponsiveProperty<TextSizes>;
-  /** Allows you to pass color attributes directly to the tag */
-  style?: AllowedStyles;
-} & ContainerElementProps;
+const elementVariants = system.variant({
+  prop: 'as',
+  variants: typographyElementVariants,
+});
 
-export const Text: React.FC<TextProps> = ({
-  children,
-  as: Element = 'p',
-  fontSize = 'md',
-  className,
-  testId,
-  style,
-}) => {
-  return (
-    <Element
-      className={cx(
-        styles.text,
-        className,
-        generateResponsiveClassnames({ fontSize }, styles)
-      )}
-      data-testid={testId}
-      style={style}
-    >
-      {children}
-    </Element>
-  );
+const textProps = variance.compose(
+  system.layout,
+  system.typography,
+  system.color,
+  system.space
+);
+
+export interface TextProps
+  extends StyleProps<typeof textProps>,
+    StyleProps<typeof elementVariants>,
+    StyleProps<typeof displayVariants> {}
+
+export const Text = styled('span', styledConfig)<TextProps>(
+  elementVariants,
+  displayVariants,
+  textProps
+);
+
+Text.defaultProps = {
+  as: 'span',
+  m: 0,
 };

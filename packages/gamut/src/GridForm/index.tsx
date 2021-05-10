@@ -9,6 +9,11 @@ import { GridFormField } from './types';
 
 export * from './types';
 
+const defaultColumnGap = {
+  _: 8,
+  sm: 32,
+} as const;
+
 export type GridFormProps<Values extends {}> = {
   children?: React.ReactNode;
   className?: string;
@@ -27,6 +32,11 @@ export type GridFormProps<Values extends {}> = {
    * Function called with field values on submit, if all validations have passed.
    */
   onSubmit: SubmitHandler<Values>;
+
+  /**
+   * Show asterisks next to required fields.
+   */
+  showRequired?: boolean;
 
   /**
    * Layout grid row gap override.
@@ -56,16 +66,21 @@ export function GridForm<
 >({
   children,
   className,
-  columnGap = 'lg',
+  columnGap = defaultColumnGap,
   fields = [],
   onSubmit,
-  rowGap = 'md',
+  rowGap = 16,
   submit,
   validation = 'onSubmit',
+  showRequired = false,
 }: GridFormProps<Values>) {
-  const { errors, handleSubmit, register, setValue, formState } = useForm<
-    Values
-  >({
+  const {
+    errors,
+    handleSubmit,
+    register,
+    setValue,
+    formState,
+  } = useForm<Values>({
     defaultValues: fields.reduce<any>(
       (defaultValues, field) => ({
         ...defaultValues,
@@ -87,9 +102,11 @@ export function GridForm<
       <LayoutGrid columnGap={columnGap} rowGap={rowGap}>
         {fields.map((field) => {
           const errorMessage = (errors[field.name] as FieldError)?.message;
-
           const isFirstError = !pastFirstError && errorMessage !== undefined;
           pastFirstError = pastFirstError || isFirstError;
+          const requiredBoolean = !!(
+            field.type !== 'hidden' && field.validation?.required
+          );
 
           return (
             <GridFormInputGroup
@@ -99,6 +116,8 @@ export function GridForm<
               key={field.name}
               register={register}
               setValue={setValue}
+              required={requiredBoolean}
+              showRequired={showRequired}
             />
           );
         })}

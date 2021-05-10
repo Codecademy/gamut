@@ -9,6 +9,11 @@ export type HighlightedTextProps = {
   children?: string;
 };
 
+/**
+ * @deprecated
+ * This component is deprecated and is no longer supported.
+ */
+
 export const HighlightedText = ({ children = '' }: HighlightedTextProps) => {
   const words = children
     .split(/(\s+)(\S+)/g)

@@ -15,6 +15,7 @@ export const Bell: React.FC<IllustrationProps> = ({
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
   >
+    <title>Bell Icon</title>
     <circle cx="24" cy="24" r="23.5" fill="white" stroke="#10162F" />
     <path
       d="M22.3334 32.125C22.4392 32.4856 22.659 32.8022 22.9598 33.0274C23.2607 33.2526 23.6263 33.3743 24.0021 33.3743C24.3779 33.3743 24.7436 33.2526 25.0444 33.0274C25.3452 32.8022 25.565 32.4856 25.6709 32.125"

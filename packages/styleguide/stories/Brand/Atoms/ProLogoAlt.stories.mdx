@@ -1,8 +1,8 @@
 import { ProLogoAlt } from '@codecademy/gamut-labs/src';
 import title from '@codecademy/macros/lib/title.macro';
-import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 
-import { selectableColorNames } from '~styleguide/blocks';
+import { PropsTable, selectableColorNames } from '~styleguide/blocks';
 
 <Meta
   title={title}
@@ -17,7 +17,7 @@ import { selectableColorNames } from '~styleguide/blocks';
   }}
   parameters={{
     subtitle: `Version of the Pro Alt logo that allows you to choose the text color. Use sparingly, and make sure it has a lot of visual distinction to stand out appropriately.`,
-    status: 'volatile',
+    status: 'updating',
     source: 'gamut-labs',
   }}
 />
@@ -26,4 +26,4 @@ import { selectableColorNames } from '~styleguide/blocks';
   <Story name="ProLogoAlt">{(args) => <ProLogoAlt {...args} />}</Story>
 </Canvas>
 
-<Props story="ProLogoAlt" />
+<PropsTable story="ProLogoAlt" />

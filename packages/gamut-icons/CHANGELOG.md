@@ -3,6 +3,146 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.12.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@4.11.1...@codecademy/gamut-icons@4.12.0) (2021-05-10)
+
+
+### Features
+
+* add new DropdownButton component and workspace icons ([9513181](https://github.com/Codecademy/client-modules/commit/9513181e25a36072e88945fe617996707f23c791))
+
+
+
+### [4.11.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@4.11.0...@codecademy/gamut-icons@4.11.1) (2021-05-07)
+
+**Note:** Version bump only for package @codecademy/gamut-icons
+
+
+
+
+
+## [4.11.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@4.10.0...@codecademy/gamut-icons@4.11.0) (2021-05-06)
+
+
+### Features
+
+* **Icon:** Adds system props to all icons [GM-218] ([4354d91](https://github.com/Codecademy/client-modules/commit/4354d919a561af58975014c8ff1bfd2d5c72077a))
+
+
+
+## [4.10.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@4.9.1...@codecademy/gamut-icons@4.10.0) (2021-05-05)
+
+
+### Features
+
+* adding icons for Business repo ([007d386](https://github.com/Codecademy/client-modules/commit/007d386646be73788a9f134a42c800d981df188b))
+
+
+
+### [4.9.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@4.9.0...@codecademy/gamut-icons@4.9.1) (2021-05-03)
+
+**Note:** Version bump only for package @codecademy/gamut-icons
+
+
+
+
+
+## [4.9.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@4.8.0...@codecademy/gamut-icons@4.9.0) (2021-05-03)
+
+
+### Features
+
+* add social media icons and update target illustration ([4947e59](https://github.com/Codecademy/client-modules/commit/4947e5903a3747e54c4934f3d7c73443189293e6))
+
+
+
+## [4.8.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@4.7.0...@codecademy/gamut-icons@4.8.0) (2021-04-19)
+
+
+### Features
+
+* **Icons:** Add checkout icons ([c89c84c](https://github.com/Codecademy/client-modules/commit/c89c84c4fea2abfdafeaf55e6873718e83901fef))
+
+
+
+## [4.7.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@4.6.0...@codecademy/gamut-icons@4.7.0) (2021-04-15)
+
+
+### Features
+
+* **Icons:** Add GraphStatsAscendIcon ([7f14736](https://github.com/Codecademy/client-modules/commit/7f147363fb4c3d506387eaea9073e03b03419da1))
+
+
+
+## [4.6.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@4.5.0...@codecademy/gamut-icons@4.6.0) (2021-04-13)
+
+
+### Features
+
+* **Icons:** Add MiniArrowRightIcon ([36167e3](https://github.com/Codecademy/client-modules/commit/36167e37c104755efd39397f7f2a3092f70c80af))
+
+
+
+## [4.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@4.4.0...@codecademy/gamut-icons@4.5.0) (2021-03-30)
+
+
+### Features
+
+* new @codecademy/tsconfig package ([#1570](https://github.com/Codecademy/client-modules/issues/1570)) ([e6e0ada](https://github.com/Codecademy/client-modules/commit/e6e0adab28050efe5a98107c83ec8bd35e6ea249))
+
+
+
+## [4.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@4.3.2...@codecademy/gamut-icons@4.4.0) (2021-03-25)
+
+
+### Features
+
+* add DeleteFilledIcon ([f4c425c](https://github.com/Codecademy/client-modules/commit/f4c425cf0ac0b62cbd7e339e410bfefae8ccfa7d))
+
+
+
+### [4.3.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@4.3.1...@codecademy/gamut-icons@4.3.2) (2021-03-25)
+
+**Note:** Version bump only for package @codecademy/gamut-icons
+
+
+
+
+
+### [4.3.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@4.3.0...@codecademy/gamut-icons@4.3.1) (2021-03-19)
+
+**Note:** Version bump only for package @codecademy/gamut-icons
+
+
+
+
+
+## [4.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@4.2.0...@codecademy/gamut-icons@4.3.0) (2021-03-09)
+
+
+### Features
+
+* **Icons:** Adds new icons for Form updates ([5a21007](https://github.com/Codecademy/client-modules/commit/5a21007c5dc0a89a824ad6e561195af78e94513b))
+
+
+
+## [4.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@4.1.0...@codecademy/gamut-icons@4.2.0) (2021-03-09)
+
+
+### Features
+
+* **SkipToContent:** SkipToContent + SkipToContent target visual identity + emotion [GM-158] [EGG-701]  ([6e35189](https://github.com/Codecademy/client-modules/commit/6e351891cf499968d2ebd846c36cb299788b0ab5))
+
+
+
+## [4.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@4.0.0...@codecademy/gamut-icons@4.1.0) (2021-03-04)
+
+
+### Features
+
+* LocationPinIcon ([d327380](https://github.com/Codecademy/client-modules/commit/d32738000630d9437a97d570f807626b4f5ec937))
+
+
+
 ## [4.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@3.15.0...@codecademy/gamut-icons@4.0.0) (2021-02-18)
 
 

@@ -1,4 +1,4 @@
-import { pxRem } from '../utilities/pxRem';
+import { pxRem } from '../styles/pxRem';
 import { base } from './base';
 
 export const baseUnit = pxRem(base);
@@ -15,4 +15,5 @@ export const spacing = {
   32: pxRem(32),
   48: pxRem(48),
   64: pxRem(64),
+  96: pxRem(96),
 } as const;

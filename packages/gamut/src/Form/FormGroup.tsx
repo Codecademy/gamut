@@ -1,29 +1,61 @@
-import cx from 'classnames';
-import React, { HTMLAttributes } from 'react';
+import styled from '@emotion/styled';
+import React, { ComponentProps } from 'react';
 
+import { Box } from '../Box';
+import { ToolTipProps } from '../ToolTip';
+import { FormError } from './FormError';
 import { FormGroupDescription } from './FormGroupDescription';
 import { FormGroupLabel } from './FormGroupLabel';
-import styles from './styles/FormGroup.module.scss';
 
-export type FormGroupProps = HTMLAttributes<HTMLDivElement> & {
+export interface FormGroupProps
+  extends ComponentProps<typeof FormGroupContainer> {
   label?: string;
+  /**
+   * [The for/id string of a label or labelable form-related element](https://developer.mozilla.org/en-US/docs/Web/API/HTMLLabelElement/htmlFor). The outer FormGroup or FormLabel should have an identical string as the inner FormElement for accessibility purposes.
+   */
   htmlFor?: string;
   className?: string;
   description?: string;
+  showRequired?: boolean;
+  error?: string;
+  disabled?: boolean;
+  labelSize?: 'small' | 'large';
+  tooltip?: ToolTipProps;
+}
+
+const FormGroupContainer = styled(Box)`
+  position: relative;
+  width: 100%;
+`;
+
+FormGroupContainer.defaultProps = {
+  pb: 8,
+  mb: 24,
 };
 
 export const FormGroup: React.FC<FormGroupProps> = ({
+  tooltip,
   label,
   description,
   htmlFor,
   children,
   className,
+  showRequired,
+  error,
+  labelSize,
+  disabled,
   ...rest
 }) => {
-  const classNames = cx(styles.FormGroup, className);
-
   const labelComponent = label ? (
-    <FormGroupLabel htmlFor={htmlFor}>{label}</FormGroupLabel>
+    <FormGroupLabel
+      htmlFor={htmlFor}
+      showRequired={showRequired}
+      size={labelSize}
+      disabled={disabled}
+      tooltip={tooltip}
+    >
+      {label}
+    </FormGroupLabel>
   ) : null;
 
   const descriptionComponent = description ? (
@@ -33,10 +65,11 @@ export const FormGroup: React.FC<FormGroupProps> = ({
   ) : null;
 
   return (
-    <div {...rest} className={classNames}>
+    <FormGroupContainer {...rest} className={className}>
       {labelComponent}
       {descriptionComponent}
       {children}
-    </div>
+      {error && <FormError aria-live="polite">{error}</FormError>}
+    </FormGroupContainer>
   );
 };

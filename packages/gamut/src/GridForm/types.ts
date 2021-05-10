@@ -1,10 +1,11 @@
 import { UseFormMethods, ValidationRules } from 'react-hook-form';
 
-import { ColumnProps } from '../Layout/Column';
+import { ColumnProps } from '../Layout';
+import { ToolTipProps } from '../ToolTip';
 
 export type BaseFormField<Value> = {
   defaultValue?: Value;
-
+  customError?: string;
   disabled?: boolean;
 
   /**
@@ -16,6 +17,8 @@ export type BaseFormField<Value> = {
    * HTML id to use instead of the name.
    */
   id?: string;
+
+  tooltip?: ToolTipProps;
 
   name: string;
   onUpdate?: (value: Value) => void;
@@ -98,6 +101,12 @@ export type GridFormTextAreaField = BaseFormField<string> & {
   type: 'textarea';
 };
 
+type HiddenField = Omit<BaseFormField<any>, 'size'>;
+
+export type GridFormHiddenField = HiddenField & {
+  type: 'hidden';
+};
+
 export type GridFormField =
   | GridFormCheckboxField
   | GridFormCustomField
@@ -105,4 +114,5 @@ export type GridFormField =
   | GridFormTextField
   | GridFormSelectField
   | GridFormFileField
-  | GridFormTextAreaField;
+  | GridFormTextAreaField
+  | GridFormHiddenField;

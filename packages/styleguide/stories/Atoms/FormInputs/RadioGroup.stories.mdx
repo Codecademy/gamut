@@ -1,8 +1,7 @@
 import { Radio, RadioGroup } from '@codecademy/gamut';
 import title from '@codecademy/macros/lib/title.macro';
-import { Canvas, Meta, Story } from '@storybook/addon-docs/dist/blocks';
-
-import { PropsTable } from '~styleguide/blocks';
+import { PropsTable } from '@codecademy/storybook-addon-variance';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 
 export const exampleRadios = [{ id: '1' }, { id: '2' }];
 
@@ -13,7 +12,7 @@ export const exampleRadios = [{ id: '1' }, { id: '2' }];
     subtitle:
       'A helper element for grouping multiple `<Radio />` components semantically.',
     source: 'gamut',
-    status: 'stable',
+    status: 'current',
   }}
   args={{
     htmlFor: 'example-radio',

@@ -1,65 +1,125 @@
-import cx from 'classnames';
-import { each, isArray, isObject } from 'lodash';
-import React, { forwardRef, ReactNode, SelectHTMLAttributes } from 'react';
+import {
+  ArrowChevronDownIcon,
+  MiniChevronDownIcon,
+} from '@codecademy/gamut-icons';
+import { variant } from '@codecademy/gamut-styles';
+import { css } from '@emotion/react';
+import styled from '@emotion/styled';
+import React, {
+  ChangeEvent,
+  forwardRef,
+  SelectHTMLAttributes,
+  useMemo,
+  useState,
+} from 'react';
 
-import styles from './styles/Select.module.scss';
+import { Box, FlexBox } from '../Box';
+import { conditionalStyles, formFieldStyles } from './styles/shared';
+import { parseSelectOptions } from './utils';
 
-export type SelectProps = SelectHTMLAttributes<HTMLSelectElement> & {
+export type SelectComponentProps = Pick<
+  SelectHTMLAttributes<HTMLSelectElement>,
+  'disabled' | 'id'
+> & {
   error?: boolean;
   htmlFor?: string;
   options?: string[] | Record<string, number | string>;
-  id?: string;
 };
 
-export const Select = forwardRef<HTMLSelectElement, SelectProps>(
-  (props, ref) => {
-    const className = cx(
-      styles.Select,
-      props.className,
-      props.error && styles.error
-    );
-    const { options, error, id, ...rest } = props;
+export type SelectWrapperProps = SelectComponentProps &
+  SelectHTMLAttributes<HTMLSelectElement> & {
+    sizeVariant?: 'small' | 'base';
+  };
 
-    let selectOptions: ReactNode[] = [];
+export interface SelectProps extends SelectWrapperProps {
+  activated?: boolean;
+}
 
-    if (isArray(options)) {
-      selectOptions = options.map((option) => {
-        const key = id ? `${id}-${option}` : option;
-        return (
-          <option key={key} value={option} data-testid={key}>
-            {option}
-          </option>
-        );
-      });
-    } else if (isObject(options)) {
-      each(options, (text, val) => {
-        const key = id ? `${id}-${val}` : val;
-        selectOptions.push(
-          <option key={key} value={val} data-testid={key}>
-            {text}
-          </option>
-        );
-      });
-    }
+const selectSizeVariants = variant({
+  default: 'base',
+  prop: 'sizeVariant',
+  variants: {
+    small: {
+      height: '2rem',
+      paddingX: 8,
+      paddingY: 0,
+    },
+    base: {
+      height: 'auto',
+      paddingRight: 48,
+    },
+  },
+});
+
+const SelectBase = styled.select<SelectProps>`
+  ${formFieldStyles}
+  ${conditionalStyles}
+  ${selectSizeVariants}
+  cursor: pointer;
+  display: block;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+`;
+
+const allowClickStyle = css`
+  pointer-events: none;
+`;
+
+const StyledFlexbox = styled(FlexBox)(allowClickStyle);
+
+export const Select = forwardRef<HTMLSelectElement, SelectWrapperProps>(
+  (
+    { className, defaultValue, options, error, id, sizeVariant, ...rest },
+    ref
+  ) => {
+    const [activated, setActivated] = useState(false);
+
+    const changeHandler = (event: ChangeEvent<HTMLSelectElement>) => {
+      rest?.onChange?.(event);
+      setActivated(true);
+    };
+
+    const selectOptions = useMemo(() => {
+      return parseSelectOptions({ options, id });
+    }, [options, id]);
 
     return (
-      <div className={className}>
-        <svg className={styles.selectIcon}>
-          <path
-            d="M1.175 0L5 3.825 8.825 0 10 1.183l-5 5-5-5z"
-            fill="#3E3E40"
-          />
-        </svg>
-        <select
+      <Box
+        position="relative"
+        width="100%"
+        textColor={error ? 'red' : 'navy'}
+        minWidth="7rem"
+        className={className}
+      >
+        <StyledFlexbox
+          pr={12}
+          alignItems="center"
+          position="absolute"
+          right="0"
+          top="0"
+          bottom="0"
+          aria-hidden
+        >
+          {sizeVariant === 'small' ? (
+            <MiniChevronDownIcon size={12} />
+          ) : (
+            <ArrowChevronDownIcon size={16} />
+          )}
+        </StyledFlexbox>
+        <SelectBase
           {...rest}
-          className={styles.selectInput}
-          defaultValue={props.defaultValue || ''}
-          id={id || props.htmlFor}
+          defaultValue={defaultValue || ''}
+          id={id || rest.htmlFor}
           ref={ref}
+          error={error}
+          sizeVariant={sizeVariant}
+          activated={activated}
+          onChange={(event) => changeHandler(event)}
         >
           {selectOptions}
-        </select>
-      </div>
+        </SelectBase>
+      </Box>
     );
   }
 );

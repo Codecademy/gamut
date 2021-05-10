@@ -1,14 +1,13 @@
 import { Box, FlexBox } from '@codecademy/gamut/src';
 import title from '@codecademy/macros/lib/title.macro';
-import { Canvas, Meta, Story } from '@storybook/addon-docs/dist/blocks';
-import LinkTo from '@storybook/addon-links/dist/react/components/link';
-
-import { PropsTable } from '~styleguide/blocks';
+import { PropsTable } from '@codecademy/storybook-addon-variance';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import LinkTo from '@storybook/addon-links/react';
 
 <Meta
   title={title}
   component={FlexBox}
-  parameters={{ status: 'volatile', source: 'gamut' }}
+  parameters={{ status: 'updating', source: 'gamut' }}
 />
 
 <p>
@@ -29,10 +28,8 @@ import { PropsTable } from '~styleguide/blocks';
   >
     {({ as = 'div', ...args }) => {
       const elProps = {
-        borderWidth: '1px',
-        borderStyle: 'solid',
-        borderColor: 'navy',
-        padding: 16,
+        border: 1,
+        p: 16,
       };
       return (
         <FlexBox {...args}>
@@ -57,10 +54,8 @@ import { PropsTable } from '~styleguide/blocks';
   >
     {(args) => {
       const elProps = {
-        borderWidth: '1px',
-        borderStyle: 'solid',
-        borderColor: 'navy',
-        padding: 16,
+        border: 1,
+        p: 16,
       };
       return (
         <FlexBox justifyContent="space-between">

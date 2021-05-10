@@ -1,0 +1,13 @@
+name: Check labels
+
+on:
+  pull_request:
+    types: [opened, labeled, unlabeled, reopened]
+
+jobs:
+  ship-it:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: sugarshin/required-labels-action@v0.3.1
+        with:
+          required_all: 'Ship It :shipit:'

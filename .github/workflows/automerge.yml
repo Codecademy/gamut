@@ -6,26 +6,14 @@ on:
       - main
     types:
       - labeled
-      - unlabeled
       - synchronize
       - opened
       - edited
-      - ready_for_review
       - reopened
-      - unlocked
   pull_request_review:
     types:
       - submitted
-  check_suite:
-    types:
-      - completed
-  check_run:
-    types:
-      - completed
-  status: {}
-  push:
-    branches:
-      - main
+  status:
 
 jobs:
   automerge:
@@ -36,7 +24,7 @@ jobs:
         uses: fountainhead/action-wait-for-check@v1.0.0
         id: wait-for-build
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.ACTIONS_GITHUB_TOKEN }}
           checkName: build-test
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
           timeoutSeconds: 1200
@@ -44,7 +32,7 @@ jobs:
       - name: automerge
         uses: pascalgn/automerge-action@v0.12.0
         env:
-          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+          GITHUB_TOKEN: ${{ secrets.ACTIONS_GITHUB_TOKEN }}
           MERGE_LABELS: "Ship It :shipit:"
           UPDATE_LABELS: "Ship It :shipit:,Auto Update"
           MERGE_REMOVE_LABELS: "Ship It :shipit:"

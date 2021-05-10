@@ -3,6 +3,12 @@ import sanitizeMarkdown from 'sanitize-markdown';
 export const defaultSanitizationConfig = {
   allowedAttributes: {
     ...sanitizeMarkdown.defaults.allowedAttributes,
+    h1: ['class', 'id'],
+    h2: ['class', 'id'],
+    h3: ['class', 'id'],
+    h4: ['class', 'id'],
+    h5: ['class', 'id'],
+    h6: ['class', 'id'],
     span: ['class'],
     code: ['class'],
     pre: ['class'],

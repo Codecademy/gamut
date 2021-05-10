@@ -80,6 +80,13 @@ export type ColProps = ColSizing & {
   reverse?: boolean;
 };
 
+/**
+ * @deprecated
+ * This component is deprecated and is no longer supported.
+ *
+ * See [LayoutGrid + Col](https://gamut.codecademy.com/storybook/?path=/docs/layouts-layoutgrid--layout-grid)
+ */
+
 export const Col: React.FC<ColProps> = ({ as: Element = 'div', ...props }) => {
   const className = getClassNames(props);
 

@@ -1,7 +1,8 @@
 import { ButtonDeprecated, Interstitial } from '@codecademy/gamut/src';
 import title from '@codecademy/macros/lib/title.macro';
+import { PropsTable } from '@codecademy/storybook-addon-variance';
 import styled from '@emotion/styled';
-import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 
 <Meta
   title={title}
@@ -11,6 +12,7 @@ import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
 Large content area used as a break between focused content, such as within
 a full-screen [Overlay](?path=/docs/atoms-overlay--overlay) in the LE between lessons.
 `,
+    status: 'deprecated',
     source: 'gamut',
   }}
   args={{
@@ -26,7 +28,7 @@ a full-screen [Overlay](?path=/docs/atoms-overlay--overlay) in the LE between le
   <Story name="Interstitial">{(args) => <Interstitial {...args} />}</Story>
 </Canvas>
 
-<Props story="Interstitial" />
+<PropsTable story="Interstitial" />
 
 ## With Buttons
 

@@ -29,7 +29,6 @@ describe('Compiled gamut-icons:', () => {
   it('Allows passing a custom title', () => {
     const wrapper = mount(<AddIcon title="Accessible" />);
 
-    const svgEl = wrapper.find('svg');
     const titleEl = wrapper.find('title');
     expect(titleEl.text()).toEqual('Accessible');
   });

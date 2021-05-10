@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.0.0](http://github.com///compare/@codecademy/eslint-config@4.0.1...@codecademy/eslint-config@5.0.0) (2021-05-06)
+
+
+### ⚠ BREAKING CHANGES
+
+* bump eslint-config packages to latest
+
+### Features
+
+* bump eslint-config packages to latest ([0050197](http://github.com///commit/00501973d966e9a1c3b4ab3346b963686d944630))
+
+
+
+### [4.0.1](http://github.com///compare/@codecademy/eslint-config@4.0.0...@codecademy/eslint-config@4.0.1) (2021-02-25)
+
+
+### Bug Fixes
+
+* use separate eslint-fix config ([f36e791](http://github.com///commit/f36e791b83249b0922b2cf55121fcf8e76796c8e))
+
+
+
 ## [4.0.0](http://github.com///compare/@codecademy/eslint-config@3.1.7...@codecademy/eslint-config@4.0.0) (2021-02-12)
 
 

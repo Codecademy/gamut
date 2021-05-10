@@ -1,7 +1,8 @@
 import { ButtonDeprecated, Container, Overlay } from '@codecademy/gamut/src';
 import { Text } from '@codecademy/gamut-labs/src';
 import title from '@codecademy/macros/lib/title.macro';
-import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
+import { PropsTable } from '@codecademy/storybook-addon-variance';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 import { useState } from '@storybook/addons';
 
 <Meta
@@ -12,6 +13,7 @@ import { useState } from '@storybook/addons';
 they're open by their parent. They're very basic and
 don't have animations defined.`,
     source: 'gamut',
+    status: 'current',
   }}
 />
 
@@ -56,4 +58,4 @@ a background behind content, see `Modal`.
   </Story>
 </Canvas>
 
-<Props story="Overlay" />
+<PropsTable story="Overlay" />

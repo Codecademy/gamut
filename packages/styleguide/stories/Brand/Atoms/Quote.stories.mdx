@@ -1,6 +1,7 @@
 import { Quote } from '@codecademy/gamut-labs/src';
 import title from '@codecademy/macros/lib/title.macro';
-import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
+import { PropsTable } from '@codecademy/storybook-addon-variance';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 
 <Meta
   title={title}
@@ -8,6 +9,7 @@ import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
   args={{
     text:
       'Codecademy’s small lessons really help a person who has trouble focusing on long lessons.',
+    mode: 'light',
   }}
   parameters={{
     subtitle: `Emphasized text intended to be a direct quote, such as from a learner.
@@ -20,4 +22,4 @@ Often with an \`Avatar\` or \`Testimonial\`.`,
   <Story name="Quote">{(args) => <Quote {...args} />}</Story>
 </Canvas>
 
-<Props story="Quote" />
+<PropsTable story="Quote" />

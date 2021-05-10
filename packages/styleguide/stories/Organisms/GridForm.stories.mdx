@@ -1,7 +1,14 @@
-import { Column, GridForm, Input, LayoutGrid } from '@codecademy/gamut/src';
+import {
+  Column,
+  GridForm,
+  Input,
+  LayoutGrid,
+  Markdown,
+} from '@codecademy/gamut/src';
 import title from '@codecademy/macros/lib/title.macro';
+import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { action } from '@storybook/addon-actions';
-import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 import { useState } from '@storybook/addons';
 
 <Meta
@@ -11,6 +18,7 @@ import { useState } from '@storybook/addons';
     subtitle: `This organism takes in plain JSON-like props and uses them to string
 together a validated form`,
     source: 'gamut',
+    status: 'updating',
   }}
 />
 
@@ -80,7 +88,6 @@ responsive layouts.
           {
             label: 'Write a paragraph about penguins',
             name: 'textarea-input',
-            size: 12,
             type: 'textarea',
             validation: {
               required: 'Please write something about penguins!',
@@ -132,7 +139,6 @@ responsive layouts.
             description:
               'I accept the terms and conditions (required or else!!!)',
             name: 'eula-checkbox-required',
-            size: 12,
             type: 'checkbox',
             validation: {
               required: 'Please check the box to agree to the terms.',
@@ -144,14 +150,14 @@ responsive layouts.
         }}
         submit={{
           contents: 'Submit Me!?',
-          size: 12,
         }}
+        showRequired
       />
     )}
   </Story>
 </Canvas>
 
-<Props of={GridForm} />
+<PropsTable of={GridForm} />
 
 ## Disabled Inputs
 
@@ -182,7 +188,6 @@ If an input is not meant to be usable, such as when a portion of a form is disab
         submit={{
           contents: 'Right Submit!?',
           position: 'right',
-          size: 12,
         }}
       />
     )}
@@ -204,7 +209,6 @@ value of left, center, right, or stretch.
               {
                 label: 'Simple text',
                 name: 'simple-text',
-                size: 12,
                 type: 'text',
               },
             ]}
@@ -214,7 +218,6 @@ value of left, center, right, or stretch.
             submit={{
               contents: 'Right Submit!?',
               position: 'right',
-              size: 12,
             }}
           />
         </Column>
@@ -224,7 +227,6 @@ value of left, center, right, or stretch.
               {
                 label: 'Simple text',
                 name: 'simple-text',
-                size: 12,
                 type: 'text',
               },
             ]}
@@ -234,7 +236,6 @@ value of left, center, right, or stretch.
             submit={{
               contents: 'Center Submit!?',
               position: 'center',
-              size: 12,
             }}
           />
         </Column>
@@ -244,7 +245,6 @@ value of left, center, right, or stretch.
               {
                 label: 'Simple text',
                 name: 'simple-text',
-                size: 12,
                 type: 'text',
               },
             ]}
@@ -254,7 +254,6 @@ value of left, center, right, or stretch.
             submit={{
               contents: 'Left Submit!?',
               position: 'left',
-              size: 12,
             }}
           />
         </Column>
@@ -264,7 +263,6 @@ value of left, center, right, or stretch.
               {
                 label: 'Simple text',
                 name: 'simple-text',
-                size: 12,
                 type: 'text',
               },
             ]}
@@ -274,7 +272,6 @@ value of left, center, right, or stretch.
             submit={{
               contents: 'Stretch Submit!?',
               position: 'stretch',
-              size: 12,
             }}
           />
         </Column>
@@ -283,14 +280,13 @@ value of left, center, right, or stretch.
   </Story>
 </Canvas>
 
-## Submit Button color
+## Submit Button Options
 
-We can specify the color of our button by passing the theme prop with a
-button atom theme prop value. i.e. 'brand-blue', 'brand-purple'. The
-default value is 'brand-purple'.
+We can specify the version of our button by passing the type prop. WE can choose between
+the [`FillButton`](/?path=/docs/atoms--fill) or [`CTAButton`](?path=/docs/atoms--cta).
 
 <Canvas>
-  <Story name="Submit button color">
+  <Story name="Submit Button Options">
     {(args) => (
       <>
         <GridForm
@@ -298,7 +294,7 @@ default value is 'brand-purple'.
             {
               label: 'Simple text',
               name: 'simple-text',
-              size: 12,
+              size: 6,
               type: 'text',
             },
           ]}
@@ -306,7 +302,25 @@ default value is 'brand-purple'.
             action('Form Submitted')(values);
           }}
           submit={{
-            contents: 'Default Purple Submit!?',
+            contents: 'Fill Button',
+            size: 6,
+          }}
+        />
+        <GridForm
+          fields={[
+            {
+              label: 'Simple text',
+              name: 'simple-text',
+              size: 6,
+              type: 'text',
+            },
+          ]}
+          onSubmit={async (values) => {
+            action('Form Submitted')(values);
+          }}
+          submit={{
+            type: 'cta',
+            contents: 'CTA Button',
             size: 12,
           }}
         />
@@ -315,7 +329,7 @@ default value is 'brand-purple'.
             {
               label: 'Simple text',
               name: 'simple-text',
-              size: 12,
+              size: 6,
               type: 'text',
             },
           ]}
@@ -323,9 +337,47 @@ default value is 'brand-purple'.
             action('Form Submitted')(values);
           }}
           submit={{
-            contents: 'Blue Submit!?',
+            contents: 'Fill Button Dark Mode',
             size: 12,
-            theme: 'brand-blue',
+            mode: 'dark',
+          }}
+        />
+        <GridForm
+          fields={[
+            {
+              label: 'Simple text',
+              name: 'simple-text',
+              size: 6,
+              type: 'text',
+            },
+          ]}
+          onSubmit={async (values) => {
+            action('Form Submitted')(values);
+          }}
+          submit={{
+            type: 'cta',
+            contents: 'CTA Button Dark Mode',
+            size: 12,
+            mode: 'dark',
+          }}
+        />
+        <GridForm
+          fields={[
+            {
+              label: 'Simple text',
+              name: 'simple-text',
+              size: 6,
+              type: 'text',
+            },
+          ]}
+          onSubmit={async (values) => {
+            action('Form Submitted')(values);
+          }}
+          submit={{
+            type: 'business',
+            contents: 'Deprecated Button',
+            size: 12,
+            theme: 'brand-purple',
           }}
         />
       </>
@@ -402,7 +454,6 @@ their own inputs. We can specify a 'custom' field type to with a [render prop](h
                 message: 'Still not enough swag, what are you doing... 💢',
               },
             },
-            size: 12,
             type: 'custom',
           },
         ]}
@@ -439,7 +490,6 @@ more details on why using placeholders is often bad.
             label: 'Email',
             placeholder: 'Your email',
             name: 'custom-input',
-            size: 12,
             type: 'email',
           },
         ]}
@@ -487,5 +537,180 @@ field's value in a parent component before onSubmit gets triggered.
         </>
       );
     }}
+  </Story>
+</Canvas>
+
+## With tooltip
+
+A field can include [our existing `ToolTip`](/?path=/docs/atoms-tooltip--tool-tip). The position of the tooltip on each field is always set to the bottom-right. You also have the option to render each tooltip in dark or light mode.
+
+<Canvas>
+  <Story name="Tooltip">
+    {(args) => (
+      <>
+        <GridForm
+          fields={[
+            {
+              tooltip: {
+                id: 'text-tooltip',
+                children:
+                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+              },
+              label: 'Tool input',
+              name: 'input-field',
+              size: 6,
+              type: 'text',
+            },
+            {
+              tooltip: {
+                id: 'select-tooltip',
+                mode: 'dark',
+                children: (
+                  <Markdown text="My grandmother used to tell me stories..." />
+                ),
+              },
+              label: 'Select with tooltip',
+              options: ['', 'Water', 'Earth', 'Fire', 'Air', 'Boomerang'],
+              size: 3,
+              type: 'select',
+              validation: {
+                required: 'Please select an option',
+              },
+              name: 'select-field',
+            },
+            {
+              tooltip: {
+                id: 'textarea-tooltip',
+                children:
+                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+              },
+              label: 'Write a paragraph about tooltips',
+              name: 'textarea-field',
+              size: 6,
+              type: 'textarea',
+              validation: {
+                required: 'Please write something about tooltips!',
+              },
+            },
+            {
+              tooltip: {
+                children:
+                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+              },
+              label: 'Preferred Modern Artist',
+              name: 'artist',
+              options: [
+                {
+                  label: 'Taylor Swift',
+                  value: 'taylor-swift',
+                },
+                {
+                  label: 'Beyonce',
+                  value: 'beyonce',
+                },
+              ],
+              size: 3,
+              type: 'radio-group',
+              validation: {
+                required: 'You gotta pick one!',
+              },
+            },
+            {
+              tooltip: {
+                id: 'checkbox-tooltip',
+                children:
+                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+              },
+              label: 'End User License Agreement',
+              description: 'I promise that I read it',
+              name: 'eula-checkbox-required',
+              size: 4,
+              type: 'checkbox',
+              validation: {
+                required: 'Please check the box to agree to the terms.',
+              },
+            },
+          ]}
+          onSubmit={async (values) => {
+            action('Form Submitted')(values);
+          }}
+          submit={{
+            contents: 'Submit',
+            size: 12,
+            theme: 'hyper',
+          }}
+        />
+      </>
+    )}
+  </Story>
+</Canvas>
+
+## Custom Error
+
+A field can take a custom error in addition to validation errors. The validation error will always take precedence to the custom error.
+
+<Canvas>
+  <Story name="Custom ">
+    {(args) => {
+      return (
+        <GridForm
+          fields={[
+            {
+              label: 'Who is the best at bending?',
+              name: 'custom-error',
+              size: 5,
+              type: 'text',
+              customError: 'NOT Flexo.',
+              validation: {
+                required: true,
+                pattern: {
+                  value: /Bender/,
+                  message: 'Just type Bender...',
+                },
+              },
+            },
+          ]}
+          onSubmit={async (values) => {
+            action('Form Submitted')(values);
+          }}
+          submit={{
+            contents: 'Submit Me!?',
+            size: 12,
+          }}
+          showRequired
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Hidden Input
+
+Hidden inputs can be used to include data that users can't see or modify with the submission. For this implementation you can set the `defaultValue` in the object and it will be submitted with the regular form data.
+
+<Canvas>
+  <Story name="Hidden Input">
+    {(args) => (
+      <GridForm
+        fields={[
+          {
+            type: 'hidden',
+            name: 'secret-stuff',
+            defaultValue: "I'm invisible!",
+          },
+          {
+            label: "There's more than one field here!",
+            name: 'custom-input',
+            type: 'email',
+          },
+        ]}
+        onSubmit={async (values) => {
+          action('Form Submitted')(values);
+        }}
+        submit={{
+          contents: 'Submit',
+        }}
+      />
+    )}
   </Story>
 </Canvas>
