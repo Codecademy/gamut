@@ -4,9 +4,7 @@ import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import { useIsomorphicLayoutEffect } from 'react-use';
 
-import { AppWrapper } from '../AppWrapper';
-
-const PortalWrapper = AppWrapper.withComponent(ColorMode);
+const PortalWrapper = ColorMode;
 
 export const BodyPortal: React.FC = ({ children }) => {
   const [ready, setReady] = useState(false);
@@ -22,7 +20,16 @@ export const BodyPortal: React.FC = ({ children }) => {
   if (!ready) return null;
 
   return ReactDOM.createPortal(
-    <PortalWrapper mode={active} alwaysSetVariables>
+    <PortalWrapper
+      position="absolute"
+      top={0}
+      left={0}
+      right={0}
+      bottom={1}
+      mode={active}
+      zIndex={1}
+      alwaysSetVariables
+    >
       {children}
     </PortalWrapper>,
     document.body

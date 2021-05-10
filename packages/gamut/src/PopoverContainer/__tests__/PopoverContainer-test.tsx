@@ -3,44 +3,58 @@ import { matchers } from '@emotion/jest';
 import { fireEvent, screen } from '@testing-library/react';
 import React from 'react';
 
-import { PopoverContainer, PopoverProps, TargetRef } from '..';
+import { PopoverContainer } from '..';
+import { PopoverContainerProps, TargetRef } from '../types';
 
 expect.extend(matchers);
+
+const defaultBounding = {
+  bottom: 350,
+  right: 350,
+  left: 150,
+  top: 150,
+  height: 200,
+  width: 200,
+  x: 0,
+  y: 0,
+  toJSON: () => {},
+};
+
+const defaultTarget = {
+  contains: () => false,
+  offsetHeight: 200,
+  offsetWidth: 200,
+  offsetLeft: 150,
+  offsetTop: 150,
+};
 
 const mockTargetRef = (
   target?: Partial<TargetRef>,
   viewport?: Partial<ReturnType<TargetRef['getBoundingClientRect']>>
-) => ({
-  current: {
-    contains: () => false,
-    offsetHeight: 40,
-    offsetWidth: 200,
-    offsetLeft: 200,
-    offsetTop: 100,
-    ...target,
-    getBoundingClientRect: () => {
-      return {
-        bottom: 230,
-        right: 400,
-        left: 400,
-        top: 230,
-        height: 40,
-        width: 200,
-        x: 57,
-        y: 260,
-        toJSON: () => {},
+) =>
+  ({
+    current: {
+      ...defaultTarget,
+      offsetParent: {
+        ...defaultTarget,
+        offsetWidth: 500,
+        offsetHeight: 500,
+      },
+      getBoundingClientRect: () => ({
+        ...defaultBounding,
         ...viewport,
-      };
+      }),
+      ...target,
     },
-  },
-});
+  } as PopoverContainerProps['targetRef']);
 
 const defaultProps = {
   isOpen: true,
+  inline: true,
   targetRef: mockTargetRef(),
-};
+} as PopoverContainerProps;
 
-const RenderPopover = (props: PopoverProps) => {
+const RenderPopover = (props: PopoverContainerProps) => {
   return (
     <>
       <PopoverContainer {...props}>
@@ -132,14 +146,18 @@ describe('Popover', () => {
     describe('render context', () => {
       describe('portal - viewport', () => {
         it.each([
-          ['top-right', { left: '600px', top: '210px' }],
-          ['top-left', { left: '400px', top: '210px' }],
-          ['bottom-right', { left: '600px', top: '290px' }],
-          ['bottom-left', { left: '400px', top: '290px' }],
+          ['top-right', { left: '370px', bottom: '370px' }],
+          ['top-left', { right: '370px', bottom: '370px' }],
+          ['bottom-right', { left: '370px', top: '370px' }],
+          ['bottom-left', { right: '370px', top: '370px' }],
+          ['top', { left: '250px', bottom: '370px' }],
+          ['left', { right: '370px', top: '250px' }],
+          ['bottom', { left: '250px', top: '370px' }],
+          ['right', { left: '370px', top: '250px' }],
         ] as const)(
           '%s',
           (
-            alignment: PopoverProps['alignment'],
+            alignment: PopoverContainerProps['alignment'],
             expected: Record<string, unknown>
           ) => {
             renderView({ alignment });
@@ -151,14 +169,18 @@ describe('Popover', () => {
       });
       describe('inline - parent', () => {
         it.each([
-          ['top-right', { left: '400px', top: '80px' }],
-          ['top-left', { left: '200px', top: '80px' }],
-          ['bottom-right', { left: '400px', top: '160px' }],
-          ['bottom-left', { left: '200px', top: '160px' }],
+          ['top-right', { left: '370px', bottom: '370px' }],
+          ['top-left', { right: '370px', bottom: '370px' }],
+          ['bottom-right', { left: '370px', top: '370px' }],
+          ['bottom-left', { right: '370px', top: '370px' }],
+          ['top', { left: '250px', bottom: '370px' }],
+          ['left', { right: '370px', top: '250px' }],
+          ['bottom', { left: '250px', top: '370px' }],
+          ['right', { left: '370px', top: '250px' }],
         ] as const)(
           '%s',
           (
-            alignment: PopoverProps['alignment'],
+            alignment: PopoverContainerProps['alignment'],
             expected: Record<string, unknown>
           ) => {
             renderView({ alignment, inline: true });
@@ -173,13 +195,17 @@ describe('Popover', () => {
     describe('edges', () => {
       describe('outside', () => {
         it.each([
-          ['top-right', 'translate(0%, -100%)'],
-          ['top-left', 'translate(-100%, -100%)'],
-          ['bottom-right', 'translate(0%, 0%)'],
-          ['bottom-left', 'translate(-100%, 0%)'],
+          ['top-right', 'translate(0, 0)'],
+          ['top-left', 'translate(0, 0)'],
+          ['bottom-right', 'translate(0, 0)'],
+          ['bottom-left', 'translate(0, 0)'],
+          ['top', 'translate(-50%, 0)'],
+          ['left', 'translate(0, -50%)'],
+          ['bottom', 'translate(-50%, 0)'],
+          ['right', 'translate(0, -50%)'],
         ] as const)(
           '%s',
-          (alignment: PopoverProps['alignment'], expected: string) => {
+          (alignment: PopoverContainerProps['alignment'], expected: string) => {
             renderView({ alignment });
             expect(
               screen.getByTestId('popover-content-container')
@@ -189,14 +215,18 @@ describe('Popover', () => {
       });
       describe('inside', () => {
         it.each([
-          ['top-right', 'translate(-100%, -100%)'],
-          ['top-left', 'translate(0%, -100%)'],
-          ['bottom-right', 'translate(-100%, 0%)'],
-          ['bottom-left', 'translate(0%, 0%)'],
+          ['top-right', 'translate(-100%, 0)'],
+          ['top-left', 'translate(100%, 0)'],
+          ['bottom-right', 'translate(-100%, 0)'],
+          ['bottom-left', 'translate(100%, 0)'],
+          ['top', 'translate(-50%, 0)'],
+          ['left', 'translate(0, -50%)'],
+          ['bottom', 'translate(-50%, 0)'],
+          ['right', 'translate(0, -50%)'],
         ] as const)(
           '%s',
-          (alignment: PopoverProps['alignment'], expected: string) => {
-            renderView({ alignment, inside: true });
+          (alignment: PopoverContainerProps['alignment'], expected: string) => {
+            renderView({ alignment, insideAxis: 'x' });
             expect(
               screen.getByTestId('popover-content-container')
             ).toHaveStyleRule('transform', expected);
@@ -206,10 +236,10 @@ describe('Popover', () => {
     });
     describe('offsets', () => {
       it.each([
-        [5, 10, { left: '605px', top: '220px' }],
-        [-15, 10, { left: '585px', top: '220px' }],
-        [605, -100, { left: '1205px', top: '330px' }],
-        [-25, -10, { left: '575px', top: '240px' }],
+        [5, 10, { left: '375px', bottom: '380px' }],
+        [-15, 10, { left: '355px', bottom: '380px' }],
+        [605, -100, { left: '975px', bottom: '270px' }],
+        [-25, -10, { left: '345px', bottom: '360px' }],
       ] as const)(
         'X Offset %i - Y Offset %i',
         (x: number, y: number, expected: Record<string, unknown>) => {

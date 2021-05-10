@@ -43,14 +43,13 @@ export const PopoverContainer: React.FC<PopoverContainerProps> = ({
   const { width: winW, height: winH } = useWindowSize();
   const { x: winX, y: winY } = useWindowScroll();
   const [containers, setContainers] = useState<ContainerState>();
-
-  const positioningContext = inline ? containers?.parent : containers?.viewport;
+  const parent = containers?.parent;
 
   const popoverPosition = useMemo(() => {
-    if (positioningContext !== undefined) {
+    if (parent !== undefined) {
       return getPosition({
         alignment,
-        container: positioningContext,
+        container: parent,
         insideAxis,
         offset,
         x,
@@ -58,13 +57,13 @@ export const PopoverContainer: React.FC<PopoverContainerProps> = ({
       });
     }
     return {};
-  }, [positioningContext, x, y, offset, alignment, insideAxis]);
+  }, [parent, x, y, offset, alignment, insideAxis]);
 
   useEffect(() => {
     const target = targetRef?.current;
     if (!target) return;
-    setContainers(getContainers(target));
-  }, [targetRef, winW, winH, winX, winY]);
+    setContainers(getContainers(target, inline, { x: winX, y: winY }));
+  }, [targetRef, inline, winW, winH, winX, winY]);
 
   useLayoutEffect(() => {
     containers?.viewport &&

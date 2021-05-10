@@ -22,8 +22,17 @@ export interface TargetRef
     | 'offsetParent'
   > {}
 
+export interface PositionContext {
+  width: number;
+  height: number;
+  top: number;
+  left: number;
+  right: number;
+  bottom: number;
+}
+
 export interface ContainerState {
-  parent: DOMRect;
+  parent: PositionContext;
   viewport: DOMRect;
 }
 
@@ -51,7 +60,7 @@ export interface PopoverAlignment {
 }
 
 export interface PopoverPositionConfig extends PopoverAlignment {
-  container: DOMRect;
+  container: PositionContext;
   alignment: Alignments;
 }
 

@@ -1,4 +1,4 @@
-import { Box, FlexBox, PopoverContainer, Text } from '@codecademy/gamut';
+import { FlexBox, PopoverContainer, Text } from '@codecademy/gamut';
 import { Background } from '@codecademy/gamut-styles';
 import React, { useRef } from 'react';
 
@@ -16,14 +16,8 @@ export const SingleDirection = () => {
   const secondRef = useRef<HTMLDivElement>(null);
 
   return (
-    <FlexBox
-      minHeight="640px"
-      width={1}
-      position="relative"
-      justifyContent="space-around"
-      alignItems="center"
-    >
-      <Box position="relative">
+    <FlexBox minHeight="640px" width={1} position="relative">
+      <FlexBox alignItems="center" justifyContent="center" flex={1}>
         {[...SINGLE_DIRECTIONS, ...MULTI_DIRECTIONS].map((alignment, i) => {
           return (
             <PopoverContainer
@@ -31,7 +25,6 @@ export const SingleDirection = () => {
               isOpen
               targetRef={targetRef}
               alignment={alignment}
-              inline
               offset={20}
             >
               <Background
@@ -60,8 +53,8 @@ export const SingleDirection = () => {
         >
           Transform Axis
         </FlexBox>
-      </Box>
-      <Box position="relative">
+      </FlexBox>
+      <FlexBox alignItems="center" justifyContent="center" flex={1}>
         {(['x', 'y'] as const).map((axis) => {
           return MULTI_DIRECTIONS.map((alignment, i) => {
             return (
@@ -103,7 +96,7 @@ export const SingleDirection = () => {
         >
           Transform Axis
         </FlexBox>
-      </Box>
+      </FlexBox>
     </FlexBox>
   );
 };

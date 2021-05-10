@@ -1,3 +1,8 @@
+import {
+  CSSObject,
+  percentageOrAbsolute as percent,
+} from '@codecademy/variance';
+
 import { PopoverPositionConfig, TargetRef } from './types';
 
 export const isInView = ({ top, left, bottom, right }: DOMRect) => {
@@ -10,7 +15,7 @@ export const isInView = ({ top, left, bottom, right }: DOMRect) => {
   );
 };
 
-export const DIRECTIONS = {
+export const ALIGN = {
   top: 'bottom',
   right: 'left',
   bottom: 'top',
@@ -46,53 +51,64 @@ export const getPosition = ({
   y = 0,
   insideAxis,
 }: PopoverPositionConfig) => {
-  const transformDirection = insideAxis ?? 'none';
+  const { top, left, bottom, right, height, width } = container;
+  const xOffset = width + offset + x;
+  const yOffset = height + offset + y;
 
-  switch (alignment) {
-    case 'left':
-    case 'right': {
-      const prop = DIRECTIONS[alignment];
-      return {
-        transform: `translate(0%,  -50%)`,
-        [prop]: container[alignment] + container.width + offset + x,
-        top: container.top + container.height / 2,
-      };
+  const styles = {} as CSSObject;
+
+  const alignments = alignment.split('-') as
+    | ['top' | 'bottom' | 'left' | 'right']
+    | ['top' | 'bottom', 'left' | 'right'];
+
+  if (alignments.length === 1) {
+    switch (alignments[0]) {
+      case 'left':
+      case 'right':
+        styles.transform = 'translate(0, -50%)';
+        styles.top = top + height / 2;
+        break;
+      case 'top':
+      case 'bottom':
+        styles.transform = 'translate(-50%, 0)';
+        styles.left = left + width / 2;
     }
-    case 'top':
-    case 'bottom': {
-      const prop = DIRECTIONS[alignment];
-      return {
-        transform: `translate(-50%, 0%)`,
-        [prop]: container[alignment] + container.height + offset + x,
-        left: container.left + container.width / 2,
-      };
-    }
-    default:
-      const [yAlign, xAlign] = alignment.split('-') as [
-        'top' | 'bottom',
-        'left' | 'right'
-      ];
-      const transform = AXIS[transformDirection];
-
-      const {
-        [DIRECTIONS[yAlign]]: yPos,
-        [DIRECTIONS[xAlign]]: xPos,
-      } = container;
-
-      return {
-        transform: `translate(${transform[xAlign] * 100}%, ${
-          transform[yAlign] * 100
-        }%)`,
-        [DIRECTIONS[yAlign]]: yPos + container.height + offset + y,
-        [DIRECTIONS[xAlign]]: xPos + container.width + offset + x,
-      };
+  } else {
+    const coef = AXIS[insideAxis ?? 'none'];
+    const [y, x] = alignments;
+    styles.transform = `translate(${percent(coef[x])}, ${percent(coef[y])})`;
   }
+
+  alignments.forEach((alignment) => {
+    if (alignment === 'left') styles.right = right + xOffset;
+    if (alignment === 'right') styles.left = left + xOffset;
+    if (alignment === 'top') styles.bottom = bottom + yOffset;
+    if (alignment === 'bottom') styles.top = top + yOffset;
+  });
+  return styles;
 };
 
-export const getContainers = (target: TargetRef) => {
+export const getContainers = (
+  target: TargetRef,
+  inline = false,
+  scroll: { x: number; y: number }
+) => {
   const boundingClient = target.getBoundingClientRect();
-  const parentClient =
-    target.offsetParent?.getBoundingClientRect() ?? boundingClient;
+
+  if (!inline) {
+    const { width, top, height, left } = boundingClient;
+    return {
+      viewport: boundingClient,
+      parent: {
+        width,
+        height,
+        top: top + scroll.y,
+        left,
+        right: document.body.offsetWidth - width - left,
+        bottom: -1 * (top + height + scroll.y),
+      },
+    };
+  }
 
   const {
     offsetHeight: height,
@@ -101,14 +117,16 @@ export const getContainers = (target: TargetRef) => {
     offsetTop: top,
   } = target;
 
+  const offsetParent = target?.offsetParent as HTMLElement;
+
   return {
     parent: {
       width,
       height,
       left,
-      right: parentClient.width - left - width,
+      right: offsetParent?.offsetWidth - left - width,
       top,
-      bottom: parentClient.height - top - height,
+      bottom: offsetParent?.offsetHeight - top - height,
     } as DOMRect,
     viewport: boundingClient,
   };
