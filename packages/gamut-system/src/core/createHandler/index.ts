@@ -42,10 +42,9 @@ export const createHandler = <
 
   // Use the requested template generator to create the style template function.
   // This is the *inner* function that takes in a single prop description and produces CSS.
-  const styleTemplate: StyleTemplate<ThematicProps<
-    Theme,
-    Config
-  >> = STYLE_TEMPLATE_GENERATORS[type]({
+  const styleTemplate: StyleTemplate<
+    ThematicProps<Theme, Config>
+  > = STYLE_TEMPLATE_GENERATORS[type]({
     ...config,
     propName,
     transformValue,
