@@ -14,6 +14,7 @@ import {
   stubRadioGroupField,
   stubSelectField,
   stubSelectOptions,
+  stubSweetContainerField,
   stubTextareaField,
   stubTextField,
 } from './stubs';
@@ -324,6 +325,7 @@ describe('GridForm', () => {
     expect(form.find('textarea#id-2-the-ego').length).toBe(1);
     expect(form.find('input#fire-file').length).toBe(1);
   });
+
   it('submits hidden input value', async () => {
     const api = createPromise<{}>();
     const onSubmit = async (values: {}) => api.resolve(values);
@@ -349,11 +351,51 @@ describe('GridForm', () => {
       [stubHiddenField.name]: stubHiddenField.defaultValue,
     });
   });
+
   it('does not create columns for hidden inputs', () => {
     const wrapped = mount(
       <ThemeProvider theme={theme}>
         <GridForm
           fields={[stubHiddenField]}
+          onSubmit={jest.fn()}
+          submit={{ type: 'fill', contents: <>Submit</>, size: 6 }}
+        />
+      </ThemeProvider>
+    );
+    expect(wrapped.find('Column').length).toBe(1);
+  });
+
+  it('submits sweet container input value', async () => {
+    const api = createPromise<{}>();
+    const onSubmit = async (values: {}) => api.resolve(values);
+
+    const wrapped = mount(
+      <ThemeProvider theme={theme}>
+        <GridForm
+          fields={[stubSweetContainerField]}
+          onSubmit={onSubmit}
+          submit={{ type: 'fill', contents: <>Submit</>, size: 6 }}
+        />
+      </ThemeProvider>
+    );
+
+    await act(async () => {
+      wrapped.find('form').simulate('submit');
+      await api.innerPromise;
+    });
+
+    const result = await api.innerPromise;
+
+    expect(result).toEqual({
+      [stubSweetContainerField.name]: false,
+    });
+  });
+
+  it('does not create columns for sweet container inputs', () => {
+    const wrapped = mount(
+      <ThemeProvider theme={theme}>
+        <GridForm
+          fields={[stubSweetContainerField]}
           onSubmit={jest.fn()}
           submit={{ type: 'fill', contents: <>Submit</>, size: 6 }}
         />
