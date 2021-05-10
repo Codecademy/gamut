@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [32.15.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@32.15.1...@codecademy/gamut@32.15.2) (2021-05-10)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [32.15.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@32.15.0...@codecademy/gamut@32.15.1) (2021-05-07)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [32.15.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@32.14.0...@codecademy/gamut@32.15.0) (2021-05-06)
+
+
+### Features
+
+* **Alert/Banner:** Adds ColorModes for backwards compatibility and uses most recent props [GM-224] ([d2042ad](https://github.com/Codecademy/client-modules/commit/d2042ad8c04e27e26ccfc5bc67422498f7bb0cbd))
+
+
+
 ## [32.14.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@32.13.0...@codecademy/gamut@32.14.0) (2021-05-06)
 
 
