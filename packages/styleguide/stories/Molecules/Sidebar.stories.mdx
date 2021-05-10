@@ -10,54 +10,13 @@ import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/blocks';
 
 <Meta
   title={title}
-  component={SidebarOverlay}
+  component={SidebarBox}
   parameters={{
-    subtitle: 'A sidebar. It is usually an overlay but also can take up space!',
-    status: 'volatile',
+    subtitle: 'A sidebar box documentation documentation documentation',
     source: 'gamut',
+    status: 'updating',
   }}
 />
-
-<Canvas>
-  <Story name="SidebarOverlay">
-    {(args) => (
-      <Box height="20rem">
-        <SidebarOverlay
-          backgroundColor="navy"
-          openFrom="left"
-          button={
-            <TextButton height="5rem" width="5rem">
-              chiller time
-            </TextButton>
-          }
-          {...args}
-        >
-          <Box margin={16}>
-            Baharroth - Baharroth, "the Cry of the Wind," is the Winged Phoenix,
-            the oldest of the Swooping Hawks and the first Exarch of those
-            winged Aspect Warriors. Baharroth is the founder of the Eldar
-            Warrior Path that is represented today by the Swooping Hawks Aspect
-            Shrines. Baharroth is also known for his speed and is said to be the
-            fastest of all the Eldar who have ever lived, a formidable claim
-            that would make him a deadly opponent indeed. Though he moves with
-            the subtlety and grace of a zephyr, he attacks with the force of a
-            hurricane.
-          </Box>
-        </SidebarOverlay>
-        <FlexBox>
-          An Avatar of Khaine is the term normally applied to the physical form
-          that the spirit of an Eldar God has managed to possess and animate.
-          This term is most often applied to the physical body possessed by a
-          fragment of the spirit of the Eldar God of War Kaela Mensha Khaine,
-          though the term can actually apply to any divine entity of the Warp
-          that has found some way to take on a corporeal form within realspace.
-        </FlexBox>
-      </Box>
-    )}
-  </Story>
-</Canvas>
-
-<Props story="SidebarOverlay" />
 
 ## I take up space. + I have a tab button. Deal with it.
 
@@ -66,13 +25,8 @@ Sometimes Sidebars are just components that need to take up space. We get it. Th
 <Canvas>
   <Story name="SidebarBox">
     {(args) => (
-      <FlexBox
-        height="50rem"
-        width="100%"
-        padding="1rem"
-        backgroundColor="paleBlue"
-      >
-        <Box backgroundColor="palePink" textColor="navy" padding="1rem">
+      <FlexBox height="50rem" width="100%" padding="1rem" bg="blue">
+        <Box bg="palePink" textColor="navy" padding="1rem">
           An Avatar of Khaine is the term normally applied to the physical form
           that the spirit of an Eldar God has managed to possess and animate.
           This term is most often applied to the physical body possessed by a
@@ -80,7 +34,7 @@ Sometimes Sidebars are just components that need to take up space. We get it. Th
           though the term can actually apply to any divine entity of the Warp
           that has found some way to take on a corporeal form within realspace.
         </Box>
-        <SidebarBox backgroundColor="navy" textColor="white" expanded {...args}>
+        <SidebarBox bg="navy" textColor="white" expanded {...args}>
           <Box margin={16}>
             Baharroth - Baharroth, "the Cry of the Wind," is the Winged Phoenix,
             the oldest of the Swooping Hawks and the first Exarch of those
@@ -93,7 +47,7 @@ Sometimes Sidebars are just components that need to take up space. We get it. Th
             hurricane.
           </Box>
         </SidebarBox>
-        <Box backgroundColor="palePink" textColor="navy" padding="1rem">
+        <Box bg="palePink" textColor="navy" padding="1rem">
           An Avatar of Khaine is the term normally applied to the physical form
           that the spirit of an Eldar God has managed to possess and animate.
           This term is most often applied to the physical body possessed by a
@@ -107,3 +61,5 @@ Sometimes Sidebars are just components that need to take up space. We get it. Th
 </Canvas>
 
 <Props exclude={['button']} story="SidebarBox" />'
+
+<Props story="SidebarBox" />

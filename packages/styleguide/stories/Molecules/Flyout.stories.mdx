@@ -12,27 +12,25 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
   component={SidebarOverlay}
   parameters={{
     subtitle:
-      'A component that sits on top of the page without taking up space ',
-    status: 'volatile',
+      'A variant of our `Select` component with a styled dropdown menu.',
     source: 'gamut',
+    status: 'updating',
   }}
 />
 
 <Canvas>
-  <Story name="Flyover">
+  <Story name="Flyout">
     {(args) => (
       <Box height="20rem">
         <SidebarOverlay
-          backgroundColor="navy"
           openFrom="left"
           button={
             <TextButton height="5rem" width="5rem">
               chiller time
             </TextButton>
           }
-          {...args}
         >
-          <Box margin={16}>
+          <Box bg="navy" textColor="white" margin={16}>
             Baharroth - Baharroth, "the Cry of the Wind," is the Winged Phoenix,
             the oldest of the Swooping Hawks and the first Exarch of those
             winged Aspect Warriors. Baharroth is the founder of the Eldar
