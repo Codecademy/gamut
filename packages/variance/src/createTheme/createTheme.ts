@@ -100,6 +100,7 @@ class ThemeBuilder<
         colors: KeyAsVariable<Config[keyof Config], 'colors'> & T['colors'];
         modes: Config;
         mode: keyof Config;
+        getColorValue: (color: keyof T['colors']) => string;
       }
     >,
     V & Record<'colorMode', CSSVariables<Config[InitialMode], 'colors'>>,
@@ -115,6 +116,8 @@ class ThemeBuilder<
       colors: tokens,
       modes,
       mode: initialMode,
+      getColorValue: (color: keyof T['colors']) =>
+        this.#staticTokens?.colors?.[color],
     });
 
     this.#variables = merge({}, this.#variables, { colorMode: variables });
@@ -163,13 +166,10 @@ class ThemeBuilder<
   build(): {
     theme: T;
     variables: V;
-    getColorValue: (color: keyof T['colors']) => string;
   } {
     return {
       theme: this.#theme,
       variables: this.#variables,
-      getColorValue: (color: keyof T['colors']) =>
-        this.#staticTokens?.colors?.[color],
     };
   }
 }

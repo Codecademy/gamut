@@ -35,13 +35,18 @@ export const providerProps = variance.compose(
   space
 );
 
-export function useColorMode(): [ColorModes, ColorModeShape, ColorModeConfig] {
-  const { mode, modes } = useTheme() || {};
-  return [mode, modes?.[mode], modes];
+export function useColorModes(): [
+  ColorModes,
+  ColorModeShape,
+  ColorModeConfig,
+  (color: Colors) => string
+] {
+  const { mode, modes, getColorValue } = useTheme() || {};
+  return [mode, modes?.[mode], modes, getColorValue];
 }
 
 export function useCurrentMode(mode?: ColorModes) {
-  const [activeMode] = useColorMode();
+  const [activeMode] = useColorModes();
   return mode ?? activeMode;
 }
 

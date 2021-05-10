@@ -7,9 +7,8 @@ import {
   ColorModes,
   ColorModeShape,
   Colors,
-  useColorMode,
+  useColorModes,
 } from './ColorMode';
-import { getColorValue } from './theme';
 
 export interface BackgroundProps
   extends Omit<
@@ -28,7 +27,7 @@ const isColorAlias = (
 
 export const Background = forwardRef<HTMLDivElement, BackgroundProps>(
   ({ bg, ...rest }, ref) => {
-    const [active, activeColors, modes] = useColorMode();
+    const [active, activeColors, modes, getColorValue] = useColorModes();
 
     /** If a color alias was used then look up the true color key from the active mode */
     const trueColor = useMemo(() => {
@@ -42,7 +41,7 @@ export const Background = forwardRef<HTMLDivElement, BackgroundProps>(
       (foreground: Colors) => {
         return getContrast(getColorValue(foreground), getColorValue(trueColor));
       },
-      [trueColor]
+      [trueColor, getColorValue]
     );
 
     /**

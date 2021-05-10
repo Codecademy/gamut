@@ -91,7 +91,7 @@ describe('createTheme', () => {
     });
 
     it('returns value checker for colors', () => {
-      const { theme, getColorValue } = builder
+      const { theme } = builder
         .addColors({ black: '#000000', white: '#FFFFFF' })
         .addColorModes('light', {
           light: {
@@ -103,8 +103,8 @@ describe('createTheme', () => {
         })
         .build();
 
-      expect(getColorValue('white')).toEqual('#FFFFFF');
-      expect(getColorValue(theme.modes.light.primary)).toEqual('#000000');
+      expect(theme.getColorValue('white')).toEqual('#FFFFFF');
+      expect(theme.getColorValue(theme.modes.light.primary)).toEqual('#000000');
     });
   });
 });
