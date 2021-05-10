@@ -13,14 +13,14 @@ import {
 } from './shared';
 import { SidebarCloneButton } from './SidebarCloneButton';
 
-export type SidebarOverlayProps = SidebarBaseProps & {
+export type FlyoutProps = SidebarBaseProps & {
   /**
    * chooses color of drop shadow
    */
   button: React.ReactNode;
 };
 
-const sidebarOverlayOpenFromProps = variant({
+const FlyoutOpenFromProps = variant({
   default: 'left',
   prop: 'openFrom',
   variants: {
@@ -41,10 +41,10 @@ const Drawer = styled(DrawerBase)<SidebarWrapperProps>`
   top: 0;
   z-index: 2;
   width: ${(props) => `${props.openWidth}rem`};
-  ${sidebarOverlayOpenFromProps};
+  ${FlyoutOpenFromProps};
 `;
 
-export const SidebarOverlay: React.FC<SidebarOverlayProps> = ({
+export const Flyout: React.FC<FlyoutProps> = ({
   children,
   button,
   expanded = false,

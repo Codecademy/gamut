@@ -1,15 +1,10 @@
-import {
-  Box,
-  FlexBox,
-  SidebarOverlay,
-  TextButton,
-} from '@codecademy/gamut/src';
+import { Box, FlexBox, Flyout, TextButton } from '@codecademy/gamut/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 
 <Meta
   title={title}
-  component={SidebarOverlay}
+  component={Flyout}
   parameters={{
     subtitle:
       'A variant of our `Select` component with a styled dropdown menu.',
@@ -22,7 +17,7 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
   <Story name="Flyout">
     {(args) => (
       <Box height="20rem">
-        <SidebarOverlay
+        <Flyout
           openFrom="left"
           button={
             <TextButton height="5rem" width="5rem">
@@ -41,7 +36,7 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
             the subtlety and grace of a zephyr, he attacks with the force of a
             hurricane.
           </Box>
-        </SidebarOverlay>
+        </Flyout>
         <FlexBox>
           An Avatar of Khaine is the term normally applied to the physical form
           that the spirit of an Eldar God has managed to possess and animate.

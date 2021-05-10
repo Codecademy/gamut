@@ -5,9 +5,9 @@ import React, { useState } from 'react';
 import { Box, FlexBox } from '../Box';
 import {
   DrawerBase,
-  SidebarBaseProps,
-  SidebarComponentSideProps,
-  SidebarWidthProps,
+  FlyoutBaseProps,
+  FlyoutComponentSideProps,
+  FlyoutWidthProps,
   transitionDuration,
 } from './shared';
 import { SidebarTabButton } from './SidebarTabButton';
@@ -27,16 +27,16 @@ const sidebarBoxOpenFromProps = variant({
   },
 });
 
-const SidebarWrapper = styled(FlexBox)<SidebarComponentSideProps>`
+const SidebarWrapper = styled(FlexBox)<FlyoutComponentSideProps>`
   ${sidebarBoxOpenFromProps};
 `;
 
-const SidebarContent = styled(DrawerBase)<SidebarWidthProps>`
+const SidebarContent = styled(DrawerBase)<FlyoutWidthProps>`
   overflow: hidden;
   width: ${(props) => `${props.openWidth}rem`};
 `;
 
-export const SidebarBox: React.FC<SidebarBaseProps> = ({
+export const SidebarBox: React.FC<FlyoutBaseProps> = ({
   children,
   expanded = false,
   openFrom = 'left',

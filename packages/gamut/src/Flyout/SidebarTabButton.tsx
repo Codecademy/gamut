@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 import React from 'react';
 
 import { ButtonOutline, ButtonOutlineProps } from '../Button/ButtonOutline';
-import { SidebarComponentSideProps } from './shared';
+import { FlyoutComponentSideProps } from './shared';
 
 export type SidebarTabButtonProps = ButtonOutlineProps &
   SidebarComponentSideProps & {
