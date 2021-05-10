@@ -1,0 +1,53 @@
+import { FillButton } from '@codecademy/gamut/src';
+import { NumberBlocks } from '@codecademy/gamut-illustrations/src';
+import { EmptySection } from '@codecademy/gamut-labs/src';
+import title from '@codecademy/macros/lib/title.macro';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+
+import { PropsTable } from '~styleguide/blocks';
+
+<Meta
+  title={title}
+  component={EmptySection}
+  parameters={{
+    source: 'gamut-labs',
+    subtitle: `A section that represents an empty state with an action for the user to take.`,
+    status: 'updating',
+  }}
+  args={{
+    innerBGColor: 'white',
+    bodyText: 'Body text',
+    headingText: 'Heading text',
+    illustration: NumberBlocks,
+  }}
+/>
+
+The `children` prop should take a `*Button` or a `*Button` that triggers another component to appear (like a dropdown, for example.)
+
+The "innerBGColor" should match the background color of the page or section it's in.
+
+## Illustration on the right
+
+<Canvas>
+  <Story name="Illustration on the right">
+    {(args) => (
+      <EmptySection {...args}>
+        <FillButton>Do something</FillButton>
+      </EmptySection>
+    )}
+  </Story>
+</Canvas>
+
+## Illustration on the left
+
+<Canvas>
+  <Story name="Illustration on the left">
+    {(args) => (
+      <EmptySection {...args} illustrationPosition="left">
+        <FillButton>Do something</FillButton>
+      </EmptySection>
+    )}
+  </Story>
+</Canvas>
+
+<PropsTable story="Illustration on the left" />
