@@ -1,10 +1,13 @@
-import { ColorMode } from '@codecademy/gamut-styles';
+import { ColorMode, system } from '@codecademy/gamut-styles';
 import { useTheme } from '@emotion/react';
+import styled from '@emotion/styled';
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import { useIsomorphicLayoutEffect } from 'react-use';
 
-const PortalWrapper = ColorMode;
+const PortalWrapper = styled
+  .div(system.css({ position: 'absolute', zIndex: 1, inset: 0, bottom: 1 }))
+  .withComponent(ColorMode);
 
 export const BodyPortal: React.FC = ({ children }) => {
   const [ready, setReady] = useState(false);
@@ -20,16 +23,7 @@ export const BodyPortal: React.FC = ({ children }) => {
   if (!ready) return null;
 
   return ReactDOM.createPortal(
-    <PortalWrapper
-      position="absolute"
-      top={0}
-      left={0}
-      right={0}
-      bottom={1}
-      mode={active}
-      zIndex={1}
-      alwaysSetVariables
-    >
+    <PortalWrapper mode={active} alwaysSetVariables>
       {children}
     </PortalWrapper>,
     document.body
