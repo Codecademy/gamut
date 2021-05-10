@@ -5,6 +5,7 @@ export * from './CurriculumCard';
 export * from './Byline';
 export * from './EditorialImage';
 export * from './EditorialQuote';
+export * from './ErrorContents';
 export * from './Header/HeaderContainer';
 export * from './Header/HeaderTab';
 export * from './Loading';
