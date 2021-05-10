@@ -104,9 +104,7 @@ describe('createTheme', () => {
         .build();
 
       expect(getColorValue('white')).toEqual('#FFFFFF');
-      expect(getColorValue(theme.colorModes.modes.light.primary)).toEqual(
-        '#000000'
-      );
+      expect(getColorValue(theme.modes.light.primary)).toEqual('#000000');
     });
   });
 });

@@ -98,7 +98,8 @@ class ThemeBuilder<
       T,
       {
         colors: KeyAsVariable<Config[keyof Config], 'colors'> & T['colors'];
-        colorModes: { active: keyof Config; modes: Config };
+        modes: Config;
+        mode: keyof Config;
       }
     >,
     V & Record<'colorMode', CSSVariables<Config[InitialMode], 'colors'>>,
@@ -112,7 +113,8 @@ class ThemeBuilder<
 
     this.#theme = merge({}, this.#theme, {
       colors: tokens,
-      colorModes: { active: initialMode, modes },
+      modes,
+      mode: initialMode,
     });
 
     this.#variables = merge({}, this.#variables, { colorMode: variables });

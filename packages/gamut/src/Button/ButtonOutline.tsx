@@ -1,4 +1,4 @@
-import { system, theme, timing } from '@codecademy/gamut-styles';
+import { ColorModes, system, theme, timing } from '@codecademy/gamut-styles';
 import {
   CSSObject,
   serializeTokens,
@@ -66,7 +66,7 @@ export interface ButtonOutlineProps
   extends ButtonProps,
     StyleProps<typeof outlinePadding>,
     StyleProps<typeof buttonProps> {
-  mode?: Theme['colorModes']['active'];
+  mode?: ColorModes;
   as?: never;
 }
 
