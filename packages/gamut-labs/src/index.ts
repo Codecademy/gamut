@@ -14,6 +14,7 @@ export * from './ProLogoAlt';
 export * from './Quote';
 export * from './Testimonial';
 export * from './Coachmark';
+export * from './DropdownButton';
 export * from './HubCard';
 export * from './Popover';
 export * from './AppHeader';

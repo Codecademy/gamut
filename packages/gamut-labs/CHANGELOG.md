@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [15.8.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@15.7.1...@codecademy/gamut-labs@15.8.0) (2021-05-10)
+
+
+### Features
+
+* add new DropdownButton component and workspace icons ([9513181](https://github.com/Codecademy/client-modules/commit/9513181e25a36072e88945fe617996707f23c791))
+
+
+
+### [15.7.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@15.7.0...@codecademy/gamut-labs@15.7.1) (2021-05-07)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+## [15.7.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@15.6.1...@codecademy/gamut-labs@15.7.0) (2021-05-07)
+
+
+### Features
+
+* **ListSection:** Updating ListSection to have a ShowAll/ShowLess click handler prop ([1f1a492](https://github.com/Codecademy/client-modules/commit/1f1a492880410c01f245165bcb0a7475750939cd))
+
+
+
 ### [15.6.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@15.6.0...@codecademy/gamut-labs@15.6.1) (2021-05-06)
 
 **Note:** Version bump only for package @codecademy/gamut-labs
