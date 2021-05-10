@@ -3,6 +3,41 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.12.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@4.11.1...@codecademy/gamut-icons@4.12.0) (2021-05-10)
+
+
+### Features
+
+* add new DropdownButton component and workspace icons ([9513181](https://github.com/Codecademy/client-modules/commit/9513181e25a36072e88945fe617996707f23c791))
+
+
+
+### [4.11.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@4.11.0...@codecademy/gamut-icons@4.11.1) (2021-05-07)
+
+**Note:** Version bump only for package @codecademy/gamut-icons
+
+
+
+
+
+## [4.11.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@4.10.0...@codecademy/gamut-icons@4.11.0) (2021-05-06)
+
+
+### Features
+
+* **Icon:** Adds system props to all icons [GM-218] ([4354d91](https://github.com/Codecademy/client-modules/commit/4354d919a561af58975014c8ff1bfd2d5c72077a))
+
+
+
+## [4.10.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@4.9.1...@codecademy/gamut-icons@4.10.0) (2021-05-05)
+
+
+### Features
+
+* adding icons for Business repo ([007d386](https://github.com/Codecademy/client-modules/commit/007d386646be73788a9f134a42c800d981df188b))
+
+
+
 ### [4.9.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@4.9.0...@codecademy/gamut-icons@4.9.1) (2021-05-03)
 
 **Note:** Version bump only for package @codecademy/gamut-icons
