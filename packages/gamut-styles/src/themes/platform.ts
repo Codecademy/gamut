@@ -1,97 +1,12 @@
 import { createTheme } from '@codecademy/variance';
 
+import { platformPalette } from '../variables';
 import { coreTheme } from './core';
 
 export const platformTheme = createTheme(coreTheme)
-  .addColors({
-    navy: {
-      300: '#585C6D',
-      600: '#232940',
-      800: '#10162F',
-      900: '#0B0F21',
-    },
-    lightBeige: '#FFFBF8',
-    gold: '#8A7300',
-    orange: {
-      800: '#D14900',
-    },
-    pink: {
-      800: '#CA00D1',
-    },
-    teal: '#027E97',
-    paleRed: '#E85D7F',
-    purple: '#AEE938',
-    editor: {
-      gray: '#9e9e9e',
-      purple: '#b3ccff',
-      backgroundNavy: '#0b0f21',
-      indentActiveGray: '#393b41',
-      indentInactiveGray: '#494b51',
-      lineNumberGray: '#939598',
-    },
-  })
+  .addColors(platformPalette)
   .addColorModes('dark', {
-    light: {
-      danger: 'red',
-      success: 'green',
-      editor: {
-        attribute: 'lightGreen',
-        annotation: 'paleRed',
-        atom: 'pink',
-        basic: 'white',
-        comment: 'editor-gray',
-        constant: 'orange',
-        decoration: 'paleRed',
-        invalid: 'paleRed',
-        key: 'lightBlue',
-        keyword: 'editor-purple',
-        number: 'paleRed',
-        operator: 'paleRed',
-        predefined: 'white',
-        property: 'paleRed',
-        regexp: 'lightGreen',
-        string: 'yellow',
-        tag: 'paleRed',
-        text: 'orange',
-        value: 'yellow',
-        variable: 'lightGreen',
-        uiBackground: 'editor-backgroundNavy',
-        uiText: 'white',
-        uiIndentActive: 'editor-indentActiveGray',
-        uiIndentInactive: 'editor-indentInactiveGray',
-        uiLineNumber: 'editor-lineNumberGray',
-      },
-    },
-    dark: {
-      danger: 'paleRed',
-      success: 'lightGreen',
-      editor: {
-        attribute: 'lightGreen',
-        annotation: 'paleRed',
-        atom: 'pink',
-        basic: 'white',
-        comment: 'editor-gray',
-        constant: 'orange',
-        decoration: 'paleRed',
-        invalid: 'paleRed',
-        key: 'lightBlue',
-        keyword: 'editor-purple',
-        number: 'paleRed',
-        operator: 'paleRed',
-        predefined: 'white',
-        property: 'paleRed',
-        regexp: 'lightGreen',
-        string: 'yellow',
-        tag: 'paleRed',
-        text: 'orange',
-        value: 'yellow',
-        variable: 'lightGreen',
-        uiBackground: 'editor-backgroundNavy',
-        uiText: 'white',
-        uiIndentActive: 'editor-indentActiveGray',
-        uiIndentInactive: 'editor-indentInactiveGray',
-        uiLineNumber: 'editor-lineNumberGray',
-      },
-    },
+    light: {},
+    dark: {},
   })
   .build();
