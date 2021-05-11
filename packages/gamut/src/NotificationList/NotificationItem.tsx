@@ -9,7 +9,6 @@ import {
   Megaphone,
   New,
 } from '@codecademy/gamut-illustrations';
-import { colors } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React, { ReactElement } from 'react';
 
@@ -121,7 +120,6 @@ export const NotificationItem: React.FC<NotificationItemProps> = ({
   const dismissIcon: ReactElement = (
     <IconButton
       icon={MiniDeleteIcon}
-      color={colors.navy}
       onClick={handleDismiss}
       aria-label="dismiss notification"
       aria-describedby={notificationItemId}
