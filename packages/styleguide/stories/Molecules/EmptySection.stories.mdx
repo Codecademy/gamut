@@ -19,6 +19,7 @@ import { PropsTable } from '~styleguide/blocks';
     bodyText: 'Body text',
     headingText: 'Heading text',
     illustration: NumberBlocks,
+    children: <FillButton>Do Something</FillButton>,
   }}
 />
 
@@ -26,28 +27,50 @@ The `children` prop should take a `*Button` or a `*Button` that triggers another
 
 The "innerBGColor" should match the background color of the page or section it's in.
 
-## Illustration on the right
+## Illustration on the right (default)
 
 <Canvas>
   <Story name="Illustration on the right">
-    {(args) => (
-      <EmptySection {...args}>
-        <FillButton>Do something</FillButton>
-      </EmptySection>
-    )}
+    {(args) => <EmptySection {...args} />}
   </Story>
 </Canvas>
 
 ## Illustration on the left
 
 <Canvas>
-  <Story name="Illustration on the left">
-    {(args) => (
-      <EmptySection {...args} illustrationPosition="left">
-        <FillButton>Do something</FillButton>
-      </EmptySection>
-    )}
+  <Story
+    name="Illustration on the left"
+    args={{ illustrationPosition: 'left' }}
+  >
+    {(args) => <EmptySection {...args} />}
   </Story>
 </Canvas>
 
-<PropsTable story="Illustration on the left" />
+## Stretch Direction on the left (default)
+
+<Canvas>
+  <Story name="Stretch Direction on the left">
+    {(args) => <EmptySection {...args} />}
+  </Story>
+</Canvas>
+
+## Stretch Direction on the right
+
+<Canvas>
+  <Story
+    name="Stretch Direction on the right"
+    args={{ stretchDirection: 'right' }}
+  >
+    {(args) => <EmptySection {...args} />}
+  </Story>
+</Canvas>
+
+## Code Playground
+
+Edit attributes and see what’s possible to do with this component or get the exact output you want.
+
+<Canvas>
+  <Story name="Playground">{(args) => <EmptySection {...args} />}</Story>
+</Canvas>
+
+<PropsTable story="Playground" />
