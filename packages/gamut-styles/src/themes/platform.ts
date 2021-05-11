@@ -22,4 +22,5 @@ export const platformTheme = createTheme(coreTheme)
     paleRed: '#E85D7F',
     purple: '#AEE938',
   })
+  .addColorModes('dark', { light: {}, dark: {} })
   .build();

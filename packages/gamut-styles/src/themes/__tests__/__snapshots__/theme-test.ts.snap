@@ -555,7 +555,7 @@ monospace",
     "base": 1.5,
     "title": 1.1,
   },
-  "mode": "light",
+  "mode": "dark",
   "modes": Object {
     "dark": Object {
       "background": "navy",
