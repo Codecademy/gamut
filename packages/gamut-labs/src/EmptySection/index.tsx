@@ -1,6 +1,6 @@
 import { FlexBox, Pattern, Text } from '@codecademy/gamut';
 import { IllustrationProps } from '@codecademy/gamut-illustrations';
-import { pxRem, styledConfig, system, themed } from '@codecademy/gamut-styles';
+import { pxRem, styledConfig, system } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
 import { Theme } from '@emotion/react';
 import styled from '@emotion/styled';
