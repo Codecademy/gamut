@@ -7,13 +7,13 @@ import React, { useState } from 'react';
 import { IconButton } from '../Button/IconButton';
 import {
   DrawerBase,
-  SidebarBaseProps,
-  SidebarWrapperProps,
+  FlyoutBaseProps,
+  FlyoutWrapperProps,
   transitionDuration,
 } from './shared';
 import { SidebarCloneButton } from './SidebarCloneButton';
 
-export type FlyoutProps = SidebarBaseProps & {
+export type FlyoutProps = FlyoutBaseProps & {
   /**
    * chooses color of drop shadow
    */
@@ -35,7 +35,7 @@ const FlyoutOpenFromProps = variant({
   },
 });
 
-const Drawer = styled(DrawerBase)<SidebarWrapperProps>`
+const Drawer = styled(DrawerBase)<FlyoutWrapperProps>`
   height: 100vh;
   position: fixed;
   top: 0;
