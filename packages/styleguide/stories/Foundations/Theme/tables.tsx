@@ -1,6 +1,11 @@
 /* eslint-disable local-rules/gamut-import-paths */
 import { Box } from '@codecademy/gamut/src';
-import { swatches, theme, trueColors } from '@codecademy/gamut-styles/src';
+import {
+  coreSwatches,
+  platformSwatches,
+  theme,
+  trueColors,
+} from '@codecademy/gamut-styles/src';
 import React from 'react';
 
 import { Code, ColorScale } from '~styleguide/blocks';
@@ -96,7 +101,33 @@ export const color = {
 };
 
 export const swatch = {
-  rows: Object.entries(swatches).map(([id, value]) => ({
+  rows: Object.entries(coreSwatches).map(([id, value]) => ({
+    id,
+    hexes: value,
+  })),
+  columns: [
+    PROP_COLUMN,
+    {
+      ...PATH_COLUMN,
+      render: ({ id, hexes }: any) => (
+        <Code>
+          theme.colors[`{id}-{Object.keys(hexes)[0]}`]
+        </Code>
+      ),
+    },
+    {
+      key: 'swatch',
+      name: 'Swatch',
+      size: 'fill',
+      render: ({ hexes }: { hexes: Record<string, string> }) => (
+        <ColorScale colors={hexes} />
+      ),
+    },
+  ],
+};
+
+export const platformSwatch = {
+  rows: Object.entries(platformSwatches).map(([id, value]) => ({
     id,
     hexes: value,
   })),
@@ -272,7 +303,7 @@ export const boxShadow = {
           width="1.5rem"
           height="1.5rem"
           border={1}
-          borderColor="gray-400"
+          borderColor="gray-600"
           mb={32}
         />
       ),

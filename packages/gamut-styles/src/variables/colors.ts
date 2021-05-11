@@ -8,7 +8,7 @@ export const shadows = {
   whiteShadow: 'rgba(255, 255, 255, 0.95)',
 } as const;
 
-const coreSwatches = {
+export const coreSwatches = {
   beige: {
     '100': '#FFF0E5',
   },
@@ -83,7 +83,7 @@ export const corePalette = {
   ...shadows,
 } as const;
 
-const platformSwatches = {
+export const platformSwatches = {
   navy: {
     '300': '#585C6D',
     '600': '#232940',
