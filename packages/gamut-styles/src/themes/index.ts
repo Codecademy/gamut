@@ -1,2 +1,2 @@
-export { coreTheme } from './core';
-export { platformTheme } from './platform';
+export * from './core';
+export * from './platform';

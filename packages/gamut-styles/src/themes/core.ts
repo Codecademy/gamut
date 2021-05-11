@@ -65,3 +65,7 @@ export const coreTheme = createTheme({
   }))
   .createScaleVariables('elements')
   .build();
+
+export type CoreThemeShape = typeof coreTheme;
+
+export interface CoreTheme extends CoreThemeShape {}

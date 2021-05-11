@@ -10,3 +10,7 @@ export const platformTheme = createTheme(coreTheme)
     dark: {},
   })
   .build();
+
+export type PlatformThemeShape = typeof platformTheme;
+
+export interface PlatformTheme extends PlatformThemeShape {}
