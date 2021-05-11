@@ -1,4 +1,4 @@
-import { theme } from '../../theme';
+import { theme } from '../../themes';
 import { spacing } from '../../variables';
 import { themed } from '../themed';
 

@@ -26,7 +26,7 @@ const PATH_COLUMN = {
 };
 
 export const lightMode = {
-  rows: Object.entries(theme.colorModes.modes.light).map(([id, value]) => ({
+  rows: Object.entries(theme.modes.light).map(([id, value]) => ({
     id,
     hex: value,
   })),
@@ -52,7 +52,7 @@ export const lightMode = {
 };
 
 export const darkMode = {
-  rows: Object.entries(theme.colorModes.modes.dark).map(([id, value]) => ({
+  rows: Object.entries(theme.modes.dark).map(([id, value]) => ({
     id,
     hex: value,
   })),
@@ -236,7 +236,7 @@ export const space = {
       name: 'Example',
       size: 'fill',
       render: ({ value }: any) => (
-        <Box display="inline-block" size={value} bg="navy" />
+        <Box display="inline-block" width={value} height={value} bg="navy" />
       ),
     },
   ],
@@ -269,7 +269,8 @@ export const boxShadow = {
       render: ({ value }: any) => (
         <Box
           boxShadow={value}
-          size="1.5rem"
+          width="1.5rem"
+          height="1.5rem"
           border={1}
           borderColor="gray-400"
           mb={32}

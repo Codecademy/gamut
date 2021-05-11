@@ -5,7 +5,7 @@ import React from 'react';
 
 import { createEmotionCache } from '../cache';
 import { GamutProvider } from '../GamutProvider';
-import { theme } from '../theme';
+import { theme } from '../themes';
 
 jest.mock('../cache', () => {
   const cacheMock = jest.fn();
@@ -69,6 +69,6 @@ describe(GamutProvider, () => {
     });
 
     const globals = wrapper.find(Global);
-    expect(globals.length).toBe(3);
+    expect(globals.length).toBe(5);
   });
 });

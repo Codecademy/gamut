@@ -36,8 +36,10 @@ type PathValue<T, P extends Path<T>> = P extends `${infer K}.${infer Rest}`
  *  value at supplied path parameter
  */
 
-export function themed<P extends Path<Theme>>(
+type SafeThemeValues = Omit<Theme, '_variables' | '_tokens' | '_getColorValue'>;
+
+export function themed<P extends Path<SafeThemeValues>>(
   path: P
-): (props: { theme: Theme }) => PathValue<Theme, P> {
+): (props: { theme: Theme }) => PathValue<SafeThemeValues, P> {
   return ({ theme }) => get(theme, path);
 }

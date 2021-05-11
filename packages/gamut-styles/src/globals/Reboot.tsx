@@ -1,7 +1,7 @@
 import { css, Global } from '@emotion/react';
 import React from 'react';
 
-import { theme } from '../theme';
+import { theme } from '../themes';
 
 const rebootStyles = css`
   /**
