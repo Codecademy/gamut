@@ -41,7 +41,7 @@ export function useColorModes(): [
   ColorModeConfig,
   (color: Colors) => string
 ] {
-  const { mode, modes, getColorValue } = useTheme() || {};
+  const { mode, modes, _getColorValue: getColorValue } = useTheme() || {};
   return [mode, modes?.[mode], modes, getColorValue];
 }
 

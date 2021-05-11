@@ -69,6 +69,6 @@ describe(GamutProvider, () => {
     });
 
     const globals = wrapper.find(Global);
-    expect(globals.length).toBe(3);
+    expect(globals.length).toBe(5);
   });
 });

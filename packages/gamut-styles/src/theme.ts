@@ -1,18 +1,28 @@
 import { createTheme } from '@codecademy/variance';
 
-import * as tokens from './variables';
+import {
+  boxShadows,
+  colors,
+  elements,
+  fontFamily,
+  fontSize,
+  fontWeight,
+  lineHeight,
+  mediaQueries,
+  spacing,
+} from './variables';
 
-export const { theme, variables } = createTheme({
-  boxShadows: tokens.boxShadows,
-  breakpoints: tokens.mediaQueries,
-  fontSize: tokens.fontSize,
-  fontFamily: tokens.fontFamily,
-  lineHeight: tokens.lineHeight,
-  fontWeight: tokens.fontWeight,
-  spacing: tokens.spacing,
-  elements: tokens.elements,
+export const theme = createTheme({
+  boxShadows,
+  breakpoints: mediaQueries,
+  fontSize,
+  fontFamily,
+  lineHeight,
+  fontWeight,
+  spacing,
+  elements,
 })
-  .addColors(tokens.colors)
+  .addColors(colors)
   .addColorModes('light', {
     light: {
       primary: 'hyper',
