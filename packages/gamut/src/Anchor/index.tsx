@@ -36,7 +36,7 @@ const anchorVariants = system.variant({
     '&:disabled, &[disabled]': {
       cursor: 'not-allowed',
       textDecoration: 'none',
-      color: 'gray-700',
+      textColor: 'textMuted',
     },
     '&:focus, &:focus-visible': {
       outline: 'none',
