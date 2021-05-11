@@ -1,4 +1,4 @@
-import { Box, FlexBox, Pattern, Text } from '@codecademy/gamut';
+import { FlexBox, Pattern, Text } from '@codecademy/gamut';
 import { IllustrationProps } from '@codecademy/gamut-illustrations';
 import { pxRem, system, themed } from '@codecademy/gamut-styles';
 import { Theme } from '@emotion/react';
@@ -15,9 +15,32 @@ export type EmptySectionProps = {
   stretchDirection: 'left' | 'right';
 };
 
+const EmptyContainer = styled(FlexBox)(
+  system.variant({
+    prop: 'stretchDirection',
+    defaultVariant: 'left',
+    base: {
+      maxWidth: '600px',
+      justifySelf: 'center',
+      position: 'relative',
+      px: [16, 48, 96],
+      py: [32, 48, 96],
+    },
+    variants: {
+      left: {
+        pl: [0, 0, 0],
+      },
+      right: {
+        pr: [0, 0, 0],
+      },
+    },
+  })
+);
+
 const Dots = styled(Pattern)(
   system.variant({
     prop: 'stretchDirection',
+    defaultVariant: 'left',
     base: {
       position: 'absolute',
       top: 0,
@@ -55,22 +78,12 @@ export const EmptySection: React.FC<EmptySectionProps> = ({
   illustration: Illustration,
   illustrationPosition = 'right',
   innerBGColor,
-  stretchDirection = 'left',
+  stretchDirection,
 }) => {
   const direction = illustrationPosition === 'right' ? 'row-reverse' : 'row';
-  const paddingDirection = stretchDirection === 'right' ? 'pr' : 'pl';
-  const styleProps = { [paddingDirection]: [0, 0, 0] } as Record<
-    'pr' | 'pl',
-    [0]
-  >;
 
   return (
-    <Box
-      position="relative"
-      px={{ _: 16, xs: 48, sm: 96 }}
-      py={{ _: 32, xs: 48, sm: 96 }}
-      {...styleProps}
-    >
+    <EmptyContainer stretchDirection={stretchDirection}>
       <Dots name="dotLoose" stretchDirection={stretchDirection} />
       <FlexBox
         position="relative"
@@ -97,6 +110,6 @@ export const EmptySection: React.FC<EmptySectionProps> = ({
           {children}
         </FlexBox>
       </FlexBox>
-    </Box>
+    </EmptyContainer>
   );
 };
