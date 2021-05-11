@@ -1,7 +1,7 @@
 {
   "name": "@codecademy/gamut-labs",
   "description": "Brand and experimental component library for Codecademy",
-  "version": "15.5.6",
+  "version": "15.8.2",
   "author": "Codecademy Engineering <dev@codecademy.com>",
   "sideEffects": [
     "*.css",
@@ -16,23 +16,23 @@
     "url": "git@github.com:Codecademy/client-modules.git"
   },
   "peerDependencies": {
-    "@emotion/react": "^11.1.4",
-    "@emotion/styled": "^11.0.0",
+    "@emotion/react": "^11.4.0",
+    "@emotion/styled": "^11.3.0",
     "react": ">=16.8.1",
     "react-dom": ">=16.8.1"
   },
   "dependencies": {
-    "@codecademy/gamut": "^32.14.0",
-    "@codecademy/gamut-styles": "^9.8.0",
-    "@codecademy/gamut-system": "^0.7.1",
-    "@codecademy/variance": "^0.11.1",
+    "@codecademy/gamut": "^32.16.0",
+    "@codecademy/gamut-styles": "^9.8.1",
+    "@codecademy/gamut-system": "^0.7.2",
+    "@codecademy/variance": "^0.11.2",
     "classnames": "^2.2.5",
     "react-focus-on": "^3.5.1",
     "react-hotkeys-hook": "^2.3.1",
     "react-use": "15.3.8"
   },
   "devDependencies": {
-    "@codecademy/gamut-tests": "^2.3.27"
+    "@codecademy/gamut-tests": "^2.3.28"
   },
   "scripts": {
     "verify": "tsc --noEmit",
