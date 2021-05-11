@@ -79,6 +79,20 @@ const renderLinks = () => {
   );
 };
 
+const renderInputs = () => {
+  return (
+    <GridBox
+      mt={16}
+      columnGap={16}
+      gridTemplateColumns="repeat(3, max-content)"
+    >
+      <Input />
+      <Input />
+      <Input />
+    </GridBox>
+  );
+};
+
 export const ColorModeExample = () => {
   const [isDark, setIsDark] = useState(false);
   return (
@@ -122,16 +136,7 @@ export const ColorModeExample = () => {
           {renderButtons('primary')}
           {renderButtons('secondary')}
           {renderButtons('primary', true)}
-          <GridBox
-            columnGap={16}
-            pb={16}
-            gridTemplateColumns="max-content max-content max-content"
-          >
-            <Input />
-            <Input placeholder="what is" />
-            <Input defaultValue="updog" disabled />
-            <SelectDropdown options={[1, 2, 3]} />
-          </GridBox>
+          {renderInputs()}
         </Box>
       </ColorMode>
     </Box>
