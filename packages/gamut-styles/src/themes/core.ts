@@ -10,9 +10,9 @@ import {
   lineHeight,
   mediaQueries,
   spacing,
-} from './variables';
+} from '../variables';
 
-export const theme = createTheme({
+export const coreTheme = createTheme({
   boxShadows,
   breakpoints: mediaQueries,
   fontSize,
@@ -44,26 +44,4 @@ export const theme = createTheme({
     2: `2px solid ${colors.secondary}`,
   }))
   .createScaleVariables('elements')
-  .build();
-
-export const platformTheme = createTheme(theme)
-  .addColors({
-    navy: {
-      300: '#585C6D',
-      600: '#232940',
-      800: '#10162F',
-      900: '#0B0F21',
-    },
-    lightBeige: '#FFFBF8',
-    gold: '#8A7300',
-    orange: {
-      800: '#D14900',
-    },
-    pink: {
-      800: '#CA00D1',
-    },
-    teal: '#027E97',
-    paleRed: '#E85D7F',
-    purple: '#AEE938',
-  })
   .build();

@@ -75,15 +75,16 @@ class ThemeBuilder<T extends AbstractTheme> {
   ): ThemeBuilder<
     Merge<T & Reserved, Record<'colors', KeyAsVariable<NextColors, 'color'>>>
   > {
+    const flatColors = flattenObject(colors);
     const { variables, tokens } = serializeTokens(
-      flattenObject(colors),
+      flatColors,
       'color',
       this.#theme
     );
     this.#theme = merge({}, this.#theme, {
       colors: tokens,
       _variables: { root: variables },
-      _tokens: { colors },
+      _tokens: { colors: flatColors },
     });
 
     return this;
