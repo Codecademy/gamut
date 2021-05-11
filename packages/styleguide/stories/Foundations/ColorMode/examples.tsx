@@ -7,8 +7,10 @@ import {
   FlexBox,
   GridBox,
   IconButton,
+  Input,
   Logo,
   ProLabel,
+  SelectDropdown,
   StrokeButton,
   Text,
   TextButton,
@@ -120,6 +122,16 @@ export const ColorModeExample = () => {
           {renderButtons('primary')}
           {renderButtons('secondary')}
           {renderButtons('primary', true)}
+          <GridBox
+            columnGap={16}
+            pb={16}
+            gridTemplateColumns="max-content max-content max-content"
+          >
+            <Input />
+            <Input placeholder="what is" />
+            <Input defaultValue="updog" disabled />
+            <SelectDropdown options={[1, 2, 3]} />
+          </GridBox>
         </Box>
       </ColorMode>
     </Box>
