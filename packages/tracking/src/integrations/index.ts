@@ -20,7 +20,7 @@ export type TrackingIntegrationsSettings = {
   /**
    * User details to identify in Segment.
    */
-  user: UserIntegrationSummary;
+  user?: UserIntegrationSummary;
 
   /**
    * Segment write key.

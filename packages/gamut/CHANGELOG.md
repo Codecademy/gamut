@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [32.16.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@32.15.2...@codecademy/gamut@32.16.0) (2021-05-10)
+
+
+### Features
+
+* add honeypot to grid form grow 2336 ([#1735](https://github.com/Codecademy/client-modules/issues/1735)) ([e92dec8](https://github.com/Codecademy/client-modules/commit/e92dec8021313594c13ece4fbbd0d91eaa6c796b))
+
+
+
 ### [32.15.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@32.15.1...@codecademy/gamut@32.15.2) (2021-05-10)
 
 **Note:** Version bump only for package @codecademy/gamut

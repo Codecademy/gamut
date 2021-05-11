@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [15.8.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@15.8.2...@codecademy/gamut-labs@15.8.3) (2021-05-11)
+
+
+### Bug Fixes
+
+* **GlobalFooter:** Update full catalog link ([f8ab6d3](https://github.com/Codecademy/client-modules/commit/f8ab6d33ef49d05c4e402cc7af6d172f9e9b4a80))
+
+
+
+### [15.8.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@15.8.1...@codecademy/gamut-labs@15.8.2) (2021-05-10)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [15.8.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@15.8.0...@codecademy/gamut-labs@15.8.1) (2021-05-10)
+
+
+### Bug Fixes
+
+* disable react/jsx-one-expression-per-line rule ([#1728](https://github.com/Codecademy/client-modules/issues/1728)) ([4ad44d1](https://github.com/Codecademy/client-modules/commit/4ad44d16def81a89cda9cc7501e81f8bdc158b39)), closes [#1727](https://github.com/Codecademy/client-modules/issues/1727)
+
+
+
 ## [15.8.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@15.7.1...@codecademy/gamut-labs@15.8.0) (2021-05-10)
 
 
