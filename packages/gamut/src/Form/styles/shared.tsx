@@ -4,23 +4,23 @@ import { StandardPropertiesHyphen } from 'csstype';
 
 export const colorStates = {
   base: {
-    color: theme.colors.navy,
-    placeholder: theme.colors[`gray-700`],
-    backgroundColor: theme.colors.white,
-    borderColor: theme.colors['gray-400'],
+    color: theme.colors.text,
+    placeholder: theme.colors.secondaryDull,
+    backgroundColor: theme.colors.background,
+    borderColor: theme.colors.backgroundMuted,
   },
-  hover: { borderColor: theme.colors.hyper },
+  hover: { borderColor: theme.colors.primary },
   disabled: {
-    color: theme.colors[`gray-700`],
-    backgroundColor: theme.colors[`gray-100`],
-    borderColor: theme.colors[`gray-700`],
+    color: theme.colors.secondaryDull,
+    backgroundColor: theme.colors.backgroundEmphasized,
+    borderColor: theme.colors.textMuted,
   },
   error: { color: theme.colors.red, borderColor: theme.colors.red },
   valid: { color: theme.colors.green },
-  activated: { borderColor: theme.colors.navy },
+  activated: { borderColor: theme.colors.secondary },
   dropdown: {
-    focused: { backgroundColor: theme.colors[`gray-100`] },
-    selected: { backgroundColor: theme.colors[`gray-300`] },
+    focused: { backgroundColor: theme.colors.backgroundEmphasized },
+    selected: { backgroundColor: theme.colors.backgroundMuted },
   },
 };
 

@@ -1,5 +1,22 @@
 /* eslint-disable local-rules/gamut-import-paths */
-import { Anchor, Box, FlexBox, Text, Toggle } from '@codecademy/gamut/src';
+import {
+  Anchor,
+  Box,
+  CTAButton,
+  FillButton,
+  FlexBox,
+  GridBox,
+  IconButton,
+  Input,
+  Logo,
+  ProLabel,
+  SelectDropdown,
+  StrokeButton,
+  Text,
+  TextButton,
+  Toggle,
+} from '@codecademy/gamut/src';
+import { MiniDeleteIcon, SearchIcon } from '@codecademy/gamut-icons';
 import { Background, ColorMode } from '@codecademy/gamut-styles/src';
 import React, { ComponentProps, useState } from 'react';
 
@@ -36,6 +53,20 @@ export const ColorModeExample = () => {
             veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
             ea commodo consequat.
           </Text>
+          {renderLinks()}
+          {renderButtons('primary')}
+          {renderButtons('secondary')}
+          {renderButtons('primary', true)}
+          <GridBox
+            columnGap={16}
+            pb={16}
+            gridTemplateColumns="max-content max-content max-content"
+          >
+            <Input />
+            <Input placeholder="what is" />
+            <Input defaultValue="updog" disabled />
+            <SelectDropdown options={[1, 2, 3]} />
+          </GridBox>
         </Box>
       </ColorMode>
     </Box>
