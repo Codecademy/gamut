@@ -1,10 +1,6 @@
 {
   "extends": "../../tsconfig.json",
-  "include": [
-    "./src/**/*.ts",
-    "./src/**/*.tsx",
-    "../../packages/gamut-styles/src/baseTheme.ts"
-  ],
+  "include": ["./src/**/*.ts", "./src/**/*.tsx"],
   "compilerOptions": {
     "outDir": "./dist"
   }
