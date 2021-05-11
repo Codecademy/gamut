@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [37.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@37.3.1...@codecademy/styleguide@37.4.0) (2021-05-11)
+
+
+### Features
+
+* **Overlay:** Add inline option for locking the offset parent only [GM-225] ([53aed51](https://github.com/Codecademy/client-modules/commit/53aed5140d6043594844458e6fb71c79ddfb241e))
+
+
+
+### [37.3.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@37.3.0...@codecademy/styleguide@37.3.1) (2021-05-11)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
 ## [37.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@37.2.2...@codecademy/styleguide@37.3.0) (2021-05-10)
 
 
