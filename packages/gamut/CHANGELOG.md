@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [32.18.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@32.18.1...@codecademy/gamut@32.18.2) (2021-05-11)
+
+
+### Bug Fixes
+
+* **Input:** cursor weirdness ([c7ccfa4](https://github.com/Codecademy/client-modules/commit/c7ccfa42451a83277c922f22dd81944894e9dfac))
+
+
+
+### [32.18.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@32.18.0...@codecademy/gamut@32.18.1) (2021-05-11)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [32.18.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@32.17.0...@codecademy/gamut@32.18.0) (2021-05-11)
+
+
+### Features
+
+* new ToolTip designs and centered alignments ([#1628](https://github.com/Codecademy/client-modules/issues/1628)) ([81144a7](https://github.com/Codecademy/client-modules/commit/81144a79461997122cc9b025755318b30c6129a0))
+
+
+
 ## [32.17.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@32.16.0...@codecademy/gamut@32.17.0) (2021-05-11)
 
 
