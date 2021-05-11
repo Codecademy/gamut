@@ -1,6 +1,7 @@
 import { FlexBox, Pattern, Text } from '@codecademy/gamut';
 import { IllustrationProps } from '@codecademy/gamut-illustrations';
-import { pxRem, system, themed } from '@codecademy/gamut-styles';
+import { pxRem, styledConfig, system, themed } from '@codecademy/gamut-styles';
+import { StyleProps } from '@codecademy/variance';
 import { Theme } from '@emotion/react';
 import styled from '@emotion/styled';
 import React, { ReactNode } from 'react';
@@ -59,17 +60,36 @@ const Dots = styled(Pattern)(
   })
 );
 
-type IllustrationContainerProps = {
-  illustrationPosition: string;
-};
+const illustrationPositionVariants = system.variant({
+  prop: 'illustrationPosition',
+  defaultVariant: 'right',
+  base: {
+    margin: '0 auto 2rem',
+  },
+  variants: {
+    left: {
+      mt: { sm: 0 },
+      mr: { sm: 48 },
+      ml: { sm: 0 },
+      mb: { sm: 0 },
+    },
+    right: {
+      mt: { sm: 0 },
+      mr: { sm: 0 },
+      ml: { sm: 48 },
+      mb: { sm: 0 },
+    },
+  },
+});
 
-const IllustrationContainer = styled.div<IllustrationContainerProps>`
-  margin: 0 auto 2rem;
-  ${themed('breakpoints.sm')} {
-    margin: ${({ illustrationPosition }) =>
-      illustrationPosition === 'right' ? '0 0 0 3rem' : ' 0 3rem 0 0'};
-  }
-`;
+type IllustrationContainerProps = StyleProps<
+  typeof illustrationPositionVariants
+>;
+
+const IllustrationContainer = styled(
+  'div',
+  styledConfig
+)<IllustrationContainerProps>(illustrationPositionVariants);
 
 export const EmptySection: React.FC<EmptySectionProps> = ({
   bodyText,
@@ -80,7 +100,10 @@ export const EmptySection: React.FC<EmptySectionProps> = ({
   innerBGColor,
   stretchDirection,
 }) => {
-  const direction = illustrationPosition === 'right' ? 'row-reverse' : 'row';
+  const flexDirection =
+    illustrationPosition === 'right' ? 'row-reverse' : 'row';
+
+  const leftPosition = stretchDirection === 'right' ? '-1rem' : '1rem';
 
   return (
     <EmptyContainer stretchDirection={stretchDirection}>
@@ -91,10 +114,11 @@ export const EmptySection: React.FC<EmptySectionProps> = ({
         py={48}
         px={64}
         zIndex={1}
-        flexDirection={{ _: 'column', sm: direction }}
+        flexDirection={{ _: 'column', sm: flexDirection }}
         justifyContent={{ _: 'space-around', md: 'space-between' }}
         alignItems="center"
         textAlign={{ _: 'center', sm: 'start' }}
+        left={{ _: leftPosition, md: 'unset' }}
       >
         <IllustrationContainer illustrationPosition={illustrationPosition}>
           <Illustration width={pxRem(100)} />
