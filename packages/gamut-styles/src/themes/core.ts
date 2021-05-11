@@ -29,6 +29,8 @@ export const coreTheme = createTheme({
       primaryDull: 'hyper-400',
       secondary: 'navy',
       secondaryDull: 'gray-600',
+      danger: 'red',
+      success: 'green',
       text: 'navy',
       textMuted: 'gray-600',
       background: 'white',
