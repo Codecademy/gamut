@@ -12,7 +12,9 @@ export type Merge<
 > = Unmergable &
   {
     [K in keyof (Base & Next)]: K extends keyof Next
-      ? Next[K]
+      ? K extends keyof Base
+        ? Base[K] & Next[K]
+        : Next[K]
       : K extends keyof Base
       ? Base[K]
       : never;
