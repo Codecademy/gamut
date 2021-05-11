@@ -1,4 +1,4 @@
-import { flattenScale } from '@codecademy/variance';
+import { flattenObject } from '@codecademy/variance';
 
 const black = '#000000';
 const white = '#ffffff';
@@ -85,7 +85,7 @@ export const shadows = {
 } as const;
 
 export const colors = {
-  ...flattenScale(swatches),
+  ...flattenObject(swatches),
   ...trueColors,
   ...shadows,
 } as const;

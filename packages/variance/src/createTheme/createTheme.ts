@@ -2,7 +2,7 @@ import { mapValues, merge } from 'lodash';
 
 import { CSSObject } from '../types/props';
 import { AbstractTheme } from '../types/theme';
-import { flattenScale, LiteralPaths } from './flattenScale';
+import { flattenObject, LiteralPaths } from './flattenScale';
 import { KeyAsVariable, serializeTokens } from './serializeTokens';
 
 export type Merge<
@@ -22,10 +22,13 @@ export type CSSVariables<T, Prefix extends string> = {
   [K in Extract<keyof T, string> as `--${Prefix}-${K}`]: string;
 };
 
+type Reserved = {
+  _variables: Record<string, CSSObject>;
+  _tokens: Record<string | number, any>;
+};
+
 class ThemeBuilder<T extends AbstractTheme> {
   #theme = {} as T;
-  #variables = {} as Record<string, CSSObject>;
-  #staticTokens = {} as Record<string | number | symbol, any>;
 
   constructor(baseTheme: T) {
     this.#theme = baseTheme;
@@ -37,17 +40,21 @@ class ThemeBuilder<T extends AbstractTheme> {
    */
   createScaleVariables<Key extends keyof Omit<T, 'breakpoints'> & string>(
     key: Key
-  ): ThemeBuilder<Merge<T, Record<Key, KeyAsVariable<T[Key], Key>>>> {
+  ): ThemeBuilder<
+    Merge<T & Reserved, Record<Key, KeyAsVariable<T[Key], Key>>>
+  > {
     const { variables, tokens } = serializeTokens(
       this.#theme[key],
       key,
       this.#theme
     );
 
-    this.#theme = merge({}, this.#theme, { [key]: tokens });
-    this.#variables = merge({}, this.#variables, { root: variables });
-    this.#staticTokens = merge({}, this.#staticTokens, {
-      [key]: this.#theme[key],
+    this.#theme = merge({}, this.#theme, {
+      [key]: tokens,
+      _variables: { root: variables },
+      _tokens: {
+        [key]: this.#theme[key],
+      },
     });
 
     return this;
@@ -64,16 +71,18 @@ class ThemeBuilder<T extends AbstractTheme> {
   >(
     colors: Colors
   ): ThemeBuilder<
-    Merge<T, Record<'colors', KeyAsVariable<NextColors, 'color'>>>
+    Merge<T & Reserved, Record<'colors', KeyAsVariable<NextColors, 'color'>>>
   > {
     const { variables, tokens } = serializeTokens(
-      flattenScale(colors),
+      flattenObject(colors),
       'color',
       this.#theme
     );
-    this.#theme = merge({}, this.#theme, { colors: tokens });
-    this.#variables = merge({}, this.#variables, { root: variables });
-    this.#staticTokens = merge({}, this.#staticTokens, { colors });
+    this.#theme = merge({}, this.#theme, {
+      colors: tokens,
+      _variables: { root: variables },
+      _tokens: { colors },
+    });
 
     return this;
   }
@@ -95,7 +104,7 @@ class ThemeBuilder<T extends AbstractTheme> {
     modes: Config
   ): ThemeBuilder<
     Merge<
-      T,
+      T & Reserved,
       {
         colors: KeyAsVariable<LiteralPaths<Config[keyof Config]>, 'colors'> &
           T['colors'];
@@ -107,7 +116,7 @@ class ThemeBuilder<T extends AbstractTheme> {
   > {
     const { tokens, variables } = serializeTokens(
       mapValues(
-        flattenScale(modes[initialMode]),
+        flattenObject(modes[initialMode]),
         (color) => this.#theme.colors[color]
       ),
       'color',
@@ -117,14 +126,13 @@ class ThemeBuilder<T extends AbstractTheme> {
     this.#theme = merge({}, this.#theme, {
       colors: tokens,
       modes: mapValues(modes, (value) => {
-        return flattenScale(value);
+        return flattenObject(value);
       }),
       mode: initialMode,
       _getColorValue: (color: keyof T['colors']) =>
-        this.#staticTokens?.colors?.[color],
+        this.#theme._tokens?.colors?.[color],
+      _variables: { mode: variables },
     });
-
-    this.#variables = merge({}, this.#variables, { mode: variables });
 
     return this;
   }
@@ -167,8 +175,8 @@ class ThemeBuilder<T extends AbstractTheme> {
   /**
    * This finalizes the theme build and returns the final theme and variables to be provided.
    */
-  build(): T & { _variables: Record<string, CSSObject> } {
-    return { ...this.#theme, _variables: this.#variables };
+  build(): T & Reserved {
+    return merge({}, this.#theme, { _variables: {}, _tokens: {} });
   }
 }
 
