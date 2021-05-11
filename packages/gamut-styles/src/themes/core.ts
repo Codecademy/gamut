@@ -2,7 +2,7 @@ import { createTheme } from '@codecademy/variance';
 
 import {
   boxShadows,
-  colors,
+  corePalette,
   elements,
   fontFamily,
   fontSize,
@@ -22,20 +22,22 @@ export const coreTheme = createTheme({
   spacing,
   elements,
 })
-  .addColors(colors)
+  .addColors(corePalette)
   .addColorModes('light', {
     light: {
       primary: 'hyper',
       primaryDull: 'hyper-400',
       secondary: 'navy',
       secondaryDull: 'gray-600',
+      danger: 'red',
+      success: 'green',
       text: 'navy',
       textMuted: 'gray-600',
       background: 'white',
       backgroundMuted: 'gray-200',
       backgroundEmphasized: 'gray-100',
       shadow: {
-        transparent: 'lightShadow',
+        transparent: 'whiteShadow',
         opaque: 'gray-200',
       },
     },
@@ -44,13 +46,15 @@ export const coreTheme = createTheme({
       primaryDull: 'yellow-400',
       secondary: 'white',
       secondaryDull: 'gray-200',
+      danger: 'paleRed',
+      success: 'lightGreen',
       text: 'white',
       textMuted: 'gray-200',
       background: 'navy',
       backgroundMuted: 'gray-600',
       backgroundEmphasized: 'blue-800',
       shadow: {
-        transparent: 'darkShadow',
+        transparent: 'blackShadow',
         opaque: 'black',
       },
     },
