@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [0.7.3](https://github.com/Codecademy/client-modules/compare/@codecademy/tracking@0.7.2...@codecademy/tracking@0.7.3) (2021-05-10)
+
+
+### Bug Fixes
+
+* allow no user for tracking integrations ([#1726](https://github.com/Codecademy/client-modules/issues/1726)) ([66fdf89](https://github.com/Codecademy/client-modules/commit/66fdf89834d2eae53172cd6254d936c182281f0c))
+
+
+
 ### [0.7.2](https://github.com/Codecademy/client-modules/compare/@codecademy/tracking@0.7.1...@codecademy/tracking@0.7.2) (2021-05-03)
 
 **Note:** Version bump only for package @codecademy/tracking
