@@ -41,7 +41,6 @@ export * from './Overlay';
 export * from './Pattern';
 export * from './ProgressBar';
 export * from './RadialProgress';
-export * from './Flyout';
 export * from './SkipToContent';
 export * from './Spinner';
 export * from './theming/VisualTheme';

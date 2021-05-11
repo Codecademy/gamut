@@ -1,6 +1,5 @@
+import { ButtonDeprecatedBaseProps } from '@codecademy/gamut/src/ButtonDeprecatedBase';
 import React from 'react';
-
-import { ButtonDeprecatedBaseProps } from '../ButtonDeprecatedBase';
 
 export type SidebarCloneButtonProps = ButtonDeprecatedBaseProps & {
   onClick: () => void;
