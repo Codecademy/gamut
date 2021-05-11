@@ -1,7 +1,7 @@
 {
   "name": "@codecademy/tracking",
   "description": "Tracking library for Codecademy apps.",
-  "version": "0.5.3",
+  "version": "0.7.3",
   "author": "Codecademy Engineering <dev@codecademy.com>",
   "module": "./dist/index.js",
   "main": "./dist/index.js",
@@ -14,9 +14,12 @@
   },
   "devDependencies": {
     "@babel/cli": "^7.13.10",
+    "@types/fetch-mock": "^7.3.3",
     "@types/jest": "^26.0.15",
-    "babel-preset-codecademy": "^2.3.0",
+    "babel-preset-codecademy": "^4.0.1",
+    "fetch-mock": "^9.11.0",
     "jest-fetch-mock": "^3.0.3",
+    "react-use": "^15.3.8",
     "ts-jest": "^26.4.1",
     "typescript": "*"
   },

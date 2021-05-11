@@ -1,7 +1,7 @@
 import React from 'react';
 import { themed } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
-import { Box, Card } from '@codecademy/gamut/src';
+import { Card, GridBox } from '@codecademy/gamut/src';
 
 const HexCode = styled.span`
   font-family: ${themed('fontFamily.monospace')};
@@ -20,7 +20,7 @@ export const ColorScale: React.FC<{ colors: Record<string, string> }> = ({
   return (
     <>
       <Card
-        padding={0}
+        p={0}
         width="100%"
         borderRadius="4px"
         display="grid"
@@ -32,11 +32,10 @@ export const ColorScale: React.FC<{ colors: Record<string, string> }> = ({
           <Color key={`color-${key}`} bg={hex} />
         ))}
       </Card>
-      <Box width="100%" padding={4} display="grid" gridAutoFlow="column">
+      <GridBox width="100%" p={4} gridAutoFlow="column">
         {weights.map(([key, hex]) => (
-          <Box
+          <GridBox
             key={`hex-${key}`}
-            display="grid"
             alignItems="center"
             justifyContent="center"
             textAlign="center"
@@ -44,9 +43,9 @@ export const ColorScale: React.FC<{ colors: Record<string, string> }> = ({
           >
             {weights.length > 1 && <HexCode>{key}</HexCode>}
             <HexCode>{hex}</HexCode>
-          </Box>
+          </GridBox>
         ))}
-      </Box>
+      </GridBox>
     </>
   );
 };

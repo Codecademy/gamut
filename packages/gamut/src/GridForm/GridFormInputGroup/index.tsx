@@ -8,8 +8,10 @@ import { GridFormField } from '../types';
 import { GridFormCheckboxInput } from './GridFormCheckboxInput';
 import { GridFormCustomInput } from './GridFormCustomInput';
 import { GridFormFileInput } from './GridFormFileInput';
+import { GridFormHiddenInput } from './GridFormHiddenInput';
 import { GridFormRadioGroupInput } from './GridFormRadioGroupInput';
 import { GridFormSelectInput } from './GridFormSelectInput';
+import { GridFormSweetContainerInput } from './GridFormSweetContainerInput';
 import { GridFormTextArea } from './GridFormTextArea';
 import { GridFormTextInput } from './GridFormTextInput';
 
@@ -95,6 +97,13 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
             showRequired={isRequired}
           />
         );
+      case 'hidden':
+        return <GridFormHiddenInput register={register} field={field} />;
+
+      case 'sweet-container':
+        return (
+          <GridFormSweetContainerInput register={register} field={field} />
+        );
 
       default:
         return (
@@ -107,6 +116,8 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
         );
     }
   };
+  if (field.type === 'hidden' || field.type === 'sweet-container')
+    return getInput();
 
   const label = (
     <FormGroupLabel
@@ -121,7 +132,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
 
   return (
     <Column size={field.size}>
-      <FormGroup marginBottom={0}>
+      <FormGroup mb={0}>
         {field.hideLabel ? <HiddenText>{label}</HiddenText> : label}
         {getInput()}
         {errorMessage && (
