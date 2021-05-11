@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [2.3.29](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-tests@2.3.28...@codecademy/gamut-tests@2.3.29) (2021-05-11)
+
+**Note:** Version bump only for package @codecademy/gamut-tests
+
+
+
+
+
+### [2.3.28](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-tests@2.3.27...@codecademy/gamut-tests@2.3.28) (2021-05-07)
+
+**Note:** Version bump only for package @codecademy/gamut-tests
+
+
+
+
+
 ### [2.3.27](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-tests@2.3.26...@codecademy/gamut-tests@2.3.27) (2021-05-05)
 
 **Note:** Version bump only for package @codecademy/gamut-tests

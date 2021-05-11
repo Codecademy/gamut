@@ -120,6 +120,7 @@ module.exports = {
     'prefer-template': 'off',
     'react/jsx-filename-extension': 'off',
     'react/jsx-no-bind': 'off',
+    'react/jsx-one-expression-per-line': 'off',
     'react/jsx-pascal-case': 'off',
     'react/jsx-props-no-spreading': 'off',
     'react/prefer-es6-class': 'off',

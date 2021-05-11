@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [5.0.1](http://github.com///compare/@codecademy/eslint-config@5.0.0...@codecademy/eslint-config@5.0.1) (2021-05-10)
+
+
+### Bug Fixes
+
+* disable react/jsx-one-expression-per-line rule ([#1728](http://github.com//undefined/issues/1728)) ([4ad44d1](http://github.com///commit/4ad44d16def81a89cda9cc7501e81f8bdc158b39)), closes [#1727](http://github.com///issues/1727)
+
+
+
 ## [5.0.0](http://github.com///compare/@codecademy/eslint-config@4.0.1...@codecademy/eslint-config@5.0.0) (2021-05-06)
 
 
