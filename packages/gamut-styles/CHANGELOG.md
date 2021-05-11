@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.9.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@9.8.1...@codecademy/gamut-styles@9.9.0) (2021-05-11)
+
+
+### Features
+
+* **Overlay:** Add inline option for locking the offset parent only [GM-225] ([53aed51](https://github.com/Codecademy/client-modules/commit/53aed5140d6043594844458e6fb71c79ddfb241e))
+
+
+
 ### [9.8.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@9.8.0...@codecademy/gamut-styles@9.8.1) (2021-05-07)
 
 **Note:** Version bump only for package @codecademy/gamut-styles
