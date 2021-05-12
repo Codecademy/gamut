@@ -1,14 +1,16 @@
-import { FlexBox, Pattern, Text } from '@codecademy/gamut';
+import { ButtonProps, FlexBox, Pattern, Text } from '@codecademy/gamut';
 import { IllustrationProps } from '@codecademy/gamut-illustrations';
 import { pxRem, styledConfig, system } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
 import { Theme } from '@emotion/react';
 import styled from '@emotion/styled';
-import React, { ReactNode } from 'react';
+import React from 'react';
+
+import { DropdownButtonProps } from '..';
 
 export type EmptySectionProps = {
   bodyText: string;
-  children: ReactNode;
+  children: React.ReactElement<ButtonProps | DropdownButtonProps>;
   headingText: string;
   illustration: React.ComponentType<IllustrationProps>;
   illustrationPosition?: 'left' | 'right';

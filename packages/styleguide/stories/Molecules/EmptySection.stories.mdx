@@ -1,10 +1,9 @@
 import { FillButton } from '@codecademy/gamut/src';
 import { NumberBlocks } from '@codecademy/gamut-illustrations/src';
-import { EmptySection } from '@codecademy/gamut-labs/src';
+import { EmptySection, DropdownButton } from '@codecademy/gamut-labs/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
-
-import { PropsTable } from '~styleguide/blocks';
+import { PropsTable } from '@codecademy/storybook-addon-variance';
 
 <Meta
   title={title}
@@ -23,9 +22,8 @@ import { PropsTable } from '~styleguide/blocks';
   }}
 />
 
-The `children` prop should take a `*Button` or a `*Button` that triggers another component to appear (like a dropdown, for example.)
-
-The "innerBGColor" should match the background color of the page or section it's in.
+The `children` can be either a `Button` or a `DropdownButton`. You should set the "innerBGColor"
+to match the background color of the page or section it's in.
 
 ## Illustration on the right (default)
 
@@ -46,20 +44,41 @@ The "innerBGColor" should match the background color of the page or section it's
   </Story>
 </Canvas>
 
-## Stretch Direction on the left (default)
+## Dots stretch to the left (default)
 
 <Canvas>
-  <Story name="Stretch Direction on the left">
+  <Story name="Dots stretch to the left">
     {(args) => <EmptySection {...args} />}
   </Story>
 </Canvas>
 
-## Stretch Direction on the right
+## Dots stretch to the right
+
+<Canvas>
+  <Story name="Dots stretch to the right" args={{ stretchDirection: 'right' }}>
+    {(args) => <EmptySection {...args} />}
+  </Story>
+</Canvas>
+
+## Using a dropdown button
 
 <Canvas>
   <Story
-    name="Stretch Direction on the right"
-    args={{ stretchDirection: 'right' }}
+    name="Using a dropdown button"
+    args={{
+      stretchDirection: 'left',
+      children: (
+        <DropdownButton
+          dropdownItems={[
+            { id: '1', text: 'Option 1' },
+            { id: '2', text: 'Option 2' },
+            { id: '3', text: 'Option 3' },
+          ]}
+        >
+          Click me!
+        </DropdownButton>
+      ),
+    }}
   >
     {(args) => <EmptySection {...args} />}
   </Story>
