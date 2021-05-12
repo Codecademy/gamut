@@ -19,7 +19,6 @@
     "babel-preset-codecademy": "^4.0.1",
     "fetch-mock": "^9.11.0",
     "jest-fetch-mock": "^3.0.3",
-    "react-use": "^15.3.8",
     "ts-jest": "^26.4.1",
     "typescript": "*"
   },
