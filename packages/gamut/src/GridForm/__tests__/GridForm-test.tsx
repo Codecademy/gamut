@@ -403,4 +403,16 @@ describe('GridForm', () => {
     );
     expect(wrapped.find('Column').length).toBe(1);
   });
+  it('does not render field when renderNull is true', () => {
+    const wrapped = mount(
+      <ThemeProvider theme={theme}>
+        <GridForm
+          fields={[{ ...stubTextField, renderNull: true, id: 'non-exist' }]}
+          onSubmit={jest.fn()}
+          submit={{ type: 'fill', contents: <>Submit</>, size: 6 }}
+        />
+      </ThemeProvider>
+    );
+    expect(wrapped.find('input#non-exist').length).toBe(0);
+  });
 });
