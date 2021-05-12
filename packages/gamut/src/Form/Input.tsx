@@ -95,17 +95,7 @@ const getInputState = (error: boolean, valid: boolean) => {
 
 export const Input = forwardRef<HTMLInputElement, InputWrapperProps>(
   (
-    {
-      error,
-      className,
-      id,
-      valid,
-      activated,
-      type,
-      as: As,
-      icon: Icon,
-      ...rest
-    },
+    { error, className, id, valid, activated, as: As, icon: Icon, ...rest },
     ref
   ) => {
     const [activatedStyle, setActivatedStyle] = useState(false);
@@ -128,7 +118,7 @@ export const Input = forwardRef<HTMLInputElement, InputWrapperProps>(
 
     return (
       <Box
-        display={type === 'hidden' ? 'none' : undefined}
+        display={rest?.type === 'hidden' ? 'none' : undefined}
         position="relative"
         textColor={color}
       >
