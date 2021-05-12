@@ -17,7 +17,6 @@
     "./.storybook/**/*.ts",
     "./.storybook/**/*.tsx",
     "./**/*.tsx",
-    "./**/*.ts",
-    "../../packages/gamut-styles/dist/typings/theme.d.ts"
+    "./**/*.ts"
   ]
 }
