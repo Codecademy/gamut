@@ -15,7 +15,7 @@ import { coreTheme } from './themes/core';
 export interface GamutProviderProps {
   useGlobals?: boolean;
   useCache?: boolean;
-  theme?: Theme;
+  theme: Theme;
   variables?: Record<string, CSSObject>;
   cache?: EmotionCache;
 }
