@@ -69,7 +69,7 @@ const freeCustomCheckoutUrlHeaderProps: GlobalHeaderProps = {
   action,
   type: 'free',
   user: {
-    proTrialCheckoutUrl: 'test-url',
+    proCheckoutUrl: 'test-url',
     ...user,
   },
 };
