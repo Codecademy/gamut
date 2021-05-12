@@ -101,6 +101,7 @@ export function GridForm<
     <Form className={className} onSubmit={handleSubmit(onSubmit)} noValidate>
       <LayoutGrid columnGap={columnGap} rowGap={rowGap}>
         {fields.map((field) => {
+          if (field.renderNull) return null;
           const errorMessage = (errors[field.name] as FieldError)?.message;
           const isFirstError = !pastFirstError && errorMessage !== undefined;
           pastFirstError = pastFirstError || isFirstError;

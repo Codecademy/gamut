@@ -23,6 +23,7 @@ export type BaseFormField<Value> = {
   name: string;
   onUpdate?: (value: Value) => void;
   size: ColumnProps['size'];
+  renderNull?: boolean;
 };
 
 export type GridFormCheckboxField = BaseFormField<boolean> & {
