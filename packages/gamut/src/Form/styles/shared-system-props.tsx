@@ -24,23 +24,24 @@ export const formBaseComponentStyles = {
   ...formBaseStyles,
   width: 1,
   outline: 'none',
-  bg: 'white',
+  bg: 'background',
+  color: `${theme.colors.text}`,
   minWidth: 'auto',
 } as const;
 
 const formFieldFocusStyles = {
-  borderColor: 'hyper',
-  boxShadow: `inset 0 0 0 1px ${theme.colors.hyper}`,
+  borderColor: 'primary',
+  boxShadow: `inset 0 0 0 1px ${theme.colors.primary}`,
 } as const;
 
 const formFieldDisabledStyles = {
-  bg: 'gray-100',
-  borderColor: 'gray-700',
-  color: 'gray-700',
+  bg: 'backgroundEmphasized',
+  borderColor: 'textMuted',
+  color: 'textMuted',
   fontStyle: 'italic',
   cursor: 'not-allowed',
   '&:hover': {
-    borderColor: 'gray-700',
+    borderColor: 'textMuted',
   },
 } as const;
 
@@ -53,13 +54,13 @@ export const formBaseFieldStyles = {
   ...formBaseComponentStyles,
   ...transitionConcatenator(['border-color', 'box-shadow'], '0.2s ease-in-out'),
   border: 1,
-  borderColor: 'gray-400',
+  borderColor: 'secondaryDull',
   borderRadius: '2px',
   '&:hover': {
-    borderColor: 'hyper',
+    borderColor: 'primary',
   },
   '&:placeholder': {
-    borderColor: 'gray-700',
+    borderColor: 'textMuted',
     fontStyle: 'italic',
   },
   '&:disabled': {

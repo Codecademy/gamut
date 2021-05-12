@@ -87,8 +87,8 @@ const renderInputs = () => {
       gridTemplateColumns="repeat(3, max-content)"
     >
       <Input />
-      <Input />
-      <Input />
+      <Input placeholder="disabled" disabled />
+      <Input defaultValue="updog" />
     </GridBox>
   );
 };
