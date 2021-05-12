@@ -1,5 +1,3 @@
-import { CoreTheme } from '@codecademy/gamut-styles';
-
 declare module 'global';
 
 declare namespace NodeJS {
@@ -11,8 +9,4 @@ declare namespace NodeJS {
 
 declare module '@storybook/addon-links/react' {
   export declare const LinkTo: React.FC<{ kind: string; id: string }>;
-}
-
-declare module '@emotion/react' {
-  export interface Theme extends CoreTheme {}
 }
