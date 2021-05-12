@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [32.18.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@32.18.3...@codecademy/gamut@32.18.4) (2021-05-12)
+
+
+### Bug Fixes
+
+* **Select:** add labels back  ([4d0f01f](https://github.com/Codecademy/client-modules/commit/4d0f01f30f926dff67ef153438291ed73d11d281))
+
+
+
 ### [32.18.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@32.18.2...@codecademy/gamut@32.18.3) (2021-05-12)
 
 **Note:** Version bump only for package @codecademy/gamut
