@@ -92,6 +92,7 @@ module.exports = {
     'arrow-body-style': 'off',
     camelcase: 'off',
     'class-methods-use-this': 'off',
+    'consistent-return': 'off',
     'default-case': 'off',
     'func-names': 'off',
     'global-require': 'off',
