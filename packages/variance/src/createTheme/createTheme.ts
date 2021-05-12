@@ -117,9 +117,12 @@ class ThemeBuilder<T extends AbstractTheme> {
       }
     >
   > {
+    // This guarantees that the final merged color modes are used when setting the default variables
+    const merged = merge({}, this.#theme?.modes, modes) as Config;
+
     const { tokens, variables } = serializeTokens(
       mapValues(
-        flattenObject(modes[initialMode]),
+        flattenObject(merged[initialMode]),
         (color) => this.#theme.colors[color]
       ),
       'color',
