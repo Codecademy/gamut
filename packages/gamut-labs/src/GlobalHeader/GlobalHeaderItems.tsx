@@ -346,14 +346,16 @@ export const tryProForFree = (
   type: 'fill-button',
 });
 
-export const upgradeToPro: AppHeaderFillButtonItem = {
+export const upgradeToPro = (
+  checkoutUrl?: string
+): AppHeaderFillButtonItem => ({
   dataTestId: 'upgrade-link',
   id: 'upgrade-to-pro',
   text: 'Upgrade to Pro',
-  href: '/pro/membership',
+  href: checkoutUrl || '/pro/membership',
   trackingTarget: 'topnav_pro_upgrade',
   type: 'fill-button',
-};
+});
 
 export const unpausePro: AppHeaderFillButtonItem = {
   dataTestId: 'unpause-link',

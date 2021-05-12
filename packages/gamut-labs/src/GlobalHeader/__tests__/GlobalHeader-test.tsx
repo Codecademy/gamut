@@ -277,7 +277,7 @@ describe('GlobalHeader', () => {
     describe('has completed trial', () => {
       test('upgradeToPro', () => {
         renderGlobalHeader(freeCompletedTrialHeaderProps);
-        screen.getByText(upgradeToPro.text);
+        screen.getByText(upgradeToPro().text);
       });
     });
   });
