@@ -98,6 +98,7 @@ const customStyles: StylesConfig<OptionTypeBase, false> = {
   container: (provided) => ({
     ...provided,
     pointerEvents: 'visible',
+    cursor: 'pointer',
     width: '100%',
     minWidth: '7rem',
   }),
