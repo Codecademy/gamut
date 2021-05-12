@@ -1,4 +1,4 @@
-import { variant } from '@codecademy/gamut-styles';
+import { system } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React from 'react';
 
@@ -38,8 +38,8 @@ export type ProgressBarProps = {
   pattern?: PatternName;
 };
 
-const progressBarSizeVariants = variant({
-  default: 'small',
+const progressBarSizeVariants = system.variant({
+  defaultVariant: 'small',
   prop: 'size',
   variants: {
     small: {
@@ -57,14 +57,14 @@ const progressBarSizeVariants = variant({
   },
 });
 
-const progressBarBackgroundVariants = variant({
-  default: 'blue',
+const progressBarBackgroundVariants = system.variant({
+  defaultVariant: 'blue',
   variants: {
     blue: {
-      backgroundColor: 'navy',
+      bg: 'navy',
     },
     yellow: {
-      backgroundColor: `gray-100`,
+      bg: `gray-100`,
     },
     dark: {
       textColor: 'white',
@@ -75,8 +75,8 @@ const progressBarBackgroundVariants = variant({
   },
 });
 
-const progressBarBorderVariants = variant({
-  default: 'basic',
+const progressBarBorderVariants = system.variant({
+  defaultVariant: 'basic',
   prop: 'border',
   variants: {
     basic: {
@@ -89,23 +89,31 @@ const progressBarBorderVariants = variant({
   },
 });
 
-const progressBarForegroundVariants = variant({
-  default: 'blue',
+const progressBarForegroundVariants = system.variant({
+  defaultVariant: 'blue',
+  base: {
+    alignItems: 'center',
+    height: '100%',
+    display: 'flex',
+    transition: 'width 0.5s',
+    position: 'relative',
+    borderRadius: 'inherit',
+  },
   variants: {
     blue: {
-      backgroundColor: 'blue',
+      bg: 'blue',
       textColor: 'white',
     },
     yellow: {
-      backgroundColor: `yellow`,
+      bg: `yellow`,
       textColor: `black`,
     },
     light: {
-      backgroundColor: 'navy',
+      bg: 'navy',
       textColor: 'navy',
     },
     dark: {
-      backgroundColor: 'white',
+      bg: 'white',
       textColor: 'white',
     },
   },
@@ -125,15 +133,7 @@ const ProgressBarWrapper = styled.div<ProgressBarElementWrapperProps>`
   ${progressBarBorderVariants};
 `;
 
-const Bar = styled.div<ProgressBarElementProps>`
-  align-items: center;
-  display: flex;
-  height: 100%;
-  transition: width 0.5s;
-  position: relative;
-  border-radius: inherit;
-  ${progressBarForegroundVariants};
-`;
+const Bar = styled.div(progressBarForegroundVariants);
 
 const DisplayedPercent = styled.span`
   font-weight: bold;
