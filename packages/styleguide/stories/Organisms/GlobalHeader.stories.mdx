@@ -6,15 +6,16 @@ import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 import LinkTo from '@storybook/addon-links/react';
 
-<Meta
-  title={title}
-  component={GlobalHeader}
-  decorators={[
-    (Story) => {
-      return <Box style={{ width: '100%' }}>{Story()}</Box>;
-    },
-  ]}
-  parameters={{
+    <Meta
+
+title={title}
+component={GlobalHeader}
+decorators={[
+(Story) => {
+return <Box style={{ width: '100%' }}>{Story()}</Box>;
+},
+]}
+parameters={{
     layout: 'padded',
     status: 'updating',
     docs: { inlineStories: false, iframeHeight: 500 },
@@ -23,7 +24,8 @@ import LinkTo from '@storybook/addon-links/react';
   }}
 />
 
-<Canvas>
+    <Canvas>
+
   <Story
     name="GlobalHeader"
     args={{
@@ -44,11 +46,11 @@ import LinkTo from '@storybook/addon-links/react';
   </Story>
 </Canvas>
 
-GlobalHeader determines whether to render the desktop or mobile version of the global header (<LinkTo kind="Molecules/AppHeader" story="AppHeader">AppHeader</LinkTo> or <LinkTo kind="Molecules/AppHeaderMobile" story="AppHeaderMobile">AppHeaderMobile</LinkTo>, respectively) based on the viewport size.
+GlobalHeader determines whether to render the desktop or mobile version of the global header ( <LinkTo kind="Molecules/AppHeader" story="AppHeader">AppHeader</LinkTo> or <LinkTo kind="Molecules/AppHeaderMobile" story="AppHeaderMobile">AppHeaderMobile</LinkTo>, respectively) based on the viewport size.
 
 GlobalHeader takes in several props. `type` determines which header to render based on the user role (anonymous, free, or pro), or a loading state. `type` will also determine which of Search and/or Notification components need to be passed in: Search will appear for all users, whereas Notifications will only appear for logged-in users. The consumer must pass components for both the desktop and mobile header for either of these render props. `action` is a function which will be defined by the consumer and handles any routing/tracking that needs to be done. `variant` is a prop which may only be used when `type="anon"`, and provides variations of the anonymous header based on the user's location: there are different headers for the landing page, login page, and signup page.
 
-<PropsTable story="GlobalHeader" />
+    <PropsTable story="GlobalHeader" />
 
 ## How It's All Connected in Gamut
 
@@ -75,7 +77,8 @@ The following are available variations for the GlobalHeader component.
 
 #### Free User - Default
 
-<Canvas>
+    <Canvas>
+
   <Story name="Free User - Default">
     {(args) => (
       <Box position="relative" zIndex={0}>
@@ -98,7 +101,8 @@ The following are available variations for the GlobalHeader component.
 
 The Try Pro For Free button can take in an optional custom path.
 
-<Canvas>
+    <Canvas>
+
   <Story name="Free User - Custom Trial CTA URL">
     {(args) => (
       <GlobalHeader
@@ -108,7 +112,7 @@ The Try Pro For Free button can take in an optional custom path.
           avatar:
             'https://www.gravatar.com/avatar/1c959a9a1e2f9f9f1ac06b05cccc1d60?s=150&d=retro',
           displayName: 'Codey',
-          proTrialCheckoutUrl: 'https://www.codecademy.com',
+          proCheckoutUrl: 'https://www.codecademy.com',
         }}
       />
     )}
@@ -117,7 +121,8 @@ The Try Pro For Free button can take in an optional custom path.
 
 #### Free User - Pro Upgrade
 
-<Canvas>
+    <Canvas>
+
   <Story name="Free User - Pro Upgrade">
     {(args) => (
       <GlobalHeader
@@ -138,7 +143,8 @@ The Try Pro For Free button can take in an optional custom path.
 
 #### Pro User - Default
 
-<Canvas>
+    <Canvas>
+
   <Story name="Pro User - Default">
     {(args) => (
       <GlobalHeader
@@ -156,7 +162,8 @@ The Try Pro For Free button can take in an optional custom path.
 
 #### Pro User - Paused
 
-<Canvas>
+    <Canvas>
+
   <Story name="Pro User - Paused">
     {(args) => (
       <GlobalHeader
@@ -175,7 +182,8 @@ The Try Pro For Free button can take in an optional custom path.
 
 #### Pro User - Admin
 
-<Canvas>
+    <Canvas>
+
   <Story name="Pro User - Admin">
     {(args) => (
       <GlobalHeader
@@ -194,7 +202,8 @@ The Try Pro For Free button can take in an optional custom path.
 
 #### Pro User - Customer Support
 
-<Canvas>
+    <Canvas>
+
   <Story name="Pro User - Customer Support">
     {(args) => (
       <GlobalHeader
@@ -214,7 +223,8 @@ The Try Pro For Free button can take in an optional custom path.
 
 #### Business Account Manager - Pro
 
-<Canvas>
+    <Canvas>
+
   <Story name="Business Account Manager - Pro">
     {(args) => (
       <GlobalHeader
@@ -233,7 +243,8 @@ The Try Pro For Free button can take in an optional custom path.
 
 #### Business Account Manager - Free
 
-<Canvas>
+    <Canvas>
+
   <Story name="Business Account Manager - Free">
     {(args) => (
       <GlobalHeader
@@ -254,7 +265,8 @@ The Try Pro For Free button can take in an optional custom path.
 
 #### Anonymous User - Default
 
-<Canvas>
+    <Canvas>
+
   <Story name="Anonymous User - Default">
     {(args) => <GlobalHeader action={() => {}} type="anon" />}
   </Story>
@@ -262,7 +274,8 @@ The Try Pro For Free button can take in an optional custom path.
 
 #### Anonymous User - Landing Page
 
-<Canvas>
+    <Canvas>
+
   <Story name="Anonymous User - Landing Page">
     {(args) => <GlobalHeader action={() => {}} type="anon" variant="landing" />}
   </Story>
@@ -270,7 +283,8 @@ The Try Pro For Free button can take in an optional custom path.
 
 #### Anonymous User - Login Page
 
-<Canvas>
+    <Canvas>
+
   <Story name="Anonymous User - Login Page">
     {(args) => (
       <GlobalHeader
@@ -292,7 +306,8 @@ The Try Pro For Free button can take in an optional custom path.
 
 #### Anonymous User - Signup Page
 
-<Canvas>
+    <Canvas>
+
   <Story name="Anonymous User - Signup Page">
     {(args) => (
       <GlobalHeader
@@ -316,7 +331,8 @@ The Try Pro For Free button can take in an optional custom path.
 
 To mock this, IconButtons are provided as placeholders.
 
-<Canvas>
+    <Canvas>
+
   <Story name="GlobalHeader With Search and Notifications">
     {(args) => (
       <GlobalHeader
@@ -346,7 +362,8 @@ To mock this, IconButtons are provided as placeholders.
 
 ### GlobalHeader Over Background Color
 
-<Canvas>
+    <Canvas>
+
   <Story name="GlobalHeader Over Background Color">
     {(args) => (
       <Box bg="beige" width="100%">
@@ -368,7 +385,8 @@ To mock this, IconButtons are provided as placeholders.
 
 To mock this, a very basic action function is provided, which prints out the event & the item to the console.
 
-<Canvas>
+    <Canvas>
+
   <Story name="GlobalHeader With an Action Function">
     {(args) => (
       <GlobalHeader
@@ -388,7 +406,8 @@ To mock this, a very basic action function is provided, which prints out the eve
 
 A version of the header with just the logo, for use when data has not been fetched yet.
 
-<Canvas>
+    <Canvas>
+
   <Story name="Loading">
     {(args) => <GlobalHeader action={() => {}} type="loading" />}
   </Story>
