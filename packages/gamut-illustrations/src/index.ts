@@ -1,3 +1,4 @@
+export * from './ArchedWindow';
 export * from './Bee';
 export * from './Bell';
 export * from './BinaryBlocks';
