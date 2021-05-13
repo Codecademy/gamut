@@ -9,11 +9,11 @@ export type ParseOptionProps = {
 
 const formatAsOptions = ({ label, value, key }: OptionTypeBase) => {
   const option = key ? (
-    <option label={label} key={key} value={value} data-testid={key}>
+    <option key={key} value={value} data-testid={key}>
       {label}
     </option>
   ) : (
-    <option label={label} key={label} value={value} data-testid={label}>
+    <option key={label} value={value} data-testid={label}>
       {value}
     </option>
   );
