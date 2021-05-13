@@ -2,9 +2,9 @@ import { css, Global } from '@emotion/react';
 import React from 'react';
 
 import { webFonts } from '../remoteAssets/fonts';
-import { coreTheme } from '../themes';
+import { coreTheme as theme } from '../themes';
 
-const { fontSize, spacing, fontWeight, lineHeight } = coreTheme;
+const { fontSize, spacing, fontWeight, lineHeight } = theme;
 
 const typographyGlobals = css`
   ${webFonts.map(
