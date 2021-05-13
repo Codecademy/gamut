@@ -7,6 +7,19 @@ import { rgba } from 'polished';
 const black = '#000000';
 const white = '#ffffff';
 
+const effects = {
+  shadow: {
+    black: {
+      slight: rgba(black, 0.15),
+      heavy: rgba(black, 0.75),
+    },
+    white: {
+      slight: rgba(white, 0.15),
+      heavy: rgba(white, 0.95),
+    },
+  },
+};
+
 export const coreSwatches = {
   beige: {
     '100': '#FFF0E5',
@@ -53,16 +66,6 @@ export const coreSwatches = {
     '800': '#616161',
     '900': '#424242',
   },
-  shadow: {
-    black: {
-      slight: rgba(black, 0.15),
-      heavy: rgba(black, 0.75),
-    },
-    white: {
-      slight: rgba(white, 0.15),
-      heavy: rgba(white, 0.95),
-    },
-  },
 } as const;
 
 export const trueColors = {
@@ -88,6 +91,7 @@ export const trueColors = {
 
 export const corePalette = {
   ...flattenScale(coreSwatches),
+  ...flattenScale(effects),
   ...trueColors,
 } as const;
 
