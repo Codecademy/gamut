@@ -23,7 +23,6 @@ const EmptyContainer = styled(FlexBox)(
     prop: 'stretchDirection',
     defaultVariant: 'left',
     base: {
-      maxWidth: '600px',
       justifySelf: 'center',
       position: 'relative',
       px: [16, 48, 96],
@@ -105,12 +104,12 @@ export const EmptySection: React.FC<EmptySectionProps> = ({
   const flexDirection =
     illustrationPosition === 'right' ? 'row-reverse' : 'row';
 
-  const leftPosition = stretchDirection === 'right' ? '-1rem' : '1rem';
-
   return (
     <EmptyContainer stretchDirection={stretchDirection}>
       <Dots name="dotLoose" stretchDirection={stretchDirection} />
       <FlexBox
+        maxWidth="822px"
+        flexBasis="100%"
         position="relative"
         bg={innerBGColor}
         py={48}
@@ -120,7 +119,6 @@ export const EmptySection: React.FC<EmptySectionProps> = ({
         justifyContent={{ _: 'space-around', md: 'space-between' }}
         alignItems="center"
         textAlign={{ _: 'center', sm: 'start' }}
-        left={{ _: leftPosition, md: 'unset' }}
       >
         <IllustrationContainer illustrationPosition={illustrationPosition}>
           <Illustration width={pxRem(100)} />
