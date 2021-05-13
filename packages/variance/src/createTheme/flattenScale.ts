@@ -47,7 +47,7 @@ export type LiteralPaths<T extends Record<string | number, any>> = {
   [K in Path<T> as PathToLiteral<T, K>]: PathValue<T, PathToLiteral<T, K>>;
 };
 
-export function flattenObject<
+export function flattenScale<
   T extends Record<string | number, any>,
   P extends string
 >(object: T, path?: P): LiteralPaths<T> {
@@ -57,7 +57,7 @@ export function flattenObject<
     if (isObject(current)) {
       return {
         ...carry,
-        ...flattenObject(current, nextKey),
+        ...flattenScale(current, nextKey),
       };
     }
     return {

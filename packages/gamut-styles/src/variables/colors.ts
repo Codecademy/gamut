@@ -1,22 +1,11 @@
-import { flattenObject } from '@codecademy/variance';
-import { opacify } from 'polished';
+import { flattenScale } from '@codecademy/variance';
+import { rgba } from 'polished';
 /**
  * Core Colors
  */
 
 const black = '#000000';
 const white = '#ffffff';
-
-export const shadows = {
-  black: {
-    slight: opacify(0.85, black),
-    heavy: opacify(0.15, black),
-  },
-  white: {
-    slight: opacify(0.85, white),
-    heavy: opacify(0.05, white),
-  },
-} as const;
 
 export const coreSwatches = {
   beige: {
@@ -64,6 +53,16 @@ export const coreSwatches = {
     '800': '#616161',
     '900': '#424242',
   },
+  shadow: {
+    black: {
+      slight: rgba(black, 0.15),
+      heavy: rgba(black, 0.75),
+    },
+    white: {
+      slight: rgba(white, 0.15),
+      heavy: rgba(white, 0.95),
+    },
+  },
 } as const;
 
 export const trueColors = {
@@ -88,8 +87,7 @@ export const trueColors = {
 } as const;
 
 export const corePalette = {
-  ...flattenObject(coreSwatches),
-  ...flattenObject(shadows),
+  ...flattenScale(coreSwatches),
   ...trueColors,
 } as const;
 
@@ -131,6 +129,6 @@ const truePlatformColors = {
 } as const;
 
 export const platformPalette = {
-  ...flattenObject(platformSwatches),
+  ...flattenScale(platformSwatches),
   ...truePlatformColors,
 } as const;

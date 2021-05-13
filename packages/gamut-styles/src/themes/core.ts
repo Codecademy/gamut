@@ -43,7 +43,7 @@ export const coreTheme = createTheme({
       backgroundMuted: 'gray-200',
       backgroundEmphasized: 'gray-100',
       shadow: {
-        opaque: 'white-heavy',
+        opaque: 'shadow-white-heavy',
         solid: 'gray-200',
       },
     },
@@ -60,7 +60,7 @@ export const coreTheme = createTheme({
       backgroundMuted: 'gray-600',
       backgroundEmphasized: 'blue-800',
       shadow: {
-        opaque: 'black-heavy',
+        opaque: 'shadow-black-heavy',
         solid: 'black',
       },
     },

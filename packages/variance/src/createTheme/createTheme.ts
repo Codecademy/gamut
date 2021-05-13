@@ -2,7 +2,7 @@ import { mapValues, merge } from 'lodash';
 
 import { CSSObject } from '../types/props';
 import { AbstractTheme } from '../types/theme';
-import { flattenObject, LiteralPaths } from './flattenScale';
+import { flattenScale, LiteralPaths } from './flattenScale';
 import { KeyAsVariable, serializeTokens } from './serializeTokens';
 
 export type Merge<
@@ -75,7 +75,7 @@ class ThemeBuilder<T extends AbstractTheme> {
   ): ThemeBuilder<
     Merge<T & Reserved, Record<'colors', KeyAsVariable<NextColors, 'color'>>>
   > {
-    const flatColors = flattenObject(colors);
+    const flatColors = flattenScale(colors);
     const { variables, tokens } = serializeTokens(
       flatColors,
       'color',
@@ -122,7 +122,7 @@ class ThemeBuilder<T extends AbstractTheme> {
 
     const { tokens, variables } = serializeTokens(
       mapValues(
-        flattenObject(merged[initialMode]),
+        flattenScale(merged[initialMode]),
         (color) => this.#theme.colors[color]
       ),
       'color',
@@ -132,7 +132,7 @@ class ThemeBuilder<T extends AbstractTheme> {
     this.#theme = merge({}, this.#theme, {
       colors: tokens,
       modes: mapValues(modes, (value) => {
-        return flattenObject(value);
+        return flattenScale(value);
       }),
       mode: initialMode,
       _getColorValue: (color: keyof T['colors']) =>

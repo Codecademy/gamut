@@ -1,4 +1,4 @@
-import { flattenObject } from '@codecademy/variance';
+import { flattenScale } from '@codecademy/variance';
 
 import { corePalette } from './colors';
 
@@ -274,6 +274,6 @@ const trueColors = {
  */
 
 export const colors = {
-  ...flattenObject(swatches),
+  ...flattenScale(swatches),
   ...trueColors,
 } as const;
