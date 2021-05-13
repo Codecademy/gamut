@@ -29,6 +29,7 @@ export type PathValue<
   ? T[P]
   : never;
 
+/** Check if path has a primitive end value and return only the union of end paths */
 export type PathToLiteral<T, K extends Path<T>> = PathValue<T, K> extends
   | string
   | number
@@ -37,6 +38,11 @@ export type PathToLiteral<T, K extends Path<T>> = PathValue<T, K> extends
     : never
   : never;
 
+/**
+ * Reduce all paths to a single map of paths with primitive values removing all extra non stateful paths
+ * { path: { sub: 1 } } => { 'path-sub': 1 }
+ *
+ */
 export type LiteralPaths<T extends Record<string | number, any>> = {
   [K in Path<T> as PathToLiteral<T, K>]: PathValue<T, PathToLiteral<T, K>>;
 };

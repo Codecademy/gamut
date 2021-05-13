@@ -1,11 +1,21 @@
 import { flattenObject } from '@codecademy/variance';
+import { opacify } from 'polished';
+/**
+ * Core Colors
+ */
 
 const black = '#000000';
 const white = '#ffffff';
 
 export const shadows = {
-  blackShadow: 'rgba(0, 0, 0, 0.75)',
-  whiteShadow: 'rgba(255, 255, 255, 0.95)',
+  black: {
+    slight: opacify(0.85, black),
+    heavy: opacify(0.15, black),
+  },
+  white: {
+    slight: opacify(0.85, white),
+    heavy: opacify(0.05, white),
+  },
 } as const;
 
 export const coreSwatches = {
@@ -79,9 +89,13 @@ export const trueColors = {
 
 export const corePalette = {
   ...flattenObject(coreSwatches),
+  ...flattenObject(shadows),
   ...trueColors,
-  ...shadows,
 } as const;
+
+/**
+ * Platform Colors
+ */
 
 export const platformSwatches = {
   navy: {

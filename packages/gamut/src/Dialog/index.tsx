@@ -19,9 +19,7 @@ const modalSizeVariants = system.variant({
   },
 });
 
-const ShroudedOverlay = styled(Overlay)(
-  system.css({ bg: 'shadow-transparent' })
-);
+const ShroudedOverlay = styled(Overlay)(system.css({ bg: 'shadow-opaque' }));
 
 const ModalWrapper = styled.div<SizeVariants>(
   system.css({

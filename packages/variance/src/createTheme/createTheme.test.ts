@@ -102,19 +102,13 @@ describe('createTheme', () => {
         .addColors({
           black: '#000000',
           white: '#FFFFFF',
-          gray: { 200: '#eeeeee', 300: '#666666' },
-          le: { blue: 'gray-200' },
         })
         .addColorModes('light', {
           light: {
             primary: 'black',
-            editor: { blue: 'gray-200' },
           },
           dark: {
             primary: 'white',
-            editor: {
-              blue: 'gray-200',
-            },
           },
         })
         .build();
@@ -122,6 +116,25 @@ describe('createTheme', () => {
       expect(theme._getColorValue('white')).toEqual('#FFFFFF');
       expect(theme._getColorValue(theme.modes.light.primary)).toEqual(
         '#000000'
+      );
+    });
+    it('returns value checker for colors', () => {
+      const theme = builder
+        .addColors({
+          black: '#000000',
+          white: '#FFFFFF',
+          gray: { 200: '#eeeeee', 300: '#666666' },
+        })
+        .addColorModes('light', {
+          light: {
+            primary: 'gray-200',
+          },
+        })
+        .build();
+
+      expect(theme._getColorValue('gray-300')).toEqual('#666666');
+      expect(theme._getColorValue(theme.modes.light.primary)).toEqual(
+        '#eeeeee'
       );
     });
   });

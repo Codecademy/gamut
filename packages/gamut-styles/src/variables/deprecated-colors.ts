@@ -1,6 +1,6 @@
 import { flattenObject } from '@codecademy/variance';
 
-import { corePalette, shadows } from './colors';
+import { corePalette } from './colors';
 
 const { black, white } = corePalette;
 
@@ -140,6 +140,13 @@ export const interactiveColors = {
   light: corePalette.yellow,
 } as const;
 
+/**
+ * @deprecated
+ * Using these variables directly is no longer supported.
+ *
+ * Please use [`theme.colors`](https://gamut.codecademy.com/storybook/?path=/docs/foundations-theme--colors#standard-colors)
+ */
+
 export const editorColors = {
   blue: '#83fff5',
   deepPurple: '#cc7bc2',
@@ -150,6 +157,13 @@ export const editorColors = {
   red: '#e85d7f',
   yellow: '#ffe083',
 } as const;
+
+/**
+ * @deprecated
+ * Using these variables directly is no longer supported.
+ *
+ * Please use [`theme.colors`](https://gamut.codecademy.com/storybook/?path=/docs/foundations-theme--colors#standard-colors)
+ */
 
 export const platformColors = {
   mint: {
@@ -167,26 +181,6 @@ export const platformColors = {
     '800': '#2a283e',
     '900': '#15141f',
   },
-} as const;
-
-export const colorNames = {
-  beige: 'Bagel',
-  blue: 'A Train',
-  green: 'Forest Hills',
-  hyper: 'Hyper',
-  lightBlue: 'Bronx River',
-  lightGreen: 'Gowanus',
-  navy: 'Navy Yard',
-  orange: 'Ferry',
-  paleBlue: 'Piragua',
-  paleGreen: 'Lenape',
-  palePink: 'Lox',
-  paleYellow: 'Dumpling',
-  pink: 'Hotdog',
-  red: 'Redhook',
-  yellow: 'Taxi',
-  black: 'Black',
-  white: 'White',
 } as const;
 
 /**
@@ -245,6 +239,13 @@ export const swatches = {
   },
 } as const;
 
+/**
+ * @deprecated
+ * Using these variables directly is no longer supported.
+ *
+ * Please use [`theme.colors`](https://gamut.codecademy.com/storybook/?path=/docs/foundations-theme--colors#standard-colors)
+ */
+
 const trueColors = {
   beige: swatches.beige[0],
   blue: swatches.blue[500],
@@ -265,8 +266,14 @@ const trueColors = {
   white,
 } as const;
 
+/**
+ * @deprecated
+ * Using these variables directly is no longer supported.
+ *
+ * Please use [`theme.colors`](https://gamut.codecademy.com/storybook/?path=/docs/foundations-theme--colors#standard-colors)
+ */
+
 export const colors = {
   ...flattenObject(swatches),
   ...trueColors,
-  ...shadows,
 } as const;

@@ -12,6 +12,12 @@ import {
   spacing,
 } from '../variables';
 
+/**
+ *  @description  This is the core theme that all other Codecademy themes are extended from
+ * and is the only theme that gamut components are typed to. This ensures that gamut components
+ * are guaranteed to be interoperable between all contexts, but with differing behaviors.
+ */
+
 export const coreTheme = createTheme({
   boxShadows,
   breakpoints: mediaQueries,
@@ -37,8 +43,8 @@ export const coreTheme = createTheme({
       backgroundMuted: 'gray-200',
       backgroundEmphasized: 'gray-100',
       shadow: {
-        transparent: 'whiteShadow',
-        opaque: 'gray-200',
+        opaque: 'white-heavy',
+        solid: 'gray-200',
       },
     },
     dark: {
@@ -54,8 +60,8 @@ export const coreTheme = createTheme({
       backgroundMuted: 'gray-600',
       backgroundEmphasized: 'blue-800',
       shadow: {
-        transparent: 'blackShadow',
-        opaque: 'black',
+        opaque: 'black-heavy',
+        solid: 'black',
       },
     },
   })
