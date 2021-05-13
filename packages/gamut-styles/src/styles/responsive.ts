@@ -23,11 +23,11 @@ export const screenSizeLTE = (
 };
 
 export const screenSizeGTE = (
-  min: string,
+  max: string,
   content: string | SerializedStyles
 ) => {
   return css`
-    @media only screen and (min-width: ${min}) {
+    @media only screen and (max-width: ${max}) {
       ${content}
     }
   `;

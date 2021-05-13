@@ -1,24 +1,28 @@
-import { styledConfig, system, theme } from '@codecademy/gamut-styles';
-
-const { colors } = theme;
+import {
+  colors,
+  styledConfig,
+  swatches,
+  system,
+} from '@codecademy/gamut-styles';
+import { Theme, useTheme } from '@emotion/react';
 
 export const modeColorGroups = {
   dark: {
     primary: {
       background: colors.yellow,
-      backgroundDull: colors['yellow-400'],
-      backgroundEmphasized: colors['blue-800'],
-      backgroundMuted: colors['gray-600'],
-      foregroundMuted: colors['gray-200'],
+      backgroundDull: swatches.yellow[400],
+      backgroundEmphasized: swatches.blue[800],
+      backgroundMuted: swatches.gray[600],
+      foregroundMuted: swatches.gray[200],
       foreground: colors.black,
       shadow: colors.white,
     },
     secondary: {
       background: colors.white,
-      backgroundDull: colors['gray-200'],
-      backgroundEmphasized: colors['blue-800'],
-      backgroundMuted: colors['gray-600'],
-      foregroundMuted: colors['gray-200'],
+      backgroundDull: swatches.gray[200],
+      backgroundEmphasized: swatches.blue[800],
+      backgroundMuted: swatches.gray[600],
+      foregroundMuted: swatches.gray[200],
       foreground: colors.navy,
       shadow: colors['gray-200'],
     },
@@ -26,19 +30,19 @@ export const modeColorGroups = {
   light: {
     primary: {
       background: colors.hyper,
-      backgroundDull: colors['hyper-400'],
-      backgroundEmphasized: colors['gray-100'],
-      backgroundMuted: colors['gray-200'],
-      foregroundMuted: colors['gray-600'],
+      backgroundDull: swatches.hyper[400],
+      backgroundEmphasized: swatches.gray[100],
+      backgroundMuted: swatches.gray[200],
+      foregroundMuted: swatches.gray[600],
       foreground: colors.white,
       shadow: colors.navy,
     },
     secondary: {
       background: colors.navy,
-      backgroundDull: colors['gray-600'],
-      backgroundEmphasized: colors['gray-100'],
-      backgroundMuted: colors['gray-200'],
-      foregroundMuted: colors['gray-600'],
+      backgroundDull: swatches.gray[600],
+      backgroundEmphasized: swatches.gray[100],
+      backgroundMuted: swatches.gray[200],
+      foregroundMuted: swatches.gray[600],
       foreground: colors.white,
       shadow: colors.black,
     },
@@ -46,6 +50,14 @@ export const modeColorGroups = {
 };
 
 export const config = styledConfig(['size']);
+
+export function useColorMode(mode?: keyof Theme['colorModes']['modes']) {
+  const theme = useTheme();
+
+  // This is a defense against theme being undefined in specific tests and should not come into play for actual code
+  const { active = 'light' } = theme?.colorModes || {};
+  return mode ?? active;
+}
 
 export const buttonSizing = system.variant({
   prop: 'size',
