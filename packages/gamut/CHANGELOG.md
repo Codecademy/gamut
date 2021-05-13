@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [32.18.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@32.18.4...@codecademy/gamut@32.18.5) (2021-05-13)
+
+
+### Reverts
+
+* Revert "fix(Select): add labels back" (#1751) ([8257e2f](https://github.com/Codecademy/client-modules/commit/8257e2feacb9aaafad0cf8bac86def17a5cfadea)), closes [#1751](https://github.com/Codecademy/client-modules/issues/1751)
+
+
+
 ### [32.18.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@32.18.3...@codecademy/gamut@32.18.4) (2021-05-12)
 
 
