@@ -31,10 +31,8 @@ const renderView = setupRtl(Background, {
 });
 
 const ActiveMode = () => {
-  const {
-    colorModes: { active },
-  } = useTheme();
-  return <div>{active}</div>;
+  const { mode } = useTheme();
+  return <div>{mode}</div>;
 };
 
 describe('Background', () => {

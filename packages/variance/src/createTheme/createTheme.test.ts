@@ -7,11 +7,15 @@ describe('createTheme', () => {
     breakpoints: { xs: '1', sm: '2', md: '3', lg: '4', xl: '5' },
   };
   it('works', () => {
-    expect(createTheme(base).build().theme).toEqual(base);
+    expect(createTheme(base).build()).toEqual({
+      ...base,
+      _variables: {},
+      _tokens: {},
+    });
   });
 
   it('adds a scale', () => {
-    const { theme } = createTheme(base)
+    const theme = createTheme(base)
       .addScale('test', () => ({
         test: 1,
         test2: 2,
@@ -27,15 +31,15 @@ describe('createTheme', () => {
       test2: 2,
     }));
 
-    expect(builder.build().theme.test).toEqual({ test: 1, test2: 2 });
+    expect(builder.build().test).toEqual({ test: 1, test2: 2 });
 
     builder.updateScale('test', () => ({ test3: 3 }));
 
-    expect(builder.build().theme.test).toEqual({ test: 1, test2: 2, test3: 3 });
+    expect(builder.build().test).toEqual({ test: 1, test2: 2, test3: 3 });
   });
 
   it('serializes variables', () => {
-    const { theme, variables } = createTheme(base)
+    const theme = createTheme(base)
       .addScale('test', () => ({
         test: 1,
         test2: 2,
@@ -46,7 +50,10 @@ describe('createTheme', () => {
       test: 'var(--test-test)',
       test2: 'var(--test-test2)',
     });
-    expect(variables.root).toEqual({ '--test-test': 1, '--test-test2': 2 });
+    expect(theme._variables.root).toEqual({
+      '--test-test': 1,
+      '--test-test2': 2,
+    });
   });
 
   describe('colors', () => {
@@ -63,12 +70,12 @@ describe('createTheme', () => {
     );
     const builder = createTheme(base);
     it('creates color variables', () => {
-      const { theme } = builder.addColors(staticColors).build();
+      const theme = builder.addColors(staticColors).build();
 
       expect(theme.colors).toEqual(cssVariableReferences);
     });
     it('adds colorModes', () => {
-      const { theme, variables } = builder
+      const theme = builder
         .addColors(staticColors)
         .addColorModes('light', {
           light: {
@@ -85,14 +92,17 @@ describe('createTheme', () => {
         primary: 'var(--color-primary)',
       });
 
-      expect(variables.colorMode).toEqual({
+      expect(theme._variables.mode).toEqual({
         '--color-primary': 'var(--color-red)',
       });
     });
 
     it('returns value checker for colors', () => {
-      const { theme, getColorValue } = builder
-        .addColors({ black: '#000000', white: '#FFFFFF' })
+      const theme = builder
+        .addColors({
+          black: '#000000',
+          white: '#FFFFFF',
+        })
         .addColorModes('light', {
           light: {
             primary: 'black',
@@ -103,9 +113,28 @@ describe('createTheme', () => {
         })
         .build();
 
-      expect(getColorValue('white')).toEqual('#FFFFFF');
-      expect(getColorValue(theme.colorModes.modes.light.primary)).toEqual(
+      expect(theme._getColorValue('white')).toEqual('#FFFFFF');
+      expect(theme._getColorValue(theme.modes.light.primary)).toEqual(
         '#000000'
+      );
+    });
+    it('returns value checker for colors', () => {
+      const theme = builder
+        .addColors({
+          black: '#000000',
+          white: '#FFFFFF',
+          gray: { 200: '#eeeeee', 300: '#666666' },
+        })
+        .addColorModes('light', {
+          light: {
+            primary: 'gray-200',
+          },
+        })
+        .build();
+
+      expect(theme._getColorValue('gray-300')).toEqual('#666666');
+      expect(theme._getColorValue(theme.modes.light.primary)).toEqual(
+        '#eeeeee'
       );
     });
   });

@@ -12,6 +12,7 @@ import { AssetProvider } from '@codecademy/gamut-styles/src/AssetProvider';
 import {
   createEmotionCache,
   GamutProvider,
+  theme,
 } from '@codecademy/gamut-styles/src';
 import { NavigationProvider } from '../Navigation/NavigationProvider';
 import React from 'react';
@@ -44,7 +45,10 @@ export const DocsContainer: React.FC<{ context: DocsContextProps }> = ({
 
   return (
     <DocsContext.Provider value={context}>
-      <GamutProvider cache={createEmotionCache({ speedy: false })}>
+      <GamutProvider
+        cache={createEmotionCache({ speedy: false })}
+        theme={theme}
+      >
         <AssetProvider />
         <NavigationProvider>
           <SourceContainer>

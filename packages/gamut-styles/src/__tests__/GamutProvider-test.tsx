@@ -53,7 +53,9 @@ describe(GamutProvider, () => {
     expect(wrapper.find('div').text()).toBe(JSON.stringify(theme));
   });
   it('it can have another GamutProvider as a child with creating multiple caches or globals', () => {
-    const { wrapper } = renderWrapper({ children: <GamutProvider /> });
+    const { wrapper } = renderWrapper({
+      children: <GamutProvider theme={theme} />,
+    });
 
     expect(createEmotionCache).toHaveBeenCalledTimes(1);
     expect(wrapper.find(Global).length).toEqual(4);
@@ -69,6 +71,6 @@ describe(GamutProvider, () => {
     });
 
     const globals = wrapper.find(Global);
-    expect(globals.length).toBe(3);
+    expect(globals.length).toBe(5);
   });
 });

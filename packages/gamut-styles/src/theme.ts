@@ -2,7 +2,7 @@ import { createTheme } from '@codecademy/variance';
 
 import * as tokens from './variables';
 
-export const { theme, variables, getColorValue } = createTheme({
+export const theme = createTheme({
   boxShadows: tokens.boxShadows,
   breakpoints: tokens.mediaQueries,
   fontSize: tokens.fontSize,

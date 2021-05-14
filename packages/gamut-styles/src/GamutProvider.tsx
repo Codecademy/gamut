@@ -10,12 +10,11 @@ import React, { useContext, useRef } from 'react';
 import { createEmotionCache } from './cache';
 import { Reboot, Typography } from './globals';
 import { Variables } from './globals/Variables';
-import { theme as baseTheme, variables as baseVariables } from './theme';
 
 export interface GamutProviderProps {
   useGlobals?: boolean;
   useCache?: boolean;
-  theme?: Theme;
+  theme: Theme;
   variables?: Record<string, CSSObject>;
   cache?: EmotionCache;
 }
@@ -33,8 +32,8 @@ GamutContext.displayName = 'GamutContext';
 export const GamutProvider: React.FC<GamutProviderProps> = ({
   children,
   cache,
-  theme = baseTheme,
-  variables = baseVariables,
+  theme,
+  variables,
   useGlobals = true,
   useCache = true,
 }) => {
@@ -56,7 +55,8 @@ export const GamutProvider: React.FC<GamutProviderProps> = ({
     <>
       <Typography />
       <Reboot />
-      <Variables variables={variables} />
+      <Variables variables={theme._variables} />
+      {variables && <Variables variables={variables} />}
     </>
   );
 
