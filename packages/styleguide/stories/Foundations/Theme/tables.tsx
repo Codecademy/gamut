@@ -26,7 +26,7 @@ const PATH_COLUMN = {
 };
 
 export const lightMode = {
-  rows: Object.entries(theme.colorModes.modes.light).map(([id, value]) => ({
+  rows: Object.entries(theme.modes.light).map(([id, value]) => ({
     id,
     hex: value,
   })),
@@ -52,7 +52,7 @@ export const lightMode = {
 };
 
 export const darkMode = {
-  rows: Object.entries(theme.colorModes.modes.dark).map(([id, value]) => ({
+  rows: Object.entries(theme.modes.dark).map(([id, value]) => ({
     id,
     hex: value,
   })),
