@@ -10,6 +10,7 @@ import React, { useContext, useRef } from 'react';
 import { createEmotionCache } from './cache';
 import { Reboot, Typography } from './globals';
 import { Variables } from './globals/Variables';
+import { coreTheme } from './themes/core';
 
 export interface GamutProviderProps {
   useGlobals?: boolean;
@@ -32,7 +33,7 @@ GamutContext.displayName = 'GamutContext';
 export const GamutProvider: React.FC<GamutProviderProps> = ({
   children,
   cache,
-  theme,
+  theme = coreTheme,
   variables,
   useGlobals = true,
   useCache = true,

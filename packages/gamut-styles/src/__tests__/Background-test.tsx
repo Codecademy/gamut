@@ -5,7 +5,7 @@ import { overArgs } from 'lodash';
 import React from 'react';
 
 import { Background } from '../Background';
-import { theme } from '../theme';
+import { coreTheme as theme } from '../themes';
 
 expect.extend(matchers);
 

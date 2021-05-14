@@ -22,7 +22,7 @@ export type ColorAlias = keyof ColorModeShape;
 
 export type ColorModeProps = {
   mode: ColorModes;
-  bg?: Colors;
+  bg?: keyof Theme['colors'];
   className?: string;
 };
 

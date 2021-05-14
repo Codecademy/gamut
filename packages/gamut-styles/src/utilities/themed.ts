@@ -1,6 +1,31 @@
-import { Path, PathValue } from '@codecademy/variance';
 import { Theme } from '@emotion/react';
 import { get } from 'lodash';
+
+/**
+ * Returns an exhaustive list of all possible paths of an object T for keys K.
+ * Possibilities are returned as `k1.k2.k3`.
+ */
+type FindPath<T, K extends keyof T> = K extends string | number
+  ? T[K] extends Record<string | number, any>
+    ? T[K] extends ArrayLike<any>
+      ? K | `${K}.${FindPath<T[K], Exclude<keyof T[K], keyof any[]>>}`
+      : K | `${K}.${FindPath<T[K], keyof T[K]>}`
+    : K
+  : never;
+
+/** Returns valid paths of object T */
+type Path<T> = FindPath<T, keyof T> | keyof T;
+
+/** Returns the value of a valid path P `k1.k2.k3` in object T */
+type PathValue<T, P extends Path<T>> = P extends `${infer K}.${infer Rest}`
+  ? K extends keyof T
+    ? Rest extends Path<T[K]>
+      ? PathValue<T[K], Rest>
+      : never
+    : never
+  : P extends keyof T
+  ? T[P]
+  : never;
 
 /**
  * Creates a function that will look up the a design token from the `theme` context of a
@@ -11,10 +36,7 @@ import { get } from 'lodash';
  *  value at supplied path parameter
  */
 
-export type SafeThemeValues = Omit<
-  Theme,
-  '_variables' | '_tokens' | '_getColorValue'
->;
+type SafeThemeValues = Omit<Theme, '_variables' | '_tokens' | '_getColorValue'>;
 
 export function themed<P extends Path<SafeThemeValues>>(
   path: P
