@@ -9,12 +9,30 @@ import React from 'react';
 import { DropdownButtonProps } from '..';
 
 export type EmptySectionProps = {
+  /**
+   * Paragraph text that displays beneath the heading text
+   */
   bodyText: string;
+  /**
+   * Button or dropdown button with an action for the user to take
+   */
   children: React.ReactElement<ButtonProps | DropdownButtonProps>;
+  /**
+   * The larger heading text that appears over the body text
+   */
   headingText: string;
   illustration: React.ComponentType<IllustrationProps>;
+  /**
+   * Whether the illustration appears to the left or right of the rest of the section's content
+   */
   illustrationPosition?: 'left' | 'right';
+  /**
+   * This should be the same as the background color in order to create a patterned border effect
+   */
   innerBGColor: keyof Theme['colors'];
+  /**
+   * Whether the pattern background stretches to the end of the left or right of the viewport
+   */
   stretchDirection: 'left' | 'right';
 };
 
