@@ -58,6 +58,7 @@ Object {
         "base": "4rem",
         "md": "5rem",
       },
+      "headerZ": 15,
     },
   },
   "_variables": Object {
@@ -125,6 +126,7 @@ Object {
       "--color-yellow-400": "#CCA900",
       "--color-yellow-500": "#FFD300",
       "--elements-headerHeight": "4rem",
+      "--elements-headerZ": 15,
       "@media only screen and (min-width: 1024px)": Object {
         "--elements-headerHeight": "5rem",
       },
@@ -229,6 +231,7 @@ Object {
   },
   "elements": Object {
     "headerHeight": "var(--elements-headerHeight)",
+    "headerZ": "var(--elements-headerZ)",
   },
   "fontFamily": Object {
     "accent": "\\"Suisse\\", \\"Apercu\\", -apple-system, BlinkMacSystemFont,
@@ -254,8 +257,6 @@ monospace",
     "64": "4rem",
   },
   "fontWeight": Object {
-    "400": 400,
-    "700": 700,
     "base": 400,
     "title": 700,
   },
@@ -382,6 +383,7 @@ Object {
         "base": "4rem",
         "md": "5rem",
       },
+      "headerZ": 15,
     },
   },
   "_variables": Object {
@@ -462,6 +464,7 @@ Object {
       "--color-yellow-400": "#CCA900",
       "--color-yellow-500": "#FFD300",
       "--elements-headerHeight": "4rem",
+      "--elements-headerZ": 15,
       "@media only screen and (min-width: 1024px)": Object {
         "--elements-headerHeight": "5rem",
       },
@@ -579,6 +582,7 @@ Object {
   },
   "elements": Object {
     "headerHeight": "var(--elements-headerHeight)",
+    "headerZ": "var(--elements-headerZ)",
   },
   "fontFamily": Object {
     "accent": "\\"Suisse\\", \\"Apercu\\", -apple-system, BlinkMacSystemFont,
@@ -604,8 +608,6 @@ monospace",
     "64": "4rem",
   },
   "fontWeight": Object {
-    "400": 400,
-    "700": 700,
     "base": 400,
     "title": 700,
   },
