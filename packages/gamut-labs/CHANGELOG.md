@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [17.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@16.0.5...@codecademy/gamut-labs@17.0.0) (2021-05-14)
+
+
+### ⚠ BREAKING CHANGES
+
+* **Header:** reroute header upsell for upgrade
+
+### Features
+
+* **Header:** reroute header upsell for upgrade ([312104c](https://github.com/Codecademy/client-modules/commit/312104ca90262ce6cecb43a2c4779774d9830ea3))
+
+
+
 ### [16.0.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@16.0.4...@codecademy/gamut-labs@16.0.5) (2021-05-13)
 
 **Note:** Version bump only for package @codecademy/gamut-labs
