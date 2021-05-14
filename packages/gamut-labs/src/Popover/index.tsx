@@ -27,7 +27,8 @@ const PopoverContainer = styled.div<StyleProps>`
 const RaisedDiv = styled.div<StyleProps>`
   z-index: 1;
   border-radius: 2px;
-  border: 1px ${({ outline }) => (outline ? 'solid' : 'none')} black;
+  border: 1px ${({ outline }) => (outline ? 'solid' : 'none')}
+    ${({ theme }) => theme.colors.secondary};
   background-color: ${({ theme }) => theme.colors.white};
   ${({ outline }) =>
     !outline &&
