@@ -1,7 +1,6 @@
 import { createTheme } from '@codecademy/variance';
 
 import {
-  boxShadows,
   corePalette,
   elements,
   fontFamily,
@@ -19,7 +18,6 @@ import {
  */
 
 export const coreTheme = createTheme({
-  boxShadows,
   breakpoints: mediaQueries,
   fontSize,
   fontFamily,

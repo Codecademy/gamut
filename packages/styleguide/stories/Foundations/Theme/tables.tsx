@@ -273,44 +273,6 @@ export const space = {
   ],
 };
 
-export const boxShadow = {
-  rows: Object.entries(theme.boxShadows).map(([id, value]) => ({
-    id,
-    value,
-  })),
-  columns: [
-    PROP_COLUMN,
-    {
-      ...PATH_COLUMN,
-      render: ({ id }: any) => <Code>theme.boxShadows[{id}]</Code>,
-    },
-    {
-      ...VALUE_COLUMN,
-      render: ({ value }: any) => (
-        <Box maxWidth="24rem">
-          <Code>{value.split('),')}</Code>
-        </Box>
-      ),
-      size: 'fill',
-    },
-    {
-      key: 'example',
-      name: 'Example',
-      size: 'lg',
-      render: ({ value }: any) => (
-        <Box
-          boxShadow={value}
-          width="1.5rem"
-          height="1.5rem"
-          border={1}
-          borderColor="gray-600"
-          mb={32}
-        />
-      ),
-    },
-  ],
-};
-
 export const breakpoint = {
   rows: Object.entries(theme.breakpoints).map(([id, value]) => ({
     id,
