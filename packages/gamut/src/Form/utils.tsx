@@ -13,7 +13,7 @@ const formatAsOptions = ({ label, value, key }: OptionTypeBase) => {
       {label}
     </option>
   ) : (
-    <option label={label} key={label} value={value} data-testid={label}>
+    <option label={value} key={label} value={value} data-testid={label}>
       {value}
     </option>
   );
