@@ -35,6 +35,7 @@ const cardVariants = system.variant({
 const shadowVariants = system.variant({
   prop: 'shadow',
   base: {
+    position: 'relative',
     boxShadow: `0px 0px 0 ${theme.colors.navy}`,
     transition: 'box-shadow 200ms ease, transform 200ms ease',
   },
