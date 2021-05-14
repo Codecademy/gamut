@@ -152,7 +152,6 @@ export const formBaseStyles = css`
   color: ${colorStates.base.color};
   font-weight: normal;
   font-size: ${theme.fontSize[16]};
-  cursor: pointer;
 `;
 
 export const formBaseComponentStyles = css`

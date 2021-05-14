@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@9.9.0...@codecademy/gamut-styles@10.0.0) (2021-05-12)
+
+
+### ⚠ BREAKING CHANGES
+
+* use a sticky Box for GlobalHeader
+
+### Features
+
+* use a sticky Box for GlobalHeader ([dd8639e](https://github.com/Codecademy/client-modules/commit/dd8639ee6a6ce669912907a60646d1bd1f829ee1))
+
+
+
 ## [9.9.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@9.8.1...@codecademy/gamut-styles@9.9.0) (2021-05-11)
 
 
