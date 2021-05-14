@@ -20,10 +20,6 @@ export type Merge<
       : never;
   };
 
-export type CSSVariables<T, Prefix extends string> = {
-  [K in Extract<keyof T, string> as `--${Prefix}-${K}`]: string;
-};
-
 type Reserved = {
   _variables: Record<string, CSSObject>;
   _tokens: Record<string | number, any>;
@@ -43,7 +39,7 @@ class ThemeBuilder<T extends AbstractTheme> {
   createScaleVariables<Key extends keyof Omit<T, 'breakpoints'> & string>(
     key: Key
   ): ThemeBuilder<
-    Merge<T & Reserved, Record<Key, KeyAsVariable<T[Key], Key>>>
+    Merge<T, Reserved, Record<Key, Record<Key, KeyAsVariable<T[Key], Key>>>>
   > {
     const { variables, tokens } = serializeTokens(
       this.#theme[key],

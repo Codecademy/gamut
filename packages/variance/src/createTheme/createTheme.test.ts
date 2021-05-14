@@ -46,6 +46,7 @@ describe('createTheme', () => {
       }))
       .createScaleVariables('test')
       .build();
+
     expect(theme.test).toEqual({
       test: 'var(--test-test)',
       test2: 'var(--test-test2)',
