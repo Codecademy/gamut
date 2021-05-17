@@ -3,6 +3,60 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [38.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@38.0.0...@codecademy/styleguide@38.1.0) (2021-05-14)
+
+
+### Features
+
+* added EmptySection ([2a0907a](https://github.com/Codecademy/client-modules/commit/2a0907afa099fb93950ca19a5ca4c855c74e055b))
+
+
+
+## [38.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@37.5.8...@codecademy/styleguide@38.0.0) (2021-05-14)
+
+
+### ⚠ BREAKING CHANGES
+
+* **Header:** reroute header upsell for upgrade
+
+### Features
+
+* **Header:** reroute header upsell for upgrade ([312104c](https://github.com/Codecademy/client-modules/commit/312104ca90262ce6cecb43a2c4779774d9830ea3))
+
+
+
+### [37.5.8](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@37.5.7...@codecademy/styleguide@37.5.8) (2021-05-13)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [37.5.7](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@37.5.6...@codecademy/styleguide@37.5.7) (2021-05-13)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [37.5.6](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@37.5.5...@codecademy/styleguide@37.5.6) (2021-05-13)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [37.5.5](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@37.5.4...@codecademy/styleguide@37.5.5) (2021-05-13)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
 ### [37.5.4](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@37.5.3...@codecademy/styleguide@37.5.4) (2021-05-12)
 
 **Note:** Version bump only for package @codecademy/styleguide

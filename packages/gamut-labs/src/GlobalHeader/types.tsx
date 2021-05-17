@@ -22,7 +22,7 @@ export type User = {
   isCustomerSupport?: boolean;
   isAccountManager?: boolean;
   isPaused?: boolean;
-  proTrialCheckoutUrl?: string;
+  proCheckoutUrl?: string;
   showProUpgrade?: boolean;
 };
 
