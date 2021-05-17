@@ -45,7 +45,7 @@ export type DeprecatedModalProps = {
  * Please check the gamut board for updates on the new version of DeprecatedModal
  */
 
-export const DecprecatedModal: React.FC<DeprecatedModalProps> = ({
+export const DeprecatedModal: React.FC<DeprecatedModalProps> = ({
   children,
   className,
   onRequestClose,
