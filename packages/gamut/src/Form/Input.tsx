@@ -123,8 +123,11 @@ export const Input = forwardRef<HTMLInputElement, InputWrapperProps>(
       ? 'activated'
       : undefined;
     return (
-      <Box position="relative" textColor={color}>
-        {console.log(conditionalStyleState)}
+      <Box
+        display={rest.type === 'hidden' ? 'none' : undefined}
+        position="relative"
+        textColor={color}
+      >
         <AsComponent
           {...rest}
           id={id || rest.htmlFor}
