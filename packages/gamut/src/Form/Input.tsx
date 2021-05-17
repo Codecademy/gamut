@@ -10,13 +10,15 @@ import React, {
 import { Box, FlexBox } from '../Box';
 import {
   conditionalInputStyleProps,
-  conditionalStyles,
   formBaseFieldStyles,
   formFieldFocusStyles,
   formFieldPaddingStyles,
   iconPadding,
 } from './styles/shared';
-import { formFieldStyles } from './styles/shared-system-props';
+import {
+  conditionalStyles,
+  formFieldStyles,
+} from './styles/shared-system-props';
 
 export type InputProps = InputHTMLAttributes<HTMLInputElement> & {
   id?: string;
@@ -115,15 +117,21 @@ export const Input = forwardRef<HTMLInputElement, InputWrapperProps>(
 
     const AsComponent = As || InputElement;
     const ShownIcon = Icon || icon;
-
+    const conditionalStyleState = error
+      ? 'error'
+      : activatedStyle
+      ? 'activated'
+      : undefined;
     return (
       <Box position="relative" textColor={color}>
+        {console.log(conditionalStyleState)}
         <AsComponent
           {...rest}
           id={id || rest.htmlFor}
           ref={ref}
-          error={error}
-          activated={activated === undefined ? activatedStyle : activated}
+          variant={conditionalStyleState}
+          // error={error}
+          // activated={activated === undefined ? activatedStyle : activated}
           icon={error || valid || !!Icon}
           className={className}
           onChange={changeHandler}

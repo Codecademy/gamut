@@ -10,7 +10,6 @@ import {
   Input,
   Logo,
   ProLabel,
-  SelectDropdown,
   StrokeButton,
   Text,
   TextButton,
@@ -88,7 +87,7 @@ const renderInputs = () => {
     >
       <Input />
       <Input placeholder="disabled" disabled />
-      <Input defaultValue="updog" />
+      <Input defaultValue="updog" error />
     </GridBox>
   );
 };

@@ -1,4 +1,5 @@
-import { system, theme } from '@codecademy/gamut-styles';
+import { system, theme, variant } from '@codecademy/gamut-styles';
+import { css } from '@emotion/react';
 import { StandardPropertiesHyphen } from 'csstype';
 
 const transitionConcatenator = (
@@ -73,4 +74,21 @@ export const formFieldStyles = system.css({
   ...formBaseFieldStyles,
   ...formFieldPaddingStyles,
   '&:focus': formFieldFocusStyles,
+});
+
+export const conditionalStyles = system.variant({
+  variants: {
+    error: {
+      textColor: 'danger',
+      borderColor: 'danger',
+      '&:hover': {
+        borderColor: 'danger',
+      },
+      '&:focus': {
+        borderColor: 'danger',
+        boxShadow: `inset 0 0 0 1px ${theme.colors.danger}`,
+      },
+    },
+    activated: { borderColor: 'text' },
+  },
 });
