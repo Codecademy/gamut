@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [17.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@17.1.0...@codecademy/gamut-labs@17.1.1) (2021-05-17)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+## [17.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@17.0.0...@codecademy/gamut-labs@17.1.0) (2021-05-14)
+
+
+### Features
+
+* added EmptySection ([2a0907a](https://github.com/Codecademy/client-modules/commit/2a0907afa099fb93950ca19a5ca4c855c74e055b))
+
+
+
 ## [17.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@16.0.5...@codecademy/gamut-labs@17.0.0) (2021-05-14)
 
 
