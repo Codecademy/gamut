@@ -3,9 +3,9 @@ import { ThemeProvider } from '@emotion/react';
 import { fireEvent, render, screen } from '@testing-library/react';
 import React from 'react';
 
-import { DeprecatedModal, ModalProps } from '..';
+import { DeprecatedModal, DeprecatedModalProps } from '..';
 
-const renderModal = (props?: Partial<ModalProps>) => {
+const renderModal = (props?: Partial<DeprecatedModalProps>) => {
   return render(
     <ThemeProvider theme={theme}>
       <DeprecatedModal isOpen onRequestClose={() => {}} {...props}>
