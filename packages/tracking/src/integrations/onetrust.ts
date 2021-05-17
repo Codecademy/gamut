@@ -39,9 +39,9 @@ export const initializeOneTrust = async ({
 
 const rawStyles = `
 :root {
-  --brand-purple: #6400e4;
-  --color-gray-500: #828285;
-  --color-white: #fff;
+  --onetrust-brand-purple: #6400e4;
+  --onetrust-color-gray-500: #828285;
+  --onetrust-color-white: #fff;
 }
 
 #onetrust-banner-sdk {
@@ -107,18 +107,18 @@ const rawStyles = `
   font-size: 1rem !important;
 }
 #onetrust-pc-btn-handler:focus, #onetrust-accept-btn-handler:focus {
-  box-shadow: 0 0 0 2px var(--color-white), 0 0 0 4px var(--brand-purple);
+  box-shadow: 0 0 0 2px var(--onetrust-color-white), 0 0 0 4px var(--onetrust-brand-purple);
   text-decoration: none !important;
   outline: none !important;
 }
 #onetrust-pc-btn-handler{
-  color: var(--brand-purple) !important;
-  border: 1px solid var(--brand-purple)!important;
-  background: var(--color-white) !important
+  color: var(--onetrust-brand-purple) !important;
+  border: 1px solid var(--onetrust-brand-purple)!important;
+  background: var(--onetrust-color-white) !important
 }
 #onetrust-accept-btn-handler {
-  color: var(--color-white) !important;
-  background: var(--brand-purple)!important;
+  color: var(--onetrust-color-white) !important;
+  background: var(--onetrust-brand-purple)!important;
   margin-left: 1rem !important;
 }
 #onetrust-close-btn-container {
@@ -139,27 +139,27 @@ const rawStyles = `
 #accept-recommended-btn-handler:focus,
 #onetrust-pc-sdk .ot-pc-refuse-all-handler:focus,
 #onetrust-pc-sdk .save-preference-btn-handler:focus {
-  box-shadow: 0 0 0 2px var(--color-white), 0 0 0 4px var(--brand-purple);
+  box-shadow: 0 0 0 2px var(--onetrust-color-white), 0 0 0 4px var(--onetrust-brand-purple);
   text-decoration: none !important;
   outline: none !important;
   opacity: 1 !important;
 }
 
 .ot-switch-label {
-  border: 1px solid var(--color-gray-500) !important;
-  background-color: var(--color-gray-500) !important;
+  border: 1px solid var(--onetrust-color-gray-500) !important;
+  background-color: var(--onetrust-color-gray-500) !important;
 }
 
 .ot-switch-nob {
-  background: var(--color-white) !important;
+  background: var(--onetrust-color-white) !important;
 }
 
 .ot-switch-inner:before {
-  background-color: var(--brand-purple) !important;
+  background-color: var(--onetrust-brand-purple) !important;
 }
 
 .switch-checkbox:checked+.ot-switch-label .ot-switch-nob {
-  border-color: var(--brand-purple) !important;
+  border-color: var(--onetrust-brand-purple) !important;
 }
 
 .ot-pc-footer-logo {
