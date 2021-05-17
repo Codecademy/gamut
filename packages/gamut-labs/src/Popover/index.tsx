@@ -42,11 +42,11 @@ const Beak = styled.div<StyleProps>`
   border-${({ position }) => (position === 'below' ? 'left' : 'right')}:
     1px
     ${({ outline }) => (outline ? 'solid' : 'none')}
-    ${({ theme }) => theme.colors.black};
+    ${({ theme }) => theme.colors.secondary};
   border-${({ position }) => (position === 'below' ? 'top' : 'bottom')}:
     1px
     ${({ outline }) => (outline ? 'solid' : 'none')}
-    ${({ theme }) => theme.colors.black};
+    ${({ theme }) => theme.colors.secondary};
   background-color: ${({ theme }) => theme.colors.white};
   position: absolute;
   left: ${({ beak }) => beak === 'left' && '25px'};
