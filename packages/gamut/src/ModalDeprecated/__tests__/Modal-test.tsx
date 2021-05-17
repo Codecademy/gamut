@@ -3,19 +3,19 @@ import { ThemeProvider } from '@emotion/react';
 import { fireEvent, render, screen } from '@testing-library/react';
 import React from 'react';
 
-import { DeprecatedModal, DeprecatedModalProps } from '..';
+import { ModalDeprecated, ModalDeprecatedProps } from '..';
 
-const renderModal = (props?: Partial<DeprecatedModalProps>) => {
+const renderModal = (props?: Partial<ModalDeprecatedProps>) => {
   return render(
     <ThemeProvider theme={theme}>
-      <DeprecatedModal isOpen onRequestClose={() => {}} {...props}>
+      <ModalDeprecated isOpen onRequestClose={() => {}} {...props}>
         <div data-testid="modal-content">{props?.children}</div>
-      </DeprecatedModal>
+      </ModalDeprecated>
     </ThemeProvider>
   );
 };
 
-describe('DeprecatedModal', () => {
+describe('ModalDeprecated', () => {
   it('renders children when isOpen is true', () => {
     const children = 'Hey';
     const { baseElement } = renderModal({ children });

@@ -6,7 +6,7 @@ const EXCLUDED_STORIES = [
   'Truncate',
   'Popover',
   'Coachmark',
-  'DeprecatedModal',
+  'ModalDeprecated',
 ];
 
 const splitToChunks = (array: string[], parts: number) => {

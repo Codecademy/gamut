@@ -1,6 +1,6 @@
 import {
   ButtonDeprecated,
-  DeprecatedModal,
+  ModalDeprecated,
   Overlay,
 } from '@codecademy/gamut/src';
 import title from '@codecademy/macros/lib/title.macro';
@@ -11,10 +11,10 @@ import { useState } from 'react';
 
 <Meta
   title={title}
-  component={DeprecatedModal}
+  component={ModalDeprecated}
   subcomponents={{ Overlay }}
   parameters={{
-    subtitle: `Simple DeprecatedModal portal to escape current DOM Context.`,
+    subtitle: `Simple ModalDeprecated portal to escape current DOM Context.`,
     status: 'deprecated',
     source: 'gamut',
     figmaId: 'yt7NdZTETDRPUn0CtRu3v0',
@@ -22,7 +22,7 @@ import { useState } from 'react';
 />
 
 <Canvas>
-  <Story name="DeprecatedModal">
+  <Story name="ModalDeprecated">
     {(args) => {
       const [isOpen, setIsOpen] = useState(false);
       return (
@@ -30,12 +30,12 @@ import { useState } from 'react';
           <ButtonDeprecated onClick={() => setIsOpen(true)}>
             Open
           </ButtonDeprecated>
-          <DeprecatedModal
+          <ModalDeprecated
             isOpen={isOpen}
             onRequestClose={() => setIsOpen(false)}
           >
-            Close the DeprecatedModal!
-          </DeprecatedModal>
+            Close the ModalDeprecated!
+          </ModalDeprecated>
         </>
       );
     }}
@@ -44,15 +44,15 @@ import { useState } from 'react';
 
 > Prefer <LinkTo kind="Molecules/Dialog" story="Dialog">Dialog</LinkTo> instead.
 
-<PropsTable components={{ DeprecatedModal, Overlay }} />
+<PropsTable components={{ ModalDeprecated, Overlay }} />
 
 ### Creating a custom close button
 
-By default, the DeprecatedModal will render a close button.
+By default, the ModalDeprecated will render a close button.
 
 You can disable the default close button with the `hideDefaultCloseButton` prop.
 
-You can then use the `isOpen` prop to create other controls that toggle the DeprecatedModal on and off.
+You can then use the `isOpen` prop to create other controls that toggle the ModalDeprecated on and off.
 
 <Canvas>
   <Story name="Without Close Default">
@@ -63,16 +63,16 @@ You can then use the `isOpen` prop to create other controls that toggle the Depr
           <ButtonDeprecated onClick={() => setIsOpen(true)}>
             Open
           </ButtonDeprecated>
-          <DeprecatedModal
+          <ModalDeprecated
             isOpen={isOpen}
             hideDefaultCloseButton
             onRequestClose={() => setIsOpen(false)}
           >
-            <p>Close the DeprecatedModal...</p>
+            <p>Close the ModalDeprecated...</p>
             <ButtonDeprecated block onClick={() => setIsOpen(false)}>
               with this button instead
             </ButtonDeprecated>
-          </DeprecatedModal>
+          </ModalDeprecated>
         </>
       );
     }}
@@ -81,12 +81,12 @@ You can then use the `isOpen` prop to create other controls that toggle the Depr
 
 ### Alternative closing methods
 
-Other than creating buttons that can close the DeprecatedModal, there are other ways a DeprecatedModal can be closed by the user.
+Other than creating buttons that can close the ModalDeprecated, there are other ways a ModalDeprecated can be closed by the user.
 
-1. Clicking the content outside of the DeprecatedModal
+1. Clicking the content outside of the ModalDeprecated
 2. Clicking the escape key on their keyboard
 
-All of these methods default to true for accessibility reasons, and rely on setting the required `onRequestClose` prop and making sure it toggles the `isOpen` prop on the DeprecatedModal.
+All of these methods default to true for accessibility reasons, and rely on setting the required `onRequestClose` prop and making sure it toggles the `isOpen` prop on the ModalDeprecated.
 
 <Canvas>
   <Story name="Clicking Outside">
@@ -97,16 +97,16 @@ All of these methods default to true for accessibility reasons, and rely on sett
           <ButtonDeprecated onClick={() => setIsOpen(true)}>
             Open
           </ButtonDeprecated>
-          <DeprecatedModal
+          <ModalDeprecated
             isOpen={isOpen}
             hideDefaultCloseButton
             onRequestClose={() => setIsOpen(false)}
           >
             <p>
-              Close this DeprecatedModal by clicking the page outside of the
-              DeprecatedModal content, or by clicking the escape key.
+              Close this ModalDeprecated by clicking the page outside of the
+              ModalDeprecated content, or by clicking the escape key.
             </p>
-          </DeprecatedModal>
+          </ModalDeprecated>
         </>
       );
     }}
