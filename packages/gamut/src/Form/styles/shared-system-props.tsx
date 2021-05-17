@@ -1,5 +1,4 @@
-import { system, theme, variant } from '@codecademy/gamut-styles';
-import { css } from '@emotion/react';
+import { system, theme } from '@codecademy/gamut-styles';
 import { StandardPropertiesHyphen } from 'csstype';
 
 const transitionConcatenator = (
