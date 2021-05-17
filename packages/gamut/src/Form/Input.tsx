@@ -117,7 +117,11 @@ export const Input = forwardRef<HTMLInputElement, InputWrapperProps>(
     const ShownIcon = Icon || icon;
 
     return (
-      <Box position="relative" textColor={color}>
+      <Box
+        display={rest.type === 'hidden' ? 'none' : undefined}
+        position="relative"
+        textColor={color}
+      >
         <AsComponent
           {...rest}
           id={id || rest.htmlFor}
