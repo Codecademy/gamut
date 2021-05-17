@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [32.18.8](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@32.18.7...@codecademy/gamut@32.18.8) (2021-05-17)
+
+
+### Bug Fixes
+
+* **Input:** fixed hidden field empty spaces ([8c06673](https://github.com/Codecademy/client-modules/commit/8c06673f5fa8bc1f9fb50eb4309c988408a2c9e3))
+
+
+
 ### [32.18.7](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@32.18.6...@codecademy/gamut@32.18.7) (2021-05-13)
 
 **Note:** Version bump only for package @codecademy/gamut
