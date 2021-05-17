@@ -5,10 +5,11 @@ import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 import { useState } from '@storybook/addons';
 
-<Meta
-  title={title}
-  component={Overlay}
-  parameters={{
+    <Meta
+
+title={title}
+component={Overlay}
+parameters={{
     subtitle: `Overlay primitives are controlled components that are told whether
 they're open by their parent. They're very basic and
 don't have animations defined.`,
@@ -17,7 +18,7 @@ don't have animations defined.`,
   }}
 />
 
-Unlike the legacy `Modal` implementations in the monolith, this: -always
+Unlike the legacy `DeprecatedModal` implementations in the monolith, this: -always
 assumes viewport is locked, by making content `position: fixed` - cannot override
 contentProps, animation, or shouldFocusOnMount.
 
@@ -26,9 +27,10 @@ up the full screen. Do not use it for dropdowns or other small
 interactive items.
 
 Note that this atom does not come with styles defined. If you need styles such as
-a background behind content, see `Modal`.
+a background behind content, see `DeprecatedModal`.
 
-<Canvas>
+    <Canvas>
+
   <Story name="Overlay">
     {(args) => {
       const [open, setOpen] = useState(false);
@@ -58,4 +60,4 @@ a background behind content, see `Modal`.
   </Story>
 </Canvas>
 
-<PropsTable story="Overlay" />
+    <PropsTable story="Overlay" />

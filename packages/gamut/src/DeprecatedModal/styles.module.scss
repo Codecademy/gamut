@@ -1,0 +1,33 @@
+@import "~@codecademy/gamut-styles/utils";
+
+.modal {
+  background-color: rgba(25, 25, 26, 0.7);
+  z-index: 15;
+}
+
+.modalContainer {
+  max-width: 100%;
+}
+
+.modalBody {
+  padding: 1rem;
+  margin: 1rem;
+  // We don't need focus styles for the overlay
+  // it is non-interactive and just meant to steal focus from
+  // whatever had it previously
+  outline: none;
+}
+
+.closeButtonContainer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.closeButton {
+  padding: 0.5rem;
+  margin: -0.5rem -0.5rem 0.5rem 0;
+}
+
+.closeIcon {
+  color: $color-gray-800;
+}
