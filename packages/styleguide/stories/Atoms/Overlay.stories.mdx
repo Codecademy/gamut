@@ -1,18 +1,13 @@
 import { ButtonDeprecated, Container, Overlay } from '@codecademy/gamut/src';
 import { Text } from '@codecademy/gamut-labs/src';
-import title from '@codecademy/macros/lib/title.macro';
-import { PropsTable } from '@codecademy/storybook-addon-variance';
-import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { Canvas, Story } from '@storybook/addon-docs/blocks';
 import { useState } from '@storybook/addons';
 
-    <Meta
-
-title={title}
-component={Overlay}
-parameters={{
-    subtitle: `Overlay primitives are controlled components that are told whether
-they're open by their parent. They're very basic and
-don't have animations defined.`,
+<Meta
+  title={title}
+  component={Overlay}
+  parameters={{
+    subtitle: `Overlay primitives are controlled components that are told whether they're open by their parent. They're very basic and don't have animations defined.`,
     source: 'gamut',
     status: 'current',
   }}
@@ -29,8 +24,7 @@ interactive items.
 Note that this atom does not come with styles defined. If you need styles such as
 a background behind content, see `ModalDeprecated`.
 
-    <Canvas>
-
+<Canvas>
   <Story name="Overlay">
     {(args) => {
       const [open, setOpen] = useState(false);
@@ -60,4 +54,4 @@ a background behind content, see `ModalDeprecated`.
   </Story>
 </Canvas>
 
-    <PropsTable story="Overlay" />
+<PropsTable story="Overlay" />
