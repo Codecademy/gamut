@@ -118,7 +118,7 @@ export const Input = forwardRef<HTMLInputElement, InputWrapperProps>(
 
     return (
       <Box
-        display={rest?.type === 'hidden' ? 'none' : undefined}
+        display={rest.type === 'hidden' ? 'none' : undefined}
         position="relative"
         textColor={color}
       >
