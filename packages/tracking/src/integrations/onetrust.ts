@@ -37,9 +37,11 @@ export const initializeOneTrust = async ({
   });
 };
 
+// For now, these three values duplicate theme colors from gamut-styles
+// We don't want to take a full dependency on that package here...
 const rawStyles = `
 :root {
-  --onetrust-brand-purple: #6400e4;
+  --onetrust-brand-purple: #3A10E5;
   --onetrust-color-gray-500: #828285;
   --onetrust-color-white: #fff;
 }
