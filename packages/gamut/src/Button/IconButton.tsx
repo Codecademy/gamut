@@ -1,5 +1,5 @@
 import { GamutIconProps } from '@codecademy/gamut-icons';
-import { system } from '@codecademy/gamut-styles';
+import { system, useCurrentMode } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React, { forwardRef } from 'react';
 
@@ -11,7 +11,6 @@ import {
   ButtonOutlineProps,
   createStates,
 } from './ButtonOutline';
-import { useColorMode } from './shared';
 import { SizedButtonProps } from './types';
 
 const { background, backgroundMuted, backgroundEmphasized } = buttonColors;
@@ -48,7 +47,7 @@ export interface IconButtonProps extends SizedButtonProps, ButtonOutlineProps {
 
 export const IconButton = forwardRef<ButtonBaseElements, IconButtonProps>(
   ({ icon: Icon, size = 'normal', mode, ...props }, ref) => {
-    const currentMode = useColorMode(mode);
+    const currentMode = useCurrentMode(mode);
     return (
       <ButtonOutline mode={currentMode} size={size} {...props} ref={ref}>
         <IconButtonInner mode={currentMode} size={size}>
