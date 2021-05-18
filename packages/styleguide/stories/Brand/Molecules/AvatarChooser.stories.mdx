@@ -11,14 +11,21 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 still coming.`,
     source: 'gamut-labs',
   }}
+  args={{
+    src: 'https://content.codecademy.com/courses/free/boba.svg',
+  }}
 />
 
 <Canvas withSource="open">
-  <Story name="AvatarChooser">
-    {(args) => (
-      <AvatarChooser src="https://content.codecademy.com/courses/free/boba.svg" />
-    )}
-  </Story>
+  <Story name="AvatarChooser">{(args) => <AvatarChooser {...args} />}</Story>
 </Canvas>
 
 <PropsTable story="AvatarChooser" />
+
+<Canvas withSource="open">
+  <Story name="AvatarChooser with error">
+    {(args) => (
+      <AvatarChooser {...args} error="Please upload a png or jpeg image" />
+    )}
+  </Story>
+</Canvas>

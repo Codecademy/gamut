@@ -1,17 +1,16 @@
-import { FlexBox, Input } from '@codecademy/gamut';
+import { FlexBox, Input, Text } from '@codecademy/gamut';
 import { pxRem, theme } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React, { useCallback, useState } from 'react';
+import { UseFormMethods } from 'react-hook-form';
 
 import { Avatar } from '..';
 
 type AvatarChooserProps = {
   src: string;
+  register?: UseFormMethods['register'];
+  error?: string;
 };
-
-const HiddenInput = styled(Input)`
-  display: none;
-`;
 
 const baseSize = 75;
 const smBreakpointSize = 120;
@@ -41,8 +40,14 @@ const ChoosePhotoLabel = styled.label`
   }
 `;
 
+const HiddenInput = styled(Input)`
+  display: none;
+`;
+
 export const AvatarChooser: React.FC<AvatarChooserProps> = ({
   src: existingSrc,
+  error,
+  register,
 }) => {
   const [imageSrc, setImageSrc] = useState<string>(existingSrc);
 
@@ -55,7 +60,12 @@ export const AvatarChooser: React.FC<AvatarChooserProps> = ({
   );
 
   return (
-    <FlexBox alignItems="center" flexDirection="column" width="fit-content">
+    <FlexBox
+      alignItems="center"
+      flexDirection="column"
+      width="fit-content"
+      maxWidth={pxRem(120)}
+    >
       <StyledAvatar
         src={imageSrc}
         disableDropshadow
@@ -63,12 +73,38 @@ export const AvatarChooser: React.FC<AvatarChooserProps> = ({
       />
       <ChoosePhotoLabel htmlFor="avatar-chooser">Choose Photo</ChoosePhotoLabel>
       <HiddenInput
-        htmlFor="avatar-chooser"
-        disabled={false}
-        name="Avatar chooser"
-        onChange={(file) => onChange(file)}
         type="file"
+        htmlFor="avatar-chooser"
+        name="Avatar chooser"
+        onChange={onChange}
+        ref={register?.({
+          required: false,
+          validate: validatePhotoUpload,
+        })}
+        aria-invalid={Boolean(error)}
       />
+      {error && (
+        <Text variant="p-small" textColor="red" textAlign="center">
+          {error}
+        </Text>
+      )}
     </FlexBox>
   );
+};
+
+const validatePhotoUpload = (files: FileList): boolean | string => {
+  const MAX_FILE_SIZE = 5242880;
+  const MAX_FILE_SIZE_IN_MB = 5;
+
+  const file = files && files.item(0);
+  if (!file) return true;
+
+  const { type, size } = file;
+  if (!['image/jpeg', 'image/png'].includes(type))
+    return 'Please upload a jpeg or png file.';
+
+  if (size > MAX_FILE_SIZE)
+    return `Sorry, we cannot accept files larger than ${MAX_FILE_SIZE_IN_MB} MB.`;
+
+  return true;
 };
