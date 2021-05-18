@@ -586,8 +586,11 @@ monospace",
     "64": "4rem",
   },
   "fontWeight": Object {
+<<<<<<< HEAD
     "400": 400,
     "700": 700,
+=======
+>>>>>>> deb6e71f8a33854c0cce103a593ca8be8292c9c4
     "base": 400,
     "title": 700,
   },
