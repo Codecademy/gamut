@@ -5,7 +5,7 @@ import React from 'react';
 
 import { createEmotionCache } from '../cache';
 import { GamutProvider } from '../GamutProvider';
-import { theme } from '../theme';
+import { coreTheme as theme } from '../themes';
 
 jest.mock('../cache', () => {
   const cacheMock = jest.fn();
