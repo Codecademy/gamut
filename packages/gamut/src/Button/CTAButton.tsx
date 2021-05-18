@@ -1,11 +1,11 @@
-import { system } from '@codecademy/gamut-styles';
+import { system, useCurrentMode } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React, { ComponentProps, forwardRef } from 'react';
 
 import { ButtonBaseElements } from '../ButtonBase/ButtonBase';
 import { ButtonInner } from './ButtonInner';
 import { buttonColors, ButtonOutline, createStates } from './ButtonOutline';
-import { config, useColorMode } from './shared';
+import { config } from './shared';
 import { ButtonProps } from './types';
 
 const {
@@ -47,7 +47,7 @@ export type CTAButtonProps = Omit<
 
 export const CTAButton = forwardRef<ButtonBaseElements, CTAButtonProps>(
   ({ children, mode, variant, ...props }, ref) => {
-    const currentMode = useColorMode(mode);
+    const currentMode = useCurrentMode(mode);
     return (
       <ButtonOutline mode={currentMode} {...props} padded="medium" ref={ref}>
         <CTAButtonInner mode={currentMode} variant={variant}>

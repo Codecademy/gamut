@@ -1,6 +1,8 @@
 import { mapValues, merge } from 'lodash';
 
+import { CSSObject } from '../types/props';
 import { AbstractTheme } from '../types/theme';
+import { flattenScale, LiteralPaths } from './flattenScale';
 import { KeyAsVariable, serializeTokens } from './serializeTokens';
 
 export type Merge<
@@ -10,24 +12,21 @@ export type Merge<
 > = Unmergable &
   {
     [K in keyof (Base & Next)]: K extends keyof Next
-      ? Next[K]
+      ? K extends keyof Base
+        ? Base[K] & Next[K]
+        : Next[K]
       : K extends keyof Base
       ? Base[K]
       : never;
   };
 
-export type CSSVariables<T, Prefix extends string> = {
-  [K in Extract<keyof T, string> as `--${Prefix}-${K}`]: string;
+type Reserved = {
+  _variables: Record<string, CSSObject>;
+  _tokens: Record<string | number, any>;
 };
 
-class ThemeBuilder<
-  T extends AbstractTheme,
-  V extends Record<string | number | symbol, any> = {},
-  S extends Record<string | number | symbol, any> = {}
-> {
+class ThemeBuilder<T extends AbstractTheme> {
   #theme = {} as T;
-  #variables = {} as V;
-  #staticTokens = {} as S;
 
   constructor(baseTheme: T) {
     this.#theme = baseTheme;
@@ -40,9 +39,7 @@ class ThemeBuilder<
   createScaleVariables<Key extends keyof Omit<T, 'breakpoints'> & string>(
     key: Key
   ): ThemeBuilder<
-    Merge<T, Record<Key, KeyAsVariable<T[Key], Key>>>,
-    V & Record<'root', CSSVariables<T[Key], Key>>,
-    S & Record<Key, T[Key]>
+    Merge<T, Reserved, Record<Key, Record<Key, KeyAsVariable<T[Key], Key>>>>
   > {
     const { variables, tokens } = serializeTokens(
       this.#theme[key],
@@ -50,10 +47,12 @@ class ThemeBuilder<
       this.#theme
     );
 
-    this.#theme = merge({}, this.#theme, { [key]: tokens });
-    this.#variables = merge({}, this.#variables, { root: variables });
-    this.#staticTokens = merge({}, this.#staticTokens, {
-      [key]: this.#theme[key],
+    this.#theme = merge({}, this.#theme, {
+      [key]: tokens,
+      _variables: { root: variables },
+      _tokens: {
+        [key]: this.#theme[key],
+      },
     });
 
     return this;
@@ -64,17 +63,25 @@ class ThemeBuilder<
    * @param colors A map of color tokens to add to the theme. These tokens are immediately converted to CSS Variables `--color-${key}`.
    * @example .addColors({ navy: 'navy', hyper: 'purple' })
    */
-  addColors<Colors extends Record<string, string>>(
+  addColors<
+    Colors extends Record<string, string | number | CSSObject>,
+    NextColors extends LiteralPaths<Colors, '-'>
+  >(
     colors: Colors
   ): ThemeBuilder<
-    Merge<T, Record<'colors', KeyAsVariable<Colors, 'color'>>>,
-    V & Record<'root', CSSVariables<Colors, 'color'>>,
-    S & Record<'colors', Colors>
+    Merge<T & Reserved, Record<'colors', KeyAsVariable<NextColors, 'color'>>>
   > {
-    const { variables, tokens } = serializeTokens(colors, 'color', this.#theme);
-    this.#theme = merge({}, this.#theme, { colors: tokens });
-    this.#variables = merge({}, this.#variables, { root: variables });
-    this.#staticTokens = merge({}, this.#staticTokens, { colors });
+    const flatColors = flattenScale(colors);
+    const { variables, tokens } = serializeTokens(
+      flatColors,
+      'color',
+      this.#theme
+    );
+    this.#theme = merge({}, this.#theme, {
+      colors: tokens,
+      _variables: { root: variables },
+      _tokens: { colors: flatColors },
+    });
 
     return this;
   }
@@ -89,33 +96,48 @@ class ThemeBuilder<
     Modes extends string,
     InitialMode extends keyof Config,
     Colors extends keyof T['colors'],
-    Config extends Record<Modes, Record<string, Colors>>
+    ModeColors extends Record<string, Record<string, Colors> | Colors>,
+    Config extends Record<Modes, ModeColors>
   >(
     initialMode: InitialMode,
     modes: Config
   ): ThemeBuilder<
     Merge<
-      T,
+      T & Reserved,
       {
-        colors: KeyAsVariable<Config[keyof Config], 'colors'> & T['colors'];
-        colorModes: { active: keyof Config; modes: Config };
+        colors: KeyAsVariable<
+          LiteralPaths<Config[keyof Config], '-'>,
+          'colors'
+        > &
+          T['colors'];
+        modes: { [K in keyof Config]: LiteralPaths<Config[K], '-'> };
+        mode: keyof Config;
+        _getColorValue: (color: keyof T['colors']) => string;
       }
-    >,
-    V & Record<'colorMode', CSSVariables<Config[InitialMode], 'colors'>>,
-    S
+    >
   > {
+    // This guarantees that the final merged color modes are used when setting the default variables
+    const merged = merge({}, this.#theme?.modes, modes) as Config;
+
     const { tokens, variables } = serializeTokens(
-      mapValues(modes[initialMode], (color) => this.#theme.colors[color]),
+      mapValues(
+        flattenScale(merged[initialMode]),
+        (color) => this.#theme.colors[color]
+      ),
       'color',
       this.#theme
     );
 
     this.#theme = merge({}, this.#theme, {
       colors: tokens,
-      colorModes: { active: initialMode, modes },
+      modes: mapValues(modes, (value) => {
+        return flattenScale(value);
+      }),
+      mode: initialMode,
+      _getColorValue: (color: keyof T['colors']) =>
+        this.#theme._tokens?.colors?.[color],
+      _variables: { mode: variables },
     });
-
-    this.#variables = merge({}, this.#variables, { colorMode: variables });
 
     return this;
   }
@@ -132,7 +154,7 @@ class ThemeBuilder<
   >(
     key: Key,
     createScale: Fn
-  ): ThemeBuilder<Merge<T, Record<Key, ReturnType<Fn>>>, V, S> {
+  ): ThemeBuilder<Merge<T, Record<Key, ReturnType<Fn>>>> {
     this.#theme = merge({}, this.#theme, { [key]: createScale(this.#theme) });
     return this;
   }
@@ -149,7 +171,7 @@ class ThemeBuilder<
   >(
     key: Key,
     updateFn: Fn
-  ): ThemeBuilder<T & Record<Key, T[Key] & ReturnType<Fn>>, V, S> {
+  ): ThemeBuilder<T & Record<Key, T[Key] & ReturnType<Fn>>> {
     this.#theme = merge({}, this.#theme, { [key]: updateFn(this.#theme[key]) });
 
     return this;
@@ -158,17 +180,8 @@ class ThemeBuilder<
   /**
    * This finalizes the theme build and returns the final theme and variables to be provided.
    */
-  build(): {
-    theme: T;
-    variables: V;
-    getColorValue: (color: keyof T['colors']) => string;
-  } {
-    return {
-      theme: this.#theme,
-      variables: this.#variables,
-      getColorValue: (color: keyof T['colors']) =>
-        this.#staticTokens?.colors?.[color],
-    };
+  build(): T & Reserved {
+    return merge({}, this.#theme, { _variables: {}, _tokens: {} });
   }
 }
 

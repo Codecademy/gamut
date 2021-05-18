@@ -15,7 +15,7 @@ const quoteVariants = variant({
       textColor: 'white',
     },
     light: {
-      textColor: 'blue-900',
+      textColor: 'navy',
     },
   },
 });

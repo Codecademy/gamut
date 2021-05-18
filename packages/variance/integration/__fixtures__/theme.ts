@@ -1,6 +1,6 @@
 import { createTheme } from '../../src/createTheme';
 
-export const { theme } = createTheme({
+export const theme = createTheme({
   breakpoints: {
     xs: 'XS',
     sm: 'SM',
