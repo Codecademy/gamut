@@ -8,6 +8,7 @@ import { Avatar } from '..';
 
 type AvatarChooserProps = {
   src: string;
+  name?: string;
   register?: UseFormMethods['register'];
   error?: string;
 };
@@ -48,6 +49,7 @@ export const AvatarChooser: React.FC<AvatarChooserProps> = ({
   src: existingSrc,
   error,
   register,
+  name = 'Avatar Photo',
 }) => {
   const [imageSrc, setImageSrc] = useState<string>(existingSrc);
 
@@ -75,7 +77,7 @@ export const AvatarChooser: React.FC<AvatarChooserProps> = ({
       <HiddenInput
         type="file"
         htmlFor="avatar-chooser"
-        name="Avatar chooser"
+        name={name}
         onChange={onChange}
         ref={register?.({
           required: false,
