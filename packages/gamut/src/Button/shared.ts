@@ -4,7 +4,6 @@ import {
   swatches,
   system,
 } from '@codecademy/gamut-styles';
-import { Theme, useTheme } from '@emotion/react';
 
 export const modeColorGroups = {
   dark: {
@@ -50,14 +49,6 @@ export const modeColorGroups = {
 };
 
 export const config = styledConfig(['size']);
-
-export function useColorMode(mode?: keyof Theme['colorModes']['modes']) {
-  const theme = useTheme();
-
-  // This is a defense against theme being undefined in specific tests and should not come into play for actual code
-  const { active = 'light' } = theme?.colorModes || {};
-  return mode ?? active;
-}
 
 export const buttonSizing = system.variant({
   prop: 'size',

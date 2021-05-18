@@ -1,6 +1,10 @@
-import { styledConfig, system } from '@codecademy/gamut-styles';
+import {
+  ColorModes,
+  styledConfig,
+  system,
+  useCurrentMode,
+} from '@codecademy/gamut-styles';
 import { StyleProps, variance } from '@codecademy/variance';
-import { Theme, useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
 import React, { SVGProps } from 'react';
 
@@ -8,7 +12,7 @@ export type ProLabelProps = SVGProps<SVGSVGElement> &
   StyleProps<typeof logoStyles> &
   StyleProps<typeof placementVariants> &
   StyleProps<typeof modeVariants> & {
-    mode?: keyof Theme['colorModes']['modes'];
+    mode?: ColorModes;
     height?: number;
   };
 
@@ -46,14 +50,12 @@ export const ProLabel: React.FC<React.ComponentProps<typeof Svg>> = ({
   height = 16,
   ...props
 }) => {
-  const {
-    colorModes: { active },
-  } = useTheme();
+  const active = useCurrentMode(mode);
   return (
     <Svg
       {...props}
       height={height}
-      mode={mode ?? active}
+      mode={active}
       viewBox="0 0 30 16"
       xmlns="http://www.w3.org/2000/svg"
     >
