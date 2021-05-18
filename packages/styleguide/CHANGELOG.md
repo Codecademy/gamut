@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [38.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@38.1.1...@codecademy/styleguide@38.2.0) (2021-05-18)
+
+
+### Features
+
+* **theme:** createTheme self containment ([59ddff7](https://github.com/Codecademy/client-modules/commit/59ddff7224cd8e0972212dd6ba1696f40ccac835)), closes [#666666](https://github.com/Codecademy/client-modules/issues/666666) [#666666](https://github.com/Codecademy/client-modules/issues/666666)
+
+
+
 ### [38.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@38.1.0...@codecademy/styleguide@38.1.1) (2021-05-17)
 
 **Note:** Version bump only for package @codecademy/styleguide
