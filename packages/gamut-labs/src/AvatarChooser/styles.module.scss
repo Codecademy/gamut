@@ -26,14 +26,6 @@ $default-offset: px-rem(6px);
   }
 }
 
-.containerWithoutDropshadow {
-  img {
-    border-radius: 50%;
-    width: $default-size;
-    height: $default-size;
-  }
-}
-
 .lightContainer {
   &:before {
     background: $color-orange-400;

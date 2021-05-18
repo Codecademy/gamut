@@ -1,0 +1,24 @@
+import { AvatarChooser } from '@codecademy/gamut-labs/src/AvatarChooser';
+import title from '@codecademy/macros/lib/title.macro';
+import { PropsTable } from '@codecademy/storybook-addon-variance';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+
+<Meta
+  title={title}
+  component={AvatarChooser}
+  parameters={{
+    subtitle: `Our standard-use loading icon. Use this to indicate a major part of the page is
+still coming.`,
+    source: 'gamut-labs',
+  }}
+/>
+
+<Canvas withSource="open">
+  <Story name="AvatarChooser">
+    {(args) => (
+      <AvatarChooser src="https://content.codecademy.com/courses/free/boba.svg" />
+    )}
+  </Story>
+</Canvas>
+
+<PropsTable story="AvatarChooser" />

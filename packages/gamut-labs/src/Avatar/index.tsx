@@ -16,11 +16,13 @@ type AvatarBaseProps = {
    * path to image asset
    */
   src: string;
+
   /**
    * chooses color of drop shadow
    */
   theme?: VisualTheme;
   className?: string; // useful if avatar size needs to be overridden
+  disableDropshadow?: boolean;
 };
 
 type AvatarProps = AvatarBaseProps & AvatarImageProps;
@@ -28,12 +30,15 @@ type AvatarProps = AvatarBaseProps & AvatarImageProps;
 export const Avatar: React.FC<AvatarProps> = ({
   theme = 'light',
   className,
+  disableDropshadow,
   ...avatarImageProps
 }) => {
   return (
     <div
       className={cx(
-        styles.container,
+        disableDropshadow
+          ? styles.containerWithoutDropshadow
+          : styles.container,
         className,
         theme === 'dark' ? styles.darkContainer : styles.lightContainer
       )}
