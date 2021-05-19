@@ -9,6 +9,8 @@ export type DropdownButtonProps = {
   dropdownItems: DropdownItem[];
   align?: 'left' | 'right';
   onClick?: (event: React.MouseEvent) => void;
+  verticalOffset?: number;
+  horizontalOffset?: number;
 };
 
 export const DropdownButton: React.FC<DropdownButtonProps> = ({
@@ -17,6 +19,8 @@ export const DropdownButton: React.FC<DropdownButtonProps> = ({
   align = 'left',
   dropdownItems,
   onClick,
+  verticalOffset,
+  horizontalOffset,
 }) => {
   const targetRef = useRef<HTMLDivElement>(null);
   const [isOpen, setIsOpen] = useState(false);
@@ -60,7 +64,8 @@ export const DropdownButton: React.FC<DropdownButtonProps> = ({
           isOpen={isOpen}
           onRequestClose={handleRequestClosed}
           align={align}
-          verticalOffset={12}
+          verticalOffset={verticalOffset}
+          horizontalOffset={horizontalOffset}
           outline
         >
           <DropdownList dropdownItems={dropdownItems} />
