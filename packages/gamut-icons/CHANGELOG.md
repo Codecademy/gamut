@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.14.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@4.13.0...@codecademy/gamut-icons@4.14.0) (2021-05-19)
+
+
+### Features
+
+* **Popover:** use theme.colors.secondary for outline color ([63e0779](https://github.com/Codecademy/client-modules/commit/63e07790c4b0c2966b569a7af9ed3aba33aeb06b))
+
+
+
 ## [4.13.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@4.12.2...@codecademy/gamut-icons@4.13.0) (2021-05-18)
 
 
