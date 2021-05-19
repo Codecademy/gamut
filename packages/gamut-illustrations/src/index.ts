@@ -9,6 +9,7 @@ export * from './Confetti';
 export * from './EmailAt';
 export * from './Envelope';
 export * from './Heart';
+export * from './Hills';
 export * from './HomeOffice';
 export * from './Megaphone';
 export * from './New';

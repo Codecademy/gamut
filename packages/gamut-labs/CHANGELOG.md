@@ -3,6 +3,45 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [18.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@18.0.0...@codecademy/gamut-labs@18.0.1) (2021-05-19)
+
+
+### Bug Fixes
+
+* remove DropdownButton animation and add offset props ([638f0ad](https://github.com/Codecademy/client-modules/commit/638f0ad55a0d6ea33c3abbed7076ee6d9d77dd64))
+
+
+
+## [18.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@17.3.1...@codecademy/gamut-labs@18.0.0) (2021-05-19)
+
+
+### ⚠ BREAKING CHANGES
+
+* Refactor Testimonial and Avatar to Emotion
+
+### Features
+
+* Refactor Testimonial and Avatar to Emotion ([174a0d8](https://github.com/Codecademy/client-modules/commit/174a0d86cf7f625e798ea24a9f8825f4888df321))
+
+
+
+### [17.3.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@17.3.0...@codecademy/gamut-labs@17.3.1) (2021-05-19)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+## [17.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@17.2.0...@codecademy/gamut-labs@17.3.0) (2021-05-19)
+
+
+### Features
+
+* **Popover:** use theme.colors.secondary for outline color ([63e0779](https://github.com/Codecademy/client-modules/commit/63e07790c4b0c2966b569a7af9ed3aba33aeb06b))
+
+
+
 ## [17.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@17.1.1...@codecademy/gamut-labs@17.2.0) (2021-05-18)
 
 
