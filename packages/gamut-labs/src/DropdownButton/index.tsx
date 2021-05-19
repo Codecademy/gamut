@@ -1,5 +1,4 @@
 import { Box, FillButton, StrokeButton } from '@codecademy/gamut';
-import { AnimatePresence, motion } from 'framer-motion';
 import React, { useRef, useState } from 'react';
 
 import { Popover } from '../Popover';
@@ -55,28 +54,18 @@ export const DropdownButton: React.FC<DropdownButtonProps> = ({
       <Box display="inline-block" ref={targetRef}>
         {clickTarget}
       </Box>
-      <AnimatePresence>
-        {isOpen && dropdownItems.length !== 0 && (
-          <Popover
-            targetRef={targetRef}
-            isOpen={isOpen}
-            onRequestClose={handleRequestClosed}
-            align={align}
-            verticalOffset={12}
-            outline
-          >
-            <motion.div
-              style={{ overflow: 'hidden' }}
-              initial={{ height: 0 }}
-              animate={{ height: 'auto' }}
-              transition={{ duration: 0.175 }}
-              exit={{ height: 0 }}
-            >
-              <DropdownList dropdownItems={dropdownItems} />
-            </motion.div>
-          </Popover>
-        )}
-      </AnimatePresence>
+      {isOpen && dropdownItems.length !== 0 && (
+        <Popover
+          targetRef={targetRef}
+          isOpen={isOpen}
+          onRequestClose={handleRequestClosed}
+          align={align}
+          verticalOffset={12}
+          outline
+        >
+          <DropdownList dropdownItems={dropdownItems} />
+        </Popover>
+      )}
     </>
   );
 };
