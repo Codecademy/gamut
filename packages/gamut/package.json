@@ -1,7 +1,7 @@
 {
   "name": "@codecademy/gamut",
   "description": "Styleguide & Component library for Codecademy",
-  "version": "32.19.2",
+  "version": "32.20.0",
   "author": "Codecademy Engineering <dev@codecademy.com>",
   "sideEffects": [
     "**/*.css",

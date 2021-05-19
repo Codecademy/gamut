@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [18.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@18.0.1...@codecademy/gamut-labs@18.1.0) (2021-05-19)
+
+
+### Features
+
+* added data-testid for GlobalPage's PageWrapper ([024eba0](https://github.com/Codecademy/client-modules/commit/024eba0560804d575ea04a8a150b4f80cdd6fefc))
+
+
+
 ### [18.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@18.0.0...@codecademy/gamut-labs@18.0.1) (2021-05-19)
 
 
