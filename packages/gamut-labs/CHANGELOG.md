@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [18.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@18.1.0...@codecademy/gamut-labs@18.1.1) (2021-05-19)
+
+
+### Bug Fixes
+
+* add shouldForwardProp to DropdownButton ([7dc0ee5](https://github.com/Codecademy/client-modules/commit/7dc0ee5fc292c4ec0e5f9d32cbcf40f55358f334))
+
+
+
 ## [18.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@18.0.1...@codecademy/gamut-labs@18.1.0) (2021-05-19)
 
 
