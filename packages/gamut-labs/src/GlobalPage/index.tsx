@@ -37,14 +37,9 @@ const defaultSkipToContentId = 'page-skip-to-content-target';
 
 const RestrictedBackground = forwardRef<
   HTMLDivElement,
-  Pick<ComponentProps<typeof Background>, 'bg'> & HTMLProps<HTMLDivElement>
->(({ bg, className, children }, ref) => (
-  <Background
-    bg={bg}
-    className={className}
-    data-testid="global-page-wrapper"
-    ref={ref}
-  >
+  ComponentProps<typeof Background>
+>(({ children, ...rest }, ref) => (
+  <Background data-testid="global-page-wrapper" {...rest} ref={ref}>
     {children}
   </Background>
 ));
