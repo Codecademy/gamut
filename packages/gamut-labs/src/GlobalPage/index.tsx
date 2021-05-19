@@ -4,7 +4,7 @@ import {
   SkipToContentTarget,
 } from '@codecademy/gamut';
 import { Background, BackgroundProps } from '@codecademy/gamut-styles';
-import React, { ComponentProps, forwardRef, HTMLProps } from 'react';
+import React, { ComponentProps, forwardRef } from 'react';
 
 import { GlobalFooter, GlobalFooterProps } from '../GlobalFooter';
 import { GlobalHeader, GlobalHeaderProps } from '../GlobalHeader';
@@ -55,7 +55,7 @@ export const GlobalPage: React.FC<GlobalPageProps> = ({
   skipToContentId,
 }) => {
   return (
-    <GlobalPageWrapper bg={backgroundColor} data-testid="global-page-wrapper">
+    <GlobalPageWrapper bg={backgroundColor}>
       <SkipToContent contentId={skipToContentId || defaultSkipToContentId} />
       <GlobalHeader {...header} />
       {!skipToContentId && <SkipToContentTarget id={defaultSkipToContentId} />}
