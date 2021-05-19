@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-tests@2.3.30...@codecademy/gamut-tests@2.4.0) (2021-05-18)
+
+
+### Features
+
+* **theme:** createTheme self containment ([59ddff7](https://github.com/Codecademy/client-modules/commit/59ddff7224cd8e0972212dd6ba1696f40ccac835)), closes [#666666](https://github.com/Codecademy/client-modules/issues/666666) [#666666](https://github.com/Codecademy/client-modules/issues/666666)
+
+
+
 ### [2.3.30](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-tests@2.3.29...@codecademy/gamut-tests@2.3.30) (2021-05-12)
 
 **Note:** Version bump only for package @codecademy/gamut-tests

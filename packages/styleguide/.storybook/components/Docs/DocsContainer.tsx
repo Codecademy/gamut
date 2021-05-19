@@ -17,6 +17,7 @@ import { NavigationProvider } from '../Navigation/NavigationProvider';
 import React from 'react';
 import { merge } from 'lodash';
 import { Link } from '../Markdown/Elements';
+import { coreTheme } from '@codecademy/gamut-styles/src/themes/core';
 
 const defaultComponents = {
   ...htmlComponents,
@@ -44,7 +45,10 @@ export const DocsContainer: React.FC<{ context: DocsContextProps }> = ({
 
   return (
     <DocsContext.Provider value={context}>
-      <GamutProvider cache={createEmotionCache({ speedy: false })}>
+      <GamutProvider
+        cache={createEmotionCache({ speedy: false })}
+        theme={coreTheme}
+      >
         <AssetProvider />
         <NavigationProvider>
           <SourceContainer>
