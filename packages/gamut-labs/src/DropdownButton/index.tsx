@@ -1,13 +1,15 @@
 import { Box, FillButton, StrokeButton } from '@codecademy/gamut';
 import { ArrowChevronDownFilledIcon } from '@codecademy/gamut-icons';
-import { pxRem } from '@codecademy/gamut-styles';
+import { pxRem, shouldForwardProp } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React, { useRef, useState } from 'react';
 
 import { Popover } from '../Popover';
 import { DropdownItem, DropdownList } from './DropdownList';
 
-const DownArrow = styled(ArrowChevronDownFilledIcon)<{ isOpen?: boolean }>`
+const DownArrow = styled(ArrowChevronDownFilledIcon, { shouldForwardProp })<{
+  isOpen?: boolean;
+}>`
   margin-left: ${pxRem(8)};
   transition: transform 0.35s ease-out;
   ${({ isOpen }) => isOpen && 'transform: rotate(-180deg)'};
