@@ -196,6 +196,11 @@ export type ToolTipProps = {
   containerClassName?: string;
 
   /**
+   * Class name for the body of the tooltip content.
+   */
+  bodyClassName?: string;
+
+  /**
    * Whether to manually add a tabIndex of 0 to the target container, for tooltips without focusable children.
    */
   focusable?: boolean;
@@ -210,6 +215,7 @@ export const ToolTip: React.FC<ToolTipProps> = ({
   children,
   className,
   containerClassName,
+  bodyClassName,
   focusable,
   id,
   mode = 'light',
@@ -234,7 +240,11 @@ export const ToolTip: React.FC<ToolTipProps> = ({
         mode={mode}
         aria-live="polite"
       >
-        <ToolTipBody alignment={alignment} mode={mode}>
+        <ToolTipBody
+          alignment={alignment}
+          mode={mode}
+          className={bodyClassName}
+        >
           {children}
         </ToolTipBody>
       </ToolTipContainer>
