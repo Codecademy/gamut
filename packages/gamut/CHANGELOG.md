@@ -3,6 +3,40 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [32.20.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@32.19.2...@codecademy/gamut@32.20.0) (2021-05-19)
+
+
+### Features
+
+* added data-testid for GlobalPage's PageWrapper ([024eba0](https://github.com/Codecademy/client-modules/commit/024eba0560804d575ea04a8a150b4f80cdd6fefc))
+
+
+
+### [32.19.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@32.19.1...@codecademy/gamut@32.19.2) (2021-05-19)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [32.19.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@32.19.0...@codecademy/gamut@32.19.1) (2021-05-19)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [32.19.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@32.18.8...@codecademy/gamut@32.19.0) (2021-05-18)
+
+
+### Features
+
+* **theme:** createTheme self containment ([59ddff7](https://github.com/Codecademy/client-modules/commit/59ddff7224cd8e0972212dd6ba1696f40ccac835)), closes [#666666](https://github.com/Codecademy/client-modules/issues/666666) [#666666](https://github.com/Codecademy/client-modules/issues/666666)
+
+
+
 ### [32.18.8](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@32.18.7...@codecademy/gamut@32.18.8) (2021-05-17)
 
 

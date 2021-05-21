@@ -1,15 +1,27 @@
 import { Box, FillButton, StrokeButton } from '@codecademy/gamut';
-import { AnimatePresence, motion } from 'framer-motion';
+import { ArrowChevronDownFilledIcon } from '@codecademy/gamut-icons';
+import { pxRem, shouldForwardProp } from '@codecademy/gamut-styles';
+import styled from '@emotion/styled';
 import React, { useRef, useState } from 'react';
 
 import { Popover } from '../Popover';
 import { DropdownItem, DropdownList } from './DropdownList';
+
+const DownArrow = styled(ArrowChevronDownFilledIcon, { shouldForwardProp })<{
+  isOpen?: boolean;
+}>`
+  margin-left: ${pxRem(8)};
+  transition: transform 0.35s ease-out;
+  ${({ isOpen }) => isOpen && 'transform: rotate(-180deg)'};
+`;
 
 export type DropdownButtonProps = {
   buttonType?: 'fill' | 'stroke';
   dropdownItems: DropdownItem[];
   align?: 'left' | 'right';
   onClick?: (event: React.MouseEvent) => void;
+  verticalOffset?: number;
+  horizontalOffset?: number;
 };
 
 export const DropdownButton: React.FC<DropdownButtonProps> = ({
@@ -18,6 +30,8 @@ export const DropdownButton: React.FC<DropdownButtonProps> = ({
   align = 'left',
   dropdownItems,
   onClick,
+  verticalOffset,
+  horizontalOffset,
 }) => {
   const targetRef = useRef<HTMLDivElement>(null);
   const [isOpen, setIsOpen] = useState(false);
@@ -35,6 +49,7 @@ export const DropdownButton: React.FC<DropdownButtonProps> = ({
       clickTarget = (
         <FillButton onClick={handleClick} data-testid="dropdown-fill-button">
           {children}
+          <DownArrow isOpen={isOpen} size={12} aria-label="dropdown" />
         </FillButton>
       );
       break;
@@ -45,6 +60,7 @@ export const DropdownButton: React.FC<DropdownButtonProps> = ({
           data-testid="dropdown-stroke-button"
         >
           {children}
+          <DownArrow isOpen={isOpen} size={12} aria-label="dropdown" />
         </StrokeButton>
       );
       break;
@@ -55,28 +71,19 @@ export const DropdownButton: React.FC<DropdownButtonProps> = ({
       <Box display="inline-block" ref={targetRef}>
         {clickTarget}
       </Box>
-      <AnimatePresence>
-        {isOpen && dropdownItems.length !== 0 && (
-          <Popover
-            targetRef={targetRef}
-            isOpen={isOpen}
-            onRequestClose={handleRequestClosed}
-            align={align}
-            verticalOffset={12}
-            outline
-          >
-            <motion.div
-              style={{ overflow: 'hidden' }}
-              initial={{ height: 0 }}
-              animate={{ height: 'auto' }}
-              transition={{ duration: 0.175 }}
-              exit={{ height: 0 }}
-            >
-              <DropdownList dropdownItems={dropdownItems} />
-            </motion.div>
-          </Popover>
-        )}
-      </AnimatePresence>
+      {isOpen && dropdownItems.length !== 0 && (
+        <Popover
+          targetRef={targetRef}
+          isOpen={isOpen}
+          onRequestClose={handleRequestClosed}
+          align={align}
+          verticalOffset={verticalOffset}
+          horizontalOffset={horizontalOffset}
+          outline
+        >
+          <DropdownList dropdownItems={dropdownItems} />
+        </Popover>
+      )}
     </>
   );
 };
