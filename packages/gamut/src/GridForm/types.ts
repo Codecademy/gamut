@@ -101,6 +101,17 @@ export type GridFormTextAreaField = BaseFormField<string> & {
   type: 'textarea';
 };
 
+type HiddenField = Omit<BaseFormField<any>, 'size'>;
+
+export type GridFormHiddenField = HiddenField & {
+  type: 'hidden';
+};
+
+export type GridFormSweetContainerField = HiddenField & {
+  label: React.ReactNode;
+  type: 'sweet-container';
+};
+
 export type GridFormField =
   | GridFormCheckboxField
   | GridFormCustomField
@@ -108,4 +119,6 @@ export type GridFormField =
   | GridFormTextField
   | GridFormSelectField
   | GridFormFileField
-  | GridFormTextAreaField;
+  | GridFormTextAreaField
+  | GridFormHiddenField
+  | GridFormSweetContainerField;

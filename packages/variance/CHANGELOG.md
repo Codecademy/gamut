@@ -3,6 +3,58 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.12.0](https://github.com/Codecademy/client-modules/compare/@codecademy/variance@0.11.2...@codecademy/variance@0.12.0) (2021-05-18)
+
+
+### Features
+
+* **theme:** createTheme self containment ([59ddff7](https://github.com/Codecademy/client-modules/commit/59ddff7224cd8e0972212dd6ba1696f40ccac835)), closes [#666666](https://github.com/Codecademy/client-modules/issues/666666) [#666666](https://github.com/Codecademy/client-modules/issues/666666)
+
+
+
+### [0.11.2](https://github.com/Codecademy/client-modules/compare/@codecademy/variance@0.11.1...@codecademy/variance@0.11.2) (2021-05-07)
+
+**Note:** Version bump only for package @codecademy/variance
+
+
+
+
+
+### [0.11.1](https://github.com/Codecademy/client-modules/compare/@codecademy/variance@0.11.0...@codecademy/variance@0.11.1) (2021-05-03)
+
+**Note:** Version bump only for package @codecademy/variance
+
+
+
+
+
+## [0.11.0](https://github.com/Codecademy/client-modules/compare/@codecademy/variance@0.10.1...@codecademy/variance@0.11.0) (2021-04-29)
+
+
+### Features
+
+* **Buttons:** ColorModes + Props + Refactor + Refs Oh My! [GM-211] [REACH-856] [GM-192] ([c4643db](https://github.com/Codecademy/client-modules/commit/c4643db64d3684319f8d5fc6f68d05197ec1f61e))
+
+
+
+### [0.10.1](https://github.com/Codecademy/client-modules/compare/@codecademy/variance@0.10.0...@codecademy/variance@0.10.1) (2021-04-27)
+
+
+### Bug Fixes
+
+* **Text:** Fontweight for body text and none scalar typings ([aa113dc](https://github.com/Codecademy/client-modules/commit/aa113dcaee4bffd7a23c9acf87308c32816f07fe))
+
+
+
+## [0.10.0](https://github.com/Codecademy/client-modules/compare/@codecademy/variance@0.9.0...@codecademy/variance@0.10.0) (2021-04-26)
+
+
+### Features
+
+* **Anchor:** Variance Migration + ColorMode [GM-203] ([d5ae675](https://github.com/Codecademy/client-modules/commit/d5ae6758c65a837066562eb0ed8b964176889148))
+
+
+
 ## [0.9.0](https://github.com/Codecademy/client-modules/compare/@codecademy/variance@0.8.0...@codecademy/variance@0.9.0) (2021-04-15)
 
 

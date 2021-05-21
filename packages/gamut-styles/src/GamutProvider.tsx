@@ -1,9 +1,7 @@
+import { CSSObject } from '@codecademy/variance';
 import {
   CacheProvider,
-  css,
-  CSSObject,
   EmotionCache,
-  Global,
   Theme,
   ThemeProvider,
 } from '@emotion/react';
@@ -11,13 +9,14 @@ import React, { useContext, useRef } from 'react';
 
 import { createEmotionCache } from './cache';
 import { Reboot, Typography } from './globals';
-import { theme as baseTheme, variables as baseVariables } from './theme';
+import { Variables } from './globals/Variables';
+import { coreTheme } from './themes/core';
 
 export interface GamutProviderProps {
   useGlobals?: boolean;
   useCache?: boolean;
-  theme?: Theme;
-  variables?: CSSObject;
+  theme: Theme;
+  variables?: Record<string, CSSObject>;
   cache?: EmotionCache;
 }
 
@@ -34,8 +33,8 @@ GamutContext.displayName = 'GamutContext';
 export const GamutProvider: React.FC<GamutProviderProps> = ({
   children,
   cache,
-  theme = baseTheme,
-  variables = baseVariables,
+  theme = coreTheme,
+  variables,
   useGlobals = true,
   useCache = true,
 }) => {
@@ -48,8 +47,6 @@ export const GamutProvider: React.FC<GamutProviderProps> = ({
     shouldCreateCache && (cache ?? createEmotionCache())
   );
 
-  const { root = {}, colorMode = {} } = variables as Record<string, CSSObject>;
-
   const contextValue = {
     hasGlobals: shouldInsertGlobals,
     hasCache: shouldCreateCache,
@@ -59,8 +56,8 @@ export const GamutProvider: React.FC<GamutProviderProps> = ({
     <>
       <Typography />
       <Reboot />
-      <Global styles={css({ ':root': root })} />
-      <Global styles={css({ ':root': colorMode })} />
+      <Variables variables={theme._variables} />
+      {variables && <Variables variables={variables} />}
     </>
   );
 

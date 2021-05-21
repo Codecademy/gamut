@@ -4,8 +4,8 @@
     "url": "https://github.com/Codecademy/client-modules/issues"
   },
   "dependencies": {
-    "@codecademy/gamut-styles": "^9.5.1",
-    "@codecademy/gamut-system": "^0.7.0",
+    "@codecademy/gamut-styles": "^10.1.0",
+    "@codecademy/gamut-system": "^0.7.2",
     "classnames": "^2.2.5"
   },
   "description": "Illustrations library for Codecademy",
@@ -15,8 +15,8 @@
   "main": "./dist/index.js",
   "license": "MIT",
   "peerDependencies": {
-    "@emotion/react": "^11.0.0",
-    "@emotion/styled": "^11.0.0",
+    "@emotion/react": "^11.4.0",
+    "@emotion/styled": "^11.3.0",
     "react": ">=16.8.1",
     "react-dom": ">=16.8.1"
   },
@@ -39,5 +39,5 @@
     "dist/**/[A-Z]**/[A-Z]*.js",
     "dist/**/[A-Z]**/index.js"
   ],
-  "version": "0.10.0"
+  "version": "0.15.0"
 }

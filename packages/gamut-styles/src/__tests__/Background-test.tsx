@@ -5,8 +5,7 @@ import { overArgs } from 'lodash';
 import React from 'react';
 
 import { Background } from '../Background';
-import { GamutContext } from '../GamutProvider';
-import { theme } from '../theme';
+import { coreTheme as theme } from '../themes';
 
 expect.extend(matchers);
 
@@ -14,11 +13,9 @@ function withThemeProvider<Props>(
   WrappedComponent: React.ComponentType<Props>
 ) {
   const WithBoundaryComponent: React.FC<Props> = (props) => (
-    <GamutContext.Provider value={{ hasCache: false, hasGlobals: false }}>
-      <ThemeProvider theme={theme}>
-        <WrappedComponent {...props} />
-      </ThemeProvider>
-    </GamutContext.Provider>
+    <ThemeProvider theme={theme}>
+      <WrappedComponent {...props} />
+    </ThemeProvider>
   );
 
   return WithBoundaryComponent;
@@ -34,10 +31,8 @@ const renderView = setupRtl(Background, {
 });
 
 const ActiveMode = () => {
-  const {
-    colorModes: { active },
-  } = useTheme();
-  return <div>{active}</div>;
+  const { mode } = useTheme();
+  return <div>{mode}</div>;
 };
 
 describe('Background', () => {

@@ -22,13 +22,21 @@ export const color = {
 
 export const border = {
   // Border
-  border: { property: 'border' },
-  borderX: { property: 'border', properties: ['borderLeft', 'borderRight'] },
-  borderY: { property: 'border', properties: ['borderTop', 'borderBottom'] },
-  borderTop: { property: 'borderTop' },
-  borderRight: { property: 'borderRight' },
-  borderBottom: { property: 'borderBottom' },
-  borderLeft: { property: 'borderLeft' },
+  border: { property: 'border', scale: 'borders' },
+  borderX: {
+    property: 'border',
+    properties: ['borderLeft', 'borderRight'],
+    scale: 'borders',
+  },
+  borderY: {
+    property: 'border',
+    properties: ['borderTop', 'borderBottom'],
+    scale: 'borders',
+  },
+  borderTop: { property: 'borderTop', scale: 'borders' },
+  borderRight: { property: 'borderRight', scale: 'borders' },
+  borderBottom: { property: 'borderBottom', scale: 'borders' },
+  borderLeft: { property: 'borderLeft', scale: 'borders' },
   // Width
   borderWidth: { property: 'borderWidth' },
   borderWidthX: {
@@ -81,18 +89,42 @@ export const border = {
   borderStyleBottom: { property: 'borderBottomStyle' },
 } as const;
 
-export const flex = {
-  flex: { property: 'flex' },
-  flexBasis: { property: 'flexBasis' },
-  flexDirection: { property: 'flexDirection' },
-  flexWrap: { property: 'flexWrap' },
-  flexShrink: { property: 'flexShrink' },
-  flexGrow: { property: 'flexGrow' },
-  order: { property: 'order' },
+const selfAlignments = {
+  justifySelf: { property: 'justifySelf' },
+  alignSelf: { property: 'alignSelf' },
+  gridArea: { property: 'gridArea' },
+} as const;
+
+const alignments = {
   justifyContent: { property: 'justifyContent' },
   justifyItems: { property: 'justifyItems' },
   alignItems: { property: 'alignItems' },
   alignContent: { property: 'alignContent' },
+  ...selfAlignments,
+} as const;
+
+const flexItems = {
+  flexBasis: { property: 'flexBasis' },
+  flexShrink: { property: 'flexShrink' },
+  flexGrow: { property: 'flexGrow' },
+  order: { property: 'order' },
+} as const;
+
+export const flex = {
+  flexDirection: { property: 'flexDirection' },
+  flexWrap: { property: 'flexWrap' },
+  flex: { property: 'flex' },
+  ...alignments,
+  ...flexItems,
+} as const;
+
+const gridItems = {
+  gridColumn: { property: 'gridColumn' },
+  gridRow: { property: 'gridRow' },
+  gridColumnStart: { property: 'gridColumnStart' },
+  gridRowStart: { property: 'gridRowStart' },
+  gridColumnEnd: { property: 'gridColumnEnd' },
+  gridRowEnd: { property: 'gridRowEnd' },
 } as const;
 
 export const grid = {
@@ -105,12 +137,8 @@ export const grid = {
   gap: { property: 'gap', scale: 'spacing' },
   rowGap: { property: 'rowGap', scale: 'spacing' },
   columnGap: { property: 'columnGap', scale: 'spacing' },
-  gridColumn: { property: 'gridColumn' },
-  gridRow: { property: 'gridRow' },
-  gridColumnStart: { property: 'gridColumnStart' },
-  gridRowStart: { property: 'gridRowStart' },
-  gridColumnEnd: { property: 'gridColumnEnd' },
-  gridRowEnd: { property: 'gridRowEnd' },
+  ...alignments,
+  ...gridItems,
 } as const;
 
 export const background = {
@@ -123,6 +151,11 @@ export const background = {
 
 export const positioning = {
   position: { property: 'position' },
+  inset: {
+    property: 'inset',
+    properties: ['top', 'right', 'bottom', 'left'],
+    transform: transformSize,
+  },
   top: { property: 'top', transform: transformSize },
   right: { property: 'right', transform: transformSize },
   bottom: { property: 'bottom', transform: transformSize },
@@ -141,6 +174,11 @@ export const layout = {
   overflow: { property: 'overflow' },
   overflowX: { property: 'overflowX' },
   overflowY: { property: 'overflowY' },
+  dimensions: {
+    property: 'width',
+    properties: ['width', 'height'],
+    transform: transformSize,
+  },
   width: { property: 'width', transform: transformSize },
   minWidth: { property: 'minWidth', transform: transformSize },
   maxWidth: { property: 'maxWidth', transform: transformSize },
@@ -148,9 +186,9 @@ export const layout = {
   minHeight: { property: 'minHeight', transform: transformSize },
   maxHeight: { property: 'maxHeight', transform: transformSize },
   verticalAlign: { property: 'verticalAlign' },
-  justifySelf: { property: 'justifySelf' },
-  alignSelf: { property: 'alignSelf' },
-  gridArea: { property: 'gridArea' },
+  ...selfAlignments,
+  ...gridItems,
+  ...flexItems,
 } as const;
 
 export const typography = {
@@ -166,23 +204,7 @@ export const typography = {
   whiteSpace: { property: 'whiteSpace' },
 } as const;
 
-export const space = {
-  /** Testing Docgen */
-  p: { property: 'padding', scale: 'spacing' },
-  px: {
-    property: 'padding',
-    properties: ['paddingLeft', 'paddingRight'],
-    scale: 'spacing',
-  },
-  py: {
-    property: 'padding',
-    properties: ['paddingTop', 'paddingBottom'],
-    scale: 'spacing',
-  },
-  pt: { property: 'paddingTop', scale: 'spacing' },
-  pb: { property: 'paddingBottom', scale: 'spacing' },
-  pr: { property: 'paddingRight', scale: 'spacing' },
-  pl: { property: 'paddingLeft', scale: 'spacing' },
+export const margin = {
   m: { property: 'margin', scale: 'spacing' },
   mx: {
     property: 'margin',
@@ -198,6 +220,29 @@ export const space = {
   mb: { property: 'marginBottom', scale: 'spacing' },
   mr: { property: 'marginRight', scale: 'spacing' },
   ml: { property: 'marginLeft', scale: 'spacing' },
+} as const;
+
+export const padding = {
+  p: { property: 'padding', scale: 'spacing' },
+  px: {
+    property: 'padding',
+    properties: ['paddingLeft', 'paddingRight'],
+    scale: 'spacing',
+  },
+  py: {
+    property: 'padding',
+    properties: ['paddingTop', 'paddingBottom'],
+    scale: 'spacing',
+  },
+  pt: { property: 'paddingTop', scale: 'spacing' },
+  pb: { property: 'paddingBottom', scale: 'spacing' },
+  pr: { property: 'paddingRight', scale: 'spacing' },
+  pl: { property: 'paddingLeft', scale: 'spacing' },
+} as const;
+
+export const space = {
+  ...margin,
+  ...padding,
 } as const;
 
 export const all = {

@@ -1,0 +1,198 @@
+import { Box, FormGroup, SelectDropdown } from '@codecademy/gamut';
+import title from '@codecademy/macros/lib/title.macro';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+
+import { PropsTable } from '~styleguide/blocks';
+
+export const fruitOptions = [
+  'Apple',
+  'Banana',
+  'Cherry',
+  'Dragonfruit',
+  'Eggplant',
+];
+
+<Meta
+  title={title}
+  component={SelectDropdown}
+  parameters={{
+    subtitle:
+      'A variant of our `Select` component with a styled dropdown menu.',
+    source: 'gamut',
+    status: 'updating',
+  }}
+  args={{
+    htmlFor: 'example-select',
+    options: fruitOptions,
+  }}
+  argTypes={{
+    value: {
+      control: {
+        type: 'select',
+        options: fruitOptions,
+      },
+    },
+  }}
+/>
+
+<Canvas>
+  <Story name="SelectDropdown">
+    {(args) => (
+      <Box height="25rem">
+        <SelectDropdown {...args} />
+      </Box>
+    )}
+  </Story>
+</Canvas>
+
+<PropsTable story="SelectDropdown" />
+
+## Examples + Usage
+
+`SelectDropdown` has a larger JavaScript dependency size than our standard `Select` component so should not be used unless specified in designs.
+
+<Canvas>
+  <Story
+    name="BaseDropdown"
+    args={{
+      options: ['Based', 'Regular Size', 'Normal'],
+      placeholder: 'all about that',
+    }}
+  >
+    {(args) => (
+      <Box width="10rem" height="12rem">
+        <SelectDropdown {...args} />
+      </Box>
+    )}
+  </Story>
+  <Story
+    name="DisabledDropdown"
+    args={{
+      options: ['Disabled'],
+      disabled: true,
+      placeholder: 'Disabled',
+    }}
+  >
+    {(args) => (
+      <Box width="10rem">
+        <SelectDropdown {...args} />
+      </Box>
+    )}
+  </Story>
+  <Story
+    name="ErrorDropdown"
+    args={{
+      options: ['Small', 'Quite little'],
+      value: 'Quite little',
+      error: true,
+    }}
+  >
+    {(args) => (
+      <Box width="25rem">
+        <FormGroup label="You cannot change me, I am controlled.">
+          <SelectDropdown {...args} />
+        </FormGroup>
+      </Box>
+    )}
+  </Story>
+</Canvas>
+
+### Events and Controlled Components
+
+Instead of a standard HTML Select event return, SelectDropdown returns the selected option. This is formatted as `{label: 'labelText', value: 'valueText' }`. Your event functions should be formatted as `(event) => changeHandler(event.value)` instead of `(event) => changeHandler(event.target.value)`.
+
+SelectDropdown does not take a defaultValue prop. If you wish to define a default value, you must format `SelectDropdown` as a [controlled component](https://reactjs.org/docs/forms.html#controlled-components), like so:
+
+```tsx
+import { Box, SelectDropdown } from '@codecademy/gamut';
+import React, { useState } from 'react';
+
+export const CustomDropdown: React.FC = ({
+  errorMessage,
+  disabled,
+  defaultValue,
+  options,
+}) => {
+  const { currentValue, setCurrentValue } = useState(defaultValue);
+
+  const changeHandler = (newValue) => {
+    setCurrentValue(newValue);
+  };
+
+  return (
+    <FormGroup error={errorMessage} disabled={disabled}>
+      <SelectDropdown
+        options={options}
+        onChange={(e) => changeHandler(e.value)}
+        placeholder="Placeholder"
+        error={!!errorMessage}
+        disabled={disabled}
+        value={currentValue}
+      />
+    </FormGroup>
+  );
+};
+```
+
+### Form Group + Select
+
+`SelectDropdown` formats nicely in FormGroups and reflects error states.
+
+<Canvas>
+  <Story
+    name="FormGroupStyled"
+    args={{
+      options: ['hello', 'hi', 'howdy'],
+      value: 'oh no',
+    }}
+  >
+    {(args) => (
+      <Box width="25rem" height="25rem">
+        <FormGroup label="i am big label" labelSize="large">
+          <SelectDropdown {...args} />
+        </FormGroup>
+      </Box>
+    )}
+  </Story>
+  <Story
+    name="FormGroupStyledError"
+    args={{
+      options: ['Error', 'oh no', ':('],
+      placeholder: 'cry cry cry',
+    }}
+  >
+    {(args) => (
+      <Box width="25rem" height="25rem">
+        <FormGroup
+          label="i am ~styled... but something is wrong"
+          error="error message!! no :'("
+        >
+          <SelectDropdown error {...args} />
+        </FormGroup>
+      </Box>
+    )}
+  </Story>
+</Canvas>
+
+### Custom inputProps
+
+Some of our forms require special props be passed directly onto the `<input/>` component. We can do that by passing an object, formatted `{propName: value}`, into our inputProps prop.
+
+<Canvas>
+  <Story
+    name="CustomInputProps"
+    args={{
+      options: ['inspect me to see my inputProps', 'yes I am!', ':)'],
+      inputProps: { hello: 'updog' },
+      name: 'updog',
+    }}
+  >
+    {(args) => (
+      <Box width="25rem" height="25rem">
+        <FormGroup label="i am ~styled">
+          <SelectDropdown {...args} />
+        </FormGroup>
+      </Box>
+    )}
+  </Story>
+</Canvas>

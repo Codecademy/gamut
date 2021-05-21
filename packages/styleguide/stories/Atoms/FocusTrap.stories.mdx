@@ -1,9 +1,8 @@
 import { Box, FillButton, FocusTrap, GridForm } from '@codecademy/gamut/src';
 import title from '@codecademy/macros/lib/title.macro';
+import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 import { useState } from '@storybook/addons';
-
-import { PropsTable } from '~styleguide/blocks';
 
 <Meta
   title={title}
@@ -30,11 +29,10 @@ This component is a wrapper around the [react-focus-on](https://github.com/theKa
             </FillButton>
             <FocusTrap {...args} active={trapActive}>
               <Box
-                padding="24"
-                marginY="24"
+                p="24"
+                mY="24"
+                border={1}
                 borderColor={trapActive ? 'black' : 'gray-200'}
-                borderWidth="1px"
-                borderStyle="solid"
               >
                 <GridForm
                   fields={[

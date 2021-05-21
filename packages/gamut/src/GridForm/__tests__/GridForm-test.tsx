@@ -10,9 +10,11 @@ import { GridForm } from '..';
 import {
   stubCheckboxField,
   stubFileField,
+  stubHiddenField,
   stubRadioGroupField,
   stubSelectField,
   stubSelectOptions,
+  stubSweetContainerField,
   stubTextareaField,
   stubTextField,
 } from './stubs';
@@ -50,9 +52,8 @@ describe('GridForm', () => {
       }
     });
 
-    wrapped.setProps(wrapped.props());
-
     await act(async () => {
+      await wrapped.setProps(wrapped.props());
       wrapped.find('form').simulate('submit');
       await api.innerPromise;
     });
@@ -66,6 +67,8 @@ describe('GridForm', () => {
     });
   });
 
+  // There is some blocking behavior in this test as the DOM does not rerender correctly
+  // Turning this off until a sustainable / transparent pattern can be established for React Hook form updates.
   it('only sets aria-live prop on the first validation error in a form', async () => {
     const fields = [
       { ...stubTextField, validation: { required: 'Please enter text' } },
@@ -147,8 +150,6 @@ describe('GridForm', () => {
           />
         </ThemeProvider>
       );
-
-      wrapped.setProps(wrapped.props());
 
       expect(wrapped.find('button').prop('disabled')).not.toBeTruthy();
       expect(wrapped.find('input').prop('aria-required')).toBeTruthy();
@@ -323,5 +324,83 @@ describe('GridForm', () => {
     expect(form.find('input#another-dank-id').length).toBe(1);
     expect(form.find('textarea#id-2-the-ego').length).toBe(1);
     expect(form.find('input#fire-file').length).toBe(1);
+  });
+
+  it('submits hidden input value', async () => {
+    const api = createPromise<{}>();
+    const onSubmit = async (values: {}) => api.resolve(values);
+
+    const wrapped = mount(
+      <ThemeProvider theme={theme}>
+        <GridForm
+          fields={[stubHiddenField]}
+          onSubmit={onSubmit}
+          submit={{ type: 'fill', contents: <>Submit</>, size: 6 }}
+        />
+      </ThemeProvider>
+    );
+
+    await act(async () => {
+      wrapped.find('form').simulate('submit');
+      await api.innerPromise;
+    });
+
+    const result = await api.innerPromise;
+
+    expect(result).toEqual({
+      [stubHiddenField.name]: stubHiddenField.defaultValue,
+    });
+  });
+
+  it('does not create columns for hidden inputs', () => {
+    const wrapped = mount(
+      <ThemeProvider theme={theme}>
+        <GridForm
+          fields={[stubHiddenField]}
+          onSubmit={jest.fn()}
+          submit={{ type: 'fill', contents: <>Submit</>, size: 6 }}
+        />
+      </ThemeProvider>
+    );
+    expect(wrapped.find('Column').length).toBe(1);
+  });
+
+  it('submits sweet container input value', async () => {
+    const api = createPromise<{}>();
+    const onSubmit = async (values: {}) => api.resolve(values);
+
+    const wrapped = mount(
+      <ThemeProvider theme={theme}>
+        <GridForm
+          fields={[stubSweetContainerField]}
+          onSubmit={onSubmit}
+          submit={{ type: 'fill', contents: <>Submit</>, size: 6 }}
+        />
+      </ThemeProvider>
+    );
+
+    await act(async () => {
+      wrapped.find('form').simulate('submit');
+      await api.innerPromise;
+    });
+
+    const result = await api.innerPromise;
+
+    expect(result).toEqual({
+      [stubSweetContainerField.name]: false,
+    });
+  });
+
+  it('does not create columns for sweet container inputs', () => {
+    const wrapped = mount(
+      <ThemeProvider theme={theme}>
+        <GridForm
+          fields={[stubSweetContainerField]}
+          onSubmit={jest.fn()}
+          submit={{ type: 'fill', contents: <>Submit</>, size: 6 }}
+        />
+      </ThemeProvider>
+    );
+    expect(wrapped.find('Column').length).toBe(1);
   });
 });
