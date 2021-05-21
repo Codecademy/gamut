@@ -95,7 +95,17 @@ const getInputState = (error: boolean, valid: boolean) => {
 
 export const Input = forwardRef<HTMLInputElement, InputWrapperProps>(
   (
-    { error, className, id, valid, activated, as: As, icon: Icon, ...rest },
+    {
+      error,
+      className,
+      id,
+      valid,
+      activated,
+      as: As,
+      icon: Icon,
+      name,
+      ...rest
+    },
     ref
   ) => {
     const [activatedStyle, setActivatedStyle] = useState(false);
@@ -125,6 +135,8 @@ export const Input = forwardRef<HTMLInputElement, InputWrapperProps>(
         <AsComponent
           {...rest}
           id={id || rest.htmlFor}
+          data-testid={name}
+          name={name}
           ref={ref}
           error={error}
           activated={activated === undefined ? activatedStyle : activated}
