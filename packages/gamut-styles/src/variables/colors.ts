@@ -48,7 +48,9 @@ export const coreSwatches = {
     '400': '#F966FF',
   },
   red: {
-    '300': '#E85D7F',
+    '0': '#E85D7F',
+    '100': '#DC5879',
+    '400': '#ED4941',
     '500': '#E91C11',
   },
   orange: {
@@ -82,7 +84,7 @@ export const trueColors = {
   palePink: coreSwatches.pink[0],
   paleYellow: coreSwatches.yellow[0],
   pink: coreSwatches.pink[400],
-  paleRed: coreSwatches.red[300],
+  paleRed: coreSwatches.red[100],
   red: coreSwatches.red[500],
   yellow: coreSwatches.yellow[500],
   black,
