@@ -185,7 +185,7 @@ export type ToolTipProps = {
    * Class name for the hidden-by-default contents.
    *
    * @remarks
-   * This is an inner element; not the outermost positioning element.
+   * This is an inner element, not the outermost positioning element.
    * That element is styled with `containerClassName`.
    */
   className?: string;
