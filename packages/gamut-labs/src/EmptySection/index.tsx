@@ -1,6 +1,6 @@
 import { ButtonProps, FlexBox, Pattern, Text } from '@codecademy/gamut';
 import { IllustrationProps } from '@codecademy/gamut-illustrations';
-import { pxRem, styledConfig, system } from '@codecademy/gamut-styles';
+import { Colors, pxRem, styledConfig, system } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
 import { Theme } from '@emotion/react';
 import styled from '@emotion/styled';
@@ -29,7 +29,7 @@ export type EmptySectionProps = {
   /**
    * This should be the same as the background color in order to create a patterned border effect
    */
-  innerBGColor: keyof Theme['colors'];
+  innerBGColor: Colors;
   /**
    * Whether the pattern background stretches to the end of the left or right of the viewport
    */
@@ -45,13 +45,14 @@ const EmptyContainer = styled(FlexBox)(
       position: 'relative',
       px: [16, 48, 96],
       py: [32, 48, 96],
+      width: 1,
     },
     variants: {
       left: {
-        pl: [0, 0, 0],
+        pl: { sm: 0 },
       },
       right: {
-        pr: [0, 0, 0],
+        pr: { sm: 0 },
       },
     },
   })
@@ -65,15 +66,15 @@ const Dots = styled(Pattern)(
       position: 'absolute',
       top: 0,
       bottom: 0,
+      left: '-6rem',
+      right: '-6rem',
     },
     variants: {
       left: {
-        right: 0,
-        left: { _: '-100vw', xl: '-96px' },
+        right: { sm: 0 },
       },
       right: {
-        left: 0,
-        right: { _: '-100vw', xl: '-96px' },
+        left: { sm: 0 },
       },
     },
   })
@@ -83,20 +84,15 @@ const illustrationPositionVariants = system.variant({
   prop: 'illustrationPosition',
   defaultVariant: 'right',
   base: {
-    margin: '0 auto 2rem',
+    mx: { _: 'auto', sm: 0 },
+    mb: { _: 32, sm: 0 },
   },
   variants: {
     left: {
-      mt: { sm: 0 },
       mr: { sm: 48 },
-      ml: { sm: 0 },
-      mb: { sm: 0 },
     },
     right: {
-      mt: { sm: 0 },
-      mr: { sm: 0 },
       ml: { sm: 48 },
-      mb: { sm: 0 },
     },
   },
 });
@@ -115,9 +111,9 @@ export const EmptySection: React.FC<EmptySectionProps> = ({
   children,
   headingText,
   illustration: Illustration,
-  illustrationPosition = 'right',
-  innerBGColor,
   stretchDirection,
+  illustrationPosition = stretchDirection === 'right' ? 'left' : 'right',
+  innerBGColor,
 }) => {
   const flexDirection =
     illustrationPosition === 'right' ? 'row-reverse' : 'row';
