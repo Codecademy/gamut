@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.0](https://github.com/Codecademy/client-modules/compare/@codecademy/tracking@0.7.3...@codecademy/tracking@0.8.0) (2021-05-24)
+
+
+### ⚠ BREAKING CHANGES
+
+* prepended OneTrust to tracking integrations loads
+
+### Features
+
+* prepended OneTrust to tracking integrations loads ([3d8ce05](https://github.com/Codecademy/client-modules/commit/3d8ce05f1669728261f496b604fa8cc5906434e5))
+
+
+
 ### [0.7.3](https://github.com/Codecademy/client-modules/compare/@codecademy/tracking@0.7.2...@codecademy/tracking@0.7.3) (2021-05-10)
 
 
