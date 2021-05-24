@@ -76,9 +76,7 @@ export const DropdownButton: React.FC<DropdownButtonProps> = ({
           variant="secondary"
           onClick={handleClick}
           data-testid="dropdown-kebab-button"
-        >
-          {children}
-        </IconButton>
+        ></IconButton>
       );
       break;
   }
