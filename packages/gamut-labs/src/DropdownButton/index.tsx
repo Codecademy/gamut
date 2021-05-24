@@ -75,7 +75,7 @@ export const DropdownButton: React.FC<DropdownButtonProps> = ({
           mode="light"
           variant="secondary"
           onClick={handleClick}
-          data-testid="dropdown-icon-button"
+          data-testid="dropdown-kebab-button"
         >
           {children}
         </IconButton>
