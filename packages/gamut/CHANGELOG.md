@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [32.20.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@32.20.0...@codecademy/gamut@32.20.1) (2021-05-24)
+
+
+### Bug Fixes
+
+* allow override of tooltip alignment ([3930e15](https://github.com/Codecademy/client-modules/commit/3930e158c7f430acabc5ac5d66ab19d2b1fe9b76))
+
+
+
 ## [32.20.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@32.19.2...@codecademy/gamut@32.20.0) (2021-05-19)
 
 
