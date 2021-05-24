@@ -21,7 +21,7 @@ type AppHeaderLinkButtonProps = { topSeparator: boolean };
 
 const SeparatorOuter = styled(Box)<AppHeaderLinkButtonProps>`
   border-top: ${({ theme, topSeparator }) =>
-    topSeparator ? `1px solid ${theme.colors['gray-400']}` : ''};
+    topSeparator ? `1px solid ${theme.colors['gray-600']}` : ''};
   margin-top: ${({ topSeparator }) => (topSeparator ? '0.5rem' : '')};
 `;
 

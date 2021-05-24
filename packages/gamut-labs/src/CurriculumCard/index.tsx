@@ -54,7 +54,13 @@ export const CurriculumCard: React.FC<CurriculumCardProps> = ({
       shadow="medium"
       position="relative"
     >
-      <Text display="flex" fontSize={14} mb={12} fontFamily="accent">
+      <Text
+        display="flex"
+        fontSize={14}
+        mb={12}
+        fontFamily="accent"
+        textTransform="capitalize"
+      >
         {showProLogo && <ProLabel alignSelf="center" mr={8} mode={mode} />}
         {text}
       </Text>
