@@ -1,4 +1,3 @@
-import styled from '@emotion/styled';
 import React from 'react';
 import { UseFormMethods } from 'react-hook-form';
 
@@ -9,8 +8,10 @@ import { GridFormField } from '../types';
 import { GridFormCheckboxInput } from './GridFormCheckboxInput';
 import { GridFormCustomInput } from './GridFormCustomInput';
 import { GridFormFileInput } from './GridFormFileInput';
+import { GridFormHiddenInput } from './GridFormHiddenInput';
 import { GridFormRadioGroupInput } from './GridFormRadioGroupInput';
 import { GridFormSelectInput } from './GridFormSelectInput';
+import { GridFormSweetContainerInput } from './GridFormSweetContainerInput';
 import { GridFormTextArea } from './GridFormTextArea';
 import { GridFormTextInput } from './GridFormTextInput';
 
@@ -19,113 +20,130 @@ export type GridFormInputGroupProps = {
   isFirstError?: boolean;
   field: GridFormField;
   register: UseFormMethods['register'];
-  setValue: (value: any) => void;
+  setValue: UseFormMethods['setValue'];
+  required?: boolean;
+  showRequired?: boolean;
 };
 
-const StyledFormGroup = styled(FormGroup)`
-  margin-bottom: 0;
+export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
+  error,
+  isFirstError,
+  field,
+  register,
+  setValue,
+  showRequired,
+  required,
+}) => {
+  const errorMessage = error || field.customError;
+  const isRequired = showRequired && required;
 
-  // This is always the input
-  > *:last-child {
-    width: 100%;
-  }
-`;
-
-const StyledFormGroupLabel = styled(FormGroupLabel)`
-  display: inline-block;
-  margin-right: 0.5rem;
-`;
-
-export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = (
-  props
-) => {
   const getInput = () => {
-    switch (props.field.type) {
+    switch (field.type) {
       case 'checkbox':
         return (
           <GridFormCheckboxInput
-            field={props.field}
-            register={props.register}
+            field={field}
+            register={register}
+            showRequired={isRequired}
           />
         );
 
       case 'custom':
         return (
           <GridFormCustomInput
-            field={props.field}
-            register={props.register}
-            setValue={props.setValue}
-            error={props.error}
+            field={field}
+            register={register}
+            setValue={setValue}
+            error={errorMessage}
           />
         );
 
       case 'radio-group':
         return (
           <GridFormRadioGroupInput
-            field={props.field}
-            register={props.register}
-            setValue={props.setValue}
+            field={field}
+            register={register}
+            showRequired={isRequired}
+            setValue={setValue}
           />
         );
 
       case 'select':
         return (
           <GridFormSelectInput
-            error={!!props.error}
-            field={props.field}
-            register={props.register}
+            error={!!errorMessage}
+            field={field}
+            register={register}
+            showRequired={isRequired}
           />
         );
 
       case 'file':
         return (
           <GridFormFileInput
-            error={!!props.error}
-            field={props.field}
-            register={props.register}
+            error={!!errorMessage}
+            field={field}
+            register={register}
+            showRequired={isRequired}
           />
         );
 
       case 'textarea':
         return (
           <GridFormTextArea
-            error={!!props.error}
-            field={props.field}
-            register={props.register}
+            error={!!errorMessage}
+            field={field}
+            register={register}
+            showRequired={isRequired}
           />
+        );
+      case 'hidden':
+        return <GridFormHiddenInput register={register} field={field} />;
+
+      case 'sweet-container':
+        return (
+          <GridFormSweetContainerInput register={register} field={field} />
         );
 
       default:
         return (
           <GridFormTextInput
-            error={!!props.error}
-            field={props.field}
-            register={props.register}
+            error={!!errorMessage}
+            field={field}
+            register={register}
+            showRequired={isRequired}
           />
         );
     }
   };
+  if (field.type === 'hidden' || field.type === 'sweet-container')
+    return getInput();
 
   const label = (
-    <StyledFormGroupLabel
-      disabled={props.field.disabled}
-      htmlFor={props.field.id || props.field.name}
+    <FormGroupLabel
+      disabled={field.disabled}
+      htmlFor={field.id || field.name}
+      tooltip={field.tooltip}
+      showRequired={isRequired}
     >
-      {props.field.label}
-    </StyledFormGroupLabel>
+      {field.label}
+    </FormGroupLabel>
   );
 
   return (
-    <Column size={props.field.size}>
-      <StyledFormGroup>
-        {props.field.hideLabel ? <HiddenText>{label}</HiddenText> : label}
-        {props.error && (
-          <FormError aria-live={props.isFirstError ? 'assertive' : 'off'}>
-            {props.error}
+    <Column size={field.size}>
+      <FormGroup mb={0}>
+        {field.hideLabel ? <HiddenText>{label}</HiddenText> : label}
+        {getInput()}
+        {errorMessage && (
+          <FormError
+            role={isFirstError ? 'alert' : 'status'}
+            aria-live={isFirstError ? 'assertive' : 'off'}
+          >
+            {errorMessage}
           </FormError>
         )}
-        {getInput()}
-      </StyledFormGroup>
+      </FormGroup>
     </Column>
   );
 };

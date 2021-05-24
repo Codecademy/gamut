@@ -1,17 +1,18 @@
 import { Pattern } from '@codecademy/gamut/src';
 import title from '@codecademy/macros/lib/title.macro';
-import { Canvas, Meta, Story } from '@storybook/addon-docs/dist/blocks';
-
-import { PropsTable } from '~styleguide/blocks';
+import { PropsTable } from '@codecademy/storybook-addon-variance';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 
 <Meta
   title={title}
   component={Pattern}
-  parameters={{ source: 'gamut' }}
+  parameters={{
+    source: 'gamut',
+    status: 'updating',
+    subtitle: 'Repeatedable pattern backgrounds for multiple uses.',
+  }}
   args={{ height: 200, width: 200, name: 'diagonalStripesLoose' }}
 />
-
-Our new SVG pattern component.
 
 <Canvas>
   <Story name="Pattern" args={{ width: '100%', height: 200 }}>
@@ -29,13 +30,16 @@ Our new SVG pattern component.
   <Story name="Pattern Dense" args={{ name: 'diagonalStripesDense' }}>
     {(args) => <Pattern {...args} />}
   </Story>
-  <Story name="Pattern: Dots Loose" args={{ name: 'dotsLoose' }}>
+  <Story name="Pattern: Checker Loose" args={{ name: 'checkerLoose' }}>
     {(args) => <Pattern {...args} />}
   </Story>
-  <Story name="Pattern: Dots Regular" args={{ name: 'dotsRegular' }}>
+  <Story name="Pattern: Checker Regular" args={{ name: 'checkerRegular' }}>
     {(args) => <Pattern {...args} />}
   </Story>
-  <Story name="Pattern: Dots Dense" args={{ name: 'dotsDense' }}>
+  <Story name="Pattern: Checker Dense" args={{ name: 'checkerDense' }}>
+    {(args) => <Pattern {...args} />}
+  </Story>
+  <Story name="Pattern: Dot Loose" args={{ name: 'dotLoose' }}>
     {(args) => <Pattern {...args} />}
   </Story>
 </Canvas>

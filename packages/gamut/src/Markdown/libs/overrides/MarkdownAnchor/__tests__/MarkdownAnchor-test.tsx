@@ -1,50 +1,51 @@
 /* eslint-disable jsx-a11y/no-distracting-elements */
 
-import { mount } from 'enzyme';
-import React from 'react';
+import { setupEnzyme } from '@codecademy/gamut-tests';
 
 import { MarkdownAnchor } from '../index';
 
+const renderWrapper = setupEnzyme(MarkdownAnchor);
+
 describe('MarkdownAnchor', () => {
   it('Adds target _blank to external links', () => {
-    const anchor = mount(<MarkdownAnchor href="http://google.com" />);
-    expect(anchor.find('a[target="_blank"]').length).toEqual(1);
+    const { wrapper } = renderWrapper({ href: 'http://google.com' });
+    expect(wrapper.find('a[target="_blank"]').length).toEqual(1);
   });
 
   it('Adds target _blank to same-origin links', () => {
-    const anchor = mount(
-      <MarkdownAnchor href={`${window.location.origin}/search`} />
-    );
-    expect(anchor.find('a[target="_blank"]').length).toEqual(1);
+    const { wrapper } = renderWrapper({
+      href: `${window.location.origin}/search`,
+    });
+    expect(wrapper.find('a[target="_blank"]').length).toEqual(1);
   });
 
   it('Adds rel="noopener" to external links', () => {
-    const anchor = mount(<MarkdownAnchor href="http://google.com" />);
-    expect(anchor.find('a[rel="noopener"]').length).toEqual(1);
+    const { wrapper } = renderWrapper({ href: 'http://google.com' });
+    expect(wrapper.find('a[rel="noopener"]').length).toEqual(1);
   });
 
   it('Doesn\'t add rel="noopener" to relative links', () => {
-    const anchor = mount(<MarkdownAnchor href="/search" />);
-    expect(anchor.find('a[rel]').length).toEqual(0);
+    const { wrapper } = renderWrapper({ href: '/search' });
+    expect(wrapper.find('a[rel]').length).toEqual(0);
   });
 
   it('Doesn\'t add rel="noopener" to same-origin links', () => {
-    const anchor = mount(
-      <MarkdownAnchor href={`${window.location.origin}/search`} />
-    );
-    expect(anchor.find('a[rel]').length).toEqual(0);
+    const { wrapper } = renderWrapper({
+      href: `${window.location.origin}/search`,
+    });
+    expect(wrapper.find('a[rel]').length).toEqual(0);
   });
 
   it("Doesn't throw an error on an invalid URL", () => {
-    const anchor = mount(<MarkdownAnchor href="www.codecademy.com" />);
-    expect(anchor.find(`a[href='www.codecademy.com']`).length).toEqual(1);
+    const { wrapper } = renderWrapper({ href: 'www.codecademy.com' });
+    expect(wrapper.find(`a[href='www.codecademy.com']`).length).toEqual(1);
   });
 
   it('renders its children', () => {
     const text = 'natalie rulez';
 
-    const anchor = mount(<MarkdownAnchor href="/">{text}</MarkdownAnchor>);
+    const { wrapper } = renderWrapper({ href: '/', children: text });
 
-    expect(anchor.text()).toEqual(text);
+    expect(wrapper.text()).toEqual(text);
   });
 });

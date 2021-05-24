@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [2.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/macros@2.1.0...@codecademy/macros@2.1.1) (2021-04-05)
+
+**Note:** Version bump only for package @codecademy/macros
+
+
+
+
+
+## [2.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/macros@2.0.0...@codecademy/macros@2.1.0) (2021-03-23)
+
+
+### Features
+
+* **Dialog:** Add new Dialog Modal component [GM-18] ([349faa9](https://github.com/Codecademy/client-modules/commit/349faa911f61fbf08aa14234d8dfc7ae50135fd7))
+
+
+
 ## [2.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/macros@1.1.2...@codecademy/macros@2.0.0) (2021-02-12)
 
 

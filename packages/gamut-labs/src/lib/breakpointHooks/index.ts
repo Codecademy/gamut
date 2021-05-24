@@ -22,21 +22,44 @@ export const breakpoints = (mapValues(
  * changes in only styles.  For those cases where it is actually easier to maintain
  * two components or a programatic distinction of the breakpoint, this helper
  * exists.
+ *
+ * @deprecated
+ * Use Box, LayoutGrid, or other responsive Gamut components instead.
+ * JavaScript-time screen size checks are notorious for worsening page performance.
+ * @see https://web.dev/cls
  */
 export const useBreakpoint = createBreakpoint(
   breakpoints
 ) as () => keyof typeof breakpoints;
 
+/**
+ * @deprecated
+ * Use Box, LayoutGrid, or other responsive Gamut components instead.
+ * JavaScript-time screen size checks are notorious for worsening page performance.
+ * @see https://web.dev/cls
+ */
 export function useBreakpointAtOrAbove(breakpoint: Breakpoint): boolean {
   const currentBreakpoint = useBreakpoint();
   return breakpoints[currentBreakpoint] >= breakpoints[breakpoint];
 }
 
+/**
+ * @deprecated
+ * Use Box, LayoutGrid, or other responsive Gamut components instead.
+ * JavaScript-time screen size checks are notorious for worsening page performance.
+ * @see https://web.dev/cls
+ */
 export function useBreakpointAt(breakpoint: Breakpoint): boolean {
   const currentBreakpoint = useBreakpoint();
   return breakpoints[currentBreakpoint] === breakpoints[breakpoint];
 }
 
+/**
+ * @deprecated
+ * Use Box, LayoutGrid, or other responsive Gamut components instead.
+ * JavaScript-time screen size checks are notorious for worsening page performance.
+ * @see https://web.dev/cls
+ */
 export function useBreakpointAtOrBelow(breakpoint: Breakpoint): boolean {
   const currentBreakpoint = useBreakpoint();
   return breakpoints[currentBreakpoint] <= breakpoints[breakpoint];

@@ -1,0 +1,41 @@
+{
+  "name": "@codecademy/variance",
+  "description": "Constraint based CSS in JS for building scalable design systems",
+  "version": "0.12.0",
+  "keywords": [
+    "emotion",
+    "css",
+    "styles",
+    "css-in-js"
+  ],
+  "author": "codecaaron <aaron@codecademy.com>",
+  "homepage": "https://github.com/Codecademy/client-modules/variance",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Codecademy/client-modules.git"
+  },
+  "scripts": {
+    "build:clean": "rm -rf ./dist",
+    "build:compile": "tsc -b",
+    "build:transpile": "babel ./src --out-dir ./dist --copy-files --extensions \".ts,.tsx\"",
+    "build": "yarn build:clean && yarn build:compile && yarn build:transpile",
+    "lernaBuildTask": "yarn build"
+  },
+  "peerDependencies": {
+    "typescript": ">=4.2.3"
+  },
+  "dependencies": {
+    "csstype": "^3.0.7",
+    "lodash": "^4.17.5"
+  },
+  "devDependencies": {
+    "@types/react-test-renderer": "^17.0.1"
+  }
+}

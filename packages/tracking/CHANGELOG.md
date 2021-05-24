@@ -3,6 +3,100 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.0](https://github.com/Codecademy/client-modules/compare/@codecademy/tracking@0.7.3...@codecademy/tracking@0.8.0) (2021-05-24)
+
+
+### ⚠ BREAKING CHANGES
+
+* prepended OneTrust to tracking integrations loads
+
+### Features
+
+* prepended OneTrust to tracking integrations loads ([3d8ce05](https://github.com/Codecademy/client-modules/commit/3d8ce05f1669728261f496b604fa8cc5906434e5))
+
+
+
+### [0.7.3](https://github.com/Codecademy/client-modules/compare/@codecademy/tracking@0.7.2...@codecademy/tracking@0.7.3) (2021-05-10)
+
+
+### Bug Fixes
+
+* allow no user for tracking integrations ([#1726](https://github.com/Codecademy/client-modules/issues/1726)) ([66fdf89](https://github.com/Codecademy/client-modules/commit/66fdf89834d2eae53172cd6254d936c182281f0c))
+
+
+
+### [0.7.2](https://github.com/Codecademy/client-modules/compare/@codecademy/tracking@0.7.1...@codecademy/tracking@0.7.2) (2021-05-03)
+
+**Note:** Version bump only for package @codecademy/tracking
+
+
+
+
+
+### [0.7.1](https://github.com/Codecademy/client-modules/compare/@codecademy/tracking@0.7.0...@codecademy/tracking@0.7.1) (2021-05-03)
+
+
+### Bug Fixes
+
+* switch tracking 'verbose' type back to boolean ([8aae870](https://github.com/Codecademy/client-modules/commit/8aae8709b5e755f386f7c9f350ee7a4b86c19bcb))
+
+
+
+## [0.7.0](https://github.com/Codecademy/client-modules/compare/@codecademy/tracking@0.6.0...@codecademy/tracking@0.7.0) (2021-05-03)
+
+
+### ⚠ BREAKING CHANGES
+
+* clean up tracker and remove auth token
+
+### Features
+
+* clean up tracker and remove auth token ([d2088e9](https://github.com/Codecademy/client-modules/commit/d2088e9741ffaa3e568bf182fb7bb6156ed5bf18))
+
+
+
+## [0.6.0](https://github.com/Codecademy/client-modules/compare/@codecademy/tracking@0.5.4...@codecademy/tracking@0.6.0) (2021-05-03)
+
+
+### Features
+
+* added useTrackingIntegrations to tracking package ([2d508e2](https://github.com/Codecademy/client-modules/commit/2d508e2efbcb47968a543d7b54363707301ef351))
+
+
+
+### [0.5.4](https://github.com/Codecademy/client-modules/compare/@codecademy/tracking@0.5.3...@codecademy/tracking@0.5.4) (2021-05-03)
+
+
+### Bug Fixes
+
+* bump tracking package babel-preset-codecademy to latest ([e809566](https://github.com/Codecademy/client-modules/commit/e80956648e76c3e0b439d4d3a63b3baafd818064))
+
+
+
+### [0.5.3](https://github.com/Codecademy/client-modules/compare/@codecademy/tracking@0.5.2...@codecademy/tracking@0.5.3) (2021-04-21)
+
+**Note:** Version bump only for package @codecademy/tracking
+
+
+
+
+
+### [0.5.2](https://github.com/Codecademy/client-modules/compare/@codecademy/tracking@0.5.1...@codecademy/tracking@0.5.2) (2021-03-19)
+
+**Note:** Version bump only for package @codecademy/tracking
+
+
+
+
+
+### [0.5.1](https://github.com/Codecademy/client-modules/compare/@codecademy/tracking@0.5.0...@codecademy/tracking@0.5.1) (2021-03-04)
+
+**Note:** Version bump only for package @codecademy/tracking
+
+
+
+
+
 ## [0.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/tracking@0.4.3...@codecademy/tracking@0.5.0) (2021-02-18)
 
 

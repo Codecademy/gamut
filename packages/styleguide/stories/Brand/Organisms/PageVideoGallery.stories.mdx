@@ -1,6 +1,7 @@
 import { PageVideoGallery } from '@codecademy/gamut-labs/src';
 import title from '@codecademy/macros/lib/title.macro';
-import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
+import { PropsTable } from '@codecademy/storybook-addon-variance';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 
 <Meta
   title={title}
@@ -37,7 +38,7 @@ import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
   }}
   parameters={{
     subtitle: `Video Gallery component for landing pages created in Contentful. Videos are lazy-loaded with optionally configurable placeholder images.`,
-    status: 'volatile',
+    status: 'updating',
   }}
 />
 
@@ -49,7 +50,7 @@ import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
   </Story>
 </Canvas>
 
-<Props story="With Title, Desc, CTA" />
+<PropsTable story="With Title, Desc, CTA" />
 
 ## Gallery only
 

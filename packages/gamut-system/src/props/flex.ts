@@ -20,17 +20,11 @@ export const flex = {
   order: {
     propName: 'order',
   },
-  justifySelf: {
-    propName: 'justifySelf',
-  },
   justifyContent: {
     propName: 'justifyContent',
   },
   justifyItems: {
     propName: 'justifyItems',
-  },
-  alignSelf: {
-    propName: 'alignSelf',
   },
   alignItems: {
     propName: 'alignItems',

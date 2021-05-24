@@ -7,6 +7,7 @@ import { GridFormSelectField } from '../../types';
 export type GridFormSelectInputProps = {
   className?: string;
   error?: boolean;
+  showRequired?: boolean;
   field: Omit<GridFormSelectField, 'label'>;
   register: UseFormMethods['register'];
 };
@@ -16,6 +17,7 @@ export const GridFormSelectInput: React.FC<GridFormSelectInputProps> = ({
   error,
   field,
   register,
+  showRequired,
 }) => {
   return (
     <Select
@@ -30,6 +32,7 @@ export const GridFormSelectInput: React.FC<GridFormSelectInputProps> = ({
       options={field.options}
       id={field.id}
       aria-invalid={error}
+      aria-required={showRequired}
     />
   );
 };

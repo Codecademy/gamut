@@ -24,7 +24,7 @@ export type CheckboxProps = InputHTMLAttributes<HTMLInputElement> &
 
 type Multiline = { multiline?: boolean };
 
-const activeColor = colors['blue-500'];
+const activeColor = colors.hyper;
 
 const CheckboxLabel = styled.label`
   ${noSelect}

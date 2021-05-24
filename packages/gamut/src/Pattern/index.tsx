@@ -8,23 +8,27 @@ export type PatternName =
   | 'diagonalStripesLoose'
   | 'diagonalStripesRegular'
   | 'diagonalStripesDense'
-  | 'dotsLoose'
-  | 'dotsRegular'
-  | 'dotsDense';
+  | 'checkerLoose'
+  | 'checkerRegular'
+  | 'checkerDense'
+  | 'dotLoose';
 
 export interface PatternProps extends BoxProps {
   name: PatternName;
 }
+
 const Svg = styled.svg`
   width: 100%;
   height: 100%;
 `;
 
-export const Pattern: React.FC<PatternProps> = ({ name, ...props }) => (
-  <Box {...props}>
-    <Svg>
-      {defs(name)}
-      <rect x="0" y="0" width="100%" height="100%" fill={`url(#${name})`} />
-    </Svg>
-  </Box>
-);
+export const Pattern: React.FC<PatternProps> = ({ name, ...props }) => {
+  return (
+    <Box {...props}>
+      <Svg aria-hidden>
+        {defs(name)}
+        <rect x="0" y="0" width="100%" height="100%" fill={`url(#${name})`} />
+      </Svg>
+    </Box>
+  );
+};

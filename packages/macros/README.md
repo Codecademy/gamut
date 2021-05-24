@@ -6,7 +6,7 @@ Simple babel utility macros.
 
 ### `title.macro`
 
-This is used to derive the correct story heirarchy from the file path ensuring the file system and storybook heirarchy will be identical.
+This is used to derive the correct story hierarchy from the file path ensuring the file system and storybook hierarchy will be identical.
 
 ```tsx
 // stories/Atoms/Button.stories.mdx

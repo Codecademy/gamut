@@ -1,0 +1,12 @@
+{
+  "name": "@codecademy/tsconfig",
+  "description": "Base `tsconfig.json` file used for Codecademy TypeScript projects.",
+  "version": "0.2.0",
+  "author": "Codecademy Engineering",
+  "main": "tsconfig.json",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Codecademy/client-modules.git"
+  },
+  "license": "MIT"
+}

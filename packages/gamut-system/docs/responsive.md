@@ -55,6 +55,8 @@ Output styles:
 }
 ```
 
+<br />
+
 ## Default Breakpoints
 
 If you do not have a preference on the breakpoints that you use we default to this set:

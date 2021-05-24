@@ -40,4 +40,10 @@ export const layout = {
   verticalAlign: {
     propName: 'verticalAlign',
   },
+  justifySelf: {
+    propName: 'justifySelf',
+  },
+  alignSelf: {
+    propName: 'alignSelf',
+  },
 } as const;

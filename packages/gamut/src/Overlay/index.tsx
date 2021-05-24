@@ -1,9 +1,8 @@
-import FocusTrap from 'focus-trap-react';
-import React from 'react';
-import { useIsomorphicLayoutEffect } from 'react-use';
+import React, { useCallback } from 'react';
 
 import { BodyPortal } from '../BodyPortal';
 import { FlexBox } from '../Box';
+import { FocusTrap } from '../FocusTrap';
 
 export type OverlayProps = {
   children: React.ReactElement<any>;
@@ -12,10 +11,6 @@ export type OverlayProps = {
    * Whether clicking on the screen outside of the container should close the Overlay.
    */
   clickOutsideCloses?: boolean;
-  /**
-   * Whether to allow outside clicks in the overlay. No effect unless clickOutsideCloses is false. Check before using this prop, as it can have accessiblity implications.
-   */
-  allowOutsideClick?: boolean;
   /**
    * Whether clicking the escape key should close the Overlay.
    */
@@ -29,55 +24,49 @@ export type OverlayProps = {
    * Whether the overlay is rendered.
    */
   isOpen?: boolean;
-  /**
-   * Whether to use static positioning on the overlay. Defaults to false since by default Overlay's position is fixed.
-   * @default false
-   */
-  staticPositioning?: boolean;
+  /** Whether the overlay renders inline to its container or creates a portal to the end of the body */
+  inline?: boolean;
 };
 
 export const Overlay: React.FC<OverlayProps> = ({
   className,
   children,
+  inline = false,
   clickOutsideCloses = true,
-  allowOutsideClick,
   escapeCloses = true,
-  staticPositioning = false,
   onRequestClose,
   isOpen,
 }) => {
-  useIsomorphicLayoutEffect(() => {
-    if (typeof document !== 'undefined') {
-      document.body.style.overflow = isOpen ? 'hidden' : 'visible';
-    }
-  }, [isOpen]);
+  const handleOutsideClick = useCallback(() => {
+    clickOutsideCloses && onRequestClose();
+  }, [clickOutsideCloses, onRequestClose]);
+
+  const handleEscapeKey = useCallback(() => {
+    escapeCloses && onRequestClose();
+  }, [escapeCloses, onRequestClose]);
 
   if (!isOpen) return null;
 
-  return (
-    <BodyPortal>
-      <FlexBox
-        data-testid="overlay-content-container"
-        position={staticPositioning ? 'static' : 'fixed'}
-        justifyContent="center"
-        alignItems="center"
-        bottom="0"
-        left="0"
-        right="0"
-        top="0"
-        className={className}
+  const content = (
+    <FlexBox
+      data-testid="overlay-content-container"
+      position={inline ? 'absolute' : 'fixed'}
+      justifyContent="center"
+      alignItems="center"
+      inset={0}
+      className={className}
+    >
+      <FocusTrap
+        active={!inline}
+        onClickOutside={handleOutsideClick}
+        onEscapeKey={handleEscapeKey}
       >
-        <FocusTrap
-          focusTrapOptions={{
-            allowOutsideClick,
-            clickOutsideDeactivates: clickOutsideCloses,
-            escapeDeactivates: escapeCloses,
-            onDeactivate: onRequestClose,
-          }}
-        >
-          {children}
-        </FocusTrap>
-      </FlexBox>
-    </BodyPortal>
+        {children}
+      </FocusTrap>
+    </FlexBox>
   );
+
+  if (inline) return content;
+
+  return <BodyPortal>{content}</BodyPortal>;
 };

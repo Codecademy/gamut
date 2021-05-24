@@ -1,14 +1,23 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "rootDir": "/",
-    "baseUrl": ".storybook",
+    "baseUrl": ".",
     "paths": {
-      "~styleguide/blocks": ["components"]
+      "~styleguide/blocks": [".storybook/components"],
+      "@codecademy/storybook-addon-variance": [
+        ".storybook/addons/system/components"
+      ]
     },
     "allowJs": true,
     "noEmit": true,
     "declaration": false
   },
-  "include": ["../../typings/*.d.ts", "../**/src/**/*", "./**/*"]
+  "include": [
+    "../../typings/*.d.ts",
+    "./.storybook/**/*.ts",
+    "./.storybook/**/*.tsx",
+    "./**/*.tsx",
+    "./**/*.ts",
+    "../../packages/gamut-styles/dist/typings/theme.d.ts"
+  ]
 }
