@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [33.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@33.0.0...@codecademy/gamut@33.1.0) (2021-05-25)
+
+
+### Features
+
+* Make Dialog body a <div> ([4333529](https://github.com/Codecademy/client-modules/commit/4333529fd7d92fff46e06e4ef372b889cc935f01))
+
+
+
 ## [33.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@32.20.1...@codecademy/gamut@33.0.0) (2021-05-24)
 
 
