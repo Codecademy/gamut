@@ -1,26 +1,22 @@
-import { Card, FlexBox, HeadingTags, Text } from '@codecademy/gamut';
+import { Card, FlexBox, HeadingTags, ProLabel, Text } from '@codecademy/gamut';
 import { pxRem } from '@codecademy/gamut-styles';
-import React, { ComponentProps } from 'react';
+import React from 'react';
 
 import { TagColor } from './BottomTag/index';
 import { Footer } from './Footer/index';
-import { Header } from './Header';
 import { Image } from './Image/index';
 import { Subtitle, SubtitleProps } from './Subtitle';
 
-type ProgressState = 'inProgress' | 'completed';
+export type ProgressState = 'inProgress' | 'completed';
 
 const cardHeight = 180;
 
-const cardStyles: Record<
-  ProgressState,
-  ComponentProps<typeof Card>['variant']
-> = {
+const cardStyles = {
   inProgress: 'yellow',
   completed: 'navy',
-};
+} as const;
 
-type CurriculumCardProps = SubtitleProps & {
+export type CurriculumCardProps = SubtitleProps & {
   text: string;
   title: string;
   headingLevel?: HeadingTags;
@@ -47,6 +43,7 @@ export const CurriculumCard: React.FC<CurriculumCardProps> = ({
   title,
 }) => {
   const boxVariant = progressState && cardStyles[progressState];
+  const mode = progressState === 'completed' ? 'dark' : 'light';
 
   return (
     <Card
@@ -57,15 +54,20 @@ export const CurriculumCard: React.FC<CurriculumCardProps> = ({
       shadow="medium"
       position="relative"
     >
-      <Header
-        invertColors={progressState === 'completed'}
-        showProLogo={showProLogo}
-        text={text}
-      />
+      <Text
+        display="flex"
+        fontSize={14}
+        mb={12}
+        fontFamily="accent"
+        textTransform="capitalize"
+      >
+        {showProLogo && <ProLabel alignSelf="center" mr={8} mode={mode} />}
+        {text}
+      </Text>
       <Text as={headingLevel} mb={4} fontSize={20}>
         {title}
       </Text>
-      <div>
+      <FlexBox flexWrap="wrap">
         {!progressState && (
           <Subtitle
             scope={scope}
@@ -73,8 +75,8 @@ export const CurriculumCard: React.FC<CurriculumCardProps> = ({
             difficulty={difficulty}
           />
         )}
-      </div>
-      <FlexBox alignItems="center" justifyContent="center" paddingBottom={16}>
+      </FlexBox>
+      <FlexBox alignItems="center" justifyContent="center" pb={16}>
         {isFullSize && image && (
           <Image image={image} progressState={progressState} />
         )}

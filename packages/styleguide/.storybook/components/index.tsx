@@ -1,5 +1,5 @@
 export * from './Docs/StatusIndicator';
-export * from './PropsTable';
+export * from '../addons/system/components/PropsTable';
 export * from './DataTable';
 export * from './Markdown/Elements';
 export * from './Scales/ColorScale';

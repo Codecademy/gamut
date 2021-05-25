@@ -3,7 +3,10 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "~styleguide/blocks": [".storybook/components"]
+      "~styleguide/blocks": [".storybook/components"],
+      "@codecademy/storybook-addon-variance": [
+        ".storybook/addons/system/components"
+      ]
     },
     "allowJs": true,
     "noEmit": true,
@@ -14,6 +17,7 @@
     "./.storybook/**/*.ts",
     "./.storybook/**/*.tsx",
     "./**/*.tsx",
-    "./**/*.ts"
+    "./**/*.ts",
+    "../../packages/gamut-styles/dist/typings/theme.d.ts"
   ]
 }

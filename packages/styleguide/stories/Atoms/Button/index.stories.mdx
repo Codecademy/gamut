@@ -7,9 +7,8 @@ import {
 } from '@codecademy/gamut/src';
 import { SearchIcon } from '@codecademy/gamut-icons/src';
 import title from '@codecademy/macros/lib/title.macro';
+import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
-
-import { PropsTable } from '~styleguide/blocks';
 
 import { ButtonScale } from './examples';
 
@@ -43,6 +42,11 @@ import { ButtonScale } from './examples';
       control: {
         type: 'select',
         options: ['normal', 'small'],
+      },
+    },
+    icon: {
+      control: {
+        options: [SearchIcon],
       },
     },
   }}
@@ -90,7 +94,7 @@ All but CTA button support a size of either `normal` (default) or `small`.
 
 <Canvas>
   <Story name="IconButton">
-    {(args) => <IconButton icon={SearchIcon} {...args} />}
+    <IconButton icon={SearchIcon} />
   </Story>
 </Canvas>
 

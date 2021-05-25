@@ -89,8 +89,8 @@ export const AppHeader: React.FC<AppHeaderProps> = ({
     return items.map((item, index) => (
       <Box
         key={item.id}
-        marginLeft={index === 0 ? 0 : 8}
-        marginRight={index === items.length - 1 ? 0 : 8}
+        ml={index === 0 ? 0 : 8}
+        mr={index === items.length - 1 ? 0 : 8}
       >
         {mapItemToElement(action, item, redirectParam)}
       </Box>

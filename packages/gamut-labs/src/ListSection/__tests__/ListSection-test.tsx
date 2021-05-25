@@ -16,10 +16,12 @@ const listItems = [
   { title: 'four' },
 ];
 
+const initialDisplayAmount = 2;
+
 const listSectionProps = (listItems: ListItem[]) => {
   return {
     title: 'List Section',
-    initialDisplayAmount: 2,
+    initialDisplayAmount,
     children: listItems.map((listItem) => <Text>Title {listItem.title}</Text>),
   };
 };
@@ -62,5 +64,36 @@ describe('ListSection', () => {
     fireEvent.click(button);
 
     expect(view.getByText('Show Less')).toBeTruthy();
+  });
+
+  it('calls onShowAllOrLessClick with true when the Show All button is clicked', () => {
+    const onShowAllOrLessClick = jest.fn();
+    const { view } = renderListSection({ onShowAllOrLessClick });
+
+    const button = view.getByText('Show All');
+    fireEvent.click(button);
+
+    expect(onShowAllOrLessClick).toHaveBeenCalledWith(true);
+  });
+
+  it('calls onShowAllOrLessClick with false when the Show Less button is clicked', () => {
+    const onShowAllOrLessClick = jest.fn();
+    const { view } = renderListSection({ onShowAllOrLessClick });
+
+    const button = view.getByText('Show All');
+
+    fireEvent.click(button); // Switch 'Show All' to 'Show Less'
+    fireEvent.click(button);
+
+    expect(onShowAllOrLessClick).toHaveBeenLastCalledWith(false);
+  });
+
+  it('renders as a semantic list', () => {
+    renderListSection().view.getByRole('list');
+  });
+
+  it('renders the list elements as semantic list items', () => {
+    const { view } = renderListSection();
+    expect(view.getAllByRole('listitem').length).toBe(initialDisplayAmount);
   });
 });

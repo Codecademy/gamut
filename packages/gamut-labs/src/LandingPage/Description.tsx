@@ -24,7 +24,7 @@ export const Description: React.FC<DescriptionProps> = ({
 }) => (
   <DescriptionContainer
     maxWidth="38rem"
-    marginTop={16}
+    mt={16}
     className={className}
     mode={mode}
   >

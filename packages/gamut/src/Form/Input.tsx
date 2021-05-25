@@ -117,7 +117,11 @@ export const Input = forwardRef<HTMLInputElement, InputWrapperProps>(
     const ShownIcon = Icon || icon;
 
     return (
-      <Box position="relative" textColor={color}>
+      <Box
+        display={rest.type === 'hidden' ? 'none' : undefined}
+        position="relative"
+        textColor={color}
+      >
         <AsComponent
           {...rest}
           id={id || rest.htmlFor}
@@ -130,7 +134,7 @@ export const Input = forwardRef<HTMLInputElement, InputWrapperProps>(
         />
         {!!ShownIcon && (
           <FlexBox
-            paddingRight={Icon ? 12 : 16}
+            pr={Icon ? 12 : 16}
             position="absolute"
             alignItems="center"
             right="0"
