@@ -4,7 +4,11 @@ import { FieldError, Mode, SubmitHandler, useForm } from 'react-hook-form';
 import { Form } from '../Form';
 import { LayoutGrid, LayoutGridProps } from '../Layout';
 import { GridFormInputGroup } from './GridFormInputGroup';
-import { GridFormSubmit, GridFormSubmitProps } from './GridFormSubmit';
+import {
+  CancelButtonProps,
+  GridFormSubmit,
+  GridFormSubmitProps,
+} from './GridFormSubmit';
 import { GridFormField } from './types';
 
 export * from './types';
@@ -27,6 +31,11 @@ export type GridFormProps<Values extends {}> = {
    * Descriptions of any fields comprising the form.
    */
   fields?: GridFormField[];
+
+  /**
+   * Renders a cancel button with the provided child text and onClick function.
+   */
+  cancel?: CancelButtonProps;
 
   /**
    * Function called with field values on submit, if all validations have passed.
@@ -64,6 +73,7 @@ export type GridFormProps<Values extends {}> = {
 export function GridForm<
   Values extends Record<string, boolean | string | undefined | FileList>
 >({
+  cancel,
   children,
   className,
   columnGap = defaultColumnGap,
@@ -124,6 +134,7 @@ export function GridForm<
           );
         })}
         <GridFormSubmit
+          cancel={cancel}
           {...submit}
           disabled={
             (validation === 'onChange' && !formState.isValid) || submit.disabled

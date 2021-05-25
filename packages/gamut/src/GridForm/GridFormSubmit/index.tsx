@@ -1,7 +1,7 @@
 import React, { ComponentProps } from 'react';
 
 import { Box } from '../../Box';
-import { CTAButton, FillButton } from '../../Button';
+import { CTAButton, FillButton, TextButton } from '../../Button';
 import {
   ButtonDeprecated,
   ButtonDeprecatedProps,
@@ -31,6 +31,11 @@ type GridFormButtonSubmitPropsDeprecated = GridFormBase & {
 type GridFormSubmitPropsStandard = GridFormBase & {
   type?: ButtonType;
 };
+
+export type CancelButtonProps = {
+  cancel?: { children: React.ReactNode; onClick: () => void };
+};
+
 export type GridFormSubmitProps =
   | GridFormButtonSubmitPropsDeprecated
   | GridFormSubmitPropsStandard;
@@ -42,7 +47,9 @@ const positions = {
   stretch: 'stretch',
 };
 
-export const GridFormSubmit: React.FC<GridFormSubmitProps> = (props) => {
+export const GridFormSubmit: React.FC<
+  GridFormSubmitProps & CancelButtonProps
+> = (props) => {
   const getButton = () => {
     switch (props.type) {
       case 'cta':
@@ -86,6 +93,7 @@ export const GridFormSubmit: React.FC<GridFormSubmitProps> = (props) => {
         alignSelf="center"
         justifySelf={positions[props.position || 'left']}
       >
+        {props.cancel && <TextButton {...props.cancel} mr={32} />}
         {getButton()}
       </Box>
     </Column>
