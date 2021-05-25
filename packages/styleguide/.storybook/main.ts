@@ -21,6 +21,9 @@ module.exports = {
     '@storybook/addon-links',
     './addons/system/preset',
   ],
+  core: {
+    builder: 'webpack5',
+  },
   stories: getStories(),
   typescript: {
     reactDocgen: 'react-docgen-typescript',

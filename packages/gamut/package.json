@@ -18,8 +18,8 @@
   "peerDependencies": {
     "@emotion/react": "^11.4.0",
     "@emotion/styled": "^11.3.0",
-    "react": ">=16.8.1",
-    "react-dom": ">=16.8.1"
+    "react": ">=16.13.1",
+    "react-dom": ">=16.13.1"
   },
   "dependencies": {
     "@codecademy/gamut-icons": "^4.14.1",

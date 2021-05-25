@@ -10,8 +10,8 @@
     "url": "git+https://github.com/Codecademy/client-modules.git"
   },
   "peerDependencies": {
-    "react": ">=16.8.1",
-    "react-dom": ">=16.8.1"
+    "react": ">=16.13.1",
+    "react-dom": ">=16.13.1"
   },
   "dependencies": {
     "emojisplosion": "^2.6.0",
