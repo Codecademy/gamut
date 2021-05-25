@@ -37,7 +37,12 @@ export type GridFormSubmitProps =
   | GridFormSubmitPropsStandard;
 
 export type GridFormCancelButtonProps = {
-  cancel?: { children: React.ReactNode; onClick: () => void };
+  children: React.ReactNode;
+  onClick: () => void;
+};
+
+type CancelButtonProps = {
+  cancel?: GridFormCancelButtonProps;
 };
 
 const positions = {
@@ -48,7 +53,7 @@ const positions = {
 };
 
 export const GridFormButtons: React.FC<
-  GridFormSubmitProps & GridFormCancelButtonProps
+  GridFormSubmitProps & CancelButtonProps
 > = (props) => {
   const getButton = () => {
     switch (props.type) {

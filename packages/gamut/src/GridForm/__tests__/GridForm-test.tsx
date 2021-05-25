@@ -412,7 +412,7 @@ describe('GridForm', () => {
             fields={[stubSweetContainerField]}
             onSubmit={jest.fn()}
             submit={{ type: 'fill', contents: <>Submit</>, size: 12 }}
-            cancel={{ cancel: { children: 'Cancel', onClick: jest.fn() } }}
+            cancel={{ children: 'Cancel', onClick: jest.fn() }}
           />
         </ThemeProvider>
       );
