@@ -115,8 +115,5 @@
     "hooks": {
       "pre-commit": "lint-staged"
     }
-  },
-  "resolutions": {
-    "webpack": "5.22.0"
   }
 }
