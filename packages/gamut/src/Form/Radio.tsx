@@ -1,3 +1,4 @@
+import styled from '@emotion/styled';
 import cx from 'classnames';
 import React, { forwardRef, InputHTMLAttributes, ReactNode } from 'react';
 
@@ -16,6 +17,8 @@ export type RadioProps = InputHTMLAttributes<HTMLInputElement> & {
   value?: string;
   readOnly?: boolean;
 };
+
+styled;
 
 export const Radio = forwardRef<HTMLInputElement, RadioProps>(
   (
