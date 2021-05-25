@@ -41,20 +41,6 @@ describe('Dialog', () => {
     expect(view.queryByRole('dialog')).toBe(null);
   });
 
-  it('renders child content as p if childrenAs is not set', () => {
-    const { view } = renderView();
-
-    const [content] = view.getAllByTestId('dialog-content');
-    expect(content.nodeName).toBe('P');
-  });
-
-  it('renders child content as div if childrenAs is set to div', () => {
-    const { view } = renderView({ childrenAs: 'div' });
-
-    const [content] = view.getAllByTestId('dialog-content');
-    expect(content.nodeName).toBe('DIV');
-  });
-
   it('requests closing the dialog when the close button is clicked', () => {
     const { view } = renderView();
 
