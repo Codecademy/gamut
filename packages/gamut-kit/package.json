@@ -13,7 +13,6 @@
     "@codecademy/gamut-illustrations": "^0.15.1",
     "@codecademy/gamut-labs": "^18.1.4",
     "@codecademy/gamut-styles": "^10.1.1",
-    "@codecademy/gamut-system": "^0.7.2",
     "@codecademy/gamut-tests": "^2.4.1",
     "@codecademy/variance": "^0.12.0",
     "component-test-setup": "^0.3.1"

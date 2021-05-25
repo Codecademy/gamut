@@ -1,14 +1,13 @@
 import {
+  ColorModes,
   fontSmoothPixel,
   lineHeight,
   pxRem,
+  system,
   timing,
-  variant,
 } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React, { ReactNode } from 'react';
-
-import { VisualTheme } from '../theming/VisualTheme';
 
 export type ToolTipAlignment =
   | 'bottom-center'
@@ -35,7 +34,7 @@ const TargetContainer = styled.div`
 
 type ToolTipContainerProps = {
   alignment: ToolTipAlignment;
-  mode: VisualTheme;
+  mode: ColorModes;
 };
 
 const ToolTipContainer = styled.div<ToolTipContainerProps>`
@@ -63,7 +62,7 @@ const ToolTipContainer = styled.div<ToolTipContainerProps>`
   &::after {
     border-style: solid;
 
-    ${variant({
+    ${system.variant({
       prop: 'mode',
       variants: {
         dark: { backgroundColor: 'black', borderColor: 'white' },
@@ -156,16 +155,16 @@ const ToolTipBody = styled.div<ToolTipContainerProps>`
     `}
   min-width: 4rem;
 
-  ${variant({
+  ${system.variant({
     prop: 'mode',
     variants: {
       dark: {
-        backgroundColor: 'black',
+        bg: 'black',
         borderColor: 'beige',
         textColor: 'beige',
       },
       light: {
-        backgroundColor: 'white',
+        bg: 'white',
         borderColor: 'black',
         textColor: 'black',
       },
@@ -201,7 +200,7 @@ export type ToolTipProps = {
   focusable?: boolean;
 
   id: string;
-  mode?: VisualTheme;
+  mode?: ColorModes;
   target?: ReactNode;
 };
 

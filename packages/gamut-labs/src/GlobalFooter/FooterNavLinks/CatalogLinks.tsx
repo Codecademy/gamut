@@ -1,5 +1,5 @@
 import { Anchor, Box } from '@codecademy/gamut';
-import { theme, variant } from '@codecademy/gamut-styles';
+import { system, theme } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React from 'react';
 
@@ -37,7 +37,7 @@ const CatalogLinkArea = styled(FooterLinkItems)<{ variant?: 'fullHeight' }>`
   flex-wrap: wrap;
   margin-bottom: 1rem;
 
-  ${variant({ fullHeight: { maxHeight: { md: 'none' } } })}
+  ${system.variant({ variants: { fullHeight: { maxHeight: { md: 'none' } } } })}
 `;
 
 const CatalogFooterLinkItem = styled(FooterLinkItem)`
