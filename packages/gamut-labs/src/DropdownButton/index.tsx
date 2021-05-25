@@ -72,7 +72,6 @@ export const DropdownButton: React.FC<DropdownButtonProps> = ({
         <IconButton
           icon={MiniKebabMenuIcon}
           size="small"
-          mode="light"
           variant="secondary"
           onClick={handleClick}
           data-testid="dropdown-kebab-button"
