@@ -7,29 +7,29 @@ import { CardShell } from '../DeprecatedCard';
 import { Overlay, OverlayProps } from '../Overlay';
 import styles from './styles.module.scss';
 
-export type ModalOverlayProps = Partial<
+export type ModalDeprecatedOverlayProps = Partial<
   Pick<OverlayProps, 'clickOutsideCloses' | 'escapeCloses' | 'className'>
 >;
 
-export type ModalProps = {
+export type ModalDeprecatedProps = {
   children?: React.ReactNode;
   className?: string;
   /**
-   * Whether the Modal is open or closed
+   * Whether the ModalDeprecated is open or closed
    */
   isOpen: boolean;
 
   /**
-   * A function that is called when the Modal expects to be closed
+   * A function that is called when the ModalDeprecated expects to be closed
    * Triggered automatically by the Overlay component in certain situations
    */
   onRequestClose: () => void;
 
   /**
    * See Overlay component for prop definitions
-   * @description ModalOverlayProps
+   * @description ModalDeprecatedOverlayProps
    */
-  overlayProps?: ModalOverlayProps;
+  overlayProps?: ModalDeprecatedOverlayProps;
 
   /**
    * Whether to hide the default close button and pass your own through children
@@ -42,10 +42,10 @@ export type ModalProps = {
 /**
  * @deprecated  This component is deprecated and will be updated soon.
  *
- * Please check the gamut board for updates on the new version of Modal
+ * Please check the gamut board for updates on the new version of ModalDeprecated
  */
 
-export const Modal: React.FC<ModalProps> = ({
+export const ModalDeprecated: React.FC<ModalDeprecatedProps> = ({
   children,
   className,
   onRequestClose,

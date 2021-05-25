@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [33.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@32.20.1...@codecademy/gamut@33.0.0) (2021-05-24)
+
+
+### ⚠ BREAKING CHANGES
+
+* **Modal:** Deprecating Modal component
+
+### Code Refactoring
+
+* **Modal:** Deprecating Modal component ([6f23ef6](https://github.com/Codecademy/client-modules/commit/6f23ef687de25f650e0893e375a2e3ff04d6c96b))
+
+
+
 ### [32.20.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@32.20.0...@codecademy/gamut@32.20.1) (2021-05-24)
 
 
