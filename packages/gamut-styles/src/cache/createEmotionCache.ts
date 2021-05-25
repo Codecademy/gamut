@@ -1,7 +1,7 @@
 import createCache, { Options, StylisPlugin } from '@emotion/cache';
 import { prefixer } from 'stylis';
 
-import { focusVisible } from './stylisPlugins';
+import { focusVisible, lineHeight } from './stylisPlugins';
 
 export const EMOTION_KEY = 'gamut';
 export const EMOTION_CONTAINER = 'emotion-styles';
@@ -31,6 +31,7 @@ export const createEmotionCache = (overrides?: Partial<Options>) =>
     stylisPlugins: [
       ...(overrides?.stylisPlugins ?? []),
       focusVisible,
+      lineHeight,
       prefixer as StylisPlugin,
     ],
   });
