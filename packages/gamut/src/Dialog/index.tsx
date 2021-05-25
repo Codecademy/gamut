@@ -67,6 +67,7 @@ export interface DialogProps
     SizeVariants {
   isOpen: boolean;
   title: React.ReactNode;
+  childrenAs?: 'p' | 'div';
   children: React.ReactNode;
   confirmCta: {
     children: React.ReactNode;
@@ -81,6 +82,7 @@ export interface DialogProps
 
 export const Dialog: React.FC<DialogProps> = ({
   title,
+  childrenAs = 'p',
   children,
   confirmCta,
   cancelCta,
@@ -119,7 +121,7 @@ export const Dialog: React.FC<DialogProps> = ({
             onClick={onCancel}
             gridArea="close"
           />
-          <Text as="p" gridArea="content">
+          <Text as={childrenAs} gridArea="content" data-testid="dialog-content">
             {children}
           </Text>
           {cancelCta && (
