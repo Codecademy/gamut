@@ -9,36 +9,36 @@ import {
 import { Column } from '../../Layout';
 import { VisualTheme } from '../../theming/VisualTheme';
 
-export type GridFormSubmitPosition = keyof typeof positions;
+export type GridFormButtonsPosition = keyof typeof positions;
 
-export type ButtonType = 'cta' | 'fill';
-export type ButtonDeprecatedType = 'business';
+export type SubmitButtonType = 'cta' | 'fill';
+export type SubmitButtonDeprecatedType = 'business';
 
 type GridFormBase = {
   contents: React.ReactNode;
-  position?: GridFormSubmitPosition;
+  position?: GridFormButtonsPosition;
   size: ComponentProps<typeof Column>['size'];
   disabled?: ButtonDeprecatedProps['disabled'];
   mode?: VisualTheme;
 };
 
 type GridFormButtonSubmitPropsDeprecated = GridFormBase & {
-  type?: ButtonDeprecatedType;
+  type?: SubmitButtonDeprecatedType;
   theme?: ButtonDeprecatedProps['theme'];
   outline?: ButtonDeprecatedProps['outline'];
 };
 
 type GridFormSubmitPropsStandard = GridFormBase & {
-  type?: ButtonType;
-};
-
-export type CancelButtonProps = {
-  cancel?: { children: React.ReactNode; onClick: () => void };
+  type?: SubmitButtonType;
 };
 
 export type GridFormSubmitProps =
   | GridFormButtonSubmitPropsDeprecated
   | GridFormSubmitPropsStandard;
+
+export type GridFormCancelButtonProps = {
+  cancel?: { children: React.ReactNode; onClick: () => void };
+};
 
 const positions = {
   left: 'flex-start',
@@ -47,8 +47,8 @@ const positions = {
   stretch: 'stretch',
 };
 
-export const GridFormSubmit: React.FC<
-  GridFormSubmitProps & CancelButtonProps
+export const GridFormButtons: React.FC<
+  GridFormSubmitProps & GridFormCancelButtonProps
 > = (props) => {
   const getButton = () => {
     switch (props.type) {
