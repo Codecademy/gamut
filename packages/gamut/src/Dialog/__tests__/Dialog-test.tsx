@@ -24,7 +24,7 @@ const defaultProps = {
 
 const renderView = setupRtl(Dialog, defaultProps);
 
-describe('ModalDeprecated', () => {
+describe('Dialog', () => {
   beforeEach(() => {
     jest.resetAllMocks();
   });

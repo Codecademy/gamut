@@ -119,7 +119,7 @@ export const Dialog: React.FC<DialogProps> = ({
             onClick={onCancel}
             gridArea="close"
           />
-          <Text as="p" gridArea="content">
+          <Text as="div" gridArea="content" data-testid="dialog-content">
             {children}
           </Text>
           {cancelCta && (
