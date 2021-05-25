@@ -3,6 +3,106 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [40.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@40.0.0...@codecademy/styleguide@40.0.1) (2021-05-25)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [40.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@39.0.4...@codecademy/styleguide@40.0.0) (2021-05-24)
+
+
+### ⚠ BREAKING CHANGES
+
+* **Modal:** Deprecating Modal component
+
+### Code Refactoring
+
+* **Modal:** Deprecating Modal component ([6f23ef6](https://github.com/Codecademy/client-modules/commit/6f23ef687de25f650e0893e375a2e3ff04d6c96b))
+
+
+
+### [39.0.4](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@39.0.3...@codecademy/styleguide@39.0.4) (2021-05-24)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [39.0.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@39.0.2...@codecademy/styleguide@39.0.3) (2021-05-19)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [39.0.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@39.0.1...@codecademy/styleguide@39.0.2) (2021-05-19)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [39.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@39.0.0...@codecademy/styleguide@39.0.1) (2021-05-19)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [39.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@38.3.1...@codecademy/styleguide@39.0.0) (2021-05-19)
+
+
+### ⚠ BREAKING CHANGES
+
+* Refactor Testimonial and Avatar to Emotion
+
+### Features
+
+* Refactor Testimonial and Avatar to Emotion ([174a0d8](https://github.com/Codecademy/client-modules/commit/174a0d86cf7f625e798ea24a9f8825f4888df321))
+
+
+
+### [38.3.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@38.3.0...@codecademy/styleguide@38.3.1) (2021-05-19)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [38.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@38.2.0...@codecademy/styleguide@38.3.0) (2021-05-19)
+
+
+### Features
+
+* **Popover:** use theme.colors.secondary for outline color ([63e0779](https://github.com/Codecademy/client-modules/commit/63e07790c4b0c2966b569a7af9ed3aba33aeb06b))
+
+
+
+## [38.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@38.1.1...@codecademy/styleguide@38.2.0) (2021-05-18)
+
+
+### Features
+
+* **theme:** createTheme self containment ([59ddff7](https://github.com/Codecademy/client-modules/commit/59ddff7224cd8e0972212dd6ba1696f40ccac835)), closes [#666666](https://github.com/Codecademy/client-modules/issues/666666) [#666666](https://github.com/Codecademy/client-modules/issues/666666)
+
+
+
+### [38.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@38.1.0...@codecademy/styleguide@38.1.1) (2021-05-17)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
 ## [38.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@38.0.0...@codecademy/styleguide@38.1.0) (2021-05-14)
 
 

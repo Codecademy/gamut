@@ -51,7 +51,7 @@ const labelSizeVariants = variant({
 const disabledLabelStyle = ({ disabled }: disabledLabelStyleProps) => {
   if (disabled) {
     return css`
-      color: ${theme.colors[`gray-400`]};
+      color: ${theme.colors['gray-600']};
     `;
   }
 };
@@ -95,9 +95,9 @@ export const FormGroupLabel: React.FC<FormGroupLabelProps> = ({
       {tooltip && (
         <StyledToolTipContainer>
           <StyledToolTip
-            {...tooltip}
             alignment="bottom-right"
             target={<MiniInfoOutlineIcon size="0.8rem" />}
+            {...tooltip}
           />
         </StyledToolTipContainer>
       )}

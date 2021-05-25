@@ -19,7 +19,7 @@ const modalSizeVariants = system.variant({
   },
 });
 
-const ShroudedOverlay = styled(Overlay)(system.css({ bg: 'shadow' }));
+const ShroudedOverlay = styled(Overlay)(system.css({ bg: 'shadow-opaque' }));
 
 const ModalWrapper = styled.div<SizeVariants>(
   system.css({
@@ -119,7 +119,7 @@ export const Dialog: React.FC<DialogProps> = ({
             onClick={onCancel}
             gridArea="close"
           />
-          <Text as="p" gridArea="content">
+          <Text as="div" gridArea="content" data-testid="dialog-content">
             {children}
           </Text>
           {cancelCta && (
