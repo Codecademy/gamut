@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.16.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-illustrations@0.15.1...@codecademy/gamut-illustrations@0.16.0) (2021-05-25)
+
+
+### Features
+
+* add Keyhole illustration ([f8af8bd](https://github.com/Codecademy/client-modules/commit/f8af8bdb8268da8e2d787fe247936dad2fd0da1f))
+
+
+
 ### [0.15.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-illustrations@0.15.0...@codecademy/gamut-illustrations@0.15.1) (2021-05-24)
 
 **Note:** Version bump only for package @codecademy/gamut-illustrations
