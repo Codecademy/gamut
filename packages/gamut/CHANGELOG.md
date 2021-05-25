@@ -3,6 +3,62 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [33.1.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@33.1.2...@codecademy/gamut@33.1.3) (2021-05-25)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [33.1.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@33.1.1...@codecademy/gamut@33.1.2) (2021-05-25)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [33.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@33.1.0...@codecademy/gamut@33.1.1) (2021-05-25)
+
+
+### Bug Fixes
+
+* GridForm Sweet Container - add missing label ([4a8837b](https://github.com/Codecademy/client-modules/commit/4a8837bd8244549b7ace933755b85183fadd2409))
+
+
+
+## [33.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@33.0.0...@codecademy/gamut@33.1.0) (2021-05-25)
+
+
+### Features
+
+* Make Dialog body a <div> ([4333529](https://github.com/Codecademy/client-modules/commit/4333529fd7d92fff46e06e4ef372b889cc935f01))
+
+
+
+## [33.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@32.20.1...@codecademy/gamut@33.0.0) (2021-05-24)
+
+
+### ⚠ BREAKING CHANGES
+
+* **Modal:** Deprecating Modal component
+
+### Code Refactoring
+
+* **Modal:** Deprecating Modal component ([6f23ef6](https://github.com/Codecademy/client-modules/commit/6f23ef687de25f650e0893e375a2e3ff04d6c96b))
+
+
+
+### [32.20.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@32.20.0...@codecademy/gamut@32.20.1) (2021-05-24)
+
+
+### Bug Fixes
+
+* allow override of tooltip alignment ([3930e15](https://github.com/Codecademy/client-modules/commit/3930e158c7f430acabc5ac5d66ab19d2b1fe9b76))
+
+
+
 ## [32.20.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@32.19.2...@codecademy/gamut@32.20.0) (2021-05-19)
 
 

@@ -11,6 +11,7 @@ export * from './Envelope';
 export * from './Heart';
 export * from './Hills';
 export * from './HomeOffice';
+export * from './Keyhole';
 export * from './Megaphone';
 export * from './New';
 export * from './NumberBlocks';

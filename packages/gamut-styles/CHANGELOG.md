@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [10.1.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@10.1.1...@codecademy/gamut-styles@10.1.2) (2021-05-25)
+
+
+### Bug Fixes
+
+* Use native focus-visible in addition to polyfill ([aefae8f](https://github.com/Codecademy/client-modules/commit/aefae8f6923438c459cb774293d637403df708a2))
+
+
+
+### [10.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@10.1.0...@codecademy/gamut-styles@10.1.1) (2021-05-24)
+
+
+### Bug Fixes
+
+* allow override of tooltip alignment ([3930e15](https://github.com/Codecademy/client-modules/commit/3930e158c7f430acabc5ac5d66ab19d2b1fe9b76))
+
+
+
 ## [10.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@10.0.0...@codecademy/gamut-styles@10.1.0) (2021-05-18)
 
 
