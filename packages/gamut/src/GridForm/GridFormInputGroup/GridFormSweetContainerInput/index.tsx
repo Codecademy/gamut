@@ -8,11 +8,13 @@ import { GridFormSweetContainerField } from '../../types';
 export type GridFormSweetContainerInputProps = {
   field: GridFormSweetContainerField;
   register: UseFormMethods['register'];
+  label: string;
 };
 
 export const GridFormSweetContainerInput: React.FC<GridFormSweetContainerInputProps> = ({
   register,
   field: { name },
+  label,
 }) => {
   return (
     <Box
@@ -23,7 +25,7 @@ export const GridFormSweetContainerInput: React.FC<GridFormSweetContainerInputPr
       top="100vh"
       width="0"
     >
-      <Input name={name} ref={register()} type="checkbox" />
+      <Input name={name} ref={register()} type="checkbox" label={label} />
     </Box>
   );
 };
