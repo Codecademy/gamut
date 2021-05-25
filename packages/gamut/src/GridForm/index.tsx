@@ -1,13 +1,10 @@
 import React from 'react';
 import { FieldError, Mode, SubmitHandler, useForm } from 'react-hook-form';
 
+import { TextButtonProps } from '../Button';
 import { Form } from '../Form';
 import { LayoutGrid, LayoutGridProps } from '../Layout';
-import {
-  GridFormButtons,
-  GridFormCancelButtonProps,
-  GridFormSubmitProps,
-} from './GridFormButtons';
+import { GridFormButtons, GridFormSubmitProps } from './GridFormButtons';
 import { GridFormInputGroup } from './GridFormInputGroup';
 import { GridFormField } from './types';
 
@@ -35,7 +32,7 @@ export type GridFormProps<Values extends {}> = {
   /**
    * Renders a cancel button with the provided child text and onClick function.
    */
-  cancel?: GridFormCancelButtonProps;
+  cancel?: TextButtonProps;
 
   /**
    * Function called with field values on submit, if all validations have passed.

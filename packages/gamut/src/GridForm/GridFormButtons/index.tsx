@@ -1,7 +1,12 @@
 import React, { ComponentProps } from 'react';
 
 import { Box } from '../../Box';
-import { CTAButton, FillButton, TextButton } from '../../Button';
+import {
+  CTAButton,
+  FillButton,
+  TextButton,
+  TextButtonProps,
+} from '../../Button';
 import {
   ButtonDeprecated,
   ButtonDeprecatedProps,
@@ -36,13 +41,8 @@ export type GridFormSubmitProps =
   | GridFormButtonSubmitPropsDeprecated
   | GridFormSubmitPropsStandard;
 
-export type GridFormCancelButtonProps = {
-  children: React.ReactNode;
-  onClick: () => void;
-};
-
 type CancelButtonProps = {
-  cancel?: GridFormCancelButtonProps;
+  cancel?: TextButtonProps;
 };
 
 const positions = {
