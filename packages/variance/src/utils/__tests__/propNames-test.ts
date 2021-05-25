@@ -1,3 +1,4 @@
+import { testConfig } from '../__fixtures__/testConfig';
 import { orderPropNames } from '../propNames';
 
 describe('orderPropNames', () => {
@@ -24,7 +25,7 @@ describe('orderPropNames', () => {
       },
     });
 
-    expect(result).toEqual(['test', 'test2']);
+    expect(result).toEqual(['test2', 'test']);
   });
   it('orders higher precendence longhand properties before many lower precedence props', () => {
     const result = orderPropNames({
@@ -39,7 +40,7 @@ describe('orderPropNames', () => {
       },
     });
 
-    expect(result).toEqual(['test', 'test3', 'test2']);
+    expect(result).toEqual(['test2', 'test3', 'test']);
   });
   it('orders non-shorthand properties by length of properties responsible', () => {
     const result = orderPropNames({
@@ -79,5 +80,55 @@ describe('orderPropNames', () => {
     });
 
     expect(result).toEqual(['margin', 'marginX', 'marginY', 'marginLeft']);
+  });
+  it('orders all props', () => {
+    const result = orderPropNames(testConfig);
+
+    expect(result).toEqual([
+      'border',
+      'borderX',
+      'borderY',
+      'borderTop',
+      'borderBottom',
+      'borderLeft',
+      'borderRight',
+      'borderWidth',
+      'borderWidthX',
+      'borderWidthY',
+      'borderStyle',
+      'borderStyleX',
+      'borderStyleY',
+      'borderColor',
+      'borderColorX',
+      'borderColorY',
+      'flex',
+      'm',
+      'mx',
+      'my',
+      'p',
+      'px',
+      'py',
+      // end shorthands
+      'textColor',
+      'bg',
+      'borderColorLeft',
+      'borderColorRight',
+      'borderColorTop',
+      'borderColorBottom',
+      'borderRadius',
+      'borderRadiusLeft',
+      'borderRadiusTop',
+      'borderRadiusBottom',
+      'borderRadiusRight',
+      'flexBasis',
+      'pt',
+      'pb',
+      'pr',
+      'pl',
+      'mt',
+      'mb',
+      'mr',
+      'ml',
+    ]);
   });
 });

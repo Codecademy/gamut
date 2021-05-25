@@ -1,9 +1,8 @@
 import { AppHeaderSubMenuMobile } from '@codecademy/gamut-labs/src';
 import title from '@codecademy/macros/lib/title.macro';
-import { Canvas, Meta, Story } from '@storybook/addon-docs/dist/blocks';
-import LinkTo from '@storybook/addon-links/dist/react/components/link';
-
-import { PropsTable } from '~styleguide/blocks';
+import { PropsTable } from '@codecademy/storybook-addon-variance';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import LinkTo from '@storybook/addon-links/react';
 
 import {
   MOCK_DROPDOWN_1,
@@ -15,7 +14,7 @@ import {
   component={AppHeaderSubMenuMobile}
   parameters={{
     layout: 'padded',
-    status: 'volatile',
+    status: 'updating',
     subtitle: 'The submenu for the mobile version of the AppHeader.',
   }}
   args={{

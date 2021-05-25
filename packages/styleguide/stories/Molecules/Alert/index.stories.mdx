@@ -1,8 +1,7 @@
 import { Alert } from '@codecademy/gamut/src';
 import title from '@codecademy/macros/lib/title.macro';
-import { Canvas, Meta, Story } from '@storybook/addon-docs/dist/blocks';
-
-import { PropsTable } from '~styleguide/blocks';
+import { PropsTable } from '@codecademy/storybook-addon-variance';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 
 import { ALERTS } from './constants';
 
@@ -12,7 +11,7 @@ import { ALERTS } from './constants';
   parameters={{
     subtitle:
       'An alert displays an important, succinct message, and provides actions for users to address (or dismiss the alert). It requires a user action to be dismissed.',
-    status: 'stable',
+    status: 'current',
     source: 'gamut',
     figmaId: 'TemYhRWOavsERWprDzRJCx',
     padded: true,
@@ -27,6 +26,8 @@ import { ALERTS } from './constants';
       'You have been logged out due to inactivity. Click the button to log in again.',
   }}
 />
+
+<br />
 
 <Story name="Alert">{(args) => <Alert {...args} />}</Story>
 

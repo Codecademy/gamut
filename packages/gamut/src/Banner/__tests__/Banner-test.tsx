@@ -29,7 +29,7 @@ describe('Banner', () => {
     });
 
     const CTA = wrapper.find(TextButton);
-    expect(CTA).toHaveLength(2);
+    expect(CTA).toHaveLength(1);
 
     expect(CTA.at(0).text()).toEqual('Hello');
     CTA.at(0).simulate('click');

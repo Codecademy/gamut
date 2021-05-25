@@ -1,23 +1,15 @@
-import { Box } from '@codecademy/gamut';
-import { colors } from '@codecademy/gamut-styles';
-import React from 'react';
+import { system } from '@codecademy/gamut-styles';
+import styled from '@emotion/styled';
 
-export const ExampleBox: React.FC = ({ children }) => (
-  <Box
-    padding={8}
-    minHeight="30px"
-    marginBottom={8}
-    backgroundColor="blue"
-    textColor="white"
-    display="flex"
-  >
-    {children}
-  </Box>
+export const Example = styled.div(
+  system.css({
+    minHeight: '3rem',
+    bg: 'navy',
+    color: 'white',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  })
 );
 
-export const defaultGridProps = {
-  style: {
-    padding: '1rem',
-    backgroundColor: colors.paleBlue,
-  },
-};
+export const RowExample = styled(Example)(system.css({ mb: 16 }));

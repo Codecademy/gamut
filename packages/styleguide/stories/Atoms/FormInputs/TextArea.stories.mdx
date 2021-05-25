@@ -1,8 +1,7 @@
 import { TextArea } from '@codecademy/gamut';
 import title from '@codecademy/macros/lib/title.macro';
-import { Canvas, Meta, Story } from '@storybook/addon-docs/dist/blocks';
-
-import { PropsTable } from '~styleguide/blocks';
+import { PropsTable } from '@codecademy/storybook-addon-variance';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 
 <Meta
   title={title}
@@ -10,7 +9,7 @@ import { PropsTable } from '~styleguide/blocks';
   parameters={{
     subtitle: 'A `<textarea />` component for long form text entry',
     source: 'gamut',
-    status: 'stable',
+    status: 'current',
   }}
   args={{
     htmlFor: 'example-input',

@@ -10,8 +10,8 @@ import { GridFormField } from './types';
 export * from './types';
 
 const defaultColumnGap = {
-  xs: 'sm',
-  sm: 'lg',
+  _: 8,
+  sm: 32,
 } as const;
 
 export type GridFormProps<Values extends {}> = {
@@ -69,7 +69,7 @@ export function GridForm<
   columnGap = defaultColumnGap,
   fields = [],
   onSubmit,
-  rowGap = 'md',
+  rowGap = 16,
   submit,
   validation = 'onSubmit',
   showRequired = false,
@@ -102,11 +102,12 @@ export function GridForm<
       <LayoutGrid columnGap={columnGap} rowGap={rowGap}>
         {fields.map((field) => {
           const errorMessage = (errors[field.name] as FieldError)?.message;
-
           const isFirstError = !pastFirstError && errorMessage !== undefined;
           pastFirstError = pastFirstError || isFirstError;
           const requiredBoolean = !!(
-            field.validation && field.validation.required
+            field.type !== 'hidden' &&
+            field.type !== 'sweet-container' &&
+            field.validation?.required
           );
 
           return (

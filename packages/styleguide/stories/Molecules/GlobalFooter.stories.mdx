@@ -1,0 +1,47 @@
+import { GlobalFooter } from '@codecademy/gamut-labs/src';
+import title from '@codecademy/macros/lib/title.macro';
+import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/blocks';
+
+<Meta
+  component={GlobalFooter}
+  parameters={{
+    figmaId: 'as1W6qIWUlibYKiSUWB2S4',
+    source: 'gamut-labs',
+    status: 'volatile',
+    subtitle: `Global footer to be displayed on the bottom of each page.`,
+    viewMode: 'canvas',
+    layout: 'fullscreen',
+  }}
+  title={title}
+/>
+
+<Canvas>
+  <Story name="GlobalFooter">{(args) => <GlobalFooter {...args} />}</Story>
+</Canvas>
+
+<Props story="GlobalFooter" />
+
+This general bottom-of-the-page component should be at the bottom of roughly every page in the site, excluding specialized contexts such as the Learning Environment.
+
+> This story is best viewed in Canvas mode.
+
+## Common Geo Usage
+
+Most geographies of usesrs, including `'US'`, will see all links in the footer: including the _Shop_ link.
+
+<Canvas>
+  <Story name="Common Geo Usage">
+    {(args) => <GlobalFooter {...args} userGeo="US" />}
+  </Story>
+</Canvas>
+
+## Indian Geo Usage
+
+Users with `userGeo` set to `"IN"` will not see the _Shop_ link.
+This is to comply with country regulations around our nascent Indian office.
+
+<Canvas>
+  <Story name="Indian Geo Usage">
+    {(args) => <GlobalFooter {...args} userGeo="IN" />}
+  </Story>
+</Canvas>

@@ -1,6 +1,6 @@
 import { css } from '@emotion/react';
 
-export type ShadowDepth = 1 | 2 | 3 | 4 | 5;
+export type ShadowDepth = keyof typeof shadowsForDepth;
 
 const shadowsForDepth = {
   1: {

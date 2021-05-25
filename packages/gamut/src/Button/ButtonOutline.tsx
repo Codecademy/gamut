@@ -1,83 +1,97 @@
-import { timing } from '@codecademy/gamut-styles';
-import isPropValid from '@emotion/is-prop-valid';
+import { ColorModes, system, theme, timing } from '@codecademy/gamut-styles';
+import {
+  CSSObject,
+  serializeTokens,
+  StyleProps,
+  ThemeProps,
+  variance,
+} from '@codecademy/variance';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import React from 'react';
 
-import { ButtonProps, modeColorGroups } from './shared';
+import { ButtonBase } from '../ButtonBase/ButtonBase';
+import { config, modeColorGroups } from './shared';
+import { ButtonProps } from './types';
 
-export const StyledButtonOutline = styled('button', {
-  shouldForwardProp: (prop: string) => isPropValid(prop) && prop !== 'mode',
-})<ButtonProps>(({ mode = 'light', variant = 'primary' }) => {
-  const modeColors = modeColorGroups[mode][variant];
+export const { tokens: buttonColors } = serializeTokens(
+  modeColorGroups.dark.primary,
+  'button',
+  theme
+);
 
-  return css`
-    background: none;
-    border-radius: 4px;
-    border: none;
-    box-shadow: 0 0 0 0 transparent;
-    color: inherit;
-    cursor: pointer;
-    display: inline-block;
-    font-family: inherit;
-    font: inherit;
-    line-height: normal;
-    margin: -1px;
-    padding: 1px;
-    text-align: center;
-    text-decoration: none;
-    transition: ${timing.fast} box-shadow;
-    vertical-align: middle;
-    white-space: nowrap;
+/** This is a temporary tagged template for button hover / active states while they still are multiple elements */
 
-    &:disabled,
-    &[aria-disabled='true'] {
-      cursor: not-allowed;
-      user-select: none;
-    }
+export const createStates = ({
+  base,
+  hover,
+  active,
+  disabled,
+}: Record<'base' | 'hover' | 'active' | 'disabled', CSSObject>) => css`
+  ${base}
+  ${ButtonOutline}:hover & {
+    ${hover}
+  }
+  ${ButtonOutline}:active & {
+    ${active}
+  }
+  ${ButtonOutline}:disabled &,
+  ${ButtonOutline}[aria-disabled='true'] & {
+    ${disabled}
+  }
+`;
 
-    &:focus {
-      outline: none;
-    }
+const setTokens = ({
+  mode = 'light',
+  variant = 'primary',
+  theme,
+}: ThemeProps<ButtonProps>) =>
+  serializeTokens(modeColorGroups[mode][variant], 'button', theme).variables;
 
-    &:focus-visible {
-      box-shadow: 0 0 0 2px ${modeColors.background};
-    }
-
-    &:hover {
-      text-decoration: none;
-    }
-  `;
+const outlinePadding = system.variant({
+  prop: 'padded',
+  defaultVariant: 'small',
+  variants: {
+    small: { padding: '1px' },
+    medium: { padding: '1px 1px 5px 5px' },
+  },
 });
 
-const linkTag = 'a';
-const buttonTag = 'button';
+const buttonProps = variance.compose(
+  system.layout,
+  system.positioning,
+  system.margin
+);
 
-type ButtonOutlineProps = React.ComponentProps<typeof StyledButtonOutline>;
+export interface ButtonOutlineProps
+  extends ButtonProps,
+    StyleProps<typeof outlinePadding>,
+    StyleProps<typeof buttonProps> {
+  mode?: ColorModes;
+  as?: never;
+}
 
-export const ButtonOutline: React.FC<ButtonOutlineProps> = ({
-  as = buttonTag,
-  disabled,
-  ...props
-}) => {
-  const buttonProps: Partial<ButtonOutlineProps> = {
-    as,
-  };
-  // Switch to an anchor tag if href is defined and the default component is unchanged
-  if (buttonProps.as === buttonTag && props.href) {
-    buttonProps.as = linkTag;
-  }
-
-  // Sensible defaults based on element tagName
-  if (buttonProps.as === buttonTag) {
-    buttonProps.type = props.type ?? 'button';
-    buttonProps.disabled = disabled;
-  } else {
-    if (buttonProps.as !== linkTag || !props.href) {
-      buttonProps.role = props.role ?? 'button';
-    }
-    buttonProps['aria-disabled'] = disabled;
-  }
-
-  return <StyledButtonOutline {...props} {...buttonProps} />;
-};
+export const ButtonOutline = styled('button', config)<ButtonOutlineProps>(
+  setTokens,
+  system.css({
+    display: 'inline-block',
+    margin: '-1px',
+    textAlign: 'center',
+    transition: `${timing.fast} box-shadow`,
+    borderRadius: '4px',
+    boxShadow: '0 0 0 0 transparent',
+    verticalAlign: 'middle',
+    whiteSpace: 'nowrap',
+    "&:disabled, &[aria-disabled='true']": {
+      cursor: 'not-allowed',
+      userSelect: 'none',
+    },
+    '&:focus': {
+      outline: 'none',
+    },
+    '&:focus-visible': {
+      boxShadow: `0 0 0 2px ${buttonColors?.background}`,
+    },
+  }),
+  outlinePadding,
+  buttonProps
+).withComponent(ButtonBase);

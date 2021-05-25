@@ -1,8 +1,7 @@
 import { FormGroupLabel } from '@codecademy/gamut';
 import title from '@codecademy/macros/lib/title.macro';
-import { Canvas, Meta, Story } from '@storybook/addon-docs/dist/blocks';
-
-import { PropsTable } from '~styleguide/blocks';
+import { PropsTable } from '@codecademy/storybook-addon-variance';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 
 <Meta
   title={title}
@@ -10,7 +9,7 @@ import { PropsTable } from '~styleguide/blocks';
   parameters={{
     subtitle: 'A label element to be tied to a group of elements',
     source: 'gamut',
-    status: 'stable',
+    status: 'current',
   }}
   args={{ children: 'I am a label' }}
 />

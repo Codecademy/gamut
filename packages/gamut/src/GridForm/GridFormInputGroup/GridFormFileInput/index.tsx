@@ -7,6 +7,7 @@ import { GridFormFileField } from '../../types';
 export type GridFormFileInputProps = {
   className?: string;
   error?: boolean;
+  showRequired?: boolean;
   field: Omit<GridFormFileField, 'label'>;
   register: UseFormMethods['register'];
 };
@@ -16,6 +17,7 @@ export const GridFormFileInput: React.FC<GridFormFileInputProps> = ({
   error,
   field,
   register,
+  showRequired,
 }) => {
   return (
     <Input
@@ -29,6 +31,7 @@ export const GridFormFileInput: React.FC<GridFormFileInputProps> = ({
       type="file"
       id={field.id}
       aria-invalid={error}
+      aria-required={showRequired}
     />
   );
 };

@@ -1,9 +1,13 @@
-import { FormGroup, Input, ReactRecurlyStyles } from '@codecademy/gamut';
+import {
+  FormGroup,
+  GridBox,
+  Input,
+  ReactRecurlyStyles,
+} from '@codecademy/gamut';
 import { AmexIcon, StreakIcon, ViewIcon } from '@codecademy/gamut-icons';
 import title from '@codecademy/macros/lib/title.macro';
-import { Canvas, Meta, Story } from '@storybook/addon-docs/dist/blocks';
-
-import { PropsTable } from '~styleguide/blocks';
+import { PropsTable } from '@codecademy/storybook-addon-variance';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 
 <Meta
   title={title}
@@ -13,7 +17,7 @@ import { PropsTable } from '~styleguide/blocks';
     subtitle:
       'A general `<input />` element for handling "text", "number" and "file" input types',
     source: 'gamut',
-    status: 'stable',
+    status: 'current',
   }}
   args={{
     htmlFor: 'example-input',
@@ -124,7 +128,7 @@ import { PropsTable } from '~styleguide/blocks';
 
 <Canvas>
   <Story
-    name="FormExamples"
+    name="Input Example"
     args={{
       htmlFor: 'example-123',
       defaultValue: '123',
@@ -133,12 +137,12 @@ import { PropsTable } from '~styleguide/blocks';
   >
     {(args) => (
       <FormGroup label="i am a smol label">
-        <Input {...args} />{' '}
+        <Input {...args} />
       </FormGroup>
     )}
   </Story>
   <Story
-    name="FormErrorExamples"
+    name="Input Error"
     args={{
       htmlFor: 'example-123',
       defaultValue: '123',
@@ -156,7 +160,7 @@ import { PropsTable } from '~styleguide/blocks';
     )}
   </Story>
   <Story
-    name="FormLargeExample"
+    name="Input Label Large"
     args={{
       htmlFor: 'example-123',
       name: 'example-123',
@@ -165,12 +169,12 @@ import { PropsTable } from '~styleguide/blocks';
   >
     {(args) => (
       <FormGroup label="i am a large disabled label" labelSize="large" disabled>
-        <Input disabled {...args} />{' '}
+        <Input disabled {...args} />
       </FormGroup>
     )}
   </Story>
   <Story
-    name="FormLargeErrorExample"
+    name="Input Large Error"
     args={{
       htmlFor: 'example-123',
       defaultValue: '123',
@@ -184,7 +188,7 @@ import { PropsTable } from '~styleguide/blocks';
         error="this is still not updog..."
         labelSize="large"
       >
-        <Input {...args} />{' '}
+        <Input {...args} />
       </FormGroup>
     )}
   </Story>
@@ -195,45 +199,34 @@ import { PropsTable } from '~styleguide/blocks';
 You can use a custom icon (from gamut-icons) in your Input elements. The error and valid icons will overwrite the custom icon if those states are applied to the element.
 
 <Canvas>
-  <Story
-    name="FormCustomIconExamples"
-    args={{
-      htmlFor: 'example-icon',
-      defaultValue: 'hello...',
-      name: 'example-icon',
-      icon: ViewIcon,
-    }}
-  >
-    {(args) => (
+  <Story name="Input Custom Icons">
+    <GridBox columnGap={32} gridAutoColumns="1fr" gridAutoFlow="column">
       <FormGroup label="i see all">
-        <Input {...args} />{' '}
+        <Input
+          htmlFor="example-icon"
+          defaultValue="hello..."
+          name="example-icon"
+          icon={ViewIcon}
+        />
       </FormGroup>
-    )}
-  </Story>
-  <Story
-    name="CustomIcon"
-    args={{
-      htmlFor: 'example-custom',
-      name: 'example-custom',
-      placeholder: 'Bling Bling',
-      defaultValue: undefined,
-      icon: AmexIcon,
-    }}
-  >
-    {(args) => <Input {...args} />}
-  </Story>
-  <Story
-    name="CustomDisabledIcon"
-    args={{
-      htmlFor: 'example-custom',
-      name: 'example-custom',
-      placeholder: 'Ouch',
-      defaultValue: undefined,
-      disabled: true,
-      icon: StreakIcon,
-    }}
-  >
-    {(args) => <Input {...args} />}
+      <FormGroup label="$">
+        <Input
+          htmlFor="example-custom"
+          name="example-custom"
+          placeholder="Bling Bling"
+          icon={AmexIcon}
+        />
+      </FormGroup>
+      <FormGroup label="you can't type here.">
+        <Input
+          htmlFor="example-disabled"
+          name="example-disabled"
+          defaultValue="Ouch"
+          disabled
+          icon={StreakIcon}
+        />
+      </FormGroup>
+    </GridBox>
   </Story>
 </Canvas>
 

@@ -1,6 +1,7 @@
 import { Box, RadialProgress, Video } from '@codecademy/gamut/src';
 import title from '@codecademy/macros/lib/title.macro';
-import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
+import { PropsTable } from '@codecademy/storybook-addon-variance';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 
 <Meta
   title={title}
@@ -25,7 +26,7 @@ percentage out of a whole.
   <Story name="RadialProgress">{(args) => <RadialProgress {...args} />}</Story>
 </Canvas>
 
-<Props story="RadialProgress" />
+<PropsTable story="RadialProgress" />
 
 ## Children
 

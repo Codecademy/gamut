@@ -1,6 +1,7 @@
 import { InputStepper } from '@codecademy/gamut/src';
 import title from '@codecademy/macros/lib/title.macro';
-import { Meta, Preview, Props, Story } from '@storybook/addon-docs/dist/blocks';
+import { PropsTable } from '@codecademy/storybook-addon-variance';
+import { Meta, Preview, Story } from '@storybook/addon-docs/blocks';
 
 <Meta
   title={title}
@@ -10,6 +11,7 @@ import { Meta, Preview, Props, Story } from '@storybook/addon-docs/dist/blocks';
 Input Steppers allow for finetuned control over numeric values. They
 override the default styles for numeric inputs.`,
     source: 'gamut',
+    status: 'updating',
   }}
   args={{
     min: 0,
@@ -30,4 +32,4 @@ Steppers are not appropriate for values larger than three digits.
   <Story name="InputStepper">{(args) => <InputStepper {...args} />}</Story>
 </Preview>
 
-<Props story="InputStepper" />
+<PropsTable story="InputStepper" />

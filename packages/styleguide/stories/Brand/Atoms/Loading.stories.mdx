@@ -1,6 +1,7 @@
 import { Loading } from '@codecademy/gamut-labs/src';
 import title from '@codecademy/macros/lib/title.macro';
-import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
+import { PropsTable } from '@codecademy/storybook-addon-variance';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 
 <Meta
   title={title}
@@ -16,4 +17,4 @@ still coming.`,
   <Story name="Loading">{(args) => <Loading />}</Story>
 </Canvas>
 
-<Props story="Loading" />
+<PropsTable story="Loading" />

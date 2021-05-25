@@ -1,9 +1,11 @@
 import {
   GridFormCheckboxField,
   GridFormFileField,
+  GridFormHiddenField,
   GridFormRadioGroupField,
   GridFormRadioOption,
   GridFormSelectField,
+  GridFormSweetContainerField,
   GridFormTextAreaField,
   GridFormTextField,
 } from '../types';
@@ -64,4 +66,16 @@ export const stubTextareaField: GridFormTextAreaField = {
   name: 'stub-textarea',
   size: 6,
   type: 'textarea',
+};
+
+export const stubHiddenField: GridFormHiddenField = {
+  name: 'secret-field',
+  type: 'hidden',
+  defaultValue: "you can't see me!",
+};
+
+export const stubSweetContainerField: GridFormSweetContainerField = {
+  name: 'sweet_container',
+  type: 'sweet-container',
+  label: 'Check this input if you are an automated machine, and not a human',
 };

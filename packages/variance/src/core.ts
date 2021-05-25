@@ -3,6 +3,7 @@ import { get, identity, isObject, merge } from 'lodash';
 import {
   AbstractParser,
   AbstractPropTransformer,
+  Compose,
   CSS,
   Parser,
   Prop,
@@ -10,8 +11,7 @@ import {
   TransformerMap,
   Variant,
 } from './types/config';
-import { CSSObject, ThemeProps } from './types/props';
-import { AllUnionKeys, KeyFromUnion } from './types/utils';
+import { BreakpointCache, CSSObject, ThemeProps } from './types/props';
 import { getStaticCss } from './utils/getStaticProperties';
 import { orderPropNames } from './utils/propNames';
 import {
@@ -19,6 +19,7 @@ import {
   isMediaArray,
   isMediaMap,
   objectParser,
+  orderBreakpoints,
   parseBreakpoints,
 } from './utils/responsive';
 
@@ -28,10 +29,19 @@ export const variance = {
     config: Config
   ): Parser<Config> {
     const propNames = orderPropNames(config);
+    let breakpoints: BreakpointCache | null | undefined;
 
     const parser = (props: ThemeProps) => {
       const styles = {};
-      const breakpoints = props.theme ? parseBreakpoints(props.theme) : null;
+      const { theme } = props;
+      // Attempt to cache the breakpoints if we have not yet or if theme has become available.
+      if (
+        breakpoints === undefined ||
+        (breakpoints === null && theme?.breakpoints)
+      ) {
+        // Save the breakpoints if we can
+        breakpoints = parseBreakpoints(theme?.breakpoints);
+      }
 
       // Loops over all prop names on the configured config to check for configured styles
       propNames.forEach((prop) => {
@@ -63,7 +73,8 @@ export const variance = {
             }
         }
       });
-      return styles;
+
+      return breakpoints ? orderBreakpoints(styles, breakpoints.array) : styles;
     };
     // return the parser function with the resulting meta information for further composition
     return Object.assign(parser, { propNames, config });
@@ -74,35 +85,43 @@ export const variance = {
     prop: P,
     config: Config
   ): PropTransformer<P, Config> {
-    const transform = config.transform ?? identity;
-    const properties = config.properties
-      ? config.properties
-      : [config.property];
+    const {
+      transform = identity,
+      property,
+      properties = [property],
+      scale,
+    } = config;
 
     return {
       ...config,
       prop,
       styleFn: (value, prop, props) => {
         const styles: CSSObject = {};
-        let scaleVal: string | number;
-        switch (typeof config.scale) {
+        let scaleVal: string | number | undefined;
+        switch (typeof scale) {
           case 'string': {
-            const path = `theme.${config.scale}.${value}`;
+            const path = `theme.${scale}.${value}`;
             scaleVal = get(props, path);
             break;
           }
           case 'object': {
-            scaleVal = get(config.scale, `${value}`);
+            scaleVal = get(scale, `${value}`);
             break;
           }
+          case 'undefined':
           default:
-            scaleVal = value as string | number;
         }
+
+        const useTransform = scaleVal !== undefined || scale === undefined;
+
+        const usedValue = scaleVal ?? (value as string | number);
 
         // for each property look up the scale value from theme if passed and apply any
         // final transforms to the value
         properties.forEach((property) => {
-          const finalValue = transform(scaleVal ?? value, prop, props);
+          const finalValue = useTransform
+            ? transform(usedValue, property, props)
+            : usedValue;
           const mergeStyles = isObject(finalValue)
             ? finalValue
             : { [property]: finalValue };
@@ -115,17 +134,11 @@ export const variance = {
     };
   },
   compose<Args extends AbstractParser[]>(...parsers: Args) {
-    type MergedParser = {
-      [K in AllUnionKeys<Args[number]['config']>]: KeyFromUnion<
-        Args[number]['config'],
-        K
-      >;
-    };
     return this.createParser(
       parsers.reduce(
         (carry, parser) => ({ ...carry, ...parser.config }),
         {}
-      ) as MergedParser
+      ) as Compose<Args>
     );
   },
   createCss<
@@ -177,22 +190,27 @@ export const variance = {
   >(config: Config): Variant<P> {
     const css: CSS<P> = this.createCss(config);
 
-    return (options) => {
-      type Keys = keyof typeof options.variants;
-      const prop = options?.prop || 'variant';
-      const defaultVariant = options?.defaultVariant;
-
+    return ({ prop = 'variant', defaultVariant, base = {}, variants }) => {
+      type Keys = keyof typeof variants;
+      const baseFn = css(base);
       const variantFns = {} as Record<Keys, (props: ThemeProps) => CSSObject>;
 
-      Object.keys(options.variants).forEach((key) => {
+      Object.keys(variants).forEach((key) => {
         const variantKey = key as Keys;
-        const cssProps = options.variants[variantKey];
+        const cssProps = variants[variantKey];
         variantFns[variantKey] = css(cssProps as any);
       });
 
       return (props) => {
         const { [prop]: selected = defaultVariant } = props;
-        return selected ? variantFns[selected as Keys](props) : {};
+        const styles = {};
+        if (!selected) return styles;
+
+        return merge(
+          styles,
+          baseFn(props),
+          variantFns?.[selected as Keys]?.(props)
+        );
       };
     };
   },

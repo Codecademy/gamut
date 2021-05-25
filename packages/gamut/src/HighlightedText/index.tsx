@@ -11,6 +11,7 @@ export type HighlightedTextProps = {
 
 /**
  * @deprecated
+ * This component is deprecated and is no longer supported.
  */
 
 export const HighlightedText = ({ children = '' }: HighlightedTextProps) => {

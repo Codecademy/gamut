@@ -1,7 +1,8 @@
 import { AppBar, AppBarSection } from '@codecademy/gamut/src';
 import { Logo } from '@codecademy/gamut-labs/src';
 import title from '@codecademy/macros/lib/title.macro';
-import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
+import { PropsTable } from '@codecademy/storybook-addon-variance';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 
 <Meta
   title={title}
@@ -11,7 +12,7 @@ import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
     subtitle: `Components that provide
 spacing and layout help that you can use for something like a footer or
 header`,
-    status: 'volatile',
+    status: 'updating',
     source: 'gamut-labs',
   }}
 />
@@ -29,7 +30,7 @@ AppBarSection that holds one AppBar Tab.
   </Story>
 </Canvas>
 
-<Props of={AppBar} />
+<PropsTable of={AppBar} />
 
 ## Header
 

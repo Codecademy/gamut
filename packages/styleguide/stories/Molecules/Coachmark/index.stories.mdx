@@ -1,8 +1,7 @@
 import { Coachmark } from '@codecademy/gamut-labs/src';
 import title from '@codecademy/macros/lib/title.macro';
-import { Canvas, Meta, Story } from '@storybook/addon-docs/dist/blocks';
-
-import { PropsTable } from '~styleguide/blocks';
+import { PropsTable } from '@codecademy/storybook-addon-variance';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 
 import { CoachmarkExample } from './Coachmark.examples';
 
@@ -13,7 +12,7 @@ import { CoachmarkExample } from './Coachmark.examples';
     subtitle:
       'A Coachmark helps bring attention to a CTA by showing a popover around that element.',
     source: 'gamut-labs',
-    status: 'volatile',
+    status: 'updating',
   }}
 />
 
@@ -41,7 +40,7 @@ For example, you can add an outline, beak, and pattern, as shown below.
           popoverProps={{
             beak: 'left',
             outline: true,
-            pattern: 'dotsDense',
+            pattern: 'checkerDense',
           }}
         />
       );

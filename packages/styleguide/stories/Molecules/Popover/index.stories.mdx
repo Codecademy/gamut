@@ -1,6 +1,8 @@
 import { Popover } from '@codecademy/gamut-labs/src';
+import { ColorMode } from '@codecademy/gamut-styles/src';
 import title from '@codecademy/macros/lib/title.macro';
-import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
+import { PropsTable } from '@codecademy/storybook-addon-variance';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 
 import {
   PatternedPopoversGrid,
@@ -15,7 +17,7 @@ import {
     subtitle: `Popover is a surface which takes a target element and shows an overlay
 positioned around that element.`,
     source: 'gamut-labs',
-    status: 'volatile',
+    status: 'updating',
   }}
 />
 
@@ -27,7 +29,7 @@ positioned around that element.`,
   </Story>
 </Canvas>
 
-<Props story="Popover" />
+<PropsTable story="Popover" />
 
 ## Beak
 
@@ -44,11 +46,26 @@ Using the beak prop, you can add a beak to the popover.
 ## Outline
 
 Using the outline prop, you can add an outline to the popover.
+The outline color is theme.colors.secondary
 
 <Canvas>
   <Story name="Outline">
     {(args) => {
       return <PopoverExample {...args} outline />;
+    }}
+  </Story>
+</Canvas>
+
+In dark mode, outline will be white.
+
+<Canvas>
+  <Story name="Dark" args={{ mode: 'dark' }}>
+    {(args) => {
+      return (
+        <ColorMode mode="dark">
+          <PopoverExample {...args} outline />
+        </ColorMode>
+      );
     }}
   </Story>
 </Canvas>

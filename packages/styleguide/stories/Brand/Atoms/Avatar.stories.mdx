@@ -1,6 +1,7 @@
 import { Avatar } from '@codecademy/gamut-labs/src';
 import title from '@codecademy/macros/lib/title.macro';
-import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
+import { PropsTable } from '@codecademy/storybook-addon-variance';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 
 <Meta
   title={title}
@@ -21,4 +22,4 @@ Commonly paired with a \`Byline\`.with the user with various connotations.`,
   <Story name="Avatar">{(args) => <Avatar {...args} />}</Story>
 </Canvas>
 
-<Props story="Avatar" />
+<PropsTable story="Avatar" />

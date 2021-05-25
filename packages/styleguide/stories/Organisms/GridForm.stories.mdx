@@ -6,8 +6,9 @@ import {
   Markdown,
 } from '@codecademy/gamut/src';
 import title from '@codecademy/macros/lib/title.macro';
+import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { action } from '@storybook/addon-actions';
-import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 import { useState } from '@storybook/addons';
 
 <Meta
@@ -17,6 +18,7 @@ import { useState } from '@storybook/addons';
     subtitle: `This organism takes in plain JSON-like props and uses them to string
 together a validated form`,
     source: 'gamut',
+    status: 'updating',
   }}
 />
 
@@ -86,7 +88,6 @@ responsive layouts.
           {
             label: 'Write a paragraph about penguins',
             name: 'textarea-input',
-            size: 12,
             type: 'textarea',
             validation: {
               required: 'Please write something about penguins!',
@@ -138,7 +139,6 @@ responsive layouts.
             description:
               'I accept the terms and conditions (required or else!!!)',
             name: 'eula-checkbox-required',
-            size: 12,
             type: 'checkbox',
             validation: {
               required: 'Please check the box to agree to the terms.',
@@ -150,7 +150,6 @@ responsive layouts.
         }}
         submit={{
           contents: 'Submit Me!?',
-          size: 12,
         }}
         showRequired
       />
@@ -158,7 +157,7 @@ responsive layouts.
   </Story>
 </Canvas>
 
-<Props of={GridForm} />
+<PropsTable of={GridForm} />
 
 ## Disabled Inputs
 
@@ -189,7 +188,6 @@ If an input is not meant to be usable, such as when a portion of a form is disab
         submit={{
           contents: 'Right Submit!?',
           position: 'right',
-          size: 12,
         }}
       />
     )}
@@ -211,7 +209,6 @@ value of left, center, right, or stretch.
               {
                 label: 'Simple text',
                 name: 'simple-text',
-                size: 12,
                 type: 'text',
               },
             ]}
@@ -221,7 +218,6 @@ value of left, center, right, or stretch.
             submit={{
               contents: 'Right Submit!?',
               position: 'right',
-              size: 12,
             }}
           />
         </Column>
@@ -231,7 +227,6 @@ value of left, center, right, or stretch.
               {
                 label: 'Simple text',
                 name: 'simple-text',
-                size: 12,
                 type: 'text',
               },
             ]}
@@ -241,7 +236,6 @@ value of left, center, right, or stretch.
             submit={{
               contents: 'Center Submit!?',
               position: 'center',
-              size: 12,
             }}
           />
         </Column>
@@ -251,7 +245,6 @@ value of left, center, right, or stretch.
               {
                 label: 'Simple text',
                 name: 'simple-text',
-                size: 12,
                 type: 'text',
               },
             ]}
@@ -261,7 +254,6 @@ value of left, center, right, or stretch.
             submit={{
               contents: 'Left Submit!?',
               position: 'left',
-              size: 12,
             }}
           />
         </Column>
@@ -271,7 +263,6 @@ value of left, center, right, or stretch.
               {
                 label: 'Simple text',
                 name: 'simple-text',
-                size: 12,
                 type: 'text',
               },
             ]}
@@ -281,7 +272,6 @@ value of left, center, right, or stretch.
             submit={{
               contents: 'Stretch Submit!?',
               position: 'stretch',
-              size: 12,
             }}
           />
         </Column>
@@ -464,7 +454,6 @@ their own inputs. We can specify a 'custom' field type to with a [render prop](h
                 message: 'Still not enough swag, what are you doing... 💢',
               },
             },
-            size: 12,
             type: 'custom',
           },
         ]}
@@ -501,7 +490,6 @@ more details on why using placeholders is often bad.
             label: 'Email',
             placeholder: 'Your email',
             name: 'custom-input',
-            size: 12,
             type: 'email',
           },
         ]}
@@ -693,5 +681,69 @@ A field can take a custom error in addition to validation errors. The validation
         />
       );
     }}
+  </Story>
+</Canvas>
+
+## Hidden Input
+
+Hidden inputs can be used to include data that users can't see or modify with the submission. For this implementation you can set the `defaultValue` in the object and it will be submitted with the regular form data.
+
+<Canvas>
+  <Story name="Hidden Input">
+    {(args) => (
+      <GridForm
+        fields={[
+          {
+            type: 'hidden',
+            name: 'secret-stuff',
+            defaultValue: "I'm invisible!",
+          },
+          {
+            label: "There's more than one field here!",
+            name: 'custom-input',
+            type: 'email',
+          },
+        ]}
+        onSubmit={async (values) => {
+          action('Form Submitted')(values);
+        }}
+        submit={{
+          contents: 'Submit',
+        }}
+      />
+    )}
+  </Story>
+</Canvas>
+
+## Sweet Container Input
+
+"Sweet container" ([honeypot](<https://en.wikipedia.org/wiki/Honeypot_(computing)>)) inputs can be used to detect bots by providing a field that would not generally be clicked by human users, but might be triggered automatically by bots.
+
+We call it a "sweet container" so that bots do not immediately detect it as a honeypot input.
+
+<Canvas>
+  <Story name="Sweet Container Input">
+    {(args) => (
+      <GridForm
+        fields={[
+          {
+            label: 'This is our sticky sweet label',
+            name: 'sweet-container',
+            type: 'sweet-container',
+          },
+          {
+            label: "There's something sticky and sweet here!",
+            name: 'custom-input',
+            type: 'email',
+          },
+        ]}
+        onSubmit={async (values) => {
+          action('Form Submitted')(values);
+        }}
+        submit={{
+          contents: 'Submit',
+        }}
+      />
+    )}
   </Story>
 </Canvas>
