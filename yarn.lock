@@ -13098,13 +13098,6 @@ polished@^4.0.5, polished@^4.1.2:
   dependencies:
     "@babel/runtime" "^7.13.17"
 
-polished@^4.1.2:
-  version "4.1.2"
-  resolved "https://registry.npmjs.org/polished/-/polished-4.1.2.tgz#c04fcc203e287e2d866e9cfcaf102dae1c01a816"
-  integrity sha512-jq4t3PJUpVRcveC53nnbEX35VyQI05x3tniwp26WFdm1dwaNUBHAi5awa/roBlwQxx1uRhwNSYeAi/aMbfiJCQ==
-  dependencies:
-    "@babel/runtime" "^7.13.17"
-
 popmotion@9.0.0-rc.20:
   version "9.0.0-rc.20"
   resolved "https://registry.npmjs.org/popmotion/-/popmotion-9.0.0-rc.20.tgz#f3550042ae31957b5416793ae8723200951ad39d"
