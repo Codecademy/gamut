@@ -119,7 +119,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectWrapperProps>(
           ref={ref}
           error={error}
           sizeVariant={sizeVariant}
-          variant={conditionalStyleState(error, activatedStyle)}
+          variant={conditionalStyleState(Boolean(error), activatedStyle)}
           onChange={(event) => changeHandler(event)}
         >
           {selectOptions}
