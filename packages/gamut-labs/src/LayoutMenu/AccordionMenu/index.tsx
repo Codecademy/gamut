@@ -55,21 +55,19 @@ export const AccordionMenu: React.FC<AccordionMenuProps> = ({
             onSectionToggle(menuData.slug);
           }}
         >
-          <Text fontSize={20} fontWeight="title" lineHeight="title">
-            {menuData.title}
-          </Text>
+          <Text variant="title-xs">{menuData.title}</Text>
         </StyledAccordionButton>
       }
     >
       {menuData.items.map((item) => {
         if (selectedItem === item.slug) {
           return (
-            <Box key={item.slug} paddingY={8}>
+            <Box key={item.slug} py={8}>
               <Box
                 borderColor="navy"
                 borderStyleLeft="solid"
                 borderWidthLeft="6px"
-                paddingLeft={12}
+                pl={12}
               >
                 <Text as="span" fontWeight="title">
                   {item.title}
@@ -79,7 +77,7 @@ export const AccordionMenu: React.FC<AccordionMenuProps> = ({
           );
         }
         return (
-          <Box key={item.slug} paddingY={8}>
+          <Box key={item.slug} py={8}>
             <Anchor
               variant="interface"
               display="block"
