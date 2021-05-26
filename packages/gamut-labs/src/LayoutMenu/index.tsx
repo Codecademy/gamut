@@ -10,9 +10,9 @@ export type LayoutMenuProps = {
    */
   sections: Section[];
   /**
-   * React Node containing any additional links to be rendered after the accordions
+   * The slug of the current selected item
    */
-  additionalLinks?: React.ReactNode;
+  selectedItem?: string;
   /**
    * Callback to be run on click of the accordion button
    */
@@ -22,9 +22,9 @@ export type LayoutMenuProps = {
    */
   onSectionItemClick: (item: SectionItem, sectionSlug: string) => void;
   /**
-   * The slug of the current selected item
+   * React Node containing any additional links to be rendered after the accordions
    */
-  selectedItem?: string;
+  additionalLinks?: React.ReactNode;
 };
 
 export const LayoutMenu: React.FC<LayoutMenuProps> = ({

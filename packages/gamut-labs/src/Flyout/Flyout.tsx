@@ -1,4 +1,4 @@
-import { IconButton } from '@codecademy/gamut/src/Button/IconButton';
+import { IconButton } from '@codecademy/gamut';
 import { MiniDeleteIcon } from '@codecademy/gamut-icons';
 import { variant } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
