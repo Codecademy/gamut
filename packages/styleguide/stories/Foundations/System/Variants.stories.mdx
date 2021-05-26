@@ -11,93 +11,173 @@ import { Meta } from '@storybook/addon-docs/blocks';
   }}
 />
 
-There may be cases where you want to change many props at the same time to achieve a different effect.
-Coordinating these different prop variations can be a bit frustrating to do manually, in both typescript and plain javascript.
-To make this easier we have **`variant`**, a function that is meant to make creating these combinations easy and scalable.
+## `css`
+
+A standalone theme aware method that accepts an object of system props and returns the correct style object. It is cached after being called with theme once, preventing more expensive calculations.
+
+**Usage**
 
 ```tsx
-import styled from '@emotion/styled';
+import { css } from '@codecademy/gamut-styles';
+
+const CoolStuff = styled.a(
+  css({
+    margin: [16, 24],
+  })
+);
+```
+
+## `variant`
+
+Built on top of `css` that accepts a number of mutually exclusive states a component can be in. Options include:
+
+- `prop`: The prop key that variants should be. Defaults to `variant`.
+- `defaultVariant`: The default variant that will be used if none is specified.
+- `base`: A system CSS object that is shared (and overrided) by all variants. This will not be applied if no variant / default variant has been specified.
+- `variants` (required): A map of keys to each possible state.
+  - `key`: The name of the variant to be a possible option of the prop.
+  - `value`: The system CSS Object to be applied if the variant has been selected.
+
+**Usage**
+
+```tsx
 import { variant } from '@codecademy/gamut-styles';
 
-const badgeVariants = variant({
-  primary: {
-    borderStyle: 'solid',
-    borderWidth: '1px',
-    color: 'white',
-    borderColor: 'darkblue',
-    backgroundColor: 'blue',
-  },
-  secondary: {
-    borderStyle: 'solid',
-    borderWidth: '1px',
-    color: 'white',
-    borderColor: 'darkgreen',
-    backgroundColor: 'green',
-  },
+const Anchor = styled.a(
+  variant({
+    defaultVariant: 'interface',
+    variants: {
+      interface: {
+        color: 'text',
+      },
+      inline: {
+        color: 'primary',
+      },
+    },
+  })
+);
+```
+
+## Property Passthrough
+
+In addition to system props, both of these functions permit configurations with any valid CSS property that has not been overriden. These properties are typed to their CSSType defaults and will not accept values with the responsive syntax.
+
+When generating the styles the function will ignore the all props that have not been configured directly to the resulting CSSObject.
+
+```tsx
+const List = styled.ul(
+  variant({
+    key: 'listVariant',
+    variants: {
+      vertical: {
+        listStyle: 'none', // Valid!
+        p: 0,
+        m: 0,
+      },
+      emoji: {
+        listStyleType: '\1F44D', // Valid!
+        pr: [12, 24],
+        m: 0,
+      },
+    },
+  })
+);
+```
+
+Output:
+
+```css
+.List_vertical {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.List_emoji {
+  list-style-type: '\1F44D';
+  padding-right: 0.75rem;
+  margin: 0;
+}
+
+@media screen and (min-width: 480px) {
+  .List_emoji {
+    padding-right: 1.5rem;
+  }
+}
+```
+
+### Conflicting properties
+
+Properties that are handled by a system prop with a shorthand will still be available and may result in unexpected styles (property ordering may differ between conflicts and is not guarnateed to be consistent).
+
+While it is **highly encouraged** to use system properties in all cases, there may be times where you need specific values that are outside of the contraints of normal system properties. In this event **do not** specify both properties and pick the only one that you need.
+
+```tsx
+import { css } from '@codecademy/gamut-styles';
+
+// Wrong - Combining both properties
+const styles = css({
+  m: 4,
+  margin: '128.54px',
 });
 
-export const Badge = styled.span(badgeVariants);
-```
-
-Using your variants:
-
-```tsx
-<Badge variant="primary" />
-
-<Badge variant="secondary" />
-```
-
-You can define a default variant to apply when no variant prop is passed.
-
-```tsx
-const colorVariant = variant({
-  default: 'primary',
-  variants: {
-    primary: { color: 'blue' },
-    secondary: { color: 'green' },
-  },
+// Right - Use one or the other
+const option1 = css({
+  m: 4, // Pick me!
 });
 
-const Badge = styled.p(colorVariant)
-
-<Badge />; // color: blue
-```
-
-There may be cases where you want to use a special prop for your variants instead of the default `variant`. You may pass an arbitrary name for your prop to customize the prop type.
-
-```tsx
-const colorVariant = variant({
-  prop: 'colorVariant',
-  variants: {
-    primary: { color: 'blue' },
-  },
+const option2 = css({
+  margin: '128.54px', // No Pick Me!
 });
-
-const Badge = styled.p(colorVariant);
-
-<Badge colorVariant="primary" />;
 ```
 
-### Composing Variants
+## Selector Syntax
 
-This also allows you to use multiple variants in the same component to have combinatorial styles. To help with prop signatures we've added a helper to destructure the prop types for you:
+All `css` and `variant` functions are typed to accept a single level of selectors.
 
-- `HandlerProps`, a generic type that can be applied to styled components consuming a variant
+1. If the style key matches a defined system prop it will allow the responsive syntax
+2. If it is a valid CSS property it will allow any valid CSSType value for the property.
+3. If it is none of these we assume that it is a valid selector and accept a valid configuration of 1 & 2.
+
+This lets you specify scoped selector syntax for anything not matching a valid CSS prop or system property. This with the addition of the CSS Passthrough will allows us to create complete variants for much more complex css as scale. And create robust sharable utilities.
 
 ```tsx
-import { HandlerProps } from '@codecademy/gamut-system';
-import { boxVariants, colorVariants } from './myVariants';
+const Anchor = styled.a(
+  variant({
+    variants: {
+      interface: {
+        color: 'navy',
+        '&:hover': {
+          textDecoration: 'none',
+          border: '2px solid currentColor',
+          borderWidth: { md: '4px' }, // nested responsive syntax!
+        },
+      },
+      inline: {
+        color: 'hyper',
+        transition: 'scale 150ms ease',
+        '&:hover': {
+          textDecoration: 'underline',
+          transform: 'scale(1.2)', // static properties work here too!
+        },
+      },
+    },
+  })
+);
+```
 
-type CardProps = HandlerProps<typeof boxVariants> &
-  HandlerProps<typeof colorVariants>;
+### Typings
 
-const Card = styled.div<CardProps>(boxVariants, colorVariants);
+```tsx
+export type SelectorMap<Props, System> = {
+  [K in keyof Props]?: SelectorProps<Props[K], System>;
+};
 
-const AnotherCardCard = styled(Card)<CardProps & { zIndex: number }>`
-  ${({ zIndex }) => css`
-    zindex: ${zIndex};
-  `}
-`;
-
-<Card variant="primary" colorVariant="primary" />;
+export type SelectorProps<Props, System> = {
+  [K in keyof Props]?: K extends keyof System
+    ? System[K] // System Property Types
+    : K extends keyof PropertyTypes
+    ? PropertyTypes[K] // Any Valid CSS Prop
+    : Omit<PropertyTypes, keyof System> & System; // No Match Opens a single level of nesting for System + General CSS;
+};
 ```
