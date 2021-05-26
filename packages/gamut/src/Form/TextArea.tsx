@@ -6,7 +6,10 @@ import React, {
   useState,
 } from 'react';
 
-import { conditionalStyles, formFieldStyles } from './styles/shared';
+import {
+  conditionalStyles,
+  formFieldStyles,
+} from './styles/shared-system-props';
 
 export type TextWrapperProps = TextareaHTMLAttributes<HTMLTextAreaElement> & {
   className?: string;

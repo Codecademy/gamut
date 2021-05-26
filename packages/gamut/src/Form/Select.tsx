@@ -14,7 +14,10 @@ import React, {
 } from 'react';
 
 import { Box, FlexBox } from '../Box';
-import { conditionalStyles, formFieldStyles } from './styles/shared';
+import {
+  conditionalStyles,
+  formFieldStyles,
+} from './styles/shared-system-props';
 import { parseSelectOptions } from './utils';
 
 export type SelectComponentProps = Pick<

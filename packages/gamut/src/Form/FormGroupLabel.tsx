@@ -5,7 +5,7 @@ import styled from '@emotion/styled';
 import React, { HTMLAttributes } from 'react';
 
 import { ToolTip, ToolTipProps } from '../ToolTip';
-import { formBaseStyles } from './styles/shared';
+import { formBaseStyles } from './styles/shared-system-props';
 
 const StyledToolTipContainer = styled.span`
   position: absolute;

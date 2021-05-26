@@ -11,9 +11,9 @@ import { Box, FlexBox } from '../Box';
 import {
   conditionalInputStyleProps,
   conditionalStyles,
+  formBaseFieldStyles,
   formFieldStyles,
   iconPadding,
-  iFrameWrapperBaseStyles,
 } from './styles/shared-system-props';
 
 export type InputProps = InputHTMLAttributes<HTMLInputElement> & {
@@ -53,7 +53,7 @@ export interface InputWrapperProps extends InputProps {
 }
 
 export const iFrameWrapper = styled.div<conditionalInputStyleProps>`
-  ${iFrameWrapperBaseStyles}
+  ${formBaseFieldStyles}
   ${conditionalStyles}
   text-indent: 0;
 `;
