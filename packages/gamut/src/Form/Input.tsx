@@ -62,6 +62,7 @@ const InputElement = styled.input<StyledInputProps>`
   ${conditionalStyles}
   ${iconPadding}
   text-indent: 0;
+
   padding-right: ${(props) => (props.icon ? `2.3rem` : `initial`)};
 `;
 
