@@ -54,9 +54,7 @@ const colSizes = variant({
       maxWidth: '20rem',
     },
     fill: {
-      flexGrow: 1,
-      flexShrink: 0,
-      flexBasis: 0,
+      flex: 1,
     },
   },
 });
