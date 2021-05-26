@@ -1,3 +1,3 @@
 export * as system from './props';
-export * from './variant';
+export { css, variant } from './props';
 export * from './utils';

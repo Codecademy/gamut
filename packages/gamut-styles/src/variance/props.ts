@@ -20,3 +20,4 @@ export const margin = variance.create(PROPERTIES.margin);
 
 /** CSS */
 export const css = variance.createCss(PROPERTIES.all);
+export const variant = variance.createVariant(PROPERTIES.all);
