@@ -6,6 +6,7 @@ module.exports = {
   titleProp: true,
   ref: true,
   svgProps: {
+    className: '{classNames}',
     width: '{size || getAttrValue(width) || "16px"}',
     height: '{size || getAttrValue(height) || "16px"}',
     fill: '{color || "currentColor"}',
