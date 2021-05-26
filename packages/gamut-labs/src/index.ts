@@ -9,6 +9,7 @@ export * from './ErrorContents';
 export * from './Flyout';
 export * from './Header/HeaderContainer';
 export * from './Header/HeaderTab';
+export * from './LayoutMenu';
 export * from './Loading';
 export * from './Logo';
 export * from './ProLogo';
