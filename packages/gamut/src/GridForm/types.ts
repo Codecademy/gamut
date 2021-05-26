@@ -109,7 +109,7 @@ export type GridFormHiddenField = HiddenField & {
 };
 
 export type GridFormSweetContainerField = HiddenField & {
-  label: React.ReactNode;
+  label: string;
   type: 'sweet-container';
 };
 
