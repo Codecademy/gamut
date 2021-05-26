@@ -24,20 +24,6 @@ export const colorStates = {
   },
 };
 
-export type conditionalStyleProps = {
-  error?: boolean;
-  activated?: boolean;
-  isFocused?: boolean | null;
-  isDisabled?: boolean | null;
-};
-
-type iconPaddingProps = {
-  icon?: boolean;
-};
-
-export type conditionalInputStyleProps = conditionalStyleProps &
-  iconPaddingProps;
-
 // these are split for now because ReactRecurly demands separate styles for focus.
 export const formFieldFocusStyles = css`
   border-color: ${colorStates.hover.borderColor};
@@ -123,14 +109,6 @@ export const conditionalBorderStyles = ({
   if (activated) {
     return css`
       border-color: ${colorStates.activated.borderColor};
-    `;
-  }
-};
-
-export const iconPadding = ({ icon }: iconPaddingProps) => {
-  if (icon) {
-    return css`
-      padding-right: 2.3rem;
     `;
   }
 };

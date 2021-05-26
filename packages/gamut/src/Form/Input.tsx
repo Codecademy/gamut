@@ -8,8 +8,8 @@ import React, {
 } from 'react';
 
 import { Box, FlexBox } from '../Box';
-import { conditionalInputStyleProps, iconPadding } from './styles/shared';
 import {
+  conditionalInputStyleProps,
   conditionalStyles,
   formBaseFieldStyles,
   formFieldStyles,
@@ -60,9 +60,7 @@ export const iFrameWrapper = styled.div<conditionalInputStyleProps>`
 const InputElement = styled.input<StyledInputProps>`
   ${formFieldStyles}
   ${conditionalStyles}
-  ${iconPadding}
   text-indent: 0;
-
   padding-right: ${(props) => (props.icon ? `2.3rem` : `initial`)};
 `;
 

@@ -15,12 +15,6 @@ type iconPaddingProps = {
 export type conditionalInputStyleProps = conditionalStyleProps &
   iconPaddingProps;
 
-// export const iconPadding = ({ icon }: iconPaddingProps) => {
-//   if (icon) {
-//     return system.css({ paddingRight: '2.3rem' });
-//   }
-// };
-
 const transitionConcatenator = (
   arrayOfProperties: Array<keyof StandardPropertiesHyphen>,
   transition: string
