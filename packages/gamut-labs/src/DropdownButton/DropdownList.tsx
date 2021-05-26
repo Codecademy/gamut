@@ -34,8 +34,8 @@ export const DropdownList: React.FC<DropdownListProps> = ({
         const { id, text, href, clickHandler } = item;
 
         const onClick = (event: React.MouseEvent) => {
-          clickHandler && clickHandler(event);
-          onClose && onClose();
+          clickHandler?.(event);
+          onClose?.();
         };
 
         return (
