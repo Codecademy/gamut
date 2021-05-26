@@ -42,8 +42,8 @@ const EmptyContainer = styled(FlexBox)(
     base: {
       justifySelf: 'center',
       position: 'relative',
-      px: [16, 48, 64],
-      py: [32, 48, 64],
+      px: [16, 48, 64, 96],
+      py: [32, 48, 96],
       width: 1,
     },
     variants: {
