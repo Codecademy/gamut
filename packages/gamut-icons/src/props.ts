@@ -1,6 +1,5 @@
 import { system } from '@codecademy/gamut-styles';
 import { StyleProps, variance } from '@codecademy/variance';
-import styled from '@emotion/styled';
 
 export const iconProps = variance.compose(
   system.layout,
@@ -11,7 +10,7 @@ export const iconProps = variance.compose(
 
 export interface IconStyleProps extends StyleProps<typeof iconProps> {}
 
-export const IconSvg = styled.svg<IconStyleProps>(iconProps);
+export const iconStyles = (props: IconStyleProps) => iconProps(props);
 
 export const getAttrValue = (prop: IconStyleProps['width' | 'height']) => {
   switch (typeof prop) {
