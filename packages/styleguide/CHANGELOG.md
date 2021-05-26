@@ -3,6 +3,51 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [40.0.4](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@40.0.3...@codecademy/styleguide@40.0.4) (2021-05-25)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [40.0.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@40.0.2...@codecademy/styleguide@40.0.3) (2021-05-25)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [40.0.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@40.0.1...@codecademy/styleguide@40.0.2) (2021-05-25)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [40.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@40.0.0...@codecademy/styleguide@40.0.1) (2021-05-25)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [40.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@39.0.4...@codecademy/styleguide@40.0.0) (2021-05-24)
+
+
+### ⚠ BREAKING CHANGES
+
+* **Modal:** Deprecating Modal component
+
+### Code Refactoring
+
+* **Modal:** Deprecating Modal component ([6f23ef6](https://github.com/Codecademy/client-modules/commit/6f23ef687de25f650e0893e375a2e3ff04d6c96b))
+
+
+
 ### [39.0.4](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@39.0.3...@codecademy/styleguide@39.0.4) (2021-05-24)
 
 **Note:** Version bump only for package @codecademy/styleguide
