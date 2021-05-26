@@ -10,11 +10,10 @@ export const Table = styled.div`
 const rowVariants = variant({
   variants: {
     inset: {
-      borderStyle: 'solid',
-      borderStyleTop: 'none',
-      borderWidth: '1px',
+      border: 1,
+      borderTop: 'none',
       borderColor: 'gray-200',
-      backgroundColor: 'gray-100',
+      bg: 'gray-100',
       p: 32,
     },
   },
