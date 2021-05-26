@@ -28,7 +28,7 @@ describe('DropdownList', () => {
     expect(items[0].clickHandler).toHaveBeenCalledTimes(1);
   });
 
-  it('fires passed in onClose as well asitem clickhandler if provided', () => {
+  it('fires passed in onClose as well as item clickhandler if provided', () => {
     const onClose = jest.fn();
     const { view } = renderDropdownList({ onClose });
     const button = view.getByTestId('dropdown-item-two');
