@@ -11,7 +11,7 @@ const StyledAccordionArea = styled(AccordionArea)`
 
 const StyledAccordionButton = styled(AccordionButton)`
   padding-left: 0;
-  width: auto;
+  justify-content: flex-start;
 `;
 
 export type SectionItem = {

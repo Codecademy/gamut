@@ -1,16 +1,9 @@
 import { IconButton } from '@codecademy/gamut';
 import { MiniDeleteIcon } from '@codecademy/gamut-icons';
-import { variant } from '@codecademy/gamut-styles';
-import styled from '@emotion/styled';
 import { AnimatePresence } from 'framer-motion';
 import React, { useState } from 'react';
 
-import {
-  DrawerBase,
-  FlyoutBaseProps,
-  FlyoutWrapperProps,
-  transitionDuration,
-} from './shared';
+import { DrawerBase, FlyoutBaseProps, transitionDuration } from './shared';
 import { SidebarCloneButton } from './SidebarCloneButton';
 
 export type FlyoutProps = FlyoutBaseProps & {
@@ -19,30 +12,6 @@ export type FlyoutProps = FlyoutBaseProps & {
    */
   button: React.ReactNode;
 };
-
-const FlyoutOpenFromProps = variant({
-  default: 'left',
-  prop: 'openFrom',
-  variants: {
-    left: {
-      right: 'auto',
-      left: 0,
-    },
-    right: {
-      right: 0,
-      left: 'auto',
-    },
-  },
-});
-
-const Drawer = styled(DrawerBase)<FlyoutWrapperProps>`
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  z-index: 15;
-  width: ${(props) => `${props.openWidth}rem`};
-  ${FlyoutOpenFromProps};
-`;
 
 export const Flyout: React.FC<FlyoutProps> = ({
   children,
@@ -61,15 +30,19 @@ export const Flyout: React.FC<FlyoutProps> = ({
     <>
       <AnimatePresence>
         {isSidebarOpen ? (
-          <Drawer
+          <DrawerBase
             aria-expanded={isSidebarOpen}
             initial={{ x: initialX }}
             animate={{ x: 0 }}
             exit={{ x: initialX }}
             transition={{ duration: transitionDuration }}
             data-testid={testId}
-            openWidth={openWidth}
+            width={`${openWidth}rem`}
             openFrom={openFrom}
+            position="fixed"
+            height="100vh"
+            top="0"
+            zIndex={15}
             {...styleProps}
           >
             <IconButton
@@ -79,7 +52,7 @@ export const Flyout: React.FC<FlyoutProps> = ({
               right="0"
             />
             {children}
-          </Drawer>
+          </DrawerBase>
         ) : null}
       </AnimatePresence>
       <SidebarCloneButton
