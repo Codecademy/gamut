@@ -582,6 +582,8 @@ field's value in a parent component before onSubmit gets triggered.
 
 A field can include [our existing `ToolTip`](/?path=/docs/atoms-tooltip--tool-tip). The position of the tooltip on each field is always set to the bottom-right. You also have the option to render each tooltip in dark or light mode.
 
+A [`Radio`](/?path=/docs/atoms-forminputs-radio--radio) item may also include a [`ToolTip`](/?path=/docs/atoms-tooltip--tool-tip), with the position of the tooltip always set to the bottom-right by default.
+
 <Canvas>
   <Story name="Tooltip">
     {(args) => (
@@ -640,10 +642,20 @@ A field can include [our existing `ToolTip`](/?path=/docs/atoms-tooltip--tool-ti
               options: [
                 {
                   label: 'Taylor Swift',
+                  tooltip: {
+                    id: 'radio-tooltip-taylor',
+                    children:
+                      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+                  },
                   value: 'taylor-swift',
                 },
                 {
                   label: 'Beyonce',
+                  tooltip: {
+                    id: 'radio-tooltip-beyonce',
+                    children:
+                      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+                  },
                   value: 'beyonce',
                 },
               ],

@@ -1,6 +1,8 @@
+import { MiniInfoOutlineIcon } from '@codecademy/gamut-icons';
 import cx from 'classnames';
 import React, { forwardRef, InputHTMLAttributes, ReactNode } from 'react';
 
+import { Box, ToolTip, ToolTipProps } from '..';
 import styles from './styles/Radio.module.scss';
 
 export type RadioProps = InputHTMLAttributes<HTMLInputElement> & {
@@ -13,6 +15,7 @@ export type RadioProps = InputHTMLAttributes<HTMLInputElement> & {
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   required?: boolean;
   tabIndex?: number;
+  tooltip?: ToolTipProps;
   value?: string;
   readOnly?: boolean;
 };
@@ -30,6 +33,7 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
       onChange,
       required,
       id,
+      tooltip,
       ...rest
     },
     ref
@@ -55,6 +59,15 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
         />
         <label htmlFor={htmlFor} className={styles.radioLabel}>
           {label}
+          {tooltip && (
+            <Box pl={8}>
+              <ToolTip
+                alignment="bottom-right"
+                target={<MiniInfoOutlineIcon size="0.8rem" />}
+                {...tooltip}
+              />
+            </Box>
+          )}
         </label>
       </div>
     );

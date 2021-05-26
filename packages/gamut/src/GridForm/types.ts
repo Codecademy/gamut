@@ -72,6 +72,7 @@ export type GridFormTextField = BaseFormField<string> & {
 
 export type GridFormRadioOption = {
   label: string;
+  tooltip?: ToolTipProps;
   value: string;
 };
 

@@ -63,3 +63,25 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
     {(args) => <Radio {...args} />}
   </Story>
 </Canvas>
+
+### With tooltip
+
+A radio item may include a [`ToolTip`](/?path=/docs/atoms-tooltip--tool-tip). The position of the tooltip is set to the bottom-right by default.
+
+<Canvas>
+  <Story
+    name="Tooltip"
+    args={{
+      htmlFor: 'example-tooltip',
+      label: 'Option with tooltip',
+      name: 'example-tooltip',
+      tooltip: {
+        id: 'checkbox-tooltip',
+        children:
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      },
+    }}
+  >
+    {(args) => <Radio {...args} />}
+  </Story>
+</Canvas>
