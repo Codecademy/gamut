@@ -102,7 +102,11 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
 
       case 'sweet-container':
         return (
-          <GridFormSweetContainerInput register={register} field={field} />
+          <GridFormSweetContainerInput
+            register={register}
+            field={field}
+            label={field.label}
+          />
         );
 
       default:
