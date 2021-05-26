@@ -5,12 +5,21 @@ import {
   flex,
   grid,
   layout,
+  positioning,
 } from '@codecademy/gamut-styles';
 import { compose, HandlerProps } from '@codecademy/gamut-system';
 import styled from '@emotion/styled';
 import { motion } from 'framer-motion';
 
-const flyoutStyles = compose(background, border, color, flex, grid, layout);
+const flyoutStyles = compose(
+  background,
+  border,
+  color,
+  flex,
+  grid,
+  layout,
+  positioning
+);
 
 export type FlyoutStyles = HandlerProps<typeof flyoutStyles>;
 export interface FlyoutStyleProps extends FlyoutStyles {}
