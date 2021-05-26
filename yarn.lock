@@ -1376,47 +1376,6 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
-"@codecademy/gamut-labs@^18.1.3":
-  version "18.1.3"
-  resolved "https://registry.npmjs.org/@codecademy/gamut-labs/-/gamut-labs-18.1.3.tgz#d78a95ff77f9f05dbbfbc96f50b12f7fd8bed363"
-  integrity sha512-om1CGAwIu+8+QM5ePuJ/8M1/BAbYfjTCvO72YJp6O06lKgSujCXv5Vce03K3BvKvTKGqNzNqXl066cBda8T9Og==
-  dependencies:
-    "@codecademy/gamut" "^33.0.0"
-    "@codecademy/gamut-styles" "^10.1.1"
-    "@codecademy/gamut-system" "^0.7.2"
-    "@codecademy/variance" "^0.12.0"
-    classnames "^2.2.5"
-    react-focus-on "^3.5.1"
-    react-hotkeys-hook "^2.3.1"
-    react-use "15.3.8"
-
-"@codecademy/gamut@^33.0.0":
-  version "33.0.0"
-  resolved "https://registry.npmjs.org/@codecademy/gamut/-/gamut-33.0.0.tgz#a1daf85b030ebe34f57ff5cdbb822ed16a6e557f"
-  integrity sha512-uL+HG4Y1dJOctmawe9KEtTE2KeCtZZYp1CpuUcNhKKZmU5YOvm2ws2xbm/VoXOpBjdGnKyKReuGhX9wlPZPP0A==
-  dependencies:
-    "@codecademy/gamut-icons" "^4.14.1"
-    "@codecademy/gamut-illustrations" "^0.15.1"
-    "@codecademy/gamut-styles" "^10.1.1"
-    "@codecademy/variance" "^0.12.0"
-    "@types/marked" "^1.1.0"
-    "@types/react-select" "^4.0.13"
-    classnames "^2.2.5"
-    framer-motion "^2.7.9"
-    html-to-react "^1.4.2"
-    invariant "^2.2.4"
-    lodash "^4.17.5"
-    marked "^0.7.0"
-    polished "^4.1.2"
-    react-aria-tabpanel "^4.4.0"
-    react-focus-on "^3.5.1"
-    react-hook-form "6.8.5"
-    react-player "^2.3.1"
-    react-select "^4.3.0"
-    react-truncate-markup "^5.1.0"
-    react-use "^15.3.8"
-    sanitize-markdown "^2.6.6"
-
 "@discoveryjs/json-ext@^0.5.0":
   version "0.5.2"
   resolved "https://registry.npmjs.org/@discoveryjs/json-ext/-/json-ext-0.5.2.tgz#8f03a22a04de437254e8ce8cc84ba39689288752"

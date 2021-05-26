@@ -423,6 +423,44 @@ align nicely with the input.
   </Story>
 </Canvas>
 
+## Cancel button
+
+Optionally, include a cancel button.
+
+<Canvas>
+  <Story name="Cancel button">
+    {(args) => (
+      <GridForm
+        fields={[
+          {
+            label: 'A label',
+            name: 'a-label',
+            size: 6,
+            type: 'text',
+          },
+          {
+            label: 'This other label',
+            name: 'this-other-label',
+            size: 6,
+            type: 'text',
+          },
+        ]}
+        cancel={{
+          children: 'Cancel',
+          onClick: () => {},
+        }}
+        onSubmit={async (values) => {
+          action('Form Submitted')(values);
+        }}
+        submit={{
+          contents: 'Submit',
+          position: 'right',
+        }}
+      />
+    )}
+  </Story>
+</Canvas>
+
 ## Custom inputs
 
 Some forms, such as the checkout flows that use Recurly, need to define
