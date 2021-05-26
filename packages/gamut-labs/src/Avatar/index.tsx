@@ -1,17 +1,51 @@
 import { VisualTheme } from '@codecademy/gamut';
-import cx from 'classnames';
+import { colors } from '@codecademy/gamut-styles';
+import styled from '@emotion/styled';
 import React from 'react';
 
-import styles from './styles.module.scss';
+const modes = {
+  dark: {
+    shadowColor: colors.green,
+  },
+  light: {
+    shadowColor: colors.lightGreen,
+  },
+};
 
-type AvatarImageProps =
-  | {
-      alt: string;
-      'aria-labelledby'?: never;
-    }
+const Image = styled.img();
+
+const AvatarContainer = styled.div<{ mode: VisualTheme }>`
+  position: relative;
+  display: table;
+
+  &::before {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    transform: scale(0.92);
+    transform-origin: bottom right;
+    height: 100%;
+    width: 100%;
+    background-color: ${({ mode }) => modes[mode].shadowColor};
+  }
+
+  ${Image} {
+    position: relative;
+    border-radius: 50%;
+    height: auto;
+    width: 100%;
+    max-width: 118px;
+    min-width: 77px;
+    transform: scale(0.92);
+    transform-origin: top left;
+  }
+`;
+
+export type AvatarImageProps =
+  | { alt: string; 'aria-labelledby'?: never }
   | { alt?: never; 'aria-labelledby': string };
 
-type AvatarBaseProps = {
+export type AvatarBaseProps = {
   /**
    * path to image asset
    */
@@ -19,28 +53,16 @@ type AvatarBaseProps = {
   /**
    * chooses color of drop shadow
    */
-  theme?: VisualTheme;
-  className?: string; // useful if avatar size needs to be overridden
+  mode?: VisualTheme;
 };
 
-type AvatarProps = AvatarBaseProps & AvatarImageProps;
+export type AvatarProps = AvatarBaseProps & AvatarImageProps;
 
 export const Avatar: React.FC<AvatarProps> = ({
-  theme = 'light',
-  className,
+  mode = 'light',
   ...avatarImageProps
-}) => {
-  return (
-    <div
-      className={cx(
-        styles.container,
-        className,
-        theme === 'dark' ? styles.darkContainer : styles.lightContainer
-      )}
-    >
-      {/*  The current rules for alt-text don't allow images with aria-labelledby to have no alt. So, we need to disable the rule for that line. https://github.com/evcohen/eslint-plugin-jsx-a11y/issues/411#issue-306995775 */}
-      {/* eslint-disable-next-line jsx-a11y/alt-text */}
-      <img {...avatarImageProps} />
-    </div>
-  );
-};
+}) => (
+  <AvatarContainer mode={mode} data-testid="avatar-container">
+    <Image width="118px" height="118px" {...avatarImageProps} />
+  </AvatarContainer>
+);

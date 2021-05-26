@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.1.0](http://github.com///compare/@codecademy/eslint-config@5.0.1...@codecademy/eslint-config@5.1.0) (2021-05-12)
+
+
+### Features
+
+* disabled consistent-return ESLint rule ([f05fe92](http://github.com///commit/f05fe921e53e7a61af71bfb041017acff1e16c51))
+
+
+
 ### [5.0.1](http://github.com///compare/@codecademy/eslint-config@5.0.0...@codecademy/eslint-config@5.0.1) (2021-05-10)
 
 
