@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [18.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@18.1.7...@codecademy/gamut-labs@18.2.0) (2021-05-26)
+
+
+### Features
+
+* add Kebab type to DropdownButton ([2b72468](https://github.com/Codecademy/client-modules/commit/2b72468432b13d3a30ca195732aea87389dfa695))
+
+
+
 ### [18.1.7](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@18.1.6...@codecademy/gamut-labs@18.1.7) (2021-05-25)
 
 **Note:** Version bump only for package @codecademy/gamut-labs
