@@ -1,5 +1,8 @@
-import { Box, FillButton, StrokeButton } from '@codecademy/gamut';
-import { ArrowChevronDownFilledIcon } from '@codecademy/gamut-icons';
+import { Box, FillButton, IconButton, StrokeButton } from '@codecademy/gamut';
+import {
+  ArrowChevronDownFilledIcon,
+  MiniKebabMenuIcon,
+} from '@codecademy/gamut-icons';
 import { pxRem, styledConfig } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React, { useRef, useState } from 'react';
@@ -16,7 +19,7 @@ const DownArrow = styled(ArrowChevronDownFilledIcon, styledConfig)<{
 `;
 
 export type DropdownButtonProps = {
-  buttonType?: 'fill' | 'stroke';
+  buttonType?: 'fill' | 'stroke' | 'kebab';
   dropdownItems: DropdownItem[];
   align?: 'left' | 'right';
   onClick?: (event: React.MouseEvent) => void;
@@ -62,6 +65,17 @@ export const DropdownButton: React.FC<DropdownButtonProps> = ({
           {children}
           <DownArrow isOpen={isOpen} size={12} aria-label="dropdown" />
         </StrokeButton>
+      );
+      break;
+    case 'kebab':
+      clickTarget = (
+        <IconButton
+          icon={MiniKebabMenuIcon}
+          size="small"
+          variant="secondary"
+          onClick={handleClick}
+          data-testid="dropdown-kebab-button"
+        />
       );
       break;
   }
