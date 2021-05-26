@@ -2,6 +2,8 @@ import { pxRem, theme } from '@codecademy/gamut-styles';
 import { css } from '@emotion/react';
 import { StandardPropertiesHyphen } from 'csstype';
 
+import { conditionalStyleProps } from './shared-system-props';
+
 export const colorStates = {
   base: {
     color: theme.colors.navy,
@@ -40,33 +42,6 @@ const formFieldDisabledStyles = css`
     border-color: ${colorStates.disabled.borderColor};
   }
 `;
-
-export const conditionalStyles = ({
-  error,
-  activated,
-}: conditionalStyleProps) => {
-  if (error) {
-    return css`
-      color: ${colorStates.error.color};
-      border-color: ${colorStates.error.borderColor};
-
-      &:hover {
-        border-color: ${colorStates.error.borderColor};
-      }
-
-      &:focus {
-        border-color: ${colorStates.error.borderColor};
-        box-shadow: inset 0 0 0 1px ${colorStates.error.borderColor};
-      }
-    `;
-  }
-
-  if (activated) {
-    return css`
-      border-color: ${colorStates.activated.borderColor};
-    `;
-  }
-};
 
 export const conditionalBorderStyles = ({
   error,
