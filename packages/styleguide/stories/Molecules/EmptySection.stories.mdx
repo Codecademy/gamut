@@ -84,11 +84,44 @@ to match the background color of the page or section it's in.
   </Story>
 </Canvas>
 
-## How it looks alongside other sections at different breakpoints
+## How it looks with another section on the left
 
 <Canvas>
   <Story
-    name="Alongside other sections"
+    name="Another section on the left"
+    args={{
+      stretchDirection: 'right',
+      children: (
+        <DropdownButton
+          dropdownItems={[
+            { id: '1', text: 'Option 1' },
+            { id: '2', text: 'Option 2' },
+            { id: '3', text: 'Option 3' },
+          ]}
+        >
+          Click me!
+        </DropdownButton>
+      ),
+    }}
+  >
+    {(args) => (
+      <LayoutGrid gap={16}>
+        <Column size={{ _: 12, sm: 4, md: 3 }}>
+          <Text>{`<other section>`}</Text>
+        </Column>
+        <Column size={{ _: 12, sm: 8, md: 9 }}>
+          <EmptySection {...args} />
+        </Column>
+      </LayoutGrid>
+    )}
+  </Story>
+</Canvas>
+
+## How it looks with another section on the right
+
+<Canvas>
+  <Story
+    name="Another section on the right"
     args={{
       stretchDirection: 'left',
       children: (
@@ -106,11 +139,11 @@ to match the background color of the page or section it's in.
   >
     {(args) => (
       <LayoutGrid gap={16}>
-        <Column size={{ _: 12, sm: 3, md: 4 }}>
-          <Text>{`<other section>`}</Text>
-        </Column>
-        <Column size={{ _: 12, sm: 9, md: 8 }}>
+        <Column size={{ _: 12, sm: 8, md: 9 }}>
           <EmptySection {...args} />
+        </Column>
+        <Column size={{ _: 12, sm: 4, md: 3 }}>
+          <Text>{`<other section>`}</Text>
         </Column>
       </LayoutGrid>
     )}
