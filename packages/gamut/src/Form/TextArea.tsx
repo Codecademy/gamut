@@ -8,6 +8,7 @@ import React, {
 
 import {
   conditionalStyles,
+  conditionalStyleState,
   formFieldStyles,
 } from './styles/shared-system-props';
 
@@ -21,7 +22,7 @@ export type TextWrapperProps = TextareaHTMLAttributes<HTMLTextAreaElement> & {
 };
 
 export interface TextAreaProps extends TextWrapperProps {
-  activated?: boolean;
+  variant?: 'error' | 'activated';
 }
 
 const StyledTextArea = styled.textarea<TextAreaProps>`
@@ -45,8 +46,7 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextWrapperProps>(
         id={id || rest.htmlFor}
         className={className}
         ref={ref}
-        error={error}
-        activated={activated}
+        variant={conditionalStyleState(Boolean(error), activated)}
         onChange={(event) => changeHandler(event)}
       />
     );

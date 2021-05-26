@@ -34,7 +34,7 @@ export type InputProps = InputHTMLAttributes<HTMLInputElement> & {
   type?: string;
   valid?: boolean;
   /**
-   * Allows Inputs to manage their own activated style state to acccount for some edge-cases.
+   * Allows Inputs to manage their own activated style state to account for some edge-cases.
    */
   activated?: boolean;
 };

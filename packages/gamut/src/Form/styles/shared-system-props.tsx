@@ -118,6 +118,6 @@ export const iconPadding = system.variant({
   },
 });
 
-export const conditionalStyleState = (error, activated) => {
+export const conditionalStyleState = (error: boolean, activated: boolean) => {
   return error ? 'error' : activated ? 'activated' : undefined;
 };
