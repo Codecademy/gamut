@@ -44,11 +44,12 @@ const selectSizeVariants = system.variant({
   variants: {
     small: {
       height: '2rem',
+      px: 8,
       py: 0,
     },
     base: {
       height: 'auto',
-      paddingRight: 48,
+      pr: 48,
     },
   },
 });

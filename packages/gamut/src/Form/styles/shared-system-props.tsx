@@ -118,18 +118,9 @@ export const conditionalStyles = system.variant({
 export const iconPadding = system.variant({
   prop: 'icon',
   variants: {
-    error: {
-      textColor: 'danger',
-      borderColor: 'danger',
-      '&:hover': {
-        borderColor: 'danger',
-      },
-      '&:focus': {
-        borderColor: 'danger',
-        boxShadow: `inset 0 0 0 1px ${theme.colors.danger}`,
-      },
+    extraPadding: {
+      pr: 8,
     },
-    activated: { borderColor: 'text' },
   },
 });
 

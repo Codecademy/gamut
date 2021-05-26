@@ -124,6 +124,7 @@ export const Input = forwardRef<HTMLInputElement, InputWrapperProps>(
           ref={ref}
           variant={conditionalStyleState}
           icon={error || valid || !!Icon}
+          iconPadding={error || valid || !!Icon ? 'extraPadding' : undefined}
           className={className}
           onChange={changeHandler}
         />
