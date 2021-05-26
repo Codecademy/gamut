@@ -18,6 +18,7 @@ import {
   conditionalStyles,
   conditionalStyleState,
   formFieldStyles,
+  variantStyleType,
 } from './styles/shared-system-props';
 import { parseSelectOptions } from './utils';
 
@@ -36,7 +37,7 @@ export type SelectWrapperProps = SelectComponentProps &
   };
 
 export interface SelectProps extends SelectWrapperProps {
-  variant?: 'error' | 'activated';
+  variant?: variantStyleType;
 }
 
 const selectSizeVariants = system.variant({

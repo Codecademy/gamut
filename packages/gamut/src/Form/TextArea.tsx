@@ -10,6 +10,7 @@ import {
   conditionalStyles,
   conditionalStyleState,
   formFieldStyles,
+  variantStyleType,
 } from './styles/shared-system-props';
 
 export type TextWrapperProps = TextareaHTMLAttributes<HTMLTextAreaElement> & {
@@ -22,7 +23,7 @@ export type TextWrapperProps = TextareaHTMLAttributes<HTMLTextAreaElement> & {
 };
 
 export interface TextAreaProps extends TextWrapperProps {
-  variant?: 'error' | 'activated';
+  variant?: variantStyleType;
 }
 
 const StyledTextArea = styled.textarea<TextAreaProps>`
