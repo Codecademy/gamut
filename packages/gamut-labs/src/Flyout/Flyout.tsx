@@ -39,7 +39,7 @@ const Drawer = styled(DrawerBase)<FlyoutWrapperProps>`
   height: 100vh;
   position: fixed;
   top: 0;
-  z-index: 2;
+  z-index: 15;
   width: ${(props) => `${props.openWidth}rem`};
   ${FlyoutOpenFromProps};
 `;
@@ -72,7 +72,12 @@ export const Flyout: React.FC<FlyoutProps> = ({
             openFrom={openFrom}
             {...styleProps}
           >
-            <IconButton icon={MiniDeleteIcon} onClick={() => toggleDrawer()} />
+            <IconButton
+              icon={MiniDeleteIcon}
+              onClick={() => toggleDrawer()}
+              position="absolute"
+              right="0"
+            />
             {children}
           </Drawer>
         ) : null}
