@@ -1,4 +1,4 @@
-import { Theme } from '@emotion/react';
+import { ColorModes } from '@codecademy/gamut-styles';
 import { HTMLProps } from 'react';
 
 export interface ButtonProps
@@ -7,7 +7,7 @@ export interface ButtonProps
     'size' | 'ref' | 'height' | 'width' | 'size'
   > {
   as?: never;
-  mode?: keyof Theme['colorModes']['modes'];
+  mode?: ColorModes;
   variant?: 'primary' | 'secondary';
 }
 

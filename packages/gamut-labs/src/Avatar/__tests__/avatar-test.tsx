@@ -1,7 +1,6 @@
 import { mount } from 'enzyme';
 import React from 'react';
 
-import styles from '../../styles.module.scss';
 import { Avatar } from '..';
 
 describe('Avatar', () => {
@@ -19,29 +18,5 @@ describe('Avatar', () => {
       </>
     );
     expect(wrapper.find('img[aria-labelledby="label"]')).toHaveLength(1);
-  });
-
-  it('adds the light class to the container name as a default', () => {
-    const wrapper = mount(<Avatar src="" alt="" />);
-
-    const containerClassName = wrapper.find(`div`).prop('className');
-
-    expect(containerClassName).toContain(styles.lightContainer);
-  });
-
-  it('adds the light class to the container name when its theme is light', () => {
-    const wrapper = mount(<Avatar src="" theme="light" alt="" />);
-
-    const containerClassName = wrapper.find(`div`).prop('className');
-
-    expect(containerClassName).toContain(styles.lightContainer);
-  });
-
-  it('adds the dark class to the container name when its theme is dark', () => {
-    const wrapper = mount(<Avatar src="" theme="dark" alt="" />);
-
-    const containerClassName = wrapper.find(`div`).prop('className');
-
-    expect(containerClassName).toContain(styles.darkContainer);
   });
 });
