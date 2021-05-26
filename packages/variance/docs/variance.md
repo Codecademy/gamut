@@ -41,17 +41,19 @@ Built on top of `css` that accepts a number of mutually exclusive states a compo
 **Usage**
 
 ```tsx
-const Anchor = styled.a(variant({
-   defaultVariant: 'interface',
-   variants: {
-       interface: {
-           color: 'text',
-       },
-       inline: {
-           color: 'primary',
-        },
-    }
-});
+const Anchor = styled.a(
+  variant({
+    defaultVariant: 'interface',
+    variants: {
+      interface: {
+        color: 'text',
+      },
+      inline: {
+        color: 'primary',
+      },
+    },
+  })
+);
 ```
 
 ## Property Passthrough
@@ -63,20 +65,23 @@ This change lets us configure anything that is likely to be non dynamic but requ
 These props can only be the value specified and will not accept values with the responsive syntax.
 
 ```tsx
-const styled.ul(variant({
-   key: 'listVariant',
-   variants: {
+const List = styled.ul(
+  variant({
+    key: 'listVariant',
+    variants: {
       vertical: {
-         listStyle: 'none',  // not a system prop but valid
-         p: 0,
-         m: 0,
+        listStyle: 'none', // not a system prop but valid
+        p: 0,
+        m: 0,
       },
       emoji: {
-         listStyleType: "\1F44D",  // not
-         pr: [12, 24],
-         m: 0
-      }
-}));
+        listStyleType: '\1F44D', // not
+        pr: [12, 24],
+        m: 0,
+      },
+    },
+  })
+);
 ```
 
 When generating the styles the function will ignore the all props not specified by our configuration and simply pass them through to the result CSSObject.
@@ -92,25 +97,28 @@ All `css` and `variant` functions are typed to accept a single level of selector
 This lets you specify scoped selector syntax for anything not matching a valid CSS prop or system property. This with the addition of the CSS Passthrough will allows us to create complete variants for much more complex css as scale. And create robust sharable utilities.
 
 ```tsx
-const styled.a(variant({
-   variants: {
+const Anchor = styled.a(
+  variant({
+    variants: {
       interface: {
-         color: 'navy',
-         '&:hover': {
-             textDecoration: 'none',
-             border: '2px solid currentColor',
-             borderWidth: {  md: '4px' } // Responsive syntax party town
-         }
+        color: 'navy',
+        '&:hover': {
+          textDecoration: 'none',
+          border: '2px solid currentColor',
+          borderWidth: { md: '4px' }, // Responsive syntax party town
+        },
       },
       inline: {
-         color: 'hyper',
-         transition: 'scale 150ms ease',
-         '&:hover': {
-            textDecoration: 'underline',
-            transform: 'scale(1.2)', // static properties work here too!
-         }
-      }
-}));
+        color: 'hyper',
+        transition: 'scale 150ms ease',
+        '&:hover': {
+          textDecoration: 'underline',
+          transform: 'scale(1.2)', // static properties work here too!
+        },
+      },
+    },
+  })
+);
 ```
 
 ### Typings
