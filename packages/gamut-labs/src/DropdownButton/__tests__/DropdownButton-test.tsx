@@ -30,6 +30,11 @@ describe('ListSection', () => {
     view.getByTestId('dropdown-stroke-button');
   });
 
+  it('renders a kebab icon button when buttonType is kebab', () => {
+    const { view } = renderDropdownButton({ buttonType: 'kebab' });
+    view.getByTestId('dropdown-kebab-button');
+  });
+
   it('renders a fill button when buttonType is not provided', () => {
     const { view } = renderDropdownButton();
     view.getByTestId('dropdown-fill-button');

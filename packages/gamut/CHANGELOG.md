@@ -3,6 +3,40 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [33.1.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@33.1.3...@codecademy/gamut@33.1.4) (2021-05-26)
+
+
+### Bug Fixes
+
+* **GridForm:** add optional Cancel button ([8022b54](https://github.com/Codecademy/client-modules/commit/8022b544f1fb4bbad7adf52aacb0f907430fb2a6))
+
+
+
+### [33.1.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@33.1.2...@codecademy/gamut@33.1.3) (2021-05-25)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [33.1.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@33.1.1...@codecademy/gamut@33.1.2) (2021-05-25)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [33.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@33.1.0...@codecademy/gamut@33.1.1) (2021-05-25)
+
+
+### Bug Fixes
+
+* GridForm Sweet Container - add missing label ([4a8837b](https://github.com/Codecademy/client-modules/commit/4a8837bd8244549b7ace933755b85183fadd2409))
+
+
+
 ## [33.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@33.0.0...@codecademy/gamut@33.1.0) (2021-05-25)
 
 
