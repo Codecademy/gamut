@@ -21,18 +21,14 @@ export type LayoutMenuProps = {
    * Callback to be run on click of a section item. This should include where the link should go
    */
   onSectionItemClick: (item: SectionItem, sectionSlug: string) => void;
-  /**
-   * React Node containing any additional links to be rendered after the accordions
-   */
-  additionalLinks?: React.ReactNode;
 };
 
 export const LayoutMenu: React.FC<LayoutMenuProps> = ({
   sections,
-  additionalLinks,
   onSectionToggle,
   onSectionItemClick,
   selectedItem,
+  children,
 }) => {
   return (
     <nav>
@@ -40,7 +36,7 @@ export const LayoutMenu: React.FC<LayoutMenuProps> = ({
         <Flyout
           button={<StrokeButton variant="secondary">Catalog Menu</StrokeButton>}
         >
-          <Box bg="white" height={1} p={16}>
+          <Box bg="white" height={1} p={16} overflow="scroll">
             {sections.map((section) => (
               <AccordionMenu
                 key={section.slug}
@@ -50,7 +46,7 @@ export const LayoutMenu: React.FC<LayoutMenuProps> = ({
                 selectedItem={selectedItem}
               />
             ))}
-            {additionalLinks}
+            {children}
           </Box>
         </Flyout>
       </Box>
@@ -64,8 +60,7 @@ export const LayoutMenu: React.FC<LayoutMenuProps> = ({
             selectedItem={selectedItem}
           />
         ))}
-        {/* more links that are not accordions */}
-        {additionalLinks}
+        {children}
       </Box>
     </nav>
   );
