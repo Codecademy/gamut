@@ -10,14 +10,10 @@ import React, {
 import { Box, FlexBox } from '../Box';
 import {
   conditionalInputStyleProps,
-  formBaseFieldStyles,
-  formFieldFocusStyles,
-  formFieldPaddingStyles,
-  iconPadding,
-} from './styles/shared';
-import {
   conditionalStyles,
   formFieldStyles,
+  iconPadding,
+  iFrameWrapperBaseStyles,
 } from './styles/shared-system-props';
 
 export type InputProps = InputHTMLAttributes<HTMLInputElement> & {
@@ -56,13 +52,8 @@ export interface InputWrapperProps extends InputProps {
   icon?: typeof AlertIcon;
 }
 
-/**  We greatly prefer NOT to do this but ReactRecurly has some specific needs around focus-styles + padding that force us to export them seperately. If we ever stop using React-Recurly, this code will be 🔪.
- *tldr: Do not do this unless you have already talked to Web-Plat and have failed to find any alternate (and better) solutions. */
-export const reactRecurlyFormFieldFocusStyles = formFieldFocusStyles;
-export const reactRecurlyFormFieldPaddingStyles = formFieldPaddingStyles;
-
 export const iFrameWrapper = styled.div<conditionalInputStyleProps>`
-  ${formBaseFieldStyles}
+  ${iFrameWrapperBaseStyles}
   ${conditionalStyles}
   text-indent: 0;
 `;
@@ -133,8 +124,6 @@ export const Input = forwardRef<HTMLInputElement, InputWrapperProps>(
           id={id || rest.htmlFor}
           ref={ref}
           variant={conditionalStyleState}
-          // error={error}
-          // activated={activated === undefined ? activatedStyle : activated}
           icon={error || valid || !!Icon}
           className={className}
           onChange={changeHandler}

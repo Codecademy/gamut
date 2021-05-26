@@ -1,6 +1,26 @@
 import { system, theme } from '@codecademy/gamut-styles';
 import { StandardPropertiesHyphen } from 'csstype';
 
+export type conditionalStyleProps = {
+  error?: boolean;
+  activated?: boolean;
+  isFocused?: boolean | null;
+  isDisabled?: boolean | null;
+};
+
+type iconPaddingProps = {
+  icon?: boolean;
+};
+
+export type conditionalInputStyleProps = conditionalStyleProps &
+  iconPaddingProps;
+
+export const iconPadding = ({ icon }: iconPaddingProps) => {
+  if (icon) {
+    return system.css({ paddingRight: '2.3rem' });
+  }
+};
+
 const transitionConcatenator = (
   arrayOfProperties: Array<keyof StandardPropertiesHyphen>,
   transition: string
@@ -17,7 +37,6 @@ const transitionConcatenator = (
 export const formBaseStyles = {
   fontWeight: 'base',
   fontSize: 16,
-  cursor: 'pointer',
 } as const;
 
 export const formBaseComponentStyles = {
@@ -90,4 +109,19 @@ export const conditionalStyles = system.variant({
     },
     activated: { borderColor: 'text' },
   },
+});
+
+/**  We greatly prefer NOT to do this but ReactRecurly has some specific needs around focus-styles + padding that force us to export them seperately. If we ever stop using React-Recurly, this code will be 🔪.
+ *tldr: Do not do this unless you have already talked to Web-Plat and have failed to find any alternate (and better) solutions. */
+
+export const iFrameWrapperBaseStyles = system.css({
+  ...formBaseFieldStyles,
+});
+
+export const reactRecurlyFormFieldFocusStyles = system.css({
+  ...formFieldFocusStyles,
+});
+
+export const reactRecurlyFormFieldPaddingStyles = system.css({
+  ...formFieldPaddingStyles,
 });
