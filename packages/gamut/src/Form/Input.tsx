@@ -12,6 +12,7 @@ import { Box, FlexBox } from '../Box';
 import {
   conditionalInputStyleProps,
   conditionalStyles,
+  conditionalStyleState,
   formBaseFieldStyles,
   formFieldFocusStyles,
   formFieldPaddingStyles,
@@ -121,11 +122,7 @@ export const Input = forwardRef<HTMLInputElement, InputWrapperProps>(
 
     const AsComponent = As || InputElement;
     const ShownIcon = Icon || icon;
-    const conditionalStyleState = error
-      ? 'error'
-      : activatedStyle
-      ? 'activated'
-      : undefined;
+
     return (
       <Box
         display={rest.type === 'hidden' ? 'none' : undefined}
@@ -136,7 +133,7 @@ export const Input = forwardRef<HTMLInputElement, InputWrapperProps>(
           {...rest}
           id={id || rest.htmlFor}
           ref={ref}
-          variant={conditionalStyleState}
+          variant={conditionalStyleState(error, activatedStyle)}
           icon={error || valid || !!Icon}
           className={className}
           onChange={changeHandler}

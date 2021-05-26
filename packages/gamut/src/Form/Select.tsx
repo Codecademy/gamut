@@ -16,6 +16,7 @@ import React, {
 import { Box, FlexBox } from '../Box';
 import {
   conditionalStyles,
+  conditionalStyleState,
   formFieldStyles,
 } from './styles/shared-system-props';
 import { parseSelectOptions } from './utils';
@@ -87,11 +88,6 @@ export const Select = forwardRef<HTMLSelectElement, SelectWrapperProps>(
       return parseSelectOptions({ options, id });
     }, [options, id]);
 
-    const conditionalStyleState = error
-      ? 'error'
-      : activatedStyle
-      ? 'activated'
-      : undefined;
     return (
       <Box
         position="relative"
@@ -122,7 +118,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectWrapperProps>(
           ref={ref}
           error={error}
           sizeVariant={sizeVariant}
-          variant={conditionalStyleState}
+          variant={conditionalStyleState(error, activatedStyle)}
           onChange={(event) => changeHandler(event)}
         >
           {selectOptions}
