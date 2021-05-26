@@ -1,6 +1,6 @@
-import { system } from '@codecademy/gamut-styles';
+import { variant } from '@codecademy/gamut-styles';
 
-export const darkModeVariants = system.variant({
+export const darkModeVariants = variant({
   prop: 'mode',
   defaultVariant: 'light',
   variants: {

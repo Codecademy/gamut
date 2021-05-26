@@ -1,5 +1,5 @@
 import { GamutIconProps } from '@codecademy/gamut-icons';
-import { system, useCurrentMode } from '@codecademy/gamut-styles';
+import { useCurrentMode, variant } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React, { forwardRef } from 'react';
 
@@ -25,7 +25,7 @@ const IconButtonInner = styled(ButtonInner)<SizedButtonProps>(
       backgroundColor: 'transparent',
     },
   }),
-  system.variant({
+  variant({
     prop: 'size',
     variants: {
       normal: {

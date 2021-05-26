@@ -1,5 +1,5 @@
 import { MiniInfoOutlineIcon } from '@codecademy/gamut-icons';
-import { system, theme } from '@codecademy/gamut-styles';
+import { theme, variant } from '@codecademy/gamut-styles';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import React, { HTMLAttributes } from 'react';
@@ -32,7 +32,7 @@ type disabledLabelStyleProps = {
   disabled?: boolean;
 };
 
-const labelSizeVariants = system.variant({
+const labelSizeVariants = variant({
   defaultVariant: 'small',
   prop: 'size',
   variants: {

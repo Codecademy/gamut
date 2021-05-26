@@ -3,8 +3,8 @@ import {
   fontSmoothPixel,
   lineHeight,
   pxRem,
-  system,
   timing,
+  variant,
 } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React, { ReactNode } from 'react';
@@ -62,7 +62,7 @@ const ToolTipContainer = styled.div<ToolTipContainerProps>`
   &::after {
     border-style: solid;
 
-    ${system.variant({
+    ${variant({
       prop: 'mode',
       variants: {
         dark: { backgroundColor: 'black', borderColor: 'white' },
@@ -155,7 +155,7 @@ const ToolTipBody = styled.div<ToolTipContainerProps>`
     `}
   min-width: 4rem;
 
-  ${system.variant({
+  ${variant({
     prop: 'mode',
     variants: {
       dark: {

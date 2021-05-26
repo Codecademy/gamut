@@ -25,7 +25,7 @@ export const PropItem = styled.li`
   color: ${themed('colors.gray-700')};
 `;
 
-const tagVariants = system.variant({
+const tagVariants = variant({
   variants: {
     normal: {
       textColor: 'navy',
