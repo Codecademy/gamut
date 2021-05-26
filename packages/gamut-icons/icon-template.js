@@ -1,5 +1,5 @@
 const path = require('path');
-const { startCase } = require('lodash/fp');
+const { startCase } = require('lodash');
 
 function iconTemplate(api, opts, { jsx /* imports, props, exports */ }) {
   const template = api.template.smart({ plugins: ['jsx', 'typescript'] });
@@ -9,7 +9,7 @@ function iconTemplate(api, opts, { jsx /* imports, props, exports */ }) {
 
   return template.ast`
     import * as React from 'react';
-    import { ClassNames, useTheme } from '@emotion/react';
+    import { ClassNames } from '@emotion/react';
     import { GamutIconProps } from '../../types';
     import { getAttrValue, IconStyleProps, iconStyles } from '../../props';
     const LocalIcon = React.forwardRef<SVGSVGElement, GamutIconProps>(({
@@ -24,9 +24,8 @@ function iconTemplate(api, opts, { jsx /* imports, props, exports */ }) {
     },
       svgRef
     ) => {
-      const theme = useTheme();
       const props = rest as Omit<GamutIconProps, keyof IconStyleProps>;
-      return <ClassNames>{({ css, cx }) => {
+      return <ClassNames>{({ css, cx, theme }) => {
         const classNames = cx(cn, css(iconStyles({ ...props, width, height, theme })));
         return ${jsx}
       }}</ClassNames>;
