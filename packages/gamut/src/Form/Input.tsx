@@ -8,12 +8,11 @@ import React, {
 } from 'react';
 
 import { Box, FlexBox } from '../Box';
+import { conditionalInputStyleProps, iconPadding } from './styles/shared';
 import {
-  conditionalInputStyleProps,
   conditionalStyles,
   formBaseFieldStyles,
   formFieldStyles,
-  iconPadding,
 } from './styles/shared-system-props';
 
 export type InputProps = InputHTMLAttributes<HTMLInputElement> & {

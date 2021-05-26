@@ -2,7 +2,7 @@ import {
   ArrowChevronDownIcon,
   MiniChevronDownIcon,
 } from '@codecademy/gamut-icons';
-import { variant } from '@codecademy/gamut-styles';
+import { system } from '@codecademy/gamut-styles';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import React, {
@@ -35,17 +35,16 @@ export type SelectWrapperProps = SelectComponentProps &
   };
 
 export interface SelectProps extends SelectWrapperProps {
-  activated?: boolean;
+  variant?: 'error' | 'activated';
 }
 
-const selectSizeVariants = variant({
-  default: 'base',
+const selectSizeVariants = system.variant({
+  defaultVariant: 'base',
   prop: 'sizeVariant',
   variants: {
     small: {
       height: '2rem',
-      paddingX: 8,
-      paddingY: 0,
+      py: 0,
     },
     base: {
       height: 'auto',
@@ -76,17 +75,22 @@ export const Select = forwardRef<HTMLSelectElement, SelectWrapperProps>(
     { className, defaultValue, options, error, id, sizeVariant, ...rest },
     ref
   ) => {
-    const [activated, setActivated] = useState(false);
+    const [activatedStyle, setActivatedStyle] = useState(false);
 
     const changeHandler = (event: ChangeEvent<HTMLSelectElement>) => {
       rest?.onChange?.(event);
-      setActivated(true);
+      setActivatedStyle(true);
     };
 
     const selectOptions = useMemo(() => {
       return parseSelectOptions({ options, id });
     }, [options, id]);
 
+    const conditionalStyleState = error
+      ? 'error'
+      : activatedStyle
+      ? 'activated'
+      : undefined;
     return (
       <Box
         position="relative"
@@ -117,7 +121,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectWrapperProps>(
           ref={ref}
           error={error}
           sizeVariant={sizeVariant}
-          activated={activated}
+          variant={conditionalStyleState}
           onChange={(event) => changeHandler(event)}
         >
           {selectOptions}

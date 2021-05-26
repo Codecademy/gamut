@@ -15,11 +15,11 @@ type iconPaddingProps = {
 export type conditionalInputStyleProps = conditionalStyleProps &
   iconPaddingProps;
 
-export const iconPadding = ({ icon }: iconPaddingProps) => {
-  if (icon) {
-    return system.css({ paddingRight: '2.3rem' });
-  }
-};
+// export const iconPadding = ({ icon }: iconPaddingProps) => {
+//   if (icon) {
+//     return system.css({ paddingRight: '2.3rem' });
+//   }
+// };
 
 const transitionConcatenator = (
   arrayOfProperties: Array<keyof StandardPropertiesHyphen>,
@@ -93,12 +93,30 @@ export const formBaseFieldStyles = system.css({
 });
 
 export const formFieldStyles = system.css({
-  ...formBaseFieldStyles,
+  ...formBaseFieldStylesObject,
   ...formFieldPaddingStyles,
   '&:focus': formFieldFocusStyles,
 });
 
 export const conditionalStyles = system.variant({
+  variants: {
+    error: {
+      textColor: 'danger',
+      borderColor: 'danger',
+      '&:hover': {
+        borderColor: 'danger',
+      },
+      '&:focus': {
+        borderColor: 'danger',
+        boxShadow: `inset 0 0 0 1px ${theme.colors.danger}`,
+      },
+    },
+    activated: { borderColor: 'text' },
+  },
+});
+
+export const iconPadding = system.variant({
+  prop: 'icon',
   variants: {
     error: {
       textColor: 'danger',
