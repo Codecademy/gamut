@@ -1,45 +1,41 @@
-import {
-  AccordionArea,
-  AccordionButton,
-  Anchor,
-  Box,
-  Text,
-} from '@codecademy/gamut';
-import { theme } from '@codecademy/gamut-styles';
+import { AccordionArea, AccordionButton, Box, Text } from '@codecademy/gamut';
 import styled from '@emotion/styled';
 import React, { useState } from 'react';
 
-export type MenuData = {
-  title: string;
-  slug: string;
-  items: MenuItemData[];
-};
-
-export type MenuItemData = {
-  title: string;
-  slug: string;
-};
-
-export type AccordionMenuProps = {
-  menuData: MenuData;
-  onSectionToggle: (sectionSlug: string) => void;
-  onMenuItemClick: (item: MenuItemData, sectionSlug: string) => void;
-  selectedItem?: string;
-};
+import { SectionItemLink } from '../SectionItemLink';
+import { SelectedSectionItem } from '../SelectedSectionItem';
 
 const StyledAccordionArea = styled(AccordionArea)`
-  padding-bottom: ${theme.spacing[32]};
+  padding-bottom: ${({ theme }) => theme.spacing[32]};
 `;
 
 const StyledAccordionButton = styled(AccordionButton)`
-  margin-left: -${theme.spacing[16]};
+  padding-left: 0;
   width: auto;
 `;
 
+export type SectionItem = {
+  title: string;
+  slug: string;
+};
+
+export type Section = {
+  title: string;
+  slug: string;
+  items: SectionItem[];
+};
+
+export type AccordionMenuProps = {
+  section: Section;
+  onSectionToggle: (sectionSlug: string) => void;
+  onSectionItemClick: (item: SectionItem, sectionSlug: string) => void;
+  selectedItem?: string;
+};
+
 export const AccordionMenu: React.FC<AccordionMenuProps> = ({
-  menuData,
+  section,
   onSectionToggle,
-  onMenuItemClick,
+  onSectionItemClick,
   selectedItem,
 }) => {
   const [expanded, setExpanded] = useState<boolean>(true);
@@ -52,39 +48,28 @@ export const AccordionMenu: React.FC<AccordionMenuProps> = ({
           expanded={expanded}
           onClick={() => {
             setExpanded(!expanded);
-            onSectionToggle(menuData.slug);
+            onSectionToggle(section.slug);
           }}
         >
-          <Text variant="title-xs">{menuData.title}</Text>
+          <Text variant="title-xs">{section.title}</Text>
         </StyledAccordionButton>
       }
     >
-      {menuData.items.map((item) => {
+      {section.items.map((item) => {
         if (selectedItem === item.slug) {
           return (
             <Box key={item.slug} py={8}>
-              <Box
-                borderColor="navy"
-                borderStyleLeft="solid"
-                borderWidthLeft="6px"
-                pl={12}
-              >
-                <Text as="span" fontWeight="title">
-                  {item.title}
-                </Text>
-              </Box>
+              <SelectedSectionItem>{item.title}</SelectedSectionItem>
             </Box>
           );
         }
         return (
           <Box key={item.slug} py={8}>
-            <Anchor
-              variant="interface"
-              display="block"
-              onClick={() => onMenuItemClick(item, menuData.slug)}
+            <SectionItemLink
+              onClick={() => onSectionItemClick(item, section.slug)}
             >
               {item.title}
-            </Anchor>
+            </SectionItemLink>
           </Box>
         );
       })}

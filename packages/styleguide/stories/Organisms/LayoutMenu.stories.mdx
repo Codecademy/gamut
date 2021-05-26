@@ -9,9 +9,10 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
   title={title}
   component={LayoutMenu}
   args={{
-    allMenuData: [
+    sections: [
       {
         title: 'Languages',
+        slug: 'language',
         items: [
           {
             title: 'HTML & CSS',
@@ -25,6 +26,7 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
       },
       {
         title: 'Subjects',
+        slug: 'subject',
         items: [
           {
             title: 'Data Science',
@@ -43,10 +45,10 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
         `You could add event tracking here. You have access to the slug: ${slug}`
       );
     },
-    onMenuItemClick: (menuItem) => {
+    onSectionItemClick: (item) => {
       // eslint-disable-next-line no-console
       console.log(
-        `You should handle where the link goes here and also could add event tracking. You have access to the menu item: ${menuItem}`
+        `You should handle where the link goes here and also could add event tracking. You have access to the menu item: ${item}`
       );
     },
   }}
@@ -72,7 +74,7 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
         {...args}
         additionalLinks={
           <>
-            <Box paddingBottom={32}>
+            <Box pb={32}>
               <Anchor
                 variant="interface"
                 display="block"
@@ -84,7 +86,7 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
                 Full Catalog
               </Anchor>
             </Box>
-            <Box paddingBottom={32}>
+            <Box pb={32}>
               <Anchor
                 variant="interface"
                 display="block"
