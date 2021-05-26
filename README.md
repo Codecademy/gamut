@@ -51,7 +51,7 @@ We provide a single package to manage the versions of a few core dependencies: `
 
 - [![npm version](https://badge.fury.io/js/%40codecademy%2Fgamut-labs.svg)](https://badge.fury.io/js/%40codecademy%2Fgamut-labs)
 
-[`variance`: Typescript CSS in JS utility library](/packages/variance/README.md)
+[`variance`: TypeScript CSS in JS utility library](/packages/variance/README.md)
 
 - [![npm version](https://badge.fury.io/js/%40codecademy%2Fvariance.svg)](https://badge.fury.io/js/%40codecademy%2Fvariance)
 
