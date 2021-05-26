@@ -8,13 +8,15 @@ export const Table = styled.div`
 `;
 
 const rowVariants = variant({
-  inset: {
-    borderStyle: 'solid',
-    borderStyleTop: 'none',
-    borderWidth: '1px',
-    borderColor: 'gray-200',
-    backgroundColor: 'gray-100',
-    padding: 32,
+  variants: {
+    inset: {
+      borderStyle: 'solid',
+      borderStyleTop: 'none',
+      borderWidth: '1px',
+      borderColor: 'gray-200',
+      backgroundColor: 'gray-100',
+      p: 32,
+    },
   },
 });
 
@@ -62,9 +64,11 @@ const colSizes = variant({
 type ColVariants = HandlerProps<typeof colVariants>;
 
 const colVariants = variant({
-  header: {
-    fontWeight: 'title',
-    fontSize: 16,
+  variants: {
+    header: {
+      fontWeight: 'title',
+      fontSize: 16,
+    },
   },
 });
 
