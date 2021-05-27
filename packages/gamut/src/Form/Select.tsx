@@ -36,17 +36,17 @@ export interface SelectProps extends SelectWrapperProps {
 }
 
 const selectSizeVariants = variant({
-  default: 'base',
+  defaultVariant: 'base',
   prop: 'sizeVariant',
   variants: {
     small: {
       height: '2rem',
-      paddingX: 8,
-      paddingY: 0,
+      px: 8,
+      py: 0,
     },
     base: {
       height: 'auto',
-      paddingRight: 48,
+      pr: 48,
     },
   },
 });
