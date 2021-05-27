@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-patterns@0.2.2...@codecademy/gamut-patterns@0.3.0) (2021-05-27)
+
+
+### Features
+
+* Migrate final gamut-system docs + functions to variance [WEB-1413]  ([67c8651](https://github.com/Codecademy/client-modules/commit/67c8651dc4985dd656c8d488af4cf56ca21a813b))
+
+
+
 ### [0.2.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-patterns@0.2.1...@codecademy/gamut-patterns@0.2.2) (2021-05-25)
 
 **Note:** Version bump only for package @codecademy/gamut-patterns
