@@ -50,6 +50,8 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
         `You should handle where the link goes here and also could add event tracking. You have access to the menu item: ${item}`
       );
     },
+    mobileButtonText: 'Click Me',
+    showLogoOnFlyout: true,
   }}
   parameters={{
     subtitle: `An accordion menu, currently used in the Catalog and Cheatsheets Index`,
@@ -64,50 +66,52 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 
 <PropsTable story="LayoutMenu" />
 
+## With Selected Item
+
+<Canvas>
+  <Story name="With Selected Item">
+    {(args) => <LayoutMenu {...args} selectedItem="python" />}
+  </Story>
+</Canvas>
+
 ## With Additional Links
 
 <Canvas>
-  <Story name="LayoutMenuWithAdditionalLinks">
+  <Story name="With Additional Links">
     {(args) => (
-      <LayoutMenu
-        {...args}
-        additionalLinks={
-          <>
-            <Box pb={32}>
-              <Anchor
-                variant="interface"
-                display="block"
-                onClick={() =>
-                  (window.location.href =
-                    'https://www.codecademy.com/catalog/all')
-                }
-              >
-                Full Catalog
-              </Anchor>
-            </Box>
-            <Box pb={32}>
-              <Anchor
-                variant="interface"
-                display="block"
-                onClick={() =>
-                  (window.location.href =
-                    'https://www.codecademy.com/explore/sorting-quiz')
-                }
-              >
-                Where do I begin?
-              </Anchor>
-            </Box>
-          </>
-        }
-      />
+      <LayoutMenu {...args}>
+        <Box pb={32}>
+          <Anchor
+            variant="interface"
+            display="block"
+            onClick={() =>
+              (window.location.href = 'https://www.codecademy.com/catalog/all')
+            }
+          >
+            Full Catalog
+          </Anchor>
+        </Box>
+        <Box pb={32}>
+          <Anchor
+            variant="interface"
+            display="block"
+            onClick={() =>
+              (window.location.href =
+                'https://www.codecademy.com/explore/sorting-quiz')
+            }
+          >
+            Where do I begin?
+          </Anchor>
+        </Box>
+      </LayoutMenu>
     )}
   </Story>
 </Canvas>
 
-## With Selected Item
+## Without Logo
 
 <Canvas>
-  <Story name="LayoutMenuWithSelectedItem">
-    {(args) => <LayoutMenu {...args} selectedItem="python" />}
+  <Story name="Without Logo">
+    {(args) => <LayoutMenu {...args} showLogoOnFlyout={false} />}
   </Story>
 </Canvas>

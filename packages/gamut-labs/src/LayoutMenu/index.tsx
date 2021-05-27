@@ -1,4 +1,4 @@
-import { Box, StrokeButton } from '@codecademy/gamut';
+import { Box, Logo, StrokeButton } from '@codecademy/gamut';
 import React from 'react';
 
 import { Flyout } from '../Flyout';
@@ -21,6 +21,14 @@ export type LayoutMenuProps = {
    * Callback to be run on click of a section item. This should include where the link should go
    */
   onSectionItemClick: (item: SectionItem, sectionSlug: string) => void;
+  /**
+   * Text shown in mobile button that opens flyout on click
+   */
+  mobileButtonText: string;
+  /**
+   * Whether or not to show the Codecademy logo at the top of the flyout on mobile
+   */
+  showLogoOnFlyout?: boolean;
 };
 
 export const LayoutMenu: React.FC<LayoutMenuProps> = ({
@@ -28,15 +36,24 @@ export const LayoutMenu: React.FC<LayoutMenuProps> = ({
   onSectionToggle,
   onSectionItemClick,
   selectedItem,
+  mobileButtonText,
+  showLogoOnFlyout,
   children,
 }) => {
   return (
     <nav>
       <Box display={{ _: 'block', lg: 'none' }}>
         <Flyout
-          button={<StrokeButton variant="secondary">Catalog Menu</StrokeButton>}
+          button={
+            <StrokeButton variant="secondary">{mobileButtonText}</StrokeButton>
+          }
         >
           <Box bg="white" height={1} p={16} overflow="scroll">
+            {showLogoOnFlyout && (
+              <Box pb={32}>
+                <Logo />
+              </Box>
+            )}
             {sections.map((section) => (
               <AccordionMenu
                 key={section.slug}
