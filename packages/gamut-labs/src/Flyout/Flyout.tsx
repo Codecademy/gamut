@@ -1,16 +1,9 @@
-import { IconButton } from '@codecademy/gamut/src/Button/IconButton';
+import { FocusTrap, IconButton } from '@codecademy/gamut';
 import { MiniDeleteIcon } from '@codecademy/gamut-icons';
-import { variant } from '@codecademy/gamut-styles';
-import styled from '@emotion/styled';
 import { AnimatePresence } from 'framer-motion';
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 
-import {
-  DrawerBase,
-  FlyoutBaseProps,
-  FlyoutWrapperProps,
-  transitionDuration,
-} from './shared';
+import { DrawerBase, FlyoutBaseProps, transitionDuration } from './shared';
 import { SidebarCloneButton } from './SidebarCloneButton';
 
 export type FlyoutProps = FlyoutBaseProps & {
@@ -18,31 +11,15 @@ export type FlyoutProps = FlyoutBaseProps & {
    * chooses color of drop shadow
    */
   button: React.ReactNode;
+  /**
+   * Whether clicking on the screen outside of the container should close the Flyout
+   */
+  clickOutsideCloses?: boolean;
+  /**
+   * Whether clicking the escape key should close the Flyout
+   */
+  escapeCloses?: boolean;
 };
-
-const FlyoutOpenFromProps = variant({
-  default: 'left',
-  prop: 'openFrom',
-  variants: {
-    left: {
-      right: 'auto',
-      left: 0,
-    },
-    right: {
-      right: 0,
-      left: 'auto',
-    },
-  },
-});
-
-const Drawer = styled(DrawerBase)<FlyoutWrapperProps>`
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  z-index: 2;
-  width: ${(props) => `${props.openWidth}rem`};
-  ${FlyoutOpenFromProps};
-`;
 
 export const Flyout: React.FC<FlyoutProps> = ({
   children,
@@ -51,30 +28,54 @@ export const Flyout: React.FC<FlyoutProps> = ({
   openFrom = 'left',
   openWidth = 30,
   testId,
+  clickOutsideCloses = true,
+  escapeCloses = true,
   ...styleProps
 }) => {
   const [isSidebarOpen, setSidebarOpen] = useState(expanded);
   const toggleDrawer = () => setSidebarOpen(!isSidebarOpen);
   const initialX = openFrom === 'left' ? -1000 : 1000;
 
+  const handleOutsideClick = useCallback(() => {
+    clickOutsideCloses && toggleDrawer();
+  }, [clickOutsideCloses, toggleDrawer]);
+
+  const handleEscapeKey = useCallback(() => {
+    escapeCloses && toggleDrawer();
+  }, [escapeCloses, toggleDrawer]);
+
   return (
     <>
       <AnimatePresence>
         {isSidebarOpen ? (
-          <Drawer
-            aria-expanded={isSidebarOpen}
-            initial={{ x: initialX }}
-            animate={{ x: 0 }}
-            exit={{ x: initialX }}
-            transition={{ duration: transitionDuration }}
-            data-testid={testId}
-            openWidth={openWidth}
-            openFrom={openFrom}
-            {...styleProps}
+          <FocusTrap
+            onClickOutside={handleOutsideClick}
+            onEscapeKey={handleEscapeKey}
           >
-            <IconButton icon={MiniDeleteIcon} onClick={() => toggleDrawer()} />
-            {children}
-          </Drawer>
+            <DrawerBase
+              aria-expanded={isSidebarOpen}
+              initial={{ x: initialX }}
+              animate={{ x: 0 }}
+              exit={{ x: initialX }}
+              transition={{ duration: transitionDuration }}
+              data-testid={testId}
+              width={`${openWidth}rem`}
+              openFrom={openFrom}
+              position="fixed"
+              height="100vh"
+              top="0"
+              zIndex={15}
+              {...styleProps}
+            >
+              <IconButton
+                icon={MiniDeleteIcon}
+                onClick={() => toggleDrawer()}
+                position="absolute"
+                right="0"
+              />
+              {children}
+            </DrawerBase>
+          </FocusTrap>
         ) : null}
       </AnimatePresence>
       <SidebarCloneButton
