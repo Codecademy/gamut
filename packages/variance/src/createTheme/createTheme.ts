@@ -25,6 +25,13 @@ type Reserved = {
   _tokens: Record<string | number, any>;
 };
 
+type ColorMap<Colors> = Record<
+  string,
+  | Colors
+  | Record<string, Colors>
+  | Record<string, Colors | Record<string, Colors>>
+>;
+
 class ThemeBuilder<T extends AbstractTheme> {
   #theme = {} as T;
 
@@ -96,7 +103,7 @@ class ThemeBuilder<T extends AbstractTheme> {
     Modes extends string,
     InitialMode extends keyof Config,
     Colors extends keyof T['colors'],
-    ModeColors extends Record<string, Record<string, Colors> | Colors>,
+    ModeColors extends ColorMap<Colors>,
     Config extends Record<Modes, ModeColors>
   >(
     initialMode: InitialMode,
@@ -150,12 +157,17 @@ class ThemeBuilder<T extends AbstractTheme> {
    */
   addScale<
     Key extends string,
-    Fn extends (theme: T) => Record<string | number, unknown>
-  >(
-    key: Key,
-    createScale: Fn
-  ): ThemeBuilder<Merge<T, Record<Key, ReturnType<Fn>>>> {
-    this.#theme = merge({}, this.#theme, { [key]: createScale(this.#theme) });
+    Fn extends (
+      theme: T
+    ) => Record<
+      string | number,
+      string | number | Record<string, string | number>
+    >,
+    NewScale extends LiteralPaths<ReturnType<Fn>, '-'>
+  >(key: Key, createScale: Fn): ThemeBuilder<Merge<T, Record<Key, NewScale>>> {
+    this.#theme = merge({}, this.#theme, {
+      [key]: flattenScale(createScale(this.#theme)),
+    });
     return this;
   }
 

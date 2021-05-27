@@ -94,7 +94,7 @@ export const ColorModeExample = () => {
         />
       </FlexBox>
       <ColorMode mode={isDark ? 'dark' : 'light'}>
-        <Box bg="background" p={24} border={1}>
+        <Box bg="background-base" p={24} border={1}>
           <Text as="h3" mb={24}>
             {isDark ? 'Dark' : 'Light'} Mode
           </Text>
@@ -120,6 +120,7 @@ export const ColorModeExample = () => {
           {renderButtons('primary')}
           {renderButtons('secondary')}
           {renderButtons('primary', true)}
+          <FillButton variant="danger">Danger Zone</FillButton>
         </Box>
       </ColorMode>
     </Box>

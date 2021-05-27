@@ -128,15 +128,18 @@ describe('createTheme', () => {
         })
         .addColorModes('light', {
           light: {
-            primary: 'gray-200',
+            primary: {
+              default: 'gray-200',
+              cool: { town: 'black' },
+            },
           },
         })
         .build();
 
       expect(theme._getColorValue('gray-300')).toEqual('#666666');
-      expect(theme._getColorValue(theme.modes.light.primary)).toEqual(
-        '#eeeeee'
-      );
+      expect(
+        theme._getColorValue(theme.modes.light['primary-default'])
+      ).toEqual('#eeeeee');
     });
   });
 });

@@ -1,30 +1,44 @@
 import { GamutIconProps } from '@codecademy/gamut-icons';
-import { useCurrentMode, variant } from '@codecademy/gamut-styles';
+import { css, timing, useCurrentMode, variant } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React, { forwardRef } from 'react';
 
-import { ButtonBaseElements } from '../ButtonBase/ButtonBase';
-import { ButtonInner } from './ButtonInner';
-import {
-  buttonColors,
-  ButtonOutline,
-  ButtonOutlineProps,
-  createStates,
-} from './ButtonOutline';
+import { ButtonBase, ButtonBaseElements } from '../ButtonBase/ButtonBase';
+import { ButtonOutlineProps } from './ButtonOutline';
 import { SizedButtonProps } from './types';
 
-const { background, backgroundMuted, backgroundEmphasized } = buttonColors;
-
-const IconButtonInner = styled(ButtonInner)<SizedButtonProps>(
-  createStates({
-    base: { color: background },
-    hover: { backgroundColor: backgroundEmphasized },
-    active: { color: background },
-    disabled: {
-      color: backgroundMuted,
-      backgroundColor: 'transparent',
+const createVariantStyles = (variant: 'primary' | 'secondary' | 'danger') =>
+  ({
+    textColor: `button-${variant}-default`,
+    '&:hover': {
+      textColor: `button-${variant}-hover`,
     },
-  }),
+    '&:focus-visible': {
+      boxShadow: `outline-${variant}`,
+    },
+  } as const);
+
+const buttonVariants = variant({
+  base: {
+    border: 2,
+    borderRadius: '4px',
+    transition: ` ${timing.fast} background-color, ${timing.fast} box-shadow,
+    ${timing.fast} color`,
+    borderColor: 'transparent',
+    '&:focus': {
+      outline: 'none',
+    },
+    '&:hover': {
+      bg: 'button-hover-bg',
+    },
+  },
+  variants: {
+    primary: createVariantStyles('primary'),
+    secondary: createVariantStyles('secondary'),
+    danger: createVariantStyles('danger'),
+  },
+});
+const IconButtonInner = styled(ButtonBase)<SizedButtonProps>(
   variant({
     prop: 'size',
     variants: {
@@ -36,6 +50,18 @@ const IconButtonInner = styled(ButtonInner)<SizedButtonProps>(
         height: 32,
         width: 32,
       },
+    },
+  }),
+  buttonVariants,
+  css({
+    display: 'inline-block',
+    fontWeight: 'title',
+    textAlign: 'center',
+    whiteSpace: 'nowrap',
+    "&:disabled, &[aria-disabled='true']": {
+      textColor: 'button-disabled-text',
+      cursor: 'not-allowed',
+      userSelect: 'none',
     },
   })
 );
@@ -49,17 +75,15 @@ export const IconButton = forwardRef<ButtonBaseElements, IconButtonProps>(
   ({ icon: Icon, size = 'normal', mode, ...props }, ref) => {
     const currentMode = useCurrentMode(mode);
     return (
-      <ButtonOutline mode={currentMode} size={size} {...props} ref={ref}>
-        <IconButtonInner mode={currentMode} size={size}>
-          {Icon && (
-            <Icon
-              width="calc(100% - 14px)"
-              height="calc(100% - 14px)"
-              aria-hidden
-            />
-          )}
-        </IconButtonInner>
-      </ButtonOutline>
+      <IconButtonInner mode={currentMode} size={size} {...props} ref={ref}>
+        {Icon && (
+          <Icon
+            width="calc(100% - 14px)"
+            height="calc(100% - 14px)"
+            aria-hidden
+          />
+        )}
+      </IconButtonInner>
     );
   }
 );

@@ -48,7 +48,7 @@ const ModalBody = styled.div(
   system.css({
     border: 1,
     position: 'relative',
-    bg: 'background',
+    bg: 'background-base',
     textColor: 'text',
     display: 'grid',
     p: 24,
