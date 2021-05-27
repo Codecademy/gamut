@@ -14,13 +14,14 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
   args={{
     htmlFor: 'example-input',
     name: 'example-input',
-    defaultValue: 'Some text',
     rows: 4,
   }}
 />
 
 <Canvas>
-  <Story name="TextArea">{(args) => <TextArea {...args} />}</Story>
+  <Story name="TextArea" args={{ defaultValue: 'Some text' }}>
+    {(args) => <TextArea {...args} />}
+  </Story>
 </Canvas>
 
 <PropsTable story="TextArea" />
@@ -37,6 +38,23 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
   <Story
     name="Placeholder"
     args={{ placeholder: 'Placeholder', defaultValue: undefined }}
+  >
+    {(args) => <TextArea {...args} />}
+  </Story>
+</Canvas>
+
+### Character count
+
+<Canvas>
+  <Story name="Character counts" args={{ characterMax: 60 }}>
+    {(args) => <TextArea {...args} />}
+  </Story>
+  <Story
+    name="Character counts with default value"
+    args={{
+      characterMax: 60,
+      defaultValue: 'Character count includes default value',
+    }}
   >
     {(args) => <TextArea {...args} />}
   </Story>

@@ -21,6 +21,7 @@ export const GridFormTextArea: React.FC<GridFormTextAreaProps> = ({
 }) => {
   return (
     <TextArea
+      characterMax={field.characterMax}
       className={className}
       disabled={field.disabled}
       error={error}

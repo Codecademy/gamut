@@ -6,9 +6,12 @@ import React, {
   useState,
 } from 'react';
 
+import { FlexBox } from '..';
+import { Text } from '../Typography';
 import { conditionalStyles, formFieldStyles } from './styles/shared';
 
 export type TextWrapperProps = TextareaHTMLAttributes<HTMLTextAreaElement> & {
+  characterMax?: number;
   className?: string;
   error?: boolean;
   htmlFor?: string;
@@ -28,24 +31,39 @@ const StyledTextArea = styled.textarea<TextAreaProps>`
 `;
 
 export const TextArea = forwardRef<HTMLTextAreaElement, TextWrapperProps>(
-  ({ error, className, id, ...rest }, ref) => {
+  (
+    { error, characterMax, className, defaultValue, id, value, ...rest },
+    ref
+  ) => {
     const [activated, setActivated] = useState(false);
+    const [characterCount, setCharacterCount] = useState(
+      defaultValue?.toString().length || 0
+    );
 
     const changeHandler = (event: ChangeEvent<HTMLTextAreaElement>) => {
       rest?.onChange?.(event);
       setActivated(true);
+      setCharacterCount(event.currentTarget.value.length);
     };
 
     return (
-      <StyledTextArea
-        {...rest}
-        id={id || rest.htmlFor}
-        className={className}
-        ref={ref}
-        error={error}
-        activated={activated}
-        onChange={(event) => changeHandler(event)}
-      />
+      <>
+        <StyledTextArea
+          {...rest}
+          id={id || rest.htmlFor}
+          className={className}
+          defaultValue={defaultValue}
+          ref={ref}
+          error={error}
+          activated={activated}
+          onChange={(event) => changeHandler(event)}
+        />
+        {characterMax && (
+          <Text textColor={characterCount > characterMax ? 'red' : 'navy'}>
+            ({characterCount} / {characterMax})
+          </Text>
+        )}
+      </>
     );
   }
 );

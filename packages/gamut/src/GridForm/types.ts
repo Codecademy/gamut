@@ -96,6 +96,7 @@ export type GridFormFileField = BaseFormField<FileList> & {
 };
 
 export type GridFormTextAreaField = BaseFormField<string> & {
+  characterMax?: number;
   label: React.ReactNode;
   validation?: ValidationRules;
   type: 'textarea';
