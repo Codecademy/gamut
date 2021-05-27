@@ -5,7 +5,7 @@ import {
   MiniStarIcon,
   MiniWarningTriangleIcon,
 } from '@codecademy/gamut-icons';
-import { breakpoints, system } from '@codecademy/gamut-styles';
+import { breakpoints, variant } from '@codecademy/gamut-styles';
 
 export const alertVariants = {
   general: {
@@ -35,7 +35,7 @@ export const alertVariants = {
   },
 } as const;
 
-export const placementVariants = system.variant({
+export const placementVariants = variant({
   prop: 'placement',
   base: {
     borderColor: 'navy',

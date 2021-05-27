@@ -3,6 +3,7 @@ import {
   styledConfig,
   system,
   useCurrentMode,
+  variant,
 } from '@codecademy/gamut-styles';
 import { StyleProps, variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
@@ -22,7 +23,7 @@ const logoStyles = variance.compose(
   system.space
 );
 
-const placementVariants = system.variant({
+const placementVariants = variant({
   prop: 'placement',
   variants: {
     inline: {
@@ -31,7 +32,7 @@ const placementVariants = system.variant({
   },
 });
 
-const modeVariants = system.variant({
+const modeVariants = variant({
   prop: 'mode',
   variants: {
     light: { bg: 'navy', textColor: 'beige' },

@@ -5,7 +5,6 @@
   },
   "dependencies": {
     "@codecademy/gamut-styles": "^10.1.2",
-    "@codecademy/gamut-system": "^0.7.2",
     "classnames": "^2.2.5"
   },
   "description": "Illustrations library for Codecademy",
