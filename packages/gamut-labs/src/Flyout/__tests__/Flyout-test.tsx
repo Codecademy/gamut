@@ -9,7 +9,8 @@ const renderView = setupRtl(Flyout, {
 });
 
 describe('Flyout', () => {
-  it('', () => {
+  it('test', () => {
     const { view } = renderView();
+    view.getByText('Test');
   });
 });
