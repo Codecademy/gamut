@@ -1,5 +1,9 @@
 import { Anchor, Box } from '@codecademy/gamut';
-import { LayoutMenu } from '@codecademy/gamut-labs/src';
+import {
+  LayoutMenu,
+  SectionItemLink,
+  SelectedSectionItem,
+} from '@codecademy/gamut-labs/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
@@ -54,7 +58,7 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
     showLogoOnFlyout: true,
   }}
   parameters={{
-    subtitle: `An accordion menu, currently used in the Catalog and Cheatsheets Index`,
+    subtitle: `A group of accordion menus with optional additional links. On tablet and mobile, a button activates a flyout containing the accordion menu(s). Currently used in the Catalog and Cheatsheets Index.`,
     source: 'gamut-labs',
     status: 'updating',
   }}
@@ -68,6 +72,8 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 
 ## With Selected Item
 
+You can show what page we are on in the menu by passing in the `selectedItem` prop. This should be a slug that will match one of the slugs in `items` within `sections`.
+
 <Canvas>
   <Story name="With Selected Item">
     {(args) => <LayoutMenu {...args} selectedItem="python" />}
@@ -76,32 +82,24 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 
 ## With Additional Links
 
+Additional links outside of an accordion can be added as `children`. You can use the `SectionItemLink` component (pass an `onClick` prop and link text as `children`) to match the styling of the accordion items. You can also use the `SelectedSectionItem` component (pass text as `children`) to match the styling of a selected item.
+
 <Canvas>
   <Story name="With Additional Links">
     {(args) => (
       <LayoutMenu {...args}>
         <Box pb={32}>
-          <Anchor
-            variant="interface"
-            display="block"
-            onClick={() =>
-              (window.location.href = 'https://www.codecademy.com/catalog/all')
-            }
-          >
-            Full Catalog
-          </Anchor>
+          <SelectedSectionItem>Full Catalog</SelectedSectionItem>
         </Box>
         <Box pb={32}>
-          <Anchor
-            variant="interface"
-            display="block"
+          <SectionItemLink
             onClick={() =>
               (window.location.href =
                 'https://www.codecademy.com/explore/sorting-quiz')
             }
           >
             Where do I begin?
-          </Anchor>
+          </SectionItemLink>
         </Box>
       </LayoutMenu>
     )}
@@ -109,6 +107,8 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 </Canvas>
 
 ## Without Logo
+
+Disable showing the Codecademy logo at the top of the Flyout by not passing the `showLogoOnFlyout` prop, or passing it as `false`.
 
 <Canvas>
   <Story name="Without Logo">

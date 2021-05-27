@@ -2,8 +2,8 @@ import { AccordionArea, AccordionButton, Box, Text } from '@codecademy/gamut';
 import styled from '@emotion/styled';
 import React, { useState } from 'react';
 
-import { SectionItemLink } from '../SectionItemLink';
-import { SelectedSectionItem } from '../SelectedSectionItem';
+import { SectionItemLink } from './SectionItemLink';
+import { SelectedSectionItem } from './SelectedSectionItem';
 
 const StyledAccordionArea = styled(AccordionArea)`
   padding-bottom: ${({ theme }) => theme.spacing[32]};
@@ -66,7 +66,9 @@ export const AccordionMenu: React.FC<AccordionMenuProps> = ({
         return (
           <Box key={item.slug} py={8}>
             <SectionItemLink
-              onClick={() => onSectionItemClick(item, section.slug)}
+              onClick={() => {
+                onSectionItemClick(item, section.slug);
+              }}
             >
               {item.title}
             </SectionItemLink>
