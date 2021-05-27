@@ -65,7 +65,6 @@ export const Flyout: React.FC<FlyoutProps> = ({
                 position="fixed"
                 height="100vh"
                 top="0"
-                zIndex={15}
                 {...styleProps}
               >
                 <IconButton
