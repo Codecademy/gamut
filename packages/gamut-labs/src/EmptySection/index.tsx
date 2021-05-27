@@ -42,8 +42,8 @@ const EmptyContainer = styled(FlexBox)(
     base: {
       justifySelf: 'center',
       position: 'relative',
-      px: [16, 48, 64, 96],
-      py: [32, 48, 64, 96],
+      px: { _: 32, sm: 64, lg: 96 },
+      py: { _: 64, lg: 96 },
       width: 1,
     },
     variants: {
@@ -126,7 +126,7 @@ export const EmptySection: React.FC<EmptySectionProps> = ({
         position="relative"
         bg={innerBGColor}
         py={48}
-        px={{ _: 64, sm: 48, md: 64 }}
+        px={{ _: 16, sm: 48, md: 64 }}
         zIndex={1}
         flexDirection={{ _: 'column', sm: flexDirection }}
         justifyContent={{ _: 'space-around', md: 'space-between' }}
