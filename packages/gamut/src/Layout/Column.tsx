@@ -1,4 +1,4 @@
-import { styledConfig, system } from '@codecademy/gamut-styles';
+import { styledConfig, system, variant } from '@codecademy/gamut-styles';
 import { StyleProps, variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
 
@@ -41,7 +41,7 @@ const gridProps = variance.create({
   },
 });
 
-const columnVariants = system.variant({
+const columnVariants = variant({
   variants: {
     fitContent: {
       display: 'grid',

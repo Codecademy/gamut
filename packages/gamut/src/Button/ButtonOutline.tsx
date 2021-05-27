@@ -1,4 +1,10 @@
-import { ColorModes, system, theme, timing } from '@codecademy/gamut-styles';
+import {
+  ColorModes,
+  system,
+  theme,
+  timing,
+  variant,
+} from '@codecademy/gamut-styles';
 import {
   CSSObject,
   serializeTokens,
@@ -47,7 +53,7 @@ const setTokens = ({
 }: ThemeProps<ButtonProps>) =>
   serializeTokens(modeColorGroups[mode][variant], 'button', theme).variables;
 
-const outlinePadding = system.variant({
+const outlinePadding = variant({
   prop: 'padded',
   defaultVariant: 'small',
   variants: {
