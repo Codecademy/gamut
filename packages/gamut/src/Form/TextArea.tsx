@@ -50,6 +50,9 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextWrapperProps>(
       <>
         <StyledTextArea
           {...rest}
+          aria-label={
+            characterMax ? `maximum of ${characterMax} characters` : ''
+          }
           id={id || rest.htmlFor}
           className={className}
           defaultValue={defaultValue}
@@ -59,9 +62,11 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextWrapperProps>(
           onChange={(event) => changeHandler(event)}
         />
         {characterMax && (
-          <Text textColor={characterCount > characterMax ? 'red' : 'navy'}>
-            ({characterCount} / {characterMax})
-          </Text>
+          <FlexBox alignItems="flex-end" flexDirection="column">
+            <Text textColor={characterCount > characterMax ? 'red' : 'navy'}>
+              ({characterCount} / {characterMax})
+            </Text>
+          </FlexBox>
         )}
       </>
     );
