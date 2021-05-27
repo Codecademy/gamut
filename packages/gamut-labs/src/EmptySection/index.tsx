@@ -1,6 +1,6 @@
 import { ButtonProps, FlexBox, Pattern, Text } from '@codecademy/gamut';
 import { IllustrationProps } from '@codecademy/gamut-illustrations';
-import { Colors, pxRem, styledConfig, system } from '@codecademy/gamut-styles';
+import { Colors, pxRem, styledConfig, variant } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
 import React from 'react';
@@ -36,7 +36,7 @@ export type EmptySectionProps = {
 };
 
 const EmptyContainer = styled(FlexBox)(
-  system.variant({
+  variant({
     prop: 'stretchDirection',
     defaultVariant: 'left',
     base: {
@@ -58,7 +58,7 @@ const EmptyContainer = styled(FlexBox)(
 );
 
 const Dots = styled(Pattern)(
-  system.variant({
+  variant({
     prop: 'stretchDirection',
     defaultVariant: 'left',
     base: {
@@ -79,7 +79,7 @@ const Dots = styled(Pattern)(
   })
 );
 
-const illustrationPositionVariants = system.variant({
+const illustrationPositionVariants = variant({
   prop: 'illustrationPosition',
   defaultVariant: 'right',
   base: {

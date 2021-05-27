@@ -1,10 +1,10 @@
-import { system, theme } from '@codecademy/gamut-styles';
+import { theme, variant } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
 
 import { Box } from '../Box';
 
-const cardVariants = system.variant({
+const cardVariants = variant({
   base: {
     border: 1,
     borderRadius: '2px',
@@ -32,7 +32,7 @@ const cardVariants = system.variant({
   },
 });
 
-const shadowVariants = system.variant({
+const shadowVariants = variant({
   prop: 'shadow',
   base: {
     boxShadow: `0px 0px 0 ${theme.colors.navy}`,

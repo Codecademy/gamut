@@ -1,4 +1,4 @@
-import { system, theme } from '@codecademy/gamut-styles';
+import { theme, variant } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 
 /**
@@ -9,7 +9,7 @@ import styled from '@emotion/styled';
  */
 
 export const CardShell = styled.div(
-  system.variant({
+  variant({
     defaultVariant: 'shadowed',
     base: {
       background: 'white',
