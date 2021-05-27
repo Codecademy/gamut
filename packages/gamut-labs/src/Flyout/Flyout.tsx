@@ -1,4 +1,4 @@
-import { FocusTrap, IconButton } from '@codecademy/gamut';
+import { BodyPortal, FocusTrap, IconButton } from '@codecademy/gamut';
 import { MiniDeleteIcon } from '@codecademy/gamut-icons';
 import { AnimatePresence } from 'framer-motion';
 import React, { useCallback, useState } from 'react';
@@ -48,34 +48,36 @@ export const Flyout: React.FC<FlyoutProps> = ({
     <>
       <AnimatePresence>
         {isSidebarOpen ? (
-          <FocusTrap
-            onClickOutside={handleOutsideClick}
-            onEscapeKey={handleEscapeKey}
-          >
-            <DrawerBase
-              aria-expanded={isSidebarOpen}
-              initial={{ x: initialX }}
-              animate={{ x: 0 }}
-              exit={{ x: initialX }}
-              transition={{ duration: transitionDuration }}
-              data-testid={testId}
-              width={`${openWidth}rem`}
-              openFrom={openFrom}
-              position="fixed"
-              height="100vh"
-              top="0"
-              zIndex={15}
-              {...styleProps}
+          <BodyPortal>
+            <FocusTrap
+              onClickOutside={handleOutsideClick}
+              onEscapeKey={handleEscapeKey}
             >
-              <IconButton
-                icon={MiniDeleteIcon}
-                onClick={() => toggleDrawer()}
-                position="absolute"
-                right="0"
-              />
-              {children}
-            </DrawerBase>
-          </FocusTrap>
+              <DrawerBase
+                aria-expanded={isSidebarOpen}
+                initial={{ x: initialX }}
+                animate={{ x: 0 }}
+                exit={{ x: initialX }}
+                transition={{ duration: transitionDuration }}
+                data-testid={testId}
+                width={`${openWidth}rem`}
+                openFrom={openFrom}
+                position="fixed"
+                height="100vh"
+                top="0"
+                zIndex={15}
+                {...styleProps}
+              >
+                <IconButton
+                  icon={MiniDeleteIcon}
+                  onClick={() => toggleDrawer()}
+                  position="absolute"
+                  right="0"
+                />
+                {children}
+              </DrawerBase>
+            </FocusTrap>
+          </BodyPortal>
         ) : null}
       </AnimatePresence>
       <SidebarCloneButton
