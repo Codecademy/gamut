@@ -4,6 +4,8 @@ import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import React from 'react';
 
+import { Box } from '../Box';
+
 export type SkipToContentProps = {
   className?: string;
   contentId: string;
