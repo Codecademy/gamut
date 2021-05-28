@@ -2,7 +2,7 @@ import {
   ArrowChevronDownIcon,
   MiniChevronDownIcon,
 } from '@codecademy/gamut-icons';
-import { system } from '@codecademy/gamut-styles';
+import { variant } from '@codecademy/gamut-styles';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import React, {
@@ -40,7 +40,7 @@ export interface SelectProps extends SelectWrapperProps {
   variant?: variantStyleType;
 }
 
-const selectSizeVariants = system.variant({
+const selectSizeVariants = variant({
   defaultVariant: 'base',
   prop: 'sizeVariant',
   variants: {
