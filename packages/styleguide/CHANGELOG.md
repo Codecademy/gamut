@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [40.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@40.1.0...@codecademy/styleguide@40.2.0) (2021-05-28)
+
+
+### Features
+
+* **GridForm:** Allow ReactNode for GridForm Radio label ([30f8e1f](https://github.com/Codecademy/client-modules/commit/30f8e1f944c20307f3abb625080965b3c3cf30c1))
+
+
+
 ## [40.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@40.0.7...@codecademy/styleguide@40.1.0) (2021-05-27)
 
 
