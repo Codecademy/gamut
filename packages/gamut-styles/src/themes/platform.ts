@@ -11,7 +11,35 @@ import { coreTheme } from './core';
 export const platformTheme = createTheme(coreTheme)
   .addColors(platformPalette)
   .addColorModes('dark', {
-    light: {},
+    light: {
+      editor: {
+        attribute: 'green-700',
+        annotation: 'red-500',
+        atom: 'pink-800',
+        basic: 'navy-800',
+        comment: 'navy-300',
+        constant: 'orange-800',
+        decoration: 'red-500',
+        invalid: 'red-500',
+        key: 'teal-500',
+        keyword: 'blue-500',
+        number: 'red-500',
+        operator: 'red-500',
+        predefined: 'navy-800',
+        property: 'red-500',
+        regexp: 'green-700',
+        string: 'gold-800',
+        tag: 'red-500',
+        text: 'orange-800',
+        value: 'gold-800',
+        variable: 'green-700',
+        'ui-background': 'white',
+        'ui-text': 'navy-800',
+        'ui-indent-active': 'navy-900',
+        'ui-indent-inactive': 'navy-600',
+        'ui-line-number': 'navy-300',
+      },
+    },
     dark: {
       editor: {
         attribute: 'green-400',
