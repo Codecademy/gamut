@@ -82,9 +82,7 @@ export const formBaseFieldStylesObject = {
   },
 } as const;
 
-export const formBaseFieldStyles = system.css({
-  ...formBaseFieldStylesObject,
-});
+export const formBaseFieldStyles = system.css(formBaseFieldStylesObject);
 
 export const formFieldStyles = system.css({
   ...formBaseFieldStylesObject,
