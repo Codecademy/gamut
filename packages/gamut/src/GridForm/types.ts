@@ -46,7 +46,7 @@ export type GridFormCustomField = BaseFormField<any> & {
   label?: React.ReactNode;
   render: (props: GridFormCustomFieldProps) => React.ReactNode;
   validation?: ValidationRules;
-  type: 'custom' | 'customGroup';
+  type: 'custom' | 'custom-group';
 };
 
 export type BasicInputType =
