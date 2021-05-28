@@ -38,7 +38,7 @@ export const formBaseComponentStyles = {
   width: 1,
   outline: 'none',
   bg: 'background',
-  color: `${theme.colors.text}`,
+  textColor: 'text'
   minWidth: 'auto',
 } as const;
 
