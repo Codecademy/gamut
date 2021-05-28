@@ -4,6 +4,11 @@ import { UseFormMethods } from 'react-hook-form';
 import { FormError, FormGroup, FormGroupLabel } from '../../Form';
 import { HiddenText } from '../../HiddenText';
 import { Column } from '../../Layout';
+import {
+  GridFormCustomGroupField,
+  GridFormHiddenField,
+  GridFormSweetContainerField,
+} from '../types';
 import { GridFormField } from '../types';
 import { GridFormCheckboxInput } from './GridFormCheckboxInput';
 import { GridFormCustomInput } from './GridFormCustomInput';
@@ -121,7 +126,16 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
         );
     }
   };
-  if (['hidden', 'sweet-container', 'custom-group'].includes(field.type)) {
+
+  const unwrappedInput = (
+    field: GridFormField
+  ): field is
+    | GridFormCustomGroupField
+    | GridFormHiddenField
+    | GridFormSweetContainerField =>
+    ['hidden', 'sweet-container', 'custom-group'].includes(field.type);
+
+  if (unwrappedInput(field)) {
     return getInput();
   }
 
@@ -137,7 +151,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
   );
 
   return (
-    <Column size={field.size}>
+    <Column size={field?.size}>
       <FormGroup mb={0}>
         {field.hideLabel ? <HiddenText>{label}</HiddenText> : label}
         {getInput()}

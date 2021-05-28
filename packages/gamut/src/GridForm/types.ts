@@ -46,7 +46,14 @@ export type GridFormCustomField = BaseFormField<any> & {
   label?: React.ReactNode;
   render: (props: GridFormCustomFieldProps) => React.ReactNode;
   validation?: ValidationRules;
-  type: 'custom' | 'custom-group';
+  type: 'custom';
+};
+
+export type GridFormCustomGroupField = BaseFormField<any> & {
+  label?: React.ReactNode;
+  render: (props: GridFormCustomFieldProps) => React.ReactNode;
+  validation?: ValidationRules;
+  type: 'custom-group';
 };
 
 export type BasicInputType =
@@ -117,6 +124,7 @@ export type GridFormSweetContainerField = HiddenField & {
 export type GridFormField =
   | GridFormCheckboxField
   | GridFormCustomField
+  | GridFormCustomGroupField
   | GridFormRadioGroupField
   | GridFormTextField
   | GridFormSelectField
