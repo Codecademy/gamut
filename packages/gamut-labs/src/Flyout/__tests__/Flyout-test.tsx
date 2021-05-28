@@ -39,7 +39,10 @@ describe('Flyout', () => {
       key: 'Escape',
       code: 'Escape',
     });
+    // this test is failing! think we need to mock out toggleDrawer but i couldn't get it working
+    // not sure if its better to test like this
     expect(screen.queryByTestId('flyout-content')).toBe(null);
+    // or to check the length of the mock call toggleDrawer (this comment applies to all of the tests below this as well)
   });
 
   it('does not close flyout when escape key is clicked and escapeCloses is false', () => {
