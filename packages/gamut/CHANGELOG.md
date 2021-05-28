@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [33.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@33.1.5...@codecademy/gamut@33.2.0) (2021-05-27)
+
+
+### Features
+
+* Migrate final gamut-system docs + functions to variance [WEB-1413]  ([67c8651](https://github.com/Codecademy/client-modules/commit/67c8651dc4985dd656c8d488af4cf56ca21a813b))
+
+
+
+### [33.1.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@33.1.4...@codecademy/gamut@33.1.5) (2021-05-26)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [33.1.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@33.1.3...@codecademy/gamut@33.1.4) (2021-05-26)
+
+
+### Bug Fixes
+
+* **GridForm:** add optional Cancel button ([8022b54](https://github.com/Codecademy/client-modules/commit/8022b544f1fb4bbad7adf52aacb0f907430fb2a6))
+
+
+
 ### [33.1.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@33.1.2...@codecademy/gamut@33.1.3) (2021-05-25)
 
 **Note:** Version bump only for package @codecademy/gamut

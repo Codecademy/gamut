@@ -3,6 +3,39 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-kit@0.3.119...@codecademy/gamut-kit@0.4.0) (2021-05-27)
+
+
+### Features
+
+* Migrate final gamut-system docs + functions to variance [WEB-1413]  ([67c8651](https://github.com/Codecademy/client-modules/commit/67c8651dc4985dd656c8d488af4cf56ca21a813b))
+
+
+
+### [0.3.119](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-kit@0.3.118...@codecademy/gamut-kit@0.3.119) (2021-05-26)
+
+**Note:** Version bump only for package @codecademy/gamut-kit
+
+
+
+
+
+### [0.3.118](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-kit@0.3.117...@codecademy/gamut-kit@0.3.118) (2021-05-26)
+
+**Note:** Version bump only for package @codecademy/gamut-kit
+
+
+
+
+
+### [0.3.117](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-kit@0.3.116...@codecademy/gamut-kit@0.3.117) (2021-05-26)
+
+**Note:** Version bump only for package @codecademy/gamut-kit
+
+
+
+
+
 ### [0.3.116](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-kit@0.3.115...@codecademy/gamut-kit@0.3.116) (2021-05-25)
 
 **Note:** Version bump only for package @codecademy/gamut-kit
