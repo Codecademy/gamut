@@ -7,20 +7,9 @@ export type conditionalStyleProps = {
   isDisabled?: boolean | null;
 };
 
-type iconPaddingProps = {
-  icon?: boolean;
-};
-
-export type conditionalInputStyleProps = conditionalStyleProps &
-  iconPaddingProps;
-
-export const formBaseStyles = {
+export const formBaseComponentStyles = {
   fontWeight: 'base',
   fontSize: 16,
-} as const;
-
-export const formBaseComponentStyles = {
-  ...formBaseStyles,
   width: 1,
   outline: 'none',
   bg: 'background',
@@ -94,15 +83,6 @@ export const conditionalStyles = system.variant({
       },
     },
     activated: { borderColor: 'text' },
-  },
-});
-
-export const iconPadding = system.variant({
-  prop: 'icon',
-  variants: {
-    extraPadding: {
-      pr: 8,
-    },
   },
 });
 

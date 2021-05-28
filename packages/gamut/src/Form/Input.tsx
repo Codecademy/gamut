@@ -10,7 +10,7 @@ import React, {
 
 import { Box, FlexBox } from '../Box';
 import {
-  conditionalInputStyleProps,
+  conditionalStyleProps,
   conditionalStyles,
   conditionalStyleState,
   formBaseFieldStyles,
@@ -66,7 +66,7 @@ export const reactRecurlyFormFieldPaddingStyles = system.css({
   ...formFieldPaddingStyles,
 });
 
-export const iFrameWrapper = styled.div<conditionalInputStyleProps>`
+export const iFrameWrapper = styled.div<conditionalStyleProps>`
   ${formBaseFieldStyles}
   ${conditionalStyles}
   text-indent: 0;
