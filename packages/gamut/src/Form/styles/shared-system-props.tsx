@@ -1,5 +1,4 @@
 import { system, theme, transitionConcat } from '@codecademy/gamut-styles';
-import { StandardPropertiesHyphen } from 'csstype';
 
 export type conditionalStyleProps = {
   error?: boolean;
@@ -14,19 +13,6 @@ type iconPaddingProps = {
 
 export type conditionalInputStyleProps = conditionalStyleProps &
   iconPaddingProps;
-
-const transitionConcatenator = (
-  arrayOfProperties: Array<keyof StandardPropertiesHyphen>,
-  transition: string
-) => {
-  const cssString = `${arrayOfProperties.join(
-    ` ${transition},`
-  )} ${transition}`;
-
-  return {
-    transition: cssString,
-  };
-};
 
 export const formBaseStyles = {
   fontWeight: 'base',
@@ -65,10 +51,9 @@ export const formFieldPaddingStyles = {
 
 export const formBaseFieldStylesObject = {
   ...formBaseComponentStyles,
-  // ...transitionConcatenator(['border-color', 'box-shadow'], '0.2s ease-in-out'),
   transition: transitionConcat(
     ['background-color', 'box-shadow'],
-    '0.2s',
+    'slow',
     'ease-in-out'
   ),
   border: 1,

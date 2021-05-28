@@ -7,7 +7,11 @@ export const transitionConcat = (
   transition: keyof typeof timing,
   timingFn: Property.TransitionTimingFunction = 'linear'
 ) => {
-  const cssString = `${arrayOfProperties.join(` ${timing},`)} ${timingFn}`;
+  const transitionString = `${timing[transition]} ${timingFn}`;
+
+  const cssString = `${arrayOfProperties.join(
+    ` ${transitionString},`
+  )} ${transitionString}`;
 
   return cssString;
 };
