@@ -24,12 +24,12 @@ export const formFieldFocusStyles = {
 
 const formFieldDisabledStyles = {
   bg: 'backgroundEmphasized',
-  borderColor: 'textMuted',
+  borderColor: 'currentColor',
   textColor: 'textMuted',
   fontStyle: 'italic',
   cursor: 'not-allowed',
   '&:hover': {
-    borderColor: 'textMuted',
+    borderColor: 'currentColor',
   },
 } as const;
 
@@ -73,20 +73,18 @@ export const conditionalStyles = system.variant({
   variants: {
     error: {
       textColor: 'danger',
-      borderColor: 'danger',
+      borderColor: 'currentColor',
       '&:hover': {
-        borderColor: 'danger',
+        borderColor: 'currentColor',
       },
       '&:focus': {
-        borderColor: 'danger',
+        borderColor: 'currentColor',
         boxShadow: `inset 0 0 0 1px currentColor`,
       },
     },
-    activated: { borderColor: 'text' },
+    activated: { borderColor: 'currentColor' },
   },
 });
-
-export type variantStyleType = 'error' | 'activated';
 
 export const conditionalStyleState = (error: boolean, activated: boolean) => {
   return error ? 'error' : activated ? 'activated' : undefined;
