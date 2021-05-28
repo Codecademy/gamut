@@ -38,7 +38,7 @@ export const formBaseComponentStyles = {
   width: 1,
   outline: 'none',
   bg: 'background',
-  color: `${theme.colors.text}`,
+  textColor: 'text',
   minWidth: 'auto',
 } as const;
 
@@ -50,7 +50,7 @@ export const formFieldFocusStyles = {
 const formFieldDisabledStyles = {
   bg: 'backgroundEmphasized',
   borderColor: 'textMuted',
-  color: 'textMuted',
+  textColor: 'textMuted',
   fontStyle: 'italic',
   cursor: 'not-allowed',
   '&:hover': {
@@ -82,9 +82,7 @@ export const formBaseFieldStylesObject = {
   },
 } as const;
 
-export const formBaseFieldStyles = system.css({
-  ...formBaseFieldStylesObject,
-});
+export const formBaseFieldStyles = system.css(formBaseFieldStylesObject);
 
 export const formFieldStyles = system.css({
   ...formBaseFieldStylesObject,
@@ -102,7 +100,7 @@ export const conditionalStyles = system.variant({
       },
       '&:focus': {
         borderColor: 'danger',
-        boxShadow: `inset 0 0 0 1px ${theme.colors.danger}`,
+        boxShadow: `inset 0 0 0 1px currentColor`,
       },
     },
     activated: { borderColor: 'text' },
