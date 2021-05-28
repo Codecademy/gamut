@@ -6,10 +6,10 @@ import { HiddenText } from '../../HiddenText';
 import { Column } from '../../Layout';
 import {
   GridFormCustomGroupField,
+  GridFormField,
   GridFormHiddenField,
   GridFormSweetContainerField,
 } from '../types';
-import { GridFormField } from '../types';
 import { GridFormCheckboxInput } from './GridFormCheckboxInput';
 import { GridFormCustomInput } from './GridFormCustomInput';
 import { GridFormFileInput } from './GridFormFileInput';
