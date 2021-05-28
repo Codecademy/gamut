@@ -4,6 +4,8 @@ import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import React from 'react';
 
+import { Box } from '../Box';
+
 export type SkipToContentProps = {
   className?: string;
   contentId: string;
@@ -50,16 +52,17 @@ export const SkipToContent: React.FC<SkipToContentProps> = ({
   const onClick = () => document.querySelector<HTMLElement>(href)!.focus();
 
   return (
-    <SkipToContentLink
-      role="contentinfo"
-      href={href}
-      onClick={onClick}
-      type="button"
-      {...rest}
-    >
-      Skip to Content
-      <MiniArrowDownIcon ml={8} aria-hidden />
-    </SkipToContentLink>
+    <Box role="region" aria-labelledby="skip-to-content">
+      <SkipToContentLink
+        id="skip-to-content"
+        href={href}
+        onClick={onClick}
+        {...rest}
+      >
+        Skip to Content
+        <MiniArrowDownIcon ml={8} aria-hidden />
+      </SkipToContentLink>
+    </Box>
   );
 };
 
