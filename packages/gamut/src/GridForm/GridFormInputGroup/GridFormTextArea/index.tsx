@@ -32,6 +32,7 @@ export const GridFormTextArea: React.FC<GridFormTextAreaProps> = ({
       id={field.id}
       aria-invalid={error}
       aria-required={showRequired}
+      placeholder={field.placeholder}
     />
   );
 };
