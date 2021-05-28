@@ -50,7 +50,7 @@ export const formFieldFocusStyles = {
 const formFieldDisabledStyles = {
   bg: 'backgroundEmphasized',
   borderColor: 'textMuted',
-  color: 'textMuted',
+  textColor: 'textMuted',
   fontStyle: 'italic',
   cursor: 'not-allowed',
   '&:hover': {
