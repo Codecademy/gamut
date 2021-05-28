@@ -49,6 +49,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
         );
 
       case 'custom':
+      case 'customGroup':
         return (
           <GridFormCustomInput
             field={field}
@@ -120,7 +121,11 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
         );
     }
   };
-  if (field.type === 'hidden' || field.type === 'sweet-container')
+  if (
+    field.type === 'hidden' ||
+    field.type === 'sweet-container' ||
+    field.type === 'customGroup'
+  )
     return getInput();
 
   const label = (
