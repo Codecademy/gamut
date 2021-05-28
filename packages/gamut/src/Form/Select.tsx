@@ -3,6 +3,7 @@ import {
   MiniChevronDownIcon,
 } from '@codecademy/gamut-icons';
 import { variant } from '@codecademy/gamut-styles';
+import { StyleProps } from '@codecademy/variance';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import React, {
@@ -18,7 +19,6 @@ import {
   conditionalStyles,
   conditionalStyleState,
   formFieldStyles,
-  variantStyleType,
 } from './styles/shared-system-props';
 import { parseSelectOptions } from './utils';
 
@@ -36,9 +36,9 @@ export type SelectWrapperProps = SelectComponentProps &
     sizeVariant?: 'small' | 'base';
   };
 
-export interface SelectProps extends SelectWrapperProps {
-  variant?: variantStyleType;
-}
+export interface SelectProps
+  extends SelectWrapperProps,
+    StyleProps<typeof conditionalStyles> {}
 
 const selectSizeVariants = variant({
   defaultVariant: 'base',
