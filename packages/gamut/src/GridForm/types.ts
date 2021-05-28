@@ -37,7 +37,7 @@ export type GridFormCheckboxField = BaseFormField<boolean> & {
 export type GridFormCustomFieldProps = {
   className?: string;
   error?: string;
-  field: GridFormCustomField;
+  field: GridFormCustomField | GridFormCustomGroupField;
   register: UseFormMethods['register'];
   setValue: (value: any) => void;
 };
