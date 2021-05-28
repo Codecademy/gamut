@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [33.4.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@33.4.0...@codecademy/gamut@33.4.1) (2021-05-28)
+
+
+### Bug Fixes
+
+* SkipToContent z :(  ([1443c9c](https://github.com/Codecademy/client-modules/commit/1443c9c8d901e91fb7cfcf0a05598178aa4fbf4f))
+
+
+
 ## [33.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@33.3.0...@codecademy/gamut@33.4.0) (2021-05-28)
 
 
