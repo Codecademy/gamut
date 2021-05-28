@@ -121,11 +121,9 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
         );
     }
   };
-  if (
-    field.type === 'hidden' ||
-    field.type === 'sweet-container' ||
-    field.type === 'customGroup'
-  )
+  if (['hidden', 'sweet-container', 'custom-group'].includes(field.type)) {
+    return getInput()
+  }
     return getInput();
 
   const label = (
