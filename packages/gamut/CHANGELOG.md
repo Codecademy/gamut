@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [33.4.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@33.4.1...@codecademy/gamut@33.4.2) (2021-05-28)
+
+
+### Bug Fixes
+
+* Set region and label on STC ([133290c](https://github.com/Codecademy/client-modules/commit/133290c77c425e8b3b31f6584e5241b64a9b55de))
+
+
+
 ### [33.4.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@33.4.0...@codecademy/gamut@33.4.1) (2021-05-28)
 
 
