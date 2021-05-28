@@ -100,7 +100,7 @@ export const conditionalStyles = system.variant({
       },
       '&:focus': {
         borderColor: 'danger',
-        boxShadow: `inset 0 0 0 1px ${theme.colors.danger}`,
+        boxShadow: `inset 0 0 0 1px currentColor`,
       },
     },
     activated: { borderColor: 'text' },
