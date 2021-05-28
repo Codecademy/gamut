@@ -46,14 +46,15 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 ### Character count
 
 <Canvas>
-  <Story name="Character counts" args={{ characterMax: 60 }}>
+  <Story name="Character Count" args={{ characterMax: 60 }}>
     {(args) => <TextArea {...args} />}
   </Story>
   <Story
-    name="Character counts with default value"
+    name="Characters Exceed Max Error"
     args={{
       characterMax: 60,
-      defaultValue: 'Character count includes default value',
+      defaultValue:
+        'Error state when the maximum characters value has been exceeded',
     }}
   >
     {(args) => <TextArea {...args} />}

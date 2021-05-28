@@ -40,6 +40,10 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextWrapperProps>(
       defaultValue?.toString().length || 0
     );
 
+    const maxCharactersExceeded = characterMax
+      ? characterCount > characterMax
+      : false;
+
     const changeHandler = (event: ChangeEvent<HTMLTextAreaElement>) => {
       rest?.onChange?.(event);
       setActivated(true);
@@ -57,13 +61,13 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextWrapperProps>(
           className={className}
           defaultValue={defaultValue}
           ref={ref}
-          error={error}
+          error={error || maxCharactersExceeded}
           activated={activated}
           onChange={(event) => changeHandler(event)}
         />
         {characterMax && (
           <FlexBox alignItems="flex-end" flexDirection="column">
-            <Text textColor={characterCount > characterMax ? 'red' : 'navy'}>
+            <Text textColor={maxCharactersExceeded ? 'red' : 'navy'}>
               ({characterCount} / {characterMax})
             </Text>
           </FlexBox>
