@@ -1,4 +1,4 @@
-import { theme, variant } from '@codecademy/gamut-styles';
+import { variant } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 
 /**
@@ -14,7 +14,8 @@ export const CardShell = styled.div(
     base: {
       background: 'white',
       borderRadius: '2px',
-      boxShadow: `0 2px 8px 0  ${theme.colors['shadow-black-slight']}`,
+      boxShadow: ({ colors }) =>
+        `0 2px 8px 0  ${colors['shadow-black-slight']}`,
       position: 'relative',
       transition: 'box-shadow 250ms ease-in',
     },
@@ -25,7 +26,8 @@ export const CardShell = styled.div(
       },
       hoverable: {
         '&:hover': {
-          boxShadow: `-2px 8px 22px 0 ${theme.colors['shadow-black-slight']}`,
+          boxShadow: ({ colors }) =>
+            `-2px 8px 22px 0 ${colors['shadow-black-slight']}`,
         },
       },
     },

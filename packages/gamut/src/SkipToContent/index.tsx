@@ -1,49 +1,37 @@
 import { MiniArrowDownIcon } from '@codecademy/gamut-icons';
-import { timing } from '@codecademy/gamut-styles';
+import { system, timing } from '@codecademy/gamut-styles';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import React from 'react';
 
-import { Box } from '../Box';
+import { Anchor } from '../Anchor';
 
 export type SkipToContentProps = {
   className?: string;
   contentId: string;
 };
 
-const animateFunction = `cubic-bezier(0.075, 0.82, 0.165, 1)`;
-
-const SkipToContentLink = styled.a(
-  ({ theme }) => css`
-    color: ${theme.colors.navy};
-    background-color: ${theme.colors.white};
-    cursor: pointer;
-    display: flex;
-    font-weight: ${theme.fontWeight.title};
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    padding: ${theme.spacing[24]} ${theme.spacing[16]};
-    position: absolute;
-    text-decoration: none;
-    transform: translate(-50%, -100%);
-    top: 0;
-    left: 50%;
-    z-index: 15;
-    width: 12rem;
-    transition: opacity ${timing.fast} ${animateFunction},
-      transform ${timing.fast} ${animateFunction};
-
-    &:hover {
-      text-decoration: none;
-    }
-
-    &:focus {
-      outline-color: ${theme.colors.hyper};
-      opacity: 1;
-      transform: translate(-50%, 1rem);
-    }
-  `
+const SkipToContentLink = styled(Anchor)(
+  system.css({
+    fontWeight: 'title',
+    bg: 'background',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    opacity: 0,
+    position: 'absolute',
+    width: '12rem',
+    p: 16,
+    transform: 'translate(-50%, -100%)',
+    top: 0,
+    left: 0.5,
+    zIndex: ({ elements }) => elements.headerZ,
+    transition: `all ${timing.fast} cubic-bezier(0.075, 0.82, 0.165, 1)`,
+    '&:focus-visible': {
+      opacity: 1,
+      transform: `translate(-50%, 1rem)`,
+    },
+  })
 );
 
 export const SkipToContent: React.FC<SkipToContentProps> = ({
@@ -54,11 +42,14 @@ export const SkipToContent: React.FC<SkipToContentProps> = ({
   const onClick = () => document.querySelector<HTMLElement>(href)!.focus();
 
   return (
-    <SkipToContentLink href={href} onClick={onClick} type="button" {...rest}>
+    <SkipToContentLink
+      variant="interface"
+      href={href}
+      onClick={onClick}
+      {...rest}
+    >
       Skip to Content
-      <Box ml={8}>
-        <MiniArrowDownIcon aria-hidden />
-      </Box>
+      <MiniArrowDownIcon ml={8} aria-hidden />
     </SkipToContentLink>
   );
 };
@@ -72,6 +63,7 @@ export const SkipToContentTarget = styled.div(({ theme, children }) => {
     `;
   }
   return css`
+    color: ${theme.colors.text};
     margin-top: calc(${offset} * -1);
     position: absolute;
   `;
