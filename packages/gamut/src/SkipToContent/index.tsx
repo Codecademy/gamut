@@ -26,7 +26,7 @@ const SkipToContentLink = styled.a`
   transform: translate(-50%, -100%);
   top: 0;
   left: 50%;
-  z-index: calc(${themed('elements.elements.headerZ')} + 1);
+  z-index: calc(${themed('elements.headerZ')} + 1);
   width: 12rem;
   transition: opacity ${timing.fast} ${animateFunction},
     transform ${timing.fast} ${animateFunction};
