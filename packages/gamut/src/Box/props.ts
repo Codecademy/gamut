@@ -14,15 +14,46 @@ export const boxProps = variance.compose(
   system.grid
 );
 
-const flexStates = system.states({
+export const sharedStates = system.states({
+  fit: {
+    width: 1,
+    height: 1,
+  },
+});
+
+export const flexStates = system.states({
+  inline: {
+    display: 'inline-flex',
+  },
+  wrap: {
+    flexWrap: 'wrap',
+  },
   center: {
     justifyContent: 'center',
     alignItems: 'center',
   },
+  row: {
+    flexDirection: 'row',
+  },
+  column: {
+    flexDirection: 'column',
+  },
 });
 
-export interface BoxProps extends StyleProps<typeof boxProps> {}
+export const gridStates = system.states({
+  center: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  fitContent: {
+    gridTemplate: 'minmax(0, 1fr) / minmax(0, 1fr)',
+  },
+});
 
-export interface FlexBoxProps extends BoxProps {}
+export interface BoxProps
+  extends StyleProps<typeof boxProps>,
+    StyleProps<typeof sharedStates> {}
 
-export interface GridBoxProps extends BoxProps {}
+export interface FlexBoxProps extends BoxProps, StyleProps<typeof flexStates> {}
+
+export interface GridBoxProps extends BoxProps, StyleProps<typeof gridStates> {}

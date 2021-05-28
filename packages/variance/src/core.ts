@@ -217,7 +217,7 @@ export const variance = {
   >(config: Config): States<P> {
     const css: CSS<P> = this.createCss(config);
 
-    return ({ states }) => {
+    return (states) => {
       const orderedStates = Object.keys(states);
       type Keys = keyof typeof states;
       const stateFns = {} as Record<Keys, (props: ThemeProps) => CSSObject>;
