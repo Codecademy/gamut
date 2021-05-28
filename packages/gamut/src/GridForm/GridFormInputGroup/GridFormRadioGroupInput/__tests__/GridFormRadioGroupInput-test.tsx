@@ -1,3 +1,5 @@
+import React from 'react';
+
 import { renderGridFormRadioGroupInput } from '../../__fixtures__/renderers';
 
 describe('GridFormRadioGroupInput', () => {
@@ -17,6 +19,18 @@ describe('GridFormRadioGroupInput', () => {
       const radioButtons = renderGridFormRadioGroupInput({ name: 'name' });
 
       expect(radioButtons.find('input#name-0').length).toBe(1);
+    });
+  });
+
+  describe('Radio', () => {
+    it('accepts JSX for the label', () => {
+      const radioButtons = renderGridFormRadioGroupInput({
+        id: 'id',
+        options: [{ label: <img alt="" src="" />, value: '' }],
+        name: 'name',
+      });
+
+      expect(radioButtons.find('img').length).toBe(1);
     });
   });
 });
