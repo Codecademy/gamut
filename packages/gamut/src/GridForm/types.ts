@@ -98,6 +98,7 @@ export type GridFormFileField = BaseFormField<FileList> & {
 
 export type GridFormTextAreaField = BaseFormField<string> & {
   label: React.ReactNode;
+  placeholder?: string;
   validation?: ValidationRules;
   type: 'textarea';
 };
