@@ -1,3 +1,4 @@
+import { ReactNode } from 'react';
 import { UseFormMethods, ValidationRules } from 'react-hook-form';
 
 import { ColumnProps } from '../Layout';
@@ -71,7 +72,7 @@ export type GridFormTextField = BaseFormField<string> & {
 };
 
 export type GridFormRadioOption = {
-  label: string;
+  label: ReactNode;
   value: string;
 };
 
