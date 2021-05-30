@@ -29,10 +29,10 @@
     "lernaBuildTask": "yarn build"
   },
   "peerDependencies": {
-    "typescript": ">=4.2.3",
-    "lodash": ">=4.17.21"
+    "typescript": ">=4.2.3"
   },
   "dependencies": {
+    "lodash": ">=4.17.21",
     "csstype": "^3.0.7"
   },
   "devDependencies": {
