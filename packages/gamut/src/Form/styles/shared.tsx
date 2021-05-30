@@ -5,22 +5,22 @@ import { StandardPropertiesHyphen } from 'csstype';
 export const colorStates = {
   base: {
     color: theme.colors.navy,
-    placeholder: theme.colors[`gray-700`],
+    placeholder: theme.colors['gray-900'],
     backgroundColor: theme.colors.white,
-    borderColor: theme.colors['gray-400'],
+    borderColor: theme.colors['gray-600'],
   },
   hover: { borderColor: theme.colors.hyper },
   disabled: {
-    color: theme.colors[`gray-700`],
-    backgroundColor: theme.colors[`gray-100`],
-    borderColor: theme.colors[`gray-700`],
+    color: theme.colors['gray-900'],
+    backgroundColor: theme.colors['gray-100'],
+    borderColor: theme.colors['gray-900'],
   },
   error: { color: theme.colors.red, borderColor: theme.colors.red },
   valid: { color: theme.colors.green },
   activated: { borderColor: theme.colors.navy },
   dropdown: {
-    focused: { backgroundColor: theme.colors[`gray-100`] },
-    selected: { backgroundColor: theme.colors[`gray-300`] },
+    focused: { backgroundColor: theme.colors['gray-100'] },
+    selected: { backgroundColor: theme.colors['gray-300'] },
   },
 };
 
@@ -152,7 +152,6 @@ export const formBaseStyles = css`
   color: ${colorStates.base.color};
   font-weight: normal;
   font-size: ${theme.fontSize[16]};
-  cursor: pointer;
 `;
 
 export const formBaseComponentStyles = css`

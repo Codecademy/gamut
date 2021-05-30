@@ -1,6 +1,6 @@
 # `@codecademy/tracking`
 
-This package contains our user "telemetry" (tracking metcics such as `click` and `visit`) integrations that are shared across multiple web properties.
+This package contains our user "telemetry" (tracking metrics such as `click` and `visit`) integrations that are shared across multiple web properties.
 We've consolidated them here for a few reasons:
 
 - To standardize APIs around events like tracking user clicks
@@ -69,39 +69,20 @@ If `dataLayer` does not exist, it will be created.
 tracker.pushDataLayerEvent('user_sign_up');
 ```
 
-## `useTrackingIntegrations`
+## `initializeTrackingIntegrations`
 
 > See [GDPR Compliance on Notion](https://www.notion.so/codecademy/GDPR-Compliance-141ebcc7ffa542daa0da56e35f482b41) for full docs on external tracking.
 
-React hook that starts the initialization process for our third-party integrations.
-It runs exactly once with the settings first provided to it.
+Starts the initialization process for our third-party integrations.
 
 Integrations are loaded in an intentionally layered manner for CCPA/GDPR compliance:
 
-1. Wait 1000ms to allow any other post-hydration React logic to run first
-1. [Segment's copy-and-paste snippet](https://segment.com/docs/connections/sources/catalog/libraries/website/javascript/quickstart/#step-2-copy-the-segment-snippet) is run to load the Segment global library
-1. Destination integrations for Segment are fetched
-1. Those integrations are compared against the user's consent decisions into a list of allowed destinations
-1. We load only those allowed destinations using Segment's `analytics.load`
-
-Those steps require OneTrust to have already been initialized on the page.
-
-> Soon, we plan on prepending OneTrust initialization to those steps, so consuming apps won't have to set it up themselves.
-
-```ts
-import { useTrackingIntegrations } from '@codecademy/tracking';
-
-useTrackingIntegrations({
-  onError: logger.error,
-  scope: window,
-  user: { email: 'my@email.com', id: 'my-user-id' },
-  writeKey: 'my-segment-write-key',
-});
-```
-
-### `initializeTrackingIntegrations`
-
-You can directly call the logic delay-run inside `useTrackingIntegrations` if your consuming app is not initializing with React hooks:
+1. Wait 1000ms to allow any other post-hydration logic to run first
+2. Load in OneTrust's banner and wait for its `OptanonWrapper` callback
+3. [Segment's copy-and-paste snippet](https://segment.com/docs/connections/sources/catalog/libraries/website/javascript/quickstart/#step-2-copy-the-segment-snippet) is run to load the Segment global library
+4. Destination integrations for Segment are fetched
+5. Those integrations are compared against the user's consent decisions into a list of allowed destinations
+6. We load only those allowed destinations using Segment's `analytics.load`
 
 ```ts
 import { initializeTrackingIntegrations } from '@codecademy/tracking';
@@ -109,11 +90,10 @@ import { initializeTrackingIntegrations } from '@codecademy/tracking';
 setTimeout(() => {
   initializeTrackingIntegrations({
     onError: logger.error,
+    production: true,
     scope: window,
     user: { email: 'my@email.com', id: 'my-user-id' },
     writeKey: 'my-segment-write-key',
   });
 }, 1000);
 ```
-
-`initializeTrackingIntegrations` takes all the same settings as `useTrackingIntegrations`.
