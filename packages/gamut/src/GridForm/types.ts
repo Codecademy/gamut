@@ -24,6 +24,7 @@ export type BaseFormField<Value> = {
   name: string;
   onUpdate?: (value: Value) => void;
   size: ColumnProps['size'];
+  rowspan?: ColumnProps['rowspan'];
 };
 
 export type GridFormCheckboxField = BaseFormField<boolean> & {
@@ -103,7 +104,7 @@ export type GridFormTextAreaField = BaseFormField<string> & {
   type: 'textarea';
 };
 
-type HiddenField = Omit<BaseFormField<any>, 'size'>;
+type HiddenField = Omit<BaseFormField<any>, 'size' & 'rowspan'>;
 
 export type GridFormHiddenField = HiddenField & {
   type: 'hidden';

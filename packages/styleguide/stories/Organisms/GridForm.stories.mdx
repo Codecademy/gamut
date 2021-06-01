@@ -194,6 +194,61 @@ If an input is not meant to be usable, such as when a portion of a form is disab
   </Story>
 </Canvas>
 
+## rowspan Formatting
+
+rowSpan
+
+<Canvas>
+  <Story name="rowspanformattin">
+    {(args) => (
+      <GridForm
+        fields={[
+          {
+            label: 'Write a paragraph about penguins',
+            name: 'textarea-input',
+            size: 3,
+            rowspan: 3,
+            type: 'textarea',
+            validation: {
+              required: 'Please write something about penguins!',
+            },
+          },
+          ,
+          {
+            label: 'Simple text',
+            name: 'simple-text',
+            size: 3,
+            type: 'text',
+          },
+          {
+            defaultValue: 'yeet',
+            label: 'Text with default value',
+            name: 'text-with-default',
+            size: 4,
+            type: 'text',
+          },
+          {
+            label: 'Simple select (required)',
+            name: 'simple-select',
+            options: ['', 'One fish', 'Two fish', 'Red fish', 'Blue fish'],
+            size: 5,
+            type: 'select',
+            validation: {
+              required: 'Please select an option',
+            },
+          },
+        ]}
+        onSubmit={async (values) => {
+          action('Form Submitted')(values);
+        }}
+        submit={{
+          contents: 'Submit',
+        }}
+      />
+    )}
+  </Story>
+</Canvas>
+
 ## Submit Button Position
 
 We can position the submit button by passing the position prop with a
