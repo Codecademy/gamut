@@ -62,9 +62,7 @@ export const reactRecurlyFormFieldFocusStyles = system.css(
   formFieldFocusStyles
 );
 
-export const reactRecurlyFormFieldPaddingStyles = system.css({
-  ...formFieldPaddingStyles,
-});
+export const reactRecurlyFormFieldPaddingStyles = system.css(formFieldPaddingStyles);
 
 export const iFrameWrapper = styled.div<conditionalStyleProps>`
   ${formBaseFieldStyles}
