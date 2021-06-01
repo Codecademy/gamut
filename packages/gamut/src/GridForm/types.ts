@@ -104,7 +104,7 @@ export type GridFormTextAreaField = BaseFormField<string> & {
   type: 'textarea';
 };
 
-type HiddenField = Omit<BaseFormField<any>, 'size' & 'rowspan'>;
+type HiddenField = Omit<BaseFormField<any>, 'size' | 'rowspan'>;
 
 export type GridFormHiddenField = HiddenField & {
   type: 'hidden';
