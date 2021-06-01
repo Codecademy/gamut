@@ -1,3 +1,4 @@
+import { ReactNode } from 'react';
 import { UseFormMethods, ValidationRules } from 'react-hook-form';
 
 import { ColumnProps } from '../Layout';
@@ -71,7 +72,7 @@ export type GridFormTextField = BaseFormField<string> & {
 };
 
 export type GridFormRadioOption = {
-  label: string;
+  label: ReactNode;
   value: string;
 };
 
@@ -97,6 +98,7 @@ export type GridFormFileField = BaseFormField<FileList> & {
 
 export type GridFormTextAreaField = BaseFormField<string> & {
   label: React.ReactNode;
+  placeholder?: string;
   validation?: ValidationRules;
   type: 'textarea';
 };
@@ -108,7 +110,7 @@ export type GridFormHiddenField = HiddenField & {
 };
 
 export type GridFormSweetContainerField = HiddenField & {
-  label: React.ReactNode;
+  label: string;
   type: 'sweet-container';
 };
 

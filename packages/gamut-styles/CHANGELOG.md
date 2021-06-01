@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@10.1.2...@codecademy/gamut-styles@10.2.0) (2021-05-27)
+
+
+### Features
+
+* Migrate final gamut-system docs + functions to variance [WEB-1413]  ([67c8651](https://github.com/Codecademy/client-modules/commit/67c8651dc4985dd656c8d488af4cf56ca21a813b))
+
+
+
+### [10.1.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@10.1.1...@codecademy/gamut-styles@10.1.2) (2021-05-25)
+
+
+### Bug Fixes
+
+* Use native focus-visible in addition to polyfill ([aefae8f](https://github.com/Codecademy/client-modules/commit/aefae8f6923438c459cb774293d637403df708a2))
+
+
+
 ### [10.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@10.1.0...@codecademy/gamut-styles@10.1.1) (2021-05-24)
 
 

@@ -3,6 +3,93 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [33.4.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@33.4.1...@codecademy/gamut@33.4.2) (2021-05-28)
+
+
+### Bug Fixes
+
+* Set region and label on STC ([133290c](https://github.com/Codecademy/client-modules/commit/133290c77c425e8b3b31f6584e5241b64a9b55de))
+
+
+
+### [33.4.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@33.4.0...@codecademy/gamut@33.4.1) (2021-05-28)
+
+
+### Bug Fixes
+
+* SkipToContent z :(  ([1443c9c](https://github.com/Codecademy/client-modules/commit/1443c9c8d901e91fb7cfcf0a05598178aa4fbf4f))
+
+
+
+## [33.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@33.3.0...@codecademy/gamut@33.4.0) (2021-05-28)
+
+
+### Features
+
+* **GridForm:** add placeholder field for TextArea in GridForm ([ad87eb3](https://github.com/Codecademy/client-modules/commit/ad87eb3453ae28a0bcd3f5857714db51023f3118))
+
+
+
+## [33.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@33.2.0...@codecademy/gamut@33.3.0) (2021-05-28)
+
+
+### Features
+
+* **GridForm:** Allow ReactNode for GridForm Radio label ([30f8e1f](https://github.com/Codecademy/client-modules/commit/30f8e1f944c20307f3abb625080965b3c3cf30c1))
+
+
+
+## [33.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@33.1.5...@codecademy/gamut@33.2.0) (2021-05-27)
+
+
+### Features
+
+* Migrate final gamut-system docs + functions to variance [WEB-1413]  ([67c8651](https://github.com/Codecademy/client-modules/commit/67c8651dc4985dd656c8d488af4cf56ca21a813b))
+
+
+
+### [33.1.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@33.1.4...@codecademy/gamut@33.1.5) (2021-05-26)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [33.1.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@33.1.3...@codecademy/gamut@33.1.4) (2021-05-26)
+
+
+### Bug Fixes
+
+* **GridForm:** add optional Cancel button ([8022b54](https://github.com/Codecademy/client-modules/commit/8022b544f1fb4bbad7adf52aacb0f907430fb2a6))
+
+
+
+### [33.1.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@33.1.2...@codecademy/gamut@33.1.3) (2021-05-25)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [33.1.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@33.1.1...@codecademy/gamut@33.1.2) (2021-05-25)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [33.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@33.1.0...@codecademy/gamut@33.1.1) (2021-05-25)
+
+
+### Bug Fixes
+
+* GridForm Sweet Container - add missing label ([4a8837b](https://github.com/Codecademy/client-modules/commit/4a8837bd8244549b7ace933755b85183fadd2409))
+
+
+
 ## [33.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@33.0.0...@codecademy/gamut@33.1.0) (2021-05-25)
 
 
