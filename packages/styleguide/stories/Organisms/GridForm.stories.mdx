@@ -194,26 +194,39 @@ If an input is not meant to be usable, such as when a portion of a form is disab
   </Story>
 </Canvas>
 
-## rowspan Formatting
+## GridForm-atting
 
-rowSpan
+We can use the `size` and `rowspan` props (borrowed from [LayoutGrid](https://react-hook-form.com)) to customize the layout of your GridForm.
 
 <Canvas>
-  <Story name="rowspanformattin">
+  <Story name="rowspanformatting">
     {(args) => (
       <GridForm
         fields={[
           {
-            label: 'Write a paragraph about penguins',
-            name: 'textarea-input',
+            label: 'Fave Gamut Component',
+            name: 'rowspan-radiogroup',
+            options: [
+              {
+                label: 'FlexBox',
+                value: 'flex',
+              },
+              {
+                label: 'GridForm',
+                value: 'grid',
+              },
+              {
+                label: 'Text',
+                value: 'text',
+              },
+            ],
             size: 3,
             rowspan: 3,
-            type: 'textarea',
+            type: 'radio-group',
             validation: {
-              required: 'Please write something about penguins!',
+              required: 'You gotta pick one!',
             },
           },
-          ,
           {
             label: 'Simple text',
             name: 'simple-text',
