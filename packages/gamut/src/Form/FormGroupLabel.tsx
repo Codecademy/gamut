@@ -33,12 +33,12 @@ type disabledLabelStyleProps = {
 };
 
 const labelSizeVariants = variant({
-  default: 'small',
+  defaultVariant: 'small',
   prop: 'size',
   variants: {
     small: {
       lineHeight: 'title',
-      marginBottom: 4,
+      mb: 4,
     },
     large: {
       fontSize: 22,
