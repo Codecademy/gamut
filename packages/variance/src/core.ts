@@ -158,6 +158,7 @@ export const variance = {
 
       /** Static CSS Properties get extracted if they match neither syntax */
       const staticCss = getStaticCss(cssProps, [
+        'theme', // Just in case this gets passed somehow
         ...selectors,
         ...filteredProps,
       ]);
