@@ -22,7 +22,7 @@ const flyoutStyles = variance.compose(
 );
 
 const flyoutOpenVariants = variant({
-  default: 'left',
+  defaultVariant: 'left',
   prop: 'openFrom',
   variants: {
     left: {
