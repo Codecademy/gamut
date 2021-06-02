@@ -18,16 +18,14 @@ const anchorVariants = variant({
     position: 'relative',
     textColor: 'primary',
     whiteSpace: 'nowrap',
-    '&:after': {
+    '&:before': {
       position: 'absolute',
-      top: 0,
-      left: -4,
-      width: `calc(100% + 0.5rem)`,
-      height: '100%',
+      inset: -4,
       borderRadius: '4px',
       border: 2,
       borderColor: 'primary',
       opacity: 0,
+      zIndex: 0,
     },
     '&:hover, &:focus': {
       textDecoration: 'none',
@@ -41,7 +39,7 @@ const anchorVariants = variant({
     '&:focus, &:focus-visible': {
       outline: 'none',
     },
-    '&:focus-visible:after': {
+    '&:focus-visible:before': {
       opacity: 1,
     },
   },
@@ -49,7 +47,7 @@ const anchorVariants = variant({
     standard: {
       display: 'inline-block',
       textColor: 'primary',
-      '&:after': {
+      '&:before': {
         content: "''",
       },
       '&:hover, &:active': {
@@ -71,7 +69,7 @@ const anchorVariants = variant({
       display: 'inline-block',
       textColor: 'text',
       whiteSpace: 'initial',
-      '&:after': {
+      '&:before': {
         content: "''",
       },
     },
