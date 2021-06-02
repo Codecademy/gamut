@@ -24,15 +24,15 @@ export type RadioProps = InputHTMLAttributes<HTMLInputElement> & {
 };
 
 const RadioWrapper = styled.div`
-  ${radioLabel}
+  ${radioWrapper}
 `;
 
-const RadioBase = styled.label<RadioProps>`
+const RadioLabel = styled.label<RadioProps>`
   ${radioLabel}
 `;
 
 const RadioInput = styled.input<RadioProps>`
-  ${radioLabel}
+  ${radioInput}
 `;
 export const Radio = forwardRef<HTMLInputElement, RadioProps>(
   (
@@ -55,8 +55,8 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
 
     return (
       <RadioWrapper className={className}>
-        <input
-          className={styles.radioInput}
+        <RadioInput
+          // className={styles.radioInput}
           id={inputId}
           name={name}
           required={required}
@@ -68,9 +68,7 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
           value={value}
           {...rest}
         />
-        <label htmlFor={htmlFor} className={styles.radioLabel}>
-          {label}
-        </label>
+        <RadioLabel htmlFor={htmlFor}>{label}</RadioLabel>
       </RadioWrapper>
     );
   }

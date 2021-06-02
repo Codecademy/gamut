@@ -14,14 +14,36 @@ export const radioLabel = system.css({
   cursor: 'pointer',
   position: 'relative',
   borderColor: 'primary',
+  '&::before': {
+    content: '""',
+    display: 'block',
+    borderColor: 'primary',
+    width: '2rem',
+    height: '2rem',
+    borderRadius: '100%',
+    boxShadow: `0 0 0 1px ${theme.colors.primary}`,
+    transition: '0.3s',
+  },
+  '&::after': {
+    content: '""',
+    display: 'block',
+    position: 'absolute',
+    transition: 'transform 0.3s ease-in-out',
+    transform: 'scale(0)',
+    width: '2rem',
+    height: '2rem',
+    borderRadius: '100%',
+    borderColor: 'background',
+    bg: 'primary',
+  },
 });
 
 export const radioInput = system.css({
   height: 18,
   width: 18,
   borderRadius: '100%',
-  '*:before': {
-    borderColor: 'primary',
+  '&:checked': {
+    bg: 'primary',
   },
 });
 
