@@ -25,7 +25,7 @@ export const Subtitle: React.FC<SubtitleProps> = ({
       {scopeCount && (
         <Text ml={4} variant="p-small">
           <b>{scopeCount}</b>{' '}
-          <Text textColor="gray-700">
+          <Text textColor="gray-900">
             {capitalize(pluralizeWithS(scope, scopeCount))}
           </Text>
         </Text>

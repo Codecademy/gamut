@@ -3,6 +3,167 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [33.4.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@33.4.1...@codecademy/gamut@33.4.2) (2021-05-28)
+
+
+### Bug Fixes
+
+* Set region and label on STC ([133290c](https://github.com/Codecademy/client-modules/commit/133290c77c425e8b3b31f6584e5241b64a9b55de))
+
+
+
+### [33.4.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@33.4.0...@codecademy/gamut@33.4.1) (2021-05-28)
+
+
+### Bug Fixes
+
+* SkipToContent z :(  ([1443c9c](https://github.com/Codecademy/client-modules/commit/1443c9c8d901e91fb7cfcf0a05598178aa4fbf4f))
+
+
+
+## [33.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@33.3.0...@codecademy/gamut@33.4.0) (2021-05-28)
+
+
+### Features
+
+* **GridForm:** add placeholder field for TextArea in GridForm ([ad87eb3](https://github.com/Codecademy/client-modules/commit/ad87eb3453ae28a0bcd3f5857714db51023f3118))
+
+
+
+## [33.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@33.2.0...@codecademy/gamut@33.3.0) (2021-05-28)
+
+
+### Features
+
+* **GridForm:** Allow ReactNode for GridForm Radio label ([30f8e1f](https://github.com/Codecademy/client-modules/commit/30f8e1f944c20307f3abb625080965b3c3cf30c1))
+
+
+
+## [33.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@33.1.5...@codecademy/gamut@33.2.0) (2021-05-27)
+
+
+### Features
+
+* Migrate final gamut-system docs + functions to variance [WEB-1413]  ([67c8651](https://github.com/Codecademy/client-modules/commit/67c8651dc4985dd656c8d488af4cf56ca21a813b))
+
+
+
+### [33.1.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@33.1.4...@codecademy/gamut@33.1.5) (2021-05-26)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [33.1.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@33.1.3...@codecademy/gamut@33.1.4) (2021-05-26)
+
+
+### Bug Fixes
+
+* **GridForm:** add optional Cancel button ([8022b54](https://github.com/Codecademy/client-modules/commit/8022b544f1fb4bbad7adf52aacb0f907430fb2a6))
+
+
+
+### [33.1.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@33.1.2...@codecademy/gamut@33.1.3) (2021-05-25)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [33.1.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@33.1.1...@codecademy/gamut@33.1.2) (2021-05-25)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [33.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@33.1.0...@codecademy/gamut@33.1.1) (2021-05-25)
+
+
+### Bug Fixes
+
+* GridForm Sweet Container - add missing label ([4a8837b](https://github.com/Codecademy/client-modules/commit/4a8837bd8244549b7ace933755b85183fadd2409))
+
+
+
+## [33.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@33.0.0...@codecademy/gamut@33.1.0) (2021-05-25)
+
+
+### Features
+
+* Make Dialog body a <div> ([4333529](https://github.com/Codecademy/client-modules/commit/4333529fd7d92fff46e06e4ef372b889cc935f01))
+
+
+
+## [33.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@32.20.1...@codecademy/gamut@33.0.0) (2021-05-24)
+
+
+### ⚠ BREAKING CHANGES
+
+* **Modal:** Deprecating Modal component
+
+### Code Refactoring
+
+* **Modal:** Deprecating Modal component ([6f23ef6](https://github.com/Codecademy/client-modules/commit/6f23ef687de25f650e0893e375a2e3ff04d6c96b))
+
+
+
+### [32.20.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@32.20.0...@codecademy/gamut@32.20.1) (2021-05-24)
+
+
+### Bug Fixes
+
+* allow override of tooltip alignment ([3930e15](https://github.com/Codecademy/client-modules/commit/3930e158c7f430acabc5ac5d66ab19d2b1fe9b76))
+
+
+
+## [32.20.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@32.19.2...@codecademy/gamut@32.20.0) (2021-05-19)
+
+
+### Features
+
+* added data-testid for GlobalPage's PageWrapper ([024eba0](https://github.com/Codecademy/client-modules/commit/024eba0560804d575ea04a8a150b4f80cdd6fefc))
+
+
+
+### [32.19.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@32.19.1...@codecademy/gamut@32.19.2) (2021-05-19)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [32.19.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@32.19.0...@codecademy/gamut@32.19.1) (2021-05-19)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [32.19.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@32.18.8...@codecademy/gamut@32.19.0) (2021-05-18)
+
+
+### Features
+
+* **theme:** createTheme self containment ([59ddff7](https://github.com/Codecademy/client-modules/commit/59ddff7224cd8e0972212dd6ba1696f40ccac835)), closes [#666666](https://github.com/Codecademy/client-modules/issues/666666) [#666666](https://github.com/Codecademy/client-modules/issues/666666)
+
+
+
+### [32.18.8](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@32.18.7...@codecademy/gamut@32.18.8) (2021-05-17)
+
+
+### Bug Fixes
+
+* **Input:** fixed hidden field empty spaces ([8c06673](https://github.com/Codecademy/client-modules/commit/8c06673f5fa8bc1f9fb50eb4309c988408a2c9e3))
+
+
+
 ### [32.18.7](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@32.18.6...@codecademy/gamut@32.18.7) (2021-05-13)
 
 **Note:** Version bump only for package @codecademy/gamut

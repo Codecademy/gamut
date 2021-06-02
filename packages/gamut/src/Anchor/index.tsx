@@ -1,4 +1,4 @@
-import { styledConfig, system } from '@codecademy/gamut-styles';
+import { styledConfig, system, variant } from '@codecademy/gamut-styles';
 import { StyleProps, variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
 
@@ -8,7 +8,7 @@ export interface AnchorProps
   extends StyleProps<typeof anchorProps>,
     StyleProps<typeof anchorVariants> {}
 
-const anchorVariants = system.variant({
+const anchorVariants = variant({
   base: {
     bg: 'transparent',
     boxShadow: 'none',

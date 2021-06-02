@@ -3,6 +3,208 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [40.3.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@40.3.1...@codecademy/styleguide@40.3.2) (2021-05-28)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [40.3.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@40.3.0...@codecademy/styleguide@40.3.1) (2021-05-28)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [40.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@40.2.0...@codecademy/styleguide@40.3.0) (2021-05-28)
+
+
+### Features
+
+* **GridForm:** add placeholder field for TextArea in GridForm ([ad87eb3](https://github.com/Codecademy/client-modules/commit/ad87eb3453ae28a0bcd3f5857714db51023f3118))
+
+
+
+## [40.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@40.1.0...@codecademy/styleguide@40.2.0) (2021-05-28)
+
+
+### Features
+
+* **GridForm:** Allow ReactNode for GridForm Radio label ([30f8e1f](https://github.com/Codecademy/client-modules/commit/30f8e1f944c20307f3abb625080965b3c3cf30c1))
+
+
+
+## [40.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@40.0.7...@codecademy/styleguide@40.1.0) (2021-05-27)
+
+
+### Features
+
+* Migrate final gamut-system docs + functions to variance [WEB-1413]  ([67c8651](https://github.com/Codecademy/client-modules/commit/67c8651dc4985dd656c8d488af4cf56ca21a813b))
+
+
+
+### [40.0.7](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@40.0.6...@codecademy/styleguide@40.0.7) (2021-05-26)
+
+
+### Bug Fixes
+
+* Fix Storybook crashes caused by circular object references on uncalled Icon components ([6f47eab](https://github.com/Codecademy/client-modules/commit/6f47eab224c9d17223c9943223731a5c524ad449)), closes [/github.com/storybookjs/storybook/blob/next/addons/docs/src/frameworks/react/jsxDecorator.tsx#L117](https://github.com/Codecademy//github.com/storybookjs/storybook/blob/next/addons/docs/src/frameworks/react/jsxDecorator.tsx/issues/L117) [/github.com/algolia/react-element-to-jsx-string/blob/master/src/formatter/sortObject.js#L3](https://github.com/Codecademy//github.com/algolia/react-element-to-jsx-string/blob/master/src/formatter/sortObject.js/issues/L3)
+
+
+
+### [40.0.6](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@40.0.5...@codecademy/styleguide@40.0.6) (2021-05-26)
+
+
+### Bug Fixes
+
+* **GridForm:** add optional Cancel button ([8022b54](https://github.com/Codecademy/client-modules/commit/8022b544f1fb4bbad7adf52aacb0f907430fb2a6))
+
+
+
+### [40.0.5](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@40.0.4...@codecademy/styleguide@40.0.5) (2021-05-26)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [40.0.4](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@40.0.3...@codecademy/styleguide@40.0.4) (2021-05-25)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [40.0.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@40.0.2...@codecademy/styleguide@40.0.3) (2021-05-25)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [40.0.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@40.0.1...@codecademy/styleguide@40.0.2) (2021-05-25)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [40.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@40.0.0...@codecademy/styleguide@40.0.1) (2021-05-25)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [40.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@39.0.4...@codecademy/styleguide@40.0.0) (2021-05-24)
+
+
+### ⚠ BREAKING CHANGES
+
+* **Modal:** Deprecating Modal component
+
+### Code Refactoring
+
+* **Modal:** Deprecating Modal component ([6f23ef6](https://github.com/Codecademy/client-modules/commit/6f23ef687de25f650e0893e375a2e3ff04d6c96b))
+
+
+
+### [39.0.4](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@39.0.3...@codecademy/styleguide@39.0.4) (2021-05-24)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [39.0.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@39.0.2...@codecademy/styleguide@39.0.3) (2021-05-19)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [39.0.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@39.0.1...@codecademy/styleguide@39.0.2) (2021-05-19)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [39.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@39.0.0...@codecademy/styleguide@39.0.1) (2021-05-19)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [39.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@38.3.1...@codecademy/styleguide@39.0.0) (2021-05-19)
+
+
+### ⚠ BREAKING CHANGES
+
+* Refactor Testimonial and Avatar to Emotion
+
+### Features
+
+* Refactor Testimonial and Avatar to Emotion ([174a0d8](https://github.com/Codecademy/client-modules/commit/174a0d86cf7f625e798ea24a9f8825f4888df321))
+
+
+
+### [38.3.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@38.3.0...@codecademy/styleguide@38.3.1) (2021-05-19)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [38.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@38.2.0...@codecademy/styleguide@38.3.0) (2021-05-19)
+
+
+### Features
+
+* **Popover:** use theme.colors.secondary for outline color ([63e0779](https://github.com/Codecademy/client-modules/commit/63e07790c4b0c2966b569a7af9ed3aba33aeb06b))
+
+
+
+## [38.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@38.1.1...@codecademy/styleguide@38.2.0) (2021-05-18)
+
+
+### Features
+
+* **theme:** createTheme self containment ([59ddff7](https://github.com/Codecademy/client-modules/commit/59ddff7224cd8e0972212dd6ba1696f40ccac835)), closes [#666666](https://github.com/Codecademy/client-modules/issues/666666) [#666666](https://github.com/Codecademy/client-modules/issues/666666)
+
+
+
+### [38.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@38.1.0...@codecademy/styleguide@38.1.1) (2021-05-17)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [38.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@38.0.0...@codecademy/styleguide@38.1.0) (2021-05-14)
+
+
+### Features
+
+* added EmptySection ([2a0907a](https://github.com/Codecademy/client-modules/commit/2a0907afa099fb93950ca19a5ca4c855c74e055b))
+
+
+
 ## [38.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@37.5.8...@codecademy/styleguide@38.0.0) (2021-05-14)
 
 

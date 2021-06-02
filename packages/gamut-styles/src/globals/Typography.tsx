@@ -2,7 +2,7 @@ import { css, Global } from '@emotion/react';
 import React from 'react';
 
 import { webFonts } from '../remoteAssets/fonts';
-import { theme } from '../theme';
+import { coreTheme as theme } from '../themes';
 
 const { fontSize, spacing, fontWeight, lineHeight } = theme;
 
