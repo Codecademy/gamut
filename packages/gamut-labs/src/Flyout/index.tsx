@@ -1,17 +1,7 @@
 import { BodyPortal, FocusTrap, IconButton } from '@codecademy/gamut';
 import { MiniDeleteIcon } from '@codecademy/gamut-icons';
-import {
-  background,
-  border,
-  color,
-  flex,
-  grid,
-  layout,
-  positioning,
-  system,
-  variant,
-} from '@codecademy/gamut-styles';
-import { compose, HandlerProps } from '@codecademy/gamut-system';
+import { system, variant } from '@codecademy/gamut-styles';
+import { HandlerProps } from '@codecademy/gamut-system';
 import { StyleProps, variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
 import { AnimatePresence, motion } from 'framer-motion';
