@@ -1,7 +1,7 @@
 import { serializeTokens, StyleProps, variance } from '@codecademy/variance';
 import { CSSObject, Theme, ThemeProvider, useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
-import { isArray, isObject, isString, mapValues } from 'lodash';
+import { mapValues } from 'lodash';
 import React, { ComponentProps, forwardRef, useMemo } from 'react';
 
 import {
