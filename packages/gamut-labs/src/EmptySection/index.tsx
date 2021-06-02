@@ -49,9 +49,11 @@ const EmptyContainer = styled(FlexBox)(
     variants: {
       left: {
         pl: { sm: 0 },
+        pr: { _: 32, sm: 64, lg: 96 },
       },
       right: {
         pr: { sm: 0 },
+        pl: { _: 32, sm: 64, lg: 96 },
       },
     },
   })
