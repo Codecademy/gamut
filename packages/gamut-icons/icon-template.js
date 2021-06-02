@@ -24,10 +24,9 @@ function iconTemplate(api, opts, { jsx /* imports, props, exports */ }) {
     },
       svgRef
     ) => {
-      const styleProps = rest as Omit<GamutIconProps, keyof IconStyleProps>;
-      const props = getForwardableProps(styleProps);
+      const props = getForwardableProps(rest) as Omit<GamutIconProps, keyof IconStyleProps>;
       return <ClassNames>{({ css, cx, theme }) => {
-        const classNames = cx(cn, css(iconStyles({ ...props, width, height, theme })));
+        const classNames = cx(cn, css(iconStyles({ ...rest, width, height, theme })));
         return ${jsx}
       }}</ClassNames>;
     });
