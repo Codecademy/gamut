@@ -7,7 +7,7 @@ import { Flyout, FlyoutProps } from '..';
 const FlyoutContainer: React.FC<Partial<FlyoutProps>> = (props) => {
   return (
     <div data-testid="flyout-outside">
-      <Flyout {...props} button={<button>Test</button>}>
+      <Flyout {...props} button={<button type="button">Test</button>}>
         <div data-testid="flyout-content">Howdy!</div>
       </Flyout>
     </div>
