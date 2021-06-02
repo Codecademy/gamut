@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [18.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@18.3.5...@codecademy/gamut-labs@18.4.0) (2021-06-02)
+
+
+### Features
+
+* Close DropdownButton list after an option is selected ([e933b17](https://github.com/Codecademy/client-modules/commit/e933b179531e136791ecb2f006dd0cb27a885c98))
+
+
+
 ### [18.3.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@18.3.4...@codecademy/gamut-labs@18.3.5) (2021-06-02)
 
 **Note:** Version bump only for package @codecademy/gamut-labs
