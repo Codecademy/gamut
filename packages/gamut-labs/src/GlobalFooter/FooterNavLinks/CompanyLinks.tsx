@@ -91,7 +91,7 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
             onClick={(event) => onClick({ event, target: 'jobs' })}
             variant="interface"
           >
-            We&apos;re Hiring
+            Careers
           </Anchor>
         </FooterLinkItem>
         <FooterLinkItem>
@@ -214,7 +214,7 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
       <FooterLinkItems>
         <FooterLinkItem>
           <Anchor
-            href="https://news.codecademy.com"
+            href="https://codecademy.com/resources/blog/"
             onClick={(event) => onClick({ event, target: 'blog' })}
             variant="interface"
           >
