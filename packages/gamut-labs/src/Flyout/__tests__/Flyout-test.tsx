@@ -1,5 +1,6 @@
 import { setupRtl } from '@codecademy/gamut-tests';
 import { fireEvent, screen } from '@testing-library/dom';
+import { waitFor } from '@testing-library/react';
 import React from 'react';
 
 import { Flyout, FlyoutProps } from '..';
@@ -33,16 +34,16 @@ describe('Flyout', () => {
     screen.getByTestId('flyout-content');
   });
 
-  it('closes flyout when escape key is clicked and escapeCloses is true', () => {
+  it('closes flyout when escape key is clicked and escapeCloses is true', async () => {
     const { view } = renderFlyout({ expanded: true });
     fireEvent.keyDown(view.baseElement, {
       key: 'Escape',
       code: 'Escape',
     });
-    // this test is failing! think we need to mock out toggleDrawer but i couldn't get it working
-    // not sure if its better to test like this
-    expect(screen.queryByTestId('flyout-content')).toBe(null);
-    // or to check the length of the mock call toggleDrawer (this comment applies to all of the tests below this as well)
+
+    await waitFor(() =>
+      expect(screen.queryByTestId('flyout-content')).toBe(null)
+    );
   });
 
   it('does not close flyout when escape key is clicked and escapeCloses is false', () => {
@@ -54,10 +55,12 @@ describe('Flyout', () => {
     screen.getByTestId('flyout-content');
   });
 
-  it('closes flyout when clicking outside flyout and clickOutsideCloses is true', () => {
+  it('closes flyout when clicking outside flyout and clickOutsideCloses is true', async () => {
     renderFlyout({ expanded: true });
     fireEvent.mouseDown(screen.getByTestId('flyout-outside'));
-    expect(screen.queryByTestId('flyout-content')).toBe(null);
+    await waitFor(() =>
+      expect(screen.queryByTestId('flyout-content')).toBe(null)
+    );
   });
 
   it('does not close flyout when clicking outside flyout and clickOutsideCloses is false', () => {
