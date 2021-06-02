@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [10.2.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@10.2.0...@codecademy/gamut-styles@10.2.1) (2021-06-02)
+
+**Note:** Version bump only for package @codecademy/gamut-styles
+
+
+
+
+
+## [10.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@10.1.2...@codecademy/gamut-styles@10.2.0) (2021-05-27)
+
+
+### Features
+
+* Migrate final gamut-system docs + functions to variance [WEB-1413]  ([67c8651](https://github.com/Codecademy/client-modules/commit/67c8651dc4985dd656c8d488af4cf56ca21a813b))
+
+
+
 ### [10.1.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@10.1.1...@codecademy/gamut-styles@10.1.2) (2021-05-25)
 
 

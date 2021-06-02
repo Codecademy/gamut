@@ -9,6 +9,5 @@ export * from './variables';
 export * from './styles';
 export * from './globals';
 export * from './utilities';
-export * from './props';
 export * from './themes';
 export { coreTheme as theme } from './themes';

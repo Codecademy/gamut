@@ -1,14 +1,14 @@
-import { styledConfig, system } from '@codecademy/gamut-styles';
+import { styledConfig, system, variant } from '@codecademy/gamut-styles';
 import { StyleProps, variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
 
 import { typographyElementVariants, typographyStyleVariants } from './variants';
 
-const displayVariants = system.variant({
+const displayVariants = variant({
   variants: typographyStyleVariants,
 });
 
-const elementVariants = system.variant({
+const elementVariants = variant({
   prop: 'as',
   variants: typographyElementVariants,
 });
