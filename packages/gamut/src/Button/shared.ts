@@ -2,7 +2,7 @@ import {
   colors,
   styledConfig,
   swatches,
-  system,
+  variant,
 } from '@codecademy/gamut-styles';
 
 export const modeColorGroups = {
@@ -50,7 +50,7 @@ export const modeColorGroups = {
 
 export const config = styledConfig(['size']);
 
-export const buttonSizing = system.variant({
+export const buttonSizing = variant({
   prop: 'size',
   defaultVariant: 'normal',
   variants: {

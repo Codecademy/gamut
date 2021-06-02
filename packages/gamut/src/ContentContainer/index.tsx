@@ -1,7 +1,7 @@
-import { contentWidths, system } from '@codecademy/gamut-styles';
+import { contentWidths, variant } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 
-const contentContainerVariants = system.variant({
+const contentContainerVariants = variant({
   prop: 'size',
   defaultVariant: 'medium',
   base: {

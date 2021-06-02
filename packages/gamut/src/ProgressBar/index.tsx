@@ -1,4 +1,4 @@
-import { system } from '@codecademy/gamut-styles';
+import { variant } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React from 'react';
 
@@ -38,7 +38,7 @@ export type ProgressBarProps = {
   pattern?: PatternName;
 };
 
-const progressBarSizeVariants = system.variant({
+const progressBarSizeVariants = variant({
   defaultVariant: 'small',
   prop: 'size',
   variants: {
@@ -57,7 +57,7 @@ const progressBarSizeVariants = system.variant({
   },
 });
 
-const progressBarBackgroundVariants = system.variant({
+const progressBarBackgroundVariants = variant({
   defaultVariant: 'blue',
   variants: {
     blue: {
@@ -75,7 +75,7 @@ const progressBarBackgroundVariants = system.variant({
   },
 });
 
-const progressBarBorderVariants = system.variant({
+const progressBarBorderVariants = variant({
   defaultVariant: 'basic',
   prop: 'border',
   variants: {
@@ -89,7 +89,7 @@ const progressBarBorderVariants = system.variant({
   },
 });
 
-const progressBarForegroundVariants = system.variant({
+const progressBarForegroundVariants = variant({
   defaultVariant: 'blue',
   base: {
     alignItems: 'center',

@@ -56,7 +56,7 @@ Array [
   "LogoPro",
   "Markdown",
   "MenuItem",
-  "Modal",
+  "ModalDeprecated",
   "NotificationItem",
   "NotificationList",
   "omitProps",
