@@ -95,7 +95,10 @@ export const DropdownButton: React.FC<DropdownButtonProps> = ({
           horizontalOffset={horizontalOffset}
           outline
         >
-          <DropdownList dropdownItems={dropdownItems} />
+          <DropdownList
+            dropdownItems={dropdownItems}
+            onClose={handleRequestClosed}
+          />
         </Popover>
       )}
     </>
