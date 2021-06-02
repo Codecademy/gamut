@@ -193,5 +193,16 @@ describe('static styles', () => {
         target: ':hover',
       });
     });
+    it('can share config objects safely', () => {
+      const hoverStyles = { '&:hover': { color: 'green' } } as const;
+
+      const render = setupRender(
+        styled.div(css({ ...hoverStyles }), css({ ...hoverStyles }))
+      );
+
+      expect(render()).toHaveStyleRule('color', 'green', {
+        target: ':hover',
+      });
+    });
   });
 });
