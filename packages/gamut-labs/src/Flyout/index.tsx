@@ -1,7 +1,6 @@
 import { BodyPortal, FocusTrap, IconButton } from '@codecademy/gamut';
 import { MiniDeleteIcon } from '@codecademy/gamut-icons';
 import { system, variant } from '@codecademy/gamut-styles';
-import { HandlerProps } from '@codecademy/gamut-system';
 import { StyleProps, variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
 import { AnimatePresence, motion } from 'framer-motion';
@@ -37,7 +36,7 @@ const flyoutOpenVariants = variant({
 });
 
 export type FlyoutStyles = StyleProps<typeof flyoutStyles> &
-  HandlerProps<typeof flyoutOpenVariants>;
+  StyleProps<typeof flyoutOpenVariants>;
 export interface FlyoutStyleProps extends FlyoutStyles {}
 
 export const DrawerBase = styled(motion.div)<FlyoutStyleProps>(
