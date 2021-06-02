@@ -60,25 +60,38 @@ export const VariableProvider = styled('div', styledConfig)<
 export const ColorMode = forwardRef<
   HTMLDivElement,
   ColorModeProps & ComponentProps<typeof VariableProvider>
->(({ mode, alwaysSetVariables, ...rest }, ref) => {
+>(({ mode, alwaysSetVariables, bg, ...rest }, ref) => {
   const theme = useTheme();
   const { modes, mode: active, colors } = theme;
-  const { variables } = useMemo(
+  const isCurrentMode = active === mode;
+
+  const modeVars = useMemo(
     () =>
       serializeTokens(
         mapValues(modes[mode], (color) => colors[color]),
         'color',
         theme
-      ),
+      ).variables,
     [colors, mode, modes, theme]
   );
-  if (active === mode) {
+  const contextVars = useMemo(() => {
+    if (bg) {
+      return serializeTokens({ backgroundCurrent: bg }, 'color', theme)
+        .variables;
+    }
+    return {};
+  }, [bg, theme]);
+
+  const variables = useMemo(() => {
+    if (!isCurrentMode || alwaysSetVariables) {
+      return { ...modeVars, ...contextVars };
+    }
+    return contextVars;
+  }, [isCurrentMode, contextVars, modeVars, alwaysSetVariables]);
+
+  if (isCurrentMode) {
     return (
-      <VariableProvider
-        {...rest}
-        ref={ref}
-        variables={alwaysSetVariables ? variables : undefined}
-      />
+      <VariableProvider {...rest} bg={bg} ref={ref} variables={variables} />
     );
   }
 
@@ -87,6 +100,7 @@ export const ColorMode = forwardRef<
       <VariableProvider
         variables={variables}
         textColor="text"
+        bg={bg}
         {...rest}
         ref={ref}
       />

@@ -66,6 +66,7 @@ Object {
   "_variables": Object {
     "mode": Object {
       "--color-background": "var(--color-white)",
+      "--color-backgroundCurrent": "var(--color-white)",
       "--color-backgroundEmphasized": "var(--color-gray-100)",
       "--color-backgroundMuted": "var(--color-gray-200)",
       "--color-danger": "var(--color-red)",
@@ -161,6 +162,7 @@ Object {
   },
   "colors": Object {
     "background": "var(--color-background)",
+    "backgroundCurrent": "var(--color-backgroundCurrent)",
     "backgroundEmphasized": "var(--color-backgroundEmphasized)",
     "backgroundMuted": "var(--color-backgroundMuted)",
     "beige": "var(--color-beige)",
@@ -264,6 +266,7 @@ monospace",
   "modes": Object {
     "dark": Object {
       "background": "navy",
+      "backgroundCurrent": "navy",
       "backgroundEmphasized": "blue-800",
       "backgroundMuted": "gray-600",
       "danger": "paleRed",
@@ -279,6 +282,7 @@ monospace",
     },
     "light": Object {
       "background": "white",
+      "backgroundCurrent": "white",
       "backgroundEmphasized": "gray-100",
       "backgroundMuted": "gray-200",
       "danger": "red",
@@ -387,6 +391,7 @@ Object {
   "_variables": Object {
     "mode": Object {
       "--color-background": "var(--color-navy)",
+      "--color-backgroundCurrent": "var(--color-navy)",
       "--color-backgroundEmphasized": "var(--color-blue-800)",
       "--color-backgroundMuted": "var(--color-gray-600)",
       "--color-danger": "var(--color-paleRed)",
@@ -495,6 +500,7 @@ Object {
   },
   "colors": Object {
     "background": "var(--color-background)",
+    "backgroundCurrent": "var(--color-backgroundCurrent)",
     "backgroundEmphasized": "var(--color-backgroundEmphasized)",
     "backgroundMuted": "var(--color-backgroundMuted)",
     "beige": "var(--color-beige)",
@@ -611,6 +617,7 @@ monospace",
   "modes": Object {
     "dark": Object {
       "background": "navy",
+      "backgroundCurrent": "navy",
       "backgroundEmphasized": "blue-800",
       "backgroundMuted": "gray-600",
       "danger": "paleRed",
@@ -626,6 +633,7 @@ monospace",
     },
     "light": Object {
       "background": "white",
+      "backgroundCurrent": "white",
       "backgroundEmphasized": "gray-100",
       "backgroundMuted": "gray-200",
       "danger": "red",

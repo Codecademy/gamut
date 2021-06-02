@@ -38,6 +38,7 @@ export const coreTheme = createTheme({
       text: 'navy',
       textMuted: 'gray-600',
       background: 'white',
+      backgroundCurrent: 'white',
       backgroundMuted: 'gray-200',
       backgroundEmphasized: 'gray-100',
       shadow: {
@@ -55,6 +56,7 @@ export const coreTheme = createTheme({
       text: 'white',
       textMuted: 'gray-200',
       background: 'navy',
+      backgroundCurrent: 'navy',
       backgroundMuted: 'gray-600',
       backgroundEmphasized: 'blue-800',
       shadow: {
