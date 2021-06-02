@@ -3,6 +3,11 @@ import cx from 'classnames';
 import React, { forwardRef, InputHTMLAttributes, ReactNode } from 'react';
 
 import styles from './styles/Radio.module.scss';
+import {
+  radioInput,
+  radioLabel,
+  radioWrapper,
+} from './styles/shared-system-props';
 
 export type RadioProps = InputHTMLAttributes<HTMLInputElement> & {
   checked?: boolean;
@@ -18,8 +23,17 @@ export type RadioProps = InputHTMLAttributes<HTMLInputElement> & {
   readOnly?: boolean;
 };
 
-styled;
+const RadioWrapper = styled.div`
+  ${radioLabel}
+`;
 
+const RadioBase = styled.label<RadioProps>`
+  ${radioLabel}
+`;
+
+const RadioInput = styled.input<RadioProps>`
+  ${radioLabel}
+`;
 export const Radio = forwardRef<HTMLInputElement, RadioProps>(
   (
     {
@@ -37,12 +51,10 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
     },
     ref
   ) => {
-    const classNames = cx(styles.Radio, className);
-
     const inputId = id ? `${htmlFor}-${id}` : htmlFor;
 
     return (
-      <div className={classNames}>
+      <RadioWrapper className={className}>
         <input
           className={styles.radioInput}
           id={inputId}
@@ -59,7 +71,7 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
         <label htmlFor={htmlFor} className={styles.radioLabel}>
           {label}
         </label>
-      </div>
+      </RadioWrapper>
     );
   }
 );

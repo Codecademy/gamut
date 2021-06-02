@@ -1,5 +1,5 @@
 import { system, theme, transitionConcat } from '@codecademy/gamut-styles';
-import { StandardPropertiesHyphen } from 'csstype';
+import { borderColor } from 'polished';
 
 export const radioWrapper = system.css({
   margin: '0.25rem 0',
@@ -9,10 +9,20 @@ export const radioWrapper = system.css({
 
 export const radioLabel = system.css({
   display: 'flex',
-  padding: '$form-padding 0',
+  padding: '1rem 0',
   alignItems: 'center',
   cursor: 'pointer',
   position: 'relative',
+  borderColor: 'primary',
+});
+
+export const radioInput = system.css({
+  height: 18,
+  width: 18,
+  borderRadius: '100%',
+  '*:before': {
+    borderColor: 'primary',
+  },
 });
 
 export type conditionalStyleProps = {
