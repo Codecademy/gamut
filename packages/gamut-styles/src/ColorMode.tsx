@@ -1,7 +1,7 @@
 import { serializeTokens, StyleProps, variance } from '@codecademy/variance';
 import { CSSObject, Theme, ThemeProvider, useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
-import { mapValues } from 'lodash';
+import { isArray, isObject, isString, mapValues } from 'lodash';
 import React, { ComponentProps, forwardRef, useMemo } from 'react';
 
 import {
@@ -75,9 +75,12 @@ export const ColorMode = forwardRef<
     [colors, mode, modes, theme]
   );
   const contextVars = useMemo(() => {
-    if (bg) {
-      return serializeTokens({ backgroundCurrent: bg }, 'color', theme)
-        .variables;
+    if (bg && typeof bg === 'string') {
+      return serializeTokens(
+        { backgroundCurrent: theme.colors[bg as Colors] },
+        'color',
+        theme
+      ).variables;
     }
     return {};
   }, [bg, theme]);
