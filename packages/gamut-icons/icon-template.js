@@ -11,7 +11,7 @@ function iconTemplate(api, opts, { jsx /* imports, props, exports */ }) {
     import * as React from 'react';
     import { ClassNames } from '@emotion/react';
     import { GamutIconProps } from '../../types';
-    import { getAttrValue, IconStyleProps, iconStyles } from '../../props';
+    import { getAttrValue, getForwardableProps, IconStyleProps, iconStyles } from '../../props';
     const LocalIcon = React.forwardRef<SVGSVGElement, GamutIconProps>(({
       title = "${title}",
       titleId,
@@ -24,7 +24,8 @@ function iconTemplate(api, opts, { jsx /* imports, props, exports */ }) {
     },
       svgRef
     ) => {
-      const props = rest as Omit<GamutIconProps, keyof IconStyleProps>;
+      const styleProps = rest as Omit<GamutIconProps, keyof IconStyleProps>;
+      const props = getForwardableProps(styleProps);
       return <ClassNames>{({ css, cx, theme }) => {
         const classNames = cx(cn, css(iconStyles({ ...props, width, height, theme })));
         return ${jsx}
