@@ -20,10 +20,10 @@ import { SelectComponentProps } from './Select';
 import {
   colorStates,
   conditionalBorderStyles,
-  conditionalStyleProps,
   formDropdownStyles,
   formFieldStyles,
 } from './styles/shared';
+import { conditionalStyleProps } from './styles/shared-system-props';
 import { parseOptions } from './utils';
 
 const { DropdownIndicator, SelectContainer } = SelectDropdownElements;

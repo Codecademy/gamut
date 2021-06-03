@@ -1,6 +1,8 @@
-import { theme } from '../../theme';
+import { coreTheme } from '../../themes';
 import { spacing } from '../../variables';
 import { themed } from '../themed';
+
+const theme = coreTheme;
 
 describe('themed', () => {
   it('returns a function', () => {

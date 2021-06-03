@@ -1,17 +1,65 @@
 import { VisualTheme } from '@codecademy/gamut';
-import cx from 'classnames';
+import { colors } from '@codecademy/gamut-styles';
+import { css } from '@emotion/react';
+import styled from '@emotion/styled';
 import React from 'react';
 
-import styles from './styles.module.scss';
+const modes = {
+  dark: {
+    shadowColor: colors.green,
+  },
+  light: {
+    shadowColor: colors.lightGreen,
+  },
+};
 
-type AvatarImageProps =
-  | {
-      alt: string;
-      'aria-labelledby'?: never;
-    }
+const Image = styled.img();
+
+const avatarSize = '118px';
+
+const AvatarContainer = styled.div<{
+  mode: VisualTheme;
+  disableDropshadow?: boolean;
+}>`
+  position: relative;
+  display: table;
+
+  ${({ disableDropshadow, mode }) =>
+    !disableDropshadow &&
+    css`
+      &::before {
+        content: '';
+        position: absolute;
+        border-radius: 50%;
+        transform: scale(0.92);
+        transform-origin: bottom right;
+        height: 100%;
+        width: 100%;
+        background-color: ${modes[mode].shadowColor};
+      }
+    `}
+
+  ${Image} {
+    position: relative;
+    width: ${avatarSize};
+    height: ${avatarSize};
+    border-radius: 50%;
+    object-fit: cover;
+
+    ${({ disableDropshadow }) =>
+      !disableDropshadow &&
+      css`
+        transform: scale(0.92);
+        transform-origin: top left;
+      `}
+  }
+`;
+
+export type AvatarImageProps =
+  | { alt: string; 'aria-labelledby'?: never }
   | { alt?: never; 'aria-labelledby': string };
 
-type AvatarBaseProps = {
+export type AvatarBaseProps = {
   /**
    * path to image asset
    */
@@ -20,32 +68,26 @@ type AvatarBaseProps = {
   /**
    * chooses color of drop shadow
    */
-  theme?: VisualTheme;
-  className?: string; // useful if avatar size needs to be overridden
+  mode?: VisualTheme;
+
+  /**
+   * Disables the drop shadow entirely.
+   */
   disableDropshadow?: boolean;
 };
 
-type AvatarProps = AvatarBaseProps & AvatarImageProps;
+export type AvatarProps = AvatarBaseProps & AvatarImageProps;
 
 export const Avatar: React.FC<AvatarProps> = ({
-  theme = 'light',
-  className,
+  mode = 'light',
   disableDropshadow,
   ...avatarImageProps
-}) => {
-  return (
-    <div
-      className={cx(
-        disableDropshadow
-          ? styles.containerWithoutDropshadow
-          : styles.container,
-        className,
-        theme === 'dark' ? styles.darkContainer : styles.lightContainer
-      )}
-    >
-      {/*  The current rules for alt-text don't allow images with aria-labelledby to have no alt. So, we need to disable the rule for that line. https://github.com/evcohen/eslint-plugin-jsx-a11y/issues/411#issue-306995775 */}
-      {/* eslint-disable-next-line jsx-a11y/alt-text */}
-      <img {...avatarImageProps} />
-    </div>
-  );
-};
+}) => (
+  <AvatarContainer
+    mode={mode}
+    disableDropshadow={disableDropshadow}
+    data-testid="avatar-container"
+  >
+    <Image width={avatarSize} height={avatarSize} {...avatarImageProps} />
+  </AvatarContainer>
+);

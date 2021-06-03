@@ -12,7 +12,6 @@ export * from './Loading';
 export * from './Logo';
 export * from './ProLogo';
 export * from './ProLogoAlt';
-export * from './Quote';
 export * from './Testimonial';
 export * from './Coachmark';
 export * from './DropdownButton';
