@@ -1,5 +1,4 @@
 import { system, theme, transitionConcat } from '@codecademy/gamut-styles';
-import { borderColor } from 'polished';
 
 export const radioWrapper = system.css({
   margin: '0.25rem 0',
@@ -13,11 +12,9 @@ export const radioLabel = system.css({
   alignItems: 'center',
   cursor: 'pointer',
   position: 'relative',
-  borderColor: 'primary',
   '&::before': {
     content: '""',
     display: 'block',
-    borderColor: 'primary',
     width: '2rem',
     height: '2rem',
     borderRadius: '100%',
@@ -29,21 +26,12 @@ export const radioLabel = system.css({
     display: 'block',
     position: 'absolute',
     transition: 'transform 0.3s ease-in-out',
-    transform: 'scale(0)',
     width: '2rem',
     height: '2rem',
     borderRadius: '100%',
     borderColor: 'background',
-    bg: 'primary',
-  },
-});
-
-export const radioInput = system.css({
-  height: 18,
-  width: 18,
-  borderRadius: '100%',
-  '&:checked': {
-    bg: 'primary',
+    borderStyle: 'solid',
+    borderWidth: 5,
   },
 });
 

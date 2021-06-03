@@ -94,3 +94,21 @@ The label is a ReactNode, making it customizable outside of a standard text labe
     {(args) => <Radio {...args} />}
   </Story>
 </Canvas>
+
+### Custom backgroundColor
+
+The label is a ReactNode, making it customizable outside of a standard text label.
+
+<Canvas>
+  <Story
+    name="Custom backgroundColor"
+    args={{
+      htmlFor: 'background-custom',
+      name: 'background-custom',
+      label: 'updog',
+      backgroundColor: 'red',
+    }}
+  >
+    {(args) => <Radio {...args} />}
+  </Story>
+</Canvas>
