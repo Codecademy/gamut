@@ -27,9 +27,6 @@ const RadioWrapper = styled.div`
 const RadioLabel = styled.label<RadioProps>`
   ${noSelect}
   ${radioLabel}
-  &::after {
-    transform: scale(0);
-  }
 `;
 
 const RadioInput = styled.input<RadioProps>`
@@ -85,7 +82,6 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
     return (
       <RadioWrapper className={className}>
         <RadioInput
-          // className={styles.radioInput}
           id={inputId}
           name={name}
           required={required}

@@ -129,5 +129,6 @@ export const radioLabel = system.css({
     borderColor: 'background',
     borderStyle: 'solid',
     borderWidth: 5,
+    transform: 'scale(0)',
   },
 });
