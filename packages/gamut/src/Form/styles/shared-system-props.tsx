@@ -62,7 +62,6 @@ export const formBaseFieldStylesObject = {
   },
   '&:disabled': {
     ...formFieldDisabledStyles,
-    fontStyle: 'italic',
   },
 } as const;
 
@@ -126,9 +125,51 @@ export const radioLabel = system.css({
     ...consistentLabelStyles,
     position: 'absolute',
     transition: `transform ${timing.slow} ease-in-out`,
-    borderColor: 'background',
-    borderStyle: 'solid',
     borderWidth: 5,
+    borderStyle: 'solid',
+    borderColor: 'background',
     transform: 'scale(0)',
+  },
+});
+
+export const radioInput = system.css({
+  '&:checked + label::after': {
+    bg: 'primary',
+    borderWidth: 4,
+    borderStyle: 'solid',
+    borderColor: 'background',
+    transform: 'scale(1)',
+  },
+  '&:checked + label::before': {
+    boxShadow: `0 0 0 1px ${theme.colors.primary}`,
+  },
+  '&:hover + label::before': {
+    boxShadow: `0 0 0 2px ${theme.colors.primary}`,
+  },
+  '&:focus + label::before': {
+    boxShadow: `0 0 0 2px ${theme.colors.primary}`,
+  },
+  '&:disabled + label::before': {
+    ...formFieldDisabledStyles,
+  },
+});
+
+export const conditionalRadioStyles = system.variant({
+  variants: {
+    error: {
+      '&:checked + label::after': {
+        borderColor: 'background',
+      },
+      '&:checked + label::before': {
+        boxShadow: `0 0 0 1px ${theme.colors.danger}`,
+      },
+      '&:hover + label::before': {
+        boxShadow: `0 0 0 2px ${theme.colors.danger}`,
+      },
+      '&:focus + label::before': {
+        boxShadow: `0 0 0 2px ${theme.colors.danger}`,
+      },
+    },
+    disabled: { color: 'blue' },
   },
 });

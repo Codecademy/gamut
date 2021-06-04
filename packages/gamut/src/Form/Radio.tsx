@@ -2,7 +2,12 @@ import { Colors, noSelect, screenReaderOnly } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React, { forwardRef, InputHTMLAttributes, ReactNode } from 'react';
 
-import { radioLabel, radioWrapper } from './styles/shared-system-props';
+import {
+  conditionalRadioStyles,
+  radioInput,
+  radioLabel,
+  radioWrapper,
+} from './styles/shared-system-props';
 
 export type RadioProps = InputHTMLAttributes<HTMLInputElement> & {
   checked?: boolean;
@@ -16,48 +21,15 @@ export type RadioProps = InputHTMLAttributes<HTMLInputElement> & {
   tabIndex?: number;
   value?: string;
   readOnly?: boolean;
-  backgroundColor?: Colors;
 };
 
-const RadioWrapper = styled.div`
-  ${noSelect}
-  ${radioWrapper}
-`;
-
-const RadioLabel = styled.label<RadioProps>`
-  ${noSelect}
-  ${radioLabel}
-`;
-
-const RadioInput = styled.input<RadioProps>`
-  ${screenReaderOnly}
-
-  &:checked:not(:disabled) + ${RadioLabel}::after {
-    background-color: ${({ theme }) => theme.colors.primary};
-  }
-  &:checked + ${RadioLabel}::after {
-    transform: scale(1);
-    border: 4px solid ${({ theme }) => theme.colors.background};
-  }
-  &:checked + ${RadioLabel}::before {
-    box-shadow: 0 0 0 1px ${({ theme }) => theme.colors.primary};
-  }
-  &:hover:not(:disabled) + ${RadioLabel}::before {
-    box-shadow: 0 0 0 2px ${({ theme }) => theme.colors.primary};
-  }
-  &:disabled:checked + ${RadioLabel}::before {
-    background-color: ${({ theme }) => theme.colors.textMuted};
-  }
-  &:disabled + ${RadioLabel}::before {
-    box-shadow: 0 0 0 1px ${({ theme }) => theme.colors.textMuted};
-  }
-  &:disabled + ${RadioLabel} {
-    color: ${({ theme }) => theme.colors.textMuted};
-  }
-  &:focus + ${RadioLabel}::before {
-    box-shadow: 0 0 0 2px ${({ theme }) => theme.colors.primary};
-  }
-`;
+const RadioWrapper = styled.div(noSelect, radioWrapper);
+const RadioLabel = styled.label<RadioProps>(noSelect, radioLabel);
+const RadioInput = styled.input<RadioProps>(
+  screenReaderOnly,
+  radioInput,
+  conditionalRadioStyles
+);
 
 export const Radio = forwardRef<HTMLInputElement, RadioProps>(
   (
@@ -72,7 +44,6 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
       onChange,
       required,
       id,
-      backgroundColor = 'background',
       ...rest
     },
     ref
@@ -91,10 +62,12 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
           onChange={onChange}
           ref={ref}
           value={value}
-          backgroundColor={backgroundColor}
+          variant={'error'}
           {...rest}
         />
-        <RadioLabel htmlFor={htmlFor}>{label}</RadioLabel>
+        <RadioLabel htmlFor={htmlFor} disabled={disabled}>
+          {label}
+        </RadioLabel>
       </RadioWrapper>
     );
   }
