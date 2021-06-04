@@ -22,6 +22,10 @@ export const radioLabel = system.css({
     boxShadow: `0 0 0 1px ${theme.colors.primary}`,
     transition: '0.3s',
     margin: '1rem',
+    '&:focus': {
+      borderColor: 'currentColor',
+      boxShadow: `inset 0 0 0 1px currentColor`,
+    },
   },
   '&::after': {
     content: '""',

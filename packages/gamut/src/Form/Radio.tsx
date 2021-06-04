@@ -38,7 +38,6 @@ const RadioLabel = styled.label<RadioProps>`
 
 const RadioInput = styled.input<RadioProps>`
   ${screenReaderOnly}
-  background-color: ${({ theme }) => theme.colors.background};
 
   &:checked:not(:disabled) + ${RadioLabel}::after {
     background-color: ${({ theme }) => theme.colors.primary};
@@ -60,6 +59,9 @@ const RadioInput = styled.input<RadioProps>`
   }
   &:disabled + ${RadioLabel} {
     color: ${({ theme }) => theme.colors['gray-300']};
+  }
+  &:focus + ${RadioLabel}::before {
+    box-shadow: 0 0 0 4px ${({ theme }) => theme.colors.primary};
   }
 `;
 
