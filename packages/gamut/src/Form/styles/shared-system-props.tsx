@@ -1,43 +1,5 @@
 import { system, theme, transitionConcat } from '@codecademy/gamut-styles';
 
-export const radioWrapper = system.css({
-  margin: '0.25rem 0',
-  width: '100%',
-  fontWeight: 'normal',
-});
-
-export const radioLabel = system.css({
-  display: 'flex',
-  padding: '1rem 0',
-  alignItems: 'center',
-  cursor: 'pointer',
-  position: 'relative',
-  '&::before': {
-    content: '""',
-    display: 'block',
-    width: '2rem',
-    height: '2rem',
-    borderRadius: '100%',
-    bg: 'background',
-    boxShadow: `0 0 0 1px ${theme.colors.primary}`,
-    transition: '0.3s',
-    margin: '1rem',
-  },
-  '&::after': {
-    content: '""',
-    display: 'block',
-    position: 'absolute',
-    transition: 'transform 0.3s ease-in-out',
-    width: '2rem',
-    height: '2rem',
-    borderRadius: '100%',
-    borderColor: 'background',
-    borderStyle: 'solid',
-    borderWidth: 5,
-    margin: '1rem',
-  },
-});
-
 export type conditionalStyleProps = {
   error?: boolean;
   activated?: boolean;
@@ -127,3 +89,41 @@ export const conditionalStyles = system.variant({
 export const conditionalStyleState = (error: boolean, activated: boolean) => {
   return error ? 'error' : activated ? 'activated' : undefined;
 };
+
+export const radioWrapper = system.css({
+  margin: '0.25rem 0',
+  width: '100%',
+  fontWeight: 'normal',
+});
+
+export const radioLabel = system.css({
+  display: 'flex',
+  padding: '1rem 0',
+  alignItems: 'center',
+  cursor: 'pointer',
+  position: 'relative',
+  '&::before': {
+    content: '""',
+    display: 'block',
+    width: 20,
+    height: 20,
+    borderRadius: '100%',
+    bg: 'background',
+    boxShadow: `0 0 0 1px ${theme.colors.primary}`,
+    transition: '0.3s',
+    mr: 8,
+  },
+  '&::after': {
+    content: '""',
+    display: 'block',
+    position: 'absolute',
+    transition: 'transform 0.3s ease-in-out',
+    width: 20,
+    height: 20,
+    borderRadius: '100%',
+    borderColor: 'background',
+    borderStyle: 'solid',
+    borderWidth: 5,
+    mr: 8,
+  },
+});

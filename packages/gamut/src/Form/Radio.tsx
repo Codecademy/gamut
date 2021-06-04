@@ -61,7 +61,7 @@ const RadioInput = styled.input<RadioProps>`
     color: ${({ theme }) => theme.colors['gray-300']};
   }
   &:focus + ${RadioLabel}::before {
-    box-shadow: 0 0 0 4px ${({ theme }) => theme.colors.primary};
+    box-shadow: 0 0 0 2px ${({ theme }) => theme.colors.primary};
   }
 `;
 
