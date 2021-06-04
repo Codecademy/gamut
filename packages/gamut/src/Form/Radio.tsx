@@ -31,10 +31,6 @@ const RadioLabel = styled.label<RadioProps>`
     transform: scale(0);
   }
 `;
-// background-color:  ${(props) => ({ theme }) =>
-//   theme.colors[props.backgroundColor ? props.backgroundColor : 'background']};
-//   background-color: ${({ theme }) => theme.colors.primary};
-// }
 
 const RadioInput = styled.input<RadioProps>`
   ${screenReaderOnly}

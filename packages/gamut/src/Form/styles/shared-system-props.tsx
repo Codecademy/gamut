@@ -1,4 +1,9 @@
-import { system, theme, transitionConcat } from '@codecademy/gamut-styles';
+import {
+  system,
+  theme,
+  timing,
+  transitionConcat,
+} from '@codecademy/gamut-styles';
 
 export type conditionalStyleProps = {
   error?: boolean;
@@ -110,14 +115,14 @@ export const radioLabel = system.css({
     borderRadius: '100%',
     bg: 'background',
     boxShadow: `0 0 0 1px ${theme.colors.primary}`,
-    transition: '0.3s',
+    transition: timing.slow,
     mr: 8,
   },
   '&::after': {
     content: '""',
     display: 'block',
     position: 'absolute',
-    transition: 'transform 0.3s ease-in-out',
+    transition: `transform ${timing.slow} ease-in-out`,
     width: 20,
     height: 20,
     borderRadius: '100%',
