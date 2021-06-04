@@ -14,6 +14,7 @@ export type DropdownItem = {
 
 export type DropdownListProps = {
   dropdownItems: DropdownItem[];
+  onClose?: () => void;
 };
 
 const StyledAnchor = styled(Anchor)`
@@ -24,6 +25,7 @@ const StyledAnchor = styled(Anchor)`
 
 export const DropdownList: React.FC<DropdownListProps> = ({
   dropdownItems,
+  onClose,
 }) => {
   return (
     <FlexBox flexDirection="column" borderRadius="2px" bg="white" py={12}>
@@ -31,12 +33,17 @@ export const DropdownList: React.FC<DropdownListProps> = ({
         const Icon = item.icon;
         const { id, text, href, clickHandler } = item;
 
+        const onClick = (event: React.MouseEvent) => {
+          clickHandler?.(event);
+          onClose?.();
+        };
+
         return (
           <StyledAnchor
             key={id}
             data-testid={`dropdown-item-${id}`}
             variant="interface"
-            onClick={clickHandler}
+            onClick={onClick}
             href={href}
             px={24}
             py={12}
