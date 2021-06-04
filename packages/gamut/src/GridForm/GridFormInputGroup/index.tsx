@@ -1,4 +1,3 @@
-import { isSharedLayout } from 'framer-motion/types/components/AnimateSharedLayout/SharedLayoutContext';
 import React from 'react';
 import { UseFormMethods } from 'react-hook-form';
 
@@ -6,7 +5,6 @@ import { FormError, FormGroup, FormGroupLabel } from '../../Form';
 import { HiddenText } from '../../HiddenText';
 import { Column } from '../../Layout';
 import {
-  GridFormCustomGroupField,
   GridFormField,
   GridFormHiddenField,
   GridFormSweetContainerField,
