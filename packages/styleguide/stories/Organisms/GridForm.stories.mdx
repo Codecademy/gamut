@@ -1,5 +1,6 @@
 import {
   Column,
+  FormGroup,
   GridForm,
   Input,
   LayoutGrid,
@@ -561,6 +562,28 @@ their own inputs. We can specify a 'custom' field type to with a [render prop](h
               },
             },
             type: 'custom',
+          },
+          {
+            render: ({ className, error, setValue }) => (
+              <FormGroup label="updog" width="100%">
+                <Input
+                  error={!!error}
+                  id="custom-text-input"
+                  type="text"
+                  onChange={(event) => setValue(event.target.value)}
+                />
+              </FormGroup>
+            ),
+            label: 'Gimme two more swags',
+            name: 'custom-input',
+            validation: {
+              required: true,
+              pattern: {
+                value: /swag(.*)swag/,
+                message: 'Still not enough swag, what are you doing... 💢',
+              },
+            },
+            type: 'custom-group',
           },
         ]}
         onSubmit={async (values) => {
