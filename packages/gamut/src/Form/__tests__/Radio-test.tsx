@@ -1,5 +1,4 @@
 import { setupEnzyme } from '@codecademy/gamut-tests';
-import { shallow } from 'enzyme';
 import React from 'react';
 
 import { Radio } from '../Radio';
