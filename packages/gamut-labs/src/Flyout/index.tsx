@@ -1,16 +1,7 @@
 import { BodyPortal, FocusTrap, IconButton } from '@codecademy/gamut';
 import { MiniDeleteIcon } from '@codecademy/gamut-icons';
-import {
-  background,
-  border,
-  color,
-  flex,
-  grid,
-  layout,
-  positioning,
-  variant,
-} from '@codecademy/gamut-styles';
-import { compose, HandlerProps } from '@codecademy/gamut-system';
+import { system, variant } from '@codecademy/gamut-styles';
+import { StyleProps, variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
 import { AnimatePresence, motion } from 'framer-motion';
 import React, { useCallback, useState } from 'react';
@@ -19,18 +10,18 @@ import { SidebarCloneButton } from './SidebarCloneButton';
 
 export const transitionDuration = 0.35;
 
-const flyoutStyles = compose(
-  background,
-  border,
-  color,
-  flex,
-  grid,
-  layout,
-  positioning
+const flyoutStyles = variance.compose(
+  system.background,
+  system.border,
+  system.color,
+  system.flex,
+  system.grid,
+  system.layout,
+  system.positioning
 );
 
 const flyoutOpenVariants = variant({
-  default: 'left',
+  defaultVariant: 'left',
   prop: 'openFrom',
   variants: {
     left: {
@@ -44,8 +35,8 @@ const flyoutOpenVariants = variant({
   },
 });
 
-export type FlyoutStyles = HandlerProps<typeof flyoutStyles> &
-  HandlerProps<typeof flyoutOpenVariants>;
+export type FlyoutStyles = StyleProps<typeof flyoutStyles> &
+  StyleProps<typeof flyoutOpenVariants>;
 export interface FlyoutStyleProps extends FlyoutStyles {}
 
 export const DrawerBase = styled(motion.div)<FlyoutStyleProps>(
@@ -121,7 +112,7 @@ export const Flyout: React.FC<FlyoutProps> = ({
                 exit={{ x: initialX }}
                 transition={{ duration: transitionDuration }}
                 data-testid={testId}
-                width={{ base: '75%', sm: `${openWidth}rem` }}
+                width={{ _: '75%', sm: `${openWidth}rem` }}
                 maxWidth={`${openWidth}rem`}
                 openFrom={openFrom}
                 position="fixed"

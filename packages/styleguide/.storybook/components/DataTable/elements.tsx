@@ -8,13 +8,14 @@ export const Table = styled.div`
 `;
 
 const rowVariants = variant({
-  inset: {
-    borderStyle: 'solid',
-    borderStyleTop: 'none',
-    borderWidth: '1px',
-    borderColor: 'gray-200',
-    backgroundColor: 'gray-100',
-    padding: 32,
+  variants: {
+    inset: {
+      border: 1,
+      borderTop: 'none',
+      borderColor: 'gray-200',
+      bg: 'gray-100',
+      p: 32,
+    },
   },
 });
 
@@ -52,9 +53,7 @@ const colSizes = variant({
       maxWidth: '20rem',
     },
     fill: {
-      flexGrow: 1,
-      flexShrink: 0,
-      flexBasis: 0,
+      flex: 1,
     },
   },
 });
@@ -62,9 +61,11 @@ const colSizes = variant({
 type ColVariants = HandlerProps<typeof colVariants>;
 
 const colVariants = variant({
-  header: {
-    fontWeight: 'title',
-    fontSize: 16,
+  variants: {
+    header: {
+      fontWeight: 'title',
+      fontSize: 16,
+    },
   },
 });
 

@@ -37,7 +37,7 @@ const CatalogLinkArea = styled(FooterLinkItems)<{ variant?: 'fullHeight' }>`
   flex-wrap: wrap;
   margin-bottom: 1rem;
 
-  ${variant({ fullHeight: { maxHeight: { md: 'none' } } })}
+  ${variant({ variants: { fullHeight: { maxHeight: { md: 'none' } } } })}
 `;
 
 const CatalogFooterLinkItem = styled(FooterLinkItem)`
