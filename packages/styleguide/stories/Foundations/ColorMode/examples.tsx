@@ -112,9 +112,9 @@ export const ColorModeExample = () => {
           </Text>
           <Text as="p" mb={16}>
             Lorem ipsum dolor sit amet, sed do eiusmod tempor incididunt ut
-            labore et dolore <Anchor>magna aliqua</Anchor>. Ut enim ad minim
-            veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-            ea commodo consequat.
+            labore et dolore <Anchor>magna aliqua</Anchor>. Ut{' '}
+            <a href="#cool">enim</a> ad minim veniam, quis nostrud exercitation
+            ullamco laboris nisi ut aliquip ex ea commodo consequat.
           </Text>
           {renderLinks()}
           {renderButtons('primary')}
