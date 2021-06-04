@@ -1,3 +1,4 @@
+import { isSharedLayout } from 'framer-motion/types/components/AnimateSharedLayout/SharedLayoutContext';
 import React from 'react';
 import { UseFormMethods } from 'react-hook-form';
 
@@ -129,14 +130,19 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
 
   const unwrappedInput = (
     field: GridFormField
-  ): field is
-    | GridFormCustomGroupField
-    | GridFormHiddenField
-    | GridFormSweetContainerField =>
-    ['hidden', 'sweet-container', 'custom-group'].includes(field.type);
+  ): field is GridFormHiddenField | GridFormSweetContainerField =>
+    ['hidden', 'sweet-container'].includes(field.type);
 
   if (unwrappedInput(field)) {
     return getInput();
+  }
+
+  if (field.type === 'custom-group') {
+    return (
+      <Column size={field?.size} rowspan={field?.rowspan ?? 1}>
+        {getInput()}
+      </Column>
+    );
   }
 
   const label = (
