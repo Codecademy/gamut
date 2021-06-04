@@ -10,6 +10,7 @@ type AvatarChooserProps = {
   src: string;
   name?: string;
   register?: UseFormMethods['register'];
+  onImageChanged?: (imageFileList: FileList) => void;
   error?: string;
 };
 
@@ -47,6 +48,7 @@ const HiddenInput = styled(Input)`
 
 export const AvatarChooser: React.FC<AvatarChooserProps> = ({
   src: existingSrc,
+  onImageChanged,
   error,
   register,
   name = 'Avatar Photo',
@@ -54,11 +56,15 @@ export const AvatarChooser: React.FC<AvatarChooserProps> = ({
   const [imageSrc, setImageSrc] = useState<string>(existingSrc);
 
   const onChange = useCallback(
-    (event: any) => {
-      const imageFile = event?.target?.files[0];
+    (event: React.FormEvent<HTMLInputElement>) => {
+      const target = event?.target as HTMLInputElement;
+      const imageFilelist = target?.files;
+      const imageFile = imageFilelist?.[0];
+
+      onImageChanged?.(imageFilelist!);
       if (imageFile) setImageSrc(URL.createObjectURL(imageFile));
     },
-    [setImageSrc]
+    [setImageSrc, onImageChanged]
   );
 
   return (
