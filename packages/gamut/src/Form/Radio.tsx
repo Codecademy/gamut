@@ -49,12 +49,13 @@ const RadioInput = styled.input<RadioProps>`
     box-shadow: 0 0 0 2px ${({ theme }) => theme.colors.primary};
   }
   &:disabled:checked + ${RadioLabel}::before {
-    background-color: ${({ theme }) => theme.colors['gray-300']};
-    border: 0.25rem solid ${({ theme }) => theme.colors.background};
-    box-shadow: 0 0 0 1px ${({ theme }) => theme.colors['gray-600']};
+    background-color: ${({ theme }) => theme.colors.textMuted};
+  }
+  &:disabled + ${RadioLabel}::before {
+    box-shadow: 0 0 0 1px ${({ theme }) => theme.colors.textMuted};
   }
   &:disabled + ${RadioLabel} {
-    color: ${({ theme }) => theme.colors['gray-300']};
+    color: ${({ theme }) => theme.colors.textMuted};
   }
   &:focus + ${RadioLabel}::before {
     box-shadow: 0 0 0 2px ${({ theme }) => theme.colors.primary};
