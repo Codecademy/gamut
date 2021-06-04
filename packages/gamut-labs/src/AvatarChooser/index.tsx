@@ -71,6 +71,7 @@ export const AvatarChooser: React.FC<AvatarChooserProps> = ({
     <FlexBox
       alignItems="center"
       flexDirection="column"
+      justifyContent="center"
       width="fit-content"
       maxWidth={pxRem(120)}
     >

@@ -15,7 +15,7 @@ const modes = {
 
 const Image = styled.img();
 
-const avatarSize = '118px';
+const defaultAvatarSize = '118px';
 
 const AvatarContainer = styled.div<{
   mode: VisualTheme;
@@ -41,8 +41,6 @@ const AvatarContainer = styled.div<{
 
   ${Image} {
     position: relative;
-    width: ${avatarSize};
-    height: ${avatarSize};
     border-radius: 50%;
     object-fit: cover;
 
@@ -74,6 +72,11 @@ export type AvatarBaseProps = {
    * Disables the drop shadow entirely.
    */
   disableDropshadow?: boolean;
+
+  /**
+   * Overrides styles on the Avatar container.
+   */
+  className?: string;
 };
 
 export type AvatarProps = AvatarBaseProps & AvatarImageProps;
@@ -81,13 +84,19 @@ export type AvatarProps = AvatarBaseProps & AvatarImageProps;
 export const Avatar: React.FC<AvatarProps> = ({
   mode = 'light',
   disableDropshadow,
+  className,
   ...avatarImageProps
 }) => (
   <AvatarContainer
+    className={className}
     mode={mode}
     disableDropshadow={disableDropshadow}
     data-testid="avatar-container"
   >
-    <Image width={avatarSize} height={avatarSize} {...avatarImageProps} />
+    <Image
+      width={defaultAvatarSize}
+      height={defaultAvatarSize}
+      {...avatarImageProps}
+    />
   </AvatarContainer>
 );
