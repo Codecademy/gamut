@@ -17,7 +17,7 @@ const renderWrapper = setupEnzyme(RadioGroup, {
 describe('<RadioGroup>', () => {
   const createComponent = () => {
     const onChange = jest.fn();
-    const { wrapper } = renderWrapper({ onChange: onChange });
+    const { wrapper } = renderWrapper({ onChange });
 
     const firstInput = wrapper.find('input[type="radio"]').first();
 
