@@ -101,6 +101,15 @@ export const radioWrapper = system.css({
   fontWeight: 'normal',
 });
 
+const consistentLabelStyles = {
+  content: '""',
+  display: 'block',
+  width: 20,
+  height: 20,
+  borderRadius: '100%',
+  mr: 8,
+} as const;
+
 export const radioLabel = system.css({
   display: 'flex',
   padding: '1rem 0',
@@ -108,27 +117,17 @@ export const radioLabel = system.css({
   cursor: 'pointer',
   position: 'relative',
   '&::before': {
-    content: '""',
-    display: 'block',
-    width: 20,
-    height: 20,
-    borderRadius: '100%',
+    ...consistentLabelStyles,
     bg: 'background',
     boxShadow: `0 0 0 1px ${theme.colors.primary}`,
     transition: timing.slow,
-    mr: 8,
   },
   '&::after': {
-    content: '""',
-    display: 'block',
+    ...consistentLabelStyles,
     position: 'absolute',
     transition: `transform ${timing.slow} ease-in-out`,
-    width: 20,
-    height: 20,
-    borderRadius: '100%',
     borderColor: 'background',
     borderStyle: 'solid',
     borderWidth: 5,
-    mr: 8,
   },
 });
