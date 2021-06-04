@@ -3,6 +3,7 @@ import {
   MiniChevronDownIcon,
 } from '@codecademy/gamut-icons';
 import { variant } from '@codecademy/gamut-styles';
+import { StyleProps } from '@codecademy/variance';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import React, {
@@ -14,7 +15,11 @@ import React, {
 } from 'react';
 
 import { Box, FlexBox } from '../Box';
-import { conditionalStyles, formFieldStyles } from './styles/shared';
+import {
+  conditionalStyles,
+  conditionalStyleState,
+  formFieldStyles,
+} from './styles/shared-system-props';
 import { parseSelectOptions } from './utils';
 
 export type SelectComponentProps = Pick<
@@ -31,22 +36,22 @@ export type SelectWrapperProps = SelectComponentProps &
     sizeVariant?: 'small' | 'base';
   };
 
-export interface SelectProps extends SelectWrapperProps {
-  activated?: boolean;
-}
+export interface SelectProps
+  extends SelectWrapperProps,
+    StyleProps<typeof conditionalStyles> {}
 
 const selectSizeVariants = variant({
-  default: 'base',
+  defaultVariant: 'base',
   prop: 'sizeVariant',
   variants: {
     small: {
       height: '2rem',
-      paddingX: 8,
-      paddingY: 0,
+      px: 8,
+      py: 0,
     },
     base: {
       height: 'auto',
-      paddingRight: 48,
+      pr: 48,
     },
   },
 });
@@ -73,11 +78,11 @@ export const Select = forwardRef<HTMLSelectElement, SelectWrapperProps>(
     { className, defaultValue, options, error, id, sizeVariant, ...rest },
     ref
   ) => {
-    const [activated, setActivated] = useState(false);
+    const [activatedStyle, setActivatedStyle] = useState(false);
 
     const changeHandler = (event: ChangeEvent<HTMLSelectElement>) => {
       rest?.onChange?.(event);
-      setActivated(true);
+      setActivatedStyle(true);
     };
 
     const selectOptions = useMemo(() => {
@@ -114,7 +119,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectWrapperProps>(
           ref={ref}
           error={error}
           sizeVariant={sizeVariant}
-          activated={activated}
+          variant={conditionalStyleState(Boolean(error), activatedStyle)}
           onChange={(event) => changeHandler(event)}
         >
           {selectOptions}

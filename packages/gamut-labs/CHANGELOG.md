@@ -3,6 +3,150 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [19.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@18.4.0...@codecademy/gamut-labs@19.0.0) (2021-06-03)
+
+
+### ⚠ BREAKING CHANGES
+
+* release -kit-4.7
+
+### Features
+
+* release -kit-4.7 ([1066f7b](https://github.com/Codecademy/client-modules/commit/1066f7b87f5fc37d5595324953964945c3d2b082))
+
+
+
+## [18.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@18.3.5...@codecademy/gamut-labs@18.4.0) (2021-06-02)
+
+
+### Features
+
+* Close DropdownButton list after an option is selected ([e933b17](https://github.com/Codecademy/client-modules/commit/e933b179531e136791ecb2f006dd0cb27a885c98))
+
+
+
+### [18.3.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@18.3.4...@codecademy/gamut-labs@18.3.5) (2021-06-02)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [18.3.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@18.3.3...@codecademy/gamut-labs@18.3.4) (2021-05-28)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [18.3.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@18.3.2...@codecademy/gamut-labs@18.3.3) (2021-05-28)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [18.3.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@18.3.1...@codecademy/gamut-labs@18.3.2) (2021-05-28)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [18.3.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@18.3.0...@codecademy/gamut-labs@18.3.1) (2021-05-28)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+## [18.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@18.2.2...@codecademy/gamut-labs@18.3.0) (2021-05-27)
+
+
+### Features
+
+* Migrate final gamut-system docs + functions to variance [WEB-1413]  ([67c8651](https://github.com/Codecademy/client-modules/commit/67c8651dc4985dd656c8d488af4cf56ca21a813b))
+
+
+
+### [18.2.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@18.2.1...@codecademy/gamut-labs@18.2.2) (2021-05-26)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [18.2.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@18.2.0...@codecademy/gamut-labs@18.2.1) (2021-05-26)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+## [18.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@18.1.7...@codecademy/gamut-labs@18.2.0) (2021-05-26)
+
+
+### Features
+
+* add Kebab type to DropdownButton ([2b72468](https://github.com/Codecademy/client-modules/commit/2b72468432b13d3a30ca195732aea87389dfa695))
+
+
+
+### [18.1.7](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@18.1.6...@codecademy/gamut-labs@18.1.7) (2021-05-25)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [18.1.6](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@18.1.5...@codecademy/gamut-labs@18.1.6) (2021-05-25)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [18.1.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@18.1.4...@codecademy/gamut-labs@18.1.5) (2021-05-25)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [18.1.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@18.1.3...@codecademy/gamut-labs@18.1.4) (2021-05-25)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [18.1.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@18.1.2...@codecademy/gamut-labs@18.1.3) (2021-05-24)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [18.1.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@18.1.1...@codecademy/gamut-labs@18.1.2) (2021-05-24)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
 ### [18.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@18.1.0...@codecademy/gamut-labs@18.1.1) (2021-05-19)
 
 

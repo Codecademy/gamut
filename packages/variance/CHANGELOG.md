@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [0.12.1](https://github.com/Codecademy/client-modules/compare/@codecademy/variance@0.12.0...@codecademy/variance@0.12.1) (2021-06-02)
+
+
+### Bug Fixes
+
+* **variance:** Fix static css mutability for `css` [GM-235] ([5eab7d9](https://github.com/Codecademy/client-modules/commit/5eab7d99865947002a545db0ff372454b09494d3))
+
+
+
 ## [0.12.0](https://github.com/Codecademy/client-modules/compare/@codecademy/variance@0.11.2...@codecademy/variance@0.12.0) (2021-05-18)
 
 

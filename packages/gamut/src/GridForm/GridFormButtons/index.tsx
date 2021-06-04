@@ -1,7 +1,12 @@
 import React, { ComponentProps } from 'react';
 
 import { Box } from '../../Box';
-import { CTAButton, FillButton } from '../../Button';
+import {
+  CTAButton,
+  FillButton,
+  TextButton,
+  TextButtonProps,
+} from '../../Button';
 import {
   ButtonDeprecated,
   ButtonDeprecatedProps,
@@ -9,31 +14,42 @@ import {
 import { Column } from '../../Layout';
 import { VisualTheme } from '../../theming/VisualTheme';
 
-export type GridFormSubmitPosition = keyof typeof positions;
+export type GridFormButtonsPosition = keyof typeof positions;
 
-export type ButtonType = 'cta' | 'fill';
-export type ButtonDeprecatedType = 'business';
+export type SubmitButtonType = 'cta' | 'fill';
+export type SubmitButtonDeprecatedType = 'business';
 
 type GridFormBase = {
   contents: React.ReactNode;
-  position?: GridFormSubmitPosition;
+  position?: GridFormButtonsPosition;
   size: ComponentProps<typeof Column>['size'];
   disabled?: ButtonDeprecatedProps['disabled'];
   mode?: VisualTheme;
 };
 
 type GridFormButtonSubmitPropsDeprecated = GridFormBase & {
-  type?: ButtonDeprecatedType;
+  type?: SubmitButtonDeprecatedType;
   theme?: ButtonDeprecatedProps['theme'];
   outline?: ButtonDeprecatedProps['outline'];
 };
 
 type GridFormSubmitPropsStandard = GridFormBase & {
-  type?: ButtonType;
+  type?: SubmitButtonType;
 };
+
 export type GridFormSubmitProps =
   | GridFormButtonSubmitPropsDeprecated
   | GridFormSubmitPropsStandard;
+
+export type GridFormCancelButtonProps = {
+  children: React.ReactNode;
+  href?: 'string';
+  onClick?: () => void;
+};
+
+type CancelButtonProps = {
+  cancel?: TextButtonProps;
+};
 
 const positions = {
   left: 'flex-start',
@@ -42,7 +58,9 @@ const positions = {
   stretch: 'stretch',
 };
 
-export const GridFormSubmit: React.FC<GridFormSubmitProps> = (props) => {
+export const GridFormButtons: React.FC<
+  GridFormSubmitProps & CancelButtonProps
+> = (props) => {
   const getButton = () => {
     switch (props.type) {
       case 'cta':
@@ -86,6 +104,9 @@ export const GridFormSubmit: React.FC<GridFormSubmitProps> = (props) => {
         alignSelf="center"
         justifySelf={positions[props.position || 'left']}
       >
+        {props.cancel && (
+          <TextButton {...props.cancel} mr={32} data-testid="cancel-button" />
+        )}
         {getButton()}
       </Box>
     </Column>

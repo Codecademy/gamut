@@ -4,7 +4,12 @@ import { UseFormMethods } from 'react-hook-form';
 import { FormError, FormGroup, FormGroupLabel } from '../../Form';
 import { HiddenText } from '../../HiddenText';
 import { Column } from '../../Layout';
-import { GridFormField } from '../types';
+import {
+  GridFormCustomGroupField,
+  GridFormField,
+  GridFormHiddenField,
+  GridFormSweetContainerField,
+} from '../types';
 import { GridFormCheckboxInput } from './GridFormCheckboxInput';
 import { GridFormCustomInput } from './GridFormCustomInput';
 import { GridFormFileInput } from './GridFormFileInput';
@@ -49,6 +54,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
         );
 
       case 'custom':
+      case 'custom-group':
         return (
           <GridFormCustomInput
             field={field}
@@ -102,7 +108,11 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
 
       case 'sweet-container':
         return (
-          <GridFormSweetContainerInput register={register} field={field} />
+          <GridFormSweetContainerInput
+            register={register}
+            field={field}
+            label={field.label}
+          />
         );
 
       default:
@@ -116,8 +126,18 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
         );
     }
   };
-  if (field.type === 'hidden' || field.type === 'sweet-container')
+
+  const unwrappedInput = (
+    field: GridFormField
+  ): field is
+    | GridFormCustomGroupField
+    | GridFormHiddenField
+    | GridFormSweetContainerField =>
+    ['hidden', 'sweet-container', 'custom-group'].includes(field.type);
+
+  if (unwrappedInput(field)) {
     return getInput();
+  }
 
   const label = (
     <FormGroupLabel
@@ -131,7 +151,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
   );
 
   return (
-    <Column size={field.size}>
+    <Column size={field?.size} rowspan={field?.rowspan ?? 1}>
       <FormGroup mb={0}>
         {field.hideLabel ? <HiddenText>{label}</HiddenText> : label}
         {getInput()}
