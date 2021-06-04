@@ -105,10 +105,15 @@ The label is a ReactNode, making it customizable outside of a standard text labe
     args={{
       htmlFor: 'background-custom',
       name: 'background-custom',
-      label: 'updog',
+      label: '',
       backgroundColor: 'red',
     }}
   >
-    {(args) => <Radio {...args} />}
+    {(args) => (
+      <Box bg="beige-100">
+        <Radio {...args} />
+        <Radio {...args} />
+      </Box>
+    )}
   </Story>
 </Canvas>

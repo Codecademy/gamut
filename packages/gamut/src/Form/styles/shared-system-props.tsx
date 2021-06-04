@@ -18,8 +18,10 @@ export const radioLabel = system.css({
     width: '2rem',
     height: '2rem',
     borderRadius: '100%',
+    bg: 'background',
     boxShadow: `0 0 0 1px ${theme.colors.primary}`,
     transition: '0.3s',
+    margin: '1rem',
   },
   '&::after': {
     content: '""',
@@ -32,6 +34,7 @@ export const radioLabel = system.css({
     borderColor: 'background',
     borderStyle: 'solid',
     borderWidth: 5,
+    margin: '1rem',
   },
 });
 
