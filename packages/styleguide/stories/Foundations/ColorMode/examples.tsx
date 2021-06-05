@@ -14,51 +14,58 @@ import {
   TextButton,
   Toggle,
 } from '@codecademy/gamut/src';
-import { MiniDeleteIcon, SearchIcon } from '@codecademy/gamut-icons';
+import { ButtonProps } from '@codecademy/gamut/src/Button/shared';
+import {
+  MiniArrowRightIcon,
+  MiniDeleteIcon,
+  SearchIcon,
+} from '@codecademy/gamut-icons';
 import { Background, ColorMode } from '@codecademy/gamut-styles/src';
 import React, { ComponentProps, useState } from 'react';
 
-const renderButtons = (variant?: 'primary' | 'secondary', disabled = false) => {
+const renderButtons = (
+  variant?: ButtonProps['variant'],
+  disabled = false,
+  icon = false
+) => {
+  const props = { variant, disabled };
+  const adjacentIcon = icon ? <MiniArrowRightIcon ml={8} /> : null;
   return (
     <GridBox
       rowGap={16}
       columnGap={16}
-      gridTemplateColumns="repeat(5, max-content)"
-      gridAutoRows="3em"
+      gridTemplateColumns="150px repeat(4, max-content)"
       alignItems="start"
       justifyItems="start"
       pt={16}
     >
       <GridBox gridRowEnd="span 2">
-        <CTAButton variant={variant as any} disabled={disabled}>
-          CTA
-        </CTAButton>
+        {variant === 'primary' ? (
+          <CTAButton variant={variant} disabled={disabled}>
+            Action {adjacentIcon}
+          </CTAButton>
+        ) : (
+          <Box />
+        )}
       </GridBox>
-      <FillButton variant={variant} disabled={disabled}>
-        Fill
-      </FillButton>
-      <StrokeButton variant={variant} disabled={disabled}>
-        Stroke
-      </StrokeButton>
-      <TextButton variant={variant} disabled={disabled}>
-        Text
-      </TextButton>
-      <IconButton variant={variant} icon={SearchIcon} disabled={disabled} />
-      <FillButton variant={variant} size="small" disabled={disabled}>
-        Fill
-      </FillButton>
-      <StrokeButton variant={variant} size="small" disabled={disabled}>
-        Stroke
-      </StrokeButton>
-      <TextButton variant={variant} size="small" disabled={disabled}>
-        Text
-      </TextButton>
-      <IconButton
-        variant={variant}
-        size="small"
-        icon={MiniDeleteIcon}
-        disabled={disabled}
-      />
+      <FillButton {...props}>Fill {adjacentIcon}</FillButton>
+      <StrokeButton {...props}>Stroke {adjacentIcon}</StrokeButton>
+      <TextButton {...props}>Text {adjacentIcon}</TextButton>
+      {!icon && (
+        <>
+          <IconButton {...props} icon={SearchIcon} />
+          <FillButton {...props} size="small">
+            Fill
+          </FillButton>
+          <StrokeButton {...props} size="small">
+            Stroke
+          </StrokeButton>
+          <TextButton {...props} size="small">
+            Text
+          </TextButton>
+          <IconButton {...props} size="small" icon={MiniDeleteIcon} />
+        </>
+      )}
     </GridBox>
   );
 };
@@ -94,7 +101,7 @@ export const ColorModeExample = () => {
         />
       </FlexBox>
       <ColorMode mode={isDark ? 'dark' : 'light'}>
-        <Box bg="background-base" p={24} border={1}>
+        <Box bg="background" p={24} border={1}>
           <Text as="h3" mb={24}>
             {isDark ? 'Dark' : 'Light'} Mode
           </Text>
@@ -117,10 +124,11 @@ export const ColorModeExample = () => {
             ea commodo consequat.
           </Text>
           {renderLinks()}
+          {renderButtons('primary', false, true)}
           {renderButtons('primary')}
-          {renderButtons('secondary')}
           {renderButtons('primary', true)}
-          <FillButton variant="danger">Danger Zone</FillButton>
+          {renderButtons('secondary')}
+          {renderButtons('danger')}
         </Box>
       </ColorMode>
     </Box>

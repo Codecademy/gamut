@@ -130,7 +130,7 @@ describe('createTheme', () => {
           light: {
             primary: {
               default: 'gray-200',
-              cool: { town: 'black' },
+              cool: { _: 'gray-300', town: 'black' },
             },
           },
         })

@@ -113,11 +113,11 @@ class ThemeBuilder<T extends AbstractTheme> {
       T & Reserved,
       {
         colors: KeyAsVariable<
-          LiteralPaths<Config[keyof Config], '-'>,
+          LiteralPaths<Config[keyof Config], '-', '_'>,
           'colors'
         > &
           T['colors'];
-        modes: { [K in keyof Config]: LiteralPaths<Config[K], '-'> };
+        modes: { [K in keyof Config]: LiteralPaths<Config[K], '-', '_'> };
         mode: keyof Config;
         _getColorValue: (color: keyof T['colors']) => string;
       }

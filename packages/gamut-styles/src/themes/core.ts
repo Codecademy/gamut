@@ -29,146 +29,73 @@ export const coreTheme = createTheme({
   .addColors(corePalette)
   .addColorModes('light', {
     light: {
-      text: 'navy-800',
-      primary: 'hyper',
-      secondary: 'navy',
+      text: { _: 'navy-800', disabled: 'navy-500' },
       feedback: {
         error: 'red-500',
         success: 'green-700',
         warning: 'yellow',
       },
       background: {
+        _: 'white',
         current: 'white',
-        base: 'white',
         primary: 'beige',
-        secondary: 'paleYellow',
-        tertiary: 'paleGreen',
-        quaternary: 'paleBlue',
-        quinary: 'palePink',
+        selected: 'navy-200',
+        disabled: 'navy-100',
+        hover: 'navy-100',
       },
       shadow: {
         opaque: 'shadow-white-heavy',
         solid: 'gray-200',
       },
-      input: {
-        interactive: 'hyper',
-        error: 'red-500',
-        verified: 'green-700',
-        placeholder: 'navy-500',
-        bg: 'white',
-        disabled: {
-          text: 'navy-100',
-          bg: 'navy-500',
-        },
-        option: {
-          bg: 'white',
-          hover: 'navy-100',
-          selected: 'navy-200',
-        },
+      primary: {
+        _: 'hyper-500',
+        hover: 'hyper-400',
       },
-      menu: {
-        item: {
-          bg: 'white',
-          hover: 'navy-100',
-          selected: 'navy-200',
-        },
+      secondary: {
+        _: 'navy-800',
+        hover: 'navy-700',
       },
-      button: {
-        hover: {
-          bg: 'navy-100',
-        },
-        disabled: {
-          text: 'navy-500',
-          bg: 'navy-200',
-        },
-        danger: {
-          default: 'red-500',
-          hover: 'red-400',
-        },
-        primary: {
-          default: 'hyper',
-          hover: 'hyper-400',
-        },
-        secondary: {
-          default: 'navy',
-          hover: 'navy-600',
-        },
+      danger: {
+        _: 'red-500',
+        hover: 'red-400',
       },
     },
     dark: {
-      text: 'white',
-      primary: 'yellow',
-      secondary: 'white',
+      text: { _: 'white', disabled: 'navy-400' },
       feedback: {
         error: 'red-0',
-        success: 'green-400',
+        success: 'green-0',
         warning: 'yellow',
       },
       background: {
-        current: 'navy',
-        base: 'navy',
+        _: 'navy-800',
+        current: 'navy-800',
         primary: 'navy-900',
+        selected: 'navy-700',
+        disabled: 'navy-700',
+        hover: 'navy-900',
       },
       shadow: {
         opaque: 'shadow-black-heavy',
         solid: 'black',
       },
-      input: {
-        interactive: 'yellow-500',
-        error: 'red-0',
-        verified: 'green-400',
-        placeholder: 'navy-400',
-        bg: 'navy-800',
-        disabled: {
-          text: 'navy-400',
-          bg: 'navy-900',
-        },
-        option: {
-          bg: 'navy-800',
-          hover: 'navy-900',
-          selected: 'navy-700',
-        },
+      primary: {
+        _: 'yellow-500',
+        hover: 'yellow-400',
       },
-      menu: {
-        item: {
-          bg: 'navy-800',
-          hover: 'navy-900',
-          selected: 'navy-700',
-        },
+      secondary: {
+        _: 'white',
+        hover: 'navy-200',
       },
-      button: {
-        hover: {
-          bg: 'navy-700',
-        },
-        disabled: {
-          text: 'navy-200',
-          bg: 'navy-500',
-        },
-        danger: {
-          default: 'red-0',
-          hover: 'red-100',
-        },
-        primary: {
-          default: 'yellow-500',
-          hover: 'yellow-400',
-        },
-        secondary: {
-          default: 'white',
-          hover: 'gray-200',
-        },
+      danger: {
+        _: 'red-0',
+        hover: 'red-100',
       },
     },
   })
   .addScale('borders', ({ colors }) => ({
     1: `1px solid ${colors.secondary}`,
     2: `2px solid ${colors.secondary}`,
-  }))
-  .addScale('shadows', ({ colors }) => ({
-    outline: {
-      primary: `0 0 0 2px ${colors['background-current']}, 0 0 0 4px ${colors.primary}`,
-      secondary: `0 0 0 2px ${colors['background-current']}, 0 0 0 4px ${colors.secondary}`,
-      danger: `0 0 0 2px ${colors['background-current']}, 0 0 0 4px ${colors['feedback-error']}`,
-    },
   }))
   .createScaleVariables('elements')
   .build();

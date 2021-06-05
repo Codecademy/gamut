@@ -1,7 +1,7 @@
 import title from '@codecademy/macros/lib/title.macro';
 import { Meta, Story } from '@storybook/addon-docs/blocks';
 
-import { BackgroundExample, ColorModeExample } from './examples';
+import { ColorModeExample } from './examples';
 
 <Meta
   title={title}
@@ -87,12 +87,9 @@ const current = useCurrentMode();
 
 Sometimes you may just want to wrap a page in a different background color than the base color mode.
 
+<!--
 <BackgroundExample bg="hyper" />
 
-<BackgroundExample bg="beige" />
+<BackgroundExample bg="beige" /> -->
 
 In some cases you may want to use multiple areas with different backgrounds. `<Background />` makes this a simple task by provisioning a new color context for all components inside.
-
-<BackgroundExample bg="black">
-  <BackgroundExample bg="paleGreen" />
-</BackgroundExample>

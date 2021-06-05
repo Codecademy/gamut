@@ -165,7 +165,7 @@ export const positioning = {
 } as const;
 
 export const shadows = {
-  boxShadow: { property: 'boxShadow', scale: 'shadows' },
+  boxShadow: { property: 'boxShadow' },
   textShadow: { property: 'textShadow' },
 } as const;
 
