@@ -5,7 +5,6 @@ import { FormError, FormGroup, FormGroupLabel } from '../../Form';
 import { HiddenText } from '../../HiddenText';
 import { Column } from '../../Layout';
 import {
-  GridFormCustomGroupField,
   GridFormField,
   GridFormHiddenField,
   GridFormSweetContainerField,
@@ -129,14 +128,19 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
 
   const unwrappedInput = (
     field: GridFormField
-  ): field is
-    | GridFormCustomGroupField
-    | GridFormHiddenField
-    | GridFormSweetContainerField =>
-    ['hidden', 'sweet-container', 'custom-group'].includes(field.type);
+  ): field is GridFormHiddenField | GridFormSweetContainerField =>
+    ['hidden', 'sweet-container'].includes(field.type);
 
   if (unwrappedInput(field)) {
     return getInput();
+  }
+
+  if (field.type === 'custom-group') {
+    return (
+      <Column size={field?.size} rowspan={field?.rowspan ?? 1}>
+        {getInput()}
+      </Column>
+    );
   }
 
   const label = (
