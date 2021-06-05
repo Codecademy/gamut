@@ -20,4 +20,10 @@ describe('CurriculumCard > Subtitle', () => {
 
     expect(view.queryByText('lesson')).toBeFalsy();
   });
+
+  it('does not display scope count if scope count is 0', () => {
+    const { view } = renderView({ scopeCount: 0 });
+
+    expect(view.queryByText('lesson')).toBeFalsy();
+  });
 });

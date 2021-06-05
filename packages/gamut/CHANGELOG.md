@@ -3,6 +3,72 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [34.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@34.0.0...@codecademy/gamut@34.0.1) (2021-06-04)
+
+
+### Bug Fixes
+
+* custom-group  ([cc6697a](https://github.com/Codecademy/client-modules/commit/cc6697a54f3f1696b56ddc24e990ccdc51bddbdf))
+
+
+
+## [34.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@33.4.3...@codecademy/gamut@34.0.0) (2021-06-03)
+
+
+### ⚠ BREAKING CHANGES
+
+* release -kit-4.7
+
+### Features
+
+* release -kit-4.7 ([1066f7b](https://github.com/Codecademy/client-modules/commit/1066f7b87f5fc37d5595324953964945c3d2b082))
+
+
+
+### [33.4.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@33.4.2...@codecademy/gamut@33.4.3) (2021-06-02)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [33.4.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@33.4.1...@codecademy/gamut@33.4.2) (2021-05-28)
+
+
+### Bug Fixes
+
+* Set region and label on STC ([133290c](https://github.com/Codecademy/client-modules/commit/133290c77c425e8b3b31f6584e5241b64a9b55de))
+
+
+
+### [33.4.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@33.4.0...@codecademy/gamut@33.4.1) (2021-05-28)
+
+
+### Bug Fixes
+
+* SkipToContent z :(  ([1443c9c](https://github.com/Codecademy/client-modules/commit/1443c9c8d901e91fb7cfcf0a05598178aa4fbf4f))
+
+
+
+## [33.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@33.3.0...@codecademy/gamut@33.4.0) (2021-05-28)
+
+
+### Features
+
+* **GridForm:** add placeholder field for TextArea in GridForm ([ad87eb3](https://github.com/Codecademy/client-modules/commit/ad87eb3453ae28a0bcd3f5857714db51023f3118))
+
+
+
+## [33.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@33.2.0...@codecademy/gamut@33.3.0) (2021-05-28)
+
+
+### Features
+
+* **GridForm:** Allow ReactNode for GridForm Radio label ([30f8e1f](https://github.com/Codecademy/client-modules/commit/30f8e1f944c20307f3abb625080965b3c3cf30c1))
+
+
+
 ## [33.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@33.1.5...@codecademy/gamut@33.2.0) (2021-05-27)
 
 

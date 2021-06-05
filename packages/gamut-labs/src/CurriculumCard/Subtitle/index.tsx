@@ -21,15 +21,17 @@ export const Subtitle: React.FC<SubtitleProps> = ({
   return (
     <>
       <Difficulty difficulty={difficulty} />
-      {scopeCount && ','}
-      {scopeCount && (
-        <Text ml={4} variant="p-small">
-          <b>{scopeCount}</b>{' '}
-          <Text textColor="gray-900">
-            {capitalize(pluralizeWithS(scope, scopeCount))}
+      {scopeCount ? (
+        <>
+          ,
+          <Text ml={4} variant="p-small">
+            <b>{scopeCount}</b>{' '}
+            <Text textColor="gray-900">
+              {capitalize(pluralizeWithS(scope, scopeCount))}
+            </Text>
           </Text>
-        </Text>
-      )}
+        </>
+      ) : null}
     </>
   );
 };
