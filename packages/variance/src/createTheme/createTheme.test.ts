@@ -135,6 +135,7 @@ describe('createTheme', () => {
           },
         })
         .build();
+      expect(theme).toEqual(true);
 
       expect(theme._getColorValue('gray-300')).toEqual('#666666');
       expect(

@@ -137,13 +137,21 @@ class ThemeBuilder<T extends AbstractTheme> {
 
     this.#theme = merge({}, this.#theme, {
       colors: tokens,
-      modes: mapValues(modes, (value) => {
-        return flattenScale(value);
-      }),
+      modes: mapValues(modes, (mode) => flattenScale(mode)),
       mode: initialMode,
       _getColorValue: (color: keyof T['colors']) =>
         this.#theme._tokens?.colors?.[color],
       _variables: { mode: variables },
+      _tokens: {
+        modes: mapValues(modes, (mode) => {
+          const modeColors = flattenScale(mode);
+
+          return mapValues(
+            modeColors,
+            (color) => this.#theme._tokens.colors[color]
+          );
+        }),
+      },
     });
 
     return this;
