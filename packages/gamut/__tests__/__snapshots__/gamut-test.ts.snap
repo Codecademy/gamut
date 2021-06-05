@@ -18,6 +18,7 @@ Array [
   "ButtonDeprecated",
   "ButtonDeprecatedBase",
   "buttonPresetThemes",
+  "ButtonProps",
   "Card",
   "CardShell",
   "Checkbox",
