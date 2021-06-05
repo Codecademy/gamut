@@ -7,7 +7,6 @@ import {
 } from '@codecademy/gamut/src';
 import { SearchIcon } from '@codecademy/gamut-icons/src';
 import title from '@codecademy/macros/lib/title.macro';
-import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 
 import { ButtonScale } from './examples';
@@ -64,15 +63,11 @@ All but CTA button support a size of either `normal` (default) or `small`.
   <Story name="CTAButton">{(args) => <CTAButton {...args} />}</Story>
 </Canvas>
 
-<PropsTable exclude={['size']} story="CTAButton" />
-
 ## Fill Button
 
 <Canvas>
   <Story name="FillButton">{(args) => <FillButton {...args} />}</Story>
 </Canvas>
-
-<PropsTable story="FillButton" />
 
 ## Stroke Button
 
@@ -80,15 +75,11 @@ All but CTA button support a size of either `normal` (default) or `small`.
   <Story name="StrokeButton">{(args) => <StrokeButton {...args} />}</Story>
 </Canvas>
 
-<PropsTable story="StrokeButton" />
-
 ## Text Button
 
 <Canvas>
   <Story name="TextButton">{(args) => <TextButton {...args} />}</Story>
 </Canvas>
-
-<PropsTable story="TextButton" />
 
 ## Icon Button
 
@@ -98,15 +89,13 @@ All but CTA button support a size of either `normal` (default) or `small`.
   </Story>
 </Canvas>
 
-<PropsTable story="IconButton" />
-
 ## Button Variants
 
 We have 2 button color modes: `light` and `dark`.
 For different priority buttons we provide `primary` and `secondary` variants.
 
 - **Do** Use `primary` for high priority actions (e.g. Submit).
-- **Do** Use `secondary` for low priority buttons (e.g. Close).
+- **Do** Use `secondary` for low priority buttons (e.g. Clos).
 - **Don't** use a color mode outside of its context (no light buttons on navy backgrounds)
 
 ```tsx

@@ -26,6 +26,28 @@ const defaultComponents = {
   ...HeadersMdx,
 };
 
+const pseudos = [':active', ':hover', ':focus', 'disabled', ':focus-visible'];
+const pseudoTest = new RegExp(/:hover|:focus|:active|:focus-visible/g);
+
+export const pseudoStates = (element: any) => {
+  if (pseudoTest.test(element.value)) {
+    const newProps = [] as any;
+    element.props.forEach((prop: any) => {
+      newProps.push(prop);
+      pseudos.forEach((pseudo) => {
+        if (prop.includes(pseudo)) {
+          newProps.push(
+            `${pseudo.replace(':', '.')} ${prop.replace(pseudo, '')}`
+          );
+        }
+      });
+    });
+
+    element.props = newProps;
+  }
+  return undefined;
+};
+
 export const DocsContainer: React.FC<{ context: DocsContextProps }> = ({
   context,
   children,
@@ -46,7 +68,10 @@ export const DocsContainer: React.FC<{ context: DocsContextProps }> = ({
   return (
     <DocsContext.Provider value={context}>
       <GamutProvider
-        cache={createEmotionCache({ speedy: false })}
+        cache={createEmotionCache({
+          speedy: false,
+          stylisPlugins: [pseudoStates],
+        })}
         theme={coreTheme}
       >
         <AssetProvider />

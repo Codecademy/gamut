@@ -69,32 +69,35 @@ export const strokeButtonVariants = templateVariants(
   })
 );
 
-export const ctaButtonVariants = templateVariants(['primary'], (variant) => ({
-  borderRadius: '2px',
-  fontFamily: 'accent',
-  fontWeight: 'title',
-  boxShadow: `-4px 4px 0 0 ${theme.colors.text}`,
-  textColor: 'background',
-  py: 12,
-  px: 24,
-  bg: variant,
-  [ButtonSelectors.OUTLINE]: {
-    borderColor: variant,
-    bottom: -9,
-    left: -9,
-  },
-  [ButtonSelectors.HOVER]: {
-    boxShadow: `-8px 8px 0 0 ${theme.colors.text}`,
-  },
-  [ButtonSelectors.ACTIVE]: {
-    boxShadow: 'none',
-    bg: 'secondary',
-  },
-  [ButtonSelectors.DISABLED]: {
-    boxShadow: 'none',
-    bg: 'text-disabled',
-  },
-}));
+export const ctaButtonVariants = templateVariants(
+  ['primary', 'secondary', 'danger'],
+  (variant) => ({
+    borderRadius: '2px',
+    fontFamily: 'accent',
+    fontWeight: 'title',
+    boxShadow: `-4px 4px 0 0 ${theme.colors.text}`,
+    textColor: 'background',
+    py: 12,
+    px: 24,
+    bg: variant,
+    [ButtonSelectors.OUTLINE]: {
+      borderColor: variant,
+      bottom: -9,
+      left: -9,
+    },
+    [ButtonSelectors.HOVER]: {
+      boxShadow: `-8px 8px 0 0 ${theme.colors.text}`,
+    },
+    [ButtonSelectors.ACTIVE]: {
+      boxShadow: 'none',
+      bg: 'secondary',
+    },
+    [ButtonSelectors.DISABLED]: {
+      boxShadow: 'none',
+      bg: 'text-disabled',
+    },
+  })
+);
 
 export const sizeVariants = variant({
   prop: 'size',

@@ -84,6 +84,9 @@ export const buttonStyles = system.css({
   [ButtonSelectors.OUTLINE_FOCUS]: {
     opacity: 1,
   },
+  [ButtonSelectors.FOCUS]: {
+    outline: 'none',
+  },
 });
 
 export interface ButtonProps
