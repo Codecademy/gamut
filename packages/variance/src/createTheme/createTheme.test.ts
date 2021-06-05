@@ -143,7 +143,7 @@ describe('createTheme', () => {
     });
 
     it('returns the raw values of color mode colors on the tokens object', () => {
-      const theme = builder
+      const theme = createTheme(base)
         .addColors({
           black: '#000000',
           gray: { 300: '#666666' },
