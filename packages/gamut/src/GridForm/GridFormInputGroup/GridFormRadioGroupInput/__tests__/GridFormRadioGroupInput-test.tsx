@@ -23,6 +23,18 @@ describe('GridFormRadioGroupInput', () => {
     });
   });
 
+  describe('Radio', () => {
+    it('accepts JSX for the label', () => {
+      const radioButtons = renderGridFormRadioGroupInput({
+        id: 'id',
+        options: [{ label: <img alt="" src="" />, value: '' }],
+        name: 'name',
+      });
+
+      expect(radioButtons.find('img').length).toBe(1);
+    });
+  });
+
   describe('aria-label', () => {
     it('aria-label is set to the label by default', () => {
       const radioButtons = renderGridFormRadioGroupInput({
@@ -54,29 +66,6 @@ describe('GridFormRadioGroupInput', () => {
       expect(radioButtons.find(RadioGroup).props()['aria-label']).toBe(
         'Overridden Test Label'
       );
-    });
-  });
-
-  describe('when label is passed as a ReactNode', () => {
-    it('renders an input with the same id', () => {
-      const radioButtons = renderGridFormRadioGroupInput({
-        id: 'mycoolid',
-        name: 'name',
-      });
-
-      expect(radioButtons.find('input#name-0-mycoolid').length).toBe(1);
-    });
-  });
-
-  describe('Radio', () => {
-    it('accepts JSX for the label', () => {
-      const radioButtons = renderGridFormRadioGroupInput({
-        id: 'id',
-        options: [{ label: <img alt="" src="" />, value: '' }],
-        name: 'name',
-      });
-
-      expect(radioButtons.find('img').length).toBe(1);
     });
   });
 });
