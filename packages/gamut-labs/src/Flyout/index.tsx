@@ -50,7 +50,7 @@ export type FlyoutProps = FlyoutStyleProps & {
    */
   expanded?: boolean;
   /**
-   * callback fired when flyout gets toggled open or closed
+   * callback fired to open and close the flyout
    */
   onToggle: () => void;
   /**
