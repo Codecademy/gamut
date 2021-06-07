@@ -28,7 +28,7 @@ const baseProps = {
     },
   },
   theme: {
-    description: `[Emotion Theme](${THEME_PATH}--page)`,
+    description: `<u>[Emotion Theme](${THEME_PATH}--colors)</u> <br /> This prop is set automatically and indicates that it is a consumer of the Theme context. Do not pass anything to it.`,
     category: 'base',
     control: {
       disable: true,

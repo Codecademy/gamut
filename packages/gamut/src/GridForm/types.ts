@@ -24,6 +24,7 @@ export type BaseFormField<Value> = {
   name: string;
   onUpdate?: (value: Value) => void;
   size: ColumnProps['size'];
+  rowspan?: ColumnProps['rowspan'];
 };
 
 export type GridFormCheckboxField = BaseFormField<boolean> & {
@@ -37,7 +38,7 @@ export type GridFormCheckboxField = BaseFormField<boolean> & {
 export type GridFormCustomFieldProps = {
   className?: string;
   error?: string;
-  field: GridFormCustomField;
+  field: GridFormCustomField | GridFormCustomGroupField;
   register: UseFormMethods['register'];
   setValue: (value: any) => void;
 };
@@ -47,6 +48,13 @@ export type GridFormCustomField = BaseFormField<any> & {
   render: (props: GridFormCustomFieldProps) => React.ReactNode;
   validation?: ValidationRules;
   type: 'custom';
+};
+
+export type GridFormCustomGroupField = BaseFormField<any> & {
+  label?: React.ReactNode;
+  render: (props: GridFormCustomFieldProps) => React.ReactNode;
+  validation?: ValidationRules;
+  type: 'custom-group';
 };
 
 export type BasicInputType =
@@ -103,7 +111,7 @@ export type GridFormTextAreaField = BaseFormField<string> & {
   type: 'textarea';
 };
 
-type HiddenField = Omit<BaseFormField<any>, 'size'>;
+type HiddenField = Omit<BaseFormField<any>, 'size' | 'rowspan'>;
 
 export type GridFormHiddenField = HiddenField & {
   type: 'hidden';
@@ -117,6 +125,7 @@ export type GridFormSweetContainerField = HiddenField & {
 export type GridFormField =
   | GridFormCheckboxField
   | GridFormCustomField
+  | GridFormCustomGroupField
   | GridFormRadioGroupField
   | GridFormTextField
   | GridFormSelectField
