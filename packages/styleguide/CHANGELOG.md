@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [41.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@41.1.1...@codecademy/styleguide@41.2.0) (2021-06-07)
+
+
+### Features
+
+* **icons:** Adds LE trophy and certificate filled icons ([94da1f6](https://github.com/Codecademy/client-modules/commit/94da1f655d2b47e9148e9ca4174eeec440e43824))
+
+
+
 ### [41.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@41.1.0...@codecademy/styleguide@41.1.1) (2021-06-04)
 
 
