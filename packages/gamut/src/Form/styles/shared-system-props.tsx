@@ -27,12 +27,16 @@ export const formFieldFocusStyles = {
   boxShadow: `inset 0 0 0 1px ${theme.colors.primary}`,
 } as const;
 
-const formFieldDisabledStyles = {
-  bg: 'backgroundEmphasized',
-  borderColor: 'currentColor',
+const formFieldBaseDisabledStyles = {
   textColor: 'textMuted',
+  borderColor: 'currentColor',
   fontStyle: 'italic',
   cursor: 'not-allowed',
+} as const;
+
+const formFieldDisabledStyles = {
+  formFieldBaseDisabledStyles,
+  bg: 'backgroundEmphasized',
   '&:hover': {
     borderColor: 'currentColor',
   },
@@ -149,27 +153,57 @@ export const radioInput = system.css({
   '&:focus + label::before': {
     boxShadow: `0 0 0 2px ${theme.colors.primary}`,
   },
-  '&:disabled + label::before': {
-    ...formFieldDisabledStyles,
+});
+
+export const conditionalRadioLabelStyles = system.variant({
+  variants: {
+    error: {
+      textColor: 'danger',
+      '&::before': {
+        boxShadow: `0 0 0 1px currentColor`,
+      },
+    },
+    disabled: {
+      ...formFieldBaseDisabledStyles,
+      '&::before': {
+        boxShadow: `0 0 0 1px currentColor`,
+      },
+    },
   },
 });
 
-export const conditionalRadioStyles = system.variant({
+export const conditionalRadioInputStyles = system.variant({
   variants: {
     error: {
       '&:checked + label::after': {
-        borderColor: 'background',
+        bg: 'danger',
       },
       '&:checked + label::before': {
-        boxShadow: `0 0 0 1px ${theme.colors.danger}`,
+        boxShadow: `0 0 0 1px currentColor`,
       },
+
       '&:hover + label::before': {
-        boxShadow: `0 0 0 2px ${theme.colors.danger}`,
+        boxShadow: `0 0 0 2px currentColor`,
       },
       '&:focus + label::before': {
-        boxShadow: `0 0 0 2px ${theme.colors.danger}`,
+        boxShadow: `0 0 0 2px currentColor`,
       },
     },
-    disabled: { color: 'blue' },
+    disabled: {
+      ...formFieldBaseDisabledStyles,
+      '&:checked + label::after': {
+        bg: 'currentColor',
+      },
+      '&:checked + label::before': {
+        boxShadow: `0 0 0 1px currentColor`,
+      },
+
+      '&:hover + label::before': {
+        boxShadow: `0 0 0 2px currentColor`,
+      },
+      '&:focus + label::before': {
+        boxShadow: `0 0 0 2px currentColor`,
+      },
+    },
   },
 });
