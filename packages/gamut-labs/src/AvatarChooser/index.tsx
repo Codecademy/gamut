@@ -1,7 +1,7 @@
 import { FlexBox, FormError, Input } from '@codecademy/gamut';
 import { pxRem, theme } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
 import { UseFormMethods, Validate } from 'react-hook-form';
 
 import { Avatar } from '..';
@@ -33,14 +33,16 @@ const StyledAvatar = styled(Avatar)`
 `;
 
 const ChoosePhotoLabel = styled.label`
+  padding-top: ${theme.spacing[16]};
+  ${theme.breakpoints.sm} {
+    padding-top: ${theme.spacing[24]};
+  }
+`;
+
+const ChoosePhotoSpan = styled.span`
   color: ${theme.colors.hyper};
   font-weight: ${theme.fontWeight.title};
   cursor: pointer;
-  margin-top: ${theme.spacing[16]};
-
-  ${theme.breakpoints.sm} {
-    margin-top: ${theme.spacing[24]};
-  }
 `;
 
 const HiddenInput = styled(Input)`
@@ -62,6 +64,8 @@ export const AvatarChooser: React.FC<AvatarChooserProps> = ({
 }) => {
   const [imageSrc, setImageSrc] = useState<string>(existingSrc);
 
+  const choosePhotoLabelRef = useRef<HTMLLabelElement>(null);
+
   const onChange = useCallback(
     (event: React.FormEvent<HTMLInputElement>) => {
       const target = event?.target as HTMLInputElement;
@@ -72,6 +76,16 @@ export const AvatarChooser: React.FC<AvatarChooserProps> = ({
       if (imageFile) setImageSrc(URL.createObjectURL(imageFile));
     },
     [setImageSrc, onImageChanged]
+  );
+
+  // Need to simulate Enter and Space keyboard presses to activate the
+  // file uploader here since it's not a real button.
+  const onChooseUploadKeyPress = useCallback(
+    (event: React.KeyboardEvent) => {
+      if (event.key === 'Enter' || event.key === ' ')
+        choosePhotoLabelRef.current?.click();
+    },
+    [choosePhotoLabelRef]
   );
 
   return (
@@ -87,8 +101,14 @@ export const AvatarChooser: React.FC<AvatarChooserProps> = ({
         disableDropshadow
         aria-labelledby="Avatar Photo"
       />
-      <ChoosePhotoLabel tabIndex={0} htmlFor="avatar-chooser">
-        Choose Photo
+      <ChoosePhotoLabel ref={choosePhotoLabelRef} htmlFor="avatar-chooser">
+        <ChoosePhotoSpan
+          role="button"
+          tabIndex={0}
+          onKeyPress={onChooseUploadKeyPress}
+        >
+          Choose Photo
+        </ChoosePhotoSpan>
       </ChoosePhotoLabel>
       <HiddenInput
         type="file"
