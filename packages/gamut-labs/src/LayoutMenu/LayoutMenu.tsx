@@ -1,5 +1,5 @@
 import { Box, Logo, StrokeButton } from '@codecademy/gamut';
-import React from 'react';
+import React, { useState } from 'react';
 
 import { Flyout } from '../Flyout';
 import { AccordionMenu, Section, SectionItem } from './AccordionMenu';
@@ -40,6 +40,7 @@ export const LayoutMenu: React.FC<LayoutMenuProps> = ({
   showLogoOnFlyout,
   children,
 }) => {
+  const [expanded, setExpanded] = useState(false);
   return (
     <nav>
       <Box display={{ _: 'block', lg: 'none' }}>
@@ -47,6 +48,8 @@ export const LayoutMenu: React.FC<LayoutMenuProps> = ({
           button={
             <StrokeButton variant="secondary">{mobileButtonText}</StrokeButton>
           }
+          expanded={expanded}
+          onToggle={() => setExpanded(!expanded)}
         >
           <Box bg="white" height={1} p={16} overflow="scroll">
             {showLogoOnFlyout && (
@@ -59,7 +62,13 @@ export const LayoutMenu: React.FC<LayoutMenuProps> = ({
                 key={section.slug}
                 section={section}
                 onSectionToggle={onSectionToggle}
-                onSectionItemClick={onSectionItemClick}
+                onSectionItemClick={(
+                  item: SectionItem,
+                  sectionSlug: string
+                ) => {
+                  setExpanded(!expanded);
+                  onSectionItemClick(item, sectionSlug);
+                }}
                 selectedItem={selectedItem}
               />
             ))}
