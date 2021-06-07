@@ -12,6 +12,10 @@ const ErrorSpan = styled.span`
   font-size: ${({ theme }) => theme.fontSize[14]};
 `;
 
-export const FormError: React.FC<HTMLAttributes<HTMLSpanElement>> = (props) => {
+type FormErrorProps = HTMLAttributes<HTMLSpanElement> & {
+  className?: string;
+};
+
+export const FormError: React.FC<FormErrorProps> = (props) => {
   return <ErrorSpan {...props} />;
 };

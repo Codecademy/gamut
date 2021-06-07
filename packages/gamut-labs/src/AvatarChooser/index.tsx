@@ -1,8 +1,8 @@
-import { FlexBox, Input, Text } from '@codecademy/gamut';
+import { FlexBox, FormError, Input } from '@codecademy/gamut';
 import { pxRem, theme } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React, { useCallback, useState } from 'react';
-import { UseFormMethods } from 'react-hook-form';
+import { UseFormMethods, Validate } from 'react-hook-form';
 
 import { Avatar } from '..';
 
@@ -11,6 +11,7 @@ type AvatarChooserProps = {
   name?: string;
   register?: UseFormMethods['register'];
   onImageChanged?: (imageFileList: FileList) => void;
+  validate?: Validate | Record<string, Validate>;
   error?: string;
 };
 
@@ -46,11 +47,17 @@ const HiddenInput = styled(Input)`
   display: none;
 `;
 
+const StyledFormError = styled(FormError)`
+  position: initial;
+  text-align: center;
+`;
+
 export const AvatarChooser: React.FC<AvatarChooserProps> = ({
   src: existingSrc,
   onImageChanged,
   error,
   register,
+  validate = validatePhotoUpload,
   name = 'Avatar Photo',
 }) => {
   const [imageSrc, setImageSrc] = useState<string>(existingSrc);
@@ -89,16 +96,12 @@ export const AvatarChooser: React.FC<AvatarChooserProps> = ({
         name={name}
         onChange={onChange}
         ref={register?.({
+          validate,
           required: false,
-          validate: validatePhotoUpload,
         })}
         aria-invalid={Boolean(error)}
       />
-      {error && (
-        <Text variant="p-small" textColor="red" textAlign="center">
-          {error}
-        </Text>
-      )}
+      {error && <StyledFormError>{error}</StyledFormError>}
     </FlexBox>
   );
 };

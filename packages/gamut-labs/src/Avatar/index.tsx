@@ -1,24 +1,15 @@
 import { VisualTheme } from '@codecademy/gamut';
-import { colors } from '@codecademy/gamut-styles';
+import { theme } from '@codecademy/gamut-styles';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import React from 'react';
-
-const modes = {
-  dark: {
-    shadowColor: colors.green,
-  },
-  light: {
-    shadowColor: colors.lightGreen,
-  },
-};
 
 const Image = styled.img();
 
 const defaultAvatarSize = '118px';
 
 const AvatarContainer = styled.div<{
-  mode: VisualTheme;
+  mode?: VisualTheme;
   disableDropshadow?: boolean;
 }>`
   position: relative;
@@ -35,7 +26,11 @@ const AvatarContainer = styled.div<{
         transform-origin: bottom right;
         height: 100%;
         width: 100%;
-        background-color: ${modes[mode].shadowColor};
+        background-color: ${mode
+          ? mode === 'light'
+            ? theme.colors.lightGreen
+            : theme.colors.green
+          : theme.colors.success};
       }
     `}
 
@@ -64,11 +59,6 @@ export type AvatarBaseProps = {
   src: string;
 
   /**
-   * chooses color of drop shadow
-   */
-  mode?: VisualTheme;
-
-  /**
    * Disables the drop shadow entirely.
    */
   disableDropshadow?: boolean;
@@ -77,12 +67,19 @@ export type AvatarBaseProps = {
    * Overrides styles on the Avatar container.
    */
   className?: string;
+
+  /**
+   * @deprecated
+   * This will be determined automatically by the theme moving forward.
+   * Supplying it will determine the color of drop shadow.
+   */
+  mode?: VisualTheme;
 };
 
 export type AvatarProps = AvatarBaseProps & AvatarImageProps;
 
 export const Avatar: React.FC<AvatarProps> = ({
-  mode = 'light',
+  mode,
   disableDropshadow,
   className,
   ...avatarImageProps
