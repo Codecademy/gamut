@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [19.0.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.0.4...@codecademy/gamut-labs@19.0.5) (2021-06-07)
+
+
+### Bug Fixes
+
+* Google and App store  ([f6111f7](https://github.com/Codecademy/client-modules/commit/f6111f70bbc73aadfaf832f3e4c84b9ab8aca447))
+
+
+
 ### [19.0.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.0.3...@codecademy/gamut-labs@19.0.4) (2021-06-07)
 
 **Note:** Version bump only for package @codecademy/gamut-labs
