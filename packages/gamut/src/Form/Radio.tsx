@@ -1,4 +1,5 @@
-import { Colors, noSelect, screenReaderOnly } from '@codecademy/gamut-styles';
+import { noSelect, screenReaderOnly } from '@codecademy/gamut-styles';
+import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
 import React, { forwardRef, InputHTMLAttributes, ReactNode } from 'react';
 
@@ -22,10 +23,13 @@ export type RadioProps = InputHTMLAttributes<HTMLInputElement> & {
   value?: string;
   readOnly?: boolean;
 };
+export interface RadioInputProps
+  extends RadioProps,
+    StyleProps<typeof conditionalRadioStyles> {}
 
 const RadioWrapper = styled.div(noSelect, radioWrapper);
 const RadioLabel = styled.label<RadioProps>(noSelect, radioLabel);
-const RadioInput = styled.input<RadioProps>(
+const RadioInput = styled.input<RadioInputProps>(
   screenReaderOnly,
   radioInput,
   conditionalRadioStyles
