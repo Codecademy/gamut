@@ -80,7 +80,9 @@ export const AvatarChooser: React.FC<AvatarChooserProps> = ({
         disableDropshadow
         aria-labelledby="Avatar Photo"
       />
-      <ChoosePhotoLabel htmlFor="avatar-chooser">Choose Photo</ChoosePhotoLabel>
+      <ChoosePhotoLabel tabIndex={0} htmlFor="avatar-chooser">
+        Choose Photo
+      </ChoosePhotoLabel>
       <HiddenInput
         type="file"
         htmlFor="avatar-chooser"
