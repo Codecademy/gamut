@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [34.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@34.0.0...@codecademy/gamut@34.0.1) (2021-06-04)
+
+
+### Bug Fixes
+
+* custom-group  ([cc6697a](https://github.com/Codecademy/client-modules/commit/cc6697a54f3f1696b56ddc24e990ccdc51bddbdf))
+
+
+
+## [34.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@33.4.3...@codecademy/gamut@34.0.0) (2021-06-03)
+
+
+### ⚠ BREAKING CHANGES
+
+* release -kit-4.7
+
+### Features
+
+* release -kit-4.7 ([1066f7b](https://github.com/Codecademy/client-modules/commit/1066f7b87f5fc37d5595324953964945c3d2b082))
+
+
+
 ### [33.4.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@33.4.2...@codecademy/gamut@33.4.3) (2021-06-02)
 
 **Note:** Version bump only for package @codecademy/gamut

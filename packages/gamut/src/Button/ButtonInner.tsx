@@ -8,6 +8,7 @@ export const ButtonInner = styled('span', config)<ButtonProps>(
   fontSmoothPixel,
   system.css({
     border: 2,
+    width: '100%',
     borderRadius: '4px',
     borderColor: 'transparent',
     display: 'inline-block',

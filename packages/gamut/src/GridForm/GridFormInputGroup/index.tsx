@@ -4,7 +4,11 @@ import { UseFormMethods } from 'react-hook-form';
 import { FormError, FormGroup, FormGroupLabel } from '../../Form';
 import { HiddenText } from '../../HiddenText';
 import { Column } from '../../Layout';
-import { GridFormField } from '../types';
+import {
+  GridFormField,
+  GridFormHiddenField,
+  GridFormSweetContainerField,
+} from '../types';
 import { GridFormCheckboxInput } from './GridFormCheckboxInput';
 import { GridFormCustomInput } from './GridFormCustomInput';
 import { GridFormFileInput } from './GridFormFileInput';
@@ -49,6 +53,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
         );
 
       case 'custom':
+      case 'custom-group':
         return (
           <GridFormCustomInput
             field={field}
@@ -120,8 +125,23 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
         );
     }
   };
-  if (field.type === 'hidden' || field.type === 'sweet-container')
+
+  const unwrappedInput = (
+    field: GridFormField
+  ): field is GridFormHiddenField | GridFormSweetContainerField =>
+    ['hidden', 'sweet-container'].includes(field.type);
+
+  if (unwrappedInput(field)) {
     return getInput();
+  }
+
+  if (field.type === 'custom-group') {
+    return (
+      <Column size={field?.size} rowspan={field?.rowspan ?? 1}>
+        {getInput()}
+      </Column>
+    );
+  }
 
   const label = (
     <FormGroupLabel
@@ -135,7 +155,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
   );
 
   return (
-    <Column size={field.size}>
+    <Column size={field?.size} rowspan={field?.rowspan ?? 1}>
       <FormGroup mb={0}>
         {field.hideLabel ? <HiddenText>{label}</HiddenText> : label}
         {getInput()}
