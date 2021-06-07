@@ -4,7 +4,7 @@ import { system, variant } from '@codecademy/gamut-styles';
 import { StyleProps, variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
 import { AnimatePresence, motion } from 'framer-motion';
-import React, { useCallback, useState } from 'react';
+import React, { useCallback } from 'react';
 
 import { SidebarCloneButton } from './SidebarCloneButton';
 
@@ -50,6 +50,10 @@ export type FlyoutProps = FlyoutStyleProps & {
    */
   expanded?: boolean;
   /**
+   * callback fired when flyout gets toggled open or closed
+   */
+  onToggle: () => void;
+  /**
    * data-testid for the components
    */
   testId?: string;
@@ -58,7 +62,7 @@ export type FlyoutProps = FlyoutStyleProps & {
    */
   openWidth?: number;
   /**
-   * chooses color of drop shadow
+   * toggles the Flyout
    */
   button: React.ReactNode;
   /**
@@ -74,7 +78,8 @@ export type FlyoutProps = FlyoutStyleProps & {
 export const Flyout: React.FC<FlyoutProps> = ({
   children,
   button,
-  expanded = false,
+  expanded,
+  onToggle,
   openFrom = 'left',
   openWidth = 30,
   testId,
@@ -82,31 +87,27 @@ export const Flyout: React.FC<FlyoutProps> = ({
   escapeCloses = true,
   ...styleProps
 }) => {
-  const [isSidebarOpen, setSidebarOpen] = useState(expanded);
-  const toggleDrawer = useCallback(() => setSidebarOpen(!isSidebarOpen), [
-    isSidebarOpen,
-  ]);
   const initialX = openFrom === 'left' ? -1000 : 1000;
 
   const handleOutsideClick = useCallback(() => {
-    clickOutsideCloses && toggleDrawer();
-  }, [clickOutsideCloses, toggleDrawer]);
+    clickOutsideCloses && onToggle();
+  }, [clickOutsideCloses, onToggle]);
 
   const handleEscapeKey = useCallback(() => {
-    escapeCloses && toggleDrawer();
-  }, [escapeCloses, toggleDrawer]);
+    escapeCloses && onToggle();
+  }, [escapeCloses, onToggle]);
 
   return (
     <>
       <AnimatePresence>
-        {isSidebarOpen ? (
+        {expanded ? (
           <BodyPortal>
             <FocusTrap
               onClickOutside={handleOutsideClick}
               onEscapeKey={handleEscapeKey}
             >
               <DrawerBase
-                aria-expanded={isSidebarOpen}
+                aria-expanded={expanded}
                 initial={{ x: initialX }}
                 animate={{ x: 0 }}
                 exit={{ x: initialX }}
@@ -122,7 +123,7 @@ export const Flyout: React.FC<FlyoutProps> = ({
               >
                 <IconButton
                   icon={MiniDeleteIcon}
-                  onClick={toggleDrawer}
+                  onClick={onToggle}
                   position="absolute"
                   right="0"
                 />
@@ -132,10 +133,7 @@ export const Flyout: React.FC<FlyoutProps> = ({
           </BodyPortal>
         ) : null}
       </AnimatePresence>
-      <SidebarCloneButton
-        onClick={toggleDrawer}
-        data-testid="arrow-sidebar-button"
-      >
+      <SidebarCloneButton onClick={onToggle} data-testid="arrow-sidebar-button">
         {button}
       </SidebarCloneButton>
     </>
