@@ -25,7 +25,9 @@ export interface SegmentAnalyticsOptions {
   integrations: Record<string, boolean>;
 }
 
-export interface SegmentWindow {
+export interface TrackingWindow {
   analytics?: SegmentAnalytics;
+  dataLayer?: unknown[];
   OnetrustActiveGroups?: Consent[];
+  OptanonWrapper?: () => void;
 }

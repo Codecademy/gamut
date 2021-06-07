@@ -1,5 +1,5 @@
 import { MiniArrowDownIcon } from '@codecademy/gamut-icons';
-import { timing } from '@codecademy/gamut-styles';
+import { themed, timing } from '@codecademy/gamut-styles';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import React from 'react';
@@ -13,38 +13,36 @@ export type SkipToContentProps = {
 
 const animateFunction = `cubic-bezier(0.075, 0.82, 0.165, 1)`;
 
-const SkipToContentLink = styled.a(
-  ({ theme }) => css`
-    color: ${theme.colors.navy};
-    background-color: ${theme.colors.white};
-    cursor: pointer;
-    display: flex;
-    font-weight: ${theme.fontWeight.title};
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    padding: ${theme.spacing[24]} ${theme.spacing[16]};
-    position: absolute;
+const SkipToContentLink = styled.a`
+  color: ${themed('colors.navy')};
+  background-color: ${themed('colors.white')};
+  cursor: pointer;
+  display: flex;
+  font-weight: ${themed('fontWeight.title')};
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  padding: ${themed('spacing.24')} ${themed('spacing.16')};
+  position: absolute;
+  text-decoration: none;
+  transform: translate(-50%, -100%);
+  top: 0;
+  left: 50%;
+  z-index: calc(${themed('elements.headerZ')} + 1);
+  width: 12rem;
+  transition: opacity ${timing.fast} ${animateFunction},
+    transform ${timing.fast} ${animateFunction};
+
+  &:hover {
     text-decoration: none;
-    transform: translate(-50%, -100%);
-    top: 0;
-    left: 50%;
-    z-index: 15;
-    width: 12rem;
-    transition: opacity ${timing.fast} ${animateFunction},
-      transform ${timing.fast} ${animateFunction};
+  }
 
-    &:hover {
-      text-decoration: none;
-    }
-
-    &:focus {
-      outline-color: ${theme.colors.hyper};
-      opacity: 1;
-      transform: translate(-50%, 1rem);
-    }
-  `
-);
+  &:focus {
+    outline-color: ${themed('colors.hyper')};
+    opacity: 1;
+    transform: translate(-50%, 1rem);
+  }
+`;
 
 export const SkipToContent: React.FC<SkipToContentProps> = ({
   contentId,
@@ -54,12 +52,17 @@ export const SkipToContent: React.FC<SkipToContentProps> = ({
   const onClick = () => document.querySelector<HTMLElement>(href)!.focus();
 
   return (
-    <SkipToContentLink href={href} onClick={onClick} type="button" {...rest}>
-      Skip to Content
-      <Box ml={8}>
-        <MiniArrowDownIcon aria-hidden />
-      </Box>
-    </SkipToContentLink>
+    <Box role="region" aria-labelledby="skip-to-content">
+      <SkipToContentLink
+        id="skip-to-content"
+        href={href}
+        onClick={onClick}
+        {...rest}
+      >
+        Skip to Content
+        <MiniArrowDownIcon ml={8} aria-hidden />
+      </SkipToContentLink>
+    </Box>
   );
 };
 

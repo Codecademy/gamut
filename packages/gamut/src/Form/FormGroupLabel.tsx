@@ -33,12 +33,12 @@ type disabledLabelStyleProps = {
 };
 
 const labelSizeVariants = variant({
-  default: 'small',
+  defaultVariant: 'small',
   prop: 'size',
   variants: {
     small: {
       lineHeight: 'title',
-      marginBottom: 4,
+      mb: 4,
     },
     large: {
       fontSize: 22,
@@ -95,9 +95,9 @@ export const FormGroupLabel: React.FC<FormGroupLabelProps> = ({
       {tooltip && (
         <StyledToolTipContainer>
           <StyledToolTip
-            {...tooltip}
             alignment="bottom-right"
             target={<MiniInfoOutlineIcon size="0.8rem" />}
+            {...tooltip}
           />
         </StyledToolTipContainer>
       )}
