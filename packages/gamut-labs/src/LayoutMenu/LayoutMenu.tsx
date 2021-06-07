@@ -26,6 +26,10 @@ export type LayoutMenuProps = {
    */
   mobileButtonText: string;
   /**
+   * Whether the mobile button should be full width
+   */
+  fullWidthButton?: boolean;
+  /**
    * Whether or not to show the Codecademy logo at the top of the flyout on mobile
    */
   showLogoOnFlyout?: boolean;
@@ -37,6 +41,7 @@ export const LayoutMenu: React.FC<LayoutMenuProps> = ({
   onSectionItemClick,
   selectedItem,
   mobileButtonText,
+  fullWidthButton = true,
   showLogoOnFlyout,
   children,
 }) => {
@@ -46,17 +51,18 @@ export const LayoutMenu: React.FC<LayoutMenuProps> = ({
       <Box display={{ _: 'block', lg: 'none' }}>
         <Flyout
           button={
-            <StrokeButton variant="secondary">{mobileButtonText}</StrokeButton>
+            <StrokeButton
+              variant="secondary"
+              width={fullWidthButton ? 1 : undefined}
+            >
+              {mobileButtonText}
+            </StrokeButton>
           }
           expanded={expanded}
           onToggle={() => setExpanded(!expanded)}
         >
           <Box bg="white" height={1} p={16} overflow="scroll">
-            {showLogoOnFlyout && (
-              <Box pb={32}>
-                <Logo />
-              </Box>
-            )}
+            {showLogoOnFlyout && <Logo mb={32} />}
             {sections.map((section) => (
               <AccordionMenu
                 key={section.slug}
