@@ -62,7 +62,7 @@ export type FlyoutProps = FlyoutStyleProps & {
    */
   openWidth?: number;
   /**
-   * chooses color of drop shadow
+   * toggles the Flyout
    */
   button: React.ReactNode;
   /**
