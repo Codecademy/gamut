@@ -181,6 +181,7 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
             href="https://itunes.apple.com/us/app/codecademy-go/id1376029326"
             onClick={(event) => onClick({ event, target: 'apple_store' })}
             target="_blank"
+            rel="noopener"
           >
             <img
               alt="Download on the App Store"
@@ -195,6 +196,7 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
             href="https://play.google.com/store/apps/details?id=com.ryzac.codecademygo"
             onClick={(event) => onClick({ event, target: 'google_play' })}
             target="_blank"
+            rel="noopener"
           >
             <img
               alt="Get it on Google Play"
