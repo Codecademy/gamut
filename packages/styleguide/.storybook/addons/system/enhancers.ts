@@ -2,7 +2,7 @@ import { mapValues } from 'lodash/fp';
 import { ArgTypesEnhancer } from '@storybook/client-api';
 import { hasIn, isObject, isString, kebabCase, merge } from 'lodash';
 import { ALL_PROPS, PROP_MAP, PROP_GROUPS } from './propMeta';
-import { theme } from '@codecademy/gamut-styles/src/theme';
+import { theme } from '@codecademy/gamut-styles';
 
 export type SystemControls =
   | 'text'
@@ -28,7 +28,7 @@ const baseProps = {
     },
   },
   theme: {
-    description: `[Emotion Theme](${THEME_PATH}--page)`,
+    description: `<u>[Emotion Theme](${THEME_PATH}--colors)</u> <br /> This prop is set automatically and indicates that it is a consumer of the Theme context. Do not pass anything to it.`,
     category: 'base',
     control: {
       disable: true,

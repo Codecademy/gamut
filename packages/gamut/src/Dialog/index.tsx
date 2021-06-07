@@ -1,5 +1,5 @@
 import { MiniDeleteIcon } from '@codecademy/gamut-icons';
-import { system } from '@codecademy/gamut-styles';
+import { system, variant } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
 import React from 'react';
@@ -11,7 +11,7 @@ import { Text } from '../Typography';
 
 type SizeVariants = StyleProps<typeof modalSizeVariants>;
 
-const modalSizeVariants = system.variant({
+const modalSizeVariants = variant({
   prop: 'size',
   variants: {
     small: { width: '400px', minHeight: '170px' },
@@ -19,7 +19,7 @@ const modalSizeVariants = system.variant({
   },
 });
 
-const ShroudedOverlay = styled(Overlay)(system.css({ bg: 'shadow' }));
+const ShroudedOverlay = styled(Overlay)(system.css({ bg: 'shadow-opaque' }));
 
 const ModalWrapper = styled.div<SizeVariants>(
   system.css({
@@ -119,7 +119,7 @@ export const Dialog: React.FC<DialogProps> = ({
             onClick={onCancel}
             gridArea="close"
           />
-          <Text as="p" gridArea="content">
+          <Text as="div" gridArea="content" data-testid="dialog-content">
             {children}
           </Text>
           {cancelCta && (

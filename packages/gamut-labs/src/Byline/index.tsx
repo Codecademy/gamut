@@ -17,30 +17,30 @@ export const Byline: React.FC<BylineProps> = ({
   company,
   lastName,
 }) => (
-  <FlexBox flexDirection="column">
+  <div>
     <Box
-      as="span"
       data-testid="author-container"
       fontSize={18}
       fontWeight="title"
+      whiteSpace="nowrap"
     >
       <span>{firstName}</span>
       {lastName && (
         <Box
           as="span"
-          display={{ _: 'none', xs: 'contents' }}
+          display={{ _: 'none', xs: 'initial' }}
         >{` ${lastName}`}</Box>
       )}
     </Box>
-    <div data-testid="job-container">
+    <Box data-testid="job-container" whiteSpace="nowrap">
       <span>{occupation}</span>
       {company && (
         <Box
           as="span"
-          display={{ _: 'none', xs: 'contents' }}
+          display={{ _: 'none', xs: 'initial' }}
         >{` @ ${company}`}</Box>
       )}
-    </div>
+    </Box>
     {location && (
       <FlexBox alignItems="center">
         <LocationPinIcon size={12} />
@@ -49,5 +49,5 @@ export const Byline: React.FC<BylineProps> = ({
         </Box>
       </FlexBox>
     )}
-  </FlexBox>
+  </div>
 );

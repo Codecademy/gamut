@@ -5,6 +5,7 @@ import {
   GridFormRadioGroupField,
   GridFormRadioOption,
   GridFormSelectField,
+  GridFormSweetContainerField,
   GridFormTextAreaField,
   GridFormTextField,
 } from '../types';
@@ -33,6 +34,7 @@ export const stubRadioGroupField: GridFormRadioGroupField = {
   options: stubRadioGroupOptions,
   name: 'stub-radio-group',
   size: 6,
+  rowspan: 2,
   type: 'radio-group',
 };
 
@@ -71,4 +73,10 @@ export const stubHiddenField: GridFormHiddenField = {
   name: 'secret-field',
   type: 'hidden',
   defaultValue: "you can't see me!",
+};
+
+export const stubSweetContainerField: GridFormSweetContainerField = {
+  name: 'sweet_container',
+  type: 'sweet-container',
+  label: 'Check this input if you are an automated machine, and not a human',
 };

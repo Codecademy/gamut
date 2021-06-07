@@ -1,5 +1,7 @@
 import { Box } from '@codecademy/gamut';
+import { themed } from '@codecademy/gamut-styles';
 import { useTheme } from '@emotion/react';
+import styled from '@emotion/styled';
 import cx from 'classnames';
 import React from 'react';
 import { useWindowScroll } from 'react-use';
@@ -96,6 +98,10 @@ const getMobileAppHeaderItems = (
   }
 };
 
+const StyledBox = styled(Box)`
+  z-index: ${themed('elements.headerZ')};
+`;
+
 export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
   const { y } = useWindowScroll();
 
@@ -109,7 +115,7 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
   );
 
   return (
-    <>
+    <StyledBox as="header" position="sticky" top={0}>
       <Box
         display={{ _: 'none', md: 'block' }}
         height={theme.elements.headerHeight}
@@ -137,6 +143,7 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
           }
         />
       </Box>
-    </>
+      {props.children}
+    </StyledBox>
   );
 };

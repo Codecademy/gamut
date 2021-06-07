@@ -2,41 +2,29 @@ import { pxRem, theme } from '@codecademy/gamut-styles';
 import { css } from '@emotion/react';
 import { StandardPropertiesHyphen } from 'csstype';
 
+import { conditionalStyleProps } from './shared-system-props';
+
 export const colorStates = {
   base: {
     color: theme.colors.navy,
-    placeholder: theme.colors[`gray-700`],
+    placeholder: theme.colors['gray-900'],
     backgroundColor: theme.colors.white,
-    borderColor: theme.colors['gray-400'],
+    borderColor: theme.colors['gray-600'],
   },
   hover: { borderColor: theme.colors.hyper },
   disabled: {
-    color: theme.colors[`gray-700`],
-    backgroundColor: theme.colors[`gray-100`],
-    borderColor: theme.colors[`gray-700`],
+    color: theme.colors['gray-900'],
+    backgroundColor: theme.colors['gray-100'],
+    borderColor: theme.colors['gray-900'],
   },
   error: { color: theme.colors.red, borderColor: theme.colors.red },
   valid: { color: theme.colors.green },
   activated: { borderColor: theme.colors.navy },
   dropdown: {
-    focused: { backgroundColor: theme.colors[`gray-100`] },
-    selected: { backgroundColor: theme.colors[`gray-300`] },
+    focused: { backgroundColor: theme.colors['gray-100'] },
+    selected: { backgroundColor: theme.colors['gray-300'] },
   },
 };
-
-export type conditionalStyleProps = {
-  error?: boolean;
-  activated?: boolean;
-  isFocused?: boolean | null;
-  isDisabled?: boolean | null;
-};
-
-type iconPaddingProps = {
-  icon?: boolean;
-};
-
-export type conditionalInputStyleProps = conditionalStyleProps &
-  iconPaddingProps;
 
 // these are split for now because ReactRecurly demands separate styles for focus.
 export const formFieldFocusStyles = css`
@@ -54,33 +42,6 @@ const formFieldDisabledStyles = css`
     border-color: ${colorStates.disabled.borderColor};
   }
 `;
-
-export const conditionalStyles = ({
-  error,
-  activated,
-}: conditionalStyleProps) => {
-  if (error) {
-    return css`
-      color: ${colorStates.error.color};
-      border-color: ${colorStates.error.borderColor};
-
-      &:hover {
-        border-color: ${colorStates.error.borderColor};
-      }
-
-      &:focus {
-        border-color: ${colorStates.error.borderColor};
-        box-shadow: inset 0 0 0 1px ${colorStates.error.borderColor};
-      }
-    `;
-  }
-
-  if (activated) {
-    return css`
-      border-color: ${colorStates.activated.borderColor};
-    `;
-  }
-};
 
 export const conditionalBorderStyles = ({
   error,
@@ -127,14 +88,6 @@ export const conditionalBorderStyles = ({
   }
 };
 
-export const iconPadding = ({ icon }: iconPaddingProps) => {
-  if (icon) {
-    return css`
-      padding-right: 2.3rem;
-    `;
-  }
-};
-
 const transitionConcatenator = (
   arrayOfProperties: Array<keyof StandardPropertiesHyphen>,
   transition: string
@@ -152,7 +105,6 @@ export const formBaseStyles = css`
   color: ${colorStates.base.color};
   font-weight: normal;
   font-size: ${theme.fontSize[16]};
-  cursor: pointer;
 `;
 
 export const formBaseComponentStyles = css`

@@ -20,10 +20,10 @@ import { SelectComponentProps } from './Select';
 import {
   colorStates,
   conditionalBorderStyles,
-  conditionalStyleProps,
   formDropdownStyles,
   formFieldStyles,
 } from './styles/shared';
+import { conditionalStyleProps } from './styles/shared-system-props';
 import { parseOptions } from './utils';
 
 const { DropdownIndicator, SelectContainer } = SelectDropdownElements;
@@ -98,6 +98,7 @@ const customStyles: StylesConfig<OptionTypeBase, false> = {
   container: (provided) => ({
     ...provided,
     pointerEvents: 'visible',
+    cursor: 'pointer',
     width: '100%',
     minWidth: '7rem',
   }),
