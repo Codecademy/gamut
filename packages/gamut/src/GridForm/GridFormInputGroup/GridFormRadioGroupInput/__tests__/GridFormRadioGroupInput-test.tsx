@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { RadioGroup } from '../../../..';
 import { renderGridFormRadioGroupInput } from '../../__fixtures__/renderers';
 
 describe('GridFormRadioGroupInput', () => {
@@ -22,18 +23,38 @@ describe('GridFormRadioGroupInput', () => {
     });
   });
 
-  it('accepts JSX for the group label', () => {
-    const radioButtons = renderGridFormRadioGroupInput({
-      label: (
-        <div>
-          <span>Test Label</span>
-        </div>
-      ),
+  describe('aria-label', () => {
+    it('aria-label is set to the label by default', () => {
+      const radioButtons = renderGridFormRadioGroupInput({
+        label: 'Test Label',
+      });
+
+      expect(radioButtons.find(RadioGroup).props()['aria-label']).toBe(
+        'Test Label'
+      );
     });
 
-    console.log(radioButtons.debug());
+    it('aria-label is overridden by the ariaLabel prop', () => {
+      const radioButtons = renderGridFormRadioGroupInput({
+        label: 'Test Label',
+        ariaLabel: 'Overridden Test Label',
+      });
 
-    expect(radioButtons.text()).toContain('Test Label');
+      expect(radioButtons.find(RadioGroup).props()['aria-label']).toBe(
+        'Overridden Test Label'
+      );
+    });
+
+    it('aria-label is used when JSX is passed to the label', () => {
+      const radioButtons = renderGridFormRadioGroupInput({
+        label: <img alt="" src="" />,
+        ariaLabel: 'Overridden Test Label',
+      });
+
+      expect(radioButtons.find(RadioGroup).props()['aria-label']).toBe(
+        'Overridden Test Label'
+      );
+    });
   });
 
   describe('when label is passed as a ReactNode', () => {
