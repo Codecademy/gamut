@@ -12,7 +12,7 @@ import {
 const action = jest.fn();
 
 const link1Href = 'https://codecademy.com';
-const link2Href = 'https://news.codecademy.com';
+const link2Href = 'https://codecademy.com/resources/blog';
 
 const fillButtonTestId = 'app-header-link-sign-up';
 const fillButtonText = 'sign up';
