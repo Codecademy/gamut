@@ -71,7 +71,6 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
 
     return (
       <RadioWrapper className={className}>
-        {console.log(styleState, label)}
         <RadioInput
           id={inputId}
           name={name}
