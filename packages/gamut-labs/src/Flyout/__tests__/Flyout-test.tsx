@@ -32,21 +32,21 @@ describe('Flyout', () => {
     expect(screen.queryByTestId('flyout-content')).toBe(null);
   });
 
-  it('renders flyout content when button is clicked', () => {
+  it('renders flyout content when button is clicked', async () => {
     renderFlyout();
     fireEvent.click(screen.getByText('Test'));
-    screen.getByTestId('flyout-content');
+    await waitFor(() => screen.getByTestId('flyout-content'));
   });
 
   describe('clicking outside the flyout', () => {
-    it('closes flyout when clickOutsideCloses is true', async () => {
-      renderFlyout({ expanded: true, clickOutsideCloses: true });
+    it('closes flyout when clickOutsideCloses is true', () => {
+      const onToggle = jest.fn();
+
+      renderFlyout({ expanded: true, clickOutsideCloses: true, onToggle });
 
       fireEvent.mouseDown(screen.getByTestId('flyout-outside'));
 
-      await waitFor(() =>
-        expect(screen.queryByTestId('flyout-content')).toBe(null)
-      );
+      expect(onToggle.mock.calls.length).toBe(1);
     });
 
     it('does not close flyout when clickOutsideCloses is false', async () => {
@@ -65,16 +65,17 @@ describe('Flyout', () => {
   });
 
   describe('pressing the escape key', () => {
-    it('closes flyout when escapeCloses is true', async () => {
-      const { view } = renderFlyout({ expanded: true });
+    it('closes flyout when escapeCloses is true', () => {
+      const onToggle = jest.fn();
+
+      const { view } = renderFlyout({ expanded: true, onToggle });
+
       fireEvent.keyDown(view.baseElement, {
         key: 'Escape',
         code: 'Escape',
       });
 
-      await waitFor(() =>
-        expect(screen.queryByTestId('flyout-content')).toBe(null)
-      );
+      expect(onToggle.mock.calls.length).toBe(1);
     });
 
     it('does not close flyout when escapeCloses is false', () => {
