@@ -1,12 +1,19 @@
 import React from 'react';
-import { FieldError, Mode, SubmitHandler, useForm } from 'react-hook-form';
+import {
+  FieldError,
+  FormProvider,
+  Mode,
+  SubmitHandler,
+  useForm,
+} from 'react-hook-form';
 
 import { TextButtonProps } from '../Button';
 import { Form } from '../Form';
 import { LayoutGrid, LayoutGridProps } from '../Layout';
 import { GridFormButtons, GridFormSubmitProps } from './GridFormButtons';
 import { GridFormInputGroup } from './GridFormInputGroup';
-import { GridFormField } from './types';
+import { GridFormSection } from './GridFormSection';
+import { GridFormField, GridFormSectionType } from './types';
 
 export * from './types';
 
@@ -27,7 +34,7 @@ export type GridFormProps<Values extends {}> = {
   /**
    * Descriptions of any fields comprising the form.
    */
-  fields?: GridFormField[];
+  fields?: GridFormField[] | GridFormSectionType[];
 
   /**
    * Renders a cancel button with the provided child text and onClick function.
@@ -81,6 +88,8 @@ export function GridForm<
   validation = 'onSubmit',
   showRequired = false,
 }: GridFormProps<Values>) {
+  const hasSections = fields[0]?.fields;
+
   const {
     errors,
     handleSubmit,
@@ -95,7 +104,6 @@ export function GridForm<
       }),
       {}
     ),
-    mode: validation,
   });
 
   /**
@@ -105,40 +113,48 @@ export function GridForm<
   let pastFirstError = false;
 
   return (
-    <Form className={className} onSubmit={handleSubmit(onSubmit)} noValidate>
-      <LayoutGrid columnGap={columnGap} rowGap={rowGap}>
-        {fields.map((field) => {
-          const errorMessage = (errors[field.name] as FieldError)?.message;
-          const isFirstError = !pastFirstError && errorMessage !== undefined;
-          pastFirstError = pastFirstError || isFirstError;
-          const requiredBoolean = !!(
-            field.type !== 'hidden' &&
-            field.type !== 'sweet-container' &&
-            field.validation?.required
-          );
+    <FormProvider>
+      <Form className={className} onSubmit={handleSubmit(onSubmit)} noValidate>
+        <LayoutGrid columnGap={columnGap} rowGap={rowGap}>
+          {!hasSections ? (
+            fields.map((field) => {
+              const errorMessage = (errors[field.name] as FieldError)?.message;
+              const isFirstError =
+                !pastFirstError && errorMessage !== undefined;
+              pastFirstError = pastFirstError || isFirstError;
+              const requiredBoolean = !!(
+                field.type !== 'hidden' &&
+                field.type !== 'sweet-container' &&
+                field.validation?.required
+              );
 
-          return (
-            <GridFormInputGroup
-              error={errorMessage as string}
-              isFirstError={isFirstError}
-              field={field}
-              key={field.name}
-              register={register}
-              setValue={setValue}
-              required={requiredBoolean}
-              showRequired={showRequired}
-            />
-          );
-        })}
-        <GridFormButtons
-          cancel={cancel}
-          {...submit}
-          disabled={
-            (validation === 'onChange' && !formState.isValid) || submit.disabled
-          }
-        />
-        {children}
-      </LayoutGrid>
-    </Form>
+              return (
+                <GridFormInputGroup
+                  error={errorMessage as string}
+                  isFirstError={isFirstError}
+                  field={field}
+                  key={field.name}
+                  register={register}
+                  setValue={setValue}
+                  required={requiredBoolean}
+                  showRequired={showRequired}
+                />
+              );
+            })
+          ) : (
+            <div>updog</div>
+          )}
+          <GridFormButtons
+            cancel={cancel}
+            {...submit}
+            disabled={
+              (validation === 'onChange' && !formState.isValid) ||
+              submit.disabled
+            }
+          />
+          {children}
+        </LayoutGrid>
+      </Form>
+    </FormProvider>
   );
 }

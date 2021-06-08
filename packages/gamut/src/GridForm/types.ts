@@ -133,3 +133,23 @@ export type GridFormField =
   | GridFormTextAreaField
   | GridFormHiddenField
   | GridFormSweetContainerField;
+
+export type GridFormSectionType = {
+  title: string;
+  as: any;
+  fields: GridFormField[];
+};
+
+const isGridFormSection = (
+  field: GridFormField | GridFormSection
+): field is GridFormSection => {
+  return (field as GridFormSection).title !== undefined;
+};
+
+const getFields = (fields: any) => {
+  if (fields[0]?.fields) {
+    return fields.flatMap((field) => field.field);
+  } else {
+    return fields;
+  }
+};
