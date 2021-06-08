@@ -119,14 +119,13 @@ export const radioLabel = system.css({
   alignItems: 'center',
   cursor: 'pointer',
   position: 'relative',
+  '&::before, &::after': consistentLabelStyles,
   '&::before': {
-    ...consistentLabelStyles,
     bg: 'background',
     boxShadow: `0 0 0 1px ${theme.colors.primary}`,
     transition: timing.slow,
   },
   '&::after': {
-    ...consistentLabelStyles,
     position: 'absolute',
     transition: `transform ${timing.slow} ease-in-out`,
     borderWidth: 5,
