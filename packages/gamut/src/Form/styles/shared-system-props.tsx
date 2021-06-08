@@ -115,7 +115,7 @@ const consistentLabelStyles = {
 
 export const radioLabel = system.css({
   display: 'flex',
-  padding: '1rem 0',
+  py:  16,
   alignItems: 'center',
   cursor: 'pointer',
   position: 'relative',
