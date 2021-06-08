@@ -8,7 +8,11 @@ import { Flyout, FlyoutProps } from '..';
 const FlyoutContainer: React.FC<Partial<FlyoutProps>> = (props) => {
   return (
     <div data-testid="flyout-outside">
-      <Flyout {...props} button={<button type="button">Test</button>}>
+      <Flyout
+        onToggle={() => null}
+        {...props}
+        button={<button type="button">Test</button>}
+      >
         <div data-testid="flyout-content">Howdy!</div>
       </Flyout>
     </div>
@@ -34,44 +38,52 @@ describe('Flyout', () => {
     screen.getByTestId('flyout-content');
   });
 
-  it('closes flyout when escape key is clicked and escapeCloses is true', async () => {
-    const { view } = renderFlyout({ expanded: true });
-    fireEvent.keyDown(view.baseElement, {
-      key: 'Escape',
-      code: 'Escape',
+  describe('clicking outside the flyout', () => {
+    it('closes flyout when clickOutsideCloses is true', async () => {
+      renderFlyout({ expanded: true, clickOutsideCloses: true });
+
+      fireEvent.mouseDown(screen.getByTestId('flyout-outside'));
+
+      await waitFor(() =>
+        expect(screen.queryByTestId('flyout-content')).toBe(null)
+      );
     });
 
-    await waitFor(() =>
-      expect(screen.queryByTestId('flyout-content')).toBe(null)
-    );
-  });
+    it('does not close flyout when clickOutsideCloses is false', async () => {
+      renderFlyout({ expanded: true, clickOutsideCloses: false });
 
-  it('does not close flyout when escape key is clicked and escapeCloses is false', () => {
-    const { view } = renderFlyout({ expanded: true, escapeCloses: false });
-    fireEvent.keyDown(view.baseElement, {
-      key: 'Escape',
-      code: 'Escape',
+      fireEvent.mouseDown(screen.getByTestId('flyout-outside'));
+
+      await waitFor(() => screen.getByTestId('flyout-content'));
     });
-    screen.getByTestId('flyout-content');
-  });
-
-  it('closes flyout when clicking outside flyout and clickOutsideCloses is true', async () => {
-    renderFlyout({ expanded: true });
-    fireEvent.mouseDown(screen.getByTestId('flyout-outside'));
-    await waitFor(() =>
-      expect(screen.queryByTestId('flyout-content')).toBe(null)
-    );
-  });
-
-  it('does not close flyout when clicking outside flyout and clickOutsideCloses is false', () => {
-    renderFlyout({ expanded: true, clickOutsideCloses: false });
-    fireEvent.mouseDown(screen.getByTestId('flyout-outside'));
-    screen.getByTestId('flyout-content');
   });
 
   it('does not close flyout when clicking inside flyout', () => {
     renderFlyout({ expanded: true });
     fireEvent.mouseDown(screen.getByTestId('flyout-content'));
     screen.getByTestId('flyout-content');
+  });
+
+  describe('pressing the escape key', () => {
+    it('closes flyout when escapeCloses is true', async () => {
+      const { view } = renderFlyout({ expanded: true });
+      fireEvent.keyDown(view.baseElement, {
+        key: 'Escape',
+        code: 'Escape',
+      });
+
+      await waitFor(() =>
+        expect(screen.queryByTestId('flyout-content')).toBe(null)
+      );
+    });
+
+    it('does not close flyout when escapeCloses is false', () => {
+      const { view } = renderFlyout({ expanded: true, escapeCloses: false });
+      fireEvent.keyDown(view.baseElement, {
+        key: 'Escape',
+        code: 'Escape',
+      });
+      screen.getByTestId('flyout-content');
+    });
   });
 });
