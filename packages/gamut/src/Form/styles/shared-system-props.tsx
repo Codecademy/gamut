@@ -115,18 +115,17 @@ const consistentLabelStyles = {
 
 export const radioLabel = system.css({
   display: 'flex',
-  padding: '1rem 0',
+  py:  16,
   alignItems: 'center',
   cursor: 'pointer',
   position: 'relative',
+  '&::before, &::after': consistentLabelStyles,
   '&::before': {
-    ...consistentLabelStyles,
     bg: 'background',
     boxShadow: `0 0 0 1px ${theme.colors.primary}`,
     transition: timing.slow,
   },
   '&::after': {
-    ...consistentLabelStyles,
     position: 'absolute',
     transition: `transform ${timing.slow} ease-in-out`,
     borderWidth: 5,
@@ -173,36 +172,28 @@ export const conditionalRadioLabelStyles = system.variant({
 });
 
 export const conditionalRadioInputStyles = system.variant({
+  base: {
+      '&:checked + label::before': {
+        boxShadow: `0 0 0 1px currentColor`,
+      },
+      '&:hover + label::before,
+       &:focus + label::before': {
+        boxShadow: `0 0 0 2px currentColor`,
+      },
+      '': {
+        boxShadow: `0 0 0 2px currentColor`,
+      },
+   },
   variants: {
     error: {
       '&:checked + label::after': {
         bg: 'danger',
-      },
-      '&:checked + label::before': {
-        boxShadow: `0 0 0 1px currentColor`,
-      },
-
-      '&:hover + label::before': {
-        boxShadow: `0 0 0 2px currentColor`,
-      },
-      '&:focus + label::before': {
-        boxShadow: `0 0 0 2px currentColor`,
       },
     },
     disabled: {
       ...formFieldBaseDisabledStyles,
       '&:checked + label::after': {
         bg: 'currentColor',
-      },
-      '&:checked + label::before': {
-        boxShadow: `0 0 0 1px currentColor`,
-      },
-
-      '&:hover + label::before': {
-        boxShadow: `0 0 0 2px currentColor`,
-      },
-      '&:focus + label::before': {
-        boxShadow: `0 0 0 2px currentColor`,
       },
     },
   },
