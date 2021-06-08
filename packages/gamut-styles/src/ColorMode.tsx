@@ -84,12 +84,7 @@ export const ColorMode = forwardRef<
 
   return (
     <ThemeProvider theme={{ mode }}>
-      <VariableProvider
-        variables={variables}
-        textColor="text"
-        {...rest}
-        ref={ref}
-      />
+      <VariableProvider variables={variables} {...rest} ref={ref} />
     </ThemeProvider>
   );
 });
