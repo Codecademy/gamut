@@ -89,7 +89,7 @@ export const resourcesDropdown: AppHeaderSimpleDropdownItem = {
     },
     {
       id: 'blog',
-      href: 'https://news.codecademy.com/',
+      href: 'https://codecademy.com/resources/blog',
       newTab: true,
       trackingTarget: 'topnav_resources_blog',
       text: 'Blog',
