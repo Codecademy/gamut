@@ -3,44 +3,47 @@ import { GamutIconProps } from '@codecademy/gamut-icons';
 import styled from '@emotion/styled';
 import React from 'react';
 
+import type { SocialMediaSharingProps } from '.';
+
 const IconLink = styled(Box)`
   &:last-of-type {
     margin-right: 0;
   }
 `.withComponent(Anchor);
 
-type SocialShareIconLinkProps = {
-  id: string;
+type SocialShareIconLinkProps = Pick<
+  SocialMediaSharingProps,
+  'size' | 'sectionId' | 'variant'
+> & {
   icon: React.ComponentType<GamutIconProps>;
+  id: string;
   href: string;
-  small?: boolean;
-  track?: (e: React.MouseEvent) => void;
-  sectionId?: string;
-  white?: boolean;
+  onClick?: (e: React.MouseEvent) => void;
 };
 
 export const SocialShareIconLink: React.FC<SocialShareIconLinkProps> = ({
   icon: IconComponent,
   id,
   href,
-  small,
-  track,
+  onClick,
+  size,
   sectionId,
-  white,
+  variant,
 }) => {
-  const onClick = (e: React.MouseEvent) => {
+  const onIconClick = (e: React.MouseEvent) => {
     e.preventDefault();
-    track?.(e);
-    const left = (screen.width - 570) / 2; // eslint-disable-line no-restricted-globals
-    const top = (screen.height - 570) / 2; // eslint-disable-line no-restricted-globals
-    const features = `menubar=no,toolbar=no,status=no,width=570,height=570,top=${top},left=${left}`;
+    onClick?.(e);
+    const popupSize = 570;
+    const left = (screen.width - popupSize) / 2;
+    const top = (screen.height - popupSize) / 2;
+    const features = `menubar=no,toolbar=no,status=no,width=${popupSize},height=${popupSize},top=${top},left=${left}`;
     window.open(href, '_blank', features)?.focus();
   };
 
   return (
     <IconLink
       href={href}
-      onClick={onClick}
+      onClick={onIconClick}
       target="_blank"
       rel="noopener noreferrer"
       aria-label={`share on ${id}`}
@@ -48,15 +51,15 @@ export const SocialShareIconLink: React.FC<SocialShareIconLinkProps> = ({
       mr={16}
       lineHeight={0}
       borderStyle="solid"
-      borderWidth={small ? 1 : 2}
-      borderColor={white ? 'white' : 'black'}
+      borderWidth={size === 'small' ? 1 : 2}
+      borderColor={variant}
       borderRadius="50%"
     >
       <IconComponent
         title={id}
         titleId={`${sectionId}-${id}`}
-        size={small ? 16 : 24}
-        color={white ? 'white' : 'black'}
+        size={size === 'small' ? 16 : 24}
+        color={variant}
       />
     </IconLink>
   );

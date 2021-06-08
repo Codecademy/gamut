@@ -1,6 +1,6 @@
 import { setupRtl } from '@codecademy/gamut-tests';
 
-import { SocialMediaSharing } from '..';
+import { SOCIAL_SHARING_PLATFORMS, SocialMediaSharing } from '..';
 
 const url = 'https://easytofindurl.com';
 const renderView = setupRtl(SocialMediaSharing, { url });
@@ -8,7 +8,9 @@ const renderView = setupRtl(SocialMediaSharing, { url });
 describe('SocialMediaSharing', () => {
   it('Renders share links when just given a URL', () => {
     const { view } = renderView();
-    expect(view.getAllByRole('link')).toHaveLength(3);
+    expect(view.getAllByRole('link')).toHaveLength(
+      SOCIAL_SHARING_PLATFORMS.length
+    );
   });
 
   it('Displays the contents of label prop', () => {
@@ -26,6 +28,6 @@ describe('SocialMediaSharing', () => {
     const { view } = renderView({ sectionId: 'header' });
     expect(
       view.container.querySelectorAll('[aria-labelledby*="header"]')
-    ).toHaveLength(3);
+    ).toHaveLength(SOCIAL_SHARING_PLATFORMS.length);
   });
 });

@@ -15,10 +15,11 @@ export type SocialMediaShare = {
   mention?: string;
 };
 
-export const shareLinkCreator = (
+export const createShareLink = (
   formatter: (payload: SocialMediaShare) => Record<string, string>,
-  baseUri: string
-) => (payload: SocialMediaShare) => {
+  baseUri: string,
+  payload: SocialMediaShare
+) => {
   const params = formatter(payload);
   const url = new URL(baseUri);
 
@@ -62,16 +63,16 @@ export const SOCIAL_SHARING_PLATFORMS = [
   },
 ];
 
-type SocialMediaSharingProps = {
+export type SocialMediaSharingProps = {
   url: string;
   message?: string;
   hashtags?: string[];
   mention?: string;
   action?: (e: React.MouseEvent, target: string) => void;
   label?: string;
-  small?: boolean;
   sectionId?: string;
-  white?: boolean;
+  size?: 'small' | 'normal';
+  variant?: 'black' | 'white';
   iconStyles?: string;
 };
 
@@ -82,15 +83,15 @@ export const SocialMediaSharing: React.FC<SocialMediaSharingProps> = ({
   mention,
   action,
   label,
-  small,
   sectionId,
-  white,
+  size = 'normal',
+  variant = 'black',
   iconStyles,
 }) => (
   <Box display="inline-flex" flexDirection="column" textAlign="center">
     {label && (
       <Text
-        fontSize={small ? 14 : 16}
+        fontSize={size === 'small' ? 14 : 16}
         textColor="gray-900"
         mb={16}
         data-testid="social-sharing-label"
@@ -104,19 +105,16 @@ export const SocialMediaSharing: React.FC<SocialMediaSharingProps> = ({
           key={id}
           id={id}
           sectionId={sectionId}
-          href={shareLinkCreator(
-            formatShare,
-            baseUrl
-          )({
+          href={createShareLink(formatShare, baseUrl, {
             url,
             message,
             hashtags,
             mention,
           })}
           icon={icon}
-          small={small}
-          track={(e) => action?.(e, `${id}_share`)}
-          white={white}
+          size={size}
+          onClick={(e) => action?.(e, `${id}_share`)}
+          variant={variant}
         />
       ))}
     </FlexBox>
