@@ -6,6 +6,7 @@ import {
 } from '@codecademy/gamut-icons';
 import React from 'react';
 
+import type { BaseSocialShareProps } from './SocialShareIconLink';
 import { SocialShareIconLink } from './SocialShareIconLink';
 
 export type SocialMediaShare = {
@@ -63,16 +64,13 @@ export const SOCIAL_SHARING_PLATFORMS = [
   },
 ];
 
-export type SocialMediaSharingProps = {
+export type SocialMediaSharingProps = BaseSocialShareProps & {
   url: string;
   message?: string;
   hashtags?: string[];
   mention?: string;
   action?: (e: React.MouseEvent, target: string) => void;
   label?: string;
-  sectionId?: string;
-  size?: 'small' | 'normal';
-  variant?: 'black' | 'white';
   iconStyles?: string;
 };
 

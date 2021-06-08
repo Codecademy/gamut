@@ -3,18 +3,19 @@ import { GamutIconProps } from '@codecademy/gamut-icons';
 import styled from '@emotion/styled';
 import React from 'react';
 
-import type { SocialMediaSharingProps } from '.';
-
 const IconLink = styled(Box)`
   &:last-of-type {
     margin-right: 0;
   }
 `.withComponent(Anchor);
 
-type SocialShareIconLinkProps = Pick<
-  SocialMediaSharingProps,
-  'size' | 'sectionId' | 'variant'
-> & {
+export type BaseSocialShareProps = {
+  sectionId?: string;
+  size?: 'small' | 'normal';
+  variant?: 'black' | 'white';
+};
+
+export type SocialShareIconLinkProps = BaseSocialShareProps & {
   icon: React.ComponentType<GamutIconProps>;
   id: string;
   href: string;
