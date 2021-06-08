@@ -173,36 +173,28 @@ export const conditionalRadioLabelStyles = system.variant({
 });
 
 export const conditionalRadioInputStyles = system.variant({
+  base: {
+      '&:checked + label::before': {
+        boxShadow: `0 0 0 1px currentColor`,
+      },
+      '&:hover + label::before,
+       &:focus + label::before': {
+        boxShadow: `0 0 0 2px currentColor`,
+      },
+      '': {
+        boxShadow: `0 0 0 2px currentColor`,
+      },
+   },
   variants: {
     error: {
       '&:checked + label::after': {
         bg: 'danger',
-      },
-      '&:checked + label::before': {
-        boxShadow: `0 0 0 1px currentColor`,
-      },
-
-      '&:hover + label::before': {
-        boxShadow: `0 0 0 2px currentColor`,
-      },
-      '&:focus + label::before': {
-        boxShadow: `0 0 0 2px currentColor`,
       },
     },
     disabled: {
       ...formFieldBaseDisabledStyles,
       '&:checked + label::after': {
         bg: 'currentColor',
-      },
-      '&:checked + label::before': {
-        boxShadow: `0 0 0 1px currentColor`,
-      },
-
-      '&:hover + label::before': {
-        boxShadow: `0 0 0 2px currentColor`,
-      },
-      '&:focus + label::before': {
-        boxShadow: `0 0 0 2px currentColor`,
       },
     },
   },
