@@ -7,7 +7,8 @@ import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/blocks';
   title={title}
   component={Flyout}
   parameters={{
-    subtitle: 'A good description of the Flyout component',
+    subtitle:
+      'Flyout is a general container that is mobile/tablet menu navigation. On button click, a container animates in from the left side of the window. It can be configured to close by pressing the "X" close icon, pressing they "esc" key, or using the `onToggle` callback prop for customizability.',
     source: 'gamut-labs',
     status: 'updating',
   }}
@@ -17,14 +18,7 @@ import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/blocks';
   <Story name="Flyout">
     {(args) => (
       <Box height="20rem">
-        <Flyout
-          openFrom="left"
-          button={
-            <TextButton height="5rem" width="5rem">
-              chiller time
-            </TextButton>
-          }
-        >
+        <Flyout openFrom="left" button={<TextButton>chiller time</TextButton>}>
           <Box bg="navy" textColor="white" margin={16}>
             Baharroth - Baharroth, "the Cry of the Wind," is the Winged Phoenix,
             the oldest of the Swooping Hawks and the first Exarch of those
