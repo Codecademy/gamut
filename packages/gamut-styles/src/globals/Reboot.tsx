@@ -117,12 +117,6 @@ const rebootStyles = css`
     margin-bottom: ${theme.spacing[16]};
   }
 
-  /** This ensures that locally scoped variables apply to elements with low specificitiy -
-   color inherited from other contexts fails to update the color */
-  div {
-    color: ${theme.colors.text};
-  }
-
   /*
   Abbreviations
   1. Remove the bottom border in Firefox 39-.

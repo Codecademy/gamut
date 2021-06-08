@@ -6,6 +6,7 @@ import React, { ComponentProps, forwardRef, useMemo } from 'react';
 
 import {
   color,
+  css,
   flex,
   grid,
   layout,
@@ -55,7 +56,7 @@ export const VariableProvider = styled('div', styledConfig)<
     variables?: CSSObject;
     alwaysSetVariables?: boolean;
   }
->(({ variables }) => variables, providerProps);
+>(({ variables }) => variables, css({ textColor: 'text' }), providerProps);
 
 export const ColorMode = forwardRef<
   HTMLDivElement,
