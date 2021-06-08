@@ -45,7 +45,8 @@ export const LayoutMenu: React.FC<LayoutMenuProps> = ({
   showLogoOnFlyout,
   children,
 }) => {
-  const [expanded, setExpanded] = useState(false);
+  const [flyoutOpen, toggleFlyout] = useState<boolean>(false);
+
   return (
     <nav>
       <Box display={{ _: 'block', lg: 'none' }}>
@@ -58,8 +59,8 @@ export const LayoutMenu: React.FC<LayoutMenuProps> = ({
               {mobileButtonText}
             </StrokeButton>
           }
-          expanded={expanded}
-          onToggle={() => setExpanded(!expanded)}
+          expanded={flyoutOpen}
+          onToggle={() => toggleFlyout(!flyoutOpen)}
         >
           <Box bg="white" height={1} p={16} overflow="scroll">
             {showLogoOnFlyout && <Logo mb={32} />}
@@ -72,7 +73,7 @@ export const LayoutMenu: React.FC<LayoutMenuProps> = ({
                   item: SectionItem,
                   sectionSlug: string
                 ) => {
-                  setExpanded(!expanded);
+                  toggleFlyout(!flyoutOpen);
                   onSectionItemClick(item, sectionSlug);
                 }}
                 selectedItem={selectedItem}
