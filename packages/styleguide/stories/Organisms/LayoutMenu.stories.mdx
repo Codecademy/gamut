@@ -51,7 +51,9 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
     onSectionItemClick: (item) => {
       // eslint-disable-next-line no-console
       console.log(
-        `You should handle where the link goes here and also could add event tracking. You have access to the menu item: ${item}`
+        `You should handle where the link goes here and also could add event tracking. You have access to the menu item: ${JSON.stringify(
+          item
+        )}`
       );
     },
     mobileButtonText: 'Click Me',
