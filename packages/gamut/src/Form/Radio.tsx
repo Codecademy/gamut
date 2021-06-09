@@ -94,10 +94,6 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
           >
             {label}
           </RadioLabel>
-
-          <Text as="div" href="https://cassie-spain.com/">
-            Hello World
-          </Text>
         </RadioWrapper>
       </Box>
     );
