@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [34.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@34.0.2...@codecademy/gamut@34.1.0) (2021-06-09)
+
+
+### Features
+
+* **GridFormRadioGroupInput:** Can use a ReactNode for labels ([990113b](https://github.com/Codecademy/client-modules/commit/990113bc1c4ed5aab38a3d9656f36810e070a940))
+
+
+
 ### [34.0.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@34.0.1...@codecademy/gamut@34.0.2) (2021-06-07)
 
 **Note:** Version bump only for package @codecademy/gamut
