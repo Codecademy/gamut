@@ -25,7 +25,6 @@ export enum InputSelectors {
   BEFOREANDAFTER = '&::before, &::after',
   CHECKEDBEFORE = '&:checked + label::before',
   CHECKEDAFTER = '&:checked + label::after',
-  FOCUSBEFORE = '&:focus + label::before',
   HOVERFOCUSBEFORE = '&:hover + label::before, &:focus + label::before',
 }
 export const formBaseComponentStyles = {
@@ -130,6 +129,7 @@ const consistentLabelStyles = {
 } as const;
 
 export const radioLabel = system.css({
+  ...formBaseComponentStyles,
   display: 'flex',
   py: 16,
   alignItems: 'center',
@@ -162,10 +162,7 @@ export const radioInput = system.css({
   [InputSelectors.CHECKEDBEFORE]: {
     boxShadow: `0 0 0 1px ${theme.colors.primary}`,
   },
-  [InputSelectors.CHECKEDAFTER]: {
-    boxShadow: `0 0 0 2px ${theme.colors.primary}`,
-  },
-  [InputSelectors.FOCUSBEFORE]: {
+  [InputSelectors.HOVERFOCUSBEFORE]: {
     boxShadow: `0 0 0 2px ${theme.colors.primary}`,
   },
 });
@@ -194,9 +191,6 @@ export const conditionalRadioInputStyles = system.variant({
     [InputSelectors.HOVERFOCUSBEFORE]: {
       boxShadow: `0 0 0 2px currentColor`,
     },
-    '': {
-      boxShadow: `0 0 0 2px currentColor`,
-    },
   },
   variants: {
     error: {
@@ -206,7 +200,7 @@ export const conditionalRadioInputStyles = system.variant({
     },
     disabled: {
       ...formFieldBaseDisabledStyles,
-      '&:checked + label::after': {
+      [InputSelectors.BEFORE]: {
         bg: 'currentColor',
       },
     },
