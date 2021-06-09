@@ -603,15 +603,15 @@ describe('states', () => {
     });
 
     expect(myStates({ theme, cool: true })).toEqual({
-      margin: 4,
+      margin: '0.25rem',
     });
 
     expect(myStates({ theme, cool: true, beans: true })).toEqual({
-      margin: 8,
+      margin: '0.5rem',
     });
 
     expect(myStates({ theme, cool: true, beans: true, dude: true })).toEqual({
-      margin: 16,
+      margin: '1rem',
     });
   });
 });
