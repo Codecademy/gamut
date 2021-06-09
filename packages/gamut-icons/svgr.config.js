@@ -6,8 +6,9 @@ module.exports = {
   titleProp: true,
   ref: true,
   svgProps: {
-    width: '{size || width || "16px"}',
-    height: '{size || height || "16px"}',
+    className: '{classNames}',
+    width: '{size || getAttrValue(width) || "16px"}',
+    height: '{size || getAttrValue(height) || "16px"}',
     fill: '{color || "currentColor"}',
     role: 'img',
   },

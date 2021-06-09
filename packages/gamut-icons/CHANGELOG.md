@@ -3,6 +3,138 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@5.0.0...@codecademy/gamut-icons@5.1.0) (2021-06-07)
+
+
+### Features
+
+* **icons:** Adds LE trophy and certificate filled icons ([94da1f6](https://github.com/Codecademy/client-modules/commit/94da1f655d2b47e9148e9ca4174eeec440e43824))
+
+
+
+## [5.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@4.14.5...@codecademy/gamut-icons@5.0.0) (2021-06-03)
+
+
+### ⚠ BREAKING CHANGES
+
+* release -kit-4.7
+
+### Features
+
+* release -kit-4.7 ([1066f7b](https://github.com/Codecademy/client-modules/commit/1066f7b87f5fc37d5595324953964945c3d2b082))
+
+
+
+### [4.14.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@4.14.4...@codecademy/gamut-icons@4.14.5) (2021-06-02)
+
+**Note:** Version bump only for package @codecademy/gamut-icons
+
+
+
+
+
+### [4.14.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@4.14.3...@codecademy/gamut-icons@4.14.4) (2021-05-27)
+
+**Note:** Version bump only for package @codecademy/gamut-icons
+
+
+
+
+
+### [4.14.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@4.14.2...@codecademy/gamut-icons@4.14.3) (2021-05-26)
+
+
+### Bug Fixes
+
+* Fix Storybook crashes caused by circular object references on uncalled Icon components ([6f47eab](https://github.com/Codecademy/client-modules/commit/6f47eab224c9d17223c9943223731a5c524ad449)), closes [/github.com/storybookjs/storybook/blob/next/addons/docs/src/frameworks/react/jsxDecorator.tsx#L117](https://github.com/Codecademy//github.com/storybookjs/storybook/blob/next/addons/docs/src/frameworks/react/jsxDecorator.tsx/issues/L117) [/github.com/algolia/react-element-to-jsx-string/blob/master/src/formatter/sortObject.js#L3](https://github.com/Codecademy//github.com/algolia/react-element-to-jsx-string/blob/master/src/formatter/sortObject.js/issues/L3)
+
+
+
+### [4.14.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@4.14.1...@codecademy/gamut-icons@4.14.2) (2021-05-25)
+
+**Note:** Version bump only for package @codecademy/gamut-icons
+
+
+
+
+
+### [4.14.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@4.14.0...@codecademy/gamut-icons@4.14.1) (2021-05-24)
+
+**Note:** Version bump only for package @codecademy/gamut-icons
+
+
+
+
+
+## [4.14.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@4.13.0...@codecademy/gamut-icons@4.14.0) (2021-05-19)
+
+
+### Features
+
+* **Popover:** use theme.colors.secondary for outline color ([63e0779](https://github.com/Codecademy/client-modules/commit/63e07790c4b0c2966b569a7af9ed3aba33aeb06b))
+
+
+
+## [4.13.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@4.12.2...@codecademy/gamut-icons@4.13.0) (2021-05-18)
+
+
+### Features
+
+* **theme:** createTheme self containment ([59ddff7](https://github.com/Codecademy/client-modules/commit/59ddff7224cd8e0972212dd6ba1696f40ccac835)), closes [#666666](https://github.com/Codecademy/client-modules/issues/666666) [#666666](https://github.com/Codecademy/client-modules/issues/666666)
+
+
+
+### [4.12.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@4.12.1...@codecademy/gamut-icons@4.12.2) (2021-05-12)
+
+**Note:** Version bump only for package @codecademy/gamut-icons
+
+
+
+
+
+### [4.12.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@4.12.0...@codecademy/gamut-icons@4.12.1) (2021-05-11)
+
+**Note:** Version bump only for package @codecademy/gamut-icons
+
+
+
+
+
+## [4.12.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@4.11.1...@codecademy/gamut-icons@4.12.0) (2021-05-10)
+
+
+### Features
+
+* add new DropdownButton component and workspace icons ([9513181](https://github.com/Codecademy/client-modules/commit/9513181e25a36072e88945fe617996707f23c791))
+
+
+
+### [4.11.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@4.11.0...@codecademy/gamut-icons@4.11.1) (2021-05-07)
+
+**Note:** Version bump only for package @codecademy/gamut-icons
+
+
+
+
+
+## [4.11.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@4.10.0...@codecademy/gamut-icons@4.11.0) (2021-05-06)
+
+
+### Features
+
+* **Icon:** Adds system props to all icons [GM-218] ([4354d91](https://github.com/Codecademy/client-modules/commit/4354d919a561af58975014c8ff1bfd2d5c72077a))
+
+
+
+## [4.10.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@4.9.1...@codecademy/gamut-icons@4.10.0) (2021-05-05)
+
+
+### Features
+
+* adding icons for Business repo ([007d386](https://github.com/Codecademy/client-modules/commit/007d386646be73788a9f134a42c800d981df188b))
+
+
+
 ### [4.9.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@4.9.0...@codecademy/gamut-icons@4.9.1) (2021-05-03)
 
 **Note:** Version bump only for package @codecademy/gamut-icons

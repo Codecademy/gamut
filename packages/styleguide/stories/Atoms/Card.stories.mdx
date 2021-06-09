@@ -1,4 +1,4 @@
-import { Card } from '@codecademy/gamut/src';
+import { Anchor, Card } from '@codecademy/gamut/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
@@ -41,5 +41,17 @@ We provide 3 style variants for Card.
   </Story>
   <Story name="Hyper" args={{ variant: 'hyper' }}>
     {(args) => <Card {...args} />}
+  </Story>
+</Canvas>
+
+## As links
+
+<Canvas>
+  <Story name="Link" args={{ shadow: 'medium' }}>
+    {(args) => (
+      <Anchor variant="interface">
+        <Card {...args} />
+      </Anchor>
+    )}
   </Story>
 </Canvas>

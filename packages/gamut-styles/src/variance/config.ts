@@ -151,6 +151,11 @@ export const background = {
 
 export const positioning = {
   position: { property: 'position' },
+  inset: {
+    property: 'inset',
+    properties: ['top', 'right', 'bottom', 'left'],
+    transform: transformSize,
+  },
   top: { property: 'top', transform: transformSize },
   right: { property: 'right', transform: transformSize },
   bottom: { property: 'bottom', transform: transformSize },

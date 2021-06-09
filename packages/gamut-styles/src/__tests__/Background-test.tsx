@@ -5,7 +5,7 @@ import { overArgs } from 'lodash';
 import React from 'react';
 
 import { Background } from '../Background';
-import { theme } from '../theme';
+import { coreTheme as theme } from '../themes';
 
 expect.extend(matchers);
 
@@ -31,10 +31,8 @@ const renderView = setupRtl(Background, {
 });
 
 const ActiveMode = () => {
-  const {
-    colorModes: { active },
-  } = useTheme();
-  return <div>{active}</div>;
+  const { mode } = useTheme();
+  return <div>{mode}</div>;
 };
 
 describe('Background', () => {

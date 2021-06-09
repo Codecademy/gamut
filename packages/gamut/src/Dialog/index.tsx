@@ -3,12 +3,13 @@ import { styledConfig, system } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React, { ComponentProps } from 'react';
 
+import { Box } from '../Box';
 import { FillButton, IconButton, TextButton } from '../Button';
 import { FloatingCard } from '../FloatingCard/FloatingCard';
 import { Overlay, OverlayProps } from '../Overlay';
 import { Text } from '../Typography';
 
-const ShroudedOverlay = styled(Overlay)(system.css({ bg: 'shadow' }));
+const ShroudedOverlay = styled(Overlay)(system.css({ bg: 'shadow-opaque' }));
 
 export interface DialogProps
   extends Pick<
@@ -81,12 +82,7 @@ export const Dialog: React.FC<DialogProps> = ({
         role="dialog"
         pattern="checkerDense"
       >
-        <Text
-          as="h2"
-          fontSize={size === 'medium' ? 22 : 20}
-          lineHeight="base"
-          gridArea="title"
-        >
+        <Text as="h2" fontSize={20} lineHeight="base" gridArea="title">
           {title}
         </Text>
         <IconButton
@@ -98,10 +94,10 @@ export const Dialog: React.FC<DialogProps> = ({
           onClick={onCancel}
           gridArea="close"
         />
-        <Text as="p" gridArea="content">
+        <Box as="div" gridArea="content" data-testid="dialog-content">
           {children}
-        </Text>
-        {cancelCta?.children && (
+        </Box>
+        {cancelCta && (
           <TextButton
             {...cancelCta}
             onClick={onCancel}
