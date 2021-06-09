@@ -127,7 +127,7 @@ export const radioLabel = system.css({
   },
   '&::after': {
     position: 'absolute',
-    transition: `transform ${timing.slow} ease-in-out`,
+    transition: transitionConcat(['transform'], 'slow', 'ease-in-out'),
     borderWidth: 5,
     borderStyle: 'solid',
     borderColor: 'background',
