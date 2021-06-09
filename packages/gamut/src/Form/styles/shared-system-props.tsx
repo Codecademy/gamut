@@ -50,7 +50,7 @@ const formFieldBaseDisabledStyles = {
 } as const;
 
 const formFieldDisabledStyles = {
-  formFieldBaseDisabledStyles,
+  ...formFieldBaseDisabledStyles,
   bg: 'backgroundEmphasized',
   [InputSelectors.HOVER]: {
     borderColor: 'currentColor',
@@ -139,7 +139,6 @@ export const radioLabel = system.css({
   [InputSelectors.BEFORE]: {
     bg: 'background',
     boxShadow: `0 0 0 1px ${theme.colors.primary}`,
-    transition: timing.slow,
   },
   [InputSelectors.AFTER]: {
     position: 'absolute',
