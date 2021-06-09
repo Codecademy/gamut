@@ -1,4 +1,9 @@
-import { serializeTokens, StyleProps, variance } from '@codecademy/variance';
+import {
+  serializeTokens,
+  StyleProps,
+  ThemeProps,
+  variance,
+} from '@codecademy/variance';
 import { CSSObject, Theme, ThemeProvider, useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
 import { mapValues } from 'lodash';
@@ -34,6 +39,19 @@ export const providerProps = variance.compose(
   positioning,
   space
 );
+
+export const modeColorProps = ({
+  theme,
+  mode,
+}: ThemeProps<{ mode?: ColorModes }>) => {
+  if (!theme || !mode || mode === theme?.mode) return {};
+  const { colors } = theme;
+  return serializeTokens(
+    mapValues(theme?.modes[mode], (color) => colors[color]),
+    'color',
+    theme
+  ).variables;
+};
 
 export function useColorModes(): [
   ColorModes,
