@@ -148,7 +148,7 @@ const isGridFormSection = (
 
 const getFields = (fields: any) => {
   if (fields[0]?.fields) {
-    return fields.flatMap((field) => field.field);
+    return fields.flatMap((field) => field.fields);
   } else {
     return fields;
   }
