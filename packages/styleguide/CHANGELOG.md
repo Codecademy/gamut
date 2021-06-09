@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [41.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@41.3.1...@codecademy/styleguide@41.4.0) (2021-06-09)
+
+
+### Features
+
+* Add AvatarChooser component ([86471e3](https://github.com/Codecademy/client-modules/commit/86471e36c7c8304661a45ae7b9e1083bf74a4574))
+
+
+
 ### [41.3.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@41.3.0...@codecademy/styleguide@41.3.1) (2021-06-09)
 
 **Note:** Version bump only for package @codecademy/styleguide
