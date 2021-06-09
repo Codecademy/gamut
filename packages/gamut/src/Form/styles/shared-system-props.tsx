@@ -115,7 +115,7 @@ const consistentLabelStyles = {
 
 export const radioLabel = system.css({
   display: 'flex',
-  py:  16,
+  py: 16,
   alignItems: 'center',
   cursor: 'pointer',
   position: 'relative',
@@ -173,17 +173,16 @@ export const conditionalRadioLabelStyles = system.variant({
 
 export const conditionalRadioInputStyles = system.variant({
   base: {
-      '&:checked + label::before': {
-        boxShadow: `0 0 0 1px currentColor`,
-      },
-      '&:hover + label::before,
-       &:focus + label::before': {
-        boxShadow: `0 0 0 2px currentColor`,
-      },
-      '': {
-        boxShadow: `0 0 0 2px currentColor`,
-      },
-   },
+    '&:checked + label::before': {
+      boxShadow: `0 0 0 1px currentColor`,
+    },
+    '&:hover + label::before, &:focus + label::before': {
+      boxShadow: `0 0 0 2px currentColor`,
+    },
+    '': {
+      boxShadow: `0 0 0 2px currentColor`,
+    },
+  },
   variants: {
     error: {
       '&:checked + label::after': {
