@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [19.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.0.5...@codecademy/gamut-labs@19.1.0) (2021-06-09)
+
+
+### Features
+
+* add SocialMediaSharing component ([bb65733](https://github.com/Codecademy/client-modules/commit/bb65733e8c88f1cadc31773ec4177558ce8a55df))
+
+
+
 ### [19.0.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.0.4...@codecademy/gamut-labs@19.0.5) (2021-06-07)
 
 
