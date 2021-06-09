@@ -10,7 +10,7 @@ import LinkTo from '@storybook/addon-links/react';
   parameters={{ status: 'updating', source: 'gamut' }}
 />
 
-For flex layouts we've added a specific flex <code>FlexBox</code> component that extends<code> <LinkTo kind="Layouts/Box">Box</LinkTo></code> with extra props for common flex configurations.
+For flex layouts we've added a specific flex <code>FlexBox</code> component that extends <LinkTo kind="Layouts/Box">Box</LinkTo> with extra props for common flex configurations.
 
 ## Usage Guidelines
 
@@ -19,7 +19,7 @@ For flex layouts we've added a specific flex <code>FlexBox</code> component that
 
 ## States
 
-FlexBox comes with a few helpful boolean props to make configuration easier, these exist as sorthands to make common configurations of props less verbose:
+FlexBox comes with a few helpful boolean props to make configuration easier (in addition to those on Box!), these exist as sorthands to make common configurations of props less verbose:
 
 ```tsx
 // display="inline-flex"
@@ -38,33 +38,9 @@ FlexBox comes with a few helpful boolean props to make configuration easier, the
 <FlexBox column />
 ```
 
-## Example
-
-<Canvas>
-  <Story
-    name="Space Between"
-    args={{
-      children: 'Hello world I am a FlexBox',
-    }}
-  >
-    {(args) => {
-      const elProps = {
-        border: 1,
-        p: 16,
-      };
-      return (
-        <FlexBox justifyContent="space-between">
-          <Box {...elProps}>Child Element 1</Box>
-          <Box {...elProps}>Child Element 2</Box>
-          <Box {...elProps}>Child Element 3</Box>
-          <Box {...elProps}>Child Element 4</Box>
-        </FlexBox>
-      );
-    }}
-  </Story>
-</Canvas>
-
 ## Code Playground
+
+Edit attributes and see what’s possible to do with this component or get the exact output you want.
 
 <Canvas>
   <Story
@@ -88,4 +64,4 @@ FlexBox comes with a few helpful boolean props to make configuration easier, the
   </Story>
 </Canvas>
 
-<PropsTable story="FlexBox" defaultGroups={['flex']} />
+<PropsTable story="Code Playground" defaultGroups={['flex']} />
