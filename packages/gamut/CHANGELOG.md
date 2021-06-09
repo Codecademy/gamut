@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [34.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@34.1.0...@codecademy/gamut@34.2.0) (2021-06-09)
+
+
+### Features
+
+* Add AvatarChooser component ([86471e3](https://github.com/Codecademy/client-modules/commit/86471e36c7c8304661a45ae7b9e1083bf74a4574))
+
+
+
 ## [34.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@34.0.2...@codecademy/gamut@34.1.0) (2021-06-09)
 
 
