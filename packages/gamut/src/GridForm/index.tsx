@@ -10,8 +10,8 @@ import {
 import { TextButtonProps } from '../Button';
 import { Form } from '../Form';
 import { LayoutGrid, LayoutGridProps } from '../Layout';
+import { Column } from '../Layout/Column';
 import { GridFormButtons, GridFormSubmitProps } from './GridFormButtons';
-import { GridFormInputGroup } from './GridFormInputGroup';
 import { GridFormSection } from './GridFormSection';
 import { GridFormField, GridFormSectionType } from './types';
 
@@ -52,9 +52,14 @@ export type GridFormProps<Values extends {}> = {
   showRequired?: boolean;
 
   /**
-   * Layout grid row gap override.
+   * Layout grid row gap override between fields.
    */
   rowGap?: LayoutGridProps['rowGap'];
+
+  /**
+   * Grid row gap between sections.
+   */
+  sectionGap?: LayoutGridProps['rowGap'];
 
   /**
    * Description of the submit button at the end of the form.
@@ -84,6 +89,7 @@ export function GridForm<
   fields = [],
   onSubmit,
   rowGap = 16,
+  sectionGap = 32,
   submit,
   validation = 'onSubmit',
   showRequired = false,
@@ -124,18 +130,25 @@ export function GridForm<
     >
       <Form className={className} onSubmit={handleSubmit(onSubmit)} noValidate>
         <LayoutGrid columnGap={columnGap} rowGap={rowGap}>
-          {console.log(hasSections)}
           {hasSections ? (
             <>
-              {fields.map((field) => {
+              {fields.map((field, index) => {
                 return (
-                  <GridFormSection
-                    title={field.title}
-                    as={field.as}
-                    fields={field.fields}
-                    showRequired={showRequired}
-                    pastFirstError={pastFirstError}
-                  />
+                  <>
+                    <Column size={12}>
+                      <Text as={field.as}>{field.title}</Text>
+                    </Column>
+                    <GridFormSection
+                      fields={field.fields}
+                      showRequired={showRequired}
+                      pastFirstError={pastFirstError}
+                    />
+                    {index !== fields.length - 1 && (
+                      <Column size={12}>
+                        <Text>'updog'</Text>
+                      </Column>
+                    )}
+                  </>
                 );
               })}
             </>

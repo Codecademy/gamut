@@ -800,6 +800,23 @@ Sections sections sections.
                     required: true,
                   },
                 },
+                {
+                  label: 'hi2?',
+                  name: 'input',
+                  size: 5,
+                  type: 'text',
+                  validation: {
+                    required: true,
+                  },
+                },
+                {
+                  label: 'Write a paragraph about penguins',
+                  name: 'textarea-input',
+                  type: 'textarea',
+                  validation: {
+                    required: 'Please write something about penguins!',
+                  },
+                },
               ],
             },
             {
@@ -818,6 +835,7 @@ Sections sections sections.
               ],
             },
           ]}
+          sectionGap={48}
           onSubmit={async (values) => {
             action('Form Submitted')(values);
           }}
@@ -825,7 +843,7 @@ Sections sections sections.
             contents: 'Submit me',
             size: 12,
           }}
-          showRequired
+          validation="onSubmit"
         />
       );
     }}
