@@ -88,7 +88,7 @@ export function GridForm<
   validation = 'onSubmit',
   showRequired = false,
 }: GridFormProps<Values>) {
-  const hasSections = fields[0]?.fields;
+  const hasSections = Boolean(fields[0]?.fields);
 
   const {
     errors,
@@ -124,11 +124,28 @@ export function GridForm<
     >
       <Form className={className} onSubmit={handleSubmit(onSubmit)} noValidate>
         <LayoutGrid columnGap={columnGap} rowGap={rowGap}>
-          <GridFormSection
-            fields={fields}
-            showRequired={showRequired}
-            pastFirstError={pastFirstError}
-          />
+          {console.log(hasSections)}
+          {hasSections ? (
+            <>
+              {fields.map((field) => {
+                return (
+                  <GridFormSection
+                    title={field.title}
+                    as={field.as}
+                    fields={field.fields}
+                    showRequired={showRequired}
+                    pastFirstError={pastFirstError}
+                  />
+                );
+              })}
+            </>
+          ) : (
+            <GridFormSection
+              fields={fields}
+              showRequired={showRequired}
+              pastFirstError={pastFirstError}
+            />
+          )}
           <GridFormButtons
             cancel={cancel}
             {...submit}
