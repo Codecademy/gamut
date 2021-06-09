@@ -1,4 +1,5 @@
-import { Box, GridBox, Text, Toast } from '@codecademy/gamut/src';
+import { Anchor, Box, GridBox, Text, Toast } from '@codecademy/gamut/src';
+import { TrophyIcon } from '@codecademy/gamut-icons';
 import title from '@codecademy/macros/lib/title.macro';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 
@@ -14,13 +15,31 @@ import { PropsTable } from '~styleguide/blocks';
     figmaId: '',
   }}
   args={{
-    message: 'I am a toast hear me roar!',
+    children: 'I am a toast hear me roar!',
   }}
 />
 
 <br />
 
-### Variants
+### Use cases
+
+- Can be used when an immediate feedback is needed for learners upon completing a learning task. (E.g. unlocking an achievement during learning)
+- Should NOT repeat as a notification bell
+
+### Key Principles
+
+- Only one should appear at the screen at a time.
+- Toasts shouldn’t be distracting learning. Be cautious to use them in the Learning Environment, especially for messages that can be communicated outside of LE.
+
+### Style
+
+- Has a fixed width
+- Height changes depends on the body-text length.
+- Max. 3 rows of body-text is recommended.
+- Has variants, and colored different for light and dark theme.
+- Uses pattern at 80% opacity to give component depth.
+- Appears at the bottom right of the screen.
+- Slides in to the screen and when canceled, slides back and leaves the screen.
 
 export const exampleToasts = [
   {
@@ -43,16 +62,11 @@ export const exampleToasts = [
 ];
 
 <Story name="Layouts">
-  <GridBox
-    paddingY={24}
-    rowGap={32}
-    columnGap={32}
-    gridTemplateColumns="max-content max-content"
-  >
+  <GridBox py={24} gap={32} gridTemplateColumns="max-content max-content">
     {exampleToasts.map((toast) => (
       <Box>
         <Text variant="title-xs" mb={16}>
-          {Object.keys(toast).join('-')}
+          {Object.keys(toast).join(' + ')}
         </Text>
         <Box>
           <Toast key={toast.message} {...toast} />
@@ -62,7 +76,36 @@ export const exampleToasts = [
   </GridBox>
 </Story>
 
+### Content
+
+Toasts can have other content internal to each section like links or icons.
+
+<Story name="Title Icons">
+  <GridBox py={24} gap={32} gridTemplateColumns="max-content max-content">
+    <Box>
+      <Toast
+        title={
+          <>
+            <TrophyIcon verticalAlign="middle" mr={4} /> Congrats you won!
+          </>
+        }
+      >
+        Some message that informs you where to claim your physical trophy.
+      </Toast>
+    </Box>
+    <Box>
+      <Toast>
+        Feedback fruit loops. <Anchor>Go go go!</Anchor>
+      </Toast>
+    </Box>
+  </GridBox>
+</Story>
+
+<Story name="Links" />
+
 ### Code Playground
+
+Edit attributes and see what’s possible to do with this component or get the exact output you want.
 
 <Canvas>
   <Story name="Toast">{(args) => <Toast {...args} />}</Story>

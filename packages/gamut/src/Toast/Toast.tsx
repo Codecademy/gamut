@@ -2,7 +2,7 @@ import { MiniDeleteIcon } from '@codecademy/gamut-icons';
 import { styledConfig, system } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
-import React, { useMemo } from 'react';
+import React, { ReactNode, useMemo } from 'react';
 
 import { Box } from '../Box';
 import { IconButton } from '../Button/IconButton';
@@ -56,7 +56,7 @@ const IconContainer = styled(Box)(
 );
 
 type ToastProps = {
-  title?: string;
+  title?: ReactNode;
   icon?: string;
   onClose: () => void;
 };
