@@ -24,12 +24,14 @@ import { PropsTable } from '~styleguide/blocks';
 ### Use cases
 
 - Can be used when an immediate feedback is needed for learners upon completing a learning task. (E.g. unlocking an achievement during learning)
-- Should NOT repeat as a notification bell
+- Should NOT repeat messages that are recieved in the notification bell.
+- Appears at the bottom right of the screen.
+- Slides in to the screen and when canceled, slides back and leaves the screen.
 
 ### Key Principles
 
 - Only one should appear at the screen at a time.
-- Toasts shouldn’t be distracting learning. Be cautious to use them in the Learning Environment, especially for messages that can be communicated outside of LE.
+- Toasts shouldn’t distract from learning. Be hesitant to use them in the Learning Environment, especially for messages that can be communicated outside of the LE.
 
 ### Style
 
@@ -38,8 +40,6 @@ import { PropsTable } from '~styleguide/blocks';
 - Max. 3 rows of body-text is recommended.
 - Has variants, and colored different for light and dark theme.
 - Uses pattern at 80% opacity to give component depth.
-- Appears at the bottom right of the screen.
-- Slides in to the screen and when canceled, slides back and leaves the screen.
 
 export const exampleToasts = [
   {

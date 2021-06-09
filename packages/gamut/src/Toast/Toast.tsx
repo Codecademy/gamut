@@ -78,7 +78,7 @@ export const Toast: React.FC<ToastProps> = ({
       {icon && (
         <IconContainer alignSelf="center" backgroundImage={`url(${icon})`} />
       )}
-      <Text gridArea="message" py={4}>
+      <Box gridArea="message" py={4}>
         {title && (
           <Text variant="p-base" fontWeight="title" mb={4}>
             {title}
@@ -87,7 +87,7 @@ export const Toast: React.FC<ToastProps> = ({
         <Text as="div" variant="p-small">
           {children}
         </Text>
-      </Text>
+      </Box>
       <IconButton
         onClick={onClose}
         size="small"
