@@ -1,6 +1,15 @@
 import { CSSObject } from '../types/props';
 import { AbstractTheme } from '../types/theme';
 
+/**
+ * This is a custom generic that ensures the safety of adding additional values to a theme object without accidentally wiping out
+ * required keys like `breakpoints`.  It works by creating a new mapped type and merging the values of the union of Base & Next:
+ * 1. If the key exists on both Base and Next return the intersection of both values
+ * 2. If the key exists on next use the value on next.
+ * 3. If the key exists on base but nothing else use the value on base.
+ *
+ * The resulting type is then rejoined with keys that cannot be mutated (breakpoints) as the next version of Theme
+ */
 export type MergeTheme<
   Base extends AbstractTheme,
   Next,
