@@ -155,6 +155,7 @@ export const variance = {
 
       /** Static CSS Properties get extracted if they match neither syntax */
       const staticCss = getStaticCss(cssProps, [
+        'theme', // Just in case this gets passed somehow
         ...selectors,
         ...filteredProps,
       ]);
@@ -163,13 +164,11 @@ export const variance = {
         if (cache) return cache;
         const css = parser({ ...cssProps, theme } as any);
         selectors.forEach((selector) => {
-          const selectorConfig = cssProps[selector];
-          if (isObject(selectorConfig)) {
-            css[selector] = {
-              ...getStaticCss(selectorConfig, filteredProps),
-              ...parser(Object.assign(selectorConfig, { theme }) as any),
-            };
-          }
+          const selectorConfig = cssProps[selector] ?? {};
+          css[selector] = {
+            ...getStaticCss(selectorConfig, filteredProps),
+            ...parser({ ...selectorConfig, theme } as any),
+          };
         });
 
         /** Merge the static and generated css and save it to the cache */

@@ -5,6 +5,7 @@ import styled from '@emotion/styled';
 import React from 'react';
 
 import { Anchor } from '../Anchor';
+import { Box } from '../Box';
 
 export type SkipToContentProps = {
   className?: string;
@@ -27,6 +28,9 @@ const SkipToContentLink = styled(Anchor)(
     left: 0.5,
     zIndex: ({ elements }) => elements.headerZ,
     transition: `all ${timing.fast} cubic-bezier(0.075, 0.82, 0.165, 1)`,
+    '&:hover': {
+      textDecoration: 'none',
+    },
     '&:focus-visible': {
       opacity: 1,
       transform: `translate(-50%, 1rem)`,
@@ -42,15 +46,17 @@ export const SkipToContent: React.FC<SkipToContentProps> = ({
   const onClick = () => document.querySelector<HTMLElement>(href)!.focus();
 
   return (
-    <SkipToContentLink
-      variant="interface"
-      href={href}
-      onClick={onClick}
-      {...rest}
-    >
-      Skip to Content
-      <MiniArrowDownIcon ml={8} aria-hidden />
-    </SkipToContentLink>
+    <Box role="region" aria-labelledby="skip-to-content">
+      <SkipToContentLink
+        id="skip-to-content"
+        href={href}
+        onClick={onClick}
+        {...rest}
+      >
+        Skip to Content
+        <MiniArrowDownIcon ml={8} aria-hidden />
+      </SkipToContentLink>
+    </Box>
   );
 };
 

@@ -3,6 +3,128 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [41.2.4](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@41.2.3...@codecademy/styleguide@41.2.4) (2021-06-08)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [41.2.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@41.2.2...@codecademy/styleguide@41.2.3) (2021-06-07)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [41.2.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@41.2.1...@codecademy/styleguide@41.2.2) (2021-06-07)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [41.2.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@41.2.0...@codecademy/styleguide@41.2.1) (2021-06-07)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [41.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@41.1.1...@codecademy/styleguide@41.2.0) (2021-06-07)
+
+
+### Features
+
+* **icons:** Adds LE trophy and certificate filled icons ([94da1f6](https://github.com/Codecademy/client-modules/commit/94da1f655d2b47e9148e9ca4174eeec440e43824))
+
+
+
+### [41.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@41.1.0...@codecademy/styleguide@41.1.1) (2021-06-04)
+
+
+### Bug Fixes
+
+* custom-group  ([cc6697a](https://github.com/Codecademy/client-modules/commit/cc6697a54f3f1696b56ddc24e990ccdc51bddbdf))
+
+
+
+## [41.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@41.0.0...@codecademy/styleguide@41.1.0) (2021-06-04)
+
+
+### Features
+
+* **theme prop description:** Adds descriptive text to theme prop ([b0e2e27](https://github.com/Codecademy/client-modules/commit/b0e2e272d0afcdfc9f7fbcfd544f19759d0f783e))
+
+
+
+## [41.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@40.3.4...@codecademy/styleguide@41.0.0) (2021-06-03)
+
+
+### ⚠ BREAKING CHANGES
+
+* release -kit-4.7
+
+### Features
+
+* release -kit-4.7 ([1066f7b](https://github.com/Codecademy/client-modules/commit/1066f7b87f5fc37d5595324953964945c3d2b082))
+
+
+
+### [40.3.4](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@40.3.3...@codecademy/styleguide@40.3.4) (2021-06-02)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [40.3.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@40.3.2...@codecademy/styleguide@40.3.3) (2021-06-02)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [40.3.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@40.3.1...@codecademy/styleguide@40.3.2) (2021-05-28)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [40.3.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@40.3.0...@codecademy/styleguide@40.3.1) (2021-05-28)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [40.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@40.2.0...@codecademy/styleguide@40.3.0) (2021-05-28)
+
+
+### Features
+
+* **GridForm:** add placeholder field for TextArea in GridForm ([ad87eb3](https://github.com/Codecademy/client-modules/commit/ad87eb3453ae28a0bcd3f5857714db51023f3118))
+
+
+
+## [40.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@40.1.0...@codecademy/styleguide@40.2.0) (2021-05-28)
+
+
+### Features
+
+* **GridForm:** Allow ReactNode for GridForm Radio label ([30f8e1f](https://github.com/Codecademy/client-modules/commit/30f8e1f944c20307f3abb625080965b3c3cf30c1))
+
+
+
 ## [40.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@40.0.7...@codecademy/styleguide@40.1.0) (2021-05-27)
 
 

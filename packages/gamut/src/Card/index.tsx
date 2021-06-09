@@ -35,6 +35,7 @@ const cardVariants = variant({
 const shadowVariants = variant({
   prop: 'shadow',
   base: {
+    position: 'relative',
     boxShadow: ({ colors }) => `0px 0px 0 ${colors.navy}`,
     transition: 'box-shadow 200ms ease, transform 200ms ease',
   },

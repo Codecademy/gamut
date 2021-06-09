@@ -3,6 +3,36 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@5.0.0...@codecademy/gamut-icons@5.1.0) (2021-06-07)
+
+
+### Features
+
+* **icons:** Adds LE trophy and certificate filled icons ([94da1f6](https://github.com/Codecademy/client-modules/commit/94da1f655d2b47e9148e9ca4174eeec440e43824))
+
+
+
+## [5.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@4.14.5...@codecademy/gamut-icons@5.0.0) (2021-06-03)
+
+
+### ⚠ BREAKING CHANGES
+
+* release -kit-4.7
+
+### Features
+
+* release -kit-4.7 ([1066f7b](https://github.com/Codecademy/client-modules/commit/1066f7b87f5fc37d5595324953964945c3d2b082))
+
+
+
+### [4.14.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@4.14.4...@codecademy/gamut-icons@4.14.5) (2021-06-02)
+
+**Note:** Version bump only for package @codecademy/gamut-icons
+
+
+
+
+
 ### [4.14.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@4.14.3...@codecademy/gamut-icons@4.14.4) (2021-05-27)
 
 **Note:** Version bump only for package @codecademy/gamut-icons
