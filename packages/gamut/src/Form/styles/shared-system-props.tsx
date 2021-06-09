@@ -12,6 +12,22 @@ export type conditionalStyleProps = {
   isDisabled?: boolean | null;
 };
 
+export enum InputSelectors {
+  OUTLINE = '&:before',
+  OUTLINE_FOCUS = '&:focus-visible:before',
+  HOVER = '&:hover',
+  ACTIVE = '&:active',
+  PLACEHOLDER = '&:placeholder',
+  FOCUS = '&:focus',
+  DISABLED = "&:disabled, &[aria-disabled='true']",
+  BEFORE = '&::before',
+  AFTER = '&::after',
+  BEFOREANDAFTER = '&::before, &::after',
+  CHECKEDBEFORE = '&:checked + label::before',
+  CHECKEDAFTER = '&:checked + label::after',
+  FOCUSBEFORE = '&:focus + label::before',
+  HOVERFOCUSBEFORE = '&:hover + label::before, &:focus + label::before',
+}
 export const formBaseComponentStyles = {
   fontWeight: 'base',
   fontSize: 16,
@@ -37,7 +53,7 @@ const formFieldBaseDisabledStyles = {
 const formFieldDisabledStyles = {
   formFieldBaseDisabledStyles,
   bg: 'backgroundEmphasized',
-  '&:hover': {
+  [InputSelectors.HOVER]: {
     borderColor: 'currentColor',
   },
 } as const;
@@ -57,14 +73,14 @@ export const formBaseFieldStylesObject = {
   border: 1,
   borderColor: 'secondaryDull',
   borderRadius: '2px',
-  '&:hover': {
+  [InputSelectors.HOVER]: {
     borderColor: 'primary',
   },
-  '&:placeholder': {
+  [InputSelectors.PLACEHOLDER]: {
     borderColor: 'textMuted',
     fontStyle: 'italic',
   },
-  '&:disabled': {
+  [InputSelectors.DISABLED]: {
     ...formFieldDisabledStyles,
   },
 } as const;
@@ -74,7 +90,7 @@ export const formBaseFieldStyles = system.css(formBaseFieldStylesObject);
 export const formFieldStyles = system.css({
   ...formBaseFieldStylesObject,
   ...formFieldPaddingStyles,
-  '&:focus': formFieldFocusStyles,
+  [InputSelectors.FOCUS]: formFieldFocusStyles,
 });
 
 export const conditionalStyles = system.variant({
@@ -82,10 +98,10 @@ export const conditionalStyles = system.variant({
     error: {
       textColor: 'danger',
       borderColor: 'currentColor',
-      '&:hover': {
+      [InputSelectors.HOVER]: {
         borderColor: 'currentColor',
       },
-      '&:focus': {
+      [InputSelectors.FOCUS]: {
         borderColor: 'currentColor',
         boxShadow: `inset 0 0 0 1px currentColor`,
       },
@@ -119,13 +135,13 @@ export const radioLabel = system.css({
   alignItems: 'center',
   cursor: 'pointer',
   position: 'relative',
-  '&::before, &::after': consistentLabelStyles,
-  '&::before': {
+  [InputSelectors.BEFOREANDAFTER]: consistentLabelStyles,
+  [InputSelectors.BEFORE]: {
     bg: 'background',
     boxShadow: `0 0 0 1px ${theme.colors.primary}`,
     transition: timing.slow,
   },
-  '&::after': {
+  [InputSelectors.AFTER]: {
     position: 'absolute',
     transition: transitionConcat(['transform'], 'slow', 'ease-in-out'),
     borderWidth: 5,
@@ -136,47 +152,46 @@ export const radioLabel = system.css({
 });
 
 export const radioInput = system.css({
-  '&:checked + label::after': {
+  [InputSelectors.CHECKEDAFTER]: {
     bg: 'primary',
     borderWidth: 4,
     borderStyle: 'solid',
     borderColor: 'background',
     transform: 'scale(1)',
   },
-  '&:checked + label::before': {
+  [InputSelectors.CHECKEDBEFORE]: {
     boxShadow: `0 0 0 1px ${theme.colors.primary}`,
   },
-  '&:hover + label::before': {
+  [InputSelectors.CHECKEDAFTER]: {
     boxShadow: `0 0 0 2px ${theme.colors.primary}`,
   },
-  '&:focus + label::before': {
+  [InputSelectors.FOCUSBEFORE]: {
     boxShadow: `0 0 0 2px ${theme.colors.primary}`,
   },
 });
 
 export const conditionalRadioLabelStyles = system.variant({
+  base: {
+    [InputSelectors.BEFORE]: {
+      boxShadow: `0 0 0 1px currentColor`,
+    },
+  },
   variants: {
     error: {
       textColor: 'danger',
-      '&::before': {
-        boxShadow: `0 0 0 1px currentColor`,
-      },
     },
     disabled: {
       ...formFieldBaseDisabledStyles,
-      '&::before': {
-        boxShadow: `0 0 0 1px currentColor`,
-      },
     },
   },
 });
 
 export const conditionalRadioInputStyles = system.variant({
   base: {
-    '&:checked + label::before': {
+    [InputSelectors.CHECKEDBEFORE]: {
       boxShadow: `0 0 0 1px currentColor`,
     },
-    '&:hover + label::before, &:focus + label::before': {
+    [InputSelectors.HOVERFOCUSBEFORE]: {
       boxShadow: `0 0 0 2px currentColor`,
     },
     '': {
@@ -185,7 +200,7 @@ export const conditionalRadioInputStyles = system.variant({
   },
   variants: {
     error: {
-      '&:checked + label::after': {
+      [InputSelectors.CHECKEDAFTER]: {
         bg: 'danger',
       },
     },
