@@ -1,4 +1,4 @@
-import { Box, FlexBox, Text } from '@codecademy/gamut';
+import { Box, GridBox, Text } from '@codecademy/gamut';
 import {
   FacebookIcon,
   LinkedinIcon,
@@ -86,7 +86,7 @@ export const SocialMediaSharing: React.FC<SocialMediaSharingProps> = ({
   variant = 'black',
   iconStyles,
 }) => (
-  <Box display="inline-flex" flexDirection="column" textAlign="center">
+  <Box display="inline-flex" flexDirection="column" alignItems="center">
     {label && (
       <Text
         fontSize={size === 'small' ? 14 : 16}
@@ -97,7 +97,12 @@ export const SocialMediaSharing: React.FC<SocialMediaSharingProps> = ({
         {label}
       </Text>
     )}
-    <FlexBox justifyContent="center" className={iconStyles}>
+    <GridBox
+      gridAutoColumns="max-content"
+      gridAutoFlow="column"
+      gap={16}
+      className={iconStyles}
+    >
       {SOCIAL_SHARING_PLATFORMS.map(({ id, icon, formatShare, baseUrl }) => (
         <SocialShareIconLink
           key={id}
@@ -115,6 +120,6 @@ export const SocialMediaSharing: React.FC<SocialMediaSharingProps> = ({
           variant={variant}
         />
       ))}
-    </FlexBox>
+    </GridBox>
   </Box>
 );

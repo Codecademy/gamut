@@ -3,11 +3,7 @@ import { GamutIconProps } from '@codecademy/gamut-icons';
 import styled from '@emotion/styled';
 import React from 'react';
 
-const IconLink = styled(Box)`
-  &:last-of-type {
-    margin-right: 0;
-  }
-`.withComponent(Anchor);
+const IconLink = styled(Box)``.withComponent(Anchor);
 
 export type BaseSocialShareProps = {
   sectionId?: string;
@@ -49,7 +45,6 @@ export const SocialShareIconLink: React.FC<SocialShareIconLinkProps> = ({
       rel="noopener noreferrer"
       aria-label={`share on ${id}`}
       p={8}
-      mr={16}
       lineHeight={0}
       borderStyle="solid"
       borderWidth={size === 'small' ? 1 : 2}
