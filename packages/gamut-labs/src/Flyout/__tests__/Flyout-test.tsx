@@ -33,9 +33,11 @@ describe('Flyout', () => {
   });
 
   it('renders flyout content when button is clicked', async () => {
-    renderFlyout();
+    const onToggle = jest.fn();
+
+    renderFlyout({ onToggle });
     fireEvent.click(screen.getByText('Test'));
-    await waitFor(() => screen.getByTestId('flyout-content'));
+    expect(onToggle.mock.calls.length).toBe(1);
   });
 
   describe('clicking outside the flyout', () => {

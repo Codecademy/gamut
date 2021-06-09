@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [41.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@41.2.4...@codecademy/styleguide@41.3.0) (2021-06-09)
+
+
+### Features
+
+* add SocialMediaSharing component ([bb65733](https://github.com/Codecademy/client-modules/commit/bb65733e8c88f1cadc31773ec4177558ce8a55df))
+
+
+
+### [41.2.4](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@41.2.3...@codecademy/styleguide@41.2.4) (2021-06-08)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
 ### [41.2.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@41.2.2...@codecademy/styleguide@41.2.3) (2021-06-07)
 
 **Note:** Version bump only for package @codecademy/styleguide
