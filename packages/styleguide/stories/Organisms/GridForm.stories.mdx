@@ -1,5 +1,6 @@
 import {
   Column,
+  FormGroup,
   GridForm,
   Input,
   LayoutGrid,
@@ -188,6 +189,74 @@ If an input is not meant to be usable, such as when a portion of a form is disab
         submit={{
           contents: 'Right Submit!?',
           position: 'right',
+        }}
+      />
+    )}
+  </Story>
+</Canvas>
+
+## GridForm-atting
+
+We can use the `size` and `rowspan` props (borrowed from [LayoutGrid](https://react-hook-form.com)) to customize the layouts of our GridForms.
+
+<Canvas>
+  <Story name="Rowspan Formatting">
+    {(args) => (
+      <GridForm
+        fields={[
+          {
+            label: 'Fave Gamut Component',
+            name: 'rowspan-radiogroup',
+            options: [
+              {
+                label: 'FlexBox',
+                value: 'flex',
+              },
+              {
+                label: 'GridForm',
+                value: 'grid',
+              },
+              {
+                label: 'Text',
+                value: 'text',
+              },
+            ],
+            size: 3,
+            rowspan: 3,
+            type: 'radio-group',
+            validation: {
+              required: 'You gotta pick one!',
+            },
+          },
+          {
+            label: 'Simple text',
+            name: 'simple-text',
+            size: 3,
+            type: 'text',
+          },
+          {
+            defaultValue: 'yeet',
+            label: 'Text with default value',
+            name: 'text-with-default',
+            size: 4,
+            type: 'text',
+          },
+          {
+            label: 'Simple select (required)',
+            name: 'simple-select',
+            options: ['', 'One fish', 'Two fish', 'Red fish', 'Blue fish'],
+            size: 5,
+            type: 'select',
+            validation: {
+              required: 'Please select an option',
+            },
+          },
+        ]}
+        onSubmit={async (values) => {
+          action('Form Submitted')(values);
+        }}
+        submit={{
+          contents: 'Submit',
         }}
       />
     )}
@@ -423,6 +492,44 @@ align nicely with the input.
   </Story>
 </Canvas>
 
+## Cancel button
+
+Optionally, include a cancel button.
+
+<Canvas>
+  <Story name="Cancel button">
+    {(args) => (
+      <GridForm
+        fields={[
+          {
+            label: 'A label',
+            name: 'a-label',
+            size: 6,
+            type: 'text',
+          },
+          {
+            label: 'This other label',
+            name: 'this-other-label',
+            size: 6,
+            type: 'text',
+          },
+        ]}
+        cancel={{
+          children: 'Cancel',
+          onClick: () => {},
+        }}
+        onSubmit={async (values) => {
+          action('Form Submitted')(values);
+        }}
+        submit={{
+          contents: 'Submit',
+          position: 'right',
+        }}
+      />
+    )}
+  </Story>
+</Canvas>
+
 ## Custom inputs
 
 Some forms, such as the checkout flows that use Recurly, need to define
@@ -455,6 +562,28 @@ their own inputs. We can specify a 'custom' field type to with a [render prop](h
               },
             },
             type: 'custom',
+          },
+          {
+            render: ({ className, error, setValue }) => (
+              <FormGroup label="updog" width="100%">
+                <Input
+                  error={!!error}
+                  id="custom-text-input"
+                  type="text"
+                  onChange={(event) => setValue(event.target.value)}
+                />
+              </FormGroup>
+            ),
+            label: 'Gimme two more swags',
+            name: 'custom-input',
+            validation: {
+              required: true,
+              pattern: {
+                value: /swag(.*)swag/,
+                message: 'Still not enough swag, what are you doing... 💢',
+              },
+            },
+            type: 'custom-group',
           },
         ]}
         onSubmit={async (values) => {
@@ -544,6 +673,8 @@ field's value in a parent component before onSubmit gets triggered.
 
 A field can include [our existing `ToolTip`](/?path=/docs/atoms-tooltip--tool-tip). The position of the tooltip on each field is always set to the bottom-right. You also have the option to render each tooltip in dark or light mode.
 
+See the [`Radio`](/?path=/docs/atoms-forminputs-radio--radio) story for an example of how to add a tooltip to a radio option.
+
 <Canvas>
   <Story name="Tooltip">
     {(args) => (
@@ -588,6 +719,7 @@ A field can include [our existing `ToolTip`](/?path=/docs/atoms-tooltip--tool-ti
               name: 'textarea-field',
               size: 6,
               type: 'textarea',
+              placeholder: 'Check out my tooltip',
               validation: {
                 required: 'Please write something about tooltips!',
               },
@@ -681,5 +813,69 @@ A field can take a custom error in addition to validation errors. The validation
         />
       );
     }}
+  </Story>
+</Canvas>
+
+## Hidden Input
+
+Hidden inputs can be used to include data that users can't see or modify with the submission. For this implementation you can set the `defaultValue` in the object and it will be submitted with the regular form data.
+
+<Canvas>
+  <Story name="Hidden Input">
+    {(args) => (
+      <GridForm
+        fields={[
+          {
+            type: 'hidden',
+            name: 'secret-stuff',
+            defaultValue: "I'm invisible!",
+          },
+          {
+            label: "There's more than one field here!",
+            name: 'custom-input',
+            type: 'email',
+          },
+        ]}
+        onSubmit={async (values) => {
+          action('Form Submitted')(values);
+        }}
+        submit={{
+          contents: 'Submit',
+        }}
+      />
+    )}
+  </Story>
+</Canvas>
+
+## Sweet Container Input
+
+"Sweet container" ([honeypot](<https://en.wikipedia.org/wiki/Honeypot_(computing)>)) inputs can be used to detect bots by providing a field that would not generally be clicked by human users, but might be triggered automatically by bots.
+
+We call it a "sweet container" so that bots do not immediately detect it as a honeypot input.
+
+<Canvas>
+  <Story name="Sweet Container Input">
+    {(args) => (
+      <GridForm
+        fields={[
+          {
+            label: 'This is our sticky sweet label',
+            name: 'sweet-container',
+            type: 'sweet-container',
+          },
+          {
+            label: "There's something sticky and sweet here!",
+            name: 'custom-input',
+            type: 'email',
+          },
+        ]}
+        onSubmit={async (values) => {
+          action('Form Submitted')(values);
+        }}
+        submit={{
+          contents: 'Submit',
+        }}
+      />
+    )}
   </Story>
 </Canvas>

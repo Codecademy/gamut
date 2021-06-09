@@ -1,5 +1,5 @@
 import { GamutIconProps } from '@codecademy/gamut-icons';
-import { system } from '@codecademy/gamut-styles';
+import { useCurrentMode, variant } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React, { forwardRef } from 'react';
 
@@ -11,7 +11,6 @@ import {
   ButtonOutlineProps,
   createStates,
 } from './ButtonOutline';
-import { useColorMode } from './shared';
 import { SizedButtonProps } from './types';
 
 const { background, backgroundMuted, backgroundEmphasized } = buttonColors;
@@ -26,24 +25,16 @@ const IconButtonInner = styled(ButtonInner)<SizedButtonProps>(
       backgroundColor: 'transparent',
     },
   }),
-  system.variant({
+  variant({
     prop: 'size',
     variants: {
       normal: {
         height: 40,
         width: 40,
-        '> svg': {
-          width: 24,
-          height: 24,
-        },
       },
       small: {
         height: 32,
         width: 32,
-        '> svg': {
-          width: 16,
-          height: 16,
-        },
       },
     },
   })
@@ -56,11 +47,17 @@ export interface IconButtonProps extends SizedButtonProps, ButtonOutlineProps {
 
 export const IconButton = forwardRef<ButtonBaseElements, IconButtonProps>(
   ({ icon: Icon, size = 'normal', mode, ...props }, ref) => {
-    const currentMode = useColorMode(mode);
+    const currentMode = useCurrentMode(mode);
     return (
       <ButtonOutline mode={currentMode} size={size} {...props} ref={ref}>
         <IconButtonInner mode={currentMode} size={size}>
-          {Icon && <Icon aria-hidden />}
+          {Icon && (
+            <Icon
+              width="calc(100% - 14px)"
+              height="calc(100% - 14px)"
+              aria-hidden
+            />
+          )}
         </IconButtonInner>
       </ButtonOutline>
     );

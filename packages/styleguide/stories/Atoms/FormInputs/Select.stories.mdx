@@ -1,4 +1,4 @@
-import { FlexBox, FormGroup, Select, SelectDropdown } from '@codecademy/gamut';
+import { FormGroup, Select } from '@codecademy/gamut';
 import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
@@ -11,10 +11,20 @@ export const fruitOptions = [
   'Eggplant',
 ];
 
+export const fruitObjects = {
+  month: 'Pro Monthly - $39.99 a month',
+  annual: 'Pro Annual - $19.99 a month',
+};
+
+export const selectObject = {
+  red: 'red',
+  yellow: 'yellow',
+  green: 'green',
+};
+
 <Meta
   title={title}
   component={Select}
-  subcomponent={SelectDropdown}
   parameters={{
     subtitle: 'A `<select />` element for picking from exclusive options',
     source: 'gamut',
@@ -58,7 +68,7 @@ export const fruitOptions = [
     name="Error"
     args={{ options: ['Error'], defaultValue: 'Error', error: true }}
   >
-    {(args) => <Select {...args} />}
+    {(args) => <Select options={fruitObjects} />}
   </Story>
 </Canvas>
 
@@ -86,53 +96,6 @@ export const fruitOptions = [
   </Story>
 </Canvas>
 
-### SelectDropdown
-
-This is a variant of our `Select` component with a styled dropdown menu. `SelectDropdown` has a larger JavaScript dependency size than our standard `Select` component so should not be used unless specified in designs.
-
-<Canvas>
-  <Story
-    name="BaseDropdown"
-    args={{
-      options: ['Based', 'Regular Size', 'Normal'],
-      placeholder: 'all about that',
-    }}
-  >
-    {(args) => (
-      <FlexBox width="10rem" height="25rem">
-        <SelectDropdown {...args} />
-      </FlexBox>
-    )}
-  </Story>
-  <Story
-    name="ErrorDropdown"
-    args={{
-      options: ['Small', 'Quite little'],
-      defaultValue: 'Quite little',
-      error: true,
-    }}
-  >
-    {(args) => (
-      <FlexBox width="10rem" height="25rem">
-        <SelectDropdown {...args} />
-      </FlexBox>
-    )}
-  </Story>
-  <Story
-    name="DisabledDropdown"
-    args={{
-      options: ['Disabled'],
-      disabled: true,
-    }}
-  >
-    {(args) => (
-      <FlexBox width="10rem" height="25rem">
-        <SelectDropdown {...args} />
-      </FlexBox>
-    )}
-  </Story>
-</Canvas>
-
 ### Form Group + Select
 
 <Canvas>
@@ -150,23 +113,10 @@ This is a variant of our `Select` component with a styled dropdown menu. `Select
     )}
   </Story>
   <Story
-    name="FormGroupStyled"
-    args={{
-      options: ['Error', 'oh no', ':('],
-      defaultValue: 'oh no',
-    }}
-  >
-    {(args) => (
-      <FormGroup label="i am ~styled" error="error!">
-        <SelectDropdown error {...args} />
-      </FormGroup>
-    )}
-  </Story>
-  <Story
     name="FormGroupSmall"
     args={{
       options: ['Small', 'Quite little'],
-      defaultValue: 'Small',
+      value: 'Small',
       sizeVariant: 'small',
     }}
   >

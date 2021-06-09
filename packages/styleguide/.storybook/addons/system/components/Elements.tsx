@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { themed, system } from '@codecademy/gamut-styles/src';
+import { themed, variant } from '@codecademy/gamut-styles/src';
 import { StyleProps } from '@codecademy/variance';
 
 export const PropGroupTooltip = styled.ul`
@@ -25,7 +25,7 @@ export const PropItem = styled.li`
   color: ${themed('colors.gray-700')};
 `;
 
-const tagVariants = system.variant({
+const tagVariants = variant({
   variants: {
     normal: {
       textColor: 'navy',

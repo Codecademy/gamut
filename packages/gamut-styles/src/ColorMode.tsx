@@ -14,7 +14,8 @@ import {
 } from './variance/props';
 import { styledConfig } from './variance/utils';
 
-export type ColorModeConfig = Theme['colorModes']['modes'];
+export type Colors = keyof Theme['colors'];
+export type ColorModeConfig = Theme['modes'];
 export type ColorModes = keyof ColorModeConfig;
 export type ColorModeShape = ColorModeConfig[ColorModes];
 export type ColorAlias = keyof ColorModeShape;
@@ -34,6 +35,21 @@ export const providerProps = variance.compose(
   space
 );
 
+export function useColorModes(): [
+  ColorModes,
+  ColorModeShape,
+  ColorModeConfig,
+  (color: Colors) => string
+] {
+  const { mode, modes, _getColorValue: getColorValue } = useTheme() || {};
+  return [mode, modes?.[mode], modes, getColorValue];
+}
+
+export function useCurrentMode(mode?: ColorModes) {
+  const [activeMode] = useColorModes();
+  return mode ?? activeMode;
+}
+
 export const VariableProvider = styled('div', styledConfig)<
   StyleProps<typeof providerProps> & {
     variables?: CSSObject;
@@ -46,10 +62,7 @@ export const ColorMode = forwardRef<
   ColorModeProps & ComponentProps<typeof VariableProvider>
 >(({ mode, alwaysSetVariables, ...rest }, ref) => {
   const theme = useTheme();
-  const {
-    colorModes: { modes, active },
-    colors,
-  } = theme;
+  const { modes, mode: active, colors } = theme;
   const { variables } = useMemo(
     () =>
       serializeTokens(
@@ -70,7 +83,7 @@ export const ColorMode = forwardRef<
   }
 
   return (
-    <ThemeProvider theme={{ colorModes: { modes, active: mode } }}>
+    <ThemeProvider theme={{ mode }}>
       <VariableProvider
         variables={variables}
         textColor="text"

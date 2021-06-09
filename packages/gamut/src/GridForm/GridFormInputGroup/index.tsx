@@ -4,12 +4,18 @@ import { UseFormMethods } from 'react-hook-form';
 import { FormError, FormGroup, FormGroupLabel } from '../../Form';
 import { HiddenText } from '../../HiddenText';
 import { Column } from '../../Layout';
-import { GridFormField } from '../types';
+import {
+  GridFormField,
+  GridFormHiddenField,
+  GridFormSweetContainerField,
+} from '../types';
 import { GridFormCheckboxInput } from './GridFormCheckboxInput';
 import { GridFormCustomInput } from './GridFormCustomInput';
 import { GridFormFileInput } from './GridFormFileInput';
+import { GridFormHiddenInput } from './GridFormHiddenInput';
 import { GridFormRadioGroupInput } from './GridFormRadioGroupInput';
 import { GridFormSelectInput } from './GridFormSelectInput';
+import { GridFormSweetContainerInput } from './GridFormSweetContainerInput';
 import { GridFormTextArea } from './GridFormTextArea';
 import { GridFormTextInput } from './GridFormTextInput';
 
@@ -47,6 +53,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
         );
 
       case 'custom':
+      case 'custom-group':
         return (
           <GridFormCustomInput
             field={field}
@@ -95,6 +102,17 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
             showRequired={isRequired}
           />
         );
+      case 'hidden':
+        return <GridFormHiddenInput register={register} field={field} />;
+
+      case 'sweet-container':
+        return (
+          <GridFormSweetContainerInput
+            register={register}
+            field={field}
+            label={field.label}
+          />
+        );
 
       default:
         return (
@@ -108,6 +126,23 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
     }
   };
 
+  const unwrappedInput = (
+    field: GridFormField
+  ): field is GridFormHiddenField | GridFormSweetContainerField =>
+    ['hidden', 'sweet-container'].includes(field.type);
+
+  if (unwrappedInput(field)) {
+    return getInput();
+  }
+
+  if (field.type === 'custom-group') {
+    return (
+      <Column size={field?.size} rowspan={field?.rowspan ?? 1}>
+        {getInput()}
+      </Column>
+    );
+  }
+
   const label = (
     <FormGroupLabel
       disabled={field.disabled}
@@ -120,7 +155,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
   );
 
   return (
-    <Column size={field.size}>
+    <Column size={field?.size} rowspan={field?.rowspan ?? 1}>
       <FormGroup mb={0}>
         {field.hideLabel ? <HiddenText>{label}</HiddenText> : label}
         {getInput()}

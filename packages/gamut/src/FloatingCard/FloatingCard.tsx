@@ -1,9 +1,11 @@
 import { styledConfig, system } from '@codecademy/gamut-styles';
-import { StyleProps } from '@codecademy/variance';
+import { StyleProps, variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
 import React, { ComponentProps, forwardRef } from 'react';
 
 import { Pattern } from '../Pattern';
+
+const cardProps = variance.compose(system.layout, system.padding);
 
 const beakVariants = system.variant({
   prop: 'beak',
@@ -13,7 +15,7 @@ const beakVariants = system.variant({
       content: '""',
       width: '1.25rem',
       height: '1.25rem',
-      bg: 'background',
+      bg: 'inherit',
       transform: 'rotate(45deg)',
       position: 'absolute',
       borderRadiusTopLeft: '2px',
@@ -74,8 +76,11 @@ const CardShadow = styled(Pattern)(
   })
 );
 
-const CardBody = styled('div', styledConfig)<StyleProps<typeof beakVariants>>(
+const CardBody = styled('div', styledConfig)<
+  StyleProps<typeof beakVariants> & StyleProps<typeof cardProps>
+>(
   system.css({
+    p: 12,
     zIndex: 1,
     position: 'relative',
     bg: 'background',
@@ -83,15 +88,16 @@ const CardBody = styled('div', styledConfig)<StyleProps<typeof beakVariants>>(
     border: 1,
     maxWidth: 1,
   }),
-  beakVariants
+  beakVariants,
+  cardProps
 );
 
-export type FloatingCard = {
+export type FloatingCardProps = {
   className?: string;
   pattern: ComponentProps<typeof Pattern>['name'];
 } & ComponentProps<typeof CardBody>;
 
-export const FloatingCard = forwardRef<HTMLDivElement, FloatingCard>(
+export const FloatingCard = forwardRef<HTMLDivElement, FloatingCardProps>(
   ({ children, className, pattern = 'checkerDense', ...rest }, ref) => (
     <CardWrapper>
       <CardShadow name={pattern} />
