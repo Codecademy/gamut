@@ -96,6 +96,7 @@ export function GridForm<
     register,
     setValue,
     formState,
+    ...methods
   } = useForm<Values>({
     defaultValues: fields.reduce<any>(
       (defaultValues, field) => ({
@@ -113,37 +114,21 @@ export function GridForm<
   let pastFirstError = false;
 
   return (
-    <FormProvider>
+    <FormProvider
+      errors={errors}
+      handleSubmit={handleSubmit}
+      register={register}
+      setValue={setValue}
+      formState={formState}
+      {...methods}
+    >
       <Form className={className} onSubmit={handleSubmit(onSubmit)} noValidate>
         <LayoutGrid columnGap={columnGap} rowGap={rowGap}>
-          {!hasSections ? (
-            fields.map((field) => {
-              const errorMessage = (errors[field.name] as FieldError)?.message;
-              const isFirstError =
-                !pastFirstError && errorMessage !== undefined;
-              pastFirstError = pastFirstError || isFirstError;
-              const requiredBoolean = !!(
-                field.type !== 'hidden' &&
-                field.type !== 'sweet-container' &&
-                field.validation?.required
-              );
-
-              return (
-                <GridFormInputGroup
-                  error={errorMessage as string}
-                  isFirstError={isFirstError}
-                  field={field}
-                  key={field.name}
-                  register={register}
-                  setValue={setValue}
-                  required={requiredBoolean}
-                  showRequired={showRequired}
-                />
-              );
-            })
-          ) : (
-            <div>updog</div>
-          )}
+          <GridFormSection
+            fields={fields}
+            showRequired={showRequired}
+            pastFirstError={pastFirstError}
+          />
           <GridFormButtons
             cancel={cancel}
             {...submit}
