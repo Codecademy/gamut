@@ -23,8 +23,9 @@ import { PropsTable } from '~styleguide/blocks';
 
 ## Usage Guidelines
 
-- Floating cards are generally used for components that are used outside the normal document flow. These Cards have a persistent shadow to make them obvious in relief.
+- They have patterned drop shadow to indicate that are outside the normal document flow.
 - This is a shared component for `Toast`, `Dialog`, and `Coachmark`; before using this component directly please check that these components do not cover your use case!
+- `Tooltip` shares many styles with FloatingCards but is used more widely and does not have a shadow as that might detract from the critical functions it serves.
 
 <Story name="Basic">
   <FloatingCard p={32}>We'll float on all right!</FloatingCard>
@@ -33,8 +34,6 @@ import { PropsTable } from '~styleguide/blocks';
 <br />
 
 ## Beaks
-
-You may add a beak to the card
 
 <Story name="Beaks">
   {(args) => (
