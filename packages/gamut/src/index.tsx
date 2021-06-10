@@ -17,7 +17,6 @@ export * from './Card';
 export * from './DeprecatedCard/CardShell';
 export * from './ContentContainer';
 export * from './FlexBox';
-export * from './FlexGrid';
 export * from './FocusTrap';
 export * from './Form';
 export * from './GridForm';
