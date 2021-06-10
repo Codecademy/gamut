@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.9.0](https://github.com/Codecademy/client-modules/compare/@codecademy/tracking@0.8.0...@codecademy/tracking@0.9.0) (2021-06-10)
+
+
+### Features
+
+* **tracking:** Record the page referrer for every event. ([5ae6357](https://github.com/Codecademy/client-modules/commit/5ae63574671e79e956afdebe8bcf62d81364feae))
+
+
+
 ## [0.8.0](https://github.com/Codecademy/client-modules/compare/@codecademy/tracking@0.7.3...@codecademy/tracking@0.8.0) (2021-05-24)
 
 

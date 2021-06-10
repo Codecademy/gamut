@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [19.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.3.1...@codecademy/gamut-labs@19.4.0) (2021-06-10)
+
+
+### Features
+
+* Navy scale + color alias changes GM-237 ([bf896dd](https://github.com/Codecademy/client-modules/commit/bf896dd3fcf0435ef557694740d96df38d12173b)), closes [#10162](https://github.com/Codecademy/client-modules/issues/10162)
+
+
+
+### [19.3.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.3.0...@codecademy/gamut-labs@19.3.1) (2021-06-10)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
 ## [19.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.2.0...@codecademy/gamut-labs@19.3.0) (2021-06-10)
 
 
