@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { RadioGroup } from '../../../..';
 import { renderGridFormRadioGroupInput } from '../../__fixtures__/renderers';
 
 describe('GridFormRadioGroupInput', () => {
@@ -31,6 +32,40 @@ describe('GridFormRadioGroupInput', () => {
       });
 
       expect(radioButtons.find('img').length).toBe(1);
+    });
+  });
+
+  describe('aria-label', () => {
+    it('aria-label is set to the label by default', () => {
+      const radioButtons = renderGridFormRadioGroupInput({
+        label: 'Test Label',
+      });
+
+      expect(radioButtons.find(RadioGroup).props()['aria-label']).toBe(
+        'Test Label'
+      );
+    });
+
+    it('aria-label is overridden by the ariaLabel prop', () => {
+      const radioButtons = renderGridFormRadioGroupInput({
+        label: 'Test Label',
+        ariaLabel: 'Overridden Test Label',
+      });
+
+      expect(radioButtons.find(RadioGroup).props()['aria-label']).toBe(
+        'Overridden Test Label'
+      );
+    });
+
+    it('aria-label is used when JSX is passed to the label', () => {
+      const radioButtons = renderGridFormRadioGroupInput({
+        label: <img alt="" src="" />,
+        ariaLabel: 'Overridden Test Label',
+      });
+
+      expect(radioButtons.find(RadioGroup).props()['aria-label']).toBe(
+        'Overridden Test Label'
+      );
     });
   });
 });

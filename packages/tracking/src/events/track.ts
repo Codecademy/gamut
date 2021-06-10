@@ -39,6 +39,7 @@ export const createTracker = ({ apiBaseUrl, verbose }: TrackerOptions) => {
       path: window.location.pathname,
       title: window.document.title,
       url: window.location.href,
+      referrer: window.document.referrer,
     };
 
     if (verbose) {
