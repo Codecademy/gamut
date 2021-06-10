@@ -8,11 +8,11 @@ const SearchIconButton = styled.button(
     backgroundColor: 'transparent',
     pt: 8,
     border: 'transparent',
-    ':hover': {
+    '&:hover': {
       color: 'hyper',
       cursor: 'pointer',
     },
-    ':focus': {
+    '&:focus': {
       outline: 'none',
     },
     '&:focus-visible': {
