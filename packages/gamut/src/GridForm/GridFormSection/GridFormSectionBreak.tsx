@@ -1,5 +1,4 @@
-import { styledConfig, system, variant } from '@codecademy/gamut-styles';
-import { system } from '@codecademy/gamut-system';
+import { styledConfig, system } from '@codecademy/gamut-styles';
 import { StyleProps, variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
 import React from 'react';
@@ -7,28 +6,27 @@ import React from 'react';
 import { Box } from '../../Box/Box';
 import { Column } from '../../Layout/Column';
 
-const anchorProps = variance.compose(
+const hrProps = variance.compose(
+  system.color,
+  system.space,
   system.layout,
-  system.typography,
-  system.space
+  system.border
 );
 
-export const AnchorBase = styled('a', styledConfig)<AnchorProps>(
-  anchorVariants,
-  anchorProps
-);
+export interface HrProps extends StyleProps<typeof hrProps> {}
 
-const Hello = styled.hr`
-  color: 'blue';
-  height: '3px';
-  width: '90%';
-`;
+export const LineBreak = styled('hr', styledConfig)<HrProps>(hrProps);
 
 export const GridFormSectionBreak: React.FC = () => {
   return (
     <Column size={12}>
-      <Box bg="red" height="3px" width="90%" />
-      <Hello />
+      <LineBreak
+        borderTop="none"
+        borderX="none"
+        border={1}
+        borderBottom="text"
+        width="90%"
+      />
     </Column>
     // <LineBreak
     //   width="90%"
