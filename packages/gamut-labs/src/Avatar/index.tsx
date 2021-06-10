@@ -30,7 +30,7 @@ const AvatarContainer = styled.div<{
           ? mode === 'light'
             ? theme.colors.lightGreen
             : theme.colors.green
-          : theme.colors.success};
+          : theme.colors['feedback-success']};
       }
     `}
 

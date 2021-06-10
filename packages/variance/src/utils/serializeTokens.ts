@@ -1,5 +1,7 @@
-import { CSSObject, Theme } from '@emotion/react';
+import { Theme } from '@emotion/react';
 import { isObject, merge } from 'lodash';
+
+import { CSSObject } from '../types/props';
 
 /**
  * Returns an type of any object with { key: 'var(--key) }
@@ -36,8 +38,18 @@ const templateBreakpoints = (
   return { [alias]: value };
 };
 
+type SerializedTokensInput = Record<
+  string,
+  string | number | CSSObject | SerializedTokensInputRecursive
+>;
+
+interface SerializedTokensInputRecursive {
+  [i: number]: SerializedTokensInput;
+  [i: string]: SerializedTokensInput;
+}
+
 export const serializeTokens = <
-  T extends Record<string, string | number | CSSObject>,
+  T extends SerializedTokensInput,
   Prefix extends string
 >(
   tokens: T,
