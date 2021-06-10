@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [34.5.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@34.5.0...@codecademy/gamut@34.5.1) (2021-06-10)
+
+
+### Bug Fixes
+
+* blur ToolTip target on escape key down ([e92656c](https://github.com/Codecademy/client-modules/commit/e92656cbac5ef28bbd028fbea30c0cbddb2fc65b))
+
+
+
 ## [34.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@34.4.0...@codecademy/gamut@34.5.0) (2021-06-10)
 
 
