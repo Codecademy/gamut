@@ -3,6 +3,67 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [41.7.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@41.7.0...@codecademy/styleguide@41.7.1) (2021-06-10)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [41.7.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@41.6.0...@codecademy/styleguide@41.7.0) (2021-06-10)
+
+
+### Features
+
+* Navy scale + color alias changes GM-237 ([bf896dd](https://github.com/Codecademy/client-modules/commit/bf896dd3fcf0435ef557694740d96df38d12173b)), closes [#10162](https://github.com/Codecademy/client-modules/issues/10162)
+
+
+
+## [41.6.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@41.5.0...@codecademy/styleguide@41.6.0) (2021-06-10)
+
+
+### Features
+
+* **FloatingCard:** Add FloatingCard add it to Dialog   GM-182 ([ddbe870](https://github.com/Codecademy/client-modules/commit/ddbe870134bd587a140960c70d44c8e8266061bc))
+
+
+
+## [41.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@41.4.0...@codecademy/styleguide@41.5.0) (2021-06-10)
+
+
+### Features
+
+* **variance:** states boolean toggle styles GM-233 ([e463f0e](https://github.com/Codecademy/client-modules/commit/e463f0e77802a3565ddda4de2e14050372923678))
+
+
+
+## [41.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@41.3.1...@codecademy/styleguide@41.4.0) (2021-06-09)
+
+
+### Features
+
+* Add AvatarChooser component ([86471e3](https://github.com/Codecademy/client-modules/commit/86471e36c7c8304661a45ae7b9e1083bf74a4574))
+
+
+
+### [41.3.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@41.3.0...@codecademy/styleguide@41.3.1) (2021-06-09)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [41.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@41.2.4...@codecademy/styleguide@41.3.0) (2021-06-09)
+
+
+### Features
+
+* add SocialMediaSharing component ([bb65733](https://github.com/Codecademy/client-modules/commit/bb65733e8c88f1cadc31773ec4177558ce8a55df))
+
+
+
 ### [41.2.4](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@41.2.3...@codecademy/styleguide@41.2.4) (2021-06-08)
 
 **Note:** Version bump only for package @codecademy/styleguide

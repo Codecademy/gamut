@@ -34,6 +34,11 @@ import LinkTo from '@storybook/addon-links/react';
         displayName: 'Codey',
       },
       action: () => {},
+      search: {
+        onEnable: () => {},
+        onSearch: () => {},
+        onTrackingClick: () => {},
+      },
     }}
   >
     {(args) => (
@@ -229,6 +234,11 @@ The Try Pro For Free button can take in an optional custom path.
     {(args) => (
       <GlobalHeader
         action={() => {}}
+        search={{
+          onEnable: () => {},
+          onSearch: () => {},
+          onTrackingClick: () => {},
+        }}
         type="pro"
         user={{
           avatar:
@@ -296,7 +306,17 @@ The Try Pro For Free button can take in an optional custom path.
 
 <Canvas>
   <Story name="Anonymous User - Default">
-    {(args) => <GlobalHeader action={() => {}} type="anon" />}
+    {(args) => (
+      <GlobalHeader
+        action={() => {}}
+        search={{
+          onEnable: () => {},
+          onSearch: () => {},
+          onTrackingClick: () => {},
+        }}
+        type="anon"
+      />
+    )}
   </Story>
 </Canvas>
 
@@ -304,7 +324,18 @@ The Try Pro For Free button can take in an optional custom path.
 
 <Canvas>
   <Story name="Anonymous User - Landing Page">
-    {(args) => <GlobalHeader action={() => {}} type="anon" variant="landing" />}
+    {(args) => (
+      <GlobalHeader
+        action={() => {}}
+        search={{
+          onEnable: () => {},
+          onSearch: () => {},
+          onTrackingClick: () => {},
+        }}
+        type="anon"
+        variant="landing"
+      />
+    )}
   </Story>
 </Canvas>
 
@@ -383,6 +414,11 @@ To mock this, IconButtons are provided as placeholders.
       <Box bg="beige" width="100%">
         <GlobalHeader
           action={() => {}}
+          search={{
+            onEnable: () => {},
+            onSearch: () => {},
+            onTrackingClick: () => {},
+          }}
           type="pro"
           user={{
             avatar:
@@ -409,6 +445,11 @@ To mock this, a very basic action function is provided, which prints out the eve
           // eslint-disable-next-line no-console
           console.log(item);
         }}
+        search={{
+          onEnable: () => {},
+          onSearch: () => {},
+          onTrackingClick: () => {},
+        }}
         type="anon"
       />
     )}
@@ -421,6 +462,16 @@ A version of the header with just the logo, for use when data has not been fetch
 
 <Canvas>
   <Story name="Loading">
-    {(args) => <GlobalHeader action={() => {}} type="loading" />}
+    {(args) => (
+      <GlobalHeader
+        action={() => {}}
+        search={{
+          onEnable: () => {},
+          onSearch: () => {},
+          onTrackingClick: () => {},
+        }}
+        type="loading"
+      />
+    )}
   </Story>
 </Canvas>

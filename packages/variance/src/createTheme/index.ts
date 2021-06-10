@@ -1,3 +1,3 @@
 export * from './createTheme';
-export * from './serializeTokens';
-export * from './flattenScale';
+export * from '../utils/serializeTokens';
+export * from '../utils/flattenScale';
