@@ -64,23 +64,6 @@ describe('Background', () => {
       'background-color',
       theme.colors.beige
     );
-
-    /** text color reset should be on the variable provisioner if needed */
-    expect(view.getByTestId('nested-content').parentElement).toHaveStyleRule(
-      'color',
-      theme.colors.text
-    );
-  });
-
-  it('does not change the color mode when contrasts do not conflict', () => {
-    const { view } = renderView({
-      bg: 'white',
-    });
-
-    // Grand parent
-    expect(
-      view.getByTestId('content').parentElement?.parentElement
-    ).not.toHaveStyleRule('color', theme.colors.text);
   });
 
   it('updates the theme context to the current mode', () => {
