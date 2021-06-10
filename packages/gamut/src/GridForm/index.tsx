@@ -1,11 +1,5 @@
 import React from 'react';
-import {
-  FieldError,
-  FormProvider,
-  Mode,
-  SubmitHandler,
-  useForm,
-} from 'react-hook-form';
+import { FormProvider, Mode, SubmitHandler, useForm } from 'react-hook-form';
 
 import { TextButtonProps } from '../Button';
 import { Form } from '../Form';
@@ -93,15 +87,12 @@ export function GridForm<
 }: GridFormProps<Values>) {
   const hasSections = Boolean(fields[0]?.fields);
 
-  const {
-    errors,
-    handleSubmit,
-    register,
-    setValue,
-    formState,
-    ...methods
-  } = useForm<Values>({
-    defaultValues: fields.reduce<any>(
+  const flatFields = hasSections
+    ? fields.flatMap((field) => field.fields)
+    : fields;
+
+  const { handleSubmit, formState, ...methods } = useForm({
+    defaultValues: flatFields.reduce<any>(
       (defaultValues, field) => ({
         ...defaultValues,
         [field.name]: field.defaultValue,
@@ -118,10 +109,7 @@ export function GridForm<
 
   return (
     <FormProvider
-      errors={errors}
       handleSubmit={handleSubmit}
-      register={register}
-      setValue={setValue}
       formState={formState}
       {...methods}
     >
