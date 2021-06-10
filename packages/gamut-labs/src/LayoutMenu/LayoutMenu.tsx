@@ -25,14 +25,6 @@ export type LayoutMenuProps = {
    * Text shown in mobile button that opens flyout on click
    */
   mobileButtonText: string;
-  /**
-   * Whether the mobile button should be full width
-   */
-  fullWidthButton?: boolean;
-  /**
-   * Whether or not to show the Codecademy logo at the top of the flyout on mobile
-   */
-  showLogoOnFlyout?: boolean;
 };
 
 export const LayoutMenu: React.FC<LayoutMenuProps> = ({
@@ -41,39 +33,33 @@ export const LayoutMenu: React.FC<LayoutMenuProps> = ({
   onSectionItemClick,
   selectedItem,
   mobileButtonText,
-  fullWidthButton = true,
-  showLogoOnFlyout,
   children,
 }) => {
-  const [flyoutOpen, toggleFlyout] = useState<boolean>(false);
+  const [flyoutOpen, toggleFlyout] = useState(false);
 
   return (
     <nav>
       <Box display={{ _: 'block', lg: 'none' }}>
         <Flyout
           button={
-            <StrokeButton
-              variant="secondary"
-              width={fullWidthButton ? 1 : undefined}
-            >
+            <StrokeButton variant="secondary" width={1}>
               {mobileButtonText}
             </StrokeButton>
           }
           expanded={flyoutOpen}
-          onToggle={() => toggleFlyout(!flyoutOpen)}
+          onToggle={() =>
+            toggleFlyout((currentFlyoutOpen) => !currentFlyoutOpen)
+          }
         >
           <Box bg="white" height={1} p={16} overflow="scroll">
-            {showLogoOnFlyout && <Logo mb={32} />}
+            <Logo mb={32} />
             {sections.map((section) => (
               <AccordionMenu
                 key={section.slug}
                 section={section}
                 onSectionToggle={onSectionToggle}
-                onSectionItemClick={(
-                  item: SectionItem,
-                  sectionSlug: string
-                ) => {
-                  toggleFlyout(!flyoutOpen);
+                onSectionItemClick={(item, sectionSlug) => {
+                  toggleFlyout((currentFlyoutOpen) => !currentFlyoutOpen);
                   onSectionItemClick(item, sectionSlug);
                 }}
                 selectedItem={selectedItem}

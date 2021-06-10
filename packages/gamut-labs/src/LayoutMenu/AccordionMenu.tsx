@@ -38,7 +38,7 @@ export const AccordionMenu: React.FC<AccordionMenuProps> = ({
   onSectionItemClick,
   selectedItem,
 }) => {
-  const [expanded, setExpanded] = useState<boolean>(true);
+  const [expanded, setExpanded] = useState(true);
 
   return (
     <StyledAccordionArea
@@ -47,7 +47,7 @@ export const AccordionMenu: React.FC<AccordionMenuProps> = ({
         <StyledAccordionButton
           expanded={expanded}
           onClick={() => {
-            setExpanded(!expanded);
+            setExpanded((currentExpanded) => !currentExpanded);
             onSectionToggle(section.slug);
           }}
         >
@@ -55,16 +55,11 @@ export const AccordionMenu: React.FC<AccordionMenuProps> = ({
         </StyledAccordionButton>
       }
     >
-      {section.items.map((item) => {
-        if (selectedItem === item.slug) {
-          return (
-            <Box key={item.slug} py={8}>
-              <SelectedSectionItem>{item.title}</SelectedSectionItem>
-            </Box>
-          );
-        }
-        return (
-          <Box key={item.slug} py={8}>
+      {section.items.map((item) => (
+        <Box key={item.slug} py={8}>
+          {selectedItem === item.slug ? (
+            <SelectedSectionItem>{item.title}</SelectedSectionItem>
+          ) : (
             <SectionItemLink
               onClick={() => {
                 onSectionItemClick(item, section.slug);
@@ -72,9 +67,9 @@ export const AccordionMenu: React.FC<AccordionMenuProps> = ({
             >
               {item.title}
             </SectionItemLink>
-          </Box>
-        );
-      })}
+          )}
+        </Box>
+      ))}
     </StyledAccordionArea>
   );
 };
