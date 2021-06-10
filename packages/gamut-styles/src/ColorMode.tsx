@@ -1,4 +1,9 @@
-import { serializeTokens, StyleProps, variance } from '@codecademy/variance';
+import {
+  serializeTokens,
+  StyleProps,
+  ThemeProps,
+  variance,
+} from '@codecademy/variance';
 import { CSSObject, Theme, ThemeProvider, useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
 import { mapValues } from 'lodash';
@@ -6,6 +11,7 @@ import React, { ComponentProps, forwardRef, useMemo } from 'react';
 
 import {
   color,
+  css,
   flex,
   grid,
   layout,
@@ -35,6 +41,19 @@ export const providerProps = variance.compose(
   space
 );
 
+export const modeColorProps = ({
+  theme,
+  mode,
+}: ThemeProps<{ mode?: ColorModes }>) => {
+  if (!theme || !mode || mode === theme?.mode) return {};
+  const { colors } = theme;
+  return serializeTokens(
+    mapValues(theme?.modes[mode], (color) => colors[color]),
+    'color',
+    theme
+  ).variables;
+};
+
 export function useColorModes(): [
   ColorModes,
   ColorModeShape,
@@ -55,7 +74,7 @@ export const VariableProvider = styled('div', styledConfig)<
     variables?: CSSObject;
     alwaysSetVariables?: boolean;
   }
->(({ variables }) => variables, providerProps);
+>(({ variables }) => variables, css({ textColor: 'text' }), providerProps);
 
 export const ColorMode = forwardRef<
   HTMLDivElement,
@@ -84,12 +103,7 @@ export const ColorMode = forwardRef<
 
   return (
     <ThemeProvider theme={{ mode }}>
-      <VariableProvider
-        variables={variables}
-        textColor="text"
-        {...rest}
-        ref={ref}
-      />
+      <VariableProvider variables={variables} {...rest} ref={ref} />
     </ThemeProvider>
   );
 });
