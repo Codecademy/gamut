@@ -18,7 +18,6 @@ import {
   proLogo,
   proProfile,
   resourcesDropdown,
-  search,
   signUp,
   tryProForFree,
   unpausePro,
@@ -28,8 +27,7 @@ import { User } from './types';
 
 const anonHeaderItems = (
   renderLogin: boolean,
-  renderSignUp: boolean,
-  renderSearch?: () => ReactNode
+  renderSignUp: boolean
 ): FormattedAppHeaderItems => {
   const leftItems: AppHeaderItem[] = [
     logo,
@@ -41,7 +39,6 @@ const anonHeaderItems = (
   ];
 
   const rightItems: AppHeaderItem[] = [];
-  renderSearch && rightItems.push(search(renderSearch));
   renderLogin && rightItems.push(login);
   renderSignUp && rightItems.push(signUp);
 
@@ -78,10 +75,8 @@ const anonMobileHeaderItems = (
   };
 };
 
-export const anonDefaultHeaderItems = (
-  renderSearch?: () => ReactNode
-): FormattedAppHeaderItems => {
-  return anonHeaderItems(true, true, renderSearch);
+export const anonDefaultHeaderItems = (): FormattedAppHeaderItems => {
+  return anonHeaderItems(true, true);
 };
 
 export const anonDefaultMobileHeaderItems = (): FormattedMobileAppHeaderItems => {
@@ -96,20 +91,16 @@ export const anonLandingMobileHeaderItems = (): FormattedMobileAppHeaderItems =>
   return anonMobileHeaderItems(true, false);
 };
 
-export const anonLoginHeaderItems = (
-  renderSearch?: () => ReactNode
-): FormattedAppHeaderItems => {
-  return anonHeaderItems(false, true, renderSearch);
+export const anonLoginHeaderItems = (): FormattedAppHeaderItems => {
+  return anonHeaderItems(false, true);
 };
 
 export const anonLoginMobileHeaderItems = (): FormattedMobileAppHeaderItems => {
   return anonMobileHeaderItems(false, true);
 };
 
-export const anonSignupHeaderItems = (
-  renderSearch?: () => ReactNode
-): FormattedAppHeaderItems => {
-  return anonHeaderItems(true, false, renderSearch);
+export const anonSignupHeaderItems = (): FormattedAppHeaderItems => {
+  return anonHeaderItems(true, false);
 };
 
 export const anonSignupMobileHeaderItems = (): FormattedMobileAppHeaderItems => {
@@ -118,7 +109,6 @@ export const anonSignupMobileHeaderItems = (): FormattedMobileAppHeaderItems => 
 
 export const freeHeaderItems = (
   user: User,
-  renderSearch?: () => ReactNode,
   renderNotifications?: () => ReactNode
 ): FormattedAppHeaderItems => {
   const leftItems: AppHeaderItem[] = [
@@ -132,7 +122,6 @@ export const freeHeaderItems = (
   ];
 
   const rightItems: AppHeaderItem[] = [];
-  renderSearch && rightItems.push(search(renderSearch));
   renderNotifications && rightItems.push(notifications(renderNotifications));
   rightItems.push(freeProfile(user));
   rightItems.push(
@@ -181,7 +170,6 @@ export const freeMobileHeaderItems = (
 
 export const proHeaderItems = (
   user: User,
-  renderSearch?: () => ReactNode,
   renderNotifications?: () => ReactNode
 ): FormattedAppHeaderItems => {
   const leftItems: AppHeaderItem[] = [
@@ -193,7 +181,6 @@ export const proHeaderItems = (
   ];
 
   const rightItems: AppHeaderItem[] = [];
-  renderSearch && rightItems.push(search(renderSearch));
   renderNotifications && rightItems.push(notifications(renderNotifications));
   rightItems.push(proProfile(user));
   user.isPaused && rightItems.push(unpausePro);

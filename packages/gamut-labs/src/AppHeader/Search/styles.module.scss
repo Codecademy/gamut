@@ -1,0 +1,21 @@
+@import "~@codecademy/gamut-styles/utils";
+
+.queryContainer {
+  display: flex;
+  padding-top: 2rem;
+  padding-bottom: 0;
+  width: 100%;
+}
+
+.input {
+  outline: none;
+}
+
+.suggestionContainer {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.suggestionButtons {
+  margin-left: -0.6rem;
+}

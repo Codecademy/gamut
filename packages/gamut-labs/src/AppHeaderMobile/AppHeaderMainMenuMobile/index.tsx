@@ -1,5 +1,5 @@
 import { FlexBox } from '@codecademy/gamut';
-import React, { ReactNode, useState } from 'react';
+import React, { useState } from 'react';
 
 import { AppHeaderFillButton, AppHeaderTextButton } from '../..';
 import {
@@ -10,17 +10,18 @@ import {
 import { AppHeaderLinkMobile } from '../AppHeaderLinkMobile';
 import { AppHeaderSubMenuMobile } from '../AppHeaderSubMenuMobile';
 import { AppHeaderSubMenuTarget } from '../AppHeaderSubMenuTarget';
+import { MobileSearchBar } from './MobileSearchBar';
 
 export type AppHeaderMainMenuMobileProps = {
   action: AppHeaderClickHandler;
   items: AppHeaderItem[];
-  renderSearch?: () => ReactNode;
+  onSearch: (query: string) => void;
 };
 
 export const AppHeaderMainMenuMobile: React.FC<AppHeaderMainMenuMobileProps> = ({
-  items,
   action,
-  renderSearch,
+  items,
+  onSearch,
 }) => {
   const [subMenuItem, setSubMenuItem] = useState<AppHeaderDropdownItem>();
 
@@ -81,20 +82,16 @@ export const AppHeaderMainMenuMobile: React.FC<AppHeaderMainMenuMobileProps> = (
     }
   };
 
-  return (
+  return subMenuItem ? (
+    <AppHeaderSubMenuMobile
+      handleClose={closeSubMenu}
+      action={action}
+      item={subMenuItem}
+    />
+  ) : (
     <>
-      {subMenuItem ? (
-        <AppHeaderSubMenuMobile
-          handleClose={closeSubMenu}
-          action={action}
-          item={subMenuItem}
-        />
-      ) : (
-        <>
-          {renderSearch && renderSearch()}
-          {items.map((item) => mapItemToElement(item, action))}
-        </>
-      )}
+      <MobileSearchBar onSearch={onSearch} />
+      {items.map((item) => mapItemToElement(item, action))}
     </>
   );
 };

@@ -1,18 +1,18 @@
 import { ReactNode } from 'react';
 
 import { AppHeaderClickHandler } from '../AppHeader/AppHeaderElements/types';
+import { AppHeaderSearch } from '../AppHeader/Search/useHeaderSearch';
 
 type RenderNotifications = {
   desktop: () => ReactNode;
   mobile: () => ReactNode;
 };
 type RenderProfile = { desktop: () => ReactNode; mobile: () => ReactNode };
-type RenderSearch = { desktop: () => ReactNode; mobile: () => ReactNode };
 
 type BaseHeader = {
   action: AppHeaderClickHandler;
   className?: string;
-  renderSearch?: RenderSearch;
+  search: AppHeaderSearch;
 };
 
 export type User = {

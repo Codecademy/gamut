@@ -1,5 +1,5 @@
 import { Box, IconButton } from '@codecademy/gamut/src';
-import { BellIcon, SearchIcon } from '@codecademy/gamut-icons/src';
+import { BellIcon } from '@codecademy/gamut-icons/src';
 import { GlobalHeader } from '@codecademy/gamut-labs/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
@@ -81,6 +81,11 @@ The following are available variations for the GlobalHeader component.
       <Box position="relative" zIndex={0}>
         <GlobalHeader
           action={() => {}}
+          search={{
+            onEnable: () => {},
+            onSearch: () => {},
+            onTrackingClick: () => {},
+          }}
           type="free"
           user={{
             avatar:
@@ -103,6 +108,11 @@ The Try Pro For Free button can take in an optional custom path.
     {(args) => (
       <GlobalHeader
         action={() => {}}
+        search={{
+          onEnable: () => {},
+          onSearch: () => {},
+          onTrackingClick: () => {},
+        }}
         type="free"
         user={{
           avatar:
@@ -122,6 +132,11 @@ The Try Pro For Free button can take in an optional custom path.
     {(args) => (
       <GlobalHeader
         action={() => {}}
+        search={{
+          onEnable: () => {},
+          onSearch: () => {},
+          onTrackingClick: () => {},
+        }}
         type="free"
         user={{
           avatar:
@@ -143,6 +158,11 @@ The Try Pro For Free button can take in an optional custom path.
     {(args) => (
       <GlobalHeader
         action={() => {}}
+        search={{
+          onEnable: () => {},
+          onSearch: () => {},
+          onTrackingClick: () => {},
+        }}
         type="pro"
         user={{
           avatar:
@@ -161,6 +181,11 @@ The Try Pro For Free button can take in an optional custom path.
     {(args) => (
       <GlobalHeader
         action={() => {}}
+        search={{
+          onEnable: () => {},
+          onSearch: () => {},
+          onTrackingClick: () => {},
+        }}
         type="pro"
         user={{
           avatar:
@@ -180,6 +205,11 @@ The Try Pro For Free button can take in an optional custom path.
     {(args) => (
       <GlobalHeader
         action={() => {}}
+        search={{
+          onEnable: () => {},
+          onSearch: () => {},
+          onTrackingClick: () => {},
+        }}
         type="pro"
         user={{
           avatar:
@@ -219,6 +249,11 @@ The Try Pro For Free button can take in an optional custom path.
     {(args) => (
       <GlobalHeader
         action={() => {}}
+        search={{
+          onEnable: () => {},
+          onSearch: () => {},
+          onTrackingClick: () => {},
+        }}
         type="pro"
         user={{
           avatar:
@@ -238,6 +273,11 @@ The Try Pro For Free button can take in an optional custom path.
     {(args) => (
       <GlobalHeader
         action={() => {}}
+        search={{
+          onEnable: () => {},
+          onSearch: () => {},
+          onTrackingClick: () => {},
+        }}
         type="free"
         user={{
           avatar:
@@ -275,13 +315,10 @@ The Try Pro For Free button can take in an optional custom path.
     {(args) => (
       <GlobalHeader
         action={() => {}}
-        renderSearch={{
-          desktop: () => <IconButton icon={SearchIcon} />,
-          mobile: () => (
-            <Box border={1} p={8}>
-              Mobile Search Bar [Placeholder]
-            </Box>
-          ),
+        search={{
+          onEnable: () => {},
+          onSearch: () => {},
+          onTrackingClick: () => {},
         }}
         type="anon"
         variant="login"
@@ -297,13 +334,10 @@ The Try Pro For Free button can take in an optional custom path.
     {(args) => (
       <GlobalHeader
         action={() => {}}
-        renderSearch={{
-          desktop: () => <IconButton icon={SearchIcon} />,
-          mobile: () => (
-            <Box border={1} p={8}>
-              Mobile Search Bar [Placeholder]
-            </Box>
-          ),
+        search={{
+          onEnable: () => {},
+          onSearch: () => {},
+          onTrackingClick: () => {},
         }}
         type="anon"
         variant="signup"
@@ -325,13 +359,10 @@ To mock this, IconButtons are provided as placeholders.
           desktop: () => <IconButton icon={BellIcon} />,
           mobile: () => <IconButton icon={BellIcon} />,
         }}
-        renderSearch={{
-          desktop: () => <IconButton icon={SearchIcon} />,
-          mobile: () => (
-            <Box border={1} p={8}>
-              Mobile Search Bar [Placeholder]
-            </Box>
-          ),
+        search={{
+          onEnable: () => {},
+          onSearch: () => {},
+          onTrackingClick: () => {},
         }}
         type="pro"
         user={{
