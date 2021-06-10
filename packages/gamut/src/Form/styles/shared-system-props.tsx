@@ -43,7 +43,6 @@ export const formFieldFocusStyles = {
 } as const;
 
 const formFieldBaseDisabledStyles = {
-  bg: 'background-disabled',
   borderColor: 'currentColor',
   textColor: 'text-disabled',
   fontStyle: 'italic',
@@ -52,7 +51,7 @@ const formFieldBaseDisabledStyles = {
 
 const formFieldDisabledStyles = {
   ...formFieldBaseDisabledStyles,
-  bg: 'backgroundEmphasized',
+  bg: 'background-disabled',
   [InputSelectors.HOVER]: {
     borderColor: 'currentColor',
   },
