@@ -81,7 +81,7 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
           onChange={onChange}
           ref={ref}
           value={value}
-          variant={'error'}
+          variant="error"
           {...rest}
         />
         <RadioLabel htmlFor={htmlFor} disabled={disabled} variant={styleState}>
