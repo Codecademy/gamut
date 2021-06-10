@@ -2,11 +2,11 @@ import { Box, Logo, StrokeButton } from '@codecademy/gamut';
 import React, { useState } from 'react';
 
 import { Flyout } from '../Flyout';
-import { AccordionMenu, Section, SectionItem } from './AccordionMenu';
+import { AccordionMenu, Section } from './AccordionMenu';
 
 export type LayoutMenuProps = {
   /**
-   * An array of sections including the title, slug, and items, each of which will become an accordion
+   * An array of sections containing the title, slug, and items, each of which will become an accordion. Each item contains a title, slug, slug, and onClick.
    */
   sections: Section[];
   /**
@@ -18,10 +18,6 @@ export type LayoutMenuProps = {
    */
   onSectionToggle: (sectionSlug: string) => void;
   /**
-   * Callback to be run on click of a section item. This should include where the link should go
-   */
-  onSectionItemClick: (item: SectionItem, sectionSlug: string) => void;
-  /**
    * Text shown in mobile button that opens flyout on click
    */
   mobileButtonText: string;
@@ -30,7 +26,6 @@ export type LayoutMenuProps = {
 export const LayoutMenu: React.FC<LayoutMenuProps> = ({
   sections,
   onSectionToggle,
-  onSectionItemClick,
   selectedItem,
   mobileButtonText,
   children,
@@ -58,10 +53,6 @@ export const LayoutMenu: React.FC<LayoutMenuProps> = ({
                 key={section.slug}
                 section={section}
                 onSectionToggle={onSectionToggle}
-                onSectionItemClick={(item, sectionSlug) => {
-                  toggleFlyout((currentFlyoutOpen) => !currentFlyoutOpen);
-                  onSectionItemClick(item, sectionSlug);
-                }}
                 selectedItem={selectedItem}
               />
             ))}
@@ -75,7 +66,6 @@ export const LayoutMenu: React.FC<LayoutMenuProps> = ({
             key={section.slug}
             section={section}
             onSectionToggle={onSectionToggle}
-            onSectionItemClick={onSectionItemClick}
             selectedItem={selectedItem}
           />
         ))}

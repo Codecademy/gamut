@@ -17,6 +17,8 @@ const StyledAccordionButton = styled(AccordionButton)`
 export type SectionItem = {
   title: string;
   slug: string;
+  href: string;
+  onClick: (event: React.MouseEvent) => void;
 };
 
 export type Section = {
@@ -28,14 +30,12 @@ export type Section = {
 export type AccordionMenuProps = {
   section: Section;
   onSectionToggle: (sectionSlug: string) => void;
-  onSectionItemClick: (item: SectionItem, sectionSlug: string) => void;
   selectedItem?: string;
 };
 
 export const AccordionMenu: React.FC<AccordionMenuProps> = ({
   section,
   onSectionToggle,
-  onSectionItemClick,
   selectedItem,
 }) => {
   const [expanded, setExpanded] = useState(true);
@@ -60,11 +60,7 @@ export const AccordionMenu: React.FC<AccordionMenuProps> = ({
           {selectedItem === item.slug ? (
             <SelectedSectionItem>{item.title}</SelectedSectionItem>
           ) : (
-            <SectionItemLink
-              onClick={() => {
-                onSectionItemClick(item, section.slug);
-              }}
-            >
+            <SectionItemLink href={item.href} onClick={item.onClick}>
               {item.title}
             </SectionItemLink>
           )}
