@@ -44,7 +44,7 @@ describe('Flyout', () => {
     it('closes flyout when clickOutsideCloses is true', () => {
       const onToggle = jest.fn();
 
-      renderFlyout({ expanded: true, clickOutsideCloses: true, onToggle });
+      renderFlyout({ expanded: true, onToggle });
 
       fireEvent.mouseDown(screen.getByTestId('flyout-outside'));
 
@@ -52,7 +52,7 @@ describe('Flyout', () => {
     });
 
     it('does not close flyout when clickOutsideCloses is false', async () => {
-      renderFlyout({ expanded: true, clickOutsideCloses: false });
+      renderFlyout({ expanded: true, clickOutsideDoesNotClose: true });
 
       fireEvent.mouseDown(screen.getByTestId('flyout-outside'));
 
@@ -81,7 +81,10 @@ describe('Flyout', () => {
     });
 
     it('does not close flyout when escapeCloses is false', () => {
-      const { view } = renderFlyout({ expanded: true, escapeCloses: false });
+      const { view } = renderFlyout({
+        expanded: true,
+        escapeDoesNotClose: true,
+      });
       fireEvent.keyDown(view.baseElement, {
         key: 'Escape',
         code: 'Escape',

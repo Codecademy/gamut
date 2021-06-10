@@ -68,11 +68,11 @@ export type FlyoutProps = FlyoutStyleProps & {
   /**
    * Whether clicking on the screen outside of the container should close the Flyout
    */
-  clickOutsideCloses?: boolean;
+  clickOutsideDoesNotClose?: boolean;
   /**
    * Whether clicking the escape key should close the Flyout
    */
-  escapeCloses?: boolean;
+  escapeDoesNotClose?: boolean;
 };
 
 export const Flyout: React.FC<FlyoutProps> = ({
@@ -83,19 +83,19 @@ export const Flyout: React.FC<FlyoutProps> = ({
   openFrom = 'left',
   openWidth = 30,
   testId,
-  clickOutsideCloses = true,
-  escapeCloses = true,
+  clickOutsideDoesNotClose,
+  escapeDoesNotClose,
   ...styleProps
 }) => {
   const initialX = openFrom === 'left' ? -1000 : 1000;
 
   const handleOutsideClick = useCallback(() => {
-    clickOutsideCloses && onToggle();
-  }, [clickOutsideCloses, onToggle]);
+    !clickOutsideDoesNotClose && onToggle();
+  }, [clickOutsideDoesNotClose, onToggle]);
 
   const handleEscapeKey = useCallback(() => {
-    escapeCloses && onToggle();
-  }, [escapeCloses, onToggle]);
+    !escapeDoesNotClose && onToggle();
+  }, [escapeDoesNotClose, onToggle]);
 
   return (
     <>
