@@ -6,13 +6,6 @@ import { flattenScale, LiteralPaths } from '../utils/flattenScale';
 import { KeyAsVariable, serializeTokens } from '../utils/serializeTokens';
 import { ColorModeConfig, MergeTheme, PrivateThemeKeys } from './types';
 
-type ColorMap<Colors> = Record<
-  string,
-  | Colors
-  | Record<string, Colors>
-  | Record<string, Colors | Record<string, Colors>>
->;
-
 class ThemeBuilder<T extends AbstractTheme> {
   #theme = {} as T;
 
