@@ -134,16 +134,21 @@ export type GridFormField =
   | GridFormHiddenField
   | GridFormSweetContainerField;
 
+export type GridFormSectionTitleProps = {
+  as?: any;
+  rowSpan?: number;
+  size?: number;
+};
+
 export type GridFormSectionType = {
-  title: string;
-  as: any;
+  title: GridFormSectionTitleProps;
   fields: GridFormField[];
 };
 
 const isGridFormSection = (
-  field: GridFormField | GridFormSection
-): field is GridFormSection => {
-  return (field as GridFormSection).title !== undefined;
+  field: GridFormField | GridFormSectionType
+): field is GridFormSectionType => {
+  return (field as GridFormSectionType).title !== undefined;
 };
 
 const getFields = (fields: any) => {

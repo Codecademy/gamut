@@ -12,7 +12,7 @@ import { Form } from '../Form';
 import { LayoutGrid, LayoutGridProps } from '../Layout';
 import { Column } from '../Layout/Column';
 import { GridFormButtons, GridFormSubmitProps } from './GridFormButtons';
-import { GridFormSection } from './GridFormSection';
+import { GridFormSection, GridFormSectionTitle } from './GridFormSection';
 import { GridFormField, GridFormSectionType } from './types';
 
 export * from './types';
@@ -135,9 +135,7 @@ export function GridForm<
               {fields.map((field, index) => {
                 return (
                   <>
-                    <Column size={12}>
-                      <Text as={field.as}>{field.title}</Text>
-                    </Column>
+                    <GridFormSectionTitle {...field.title} />
                     <GridFormSection
                       fields={field.fields}
                       showRequired={showRequired}
@@ -145,7 +143,7 @@ export function GridForm<
                     />
                     {index !== fields.length - 1 && (
                       <Column size={12}>
-                        <Text>'updog'</Text>
+                        <div>'updog'</div>
                       </Column>
                     )}
                   </>

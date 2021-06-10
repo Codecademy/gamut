@@ -2,17 +2,17 @@ import React from 'react';
 
 import { Column } from '../../Layout/Column';
 import { Text } from '../../Typography/Text';
+import { GridFormSectionTitleProps } from '../types';
 
-export type GridFormSectionProps = {
-  fields: any;
-  showRequired: boolean;
-  pastFirstError: boolean;
-};
-
-export const GridFormSectionTitle: React.FC<GridFormSectionProps> = ({
-  as,
-  showRequired,
-  pastFirstError,
+export const GridFormSectionTitle: React.FC<GridFormSectionTitleProps> = ({
+  title,
+  as = 'h2',
+  rowSpan = 1,
+  size = 12,
 }) => {
-  return <Column size={12}>'tbd'</Column>;
+  return (
+    <Column size={size} rowSpan={rowSpan}>
+      <Text as={as}>{title}</Text>
+    </Column>
+  );
 };
