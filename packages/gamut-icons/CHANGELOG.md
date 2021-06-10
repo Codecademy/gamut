@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [5.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@5.1.0...@codecademy/gamut-icons@5.1.1) (2021-06-10)
+
+**Note:** Version bump only for package @codecademy/gamut-icons
+
+
+
+
+
 ## [5.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@5.0.0...@codecademy/gamut-icons@5.1.0) (2021-06-07)
 
 

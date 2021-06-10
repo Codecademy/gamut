@@ -4,12 +4,17 @@ import { Meta } from '@storybook/addon-docs/blocks';
 <Meta
   title={title}
   parameters={{
-    subtitle:
-      'The variant API lets you conditionally add complex styles to any component with a single prop.',
+    subtitle: 'The style props for more complex CSS combinations.',
     source: 'gamut-styles',
     status: 'updating',
   }}
 />
+
+We provide 3 ways to create and save more complex styles beyond system props. All three have access to all of the system props and responsive syntax - in addition to all valid CSS properties and nested selectors!
+
+- `css`: For static styles that do not need to change.
+- `variant`: Conditionally enable mutually exclusive styles for a component, that can be changed using a single prop.
+- `states`: Saved configurations of non-mutually exclusive styles that will be merged together with their order maintained.
 
 ## `css`
 
@@ -56,6 +61,29 @@ const Anchor = styled.a(
     },
   })
 );
+```
+
+## `states`
+
+`states` accepts an object of keyed CSS objects. Unlike `variant`, each key represents an individual boolean prop (instead of options of a single prop) that can be simultaneously configured. This makes enabling / disabling specific behaviors as needed far easier as they do not need to be reduced to a single mutually exclusive set of states.
+
+```tsx
+import { states } from '@codecademy/gamut-styles';
+
+const FlexBox = styled.div(
+  states({
+    fit: {
+      width: 1,
+      height: 1,
+    },
+    center: {
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+  })
+);
+
+<FlexBox fit center />;
 ```
 
 ## Property Passthrough
@@ -164,20 +192,4 @@ const Anchor = styled.a(
     },
   })
 );
-```
-
-### Typings
-
-```tsx
-export type SelectorMap<Props, System> = {
-  [K in keyof Props]?: SelectorProps<Props[K], System>;
-};
-
-export type SelectorProps<Props, System> = {
-  [K in keyof Props]?: K extends keyof System
-    ? System[K] // System Property Types
-    : K extends keyof PropertyTypes
-    ? PropertyTypes[K] // Any Valid CSS Prop
-    : Omit<PropertyTypes, keyof System> & System; // No Match Opens a single level of nesting for System + General CSS;
-};
 ```
