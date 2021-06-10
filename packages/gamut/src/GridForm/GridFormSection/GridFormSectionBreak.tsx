@@ -14,12 +14,12 @@ const hrProps = variance.compose(
 
 export interface HrProps extends StyleProps<typeof hrProps> {}
 
-export const LineBreak = styled('hr', styledConfig)<HrProps>(hrProps);
+export const SectionBreak = styled('hr', styledConfig)<HrProps>(hrProps);
 
 export const GridFormSectionBreak: React.FC = () => {
   return (
     <Column size={12}>
-      <LineBreak
+      <SectionBreak
         borderTop="none"
         borderX="none"
         border={1}
