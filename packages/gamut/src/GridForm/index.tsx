@@ -60,11 +60,6 @@ export type GridFormProps<Values extends {}> = {
   rowGap?: LayoutGridProps['rowGap'];
 
   /**
-   * Grid row gap between sections.
-   */
-  sectionGap?: LayoutGridProps['rowGap'];
-
-  /**
    * Description of the submit button at the end of the form.
    */
   submit: GridFormSubmitProps & {
@@ -92,7 +87,6 @@ export function GridForm<
   fields = [],
   onSubmit,
   rowGap = 16,
-  sectionGap = 32,
   submit,
   validation = 'onSubmit',
   showRequired = false,
