@@ -1,43 +1,50 @@
 import { VisualTheme } from '@codecademy/gamut';
-import { colors } from '@codecademy/gamut-styles';
+import { theme } from '@codecademy/gamut-styles';
+import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import React from 'react';
 
-const modes = {
-  dark: {
-    shadowColor: colors.green,
-  },
-  light: {
-    shadowColor: colors.lightGreen,
-  },
-};
-
 const Image = styled.img();
 
-const AvatarContainer = styled.div<{ mode: VisualTheme }>`
+const defaultAvatarSize = '118px';
+
+const AvatarContainer = styled.div<{
+  mode?: VisualTheme;
+  disableDropshadow?: boolean;
+}>`
   position: relative;
   display: table;
 
-  &::before {
-    content: '';
-    position: absolute;
-    border-radius: 50%;
-    transform: scale(0.92);
-    transform-origin: bottom right;
-    height: 100%;
-    width: 100%;
-    background-color: ${({ mode }) => modes[mode].shadowColor};
-  }
+  ${({ disableDropshadow, mode }) =>
+    !disableDropshadow &&
+    css`
+      &::before {
+        content: '';
+        position: absolute;
+        border-radius: 50%;
+        transform: scale(0.92);
+        transform-origin: bottom right;
+        height: 100%;
+        width: 100%;
+        background-color: ${mode
+          ? mode === 'light'
+            ? theme.colors.lightGreen
+            : theme.colors.green
+          : theme.colors.success};
+      }
+    `}
 
   ${Image} {
     position: relative;
     border-radius: 50%;
-    height: auto;
-    width: 100%;
-    max-width: 118px;
-    min-width: 77px;
-    transform: scale(0.92);
-    transform-origin: top left;
+    object-fit: cover;
+
+    ${({ disableDropshadow }) =>
+      !disableDropshadow &&
+      css`
+        transform: scale(0.92);
+        transform-origin: top left;
+      `}
   }
 `;
 
@@ -50,8 +57,21 @@ export type AvatarBaseProps = {
    * path to image asset
    */
   src: string;
+
   /**
-   * chooses color of drop shadow
+   * Disables the drop shadow entirely.
+   */
+  disableDropshadow?: boolean;
+
+  /**
+   * Overrides styles on the Avatar container.
+   */
+  className?: string;
+
+  /**
+   * @deprecated
+   * This will be determined automatically by the theme moving forward.
+   * Supplying it will determine the color of drop shadow.
    */
   mode?: VisualTheme;
 };
@@ -59,10 +79,21 @@ export type AvatarBaseProps = {
 export type AvatarProps = AvatarBaseProps & AvatarImageProps;
 
 export const Avatar: React.FC<AvatarProps> = ({
-  mode = 'light',
+  mode,
+  disableDropshadow,
+  className,
   ...avatarImageProps
 }) => (
-  <AvatarContainer mode={mode} data-testid="avatar-container">
-    <Image width="118px" height="118px" {...avatarImageProps} />
+  <AvatarContainer
+    className={className}
+    mode={mode}
+    disableDropshadow={disableDropshadow}
+    data-testid="avatar-container"
+  >
+    <Image
+      width={defaultAvatarSize}
+      height={defaultAvatarSize}
+      {...avatarImageProps}
+    />
   </AvatarContainer>
 );
