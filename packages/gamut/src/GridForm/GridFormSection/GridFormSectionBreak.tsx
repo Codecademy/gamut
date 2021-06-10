@@ -3,7 +3,6 @@ import { StyleProps, variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
 import React from 'react';
 
-import { Box } from '../../Box/Box';
 import { Column } from '../../Layout/Column';
 
 const hrProps = variance.compose(
@@ -28,12 +27,5 @@ export const GridFormSectionBreak: React.FC = () => {
         width="90%"
       />
     </Column>
-    // <LineBreak
-    //   width="90%"
-    //   height="1px"
-    //   verticalAlign="middle"
-    //   my={'1rem'}
-    //   textColor={'text'}
-    // />
   );
 };
