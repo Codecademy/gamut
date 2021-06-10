@@ -31,6 +31,15 @@ export const LayoutMenu: React.FC<LayoutMenuProps> = ({
   children,
 }) => {
   const [flyoutOpen, toggleFlyout] = useState(false);
+  const accordionMenuSections = sections.map((section) => (
+    <AccordionMenu
+      key={section.slug}
+      section={section}
+      onSectionToggle={onSectionToggle}
+      onItemClick={() => toggleFlyout(false)}
+      selectedItem={selectedItem}
+    />
+  ));
 
   return (
     <nav>
@@ -42,33 +51,19 @@ export const LayoutMenu: React.FC<LayoutMenuProps> = ({
             </StrokeButton>
           }
           expanded={flyoutOpen}
-          onToggle={() =>
-            toggleFlyout((currentFlyoutOpen) => !currentFlyoutOpen)
-          }
+          onToggle={() => {
+            toggleFlyout(!flyoutOpen);
+          }}
         >
           <Box bg="white" height={1} p={16} overflow="scroll">
             <Logo mb={32} />
-            {sections.map((section) => (
-              <AccordionMenu
-                key={section.slug}
-                section={section}
-                onSectionToggle={onSectionToggle}
-                selectedItem={selectedItem}
-              />
-            ))}
+            {accordionMenuSections}
             {children}
           </Box>
         </Flyout>
       </Box>
       <Box display={{ _: 'none', lg: 'block' }}>
-        {sections.map((section) => (
-          <AccordionMenu
-            key={section.slug}
-            section={section}
-            onSectionToggle={onSectionToggle}
-            selectedItem={selectedItem}
-          />
-        ))}
+        {accordionMenuSections}
         {children}
       </Box>
     </nav>

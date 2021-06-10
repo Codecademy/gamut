@@ -30,12 +30,14 @@ export type Section = {
 export type AccordionMenuProps = {
   section: Section;
   onSectionToggle: (sectionSlug: string) => void;
+  onItemClick: () => void;
   selectedItem?: string;
 };
 
 export const AccordionMenu: React.FC<AccordionMenuProps> = ({
   section,
   onSectionToggle,
+  onItemClick,
   selectedItem,
 }) => {
   const [expanded, setExpanded] = useState(true);
@@ -60,7 +62,13 @@ export const AccordionMenu: React.FC<AccordionMenuProps> = ({
           {selectedItem === item.slug ? (
             <SelectedSectionItem>{item.title}</SelectedSectionItem>
           ) : (
-            <SectionItemLink href={item.href} onClick={item.onClick}>
+            <SectionItemLink
+              href={item.href}
+              onClick={(event) => {
+                item.onClick(event);
+                onItemClick();
+              }}
+            >
               {item.title}
             </SectionItemLink>
           )}
