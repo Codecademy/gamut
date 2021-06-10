@@ -1,10 +1,8 @@
-import { Text } from '@codecademy/gamut';
 import { noSelect, screenReaderOnly } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
 import React, { forwardRef, InputHTMLAttributes, ReactNode } from 'react';
 
-import { Box } from '../Box';
 import {
   conditionalRadioInputStyles,
   conditionalRadioLabelStyles,
@@ -72,30 +70,24 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
     const styleState = conditionalStyleState(error, disabled);
 
     return (
-      <Box textColor="gray-800">
-        <RadioWrapper className={className}>
-          <RadioInput
-            id={inputId}
-            name={name}
-            required={required}
-            type="radio"
-            checked={checked}
-            disabled={disabled}
-            onChange={onChange}
-            ref={ref}
-            value={value}
-            variant={styleState}
-            {...rest}
-          />
-          <RadioLabel
-            htmlFor={htmlFor}
-            disabled={disabled}
-            variant={styleState}
-          >
-            {label}
-          </RadioLabel>
-        </RadioWrapper>
-      </Box>
+      <RadioWrapper className={className}>
+        <RadioInput
+          id={inputId}
+          name={name}
+          required={required}
+          type="radio"
+          checked={checked}
+          disabled={disabled}
+          onChange={onChange}
+          ref={ref}
+          value={value}
+          variant={styleState}
+          {...rest}
+        />
+        <RadioLabel htmlFor={htmlFor} disabled={disabled} variant={styleState}>
+          {label}
+        </RadioLabel>
+      </RadioWrapper>
     );
   }
 );
