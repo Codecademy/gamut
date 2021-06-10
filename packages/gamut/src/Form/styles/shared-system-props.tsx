@@ -43,8 +43,9 @@ export const formFieldFocusStyles = {
 } as const;
 
 const formFieldBaseDisabledStyles = {
-  textColor: 'textMuted',
+  bg: 'background-disabled',
   borderColor: 'currentColor',
+  textColor: 'text-disabled',
   fontStyle: 'italic',
   cursor: 'not-allowed',
 } as const;
@@ -70,13 +71,13 @@ export const formBaseFieldStylesObject = {
     'ease-in-out'
   ),
   border: 1,
-  borderColor: 'secondaryDull',
+  borderColor: 'text-disabled',
   borderRadius: '2px',
   [InputSelectors.HOVER]: {
     borderColor: 'primary',
   },
   [InputSelectors.PLACEHOLDER]: {
-    borderColor: 'textMuted',
+    borderColor: 'text-disabled',
     fontStyle: 'italic',
   },
   [InputSelectors.DISABLED]: {

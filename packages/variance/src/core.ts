@@ -1,4 +1,4 @@
-import { get, identity, isObject, merge } from 'lodash';
+import { get, identity, isFunction, isObject, isString, merge } from 'lodash';
 
 import {
   AbstractParser,
@@ -8,6 +8,7 @@ import {
   Parser,
   Prop,
   PropTransformer,
+  States,
   TransformerMap,
   Variant,
 } from './types/config';
@@ -97,24 +98,19 @@ export const variance = {
       prop,
       styleFn: (value, prop, props) => {
         const styles: CSSObject = {};
+        let useTransform = false;
+        let usedValue: string | number;
         let scaleVal: string | number | undefined;
-        switch (typeof scale) {
-          case 'string': {
-            const path = `theme.${scale}.${value}`;
-            scaleVal = get(props, path);
-            break;
-          }
-          case 'object': {
-            scaleVal = get(scale, `${value}`);
-            break;
-          }
-          case 'undefined':
-          default:
+
+        if (isFunction(value)) {
+          usedValue = value(props.theme);
+        } else {
+          if (isString(scale)) scaleVal = get(props, `theme.${scale}.${value}`);
+          if (isObject(scale)) scaleVal = get(scale, `${value}`);
+
+          useTransform = scaleVal !== undefined || scale === undefined;
+          usedValue = scaleVal ?? (value as string | number);
         }
-
-        const useTransform = scaleVal !== undefined || scale === undefined;
-
-        const usedValue = scaleVal ?? (value as string | number);
 
         // for each property look up the scale value from theme if passed and apply any
         // final transforms to the value
@@ -122,11 +118,12 @@ export const variance = {
           const finalValue = useTransform
             ? transform(usedValue, property, props)
             : usedValue;
-          const mergeStyles = isObject(finalValue)
-            ? finalValue
-            : { [property]: finalValue };
 
-          Object.assign(styles, mergeStyles);
+          if (isObject(finalValue)) {
+            Object.assign(styles, finalValue);
+          } else {
+            Object.assign(styles, { [property]: finalValue });
+          }
         });
         // return the resulting styles object
         return styles;
@@ -210,6 +207,33 @@ export const variance = {
           baseFn(props),
           variantFns?.[selected as Keys]?.(props)
         );
+      };
+    };
+  },
+  createStates<
+    Config extends Record<string, Prop>,
+    P extends Parser<TransformerMap<Config>>
+  >(config: Config): States<P> {
+    const css: CSS<P> = this.createCss(config);
+
+    return (states) => {
+      const orderedStates = Object.keys(states);
+      type Keys = keyof typeof states;
+      const stateFns = {} as Record<Keys, (props: ThemeProps) => CSSObject>;
+
+      orderedStates.forEach((key) => {
+        const stateKey = key as Keys;
+        const cssProps = states[stateKey];
+        stateFns[stateKey] = css(cssProps as any);
+      });
+
+      return (props) => {
+        const styles = {};
+        orderedStates.forEach((state) => {
+          merge(styles, props[state] && stateFns[state](props));
+        });
+
+        return styles;
       };
     };
   },
