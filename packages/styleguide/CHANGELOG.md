@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [41.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@41.4.0...@codecademy/styleguide@41.5.0) (2021-06-10)
+
+
+### Features
+
+* **variance:** states boolean toggle styles GM-233 ([e463f0e](https://github.com/Codecademy/client-modules/commit/e463f0e77802a3565ddda4de2e14050372923678))
+
+
+
 ## [41.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@41.3.1...@codecademy/styleguide@41.4.0) (2021-06-09)
 
 
