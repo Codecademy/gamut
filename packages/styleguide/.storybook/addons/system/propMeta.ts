@@ -1,7 +1,7 @@
 import { system } from '@codecademy/gamut-styles';
 import { AbstractPropTransformer } from '@codecademy/variance/dist/types/config';
 
-const { css, variant, margin, padding, ...groups } = system;
+const { css, variant, states, margin, padding, ...groups } = system;
 
 export const PROP_GROUPS = groups;
 
