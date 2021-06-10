@@ -2,28 +2,9 @@ import { mapValues, merge } from 'lodash';
 
 import { CSSObject } from '../types/props';
 import { AbstractTheme } from '../types/theme';
-import { flattenScale, LiteralPaths } from './flattenScale';
-import { KeyAsVariable, serializeTokens } from './serializeTokens';
-
-export type Merge<
-  Base extends AbstractTheme,
-  Next,
-  Unmergable = Record<'breakpoints', Base['breakpoints']>
-> = Unmergable &
-  {
-    [K in keyof (Base & Next)]: K extends keyof Next
-      ? K extends keyof Base
-        ? Base[K] & Next[K]
-        : Next[K]
-      : K extends keyof Base
-      ? Base[K]
-      : never;
-  };
-
-type Reserved = {
-  _variables: Record<string, CSSObject>;
-  _tokens: Record<string | number, any>;
-};
+import { flattenScale, LiteralPaths } from '../utils/flattenScale';
+import { KeyAsVariable, serializeTokens } from '../utils/serializeTokens';
+import { ColorModeConfig, MergeTheme, PrivateThemeKeys } from './types';
 
 type ColorMap<Colors> = Record<
   string,
@@ -46,7 +27,11 @@ class ThemeBuilder<T extends AbstractTheme> {
   createScaleVariables<Key extends keyof Omit<T, 'breakpoints'> & string>(
     key: Key
   ): ThemeBuilder<
-    Merge<T, Reserved, Record<Key, Record<Key, KeyAsVariable<T[Key], Key>>>>
+    MergeTheme<
+      T,
+      PrivateThemeKeys,
+      Record<Key, Record<Key, KeyAsVariable<T[Key], Key>>>
+    >
   > {
     const { variables, tokens } = serializeTokens(
       this.#theme[key],
@@ -76,7 +61,10 @@ class ThemeBuilder<T extends AbstractTheme> {
   >(
     colors: Colors
   ): ThemeBuilder<
-    Merge<T & Reserved, Record<'colors', KeyAsVariable<NextColors, 'color'>>>
+    MergeTheme<
+      T & PrivateThemeKeys,
+      Record<'colors', KeyAsVariable<NextColors, 'color'>>
+    >
   > {
     const flatColors = flattenScale(colors);
     const { variables, tokens } = serializeTokens(
@@ -103,14 +91,14 @@ class ThemeBuilder<T extends AbstractTheme> {
     Modes extends string,
     InitialMode extends keyof Config,
     Colors extends keyof T['colors'],
-    ModeColors extends ColorMap<Colors>,
+    ModeColors extends ColorModeConfig<Colors>,
     Config extends Record<Modes, ModeColors>
   >(
     initialMode: InitialMode,
     modes: Config
   ): ThemeBuilder<
-    Merge<
-      T & Reserved,
+    MergeTheme<
+      T & PrivateThemeKeys,
       {
         colors: KeyAsVariable<
           LiteralPaths<Config[keyof Config], '-', '_'>,
@@ -172,7 +160,10 @@ class ThemeBuilder<T extends AbstractTheme> {
       string | number | Record<string, string | number>
     >,
     NewScale extends LiteralPaths<ReturnType<Fn>, '-'>
-  >(key: Key, createScale: Fn): ThemeBuilder<Merge<T, Record<Key, NewScale>>> {
+  >(
+    key: Key,
+    createScale: Fn
+  ): ThemeBuilder<MergeTheme<T, Record<Key, NewScale>>> {
     this.#theme = merge({}, this.#theme, {
       [key]: flattenScale(createScale(this.#theme)),
     });
@@ -200,7 +191,7 @@ class ThemeBuilder<T extends AbstractTheme> {
   /**
    * This finalizes the theme build and returns the final theme and variables to be provided.
    */
-  build(): T & Reserved {
+  build(): T & PrivateThemeKeys {
     return merge({}, this.#theme, { _variables: {}, _tokens: {} });
   }
 }

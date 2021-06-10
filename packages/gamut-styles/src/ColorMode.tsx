@@ -11,6 +11,7 @@ import React, { ComponentProps, forwardRef, useMemo } from 'react';
 
 import {
   color,
+  css,
   flex,
   grid,
   layout,
@@ -73,7 +74,7 @@ export const VariableProvider = styled('div', styledConfig)<
     variables?: CSSObject;
     alwaysSetVariables?: boolean;
   }
->(({ variables }) => variables, providerProps);
+>(({ variables }) => variables, css({ textColor: 'text' }), providerProps);
 
 export const ColorMode = forwardRef<
   HTMLDivElement,
@@ -102,12 +103,7 @@ export const ColorMode = forwardRef<
 
   return (
     <ThemeProvider theme={{ mode }}>
-      <VariableProvider
-        variables={variables}
-        textColor="text"
-        {...rest}
-        ref={ref}
-      />
+      <VariableProvider variables={variables} {...rest} ref={ref} />
     </ThemeProvider>
   );
 });

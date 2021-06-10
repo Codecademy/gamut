@@ -3,6 +3,68 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [34.5.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@34.5.0...@codecademy/gamut@34.5.1) (2021-06-10)
+
+
+### Bug Fixes
+
+* blur ToolTip target on escape key down ([e92656c](https://github.com/Codecademy/client-modules/commit/e92656cbac5ef28bbd028fbea30c0cbddb2fc65b))
+
+
+
+## [34.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@34.4.0...@codecademy/gamut@34.5.0) (2021-06-10)
+
+
+### Features
+
+* Navy scale + color alias changes GM-237 ([bf896dd](https://github.com/Codecademy/client-modules/commit/bf896dd3fcf0435ef557694740d96df38d12173b)), closes [#10162](https://github.com/Codecademy/client-modules/issues/10162)
+
+
+
+## [34.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@34.3.0...@codecademy/gamut@34.4.0) (2021-06-10)
+
+
+### Features
+
+* **FloatingCard:** Add FloatingCard add it to Dialog   GM-182 ([ddbe870](https://github.com/Codecademy/client-modules/commit/ddbe870134bd587a140960c70d44c8e8266061bc))
+
+
+
+## [34.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@34.2.0...@codecademy/gamut@34.3.0) (2021-06-10)
+
+
+### Features
+
+* **variance:** states boolean toggle styles GM-233 ([e463f0e](https://github.com/Codecademy/client-modules/commit/e463f0e77802a3565ddda4de2e14050372923678))
+
+
+
+## [34.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@34.1.0...@codecademy/gamut@34.2.0) (2021-06-09)
+
+
+### Features
+
+* Add AvatarChooser component ([86471e3](https://github.com/Codecademy/client-modules/commit/86471e36c7c8304661a45ae7b9e1083bf74a4574))
+
+
+
+## [34.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@34.0.2...@codecademy/gamut@34.1.0) (2021-06-09)
+
+
+### Features
+
+* **GridFormRadioGroupInput:** Can use a ReactNode for labels ([990113b](https://github.com/Codecademy/client-modules/commit/990113bc1c4ed5aab38a3d9656f36810e070a940))
+
+
+
+### [34.0.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@34.0.1...@codecademy/gamut@34.0.2) (2021-06-07)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
 ### [34.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@34.0.0...@codecademy/gamut@34.0.1) (2021-06-04)
 
 

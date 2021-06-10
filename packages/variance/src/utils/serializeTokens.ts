@@ -38,8 +38,18 @@ const templateBreakpoints = (
   return { [alias]: value };
 };
 
+type SerializedTokensInput = Record<
+  string,
+  string | number | CSSObject | SerializedTokensInputRecursive
+>;
+
+interface SerializedTokensInputRecursive {
+  [i: number]: SerializedTokensInput;
+  [i: string]: SerializedTokensInput;
+}
+
 export const serializeTokens = <
-  T extends Record<string, any>,
+  T extends SerializedTokensInput,
   Prefix extends string
 >(
   tokens: T,
