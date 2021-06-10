@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [41.7.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@41.6.0...@codecademy/styleguide@41.7.0) (2021-06-10)
+
+
+### Features
+
+* Navy scale + color alias changes GM-237 ([bf896dd](https://github.com/Codecademy/client-modules/commit/bf896dd3fcf0435ef557694740d96df38d12173b)), closes [#10162](https://github.com/Codecademy/client-modules/issues/10162)
+
+
+
 ## [41.6.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@41.5.0...@codecademy/styleguide@41.6.0) (2021-06-10)
 
 
