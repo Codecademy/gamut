@@ -3,8 +3,7 @@ import { themed } from '@codecademy/gamut-styles';
 import { useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
 import cx from 'classnames';
-import React from 'react';
-import { useWindowScroll } from 'react-use';
+import React, { useEffect, useState } from 'react';
 
 import { AppHeader, AppHeaderMobile } from '..';
 import {
@@ -103,9 +102,14 @@ const StyledBox = styled(Box)`
 `;
 
 export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
-  const { y } = useWindowScroll();
+  const [isInHeaderRegion, setIsInHeaderRegion] = useState(false);
 
-  const isInHeaderRegion = y === 0;
+  useEffect(() => {
+    const checkScroll = () => setIsInHeaderRegion(window?.pageYOffset === 0);
+    checkScroll();
+    document.addEventListener('scroll', checkScroll);
+    return () => document.removeEventListener('scroll', checkScroll);
+  }, []);
 
   const theme = useTheme();
 
