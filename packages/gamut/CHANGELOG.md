@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [34.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@34.3.0...@codecademy/gamut@34.4.0) (2021-06-10)
+
+
+### Features
+
+* **FloatingCard:** Add FloatingCard add it to Dialog   GM-182 ([ddbe870](https://github.com/Codecademy/client-modules/commit/ddbe870134bd587a140960c70d44c8e8266061bc))
+
+
+
 ## [34.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@34.2.0...@codecademy/gamut@34.3.0) (2021-06-10)
 
 
