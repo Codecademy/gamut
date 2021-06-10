@@ -44,7 +44,7 @@ const RadioInput = styled.input<RadioInputProps>(
   conditionalRadioInputStyles
 );
 
-export const conditionalStyleState = (error?: boolean, disabled?: boolean) => {
+const conditionalStyleState = (error?: boolean, disabled?: boolean) => {
   return error ? 'error' : disabled ? 'disabled' : undefined;
 };
 
@@ -81,7 +81,7 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
           onChange={onChange}
           ref={ref}
           value={value}
-          variant={styleState}
+          variant={'error'}
           {...rest}
         />
         <RadioLabel htmlFor={htmlFor} disabled={disabled} variant={styleState}>
