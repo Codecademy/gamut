@@ -135,8 +135,9 @@ export type GridFormField =
   | GridFormSweetContainerField;
 
 export type GridFormSectionTitleProps = {
+  title: string;
   as?: any;
-  rowSpan?: number;
+  rowspan?: number;
   size?: number;
 };
 

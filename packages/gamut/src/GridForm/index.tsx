@@ -10,9 +10,12 @@ import {
 import { TextButtonProps } from '../Button';
 import { Form } from '../Form';
 import { LayoutGrid, LayoutGridProps } from '../Layout';
-import { Column } from '../Layout/Column';
 import { GridFormButtons, GridFormSubmitProps } from './GridFormButtons';
-import { GridFormSection, GridFormSectionTitle } from './GridFormSection';
+import {
+  GridFormSection,
+  GridFormSectionBreak,
+  GridFormSectionTitle,
+} from './GridFormSection';
 import { GridFormField, GridFormSectionType } from './types';
 
 export * from './types';
@@ -141,11 +144,7 @@ export function GridForm<
                       showRequired={showRequired}
                       pastFirstError={pastFirstError}
                     />
-                    {index !== fields.length - 1 && (
-                      <Column size={12}>
-                        <div>'updog'</div>
-                      </Column>
-                    )}
+                    <GridFormSectionBreak />
                   </>
                 );
               })}
