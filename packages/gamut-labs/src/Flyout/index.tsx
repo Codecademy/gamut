@@ -98,15 +98,15 @@ export const Flyout: React.FC<FlyoutProps> = ({
 
   useEffect(() => {
     getCloseFlyout?.(() => setIsExpanded(false)); // Passes the function up to any interested parent component
-  }, []);
+  }, [getCloseFlyout]);
 
   const handleOutsideClick = useCallback(() => {
     clickOutsideCloses && toggleExpanded();
-  }, [clickOutsideCloses]);
+  }, [clickOutsideCloses, toggleExpanded]);
 
   const handleEscapeKey = useCallback(() => {
     escapeCloses && toggleExpanded();
-  }, [escapeCloses]);
+  }, [escapeCloses, toggleExpanded]);
 
   return (
     <>
