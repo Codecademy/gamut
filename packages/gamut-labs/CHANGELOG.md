@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [19.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.4.3...@codecademy/gamut-labs@19.5.0) (2021-06-11)
+
+
+### Features
+
+* enable @typescript-eslint/prefer-optional-chain ([ddb0f57](https://github.com/Codecademy/client-modules/commit/ddb0f57d94d7dd414b1ca3ee50903c16e8e6a593))
+
+
+
+### [19.4.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.4.2...@codecademy/gamut-labs@19.4.3) (2021-06-11)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
 ### [19.4.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.4.1...@codecademy/gamut-labs@19.4.2) (2021-06-11)
 
 
