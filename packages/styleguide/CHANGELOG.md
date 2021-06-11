@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [41.7.5](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@41.7.4...@codecademy/styleguide@41.7.5) (2021-06-11)
+
+
+### Bug Fixes
+
+* Fix story link scrolling and breadcrumbs spacing ([8b5424c](https://github.com/Codecademy/client-modules/commit/8b5424c7ecf6e349876d8dc16b2471cd51528e93))
+
+
+
 ### [41.7.4](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@41.7.3...@codecademy/styleguide@41.7.4) (2021-06-11)
 
 **Note:** Version bump only for package @codecademy/styleguide
