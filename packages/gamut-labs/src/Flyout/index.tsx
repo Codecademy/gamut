@@ -103,7 +103,7 @@ export const Flyout: React.FC<FlyoutProps> = ({
         closeFlyoutRef.current = () => {};
       };
     }
-  }, [closeFlyoutRef]);
+  }, [closeFlyoutRef, closeFlyout]);
 
   const handleOutsideClick = useCallback(() => {
     !clickOutsideDoesNotClose && closeFlyout();
