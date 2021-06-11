@@ -124,7 +124,7 @@ describe('Flyout', () => {
 
     await expectFlyoutOpen();
 
-    await act(async () => await closeFlyoutRef.current());
+    act(closeFlyoutRef.current);
 
     await expectFlyoutClosed();
   });
