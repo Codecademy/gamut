@@ -1,6 +1,7 @@
 export * from './LandingPage';
 export * from './lib/breakpointHooks';
 export * from './Avatar';
+export * from './AvatarChooser';
 export * from './CurriculumCard';
 export * from './Byline';
 export * from './EditorialImage';
@@ -33,3 +34,4 @@ export * from './GlobalPage';
 export * from './PageSection';
 export * from './ListSection';
 export * from './EmptySection';
+export * from './SocialMediaSharing';

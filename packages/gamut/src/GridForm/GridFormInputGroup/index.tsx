@@ -20,6 +20,7 @@ import { GridFormTextArea } from './GridFormTextArea';
 import { GridFormTextInput } from './GridFormTextInput';
 
 export type GridFormInputGroupProps = {
+  clearErrors: UseFormMethods['clearErrors'];
   error?: string;
   isFirstError?: boolean;
   field: GridFormField;
@@ -30,6 +31,7 @@ export type GridFormInputGroupProps = {
 };
 
 export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
+  clearErrors,
   error,
   isFirstError,
   field,
@@ -46,6 +48,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
       case 'checkbox':
         return (
           <GridFormCheckboxInput
+            clearErrors={clearErrors}
             field={field}
             register={register}
             showRequired={isRequired}
@@ -56,6 +59,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
       case 'custom-group':
         return (
           <GridFormCustomInput
+            clearErrors={clearErrors}
             field={field}
             register={register}
             setValue={setValue}
@@ -66,6 +70,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
       case 'radio-group':
         return (
           <GridFormRadioGroupInput
+            clearErrors={clearErrors}
             field={field}
             register={register}
             showRequired={isRequired}
@@ -76,6 +81,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
       case 'select':
         return (
           <GridFormSelectInput
+            clearErrors={clearErrors}
             error={!!errorMessage}
             field={field}
             register={register}
@@ -86,6 +92,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
       case 'file':
         return (
           <GridFormFileInput
+            clearErrors={clearErrors}
             error={!!errorMessage}
             field={field}
             register={register}
@@ -96,6 +103,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
       case 'textarea':
         return (
           <GridFormTextArea
+            clearErrors={clearErrors}
             error={!!errorMessage}
             field={field}
             register={register}
@@ -117,6 +125,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
       default:
         return (
           <GridFormTextInput
+            clearErrors={clearErrors}
             error={!!errorMessage}
             field={field}
             register={register}
