@@ -3,19 +3,22 @@ import { fireEvent, screen } from '@testing-library/dom';
 import React from 'react';
 import { act } from 'react-dom/test-utils';
 
-import { Flyout, FlyoutProps } from '..';
+import { Flyout } from '..';
 
-const FlyoutContainer: React.FC<Partial<FlyoutProps>> = (props) => {
-  return (
-    <div data-testid="flyout-outside">
-      <Flyout {...props} button={<button type="button">Test</button>}>
-        <div data-testid="flyout-content">Howdy!</div>
-      </Flyout>
-    </div>
-  );
-};
+const TestButtonText = 'Test';
 
-const renderFlyout = setupRtl(FlyoutContainer);
+const renderFlyout = setupRtl(Flyout, {
+  renderButton: (onClick: () => void) => (
+    <button type="button" onClick={onClick}>
+      {TestButtonText}
+    </button>
+  ),
+  children: <div data-testid="flyout-content">Howdy!</div>,
+});
+
+renderFlyout.options({
+  wrapper: ({ children }) => <div data-testid="flyout-outside">{children}</div>,
+});
 
 describe('Flyout', () => {
   it('renders flyout content when "initialExpanded" is true', () => {
@@ -31,8 +34,20 @@ describe('Flyout', () => {
   it('renders flyout content when button is clicked', async () => {
     renderFlyout();
     await act(async () => {
-      fireEvent.click(screen.getByText('Test'));
+      fireEvent.click(screen.getByText(TestButtonText));
     });
+    screen.getByTestId('flyout-content');
+  });
+
+  it('passes the toggle method into the rendered toggle button', async () => {
+    renderFlyout();
+
+    expect(screen.queryByTestId('flyout-content')).toBeNull();
+
+    await act(async () => {
+      fireEvent.click(screen.getByText(TestButtonText));
+    });
+
     screen.getByTestId('flyout-content');
   });
 

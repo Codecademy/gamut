@@ -18,7 +18,12 @@ import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/blocks';
   <Story name="Flyout">
     {(args) => (
       <Box height="20rem">
-        <Flyout openFrom="left" button={<TextButton>chiller time</TextButton>}>
+        <Flyout
+          openFrom="left"
+          renderButton={(onClick) => (
+            <TextButton onClick={onClick}>chiller time</TextButton>
+          )}
+        >
           <Box bg="navy" textColor="white" margin={16}>
             Baharroth - Baharroth, "the Cry of the Wind," is the Winged Phoenix,
             the oldest of the Swooping Hawks and the first Exarch of those

@@ -44,17 +44,16 @@ export const LayoutMenu: React.FC<LayoutMenuProps> = ({
     />
   ));
 
+  const renderButton = (onClick: () => void) => (
+    <StrokeButton variant="secondary" width={1} onClick={onClick}>
+      {mobileButtonText}
+    </StrokeButton>
+  );
+
   return (
     <nav>
       <Box display={{ _: 'block', lg: 'none' }}>
-        <Flyout
-          button={
-            <StrokeButton variant="secondary" width={1}>
-              {mobileButtonText}
-            </StrokeButton>
-          }
-          closeFlyoutRef={closeFlyoutRef}
-        >
+        <Flyout renderButton={renderButton} closeFlyoutRef={closeFlyoutRef}>
           <Box bg="white" height={1} p={16} overflow="scroll">
             <Logo mb={32} />
             {accordionMenuSections}

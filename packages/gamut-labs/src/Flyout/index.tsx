@@ -6,8 +6,6 @@ import styled from '@emotion/styled';
 import { AnimatePresence, motion } from 'framer-motion';
 import React, { useCallback, useEffect, useState } from 'react';
 
-import { SidebarCloneButton } from './SidebarCloneButton';
-
 export const transitionDuration = 0.35;
 
 const flyoutStyles = variance.compose(
@@ -44,7 +42,7 @@ export const DrawerBase = styled(motion.div)<FlyoutStyleProps>(
   flyoutOpenVariants
 );
 
-export type FlyoutProps = FlyoutStyleProps & {
+type FlyoutProps = FlyoutStyleProps & {
   /**
    * if the drawer should be open or closed
    */
@@ -60,7 +58,7 @@ export type FlyoutProps = FlyoutStyleProps & {
   /**
    * toggles the Flyout
    */
-  button: React.ReactNode;
+  renderButton: (onClick: () => void) => React.ReactNode;
   /**
    * Whether clicking on the screen outside of the container should close the Flyout
    */
@@ -78,7 +76,7 @@ export type FlyoutProps = FlyoutStyleProps & {
 
 export const Flyout: React.FC<FlyoutProps> = ({
   children,
-  button,
+  renderButton,
   initialExpanded,
   openFrom = 'left',
   openWidth = 30,
@@ -150,12 +148,7 @@ export const Flyout: React.FC<FlyoutProps> = ({
           </BodyPortal>
         ) : null}
       </AnimatePresence>
-      <SidebarCloneButton
-        onClick={toggleExpanded}
-        data-testid="arrow-sidebar-button"
-      >
-        {button}
-      </SidebarCloneButton>
+      {renderButton(toggleExpanded)}
     </>
   );
 };
