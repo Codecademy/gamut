@@ -2,9 +2,10 @@ import React from 'react';
 import { FieldError, useFormContext } from 'react-hook-form';
 
 import { GridFormInputGroup } from '../GridFormInputGroup';
+import { GridFormField } from '../types';
 
 export type GridFormSectionProps = {
-  fields: any;
+  fields: GridFormField[];
   showRequired: boolean;
   pastFirstError: boolean;
 };

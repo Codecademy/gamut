@@ -5,12 +5,7 @@ import React from 'react';
 
 import { Column } from '../../Layout/Column';
 
-const hrProps = variance.compose(
-  system.color,
-  system.space,
-  system.layout,
-  system.border
-);
+const hrProps = variance.compose(system.border, system.color, system.layout);
 
 export interface HrProps extends StyleProps<typeof hrProps> {}
 
@@ -23,7 +18,7 @@ export const GridFormSectionBreak: React.FC = () => {
         borderTop="none"
         borderX="none"
         border={1}
-        borderBottom="text"
+        borderColorBottom="text"
         width="90%"
       />
     </Column>
