@@ -1,6 +1,6 @@
 import {
   ColorModes,
-  styledConfig,
+  styledOptions,
   system,
   useCurrentMode,
   variant,
@@ -40,7 +40,7 @@ const modeVariants = variant({
   },
 });
 
-const Svg = styled('svg', styledConfig)<ProLabelProps>(
+const Svg = styled('svg', styledOptions)<ProLabelProps>(
   placementVariants,
   modeVariants,
   logoStyles

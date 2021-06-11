@@ -1,4 +1,4 @@
-import { styledConfig, system, variant } from '@codecademy/gamut-styles';
+import { styledOptions, system, variant } from '@codecademy/gamut-styles';
 import { StyleProps, variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
 
@@ -34,7 +34,7 @@ const anchorVariants = variant({
     '&:disabled, &[disabled]': {
       cursor: 'not-allowed',
       textDecoration: 'none',
-      color: 'gray-700',
+      color: 'text-disabled',
     },
     '&:focus, &:focus-visible': {
       outline: 'none',
@@ -82,7 +82,7 @@ const anchorProps = variance.compose(
   system.space
 );
 
-export const AnchorBase = styled('a', styledConfig)<AnchorProps>(
+export const AnchorBase = styled('a', styledOptions)<AnchorProps>(
   anchorVariants,
   anchorProps
 );

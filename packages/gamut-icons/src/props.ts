@@ -1,4 +1,4 @@
-import { styledConfig, system } from '@codecademy/gamut-styles';
+import { styledOptions, system } from '@codecademy/gamut-styles';
 import { StyleProps, variance } from '@codecademy/variance';
 import { pickBy } from 'lodash';
 
@@ -16,7 +16,7 @@ export interface IconStyleProps extends StyleProps<typeof iconProps> {}
 export const iconStyles = (props: IconStyleProps) => iconProps(props);
 
 export const getForwardableProps = (props: GamutIconProps) =>
-  pickBy(props, (value, key) => styledConfig.shouldForwardProp(key));
+  pickBy(props, (value, key) => styledOptions.shouldForwardProp(key));
 
 export const getAttrValue = (prop: IconStyleProps['width' | 'height']) => {
   switch (typeof prop) {

@@ -1,4 +1,4 @@
-import { styledConfig, system } from '@codecademy/gamut-styles';
+import { styledOptions, system } from '@codecademy/gamut-styles';
 import { StyleProps, variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
 import { SVGProps } from 'react';
@@ -14,7 +14,7 @@ export type PatternProps = SVGProps<SVGSVGElement> &
 
 export const PatternSvg = styled(
   'svg',
-  styledConfig
+  styledOptions
 )<PatternProps>(patternStyles);
 
 PatternSvg.defaultProps = {
