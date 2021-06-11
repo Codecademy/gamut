@@ -4,7 +4,7 @@ import { system, variant } from '@codecademy/gamut-styles';
 import { StyleProps, variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
 import { AnimatePresence, motion } from 'framer-motion';
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 
 import { SidebarCloneButton } from './SidebarCloneButton';
 
@@ -48,11 +48,7 @@ export type FlyoutProps = FlyoutStyleProps & {
   /**
    * if the drawer should be open or closed
    */
-  expanded?: boolean;
-  /**
-   * callback fired to open and close the flyout
-   */
-  onToggle: () => void;
+  initialExpanded?: boolean;
   /**
    * data-testid for the components
    */
@@ -73,41 +69,56 @@ export type FlyoutProps = FlyoutStyleProps & {
    * Whether clicking the escape key should close the Flyout
    */
   escapeCloses?: boolean;
+
+  /**
+   * A means of the parent method to get a reference to the closeFlyout function
+   */
+  getCloseFlyout?: (closeFlyout: () => void) => void;
 };
 
 export const Flyout: React.FC<FlyoutProps> = ({
   children,
   button,
-  expanded,
-  onToggle,
+  initialExpanded,
   openFrom = 'left',
   openWidth = 30,
   testId,
   clickOutsideCloses = true,
   escapeCloses = true,
+  getCloseFlyout,
   ...styleProps
 }) => {
   const initialX = openFrom === 'left' ? -1000 : 1000;
 
+  const [isExpanded, setIsExpanded] = useState(initialExpanded);
+  const toggleExpanded = useCallback(
+    () => setIsExpanded((isExpanded) => !isExpanded),
+    []
+  );
+
+  useEffect(() => {
+    getCloseFlyout?.(() => setIsExpanded(false)); // Passes the function up to any interested parent component
+  }, []);
+
   const handleOutsideClick = useCallback(() => {
-    clickOutsideCloses && onToggle();
-  }, [clickOutsideCloses, onToggle]);
+    clickOutsideCloses && toggleExpanded();
+  }, [clickOutsideCloses]);
 
   const handleEscapeKey = useCallback(() => {
-    escapeCloses && onToggle();
-  }, [escapeCloses, onToggle]);
+    escapeCloses && toggleExpanded();
+  }, [escapeCloses]);
 
   return (
     <>
       <AnimatePresence>
-        {expanded ? (
+        {isExpanded ? (
           <BodyPortal>
             <FocusTrap
               onClickOutside={handleOutsideClick}
               onEscapeKey={handleEscapeKey}
             >
               <DrawerBase
-                aria-expanded={expanded}
+                aria-expanded={isExpanded}
                 initial={{ x: initialX }}
                 animate={{ x: 0 }}
                 exit={{ x: initialX }}
@@ -123,7 +134,7 @@ export const Flyout: React.FC<FlyoutProps> = ({
               >
                 <IconButton
                   icon={MiniDeleteIcon}
-                  onClick={onToggle}
+                  onClick={toggleExpanded}
                   position="absolute"
                   right="0"
                 />
@@ -133,7 +144,10 @@ export const Flyout: React.FC<FlyoutProps> = ({
           </BodyPortal>
         ) : null}
       </AnimatePresence>
-      <SidebarCloneButton onClick={onToggle} data-testid="arrow-sidebar-button">
+      <SidebarCloneButton
+        onClick={toggleExpanded}
+        data-testid="arrow-sidebar-button"
+      >
         {button}
       </SidebarCloneButton>
     </>
