@@ -1,5 +1,5 @@
 import { Box, Logo, StrokeButton } from '@codecademy/gamut';
-import React, { useState } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
 
 import { Flyout } from '../Flyout';
 import { AccordionMenu, Section } from './AccordionMenu';
@@ -30,7 +30,9 @@ export const LayoutMenu: React.FC<LayoutMenuProps> = ({
   mobileButtonText,
   children,
 }) => {
-  const [closeFlyout, setCloseFlyout] = useState(() => () => {});
+  const closeFlyoutRef = useRef(() => {});
+
+  const closeFlyout = () => closeFlyoutRef.current();
 
   const accordionMenuSections = sections.map((section) => (
     <AccordionMenu
@@ -51,9 +53,7 @@ export const LayoutMenu: React.FC<LayoutMenuProps> = ({
               {mobileButtonText}
             </StrokeButton>
           }
-          getCloseFlyout={(closeFlyoutFunction) =>
-            setCloseFlyout(() => closeFlyoutFunction)
-          }
+          closeFlyoutRef={closeFlyoutRef}
         >
           <Box bg="white" height={1} p={16} overflow="scroll">
             <Logo mb={32} />

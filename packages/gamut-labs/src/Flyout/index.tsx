@@ -73,7 +73,7 @@ export type FlyoutProps = FlyoutStyleProps & {
   /**
    * A means of the parent method to get a reference to the closeFlyout function
    */
-  getCloseFlyout?: (closeFlyout: () => void) => void;
+  closeFlyoutRef?: React.MutableRefObject<Function>;
 };
 
 export const Flyout: React.FC<FlyoutProps> = ({
@@ -85,7 +85,7 @@ export const Flyout: React.FC<FlyoutProps> = ({
   testId,
   clickOutsideDoesNotClose,
   escapeDoesNotClose,
-  getCloseFlyout,
+  closeFlyoutRef,
   ...styleProps
 }) => {
   const initialX = openFrom === 'left' ? -1000 : 1000;
@@ -97,8 +97,9 @@ export const Flyout: React.FC<FlyoutProps> = ({
   );
 
   useEffect(() => {
-    getCloseFlyout?.(() => setIsExpanded(false)); // Passes the function up to any interested parent component
-  }, [getCloseFlyout]);
+    // Passes the function up to any interested parent component
+    if (closeFlyoutRef) closeFlyoutRef.current = () => setIsExpanded(false);
+  }, [closeFlyoutRef]);
 
   const handleOutsideClick = useCallback(() => {
     !clickOutsideDoesNotClose && toggleExpanded();
