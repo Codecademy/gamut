@@ -126,7 +126,7 @@ const validatePhotoUpload = (files: FileList): boolean | string => {
   const MAX_FILE_SIZE = 5242880;
   const MAX_FILE_SIZE_IN_MB = 5;
 
-  const file = files && files.item(0);
+  const file = files?.item(0);
   if (!file) return true;
 
   const { type, size } = file;
