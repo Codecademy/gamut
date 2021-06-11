@@ -102,7 +102,7 @@ const StyledBox = styled(Box)`
 `;
 
 export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
-  const [isInHeaderRegion, setIsInHeaderRegion] = useState(false);
+  const [isInHeaderRegion, setIsInHeaderRegion] = useState(true);
 
   useEffect(() => {
     const checkScroll = () => setIsInHeaderRegion(window?.pageYOffset === 0);
