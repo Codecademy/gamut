@@ -25,12 +25,7 @@ export type RadioProps = InputHTMLAttributes<HTMLInputElement> & {
   readOnly?: boolean;
   error?: boolean;
 };
-export interface RadioLabelProps
-  extends RadioProps,
-    StyleProps<typeof conditionalRadioLabelStyles> {}
-export interface RadioInputProps
-  extends RadioProps,
-    StyleProps<typeof conditionalRadioInputStyles> {}
+export interface RadioElementProps extends RadioProps, StyleProps<typeof conditionalRadioInputStyles> {}
 
 const RadioWrapper = styled.div(noSelect, radioWrapper);
 const RadioLabel = styled.label<RadioLabelProps>(
