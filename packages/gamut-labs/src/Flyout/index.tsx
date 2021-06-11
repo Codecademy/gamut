@@ -93,11 +93,12 @@ export const Flyout: React.FC<FlyoutProps> = ({
     () => setIsExpanded((isExpanded) => !isExpanded),
     []
   );
+  const closeFlyout = useCallback(() => setIsExpanded(false), []);
 
   useEffect(() => {
     // Passes the function up to any interested parent component
     if (closeFlyoutRef) {
-      closeFlyoutRef.current = () => setIsExpanded(false);
+      closeFlyoutRef.current = () => closeFlyout;
       return () => {
         closeFlyoutRef.current = () => {};
       };
@@ -105,12 +106,12 @@ export const Flyout: React.FC<FlyoutProps> = ({
   }, [closeFlyoutRef]);
 
   const handleOutsideClick = useCallback(() => {
-    !clickOutsideDoesNotClose && toggleExpanded();
-  }, [clickOutsideDoesNotClose, toggleExpanded]);
+    !clickOutsideDoesNotClose && closeFlyout();
+  }, [clickOutsideDoesNotClose, closeFlyout]);
 
   const handleEscapeKey = useCallback(() => {
-    !escapeDoesNotClose && toggleExpanded();
-  }, [escapeDoesNotClose, toggleExpanded]);
+    !escapeDoesNotClose && closeFlyout();
+  }, [escapeDoesNotClose, closeFlyout]);
 
   return (
     <>
