@@ -13,7 +13,7 @@ export const GridFormQuestion: React.FC<GridFormQuestionProps> = ({
   field,
   showRequired,
 }) => {
-  const { register, errors, setValue } = useFormContext();
+  const { register, errors, setValue, clearErrors } = useFormContext();
 
   /**
    * Keep track of the first error in this form.
@@ -31,6 +31,7 @@ export const GridFormQuestion: React.FC<GridFormQuestionProps> = ({
   return (
     <>
       <GridFormInputGroup
+        clearErrors={clearErrors}
         error={errorMessage as string}
         isFirstError={isFirstError}
         field={field}

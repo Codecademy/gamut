@@ -18,7 +18,7 @@ export const GridFormSectionTitle: React.FC<GridFormSectionTitleProps> = ({
   const rowspan = layout === 'center' ? 1 : numberOfFields;
 
   return (
-    <Column size={size} gridRowEnd={`span ${numberOfFields}`}>
+    <Column size={size} gridRowEnd={`span ${rowspan}`}>
       <Text as={as}>{title}</Text>
     </Column>
   );
