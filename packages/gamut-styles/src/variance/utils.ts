@@ -8,11 +8,12 @@ const SYSTEM_PROPS = ['mode', 'variant', ...Object.keys(allProps)] as [
   ...[keyof typeof allProps]
 ];
 
-type AllProps = typeof SYSTEM_PROPS[number];
+type SystemProps = typeof SYSTEM_PROPS[number];
+export type FilteredProps<T = never> = T | SystemProps;
 
 const shouldForward = <T extends string>(
   prop: T
-): prop is Exclude<T, AllProps> =>
+): prop is Exclude<T, FilteredProps> =>
   isPropValid(prop) &&
   !SYSTEM_PROPS.includes(prop as typeof SYSTEM_PROPS[number]);
 
@@ -22,7 +23,7 @@ export const styledOptions = Object.assign(
   ) => ({
     shouldForwardProp: <T extends string>(
       prop: T
-    ): prop is Exclude<T, AllProps | Additional> =>
+    ): prop is Exclude<T, FilteredProps<Additional>> =>
       shouldForward<T>(prop) && !additionalProps.includes(prop as any),
   }),
   {
