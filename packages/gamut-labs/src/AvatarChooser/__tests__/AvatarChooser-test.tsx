@@ -26,6 +26,12 @@ describe('AvatarChooser', () => {
     expect(img.src).toMatch(testImageSource);
   });
 
+  it('Renders image alt text', () => {
+    const { view } = renderView();
+    const img = view.getByRole('img') as HTMLImageElement;
+    expect(img.alt).toBe('Avatar Photo');
+  });
+
   it('Renders error', () => {
     const error = 'This is a test error!';
     const { view } = renderView({ error });

@@ -96,11 +96,7 @@ export const AvatarChooser: React.FC<AvatarChooserProps> = ({
       width="fit-content"
       maxWidth={pxRem(120)}
     >
-      <StyledAvatar
-        src={imageSrc}
-        disableDropshadow
-        aria-labelledby="Avatar Photo"
-      />
+      <StyledAvatar src={imageSrc} disableDropshadow alt="Avatar Photo" />
       <ChoosePhotoLabel ref={choosePhotoLabelRef} htmlFor="avatar-chooser">
         <ChoosePhotoSpan
           role="button"
