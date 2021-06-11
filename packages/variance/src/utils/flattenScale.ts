@@ -36,10 +36,13 @@ export type PathValue<
 export type PathToLiteral<
   T,
   K extends Path<T, D>,
-  D extends string = '.'
+  D extends string = '.',
+  Base extends string = ''
 > = PathValue<T, K, D> extends string | number
   ? K extends string | number
-    ? K
+    ? K extends `${infer BasePath}${D}${Base}`
+      ? BasePath
+      : K
     : never
   : never;
 
@@ -50,9 +53,10 @@ export type PathToLiteral<
  */
 export type LiteralPaths<
   T extends Record<string | number, any>,
-  D extends string = '.'
+  D extends string = '.',
+  Base extends string = ''
 > = {
-  [K in Path<T, D> as PathToLiteral<T, K, D>]: PathValue<
+  [K in Path<T, D> as PathToLiteral<T, K, D, Base>]: PathValue<
     T,
     PathToLiteral<T, K, D>,
     D
@@ -62,9 +66,9 @@ export type LiteralPaths<
 export function flattenScale<
   T extends Record<string | number, any>,
   P extends string
->(object: T, path?: P): LiteralPaths<T, '-'> {
+>(object: T, path?: P): LiteralPaths<T, '-', '_'> {
   return Object.keys(object).reduce((carry, key) => {
-    const nextKey = path ? `${path}-${key}` : key;
+    const nextKey = path ? `${path}${key === '_' ? '' : `-${key}`}` : key;
     const current = object[key];
     if (isObject(current)) {
       return {
@@ -76,5 +80,5 @@ export function flattenScale<
       ...carry,
       [nextKey]: object[key],
     };
-  }, {} as LiteralPaths<T, '-'>);
+  }, {} as LiteralPaths<T, '-', '_'>);
 }

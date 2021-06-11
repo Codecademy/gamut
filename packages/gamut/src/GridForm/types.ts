@@ -86,10 +86,11 @@ export type GridFormRadioOption = {
 };
 
 export type GridFormRadioGroupField = BaseFormField<string> & {
-  label: string;
+  label: ReactNode | string; // If this is a string, it will also be used as the aria-label.
   options: GridFormRadioOption[];
   validation?: ValidationRules;
   type: 'radio-group';
+  ariaLabel?: string;
 };
 
 export type GridFormSelectField = BaseFormField<string> & {

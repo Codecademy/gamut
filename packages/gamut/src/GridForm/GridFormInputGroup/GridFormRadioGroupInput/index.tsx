@@ -1,3 +1,4 @@
+import { isString } from 'lodash';
 import React from 'react';
 import { UseFormMethods } from 'react-hook-form';
 
@@ -21,13 +22,16 @@ export const GridFormRadioGroupInput: React.FC<GridFormRadioGroupInputProps> = (
   setValue,
   showRequired,
 }) => {
+  const ariaLabel: string | undefined =
+    field.ariaLabel ?? (isString(field.label) ? field.label : undefined);
+
   return (
     <RadioGroup
       className={className}
       htmlForPrefix={field.name}
       name={field.name}
       role="radiogroup"
-      aria-label={field.label}
+      aria-label={ariaLabel}
       aria-required={showRequired}
       onChange={(event) => {
         clearErrors(field.name);
