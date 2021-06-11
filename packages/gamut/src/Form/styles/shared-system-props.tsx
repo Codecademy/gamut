@@ -22,9 +22,9 @@ export enum InputSelectors {
   DISABLED = "&:disabled, &[aria-disabled='true']",
   BEFORE = '&::before',
   AFTER = '&::after',
-  BEFOREANDAFTER = '&::before, &::after',
-  CHECKEDBEFORE = '&:checked + label::before',
-  CHECKEDAFTER = '&:checked + label::after',
+  BEFORE_AND_AFTER = '&::before, &::after',
+  CHECKED_BEFORE = '&:checked + label::before',
+  CHECKED_AFTER = '&:checked + label::after',
   HOVERFOCUSBEFORE = '&:hover + label::before, &:focus + label::before',
 }
 export const formBaseComponentStyles = {
