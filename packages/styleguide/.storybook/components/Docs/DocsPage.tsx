@@ -1,30 +1,21 @@
 import React, { useContext } from 'react';
 import { DocsContext, Title } from '@storybook/addon-docs/blocks';
 
-import styled from '@emotion/styled';
 import { Parameters } from '@storybook/addons';
 import { useNavigation } from '../Navigation/NavigationProvider';
 
 import {
   Anchor,
-  Box,
   ContentContainer,
+  GridBox,
   Markdown,
   Text,
   ToolTip,
 } from '@codecademy/gamut/src';
 import { BreadCrumbs } from '../Navigation/BreadCrumbs';
 import { OpenIcon } from '@codecademy/gamut-icons';
-import { themed } from '@codecademy/gamut-styles';
 import { StatusIndicator } from './StatusIndicator';
-
-export const MetaContainer = styled(Box)`
-  display: grid;
-  background-color: ${themed('colors.white')};
-  padding: ${themed('spacing.16')};
-  grid-column-gap: 2rem;
-  grid-row-gap: 0.5rem;
-`;
+import { Background } from '@codecademy/gamut-styles/src';
 
 export interface GamutParameters extends Parameters {
   subtitle?: string;
@@ -65,7 +56,7 @@ export const DocsPage: React.FC = ({ children }) => {
   }
 
   const {
-    parameters: { figmaId, source },
+    parameters: { figmaId, source, modes },
   } = storyStore?._kinds[kind];
 
   const showMeta = type === 'element';
@@ -74,10 +65,10 @@ export const DocsPage: React.FC = ({ children }) => {
 
   const renderStatus = () => {
     if (storyStatus === 'static') return null;
-    const { label, status, tooltip } = STATUS[storyStatus];
+    const { label, status, tooltip } = STATUS[storyStatus] ?? {};
 
     return (
-      <Text fontSize={16} as="strong">
+      <Text as="strong">
         Status:{' '}
         <ToolTip
           id="status"
@@ -89,13 +80,9 @@ export const DocsPage: React.FC = ({ children }) => {
     );
   };
 
-  const linkIcon = (
-    <Box display="inline-block" ml={8} verticalAlign="baseline" height="16px">
-      <OpenIcon size={18} />
-    </Box>
-  );
+  const linkIcon = <OpenIcon size={14} ml={8} />;
   return (
-    <Box minHeight="100vh" bg="paleBlue" py={48}>
+    <Background minHeight="100vh" bg="paleBlue" py={48}>
       <ContentContainer>
         <BreadCrumbs />
         <Title>{title}</Title>
@@ -103,36 +90,34 @@ export const DocsPage: React.FC = ({ children }) => {
           <Markdown inline text={subtitle} />
         </Text>
         {showMeta && (
-          <MetaContainer
-            bg="paleBlue"
-            gridAutoFlow={['row', , 'column']}
-            gridAutoColumns={['minmax(0, 1fr)', , 'minmax(0, max-content)']}
-          >
-            {renderStatus()}
-            {source && (
-              <Anchor
-                fontSize={16}
-                fontWeight="title"
-                target="_blank"
-                href={npmLink}
-              >
-                @codecademy/{source} {linkIcon}
-              </Anchor>
-            )}
-            {figmaId && (
-              <Anchor
-                fontSize={16}
-                fontWeight="title"
-                target="_blank"
-                href={figmaLink}
-              >
-                Figma Source File {linkIcon}
-              </Anchor>
-            )}
-          </MetaContainer>
+          <Background p={16} bg="white">
+            <GridBox
+              gap={16}
+              fontWeight={700}
+              gridAutoFlow={['row', , 'column']}
+              gridAutoColumns="max-content"
+            >
+              {renderStatus()}
+              {modes && (
+                <Text fontWeight={700}>
+                  Color Modes: <Text textColor="green">Active</Text>
+                </Text>
+              )}
+              {source && (
+                <Anchor target="_blank" href={npmLink}>
+                  @codecademy/{source} {linkIcon}
+                </Anchor>
+              )}
+              {figmaId && (
+                <Anchor fontSize={16} target="_blank" href={figmaLink}>
+                  Figma Source File {linkIcon}
+                </Anchor>
+              )}
+            </GridBox>
+          </Background>
         )}
         {children}
       </ContentContainer>
-    </Box>
+    </Background>
   );
 };
