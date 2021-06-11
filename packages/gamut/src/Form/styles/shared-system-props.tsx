@@ -23,7 +23,7 @@ export enum InputSelectors {
   BEFORE_AND_AFTER = '&::before, &::after',
   CHECKED_BEFORE = '&:checked + label::before',
   CHECKED_AFTER = '&:checked + label::after',
-  HOVERFOCUSBEFORE = '&:hover + label::before, &:focus + label::before',
+  HOVER_FOCUS_BEFORE = '&:hover + label::before, &:focus + label::before',
 }
 
 export const formBaseComponentStyles = {
@@ -161,7 +161,7 @@ export const radioInput = system.css({
   [InputSelectors.CHECKED_BEFORE]: {
     boxShadow: `0 0 0 1px ${theme.colors.primary}`,
   },
-  [InputSelectors.HOVERFOCUSBEFORE]: {
+  [InputSelectors.HOVER_FOCUS_BEFORE]: {
     boxShadow: `0 0 0 2px ${theme.colors.primary}`,
   },
 });
@@ -187,7 +187,7 @@ export const conditionalRadioInputStyles = system.variant({
     [InputSelectors.CHECKED_BEFORE]: {
       boxShadow: `0 0 0 1px currentColor`,
     },
-    [InputSelectors.HOVERFOCUSBEFORE]: {
+    [InputSelectors.HOVER_FOCUS_BEFORE]: {
       boxShadow: `0 0 0 2px currentColor`,
     },
   },
