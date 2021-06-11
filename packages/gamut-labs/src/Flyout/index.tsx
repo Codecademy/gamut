@@ -100,7 +100,9 @@ export const Flyout: React.FC<FlyoutProps> = ({
     // Passes the function up to any interested parent component
     if (closeFlyoutRef) {
       closeFlyoutRef.current = () => setIsExpanded(false);
-      return () => (closeFlyoutRef.current = () => {});
+      return () => {
+        closeFlyoutRef.current = () => {};
+      };
     }
   }, [closeFlyoutRef]);
 

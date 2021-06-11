@@ -1,5 +1,5 @@
 import { Box, Logo, StrokeButton } from '@codecademy/gamut';
-import React, { useCallback, useRef, useState } from 'react';
+import React, { useRef } from 'react';
 
 import { Flyout } from '../Flyout';
 import { AccordionMenu, Section } from './AccordionMenu';
