@@ -1,6 +1,5 @@
 import { system } from '@codecademy/gamut-styles';
 import { StyleProps, variance } from '@codecademy/variance';
-import { DetailedHTMLProps, HTMLAttributes } from 'react';
 
 export const boxProps = variance.compose(
   system.space,
@@ -51,22 +50,9 @@ export const gridStates = system.states({
   },
 });
 
-type BoxStyleProps = StyleProps<typeof boxProps>;
-type BoxStates = StyleProps<typeof sharedStates>;
-type FlexStates = StyleProps<typeof flexStates>;
-type GridStates = StyleProps<typeof gridStates>;
-
 export interface BoxProps
-  extends Omit<
-      DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>,
-      keyof BoxStyleProps
-    >,
-    BoxStyleProps,
-    BoxStates {}
+  extends StyleProps<typeof boxProps>,
+    StyleProps<typeof sharedStates> {}
 
-export interface FlexBoxProps
-  extends Omit<BoxProps, keyof FlexStates>,
-    FlexStates {}
-export interface GridBoxProps
-  extends Omit<BoxProps, keyof GridStates>,
-    GridStates {}
+export interface FlexBoxProps extends BoxProps, StyleProps<typeof flexStates> {}
+export interface GridBoxProps extends BoxProps, StyleProps<typeof gridStates> {}
