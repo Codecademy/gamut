@@ -788,8 +788,37 @@ Sections sections sections.
         <GridForm
           fields={[
             {
-              title: { title: 'hi there', as: 'h3', size: 3, rowspan: 3 },
+              title: 'hi there',
+              as: 'h3',
+              layout: 'left',
               fields: [
+                {
+                  label: 'hi?',
+                  name: 'input-custom-section-1',
+                  size: 5,
+                  type: 'text',
+                  validation: {
+                    required: true,
+                  },
+                },
+                {
+                  label: 'hi2?',
+                  name: 'input-custom-section-2',
+                  size: 5,
+                  type: 'text',
+                  validation: {
+                    required: true,
+                  },
+                },
+                {
+                  label: 'Write a paragraph about penguins',
+                  name: 'input-custom-section-3',
+                  size: 5,
+                  type: 'textarea',
+                  validation: {
+                    required: 'Please write something about penguins!',
+                  },
+                },
                 {
                   label: 'hi?',
                   name: 'input-custom-section-1',
@@ -820,7 +849,8 @@ Sections sections sections.
               ],
             },
             {
-              title: { title: 'hi again' },
+              title: 'hi there2',
+              as: 'h3',
               fields: [
                 {
                   label: 'helo?',

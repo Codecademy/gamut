@@ -86,11 +86,9 @@ export function GridForm<
   validation = 'onSubmit',
   showRequired = false,
 }: GridFormProps<Values>) {
-  const hasSections = isGridFormSection(fields[0]);
-
-  const flatFields = hasSections
-    ? fields.flatMap((field) => field.fields)
-    : fields;
+  const flatFields = fields.flatMap((field) =>
+    isGridFormSection(field) ? field.fields : field
+  );
 
   const { handleSubmit, formState, ...methods } = useForm({
     defaultValues: flatFields.reduce<any>(
@@ -101,12 +99,6 @@ export function GridForm<
       {}
     ),
   });
-
-  /**
-   * Keep track of the first error in this form.
-   * This is so we only add the correct aria-live props on the first error.
-   */
-  let pastFirstError = false;
 
   return (
     <FormProvider
@@ -121,22 +113,21 @@ export function GridForm<
               if (isGridFormSection(field)) {
                 return (
                   <>
-                    <GridFormSectionTitle {...field.title} />
+                    <GridFormSectionTitle
+                      title={field.title}
+                      layout={field.layout}
+                      numberOfFields={field.fields.length}
+                    />
                     <GridFormSection
                       fields={field.fields}
                       showRequired={showRequired}
-                      pastFirstError={pastFirstError}
                     />
                     <GridFormSectionBreak />
                   </>
                 );
               }
               return (
-                <GridFormQuestion
-                  field={field}
-                  showRequired={showRequired}
-                  pastFirstError={pastFirstError}
-                />
+                <GridFormQuestion field={field} showRequired={showRequired} />
               );
             })}
           </>
