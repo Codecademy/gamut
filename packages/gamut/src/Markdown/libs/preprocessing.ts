@@ -25,10 +25,7 @@ export const createPreprocessingInstructions = (styles: StylesObject) => {
         return Boolean(node.name);
       },
       preprocessNode(node: HTMLToReactNode) {
-        const classname = cx(
-          styles[node.name!],
-          node.attribs && node.attribs.class
-        );
+        const classname = cx(styles[node.name!], node.attribs?.class);
 
         const attrs = { ...node.attribs };
         if (classname) attrs.class = classname;
