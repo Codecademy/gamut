@@ -98,7 +98,10 @@ export const Flyout: React.FC<FlyoutProps> = ({
 
   useEffect(() => {
     // Passes the function up to any interested parent component
-    if (closeFlyoutRef) closeFlyoutRef.current = () => setIsExpanded(false);
+    if (closeFlyoutRef) {
+      closeFlyoutRef.current = () => setIsExpanded(false);
+      return () => (closeFlyoutRef.current = () => {});
+    }
   }, [closeFlyoutRef]);
 
   const handleOutsideClick = useCallback(() => {
