@@ -6,11 +6,12 @@ import { Form } from '../Form';
 import { LayoutGrid, LayoutGridProps } from '../Layout';
 import { GridFormButtons, GridFormSubmitProps } from './GridFormButtons';
 import {
+  GridFormQuestion,
   GridFormSection,
   GridFormSectionBreak,
   GridFormSectionTitle,
 } from './GridFormSection';
-import { GridFormField, GridFormSectionType } from './types';
+import { GridFormFieldsProps, isGridFormSection } from './types';
 
 export * from './types';
 
@@ -31,7 +32,7 @@ export type GridFormProps<Values extends {}> = {
   /**
    * Descriptions of any fields comprising the form.
    */
-  fields?: GridFormField[] | GridFormSectionType[];
+  fields?: GridFormFieldsProps[];
 
   /**
    * Renders a cancel button with the provided child text and onClick function.
@@ -85,7 +86,7 @@ export function GridForm<
   validation = 'onSubmit',
   showRequired = false,
 }: GridFormProps<Values>) {
-  const hasSections = Boolean(fields[0]?.fields);
+  const hasSections = isGridFormSection(fields[0]);
 
   const flatFields = hasSections
     ? fields.flatMap((field) => field.fields)
@@ -115,9 +116,9 @@ export function GridForm<
     >
       <Form className={className} onSubmit={handleSubmit(onSubmit)} noValidate>
         <LayoutGrid columnGap={columnGap} rowGap={rowGap}>
-          {hasSections ? (
-            <>
-              {fields.map((field, index) => {
+          <>
+            {fields.map((field) => {
+              if (isGridFormSection(field)) {
                 return (
                   <>
                     <GridFormSectionTitle {...field.title} />
@@ -129,15 +130,17 @@ export function GridForm<
                     <GridFormSectionBreak />
                   </>
                 );
-              })}
-            </>
-          ) : (
-            <GridFormSection
-              fields={fields}
-              showRequired={showRequired}
-              pastFirstError={pastFirstError}
-            />
-          )}
+              }
+              return (
+                <GridFormQuestion
+                  field={field}
+                  showRequired={showRequired}
+                  pastFirstError={pastFirstError}
+                />
+              );
+            })}
+          </>
+
           <GridFormButtons
             cancel={cancel}
             {...submit}

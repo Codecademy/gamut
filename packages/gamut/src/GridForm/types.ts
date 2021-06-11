@@ -146,16 +146,10 @@ export type GridFormSectionType = {
   fields: GridFormField[];
 };
 
-const isGridFormSection = (
+export type GridFormFieldsProps = GridFormField | GridFormSectionType;
+
+export const isGridFormSection = (
   field: GridFormField | GridFormSectionType
 ): field is GridFormSectionType => {
   return (field as GridFormSectionType).title !== undefined;
-};
-
-const getFields = (fields: any) => {
-  if (fields[0]?.fields) {
-    return fields.flatMap((field) => field.fields);
-  } else {
-    return fields;
-  }
 };
