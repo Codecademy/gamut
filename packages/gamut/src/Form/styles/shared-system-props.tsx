@@ -184,23 +184,23 @@ export const conditionalRadioLabelStyles = system.variant({
 
 export const conditionalRadioInputStyles = system.variant({
   base: {
+    [InputSelectors.CHECKED_AFTER]: {
+      bg: 'currentColor',
+    },
     [InputSelectors.CHECKED_BEFORE]: {
       boxShadow: `0 0 0 1px currentColor`,
-    },
-    [InputSelectors.HOVER_FOCUS_BEFORE]: {
-      boxShadow: `0 0 0 2px currentColor`,
     },
   },
   variants: {
     error: {
-      [InputSelectors.CHECKED_AFTER]: {
-        bg: 'danger',
+      [InputSelectors.HOVER_FOCUS_BEFORE]: {
+        boxShadow: `0 0 0 2px currentColor`,
       },
     },
     disabled: {
       ...formFieldBaseDisabledStyles,
-      [InputSelectors.BEFORE]: {
-        bg: 'currentColor',
+      [InputSelectors.HOVER_FOCUS_BEFORE]: {
+        boxShadow: `0 0 0 1px currentColor`,
       },
     },
   },
