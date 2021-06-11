@@ -2,6 +2,7 @@ import { setupRtl } from '@codecademy/gamut-tests';
 import { fireEvent, screen } from '@testing-library/dom';
 import { waitFor } from '@testing-library/react';
 import React from 'react';
+import { act } from 'react-dom/test-utils';
 
 import { Flyout, FlyoutProps } from '..';
 
@@ -30,57 +31,65 @@ describe('Flyout', () => {
 
   it('renders flyout content when button is clicked', async () => {
     renderFlyout();
-    fireEvent.click(screen.getByText('Test'));
+    await act(async () => {
+      fireEvent.click(screen.getByText('Test'));
+    });
     screen.getByTestId('flyout-content');
   });
 
   describe('clicking outside the flyout', () => {
-    it('closes flyout when "clickOutsideCloses" is true', async () => {
-      renderFlyout();
-      fireEvent.mouseDown(screen.getByTestId('flyout-outside'));
-      await waitFor(() =>
-        expect(screen.queryByTestId('flyout-content')).toBe(null)
-      );
+    it('closes flyout when "clickOutsideDoesNotClose" is true', async () => {
+      renderFlyout({ clickOutsideDoesNotClose: true });
+      await act(async () => {
+        fireEvent.mouseDown(screen.getByTestId('flyout-outside'));
+      });
+
+      expect(screen.queryByTestId('flyout-content')).toBe(null);
     });
 
-    it('does not close flyout when "clickOutsideCloses" is false', async () => {
-      renderFlyout({ initialExpanded: true, clickOutsideCloses: false });
-      fireEvent.mouseDown(screen.getByTestId('flyout-outside'));
-      await waitFor(() => expect(screen.queryByTestId('flyout-content')));
+    it('does not close flyout when "clickOutsideDoesNotClose" is false', async () => {
+      renderFlyout({ initialExpanded: true });
+      await act(async () => {
+        fireEvent.mouseDown(screen.getByTestId('flyout-outside'));
+      });
+      screen.queryByTestId('flyout-content');
     });
   });
 
   it('does not close flyout when clicking inside flyout', async () => {
     renderFlyout({ initialExpanded: true });
-    fireEvent.mouseDown(screen.getByTestId('flyout-content'));
-    await waitFor(() => expect(screen.queryByTestId('flyout-content')));
+    await act(async () => {
+      fireEvent.mouseDown(screen.getByTestId('flyout-content'));
+    });
+    screen.queryByTestId('flyout-content');
   });
 
   describe('pressing the escape key', () => {
-    it('closes flyout when "escapeCloses" is true', async () => {
-      const { view } = renderFlyout();
-      fireEvent.keyDown(view.baseElement, {
-        key: 'Escape',
-        code: 'Escape',
+    it('closes flyout when "escapeDoesNotClose" is true', async () => {
+      const { view } = renderFlyout({ escapeDoesNotClose: true });
+      await act(async () => {
+        fireEvent.keyDown(view.baseElement, {
+          key: 'Escape',
+          code: 'Escape',
+        });
       });
 
-      await waitFor(() =>
-        expect(screen.queryByTestId('flyout-content')).toBe(null)
-      );
+      screen.queryByTestId('flyout-content');
     });
 
-    it('does not close flyout when "escapeCloses" is false', async () => {
+    it('does not close flyout when "escapeDoesNotClose" is false', async () => {
       const { view } = renderFlyout({
         initialExpanded: true,
-        escapeCloses: false,
       });
 
-      fireEvent.keyDown(view.baseElement, {
-        key: 'Escape',
-        code: 'Escape',
+      await act(async () => {
+        fireEvent.keyDown(view.baseElement, {
+          key: 'Escape',
+          code: 'Escape',
+        });
       });
 
-      await waitFor(() => expect(screen.queryByTestId('flyout-content')));
+      screen.queryByTestId('flyout-content');
     });
   });
 });
