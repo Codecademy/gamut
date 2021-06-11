@@ -4,7 +4,7 @@ import { system, variant } from '@codecademy/gamut-styles';
 import { StyleProps, variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
 import { AnimatePresence, motion } from 'framer-motion';
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 
 import { SidebarCloneButton } from './SidebarCloneButton';
 
@@ -64,11 +64,11 @@ export type FlyoutProps = FlyoutStyleProps & {
   /**
    * Whether clicking on the screen outside of the container should close the Flyout
    */
-  clickOutsideCloses?: boolean;
+  clickOutsideDoesNotClose?: boolean;
   /**
    * Whether clicking the escape key should close the Flyout
    */
-  escapeCloses?: boolean;
+  escapeDoesNotClose?: boolean;
 
   /**
    * A means of the parent method to get a reference to the closeFlyout function
@@ -83,8 +83,8 @@ export const Flyout: React.FC<FlyoutProps> = ({
   openFrom = 'left',
   openWidth = 30,
   testId,
-  clickOutsideCloses = true,
-  escapeCloses = true,
+  clickOutsideDoesNotClose,
+  escapeDoesNotClose,
   getCloseFlyout,
   ...styleProps
 }) => {
@@ -98,15 +98,15 @@ export const Flyout: React.FC<FlyoutProps> = ({
 
   useEffect(() => {
     getCloseFlyout?.(() => setIsExpanded(false)); // Passes the function up to any interested parent component
-  }, []);
+  }, [getCloseFlyout]);
 
   const handleOutsideClick = useCallback(() => {
-    clickOutsideCloses && toggleExpanded();
-  }, [clickOutsideCloses]);
+    !clickOutsideDoesNotClose && toggleExpanded();
+  }, [clickOutsideDoesNotClose, toggleExpanded]);
 
   const handleEscapeKey = useCallback(() => {
-    escapeCloses && toggleExpanded();
-  }, [escapeCloses]);
+    !escapeDoesNotClose && toggleExpanded();
+  }, [escapeDoesNotClose, toggleExpanded]);
 
   return (
     <>
