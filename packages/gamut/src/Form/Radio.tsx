@@ -25,15 +25,17 @@ export type RadioProps = InputHTMLAttributes<HTMLInputElement> & {
   readOnly?: boolean;
   error?: boolean;
 };
-export interface RadioElementProps extends RadioProps, StyleProps<typeof conditionalRadioInputStyles> {}
+export interface RadioElementProps
+  extends RadioProps,
+    StyleProps<typeof conditionalRadioInputStyles> {}
 
 const RadioWrapper = styled.div(noSelect, radioWrapper);
-const RadioLabel = styled.label<RadioLabelProps>(
+const RadioLabel = styled.label<RadioElementProps>(
   noSelect,
   radioLabel,
   conditionalRadioLabelStyles
 );
-const RadioInput = styled.input<RadioInputProps>(
+const RadioInput = styled.input<RadioElementProps>(
   screenReaderOnly,
   radioInput,
   conditionalRadioInputStyles
@@ -76,7 +78,7 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
           onChange={onChange}
           ref={ref}
           value={value}
-          variant="error"
+          variant={styleState}
           {...rest}
         />
         <RadioLabel htmlFor={htmlFor} disabled={disabled} variant={styleState}>

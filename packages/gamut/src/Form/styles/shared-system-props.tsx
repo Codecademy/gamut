@@ -13,8 +13,6 @@ export type conditionalStyleProps = {
 };
 
 export enum InputSelectors {
-  OUTLINE = '&:before',
-  OUTLINE_FOCUS = '&:focus-visible:before',
   HOVER = '&:hover',
   ACTIVE = '&:active',
   PLACEHOLDER = '&:placeholder',
@@ -27,6 +25,7 @@ export enum InputSelectors {
   CHECKED_AFTER = '&:checked + label::after',
   HOVERFOCUSBEFORE = '&:hover + label::before, &:focus + label::before',
 }
+
 export const formBaseComponentStyles = {
   fontWeight: 'base',
   fontSize: 16,
@@ -135,10 +134,10 @@ export const radioLabel = system.css({
   alignItems: 'center',
   cursor: 'pointer',
   position: 'relative',
-  [InputSelectors.BEFOREANDAFTER]: consistentLabelStyles,
+  [InputSelectors.BEFORE_AND_AFTER]: consistentLabelStyles,
   [InputSelectors.BEFORE]: {
     bg: 'background',
-    boxShadow: `0 0 0 1px ${theme.colors.primary}`,
+    boxShadow: `0 0 0 1px ${theme.colors[`text-disabled`]}`,
     transition: timing.slow,
   },
   [InputSelectors.AFTER]: {
@@ -152,14 +151,14 @@ export const radioLabel = system.css({
 });
 
 export const radioInput = system.css({
-  [InputSelectors.CHECKEDAFTER]: {
+  [InputSelectors.CHECKED_AFTER]: {
     bg: 'primary',
     borderWidth: 4,
     borderStyle: 'solid',
     borderColor: 'background',
     transform: 'scale(1)',
   },
-  [InputSelectors.CHECKEDBEFORE]: {
+  [InputSelectors.CHECKED_BEFORE]: {
     boxShadow: `0 0 0 1px ${theme.colors.primary}`,
   },
   [InputSelectors.HOVERFOCUSBEFORE]: {
@@ -185,7 +184,7 @@ export const conditionalRadioLabelStyles = system.variant({
 
 export const conditionalRadioInputStyles = system.variant({
   base: {
-    [InputSelectors.CHECKEDBEFORE]: {
+    [InputSelectors.CHECKED_BEFORE]: {
       boxShadow: `0 0 0 1px currentColor`,
     },
     [InputSelectors.HOVERFOCUSBEFORE]: {
@@ -194,7 +193,7 @@ export const conditionalRadioInputStyles = system.variant({
   },
   variants: {
     error: {
-      [InputSelectors.CHECKEDAFTER]: {
+      [InputSelectors.CHECKED_AFTER]: {
         bg: 'danger',
       },
     },
