@@ -31,14 +31,6 @@ describe('Flyout', () => {
     expect(screen.queryByTestId('flyout-content')).toBe(null);
   });
 
-  it('renders flyout content when button is clicked', async () => {
-    renderFlyout();
-    await act(async () => {
-      fireEvent.click(screen.getByText(TestButtonText));
-    });
-    screen.getByTestId('flyout-content');
-  });
-
   it('passes the toggle method into the rendered toggle button', async () => {
     renderFlyout();
 
