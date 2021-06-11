@@ -1,5 +1,6 @@
 import { setupRtl } from '@codecademy/gamut-tests';
 import { fireEvent, screen } from '@testing-library/dom';
+import { RenderResult, waitFor } from '@testing-library/react';
 import React from 'react';
 import { act } from 'react-dom/test-utils';
 
@@ -21,44 +22,60 @@ renderFlyout.options({
 });
 
 describe('Flyout', () => {
-  it('renders flyout content when "initialExpanded" is true', () => {
-    renderFlyout({ initialExpanded: true });
-    screen.getByTestId('flyout-content');
-  });
-
-  it('does not render flyout content when "initialExpanded" is false', () => {
-    renderFlyout();
-    expect(screen.queryByTestId('flyout-content')).toBe(null);
-  });
-
-  it('passes the toggle method into the rendered toggle button', async () => {
-    renderFlyout();
-
-    expect(screen.queryByTestId('flyout-content')).toBeNull();
-
+  const clickToggleButton = async () =>
     await act(async () => {
       fireEvent.click(screen.getByText(TestButtonText));
     });
 
-    screen.getByTestId('flyout-content');
+  const expectFlyoutOpen = () =>
+    waitFor(() => screen.getByTestId('flyout-content'));
+
+  const expectFlyoutClosed = () =>
+    waitFor(() => expect(screen.queryByTestId('flyout-content')).toBeNull());
+
+  it('renders flyout content when "initialExpanded" is true', async () => {
+    renderFlyout({ initialExpanded: true });
+    await expectFlyoutOpen();
+  });
+
+  it('does not render flyout content when "initialExpanded" is false', async () => {
+    renderFlyout();
+    await expectFlyoutClosed();
+  });
+
+  it('toggles the flyout expanded status on button click', async () => {
+    renderFlyout();
+    await expectFlyoutClosed();
+
+    await clickToggleButton();
+
+    await expectFlyoutOpen();
+
+    await clickToggleButton();
+
+    await expectFlyoutClosed();
   });
 
   describe('clicking outside the flyout', () => {
-    it('closes flyout when "clickOutsideDoesNotClose" is true', async () => {
-      renderFlyout({ clickOutsideDoesNotClose: true });
+    const clickOutsideFlyout = async () =>
       await act(async () => {
         fireEvent.mouseDown(screen.getByTestId('flyout-outside'));
       });
 
-      expect(screen.queryByTestId('flyout-content')).toBe(null);
+    it('closes flyout when "clickOutsideDoesNotClose" is true', async () => {
+      renderFlyout({ clickOutsideDoesNotClose: true });
+
+      await clickOutsideFlyout();
+
+      await expectFlyoutClosed();
     });
 
     it('does not close flyout when "clickOutsideDoesNotClose" is false', async () => {
       renderFlyout({ initialExpanded: true });
-      await act(async () => {
-        fireEvent.mouseDown(screen.getByTestId('flyout-outside'));
-      });
-      screen.queryByTestId('flyout-content');
+
+      await clickOutsideFlyout();
+
+      await expectFlyoutOpen();
     });
   });
 
@@ -67,12 +84,12 @@ describe('Flyout', () => {
     await act(async () => {
       fireEvent.mouseDown(screen.getByTestId('flyout-content'));
     });
-    screen.queryByTestId('flyout-content');
+
+    await expectFlyoutOpen();
   });
 
   describe('pressing the escape key', () => {
-    it('closes flyout when "escapeDoesNotClose" is true', async () => {
-      const { view } = renderFlyout({ escapeDoesNotClose: true });
+    const pressEsc = async (view: RenderResult) =>
       await act(async () => {
         fireEvent.keyDown(view.baseElement, {
           key: 'Escape',
@@ -80,22 +97,35 @@ describe('Flyout', () => {
         });
       });
 
-      screen.queryByTestId('flyout-content');
+    it('closes flyout when "escapeDoesNotClose" is true', async () => {
+      const { view } = renderFlyout({ escapeDoesNotClose: true });
+
+      await pressEsc(view);
+
+      await expectFlyoutClosed();
     });
 
     it('does not close flyout when "escapeDoesNotClose" is false', async () => {
       const { view } = renderFlyout({
+        escapeDoesNotClose: false,
         initialExpanded: true,
       });
 
-      await act(async () => {
-        fireEvent.keyDown(view.baseElement, {
-          key: 'Escape',
-          code: 'Escape',
-        });
-      });
+      await pressEsc(view);
 
-      screen.queryByTestId('flyout-content');
+      await expectFlyoutOpen();
     });
+  });
+
+  it('passes the ability to close the flyout to passed ref', async () => {
+    const closeFlyoutRef = { current: () => {} };
+
+    renderFlyout({ closeFlyoutRef, initialExpanded: true });
+
+    await expectFlyoutOpen();
+
+    act(closeFlyoutRef.current);
+
+    await expectFlyoutClosed();
   });
 });

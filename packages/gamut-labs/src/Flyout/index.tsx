@@ -88,17 +88,19 @@ export const Flyout: React.FC<FlyoutProps> = ({
 }) => {
   const initialX = openFrom === 'left' ? -1000 : 1000;
 
-  const [isExpanded, setIsExpanded] = useState(initialExpanded);
+  const [isExpanded, setIsExpanded] = useState(!!initialExpanded);
   const toggleExpanded = useCallback(
     () => setIsExpanded((isExpanded) => !isExpanded),
     []
   );
-  const closeFlyout = useCallback(() => setIsExpanded(false), []);
+  const closeFlyout = useCallback(() => {
+    setIsExpanded(false);
+  }, []);
 
   useEffect(() => {
     // Passes the function up to any interested parent component
     if (closeFlyoutRef) {
-      closeFlyoutRef.current = () => closeFlyout;
+      closeFlyoutRef.current = closeFlyout;
       return () => {
         closeFlyoutRef.current = () => {};
       };
