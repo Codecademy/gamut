@@ -117,7 +117,7 @@ describe('Flyout', () => {
     });
   });
 
-  it('passes the ability to close the flyout to passes ref', async () => {
+  it('passes the ability to close the flyout to passed ref', async () => {
     const closeFlyoutRef = { current: () => {} };
 
     renderFlyout({ closeFlyoutRef, initialExpanded: true });
