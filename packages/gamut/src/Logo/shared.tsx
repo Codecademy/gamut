@@ -16,7 +16,6 @@ const logoStyles = variance.compose(
   system.space
 );
 
-export const LogoSvg = styled('svg', styledOptions)<Omit<LogoProps, 'variant'>>(
-  system.css({ textColor: 'text' }),
-  logoStyles
-);
+export const LogoSvg = styled('svg', styledOptions<'svg'>())<
+  Omit<LogoProps, 'variant'>
+>(system.css({ textColor: 'text' }), logoStyles);

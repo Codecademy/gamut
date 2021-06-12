@@ -31,7 +31,7 @@ export interface DialogProps
 
 const DialogContainer = styled(
   FloatingCard,
-  styledOptions(['size'])
+  styledOptions<ComponentProps<typeof FloatingCard>, 'size'>(['size'])
 )(
   system.variant({
     prop: 'size',

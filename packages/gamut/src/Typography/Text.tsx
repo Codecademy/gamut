@@ -25,7 +25,7 @@ export interface TextProps
     StyleProps<typeof elementVariants>,
     StyleProps<typeof displayVariants> {}
 
-export const Text = styled('span', styledOptions)<TextProps>(
+export const Text = styled('span', styledOptions<'span'>())<TextProps>(
   elementVariants,
   displayVariants,
   textProps

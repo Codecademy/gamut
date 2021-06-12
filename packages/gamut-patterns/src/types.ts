@@ -14,7 +14,7 @@ export type PatternProps = SVGProps<SVGSVGElement> &
 
 export const PatternSvg = styled(
   'svg',
-  styledOptions
+  styledOptions<'svg'>()
 )<PatternProps>(patternStyles);
 
 PatternSvg.defaultProps = {

@@ -82,7 +82,7 @@ const anchorProps = variance.compose(
   system.space
 );
 
-export const AnchorBase = styled('a', styledOptions)<AnchorProps>(
+export const AnchorBase = styled('a', styledOptions<'a'>())<AnchorProps>(
   anchorVariants,
   anchorProps
 );
