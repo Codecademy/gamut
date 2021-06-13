@@ -69,7 +69,10 @@ export function useCurrentMode(mode?: ColorModes) {
   return mode ?? activeMode;
 }
 
-export const VariableProvider = styled('div', styledOptions())<
+export const VariableProvider = styled(
+  'div',
+  styledOptions(['variables', 'alwaysSetVariables'])
+)<
   StyleProps<typeof providerProps> & {
     variables?: CSSObject;
     alwaysSetVariables?: boolean;
