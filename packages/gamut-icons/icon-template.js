@@ -10,7 +10,6 @@ function iconTemplate(api, opts, { jsx /* imports, props, exports */ }) {
   return template.ast`
     import * as React from 'react';
     import { ClassNames } from '@emotion/react';
-    import { GamutIconProps } from '../../types';
     import { getForwardableProps, GamutIconProps, iconStyles } from '../../props';
 
     export const ${exportName} = React.forwardRef<SVGSVGElement, GamutIconProps>(({
