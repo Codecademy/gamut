@@ -15,6 +15,11 @@ module.exports = {
   prettierConfig: {
     parser: 'typescript',
   },
+  replaceAttrValues: {
+    '#000': 'currentColor',
+    '#111': 'currentColor',
+    '#444': 'currentColor',
+  },
   template,
   indexTemplate,
 };
