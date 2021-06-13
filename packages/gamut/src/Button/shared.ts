@@ -48,7 +48,7 @@ export const modeColorGroups = {
   },
 };
 
-export const config = styledOptions(['size']);
+export const config = styledOptions<'button' | 'a', 'size'>(['size']);
 
 export const buttonSizing = variant({
   prop: 'size',
