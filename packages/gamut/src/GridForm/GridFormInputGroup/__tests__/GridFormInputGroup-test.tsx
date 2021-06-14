@@ -15,7 +15,6 @@ import { GridFormInputGroup, GridFormInputGroupProps } from '..';
 
 const renderComponent = (overrides: Partial<GridFormInputGroupProps>) => {
   const props: GridFormInputGroupProps = {
-    clearErrors: jest.fn(),
     field: stubSelectField,
     setValue: jest.fn(),
     register: jest.fn(),

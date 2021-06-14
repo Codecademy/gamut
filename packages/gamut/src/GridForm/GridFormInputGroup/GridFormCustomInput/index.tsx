@@ -5,7 +5,6 @@ import { GridFormCustomField, GridFormCustomGroupField } from '../../types';
 
 export type GridFormCustomInputProps = {
   className?: string;
-  clearErrors: UseFormMethods['clearErrors'];
   error?: string;
   field: GridFormCustomField | GridFormCustomGroupField;
   register: UseFormMethods['register'];
@@ -14,7 +13,6 @@ export type GridFormCustomInputProps = {
 
 export const GridFormCustomInput: React.FC<GridFormCustomInputProps> = ({
   className,
-  clearErrors,
   error,
   field,
   register,
@@ -24,7 +22,6 @@ export const GridFormCustomInput: React.FC<GridFormCustomInputProps> = ({
     <>
       {field.render({
         className,
-        clearErrors,
         error,
         field,
         register,
