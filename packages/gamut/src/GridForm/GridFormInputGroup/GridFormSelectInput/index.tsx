@@ -6,6 +6,7 @@ import { GridFormSelectField } from '../../types';
 
 export type GridFormSelectInputProps = {
   className?: string;
+  clearErrors: UseFormMethods['clearErrors'];
   error?: boolean;
   showRequired?: boolean;
   field: Omit<GridFormSelectField, 'label'>;
@@ -14,6 +15,7 @@ export type GridFormSelectInputProps = {
 
 export const GridFormSelectInput: React.FC<GridFormSelectInputProps> = ({
   className,
+  clearErrors,
   error,
   field,
   register,
@@ -27,7 +29,10 @@ export const GridFormSelectInput: React.FC<GridFormSelectInputProps> = ({
       error={error}
       htmlFor={field.name}
       name={field.name}
-      onChange={(event) => field.onUpdate?.(event.target.value)}
+      onChange={(event) => {
+        clearErrors();
+        field.onUpdate?.(event.target.value);
+      }}
       ref={register(field.validation)}
       options={field.options}
       id={field.id}

@@ -5,6 +5,7 @@ import { Input } from '../../../Form';
 import { GridFormTextField } from '../../types';
 
 export type GridFormTextInputProps = {
+  clearErrors: UseFormMethods['clearErrors'];
   className?: string;
   error?: boolean;
   showRequired?: boolean;
@@ -14,6 +15,7 @@ export type GridFormTextInputProps = {
 
 export const GridFormTextInput: React.FC<GridFormTextInputProps> = ({
   className,
+  clearErrors,
   error,
   field,
   register,
@@ -25,7 +27,10 @@ export const GridFormTextInput: React.FC<GridFormTextInputProps> = ({
       disabled={field.disabled}
       error={error}
       htmlFor={field.name}
-      onChange={(event) => field.onUpdate?.(event.target.value)}
+      onChange={(event) => {
+        clearErrors(field.name);
+        field.onUpdate?.(event.target.value);
+      }}
       placeholder={field.placeholder}
       name={field.name}
       ref={register(field.validation)}

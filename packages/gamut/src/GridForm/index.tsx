@@ -82,6 +82,7 @@ export function GridForm<
   showRequired = false,
 }: GridFormProps<Values>) {
   const {
+    clearErrors,
     errors,
     handleSubmit,
     register,
@@ -119,6 +120,7 @@ export function GridForm<
 
           return (
             <GridFormInputGroup
+              clearErrors={clearErrors}
               error={errorMessage as string}
               isFirstError={isFirstError}
               field={field}
