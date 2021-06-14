@@ -570,8 +570,8 @@ describe('states', () => {
     marginTransform.mockImplementation((val) => val);
   });
 
-  it('creates a variant function', () => {
-    const myVariant = states({
+  it('creates a state variant function', () => {
+    const myStates = states({
       cool: {
         margin: 4,
         width: ['100%', '200%'],
@@ -581,17 +581,42 @@ describe('states', () => {
       },
     });
 
-    expect(myVariant({ theme, cool: true })).toEqual({
+    expect(myStates({ theme, cool: true })).toEqual({
       width: '100%',
       margin: '0.25rem',
       XS: { width: '200%' },
     });
 
-    expect(myVariant({ theme, cool: true, beans: true })).toEqual({
+    expect(myStates({ theme, cool: true, beans: true })).toEqual({
       width: '100%',
       margin: '0.25rem',
       border: '1px solid blue',
       XS: { width: '200%' },
+    });
+  });
+  it('progressively overrides based on the order of the enabled', () => {
+    const myStates = states({
+      cool: {
+        margin: 4,
+      },
+      beans: {
+        margin: 8,
+      },
+      dude: {
+        margin: 16,
+      },
+    });
+
+    expect(myStates({ theme, cool: true })).toEqual({
+      margin: '0.25rem',
+    });
+
+    expect(myStates({ theme, cool: true, beans: true })).toEqual({
+      margin: '0.5rem',
+    });
+
+    expect(myStates({ theme, cool: true, beans: true, dude: true })).toEqual({
+      margin: '1rem',
     });
   });
 });

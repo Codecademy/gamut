@@ -76,7 +76,7 @@ export const CurriculumCard: React.FC<CurriculumCardProps> = ({
           />
         )}
       </FlexBox>
-      <FlexBox alignItems="center" justifyContent="center" pb={16}>
+      <FlexBox center pb={16}>
         {isFullSize && image && (
           <Image image={image} progressState={progressState} />
         )}

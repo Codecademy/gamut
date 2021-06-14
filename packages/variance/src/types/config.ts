@@ -131,6 +131,6 @@ export type SystemProps<P extends AbstractParser> = {
     | ResponsiveProp<(theme: Theme) => Omit<Parameters<P>[0], 'theme'>[K]>;
 };
 
-type VariantProps<T extends string, V> = {
+export type VariantProps<T extends string, V> = {
   [Key in T]?: V;
 };
