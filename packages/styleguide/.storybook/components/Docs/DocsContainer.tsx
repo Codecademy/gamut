@@ -32,7 +32,10 @@ const defaultComponents = {
  * This is not importable from SB but is ported here
  * https://github.com/storybookjs/storybook/blob/a2752c20b83025da7b57ecb691ebeea11ab2d247/addons/docs/src/blocks/utils.ts#L41
  */
-export function scrollToElement(element: any, block = 'start') {
+export function scrollToElement(
+  element: Element,
+  block: ScrollLogicalPosition = 'start'
+) {
   element.scrollIntoView({
     behavior: 'smooth',
     block,
@@ -64,7 +67,7 @@ export const DocsContainer: React.FC<{ context: DocsContextProps }> = ({
    * https://github.com/storybookjs/storybook/blob/next/addons/docs/src/blocks/DocsContainer.tsx#L48
    */
   useEffect(() => {
-    let url;
+    let url: URL;
     try {
       url = new URL(window.parent.location.href);
     } catch (err) {
