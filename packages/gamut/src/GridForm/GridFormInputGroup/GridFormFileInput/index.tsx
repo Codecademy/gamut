@@ -6,7 +6,6 @@ import { GridFormFileField } from '../../types';
 
 export type GridFormFileInputProps = {
   className?: string;
-  clearErrors: UseFormMethods['clearErrors'];
   error?: boolean;
   showRequired?: boolean;
   field: Omit<GridFormFileField, 'label'>;
@@ -15,7 +14,6 @@ export type GridFormFileInputProps = {
 
 export const GridFormFileInput: React.FC<GridFormFileInputProps> = ({
   className,
-  clearErrors,
   error,
   field,
   register,
@@ -28,10 +26,7 @@ export const GridFormFileInput: React.FC<GridFormFileInputProps> = ({
       error={error}
       htmlFor={field.name}
       name={field.name}
-      onChange={(event) => {
-        clearErrors();
-        field.onUpdate?.(event.target.files!);
-      }}
+      onChange={(event) => field.onUpdate?.(event.target.files!)}
       ref={register(field.validation)}
       type="file"
       id={field.id}
