@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [34.6.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@34.6.0...@codecademy/gamut@34.6.1) (2021-06-14)
+
+
+### Bug Fixes
+
+* revert "fix: clear errors on input change in GridForm" ([fbee690](https://github.com/Codecademy/client-modules/commit/fbee690400956dfa09a5bf6e7ac7f2739f13f77b)), closes [Codecademy/client-modules#1815](https://github.com/Codecademy/client-modules/issues/1815)
+
+
+
 ## [34.6.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@34.5.2...@codecademy/gamut@34.6.0) (2021-06-11)
 
 
