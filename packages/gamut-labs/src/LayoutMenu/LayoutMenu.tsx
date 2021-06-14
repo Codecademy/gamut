@@ -6,7 +6,7 @@ import { AccordionMenu, Section } from './AccordionMenu';
 
 export type LayoutMenuProps = {
   /**
-   * An array of sections containing the title, slug, and items, each of which will become an accordion. Each item contains a title, slug, slug, and onClick.
+   * An array of sections containing the title, slug, and items, each of which will become an accordion. Each item contains a title, slug, and onClick.
    */
   sections: Section[];
   /**
