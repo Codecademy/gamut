@@ -64,7 +64,6 @@ const interactiveVariants = system.variant({
     justifyContent: 'center',
     cursor: 'pointer',
     width: 1,
-    height: 1,
     zIndex: 1,
     px: 24,
     py: 12,

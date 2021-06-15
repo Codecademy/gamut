@@ -20,46 +20,50 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 ## Variants
 
 <Story name="Variants">
-  <Menu variant="select">
-    <MenuItem href="hello world">Link</MenuItem>
-    <MenuItem active>Item</MenuItem>
-    <MenuSeparator />
-    <MenuItem>Item</MenuItem>
-    <MenuItem>Cool beans!</MenuItem>
-  </Menu>
-  <Menu variant="action">
-    <MenuItem href="hello world">Link</MenuItem>
-    <MenuItem active>Item</MenuItem>
-    <MenuSeparator />
-    <MenuItem>Item</MenuItem>
-    <MenuItem>Cool beans!</MenuItem>
-  </Menu>
-  <Menu variant="navigation">
-    <MenuItem href="hello world">Link</MenuItem>
-    <MenuItem active>Item</MenuItem>
-    <MenuSeparator />
-    <MenuItem>Item</MenuItem>
-    <MenuItem>Cool beans!</MenuItem>
-  </Menu>
+  <GridBox gridAutoFlow="column" gap={16}>
+    <Menu variant="select">
+      <MenuItem href="hello world">Link</MenuItem>
+      <MenuItem active>Item</MenuItem>
+      <MenuSeparator />
+      <MenuItem>Item</MenuItem>
+      <MenuItem>Cool beans!</MenuItem>
+    </Menu>
+    <Menu variant="action">
+      <MenuItem href="hello world">Link</MenuItem>
+      <MenuItem active>Item</MenuItem>
+      <MenuSeparator />
+      <MenuItem>Item</MenuItem>
+      <MenuItem>Cool beans!</MenuItem>
+    </Menu>
+    <Menu variant="navigation">
+      <MenuItem href="hello world">Link</MenuItem>
+      <MenuItem active>Item</MenuItem>
+      <MenuSeparator />
+      <MenuItem>Item</MenuItem>
+      <MenuItem>Cool beans!</MenuItem>
+    </Menu>
+  </GridBox>
 </Story>
 
 ## Spacing
 
 <Story name="Spacing">
-  <Menu spacing="normal">
-    <MenuItem href="hello world">Link</MenuItem>
-    <MenuItem active>Item</MenuItem>
-    <MenuSeparator />
-    <MenuItem>Item</MenuItem>
-    <MenuItem>Cool beans!</MenuItem>
-  </Menu>
-  <Menu spacing="condensed">
-    <MenuItem href="hello world">Link</MenuItem>
-    <MenuItem active>Item</MenuItem>
-    <MenuSeparator />
-    <MenuItem>Item</MenuItem>
-    <MenuItem>Cool beans!</MenuItem>
-  </Menu>
+  <GridBox gridAutoFlow="column" gap={16}>
+    <Menu spacing="normal">
+      <MenuItem href="hello world">Link</MenuItem>
+      <MenuItem active>Item</MenuItem>
+      <MenuSeparator />
+      <MenuItem>Item</MenuItem>
+      <MenuItem>Cool beans!</MenuItem>
+    </Menu>
+    <Menu spacing="condensed">
+      <MenuItem href="hello world">Link</MenuItem>
+      <MenuItem active>Item</MenuItem>
+      <MenuSeparator />
+      <MenuItem>Item</MenuItem>
+      <MenuItem>Cool beans!</MenuItem>
+    </Menu>
+  </GridBox>
 </Story>
 
 <Canvas>
