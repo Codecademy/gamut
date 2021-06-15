@@ -24,12 +24,16 @@ const reset = system.css({
   background: 'none',
   boxShadow: 'none',
   border: 'none',
+  textColor: 'text',
   p: 0,
   fontSize: 'inherit',
   cursor: 'pointer',
   textDecoration: 'none',
   '&:hover': {
     textDecoration: 'none',
+  },
+  '&:focus': {
+    outline: 'none',
   },
 });
 

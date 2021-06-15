@@ -1,0 +1,62 @@
+import {
+  GridBox,
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuSeparator,
+} from '@codecademy/gamut';
+import { ColorMode } from '@codecademy/gamut-styles';
+import title from '@codecademy/macros/lib/title.macro';
+import { PropsTable } from '@codecademy/storybook-addon-variance';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+
+<Meta
+  title={title}
+  component={Menu}
+  subcomponents={{ MenuItem }}
+  parameters={{
+    subtitle: 'Menu Elements',
+    source: 'gamut',
+    status: 'current',
+    figmaId: '',
+  }}
+  args={{}}
+/>
+
+<Canvas>
+  <Story name="Menu">
+    {(args) => (
+      <GridBox gridTemplateColumns="repeat(3, max-content)">
+        {['light', 'dark'].map((mode) => {
+          return [true, false].map((spacing) => {
+            return ['action', 'select', 'navigation'].map((type) => {
+              return (
+                <ColorMode mode={mode} p={16}>
+                  <Menu condensed={spacing} type={type}>
+                    <MenuItem>
+                      <MenuButton onClick={() => {}}>Click me!</MenuButton>
+                    </MenuItem>
+                    <MenuItem>
+                      <MenuButton active onClick={() => {}}>
+                        Click me 2!
+                      </MenuButton>
+                    </MenuItem>
+                    <MenuSeparator />
+                    <MenuItem>
+                      <MenuButton onClick={() => {}}>Click me 3!</MenuButton>
+                    </MenuItem>
+                    <MenuItem>
+                      <MenuButton disabled>Nah don't click me</MenuButton>
+                    </MenuItem>
+                  </Menu>
+                </ColorMode>
+              );
+            });
+          });
+        })}
+      </GridBox>
+    )}
+  </Story>
+</Canvas>
+
+<PropsTable story="Menu" />
