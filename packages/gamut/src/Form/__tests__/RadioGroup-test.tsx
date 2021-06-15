@@ -1,23 +1,24 @@
-import { mount } from 'enzyme';
+import { setupEnzyme } from '@codecademy/gamut-tests';
 import React from 'react';
 
 import { Radio } from '../Radio';
 import { RadioGroup } from '../RadioGroup';
 
+const renderWrapper = setupEnzyme(RadioGroup, {
+  htmlForPrefix: 'what-salad-maker-do-you-prefer',
+  name: 'what-salad-maker-do-you-prefer',
+  'data-testid': 'my-test-id',
+  children: [
+    <Radio label="Sweet Green" value="sweet-green" data-testid="firstInput" />,
+    <Radio label="Chopt" value="chopt" />,
+  ],
+});
+
 describe('<RadioGroup>', () => {
   const createComponent = () => {
     const onChange = jest.fn();
-    const wrapper = mount(
-      <RadioGroup
-        htmlForPrefix="what-salad-maker-do-you-prefer"
-        name="what-salad-maker-do-you-prefer"
-        onChange={onChange}
-        data-testid="my-test-id"
-      >
-        <Radio label="Sweet Green" value="sweet-green" />
-        <Radio label="Chopt" value="chopt" />
-      </RadioGroup>
-    );
+    const { wrapper } = renderWrapper({ onChange });
+
     const firstInput = wrapper.find('input[type="radio"]').first();
 
     return { firstInput, onChange, wrapper };
