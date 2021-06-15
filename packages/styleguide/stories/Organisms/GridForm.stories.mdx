@@ -779,7 +779,8 @@ See the [`Radio`](/?path=/docs/atoms-forminputs-radio--radio) story for an examp
 
 ## Sections
 
-Sections sections sections.
+Our `GridForm`s optionally take an array of sections that have left and center-aligned variants.
+Each sections should have a title that correctly follows (heading ranks)[https://usability.yale.edu/web-accessibility/articles/headings]. You can set the text type of this title though the `as` prop on that section -- the default is `h2`.
 
 <Canvas>
   <Story name="Custom Sections">
@@ -788,8 +789,7 @@ Sections sections sections.
         <GridForm
           fields={[
             {
-              title: 'hi there',
-              as: 'h3',
+              title: 'first sections',
               layout: 'left',
               fields: [
                 {
@@ -802,7 +802,7 @@ Sections sections sections.
                   },
                 },
                 {
-                  label: 'hi2?',
+                  label: 'hello?',
                   name: 'text02-left-section',
                   size: 5,
                   type: 'text',
@@ -811,7 +811,7 @@ Sections sections sections.
                   },
                 },
                 {
-                  label: 'Write a paragraph about penguins',
+                  label: 'Write a paragraph.',
                   name: 'paragraph01-left-section',
                   size: 5,
                   type: 'textarea',
@@ -820,7 +820,7 @@ Sections sections sections.
                   },
                 },
                 {
-                  label: 'hi?',
+                  label: 'howdy?',
                   name: 'text03-left-section',
                   size: 5,
                   type: 'text',
@@ -829,7 +829,7 @@ Sections sections sections.
                   },
                 },
                 {
-                  label: 'hi2?',
+                  label: 'whats up?',
                   name: 'text04--left-section',
                   size: 5,
                   type: 'text',
@@ -838,7 +838,7 @@ Sections sections sections.
                   },
                 },
                 {
-                  label: 'Write a paragraph about penguins',
+                  label: 'Write another paragraph',
                   name: 'paragraph02-left-section',
                   size: 5,
                   type: 'textarea',
@@ -849,11 +849,11 @@ Sections sections sections.
               ],
             },
             {
-              title: 'hi there2',
+              title: 'hi there... again',
               as: 'h3',
               fields: [
                 {
-                  label: 'helo?',
+                  label: 'hello....',
                   name: 'text01-center-section',
                   size: 5,
                   type: 'text',

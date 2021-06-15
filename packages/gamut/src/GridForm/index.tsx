@@ -40,7 +40,7 @@ export type GridFormProps<Values extends {}> = {
   columnGap?: LayoutGridProps['columnGap'];
 
   /**
-   * Descriptions of any fields comprising the form.
+   * Descriptions of any fields or sections comprising the form.
    */
   fields?: GridFormFieldsProps[];
 
