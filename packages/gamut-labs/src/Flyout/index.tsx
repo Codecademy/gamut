@@ -66,7 +66,7 @@ type FlyoutProps = FlyoutStyleProps & {
   /**
    * A means of the parent method to get a reference to the closeFlyout function
    */
-  closeFlyoutRef?: React.MutableRefObject<Function | undefined>;
+  closeFlyoutRef?: React.MutableRefObject<Function>;
 };
 
 export const Flyout: React.FC<FlyoutProps> = ({
@@ -96,7 +96,7 @@ export const Flyout: React.FC<FlyoutProps> = ({
     if (closeFlyoutRef) {
       closeFlyoutRef.current = closeFlyout;
       return () => {
-        closeFlyoutRef.current = undefined;
+        closeFlyoutRef.current = () => {};
       };
     }
   }, [closeFlyoutRef, closeFlyout]);
