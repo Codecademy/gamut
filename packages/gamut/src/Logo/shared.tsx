@@ -1,4 +1,4 @@
-import { ColorModes, styledConfig, system } from '@codecademy/gamut-styles';
+import { ColorModes, styledOptions, system } from '@codecademy/gamut-styles';
 import { StyleProps, variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
 import { SVGProps } from 'react';
@@ -16,7 +16,6 @@ const logoStyles = variance.compose(
   system.space
 );
 
-export const LogoSvg = styled('svg', styledConfig)<Omit<LogoProps, 'variant'>>(
-  system.css({ textColor: 'text' }),
-  logoStyles
-);
+export const LogoSvg = styled('svg', styledOptions<'svg'>())<
+  Omit<LogoProps, 'variant'>
+>(system.css({ textColor: 'text' }), logoStyles);

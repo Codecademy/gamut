@@ -1,24 +1,25 @@
 import { theme, variant } from '@codecademy/gamut-styles';
 
-import { ButtonSelectors, buttonVariants, templateVariants } from './shared';
+import { ButtonSelectors } from '../ButtonBase/ButtonBase';
+import { buttonVariants, templateVariants } from './shared';
 
 export const fillButtonVariants = templateVariants(
   buttonVariants,
   (variant) => ({
     bg: variant,
-    textColor: 'background',
+    color: 'background',
     [ButtonSelectors.OUTLINE]: { borderColor: variant },
     [ButtonSelectors.HOVER]: {
       bg: `${variant}-hover`,
-      textColor: 'background',
+      color: 'background',
     },
     [ButtonSelectors.ACTIVE]: {
       borderColor: 'text',
       bg: variant,
-      textColor: 'background',
+      color: 'background',
     },
     [ButtonSelectors.DISABLED]: {
-      textColor: 'background-disabled',
+      color: 'background-disabled',
       bg: 'text-disabled',
     },
   })
@@ -28,17 +29,17 @@ export const textButtonVariants = templateVariants(
   buttonVariants,
   (variant) => ({
     borderColor: 'transparent',
-    textColor: variant,
+    color: variant,
     [ButtonSelectors.OUTLINE]: { borderColor: variant },
     [ButtonSelectors.HOVER]: {
       bg: 'background-disabled',
     },
     [ButtonSelectors.ACTIVE]: {
       bg: 'transparent',
-      textColor: 'text',
+      color: 'text',
     },
     [ButtonSelectors.DISABLED]: {
-      textColor: 'text-disabled',
+      color: 'text-disabled',
       bg: 'transparent',
     },
   })
@@ -49,7 +50,7 @@ export const strokeButtonVariants = templateVariants(
   (variant) => ({
     borderColor: variant,
     bg: 'transparent',
-    textColor: variant,
+    color: variant,
     [ButtonSelectors.OUTLINE]: {
       borderColor: variant,
     },
@@ -59,11 +60,11 @@ export const strokeButtonVariants = templateVariants(
     },
     [ButtonSelectors.ACTIVE]: {
       bg: variant,
-      textColor: 'background',
+      color: 'background',
     },
     [ButtonSelectors.DISABLED]: {
       borderColor: 'text-disabled',
-      textColor: 'text-disabled',
+      color: 'text-disabled',
       bg: 'transparent',
     },
   })
@@ -74,7 +75,7 @@ export const ctaButtonVariants = templateVariants(['primary'], (variant) => ({
   fontFamily: 'accent',
   fontWeight: 'title',
   boxShadow: `-4px 4px 0 0 ${theme.colors.text}`,
-  textColor: 'background',
+  color: 'background',
   py: 12,
   px: 24,
   bg: variant,

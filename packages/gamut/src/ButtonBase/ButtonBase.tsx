@@ -1,39 +1,47 @@
-import { system } from '@codecademy/gamut-styles';
+import { styledOptions, system } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React, { forwardRef, HTMLProps, MutableRefObject } from 'react';
 
 export type ButtonBaseElements = HTMLAnchorElement | HTMLButtonElement;
+export type ButtonBaseRef =
+  | ((instance: ButtonBaseElements | null) => void)
+  | MutableRefObject<ButtonBaseElements | null>
+  | null;
 
 export type ButtonBaseElementProps = HTMLProps<
   HTMLAnchorElement | HTMLButtonElement
 > & {
   as?: never;
-  ref?:
-    | ((instance: ButtonBaseElements | null) => void)
-    | MutableRefObject<ButtonBaseElements | null>
-    | null;
+  ref?: ButtonBaseRef;
 };
 
-export type SafeButtonProps<T> = T & Omit<ButtonBaseElementProps, keyof T>;
+export enum ButtonSelectors {
+  HOVER = '&:hover, &:focus',
+  ACTIVE = '&:active',
+  DISABLED = "&:disabled, &[aria-disabled='true']",
+  FOCUS = ' &:focus-visible',
+  OUTLINE = '&:before',
+  OUTLINE_FOCUS = '&:focus-visible:before',
+}
 
-export type ButtonBaseProps<T> = React.ForwardRefExoticComponent<
-  SafeButtonProps<T> & React.RefAttributes<ButtonBaseElements>
->;
-
-const reset = system.css({
-  background: 'none',
-  boxShadow: 'none',
-  border: 'none',
-  p: 0,
-  fontSize: 'inherit',
-  cursor: 'pointer',
-  textDecoration: 'none',
-  '&:hover': {
+const ResetElement = styled(
+  'button',
+  styledOptions<'button'>()
+)(
+  system.css({
+    background: 'none',
+    boxShadow: 'none',
+    border: 'none',
+    p: 0,
+    fontSize: 'inherit',
+    cursor: 'pointer',
     textDecoration: 'none',
-  },
-});
-
-const ResetElement = styled.button(reset);
+    [ButtonSelectors.HOVER]: {
+      textDecoration: 'none',
+      outline: 'none',
+    },
+  })
+);
 
 export const ButtonBase = forwardRef<
   HTMLButtonElement | HTMLAnchorElement,

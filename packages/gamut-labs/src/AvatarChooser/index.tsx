@@ -96,11 +96,7 @@ export const AvatarChooser: React.FC<AvatarChooserProps> = ({
       width="fit-content"
       maxWidth={pxRem(120)}
     >
-      <StyledAvatar
-        src={imageSrc}
-        disableDropshadow
-        aria-labelledby="Avatar Photo"
-      />
+      <StyledAvatar src={imageSrc} disableDropshadow alt="Avatar Photo" />
       <ChoosePhotoLabel ref={choosePhotoLabelRef} htmlFor="avatar-chooser">
         <ChoosePhotoSpan
           role="button"
@@ -130,7 +126,7 @@ const validatePhotoUpload = (files: FileList): boolean | string => {
   const MAX_FILE_SIZE = 5242880;
   const MAX_FILE_SIZE_IN_MB = 5;
 
-  const file = files && files.item(0);
+  const file = files?.item(0);
   if (!file) return true;
 
   const { type, size } = file;

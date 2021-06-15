@@ -1,8 +1,8 @@
-import { styledConfig, system, variant } from '@codecademy/gamut-styles';
+import { styledOptions, system, variant } from '@codecademy/gamut-styles';
 import { StyleProps, variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
 
-import { ButtonBase, ButtonBaseProps } from '../ButtonBase/ButtonBase';
+import { ButtonBase, ButtonSelectors } from '../ButtonBase/ButtonBase';
 
 export interface AnchorProps
   extends StyleProps<typeof anchorProps>,
@@ -18,7 +18,7 @@ const anchorVariants = variant({
     position: 'relative',
     textColor: 'primary',
     whiteSpace: 'nowrap',
-    '&:before': {
+    [ButtonSelectors.OUTLINE]: {
       position: 'absolute',
       inset: -4,
       borderRadius: '4px',
@@ -27,19 +27,16 @@ const anchorVariants = variant({
       opacity: 0,
       zIndex: 0,
     },
-    '&:hover, &:focus': {
+    [ButtonSelectors.HOVER]: {
       textDecoration: 'none',
       cursor: 'pointer',
     },
-    '&:disabled, &[disabled]': {
+    [ButtonSelectors.DISABLED]: {
       cursor: 'not-allowed',
       textDecoration: 'none',
-      color: 'gray-700',
+      color: 'text-disabled',
     },
-    '&:focus, &:focus-visible': {
-      outline: 'none',
-    },
-    '&:focus-visible:before': {
+    [ButtonSelectors.OUTLINE_FOCUS]: {
       opacity: 1,
     },
   },
@@ -47,20 +44,20 @@ const anchorVariants = variant({
     standard: {
       display: 'inline-block',
       textColor: 'primary',
-      '&:before': {
+      [ButtonSelectors.OUTLINE]: {
         content: "''",
       },
-      '&:hover, &:active': {
+      [ButtonSelectors.HOVER]: {
         textDecoration: 'underline',
       },
-      '&:focus-visible': {
+      [ButtonSelectors.FOCUS]: {
         textColor: 'text',
       },
     },
     inline: {
       whiteSpace: 'initial',
       textDecoration: 'underline',
-      '&:focus-visible': {
+      [ButtonSelectors.FOCUS]: {
         outline: 'currentColor auto 4px',
         textDecoration: 'underline',
       },
@@ -69,7 +66,7 @@ const anchorVariants = variant({
       display: 'inline-block',
       textColor: 'text',
       whiteSpace: 'initial',
-      '&:before': {
+      [ButtonSelectors.OUTLINE]: {
         content: "''",
       },
     },
@@ -82,14 +79,12 @@ const anchorProps = variance.compose(
   system.space
 );
 
-export const AnchorBase = styled('a', styledConfig)<AnchorProps>(
+export const AnchorBase = styled('a', styledOptions<'a'>())<AnchorProps>(
   anchorVariants,
   anchorProps
 );
 
-export const Anchor = AnchorBase.withComponent(
-  ButtonBase as ButtonBaseProps<AnchorProps>
-);
+export const Anchor = AnchorBase.withComponent(ButtonBase);
 
 Anchor.defaultProps = {
   variant: 'inline',

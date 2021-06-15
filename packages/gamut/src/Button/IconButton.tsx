@@ -12,6 +12,7 @@ const IconButtonInner = createButtonComponent(
 
 export interface IconButtonProps extends ButtonProps {
   children?: never;
+  'aria-label': string;
   icon: React.ComponentType<GamutIconProps>;
 }
 

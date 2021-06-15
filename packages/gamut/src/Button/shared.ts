@@ -1,7 +1,7 @@
 import {
   ColorModes,
   modeColorProps,
-  styledConfig,
+  styledOptions,
   system,
   transitionConcat,
 } from '@codecademy/gamut-styles';
@@ -14,9 +14,9 @@ import {
 import styled from '@emotion/styled';
 import { ComponentProps } from 'react';
 
-import { ButtonBase } from '../ButtonBase/ButtonBase';
+import { ButtonBase, ButtonSelectors } from '../ButtonBase/ButtonBase';
 
-export const config = styledConfig(['size', 'variant']);
+export const config = styledOptions<'button', 'size'>(['size']);
 
 export const buttonProps = variance.compose(
   system.layout,
@@ -40,15 +40,6 @@ export const templateVariants = <Variant extends string, Styles>(
 
 export const buttonVariants = ['primary', 'secondary', 'danger'] as const;
 
-export enum ButtonSelectors {
-  OUTLINE = '&:before',
-  OUTLINE_FOCUS = '&:focus-visible:before',
-  HOVER = '&:hover',
-  ACTIVE = '&:active',
-  FOCUS = ' &:focus-visible',
-  DISABLED = "&:disabled, &[aria-disabled='true']",
-}
-
 export const buttonStyles = system.css({
   position: 'relative',
   fontWeight: 'title',
@@ -64,9 +55,6 @@ export const buttonStyles = system.css({
     'fast',
     'ease-in'
   ),
-  '&:focus': {
-    outline: 'none',
-  },
   [ButtonSelectors.DISABLED]: {
     cursor: 'not-allowed',
     userSelect: 'none',
@@ -98,7 +86,7 @@ export interface ButtonProps
 export const createButtonComponent = <P>(
   ...args: (<T extends ThemeProps>(props: T) => CSSObject)[]
 ) =>
-  styled(ButtonBase, config)<ButtonProps & P>(
+  styled(ButtonBase)<ButtonProps & P>(
     modeColorProps,
     buttonStyles,
     ...args,
