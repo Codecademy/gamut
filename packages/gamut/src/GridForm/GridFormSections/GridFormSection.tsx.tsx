@@ -1,6 +1,5 @@
 import React from 'react';
 
-import { FileDownloadIcon } from '../../../../gamut-icons/dist';
 import { GridFormField } from '../types';
 import { GridFormQuestion } from './GridFormQuestion';
 

@@ -146,9 +146,3 @@ export type GridFormSectionType = GridFormSectionTitleBaseProps & {
 };
 
 export type GridFormFieldsProps = GridFormField | GridFormSectionType;
-
-export const isGridFormSection = (
-  field: GridFormField | GridFormSectionType
-): field is GridFormSectionType => {
-  return (field as GridFormSectionType).title !== undefined;
-};

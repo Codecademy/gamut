@@ -24,7 +24,7 @@ const defaultColumnGap = {
   sm: 32,
 } as const;
 
-export const isGridFormSection = (
+const isGridFormSection = (
   field: GridFormField | GridFormSectionType
 ): field is GridFormSectionType => {
   return (field as GridFormSectionType).title !== undefined;
