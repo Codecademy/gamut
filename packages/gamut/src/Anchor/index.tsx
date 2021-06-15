@@ -10,6 +10,7 @@ export interface AnchorProps
 
 const anchorVariants = variant({
   base: {
+    display: 'inline-block',
     bg: 'transparent',
     boxShadow: 'none',
     border: 'none',
@@ -19,6 +20,7 @@ const anchorVariants = variant({
     textColor: 'primary',
     whiteSpace: 'nowrap',
     [ButtonSelectors.OUTLINE]: {
+      content: "''",
       position: 'absolute',
       inset: -4,
       borderRadius: '4px',
@@ -42,11 +44,7 @@ const anchorVariants = variant({
   },
   variants: {
     standard: {
-      display: 'inline-block',
       textColor: 'primary',
-      [ButtonSelectors.OUTLINE]: {
-        content: "''",
-      },
       [ButtonSelectors.HOVER]: {
         textDecoration: 'underline',
       },
@@ -55,20 +53,20 @@ const anchorVariants = variant({
       },
     },
     inline: {
+      display: 'inline',
       whiteSpace: 'initial',
       textDecoration: 'underline',
+      [ButtonSelectors.OUTLINE]: {
+        display: 'none',
+      },
       [ButtonSelectors.FOCUS]: {
         outline: 'currentColor auto 4px',
         textDecoration: 'underline',
       },
     },
     interface: {
-      display: 'inline-block',
       textColor: 'text',
       whiteSpace: 'initial',
-      [ButtonSelectors.OUTLINE]: {
-        content: "''",
-      },
     },
   },
 });
