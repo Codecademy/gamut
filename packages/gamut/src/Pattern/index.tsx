@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
-import React from 'react';
+import React, { ComponentProps } from 'react';
 
-import { Box, BoxProps } from '../Box';
+import { Box } from '../Box';
 import { defs } from './defs';
 
 export type PatternName =
@@ -13,7 +13,7 @@ export type PatternName =
   | 'checkerDense'
   | 'dotLoose';
 
-export interface PatternProps extends BoxProps {
+export interface PatternProps extends ComponentProps<typeof Box> {
   name: PatternName;
 }
 

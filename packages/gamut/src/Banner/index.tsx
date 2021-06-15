@@ -1,7 +1,7 @@
 import { MiniDeleteIcon } from '@codecademy/gamut-icons';
-import { Background, system } from '@codecademy/gamut-styles';
+import { Background, BackgroundProps, system } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
-import React, { HTMLProps, useMemo } from 'react';
+import React, { useMemo } from 'react';
 
 import { Box } from '../Box';
 import { IconButton, TextButton } from '../Button';
@@ -9,10 +9,7 @@ import { Markdown } from '../Markdown';
 
 export type BannerVariants = 'navy' | 'yellow';
 
-export interface BannerProps
-  extends Omit<HTMLProps<HTMLDivElement>, 'as' | 'ref'> {
-  className?: string;
-  /** Markdown content */
+export interface BannerProps extends Omit<BackgroundProps, 'bg'> {
   children: string;
   /** Visual variations for banners */
   variant?: BannerVariants;
@@ -69,7 +66,7 @@ export const Banner: React.FC<BannerProps> = ({
   );
 
   return (
-    <BannerContainer bg={variant} {...rest}>
+    <BannerContainer {...rest} bg={variant}>
       <Box gridArea="content" fontSize="inherit">
         <BannerMarkdown
           overrides={overrides}
