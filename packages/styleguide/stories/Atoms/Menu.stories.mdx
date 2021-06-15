@@ -1,10 +1,4 @@
-import {
-  GridBox,
-  Menu,
-  MenuButton,
-  MenuItem,
-  MenuSeparator,
-} from '@codecademy/gamut';
+import { GridBox, Menu, MenuItem, MenuSeparator } from '@codecademy/gamut';
 import { ColorMode } from '@codecademy/gamut-styles';
 import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
@@ -23,31 +17,66 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
   args={{}}
 />
 
+## Variants
+
+<Story name="Variants">
+  <Menu variant="select">
+    <MenuItem href="hello world">Link</MenuItem>
+    <MenuItem active>Item</MenuItem>
+    <MenuSeparator />
+    <MenuItem>Item</MenuItem>
+    <MenuItem>Cool beans!</MenuItem>
+  </Menu>
+  <Menu variant="action">
+    <MenuItem href="hello world">Link</MenuItem>
+    <MenuItem active>Item</MenuItem>
+    <MenuSeparator />
+    <MenuItem>Item</MenuItem>
+    <MenuItem>Cool beans!</MenuItem>
+  </Menu>
+  <Menu variant="navigation">
+    <MenuItem href="hello world">Link</MenuItem>
+    <MenuItem active>Item</MenuItem>
+    <MenuSeparator />
+    <MenuItem>Item</MenuItem>
+    <MenuItem>Cool beans!</MenuItem>
+  </Menu>
+</Story>
+
+## Spacing
+
+<Story name="Spacing">
+  <Menu spacing="normal">
+    <MenuItem href="hello world">Link</MenuItem>
+    <MenuItem active>Item</MenuItem>
+    <MenuSeparator />
+    <MenuItem>Item</MenuItem>
+    <MenuItem>Cool beans!</MenuItem>
+  </Menu>
+  <Menu spacing="condensed">
+    <MenuItem href="hello world">Link</MenuItem>
+    <MenuItem active>Item</MenuItem>
+    <MenuSeparator />
+    <MenuItem>Item</MenuItem>
+    <MenuItem>Cool beans!</MenuItem>
+  </Menu>
+</Story>
+
 <Canvas>
   <Story name="Menu">
     {(args) => (
       <GridBox gridTemplateColumns="repeat(3, max-content)">
         {['light', 'dark'].map((mode) => {
-          return [true, false].map((spacing) => {
-            return ['action', 'select', 'navigation'].map((type) => {
+          return ['normal', 'condensed'].map((spacing) => {
+            return ['action', 'select', 'navigation'].map((variant) => {
               return (
                 <ColorMode mode={mode} p={16}>
-                  <Menu condensed={spacing} type={type}>
-                    <MenuItem>
-                      <MenuButton onClick={() => {}}>Click me!</MenuButton>
-                    </MenuItem>
-                    <MenuItem>
-                      <MenuButton active onClick={() => {}}>
-                        Click me 2!
-                      </MenuButton>
-                    </MenuItem>
+                  <Menu spacing={spacing} variant={variant}>
+                    <MenuItem href="hello world">Link</MenuItem>
+                    <MenuItem active>Item</MenuItem>
                     <MenuSeparator />
-                    <MenuItem>
-                      <MenuButton onClick={() => {}}>Click me 3!</MenuButton>
-                    </MenuItem>
-                    <MenuItem>
-                      <MenuButton disabled>Nah don't click me</MenuButton>
-                    </MenuItem>
+                    <MenuItem>Item</MenuItem>
+                    <MenuItem>Cool beans!</MenuItem>
                   </Menu>
                 </ColorMode>
               );

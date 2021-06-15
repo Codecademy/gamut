@@ -1,12 +1,15 @@
 import React from 'react';
 
 export interface MenuContextProps {
-  condensed?: boolean;
-  type?: 'select' | 'navigation' | 'action';
+  spacing: 'normal' | 'condensed';
+  variant: 'select' | 'navigation' | 'action';
+  depth: number;
 }
 
 export const MenuContext = React.createContext<MenuContextProps>({
-  condensed: false,
+  spacing: 'normal',
+  variant: 'select',
+  depth: 0,
 });
 
 MenuContext.displayName = 'MenuContext';

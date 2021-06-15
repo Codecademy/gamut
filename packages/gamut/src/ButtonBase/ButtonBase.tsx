@@ -20,6 +20,14 @@ export type ButtonBaseProps<T> = React.ForwardRefExoticComponent<
   SafeButtonProps<T> & React.RefAttributes<ButtonBaseElements>
 >;
 
+export enum Selectors {
+  BEFORE = '&::before',
+  HOVER = '&:hover',
+  FOCUS = '&:focus',
+  DISABLED = '&[disabled], &:disabled',
+  FOCUS_VISIBLE = '&:focus-visible',
+}
+
 const reset = system.css({
   background: 'none',
   boxShadow: 'none',
@@ -29,10 +37,10 @@ const reset = system.css({
   fontSize: 'inherit',
   cursor: 'pointer',
   textDecoration: 'none',
-  '&:hover': {
+  [Selectors.HOVER]: {
     textDecoration: 'none',
   },
-  '&:focus': {
+  [Selectors.FOCUS]: {
     outline: 'none',
   },
 });
