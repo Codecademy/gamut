@@ -1,12 +1,15 @@
 import { styledOptions, system, variant } from '@codecademy/gamut-styles';
 import { StyleProps, variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
+import { HTMLProps } from 'react';
 
 import { ButtonBase, ButtonSelectors } from '../ButtonBase/ButtonBase';
 
 export interface AnchorProps
   extends StyleProps<typeof anchorProps>,
-    StyleProps<typeof anchorVariants> {}
+    StyleProps<typeof anchorVariants> {
+  onClick?: HTMLProps<HTMLAnchorElement>['onClick'];
+}
 
 const anchorVariants = variant({
   base: {

@@ -12,7 +12,7 @@ import {
   variance,
 } from '@codecademy/variance';
 import styled from '@emotion/styled';
-import { ComponentProps } from 'react';
+import { ComponentProps, HTMLProps } from 'react';
 
 import { ButtonBase, ButtonSelectors } from '../ButtonBase/ButtonBase';
 
@@ -77,6 +77,7 @@ export const buttonStyles = system.css({
 export interface ButtonProps
   extends ComponentProps<typeof ButtonBase>,
     StyleProps<typeof buttonProps> {
+  onClick?: HTMLProps<HTMLButtonElement>['onClick'];
   variant?: typeof buttonVariants[number];
   size?: 'normal' | 'small';
   as?: never;
