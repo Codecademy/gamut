@@ -13,8 +13,11 @@ const errorSpanVariants = variant({
     display: 'inline-block',
     fontSize: 'small',
   },
-  defaultVariant: 'absolute',
+  defaultVariant: 'initial',
   variants: {
+    initial: {
+      position: 'initial',
+    },
     absolute: {
       position: 'absolute',
     },
