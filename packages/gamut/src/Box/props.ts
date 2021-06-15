@@ -55,5 +55,4 @@ export interface BoxProps
     StyleProps<typeof sharedStates> {}
 
 export interface FlexBoxProps extends BoxProps, StyleProps<typeof flexStates> {}
-
 export interface GridBoxProps extends BoxProps, StyleProps<typeof gridStates> {}

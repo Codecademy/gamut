@@ -1,4 +1,4 @@
-import { pxRem, styledConfig, system, theme } from '@codecademy/gamut-styles';
+import { pxRem, styledOptions, system, theme } from '@codecademy/gamut-styles';
 import { StyleProps, variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
 import { pick } from 'lodash';
@@ -43,7 +43,7 @@ export interface LayoutGridProps extends StyleProps<typeof gridProps> {}
 
 export const LayoutGrid = styled(
   'div',
-  styledConfig(grid.propNames)
+  styledOptions(grid.propNames)
 )<LayoutGridProps>(
   system.css({
     display: 'grid',
