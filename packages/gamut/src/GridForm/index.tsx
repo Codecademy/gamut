@@ -101,7 +101,6 @@ export function GridForm<
   );
 
   const { handleSubmit, formState, ...methods } = useForm({
-    mode: validation,
     defaultValues: flatFields.reduce<any>(
       (defaultValues, field) => ({
         ...defaultValues,
@@ -109,6 +108,7 @@ export function GridForm<
       }),
       {}
     ),
+    mode: validation,
   });
 
   return (
