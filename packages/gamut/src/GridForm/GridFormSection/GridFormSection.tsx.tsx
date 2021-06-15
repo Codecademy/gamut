@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { FileDownloadIcon } from '../../../../gamut-icons/dist';
 import { GridFormField } from '../types';
 import { GridFormQuestion } from './GridFormQuestion';
 
@@ -15,7 +16,13 @@ export const GridFormSection: React.FC<GridFormSectionProps> = ({
   return (
     <>
       {fields.map((field) => {
-        return <GridFormQuestion field={field} showRequired={showRequired} />;
+        return (
+          <GridFormQuestion
+            field={field}
+            showRequired={showRequired}
+            key={field.name}
+          />
+        );
       })}
     </>
   );

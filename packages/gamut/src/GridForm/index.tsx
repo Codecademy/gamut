@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { FormProvider, Mode, SubmitHandler, useForm } from 'react-hook-form';
 
 import { TextButtonProps } from '../Button';
@@ -113,7 +113,7 @@ export function GridForm<
             {fields.map((field) => {
               if (isGridFormSection(field)) {
                 return (
-                  <>
+                  <Fragment key={field.title}>
                     <GridFormSectionTitle
                       title={field.title}
                       layout={field.layout}
@@ -124,11 +124,15 @@ export function GridForm<
                       showRequired={showRequired}
                     />
                     <GridFormSectionBreak />
-                  </>
+                  </Fragment>
                 );
               }
               return (
-                <GridFormQuestion field={field} showRequired={showRequired} />
+                <GridFormQuestion
+                  field={field}
+                  showRequired={showRequired}
+                  key={field.name}
+                />
               );
             })}
           </>
