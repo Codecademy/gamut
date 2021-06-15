@@ -3,6 +3,56 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [41.7.7](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@41.7.6...@codecademy/styleguide@41.7.7) (2021-06-14)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [41.7.6](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@41.7.5...@codecademy/styleguide@41.7.6) (2021-06-14)
+
+
+### Bug Fixes
+
+* DocContainer Types ([1c88775](https://github.com/Codecademy/client-modules/commit/1c88775e6e8fbadd97cd51343b0105b4dbb07761))
+
+
+
+### [41.7.5](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@41.7.4...@codecademy/styleguide@41.7.5) (2021-06-11)
+
+
+### Bug Fixes
+
+* Fix story link scrolling and breadcrumbs spacing ([8b5424c](https://github.com/Codecademy/client-modules/commit/8b5424c7ecf6e349876d8dc16b2471cd51528e93))
+
+
+
+### [41.7.4](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@41.7.3...@codecademy/styleguide@41.7.4) (2021-06-11)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [41.7.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@41.7.2...@codecademy/styleguide@41.7.3) (2021-06-11)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [41.7.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@41.7.1...@codecademy/styleguide@41.7.2) (2021-06-11)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
 ### [41.7.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@41.7.0...@codecademy/styleguide@41.7.1) (2021-06-10)
 
 **Note:** Version bump only for package @codecademy/styleguide

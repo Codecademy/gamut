@@ -3,6 +3,33 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [34.6.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@34.6.0...@codecademy/gamut@34.6.1) (2021-06-14)
+
+
+### Bug Fixes
+
+* revert "fix: clear errors on input change in GridForm" ([fbee690](https://github.com/Codecademy/client-modules/commit/fbee690400956dfa09a5bf6e7ac7f2739f13f77b)), closes [Codecademy/client-modules#1815](https://github.com/Codecademy/client-modules/issues/1815)
+
+
+
+## [34.6.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@34.5.2...@codecademy/gamut@34.6.0) (2021-06-11)
+
+
+### Features
+
+* enable @typescript-eslint/prefer-optional-chain ([ddb0f57](https://github.com/Codecademy/client-modules/commit/ddb0f57d94d7dd414b1ca3ee50903c16e8e6a593))
+
+
+
+### [34.5.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@34.5.1...@codecademy/gamut@34.5.2) (2021-06-11)
+
+
+### Bug Fixes
+
+* clear errors on input change in GridForm ([a131021](https://github.com/Codecademy/client-modules/commit/a131021e2d1e7f396f79012a749b0ca6775c83f5))
+
+
+
 ### [34.5.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@34.5.0...@codecademy/gamut@34.5.1) (2021-06-10)
 
 

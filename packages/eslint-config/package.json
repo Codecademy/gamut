@@ -1,6 +1,6 @@
 {
   "name": "@codecademy/eslint-config",
-  "version": "5.1.0",
+  "version": "5.2.0",
   "description": "Shared ESLint config for Codecademy",
   "main": "index.js",
   "bin": {
