@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@5.1.2...@codecademy/gamut-icons@5.2.0) (2021-06-15)
+
+
+### Features
+
+* **props:** Support `color` and other HTML attributes as system props without type collision GM-247 ([50a8b43](https://github.com/Codecademy/client-modules/commit/50a8b43b27eff2d75307d317d724383156e5a3ed))
+
+
+
 ### [5.1.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@5.1.1...@codecademy/gamut-icons@5.1.2) (2021-06-10)
 
 **Note:** Version bump only for package @codecademy/gamut-icons

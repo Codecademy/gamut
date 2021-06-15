@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [34.7.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@34.6.2...@codecademy/gamut@34.7.0) (2021-06-15)
+
+
+### Features
+
+* **props:** Support `color` and other HTML attributes as system props without type collision GM-247 ([50a8b43](https://github.com/Codecademy/client-modules/commit/50a8b43b27eff2d75307d317d724383156e5a3ed))
+
+
+
 ### [34.6.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@34.6.1...@codecademy/gamut@34.6.2) (2021-06-15)
 
 **Note:** Version bump only for package @codecademy/gamut

@@ -1,4 +1,4 @@
-import { styledConfig, system, variant } from '@codecademy/gamut-styles';
+import { styledOptions, system, variant } from '@codecademy/gamut-styles';
 import { StyleProps, variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
 
@@ -64,7 +64,7 @@ export interface ColumnProps extends ColumnVariantProps, ColumnStyleProps {}
 
 export const Column = styled(
   'div',
-  styledConfig(columnProps.propNames)
+  styledOptions(columnProps.propNames)
 )<ColumnProps>(columnProps({ size: 12 }), columnVariants, columnProps);
 
 Column.defaultProps = { variant: 'fitContent' };
