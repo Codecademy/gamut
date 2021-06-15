@@ -19,10 +19,10 @@ export const GridFormSweetContainerInput: React.FC<GridFormSweetContainerInputPr
   return (
     <Box
       height="0"
-      left="100vw"
+      left="0"
       overflow="hidden"
-      position="absolute"
-      top="100vh"
+      position="fixed"
+      top="0"
       width="0"
     >
       <label htmlFor={name}>{label}</label>
