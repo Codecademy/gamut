@@ -3,14 +3,14 @@ import {
   ArrowChevronDownFilledIcon,
   MiniKebabMenuIcon,
 } from '@codecademy/gamut-icons';
-import { pxRem, styledConfig } from '@codecademy/gamut-styles';
+import { pxRem, styledOptions } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React, { useRef, useState } from 'react';
 
 import { Popover } from '../Popover';
 import { DropdownItem, DropdownList } from './DropdownList';
 
-const DownArrow = styled(ArrowChevronDownFilledIcon, styledConfig)<{
+const DownArrow = styled(ArrowChevronDownFilledIcon, styledOptions)<{
   isOpen?: boolean;
 }>`
   margin-left: ${pxRem(8)};
