@@ -58,6 +58,7 @@ export const MenuButton = React.forwardRef<
     <MenuLink
       disabled={active || disabled}
       active={active}
+      navlink={type === 'navigation'}
       {...props}
       ref={ref}
     />

@@ -82,10 +82,6 @@ export const MenuLink = styled(ButtonBase)<MenuLinkProps>(
     },
   }),
   system.states({
-    active: {
-      fontWeight: 700,
-      borderColorLeft: 'secondary',
-    },
     navlink: {
       borderColor: 'transparent',
       [Selectors.BEFORE]: {
@@ -95,6 +91,10 @@ export const MenuLink = styled(ButtonBase)<MenuLinkProps>(
         borderStyleLeft: 'solid',
         borderColorLeft: 'inherit',
       },
+    },
+    active: {
+      fontWeight: 700,
+      borderColorLeft: 'secondary',
     },
   }),
   menuItemProps
