@@ -20,7 +20,7 @@ import {
 } from './stubs';
 
 describe('GridForm', () => {
-  it('submits the form when all inputs are  completely filled out', async () => {
+  it('submits the form when all inputs are filled out', async () => {
     const fields = [stubCheckboxField, stubSelectField, stubTextField];
     const api = createPromise<{}>();
     const onSubmit = async (values: {}) => api.resolve(values);
