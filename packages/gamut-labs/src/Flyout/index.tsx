@@ -11,7 +11,6 @@ export const transitionDuration = 0.35;
 const flyoutStyles = variance.compose(
   system.background,
   system.border,
-  system.color,
   system.flex,
   system.grid,
   system.layout,
