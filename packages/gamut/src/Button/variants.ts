@@ -19,8 +19,8 @@ export const fillButtonVariants = templateVariants(
       color: 'background',
     },
     [ButtonSelectors.DISABLED]: {
-      color: 'background-disabled',
-      bg: 'text-disabled',
+      color: 'text-disabled',
+      bg: 'background-disabled',
     },
   })
 );
@@ -63,7 +63,7 @@ export const strokeButtonVariants = templateVariants(
       color: 'background',
     },
     [ButtonSelectors.DISABLED]: {
-      borderColor: 'text-disabled',
+      borderColor: 'background-disabled',
       color: 'text-disabled',
       bg: 'transparent',
     },
@@ -93,7 +93,8 @@ export const ctaButtonVariants = templateVariants(['primary'], (variant) => ({
   },
   [ButtonSelectors.DISABLED]: {
     boxShadow: 'none',
-    bg: 'text-disabled',
+    color: 'text-disabled',
+    bg: 'background-disabled',
   },
 }));
 
