@@ -1,10 +1,9 @@
 import { MiniArrowDownIcon } from '@codecademy/gamut-icons';
-import { system, timing } from '@codecademy/gamut-styles';
+import { themed, timing } from '@codecademy/gamut-styles';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import React from 'react';
 
-import { Anchor } from '../Anchor';
 import { Box } from '../Box';
 
 export type SkipToContentProps = {
@@ -12,31 +11,38 @@ export type SkipToContentProps = {
   contentId: string;
 };
 
-const SkipToContentLink = styled(Anchor)(
-  system.css({
-    fontWeight: 'title',
-    bg: 'background',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    opacity: 0,
-    position: 'absolute',
-    width: '12rem',
-    p: 16,
-    transform: 'translate(-50%, -100%)',
-    top: 0,
-    left: 0.5,
-    zIndex: ({ elements }) => elements.headerZ,
-    transition: `all ${timing.fast} cubic-bezier(0.075, 0.82, 0.165, 1)`,
-    '&:hover': {
-      textDecoration: 'none',
-    },
-    '&:focus-visible': {
-      opacity: 1,
-      transform: `translate(-50%, 1rem)`,
-    },
-  })
-);
+const animateFunction = `cubic-bezier(0.075, 0.82, 0.165, 1)`;
+
+const SkipToContentLink = styled.a`
+  color: ${themed('colors.navy')};
+  background-color: ${themed('colors.white')};
+  cursor: pointer;
+  display: flex;
+  font-weight: ${themed('fontWeight.title')};
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  padding: ${themed('spacing.24')} ${themed('spacing.16')};
+  position: absolute;
+  text-decoration: none;
+  transform: translate(-50%, -100%);
+  top: 0;
+  left: 50%;
+  z-index: calc(${themed('elements.headerZ')} + 1);
+  width: 12rem;
+  transition: opacity ${timing.fast} ${animateFunction},
+    transform ${timing.fast} ${animateFunction};
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  &:focus {
+    outline-color: ${themed('colors.hyper')};
+    opacity: 1;
+    transform: translate(-50%, 1rem);
+  }
+`;
 
 export const SkipToContent: React.FC<SkipToContentProps> = ({
   contentId,
@@ -69,7 +75,6 @@ export const SkipToContentTarget = styled.div(({ theme, children }) => {
     `;
   }
   return css`
-    color: ${theme.colors.text};
     margin-top: calc(${offset} * -1);
     position: absolute;
   `;
