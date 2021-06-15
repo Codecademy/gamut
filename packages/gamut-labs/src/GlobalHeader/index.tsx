@@ -104,6 +104,9 @@ const StyledBox = styled(Box)`
 export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
   const [isInHeaderRegion, setIsInHeaderRegion] = useState(true);
 
+  // it is not recommended to replicate this logic in other components unless absolutely necessary, as it is
+  // a workaround for style rehydration issues when using react-use/useWindowScroll. The reasoning behind this
+  // workaround is discussed here: https://github.com/Codecademy/client-modules/pull/1822#discussion_r650125406
   useEffect(() => {
     const checkScroll = () => setIsInHeaderRegion(window?.pageYOffset === 0);
     checkScroll();
