@@ -14,7 +14,7 @@ import {
 import {
   GridFormField,
   GridFormFieldsProps,
-  GridFormSectionType,
+  GridFormSectionProps,
 } from './types';
 
 export * from './types';
@@ -25,9 +25,9 @@ const defaultColumnGap = {
 } as const;
 
 const isGridFormSection = (
-  field: GridFormField | GridFormSectionType
-): field is GridFormSectionType => {
-  return (field as GridFormSectionType).title !== undefined;
+  field: GridFormField | GridFormSectionProps
+): field is GridFormSectionProps => {
+  return (field as GridFormSectionProps).title !== undefined;
 };
 
 export type GridFormProps<Values extends {}> = {

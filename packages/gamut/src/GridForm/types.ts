@@ -137,12 +137,12 @@ export type GridFormField =
 
 export type GridFormSectionTitleBaseProps = {
   title: string;
-  as?: any;
+  as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
   layout?: 'center' | 'left';
 };
 
-export type GridFormSectionType = GridFormSectionTitleBaseProps & {
+export type GridFormSectionProps = GridFormSectionTitleBaseProps & {
   fields: GridFormField[];
 };
 
-export type GridFormFieldsProps = GridFormField | GridFormSectionType;
+export type GridFormFieldsProps = GridFormField | GridFormSectionProps;
