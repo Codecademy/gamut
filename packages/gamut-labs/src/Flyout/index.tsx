@@ -11,7 +11,6 @@ export const transitionDuration = 0.35;
 const flyoutStyles = variance.compose(
   system.background,
   system.border,
-  system.color,
   system.flex,
   system.grid,
   system.layout,
@@ -48,10 +47,6 @@ type FlyoutProps = FlyoutStyleProps & {
    */
   initialExpanded?: boolean;
   /**
-   * data-testid for the components
-   */
-  testId?: string;
-  /**
    * width of the open drawer in rem
    */
   openWidth?: number;
@@ -71,7 +66,7 @@ type FlyoutProps = FlyoutStyleProps & {
   /**
    * A means of the parent method to get a reference to the closeFlyout function
    */
-  closeFlyoutRef?: React.MutableRefObject<Function>;
+  closeFlyoutRef?: React.MutableRefObject<Function | undefined>;
 };
 
 export const Flyout: React.FC<FlyoutProps> = ({
@@ -80,7 +75,6 @@ export const Flyout: React.FC<FlyoutProps> = ({
   initialExpanded,
   openFrom = 'left',
   openWidth = 30,
-  testId,
   clickOutsideDoesNotClose,
   escapeDoesNotClose,
   closeFlyoutRef,
@@ -102,7 +96,7 @@ export const Flyout: React.FC<FlyoutProps> = ({
     if (closeFlyoutRef) {
       closeFlyoutRef.current = closeFlyout;
       return () => {
-        closeFlyoutRef.current = () => {};
+        closeFlyoutRef.current = undefined;
       };
     }
   }, [closeFlyoutRef, closeFlyout]);
@@ -130,7 +124,6 @@ export const Flyout: React.FC<FlyoutProps> = ({
                 animate={{ x: 0 }}
                 exit={{ x: initialX }}
                 transition={{ duration: transitionDuration }}
-                data-testid={testId}
                 width={{ _: '75%', sm: `${openWidth}rem` }}
                 maxWidth={`${openWidth}rem`}
                 openFrom={openFrom}

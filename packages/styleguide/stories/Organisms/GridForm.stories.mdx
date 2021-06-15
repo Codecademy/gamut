@@ -230,20 +230,20 @@ We can use the `size` and `rowspan` props (borrowed from [LayoutGrid](https://re
           },
           {
             label: 'Simple text',
-            name: 'simple-text',
+            name: 'rowspan-simple-text',
             size: 3,
             type: 'text',
           },
           {
             defaultValue: 'yeet',
             label: 'Text with default value',
-            name: 'text-with-default',
+            name: 'text-with-default-formatting',
             size: 4,
             type: 'text',
           },
           {
             label: 'Simple select (required)',
-            name: 'simple-select',
+            name: 'simple-select-formatting',
             options: ['', 'One fish', 'Two fish', 'Red fish', 'Blue fish'],
             size: 5,
             type: 'select',
@@ -277,7 +277,7 @@ value of left, center, right, or stretch.
             fields={[
               {
                 label: 'Simple text',
-                name: 'simple-text',
+                name: 'right-sub-simple-text',
                 type: 'text',
               },
             ]}
@@ -295,7 +295,7 @@ value of left, center, right, or stretch.
             fields={[
               {
                 label: 'Simple text',
-                name: 'simple-text',
+                name: 'center-sub-simple-text',
                 type: 'text',
               },
             ]}
@@ -313,7 +313,7 @@ value of left, center, right, or stretch.
             fields={[
               {
                 label: 'Simple text',
-                name: 'simple-text',
+                name: 'left-sub-simple-text',
                 type: 'text',
               },
             ]}
@@ -331,7 +331,7 @@ value of left, center, right, or stretch.
             fields={[
               {
                 label: 'Simple text',
-                name: 'simple-text',
+                name: 'stretch-sub-simple-text',
                 type: 'text',
               },
             ]}
@@ -362,7 +362,7 @@ the [`FillButton`](/?path=/docs/atoms--fill) or [`CTAButton`](?path=/docs/atoms-
           fields={[
             {
               label: 'Simple text',
-              name: 'simple-text',
+              name: 'fill-button-simple-text',
               size: 6,
               type: 'text',
             },
@@ -379,7 +379,7 @@ the [`FillButton`](/?path=/docs/atoms--fill) or [`CTAButton`](?path=/docs/atoms-
           fields={[
             {
               label: 'Simple text',
-              name: 'simple-text',
+              name: 'cta-button-simple-text',
               size: 6,
               type: 'text',
             },
@@ -397,7 +397,7 @@ the [`FillButton`](/?path=/docs/atoms--fill) or [`CTAButton`](?path=/docs/atoms-
           fields={[
             {
               label: 'Simple text',
-              name: 'simple-text',
+              name: 'fill-dark-mode-simple-text',
               size: 6,
               type: 'text',
             },
@@ -415,7 +415,7 @@ the [`FillButton`](/?path=/docs/atoms--fill) or [`CTAButton`](?path=/docs/atoms-
           fields={[
             {
               label: 'Simple text',
-              name: 'simple-text',
+              name: 'cta-dark-mode-simple-text',
               size: 6,
               type: 'text',
             },
@@ -434,7 +434,7 @@ the [`FillButton`](/?path=/docs/atoms--fill) or [`CTAButton`](?path=/docs/atoms-
           fields={[
             {
               label: 'Simple text',
-              name: 'simple-text',
+              name: 'deprecated-simple-text',
               size: 6,
               type: 'text',
             },
@@ -568,14 +568,14 @@ their own inputs. We can specify a 'custom' field type to with a [render prop](h
               <FormGroup label="updog" width="100%">
                 <Input
                   error={!!error}
-                  id="custom-text-input"
+                  id="custom-text-group-input"
                   type="text"
                   onChange={(event) => setValue(event.target.value)}
                 />
               </FormGroup>
             ),
             label: 'Gimme two more swags',
-            name: 'custom-input',
+            name: 'custom-input-group',
             validation: {
               required: true,
               pattern: {
@@ -618,7 +618,7 @@ more details on why using placeholders is often bad.
           {
             label: 'Email',
             placeholder: 'Your email',
-            name: 'custom-input',
+            name: 'placeholder',
             type: 'email',
           },
         ]}
@@ -650,7 +650,7 @@ field's value in a parent component before onSubmit gets triggered.
             fields={[
               {
                 label: 'Text with onUpdate',
-                name: 'simple-text',
+                name: 'onUpdate-simple-text',
                 size: 3,
                 type: 'text',
                 onUpdate: setText,
@@ -730,7 +730,7 @@ See the [`Radio`](/?path=/docs/atoms-forminputs-radio--radio) story for an examp
                   'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
               },
               label: 'Preferred Modern Artist',
-              name: 'artist',
+              name: 'modern-artist',
               options: [
                 {
                   label: 'Taylor Swift',
@@ -755,7 +755,7 @@ See the [`Radio`](/?path=/docs/atoms-forminputs-radio--radio) story for an examp
               },
               label: 'End User License Agreement',
               description: 'I promise that I read it',
-              name: 'eula-checkbox-required',
+              name: 'eula-checkbox-required-agreement',
               size: 4,
               type: 'checkbox',
               validation: {
@@ -832,7 +832,7 @@ Hidden inputs can be used to include data that users can't see or modify with th
           },
           {
             label: "There's more than one field here!",
-            name: 'custom-input',
+            name: 'custom-hidden-input',
             type: 'email',
           },
         ]}

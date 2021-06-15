@@ -3,6 +3,55 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [41.7.11](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@41.7.10...@codecademy/styleguide@41.7.11) (2021-06-15)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [41.7.10](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@41.7.9...@codecademy/styleguide@41.7.10) (2021-06-15)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [41.7.9](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@41.7.8...@codecademy/styleguide@41.7.9) (2021-06-15)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [41.7.8](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@41.7.7...@codecademy/styleguide@41.7.8) (2021-06-15)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [41.7.7](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@41.7.6...@codecademy/styleguide@41.7.7) (2021-06-14)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [41.7.6](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@41.7.5...@codecademy/styleguide@41.7.6) (2021-06-14)
+
+
+### Bug Fixes
+
+* DocContainer Types ([1c88775](https://github.com/Codecademy/client-modules/commit/1c88775e6e8fbadd97cd51343b0105b4dbb07761))
+
+
+
 ### [41.7.5](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@41.7.4...@codecademy/styleguide@41.7.5) (2021-06-11)
 
 

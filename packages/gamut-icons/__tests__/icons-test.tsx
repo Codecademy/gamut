@@ -40,13 +40,6 @@ describe('Compiled gamut-icons:', () => {
     expect(svgEl.props().fill).toEqual('currentColor');
   });
 
-  it('Allows passing a custom color', () => {
-    const wrapper = mount(<AddIcon color="red" />);
-
-    const svgEl = wrapper.find('svg');
-    expect(svgEl.props().fill).toEqual('red');
-  });
-
   it('Allows passing a ref', () => {
     let ref: React.MutableRefObject<SVGSVGElement>;
     const RefIcon: React.FC<any> = () => {
