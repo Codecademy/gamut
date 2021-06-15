@@ -32,7 +32,7 @@ export const LayoutMenu: React.FC<LayoutMenuProps> = ({
 }) => {
   const closeFlyoutRef = useRef(() => {});
 
-  const closeFlyout = () => closeFlyoutRef.current();
+  const closeFlyout = () => closeFlyoutRef.current?.();
 
   const accordionMenuSections = sections.map((section) => (
     <AccordionMenu
