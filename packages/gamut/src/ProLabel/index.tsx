@@ -1,6 +1,6 @@
 import {
   ColorModes,
-  styledConfig,
+  styledOptions,
   system,
   useCurrentMode,
   variant,
@@ -40,11 +40,10 @@ const modeVariants = variant({
   },
 });
 
-const Svg = styled('svg', styledConfig)<ProLabelProps>(
-  placementVariants,
-  modeVariants,
-  logoStyles
-);
+const Svg = styled(
+  'svg',
+  styledOptions<'svg', 'placement'>(['placement'])
+)<ProLabelProps>(placementVariants, modeVariants, logoStyles);
 
 export const ProLabel: React.FC<React.ComponentProps<typeof Svg>> = ({
   mode,
