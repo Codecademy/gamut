@@ -18,7 +18,7 @@ import {
   positioning,
   space,
 } from './variance/props';
-import { styledConfig } from './variance/utils';
+import { styledOptions } from './variance/utils';
 
 export type Colors = keyof Theme['colors'];
 export type ColorModeConfig = Theme['modes'];
@@ -69,7 +69,10 @@ export function useCurrentMode(mode?: ColorModes) {
   return mode ?? activeMode;
 }
 
-export const VariableProvider = styled('div', styledConfig)<
+export const VariableProvider = styled(
+  'div',
+  styledOptions(['variables', 'alwaysSetVariables'])
+)<
   StyleProps<typeof providerProps> & {
     variables?: CSSObject;
     alwaysSetVariables?: boolean;

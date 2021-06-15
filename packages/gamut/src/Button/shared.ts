@@ -1,6 +1,6 @@
 import {
   colors,
-  styledConfig,
+  styledOptions,
   swatches,
   variant,
 } from '@codecademy/gamut-styles';
@@ -48,7 +48,7 @@ export const modeColorGroups = {
   },
 };
 
-export const config = styledConfig(['size']);
+export const config = styledOptions<'button' | 'a', 'size'>(['size']);
 
 export const buttonSizing = variant({
   prop: 'size',
