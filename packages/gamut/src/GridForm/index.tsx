@@ -10,8 +10,12 @@ import {
   GridFormSection,
   GridFormSectionBreak,
   GridFormSectionTitle,
-} from './GridFormSection';
-import { GridFormFieldsProps, isGridFormSection } from './types';
+} from './GridFormSections';
+import {
+  GridFormField,
+  GridFormFieldsProps,
+  GridFormSectionType,
+} from './types';
 
 export * from './types';
 
@@ -19,6 +23,12 @@ const defaultColumnGap = {
   _: 8,
   sm: 32,
 } as const;
+
+export const isGridFormSection = (
+  field: GridFormField | GridFormSectionType
+): field is GridFormSectionType => {
+  return (field as GridFormSectionType).title !== undefined;
+};
 
 export type GridFormProps<Values extends {}> = {
   children?: React.ReactNode;
