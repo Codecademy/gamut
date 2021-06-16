@@ -1,11 +1,23 @@
-import { WrappedGridFormContent } from '../../GridFormInputGroup/__fixtures__/renderers';
+import { setupEnzyme } from '@codecademy/gamut-tests';
 
-describe('GridFormContent', () => {
-  describe('when an id is passed as a prop', () => {
-    it('renders an input with the same id', () => {
-      const radioButtons = WrappedGridFormContent({});
+import { stubTextField } from '../../__tests__/stubs';
+import { GridFormContentTestComponent } from '../__fixtures__/renderers';
 
-      expect(radioButtons).toBeTruthy;
-    });
+const renderWrapper = setupEnzyme(GridFormContentTestComponent, {
+  field: stubTextField,
+  showRequired: false,
+});
+
+describe('<GridFormContent>', () => {
+  it('renders the field passed via props', () => {
+    const { wrapper } = renderWrapper();
+    const field = wrapper.find('input#stub-text');
+    expect(field).toBeTruthy;
+  });
+
+  it('gives that field access to formContext', () => {
+    const { wrapper } = renderWrapper();
+    const field = wrapper.find('input#stub-text');
+    expect(field).toBeTruthy;
   });
 });
