@@ -1,4 +1,4 @@
-import { BodyPortal, FocusTrap, IconButton } from '@codecademy/gamut';
+import { BodyPortal, Box, FocusTrap, IconButton } from '@codecademy/gamut';
 import { MiniDeleteIcon } from '@codecademy/gamut-icons';
 import { system, variant } from '@codecademy/gamut-styles';
 import { StyleProps, variance } from '@codecademy/variance';
@@ -14,7 +14,8 @@ const flyoutStyles = variance.compose(
   system.flex,
   system.grid,
   system.layout,
-  system.positioning
+  system.positioning,
+  system.color
 );
 
 const flyoutOpenVariants = variant({
