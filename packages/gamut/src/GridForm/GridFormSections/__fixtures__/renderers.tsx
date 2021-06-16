@@ -3,11 +3,18 @@ import { FormProvider, useForm } from 'react-hook-form';
 
 import { GridFormContent, GridFormContentProps } from '../GridFormContent';
 
-export const GridFormContentTestComponent: React.FC<GridFormContentProps> = ({
+type GridFormContentTestComponentProps = GridFormContentProps & {
+  mode?: 'onSubmit' | 'onChange';
+};
+
+export const GridFormContentTestComponent: React.FC<GridFormContentTestComponentProps> = ({
   field,
   showRequired,
+  mode = 'onSubmit',
 }) => {
-  const methods = useForm();
+  const methods = useForm({
+    mode,
+  });
 
   return (
     <FormProvider {...methods}>
