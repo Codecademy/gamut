@@ -5,6 +5,7 @@ import React, { useState } from 'react';
 import { SectionItemLink } from './SectionItemLink';
 import { SelectedSectionItem } from './SelectedSectionItem';
 
+// this is needed to add a few pixels of extra space for the left side of the focus-visible outline
 const leftPaddingForItem = 4;
 
 const StyledAccordionArea = styled(AccordionArea)`
