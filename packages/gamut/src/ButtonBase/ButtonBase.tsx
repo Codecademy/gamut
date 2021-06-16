@@ -18,7 +18,7 @@ export type ButtonBaseElementProps = HTMLProps<
 export enum ButtonSelectors {
   HOVER = '&:hover',
   ACTIVE = '&:active',
-  DISABLED = "&:disabled, &[aria-disabled='true']",
+  DISABLED = "[disabled], &:disabled, &[aria-disabled='true']",
   FOCUS = ' &:focus-visible',
   OUTLINE = '&:before',
   OUTLINE_FOCUS = '&:focus-visible:before',
@@ -53,7 +53,7 @@ export const ButtonBase = forwardRef<
     { href, disabled, children, as, role = 'button', type = 'button', ...rest },
     ref
   ) => {
-    if (href == null) {
+    if (href?.length === 0 || !href) {
       return (
         <ResetElement
           {...rest}
@@ -61,7 +61,7 @@ export const ButtonBase = forwardRef<
           as="button"
           type={type}
           role={role}
-          disabled={disabled}
+          disabled={!!disabled}
         >
           {children}
         </ResetElement>
@@ -74,8 +74,7 @@ export const ButtonBase = forwardRef<
         ref={ref as MutableRefObject<HTMLAnchorElement>}
         as="a"
         href={href}
-        disabled={disabled}
-        aria-disabled={disabled}
+        aria-disabled={!!disabled}
       >
         {children}
       </ResetElement>
