@@ -103,7 +103,7 @@ export function GridForm<
    * This is so we only add the correct aria-live props on the first error.
    */
   let pastFirstError = false;
-  const { isValid, isSubmitting, isValidating } = formState;
+  const { isValid, isSubmitting } = formState;
 
   return (
     <Form className={className} onSubmit={handleSubmit(onSubmit)} noValidate>
