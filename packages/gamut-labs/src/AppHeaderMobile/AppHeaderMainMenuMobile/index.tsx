@@ -90,8 +90,18 @@ export const AppHeaderMainMenuMobile: React.FC<AppHeaderMainMenuMobileProps> = (
     />
   ) : (
     <>
-      <MobileSearchBar onSearch={onSearch} />
-      {items.map((item) => mapItemToElement(item, action))}
+      {subMenuItem ? (
+        <AppHeaderSubMenuMobile
+          handleClose={closeSubMenu}
+          action={action}
+          item={subMenuItem}
+        />
+      ) : (
+        <>
+          <MobileSearchBar onSearch={onSearch} />
+          {items.map((item) => mapItemToElement(item, action))}
+        </>
+      )}
     </>
   );
 };

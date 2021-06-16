@@ -1,8 +1,7 @@
 import { Box } from '@codecademy/gamut';
 import { useTheme } from '@emotion/react';
 import cx from 'classnames';
-import React from 'react';
-import { useWindowScroll } from 'react-use';
+import React, { useEffect, useState } from 'react';
 
 import { AppHeader, AppHeaderMobile } from '..';
 import {
@@ -89,9 +88,17 @@ const getMobileAppHeaderItems = (
 };
 
 export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
-  const { y } = useWindowScroll();
+  const [isInHeaderRegion, setIsInHeaderRegion] = useState(true);
 
-  const isInHeaderRegion = y === 0;
+  // it is not recommended to replicate this logic in other components unless absolutely necessary, as it is
+  // a workaround for style rehydration issues when using react-use/useWindowScroll. The reasoning behind this
+  // workaround is discussed here: https://github.com/Codecademy/client-modules/pull/1822#discussion_r650125406
+  useEffect(() => {
+    const checkScroll = () => setIsInHeaderRegion(window?.pageYOffset === 0);
+    checkScroll();
+    document.addEventListener('scroll', checkScroll);
+    return () => document.removeEventListener('scroll', checkScroll);
+  }, []);
 
   const theme = useTheme();
 
