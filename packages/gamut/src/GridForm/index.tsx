@@ -103,6 +103,7 @@ export function GridForm<
    * This is so we only add the correct aria-live props on the first error.
    */
   let pastFirstError = false;
+  const { isValid, isSubmitting, isValidating } = formState;
 
   return (
     <Form className={className} onSubmit={handleSubmit(onSubmit)} noValidate>
@@ -134,7 +135,8 @@ export function GridForm<
           cancel={cancel}
           {...submit}
           disabled={
-            (validation === 'onChange' && !formState.isValid) || submit.disabled
+            (validation === 'onChange' && !isValid && !isSubmitting) ||
+            submit.disabled
           }
         />
         {children}
