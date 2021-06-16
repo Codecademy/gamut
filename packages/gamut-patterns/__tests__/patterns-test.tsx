@@ -1,13 +1,16 @@
 import { setupEnzyme } from '@codecademy/gamut-tests';
+import { matchers } from '@emotion/jest';
 
 import { DotLoose } from '../src/index';
 
 const renderWrapper = setupEnzyme(DotLoose);
 
-describe('Compiled gamut-icons:', () => {
-  it('Allows passing a custom color', () => {
-    const { wrapper } = renderWrapper({ color: 'red' });
+expect.extend(matchers);
 
-    expect(wrapper.find('svg').props().color).toEqual('red');
+describe('Compiled gamut-icons:', () => {
+  it('Allows passing a custom size', () => {
+    const { wrapper } = renderWrapper({ width: '100px' });
+
+    expect(wrapper.find('svg')).toHaveStyleRule('width', '100px');
   });
 });
