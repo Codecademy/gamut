@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [34.7.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@34.7.0...@codecademy/gamut@34.7.1) (2021-06-15)
+
+
+### Bug Fixes
+
+* ErrorSpan - switch to initial variant ([68541cd](https://github.com/Codecademy/client-modules/commit/68541cdbd01b509ce60a472b82dddfd37845a069))
+
+
+
 ## [34.7.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@34.6.2...@codecademy/gamut@34.7.0) (2021-06-15)
 
 
