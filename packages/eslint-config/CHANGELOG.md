@@ -3,6 +3,46 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.2.0](http://github.com///compare/@codecademy/eslint-config@5.1.0...@codecademy/eslint-config@5.2.0) (2021-06-11)
+
+
+### Features
+
+* enable @typescript-eslint/prefer-optional-chain ([ddb0f57](http://github.com///commit/ddb0f57d94d7dd414b1ca3ee50903c16e8e6a593))
+
+
+
+## [5.1.0](http://github.com///compare/@codecademy/eslint-config@5.0.1...@codecademy/eslint-config@5.1.0) (2021-05-12)
+
+
+### Features
+
+* disabled consistent-return ESLint rule ([f05fe92](http://github.com///commit/f05fe921e53e7a61af71bfb041017acff1e16c51))
+
+
+
+### [5.0.1](http://github.com///compare/@codecademy/eslint-config@5.0.0...@codecademy/eslint-config@5.0.1) (2021-05-10)
+
+
+### Bug Fixes
+
+* disable react/jsx-one-expression-per-line rule ([#1728](http://github.com//undefined/issues/1728)) ([4ad44d1](http://github.com///commit/4ad44d16def81a89cda9cc7501e81f8bdc158b39)), closes [#1727](http://github.com///issues/1727)
+
+
+
+## [5.0.0](http://github.com///compare/@codecademy/eslint-config@4.0.1...@codecademy/eslint-config@5.0.0) (2021-05-06)
+
+
+### ⚠ BREAKING CHANGES
+
+* bump eslint-config packages to latest
+
+### Features
+
+* bump eslint-config packages to latest ([0050197](http://github.com///commit/00501973d966e9a1c3b4ab3346b963686d944630))
+
+
+
 ### [4.0.1](http://github.com///compare/@codecademy/eslint-config@4.0.0...@codecademy/eslint-config@4.0.1) (2021-02-25)
 
 

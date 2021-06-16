@@ -1,4 +1,4 @@
-import { Box } from '@codecademy/gamut';
+import { Box, FlexBox } from '@codecademy/gamut';
 import styled from '@emotion/styled';
 import React from 'react';
 
@@ -21,7 +21,7 @@ type AppHeaderLinkButtonProps = { topSeparator: boolean };
 
 const SeparatorOuter = styled(Box)<AppHeaderLinkButtonProps>`
   border-top: ${({ theme, topSeparator }) =>
-    topSeparator ? `1px solid ${theme.colors['gray-400']}` : ''};
+    topSeparator ? `1px solid ${theme.colors['gray-600']}` : ''};
   margin-top: ${({ topSeparator }) => (topSeparator ? '0.5rem' : '')};
 `;
 
@@ -35,10 +35,6 @@ const AppHeaderLinkButtonOuter = styled.a`
   color: ${({ theme }) => theme.colors.navy};
   ${hoverStyles}
   ${focusStyles}
-`;
-
-const AppHeaderLinkButtonInner = styled(Box)`
-  white-space: nowrap;
 `;
 
 export const AppHeaderLinkMobile: React.FC<AppHeaderLinkMobileProps> = ({
@@ -57,20 +53,21 @@ export const AppHeaderLinkMobile: React.FC<AppHeaderLinkMobileProps> = ({
           onClick={(event) => action(event, item)}
           target={item.newTab ? 'blank' : ''}
         >
-          <AppHeaderLinkButtonInner
+          <FlexBox
             lineHeight="base"
             minWidth="0"
-            paddingY={16}
+            py={16}
+            whiteSpace="nowrap"
             textAlign="left"
             display="flex"
           >
             {Icon && (
-              <Box display="flex" alignContent="center" marginRight={16}>
+              <FlexBox alignContent="center" mr={16}>
                 <Icon size={24} aria-hidden />
-              </Box>
+              </FlexBox>
             )}
             {item.text}
-          </AppHeaderLinkButtonInner>
+          </FlexBox>
         </AppHeaderLinkButtonOuter>
       </SeparatorInner>
     </SeparatorOuter>

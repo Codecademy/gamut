@@ -1,3 +1,3 @@
-export * from './track';
-export * from './user';
-export * from './types';
+export * from './integrations';
+export { TrackingWindow } from './integrations/types';
+export * from './events';

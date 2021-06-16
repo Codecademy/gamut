@@ -1,3 +1,4 @@
+import { ReactNode } from 'react';
 import { UseFormMethods, ValidationRules } from 'react-hook-form';
 
 import { ColumnProps } from '../Layout';
@@ -23,6 +24,7 @@ export type BaseFormField<Value> = {
   name: string;
   onUpdate?: (value: Value) => void;
   size: ColumnProps['size'];
+  rowspan?: ColumnProps['rowspan'];
 };
 
 export type GridFormCheckboxField = BaseFormField<boolean> & {
@@ -36,7 +38,7 @@ export type GridFormCheckboxField = BaseFormField<boolean> & {
 export type GridFormCustomFieldProps = {
   className?: string;
   error?: string;
-  field: GridFormCustomField;
+  field: GridFormCustomField | GridFormCustomGroupField;
   register: UseFormMethods['register'];
   setValue: (value: any) => void;
 };
@@ -46,6 +48,13 @@ export type GridFormCustomField = BaseFormField<any> & {
   render: (props: GridFormCustomFieldProps) => React.ReactNode;
   validation?: ValidationRules;
   type: 'custom';
+};
+
+export type GridFormCustomGroupField = BaseFormField<any> & {
+  label?: React.ReactNode;
+  render: (props: GridFormCustomFieldProps) => React.ReactNode;
+  validation?: ValidationRules;
+  type: 'custom-group';
 };
 
 export type BasicInputType =
@@ -71,15 +80,16 @@ export type GridFormTextField = BaseFormField<string> & {
 };
 
 export type GridFormRadioOption = {
-  label: string;
+  label: ReactNode;
   value: string;
 };
 
 export type GridFormRadioGroupField = BaseFormField<string> & {
-  label: string;
+  label: ReactNode | string; // If this is a string, it will also be used as the aria-label.
   options: GridFormRadioOption[];
   validation?: ValidationRules;
   type: 'radio-group';
+  ariaLabel?: string;
 };
 
 export type GridFormSelectField = BaseFormField<string> & {
@@ -97,15 +107,30 @@ export type GridFormFileField = BaseFormField<FileList> & {
 
 export type GridFormTextAreaField = BaseFormField<string> & {
   label: React.ReactNode;
+  placeholder?: string;
   validation?: ValidationRules;
   type: 'textarea';
+};
+
+type HiddenField = Omit<BaseFormField<any>, 'size' | 'rowspan'>;
+
+export type GridFormHiddenField = HiddenField & {
+  type: 'hidden';
+};
+
+export type GridFormSweetContainerField = HiddenField & {
+  label: string;
+  type: 'sweet-container';
 };
 
 export type GridFormField =
   | GridFormCheckboxField
   | GridFormCustomField
+  | GridFormCustomGroupField
   | GridFormRadioGroupField
   | GridFormTextField
   | GridFormSelectField
   | GridFormFileField
-  | GridFormTextAreaField;
+  | GridFormTextAreaField
+  | GridFormHiddenField
+  | GridFormSweetContainerField;

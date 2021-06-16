@@ -1,7 +1,5 @@
-import { Anchor, Box, GridBox } from '@codecademy/gamut';
-import { ResponsiveProp } from '@codecademy/gamut-system';
+import { Anchor, Box, BoxProps, GridBox } from '@codecademy/gamut';
 import styled from '@emotion/styled';
-import * as CSS from 'csstype';
 import React from 'react';
 
 import { FooterHeading } from '../FooterHeading';
@@ -21,9 +19,9 @@ const MobileImageItem = styled(Box)();
 MobileImageItem.defaultProps = {
   as: 'li',
   display: 'inline-block',
-  marginY: 8,
+  my: 8,
   width: {
-    base: '50%',
+    _: '50%',
     md: '90%',
   },
 };
@@ -93,7 +91,16 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
             onClick={(event) => onClick({ event, target: 'jobs' })}
             variant="interface"
           >
-            We&apos;re Hiring
+            Careers
+          </Anchor>
+        </FooterLinkItem>
+        <FooterLinkItem>
+          <Anchor
+            href="/pages/codecademy-affiliate-program"
+            onClick={(event) => onClick({ event, target: 'affiliate_program' })}
+            variant="interface"
+          >
+            Affiliates
           </Anchor>
         </FooterLinkItem>
         {userGeo !== 'IN' && (
@@ -162,11 +169,9 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
       gridColumn="1 / 3"
       gridColumnEnd={{ sm: '1' }}
       gridRow={{ sm: '2 / 4' }}
-      paddingTop={{ sm: 32 }}
+      pt={{ sm: 32 }}
     >
-      <FooterHeading marginBottom={{ base: 8, sm: 16, lg: 0 }}>
-        Mobile
-      </FooterHeading>
+      <FooterHeading mb={{ _: 8, sm: 16, lg: 0 }}>Mobile</FooterHeading>
       <FooterLinkItems
         display={{ sm: 'flex' }}
         flexDirection={{ sm: 'column' }}
@@ -174,8 +179,9 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
         <MobileImageItem>
           <MobileImageLink
             href="https://itunes.apple.com/us/app/codecademy-go/id1376029326"
-            onClick={(event) => onClick({ event, target: '' })}
+            onClick={(event) => onClick({ event, target: 'apple_store' })}
             target="_blank"
+            rel="noopener"
           >
             <img
               alt="Download on the App Store"
@@ -188,8 +194,9 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
         <MobileImageItem>
           <MobileImageLink
             href="https://play.google.com/store/apps/details?id=com.ryzac.codecademygo"
-            onClick={(event) => onClick({ event, target: '' })}
+            onClick={(event) => onClick({ event, target: 'google_play' })}
             target="_blank"
+            rel="noopener"
           >
             <img
               alt="Get it on Google Play"
@@ -209,8 +216,8 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
       <FooterLinkItems>
         <FooterLinkItem>
           <Anchor
-            href="https://news.codecademy.com"
-            onClick={(event) => onClick({ event, target: '' })}
+            href="https://codecademy.com/resources/blog/"
+            onClick={(event) => onClick({ event, target: 'blog' })}
             variant="interface"
           >
             Blog
@@ -219,7 +226,7 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
         <FooterLinkItem>
           <Anchor
             href="/resources/cheatsheets/all"
-            onClick={(event) => onClick({ event, target: '' })}
+            onClick={(event) => onClick({ event, target: 'cheatsheets_home' })}
             variant="interface"
           >
             Cheatsheets
@@ -228,7 +235,7 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
         <FooterLinkItem>
           <Anchor
             href="/articles"
-            onClick={(event) => onClick({ event, target: '' })}
+            onClick={(event) => onClick({ event, target: 'articles' })}
             variant="interface"
           >
             Articles
@@ -238,8 +245,8 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
     </Box>
   );
 
-  const support = (display: ResponsiveProp<CSS.Properties['display']>) => (
-    <Box display={display} marginTop={{ sm: 16 }} order={{ sm: 3 }}>
+  const support = (display: BoxProps['display']) => (
+    <Box display={display} mt={{ sm: 16 }} order={{ sm: 3 }}>
       <FooterHeading>Support</FooterHeading>
       <FooterLinkItems>
         <FooterLinkItem>
@@ -258,18 +265,18 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
   return (
     <GridBox
       gridTemplateColumns={{
-        base: 'repeat(2, minmax(0, 1fr))',
+        _: 'repeat(2, minmax(0, 1fr))',
         sm: 'repeat(3, minmax(0, 1fr))',
       }}
     >
       {company}
       {resources}
-      {support({ base: 'unset', sm: 'none' })}
+      {support({ _: 'unset', sm: 'none' })}
       {community}
       {individualPlans}
       {enterprisePlans}
       {mobile}
-      {support({ base: 'none', sm: 'unset' })}
+      {support({ _: 'none', sm: 'unset' })}
     </GridBox>
   );
 };

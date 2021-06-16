@@ -37,7 +37,7 @@ const CatalogLinkArea = styled(FooterLinkItems)<{ variant?: 'fullHeight' }>`
   flex-wrap: wrap;
   margin-bottom: 1rem;
 
-  ${variant({ fullHeight: { maxHeight: { md: 'none' } } })}
+  ${variant({ variants: { fullHeight: { maxHeight: { md: 'none' } } } })}
 `;
 
 const CatalogFooterLinkItem = styled(FooterLinkItem)`
@@ -96,14 +96,14 @@ export const CatalogLinks: React.FC<CatalogLinksProps> = ({ onClick }) => {
   );
 
   const subjectsList = (
-    <Box width={{ base: '100%', md: '50%' }}>
+    <Box width={{ _: '100%', md: '50%' }}>
       <FooterSubHeading as="h3">Subjects</FooterSubHeading>
       <CatalogLinkArea variant="fullHeight">
         {subjects.map(([slug, text]) => (
           <CatalogFooterLinkItem key={slug}>
             <Anchor
               href={`/catalog/subject/${slug}`}
-              onClick={(event) => onClick({ event, target: '' })}
+              onClick={(event) => onClick({ event, target: slug })}
               variant="interface"
             >
               {text}
@@ -113,7 +113,7 @@ export const CatalogLinks: React.FC<CatalogLinksProps> = ({ onClick }) => {
         <CatalogFooterLinkItem aria-hidden>—</CatalogFooterLinkItem>
         <CatalogFooterLinkItem>
           <Anchor
-            href="/catalog/subject/all"
+            href="/catalog/all"
             onClick={(event) => onClick({ event, target: 'fullCatalog' })}
             variant="interface"
           >
@@ -145,17 +145,17 @@ export const CatalogLinks: React.FC<CatalogLinksProps> = ({ onClick }) => {
   return (
     <CatalogLinksContainer>
       <FooterHeading>Course Catalog</FooterHeading>
-      <Box display="flex" flexDirection={{ base: 'column', sm: 'row' }}>
+      <Box display="flex" flexDirection={{ _: 'column', sm: 'row' }}>
         <Box
-          display={{ base: 'block', md: 'none' }}
-          width={{ base: '100%', md: '50%' }}
+          display={{ _: 'block', md: 'none' }}
+          width={{ _: '100%', md: '50%' }}
         >
           {languagesList}
         </Box>
         {subjectsList}
         <Box
-          display={{ base: 'none', md: 'block' }}
-          width={{ base: '100%', md: '50%' }}
+          display={{ _: 'none', md: 'block' }}
+          width={{ _: '100%', md: '50%' }}
         >
           {languagesList}
         </Box>

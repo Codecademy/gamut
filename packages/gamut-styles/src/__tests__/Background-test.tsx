@@ -5,8 +5,7 @@ import { overArgs } from 'lodash';
 import React from 'react';
 
 import { Background } from '../Background';
-import { GamutContext } from '../GamutProvider';
-import { theme } from '../theme';
+import { coreTheme as theme } from '../themes';
 
 expect.extend(matchers);
 
@@ -14,11 +13,9 @@ function withThemeProvider<Props>(
   WrappedComponent: React.ComponentType<Props>
 ) {
   const WithBoundaryComponent: React.FC<Props> = (props) => (
-    <GamutContext.Provider value={{ hasCache: false, hasGlobals: false }}>
-      <ThemeProvider theme={theme}>
-        <WrappedComponent {...props} />
-      </ThemeProvider>
-    </GamutContext.Provider>
+    <ThemeProvider theme={theme}>
+      <WrappedComponent {...props} />
+    </ThemeProvider>
   );
 
   return WithBoundaryComponent;
@@ -34,10 +31,8 @@ const renderView = setupRtl(Background, {
 });
 
 const ActiveMode = () => {
-  const {
-    colorModes: { active },
-  } = useTheme();
-  return <div>{active}</div>;
+  const { mode } = useTheme();
+  return <div>{mode}</div>;
 };
 
 describe('Background', () => {
@@ -69,23 +64,6 @@ describe('Background', () => {
       'background-color',
       theme.colors.beige
     );
-
-    /** text color reset should be on the variable provisioner if needed */
-    expect(view.getByTestId('nested-content').parentElement).toHaveStyleRule(
-      'color',
-      theme.colors.text
-    );
-  });
-
-  it('does not change the color mode when contrasts do not conflict', () => {
-    const { view } = renderView({
-      bg: 'white',
-    });
-
-    // Grand parent
-    expect(
-      view.getByTestId('content').parentElement?.parentElement
-    ).not.toHaveStyleRule('color', theme.colors.text);
   });
 
   it('updates the theme context to the current mode', () => {

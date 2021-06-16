@@ -3,6 +3,249 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [11.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@11.2.0...@codecademy/gamut-styles@11.3.0) (2021-06-15)
+
+
+### Features
+
+* **props:** Support `color` and other HTML attributes as system props without type collision GM-247 ([50a8b43](https://github.com/Codecademy/client-modules/commit/50a8b43b27eff2d75307d317d724383156e5a3ed))
+
+
+
+## [11.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@11.1.0...@codecademy/gamut-styles@11.2.0) (2021-06-10)
+
+
+### Features
+
+* Navy scale + color alias changes GM-237 ([bf896dd](https://github.com/Codecademy/client-modules/commit/bf896dd3fcf0435ef557694740d96df38d12173b)), closes [#10162](https://github.com/Codecademy/client-modules/issues/10162)
+
+
+
+## [11.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@11.0.0...@codecademy/gamut-styles@11.1.0) (2021-06-10)
+
+
+### Features
+
+* **variance:** states boolean toggle styles GM-233 ([e463f0e](https://github.com/Codecademy/client-modules/commit/e463f0e77802a3565ddda4de2e14050372923678))
+
+
+
+## [11.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@10.2.1...@codecademy/gamut-styles@11.0.0) (2021-06-03)
+
+
+### ⚠ BREAKING CHANGES
+
+* release -kit-4.7
+
+### Features
+
+* release -kit-4.7 ([1066f7b](https://github.com/Codecademy/client-modules/commit/1066f7b87f5fc37d5595324953964945c3d2b082))
+
+
+
+### [10.2.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@10.2.0...@codecademy/gamut-styles@10.2.1) (2021-06-02)
+
+**Note:** Version bump only for package @codecademy/gamut-styles
+
+
+
+
+
+## [10.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@10.1.2...@codecademy/gamut-styles@10.2.0) (2021-05-27)
+
+
+### Features
+
+* Migrate final gamut-system docs + functions to variance [WEB-1413]  ([67c8651](https://github.com/Codecademy/client-modules/commit/67c8651dc4985dd656c8d488af4cf56ca21a813b))
+
+
+
+### [10.1.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@10.1.1...@codecademy/gamut-styles@10.1.2) (2021-05-25)
+
+
+### Bug Fixes
+
+* Use native focus-visible in addition to polyfill ([aefae8f](https://github.com/Codecademy/client-modules/commit/aefae8f6923438c459cb774293d637403df708a2))
+
+
+
+### [10.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@10.1.0...@codecademy/gamut-styles@10.1.1) (2021-05-24)
+
+
+### Bug Fixes
+
+* allow override of tooltip alignment ([3930e15](https://github.com/Codecademy/client-modules/commit/3930e158c7f430acabc5ac5d66ab19d2b1fe9b76))
+
+
+
+## [10.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@10.0.0...@codecademy/gamut-styles@10.1.0) (2021-05-18)
+
+
+### Features
+
+* **theme:** createTheme self containment ([59ddff7](https://github.com/Codecademy/client-modules/commit/59ddff7224cd8e0972212dd6ba1696f40ccac835)), closes [#666666](https://github.com/Codecademy/client-modules/issues/666666) [#666666](https://github.com/Codecademy/client-modules/issues/666666)
+
+
+
+## [10.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@9.9.0...@codecademy/gamut-styles@10.0.0) (2021-05-12)
+
+
+### ⚠ BREAKING CHANGES
+
+* use a sticky Box for GlobalHeader
+
+### Features
+
+* use a sticky Box for GlobalHeader ([dd8639e](https://github.com/Codecademy/client-modules/commit/dd8639ee6a6ce669912907a60646d1bd1f829ee1))
+
+
+
+## [9.9.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@9.8.1...@codecademy/gamut-styles@9.9.0) (2021-05-11)
+
+
+### Features
+
+* **Overlay:** Add inline option for locking the offset parent only [GM-225] ([53aed51](https://github.com/Codecademy/client-modules/commit/53aed5140d6043594844458e6fb71c79ddfb241e))
+
+
+
+### [9.8.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@9.8.0...@codecademy/gamut-styles@9.8.1) (2021-05-07)
+
+**Note:** Version bump only for package @codecademy/gamut-styles
+
+
+
+
+
+## [9.8.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@9.7.4...@codecademy/gamut-styles@9.8.0) (2021-05-05)
+
+
+### Features
+
+* **PageWrapper:** Extend stacking context reset element for pages with a background color ([0a22b34](https://github.com/Codecademy/client-modules/commit/0a22b3489625e524085ffd2076730e05b9a4d898))
+
+
+
+### [9.7.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@9.7.3...@codecademy/gamut-styles@9.7.4) (2021-05-04)
+
+**Note:** Version bump only for package @codecademy/gamut-styles
+
+
+
+
+
+### [9.7.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@9.7.2...@codecademy/gamut-styles@9.7.3) (2021-05-04)
+
+
+### Bug Fixes
+
+* **Props/Dialog/Button:** Prop Fixes for Button / Dialog ([9b03d03](https://github.com/Codecademy/client-modules/commit/9b03d0336f545f5107ba600a953f6f04edcf97da))
+
+
+
+### [9.7.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@9.7.1...@codecademy/gamut-styles@9.7.2) (2021-05-03)
+
+**Note:** Version bump only for package @codecademy/gamut-styles
+
+
+
+
+
+### [9.7.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@9.7.0...@codecademy/gamut-styles@9.7.1) (2021-04-30)
+
+
+### Bug Fixes
+
+* **Emotion:** Add mode and variant to base `shouldForwardProp` filters and keep static list of all system props ([19b34e4](https://github.com/Codecademy/client-modules/commit/19b34e40abf9bf1ec2a92f4828c734ec67ee879e))
+
+
+
+## [9.7.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@9.6.3...@codecademy/gamut-styles@9.7.0) (2021-04-29)
+
+
+### Features
+
+* **Buttons:** ColorModes + Props + Refactor + Refs Oh My! [GM-211] [REACH-856] [GM-192] ([c4643db](https://github.com/Codecademy/client-modules/commit/c4643db64d3684319f8d5fc6f68d05197ec1f61e))
+
+
+
+### [9.6.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@9.6.2...@codecademy/gamut-styles@9.6.3) (2021-04-28)
+
+**Note:** Version bump only for package @codecademy/gamut-styles
+
+
+
+
+
+### [9.6.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@9.6.1...@codecademy/gamut-styles@9.6.2) (2021-04-27)
+
+**Note:** Version bump only for package @codecademy/gamut-styles
+
+
+
+
+
+### [9.6.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@9.6.0...@codecademy/gamut-styles@9.6.1) (2021-04-26)
+
+
+### Bug Fixes
+
+* **ColorMode:** Ref Forarding for BG + ColorMode ([d2ded46](https://github.com/Codecademy/client-modules/commit/d2ded46456df895e0bfa58ac213c583c2ff934c1))
+
+
+
+## [9.6.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@9.5.6...@codecademy/gamut-styles@9.6.0) (2021-04-26)
+
+
+### Features
+
+* **Anchor:** Variance Migration + ColorMode [GM-203] ([d5ae675](https://github.com/Codecademy/client-modules/commit/d5ae6758c65a837066562eb0ed8b964176889148))
+
+
+
+### [9.5.6](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@9.5.5...@codecademy/gamut-styles@9.5.6) (2021-04-23)
+
+
+### Bug Fixes
+
+* cache constants missing ([de8094b](https://github.com/Codecademy/client-modules/commit/de8094bd0b21c671f75ae8b6a6b895260b66c2de))
+
+
+
+### [9.5.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@9.5.4...@codecademy/gamut-styles@9.5.5) (2021-04-23)
+
+
+### Bug Fixes
+
+* Add GamutProvider Tests and Remove .storybook from coverage ([87bbb73](https://github.com/Codecademy/client-modules/commit/87bbb737a0cd2a9f5430c65b44cd82071b186668))
+
+
+
+### [9.5.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@9.5.3...@codecademy/gamut-styles@9.5.4) (2021-04-22)
+
+**Note:** Version bump only for package @codecademy/gamut-styles
+
+
+
+
+
+### [9.5.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@9.5.2...@codecademy/gamut-styles@9.5.3) (2021-04-20)
+
+**Note:** Version bump only for package @codecademy/gamut-styles
+
+
+
+
+
+### [9.5.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@9.5.1...@codecademy/gamut-styles@9.5.2) (2021-04-19)
+
+
+### Bug Fixes
+
+* **Props:**  Adds alignment props to both grid and flex ([05a4f76](https://github.com/Codecademy/client-modules/commit/05a4f76044accaf07eebad2ed2047c13e62f407f))
+
+
+
 ### [9.5.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@9.5.0...@codecademy/gamut-styles@9.5.1) (2021-04-15)
 
 **Note:** Version bump only for package @codecademy/gamut-styles

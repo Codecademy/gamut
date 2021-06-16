@@ -1,22 +1,33 @@
-import { serializeTokens, variance } from '@codecademy/variance';
+import {
+  serializeTokens,
+  StyleProps,
+  ThemeProps,
+  variance,
+} from '@codecademy/variance';
 import { CSSObject, Theme, ThemeProvider, useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
-import { HTMLAttributes } from 'enzyme';
 import { mapValues } from 'lodash';
-import React, { useMemo } from 'react';
+import React, { ComponentProps, forwardRef, useMemo } from 'react';
 
 import {
   color,
+  css,
   flex,
   grid,
   layout,
   positioning,
   space,
 } from './variance/props';
-import { styledConfig } from './variance/utils';
+import { styledOptions } from './variance/utils';
+
+export type Colors = keyof Theme['colors'];
+export type ColorModeConfig = Theme['modes'];
+export type ColorModes = keyof ColorModeConfig;
+export type ColorModeShape = ColorModeConfig[ColorModes];
+export type ColorAlias = keyof ColorModeShape;
 
 export type ColorModeProps = {
-  mode: keyof Theme['colorModes']['modes'];
+  mode: ColorModes;
   bg?: keyof Theme['colors'];
   className?: string;
 };
@@ -30,28 +41,50 @@ export const providerProps = variance.compose(
   space
 );
 
-export type ProviderProps = Parameters<typeof providerProps>[0];
+export const modeColorProps = ({
+  theme,
+  mode,
+}: ThemeProps<{ mode?: ColorModes }>) => {
+  if (!theme || !mode || mode === theme?.mode) return {};
+  const { colors } = theme;
+  return serializeTokens(
+    mapValues(theme?.modes[mode], (color) => colors[color]),
+    'color',
+    theme
+  ).variables;
+};
 
-export interface VariableProviderProps
-  extends Omit<HTMLAttributes, keyof ProviderProps>,
-    ProviderProps {
-  variables?: CSSObject;
+export function useColorModes(): [
+  ColorModes,
+  ColorModeShape,
+  ColorModeConfig,
+  (color: Colors) => string
+] {
+  const { mode, modes, _getColorValue: getColorValue } = useTheme() || {};
+  return [mode, modes?.[mode], modes, getColorValue];
+}
+
+export function useCurrentMode(mode?: ColorModes) {
+  const [activeMode] = useColorModes();
+  return mode ?? activeMode;
 }
 
 export const VariableProvider = styled(
   'div',
-  styledConfig
-)<VariableProviderProps>(({ variables }) => variables, providerProps);
+  styledOptions(['variables', 'alwaysSetVariables'])
+)<
+  StyleProps<typeof providerProps> & {
+    variables?: CSSObject;
+    alwaysSetVariables?: boolean;
+  }
+>(({ variables }) => variables, css({ textColor: 'text' }), providerProps);
 
-export const ColorMode: React.FC<ColorModeProps & ProviderProps> = ({
-  mode,
-  ...rest
-}) => {
+export const ColorMode = forwardRef<
+  HTMLDivElement,
+  ColorModeProps & ComponentProps<typeof VariableProvider>
+>(({ mode, alwaysSetVariables, ...rest }, ref) => {
   const theme = useTheme();
-  const {
-    colorModes: { modes, active },
-    colors,
-  } = theme;
+  const { modes, mode: active, colors } = theme;
   const { variables } = useMemo(
     () =>
       serializeTokens(
@@ -62,12 +95,18 @@ export const ColorMode: React.FC<ColorModeProps & ProviderProps> = ({
     [colors, mode, modes, theme]
   );
   if (active === mode) {
-    return <VariableProvider {...rest} />;
+    return (
+      <VariableProvider
+        {...rest}
+        ref={ref}
+        variables={alwaysSetVariables ? variables : undefined}
+      />
+    );
   }
 
   return (
-    <ThemeProvider theme={{ colorModes: { modes, active: mode } }}>
-      <VariableProvider variables={variables} textColor="text" {...rest} />
+    <ThemeProvider theme={{ mode }}>
+      <VariableProvider variables={variables} {...rest} ref={ref} />
     </ThemeProvider>
   );
-};
+});

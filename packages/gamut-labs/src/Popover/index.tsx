@@ -27,7 +27,8 @@ const PopoverContainer = styled.div<StyleProps>`
 const RaisedDiv = styled.div<StyleProps>`
   z-index: 1;
   border-radius: 2px;
-  border: 1px ${({ outline }) => (outline ? 'solid' : 'none')} black;
+  border: 1px ${({ outline }) => (outline ? 'solid' : 'none')}
+    ${({ theme }) => theme.colors.secondary};
   background-color: ${({ theme }) => theme.colors.white};
   ${({ outline }) =>
     !outline &&
@@ -41,11 +42,11 @@ const Beak = styled.div<StyleProps>`
   border-${({ position }) => (position === 'below' ? 'left' : 'right')}:
     1px
     ${({ outline }) => (outline ? 'solid' : 'none')}
-    ${({ theme }) => theme.colors.black};
+    ${({ theme }) => theme.colors.secondary};
   border-${({ position }) => (position === 'below' ? 'top' : 'bottom')}:
     1px
     ${({ outline }) => (outline ? 'solid' : 'none')}
-    ${({ theme }) => theme.colors.black};
+    ${({ theme }) => theme.colors.secondary};
   background-color: ${({ theme }) => theme.colors.white};
   position: absolute;
   left: ${({ beak }) => beak === 'left' && '25px'};
@@ -213,12 +214,7 @@ export const Popover: React.FC<PopoverProps> = ({
           </RaisedDiv>
           {pattern && (
             <PatternContainer position={position} align={align}>
-              <Pattern
-                data-testid="popover-pattern"
-                name={pattern}
-                width="100%"
-                height="100%"
-              />
+              <Pattern data-testid="popover-pattern" name={pattern} fit />
             </PatternContainer>
           )}
         </PopoverContainer>

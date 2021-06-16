@@ -5,9 +5,8 @@ import {
   ProgressBar,
 } from '@codecademy/gamut/src';
 import title from '@codecademy/macros/lib/title.macro';
+import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
-
-import { PropsTable } from '~styleguide/blocks';
 
 import { bars } from './constants';
 
@@ -35,11 +34,13 @@ percentage label.
 <Canvas>
   <Story name="ProgressBar">
     {(args) => (
-      <LayoutGrid columnGap="sm" rowGap="sm">
+      <LayoutGrid gap={8}>
         {[0, 25, 50, 75, 100].map((percent) =>
           bars.map(({ size, variant }) => (
             <Column key={[percent, size, variant].join()} size={4}>
-              <ProgressBar size={size} percent={percent} variant={variant} />
+              <GridBox alignContent="center">
+                <ProgressBar size={size} percent={percent} variant={variant} />
+              </GridBox>
             </Column>
           ))
         )}
@@ -112,12 +113,7 @@ This is a variant of the ProgressBar that has a transparent background and "bord
     }}
   >
     {(args) => (
-      <GridBox
-        alignContent="center"
-        height="8rem"
-        backgroundColor="navy"
-        padding={32}
-      >
+      <GridBox alignContent="center" height="8rem" bg="navy" p={32}>
         <ProgressBar {...args} />
       </GridBox>
     )}
@@ -140,11 +136,9 @@ This is a variant of the ProgressBar that has a transparent background and "bord
       <GridBox
         alignContent="center"
         height="8rem"
-        backgroundColor="palePink"
-        borderColor="navy"
-        borderStyle="solid"
-        borderWidth="1px"
-        padding={32}
+        bg="palePink"
+        border={1}
+        p={32}
       >
         <ProgressBar {...args} />
       </GridBox>
@@ -164,15 +158,7 @@ This is a variant of the ProgressBar that has a transparent background and "bord
     }}
   >
     {(args) => (
-      <GridBox
-        alignContent="center"
-        height="8rem"
-        backgroundColor="navy"
-        borderColor="navy"
-        borderStyle="solid"
-        borderWidth="1px"
-        padding={32}
-      >
+      <GridBox alignContent="center" height="8rem" bg="navy" border={1} p={32}>
         <ProgressBar {...args} />
       </GridBox>
     )}

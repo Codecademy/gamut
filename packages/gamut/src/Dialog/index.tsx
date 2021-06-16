@@ -1,120 +1,22 @@
 import { MiniDeleteIcon } from '@codecademy/gamut-icons';
-import { pxRem, variant } from '@codecademy/gamut-styles';
-import { css } from '@emotion/react';
+import { system } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
-import React from 'react';
+import React, { ComponentProps } from 'react';
 
-import { Box, FlexBox } from '../Box';
+import { Box } from '../Box';
 import { FillButton, IconButton, TextButton } from '../Button';
+import { FloatingCard } from '../FloatingCard/FloatingCard';
 import { Overlay, OverlayProps } from '../Overlay';
-import { Pattern } from '../Pattern';
-import { VisualTheme } from '../theming/VisualTheme';
+import { Text } from '../Typography';
 
-const modes = variant({
-  prop: 'mode',
-  variants: {
-    light: {
-      textColor: 'navy',
-      backgroundColor: 'white',
-      borderColor: 'navy',
-    },
-    dark: {
-      textColor: 'white',
-      backgroundColor: 'navy',
-      borderColor: 'white',
-    },
-  },
-});
-
-/** These effects should be moved to theme */
-const shroudColor = {
-  dark: 'rgba(0,0,0, .75)',
-  light: 'rgba(255, 255, 255, 0.95)',
-};
-
-const ShroudedOverlay = styled(Overlay)<{ mode?: VisualTheme }>(
-  ({ mode = 'light' }) => `
-  background-color: ${shroudColor[mode]};
-`
-);
-
-const ModalWrapper = styled.div(modes, ({ theme }) => {
-  return css`
-    position: relative;
-    z-index: 1;
-    max-width: calc(100vw - ${theme.spacing[32]});
-    width: ${pxRem(400)};
-    border-width: 1px;
-    border-style: solid;
-    border-radius: 2px;
-  `;
-});
-
-/** This will need to be consolidated with Card / CoachMark / Toast  */
-const ModalShadow = styled(Pattern)(
-  ({ theme }) => css`
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: ${theme.spacing[8]};
-    left: -${theme.spacing[8]};
-  `
-);
-
-const ModalForeground = styled.div`
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-`;
-
-const ModalBody = styled.div(({ theme }) => {
-  return css`
-    position: relative;
-    background-color: inherit;
-    color: inherit;
-    display: grid;
-    padding: ${theme.spacing[24]};
-    grid-row-gap: ${theme.spacing[12]};
-    grid-column-gap: ${theme.spacing[16]};
-    grid-template-columns: 1fr min-content ${theme.spacing[32]};
-    grid-template-rows: repeat(3, auto);
-    grid-template-areas:
-      'title title close'
-      'children children children'
-      'cancel confirm confirm';
-  `;
-});
-
-const Title = styled(Box)`
-  grid-area: title;
-`;
-
-const CloseButton = styled.div`
-  grid-area: close;
-`.withComponent(IconButton);
-
-const Content = styled(Box)`
-  grid-area: children;
-`;
-
-const ConfirmButton = styled(FillButton)`
-  grid-area: confirm;
-`;
-
-const CancelButton = styled(TextButton)`
-  grid-area: cancel;
-`.withComponent((props: DialogProps['cancelCta']) => (
-  <FlexBox justifyContent="flex-end">
-    <TextButton {...props} />
-  </FlexBox>
-));
+const ShroudedOverlay = styled(Overlay)(system.css({ bg: 'shadow-opaque' }));
 
 export interface DialogProps
-  extends Pick<OverlayProps, 'clickOutsideCloses' | 'escapeCloses'> {
-  mode?: VisualTheme;
-  isOpen: boolean;
+  extends Pick<
+    OverlayProps,
+    'isOpen' | 'onRequestClose' | 'clickOutsideCloses' | 'escapeCloses'
+  > {
+  size?: ComponentProps<typeof DialogContainer>['size'];
   title: React.ReactNode;
   children: React.ReactNode;
   confirmCta: {
@@ -125,16 +27,37 @@ export interface DialogProps
     children: React.ReactNode;
     onClick?: () => void;
   };
-  onRequestClose: () => void;
 }
 
+const DialogContainer = styled(FloatingCard)(
+  system.variant({
+    prop: 'size',
+    defaultVariant: 'small',
+    base: {
+      display: 'grid',
+      p: 24,
+      rowGap: 12,
+      columnGap: 16,
+      gridTemplateColumns: '1fr min-content 2rem',
+      gridTemplateRows: 'max-content 1fr max-content',
+      gridTemplateAreas: `'title title close'
+  'content content content'
+  'cancel confirm confirm'`,
+    },
+    variants: {
+      small: { width: '400px', minHeight: '170px' },
+      medium: { width: '540px', minHeight: '240px' },
+    },
+  })
+);
+
 export const Dialog: React.FC<DialogProps> = ({
-  mode = 'light',
   title,
   children,
   confirmCta,
   cancelCta,
   onRequestClose,
+  size = 'small',
   ...rest
 }) => {
   const onConfirm = () => {
@@ -148,41 +71,39 @@ export const Dialog: React.FC<DialogProps> = ({
   };
 
   return (
-    <ShroudedOverlay mode={mode} onRequestClose={onCancel} {...rest}>
-      <ModalWrapper
-        mode={mode}
+    <ShroudedOverlay onRequestClose={onCancel} {...rest}>
+      <DialogContainer
+        size={size}
         aria-hidden="false"
         aria-modal="true"
         role="dialog"
+        pattern="checkerDense"
       >
-        <ModalShadow name="dotsDense" />
-        <ModalForeground />
-        <ModalBody>
-          <Title
-            as="h2"
-            margin={0}
-            fontSize={20}
-            lineHeight="base"
-            fontWeight="title"
-          >
-            {title}
-          </Title>
-          <CloseButton
-            aria-label="Close Dialog"
-            mode={mode}
-            size="small"
-            icon={MiniDeleteIcon}
+        <Text as="h2" fontSize={20} lineHeight="base" gridArea="title">
+          {title}
+        </Text>
+        <IconButton
+          aria-label="Close Dialog"
+          size="small"
+          alignSelf="start"
+          variant="secondary"
+          icon={MiniDeleteIcon}
+          onClick={onCancel}
+          gridArea="close"
+        />
+        <Box as="div" gridArea="content" data-testid="dialog-content">
+          {children}
+        </Box>
+        {cancelCta && (
+          <TextButton
+            {...cancelCta}
             onClick={onCancel}
+            justifySelf="end"
+            gridArea="cancel"
           />
-          <Content fontSize={16} lineHeight="base">
-            {children}
-          </Content>
-          {cancelCta && (
-            <CancelButton mode={mode} {...cancelCta} onClick={onCancel} />
-          )}
-          <ConfirmButton mode={mode} {...confirmCta} onClick={onConfirm} />
-        </ModalBody>
-      </ModalWrapper>
+        )}
+        <FillButton {...confirmCta} onClick={onConfirm} gridArea="confirm" />
+      </DialogContainer>
     </ShroudedOverlay>
   );
 };

@@ -1,16 +1,15 @@
 import { Box, FillButton, FocusTrap, GridForm } from '@codecademy/gamut/src';
 import title from '@codecademy/macros/lib/title.macro';
+import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 import { useState } from '@storybook/addons';
-
-import { PropsTable } from '~styleguide/blocks';
 
 <Meta
   title={title}
   component={FocusTrap}
   parameters={{
     subtitle:
-      "Used for modal and dialog experiences like `Overlay` and `Modal`, this component controls focus management behavior when we need to limit focus to a single area of the page for some amount of time. It doesn't need to be a modal or overlay, and can instead be controlled with the `active` prop.",
+      "Used for modal and dialog experiences like `Overlay` and `ModalDeprecated`, this component controls focus management behavior when we need to limit focus to a single area of the page for some amount of time. It doesn't need to be a modal or overlay, and can instead be controlled with the `active` prop.",
     source: 'gamut',
     status: 'current',
   }}
@@ -30,11 +29,10 @@ This component is a wrapper around the [react-focus-on](https://github.com/theKa
             </FillButton>
             <FocusTrap {...args} active={trapActive}>
               <Box
-                padding="24"
-                marginY="24"
+                p="24"
+                mY="24"
+                border={1}
                 borderColor={trapActive ? 'black' : 'gray-200'}
-                borderWidth="1px"
-                borderStyle="solid"
               >
                 <GridForm
                   fields={[

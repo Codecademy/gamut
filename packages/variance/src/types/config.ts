@@ -1,6 +1,6 @@
 import { Theme } from '@emotion/react';
 
-import { PropertyTypes } from './properties';
+import { DefaultCSSPropertyValue, PropertyTypes } from './properties';
 import {
   AbstractProps,
   CSSObject,
@@ -11,7 +11,7 @@ import {
 } from './props';
 import { AllUnionKeys, Key, KeyFromUnion } from './utils';
 
-export type LiteralScale = Record<string | number, string | number>;
+export type MapScale = Record<string | number, string | number>;
 
 export interface BaseProperty {
   property: keyof PropertyTypes;
@@ -19,7 +19,7 @@ export interface BaseProperty {
 }
 
 export interface Prop extends BaseProperty {
-  scale?: keyof Theme | LiteralScale;
+  scale?: keyof Theme | MapScale;
   transform?: (
     val: string | number,
     prop?: string,
@@ -41,12 +41,15 @@ export interface AbstractParser {
 export type PropertyValues<
   Property extends keyof PropertyTypes,
   All extends boolean = false
-> = Exclude<PropertyTypes[Property], All extends true ? never : object | any[]>;
+> = Exclude<
+  PropertyTypes<All extends true ? DefaultCSSPropertyValue : never>[Property],
+  All extends true ? never : object | any[]
+>;
 
 export type Scale<Config extends Prop> = ResponsiveProp<
   Config['scale'] extends keyof Theme
     ? keyof Theme[Config['scale']] | PropertyValues<Config['property']>
-    : Config['scale'] extends LiteralScale
+    : Config['scale'] extends MapScale
     ? keyof Config['scale'] | PropertyValues<Config['property']>
     : PropertyValues<Config['property'], true>
 >;
@@ -97,6 +100,12 @@ export interface Variant<P extends AbstractParser> {
   }): (props: VariantProps<PropKey, Keys | false> & ThemeProps) => CSSObject;
 }
 
+export interface States<P extends AbstractParser> {
+  <Props extends Record<string, AbstractProps>>(
+    states: SelectorMap<Props, SystemProps<P>>
+  ): (props: Partial<Record<keyof Props, boolean>> & ThemeProps) => CSSObject;
+}
+
 export interface CSS<P extends AbstractParser> {
   <Props extends AbstractProps>(config: SelectorProps<Props, SystemProps<P>>): (
     props: ThemeProps
@@ -118,6 +127,6 @@ export type SystemProps<P extends AbstractParser> = Omit<
   'theme'
 >;
 
-type VariantProps<T extends string, V> = {
+export type VariantProps<T extends string, V> = {
   [Key in T]?: V;
 };
