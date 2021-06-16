@@ -22,7 +22,8 @@ export const config = styledOptions<'button', 'size'>(['size']);
 export const buttonProps = variance.compose(
   system.layout,
   system.positioning,
-  system.margin
+  system.space,
+  system.border
 );
 
 export const templateVariants = <Variant extends string, Styles>(
