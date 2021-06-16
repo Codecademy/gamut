@@ -131,11 +131,7 @@ export const SearchPaneContents: React.FC<SearchPaneContentsProps> = ({
                 display="flex"
                 width="100%"
               >
-                <SearchIcon
-                  color={theme.colors['gray-600']}
-                  height={24}
-                  width={24}
-                />
+                <SearchIcon color="gray-600" height={24} width={24} />
                 <Form
                   action="/search"
                   id="search-form"
