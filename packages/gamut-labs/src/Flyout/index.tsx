@@ -1,4 +1,4 @@
-import { BodyPortal, Box, FocusTrap, IconButton } from '@codecademy/gamut';
+import { BodyPortal, FocusTrap, IconButton } from '@codecademy/gamut';
 import { MiniDeleteIcon } from '@codecademy/gamut-icons';
 import { system, variant } from '@codecademy/gamut-styles';
 import { StyleProps, variance } from '@codecademy/variance';
