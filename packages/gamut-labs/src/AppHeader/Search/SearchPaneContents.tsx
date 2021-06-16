@@ -7,11 +7,11 @@ import {
   TextButton,
 } from '@codecademy/gamut';
 import { SearchIcon, SupportIcon } from '@codecademy/gamut-icons';
+import { system } from '@codecademy/gamut-styles';
 import { useTheme } from '@emotion/react';
+import styled from '@emotion/styled';
 import { camelCase } from 'lodash';
 import React, { useRef, useState } from 'react';
-
-import styles from './styles.module.scss';
 
 export type SearchPaneContentsProps = {
   onSearch: (query: string) => void;
@@ -29,6 +29,30 @@ const searchTerms = [
 
 const Form = Box.withComponent('form');
 const Input = Box.withComponent('input');
+
+const QueryContainer = styled(ContentContainer)(
+  system.css({
+    display: 'flex',
+    paddingBottom: '0',
+    paddingTop: '2rem',
+    width: '100%',
+  })
+);
+
+const SuggestionContainer = styled(ContentContainer)(
+  system.css({
+    paddingTop: '2rem',
+    paddingBottom: '2rem',
+  })
+);
+
+const StyledInput = styled(Input)`
+  outline: none;
+`;
+
+const SuggestionButtons = styled.div`
+  margin-left: -0.6rem;
+`;
 
 export const SearchPaneContents: React.FC<SearchPaneContentsProps> = ({
   onSearch,
@@ -98,7 +122,7 @@ export const SearchPaneContents: React.FC<SearchPaneContentsProps> = ({
           width="100%"
         >
           <Box border="none" width="auto">
-            <ContentContainer className={styles.queryContainer}>
+            <QueryContainer>
               <Box
                 alignItems="baseline"
                 borderColor="gray-600"
@@ -119,10 +143,9 @@ export const SearchPaneContents: React.FC<SearchPaneContentsProps> = ({
                   onSubmit={handleSubmit}
                   width="100%"
                 >
-                  <Input
+                  <StyledInput
                     background="none"
                     border="none"
-                    className={styles.input}
                     fontSize={34}
                     fontWeight="bold"
                     id="header-search-bar"
@@ -137,14 +160,14 @@ export const SearchPaneContents: React.FC<SearchPaneContentsProps> = ({
                   />
                 </Form>
               </Box>
-            </ContentContainer>
+            </QueryContainer>
           </Box>
-          <ContentContainer className={styles.suggestionContainer}>
+          <SuggestionContainer>
             <Text as="h3" fontSize={20}>
               Popular Searches
             </Text>
             <FlexBox justifyContent="space-between">
-              <div className={styles.suggestionButtons}>
+              <SuggestionButtons>
                 {searchTerms.map((searchTerm) => (
                   <TextButton
                     key={searchTerm}
@@ -159,7 +182,7 @@ export const SearchPaneContents: React.FC<SearchPaneContentsProps> = ({
                     {searchTerm}
                   </TextButton>
                 ))}
-              </div>
+              </SuggestionButtons>
               <TextButton
                 href="/help"
                 onClick={() => onTrackingClick('help_center')}
@@ -167,7 +190,7 @@ export const SearchPaneContents: React.FC<SearchPaneContentsProps> = ({
                 <SupportIcon size={20} /> Help Center
               </TextButton>
             </FlexBox>
-          </ContentContainer>
+          </SuggestionContainer>
         </Box>
       </FocusTrap>
     </>
