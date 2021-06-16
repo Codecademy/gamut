@@ -58,7 +58,7 @@ export const LayoutMenu: React.FC<LayoutMenuProps> = ({
           closeFlyoutRef={closeFlyoutRef}
           overflowY="auto"
         >
-          <Box bg="white" height={1} p={16}>
+          <Box bg="white" minHeight={1} p={16}>
             <Logo mb={32} />
             {accordionMenuSections}
             {children}
