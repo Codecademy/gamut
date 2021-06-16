@@ -14,7 +14,7 @@ const StyledAccordionArea = styled(AccordionArea)`
 `;
 
 const StyledAccordionButton = styled(AccordionButton)`
-  padding-left: 0;
+  padding-left: ${leftPaddingForItem}px;
   justify-content: flex-start;
   width: max-content;
 `;
