@@ -53,7 +53,7 @@ export const ButtonBase = forwardRef<
     { href, disabled, children, as, role = 'button', type = 'button', ...rest },
     ref
   ) => {
-    if (href?.length === 0 || !href) {
+    if (href == null) {
       return (
         <ResetElement
           {...rest}

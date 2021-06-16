@@ -42,7 +42,7 @@ describe('ButtonBase', () => {
       const el = view.getByText(buttonText);
       expect(el.tagName).toEqual('A');
       expect(el.getAttribute('aria-disabled')).toEqual('true');
-      expect(el.getAttribute('disabled')).toEqual('');
+      expect(el.getAttribute('disabled')).toEqual(null);
     });
 
     it('renders the disabled attribute on button tags', () => {
