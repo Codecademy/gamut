@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [34.10.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@34.9.0...@codecademy/gamut@34.10.0) (2021-06-16)
+
+
+### Features
+
+* **variance:** Computed styles, and configurable CSSType narrowing [GM-233] ([c258c19](https://github.com/Codecademy/client-modules/commit/c258c19b7970b41361b6cfafe76e2a52b7b4c828))
+
+
+
 ## [34.9.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@34.8.0...@codecademy/gamut@34.9.0) (2021-06-16)
 
 

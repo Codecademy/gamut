@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.16.0](https://github.com/Codecademy/client-modules/compare/@codecademy/variance@0.15.0...@codecademy/variance@0.16.0) (2021-06-16)
+
+
+### Features
+
+* **variance:** Computed styles, and configurable CSSType narrowing [GM-233] ([c258c19](https://github.com/Codecademy/client-modules/commit/c258c19b7970b41361b6cfafe76e2a52b7b4c828))
+
+
+
 ## [0.15.0](https://github.com/Codecademy/client-modules/compare/@codecademy/variance@0.14.0...@codecademy/variance@0.15.0) (2021-06-16)
 
 
