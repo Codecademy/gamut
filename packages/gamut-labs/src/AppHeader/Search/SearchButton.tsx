@@ -16,7 +16,7 @@ const SearchIconButton = styled.button(
       outline: 'none',
     },
     '&:focus-visible': {
-      outline: 'theme.colors.navy',
+      outline: 'navy',
     },
   })
 );
