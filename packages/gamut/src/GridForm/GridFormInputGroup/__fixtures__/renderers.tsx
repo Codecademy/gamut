@@ -12,6 +12,7 @@ import {
   stubTextareaField,
   stubTextField,
 } from '../../__tests__/stubs';
+import { GridFormContent } from '../../GridFormSections';
 import {
   GridFormCheckboxField,
   GridFormFileField,
@@ -23,7 +24,6 @@ import {
 import { GridFormCheckboxInput } from '../GridFormCheckboxInput';
 import { GridFormFileInput } from '../GridFormFileInput';
 import { GridFormRadioGroupInput } from '../GridFormRadioGroupInput';
-import { GridFormContents } from '../GridFormSections';
 import { GridFormSelectInput } from '../GridFormSelectInput';
 import { GridFormTextArea } from '../GridFormTextArea';
 import { GridFormTextInput } from '../GridFormTextInput';
