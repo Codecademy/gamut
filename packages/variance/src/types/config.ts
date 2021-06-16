@@ -4,9 +4,9 @@ import { DefaultCSSPropertyValue, PropertyTypes } from './properties';
 import {
   AbstractProps,
   CSSObject,
+  CSSPropMap,
+  CSSProps,
   ResponsiveProp,
-  SelectorMap,
-  SelectorProps,
   ThemeProps,
 } from './props';
 import { AllUnionKeys, Key, KeyFromUnion } from './utils';
@@ -95,19 +95,19 @@ export interface Variant<P extends AbstractParser> {
   >(options: {
     prop?: PropKey;
     defaultVariant?: keyof Props;
-    base?: SelectorProps<Base, SystemProps<P>>;
-    variants: SelectorMap<Props, SystemProps<P>>;
+    base?: CSSProps<Base, SystemProps<P>>;
+    variants: CSSPropMap<Props, SystemProps<P>>;
   }): (props: VariantProps<PropKey, Keys | false> & ThemeProps) => CSSObject;
 }
 
 export interface States<P extends AbstractParser> {
   <Props extends Record<string, AbstractProps>>(
-    states: SelectorMap<Props, SystemProps<P>>
+    states: CSSPropMap<Props, SystemProps<P>>
   ): (props: Partial<Record<keyof Props, boolean>> & ThemeProps) => CSSObject;
 }
 
 export interface CSS<P extends AbstractParser> {
-  <Props extends AbstractProps>(config: SelectorProps<Props, SystemProps<P>>): (
+  <Props extends AbstractProps>(config: CSSProps<Props, SystemProps<P>>): (
     props: ThemeProps
   ) => CSSObject;
 }
