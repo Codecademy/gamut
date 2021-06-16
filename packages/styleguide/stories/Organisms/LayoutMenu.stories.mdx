@@ -1,0 +1,108 @@
+import { Box } from '@codecademy/gamut';
+import {
+  LayoutMenu,
+  SectionItemLink,
+  SelectedSectionItem,
+} from '@codecademy/gamut-labs/src';
+import title from '@codecademy/macros/lib/title.macro';
+import { PropsTable } from '@codecademy/storybook-addon-variance';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+
+<Meta
+  title={title}
+  component={LayoutMenu}
+  args={{
+    sections: [
+      {
+        title: 'Languages',
+        slug: 'language',
+        items: [
+          {
+            title: 'HTML & CSS',
+            slug: 'html-css',
+            href: '/catalog/language/html-css',
+            onClick: (event) => null,
+          },
+          {
+            title: 'Python',
+            slug: 'python',
+            href: '/catalog/language/python',
+            onClick: (event) => null,
+          },
+        ],
+      },
+      {
+        title: 'Subjects',
+        slug: 'subject',
+        items: [
+          {
+            title: 'Data Science',
+            slug: 'data-science',
+            href: '/catalog/subject/data-science',
+            onClick: (event) => null,
+          },
+          {
+            title: 'Computer Science',
+            slug: 'computer-science',
+            href: '/catalog/subject/computer-science',
+            onClick: (event) => null,
+          },
+        ],
+      },
+    ],
+    onSectionToggle: (slug) => {
+      // eslint-disable-next-line no-console
+      console.log(
+        `You could add event tracking here. You have access to the slug: ${slug}`
+      );
+    },
+    mobileButtonText: 'Click Me',
+  }}
+  parameters={{
+    subtitle: `A group of accordion menus with optional additional links. On tablet and mobile, a button activates a flyout containing the accordion menu(s). Currently used in the Catalog and Cheatsheets Index.`,
+    source: 'gamut-labs',
+    status: 'updating',
+  }}
+/>
+
+<Canvas>
+  <Story name="LayoutMenu">{(args) => <LayoutMenu {...args} />}</Story>
+</Canvas>
+
+<PropsTable story="LayoutMenu" />
+
+## With Selected Item
+
+You can show what page we are on in the menu by passing in the `selectedItem` prop. This should be a slug that will match one of the slugs in `items` within `sections`.
+
+<Canvas>
+  <Story name="With Selected Item">
+    {(args) => <LayoutMenu {...args} selectedItem="python" />}
+  </Story>
+</Canvas>
+
+## With Additional Links
+
+Additional links outside of an accordion can be added as `children`. You can use the `SectionItemLink` component (pass an `onClick` prop and link text as `children`) to match the styling of the accordion items. You can also use the `SelectedSectionItem` component (pass text as `children`) to match the styling of a selected item.
+
+<Canvas>
+  <Story name="With Additional Links">
+    {(args) => (
+      <LayoutMenu {...args}>
+        <Box pb={32}>
+          <SelectedSectionItem>Full Catalog</SelectedSectionItem>
+        </Box>
+        <Box pb={32}>
+          <SectionItemLink
+            onClick={() =>
+              (window.location.href =
+                'https://www.codecademy.com/explore/sorting-quiz')
+            }
+          >
+            Where do I begin?
+          </SectionItemLink>
+        </Box>
+      </LayoutMenu>
+    )}
+  </Story>
+</Canvas>
