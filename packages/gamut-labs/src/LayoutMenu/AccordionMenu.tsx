@@ -5,7 +5,7 @@ import React, { useState } from 'react';
 import { SectionItemLink } from './SectionItemLink';
 import { SelectedSectionItem } from './SelectedSectionItem';
 
-const leftPaddingForItem = 3;
+const leftPaddingForItem = 4;
 
 const StyledAccordionArea = styled(AccordionArea)`
   padding-bottom: ${({ theme }) => theme.spacing[32]};
