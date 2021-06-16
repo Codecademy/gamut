@@ -1,5 +1,6 @@
 import {
   ColorModes,
+  fontSmoothPixel,
   modeColorProps,
   styledOptions,
   system,
@@ -88,6 +89,7 @@ export const createButtonComponent = <P>(
   ...args: (<T extends ThemeProps>(props: T) => CSSObject)[]
 ) =>
   styled(ButtonBase)<ButtonProps & P>(
+    fontSmoothPixel,
     modeColorProps,
     buttonStyles,
     ...args,
