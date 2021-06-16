@@ -12,7 +12,13 @@ export const SectionItemLink: React.FC<SectionItemLinkProps> = ({
   children,
 }) => {
   return (
-    <Anchor variant="interface" display="block" href={href} onClick={onClick}>
+    <Anchor
+      variant="interface"
+      display="block"
+      width="max-content"
+      href={href}
+      onClick={onClick}
+    >
       {children}
     </Anchor>
   );
