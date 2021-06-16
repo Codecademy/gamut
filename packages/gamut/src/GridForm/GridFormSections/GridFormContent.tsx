@@ -4,12 +4,12 @@ import { FieldError, useFormContext } from 'react-hook-form';
 import { GridFormInputGroup } from '../GridFormInputGroup';
 import { GridFormField } from '../types';
 
-export type GridFormQuestionProps = {
+export type GridFormContentProps = {
   field: GridFormField;
   showRequired: boolean;
 };
 
-export const GridFormQuestion: React.FC<GridFormQuestionProps> = ({
+export const GridFormContent: React.FC<GridFormContentProps> = ({
   field,
   showRequired,
 }) => {

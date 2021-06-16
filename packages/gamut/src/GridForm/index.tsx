@@ -6,7 +6,7 @@ import { Form } from '../Form';
 import { LayoutGrid, LayoutGridProps } from '../Layout';
 import { GridFormButtons, GridFormSubmitProps } from './GridFormButtons';
 import {
-  GridFormQuestion,
+  GridFormContent,
   GridFormSection,
   GridFormSectionBreak,
   GridFormSectionTitle,
@@ -138,7 +138,7 @@ export function GridForm<
                 );
               }
               return (
-                <GridFormQuestion
+                <GridFormContent
                   field={field}
                   showRequired={showRequired}
                   key={field.name}

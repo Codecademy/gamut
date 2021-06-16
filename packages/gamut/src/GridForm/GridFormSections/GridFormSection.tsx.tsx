@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { GridFormField } from '../types';
-import { GridFormQuestion } from './GridFormQuestion';
+import { GridFormContent } from './GridFormContent';
 
 export type GridFormSectionProps = {
   fields: GridFormField[];
@@ -16,7 +16,7 @@ export const GridFormSection: React.FC<GridFormSectionProps> = ({
     <>
       {fields.map((field) => {
         return (
-          <GridFormQuestion
+          <GridFormContent
             field={field}
             showRequired={showRequired}
             key={field.name}
