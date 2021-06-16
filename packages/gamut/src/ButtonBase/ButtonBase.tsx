@@ -16,7 +16,7 @@ export type ButtonBaseElementProps = HTMLProps<
 };
 
 export enum ButtonSelectors {
-  HOVER = '&:hover, &:focus',
+  HOVER = '&:hover',
   ACTIVE = '&:active',
   DISABLED = "&:disabled, &[aria-disabled='true']",
   FOCUS = ' &:focus-visible',
@@ -38,6 +38,8 @@ const ResetElement = styled(
     textDecoration: 'none',
     [ButtonSelectors.HOVER]: {
       textDecoration: 'none',
+    },
+    [ButtonSelectors.ACTIVE]: {
       outline: 'none',
     },
   })
