@@ -53,8 +53,12 @@ export const LayoutMenu: React.FC<LayoutMenuProps> = ({
   return (
     <nav>
       <Box display={{ _: 'block', lg: 'none' }}>
-        <Flyout renderButton={renderButton} closeFlyoutRef={closeFlyoutRef}>
-          <Box bg="white" height={1} p={16} overflow="scroll">
+        <Flyout
+          renderButton={renderButton}
+          closeFlyoutRef={closeFlyoutRef}
+          overflowY="auto"
+        >
+          <Box bg="white" height={1} p={16}>
             <Logo mb={32} />
             {accordionMenuSections}
             {children}
