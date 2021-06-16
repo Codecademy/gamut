@@ -135,7 +135,8 @@ export function GridForm<
           cancel={cancel}
           {...submit}
           disabled={
-            (validation === 'onChange' && !isValid && !isSubmitting) ||
+            (validation === 'onChange' && !isValid) ||
+            isSubmitting ||
             submit.disabled
           }
         />
