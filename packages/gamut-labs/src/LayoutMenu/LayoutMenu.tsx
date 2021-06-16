@@ -57,6 +57,7 @@ export const LayoutMenu: React.FC<LayoutMenuProps> = ({
           renderButton={renderButton}
           closeFlyoutRef={closeFlyoutRef}
           overflowY="auto"
+          overflowX="hidden"
         >
           <Box bg="white" minHeight={1} p={16}>
             <Logo mb={32} />
