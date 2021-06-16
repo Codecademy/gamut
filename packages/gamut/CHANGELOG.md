@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [34.8.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@34.7.1...@codecademy/gamut@34.8.0) (2021-06-16)
+
+
+### Features
+
+* **Text:** Add more common utility variants / states as props GM-248 ([85b541c](https://github.com/Codecademy/client-modules/commit/85b541cbb85ef5c60b8012196680e1062d469ad1))
+
+
+
+### [34.7.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@34.7.0...@codecademy/gamut@34.7.1) (2021-06-15)
+
+
+### Bug Fixes
+
+* ErrorSpan - switch to initial variant ([68541cd](https://github.com/Codecademy/client-modules/commit/68541cdbd01b509ce60a472b82dddfd37845a069))
+
+
+
 ## [34.7.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@34.6.2...@codecademy/gamut@34.7.0) (2021-06-15)
 
 
