@@ -5,16 +5,22 @@ import React, { useState } from 'react';
 import { SectionItemLink } from './SectionItemLink';
 import { SelectedSectionItem } from './SelectedSectionItem';
 
+const leftPaddingForItem = 3;
+
 const StyledAccordionArea = styled(AccordionArea)`
   padding-bottom: ${({ theme }) => theme.spacing[32]};
   position: relative;
-  left: -3px;
+  left: -${leftPaddingForItem}px;
 `;
 
 const StyledAccordionButton = styled(AccordionButton)`
   padding-left: 0;
   justify-content: flex-start;
   width: max-content;
+`;
+
+const StyledAccordionSection = styled(Box)`
+  padding: 8px 0 8px ${leftPaddingForItem}px;
 `;
 
 export type SectionItem = {
@@ -61,7 +67,7 @@ export const AccordionMenu: React.FC<AccordionMenuProps> = ({
       }
     >
       {section.items.map((item) => (
-        <Box key={item.slug} py={8} pl={3 as any}>
+        <StyledAccordionSection key={item.slug}>
           {selectedItem === item.slug ? (
             <SelectedSectionItem>{item.title}</SelectedSectionItem>
           ) : (
@@ -75,7 +81,7 @@ export const AccordionMenu: React.FC<AccordionMenuProps> = ({
               {item.title}
             </SectionItemLink>
           )}
-        </Box>
+        </StyledAccordionSection>
       ))}
     </StyledAccordionArea>
   );
