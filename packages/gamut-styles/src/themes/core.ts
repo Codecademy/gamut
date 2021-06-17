@@ -39,9 +39,9 @@ export const coreTheme = createTheme({
         _: 'white',
         current: 'white',
         primary: 'beige',
-        selected: 'navy-200',
+        selected: 'navy-100',
         disabled: 'navy-200',
-        hover: 'navy-100',
+        hover: 'navy-200',
       },
       shadow: {
         opaque: 'shadow-white-heavy',

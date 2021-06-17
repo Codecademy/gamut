@@ -41,7 +41,7 @@ const anchorVariants = variant({
       textDecoration: 'none',
       color: 'text-disabled',
     },
-    [ButtonSelectors.OUTLINE_FOCUS]: {
+    [ButtonSelectors.OUTLINE_FOCUS_VISIBLE]: {
       opacity: 1,
     },
   },
@@ -51,7 +51,7 @@ const anchorVariants = variant({
       [ButtonSelectors.HOVER]: {
         textDecoration: 'underline',
       },
-      [ButtonSelectors.FOCUS]: {
+      [ButtonSelectors.FOCUS_VISIBLE]: {
         textColor: 'text',
       },
     },
@@ -62,7 +62,7 @@ const anchorVariants = variant({
       [ButtonSelectors.OUTLINE]: {
         display: 'none',
       },
-      [ButtonSelectors.FOCUS]: {
+      [ButtonSelectors.FOCUS_VISIBLE]: {
         outline: 'currentColor auto 4px',
         textDecoration: 'underline',
       },
