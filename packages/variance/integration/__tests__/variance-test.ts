@@ -211,6 +211,9 @@ describe('css', () => {
       transform: marginTransform,
     },
     padding: { property: 'padding', scale: theme.spacing },
+    boxShadow: {
+      property: 'boxShadow',
+    },
   });
 
   beforeEach(() => {
@@ -261,6 +264,7 @@ describe('css', () => {
   it('allows selectors with media queries', () => {
     const returnedFn = css({
       width: ['100%', '200%'],
+      boxShadow: [({ colors }) => `0px 0px 0px 0px ${colors.black}`],
       '&:hover': {
         width: ['50%', '25%'],
       },
@@ -268,6 +272,7 @@ describe('css', () => {
 
     expect(returnedFn({ theme })).toEqual({
       width: '100%',
+      boxShadow: '0px 0px 0px 0px var(--color-black)',
       XS: { width: '200%' },
       '&:hover': {
         width: '50%',
