@@ -1,7 +1,6 @@
 import { styledOptions, system } from '@codecademy/gamut-styles';
 import { StyleProps, transformSize, variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
-import { pickBy } from 'lodash';
 
 export interface IconStyleProps extends StyleProps<typeof iconProps> {}
 
@@ -39,6 +38,3 @@ export const iconProps = variance.compose(
 );
 
 export const Svg = styled('svg', styledOptions<'svg'>())(iconProps);
-
-export const getForwardableProps = (props: GamutIconProps): ForwardableProps =>
-  pickBy(props, (value, key) => styledOptions.shouldForwardProp(key));
