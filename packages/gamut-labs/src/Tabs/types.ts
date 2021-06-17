@@ -13,6 +13,11 @@ export type TabPanelProps = {
   className?: string;
   isActiveTab?: boolean;
   onTabClick?: () => void;
+  tabDisabled?: boolean;
+};
+
+export type TabPanelListProps = Pick<TabsProps, 'children'> & {
+  activeTabIndex: number;
 };
 
 export type TabListProps = Pick<TabsProps, 'children'> & {

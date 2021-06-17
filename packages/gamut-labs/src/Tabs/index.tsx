@@ -13,7 +13,10 @@ export const Tabs: React.FC<TabsProps> = ({ activeTabIndex = 0, children }) => {
 
   return (
     <div>
-      <TabList activeTabIndex={activeTabIndex} setActiveTab={setActiveTabIndex}>
+      <TabList
+        activeTabIndex={_activeTabIndex}
+        setActiveTab={setActiveTabIndex}
+      >
         {children}
       </TabList>
     </div>

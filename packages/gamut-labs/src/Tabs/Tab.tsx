@@ -1,7 +1,7 @@
 import { Box, TextButton } from '@codecademy/gamut';
 import React from 'react';
 
-import TabProps from './types';
+import { TabProps } from './types';
 
 export const Tab: React.FC<TabProps> = ({
   title,
