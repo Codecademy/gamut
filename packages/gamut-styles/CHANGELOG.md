@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [11.5.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@11.5.0...@codecademy/gamut-styles@11.5.1) (2021-06-17)
+
+
+### Bug Fixes
+
+* Hover + Shadow regression ([d044952](https://github.com/Codecademy/client-modules/commit/d044952f2fdda508aeab9c277dcac2327f5dcc00))
+
+
+
 ## [11.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@11.4.0...@codecademy/gamut-styles@11.5.0) (2021-06-16)
 
 
