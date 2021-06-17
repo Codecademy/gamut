@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [19.10.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.10.0...@codecademy/gamut-labs@19.10.1) (2021-06-17)
+
+
+### Bug Fixes
+
+* **LayoutMenu:** update focus visible states and x-button placement ([bbf1908](https://github.com/Codecademy/client-modules/commit/bbf1908e530d1b34df0086b80536ee51cc7b23d3))
+
+
+
+## [19.10.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.9.2...@codecademy/gamut-labs@19.10.0) (2021-06-17)
+
+
+### Features
+
+* **GlobalFooter:** Update href of 'Beta Content' link to point at hub page ([3898481](https://github.com/Codecademy/client-modules/commit/38984812c21364dc8505f82c4657e94132cc3e5d))
+
+
+
+### [19.9.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.9.1...@codecademy/gamut-labs@19.9.2) (2021-06-17)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
 ### [19.9.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.9.0...@codecademy/gamut-labs@19.9.1) (2021-06-16)
 
 **Note:** Version bump only for package @codecademy/gamut-labs
