@@ -6,17 +6,17 @@ import React, { useState } from 'react';
 const SearchForm = Box.withComponent('form');
 
 const StyledInput = styled.input`
-  width: 100%;
-  outline: none;
-  border: ${({ theme }) => `1px solid ${theme.colors['gray-300']}`};
   background: none;
-  font-size: 1rem;
-  padding: 0.75rem;
-  padding-right: 2.5rem;
   border-radius: px-rem(5px);
+  border: ${({ theme }) => `1px solid ${theme.colors['gray-800']}`};
+  font-size: 1rem;
+  outline: none;
+  padding-right: 2.5rem;
+  padding: 0.75rem;
+  width: 100%;
 
   &::placeholder {
-    color: ${({ theme }) => theme.colors['gray-300']};
+    color: ${({ theme }) => theme.colors['gray-800']};
   }
 `;
 
