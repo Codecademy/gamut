@@ -1,9 +1,16 @@
 import { mount } from 'enzyme';
 import React from 'react';
 
-import { AddIcon, GamutIconProps } from '../dist/index';
+import { AddIcon } from '../dist/index';
 
 describe('Compiled gamut-icons:', () => {
+  it('Hides the icon from screen readers by default', () => {
+    const wrapper = mount(<AddIcon />);
+
+    const svgEl = wrapper.find('svg');
+    expect(svgEl.props()['aria-hidden']).toEqual('true');
+  });
+
   it('Sets a title and id automatically and uses the appropriate aria label', () => {
     const wrapper = mount(<AddIcon size={1} />);
 
