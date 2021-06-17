@@ -2,7 +2,6 @@ import { Box } from '@codecademy/gamut';
 import { system, themed, transitionConcat } from '@codecademy/gamut-styles';
 import { useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
-import cx from 'classnames';
 import React, { useEffect, useState } from 'react';
 
 import { AppHeader, AppHeaderMobile } from '..';
