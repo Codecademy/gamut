@@ -25,12 +25,6 @@ import { LinkTo, PropsTable } from '~styleguide/blocks';
 
 Anchors / Links are meant to be used in rich text or in places where <LinkTo id="atoms-button--cta-button">Buttons</LinkTo> do not fit. These components like `<Button />` components can either be an `<a />` or a `<button />` depending on how they are configured without any visual difference. All Anchors will automatically detect which HTML element they should render as automatically to maintain valid and semantic HTML.
 
-```tsx
-import { Anchor } from '@codecademy/gamut';
-
-<Anchor href="https://google.com">I am a link</Anchor>;
-```
-
 <br />
 
 ## Variants
@@ -89,6 +83,28 @@ export const variants = ['inline', 'interface', 'standard'];
 </Story>
 
 <br />
+
+## Semantic Components
+
+### Anchor
+
+which defaults to the `inline` variant.
+
+```tsx
+import { Anchor } from '@codecademy/gamut';
+
+<Anchor href="https://google.com">I am a link</Anchor>;
+```
+
+### Link
+
+Link is identical to Anchor except it defaults to `interface`
+
+```tsx
+import { Link } from '@codecademy/gamut';
+
+<Link href="https://google.com">I am a link</Link>;
+```
 
 ## Color Modes
 
