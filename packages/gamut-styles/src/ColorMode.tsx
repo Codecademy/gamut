@@ -28,7 +28,7 @@ export type ColorAlias = keyof ColorModeShape;
 
 export type ColorModeProps = {
   mode: ColorModes;
-  bg?: keyof Theme['colors'];
+  bg?: Colors;
   className?: string;
 };
 
@@ -81,18 +81,23 @@ export const VariableProvider = styled(
 
 export const ColorMode = forwardRef<
   HTMLDivElement,
-  ColorModeProps & ComponentProps<typeof VariableProvider>
->(({ mode, alwaysSetVariables, ...rest }, ref) => {
+  Omit<ComponentProps<typeof VariableProvider>, 'bg'> & ColorModeProps
+>(({ mode, alwaysSetVariables, bg, ...rest }, ref) => {
   const theme = useTheme();
   const { modes, mode: active, colors } = theme;
   const { variables } = useMemo(
     () =>
       serializeTokens(
-        mapValues(modes[mode], (color) => colors[color]),
+        mapValues(modes[mode], (color, key) => {
+          if (key === 'background-current' && bg) {
+            return colors[bg ?? color];
+          }
+          return colors[color];
+        }),
         'color',
         theme
       ),
-    [colors, mode, modes, theme]
+    [colors, mode, modes, theme, bg]
   );
   if (active === mode) {
     return (
@@ -106,7 +111,7 @@ export const ColorMode = forwardRef<
 
   return (
     <ThemeProvider theme={{ mode }}>
-      <VariableProvider variables={variables} {...rest} ref={ref} />
+      <VariableProvider variables={variables} {...rest} bg={bg} ref={ref} />
     </ThemeProvider>
   );
 });

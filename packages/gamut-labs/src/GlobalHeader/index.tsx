@@ -1,5 +1,5 @@
 import { Box } from '@codecademy/gamut';
-import { themed } from '@codecademy/gamut-styles';
+import { system, themed, transitionConcat } from '@codecademy/gamut-styles';
 import { useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
 import cx from 'classnames';
@@ -26,7 +26,6 @@ import {
   proHeaderItems,
   proMobileHeaderItems,
 } from './GlobalHeaderVariants';
-import styles from './styles.module.scss';
 import { AnonHeader, FreeHeader, LoadingHeader, ProHeader } from './types';
 
 export type GlobalHeaderProps =
@@ -101,6 +100,27 @@ const StyledBox = styled(Box)`
   z-index: ${themed('elements.headerZ')};
 `;
 
+const HeaderContainer = styled(Box)(
+  system.css({
+    borderBottom: 1,
+    bg: 'background',
+    top: 0,
+    zIndex: 2,
+    width: 1,
+    transition: transitionConcat(
+      ['background-color', 'border-bottom-color'],
+      'fast',
+      'ease-in-out'
+    ),
+  }),
+  system.states({
+    faded: {
+      bg: 'background-current',
+      borderColor: 'background-current',
+    },
+  })
+);
+
 export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
   const [isInHeaderRegion, setIsInHeaderRegion] = useState(true);
 
@@ -116,17 +136,12 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
 
   const theme = useTheme();
 
-  const headerClasses = cx(
-    styles.stickyHeader,
-    isInHeaderRegion && styles.transitionFadeOut
-  );
-
   return (
     <StyledBox as="header" position="sticky" top={0}>
-      <Box
+      <HeaderContainer
         display={{ _: 'none', md: 'block' }}
         height={theme.elements.headerHeight}
-        className={headerClasses}
+        faded={isInHeaderRegion}
       >
         <AppHeader
           action={props.action}
@@ -135,11 +150,11 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
             props.type === 'anon' ? props.redirectParam : undefined
           }
         />
-      </Box>
-      <Box
+      </HeaderContainer>
+      <HeaderContainer
         display={{ _: 'block', md: 'none' }}
         height={theme.elements.headerHeight}
-        className={headerClasses}
+        faded={isInHeaderRegion}
       >
         <AppHeaderMobile
           action={props.action}
@@ -149,7 +164,7 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
             props.type === 'anon' ? props.redirectParam : undefined
           }
         />
-      </Box>
+      </HeaderContainer>
       {props.children}
     </StyledBox>
   );
