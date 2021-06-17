@@ -1,12 +1,7 @@
 import { Box, TextButton } from '@codecademy/gamut';
 import React from 'react';
 
-export type TabProps = {
-  title: string;
-  isActiveTab: boolean;
-  disabled?: boolean;
-  onClick: () => void;
-};
+import TabProps from './types';
 
 export const Tab: React.FC<TabProps> = ({
   title,

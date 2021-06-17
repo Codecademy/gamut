@@ -1,14 +1,8 @@
-import React, { ReactElement, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { Tab } from './Tab';
 import { TabList } from './TabList';
-
-type TabsProps = {
-  activeTabIndex?: number;
-  children: ReactElement<any, any>[];
-  onChange: () => void;
-  className?: string;
-};
+import { TabsProps } from './types';
 
 export const Tabs: React.FC<TabsProps> = ({ activeTabIndex = 0, children }) => {
   const [_activeTabIndex, setActiveTabIndex] = useState(activeTabIndex);

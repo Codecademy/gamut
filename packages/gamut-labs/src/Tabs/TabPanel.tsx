@@ -1,13 +1,7 @@
 import { Box } from '@codecademy/gamut';
 import React from 'react';
 
-export type TabPanelProps = {
-  title: string;
-  children: React.ReactNode | React.ReactNode[];
-  className?: string;
-  isActiveTab?: boolean;
-  onTabClick?: () => void;
-};
+import { TabPanelProps } from './types';
 
 export const TabPanel: React.FC<TabPanelProps> = ({
   children,
