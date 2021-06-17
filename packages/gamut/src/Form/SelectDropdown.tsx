@@ -152,7 +152,7 @@ const customStyles: StylesConfig<OptionTypeBase, false> = {
 
 const defaultProps = {
   name: undefined,
-  isSearchable: false,
+  isSearchable: true,
   isMulti: false,
   styles: customStyles,
   components: {
