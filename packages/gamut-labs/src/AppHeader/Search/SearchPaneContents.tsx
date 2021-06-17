@@ -11,7 +11,7 @@ import { system } from '@codecademy/gamut-styles';
 import { useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
 import { camelCase } from 'lodash';
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 export type SearchPaneContentsProps = {
   onSearch: (query: string) => void;
@@ -90,6 +90,10 @@ export const SearchPaneContents: React.FC<SearchPaneContentsProps> = ({
     event.preventDefault();
     navigateToSearch(value);
   };
+
+  useEffect(() => {
+    inputRef.current?.focus();
+  }, []);
 
   return (
     <>
