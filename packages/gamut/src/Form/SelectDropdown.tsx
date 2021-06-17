@@ -1,16 +1,12 @@
 import { ArrowChevronDownIcon } from '@codecademy/gamut-icons';
 import { theme } from '@codecademy/gamut-styles';
 import { css } from '@emotion/react';
-import React, {
-  ReactNode,
-  SelectHTMLAttributes,
-  useMemo,
-  useState,
-} from 'react';
+import React, { SelectHTMLAttributes, useMemo, useState } from 'react';
 import ReactSelect, {
   components as SelectDropdownElements,
   ContainerProps,
   IndicatorProps,
+  InputProps,
   NamedProps,
   OptionTypeBase,
   StylesConfig,
@@ -26,7 +22,7 @@ import {
 import { conditionalStyleProps } from './styles/shared-system-props';
 import { parseOptions } from './utils';
 
-const { DropdownIndicator, SelectContainer } = SelectDropdownElements;
+const { DropdownIndicator, Input } = SelectDropdownElements;
 
 type SelectDropdownBaseProps = Omit<
   SelectComponentProps,
@@ -46,9 +42,10 @@ type OptionStrict = {
   value: string;
 };
 
-type CustomContainerProps = ContainerProps<OptionStrict, false> & {
-  children?: ReactNode[];
-};
+type CustomInputProps = InputProps &
+  ContainerProps<OptionStrict, false> & {
+    selectProps?: SelectDropdownProps;
+  };
 
 const ChevronDropdown = (props: IndicatorProps<OptionTypeBase, false>) => {
   return (
@@ -58,16 +55,15 @@ const ChevronDropdown = (props: IndicatorProps<OptionTypeBase, false>) => {
   );
 };
 
-const CustomContainer = ({ children, ...rest }: CustomContainerProps) => {
-  const { inputProps } = rest.selectProps;
-  const value = rest.hasValue ? rest.getValue()[0].value : '';
+const CustomInput = (props: CustomInputProps) => {
+  const value = props.hasValue ? props.getValue()[0].value : '';
 
-  return (
-    <SelectContainer {...rest}>
-      {children}
-      <input type="hidden" value={value} {...inputProps} />
-    </SelectContainer>
-  );
+  if (props.selectProps?.inputProps) {
+    const { inputProps } = props.selectProps;
+    const newProps = { ...inputProps, ...props, value };
+    return <Input {...newProps} />;
+  }
+  return <Input {...props} />;
 };
 
 const selectBaseStyles = ({
@@ -108,6 +104,20 @@ const customStyles: StylesConfig<OptionTypeBase, false> = {
     ...formDropdownStyles(state.selectProps.error),
   }),
 
+  input: (provided, state) => ({
+    background: 0,
+    border: 0,
+    fontSize: 'inherit',
+    outline: 0,
+    padding: 0,
+    width: '1px',
+    color: 'transparent',
+    left: '-100px',
+    opacity: '0',
+    position: 'relative',
+    transform: 'scale(0)',
+  }),
+
   option: (provided, state) => ({
     padding: '14px 11px 14px 11px',
     cursor: 'pointer',
@@ -146,9 +156,9 @@ const defaultProps = {
   isMulti: false,
   styles: customStyles,
   components: {
+    Input: CustomInput,
     DropdownIndicator: ChevronDropdown,
     IndicatorSeparator: () => null,
-    SelectContainer: CustomContainer,
   },
 };
 
@@ -183,7 +193,6 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
     const currentValue = selectOptions.find(
       ({ value: optionValue }) => optionValue === value
     );
-
     return currentValue;
   }, [selectOptions, value]);
 
