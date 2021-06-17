@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-has-content */
 import React, { ComponentProps } from 'react';
 
-import { Anchor } from '../../../../Anchor/Anchor';
+import { Anchor } from '../../../../Links/Anchor';
 
 export interface MarkdownAnchorProps extends ComponentProps<typeof Anchor> {
   href: string;

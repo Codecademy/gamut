@@ -1,4 +1,4 @@
-export * from './Anchor/Anchor';
+export * from './Links';
 export * from './Alert';
 export * from './Accordion';
 export * from './AccordionArea';
