@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [11.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@11.4.0...@codecademy/gamut-styles@11.5.0) (2021-06-16)
+
+
+### Features
+
+* **variance:** Computed styles, and configurable CSSType narrowing [GM-233] ([c258c19](https://github.com/Codecademy/client-modules/commit/c258c19b7970b41361b6cfafe76e2a52b7b4c828))
+
+
+
+## [11.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@11.3.1...@codecademy/gamut-styles@11.4.0) (2021-06-16)
+
+
+### Features
+
+* **Buttons:** Color + Structure Redux [GM-237] ([#1809](https://github.com/Codecademy/client-modules/issues/1809)) ([743c248](https://github.com/Codecademy/client-modules/commit/743c2488ad5b62d41bfe3aec30504d9191a8c83c))
+
+
+
+### [11.3.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@11.3.0...@codecademy/gamut-styles@11.3.1) (2021-06-16)
+
+**Note:** Version bump only for package @codecademy/gamut-styles
+
+
+
+
+
 ## [11.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@11.2.0...@codecademy/gamut-styles@11.3.0) (2021-06-15)
 
 
