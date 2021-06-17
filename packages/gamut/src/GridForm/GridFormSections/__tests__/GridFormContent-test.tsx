@@ -20,7 +20,7 @@ const validStubTextField = {
   },
 };
 
-describe('<GridFormContent>', () => {
+describe('GridFormContent', () => {
   it('renders the label and field', () => {
     const { view } = renderView();
 
