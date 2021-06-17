@@ -60,6 +60,7 @@ export const AccordionMenu: React.FC<AccordionMenuProps> = ({
         <Anchor
           variant="interface"
           width="max-content"
+          py={12}
           px={4}
           onClick={() => {
             onSectionToggle(section.slug);
