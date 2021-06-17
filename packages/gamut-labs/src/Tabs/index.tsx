@@ -1,7 +1,9 @@
+import { FlexBox } from '@codecademy/gamut';
 import React, { useEffect, useState } from 'react';
 
 import { Tab } from './Tab';
 import { TabList } from './TabList';
+import { TabPanelList } from './TabPanelList';
 import { TabsProps } from './types';
 
 export const Tabs: React.FC<TabsProps> = ({ activeTabIndex = 0, children }) => {
@@ -12,13 +14,14 @@ export const Tabs: React.FC<TabsProps> = ({ activeTabIndex = 0, children }) => {
   }, [activeTabIndex]);
 
   return (
-    <div>
+    <FlexBox flexDirection="column">
       <TabList
         activeTabIndex={_activeTabIndex}
         setActiveTab={setActiveTabIndex}
       >
         {children}
       </TabList>
-    </div>
+      <TabPanelList activeTabIndex={_activeTabIndex}>{children}</TabPanelList>
+    </FlexBox>
   );
 };
