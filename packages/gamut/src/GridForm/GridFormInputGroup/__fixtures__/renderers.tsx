@@ -2,7 +2,6 @@ import { theme } from '@codecademy/gamut-styles';
 import { ThemeProvider } from '@emotion/react';
 import { mount } from 'enzyme';
 import React from 'react';
-import { FormProvider, useForm } from 'react-hook-form';
 
 import {
   stubCheckboxField,
@@ -12,7 +11,6 @@ import {
   stubTextareaField,
   stubTextField,
 } from '../../__tests__/stubs';
-import { GridFormContent } from '../../GridFormSections';
 import {
   GridFormCheckboxField,
   GridFormFileField,
@@ -102,18 +100,6 @@ export const renderGridFormCheckboxInput = (
       register={jest.fn()}
       {...extraProps}
     />
-  );
-};
-
-export const WrappedGridFormContent = (
-  extraProps: Partial<GridFormCheckboxField> = {}
-) => {
-  const methods = useForm();
-  const field = { ...stubCheckboxField, ...extraProps };
-  return mountWithTheme(
-    <FormProvider {...methods}>
-      <GridFormContent field={field} showRequired={false} key={field.name} />
-    </FormProvider>
   );
 };
 
