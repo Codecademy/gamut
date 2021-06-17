@@ -31,10 +31,6 @@ export type EmptySectionProps = {
    */
   illustrationPosition?: 'left' | 'right';
   /**
-   * This should be the same as the background color in order to create a patterned border effect
-   */
-  innerBGColor: Colors;
-  /**
    * Whether the pattern background stretches to the end of the left or right of the viewport
    */
   stretchDirection: 'left' | 'right';
@@ -119,7 +115,6 @@ export const EmptySection: React.FC<EmptySectionProps> = ({
   illustration: Illustration,
   stretchDirection,
   illustrationPosition = stretchDirection === 'right' ? 'left' : 'right',
-  innerBGColor,
 }) => {
   const flexDirection =
     illustrationPosition === 'right' ? 'row-reverse' : 'row';
@@ -131,7 +126,7 @@ export const EmptySection: React.FC<EmptySectionProps> = ({
         maxWidth="822px"
         flexBasis="100%"
         position="relative"
-        bg={innerBGColor}
+        bg="background-current"
         py={48}
         px={{ _: 16, sm: 48, md: 64 }}
         zIndex={1}
