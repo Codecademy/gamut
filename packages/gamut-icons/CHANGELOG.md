@@ -3,6 +3,39 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [5.3.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@5.3.1...@codecademy/gamut-icons@5.3.2) (2021-06-17)
+
+**Note:** Version bump only for package @codecademy/gamut-icons
+
+
+
+
+
+### [5.3.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@5.3.0...@codecademy/gamut-icons@5.3.1) (2021-06-16)
+
+**Note:** Version bump only for package @codecademy/gamut-icons
+
+
+
+
+
+## [5.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@5.2.1...@codecademy/gamut-icons@5.3.0) (2021-06-16)
+
+
+### Features
+
+* **Buttons:** Color + Structure Redux [GM-237] ([#1809](https://github.com/Codecademy/client-modules/issues/1809)) ([743c248](https://github.com/Codecademy/client-modules/commit/743c2488ad5b62d41bfe3aec30504d9191a8c83c))
+
+
+
+### [5.2.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@5.2.0...@codecademy/gamut-icons@5.2.1) (2021-06-16)
+
+**Note:** Version bump only for package @codecademy/gamut-icons
+
+
+
+
+
 ## [5.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@5.1.2...@codecademy/gamut-icons@5.2.0) (2021-06-15)
 
 

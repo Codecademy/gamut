@@ -4,14 +4,15 @@ import { DefaultCSSPropertyValue, PropertyTypes } from './properties';
 import {
   AbstractProps,
   CSSObject,
+  CSSPropMap,
+  CSSProps,
   ResponsiveProp,
-  SelectorMap,
-  SelectorProps,
   ThemeProps,
 } from './props';
 import { AllUnionKeys, Key, KeyFromUnion } from './utils';
 
 export type MapScale = Record<string | number, string | number>;
+export type ArrayScale = ReadonlyArray<string | number> & { length: 0 };
 
 export interface BaseProperty {
   property: keyof PropertyTypes;
@@ -19,7 +20,7 @@ export interface BaseProperty {
 }
 
 export interface Prop extends BaseProperty {
-  scale?: keyof Theme | MapScale;
+  scale?: keyof Theme | MapScale | ArrayScale;
   transform?: (
     val: string | number,
     prop?: string,
@@ -51,6 +52,8 @@ export type Scale<Config extends Prop> = ResponsiveProp<
     ? keyof Theme[Config['scale']] | PropertyValues<Config['property']>
     : Config['scale'] extends MapScale
     ? keyof Config['scale'] | PropertyValues<Config['property']>
+    : Config['scale'] extends ArrayScale
+    ? Config['scale'][number] | PropertyValues<Config['property']>
     : PropertyValues<Config['property'], true>
 >;
 
@@ -95,19 +98,19 @@ export interface Variant<P extends AbstractParser> {
   >(options: {
     prop?: PropKey;
     defaultVariant?: keyof Props;
-    base?: SelectorProps<Base, SystemProps<P>>;
-    variants: SelectorMap<Props, SystemProps<P>>;
+    base?: CSSProps<Base, SystemProps<P>>;
+    variants: CSSPropMap<Props, SystemProps<P>>;
   }): (props: VariantProps<PropKey, Keys | false> & ThemeProps) => CSSObject;
 }
 
 export interface States<P extends AbstractParser> {
   <Props extends Record<string, AbstractProps>>(
-    states: SelectorMap<Props, SystemProps<P>>
+    states: CSSPropMap<Props, SystemProps<P>>
   ): (props: Partial<Record<keyof Props, boolean>> & ThemeProps) => CSSObject;
 }
 
 export interface CSS<P extends AbstractParser> {
-  <Props extends AbstractProps>(config: SelectorProps<Props, SystemProps<P>>): (
+  <Props extends AbstractProps>(config: CSSProps<Props, SystemProps<P>>): (
     props: ThemeProps
   ) => CSSObject;
 }
@@ -122,10 +125,11 @@ export type ParserProps<
   }
 >;
 
-export type SystemProps<P extends AbstractParser> = Omit<
-  Parameters<P>[0],
-  'theme'
->;
+export type SystemProps<P extends AbstractParser> = {
+  [K in keyof Omit<Parameters<P>[0], 'theme'>]:
+    | Omit<Parameters<P>[0], 'theme'>[K]
+    | ResponsiveProp<(theme: Theme) => Omit<Parameters<P>[0], 'theme'>[K]>;
+};
 
 export type VariantProps<T extends string, V> = {
   [Key in T]?: V;
