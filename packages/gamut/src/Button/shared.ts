@@ -71,7 +71,7 @@ export const buttonStyles = system.css({
     opacity: 0,
     zIndex: 0,
   },
-  [ButtonSelectors.OUTLINE_FOCUS]: {
+  [ButtonSelectors.OUTLINE_FOCUS_VISIBLE]: {
     opacity: 1,
   },
 });
