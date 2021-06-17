@@ -3,6 +3,42 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [34.10.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@34.10.0...@codecademy/gamut@34.10.1) (2021-06-17)
+
+
+### Bug Fixes
+
+* Hover + Shadow regression ([d044952](https://github.com/Codecademy/client-modules/commit/d044952f2fdda508aeab9c277dcac2327f5dcc00))
+
+
+
+## [34.10.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@34.9.0...@codecademy/gamut@34.10.0) (2021-06-16)
+
+
+### Features
+
+* **variance:** Computed styles, and configurable CSSType narrowing [GM-233] ([c258c19](https://github.com/Codecademy/client-modules/commit/c258c19b7970b41361b6cfafe76e2a52b7b4c828))
+
+
+
+## [34.9.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@34.8.0...@codecademy/gamut@34.9.0) (2021-06-16)
+
+
+### Features
+
+* **Buttons:** Color + Structure Redux [GM-237] ([#1809](https://github.com/Codecademy/client-modules/issues/1809)) ([743c248](https://github.com/Codecademy/client-modules/commit/743c2488ad5b62d41bfe3aec30504d9191a8c83c))
+
+
+
+## [34.8.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@34.7.1...@codecademy/gamut@34.8.0) (2021-06-16)
+
+
+### Features
+
+* **Text:** Add more common utility variants / states as props GM-248 ([85b541c](https://github.com/Codecademy/client-modules/commit/85b541cbb85ef5c60b8012196680e1062d469ad1))
+
+
+
 ### [34.7.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@34.7.0...@codecademy/gamut@34.7.1) (2021-06-15)
 
 

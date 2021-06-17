@@ -3,6 +3,64 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [41.10.5](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@41.10.4...@codecademy/styleguide@41.10.5) (2021-06-17)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [41.10.4](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@41.10.3...@codecademy/styleguide@41.10.4) (2021-06-17)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [41.10.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@41.10.2...@codecademy/styleguide@41.10.3) (2021-06-17)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [41.10.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@41.10.1...@codecademy/styleguide@41.10.2) (2021-06-16)
+
+
+### Bug Fixes
+
+* fix Layout wording for SM sizes ([7c0eb98](https://github.com/Codecademy/client-modules/commit/7c0eb9821178ceffb8161245380146539088f3c2))
+
+
+
+### [41.10.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@41.10.0...@codecademy/styleguide@41.10.1) (2021-06-16)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [41.10.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@41.9.1...@codecademy/styleguide@41.10.0) (2021-06-16)
+
+
+### Features
+
+* **Buttons:** Color + Structure Redux [GM-237] ([#1809](https://github.com/Codecademy/client-modules/issues/1809)) ([743c248](https://github.com/Codecademy/client-modules/commit/743c2488ad5b62d41bfe3aec30504d9191a8c83c))
+
+
+
+### [41.9.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@41.9.0...@codecademy/styleguide@41.9.1) (2021-06-16)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
 ## [41.9.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@41.8.0...@codecademy/styleguide@41.9.0) (2021-06-15)
 
 
