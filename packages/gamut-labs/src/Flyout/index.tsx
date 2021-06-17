@@ -1,5 +1,5 @@
 import { BodyPortal, FocusTrap, IconButton } from '@codecademy/gamut';
-import { MiniDeleteIcon } from '@codecademy/gamut-icons';
+import { CloseIcon } from '@codecademy/gamut-icons';
 import { system, variant } from '@codecademy/gamut-styles';
 import { StyleProps, variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
@@ -133,10 +133,11 @@ export const Flyout: React.FC<FlyoutProps> = ({
                 {...styleProps}
               >
                 <IconButton
-                  icon={MiniDeleteIcon}
+                  icon={CloseIcon}
                   onClick={toggleExpanded}
                   position="absolute"
-                  right="0"
+                  top="0.5rem"
+                  right="0.5rem"
                 />
                 {children}
               </DrawerBase>
