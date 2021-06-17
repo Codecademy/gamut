@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [19.10.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.10.0...@codecademy/gamut-labs@19.10.1) (2021-06-17)
+
+
+### Bug Fixes
+
+* **LayoutMenu:** update focus visible states and x-button placement ([bbf1908](https://github.com/Codecademy/client-modules/commit/bbf1908e530d1b34df0086b80536ee51cc7b23d3))
+
+
+
 ## [19.10.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.9.2...@codecademy/gamut-labs@19.10.0) (2021-06-17)
 
 
