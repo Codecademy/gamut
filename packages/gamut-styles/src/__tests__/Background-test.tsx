@@ -83,4 +83,20 @@ describe('Background', () => {
 
     view.getByText('light');
   });
+
+  it('it sets the current background color to the specified bg', () => {
+    const { view } = renderView({ bg: 'paleBlue' });
+    expect(view.getByTestId('content').parentElement).toHaveStyleRule(
+      '--color-background-current',
+      theme.colors.paleBlue
+    );
+  });
+
+  it('it sets the current background color to the specified bg when switch modes', () => {
+    const { view } = renderView({ bg: 'navy' });
+    expect(view.getByTestId('content').parentElement).toHaveStyleRule(
+      '--color-background-current',
+      theme.colors.navy
+    );
+  });
 });
