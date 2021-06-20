@@ -10,14 +10,15 @@ export const TabPanelList: React.FC<TabPanelListProps> = ({
   const childArray = React.Children.toArray(children) as ReactElement[];
   return (
     <>
-      {childArray
-        .filter((c) => c.type === TabPanel)
-        .map((Panel, i) => {
-          const cloneProps: Partial<TabPanelProps> = {
-            isActiveTab: i === activeTabIndex,
-          };
-          return React.cloneElement(Panel, cloneProps);
-        })}
+      {childArray.reduce((pannelArray: typeof childArray, currentChild, i) => {
+        if (currentChild.type !== TabPanel) {
+          return pannelArray;
+        }
+        const cloneProps: Partial<TabPanelProps> = {
+          isActiveTab: i === activeTabIndex,
+        };
+        return pannelArray.push(React.cloneElement(currentChild, cloneProps));
+      }, [])}
     </>
   );
 };

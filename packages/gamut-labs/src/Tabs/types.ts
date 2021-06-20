@@ -3,7 +3,7 @@ import { ReactElement } from 'react';
 export type TabsProps = {
   activeTabIndex?: number;
   children: ReactElement<any, any>[];
-  onChange: () => void;
+  onChange?: () => void;
   className?: string;
 };
 
@@ -22,11 +22,10 @@ export type TabPanelListProps = Pick<TabsProps, 'children'> & {
 
 export type TabListProps = Pick<TabsProps, 'children'> & {
   activeTabIndex: number;
-  setActiveTab: (index: number) => void;
+  setActiveTabIndex: (index: number) => void;
 };
 
-export type TabProps = {
-  title: string;
+export type TabProps = Pick<TabPanelProps, 'title'> & {
   isActiveTab: boolean;
   disabled?: boolean;
   onClick: () => void;
