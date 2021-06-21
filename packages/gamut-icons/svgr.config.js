@@ -1,3 +1,4 @@
+const emotionPlugin = require('./emotion-plugin');
 const template = require('./icon-template');
 const indexTemplate = require('./index-template');
 
@@ -6,21 +7,25 @@ module.exports = {
   titleProp: true,
   ref: true,
   svgProps: {
-    className: '{classNames}',
-    width: '{size || getAttrValue(width) || "16px"}',
-    height: '{size || getAttrValue(height) || "16px"}',
-    fill: '{color || "currentColor"}',
+    fill: 'currentColor',
     role: 'img',
+    width: '16px',
+    height: '16px',
+    'aria-hidden': 'true',
   },
   prettierConfig: {
     parser: 'typescript',
   },
   replaceAttrValues: {
-    currentColor: '{color || "currentColor"}',
-    '#000': '{color || "currentColor"}',
-    '#111': '{color || "currentColor"}',
-    '#444': '{color || "currentColor"}',
+    '#000': 'currentColor',
+    '#111': 'currentColor',
+    '#444': 'currentColor',
   },
-  template,
+  jsx: {
+    babelConfig: {
+      plugins: [emotionPlugin],
+    },
+  },
   indexTemplate,
+  template,
 };

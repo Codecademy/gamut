@@ -19,4 +19,6 @@ export const theme = createTheme({
     48: '3rem',
     64: '4rem',
   },
-} as const).build();
+} as const)
+  .addColors({ black: '#00000' })
+  .build();

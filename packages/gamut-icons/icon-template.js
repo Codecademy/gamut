@@ -1,7 +1,7 @@
 const path = require('path');
 const { startCase } = require('lodash');
 
-function iconTemplate(api, opts, { jsx /* imports, props, exports */ }) {
+function iconTemplate(api, opts, { jsx }) {
   const template = api.template.smart({ plugins: ['jsx', 'typescript'] });
   const { componentName, filePath } = opts.state;
   const exportName = componentName.replace('Svg', '');
@@ -9,28 +9,17 @@ function iconTemplate(api, opts, { jsx /* imports, props, exports */ }) {
 
   return template.ast`
     import * as React from 'react';
-    import { ClassNames } from '@emotion/react';
-    import { GamutIconProps } from '../../types';
-    import { getAttrValue, getForwardableProps, IconStyleProps, iconStyles } from '../../props';
-    const LocalIcon = React.forwardRef<SVGSVGElement, GamutIconProps>(({
+    import { Svg, GamutIconProps } from '../../props';
+
+    export const ${exportName} = React.forwardRef<SVGSVGElement, GamutIconProps>(({
       title = "${title}",
-      titleId,
-      size,
-      color,
-      width,
-      height,
-      className: cn,
-      ...rest
+      titleId = '',
+      ...props
     },
       svgRef
     ) => {
-      const props = getForwardableProps(rest) as Omit<GamutIconProps, keyof IconStyleProps>;
-      return <ClassNames>{({ css, cx, theme }) => {
-        const classNames = cx(cn, css(iconStyles({ ...rest, width, height, theme })));
-        return ${jsx}
-      }}</ClassNames>;
+      return ${jsx};
     });
-    export const ${exportName} = LocalIcon;
   `;
 }
 module.exports = iconTemplate;

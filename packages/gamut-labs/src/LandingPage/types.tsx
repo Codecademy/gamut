@@ -1,6 +1,4 @@
-import { StyleProps } from '@codecademy/variance';
-
-import { darkModeVariants } from './variants';
+import { ColorModes } from '@codecademy/gamut-styles';
 
 export type BaseProps = {
   title?: string;
@@ -27,4 +25,4 @@ export type BaseProps = {
   testId?: string;
 };
 
-export type DarkModeProps = StyleProps<typeof darkModeVariants>;
+export type DarkModeProps = { mode?: ColorModes };
