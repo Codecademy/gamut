@@ -1,14 +1,24 @@
 import { Box } from '@codecademy/gamut';
-import React from 'react';
+import React, { useContext } from 'react';
 
-import { TabPanelProps } from './types';
+import { ActiveTabContext } from './context';
+import { DerivedPanelProps, TabPanelProps } from './types';
 
-export const TabPanel: React.FC<TabPanelProps> = ({
+export const TabPanel: React.FC<TabPanelProps> = () => null;
+
+export const DerivedTabPanel: React.FC<DerivedPanelProps> = ({
   children,
-  className = '',
-  isActiveTab,
-}) => (
-  <Box className={className} role="tabpanel" hidden={!isActiveTab}>
-    {children}
-  </Box>
-);
+  index,
+  className,
+}) => {
+  const activeTabIndex = useContext(ActiveTabContext);
+  return (
+    <Box
+      role="tabpanel"
+      hidden={!(index === activeTabIndex)}
+      className={className}
+    >
+      {children}
+    </Box>
+  );
+};

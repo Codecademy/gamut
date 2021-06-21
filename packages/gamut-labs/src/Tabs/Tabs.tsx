@@ -1,6 +1,7 @@
 import { FlexBox } from '@codecademy/gamut';
 import React, { useEffect, useRef, useState } from 'react';
 
+import { ActiveTabContext } from './context';
 import { TabList } from './TabList';
 import { TabPanelList } from './TabPanelList';
 import { TabsProps } from './types';
@@ -26,14 +27,16 @@ export const Tabs: React.FC<TabsProps> = ({
   }, [_activeTabIndex, onChange]);
 
   return (
-    <FlexBox flexDirection="column">
-      <TabList
-        activeTabIndex={_activeTabIndex}
-        setActiveTabIndex={setActiveTabIndex}
-      >
-        {children}
-      </TabList>
-      <TabPanelList activeTabIndex={_activeTabIndex}>{children}</TabPanelList>
-    </FlexBox>
+    <ActiveTabContext.Provider value={_activeTabIndex}>
+      <FlexBox flexDirection="column">
+        <TabList
+          activeTabIndex={_activeTabIndex}
+          setActiveTabIndex={setActiveTabIndex}
+        >
+          {children}
+        </TabList>
+        <TabPanelList>{children}</TabPanelList>
+      </FlexBox>
+    </ActiveTabContext.Provider>
   );
 };

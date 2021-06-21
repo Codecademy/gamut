@@ -11,14 +11,18 @@ export type TabPanelProps = {
   title: string;
   children: React.ReactNode | React.ReactNode[];
   className?: string;
-  isActiveTab?: boolean;
   onTabClick?: () => void;
   tabDisabled?: boolean;
 };
 
-export type TabPanelListProps = Pick<TabsProps, 'children'> & {
-  activeTabIndex: number;
+export type DerivedPanelProps = Pick<
+  TabPanelProps,
+  'className' | 'children'
+> & {
+  index: number;
 };
+
+export type TabPanelListProps = Pick<TabsProps, 'children'>;
 
 export type TabListProps = Pick<TabsProps, 'children'> & {
   activeTabIndex: number;
