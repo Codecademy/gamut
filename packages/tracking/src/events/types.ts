@@ -123,8 +123,10 @@ export type UserSharedData = BaseEventData & {
   href?: string;
   /** a version id for the element (ex. different version ids for redesigns) */
   version?: string;
-  /* an object of content ids related to this event */
+  /** an object of content ids related to this event */
   content_ids?: TrackingContentIds;
+  /** the repo that this event is being fired from */
+  source_codebase?: string;
 };
 
 /**
