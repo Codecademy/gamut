@@ -24,6 +24,7 @@
   display: block;
   width: px-rem(20px);
   height: px-rem(20px);
+  min-width: px-rem(20px);
   border-radius: 100%;
   box-shadow: 0 0 0 1px $color-gray-400;
   margin-right: $form-padding;
