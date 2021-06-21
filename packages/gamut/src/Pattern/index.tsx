@@ -1,5 +1,5 @@
-import styled from '@emotion/styled';
-import React, { ComponentProps } from 'react';
+import { uniqueId } from 'lodash';
+import React, { ComponentProps, useState } from 'react';
 
 import { Box } from '../Box';
 import { defs } from './defs';
@@ -17,18 +17,15 @@ export interface PatternProps extends ComponentProps<typeof Box> {
   name: PatternName;
 }
 
-const Svg = styled.svg`
-  width: 100%;
-  height: 100%;
-`;
-
 export const Pattern: React.FC<PatternProps> = ({ name, ...props }) => {
+  const [id] = useState(() => uniqueId(name));
+
   return (
     <Box {...props}>
-      <Svg aria-hidden>
-        {defs(name)}
+      <Box aria-hidden as="svg" height="100%" width="100%">
+        {defs(name, id)}
         <rect x="0" y="0" width="100%" height="100%" fill={`url(#${name})`} />
-      </Svg>
+      </Box>
     </Box>
   );
 };

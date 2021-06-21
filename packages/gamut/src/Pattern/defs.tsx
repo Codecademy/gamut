@@ -2,12 +2,12 @@ import React from 'react';
 
 import { PatternName } from './index';
 
-export const defs = (name: PatternName) => {
+export const defs = (name: PatternName, id: string) => {
   return (
     <defs>
       {name === 'diagonalStripesLoose' && (
         <pattern
-          id="diagonalStripesLoose"
+          id={`$diagonalStripesLoose-${id}`}
           x="0"
           y="0"
           width="16"
@@ -34,7 +34,7 @@ export const defs = (name: PatternName) => {
       )}
       {name === 'diagonalStripesRegular' && (
         <pattern
-          id="diagonalStripesRegular"
+          id={`$diagonalStripesRegular-${id}`}
           x="0"
           y="0"
           width="8"
@@ -61,7 +61,7 @@ export const defs = (name: PatternName) => {
       )}
       {name === 'diagonalStripesDense' && (
         <pattern
-          id="diagonalStripesDense"
+          id={`$diagonalStripesDense-${id}`}
           x="0"
           y="0"
           width="4"
@@ -84,7 +84,7 @@ export const defs = (name: PatternName) => {
       )}
       {name === 'checkerLoose' && (
         <pattern
-          id="checkerLoose"
+          id={`$checkerLoose-${id}`}
           x="0"
           y="0"
           width="16"
@@ -97,7 +97,7 @@ export const defs = (name: PatternName) => {
       )}
       {name === 'checkerRegular' && (
         <pattern
-          id="checkerRegular"
+          id={`$checkerRegular-${id}`}
           x="0"
           y="0"
           width="8"
@@ -110,7 +110,7 @@ export const defs = (name: PatternName) => {
       )}
       {name === 'checkerDense' && (
         <pattern
-          id="checkerDense"
+          id={`$checkerDense-${id}`}
           x="0"
           y="0"
           width="4"
@@ -123,7 +123,7 @@ export const defs = (name: PatternName) => {
       )}
       {name === 'dotLoose' && (
         <pattern
-          id="dotLoose"
+          id={`$dotLoose-${id}`}
           x="0"
           y="0"
           width="16"
