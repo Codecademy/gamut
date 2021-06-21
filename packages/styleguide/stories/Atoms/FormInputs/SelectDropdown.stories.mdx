@@ -176,15 +176,16 @@ export const CustomDropdown: React.FC = ({
 
 ### Custom inputProps
 
-Some of our forms require special props be passed directly onto the `<input/>` component. We can do that by passing an object, formatted `{propName: value}`, into our inputProps prop.
+Some of our forms require special props be passed directly onto the `<input/>` component. We can do that by passing an object, formatted `{propName: value}`, into our `inputProps` prop. If you need to set a name or an id to the input component, you can do that by through the `inputId` and `name` props directly on `SelectDropdown`.
 
 <Canvas>
   <Story
     name="CustomInputProps"
     args={{
       options: ['inspect me to see my inputProps', 'yes I am!', ':)'],
-      inputProps: { hello: 'updog' },
-      name: 'updog',
+      inputProps: { hello: 'hi there' },
+      name: 'custom-input-name',
+      inputId: 'custom-input-id',
     }}
   >
     {(args) => (
