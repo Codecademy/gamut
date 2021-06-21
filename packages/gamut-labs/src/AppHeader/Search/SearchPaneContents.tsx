@@ -187,7 +187,7 @@ export const SearchPaneContents: React.FC<SearchPaneContentsProps> = ({
                 href="/help"
                 onClick={() => onTrackingClick('help_center')}
               >
-                <SupportIcon size={20} /> Help Center
+                <SupportIcon mr={8} size={20} /> Help Center
               </TextButton>
             </FlexBox>
           </SuggestionContainer>
