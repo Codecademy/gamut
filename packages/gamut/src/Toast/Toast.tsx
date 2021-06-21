@@ -4,7 +4,7 @@ import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
 import React, { ReactNode, useMemo } from 'react';
 
-import { Box } from '../Box';
+import { Box, FlexBox } from '../Box';
 import { IconButton } from '../Button/IconButton';
 import { FloatingCard } from '../FloatingCard/FloatingCard';
 import { Text } from '../Typography';
@@ -41,12 +41,11 @@ const ToastContainer = styled(FloatingCard)<StyleProps<typeof layoutVariants>>(
   layoutVariants
 );
 
-const IconContainer = styled(Box)(
+const IconContainer = styled(FlexBox)(
   system.css({
-    bg: 'text',
+    alignSelf: 'center',
     width: 64,
     height: 64,
-    border: 1,
     gridArea: 'icon',
     borderRadius: '50%',
     backgroundSize: 'contain',
@@ -55,7 +54,7 @@ const IconContainer = styled(Box)(
 
 type ToastProps = {
   title?: ReactNode;
-  icon?: string;
+  icon?: ReactNode | string;
   onClose: () => void;
 };
 
@@ -63,6 +62,7 @@ export const Toast: React.FC<ToastProps> = ({
   title,
   children,
   icon,
+
   onClose,
 }) => {
   const layoutType = useMemo(() => {
@@ -71,11 +71,21 @@ export const Toast: React.FC<ToastProps> = ({
     return 'message';
   }, [title, icon]);
 
+  const renderIcon = () => {
+    if (!icon) return null;
+    if (typeof icon === 'string') {
+      return <IconContainer backgroundImage={`url(${icon})`} />;
+    }
+    return (
+      <IconContainer center border={1}>
+        {icon}
+      </IconContainer>
+    );
+  };
+
   return (
     <ToastContainer layout={layoutType} pattern="checkerDense">
-      {icon && (
-        <IconContainer alignSelf="center" backgroundImage={`url(${icon})`} />
-      )}
+      {renderIcon()}
       <Box gridArea="message" py={4}>
         {title && (
           <Text variant="p-base" fontWeight="title" mb={4}>
