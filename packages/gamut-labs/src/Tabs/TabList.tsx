@@ -46,12 +46,14 @@ export const TabList: React.FC<TabListProps> = ({
     <FlexBox role="tablist">
       {childArray.reduce((pannelArray: typeof childArray, currentChild, i) => {
         if (currentChild.type === TabPanel) {
+          const panelProps = currentChild.props as TabPanelProps;
           pannelArray.push(
             <DerivedTab
-              {...(currentChild.props as TabPanelProps)}
+              {...panelProps}
               index={i}
               activeTabIndex={activeTabIndex}
               setActiveTabIndex={setActiveTabIndex}
+              key={panelProps.title}
             />
           );
         }
