@@ -32,6 +32,7 @@ interface SelectDropdownProps
   extends SelectDropdownBaseProps,
     Pick<NamedProps, 'onChange'>,
     Pick<SelectHTMLAttributes<HTMLSelectElement>, 'value' | 'disabled'> {
+  inputId?: string;
   inputProps?: Record<string, string | number | boolean>;
   name?: string;
   placeholder?: string;
