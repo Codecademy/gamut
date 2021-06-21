@@ -8,6 +8,7 @@ import {
   NotebookIcon,
   PersonIcon,
   PieLineGraphIcon,
+  RatingStarGiveIcon,
   SupportIcon,
 } from '@codecademy/gamut-icons';
 import { ReactNode } from 'react';
@@ -393,9 +394,9 @@ export const signUp: AppHeaderFillButtonItem = {
 export const referrals: AppHeaderLinkItem = {
   dataTestId: 'header-referrals',
   id: 'referrals',
-  text: 'Something Something',
+  text: 'Give Pro, Get Pro',
   href: '/referrals',
   type: 'link',
-  icon: NotebookIcon,
-  trackingTarget: 'TODO',
+  icon: RatingStarGiveIcon,
+  trackingTarget: 'avatar_referrals',
 };
