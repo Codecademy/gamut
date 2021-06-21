@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [34.10.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@34.10.2...@codecademy/gamut@34.10.3) (2021-06-21)
+
+
+### Bug Fixes
+
+* prevent Radio label from getting squished ([a4bdd2e](https://github.com/Codecademy/client-modules/commit/a4bdd2e0a0eb6952a640ab4caffdd2d9c1660fd8))
+
+
+
+### [34.10.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@34.10.1...@codecademy/gamut@34.10.2) (2021-06-17)
+
+
+### Bug Fixes
+
+* **Radio:** fix background color ([f42e6f1](https://github.com/Codecademy/client-modules/commit/f42e6f10d514dfa5e434378e93820e957f8bb1d6))
+
+
+
 ### [34.10.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@34.10.0...@codecademy/gamut@34.10.1) (2021-06-17)
 
 
