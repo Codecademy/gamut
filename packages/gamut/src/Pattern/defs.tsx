@@ -41,7 +41,7 @@ export const defs = (name: PatternName, id: string) => {
           height="8"
           patternUnits="userSpaceOnUse"
         >
-          <g clipPath="url(#clipDiagonalStripesRegular)">
+          <g clipPath={`url(#clipDiagonalStripesRegular-${id})`}>
             <rect width="8" height="8" fill="white" />
             <rect y="7" width="1" height="1" fill="currentColor" />
             <rect x="1" y="6" width="1" height="1" fill="currentColor" />
@@ -68,7 +68,7 @@ export const defs = (name: PatternName, id: string) => {
           height="4"
           patternUnits="userSpaceOnUse"
         >
-          <g clipPath="url(#clipDiagonalStripesDense)">
+          <g clipPath={`url(#clipDiagonalStripesDense-${id})`}>
             <rect width="4" height="4" fill="white" />
             <rect y="3" width="1" height="1" fill="currentColor" />
             <rect x="1" y="2" width="1" height="1" fill="currentColor" />
