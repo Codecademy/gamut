@@ -47,7 +47,6 @@ const IconContainer = styled(FlexBox)(
     width: 64,
     height: 64,
     gridArea: 'icon',
-    borderRadius: '50%',
     backgroundSize: 'contain',
   })
 );
@@ -74,13 +73,11 @@ export const Toast: React.FC<ToastProps> = ({
   const renderIcon = () => {
     if (!icon) return null;
     if (typeof icon === 'string') {
-      return <IconContainer backgroundImage={`url(${icon})`} />;
+      return (
+        <IconContainer borderRadius="50%" backgroundImage={`url(${icon})`} />
+      );
     }
-    return (
-      <IconContainer center border={1}>
-        {icon}
-      </IconContainer>
-    );
+    return <IconContainer center>{icon}</IconContainer>;
   };
 
   return (
