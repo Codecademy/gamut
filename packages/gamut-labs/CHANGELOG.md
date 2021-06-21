@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [19.10.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.10.4...@codecademy/gamut-labs@19.10.5) (2021-06-21)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [19.10.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.10.3...@codecademy/gamut-labs@19.10.4) (2021-06-21)
+
+
+### Bug Fixes
+
+* **LayoutMenu:** Emotion Only GM-258 ([8ba715c](https://github.com/Codecademy/client-modules/commit/8ba715cdaad33dba7133c9a9e595b4b172f69021))
+
+
+
 ### [19.10.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.10.2...@codecademy/gamut-labs@19.10.3) (2021-06-17)
 
 
