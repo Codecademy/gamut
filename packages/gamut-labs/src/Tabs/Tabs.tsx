@@ -29,7 +29,7 @@ export const Tabs: React.FC<TabsProps> = ({
     <FlexBox flexDirection="column">
       <TabList
         activeTabIndex={_activeTabIndex}
-        setActiveTab={setActiveTabIndex}
+        setActiveTabIndex={setActiveTabIndex}
       >
         {children}
       </TabList>

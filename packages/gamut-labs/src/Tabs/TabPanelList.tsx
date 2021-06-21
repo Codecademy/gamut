@@ -11,13 +11,13 @@ export const TabPanelList: React.FC<TabPanelListProps> = ({
   return (
     <>
       {childArray.reduce((pannelArray: typeof childArray, currentChild, i) => {
-        if (currentChild.type !== TabPanel) {
-          return pannelArray;
+        if (currentChild.type === TabPanel) {
+          const cloneProps: Partial<TabPanelProps> = {
+            isActiveTab: i === activeTabIndex,
+          };
+          pannelArray.push(React.cloneElement(currentChild, cloneProps));
         }
-        const cloneProps: Partial<TabPanelProps> = {
-          isActiveTab: i === activeTabIndex,
-        };
-        return pannelArray.push(React.cloneElement(currentChild, cloneProps));
+        return pannelArray;
       }, [])}
     </>
   );
