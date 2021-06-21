@@ -24,7 +24,8 @@ export const Tabs: React.FC<TabsProps> = ({
     } else {
       initializedRef.current.onChange = true;
     }
-  }, [_activeTabIndex, onChange]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [_activeTabIndex]);
 
   return (
     <ActiveTabContext.Provider value={_activeTabIndex}>

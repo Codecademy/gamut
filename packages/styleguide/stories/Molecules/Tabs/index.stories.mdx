@@ -3,6 +3,8 @@ import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 
+import ExampleCard from './ExampleCard';
+
 <Meta
   title={title}
   component={Tabs}
@@ -23,22 +25,25 @@ to show, but only one should be visible at a time.`,
   <Story name="Tabs">
     {(args) => (
       <Tabs {...args}>
-        <TabPanel title="Tab One">
-          <img
-            src="https://upload.wikimedia.org/wikipedia/en/d/d4/Donkey_Kong_character.png"
-            alt="Donkey kong"
+        <TabPanel title="On soccer">
+          <ExampleCard
+            src="https://static.wikia.nocookie.net/kingofthehill/images/c/c7/Bobby.png"
+            quote="You know Dad, the kids playing soccer don't have any lumps or bruises and Coach Lucas gives them orange slices at half time."
+            speaker="Bobby Hill"
           />
         </TabPanel>
-        <TabPanel title="Tab Two">
-          <img
-            src="https://upload.wikimedia.org/wikipedia/en/c/c4/Hank_Hill.png"
-            alt="Hank Hill"
+        <TabPanel title="On vampires">
+          <ExampleCard
+            src="https://static.wikia.nocookie.net/adventuretimewithfinnandjake/images/8/80/S4e25_Marceline_happy.png"
+            speaker="Marcline the Vampire Queen"
+            quote="Vampires can't beat ghosts. It's like a rock-paper-scissors thing."
           />
         </TabPanel>
-        <TabPanel title="Tab three">
-          <img
-            src="https://static.wikia.nocookie.net/adventuretimewithfinnandjake/images/e/e0/Marceline_Stock_Night.png/revision/latest?cb=20190807133150"
-            alt="Marceline"
+        <TabPanel title="On selflessness">
+          <ExampleCard
+            src="https://static.wikia.nocookie.net/dragonball/images/a/a9/Piccolo10YearsLater.png"
+            quote="Sometimes, we have to look beyond what we want and do what's best."
+            speaker="Piccolo"
           />
         </TabPanel>
       </Tabs>
