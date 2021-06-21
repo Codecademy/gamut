@@ -3,6 +3,94 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [5.3.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@5.3.1...@codecademy/gamut-icons@5.3.2) (2021-06-17)
+
+**Note:** Version bump only for package @codecademy/gamut-icons
+
+
+
+
+
+### [5.3.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@5.3.0...@codecademy/gamut-icons@5.3.1) (2021-06-16)
+
+**Note:** Version bump only for package @codecademy/gamut-icons
+
+
+
+
+
+## [5.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@5.2.1...@codecademy/gamut-icons@5.3.0) (2021-06-16)
+
+
+### Features
+
+* **Buttons:** Color + Structure Redux [GM-237] ([#1809](https://github.com/Codecademy/client-modules/issues/1809)) ([743c248](https://github.com/Codecademy/client-modules/commit/743c2488ad5b62d41bfe3aec30504d9191a8c83c))
+
+
+
+### [5.2.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@5.2.0...@codecademy/gamut-icons@5.2.1) (2021-06-16)
+
+**Note:** Version bump only for package @codecademy/gamut-icons
+
+
+
+
+
+## [5.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@5.1.2...@codecademy/gamut-icons@5.2.0) (2021-06-15)
+
+
+### Features
+
+* **props:** Support `color` and other HTML attributes as system props without type collision GM-247 ([50a8b43](https://github.com/Codecademy/client-modules/commit/50a8b43b27eff2d75307d317d724383156e5a3ed))
+
+
+
+### [5.1.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@5.1.1...@codecademy/gamut-icons@5.1.2) (2021-06-10)
+
+**Note:** Version bump only for package @codecademy/gamut-icons
+
+
+
+
+
+### [5.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@5.1.0...@codecademy/gamut-icons@5.1.1) (2021-06-10)
+
+**Note:** Version bump only for package @codecademy/gamut-icons
+
+
+
+
+
+## [5.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@5.0.0...@codecademy/gamut-icons@5.1.0) (2021-06-07)
+
+
+### Features
+
+* **icons:** Adds LE trophy and certificate filled icons ([94da1f6](https://github.com/Codecademy/client-modules/commit/94da1f655d2b47e9148e9ca4174eeec440e43824))
+
+
+
+## [5.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@4.14.5...@codecademy/gamut-icons@5.0.0) (2021-06-03)
+
+
+### ⚠ BREAKING CHANGES
+
+* release -kit-4.7
+
+### Features
+
+* release -kit-4.7 ([1066f7b](https://github.com/Codecademy/client-modules/commit/1066f7b87f5fc37d5595324953964945c3d2b082))
+
+
+
+### [4.14.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@4.14.4...@codecademy/gamut-icons@4.14.5) (2021-06-02)
+
+**Note:** Version bump only for package @codecademy/gamut-icons
+
+
+
+
+
 ### [4.14.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@4.14.3...@codecademy/gamut-icons@4.14.4) (2021-05-27)
 
 **Note:** Version bump only for package @codecademy/gamut-icons

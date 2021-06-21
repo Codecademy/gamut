@@ -34,6 +34,7 @@ export const stubRadioGroupField: GridFormRadioGroupField = {
   options: stubRadioGroupOptions,
   name: 'stub-radio-group',
   size: 6,
+  rowspan: 2,
   type: 'radio-group',
 };
 

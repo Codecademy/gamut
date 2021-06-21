@@ -3,14 +3,14 @@ import {
   ArrowChevronDownFilledIcon,
   MiniKebabMenuIcon,
 } from '@codecademy/gamut-icons';
-import { pxRem, styledConfig } from '@codecademy/gamut-styles';
+import { pxRem, styledOptions } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React, { useRef, useState } from 'react';
 
 import { Popover } from '../Popover';
 import { DropdownItem, DropdownList } from './DropdownList';
 
-const DownArrow = styled(ArrowChevronDownFilledIcon, styledConfig)<{
+const DownArrow = styled(ArrowChevronDownFilledIcon, styledOptions)<{
   isOpen?: boolean;
 }>`
   margin-left: ${pxRem(8)};
@@ -95,7 +95,10 @@ export const DropdownButton: React.FC<DropdownButtonProps> = ({
           horizontalOffset={horizontalOffset}
           outline
         >
-          <DropdownList dropdownItems={dropdownItems} />
+          <DropdownList
+            dropdownItems={dropdownItems}
+            onClose={handleRequestClosed}
+          />
         </Popover>
       )}
     </>

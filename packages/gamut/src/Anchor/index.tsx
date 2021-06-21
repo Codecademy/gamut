@@ -1,15 +1,19 @@
-import { styledConfig, system, variant } from '@codecademy/gamut-styles';
+import { styledOptions, system, variant } from '@codecademy/gamut-styles';
 import { StyleProps, variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
+import { HTMLProps } from 'react';
 
-import { ButtonBase, ButtonBaseProps } from '../ButtonBase/ButtonBase';
+import { ButtonBase, ButtonSelectors } from '../ButtonBase/ButtonBase';
 
 export interface AnchorProps
   extends StyleProps<typeof anchorProps>,
-    StyleProps<typeof anchorVariants> {}
+    StyleProps<typeof anchorVariants> {
+  onClick?: HTMLProps<HTMLAnchorElement>['onClick'];
+}
 
 const anchorVariants = variant({
   base: {
+    display: 'inline-block',
     bg: 'transparent',
     boxShadow: 'none',
     border: 'none',
@@ -18,62 +22,54 @@ const anchorVariants = variant({
     position: 'relative',
     textColor: 'primary',
     whiteSpace: 'nowrap',
-    '&:after': {
+    [ButtonSelectors.OUTLINE]: {
+      content: "''",
       position: 'absolute',
-      top: 0,
-      left: -4,
-      width: `calc(100% + 0.5rem)`,
-      height: '100%',
+      inset: -4,
       borderRadius: '4px',
       border: 2,
       borderColor: 'primary',
       opacity: 0,
+      zIndex: 0,
     },
-    '&:hover, &:focus': {
+    [ButtonSelectors.HOVER]: {
       textDecoration: 'none',
       cursor: 'pointer',
     },
-    '&:disabled, &[disabled]': {
+    [ButtonSelectors.DISABLED]: {
       cursor: 'not-allowed',
       textDecoration: 'none',
-      color: 'gray-700',
+      color: 'text-disabled',
     },
-    '&:focus, &:focus-visible': {
-      outline: 'none',
-    },
-    '&:focus-visible:after': {
+    [ButtonSelectors.OUTLINE_FOCUS_VISIBLE]: {
       opacity: 1,
     },
   },
   variants: {
     standard: {
-      display: 'inline-block',
       textColor: 'primary',
-      '&:after': {
-        content: "''",
-      },
-      '&:hover, &:active': {
+      [ButtonSelectors.HOVER]: {
         textDecoration: 'underline',
       },
-      '&:focus-visible': {
+      [ButtonSelectors.FOCUS_VISIBLE]: {
         textColor: 'text',
       },
     },
     inline: {
+      display: 'inline',
       whiteSpace: 'initial',
       textDecoration: 'underline',
-      '&:focus-visible': {
+      [ButtonSelectors.OUTLINE]: {
+        display: 'none',
+      },
+      [ButtonSelectors.FOCUS_VISIBLE]: {
         outline: 'currentColor auto 4px',
         textDecoration: 'underline',
       },
     },
     interface: {
-      display: 'inline-block',
       textColor: 'text',
       whiteSpace: 'initial',
-      '&:after': {
-        content: "''",
-      },
     },
   },
 });
@@ -84,14 +80,12 @@ const anchorProps = variance.compose(
   system.space
 );
 
-export const AnchorBase = styled('a', styledConfig)<AnchorProps>(
+export const AnchorBase = styled('a', styledOptions<'a'>())<AnchorProps>(
   anchorVariants,
   anchorProps
 );
 
-export const Anchor = AnchorBase.withComponent(
-  ButtonBase as ButtonBaseProps<AnchorProps>
-);
+export const Anchor = AnchorBase.withComponent(ButtonBase);
 
 Anchor.defaultProps = {
   variant: 'inline',
