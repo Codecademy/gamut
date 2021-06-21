@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [34.10.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@34.10.4...@codecademy/gamut@34.10.5) (2021-06-21)
+
+
+### Bug Fixes
+
+* sweet containers should not cause scroll on tab ([9f50bab](https://github.com/Codecademy/client-modules/commit/9f50bab654e749833bc867d9c8d18649dc691720))
+
+
+
 ### [34.10.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@34.10.3...@codecademy/gamut@34.10.4) (2021-06-21)
 
 **Note:** Version bump only for package @codecademy/gamut
