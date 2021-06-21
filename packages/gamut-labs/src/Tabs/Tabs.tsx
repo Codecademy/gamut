@@ -1,4 +1,5 @@
 import { FlexBox } from '@codecademy/gamut';
+import { clamp } from 'lodash';
 import React, { useEffect, useRef, useState } from 'react';
 
 import { ActiveTabContext } from './context';
@@ -15,8 +16,8 @@ export const Tabs: React.FC<TabsProps> = ({
   const [_activeTabIndex, setActiveTabIndex] = useState(activeTabIndex);
 
   useEffect(() => {
-    setActiveTabIndex(activeTabIndex);
-  }, [activeTabIndex]);
+    setActiveTabIndex(clamp(activeTabIndex, 0, children.length - 1));
+  }, [activeTabIndex, children]);
 
   useEffect(() => {
     if (initializedRef.current.onChange) {

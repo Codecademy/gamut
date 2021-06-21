@@ -13,7 +13,7 @@ import ExampleCard from './ExampleCard';
     subtitle: `Use a series of tabbed areas for when you have multiple potential sections
 to show, but only one should be visible at a time.`,
     source: 'gamut-labs',
-    figmaId: 'fmirRfslSgkAyYz0WYBaF9',
+    figmaId: '',
     status: 'updating',
   }}
   args={{
@@ -52,3 +52,41 @@ to show, but only one should be visible at a time.`,
 </Canvas>
 
 <PropsTable story="Tabs" />
+
+# TabPanel
+
+## Disabled TabPanel
+
+<Canvas>
+  <Story name="Disabled TabPanel">
+    <Tabs>
+      <TabPanel title="On friendship">
+        <ExampleCard
+          src="https://static.wikia.nocookie.net/spongebob/images/9/9a/Prehibernation_Week_044.png"
+          quote="If you want to be my friend, just be yourself!"
+          speaker="Sandy Cheeks"
+        />
+      </TabPanel>
+      <TabPanel title="On mystery" tabDisabled />
+    </Tabs>
+  </Story>
+</Canvas>
+
+## TabPanel with onClick
+
+<Canvas>
+  <Story name="TabPanel with onClick">
+    <Tabs>
+      <TabPanel
+        title="On perseverance"
+        onTabClick={() => window.alert('He shoots, he scores!')}
+      >
+        <ExampleCard
+          src="https://static.wikia.nocookie.net/kurokonobasuke/images/7/79/LG_Kuroko.png"
+          quote="The possibility of victory is only 0% when all the players give up. No matter how impossible it may seem, I refuse to make it 0% myself."
+          speaker="Tetsuya Kuroko"
+        />
+      </TabPanel>
+    </Tabs>
+  </Story>
+</Canvas>
