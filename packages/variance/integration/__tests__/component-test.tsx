@@ -5,7 +5,34 @@ import React, { ComponentProps } from 'react';
 import renderer from 'react-test-renderer';
 
 import { variance } from '../../src/core';
+import { fervor } from '../../src/core/fervor';
 import { theme } from '../__fixtures__/theme';
+
+const Box = styled.div(
+  fervor
+    .withSystemProps({
+      layout: true,
+    })
+    .withBase({
+      width: 0.5,
+      display: 'inline-block',
+    })
+    .withVariants({
+      prop: 'type',
+      defaultVariant: 'normal',
+      variants: {
+        home: {
+          backgroundColor: 'blue',
+        },
+        normal: {
+          backgroundColor: 'black',
+        },
+      },
+    })
+    .build()
+);
+
+<Box width="100%" height={['50%', '25%']} type="normal" />;
 
 expect.extend(matchers);
 

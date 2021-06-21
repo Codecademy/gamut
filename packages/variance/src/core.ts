@@ -103,7 +103,7 @@ export const variance = {
         let scaleVal: string | number | undefined;
 
         if (isFunction(value)) {
-          usedValue = value(props.theme);
+          scaleVal = value(props.theme);
         } else {
           if (isString(scale)) scaleVal = get(props, `theme.${scale}.${value}`);
           if (isObject(scale)) scaleVal = get(scale, `${value}`);
