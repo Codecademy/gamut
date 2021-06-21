@@ -5,13 +5,23 @@ import React, { useState } from 'react';
 import { SectionItemLink } from './SectionItemLink';
 import { SelectedSectionItem } from './SelectedSectionItem';
 
+// this is needed to add a few pixels of extra space for the left side of the focus-visible outline
+const leftPaddingForItem = 4;
+
 const StyledAccordionArea = styled(AccordionArea)`
   padding-bottom: ${({ theme }) => theme.spacing[32]};
+  position: relative;
+  left: -${leftPaddingForItem}px;
 `;
 
 const StyledAccordionButton = styled(AccordionButton)`
-  padding-left: 0;
+  padding-left: ${leftPaddingForItem}px;
   justify-content: flex-start;
+  width: max-content;
+`;
+
+const StyledAccordionSection = styled(Box)`
+  padding: 8px 0 8px ${leftPaddingForItem}px;
 `;
 
 export type SectionItem = {
@@ -58,7 +68,7 @@ export const AccordionMenu: React.FC<AccordionMenuProps> = ({
       }
     >
       {section.items.map((item) => (
-        <Box key={item.slug} py={8}>
+        <StyledAccordionSection key={item.slug}>
           {selectedItem === item.slug ? (
             <SelectedSectionItem>{item.title}</SelectedSectionItem>
           ) : (
@@ -72,7 +82,7 @@ export const AccordionMenu: React.FC<AccordionMenuProps> = ({
               {item.title}
             </SectionItemLink>
           )}
-        </Box>
+        </StyledAccordionSection>
       ))}
     </StyledAccordionArea>
   );

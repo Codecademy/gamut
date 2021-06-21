@@ -3,6 +3,47 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [41.10.7](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@41.10.6...@codecademy/styleguide@41.10.7) (2021-06-17)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [41.10.6](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@41.10.5...@codecademy/styleguide@41.10.6) (2021-06-17)
+
+
+### Bug Fixes
+
+* **Radio:** fix background color ([f42e6f1](https://github.com/Codecademy/client-modules/commit/f42e6f10d514dfa5e434378e93820e957f8bb1d6))
+
+
+
+### [41.10.5](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@41.10.4...@codecademy/styleguide@41.10.5) (2021-06-17)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [41.10.4](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@41.10.3...@codecademy/styleguide@41.10.4) (2021-06-17)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [41.10.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@41.10.2...@codecademy/styleguide@41.10.3) (2021-06-17)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
 ### [41.10.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@41.10.1...@codecademy/styleguide@41.10.2) (2021-06-16)
 
 

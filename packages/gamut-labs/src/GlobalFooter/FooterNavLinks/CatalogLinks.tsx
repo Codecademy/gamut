@@ -122,7 +122,7 @@ export const CatalogLinks: React.FC<CatalogLinksProps> = ({ onClick }) => {
         </CatalogFooterLinkItem>
         <CatalogFooterLinkItem>
           <Anchor
-            href="/learn/beta-content"
+            href="/catalog/subject/beta"
             onClick={(event) => onClick({ event, target: 'betaContent' })}
             variant="interface"
           >
