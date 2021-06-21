@@ -28,7 +28,7 @@
     "@codecademy/variance": "^0.11.0",
     "classnames": "^2.2.5",
     "react-focus-on": "^3.5.1",
-    "react-hotkeys-hook": "^2.3.1",
+    "react-hotkeys-hook": "^3.3.2",
     "react-use": "15.3.8"
   },
   "devDependencies": {
