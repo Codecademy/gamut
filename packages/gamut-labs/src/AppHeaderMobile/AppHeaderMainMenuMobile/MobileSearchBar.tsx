@@ -68,7 +68,7 @@ export const MobileSearchBar: React.FC<MobileSearchBarProps> = ({
         value={searchValue}
         onChange={handleChange}
       />
-      <SearchButton>
+      <SearchButton aria-label="Enter search">
         <SearchIcon />
       </SearchButton>
     </SearchForm>
