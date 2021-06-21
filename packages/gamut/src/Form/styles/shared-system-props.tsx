@@ -129,6 +129,7 @@ const consistentLabelStyles = {
 
 export const radioLabel = system.css({
   ...formBaseComponentStyles,
+  bg: 'transparent',
   display: 'flex',
   py: 16,
   alignItems: 'center',
