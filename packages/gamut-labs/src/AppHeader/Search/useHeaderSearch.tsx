@@ -1,6 +1,7 @@
+import { IconButton } from '@codecademy/gamut';
+import { SearchIcon } from '@codecademy/gamut-icons';
 import React, { useState } from 'react';
 
-import { SearchButton } from './SearchButton';
 import { SearchPane } from './SearchPane';
 
 export type AppHeaderSearch = {
@@ -28,7 +29,14 @@ export const useHeaderSearch = ({
     {
       id: 'search',
       type: 'render-element',
-      renderElement: () => <SearchButton toggleSearch={toggleSearch} />,
+      renderElement: () => (
+        <IconButton
+          aria-label="Search Codecademy Content"
+          data-testid="header-search"
+          onClick={toggleSearch}
+          icon={SearchIcon}
+        />
+      ),
     },
     <SearchPane
       isSearchVisible={isSearchVisible}
