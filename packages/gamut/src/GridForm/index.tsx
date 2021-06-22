@@ -105,11 +105,12 @@ export function GridForm<
     ),
     mode: validation,
   });
-
+  const isInvalid = validation === 'onChange' && !formState.isValid;
   const submitDisabled =
     submit.disabled ||
+    isInvalid ||
     submit?.shouldDisable?.(
-      validation === 'onChange' && !formState.isValid,
+      isInvalid,
       formState.isSubmitting,
       formState.isValidating
     );
