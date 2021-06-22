@@ -5,6 +5,7 @@ export type TabsProps = {
   children: ReactElement<any, any>[];
   onChange?: () => void;
   className?: string;
+  tabSize?: number;
 };
 
 export type TabPanelProps = {
@@ -24,13 +25,24 @@ export type DerivedPanelProps = Pick<
 
 export type TabPanelListProps = Pick<TabsProps, 'children'>;
 
-export type TabListProps = Pick<TabsProps, 'children'> & {
+export type TabListProps = Pick<TabsProps, 'children' | 'tabSize'> & {
   activeTabIndex: number;
   setActiveTabIndex: (index: number) => void;
 };
 
-export type TabProps = Pick<TabPanelProps, 'title'> & {
-  isActiveTab: boolean;
-  disabled?: boolean;
-  onClick: () => void;
-};
+export type DerivedTabProps = Pick<
+  TabPanelProps,
+  'title' | 'onTabClick' | 'tabDisabled'
+> &
+  Pick<TabsProps, 'tabSize'> & {
+    index: number;
+    setActiveTabIndex: (index: number) => void;
+    activeTabIndex: number;
+  };
+
+export type TabProps = Pick<TabPanelProps, 'title'> &
+  Pick<TabsProps, 'tabSize'> & {
+    isActiveTab: boolean;
+    disabled?: boolean;
+    onClick: () => void;
+  };

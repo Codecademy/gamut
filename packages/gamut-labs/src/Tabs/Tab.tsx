@@ -13,6 +13,7 @@ const TabButton = styled(TextButton)<Pick<TabProps, 'isActiveTab'>>`
   font-weight: ${({ theme, isActiveTab }) =>
     isActiveTab ? theme.fontWeight[700] : theme.fontWeight[400]};
   font-size: ${({ theme }) => theme.fontSize[18]};
+  text-overflow: ellipsis;
 `;
 
 export const Tab: React.FC<TabProps> = ({
@@ -20,6 +21,7 @@ export const Tab: React.FC<TabProps> = ({
   isActiveTab,
   disabled,
   onClick,
+  tabSize,
 }) => (
   <Box borderBottom={1} borderColor={isActiveTab ? 'primary' : 'text-disabled'}>
     <TabButton
@@ -28,9 +30,12 @@ export const Tab: React.FC<TabProps> = ({
       disabled={disabled}
       role="tab"
       aria-selected={isActiveTab}
-      width={160}
+      width={tabSize}
+      maxWidth={tabSize}
       isActiveTab={isActiveTab}
       pt={8}
+      overflow="hidden"
+      display="block"
     >
       {title}
     </TabButton>

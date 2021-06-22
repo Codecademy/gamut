@@ -11,6 +11,7 @@ export const Tabs: React.FC<TabsProps> = ({
   activeTabIndex = 0,
   children,
   onChange,
+  tabSize,
 }) => {
   const initializedRef = useRef({ onChange: false });
   const [_activeTabIndex, setActiveTabIndex] = useState(activeTabIndex);
@@ -34,6 +35,7 @@ export const Tabs: React.FC<TabsProps> = ({
         <TabList
           activeTabIndex={_activeTabIndex}
           setActiveTabIndex={setActiveTabIndex}
+          tabSize={tabSize}
         >
           {children}
         </TabList>

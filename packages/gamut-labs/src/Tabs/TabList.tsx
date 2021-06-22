@@ -3,16 +3,7 @@ import React, { ReactElement } from 'react';
 
 import { Tab } from './Tab';
 import { TabPanel } from './TabPanel';
-import { TabListProps, TabPanelProps } from './types';
-
-type DerivedTabProps = Pick<
-  TabPanelProps,
-  'title' | 'onTabClick' | 'tabDisabled'
-> & {
-  index: number;
-  setActiveTabIndex: (index: number) => void;
-  activeTabIndex: number;
-};
+import { DerivedTabProps, TabListProps, TabPanelProps } from './types';
 
 const DerivedTab: React.FC<DerivedTabProps> = ({
   title,
@@ -21,6 +12,7 @@ const DerivedTab: React.FC<DerivedTabProps> = ({
   index,
   activeTabIndex,
   setActiveTabIndex,
+  tabSize,
 }) => {
   const onClick = () => {
     onTabClick?.();
@@ -32,6 +24,7 @@ const DerivedTab: React.FC<DerivedTabProps> = ({
       isActiveTab={index === activeTabIndex}
       onClick={onClick}
       disabled={Boolean(tabDisabled)}
+      tabSize={tabSize}
     />
   );
 };
@@ -40,6 +33,7 @@ export const TabList: React.FC<TabListProps> = ({
   children,
   activeTabIndex,
   setActiveTabIndex,
+  tabSize,
 }) => {
   const childArray = React.Children.toArray(children) as ReactElement[];
   return (
@@ -54,6 +48,7 @@ export const TabList: React.FC<TabListProps> = ({
               activeTabIndex={activeTabIndex}
               setActiveTabIndex={setActiveTabIndex}
               key={panelProps.title}
+              tabSize={tabSize}
             />
           );
         }

@@ -53,6 +53,29 @@ to show, but only one should be visible at a time.`,
 
 <PropsTable story="Tabs" />
 
+## Tabs with defined width
+
+<Canvas>
+  <Story name="Tabs with defined width">
+    <Tabs tabSize={160}>
+      <TabPanel title="On vampires">
+        <ExampleCard
+          src="https://static.wikia.nocookie.net/adventuretimewithfinnandjake/images/8/80/S4e25_Marceline_happy.png"
+          speaker="Marcline the Vampire Queen"
+          quote="Vampires can't beat ghosts. It's like a rock-paper-scissors thing."
+        />
+      </TabPanel>
+      <TabPanel title="On summer rains and their predictability">
+        <ExampleCard
+          src="https://static.wikia.nocookie.net/edwikia/images/0/0a/DDPhone.JPG"
+          quote="Summer rains, you can never predict them."
+          speaker="Edd"
+        />
+      </TabPanel>
+    </Tabs>
+  </Story>
+</Canvas>
+
 # TabPanel
 
 ## Disabled TabPanel
