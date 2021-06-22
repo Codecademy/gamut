@@ -3,6 +3,137 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [41.10.14](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@41.10.13...@codecademy/styleguide@41.10.14) (2021-06-22)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [41.10.13](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@41.10.12...@codecademy/styleguide@41.10.13) (2021-06-21)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [41.10.12](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@41.10.11...@codecademy/styleguide@41.10.12) (2021-06-21)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [41.10.11](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@41.10.10...@codecademy/styleguide@41.10.11) (2021-06-21)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [41.10.10](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@41.10.9...@codecademy/styleguide@41.10.10) (2021-06-21)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [41.10.9](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@41.10.8...@codecademy/styleguide@41.10.9) (2021-06-21)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [41.10.8](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@41.10.7...@codecademy/styleguide@41.10.8) (2021-06-21)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [41.10.7](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@41.10.6...@codecademy/styleguide@41.10.7) (2021-06-17)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [41.10.6](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@41.10.5...@codecademy/styleguide@41.10.6) (2021-06-17)
+
+
+### Bug Fixes
+
+* **Radio:** fix background color ([f42e6f1](https://github.com/Codecademy/client-modules/commit/f42e6f10d514dfa5e434378e93820e957f8bb1d6))
+
+
+
+### [41.10.5](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@41.10.4...@codecademy/styleguide@41.10.5) (2021-06-17)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [41.10.4](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@41.10.3...@codecademy/styleguide@41.10.4) (2021-06-17)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [41.10.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@41.10.2...@codecademy/styleguide@41.10.3) (2021-06-17)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [41.10.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@41.10.1...@codecademy/styleguide@41.10.2) (2021-06-16)
+
+
+### Bug Fixes
+
+* fix Layout wording for SM sizes ([7c0eb98](https://github.com/Codecademy/client-modules/commit/7c0eb9821178ceffb8161245380146539088f3c2))
+
+
+
+### [41.10.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@41.10.0...@codecademy/styleguide@41.10.1) (2021-06-16)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [41.10.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@41.9.1...@codecademy/styleguide@41.10.0) (2021-06-16)
+
+
+### Features
+
+* **Buttons:** Color + Structure Redux [GM-237] ([#1809](https://github.com/Codecademy/client-modules/issues/1809)) ([743c248](https://github.com/Codecademy/client-modules/commit/743c2488ad5b62d41bfe3aec30504d9191a8c83c))
+
+
+
+### [41.9.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@41.9.0...@codecademy/styleguide@41.9.1) (2021-06-16)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
 ## [41.9.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@41.8.0...@codecademy/styleguide@41.9.0) (2021-06-15)
 
 
