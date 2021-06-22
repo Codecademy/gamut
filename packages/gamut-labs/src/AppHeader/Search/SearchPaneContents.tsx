@@ -33,8 +33,8 @@ const Input = Box.withComponent('input');
 const QueryContainer = styled(ContentContainer)(
   system.css({
     display: 'flex',
-    paddingBottom: '0',
-    paddingTop: '2rem',
+    pb: 0,
+    pt: 16,
     width: '100%',
   })
 );
