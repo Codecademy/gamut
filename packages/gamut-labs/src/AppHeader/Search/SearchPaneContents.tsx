@@ -41,8 +41,8 @@ const QueryContainer = styled(ContentContainer)(
 
 const SuggestionContainer = styled(ContentContainer)(
   system.css({
-    paddingTop: '2rem',
-    paddingBottom: '2rem',
+    pb: 16,
+    pt: 16,
   })
 );
 
