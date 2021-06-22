@@ -1,11 +1,4 @@
-import {
-  Card,
-  FlexBox,
-  HeadingTags,
-  ProLabel,
-  Text,
-  Truncate,
-} from '@codecademy/gamut';
+import { Card, FlexBox, HeadingTags, ProLabel, Text } from '@codecademy/gamut';
 import { pxRem } from '@codecademy/gamut-styles';
 import React from 'react';
 
@@ -60,6 +53,7 @@ export const CurriculumCard: React.FC<CurriculumCardProps> = ({
       variant={boxVariant ?? 'white'}
       shadow="medium"
       position="relative"
+      height="100%"
     >
       <Text
         display="flex"
@@ -72,7 +66,7 @@ export const CurriculumCard: React.FC<CurriculumCardProps> = ({
         {text}
       </Text>
       <Text as={headingLevel} mb={4} fontSize={20}>
-        <Truncate lines={2}>{title}</Truncate>
+        {title}
       </Text>
       <FlexBox flexWrap="wrap">
         {!progressState && (
