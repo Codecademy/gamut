@@ -1,6 +1,6 @@
 import { styledOptions, system } from '@codecademy/gamut-styles';
-import { StyleProps, variance } from '@codecademy/variance';
-import { pickBy } from 'lodash';
+import { StyleProps, transformSize, variance } from '@codecademy/variance';
+import styled from '@emotion/styled';
 
 export interface IconStyleProps extends StyleProps<typeof iconProps> {}
 
@@ -18,7 +18,6 @@ export interface GamutIconProps
    * Generated definitions may not match with other vesions @types/react in ^16.9 this ensures that the type exists and is optional as it would in >16.9.21
    */
   path?: string;
-  size?: number | string;
 }
 
 export type ForwardableProps = Omit<GamutIconProps, keyof IconStyleProps>;
@@ -27,10 +26,17 @@ export const iconProps = variance.compose(
   system.layout,
   system.color,
   system.space,
-  system.positioning
+  system.positioning,
+  system.border,
+  variance.create({
+    size: {
+      property: 'width',
+      properties: ['width', 'height'],
+      transform: transformSize,
+    },
+  })
 );
 
-export const iconStyles = (props: IconStyleProps) => iconProps(props);
+export const Svg = styled('svg', styledOptions<'svg'>())(iconProps);
 
-export const getForwardableProps = (props: GamutIconProps): ForwardableProps =>
-  pickBy(props, (value, key) => styledOptions.shouldForwardProp(key));
+Svg.defaultProps = { size: 16 };

@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.10.0](https://github.com/Codecademy/client-modules/compare/@codecademy/tracking@0.9.0...@codecademy/tracking@0.10.0) (2021-06-21)
+
+
+### Features
+
+* **tracking:** Added repo-tracking to user events ([22d0d7f](https://github.com/Codecademy/client-modules/commit/22d0d7feb37beb6642ab8fdf09f83480e5919bdf))
+
+
+
 ## [0.9.0](https://github.com/Codecademy/client-modules/compare/@codecademy/tracking@0.8.0...@codecademy/tracking@0.9.0) (2021-06-10)
 
 
