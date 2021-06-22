@@ -24,7 +24,7 @@ describe('GridFormSections', () => {
 
   it('renders the proper Column size when layout is set to center', () => {
     const { wrapper } = renderWrapper();
-    const column = wrapper.find('Column');
+    const column = wrapper.find('Column') as any;
     const { size, gridRowEnd } = column.props();
 
     expect(size).toEqual(12);
@@ -33,7 +33,7 @@ describe('GridFormSections', () => {
 
   it('renders the proper Column size according to number of fields when layout is set to left', () => {
     const { wrapper } = renderWrapper({ layout: 'left' });
-    const column = wrapper.find('Column');
+    const column = wrapper.find('Column') as any;
     const { size, gridRowEnd } = column.props();
 
     expect(size).toEqual(3);
