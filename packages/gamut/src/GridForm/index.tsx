@@ -98,9 +98,9 @@ export function GridForm<
     mode: validation,
   });
 
-  const { isValidating, isSubmitting, isValid } = formState;
+  const { isValidating, isSubmitting } = formState;
   const submitDisabled =
-    (validation === 'onChange' && !isValid) ||
+    (validation === 'onChange' && !formState.isValid) ||
     isValidating ||
     isSubmitting ||
     submit.disabled;
