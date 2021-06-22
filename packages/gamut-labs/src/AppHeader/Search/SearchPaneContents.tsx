@@ -102,7 +102,9 @@ export const SearchPaneContents: React.FC<SearchPaneContentsProps> = ({
         aria-hidden
         position="fixed"
         height="100%"
-        top={theme.elements.headerHeight}
+        // We add 5rem here in case there's some sort of branded banner above search
+        // The search area is much taller than 5rem so this is a safe amount of padding
+        top={`calc(${theme.elements.headerHeight} + 5rem)`}
         width={1}
         bg="black"
         opacity={0.2}
