@@ -3,6 +3,49 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [34.10.7](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@34.10.6...@codecademy/gamut@34.10.7) (2021-06-21)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [34.10.6](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@34.10.5...@codecademy/gamut@34.10.6) (2021-06-21)
+
+
+### Bug Fixes
+
+* **ProLabel:** add title ([9a8cb07](https://github.com/Codecademy/client-modules/commit/9a8cb073958626932b7bfd3ded7768e7e2177930))
+
+
+
+### [34.10.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@34.10.4...@codecademy/gamut@34.10.5) (2021-06-21)
+
+
+### Bug Fixes
+
+* sweet containers should not cause scroll on tab ([9f50bab](https://github.com/Codecademy/client-modules/commit/9f50bab654e749833bc867d9c8d18649dc691720))
+
+
+
+### [34.10.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@34.10.3...@codecademy/gamut@34.10.4) (2021-06-21)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [34.10.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@34.10.2...@codecademy/gamut@34.10.3) (2021-06-21)
+
+
+### Bug Fixes
+
+* prevent Radio label from getting squished ([a4bdd2e](https://github.com/Codecademy/client-modules/commit/a4bdd2e0a0eb6952a640ab4caffdd2d9c1660fd8))
+
+
+
 ### [34.10.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@34.10.1...@codecademy/gamut@34.10.2) (2021-06-17)
 
 
