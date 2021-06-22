@@ -57,6 +57,14 @@ export type GridFormProps<Values extends {}> = {
      * Manually overrides the submit button to be disabled regardless of validation, if true.
      */
     disabled?: boolean;
+    /**
+     * Compute whether the submit button should be disabled based on current state.
+     */
+    shouldDisable?: (
+      invalid?: boolean,
+      submitting?: boolean,
+      validating?: boolean
+    ) => boolean;
   };
 
   /**
@@ -98,12 +106,13 @@ export function GridForm<
     mode: validation,
   });
 
-  const { isValidating, isSubmitting } = formState;
   const submitDisabled =
-    (validation === 'onChange' && !formState.isValid) ||
-    isValidating ||
-    isSubmitting ||
-    submit.disabled;
+    submit.disabled ||
+    submit?.shouldDisable?.(
+      validation === 'onChange' && !formState.isValid,
+      formState.isSubmitting,
+      formState.isValidating
+    );
   /**
    * Keep track of the first error in this form.
    * This is so we only add the correct aria-live props on the first error.
