@@ -26,6 +26,7 @@ export type CurriculumCardProps = SubtitleProps & {
   showProLogo?: boolean;
   tag?: string;
   tagColor?: TagColor;
+  isFullHeight?: boolean;
 };
 
 export const CurriculumCard: React.FC<CurriculumCardProps> = ({
@@ -33,6 +34,7 @@ export const CurriculumCard: React.FC<CurriculumCardProps> = ({
   headingLevel = 'h3',
   image,
   isFullSize = false,
+  isFullHeight,
   progressState,
   scope,
   scopeCount,
@@ -53,7 +55,7 @@ export const CurriculumCard: React.FC<CurriculumCardProps> = ({
       variant={boxVariant ?? 'white'}
       shadow="medium"
       position="relative"
-      height="100%"
+      height={isFullHeight ? '100%' : ''}
     >
       <Text
         display="flex"
