@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [19.11.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.10.9...@codecademy/gamut-labs@19.11.0) (2021-06-22)
+
+
+### Features
+
+* **GlobalHeader:** adding referral link ([5152044](https://github.com/Codecademy/client-modules/commit/51520447e40a0fb23a0fb3826382c49433ed4f49))
+
+
+
 ### [19.10.9](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.10.8...@codecademy/gamut-labs@19.10.9) (2021-06-21)
 
 **Note:** Version bump only for package @codecademy/gamut-labs
