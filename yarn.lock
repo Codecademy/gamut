@@ -14045,10 +14045,10 @@ react-helmet@6.1.0:
     react-fast-compare "^3.1.1"
     react-side-effect "^2.1.0"
 
-react-hook-form@6.8.5:
-  version "6.8.5"
-  resolved "https://registry.npmjs.org/react-hook-form/-/react-hook-form-6.8.5.tgz#77cb5f208038605ed36c0645d7676d0cb2014403"
-  integrity sha512-H/4d4IV/nLiz2Q2NHC9uT4ZwK2m1LIObf7tOszpkhYKIyfHamFBHezhAbLm4ipnA4EN1nn/uK166MDfZI6Cj9A==
+react-hook-form@6.15.5:
+  version "6.15.5"
+  resolved "https://registry.npmjs.org/react-hook-form/-/react-hook-form-6.15.5.tgz#c2578f9ce6a6df7b33015587d40cd880dc13e2db"
+  integrity sha512-so2jEPYKdVk1olMo+HQ9D9n1hVzaPPFO4wsjgSeZ964R7q7CHsYRbVF0PGBi83FcycA5482WHflasdwLIUVENg==
 
 react-hotkeys-hook@^2.3.1:
   version "2.4.1"
