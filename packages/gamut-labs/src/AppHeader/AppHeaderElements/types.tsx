@@ -72,6 +72,6 @@ export type AppHeaderClickHandler = (
   item: AppHeaderItem
 ) => void;
 
-export const appHeaderItemIsLink = (
+export const isAppHeaderItemWithLink = (
   item: AppHeaderItem
 ): item is AppHeaderItemWithLink => !!(item as AppHeaderItemWithLink).href;
