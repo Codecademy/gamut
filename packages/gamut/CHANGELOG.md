@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [34.10.8](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@34.10.7...@codecademy/gamut@34.10.8) (2021-06-23)
+
+
+### Bug Fixes
+
+* ToolTip icons can't be aria-hidden ([12da9eb](https://github.com/Codecademy/client-modules/commit/12da9eb4d70bdae8f2450d119737627f646588e3))
+
+
+
 ### [34.10.7](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@34.10.6...@codecademy/gamut@34.10.7) (2021-06-21)
 
 **Note:** Version bump only for package @codecademy/gamut
