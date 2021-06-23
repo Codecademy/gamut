@@ -12,6 +12,7 @@ export const Tabs: React.FC<TabsProps> = ({
   children,
   onChange,
   tabSize,
+  activeTabColor,
 }) => {
   const initializedRef = useRef({ onChange: false });
   const [_activeTabIndex, setActiveTabIndex] = useState(activeTabIndex);
@@ -22,7 +23,7 @@ export const Tabs: React.FC<TabsProps> = ({
 
   useEffect(() => {
     if (initializedRef.current.onChange) {
-      onChange?.();
+      onChange?.(_activeTabIndex);
     } else {
       initializedRef.current.onChange = true;
     }
@@ -36,6 +37,7 @@ export const Tabs: React.FC<TabsProps> = ({
           activeTabIndex={_activeTabIndex}
           setActiveTabIndex={setActiveTabIndex}
           tabSize={tabSize}
+          activeTabColor={activeTabColor}
         >
           {children}
         </TabList>

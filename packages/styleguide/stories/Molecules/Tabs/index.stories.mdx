@@ -57,12 +57,12 @@ to show, but only one should be visible at a time.`,
 
 <Canvas>
   <Story name="Tabs with defined width">
-    <Tabs tabSize={160}>
-      <TabPanel title="On vampires">
+    <Tabs tabSize={300}>
+      <TabPanel title="On toughness">
         <ExampleCard
-          src="https://static.wikia.nocookie.net/adventuretimewithfinnandjake/images/8/80/S4e25_Marceline_happy.png"
-          speaker="Marcline the Vampire Queen"
-          quote="Vampires can't beat ghosts. It's like a rock-paper-scissors thing."
+          src="https://static.wikia.nocookie.net/starwars/images/7/71/Ahsoka_The_Padawan_Path.jpg"
+          speaker="Ahsoka Tano"
+          quote="You don’t have to look tough to be tough."
         />
       </TabPanel>
       <TabPanel title="On summer rains and their predictability">
@@ -70,6 +70,29 @@ to show, but only one should be visible at a time.`,
           src="https://static.wikia.nocookie.net/edwikia/images/0/0a/DDPhone.JPG"
           quote="Summer rains, you can never predict them."
           speaker="Edd"
+        />
+      </TabPanel>
+    </Tabs>
+  </Story>
+</Canvas>
+
+## Tabs with custom active color
+
+<Canvas>
+  <Story name="Tabs with custom active color">
+    <Tabs activeTabColor="red-500">
+      <TabPanel title="On possibilities">
+        <ExampleCard
+          src="https://static.wikia.nocookie.net/steven-universe/images/c/cf/Garnet_No_Visor2.png"
+          speaker="Garnet"
+          quote="There are millions of possibilities for the future, but it's up to you to choose which becomes reality. Please understand. You choose your own future."
+        />
+      </TabPanel>
+      <TabPanel title="On stoicism">
+        <ExampleCard
+          src="https://static.wikia.nocookie.net/samuraijack/images/b/b3/Jack%27s_nirvana.png"
+          quote="..."
+          speaker="Jack"
         />
       </TabPanel>
     </Tabs>

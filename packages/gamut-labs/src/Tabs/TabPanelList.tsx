@@ -12,9 +12,14 @@ export const TabPanelList: React.FC<TabPanelListProps> = ({ children }) => {
           const {
             children: panelChildren,
             className,
+            title,
           } = currentChild.props as TabPanelProps;
           pannelArray.push(
-            <DerivedTabPanel index={i} className={className}>
+            <DerivedTabPanel
+              index={i}
+              className={className}
+              key={`panel-${title}`}
+            >
               {panelChildren}
             </DerivedTabPanel>
           );

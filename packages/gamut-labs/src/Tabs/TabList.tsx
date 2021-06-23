@@ -13,6 +13,7 @@ const DerivedTab: React.FC<DerivedTabProps> = ({
   activeTabIndex,
   setActiveTabIndex,
   tabSize,
+  activeTabColor,
 }) => {
   const onClick = () => {
     onTabClick?.();
@@ -25,6 +26,7 @@ const DerivedTab: React.FC<DerivedTabProps> = ({
       onClick={onClick}
       disabled={Boolean(tabDisabled)}
       tabSize={tabSize}
+      activeTabColor={activeTabColor}
     />
   );
 };
@@ -34,6 +36,7 @@ export const TabList: React.FC<TabListProps> = ({
   activeTabIndex,
   setActiveTabIndex,
   tabSize,
+  activeTabColor,
 }) => {
   const childArray = React.Children.toArray(children) as ReactElement[];
   return (
@@ -47,8 +50,9 @@ export const TabList: React.FC<TabListProps> = ({
               index={i}
               activeTabIndex={activeTabIndex}
               setActiveTabIndex={setActiveTabIndex}
-              key={panelProps.title}
+              key={`tab-${panelProps.title}`}
               tabSize={tabSize}
+              activeTabColor={activeTabColor}
             />
           );
         }
