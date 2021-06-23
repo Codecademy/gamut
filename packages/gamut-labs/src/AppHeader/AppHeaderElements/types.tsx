@@ -2,12 +2,12 @@ import { GamutIconProps } from '@codecademy/gamut-icons';
 import { ReactNode } from 'react';
 
 export type AppHeaderItem =
-  | AppHeaderItemWithLink
+  | AppHeaderItemWithHref
   | AppHeaderSimpleDropdownItem
   | AppHeaderProfileDropdownItem
   | AppHeaderRenderElementItem;
 
-type AppHeaderItemWithLink =
+type AppHeaderItemWithHref =
   | AppHeaderLogoItem
   | AppHeaderLinkItem
   | AppHeaderTextButtonItem
@@ -20,27 +20,27 @@ type AppHeaderBaseItem<T extends string> = {
   type: T;
 };
 
-type AppHeaderBaseLinkItem<T extends string> = AppHeaderBaseItem<T> & {
+type AppHeaderBaseHrefItem<T extends string> = AppHeaderBaseItem<T> & {
   href: string;
   trackingTarget: string;
 };
 
-export type AppHeaderLogoItem = AppHeaderBaseLinkItem<'logo'> & {
+export type AppHeaderLogoItem = AppHeaderBaseHrefItem<'logo'> & {
   pro: boolean;
 };
 
-export type AppHeaderLinkItem = AppHeaderBaseLinkItem<'link'> & {
+export type AppHeaderLinkItem = AppHeaderBaseHrefItem<'link'> & {
   icon?: React.ComponentType<GamutIconProps>;
   newTab?: boolean;
   text: string;
   topSeparator?: boolean;
 };
 
-export type AppHeaderTextButtonItem = AppHeaderBaseLinkItem<'text-button'> & {
+export type AppHeaderTextButtonItem = AppHeaderBaseHrefItem<'text-button'> & {
   text: string;
 };
 
-export type AppHeaderFillButtonItem = AppHeaderBaseLinkItem<'fill-button'> & {
+export type AppHeaderFillButtonItem = AppHeaderBaseHrefItem<'fill-button'> & {
   text: string;
 };
 
@@ -72,6 +72,6 @@ export type AppHeaderClickHandler = (
   item: AppHeaderItem
 ) => void;
 
-export const isAppHeaderItemWithLink = (
+export const isAppHeaderItemWithHref = (
   item: AppHeaderItem
-): item is AppHeaderItemWithLink => !!(item as AppHeaderItemWithLink).href;
+): item is AppHeaderItemWithHref => !!(item as AppHeaderItemWithHref).href;
