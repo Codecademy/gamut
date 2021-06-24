@@ -1,18 +1,29 @@
-import { AccordionArea, AccordionButton, Box, Text } from '@codecademy/gamut';
+import { AccordionArea, Anchor, Box, Text } from '@codecademy/gamut';
+import { MiniChevronDownIcon } from '@codecademy/gamut-icons';
 import styled from '@emotion/styled';
 import React, { useState } from 'react';
 
+import { system, transitionConcat } from '../../../gamut-styles/dist';
 import { SectionItemLink } from './SectionItemLink';
 import { SelectedSectionItem } from './SelectedSectionItem';
 
+// this is needed to add a few pixels of extra space for the left side of the focus-visible outline
+
 const StyledAccordionArea = styled(AccordionArea)`
   padding-bottom: ${({ theme }) => theme.spacing[32]};
+  position: relative;
+  left: -4px;
 `;
 
-const StyledAccordionButton = styled(AccordionButton)`
-  padding-left: 0;
-  justify-content: flex-start;
-`;
+const ExpandChevron = styled(MiniChevronDownIcon)(
+  system.css({
+    transform: 'rotate(0deg)',
+    transition: transitionConcat(['transform'], 'slow', 'ease-out'),
+  }),
+  system.states({
+    expanded: { transform: 'rotate(180deg)' },
+  })
+);
 
 export type SectionItem = {
   title: string;
@@ -46,19 +57,23 @@ export const AccordionMenu: React.FC<AccordionMenuProps> = ({
     <StyledAccordionArea
       expanded={expanded}
       top={
-        <StyledAccordionButton
-          expanded={expanded}
+        <Anchor
+          variant="interface"
+          width="max-content"
+          py={12}
+          px={4}
           onClick={() => {
-            setExpanded((currentExpanded) => !currentExpanded);
             onSectionToggle(section.slug);
+            setExpanded((prev) => !prev);
           }}
         >
           <Text variant="title-xs">{section.title}</Text>
-        </StyledAccordionButton>
+          <ExpandChevron ml={12} size={14} expanded={expanded} />
+        </Anchor>
       }
     >
       {section.items.map((item) => (
-        <Box key={item.slug} py={8}>
+        <Box key={item.slug} py={8} px={4}>
           {selectedItem === item.slug ? (
             <SelectedSectionItem>{item.title}</SelectedSectionItem>
           ) : (
