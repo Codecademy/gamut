@@ -58,7 +58,7 @@ describe('Tabs', () => {
     view.getByText('Goku').click();
     expect(view.getByText(gokuText)).not.toBeVisible();
   });
-  it('should fire an onChange function if one is provided on tab change', () => {
+  it('should fire an onChange function (if one is provided) on tab change', () => {
     const onChange = jest.fn();
     const { view, update } = renderView({ tabs: { onChange } });
     expect(onChange).toHaveBeenCalledTimes(0);
