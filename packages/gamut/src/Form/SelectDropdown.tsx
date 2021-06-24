@@ -4,9 +4,7 @@ import { css } from '@emotion/react';
 import React, { SelectHTMLAttributes, useMemo, useState } from 'react';
 import ReactSelect, {
   components as SelectDropdownElements,
-  ContainerProps,
   IndicatorProps,
-  InputProps,
   NamedProps,
   OptionTypeBase,
   StylesConfig,
@@ -43,28 +41,12 @@ type OptionStrict = {
   value: string;
 };
 
-type CustomInputProps = InputProps &
-  ContainerProps<OptionStrict, false> & {
-    selectProps?: SelectDropdownProps;
-  };
-
 const ChevronDropdown = (props: IndicatorProps<OptionTypeBase, false>) => {
   return (
     <DropdownIndicator {...props}>
       <ArrowChevronDownIcon size={16} />
     </DropdownIndicator>
   );
-};
-
-const CustomInput = (props: CustomInputProps) => {
-  const value = props.hasValue ? props.getValue()[0].value : '';
-
-  if (props.selectProps?.inputProps) {
-    const { inputProps } = props.selectProps;
-    const newProps = { ...inputProps, ...props, value };
-    return <Input {...newProps} />;
-  }
-  return <Input {...props} />;
 };
 
 const selectBaseStyles = ({
@@ -105,20 +87,6 @@ const customStyles: StylesConfig<OptionTypeBase, false> = {
     ...formDropdownStyles(state.selectProps.error),
   }),
 
-  input: (provided, state) => ({
-    background: 0,
-    border: 0,
-    fontSize: 'inherit',
-    outline: 0,
-    padding: 0,
-    width: '1px',
-    color: 'transparent',
-    left: '-100px',
-    opacity: '0',
-    position: 'relative',
-    transform: 'scale(0)',
-  }),
-
   option: (provided, state) => ({
     padding: '14px 11px 14px 11px',
     cursor: 'pointer',
@@ -157,7 +125,6 @@ const defaultProps = {
   isMulti: false,
   styles: customStyles,
   components: {
-    Input: CustomInput,
     DropdownIndicator: ChevronDropdown,
     IndicatorSeparator: () => null,
   },
