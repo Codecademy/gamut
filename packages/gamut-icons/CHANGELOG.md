@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [5.4.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@5.4.0...@codecademy/gamut-icons@5.4.1) (2021-06-21)
+
+
+### Bug Fixes
+
+* **Icons:** Fix default size 16 ([6372c00](https://github.com/Codecademy/client-modules/commit/6372c001536c40342326c463132391ddae8dfb6a))
+
+
+
+## [5.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@5.3.2...@codecademy/gamut-icons@5.4.0) (2021-06-21)
+
+
+### Features
+
+* **Icons:** Custom root element and default aria-hidden ([0f88376](https://github.com/Codecademy/client-modules/commit/0f88376ebcb8fd9aafb51cfe90ab3b7b7610ad8d))
+
+
+
 ### [5.3.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@5.3.1...@codecademy/gamut-icons@5.3.2) (2021-06-17)
 
 **Note:** Version bump only for package @codecademy/gamut-icons
