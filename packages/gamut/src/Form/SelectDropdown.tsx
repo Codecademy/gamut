@@ -105,7 +105,7 @@ const customStyles: StylesConfig<OptionTypeBase, false> = {
     ...formDropdownStyles(state.selectProps.error),
   }),
 
-  input: (provided, state) => ({
+  input: () => ({
     background: 0,
     border: 0,
     fontSize: 'inherit',
