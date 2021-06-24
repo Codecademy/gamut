@@ -16,7 +16,7 @@ const DerivedTab: React.FC<DerivedTabProps> = ({
   activeTabColor,
 }) => {
   const onClick = () => {
-    onTabClick?.();
+    onTabClick?.(index);
     setActiveTabIndex(index);
   };
   return (

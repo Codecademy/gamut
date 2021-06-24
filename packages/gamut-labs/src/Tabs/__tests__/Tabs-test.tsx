@@ -67,4 +67,27 @@ describe('Tabs', () => {
     act(() => update({ tabs: { activeTabIndex: 0, onChange } }));
     expect(onChange).toHaveBeenCalledTimes(2);
   });
+  it('should fire an onTabChange function (if one is provided) on tab change via click', () => {
+    const onChange = jest.fn();
+    const { view, update } = renderView({ panelOne: { onTabClick: onChange } });
+    expect(onChange).toHaveBeenCalledTimes(0);
+    act(() => view.getByText('Goku').click());
+    expect(onChange).toHaveBeenCalledTimes(0);
+    act(() => view.getByText('Hercule').click());
+    expect(onChange).toHaveBeenCalledTimes(1);
+    act(() =>
+      update({
+        tabs: { activeTabIndex: 1 },
+        panelOne: { onTabClick: onChange },
+      })
+    );
+    expect(onChange).toHaveBeenCalledTimes(1);
+    act(() =>
+      update({
+        tabs: { activeTabIndex: 0 },
+        panelOne: { onTabClick: onChange },
+      })
+    );
+    expect(onChange).toHaveBeenCalledTimes(1);
+  });
 });

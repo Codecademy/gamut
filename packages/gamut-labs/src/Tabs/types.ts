@@ -14,7 +14,7 @@ export type TabPanelProps = {
   title: string;
   children: React.ReactNode | React.ReactNode[];
   className?: string;
-  onTabClick?: () => void;
+  onTabClick?: (index?: number) => void;
   tabDisabled?: boolean;
 };
 
