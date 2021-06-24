@@ -13,7 +13,7 @@ type AppHeaderItemWithHref =
   | AppHeaderTextButtonItem
   | AppHeaderFillButtonItem;
 
-type AppHeaderBaseItem<T extends string> = {
+type AppHeaderBaseItem<Type extends string> = {
   dataTestId?: string;
   id: string;
   redirect?: boolean;
