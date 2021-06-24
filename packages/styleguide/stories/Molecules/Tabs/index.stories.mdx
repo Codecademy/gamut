@@ -1,7 +1,9 @@
-import { TabPanel, Tabs } from '@codecademy/gamut-labs/src';
+import { Text } from '@codecademy/gamut';
+import { TabPanel, Tabs } from '@codecademy/gamut-labs';
 import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { useState } from '@storybook/addons';
 
 import ExampleCard from './ExampleCard';
 
@@ -122,17 +124,26 @@ to show, but only one should be visible at a time.`,
 
 <Canvas>
   <Story name="TabPanel with onClick">
-    <Tabs>
-      <TabPanel
-        title="On perseverance"
-        onTabClick={() => window.alert('He shoots, he scores!')}
-      >
-        <ExampleCard
-          src="https://static.wikia.nocookie.net/kurokonobasuke/images/7/79/LG_Kuroko.png"
-          quote="The possibility of victory is only 0% when all the players give up. No matter how impossible it may seem, I refuse to make it 0% myself."
-          speaker="Tetsuya Kuroko"
-        />
-      </TabPanel>
-    </Tabs>
+    {() => {
+      const [points, setPoints] = useState(0);
+      return (
+        <>
+          <Tabs>
+            <TabPanel
+              title="On perseverance"
+              onTabClick={() => setPoints(points + 1)}
+            >
+              <ExampleCard
+                src="https://static.wikia.nocookie.net/kurokonobasuke/images/7/79/LG_Kuroko.png"
+                quote="The possibility of victory is only 0% when all the players give up. No matter how impossible it may seem, I refuse to make it 0% myself."
+                speaker="Tetsuya Kuroko"
+              />
+            </TabPanel>
+          </Tabs>
+          <br />
+          <Text>Kuroko's score: {points}</Text>
+        </>
+      );
+    }}
   </Story>
 </Canvas>
