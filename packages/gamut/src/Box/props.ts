@@ -23,6 +23,10 @@ export const sharedStates = system.states({
     position: 'relative',
     zIndex: 1,
   },
+  'no-select': {
+    WebkitTouchCallout: 'none',
+    userSelect: 'none',
+  },
 });
 
 export const flexStates = system.states({
@@ -59,5 +63,4 @@ export interface BoxProps
     StyleProps<typeof sharedStates> {}
 
 export interface FlexBoxProps extends BoxProps, StyleProps<typeof flexStates> {}
-
 export interface GridBoxProps extends BoxProps, StyleProps<typeof gridStates> {}

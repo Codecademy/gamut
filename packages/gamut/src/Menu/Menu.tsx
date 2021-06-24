@@ -1,9 +1,7 @@
-import React, { ComponentProps, MutableRefObject, useContext } from 'react';
+import React, { useContext } from 'react';
 
-import { Box, FlexBox } from '../Box';
-import { FlexBoxProps } from '../Box/props';
-import { List, ListItem, ListLink, ListProps } from './elements';
-import { MenuContext } from './shared';
+import { List, ListProps } from './elements';
+import { MenuContext } from './MenuContext';
 
 const heirarchyProps = {
   parent: {
@@ -40,61 +38,3 @@ export const Menu = React.forwardRef<
     </List>
   );
 });
-
-const activePropnames = {
-  navigation: 'active-navlink',
-  action: 'active',
-  select: 'selected',
-};
-
-export const MenuItem = React.forwardRef<
-  HTMLLIElement | HTMLButtonElement | HTMLAnchorElement,
-  ComponentProps<typeof ListItem> & { href?: string }
->(({ href, children, active, ...props }, ref) => {
-  const { variant, ...rest } = useContext(MenuContext);
-  const activeProp = activePropnames[variant];
-  const computed = {
-    itemType: variant === 'select' ? 'select' : 'link',
-    role: 'menuitem',
-    [activeProp]: active,
-    ...props,
-    ...rest,
-  } as const;
-
-  if (href) {
-    const buttonRef = ref as MutableRefObject<
-      HTMLButtonElement | HTMLAnchorElement | null
-    >;
-
-    return (
-      <ListItem role="none">
-        <ListLink {...computed} href={href} ref={buttonRef}>
-          {children}
-        </ListLink>
-      </ListItem>
-    );
-  }
-
-  const liRef = ref as MutableRefObject<HTMLLIElement>;
-
-  return (
-    <ListItem {...computed} ref={liRef}>
-      {children}
-    </ListItem>
-  );
-});
-
-interface MenuSeperatorProps extends FlexBoxProps {
-  children?: never;
-}
-
-export const MenuSeparator: React.FC<MenuSeperatorProps> = (props) => {
-  const { variant } = useContext(MenuContext);
-  if (variant !== 'action') return null;
-
-  return (
-    <FlexBox as="li" role="separator" height={8} fit center {...props}>
-      <Box fit height="1px" bg="text-disabled" borderRadius="2px" mx={16} />
-    </FlexBox>
-  );
-};

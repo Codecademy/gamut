@@ -1,24 +1,29 @@
-import { system } from '@codecademy/gamut-styles';
+import { styledOptions, system } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React, { forwardRef, HTMLProps, MutableRefObject } from 'react';
 
 export type ButtonBaseElements = HTMLAnchorElement | HTMLButtonElement;
+export type ButtonBaseRef =
+  | ((instance: ButtonBaseElements | null) => void)
+  | MutableRefObject<ButtonBaseElements | null>
+  | null;
 
 export type ButtonBaseElementProps = HTMLProps<
   HTMLAnchorElement | HTMLButtonElement
 > & {
   as?: never;
-  ref?:
-    | ((instance: ButtonBaseElements | null) => void)
-    | MutableRefObject<ButtonBaseElements | null>
-    | null;
+  ref?: ButtonBaseRef;
 };
 
-export type SafeButtonProps<T> = T & Omit<ButtonBaseElementProps, keyof T>;
-
-export type ButtonBaseProps<T> = React.ForwardRefExoticComponent<
-  SafeButtonProps<T> & React.RefAttributes<ButtonBaseElements>
->;
+export enum ButtonSelectors {
+  HOVER = '&:hover',
+  ACTIVE = '&:active',
+  FOCUS = '&:focus',
+  DISABLED = "[disabled], &:disabled, &[aria-disabled='true']",
+  FOCUS_VISIBLE = ' &:focus-visible',
+  OUTLINE = '&:before',
+  OUTLINE_FOCUS_VISIBLE = '&:focus-visible:before',
+}
 
 export enum Selectors {
   BEFORE = '&::before',
@@ -28,24 +33,27 @@ export enum Selectors {
   FOCUS_VISIBLE = '&:focus-visible',
 }
 
-const reset = system.css({
-  background: 'none',
-  boxShadow: 'none',
-  border: 'none',
-  textColor: 'text',
-  p: 0,
-  fontSize: 'inherit',
-  cursor: 'pointer',
-  textDecoration: 'none',
-  [Selectors.HOVER]: {
+const ResetElement = styled(
+  'button',
+  styledOptions<'button'>()
+)(
+  system.css({
+    background: 'none',
+    boxShadow: 'none',
+    border: 'none',
+    textColor: 'text',
+    p: 0,
+    fontSize: 'inherit',
+    cursor: 'pointer',
     textDecoration: 'none',
-  },
-  [Selectors.FOCUS]: {
-    outline: 'none',
-  },
-});
-
-const ResetElement = styled.button(reset);
+    [Selectors.HOVER]: {
+      textDecoration: 'none',
+    },
+    [Selectors.FOCUS]: {
+      outline: 'none',
+    },
+  })
+);
 
 export const ButtonBase = forwardRef<
   HTMLButtonElement | HTMLAnchorElement,
@@ -63,7 +71,7 @@ export const ButtonBase = forwardRef<
           as="button"
           type={type}
           role={role}
-          disabled={disabled}
+          disabled={!!disabled}
         >
           {children}
         </ResetElement>
@@ -76,8 +84,7 @@ export const ButtonBase = forwardRef<
         ref={ref as MutableRefObject<HTMLAnchorElement>}
         as="a"
         href={href}
-        disabled={disabled}
-        aria-disabled={disabled}
+        aria-disabled={!!disabled}
       >
         {children}
       </ResetElement>

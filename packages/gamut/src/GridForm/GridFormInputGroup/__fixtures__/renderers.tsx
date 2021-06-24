@@ -35,7 +35,6 @@ export const renderGridFormSelectInput = (
 ) => {
   return mountWithTheme(
     <GridFormSelectInput
-      clearErrors={jest.fn()}
       field={{ ...stubSelectField, ...extraProps }}
       register={jest.fn()}
       {...extraProps}
@@ -48,7 +47,6 @@ export const renderGridFormTextInput = (
 ) => {
   return mountWithTheme(
     <GridFormTextInput
-      clearErrors={jest.fn()}
       field={{ ...stubTextField, ...extraProps }}
       register={jest.fn()}
       {...extraProps}
@@ -61,7 +59,6 @@ export const renderGridFormTextArea = (
 ) => {
   return mountWithTheme(
     <GridFormTextArea
-      clearErrors={jest.fn()}
       field={{ ...stubTextareaField, ...extraProps }}
       register={jest.fn()}
       {...extraProps}
@@ -74,7 +71,6 @@ export const renderGridFormRadioGroupInput = (
 ) => {
   return mountWithTheme(
     <GridFormRadioGroupInput
-      clearErrors={jest.fn()}
       field={{ ...stubRadioGroupField, ...extraProps }}
       setValue={jest.fn()}
       register={jest.fn()}
@@ -88,7 +84,6 @@ export const renderGridFormFileInput = (
 ) => {
   return mountWithTheme(
     <GridFormFileInput
-      clearErrors={jest.fn()}
       field={{ ...stubFileField, ...extraProps }}
       register={jest.fn()}
       {...extraProps}
@@ -101,7 +96,6 @@ export const renderGridFormCheckboxInput = (
 ) => {
   return mountWithTheme(
     <GridFormCheckboxInput
-      clearErrors={jest.fn()}
       field={{ ...stubCheckboxField, ...extraProps }}
       register={jest.fn()}
       {...extraProps}

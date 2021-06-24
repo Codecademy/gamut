@@ -39,9 +39,9 @@ export const coreTheme = createTheme({
         _: 'white',
         current: 'white',
         primary: 'beige',
-        selected: 'navy-200',
-        disabled: 'navy-100',
-        hover: 'navy-100',
+        selected: 'navy-100',
+        disabled: 'navy-200',
+        hover: 'navy-200',
       },
       shadow: {
         opaque: 'shadow-white-heavy',
@@ -61,7 +61,7 @@ export const coreTheme = createTheme({
       },
     },
     dark: {
-      text: { _: 'white', disabled: 'navy-400' },
+      text: { _: 'white', disabled: 'navy-200' },
       feedback: {
         error: 'red-0',
         success: 'green-0',
@@ -72,7 +72,7 @@ export const coreTheme = createTheme({
         current: 'navy-800',
         primary: 'navy-900',
         selected: 'navy-700',
-        disabled: 'navy-700',
+        disabled: 'navy-500',
         hover: 'navy-900',
       },
       shadow: {

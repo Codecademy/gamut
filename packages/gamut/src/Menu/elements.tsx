@@ -1,13 +1,18 @@
 import {
-  styledConfig,
+  styledOptions,
   system,
   transitionConcat,
 } from '@codecademy/gamut-styles';
 import { StyleProps, variance } from '@codecademy/variance';
-import styled from '@emotion/styled';
+import styled, { CreateStyledComponent } from '@emotion/styled';
+import { ComponentProps, HTMLProps } from 'react';
 
 import { sharedStates } from '../Box/props';
-import { ButtonBase, Selectors } from '../ButtonBase/ButtonBase';
+import {
+  ButtonBase,
+  ButtonBaseElementProps,
+  Selectors,
+} from '../ButtonBase/ButtonBase';
 
 type ListStyleProps = StyleProps<typeof listProps>;
 
@@ -29,7 +34,7 @@ export interface ListProps extends ListStyleProps, StyleStateProps {
   as?: 'ul' | 'ol';
 }
 
-export const List = styled('ul', styledConfig)<ListProps>(
+export const List = styled('ul', styledOptions<'ul'>())<ListProps>(
   system.css({
     listStyle: 'none',
     width: 1,
@@ -135,7 +140,10 @@ export interface ListItemProps
     StyleProps<typeof activeStates>,
     StyleProps<typeof sizeVariants> {}
 
-export const ListItem = styled('li', styledConfig)<ListItemProps>(
+export const ListItem = styled(
+  'li',
+  styledOptions<'li', keyof ListLinkProps>(['itemType'])
+)<ListItemProps>(
   interactiveVariants,
   activeStates,
   sizeVariants,
@@ -148,7 +156,10 @@ export interface ListLinkProps extends ListItemProps {
   navlink?: boolean;
 }
 
-export const ListLink = styled(ButtonBase)<ListLinkProps>(
+export const ListLink = styled(
+  'a',
+  styledOptions<'a', keyof ListLinkProps>(['itemType'])
+)<ListLinkProps>(
   interactiveVariants,
   activeStates,
   sizeVariants,
