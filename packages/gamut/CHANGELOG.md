@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [34.10.10](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@34.10.9...@codecademy/gamut@34.10.10) (2021-06-24)
+
+
+### Bug Fixes
+
+* FormGroupLabel Tooltip ([d9460a3](https://github.com/Codecademy/client-modules/commit/d9460a319017b2cdafea974e0a26602e281dad80))
+
+
+
 ### [34.10.9](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@34.10.8...@codecademy/gamut@34.10.9) (2021-06-24)
 
 
