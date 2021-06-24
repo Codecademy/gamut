@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [34.10.9](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@34.10.8...@codecademy/gamut@34.10.9) (2021-06-24)
+
+
+### Bug Fixes
+
+* Icon titleId and Size Defaults ([7f73eba](https://github.com/Codecademy/client-modules/commit/7f73eba306d7eedda32bd488b8db7b83efbc29b8))
+
+
+
 ### [34.10.8](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@34.10.7...@codecademy/gamut@34.10.8) (2021-06-23)
 
 

@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [5.4.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@5.4.1...@codecademy/gamut-icons@5.4.2) (2021-06-24)
+
+
+### Bug Fixes
+
+* Icon titleId and Size Defaults ([7f73eba](https://github.com/Codecademy/client-modules/commit/7f73eba306d7eedda32bd488b8db7b83efbc29b8))
+
+
+
 ### [5.4.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@5.4.0...@codecademy/gamut-icons@5.4.1) (2021-06-21)
 
 
