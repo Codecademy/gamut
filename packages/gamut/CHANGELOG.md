@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [34.10.11](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@34.10.10...@codecademy/gamut@34.10.11) (2021-06-24)
+
+
+### Bug Fixes
+
+* **Input:** add aria-hidden for to Input icons ([1f9b0fc](https://github.com/Codecademy/client-modules/commit/1f9b0fcfb241b98ae037446b3cbf2ad43443b14b))
+
+
+
 ### [34.10.10](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@34.10.9...@codecademy/gamut@34.10.10) (2021-06-24)
 
 
