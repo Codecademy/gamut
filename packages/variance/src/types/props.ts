@@ -1,7 +1,7 @@
 import { Theme } from '@emotion/react';
 
 import { AbstractParser, Scale } from './config';
-import { PropertyTypes } from './properties';
+import { CSSPropertyTypes } from './properties';
 
 export type AbstractProps = ThemeProps<Record<string, unknown>>;
 
@@ -44,16 +44,16 @@ export interface CSSObject {
   [key: string]: string | number | CSSObject | undefined;
 }
 
-export type SelectorMap<Props, System> = {
-  [K in keyof Props]?: SelectorProps<Props[K], System>;
+export type CSSPropMap<Props, System> = {
+  [K in keyof Props]?: CSSProps<Props[K], System>;
 };
 
-export type SelectorProps<Props, System> = {
+export type CSSProps<Props, System> = {
   [K in keyof Props]?: K extends keyof System
     ? System[K]
-    : K extends keyof PropertyTypes
-    ? PropertyTypes[K]
-    : Omit<PropertyTypes, keyof System> & Omit<System, 'theme'>;
+    : K extends keyof CSSPropertyTypes
+    ? CSSPropertyTypes[K]
+    : Omit<CSSPropertyTypes, keyof System> & Omit<System, 'theme'>;
 };
 
 export type StyleProps<

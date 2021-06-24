@@ -8,6 +8,7 @@ import {
   NotebookIcon,
   PersonIcon,
   PieLineGraphIcon,
+  RatingStarGiveIcon,
   SupportIcon,
 } from '@codecademy/gamut-icons';
 import { ReactNode } from 'react';
@@ -307,6 +308,10 @@ export const proProfile = (
   if (!isMobile && (user.isAccountManager || user.isAdmin)) {
     topSection.push(profileBusinessAccount);
   }
+  if (user.showReferrals) {
+    topSection.push(referrals);
+  }
+
   topSection.push(profileHelpCenter);
 
   const middleSection = [];
@@ -384,4 +389,14 @@ export const signUp: AppHeaderFillButtonItem = {
   trackingTarget: 'topnav_signup',
   type: 'fill-button',
   redirect: true,
+};
+
+export const referrals: AppHeaderLinkItem = {
+  dataTestId: 'header-referrals',
+  id: 'referrals',
+  text: 'Give Pro, Get Pro',
+  href: '/referrals',
+  type: 'link',
+  icon: RatingStarGiveIcon,
+  trackingTarget: 'avatar_referrals',
 };
