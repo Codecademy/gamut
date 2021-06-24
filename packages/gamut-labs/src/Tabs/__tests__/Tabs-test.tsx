@@ -1,7 +1,7 @@
 import { Text } from '@codecademy/gamut';
 import { setupRtl } from '@codecademy/gamut-tests';
-import { act } from '@testing-library/react';
 import React from 'react';
+import { act } from 'react-dom/test-utils';
 
 import { TabPanel } from '../TabPanel';
 import { Tabs } from '../Tabs';
