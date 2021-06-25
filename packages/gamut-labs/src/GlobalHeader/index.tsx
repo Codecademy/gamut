@@ -1,9 +1,13 @@
 import { Box } from '@codecademy/gamut';
 import { useTheme } from '@emotion/react';
 import cx from 'classnames';
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 
 import { AppHeader, AppHeaderMobile } from '..';
+import {
+  AppHeaderItem,
+  isAppHeaderItemWithHref,
+} from '../AppHeader/AppHeaderElements/types';
 import {
   FormattedAppHeaderItems,
   FormattedMobileAppHeaderItems,
@@ -88,6 +92,8 @@ const getMobileAppHeaderItems = (
 };
 
 export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
+  const { action, onLinkAction } = props;
+
   const [isInHeaderRegion, setIsInHeaderRegion] = useState(true);
 
   // it is not recommended to replicate this logic in other components unless absolutely necessary, as it is
@@ -102,6 +108,14 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
 
   const theme = useTheme();
 
+  const combinedAction = useCallback(
+    (event: React.MouseEvent, item: AppHeaderItem) => {
+      action(event, item);
+      if (isAppHeaderItemWithHref(item)) onLinkAction?.(event, item);
+    },
+    [action, onLinkAction]
+  );
+
   const headerClasses = cx(
     styles.stickyHeader,
     isInHeaderRegion && styles.transitionFadeOut
@@ -115,7 +129,7 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
         className={headerClasses}
       >
         <AppHeader
-          action={props.action}
+          action={combinedAction}
           items={getAppHeaderItems(props)}
           search={props.search}
           redirectParam={
@@ -129,7 +143,7 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
         className={headerClasses}
       >
         <AppHeaderMobile
-          action={props.action}
+          action={combinedAction}
           items={getMobileAppHeaderItems(props)}
           onSearch={props.search.onSearch}
           redirectParam={
