@@ -23,7 +23,7 @@ class WebpackConfig {
   }
 
   merge(config) {
-    this.value = merge.smart(this.value, config);
+    this.value = merge(this.value, config);
     return this;
   }
 
