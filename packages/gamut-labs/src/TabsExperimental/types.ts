@@ -25,12 +25,6 @@ export type TabListProps = Pick<TabsProps, 'children'> & {
   setActiveTabIndex: (index: number) => void;
 };
 
-export type DerivedTabProps = Pick<TabPanelProps, 'title'> & {
-  index: number;
-  setActiveTabIndex: (index: number) => void;
-  activeTabIndex: number;
-};
-
 export type TabProps = Pick<TabPanelProps, 'title'> & {
   isActiveTab: boolean;
   onClick: () => void;
