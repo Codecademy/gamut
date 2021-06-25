@@ -7,16 +7,11 @@ import { DerivedTabProps, TabListProps, TabPanelProps } from './types';
 
 const DerivedTab: React.FC<DerivedTabProps> = ({
   title,
-  onTabClick,
-  tabDisabled,
   index,
   activeTabIndex,
   setActiveTabIndex,
-  tabSize,
-  activeTabColor,
 }) => {
   const onClick = () => {
-    onTabClick?.(index);
     setActiveTabIndex(index);
   };
   return (
@@ -24,9 +19,6 @@ const DerivedTab: React.FC<DerivedTabProps> = ({
       title={title}
       isActiveTab={index === activeTabIndex}
       onClick={onClick}
-      disabled={Boolean(tabDisabled)}
-      tabSize={tabSize}
-      activeTabColor={activeTabColor}
     />
   );
 };
@@ -35,8 +27,6 @@ export const TabList: React.FC<TabListProps> = ({
   children,
   activeTabIndex,
   setActiveTabIndex,
-  tabSize,
-  activeTabColor,
 }) => {
   const childArray = React.Children.toArray(children) as ReactElement[];
   return (
@@ -51,8 +41,6 @@ export const TabList: React.FC<TabListProps> = ({
               activeTabIndex={activeTabIndex}
               setActiveTabIndex={setActiveTabIndex}
               key={`tab-${panelProps.title}`}
-              tabSize={tabSize}
-              activeTabColor={activeTabColor}
             />
           );
         }
