@@ -351,9 +351,23 @@ describe('GlobalHeader', () => {
     });
   });
 
-  test('fires action() upon clicking an element', () => {
-    renderGlobalHeader(renderElementProps);
-    screen.getAllByRole('link')[0].click();
-    expect(action).toHaveBeenCalled();
+  describe('onClick handlers', () => {
+    const onLinkAction = jest.fn();
+
+    test('fires only action upon clicking an element', () => {
+      renderGlobalHeader({ ...anonHeaderProps, onLinkAction });
+      screen.getByText(pricingDropdown.text).click();
+
+      expect(action).toHaveBeenCalledTimes(1);
+      expect(onLinkAction).not.toHaveBeenCalled();
+    });
+
+    test('fires action & onLinkAction upon clicking a link element', () => {
+      renderGlobalHeader({ ...anonHeaderProps, onLinkAction });
+      screen.getAllByRole('link')[0].click();
+
+      expect(action).toHaveBeenCalledTimes(1);
+      expect(onLinkAction).toHaveBeenCalledTimes(1);
+    });
   });
 });
