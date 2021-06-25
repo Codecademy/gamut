@@ -1,40 +1,17 @@
-import React, { useContext } from 'react';
+import React from 'react';
 
 import { List, ListProps } from './elements';
-import { MenuContext } from './MenuContext';
-
-const heirarchyProps = {
-  parent: {
-    parent: true,
-    role: 'menu',
-  },
-  child: {
-    role: 'group',
-  },
-};
+import { MenuProvider, useMenu } from './MenuContext';
 
 export const Menu = React.forwardRef<
   HTMLUListElement | HTMLOListElement,
-  Omit<ListProps, 'heirarchy'>
+  Omit<ListProps, 'root' | 'role'>
 >(({ children, variant = 'select', spacing = 'normal', ...rest }, ref) => {
-  const { depth, ...parentProps } = useContext(MenuContext);
-  const isRoot = depth === 0;
-  const heirachy = isRoot ? 'parent' : 'child';
-  const nextDepth = depth + 1;
-
-  const props = heirarchyProps[heirachy] as ListProps;
+  const currentContext = useMenu({ variant, spacing });
 
   return (
-    <List {...rest} {...props} ref={ref}>
-      <MenuContext.Provider
-        value={{
-          variant: isRoot ? variant : parentProps.variant,
-          spacing: isRoot ? spacing : parentProps.spacing,
-          depth: nextDepth,
-        }}
-      >
-        {children}
-      </MenuContext.Provider>
+    <List {...rest} {...currentContext} ref={ref}>
+      <MenuProvider value={currentContext}>{children}</MenuProvider>
     </List>
   );
 });

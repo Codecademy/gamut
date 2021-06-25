@@ -27,8 +27,10 @@ export interface ListProps extends ListStyleProps, StyleStateProps {
   spacing?: 'normal' | 'condensed';
   /** Menu variants for specific use cases and styles */
   variant?: 'select' | 'navigation' | 'action';
-  /** Context dependent prop */
-  heirarchy?: 'parent' | 'child';
+  /** is root menu */
+  root?: boolean;
+  /** bordered */
+
   as?: 'ul' | 'ol';
 }
 
@@ -41,12 +43,12 @@ export const List = styled('ul', styledOptions<'ul'>())<ListProps>(
     pl: 24,
   }),
   system.states({
-    parent: {
-      border: 2,
-      borderRadius: '2px',
+    root: {
       minWidth: 192,
       bg: 'background',
       p: 0,
+      border: 1,
+      borderRadius: '2px',
     },
   }),
   sharedStates,
@@ -54,7 +56,7 @@ export const List = styled('ul', styledOptions<'ul'>())<ListProps>(
 );
 
 List.defaultProps = {
-  heirarchy: 'parent',
+  root: true,
   context: true,
   m: 0,
 };

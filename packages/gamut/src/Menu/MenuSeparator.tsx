@@ -1,15 +1,15 @@
-import React, { useContext } from 'react';
+import React from 'react';
 
 import { Box, FlexBox } from '../Box';
 import { FlexBoxProps } from '../Box/props';
-import { MenuContext } from './MenuContext';
+import { useMenuContext } from './MenuContext';
 
 interface MenuSeperatorProps extends FlexBoxProps {
   children?: never;
 }
 
 export const MenuSeparator: React.FC<MenuSeperatorProps> = (props) => {
-  const { variant } = useContext(MenuContext);
+  const { variant } = useMenuContext();
   if (variant !== 'action') return null;
 
   return (
