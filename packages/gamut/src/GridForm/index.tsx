@@ -126,6 +126,7 @@ export function GridForm<
                   <Fragment key={field.title}>
                     <GridFormSectionTitle
                       title={field.title}
+                      as={field.as}
                       layout={field.layout}
                       numberOfFields={field.fields.length}
                     />
