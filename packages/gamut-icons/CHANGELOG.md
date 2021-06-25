@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@5.4.2...@codecademy/gamut-icons@5.5.0) (2021-06-25)
+
+
+### Features
+
+* add lock and networkUser icons for shareable sandbox ([a3beea5](https://github.com/Codecademy/client-modules/commit/a3beea5304765f6bfad8447909dc50d26e18e593))
+
+
+
 ### [5.4.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@5.4.1...@codecademy/gamut-icons@5.4.2) (2021-06-24)
 
 
