@@ -30,7 +30,6 @@ export interface ListProps extends ListStyleProps, StyleStateProps {
   /** is root menu */
   root?: boolean;
   /** bordered */
-
   as?: 'ul' | 'ol';
 }
 
@@ -62,7 +61,6 @@ List.defaultProps = {
 };
 
 const interactiveVariants = system.variant({
-  prop: 'itemType',
   base: {
     display: 'flex',
     flexDirection: 'column',
@@ -140,10 +138,7 @@ export interface ListItemProps
     StyleProps<typeof activeStates>,
     StyleProps<typeof sizeVariants> {}
 
-export const ListItem = styled(
-  'li',
-  styledOptions<'li', keyof ListLinkProps>(['itemType'])
-)<ListItemProps>(
+export const ListItem = styled('li', styledOptions<'li'>())<ListItemProps>(
   interactiveVariants,
   activeStates,
   sizeVariants,
@@ -156,10 +151,7 @@ export interface ListLinkProps extends ListItemProps {
   navlink?: boolean;
 }
 
-export const ListLink = styled(
-  'a',
-  styledOptions<'a', keyof ListLinkProps>(['itemType'])
-)<ListLinkProps>(
+export const ListLink = styled('a', styledOptions<'a'>())<ListLinkProps>(
   resetStyles,
   interactiveVariants,
   activeStates,

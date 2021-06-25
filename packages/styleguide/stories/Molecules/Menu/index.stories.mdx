@@ -1,0 +1,123 @@
+import {
+  Column,
+  LayoutGrid,
+  Menu,
+  MenuItem,
+  MenuSeparator,
+} from '@codecademy/gamut';
+import title from '@codecademy/macros/lib/title.macro';
+import { PropsTable } from '@codecademy/storybook-addon-variance';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+
+<Meta
+  title={title}
+  component={Menu}
+  parameters={{
+    subtitle: 'Menu list components',
+    source: 'gamut',
+    status: 'current',
+    figmaId: 'r5Y0iuLDFPXy8SmYX1UW2H',
+  }}
+  args={{
+    variant: 'select',
+    spacing: 'normal',
+    children: (
+      <>
+        <MenuItem>Menu Item</MenuItem>
+        <MenuItem active>Active Item</MenuItem>
+        <MenuSeparator />
+        <MenuItem>Menu Item</MenuItem>
+        <MenuItem>Menu Item</MenuItem>
+      </>
+    ),
+  }}
+/>
+
+<br />
+
+While most Menus are used as layout elements, Menus can also be used as popover elements within components like Selects.
+
+## Components
+
+- `Menu`
+- `MenuItem`
+- `MenuSeparator`
+
+## Usage
+
+```tsx
+import { Menu, MenuItem, MenuSeparator } from '@codecademy/gamut';
+
+const MyMenu = () => (
+  <Menu variant="action">
+    <MenuItem>Item 1</MenuItem>
+    <MenuSeparator />
+    <MenuItem href="cool">Link 1</MenuItem>
+  </MenuSeparator>
+);
+```
+
+## Variants
+
+<LayoutGrid gap={32} py={24}>
+<Column size={4} variant={false}>
+
+### Select
+
+<Story name="Select" args={{ variant: 'select' }}>
+  {(args) => <Menu {...args} />}
+</Story>
+
+</Column>
+<Column size={4} variant={false}>
+
+### Action
+
+<Story name="Action" args={{ variant: 'action' }}>
+  {(args) => <Menu {...args} />}
+</Story>
+
+</Column>
+<Column size={4} variant={false}>
+
+### Navigation
+
+<Story name="Navigation" args={{ variant: 'navigation' }}>
+  {(args) => <Menu {...args} />}
+</Story>
+
+</Column>
+</LayoutGrid>
+
+## Spacing Variants
+
+<LayoutGrid gap={32} py={24}>
+<Column size={4} variant={false}>
+
+### Normal
+
+<Story name="Normal" args={{ spacing: 'normal' }}>
+  {(args) => <Menu {...args} />}
+</Story>
+
+</Column>
+<Column size={4} variant={false}>
+
+### Condensed
+
+<Story name="Condensed" args={{ spacing: 'condensed' }}>
+  {(args) => <Menu {...args} />}
+</Story>
+
+</Column>
+</LayoutGrid>
+
+### Code Playground
+
+Edit attributes and see what’s possible to do with this component or get the exact output you want.
+
+<Canvas>
+  <Story name="Menu">{(args) => <Menu {...args} />}</Story>
+</Canvas>
+
+<PropsTable story="Menu" />

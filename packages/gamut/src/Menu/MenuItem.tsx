@@ -11,12 +11,17 @@ const activePropnames = {
 
 export const MenuItem = React.forwardRef<
   HTMLLIElement | HTMLAnchorElement,
-  ComponentProps<typeof ListItem> & { href?: string }
+  Omit<
+    ComponentProps<typeof ListItem>,
+    'variant' | 'selected' | 'active-navlink'
+  > & {
+    href?: string;
+  }
 >(({ href, children, active, ...props }, ref) => {
   const { variant, ...rest } = useMenuContext();
   const activeProp = activePropnames[variant];
   const computed = {
-    itemType: variant === 'select' ? 'select' : 'link',
+    variant: variant === 'select' ? 'select' : 'link',
     role: 'menuitem',
     [activeProp]: active,
     ...props,
