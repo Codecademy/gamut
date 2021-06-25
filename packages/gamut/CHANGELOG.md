@@ -3,6 +3,50 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [34.11.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@34.10.12...@codecademy/gamut@34.11.0) (2021-06-25)
+
+
+### Features
+
+* add idSuffix prop to Pattern ([f887926](https://github.com/Codecademy/client-modules/commit/f887926348b5e4816acbed1d72ef2e49d03e7417))
+
+
+
+### [34.10.12](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@34.10.11...@codecademy/gamut@34.10.12) (2021-06-25)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [34.10.11](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@34.10.10...@codecademy/gamut@34.10.11) (2021-06-24)
+
+
+### Bug Fixes
+
+* **Input:** add aria-hidden for to Input icons ([1f9b0fc](https://github.com/Codecademy/client-modules/commit/1f9b0fcfb241b98ae037446b3cbf2ad43443b14b))
+
+
+
+### [34.10.10](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@34.10.9...@codecademy/gamut@34.10.10) (2021-06-24)
+
+
+### Bug Fixes
+
+* FormGroupLabel Tooltip ([d9460a3](https://github.com/Codecademy/client-modules/commit/d9460a319017b2cdafea974e0a26602e281dad80))
+
+
+
+### [34.10.9](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@34.10.8...@codecademy/gamut@34.10.9) (2021-06-24)
+
+
+### Bug Fixes
+
+* Icon titleId and Size Defaults ([7f73eba](https://github.com/Codecademy/client-modules/commit/7f73eba306d7eedda32bd488b8db7b83efbc29b8))
+
+
+
 ### [34.10.8](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@34.10.7...@codecademy/gamut@34.10.8) (2021-06-23)
 
 
