@@ -6,7 +6,7 @@ import {
   TextButton,
 } from '@codecademy/gamut';
 import styled from '@emotion/styled';
-import React, { ReactNode, useCallback } from 'react';
+import React, { ReactNode } from 'react';
 
 import { formatUrlWithRedirect } from '../GlobalHeader/urlHelpers';
 import { AppHeaderDropdown } from './AppHeaderElements/AppHeaderDropdown';
@@ -16,15 +16,11 @@ import { focusStyles } from './AppHeaderElements/SharedStyles';
 import {
   AppHeaderClickHandler,
   AppHeaderItem,
-  isAppHeaderItemWithHref,
 } from './AppHeaderElements/types';
 import { FormattedAppHeaderItems } from './types';
 
 export type AppHeaderProps = {
-  /** A method to be called on click/activating a header item */
   action: AppHeaderClickHandler;
-  /** A method to be called only on click/activating a *link* header item */
-  onLinkAction?: AppHeaderClickHandler;
   items: FormattedAppHeaderItems;
   redirectParam?: string;
 };
@@ -86,18 +82,9 @@ export const mapItemToElement = (
 
 export const AppHeader: React.FC<AppHeaderProps> = ({
   action,
-  onLinkAction,
   items,
   redirectParam,
 }) => {
-  const combinedAction = useCallback(
-    (event: React.MouseEvent, item: AppHeaderItem) => {
-      action(event, item);
-      if (isAppHeaderItemWithHref(item)) onLinkAction?.(event, item);
-    },
-    [action, onLinkAction]
-  );
-
   const mapItemsToElement = <T extends AppHeaderItem[]>(items: T) => {
     return items.map((item, index) => (
       <Box
@@ -105,7 +92,7 @@ export const AppHeader: React.FC<AppHeaderProps> = ({
         ml={index === 0 ? 0 : 8}
         mr={index === items.length - 1 ? 0 : 8}
       >
-        {mapItemToElement(combinedAction, item, redirectParam)}
+        {mapItemToElement(action, item, redirectParam)}
       </Box>
     ));
   };

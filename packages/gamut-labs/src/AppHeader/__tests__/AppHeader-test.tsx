@@ -8,11 +8,9 @@ import React from 'react';
 import { AppHeader, AppHeaderProps } from '..';
 
 const action = jest.fn();
-const onLinkAction = jest.fn();
 
 const logoProps: AppHeaderProps = {
   action,
-  onLinkAction,
   items: {
     left: [
       {
@@ -29,7 +27,6 @@ const logoProps: AppHeaderProps = {
 
 const linkProps: AppHeaderProps = {
   action,
-  onLinkAction,
   items: {
     left: [
       {
@@ -46,7 +43,6 @@ const linkProps: AppHeaderProps = {
 
 const dropdownProps: AppHeaderProps = {
   action,
-  onLinkAction,
   items: {
     left: [
       {
@@ -78,7 +74,6 @@ const dropdownProps: AppHeaderProps = {
 
 const renderElementProps: AppHeaderProps = {
   action,
-  onLinkAction,
   items: {
     left: [],
     right: [
@@ -93,7 +88,6 @@ const renderElementProps: AppHeaderProps = {
 
 const textButtonProps: AppHeaderProps = {
   action,
-  onLinkAction,
   items: {
     left: [],
     right: [
@@ -110,7 +104,6 @@ const textButtonProps: AppHeaderProps = {
 
 const fillButtonProps: AppHeaderProps = {
   action,
-  onLinkAction,
   items: {
     left: [],
     right: [
@@ -138,41 +131,35 @@ describe('AppHeader', () => {
     renderAppHeader(logoProps);
     fireEvent.click(screen.getByTitle('Codecademy Logo'));
     expect(action).toHaveBeenCalledTimes(1);
-    expect(onLinkAction).toHaveBeenCalledTimes(1);
   });
 
   it('renders an AppHeaderLink when the item type is link', () => {
     renderAppHeader(linkProps);
     fireEvent.click(screen.getByText('AppHeaderLink'));
     expect(action).toHaveBeenCalledTimes(1);
-    expect(onLinkAction).toHaveBeenCalledTimes(1);
   });
 
   it('renders an AppHeaderDropdown when the item type is dropdown', () => {
     renderAppHeader(dropdownProps);
     fireEvent.click(screen.getByText('AppHeaderDropdown'));
     expect(action).toHaveBeenCalledTimes(1);
-    expect(onLinkAction).not.toHaveBeenCalled();
   });
 
   it('renders a custom component when the item type is render-element', () => {
     renderAppHeader(renderElementProps);
     fireEvent.click(screen.getByTitle('Favicon Icon'));
     expect(action).not.toHaveBeenCalled();
-    expect(onLinkAction).not.toHaveBeenCalled();
   });
 
   it('calls action() when a TextButton is clicked', () => {
     renderAppHeader(textButtonProps);
     fireEvent.click(screen.getByText('TextButton'));
     expect(action).toHaveBeenCalledTimes(1);
-    expect(onLinkAction).toHaveBeenCalledTimes(1);
   });
 
   it('calls action() when a FillButton clicked', () => {
     renderAppHeader(fillButtonProps);
     fireEvent.click(screen.getByText('FillButton'));
     expect(action).toHaveBeenCalledTimes(1);
-    expect(onLinkAction).toHaveBeenCalledTimes(1);
   });
 });
