@@ -15,6 +15,8 @@ type SimpleTabsProps = {
   panelTwo?: Partial<Omit<TabPanelProps, 'children'>>;
 };
 
+const ignoredText = 'I am very important and special';
+
 const SimpleTabs: React.FC<SimpleTabsProps> = ({
   tabs,
   panelOne,
@@ -27,6 +29,7 @@ const SimpleTabs: React.FC<SimpleTabsProps> = ({
     <TabPanelExperimental title="Goku" {...panelTwo}>
       <Text>{gokuText}</Text>
     </TabPanelExperimental>
+    <Text>{ignoredText}</Text>
   </TabsExperimental>
 );
 
@@ -46,5 +49,9 @@ describe('Tabs', () => {
     view.getByText('Goku').click();
     expect(view.getByText(gokuText)).toBeVisible();
     expect(view.getByText(herculeText)).not.toBeVisible();
+  });
+  it('should not render any non-TabPanelExperimental children', () => {
+    const { view } = renderView();
+    expect(view.queryByText(ignoredText)).toBeNull();
   });
 });
