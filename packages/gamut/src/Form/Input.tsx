@@ -147,7 +147,7 @@ export const Input = forwardRef<HTMLInputElement, InputWrapperProps>(
             top="0"
             bottom="0"
           >
-            <ShownIcon size={Icon ? 24 : 16} />
+            <ShownIcon size={Icon ? 24 : 16} aria-hidden />
           </FlexBox>
         )}
       </Box>
