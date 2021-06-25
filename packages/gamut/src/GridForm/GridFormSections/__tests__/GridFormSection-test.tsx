@@ -81,7 +81,7 @@ describe('GridFormSections', () => {
     expect(await view.findByText('not enough updog')).toBeTruthy();
   });
 
-  it('only adds assertive to the first error', async () => {
+  it('only first error is an alert', async () => {
     const { view } = renderView({
       fields: validFields,
       mode: 'onChange',

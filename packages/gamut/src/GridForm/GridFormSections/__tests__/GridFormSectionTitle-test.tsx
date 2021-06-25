@@ -27,8 +27,8 @@ describe('GridFormSections', () => {
     const column = wrapper.find('Column') as any;
     const { size, gridRowEnd } = column.props();
 
-    expect(size).toEqual(12);
-    expect(gridRowEnd).toEqual('span 1');
+    expect(size).toEqual({ _: 12, md: 12 });
+    expect(gridRowEnd).toEqual({ _: 'span 1', md: 'span 1' });
   });
 
   it('renders the proper Column size according to number of fields when layout is set to left', () => {
@@ -36,7 +36,7 @@ describe('GridFormSections', () => {
     const column = wrapper.find('Column') as any;
     const { size, gridRowEnd } = column.props();
 
-    expect(size).toEqual(3);
-    expect(gridRowEnd).toEqual('span 3');
+    expect(size).toEqual({ _: 12, md: 3 });
+    expect(gridRowEnd).toEqual({ _: 'span 1', md: 'span 3' });
   });
 });
