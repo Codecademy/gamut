@@ -36,7 +36,9 @@ describe('GridFormSections', () => {
     const column = wrapper.find('Column') as any;
     const { size, gridRowEnd } = column.props();
 
-    expect(size).toEqual({ _: 12, md: 3 });
-    expect(gridRowEnd).toEqual({ _: 'span 1', md: 'span 3' });
+    expect({ gridRowEnd, size }).toEqual({
+      gridRowEnd: { _: 'span 1', md: 'span 3' },
+      size: { _: 12, md: 3 },
+    });
   });
 });

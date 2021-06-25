@@ -31,7 +31,7 @@ export const GridFormContent: React.FC<GridFormContentProps> = ({
   return (
     <>
       <GridFormInputGroup
-        error={errorMessage as string}
+        error={errorMessage}
         isFirstError={isFirstError}
         field={field}
         key={field.name}
