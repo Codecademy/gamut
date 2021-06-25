@@ -13,7 +13,7 @@ function iconTemplate(api, opts, { jsx }) {
 
     export const ${exportName} = React.forwardRef<SVGSVGElement, GamutIconProps>(({
       title = "${title}",
-      titleId = '',
+      titleId,
       ...props
     },
       svgRef
