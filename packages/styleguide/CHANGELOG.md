@@ -3,6 +3,56 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [41.10.20](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@41.10.19...@codecademy/styleguide@41.10.20) (2021-06-25)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [41.10.19](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@41.10.18...@codecademy/styleguide@41.10.19) (2021-06-25)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [41.10.18](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@41.10.17...@codecademy/styleguide@41.10.18) (2021-06-24)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [41.10.17](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@41.10.16...@codecademy/styleguide@41.10.17) (2021-06-24)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [41.10.16](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@41.10.15...@codecademy/styleguide@41.10.16) (2021-06-24)
+
+
+### Bug Fixes
+
+* Icon titleId and Size Defaults ([7f73eba](https://github.com/Codecademy/client-modules/commit/7f73eba306d7eedda32bd488b8db7b83efbc29b8))
+
+
+
+### [41.10.15](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@41.10.14...@codecademy/styleguide@41.10.15) (2021-06-23)
+
+
+### Bug Fixes
+
+* ToolTip icons can't be aria-hidden ([12da9eb](https://github.com/Codecademy/client-modules/commit/12da9eb4d70bdae8f2450d119737627f646588e3))
+
+
+
 ### [41.10.14](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@41.10.13...@codecademy/styleguide@41.10.14) (2021-06-22)
 
 **Note:** Version bump only for package @codecademy/styleguide
