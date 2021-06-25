@@ -1,5 +1,10 @@
-import { GridBox, Menu, MenuItem, MenuSeparator } from '@codecademy/gamut';
-import { ColorMode } from '@codecademy/gamut-styles';
+import {
+  Column,
+  LayoutGrid,
+  Menu,
+  MenuItem,
+  MenuSeparator,
+} from '@codecademy/gamut';
 import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
@@ -9,7 +14,7 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
   component={Menu}
   subcomponents={{ MenuItem }}
   parameters={{
-    subtitle: 'Menu Elements',
+    subtitle: 'Menu list components',
     source: 'gamut',
     status: 'current',
     figmaId: '',
@@ -17,77 +22,152 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
   args={{}}
 />
 
+## Usage
+
+```tsx
+import { Menu, MenuItem, MenuSeparator } from '@codecademy/gamut';
+
+const MyMenu = () => (
+  <Menu variant="action">
+    <MenuItem>Item 1</MenuItem>
+    <MenuSeparator />
+    <MenuItem href="cool">Link 1</MenuItem>
+  </MenuSeparator>
+);
+```
+
+Menus are connected through
+
+### Menu
+
+### MenuItem
+
+### MenuSeparator
+
 ## Variants
 
-<Story name="Variants">
-  <GridBox gridAutoFlow="column" gap={16}>
-    <Menu variant="select">
-      <MenuItem href="hello world">Link</MenuItem>
-      <MenuItem active>Item</MenuItem>
-      <MenuSeparator />
-      <MenuItem>Item</MenuItem>
-      <MenuItem>Cool beans!</MenuItem>
-    </Menu>
-    <Menu variant="action">
-      <MenuItem href="hello world">Link</MenuItem>
-      <MenuItem active>Item</MenuItem>
-      <MenuSeparator />
-      <MenuItem>Item</MenuItem>
-      <MenuItem>Cool beans!</MenuItem>
-    </Menu>
-    <Menu variant="navigation">
-      <MenuItem href="hello world">Link</MenuItem>
-      <MenuItem active>Item</MenuItem>
-      <MenuSeparator />
-      <MenuItem>Item</MenuItem>
-      <MenuItem>Cool beans!</MenuItem>
-    </Menu>
-  </GridBox>
+<LayoutGrid gap={32} py={24}>
+<Column size={8} variant={false}>
+
+### Select
+
+Select menus are used for select dropdowns and non-navigation actions like code-editor actions. Examples of this are in `SelectDropdown` and `FileNavigator`.
+
+</Column>
+<Column size={4} variant={false}>
+
+<Story name="Select">
+  <Menu variant="select">
+    <MenuItem href="hello world">Link</MenuItem>
+    <MenuItem active>Item</MenuItem>
+    <MenuSeparator />
+    <MenuItem>Item</MenuItem>
+    <MenuItem>Cool beans!</MenuItem>
+  </Menu>
 </Story>
 
-## Spacing
+</Column>
+<Column size={8} variant={false}>
 
-<Story name="Spacing">
-  <GridBox gridAutoFlow="column" gap={16}>
-    <Menu spacing="normal">
-      <MenuItem href="hello world">Link</MenuItem>
-      <MenuItem active>Item</MenuItem>
-      <MenuSeparator />
-      <MenuItem>Item</MenuItem>
-      <MenuItem>Cool beans!</MenuItem>
-    </Menu>
-    <Menu spacing="condensed">
-      <MenuItem href="hello world">Link</MenuItem>
-      <MenuItem active>Item</MenuItem>
-      <MenuSeparator />
-      <MenuItem>Item</MenuItem>
-      <MenuItem>Cool beans!</MenuItem>
-    </Menu>
-  </GridBox>
+### Action
+
+This variant is primarily used for mixed navigation and selection in dropdowns see AppHeader and DropdownButton.
+
+- `MenuSeparator` will display a single line through content when used in an action menu.
+
+</Column>
+<Column size={4} variant={false}>
+
+<Story name="Action">
+  <Menu variant="action">
+    <MenuItem href="hello world">Link</MenuItem>
+    <MenuItem active>Item</MenuItem>
+    <MenuSeparator />
+    <MenuItem>Item</MenuItem>
+    <MenuItem>Cool beans!</MenuItem>
+  </Menu>
 </Story>
+
+</Column>
+<Column size={8} variant={false}>
+
+### Navigation
+
+Navigation variants are meant to be used as more persistent navigation and come with active states.
+
+</Column>
+<Column size={4} variant={false}>
+
+<Story name="Navigation">
+  <Menu variant="navigation">
+    <MenuItem href="hello world">Link</MenuItem>
+    <MenuItem active>Item</MenuItem>
+    <MenuSeparator />
+    <MenuItem>Item</MenuItem>
+    <MenuItem>Cool beans!</MenuItem>
+  </Menu>
+</Story>
+
+</Column>
+</LayoutGrid>
+
+## Spacing Variants
+
+<LayoutGrid gap={32} py={24}>
+<Column size={8} variant={false}>
+
+### Normal
+
+For most Menus prefer the normal spacing size.
+
+</Column>
+<Column size={4} variant={false}>
+
+<Story name="Normal">
+  <Menu spacing="normal">
+    <MenuItem href="hello world">Link</MenuItem>
+    <MenuItem active>Item</MenuItem>
+    <MenuSeparator />
+    <MenuItem>Item</MenuItem>
+    <MenuItem>Cool beans!</MenuItem>
+  </Menu>
+</Story>
+
+</Column>
+<Column size={8} variant={false}>
+
+### Condensed
+
+When information is dense and you need to maximize the space the menu takes up you may shrink the spacing of all descendents.
+
+</Column>
+<Column size={4} variant={false}>
+
+<Story name="Condensed">
+  <Menu spacing="condensed">
+    <MenuItem href="hello world">Link</MenuItem>
+    <MenuItem active>Item</MenuItem>
+    <MenuSeparator />
+    <MenuItem>Item</MenuItem>
+    <MenuItem>Cool beans!</MenuItem>
+  </Menu>
+</Story>
+
+</Column>
+</LayoutGrid>
+
+### Code Playground
 
 <Canvas>
   <Story name="Menu">
     {(args) => (
-      <GridBox gridTemplateColumns="repeat(3, max-content)">
-        {['light', 'dark'].map((mode) => {
-          return ['normal', 'condensed'].map((spacing) => {
-            return ['action', 'select', 'navigation'].map((variant) => {
-              return (
-                <ColorMode mode={mode} p={16}>
-                  <Menu spacing={spacing} variant={variant}>
-                    <MenuItem href="hello world">Link</MenuItem>
-                    <MenuItem active>Item</MenuItem>
-                    <MenuSeparator />
-                    <MenuItem>Item</MenuItem>
-                    <MenuItem>Cool beans!</MenuItem>
-                  </Menu>
-                </ColorMode>
-              );
-            });
-          });
-        })}
-      </GridBox>
+      <Menu {...args}>
+        <MenuItem href="hello world">Link</MenuItem>
+        <MenuItem active>Item</MenuItem>
+        <MenuSeparator />
+        <MenuItem>Item</MenuItem>
+        <MenuItem>Cool beans!</MenuItem>
+      </Menu>
     )}
   </Story>
 </Canvas>

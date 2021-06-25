@@ -15,7 +15,7 @@ const heirarchyProps = {
 
 export const Menu = React.forwardRef<
   HTMLUListElement | HTMLOListElement,
-  ListProps
+  Omit<ListProps, 'heirarchy'>
 >(({ children, variant = 'select', spacing = 'normal', ...rest }, ref) => {
   const { depth, ...parentProps } = useContext(MenuContext);
   const isRoot = depth === 0;

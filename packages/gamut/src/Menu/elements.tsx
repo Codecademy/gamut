@@ -4,15 +4,10 @@ import {
   transitionConcat,
 } from '@codecademy/gamut-styles';
 import { StyleProps, variance } from '@codecademy/variance';
-import styled, { CreateStyledComponent } from '@emotion/styled';
-import { ComponentProps, HTMLProps } from 'react';
+import styled from '@emotion/styled';
 
 import { sharedStates } from '../Box/props';
-import {
-  ButtonBase,
-  ButtonBaseElementProps,
-  Selectors,
-} from '../ButtonBase/ButtonBase';
+import { resetStyles, Selectors } from '../ButtonBase/ButtonBase';
 
 type ListStyleProps = StyleProps<typeof listProps>;
 
@@ -28,8 +23,11 @@ const listProps = variance.compose(
 );
 
 export interface ListProps extends ListStyleProps, StyleStateProps {
+  /** How offset spacing should be */
   spacing?: 'normal' | 'condensed';
+  /** Menu variants for specific use cases and styles */
   variant?: 'select' | 'navigation' | 'action';
+  /** Context dependent prop */
   heirarchy?: 'parent' | 'child';
   as?: 'ul' | 'ol';
 }
@@ -160,6 +158,7 @@ export const ListLink = styled(
   'a',
   styledOptions<'a', keyof ListLinkProps>(['itemType'])
 )<ListLinkProps>(
+  resetStyles,
   interactiveVariants,
   activeStates,
   sizeVariants,

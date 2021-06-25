@@ -52,4 +52,4 @@ export * from './Logo';
 export * from './ProLabel';
 export * from './Toast/Toast';
 export * from './FloatingCard/FloatingCard';
-export * from './Menu/Menu';
+export * from './Menu';

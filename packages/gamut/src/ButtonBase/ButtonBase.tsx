@@ -33,27 +33,24 @@ export enum Selectors {
   FOCUS_VISIBLE = '&:focus-visible',
 }
 
-const ResetElement = styled(
-  'button',
-  styledOptions<'button'>()
-)(
-  system.css({
-    background: 'none',
-    boxShadow: 'none',
-    border: 'none',
-    textColor: 'text',
-    p: 0,
-    fontSize: 'inherit',
-    cursor: 'pointer',
+export const resetStyles = system.css({
+  background: 'none',
+  boxShadow: 'none',
+  border: 'none',
+  textColor: 'text',
+  p: 0,
+  fontSize: 'inherit',
+  cursor: 'pointer',
+  textDecoration: 'none',
+  [Selectors.HOVER]: {
     textDecoration: 'none',
-    [Selectors.HOVER]: {
-      textDecoration: 'none',
-    },
-    [Selectors.FOCUS]: {
-      outline: 'none',
-    },
-  })
-);
+  },
+  [Selectors.FOCUS]: {
+    outline: 'none',
+  },
+});
+
+const ResetElement = styled('button', styledOptions<'button'>())(resetStyles);
 
 export const ButtonBase = forwardRef<
   HTMLButtonElement | HTMLAnchorElement,
