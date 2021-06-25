@@ -41,7 +41,7 @@ const QueryContainer = styled(ContentContainer)(
 
 const SuggestionContainer = styled(ContentContainer)(
   system.css({
-    pb: 16,
+    pb: 24,
     pt: 16,
   })
 );
