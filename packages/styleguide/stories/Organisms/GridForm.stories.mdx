@@ -782,6 +782,8 @@ See the [`Radio`](/?path=/docs/atoms-forminputs-radio--radio) story for an examp
 Our `GridForm`s optionally take an array of sections that have left and center-aligned variants.
 Each sections should have a title that correctly follows [heading ranks](https://usability.yale.edu/web-accessibility/articles/headings). You can set the text type of this title though the `as` prop on that section -- the default is `h2`.
 
+When using the left-aligned layout, please note that the `title` takes up 3 columns, so any field size over 9 may cause inconsistent behavior!
+
 <Canvas>
   <Story name="Custom Sections">
     {(args) => {
@@ -795,7 +797,7 @@ Each sections should have a title that correctly follows [heading ranks](https:/
                 {
                   label: 'hi?',
                   name: 'text01-left-section',
-                  size: 5,
+                  size: 4,
                   type: 'text',
                   validation: {
                     required: true,
@@ -804,7 +806,7 @@ Each sections should have a title that correctly follows [heading ranks](https:/
                 {
                   label: 'hello?',
                   name: 'text02-left-section',
-                  size: 5,
+                  size: 4,
                   type: 'text',
                   validation: {
                     required: true,
@@ -813,7 +815,7 @@ Each sections should have a title that correctly follows [heading ranks](https:/
                 {
                   label: 'Write a paragraph.',
                   name: 'paragraph01-left-section',
-                  size: 5,
+                  size: 8,
                   type: 'textarea',
                   validation: {
                     required: 'Please write something about penguins!',
@@ -822,7 +824,7 @@ Each sections should have a title that correctly follows [heading ranks](https:/
                 {
                   label: 'howdy?',
                   name: 'text03-left-section',
-                  size: 5,
+                  size: 4,
                   type: 'text',
                   validation: {
                     required: true,
@@ -831,16 +833,16 @@ Each sections should have a title that correctly follows [heading ranks](https:/
                 {
                   label: 'whats up?',
                   name: 'text04--left-section',
-                  size: 5,
+                  size: 4,
                   type: 'text',
                   validation: {
                     required: true,
                   },
                 },
                 {
-                  label: 'Write another paragraph',
+                  label: 'Write another long paragraph',
                   name: 'paragraph02-left-section',
-                  size: 5,
+                  size: 8,
                   type: 'textarea',
                   validation: {
                     required: 'Please write something about penguins!',
