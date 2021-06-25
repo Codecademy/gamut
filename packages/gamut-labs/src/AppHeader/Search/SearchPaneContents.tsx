@@ -165,7 +165,7 @@ export const SearchPaneContents: React.FC<SearchPaneContentsProps> = ({
             </QueryContainer>
           </Box>
           <SuggestionContainer>
-            <Text as="h3" fontSize={20}>
+            <Text as="h3" fontSize={20} my={16}>
               Popular Searches
             </Text>
             <FlexBox justifyContent="space-between">
