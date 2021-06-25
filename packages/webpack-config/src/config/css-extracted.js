@@ -1,5 +1,5 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const merge = require('webpack-merge');
+const { merge } = require('webpack-merge');
 const loaders = require('../loaders');
 const ENV = require('../lib/env');
 

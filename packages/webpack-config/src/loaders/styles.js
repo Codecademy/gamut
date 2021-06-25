@@ -1,6 +1,6 @@
 /* eslint-disable global-require */
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const merge = require('webpack-merge');
+const { merge } = require('webpack-merge');
 const ENV = require('../lib/env');
 
 const PROD = ENV === 'production';
