@@ -34,7 +34,7 @@ describe('DropdownList', () => {
     const button = view.getByTestId('dropdown-item-two');
     fireEvent.click(button);
 
-    expect(items[0].clickHandler).toHaveBeenCalledTimes(1);
+    expect(items[1].clickHandler).toHaveBeenCalledTimes(1);
     expect(onClose).toHaveBeenCalledTimes(1);
   });
 });
