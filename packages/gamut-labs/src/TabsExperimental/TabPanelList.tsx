@@ -3,7 +3,10 @@ import React, { ReactElement } from 'react';
 import { DerivedTabPanel, TabPanel } from './TabPanel';
 import { TabPanelListProps, TabPanelProps } from './types';
 
-export const TabPanelList: React.FC<TabPanelListProps> = ({ children }) => {
+export const TabPanelList: React.FC<TabPanelListProps> = ({
+  children,
+  activeTabIndex,
+}) => {
   const childArray = React.Children.toArray(children) as ReactElement[];
   return (
     <>
@@ -16,7 +19,7 @@ export const TabPanelList: React.FC<TabPanelListProps> = ({ children }) => {
           } = currentChild.props as TabPanelProps;
           pannelArray.push(
             <DerivedTabPanel
-              index={i}
+              isActiveTab={i === activeTabIndex}
               className={className}
               key={`panel-${title}`}
             >

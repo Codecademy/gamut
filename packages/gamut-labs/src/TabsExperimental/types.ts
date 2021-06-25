@@ -15,10 +15,12 @@ export type DerivedPanelProps = Pick<
   TabPanelProps,
   'className' | 'children'
 > & {
-  index: number;
+  isActiveTab: boolean;
 };
 
-export type TabPanelListProps = Pick<TabsProps, 'children'>;
+export type TabPanelListProps = Pick<TabsProps, 'children'> & {
+  activeTabIndex: number;
+};
 
 export type TabListProps = Pick<TabsProps, 'children'> & {
   activeTabIndex: number;
