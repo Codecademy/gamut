@@ -31,7 +31,15 @@ export const coreSwatches = {
     '800': '#1D2340',
   },
   navy: {
+    '100': '#F3F3F5',
+    '200': '#DBDCE0',
+    '300': '#C3C5CB',
+    '400': '#9FA2AC',
+    '500': '#707382',
+    '600': '#585C6D',
+    '700': '#232940',
     '800': '#10162F',
+    '900': '#0A0D1C',
   },
   green: {
     '0': '#F5FFE3',
@@ -102,11 +110,6 @@ export const corePalette = {
  */
 
 export const platformSwatches = {
-  navy: {
-    '300': '#585C6D',
-    '600': '#232940',
-    '900': '#0B0F21',
-  },
   beige: {
     '0': '#FFFBF8',
   },

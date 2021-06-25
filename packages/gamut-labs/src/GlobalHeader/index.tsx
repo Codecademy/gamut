@@ -3,10 +3,13 @@ import { themed } from '@codecademy/gamut-styles';
 import { useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
 import cx from 'classnames';
-import React from 'react';
-import { useWindowScroll } from 'react-use';
+import React, { useCallback, useEffect, useState } from 'react';
 
 import { AppHeader, AppHeaderMobile } from '..';
+import {
+  AppHeaderItem,
+  isAppHeaderItemWithHref,
+} from '../AppHeader/AppHeaderElements/types';
 import {
   FormattedAppHeaderItems,
   FormattedMobileAppHeaderItems,
@@ -103,11 +106,29 @@ const StyledBox = styled(Box)`
 `;
 
 export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
-  const { y } = useWindowScroll();
+  const { action, onLinkAction, renderSearch, children } = props;
 
-  const isInHeaderRegion = y === 0;
+  const [isInHeaderRegion, setIsInHeaderRegion] = useState(true);
+
+  // it is not recommended to replicate this logic in other components unless absolutely necessary, as it is
+  // a workaround for style rehydration issues when using react-use/useWindowScroll. The reasoning behind this
+  // workaround is discussed here: https://github.com/Codecademy/client-modules/pull/1822#discussion_r650125406
+  useEffect(() => {
+    const checkScroll = () => setIsInHeaderRegion(window?.pageYOffset === 0);
+    checkScroll();
+    document.addEventListener('scroll', checkScroll);
+    return () => document.removeEventListener('scroll', checkScroll);
+  }, []);
 
   const theme = useTheme();
+
+  const combinedAction = useCallback(
+    (event: React.MouseEvent, item: AppHeaderItem) => {
+      action(event, item);
+      if (isAppHeaderItemWithHref(item)) onLinkAction?.(event, item);
+    },
+    [action, onLinkAction]
+  );
 
   const headerClasses = cx(
     styles.stickyHeader,
@@ -122,7 +143,7 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
         className={headerClasses}
       >
         <AppHeader
-          action={props.action}
+          action={combinedAction}
           items={getAppHeaderItems(props)}
           redirectParam={
             props.type === 'anon' ? props.redirectParam : undefined
@@ -135,15 +156,15 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
         className={headerClasses}
       >
         <AppHeaderMobile
-          action={props.action}
+          action={combinedAction}
           items={getMobileAppHeaderItems(props)}
-          renderSearch={props.renderSearch?.mobile}
+          renderSearch={renderSearch?.mobile}
           redirectParam={
             props.type === 'anon' ? props.redirectParam : undefined
           }
         />
       </Box>
-      {props.children}
+      {children}
     </StyledBox>
   );
 };

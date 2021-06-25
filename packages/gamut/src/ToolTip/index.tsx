@@ -1,4 +1,5 @@
 import {
+  ColorModes,
   fontSmoothPixel,
   lineHeight,
   pxRem,
@@ -7,8 +8,6 @@ import {
 } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React, { ReactNode } from 'react';
-
-import { VisualTheme } from '../theming/VisualTheme';
 
 export type ToolTipAlignment =
   | 'bottom-center'
@@ -35,7 +34,7 @@ const TargetContainer = styled.div`
 
 type ToolTipContainerProps = {
   alignment: ToolTipAlignment;
-  mode: VisualTheme;
+  mode: ColorModes;
 };
 
 const ToolTipContainer = styled.div<ToolTipContainerProps>`
@@ -160,12 +159,12 @@ const ToolTipBody = styled.div<ToolTipContainerProps>`
     prop: 'mode',
     variants: {
       dark: {
-        backgroundColor: 'black',
+        bg: 'black',
         borderColor: 'beige',
         textColor: 'beige',
       },
       light: {
-        backgroundColor: 'white',
+        bg: 'white',
         borderColor: 'black',
         textColor: 'black',
       },
@@ -201,7 +200,7 @@ export type ToolTipProps = {
   focusable?: boolean;
 
   id: string;
-  mode?: VisualTheme;
+  mode?: ColorModes;
   target?: ReactNode;
 };
 
@@ -219,6 +218,11 @@ export const ToolTip: React.FC<ToolTipProps> = ({
     <TooltipWrapper className={containerClassName}>
       <TargetContainer
         aria-labelledby={id}
+        onKeyDown={(event) => {
+          if (event.key === 'Escape') {
+            (event.target as HTMLElement).blur();
+          }
+        }}
         // ToolTips sometimes contain actual <button>s, which cannot be a child of a button.
         // This element still needs tab focus so we must use the `tabIndex=0` hack.
         // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex

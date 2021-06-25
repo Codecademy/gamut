@@ -13,6 +13,7 @@ import {
   login,
   myHome,
   pricingDropdown,
+  referrals,
   resourcesDropdown,
   signUp,
   tryProForFree,
@@ -26,6 +27,7 @@ const user: User = {
   avatar:
     'https://www.gravatar.com/avatar/1c959a9a1e2f9f9f1ac06b05cccc1d60?s=150&d=retro',
   displayName: 'Codey',
+  showReferrals: true,
 };
 
 const anonHeaderProps: GlobalHeaderProps = {
@@ -311,6 +313,10 @@ describe('GlobalHeader', () => {
       test('profileDropdown', () => {
         screen.getByTestId('avatar');
       });
+      test('referrals', () => {
+        screen.getByTestId('avatar').click();
+        screen.getByText(referrals.text);
+      });
     });
 
     describe('is paused', () => {
@@ -345,9 +351,23 @@ describe('GlobalHeader', () => {
     });
   });
 
-  test('fires action() upon clicking an element', () => {
-    renderGlobalHeader(renderElementProps);
-    screen.getAllByRole('link')[0].click();
-    expect(action).toHaveBeenCalled();
+  describe('onClick handlers', () => {
+    const onLinkAction = jest.fn();
+
+    test('fires only action upon clicking an element', () => {
+      renderGlobalHeader({ ...anonHeaderProps, onLinkAction });
+      screen.getByText(pricingDropdown.text).click();
+
+      expect(action).toHaveBeenCalledTimes(1);
+      expect(onLinkAction).not.toHaveBeenCalled();
+    });
+
+    test('fires action & onLinkAction upon clicking a link element', () => {
+      renderGlobalHeader({ ...anonHeaderProps, onLinkAction });
+      screen.getAllByRole('link')[0].click();
+
+      expect(action).toHaveBeenCalledTimes(1);
+      expect(onLinkAction).toHaveBeenCalledTimes(1);
+    });
   });
 });

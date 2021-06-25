@@ -13,7 +13,7 @@ import { get } from 'lodash';
 
 export type SafeThemeValues = Omit<
   Theme,
-  '_variables' | '_tokens' | '_getColorValue'
+  '_variables' | '_tokens' | '_getColorValue' | 'modes'
 >;
 
 export function themed<P extends Path<SafeThemeValues>>(

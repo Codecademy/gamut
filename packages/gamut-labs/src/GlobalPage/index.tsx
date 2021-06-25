@@ -55,7 +55,7 @@ export const GlobalPage: React.FC<GlobalPageProps> = ({
   skipToContentId,
 }) => {
   return (
-    <GlobalPageWrapper bg={backgroundColor}>
+    <GlobalPageWrapper bg={backgroundColor} minHeight="100vh">
       <SkipToContent contentId={skipToContentId || defaultSkipToContentId} />
       <GlobalHeader {...header} />
       {!skipToContentId && <SkipToContentTarget id={defaultSkipToContentId} />}

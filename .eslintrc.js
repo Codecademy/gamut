@@ -68,6 +68,7 @@ module.exports = {
     'jsx-a11y/label-has-associated-control': 'off',
     'no-multi-assign': 'off',
     'no-plusplus': 'off',
+    'no-restricted-globals': 'off',
     'no-template-curly-in-string': 'off',
     'no-unused-expressions': 'off',
     'react/destructuring-assignment': 'off',

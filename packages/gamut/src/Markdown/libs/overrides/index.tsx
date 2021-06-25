@@ -124,13 +124,13 @@ export const createCodeBlockOverride = (
 
     processNode(node: HTMLToReactNode, props: any) {
       const [, language = undefined] =
-        (props.className && props.className.match(/language-([^\s]+)/)) || [];
+        props.className?.match(/language-([^\s]+)/) || [];
 
       if (!Override.component) return null;
 
       return (
         <Override.component {...props} language={language}>
-          {props.children && props.children[0]}
+          {props.children?.[0]}
         </Override.component>
       );
     },

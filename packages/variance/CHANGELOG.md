@@ -3,6 +3,51 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.16.0](https://github.com/Codecademy/client-modules/compare/@codecademy/variance@0.15.0...@codecademy/variance@0.16.0) (2021-06-16)
+
+
+### Features
+
+* **variance:** Computed styles, and configurable CSSType narrowing [GM-233] ([c258c19](https://github.com/Codecademy/client-modules/commit/c258c19b7970b41361b6cfafe76e2a52b7b4c828))
+
+
+
+## [0.15.0](https://github.com/Codecademy/client-modules/compare/@codecademy/variance@0.14.0...@codecademy/variance@0.15.0) (2021-06-16)
+
+
+### Features
+
+* **Text:** Add more common utility variants / states as props GM-248 ([85b541c](https://github.com/Codecademy/client-modules/commit/85b541cbb85ef5c60b8012196680e1062d469ad1))
+
+
+
+## [0.14.0](https://github.com/Codecademy/client-modules/compare/@codecademy/variance@0.13.0...@codecademy/variance@0.14.0) (2021-06-10)
+
+
+### Features
+
+* Navy scale + color alias changes GM-237 ([bf896dd](https://github.com/Codecademy/client-modules/commit/bf896dd3fcf0435ef557694740d96df38d12173b)), closes [#10162](https://github.com/Codecademy/client-modules/issues/10162)
+
+
+
+## [0.13.0](https://github.com/Codecademy/client-modules/compare/@codecademy/variance@0.12.1...@codecademy/variance@0.13.0) (2021-06-10)
+
+
+### Features
+
+* **variance:** states boolean toggle styles GM-233 ([e463f0e](https://github.com/Codecademy/client-modules/commit/e463f0e77802a3565ddda4de2e14050372923678))
+
+
+
+### [0.12.1](https://github.com/Codecademy/client-modules/compare/@codecademy/variance@0.12.0...@codecademy/variance@0.12.1) (2021-06-02)
+
+
+### Bug Fixes
+
+* **variance:** Fix static css mutability for `css` [GM-235] ([5eab7d9](https://github.com/Codecademy/client-modules/commit/5eab7d99865947002a545db0ff372454b09494d3))
+
+
+
 ## [0.12.0](https://github.com/Codecademy/client-modules/compare/@codecademy/variance@0.11.2...@codecademy/variance@0.12.0) (2021-05-18)
 
 
