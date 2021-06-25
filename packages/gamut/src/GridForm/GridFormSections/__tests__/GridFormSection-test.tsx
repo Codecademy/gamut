@@ -77,8 +77,8 @@ describe('GridFormSections', () => {
       },
     });
 
-    expect(await view.findByText('what is it?')).toBeTruthy();
-    expect(await view.findByText('not enough updog')).toBeTruthy();
+   await view.findByText('what is it?');
+   await view.findByText('not enough updog');
   });
 
   it('only first error is an alert', async () => {
