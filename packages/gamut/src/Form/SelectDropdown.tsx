@@ -57,14 +57,14 @@ const ChevronDropdown = (props: IndicatorProps<OptionTypeBase, false>) => {
 };
 
 const CustomInput = (props: CustomInputProps) => {
-  const value = props.hasValue ? props.getValue()[0].value : '';
+  const {
+    isHidden,
+    selectProps: { inputProps },
+    ...rest
+  } = props;
+  const newProps = { isHidden: false, ...inputProps, ...rest };
 
-  if (props.selectProps?.inputProps) {
-    const { inputProps } = props.selectProps;
-    const newProps = { ...inputProps, ...props, value };
-    return <Input {...newProps} />;
-  }
-  return <Input {...props} />;
+  return <Input {...newProps} />;
 };
 
 const selectBaseStyles = ({
@@ -105,18 +105,8 @@ const customStyles: StylesConfig<OptionTypeBase, false> = {
     ...formDropdownStyles(state.selectProps.error),
   }),
 
-  input: (provided, state) => ({
-    background: 0,
-    border: 0,
-    fontSize: 'inherit',
-    outline: 0,
-    padding: 0,
-    width: '1px',
-    color: 'transparent',
-    left: '-100px',
-    opacity: '0',
-    position: 'relative',
-    transform: 'scale(0)',
+  input: () => ({
+    color: 'currentColor',
   }),
 
   option: (provided, state) => ({
@@ -140,13 +130,9 @@ const customStyles: StylesConfig<OptionTypeBase, false> = {
     }),
   }),
 
-  singleValue: (provided, state) => ({
-    color: errorColorState(state.selectProps.error),
-    display: 'flex',
-  }),
-
-  valueContainer: (provided) => ({
+  valueContainer: (provided, state) => ({
     ...provided,
+    color: errorColorState(state.selectProps.error),
     padding: 0,
   }),
 };
@@ -160,6 +146,7 @@ const defaultProps = {
     Input: CustomInput,
     DropdownIndicator: ChevronDropdown,
     IndicatorSeparator: () => null,
+    SingleValue: () => null,
   },
 };
 
@@ -176,6 +163,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
   ...rest
 }) => {
   const [activated, setActivated] = useState(false);
+  const [inputValue, setInputValue] = useState('');
   const baseInputProps = { name };
 
   const changeHandler = (optionEvent: OptionStrict) => {
@@ -183,6 +171,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
       action: 'select-option',
       option: optionEvent,
     });
+    setInputValue(optionEvent.value);
     setActivated(true);
   };
 
@@ -194,6 +183,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
     const currentValue = selectOptions.find(
       ({ value: optionValue }) => optionValue === value
     );
+    setInputValue(currentValue?.value);
     return currentValue;
   }, [selectOptions, value]);
 
@@ -202,9 +192,17 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
       {...defaultProps}
       id={id || rest.htmlFor}
       value={parsedValue}
+      onChange={changeHandler}
+      onInputChange={(value, action) => {
+        // only set the input when the action that caused the change equals to "input-change" and ignore the others (like: "set-value", "input-blur", and "menu-close").
+        // this allows us to keep the value in the <input> and not clear on new option selected, which we want as we are programaticatically setting the input
+        // in our changeHandler.
+        // more info here: https://react-select.com/props
+        if (action.action === 'input-change') setInputValue(value);
+      }}
+      inputValue={inputValue}
       activated={activated}
       error={Boolean(error)}
-      onChange={changeHandler}
       inputProps={{ ...inputProps, ...baseInputProps }}
       isDisabled={disabled}
       options={selectOptions}
