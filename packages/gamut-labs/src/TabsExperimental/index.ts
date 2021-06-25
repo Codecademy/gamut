@@ -1,2 +1,2 @@
-export * from './TabPanel';
-export * from './Tabs';
+export * from './TabPanelExperimental';
+export * from './TabsExperimental';

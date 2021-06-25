@@ -5,7 +5,10 @@ import { TabList } from './TabList';
 import { TabPanelList } from './TabPanelList';
 import { TabsProps } from './types';
 
-export const Tabs: React.FC<TabsProps> = ({ children, className }) => {
+export const TabsExperimental: React.FC<TabsProps> = ({
+  children,
+  className,
+}) => {
   const [activeTabIndex, setActiveTabIndex] = useState(0);
 
   return (

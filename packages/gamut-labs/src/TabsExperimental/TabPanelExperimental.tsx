@@ -3,7 +3,7 @@ import React from 'react';
 
 import { DerivedPanelProps, TabPanelProps } from './types';
 
-export const TabPanel: React.FC<TabPanelProps> = () => null;
+export const TabPanelExperimental: React.FC<TabPanelProps> = () => null;
 
 export const DerivedTabPanel: React.FC<DerivedPanelProps> = ({
   children,

@@ -1,34 +1,28 @@
-import React, { ReactElement } from 'react';
+import React from 'react';
 
-import { DerivedTabPanel, TabPanel } from './TabPanel';
-import { TabPanelListProps, TabPanelProps } from './types';
+import { DerivedTabPanel } from './TabPanelExperimental';
+import { TabPanelListProps } from './types';
+import { isTabPanelGuard } from './utils';
 
 export const TabPanelList: React.FC<TabPanelListProps> = ({
   children,
   activeTabIndex,
-}) => {
-  const childArray = React.Children.toArray(children) as ReactElement[];
-  return (
-    <>
-      {childArray.reduce((pannelArray: typeof childArray, currentChild, i) => {
-        if (currentChild.type === TabPanel) {
-          const {
-            children: panelChildren,
-            className,
-            title,
-          } = currentChild.props as TabPanelProps;
-          pannelArray.push(
-            <DerivedTabPanel
-              isActiveTab={i === activeTabIndex}
-              className={className}
-              key={`panel-${title}`}
-            >
-              {panelChildren}
-            </DerivedTabPanel>
-          );
-        }
-        return pannelArray;
-      }, [])}
-    </>
-  );
-};
+}) => (
+  <>
+    {React.Children.toArray(children)
+      .filter(isTabPanelGuard)
+      .map((panelChild, i) => {
+        const { children, className, title } = panelChild.props;
+
+        return (
+          <DerivedTabPanel
+            isActiveTab={i === activeTabIndex}
+            className={className}
+            key={`panel-${title}`}
+          >
+            {children}
+          </DerivedTabPanel>
+        );
+      })}
+  </>
+);

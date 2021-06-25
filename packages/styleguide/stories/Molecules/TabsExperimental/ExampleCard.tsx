@@ -8,7 +8,11 @@ type ExampleCardProps = {
   speaker: string;
 };
 
-const ExampleCard: React.FC<ExampleCardProps> = ({ src, speaker, quote }) => (
+export const ExampleCard: React.FC<ExampleCardProps> = ({
+  src,
+  speaker,
+  quote,
+}) => (
   <FlexBox alignItems="center" mt={16}>
     <Avatar src={src} alt={speaker} disableDropshadow />
     <FlexBox flexDirection="column" ml={8}>
@@ -17,5 +21,3 @@ const ExampleCard: React.FC<ExampleCardProps> = ({ src, speaker, quote }) => (
     </FlexBox>
   </FlexBox>
 );
-
-export default ExampleCard;
