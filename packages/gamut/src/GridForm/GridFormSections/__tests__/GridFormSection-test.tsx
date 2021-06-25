@@ -52,10 +52,10 @@ describe('GridFormSections', () => {
     const radioLabel = view.getByLabelText('Stub Select');
     const radioField = view.getByRole('combobox', { name: 'Stub Select' });
 
-    expect(textLabel).toBeTruthy;
-    expect(textField).toBeTruthy;
-    expect(radioLabel).toBeTruthy;
-    expect(radioField).toBeTruthy;
+    expect(textLabel).toBeTruthy();
+    expect(textField).toBeTruthy();
+    expect(radioLabel).toBeTruthy();
+    expect(radioField).toBeTruthy();
   });
 
   it('gives all fields access to form context and validation', async () => {
@@ -70,12 +70,36 @@ describe('GridFormSections', () => {
           'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
       },
     });
+
     fireEvent.input(view.getByRole('textbox', { name: 'Stub Text Again' }), {
       target: {
         value: 'Do you know what that is?',
       },
     });
 
-    expect(await view.findAllByRole('alert')).toHaveLength(2);
+    expect(await view.findByText('what is it?')).toBeTruthy();
+    expect(await view.findByText('not enough updog')).toBeTruthy();
+  });
+
+  it('only adds assertive to the first error', async () => {
+    const { view } = renderView({
+      fields: validFields,
+      mode: 'onChange',
+    });
+
+    fireEvent.input(view.getByRole('textbox', { name: 'Stub Text' }), {
+      target: {
+        value:
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      },
+    });
+
+    fireEvent.input(view.getByRole('textbox', { name: 'Stub Text Again' }), {
+      target: {
+        value: 'Do you know what that is?',
+      },
+    });
+
+    expect(await view.findAllByRole('alert')).toHaveLength(1);
   });
 });
