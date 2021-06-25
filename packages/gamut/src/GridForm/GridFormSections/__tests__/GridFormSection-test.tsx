@@ -77,8 +77,8 @@ describe('GridFormSections', () => {
       },
     });
 
-   await view.findByText('what is it?');
-   await view.findByText('not enough updog');
+    await view.findByText('what is it?');
+    await view.findByText('not enough updog');
   });
 
   it('only first error is an alert', async () => {
