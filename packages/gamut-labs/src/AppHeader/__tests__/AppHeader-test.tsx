@@ -2,7 +2,7 @@ import { IconButton } from '@codecademy/gamut';
 import { FaviconIcon } from '@codecademy/gamut-icons';
 import { theme } from '@codecademy/gamut-styles';
 import { ThemeProvider } from '@emotion/react';
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import React from 'react';
 
 import { AppHeader, AppHeaderProps } from '..';
@@ -129,33 +129,37 @@ const renderAppHeader = (props: AppHeaderProps) => {
 describe('AppHeader', () => {
   it('renders an AppHeaderLogo when the item type is logo', () => {
     renderAppHeader(logoProps);
-    screen.getByTitle('Codecademy Logo');
+    fireEvent.click(screen.getByTitle('Codecademy Logo'));
+    expect(action).toHaveBeenCalledTimes(1);
   });
 
   it('renders an AppHeaderLink when the item type is link', () => {
     renderAppHeader(linkProps);
-    screen.getByText('AppHeaderLink');
+    fireEvent.click(screen.getByText('AppHeaderLink'));
+    expect(action).toHaveBeenCalledTimes(1);
   });
 
   it('renders an AppHeaderDropdown when the item type is dropdown', () => {
     renderAppHeader(dropdownProps);
-    screen.getByText('AppHeaderDropdown');
+    fireEvent.click(screen.getByText('AppHeaderDropdown'));
+    expect(action).toHaveBeenCalledTimes(1);
   });
 
   it('renders a custom component when the item type is render-element', () => {
     renderAppHeader(renderElementProps);
-    screen.getByTitle('Favicon Icon');
+    fireEvent.click(screen.getByTitle('Favicon Icon'));
+    expect(action).not.toHaveBeenCalled();
   });
 
   it('calls action() when a TextButton is clicked', () => {
     renderAppHeader(textButtonProps);
-    screen.getByText('TextButton').click();
-    expect(action).toHaveBeenCalled();
+    fireEvent.click(screen.getByText('TextButton'));
+    expect(action).toHaveBeenCalledTimes(1);
   });
 
   it('calls action() when a FillButton clicked', () => {
     renderAppHeader(fillButtonProps);
-    screen.getByText('FillButton').click();
-    expect(action).toHaveBeenCalled();
+    fireEvent.click(screen.getByText('FillButton'));
+    expect(action).toHaveBeenCalledTimes(1);
   });
 });

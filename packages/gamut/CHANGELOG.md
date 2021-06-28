@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [34.12.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@34.11.0...@codecademy/gamut@34.12.0) (2021-06-28)
+
+
+### Features
+
+* enable non-nullable-type-assertion-style ([622ca70](https://github.com/Codecademy/client-modules/commit/622ca706e874c9eaa02ef0dc9d2cba409d9510d4))
+
+
+
+## [34.11.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@34.10.12...@codecademy/gamut@34.11.0) (2021-06-25)
+
+
+### Features
+
+* add idSuffix prop to Pattern ([f887926](https://github.com/Codecademy/client-modules/commit/f887926348b5e4816acbed1d72ef2e49d03e7417))
+
+
+
 ### [34.10.12](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@34.10.11...@codecademy/gamut@34.10.12) (2021-06-25)
 
 **Note:** Version bump only for package @codecademy/gamut
