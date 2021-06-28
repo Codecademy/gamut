@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [19.12.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.12.2...@codecademy/gamut-labs@19.12.3) (2021-06-28)
+
+
+### Bug Fixes
+
+* **Flyout:** change how we're setting full height ([547c847](https://github.com/Codecademy/client-modules/commit/547c8472b1deab16fad42f173e0eba6a088a2662))
+
+
+
 ### [19.12.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.12.1...@codecademy/gamut-labs@19.12.2) (2021-06-28)
 
 **Note:** Version bump only for package @codecademy/gamut-labs
