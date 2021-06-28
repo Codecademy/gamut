@@ -1,4 +1,5 @@
 import {
+  Anchor,
   Box,
   ContentContainer,
   FlexBox,
@@ -48,10 +49,6 @@ const SuggestionContainer = styled(ContentContainer)(
 
 const StyledInput = styled(Input)`
   outline: none;
-`;
-
-const SuggestionButtons = styled.div`
-  margin-left: -0.6rem;
 `;
 
 export const SearchPaneContents: React.FC<SearchPaneContentsProps> = ({
@@ -120,9 +117,7 @@ export const SearchPaneContents: React.FC<SearchPaneContentsProps> = ({
           borderColorTop="gray-100"
           borderStyle="solid"
           borderWidth="2px 0 1px"
-          box-shadow="none"
           data-testid="header-search-dropdown"
-          height="auto"
           position="absolute"
           ref={searchElementRef}
           width="100%"
@@ -169,9 +164,12 @@ export const SearchPaneContents: React.FC<SearchPaneContentsProps> = ({
               Popular Searches
             </Text>
             <FlexBox justifyContent="space-between">
-              <SuggestionButtons>
+              <div>
                 {searchTerms.map((searchTerm) => (
-                  <TextButton
+                  <Anchor
+                    variant="standard"
+                    fontWeight="bold"
+                    mr={16}
                     key={searchTerm}
                     onClick={() => {
                       navigateToSearch(searchTerm);
@@ -179,12 +177,11 @@ export const SearchPaneContents: React.FC<SearchPaneContentsProps> = ({
                         `popular_search_term_${camelCase(searchTerm)}`
                       );
                     }}
-                    mode="light"
                   >
                     {searchTerm}
-                  </TextButton>
+                  </Anchor>
                 ))}
-              </SuggestionButtons>
+              </div>
               <TextButton
                 href="/help"
                 onClick={() => onTrackingClick('help_center')}

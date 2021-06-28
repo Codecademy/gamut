@@ -3,6 +3,55 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [41.11.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@41.10.25...@codecademy/styleguide@41.11.0) (2021-06-28)
+
+
+### Features
+
+* **GridForm:** Add optional sections to GridForm ([ea2b6d0](https://github.com/Codecademy/client-modules/commit/ea2b6d03312310632e71b7ed63bf7f8c09818067))
+
+
+
+### [41.10.25](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@41.10.24...@codecademy/styleguide@41.10.25) (2021-06-28)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [41.10.24](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@41.10.23...@codecademy/styleguide@41.10.24) (2021-06-28)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [41.10.23](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@41.10.22...@codecademy/styleguide@41.10.23) (2021-06-28)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [41.10.22](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@41.10.21...@codecademy/styleguide@41.10.22) (2021-06-28)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [41.10.21](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@41.10.20...@codecademy/styleguide@41.10.21) (2021-06-25)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
 ### [41.10.20](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@41.10.19...@codecademy/styleguide@41.10.20) (2021-06-25)
 
 **Note:** Version bump only for package @codecademy/styleguide

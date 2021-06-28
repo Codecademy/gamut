@@ -7,7 +7,7 @@ export type AppHeaderItem =
   | AppHeaderProfileDropdownItem
   | AppHeaderRenderElementItem;
 
-type AppHeaderItemWithHref =
+export type AppHeaderItemWithHref =
   | AppHeaderLogoItem
   | AppHeaderLinkItem
   | AppHeaderTextButtonItem
@@ -67,9 +67,9 @@ export type AppHeaderRenderElementItem = AppHeaderBaseItem<'render-element'> & {
   renderElement: () => ReactNode;
 };
 
-export type AppHeaderClickHandler = (
+export type AppHeaderClickHandler<ItemType = AppHeaderItem> = (
   event: React.MouseEvent,
-  item: AppHeaderItem
+  item: ItemType
 ) => void;
 
 export const isAppHeaderItemWithHref = (
