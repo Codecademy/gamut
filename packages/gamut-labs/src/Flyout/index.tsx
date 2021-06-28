@@ -128,7 +128,7 @@ export const Flyout: React.FC<FlyoutProps> = ({
                 maxWidth={`${openWidth}rem`}
                 openFrom={openFrom}
                 position="fixed"
-                height="100vh"
+                bottom="0"
                 top="0"
                 {...styleProps}
               >
