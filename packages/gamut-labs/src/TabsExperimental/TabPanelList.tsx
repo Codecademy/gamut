@@ -12,7 +12,7 @@ export const TabPanelList: React.FC<TabPanelListProps> = ({
     {React.Children.toArray(children)
       .filter(isTabPanelGuard)
       .map((panelChild, i) => {
-        const { children, className, title } = panelChild.props;
+        const { children: panelChildren, className, title } = panelChild.props;
 
         return (
           <DerivedTabPanel
@@ -20,7 +20,7 @@ export const TabPanelList: React.FC<TabPanelListProps> = ({
             className={className}
             key={`panel-${title}`}
           >
-            {children}
+            {panelChildren}
           </DerivedTabPanel>
         );
       })}

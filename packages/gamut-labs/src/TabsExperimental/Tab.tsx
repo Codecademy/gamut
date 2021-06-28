@@ -8,14 +8,34 @@ type TabButtonProps = Pick<TabProps, 'isActiveTab'>;
 
 const TabButton = styled(TextButton)<TabButtonProps>`
   border: 0;
-  border-bottom: ${({ theme, isActiveTab }) =>
-    `0.1875rem ${isActiveTab ? theme.colors.primary : 'transparent'} solid`};
+  border-bottom: ${({ theme, isActiveTab }) => {
+    let borderColor = 'transparent';
+    if (isActiveTab) {
+      if (theme.mode === 'light') {
+        borderColor = theme.colors.blue;
+      } else {
+        borderColor = theme.colors.primary;
+      }
+    }
+    return `0.1875rem ${borderColor} solid`;
+  }};
   border-bottom-left-radius: 0px;
   border-bottom-right-radius: 0px;
   font-weight: ${({ theme, isActiveTab }) =>
     isActiveTab ? theme.fontWeight[700] : theme.fontWeight[400]};
   font-size: ${({ theme }) => theme.fontSize[18]};
   text-overflow: ellipsis;
+  color: ${({ theme, isActiveTab }) => {
+    let textColor: string = theme.colors.text;
+    if (isActiveTab) {
+      if (theme.mode === 'light') {
+        textColor = theme.colors.blue;
+      } else {
+        textColor = theme.colors.primary;
+      }
+    }
+    return textColor;
+  }};
 `;
 
 export const Tab: React.FC<TabProps> = ({ title, isActiveTab, onClick }) => {
