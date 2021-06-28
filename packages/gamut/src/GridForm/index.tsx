@@ -119,7 +119,7 @@ export function GridForm<
 
           return (
             <GridFormInputGroup
-              error={errorMessage as string}
+              error={errorMessage}
               isFirstError={isFirstError}
               field={field}
               key={field.name}
