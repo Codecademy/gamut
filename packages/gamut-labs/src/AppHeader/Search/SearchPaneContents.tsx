@@ -95,16 +95,15 @@ export const SearchPaneContents: React.FC<SearchPaneContentsProps> = ({
   return (
     <>
       <Box
-        onClick={toggleSearch}
         aria-hidden
-        position="fixed"
+        bg="shadow-black-slight"
         height="100%"
+        onClick={toggleSearch}
+        position="fixed"
         // We add 5rem here in case there's some sort of branded banner above search
         // The search area is much taller than 5rem so this is a safe amount of padding
         top={`calc(${theme.elements.headerHeight} + 5rem)`}
         width={1}
-        bg="black"
-        opacity={0.2}
       />
       <FocusTrap
         onClickOutside={handleOutsideClick}
@@ -112,7 +111,7 @@ export const SearchPaneContents: React.FC<SearchPaneContentsProps> = ({
         allowPageInteraction
       >
         <Box
-          background="white"
+          bg="white"
           borderColorBottom="navy"
           borderColorTop="gray-100"
           borderStyle="solid"
@@ -124,12 +123,11 @@ export const SearchPaneContents: React.FC<SearchPaneContentsProps> = ({
         >
           <Box border="none" width="auto">
             <QueryContainer>
-              <Box
+              <FlexBox
                 alignItems="baseline"
                 borderColor="gray-600"
                 borderStyleBottom="solid"
                 borderWidthBottom="1px"
-                display="flex"
                 width="100%"
               >
                 <SearchIcon color="gray-600" height={24} width={24} />
@@ -156,7 +154,7 @@ export const SearchPaneContents: React.FC<SearchPaneContentsProps> = ({
                     width="100%"
                   />
                 </Form>
-              </Box>
+              </FlexBox>
             </QueryContainer>
           </Box>
           <SuggestionContainer>
