@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [19.13.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.12.3...@codecademy/gamut-labs@19.13.0) (2021-06-28)
+
+
+### Features
+
+* **GlobalHeader:** Added the better type for the link handler ([788aed3](https://github.com/Codecademy/client-modules/commit/788aed38fe80831986ed716d288655f2267c4fa7))
+
+
+
 ### [19.12.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.12.2...@codecademy/gamut-labs@19.12.3) (2021-06-28)
 
 
