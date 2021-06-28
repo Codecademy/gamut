@@ -2,78 +2,76 @@ import { GamutIconProps } from '@codecademy/gamut-icons';
 import { ReactNode } from 'react';
 
 export type AppHeaderItem =
-  | AppHeaderLogoItem
-  | AppHeaderLinkItem
-  | AppHeaderTextButtonItem
-  | AppHeaderFillButtonItem
+  | AppHeaderItemWithHref
   | AppHeaderSimpleDropdownItem
   | AppHeaderProfileDropdownItem
   | AppHeaderRenderElementItem;
 
-type AppHeaderBaseItem = {
+type AppHeaderItemWithHref =
+  | AppHeaderLogoItem
+  | AppHeaderLinkItem
+  | AppHeaderTextButtonItem
+  | AppHeaderFillButtonItem;
+
+type AppHeaderBaseItem<Type extends string> = {
   dataTestId?: string;
   id: string;
   redirect?: boolean;
+  type: Type;
 };
 
-export type AppHeaderLogoItem = AppHeaderBaseItem & {
+type AppHeaderBaseHrefItem<Type extends string> = AppHeaderBaseItem<Type> & {
   href: string;
-  pro: boolean;
   trackingTarget: string;
-  type: 'logo';
 };
 
-export type AppHeaderLinkItem = AppHeaderBaseItem & {
-  href: string;
+export type AppHeaderLogoItem = AppHeaderBaseHrefItem<'logo'> & {
+  pro: boolean;
+};
+
+export type AppHeaderLinkItem = AppHeaderBaseHrefItem<'link'> & {
   icon?: React.ComponentType<GamutIconProps>;
   newTab?: boolean;
   text: string;
   topSeparator?: boolean;
-  trackingTarget: string;
-  type: 'link';
 };
 
-export type AppHeaderTextButtonItem = AppHeaderBaseItem & {
-  href: string;
+export type AppHeaderTextButtonItem = AppHeaderBaseHrefItem<'text-button'> & {
   text: string;
-  trackingTarget: string;
-  type: 'text-button';
 };
 
-export type AppHeaderFillButtonItem = AppHeaderBaseItem & {
-  href: string;
+export type AppHeaderFillButtonItem = AppHeaderBaseHrefItem<'fill-button'> & {
   text: string;
-  trackingTarget: string;
-  type: 'fill-button';
 };
 
 export type AppHeaderDropdownItem =
   | AppHeaderSimpleDropdownItem
   | AppHeaderProfileDropdownItem;
 
-export type AppHeaderSimpleDropdownItem = AppHeaderBaseItem & {
+export type AppHeaderSimpleDropdownItem = AppHeaderBaseItem<'dropdown'> & {
   icon?: React.ComponentType<GamutIconProps>;
   popover: AppHeaderLinkItem[];
   text: string;
   trackingTarget: string;
-  type: 'dropdown';
 };
 
-export type AppHeaderProfileDropdownItem = AppHeaderBaseItem & {
+export type AppHeaderProfileDropdownItem = AppHeaderBaseItem<'profile-dropdown'> & {
   avatar: string;
   userDisplayName: string;
   popover: AppHeaderLinkItem[][];
   text: string;
   trackingTarget: string;
-  type: 'profile-dropdown';
 };
 
-export type AppHeaderRenderElementItem = AppHeaderBaseItem & {
+export type AppHeaderRenderElementItem = AppHeaderBaseItem<'render-element'> & {
   renderElement: () => ReactNode;
-  type: 'render-element';
 };
 
 export type AppHeaderClickHandler = (
   event: React.MouseEvent,
   item: AppHeaderItem
 ) => void;
+
+export const isAppHeaderItemWithHref = (
+  item: AppHeaderItem
+): item is AppHeaderItemWithHref => !!(item as AppHeaderItemWithHref).href;

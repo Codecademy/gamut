@@ -2,12 +2,12 @@ import React from 'react';
 
 import { PatternName } from './index';
 
-export const defs = (name: PatternName) => {
+export const defs = (name: PatternName, idSuffix: string) => {
   return (
     <defs>
       {name === 'diagonalStripesLoose' && (
         <pattern
-          id="diagonalStripesLoose"
+          id={`diagonalStripesLoose${idSuffix}`}
           x="0"
           y="0"
           width="16"
@@ -34,14 +34,14 @@ export const defs = (name: PatternName) => {
       )}
       {name === 'diagonalStripesRegular' && (
         <pattern
-          id="diagonalStripesRegular"
+          id={`diagonalStripesRegular${idSuffix}`}
           x="0"
           y="0"
           width="8"
           height="8"
           patternUnits="userSpaceOnUse"
         >
-          <g clipPath="url(#clipDiagonalStripesRegular)">
+          <g clipPath={`url(#clipDiagonalStripesRegular${idSuffix})`}>
             <rect width="8" height="8" fill="white" />
             <rect y="7" width="1" height="1" fill="currentColor" />
             <rect x="1" y="6" width="1" height="1" fill="currentColor" />
@@ -53,7 +53,7 @@ export const defs = (name: PatternName) => {
             <rect x="7" width="1" height="1" fill="currentColor" />
           </g>
           <defs>
-            <clipPath id="clipDiagonalStripesRegular">
+            <clipPath id={`clipDiagonalStripesRegular${idSuffix}`}>
               <rect width="8" height="8" fill="white" />
             </clipPath>
           </defs>
@@ -61,14 +61,14 @@ export const defs = (name: PatternName) => {
       )}
       {name === 'diagonalStripesDense' && (
         <pattern
-          id="diagonalStripesDense"
+          id={`diagonalStripesDense${idSuffix}`}
           x="0"
           y="0"
           width="4"
           height="4"
           patternUnits="userSpaceOnUse"
         >
-          <g clipPath="url(#clipDiagonalStripesDense)">
+          <g clipPath={`url(#clipDiagonalStripesDense${idSuffix})`}>
             <rect width="4" height="4" fill="white" />
             <rect y="3" width="1" height="1" fill="currentColor" />
             <rect x="1" y="2" width="1" height="1" fill="currentColor" />
@@ -76,7 +76,7 @@ export const defs = (name: PatternName) => {
             <rect x="3" width="1" height="1" fill="currentColor" />
           </g>
           <defs>
-            <clipPath id="clipDiagonalStripesDense">
+            <clipPath id={`clipDiagonalStripesDense${idSuffix}`}>
               <rect width="4" height="4" fill="white" />
             </clipPath>
           </defs>
@@ -84,7 +84,7 @@ export const defs = (name: PatternName) => {
       )}
       {name === 'checkerLoose' && (
         <pattern
-          id="checkerLoose"
+          id={`checkerLoose${idSuffix}`}
           x="0"
           y="0"
           width="16"
@@ -97,7 +97,7 @@ export const defs = (name: PatternName) => {
       )}
       {name === 'checkerRegular' && (
         <pattern
-          id="checkerRegular"
+          id={`checkerRegular${idSuffix}`}
           x="0"
           y="0"
           width="8"
@@ -110,7 +110,7 @@ export const defs = (name: PatternName) => {
       )}
       {name === 'checkerDense' && (
         <pattern
-          id="checkerDense"
+          id={`checkerDense${idSuffix}`}
           x="0"
           y="0"
           width="4"
@@ -123,7 +123,7 @@ export const defs = (name: PatternName) => {
       )}
       {name === 'dotLoose' && (
         <pattern
-          id="dotLoose"
+          id={`dotLoose${idSuffix}`}
           x="0"
           y="0"
           width="16"
