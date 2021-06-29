@@ -7,7 +7,7 @@ const renderWrapper = setupEnzyme(GridFormSectionTitle, {
   numberOfFields: 3,
 });
 
-describe('GridFormSections', () => {
+describe('GridFormSectionTitle', () => {
   it('renders a title that defaults to h2', () => {
     const { wrapper } = renderWrapper();
     const title = wrapper.find('h2');
@@ -20,6 +20,13 @@ describe('GridFormSections', () => {
     const title = wrapper.find('h3');
 
     expect(title.text()).toEqual('Updog');
+  });
+
+  it('renders a title that can be styled with Text props', () => {
+    const { wrapper } = renderWrapper({ as: 'h3', fontWeight: 'bold' });
+    const titleNode = wrapper.find('h3').getDOMNode();
+
+    expect(titleNode).toHaveStyle('font-weight: bold');
   });
 
   it('renders the proper Column size when layout is set to center', () => {
