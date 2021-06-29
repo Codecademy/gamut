@@ -1,5 +1,4 @@
 import {
-  Anchor,
   Box,
   ContentContainer,
   FlexBox,
