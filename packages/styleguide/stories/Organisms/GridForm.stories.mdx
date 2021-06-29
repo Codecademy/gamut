@@ -780,12 +780,15 @@ See the [`Radio`](/?path=/docs/atoms-forminputs-radio--radio) story for an examp
 ## Sections
 
 Our `GridForm`s optionally take an array of sections that have left and center-aligned variants.
-Each sections should have a title that correctly follows [heading ranks](https://usability.yale.edu/web-accessibility/articles/headings). You can set the text type of this title though the `as` prop on that section -- the default is `h2`.
+
+Each sections should have a title that correctly follows [heading ranks](https://usability.yale.edu/web-accessibility/articles/headings). You can set the text type of this title though the `as` prop on that section -- the default is `h2`. You can only set the `as` prop to a heading.
+
+You can set the rest of the [Text](https://gamut.codecademy.com/storybook/?path=/docs/typography-text--text) props for the section title the same way. Please check if your styling can be achieved with a [variant](https://gamut.codecademy.com/storybook/?path=/docs/typography-text--text#1-element-variants) before exploring other props.
 
 When using the left-aligned layout, please note that the `title` takes up 3 columns, so any field size over 9 may cause inconsistent behavior!
 
 <Canvas>
-  <Story name="Custom Sections">
+  <Story name="Sections">
     {(args) => {
       return (
         <GridForm
@@ -793,6 +796,7 @@ When using the left-aligned layout, please note that the `title` takes up 3 colu
             {
               title: 'first section',
               layout: 'left',
+              variant: 'title-xs',
               fields: [
                 {
                   label: 'hi?',
