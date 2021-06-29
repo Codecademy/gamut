@@ -127,13 +127,13 @@ export function GridForm<
                   <Fragment key={field.title}>
                     <GridFormSectionTitle
                       title={title}
-                      as={field.as}
-                      layout={field.layout}
-                      numberOfFields={field.fields.length}
+                      as={as}
+                      layout={layout}
+                      numberOfFields={fields.length}
                       {...rest}
                     />
                     <GridFormSection
-                      fields={field.fields}
+                      fields={fields}
                       showRequired={showRequired}
                     />
                     <GridFormSectionBreak />
