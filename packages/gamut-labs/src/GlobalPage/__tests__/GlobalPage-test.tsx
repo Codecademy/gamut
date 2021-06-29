@@ -9,6 +9,11 @@ const renderView = setupRtl(GlobalPage, {
   },
   header: {
     action: jest.fn(),
+    search: {
+      onEnable: jest.fn(),
+      onSearch: jest.fn(),
+      onTrackingClick: jest.fn(),
+    },
     type: 'anon',
   },
 });

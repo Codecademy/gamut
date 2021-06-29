@@ -1,7 +1,5 @@
 import { Box } from '@codecademy/gamut';
-import { themed } from '@codecademy/gamut-styles';
 import { useTheme } from '@emotion/react';
-import styled from '@emotion/styled';
 import cx from 'classnames';
 import React, { useCallback, useEffect, useState } from 'react';
 
@@ -48,24 +46,16 @@ const getAppHeaderItems = (
         case 'landing':
           return anonLandingHeaderItems();
         case 'login':
-          return anonLoginHeaderItems(props.renderSearch?.desktop);
+          return anonLoginHeaderItems();
         case 'signup':
-          return anonSignupHeaderItems(props.renderSearch?.desktop);
+          return anonSignupHeaderItems();
         default:
-          return anonDefaultHeaderItems(props.renderSearch?.desktop);
+          return anonDefaultHeaderItems();
       }
     case 'free':
-      return freeHeaderItems(
-        props.user,
-        props.renderSearch?.desktop,
-        props.renderNotifications?.desktop
-      );
+      return freeHeaderItems(props.user, props.renderNotifications?.desktop);
     case 'pro':
-      return proHeaderItems(
-        props.user,
-        props.renderSearch?.desktop,
-        props.renderNotifications?.desktop
-      );
+      return proHeaderItems(props.user, props.renderNotifications?.desktop);
     case 'loading':
       return loadingHeaderItems;
   }
@@ -101,12 +91,8 @@ const getMobileAppHeaderItems = (
   }
 };
 
-const StyledBox = styled(Box)`
-  z-index: ${themed('elements.headerZ')};
-`;
-
 export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
-  const { action, onLinkAction, renderSearch, children } = props;
+  const { action, onLinkAction } = props;
 
   const [isInHeaderRegion, setIsInHeaderRegion] = useState(true);
 
@@ -136,7 +122,7 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
   );
 
   return (
-    <StyledBox as="header" position="sticky" top={0}>
+    <Box as="header" position="sticky" top={0} zIndex={theme.elements.headerZ}>
       <Box
         display={{ _: 'none', md: 'block' }}
         height={theme.elements.headerHeight}
@@ -145,6 +131,7 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
         <AppHeader
           action={combinedAction}
           items={getAppHeaderItems(props)}
+          search={props.search}
           redirectParam={
             props.type === 'anon' ? props.redirectParam : undefined
           }
@@ -158,13 +145,13 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
         <AppHeaderMobile
           action={combinedAction}
           items={getMobileAppHeaderItems(props)}
-          renderSearch={renderSearch?.mobile}
+          onSearch={props.search.onSearch}
           redirectParam={
             props.type === 'anon' ? props.redirectParam : undefined
           }
         />
       </Box>
-      {children}
-    </StyledBox>
+      {props.children}
+    </Box>
   );
 };
