@@ -124,7 +124,7 @@ export function GridForm<
               if (isGridFormSection(field)) {
                 const { title, as, layout, fields, ...rest } = field;
                 return (
-                  <Fragment key={field.title}>
+                  <Fragment key={title}>
                     <GridFormSectionTitle
                       title={title}
                       as={as}
