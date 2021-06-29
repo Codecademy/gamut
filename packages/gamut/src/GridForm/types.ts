@@ -136,7 +136,7 @@ export type GridFormField =
   | GridFormHiddenField
   | GridFormSweetContainerField;
 
-type GridFormSectionTitleText = Omit<TextProps, 'as'>;
+type GridFormSectionTitleText = Pick<TextProps, 'variant'>;
 
 export type GridFormSectionTitleBaseProps = GridFormSectionTitleText & {
   title: string;

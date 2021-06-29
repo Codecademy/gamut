@@ -23,10 +23,10 @@ describe('GridFormSectionTitle', () => {
   });
 
   it('renders a title that can be styled with Text props', () => {
-    const { wrapper } = renderWrapper({ as: 'h3', fontWeight: 'bold' });
+    const { wrapper } = renderWrapper({ as: 'h3', variant: 'title-xxl' });
     const titleNode = wrapper.find('h3').getDOMNode();
 
-    expect(titleNode).toHaveStyle('font-weight: bold');
+    expect(titleNode).toHaveStyle('font-size: 4rem');
   });
 
   it('renders the proper Column size when layout is set to center', () => {
