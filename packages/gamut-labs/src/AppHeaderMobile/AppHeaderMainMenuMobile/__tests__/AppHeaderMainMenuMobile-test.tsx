@@ -1,13 +1,7 @@
-import { theme } from '@codecademy/gamut-styles';
-import { ThemeProvider } from '@emotion/react';
-import { render, screen } from '@testing-library/react';
-import React from 'react';
+import { setupRtl } from '@codecademy/gamut-tests';
 
 import { createMockAppHeaderLinkItem } from '../../../AppHeader/mockAppHeaderItems';
-import {
-  AppHeaderMainMenuMobile,
-  AppHeaderMainMenuMobileProps,
-} from '../index';
+import { AppHeaderMainMenuMobile } from '../index';
 
 const action = jest.fn();
 
@@ -32,7 +26,7 @@ const idToTestId = (id: string) => {
   return `app-header-link-${id}`;
 };
 
-const props: AppHeaderMainMenuMobileProps = {
+const renderView = setupRtl(AppHeaderMainMenuMobile, {
   action,
   items: [
     {
@@ -82,55 +76,45 @@ const props: AppHeaderMainMenuMobileProps = {
       trackingTarget: 'sign-up-tracking',
     },
   ],
-};
-
-const renderAppHeaderMainMenuMobile = () => {
-  return render(
-    <ThemeProvider theme={theme}>
-      <AppHeaderMainMenuMobile {...props} />
-    </ThemeProvider>
-  );
-};
+  onSearch: jest.fn(),
+});
 
 describe('AppHeaderMainMenuMobile', () => {
   it('renders links for the items with type link and type fill-button', () => {
-    renderAppHeaderMainMenuMobile();
-    const linkArray = screen
+    const { view } = renderView();
+    const linkArray = view
       .getAllByRole('link')
       .map((node) => node.getAttribute('href'));
     expect(linkArray).toStrictEqual([link1Href, link2Href, fillButtonHref]);
   });
 
   it('renders a target button for the items with type dropdown', () => {
-    renderAppHeaderMainMenuMobile();
-    const targetButton = screen.getAllByRole('button')[0];
+    const { view } = renderView();
+    const targetButton = view.getAllByRole('button')[1];
     expect(targetButton).toHaveTextContent('resources target');
   });
 
   it('does not render the submenu on load', () => {
-    expect(
-      screen.queryByTestId(idToTestId(sublink1Id))
-    ).not.toBeInTheDocument();
-    expect(
-      screen.queryByTestId(idToTestId(sublink2Id))
-    ).not.toBeInTheDocument();
+    const { view } = renderView();
+    expect(view.queryByTestId(idToTestId(sublink1Id))).not.toBeInTheDocument();
+    expect(view.queryByTestId(idToTestId(sublink2Id))).not.toBeInTheDocument();
   });
 
   it('renders a submenu when its target button is clicked', () => {
-    renderAppHeaderMainMenuMobile();
-    const targetButton = screen.getByText('resources target');
+    const { view } = renderView();
+    const targetButton = view.getByText('resources target');
     targetButton.click();
     expect(action).toHaveBeenCalled();
-    expect(screen.getByTestId(idToTestId(sublink1Id)));
-    expect(screen.getByTestId(idToTestId(sublink2Id)));
+    expect(view.getByTestId(idToTestId(sublink1Id)));
+    expect(view.getByTestId(idToTestId(sublink2Id)));
   });
 
   it('renders the profile submenu when its target button is clicked', () => {
-    renderAppHeaderMainMenuMobile();
-    const targetButton = screen.getByText('user name');
+    const { view } = renderView();
+    const targetButton = view.getByText('user name');
     targetButton.click();
     expect(action).toHaveBeenCalled();
-    expect(screen.getByTestId(idToTestId(profileLink1Id)));
-    expect(screen.getByTestId(idToTestId(profileLink2Id)));
+    expect(view.getByTestId(idToTestId(profileLink1Id)));
+    expect(view.getByTestId(idToTestId(profileLink2Id)));
   });
 });

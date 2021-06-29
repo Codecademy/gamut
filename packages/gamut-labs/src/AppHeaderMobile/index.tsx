@@ -8,7 +8,7 @@ import {
 import { CloseIcon, MenuIcon } from '@codecademy/gamut-icons';
 import { breakpoints } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
-import React, { ReactNode, useState } from 'react';
+import React, { useState } from 'react';
 
 import { mapItemToElement, StyledAppBar } from '../AppHeader';
 import {
@@ -25,8 +25,8 @@ import { AppHeaderMainMenuMobile } from '../AppHeaderMobile/AppHeaderMainMenuMob
 export type AppHeaderMobileProps = {
   action: AppHeaderClickHandler;
   items: FormattedMobileAppHeaderItems;
-  renderSearch?: () => ReactNode;
   redirectParam?: string;
+  onSearch: (query: string) => void;
 };
 
 const IconButton = styled.button`
@@ -57,7 +57,7 @@ const StyledOverlay = styled(Overlay)`
 export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
   action,
   items,
-  renderSearch,
+  onSearch,
   redirectParam,
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
@@ -130,9 +130,9 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
           </StyledAppBar>
           <ContentContainer>
             <AppHeaderMainMenuMobile
-              items={items.mainMenu}
               action={action}
-              renderSearch={renderSearch}
+              items={items.mainMenu}
+              onSearch={onSearch}
             />
           </ContentContainer>
         </div>
