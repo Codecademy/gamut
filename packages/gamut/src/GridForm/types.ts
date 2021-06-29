@@ -3,6 +3,7 @@ import { UseFormMethods, ValidationRules } from 'react-hook-form';
 
 import { ColumnProps } from '../Layout';
 import { ToolTipProps } from '../ToolTip';
+import { TextProps } from '../Typography/Text';
 
 export type BaseFormField<Value> = {
   defaultValue?: Value;
@@ -135,7 +136,9 @@ export type GridFormField =
   | GridFormHiddenField
   | GridFormSweetContainerField;
 
-export type GridFormSectionTitleBaseProps = {
+type GridFormSectionTitleText = Omit<TextProps, 'as'>;
+
+export type GridFormSectionTitleBaseProps = GridFormSectionTitleText & {
   title: string;
   as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
   layout?: 'center' | 'left';
