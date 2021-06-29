@@ -22,6 +22,7 @@ const logoProps: AppHeaderMobileProps = {
     right: [],
     mainMenu: [],
   },
+  onSearch: jest.fn(),
 };
 
 const linkProps: AppHeaderMobileProps = {
@@ -39,6 +40,7 @@ const linkProps: AppHeaderMobileProps = {
     right: [],
     mainMenu: [],
   },
+  onSearch: jest.fn(),
 };
 
 const mainMenuProps: AppHeaderMobileProps = {
@@ -63,6 +65,7 @@ const mainMenuProps: AppHeaderMobileProps = {
       },
     ],
   },
+  onSearch: jest.fn(),
 };
 
 const renderAppHeader = (props: AppHeaderMobileProps) => {

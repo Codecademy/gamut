@@ -134,3 +134,15 @@ export type GridFormField =
   | GridFormTextAreaField
   | GridFormHiddenField
   | GridFormSweetContainerField;
+
+export type GridFormSectionTitleBaseProps = {
+  title: string;
+  as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+  layout?: 'center' | 'left';
+};
+
+export type GridFormSectionProps = GridFormSectionTitleBaseProps & {
+  fields: GridFormField[];
+};
+
+export type GridFormFieldsProps = GridFormField | GridFormSectionProps;
