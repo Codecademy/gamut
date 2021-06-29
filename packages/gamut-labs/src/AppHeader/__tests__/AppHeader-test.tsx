@@ -9,8 +9,17 @@ import { AppHeader, AppHeaderProps } from '..';
 
 const action = jest.fn();
 
-const logoProps: AppHeaderProps = {
+const defaultProps = {
   action,
+  search: {
+    onEnable: jest.fn(),
+    onSearch: jest.fn(),
+    onTrackingClick: jest.fn(),
+  },
+};
+
+const logoProps: AppHeaderProps = {
+  ...defaultProps,
   items: {
     left: [
       {
@@ -26,7 +35,7 @@ const logoProps: AppHeaderProps = {
 };
 
 const linkProps: AppHeaderProps = {
-  action,
+  ...defaultProps,
   items: {
     left: [
       {
@@ -42,7 +51,7 @@ const linkProps: AppHeaderProps = {
 };
 
 const dropdownProps: AppHeaderProps = {
-  action,
+  ...defaultProps,
   items: {
     left: [
       {
@@ -73,7 +82,7 @@ const dropdownProps: AppHeaderProps = {
 };
 
 const renderElementProps: AppHeaderProps = {
-  action,
+  ...defaultProps,
   items: {
     left: [],
     right: [
@@ -87,7 +96,7 @@ const renderElementProps: AppHeaderProps = {
 };
 
 const textButtonProps: AppHeaderProps = {
-  action,
+  ...defaultProps,
   items: {
     left: [],
     right: [
@@ -103,7 +112,7 @@ const textButtonProps: AppHeaderProps = {
 };
 
 const fillButtonProps: AppHeaderProps = {
-  action,
+  ...defaultProps,
   items: {
     left: [],
     right: [

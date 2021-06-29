@@ -1,5 +1,5 @@
 import { IconButton } from '@codecademy/gamut';
-import { BellIcon, SearchIcon } from '@codecademy/gamut-icons';
+import { BellIcon } from '@codecademy/gamut-icons';
 import { theme } from '@codecademy/gamut-styles';
 import { ThemeProvider } from '@emotion/react';
 import { render, screen } from '@testing-library/react';
@@ -30,45 +30,46 @@ const user: User = {
   showReferrals: true,
 };
 
-const anonHeaderProps: GlobalHeaderProps = {
+const defaultProps = {
   action,
+  search: {
+    onEnable: jest.fn(),
+    onSearch: jest.fn(),
+    onTrackingClick: jest.fn(),
+  },
+};
+
+const anonHeaderProps: GlobalHeaderProps = {
+  ...defaultProps,
   type: 'anon',
 };
 
 const anonLandingHeaderProps: GlobalHeaderProps = {
-  action,
+  ...defaultProps,
   type: 'anon',
   variant: 'landing',
 };
 
 const anonLoginHeaderProps: GlobalHeaderProps = {
-  action,
-  renderSearch: {
-    desktop: () => <IconButton icon={SearchIcon} />,
-    mobile: () => <IconButton icon={SearchIcon} />,
-  },
+  ...defaultProps,
   type: 'anon',
   variant: 'login',
 };
 
 const anonSignUpHeaderProps: GlobalHeaderProps = {
-  action,
-  renderSearch: {
-    desktop: () => <IconButton icon={SearchIcon} />,
-    mobile: () => <IconButton icon={SearchIcon} />,
-  },
+  ...defaultProps,
   type: 'anon',
   variant: 'signup',
 };
 
 const freeHeaderProps: GlobalHeaderProps = {
-  action,
+  ...defaultProps,
   type: 'free',
   user,
 };
 
 const freeCustomCheckoutUrlHeaderProps: GlobalHeaderProps = {
-  action,
+  ...defaultProps,
   type: 'free',
   user: {
     proCheckoutUrl: 'test-url',
@@ -77,7 +78,7 @@ const freeCustomCheckoutUrlHeaderProps: GlobalHeaderProps = {
 };
 
 const freeCompletedTrialHeaderProps: GlobalHeaderProps = {
-  action,
+  ...defaultProps,
   type: 'free',
   user: {
     showProUpgrade: true,
@@ -86,13 +87,13 @@ const freeCompletedTrialHeaderProps: GlobalHeaderProps = {
 };
 
 const proHeaderProps: GlobalHeaderProps = {
-  action,
+  ...defaultProps,
   type: 'pro',
   user,
 };
 
 const proPausedHeaderProps: GlobalHeaderProps = {
-  action,
+  ...defaultProps,
   type: 'pro',
   user: {
     isPaused: true,
@@ -101,16 +102,12 @@ const proPausedHeaderProps: GlobalHeaderProps = {
 };
 
 const loadingHeaderProps: GlobalHeaderProps = {
-  action,
+  ...defaultProps,
   type: 'loading',
 };
 
 const renderElementProps: GlobalHeaderProps = {
-  action,
-  renderSearch: {
-    desktop: () => <IconButton icon={SearchIcon} />,
-    mobile: () => <IconButton icon={SearchIcon} />,
-  },
+  ...defaultProps,
   renderNotifications: {
     desktop: () => <IconButton icon={BellIcon} />,
     mobile: () => <IconButton icon={BellIcon} />,
@@ -176,8 +173,8 @@ describe('GlobalHeader', () => {
         renderGlobalHeader(anonLandingHeaderProps);
       });
 
-      test('does not show search', () => {
-        expect(screen.queryByTitle('Search Icon')).toBeFalsy();
+      test('shows search', () => {
+        screen.getByTitle('Search Icon');
       });
 
       test('shows login', () => {

@@ -21,6 +21,10 @@ export type LayoutMenuProps = {
    * Text shown in mobile button that opens flyout on click
    */
   mobileButtonText: string;
+  /**
+   * Breakpoint above which the menu button displays as a full sidebar
+   */
+  breakpoint?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 };
 
 export const LayoutMenu: React.FC<LayoutMenuProps> = ({
@@ -28,6 +32,7 @@ export const LayoutMenu: React.FC<LayoutMenuProps> = ({
   onSectionToggle,
   selectedItem,
   mobileButtonText,
+  breakpoint = 'lg',
   children,
 }) => {
   const closeFlyoutRef = useRef(() => {});
@@ -52,7 +57,7 @@ export const LayoutMenu: React.FC<LayoutMenuProps> = ({
 
   return (
     <nav>
-      <Box display={{ _: 'block', lg: 'none' }}>
+      <Box display={{ _: 'block', [breakpoint]: 'none' }}>
         <Flyout
           renderButton={renderButton}
           closeFlyoutRef={closeFlyoutRef}
@@ -66,7 +71,7 @@ export const LayoutMenu: React.FC<LayoutMenuProps> = ({
           </Box>
         </Flyout>
       </Box>
-      <Box display={{ _: 'none', lg: 'block' }}>
+      <Box display={{ _: 'none', [breakpoint]: 'block' }}>
         {accordionMenuSections}
         {children}
       </Box>

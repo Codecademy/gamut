@@ -1,5 +1,5 @@
 import { Box, IconButton } from '@codecademy/gamut/src';
-import { BellIcon, SearchIcon } from '@codecademy/gamut-icons/src';
+import { BellIcon } from '@codecademy/gamut-icons/src';
 import { GlobalHeader } from '@codecademy/gamut-labs/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
@@ -34,6 +34,11 @@ import LinkTo from '@storybook/addon-links/react';
         displayName: 'Codey',
       },
       action: () => {},
+      search: {
+        onEnable: () => {},
+        onSearch: () => {},
+        onTrackingClick: () => {},
+      },
     }}
   >
     {(args) => (
@@ -46,7 +51,13 @@ import LinkTo from '@storybook/addon-links/react';
 
 GlobalHeader determines whether to render the desktop or mobile version of the global header (<LinkTo kind="Molecules/AppHeader" story="AppHeader">AppHeader</LinkTo> or <LinkTo kind="Molecules/AppHeaderMobile" story="AppHeaderMobile">AppHeaderMobile</LinkTo>, respectively) based on the viewport size.
 
-GlobalHeader takes in several props. `type` determines which header to render based on the user role (anonymous, free, or pro), or a loading state. `type` will also determine which of Search and/or Notification components need to be passed in: Search will appear for all users, whereas Notifications will only appear for logged-in users. The consumer must pass components for both the desktop and mobile header for either of these render props. `action` is a function which will be defined by the consumer and handles any routing/tracking that needs to be done. `variant` is a prop which may only be used when `type="anon"`, and provides variations of the anonymous header based on the user's location: there are different headers for the landing page, login page, and signup page.
+GlobalHeader takes in several props. `type` determines which header to render based on the user role (anonymous, free, or pro), or a loading state. `type` will also determine which of Search and/or Notification components need to be passed in: Search will appear for all users, whereas Notifications will only appear for logged-in users.
+
+`action` is a function which will be defined by the consumer and handles any routing/tracking that needs to be done. `variant` is a prop which may only be used when `type="anon"`, and provides variations of the anonymous header based on the user's location: there are different headers for the landing page, login page, and signup page.
+
+`search` is an object containing callbacks for `onEnable`, `onSearch`, and `onTrackingClick`.
+
+For now, `notifications` still takes in a render prop; this will be switched to a search-like callback object soon.
 
 <PropsTable story="GlobalHeader" />
 
@@ -81,6 +92,11 @@ The following are available variations for the GlobalHeader component.
       <Box position="relative" zIndex={0}>
         <GlobalHeader
           action={() => {}}
+          search={{
+            onEnable: () => {},
+            onSearch: () => {},
+            onTrackingClick: () => {},
+          }}
           type="free"
           user={{
             avatar:
@@ -103,6 +119,11 @@ The Try Pro For Free button can take in an optional custom path.
     {(args) => (
       <GlobalHeader
         action={() => {}}
+        search={{
+          onEnable: () => {},
+          onSearch: () => {},
+          onTrackingClick: () => {},
+        }}
         type="free"
         user={{
           avatar:
@@ -122,6 +143,11 @@ The Try Pro For Free button can take in an optional custom path.
     {(args) => (
       <GlobalHeader
         action={() => {}}
+        search={{
+          onEnable: () => {},
+          onSearch: () => {},
+          onTrackingClick: () => {},
+        }}
         type="free"
         user={{
           avatar:
@@ -143,6 +169,11 @@ The Try Pro For Free button can take in an optional custom path.
     {(args) => (
       <GlobalHeader
         action={() => {}}
+        search={{
+          onEnable: () => {},
+          onSearch: () => {},
+          onTrackingClick: () => {},
+        }}
         type="pro"
         user={{
           avatar:
@@ -161,6 +192,11 @@ The Try Pro For Free button can take in an optional custom path.
     {(args) => (
       <GlobalHeader
         action={() => {}}
+        search={{
+          onEnable: () => {},
+          onSearch: () => {},
+          onTrackingClick: () => {},
+        }}
         type="pro"
         user={{
           avatar:
@@ -180,6 +216,11 @@ The Try Pro For Free button can take in an optional custom path.
     {(args) => (
       <GlobalHeader
         action={() => {}}
+        search={{
+          onEnable: () => {},
+          onSearch: () => {},
+          onTrackingClick: () => {},
+        }}
         type="pro"
         user={{
           avatar:
@@ -199,6 +240,11 @@ The Try Pro For Free button can take in an optional custom path.
     {(args) => (
       <GlobalHeader
         action={() => {}}
+        search={{
+          onEnable: () => {},
+          onSearch: () => {},
+          onTrackingClick: () => {},
+        }}
         type="pro"
         user={{
           avatar:
@@ -219,6 +265,11 @@ The Try Pro For Free button can take in an optional custom path.
     {(args) => (
       <GlobalHeader
         action={() => {}}
+        search={{
+          onEnable: () => {},
+          onSearch: () => {},
+          onTrackingClick: () => {},
+        }}
         type="pro"
         user={{
           avatar:
@@ -238,6 +289,11 @@ The Try Pro For Free button can take in an optional custom path.
     {(args) => (
       <GlobalHeader
         action={() => {}}
+        search={{
+          onEnable: () => {},
+          onSearch: () => {},
+          onTrackingClick: () => {},
+        }}
         type="free"
         user={{
           avatar:
@@ -256,7 +312,17 @@ The Try Pro For Free button can take in an optional custom path.
 
 <Canvas>
   <Story name="Anonymous User - Default">
-    {(args) => <GlobalHeader action={() => {}} type="anon" />}
+    {(args) => (
+      <GlobalHeader
+        action={() => {}}
+        search={{
+          onEnable: () => {},
+          onSearch: () => {},
+          onTrackingClick: () => {},
+        }}
+        type="anon"
+      />
+    )}
   </Story>
 </Canvas>
 
@@ -264,7 +330,18 @@ The Try Pro For Free button can take in an optional custom path.
 
 <Canvas>
   <Story name="Anonymous User - Landing Page">
-    {(args) => <GlobalHeader action={() => {}} type="anon" variant="landing" />}
+    {(args) => (
+      <GlobalHeader
+        action={() => {}}
+        search={{
+          onEnable: () => {},
+          onSearch: () => {},
+          onTrackingClick: () => {},
+        }}
+        type="anon"
+        variant="landing"
+      />
+    )}
   </Story>
 </Canvas>
 
@@ -275,13 +352,10 @@ The Try Pro For Free button can take in an optional custom path.
     {(args) => (
       <GlobalHeader
         action={() => {}}
-        renderSearch={{
-          desktop: () => <IconButton icon={SearchIcon} />,
-          mobile: () => (
-            <Box border={1} p={8}>
-              Mobile Search Bar [Placeholder]
-            </Box>
-          ),
+        search={{
+          onEnable: () => {},
+          onSearch: () => {},
+          onTrackingClick: () => {},
         }}
         type="anon"
         variant="login"
@@ -297,13 +371,10 @@ The Try Pro For Free button can take in an optional custom path.
     {(args) => (
       <GlobalHeader
         action={() => {}}
-        renderSearch={{
-          desktop: () => <IconButton icon={SearchIcon} />,
-          mobile: () => (
-            <Box border={1} p={8}>
-              Mobile Search Bar [Placeholder]
-            </Box>
-          ),
+        search={{
+          onEnable: () => {},
+          onSearch: () => {},
+          onTrackingClick: () => {},
         }}
         type="anon"
         variant="signup"
@@ -325,13 +396,10 @@ To mock this, IconButtons are provided as placeholders.
           desktop: () => <IconButton icon={BellIcon} />,
           mobile: () => <IconButton icon={BellIcon} />,
         }}
-        renderSearch={{
-          desktop: () => <IconButton icon={SearchIcon} />,
-          mobile: () => (
-            <Box border={1} p={8}>
-              Mobile Search Bar [Placeholder]
-            </Box>
-          ),
+        search={{
+          onEnable: () => {},
+          onSearch: () => {},
+          onTrackingClick: () => {},
         }}
         type="pro"
         user={{
@@ -352,6 +420,11 @@ To mock this, IconButtons are provided as placeholders.
       <Box bg="beige" width="100%">
         <GlobalHeader
           action={() => {}}
+          search={{
+            onEnable: () => {},
+            onSearch: () => {},
+            onTrackingClick: () => {},
+          }}
           type="pro"
           user={{
             avatar:
@@ -378,6 +451,11 @@ To mock this, a very basic action function is provided, which prints out the eve
           // eslint-disable-next-line no-console
           console.log(item);
         }}
+        search={{
+          onEnable: () => {},
+          onSearch: () => {},
+          onTrackingClick: () => {},
+        }}
         type="anon"
       />
     )}
@@ -390,6 +468,16 @@ A version of the header with just the logo, for use when data has not been fetch
 
 <Canvas>
   <Story name="Loading">
-    {(args) => <GlobalHeader action={() => {}} type="loading" />}
+    {(args) => (
+      <GlobalHeader
+        action={() => {}}
+        search={{
+          onEnable: () => {},
+          onSearch: () => {},
+          onTrackingClick: () => {},
+        }}
+        type="loading"
+      />
+    )}
   </Story>
 </Canvas>

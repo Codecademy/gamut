@@ -4,13 +4,13 @@ import {
   AppHeaderClickHandler,
   AppHeaderItemWithHref,
 } from '../AppHeader/AppHeaderElements/types';
+import { AppHeaderSearch } from '../AppHeader/Search/useHeaderSearch';
 
 type RenderNotifications = {
   desktop: () => ReactNode;
   mobile: () => ReactNode;
 };
 type RenderProfile = { desktop: () => ReactNode; mobile: () => ReactNode };
-type RenderSearch = { desktop: () => ReactNode; mobile: () => ReactNode };
 
 type BaseHeader = {
   /** A method to be called on click/activating a header item */
@@ -18,7 +18,7 @@ type BaseHeader = {
   /** A method to be called only on click/activating a *link* header item */
   onLinkAction?: AppHeaderClickHandler<AppHeaderItemWithHref>;
   className?: string;
-  renderSearch?: RenderSearch;
+  search: AppHeaderSearch;
 };
 
 export type User = {
