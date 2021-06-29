@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [41.12.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@41.11.0...@codecademy/styleguide@41.12.0) (2021-06-29)
+
+
+### Features
+
+* add search to GlobalHeader ([f3f779a](https://github.com/Codecademy/client-modules/commit/f3f779a0644cdeb539aab0e4eb21c67ee78f359f))
+
+
+
 ## [41.11.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@41.10.25...@codecademy/styleguide@41.11.0) (2021-06-28)
 
 
