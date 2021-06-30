@@ -137,7 +137,6 @@ export type GridFormField =
   | GridFormSweetContainerField;
 
 type TextPropsVariant = Pick<TextProps, 'variant'>;
-// type ExcludedUnion<T> = Pick<TextProps['variant']
 type RestrictedGridFormSectionTitleText = Exclude<
   TextPropsVariant['variant'],
   'p-small' | 'p-large' | 'p-base'
