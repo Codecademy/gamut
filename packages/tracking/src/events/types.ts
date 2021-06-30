@@ -220,6 +220,7 @@ export type UserImpressionData = {
   path_slug?: string;
   track_slug?: string;
   module_slug?: string;
+  source_codebase?: string;
 };
 
 export type EventAnswerData = BaseEventData & {
