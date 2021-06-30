@@ -136,11 +136,12 @@ export type GridFormField =
   | GridFormHiddenField
   | GridFormSweetContainerField;
 
-type TextPropsVariant = Pick<TextProps, 'variant'>;
-type RestrictedGridFormSectionTitleText = Exclude<
-  TextPropsVariant['variant'],
+type TextPropsVariant = Exclude<
+  TextProps['variant'],
   'p-small' | 'p-large' | 'p-base'
 >;
+
+type RestrictedGridFormSectionTitleText = { variant?: TextPropsVariant };
 
 export type GridFormSectionTitleBaseProps = RestrictedGridFormSectionTitleText & {
   title: string;
