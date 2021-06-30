@@ -12,7 +12,7 @@ export type TrackerOptions = {
   verbose?: boolean;
 };
 
-const browserSupportsKeepalive = () => 'keepalive' in Request.prototype;
+const browserSupportsKeepalive = () => 'keepalive' in window.Request.prototype;
 
 export const createTracker = ({ apiBaseUrl, verbose }: TrackerOptions) => {
   const beacon = (endpoint: string, data: Record<string, string>) => {

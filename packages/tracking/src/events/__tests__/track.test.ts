@@ -120,5 +120,6 @@ describe('createTracker', () => {
   };
 
   describeEvent('click');
+  describeEvent('impression');
   describeEvent('visit');
 });
