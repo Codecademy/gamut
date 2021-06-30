@@ -7,7 +7,7 @@ export type EventDataTypes = {
   user: {
     click: UserClickData;
     visit: UserVisitData;
-    impression: BaseEventAnyData;
+    impression: UserImpressionData;
     email_trigger: BaseEventAnyData;
     content_completed: BaseEventAnyData;
     submit: BaseEventAnyData;
@@ -210,6 +210,17 @@ export type UserVisitData = UserSharedData & {
   story_slug?: string;
   unit?: string;
   lesson?: string;
+};
+
+export type UserImpressionData = {
+  page_name: string;
+  slug?: string;
+  target: string;
+  context?: string;
+  path_slug?: string;
+  track_slug?: string;
+  module_slug?: string;
+  source_codebase?: string;
 };
 
 export type EventAnswerData = BaseEventData & {
