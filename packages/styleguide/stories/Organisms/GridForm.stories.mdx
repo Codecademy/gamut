@@ -12,6 +12,8 @@ import { action } from '@storybook/addon-actions';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 import { useState } from '@storybook/addons';
 
+import { ColorModeExample } from './examples';
+
 <Meta
   title={title}
   component={GridForm}
@@ -983,3 +985,9 @@ We call it a "sweet container" so that bots do not immediately detect it as a ho
     )}
   </Story>
 </Canvas>
+
+## `<ColorMode />`
+
+Here's an example using components in context. By toggling dark mode you can see all the colors map to a new color that is accessible for the mode by default.
+
+<ColorModeExample />
