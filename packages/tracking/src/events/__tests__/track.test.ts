@@ -119,11 +119,6 @@ describe('createTracker', () => {
     });
   };
 
-  describe('click', () => {
-    describeEvent('click');
-  });
-
-  describe('visit', () => {
-    describeEvent('visit');
-  });
+  describeEvent('click');
+  describeEvent('visit');
 });
