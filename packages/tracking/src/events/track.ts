@@ -3,6 +3,7 @@ import type {
   EventDataTypes,
   TrackingOptions,
   UserClickData,
+  UserImpressionData,
   UserVisitData,
 } from './types';
 
@@ -68,6 +69,7 @@ export const createTracker = ({ apiBaseUrl, verbose }: TrackerOptions) => {
   return {
     event,
     click: (data: UserClickData) => event('user', 'click', data),
+    impression: (data: UserImpressionData) => event('user', 'impression', data),
     visit: (data: UserVisitData) => event('user', 'visit', data),
     pushDataLayerEvent: (eventName: string) => {
       ((window as any).dataLayer ||= []).push({ event: eventName });
