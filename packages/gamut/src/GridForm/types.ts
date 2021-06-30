@@ -136,14 +136,20 @@ export type GridFormField =
   | GridFormHiddenField
   | GridFormSweetContainerField;
 
-type TextPropsVariant = Exclude<
-  TextProps['variant'],
-  'p-small' | 'p-large' | 'p-base'
+type UnionValuesStartingWith<Base, Prefix extends string> = keyof {
+  [Key in Base as Extract<Key, `${Prefix}${string}`>]: true;
+};
+
+type FilterNestedEnumByPrefix<Type, Prefix extends string> = {
+  [Key in keyof Type]: UnionValuesStartingWith<Type[Key], Prefix>;
+};
+
+type RestrictedTitleVariant = FilterNestedEnumByPrefix<
+  Pick<TextProps, 'variant'>,
+  'title'
 >;
 
-type RestrictedGridFormSectionTitleText = { variant?: TextPropsVariant };
-
-export type GridFormSectionTitleBaseProps = RestrictedGridFormSectionTitleText & {
+export type GridFormSectionTitleBaseProps = RestrictedTitleVariant & {
   title: string;
   as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
   layout?: 'center' | 'left';
