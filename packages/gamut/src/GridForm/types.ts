@@ -136,9 +136,14 @@ export type GridFormField =
   | GridFormHiddenField
   | GridFormSweetContainerField;
 
-type GridFormSectionTitleText = Pick<TextProps, 'variant'>;
+type TextPropsVariant = Pick<TextProps, 'variant'>;
+// type ExcludedUnion<T> = Pick<TextProps['variant']
+type RestrictedGridFormSectionTitleText = Exclude<
+  TextPropsVariant['variant'],
+  'p-small' | 'p-large' | 'p-base'
+>;
 
-export type GridFormSectionTitleBaseProps = GridFormSectionTitleText & {
+export type GridFormSectionTitleBaseProps = RestrictedGridFormSectionTitleText & {
   title: string;
   as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
   layout?: 'center' | 'left';
