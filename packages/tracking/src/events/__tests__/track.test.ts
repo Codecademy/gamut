@@ -35,7 +35,7 @@ Object.defineProperty(window.document, 'title', {
 afterEach(() => jest.resetAllMocks());
 
 describe('createTracker', () => {
-  const describeEvent = (event: 'click' | 'visit') => {
+  const describeEvent = (event: 'click' | 'impression' | 'visit') => {
     describe(event, () => {
       const target = 'test target';
       const page_name = 'test page_name';
