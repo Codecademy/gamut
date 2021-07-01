@@ -1,11 +1,13 @@
 import { MiniInfoOutlineIcon } from '@codecademy/gamut-icons';
-import { theme, variant } from '@codecademy/gamut-styles';
-import { css } from '@emotion/react';
+import { states, variant } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React, { HTMLAttributes } from 'react';
 
 import { ToolTip, ToolTipProps } from '../ToolTip';
-import { formBaseStyles } from './styles/shared';
+import {
+  formBaseStyles,
+  formFieldTextDisabledStyles,
+} from './styles/shared-system-props';
 
 const StyledToolTipContainer = styled.span`
   position: absolute;
@@ -28,13 +30,10 @@ export type FormGroupLabelProps = HTMLAttributes<HTMLDivElement> &
     size?: 'small' | 'large';
   };
 
-type disabledLabelStyleProps = {
-  disabled?: boolean;
-};
-
 const labelSizeVariants = variant({
   defaultVariant: 'small',
   prop: 'size',
+  ...formBaseStyles,
   variants: {
     small: {
       lineHeight: 'title',
@@ -48,29 +47,22 @@ const labelSizeVariants = variant({
   },
 });
 
-const disabledLabelStyle = ({ disabled }: disabledLabelStyleProps) => {
-  if (disabled) {
-    return css`
-      color: ${theme.colors['gray-600']};
-    `;
-  }
-};
+const labelColorStates = states({
+  disabled: {
+    ...formFieldTextDisabledStyles,
+  },
+});
 
-const formLabelStyles = ({ size, disabled }: FormGroupLabelProps) => css`
-  ${formBaseStyles}
-  ${disabledLabelStyle({ disabled })}
-  ${labelSizeVariants({ size })}
+const Label = styled.label`
+  ${labelSizeVariants}
+  ${labelColorStates}
   display: block;
-`;
-
-const Label = styled
-  .label(formLabelStyles)
-  .withComponent((props: FormGroupLabelProps) => {
-    if (props.htmlFor) {
-      return <label {...props} />;
-    }
-    return <div {...props} />;
-  });
+`.withComponent((props: FormGroupLabelProps) => {
+  if (props.htmlFor) {
+    return <label {...props} />;
+  }
+  return <div {...props} />;
+});
 
 export const FormGroupLabel: React.FC<FormGroupLabelProps> = ({
   children,

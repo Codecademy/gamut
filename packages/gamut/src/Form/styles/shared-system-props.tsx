@@ -26,14 +26,18 @@ export enum InputSelectors {
   HOVER_FOCUS_BEFORE = '&:hover + label::before, &:focus + label::before',
 }
 
-export const formBaseComponentStyles = {
+export const formBaseStyles = {
   fontWeight: 'base',
   fontSize: 16,
+  color: 'text',
+} as const;
+
+export const formBaseComponentStyles = {
   width: 1,
   outline: 'none',
   bg: 'background',
-  textColor: 'text',
   minWidth: 'auto',
+  ...formBaseStyles,
 } as const;
 
 export const formFieldFocusStyles = {
@@ -41,11 +45,15 @@ export const formFieldFocusStyles = {
   boxShadow: `inset 0 0 0 1px ${theme.colors.primary}`,
 } as const;
 
+export const formFieldTextDisabledStyles = {
+  color: 'text-disabled',
+  cursor: 'not-allowed',
+} as const;
+
 const formFieldBaseDisabledStyles = {
   borderColor: 'currentColor',
-  textColor: 'text-disabled',
   fontStyle: 'italic',
-  cursor: 'not-allowed',
+  ...formFieldTextDisabledStyles,
 } as const;
 
 const formFieldDisabledStyles = {
