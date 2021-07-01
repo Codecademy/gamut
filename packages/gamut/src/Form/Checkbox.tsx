@@ -34,7 +34,7 @@ const CheckboxLabel = styled.label`
   margin: (${variables.formPadding} / 2) 0;
   width: 100%;
   font-weight: normal;
-  padding: ${variables.formPadding} 0;
+  /* padding: ${variables.formPadding} 0; */
 `;
 
 const CheckboxElement = styled.div<Multiline>`
