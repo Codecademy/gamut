@@ -175,16 +175,6 @@ export const forBusiness: AppHeaderLinkItem = {
   type: 'link',
 };
 
-export const search = (
-  renderSearch: () => ReactNode
-): AppHeaderRenderElementItem => {
-  return {
-    id: 'search',
-    renderElement: renderSearch,
-    type: 'render-element',
-  };
-};
-
 export const notifications = (
   renderNotifications: () => ReactNode
 ): AppHeaderRenderElementItem => {

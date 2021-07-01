@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [34.13.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@34.13.0...@codecademy/gamut@34.13.1) (2021-06-29)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [34.13.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@34.12.0...@codecademy/gamut@34.13.0) (2021-06-28)
+
+
+### Features
+
+* **GridForm:** Add optional sections to GridForm ([ea2b6d0](https://github.com/Codecademy/client-modules/commit/ea2b6d03312310632e71b7ed63bf7f8c09818067))
+
+
+
+## [34.12.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@34.11.0...@codecademy/gamut@34.12.0) (2021-06-28)
+
+
+### Features
+
+* enable non-nullable-type-assertion-style ([622ca70](https://github.com/Codecademy/client-modules/commit/622ca706e874c9eaa02ef0dc9d2cba409d9510d4))
+
+
+
 ## [34.11.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@34.10.12...@codecademy/gamut@34.11.0) (2021-06-25)
 
 
