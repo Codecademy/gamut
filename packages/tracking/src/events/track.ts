@@ -12,15 +12,29 @@ export type TrackerOptions = {
   verbose?: boolean;
 };
 
+const browserSupportsKeepalive = () => 'keepalive' in window.Request.prototype;
+
 export const createTracker = ({ apiBaseUrl, verbose }: TrackerOptions) => {
   const beacon = (endpoint: string, data: Record<string, string>) => {
-    const uri = new URL(endpoint, apiBaseUrl);
+    const uri = new URL(endpoint, apiBaseUrl).toString();
     const form = new FormData();
     for (const [k, v] of Object.entries(data)) {
       form.append(k, v.toString());
     }
 
-    navigator.sendBeacon(uri.toString(), form);
+    // Firefox allows users to disable navigator.sendBeacon, and very old Safari versions don't have it.
+    if (navigator.sendBeacon?.(uri, form)) {
+      return;
+    }
+
+    // Either way, we fall back to standard fetch if sendBeacon fails.
+    // We don't mind this rejecting with an error because it's tracking, and we'll know if that starts to fail.
+    // eslint-disable-next-line @typescript-eslint/no-floating-promises
+    window.fetch(uri, {
+      method: 'POST',
+      body: form,
+      ...(browserSupportsKeepalive() && { keepalive: true }),
+    });
   };
 
   const event = <
