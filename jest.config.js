@@ -1,4 +1,5 @@
 module.exports = {
+  clearMocks: true,
   verbose: true,
   globals: {
     __DEV__: true,
