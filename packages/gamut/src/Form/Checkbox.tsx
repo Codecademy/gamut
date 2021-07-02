@@ -1,4 +1,5 @@
 import { noSelect, screenReaderOnly } from '@codecademy/gamut-styles';
+import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
 import React, { forwardRef, InputHTMLAttributes, ReactNode } from 'react';
 
@@ -12,30 +13,28 @@ import {
   polyline,
 } from './styles/shared-system-props';
 
-export type CheckboxProps = InputHTMLAttributes<HTMLInputElement> &
-  Multiline & {
-    checked?: boolean;
-    className?: string;
-    disabled?: boolean;
-    htmlFor: string;
-    label: ReactNode;
-    name?: string;
-    required?: boolean;
-    value?: string;
-    id?: string;
-  };
+export type CheckboxProps = InputHTMLAttributes<HTMLInputElement> & {
+  multiline?: boolean;
+  checked?: boolean;
+  className?: string;
+  disabled?: boolean;
+  htmlFor: string;
+  label: ReactNode;
+  name?: string;
+  required?: boolean;
+  value?: string;
+  id?: string;
+};
 
-type Multiline = { multiline?: boolean };
+export type CheckboxElementProps = StyleProps<typeof checkboxElementMultiline>;
+export type CheckboxTextProps = StyleProps<typeof checkboxTextStates>;
 
-const CheckboxLabel = styled.label`
-  ${noSelect}
-  ${checkboxLabel}
-`;
+const CheckboxLabel = styled.label(noSelect, checkboxLabel);
 
-const CheckboxElement = styled.div<Multiline>`
-  ${checkboxElement}
-  ${checkboxElementMultiline}
-`;
+const CheckboxElement = styled.div<CheckboxElementProps>(
+  checkboxElement,
+  checkboxElementMultiline
+);
 
 const activeColor = 'blueviolet';
 
@@ -75,7 +74,7 @@ const Input = styled.input`
   }
 `;
 
-const CheckboxText = styled.span<Multiline>`
+const CheckboxText = styled.span<CheckboxTextProps>`
   align-self: center;
   ${checkboxTextStates};
 `;
