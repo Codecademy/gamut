@@ -70,6 +70,7 @@ export const DropdownButton: React.FC<DropdownButtonProps> = ({
     case 'kebab':
       clickTarget = (
         <IconButton
+          aria-label="More options"
           icon={MiniKebabMenuIcon}
           size="small"
           variant="secondary"
