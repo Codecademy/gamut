@@ -8,6 +8,11 @@ import styled from '@emotion/styled';
 import React, { forwardRef, InputHTMLAttributes, ReactNode } from 'react';
 
 import { variables } from './_variables';
+import {
+  checkboxElement,
+  checkboxElementMultiline,
+  checkboxLabel,
+} from './styles/shared-system-props';
 
 export type CheckboxProps = InputHTMLAttributes<HTMLInputElement> &
   Multiline & {
@@ -24,30 +29,16 @@ export type CheckboxProps = InputHTMLAttributes<HTMLInputElement> &
 
 type Multiline = { multiline?: boolean };
 
-const activeColor = colors.hyper;
-
 const CheckboxLabel = styled.label`
   ${noSelect}
-  display: flex;
-  align-items: flex-start;
-  cursor: pointer;
-  margin: (${variables.formPadding} / 2) 0;
-  width: 100%;
-  font-weight: normal;
-  /* padding: ${variables.formPadding} 0; */
+  ${checkboxLabel}
 `;
 
 const CheckboxElement = styled.div<Multiline>`
-  position: relative;
-  margin-right: 0.5rem;
-  min-width: 1.5rem;
-  height: 1.5rem;
-  border: 2px solid ${variables.borderColor};
-  border-radius: ${variables.borderRadius};
-  transition: all 0.1s ease-in-out;
-  margin-top: ${({ multiline }) => multiline && '3px'};
+  ${checkboxElement}
+  ${checkboxElementMultiline}
 `;
-
+const activeColor = 'blueviolet';
 const CheckboxVector = styled.svg`
   position: absolute;
   top: -2px;
@@ -113,7 +104,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
       <Input id={id || htmlFor} type="checkbox" {...rest} ref={ref} />
       <CheckboxLabel htmlFor={id || htmlFor}>
         <CheckboxElement multiline={multiline}>
-          <CheckboxVector width="24px" height="24px" viewBox="0 0 20 20">
+          <CheckboxVector width="22px" height="22px" viewBox="0 0 20 20">
             <path
               d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"
               fill="none"

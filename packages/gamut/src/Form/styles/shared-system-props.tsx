@@ -5,6 +5,8 @@ import {
   transitionConcat,
 } from '@codecademy/gamut-styles';
 
+import { flex } from '../../../../gamut-styles/dist/variance/props';
+
 export type conditionalStyleProps = {
   error?: boolean;
   activated?: boolean;
@@ -213,5 +215,33 @@ export const conditionalRadioInputStyles = system.variant({
         boxShadow: `0 0 0 1px currentColor`,
       },
     },
+  },
+});
+
+export const checkboxLabel = system.css({
+  display: 'flex',
+  alignItems: 'flex-start',
+  cursor: 'pointer',
+  m: 4,
+  px: 8,
+  py: 0,
+  ...formBaseComponentStyles,
+});
+
+export const checkboxElement = system.css({
+  position: 'relative',
+  mr: 8,
+  minWidth: 22,
+  width: 22,
+  height: 22,
+  border: 2,
+  borderColor: 'shadow-solid',
+  borderRadius: '2px',
+  transition: transitionConcat(['all'], 'slow', 'ease-in-out'),
+});
+
+export const checkboxElementMultiline = system.states({
+  multiline: {
+    mt: 4,
   },
 });
