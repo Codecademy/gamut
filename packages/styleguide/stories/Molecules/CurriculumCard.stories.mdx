@@ -66,3 +66,18 @@ import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/blocks';
     {(args) => <CurriculumCard {...args} />}
   </Story>
 </Canvas>
+
+## Curriculum Card with Beta Sticker
+
+If `beta` is true, no other tag information will be rendered.
+
+<Canvas>
+  <Story
+    name="Curriculum Card Beta"
+    args={{
+      beta: true,
+    }}
+  >
+    {(args) => <CurriculumCard {...args} />}
+  </Story>
+</Canvas>
