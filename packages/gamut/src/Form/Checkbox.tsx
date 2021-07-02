@@ -26,11 +26,12 @@ export type CheckboxProps = InputHTMLAttributes<HTMLInputElement> & {
   id?: string;
 };
 
-export type CheckboxElementProps = StyleProps<typeof checkboxElementMultiline>;
+// export type CheckboxElementProps = StyleProps<typeof CheckboxElement>;
 export type CheckboxTextProps = StyleProps<typeof checkboxTextStates>;
 
 const CheckboxLabel = styled.label(noSelect, checkboxLabel);
 
+// how do i get type?
 const CheckboxElement = styled.div(
   states({
     multiline: {
@@ -48,7 +49,7 @@ const CheckboxVector = styled.svg`
 `;
 
 const Polyline = styled.polyline`
-  // to-do?? what do w/ system
+  // to-do??
   ${polyline}
   fill: none;
   stroke: currentColor;

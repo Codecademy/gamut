@@ -227,8 +227,8 @@ export const checkboxLabel = system.css({
   alignItems: 'flex-start',
   cursor: 'pointer',
   m: 4,
-  px: 8,
-  py: 0,
+  px: 0,
+  py: 16,
   ...formBaseComponentStyles,
 });
 
@@ -240,7 +240,7 @@ export const checkboxElement = system.css({
   width: 22,
   height: 22,
   border: 2,
-  borderColor: 'shadow-solid',
+  borderColor: 'text-disabled',
   borderRadius: '2px',
   transition: transitionConcat(['all'], 'slow', 'ease-in-out'),
 });

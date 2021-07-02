@@ -126,6 +126,14 @@ export const ColorModeExample = () => {
                   },
                 },
                 {
+                  description: 'checkbox',
+                  id: 'my-super-cool-checkbox-color-mode',
+                  label: 'check levels',
+                  name: 'check-this',
+                  size: 3,
+                  type: 'checkbox',
+                },
+                {
                   label: 'Simple select (required)',
                   name: 'simple-select-color-mode',
                   options: [
