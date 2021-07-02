@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [0.11.1](https://github.com/Codecademy/client-modules/compare/@codecademy/tracking@0.11.0...@codecademy/tracking@0.11.1) (2021-06-30)
+
+
+### Bug Fixes
+
+* support navigator.sendBeacon not existing ([ab442ef](https://github.com/Codecademy/client-modules/commit/ab442efb8e097015b5cca2ca34c869e83bb53d44))
+
+
+
 ## [0.11.0](https://github.com/Codecademy/client-modules/compare/@codecademy/tracking@0.10.0...@codecademy/tracking@0.11.0) (2021-06-30)
 
 
