@@ -49,9 +49,9 @@ export const fruitOptions = [
 
 ## Examples + Usage
 
-`SelectDropdown` has a larger JavaScript dependency size than our standard `Select` component so should not be used unless specified in designs.
+`SelectDropdown` has a larger JavaScript dependency size than our standard `Select` component so should not be used unless specified in designs. These dropdowns are optionally searchable through the `isSearchable` prop.
 
-If you are using this in a standard form, this label must be provided an `aria-label` and a `name`. The `aria-label` must match the `<label>` of the SelectDropdown.
+If you are using this in a standard form, this label must be provided an `aria-label` and a `name`. The `aria-label` must match the FormGroupLabel or `<label>` of the SelectDropdown.
 
 <Canvas>
   <Story
@@ -63,6 +63,20 @@ If you are using this in a standard form, this label must be provided an `aria-l
   >
     {(args) => (
       <Box width="10rem" height="12rem">
+        <SelectDropdown {...args} />
+      </Box>
+    )}
+  </Story>
+  <Story
+    name="SearchableDropdown"
+    args={{
+      isSearchable: 'true',
+      options: ['wow', 'wowee', 'wooooooow', ':3'],
+      placeholder: 'i am searchable, it is cool',
+    }}
+  >
+    {(args) => (
+      <Box width="25rem" height="12rem">
         <SelectDropdown {...args} />
       </Box>
     )}
@@ -149,7 +163,7 @@ export const CustomDropdown: React.FC = ({
     }}
   >
     {(args) => (
-      <Box width="25rem" height="25rem">
+      <Box width="25rem" height="35rem">
         <FormGroup label="i am big label" labelSize="large">
           <SelectDropdown {...args} />
         </FormGroup>
@@ -186,7 +200,8 @@ Some of our forms require special props be passed directly onto the `<input/>` c
     args={{
       options: ['inspect me to see my inputProps', 'yes I am!', ':)'],
       inputProps: { hello: 'updog' },
-      name: 'what to ',
+      name: 'what',
+      isSearchable: true,
     }}
   >
     {(args) => (

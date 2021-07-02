@@ -34,7 +34,7 @@ type SelectDropdownBaseProps = Omit<
 >;
 interface SelectDropdownProps
   extends SelectDropdownBaseProps,
-    Pick<NamedProps, 'onChange'>,
+    Pick<NamedProps, 'onChange' | 'isSearchable'>,
     Pick<SelectHTMLAttributes<HTMLSelectElement>, 'value' | 'disabled'> {
   inputProps?: Record<string, string | number | boolean>;
   name?: string;
@@ -142,7 +142,6 @@ const customStyles: StylesConfig<OptionTypeBase, false> = {
 
 const defaultProps = {
   name: undefined,
-  isSearchable: true,
   isMulti: false,
   styles: customStyles,
   components: {
@@ -162,6 +161,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
   name,
   placeholder = 'Select an option',
   inputProps,
+  isSearchable = false,
   ...rest
 }) => {
   const [activated, setActivated] = useState(false);
@@ -199,6 +199,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
       isDisabled={disabled}
       options={selectOptions}
       placeholder={placeholder}
+      isSearchable={isSearchable}
       {...rest}
     />
   );
