@@ -51,6 +51,8 @@ export const fruitOptions = [
 
 `SelectDropdown` has a larger JavaScript dependency size than our standard `Select` component so should not be used unless specified in designs.
 
+If you are using this in a standard form, this label must be provided an `aria-label` and a `name`. The `aria-label` must match the `<label>` of the SelectDropdown.
+
 <Canvas>
   <Story
     name="BaseDropdown"
@@ -184,13 +186,13 @@ Some of our forms require special props be passed directly onto the `<input/>` c
     args={{
       options: ['inspect me to see my inputProps', 'yes I am!', ':)'],
       inputProps: { hello: 'updog' },
-      name: 'updog',
+      name: 'what to ',
     }}
   >
     {(args) => (
       <Box width="25rem" height="25rem">
-        <FormGroup label="i am ~styled">
-          <SelectDropdown {...args} />
+        <FormGroup label="i am ~styled" htmlFor="updog">
+          <SelectDropdown aria-label="updog" {...args} />
         </FormGroup>
       </Box>
     )}

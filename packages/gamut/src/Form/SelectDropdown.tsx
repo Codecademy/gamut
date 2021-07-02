@@ -59,13 +59,13 @@ const ChevronDropdown = (props: IndicatorProps<OptionTypeBase, false>) => {
 };
 
 const CustomContainer = ({ children, ...rest }: CustomContainerProps) => {
-  const { inputProps } = rest.selectProps;
+  const { inputProps, name } = rest.selectProps;
   const value = rest.hasValue ? rest.getValue()[0].value : '';
 
   return (
     <SelectContainer {...rest}>
       {children}
-      <input type="hidden" value={value} {...inputProps} />
+      <input type="hidden" value={value} name={name} {...inputProps} />
     </SelectContainer>
   );
 };
@@ -142,7 +142,7 @@ const customStyles: StylesConfig<OptionTypeBase, false> = {
 
 const defaultProps = {
   name: undefined,
-  isSearchable: false,
+  isSearchable: true,
   isMulti: false,
   styles: customStyles,
   components: {
