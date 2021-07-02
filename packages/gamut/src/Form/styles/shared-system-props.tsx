@@ -5,8 +5,6 @@ import {
   transitionConcat,
 } from '@codecademy/gamut-styles';
 
-import { flex } from '../../../../gamut-styles/dist/variance/props';
-
 export type conditionalStyleProps = {
   error?: boolean;
   activated?: boolean;
@@ -19,10 +17,16 @@ export enum InputSelectors {
   ACTIVE = '&:active',
   PLACEHOLDER = '&:placeholder',
   FOCUS = '&:focus',
+  FOCUS_LABEL_DIV_CHILD = '&:focus + label > div',
   DISABLED = "&:disabled, &[aria-disabled='true']",
+  DISABLED_LABEL_DIV = '&:disabled + label div',
+  DISABLED_CHECKED_LABEL_DIV = '&:checked:disabled + label div',
   BEFORE = '&::before',
   AFTER = '&::after',
   BEFORE_AND_AFTER = '&::before, &::after',
+  CHECKED_LABEL = '&:checked + label::before',
+  CHECKED_LABEL_DIV = '&:checked + label div',
+  CHECKED_LABEL_DIV_SVG = '&:checked + label div > svg',
   CHECKED_BEFORE = '&:checked + label::before',
   CHECKED_AFTER = '&:checked + label::after',
   HOVER_FOCUS_BEFORE = '&:hover + label::before, &:focus + label::before',
@@ -229,6 +233,7 @@ export const checkboxLabel = system.css({
 });
 
 export const checkboxElement = system.css({
+  color: 'background',
   position: 'relative',
   mr: 8,
   minWidth: 22,
@@ -243,5 +248,38 @@ export const checkboxElement = system.css({
 export const checkboxElementMultiline = system.states({
   multiline: {
     mt: 4,
+  },
+});
+
+export const checkboxTextStates = system.states({
+  multiline: {
+    //to-do: ask aaron if we should add smaller
+    fontSize: 14,
+  },
+  disabled: formFieldBaseDisabledStyles,
+});
+
+export const polyline = system.css({
+  color: 'shadow-opaque',
+});
+
+export const checkboxInput = system.css({
+  [InputSelectors.FOCUS_LABEL_DIV_CHILD]: {
+    outline: `2px solid ${theme.colors.primary}`,
+    outlineOffset: '2px',
+  },
+  [InputSelectors.CHECKED_LABEL_DIV]: {
+    borderColor: 'primary',
+    color: 'primary',
+  },
+  [InputSelectors.DISABLED_CHECKED_LABEL_DIV]: {
+    borderColor: 'text-disabled',
+    color: 'text-disabled',
+    cursor: 'not-allowed',
+  },
+  [InputSelectors.DISABLED_LABEL_DIV]: {
+    borderColor: 'background-disabled',
+    color: 'background-disabled',
+    cursor: 'not-allowed',
   },
 });
