@@ -1,4 +1,4 @@
-import { noSelect, screenReaderOnly } from '@codecademy/gamut-styles';
+import { noSelect, screenReaderOnly, states } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
 import React, { forwardRef, InputHTMLAttributes, ReactNode } from 'react';
@@ -31,12 +31,14 @@ export type CheckboxTextProps = StyleProps<typeof checkboxTextStates>;
 
 const CheckboxLabel = styled.label(noSelect, checkboxLabel);
 
-const CheckboxElement = styled.div<CheckboxElementProps>(
-  checkboxElement,
-  checkboxElementMultiline
+const CheckboxElement = styled.div(
+  states({
+    multiline: {
+      mt: 4,
+    },
+  }),
+  checkboxElement
 );
-
-const activeColor = 'blueviolet';
 
 const CheckboxVector = styled.svg`
   color: currentColor;
@@ -74,10 +76,7 @@ const Input = styled.input`
   }
 `;
 
-const CheckboxText = styled.span<CheckboxTextProps>`
-  align-self: center;
-  ${checkboxTextStates};
-`;
+const CheckboxText = styled.span<CheckboxTextProps>(checkboxTextStates);
 
 export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
   (

@@ -245,10 +245,8 @@ export const checkboxElement = system.css({
   transition: transitionConcat(['all'], 'slow', 'ease-in-out'),
 });
 
-export const checkboxElementMultiline = system.states({
-  multiline: {
-    mt: 4,
-  },
+export const polyline = system.css({
+  color: 'shadow-opaque',
 });
 
 export const checkboxTextStates = system.states({
@@ -257,10 +255,6 @@ export const checkboxTextStates = system.states({
     fontSize: 14,
   },
   disabled: formFieldBaseDisabledStyles,
-});
-
-export const polyline = system.css({
-  color: 'shadow-opaque',
 });
 
 export const checkboxInput = system.css({
