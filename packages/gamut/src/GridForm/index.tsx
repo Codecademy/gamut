@@ -122,16 +122,18 @@ export function GridForm<
           <>
             {fields.map((field) => {
               if (isGridFormSection(field)) {
+                const { title, as, layout, fields, variant } = field;
                 return (
-                  <Fragment key={field.title}>
+                  <Fragment key={title}>
                     <GridFormSectionTitle
-                      title={field.title}
-                      as={field.as}
-                      layout={field.layout}
-                      numberOfFields={field.fields.length}
+                      title={title}
+                      as={as}
+                      layout={layout}
+                      numberOfFields={fields.length}
+                      variant={variant}
                     />
                     <GridFormSection
-                      fields={field.fields}
+                      fields={fields}
                       showRequired={showRequired}
                     />
                     <GridFormSectionBreak />
