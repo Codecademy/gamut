@@ -250,7 +250,7 @@ export const polyline = system.css({
 
 export const checkboxTextStates = system.states({
   multiline: {
-    //to-do: ask aaron if we should add smaller
+    // to-do: ask aaron if we should add smaller fontSizes for this component
     fontSize: 14,
   },
   disabled: formFieldBaseDisabledStyles,
