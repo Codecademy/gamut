@@ -18,7 +18,7 @@ type BaseHeader = {
   /** A method to be called only on click/activating a *link* header item */
   onLinkAction?: AppHeaderClickHandler<AppHeaderItemWithHref>;
   className?: string;
-  search: AppHeaderSearch;
+  search?: AppHeaderSearch;
 };
 
 export type User = {

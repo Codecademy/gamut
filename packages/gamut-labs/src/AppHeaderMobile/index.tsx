@@ -26,7 +26,7 @@ export type AppHeaderMobileProps = {
   action: AppHeaderClickHandler;
   items: FormattedMobileAppHeaderItems;
   redirectParam?: string;
-  onSearch: (query: string) => void;
+  onSearch?: (query: string) => void;
 };
 
 const IconButton = styled.button`

@@ -15,7 +15,7 @@ import { MobileSearchBar } from './MobileSearchBar';
 export type AppHeaderMainMenuMobileProps = {
   action: AppHeaderClickHandler;
   items: AppHeaderItem[];
-  onSearch: (query: string) => void;
+  onSearch?: (query: string) => void;
 };
 
 export const AppHeaderMainMenuMobile: React.FC<AppHeaderMainMenuMobileProps> = ({
@@ -98,7 +98,7 @@ export const AppHeaderMainMenuMobile: React.FC<AppHeaderMainMenuMobileProps> = (
         />
       ) : (
         <>
-          <MobileSearchBar onSearch={onSearch} />
+          {onSearch && <MobileSearchBar onSearch={onSearch} />}
           {items.map((item) => mapItemToElement(item, action))}
         </>
       )}
