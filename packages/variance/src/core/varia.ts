@@ -50,6 +50,7 @@ class FervorWithVariants<
     this.states = states;
     this.variants = variants;
   }
+
   withVariants<
     Keys extends keyof Props,
     Base extends AbstractProps,

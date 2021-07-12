@@ -5,11 +5,11 @@ import React, { ComponentProps } from 'react';
 import renderer from 'react-test-renderer';
 
 import { variance } from '../../src/core';
-import { fervor } from '../../src/core/fervor';
+import { varia } from '../../src/core/varia';
 import { theme } from '../__fixtures__/theme';
 
 const Box = styled.div(
-  fervor
+  varia
     .withSystemProps({
       layout: true,
     })
