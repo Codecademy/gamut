@@ -88,6 +88,23 @@ const errorColorState = (error: boolean) => {
 };
 
 const customStyles: StylesConfig<OptionTypeBase, false> = {
+  container: (provided) => ({
+    ...provided,
+    pointerEvents: 'visible',
+    cursor: 'pointer',
+    width: '100%',
+    minWidth: '7rem',
+  }),
+
+  control: (provided, state) => ({
+    ...selectBaseStyles({
+      error: state.selectProps.error,
+      activated: state.selectProps.activated,
+      isFocused: state.isFocused,
+      isDisabled: state.isDisabled,
+    }),
+  }),
+
   dropdownIndicator: (provided, state) => ({
     color: errorColorState(state.selectProps.error),
     display: 'flex',
@@ -95,12 +112,9 @@ const customStyles: StylesConfig<OptionTypeBase, false> = {
     pointerEvents: 'none',
   }),
 
-  container: (provided) => ({
-    ...provided,
-    pointerEvents: 'visible',
-    cursor: 'pointer',
-    width: '100%',
-    minWidth: '7rem',
+  input: (provided, state) => ({
+    padding: '0',
+    margin: '0',
   }),
 
   menu: (provided, state) => ({
@@ -118,15 +132,6 @@ const customStyles: StylesConfig<OptionTypeBase, false> = {
     '&:hover': {
       backgroundColor: colorStates.dropdown.focused.backgroundColor,
     },
-  }),
-
-  control: (provided, state) => ({
-    ...selectBaseStyles({
-      error: state.selectProps.error,
-      activated: state.selectProps.activated,
-      isFocused: state.isFocused,
-      isDisabled: state.isDisabled,
-    }),
   }),
 
   singleValue: (provided, state) => ({

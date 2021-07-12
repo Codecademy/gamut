@@ -149,7 +149,7 @@ export const formBaseFieldStyles = css`
 
 // ReactRecurly needs to apply padding in a very particular way
 export const formFieldPaddingStyles = css`
-  padding: ${pxRem(11)} ${theme.spacing[8]};
+  padding: ${theme.spacing[12]} ${theme.spacing[8]};
 `;
 
 export const formFieldStyles = css`
