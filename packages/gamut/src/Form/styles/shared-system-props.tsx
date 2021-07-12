@@ -233,7 +233,7 @@ export const checkboxLabel = system.css({
 });
 
 export const checkboxElement = system.css({
-  color: 'background',
+  color: 'transparent',
   position: 'relative',
   mr: 8,
   minWidth: 22,
@@ -241,7 +241,6 @@ export const checkboxElement = system.css({
   height: 22,
   border: 2,
   borderColor: 'text-disabled',
-  borderRadius: '2px',
   transition: transitionConcat(['all'], 'slow', 'ease-in-out'),
 });
 
