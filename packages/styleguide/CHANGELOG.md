@@ -3,6 +3,40 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [41.14.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@41.13.0...@codecademy/styleguide@41.14.0) (2021-07-12)
+
+
+### Features
+
+* **Tabs:** Adding a gamut-labs Tabs component ([654faf3](https://github.com/Codecademy/client-modules/commit/654faf38b72ddfbe0a6bd1b638e0c19806546440))
+
+
+
+## [41.13.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@41.12.3...@codecademy/styleguide@41.13.0) (2021-07-12)
+
+
+### Features
+
+* **GridFormSectionTitle:** Add Text variant to GridFormSection ([98c16e8](https://github.com/Codecademy/client-modules/commit/98c16e8fa2a5b17a789b4786bedb5284e1bc9f42))
+
+
+
+### [41.12.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@41.12.2...@codecademy/styleguide@41.12.3) (2021-07-01)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [41.12.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@41.12.1...@codecademy/styleguide@41.12.2) (2021-07-01)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
 ### [41.12.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@41.12.0...@codecademy/styleguide@41.12.1) (2021-06-29)
 
 **Note:** Version bump only for package @codecademy/styleguide

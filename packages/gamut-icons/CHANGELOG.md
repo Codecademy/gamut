@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.6.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@5.5.1...@codecademy/gamut-icons@5.6.0) (2021-07-12)
+
+
+### Features
+
+* add cc docs homepage icons ([0262c36](https://github.com/Codecademy/client-modules/commit/0262c36ba1c056ee5f42d7c3b98586f35b01773e))
+
+
+
+### [5.5.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@5.5.0...@codecademy/gamut-icons@5.5.1) (2021-07-01)
+
+
+### Bug Fixes
+
+* **MiniKebabIcon:** remove cruft ([3d144e6](https://github.com/Codecademy/client-modules/commit/3d144e699da5197319d468e3fe8087f02e609760))
+
+
+
 ## [5.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@5.4.2...@codecademy/gamut-icons@5.5.0) (2021-06-25)
 
 

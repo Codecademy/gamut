@@ -38,3 +38,4 @@ export * from './PageSection';
 export * from './ListSection';
 export * from './EmptySection';
 export * from './SocialMediaSharing';
+export * from './TabsExperimental';
