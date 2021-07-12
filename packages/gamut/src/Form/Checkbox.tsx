@@ -6,7 +6,6 @@ import React, { forwardRef, InputHTMLAttributes, ReactNode } from 'react';
 import { variables } from './_variables';
 import {
   checkboxElement,
-  checkboxElementMultiline,
   checkboxInput,
   checkboxLabel,
   checkboxTextStates,
@@ -26,13 +25,12 @@ export type CheckboxProps = InputHTMLAttributes<HTMLInputElement> & {
   id?: string;
 };
 
-// export type CheckboxElementProps = StyleProps<typeof CheckboxElement>;
+export type CheckboxElementProps = { multiline?: boolean };
 export type CheckboxTextProps = StyleProps<typeof checkboxTextStates>;
 
 const CheckboxLabel = styled.label(noSelect, checkboxLabel);
 
-// how do i get type?
-const CheckboxElement = styled.div(
+const CheckboxElement = styled.div<CheckboxElementProps>(
   states({
     multiline: {
       mt: 4,
@@ -49,7 +47,6 @@ const CheckboxVector = styled.svg`
 `;
 
 const Polyline = styled.polyline`
-  // to-do??
   ${polyline}
   fill: none;
   stroke: currentColor;
@@ -60,14 +57,12 @@ const Polyline = styled.polyline`
   stroke-dashoffset: 18px;
 `;
 
-// Maybe ScreenReaderFocusable
 const Input = styled.input`
   ${screenReaderOnly}
   ${checkboxInput}
 
 
   &:checked + ${CheckboxLabel} ${CheckboxElement} {
-    //to-do ?? what do w/ system
     ${CheckboxVector} {
       ${Polyline} {
         stroke-dashoffset: 0;
