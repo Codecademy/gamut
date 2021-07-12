@@ -51,7 +51,7 @@ export const fruitOptions = [
 
 `SelectDropdown` has a larger JavaScript dependency size than our standard `Select` component so should not be used unless specified in designs. These dropdowns are optionally searchable through the `isSearchable` prop.
 
-If you are using this in a standard form, this label must be provided an `aria-label` and a `name`. The `aria-label` must match the FormGroupLabel or `<label>` of the SelectDropdown.
+If you are using this in a standard form, `SelectDropdown` must be provided an `aria-label` and a `name`. The `aria-label` must match the FormGroupLabel or `<label>` of the SelectDropdown.
 
 <Canvas>
   <Story
@@ -73,6 +73,8 @@ If you are using this in a standard form, this label must be provided an `aria-l
       isSearchable: 'true',
       options: ['wow', 'wowee', 'wooooooow', ':3'],
       placeholder: 'i am searchable, it is cool',
+      aria-label: 'searchable',
+      name: 'searchable-input'
     }}
   >
     {(args) => (
