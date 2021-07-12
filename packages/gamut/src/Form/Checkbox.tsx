@@ -12,25 +12,27 @@ import {
   polyline,
 } from './styles/shared-system-props';
 
-export type CheckboxProps = InputHTMLAttributes<HTMLInputElement> & {
-  multiline?: boolean;
-  checked?: boolean;
-  className?: string;
-  disabled?: boolean;
-  htmlFor: string;
-  label: ReactNode;
-  name?: string;
-  required?: boolean;
-  value?: string;
-  id?: string;
-};
+type Multiline = { multiline?: boolean };
 
-export type CheckboxElementProps = { multiline?: boolean };
+export type CheckboxProps = InputHTMLAttributes<HTMLInputElement> &
+  Multiline & {
+    multiline?: boolean;
+    checked?: boolean;
+    className?: string;
+    disabled?: boolean;
+    htmlFor: string;
+    label: ReactNode;
+    name?: string;
+    required?: boolean;
+    value?: string;
+    id?: string;
+  };
+
 export type CheckboxTextProps = StyleProps<typeof checkboxTextStates>;
 
 const CheckboxLabel = styled.label(noSelect, checkboxLabel);
 
-const CheckboxElement = styled.div<CheckboxElementProps>(
+const CheckboxElement = styled.div<Multiline>(
   states({
     multiline: {
       mt: 4,
