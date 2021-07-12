@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [34.14.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@34.13.2...@codecademy/gamut@34.14.0) (2021-07-12)
+
+
+### Features
+
+* **GridFormSectionTitle:** Add Text variant to GridFormSection ([98c16e8](https://github.com/Codecademy/client-modules/commit/98c16e8fa2a5b17a789b4786bedb5284e1bc9f42))
+
+
+
 ### [34.13.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@34.13.1...@codecademy/gamut@34.13.2) (2021-07-01)
 
 **Note:** Version bump only for package @codecademy/gamut
