@@ -2,7 +2,7 @@ import React from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 
 import { GridFormContent, GridFormContentProps } from '../GridFormContent';
-import { GridFormSection, GridFormSectionProps } from '../GridFormSection.tsx';
+import { GridFormSection, GridFormSectionProps } from '../GridFormSection';
 
 type GridFormContentTestComponentProps = GridFormContentProps & {
   mode?: 'onSubmit' | 'onChange';
