@@ -1,4 +1,4 @@
-import { pxRem, theme } from '@codecademy/gamut-styles';
+import { theme } from '@codecademy/gamut-styles';
 import { css } from '@emotion/react';
 import { StandardPropertiesHyphen } from 'csstype';
 
