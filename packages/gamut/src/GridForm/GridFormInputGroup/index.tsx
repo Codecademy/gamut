@@ -154,12 +154,14 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
     </FormGroupLabel>
   );
 
+  const hideError = 'hideError' in field && field.hideError;
+
   return (
     <Column size={field?.size} rowspan={field?.rowspan ?? 1}>
       <FormGroup mb={0}>
         {field.hideLabel ? <HiddenText>{label}</HiddenText> : label}
         {getInput()}
-        {errorMessage && (
+        {!hideError && errorMessage && (
           <FormError
             role={isFirstError ? 'alert' : 'status'}
             aria-live={isFirstError ? 'assertive' : 'off'}

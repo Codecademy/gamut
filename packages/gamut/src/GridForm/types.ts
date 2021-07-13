@@ -49,6 +49,7 @@ export type GridFormCustomField = BaseFormField<any> & {
   render: (props: GridFormCustomFieldProps) => React.ReactNode;
   validation?: ValidationRules;
   type: 'custom';
+  hideError?: boolean; // Custom fields can choose to implement their own error displays.
 };
 
 export type GridFormCustomGroupField = BaseFormField<any> & {

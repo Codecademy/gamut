@@ -61,6 +61,22 @@ describe('GridFormInputGroup', () => {
     expect(wrapped.text()).toEqual(text);
   });
 
+  it('hides the error for a custom input if hideError is passed.', () => {
+    const error = 'Oh no!';
+    const { wrapped } = renderComponent({
+      field: {
+        render: () => 'Hello, world!',
+        name: 'stub-custom',
+        size: 6,
+        type: 'custom',
+        hideError: true,
+      },
+      error,
+    });
+
+    expect(wrapped.text()).not.toContain(error);
+  });
+
   it('renders a radio group when the field type is radio-group', () => {
     const { wrapped } = renderComponent({
       field: { ...stubRadioGroupField, id: 'mycoolid' },
