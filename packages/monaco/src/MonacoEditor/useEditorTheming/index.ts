@@ -15,6 +15,7 @@ export enum MonacoThemeType {
 
 export const useEditorTheming = (
   interfaceSettings: UserInterfaceSettings,
+  updateUserInterfaceSettings?: (setting: string) => void,
   editor?: Editor.IStandaloneCodeEditor,
   monaco?: Monaco,
   themeType: MonacoThemeType = MonacoThemeType.static
@@ -49,5 +50,15 @@ export const useEditorTheming = (
   // We're overriding the monaco native toggleHighContrast action here.
   // The original toggleHighContrastAction can be obtained by
   // using editor.getAction('editor.action.toggleHighContrast').
-  // TODO add useEffect to update high contrast
+  useEffect(() => {
+    editor?.addAction({
+      id: 'editor.action.toggleHighContrast',
+      label: 'Toggle High Contrast Theme',
+      run: () => {
+        if (updateUserInterfaceSettings) {
+          updateUserInterfaceSettings('highContrast');
+        }
+      },
+    });
+  }, [updateUserInterfaceSettings, editor]);
 };

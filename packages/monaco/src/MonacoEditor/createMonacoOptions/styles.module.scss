@@ -1,0 +1,113 @@
+@import "~styles/cc";
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.editor {
+  @include font-smoothing;
+
+  &:global(.monaco-editor) {
+    background-color: transparent;
+
+    :global(.margin),
+    :global(.monaco-editor-background) {
+      background-color: transparent;
+    }
+  }
+
+  :global {
+    .detected-link,
+    .detected-link-active {
+      text-decoration: none;
+    }
+
+    // See https://github.com/microsoft/monaco-editor/issues/1681#issuecomment-580751164
+    // See https://codecademy.atlassian.net/browse/LX-3552
+    .decorationsOverviewRuler,
+    .editor-widget:not(.find-widget),
+    .scroll-decoration {
+      display: none !important;
+      visibility: hidden !important;
+    }
+
+    h2 {
+      color: $color-white;
+    }
+
+    .view-overlays .bracket-match {
+      background-color: $platform-mint-700;
+      border: none;
+      border-radius: 2px;
+    }
+
+    .line-numbers {
+      transform: translate(-11px, 0);
+    }
+
+    .monaco-scrollable-element > .scrollbar > .slider {
+      background: #8d8c94;
+      border-radius: 3px;
+    }
+
+    .margin-view-overlays .codicon {
+      font-family: Monaco, Menlo, "Ubuntu Mono", "Droid Sans Mono", Consolas,
+        monospace;
+      font-size: 14px;
+
+      &::before {
+        color: #74737a;
+        margin-left: -6px;
+        margin-top: -3px;
+      }
+    }
+
+    .margin-view-overlays .codicon.codicon-chevron-down {
+      &::before {
+        content: "\25be";
+      }
+    }
+
+    .margin-view-overlays .codicon.codicon-chevron-right {
+      &::before {
+        content: "\25b8";
+      }
+    }
+
+    .view-lines {
+      animation: fadein 500ms forwards;
+      opacity: 0;
+      transition: opacity 500ms;
+
+      .inline-folded::after {
+        background-color: hsla(0, 0%, 100%, 0.2);
+        border-radius: 4px;
+        color: #fff;
+        font-family: arial;
+        font-weight: 700;
+        text-shadow: #b9f 1px 1px 2px, #b9f -1px -1px 2px, #b9f 1px -1px 2px,
+          #b9f -1px 1px 2px;
+      }
+    }
+
+    .monaco-editor-hover {
+      background-color: rgba(0, 0, 0, 0.8) !important;
+      border-radius: 2px;
+      border: none;
+      color: $color-white;
+      font-family: monospace;
+      font-size: 10pt;
+      margin-top: -7px;
+
+      &[widgetid="editor.contrib.modesGlyphHoverWidget"] {
+        margin: 2px 0.5rem 2px 0;
+        padding: 1px 4px 2px;
+      }
+    }
+  }
+}

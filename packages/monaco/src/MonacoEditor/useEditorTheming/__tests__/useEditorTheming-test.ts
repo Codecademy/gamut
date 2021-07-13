@@ -11,7 +11,12 @@ import { useEditorTheming } from '..';
 describe('useEditorTheming', () => {
   it('does not crash when monaco and the editor do not exist', () => {
     renderHook(() =>
-      useEditorTheming(mockUserInterfaceSettings, undefined, undefined)
+      useEditorTheming(
+        mockUserInterfaceSettings,
+        undefined,
+        undefined,
+        undefined
+      )
     );
   });
 
@@ -19,7 +24,7 @@ describe('useEditorTheming', () => {
     mockUserInterfaceSettings.highContrast = true;
     const { monaco } = createMockMonaco();
     renderHook(() =>
-      useEditorTheming(mockUserInterfaceSettings, undefined, monaco)
+      useEditorTheming(mockUserInterfaceSettings, undefined, undefined, monaco)
     );
 
     expect(monaco.editor.setTheme).toHaveBeenCalledWith(
@@ -31,7 +36,7 @@ describe('useEditorTheming', () => {
     mockUserInterfaceSettings.highContrast = false;
     const { monaco } = createMockMonaco();
     renderHook(() =>
-      useEditorTheming(mockUserInterfaceSettings, undefined, monaco)
+      useEditorTheming(mockUserInterfaceSettings, undefined, undefined, monaco)
     );
 
     expect(monaco.editor.setTheme).toHaveBeenCalledWith(EditorTheme.dark);
@@ -40,7 +45,7 @@ describe('useEditorTheming', () => {
   it('loads the dark theme when high contrast is first disabled', () => {
     const { monaco } = createMockMonaco();
     renderHook(() =>
-      useEditorTheming(mockUserInterfaceSettings, undefined, monaco)
+      useEditorTheming(mockUserInterfaceSettings, undefined, undefined, monaco)
     );
 
     expect(monaco.editor.defineTheme).toHaveBeenCalledWith(
@@ -54,7 +59,7 @@ describe('useEditorTheming', () => {
 
     const { monaco } = createMockMonaco();
     const hook = renderHook(() =>
-      useEditorTheming(mockUserInterfaceSettings, undefined, monaco)
+      useEditorTheming(mockUserInterfaceSettings, undefined, undefined, monaco)
     );
     mockUserInterfaceSettings.highContrast = false;
     act(hook.rerender);
@@ -62,5 +67,22 @@ describe('useEditorTheming', () => {
     expect(monaco.editor.defineTheme).toHaveBeenCalledTimes(1);
   });
 
-  // TODO add test for dispatcher that toggles highContrast
+  it('toggleInterfaceSetting is called with with highContrast when its action is fired', () => {
+    const toggleInterfaceSetting = jest.fn();
+
+    const { actions, editor, monaco } = createMockMonaco();
+    renderHook(() =>
+      useEditorTheming(
+        mockUserInterfaceSettings,
+        toggleInterfaceSetting,
+        editor,
+        monaco
+      )
+    );
+
+    // eslint-disable-next-line @typescript-eslint/no-floating-promises
+    actions['editor.action.toggleHighContrast'].run(editor);
+
+    expect(toggleInterfaceSetting).toHaveBeenCalledWith('highContrast');
+  });
 });
