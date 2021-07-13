@@ -1,5 +1,5 @@
 /* eslint-disable local-rules/gamut-import-paths */
-import { Box, GridForm } from '@codecademy/gamut/src';
+import { Box, GridForm, Markdown } from '@codecademy/gamut/src';
 import React from 'react';
 
 import { ColorModeExampleWrapper } from '../Foundations/ColorMode/examples';
@@ -64,6 +64,12 @@ export const ColorModeExample = () => {
                   validation: {
                     required: 'You gotta pick one!',
                   },
+                  tooltip: {
+                    children: <Markdown text="There can only be one." />,
+                    id: 'select-tooltip',
+                    alignment: 'bottom-left',
+                    mode: 'light',
+                  },
                 },
                 {
                   label: 'whats up?',
@@ -81,6 +87,12 @@ export const ColorModeExample = () => {
                   type: 'textarea',
                   validation: {
                     required: 'Please write something about penguins!',
+                  },
+                  tooltip: {
+                    children: <Markdown text="It *is* required ✨" />,
+                    id: 'select-tooltip',
+                    alignment: 'top-right',
+                    mode: 'dark',
                   },
                 },
               ],
@@ -189,23 +201,13 @@ export const ColorModeExample = () => {
               layout: 'left',
               title: 'disabled inputs',
             },
-          ]}
-          onSubmit={() => {}}
-          submit={{
-            contents: 'Submit me',
-            size: 12,
-          }}
-          validation="onSubmit"
-        />
-      </Box>
-      <Box my={16}>
-        <GridForm
-          fields={[
             {
               fields: [
                 {
                   label: 'hi?',
-                  name: 'text02-color-mode',
+                  name: 'text01-color-mode-error',
+                  customError: 'something',
+
                   size: 4,
                   type: 'text',
                   validation: {
@@ -214,7 +216,9 @@ export const ColorModeExample = () => {
                 },
                 {
                   label: 'Simple select (required)',
-                  name: 'simple-select-color-mode',
+                  name: 'simple-select-color-mode-error',
+                  customError: 'has',
+
                   options: [
                     '',
                     'One fish',
@@ -228,30 +232,66 @@ export const ColorModeExample = () => {
                     required: 'Please select an option',
                   },
                 },
-              ],
-              layout: 'left',
-              title: 'another form!',
-            },
-            {
-              as: 'h3',
-              fields: [
                 {
-                  label: 'hello....',
-                  name: 'text01-center-section',
-                  size: 5,
+                  label: 'Write a paragraph.',
+                  name: 'paragraph01-color-mode-error',
+                  customError: 'gone',
+
+                  size: 8,
+                  type: 'textarea',
+                  validation: {
+                    required: 'Please write something about penguins!',
+                  },
+                },
+                {
+                  label: 'Preferred Modern Artist',
+                  name: 'artist-color-mode-error',
+                  customError: 'very',
+
+                  options: [
+                    {
+                      label: 'Cardi B',
+                      value: 'cardi',
+                    },
+                    {
+                      label: 'Nicki Minaj',
+                      value: 'nicki',
+                    },
+                  ],
+                  size: 4,
+                  type: 'radio-group',
+                  validation: {
+                    required: 'You gotta pick one!',
+                  },
+                },
+                {
+                  label: 'whats up?',
+                  name: 'text04-error',
+                  size: 4,
                   type: 'text',
+                  customError: 'very',
+
                   validation: {
                     required: true,
                   },
                 },
+                {
+                  label: 'Write another long paragraph',
+                  name: 'paragraph02-error',
+                  size: 8,
+                  type: 'textarea',
+                  customError: 'wrong',
+                  validation: {
+                    required: 'Please write something about penguins!',
+                  },
+                },
               ],
-              title: 'hi there... again',
+              title: 'something has gone wrong',
             },
           ]}
           onSubmit={() => {}}
           submit={{
-            type: 'cta',
-            contents: 'CTA Button',
+            contents: 'Submit me',
             size: 12,
           }}
           validation="onSubmit"
