@@ -48,9 +48,7 @@ const labelSizeVariants = variant({
 });
 
 const labelColorStates = states({
-  disabled: {
-    ...formFieldTextDisabledStyles,
-  },
+  disabled: formFieldTextDisabledStyles,
 });
 
 const Label = styled.label`
