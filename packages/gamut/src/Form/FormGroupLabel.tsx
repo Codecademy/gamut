@@ -33,7 +33,7 @@ export type FormGroupLabelProps = HTMLAttributes<HTMLDivElement> &
 const labelSizeVariants = variant({
   defaultVariant: 'small',
   prop: 'size',
-  ...formBaseStyles,
+   base: formBaseStyles,
   variants: {
     small: {
       lineHeight: 'title',
