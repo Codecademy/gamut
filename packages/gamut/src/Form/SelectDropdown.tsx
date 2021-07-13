@@ -88,10 +88,10 @@ const errorColorState = (error: boolean) => {
 };
 
 const customStyles: StylesConfig<OptionTypeBase, false> = {
-  container: (provided) => ({
+  container: (provided, state) => ({
     ...provided,
     pointerEvents: 'visible',
-    cursor: 'pointer',
+    cursor: state.selectProps.isSearchable ? 'text' : 'pointer',
     width: '100%',
     minWidth: '7rem',
   }),
