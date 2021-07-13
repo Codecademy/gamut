@@ -264,13 +264,13 @@ export type CoursePageVisitedData = BaseEventData & {
   course_full_title: string;
 };
 
-type FilterType = string | string[] | number | boolean;
+export type FilterType = string | string[] | number | boolean;
 
 export type BusinessFilterData = BaseEventData & {
-  filter_key: String;
+  filter_key: string;
   filter_value: FilterType;
 };
 
 export type BusinessSearchData = BaseEventData & {
-  search_query: String;
+  search_query: string;
 };
