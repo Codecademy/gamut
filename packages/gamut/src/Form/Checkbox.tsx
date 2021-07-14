@@ -1,5 +1,5 @@
-import { noSelect, screenReaderOnly } from '@codecademy/gamut-styles';
-import { StyleProps } from '@codecademy/variance';
+import { noSelect, screenReaderOnly, system } from '@codecademy/gamut-styles';
+import { StyleProps, variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
 import React, {
   forwardRef,
@@ -40,7 +40,10 @@ export type CheckboxTextProps = StyleProps<typeof checkboxTextStates>;
 
 const CheckboxLabel = styled.label(noSelect, checkboxLabel);
 
+const color = variance.compose(system.color);
+
 const CheckboxElement = styled.div<CheckboxElementProps>(
+  color,
   checkboxElement,
   checkboxElementStates
 );
@@ -103,6 +106,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
             multiline={multiline}
             checked={currentlyChecked}
             disabled={disabled}
+            color={checkboxColor(currentlyChecked, disabled)}
           >
             <CheckboxVector
               width="22px"
