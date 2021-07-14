@@ -33,12 +33,12 @@ export type CheckboxTextProps = StyleProps<typeof checkboxTextStates>;
 const CheckboxLabel = styled.label(noSelect, checkboxLabel);
 
 const CheckboxElement = styled.div<Multiline>(
+  checkboxElement,
   states({
     multiline: {
       mt: 4,
     },
-  }),
-  checkboxElement
+  })
 );
 
 const CheckboxVector = styled.svg`
