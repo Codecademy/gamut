@@ -21,11 +21,11 @@ export const MenuItem = React.forwardRef<
   const { variant, ...rest } = useMenuContext();
   const activeProp = activePropnames[variant];
   const computed = {
+    ...props,
+    ...rest,
     variant: variant === 'select' ? 'select' : 'link',
     role: 'menuitem',
     [activeProp]: active,
-    ...props,
-    ...rest,
   } as ListItemProps;
 
   if (href) {
