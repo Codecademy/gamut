@@ -72,14 +72,6 @@ const Input = styled.input`
 
 const CheckboxText = styled.span<CheckboxTextProps>(checkboxTextStates);
 
-const checkboxColor = (checked?: boolean, disabled?: boolean) => {
-  return checked && !disabled
-    ? 'primary'
-    : !checked && disabled
-    ? 'background-disabled'
-    : 'text-disabled';
-};
-
 export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
   (
     { className, label, htmlFor, multiline, id, checked, disabled, ...rest },
@@ -103,7 +95,9 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
             multiline={multiline}
             checked={currentlyChecked}
             disabled={disabled}
-            color={checkboxColor(currentlyChecked, disabled)}
+            color={
+              disabled || !currentlyChecked ? 'background-disabled' : 'primary'
+            }
           >
             <CheckboxVector
               width="22px"
