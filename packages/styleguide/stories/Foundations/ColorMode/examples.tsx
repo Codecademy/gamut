@@ -5,10 +5,14 @@ import {
   CTAButton,
   FillButton,
   FlexBox,
+  FormGroup,
   GridBox,
   IconButton,
+  Input,
   Logo,
   ProLabel,
+  Radio,
+  RadioGroup,
   StrokeButton,
   Text,
   TextButton,
@@ -19,6 +23,7 @@ import {
   MiniArrowRightIcon,
   MiniDeleteIcon,
   SearchIcon,
+  StreakIcon,
 } from '@codecademy/gamut-icons';
 import { Background, ColorMode } from '@codecademy/gamut-styles/src';
 import React, { ComponentProps, useState } from 'react';
@@ -84,6 +89,45 @@ const renderLinks = () => {
   );
 };
 
+const renderInputs = () => {
+  return (
+    <GridBox
+      mt={32}
+      columnGap={32}
+      gridTemplateColumns="repeat(2, max-content)"
+    >
+      <FormGroup
+        error="this is still not updog..."
+        label="i am also large label, but something is wrong."
+        labelSize="large"
+      >
+        <Input
+          defaultValue="123"
+          error
+          htmlFor="example-123"
+          name="example-123"
+          placeholder="Placeholder"
+        />
+      </FormGroup>
+      <FormGroup label="ah yes, a radio group">
+        <RadioGroup label="A radio Label" name="example-radio">
+          <Radio label="Radio 1" value="1" />
+          <Radio label="Radio 2" value="2" />
+        </RadioGroup>
+      </FormGroup>
+      <FormGroup label="you can't type here.">
+        <Input
+          htmlFor="example-disabled"
+          name="example-disabled"
+          defaultValue="Ouch"
+          disabled
+          icon={StreakIcon}
+        />
+      </FormGroup>
+    </GridBox>
+  );
+};
+
 const ColorModeExampleContents = () => {
   return (
     <>
@@ -111,6 +155,7 @@ const ColorModeExampleContents = () => {
       {renderButtons('primary', true)}
       {renderButtons('secondary')}
       {renderButtons('danger')}
+      {renderInputs()}
     </>
   );
 };
