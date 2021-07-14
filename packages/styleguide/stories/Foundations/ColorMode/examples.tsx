@@ -98,7 +98,7 @@ const renderInputs = () => {
     >
       <FormGroup
         error="this is still not updog..."
-        label="i am also large label, but something is wrong."
+        label="i am a large label, but something is wrong."
         labelSize="large"
       >
         <Input
@@ -110,7 +110,7 @@ const renderInputs = () => {
         />
       </FormGroup>
       <FormGroup label="ah yes, a radio group">
-        <RadioGroup label="A radio Label" name="example-radio">
+        <RadioGroup name="example-radio">
           <Radio label="Radio 1" value="1" />
           <Radio label="Radio 2" value="2" />
         </RadioGroup>
