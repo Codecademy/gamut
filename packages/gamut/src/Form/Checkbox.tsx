@@ -5,6 +5,7 @@ import React, {
   ChangeEvent,
   forwardRef,
   InputHTMLAttributes,
+  MouseEvent,
   ReactNode,
   useState,
 } from 'react';
@@ -93,15 +94,16 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
     },
     ref
   ) => {
-    const defaultCheckedValue =
-      checked !== undefined ? checked : Boolean(defaultChecked);
     const [currentlyChecked, setCurrentlyChecked] = useState(
-      defaultCheckedValue
+      checked === undefined ? Boolean(defaultChecked) : checked
     );
+
+    const clickHandler = (event: MouseEvent<any>) => {
+      if (checked === undefined) setCurrentlyChecked(!currentlyChecked);
+    };
 
     const changeHandler = (event: ChangeEvent<any>) => {
       rest?.onChange?.(event);
-      setCurrentlyChecked(!currentlyChecked);
     };
 
     return (
@@ -111,8 +113,8 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
           type="checkbox"
           checked={currentlyChecked}
           disabled={disabled}
-          onClick={changeHandler}
           onChange={changeHandler}
+          onClick={clickHandler}
           {...rest}
           ref={ref}
         />
