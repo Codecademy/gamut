@@ -61,7 +61,6 @@ const SelectBase = styled.select<SelectProps>`
   ${conditionalStyles}
   ${selectSizeVariants}
   cursor: pointer;
-  display: block;
   -moz-appearance: none;
   -webkit-appearance: none;
   appearance: none;
@@ -75,7 +74,16 @@ const StyledFlexbox = styled(FlexBox)(allowClickStyle);
 
 export const Select = forwardRef<HTMLSelectElement, SelectWrapperProps>(
   (
-    { className, defaultValue, options, error, id, sizeVariant, ...rest },
+    {
+      className,
+      defaultValue,
+      options,
+      error,
+      id,
+      sizeVariant,
+      disabled,
+      ...rest
+    },
     ref
   ) => {
     const [activatedStyle, setActivatedStyle] = useState(false);
@@ -93,12 +101,12 @@ export const Select = forwardRef<HTMLSelectElement, SelectWrapperProps>(
       <Box
         position="relative"
         width="100%"
-        textColor={error ? 'red' : 'navy'}
         minWidth="7rem"
         className={className}
       >
         <StyledFlexbox
           pr={12}
+          color={error ? 'danger' : disabled ? 'text-disabled' : 'text'}
           alignItems="center"
           position="absolute"
           right="0"
@@ -107,9 +115,9 @@ export const Select = forwardRef<HTMLSelectElement, SelectWrapperProps>(
           aria-hidden
         >
           {sizeVariant === 'small' ? (
-            <MiniChevronDownIcon size={12} color="text" />
+            <MiniChevronDownIcon size={12} color="currentColor" />
           ) : (
-            <ArrowChevronDownIcon size={16} color="text" />
+            <ArrowChevronDownIcon size={16} color="currentColor" />
           )}
         </StyledFlexbox>
         <SelectBase
@@ -120,6 +128,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectWrapperProps>(
           error={error}
           sizeVariant={sizeVariant}
           variant={conditionalStyleState(Boolean(error), activatedStyle)}
+          disabled={disabled}
           onChange={(event) => changeHandler(event)}
         >
           {selectOptions}

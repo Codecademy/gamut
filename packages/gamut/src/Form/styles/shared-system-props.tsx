@@ -59,6 +59,7 @@ export const formFieldTextDisabledStyles = {
 const formFieldBaseDisabledStyles = {
   borderColor: 'currentColor',
   fontStyle: 'italic',
+  opacity: 1,
   ...formFieldTextDisabledStyles,
 } as const;
 
@@ -108,14 +109,13 @@ export const formFieldStyles = system.css({
 export const conditionalStyles = system.variant({
   variants: {
     error: {
-      textColor: 'danger',
-      borderColor: 'currentColor',
+      borderColor: 'danger',
       [InputSelectors.HOVER]: {
-        borderColor: 'currentColor',
+        borderColor: 'danger-hover',
       },
       [InputSelectors.FOCUS]: {
-        borderColor: 'currentColor',
-        boxShadow: `inset 0 0 0 1px currentColor`,
+        borderColor: 'danger-hover',
+        boxShadow: `inset 0 0 0 1px ${theme.colors['danger-hover']}`,
       },
     },
     activated: { borderColor: 'currentColor' },
@@ -190,7 +190,9 @@ export const conditionalRadioLabelStyles = system.variant({
   },
   variants: {
     error: {
-      textColor: 'danger',
+      [InputSelectors.BEFORE_AND_AFTER]: {
+        color: 'danger',
+      },
     },
     disabled: {
       ...formFieldBaseDisabledStyles,

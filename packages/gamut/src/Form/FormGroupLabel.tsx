@@ -33,7 +33,7 @@ export type FormGroupLabelProps = HTMLAttributes<HTMLDivElement> &
 const labelSizeVariants = variant({
   defaultVariant: 'small',
   prop: 'size',
-  ...formBaseStyles,
+  base: { display: 'block', ...formBaseStyles },
   variants: {
     small: {
       lineHeight: 'title',
@@ -48,21 +48,17 @@ const labelSizeVariants = variant({
 });
 
 const labelColorStates = states({
-  disabled: {
-    ...formFieldTextDisabledStyles,
-  },
+  disabled: formFieldTextDisabledStyles,
 });
 
-const Label = styled.label`
-  ${labelSizeVariants}
-  ${labelColorStates}
-  display: block;
-`.withComponent((props: FormGroupLabelProps) => {
-  if (props.htmlFor) {
-    return <label {...props} />;
-  }
-  return <div {...props} />;
-});
+const Label = styled
+  .label(labelSizeVariants, labelColorStates)
+  .withComponent((props: FormGroupLabelProps) => {
+    if (props.htmlFor) {
+      return <label {...props} />;
+    }
+    return <div {...props} />;
+  });
 
 export const FormGroupLabel: React.FC<FormGroupLabelProps> = ({
   children,

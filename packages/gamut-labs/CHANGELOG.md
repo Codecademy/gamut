@@ -3,6 +3,40 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [19.16.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.15.4...@codecademy/gamut-labs@19.16.0) (2021-07-12)
+
+
+### Features
+
+* **Tabs:** Adding a gamut-labs Tabs component ([654faf3](https://github.com/Codecademy/client-modules/commit/654faf38b72ddfbe0a6bd1b638e0c19806546440))
+
+
+
+### [19.15.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.15.3...@codecademy/gamut-labs@19.15.4) (2021-07-12)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [19.15.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.15.2...@codecademy/gamut-labs@19.15.3) (2021-07-01)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [19.15.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.15.1...@codecademy/gamut-labs@19.15.2) (2021-07-01)
+
+
+### Bug Fixes
+
+* **DropdownButton:** add aria label ([56cb917](https://github.com/Codecademy/client-modules/commit/56cb917880395566998a288f2507a7e323954c88))
+
+
+
 ### [19.15.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.15.0...@codecademy/gamut-labs@19.15.1) (2021-06-29)
 
 **Note:** Version bump only for package @codecademy/gamut-labs

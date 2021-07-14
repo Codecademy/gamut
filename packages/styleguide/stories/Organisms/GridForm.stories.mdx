@@ -353,7 +353,7 @@ value of left, center, right, or stretch.
 
 ## Submit Button Options
 
-We can specify the version of our button by passing the type prop. WE can choose between
+We can specify the version of our button by passing the type prop. We can choose between
 the [`FillButton`](/?path=/docs/atoms--fill) or [`CTAButton`](?path=/docs/atoms--cta).
 
 <Canvas>
@@ -782,12 +782,15 @@ See the [`Radio`](/?path=/docs/atoms-forminputs-radio--radio) story for an examp
 ## Sections
 
 Our `GridForm`s optionally take an array of sections that have left and center-aligned variants.
-Each sections should have a title that correctly follows [heading ranks](https://usability.yale.edu/web-accessibility/articles/headings). You can set the text type of this title though the `as` prop on that section -- the default is `h2`.
+
+Each sections should have a title that correctly follows [heading ranks](https://usability.yale.edu/web-accessibility/articles/headings). You can set the text type of this title though the `as` prop on that section -- the default is `h2`. You can only set the `as` prop to a heading.
+
+You can set the [Text variant](https://gamut.codecademy.com/storybook/?path=/docs/typography-text--text) prop for the section title the same way. Only title variants are accepted.
 
 When using the left-aligned layout, please note that the `title` takes up 3 columns, so any field size over 9 may cause inconsistent behavior!
 
 <Canvas>
-  <Story name="Custom Sections">
+  <Story name="Sections">
     {(args) => {
       return (
         <GridForm
@@ -795,6 +798,7 @@ When using the left-aligned layout, please note that the `title` takes up 3 colu
             {
               title: 'first section',
               layout: 'left',
+              variant: 'title-xs',
               fields: [
                 {
                   label: 'hi?',
@@ -989,5 +993,7 @@ We call it a "sweet container" so that bots do not immediately detect it as a ho
 ## `<ColorMode />`
 
 Here's an example using components in context. By toggling dark mode you can see all the colors map to a new color that is accessible for the mode by default.
+
+Please note you **cannot** use the deprecated 'business' button type with `ColorMode`.
 
 <ColorModeExample />

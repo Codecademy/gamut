@@ -7,7 +7,7 @@ export type EventDataTypes = {
   user: {
     click: UserClickData;
     visit: UserVisitData;
-    impression: BaseEventAnyData;
+    impression: UserImpressionData;
     email_trigger: BaseEventAnyData;
     content_completed: BaseEventAnyData;
     submit: BaseEventAnyData;
@@ -57,6 +57,11 @@ export type EventDataTypes = {
     career_path_visited: PagePathVisitedData;
     skill_path_visited: PagePathVisitedData;
     course_page_visited: CoursePageVisitedData;
+  };
+  // Business specific events
+  business_reporting: {
+    filter_event: BusinessFilterData;
+    search_event: BusinessSearchData;
   };
 };
 
@@ -212,6 +217,17 @@ export type UserVisitData = UserSharedData & {
   lesson?: string;
 };
 
+export type UserImpressionData = {
+  page_name: string;
+  slug?: string;
+  target: string;
+  context?: string;
+  path_slug?: string;
+  track_slug?: string;
+  module_slug?: string;
+  source_codebase?: string;
+};
+
 export type EventAnswerData = BaseEventData & {
   question_index: number;
   answer_index: number;
@@ -246,4 +262,15 @@ export type PagePathVisitedData = BaseEventData & {
 export type CoursePageVisitedData = BaseEventData & {
   course_id: string;
   course_full_title: string;
+};
+
+export type FilterType = string | string[] | number | boolean;
+
+export type BusinessFilterData = BaseEventData & {
+  filter_key: string;
+  filter_value: FilterType;
+};
+
+export type BusinessSearchData = BaseEventData & {
+  search_query: string;
 };
