@@ -58,6 +58,11 @@ export type EventDataTypes = {
     skill_path_visited: PagePathVisitedData;
     course_page_visited: CoursePageVisitedData;
   };
+  // Business specific events
+  business_reporting: {
+    filter_event: BusinessFilterData;
+    search_event: BusinessSearchData;
+  };
 };
 
 /**
@@ -257,4 +262,15 @@ export type PagePathVisitedData = BaseEventData & {
 export type CoursePageVisitedData = BaseEventData & {
   course_id: string;
   course_full_title: string;
+};
+
+type FilterType = string | string[] | number | boolean;
+
+export type BusinessFilterData = BaseEventData & {
+  filter_key: String;
+  filter_value: FilterType;
+};
+
+export type BusinessSearchData = BaseEventData & {
+  search_query: String;
 };
