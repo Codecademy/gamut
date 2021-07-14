@@ -19,14 +19,11 @@ export enum InputSelectors {
   FOCUS = '&:focus',
   FOCUS_LABEL_DIV_CHILD = '&:focus + label > div',
   DISABLED = "&:disabled, &[aria-disabled='true']",
-  DISABLED_LABEL_DIV = '&:disabled + label div',
-  DISABLED_CHECKED_LABEL_DIV = '&:checked:disabled + label div',
   BEFORE = '&::before',
   AFTER = '&::after',
   BEFORE_AND_AFTER = '&::before, &::after',
   CHECKED_LABEL = '&:checked + label::before',
   CHECKED_LABEL_DIV = '&:checked + label div',
-  CHECKED_LABEL_DIV_SVG = '&:checked + label div > svg',
   CHECKED_BEFORE = '&:checked + label::before',
   CHECKED_AFTER = '&:checked + label::after',
   HOVER_FOCUS_BEFORE = '&:hover + label::before, &:focus + label::before',
@@ -255,13 +252,6 @@ export const checkboxTextStates = system.states({
   },
   disabled: formFieldBaseDisabledStyles,
 });
-
-export const checkboxInputStates = system.states({
-  disabled: {
-    fontSize: 14,
-  },
-});
-
 export const checkboxElementStates = system.states({
   disabled: {
     cursor: 'not-allowed',
@@ -276,18 +266,4 @@ export const checkboxInput = system.css({
     outline: `2px solid currentColor`,
     outlineOffset: '2px',
   },
-  // [InputSelectors.CHECKED_LABEL_DIV]: {
-  //   borderColor: 'primary',
-  //   color: 'primary',
-  // },
-  // [InputSelectors.DISABLED_CHECKED_LABEL_DIV]: {
-  //   borderColor: 'text-disabled',
-  //   color: 'text-disabled',
-  //   cursor: 'not-allowed',
-  // },
-  // [InputSelectors.DISABLED_LABEL_DIV]: {
-  //   borderColor: 'background-disabled',
-  //   color: 'background-disabled',
-  //   cursor: 'not-allowed',
-  // },
 });

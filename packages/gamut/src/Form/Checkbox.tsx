@@ -40,10 +40,8 @@ export type CheckboxTextProps = StyleProps<typeof checkboxTextStates>;
 
 const CheckboxLabel = styled.label(noSelect, checkboxLabel);
 
-const color = variance.compose(system.color);
-
 const CheckboxElement = styled.div<CheckboxElementProps>(
-  color,
+  system.color,
   checkboxElement,
   checkboxElementStates
 );
@@ -91,7 +89,6 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
 
     return (
       <div className={className}>
-        {console.log(currentlyChecked)}
         <Input
           id={id || htmlFor}
           type="checkbox"
