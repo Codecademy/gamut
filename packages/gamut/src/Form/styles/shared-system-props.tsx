@@ -235,14 +235,13 @@ export const checkboxLabel = system.css({
 });
 
 export const checkboxElement = system.css({
-  color: 'transparent',
   position: 'relative',
   mr: 8,
   minWidth: 22,
   width: 22,
   height: 22,
   border: 2,
-  borderColor: 'text-disabled',
+  borderColor: 'currentColor',
   transition: transitionConcat(['all'], 'slow', 'ease-in-out'),
 });
 
@@ -252,29 +251,43 @@ export const polyline = system.css({
 
 export const checkboxTextStates = system.states({
   multiline: {
-    // to-do: ask aaron if we should add smaller fontSizes for this component
     fontSize: 14,
   },
   disabled: formFieldBaseDisabledStyles,
 });
 
+export const checkboxInputStates = system.states({
+  disabled: {
+    fontSize: 14,
+  },
+});
+
+export const checkboxElementStates = system.states({
+  disabled: {
+    cursor: 'not-allowed',
+  },
+  multiline: {
+    mt: 4,
+  },
+});
+
 export const checkboxInput = system.css({
   [InputSelectors.FOCUS_LABEL_DIV_CHILD]: {
-    outline: `2px solid ${theme.colors.primary}`,
+    outline: `2px solid currentColor`,
     outlineOffset: '2px',
   },
-  [InputSelectors.CHECKED_LABEL_DIV]: {
-    borderColor: 'primary',
-    color: 'primary',
-  },
-  [InputSelectors.DISABLED_CHECKED_LABEL_DIV]: {
-    borderColor: 'text-disabled',
-    color: 'text-disabled',
-    cursor: 'not-allowed',
-  },
-  [InputSelectors.DISABLED_LABEL_DIV]: {
-    borderColor: 'background-disabled',
-    color: 'background-disabled',
-    cursor: 'not-allowed',
-  },
+  // [InputSelectors.CHECKED_LABEL_DIV]: {
+  //   borderColor: 'primary',
+  //   color: 'primary',
+  // },
+  // [InputSelectors.DISABLED_CHECKED_LABEL_DIV]: {
+  //   borderColor: 'text-disabled',
+  //   color: 'text-disabled',
+  //   cursor: 'not-allowed',
+  // },
+  // [InputSelectors.DISABLED_LABEL_DIV]: {
+  //   borderColor: 'background-disabled',
+  //   color: 'background-disabled',
+  //   cursor: 'not-allowed',
+  // },
 });

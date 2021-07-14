@@ -1,4 +1,4 @@
-import { noSelect, screenReaderOnly, states } from '@codecademy/gamut-styles';
+import { noSelect, screenReaderOnly } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
 import React, {
@@ -11,6 +11,7 @@ import React, {
 import { variables } from './_variables';
 import {
   checkboxElement,
+  checkboxElementStates,
   checkboxInput,
   checkboxLabel,
   checkboxTextStates,
@@ -19,13 +20,14 @@ import {
 
 type Multiline = { multiline?: boolean };
 type Checked = { checked?: boolean };
+type CheckboxElementProps = Checked & {
+  multiline?: boolean;
+  disabled?: boolean;
+};
 
 export type CheckboxProps = InputHTMLAttributes<HTMLInputElement> &
   Multiline & {
-    multiline?: boolean;
-    checked?: boolean;
     className?: string;
-    disabled?: boolean;
     htmlFor: string;
     label: ReactNode;
     name?: string;
@@ -38,17 +40,12 @@ export type CheckboxTextProps = StyleProps<typeof checkboxTextStates>;
 
 const CheckboxLabel = styled.label(noSelect, checkboxLabel);
 
-const CheckboxElement = styled.div<Multiline>(
+const CheckboxElement = styled.div<CheckboxElementProps>(
   checkboxElement,
-  states({
-    multiline: {
-      mt: 4,
-    },
-  })
+  checkboxElementStates
 );
 
 const CheckboxVector = styled.svg`
-  color: currentColor;
   position: absolute;
   top: -2px;
   left: -2px;
@@ -74,6 +71,14 @@ const Input = styled.input`
 
 const CheckboxText = styled.span<CheckboxTextProps>(checkboxTextStates);
 
+const checkboxColor = (checked?: boolean, disabled?: boolean) => {
+  return checked && !disabled
+    ? 'primary'
+    : !checked && disabled
+    ? 'background-disabled'
+    : 'text-disabled';
+};
+
 export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
   (
     { className, label, htmlFor, multiline, id, checked, disabled, ...rest },
@@ -94,8 +99,17 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
           ref={ref}
         />
         <CheckboxLabel htmlFor={id || htmlFor}>
-          <CheckboxElement multiline={multiline}>
-            <CheckboxVector width="22px" height="22px" viewBox="0 0 20 20">
+          <CheckboxElement
+            multiline={multiline}
+            checked={currentlyChecked}
+            disabled={disabled}
+          >
+            <CheckboxVector
+              width="22px"
+              height="22px"
+              viewBox="0 0 20 20"
+              color={currentlyChecked ? 'currentColor' : 'transparent'}
+            >
               <path
                 d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"
                 fill="currentColor"
