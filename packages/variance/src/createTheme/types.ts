@@ -14,16 +14,27 @@ export type MergeTheme<
   Base extends AbstractTheme,
   Next,
   Unmergable = Record<'breakpoints', Base['breakpoints']>
-> = Unmergable &
-  {
-    [K in keyof (Base & Next)]: K extends keyof Next
-      ? K extends keyof Base
-        ? Base[K] & Next[K]
-        : Next[K]
-      : K extends keyof Base
-      ? Base[K]
-      : never;
-  };
+> = Unmergable & Merge<Base, Next>;
+
+/** This merges at 2 levels of depth */
+
+export type Merge<Base, Next> = {
+  [K in keyof (Base & Next)]: K extends keyof Next
+    ? K extends keyof Base
+      ? Assign<Base[K], Next[K]>
+      : Next[K]
+    : K extends keyof Base
+    ? Base[K]
+    : never;
+};
+
+export type Assign<A, B> = {
+  [K in keyof A | keyof B]: K extends keyof B
+    ? B[K]
+    : K extends keyof A
+    ? A[K]
+    : never;
+};
 
 /** These are keys that are consistent for all theme builds - they are loosely typed as they are not meant to be accessed directly */
 export type PrivateThemeKeys = {
