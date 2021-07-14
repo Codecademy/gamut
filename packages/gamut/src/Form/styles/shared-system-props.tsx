@@ -231,6 +231,12 @@ export const checkboxLabel = system.css({
   ...formBaseComponentStyles,
 });
 
+export const checkboxLabelStates = system.states({
+  disabled: {
+    cursor: 'not-allowed',
+  },
+});
+
 export const checkboxElement = system.css({
   position: 'relative',
   mr: 8,
@@ -260,9 +266,6 @@ export const checkboxInputStates = system.states({
 });
 
 export const checkboxElementStates = system.states({
-  disabled: {
-    cursor: 'not-allowed',
-  },
   multiline: {
     mt: 4,
   },

@@ -1,7 +1,8 @@
 import { noSelect, screenReaderOnly, system } from '@codecademy/gamut-styles';
-import { StyleProps, variance } from '@codecademy/variance';
+import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
 import React, {
+  ChangeEvent,
   forwardRef,
   InputHTMLAttributes,
   ReactNode,
@@ -14,6 +15,7 @@ import {
   checkboxElementStates,
   checkboxInput,
   checkboxLabel,
+  checkboxLabelStates,
   checkboxTextStates,
   polyline,
 } from './styles/shared-system-props';
@@ -38,7 +40,11 @@ export type CheckboxProps = InputHTMLAttributes<HTMLInputElement> &
 
 export type CheckboxTextProps = StyleProps<typeof checkboxTextStates>;
 
-const CheckboxLabel = styled.label(noSelect, checkboxLabel);
+const CheckboxLabel = styled.label(
+  noSelect,
+  checkboxLabel,
+  checkboxLabelStates
+);
 
 const CheckboxElement = styled.div<CheckboxElementProps>(
   system.color,
@@ -74,10 +80,29 @@ const CheckboxText = styled.span<CheckboxTextProps>(checkboxTextStates);
 
 export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
   (
-    { className, label, htmlFor, multiline, id, checked, disabled, ...rest },
+    {
+      className,
+      label,
+      htmlFor,
+      multiline,
+      id,
+      checked,
+      defaultChecked,
+      disabled,
+      ...rest
+    },
     ref
   ) => {
-    const [currentlyChecked, setCurrentlyChecked] = useState(Boolean(checked));
+    const defaultCheckedValue =
+      checked !== undefined ? checked : Boolean(defaultChecked);
+    const [currentlyChecked, setCurrentlyChecked] = useState(
+      defaultCheckedValue
+    );
+
+    const changeHandler = (event: ChangeEvent<any>) => {
+      rest?.onChange?.(event);
+      setCurrentlyChecked(!currentlyChecked);
+    };
 
     return (
       <div className={className}>
@@ -86,11 +111,12 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
           type="checkbox"
           checked={currentlyChecked}
           disabled={disabled}
-          onChange={() => setCurrentlyChecked(!currentlyChecked)}
+          onClick={changeHandler}
+          onChange={changeHandler}
           {...rest}
           ref={ref}
         />
-        <CheckboxLabel htmlFor={id || htmlFor}>
+        <CheckboxLabel htmlFor={id || htmlFor} disabled={disabled}>
           <CheckboxElement
             multiline={multiline}
             checked={currentlyChecked}
