@@ -91,7 +91,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
       checked === undefined ? Boolean(defaultChecked) : checked
     );
 
-    const clickHandler = (event: MouseEvent<any>) => {
+    const clickHandler = (event: MouseEvent) => {
       if (checked === undefined) setCurrentlyChecked(!currentlyChecked);
     };
 
