@@ -243,6 +243,7 @@ export const checkboxElement = system.css({
   height: 22,
   border: 2,
   borderColor: 'currentColor',
+  color: 'background-disabled',
   transition: transitionConcat(['all'], 'slow', 'ease-in-out'),
 });
 
@@ -267,6 +268,12 @@ export const checkboxElementStates = system.states({
   multiline: {
     mt: 4,
   },
+  checked: {
+    color: 'primary',
+  },
+  disabled: {
+    color: 'background-disabled',
+  },
 });
 
 export const checkboxInput = system.css({
@@ -274,4 +281,5 @@ export const checkboxInput = system.css({
     outline: `2px solid   ${theme.colors.primary}`,
     outlineOffset: '2px',
   },
+  // TO-DO : re-add hover state
 });

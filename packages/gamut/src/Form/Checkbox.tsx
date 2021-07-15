@@ -47,7 +47,7 @@ const CheckboxLabel = styled.label<Pick<CheckboxProps, 'disabled'>>(
 
 const CheckboxElement = styled('div', styledOptions)<
   Pick<CheckboxProps, 'checked' | 'multiline' | 'disabled'>
->(checkboxElement, checkboxElementStates, system.color);
+>(checkboxElement, checkboxElementStates);
 
 const CheckboxVector = styled.svg`
   position: absolute;
@@ -94,12 +94,11 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
       checked === undefined ? Boolean(defaultChecked) : checked
     );
 
-    const clickHandler = (event: MouseEvent) => {
-      if (checked === undefined) setCurrentlyChecked(!currentlyChecked);
-    };
+    // const clickHandler = (event: MouseEvent) => {};
 
     const changeHandler = (event: ChangeEvent<HTMLInputElement>) => {
       rest?.onChange?.(event);
+      setCurrentlyChecked(!currentlyChecked);
     };
 
     return (
@@ -110,7 +109,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
           checked={currentlyChecked}
           disabled={disabled}
           onChange={changeHandler}
-          onClick={clickHandler}
+          // onClick={clickHandler}
           {...rest}
           ref={ref}
         />
@@ -119,9 +118,6 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
             multiline={multiline}
             checked={currentlyChecked}
             disabled={disabled}
-            color={
-              disabled || !currentlyChecked ? 'background-disabled' : 'primary'
-            }
           >
             <CheckboxVector
               width="22px"
