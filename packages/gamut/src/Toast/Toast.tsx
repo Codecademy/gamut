@@ -61,7 +61,6 @@ export const Toast: React.FC<ToastProps> = ({
   title,
   children,
   icon,
-
   onClose,
 }) => {
   const layoutType = useMemo(() => {
@@ -74,14 +73,22 @@ export const Toast: React.FC<ToastProps> = ({
     if (!icon) return null;
     if (typeof icon === 'string') {
       return (
-        <IconContainer borderRadius="50%" backgroundImage={`url(${icon})`} />
+        <IconContainer
+          gridArea="icon"
+          borderRadius="50%"
+          backgroundImage={`url(${icon})`}
+        />
       );
     }
-    return <IconContainer center>{icon}</IconContainer>;
+    return (
+      <IconContainer gridArea="icon" center>
+        {icon}
+      </IconContainer>
+    );
   };
 
   return (
-    <ToastContainer layout={layoutType} pattern="checkerDense">
+    <ToastContainer role="status" layout={layoutType} pattern="checkerDense">
       {renderIcon()}
       <Box gridArea="message" py={4}>
         {title && (
