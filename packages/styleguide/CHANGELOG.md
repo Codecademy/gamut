@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [41.14.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@41.14.0...@codecademy/styleguide@41.14.1) (2021-07-15)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [41.14.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@41.13.0...@codecademy/styleguide@41.14.0) (2021-07-12)
+
+
+### Features
+
+* **Tabs:** Adding a gamut-labs Tabs component ([654faf3](https://github.com/Codecademy/client-modules/commit/654faf38b72ddfbe0a6bd1b638e0c19806546440))
+
+
+
 ## [41.13.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@41.12.3...@codecademy/styleguide@41.13.0) (2021-07-12)
 
 
