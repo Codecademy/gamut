@@ -39,8 +39,8 @@ describe('GridForm', () => {
 
     const newValues = [
       ['input[type="checkbox"]', 'checked', true],
-      // ['select', 'value', selectValue],
-      // ['input[type="text"]', 'value', textValue],
+      ['select', 'value', selectValue],
+      ['input[type="text"]', 'value', textValue],
     ] as const;
 
     await act(async () => {
