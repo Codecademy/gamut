@@ -21,37 +21,30 @@ import {
   polyline,
 } from './styles/shared-system-props';
 
-type Multiline = { multiline?: boolean };
-type Checked = { checked?: boolean };
-type CheckboxElementProps = Checked & {
+export type CheckboxProps = InputHTMLAttributes<HTMLInputElement> & {
   multiline?: boolean;
-  disabled?: boolean;
+  className?: string;
+  htmlFor: string;
+  label: ReactNode;
+  name?: string;
+  required?: boolean;
+  value?: string;
+  id?: string;
 };
 
-export type CheckboxProps = InputHTMLAttributes<HTMLInputElement> &
-  Multiline & {
-    className?: string;
-    htmlFor: string;
-    label: ReactNode;
-    name?: string;
-    required?: boolean;
-    value?: string;
-    id?: string;
-  };
+type CheckboxElementProps = Pick<CheckboxProps, 'checked'>;
 
 export type CheckboxTextProps = StyleProps<typeof checkboxTextStates>;
 
-const CheckboxLabel = styled.label(
+const CheckboxLabel = styled.label<Pick<CheckboxProps, 'disabled'>>(
   noSelect,
   checkboxLabel,
   checkboxLabelStates
 );
 
-const CheckboxElement = styled.div<CheckboxElementProps>(
-  system.color,
-  checkboxElement,
-  checkboxElementStates
-);
+const CheckboxElement = styled.div<
+  Pick<CheckboxProps, 'checked' | 'multiline' | 'disabled'>
+>(system.color, checkboxElement, checkboxElementStates);
 
 const CheckboxVector = styled.svg`
   position: absolute;
@@ -59,7 +52,7 @@ const CheckboxVector = styled.svg`
   left: -2px;
 `;
 
-const Polyline = styled.polyline<Checked>`
+const Polyline = styled.polyline<Pick<CheckboxProps, 'checked'>>`
   ${polyline}
   fill: none;
   stroke: currentColor;
