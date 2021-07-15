@@ -43,8 +43,8 @@
     "jsdom": "16.4.0",
     "lodash": "4.17.20",
     "polished": "^4.1.2",
-    "react": "16.13.1",
-    "react-dom": "16.13.1",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
     "typescript": "*"
   },
   "license": "MIT",
