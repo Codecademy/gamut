@@ -1,4 +1,3 @@
-import styled from '@emotion/styled';
 import React, { ComponentProps } from 'react';
 
 import { Box } from '../Box';
@@ -14,21 +13,31 @@ export type PatternName =
   | 'dotLoose';
 
 export interface PatternProps extends ComponentProps<typeof Box> {
+  /**
+   * Unique ID suffix to add the pattern ID to remove page duplicates.
+   */
+  idSuffix?: string;
+
   name: PatternName;
 }
 
-const Svg = styled.svg`
-  width: 100%;
-  height: 100%;
-`;
-
-export const Pattern: React.FC<PatternProps> = ({ name, ...props }) => {
+export const Pattern: React.FC<PatternProps> = ({
+  idSuffix = '',
+  name,
+  ...props
+}) => {
   return (
     <Box {...props}>
-      <Svg aria-hidden>
-        {defs(name)}
-        <rect x="0" y="0" width="100%" height="100%" fill={`url(#${name})`} />
-      </Svg>
+      <Box aria-hidden as="svg" height="100%" width="100%">
+        {defs(name, idSuffix)}
+        <rect
+          x="0"
+          y="0"
+          width="100%"
+          height="100%"
+          fill={`url(#${name}${idSuffix})`}
+        />
+      </Box>
     </Box>
   );
 };

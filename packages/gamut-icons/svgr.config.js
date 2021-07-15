@@ -9,8 +9,6 @@ module.exports = {
   svgProps: {
     fill: 'currentColor',
     role: 'img',
-    width: '16px',
-    height: '16px',
     'aria-hidden': 'true',
   },
   prettierConfig: {

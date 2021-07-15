@@ -3,6 +3,51 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.6.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@5.5.1...@codecademy/gamut-icons@5.6.0) (2021-07-12)
+
+
+### Features
+
+* add cc docs homepage icons ([0262c36](https://github.com/Codecademy/client-modules/commit/0262c36ba1c056ee5f42d7c3b98586f35b01773e))
+
+
+
+### [5.5.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@5.5.0...@codecademy/gamut-icons@5.5.1) (2021-07-01)
+
+
+### Bug Fixes
+
+* **MiniKebabIcon:** remove cruft ([3d144e6](https://github.com/Codecademy/client-modules/commit/3d144e699da5197319d468e3fe8087f02e609760))
+
+
+
+## [5.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@5.4.2...@codecademy/gamut-icons@5.5.0) (2021-06-25)
+
+
+### Features
+
+* add lock and networkUser icons for shareable sandbox ([a3beea5](https://github.com/Codecademy/client-modules/commit/a3beea5304765f6bfad8447909dc50d26e18e593))
+
+
+
+### [5.4.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@5.4.1...@codecademy/gamut-icons@5.4.2) (2021-06-24)
+
+
+### Bug Fixes
+
+* Icon titleId and Size Defaults ([7f73eba](https://github.com/Codecademy/client-modules/commit/7f73eba306d7eedda32bd488b8db7b83efbc29b8))
+
+
+
+### [5.4.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@5.4.0...@codecademy/gamut-icons@5.4.1) (2021-06-21)
+
+
+### Bug Fixes
+
+* **Icons:** Fix default size 16 ([6372c00](https://github.com/Codecademy/client-modules/commit/6372c001536c40342326c463132391ddae8dfb6a))
+
+
+
 ## [5.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@5.3.2...@codecademy/gamut-icons@5.4.0) (2021-06-21)
 
 

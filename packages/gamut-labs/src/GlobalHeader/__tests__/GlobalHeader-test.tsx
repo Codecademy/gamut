@@ -1,5 +1,5 @@
 import { IconButton } from '@codecademy/gamut';
-import { BellIcon, SearchIcon } from '@codecademy/gamut-icons';
+import { BellIcon } from '@codecademy/gamut-icons';
 import { theme } from '@codecademy/gamut-styles';
 import { ThemeProvider } from '@emotion/react';
 import { render, screen } from '@testing-library/react';
@@ -13,6 +13,7 @@ import {
   login,
   myHome,
   pricingDropdown,
+  referrals,
   resourcesDropdown,
   signUp,
   tryProForFree,
@@ -26,47 +27,49 @@ const user: User = {
   avatar:
     'https://www.gravatar.com/avatar/1c959a9a1e2f9f9f1ac06b05cccc1d60?s=150&d=retro',
   displayName: 'Codey',
+  showReferrals: true,
+};
+
+const defaultProps = {
+  action,
+  search: {
+    onEnable: jest.fn(),
+    onSearch: jest.fn(),
+    onTrackingClick: jest.fn(),
+  },
 };
 
 const anonHeaderProps: GlobalHeaderProps = {
-  action,
+  ...defaultProps,
   type: 'anon',
 };
 
 const anonLandingHeaderProps: GlobalHeaderProps = {
-  action,
+  ...defaultProps,
   type: 'anon',
   variant: 'landing',
 };
 
 const anonLoginHeaderProps: GlobalHeaderProps = {
-  action,
-  renderSearch: {
-    desktop: () => <IconButton icon={SearchIcon} />,
-    mobile: () => <IconButton icon={SearchIcon} />,
-  },
+  ...defaultProps,
   type: 'anon',
   variant: 'login',
 };
 
 const anonSignUpHeaderProps: GlobalHeaderProps = {
-  action,
-  renderSearch: {
-    desktop: () => <IconButton icon={SearchIcon} />,
-    mobile: () => <IconButton icon={SearchIcon} />,
-  },
+  ...defaultProps,
   type: 'anon',
   variant: 'signup',
 };
 
 const freeHeaderProps: GlobalHeaderProps = {
-  action,
+  ...defaultProps,
   type: 'free',
   user,
 };
 
 const freeCustomCheckoutUrlHeaderProps: GlobalHeaderProps = {
-  action,
+  ...defaultProps,
   type: 'free',
   user: {
     proCheckoutUrl: 'test-url',
@@ -75,7 +78,7 @@ const freeCustomCheckoutUrlHeaderProps: GlobalHeaderProps = {
 };
 
 const freeCompletedTrialHeaderProps: GlobalHeaderProps = {
-  action,
+  ...defaultProps,
   type: 'free',
   user: {
     showProUpgrade: true,
@@ -84,13 +87,13 @@ const freeCompletedTrialHeaderProps: GlobalHeaderProps = {
 };
 
 const proHeaderProps: GlobalHeaderProps = {
-  action,
+  ...defaultProps,
   type: 'pro',
   user,
 };
 
 const proPausedHeaderProps: GlobalHeaderProps = {
-  action,
+  ...defaultProps,
   type: 'pro',
   user: {
     isPaused: true,
@@ -99,16 +102,12 @@ const proPausedHeaderProps: GlobalHeaderProps = {
 };
 
 const loadingHeaderProps: GlobalHeaderProps = {
-  action,
+  ...defaultProps,
   type: 'loading',
 };
 
 const renderElementProps: GlobalHeaderProps = {
-  action,
-  renderSearch: {
-    desktop: () => <IconButton icon={SearchIcon} />,
-    mobile: () => <IconButton icon={SearchIcon} />,
-  },
+  ...defaultProps,
   renderNotifications: {
     desktop: () => <IconButton icon={BellIcon} />,
     mobile: () => <IconButton icon={BellIcon} />,
@@ -174,8 +173,8 @@ describe('GlobalHeader', () => {
         renderGlobalHeader(anonLandingHeaderProps);
       });
 
-      test('does not show search', () => {
-        expect(screen.queryByTitle('Search Icon')).toBeFalsy();
+      test('shows search', () => {
+        screen.getByTitle('Search Icon');
       });
 
       test('shows login', () => {
@@ -311,6 +310,10 @@ describe('GlobalHeader', () => {
       test('profileDropdown', () => {
         screen.getByTestId('avatar');
       });
+      test('referrals', () => {
+        screen.getByTestId('avatar').click();
+        screen.getByText(referrals.text);
+      });
     });
 
     describe('is paused', () => {
@@ -345,9 +348,23 @@ describe('GlobalHeader', () => {
     });
   });
 
-  test('fires action() upon clicking an element', () => {
-    renderGlobalHeader(renderElementProps);
-    screen.getAllByRole('link')[0].click();
-    expect(action).toHaveBeenCalled();
+  describe('onClick handlers', () => {
+    const onLinkAction = jest.fn();
+
+    test('fires only action upon clicking an element', () => {
+      renderGlobalHeader({ ...anonHeaderProps, onLinkAction });
+      screen.getByText(pricingDropdown.text).click();
+
+      expect(action).toHaveBeenCalledTimes(1);
+      expect(onLinkAction).not.toHaveBeenCalled();
+    });
+
+    test('fires action & onLinkAction upon clicking a link element', () => {
+      renderGlobalHeader({ ...anonHeaderProps, onLinkAction });
+      screen.getAllByRole('link')[0].click();
+
+      expect(action).toHaveBeenCalledTimes(1);
+      expect(onLinkAction).toHaveBeenCalledTimes(1);
+    });
   });
 });

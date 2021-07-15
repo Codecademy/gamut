@@ -2,6 +2,7 @@ import { Column, LayoutGrid, Text } from '@codecademy/gamut/src';
 import {
   typographyElementVariants,
   typographyStyleVariants,
+  typographyUtilities,
 } from '@codecademy/gamut/src/Typography/variants';
 import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
@@ -107,6 +108,76 @@ import { Text } from '@codecademy/gamut';
       ))}
     </LayoutGrid>
   )}
+</Story>
+
+## 3. Utilities
+
+Text has some special props with common use cases to make your life easier.
+
+### Truncation
+
+<Canvas>
+  <Story name="Truncation">
+    <LayoutGrid gap={32}>
+      {typographyUtilities.truncation.map((variant) => (
+        <Fragment key={variant}>
+          <Column size={3} alignItems="center">
+            <Text as="code" fontSize={14}>
+              truncate="{variant.toString()}"
+            </Text>
+          </Column>
+          <Column size={9}>
+            <Text truncate={variant} width="400px">
+              This is a very long text thingy that we want to truncate it's very
+              long indeed.
+            </Text>
+          </Column>
+        </Fragment>
+      ))}
+    </LayoutGrid>
+  </Story>
+</Canvas>
+
+### Font Smoothing (default: false)
+
+<Story name="Smoothing">
+  <LayoutGrid gap={32} mt={24} mb={48}>
+    {typographyUtilities.smoothing.map((variant) => (
+      <Fragment key={variant}>
+        <Column size={3} alignItems="center">
+          <Text as="code" fontSize={14}>
+            smooth="{variant.toString()}"
+          </Text>
+        </Column>
+        <Column size={9}>
+          <Text variant="title-md" smooth={variant}>
+            Am I smooth?
+          </Text>
+        </Column>
+      </Fragment>
+    ))}
+  </LayoutGrid>
+</Story>
+
+### Screenreader (default: false)
+
+<Story name="Screenreader">
+  <LayoutGrid gap={32} mt={24} mb={48}>
+    {typographyUtilities.screenreader.map((variant) => (
+      <Fragment key={variant}>
+        <Column size={3} alignItems="center">
+          <Text as="code" fontSize={14}>
+            screenreader="{variant.toString()}"
+          </Text>
+        </Column>
+        <Column size={9}>
+          <Text screenreader={variant}>
+            Possibly visible only to screenreaders.
+          </Text>
+        </Column>
+      </Fragment>
+    ))}
+  </LayoutGrid>
 </Story>
 
 ## Code Playground

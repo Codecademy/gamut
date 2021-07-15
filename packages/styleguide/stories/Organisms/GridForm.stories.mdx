@@ -777,12 +777,120 @@ See the [`Radio`](/?path=/docs/atoms-forminputs-radio--radio) story for an examp
   </Story>
 </Canvas>
 
+## Sections
+
+Our `GridForm`s optionally take an array of sections that have left and center-aligned variants.
+
+Each sections should have a title that correctly follows [heading ranks](https://usability.yale.edu/web-accessibility/articles/headings). You can set the text type of this title though the `as` prop on that section -- the default is `h2`. You can only set the `as` prop to a heading.
+
+You can set the [Text variant](https://gamut.codecademy.com/storybook/?path=/docs/typography-text--text) prop for the section title the same way. Only title variants are accepted.
+
+When using the left-aligned layout, please note that the `title` takes up 3 columns, so any field size over 9 may cause inconsistent behavior!
+
+<Canvas>
+  <Story name="Sections">
+    {(args) => {
+      return (
+        <GridForm
+          fields={[
+            {
+              title: 'first section',
+              layout: 'left',
+              variant: 'title-xs',
+              fields: [
+                {
+                  label: 'hi?',
+                  name: 'text01-left-section',
+                  size: 4,
+                  type: 'text',
+                  validation: {
+                    required: true,
+                  },
+                },
+                {
+                  label: 'hello?',
+                  name: 'text02-left-section',
+                  size: 4,
+                  type: 'text',
+                  validation: {
+                    required: true,
+                  },
+                },
+                {
+                  label: 'Write a paragraph.',
+                  name: 'paragraph01-left-section',
+                  size: 8,
+                  type: 'textarea',
+                  validation: {
+                    required: 'Please write something about penguins!',
+                  },
+                },
+                {
+                  label: 'howdy?',
+                  name: 'text03-left-section',
+                  size: 4,
+                  type: 'text',
+                  validation: {
+                    required: true,
+                  },
+                },
+                {
+                  label: 'whats up?',
+                  name: 'text04--left-section',
+                  size: 4,
+                  type: 'text',
+                  validation: {
+                    required: true,
+                  },
+                },
+                {
+                  label: 'Write another long paragraph',
+                  name: 'paragraph02-left-section',
+                  size: 8,
+                  type: 'textarea',
+                  validation: {
+                    required: 'Please write something about penguins!',
+                  },
+                },
+              ],
+            },
+            {
+              title: 'hi there... again',
+              as: 'h3',
+              fields: [
+                {
+                  label: 'hello....',
+                  name: 'text01-center-section',
+                  size: 5,
+                  type: 'text',
+                  validation: {
+                    required: true,
+                  },
+                },
+              ],
+            },
+          ]}
+          sectionGap={48}
+          onSubmit={async (values) => {
+            action('Form Submitted')(values);
+          }}
+          submit={{
+            contents: 'Submit me',
+            size: 12,
+          }}
+          validation="onSubmit"
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
 ## Custom Error
 
 A field can take a custom error in addition to validation errors. The validation error will always take precedence to the custom error.
 
 <Canvas>
-  <Story name="Custom ">
+  <Story name="Custom Error">
     {(args) => {
       return (
         <GridForm

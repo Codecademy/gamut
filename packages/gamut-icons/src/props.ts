@@ -38,3 +38,5 @@ export const iconProps = variance.compose(
 );
 
 export const Svg = styled('svg', styledOptions<'svg'>())(iconProps);
+
+Svg.defaultProps = { width: 16, height: 16 };

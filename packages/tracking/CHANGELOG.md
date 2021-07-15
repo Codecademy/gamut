@@ -3,6 +3,42 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [0.12.1](https://github.com/Codecademy/client-modules/compare/@codecademy/tracking@0.12.0...@codecademy/tracking@0.12.1) (2021-07-13)
+
+
+### Bug Fixes
+
+* business reporting event types ([b480487](https://github.com/Codecademy/client-modules/commit/b480487125ec85aa8466b0225730a2772c88452a))
+
+
+
+## [0.12.0](https://github.com/Codecademy/client-modules/compare/@codecademy/tracking@0.11.1...@codecademy/tracking@0.12.0) (2021-07-13)
+
+
+### Features
+
+* **event type:** adding business reporting types ([5c8b6c5](https://github.com/Codecademy/client-modules/commit/5c8b6c5fe60b2d415436c56d485d092e6e94f68f)), closes [/github.com/codecademy-engineering/business-reporting/blob/develop/src/util/eventTracking/index.tsx#L104-L110](https://github.com/Codecademy//github.com/codecademy-engineering/business-reporting/blob/develop/src/util/eventTracking/index.tsx/issues/L104-L110)
+
+
+
+### [0.11.1](https://github.com/Codecademy/client-modules/compare/@codecademy/tracking@0.11.0...@codecademy/tracking@0.11.1) (2021-06-30)
+
+
+### Bug Fixes
+
+* support navigator.sendBeacon not existing ([ab442ef](https://github.com/Codecademy/client-modules/commit/ab442efb8e097015b5cca2ca34c869e83bb53d44))
+
+
+
+## [0.11.0](https://github.com/Codecademy/client-modules/compare/@codecademy/tracking@0.10.0...@codecademy/tracking@0.11.0) (2021-06-30)
+
+
+### Features
+
+* add user impression to tracking ([a5960aa](https://github.com/Codecademy/client-modules/commit/a5960aa034a1725bbcb119a2cf193557bfacd386))
+
+
+
 ## [0.10.0](https://github.com/Codecademy/client-modules/compare/@codecademy/tracking@0.9.0...@codecademy/tracking@0.10.0) (2021-06-21)
 
 
