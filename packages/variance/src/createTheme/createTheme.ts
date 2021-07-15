@@ -4,7 +4,7 @@ import { CSSObject } from '../types/props';
 import { AbstractTheme } from '../types/theme';
 import { flattenScale, LiteralPaths } from '../utils/flattenScale';
 import { KeyAsVariable, serializeTokens } from '../utils/serializeTokens';
-import { ColorModeConfig, MergeTheme, PrivateThemeKeys } from './types';
+import { ColorModeConfig, Merge, MergeTheme, PrivateThemeKeys } from './types';
 
 class ThemeBuilder<T extends AbstractTheme> {
   #theme = {} as T;
@@ -85,7 +85,10 @@ class ThemeBuilder<T extends AbstractTheme> {
     InitialMode extends keyof Config,
     Colors extends keyof T['colors'],
     ModeColors extends ColorModeConfig<Colors>,
-    Config extends Record<Modes, ModeColors>
+    Config extends Record<Modes, ModeColors>,
+    ColorAliases extends {
+      [K in keyof Config]: LiteralPaths<Config[K], '-', '_'>;
+    }
   >(
     initialMode: InitialMode,
     modes: Config
@@ -98,7 +101,7 @@ class ThemeBuilder<T extends AbstractTheme> {
           'colors'
         > &
           T['colors'];
-        modes: { [K in keyof Config]: LiteralPaths<Config[K], '-', '_'> };
+        modes: Merge<T['modes'], ColorAliases>;
         mode: keyof Config;
         _getColorValue: (color: keyof T['colors']) => string;
       }
