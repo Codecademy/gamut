@@ -6,7 +6,7 @@ export const adminTheme = createTheme(coreTheme)
     light: {
       primary: {
         _: 'blue-500',
-        hover: 'blue-300',
+        hover: 'blue-400',
       },
     },
     dark: {},
