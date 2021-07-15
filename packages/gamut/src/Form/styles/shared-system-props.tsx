@@ -22,8 +22,6 @@ export enum InputSelectors {
   BEFORE = '&::before',
   AFTER = '&::after',
   BEFORE_AND_AFTER = '&::before, &::after',
-  CHECKED_LABEL = '&:checked + label::before',
-  CHECKED_LABEL_DIV = '&:checked + label div',
   CHECKED_BEFORE = '&:checked + label::before',
   CHECKED_AFTER = '&:checked + label::after',
   HOVER_FOCUS_BEFORE = '&:hover + label::before, &:focus + label::before',

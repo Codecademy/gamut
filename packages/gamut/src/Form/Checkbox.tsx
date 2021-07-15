@@ -1,4 +1,9 @@
-import { noSelect, screenReaderOnly, system } from '@codecademy/gamut-styles';
+import {
+  noSelect,
+  screenReaderOnly,
+  styledOptions,
+  system,
+} from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
 import React, {
@@ -32,8 +37,6 @@ export type CheckboxProps = InputHTMLAttributes<HTMLInputElement> & {
   id?: string;
 };
 
-type CheckboxElementProps = Pick<CheckboxProps, 'checked'>;
-
 export type CheckboxTextProps = StyleProps<typeof checkboxTextStates>;
 
 const CheckboxLabel = styled.label<Pick<CheckboxProps, 'disabled'>>(
@@ -42,9 +45,9 @@ const CheckboxLabel = styled.label<Pick<CheckboxProps, 'disabled'>>(
   checkboxLabelStates
 );
 
-const CheckboxElement = styled.div<
+const CheckboxElement = styled('div', styledOptions)<
   Pick<CheckboxProps, 'checked' | 'multiline' | 'disabled'>
->(system.color, checkboxElement, checkboxElementStates);
+>(checkboxElement, checkboxElementStates, system.color);
 
 const CheckboxVector = styled.svg`
   position: absolute;
@@ -95,7 +98,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
       if (checked === undefined) setCurrentlyChecked(!currentlyChecked);
     };
 
-    const changeHandler = (event: ChangeEvent<any>) => {
+    const changeHandler = (event: ChangeEvent<HTMLInputElement>) => {
       rest?.onChange?.(event);
     };
 
