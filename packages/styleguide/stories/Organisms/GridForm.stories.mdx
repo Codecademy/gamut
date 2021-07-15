@@ -535,7 +535,7 @@ Optionally, include a cancel button.
 Some forms, such as the checkout flows that use Recurly, need to define
 their own inputs. We can specify a 'custom' field type to with a [render prop](https://reactjs.org/docs/render-props.html).
 
-We also have a 'custom-group' type for when you are passing in a custom FormGroup. If you do not want GridForm to surface errors, you should likely use a 'custom-group'.
+We also have a 'custom-group' type for when you are passing in a custom FormGroup - including a label. If you do not want GridForm to surface errors for your field, you should likely use a 'custom-group'. If you chose to go this route, please note you may need to re-implement some of the accessibility features provided by GridForm.
 
 <Canvas>
   <Story name="Custom Inputs">
