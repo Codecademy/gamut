@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.17.0](https://github.com/Codecademy/client-modules/compare/@codecademy/variance@0.16.0...@codecademy/variance@0.17.0) (2021-07-15)
+
+
+### Features
+
+* Add admin theme ([c5f7bf9](https://github.com/Codecademy/client-modules/commit/c5f7bf9faaf86b2aca3f8dffd67480d50999be7b))
+
+
+
 ## [0.16.0](https://github.com/Codecademy/client-modules/compare/@codecademy/variance@0.15.0...@codecademy/variance@0.16.0) (2021-06-16)
 
 
