@@ -8,9 +8,7 @@ export type FormGroupDescriptionProps = React.HTMLAttributes<HTMLDivElement> & {
   className?: string;
 };
 
-const StyledDiv = styled.div<FormGroupDescriptionProps>`
-  ${system.css(formBaseStyles)}
-`;
+export const FormGroupDescription = styled.div(system.css(formBaseStyles));
 
 export const FormGroupDescription: React.FC<FormGroupDescriptionProps> = (
   props
