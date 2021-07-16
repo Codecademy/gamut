@@ -2,7 +2,6 @@ import {
   noSelect,
   screenReaderOnly,
   styledOptions,
-  system,
 } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
@@ -10,7 +9,6 @@ import React, {
   ChangeEvent,
   forwardRef,
   InputHTMLAttributes,
-  MouseEvent,
   ReactNode,
   useState,
 } from 'react';
@@ -86,6 +84,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
       checked,
       defaultChecked,
       disabled,
+      onChange,
       ...rest
     },
     ref
@@ -94,11 +93,9 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
       checked === undefined ? Boolean(defaultChecked) : checked
     );
 
-    // const clickHandler = (event: MouseEvent) => {};
-
     const changeHandler = (event: ChangeEvent<HTMLInputElement>) => {
-      rest?.onChange?.(event);
-      setCurrentlyChecked(!currentlyChecked);
+      onChange?.(event);
+      if (checked === undefined) setCurrentlyChecked(event.target.checked);
     };
 
     return (
@@ -109,7 +106,6 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
           checked={currentlyChecked}
           disabled={disabled}
           onChange={changeHandler}
-          // onClick={clickHandler}
           {...rest}
           ref={ref}
         />
