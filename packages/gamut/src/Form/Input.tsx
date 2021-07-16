@@ -85,7 +85,7 @@ const inputStates = {
     icon: AlertIcon,
   },
   valid: {
-    color: 'success',
+    color: 'feedback-success',
     icon: CheckCircledIcon,
   },
   clean: {
@@ -127,7 +127,7 @@ export const Input = forwardRef<HTMLInputElement, InputWrapperProps>(
       <Box
         display={rest.type === 'hidden' ? 'none' : undefined}
         position="relative"
-        textColor={color}
+        color={color}
       >
         <AsComponent
           {...rest}
