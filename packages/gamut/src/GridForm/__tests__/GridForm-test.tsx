@@ -48,11 +48,7 @@ describe('GridForm', () => {
         // https://github.com/react-hook-form/react-hook-form/issues/1382
         const node = wrapped.find(selector).getDOMNode();
         (node as any)[key] = value;
-        if (key !== 'checked') {
-          node.dispatchEvent(new Event('input'));
-        } else {
-          node.dispatchEvent(new Event('click'));
-        }
+        node.dispatchEvent(new Event('input'));
       }
     });
 
@@ -84,17 +80,15 @@ describe('GridForm', () => {
     ];
     const api = createPromise<{}>();
     const onSubmit = async (values: {}) => api.resolve(values);
-    await act(async () => {
-      render(
-        <ThemeProvider theme={theme}>
-          <GridForm
-            fields={fields}
-            onSubmit={onSubmit}
-            submit={{ type: 'fill', contents: <>Submit</>, size: 6 }}
-          />
-        </ThemeProvider>
-      );
-    });
+    render(
+      <ThemeProvider theme={theme}>
+        <GridForm
+          fields={fields}
+          onSubmit={onSubmit}
+          submit={{ type: 'fill', contents: <>Submit</>, size: 6 }}
+        />
+      </ThemeProvider>
+    );
 
     await act(async () => {
       fireEvent.click(screen.getByRole('button'));
