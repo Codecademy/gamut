@@ -2,6 +2,7 @@
 import {
   Anchor,
   Box,
+  Checkbox,
   CTAButton,
   FillButton,
   FlexBox,
@@ -122,6 +123,13 @@ const renderInputs = () => {
           defaultValue="Ouch"
           disabled
           icon={StreakIcon}
+        />
+      </FormGroup>
+      <FormGroup label="a humble checkbox">
+        <Checkbox
+          htmlFor="example-checkbox"
+          label="ain't i neat?"
+          name="example-checkbox"
         />
       </FormGroup>
     </GridBox>
