@@ -91,7 +91,7 @@ class ThemeBuilder<T extends AbstractTheme> {
     }
   >(
     initialMode: InitialMode,
-    modes: Config
+    modeConfig: Config
   ): ThemeBuilder<
     MergeTheme<
       T & PrivateThemeKeys,
@@ -107,34 +107,25 @@ class ThemeBuilder<T extends AbstractTheme> {
       }
     >
   > {
-    // This guarantees that the final merged color modes are used when setting the default variables
-    const merged = merge({}, this.#theme?.modes, modes) as Config;
+    const modes = mapValues(modeConfig, (mode) => flattenScale(mode));
 
-    const { tokens, variables } = serializeTokens(
-      mapValues(
-        flattenScale(merged[initialMode]),
-        (color) => this.#theme.colors[color]
-      ),
+    const { tokens: colors, variables } = serializeTokens(
+      mapValues(modes[initialMode], (color) => this.#theme.colors[color]),
       'color',
       this.#theme
     );
 
+    const getColorValue = (color: keyof T['colors']): string =>
+      this.#theme._tokens?.colors?.[color];
+
     this.#theme = merge({}, this.#theme, {
-      colors: tokens,
-      modes: mapValues(modes, (mode) => flattenScale(mode)),
+      colors,
+      modes,
       mode: initialMode,
-      _getColorValue: (color: keyof T['colors']) =>
-        this.#theme._tokens?.colors?.[color],
+      _getColorValue: getColorValue,
       _variables: { mode: variables },
       _tokens: {
-        modes: mapValues(modes, (mode) => {
-          const modeColors = flattenScale(mode);
-
-          return mapValues(
-            modeColors,
-            (color) => this.#theme._tokens.colors[color]
-          );
-        }),
+        modes: mapValues(modes, (mode) => mapValues(mode, getColorValue)),
       },
     });
 
