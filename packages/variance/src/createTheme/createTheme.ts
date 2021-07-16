@@ -110,7 +110,10 @@ class ThemeBuilder<T extends AbstractTheme> {
     const modes = mapValues(modeConfig, (mode) => flattenScale(mode));
 
     const { tokens: colors, variables } = serializeTokens(
-      mapValues(modes[initialMode], (color) => this.#theme.colors[color]),
+      mapValues(
+        merge({}, this.#theme.modes[initialMode], modes[initialMode]),
+        (color) => this.#theme.colors[color]
+      ),
       'color',
       this.#theme
     );
