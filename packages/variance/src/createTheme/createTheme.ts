@@ -111,7 +111,7 @@ class ThemeBuilder<T extends AbstractTheme> {
 
     const { tokens: colors, variables } = serializeTokens(
       mapValues(
-        merge({}, this.#theme.modes[initialMode], modes[initialMode]),
+        merge({}, this.#theme.modes?.[initialMode], modes[initialMode]),
         (color) => this.#theme.colors[color]
       ),
       'color',
