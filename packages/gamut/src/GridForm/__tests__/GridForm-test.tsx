@@ -47,8 +47,13 @@ describe('GridForm', () => {
       for (const [selector, key, value] of newValues) {
         // https://github.com/react-hook-form/react-hook-form/issues/1382
         const node = wrapped.find(selector).getDOMNode();
+        // this will be cleaned up very soon - https://codecademy.atlassian.net/browse/GM-289
         (node as any)[key] = value;
-        node.dispatchEvent(new Event('input'));
+        if (key !== 'checked') {
+          node.dispatchEvent(new Event('input'));
+        } else {
+          node.dispatchEvent(new Event('click'));
+        }
       }
     });
 
