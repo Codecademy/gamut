@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [41.15.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@41.14.5...@codecademy/styleguide@41.15.0) (2021-07-16)
+
+
+### Features
+
+* **Toast:**  Allow JSX icons GM-262 ([3a14a2d](https://github.com/Codecademy/client-modules/commit/3a14a2d6592c6bf98e356483ea9bd87878f6a377))
+
+
+
 ### [41.14.5](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@41.14.4...@codecademy/styleguide@41.14.5) (2021-07-16)
 
 **Note:** Version bump only for package @codecademy/styleguide
