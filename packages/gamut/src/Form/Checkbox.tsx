@@ -2,6 +2,7 @@ import {
   noSelect,
   screenReaderOnly,
   styledOptions,
+  timing,
 } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
@@ -13,7 +14,6 @@ import React, {
   useState,
 } from 'react';
 
-import { variables } from './_variables';
 import {
   checkboxElement,
   checkboxElementStates,
@@ -63,7 +63,7 @@ const Polyline = styled.polyline<Pick<CheckboxProps, 'checked'>>`
   stroke-dasharray: 18px;
   stroke-dashoffset: 18px;
   stroke-dashoffset: ${({ checked }) => (checked ? 0 : `18px`)};
-  transition: stroke-dashoffset ${variables.transitionTime};
+  transition: stroke-dashoffset ${timing.fast};
 `;
 
 const Input = styled.input`
