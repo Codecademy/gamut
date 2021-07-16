@@ -16,26 +16,21 @@ import { useState } from '@storybook/addons';
   title={title}
   component={GridForm}
   parameters={{
-    subtitle: `This organism takes in plain JSON-like props and uses them to string
-together a validated form`,
+    subtitle: `GridForm is the most efficient way to build and design forms at Codecademy.`,
     source: 'gamut',
     status: 'updating',
+    figmaId: 'ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=1689%3A3910',
   }}
 />
 
-This is composed of:
+The GridForm organism provides an easy, out-of-the-box way to implement forms from a list of fields. When provided a list of fields, GridForm strings together the appropriate [Form Elements](/?path=/docs/atoms-formelements-about--page) inside a [LayoutGrid](/?path=/docs/layouts-layoutgrid--layout-grid).
 
-- [react-hook-form](https://react-hook-form.com)
-- [Our existing `Grid` layout system](/?path=/story/layout-grid-system--fixed-grid-default)
-- [Our existing `Form` primitives](/?path=/story/component-form--form)
+GridForm provides the following benefits:
 
-You should only ever directly use `GridForm` to create your form.
-`Form` atoms compose the structure of these forms but should not be used
-directly.
-
-`GridForm`s are laid out with `LayoutGrid`, so you can override its
-`columnGap` and `rowGap` with the normal string or
-responsive layouts.
+1. **Simplicity**: This organism takes in plain JSON-like props and uses them to string together a validated form
+2. **Accessibility**: All GridForms handle accessibility styling and behaviors, passing tests out-of-the-box
+3. **Functionality**: Validation and submission logic is handled by the [react-hook-form](https://react-hook-form.com) library
+4. **Visual Consistency**: Aligns all input elements with the correct vertical rhythms and grid spacing
 
 <Canvas>
   <Story name="GridForm" args={{ validation: 'onSubmit' }}>
@@ -158,6 +153,39 @@ responsive layouts.
   </Story>
 </Canvas>
 
+## Designing with GridForm
+
+All [Form Input](https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=1189%3A0) components in the Figma library are consistent with their implementations in code. By setting the form inputs within the component's layout grid, we can design forms that are compatible with Gamut.
+
+The [GridForm page in Gamut](https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=1689%3A3910) also contains several starter templates for incorporating this organism in your designs.
+
+- **Starter**: Contains sample components to begin creating your own form
+- **Sections**: Contains the headers and dividers that are rendered in the optional [Sections](?id=organisms-gridform--submit-button-options&viewMode=docs#sections) modules
+- **Inline Submit**: A form incorporating the [Inline Submit](?id=organisms-gridform--submit-button-options&viewMode=docs#inline-submit-button) Button style of GridForm
+- **Instructions**: Contains suggestions for modifying the Figma component for your own designs
+
+### Figma Component Instructions
+
+- Enable Layout Grid (^G)
+- Select a `❖ GridForm` variant as a template
+  - Starter, Sections, Inline Submit
+- Detatch the component to modify the `📐 LayoutGrid`
+- Add, remove, and edit `⬦ Form Inputs`
+  - Input Field, TextArea, Checkbox, Radio Button, Select
+- Customize `🚥 GridFormButtons`
+  - Submit button style (Fill/CTA), position, cancel button
+
+## Modifying Props and Elements
+
+`GridForms` are laid out with `LayoutGrid`, so you can override its `columnGap` and `rowGap` with the normal string or responsive layouts to style and align the GridForm to your designs. You can also configure the `GridFormButtons` to modify the submit buttons and optional cancel buttons.
+
+While `Form` atoms compose the structure of these forms, we strongly recommend only creating forms with using `GridForm`. You should only use the form element atoms as individual elements if your interface doesn’t need to support the technical functions of a form.
+
+**You should build something outside of GridForm if you need...**
+
+- **Multi-step forms**: GridForm is best used for single page operations with a discrete submit action
+- **Custom behaviors for messaging or validation states**: form validation is already built into each input element, so any custom messaging is best done outside the component
+
 <PropsTable of={GridForm} />
 
 ## Disabled Inputs
@@ -197,7 +225,7 @@ If an input is not meant to be usable, such as when a portion of a form is disab
 
 ## GridForm-atting
 
-We can use the `size` and `rowspan` props (borrowed from [LayoutGrid](https://react-hook-form.com)) to customize the layouts of our GridForms.
+We can use the `size` and `rowspan` props (borrowed from [LayoutGrid](/?path=/docs/layouts-layoutgrid--layout-grid)) to customize the layouts of our GridForms.
 
 <Canvas>
   <Story name="Rowspan Formatting">
