@@ -20,7 +20,7 @@ export type MergeTheme<
 export type Merge<A, B> = {
   [K in keyof (A & B)]: K extends keyof B
     ? K extends keyof A
-      ? AssignValue<A[K], B[K]>
+      ? AssignValueIfUnmergable<A[K], B[K]>
       : B[K]
     : K extends keyof A
     ? A[K]
@@ -30,11 +30,11 @@ export type Merge<A, B> = {
 /** Extract mergable objects */
 export type Mergable<T> = Exclude<
   T,
-  (...args: any) => any | string | boolean | symbol | number | any[]
+  ((...args: any) => any) | string | boolean | symbol | number | any[]
 >;
 
 /** Return B if either A or B is unmergable */
-export type AssignValue<A, B> = Mergable<A> extends never
+export type AssignValueIfUnmergable<A, B> = Mergable<A> extends never
   ? B
   : Mergable<B> extends never
   ? B
