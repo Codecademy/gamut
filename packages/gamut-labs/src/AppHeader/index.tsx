@@ -17,12 +17,15 @@ import {
   AppHeaderClickHandler,
   AppHeaderItem,
 } from './AppHeaderElements/types';
+import { AppHeaderNotifications } from './Notifications/types';
+import { useHeaderNotifications } from './Notifications/useHeaderNotifications';
 import { AppHeaderSearch, useHeaderSearch } from './Search/useHeaderSearch';
 import { FormattedAppHeaderItems } from './types';
 
 export type AppHeaderProps = {
   action: AppHeaderClickHandler;
   items: FormattedAppHeaderItems;
+  notifications?: AppHeaderNotifications;
   redirectParam?: string;
   search: AppHeaderSearch;
 };
@@ -85,6 +88,7 @@ export const mapItemToElement = (
 export const AppHeader: React.FC<AppHeaderProps> = ({
   action,
   items,
+  notifications,
   redirectParam,
   search,
 }) => {
@@ -100,7 +104,16 @@ export const AppHeader: React.FC<AppHeaderProps> = ({
     ));
   };
 
+  const [notificationsBell, notificationsPane] = useHeaderNotifications(
+    notifications
+  );
   const [searchButton, searchPane] = useHeaderSearch(search);
+
+  const right = [
+    searchButton,
+    ...(notificationsBell ? [notificationsBell] : []),
+    ...items.right,
+  ];
 
   return (
     <>
@@ -109,9 +122,10 @@ export const AppHeader: React.FC<AppHeaderProps> = ({
           {mapItemsToElement(items.left)}
         </AppBarSection>
         <AppBarSection position="right">
-          {mapItemsToElement([searchButton, ...items.right])}
+          {mapItemsToElement(right)}
         </AppBarSection>
       </StyledAppBar>
+      {notificationsPane}
       {searchPane}
     </>
   );

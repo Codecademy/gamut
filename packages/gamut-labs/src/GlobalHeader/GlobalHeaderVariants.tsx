@@ -1,5 +1,3 @@
-import { ReactNode } from 'react';
-
 import { AppHeaderItem } from '../AppHeader/AppHeaderElements/types';
 import {
   FormattedAppHeaderItems,
@@ -13,7 +11,6 @@ import {
   login,
   logo,
   myHome,
-  notifications,
   pricingDropdown,
   proLogo,
   proProfile,
@@ -107,10 +104,7 @@ export const anonSignupMobileHeaderItems = (): FormattedMobileAppHeaderItems => 
   return anonMobileHeaderItems(true, false);
 };
 
-export const freeHeaderItems = (
-  user: User,
-  renderNotifications?: () => ReactNode
-): FormattedAppHeaderItems => {
+export const freeHeaderItems = (user: User): FormattedAppHeaderItems => {
   const leftItems: AppHeaderItem[] = [
     logo,
     myHome,
@@ -122,7 +116,6 @@ export const freeHeaderItems = (
   ];
 
   const rightItems: AppHeaderItem[] = [];
-  renderNotifications && rightItems.push(notifications(renderNotifications));
   rightItems.push(freeProfile(user));
   rightItems.push(
     user.showProUpgrade
@@ -137,13 +130,9 @@ export const freeHeaderItems = (
 };
 
 export const freeMobileHeaderItems = (
-  user: User,
-  renderNotifications?: () => ReactNode
+  user: User
 ): FormattedMobileAppHeaderItems => {
   const leftItems: AppHeaderItem[] = [logo];
-
-  const rightItems: AppHeaderItem[] = [];
-  renderNotifications && rightItems.push(notifications(renderNotifications));
 
   const mainMenuItems: AppHeaderItem[] = [
     myHome,
@@ -153,25 +142,19 @@ export const freeMobileHeaderItems = (
     pricingDropdown,
     forBusiness,
     freeProfile(user, true),
-  ];
-
-  mainMenuItems.push(
     user.showProUpgrade
       ? upgradeToPro(user.proCheckoutUrl)
-      : tryProForFree(user.proCheckoutUrl)
-  );
+      : tryProForFree(user.proCheckoutUrl),
+  ];
 
   return {
     left: leftItems,
-    right: rightItems,
+    right: [],
     mainMenu: mainMenuItems,
   };
 };
 
-export const proHeaderItems = (
-  user: User,
-  renderNotifications?: () => ReactNode
-): FormattedAppHeaderItems => {
+export const proHeaderItems = (user: User): FormattedAppHeaderItems => {
   const leftItems: AppHeaderItem[] = [
     proLogo,
     myHome,
@@ -180,9 +163,7 @@ export const proHeaderItems = (
     communityDropdown,
   ];
 
-  const rightItems: AppHeaderItem[] = [];
-  renderNotifications && rightItems.push(notifications(renderNotifications));
-  rightItems.push(proProfile(user));
+  const rightItems: AppHeaderItem[] = [proProfile(user)];
   user.isPaused && rightItems.push(unpausePro);
 
   return {
@@ -192,14 +173,10 @@ export const proHeaderItems = (
 };
 
 export const proMobileHeaderItems = (
-  user: User,
-  renderNotifications?: () => ReactNode
+  user: User
 ): FormattedMobileAppHeaderItems => {
   const leftItems: AppHeaderItem[] = [proLogo];
-
   const rightItems: AppHeaderItem[] = [];
-  renderNotifications && rightItems.push(notifications(renderNotifications));
-
   const mainMenuItems: AppHeaderItem[] = [
     myHome,
     courseCatalog,

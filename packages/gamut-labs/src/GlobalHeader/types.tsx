@@ -4,12 +4,9 @@ import {
   AppHeaderClickHandler,
   AppHeaderItemWithHref,
 } from '../AppHeader/AppHeaderElements/types';
+import { AppHeaderNotifications } from '../AppHeader/Notifications/types';
 import { AppHeaderSearch } from '../AppHeader/Search/useHeaderSearch';
 
-type RenderNotifications = {
-  desktop: () => ReactNode;
-  mobile: () => ReactNode;
-};
 type RenderProfile = { desktop: () => ReactNode; mobile: () => ReactNode };
 
 type BaseHeader = {
@@ -18,6 +15,7 @@ type BaseHeader = {
   /** A method to be called only on click/activating a *link* header item */
   onLinkAction?: AppHeaderClickHandler<AppHeaderItemWithHref>;
   className?: string;
+  notifications?: AppHeaderNotifications;
   search: AppHeaderSearch;
 };
 
@@ -34,7 +32,6 @@ export type User = {
 };
 
 type LoggedInHeader = BaseHeader & {
-  renderNotifications?: RenderNotifications;
   renderProfile?: RenderProfile;
   user: User;
 };

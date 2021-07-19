@@ -1,5 +1,3 @@
-import { IconButton } from '@codecademy/gamut';
-import { BellIcon } from '@codecademy/gamut-icons';
 import { theme } from '@codecademy/gamut-styles';
 import { ThemeProvider } from '@emotion/react';
 import { render, screen } from '@testing-library/react';
@@ -30,8 +28,14 @@ const user: User = {
   showReferrals: true,
 };
 
-const defaultProps = {
+const defaultProps: Omit<GlobalHeaderProps, 'type'> = {
   action,
+  notifications: {
+    baseUrl: '',
+    initial: [],
+    onEnable: jest.fn(),
+    onTrackingClick: jest.fn(),
+  },
   search: {
     onEnable: jest.fn(),
     onSearch: jest.fn(),
@@ -108,10 +112,6 @@ const loadingHeaderProps: GlobalHeaderProps = {
 
 const renderElementProps: GlobalHeaderProps = {
   ...defaultProps,
-  renderNotifications: {
-    desktop: () => <IconButton icon={BellIcon} />,
-    mobile: () => <IconButton icon={BellIcon} />,
-  },
   type: 'pro',
   user,
 };
@@ -334,7 +334,7 @@ describe('GlobalHeader', () => {
     });
   });
 
-  describe('renders a custom element when provided one', () => {
+  describe('renders custom elements', () => {
     beforeEach(() => {
       renderGlobalHeader(renderElementProps);
     });
@@ -344,7 +344,7 @@ describe('GlobalHeader', () => {
     });
 
     test('notifications', () => {
-      screen.getAllByTitle('Bell Icon');
+      screen.getByTitle('Bell Icon');
     });
   });
 

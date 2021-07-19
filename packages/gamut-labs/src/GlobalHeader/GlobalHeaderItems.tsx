@@ -11,14 +11,12 @@ import {
   RatingStarGiveIcon,
   SupportIcon,
 } from '@codecademy/gamut-icons';
-import { ReactNode } from 'react';
 
 import {
   AppHeaderFillButtonItem,
   AppHeaderLinkItem,
   AppHeaderLogoItem,
   AppHeaderProfileDropdownItem,
-  AppHeaderRenderElementItem,
   AppHeaderSimpleDropdownItem,
   AppHeaderTextButtonItem,
 } from '../AppHeader/AppHeaderElements/types';
@@ -173,16 +171,6 @@ export const forBusiness: AppHeaderLinkItem = {
   text: 'For Business',
   href: '/business',
   type: 'link',
-};
-
-export const notifications = (
-  renderNotifications: () => ReactNode
-): AppHeaderRenderElementItem => {
-  return {
-    id: 'notifications',
-    renderElement: renderNotifications,
-    type: 'render-element',
-  };
 };
 
 const profileMyProfile: AppHeaderLinkItem = {

@@ -53,9 +53,9 @@ const getAppHeaderItems = (
           return anonDefaultHeaderItems();
       }
     case 'free':
-      return freeHeaderItems(props.user, props.renderNotifications?.desktop);
+      return freeHeaderItems(props.user);
     case 'pro':
-      return proHeaderItems(props.user, props.renderNotifications?.desktop);
+      return proHeaderItems(props.user);
     case 'loading':
       return loadingHeaderItems;
   }
@@ -77,15 +77,9 @@ const getMobileAppHeaderItems = (
           return anonDefaultMobileHeaderItems();
       }
     case 'free':
-      return freeMobileHeaderItems(
-        props.user,
-        props.renderNotifications?.mobile
-      );
+      return freeMobileHeaderItems(props.user);
     case 'pro':
-      return proMobileHeaderItems(
-        props.user,
-        props.renderNotifications?.mobile
-      );
+      return proMobileHeaderItems(props.user);
     case 'loading':
       return loadingMobileHeaderItems;
   }
@@ -131,6 +125,7 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
         <AppHeader
           action={combinedAction}
           items={getAppHeaderItems(props)}
+          notifications={props.notifications}
           search={props.search}
           redirectParam={
             props.type === 'anon' ? props.redirectParam : undefined
