@@ -60,11 +60,12 @@ describe('useNotificationButtons', () => {
       useNotificationButtons({ ...defaultProps, notifications })
     );
 
-    const renderView = () =>
-      render(<MockGamutProvider>{hook.result.current[1]}</MockGamutProvider>);
+    const view = render(
+      <MockGamutProvider>{hook.result.current[1]}</MockGamutProvider>
+    );
 
     act(() => {
-      userEvent.click(renderView().getByText(/Show.*More/));
+      userEvent.click(view.getByText(/Show.*More/));
     });
 
     expect(hook.result.current[2]).toEqual(notifications);

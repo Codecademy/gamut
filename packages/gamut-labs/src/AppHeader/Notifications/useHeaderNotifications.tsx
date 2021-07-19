@@ -20,7 +20,7 @@ export const useHeaderNotifications = (
   }
 
   const togglePane = () => {
-    if (isPaneVisible) {
+    if (!isPaneVisible) {
       settings.onEnable();
     }
 
