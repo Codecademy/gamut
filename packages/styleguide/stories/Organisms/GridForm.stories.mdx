@@ -153,6 +153,19 @@ GridForm provides the following benefits:
   </Story>
 </Canvas>
 
+<PropsTable of={GridForm} />
+
+## Modifying Elements
+
+`GridForms` are laid out with `LayoutGrid`, so you can override its `columnGap` and `rowGap` with the normal string or responsive layouts to style and align the GridForm to your designs. You can also configure the `GridFormButtons` to modify the submit buttons and optional cancel buttons.
+
+While `Form` atoms compose the structure of these forms, we strongly recommend only creating forms with using `GridForm`. You should only use the form element atoms as individual elements if your interface doesn’t need to support the technical functions of a form.
+
+**You should build something outside of GridForm if you need...**
+
+- **Multi-step forms**: GridForm is best used for single page operations with a discrete submit action
+- **Custom behaviors for messaging or validation states**: form validation is already built into each input element, so any custom messaging is best done outside the component
+
 ## Designing with GridForm
 
 All [Form Input](https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=1189%3A0) components in the Figma library are consistent with their implementations in code. By setting the form inputs within the component's layout grid, we can design forms that are compatible with Gamut.
@@ -174,19 +187,6 @@ The [GridForm page in Gamut](https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%
   - Input Field, TextArea, Checkbox, Radio Button, Select
 - Customize `🚥 GridFormButtons`
   - Submit button style (Fill/CTA), position, cancel button
-
-## Modifying Props and Elements
-
-`GridForms` are laid out with `LayoutGrid`, so you can override its `columnGap` and `rowGap` with the normal string or responsive layouts to style and align the GridForm to your designs. You can also configure the `GridFormButtons` to modify the submit buttons and optional cancel buttons.
-
-While `Form` atoms compose the structure of these forms, we strongly recommend only creating forms with using `GridForm`. You should only use the form element atoms as individual elements if your interface doesn’t need to support the technical functions of a form.
-
-**You should build something outside of GridForm if you need...**
-
-- **Multi-step forms**: GridForm is best used for single page operations with a discrete submit action
-- **Custom behaviors for messaging or validation states**: form validation is already built into each input element, so any custom messaging is best done outside the component
-
-<PropsTable of={GridForm} />
 
 ## Disabled Inputs
 
