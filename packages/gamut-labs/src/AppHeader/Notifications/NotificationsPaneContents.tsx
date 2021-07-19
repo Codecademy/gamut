@@ -16,11 +16,15 @@ export const NotificationsPaneContents: React.FC<NotificationsPaneContentsProps>
   props
 ) => {
   const { notifications, onTrackingClick, setNotifications } = props;
-  const [clearButton, showButton] = useNotificationButtons(props);
+  const [
+    clearButton,
+    showButton,
+    visibleNotifications,
+  ] = useNotificationButtons(props);
 
   const onDismiss = (notification: Notification) => {
-    setNotifications((oldNotifications) =>
-      oldNotifications.filter(
+    setNotifications(
+      notifications.filter(
         (oldNotification) => oldNotification.id !== notification.id
       )
     );
@@ -33,8 +37,8 @@ export const NotificationsPaneContents: React.FC<NotificationsPaneContentsProps>
       return;
     }
 
-    setNotifications((oldNotifications) =>
-      oldNotifications.map((oldNotification) =>
+    setNotifications(
+      notifications.map((oldNotification) =>
         oldNotification.id === notification.id
           ? { ...oldNotification, unread: false }
           : oldNotification
@@ -69,7 +73,7 @@ export const NotificationsPaneContents: React.FC<NotificationsPaneContentsProps>
       <Box maxHeight="520px" overflow="auto">
         <Box pb={16}>
           <NotificationList
-            notifications={notifications}
+            notifications={visibleNotifications}
             onDismiss={onDismiss}
             onNotificationClick={onNotificationClick}
           />

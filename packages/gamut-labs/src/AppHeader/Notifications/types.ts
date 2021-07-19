@@ -1,5 +1,5 @@
 import { Notification } from '@codecademy/gamut';
-import { Dispatch, SetStateAction } from 'react';
+import { Dispatch } from 'react';
 
 export type AppHeaderNotifications = {
   baseUrl: string;
@@ -23,5 +23,5 @@ export type NotificationsPaneContentsProps = {
   baseUrl: string;
   notifications: Notification[];
   onTrackingClick: OnNotificationClick;
-  setNotifications: Dispatch<SetStateAction<Notification[]>>;
+  setNotifications: Dispatch<Notification[]>;
 };
