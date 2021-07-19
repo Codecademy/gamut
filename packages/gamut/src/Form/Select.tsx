@@ -115,9 +115,9 @@ export const Select = forwardRef<HTMLSelectElement, SelectWrapperProps>(
           aria-hidden
         >
           {sizeVariant === 'small' ? (
-            <MiniChevronDownIcon size={12} color="currentColor" />
+            <MiniChevronDownIcon size={12} />
           ) : (
-            <ArrowChevronDownIcon size={16} color="currentColor" />
+            <ArrowChevronDownIcon size={16} />
           )}
         </StyledFlexbox>
         <SelectBase
