@@ -17,7 +17,7 @@ export const useNotificationButtons = ({
     : [defaultDisplayLimit, 'More'];
 
   if (notifications.length < displayLimit) {
-    return [null, null, notifications];
+    return [null, null, notifications] as const;
   }
 
   const handleShowMoreOrLess = () => {
@@ -30,6 +30,7 @@ export const useNotificationButtons = ({
 
   const clearAll = () => {
     // TODO NOTIFICATIONS: API call
+    // eslint-disable-next-line @typescript-eslint/no-floating-promises
     fetch(`${baseUrl}/notifications?target=web`, {
       method: 'DELETE',
     });
