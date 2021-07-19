@@ -28,13 +28,15 @@ export type Merge<Base, Next> = {
     : never;
 };
 
-export type Assign<A, B> = {
-  [K in keyof A | keyof B]: K extends keyof B
-    ? B[K]
-    : K extends keyof A
-    ? A[K]
-    : never;
-};
+export type Assign<A, B> = B extends (...args: any) => any
+  ? B
+  : {
+      [K in keyof A | keyof B]: K extends keyof B
+        ? B[K]
+        : K extends keyof A
+        ? A[K]
+        : never;
+    };
 
 /** These are keys that are consistent for all theme builds - they are loosely typed as they are not meant to be accessed directly */
 export type PrivateThemeKeys = {
