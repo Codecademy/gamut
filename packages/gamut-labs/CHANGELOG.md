@@ -3,6 +3,47 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [19.16.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.16.3...@codecademy/gamut-labs@19.16.4) (2021-07-16)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [19.16.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.16.2...@codecademy/gamut-labs@19.16.3) (2021-07-16)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [19.16.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.16.1...@codecademy/gamut-labs@19.16.2) (2021-07-15)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [19.16.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.16.0...@codecademy/gamut-labs@19.16.1) (2021-07-15)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+## [19.16.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.15.4...@codecademy/gamut-labs@19.16.0) (2021-07-12)
+
+
+### Features
+
+* **Tabs:** Adding a gamut-labs Tabs component ([654faf3](https://github.com/Codecademy/client-modules/commit/654faf38b72ddfbe0a6bd1b638e0c19806546440))
+
+
+
 ### [19.15.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.15.3...@codecademy/gamut-labs@19.15.4) (2021-07-12)
 
 **Note:** Version bump only for package @codecademy/gamut-labs

@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [11.6.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@11.6.0...@codecademy/gamut-styles@11.6.1) (2021-07-16)
+
+
+### Bug Fixes
+
+* Theme extension merge logic ([9b32463](https://github.com/Codecademy/client-modules/commit/9b32463d044ead994b2c173bc07c5ebbd5511187))
+
+
+
+## [11.6.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@11.5.1...@codecademy/gamut-styles@11.6.0) (2021-07-15)
+
+
+### Features
+
+* Add admin theme ([c5f7bf9](https://github.com/Codecademy/client-modules/commit/c5f7bf9faaf86b2aca3f8dffd67480d50999be7b))
+
+
+
 ### [11.5.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@11.5.0...@codecademy/gamut-styles@11.5.1) (2021-06-17)
 
 

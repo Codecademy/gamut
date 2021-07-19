@@ -3,6 +3,47 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [34.15.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@34.14.4...@codecademy/gamut@34.15.0) (2021-07-16)
+
+
+### Features
+
+* **Toast:**  Allow JSX icons GM-262 ([3a14a2d](https://github.com/Codecademy/client-modules/commit/3a14a2d6592c6bf98e356483ea9bd87878f6a377))
+
+
+
+### [34.14.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@34.14.3...@codecademy/gamut@34.14.4) (2021-07-16)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [34.14.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@34.14.2...@codecademy/gamut@34.14.3) (2021-07-15)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [34.14.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@34.14.1...@codecademy/gamut@34.14.2) (2021-07-15)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [34.14.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@34.14.0...@codecademy/gamut@34.14.1) (2021-07-12)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
 ## [34.14.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@34.13.2...@codecademy/gamut@34.14.0) (2021-07-12)
 
 
