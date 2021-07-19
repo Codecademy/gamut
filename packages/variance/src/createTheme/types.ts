@@ -18,25 +18,34 @@ export type MergeTheme<
 
 /** This merges at 2 levels of depth */
 
-export type Merge<Base, Next> = {
-  [K in keyof (Base & Next)]: K extends keyof Next
-    ? K extends keyof Base
-      ? Assign<Base[K], Next[K]>
-      : Next[K]
-    : K extends keyof Base
-    ? Base[K]
+export type Merge<A, B> = {
+  [K in keyof (A & B)]: K extends keyof B
+    ? K extends keyof A
+      ? AssignValue<A[K], B[K]>
+      : B[K]
+    : K extends keyof A
+    ? A[K]
     : never;
 };
 
-export type Assign<A, B> = B extends (...args: any) => any
+export type Mergable<T> = Exclude<
+  T,
+  (...args: any) => any | string | boolean | symbol | number
+>;
+
+export type AssignValue<A, B> = Mergable<A> extends never
   ? B
-  : {
-      [K in keyof A | keyof B]: K extends keyof B
-        ? B[K]
-        : K extends keyof A
-        ? A[K]
-        : never;
-    };
+  : Mergable<B> extends never
+  ? B
+  : Assign<A, B>;
+
+export type Assign<A, B> = {
+  [K in keyof A | keyof B]: K extends keyof B
+    ? B[K]
+    : K extends keyof A
+    ? A[K]
+    : never;
+};
 
 /** These are keys that are consistent for all theme builds - they are loosely typed as they are not meant to be accessed directly */
 export type PrivateThemeKeys = {
