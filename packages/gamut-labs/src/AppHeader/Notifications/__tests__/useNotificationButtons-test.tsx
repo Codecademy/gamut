@@ -1,4 +1,4 @@
-import { GamutProvider, theme } from '@codecademy/gamut-styles';
+import { MockGamutProvider } from '@codecademy/gamut-tests';
 import { render } from '@testing-library/react';
 import { act, renderHook } from '@testing-library/react-hooks';
 import userEvent from '@testing-library/user-event';
@@ -40,9 +40,7 @@ describe('useNotificationButtons', () => {
     );
 
     const view = render(
-      <GamutProvider useGlobals={false} useCache={false} theme={theme}>
-        {hook.result.current[0]}
-      </GamutProvider>
+      <MockGamutProvider>{hook.result.current[0]}</MockGamutProvider>
     );
 
     userEvent.click(view.getByLabelText('Clear all 4 notifications'));
@@ -63,11 +61,7 @@ describe('useNotificationButtons', () => {
     );
 
     const renderView = () =>
-      render(
-        <GamutProvider useGlobals={false} useCache={false} theme={theme}>
-          {hook.result.current[1]}
-        </GamutProvider>
-      );
+      render(<MockGamutProvider>{hook.result.current[1]}</MockGamutProvider>);
 
     act(() => {
       userEvent.click(renderView().getByText(/Show.*More/));
@@ -86,11 +80,7 @@ describe('useNotificationButtons', () => {
     );
 
     const renderView = () =>
-      render(
-        <GamutProvider useGlobals={false} useCache={false} theme={theme}>
-          {hook.result.current[1]}
-        </GamutProvider>
-      );
+      render(<MockGamutProvider>{hook.result.current[1]}</MockGamutProvider>);
 
     act(() => {
       userEvent.click(renderView().getByText(/Show.*More/));
