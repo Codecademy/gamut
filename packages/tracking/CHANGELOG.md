@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [0.12.1](https://github.com/Codecademy/client-modules/compare/@codecademy/tracking@0.12.0...@codecademy/tracking@0.12.1) (2021-07-13)
+
+
+### Bug Fixes
+
+* business reporting event types ([b480487](https://github.com/Codecademy/client-modules/commit/b480487125ec85aa8466b0225730a2772c88452a))
+
+
+
 ## [0.12.0](https://github.com/Codecademy/client-modules/compare/@codecademy/tracking@0.11.1...@codecademy/tracking@0.12.0) (2021-07-13)
 
 
