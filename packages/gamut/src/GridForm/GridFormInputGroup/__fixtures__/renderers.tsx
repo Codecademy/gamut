@@ -2,6 +2,7 @@ import { theme } from '@codecademy/gamut-styles';
 import { ThemeProvider } from '@emotion/react';
 import { mount } from 'enzyme';
 import React from 'react';
+import { FormProvider, useForm } from 'react-hook-form';
 
 import {
   stubCheckboxField,
@@ -19,6 +20,7 @@ import {
   GridFormTextAreaField,
   GridFormTextField,
 } from '../../types';
+import { GridFormInputGroup, GridFormInputGroupProps } from '..';
 import { GridFormCheckboxInput } from '../GridFormCheckboxInput';
 import { GridFormFileInput } from '../GridFormFileInput';
 import { GridFormRadioGroupInput } from '../GridFormRadioGroupInput';
@@ -120,4 +122,24 @@ export const getComponent = (componentName: string, extraProps: any) => {
     default:
       throw new Error(`Unknown component name: ${componentName}`);
   }
+};
+
+type GridFormInputGroupTestComponentProps = GridFormInputGroupProps & {
+  mode?: 'onSubmit' | 'onChange';
+};
+
+export const GridFormInputGroupTestComponent: React.FC<GridFormInputGroupTestComponentProps> = ({
+  field,
+  mode = 'onSubmit',
+  ...rest
+}) => {
+  const methods = useForm({
+    mode,
+  });
+
+  return (
+    <FormProvider {...methods}>
+      <GridFormInputGroup field={field} {...rest} />
+    </FormProvider>
+  );
 };
