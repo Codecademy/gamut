@@ -5,13 +5,16 @@ import userEvent from '@testing-library/user-event';
 import React from 'react';
 
 import { createStubNotification } from '../__fixtures__/stubs';
+import { markNotificationsRead } from '../notificationRequests';
 import { useHeaderNotifications } from '../useHeaderNotifications';
+
+jest.mock('../notificationRequests');
 
 const onEnable = jest.fn();
 const onTrackingClick = jest.fn();
 
 const defaultProps = {
-  baseUrl: '',
+  baseUrl: 'codecademy.com/test/',
   onEnable,
   onTrackingClick,
 };
@@ -56,6 +59,9 @@ describe('useHeaderNotifications', () => {
       <MockGamutProvider>{hook.result.current[1]}</MockGamutProvider>
     );
 
+    expect(markNotificationsRead).toHaveBeenCalledWith('codecademy.com/test/', [
+      initial[0].id,
+    ]);
     expect(paneView.container).not.toBeEmptyDOMElement();
   });
 });

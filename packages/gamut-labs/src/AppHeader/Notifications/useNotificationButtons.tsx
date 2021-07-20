@@ -1,6 +1,7 @@
 import { Box, TextButton } from '@codecademy/gamut';
 import React, { useState } from 'react';
 
+import { clearAllNotifications } from './notificationRequests';
 import { NotificationsPaneContentsProps } from './types';
 
 const defaultDisplayLimit = 3;
@@ -29,11 +30,9 @@ export const useNotificationButtons = ({
   };
 
   const clearAll = () => {
-    // At present we don't display any UI indicating failure...
+    // We don't have any visual indication of this request failing
     // eslint-disable-next-line @typescript-eslint/no-floating-promises
-    fetch(`${baseUrl}/notifications?target=web`, {
-      method: 'DELETE',
-    });
+    clearAllNotifications(baseUrl);
     setNotifications([]);
     onTrackingClick('notification_clear_all');
   };

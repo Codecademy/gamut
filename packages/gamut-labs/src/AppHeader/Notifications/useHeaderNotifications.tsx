@@ -4,6 +4,7 @@ import { ButtonBaseElements } from '../../../../gamut/dist';
 import { HookAsComponent } from '../../utils/HookAsComponent';
 import { AnimatedHeaderZone } from '../shared';
 import { NotificationBell } from './NotificationBell';
+import { markNotificationsRead } from './notificationRequests';
 import { NotificationsPane } from './NotificationsPane';
 import { AppHeaderNotifications } from './types';
 import { useNotificationsPoll } from './useNotificationsPoll';
@@ -22,6 +23,19 @@ export const useHeaderNotifications = (
   const togglePane = () => {
     if (!isPaneVisible) {
       settings.onEnable();
+      setNotifications(
+        notifications.map((notification) => ({
+          ...notification,
+          unread: false,
+        }))
+      );
+
+      // We don't have any visual indication of this request failing
+      // eslint-disable-next-line @typescript-eslint/no-floating-promises
+      markNotificationsRead(
+        settings.baseUrl,
+        notifications.map((notification) => notification.id)
+      );
     }
 
     setIsPaneVisible((oldIsPaneVisible) => !oldIsPaneVisible);

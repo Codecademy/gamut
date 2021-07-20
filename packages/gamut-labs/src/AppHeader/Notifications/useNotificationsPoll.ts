@@ -3,11 +3,9 @@ import { debounce, uniqBy } from 'lodash';
 import { Dispatch, useMemo } from 'react';
 import { useInterval } from 'react-use';
 
-const interval = 5000;
+import { fetchAllNotifications } from './notificationRequests';
 
-type NotificationsResponseBody = {
-  events: Notification[];
-};
+const interval = 5000;
 
 export const useNotificationsPoll = (
   baseUrl: string,
@@ -17,10 +15,9 @@ export const useNotificationsPoll = (
   const fetchNotifications = useMemo(
     () =>
       debounce(async () => {
-        const response = await fetch(`${baseUrl}/notifications?target=web`);
-        const {
-          events: newNotifications = [],
-        } = (await response.json()) as NotificationsResponseBody;
+        const newNotifications = await fetchAllNotifications(
+          `${baseUrl}/notifications?target=web`
+        );
 
         setNotifications(uniqBy([...newNotifications, ...notifications], 'id'));
       }, interval),
