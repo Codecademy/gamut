@@ -1,12 +1,10 @@
-import { theme } from '@codecademy/gamut-styles';
-import { ThemeProvider } from '@emotion/react';
-import { fireEvent, render, screen } from '@testing-library/react';
-import { mount } from 'enzyme';
+import { setupRtl } from '@codecademy/gamut-tests';
+import { fireEvent } from '@testing-library/dom';
+import { act } from '@testing-library/react';
 import React from 'react';
-import { act } from 'react-dom/test-utils';
 
 import { createPromise } from '../../utils/createPromise';
-import { GridForm } from '..';
+import { GridForm, GridFormProps } from '..';
 import {
   stubCheckboxField,
   stubFileField,
@@ -19,44 +17,63 @@ import {
   stubTextField,
 } from './stubs';
 
+const fields = [stubCheckboxField, stubSelectField, stubTextField];
+
+const renderView = setupRtl(GridForm, {
+  fields,
+  showRequired: false,
+  submit: { type: 'fill', contents: <>Submit</>, size: 6 },
+});
+
+type renderViewReturn = ReturnType<typeof renderView>;
+
+const asyncRenderView = async (
+  props: Partial<
+    GridFormProps<Record<string, string | boolean | FileList | undefined>>
+  >
+): Promise<renderViewReturn> => {
+  let renderResults: renderViewReturn;
+
+  await act(async () => {
+    renderResults = await renderView(props);
+  });
+
+  return renderResults!;
+};
+
 describe('GridForm', () => {
   it('submits the form when all inputs are filled out', async () => {
-    const fields = [stubCheckboxField, stubSelectField, stubTextField];
     const api = createPromise<{}>();
     const onSubmit = async (values: {}) => api.resolve(values);
     const selectValue = stubSelectOptions[1];
     const textValue = 'Hooray!';
 
-    const wrapped = mount(
-      <ThemeProvider theme={theme}>
-        <GridForm
-          fields={fields}
-          onSubmit={onSubmit}
-          submit={{ type: 'fill', contents: <>Submit</>, size: 6 }}
-        />
-      </ThemeProvider>
-    );
+    const { view } = renderView({ onSubmit });
+
+    const checkboxField = view.getByRole('checkbox', {
+      name: 'Stub Checkbox Check me!',
+    });
+    const selectField = view.getByRole('combobox', { name: 'Stub Select' });
+    const textField = view.getByRole('textbox', { name: 'Stub Text' });
 
     const newValues = [
-      // VERY temporary, adding this back in  https://codecademy.atlassian.net/browse/GM-289
-      // ['input[type="checkbox"]', 'checked', true],
-      ['select', 'value', selectValue],
-      ['input[type="text"]', 'value', textValue],
+      [selectField, selectValue],
+      [textField, textValue],
     ] as const;
 
-    await act(async () => {
-      for (const [selector, key, value] of newValues) {
-        // https://github.com/react-hook-form/react-hook-form/issues/1382
-        const node = wrapped.find(selector).getDOMNode();
-        // this will be cleaned up very soon - https://codecademy.atlassian.net/browse/GM-289
-        (node as any)[key] = value;
-        node.dispatchEvent(new Event('input'));
-      }
-    });
+    fireEvent.click(checkboxField);
+
+    for (const [selector, value] of newValues) {
+      fireEvent.input(selector, {
+        target: {
+          value,
+        },
+      });
+    }
 
     await act(async () => {
-      await wrapped.setProps(wrapped.props());
-      wrapped.find('form').simulate('submit');
+      fireEvent.submit(view.getByRole('button'));
+
       await api.innerPromise;
     });
 
@@ -69,9 +86,7 @@ describe('GridForm', () => {
     });
   });
 
-  // There is some blocking behavior in this test as the DOM does not rerender correctly
-  // Turning this off until a sustainable / transparent pattern can be established for React Hook form updates.
-  xit('only sets aria-live prop on the first validation error in a form', async () => {
+  it('only sets aria-live prop on the first validation error in a form', async () => {
     const fields = [
       { ...stubTextField, validation: { required: 'Please enter text' } },
       {
@@ -82,268 +97,195 @@ describe('GridForm', () => {
     ];
     const api = createPromise<{}>();
     const onSubmit = async (values: {}) => api.resolve(values);
-    render(
-      <ThemeProvider theme={theme}>
-        <GridForm
-          fields={fields}
-          onSubmit={onSubmit}
-          submit={{ type: 'fill', contents: <>Submit</>, size: 6 }}
-        />
-      </ThemeProvider>
-    );
+    const { view } = renderView({ fields, onSubmit });
 
     await act(async () => {
-      fireEvent.click(screen.getByRole('button'));
+      fireEvent.click(view.getByRole('button'));
     });
 
     // there should only be a single "assertive" error from the form submission
-    expect(await screen.queryAllByRole('alert').length).toBe(1);
-    expect(await screen.queryAllByRole('status').length).toBe(1);
+    expect(await view.queryAllByRole('alert').length).toBe(1);
+    expect(await view.queryAllByRole('status').length).toBe(1);
   });
 
   describe('when "onSubmit" validation is selected', () => {
-    xit('never disables the submit button', () => {
+    it('sets aria-required to true', () => {
       const fields = [
         { ...stubTextField, validation: { required: 'Please enter text' } },
       ];
       const api = createPromise<{}>();
       const onSubmit = async (values: {}) => api.resolve(values);
 
-      const wrapped = mount(
-        <ThemeProvider theme={theme}>
-          <GridForm
-            fields={fields}
-            onSubmit={onSubmit}
-            submit={{
-              type: 'fill',
-              contents: <>Submit</>,
-              size: 6,
-            }}
-            validation="onSubmit"
-          />
-        </ThemeProvider>
-      );
+      const { view } = renderView({ fields, onSubmit });
+      const textField = view.getByRole('textbox');
 
-      wrapped.setProps(wrapped.props());
-
-      expect(wrapped.find('button').prop('disabled')).not.toBeTruthy();
-      expect(wrapped.find('input').prop('aria-required')).toBeFalsy();
+      expect(textField).toHaveAttribute('aria-required');
     });
 
-    xit('sets aria-required to true ', () => {
+    it('never disables the submit button', () => {
       const fields = [
         { ...stubTextField, validation: { required: 'Please enter text' } },
       ];
       const api = createPromise<{}>();
       const onSubmit = async (values: {}) => api.resolve(values);
 
-      const wrapped = mount(
-        <ThemeProvider theme={theme}>
-          <GridForm
-            fields={fields}
-            onSubmit={onSubmit}
-            submit={{
-              type: 'fill',
-              contents: <>Submit</>,
-              size: 6,
-            }}
-            validation="onSubmit"
-            showRequired
-          />
-        </ThemeProvider>
-      );
+      const { view } = renderView({ fields, onSubmit });
+      const submitButton = view.getByRole('button');
 
-      expect(wrapped.find('button').prop('disabled')).not.toBeTruthy();
-      expect(wrapped.find('input').prop('aria-required')).toBeTruthy();
+      expect(submitButton).not.toBeDisabled();
     });
   });
 
   describe('when "onChange" validation is selected', () => {
-    xit('sets aria-required to true ', () => {
+    it('sets aria-required to true ', async () => {
       const fields = [
         { ...stubTextField, validation: { required: 'Please enter text' } },
       ];
-      const api = createPromise<{}>();
-      const onSubmit = async (values: {}) => api.resolve(values);
 
-      const wrapped = mount(
-        <ThemeProvider theme={theme}>
-          <GridForm
-            fields={fields}
-            onSubmit={onSubmit}
-            submit={{
-              type: 'fill',
-              contents: <>Submit</>,
-              size: 6,
-            }}
-            validation="onSubmit"
-            showRequired
-          />
-        </ThemeProvider>
-      );
-
-      wrapped.setProps(wrapped.props());
-
-      expect(wrapped.find('button').prop('disabled')).not.toBeTruthy();
-      expect(wrapped.find('input').prop('aria-required')).toBeTruthy();
-    });
-
-    xit('disables the submit button when required fields are incomplete', async () => {
-      const fields = [
-        { ...stubTextField, validation: { required: 'Please enter text' } },
-      ];
-      const api = createPromise<{}>();
-      const onSubmit = async (values: {}) => api.resolve(values);
-
-      const wrapped = mount(
-        <ThemeProvider theme={theme}>
-          <GridForm
-            fields={fields}
-            onSubmit={onSubmit}
-            submit={{
-              type: 'fill',
-              contents: <>Submit</>,
-              size: 6,
-            }}
-            validation="onChange"
-            showRequired
-          />
-        </ThemeProvider>
-      );
-
-      await act(async () => {
-        await wrapped.setProps(wrapped.props());
-      });
-      wrapped.update();
-
-      expect(wrapped.find('button').prop('disabled')).toBeTruthy();
-      expect(wrapped.find('input').prop('aria-required')).toBeTruthy();
-    });
-
-    xit('enables the submit button after the required fields are completed', async () => {
-      const fields = [
-        { ...stubTextField, validation: { required: 'Please enter text' } },
-      ];
-      const api = createPromise<{}>();
-      const onSubmit = async (values: {}) => api.resolve(values);
-
-      const wrapped = mount(
-        <ThemeProvider theme={theme}>
-          <GridForm
-            fields={fields}
-            onSubmit={onSubmit}
-            submit={{
-              type: 'fill',
-              contents: <>Submit</>,
-              size: 6,
-            }}
-            validation="onChange"
-            showRequired
-          />
-        </ThemeProvider>
-      );
-
-      await act(async () => {
-        // https://github.com/react-hook-form/react-hook-form/issues/1382
-        const node = wrapped.find('input[type="text"]').getDOMNode();
-        (node as HTMLInputElement).value = 'Hooray!';
-        node.dispatchEvent(new Event('input'));
+      const { view } = await asyncRenderView({
+        fields,
+        validation: 'onChange',
       });
 
-      wrapped.setProps(wrapped.props());
-
-      expect(wrapped.find('button').prop('disabled')).not.toBeTruthy();
-      expect(wrapped.find('input').prop('aria-required')).toBeTruthy();
+      const textField = view.getByRole('textbox');
+      expect(textField).toHaveAttribute('aria-required');
     });
 
-    xit('keeps the submit button disabled when overridden and there are no incomplete fields', async () => {
+    it('disables the submit button when required fields are incomplete', async () => {
+      const fields = [
+        { ...stubTextField, validation: { required: 'Please enter text' } },
+      ];
+
+      const { view } = renderView({
+        fields,
+        validation: 'onChange',
+      });
+
+      const textField = view.getByRole('textbox', { name: 'Stub Text' });
+
+      await act(async () => {
+        fireEvent.input(textField, {
+          target: {
+            value: '',
+          },
+        });
+      });
+
+      const submitButton = view.getByRole('button');
+      expect(submitButton).toBeDisabled();
+    });
+
+    it('enables the submit button after the required fields are completed', async () => {
+      const fields = [
+        { ...stubTextField, validation: { required: 'Please enter text' } },
+      ];
       const api = createPromise<{}>();
       const onSubmit = async (values: {}) => api.resolve(values);
 
-      const wrapped = mount(
-        <ThemeProvider theme={theme}>
-          <GridForm
-            fields={[]}
-            onSubmit={onSubmit}
-            submit={{
-              type: 'fill',
-              contents: <>Submit</>,
-              disabled: true,
-              size: 6,
-            }}
-          />
-        </ThemeProvider>
-      );
+      const { view } = renderView({
+        fields,
+        onSubmit,
+        validation: 'onChange',
+      });
 
-      wrapped.setProps(wrapped.props());
+      const textField = view.getByRole('textbox', { name: 'Stub Text' });
 
-      expect(wrapped.find('button').prop('disabled')).toBeTruthy();
+      await act(async () => {
+        fireEvent.input(textField, {
+          target: {
+            value: 'an arbitrary value',
+          },
+        });
+      });
+
+      const submitButton = view.getByRole('button');
+      expect(submitButton).not.toBeDisabled();
+      expect(textField).toHaveAttribute('aria-required');
+    });
+
+    it('keeps the submit button disabled when overridden and there are no incomplete fields', async () => {
+      const fields: Array<any> = [];
+
+      const { view } = renderView({
+        fields,
+        validation: 'onChange',
+        submit: {
+          type: 'fill',
+          contents: <>Submit</>,
+          disabled: true,
+          size: 6,
+        },
+      });
+
+      const submitButton = view.getByRole('button');
+      expect(submitButton).toBeDisabled();
     });
   });
 
-  it('passes custom ids to the fields', () => {
-    const form = mount(
-      <ThemeProvider theme={theme}>
-        <GridForm
-          fields={[
-            {
-              ...stubTextField,
-              id: 'mycoolid',
-            },
-            {
-              ...stubSelectField,
-              id: 'swaggy-id',
-            },
-            {
-              ...stubCheckboxField,
-              id: 'another-dank-id',
-            },
-            {
-              ...stubRadioGroupField,
-              id: 'and-another-one',
-              name: 'name',
-            },
-            {
-              ...stubTextareaField,
-              id: 'id-2-the-ego',
-            },
-            {
-              ...stubFileField,
-              id: 'fire-file',
-            },
-          ]}
-          onSubmit={jest.fn()}
-          submit={{ type: 'fill', contents: <>Submit</>, size: 6 }}
-        />
-      </ThemeProvider>
-    );
+  it('passes custom ids to the fields', async () => {
+    const fields = [
+      {
+        id: 'mycoolid',
+        ...stubTextField,
+      },
+      {
+        id: 'swaggy-id',
+        ...stubSelectField,
+      },
+      {
+        id: 'another-dank-id',
+        ...stubCheckboxField,
+      },
+      {
+        id: 'and-another-one',
+        ...stubRadioGroupField,
+        name: 'name',
+      },
+      {
+        id: 'id-2-the-ego',
+        ...stubTextareaField,
+      },
+      {
+        id: 'fire-file',
+        ...stubFileField,
+      },
+    ];
+    const { view } = renderView({ fields });
 
-    expect(form.find('input#mycoolid').length).toBe(1);
-    expect(form.find('select#swaggy-id').length).toBe(1);
-    expect(form.find('input#another-dank-id').length).toBe(1);
-    expect(form.find('input#name-0-and-another-one').length).toBe(1);
-    expect(form.find('input#name-1-and-another-one').length).toBe(1);
-    expect(form.find('input#another-dank-id').length).toBe(1);
-    expect(form.find('textarea#id-2-the-ego').length).toBe(1);
-    expect(form.find('input#fire-file').length).toBe(1);
+    const textField = view.getByRole('textbox', { name: 'Stub Text' });
+    expect(textField).toHaveAttribute('id', 'mycoolid');
+
+    const selectField = view.getByRole('combobox', { name: 'Stub Select' });
+    expect(selectField).toHaveAttribute('id', 'swaggy-id');
+
+    const checkboxField = view.getByRole('checkbox', {
+      name: 'Stub Checkbox Check me!',
+    });
+    expect(checkboxField).toHaveAttribute('id', 'another-dank-id');
+
+    const textAreaField = view.getByRole('textbox', { name: 'Stub Textarea' });
+    expect(textAreaField).toHaveAttribute('id', 'id-2-the-ego');
+
+    const radioOptions = view.getAllByRole('radio');
+    expect(radioOptions[0]).toHaveAttribute('id', 'name-0-and-another-one');
+    expect(radioOptions[1]).toHaveAttribute('id', 'name-1-and-another-one');
+
+    const fileStub = view.getByLabelText('Stub File');
+    expect(fileStub).toHaveAttribute('id', 'fire-file');
   });
 
-  xit('submits hidden input value', async () => {
+  it('submits hidden input value', async () => {
     const api = createPromise<{}>();
     const onSubmit = async (values: {}) => api.resolve(values);
 
-    const wrapped = mount(
-      <ThemeProvider theme={theme}>
-        <GridForm
-          fields={[stubHiddenField]}
-          onSubmit={onSubmit}
-          submit={{ type: 'fill', contents: <>Submit</>, size: 6 }}
-        />
-      </ThemeProvider>
-    );
+    const { view } = renderView({
+      fields: [stubHiddenField],
+      onSubmit,
+    });
 
     await act(async () => {
-      wrapped.find('form').simulate('submit');
+      fireEvent.submit(view.getByRole('button'));
+
       await api.innerPromise;
     });
 
@@ -354,78 +296,55 @@ describe('GridForm', () => {
     });
   });
 
-  xit('submits sweet container input value', async () => {
+  it('submits sweet container input value', async () => {
     const api = createPromise<{}>();
     const onSubmit = async (values: {}) => api.resolve(values);
 
-    const wrapped = mount(
-      <ThemeProvider theme={theme}>
-        <GridForm
-          fields={[stubSweetContainerField]}
-          onSubmit={onSubmit}
-          submit={{ type: 'fill', contents: <>Submit</>, size: 6 }}
-        />
-      </ThemeProvider>
-    );
+    const { view } = renderView({
+      fields: [stubSweetContainerField],
+      onSubmit,
+    });
 
     await act(async () => {
-      wrapped.find('form').simulate('submit');
+      fireEvent.submit(view.getByRole('button'));
+
       await api.innerPromise;
     });
 
     const result = await api.innerPromise;
 
     expect(result).toEqual({
-      [stubSweetContainerField.name]: false,
+      [stubSweetContainerField.name]: stubSweetContainerField.defaultValue,
     });
-  });
-
-  xit('does not create columns for sweet container inputs', () => {
-    //TO DO
-    const wrapped = mount(
-      <ThemeProvider theme={theme}>
-        <GridForm
-          fields={[stubSweetContainerField]}
-          onSubmit={jest.fn()}
-          submit={{ type: 'fill', contents: <>Submit</>, size: 6 }}
-        />
-      </ThemeProvider>
-    );
-    expect(wrapped.find('Column').length).toBe(1);
   });
 
   describe('Cancel button', () => {
-    xit('renders a button when "cancel" props are provided', () => {
-      const wrapped = mount(
-        <ThemeProvider theme={theme}>
-          <GridForm
-            fields={[stubSweetContainerField]}
-            onSubmit={jest.fn()}
-            submit={{ type: 'fill', contents: <>Submit</>, size: 12 }}
-            cancel={{ children: 'Cancel', onClick: jest.fn() }}
-          />
-        </ThemeProvider>
-      );
+    it('renders a cancel and submit button when "cancel" props are provided', async () => {
+      const cancelOnClick = jest.fn();
 
-      expect(wrapped.find('button[data-testid="cancel-button"]')).toHaveLength(
-        1
-      );
+      const { view } = renderView({
+        cancel: { children: 'Cancel', onClick: cancelOnClick },
+      });
+
+      const buttons = view.getAllByRole('button');
+      const cancelButton = view.getByText('Cancel');
+
+      await act(async () => {
+        fireEvent.click(cancelButton);
+      });
+
+      expect(cancelButton);
+      expect(buttons.length).toEqual(2);
+      expect(cancelOnClick).toBeCalled();
     });
 
-    xit('does not render a button when "cancel" props are not provided', () => {
-      const wrapped = mount(
-        <ThemeProvider theme={theme}>
-          <GridForm
-            fields={[stubSweetContainerField]}
-            onSubmit={jest.fn()}
-            submit={{ type: 'fill', contents: <>Submit</>, size: 12 }}
-          />
-        </ThemeProvider>
-      );
+    it('renders only a submit when "cancel" props are not provided', () => {
+      const { view } = renderView();
 
-      expect(wrapped.find('button[data-testid="cancel-button"]')).toHaveLength(
-        0
-      );
+      const buttons = view.getAllByRole('button');
+
+      expect(buttons.length).toEqual(1);
+      expect(buttons[0]).toHaveTextContent('Submit');
     });
   });
 });
