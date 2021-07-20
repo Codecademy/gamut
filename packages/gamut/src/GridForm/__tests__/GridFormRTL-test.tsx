@@ -4,7 +4,7 @@ import { act } from '@testing-library/react';
 import React from 'react';
 
 import { createPromise } from '../../utils/createPromise';
-import { GridForm } from '..';
+import { GridForm, GridFormProps } from '..';
 import {
   stubCheckboxField,
   stubFileField,
@@ -25,8 +25,24 @@ const renderView = setupRtl(GridForm, {
   submit: { type: 'fill', contents: <>Submit</>, size: 6 },
 });
 
+type renderViewReturn = ReturnType<typeof renderView>;
+
+const asyncRenderView = async (
+  props: Partial<
+    GridFormProps<Record<string, string | boolean | FileList | undefined>>
+  >
+): Promise<renderViewReturn> => {
+  let renderResults: renderViewReturn;
+
+  await act(async () => {
+    renderResults = await renderView(props);
+  });
+
+  return renderResults!;
+};
+
 describe('GridForm', () => {
-  xit('submits the form when all inputs are filled out', async () => {
+  it('submits the form when all inputs are filled out', async () => {
     const api = createPromise<{}>();
     const onSubmit = async (values: {}) => api.resolve(values);
     const selectValue = stubSelectOptions[1];
@@ -70,7 +86,7 @@ describe('GridForm', () => {
     });
   });
 
-  xit('only sets aria-live prop on the first validation error in a form', async () => {
+  it('only sets aria-live prop on the first validation error in a form', async () => {
     const fields = [
       { ...stubTextField, validation: { required: 'Please enter text' } },
       {
@@ -93,7 +109,7 @@ describe('GridForm', () => {
   });
 
   describe('when "onSubmit" validation is selected', () => {
-    xit('sets aria-required to true', () => {
+    it('sets aria-required to true', () => {
       const fields = [
         { ...stubTextField, validation: { required: 'Please enter text' } },
       ];
@@ -106,7 +122,7 @@ describe('GridForm', () => {
       expect(textField).toHaveAttribute('aria-required');
     });
 
-    xit('never disables the submit button', () => {
+    it('never disables the submit button', () => {
       const fields = [
         { ...stubTextField, validation: { required: 'Please enter text' } },
       ];
@@ -121,16 +137,17 @@ describe('GridForm', () => {
   });
 
   describe('when "onChange" validation is selected', () => {
-    xit('sets aria-required to true ', () => {
+    it('sets aria-required to true ', async () => {
       const fields = [
         { ...stubTextField, validation: { required: 'Please enter text' } },
       ];
-      const api = createPromise<{}>();
-      const onSubmit = async (values: {}) => api.resolve(values);
 
-      const { view } = renderView({ fields, onSubmit, validation: 'onChange' });
+      const { view } = await asyncRenderView({
+        fields,
+        validation: 'onChange',
+      });
+
       const textField = view.getByRole('textbox');
-
       expect(textField).toHaveAttribute('aria-required');
     });
 
@@ -138,14 +155,9 @@ describe('GridForm', () => {
       const fields = [
         { ...stubTextField, validation: { required: 'Please enter text' } },
       ];
-      const api = createPromise<{}>();
-      const onSubmit = async (values: {}) => api.resolve(values);
-
-      let view;
 
       const { view } = renderView({
         fields,
-        onSubmit,
         validation: 'onChange',
       });
 
@@ -163,7 +175,7 @@ describe('GridForm', () => {
       expect(submitButton).toBeDisabled();
     });
 
-    xit('enables the submit button after the required fields are completed', async () => {
+    it('enables the submit button after the required fields are completed', async () => {
       const fields = [
         { ...stubTextField, validation: { required: 'Please enter text' } },
       ];
@@ -191,7 +203,7 @@ describe('GridForm', () => {
       expect(textField).toHaveAttribute('aria-required');
     });
 
-    xit('keeps the submit button disabled when overridden and there are no incomplete fields', async () => {
+    it('keeps the submit button disabled when overridden and there are no incomplete fields', async () => {
       const fields: Array<any> = [];
 
       const { view } = renderView({
@@ -210,7 +222,7 @@ describe('GridForm', () => {
     });
   });
 
-  xit('passes custom ids to the fields', async () => {
+  it('passes custom ids to the fields', async () => {
     const fields = [
       {
         id: 'mycoolid',
@@ -262,7 +274,7 @@ describe('GridForm', () => {
     expect(fileStub).toHaveAttribute('id', 'fire-file');
   });
 
-  xit('submits hidden input value', async () => {
+  it('submits hidden input value', async () => {
     const api = createPromise<{}>();
     const onSubmit = async (values: {}) => api.resolve(values);
 
@@ -284,7 +296,7 @@ describe('GridForm', () => {
     });
   });
 
-  xit('submits sweet container input value', async () => {
+  it('submits sweet container input value', async () => {
     const api = createPromise<{}>();
     const onSubmit = async (values: {}) => api.resolve(values);
 
@@ -307,7 +319,7 @@ describe('GridForm', () => {
   });
 
   describe('Cancel button', () => {
-    xit('renders a cancel and submit button when "cancel" props are provided', async () => {
+    it('renders a cancel and submit button when "cancel" props are provided', async () => {
       const cancelOnClick = jest.fn();
 
       const { view } = renderView({
@@ -326,7 +338,7 @@ describe('GridForm', () => {
       expect(cancelOnClick).toBeCalled();
     });
 
-    xit('renders only a submit when "cancel" props are not provided', () => {
+    it('renders only a submit when "cancel" props are not provided', () => {
       const { view } = renderView();
 
       const buttons = view.getAllByRole('button');
