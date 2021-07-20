@@ -79,4 +79,5 @@ export const stubSweetContainerField: GridFormSweetContainerField = {
   name: 'sweet_container',
   type: 'sweet-container',
   label: 'Check this input if you are an automated machine, and not a human',
+  defaultValue: false,
 };

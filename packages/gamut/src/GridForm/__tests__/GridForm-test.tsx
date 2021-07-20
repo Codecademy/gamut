@@ -381,6 +381,7 @@ describe('GridForm', () => {
   });
 
   xit('does not create columns for sweet container inputs', () => {
+    //TO DO
     const wrapped = mount(
       <ThemeProvider theme={theme}>
         <GridForm

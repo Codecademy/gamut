@@ -305,4 +305,34 @@ describe('GridForm', () => {
       [stubSweetContainerField.name]: stubSweetContainerField.defaultValue,
     });
   });
+
+  describe('Cancel button', () => {
+    it('renders a cancel and submit button when "cancel" props are provided', async () => {
+      const cancelOnClick = jest.fn();
+
+      const { view } = renderView({
+        cancel: { children: 'Cancel', onClick: cancelOnClick },
+      });
+
+      const buttons = view.getAllByRole('button');
+      const cancelButton = view.getByText('Cancel');
+
+      await act(async () => {
+        fireEvent.click(cancelButton);
+      });
+
+      expect(cancelButton);
+      expect(buttons.length).toEqual(2);
+      expect(cancelOnClick).toBeCalled();
+    });
+
+    it('renders only a submit when "cancel" props are not provided', () => {
+      const { view } = renderView();
+
+      const buttons = view.getAllByRole('button');
+
+      expect(buttons.length).toEqual(1);
+      expect(buttons[0]).toHaveTextContent('Submit');
+    });
+  });
 });
