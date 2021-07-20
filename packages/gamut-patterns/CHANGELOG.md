@@ -3,6 +3,120 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [0.4.7](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-patterns@0.4.6...@codecademy/gamut-patterns@0.4.7) (2021-07-19)
+
+**Note:** Version bump only for package @codecademy/gamut-patterns
+
+
+
+
+
+### [0.4.6](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-patterns@0.4.5...@codecademy/gamut-patterns@0.4.6) (2021-07-16)
+
+**Note:** Version bump only for package @codecademy/gamut-patterns
+
+
+
+
+
+### [0.4.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-patterns@0.4.4...@codecademy/gamut-patterns@0.4.5) (2021-07-15)
+
+**Note:** Version bump only for package @codecademy/gamut-patterns
+
+
+
+
+
+### [0.4.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-patterns@0.4.3...@codecademy/gamut-patterns@0.4.4) (2021-06-17)
+
+**Note:** Version bump only for package @codecademy/gamut-patterns
+
+
+
+
+
+### [0.4.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-patterns@0.4.2...@codecademy/gamut-patterns@0.4.3) (2021-06-16)
+
+**Note:** Version bump only for package @codecademy/gamut-patterns
+
+
+
+
+
+### [0.4.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-patterns@0.4.1...@codecademy/gamut-patterns@0.4.2) (2021-06-16)
+
+**Note:** Version bump only for package @codecademy/gamut-patterns
+
+
+
+
+
+### [0.4.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-patterns@0.4.0...@codecademy/gamut-patterns@0.4.1) (2021-06-16)
+
+**Note:** Version bump only for package @codecademy/gamut-patterns
+
+
+
+
+
+## [0.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-patterns@0.3.4...@codecademy/gamut-patterns@0.4.0) (2021-06-15)
+
+
+### Features
+
+* **props:** Support `color` and other HTML attributes as system props without type collision GM-247 ([50a8b43](https://github.com/Codecademy/client-modules/commit/50a8b43b27eff2d75307d317d724383156e5a3ed))
+
+
+
+### [0.3.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-patterns@0.3.3...@codecademy/gamut-patterns@0.3.4) (2021-06-10)
+
+**Note:** Version bump only for package @codecademy/gamut-patterns
+
+
+
+
+
+### [0.3.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-patterns@0.3.2...@codecademy/gamut-patterns@0.3.3) (2021-06-10)
+
+**Note:** Version bump only for package @codecademy/gamut-patterns
+
+
+
+
+
+### [0.3.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-patterns@0.3.1...@codecademy/gamut-patterns@0.3.2) (2021-06-03)
+
+**Note:** Version bump only for package @codecademy/gamut-patterns
+
+
+
+
+
+### [0.3.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-patterns@0.3.0...@codecademy/gamut-patterns@0.3.1) (2021-06-02)
+
+**Note:** Version bump only for package @codecademy/gamut-patterns
+
+
+
+
+
+## [0.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-patterns@0.2.2...@codecademy/gamut-patterns@0.3.0) (2021-05-27)
+
+
+### Features
+
+* Migrate final gamut-system docs + functions to variance [WEB-1413]  ([67c8651](https://github.com/Codecademy/client-modules/commit/67c8651dc4985dd656c8d488af4cf56ca21a813b))
+
+
+
+### [0.2.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-patterns@0.2.1...@codecademy/gamut-patterns@0.2.2) (2021-05-25)
+
+**Note:** Version bump only for package @codecademy/gamut-patterns
+
+
+
+
+
 ### [0.2.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-patterns@0.2.0...@codecademy/gamut-patterns@0.2.1) (2021-05-24)
 
 **Note:** Version bump only for package @codecademy/gamut-patterns

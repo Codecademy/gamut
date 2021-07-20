@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.3.0](http://github.com///compare/@codecademy/eslint-config@5.2.0...@codecademy/eslint-config@5.3.0) (2021-06-28)
+
+
+### Features
+
+* enable non-nullable-type-assertion-style ([622ca70](http://github.com///commit/622ca706e874c9eaa02ef0dc9d2cba409d9510d4))
+
+
+
+## [5.2.0](http://github.com///compare/@codecademy/eslint-config@5.1.0...@codecademy/eslint-config@5.2.0) (2021-06-11)
+
+
+### Features
+
+* enable @typescript-eslint/prefer-optional-chain ([ddb0f57](http://github.com///commit/ddb0f57d94d7dd414b1ca3ee50903c16e8e6a593))
+
+
+
 ## [5.1.0](http://github.com///compare/@codecademy/eslint-config@5.0.1...@codecademy/eslint-config@5.1.0) (2021-05-12)
 
 

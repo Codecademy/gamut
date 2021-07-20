@@ -76,3 +76,9 @@ export const typographyElementVariants = {
   },
   div: {},
 } as const;
+
+export const typographyUtilities = {
+  truncation: ['ellipsis', 'fade', false],
+  smoothing: [true, false],
+  screenreader: [true, false],
+} as const;

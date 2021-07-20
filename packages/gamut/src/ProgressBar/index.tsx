@@ -1,4 +1,4 @@
-import { system } from '@codecademy/gamut-styles';
+import { variant } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React from 'react';
 
@@ -10,7 +10,7 @@ export type ProgressBarProps = {
   /**
    * Whether to increase size and display the percentage as text.
    */
-  size?: 'small' | 'medium' | 'large';
+  size?: 'small' | 'medium' | 'large' | 'xl';
 
   /**
    * Minimum amount of the bar to fill in visually.
@@ -38,7 +38,7 @@ export type ProgressBarProps = {
   pattern?: PatternName;
 };
 
-const progressBarSizeVariants = system.variant({
+const progressBarSizeVariants = variant({
   defaultVariant: 'small',
   prop: 'size',
   variants: {
@@ -51,13 +51,18 @@ const progressBarSizeVariants = system.variant({
       borderRadius: '80px',
     },
     large: {
+      height: '18px',
+      borderRadius: '9px',
+      fontSize: 14,
+    },
+    xl: {
       height: '36px',
       borderRadius: '18px',
     },
   },
 });
 
-const progressBarBackgroundVariants = system.variant({
+const progressBarBackgroundVariants = variant({
   defaultVariant: 'blue',
   variants: {
     blue: {
@@ -75,7 +80,7 @@ const progressBarBackgroundVariants = system.variant({
   },
 });
 
-const progressBarBorderVariants = system.variant({
+const progressBarBorderVariants = variant({
   defaultVariant: 'basic',
   prop: 'border',
   variants: {
@@ -89,7 +94,7 @@ const progressBarBorderVariants = system.variant({
   },
 });
 
-const progressBarForegroundVariants = system.variant({
+const progressBarForegroundVariants = variant({
   defaultVariant: 'blue',
   base: {
     alignItems: 'center',
@@ -169,7 +174,9 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
           width: `${Math.max(minimumPercent, percent)}%`,
         }}
       >
-        {size === 'large' && <DisplayedPercent>{percent}%</DisplayedPercent>}
+        {['large', 'xl'].includes(size) && (
+          <DisplayedPercent>{percent}%</DisplayedPercent>
+        )}
       </Bar>
     </ProgressBarWrapper>
   );

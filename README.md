@@ -20,15 +20,17 @@ We provide a single package to manage the versions of a few core dependencies: `
 2. Add each of the managed packages to your peer dependencies (this is required for enabling intellisense for these packages and does not have any effect on version resolution)
 
 ```json
+{
   "peerDependencies": {
     "@codecademy/gamut": "*",
     "@codecademy/gamut-icons": "*",
     "@codecademy/gamut-illustrations": "*",
     "@codecademy/gamut-labs": "*",
     "@codecademy/gamut-styles": "*",
-    "@codecademy/gamut-system": "*",
-    "@codecademy/gamut-tests": "*"
-  },
+    "@codecademy/gamut-tests": "*",
+    "@codecademy/variance": "*"
+  }
+}
 ```
 
 ## Individual Packages
@@ -49,9 +51,9 @@ We provide a single package to manage the versions of a few core dependencies: `
 
 - [![npm version](https://badge.fury.io/js/%40codecademy%2Fgamut-labs.svg)](https://badge.fury.io/js/%40codecademy%2Fgamut-labs)
 
-[`gamut-system`: Typescript CSS in JS utility library](/packages/gamut-system/README.md)
+[`variance`: TypeScript CSS in JS utility library](/packages/variance/README.md)
 
-- [![npm version](https://badge.fury.io/js/%40codecademy%2Fgamut-system.svg)](https://badge.fury.io/js/%40codecademy%2Fgamut-system)
+- [![npm version](https://badge.fury.io/js/%40codecademy%2Fvariance.svg)](https://badge.fury.io/js/%40codecademy%2Fvariance)
 
 [`styleguide`: Styleguide Documentation & storybook development sandbox](/packages/styleguide/README.md)
 

@@ -8,6 +8,7 @@ import {
   NotebookIcon,
   PersonIcon,
   PieLineGraphIcon,
+  RatingStarGiveIcon,
   SupportIcon,
 } from '@codecademy/gamut-icons';
 import { ReactNode } from 'react';
@@ -89,7 +90,7 @@ export const resourcesDropdown: AppHeaderSimpleDropdownItem = {
     },
     {
       id: 'blog',
-      href: 'https://news.codecademy.com/',
+      href: 'https://codecademy.com/resources/blog',
       newTab: true,
       trackingTarget: 'topnav_resources_blog',
       text: 'Blog',
@@ -172,16 +173,6 @@ export const forBusiness: AppHeaderLinkItem = {
   text: 'For Business',
   href: '/business',
   type: 'link',
-};
-
-export const search = (
-  renderSearch: () => ReactNode
-): AppHeaderRenderElementItem => {
-  return {
-    id: 'search',
-    renderElement: renderSearch,
-    type: 'render-element',
-  };
 };
 
 export const notifications = (
@@ -317,6 +308,10 @@ export const proProfile = (
   if (!isMobile && (user.isAccountManager || user.isAdmin)) {
     topSection.push(profileBusinessAccount);
   }
+  if (user.showReferrals) {
+    topSection.push(referrals);
+  }
+
   topSection.push(profileHelpCenter);
 
   const middleSection = [];
@@ -394,4 +389,14 @@ export const signUp: AppHeaderFillButtonItem = {
   trackingTarget: 'topnav_signup',
   type: 'fill-button',
   redirect: true,
+};
+
+export const referrals: AppHeaderLinkItem = {
+  dataTestId: 'header-referrals',
+  id: 'referrals',
+  text: 'Give Pro, Get Pro',
+  href: '/referrals',
+  type: 'link',
+  icon: RatingStarGiveIcon,
+  trackingTarget: 'avatar_referrals',
 };

@@ -1,65 +1,33 @@
 import { GamutIconProps } from '@codecademy/gamut-icons';
-import { system, useCurrentMode } from '@codecademy/gamut-styles';
-import styled from '@emotion/styled';
 import React, { forwardRef } from 'react';
 
 import { ButtonBaseElements } from '../ButtonBase/ButtonBase';
-import { ButtonInner } from './ButtonInner';
-import {
-  buttonColors,
-  ButtonOutline,
-  ButtonOutlineProps,
-  createStates,
-} from './ButtonOutline';
-import { SizedButtonProps } from './types';
+import { ButtonProps, createButtonComponent } from './shared';
+import { iconSizeVariants, textButtonVariants } from './variants';
 
-const { background, backgroundMuted, backgroundEmphasized } = buttonColors;
-
-const IconButtonInner = styled(ButtonInner)<SizedButtonProps>(
-  createStates({
-    base: { color: background },
-    hover: { backgroundColor: backgroundEmphasized },
-    active: { color: background },
-    disabled: {
-      color: backgroundMuted,
-      backgroundColor: 'transparent',
-    },
-  }),
-  system.variant({
-    prop: 'size',
-    variants: {
-      normal: {
-        height: 40,
-        width: 40,
-      },
-      small: {
-        height: 32,
-        width: 32,
-      },
-    },
-  })
+const IconButtonInner = createButtonComponent(
+  iconSizeVariants,
+  textButtonVariants
 );
 
-export interface IconButtonProps extends SizedButtonProps, ButtonOutlineProps {
+export interface IconButtonProps extends ButtonProps {
   children?: never;
+  'aria-label': string;
   icon: React.ComponentType<GamutIconProps>;
 }
 
 export const IconButton = forwardRef<ButtonBaseElements, IconButtonProps>(
-  ({ icon: Icon, size = 'normal', mode, ...props }, ref) => {
-    const currentMode = useCurrentMode(mode);
+  ({ icon: Icon, variant = 'secondary', ...props }, ref) => {
     return (
-      <ButtonOutline mode={currentMode} size={size} {...props} ref={ref}>
-        <IconButtonInner mode={currentMode} size={size}>
-          {Icon && (
-            <Icon
-              width="calc(100% - 14px)"
-              height="calc(100% - 14px)"
-              aria-hidden
-            />
-          )}
-        </IconButtonInner>
-      </ButtonOutline>
+      <IconButtonInner {...props} variant={variant} ref={ref}>
+        {Icon && (
+          <Icon
+            width="calc(100% - 14px)"
+            height="calc(100% - 14px)"
+            aria-hidden
+          />
+        )}
+      </IconButtonInner>
     );
   }
 );

@@ -29,37 +29,67 @@ export const coreTheme = createTheme({
   .addColors(corePalette)
   .addColorModes('light', {
     light: {
-      primary: 'hyper',
-      primaryDull: 'hyper-400',
-      secondary: 'navy',
-      secondaryDull: 'gray-600',
-      danger: 'red',
-      success: 'green',
-      text: 'navy',
-      textMuted: 'gray-600',
-      background: 'white',
-      backgroundMuted: 'gray-200',
-      backgroundEmphasized: 'gray-100',
+      text: { _: 'navy-800', disabled: 'navy-500' },
+      feedback: {
+        error: 'red-500',
+        success: 'green-700',
+        warning: 'yellow',
+      },
+      background: {
+        _: 'white',
+        current: 'white',
+        primary: 'beige',
+        selected: 'navy-100',
+        disabled: 'navy-200',
+        hover: 'navy-200',
+      },
       shadow: {
         opaque: 'shadow-white-heavy',
         solid: 'gray-200',
       },
+      primary: {
+        _: 'hyper-500',
+        hover: 'hyper-400',
+      },
+      secondary: {
+        _: 'navy-800',
+        hover: 'navy-700',
+      },
+      danger: {
+        _: 'red-500',
+        hover: 'red-400',
+      },
     },
     dark: {
-      primary: 'yellow',
-      primaryDull: 'yellow-400',
-      secondary: 'white',
-      secondaryDull: 'gray-200',
-      danger: 'paleRed',
-      success: 'lightGreen',
-      text: 'white',
-      textMuted: 'gray-200',
-      background: 'navy',
-      backgroundMuted: 'gray-600',
-      backgroundEmphasized: 'blue-800',
+      text: { _: 'white', disabled: 'navy-200' },
+      feedback: {
+        error: 'red-0',
+        success: 'green-0',
+        warning: 'yellow',
+      },
+      background: {
+        _: 'navy-800',
+        current: 'navy-800',
+        primary: 'navy-900',
+        selected: 'navy-700',
+        disabled: 'navy-500',
+        hover: 'navy-900',
+      },
       shadow: {
         opaque: 'shadow-black-heavy',
         solid: 'black',
+      },
+      primary: {
+        _: 'yellow-500',
+        hover: 'yellow-400',
+      },
+      secondary: {
+        _: 'white',
+        hover: 'navy-200',
+      },
+      danger: {
+        _: 'red-0',
+        hover: 'red-100',
       },
     },
   })

@@ -1,8 +1,12 @@
 import { ButtonProps, FlexBox, Pattern, Text } from '@codecademy/gamut';
 import { IllustrationProps } from '@codecademy/gamut-illustrations';
-import { pxRem, styledConfig, system } from '@codecademy/gamut-styles';
+import {
+  Colors,
+  pxRem,
+  styledOptions,
+  variant,
+} from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
-import { Theme } from '@emotion/react';
 import styled from '@emotion/styled';
 import React from 'react';
 
@@ -29,7 +33,7 @@ export type EmptySectionProps = {
   /**
    * This should be the same as the background color in order to create a patterned border effect
    */
-  innerBGColor: keyof Theme['colors'];
+  innerBGColor: Colors;
   /**
    * Whether the pattern background stretches to the end of the left or right of the viewport
    */
@@ -37,66 +41,64 @@ export type EmptySectionProps = {
 };
 
 const EmptyContainer = styled(FlexBox)(
-  system.variant({
+  variant({
     prop: 'stretchDirection',
     defaultVariant: 'left',
     base: {
       justifySelf: 'center',
       position: 'relative',
-      px: [16, 48, 96],
-      py: [32, 48, 96],
+      px: 32,
+      py: { _: 64, lg: 96 },
+      width: 1,
     },
     variants: {
       left: {
-        pl: [0, 0, 0],
+        pl: { sm: 0 },
+        pr: { sm: 64, lg: 96 },
       },
       right: {
-        pr: [0, 0, 0],
+        pr: { sm: 0 },
+        pl: { sm: 64, lg: 96 },
       },
     },
   })
 );
 
 const Dots = styled(Pattern)(
-  system.variant({
+  variant({
     prop: 'stretchDirection',
     defaultVariant: 'left',
     base: {
       position: 'absolute',
       top: 0,
       bottom: 0,
+      left: '-6rem',
+      right: '-6rem',
     },
     variants: {
       left: {
-        right: 0,
-        left: { _: '-100vw', xl: '-96px' },
+        right: { sm: 0 },
       },
       right: {
-        left: 0,
-        right: { _: '-100vw', xl: '-96px' },
+        left: { sm: 0 },
       },
     },
   })
 );
 
-const illustrationPositionVariants = system.variant({
+const illustrationPositionVariants = variant({
   prop: 'illustrationPosition',
   defaultVariant: 'right',
   base: {
-    margin: '0 auto 2rem',
+    mx: { _: 'auto', sm: 0 },
+    mb: { _: 32, sm: 0 },
   },
   variants: {
     left: {
-      mt: { sm: 0 },
       mr: { sm: 48 },
-      ml: { sm: 0 },
-      mb: { sm: 0 },
     },
     right: {
-      mt: { sm: 0 },
-      mr: { sm: 0 },
       ml: { sm: 48 },
-      mb: { sm: 0 },
     },
   },
 });
@@ -107,7 +109,7 @@ type IllustrationContainerProps = StyleProps<
 
 const IllustrationContainer = styled(
   'div',
-  styledConfig
+  styledOptions
 )<IllustrationContainerProps>(illustrationPositionVariants);
 
 export const EmptySection: React.FC<EmptySectionProps> = ({
@@ -115,9 +117,9 @@ export const EmptySection: React.FC<EmptySectionProps> = ({
   children,
   headingText,
   illustration: Illustration,
-  illustrationPosition = 'right',
-  innerBGColor,
   stretchDirection,
+  illustrationPosition = stretchDirection === 'right' ? 'left' : 'right',
+  innerBGColor,
 }) => {
   const flexDirection =
     illustrationPosition === 'right' ? 'row-reverse' : 'row';
@@ -131,7 +133,7 @@ export const EmptySection: React.FC<EmptySectionProps> = ({
         position="relative"
         bg={innerBGColor}
         py={48}
-        px={64}
+        px={{ _: 16, sm: 48, md: 64 }}
         zIndex={1}
         flexDirection={{ _: 'column', sm: flexDirection }}
         justifyContent={{ _: 'space-around', md: 'space-between' }}

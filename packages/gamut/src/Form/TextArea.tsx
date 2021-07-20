@@ -1,3 +1,4 @@
+import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
 import React, {
   ChangeEvent,
@@ -6,7 +7,11 @@ import React, {
   useState,
 } from 'react';
 
-import { conditionalStyles, formFieldStyles } from './styles/shared';
+import {
+  conditionalStyles,
+  conditionalStyleState,
+  formFieldStyles,
+} from './styles/shared-system-props';
 
 export type TextWrapperProps = TextareaHTMLAttributes<HTMLTextAreaElement> & {
   className?: string;
@@ -17,9 +22,9 @@ export type TextWrapperProps = TextareaHTMLAttributes<HTMLTextAreaElement> & {
   value?: string;
 };
 
-export interface TextAreaProps extends TextWrapperProps {
-  activated?: boolean;
-}
+export interface TextAreaProps
+  extends TextWrapperProps,
+    StyleProps<typeof conditionalStyles> {}
 
 const StyledTextArea = styled.textarea<TextAreaProps>`
   ${formFieldStyles}
@@ -42,8 +47,7 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextWrapperProps>(
         id={id || rest.htmlFor}
         className={className}
         ref={ref}
-        error={error}
-        activated={activated}
+        variant={conditionalStyleState(Boolean(error), activated)}
         onChange={(event) => changeHandler(event)}
       />
     );

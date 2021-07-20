@@ -1,6 +1,4 @@
-import { HandlerProps } from '@codecademy/gamut-system';
-
-import { darkModeVariants } from './variants';
+import { ColorModes } from '@codecademy/gamut-styles';
 
 export type BaseProps = {
   title?: string;
@@ -27,4 +25,4 @@ export type BaseProps = {
   testId?: string;
 };
 
-export type DarkModeProps = HandlerProps<typeof darkModeVariants>;
+export type DarkModeProps = { mode?: ColorModes };

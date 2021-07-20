@@ -10,12 +10,18 @@ describe('Pattern', () => {
   it('uses the pattern corresponding to the name given', () => {
     const { wrapper } = renderWrapper();
 
-    expect(wrapper.find('#clipDiagonalStripesRegular')).toBeTruthy();
+    expect(wrapper.find('#clipDiagonalStripesRegular')).toHaveLength(1);
   });
 
   it('uses the pattern corresponding to another name given', () => {
     const { wrapper } = renderWrapper({ name: 'diagonalStripesDense' });
 
-    expect(wrapper.find('#clipDiagonalStripesDense')).toBeTruthy();
+    expect(wrapper.find('#clipDiagonalStripesDense')).toHaveLength(1);
+  });
+
+  it('appends an id suffix when one is provided', () => {
+    const { wrapper } = renderWrapper({ idSuffix: 'Hello' });
+
+    expect(wrapper.find('#clipDiagonalStripesRegularHello')).toHaveLength(1);
   });
 });

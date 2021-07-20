@@ -2,28 +2,9 @@ import { mapValues, merge } from 'lodash';
 
 import { CSSObject } from '../types/props';
 import { AbstractTheme } from '../types/theme';
-import { flattenScale, LiteralPaths } from './flattenScale';
-import { KeyAsVariable, serializeTokens } from './serializeTokens';
-
-export type Merge<
-  Base extends AbstractTheme,
-  Next,
-  Unmergable = Record<'breakpoints', Base['breakpoints']>
-> = Unmergable &
-  {
-    [K in keyof (Base & Next)]: K extends keyof Next
-      ? K extends keyof Base
-        ? Base[K] & Next[K]
-        : Next[K]
-      : K extends keyof Base
-      ? Base[K]
-      : never;
-  };
-
-type Reserved = {
-  _variables: Record<string, CSSObject>;
-  _tokens: Record<string | number, any>;
-};
+import { flattenScale, LiteralPaths } from '../utils/flattenScale';
+import { KeyAsVariable, serializeTokens } from '../utils/serializeTokens';
+import { ColorModeConfig, Merge, MergeTheme, PrivateThemeKeys } from './types';
 
 class ThemeBuilder<T extends AbstractTheme> {
   #theme = {} as T;
@@ -39,7 +20,11 @@ class ThemeBuilder<T extends AbstractTheme> {
   createScaleVariables<Key extends keyof Omit<T, 'breakpoints'> & string>(
     key: Key
   ): ThemeBuilder<
-    Merge<T, Reserved, Record<Key, Record<Key, KeyAsVariable<T[Key], Key>>>>
+    MergeTheme<
+      T,
+      PrivateThemeKeys,
+      Record<Key, Record<Key, KeyAsVariable<T[Key], Key>>>
+    >
   > {
     const { variables, tokens } = serializeTokens(
       this.#theme[key],
@@ -69,7 +54,10 @@ class ThemeBuilder<T extends AbstractTheme> {
   >(
     colors: Colors
   ): ThemeBuilder<
-    Merge<T & Reserved, Record<'colors', KeyAsVariable<NextColors, 'color'>>>
+    MergeTheme<
+      T & PrivateThemeKeys,
+      Record<'colors', KeyAsVariable<NextColors, 'color'>>
+    >
   > {
     const flatColors = flattenScale(colors);
     const { variables, tokens } = serializeTokens(
@@ -96,47 +84,52 @@ class ThemeBuilder<T extends AbstractTheme> {
     Modes extends string,
     InitialMode extends keyof Config,
     Colors extends keyof T['colors'],
-    ModeColors extends Record<string, Record<string, Colors> | Colors>,
-    Config extends Record<Modes, ModeColors>
+    ModeColors extends ColorModeConfig<Colors>,
+    Config extends Record<Modes, ModeColors>,
+    ColorAliases extends {
+      [K in keyof Config]: LiteralPaths<Config[K], '-', '_'>;
+    }
   >(
     initialMode: InitialMode,
-    modes: Config
+    modeConfig: Config
   ): ThemeBuilder<
-    Merge<
-      T & Reserved,
+    MergeTheme<
+      T & PrivateThemeKeys,
       {
         colors: KeyAsVariable<
-          LiteralPaths<Config[keyof Config], '-'>,
+          LiteralPaths<Config[keyof Config], '-', '_'>,
           'colors'
         > &
           T['colors'];
-        modes: { [K in keyof Config]: LiteralPaths<Config[K], '-'> };
+        modes: Merge<T['modes'], ColorAliases>;
         mode: keyof Config;
         _getColorValue: (color: keyof T['colors']) => string;
       }
     >
   > {
-    // This guarantees that the final merged color modes are used when setting the default variables
-    const merged = merge({}, this.#theme?.modes, modes) as Config;
+    const modes = mapValues(modeConfig, (mode) => flattenScale(mode));
 
-    const { tokens, variables } = serializeTokens(
+    const { tokens: colors, variables } = serializeTokens(
       mapValues(
-        flattenScale(merged[initialMode]),
+        merge({}, this.#theme.modes?.[initialMode], modes[initialMode]),
         (color) => this.#theme.colors[color]
       ),
       'color',
       this.#theme
     );
 
+    const getColorValue = (color: keyof T['colors']): string =>
+      this.#theme._tokens?.colors?.[color];
+
     this.#theme = merge({}, this.#theme, {
-      colors: tokens,
-      modes: mapValues(modes, (value) => {
-        return flattenScale(value);
-      }),
+      colors,
+      modes,
       mode: initialMode,
-      _getColorValue: (color: keyof T['colors']) =>
-        this.#theme._tokens?.colors?.[color],
+      _getColorValue: getColorValue,
       _variables: { mode: variables },
+      _tokens: {
+        modes: mapValues(modes, (mode) => mapValues(mode, getColorValue)),
+      },
     });
 
     return this;
@@ -150,12 +143,20 @@ class ThemeBuilder<T extends AbstractTheme> {
    */
   addScale<
     Key extends string,
-    Fn extends (theme: T) => Record<string | number, unknown>
+    Fn extends (
+      theme: T
+    ) => Record<
+      string | number,
+      string | number | Record<string, string | number>
+    >,
+    NewScale extends LiteralPaths<ReturnType<Fn>, '-'>
   >(
     key: Key,
     createScale: Fn
-  ): ThemeBuilder<Merge<T, Record<Key, ReturnType<Fn>>>> {
-    this.#theme = merge({}, this.#theme, { [key]: createScale(this.#theme) });
+  ): ThemeBuilder<MergeTheme<T, Record<Key, NewScale>>> {
+    this.#theme = merge({}, this.#theme, {
+      [key]: flattenScale(createScale(this.#theme)),
+    });
     return this;
   }
 
@@ -180,7 +181,7 @@ class ThemeBuilder<T extends AbstractTheme> {
   /**
    * This finalizes the theme build and returns the final theme and variables to be provided.
    */
-  build(): T & Reserved {
+  build(): T & PrivateThemeKeys {
     return merge({}, this.#theme, { _variables: {}, _tokens: {} });
   }
 }

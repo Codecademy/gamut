@@ -60,7 +60,13 @@ describe('style props', () => {
     it('renders media query arrays styles', () => {
       const sizes = [4, 8, 16, 24, 32, 48] as const;
 
-      expect(space({ margin: sizes, padding: sizes, theme })).toEqual({
+      expect(
+        space({
+          margin: sizes,
+          padding: sizes,
+          theme,
+        })
+      ).toEqual({
         margin: rem(sizes[0]),
         padding: rem(sizes[0]),
         XS: {
@@ -205,6 +211,9 @@ describe('css', () => {
       transform: marginTransform,
     },
     padding: { property: 'padding', scale: theme.spacing },
+    boxShadow: {
+      property: 'boxShadow',
+    },
   });
 
   beforeEach(() => {
@@ -255,6 +264,7 @@ describe('css', () => {
   it('allows selectors with media queries', () => {
     const returnedFn = css({
       width: ['100%', '200%'],
+      boxShadow: [({ colors }) => `0px 0px 0px 0px ${colors.black}`],
       '&:hover': {
         width: ['50%', '25%'],
       },
@@ -262,6 +272,7 @@ describe('css', () => {
 
     expect(returnedFn({ theme })).toEqual({
       width: '100%',
+      boxShadow: '0px 0px 0px 0px var(--color-black)',
       XS: { width: '200%' },
       '&:hover': {
         width: '50%',
@@ -536,6 +547,76 @@ describe('variants', () => {
           padding: '2rem',
         },
       },
+    });
+  });
+});
+
+describe('states', () => {
+  const marginTransform = jest.fn();
+
+  const states = variance.createStates({
+    width: { property: 'width', transform: transformSize },
+    height: { property: 'height', transform: transformSize },
+    margin: {
+      property: 'margin',
+      scale: 'spacing',
+      transform: marginTransform,
+    },
+    padding: { property: 'padding', scale: 'spacing' },
+  });
+
+  beforeEach(() => {
+    jest.resetAllMocks();
+    marginTransform.mockImplementation((val) => val);
+  });
+
+  it('creates a state variant function', () => {
+    const myStates = states({
+      cool: {
+        margin: 4,
+        width: ['100%', '200%'],
+      },
+      beans: {
+        border: '1px solid blue',
+      },
+    });
+
+    expect(myStates({ theme, cool: true })).toEqual({
+      width: '100%',
+      margin: '0.25rem',
+      XS: { width: '200%' },
+    });
+
+    expect(myStates({ theme, cool: true, beans: true })).toEqual({
+      width: '100%',
+      margin: '0.25rem',
+      border: '1px solid blue',
+      XS: { width: '200%' },
+    });
+  });
+  it('progressively overrides based on the order of the enabled', () => {
+    const myStates = states({
+      cool: {
+        margin: 4,
+      },
+      beans: {
+        margin: 8,
+      },
+      dude: {
+        margin: 16,
+      },
+    });
+
+    expect(myStates({ theme, cool: true })).toEqual({
+      margin: '0.25rem',
+    });
+
+    expect(myStates({ theme, cool: true, beans: true })).toEqual({
+      margin: '0.5rem',
+    });
+
+    expect(myStates({ theme, cool: true, beans: true, dude: true })).toEqual({
+      margin: '1rem',
     });
   });
 });

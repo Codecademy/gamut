@@ -119,7 +119,7 @@ describe('createTheme', () => {
         '#000000'
       );
     });
-    it('returns value checker for colors', () => {
+    it('returns value checker for colors with deep values', () => {
       const theme = builder
         .addColors({
           black: '#000000',
@@ -128,15 +128,68 @@ describe('createTheme', () => {
         })
         .addColorModes('light', {
           light: {
-            primary: 'gray-200',
+            primary: {
+              default: 'gray-200',
+              cool: { _: 'gray-300', town: 'black' },
+            },
           },
         })
         .build();
 
       expect(theme._getColorValue('gray-300')).toEqual('#666666');
-      expect(theme._getColorValue(theme.modes.light.primary)).toEqual(
-        '#eeeeee'
-      );
+      expect(
+        theme._getColorValue(theme.modes.light['primary-default'])
+      ).toEqual('#eeeeee');
+    });
+
+    it('merges color mode configurations when overriden', () => {
+      const theme = builder
+        .addColors({
+          black: '#000000',
+          white: '#FFFFFF',
+        })
+        .addColorModes('light', {
+          light: {
+            primary: {
+              _: 'black',
+              hover: 'white',
+            },
+          },
+        })
+        .build();
+
+      const override = createTheme(theme)
+        .addColorModes('light', {
+          light: {
+            primary: {
+              _: 'white',
+              hover: 'black',
+            },
+          },
+        })
+        .build();
+
+      expect(override.modes.light.primary).toEqual('white');
+    });
+
+    it('returns the raw values of color mode colors on the tokens object', () => {
+      const theme = createTheme(base)
+        .addColors({
+          black: '#000000',
+          gray: { 300: '#666666' },
+        })
+        .addColorModes('light', {
+          light: {
+            primary: {
+              cool: { _: 'gray-300', town: 'black' },
+            },
+          },
+        })
+        .build();
+
+      expect(theme._tokens.modes).toEqual({
+        light: { 'primary-cool': '#666666', 'primary-cool-town': '#000000' },
+      });
     });
   });
 });

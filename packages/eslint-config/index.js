@@ -32,6 +32,14 @@ module.exports = {
         '@typescript-eslint/restrict-template-expressions': 'off',
       },
     },
+    {
+      files: ['*.ts', '*.tsx'],
+      rules: {
+        // These off-by-default or configurable rules are good and we like having them on
+        '@typescript-eslint/non-nullable-type-assertion-style': 'error',
+        '@typescript-eslint/prefer-optional-chain': 'error',
+      },
+    },
   ],
 
   plugins: [

@@ -1,13 +1,16 @@
-import { Box, FillButton, StrokeButton } from '@codecademy/gamut';
-import { ArrowChevronDownFilledIcon } from '@codecademy/gamut-icons';
-import { pxRem, shouldForwardProp } from '@codecademy/gamut-styles';
+import { Box, FillButton, IconButton, StrokeButton } from '@codecademy/gamut';
+import {
+  ArrowChevronDownFilledIcon,
+  MiniKebabMenuIcon,
+} from '@codecademy/gamut-icons';
+import { pxRem, styledOptions } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React, { useRef, useState } from 'react';
 
 import { Popover } from '../Popover';
 import { DropdownItem, DropdownList } from './DropdownList';
 
-const DownArrow = styled(ArrowChevronDownFilledIcon, { shouldForwardProp })<{
+const DownArrow = styled(ArrowChevronDownFilledIcon, styledOptions)<{
   isOpen?: boolean;
 }>`
   margin-left: ${pxRem(8)};
@@ -16,7 +19,7 @@ const DownArrow = styled(ArrowChevronDownFilledIcon, { shouldForwardProp })<{
 `;
 
 export type DropdownButtonProps = {
-  buttonType?: 'fill' | 'stroke';
+  buttonType?: 'fill' | 'stroke' | 'kebab';
   dropdownItems: DropdownItem[];
   align?: 'left' | 'right';
   onClick?: (event: React.MouseEvent) => void;
@@ -64,6 +67,18 @@ export const DropdownButton: React.FC<DropdownButtonProps> = ({
         </StrokeButton>
       );
       break;
+    case 'kebab':
+      clickTarget = (
+        <IconButton
+          aria-label="More options"
+          icon={MiniKebabMenuIcon}
+          size="small"
+          variant="secondary"
+          onClick={handleClick}
+          data-testid="dropdown-kebab-button"
+        />
+      );
+      break;
   }
 
   return (
@@ -81,7 +96,10 @@ export const DropdownButton: React.FC<DropdownButtonProps> = ({
           horizontalOffset={horizontalOffset}
           outline
         >
-          <DropdownList dropdownItems={dropdownItems} />
+          <DropdownList
+            dropdownItems={dropdownItems}
+            onClose={handleRequestClosed}
+          />
         </Popover>
       )}
     </>

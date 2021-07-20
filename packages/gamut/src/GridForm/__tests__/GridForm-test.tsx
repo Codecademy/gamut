@@ -403,4 +403,39 @@ describe('GridForm', () => {
     );
     expect(wrapped.find('Column').length).toBe(1);
   });
+
+  describe('Cancel button', () => {
+    it('renders a button when "cancel" props are provided', () => {
+      const wrapped = mount(
+        <ThemeProvider theme={theme}>
+          <GridForm
+            fields={[stubSweetContainerField]}
+            onSubmit={jest.fn()}
+            submit={{ type: 'fill', contents: <>Submit</>, size: 12 }}
+            cancel={{ children: 'Cancel', onClick: jest.fn() }}
+          />
+        </ThemeProvider>
+      );
+
+      expect(wrapped.find('button[data-testid="cancel-button"]')).toHaveLength(
+        1
+      );
+    });
+
+    it('does not render a button when "cancel" props are not provided', () => {
+      const wrapped = mount(
+        <ThemeProvider theme={theme}>
+          <GridForm
+            fields={[stubSweetContainerField]}
+            onSubmit={jest.fn()}
+            submit={{ type: 'fill', contents: <>Submit</>, size: 12 }}
+          />
+        </ThemeProvider>
+      );
+
+      expect(wrapped.find('button[data-testid="cancel-button"]')).toHaveLength(
+        0
+      );
+    });
+  });
 });
