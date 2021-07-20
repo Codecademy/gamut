@@ -281,7 +281,7 @@ describe('GridForm', () => {
     });
   });
 
-  xit('passes custom ids to the fields', () => {
+  it('passes custom ids to the fields', () => {
     const form = mount(
       <ThemeProvider theme={theme}>
         <GridForm
@@ -352,19 +352,6 @@ describe('GridForm', () => {
     expect(result).toEqual({
       [stubHiddenField.name]: stubHiddenField.defaultValue,
     });
-  });
-
-  xit('does not create columns for hidden inputs', () => {
-    const wrapped = mount(
-      <ThemeProvider theme={theme}>
-        <GridForm
-          fields={[stubHiddenField]}
-          onSubmit={jest.fn()}
-          submit={{ type: 'fill', contents: <>Submit</>, size: 6 }}
-        />
-      </ThemeProvider>
-    );
-    expect(wrapped.find('Column').length).toBe(1);
   });
 
   xit('submits sweet container input value', async () => {
