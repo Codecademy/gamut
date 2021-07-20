@@ -20,6 +20,10 @@ export const fetchAllNotifications = async (baseUrl: string) => {
 };
 
 export const markNotificationsRead = async (baseUrl: string, ids: string[]) => {
+  if (!ids.length) {
+    return;
+  }
+
   return await fetch(`${baseUrl}/notifications?ids=${ids.join(',')}`, {
     body: JSON.stringify({
       status: 0,
