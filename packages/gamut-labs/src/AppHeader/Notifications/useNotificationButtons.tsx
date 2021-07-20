@@ -29,7 +29,7 @@ export const useNotificationButtons = ({
   };
 
   const clearAll = () => {
-    // TODO NOTIFICATIONS: API call
+    // At present we don't display any UI indicating failure...
     // eslint-disable-next-line @typescript-eslint/no-floating-promises
     fetch(`${baseUrl}/notifications?target=web`, {
       method: 'DELETE',

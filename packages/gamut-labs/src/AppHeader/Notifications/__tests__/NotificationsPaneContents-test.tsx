@@ -18,7 +18,7 @@ describe('NotificationsPaneContents', () => {
     ];
     const { props, view } = renderView({ notifications });
 
-    userEvent.click(view.getAllByLabelText('dismiss notification')[0]);
+    userEvent.click(view.getAllByLabelText('Dismiss Notification')[0]);
 
     expect(props.setNotifications).toHaveBeenCalledWith([notifications[1]]);
   });
