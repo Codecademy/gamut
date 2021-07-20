@@ -150,7 +150,10 @@ describe('createTheme', () => {
         })
         .addColorModes('light', {
           light: {
-            primary: 'black',
+            primary: {
+              _: 'black',
+              hover: 'white',
+            },
           },
         })
         .build();
@@ -158,7 +161,10 @@ describe('createTheme', () => {
       const override = createTheme(theme)
         .addColorModes('light', {
           light: {
-            primary: 'white',
+            primary: {
+              _: 'white',
+              hover: 'black',
+            },
           },
         })
         .build();

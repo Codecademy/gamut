@@ -3,6 +3,61 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [42.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@42.0.1...@codecademy/styleguide@42.1.0) (2021-07-19)
+
+
+### Features
+
+* **Menu:** `<Menu>` Components GM-252 ([34649cf](https://github.com/Codecademy/client-modules/commit/34649cf36dd93ccef2ee112edd778568c18cd7b5))
+
+
+
+### [42.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@42.0.0...@codecademy/styleguide@42.0.1) (2021-07-19)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [42.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@41.15.0...@codecademy/styleguide@42.0.0) (2021-07-19)
+
+
+### ⚠ BREAKING CHANGES
+
+* **progress bar:** reduces size of large variant, creates xl for old size
+
+### Features
+
+* **progress bar:** reduces size of large variant, creates xl for old size ([1130240](https://github.com/Codecademy/client-modules/commit/1130240873d6d369c2ff8eb98fd55edd06fccf74))
+
+
+
+## [41.15.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@41.14.5...@codecademy/styleguide@41.15.0) (2021-07-16)
+
+
+### Features
+
+* **Toast:**  Allow JSX icons GM-262 ([3a14a2d](https://github.com/Codecademy/client-modules/commit/3a14a2d6592c6bf98e356483ea9bd87878f6a377))
+
+
+
+### [41.14.5](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@41.14.4...@codecademy/styleguide@41.14.5) (2021-07-16)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [41.14.4](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@41.14.3...@codecademy/styleguide@41.14.4) (2021-07-16)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
 ### [41.14.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@41.14.2...@codecademy/styleguide@41.14.3) (2021-07-15)
 
 **Note:** Version bump only for package @codecademy/styleguide
