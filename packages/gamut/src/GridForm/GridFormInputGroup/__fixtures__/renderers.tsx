@@ -2,8 +2,8 @@ import { theme } from '@codecademy/gamut-styles';
 import { ThemeProvider } from '@emotion/react';
 import { mount } from 'enzyme';
 import React from 'react';
-import { FormProvider, useForm } from 'react-hook-form';
 
+import { FormContext } from '../../__fixtures__/helpers';
 import {
   stubCheckboxField,
   stubFileField,
@@ -97,11 +97,13 @@ export const renderGridFormCheckboxInput = (
   extraProps: Partial<GridFormCheckboxField> = {}
 ) => {
   return mountWithTheme(
-    <GridFormCheckboxInput
-      field={{ ...stubCheckboxField, ...extraProps }}
-      register={jest.fn()}
-      {...extraProps}
-    />
+    <FormContext mode="onSubmit">
+      <GridFormCheckboxInput
+        field={{ ...stubCheckboxField, ...extraProps }}
+        register={jest.fn()}
+        {...extraProps}
+      />
+    </FormContext>
   );
 };
 
@@ -133,13 +135,9 @@ export const GridFormInputGroupTestComponent: React.FC<GridFormInputGroupTestCom
   mode = 'onSubmit',
   ...rest
 }) => {
-  const methods = useForm({
-    mode,
-  });
-
   return (
-    <FormProvider {...methods}>
+    <FormContext mode={mode}>
       <GridFormInputGroup field={field} {...rest} />
-    </FormProvider>
+    </FormContext>
   );
 };
