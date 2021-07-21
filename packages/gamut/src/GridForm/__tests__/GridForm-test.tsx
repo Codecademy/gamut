@@ -25,7 +25,7 @@ const renderView = setupRtl(GridForm, {
   submit: { type: 'fill', contents: <>Submit</>, size: 6 },
 });
 
-type renderViewReturn = ReturnType<typeof renderView>;
+type RenderViewReturn = ReturnType<typeof renderView>;
 
 type CaseFindProps = {
   field: GridFormField;
@@ -108,14 +108,12 @@ const formFields = [
   ],
 ];
 const asyncRenderView = async (
-  props: Partial<
-    GridFormProps<Record<string, string | boolean | FileList | undefined>>
-  >
+  ...props: Parameters<typeof renderView>
 ): Promise<renderViewReturn> => {
   let renderResults: renderViewReturn;
 
   await act(async () => {
-    renderResults = await renderView(props);
+    renderResults = await renderView(...props);
   });
 
   return renderResults!;
@@ -184,8 +182,8 @@ describe('GridForm', () => {
     });
 
     // there should only be a single "assertive" error from the form submission
-    expect(await view.queryAllByRole('alert').length).toBe(1);
-    expect(await view.queryAllByRole('status').length).toBe(1);
+    expect(view.getAllByRole('alert').length).toBe(1);
+    expect(view.getAllByRole('status').length).toBe(1);
   });
 
   describe('when "onSubmit" validation is selected', () => {
