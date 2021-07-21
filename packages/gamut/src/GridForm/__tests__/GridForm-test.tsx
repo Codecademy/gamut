@@ -4,7 +4,7 @@ import { act } from '@testing-library/react';
 import React from 'react';
 
 import { createPromise } from '../../utils/createPromise';
-import { GridForm, GridFormField, GridFormProps } from '..';
+import { GridForm, GridFormField } from '..';
 import {
   stubCheckboxField,
   stubFileField,
@@ -109,8 +109,8 @@ const formFields = [
 ];
 const asyncRenderView = async (
   ...props: Parameters<typeof renderView>
-): Promise<renderViewReturn> => {
-  let renderResults: renderViewReturn;
+): Promise<RenderViewReturn> => {
+  let renderResults: RenderViewReturn;
 
   await act(async () => {
     renderResults = await renderView(...props);
