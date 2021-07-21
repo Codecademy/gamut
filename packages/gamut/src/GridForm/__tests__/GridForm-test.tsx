@@ -4,7 +4,7 @@ import { act } from '@testing-library/react';
 import React from 'react';
 
 import { createPromise } from '../../utils/createPromise';
-import { GridForm, GridFormProps } from '..';
+import { GridForm, GridFormField, GridFormProps } from '..';
 import {
   stubCheckboxField,
   stubFileField,
@@ -27,6 +27,86 @@ const renderView = setupRtl(GridForm, {
 
 type renderViewReturn = ReturnType<typeof renderView>;
 
+type CaseFindProps = {
+  field: GridFormField;
+  getBy: string;
+  roleOrLabel: string;
+  nameId: { name: string } | undefined;
+  id: string;
+};
+
+const createAndFind = ({
+  field,
+  getBy,
+  roleOrLabel,
+  nameId,
+  id,
+}: CaseFindProps) => {
+  const fields = [{ id, ...field }];
+
+  const { view } = renderView({
+    fields,
+  });
+  switch (getBy) {
+    case 'byLabelText':
+      return view.getByLabelText(roleOrLabel);
+    case 'allByRole':
+      return view.getAllByRole(roleOrLabel);
+    case 'byRole':
+      return view.getByRole(roleOrLabel, nameId);
+  }
+};
+
+const formFields = [
+  [
+    'text field',
+    stubTextField,
+    'byRole',
+    'textbox',
+    { name: 'Stub Text' },
+    'mycoolid',
+  ],
+  [
+    'select field',
+    stubSelectField,
+    'byRole',
+    'combobox',
+    { name: 'Stub Select' },
+    'swaggy-id',
+  ],
+  [
+    'checkbox field',
+    stubCheckboxField,
+    'byRole',
+    'checkbox',
+    { name: 'Stub Checkbox Check me!' },
+    'another-dank-id',
+  ],
+  [
+    'textarea field',
+    stubTextareaField,
+    'byRole',
+    'textbox',
+    { name: 'Stub Textarea' },
+    'id-2-the-ego',
+  ],
+  [
+    'radio group field',
+    stubRadioGroupField,
+    'allByRole',
+    'radio',
+    undefined,
+    'and-another-one',
+  ],
+  [
+    'file field',
+    stubFileField,
+    'byLabelText',
+    'Stub File',
+    undefined,
+    'fire-file',
+  ],
+];
 const asyncRenderView = async (
   props: Partial<
     GridFormProps<Record<string, string | boolean | FileList | undefined>>
@@ -222,56 +302,36 @@ describe('GridForm', () => {
     });
   });
 
-  it('passes custom ids to the fields', async () => {
-    const fields = [
-      {
-        id: 'mycoolid',
-        ...stubTextField,
-      },
-      {
-        id: 'swaggy-id',
-        ...stubSelectField,
-      },
-      {
-        id: 'another-dank-id',
-        ...stubCheckboxField,
-      },
-      {
-        id: 'and-another-one',
-        ...stubRadioGroupField,
-        name: 'name',
-      },
-      {
-        id: 'id-2-the-ego',
-        ...stubTextareaField,
-      },
-      {
-        id: 'fire-file',
-        ...stubFileField,
-      },
-    ];
-    const { view } = renderView({ fields });
-
-    const textField = view.getByRole('textbox', { name: 'Stub Text' });
-    expect(textField).toHaveAttribute('id', 'mycoolid');
-
-    const selectField = view.getByRole('combobox', { name: 'Stub Select' });
-    expect(selectField).toHaveAttribute('id', 'swaggy-id');
-
-    const checkboxField = view.getByRole('checkbox', {
-      name: 'Stub Checkbox Check me!',
-    });
-    expect(checkboxField).toHaveAttribute('id', 'another-dank-id');
-
-    const textAreaField = view.getByRole('textbox', { name: 'Stub Textarea' });
-    expect(textAreaField).toHaveAttribute('id', 'id-2-the-ego');
-
-    const radioOptions = view.getAllByRole('radio');
-    expect(radioOptions[0]).toHaveAttribute('id', 'name-0-and-another-one');
-    expect(radioOptions[1]).toHaveAttribute('id', 'name-1-and-another-one');
-
-    const fileStub = view.getByLabelText('Stub File');
-    expect(fileStub).toHaveAttribute('id', 'fire-file');
+  describe('when supplied an id', () => {
+    it.each(formFields)(
+      `passes custom id to the %s`,
+      async (
+        type: any,
+        field: GridFormField,
+        getBy: string,
+        roleOrLabel: string,
+        nameId: { name: string } | undefined,
+        id: string
+      ) => {
+        const renderedField = createAndFind({
+          field,
+          getBy,
+          roleOrLabel,
+          nameId,
+          id,
+        });
+        if (Array.isArray(renderedField)) {
+          renderedField.forEach((element, index) => {
+            expect(element).toHaveAttribute(
+              'id',
+              `${field.name}-${index}-${id}`
+            );
+          });
+        } else {
+          expect(renderedField).toHaveAttribute('id', id);
+        }
+      }
+    );
   });
 
   it('submits hidden input value', async () => {
