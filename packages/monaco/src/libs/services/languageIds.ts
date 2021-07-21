@@ -1,0 +1,17 @@
+export const codecademyCss = 'codecademy-css';
+export const codecademyDefault = 'plaintext';
+export const codecademyGo = 'codecademy-go';
+export const codecademyHtml = 'codecademy-html';
+export const codecademyJava = 'codecademy-java';
+export const codecademyJs = 'codecademy-js';
+export const codecademyPhp = 'codecademy-php';
+export const codecademyPython = 'codecademy-python';
+export const codecademyR = 'codecademy-r';
+export const codecademyRuby = 'codecademy-ruby';
+export const codecademyScss = 'codecademy-scss';
+export const codecademySql = 'codecademy-sql';
+export const codecademySwift = 'codecademy-swift';
+export const codecademyCSharp = 'codecademy-cs';
+export const codecademyCpp = 'codecademy-cpp';
+export const codecademyKotlin = 'codecademy-kotlin';
+export const codecademyRazor = 'codecademy-razor';

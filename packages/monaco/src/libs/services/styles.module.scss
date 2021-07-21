@@ -1,0 +1,19 @@
+@import "~styles/cc";
+
+.lintDecoration {
+  background-color: $color-red-500;
+  transform: scaleY(0.85);
+}
+
+.lintGlyph::after {
+  content: " ";
+  background-color: $color-red-500;
+  border-radius: 100%;
+  display: block;
+  height: 10px;
+  width: 10px;
+}
+
+.lintedText {
+  color: $color-white;
+}
