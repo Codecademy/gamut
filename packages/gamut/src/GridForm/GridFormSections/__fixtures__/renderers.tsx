@@ -1,6 +1,6 @@
 import React from 'react';
-import { FormProvider, useForm } from 'react-hook-form';
 
+import { FormContext } from '../../__fixtures__/helpers';
 import { GridFormContent, GridFormContentProps } from '../GridFormContent';
 import { GridFormSection, GridFormSectionProps } from '../GridFormSection';
 
@@ -17,18 +17,14 @@ export const GridFormContentTestComponent: React.FC<GridFormContentTestComponent
   showRequired,
   mode = 'onSubmit',
 }) => {
-  const methods = useForm({
-    mode,
-  });
-
   return (
-    <FormProvider {...methods}>
+    <FormContext mode={mode}>
       <GridFormContent
         field={field}
         showRequired={showRequired}
         key={field.name}
       />
-    </FormProvider>
+    </FormContext>
   );
 };
 
@@ -37,13 +33,9 @@ export const GridFormSectionTestComponent: React.FC<GridFormSectionTestComponent
   showRequired,
   mode = 'onSubmit',
 }) => {
-  const methods = useForm({
-    mode,
-  });
-
   return (
-    <FormProvider {...methods}>
+    <FormContext mode={mode}>
       <GridFormSection fields={fields} showRequired={showRequired} />
-    </FormProvider>
+    </FormContext>
   );
 };
