@@ -262,12 +262,6 @@ export const checkboxTextStates = system.states({
   disabled: formFieldBaseDisabledStyles,
 });
 
-export const checkboxInputStates = system.states({
-  disabled: {
-    fontSize: 14,
-  },
-});
-
 export const checkboxElementStates = system.states({
   multiline: {
     mt: 4,
