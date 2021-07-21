@@ -81,3 +81,54 @@ export const stubSweetContainerField: GridFormSweetContainerField = {
   label: 'Check this input if you are an automated machine, and not a human',
   defaultValue: false,
 };
+
+export const stubFieldCases = [
+  [
+    'text field',
+    stubTextField,
+    'byRole',
+    'textbox',
+    { name: 'Stub Text' },
+    'mycoolid',
+  ],
+  [
+    'select field',
+    stubSelectField,
+    'byRole',
+    'combobox',
+    { name: 'Stub Select' },
+    'swaggy-id',
+  ],
+  [
+    'checkbox field',
+    stubCheckboxField,
+    'byRole',
+    'checkbox',
+    { name: 'Stub Checkbox Check me!' },
+    'another-dank-id',
+  ],
+  [
+    'textarea field',
+    stubTextareaField,
+    'byRole',
+    'textbox',
+    { name: 'Stub Textarea' },
+    'id-2-the-ego',
+  ],
+  [
+    'radio group field',
+    stubRadioGroupField,
+    'allByRole',
+    'radio',
+    undefined,
+    'and-another-one',
+  ],
+  [
+    'file field',
+    stubFileField,
+    'byLabelText',
+    'Stub File',
+    undefined,
+    'fire-file',
+  ],
+];

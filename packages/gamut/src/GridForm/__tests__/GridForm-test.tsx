@@ -7,13 +7,11 @@ import { createPromise } from '../../utils/createPromise';
 import { GridForm, GridFormField } from '..';
 import {
   stubCheckboxField,
-  stubFileField,
+  stubFieldCases,
   stubHiddenField,
-  stubRadioGroupField,
   stubSelectField,
   stubSelectOptions,
   stubSweetContainerField,
-  stubTextareaField,
   stubTextField,
 } from './stubs';
 
@@ -57,56 +55,6 @@ const createAndFind = ({
   }
 };
 
-const formFields = [
-  [
-    'text field',
-    stubTextField,
-    'byRole',
-    'textbox',
-    { name: 'Stub Text' },
-    'mycoolid',
-  ],
-  [
-    'select field',
-    stubSelectField,
-    'byRole',
-    'combobox',
-    { name: 'Stub Select' },
-    'swaggy-id',
-  ],
-  [
-    'checkbox field',
-    stubCheckboxField,
-    'byRole',
-    'checkbox',
-    { name: 'Stub Checkbox Check me!' },
-    'another-dank-id',
-  ],
-  [
-    'textarea field',
-    stubTextareaField,
-    'byRole',
-    'textbox',
-    { name: 'Stub Textarea' },
-    'id-2-the-ego',
-  ],
-  [
-    'radio group field',
-    stubRadioGroupField,
-    'allByRole',
-    'radio',
-    undefined,
-    'and-another-one',
-  ],
-  [
-    'file field',
-    stubFileField,
-    'byLabelText',
-    'Stub File',
-    undefined,
-    'fire-file',
-  ],
-];
 const asyncRenderView = async (
   ...props: Parameters<typeof renderView>
 ): Promise<RenderViewReturn> => {
@@ -282,7 +230,7 @@ describe('GridForm', () => {
     });
 
     it('keeps the submit button disabled when overridden and there are no incomplete fields', async () => {
-      const fields: Array<any> = [];
+      const fields: Array<GridFormField> = [];
 
       const { view } = renderView({
         fields,
@@ -301,7 +249,7 @@ describe('GridForm', () => {
   });
 
   describe('when supplied an id', () => {
-    it.each(formFields)(
+    it.each(stubFieldCases)(
       `passes custom id to the %s`,
       async (
         type: any,
