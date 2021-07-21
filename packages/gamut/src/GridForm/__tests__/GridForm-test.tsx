@@ -28,14 +28,12 @@ const renderView = setupRtl(GridForm, {
 type RenderViewReturn = ReturnType<typeof renderView>;
 
 const asyncRenderView = async (
-  props: Partial<
-    GridFormProps<Record<string, string | boolean | FileList | undefined>>
-  >
+  ...props: Parameters<typeof renderView>
 ): Promise<renderViewReturn> => {
   let renderResults: renderViewReturn;
 
   await act(async () => {
-    renderResults = await renderView(props);
+    renderResults = await renderView(...props);
   });
 
   return renderResults!;
