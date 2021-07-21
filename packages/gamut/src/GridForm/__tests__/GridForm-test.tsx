@@ -25,7 +25,7 @@ const renderView = setupRtl(GridForm, {
   submit: { type: 'fill', contents: <>Submit</>, size: 6 },
 });
 
-type renderViewReturn = ReturnType<typeof renderView>;
+type RenderViewReturn = ReturnType<typeof renderView>;
 
 const asyncRenderView = async (
   props: Partial<
