@@ -102,8 +102,8 @@ describe('GridForm', () => {
     });
 
     // there should only be a single "assertive" error from the form submission
-    expect(await view.queryAllByRole('alert').length).toBe(1);
-    expect(await view.queryAllByRole('status').length).toBe(1);
+    expect(view.getAllByRole('alert').length).toBe(1);
+    expect(view.getAllByRole('status').length).toBe(1);
   });
 
   describe('when "onSubmit" validation is selected', () => {
