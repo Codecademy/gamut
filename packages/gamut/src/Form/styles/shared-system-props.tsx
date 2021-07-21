@@ -285,7 +285,7 @@ export const checkboxElementStates = system.states({
 
 export const checkboxInput = system.css({
   [InputSelectors.FOCUS_LABEL_DIV_CHILD]: {
-    outline: `2px solid   ${theme.colors.primary}`,
+    outline: `2px solid ${theme.colors.primary}`,
     outlineOffset: '2px',
   },
 });
