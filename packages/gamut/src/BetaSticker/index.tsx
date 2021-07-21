@@ -1,32 +1,22 @@
 import React from 'react';
 
-export const BetaSticker: React.FC = () => {
+type BetaStickerProps = {
+  className?: string;
+  children?: never;
+  backgroundColor: string;
+};
+
+export const BetaSticker: React.FC<BetaStickerProps> = (props) => {
+  const { backgroundColor } = props;
   return (
-    <svg
-      width="54"
-      height="28"
-      viewBox="0 0 54 28"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
+    <svg width="54" height="28" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <title>Beta</title>
       <g filter="url(#filter0_d)">
-        <rect x="2" width="52" height="26" fill="#FCF0E6" />
+        <path fill={backgroundColor} d="M2 0h52v26H2z" />
       </g>
       <path
-        d="M8 18.6H11.792C14.256 18.6 15.936 17.592 15.936 15C15.936 13.592 15.232 12.792 14.288 12.376C15.056 11.848 15.536 10.984 15.536 9.992C15.536 7.576 13.84 7 11.6 7H8V18.6ZM10.4 11.768V8.952H11.568C12.544 8.952 13.024 9.432 13.024 10.36C13.024 11.288 12.544 11.768 11.568 11.768H10.4ZM13.392 15.08C13.392 16.104 12.88 16.616 11.696 16.616H10.4V13.528H11.696C12.88 13.528 13.392 14.04 13.392 15.08Z"
-        fill="#10162F"
-      />
-      <path
-        d="M18.5677 18.6H25.5917V16.536H20.9677V13.704H25.2717V11.64H20.9677V9.064H25.5917V7H18.5677V18.6Z"
-        fill="#10162F"
-      />
-      <path
-        d="M31.1675 18.6H33.5675V9.064H36.8475V7H27.8875V9.064H31.1675V18.6Z"
-        fill="#10162F"
-      />
-      <path
-        d="M38.2312 18.6H40.7913L41.3193 16.184H44.0393L44.5673 18.6H47.1913L44.1992 7H41.2073L38.2312 18.6ZM42.6953 10.056L43.6233 14.312H41.7353L42.6953 10.056Z"
-        fill="#10162F"
+        d="M8 18.6h3.792c2.464 0 4.144-1.008 4.144-3.6 0-1.408-.704-2.208-1.648-2.624a2.862 2.862 0 001.248-2.384C15.536 7.576 13.84 7 11.6 7H8v11.6zm2.4-6.832V8.952h1.168c.976 0 1.456.48 1.456 1.408 0 .928-.48 1.408-1.456 1.408H10.4zm2.992 3.312c0 1.024-.512 1.536-1.696 1.536H10.4v-3.088h1.296c1.184 0 1.696.512 1.696 1.552zM18.568 18.6h7.024v-2.064h-4.624v-2.832h4.304V11.64h-4.304V9.064h4.624V7h-7.024v11.6zM31.168 18.6h2.4V9.064h3.28V7h-8.96v2.064h3.28V18.6zM38.231 18.6h2.56l.528-2.416h2.72l.528 2.416h2.624L44.2 7h-2.992l-2.976 11.6zm4.464-8.544l.928 4.256h-1.888l.96-4.256z"
+        fill="currentColor"
       />
       <defs>
         <filter
@@ -36,30 +26,11 @@ export const BetaSticker: React.FC = () => {
           width="54"
           height="28"
           filterUnits="userSpaceOnUse"
-          colorInterpolationFilters="sRGB"
         >
-          <feFlood floodOpacity="0" result="BackgroundImageFix" />
-          <feColorMatrix
-            in="SourceAlpha"
-            type="matrix"
-            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-          />
+          <feFlood result="BackgroundImageFix" floodColor="currentColor" />
           <feOffset dx="-2" dy="2" />
-          <feColorMatrix
-            type="matrix"
-            values="0 0 0 0 0.0627451 0 0 0 0 0.0862745 0 0 0 0 0.184314 0 0 0 1 0"
-          />
-          <feBlend
-            mode="normal"
-            in2="BackgroundImageFix"
-            result="effect1_dropShadow"
-          />
-          <feBlend
-            mode="normal"
-            in="SourceGraphic"
-            in2="effect1_dropShadow"
-            result="shape"
-          />
+          <feBlend in2="BackgroundImageFix" result="effect1_dropShadow" />
+          <feBlend in="SourceGraphic" in2="effect1_dropShadow" result="shape" />
         </filter>
       </defs>
     </svg>
