@@ -3,7 +3,8 @@ import React, { Component } from 'react';
 import ReactMonacoEditor from 'react-monaco-editor';
 import ReactResizeDetector from 'react-resize-detector';
 
-import { Editor, MonacoFile } from '../types';
+import { Editor, Monaco, MonacoFile } from '../types';
+import styles from './styles.module.scss';
 
 export type SimpleMonacoEditorProps = {
   file: MonacoFile;
@@ -11,7 +12,7 @@ export type SimpleMonacoEditorProps = {
   onChange?: (newValue: string) => void;
   options: EditorType.IStandaloneEditorConstructionOptions;
   setEditor: (editor: Editor.IStandaloneCodeEditor) => void;
-  setMonaco: (monaco: any) => void;
+  setMonaco: (monaco: Monaco) => void;
 };
 
 export class SimpleMonacoEditor extends Component<SimpleMonacoEditorProps> {
@@ -29,7 +30,7 @@ export class SimpleMonacoEditor extends Component<SimpleMonacoEditorProps> {
     this.props.setEditor(editor);
   };
 
-  editorWillMount = (monaco: any) => {
+  editorWillMount = (monaco: Monaco) => {
     this.props.setMonaco(monaco);
   };
 
@@ -44,7 +45,10 @@ export class SimpleMonacoEditor extends Component<SimpleMonacoEditorProps> {
         refreshMode="debounce"
         refreshRate={500}
       >
-        <div data-language-id={this.props.languageId}>
+        <div
+          className={styles.editorInner}
+          data-language-id={this.props.languageId}
+        >
           <ReactMonacoEditor
             editorDidMount={this.editorDidMount}
             editorWillMount={this.editorWillMount}
