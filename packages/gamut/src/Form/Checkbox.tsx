@@ -1,52 +1,51 @@
 import {
-  colors,
   noSelect,
-  pxRem,
   screenReaderOnly,
+  styledOptions,
+  timing,
 } from '@codecademy/gamut-styles';
+import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
-import React, { forwardRef, InputHTMLAttributes, ReactNode } from 'react';
+import React, {
+  ChangeEvent,
+  forwardRef,
+  InputHTMLAttributes,
+  ReactNode,
+  useState,
+} from 'react';
 
-import { variables } from './_variables';
+import {
+  checkboxElement,
+  checkboxElementStates,
+  checkboxInput,
+  checkboxLabel,
+  checkboxLabelStates,
+  checkboxTextStates,
+  polyline,
+} from './styles/shared-system-props';
 
-export type CheckboxProps = InputHTMLAttributes<HTMLInputElement> &
-  Multiline & {
-    checked?: boolean;
-    className?: string;
-    disabled?: boolean;
-    htmlFor: string;
-    label: ReactNode;
-    name?: string;
-    required?: boolean;
-    value?: string;
-    id?: string;
-  };
+export type CheckboxProps = InputHTMLAttributes<HTMLInputElement> & {
+  multiline?: boolean;
+  className?: string;
+  htmlFor: string;
+  label: ReactNode;
+  name?: string;
+  required?: boolean;
+  value?: string;
+  id?: string;
+};
 
-type Multiline = { multiline?: boolean };
+export type CheckboxTextProps = StyleProps<typeof checkboxTextStates>;
 
-const activeColor = colors.hyper;
+const CheckboxLabel = styled.label<Pick<CheckboxProps, 'disabled'>>(
+  noSelect,
+  checkboxLabel,
+  checkboxLabelStates
+);
 
-const CheckboxLabel = styled.label`
-  ${noSelect}
-  display: flex;
-  align-items: flex-start;
-  cursor: pointer;
-  margin: (${variables.formPadding} / 2) 0;
-  width: 100%;
-  font-weight: normal;
-  padding: ${variables.formPadding} 0;
-`;
-
-const CheckboxElement = styled.div<Multiline>`
-  position: relative;
-  margin-right: 0.5rem;
-  min-width: 1.5rem;
-  height: 1.5rem;
-  border: 2px solid ${variables.borderColor};
-  border-radius: ${variables.borderRadius};
-  transition: all 0.1s ease-in-out;
-  margin-top: ${({ multiline }) => multiline && '3px'};
-`;
+const CheckboxElement = styled('div', styledOptions)<
+  Pick<CheckboxProps, 'checked' | 'multiline' | 'disabled'>
+>(checkboxElement, checkboxElementStates);
 
 const CheckboxVector = styled.svg`
   position: absolute;
@@ -54,75 +53,86 @@ const CheckboxVector = styled.svg`
   left: -2px;
 `;
 
-const Polyline = styled.polyline`
+const Polyline = styled.polyline<Pick<CheckboxProps, 'checked'>>`
+  ${polyline}
   fill: none;
-  stroke: ${colors['gray-100']};
+  stroke: currentColor;
   stroke-width: 2;
   stroke-linecap: round;
   stroke-linejoin: round;
   stroke-dasharray: 18px;
   stroke-dashoffset: 18px;
+  stroke-dashoffset: ${({ checked }) => (checked ? 0 : `18px`)};
+  transition: stroke-dashoffset ${timing.fast};
 `;
 
-// Maybe ScreenReaderFocusable
 const Input = styled.input`
   ${screenReaderOnly}
-
-  &:focus + ${CheckboxLabel} > ${CheckboxElement} {
-    outline: ${pxRem(2)} solid ${activeColor};
-    outline-offset: ${pxRem(2)};
-  }
-
-  &:checked + ${CheckboxLabel} ${CheckboxElement} {
-    border-color: ${activeColor};
-
-    ${CheckboxVector} {
-      path {
-        fill: ${activeColor};
-      }
-
-      ${Polyline} {
-        stroke-dashoffset: 0;
-        transition: stroke-dashoffset ${variables.transitionTime};
-      }
-    }
-  }
-
-  &:checked:disabled + ${CheckboxLabel} ${CheckboxElement} {
-    border-color: ${variables.itemBackgroundHover};
-
-    ${CheckboxVector} {
-      ${Polyline} {
-        fill: ${variables.itemBackgroundHover};
-      }
-      path {
-        fill: ${variables.itemBackgroundHover};
-      }
-    }
-  }
+  ${checkboxInput}
 `;
 
-const CheckboxText = styled.span<Multiline>`
-  align-self: center;
-  font-size: ${({ multiline }) => multiline && '0.75rem'};
-`;
+const CheckboxText = styled.span<CheckboxTextProps>(checkboxTextStates);
 
 export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
-  ({ className, label, htmlFor, multiline, id, ...rest }, ref) => (
-    <div className={className}>
-      <Input id={id || htmlFor} type="checkbox" {...rest} ref={ref} />
-      <CheckboxLabel htmlFor={id || htmlFor}>
-        <CheckboxElement multiline={multiline}>
-          <CheckboxVector width="24px" height="24px" viewBox="0 0 20 20">
-            <path
-              d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"
-              fill="none"
-            />
-            <Polyline points="4 11 8 15 16 6" />
-          </CheckboxVector>
-        </CheckboxElement>
-        <CheckboxText multiline={multiline}>{label}</CheckboxText>
-      </CheckboxLabel>
-    </div>
-  )
+  (
+    {
+      className,
+      label,
+      htmlFor,
+      multiline,
+      id,
+      checked,
+      defaultChecked,
+      disabled,
+      onChange,
+      ...rest
+    },
+    ref
+  ) => {
+    const [currentlyChecked, setCurrentlyChecked] = useState(
+      checked === undefined ? Boolean(defaultChecked) : checked
+    );
+
+    const changeHandler = (event: ChangeEvent<HTMLInputElement>) => {
+      onChange?.(event);
+      if (checked === undefined) setCurrentlyChecked(event.target.checked);
+    };
+
+    return (
+      <div className={className}>
+        <Input
+          id={id || htmlFor}
+          type="checkbox"
+          checked={currentlyChecked}
+          disabled={disabled}
+          onChange={changeHandler}
+          {...rest}
+          ref={ref}
+        />
+        <CheckboxLabel htmlFor={id || htmlFor} disabled={disabled}>
+          <CheckboxElement
+            multiline={multiline}
+            checked={currentlyChecked}
+            disabled={disabled}
+          >
+            <CheckboxVector
+              width="22px"
+              height="22px"
+              viewBox="0 0 20 20"
+              color={currentlyChecked ? 'currentColor' : 'transparent'}
+            >
+              <path
+                d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"
+                fill="currentColor"
+              />
+              <Polyline checked={currentlyChecked} points="4 11 8 15 16 6" />
+            </CheckboxVector>
+          </CheckboxElement>
+          <CheckboxText multiline={multiline} disabled={disabled}>
+            {label}
+          </CheckboxText>
+        </CheckboxLabel>
+      </div>
+    );
+  }
 );

@@ -17,6 +17,7 @@ export enum InputSelectors {
   ACTIVE = '&:active',
   PLACEHOLDER = '&:placeholder',
   FOCUS = '&:focus',
+  FOCUS_LABEL_DIV_CHILD = '&:focus + label > div',
   DISABLED = "&:disabled, &[aria-disabled='true']",
   BEFORE = '&::before',
   AFTER = '&::after',
@@ -215,5 +216,70 @@ export const conditionalRadioInputStyles = system.variant({
         boxShadow: `0 0 0 1px currentColor`,
       },
     },
+  },
+});
+
+export const checkboxLabel = system.css({
+  display: 'flex',
+  alignItems: 'flex-start',
+  cursor: 'pointer',
+  m: 4,
+  px: 0,
+  py: 16,
+  ...formBaseComponentStyles,
+});
+
+export const checkboxLabelStates = system.states({
+  disabled: {
+    cursor: 'not-allowed',
+  },
+});
+
+export const checkboxElement = system.css({
+  position: 'relative',
+  mr: 8,
+  minWidth: 22,
+  width: 22,
+  height: 22,
+  border: 2,
+  borderColor: 'currentColor',
+  color: 'background-disabled',
+  transition: transitionConcat(['all'], 'slow', 'ease-in-out'),
+  [InputSelectors.HOVER]: {
+    outline: `2px solid   ${theme.colors.primary}`,
+    outlineOffset: '2px',
+  },
+});
+
+export const polyline = system.css({
+  color: 'shadow-opaque',
+});
+
+export const checkboxTextStates = system.states({
+  multiline: {
+    fontSize: 14,
+  },
+  disabled: formFieldBaseDisabledStyles,
+});
+
+export const checkboxElementStates = system.states({
+  multiline: {
+    mt: 4,
+  },
+  checked: {
+    color: 'primary',
+  },
+  disabled: {
+    color: 'background-disabled',
+    [InputSelectors.HOVER]: {
+      outline: 'none',
+    },
+  },
+});
+
+export const checkboxInput = system.css({
+  [InputSelectors.FOCUS_LABEL_DIV_CHILD]: {
+    outline: `2px solid ${theme.colors.primary}`,
+    outlineOffset: '2px',
   },
 });

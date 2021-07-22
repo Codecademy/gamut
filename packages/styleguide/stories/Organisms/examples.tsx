@@ -72,17 +72,16 @@ export const ColorModeExample = () => {
                   },
                 },
                 {
-                  label: 'whats up?',
-                  name: 'text04--left-section',
+                  description: 'i checked them...',
+                  id: 'my-super-cool-checkbox-color-mode',
+                  label: 'check your levels',
+                  name: 'check-this',
                   size: 4,
-                  type: 'text',
-                  validation: {
-                    required: true,
-                  },
+                  type: 'checkbox',
                 },
                 {
                   label: 'Write another long paragraph',
-                  name: 'paragraph02-left-section',
+                  name: 'paragraph02-color-mode-left-section',
                   size: 8,
                   type: 'textarea',
                   validation: {
@@ -104,7 +103,7 @@ export const ColorModeExample = () => {
               fields: [
                 {
                   label: 'hello....',
-                  name: 'text01-center-section',
+                  name: 'text01-color-mode-center-section',
                   size: 5,
                   type: 'text',
                   validation: {
@@ -120,12 +119,20 @@ export const ColorModeExample = () => {
                   label: 'hi?',
                   name: 'text01-color-mode-disabled',
                   disabled: true,
-
                   size: 4,
                   type: 'text',
                   validation: {
                     required: true,
                   },
+                },
+                {
+                  description: 'i checked them...',
+                  id: 'disabled-checkbox-color-mode',
+                  label: 'check your levels',
+                  name: 'check-this',
+                  disabled: true,
+                  size: 3,
+                  type: 'checkbox',
                 },
                 {
                   label: 'Simple select (required)',
