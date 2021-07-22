@@ -11,10 +11,8 @@ export type MonacoEditorProps = {
 };
 
 export const MonacoEditor: React.FC<MonacoEditorProps> = ({
-  className,
   file,
   onChange,
-  readOnly,
 }) => {
   return (
     <SimpleMonacoEditor

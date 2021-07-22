@@ -1,10 +1,12 @@
+import loadable from '@loadable/component';
 import type { editor as EditorType } from 'monaco-editor';
 import React, { Component } from 'react';
-import ReactMonacoEditor from 'react-monaco-editor';
 import ReactResizeDetector from 'react-resize-detector';
 
 import { Editor, Monaco, MonacoFile } from '../types';
 import styles from './styles.module.scss';
+
+const ReactMonacoEditor = loadable(() => import('react-monaco-editor'));
 
 export type SimpleMonacoEditorProps = {
   file: MonacoFile;
@@ -39,7 +41,7 @@ export class SimpleMonacoEditor extends Component<SimpleMonacoEditorProps> {
       <ReactResizeDetector
         handleHeight
         handleWidth
-        onResize={(width: any, height: any) => {
+        onResize={(width: number, height: number) => {
           width > 0 && height > 0 && this.editor?.layout();
         }}
         refreshMode="debounce"
