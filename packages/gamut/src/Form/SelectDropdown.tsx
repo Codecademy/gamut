@@ -34,7 +34,7 @@ type SelectDropdownBaseProps = Omit<
 >;
 interface SelectDropdownProps
   extends SelectDropdownBaseProps,
-    Pick<NamedProps, 'onChange'>,
+    Pick<NamedProps, 'onChange' | 'isSearchable'>,
     Pick<SelectHTMLAttributes<HTMLSelectElement>, 'value' | 'disabled'> {
   inputProps?: Record<string, string | number | boolean>;
   name?: string;
@@ -59,13 +59,13 @@ const ChevronDropdown = (props: IndicatorProps<OptionTypeBase, false>) => {
 };
 
 const CustomContainer = ({ children, ...rest }: CustomContainerProps) => {
-  const { inputProps } = rest.selectProps;
+  const { inputProps, name } = rest.selectProps;
   const value = rest.hasValue ? rest.getValue()[0].value : '';
 
   return (
     <SelectContainer {...rest}>
       {children}
-      <input type="hidden" value={value} {...inputProps} />
+      <input type="hidden" value={value} name={name} {...inputProps} />
     </SelectContainer>
   );
 };
@@ -88,6 +88,23 @@ const errorColorState = (error: boolean) => {
 };
 
 const customStyles: StylesConfig<OptionTypeBase, false> = {
+  container: (provided, state) => ({
+    ...provided,
+    pointerEvents: 'visible',
+    cursor: state.selectProps.isSearchable ? 'text' : 'pointer',
+    width: '100%',
+    minWidth: '7rem',
+  }),
+
+  control: (provided, state) => ({
+    ...selectBaseStyles({
+      error: state.selectProps.error,
+      activated: state.selectProps.activated,
+      isFocused: state.isFocused,
+      isDisabled: state.isDisabled,
+    }),
+  }),
+
   dropdownIndicator: (provided, state) => ({
     color: errorColorState(state.selectProps.error),
     display: 'flex',
@@ -95,12 +112,9 @@ const customStyles: StylesConfig<OptionTypeBase, false> = {
     pointerEvents: 'none',
   }),
 
-  container: (provided) => ({
-    ...provided,
-    pointerEvents: 'visible',
-    cursor: 'pointer',
-    width: '100%',
-    minWidth: '7rem',
+  input: (provided, state) => ({
+    padding: '0',
+    margin: '0',
   }),
 
   menu: (provided, state) => ({
@@ -120,15 +134,6 @@ const customStyles: StylesConfig<OptionTypeBase, false> = {
     },
   }),
 
-  control: (provided, state) => ({
-    ...selectBaseStyles({
-      error: state.selectProps.error,
-      activated: state.selectProps.activated,
-      isFocused: state.isFocused,
-      isDisabled: state.isDisabled,
-    }),
-  }),
-
   singleValue: (provided, state) => ({
     color: errorColorState(state.selectProps.error),
     display: 'flex',
@@ -142,7 +147,6 @@ const customStyles: StylesConfig<OptionTypeBase, false> = {
 
 const defaultProps = {
   name: undefined,
-  isSearchable: false,
   isMulti: false,
   styles: customStyles,
   components: {
@@ -162,6 +166,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
   name,
   placeholder = 'Select an option',
   inputProps,
+  isSearchable = false,
   ...rest
 }) => {
   const [activated, setActivated] = useState(false);
@@ -199,6 +204,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
       isDisabled={disabled}
       options={selectOptions}
       placeholder={placeholder}
+      isSearchable={isSearchable}
       {...rest}
     />
   );
