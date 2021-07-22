@@ -17,7 +17,7 @@ export interface FormGroupProps
   className?: string;
   description?: string;
   showRequired?: boolean;
-  error?: string;
+  error?: string | JSX.Element;
   disabled?: boolean;
   labelSize?: 'small' | 'large';
   tooltip?: ToolTipProps;
@@ -71,5 +71,13 @@ export const FormGroup: React.FC<FormGroupProps> = ({
       {children}
       {error && <FormError aria-live="polite">{error}</FormError>}
     </FormGroupContainer>
+  );
+};
+
+const Hey = () => {
+  return (
+    <FormGroup label="faksdfsa" error={<>Hey</>}>
+      <div />
+    </FormGroup>
   );
 };
