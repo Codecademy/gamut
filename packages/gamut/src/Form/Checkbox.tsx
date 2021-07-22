@@ -95,7 +95,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
 
     const changeHandler = (event: ChangeEvent<HTMLInputElement>) => {
       onChange?.(event);
-      if (checked === undefined) setCurrentlyChecked(event.target.checked);
+      setCurrentlyChecked(event.target.checked);
     };
 
     return (
