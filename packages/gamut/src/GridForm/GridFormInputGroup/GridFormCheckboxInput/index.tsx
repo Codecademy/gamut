@@ -24,11 +24,11 @@ export const GridFormCheckboxInput: React.FC<GridFormCheckboxInputProps> = ({
       control={control}
       defaultValue={Boolean(field.defaultValue)}
       name={field.name}
-      render={({ onChange }) => (
+      render={({ onChange, value }) => (
         <>
           <Checkbox
+            checked={value}
             className={className}
-            defaultChecked={field.defaultValue}
             disabled={field.disabled}
             htmlFor={field.name}
             name={field.name}
