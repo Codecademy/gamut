@@ -7,7 +7,7 @@
   "module": "dist/index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Codecademy/client-modules.git"
+    "url": "git+https://github.com/Codecademy/client-modules/packages/monaco.git"
   },
   "peerDependencies": {
     "react": ">=16.8.1",
@@ -30,5 +30,8 @@
     "build:watch": "yarn build && onchange ./src -- yarn build:compile && yarn build:types",
     "lernaBuildTask": "yarn build"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  }
 }
