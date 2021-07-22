@@ -19,6 +19,10 @@ export const sharedStates = system.states({
     width: 1,
     height: 1,
   },
+  context: {
+    position: 'relative',
+    zIndex: 1,
+  },
   'no-select': {
     WebkitTouchCallout: 'none',
     userSelect: 'none',
