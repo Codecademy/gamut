@@ -3,6 +3,8 @@ import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 
+import { CustomCheckbox } from './examples';
+
 <Meta
   title={title}
   component={Checkbox}
@@ -86,3 +88,46 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
     {(args) => <Checkbox {...args} />}
   </Story> */}
 </Canvas>
+
+### Controlled Checkboxes
+
+Our Checkboxes are [controlled components](https://reactjs.org/docs/forms.html#controlled-components), so their checked value must be controlled by an external state and onChange, like so:
+
+<Canvas>
+  <CustomCheckbox />
+</Canvas>
+
+```tsx
+import { Checkbox, FormGroup } from '@codecademy/gamut';
+import React, { ChangeEvent, useState } from 'react';
+
+type CustomCheckboxProps = {
+  defaultChecked?: boolean;
+  errorMessage?: string;
+  disabled?: boolean;
+};
+
+export const CustomCheckbox: React.FC<CustomCheckboxProps> = ({
+  defaultChecked = false,
+  errorMessage,
+  disabled,
+}) => {
+  const [currentChecked, setCurrentChecked] = useState(defaultChecked);
+
+  const changeHandler = (event: ChangeEvent<HTMLElement>) => {
+    setCurrentChecked(!currentChecked);
+  };
+
+  return (
+    <FormGroup htmlFor="this-checkbox" error={errorMessage} disabled={disabled}>
+      <Checkbox
+        htmlFor="this-checkbox"
+        onChange={changeHandler}
+        label="i am a checkbox!"
+        disabled={disabled}
+        checked={currentChecked}
+      />
+    </FormGroup>
+  );
+};
+```
