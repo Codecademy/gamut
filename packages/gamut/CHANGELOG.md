@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [35.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@35.1.1...@codecademy/gamut@35.2.0) (2021-07-22)
+
+
+### Features
+
+* **progress bar:** overrides bg color to transparent when pattern is defined ([f845288](https://github.com/Codecademy/client-modules/commit/f84528863e456028d2c1bdae016616c010650729))
+
+
+
 ### [35.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@35.1.0...@codecademy/gamut@35.1.1) (2021-07-22)
 
 
