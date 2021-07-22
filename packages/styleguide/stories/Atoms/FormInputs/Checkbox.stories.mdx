@@ -22,7 +22,7 @@ import { CustomCheckbox } from './examples';
 />
 
 <Canvas>
-  <Story name="Checkbox">{(args) => <Checkbox {...args} />}</Story>
+  <Story name="Checkbox">{(args) => <Checkbox checked {...args} />}</Story>
 </Canvas>
 
 <PropsTable story="Checkbox" />
@@ -34,9 +34,9 @@ import { CustomCheckbox } from './examples';
     name="Checked"
     args={{
       htmlFor: 'example-checked',
-      label: 'Checked',
+      label: 'unchecked',
       name: 'example-checked',
-      checked: true,
+      checked: false,
     }}
   >
     {(args) => <Checkbox {...args} />}
@@ -48,9 +48,14 @@ import { CustomCheckbox } from './examples';
       label: 'Disabled',
       name: 'example-disabled',
       disabled: true,
+            checked: false,
+
     }}
-  >
+
+>
+
     {(args) => <Checkbox {...args} />}
+
   </Story>
   <Story
     name="Checked + Disabled"
@@ -72,6 +77,7 @@ import { CustomCheckbox } from './examples';
       label:
         'I am a longer label and will displayed at a smaller size in order to conserve valuable space.  This can be used to display some disclaimer about terms or conditions that might be a bit too long for a normal label area',
       multiline: true,
+      checked: false,
     }}
   >
     {(args) => <Checkbox {...args} />}
