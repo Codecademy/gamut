@@ -19,6 +19,7 @@ import {
 } from './styles/shared-system-props';
 
 export type CheckboxProps = InputHTMLAttributes<HTMLInputElement> & {
+  checked: boolean;
   multiline?: boolean;
   className?: string;
   htmlFor: string;
