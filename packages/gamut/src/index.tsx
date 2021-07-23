@@ -37,6 +37,7 @@ export * from './NotificationList/NotificationItem';
 export * from './Overlay';
 export * from './Pattern';
 export * from './ProgressBar';
+export * from './ProvidedForm';
 export * from './RadialProgress';
 export * from './SkipToContent';
 export * from './Spinner';
