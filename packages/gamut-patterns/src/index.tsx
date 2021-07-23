@@ -1,2 +1,2 @@
 export * from './patterns';
-export { PatternProps } from './props';
+export * from './types';
