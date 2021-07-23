@@ -871,7 +871,440 @@ When using the left-aligned layout, please note that the `title` takes up 3 colu
                 },
               ],
             },
+            {
+              title: 'custom section',
+              layout: { size: 4 },
+              variant: 'title-xs',
+              fields: [
+                {
+                  label: 'hi?',
+                  name: 'text01-custom-section',
+                  size: 12,
+                  type: 'text',
+                  validation: {
+                    required: true,
+                  },
+                },
+                {
+                  label: 'hello?',
+                  name: 'text02-custom-section',
+                  size: 12,
+                  type: 'text',
+                  validation: {
+                    required: true,
+                  },
+                },
+                {
+                  label: 'Write a paragraph.',
+                  name: 'paragraph01-custom-section',
+                  size: 12,
+                  type: 'textarea',
+                  validation: {
+                    required: 'Please write something about penguins!',
+                  },
+                },
+              ],
+            },
+            {
+              title: 'custom section 2',
+              layout: { size: 4 },
+              variant: 'title-xs',
+              fields: [
+                {
+                  label: 'hi?',
+                  name: 'text01-custom-section-2',
+                  size: 12,
+                  type: 'text',
+                  validation: {
+                    required: true,
+                  },
+                },
+                {
+                  label: 'hello?',
+                  name: 'text02-custom-section-2',
+                  size: 12,
+                  type: 'text',
+                  validation: {
+                    required: true,
+                  },
+                },
+                {
+                  label: 'Write a paragraph.',
+                  name: 'paragraph01-custom-section-2',
+                  size: 12,
+                  type: 'textarea',
+                  validation: {
+                    required: 'Please write something about penguins!',
+                  },
+                },
+              ],
+            },
+            {
+              title: 'custom section-3',
+              layout: { size: 4 },
+              variant: 'title-xs',
+              fields: [
+                {
+                  label: 'hi?',
+                  name: 'text01-custom-section-3',
+                  size: 12,
+                  type: 'text',
+                  validation: {
+                    required: true,
+                  },
+                },
+                {
+                  label: 'hello?',
+                  name: 'text02-custom-section-3',
+                  size: 12,
+                  type: 'text',
+                  validation: {
+                    required: true,
+                  },
+                },
+                {
+                  label: 'Write a paragraph.',
+                  name: 'paragraph01-custom-section-3',
+                  size: 12,
+                  type: 'textarea',
+                  validation: {
+                    required: 'Please write something about penguins!',
+                  },
+                },
+              ],
+            },
+            {
+              title: 'custom section-4',
+              layout: { size: 4 },
+              variant: 'title-xs',
+              fields: [
+                {
+                  label: 'hi?',
+                  name: 'text01-custom-section-4',
+                  size: 12,
+                  type: 'text',
+                  validation: {
+                    required: true,
+                  },
+                },
+                {
+                  label: 'hello?',
+                  name: 'text02-custom-section-4',
+                  size: 12,
+                  type: 'text',
+                  validation: {
+                    required: true,
+                  },
+                },
+                {
+                  label: 'Write a paragraph.',
+                  name: 'paragraph01-custom-section-4',
+                  size: 12,
+                  type: 'textarea',
+                  validation: {
+                    required: 'Please write something about penguins!',
+                  },
+                },
+              ],
+            },
+            {
+              title: 'custom section-5',
+              layout: { size: 4 },
+              variant: 'title-xs',
+              fields: [
+                {
+                  label: 'hi?',
+                  name: 'text01-custom-section-5',
+                  size: 12,
+                  type: 'text',
+                  validation: {
+                    required: true,
+                  },
+                },
+                {
+                  label: 'hello?',
+                  name: 'text02-custom-section-5',
+                  size: 12,
+                  type: 'text',
+                  validation: {
+                    required: true,
+                  },
+                },
+                {
+                  label: 'Write a paragraph.',
+                  name: 'paragraph01-custom-section-5',
+                  size: 12,
+                  type: 'textarea',
+                  validation: {
+                    required: 'Please write something about penguins!',
+                  },
+                },
+              ],
+            },
+            {
+              title: 'custom section-6',
+              layout: { size: 4 },
+              variant: 'title-xs',
+              fields: [
+                {
+                  label: 'hi?',
+                  name: 'text01-custom-section-6',
+                  size: 12,
+                  type: 'text',
+                  validation: {
+                    required: true,
+                  },
+                },
+                {
+                  label: 'hello?',
+                  name: 'text02-custom-section-6',
+                  size: 12,
+                  type: 'text',
+                  validation: {
+                    required: true,
+                  },
+                },
+                {
+                  label: 'Write a paragraph.',
+                  name: 'paragraph01-custom-section-6',
+                  size: 12,
+                  type: 'textarea',
+                  validation: {
+                    required: 'Please write something about penguins!',
+                  },
+                },
+              ],
+            },
           ]}
+          sectionGap={48}
+          onSubmit={async (values) => {
+            action('Form Submitted')(values);
+          }}
+          submit={{
+            contents: 'Submit me',
+            size: 12,
+          }}
+          validation="onSubmit"
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
+blah blah blah another thing blah blah blah blah
+
+<Canvas>
+  <Story name="Sections ii">
+    {(args) => {
+      return (
+        <GridForm
+          fields={[
+            {
+              title: 'custom section',
+              layout: { size: 4 },
+              variant: 'title-xs',
+              fields: [
+                {
+                  label: 'hi?',
+                  name: 'text01-custom-section',
+                  size: 12,
+                  type: 'text',
+                  validation: {
+                    required: true,
+                  },
+                },
+                {
+                  label: 'hello?',
+                  name: 'text02-custom-section',
+                  size: 12,
+                  type: 'text',
+                  validation: {
+                    required: true,
+                  },
+                },
+                {
+                  label: 'Write a paragraph.',
+                  name: 'paragraph01-custom-section',
+                  size: 12,
+                  type: 'textarea',
+                  validation: {
+                    required: 'Please write something about penguins!',
+                  },
+                },
+              ],
+            },
+            {
+              title: 'custom section 2',
+              layout: { size: 4 },
+              variant: 'title-xs',
+              fields: [
+                {
+                  label: 'hi?',
+                  name: 'text01-custom-section-2',
+                  size: 12,
+                  type: 'text',
+                  validation: {
+                    required: true,
+                  },
+                },
+                {
+                  label: 'hello?',
+                  name: 'text02-custom-section-2',
+                  size: 12,
+                  type: 'text',
+                  validation: {
+                    required: true,
+                  },
+                },
+                {
+                  label: 'Write a paragraph.',
+                  name: 'paragraph01-custom-section-2',
+                  size: 12,
+                  type: 'textarea',
+                  validation: {
+                    required: 'Please write something about penguins!',
+                  },
+                },
+              ],
+            },
+            {
+              title: 'custom section-3',
+              layout: { size: 4 },
+              variant: 'title-xs',
+              fields: [
+                {
+                  label: 'hi?',
+                  name: 'text01-custom-section-3',
+                  size: 12,
+                  type: 'text',
+                  validation: {
+                    required: true,
+                  },
+                },
+                {
+                  label: 'hello?',
+                  name: 'text02-custom-section-3',
+                  size: 12,
+                  type: 'text',
+                  validation: {
+                    required: true,
+                  },
+                },
+                {
+                  label: 'Write a paragraph.',
+                  name: 'paragraph01-custom-section-3',
+                  size: 12,
+                  type: 'textarea',
+                  validation: {
+                    required: 'Please write something about penguins!',
+                  },
+                },
+              ],
+            },
+            {
+              title: 'custom section-4',
+              layout: { size: 4 },
+              variant: 'title-xs',
+              fields: [
+                {
+                  label: 'hi?',
+                  name: 'text01-custom-section-4',
+                  size: 12,
+                  type: 'text',
+                  validation: {
+                    required: true,
+                  },
+                },
+                {
+                  label: 'hello?',
+                  name: 'text02-custom-section-4',
+                  size: 12,
+                  type: 'text',
+                  validation: {
+                    required: true,
+                  },
+                },
+                {
+                  label: 'Write a paragraph.',
+                  name: 'paragraph01-custom-section-4',
+                  size: 12,
+                  type: 'textarea',
+                  validation: {
+                    required: 'Please write something about penguins!',
+                  },
+                },
+              ],
+            },
+            {
+              title: 'custom section-5',
+              layout: { size: 4 },
+              variant: 'title-xs',
+              fields: [
+                {
+                  label: 'hi?',
+                  name: 'text01-custom-section-5',
+                  size: 12,
+                  type: 'text',
+                  validation: {
+                    required: true,
+                  },
+                },
+                {
+                  label: 'hello?',
+                  name: 'text02-custom-section-5',
+                  size: 12,
+                  type: 'text',
+                  validation: {
+                    required: true,
+                  },
+                },
+                {
+                  label: 'Write a paragraph.',
+                  name: 'paragraph01-custom-section-5',
+                  size: 12,
+                  type: 'textarea',
+                  validation: {
+                    required: 'Please write something about penguins!',
+                  },
+                },
+              ],
+            },
+            {
+              title: 'custom section-6',
+              layout: { size: 4 },
+              variant: 'title-xs',
+              fields: [
+                {
+                  label: 'hi?',
+                  name: 'text01-custom-section-6',
+                  size: 12,
+                  type: 'text',
+                  validation: {
+                    required: true,
+                  },
+                },
+                {
+                  label: 'hello?',
+                  name: 'text02-custom-section-6',
+                  size: 12,
+                  type: 'text',
+                  validation: {
+                    required: true,
+                  },
+                },
+                {
+                  label: 'Write a paragraph.',
+                  name: 'paragraph01-custom-section-6',
+                  size: 12,
+                  type: 'textarea',
+                  validation: {
+                    required: 'Please write something about penguins!',
+                  },
+                },
+              ],
+            },
+          ]}
+          rowGap={32}
           sectionGap={48}
           onSubmit={async (values) => {
             action('Form Submitted')(values);

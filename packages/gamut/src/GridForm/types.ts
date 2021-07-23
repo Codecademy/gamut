@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import { UseFormMethods, ValidationRules } from 'react-hook-form';
 
-import { ColumnProps } from '../Layout';
+import { ColumnProps, LayoutGridProps } from '../Layout';
 import { ToolTipProps } from '../ToolTip';
 import { TextProps } from '../Typography/Text';
 
@@ -149,10 +149,17 @@ type RestrictedTitleVariant = FilterNestedEnumByPrefix<
   'title'
 >;
 
+type GridFormCustomSectionLayout = {
+  size?: ColumnProps['size'];
+  rowspan?: ColumnProps['rowspan'];
+  rowGap?: LayoutGridProps['rowGap'];
+  columnGap?: LayoutGridProps['columnGap'];
+};
+
 export type GridFormSectionTitleBaseProps = RestrictedTitleVariant & {
   title: string;
   as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
-  layout?: 'center' | 'left';
+  layout?: 'center' | 'left' | GridFormCustomSectionLayout;
 };
 
 export type GridFormSectionProps = GridFormSectionTitleBaseProps & {
@@ -160,3 +167,13 @@ export type GridFormSectionProps = GridFormSectionTitleBaseProps & {
 };
 
 export type GridFormFieldsProps = GridFormField | GridFormSectionProps;
+
+export const typeCheckLayout = (
+  layout: GridFormSectionTitleBaseProps['layout'],
+  dim: 'size' | 'rowspan'
+) => {
+  if (typeof layout === 'object' && layout[dim]) {
+    return layout[dim];
+  }
+  return null;
+};

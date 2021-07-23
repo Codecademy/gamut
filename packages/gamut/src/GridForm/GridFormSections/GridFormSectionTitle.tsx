@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Column } from '../../Layout/Column';
 import { Text } from '../../Typography/Text';
-import { GridFormSectionTitleBaseProps } from '../types';
+import { GridFormSectionTitleBaseProps, typeCheckLayout } from '../types';
 
 export type GridFormSectionTitleProps = GridFormSectionTitleBaseProps & {
   numberOfFields: number;
@@ -15,8 +15,11 @@ export const GridFormSectionTitle: React.FC<GridFormSectionTitleProps> = ({
   numberOfFields,
   variant,
 }) => {
-  const size = layout === 'center' ? 12 : 3;
-  const rowspan = layout === 'center' ? 1 : numberOfFields;
+  const size = typeCheckLayout(layout, 'size') ?? layout === 'center' ? 12 : 3;
+  const rowspan =
+    typeCheckLayout(layout, 'rowspan') ?? layout === 'center'
+      ? 1
+      : numberOfFields;
 
   return (
     <Column
