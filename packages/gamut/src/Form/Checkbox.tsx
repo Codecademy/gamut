@@ -19,10 +19,6 @@ import {
 } from './styles/shared-system-props';
 
 export type CheckboxProps = InputHTMLAttributes<HTMLInputElement> & {
-  /**
-   * Checked is required. Not supplying this prop with an onChange will result in a read-only checkbox.
-   */
-  checked: boolean;
   multiline?: boolean;
   className?: string;
   /**

@@ -18,12 +18,14 @@ import { CheckboxExample } from './examples';
     htmlFor: 'example-checkbox',
     label: 'A Checkbox Label',
     name: 'example-checkbox',
+    checked: true,
     readOnly: true,
+    onChange: () => {},
   }}
 />
 
 <Canvas>
-  <Story name="Checkbox">{(args) => <Checkbox checked {...args} />}</Story>
+  <Story name="Checkbox">{(args) => <Checkbox {...args} />}</Story>
 </Canvas>
 
 <PropsTable story="Checkbox" />
@@ -76,11 +78,11 @@ const CustomCheckbox: React.FC<CustomCheckboxProps> = ({
 
 <Canvas>
   <Story
-    name="Checked"
+    name="Unchecked"
     args={{
-      htmlFor: 'example-checked',
+      htmlFor: 'example-unchecked',
       label: 'unchecked',
-      name: 'example-checked',
+      name: 'example-unchecked',
       checked: false,
     }}
   >
