@@ -2,6 +2,7 @@
 import {
   Box,
   Checkbox,
+  CheckboxProps,
   Column,
   FormGroup,
   LayoutGrid,
@@ -9,12 +10,9 @@ import {
 import { Background, ColorMode } from '@codecademy/gamut-styles/src';
 import React, { ChangeEvent, useState } from 'react';
 
-type CustomCheckboxProps = {
-  htmlFor: string;
-  label: string;
+type CustomCheckboxProps = Omit<CheckboxProps, 'checked'> & {
   defaultChecked?: boolean;
   errorMessage?: string;
-  disabled?: boolean;
 };
 
 const CustomCheckbox: React.FC<CustomCheckboxProps> = ({
@@ -23,6 +21,7 @@ const CustomCheckbox: React.FC<CustomCheckboxProps> = ({
   defaultChecked = false,
   errorMessage,
   disabled,
+  ...rest
 }) => {
   const [currentChecked, setCurrentChecked] = useState(defaultChecked);
 
@@ -38,6 +37,7 @@ const CustomCheckbox: React.FC<CustomCheckboxProps> = ({
         label={label}
         disabled={disabled}
         checked={currentChecked}
+        {...rest}
       />
     </FormGroup>
   );
@@ -51,7 +51,8 @@ export const CheckboxExample = () => {
           <Column size={4}>
             <CustomCheckbox
               htmlFor="a custom checkbox"
-              label="a fancy custom checkbox"
+              label="a fancy custom checkbox made with the example below, isn't it so so nice?"
+              multiline
             />
           </Column>
           <Column size={4}>

@@ -29,28 +29,26 @@ import { CheckboxExample } from './examples';
 
 ### Controlled Checkboxes
 
-Our Checkboxes are [controlled components](https://reactjs.org/docs/forms.html#controlled-components), so their checked value must be controlled by an external state and onChange, like so:
+Our Checkboxes are [controlled components](https://reactjs.org/docs/forms.html#controlled-components), so their checked value must be controlled by an external state and onChange, for example:
 
 <CheckboxExample />
 
 ```tsx
-import { Checkbox, FormGroup } from '@codecademy/gamut';
+import { Checkbox, CheckboxProps, FormGroup } from '@codecademy/gamut';
 import React, { ChangeEvent, useState } from 'react';
 
-type CustomCheckboxProps = {
-  htmlFor: string;
-  label: string;
+type CustomCheckboxProps = Omit<CheckboxProps, 'checked'> & {
   defaultChecked?: boolean;
   errorMessage?: string;
-  disabled?: boolean;
 };
 
-export const CustomCheckbox: React.FC<CustomCheckboxProps> = ({
+const CustomCheckbox: React.FC<CustomCheckboxProps> = ({
   htmlFor,
   label,
   defaultChecked = false,
   errorMessage,
   disabled,
+  ...rest
 }) => {
   const [currentChecked, setCurrentChecked] = useState(defaultChecked);
 
@@ -66,6 +64,7 @@ export const CustomCheckbox: React.FC<CustomCheckboxProps> = ({
         label={label}
         disabled={disabled}
         checked={currentChecked}
+        {...rest}
       />
     </FormGroup>
   );
