@@ -1,4 +1,4 @@
-import { BetaSticker, Text } from '@codecademy/gamut/src';
+import { BetaSticker } from '@codecademy/gamut/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
@@ -11,23 +11,11 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
     source: 'gamut',
     status: 'current',
   }}
-  args={{ backgroundColor: 'white' }}
+  args={{}}
 />
 
 <Canvas withSource="open">
-  <Story name="Default">{(args) => <BetaSticker {...args} />}</Story>
+  <Story name="BetaSticker">{(args) => <BetaSticker {...args} />}</Story>
 </Canvas>
 
-<PropsTable story="Default" />
-
-<Canvas>
-  <Story name="Color">
-    {(args) => {
-      return (
-        <Text color="hyper">
-          <BetaSticker {...args} />
-        </Text>
-      );
-    }}
-  </Story>
-</Canvas>
+<PropsTable story="BetaSticker" />
