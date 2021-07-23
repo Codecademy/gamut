@@ -2,12 +2,16 @@ import { Checkbox, FormGroup } from '@codecademy/gamut';
 import React, { ChangeEvent, useState } from 'react';
 
 type CustomCheckboxProps = {
+  htmlFor: string;
+  label: string;
   defaultChecked?: boolean;
   errorMessage?: string;
   disabled?: boolean;
 };
 
 export const CustomCheckbox: React.FC<CustomCheckboxProps> = ({
+  htmlFor,
+  label,
   defaultChecked = false,
   errorMessage,
   disabled,
@@ -19,11 +23,11 @@ export const CustomCheckbox: React.FC<CustomCheckboxProps> = ({
   };
 
   return (
-    <FormGroup htmlFor="this-checkbox" error={errorMessage} disabled={disabled}>
+    <FormGroup htmlFor={htmlFor} error={errorMessage} disabled={disabled}>
       <Checkbox
-        htmlFor="this-checkbox"
+        htmlFor={htmlFor}
         onChange={changeHandler}
-        label="i am a checkbox!"
+        label={label}
         disabled={disabled}
         checked={currentChecked}
       />

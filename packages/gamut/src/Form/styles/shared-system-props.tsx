@@ -226,7 +226,7 @@ export const checkboxLabel = system.css({
   m: 4,
   px: 0,
   py: 16,
-  ...formBaseComponentStyles,
+  ...formBaseStyles,
 });
 
 export const checkboxLabelStates = system.states({

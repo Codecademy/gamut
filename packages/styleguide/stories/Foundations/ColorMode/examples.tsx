@@ -130,6 +130,7 @@ const renderInputs = () => {
           htmlFor="example-checkbox"
           label="ain't i neat?"
           name="example-checkbox"
+          checked
         />
       </FormGroup>
     </GridBox>
