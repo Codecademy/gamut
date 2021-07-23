@@ -73,11 +73,3 @@ export const FormGroup: React.FC<FormGroupProps> = ({
     </FormGroupContainer>
   );
 };
-
-const Hey = () => {
-  return (
-    <FormGroup label="faksdfsa" error={<>Hey</>}>
-      <div />
-    </FormGroup>
-  );
-};

@@ -5,6 +5,11 @@ import { ColumnProps } from '../Layout';
 import { ToolTipProps } from '../ToolTip';
 import { TextProps } from '../Typography/Text';
 
+export type customError = {
+  message: string | JSX.Element;
+  onFailedValidation?: boolean;
+};
+
 export type BaseFormField<Value> = {
   defaultValue?: Value;
   customError?: string;

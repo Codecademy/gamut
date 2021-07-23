@@ -12,6 +12,8 @@ import { action } from '@storybook/addon-actions';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 import { useState } from '@storybook/addons';
 
+import { Hey } from './examples';
+
 <Meta
   title={title}
   component={GridForm}
@@ -902,7 +904,10 @@ A field can take a custom error in addition to validation errors. The validation
               name: 'custom-error',
               size: 5,
               type: 'text',
-              customError: 'NOT Flexo.',
+              customError: {
+                message: <>i'm custom</>,
+                onFailedValidation: true,
+              },
               validation: {
                 required: true,
                 pattern: {
@@ -988,4 +993,8 @@ We call it a "sweet container" so that bots do not immediately detect it as a ho
       />
     )}
   </Story>
+</Canvas>
+
+<Canvas>
+  <Hey />
 </Canvas>
