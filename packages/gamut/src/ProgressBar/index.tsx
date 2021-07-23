@@ -80,6 +80,17 @@ const progressBarBackgroundVariants = variant({
   },
 });
 
+const progressBarBackgroundOverride = variant({
+  defaultVariant: 'none',
+  prop: 'backgroundOverride',
+  variants: {
+    pattern: {
+      bg: 'transparent',
+    },
+    none: {},
+  },
+});
+
 const progressBarBorderVariants = variant({
   defaultVariant: 'basic',
   prop: 'border',
@@ -128,6 +139,7 @@ type ProgressBarElementProps = Pick<ProgressBarProps, 'variant' | 'size'>;
 
 type ProgressBarElementWrapperProps = ProgressBarElementProps & {
   border: 'basic' | 'bordered';
+  backgroundOverride: 'pattern' | 'none';
 };
 
 const ProgressBarWrapper = styled.div<ProgressBarElementWrapperProps>`
@@ -136,6 +148,7 @@ const ProgressBarWrapper = styled.div<ProgressBarElementWrapperProps>`
   ${progressBarBackgroundVariants};
   ${progressBarSizeVariants};
   ${progressBarBorderVariants};
+  ${progressBarBackgroundOverride};
 `;
 
 const Bar = styled.div(progressBarForegroundVariants);
@@ -163,6 +176,7 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
       border={bordered ? 'bordered' : 'basic'}
       size={size}
       variant={variant}
+      backgroundOverride={pattern ? 'pattern' : 'none'}
     >
       {pattern && (
         <Pattern width="100%" position="absolute" zIndex={0} name={pattern} />
