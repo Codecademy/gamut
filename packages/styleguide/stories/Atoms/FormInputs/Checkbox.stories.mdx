@@ -1,9 +1,9 @@
-import { Box, Checkbox } from '@codecademy/gamut';
+import { Checkbox } from '@codecademy/gamut';
 import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 
-import { CustomCheckbox } from './examples';
+import { CheckboxExample } from './examples';
 
 <Meta
   title={title}
@@ -31,13 +31,7 @@ import { CustomCheckbox } from './examples';
 
 Our Checkboxes are [controlled components](https://reactjs.org/docs/forms.html#controlled-components), so their checked value must be controlled by an external state and onChange, like so:
 
-<Box display="flex" alignItems="center" bg="white" border={1} p={36}>
-  <CustomCheckbox htmlFor="a custom checkbox" label="a fancy custom checkbox" />
-  <CustomCheckbox
-    htmlFor="a custom checkbox again"
-    label="another fancy custom checkbox"
-  />
-</Box>
+<CheckboxExample />
 
 ```tsx
 import { Checkbox, FormGroup } from '@codecademy/gamut';

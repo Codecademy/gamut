@@ -1,4 +1,12 @@
-import { Checkbox, FormGroup } from '@codecademy/gamut';
+/* eslint-disable local-rules/gamut-import-paths */
+import {
+  Box,
+  Checkbox,
+  Column,
+  FormGroup,
+  LayoutGrid,
+} from '@codecademy/gamut/src';
+import { Background, ColorMode } from '@codecademy/gamut-styles/src';
 import React, { ChangeEvent, useState } from 'react';
 
 type CustomCheckboxProps = {
@@ -9,7 +17,7 @@ type CustomCheckboxProps = {
   disabled?: boolean;
 };
 
-export const CustomCheckbox: React.FC<CustomCheckboxProps> = ({
+const CustomCheckbox: React.FC<CustomCheckboxProps> = ({
   htmlFor,
   label,
   defaultChecked = false,
@@ -32,5 +40,38 @@ export const CustomCheckbox: React.FC<CustomCheckboxProps> = ({
         checked={currentChecked}
       />
     </FormGroup>
+  );
+};
+
+export const CheckboxExample = () => {
+  return (
+    <ColorMode mode="light">
+      <Box bg="background" border={1} p={16}>
+        <LayoutGrid>
+          <Column size={4}>
+            <CustomCheckbox
+              htmlFor="a custom checkbox"
+              label="a fancy custom checkbox"
+            />
+          </Column>
+          <Column size={4}>
+            <CustomCheckbox
+              htmlFor="a custom checkbox again"
+              label="disabled custom checkbox"
+              defaultChecked
+              disabled
+            />
+          </Column>
+          <Column size={4}>
+            <Background bg="black" pl={8}>
+              <CustomCheckbox
+                htmlFor="a custom checkbox the third"
+                label="a dark mode fancy checkbox"
+              />
+            </Background>
+          </Column>
+        </LayoutGrid>
+      </Box>
+    </ColorMode>
   );
 };
