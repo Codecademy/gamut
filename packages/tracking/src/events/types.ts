@@ -59,7 +59,7 @@ export type EventDataTypes = {
     course_page_visited: CoursePageVisitedData;
   };
   // Business specific events
-  business_reporting: {
+  business: {
     filter_event: BusinessFilterData;
     search_event: BusinessSearchData;
   };
