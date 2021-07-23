@@ -1,1 +1,1 @@
-export { PatternProps } from './props';
+export type { PatternProps } from './props';
