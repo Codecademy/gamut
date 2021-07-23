@@ -14,13 +14,12 @@
     "react-dom": ">=16.8.1"
   },
   "dependencies": {
-    "@loadable/component": "5.10.1",
+    "@codecademy/gamut": "35.2.0",
     "monaco-editor": "0.20.0",
     "react-monaco-editor": "0.34.0",
     "react-resize-detector": "5.2.0"
   },
   "devDependencies": {
-    "@types/loadable__component": "5.13.3",
     "@types/react-resize-detector": "5.0.0",
     "monaco-editor-webpack-plugin": "1.9.1"
   },
