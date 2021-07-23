@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [42.1.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@42.1.1...@codecademy/styleguide@42.1.2) (2021-07-22)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [42.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@42.1.0...@codecademy/styleguide@42.1.1) (2021-07-22)
+
+
+### Bug Fixes
+
+* **SelectDropdown:** Fix axe accessibility input issue + styling inconsistencies ([b6cf7ca](https://github.com/Codecademy/client-modules/commit/b6cf7ca984c1faa32f1de4fa0c51f0b1eaa5aa7b))
+
+
+
 ## [42.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@42.0.1...@codecademy/styleguide@42.1.0) (2021-07-19)
 
 
