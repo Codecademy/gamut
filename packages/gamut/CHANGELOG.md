@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [35.3.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@35.3.0...@codecademy/gamut@35.3.1) (2021-07-26)
+
+
+### Bug Fixes
+
+* **Alert:** Vertically centering alert CTA button ([decb56d](https://github.com/Codecademy/client-modules/commit/decb56df23150abfc74875361e8f8d79baa81a76))
+
+
+
+## [35.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@35.2.0...@codecademy/gamut@35.3.0) (2021-07-26)
+
+
+### Features
+
+* **BetaSticker:** Add beta sticker ([a1d3470](https://github.com/Codecademy/client-modules/commit/a1d3470c57d6aace31e3c255e6e1f3175844db00))
+
+
+
 ## [35.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@35.1.1...@codecademy/gamut@35.2.0) (2021-07-22)
 
 
