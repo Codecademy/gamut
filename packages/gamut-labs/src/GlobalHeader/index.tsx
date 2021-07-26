@@ -1,5 +1,5 @@
 import { Box } from '@codecademy/gamut';
-import { system, themed, transitionConcat } from '@codecademy/gamut-styles';
+import { system, transitionConcat } from '@codecademy/gamut-styles';
 import { useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
 import React, { useCallback, useEffect, useState } from 'react';
