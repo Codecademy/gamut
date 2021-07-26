@@ -140,7 +140,7 @@ export const Alert: React.FC<AlertProps> = ({
         {content}
       </CollapsableContent>
       <Box>{expandButton}</Box>
-      <Box>{ctaButton}</Box>
+      <Box alignSelf="center">{ctaButton}</Box>
       {onClose && (
         <IconButton
           tabIndex={tabIndex}
