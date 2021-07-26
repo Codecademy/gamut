@@ -91,10 +91,6 @@ const getMobileAppHeaderItems = (
   }
 };
 
-const StyledBox = styled(Box)`
-  z-index: ${themed('elements.headerZ')};
-`;
-
 const HeaderContainer = styled(Box)(
   system.css({
     borderBottom: 1,
