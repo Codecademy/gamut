@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [35.3.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@35.3.0...@codecademy/gamut@35.3.1) (2021-07-26)
+
+
+### Bug Fixes
+
+* **Alert:** Vertically centering alert CTA button ([decb56d](https://github.com/Codecademy/client-modules/commit/decb56df23150abfc74875361e8f8d79baa81a76))
+
+
+
 ## [35.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@35.2.0...@codecademy/gamut@35.3.0) (2021-07-26)
 
 
