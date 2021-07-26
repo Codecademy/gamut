@@ -24,6 +24,7 @@
   "dependencies": {
     "@codecademy/gamut-icons": "^5.7.3",
     "@codecademy/gamut-illustrations": "^0.17.12",
+    "@codecademy/gamut-patterns": "^0.4.7",
     "@codecademy/gamut-styles": "^11.6.2",
     "@codecademy/variance": "^0.17.2",
     "@types/marked": "^1.1.0",
