@@ -1,8 +1,7 @@
 import React, { Fragment } from 'react';
 import { FormProvider, Mode, SubmitHandler, useForm } from 'react-hook-form';
 
-import { Box } from '..';
-import { Column } from '..';
+import { Box, Column } from '..';
 import { ButtonProps } from '../Button/shared';
 import { Form } from '../Form';
 import { LayoutGrid, LayoutGridProps } from '../Layout';
@@ -128,7 +127,8 @@ export function GridForm<
                 if (typeof layout === 'object') {
                   return (
                     <Column size={layout.size} key={title}>
-                      <LayoutGrid
+                      <Box
+                        display="grid"
                         columnGap={layout?.columnGap ?? defaultColumnGap}
                         rowGap={layout?.rowGap ?? rowGap}
                       >
@@ -143,7 +143,7 @@ export function GridForm<
                           fields={fields}
                           showRequired={showRequired}
                         />
-                      </LayoutGrid>
+                      </Box>
                     </Column>
                   );
                 }
