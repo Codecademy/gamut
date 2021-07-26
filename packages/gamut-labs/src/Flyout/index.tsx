@@ -128,7 +128,7 @@ export const Flyout: React.FC<FlyoutProps> = ({
                 maxWidth={`${openWidth}rem`}
                 openFrom={openFrom}
                 position="fixed"
-                height="100vh"
+                bottom="0"
                 top="0"
                 {...styleProps}
               >
@@ -136,7 +136,8 @@ export const Flyout: React.FC<FlyoutProps> = ({
                   icon={MiniDeleteIcon}
                   onClick={toggleExpanded}
                   position="absolute"
-                  right="0"
+                  top="0.5rem"
+                  right="0.5rem"
                 />
                 {children}
               </DrawerBase>

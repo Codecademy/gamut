@@ -47,7 +47,7 @@ const RestrictedBackground = forwardRef<
 const GlobalPageWrapper = AppWrapper.withComponent(RestrictedBackground);
 
 export const GlobalPage: React.FC<GlobalPageProps> = ({
-  backgroundColor = 'lightBlue',
+  backgroundColor = 'background',
   children,
   contentAs = 'div',
   footer,

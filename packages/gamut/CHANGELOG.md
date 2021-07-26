@@ -3,6 +3,252 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [35.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@35.2.0...@codecademy/gamut@35.3.0) (2021-07-26)
+
+
+### Features
+
+* **BetaSticker:** Add beta sticker ([a1d3470](https://github.com/Codecademy/client-modules/commit/a1d3470c57d6aace31e3c255e6e1f3175844db00))
+
+
+
+## [35.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@35.1.1...@codecademy/gamut@35.2.0) (2021-07-22)
+
+
+### Features
+
+* **progress bar:** overrides bg color to transparent when pattern is defined ([f845288](https://github.com/Codecademy/client-modules/commit/f84528863e456028d2c1bdae016616c010650729))
+
+
+
+### [35.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@35.1.0...@codecademy/gamut@35.1.1) (2021-07-22)
+
+
+### Bug Fixes
+
+* **SelectDropdown:** Fix axe accessibility input issue + styling inconsistencies ([b6cf7ca](https://github.com/Codecademy/client-modules/commit/b6cf7ca984c1faa32f1de4fa0c51f0b1eaa5aa7b))
+
+
+
+## [35.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@35.0.1...@codecademy/gamut@35.1.0) (2021-07-19)
+
+
+### Features
+
+* **Menu:** `<Menu>` Components GM-252 ([34649cf](https://github.com/Codecademy/client-modules/commit/34649cf36dd93ccef2ee112edd778568c18cd7b5))
+
+
+
+### [35.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@35.0.0...@codecademy/gamut@35.0.1) (2021-07-19)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [35.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@34.15.0...@codecademy/gamut@35.0.0) (2021-07-19)
+
+
+### ⚠ BREAKING CHANGES
+
+* **progress bar:** reduces size of large variant, creates xl for old size
+
+### Features
+
+* **progress bar:** reduces size of large variant, creates xl for old size ([1130240](https://github.com/Codecademy/client-modules/commit/1130240873d6d369c2ff8eb98fd55edd06fccf74))
+
+
+
+## [34.15.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@34.14.4...@codecademy/gamut@34.15.0) (2021-07-16)
+
+
+### Features
+
+* **Toast:**  Allow JSX icons GM-262 ([3a14a2d](https://github.com/Codecademy/client-modules/commit/3a14a2d6592c6bf98e356483ea9bd87878f6a377))
+
+
+
+### [34.14.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@34.14.3...@codecademy/gamut@34.14.4) (2021-07-16)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [34.14.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@34.14.2...@codecademy/gamut@34.14.3) (2021-07-15)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [34.14.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@34.14.1...@codecademy/gamut@34.14.2) (2021-07-15)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [34.14.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@34.14.0...@codecademy/gamut@34.14.1) (2021-07-12)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [34.14.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@34.13.2...@codecademy/gamut@34.14.0) (2021-07-12)
+
+
+### Features
+
+* **GridFormSectionTitle:** Add Text variant to GridFormSection ([98c16e8](https://github.com/Codecademy/client-modules/commit/98c16e8fa2a5b17a789b4786bedb5284e1bc9f42))
+
+
+
+### [34.13.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@34.13.1...@codecademy/gamut@34.13.2) (2021-07-01)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [34.13.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@34.13.0...@codecademy/gamut@34.13.1) (2021-06-29)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [34.13.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@34.12.0...@codecademy/gamut@34.13.0) (2021-06-28)
+
+
+### Features
+
+* **GridForm:** Add optional sections to GridForm ([ea2b6d0](https://github.com/Codecademy/client-modules/commit/ea2b6d03312310632e71b7ed63bf7f8c09818067))
+
+
+
+## [34.12.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@34.11.0...@codecademy/gamut@34.12.0) (2021-06-28)
+
+
+### Features
+
+* enable non-nullable-type-assertion-style ([622ca70](https://github.com/Codecademy/client-modules/commit/622ca706e874c9eaa02ef0dc9d2cba409d9510d4))
+
+
+
+## [34.11.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@34.10.12...@codecademy/gamut@34.11.0) (2021-06-25)
+
+
+### Features
+
+* add idSuffix prop to Pattern ([f887926](https://github.com/Codecademy/client-modules/commit/f887926348b5e4816acbed1d72ef2e49d03e7417))
+
+
+
+### [34.10.12](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@34.10.11...@codecademy/gamut@34.10.12) (2021-06-25)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [34.10.11](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@34.10.10...@codecademy/gamut@34.10.11) (2021-06-24)
+
+
+### Bug Fixes
+
+* **Input:** add aria-hidden for to Input icons ([1f9b0fc](https://github.com/Codecademy/client-modules/commit/1f9b0fcfb241b98ae037446b3cbf2ad43443b14b))
+
+
+
+### [34.10.10](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@34.10.9...@codecademy/gamut@34.10.10) (2021-06-24)
+
+
+### Bug Fixes
+
+* FormGroupLabel Tooltip ([d9460a3](https://github.com/Codecademy/client-modules/commit/d9460a319017b2cdafea974e0a26602e281dad80))
+
+
+
+### [34.10.9](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@34.10.8...@codecademy/gamut@34.10.9) (2021-06-24)
+
+
+### Bug Fixes
+
+* Icon titleId and Size Defaults ([7f73eba](https://github.com/Codecademy/client-modules/commit/7f73eba306d7eedda32bd488b8db7b83efbc29b8))
+
+
+
+### [34.10.8](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@34.10.7...@codecademy/gamut@34.10.8) (2021-06-23)
+
+
+### Bug Fixes
+
+* ToolTip icons can't be aria-hidden ([12da9eb](https://github.com/Codecademy/client-modules/commit/12da9eb4d70bdae8f2450d119737627f646588e3))
+
+
+
+### [34.10.7](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@34.10.6...@codecademy/gamut@34.10.7) (2021-06-21)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [34.10.6](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@34.10.5...@codecademy/gamut@34.10.6) (2021-06-21)
+
+
+### Bug Fixes
+
+* **ProLabel:** add title ([9a8cb07](https://github.com/Codecademy/client-modules/commit/9a8cb073958626932b7bfd3ded7768e7e2177930))
+
+
+
+### [34.10.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@34.10.4...@codecademy/gamut@34.10.5) (2021-06-21)
+
+
+### Bug Fixes
+
+* sweet containers should not cause scroll on tab ([9f50bab](https://github.com/Codecademy/client-modules/commit/9f50bab654e749833bc867d9c8d18649dc691720))
+
+
+
+### [34.10.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@34.10.3...@codecademy/gamut@34.10.4) (2021-06-21)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [34.10.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@34.10.2...@codecademy/gamut@34.10.3) (2021-06-21)
+
+
+### Bug Fixes
+
+* prevent Radio label from getting squished ([a4bdd2e](https://github.com/Codecademy/client-modules/commit/a4bdd2e0a0eb6952a640ab4caffdd2d9c1660fd8))
+
+
+
+### [34.10.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@34.10.1...@codecademy/gamut@34.10.2) (2021-06-17)
+
+
+### Bug Fixes
+
+* **Radio:** fix background color ([f42e6f1](https://github.com/Codecademy/client-modules/commit/f42e6f10d514dfa5e434378e93820e957f8bb1d6))
+
+
+
 ### [34.10.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@34.10.0...@codecademy/gamut@34.10.1) (2021-06-17)
 
 
