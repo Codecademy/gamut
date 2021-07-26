@@ -3,6 +3,39 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [5.7.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@5.7.2...@codecademy/gamut-icons@5.7.3) (2021-07-19)
+
+**Note:** Version bump only for package @codecademy/gamut-icons
+
+
+
+
+
+### [5.7.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@5.7.1...@codecademy/gamut-icons@5.7.2) (2021-07-16)
+
+**Note:** Version bump only for package @codecademy/gamut-icons
+
+
+
+
+
+### [5.7.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@5.7.0...@codecademy/gamut-icons@5.7.1) (2021-07-15)
+
+**Note:** Version bump only for package @codecademy/gamut-icons
+
+
+
+
+
+## [5.7.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@5.6.0...@codecademy/gamut-icons@5.7.0) (2021-07-15)
+
+
+### Features
+
+* **icons:** add StudyBook and Radar icons ([97ec641](https://github.com/Codecademy/client-modules/commit/97ec641b0ae080ad0500a5cac94ef5a1e7723c86))
+
+
+
 ## [5.6.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@5.5.1...@codecademy/gamut-icons@5.6.0) (2021-07-12)
 
 

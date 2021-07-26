@@ -3,6 +3,87 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [35.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@35.1.1...@codecademy/gamut@35.2.0) (2021-07-22)
+
+
+### Features
+
+* **progress bar:** overrides bg color to transparent when pattern is defined ([f845288](https://github.com/Codecademy/client-modules/commit/f84528863e456028d2c1bdae016616c010650729))
+
+
+
+### [35.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@35.1.0...@codecademy/gamut@35.1.1) (2021-07-22)
+
+
+### Bug Fixes
+
+* **SelectDropdown:** Fix axe accessibility input issue + styling inconsistencies ([b6cf7ca](https://github.com/Codecademy/client-modules/commit/b6cf7ca984c1faa32f1de4fa0c51f0b1eaa5aa7b))
+
+
+
+## [35.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@35.0.1...@codecademy/gamut@35.1.0) (2021-07-19)
+
+
+### Features
+
+* **Menu:** `<Menu>` Components GM-252 ([34649cf](https://github.com/Codecademy/client-modules/commit/34649cf36dd93ccef2ee112edd778568c18cd7b5))
+
+
+
+### [35.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@35.0.0...@codecademy/gamut@35.0.1) (2021-07-19)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [35.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@34.15.0...@codecademy/gamut@35.0.0) (2021-07-19)
+
+
+### ⚠ BREAKING CHANGES
+
+* **progress bar:** reduces size of large variant, creates xl for old size
+
+### Features
+
+* **progress bar:** reduces size of large variant, creates xl for old size ([1130240](https://github.com/Codecademy/client-modules/commit/1130240873d6d369c2ff8eb98fd55edd06fccf74))
+
+
+
+## [34.15.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@34.14.4...@codecademy/gamut@34.15.0) (2021-07-16)
+
+
+### Features
+
+* **Toast:**  Allow JSX icons GM-262 ([3a14a2d](https://github.com/Codecademy/client-modules/commit/3a14a2d6592c6bf98e356483ea9bd87878f6a377))
+
+
+
+### [34.14.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@34.14.3...@codecademy/gamut@34.14.4) (2021-07-16)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [34.14.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@34.14.2...@codecademy/gamut@34.14.3) (2021-07-15)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [34.14.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@34.14.1...@codecademy/gamut@34.14.2) (2021-07-15)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
 ### [34.14.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@34.14.0...@codecademy/gamut@34.14.1) (2021-07-12)
 
 **Note:** Version bump only for package @codecademy/gamut

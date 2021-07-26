@@ -27,6 +27,7 @@ export const coreSwatches = {
   blue: {
     '0': '#F5FCFF',
     '300': '#66C4FF',
+    '400': '#3388FF',
     '500': '#1557FF',
     '800': '#1D2340',
   },
