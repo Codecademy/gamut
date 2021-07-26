@@ -83,7 +83,7 @@ const CardBody = styled('div', styledOptions)<
 
 export type FloatingCardProps = {
   className?: string;
-  pattern: React.ComponentType<PatternProps>;
+  pattern?: React.ComponentType<PatternProps>;
 } & ComponentProps<typeof CardBody>;
 
 export const FloatingCard = forwardRef<HTMLDivElement, FloatingCardProps>(
