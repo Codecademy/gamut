@@ -13,12 +13,10 @@ const plugin = (api) => {
       const valuePath = path.get('value');
       const attrName = path.get('name').toString();
       if (attrName === 'id' && valuePath.isStringLiteral()) {
-        const newId = `\`${valuePath
-          .toString()
-          .replace(/"/g, '')}-\${idPrefix}\``;
-
         valuePath.replaceWith(
-          api.types.jsxExpressionContainer(api.template.ast(newId).expression)
+          api.types.jsxExpressionContainer(
+            api.template.ast('patternId').expression
+          )
         );
       }
 
@@ -27,13 +25,10 @@ const plugin = (api) => {
         valuePath.isStringLiteral() &&
         valuePath.toString().includes('url')
       ) {
-        const newUrl = `\`${valuePath
-          .toString()
-          .replace(/"/g, '')
-          .replace(')', '')}-\${idPrefix})\``;
-
         valuePath.replaceWith(
-          api.types.jsxExpressionContainer(api.template.ast(newUrl).expression)
+          api.types.jsxExpressionContainer(
+            api.template.ast('`url(#${patternId})`').expression
+          )
         );
       }
     },

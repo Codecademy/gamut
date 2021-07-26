@@ -10,7 +10,7 @@ function iconTemplate(api, opts, { jsx }) {
   return template.ast`
     import * as React from 'react';
     import { Svg, PatternProps } from '../props';
-    import { useUniqueId } from '../useUniqueId';
+    import { usePatternId } from '../usePatternId';
 
     export const ${exportName} = React.forwardRef<SVGSVGElement, PatternProps>(({
       title = "${title}",
@@ -19,7 +19,7 @@ function iconTemplate(api, opts, { jsx }) {
     },
       svgRef
     ) => {
-      const idPrefix = useUniqueId(title);
+      const patternId = usePatternId(title);
 
       return ${jsx};
     });
