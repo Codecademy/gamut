@@ -21,7 +21,7 @@ export const BetaSticker: React.FC<BetaStickerProps> = (props) => {
       height={26}
       width={52}
     >
-      <Text fontWeight="bold" letterSpacing="1px">
+      <Text fontWeight="bold" letterSpacing="1px" color="text">
         BETA
       </Text>
     </FlexBox>
