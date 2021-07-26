@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [42.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@42.1.3...@codecademy/styleguide@42.2.0) (2021-07-26)
+
+
+### Features
+
+* **BetaSticker:** Add beta sticker ([a1d3470](https://github.com/Codecademy/client-modules/commit/a1d3470c57d6aace31e3c255e6e1f3175844db00))
+
+
+
 ### [42.1.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@42.1.2...@codecademy/styleguide@42.1.3) (2021-07-23)
 
 **Note:** Version bump only for package @codecademy/styleguide
