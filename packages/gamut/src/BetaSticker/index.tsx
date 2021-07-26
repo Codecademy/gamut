@@ -1,7 +1,7 @@
-import { theme } from '@codecademy/gamut-styles';
+import { useTheme } from '@emotion/react';
 import React from 'react';
 
-import { Box, Text } from '..';
+import { FlexBox, Text } from '..';
 
 type BetaStickerProps = {
   className?: string;
@@ -9,18 +9,21 @@ type BetaStickerProps = {
 };
 
 export const BetaSticker: React.FC<BetaStickerProps> = (props) => {
+  const {
+    colors: { text },
+  } = useTheme();
   return (
-    <Box
-      background="transparent"
-      boxShadow={`-2px 2px 0 ${theme.colors.navy}`}
-      display="inline-block"
+    <FlexBox
+      inline
+      center
+      bg="transparent"
+      boxShadow={`-2px 2px 0 ${text}`}
       height={26}
-      px={6 as any}
-      py={2 as any}
+      width={52}
     >
       <Text fontWeight="bold" letterSpacing="1px">
         BETA
       </Text>
-    </Box>
+    </FlexBox>
   );
 };
