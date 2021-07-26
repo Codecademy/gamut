@@ -107,7 +107,7 @@ export const ColorMode = forwardRef<
 
   if (active === mode) {
     const vars = alwaysSetVariables ? variables : pick(variables, [currentBg]);
-    return <VariableProvider {...rest} variables={vars} ref={ref} />;
+    return <VariableProvider {...rest} variables={vars} bg={bg} ref={ref} />;
   }
 
   return (
