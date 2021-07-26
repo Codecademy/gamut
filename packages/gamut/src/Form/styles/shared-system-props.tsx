@@ -226,7 +226,7 @@ export const checkboxLabel = system.css({
   m: 4,
   px: 0,
   py: 16,
-  ...formBaseComponentStyles,
+  ...formBaseStyles,
 });
 
 export const checkboxLabelStates = system.states({
@@ -244,7 +244,11 @@ export const checkboxElement = system.css({
   border: 2,
   borderColor: 'currentColor',
   color: 'background-disabled',
-  transition: transitionConcat(['all'], 'slow', 'ease-in-out'),
+  transition: transitionConcat(
+    ['transform', 'outline', 'background-color', 'box-shadow'],
+    'slow',
+    'ease-in-out'
+  ),
   [InputSelectors.HOVER]: {
     outline: `2px solid   ${theme.colors.primary}`,
     outlineOffset: '2px',

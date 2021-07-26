@@ -24,7 +24,12 @@ describe('<Checkbox>', () => {
     const onChangeCallback = jest.fn();
 
     const wrapper = mount(
-      <Checkbox {...defaultProps} onChange={onChangeCallback} value="a" />
+      <Checkbox
+        {...defaultProps}
+        onChange={onChangeCallback}
+        value="a"
+        checked={false}
+      />
     );
     wrapper.find('input[type="checkbox"]').simulate('change', {
       target: {
@@ -37,7 +42,11 @@ describe('<Checkbox>', () => {
 
   it('accepts JSX in the label', () => {
     const wrapper = mount(
-      <Checkbox {...defaultProps} label={<img alt="my cat" src="cat.jpg" />} />
+      <Checkbox
+        {...defaultProps}
+        label={<img alt="my cat" src="cat.jpg" />}
+        checked
+      />
     );
     expect(wrapper.find('img').length).toBe(1);
   });
