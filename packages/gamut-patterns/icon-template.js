@@ -19,7 +19,7 @@ function iconTemplate(api, opts, { jsx }) {
     },
       svgRef
     ) => {
-      const patternId = usePatternId(title);
+      const patternId = usePatternId(exportName);
 
       return ${jsx};
     });
