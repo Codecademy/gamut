@@ -1,4 +1,4 @@
-import { Anchor, FormGroup, Input } from '@codecademy/gamut';
+import { FormGroup, Input } from '@codecademy/gamut';
 import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
@@ -66,15 +66,7 @@ It is best to provide `htmlFor` to both the FormGroup + inner form element to ma
         showRequired
         label="I am also required!!"
         description="You can tell by the asterisk."
-        error={
-          <>
-            "You messed up{' '}
-            <Anchor error href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">
-              dude.
-            </Anchor>
-            "
-          </>
-        }
+        error="You messed up dude."
         htmlFor="required-error"
       >
         <Input defaultValue=">_>" htmlFor="required-error" error />

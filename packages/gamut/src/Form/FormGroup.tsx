@@ -17,7 +17,7 @@ export interface FormGroupProps
   className?: string;
   description?: string;
   showRequired?: boolean;
-  error?: string | JSX.Element;
+  error?: string;
   disabled?: boolean;
   labelSize?: 'small' | 'large';
   tooltip?: ToolTipProps;

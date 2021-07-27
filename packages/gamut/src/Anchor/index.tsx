@@ -1,9 +1,4 @@
-import {
-  states,
-  styledOptions,
-  system,
-  variant,
-} from '@codecademy/gamut-styles';
+import { styledOptions, system, variant } from '@codecademy/gamut-styles';
 import { StyleProps, variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
 import { HTMLProps } from 'react';
@@ -15,12 +10,6 @@ export interface AnchorProps
     StyleProps<typeof anchorVariants> {
   onClick?: HTMLProps<HTMLAnchorElement>['onClick'];
 }
-
-const anchorStates = states({
-  error: {
-    color: 'feedback-error',
-  },
-});
 
 const anchorVariants = variant({
   base: {
@@ -93,7 +82,6 @@ const anchorProps = variance.compose(
 
 export const AnchorBase = styled('a', styledOptions<'a'>())<AnchorProps>(
   anchorVariants,
-  anchorStates,
   anchorProps
 );
 
