@@ -20,6 +20,10 @@
     "react": ">=16.8.1",
     "react-dom": ">=16.8.1"
   },
+  "devDependencies": {
+    "@svgr/cli": "5.5.0",
+    "svgo": "^1.3.2"
+  },
   "publishConfig": {
     "access": "public"
   },
@@ -29,10 +33,11 @@
   },
   "scripts": {
     "verify": "tsc --noEmit",
-    "build:compile": "babel ./src --out-dir ./dist --copy-files --extensions \".ts,.tsx\"",
-    "build:clean": "rm -rf dist",
+    "format": "svgo -f ./src/svg --pretty --config=.svgo.yml",
+    "build:icons": "rm -rf ./src/patterns && svgr --out-dir ./src/patterns --ext 'tsx' ./src/svg",
     "build:types": "tsc --emitDeclarationOnly",
-    "build": "yarn build:clean && yarn build:compile && yarn build:types",
+    "build:compile": "babel ./src --out-dir ./dist --copy-files --extensions \".ts,.tsx\"",
+    "build": "yarn build:icons && yarn build:compile && yarn build:types",
     "lernaBuildTask": "yarn build"
   },
   "sideEffects": false,
