@@ -104,12 +104,7 @@ export function GridForm<
     defaultValues: flatFields.reduce<any>(
       (defaultValues, field) => ({
         ...defaultValues,
-        [field.name]:
-          field.type === 'checkbox'
-            ? field.defaultValue === undefined
-              ? Boolean(field.defaultValue)
-              : field.defaultValue
-            : field.defaultValue,
+        [field.name]: field.defaultValue,
       }),
       {}
     ),
