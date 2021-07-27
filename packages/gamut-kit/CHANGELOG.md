@@ -3,6 +3,55 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [0.5.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-kit@0.5.0...@codecademy/gamut-kit@0.5.1) (2021-07-27)
+
+**Note:** Version bump only for package @codecademy/gamut-kit
+
+
+
+
+
+## [0.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-kit@0.4.73...@codecademy/gamut-kit@0.5.0) (2021-07-27)
+
+
+### Features
+
+* **Patterns:** Add SVGR build process and SVGO settings ([56e50ff](https://github.com/Codecademy/client-modules/commit/56e50ffe021102b84a7f9e5d7bb33ea6de890994))
+
+
+
+### [0.4.73](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-kit@0.4.72...@codecademy/gamut-kit@0.4.73) (2021-07-26)
+
+**Note:** Version bump only for package @codecademy/gamut-kit
+
+
+
+
+
+### [0.4.72](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-kit@0.4.71...@codecademy/gamut-kit@0.4.72) (2021-07-26)
+
+**Note:** Version bump only for package @codecademy/gamut-kit
+
+
+
+
+
+### [0.4.71](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-kit@0.4.70...@codecademy/gamut-kit@0.4.71) (2021-07-22)
+
+**Note:** Version bump only for package @codecademy/gamut-kit
+
+
+
+
+
+### [0.4.70](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-kit@0.4.69...@codecademy/gamut-kit@0.4.70) (2021-07-22)
+
+**Note:** Version bump only for package @codecademy/gamut-kit
+
+
+
+
+
 ### [0.4.69](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-kit@0.4.68...@codecademy/gamut-kit@0.4.69) (2021-07-19)
 
 **Note:** Version bump only for package @codecademy/gamut-kit

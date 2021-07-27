@@ -3,6 +3,65 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [42.3.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@42.3.0...@codecademy/styleguide@42.3.1) (2021-07-27)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [42.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@42.2.1...@codecademy/styleguide@42.3.0) (2021-07-27)
+
+
+### Features
+
+* **Patterns:** Add SVGR build process and SVGO settings ([56e50ff](https://github.com/Codecademy/client-modules/commit/56e50ffe021102b84a7f9e5d7bb33ea6de890994))
+
+
+
+### [42.2.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@42.2.0...@codecademy/styleguide@42.2.1) (2021-07-26)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [42.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@42.1.3...@codecademy/styleguide@42.2.0) (2021-07-26)
+
+
+### Features
+
+* **BetaSticker:** Add beta sticker ([a1d3470](https://github.com/Codecademy/client-modules/commit/a1d3470c57d6aace31e3c255e6e1f3175844db00))
+
+
+
+### [42.1.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@42.1.2...@codecademy/styleguide@42.1.3) (2021-07-23)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [42.1.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@42.1.1...@codecademy/styleguide@42.1.2) (2021-07-22)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [42.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@42.1.0...@codecademy/styleguide@42.1.1) (2021-07-22)
+
+
+### Bug Fixes
+
+* **SelectDropdown:** Fix axe accessibility input issue + styling inconsistencies ([b6cf7ca](https://github.com/Codecademy/client-modules/commit/b6cf7ca984c1faa32f1de4fa0c51f0b1eaa5aa7b))
+
+
+
 ## [42.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@42.0.1...@codecademy/styleguide@42.1.0) (2021-07-19)
 
 

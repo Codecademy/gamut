@@ -1,4 +1,4 @@
-import { pxRem, theme } from '@codecademy/gamut-styles';
+import { theme } from '@codecademy/gamut-styles';
 import { css } from '@emotion/react';
 import { StandardPropertiesHyphen } from 'csstype';
 
@@ -149,7 +149,7 @@ export const formBaseFieldStyles = css`
 
 // ReactRecurly needs to apply padding in a very particular way
 export const formFieldPaddingStyles = css`
-  padding: ${pxRem(11)} ${theme.spacing[8]};
+  padding: ${theme.spacing[12]} ${theme.spacing[8]};
 `;
 
 export const formFieldStyles = css`
