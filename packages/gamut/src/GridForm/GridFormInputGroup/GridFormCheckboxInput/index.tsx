@@ -17,11 +17,8 @@ export const GridFormCheckboxInput: React.FC<GridFormCheckboxInputProps> = ({
   register,
   showRequired,
 }) => {
-  const { control } = useFormContext();
-
   return (
     <Controller
-      control={control}
       name={field.name}
       render={({ onChange, value }) => (
         <Checkbox
