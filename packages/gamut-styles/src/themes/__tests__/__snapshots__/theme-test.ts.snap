@@ -106,11 +106,7 @@ Object {
         "feedback-success": "#008A27",
         "feedback-warning": "#FFD300",
         "primary": "#1557FF",
-<<<<<<< HEAD
-        "primary-hover": "#66C4FF",
-=======
         "primary-hover": "#3388FF",
->>>>>>> 30a8ab6502460dc8dfe30be6d4848d04853fcf04
         "secondary": "#10162F",
         "secondary-hover": "#232940",
         "shadow-opaque": "rgba(255,255,255,0.95)",
@@ -149,10 +145,7 @@ Object {
       "--color-blue": "#1557FF",
       "--color-blue-0": "#F5FCFF",
       "--color-blue-300": "#66C4FF",
-<<<<<<< HEAD
-=======
       "--color-blue-400": "#3388FF",
->>>>>>> 30a8ab6502460dc8dfe30be6d4848d04853fcf04
       "--color-blue-500": "#1557FF",
       "--color-blue-800": "#1D2340",
       "--color-gray-100": "#F5F5F5",
@@ -247,10 +240,7 @@ Object {
     "blue": "var(--color-blue)",
     "blue-0": "var(--color-blue-0)",
     "blue-300": "var(--color-blue-300)",
-<<<<<<< HEAD
-=======
     "blue-400": "var(--color-blue-400)",
->>>>>>> 30a8ab6502460dc8dfe30be6d4848d04853fcf04
     "blue-500": "var(--color-blue-500)",
     "blue-800": "var(--color-blue-800)",
     "danger": "var(--color-danger)",
@@ -389,11 +379,7 @@ monospace",
       "feedback-success": "green-700",
       "feedback-warning": "yellow",
       "primary": "blue-500",
-<<<<<<< HEAD
-      "primary-hover": "blue-300",
-=======
       "primary-hover": "blue-400",
->>>>>>> 30a8ab6502460dc8dfe30be6d4848d04853fcf04
       "secondary": "navy-800",
       "secondary-hover": "navy-700",
       "shadow-opaque": "shadow-white-heavy",
