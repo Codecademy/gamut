@@ -70,6 +70,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
             register={register}
             showRequired={isRequired}
             setValue={setValue}
+            error={!!errorMessage}
           />
         );
 
