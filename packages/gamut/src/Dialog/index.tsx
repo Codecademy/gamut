@@ -77,7 +77,6 @@ export const Dialog: React.FC<DialogProps> = ({
         aria-hidden="false"
         aria-modal="true"
         role="dialog"
-        pattern="checkerDense"
       >
         <Text as="h2" fontSize={20} lineHeight="base" gridArea="title">
           {title}
