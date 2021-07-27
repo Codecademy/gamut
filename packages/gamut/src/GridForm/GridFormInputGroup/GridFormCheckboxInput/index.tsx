@@ -17,6 +17,7 @@ export const GridFormCheckboxInput: React.FC<GridFormCheckboxInputProps> = ({
 }) => {
   return (
     <Controller
+      defaultValue={field.defaultValue}
       name={field.name}
       render={({ onChange, onBlur, name, value }) => (
         <Checkbox
