@@ -1,5 +1,5 @@
 import { Box, IconButton } from '@codecademy/gamut/src';
-import { BackpackIcon, BellIcon } from '@codecademy/gamut-icons/src';
+import { BellIcon, StarIcon } from '@codecademy/gamut-icons/src';
 import { GlobalHeader } from '@codecademy/gamut-labs/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
@@ -383,12 +383,12 @@ The Try Pro For Free button can take in an optional custom path.
   </Story>
 </Canvas>
 
-### GlobalHeader With Search and Notifications and Learner Backpack
+### GlobalHeader With Search, Notifications, and Favorites
 
-To mock this, IconButtons are provided as placeholders. \*Pending backpack icon, I used a notebook for now.
+To mock this, IconButtons are provided as placeholders.
 
 <Canvas>
-  <Story name="GlobalHeader With Search, Notifications, and Backpack">
+  <Story name="GlobalHeader With Search, Notifications, and Favorites">
     {(args) => (
       <GlobalHeader
         action={() => {}}
@@ -396,8 +396,8 @@ To mock this, IconButtons are provided as placeholders. \*Pending backpack icon,
           desktop: () => <IconButton icon={BellIcon} />,
           mobile: () => <IconButton icon={BellIcon} />,
         }}
-        renderLearnerBackpack={{
-          desktop: () => <IconButton icon={BackpackIcon} />,
+        renderFavorites={{
+          desktop: () => <IconButton icon={StarIcon} />,
         }}
         search={{
           onEnable: () => {},

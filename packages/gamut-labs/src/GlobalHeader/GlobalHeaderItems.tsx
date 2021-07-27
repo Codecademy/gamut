@@ -185,12 +185,12 @@ export const notifications = (
   };
 };
 
-export const learnerBackpack = (
-  renderLearnerBackpack: () => ReactNode
+export const favorites = (
+  renderFavorites: () => ReactNode
 ): AppHeaderRenderElementItem => {
   return {
-    id: 'learner-backpack',
-    renderElement: renderLearnerBackpack,
+    id: 'favorites',
+    renderElement: renderFavorites,
     type: 'render-element',
   };
 };

@@ -10,7 +10,7 @@ import {
   courseCatalog,
   forBusiness,
   freeProfile,
-  learnerBackpack,
+  favorites,
   login,
   logo,
   myHome,
@@ -111,7 +111,7 @@ export const anonSignupMobileHeaderItems = (): FormattedMobileAppHeaderItems => 
 export const freeHeaderItems = (
   user: User,
   renderNotifications?: () => ReactNode,
-  renderLearnerBackpack?: () => ReactNode
+  renderFavorites?: () => ReactNode
 ): FormattedAppHeaderItems => {
   const leftItems: AppHeaderItem[] = [
     logo,
@@ -125,8 +125,7 @@ export const freeHeaderItems = (
 
   const rightItems: AppHeaderItem[] = [];
   renderNotifications && rightItems.push(notifications(renderNotifications));
-  renderLearnerBackpack &&
-    rightItems.push(learnerBackpack(renderLearnerBackpack));
+  renderFavorites && rightItems.push(favorites(renderFavorites));
 
   rightItems.push(freeProfile(user));
   rightItems.push(
@@ -176,7 +175,7 @@ export const freeMobileHeaderItems = (
 export const proHeaderItems = (
   user: User,
   renderNotifications?: () => ReactNode,
-  renderLearnerBackpack?: () => ReactNode
+  renderFavorites?: () => ReactNode
 ): FormattedAppHeaderItems => {
   const leftItems: AppHeaderItem[] = [
     proLogo,
@@ -188,8 +187,7 @@ export const proHeaderItems = (
 
   const rightItems: AppHeaderItem[] = [];
   renderNotifications && rightItems.push(notifications(renderNotifications));
-  renderLearnerBackpack &&
-    rightItems.push(learnerBackpack(renderLearnerBackpack));
+  renderFavorites && rightItems.push(favorites(renderFavorites));
 
   rightItems.push(proProfile(user));
   user.isPaused && rightItems.push(unpausePro);

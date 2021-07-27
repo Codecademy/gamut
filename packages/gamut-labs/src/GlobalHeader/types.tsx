@@ -10,7 +10,7 @@ type RenderNotifications = {
   desktop: () => ReactNode;
   mobile: () => ReactNode;
 };
-type RenderLearnerBackpack = {
+type RenderFavorites = {
   desktop: () => ReactNode;
 };
 
@@ -40,7 +40,7 @@ export type User = {
 type LoggedInHeader = BaseHeader & {
   renderNotifications?: RenderNotifications;
   renderProfile?: RenderProfile;
-  renderLearnerBackpack?: RenderLearnerBackpack;
+  renderFavorites?: RenderFavorites;
   user: User;
 };
 
