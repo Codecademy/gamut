@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [0.17.2](https://github.com/Codecademy/client-modules/compare/@codecademy/variance@0.17.1...@codecademy/variance@0.17.2) (2021-07-19)
+
+
+### Bug Fixes
+
+* Safe deep merge typings ([541272c](https://github.com/Codecademy/client-modules/commit/541272c424637c8699c16ef25e3fefb9b17041ea))
+
+
+
+### [0.17.1](https://github.com/Codecademy/client-modules/compare/@codecademy/variance@0.17.0...@codecademy/variance@0.17.1) (2021-07-16)
+
+
+### Bug Fixes
+
+* Theme extension merge logic ([9b32463](https://github.com/Codecademy/client-modules/commit/9b32463d044ead994b2c173bc07c5ebbd5511187))
+
+
+
 ## [0.17.0](https://github.com/Codecademy/client-modules/compare/@codecademy/variance@0.16.0...@codecademy/variance@0.17.0) (2021-07-15)
 
 

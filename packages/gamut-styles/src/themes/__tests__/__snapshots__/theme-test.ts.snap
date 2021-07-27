@@ -134,7 +134,7 @@ Object {
       "--color-feedback-success": "var(--color-green-700)",
       "--color-feedback-warning": "var(--color-yellow)",
       "--color-primary": "var(--color-blue-500)",
-      "--color-primary-hover": "var(--color-hyper-400)",
+      "--color-primary-hover": "var(--color-blue-400)",
       "--color-secondary": "var(--color-navy-800)",
       "--color-secondary-hover": "var(--color-navy-700)",
       "--color-shadow-opaque": "var(--color-shadow-white-heavy)",

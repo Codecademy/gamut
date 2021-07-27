@@ -17,6 +17,7 @@ export enum InputSelectors {
   ACTIVE = '&:active',
   PLACEHOLDER = '&:placeholder',
   FOCUS = '&:focus',
+  FOCUS_LABEL_DIV_CHILD = '&:focus + label > div',
   DISABLED = "&:disabled, &[aria-disabled='true']",
   BEFORE = '&::before',
   AFTER = '&::after',
@@ -26,14 +27,18 @@ export enum InputSelectors {
   HOVER_FOCUS_BEFORE = '&:hover + label::before, &:focus + label::before',
 }
 
-export const formBaseComponentStyles = {
+export const formBaseStyles = {
   fontWeight: 'base',
   fontSize: 16,
+  color: 'text',
+} as const;
+
+export const formBaseComponentStyles = {
   width: 1,
   outline: 'none',
   bg: 'background',
-  textColor: 'text',
   minWidth: 'auto',
+  ...formBaseStyles,
 } as const;
 
 export const formFieldFocusStyles = {
@@ -41,11 +46,16 @@ export const formFieldFocusStyles = {
   boxShadow: `inset 0 0 0 1px ${theme.colors.primary}`,
 } as const;
 
+export const formFieldTextDisabledStyles = {
+  color: 'text-disabled',
+  cursor: 'not-allowed',
+} as const;
+
 const formFieldBaseDisabledStyles = {
   borderColor: 'currentColor',
-  textColor: 'text-disabled',
   fontStyle: 'italic',
-  cursor: 'not-allowed',
+  opacity: 1,
+  ...formFieldTextDisabledStyles,
 } as const;
 
 const formFieldDisabledStyles = {
@@ -94,14 +104,13 @@ export const formFieldStyles = system.css({
 export const conditionalStyles = system.variant({
   variants: {
     error: {
-      textColor: 'danger',
-      borderColor: 'currentColor',
+      borderColor: 'danger',
       [InputSelectors.HOVER]: {
-        borderColor: 'currentColor',
+        borderColor: 'danger-hover',
       },
       [InputSelectors.FOCUS]: {
-        borderColor: 'currentColor',
-        boxShadow: `inset 0 0 0 1px currentColor`,
+        borderColor: 'danger-hover',
+        boxShadow: `inset 0 0 0 1px ${theme.colors['danger-hover']}`,
       },
     },
     activated: { borderColor: 'currentColor' },
@@ -176,7 +185,9 @@ export const conditionalRadioLabelStyles = system.variant({
   },
   variants: {
     error: {
-      textColor: 'danger',
+      [InputSelectors.BEFORE_AND_AFTER]: {
+        color: 'danger',
+      },
     },
     disabled: {
       ...formFieldBaseDisabledStyles,
@@ -205,5 +216,74 @@ export const conditionalRadioInputStyles = system.variant({
         boxShadow: `0 0 0 1px currentColor`,
       },
     },
+  },
+});
+
+export const checkboxLabel = system.css({
+  display: 'flex',
+  alignItems: 'flex-start',
+  cursor: 'pointer',
+  m: 4,
+  px: 0,
+  py: 16,
+  ...formBaseStyles,
+});
+
+export const checkboxLabelStates = system.states({
+  disabled: {
+    cursor: 'not-allowed',
+  },
+});
+
+export const checkboxElement = system.css({
+  position: 'relative',
+  mr: 8,
+  minWidth: 22,
+  width: 22,
+  height: 22,
+  border: 2,
+  borderColor: 'currentColor',
+  color: 'background-disabled',
+  transition: transitionConcat(
+    ['transform', 'outline', 'background-color', 'box-shadow'],
+    'slow',
+    'ease-in-out'
+  ),
+  [InputSelectors.HOVER]: {
+    outline: `2px solid   ${theme.colors.primary}`,
+    outlineOffset: '2px',
+  },
+});
+
+export const polyline = system.css({
+  color: 'shadow-opaque',
+});
+
+export const checkboxTextStates = system.states({
+  multiline: {
+    fontSize: 14,
+  },
+  disabled: formFieldBaseDisabledStyles,
+});
+
+export const checkboxElementStates = system.states({
+  multiline: {
+    mt: 4,
+  },
+  checked: {
+    color: 'primary',
+  },
+  disabled: {
+    color: 'background-disabled',
+    [InputSelectors.HOVER]: {
+      outline: 'none',
+    },
+  },
+});
+
+export const checkboxInput = system.css({
+  [InputSelectors.FOCUS_LABEL_DIV_CHILD]: {
+    outline: `2px solid ${theme.colors.primary}`,
+    outlineOffset: '2px',
   },
 });

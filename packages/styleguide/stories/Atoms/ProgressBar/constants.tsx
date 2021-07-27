@@ -11,4 +11,8 @@ export const bars = [
     size: 'large',
     variant: 'yellow',
   },
+  {
+    size: 'xl',
+    variant: 'blue',
+  },
 ] as const;
