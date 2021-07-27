@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [42.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@42.2.1...@codecademy/styleguide@42.3.0) (2021-07-27)
+
+
+### Features
+
+* **Patterns:** Add SVGR build process and SVGO settings ([56e50ff](https://github.com/Codecademy/client-modules/commit/56e50ffe021102b84a7f9e5d7bb33ea6de890994))
+
+
+
 ### [42.2.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@42.2.0...@codecademy/styleguide@42.2.1) (2021-07-26)
 
 **Note:** Version bump only for package @codecademy/styleguide
