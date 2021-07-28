@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import useLanguageService from '../libs/languageServices/useLanguageService';
-import { codecademyDefault } from '../libs/services/languageIds';
+import { LanguageIds } from '../libs/services/languageIds';
 import { createMonacoOptions } from './createMonacoOptions';
 import { SimpleMonacoEditor } from './SimpleMonacoEditor';
 import { Editor, Monaco, MonacoFile, UserInterfaceSettings } from './types';
@@ -58,7 +58,7 @@ export const MonacoEditor: React.FC<MonacoEditorProps> = ({
   return (
     <SimpleMonacoEditor
       file={file}
-      languageId={languageService.id || codecademyDefault}
+      languageId={languageService.id || LanguageIds.codecademyDefault}
       onChange={onChange}
       options={{
         ...createMonacoOptions(
