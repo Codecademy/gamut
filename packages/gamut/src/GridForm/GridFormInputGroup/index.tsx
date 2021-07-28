@@ -4,6 +4,7 @@ import { UseFormMethods } from 'react-hook-form';
 import { FormError, FormGroup, FormGroupLabel } from '../../Form';
 import { HiddenText } from '../../HiddenText';
 import { Column } from '../../Layout';
+import { Markdown } from '../../Markdown';
 import {
   GridFormField,
   GridFormHiddenField,
@@ -140,6 +141,13 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
     );
   }
 
+  const errorContents = (error: string) => {
+    if (field.validation?.markdown) {
+      return <Markdown inline text={error} spacing="none" />;
+    }
+    return error;
+  };
+
   const label = (
     <FormGroupLabel
       disabled={field.disabled}
@@ -160,10 +168,9 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
           <FormError
             role={isFirstError ? 'alert' : 'status'}
             aria-live={isFirstError ? 'assertive' : 'off'}
-            markdown={field.validation?.markdown}
             variant="absolute"
           >
-            {errorMessage}
+            {errorContents(errorMessage)}
           </FormError>
         )}
       </FormGroup>
