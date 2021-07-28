@@ -12,7 +12,7 @@ import { createProps } from './createProps';
 import * as props from './props';
 import { Arg, PropConfig } from './types';
 
-class FervorWithVariants<
+class VariaWithVariants<
   C extends PropConfig,
   P extends Parser<TransformerMap<C['props']>>,
   G extends (keyof C['groups'])[] | never[],
@@ -65,7 +65,7 @@ class FervorWithVariants<
     type NextVariants = Variants & Record<PropKey, typeof options>;
     const prop = options.prop || 'variant';
 
-    return new FervorWithVariants(
+    return new VariaWithVariants(
       this.props,
       this.parser,
       this.groups,
@@ -94,24 +94,24 @@ class FervorWithVariants<
   }
 }
 
-class FervorWithStates<
+class VariaWithStates<
   C extends PropConfig,
   P extends Parser<TransformerMap<C['props']>>,
   G extends (keyof C['groups'])[] | never[],
   Base extends CSSProps<AbstractProps, SystemProps<P>>,
   States extends CSSPropMap<AbstractProps, SystemProps<P>>
-> extends FervorWithVariants<C, P, G, Base, States, {}> {
+> extends VariaWithVariants<C, P, G, Base, States, {}> {
   constructor(props: C, parser: P, groups: G, base: Base, states: States) {
     super(props, parser, groups, base, states, {});
   }
 }
 
-class FervorWithBase<
+class VariaWithBase<
   C extends PropConfig,
   P extends Parser<TransformerMap<C['props']>>,
   G extends (keyof C['groups'])[] | never[],
   Base extends CSSProps<AbstractProps, SystemProps<P>>
-> extends FervorWithVariants<C, P, G, Base, {}, {}> {
+> extends VariaWithVariants<C, P, G, Base, {}, {}> {
   constructor(props: C, parser: P, groups: G, base: Base) {
     super(props, parser, groups, base, {}, {});
   }
@@ -119,7 +119,7 @@ class FervorWithBase<
   withStates<Props extends AbstractProps>(
     config: CSSPropMap<Props, SystemProps<P>>
   ) {
-    return new FervorWithStates(
+    return new VariaWithStates(
       this.props,
       this.parser,
       this.groups,
@@ -129,26 +129,26 @@ class FervorWithBase<
   }
 }
 
-class FervorWithProps<
+class VariaWithProps<
   C extends PropConfig,
   P extends Parser<TransformerMap<C['props']>>,
   G extends (keyof C['groups'])[] | never[]
-> extends FervorWithBase<C, P, G, {}> {
+> extends VariaWithBase<C, P, G, {}> {
   constructor(props: C, parser: P, groups: G) {
     super(props, parser, groups, {});
   }
   withBase<Props extends AbstractProps>(
     config: CSSProps<Props, SystemProps<P>>
   ) {
-    return new FervorWithBase(this.props, this.parser, this.groups, config);
+    return new VariaWithBase(this.props, this.parser, this.groups, config);
   }
 }
 
-class FervorWithSystemProps<
+class VariaWithSystemProps<
   C extends PropConfig,
   P extends Parser<TransformerMap<C['props']>>,
   G extends (keyof C['groups'])[] | never[]
-> extends FervorWithProps<C, P, G> {
+> extends VariaWithProps<C, P, G> {
   constructor(props: C, parser: P, groups: G) {
     super(props, parser, groups);
   }
@@ -156,7 +156,7 @@ class FervorWithSystemProps<
     const newProps = { ...this.props.props, ...config } as C['props'] &
       ExtraProps;
     const parser = variance.create(newProps);
-    return new FervorWithProps(
+    return new VariaWithProps(
       { ...this.props, props: newProps },
       parser,
       this.groups
@@ -164,17 +164,17 @@ class FervorWithSystemProps<
   }
 }
 
-class Fervor<
+class Varia<
   C extends PropConfig,
   P extends Parser<TransformerMap<C['props']>>
-> extends FervorWithSystemProps<C, P, []> {
+> extends VariaWithSystemProps<C, P, []> {
   constructor(config: C) {
     super(config, variance.create(config.props) as P, []);
   }
   withSystemProps<PickedGroups extends keyof C['groups']>(
     config: Record<PickedGroups, true>
   ) {
-    return new FervorWithSystemProps(
+    return new VariaWithSystemProps(
       this.props,
       this.parser,
       Object.keys(config) as PickedGroups[]
@@ -189,7 +189,7 @@ const config = createProps()
   .addGroup('shadow', props.shadows)
   .build();
 
-export const varia = new Fervor(config);
+export const varia = new Varia(config);
 
 export const styles = varia
   .withSystemProps({
