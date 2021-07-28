@@ -5,3 +5,4 @@ export * from './noSelect';
 export * from './responsive';
 export * from './screenReaderOnly';
 export * from './transitionConcat';
+export * from './modeColorProps';
