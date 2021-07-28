@@ -3,6 +3,7 @@ import { UseFormMethods, ValidationRules } from 'react-hook-form';
 
 import { ColumnProps } from '../Layout';
 import { ToolTipProps } from '../ToolTip';
+import { TextProps } from '../Typography/Text';
 
 export type BaseFormField<Value> = {
   defaultValue?: Value;
@@ -134,3 +135,28 @@ export type GridFormField =
   | GridFormTextAreaField
   | GridFormHiddenField
   | GridFormSweetContainerField;
+
+type UnionValuesStartingWith<Base, Prefix extends string> = keyof {
+  [Key in Base as Extract<Key, `${Prefix}${string}`>]: true;
+};
+
+type FilterNestedEnumByPrefix<Type, Prefix extends string> = {
+  [Key in keyof Type]: UnionValuesStartingWith<Type[Key], Prefix>;
+};
+
+type RestrictedTitleVariant = FilterNestedEnumByPrefix<
+  Pick<TextProps, 'variant'>,
+  'title'
+>;
+
+export type GridFormSectionTitleBaseProps = RestrictedTitleVariant & {
+  title: string;
+  as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+  layout?: 'center' | 'left';
+};
+
+export type GridFormSectionProps = GridFormSectionTitleBaseProps & {
+  fields: GridFormField[];
+};
+
+export type GridFormFieldsProps = GridFormField | GridFormSectionProps;

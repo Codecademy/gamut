@@ -17,12 +17,14 @@ import {
   AppHeaderClickHandler,
   AppHeaderItem,
 } from './AppHeaderElements/types';
+import { AppHeaderSearch, useHeaderSearch } from './Search/useHeaderSearch';
 import { FormattedAppHeaderItems } from './types';
 
 export type AppHeaderProps = {
   action: AppHeaderClickHandler;
   items: FormattedAppHeaderItems;
   redirectParam?: string;
+  search: AppHeaderSearch;
 };
 
 export const StyledAppBar = styled(AppBar)`
@@ -84,6 +86,7 @@ export const AppHeader: React.FC<AppHeaderProps> = ({
   action,
   items,
   redirectParam,
+  search,
 }) => {
   const mapItemsToElement = <T extends AppHeaderItem[]>(items: T) => {
     return items.map((item, index) => (
@@ -97,14 +100,19 @@ export const AppHeader: React.FC<AppHeaderProps> = ({
     ));
   };
 
+  const [searchButton, searchPane] = useHeaderSearch(search);
+
   return (
-    <StyledAppBar>
-      <AppBarSection position="left">
-        {mapItemsToElement(items.left)}
-      </AppBarSection>
-      <AppBarSection position="right">
-        {mapItemsToElement(items.right)}
-      </AppBarSection>
-    </StyledAppBar>
+    <>
+      <StyledAppBar>
+        <AppBarSection position="left">
+          {mapItemsToElement(items.left)}
+        </AppBarSection>
+        <AppBarSection position="right">
+          {mapItemsToElement([searchButton, ...items.right])}
+        </AppBarSection>
+      </StyledAppBar>
+      {searchPane}
+    </>
   );
 };
