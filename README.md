@@ -24,6 +24,7 @@ We provide a single package to manage the versions of a few core dependencies: `
   "peerDependencies": {
     "@codecademy/gamut": "*",
     "@codecademy/gamut-icons": "*",
+    "@codecademy/gamut-patterns": "*",
     "@codecademy/gamut-illustrations": "*",
     "@codecademy/gamut-labs": "*",
     "@codecademy/gamut-styles": "*",

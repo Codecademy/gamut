@@ -12,30 +12,29 @@ import { action } from '@storybook/addon-actions';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 import { useState } from '@storybook/addons';
 
+import { LinkTo } from '~styleguide/blocks';
+
+import { ColorModeExample } from './examples';
+
 <Meta
   title={title}
   component={GridForm}
   parameters={{
-    subtitle: `This organism takes in plain JSON-like props and uses them to string
-together a validated form`,
+    subtitle: `GridForm is the most efficient way to build and design forms at Codecademy.`,
     source: 'gamut',
     status: 'updating',
+    figmaId: 'ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=1689%3A3910',
   }}
 />
 
-This is composed of:
+The GridForm organism provides an easy, out-of-the-box way to implement forms from a list of fields. When provided a list of fields, GridForm strings together the appropriate <LinkTo id="atoms-formelements-about--page">Form Elements</LinkTo> inside a <LinkTo id="layouts-layoutgrid--layout-grid">LayoutGrid</LinkTo>.
 
-- [react-hook-form](https://react-hook-form.com)
-- [Our existing `Grid` layout system](/?path=/story/layout-grid-system--fixed-grid-default)
-- [Our existing `Form` primitives](/?path=/story/component-form--form)
+GridForm provides the following benefits:
 
-You should only ever directly use `GridForm` to create your form.
-`Form` atoms compose the structure of these forms but should not be used
-directly.
-
-`GridForm`s are laid out with `LayoutGrid`, so you can override its
-`columnGap` and `rowGap` with the normal string or
-responsive layouts.
+1. **Simplicity**: This organism takes in plain JSON-like props and uses them to string together a validated form
+2. **Accessibility**: All GridForms handle accessibility styling and behaviors, passing tests out-of-the-box
+3. **Functionality**: Validation and submission logic is handled by the [react-hook-form](https://react-hook-form.com) library
+4. **Visual Consistency**: Aligns all input elements with the correct vertical rhythms and grid spacing
 
 <Canvas>
   <Story name="GridForm" args={{ validation: 'onSubmit' }}>
@@ -115,6 +114,7 @@ responsive layouts.
             size: 3,
             type: 'checkbox',
             id: 'my-super-cool-id',
+            defaultValue: true,
           },
           {
             label: 'Preferred Modern Artist',
@@ -160,6 +160,39 @@ responsive layouts.
 
 <PropsTable of={GridForm} />
 
+## Modifying Elements
+
+`GridForms` are laid out with `LayoutGrid`, so you can override its `columnGap` and `rowGap` with the normal string or responsive layouts to style and align the GridForm to your designs. You can also configure the `GridFormButtons` to modify the submit buttons and optional cancel buttons.
+
+While `Form` atoms compose the structure of these forms, we strongly recommend only creating forms with using `GridForm`. You should only use the form element atoms as individual elements if your interface doesn’t need to support the technical functions of a form.
+
+**You should build something outside of GridForm if you need...**
+
+- **Multi-step forms**: GridForm is best used for single page operations with a discrete submit action
+- **Custom behaviors for messaging or validation states**: form validation is already built into each input element, so any custom messaging is best done outside the component
+
+## Designing with GridForm
+
+All [Form Input](https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=1189%3A0) components in the Figma library are consistent with their implementations in code. By setting the form inputs within the component's layout grid, we can design forms that are compatible with Gamut.
+
+The [GridForm page in Gamut](https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=1689%3A3910) also contains several starter templates for incorporating this organism in your designs.
+
+- **Starter**: Contains sample components to begin creating your own form
+- **Sections**: Contains the headers and dividers that are rendered in the optional <LinkTo id="organisms-gridform--sections">Sections</LinkTo> modules
+- **Inline Submit**: A form incorporating the <LinkTo id="organisms-gridform--inline-text-input-with-label">Inline Submit</LinkTo> Button style of GridForm
+- **Instructions**: Contains suggestions for modifying the Figma component for your own designs
+
+### Figma Component Instructions
+
+- Enable Layout Grid (^G)
+- Select a `❖ GridForm` variant as a template
+  - Starter, Sections, Inline Submit
+- Detatch the component to modify the `📐 LayoutGrid`
+- Add, remove, and edit `⬦ Form Inputs`
+  - Input Field, TextArea, Checkbox, Radio Button, Select
+- Customize `🚥 GridFormButtons`
+  - Submit button style (Fill/CTA), position, cancel button
+
 ## Disabled Inputs
 
 If an input is not meant to be usable, such as when a portion of a form is disabled pending user action, you can make it visually disabled with a `disabled` field member.
@@ -197,7 +230,7 @@ If an input is not meant to be usable, such as when a portion of a form is disab
 
 ## GridForm-atting
 
-We can use the `size` and `rowspan` props (borrowed from [LayoutGrid](https://react-hook-form.com)) to customize the layouts of our GridForms.
+We can use the `size` and `rowspan` props (borrowed from <LinkTo id="layouts-layoutgrid--layout-grid">LayoutGrid</LinkTo>) to customize the layouts of our GridForms.
 
 <Canvas>
   <Story name="Rowspan Formatting">
@@ -351,8 +384,8 @@ value of left, center, right, or stretch.
 
 ## Submit Button Options
 
-We can specify the version of our button by passing the type prop. WE can choose between
-the [`FillButton`](/?path=/docs/atoms--fill) or [`CTAButton`](?path=/docs/atoms--cta).
+We can specify the version of our button by passing the type prop. We can choose between
+the <LinkTo id="atoms-button--fill-button">`FillButton`</LinkTo> or <LinkTo id="atoms-button--cta-button">`CTAButton`</LinkTo>.
 
 <Canvas>
   <Story name="Submit Button Options">
@@ -533,7 +566,9 @@ Optionally, include a cancel button.
 ## Custom inputs
 
 Some forms, such as the checkout flows that use Recurly, need to define
-their own inputs. We can specify a 'custom' field type to with a [render prop](https://reactjs.org/docs/render-props.html)
+their own inputs. We can specify a 'custom' field type to with a [render prop](https://reactjs.org/docs/render-props.html).
+
+We also have a 'custom-group' type for when you are passing in a custom FormGroup - including a label. If you do not want GridForm to surface errors for your field, you should likely use a 'custom-group'. If you chose to go this route, please be aware of [accessibility best practices](https://www.deque.com/blog/anatomy-of-accessible-forms-best-practices/) for forms.
 
 <Canvas>
   <Story name="Custom Inputs">
@@ -671,9 +706,9 @@ field's value in a parent component before onSubmit gets triggered.
 
 ## With tooltip
 
-A field can include [our existing `ToolTip`](/?path=/docs/atoms-tooltip--tool-tip). The position of the tooltip on each field is always set to the bottom-right. You also have the option to render each tooltip in dark or light mode.
+A field can include <LinkTo id="atoms-tooltip--tool-tip">our existing `ToolTip`</LinkTo>. The position of the tooltip on each field is always set to the bottom-right. You also have the option to render each tooltip in dark or light mode.
 
-See the [`Radio`](/?path=/docs/atoms-forminputs-radio--radio) story for an example of how to add a tooltip to a radio option.
+See the <LinkTo id="atoms-forminputs-radio--radio">`Radio`</LinkTo> story for an example of how to add a tooltip to a radio option.
 
 <Canvas>
   <Story name="Tooltip">
@@ -780,12 +815,15 @@ See the [`Radio`](/?path=/docs/atoms-forminputs-radio--radio) story for an examp
 ## Sections
 
 Our `GridForm`s optionally take an array of sections that have left and center-aligned variants.
-Each sections should have a title that correctly follows [heading ranks](https://usability.yale.edu/web-accessibility/articles/headings). You can set the text type of this title though the `as` prop on that section -- the default is `h2`.
+
+Each sections should have a title that correctly follows [heading ranks](https://usability.yale.edu/web-accessibility/articles/headings). You can set the text type of this title though the `as` prop on that section -- the default is `h2`. You can only set the `as` prop to a heading.
+
+You can set the <LinkTo id="typography-text--variants">Text variant</LinkTo> prop for the section title the same way. Only title variants are accepted.
 
 When using the left-aligned layout, please note that the `title` takes up 3 columns, so any field size over 9 may cause inconsistent behavior!
 
 <Canvas>
-  <Story name="Custom Sections">
+  <Story name="Sections">
     {(args) => {
       return (
         <GridForm
@@ -793,6 +831,7 @@ When using the left-aligned layout, please note that the `title` takes up 3 colu
             {
               title: 'first section',
               layout: 'left',
+              variant: 'title-xs',
               fields: [
                 {
                   label: 'hi?',
@@ -983,3 +1022,11 @@ We call it a "sweet container" so that bots do not immediately detect it as a ho
     )}
   </Story>
 </Canvas>
+
+## `<ColorMode />`
+
+Here's an example using components in context. By toggling dark mode you can see all the colors map to a new color that is accessible for the mode by default.
+
+Please note you **cannot** use the deprecated 'business' button type with `ColorMode`.
+
+<ColorModeExample />
