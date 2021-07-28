@@ -9,4 +9,6 @@ export * from './globals';
 export * from './utilities';
 export * from './themes';
 export * from './types';
+export * from './hooks';
+
 export { coreTheme as theme } from './themes';
