@@ -3,6 +3,7 @@ import { ReactElement } from 'react';
 export type TabsProps = {
   children: ReactElement<any, any>[];
   className?: string;
+  listItemMT?: number;
 };
 
 export type TabPanelProps = {
@@ -11,15 +12,14 @@ export type TabPanelProps = {
   className?: string;
 };
 
-export type DerivedPanelProps = Pick<
-  TabPanelProps,
-  'className' | 'children'
-> & {
+export type DerivedPanelProps = TabPanelProps & {
   isActiveTab: boolean;
+  listItemMT?: number;
 };
 
 export type TabPanelListProps = Pick<TabsProps, 'children'> & {
   activeTabIndex: number;
+  listItemMT?: number;
 };
 
 export type TabListProps = Pick<TabsProps, 'children'> & {

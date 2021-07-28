@@ -9,8 +9,14 @@ export const DerivedTabPanel: React.FC<DerivedPanelProps> = ({
   children,
   className,
   isActiveTab,
+  listItemMT,
+  title,
 }) => (
   <Box role="tabpanel" hidden={!isActiveTab} className={className}>
-    {children}
+    {React.Children.toArray(children).map((child, i) => (
+      <Box key={`${title}-${i}`} mt={listItemMT}>
+        {child}
+      </Box>
+    ))}
   </Box>
 );

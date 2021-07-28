@@ -7,6 +7,7 @@ import { isTabPanelGuard } from './utils';
 export const TabPanelList: React.FC<TabPanelListProps> = ({
   children,
   activeTabIndex,
+  listItemMT,
 }) => (
   <>
     {React.Children.toArray(children)
@@ -19,6 +20,8 @@ export const TabPanelList: React.FC<TabPanelListProps> = ({
             isActiveTab={i === activeTabIndex}
             className={className}
             key={`panel-${title}`}
+            listItemMT={listItemMT}
+            title={title}
           >
             {panelChildren}
           </DerivedTabPanel>

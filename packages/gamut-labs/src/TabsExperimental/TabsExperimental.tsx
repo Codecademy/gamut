@@ -8,6 +8,7 @@ import { TabsProps } from './types';
 export const TabsExperimental: React.FC<TabsProps> = ({
   children,
   className,
+  listItemMT,
 }) => {
   const [activeTabIndex, setActiveTabIndex] = useState(0);
 
@@ -19,7 +20,9 @@ export const TabsExperimental: React.FC<TabsProps> = ({
       >
         {children}
       </TabList>
-      <TabPanelList activeTabIndex={activeTabIndex}>{children}</TabPanelList>
+      <TabPanelList activeTabIndex={activeTabIndex} listItemMT={listItemMT}>
+        {children}
+      </TabPanelList>
     </FlexBox>
   );
 };
