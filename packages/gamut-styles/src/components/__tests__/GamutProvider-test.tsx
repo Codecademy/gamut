@@ -3,11 +3,11 @@ import { Global, ThemeContext } from '@emotion/react';
 import { setupEnzyme } from 'component-test-setup';
 import React from 'react';
 
-import { createEmotionCache } from '../cache';
+import { createEmotionCache } from '../../cache';
+import { coreTheme as theme } from '../../themes';
 import { GamutProvider } from '../GamutProvider';
-import { coreTheme as theme } from '../themes';
 
-jest.mock('../cache', () => {
+jest.mock('../../cache', () => {
   const cacheMock = jest.fn();
   return { createEmotionCache: cacheMock };
 });

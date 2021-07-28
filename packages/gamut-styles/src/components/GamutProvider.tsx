@@ -7,10 +7,9 @@ import {
 } from '@emotion/react';
 import React, { useContext, useRef } from 'react';
 
-import { createEmotionCache } from './cache';
-import { Reboot, Typography } from './globals';
-import { Variables } from './globals/Variables';
-import { coreTheme } from './themes/core';
+import { createEmotionCache } from '../cache';
+import { Reboot, Typography, Variables } from '../globals';
+import { coreTheme } from '../themes/core';
 
 export interface GamutProviderProps {
   useGlobals?: boolean;

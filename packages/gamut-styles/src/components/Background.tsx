@@ -1,20 +1,12 @@
 import { getContrast } from 'polished';
 import React, { ComponentProps, forwardRef, useCallback, useMemo } from 'react';
 
-import {
-  ColorAlias,
-  ColorMode,
-  ColorModes,
-  ColorModeShape,
-  Colors,
-  useColorModes,
-} from './ColorMode';
+import { useColorModes } from '../hooks';
+import { ColorAlias, ColorModes, ColorModeShape, Colors } from '../types';
+import { ColorMode } from './ColorMode';
 
 export interface BackgroundProps
-  extends Omit<
-    ComponentProps<typeof ColorMode>,
-    'mode' | 'alwaysSetVariables' | 'bg'
-  > {
+  extends Omit<ComponentProps<typeof ColorMode>, 'mode' | 'resetVars' | 'bg'> {
   bg: Colors;
 }
 
@@ -38,7 +30,7 @@ export const Background = forwardRef<HTMLDivElement, BackgroundProps>(
     }, [bg, activeColors]);
 
     const getTextContrast = useCallback(
-      (foreground: Colors) => {
+      (foreground: Parameters<typeof getColorValue>[0]) => {
         return getContrast(getColorValue(foreground), getColorValue(trueColor));
       },
       [trueColor, getColorValue]

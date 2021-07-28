@@ -4,8 +4,8 @@ import { setupRtl as setupRtlBase } from 'component-test-setup';
 import { overArgs } from 'lodash';
 import React from 'react';
 
+import { coreTheme as theme } from '../../themes';
 import { Background } from '../Background';
-import { coreTheme as theme } from '../themes';
 
 expect.extend(matchers);
 
