@@ -3,6 +3,9 @@ import { ReactElement } from 'react';
 export type TabsProps = {
   children: ReactElement<any, any>[];
   className?: string;
+  /**
+   * Adds a consistent margin top to individual list items in a tab.
+   */
   listItemMT?: number;
 };
 
