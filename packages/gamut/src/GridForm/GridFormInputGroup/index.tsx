@@ -45,11 +45,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
     switch (field.type) {
       case 'checkbox':
         return (
-          <GridFormCheckboxInput
-            field={field}
-            register={register}
-            showRequired={isRequired}
-          />
+          <GridFormCheckboxInput field={field} showRequired={isRequired} />
         );
 
       case 'custom':
@@ -70,6 +66,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
             register={register}
             showRequired={isRequired}
             setValue={setValue}
+            error={!!errorMessage}
           />
         );
 

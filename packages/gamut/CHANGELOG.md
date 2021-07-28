@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [35.4.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@35.4.1...@codecademy/gamut@35.4.2) (2021-07-27)
+
+
+### Bug Fixes
+
+* (Checkbox) remove ref  + fix default value ([a489f85](https://github.com/Codecademy/client-modules/commit/a489f855291a2c917873c9cd92287f07866b5123))
+
+
+
+### [35.4.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@35.4.0...@codecademy/gamut@35.4.1) (2021-07-27)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [35.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@35.3.1...@codecademy/gamut@35.4.0) (2021-07-27)
+
+
+### Features
+
+* **Patterns:** Add SVGR build process and SVGO settings ([56e50ff](https://github.com/Codecademy/client-modules/commit/56e50ffe021102b84a7f9e5d7bb33ea6de890994))
+
+
+
 ### [35.3.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@35.3.0...@codecademy/gamut@35.3.1) (2021-07-26)
 
 
