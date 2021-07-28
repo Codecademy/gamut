@@ -160,6 +160,8 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
           <FormError
             role={isFirstError ? 'alert' : 'status'}
             aria-live={isFirstError ? 'assertive' : 'off'}
+            markdown={field.validation?.markdown}
+            variant="absolute"
           >
             {errorMessage}
           </FormError>

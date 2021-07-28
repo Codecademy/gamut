@@ -3,6 +3,8 @@ import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
 import React, { HTMLAttributes } from 'react';
 
+import { Markdown } from '../Markdown';
+
 const errorSpanVariants = variant({
   base: {
     left: 0,
@@ -28,9 +30,30 @@ const errorSpanVariants = variant({
 
 const ErrorSpan = styled.span(errorSpanVariants);
 
-type FormErrorProps = StyleProps<typeof errorSpanVariants> &
-  HTMLAttributes<HTMLSpanElement>;
+type FormErrorBaseProps = HTMLAttributes<HTMLSpanElement> & {
+  markdown?: boolean;
+};
 
-export const FormError: React.FC<FormErrorProps> = (props) => {
-  return <ErrorSpan {...props} />;
+type FormErrorMarkdownProps = {
+  markdown: true;
+  children: string;
+};
+
+type FormErrorProps = FormErrorMarkdownProps &
+  FormErrorBaseProps &
+  StyleProps<typeof errorSpanVariants>;
+
+export const FormError: React.FC<FormErrorProps> = ({
+  children,
+  markdown,
+  ...rest
+}) => {
+  if (markdown) {
+    return (
+      <ErrorSpan {...rest}>
+        <Markdown inline text={children} spacing="none" />
+      </ErrorSpan>
+    );
+  }
+  return <ErrorSpan {...rest}>{children}</ErrorSpan>;
 };

@@ -62,7 +62,9 @@ GridForm provides the following benefits:
             size: 5,
             type: 'select',
             validation: {
-              required: 'Please select an option',
+              required:
+                'Please select an option + this is [an example](http://example.com/) inline link.',
+              markdown: true,
             },
           },
           {

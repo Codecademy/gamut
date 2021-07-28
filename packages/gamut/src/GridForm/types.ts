@@ -28,11 +28,15 @@ export type BaseFormField<Value> = {
   rowspan?: ColumnProps['rowspan'];
 };
 
+export type GridFormValidation = ValidationRules & {
+  markdown?: boolean;
+};
+
 export type GridFormCheckboxField = BaseFormField<boolean> & {
   description: React.ReactNode;
   label?: React.ReactNode;
   multiline?: boolean;
-  validation?: ValidationRules;
+  validation?: GridFormValidation;
   type: 'checkbox';
 };
 
@@ -47,14 +51,14 @@ export type GridFormCustomFieldProps = {
 export type GridFormCustomField = BaseFormField<any> & {
   label?: React.ReactNode;
   render: (props: GridFormCustomFieldProps) => React.ReactNode;
-  validation?: ValidationRules;
+  validation?: GridFormValidation;
   type: 'custom';
 };
 
 export type GridFormCustomGroupField = BaseFormField<any> & {
   label?: React.ReactNode;
   render: (props: GridFormCustomFieldProps) => React.ReactNode;
-  validation?: ValidationRules;
+  validation?: GridFormValidation;
   type: 'custom-group';
 };
 
@@ -76,7 +80,7 @@ export type BasicInputType =
 export type GridFormTextField = BaseFormField<string> & {
   label: React.ReactNode;
   placeholder?: string;
-  validation?: ValidationRules;
+  validation?: GridFormValidation;
   type: BasicInputType;
 };
 
@@ -88,7 +92,7 @@ export type GridFormRadioOption = {
 export type GridFormRadioGroupField = BaseFormField<string> & {
   label: ReactNode | string; // If this is a string, it will also be used as the aria-label.
   options: GridFormRadioOption[];
-  validation?: ValidationRules;
+  validation?: GridFormValidation;
   type: 'radio-group';
   ariaLabel?: string;
 };
@@ -96,20 +100,20 @@ export type GridFormRadioGroupField = BaseFormField<string> & {
 export type GridFormSelectField = BaseFormField<string> & {
   label: React.ReactNode;
   options: string[] | Record<string, number | string>;
-  validation?: ValidationRules;
+  validation?: GridFormValidation;
   type: 'select';
 };
 
 export type GridFormFileField = BaseFormField<FileList> & {
   label: React.ReactNode;
-  validation?: ValidationRules;
+  validation?: GridFormValidation;
   type: 'file';
 };
 
 export type GridFormTextAreaField = BaseFormField<string> & {
   label: React.ReactNode;
   placeholder?: string;
-  validation?: ValidationRules;
+  validation?: GridFormValidation;
   type: 'textarea';
 };
 
