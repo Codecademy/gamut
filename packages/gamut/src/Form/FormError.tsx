@@ -31,7 +31,7 @@ const errorSpanVariants = variant({
 const ErrorSpan = styled.span(errorSpanVariants);
 
 type FormErrorBaseProps = HTMLAttributes<HTMLSpanElement> & {
-  markdown?: boolean;
+  markdown?: false;
 };
 
 type FormErrorMarkdownProps = {
@@ -39,13 +39,17 @@ type FormErrorMarkdownProps = {
   children: string;
 };
 
-type FormErrorProps = FormErrorMarkdownProps &
-  FormErrorBaseProps &
+type FormErrorDiscriminatedType = FormErrorBaseProps | FormErrorMarkdownProps;
+
+type FormErrorProps = FormErrorDiscriminatedType &
   StyleProps<typeof errorSpanVariants>;
 
-export const FormError: React.FC<FormErrorProps> = (props) => {
-  const { children, ...rest } = props;
-  if (props?.markdown) {
+export const FormError: React.FC<FormErrorProps> = ({
+  children,
+  markdown,
+  ...rest
+}) => {
+  if (markdown && typeof children === 'string') {
     return (
       <ErrorSpan {...rest}>
         <Markdown inline text={children} spacing="none" />
