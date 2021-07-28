@@ -1,8 +1,10 @@
-import { codecademyHtml } from '../../libs/services/languageIds';
+import { LanguageIds } from '../../libs/services/languageIds';
 import { EditorTheme } from '../../libs/theme/editorTheme';
 import { EditorFontSize } from '../types';
 
-const hiddenBracketLanguages = new Set<string | undefined>([codecademyHtml]);
+const hiddenBracketLanguages = new Set<string | undefined>([
+  LanguageIds.codecademyHtml,
+]);
 
 export const autoCloseTokensOption = (autoCloseTokens: boolean | undefined) =>
   autoCloseTokens ? 'always' : 'never';
