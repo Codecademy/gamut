@@ -129,7 +129,7 @@ export const CustomDropdown: React.FC = ({
   defaultValue,
   options,
 }) => {
-  const { currentValue, setCurrentValue } = useState(defaultValue);
+  const [currentValue, setCurrentValue] = useState(defaultValue);
 
   const changeHandler = (newValue) => {
     setCurrentValue(newValue);
