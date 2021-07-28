@@ -1,5 +1,23 @@
-import styles from './styles.module.scss';
+import { deprecatedColors } from '@codecademy/gamut-styles';
+import { css } from '@emotion/react';
 
+const lintDecoration = css`
+  background-color: ${deprecatedColors.red[500]};
+  transform: scaleY(0.85);
+`;
+const lintGlyph = css`
+  ::after {
+    content: ' ';
+    background-color: ${deprecatedColors.red[500]};
+    border-radius: 100%;
+    display: block;
+    height: 10px;
+    width: 10px;
+  }
+`;
+const lintedText = css`
+  color: ${deprecatedColors.white};
+`;
 export type RawValidationComplaint = {
   col: number;
   line: number;
@@ -13,11 +31,11 @@ export const formatValidationComplaint = (
 
   return {
     options: {
-      className: styles.lintDecoration,
-      glyphMarginClassName: styles.lintGlyph,
+      className: lintDecoration,
+      glyphMarginClassName: lintGlyph,
       glyphMarginHoverMessage: message,
       hoverMessage: message,
-      inlineClassName: styles.lintedText,
+      inlineClassName: lintedText,
       overflowRuler: true,
     },
     range: {

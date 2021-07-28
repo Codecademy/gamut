@@ -1,17 +1,19 @@
-export const codecademyCss = 'codecademy-css';
-export const codecademyDefault = 'plaintext';
-export const codecademyGo = 'codecademy-go';
-export const codecademyHtml = 'codecademy-html';
-export const codecademyJava = 'codecademy-java';
-export const codecademyJs = 'codecademy-js';
-export const codecademyPhp = 'codecademy-php';
-export const codecademyPython = 'codecademy-python';
-export const codecademyR = 'codecademy-r';
-export const codecademyRuby = 'codecademy-ruby';
-export const codecademyScss = 'codecademy-scss';
-export const codecademySql = 'codecademy-sql';
-export const codecademySwift = 'codecademy-swift';
-export const codecademyCSharp = 'codecademy-cs';
-export const codecademyCpp = 'codecademy-cpp';
-export const codecademyKotlin = 'codecademy-kotlin';
-export const codecademyRazor = 'codecademy-razor';
+export enum LanguageIds {
+  codecademyCss = 'codecademy-css',
+  codecademyDefault = 'plaintext',
+  codecademyGo = 'codecademy-go',
+  codecademyHtml = 'codecademy-html',
+  codecademyJava = 'codecademy-java',
+  codecademyJs = 'codecademy-js',
+  codecademyPhp = 'codecademy-php',
+  codecademyPython = 'codecademy-python',
+  codecademyR = 'codecademy-r',
+  codecademyRuby = 'codecademy-ruby',
+  codecademyScss = 'codecademy-scss',
+  codecademySql = 'codecademy-sql',
+  codecademySwift = 'codecademy-swift',
+  codecademyCSharp = 'codecademy-cs',
+  codecademyCpp = 'codecademy-cpp',
+  codecademyKotlin = 'codecademy-kotlin',
+  codecademyRazor = 'codecademy-razor',
+}

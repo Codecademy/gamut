@@ -3,24 +3,7 @@ import { useEffect, useState } from 'react';
 
 // TODO add missing languages
 import { getLanguageForFile } from '../getLanguage';
-import {
-  // codecademyCpp,
-  // codecademyCSharp,
-  //  codecademyCss,
-  // codecademyGo,
-  // codecademyHtml,
-  // codecademyJava,
-  codecademyJs,
-  // codecademyKotlin,
-  // codecademyPhp,
-  // codecademyPython,
-  // codecademyR,
-  // codecademyRazor,
-  // codecademyRuby,
-  // codecademyScss,
-  // codecademySql,
-  // codecademySwift,
-} from '../services/languageIds';
+import { LanguageIds } from '../services/languageIds';
 import { LanguageServices } from './LanguageService';
 import { LanguageRegistration, Monaco } from './types';
 
@@ -32,7 +15,7 @@ const languageServices = new LanguageServices(
     // [codecademyGo, () => import('../services/go')],
     // [codecademyHtml, () => import('../services/html')],
     // [codecademyJava, () => import('../services/java')],
-    [codecademyJs, () => import('../services/javascript')],
+    [LanguageIds.codecademyJs, () => import('../services/javascript')],
     // [codecademyKotlin, () => import('../services/kotlin')],
     // [codecademyPhp, () => import('../services/php')],
     // [codecademyPython, () => import('../services/python')],

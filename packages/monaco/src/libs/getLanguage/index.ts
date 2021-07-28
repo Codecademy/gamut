@@ -1,6 +1,6 @@
 import type { languages as LanguagesType } from 'monaco-editor';
 
-import { codecademyDefault, codecademyJs } from '../services/languageIds';
+import { LanguageIds } from '../services/languageIds';
 
 export type MonacoWithLanguages = {
   languages: {
@@ -9,8 +9,8 @@ export type MonacoWithLanguages = {
 };
 
 const languageOverrides = new Map([
-  ['javascript', codecademyJs],
-  ['js', codecademyJs],
+  ['javascript', LanguageIds.codecademyJs],
+  ['js', LanguageIds.codecademyJs],
 ]);
 
 const extensionOverrides = new Map<string | undefined, string>([
@@ -49,7 +49,7 @@ export const getLanguageForName = (
     : getLanguageForExtension(monaco, `.${language.toLowerCase()}`);
 
   if (!baseLanguage) {
-    return codecademyDefault;
+    return LanguageIds.codecademyDefault;
   }
 
   return languageOverrides.get(baseLanguage) ?? baseLanguage;
@@ -60,17 +60,17 @@ export const getLanguageForFile = (
   fileName?: string
 ) => {
   if (fileName?.match(/\.min\./)) {
-    return codecademyDefault;
+    return LanguageIds.codecademyDefault;
   }
 
   const extension = getExtensionForFileName(fileName);
   if (!extension) {
-    return codecademyDefault;
+    return LanguageIds.codecademyDefault;
   }
 
   const baseLanguage = getLanguageForExtension(monaco, extension);
   if (!baseLanguage) {
-    return codecademyDefault;
+    return LanguageIds.codecademyDefault;
   }
 
   return languageOverrides.get(baseLanguage) ?? baseLanguage;
