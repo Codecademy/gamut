@@ -79,13 +79,13 @@ export const VariableProvider = styled(
   }
 >(({ variables }) => variables, css({ textColor: 'text' }), providerProps);
 
-const currentBg = '--color-background-current';
 export const ColorMode = forwardRef<
   HTMLDivElement,
   Omit<ComponentProps<typeof VariableProvider>, 'bg'> & ColorModeProps
 >(({ mode, alwaysSetVariables, bg, ...rest }, ref) => {
   const theme = useTheme();
   const { modes, mode: active, colors } = theme;
+  const contextBg = bg ? 'background-current' : undefined;
 
   /** Serialize color variables for the current mode
    * 1. If all variables are requried add all mode variables to the current context
@@ -106,13 +106,23 @@ export const ColorMode = forwardRef<
   }, [colors, mode, modes, theme, bg]);
 
   if (active === mode) {
-    const vars = alwaysSetVariables ? variables : pick(variables, [currentBg]);
-    return <VariableProvider {...rest} variables={vars} bg={bg} ref={ref} />;
+    const vars = alwaysSetVariables
+      ? variables
+      : pick(variables, ['--color-background-current']);
+
+    return (
+      <VariableProvider {...rest} variables={vars} bg={contextBg} ref={ref} />
+    );
   }
 
   return (
     <ThemeProvider theme={{ mode }}>
-      <VariableProvider {...rest} variables={variables} bg={bg} ref={ref} />
+      <VariableProvider
+        {...rest}
+        variables={variables}
+        bg={contextBg}
+        ref={ref}
+      />
     </ThemeProvider>
   );
 });

@@ -39,8 +39,13 @@ describe('Background', () => {
   it('switches the default colormode when contrast standards are not met', () => {
     const { view } = renderView({ bg: 'navy' });
     expect(view.getByTestId('content').parentElement).toHaveStyleRule(
-      'background-color',
+      '--color-background-current',
       theme.colors.navy
+    );
+
+    expect(view.getByTestId('content').parentElement).toHaveStyleRule(
+      'background-color',
+      theme.colors['background-current']
     );
   });
 
@@ -56,12 +61,12 @@ describe('Background', () => {
       ),
     });
     expect(view.getByTestId('content').parentElement).toHaveStyleRule(
-      'background-color',
+      '--color-background-current',
       theme.colors.navy
     );
 
     expect(view.getByTestId('nested-content').parentElement).toHaveStyleRule(
-      'background-color',
+      '--color-background-current',
       theme.colors.beige
     );
   });
