@@ -43,12 +43,9 @@ type FormErrorProps = FormErrorMarkdownProps &
   FormErrorBaseProps &
   StyleProps<typeof errorSpanVariants>;
 
-export const FormError: React.FC<FormErrorProps> = ({
-  children,
-  markdown,
-  ...rest
-}) => {
-  if (markdown) {
+export const FormError: React.FC<FormErrorProps> = (props) => {
+  const { children, ...rest } = props;
+  if (props?.markdown) {
     return (
       <ErrorSpan {...rest}>
         <Markdown inline text={children} spacing="none" />
