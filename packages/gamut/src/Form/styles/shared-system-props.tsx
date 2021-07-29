@@ -106,10 +106,10 @@ export const conditionalStyles = system.variant({
     error: {
       borderColor: 'feedback-error',
       [InputSelectors.HOVER]: {
-        borderColor: 'danger',
+        borderColor: 'feedback-error',
       },
       [InputSelectors.FOCUS]: {
-        borderColor: 'danger',
+        borderColor: 'feedback-error',
         boxShadow: `inset 0 0 0 1px ${theme.colors.danger}`,
       },
     },
