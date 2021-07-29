@@ -19,7 +19,6 @@ export const useEditorTheming = (
   monaco?: Monaco,
   themeType: MonacoThemeType = MonacoThemeType.static
 ) => {
-  // TODO get user interface settings
   const { highContrast } = interfaceSettings;
   const [, setThemeDefined] = useState(false);
 

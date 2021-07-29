@@ -29,7 +29,7 @@ export const MonacoEditor: React.FC<MonacoEditorProps> = ({
   theme = MonacoThemeType.static,
   userInterfaceSettings,
 }) => {
-  // TODO import editor theming and settings hooks
+  // TODO import editor settings hook
   const [editor, setEditor] = useState<Editor.IStandaloneCodeEditor>();
   const [monaco, setMonaco] = useState<Monaco>();
   const languageService = useLanguageService(file.name || '', editor, monaco);

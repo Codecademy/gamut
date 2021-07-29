@@ -2,11 +2,10 @@ import { platformTheme as theme } from '@codecademy/gamut-styles';
 
 import { MonacoThemeColors } from './types';
 
-// TODO: get from learner settings when available
 const colorMode = 'dark';
 const { _getColorValue: getColorValue } = theme;
 
-export const LEColors: MonacoThemeColors = {
+export const CodecademyColors: MonacoThemeColors = {
   syntax: {
     attribute: getColorValue(theme.modes[colorMode]['editor-attribute']),
     annotation: getColorValue(theme.modes[colorMode]['editor-annotation']),
