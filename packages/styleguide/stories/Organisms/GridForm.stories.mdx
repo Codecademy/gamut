@@ -14,6 +14,8 @@ import { useState } from '@storybook/addons';
 
 import { LinkTo } from '~styleguide/blocks';
 
+import { ColorModeExample } from './examples';
+
 <Meta
   title={title}
   component={GridForm}
@@ -112,6 +114,7 @@ GridForm provides the following benefits:
             size: 3,
             type: 'checkbox',
             id: 'my-super-cool-id',
+            defaultValue: true,
           },
           {
             label: 'Preferred Modern Artist',
@@ -381,7 +384,7 @@ value of left, center, right, or stretch.
 
 ## Submit Button Options
 
-We can specify the version of our button by passing the type prop. WE can choose between
+We can specify the version of our button by passing the type prop. We can choose between
 the <LinkTo id="atoms-button--fill-button">`FillButton`</LinkTo> or <LinkTo id="atoms-button--cta-button">`CTAButton`</LinkTo>.
 
 <Canvas>
@@ -1019,3 +1022,11 @@ We call it a "sweet container" so that bots do not immediately detect it as a ho
     )}
   </Story>
 </Canvas>
+
+## `<ColorMode />`
+
+Here's an example using components in context. By toggling dark mode you can see all the colors map to a new color that is accessible for the mode by default.
+
+Please note you **cannot** use the deprecated 'business' button type with `ColorMode`.
+
+<ColorModeExample />

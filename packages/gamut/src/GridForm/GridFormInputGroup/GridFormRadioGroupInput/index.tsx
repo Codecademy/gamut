@@ -11,6 +11,7 @@ export type GridFormRadioGroupInputProps = {
   register: UseFormMethods['register'];
   setValue: (name: string, value: string) => void;
   showRequired?: boolean;
+  error?: boolean;
 };
 
 export const GridFormRadioGroupInput: React.FC<GridFormRadioGroupInputProps> = ({
@@ -19,6 +20,7 @@ export const GridFormRadioGroupInput: React.FC<GridFormRadioGroupInputProps> = (
   register,
   setValue,
   showRequired,
+  error,
 }) => {
   const ariaLabel: string | undefined =
     field.ariaLabel ?? (isString(field.label) ? field.label : undefined);
@@ -45,6 +47,7 @@ export const GridFormRadioGroupInput: React.FC<GridFormRadioGroupInputProps> = (
           ref={register(field.validation)}
           value={value}
           id={field.id}
+          error={error}
         />
       ))}
     </RadioGroup>
