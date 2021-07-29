@@ -20,7 +20,7 @@ export const alertVariants = {
   },
   error: {
     order: 1,
-    bg: 'red',
+    bg: 'red-600',
     icon: MiniRemoveCircleIcon,
   },
   notice: {
