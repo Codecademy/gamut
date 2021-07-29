@@ -100,7 +100,6 @@ export const renderGridFormCheckboxInput = (
     <FormContext mode="onSubmit">
       <GridFormCheckboxInput
         field={{ ...stubCheckboxField, ...extraProps }}
-        register={jest.fn()}
         {...extraProps}
       />
     </FormContext>

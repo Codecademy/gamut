@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [35.4.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@35.4.2...@codecademy/gamut@35.4.3) (2021-07-29)
+
+
+### Bug Fixes
+
+* **colors:** Red Swap for accessible errors GM-281 ([c09d9f4](https://github.com/Codecademy/client-modules/commit/c09d9f4ad8254042ebdec9b02675e89f6a9aaac3))
+
+
+
+### [35.4.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@35.4.1...@codecademy/gamut@35.4.2) (2021-07-27)
+
+
+### Bug Fixes
+
+* (Checkbox) remove ref  + fix default value ([a489f85](https://github.com/Codecademy/client-modules/commit/a489f855291a2c917873c9cd92287f07866b5123))
+
+
+
 ### [35.4.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@35.4.0...@codecademy/gamut@35.4.1) (2021-07-27)
 
 **Note:** Version bump only for package @codecademy/gamut
