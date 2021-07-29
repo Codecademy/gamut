@@ -141,13 +141,6 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
     );
   }
 
-  const errorContents = (error: string) => {
-    if (field.validation?.markdown) {
-      return <Markdown inline text={error} spacing="none" />;
-    }
-    return error;
-  };
-
   const label = (
     <FormGroupLabel
       disabled={field.disabled}
@@ -170,7 +163,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
             aria-live={isFirstError ? 'assertive' : 'off'}
             variant="absolute"
           >
-            {errorContents(errorMessage)}
+            <Markdown inline text={error} spacing="none" />
           </FormError>
         )}
       </FormGroup>
