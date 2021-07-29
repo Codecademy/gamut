@@ -1149,6 +1149,13 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
+"@babel/runtime@^7.4.4":
+  version "7.14.8"
+  resolved "https://registry.npmjs.org/@babel/runtime/-/runtime-7.14.8.tgz#7119a56f421018852694290b9f9148097391b446"
+  integrity sha512-twj3L8Og5SaCRCErB4x4ajbvBIVV77CGeFglHpeg5WC5FF8TZzBWXtTJ4MqaD9QszLYTtr+IsaAL2rEUevb+eg==
+  dependencies:
+    regenerator-runtime "^0.13.4"
+
 "@babel/template@^7.12.13", "@babel/template@^7.12.7", "@babel/template@^7.3.3":
   version "7.12.13"
   resolved "https://registry.npmjs.org/@babel/template/-/template-7.12.13.tgz#530265be8a2589dbb37523844c5bcb55947fb327"
@@ -1230,33 +1237,6 @@
   dependencies:
     exec-sh "^0.3.2"
     minimist "^1.2.0"
-
-"@codecademy/gamut@35.2.0":
-  version "35.2.0"
-  resolved "https://registry.npmjs.org/@codecademy/gamut/-/gamut-35.2.0.tgz#e7da80d117c4fd13f4b7667ddc5006578fa1b5a9"
-  integrity sha512-mbN1wGpJ3P1c+HP2Qw+7DPF4Z7Am+MhMfiIgrV96lNnjdbx2XTzZFaKesbCuSnIkDr2WavMq7rNzuqqgbtt0zw==
-  dependencies:
-    "@codecademy/gamut-icons" "^5.7.3"
-    "@codecademy/gamut-illustrations" "^0.17.12"
-    "@codecademy/gamut-styles" "^11.6.2"
-    "@codecademy/variance" "^0.17.2"
-    "@types/marked" "^1.1.0"
-    "@types/react-select" "^4.0.13"
-    classnames "^2.2.5"
-    framer-motion "^2.7.9"
-    html-to-react "^1.4.2"
-    invariant "^2.2.4"
-    lodash "^4.17.5"
-    marked "^0.7.0"
-    polished "^4.1.2"
-    react-aria-tabpanel "^4.4.0"
-    react-focus-on "^3.5.1"
-    react-hook-form "6.8.5"
-    react-player "^2.3.1"
-    react-select "^4.3.0"
-    react-truncate-markup "^5.1.0"
-    react-use "^15.3.8"
-    sanitize-markdown "^2.6.6"
 
 "@emotion/babel-plugin@^11.3.0":
   version "11.3.0"
@@ -2441,6 +2421,14 @@
   dependencies:
     npmlog "^4.1.2"
     write-file-atomic "^2.3.0"
+
+"@loadable/component@5.10.1":
+  version "5.10.1"
+  resolved "https://registry.npmjs.org/@loadable/component/-/component-5.10.1.tgz#09613e46d409ffacb3b4403658ed90adbc01ba24"
+  integrity sha512-nYb38UbPWCWB9R8US4Za0JzgjS1QaY13STJhU7ZUsfO2qG3k5huppVF92eX2iauhfpdrRkCDQqi+Fg/US4FXIg==
+  dependencies:
+    "@babel/runtime" "^7.4.4"
+    hoist-non-react-statics "^3.3.0"
 
 "@mdx-js/loader@^1.6.22":
   version "1.6.22"
@@ -3791,6 +3779,13 @@
   version "0.8.0"
   resolved "https://registry.npmjs.org/@types/konami-code-js/-/konami-code-js-0.8.0.tgz#dd7b3bd23266d0d1c6bfcad870232b1a3788a883"
   integrity sha512-7fhuggz5XuuQJxWhVL/5i3oQEQ80jjp3yvwaWlwNjFbM40BELnzV4qKeyPDLtjsHC9NG6E7XT22epH9eDZC3zg==
+
+"@types/loadable__component@5.13.3":
+  version "5.13.3"
+  resolved "https://registry.npmjs.org/@types/loadable__component/-/loadable__component-5.13.3.tgz#ea620b218fb2b6744ce5b2efd9a6a5c1a525a021"
+  integrity sha512-nkRRYpKxspH9yiYGSvyfM7GX1m57B9AVMrVEWY7Hlv9ueK2XCu39M5QyBTDHXcj5qixdD+MyAmNgoy2dEDxGLQ==
+  dependencies:
+    "@types/react" "*"
 
 "@types/lodash@4.14.168":
   version "4.14.168"
