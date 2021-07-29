@@ -110,7 +110,7 @@ export const conditionalStyles = system.variant({
       },
       [InputSelectors.FOCUS]: {
         borderColor: 'feedback-error',
-        boxShadow: `inset 0 0 0 1px ${theme.colors.danger}`,
+        boxShadow: `inset 0 0 0 1px ${theme.colors['feedback-error']}`,
       },
     },
     activated: { borderColor: 'currentColor' },
