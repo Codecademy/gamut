@@ -2,6 +2,7 @@ export * from './FormError';
 export * from './FormGroup';
 export * from './FormGroupLabel';
 export * from './FormGroupDescription';
+export * from './FormWrapper';
 export * from './Checkbox';
 export * from './Select';
 export * from './SelectDropdown';

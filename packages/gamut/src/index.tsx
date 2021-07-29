@@ -19,7 +19,7 @@ export * from './ContentContainer';
 export * from './FlexBox';
 export * from './FocusTrap';
 export * from './Form';
-export * from './GridForm/GridForm';
+export * from './GridForm';
 export * from './HiddenText';
 export * from './Typography/HeadingDeprecated';
 export * from './Typography/Text';
