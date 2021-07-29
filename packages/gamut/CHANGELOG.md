@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [35.4.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@35.4.2...@codecademy/gamut@35.4.3) (2021-07-29)
+
+
+### Bug Fixes
+
+* **colors:** Red Swap for accessible errors GM-281 ([c09d9f4](https://github.com/Codecademy/client-modules/commit/c09d9f4ad8254042ebdec9b02675e89f6a9aaac3))
+
+
+
 ### [35.4.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@35.4.1...@codecademy/gamut@35.4.2) (2021-07-27)
 
 
