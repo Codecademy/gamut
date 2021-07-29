@@ -15,13 +15,17 @@ export const GridFormSectionTitle: React.FC<GridFormSectionTitleProps> = ({
   numberOfFields,
   variant,
 }) => {
-  const size = layout === 'center' ? 12 : 3;
+  const size = layout === 'center' ? 12 : layout === 'twoColumn' ? 6 : 3;
   const rowspan = layout === 'center' ? 1 : numberOfFields;
 
   return (
     <Column
-      size={{ _: 12, md: size }}
-      gridRowEnd={{ _: `span 1`, md: `span ${rowspan}` }}
+      size={layout !== 'twoColumn' ? { _: 12, md: size } : size}
+      gridRowEnd={
+        layout !== 'twoColumn'
+          ? { _: `span 1`, md: `span ${rowspan}` }
+          : `span 1`
+      }
     >
       <Text as={as} variant={variant}>
         {title}

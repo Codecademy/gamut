@@ -1023,6 +1023,240 @@ We call it a "sweet container" so that bots do not immediately detect it as a ho
   </Story>
 </Canvas>
 
+## Column GridForm
+
+"Sweet container" ([honeypot](<https://en.wikipedia.org/wiki/Honeypot_(computing)>)) inputs can be used to detect bots by providing a field that would not generally be clicked by human users, but might be triggered automatically by bots.
+
+We call it a "sweet container" so that bots do not immediately detect it as a honeypot input.
+
+<Canvas>
+  <Story name="Column GridForm">
+    {(args) => (
+      <GridForm
+        columnFlow
+        fields={[
+          {
+            title: 'first section',
+            variant: 'title-xs',
+            layout: 'twoColumn',
+            fields: [
+              {
+                description: 'hi?',
+                name: 'text01-twoColumn1',
+                size: 6,
+                type: 'checkbox',
+                validation: {
+                  required: true,
+                },
+              },
+              {
+                description: 'hello?',
+                name: 'text02-twoColumn1',
+                size: 6,
+                type: 'checkbox',
+                validation: {
+                  required: true,
+                },
+              },
+              {
+                description: 'Write a paragraph.',
+                name: 'paragraph01-twoColumn1',
+                size: 6,
+                type: 'checkbox',
+                validation: {
+                  required: 'Please write something about penguins!',
+                },
+              },
+              {
+                description: 'howdy?',
+                name: 'text03-left-twoColumn1',
+                size: 6,
+                type: 'checkbox',
+                validation: {
+                  required: true,
+                },
+              },
+              {
+                description: 'whats up?',
+                name: 'text04--left-twoColumn1',
+                size: 6,
+                type: 'checkbox',
+                validation: {
+                  required: true,
+                },
+              },
+            ],
+          },
+          {
+            title: 'second section',
+            variant: 'title-xs',
+            layout: 'twoColumn',
+            fields: [
+              {
+                description: 'hi?',
+                name: 'text01-twoColumn2',
+                size: 6,
+                type: 'checkbox',
+                validation: {
+                  required: true,
+                },
+              },
+              {
+                description: 'hello?',
+                name: 'text02-twoColumn2',
+                size: 6,
+                type: 'checkbox',
+                validation: {
+                  required: true,
+                },
+              },
+              {
+                description: 'Write a paragraph.',
+                name: 'paragraph01-twoColumn2',
+                size: 6,
+                type: 'checkbox',
+                validation: {
+                  required: 'Please write something about penguins!',
+                },
+              },
+              {
+                description: 'howdy?',
+                name: 'text03-twoColumn2',
+                size: 6,
+                type: 'checkbox',
+                validation: {
+                  required: true,
+                },
+              },
+              {
+                description: 'whats up?',
+                name: 'text04-twoColumn2',
+                size: 6,
+                type: 'checkbox',
+                validation: {
+                  required: true,
+                },
+              },
+            ],
+          },
+          {
+            title: 'third section',
+            variant: 'title-xs',
+            layout: 'twoColumn',
+            fields: [
+              {
+                description: 'hi?',
+                name: 'text01-twoColumn3',
+                size: 6,
+                type: 'checkbox',
+                validation: {
+                  required: true,
+                },
+              },
+              {
+                description: 'hello?',
+                name: 'text02-twoColumn3',
+                size: 6,
+                type: 'checkbox',
+                validation: {
+                  required: true,
+                },
+              },
+              {
+                description: 'Write a paragraph.',
+                name: 'paragraph01-twoColumn3',
+                size: 6,
+                type: 'checkbox',
+                validation: {
+                  required: 'Please write something about penguins!',
+                },
+              },
+              {
+                description: 'howdy?',
+                name: 'text03-twoColumn3',
+                size: 6,
+                type: 'checkbox',
+                validation: {
+                  required: true,
+                },
+              },
+              {
+                description: 'whats up?',
+                name: 'text04-twoColumn3',
+                size: 6,
+                type: 'checkbox',
+                validation: {
+                  required: true,
+                },
+              },
+            ],
+          },
+          {
+            title: 'fourth section',
+            variant: 'title-xs',
+            layout: 'twoColumn',
+            fields: [
+              {
+                description: 'hi?',
+                name: 'text01-twoColumn4',
+                size: 6,
+                type: 'checkbox',
+                validation: {
+                  required: true,
+                },
+              },
+              {
+                description: 'hello?',
+                name: 'text02-twoColumn4',
+                size: 6,
+                type: 'checkbox',
+                validation: {
+                  required: true,
+                },
+              },
+              {
+                description: 'Write a paragraph.',
+                name: 'paragraph01-twoColumn4',
+                size: 6,
+                type: 'checkbox',
+                validation: {
+                  required: 'Please write something about penguins!',
+                },
+              },
+              {
+                description: 'howdy?',
+                name: 'text03-twoColumn4',
+                size: 6,
+                type: 'checkbox',
+                validation: {
+                  required: true,
+                },
+              },
+              {
+                description: 'whats up?',
+                name: 'text04-twoColumn4',
+                size: 6,
+                type: 'checkbox',
+                validation: {
+                  required: true,
+                },
+              },
+            ],
+          },
+        ]}
+        onSubmit={async (values) => {
+          action('Form Submitted')(values);
+        }}
+        submit={{
+          contents: 'Submit',
+          position: 'right',
+        }}
+        rowGap={0}
+      />
+    )}
+  </Story>
+</Canvas>
+
 ## `<ColorMode />`
 
 Here's an example using components in context. By toggling dark mode you can see all the colors map to a new color that is accessible for the mode by default.

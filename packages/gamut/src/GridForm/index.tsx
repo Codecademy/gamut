@@ -1,3 +1,5 @@
+import { states } from '@codecademy/gamut-styles';
+import styled from '@emotion/styled';
 import React, { Fragment } from 'react';
 import { FormProvider, Mode, SubmitHandler, useForm } from 'react-hook-form';
 
@@ -29,6 +31,16 @@ const isGridFormSection = (
 ): field is GridFormSectionProps => {
   return (field as GridFormSectionProps).title !== undefined;
 };
+
+const StyledLayoutGrid = styled(LayoutGrid)(
+  states({
+    columnFlow: {
+      gridTemplateColumns: 'initial',
+      gridTemplateRows: 'repeat(12, minmax(max-content, .5fr))',
+      gridAutoFlow: 'column',
+    },
+  })
+);
 
 export type GridFormProps<Values extends {}> = {
   children?: React.ReactNode;
@@ -80,6 +92,8 @@ export type GridFormProps<Values extends {}> = {
    * required fields are completed.
    */
   validation?: Exclude<Mode, 'onBlur'>;
+
+  columnFlow?: boolean;
 };
 
 export function GridForm<
@@ -95,6 +109,7 @@ export function GridForm<
   submit,
   validation = 'onSubmit',
   showRequired = false,
+  columnFlow,
 }: GridFormProps<Values>) {
   const flatFields = fields.flatMap((field) =>
     isGridFormSection(field) ? field.fields : field
@@ -118,7 +133,11 @@ export function GridForm<
       {...methods}
     >
       <Form className={className} onSubmit={handleSubmit(onSubmit)} noValidate>
-        <LayoutGrid columnGap={columnGap} rowGap={rowGap}>
+        <StyledLayoutGrid
+          columnGap={columnGap}
+          rowGap={rowGap}
+          columnFlow={columnFlow}
+        >
           <>
             {fields.map((field) => {
               if (isGridFormSection(field)) {
@@ -136,7 +155,7 @@ export function GridForm<
                       fields={fields}
                       showRequired={showRequired}
                     />
-                    <GridFormSectionBreak />
+                    {columnFlow ? null : <GridFormSectionBreak />}
                   </Fragment>
                 );
               }
@@ -149,7 +168,20 @@ export function GridForm<
               );
             })}
           </>
+          {!columnFlow && (
+            <GridFormButtons
+              cancel={cancel}
+              {...submit}
+              disabled={
+                (validation === 'onChange' && !formState.isValid) ||
+                submit.disabled
+              }
+            />
+          )}
 
+          {children}
+        </StyledLayoutGrid>
+        {columnFlow && (
           <GridFormButtons
             cancel={cancel}
             {...submit}
@@ -158,8 +190,7 @@ export function GridForm<
               submit.disabled
             }
           />
-          {children}
-        </LayoutGrid>
+        )}
       </Form>
     </FormProvider>
   );
