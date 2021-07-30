@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [35.4.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@35.4.3...@codecademy/gamut@35.4.4) (2021-07-30)
+
+
+### Bug Fixes
+
+* **a11y:** fixes screen reader readout for progress components ([1e81c5d](https://github.com/Codecademy/client-modules/commit/1e81c5d64cfc697129d9932100dcbd998e9886b0))
+
+
+
 ### [35.4.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@35.4.2...@codecademy/gamut@35.4.3) (2021-07-29)
 
 
