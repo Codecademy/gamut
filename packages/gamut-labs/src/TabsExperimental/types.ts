@@ -1,12 +1,14 @@
 import { ReactElement } from 'react';
 
+import { theme } from '../../../gamut-styles/dist';
+
 export type TabsProps = {
   children: ReactElement<any, any>[];
   className?: string;
   /**
    * Adds a consistent margin top to individual list items in a tab.
    */
-  listItemMT?: number;
+  listItemMT?: typeof theme.spacing;
 };
 
 export type TabPanelProps = {
@@ -17,12 +19,12 @@ export type TabPanelProps = {
 
 export type DerivedPanelProps = TabPanelProps & {
   isActiveTab: boolean;
-  listItemMT?: number;
+  listItemMT?: typeof theme.spacing;
 };
 
 export type TabPanelListProps = Pick<TabsProps, 'children'> & {
   activeTabIndex: number;
-  listItemMT?: number;
+  listItemMT?: typeof theme.spacing;
 };
 
 export type TabListProps = Pick<TabsProps, 'children'> & {
