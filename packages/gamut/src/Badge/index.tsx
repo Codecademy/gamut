@@ -2,7 +2,7 @@ import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
 import React from 'react';
 
-import { variant } from '../../../gamut-styles/dist';
+import { variant } from '@codecademy/gamut-styles';
 import { Box } from '../Box';
 
 type BadgeProps = StyleProps<typeof badgeVariants> & {
