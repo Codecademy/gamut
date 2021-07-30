@@ -119,7 +119,7 @@ describe('createTheme', () => {
         '#000000'
       );
     });
-    it('returns value checker for colors', () => {
+    it('returns value checker for colors with deep values', () => {
       const theme = builder
         .addColors({
           black: '#000000',
@@ -140,6 +140,36 @@ describe('createTheme', () => {
       expect(
         theme._getColorValue(theme.modes.light['primary-default'])
       ).toEqual('#eeeeee');
+    });
+
+    it('merges color mode configurations when overriden', () => {
+      const theme = builder
+        .addColors({
+          black: '#000000',
+          white: '#FFFFFF',
+        })
+        .addColorModes('light', {
+          light: {
+            primary: {
+              _: 'black',
+              hover: 'white',
+            },
+          },
+        })
+        .build();
+
+      const override = createTheme(theme)
+        .addColorModes('light', {
+          light: {
+            primary: {
+              _: 'white',
+              hover: 'black',
+            },
+          },
+        })
+        .build();
+
+      expect(override.modes.light.primary).toEqual('white');
     });
 
     it('returns the raw values of color mode colors on the tokens object', () => {

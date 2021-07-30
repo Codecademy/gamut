@@ -1,5 +1,5 @@
 import { MiniDeleteIcon } from '@codecademy/gamut-icons';
-import { styledConfig, system } from '@codecademy/gamut-styles';
+import { system } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React, { ComponentProps } from 'react';
 
@@ -29,10 +29,7 @@ export interface DialogProps
   };
 }
 
-const DialogContainer = styled(
-  FloatingCard,
-  styledConfig(['size'])
-)(
+const DialogContainer = styled(FloatingCard)(
   system.variant({
     prop: 'size',
     defaultVariant: 'small',
@@ -80,7 +77,6 @@ export const Dialog: React.FC<DialogProps> = ({
         aria-hidden="false"
         aria-modal="true"
         role="dialog"
-        pattern="checkerDense"
       >
         <Text as="h2" fontSize={20} lineHeight="base" gridArea="title">
           {title}

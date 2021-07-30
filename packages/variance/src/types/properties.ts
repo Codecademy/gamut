@@ -1,4 +1,4 @@
-import { Globals, StandardProperties } from 'csstype';
+import { Globals, StandardProperties, VendorProperties } from 'csstype';
 
 type ColorProperties = 'color' | `${string}Color`;
 
@@ -40,3 +40,10 @@ export interface PropertyTypes<Overrides = DefaultCSSPropertyValue>
     >,
     ColorGlobals,
     SizeGlobals {}
+
+export interface VendorPropertyTypes<Overrides = DefaultCSSPropertyValue>
+  extends VendorProperties<Overrides> {}
+
+export interface CSSPropertyTypes<Overrides = DefaultCSSPropertyValue>
+  extends PropertyTypes<Overrides>,
+    VendorPropertyTypes<Overrides> {}

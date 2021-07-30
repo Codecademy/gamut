@@ -75,4 +75,12 @@ export const typographyElementVariants = {
     display: 'inline-block',
   },
   div: {},
+  figcaption: {},
+  label: {},
+} as const;
+
+export const typographyUtilities = {
+  truncation: ['ellipsis', 'fade', false],
+  smoothing: [true, false],
+  screenreader: [true, false],
 } as const;

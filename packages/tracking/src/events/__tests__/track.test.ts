@@ -5,60 +5,121 @@ const apiBaseUrl = 'https://www.codecademy.com';
 const fakeWindow = {
   location: {
     href: 'https://example.com/',
-    pathname: '/',
+    pathname: '/catalog',
     search: '?utm_source=twitter',
   },
   document: {
     title: 'Test Title',
   },
 };
-Object.defineProperty(window, 'location', {
-  value: fakeWindow.location,
+
+const mockFetch = jest.fn();
+
+Object.defineProperties(window, {
+  fetch: {
+    value: mockFetch,
+  },
+  location: {
+    value: fakeWindow.location,
+  },
+  Request: {
+    value: class MockRequest {
+      static keepalive = true;
+    },
+  },
 });
 Object.defineProperty(window.document, 'title', {
   value: fakeWindow.document.title,
-});
-const beaconMock = jest.fn();
-Object.defineProperty(navigator, 'sendBeacon', {
-  value: beaconMock,
 });
 
 afterEach(() => jest.resetAllMocks());
 
 describe('createTracker', () => {
-  const testEvent = (event: 'click' | 'visit') => {
-    const target = 'test target';
-    const page_name = 'test page_name';
-    const {
-      location: { href },
-    } = fakeWindow;
-    const track = createTracker({ apiBaseUrl });
-    const expectedProps = {
-      target,
-      page_name,
-      href,
-    };
-    track[event](expectedProps);
+  const describeEvent = (event: 'click' | 'impression' | 'visit') => {
+    describe(event, () => {
+      const target = 'test target';
+      const page_name = 'test page_name';
+      const {
+        location: { href },
+      } = fakeWindow;
+      const tracker = createTracker({ apiBaseUrl });
+      const expectedProps = {
+        target,
+        page_name,
+        href,
+      };
 
-    expect(beaconMock.mock.calls.length).toBe(1);
-    expect(beaconMock.mock.calls[0][0]).toBe(
-      `${apiBaseUrl}/analytics/user?utm_source=twitter`
-    );
-    const formData = beaconMock.mock.calls[0][1];
-    expect(formData).toBeInstanceOf(FormData);
-    expect(formData.get('category')).toBe('user');
-    expect(formData.get('event')).toBe(event);
-    expect(formData.has('properties')).toBe(true);
-    const actualProps = JSON.parse(formData.get('properties'));
-    for (const [k, v] of Object.entries(expectedProps)) {
-      expect(actualProps[k]).toBe(v);
-    }
+      it('calls only to beacon when it exists', () => {
+        const mockBeacon = jest.fn().mockReturnValueOnce(true);
+
+        Object.defineProperty(navigator, 'sendBeacon', {
+          writable: true,
+          value: mockBeacon,
+        });
+
+        tracker[event](expectedProps);
+
+        expect(mockBeacon).toHaveBeenCalledTimes(1);
+        expect(mockBeacon).toHaveBeenCalledWith(
+          `${apiBaseUrl}/analytics/user?utm_source=twitter`,
+          expect.any(FormData)
+        );
+        const formData = mockBeacon.mock.calls[0][1];
+        expect(Object.fromEntries(formData)).toEqual(
+          expect.objectContaining({
+            category: 'user',
+            event,
+            gdpr_safe: 'undefined',
+          })
+        );
+        expect(JSON.parse(formData.get('properties'))).toEqual({
+          ...expectedProps,
+          fullpath: window.location.pathname + window.location.search,
+          path: window.location.pathname,
+          referrer: '',
+          search: window.location.search,
+          title: document.title,
+          url: window.location.href,
+        });
+
+        expect(fetch).not.toHaveBeenCalled();
+      });
+
+      it('calls to fetch when beacon does not exist', () => {
+        Object.defineProperty(navigator, 'sendBeacon', {
+          writable: true,
+          value: undefined,
+        });
+
+        tracker[event](expectedProps);
+
+        expect(
+          fetch
+        ).toHaveBeenCalledWith(
+          'https://www.codecademy.com/analytics/user?utm_source=twitter',
+          { body: expect.any(FormData), method: 'POST' }
+        );
+      });
+
+      it('calls to fetch when beacon returns false', () => {
+        Object.defineProperty(navigator, 'sendBeacon', {
+          writable: true,
+          value: () => false,
+        });
+
+        tracker[event](expectedProps);
+
+        expect(
+          fetch
+        ).toHaveBeenCalledWith(
+          'https://www.codecademy.com/analytics/user?utm_source=twitter',
+          { body: expect.any(FormData), method: 'POST' }
+        );
+      });
+    });
   };
 
-  test('click', () => {
-    testEvent('click');
-  });
-  test('visit', () => {
-    testEvent('visit');
-  });
+  describeEvent('click');
+  describeEvent('impression');
+  describeEvent('visit');
 });

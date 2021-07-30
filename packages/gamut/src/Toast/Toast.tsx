@@ -1,10 +1,10 @@
 import { MiniDeleteIcon } from '@codecademy/gamut-icons';
-import { styledConfig, system } from '@codecademy/gamut-styles';
+import { system } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
 import React, { ReactNode, useMemo } from 'react';
 
-import { Box } from '../Box';
+import { Box, FlexBox } from '../Box';
 import { IconButton } from '../Button/IconButton';
 import { FloatingCard } from '../FloatingCard/FloatingCard';
 import { Text } from '../Typography';
@@ -28,9 +28,7 @@ const layoutVariants = system.variant({
   },
 });
 
-const ToastContainer = styled(FloatingCard, styledConfig(['layout', 'beak']))<
-  StyleProps<typeof layoutVariants>
->(
+const ToastContainer = styled(FloatingCard)<StyleProps<typeof layoutVariants>>(
   system.css({
     display: 'grid',
     width: 360,
@@ -43,21 +41,19 @@ const ToastContainer = styled(FloatingCard, styledConfig(['layout', 'beak']))<
   layoutVariants
 );
 
-const IconContainer = styled(Box)(
+const IconContainer = styled(FlexBox)(
   system.css({
-    bg: 'text',
+    alignSelf: 'center',
     width: 64,
     height: 64,
-    border: 1,
     gridArea: 'icon',
-    borderRadius: '50%',
     backgroundSize: 'contain',
   })
 );
 
 type ToastProps = {
   title?: ReactNode;
-  icon?: string;
+  icon?: ReactNode;
   onClose: () => void;
 };
 
@@ -73,11 +69,27 @@ export const Toast: React.FC<ToastProps> = ({
     return 'message';
   }, [title, icon]);
 
+  const renderIcon = () => {
+    if (!icon) return null;
+    if (typeof icon === 'string') {
+      return (
+        <IconContainer
+          gridArea="icon"
+          borderRadius="50%"
+          backgroundImage={`url(${icon})`}
+        />
+      );
+    }
+    return (
+      <IconContainer gridArea="icon" center>
+        {icon}
+      </IconContainer>
+    );
+  };
+
   return (
-    <ToastContainer layout={layoutType} pattern="checkerDense">
-      {icon && (
-        <IconContainer alignSelf="center" backgroundImage={`url(${icon})`} />
-      )}
+    <ToastContainer role="status" layout={layoutType}>
+      {renderIcon()}
       <Box gridArea="message" py={4}>
         {title && (
           <Text variant="p-base" fontWeight="title" mb={4}>

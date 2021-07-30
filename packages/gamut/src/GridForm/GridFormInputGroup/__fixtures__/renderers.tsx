@@ -3,6 +3,7 @@ import { ThemeProvider } from '@emotion/react';
 import { mount } from 'enzyme';
 import React from 'react';
 
+import { FormContext } from '../../__fixtures__/helpers';
 import {
   stubCheckboxField,
   stubFileField,
@@ -19,6 +20,7 @@ import {
   GridFormTextAreaField,
   GridFormTextField,
 } from '../../types';
+import { GridFormInputGroup, GridFormInputGroupProps } from '..';
 import { GridFormCheckboxInput } from '../GridFormCheckboxInput';
 import { GridFormFileInput } from '../GridFormFileInput';
 import { GridFormRadioGroupInput } from '../GridFormRadioGroupInput';
@@ -35,7 +37,6 @@ export const renderGridFormSelectInput = (
 ) => {
   return mountWithTheme(
     <GridFormSelectInput
-      clearErrors={jest.fn()}
       field={{ ...stubSelectField, ...extraProps }}
       register={jest.fn()}
       {...extraProps}
@@ -48,7 +49,6 @@ export const renderGridFormTextInput = (
 ) => {
   return mountWithTheme(
     <GridFormTextInput
-      clearErrors={jest.fn()}
       field={{ ...stubTextField, ...extraProps }}
       register={jest.fn()}
       {...extraProps}
@@ -61,7 +61,6 @@ export const renderGridFormTextArea = (
 ) => {
   return mountWithTheme(
     <GridFormTextArea
-      clearErrors={jest.fn()}
       field={{ ...stubTextareaField, ...extraProps }}
       register={jest.fn()}
       {...extraProps}
@@ -74,7 +73,6 @@ export const renderGridFormRadioGroupInput = (
 ) => {
   return mountWithTheme(
     <GridFormRadioGroupInput
-      clearErrors={jest.fn()}
       field={{ ...stubRadioGroupField, ...extraProps }}
       setValue={jest.fn()}
       register={jest.fn()}
@@ -88,7 +86,6 @@ export const renderGridFormFileInput = (
 ) => {
   return mountWithTheme(
     <GridFormFileInput
-      clearErrors={jest.fn()}
       field={{ ...stubFileField, ...extraProps }}
       register={jest.fn()}
       {...extraProps}
@@ -100,12 +97,12 @@ export const renderGridFormCheckboxInput = (
   extraProps: Partial<GridFormCheckboxField> = {}
 ) => {
   return mountWithTheme(
-    <GridFormCheckboxInput
-      clearErrors={jest.fn()}
-      field={{ ...stubCheckboxField, ...extraProps }}
-      register={jest.fn()}
-      {...extraProps}
-    />
+    <FormContext mode="onSubmit">
+      <GridFormCheckboxInput
+        field={{ ...stubCheckboxField, ...extraProps }}
+        {...extraProps}
+      />
+    </FormContext>
   );
 };
 
@@ -126,4 +123,20 @@ export const getComponent = (componentName: string, extraProps: any) => {
     default:
       throw new Error(`Unknown component name: ${componentName}`);
   }
+};
+
+type GridFormInputGroupTestComponentProps = GridFormInputGroupProps & {
+  mode?: 'onSubmit' | 'onChange';
+};
+
+export const GridFormInputGroupTestComponent: React.FC<GridFormInputGroupTestComponentProps> = ({
+  field,
+  mode = 'onSubmit',
+  ...rest
+}) => {
+  return (
+    <FormContext mode={mode}>
+      <GridFormInputGroup field={field} {...rest} />
+    </FormContext>
+  );
 };

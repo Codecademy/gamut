@@ -3,6 +3,85 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [11.6.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@11.6.2...@codecademy/gamut-styles@11.6.3) (2021-07-29)
+
+
+### Bug Fixes
+
+* **colors:** Red Swap for accessible errors GM-281 ([c09d9f4](https://github.com/Codecademy/client-modules/commit/c09d9f4ad8254042ebdec9b02675e89f6a9aaac3))
+
+
+
+### [11.6.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@11.6.1...@codecademy/gamut-styles@11.6.2) (2021-07-19)
+
+**Note:** Version bump only for package @codecademy/gamut-styles
+
+
+
+
+
+### [11.6.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@11.6.0...@codecademy/gamut-styles@11.6.1) (2021-07-16)
+
+
+### Bug Fixes
+
+* Theme extension merge logic ([9b32463](https://github.com/Codecademy/client-modules/commit/9b32463d044ead994b2c173bc07c5ebbd5511187))
+
+
+
+## [11.6.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@11.5.1...@codecademy/gamut-styles@11.6.0) (2021-07-15)
+
+
+### Features
+
+* Add admin theme ([c5f7bf9](https://github.com/Codecademy/client-modules/commit/c5f7bf9faaf86b2aca3f8dffd67480d50999be7b))
+
+
+
+### [11.5.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@11.5.0...@codecademy/gamut-styles@11.5.1) (2021-06-17)
+
+
+### Bug Fixes
+
+* Hover + Shadow regression ([d044952](https://github.com/Codecademy/client-modules/commit/d044952f2fdda508aeab9c277dcac2327f5dcc00))
+
+
+
+## [11.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@11.4.0...@codecademy/gamut-styles@11.5.0) (2021-06-16)
+
+
+### Features
+
+* **variance:** Computed styles, and configurable CSSType narrowing [GM-233] ([c258c19](https://github.com/Codecademy/client-modules/commit/c258c19b7970b41361b6cfafe76e2a52b7b4c828))
+
+
+
+## [11.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@11.3.1...@codecademy/gamut-styles@11.4.0) (2021-06-16)
+
+
+### Features
+
+* **Buttons:** Color + Structure Redux [GM-237] ([#1809](https://github.com/Codecademy/client-modules/issues/1809)) ([743c248](https://github.com/Codecademy/client-modules/commit/743c2488ad5b62d41bfe3aec30504d9191a8c83c))
+
+
+
+### [11.3.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@11.3.0...@codecademy/gamut-styles@11.3.1) (2021-06-16)
+
+**Note:** Version bump only for package @codecademy/gamut-styles
+
+
+
+
+
+## [11.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@11.2.0...@codecademy/gamut-styles@11.3.0) (2021-06-15)
+
+
+### Features
+
+* **props:** Support `color` and other HTML attributes as system props without type collision GM-247 ([50a8b43](https://github.com/Codecademy/client-modules/commit/50a8b43b27eff2d75307d317d724383156e5a3ed))
+
+
+
 ## [11.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@11.1.0...@codecademy/gamut-styles@11.2.0) (2021-06-10)
 
 

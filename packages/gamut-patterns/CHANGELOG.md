@@ -3,6 +3,88 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [0.5.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-patterns@0.5.0...@codecademy/gamut-patterns@0.5.1) (2021-07-29)
+
+**Note:** Version bump only for package @codecademy/gamut-patterns
+
+
+
+
+
+## [0.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-patterns@0.4.7...@codecademy/gamut-patterns@0.5.0) (2021-07-27)
+
+
+### Features
+
+* **Patterns:** Add SVGR build process and SVGO settings ([56e50ff](https://github.com/Codecademy/client-modules/commit/56e50ffe021102b84a7f9e5d7bb33ea6de890994))
+
+
+
+### [0.4.7](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-patterns@0.4.6...@codecademy/gamut-patterns@0.4.7) (2021-07-19)
+
+**Note:** Version bump only for package @codecademy/gamut-patterns
+
+
+
+
+
+### [0.4.6](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-patterns@0.4.5...@codecademy/gamut-patterns@0.4.6) (2021-07-16)
+
+**Note:** Version bump only for package @codecademy/gamut-patterns
+
+
+
+
+
+### [0.4.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-patterns@0.4.4...@codecademy/gamut-patterns@0.4.5) (2021-07-15)
+
+**Note:** Version bump only for package @codecademy/gamut-patterns
+
+
+
+
+
+### [0.4.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-patterns@0.4.3...@codecademy/gamut-patterns@0.4.4) (2021-06-17)
+
+**Note:** Version bump only for package @codecademy/gamut-patterns
+
+
+
+
+
+### [0.4.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-patterns@0.4.2...@codecademy/gamut-patterns@0.4.3) (2021-06-16)
+
+**Note:** Version bump only for package @codecademy/gamut-patterns
+
+
+
+
+
+### [0.4.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-patterns@0.4.1...@codecademy/gamut-patterns@0.4.2) (2021-06-16)
+
+**Note:** Version bump only for package @codecademy/gamut-patterns
+
+
+
+
+
+### [0.4.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-patterns@0.4.0...@codecademy/gamut-patterns@0.4.1) (2021-06-16)
+
+**Note:** Version bump only for package @codecademy/gamut-patterns
+
+
+
+
+
+## [0.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-patterns@0.3.4...@codecademy/gamut-patterns@0.4.0) (2021-06-15)
+
+
+### Features
+
+* **props:** Support `color` and other HTML attributes as system props without type collision GM-247 ([50a8b43](https://github.com/Codecademy/client-modules/commit/50a8b43b27eff2d75307d317d724383156e5a3ed))
+
+
+
 ### [0.3.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-patterns@0.3.3...@codecademy/gamut-patterns@0.3.4) (2021-06-10)
 
 **Note:** Version bump only for package @codecademy/gamut-patterns

@@ -1,6 +1,6 @@
 import {
   ColorModes,
-  styledConfig,
+  styledOptions,
   system,
   useCurrentMode,
   variant,
@@ -40,11 +40,10 @@ const modeVariants = variant({
   },
 });
 
-const Svg = styled('svg', styledConfig)<ProLabelProps>(
-  placementVariants,
-  modeVariants,
-  logoStyles
-);
+const Svg = styled(
+  'svg',
+  styledOptions<'svg', 'placement'>(['placement'])
+)<ProLabelProps>(placementVariants, modeVariants, logoStyles);
 
 export const ProLabel: React.FC<React.ComponentProps<typeof Svg>> = ({
   mode,
@@ -60,6 +59,7 @@ export const ProLabel: React.FC<React.ComponentProps<typeof Svg>> = ({
       viewBox="0 0 30 16"
       xmlns="http://www.w3.org/2000/svg"
     >
+      <title>Pro only</title>
       <path
         fill="currentColor"
         d="M5.81612 3.19989C6.81478 3.19989 7.57545 3.47522 8.09812 4.02589C8.62078 4.56722 8.88212 5.28589 8.88212 6.18189C8.88212 7.07789 8.62078 7.80122 8.09812 8.35189C7.57545 8.89322 6.81478 9.16389 5.81612 9.16389H3.94012V12.9999H2.12012V3.19989H5.81612ZM5.74612 7.48389C6.15678 7.48389 6.47412 7.37656 6.69812 7.16189C6.92212 6.94722 7.03412 6.62056 7.03412 6.18189C7.03412 5.74322 6.92212 5.41656 6.69812 5.20189C6.47412 4.98722 6.15678 4.87989 5.74612 4.87989H3.94012V7.48389H5.74612Z"

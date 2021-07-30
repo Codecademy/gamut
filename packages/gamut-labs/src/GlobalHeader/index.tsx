@@ -1,12 +1,13 @@
 import { Box } from '@codecademy/gamut';
-import { themed } from '@codecademy/gamut-styles';
 import { useTheme } from '@emotion/react';
-import styled from '@emotion/styled';
 import cx from 'classnames';
-import React from 'react';
-import { useWindowScroll } from 'react-use';
+import React, { useCallback, useEffect, useState } from 'react';
 
 import { AppHeader, AppHeaderMobile } from '..';
+import {
+  AppHeaderItem,
+  isAppHeaderItemWithHref,
+} from '../AppHeader/AppHeaderElements/types';
 import {
   FormattedAppHeaderItems,
   FormattedMobileAppHeaderItems,
@@ -45,24 +46,16 @@ const getAppHeaderItems = (
         case 'landing':
           return anonLandingHeaderItems();
         case 'login':
-          return anonLoginHeaderItems(props.renderSearch?.desktop);
+          return anonLoginHeaderItems();
         case 'signup':
-          return anonSignupHeaderItems(props.renderSearch?.desktop);
+          return anonSignupHeaderItems();
         default:
-          return anonDefaultHeaderItems(props.renderSearch?.desktop);
+          return anonDefaultHeaderItems();
       }
     case 'free':
-      return freeHeaderItems(
-        props.user,
-        props.renderSearch?.desktop,
-        props.renderNotifications?.desktop
-      );
+      return freeHeaderItems(props.user, props.renderNotifications?.desktop);
     case 'pro':
-      return proHeaderItems(
-        props.user,
-        props.renderSearch?.desktop,
-        props.renderNotifications?.desktop
-      );
+      return proHeaderItems(props.user, props.renderNotifications?.desktop);
     case 'loading':
       return loadingHeaderItems;
   }
@@ -98,16 +91,30 @@ const getMobileAppHeaderItems = (
   }
 };
 
-const StyledBox = styled(Box)`
-  z-index: ${themed('elements.headerZ')};
-`;
-
 export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
-  const { y } = useWindowScroll();
+  const { action, onLinkAction } = props;
 
-  const isInHeaderRegion = y === 0;
+  const [isInHeaderRegion, setIsInHeaderRegion] = useState(true);
+
+  // it is not recommended to replicate this logic in other components unless absolutely necessary, as it is
+  // a workaround for style rehydration issues when using react-use/useWindowScroll. The reasoning behind this
+  // workaround is discussed here: https://github.com/Codecademy/client-modules/pull/1822#discussion_r650125406
+  useEffect(() => {
+    const checkScroll = () => setIsInHeaderRegion(window?.pageYOffset === 0);
+    checkScroll();
+    document.addEventListener('scroll', checkScroll);
+    return () => document.removeEventListener('scroll', checkScroll);
+  }, []);
 
   const theme = useTheme();
+
+  const combinedAction = useCallback(
+    (event: React.MouseEvent, item: AppHeaderItem) => {
+      action(event, item);
+      if (isAppHeaderItemWithHref(item)) onLinkAction?.(event, item);
+    },
+    [action, onLinkAction]
+  );
 
   const headerClasses = cx(
     styles.stickyHeader,
@@ -115,15 +122,16 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
   );
 
   return (
-    <StyledBox as="header" position="sticky" top={0}>
+    <Box as="header" position="sticky" top={0} zIndex={theme.elements.headerZ}>
       <Box
         display={{ _: 'none', md: 'block' }}
         height={theme.elements.headerHeight}
         className={headerClasses}
       >
         <AppHeader
-          action={props.action}
+          action={combinedAction}
           items={getAppHeaderItems(props)}
+          search={props.search}
           redirectParam={
             props.type === 'anon' ? props.redirectParam : undefined
           }
@@ -135,15 +143,15 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
         className={headerClasses}
       >
         <AppHeaderMobile
-          action={props.action}
+          action={combinedAction}
           items={getMobileAppHeaderItems(props)}
-          renderSearch={props.renderSearch?.mobile}
+          onSearch={props.search.onSearch}
           redirectParam={
             props.type === 'anon' ? props.redirectParam : undefined
           }
         />
       </Box>
       {props.children}
-    </StyledBox>
+    </Box>
   );
 };

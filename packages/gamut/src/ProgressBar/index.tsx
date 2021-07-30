@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 import React from 'react';
 
 import { Pattern, PatternName } from '../Pattern';
+import { Text } from '../Typography';
 
 export type ProgressBarProps = {
   className?: string;
@@ -10,7 +11,7 @@ export type ProgressBarProps = {
   /**
    * Whether to increase size and display the percentage as text.
    */
-  size?: 'small' | 'medium' | 'large';
+  size?: 'small' | 'medium' | 'large' | 'xl';
 
   /**
    * Minimum amount of the bar to fill in visually.
@@ -51,6 +52,11 @@ const progressBarSizeVariants = variant({
       borderRadius: '80px',
     },
     large: {
+      height: '18px',
+      borderRadius: '9px',
+      fontSize: 14,
+    },
+    xl: {
       height: '36px',
       borderRadius: '18px',
     },
@@ -72,6 +78,17 @@ const progressBarBackgroundVariants = variant({
     light: {
       textColor: 'navy',
     },
+  },
+});
+
+const progressBarBackgroundOverride = variant({
+  defaultVariant: 'none',
+  prop: 'backgroundOverride',
+  variants: {
+    pattern: {
+      bg: 'transparent',
+    },
+    none: {},
   },
 });
 
@@ -123,6 +140,7 @@ type ProgressBarElementProps = Pick<ProgressBarProps, 'variant' | 'size'>;
 
 type ProgressBarElementWrapperProps = ProgressBarElementProps & {
   border: 'basic' | 'bordered';
+  backgroundOverride: 'pattern' | 'none';
 };
 
 const ProgressBarWrapper = styled.div<ProgressBarElementWrapperProps>`
@@ -131,6 +149,7 @@ const ProgressBarWrapper = styled.div<ProgressBarElementWrapperProps>`
   ${progressBarBackgroundVariants};
   ${progressBarSizeVariants};
   ${progressBarBorderVariants};
+  ${progressBarBackgroundOverride};
 `;
 
 const Bar = styled.div(progressBarForegroundVariants);
@@ -152,13 +171,13 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
 }) => {
   return (
     <ProgressBarWrapper
-      aria-label={`Progress: ${percent}%`}
       aria-live="polite"
-      role="figure"
       border={bordered ? 'bordered' : 'basic'}
       size={size}
       variant={variant}
+      backgroundOverride={pattern ? 'pattern' : 'none'}
     >
+      <Text as="label" screenreader>{`Progress: ${percent}%`}</Text>
       {pattern && (
         <Pattern width="100%" position="absolute" zIndex={0} name={pattern} />
       )}
@@ -169,7 +188,9 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
           width: `${Math.max(minimumPercent, percent)}%`,
         }}
       >
-        {size === 'large' && <DisplayedPercent>{percent}%</DisplayedPercent>}
+        {['large', 'xl'].includes(size) && (
+          <DisplayedPercent aria-hidden>{percent}%</DisplayedPercent>
+        )}
       </Bar>
     </ProgressBarWrapper>
   );
