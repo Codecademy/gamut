@@ -42,14 +42,15 @@ module.exports = {
       alias: {
         ...emotionless(config.resolve.alias),
         '~styleguide/blocks': path.resolve(__dirname, './components/'),
+        '@codecademy/storybook-addon-variance': path.resolve(
+          __dirname,
+          './addons/system/components/'
+        ),
         '@codecademy/gamut-styles$': path.resolve(
           __dirname,
           '../../gamut-styles/src'
         ),
-        '@codecademy/gamut-system$': path.resolve(
-          __dirname,
-          '../../gamut-system/src'
-        ),
+
         '@codecademy/gamut$': path.resolve(__dirname, '../../gamut/src'),
         '@codecademy/gamut-labs$': path.resolve(
           __dirname,

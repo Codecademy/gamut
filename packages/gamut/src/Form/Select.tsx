@@ -3,43 +3,55 @@ import {
   MiniChevronDownIcon,
 } from '@codecademy/gamut-icons';
 import { variant } from '@codecademy/gamut-styles';
+import { StyleProps } from '@codecademy/variance';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import { each, isArray, isObject } from 'lodash';
 import React, {
   ChangeEvent,
   forwardRef,
-  ReactNode,
   SelectHTMLAttributes,
+  useMemo,
   useState,
 } from 'react';
 
 import { Box, FlexBox } from '../Box';
-import { conditionalStyles, formFieldStyles } from './styles/shared';
+import {
+  conditionalStyles,
+  conditionalStyleState,
+  formFieldStyles,
+} from './styles/shared-system-props';
+import { parseSelectOptions } from './utils';
 
-export type SelectWrapperProps = SelectHTMLAttributes<HTMLSelectElement> & {
+export type SelectComponentProps = Pick<
+  SelectHTMLAttributes<HTMLSelectElement>,
+  'disabled' | 'id'
+> & {
   error?: boolean;
   htmlFor?: string;
   options?: string[] | Record<string, number | string>;
-  id?: string;
-  sizeVariant?: 'small' | 'base';
 };
 
-export interface SelectProps extends SelectWrapperProps {
-  activated?: boolean;
-}
+export type SelectWrapperProps = SelectComponentProps &
+  SelectHTMLAttributes<HTMLSelectElement> & {
+    sizeVariant?: 'small' | 'base';
+  };
+
+export interface SelectProps
+  extends SelectWrapperProps,
+    StyleProps<typeof conditionalStyles> {}
 
 const selectSizeVariants = variant({
-  default: 'base',
+  defaultVariant: 'base',
   prop: 'sizeVariant',
   variants: {
     small: {
       height: '2rem',
-      paddingX: 8,
-      paddingY: 0,
+      px: 8,
+      py: 0,
     },
     base: {
       height: 'auto',
+      pr: 48,
     },
   },
 });
@@ -49,75 +61,65 @@ const SelectBase = styled.select<SelectProps>`
   ${conditionalStyles}
   ${selectSizeVariants}
   cursor: pointer;
-  display: block;
   -moz-appearance: none;
   -webkit-appearance: none;
   appearance: none;
 `;
 
-const selectIconStyles = css`
+const allowClickStyle = css`
   pointer-events: none;
 `;
 
-const SelectIcon = styled(ArrowChevronDownIcon)(selectIconStyles);
-const MiniSelectIcon = styled(MiniChevronDownIcon)(selectIconStyles);
+const StyledFlexbox = styled(FlexBox)(allowClickStyle);
 
 export const Select = forwardRef<HTMLSelectElement, SelectWrapperProps>(
   (
-    { className, defaultValue, options, error, id, sizeVariant, ...rest },
+    {
+      className,
+      defaultValue,
+      options,
+      error,
+      id,
+      sizeVariant,
+      disabled,
+      ...rest
+    },
     ref
   ) => {
-    const [activated, setActivated] = useState(false);
+    const [activatedStyle, setActivatedStyle] = useState(false);
 
     const changeHandler = (event: ChangeEvent<HTMLSelectElement>) => {
       rest?.onChange?.(event);
-      setActivated(true);
+      setActivatedStyle(true);
     };
 
-    let selectOptions: ReactNode[] = [];
-
-    if (isArray(options)) {
-      selectOptions = options.map((option) => {
-        const key = id ? `${id}-${option}` : option;
-        return (
-          <option key={key} value={option} data-testid={key}>
-            {option}
-          </option>
-        );
-      });
-    } else if (isObject(options)) {
-      each(options, (text, val) => {
-        const key = id ? `${id}-${val}` : val;
-        selectOptions.push(
-          <option key={key} value={val} data-testid={key}>
-            {text}
-          </option>
-        );
-      });
-    }
+    const selectOptions = useMemo(() => {
+      return parseSelectOptions({ options, id });
+    }, [options, id]);
 
     return (
       <Box
         position="relative"
         width="100%"
-        textColor={error ? 'red' : 'navy'}
         minWidth="7rem"
         className={className}
       >
-        <FlexBox
-          paddingRight={12}
+        <StyledFlexbox
+          pr={12}
+          color={error ? 'feedback-error' : disabled ? 'text-disabled' : 'text'}
           alignItems="center"
           position="absolute"
           right="0"
           top="0"
           bottom="0"
+          aria-hidden
         >
           {sizeVariant === 'small' ? (
-            <MiniSelectIcon size={12} />
+            <MiniChevronDownIcon size={12} />
           ) : (
-            <SelectIcon size={16} />
+            <ArrowChevronDownIcon size={16} />
           )}
-        </FlexBox>
+        </StyledFlexbox>
         <SelectBase
           {...rest}
           defaultValue={defaultValue || ''}
@@ -125,7 +127,8 @@ export const Select = forwardRef<HTMLSelectElement, SelectWrapperProps>(
           ref={ref}
           error={error}
           sizeVariant={sizeVariant}
-          activated={activated}
+          variant={conditionalStyleState(Boolean(error), activatedStyle)}
+          disabled={disabled}
           onChange={(event) => changeHandler(event)}
         >
           {selectOptions}

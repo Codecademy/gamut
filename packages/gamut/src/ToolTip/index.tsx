@@ -1,5 +1,6 @@
 import {
-  fontSmoothing,
+  ColorModes,
+  fontSmoothPixel,
   lineHeight,
   pxRem,
   timing,
@@ -8,19 +9,16 @@ import {
 import styled from '@emotion/styled';
 import React, { ReactNode } from 'react';
 
-import { VisualTheme } from '../theming/VisualTheme';
-
-export type ToolTipPosition =
+export type ToolTipAlignment =
+  | 'bottom-center'
   | 'bottom-left'
   | 'bottom-right'
+  | 'top-center'
   | 'top-left'
   | 'top-right';
 
-const arrowWidth = `1rem`;
-const arrowHeight = `0.5rem`;
+const arrowHeight = `1rem`;
 const containerOffsetVertical = `0.75rem`;
-
-const slightShadow = `rgba(0, 0, 0, 0.15)`;
 
 const TooltipWrapper = styled.div`
   position: relative;
@@ -35,25 +33,24 @@ const TargetContainer = styled.div`
 `;
 
 type ToolTipContainerProps = {
-  position: ToolTipPosition;
-  mode: VisualTheme;
+  alignment: ToolTipAlignment;
+  mode: ColorModes;
 };
 
 const ToolTipContainer = styled.div<ToolTipContainerProps>`
-  ${fontSmoothing()}
-
+  ${fontSmoothPixel}
   display: flex;
   opacity: 0;
   transition: opacity ${timing.fast};
   transition-delay: ${timing.fast};
   position: absolute;
-  width: 16rem;
+  max-width: ${({ alignment }) =>
+    alignment.includes('center') ? '8rem' : '16rem'};
   visibility: hidden;
+  width: 70vw;
+  z-index: 1;
 
-  // Both before and after psuedo-elements are used because ::after's background should go over the container's
-  // and ::before's box-shadow should be behind the container itself
-  &::after,
-  &::before {
+  &::after {
     content: '';
     display: block;
     height: ${arrowHeight};
@@ -62,101 +59,125 @@ const ToolTipContainer = styled.div<ToolTipContainerProps>`
     width: ${arrowHeight};
   }
 
-  &::before {
+  &::after {
+    border-style: solid;
+
     ${variant({
       prop: 'mode',
       variants: {
-        dark: { backgroundColor: 'black' },
-        light: { backgroundColor: 'white' },
+        dark: { backgroundColor: 'black', borderColor: 'white' },
+        light: { backgroundColor: 'white', borderColor: 'black' },
       },
     })}
   }
 
   ${TargetContainer}:hover + &,
-  ${TargetContainer}:focus + &,
+  ${TargetContainer}:focus-within + &,
   &:hover {
     opacity: 1;
     visibility: visible;
   }
 
-  ${({ position }) =>
-    ['top-left', 'top-right'].includes(position) &&
+  ${({ alignment }) =>
+    alignment.includes('top') &&
     `
       bottom: 100%;
       padding-bottom: ${containerOffsetVertical};
 
-      &::after,
-      &::before {
-        bottom: ${arrowHeight};
-      }
-
-      &::before {
-        box-shadow: 2px 2px 4px 0 ${slightShadow};
-      }
-
-      ${ToolTipBody} {
-        box-shadow: 0 2px 4px 0 ${slightShadow};
+      &::after {
+        border-bottom-right-radius: 4px;
+        border-width: 0 1px 1px 0;
+        bottom: 0.25rem;
       }
     `}
 
-  ${({ position }) =>
-    ['bottom-left', 'bottom-right'].includes(position) &&
+  ${({ alignment }) =>
+    alignment.includes('bottom') &&
     `
       top: 100%;
       padding-top: ${containerOffsetVertical};
 
-      &::after,
-      &::before {
-        top: ${arrowHeight};
-      }
-
-      &::before {
-        box-shadow: -2px -2px 4px 0 ${slightShadow};
-      }
-
-      ${ToolTipBody} {
-        box-shadow: 0 0 4px 0 ${slightShadow};
+      &::after {
+        border-top-left-radius: 4px;
+        border-width: 1px 0 0 1px;
+        top: 0.25rem;
       }
     `}
 
-  ${({ position }) =>
-    ['bottom-left', 'top-left'].includes(position) &&
+${({ alignment }) =>
+    alignment.includes('center') &&
+    `
+      left: calc(50% - 4rem);
+
+      &::after {
+        left: calc(50% - 0.5rem);
+      }
+    `}
+
+  ${({ alignment }) =>
+    alignment.includes('left') &&
     `
       justify-content: flex-end;
-      right: $container-offset-horizontal;
 
-      &::after,
-      &::before {
-        right: ${arrowWidth};
+      &::after {
+        right: 1.5rem;
       }
+
+      left: calc(50% - 14rem)
     `}
 
-  ${({ position }) =>
-    ['bottom-right', 'top-right'].includes(position) &&
+  ${({ alignment }) =>
+    alignment.includes('right') &&
     `
-      &::after,
-      &::before {
-        left: ${arrowWidth};
+      &::after {
+        left: 1.5rem;
       }
+
+      left: calc(50% - 2rem);
     `}
 `;
 
-const ToolTipBody = styled.div<{ mode: VisualTheme }>`
+const ToolTipBody = styled.div<ToolTipContainerProps>`
+  border: 1px solid;
+  border-radius: 3px;
   display: inline-block;
   font-size: ${pxRem(14)};
   line-height: ${lineHeight.base};
-  padding: 0.6rem 0.75rem;
+  ${({ alignment }) =>
+    alignment.includes('center')
+      ? `
+      margin: auto;
+      padding: 0.5rem;
+      text-align: center;
+    `
+      : `
+      padding: 1rem;
+    `}
+  min-width: 4rem;
 
   ${variant({
     prop: 'mode',
     variants: {
-      dark: { backgroundColor: 'black', textColor: 'white' },
-      light: { backgroundColor: 'white', textColor: 'black' },
+      dark: {
+        bg: 'black',
+        borderColor: 'beige',
+        textColor: 'beige',
+      },
+      light: {
+        bg: 'white',
+        borderColor: 'black',
+        textColor: 'black',
+      },
     },
   })}
 `;
 
 export type ToolTipProps = {
+  /**
+   * How to align the tooltip relative to the target.
+   */
+  alignment?: ToolTipAlignment;
+
   children?: ReactNode;
 
   /**
@@ -174,45 +195,52 @@ export type ToolTipProps = {
   containerClassName?: string;
 
   /**
-   * Whether to manually add a tabIndex of 0, such as for tooltips containing actual buttons.
+   * Whether to manually add a tabIndex of 0 to the target container, for tooltips without focusable children.
    */
   focusable?: boolean;
+
   id: string;
-  mode?: VisualTheme;
-  position?: ToolTipPosition;
+  mode?: ColorModes;
   target?: ReactNode;
 };
 
 export const ToolTip: React.FC<ToolTipProps> = ({
+  alignment = 'top-right',
   children,
   className,
   containerClassName,
   focusable,
   id,
   mode = 'light',
-  position = 'top-right',
   target,
 }) => {
   return (
     <TooltipWrapper className={containerClassName}>
       <TargetContainer
         aria-labelledby={id}
+        onKeyDown={(event) => {
+          if (event.key === 'Escape') {
+            (event.target as HTMLElement).blur();
+          }
+        }}
         // ToolTips sometimes contain actual <button>s, which cannot be a child of a button.
-        // This element still needs tab focus so we must use the `tabIndex=0` hack. Sigh.
-        // This behavior is considered deprecated; we recommend using Popover instead.
+        // This element still needs tab focus so we must use the `tabIndex=0` hack.
         // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
         tabIndex={focusable ? 0 : undefined}
       >
         {target}
       </TargetContainer>
       <ToolTipContainer
+        alignment={alignment}
         className={className}
         id={id}
-        position={position}
         role="tooltip"
         mode={mode}
+        aria-live="polite"
       >
-        <ToolTipBody mode={mode}>{children}</ToolTipBody>
+        <ToolTipBody alignment={alignment} mode={mode}>
+          {children}
+        </ToolTipBody>
       </ToolTipContainer>
     </TooltipWrapper>
   );

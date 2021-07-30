@@ -1,6 +1,7 @@
 import cx from 'classnames';
 import React, { SVGProps } from 'react';
 
+import { Text } from '../Typography';
 import styles from './styles.module.scss';
 
 export interface RadialProgressProps extends SVGProps<SVGSVGElement> {
@@ -20,6 +21,7 @@ const convertPercentToOffset = (percent: number) =>
 
 /**
  * @deprecated
+ * This component is deprecated and is no longer supported.
  */
 
 export const RadialProgress: React.FC<RadialProgressProps> = ({
@@ -41,19 +43,15 @@ export const RadialProgress: React.FC<RadialProgressProps> = ({
   } else {
     finalValue = startingValue = convertPercentToOffset(value);
   }
+  const labelPercent = Array.isArray(value) ? value[1] : value;
 
   return (
-    <div
+    <figure
       className={cx(styles.radialProgress, className)}
       style={{ height: size, width: size }}
     >
-      <svg
-        aria-label={`${value}% progress`}
-        viewBox="0 0 100 100"
-        height={size}
-        width={size}
-        {...props}
-      >
+      <Text as="figcaption" screenreader>{`${labelPercent}% progress`}</Text>
+      <svg viewBox="0 0 100 100" height={size} width={size} {...props}>
         <circle
           cx="50"
           cy="50"
@@ -90,6 +88,6 @@ export const RadialProgress: React.FC<RadialProgressProps> = ({
         </circle>
       </svg>
       {children && <div className={styles.children}>{children}</div>}
-    </div>
+    </figure>
   );
 };

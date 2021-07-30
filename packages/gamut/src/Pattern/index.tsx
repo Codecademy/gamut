@@ -1,33 +1,43 @@
-import styled from '@emotion/styled';
-import React from 'react';
+import React, { ComponentProps } from 'react';
 
-import { Box, BoxProps } from '../Box';
+import { Box } from '../Box';
 import { defs } from './defs';
 
 export type PatternName =
   | 'diagonalStripesLoose'
   | 'diagonalStripesRegular'
   | 'diagonalStripesDense'
-  | 'dotsLoose'
-  | 'dotsRegular'
-  | 'dotsDense';
+  | 'checkerLoose'
+  | 'checkerRegular'
+  | 'checkerDense'
+  | 'dotLoose';
 
-export interface PatternProps extends BoxProps {
+export interface PatternProps extends ComponentProps<typeof Box> {
+  /**
+   * Unique ID suffix to add the pattern ID to remove page duplicates.
+   */
+  idSuffix?: string;
+
   name: PatternName;
 }
 
-const Svg = styled.svg`
-  width: 100%;
-  height: 100%;
-`;
-
-export const Pattern: React.FC<PatternProps> = ({ name, ...props }) => {
+export const Pattern: React.FC<PatternProps> = ({
+  idSuffix = '',
+  name,
+  ...props
+}) => {
   return (
     <Box {...props}>
-      <Svg aria-hidden>
-        {defs(name)}
-        <rect x="0" y="0" width="100%" height="100%" fill={`url(#${name})`} />
-      </Svg>
+      <Box aria-hidden as="svg" height="100%" width="100%">
+        {defs(name, idSuffix)}
+        <rect
+          x="0"
+          y="0"
+          width="100%"
+          height="100%"
+          fill={`url(#${name}${idSuffix})`}
+        />
+      </Box>
     </Box>
   );
 };

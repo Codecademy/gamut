@@ -2,12 +2,12 @@ import React from 'react';
 
 import { PatternName } from './index';
 
-export const defs = (name: PatternName) => {
+export const defs = (name: PatternName, idSuffix: string) => {
   return (
     <defs>
       {name === 'diagonalStripesLoose' && (
         <pattern
-          id="diagonalStripesLoose"
+          id={`diagonalStripesLoose${idSuffix}`}
           x="0"
           y="0"
           width="16"
@@ -34,14 +34,14 @@ export const defs = (name: PatternName) => {
       )}
       {name === 'diagonalStripesRegular' && (
         <pattern
-          id="diagonalStripesRegular"
+          id={`diagonalStripesRegular${idSuffix}`}
           x="0"
           y="0"
           width="8"
           height="8"
           patternUnits="userSpaceOnUse"
         >
-          <g clipPath="url(#clipDiagonalStripesRegular)">
+          <g clipPath={`url(#clipDiagonalStripesRegular${idSuffix})`}>
             <rect width="8" height="8" fill="white" />
             <rect y="7" width="1" height="1" fill="currentColor" />
             <rect x="1" y="6" width="1" height="1" fill="currentColor" />
@@ -53,7 +53,7 @@ export const defs = (name: PatternName) => {
             <rect x="7" width="1" height="1" fill="currentColor" />
           </g>
           <defs>
-            <clipPath id="clipDiagonalStripesRegular">
+            <clipPath id={`clipDiagonalStripesRegular${idSuffix}`}>
               <rect width="8" height="8" fill="white" />
             </clipPath>
           </defs>
@@ -61,14 +61,14 @@ export const defs = (name: PatternName) => {
       )}
       {name === 'diagonalStripesDense' && (
         <pattern
-          id="diagonalStripesDense"
+          id={`diagonalStripesDense${idSuffix}`}
           x="0"
           y="0"
           width="4"
           height="4"
           patternUnits="userSpaceOnUse"
         >
-          <g clipPath="url(#clipDiagonalStripesDense)">
+          <g clipPath={`url(#clipDiagonalStripesDense${idSuffix})`}>
             <rect width="4" height="4" fill="white" />
             <rect y="3" width="1" height="1" fill="currentColor" />
             <rect x="1" y="2" width="1" height="1" fill="currentColor" />
@@ -76,15 +76,15 @@ export const defs = (name: PatternName) => {
             <rect x="3" width="1" height="1" fill="currentColor" />
           </g>
           <defs>
-            <clipPath id="clipDiagonalStripesDense">
+            <clipPath id={`clipDiagonalStripesDense${idSuffix}`}>
               <rect width="4" height="4" fill="white" />
             </clipPath>
           </defs>
         </pattern>
       )}
-      {name === 'dotsLoose' && (
+      {name === 'checkerLoose' && (
         <pattern
-          id="dotsLoose"
+          id={`checkerLoose${idSuffix}`}
           x="0"
           y="0"
           width="16"
@@ -95,9 +95,9 @@ export const defs = (name: PatternName) => {
           <rect x="8" y="8" width="1" height="1" fill="currentColor" />
         </pattern>
       )}
-      {name === 'dotsRegular' && (
+      {name === 'checkerRegular' && (
         <pattern
-          id="dotsRegular"
+          id={`checkerRegular${idSuffix}`}
           x="0"
           y="0"
           width="8"
@@ -108,9 +108,9 @@ export const defs = (name: PatternName) => {
           <rect x="4" y="4" width="1" height="1" fill="currentColor" />
         </pattern>
       )}
-      {name === 'dotsDense' && (
+      {name === 'checkerDense' && (
         <pattern
-          id="dotsDense"
+          id={`checkerDense${idSuffix}`}
           x="0"
           y="0"
           width="4"
@@ -119,6 +119,50 @@ export const defs = (name: PatternName) => {
         >
           <rect width="1" height="1" fill="currentColor" />
           <rect x="2" y="2" width="1" height="1" fill="currentColor" />
+        </pattern>
+      )}
+      {name === 'dotLoose' && (
+        <pattern
+          id={`dotLoose${idSuffix}`}
+          x="0"
+          y="0"
+          width="16"
+          height="16"
+          patternUnits="userSpaceOnUse"
+        >
+          <rect
+            width="0.5"
+            height="0.5"
+            fill="currentColor"
+            fillOpacity="0.5"
+          />
+          <rect
+            y="1"
+            width="0.5"
+            height="0.5"
+            fill="currentColor"
+            fillOpacity="0.5"
+          />
+          <rect y="0.5" width="0.5" height="0.5" fill="currentColor" />
+          <rect
+            x="1"
+            width="0.5"
+            height="0.5"
+            fill="currentColor"
+            fillOpacity="0.5"
+          />
+          <rect
+            x="1"
+            y="1"
+            width="0.5"
+            height="0.5"
+            fill="currentColor"
+            fillOpacity="0.5"
+          />
+          <rect x="1" y="0.5" width="0.5" height="0.5" fill="currentColor" />
+          <rect x="0.5" width="0.5" height="0.5" fill="currentColor" />
+          <rect x="0.5" y="1" width="0.5" height="0.5" fill="currentColor" />
+          <rect x="0.5" y="0.5" width="0.5" height="0.5" fill="currentColor" />
         </pattern>
       )}
     </defs>

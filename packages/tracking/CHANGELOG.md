@@ -3,6 +3,147 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.13.0](https://github.com/Codecademy/client-modules/compare/@codecademy/tracking@0.12.1...@codecademy/tracking@0.13.0) (2021-07-20)
+
+
+### Features
+
+* **tracking:** Update business event name ([5bfde22](https://github.com/Codecademy/client-modules/commit/5bfde22e22fa76ab000369cf6598b9e0cfec5d63))
+
+
+
+### [0.12.1](https://github.com/Codecademy/client-modules/compare/@codecademy/tracking@0.12.0...@codecademy/tracking@0.12.1) (2021-07-13)
+
+
+### Bug Fixes
+
+* business reporting event types ([b480487](https://github.com/Codecademy/client-modules/commit/b480487125ec85aa8466b0225730a2772c88452a))
+
+
+
+## [0.12.0](https://github.com/Codecademy/client-modules/compare/@codecademy/tracking@0.11.1...@codecademy/tracking@0.12.0) (2021-07-13)
+
+
+### Features
+
+* **event type:** adding business reporting types ([5c8b6c5](https://github.com/Codecademy/client-modules/commit/5c8b6c5fe60b2d415436c56d485d092e6e94f68f)), closes [/github.com/codecademy-engineering/business-reporting/blob/develop/src/util/eventTracking/index.tsx#L104-L110](https://github.com/Codecademy//github.com/codecademy-engineering/business-reporting/blob/develop/src/util/eventTracking/index.tsx/issues/L104-L110)
+
+
+
+### [0.11.1](https://github.com/Codecademy/client-modules/compare/@codecademy/tracking@0.11.0...@codecademy/tracking@0.11.1) (2021-06-30)
+
+
+### Bug Fixes
+
+* support navigator.sendBeacon not existing ([ab442ef](https://github.com/Codecademy/client-modules/commit/ab442efb8e097015b5cca2ca34c869e83bb53d44))
+
+
+
+## [0.11.0](https://github.com/Codecademy/client-modules/compare/@codecademy/tracking@0.10.0...@codecademy/tracking@0.11.0) (2021-06-30)
+
+
+### Features
+
+* add user impression to tracking ([a5960aa](https://github.com/Codecademy/client-modules/commit/a5960aa034a1725bbcb119a2cf193557bfacd386))
+
+
+
+## [0.10.0](https://github.com/Codecademy/client-modules/compare/@codecademy/tracking@0.9.0...@codecademy/tracking@0.10.0) (2021-06-21)
+
+
+### Features
+
+* **tracking:** Added repo-tracking to user events ([22d0d7f](https://github.com/Codecademy/client-modules/commit/22d0d7feb37beb6642ab8fdf09f83480e5919bdf))
+
+
+
+## [0.9.0](https://github.com/Codecademy/client-modules/compare/@codecademy/tracking@0.8.0...@codecademy/tracking@0.9.0) (2021-06-10)
+
+
+### Features
+
+* **tracking:** Record the page referrer for every event. ([5ae6357](https://github.com/Codecademy/client-modules/commit/5ae63574671e79e956afdebe8bcf62d81364feae))
+
+
+
+## [0.8.0](https://github.com/Codecademy/client-modules/compare/@codecademy/tracking@0.7.3...@codecademy/tracking@0.8.0) (2021-05-24)
+
+
+### ⚠ BREAKING CHANGES
+
+* prepended OneTrust to tracking integrations loads
+
+### Features
+
+* prepended OneTrust to tracking integrations loads ([3d8ce05](https://github.com/Codecademy/client-modules/commit/3d8ce05f1669728261f496b604fa8cc5906434e5))
+
+
+
+### [0.7.3](https://github.com/Codecademy/client-modules/compare/@codecademy/tracking@0.7.2...@codecademy/tracking@0.7.3) (2021-05-10)
+
+
+### Bug Fixes
+
+* allow no user for tracking integrations ([#1726](https://github.com/Codecademy/client-modules/issues/1726)) ([66fdf89](https://github.com/Codecademy/client-modules/commit/66fdf89834d2eae53172cd6254d936c182281f0c))
+
+
+
+### [0.7.2](https://github.com/Codecademy/client-modules/compare/@codecademy/tracking@0.7.1...@codecademy/tracking@0.7.2) (2021-05-03)
+
+**Note:** Version bump only for package @codecademy/tracking
+
+
+
+
+
+### [0.7.1](https://github.com/Codecademy/client-modules/compare/@codecademy/tracking@0.7.0...@codecademy/tracking@0.7.1) (2021-05-03)
+
+
+### Bug Fixes
+
+* switch tracking 'verbose' type back to boolean ([8aae870](https://github.com/Codecademy/client-modules/commit/8aae8709b5e755f386f7c9f350ee7a4b86c19bcb))
+
+
+
+## [0.7.0](https://github.com/Codecademy/client-modules/compare/@codecademy/tracking@0.6.0...@codecademy/tracking@0.7.0) (2021-05-03)
+
+
+### ⚠ BREAKING CHANGES
+
+* clean up tracker and remove auth token
+
+### Features
+
+* clean up tracker and remove auth token ([d2088e9](https://github.com/Codecademy/client-modules/commit/d2088e9741ffaa3e568bf182fb7bb6156ed5bf18))
+
+
+
+## [0.6.0](https://github.com/Codecademy/client-modules/compare/@codecademy/tracking@0.5.4...@codecademy/tracking@0.6.0) (2021-05-03)
+
+
+### Features
+
+* added useTrackingIntegrations to tracking package ([2d508e2](https://github.com/Codecademy/client-modules/commit/2d508e2efbcb47968a543d7b54363707301ef351))
+
+
+
+### [0.5.4](https://github.com/Codecademy/client-modules/compare/@codecademy/tracking@0.5.3...@codecademy/tracking@0.5.4) (2021-05-03)
+
+
+### Bug Fixes
+
+* bump tracking package babel-preset-codecademy to latest ([e809566](https://github.com/Codecademy/client-modules/commit/e80956648e76c3e0b439d4d3a63b3baafd818064))
+
+
+
+### [0.5.3](https://github.com/Codecademy/client-modules/compare/@codecademy/tracking@0.5.2...@codecademy/tracking@0.5.3) (2021-04-21)
+
+**Note:** Version bump only for package @codecademy/tracking
+
+
+
+
+
 ### [0.5.2](https://github.com/Codecademy/client-modules/compare/@codecademy/tracking@0.5.1...@codecademy/tracking@0.5.2) (2021-03-19)
 
 **Note:** Version bump only for package @codecademy/tracking

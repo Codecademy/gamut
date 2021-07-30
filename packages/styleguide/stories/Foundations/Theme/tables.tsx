@@ -1,5 +1,11 @@
-import { Box } from '@codecademy/gamut';
-import { swatches, theme, trueColors } from '@codecademy/gamut-styles';
+/* eslint-disable local-rules/gamut-import-paths */
+import { Box } from '@codecademy/gamut/src';
+import {
+  coreSwatches,
+  platformSwatches,
+  theme,
+  trueColors,
+} from '@codecademy/gamut-styles/src';
 import React from 'react';
 
 import { Code, ColorScale } from '~styleguide/blocks';
@@ -24,6 +30,56 @@ const PATH_COLUMN = {
   size: 'xl',
 };
 
+export const lightMode = {
+  rows: Object.entries(theme.modes.light).map(([id, value]) => ({
+    id,
+    hex: value,
+  })),
+  columns: [
+    PROP_COLUMN,
+    {
+      ...PATH_COLUMN,
+      render: ({ id }: any) => <Code>theme.colors.{id}</Code>,
+    },
+    {
+      key: 'swatch',
+      name: 'Swatch',
+      size: 'fill',
+      render: ({ hex }: any) => (
+        <ColorScale
+          colors={{
+            hex: theme.colors[hex as keyof typeof theme['colors']],
+          }}
+        />
+      ),
+    },
+  ],
+};
+
+export const darkMode = {
+  rows: Object.entries(theme.modes.dark).map(([id, value]) => ({
+    id,
+    hex: value,
+  })),
+  columns: [
+    PROP_COLUMN,
+    {
+      ...PATH_COLUMN,
+      render: ({ id }: any) => <Code>theme.colors.{id}</Code>,
+    },
+    {
+      key: 'swatch',
+      name: 'Swatch',
+      size: 'fill',
+      render: ({ hex }: any) => (
+        <ColorScale
+          colors={{ hex: theme.colors[hex as keyof typeof theme['colors']] }}
+        />
+      ),
+    },
+  ],
+};
+
 export const color = {
   rows: Object.entries(trueColors).map(([id, value]) => ({
     id,
@@ -45,7 +101,33 @@ export const color = {
 };
 
 export const swatch = {
-  rows: Object.entries(swatches).map(([id, value]) => ({
+  rows: Object.entries(coreSwatches).map(([id, value]) => ({
+    id,
+    hexes: value,
+  })),
+  columns: [
+    PROP_COLUMN,
+    {
+      ...PATH_COLUMN,
+      render: ({ id, hexes }: any) => (
+        <Code>
+          theme.colors[`{id}-{Object.keys(hexes)[0]}`]
+        </Code>
+      ),
+    },
+    {
+      key: 'swatch',
+      name: 'Swatch',
+      size: 'fill',
+      render: ({ hexes }: { hexes: Record<string, string> }) => (
+        <ColorScale colors={hexes} />
+      ),
+    },
+  ],
+};
+
+export const platformSwatch = {
+  rows: Object.entries(platformSwatches).map(([id, value]) => ({
     id,
     hexes: value,
   })),
@@ -185,51 +267,7 @@ export const space = {
       name: 'Example',
       size: 'fill',
       render: ({ value }: any) => (
-        <Box
-          display="inline-block"
-          height={value}
-          width={value}
-          backgroundColor="navy"
-        />
-      ),
-    },
-  ],
-};
-
-export const boxShadow = {
-  rows: Object.entries(theme.boxShadows).map(([id, value]) => ({
-    id,
-    value,
-  })),
-  columns: [
-    PROP_COLUMN,
-    {
-      ...PATH_COLUMN,
-      render: ({ id }: any) => <Code>theme.boxShadows[{id}]</Code>,
-    },
-    {
-      ...VALUE_COLUMN,
-      render: ({ value }: any) => (
-        <Box maxWidth="24rem">
-          <Code>{value.split('),')}</Code>
-        </Box>
-      ),
-      size: 'fill',
-    },
-    {
-      key: 'example',
-      name: 'Example',
-      size: 'lg',
-      render: ({ value }: any) => (
-        <Box
-          boxShadow={value}
-          width="1.5rem"
-          height="1.5rem"
-          borderStyle="solid"
-          borderColor="gray-400"
-          borderWidth="1px"
-          marginBottom={32}
-        />
+        <Box display="inline-block" width={value} height={value} bg="navy" />
       ),
     },
   ],

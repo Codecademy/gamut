@@ -1,4 +1,5 @@
 import { AlertIcon, CheckCircledIcon } from '@codecademy/gamut-icons';
+import { system } from '@codecademy/gamut-styles';
 import styled, { StyledComponent } from '@emotion/styled';
 import React, {
   ChangeEvent,
@@ -9,14 +10,14 @@ import React, {
 
 import { Box, FlexBox } from '../Box';
 import {
-  conditionalInputStyleProps,
+  conditionalStyleProps,
   conditionalStyles,
+  conditionalStyleState,
   formBaseFieldStyles,
   formFieldFocusStyles,
   formFieldPaddingStyles,
   formFieldStyles,
-  iconPadding,
-} from './styles/shared';
+} from './styles/shared-system-props';
 
 export type InputProps = InputHTMLAttributes<HTMLInputElement> & {
   id?: string;
@@ -33,7 +34,7 @@ export type InputProps = InputHTMLAttributes<HTMLInputElement> & {
   type?: string;
   valid?: boolean;
   /**
-   * Allows Inputs to manage their own activated style state to acccount for some edge-cases.
+   * Allows Inputs to manage their own activated style state to account for some edge-cases.
    */
   activated?: boolean;
 };
@@ -56,10 +57,16 @@ export interface InputWrapperProps extends InputProps {
 
 /**  We greatly prefer NOT to do this but ReactRecurly has some specific needs around focus-styles + padding that force us to export them seperately. If we ever stop using React-Recurly, this code will be 🔪.
  *tldr: Do not do this unless you have already talked to Web-Plat and have failed to find any alternate (and better) solutions. */
-export const reactRecurlyFormFieldFocusStyles = formFieldFocusStyles;
-export const reactRecurlyFormFieldPaddingStyles = formFieldPaddingStyles;
 
-export const iFrameWrapper = styled.div<conditionalInputStyleProps>`
+export const reactRecurlyFormFieldFocusStyles = system.css(
+  formFieldFocusStyles
+);
+
+export const reactRecurlyFormFieldPaddingStyles = system.css(
+  formFieldPaddingStyles
+);
+
+export const iFrameWrapper = styled.div<conditionalStyleProps>`
   ${formBaseFieldStyles}
   ${conditionalStyles}
   text-indent: 0;
@@ -68,21 +75,21 @@ export const iFrameWrapper = styled.div<conditionalInputStyleProps>`
 const InputElement = styled.input<StyledInputProps>`
   ${formFieldStyles}
   ${conditionalStyles}
-  ${iconPadding}
   text-indent: 0;
+  padding-right: ${(props) => (props.icon ? `2.3rem` : `initial`)};
 `;
 
 const inputStates = {
   error: {
-    color: 'red',
+    color: 'feedback-error',
     icon: AlertIcon,
   },
   valid: {
-    color: 'green',
+    color: 'feedback-success',
     icon: CheckCircledIcon,
   },
   clean: {
-    color: 'gray-600',
+    color: 'text',
     icon: undefined,
   },
 } as const;
@@ -117,27 +124,30 @@ export const Input = forwardRef<HTMLInputElement, InputWrapperProps>(
     const ShownIcon = Icon || icon;
 
     return (
-      <Box position="relative" textColor={color}>
+      <Box
+        display={rest.type === 'hidden' ? 'none' : undefined}
+        position="relative"
+        color={color}
+      >
         <AsComponent
           {...rest}
           id={id || rest.htmlFor}
           ref={ref}
-          error={error}
-          activated={activated === undefined ? activatedStyle : activated}
+          variant={conditionalStyleState(Boolean(error), activatedStyle)}
           icon={error || valid || !!Icon}
           className={className}
           onChange={changeHandler}
         />
         {!!ShownIcon && (
           <FlexBox
-            paddingRight={Icon ? 12 : 16}
+            pr={Icon ? 12 : 16}
             position="absolute"
             alignItems="center"
             right="0"
             top="0"
             bottom="0"
           >
-            <ShownIcon size={Icon ? 24 : 16} />
+            <ShownIcon size={Icon ? 24 : 16} aria-hidden />
           </FlexBox>
         )}
       </Box>

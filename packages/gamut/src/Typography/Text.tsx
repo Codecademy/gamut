@@ -1,80 +1,96 @@
-import {
-  color,
-  layout,
-  shouldForwardProp,
-  space,
-  typography,
-  variant,
-} from '@codecademy/gamut-styles';
-import { compose, HandlerProps } from '@codecademy/gamut-system';
+import { styledOptions, system, variant } from '@codecademy/gamut-styles';
+import { StyleProps, variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
 
-const textVariants = variant({
+import { typographyElementVariants, typographyStyleVariants } from './variants';
+
+const displayVariants = variant({
+  variants: typographyStyleVariants,
+});
+
+const elementVariants = variant({
   prop: 'as',
+  variants: typographyElementVariants,
+});
+
+const truncateVariants = variant({
+  prop: 'truncate',
+  base: {
+    display: 'inline-block',
+    whiteSpace: 'nowrap',
+    overflow: 'hidden',
+    width: 1,
+    maxWidth: 1,
+  },
   variants: {
-    h1: {
-      fontSize: 64,
-      fontWeight: 'title',
-      lineHeight: 'title',
+    ellipsis: {
+      textOverflow: 'ellipsis',
     },
-    h2: {
-      fontSize: 44,
-      fontWeight: 'title',
-      lineHeight: 'title',
-    },
-    h3: {
-      fontSize: 34,
-      fontWeight: 'title',
-      lineHeight: 'title',
-    },
-    h4: {
-      fontSize: 26,
-      fontWeight: 'title',
-      lineHeight: 'title',
-    },
-    h5: {
-      fontSize: 22,
-      fontWeight: 'title',
-      lineHeight: 'title',
-    },
-    h6: {
-      fontSize: 20,
-      fontWeight: 'title',
-      lineHeight: 'title',
-    },
-    small: {
-      fontSize: 14,
-      display: 'inline-block',
-    },
-    p: {
-      fontSize: 16,
-    },
-    strong: {
-      fontWeight: 'title',
-      display: 'inline-block',
-    },
-    code: {
-      fontFamily: 'monospace',
-      display: 'inline-block',
-    },
-    span: {
-      display: 'inline-block',
+    fade: {
+      position: 'relative',
+      textOverflow: 'clip',
+      '&:after': {
+        content: '""',
+        position: 'absolute',
+        textColor: 'background-current',
+        inset: 0,
+        left: 0.65,
+        background:
+          'linear-gradient(to right, rgba(0, 0, 0, 0), currentColor 75%)',
+      },
     },
   },
 });
 
-const textProps = compose(layout, typography, color, space);
+const textStates = system.states({
+  center: {
+    textAlign: 'center',
+  },
+  block: {
+    display: 'block',
+  },
+  screenreader: {
+    display: 'inline-block',
+    height: '1px',
+    width: '1px',
+    whiteSpace: 'nowrap',
+    overflow: 'hidden',
+    position: 'absolute',
+    color: 'transparent',
+    left: -9999,
+    p: 0,
+    m: 0,
+    border: 'none',
+  },
+  smooth: {
+    WebkitFontSmoothing: 'antialiased',
+    MozOsxFontSmoothing: 'grayscale',
+  },
+});
+
+const textProps = variance.compose(
+  system.layout,
+  system.typography,
+  system.color,
+  system.space
+);
 
 export interface TextProps
-  extends HandlerProps<typeof textProps>,
-    HandlerProps<typeof textVariants> {}
+  extends StyleProps<typeof textProps>,
+    StyleProps<typeof textStates>,
+    StyleProps<typeof truncateVariants>,
+    StyleProps<typeof elementVariants>,
+    StyleProps<typeof displayVariants> {}
 
-export const Text = styled('span', { shouldForwardProp })<TextProps>(
-  textVariants,
+export const Text = styled('span', styledOptions<'span'>())<TextProps>(
+  elementVariants,
+  displayVariants,
+  truncateVariants,
+  textStates,
   textProps
 );
 
 Text.defaultProps = {
   as: 'span',
-  margin: 0,
+  m: 0,
 };

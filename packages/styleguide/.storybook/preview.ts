@@ -5,7 +5,7 @@ import { DocsPage, DocsContainer } from './components';
 import { theme as gamutTheme } from '@codecademy/gamut-styles/src';
 import { theme } from './theme';
 
-const { colors, breakpoints } = gamutTheme;
+const { breakpoints } = gamutTheme;
 
 export const parameters = {
   viewMode: 'docs',
@@ -16,7 +16,7 @@ export const parameters = {
       order: [
         'Gamut',
         'Foundations',
-        ['About', 'Theme', 'System', 'Design Guidelines', 'Legacy'],
+        ['About', 'Theme', 'System', 'ColorMode', 'Colors', 'Layout'],
         'Typography',
         ['About', 'Text', 'Anchor'],
         'Layouts',
@@ -51,11 +51,6 @@ export const parameters = {
       opacity: 0.5,
       cellAmount: 5,
     },
-    values: [
-      { name: 'White', value: colors.white },
-      { name: 'Navy', value: colors.navy },
-      { name: 'Beige', value: colors.beige },
-    ],
   },
   viewport: {
     defaultViewport: 'responsive',
@@ -114,6 +109,7 @@ export const parameters = {
   },
   actions: { argTypesRegex: '^on.*' },
   controls: { expanded: true },
+  layout: 'fullscreen',
 };
 
 export const decorators = [withEmotion];

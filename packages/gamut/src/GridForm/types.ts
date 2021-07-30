@@ -1,7 +1,9 @@
+import { ReactNode } from 'react';
 import { UseFormMethods, ValidationRules } from 'react-hook-form';
 
-import { ColumnProps } from '../Layout/Column';
+import { ColumnProps } from '../Layout';
 import { ToolTipProps } from '../ToolTip';
+import { TextProps } from '../Typography/Text';
 
 export type BaseFormField<Value> = {
   defaultValue?: Value;
@@ -23,6 +25,7 @@ export type BaseFormField<Value> = {
   name: string;
   onUpdate?: (value: Value) => void;
   size: ColumnProps['size'];
+  rowspan?: ColumnProps['rowspan'];
 };
 
 export type GridFormCheckboxField = BaseFormField<boolean> & {
@@ -36,7 +39,7 @@ export type GridFormCheckboxField = BaseFormField<boolean> & {
 export type GridFormCustomFieldProps = {
   className?: string;
   error?: string;
-  field: GridFormCustomField;
+  field: GridFormCustomField | GridFormCustomGroupField;
   register: UseFormMethods['register'];
   setValue: (value: any) => void;
 };
@@ -46,6 +49,13 @@ export type GridFormCustomField = BaseFormField<any> & {
   render: (props: GridFormCustomFieldProps) => React.ReactNode;
   validation?: ValidationRules;
   type: 'custom';
+};
+
+export type GridFormCustomGroupField = BaseFormField<any> & {
+  label?: React.ReactNode;
+  render: (props: GridFormCustomFieldProps) => React.ReactNode;
+  validation?: ValidationRules;
+  type: 'custom-group';
 };
 
 export type BasicInputType =
@@ -71,15 +81,16 @@ export type GridFormTextField = BaseFormField<string> & {
 };
 
 export type GridFormRadioOption = {
-  label: string;
+  label: ReactNode;
   value: string;
 };
 
 export type GridFormRadioGroupField = BaseFormField<string> & {
-  label: string;
+  label: ReactNode | string; // If this is a string, it will also be used as the aria-label.
   options: GridFormRadioOption[];
   validation?: ValidationRules;
   type: 'radio-group';
+  ariaLabel?: string;
 };
 
 export type GridFormSelectField = BaseFormField<string> & {
@@ -97,15 +108,55 @@ export type GridFormFileField = BaseFormField<FileList> & {
 
 export type GridFormTextAreaField = BaseFormField<string> & {
   label: React.ReactNode;
+  placeholder?: string;
   validation?: ValidationRules;
   type: 'textarea';
+};
+
+type HiddenField = Omit<BaseFormField<any>, 'size' | 'rowspan'>;
+
+export type GridFormHiddenField = HiddenField & {
+  type: 'hidden';
+};
+
+export type GridFormSweetContainerField = HiddenField & {
+  label: string;
+  type: 'sweet-container';
 };
 
 export type GridFormField =
   | GridFormCheckboxField
   | GridFormCustomField
+  | GridFormCustomGroupField
   | GridFormRadioGroupField
   | GridFormTextField
   | GridFormSelectField
   | GridFormFileField
-  | GridFormTextAreaField;
+  | GridFormTextAreaField
+  | GridFormHiddenField
+  | GridFormSweetContainerField;
+
+type UnionValuesStartingWith<Base, Prefix extends string> = keyof {
+  [Key in Base as Extract<Key, `${Prefix}${string}`>]: true;
+};
+
+type FilterNestedEnumByPrefix<Type, Prefix extends string> = {
+  [Key in keyof Type]: UnionValuesStartingWith<Type[Key], Prefix>;
+};
+
+type RestrictedTitleVariant = FilterNestedEnumByPrefix<
+  Pick<TextProps, 'variant'>,
+  'title'
+>;
+
+export type GridFormSectionTitleBaseProps = RestrictedTitleVariant & {
+  title: string;
+  as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+  layout?: 'center' | 'left';
+};
+
+export type GridFormSectionProps = GridFormSectionTitleBaseProps & {
+  fields: GridFormField[];
+};
+
+export type GridFormFieldsProps = GridFormField | GridFormSectionProps;

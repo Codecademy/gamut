@@ -1,18 +1,34 @@
-import React from 'react';
-import { FieldError, Mode, SubmitHandler, useForm } from 'react-hook-form';
+import React, { Fragment } from 'react';
+import { FormProvider, Mode, SubmitHandler, useForm } from 'react-hook-form';
 
+import { ButtonProps } from '../Button/shared';
 import { Form } from '../Form';
 import { LayoutGrid, LayoutGridProps } from '../Layout';
-import { GridFormInputGroup } from './GridFormInputGroup';
-import { GridFormSubmit, GridFormSubmitProps } from './GridFormSubmit';
-import { GridFormField } from './types';
+import { GridFormButtons, GridFormSubmitProps } from './GridFormButtons';
+import {
+  GridFormContent,
+  GridFormSection,
+  GridFormSectionBreak,
+  GridFormSectionTitle,
+} from './GridFormSections';
+import {
+  GridFormField,
+  GridFormFieldsProps,
+  GridFormSectionProps,
+} from './types';
 
 export * from './types';
 
 const defaultColumnGap = {
-  xs: 'sm',
-  sm: 'lg',
+  _: 8,
+  sm: 32,
 } as const;
+
+const isGridFormSection = (
+  field: GridFormField | GridFormSectionProps
+): field is GridFormSectionProps => {
+  return (field as GridFormSectionProps).title !== undefined;
+};
 
 export type GridFormProps<Values extends {}> = {
   children?: React.ReactNode;
@@ -24,9 +40,14 @@ export type GridFormProps<Values extends {}> = {
   columnGap?: LayoutGridProps['columnGap'];
 
   /**
-   * Descriptions of any fields comprising the form.
+   * Descriptions of any fields or sections comprising the form.
    */
-  fields?: GridFormField[];
+  fields?: GridFormFieldsProps[];
+
+  /**
+   * Renders a cancel button with the provided child text and onClick function.
+   */
+  cancel?: ButtonProps;
 
   /**
    * Function called with field values on submit, if all validations have passed.
@@ -39,7 +60,7 @@ export type GridFormProps<Values extends {}> = {
   showRequired?: boolean;
 
   /**
-   * Layout grid row gap override.
+   * Layout grid row gap override between fields.
    */
   rowGap?: LayoutGridProps['rowGap'];
 
@@ -64,24 +85,23 @@ export type GridFormProps<Values extends {}> = {
 export function GridForm<
   Values extends Record<string, boolean | string | undefined | FileList>
 >({
+  cancel,
   children,
   className,
   columnGap = defaultColumnGap,
   fields = [],
   onSubmit,
-  rowGap = 'md',
+  rowGap = 16,
   submit,
   validation = 'onSubmit',
   showRequired = false,
 }: GridFormProps<Values>) {
-  const {
-    errors,
-    handleSubmit,
-    register,
-    setValue,
-    formState,
-  } = useForm<Values>({
-    defaultValues: fields.reduce<any>(
+  const flatFields = fields.flatMap((field) =>
+    isGridFormSection(field) ? field.fields : field
+  );
+
+  const { handleSubmit, formState, ...methods } = useForm({
+    defaultValues: flatFields.reduce<any>(
       (defaultValues, field) => ({
         ...defaultValues,
         [field.name]: field.defaultValue,
@@ -91,45 +111,56 @@ export function GridForm<
     mode: validation,
   });
 
-  /**
-   * Keep track of the first error in this form.
-   * This is so we only add the correct aria-live props on the first error.
-   */
-  let pastFirstError = false;
-
   return (
-    <Form className={className} onSubmit={handleSubmit(onSubmit)} noValidate>
-      <LayoutGrid columnGap={columnGap} rowGap={rowGap}>
-        {fields.map((field) => {
-          const errorMessage = (errors[field.name] as FieldError)?.message;
+    <FormProvider
+      handleSubmit={handleSubmit}
+      formState={formState}
+      {...methods}
+    >
+      <Form className={className} onSubmit={handleSubmit(onSubmit)} noValidate>
+        <LayoutGrid columnGap={columnGap} rowGap={rowGap}>
+          <>
+            {fields.map((field) => {
+              if (isGridFormSection(field)) {
+                const { title, as, layout, fields, variant } = field;
+                return (
+                  <Fragment key={title}>
+                    <GridFormSectionTitle
+                      title={title}
+                      as={as}
+                      layout={layout}
+                      numberOfFields={fields.length}
+                      variant={variant}
+                    />
+                    <GridFormSection
+                      fields={fields}
+                      showRequired={showRequired}
+                    />
+                    <GridFormSectionBreak />
+                  </Fragment>
+                );
+              }
+              return (
+                <GridFormContent
+                  field={field}
+                  showRequired={showRequired}
+                  key={field.name}
+                />
+              );
+            })}
+          </>
 
-          const isFirstError = !pastFirstError && errorMessage !== undefined;
-          pastFirstError = pastFirstError || isFirstError;
-          const requiredBoolean = !!(
-            field.validation && field.validation.required
-          );
-
-          return (
-            <GridFormInputGroup
-              error={errorMessage as string}
-              isFirstError={isFirstError}
-              field={field}
-              key={field.name}
-              register={register}
-              setValue={setValue}
-              required={requiredBoolean}
-              showRequired={showRequired}
-            />
-          );
-        })}
-        <GridFormSubmit
-          {...submit}
-          disabled={
-            (validation === 'onChange' && !formState.isValid) || submit.disabled
-          }
-        />
-        {children}
-      </LayoutGrid>
-    </Form>
+          <GridFormButtons
+            cancel={cancel}
+            {...submit}
+            disabled={
+              (validation === 'onChange' && !formState.isValid) ||
+              submit.disabled
+            }
+          />
+          {children}
+        </LayoutGrid>
+      </Form>
+    </FormProvider>
   );
 }

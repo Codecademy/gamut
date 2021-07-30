@@ -2,12 +2,9 @@ import { IconButton } from '@codecademy/gamut/src';
 import { FaviconIcon } from '@codecademy/gamut-icons/src';
 import { AppHeader } from '@codecademy/gamut-labs/src';
 import title from '@codecademy/macros/lib/title.macro';
+import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 import LinkTo from '@storybook/addon-links/react';
-
-import { PropsTable } from '~styleguide/blocks';
-
-import { MOCK_DROPDOWN_1 } from './MockAppHeaderElements';
 
 <Meta
   title={title}
@@ -34,7 +31,6 @@ import { MOCK_DROPDOWN_1 } from './MockAppHeaderElements';
           text: 'AppHeaderLink',
           type: 'link',
         },
-        MOCK_DROPDOWN_1,
       ],
       right: [
         {
@@ -57,6 +53,11 @@ import { MOCK_DROPDOWN_1 } from './MockAppHeaderElements';
           type: 'fill-button',
         },
       ],
+    },
+    search: {
+      onEnable: () => {},
+      onSearch: () => {},
+      onTrackingClick: () => {},
     },
   }}
 />

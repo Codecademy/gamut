@@ -4,12 +4,18 @@ import { UseFormMethods } from 'react-hook-form';
 import { FormError, FormGroup, FormGroupLabel } from '../../Form';
 import { HiddenText } from '../../HiddenText';
 import { Column } from '../../Layout';
-import { GridFormField } from '../types';
+import {
+  GridFormField,
+  GridFormHiddenField,
+  GridFormSweetContainerField,
+} from '../types';
 import { GridFormCheckboxInput } from './GridFormCheckboxInput';
 import { GridFormCustomInput } from './GridFormCustomInput';
 import { GridFormFileInput } from './GridFormFileInput';
+import { GridFormHiddenInput } from './GridFormHiddenInput';
 import { GridFormRadioGroupInput } from './GridFormRadioGroupInput';
 import { GridFormSelectInput } from './GridFormSelectInput';
+import { GridFormSweetContainerInput } from './GridFormSweetContainerInput';
 import { GridFormTextArea } from './GridFormTextArea';
 import { GridFormTextInput } from './GridFormTextInput';
 
@@ -30,15 +36,20 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
   register,
   setValue,
   showRequired,
+  required,
 }) => {
   const errorMessage = error || field.customError;
+  const isRequired = showRequired && required;
 
   const getInput = () => {
     switch (field.type) {
       case 'checkbox':
-        return <GridFormCheckboxInput field={field} register={register} />;
+        return (
+          <GridFormCheckboxInput field={field} showRequired={isRequired} />
+        );
 
       case 'custom':
+      case 'custom-group':
         return (
           <GridFormCustomInput
             field={field}
@@ -53,7 +64,9 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
           <GridFormRadioGroupInput
             field={field}
             register={register}
+            showRequired={isRequired}
             setValue={setValue}
+            error={!!errorMessage}
           />
         );
 
@@ -63,6 +76,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
             error={!!errorMessage}
             field={field}
             register={register}
+            showRequired={isRequired}
           />
         );
 
@@ -72,6 +86,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
             error={!!errorMessage}
             field={field}
             register={register}
+            showRequired={isRequired}
           />
         );
 
@@ -81,6 +96,18 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
             error={!!errorMessage}
             field={field}
             register={register}
+            showRequired={isRequired}
+          />
+        );
+      case 'hidden':
+        return <GridFormHiddenInput register={register} field={field} />;
+
+      case 'sweet-container':
+        return (
+          <GridFormSweetContainerInput
+            register={register}
+            field={field}
+            label={field.label}
           />
         );
 
@@ -90,25 +117,43 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
             error={!!errorMessage}
             field={field}
             register={register}
+            showRequired={isRequired}
           />
         );
     }
   };
+
+  const unwrappedInput = (
+    field: GridFormField
+  ): field is GridFormHiddenField | GridFormSweetContainerField =>
+    ['hidden', 'sweet-container'].includes(field.type);
+
+  if (unwrappedInput(field)) {
+    return getInput();
+  }
+
+  if (field.type === 'custom-group') {
+    return (
+      <Column size={field?.size} rowspan={field?.rowspan ?? 1}>
+        {getInput()}
+      </Column>
+    );
+  }
 
   const label = (
     <FormGroupLabel
       disabled={field.disabled}
       htmlFor={field.id || field.name}
       tooltip={field.tooltip}
-      showRequired={showRequired}
+      showRequired={isRequired}
     >
       {field.label}
     </FormGroupLabel>
   );
 
   return (
-    <Column size={field.size}>
-      <FormGroup marginBottom={0}>
+    <Column size={field?.size} rowspan={field?.rowspan ?? 1}>
+      <FormGroup mb={0}>
         {field.hideLabel ? <HiddenText>{label}</HiddenText> : label}
         {getInput()}
         {errorMessage && (

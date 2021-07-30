@@ -1,7 +1,6 @@
 import cx from 'classnames';
 import React from 'react';
 
-import { ContainerElementProps } from '../Layout/types';
 import { ResponsiveProperty } from '../typings/responsive-properties';
 import { generateResponsiveClassnames } from '../utils/generateResponsiveClassnames';
 import styles from './styles/Text.module.scss';
@@ -11,16 +10,26 @@ export type TextTags = 'p' | 'span' | 'div';
 export type TextSizes = 'sm' | 'md' | 'lg';
 
 type TextDeprecatedProps = {
+  className?: string;
+  testId?: string;
   /** Text based tags */
   as?: TextTags;
   /** A font-size/font-family pair */
   fontSize?: ResponsiveProperty<TextSizes>;
   /** Allows you to pass color attributes directly to the tag */
   style?: AllowedStyles;
-} & ContainerElementProps;
+};
 
 /**
  * @deprecated
+ * This component is deprecated and is no longer supported.
+ *
+ * Please use the new [Text](https://gamut.codecademy.com/storybook/?path=/docs/typography-text--text) typography component
+ * ```
+ * import { Text } from '@codecademy/gamut';
+ *
+ * <Text as="p">paragraph text</Text>
+ * ```
  */
 
 export const TextDeprecated: React.FC<TextDeprecatedProps> = ({

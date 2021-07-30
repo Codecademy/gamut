@@ -1,3 +1,4 @@
+import { isString } from 'lodash';
 import React from 'react';
 import { UseFormMethods } from 'react-hook-form';
 
@@ -9,6 +10,8 @@ export type GridFormRadioGroupInputProps = {
   field: GridFormRadioGroupField;
   register: UseFormMethods['register'];
   setValue: (name: string, value: string) => void;
+  showRequired?: boolean;
+  error?: boolean;
 };
 
 export const GridFormRadioGroupInput: React.FC<GridFormRadioGroupInputProps> = ({
@@ -16,14 +19,20 @@ export const GridFormRadioGroupInput: React.FC<GridFormRadioGroupInputProps> = (
   field,
   register,
   setValue,
+  showRequired,
+  error,
 }) => {
+  const ariaLabel: string | undefined =
+    field.ariaLabel ?? (isString(field.label) ? field.label : undefined);
+
   return (
     <RadioGroup
       className={className}
       htmlForPrefix={field.name}
       name={field.name}
       role="radiogroup"
-      aria-label={field.label}
+      aria-label={ariaLabel}
+      aria-required={showRequired}
       onChange={(event) => {
         const { value } = event.target;
         setValue(field.name, value);
@@ -38,6 +47,7 @@ export const GridFormRadioGroupInput: React.FC<GridFormRadioGroupInputProps> = (
           ref={register(field.validation)}
           value={value}
           id={field.id}
+          error={error}
         />
       ))}
     </RadioGroup>

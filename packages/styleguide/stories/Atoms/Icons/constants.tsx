@@ -27,6 +27,9 @@ export const VENDOR_ICONS = pick(
     'AmexIcon',
     'MastercardIcon',
     'VisaIcon',
+    'GithubOutlineIcon',
+    'LinkedinOutlineIcon',
+    'TwitterOutlineIcon',
   ].sort()
 );
 
@@ -37,6 +40,7 @@ export const LE_ICONS = pick(
     'ChecklistIcon',
     'PinIcon',
     'ChallengeProjectIcon',
+    'CertificateFilledIcon',
     'InformationalIcon',
     'LessonIcon',
     'ProjectsIcon',
@@ -53,6 +57,7 @@ export const LE_ICONS = pick(
     'StreakIcon',
     'FitnessDumbbellIcon',
     'TrophyIcon',
+    'TrophyFilledIcon',
     'TerminalIcon',
     'CertificateIcon',
     'BadgeIcon',

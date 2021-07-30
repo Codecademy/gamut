@@ -1,41 +1,40 @@
 import {
   Column,
+  FormGroup,
   GridForm,
   Input,
   LayoutGrid,
   Markdown,
 } from '@codecademy/gamut/src';
 import title from '@codecademy/macros/lib/title.macro';
+import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { action } from '@storybook/addon-actions';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 import { useState } from '@storybook/addons';
 
-import { PropsTable } from '~styleguide/blocks';
+import { LinkTo } from '~styleguide/blocks';
+
+import { ColorModeExample } from './examples';
 
 <Meta
   title={title}
   component={GridForm}
   parameters={{
-    subtitle: `This organism takes in plain JSON-like props and uses them to string
-together a validated form`,
+    subtitle: `GridForm is the most efficient way to build and design forms at Codecademy.`,
     source: 'gamut',
     status: 'updating',
+    figmaId: 'ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=1689%3A3910',
   }}
 />
 
-This is composed of:
+The GridForm organism provides an easy, out-of-the-box way to implement forms from a list of fields. When provided a list of fields, GridForm strings together the appropriate <LinkTo id="atoms-formelements-about--page">Form Elements</LinkTo> inside a <LinkTo id="layouts-layoutgrid--layout-grid">LayoutGrid</LinkTo>.
 
-- [react-hook-form](https://react-hook-form.com)
-- [Our existing `Grid` layout system](/?path=/story/layout-grid-system--fixed-grid-default)
-- [Our existing `Form` primitives](/?path=/story/component-form--form)
+GridForm provides the following benefits:
 
-You should only ever directly use `GridForm` to create your form.
-`Form` atoms compose the structure of these forms but should not be used
-directly.
-
-`GridForm`s are laid out with `LayoutGrid`, so you can override its
-`columnGap` and `rowGap` with the normal string or
-responsive layouts.
+1. **Simplicity**: This organism takes in plain JSON-like props and uses them to string together a validated form
+2. **Accessibility**: All GridForms handle accessibility styling and behaviors, passing tests out-of-the-box
+3. **Functionality**: Validation and submission logic is handled by the [react-hook-form](https://react-hook-form.com) library
+4. **Visual Consistency**: Aligns all input elements with the correct vertical rhythms and grid spacing
 
 <Canvas>
   <Story name="GridForm" args={{ validation: 'onSubmit' }}>
@@ -89,7 +88,6 @@ responsive layouts.
           {
             label: 'Write a paragraph about penguins',
             name: 'textarea-input',
-            size: 12,
             type: 'textarea',
             validation: {
               required: 'Please write something about penguins!',
@@ -116,6 +114,7 @@ responsive layouts.
             size: 3,
             type: 'checkbox',
             id: 'my-super-cool-id',
+            defaultValue: true,
           },
           {
             label: 'Preferred Modern Artist',
@@ -141,7 +140,6 @@ responsive layouts.
             description:
               'I accept the terms and conditions (required or else!!!)',
             name: 'eula-checkbox-required',
-            size: 12,
             type: 'checkbox',
             validation: {
               required: 'Please check the box to agree to the terms.',
@@ -153,7 +151,6 @@ responsive layouts.
         }}
         submit={{
           contents: 'Submit Me!?',
-          size: 12,
         }}
         showRequired
       />
@@ -162,6 +159,39 @@ responsive layouts.
 </Canvas>
 
 <PropsTable of={GridForm} />
+
+## Modifying Elements
+
+`GridForms` are laid out with `LayoutGrid`, so you can override its `columnGap` and `rowGap` with the normal string or responsive layouts to style and align the GridForm to your designs. You can also configure the `GridFormButtons` to modify the submit buttons and optional cancel buttons.
+
+While `Form` atoms compose the structure of these forms, we strongly recommend only creating forms with using `GridForm`. You should only use the form element atoms as individual elements if your interface doesn’t need to support the technical functions of a form.
+
+**You should build something outside of GridForm if you need...**
+
+- **Multi-step forms**: GridForm is best used for single page operations with a discrete submit action
+- **Custom behaviors for messaging or validation states**: form validation is already built into each input element, so any custom messaging is best done outside the component
+
+## Designing with GridForm
+
+All [Form Input](https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=1189%3A0) components in the Figma library are consistent with their implementations in code. By setting the form inputs within the component's layout grid, we can design forms that are compatible with Gamut.
+
+The [GridForm page in Gamut](https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=1689%3A3910) also contains several starter templates for incorporating this organism in your designs.
+
+- **Starter**: Contains sample components to begin creating your own form
+- **Sections**: Contains the headers and dividers that are rendered in the optional <LinkTo id="organisms-gridform--sections">Sections</LinkTo> modules
+- **Inline Submit**: A form incorporating the <LinkTo id="organisms-gridform--inline-text-input-with-label">Inline Submit</LinkTo> Button style of GridForm
+- **Instructions**: Contains suggestions for modifying the Figma component for your own designs
+
+### Figma Component Instructions
+
+- Enable Layout Grid (^G)
+- Select a `❖ GridForm` variant as a template
+  - Starter, Sections, Inline Submit
+- Detatch the component to modify the `📐 LayoutGrid`
+- Add, remove, and edit `⬦ Form Inputs`
+  - Input Field, TextArea, Checkbox, Radio Button, Select
+- Customize `🚥 GridFormButtons`
+  - Submit button style (Fill/CTA), position, cancel button
 
 ## Disabled Inputs
 
@@ -192,7 +222,74 @@ If an input is not meant to be usable, such as when a portion of a form is disab
         submit={{
           contents: 'Right Submit!?',
           position: 'right',
-          size: 12,
+        }}
+      />
+    )}
+  </Story>
+</Canvas>
+
+## GridForm-atting
+
+We can use the `size` and `rowspan` props (borrowed from <LinkTo id="layouts-layoutgrid--layout-grid">LayoutGrid</LinkTo>) to customize the layouts of our GridForms.
+
+<Canvas>
+  <Story name="Rowspan Formatting">
+    {(args) => (
+      <GridForm
+        fields={[
+          {
+            label: 'Fave Gamut Component',
+            name: 'rowspan-radiogroup',
+            options: [
+              {
+                label: 'FlexBox',
+                value: 'flex',
+              },
+              {
+                label: 'GridForm',
+                value: 'grid',
+              },
+              {
+                label: 'Text',
+                value: 'text',
+              },
+            ],
+            size: 3,
+            rowspan: 3,
+            type: 'radio-group',
+            validation: {
+              required: 'You gotta pick one!',
+            },
+          },
+          {
+            label: 'Simple text',
+            name: 'rowspan-simple-text',
+            size: 3,
+            type: 'text',
+          },
+          {
+            defaultValue: 'yeet',
+            label: 'Text with default value',
+            name: 'text-with-default-formatting',
+            size: 4,
+            type: 'text',
+          },
+          {
+            label: 'Simple select (required)',
+            name: 'simple-select-formatting',
+            options: ['', 'One fish', 'Two fish', 'Red fish', 'Blue fish'],
+            size: 5,
+            type: 'select',
+            validation: {
+              required: 'Please select an option',
+            },
+          },
+        ]}
+        onSubmit={async (values) => {
+          action('Form Submitted')(values);
+        }}
+        submit={{
+          contents: 'Submit',
         }}
       />
     )}
@@ -213,8 +310,7 @@ value of left, center, right, or stretch.
             fields={[
               {
                 label: 'Simple text',
-                name: 'simple-text',
-                size: 12,
+                name: 'right-sub-simple-text',
                 type: 'text',
               },
             ]}
@@ -224,7 +320,6 @@ value of left, center, right, or stretch.
             submit={{
               contents: 'Right Submit!?',
               position: 'right',
-              size: 12,
             }}
           />
         </Column>
@@ -233,8 +328,7 @@ value of left, center, right, or stretch.
             fields={[
               {
                 label: 'Simple text',
-                name: 'simple-text',
-                size: 12,
+                name: 'center-sub-simple-text',
                 type: 'text',
               },
             ]}
@@ -244,7 +338,6 @@ value of left, center, right, or stretch.
             submit={{
               contents: 'Center Submit!?',
               position: 'center',
-              size: 12,
             }}
           />
         </Column>
@@ -253,8 +346,7 @@ value of left, center, right, or stretch.
             fields={[
               {
                 label: 'Simple text',
-                name: 'simple-text',
-                size: 12,
+                name: 'left-sub-simple-text',
                 type: 'text',
               },
             ]}
@@ -264,7 +356,6 @@ value of left, center, right, or stretch.
             submit={{
               contents: 'Left Submit!?',
               position: 'left',
-              size: 12,
             }}
           />
         </Column>
@@ -273,8 +364,7 @@ value of left, center, right, or stretch.
             fields={[
               {
                 label: 'Simple text',
-                name: 'simple-text',
-                size: 12,
+                name: 'stretch-sub-simple-text',
                 type: 'text',
               },
             ]}
@@ -284,7 +374,6 @@ value of left, center, right, or stretch.
             submit={{
               contents: 'Stretch Submit!?',
               position: 'stretch',
-              size: 12,
             }}
           />
         </Column>
@@ -295,8 +384,8 @@ value of left, center, right, or stretch.
 
 ## Submit Button Options
 
-We can specify the version of our button by passing the type prop. WE can choose between
-the [`FillButton`](/?path=/docs/atoms--fill) or [`CTAButton`](?path=/docs/atoms--cta).
+We can specify the version of our button by passing the type prop. We can choose between
+the <LinkTo id="atoms-button--fill-button">`FillButton`</LinkTo> or <LinkTo id="atoms-button--cta-button">`CTAButton`</LinkTo>.
 
 <Canvas>
   <Story name="Submit Button Options">
@@ -306,7 +395,7 @@ the [`FillButton`](/?path=/docs/atoms--fill) or [`CTAButton`](?path=/docs/atoms-
           fields={[
             {
               label: 'Simple text',
-              name: 'simple-text',
+              name: 'fill-button-simple-text',
               size: 6,
               type: 'text',
             },
@@ -323,7 +412,7 @@ the [`FillButton`](/?path=/docs/atoms--fill) or [`CTAButton`](?path=/docs/atoms-
           fields={[
             {
               label: 'Simple text',
-              name: 'simple-text',
+              name: 'cta-button-simple-text',
               size: 6,
               type: 'text',
             },
@@ -341,7 +430,7 @@ the [`FillButton`](/?path=/docs/atoms--fill) or [`CTAButton`](?path=/docs/atoms-
           fields={[
             {
               label: 'Simple text',
-              name: 'simple-text',
+              name: 'fill-dark-mode-simple-text',
               size: 6,
               type: 'text',
             },
@@ -359,7 +448,7 @@ the [`FillButton`](/?path=/docs/atoms--fill) or [`CTAButton`](?path=/docs/atoms-
           fields={[
             {
               label: 'Simple text',
-              name: 'simple-text',
+              name: 'cta-dark-mode-simple-text',
               size: 6,
               type: 'text',
             },
@@ -378,7 +467,7 @@ the [`FillButton`](/?path=/docs/atoms--fill) or [`CTAButton`](?path=/docs/atoms-
           fields={[
             {
               label: 'Simple text',
-              name: 'simple-text',
+              name: 'deprecated-simple-text',
               size: 6,
               type: 'text',
             },
@@ -436,10 +525,50 @@ align nicely with the input.
   </Story>
 </Canvas>
 
+## Cancel button
+
+Optionally, include a cancel button.
+
+<Canvas>
+  <Story name="Cancel button">
+    {(args) => (
+      <GridForm
+        fields={[
+          {
+            label: 'A label',
+            name: 'a-label',
+            size: 6,
+            type: 'text',
+          },
+          {
+            label: 'This other label',
+            name: 'this-other-label',
+            size: 6,
+            type: 'text',
+          },
+        ]}
+        cancel={{
+          children: 'Cancel',
+          onClick: () => {},
+        }}
+        onSubmit={async (values) => {
+          action('Form Submitted')(values);
+        }}
+        submit={{
+          contents: 'Submit',
+          position: 'right',
+        }}
+      />
+    )}
+  </Story>
+</Canvas>
+
 ## Custom inputs
 
 Some forms, such as the checkout flows that use Recurly, need to define
-their own inputs. We can specify a 'custom' field type to with a [render prop](https://reactjs.org/docs/render-props.html)
+their own inputs. We can specify a 'custom' field type to with a [render prop](https://reactjs.org/docs/render-props.html).
+
+We also have a 'custom-group' type for when you are passing in a custom FormGroup - including a label. If you do not want GridForm to surface errors for your field, you should likely use a 'custom-group'. If you chose to go this route, please be aware of [accessibility best practices](https://www.deque.com/blog/anatomy-of-accessible-forms-best-practices/) for forms.
 
 <Canvas>
   <Story name="Custom Inputs">
@@ -467,8 +596,29 @@ their own inputs. We can specify a 'custom' field type to with a [render prop](h
                 message: 'Still not enough swag, what are you doing... 💢',
               },
             },
-            size: 12,
             type: 'custom',
+          },
+          {
+            render: ({ className, error, setValue }) => (
+              <FormGroup label="updog" width="100%">
+                <Input
+                  error={!!error}
+                  id="custom-text-group-input"
+                  type="text"
+                  onChange={(event) => setValue(event.target.value)}
+                />
+              </FormGroup>
+            ),
+            label: 'Gimme two more swags',
+            name: 'custom-input-group',
+            validation: {
+              required: true,
+              pattern: {
+                value: /swag(.*)swag/,
+                message: 'Still not enough swag, what are you doing... 💢',
+              },
+            },
+            type: 'custom-group',
           },
         ]}
         onSubmit={async (values) => {
@@ -503,8 +653,7 @@ more details on why using placeholders is often bad.
           {
             label: 'Email',
             placeholder: 'Your email',
-            name: 'custom-input',
-            size: 12,
+            name: 'placeholder',
             type: 'email',
           },
         ]}
@@ -536,7 +685,7 @@ field's value in a parent component before onSubmit gets triggered.
             fields={[
               {
                 label: 'Text with onUpdate',
-                name: 'simple-text',
+                name: 'onUpdate-simple-text',
                 size: 3,
                 type: 'text',
                 onUpdate: setText,
@@ -557,7 +706,9 @@ field's value in a parent component before onSubmit gets triggered.
 
 ## With tooltip
 
-A field can include [our existing `ToolTip`](/?path=/docs/atoms-tooltip--tool-tip). The position of the tooltip on each field is always set to the bottom-right. You also have the option to render each tooltip in dark or light mode.
+A field can include <LinkTo id="atoms-tooltip--tool-tip">our existing `ToolTip`</LinkTo>. The position of the tooltip on each field is always set to the bottom-right. You also have the option to render each tooltip in dark or light mode.
+
+See the <LinkTo id="atoms-forminputs-radio--radio">`Radio`</LinkTo> story for an example of how to add a tooltip to a radio option.
 
 <Canvas>
   <Story name="Tooltip">
@@ -603,6 +754,7 @@ A field can include [our existing `ToolTip`](/?path=/docs/atoms-tooltip--tool-ti
               name: 'textarea-field',
               size: 6,
               type: 'textarea',
+              placeholder: 'Check out my tooltip',
               validation: {
                 required: 'Please write something about tooltips!',
               },
@@ -613,7 +765,7 @@ A field can include [our existing `ToolTip`](/?path=/docs/atoms-tooltip--tool-ti
                   'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
               },
               label: 'Preferred Modern Artist',
-              name: 'artist',
+              name: 'modern-artist',
               options: [
                 {
                   label: 'Taylor Swift',
@@ -638,7 +790,7 @@ A field can include [our existing `ToolTip`](/?path=/docs/atoms-tooltip--tool-ti
               },
               label: 'End User License Agreement',
               description: 'I promise that I read it',
-              name: 'eula-checkbox-required',
+              name: 'eula-checkbox-required-agreement',
               size: 4,
               type: 'checkbox',
               validation: {
@@ -660,12 +812,120 @@ A field can include [our existing `ToolTip`](/?path=/docs/atoms-tooltip--tool-ti
   </Story>
 </Canvas>
 
+## Sections
+
+Our `GridForm`s optionally take an array of sections that have left and center-aligned variants.
+
+Each sections should have a title that correctly follows [heading ranks](https://usability.yale.edu/web-accessibility/articles/headings). You can set the text type of this title though the `as` prop on that section -- the default is `h2`. You can only set the `as` prop to a heading.
+
+You can set the <LinkTo id="typography-text--variants">Text variant</LinkTo> prop for the section title the same way. Only title variants are accepted.
+
+When using the left-aligned layout, please note that the `title` takes up 3 columns, so any field size over 9 may cause inconsistent behavior!
+
+<Canvas>
+  <Story name="Sections">
+    {(args) => {
+      return (
+        <GridForm
+          fields={[
+            {
+              title: 'first section',
+              layout: 'left',
+              variant: 'title-xs',
+              fields: [
+                {
+                  label: 'hi?',
+                  name: 'text01-left-section',
+                  size: 4,
+                  type: 'text',
+                  validation: {
+                    required: true,
+                  },
+                },
+                {
+                  label: 'hello?',
+                  name: 'text02-left-section',
+                  size: 4,
+                  type: 'text',
+                  validation: {
+                    required: true,
+                  },
+                },
+                {
+                  label: 'Write a paragraph.',
+                  name: 'paragraph01-left-section',
+                  size: 8,
+                  type: 'textarea',
+                  validation: {
+                    required: 'Please write something about penguins!',
+                  },
+                },
+                {
+                  label: 'howdy?',
+                  name: 'text03-left-section',
+                  size: 4,
+                  type: 'text',
+                  validation: {
+                    required: true,
+                  },
+                },
+                {
+                  label: 'whats up?',
+                  name: 'text04--left-section',
+                  size: 4,
+                  type: 'text',
+                  validation: {
+                    required: true,
+                  },
+                },
+                {
+                  label: 'Write another long paragraph',
+                  name: 'paragraph02-left-section',
+                  size: 8,
+                  type: 'textarea',
+                  validation: {
+                    required: 'Please write something about penguins!',
+                  },
+                },
+              ],
+            },
+            {
+              title: 'hi there... again',
+              as: 'h3',
+              fields: [
+                {
+                  label: 'hello....',
+                  name: 'text01-center-section',
+                  size: 5,
+                  type: 'text',
+                  validation: {
+                    required: true,
+                  },
+                },
+              ],
+            },
+          ]}
+          sectionGap={48}
+          onSubmit={async (values) => {
+            action('Form Submitted')(values);
+          }}
+          submit={{
+            contents: 'Submit me',
+            size: 12,
+          }}
+          validation="onSubmit"
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
 ## Custom Error
 
 A field can take a custom error in addition to validation errors. The validation error will always take precedence to the custom error.
 
 <Canvas>
-  <Story name="Custom ">
+  <Story name="Custom Error">
     {(args) => {
       return (
         <GridForm
@@ -698,3 +958,75 @@ A field can take a custom error in addition to validation errors. The validation
     }}
   </Story>
 </Canvas>
+
+## Hidden Input
+
+Hidden inputs can be used to include data that users can't see or modify with the submission. For this implementation you can set the `defaultValue` in the object and it will be submitted with the regular form data.
+
+<Canvas>
+  <Story name="Hidden Input">
+    {(args) => (
+      <GridForm
+        fields={[
+          {
+            type: 'hidden',
+            name: 'secret-stuff',
+            defaultValue: "I'm invisible!",
+          },
+          {
+            label: "There's more than one field here!",
+            name: 'custom-hidden-input',
+            type: 'email',
+          },
+        ]}
+        onSubmit={async (values) => {
+          action('Form Submitted')(values);
+        }}
+        submit={{
+          contents: 'Submit',
+        }}
+      />
+    )}
+  </Story>
+</Canvas>
+
+## Sweet Container Input
+
+"Sweet container" ([honeypot](<https://en.wikipedia.org/wiki/Honeypot_(computing)>)) inputs can be used to detect bots by providing a field that would not generally be clicked by human users, but might be triggered automatically by bots.
+
+We call it a "sweet container" so that bots do not immediately detect it as a honeypot input.
+
+<Canvas>
+  <Story name="Sweet Container Input">
+    {(args) => (
+      <GridForm
+        fields={[
+          {
+            label: 'This is our sticky sweet label',
+            name: 'sweet-container',
+            type: 'sweet-container',
+          },
+          {
+            label: "There's something sticky and sweet here!",
+            name: 'custom-input',
+            type: 'email',
+          },
+        ]}
+        onSubmit={async (values) => {
+          action('Form Submitted')(values);
+        }}
+        submit={{
+          contents: 'Submit',
+        }}
+      />
+    )}
+  </Story>
+</Canvas>
+
+## `<ColorMode />`
+
+Here's an example using components in context. By toggling dark mode you can see all the colors map to a new color that is accessible for the mode by default.
+
+Please note you **cannot** use the deprecated 'business' button type with `ColorMode`.
+
+<ColorModeExample />

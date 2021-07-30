@@ -1,59 +1,17 @@
-import * as system from '@codecademy/gamut-styles/src/props';
+import { system } from '@codecademy/gamut-styles';
+import { AbstractPropTransformer } from '@codecademy/variance/dist/types/config';
 
-const { properties, variant, ...groups } = system;
+const { css, variant, states, margin, padding, ...groups } = system;
 
 export const PROP_GROUPS = groups;
 
-export const ALL_PROPS = Object.entries(properties).reduce<string[]>(
-  (carry, [key, handler]) => {
-    return [...carry, ...handler.propNames];
+export type PropGroups = keyof typeof PROP_GROUPS;
+
+export const PROP_MAP = Object.entries(groups).reduce(
+  (carry, [key, handler]: [string, typeof groups[keyof typeof groups]]) => {
+    return { ...carry, ...handler.config };
   },
-  []
+  {} as Record<string, AbstractPropTransformer>
 );
 
-export const PROP_META = {
-  fontSize: {
-    propName: 'fontSize',
-    scale: 'fontSize',
-  },
-  fontFamily: {
-    propName: 'fontFamily',
-    scale: 'fontFamily',
-  },
-  fontWeight: {
-    propName: 'fontWeight',
-    scale: 'fontWeight',
-  },
-  lineHeight: {
-    propName: 'lineHeight',
-    scale: 'lineHeight',
-  },
-  margin: {
-    propName: 'margin',
-    scale: 'spacing',
-  },
-  padding: {
-    propName: 'padding',
-    scale: 'spacing',
-  },
-  textColor: {
-    propName: 'textColor',
-    scale: 'colors',
-  },
-  backgroundColor: {
-    propName: 'backgroundColor',
-    scale: 'colors',
-  },
-  borderColor: {
-    propName: 'borderColor',
-    scale: 'colors',
-  },
-  columnGap: {
-    propName: 'columnGap',
-    scale: 'spacing',
-  },
-  rowGap: {
-    propName: 'rowGap',
-    scale: 'spacing',
-  },
-};
+export const ALL_PROPS = Object.keys(PROP_MAP);

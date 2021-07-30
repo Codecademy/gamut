@@ -1,17 +1,15 @@
 import { MiniDeleteIcon } from '@codecademy/gamut-icons';
-import { variant } from '@codecademy/gamut-styles';
-import { css } from '@emotion/react';
+import { Background, BackgroundProps, system } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React, { useMemo } from 'react';
 
+import { Box } from '../Box';
 import { IconButton, TextButton } from '../Button';
 import { Markdown } from '../Markdown';
 
-type BannerVariants = 'navy' | 'yellow';
+export type BannerVariants = 'navy' | 'yellow';
 
-export interface BannerProps {
-  className?: string;
-  /** Markdown content */
+export interface BannerProps extends Omit<BackgroundProps, 'bg'> {
   children: string;
   /** Visual variations for banners */
   variant?: BannerVariants;
@@ -21,89 +19,70 @@ export interface BannerProps {
   onCtaClick?: () => void;
 }
 
-const BannerContainer = styled.div(
-  variant({
-    navy: { textColor: 'white', backgroundColor: 'navy' },
-    yellow: { textColor: 'navy', backgroundColor: 'yellow' },
-  }),
-  ({ theme }) => css`
-    display: grid;
-    width: 100%;
-    padding: ${theme.spacing[4]};
-    column-gap: ${theme.spacing[8]};
-    grid-template-columns: 2rem 1fr 2rem;
-    align-items: center;
-    text-align: center;
-
-    &:before {
-      content: '';
-    }
-  `
+const BannerContainer = styled(Background)(
+  system.css({
+    width: '100%',
+    p: 4,
+    display: 'grid',
+    gridTemplateColumns: '2rem minmax(0, 1fr) 2rem',
+    gridTemplateAreas: "'empty content close'",
+    columnGap: 8,
+    alignItems: 'center',
+    textAlign: 'center',
+  })
 );
 
-const BannerLink = styled(TextButton)(
-  ({ theme }) => css`
-    margin: 0 ${theme.spacing[4]};
+const BannerMarkdown = styled(Markdown)(system.css({ fontSize: 'inherit' }));
 
-    &:last-of-type {
-      margin-right: 0;
-    }
-  `
-);
+const bindBannerAnchor = (onCtaClick?: BannerProps['onCtaClick']) => ({
+  allowedAttributes: ['href', 'target'],
+  component: TextButton,
+  processNode: (node: unknown, props: { onClick?: () => void }) => (
+    <TextButton
+      {...props}
+      onClick={() => {
+        onCtaClick?.();
+        props?.onClick?.();
+      }}
+      mx={4}
+      size="small"
+      target="_BLANK"
+    />
+  ),
+});
 
-const BannerContent = styled(Markdown)`
-  font-size: inherit;
-`;
-
-export const Banner: React.FC<
-  React.ComponentProps<typeof BannerContainer> & BannerProps
-> = ({
+export const Banner: React.FC<BannerProps> = ({
   children,
   variant = 'navy',
   onCtaClick,
   onClose,
   ...rest
 }: BannerProps) => {
-  const mode = variant === 'navy' ? 'dark' : 'light';
-
-  // Bind overrides with the correct props
   const overrides = useMemo(
     () => ({
-      a: {
-        allowedAttributes: ['href', 'target'],
-        processNode: (node: unknown, props: { onClick?: () => void }) => (
-          <BannerLink
-            {...props}
-            mode={mode}
-            size="small"
-            target="_BLANK"
-            onClick={() => {
-              props.onClick && props.onClick();
-              onCtaClick && onCtaClick();
-            }}
-          />
-        ),
-        component: BannerLink,
-      },
+      a: bindBannerAnchor(onCtaClick),
     }),
-    [onCtaClick, mode]
+    [onCtaClick]
   );
 
   return (
-    <BannerContainer variant={variant} {...rest}>
-      <BannerContent
-        overrides={overrides}
-        text={children}
-        skipDefaultOverrides={{ a: true }}
-      />
-      <IconButton
-        mode={mode}
-        variant="secondary"
-        size="small"
-        aria-label="dismiss"
-        icon={MiniDeleteIcon}
-        onClick={onClose}
-      />
+    <BannerContainer {...rest} bg={variant}>
+      <Box gridArea="content" fontSize="inherit">
+        <BannerMarkdown
+          overrides={overrides}
+          text={children}
+          skipDefaultOverrides={{ a: true }}
+        />
+      </Box>
+      <Box gridArea="close">
+        <IconButton
+          variant="secondary"
+          size="small"
+          aria-label="dismiss"
+          icon={MiniDeleteIcon}
+          onClick={onClose}
+        />
+      </Box>
     </BannerContainer>
   );
 };
