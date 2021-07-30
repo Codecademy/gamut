@@ -1,55 +1,58 @@
-import { StyleProps } from '@codecademy/variance';
+import {
+  states,
+  styledOptions,
+  system,
+  variant,
+} from '@codecademy/gamut-styles';
+import { StyleProps, variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
-import React from 'react';
-
-import { variant } from '@codecademy/gamut-styles';
-import { Box } from '../Box';
-
-type BadgeProps = StyleProps<typeof badgeVariants> & {
-  children?: React.ReactNode;
-};
-
-export const Badge: React.FC<BadgeProps> = ({ children, variant }) => (
-  <BadgeWrapper variant={variant}>{children}</BadgeWrapper>
-);
 
 const badgeVariants = variant({
   base: {
-    borderRadius: '40px',
-    mx: 8,
+    borderRadius: '3px',
     py: 4,
     px: 12,
-    fontSize: 16,
     fontWeight: 400,
+    display: 'inline-block',
     textAlign: 'center',
-    textColor: 'white',
     width: 'min-content',
   },
-  defaultVariant: 'default',
+  defaultVariant: 'blue',
   variants: {
-    default: {
-      bg: 'blue',
-      borderRadius: '3px',
-      textColor: 'white',
-      display: 'inline-block',
-      fontSize: 14,
-      mx: 8,
-      py: 4,
-      px: 12,
-    },
-    blueRound: {
+    blue: {
       bg: 'blue',
       textColor: 'white',
     },
-    yellowRound: {
+    yellow: {
       bg: 'feedback-warning',
       textColor: 'black',
     },
-    greyRound: {
+    grey: {
       bg: `navy-500`,
       textColor: 'white',
     },
   },
 });
 
-export const BadgeWrapper = styled(Box)(badgeVariants);
+const badgeStates = states({
+  round: {
+    borderRadius: '40px',
+  },
+});
+
+const badgeProps = variance.compose(
+  system.space,
+  system.layout,
+  system.typography
+);
+
+export interface BadgeProps
+  extends StyleProps<typeof badgeProps>,
+    StyleProps<typeof badgeVariants>,
+    StyleProps<typeof badgeStates> {}
+
+export const Badge = styled('div', styledOptions<'div'>())<BadgeProps>(
+  badgeProps,
+  badgeVariants,
+  badgeStates
+);
