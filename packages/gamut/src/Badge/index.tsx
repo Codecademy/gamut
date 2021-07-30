@@ -51,7 +51,7 @@ export interface BadgeProps
     StyleProps<typeof badgeVariants>,
     StyleProps<typeof badgeStates> {}
 
-export const Badge = styled('div', styledOptions<'div'>())<BadgeProps>(
+export const Badge = styled('div', styledOptions)<BadgeProps>(
   badgeProps,
   badgeVariants,
   badgeStates
