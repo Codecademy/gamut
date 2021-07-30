@@ -1026,7 +1026,7 @@ We call it a "sweet container" so that bots do not immediately detect it as a ho
 
 ## Markdown Errors
 
-GridForm can optionally render errors through our <LinkTo id="atoms-markdown--basics">Markdown</LinkTo> component and our `markdown` prop.
+GridForm renders errors through our <LinkTo id="atoms-markdown--basics">Markdown</LinkTo> component so we can optionally add markdown to our validation messages.
 
 <Canvas>
   <Story name="Markdown Errors">
@@ -1040,7 +1040,6 @@ GridForm can optionally render errors through our <LinkTo id="atoms-markdown--ba
             validation: {
               required:
                 'This is [an example](https://www.youtube.com/watch?v=5IuRzJRrRpQ) error link.',
-              markdown: true,
             },
           },
         ]}

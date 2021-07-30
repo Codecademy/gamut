@@ -1,6 +1,9 @@
+import { css } from '@codecademy/gamut-styles';
+import styled from '@emotion/styled';
 import React from 'react';
 import { UseFormMethods } from 'react-hook-form';
 
+import { Anchor } from '../../Anchor';
 import { FormError, FormGroup, FormGroupLabel } from '../../Form';
 import { HiddenText } from '../../HiddenText';
 import { Column } from '../../Layout';
@@ -19,6 +22,12 @@ import { GridFormSelectInput } from './GridFormSelectInput';
 import { GridFormSweetContainerInput } from './GridFormSweetContainerInput';
 import { GridFormTextArea } from './GridFormTextArea';
 import { GridFormTextInput } from './GridFormTextInput';
+
+const ErrorAnchor = styled(Anchor)(
+  css({
+    color: 'feedback-error',
+  })
+);
 
 export type GridFormInputGroupProps = {
   error?: string;
@@ -163,7 +172,17 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
             aria-live={isFirstError ? 'assertive' : 'off'}
             variant="absolute"
           >
-            <Markdown inline text={error} spacing="none" />
+            <Markdown
+              overrides={{
+                a: {
+                  component: (props: any) => <ErrorAnchor {...props} />,
+                },
+              }}
+              skipDefaultOverrides={{ a: true }}
+              inline
+              text={error}
+              spacing="none"
+            />
           </FormError>
         )}
       </FormGroup>
