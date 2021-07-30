@@ -175,12 +175,12 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
             <Markdown
               overrides={{
                 a: {
-                  component: (props: any) => <ErrorAnchor {...props} />,
+                  component: ErrorAnchor,
                 },
               }}
               skipDefaultOverrides={{ a: true }}
               inline
-              text={error}
+              text={errorMessage}
               spacing="none"
             />
           </FormError>
