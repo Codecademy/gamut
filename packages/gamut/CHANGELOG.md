@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [35.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@35.4.4...@codecademy/gamut@35.5.0) (2021-08-02)
+
+
+### Features
+
+* Badge Variants ([2ec8996](https://github.com/Codecademy/client-modules/commit/2ec8996aa1e26fd182589bf10aef08e5f585ec6e))
+
+
+
 ### [35.4.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@35.4.3...@codecademy/gamut@35.4.4) (2021-07-30)
 
 
