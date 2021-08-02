@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [42.4.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@42.4.0...@codecademy/styleguide@42.4.1) (2021-08-02)
+
+
+### Bug Fixes
+
+* Fix box stories ([fd2e554](https://github.com/Codecademy/client-modules/commit/fd2e5542467c6ec7d466bf42617f766b50f179c6))
+
+
+
 ## [42.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@42.3.8...@codecademy/styleguide@42.4.0) (2021-08-02)
 
 
