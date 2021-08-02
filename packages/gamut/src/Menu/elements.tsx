@@ -63,8 +63,7 @@ List.defaultProps = {
 const interactiveVariants = system.variant({
   base: {
     display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
+    alignItems: 'center',
     cursor: 'pointer',
     width: 1,
     zIndex: 1,
