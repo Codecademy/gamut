@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [42.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@42.3.8...@codecademy/styleguide@42.4.0) (2021-08-02)
+
+
+### Features
+
+* add custom error messaging ([8d5dc0e](https://github.com/Codecademy/client-modules/commit/8d5dc0e20508c141cc7a9ada5bdb421483afe771))
+
+
+
 ### [42.3.8](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@42.3.7...@codecademy/styleguide@42.3.8) (2021-08-02)
 
 **Note:** Version bump only for package @codecademy/styleguide
