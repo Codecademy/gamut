@@ -1,4 +1,4 @@
-import { Box, Menu } from '@codecademy/gamut';
+import { Box } from '@codecademy/gamut';
 import React from 'react';
 
 import { AppHeaderLinkMobile } from '../../../AppHeaderMobile/AppHeaderLinkMobile';
@@ -18,7 +18,7 @@ export const AppHeaderLinkSections: React.FC<AppHeaderLinkSectionsProps> = ({
   item,
 }) => {
   return (
-    <Menu variant="action" border="none">
+    <Box>
       {item.type === 'profile-dropdown'
         ? item.popover.map((linkSection: AppHeaderLinkItem[], sectionIndex) => {
             return linkSection.map((link: AppHeaderLinkItem, linkIndex) => {
@@ -37,6 +37,6 @@ export const AppHeaderLinkSections: React.FC<AppHeaderLinkSectionsProps> = ({
               <AppHeaderLinkMobile action={action} item={link} key={link.id} />
             );
           })}
-    </Menu>
+    </Box>
   );
 };
