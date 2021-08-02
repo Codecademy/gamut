@@ -3,11 +3,11 @@ import styled from '@emotion/styled';
 import React from 'react';
 import { UseFormMethods } from 'react-hook-form';
 
-import { Anchor } from '../../Anchor';
 import { FormError, FormGroup, FormGroupLabel } from '../../Form';
 import { HiddenText } from '../../HiddenText';
 import { Column } from '../../Layout';
 import { Markdown } from '../../Markdown';
+import { MarkdownAnchor } from '../../Markdown/libs/overrides/MarkdownAnchor';
 import {
   GridFormField,
   GridFormHiddenField,
@@ -23,7 +23,7 @@ import { GridFormSweetContainerInput } from './GridFormSweetContainerInput';
 import { GridFormTextArea } from './GridFormTextArea';
 import { GridFormTextInput } from './GridFormTextInput';
 
-const ErrorAnchor = styled(Anchor)(
+const ErrorAnchor = styled(MarkdownAnchor)(
   css({
     color: 'feedback-error',
   })
