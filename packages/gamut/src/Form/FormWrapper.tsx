@@ -12,6 +12,8 @@ export type FormWrapperProps<Values extends {}> = {
    */
   onSubmit: SubmitHandler<Values>;
 
+  defaultValues?: FormValues;
+
   /**
    * Which react hook form mode we are going to use for validation.
    * If you use the onChange mode the submit button will be disabled until all
@@ -23,9 +25,13 @@ export type FormWrapperProps<Values extends {}> = {
 export function FormWrapper<Values extends FormValues>({
   children,
   onSubmit,
+  defaultValues,
   validation = 'onSubmit',
 }: FormWrapperProps<Values>) {
-  const { handleSubmit, formState, ...methods } = useForm({ mode: validation });
+  const { handleSubmit, formState, ...methods } = useForm({
+    defaultValues,
+    mode: validation,
+  });
 
   return (
     <FormProvider
