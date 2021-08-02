@@ -3,11 +3,11 @@ import styled from '@emotion/styled';
 import React from 'react';
 import { UseFormMethods } from 'react-hook-form';
 
+import { Anchor } from '../../Anchor';
 import { FormError, FormGroup, FormGroupLabel } from '../../Form';
 import { HiddenText } from '../../HiddenText';
 import { Column } from '../../Layout';
 import { Markdown } from '../../Markdown';
-import { MarkdownAnchor } from '../../Markdown/libs/overrides/MarkdownAnchor';
 import {
   GridFormField,
   GridFormHiddenField,
@@ -23,7 +23,7 @@ import { GridFormSweetContainerInput } from './GridFormSweetContainerInput';
 import { GridFormTextArea } from './GridFormTextArea';
 import { GridFormTextInput } from './GridFormTextInput';
 
-const ErrorAnchor = styled(MarkdownAnchor)(
+const ErrorAnchor = styled(Anchor)(
   css({
     color: 'feedback-error',
   })
@@ -175,7 +175,12 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
             <Markdown
               overrides={{
                 a: {
+                  allowedAttributes: ['href', 'target'],
                   component: ErrorAnchor,
+                  processNode: (
+                    node: unknown,
+                    props: { onClick?: () => void }
+                  ) => <ErrorAnchor {...props} />,
                 },
               }}
               skipDefaultOverrides={{ a: true }}
