@@ -16,7 +16,7 @@ export type FormWrapperProps<Values extends {}> = {
    * If you use the onChange mode the submit button will be disabled until all
    * required fields are completed.
    */
-  validation?: Exclude<Mode, 'onBlur'>;
+  validation?: Mode;
 };
 export function FormWrapper<
   Values extends Record<string, boolean | string | undefined | FileList>
