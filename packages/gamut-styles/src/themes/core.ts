@@ -31,7 +31,7 @@ export const coreTheme = createTheme({
     light: {
       text: { _: 'navy-800', disabled: 'navy-500' },
       feedback: {
-        error: 'red-500',
+        error: 'red-600',
         success: 'green-700',
         warning: 'yellow',
       },
@@ -57,7 +57,7 @@ export const coreTheme = createTheme({
       },
       danger: {
         _: 'red-500',
-        hover: 'red-400',
+        hover: 'red-600',
       },
     },
     dark: {
