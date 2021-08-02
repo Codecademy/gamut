@@ -63,6 +63,7 @@ GridForm provides the following benefits:
             type: 'select',
             validation: {
               required: 'Please select an option',
+              markdown: true,
             },
           },
           {
@@ -1010,6 +1011,36 @@ We call it a "sweet container" so that bots do not immediately detect it as a ho
             label: "There's something sticky and sweet here!",
             name: 'custom-input',
             type: 'email',
+          },
+        ]}
+        onSubmit={async (values) => {
+          action('Form Submitted')(values);
+        }}
+        submit={{
+          contents: 'Submit',
+        }}
+      />
+    )}
+  </Story>
+</Canvas>
+
+## Markdown Errors
+
+GridForm renders errors through our <LinkTo id="atoms-markdown--basics">Markdown</LinkTo> component so we can optionally add markdown to our validation messages.
+
+<Canvas>
+  <Story name="Markdown Errors">
+    {(args) => (
+      <GridForm
+        fields={[
+          {
+            label: 'there is a markdown error here!',
+            name: 'markdown-error',
+            type: 'email',
+            validation: {
+              required:
+                'This is [an example](https://www.youtube.com/watch?v=5IuRzJRrRpQ) error link.',
+            },
           },
         ]}
         onSubmit={async (values) => {
