@@ -1,3 +1,4 @@
+import { GamutIconProps } from '@codecademy/gamut-icons';
 import React, { ComponentProps, MutableRefObject } from 'react';
 
 import { ListItem, ListItemProps, ListLink, ListLinkProps } from './elements';
@@ -16,8 +17,9 @@ export const MenuItem = React.forwardRef<
     'variant' | 'selected' | 'active-navlink'
   > & {
     href?: string;
+    icon?: React.ComponentType<GamutIconProps>;
   }
->(({ href, children, active, ...props }, ref) => {
+>(({ href, children, active, icon: Icon, ...props }, ref) => {
   const { variant, ...rest } = useMenuContext();
   const activeProp = activePropnames[variant];
   const computed = {
@@ -28,13 +30,20 @@ export const MenuItem = React.forwardRef<
     [activeProp]: active,
   } as ListItemProps;
 
+  const content = (
+    <>
+      {Icon && <Icon size={20} mr={12} />}
+      {children}
+    </>
+  );
+
   if (href) {
     const linkRef = ref as MutableRefObject<HTMLAnchorElement>;
 
     return (
       <ListItem role="none">
         <ListLink {...(computed as ListLinkProps)} href={href} ref={linkRef}>
-          {children}
+          {content}
         </ListLink>
       </ListItem>
     );
@@ -44,7 +53,7 @@ export const MenuItem = React.forwardRef<
 
   return (
     <ListItem {...computed} ref={liRef}>
-      {children}
+      {content}
     </ListItem>
   );
 });

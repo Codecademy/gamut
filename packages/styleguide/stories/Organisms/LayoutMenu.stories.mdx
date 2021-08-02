@@ -1,9 +1,5 @@
-import { Box } from '@codecademy/gamut';
-import {
-  LayoutMenu,
-  SectionItemLink,
-  SelectedSectionItem,
-} from '@codecademy/gamut-labs/src';
+import { Menu, MenuItem } from '@codecademy/gamut';
+import { LayoutMenu } from '@codecademy/gamut-labs/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
@@ -83,25 +79,28 @@ You can show what page we are on in the menu by passing in the `selectedItem` pr
 
 ## With Additional Links
 
-Additional links outside of an accordion can be added as `children`. You can use the `SectionItemLink` component (pass an `onClick` prop and link text as `children`) to match the styling of the accordion items. You can also use the `SelectedSectionItem` component (pass text as `children`) to match the styling of a selected item.
+Additional links outside of an accordion can be added as `children`. You can use the `MenuItem` component (pass an `onClick` prop and link text as `children`) to match the styling of the accordion items. You can also use the `active` prop is.
 
 <Canvas>
   <Story name="With Additional Links">
     {(args) => (
       <LayoutMenu {...args}>
-        <Box pb={32}>
-          <SelectedSectionItem>Full Catalog</SelectedSectionItem>
-        </Box>
-        <Box pb={32}>
-          <SectionItemLink
+        <Menu variant="navigation" minWidth="max-content" border="none" pb={32}>
+          <MenuItem px={4} active>
+            Full Catalog
+          </MenuItem>
+        </Menu>
+        <Menu variant="navigation" minWidth="max-content" pb={32} border="none">
+          <MenuItem
+            px={4}
             onClick={() =>
               (window.location.href =
                 'https://www.codecademy.com/explore/sorting-quiz')
             }
           >
             Where do I begin?
-          </SectionItemLink>
-        </Box>
+          </MenuItem>
+        </Menu>
       </LayoutMenu>
     )}
   </Story>
