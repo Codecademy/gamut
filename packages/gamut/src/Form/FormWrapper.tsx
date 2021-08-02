@@ -2,6 +2,7 @@ import React from 'react';
 import { FormProvider, Mode, SubmitHandler, useForm } from 'react-hook-form';
 
 import { Form } from '../Form';
+import { FormValues } from './types';
 
 export type FormWrapperProps<Values extends {}> = {
   children?: React.ReactNode;
@@ -18,9 +19,12 @@ export type FormWrapperProps<Values extends {}> = {
    */
   validation?: Mode;
 };
-export function FormWrapper<
-  Values extends Record<string, boolean | string | undefined | FileList>
->({ children, onSubmit, validation = 'onSubmit' }: FormWrapperProps<Values>) {
+
+export function FormWrapper<Values extends FormValues>({
+  children,
+  onSubmit,
+  validation = 'onSubmit',
+}: FormWrapperProps<Values>) {
   const { handleSubmit, formState, ...methods } = useForm({ mode: validation });
 
   return (

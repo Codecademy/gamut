@@ -3,6 +3,7 @@ import { FormProvider, Mode, SubmitHandler, useForm } from 'react-hook-form';
 
 import { ButtonProps } from '../Button/shared';
 import { Form } from '../Form';
+import { FormValues } from '../Form/types';
 import { LayoutGrid, LayoutGridProps } from '../Layout';
 import { GridFormButtons, GridFormSubmitProps } from './GridFormButtons';
 import {
@@ -82,9 +83,7 @@ export type GridFormProps<Values extends {}> = {
   validation?: Exclude<Mode, 'onBlur'>;
 };
 
-export function GridForm<
-  Values extends Record<string, boolean | string | undefined | FileList>
->({
+export function GridForm<Values extends FormValues>({
   cancel,
   children,
   className,
