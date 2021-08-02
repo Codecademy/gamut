@@ -32,7 +32,7 @@ export const MenuItem = React.forwardRef<
 
   const content = (
     <>
-      {Icon && <Icon size={20} mr={12} />}
+      {Icon && <Icon size={rest.spacing === 'condensed' ? 20 : 24} mr={12} />}
       {children}
     </>
   );
