@@ -19,6 +19,7 @@ export const LogoProCutoutTransparent: React.FC<LogoProCutoutTransparent> = ({
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
     aria-label={ariaLabel}
+    role="img"
   >
     <path
       d="M6.698 7.16199C6.474 7.37665 6.15666 7.48401 5.746 7.48401H3.94V4.88H5.746C6.15666 4.88 6.474 4.9873 6.698 5.20203C6.922 5.41669 7.034 5.74335 7.034 6.18201C7.034 6.62067 6.922 6.94733 6.698 7.16199Z"
