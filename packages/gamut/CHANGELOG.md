@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [35.8.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@35.7.1...@codecademy/gamut@35.8.0) (2021-08-03)
+
+
+### Features
+
+* **ProLabel:** Changes text color to 'background-current' ([6548dc2](https://github.com/Codecademy/client-modules/commit/6548dc297c73e817896ecc654f6f84382ff99672))
+
+
+
 ### [35.7.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@35.7.0...@codecademy/gamut@35.7.1) (2021-08-03)
 
 **Note:** Version bump only for package @codecademy/gamut
