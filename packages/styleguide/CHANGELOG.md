@@ -3,6 +3,58 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [42.6.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@42.6.2...@codecademy/styleguide@42.6.3) (2021-08-03)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [42.6.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@42.6.1...@codecademy/styleguide@42.6.2) (2021-08-03)
+
+
+### Bug Fixes
+
+* **Testimonial:** Fixes visual regression + renames to TestimonialDeprecated ([11d445f](https://github.com/Codecademy/client-modules/commit/11d445fbf95ae28d124ec27d5a88fbf3200c5535))
+
+
+
+### [42.6.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@42.6.0...@codecademy/styleguide@42.6.1) (2021-08-03)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [42.6.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@42.5.0...@codecademy/styleguide@42.6.0) (2021-08-03)
+
+
+### Features
+
+* **Background:** Set current background color to local CSS variable GM-259 ([bbb71e6](https://github.com/Codecademy/client-modules/commit/bbb71e6ef4a0b8d7d10409f81f936693a7b34962))
+
+
+
+## [42.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@42.4.1...@codecademy/styleguide@42.5.0) (2021-08-03)
+
+
+### Features
+
+* **Menu:** Add icon support and convert DropdownButton to use action menus GM-301 ([2b9ca76](https://github.com/Codecademy/client-modules/commit/2b9ca7657630b099c77d84bf1324371ebcf492f8))
+
+
+
+### [42.4.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@42.4.0...@codecademy/styleguide@42.4.1) (2021-08-02)
+
+
+### Bug Fixes
+
+* Fix box stories ([fd2e554](https://github.com/Codecademy/client-modules/commit/fd2e5542467c6ec7d466bf42617f766b50f179c6))
+
+
+
 ## [42.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@42.3.8...@codecademy/styleguide@42.4.0) (2021-08-02)
 
 
