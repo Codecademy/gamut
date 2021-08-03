@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [35.10.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@35.9.0...@codecademy/gamut@35.10.0) (2021-08-03)
+
+
+### Features
+
+* FormWrapper ([b84cb2d](https://github.com/Codecademy/client-modules/commit/b84cb2d4390333878d34a424e71d2105753e629f))
+
+
+
 ## [35.9.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@35.8.0...@codecademy/gamut@35.9.0) (2021-08-03)
 
 
