@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [35.7.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@35.6.0...@codecademy/gamut@35.7.0) (2021-08-03)
+
+
+### Features
+
+* **Menu:** Add icon support and convert DropdownButton to use action menus GM-301 ([2b9ca76](https://github.com/Codecademy/client-modules/commit/2b9ca7657630b099c77d84bf1324371ebcf492f8))
+
+
+
 ## [35.6.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@35.5.0...@codecademy/gamut@35.6.0) (2021-08-02)
 
 
