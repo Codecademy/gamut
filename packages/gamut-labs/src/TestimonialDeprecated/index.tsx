@@ -77,7 +77,7 @@ const QuoteText = styled.q`
   line-height: ${({ theme }) => theme.lineHeight.base};
 `;
 
-export type TestimonialProps = {
+export type TestimonialDeprecatedProps = {
   firstName: string;
   lastName: string;
   occupation: string;
@@ -98,8 +98,13 @@ export type TestimonialProps = {
   href?: string;
   onClick?: () => void;
 };
+/**
+ * @deprecated  This component is deprecated and will be updated soon.
+ *
+ * Please check the gamut board for updates on the new version of Testimonial
+ */
 
-export const Testimonial: React.FC<TestimonialProps> = ({
+export const TestimonialDeprecated: React.FC<TestimonialDeprecatedProps> = ({
   firstName,
   lastName,
   occupation,
@@ -126,14 +131,13 @@ export const Testimonial: React.FC<TestimonialProps> = ({
             px={{ _: 24 }}
             pt={{ _: 32 }}
             pb={{ _: 48 }}
-            flexDirection="row"
             flexWrap="wrap"
             alignItems="start"
             textColor={mode === 'dark' ? 'beige' : 'navy'}
           >
-            <FlexBox flexWrap="wrap" flexGrow={1} flexBasis="0">
+            <FlexBox flexDirection="column">
               {imageUrl && (
-                <Box width="77px" height="77px" mb={16} mr={16}>
+                <Box width="77px" height="77px" mb={48} mr={16}>
                   <Avatar alt="" src={imageUrl} mode={mode} />
                 </Box>
               )}
