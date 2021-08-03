@@ -8,9 +8,9 @@ import {
 import {
   communityDropdown,
   courseCatalog,
+  favorites,
   forBusiness,
   freeProfile,
-  favorites,
   login,
   logo,
   myHome,
