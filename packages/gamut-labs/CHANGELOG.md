@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [19.18.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.18.3...@codecademy/gamut-labs@19.18.4) (2021-08-03)
+
+
+### Bug Fixes
+
+* add img role to ProLogo to improve voiceover ([29208c4](https://github.com/Codecademy/client-modules/commit/29208c4da07707188dba61fe7e9e19ed1833e063))
+
+
+
 ### [19.18.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.18.2...@codecademy/gamut-labs@19.18.3) (2021-08-03)
 
 **Note:** Version bump only for package @codecademy/gamut-labs
