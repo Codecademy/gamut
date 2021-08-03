@@ -1,3 +1,4 @@
+import { MultipleUsersIcon } from '@codecademy/gamut-icons';
 import { setupRtl } from '@codecademy/gamut-tests';
 import { screen } from '@testing-library/react';
 import React from 'react';
@@ -69,5 +70,18 @@ describe('Menu', () => {
 
     screen.getByRole('none');
     screen.getByRole('menuitem');
+  });
+  it('renders and icon only when specified', () => {
+    renderView({
+      children: <MenuItem>Cool Town</MenuItem>,
+    });
+
+    expect(screen.queryByTestId('menuitem-icon')).toBeNull();
+
+    renderView({
+      children: <MenuItem icon={MultipleUsersIcon}>Cool Town</MenuItem>,
+    });
+
+    screen.getByTestId('menuitem-icon');
   });
 });
