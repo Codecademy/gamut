@@ -6,7 +6,7 @@ import {
 } from '@codecademy/variance';
 import { CSSObject, Theme, ThemeProvider, useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
-import { mapValues } from 'lodash';
+import { mapValues, pick } from 'lodash';
 import React, { ComponentProps, forwardRef, useMemo } from 'react';
 
 import {
@@ -28,7 +28,7 @@ export type ColorAlias = keyof ColorModeShape;
 
 export type ColorModeProps = {
   mode: ColorModes;
-  bg?: keyof Theme['colors'];
+  bg?: Colors;
   className?: string;
 };
 
@@ -81,32 +81,48 @@ export const VariableProvider = styled(
 
 export const ColorMode = forwardRef<
   HTMLDivElement,
-  ColorModeProps & ComponentProps<typeof VariableProvider>
->(({ mode, alwaysSetVariables, ...rest }, ref) => {
+  Omit<ComponentProps<typeof VariableProvider>, 'bg'> & ColorModeProps
+>(({ mode, alwaysSetVariables, bg, ...rest }, ref) => {
   const theme = useTheme();
   const { modes, mode: active, colors } = theme;
-  const { variables } = useMemo(
-    () =>
-      serializeTokens(
-        mapValues(modes[mode], (color) => colors[color]),
-        'color',
-        theme
-      ),
-    [colors, mode, modes, theme]
-  );
+  const contextBg = bg ? 'background-current' : undefined;
+
+  /** Serialize color variables for the current mode
+   * 1. If all variables are requried add all mode variables to the current context
+   * 2. If the user has specified a background color - set that color to the current-bg
+   * 3. If not
+   */
+  const { variables } = useMemo(() => {
+    return serializeTokens(
+      mapValues(modes[mode], (color, key) => {
+        if (key === 'background-current' && typeof bg !== 'undefined') {
+          return colors[bg];
+        }
+        return colors[color];
+      }),
+      'color',
+      theme
+    );
+  }, [colors, mode, modes, theme, bg]);
+
   if (active === mode) {
+    const vars = alwaysSetVariables
+      ? variables
+      : pick(variables, ['--color-background-current']);
+
     return (
-      <VariableProvider
-        {...rest}
-        ref={ref}
-        variables={alwaysSetVariables ? variables : undefined}
-      />
+      <VariableProvider {...rest} variables={vars} bg={contextBg} ref={ref} />
     );
   }
 
   return (
     <ThemeProvider theme={{ mode }}>
-      <VariableProvider variables={variables} {...rest} ref={ref} />
+      <VariableProvider
+        {...rest}
+        variables={variables}
+        bg={contextBg}
+        ref={ref}
+      />
     </ThemeProvider>
   );
 });

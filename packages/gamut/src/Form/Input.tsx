@@ -81,15 +81,15 @@ const InputElement = styled.input<StyledInputProps>`
 
 const inputStates = {
   error: {
-    color: 'red',
+    color: 'feedback-error',
     icon: AlertIcon,
   },
   valid: {
-    color: 'green',
+    color: 'feedback-success',
     icon: CheckCircledIcon,
   },
   clean: {
-    color: 'gray-600',
+    color: 'text',
     icon: undefined,
   },
 } as const;
@@ -127,7 +127,7 @@ export const Input = forwardRef<HTMLInputElement, InputWrapperProps>(
       <Box
         display={rest.type === 'hidden' ? 'none' : undefined}
         position="relative"
-        textColor={color}
+        color={color}
       >
         <AsComponent
           {...rest}

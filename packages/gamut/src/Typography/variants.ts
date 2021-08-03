@@ -75,6 +75,8 @@ export const typographyElementVariants = {
     display: 'inline-block',
   },
   div: {},
+  figcaption: {},
+  label: {},
 } as const;
 
 export const typographyUtilities = {

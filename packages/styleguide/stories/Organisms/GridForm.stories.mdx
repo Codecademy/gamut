@@ -14,6 +14,8 @@ import { useState } from '@storybook/addons';
 
 import { LinkTo } from '~styleguide/blocks';
 
+import { ColorModeExample } from './examples';
+
 <Meta
   title={title}
   component={GridForm}
@@ -61,6 +63,7 @@ GridForm provides the following benefits:
             type: 'select',
             validation: {
               required: 'Please select an option',
+              markdown: true,
             },
           },
           {
@@ -112,6 +115,7 @@ GridForm provides the following benefits:
             size: 3,
             type: 'checkbox',
             id: 'my-super-cool-id',
+            defaultValue: true,
           },
           {
             label: 'Preferred Modern Artist',
@@ -381,7 +385,7 @@ value of left, center, right, or stretch.
 
 ## Submit Button Options
 
-We can specify the version of our button by passing the type prop. WE can choose between
+We can specify the version of our button by passing the type prop. We can choose between
 the <LinkTo id="atoms-button--fill-button">`FillButton`</LinkTo> or <LinkTo id="atoms-button--cta-button">`CTAButton`</LinkTo>.
 
 <Canvas>
@@ -1019,3 +1023,41 @@ We call it a "sweet container" so that bots do not immediately detect it as a ho
     )}
   </Story>
 </Canvas>
+
+## Markdown Errors
+
+GridForm renders errors through our <LinkTo id="atoms-markdown--basics">Markdown</LinkTo> component so we can optionally add markdown to our validation messages.
+
+<Canvas>
+  <Story name="Markdown Errors">
+    {(args) => (
+      <GridForm
+        fields={[
+          {
+            label: 'there is a markdown error here!',
+            name: 'markdown-error',
+            type: 'email',
+            validation: {
+              required:
+                'This is [an example](https://www.youtube.com/watch?v=5IuRzJRrRpQ) error link.',
+            },
+          },
+        ]}
+        onSubmit={async (values) => {
+          action('Form Submitted')(values);
+        }}
+        submit={{
+          contents: 'Submit',
+        }}
+      />
+    )}
+  </Story>
+</Canvas>
+
+## `<ColorMode />`
+
+Here's an example using components in context. By toggling dark mode you can see all the colors map to a new color that is accessible for the mode by default.
+
+Please note you **cannot** use the deprecated 'business' button type with `ColorMode`.
+
+<ColorModeExample />

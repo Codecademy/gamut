@@ -88,7 +88,7 @@ export const Toast: React.FC<ToastProps> = ({
   };
 
   return (
-    <ToastContainer role="status" layout={layoutType} pattern="checkerDense">
+    <ToastContainer role="status" layout={layoutType}>
       {renderIcon()}
       <Box gridArea="message" py={4}>
         {title && (

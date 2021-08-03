@@ -1,9 +1,13 @@
+import { css } from '@codecademy/gamut-styles';
+import styled from '@emotion/styled';
 import React from 'react';
 import { UseFormMethods } from 'react-hook-form';
 
+import { Anchor } from '../../Anchor';
 import { FormError, FormGroup, FormGroupLabel } from '../../Form';
 import { HiddenText } from '../../HiddenText';
 import { Column } from '../../Layout';
+import { Markdown } from '../../Markdown';
 import {
   GridFormField,
   GridFormHiddenField,
@@ -18,6 +22,12 @@ import { GridFormSelectInput } from './GridFormSelectInput';
 import { GridFormSweetContainerInput } from './GridFormSweetContainerInput';
 import { GridFormTextArea } from './GridFormTextArea';
 import { GridFormTextInput } from './GridFormTextInput';
+
+const ErrorAnchor = styled(Anchor)(
+  css({
+    color: 'feedback-error',
+  })
+);
 
 export type GridFormInputGroupProps = {
   error?: string;
@@ -45,11 +55,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
     switch (field.type) {
       case 'checkbox':
         return (
-          <GridFormCheckboxInput
-            field={field}
-            register={register}
-            showRequired={isRequired}
-          />
+          <GridFormCheckboxInput field={field} showRequired={isRequired} />
         );
 
       case 'custom':
@@ -70,6 +76,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
             register={register}
             showRequired={isRequired}
             setValue={setValue}
+            error={!!errorMessage}
           />
         );
 
@@ -163,8 +170,24 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
           <FormError
             role={isFirstError ? 'alert' : 'status'}
             aria-live={isFirstError ? 'assertive' : 'off'}
+            variant="absolute"
           >
-            {errorMessage}
+            <Markdown
+              overrides={{
+                a: {
+                  allowedAttributes: ['href', 'target'],
+                  component: ErrorAnchor,
+                  processNode: (
+                    node: unknown,
+                    props: { onClick?: () => void }
+                  ) => <ErrorAnchor {...props} />,
+                },
+              }}
+              skipDefaultOverrides={{ a: true }}
+              inline
+              text={errorMessage}
+              spacing="none"
+            />
           </FormError>
         )}
       </FormGroup>
