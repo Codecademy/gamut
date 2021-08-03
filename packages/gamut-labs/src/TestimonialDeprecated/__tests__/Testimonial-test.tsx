@@ -1,6 +1,6 @@
 import { setupEnzyme } from '@codecademy/gamut-tests';
 
-import { Testimonial } from '..';
+import { TestimonialDeprecated } from '..';
 
 const exampleTestmonial = {
   firstName: 'Frank',
@@ -11,7 +11,7 @@ const exampleTestmonial = {
 };
 
 describe('Testimonial', () => {
-  const renderWrapper = setupEnzyme(Testimonial, {
+  const renderWrapper = setupEnzyme(TestimonialDeprecated, {
     ...exampleTestmonial,
   });
 

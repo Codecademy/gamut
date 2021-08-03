@@ -3,6 +3,59 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [35.9.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@35.8.0...@codecademy/gamut@35.9.0) (2021-08-03)
+
+
+### Features
+
+* Hyper Badge Variant ([0c83443](https://github.com/Codecademy/client-modules/commit/0c83443eba41d782ddf0f7604f921ea6e2d45f19))
+
+
+
+## [35.8.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@35.7.1...@codecademy/gamut@35.8.0) (2021-08-03)
+
+
+### Features
+
+* **ProLabel:** Changes text color to 'background-current' ([6548dc2](https://github.com/Codecademy/client-modules/commit/6548dc297c73e817896ecc654f6f84382ff99672))
+
+
+
+### [35.7.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@35.7.0...@codecademy/gamut@35.7.1) (2021-08-03)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [35.7.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@35.6.0...@codecademy/gamut@35.7.0) (2021-08-03)
+
+
+### Features
+
+* **Menu:** Add icon support and convert DropdownButton to use action menus GM-301 ([2b9ca76](https://github.com/Codecademy/client-modules/commit/2b9ca7657630b099c77d84bf1324371ebcf492f8))
+
+
+
+## [35.6.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@35.5.0...@codecademy/gamut@35.6.0) (2021-08-02)
+
+
+### Features
+
+* add custom error messaging ([8d5dc0e](https://github.com/Codecademy/client-modules/commit/8d5dc0e20508c141cc7a9ada5bdb421483afe771))
+
+
+
+## [35.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@35.4.4...@codecademy/gamut@35.5.0) (2021-08-02)
+
+
+### Features
+
+* Badge Variants ([2ec8996](https://github.com/Codecademy/client-modules/commit/2ec8996aa1e26fd182589bf10aef08e5f585ec6e))
+
+
+
 ### [35.4.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@35.4.3...@codecademy/gamut@35.4.4) (2021-07-30)
 
 

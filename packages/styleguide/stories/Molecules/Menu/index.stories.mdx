@@ -5,6 +5,7 @@ import {
   MenuItem,
   MenuSeparator,
 } from '@codecademy/gamut';
+import { MultipleUsersIcon } from '@codecademy/gamut-icons';
 import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
@@ -33,7 +34,7 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
         <MenuItem>Menu Item</MenuItem>
         <MenuItem active>Active Item</MenuItem>
         <MenuSeparator />
-        <MenuItem>Menu Item</MenuItem>
+        <MenuItem icon={MultipleUsersIcon}>Icon Item</MenuItem>
         <MenuItem>Menu Item</MenuItem>
       </>
     ),

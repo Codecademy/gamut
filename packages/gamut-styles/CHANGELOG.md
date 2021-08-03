@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [11.7.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@11.6.3...@codecademy/gamut-styles@11.7.0) (2021-08-03)
+
+
+### Features
+
+* **Background:** Set current background color to local CSS variable GM-259 ([bbb71e6](https://github.com/Codecademy/client-modules/commit/bbb71e6ef4a0b8d7d10409f81f936693a7b34962))
+
+
+
 ### [11.6.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@11.6.2...@codecademy/gamut-styles@11.6.3) (2021-07-29)
 
 

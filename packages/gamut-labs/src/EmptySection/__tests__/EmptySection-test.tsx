@@ -12,7 +12,7 @@ const renderView = setupRtl(EmptySection, {
   headingText,
   bodyText,
   illustration: NumberBlocks,
-  innerBGColor: 'white',
+  stretchDirection: 'left',
   children: <FillButton href="">Do it!</FillButton>,
 });
 
