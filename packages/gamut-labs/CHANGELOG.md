@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [19.19.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.18.5...@codecademy/gamut-labs@19.19.0) (2021-08-03)
+
+
+### Features
+
+* **Favorites:** allow global header to receive favorites section ([f1d45fc](https://github.com/Codecademy/client-modules/commit/f1d45fc444f6858db69b6031511ea9d33ff9fa42))
+
+
+
 ### [19.18.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.18.4...@codecademy/gamut-labs@19.18.5) (2021-08-03)
 
 **Note:** Version bump only for package @codecademy/gamut-labs
