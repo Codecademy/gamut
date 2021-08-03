@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [35.9.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@35.8.0...@codecademy/gamut@35.9.0) (2021-08-03)
+
+
+### Features
+
+* Hyper Badge Variant ([0c83443](https://github.com/Codecademy/client-modules/commit/0c83443eba41d782ddf0f7604f921ea6e2d45f19))
+
+
+
 ## [35.8.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@35.7.1...@codecademy/gamut@35.8.0) (2021-08-03)
 
 
