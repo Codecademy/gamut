@@ -1,12 +1,12 @@
 import { Box, GridBox } from '@codecademy/gamut/src';
-import { Testimonial } from '@codecademy/gamut-labs/src';
+import { TestimonialDeprecated } from '@codecademy/gamut-labs/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 
 <Meta
   title={title}
-  component={Testimonial}
+  component={TestimonialDeprecated}
   args={{
     firstName: 'Lacey',
     lastName: 'Bathala',
@@ -30,7 +30,9 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 />
 
 <Canvas withSource="open">
-  <Story name="Testimonial">{(args) => <Testimonial {...args} />}</Story>
+  <Story name="TestimonialDeprecated">
+    {(args) => <TestimonialDeprecated {...args} />}
+  </Story>
 </Canvas>
 
 <PropsTable story="Testimonial" />
@@ -45,9 +47,9 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
         columnGap={32}
         gridTemplateColumns={{ base: '1fr', sm: '1fr 1fr' }}
       >
-        <Testimonial {...args} />
-        <Testimonial {...args} imageUrl="" />
-        <Testimonial {...args} mode="light" />
+        <TestimonialDeprecated {...args} />
+        <TestimonialDeprecated {...args} imageUrl="" />
+        <TestimonialDeprecated {...args} mode="light" />
       </GridBox>
     )}
   </Story>
@@ -56,7 +58,9 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 ## In large container
 
 <Canvas withSource="closed">
-  <Story name="In large container">{(args) => <Testimonial {...args} />}</Story>
+  <Story name="In large container">
+    {(args) => <TestimonialDeprecated {...args} />}
+  </Story>
 </Canvas>
 
 ## Optional long quote
@@ -71,7 +75,7 @@ The optional long quote will replace the quote text at [SM breakpoint and above]
         'If it weren’t for Codecademy, I’d probably be in my old job. Codecademy enabled me to learn quick lessons between calls, on my lunch break, while multitasking. It was fun and easy and I went from 0 coding skills to a promotion within 6 months.',
     }}
   >
-    {(args) => <Testimonial {...args} />}
+    {(args) => <TestimonialDeprecated {...args} />}
   </Story>
 </Canvas>
 
@@ -81,7 +85,7 @@ Use the `light` value for `mode` for "light mode" styles.
 
 <Canvas withSource="closed">
   <Story name="Light theme" args={{ mode: 'light' }}>
-    {(args) => <Testimonial {...args} />}
+    {(args) => <TestimonialDeprecated {...args} />}
   </Story>
 </Canvas>
 
@@ -98,7 +102,7 @@ The avatar image is optional.
         'If it weren’t for Codecademy, I’d probably be in my old job. Codecademy enabled me to learn quick lessons between calls, on my lunch break, while multitasking. It was fun and easy and I went from 0 coding skills to a promotion within 6 months.',
     }}
   >
-    {(args) => <Testimonial {...args} />}
+    {(args) => <TestimonialDeprecated {...args} />}
   </Story>
 </Canvas>
 
@@ -108,7 +112,7 @@ The avatar image is optional.
   <Story name="Small container without avatar image" args={{ imageUrl: '' }}>
     {(args) => (
       <Box maxWidth={400}>
-        <Testimonial {...args} />
+        <TestimonialDeprecated {...args} />
       </Box>
     )}
   </Story>
