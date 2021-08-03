@@ -34,14 +34,17 @@ describe('ProgressBar', () => {
 
   it('does not include percentage visually when size is small', () => {
     const { wrapper } = renderWrapper({ size: 'small' });
-
-    expect(wrapper.text()).toEqual('');
+    // Enzyme doesn't differentiate between visible and invisible
+    // test so this tests that only the screen reader text renders
+    expect(wrapper.text()).toEqual('Progress: 50%');
   });
 
   it('includes percentage visually when size is large', () => {
     const { wrapper } = renderWrapper({ size: 'large' });
-
-    expect(wrapper.text()).toEqual('50%');
+    // Enzyme doesn't differentiate between visible and invisible
+    // test so this test accounts for both the visible '50%' and
+    // the 'Progress: 50%' that is only visible to screenreaders
+    expect(wrapper.text()).toEqual('Progress: 50%50%');
   });
 
   it('uses an svg when given a pattern', () => {
