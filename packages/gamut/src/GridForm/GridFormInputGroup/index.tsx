@@ -163,7 +163,10 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
 
   return (
     <Column size={field?.size} rowspan={field?.rowspan ?? 1}>
-      <FormGroup mb={0}>
+      <FormGroup
+        pb={field.type === 'checkbox' && field?.variant === 'tight' ? 0 : 8}
+        mb={0}
+      >
         {field.hideLabel ? <HiddenText>{label}</HiddenText> : label}
         {getInput()}
         {errorMessage && (
