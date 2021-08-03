@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [19.18.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.17.0...@codecademy/gamut-labs@19.18.0) (2021-08-03)
+
+
+### Features
+
+* **Background:** Set current background color to local CSS variable GM-259 ([bbb71e6](https://github.com/Codecademy/client-modules/commit/bbb71e6ef4a0b8d7d10409f81f936693a7b34962))
+
+
+
 ## [19.17.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.16.18...@codecademy/gamut-labs@19.17.0) (2021-08-03)
 
 

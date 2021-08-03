@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [42.6.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@42.5.0...@codecademy/styleguide@42.6.0) (2021-08-03)
+
+
+### Features
+
+* **Background:** Set current background color to local CSS variable GM-259 ([bbb71e6](https://github.com/Codecademy/client-modules/commit/bbb71e6ef4a0b8d7d10409f81f936693a7b34962))
+
+
+
 ## [42.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@42.4.1...@codecademy/styleguide@42.5.0) (2021-08-03)
 
 
