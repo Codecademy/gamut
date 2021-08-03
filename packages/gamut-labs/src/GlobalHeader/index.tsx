@@ -53,9 +53,17 @@ const getAppHeaderItems = (
           return anonDefaultHeaderItems();
       }
     case 'free':
-      return freeHeaderItems(props.user, props.renderNotifications?.desktop);
+      return freeHeaderItems(
+        props.user,
+        props.renderNotifications?.desktop,
+        props.renderFavorites?.desktop
+      );
     case 'pro':
-      return proHeaderItems(props.user, props.renderNotifications?.desktop);
+      return proHeaderItems(
+        props.user,
+        props.renderNotifications?.desktop,
+        props.renderFavorites?.desktop
+      );
     case 'loading':
       return loadingHeaderItems;
   }
