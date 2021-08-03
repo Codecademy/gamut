@@ -10,6 +10,7 @@ type RenderNotifications = {
   desktop: () => ReactNode;
   mobile: () => ReactNode;
 };
+
 type RenderFavorites = {
   desktop: () => ReactNode;
 };
