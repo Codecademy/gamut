@@ -35,6 +35,7 @@ export const GridFormCheckboxInput: React.FC<GridFormCheckboxInputProps> = ({
           multiline={field.multiline}
           id={field.id}
           aria-required={showRequired}
+          variant={field?.variant}
         />
       )}
       rules={field.validation}
