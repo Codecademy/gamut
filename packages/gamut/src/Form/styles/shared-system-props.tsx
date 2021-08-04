@@ -98,6 +98,7 @@ export const formBaseFieldStyles = system.css(formBaseFieldStylesObject);
 export const formFieldStyles = system.css({
   ...formBaseFieldStylesObject,
   ...formFieldPaddingStyles,
+  lineHeight: 'base',
   [InputSelectors.FOCUS]: formFieldFocusStyles,
 });
 
@@ -130,7 +131,7 @@ export const conditionalBorderStyles = ({
   isDisabled,
 }: conditionalStyleProps) => {
   if (isDisabled) {
-    return system.css({ formFieldDisabledStyles });
+    return system.css(formFieldDisabledStyles);
   }
 
   if (error && isFocused) {

@@ -1,6 +1,5 @@
 import { ArrowChevronDownIcon } from '@codecademy/gamut-icons';
-import { system, theme } from '@codecademy/gamut-styles';
-import { css } from '@emotion/react';
+import { theme } from '@codecademy/gamut-styles';
 import React, {
   ReactNode,
   SelectHTMLAttributes,

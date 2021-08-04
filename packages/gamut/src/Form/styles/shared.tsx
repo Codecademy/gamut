@@ -114,7 +114,7 @@ export const formDropdownStyles = (error: boolean) => css`
 
 export const formBaseFieldStyles = css`
   ${formBaseComponentStyles};
-  ${transitionConcat(['border-color', 'box-shadow'], '0.2s ease-in-out')};
+  ${transitionConcat(['border-color', 'box-shadow'], 'fast')};
   border: 1px solid ${colorStates.base.borderColor};
   border-radius: 2px;
 
