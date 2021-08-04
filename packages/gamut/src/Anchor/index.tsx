@@ -20,7 +20,7 @@ const anchorVariants = variant({
     p: 0,
     fontSize: 'inherit',
     position: 'relative',
-    textColor: 'primary',
+    color: 'primary',
     whiteSpace: 'nowrap',
     [ButtonSelectors.OUTLINE]: {
       content: "''",
@@ -47,12 +47,12 @@ const anchorVariants = variant({
   },
   variants: {
     standard: {
-      textColor: 'primary',
+      color: 'primary',
       [ButtonSelectors.HOVER]: {
         textDecoration: 'underline',
       },
       [ButtonSelectors.FOCUS_VISIBLE]: {
-        textColor: 'text',
+        color: 'text',
       },
     },
     inline: {
@@ -68,8 +68,14 @@ const anchorVariants = variant({
       },
     },
     interface: {
-      textColor: 'text',
+      color: 'text',
       whiteSpace: 'initial',
+      [ButtonSelectors.HOVER]: {
+        color: 'primary',
+      },
+      [ButtonSelectors.FOCUS_VISIBLE]: {
+        color: 'text',
+      },
     },
   },
 });
