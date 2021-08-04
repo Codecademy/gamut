@@ -9,7 +9,13 @@ export type DestinationMapOptions = {
 
 // The Functional category may need to be added here in the future.
 const targetingCategories = ['Advertising', 'Attribution', 'Email Marketing'];
-const performanceCategories = ['Analytics', 'Customer Success'];
+const performanceCategories = [
+  'Analytics',
+  'Customer Success',
+  'Surveys',
+  'Heatmaps & Recording',
+];
+const functionalCategories = ['SMS & Push Notifications'];
 
 /**
  * @see https://www.notion.so/codecademy/GDPR-Compliance-141ebcc7ffa542daa0da56e35f482b41
@@ -19,14 +25,9 @@ export const mapDestinations = ({
   destinations,
   user,
 }: DestinationMapOptions) => {
-  // See GROW-1111, GROW-1137 for FullStory context
-  // The intention is to enable fullstory for logged-in users. See GROW-2292
-  const enableFullStory = !!user;
-
   const destinationPreferences: Record<string, boolean> = Object.assign(
     {
       'Segment.io': consentDecision.includes(Consent.Functional),
-      FullStory: enableFullStory,
     },
     ...destinations.map((dest) => {
       if (targetingCategories.includes(dest.category)) {
@@ -39,15 +40,20 @@ export const mapDestinations = ({
           [dest.id]: consentDecision.includes(Consent.Performance),
         };
       }
+      if (functionalCategories.includes(dest.category)) {
+        return {
+          [dest.id]: consentDecision.includes(Consent.Functional),
+        };
+      }
       return {
         [dest.id]: true,
       };
     })
   );
 
-  const identifyPreferences = {
+  const identifyPreferences: Record<string, boolean> = {
     All: false,
-    FullStory: enableFullStory,
+    FullStory: consentDecision.includes(Consent.Performance),
     Hindsight: consentDecision.includes(Consent.Targeting),
     UserLeap: consentDecision.includes(Consent.Performance),
   };
