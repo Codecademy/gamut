@@ -31,7 +31,7 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 
 ## Horizontal Banner
 
-oh god wtf
+Here it is
 
 <Canvas withSource="open">
   <Story name="Testimonial">{(args) => <Testimonial {...args} />}</Story>
@@ -63,10 +63,11 @@ oh god wtf
 
 </Column>
 <Column size={4}>
-  ### Vertical
+ Vertical Limit
 
-{' '}
-<Story name="lametown">{(args) => <Testimonial {...args} />}</Story>
+<Story name="lametown">
+  {(args) => <Testimonial {...args} variant="vertical" />}
+</Story>
 
 </Column>
 </LayoutGrid>

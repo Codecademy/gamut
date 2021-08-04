@@ -1,4 +1,4 @@
-import { Box, FlexBox, FloatingCard, Text } from '@codecademy/gamut';
+import { Box, FloatingCard, Text } from '@codecademy/gamut';
 import { modeColorProps, system } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React from 'react';
@@ -15,9 +15,22 @@ const QuoteArt = styled.img`
 
 const TestimonialCard = styled(FloatingCard)(modeColorProps);
 
+const gridLayouts = {
+  vertical: `'art art art'
+             'text text text'
+             'avatar byline byline'
+             'avatar byline byline'
+             `,
+  horizontal: `'avatar art text'
+               'byline art text'
+               'byline art text'
+               'byline art text'
+               `,
+};
+
 const TestimonialContent = styled.div(
   system.variant({
-    defaultVariant: 'vertical',
+    defaultVariant: 'horizontal',
     base: {
       display: 'grid',
       gridTemplateColumns: 'max-content max-content 1fr',
@@ -26,24 +39,22 @@ const TestimonialContent = styled.div(
     },
     variants: {
       horizontal: {
-        gridTemplateAreas: `'avatar art text '
-                            'byline art text'
-                            'byline art text'
-                            'byline art text'
-                            `,
+        gridTemplateAreas: {
+          _: gridLayouts.vertical,
+          sm: gridLayouts.horizontal,
+        },
       },
       vertical: {
-        gridTemplateAreas: `'art art art'
-                            'text text text'
-                            'avatar avatar avatar'
-                            'byline byline byline'`,
+        gridTemplateAreas: gridLayouts.vertical,
       },
     },
   })
 );
 
 export type TestimonialProps = ComponentProps<typeof TestimonialCard> &
-  ComponentProps<typeof TestimonialContent> & {};
+  ComponentProps<typeof TestimonialContent> & {
+    hideAvatar?: boolean;
+  };
 
 // Variants to account for
 // vertical-dark
@@ -56,20 +67,35 @@ const deleteThis =
 
 export const Testimonial: React.FC<TestimonialProps> = ({
   variant,
+  hideAvatar,
   ...rest
-}) => (
-  <TestimonialCard {...rest} p={32} width="100%">
-    <TestimonialContent variant={variant}>
-      <Box gridArea="avatar" width="77px" height="77px" mb={48} mr={16}>
-        <Avatar alt="" src={deleteThis} mode="light" />
-      </Box>
-      <Box gridArea="byline">
-        <Byline firstName="Ricky" occupation="Supervisor" company="Sunnyvale" />
-      </Box>
-      <QuoteArt src={darkQuotes} />
-      <Text gridArea="text" variant="title-md">
-        One mans garbage is another man persons good ungarbage
-      </Text>
-    </TestimonialContent>
-  </TestimonialCard>
-);
+}) => {
+  const isVerticleLayout = variant === 'vertical';
+
+  return (
+    <TestimonialCard {...rest} p={32} width="100%">
+      <TestimonialContent variant={variant}>
+        {!hideAvatar && (
+          <Box mr={48} gridArea="avatar" width="77px" height="77px" mb={48}>
+            <Avatar disableDropshadow alt="" src={deleteThis} mode="light" />
+          </Box>
+        )}
+        <Box
+          pt={{ _: 32, sm: isVerticleLayout ? 32 : 0 }}
+          mr={32}
+          gridArea={!hideAvatar ? 'byline' : 'avatar'}
+        >
+          <Byline
+            firstName="Ricky"
+            occupation="Supervisor"
+            company="Sunnyvale"
+          />
+        </Box>
+        <QuoteArt src={darkQuotes} />
+        <Text gridArea="text" variant="title-md">
+          One mans garbage is another man persons good ungarbage
+        </Text>
+      </TestimonialContent>
+    </TestimonialCard>
+  );
+};
