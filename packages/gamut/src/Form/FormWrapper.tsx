@@ -2,9 +2,10 @@ import React from 'react';
 import { FormProvider, Mode, SubmitHandler, useForm } from 'react-hook-form';
 
 import { Form } from '../Form';
+import { FormProps } from './Form';
 import { FormValues } from './types';
 
-export type FormWrapperProps<Values extends {}> = {
+export type FormWrapperProps<Values extends {}> = FormProps & {
   children?: React.ReactNode;
 
   /**
@@ -30,6 +31,7 @@ export function FormWrapper<Values extends FormValues>({
   onSubmit,
   defaultValues,
   validation = 'onSubmit',
+  ...rest
 }: FormWrapperProps<Values>) {
   const { handleSubmit, formState, ...methods } = useForm({
     defaultValues,
@@ -42,12 +44,7 @@ export function FormWrapper<Values extends FormValues>({
       formState={formState}
       {...methods}
     >
-      <Form
-        onSubmit={handleSubmit(onSubmit)}
-        noValidate
-        height="100%"
-        width="100%"
-      >
+      <Form onSubmit={handleSubmit(onSubmit)} noValidate {...rest}>
         {children}
       </Form>
     </FormProvider>
