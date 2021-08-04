@@ -6,7 +6,7 @@ import React, { FormHTMLAttributes } from 'react';
 
 import styles from './styles/Form.module.scss';
 
-export const formSystemProps = variance.compose(
+const formSystemProps = variance.compose(
   system.space,
   system.border,
   system.layout,
@@ -24,7 +24,7 @@ export type FormProps = FormHTMLAttributes<HTMLFormElement> &
     className?: string;
   };
 
-export const StyledForm = styled('form')<FormProps>(formSystemProps);
+const StyledForm = styled('form')<FormProps>(formSystemProps);
 
 export const Form: React.FC<FormProps> = ({ method = 'post', ...props }) => {
   const className = cx(styles.Form, props.className);
