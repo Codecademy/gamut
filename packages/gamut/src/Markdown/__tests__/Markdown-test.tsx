@@ -62,9 +62,6 @@ describe('<Markdown />', () => {
     `;
     const { wrapper } = renderWrapper({ text: table });
     expect(wrapper.find('div.tableWrapper table').length).toEqual(1);
-    expect(wrapper.find('div.tableWrapper').prop('style')).toEqual({
-      maxHeight: 180,
-    });
   });
 
   it('Skips rendering custom tables in markdown when skipProcessing.table is true', () => {
