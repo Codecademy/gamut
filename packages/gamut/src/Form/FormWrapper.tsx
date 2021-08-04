@@ -42,7 +42,12 @@ export function FormWrapper<Values extends FormValues>({
       formState={formState}
       {...methods}
     >
-      <Form onSubmit={handleSubmit(onSubmit)} noValidate>
+      <Form
+        onSubmit={handleSubmit(onSubmit)}
+        noValidate
+        height="100%"
+        width="100%"
+      >
         {children}
       </Form>
     </FormProvider>
