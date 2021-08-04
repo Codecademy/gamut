@@ -117,6 +117,54 @@ export const conditionalStyles = system.variant({
   },
 });
 
+export const selectDropdownStyles = system.css({
+  ...formBaseFieldStylesObject,
+  ...formFieldPaddingStyles,
+  display: 'flex',
+});
+
+export const conditionalBorderStyles = ({
+  error,
+  activated,
+  isFocused,
+  isDisabled,
+}: conditionalStyleProps) => {
+  if (isDisabled) {
+    return system.css({ formFieldDisabledStyles });
+  }
+
+  if (error && isFocused) {
+    return system.css({
+      borderColor: 'feedback-error',
+      boxShadow: `inset 0 0 0 1px ${theme.colors['feedback-error']}`,
+
+      [InputSelectors.HOVER]: {
+        borderColor: 'feedback-error',
+      },
+    });
+  }
+
+  if (error) {
+    return system.css({
+      borderColor: 'feedback-error',
+
+      [InputSelectors.HOVER]: {
+        borderColor: 'feedback-error',
+      },
+    });
+  }
+
+  if (isFocused) {
+    return system.css(formFieldFocusStyles);
+  }
+
+  if (activated) {
+    return system.css({
+      borderColor: 'currentColor',
+    });
+  }
+};
+
 export const conditionalStyleState = (error: boolean, activated: boolean) => {
   return error ? 'error' : activated ? 'activated' : undefined;
 };

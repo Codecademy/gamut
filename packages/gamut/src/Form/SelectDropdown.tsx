@@ -1,5 +1,5 @@
 import { ArrowChevronDownIcon } from '@codecademy/gamut-icons';
-import { theme } from '@codecademy/gamut-styles';
+import { system, theme } from '@codecademy/gamut-styles';
 import { css } from '@emotion/react';
 import React, {
   ReactNode,
@@ -17,13 +17,11 @@ import ReactSelect, {
 } from 'react-select';
 
 import { SelectComponentProps } from './Select';
+import { colorStates, formDropdownStyles } from './styles/shared';
 import {
-  colorStates,
   conditionalBorderStyles,
-  formDropdownStyles,
-  formFieldStyles,
-} from './styles/shared';
-import { conditionalStyleProps } from './styles/shared-system-props';
+  selectDropdownStyles,
+} from './styles/shared-system-props';
 import { parseOptions } from './utils';
 
 const { DropdownIndicator, SelectContainer } = SelectDropdownElements;
@@ -70,85 +68,23 @@ const CustomContainer = ({ children, ...rest }: CustomContainerProps) => {
   );
 };
 
-const selectBaseStyles = ({
-  error,
-  activated,
-  isFocused,
-  isDisabled,
-}: conditionalStyleProps) => css`
-  ${formFieldStyles}
-  ${conditionalBorderStyles({ error, activated, isFocused, isDisabled })}
-  line-height: ${theme.lineHeight.base};
-  display: flex;
-`;
+// const selectBaseStyles = ({
+//   error,
+//   activated,
+//   isFocused,
+//   isDisabled,
+// }: conditionalStyleProps) => css`
+//   ${formFieldStyles}
+//   ${conditionalBorderStyles({ error, activated, isFocused, isDisabled })}
+//   line-height: ${theme.lineHeight.base};
+//   display: flex;
+// `;
 
-const customStyles: StylesConfig<OptionTypeBase, false> = {
-  container: (provided, state) => ({
-    ...provided,
-    pointerEvents: 'visible',
-    cursor: state.selectProps.isSearchable ? 'text' : 'pointer',
-    width: '100%',
-    minWidth: '7rem',
-  }),
-
-  control: (provided, state) => ({
-    ...selectBaseStyles({
-      error: state.selectProps.error,
-      activated: state.selectProps.activated,
-      isFocused: state.isFocused,
-      isDisabled: state.isDisabled,
-    }),
-  }),
-
-  dropdownIndicator: (provided, state) => ({
-    color: 'currentColor',
-    display: 'flex',
-    padding: '0',
-    pointerEvents: 'none',
-  }),
-
-  input: (provided, state) => ({
-    padding: '0',
-    margin: '0',
-  }),
-
-  menu: (provided, state) => ({
-    ...provided,
-    ...formDropdownStyles(state.selectProps.error),
-  }),
-
-  placeholder: (provided, state) => ({
-    ...provided,
-    color: 'currentColor',
-  }),
-
-  option: (provided, state) => ({
-    padding: '14px 11px 14px 11px',
-    cursor: 'pointer',
-    backgroundColor:
-      (state.isSelected && colorStates.dropdown.selected.backgroundColor) ||
-      (state.isFocused && colorStates.dropdown.focused.backgroundColor) ||
-      'transparent',
-    '&:hover': {
-      backgroundColor: colorStates.dropdown.focused.backgroundColor,
-    },
-  }),
-
-  singleValue: (provided, state) => ({
-    color: 'currentColor',
-    display: 'flex',
-  }),
-
-  valueContainer: (provided) => ({
-    ...provided,
-    padding: 0,
-  }),
-};
+const controlStyles = selectDropdownStyles({ theme });
 
 const defaultProps = {
   name: undefined,
   isMulti: false,
-  styles: customStyles,
   components: {
     DropdownIndicator: ChevronDropdown,
     IndicatorSeparator: () => null,
@@ -180,6 +116,74 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
     setActivated(true);
   };
 
+  const customStyles: StylesConfig<OptionTypeBase, false> = {
+    container: (provided, state) => ({
+      ...provided,
+      pointerEvents: 'visible',
+      cursor: state.selectProps.isSearchable ? 'text' : 'pointer',
+      width: '100%',
+      minWidth: '7rem',
+    }),
+
+    control: (provided, state) => {
+      let styles = { ...controlStyles };
+      const borderState = conditionalBorderStyles({
+        error: state.selectProps.error,
+        activated: state.selectProps.activated,
+        isFocused: state.isFocused,
+        isDisabled: state.isDisabled,
+      });
+      borderState ? (styles = { ...styles, ...borderState({ theme }) }) : null;
+      return {
+        ...styles,
+      };
+    },
+
+    dropdownIndicator: (provided, state) => ({
+      color: 'currentColor',
+      display: 'flex',
+      padding: '0',
+      pointerEvents: 'none',
+    }),
+
+    input: (provided, state) => ({
+      padding: '0',
+      margin: '0',
+    }),
+
+    menu: (provided, state) => ({
+      ...provided,
+      ...formDropdownStyles(state.selectProps.error),
+    }),
+
+    placeholder: (provided, state) => ({
+      ...provided,
+      color: 'currentColor',
+    }),
+
+    option: (provided, state) => ({
+      padding: '14px 11px 14px 11px',
+      cursor: 'pointer',
+      backgroundColor:
+        (state.isSelected && colorStates.dropdown.selected.backgroundColor) ||
+        (state.isFocused && colorStates.dropdown.focused.backgroundColor) ||
+        'transparent',
+      '&:hover': {
+        backgroundColor: colorStates.dropdown.focused.backgroundColor,
+      },
+    }),
+
+    singleValue: (provided, state) => ({
+      color: 'currentColor',
+      display: 'flex',
+    }),
+
+    valueContainer: (provided) => ({
+      ...provided,
+      padding: 0,
+    }),
+  };
+
   const selectOptions = useMemo(() => {
     return parseOptions({ options, id });
   }, [options, id]);
@@ -204,6 +208,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
       isDisabled={disabled}
       options={selectOptions}
       placeholder={placeholder}
+      styles={customStyles}
       isSearchable={isSearchable}
       {...rest}
     />
