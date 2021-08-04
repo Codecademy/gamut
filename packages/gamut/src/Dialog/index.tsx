@@ -11,6 +11,10 @@ import { Text } from '../Typography';
 
 const ShroudedOverlay = styled(Overlay)(system.css({ bg: 'shadow-opaque' }));
 
+type DialogButtonProps = Pick<
+  ComponentProps<typeof FillButton>,
+  'href' | 'onClick' | 'children'
+>;
 export interface DialogProps
   extends Pick<
     OverlayProps,
@@ -19,14 +23,9 @@ export interface DialogProps
   size?: ComponentProps<typeof DialogContainer>['size'];
   title: React.ReactNode;
   children: React.ReactNode;
-  confirmCta: {
-    children: React.ReactNode;
-    onClick?: () => void;
-  };
-  cancelCta?: {
-    children: React.ReactNode;
-    onClick?: () => void;
-  };
+  variant?: 'danger' | 'primary';
+  confirmCta: DialogButtonProps;
+  cancelCta?: DialogButtonProps;
 }
 
 const DialogContainer = styled(FloatingCard)(
@@ -58,20 +57,21 @@ export const Dialog: React.FC<DialogProps> = ({
   cancelCta,
   onRequestClose,
   size = 'small',
+  variant,
   ...rest
 }) => {
-  const onConfirm = () => {
+  const onConfirm: DialogButtonProps['onClick'] = (e) => {
     onRequestClose();
-    confirmCta.onClick?.();
+    confirmCta.onClick?.(e);
   };
 
-  const onCancel = () => {
+  const onCancel: DialogButtonProps['onClick'] = (e) => {
     onRequestClose();
-    cancelCta?.onClick?.();
+    cancelCta?.onClick?.(e);
   };
 
   return (
-    <ShroudedOverlay onRequestClose={onCancel} {...rest}>
+    <ShroudedOverlay onRequestClose={onCancel as () => void} {...rest}>
       <DialogContainer
         size={size}
         aria-hidden="false"
@@ -101,7 +101,12 @@ export const Dialog: React.FC<DialogProps> = ({
             gridArea="cancel"
           />
         )}
-        <FillButton {...confirmCta} onClick={onConfirm} gridArea="confirm" />
+        <FillButton
+          {...confirmCta}
+          onClick={onConfirm}
+          gridArea="confirm"
+          variant={variant}
+        />
       </DialogContainer>
     </ShroudedOverlay>
   );
