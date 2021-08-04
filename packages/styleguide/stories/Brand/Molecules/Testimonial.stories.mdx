@@ -1,0 +1,72 @@
+import { Column, LayoutGrid } from '@codecademy/gamut';
+import { Testimonial } from '@codecademy/gamut-labs/src';
+import { ColorMode } from '@codecademy/gamut-styles';
+import title from '@codecademy/macros/lib/title.macro';
+import { PropsTable } from '@codecademy/storybook-addon-variance';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+
+<Meta
+  title={title}
+  component={Testimonial}
+  args={{
+    firstName: 'Lacey',
+    lastName: 'Bathala',
+    occupation: 'Data Analyst',
+    quote: "Coding isn't rocket science, it’s just falsely intimidating.",
+    company: 'Microsoft',
+    imageUrl:
+      'http://images.ctfassets.net/go6kr6r0ykrq/4MdZk5XTPtg52O0uUBDMXB/e829b4fe7ea9e02220c4f86b0a17d7b3/lacey_bathala_480.png?w=120&h=120',
+    href:
+      'https://www.codecademy.com/learner-stories/data-science/1ogiwGOCDJNRTHczbLsyn8',
+    onClick: () => {
+      // eslint-disable-next-line no-console
+      console.log('You could add event tracking here.');
+    },
+  }}
+  parameters={{
+    subtitle: `A pull quote for use in an editorial page.`,
+    source: 'gamut-labs',
+  }}
+/>
+
+## Horizontal Banner
+
+oh god wtf
+
+<Canvas withSource="open">
+  <Story name="Testimonial">{(args) => <Testimonial {...args} />}</Story>
+</Canvas>
+
+<PropsTable story="Testimonial" />
+
+## Welcome to hell
+
+<LayoutGrid gap={32}>
+<Column size={6}>
+
+### Lightmode
+
+<Story name="in hell">{(args) => <Testimonial {...args} />}</Story>
+
+</Column>
+<Column size={6}>
+
+### Darkmode
+
+<Story name="in hell2">
+  {(args) => (
+    <ColorMode mode="dark">
+      <Testimonial {...args} />
+    </ColorMode>
+  )}
+</Story>
+
+</Column>
+<Column size={4}>
+  ### Vertical
+
+{' '}
+<Story name="lametown">{(args) => <Testimonial {...args} />}</Story>
+
+</Column>
+</LayoutGrid>
