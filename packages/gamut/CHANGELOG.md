@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [35.11.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@35.10.1...@codecademy/gamut@35.11.0) (2021-08-04)
+
+
+### Features
+
+* **Markdown:** remove max-height of tables ([d100d0c](https://github.com/Codecademy/client-modules/commit/d100d0cd87c49389234d5d2f8fbd881cc6c00209))
+
+
+
 ### [35.10.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@35.10.0...@codecademy/gamut@35.10.1) (2021-08-03)
 
 **Note:** Version bump only for package @codecademy/gamut
