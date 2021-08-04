@@ -1,28 +1,29 @@
-import { theme } from '@codecademy/gamut-styles';
+import { theme, transitionConcat } from '@codecademy/gamut-styles';
 import { css } from '@emotion/react';
-import { StandardPropertiesHyphen } from 'csstype';
 
 import { conditionalStyleProps } from './shared-system-props';
 
 export const colorStates = {
   base: {
-    color: theme.colors.navy,
-    placeholder: theme.colors['gray-900'],
-    backgroundColor: theme.colors.white,
-    borderColor: theme.colors['gray-600'],
+    color: theme.colors.text,
+    placeholder: theme.colors['text-disabled'],
+    backgroundColor: theme.colors.background,
+    borderColor: theme.colors['text-disabled'],
   },
-  hover: { borderColor: theme.colors.hyper },
+  hover: { borderColor: theme.colors.primary },
   disabled: {
-    color: theme.colors['gray-900'],
-    backgroundColor: theme.colors['gray-100'],
-    borderColor: theme.colors['gray-900'],
+    color: theme.colors['text-disabled'],
+    backgroundColor: theme.colors['background-disabled'],
+    borderColor: 'currentColor',
   },
-  error: { color: theme.colors.red, borderColor: theme.colors.red },
-  valid: { color: theme.colors.green },
-  activated: { borderColor: theme.colors.navy },
+  error: {
+    borderColor: theme.colors['feedback-error'],
+  },
+  valid: { color: theme.colors.success },
+  activated: { borderColor: 'currentColor' },
   dropdown: {
-    focused: { backgroundColor: theme.colors['gray-100'] },
-    selected: { backgroundColor: theme.colors['gray-300'] },
+    focused: { backgroundColor: theme.colors['background-hover'] },
+    selected: { backgroundColor: theme.colors['background-selected'] },
   },
 };
 
@@ -88,19 +89,6 @@ export const conditionalBorderStyles = ({
   }
 };
 
-const transitionConcatenator = (
-  arrayOfProperties: Array<keyof StandardPropertiesHyphen>,
-  transition: string
-) => {
-  const cssString = `${arrayOfProperties.join(
-    ` ${transition},`
-  )} ${transition}`;
-
-  return css`
-    transition: ${cssString};
-  `;
-};
-
 export const formBaseStyles = css`
   color: ${colorStates.base.color};
   font-weight: normal;
@@ -126,8 +114,8 @@ export const formDropdownStyles = (error: boolean) => css`
 `;
 
 export const formBaseFieldStyles = css`
-  ${formBaseComponentStyles}
-  ${transitionConcatenator(['border-color', 'box-shadow'], '0.2s ease-in-out')}
+  ${formBaseComponentStyles};
+  ${transitionConcat(['border-color', 'box-shadow'], '0.2s ease-in-out')};
   border: 1px solid ${colorStates.base.borderColor};
   border-radius: 2px;
 

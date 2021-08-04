@@ -70,28 +70,6 @@ const CustomContainer = ({ children, ...rest }: CustomContainerProps) => {
   );
 };
 
-const colorStates = {
-  base: {
-    color: theme.colors.text,
-    placeholder: theme.colors['text-disabled'],
-    backgroundColor: theme.colors.background,
-    borderColor: theme.colors['gray-600'],
-  },
-  hover: { borderColor: theme.colors.hyper },
-  disabled: {
-    color: theme.colors['gray-900'],
-    backgroundColor: theme.colors['gray-100'],
-    borderColor: theme.colors['gray-900'],
-  },
-  error: { color: theme.colors.red, borderColor: theme.colors.red },
-  valid: { color: theme.colors.green },
-  activated: { borderColor: theme.colors.navy },
-  dropdown: {
-    focused: { backgroundColor: theme.colors['gray-100'] },
-    selected: { backgroundColor: theme.colors['gray-300'] },
-  },
-};
-
 const selectBaseStyles = ({
   error,
   activated,
@@ -103,11 +81,6 @@ const selectBaseStyles = ({
   line-height: ${theme.lineHeight.base};
   display: flex;
 `;
-
-const errorColorState = (error: boolean) => {
-  const color = error ? colorStates.error.color : colorStates.base.color;
-  return color;
-};
 
 const customStyles: StylesConfig<OptionTypeBase, false> = {
   container: (provided, state) => ({
@@ -128,7 +101,7 @@ const customStyles: StylesConfig<OptionTypeBase, false> = {
   }),
 
   dropdownIndicator: (provided, state) => ({
-    color: errorColorState(state.selectProps.error),
+    color: 'currentColor',
     display: 'flex',
     padding: '0',
     pointerEvents: 'none',
@@ -144,6 +117,11 @@ const customStyles: StylesConfig<OptionTypeBase, false> = {
     ...formDropdownStyles(state.selectProps.error),
   }),
 
+  placeholder: (provided, state) => ({
+    ...provided,
+    color: 'currentColor',
+  }),
+
   option: (provided, state) => ({
     padding: '14px 11px 14px 11px',
     cursor: 'pointer',
@@ -157,7 +135,7 @@ const customStyles: StylesConfig<OptionTypeBase, false> = {
   }),
 
   singleValue: (provided, state) => ({
-    color: errorColorState(state.selectProps.error),
+    color: 'currentColor',
     display: 'flex',
   }),
 

@@ -4,6 +4,8 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 
 import { PropsTable } from '~styleguide/blocks';
 
+import { SelectDropdownExample } from './examples';
+
 export const fruitOptions = [
   'Apple',
   'Banana',
@@ -214,3 +216,9 @@ Some of our forms require special props be passed directly onto the `<input/>` c
     )}
   </Story>
 </Canvas>
+
+### ColorMode
+
+Some of our forms require special props be passed directly onto the `<input/>` component. We can do that by passing an object, formatted `{propName: value}`, into our inputProps prop.
+
+<SelectDropdownExample />
