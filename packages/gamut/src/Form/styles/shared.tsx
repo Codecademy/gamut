@@ -19,7 +19,6 @@ export const colorStates = {
   error: {
     borderColor: theme.colors['feedback-error'],
   },
-  valid: { color: theme.colors.success },
   activated: { borderColor: 'currentColor' },
   dropdown: {
     focused: { backgroundColor: theme.colors['background-hover'] },
