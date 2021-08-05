@@ -1,18 +1,18 @@
 import { mockMonacoWithLanguages } from '../../__fixtures__/mockMonacoWithLanguages';
-import { LanguageIds } from '../../services/languageIds';
+import { LanguageId } from '../../services/languageIds';
 import { getLanguageForFile } from '..';
 
 describe('getLanguageForFile', () => {
   it('returns plaintext when the file does not have an extension', () => {
     const language = getLanguageForFile(mockMonacoWithLanguages, 'main');
 
-    expect(language).toBe(LanguageIds.codecademyDefault);
+    expect(language).toBe(LanguageId.CodecademyDefault);
   });
 
   it('returns plaintext when the file is minified', () => {
     const language = getLanguageForFile(mockMonacoWithLanguages, 'main.min.js');
 
-    expect(language).toBe(LanguageIds.codecademyDefault);
+    expect(language).toBe(LanguageId.CodecademyDefault);
   });
 
   it('returns plaintext for an unknown extension', () => {
@@ -21,13 +21,13 @@ describe('getLanguageForFile', () => {
       'main.unknown-extension-oh-my'
     );
 
-    expect(language).toBe(LanguageIds.codecademyDefault);
+    expect(language).toBe(LanguageId.CodecademyDefault);
   });
 
   it('returns the base language when the language is known and not overriden', () => {
     const language = getLanguageForFile(mockMonacoWithLanguages, 'main.css');
 
-    expect(language).toBe(LanguageIds.codecademyCss);
+    expect(language).toBe(LanguageId.CodecademyCss);
   });
 
   it('returns the overriden language when the language is known and overriden', () => {
