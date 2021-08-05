@@ -11,7 +11,7 @@ import {
   conditionalStyles,
   conditionalStyleState,
   formFieldStyles,
-} from './styles/shared-system-props';
+} from './styles';
 
 export type TextWrapperProps = TextareaHTMLAttributes<HTMLTextAreaElement> & {
   className?: string;
