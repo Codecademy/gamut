@@ -87,6 +87,7 @@ export const Testimonial: React.FC<TestimonialProps> = ({
   company,
   occupation,
   location,
+  quote,
   hideAvatar,
   variant,
   mode,
@@ -134,10 +135,7 @@ export const Testimonial: React.FC<TestimonialProps> = ({
           variant="title-md"
           as="p"
         >
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore fugit
-          doloremque dolores repudiandae quam exercitationem voluptatum labore
-          non excepturi, nisi corporis, suscipit sed accusantium veritatis
-          aliquam incidunt quos quasi illo.
+          {quote}
         </Text>
       </TestimonialContent>
     </TestimonialCard>
