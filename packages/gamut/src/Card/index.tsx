@@ -32,9 +32,7 @@ export interface CardProps extends StyleProps<typeof shadowVariants> {
   variant?: 'yellow' | 'navy' | 'white' | 'hyper';
 }
 
-export const CardWrapper = styled(Background)<
-  CardProps & { outline?: boolean }
->(
+const CardWrapper = styled(Background)<CardProps & { outline?: boolean }>(
   system.css({ border: 1, borderRadius: '2px' }),
   shadowVariants,
   system.states({
