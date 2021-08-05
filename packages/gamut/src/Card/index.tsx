@@ -45,10 +45,7 @@ export const CardWrapper = styled(Background)<
 );
 
 export const Card: React.FC<CardProps> = ({ variant = 'white', ...rest }) => {
-  return <CardWrapper bg={variant} {...rest} outline={variant === 'navy'} />;
-};
-
-CardWrapper.defaultProps = {
-  p: 16,
-  variant: 'white',
+  return (
+    <CardWrapper bg={variant} outline={variant === 'navy'} p={16} {...rest} />
+  );
 };
