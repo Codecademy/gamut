@@ -1,7 +1,7 @@
 import { Background, system, theme, variant } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
-import React from 'react';
+import React, { ComponentProps } from 'react';
 
 const shadowVariants = variant({
   prop: 'shadow',
@@ -28,11 +28,16 @@ const shadowVariants = variant({
   },
 });
 
-export interface CardProps extends StyleProps<typeof shadowVariants> {
-  variant?: 'yellow' | 'navy' | 'white' | 'hyper';
+export interface CardProps
+  extends Omit<ComponentProps<typeof CardWrapper>, 'outline' | 'bg'> {
+  variant?: 'navy' | 'white' | 'hyper' | 'yellow';
 }
 
-const CardWrapper = styled(Background)<CardProps & { outline?: boolean }>(
+interface CardWrapperProps extends StyleProps<typeof shadowVariants> {
+  outline?: boolean;
+}
+
+const CardWrapper = styled(Background)<CardWrapperProps>(
   system.css({ border: 1, borderRadius: '2px' }),
   shadowVariants,
   system.states({
