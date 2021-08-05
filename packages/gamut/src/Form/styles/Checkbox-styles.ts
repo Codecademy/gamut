@@ -18,6 +18,19 @@ export const checkboxLabelStates = system.states({
   },
 });
 
+export const checkboxPadding = system.variant({
+  defaultVariant: 'base',
+  prop: 'spacing',
+  variants: {
+    base: {
+      py: 16,
+    },
+    tight: {
+      py: 4,
+    },
+  },
+});
+
 export const checkboxElement = system.css({
   position: 'relative',
   mr: 8,
