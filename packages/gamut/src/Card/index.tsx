@@ -7,6 +7,8 @@ const shadowVariants = variant({
   prop: 'shadow',
   base: {
     position: 'relative',
+    border: 1,
+    borderColor: 'navy',
     boxShadow: `0px 0px 0 ${theme.colors.navy}`,
     transition: 'box-shadow 200ms ease, transform 200ms ease',
   },
@@ -46,6 +48,6 @@ export const CardWrapper = styled(Background)<
 
 export const Card: React.FC<CardProps> = ({ variant = 'white', ...rest }) => {
   return (
-    <CardWrapper bg={variant} outline={variant === 'navy'} p={16} {...rest} />
+    <CardWrapper bg={variant} p={16} outline={variant === 'navy'} {...rest} />
   );
 };
