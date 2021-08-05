@@ -1,3 +1,5 @@
+import { LanguageId } from '../services/languageIds';
+
 export const mockMonacoWithLanguages = {
   languages: {
     getLanguages: () => [
@@ -6,11 +8,11 @@ export const mockMonacoWithLanguages = {
         extensions: ['.known'],
       },
       {
-        id: 'js',
+        id: LanguageId.CodecademyJs,
         extensions: ['.js'],
       },
       {
-        id: 'codecademy-css',
+        id: LanguageId.CodecademyCss,
         extensions: ['.css'],
       },
     ],
