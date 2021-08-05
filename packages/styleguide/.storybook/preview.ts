@@ -1,6 +1,7 @@
 import 'focus-visible/dist/focus-visible.min.js';
 
 import { withEmotion } from './decorators/theme';
+import { withDesign } from 'storybook-addon-designs';
 import { DocsPage, DocsContainer } from './components';
 import { theme as gamutTheme } from '@codecademy/gamut-styles/src';
 import { theme } from './theme';
@@ -112,4 +113,4 @@ export const parameters = {
   layout: 'fullscreen',
 };
 
-export const decorators = [withEmotion];
+export const decorators = [withEmotion, withDesign];
