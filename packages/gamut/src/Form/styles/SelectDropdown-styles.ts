@@ -24,7 +24,7 @@ export const conditionalBorderStyles = ({
   isDisabled,
 }: conditionalStyleProps) => {
   if (isDisabled) {
-    return system.css(formFieldDisabledStyles);
+    return system.css(formFieldDisabledStyles)({ theme });
   }
 
   if (error && isFocused) {
@@ -35,7 +35,7 @@ export const conditionalBorderStyles = ({
       [InputSelectors.HOVER]: {
         borderColor: 'feedback-error',
       },
-    });
+    })({ theme });
   }
 
   if (error) {
@@ -45,17 +45,17 @@ export const conditionalBorderStyles = ({
       [InputSelectors.HOVER]: {
         borderColor: 'feedback-error',
       },
-    });
+    })({ theme });
   }
 
   if (isFocused) {
-    return system.css(formFieldFocusStyles);
+    return system.css(formFieldFocusStyles)({ theme });
   }
 
   if (activated) {
     return system.css({
       borderColor: 'currentColor',
-    });
+    })({ theme });
   }
 };
 
@@ -66,7 +66,7 @@ export const formDropdownStyles = (error: boolean) => {
     ...formBaseComponentStyles,
     border: 1,
     borderColorTop,
-  });
+  })({ theme });
 };
 
 export const optionBackground = (isSelected: boolean, isFocused: boolean) => {
@@ -77,5 +77,5 @@ export const optionBackground = (isSelected: boolean, isFocused: boolean) => {
     : 'transparent';
   return system.css({
     bg: backgroundColor,
-  });
+  })({ theme });
 };

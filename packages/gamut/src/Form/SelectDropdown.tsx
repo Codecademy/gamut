@@ -122,9 +122,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
           isFocused: state.isFocused,
           isDisabled: state.isDisabled,
         });
-        borderState
-          ? (styles = { ...styles, ...borderState({ theme }) })
-          : null;
+        borderState ? (styles = { ...styles, ...borderState }) : null;
         return {
           ...styles,
         };
@@ -149,7 +147,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
         marginTop: 0,
         borderRadius: 0,
         zIndex: 2,
-        ...formDropdownStyles(state.selectProps.error)({ theme }),
+        ...formDropdownStyles(state.selectProps.error),
       }),
 
       placeholder: (provided, state) => ({
@@ -160,7 +158,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
       option: (provided, state) => ({
         padding: '14px 11px 14px 11px',
         cursor: 'pointer',
-        ...optionBackground(state.isSelected, state.isFocused)({ theme }),
+        ...optionBackground(state.isSelected, state.isFocused),
       }),
 
       singleValue: (provided, state) => ({
