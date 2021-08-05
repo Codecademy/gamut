@@ -12,7 +12,6 @@ import {
 
 export const selectDropdownStyles = system.css({
   ...formBaseFieldStylesObject,
-  ...formFieldPaddingStyles,
   display: 'flex',
   zIndex: 3,
 })({ theme });
@@ -57,6 +56,17 @@ export const conditionalBorderStyles = ({
       borderColor: 'currentColor',
     })({ theme });
   }
+};
+
+export const sizeVariants = (sizeVariant?: 'small' | 'base') => {
+  if (sizeVariant === 'small') {
+    return system.css({
+      height: '2rem',
+      px: 8,
+      py: 0,
+    })({ theme });
+  }
+  return system.css(formFieldPaddingStyles)({ theme });
 };
 
 export const formDropdownStyles = (error: boolean) => {

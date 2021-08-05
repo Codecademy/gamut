@@ -1,5 +1,7 @@
-import { ArrowChevronDownIcon } from '@codecademy/gamut-icons';
-import { theme } from '@codecademy/gamut-styles';
+import {
+  ArrowChevronDownIcon,
+  MiniChevronDownIcon,
+} from '@codecademy/gamut-icons';
 import React, {
   ReactNode,
   SelectHTMLAttributes,
@@ -21,6 +23,7 @@ import {
   formDropdownStyles,
   optionBackground,
   selectDropdownStyles,
+  sizeVariants,
 } from './styles';
 import { parseOptions } from './utils';
 
@@ -37,7 +40,7 @@ interface SelectDropdownProps
   inputProps?: Record<string, string | number | boolean>;
   name?: string;
   placeholder?: string;
-  sizeVariant?: 'base' | 'small';
+  size?: 'base' | 'small';
 }
 
 type OptionStrict = {
@@ -50,9 +53,15 @@ type CustomContainerProps = ContainerProps<OptionStrict, false> & {
 };
 
 const ChevronDropdown = (props: IndicatorProps<OptionTypeBase, false>) => {
+  const { size } = props.selectProps;
+
   return (
     <DropdownIndicator {...props}>
-      <ArrowChevronDownIcon size={16} />
+      {size === 'small' ? (
+        <MiniChevronDownIcon size={12} />
+      ) : (
+        <ArrowChevronDownIcon size={16} />
+      )}
     </DropdownIndicator>
   );
 };
@@ -90,7 +99,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
   placeholder = 'Select an option',
   inputProps,
   isSearchable = false,
-  sizeVariant = 'base',
+  size = 'base',
   ...rest
 }) => {
   const [activated, setActivated] = useState(false);
@@ -115,7 +124,8 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
       }),
 
       control: (provided, state) => {
-        let styles = { ...selectDropdownStyles };
+        const sizeStyle = sizeVariants(state.selectProps.size);
+        let styles = { ...selectDropdownStyles, ...sizeStyle };
         const borderState = conditionalBorderStyles({
           error: state.selectProps.error,
           activated: state.selectProps.activated,
@@ -199,7 +209,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
       placeholder={placeholder}
       styles={memoizedStyles}
       isSearchable={isSearchable}
-      sizeVariant={sizeVariant}
+      size={size}
       {...rest}
     />
   );

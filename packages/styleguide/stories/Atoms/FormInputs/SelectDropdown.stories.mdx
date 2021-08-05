@@ -193,6 +193,72 @@ export const CustomDropdown: React.FC = ({
   </Story>
 </Canvas>
 
+### Size Variant
+
+We have a smaller SelectDropdown for more compact spaces.
+
+<Canvas>
+  <Story
+    name="size-search"
+    args={{
+      options: [
+        'inspect me to see my inputProps',
+        'yes I am!',
+        ':)',
+        'a',
+        'b',
+        'g',
+        'v',
+        'g',
+        'asdf',
+        'fasdfas;',
+        'sdfasdgwrewg',
+        'asdfsadf',
+      ],
+      name: 'size',
+      isSearchable: true,
+      size: 'small',
+    }}
+  >
+    {(args) => (
+      <Box width="180px" height="25rem">
+        <FormGroup label="i am ~styled" htmlFor="updog">
+          <SelectDropdown aria-label="updog" {...args} />
+        </FormGroup>
+      </Box>
+    )}
+  </Story>
+  <Story
+    name="size-no-search"
+    args={{
+      options: [
+        'inspect me to see my inputProps',
+        'yes I am!',
+        ':)',
+        'a',
+        'b',
+        'g',
+        'v',
+        'g',
+        'asdf',
+        'fasdfas;',
+        'sdfasdgwrewg',
+        'asdfsadf',
+      ],
+      name: 'size',
+      size: 'small',
+    }}
+  >
+    {(args) => (
+      <Box width="25rem" height="25rem">
+        <FormGroup label="i am ~styled" htmlFor="updog">
+          <SelectDropdown aria-label="updog" {...args} />
+        </FormGroup>
+      </Box>
+    )}
+  </Story>
+</Canvas>
+
 ### Custom inputProps
 
 Some of our forms require special props be passed directly onto the `<input/>` component. We can do that by passing an object, formatted `{propName: value}`, into our inputProps prop.
