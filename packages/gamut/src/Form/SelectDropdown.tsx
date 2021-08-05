@@ -1,5 +1,4 @@
 import { ArrowChevronDownIcon } from '@codecademy/gamut-icons';
-import { theme } from '@codecademy/gamut-styles';
 import React, {
   ReactNode,
   SelectHTMLAttributes,
@@ -20,6 +19,7 @@ import {
   conditionalBorderStyles,
   formDropdownStyles,
   optionBackground,
+  placeholderColor,
   selectDropdownStyles,
 } from './styles';
 import { parseOptions } from './utils';
@@ -150,7 +150,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
 
       placeholder: (provided, state) => ({
         ...provided,
-        color: 'currentColor',
+        ...placeholderColor,
       }),
 
       option: (provided, state) => ({
