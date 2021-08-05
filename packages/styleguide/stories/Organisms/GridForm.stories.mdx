@@ -1061,3 +1061,62 @@ Here's an example using components in context. By toggling dark mode you can see
 Please note you **cannot** use the deprecated 'business' button type with `ColorMode`.
 
 <ColorModeExample />
+
+## Checkbox Spacing
+
+If you need to checkboxes to fit into a smaller space, you can use our `tight` variant for checkboxes that are a bit closer together.
+
+<Canvas>
+  <Story name="Checkbox Spacing">
+    {(args) => (
+      <GridForm
+        rowGap={0}
+        fields={[
+          {
+            description: 'i am cozy',
+            name: 'cozy-check-0',
+            size: 6,
+            type: 'checkbox',
+            id: 'cozy-check-0',
+            defaultValue: true,
+            spacing: 'tight',
+          },
+          {
+            description: 'i am also cozy',
+            name: 'cozy-check-1',
+            size: 6,
+            type: 'checkbox',
+            id: 'cozy-check-1',
+            defaultValue: true,
+            spacing: 'tight',
+          },
+          {
+            description: 'i am cozy as well',
+            name: 'cozy-check-2',
+            size: 6,
+            type: 'checkbox',
+            id: 'cozy-check-2',
+            defaultValue: true,
+            spacing: 'tight',
+          },
+          {
+            description: 'i am cozy too',
+            name: 'cozy-check-3',
+            size: 6,
+            type: 'checkbox',
+            id: 'cozy-check-3',
+            defaultValue: true,
+            spacing: 'tight',
+          },
+        ]}
+        onSubmit={async (values) => {
+          action('Form Submitted')(values);
+        }}
+        submit={{
+          contents: 'Submit',
+          position: 'right',
+        }}
+      />
+    )}
+  </Story>
+</Canvas>
