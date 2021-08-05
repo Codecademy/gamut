@@ -8,9 +8,9 @@ export type MonacoWithLanguages = {
   };
 };
 
-const languageOverrides = new Map([
-  ['javascript', LanguageId.CodecademyJs],
-  ['js', LanguageId.CodecademyJs],
+export const languageOverrides = new Map([
+  ['javascript', LanguageId.Javascript],
+  ['js', LanguageId.Javascript],
 ]);
 
 const extensionOverrides = new Map<string | undefined, string>([
@@ -49,7 +49,7 @@ export const getLanguageForName = (
     : getLanguageForExtension(monaco, `.${language.toLowerCase()}`);
 
   if (!baseLanguage) {
-    return LanguageId.CodecademyDefault;
+    return LanguageId.Default;
   }
 
   return languageOverrides.get(baseLanguage) ?? baseLanguage;
@@ -60,17 +60,17 @@ export const getLanguageForFile = (
   fileName?: string
 ) => {
   if (fileName?.match(/\.min\./)) {
-    return LanguageId.CodecademyDefault;
+    return LanguageId.Default;
   }
 
   const extension = getExtensionForFileName(fileName);
   if (!extension) {
-    return LanguageId.CodecademyDefault;
+    return LanguageId.Default;
   }
 
   const baseLanguage = getLanguageForExtension(monaco, extension);
   if (!baseLanguage) {
-    return LanguageId.CodecademyDefault;
+    return LanguageId.Default;
   }
 
   return languageOverrides.get(baseLanguage) ?? baseLanguage;

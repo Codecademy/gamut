@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import ReactMonacoEditor from 'react-monaco-editor';
 import ReactResizeDetector from 'react-resize-detector';
 
+import { LanguageId } from '../../libs/services/languageIds';
 import { Editor, Monaco, MonacoFile } from '../types';
 
 const InnerEditor = styled.div`
@@ -17,7 +18,7 @@ const InnerEditor = styled.div`
 
 export type SimpleMonacoEditorProps = {
   file: MonacoFile;
-  languageId?: string;
+  languageId?: LanguageId;
   onChange?: (newValue: string) => void;
   options: EditorType.IStandaloneEditorConstructionOptions;
   setEditor: (editor: Editor.IStandaloneCodeEditor) => void;

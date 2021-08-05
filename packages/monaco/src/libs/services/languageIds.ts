@@ -1,19 +1,27 @@
+/**
+ * A master list of all languages supported by our code renderer.
+ * To support new languages, add them to this enum.
+ */
 export enum LanguageId {
-  CodecademyCss = 'codecademy-css',
-  CodecademyDefault = 'plaintext',
-  // CodecademyGo = 'codecademy-go',
-  // CodecademyHtml = 'codecademy-html',
-  // CodecademyJava = 'codecademy-java',
-  CodecademyJs = 'codecademy-js',
-  // CodecademyPhp = 'codecademy-php',
-  // CodecademyPython = 'codecademy-python',
-  // CodecademyR = 'codecademy-r',
-  // CodecademyRuby = 'codecademy-ruby',
-  // CodecademyScss = 'codecademy-scss',
-  // CodecademySql = 'codecademy-sql',
-  // CodecademySwift = 'codecademy-swift',
-  // CodecademyCSharp = 'codecademy-cs',
-  // CodecademyCpp = 'codecademy-cpp',
-  // CodecademyKotlin = 'codecademy-kotlin',
-  // CodecademyRazor = 'codecademy-razor',
+  Default = 'plaintext',
+  // Css = 'codecademy-css',
+  // Go = 'codecademy-go',
+  // Html = 'codecademy-html',
+  // Java = 'codecademy-java',
+  Javascript = 'codecademy-js',
+  // Php = 'codecademy-php',
+  // Python = 'codecademy-python',
+  // R = 'codecademy-r',
+  // Ruby = 'codecademy-ruby',
+  // Scss = 'codecademy-scss',
+  // Sql = 'codecademy-sql',
+  // Swift = 'codecademy-swift',
+  // CSharp = 'codecademy-cs',
+  // Cpp = 'codecademy-cpp',
+  // Kotlin = 'codecademy-kotlin',
+  // Razor = 'codecademy-razor',
 }
+
+export type TranslatableLanguageIds = Exclude<LanguageId, LanguageId.Default>;
+
+export const languageIdKeys = Object.keys(LanguageId);
