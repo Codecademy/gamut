@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [42.7.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@42.7.0...@codecademy/styleguide@42.7.1) (2021-08-05)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [42.7.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@42.6.7...@codecademy/styleguide@42.7.0) (2021-08-05)
+
+
+### Features
+
+* tight variant for Checkbox ([6d6857a](https://github.com/Codecademy/client-modules/commit/6d6857ac3664a4c257cec8b774e10057cd85c1ee))
+
+
+
 ### [42.6.7](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@42.6.6...@codecademy/styleguide@42.6.7) (2021-08-04)
 
 **Note:** Version bump only for package @codecademy/styleguide
