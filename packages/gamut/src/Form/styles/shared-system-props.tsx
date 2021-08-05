@@ -166,6 +166,22 @@ export const conditionalBorderStyles = ({
   }
 };
 
+export const formDropdownStyles = (error: boolean) => {
+  const borderTopColor = error
+    ? theme.colors['feedback-error']
+    : theme.colors.primary;
+
+  return system.css({
+    ...formBaseComponentStyles,
+    border: 1,
+    borderColor: 'currentColor',
+    position: 'absolute',
+    marginTop: '-2px',
+    zIndex: 2,
+    borderTopColor,
+  });
+};
+
 export const conditionalStyleState = (error: boolean, activated: boolean) => {
   return error ? 'error' : activated ? 'activated' : undefined;
 };
