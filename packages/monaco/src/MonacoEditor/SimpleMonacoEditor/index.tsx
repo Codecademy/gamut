@@ -4,7 +4,6 @@ import React, { Component } from 'react';
 import ReactMonacoEditor from 'react-monaco-editor';
 import ReactResizeDetector from 'react-resize-detector';
 
-import { LanguageId } from '../../libs/services/languageIds';
 import { Editor, Monaco, MonacoFile } from '../types';
 
 const InnerEditor = styled.div`
