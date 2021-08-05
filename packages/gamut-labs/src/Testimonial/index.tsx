@@ -80,7 +80,6 @@ export const Testimonial: React.FC<TestimonialProps> = ({
       height="100%"
       mode={mode}
     >
-      {/* <ColorMode mode={mode || 'light'}> */}
       <TestimonialContent variant={variant}>
         {!hideAvatar && (
           <TestimonialPicture src={deleteThis} alt="testimonial" />
@@ -118,7 +117,6 @@ export const Testimonial: React.FC<TestimonialProps> = ({
           aliquam incidunt quos quasi illo.
         </Text>
       </TestimonialContent>
-      {/* </ColorMode> */}
     </TestimonialCard>
   );
 };
