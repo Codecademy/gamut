@@ -1,36 +1,7 @@
-import { theme, variant } from '@codecademy/gamut-styles';
+import { Background, system, theme, variant } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
-
-import { Box } from '../Box';
-
-const cardVariants = variant({
-  base: {
-    border: 1,
-    borderRadius: '2px',
-  },
-  variants: {
-    yellow: {
-      bg: 'yellow',
-      textColor: 'navy',
-    },
-    navy: {
-      bg: 'navy',
-      textColor: 'white',
-      '&:hover': {
-        outline: '1px solid currentColor',
-      },
-    },
-    white: {
-      bg: 'white',
-      textColor: 'navy',
-    },
-    hyper: {
-      bg: 'hyper',
-      textColor: 'white',
-    },
-  },
-});
+import React from 'react';
 
 const shadowVariants = variant({
   prop: 'shadow',
@@ -55,12 +26,29 @@ const shadowVariants = variant({
   },
 });
 
-export type CardProps = StyleProps<typeof cardVariants> &
-  StyleProps<typeof shadowVariants>;
+export interface CardProps extends StyleProps<typeof shadowVariants> {
+  variant?: 'yellow' | 'navy' | 'white' | 'hyper';
+}
 
-export const Card = styled(Box)<CardProps>(cardVariants, shadowVariants);
+export const CardWrapper = styled(Background)<
+  CardProps & { outline?: boolean }
+>(
+  system.css({ border: 1, borderRadius: '2px' }),
+  shadowVariants,
+  system.states({
+    outline: {
+      '&:hover': {
+        outline: '1px solid currentColor',
+      },
+    },
+  })
+);
 
-Card.defaultProps = {
+export const Card: React.FC<CardProps> = ({ variant = 'white', ...rest }) => {
+  return <CardWrapper bg={variant} {...rest} outline={variant === 'navy'} />;
+};
+
+CardWrapper.defaultProps = {
   p: 16,
   variant: 'white',
 };
