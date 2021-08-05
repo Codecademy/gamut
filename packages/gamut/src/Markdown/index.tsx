@@ -16,7 +16,7 @@ import {
   MarkdownAnchor,
   MarkdownAnchorProps,
 } from './libs/overrides/MarkdownAnchor';
-import { Table, TableProps } from './libs/overrides/Table';
+import { Table } from './libs/overrides/Table';
 import { createPreprocessingInstructions } from './libs/preprocessing';
 import { defaultSanitizationConfig } from './libs/sanitizationConfig';
 import styles from './styles/index.module.scss';
@@ -103,9 +103,7 @@ export class Markdown extends PureComponent<MarkdownProps> {
         }),
       !skipDefaultOverrides.table &&
         createTagOverride('table', {
-          component: (props: TableProps) => (
-            <Table maxHeight={spacing === 'tight' ? 180 : 500} {...props} />
-          ),
+          component: Table,
           allowedAttributes: ['style'],
         }),
       ...overrides,

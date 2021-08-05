@@ -14,29 +14,33 @@ import {
   checkboxInput,
   checkboxLabel,
   checkboxLabelStates,
+  checkboxPadding,
   checkboxTextStates,
   polyline,
 } from './styles/shared-system-props';
 
-export type CheckboxProps = InputHTMLAttributes<HTMLInputElement> & {
-  multiline?: boolean;
-  className?: string;
-  /**
-   * [The for/id string of a label or labelable form-related element](https://developer.mozilla.org/en-US/docs/Web/API/HTMLLabelElement/htmlFor). The outer FormGroup or FormLabel should have an identical string as the inner FormElement for accessibility purposes.
-   */
-  htmlFor: string;
-  label: ReactNode;
-  name?: string;
-  required?: boolean;
-  value?: string;
-  id?: string;
-};
-
 export type CheckboxTextProps = StyleProps<typeof checkboxTextStates>;
+export type CheckboxPaddingProps = StyleProps<typeof checkboxPadding>;
 
-const CheckboxLabel = styled.label<Pick<CheckboxProps, 'disabled'>>(
+export type CheckboxProps = InputHTMLAttributes<HTMLInputElement> &
+  CheckboxPaddingProps & {
+    multiline?: boolean;
+    className?: string;
+    /**
+     * [The for/id string of a label or labelable form-related element](https://developer.mozilla.org/en-US/docs/Web/API/HTMLLabelElement/htmlFor). The outer FormGroup or FormLabel should have an identical string as the inner FormElement for accessibility purposes.
+     */
+    htmlFor: string;
+    label: ReactNode;
+    name?: string;
+    required?: boolean;
+    value?: string;
+    id?: string;
+  };
+
+const CheckboxLabel = styled.label<Pick<CheckboxProps, 'disabled' | 'spacing'>>(
   noSelect,
   checkboxLabel,
+  checkboxPadding,
   checkboxLabelStates
 );
 
@@ -71,7 +75,17 @@ const CheckboxText = styled.span<CheckboxTextProps>(checkboxTextStates);
 
 export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
   (
-    { className, label, htmlFor, multiline, id, checked, disabled, ...rest },
+    {
+      className,
+      label,
+      htmlFor,
+      multiline,
+      id,
+      checked,
+      disabled,
+      spacing,
+      ...rest
+    },
     ref
   ) => {
     return (
@@ -84,7 +98,11 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
           {...rest}
           ref={ref}
         />
-        <CheckboxLabel htmlFor={id || htmlFor} disabled={disabled}>
+        <CheckboxLabel
+          htmlFor={id || htmlFor}
+          disabled={disabled}
+          spacing={spacing}
+        >
           <CheckboxElement
             multiline={multiline}
             checked={checked}
