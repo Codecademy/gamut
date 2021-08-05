@@ -14,6 +14,7 @@ export const selectDropdownStyles = system.css({
   ...formBaseFieldStylesObject,
   ...formFieldPaddingStyles,
   display: 'flex',
+  zIndex: 3,
 });
 
 export const conditionalBorderStyles = ({
@@ -59,17 +60,22 @@ export const conditionalBorderStyles = ({
 };
 
 export const formDropdownStyles = (error: boolean) => {
-  const borderTopColor = error
-    ? theme.colors['feedback-error']
-    : theme.colors.primary;
+  const borderColorTop = error ? 'feedback-error' : 'primary';
 
   return system.css({
     ...formBaseComponentStyles,
     border: 1,
-    borderColor: 'currentColor',
-    position: 'absolute',
-    marginTop: '-2px',
-    zIndex: 2,
-    borderTopColor,
+    borderColorTop,
+  });
+};
+
+export const optionBackground = (isSelected: boolean, isFocused: boolean) => {
+  const backgroundColor = isFocused
+    ? 'background-hover'
+    : isSelected
+    ? 'background-selected'
+    : 'transparent';
+  return system.css({
+    bg: backgroundColor,
   });
 };
