@@ -37,7 +37,7 @@ export type CheckboxProps = InputHTMLAttributes<HTMLInputElement> &
     id?: string;
   };
 
-const CheckboxLabel = styled.label<Pick<CheckboxProps, 'disabled' | 'variant'>>(
+const CheckboxLabel = styled.label<Pick<CheckboxProps, 'disabled' | 'spacing'>>(
   noSelect,
   checkboxLabel,
   checkboxPadding,
@@ -83,7 +83,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
       id,
       checked,
       disabled,
-      variant,
+      spacing,
       ...rest
     },
     ref
@@ -101,7 +101,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
         <CheckboxLabel
           htmlFor={id || htmlFor}
           disabled={disabled}
-          variant={variant}
+          spacing={spacing}
         >
           <CheckboxElement
             multiline={multiline}

@@ -230,6 +230,7 @@ export const checkboxLabel = system.css({
 
 export const checkboxPadding = system.variant({
   defaultVariant: 'base',
+  prop: 'spacing',
   variants: {
     base: {
       py: 16,
