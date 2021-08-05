@@ -1,9 +1,14 @@
 import { LanguageId } from '../services/languageIds';
 
-export const mockMonacoConfig = [
+export const mockLanguagesInMonaco = [
   {
     id: 'known',
     extensions: ['.known'],
+  },
+  // TODO replace javascript with a different language when more language services are added
+  {
+    id: 'javascript',
+    extends: ['.js'],
   },
   {
     id: LanguageId.Javascript,
@@ -13,6 +18,6 @@ export const mockMonacoConfig = [
 
 export const mockMonacoWithLanguages = {
   languages: {
-    getLanguages: () => mockMonacoConfig,
+    getLanguages: () => mockLanguagesInMonaco,
   },
 };

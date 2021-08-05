@@ -1,5 +1,5 @@
 import {
-  mockMonacoConfig,
+  mockLanguagesInMonaco,
   mockMonacoWithLanguages,
 } from '../../__fixtures__/mockMonacoWithLanguages';
 import { LanguageId } from '../../services/languageIds';
@@ -8,7 +8,7 @@ import { getLanguageForName, languageOverrides } from '..';
 const overriddenLanguageKey = 'javascript';
 const overriddenLanguageId = languageOverrides.get('javascript');
 
-const knownLanguage = mockMonacoConfig[0];
+const knownLanguage = mockLanguagesInMonaco[0];
 
 describe('getLanguageForFile', () => {
   describe('when passing a full name', () => {

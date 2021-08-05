@@ -18,7 +18,7 @@ const InnerEditor = styled.div`
 
 export type SimpleMonacoEditorProps = {
   file: MonacoFile;
-  languageId?: LanguageId;
+  languageId?: string;
   onChange?: (newValue: string) => void;
   options: EditorType.IStandaloneEditorConstructionOptions;
   setEditor: (editor: Editor.IStandaloneCodeEditor) => void;
