@@ -1,6 +1,7 @@
 import { ReactNode } from 'react';
 import { UseFormMethods, ValidationRules } from 'react-hook-form';
 
+import { CheckboxPaddingProps } from '../Form/types';
 import { ColumnProps } from '../Layout';
 import { ToolTipProps } from '../ToolTip';
 import { TextProps } from '../Typography/Text';
@@ -28,13 +29,14 @@ export type BaseFormField<Value> = {
   rowspan?: ColumnProps['rowspan'];
 };
 
-export type GridFormCheckboxField = BaseFormField<boolean> & {
-  description: React.ReactNode;
-  label?: React.ReactNode;
-  multiline?: boolean;
-  validation?: ValidationRules;
-  type: 'checkbox';
-};
+export type GridFormCheckboxField = BaseFormField<boolean> &
+  CheckboxPaddingProps & {
+    description: React.ReactNode;
+    label?: React.ReactNode;
+    multiline?: boolean;
+    validation?: ValidationRules;
+    type: 'checkbox';
+  };
 
 export type GridFormCustomFieldProps = {
   className?: string;
