@@ -202,7 +202,7 @@ We have a smaller SelectDropdown for more compact spaces.
     name="size-search"
     args={{
       options: [
-        'inspect me to see my inputProps',
+        'i am small',
         'yes I am!',
         ':)',
         'a',
@@ -218,12 +218,13 @@ We have a smaller SelectDropdown for more compact spaces.
       name: 'size',
       isSearchable: true,
       size: 'small',
+      placeholder: 'type here!',
     }}
   >
     {(args) => (
       <Box width="180px" height="25rem">
-        <FormGroup label="i am ~styled" htmlFor="updog">
-          <SelectDropdown aria-label="updog" {...args} />
+        <FormGroup label="search!" htmlFor="typeSeach">
+          <SelectDropdown aria-label="typeSeach" {...args} />
         </FormGroup>
       </Box>
     )}
@@ -232,8 +233,7 @@ We have a smaller SelectDropdown for more compact spaces.
     name="size-no-search"
     args={{
       options: [
-        'inspect me to see my inputProps',
-        'yes I am!',
+        'i am also small',
         ':)',
         'a',
         'b',
@@ -247,12 +247,13 @@ We have a smaller SelectDropdown for more compact spaces.
       ],
       name: 'size',
       size: 'small',
+      placeholder: 'no click here instead!',
     }}
   >
     {(args) => (
       <Box width="25rem" height="25rem">
-        <FormGroup label="i am ~styled" htmlFor="updog">
-          <SelectDropdown aria-label="updog" {...args} />
+        <FormGroup label="click!" htmlFor="clickSearch">
+          <SelectDropdown aria-label="clickSearch" {...args} />
         </FormGroup>
       </Box>
     )}
