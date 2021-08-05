@@ -15,7 +15,7 @@ export const selectDropdownStyles = system.css({
   ...formFieldPaddingStyles,
   display: 'flex',
   zIndex: 3,
-});
+})({ theme });
 
 export const conditionalBorderStyles = ({
   error,

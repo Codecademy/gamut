@@ -68,8 +68,6 @@ const CustomContainer = ({ children, ...rest }: CustomContainerProps) => {
   );
 };
 
-const controlStyles = selectDropdownStyles({ theme });
-
 const defaultProps = {
   name: undefined,
   isMulti: false,
@@ -115,7 +113,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
       }),
 
       control: (provided, state) => {
-        let styles = { ...controlStyles };
+        let styles = { ...selectDropdownStyles };
         const borderState = conditionalBorderStyles({
           error: state.selectProps.error,
           activated: state.selectProps.activated,
