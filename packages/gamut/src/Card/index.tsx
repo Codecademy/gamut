@@ -33,7 +33,9 @@ export interface CardProps
   variant?: 'navy' | 'white' | 'hyper' | 'yellow';
 }
 
-interface CardWrapperProps extends StyleProps<typeof shadowVariants> {
+interface CardWrapperProps
+  extends StyleProps<typeof shadowVariants>,
+    StyleProps<typeof system['background']> {
   outline?: boolean;
 }
 
@@ -46,7 +48,8 @@ const CardWrapper = styled(Background)<CardWrapperProps>(
         outline: '1px solid currentColor',
       },
     },
-  })
+  }),
+  system.background
 );
 
 export const Card: React.FC<CardProps> = ({ variant = 'white', ...rest }) => {
