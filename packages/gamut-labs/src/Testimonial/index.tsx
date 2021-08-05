@@ -1,15 +1,9 @@
 import { Box, FloatingCard, Text } from '@codecademy/gamut';
-import {
-  Background,
-  ColorMode,
-  modeColorProps,
-  system,
-} from '@codecademy/gamut-styles';
+import { modeColorProps, system } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React, { ComponentProps } from 'react';
 
 import darkQuotes from '../assets/navyQuotes.svg';
-import { Byline } from '../Byline';
 
 const QuoteArt = styled.img`
   height: 25px;
@@ -42,6 +36,7 @@ const TestimonialContent = styled(Box)(
     defaultVariant: 'horizontal',
     base: {
       display: 'grid',
+      color: 'text-accent',
       gridTemplateColumns: 'max-content max-content 1fr',
       gridTemplateRows: 'repeat(max-content, 4)',
       gap: 16,
@@ -50,7 +45,7 @@ const TestimonialContent = styled(Box)(
       horizontal: {
         gridTemplateAreas: {
           _: gridLayouts.vertical,
-          sm: gridLayouts.horizontal,
+          md: gridLayouts.horizontal,
         },
       },
       vertical: {
@@ -85,35 +80,45 @@ export const Testimonial: React.FC<TestimonialProps> = ({
       height="100%"
       mode={mode}
     >
-      <ColorMode mode={mode || 'light'}>
-        <TestimonialContent variant={variant}>
-          {!hideAvatar && (
-            <TestimonialPicture src={deleteThis} alt="testimonial" />
-          )}
-          <Box
-            pt={{ _: 32, sm: isVerticleLayout && !hideAvatar ? 32 : 0 }}
-            mr={32}
-            gridArea={!hideAvatar ? 'byline' : 'avatar'}
-          >
-            <Byline
-              firstName="Ricky"
-              occupation="Supervisor"
-              company="Sunnyvale"
-            />
-          </Box>
-          <QuoteArt src={darkQuotes} />
+      {/* <ColorMode mode={mode || 'light'}> */}
+      <TestimonialContent variant={variant}>
+        {!hideAvatar && (
+          <TestimonialPicture src={deleteThis} alt="testimonial" />
+        )}
+        <Box
+          pt={{ _: 32, sm: isVerticleLayout && !hideAvatar ? 24 : 0 }}
+          mr={32}
+          gridArea={!hideAvatar ? 'byline' : 'avatar'}
+        >
           <Text
-            pt={{ _: 0, sm: isVerticleLayout ? 0 : 4 }}
-            gridArea="text"
-            variant="title-md"
+            variant="p-small"
+            fontFamily="accent"
+            textDecoration="underline"
+            as="p"
           >
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore
-            fugit doloremque dolores repudiandae quam exercitationem voluptatum
-            labore non excepturi, nisi corporis, suscipit sed accusantium
-            veritatis aliquam incidunt quos quasi illo.
+            Ricky T.
           </Text>
-        </TestimonialContent>
-      </ColorMode>
+          <Text variant="p-small" as="p">
+            Supervisor
+          </Text>
+          <Text variant="p-small" as="p">
+            @ Sunnyvale, Nova Scotia
+          </Text>
+        </Box>
+        <QuoteArt src={darkQuotes} />
+        <Text
+          pt={{ _: 0, sm: isVerticleLayout ? 0 : 4 }}
+          gridArea="text"
+          variant="title-md"
+          as="p"
+        >
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore fugit
+          doloremque dolores repudiandae quam exercitationem voluptatum labore
+          non excepturi, nisi corporis, suscipit sed accusantium veritatis
+          aliquam incidunt quos quasi illo.
+        </Text>
+      </TestimonialContent>
+      {/* </ColorMode> */}
     </TestimonialCard>
   );
 };
