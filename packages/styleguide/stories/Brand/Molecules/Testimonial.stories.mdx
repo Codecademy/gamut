@@ -1,6 +1,5 @@
 import { Column, LayoutGrid } from '@codecademy/gamut';
 import { Testimonial } from '@codecademy/gamut-labs/src';
-import { ColorMode } from '@codecademy/gamut-styles';
 import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
@@ -39,26 +38,24 @@ Here it is
 
 <PropsTable story="Testimonial" />
 
-## Welcome to hell
+## Look at these cool stories
 
 <LayoutGrid gap={32}>
 <Column size={6}>
 
 ### Lightmode
 
-<Story name="in hell">{(args) => <Testimonial {...args} />}</Story>
+<Story name="Medium Vertical Light">
+  {(args) => <Testimonial variant="vertical" {...args} />}
+</Story>
 
 </Column>
 <Column size={6}>
 
 ### Darkmode
 
-<Story name="in hell2">
-  {(args) => (
-    <ColorMode mode="dark">
-      <Testimonial {...args} />
-    </ColorMode>
-  )}
+<Story name="Medium Vertical Dark">
+  {(args) => <Testimonial variant="vertical" mode="dark" {...args} />}
 </Story>
 
 </Column>
