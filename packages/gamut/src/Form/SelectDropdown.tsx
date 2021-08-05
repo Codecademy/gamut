@@ -22,6 +22,7 @@ import {
   conditionalBorderStyles,
   formDropdownStyles,
   optionBackground,
+  placeholderColor,
   selectDropdownStyles,
   sizeVariants,
 } from './styles';
@@ -162,7 +163,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
 
       placeholder: (provided, state) => ({
         ...provided,
-        color: 'currentColor',
+        ...placeholderColor,
       }),
 
       option: (provided, state) => ({

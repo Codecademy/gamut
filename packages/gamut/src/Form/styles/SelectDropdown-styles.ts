@@ -89,3 +89,7 @@ export const optionBackground = (isSelected: boolean, isFocused: boolean) => {
     bg: backgroundColor,
   })({ theme });
 };
+
+export const placeholderColor = system.css({
+  color: 'text-disabled',
+})({ theme });
