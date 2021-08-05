@@ -16,7 +16,7 @@ import {
   checkboxLabelStates,
   checkboxTextStates,
   polyline,
-} from './styles/shared-system-props';
+} from './styles';
 
 export type CheckboxProps = InputHTMLAttributes<HTMLInputElement> & {
   multiline?: boolean;

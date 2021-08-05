@@ -16,11 +16,8 @@ import ReactSelect, {
 } from 'react-select';
 
 import { SelectComponentProps } from './Select';
+import { conditionalBorderStyles, selectDropdownStyles } from './styles';
 import { colorStates, formDropdownStyles } from './styles/shared';
-import {
-  conditionalBorderStyles,
-  selectDropdownStyles,
-} from './styles/shared-system-props';
 import { parseOptions } from './utils';
 
 const { DropdownIndicator, SelectContainer } = SelectDropdownElements;
