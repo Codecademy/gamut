@@ -1,4 +1,4 @@
-import { Box, FloatingCard, Text } from '@codecademy/gamut';
+import { Anchor, Box, FloatingCard, Text } from '@codecademy/gamut';
 import { modeColorProps, system } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React, { ComponentProps } from 'react';
@@ -87,7 +87,9 @@ export const Testimonial: React.FC<TestimonialProps> = ({
   company,
   occupation,
   location,
+  href,
   quote,
+  onClick,
   hideAvatar,
   variant,
   mode,
@@ -96,48 +98,50 @@ export const Testimonial: React.FC<TestimonialProps> = ({
   const isVerticleLayout = variant === 'vertical';
 
   return (
-    <TestimonialCard
-      {...rest}
-      p={32}
-      minWidth="22rem"
-      width="100%"
-      height="100%"
-      mode={mode}
-    >
-      <TestimonialContent variant={variant}>
-        {!hideAvatar && (
-          <TestimonialPicture src={deleteThis} alt="testimonial" />
-        )}
-        <Box
-          pt={{ _: 32, sm: isVerticleLayout && !hideAvatar ? 24 : 0 }}
-          mr={32}
-          gridArea={!hideAvatar ? 'byline' : 'avatar'}
-        >
+    <Anchor href={href} variant="interface" onClick={onClick}>
+      <TestimonialCard
+        {...rest}
+        p={32}
+        minWidth="22rem"
+        width="100%"
+        height="100%"
+        mode={mode}
+      >
+        <TestimonialContent variant={variant}>
+          {!hideAvatar && (
+            <TestimonialPicture src={deleteThis} alt="testimonial" />
+          )}
+          <Box
+            pt={{ _: 32, sm: isVerticleLayout && !hideAvatar ? 24 : 0 }}
+            mr={32}
+            gridArea={!hideAvatar ? 'byline' : 'avatar'}
+          >
+            <Text
+              variant="p-small"
+              fontFamily="accent"
+              textDecoration="underline"
+              as="p"
+            >
+              {`${firstName} ${lastName[0]}.`}
+            </Text>
+            <Text variant="p-small" as="p">
+              {occupation}
+            </Text>
+            <Text variant="p-small" as="p">
+              {`@ ${company}${location ? `, ${location}` : ''}`}
+            </Text>
+          </Box>
+          <QuoteArt src={darkQuotes} />
           <Text
-            variant="p-small"
-            fontFamily="accent"
-            textDecoration="underline"
+            pt={{ _: 0, sm: isVerticleLayout ? 0 : 4 }}
+            gridArea="text"
+            variant="title-md"
             as="p"
           >
-            {`${firstName} ${lastName[0]}.`}
+            {quote}
           </Text>
-          <Text variant="p-small" as="p">
-            {occupation}
-          </Text>
-          <Text variant="p-small" as="p">
-            {`@ ${company}${location ? `, ${location}` : ''}`}
-          </Text>
-        </Box>
-        <QuoteArt src={darkQuotes} />
-        <Text
-          pt={{ _: 0, sm: isVerticleLayout ? 0 : 4 }}
-          gridArea="text"
-          variant="title-md"
-          as="p"
-        >
-          {quote}
-        </Text>
-      </TestimonialContent>
-    </TestimonialCard>
+        </TestimonialContent>
+      </TestimonialCard>
+    </Anchor>
   );
 };
