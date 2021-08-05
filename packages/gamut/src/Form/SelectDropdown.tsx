@@ -37,6 +37,7 @@ interface SelectDropdownProps
   inputProps?: Record<string, string | number | boolean>;
   name?: string;
   placeholder?: string;
+  sizeVariant?: 'base' | 'small';
 }
 
 type OptionStrict = {
@@ -91,6 +92,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
   placeholder = 'Select an option',
   inputProps,
   isSearchable = false,
+  sizeVariant = 'base',
   ...rest
 }) => {
   const [activated, setActivated] = useState(false);
@@ -199,6 +201,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
       placeholder={placeholder}
       styles={memoizedStyles}
       isSearchable={isSearchable}
+      sizeVariant={sizeVariant}
       {...rest}
     />
   );
