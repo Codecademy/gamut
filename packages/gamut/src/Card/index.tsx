@@ -33,14 +33,11 @@ export interface CardProps
   variant?: 'navy' | 'white' | 'hyper' | 'yellow';
 }
 
-interface CardWrapperProps
-  extends StyleProps<typeof shadowVariants>,
-    StyleProps<typeof system['background']> {
+interface CardWrapperProps extends StyleProps<typeof shadowVariants> {
   outline?: boolean;
 }
 
 const CardWrapper = styled(Background)<CardWrapperProps>(
-  system.css({ border: 1, borderRadius: '2px' }),
   shadowVariants,
   system.states({
     outline: {
@@ -48,12 +45,9 @@ const CardWrapper = styled(Background)<CardWrapperProps>(
         outline: '1px solid currentColor',
       },
     },
-  }),
-  system.background
+  })
 );
 
-export const Card: React.FC<CardProps> = ({ variant = 'white', ...rest }) => {
-  return (
-    <CardWrapper bg={variant} p={16} outline={variant === 'navy'} {...rest} />
-  );
-};
+export const Card: React.FC<CardProps> = ({ variant = 'white', ...rest }) => (
+  <CardWrapper bg={variant} p={16} outline={variant === 'navy'} {...rest} />
+);
