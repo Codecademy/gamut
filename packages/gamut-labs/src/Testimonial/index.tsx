@@ -110,7 +110,7 @@ export const Testimonial: React.FC<TestimonialProps> = ({
             <TestimonialPicture src={imageUrl} alt="testimonial" />
           )}
           <Box
-            pt={{ _: 32, sm: isVerticleLayout && !hideAvatar ? 24 : 0 }}
+            my={{ _: 32, sm: isVerticleLayout && !hideAvatar ? 'auto' : 0 }}
             mr={32}
             gridArea={!hideAvatar ? 'byline' : 'avatar'}
           >
