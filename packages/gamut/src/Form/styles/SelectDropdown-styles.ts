@@ -33,8 +33,6 @@ export const conditionalBorderStates = system.states({
   isDisabled: formFieldDisabledStyles,
 });
 
-export type sizeVariantOptions = 'base' | 'small';
-
 export const sizeVariants = system.variant({
   prop: 'size',
   defaultVariant: 'base',

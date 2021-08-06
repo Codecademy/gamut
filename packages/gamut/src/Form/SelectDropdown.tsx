@@ -2,6 +2,7 @@ import {
   ArrowChevronDownIcon,
   MiniChevronDownIcon,
 } from '@codecademy/gamut-icons';
+import { StyleProps } from '@codecademy/variance';
 import { useTheme } from '@emotion/react';
 import React, {
   ReactNode,
@@ -26,7 +27,6 @@ import {
   optionBackground,
   placeholderColor,
   selectDropdownStyles,
-  sizeVariantOptions,
   sizeVariants,
   textColor,
 } from './styles';
@@ -45,8 +45,8 @@ interface SelectDropdownProps
   inputProps?: Record<string, string | number | boolean>;
   name?: string;
   placeholder?: string;
-  size?: sizeVariantOptions;
   shownOptions?: 1 | 2 | 3 | 4 | 5 | 6;
+  size?: StyleProps<typeof sizeVariants>;
 }
 
 type OptionStrict = {
@@ -106,8 +106,8 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
   placeholder = 'Select an option',
   inputProps,
   isSearchable = false,
-  size = 'base',
   shownOptions,
+  size,
   ...rest
 }) => {
   const [activated, setActivated] = useState(false);
