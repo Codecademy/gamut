@@ -264,8 +264,6 @@ We have a smaller SelectDropdown for more compact spaces.
 
 You can chose how options will be shown in the dropdown, with 6 being the default and the max.
 
-This assumes all of your options are one line.
-
 <Canvas>
   <Story
     name="shownOptions01"
@@ -283,13 +281,13 @@ This assumes all of your options are one line.
         'hi',
         'asdfsadf',
       ],
-      name: 'what',
+      name: 'shownOptions01',
       isSearchable: true,
       placeholder: 'six is the magic number',
     }}
   >
     {(args) => (
-      <Box width="25rem" height="25rem">
+      <Box width="10rem" height="10rem">
         <FormGroup
           label="i have the default shownOptions"
           htmlFor="shownOptions01"
@@ -315,14 +313,14 @@ This assumes all of your options are one line.
         'hello',
         'asdfsadf',
       ],
-      name: 'what',
+      name: 'shownOptions02',
       isSearchable: true,
       placeholder: 'no its three actually',
       shownOptions: 3,
     }}
   >
     {(args) => (
-      <Box width="25rem" height="25rem">
+      <Box width="10rem" height="10rem">
         <FormGroup
           label="i have three shownOptions but i am small"
           htmlFor="shownOptions02"
@@ -348,7 +346,7 @@ This assumes all of your options are one line.
         'heyyy',
         'asdfsadf',
       ],
-      name: 'what',
+      name: 'shownOptions03',
       isSearchable: true,
       placeholder: 'its three but small this time',
       size: 'small',
@@ -356,7 +354,7 @@ This assumes all of your options are one line.
     }}
   >
     {(args) => (
-      <Box width="25rem" height="25rem">
+      <Box width="10rem" height="10rem">
         <FormGroup label="i have two shownOptions" htmlFor="shownOptions03">
           <SelectDropdown aria-label="shownOptions03" {...args} />
         </FormGroup>
