@@ -2,6 +2,7 @@ import {
   ArrowChevronDownIcon,
   MiniChevronDownIcon,
 } from '@codecademy/gamut-icons';
+import { useTheme } from '@emotion/react';
 import React, {
   ReactNode,
   SelectHTMLAttributes,
@@ -19,13 +20,16 @@ import ReactSelect, {
 
 import { SelectComponentProps } from './Select';
 import {
+  conditionalBorderStates,
   conditionalBorderStyles,
-  formDropdownStyles,
+  dropdownBorderStates,
+  dropdownBorderStyles,
   optionBackground,
   placeholderColor,
   selectDropdownStyles,
   sizeVariantOptions,
   sizeVariants,
+  textColor,
 } from './styles';
 import { parseOptions } from './utils';
 
@@ -115,6 +119,8 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
     setActivated(true);
   };
 
+  const theme = useTheme();
+
   const memoizedStyles: StylesConfig<OptionTypeBase, false> = useMemo(() => {
     return {
       container: (provided, state) => ({
@@ -126,17 +132,16 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
       }),
 
       control: (provided, state) => {
-        const sizeStyle = sizeVariants(state.selectProps.size);
-        let styles = { ...selectDropdownStyles, ...sizeStyle };
-        const borderState = conditionalBorderStyles({
-          error: state.selectProps.error,
-          activated: state.selectProps.activated,
-          isFocused: state.isFocused,
-          isDisabled: state.isDisabled,
-        });
-        borderState ? (styles = { ...styles, ...borderState }) : null;
         return {
-          ...styles,
+          ...sizeVariants(state.selectProps.size),
+          ...selectDropdownStyles({ theme }),
+          ...conditionalBorderStates({
+            isFocused: state.isFocused,
+            isDisabled: state.isDisabled,
+            error: state.selectProps.error,
+            activated: state.selectProps.activated,
+            theme,
+          }),
         };
       },
 
@@ -154,27 +159,23 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
 
       menu: (provided, state) => ({
         ...provided,
-        borderColor: 'currentColor',
-        position: 'absolute',
-        marginTop: 0,
-        borderRadius: 0,
-        zIndex: 2,
-        ...formDropdownStyles(state.selectProps.error),
+        ...dropdownBorderStyles({ theme }),
+        ...dropdownBorderStates({ error: state.selectProps.error, theme }),
       }),
 
       placeholder: (provided, state) => ({
         ...provided,
-        ...placeholderColor,
+        ...placeholderColor({ theme }),
       }),
 
       option: (provided, state) => ({
         padding: state.selectProps.size === 'small' ? '3px 14px' : '11px 14px',
         cursor: 'pointer',
-        ...optionBackground(state.isSelected, state.isFocused),
+        ...optionBackground(state.isSelected, state.isFocused)({ theme }),
       }),
 
       singleValue: (provided, state) => ({
-        color: 'currentColor',
+        ...textColor({ theme }),
         display: 'flex',
       }),
 
@@ -183,7 +184,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
         padding: 0,
       }),
     };
-  }, []);
+  }, [theme]);
 
   const selectOptions = useMemo(() => {
     return parseOptions({ options, id });
