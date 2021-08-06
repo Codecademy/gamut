@@ -21,7 +21,6 @@ import ReactSelect, {
 import { SelectComponentProps } from './Select';
 import {
   conditionalBorderStates,
-  conditionalBorderStyles,
   dropdownBorderStates,
   dropdownBorderStyles,
   optionBackground,
