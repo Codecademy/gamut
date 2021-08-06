@@ -58,7 +58,9 @@ export const conditionalBorderStyles = ({
   }
 };
 
-export const sizeVariants = (sizeVariant?: 'small' | 'base') => {
+export type sizeVariantOptions = 'base' | 'small';
+
+export const sizeVariants = (sizeVariant?: sizeVariantOptions) => {
   if (sizeVariant === 'small') {
     return system.css({
       height: '2rem',
@@ -85,6 +87,7 @@ export const optionBackground = (isSelected: boolean, isFocused: boolean) => {
     : isSelected
     ? 'background-selected'
     : 'transparent';
+
   return system.css({
     bg: backgroundColor,
   })({ theme });

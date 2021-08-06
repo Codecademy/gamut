@@ -24,6 +24,7 @@ import {
   optionBackground,
   placeholderColor,
   selectDropdownStyles,
+  sizeVariantOptions,
   sizeVariants,
 } from './styles';
 import { parseOptions } from './utils';
@@ -41,7 +42,7 @@ interface SelectDropdownProps
   inputProps?: Record<string, string | number | boolean>;
   name?: string;
   placeholder?: string;
-  size?: 'base' | 'small';
+  size?: sizeVariantOptions;
 }
 
 type OptionStrict = {
@@ -167,7 +168,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
       }),
 
       option: (provided, state) => ({
-        padding: '14px 11px 14px 11px',
+        padding: state.selectProps.size === 'small' ? '3px 14px' : '11px 14px',
         cursor: 'pointer',
         ...optionBackground(state.isSelected, state.isFocused),
       }),
