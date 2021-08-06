@@ -132,7 +132,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
 
       control: (provided, state) => {
         return {
-          ...sizeVariants(state.selectProps.size),
+          ...sizeVariants({ size: state.selectProps.size, theme }),
           ...selectDropdownStyles({ theme }),
           ...conditionalBorderStates({
             isFocused: state.isFocused,

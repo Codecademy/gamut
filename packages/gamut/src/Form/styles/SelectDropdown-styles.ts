@@ -1,4 +1,4 @@
-import { system, theme } from '@codecademy/gamut-styles';
+import { system } from '@codecademy/gamut-styles';
 
 import {
   formBaseComponentStyles,
@@ -35,16 +35,14 @@ export const conditionalBorderStates = system.states({
 
 export type sizeVariantOptions = 'base' | 'small';
 
-export const sizeVariants = (sizeVariant?: sizeVariantOptions) => {
-  if (sizeVariant === 'small') {
-    return system.css({
-      height: '2rem',
-      px: 8,
-      py: 0,
-    })({ theme });
-  }
-  return system.css(formFieldPaddingStyles)({ theme });
-};
+export const sizeVariants = system.variant({
+  prop: 'size',
+  defaultVariant: 'base',
+  variants: {
+    base: formFieldPaddingStyles,
+    small: { height: '2rem', px: 8, py: 0 },
+  },
+});
 
 export const dropdownBorderStates = system.states({
   error: { borderColorTop: 'feedback-error' },
