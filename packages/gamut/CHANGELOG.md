@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [35.12.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@35.12.1...@codecademy/gamut@35.12.2) (2021-08-05)
+
+
+### Bug Fixes
+
+* Default Card Border ([bc445ec](https://github.com/Codecademy/client-modules/commit/bc445ec38c450b9b45cb14c34c34e708213f0c0b))
+
+
+
 ### [35.12.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@35.12.0...@codecademy/gamut@35.12.1) (2021-08-05)
 
 
