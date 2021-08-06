@@ -17,6 +17,7 @@ import ReactSelect, {
 
 import { SelectComponentProps } from './Select';
 import {
+  conditionalBorderStates,
   conditionalBorderStyles,
   dropdownBorderStates,
   dropdownBorderStyles,
@@ -54,7 +55,10 @@ type CustomContainerProps = ContainerProps<OptionStrict, false> & {
 const ChevronDropdown = (props: IndicatorProps<OptionTypeBase, false>) => {
   return (
     <DropdownIndicator {...props}>
-      <ArrowChevronDownIcon size={16} />
+      <ArrowChevronDownIcon
+        size={16}
+        color={props.isDisabled ? 'text-disabled' : 'text'}
+      />
     </DropdownIndicator>
   );
 };
@@ -118,18 +122,15 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
       }),
 
       control: (provided, state) => {
-        let styles = { ...selectDropdownStyles };
-        const borderState = conditionalBorderStyles({
-          error: state.selectProps.error,
-          activated: state.selectProps.activated,
-          isFocused: state.isFocused,
-          isDisabled: state.isDisabled,
-        });
-        borderState
-          ? (styles = { ...styles, ...borderState({ theme }) })
-          : null;
         return {
-          ...styles,
+          ...selectDropdownStyles({ theme }),
+          ...conditionalBorderStates({
+            isFocused: state.isFocused,
+            isDisabled: state.isDisabled,
+            error: state.selectProps.error,
+            activated: state.selectProps.activated,
+            theme,
+          }),
         };
       },
 

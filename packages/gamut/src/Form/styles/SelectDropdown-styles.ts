@@ -1,11 +1,9 @@
-import { system, theme } from '@codecademy/gamut-styles';
+import { system } from '@codecademy/gamut-styles';
 
 import {
-  conditionalStyleProps,
   formBaseComponentStyles,
   formBaseFieldStylesObject,
   formFieldDisabledStyles,
-  formFieldFocusStyles,
   formFieldPaddingStyles,
   InputSelectors,
 } from '.';
@@ -15,50 +13,26 @@ export const selectDropdownStyles = system.css({
   ...formFieldPaddingStyles,
   display: 'flex',
   zIndex: 3,
-})({ theme });
+});
 
-export const conditionalBorderStyles = ({
-  error,
-  activated,
-  isFocused,
-  isDisabled,
-}: conditionalStyleProps) => {
-  if (isDisabled) {
-    return system.css(formFieldDisabledStyles);
-  }
+export const selectFocusStyles = {
+  color: 'primary',
+  borderColor: 'currentColor',
+  boxShadow: `inset 0 0 0 1px currentColor`,
+} as const;
 
-  if (error && isFocused) {
-    return system.css({
-      borderColor: 'feedback-error',
-      boxShadow: `inset 0 0 0 1px ${theme.colors['feedback-error']}`,
-
-      [InputSelectors.HOVER]: {
-        borderColor: 'feedback-error',
-      },
-    });
-  }
-
-  if (error) {
-    return system.css({
-      borderColor: 'feedback-error',
-
-      [InputSelectors.HOVER]: {
-        borderColor: 'feedback-error',
-      },
-    });
-  }
-
-  if (isFocused) {
-    return system.css({ color: 'primary' });
-    // return system.css(formFieldFocusStyles);
-  }
-
-  if (activated) {
-    return system.css({
+export const conditionalBorderStates = system.states({
+  isFocused: selectFocusStyles,
+  activated: { borderColor: 'currentColor' },
+  error: {
+    color: 'feedback-error',
+    borderColor: 'currentColor',
+    [InputSelectors.HOVER]: {
       borderColor: 'currentColor',
-    });
-  }
-};
+    },
+  },
+  isDisabled: formFieldDisabledStyles,
+});
 
 export const dropdownBorderStates = system.states({
   error: { borderColorTop: 'feedback-error' },
