@@ -148,11 +148,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
       menu: (provided, state) => ({
         ...provided,
         ...dropdownBorderStyles({ theme }),
-        ...dropdownBorderStates(
-          state.selectProps.error
-            ? { error: true, theme }
-            : { error: false, theme }
-        ),
+        ...dropdownBorderStates({ error: state.selectProps.error, theme }),
       }),
 
       placeholder: (provided, state) => ({
