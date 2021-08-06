@@ -3,6 +3,39 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [35.12.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@35.12.1...@codecademy/gamut@35.12.2) (2021-08-05)
+
+
+### Bug Fixes
+
+* Default Card Border ([bc445ec](https://github.com/Codecademy/client-modules/commit/bc445ec38c450b9b45cb14c34c34e708213f0c0b))
+
+
+
+### [35.12.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@35.12.0...@codecademy/gamut@35.12.1) (2021-08-05)
+
+
+### Bug Fixes
+
+* Cards now correctly set color mode for their contents GM-308 ([7621edc](https://github.com/Codecademy/client-modules/commit/7621edc5bfb908b1e26bc8a77933ea0e310d76e7))
+
+
+
+## [35.12.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@35.11.0...@codecademy/gamut@35.12.0) (2021-08-05)
+
+
+### Features
+
+* add system props to form + formwrapper ([44acb2e](https://github.com/Codecademy/client-modules/commit/44acb2e804c23b448f95e6b1752fd06c4416bf6a))
+* tight variant for Checkbox ([6d6857a](https://github.com/Codecademy/client-modules/commit/6d6857ac3664a4c257cec8b774e10057cd85c1ee))
+
+
+### Bug Fixes
+
+* Form ([c8df306](https://github.com/Codecademy/client-modules/commit/c8df30697dab7705dbc469cb3aa86368ad1eb1a0))
+
+
+
 ## [35.11.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@35.10.1...@codecademy/gamut@35.11.0) (2021-08-04)
 
 
