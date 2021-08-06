@@ -34,7 +34,7 @@ export const MenuItem = React.forwardRef<
     <>
       {Icon && (
         <Icon
-          size={rest.spacing === 'condensed' ? 20 : 24}
+          size={rest.spacing === 'condensed' ? 16 : 24}
           mr={12}
           data-testid="menuitem-icon"
         />

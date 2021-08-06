@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [35.12.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@35.12.2...@codecademy/gamut@35.12.3) (2021-08-06)
+
+
+### Bug Fixes
+
+* Updated icon sizes for condensed MenuItems ([b8fce6d](https://github.com/Codecademy/client-modules/commit/b8fce6dfd3da2d957b129b7759b49a120e3866f4))
+
+
+
 ### [35.12.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@35.12.1...@codecademy/gamut@35.12.2) (2021-08-05)
 
 
