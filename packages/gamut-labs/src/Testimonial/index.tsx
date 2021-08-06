@@ -110,28 +110,23 @@ export const Testimonial: React.FC<TestimonialProps> = ({
             <TestimonialPicture src={imageUrl} alt="testimonial" />
           )}
           <Box
-            my={{ _: 'auto', sm: isVerticleLayout && !hideAvatar ? 'auto' : 0 }}
+            my={{ _: 'auto', md: isVerticleLayout && !hideAvatar ? 'auto' : 0 }}
             mr={32}
             gridArea={!hideAvatar ? 'byline' : 'avatar'}
           >
-            <Text
-              variant="p-small"
-              fontFamily="accent"
-              textDecoration="underline"
-              as="p"
-            >
+            <Text variant="p-small" as="p" fontFamily="accent">
               {`${firstName} ${lastName[0]}.`}
             </Text>
-            <Text variant="p-small" as="p">
+            <Text variant="p-small" as="p" fontFamily="accent">
               {occupation}
             </Text>
-            <Text variant="p-small" as="p">
+            <Text variant="p-small" as="p" fontFamily="accent">
               {`@ ${company}${location ? `, ${location}` : ''}`}
             </Text>
           </Box>
           <QuoteArt src={darkQuotes} />
           <Text
-            pt={{ _: 0, sm: isVerticleLayout ? 0 : 4 }}
+            pt={{ _: 0, md: isVerticleLayout ? 0 : 4 }}
             gridArea="text"
             variant="title-md"
             as="p"
