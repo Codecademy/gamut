@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 
+import useLanguageService from '../libs/languageServices/useLanguageService';
 import { SimpleMonacoEditor } from './SimpleMonacoEditor';
-import { MonacoFile } from './types';
+import { Editor, Monaco, MonacoFile } from './types';
+import { useDeltaDecorations } from './useDeltaDecorations';
 
 export type MonacoEditorProps = {
   className?: string;
@@ -14,13 +16,21 @@ export const MonacoEditor: React.FC<MonacoEditorProps> = ({
   file,
   onChange,
 }) => {
+  // TODO import editor theming and settings hooks
+
+  const [editor, setEditor] = useState<Editor.IStandaloneCodeEditor>();
+  const [monaco, setMonaco] = useState<Monaco>();
+  const languageService = useLanguageService(file.name || '', editor, monaco);
+
+  useDeltaDecorations(editor, languageService.registration);
+
   return (
     <SimpleMonacoEditor
       file={file}
       onChange={onChange}
       options={{}}
-      setEditor={() => {}}
-      setMonaco={() => {}}
+      setEditor={setEditor}
+      setMonaco={setMonaco}
     />
   );
 };
