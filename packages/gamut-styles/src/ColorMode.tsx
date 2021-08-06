@@ -10,6 +10,8 @@ import { mapValues, pick } from 'lodash';
 import React, { ComponentProps, forwardRef, useMemo } from 'react';
 
 import {
+  background,
+  border,
   color,
   css,
   flex,
@@ -29,7 +31,6 @@ export type ColorAlias = keyof ColorModeShape;
 export type ColorModeProps = {
   mode: ColorModes;
   bg?: Colors;
-  className?: string;
 };
 
 export const providerProps = variance.compose(
@@ -38,7 +39,9 @@ export const providerProps = variance.compose(
   grid,
   flex,
   positioning,
-  space
+  space,
+  border,
+  background
 );
 
 export const modeColorProps = ({
