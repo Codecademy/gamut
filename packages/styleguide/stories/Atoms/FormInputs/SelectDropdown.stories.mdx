@@ -262,14 +262,16 @@ We have a smaller SelectDropdown for more compact spaces.
 
 ### shownOptions
 
-You can chose how options will be shown in the dropdown, with 6 being the default and the max/
+You can chose how options will be shown in the dropdown, with 6 being the default and the max.
+
+This assumes all of your options are one line.
 
 <Canvas>
   <Story
     name="shownOptions01"
     args={{
       options: [
-        'i am also small',
+        'i am not small',
         ':)',
         'a',
         'b',
@@ -278,7 +280,7 @@ You can chose how options will be shown in the dropdown, with 6 being the defaul
         'g',
         'asdf',
         'fasdfas;',
-        'sdfasdgwrewg',
+        'hi',
         'asdfsadf',
       ],
       name: 'what',
@@ -301,7 +303,7 @@ You can chose how options will be shown in the dropdown, with 6 being the defaul
     name="shownOptions02"
     args={{
       options: [
-        'i am also small',
+        'i am not small',
         ':)',
         'a',
         'b',
@@ -310,7 +312,7 @@ You can chose how options will be shown in the dropdown, with 6 being the defaul
         'g',
         'asdf',
         'fasdfas;',
-        'sdfasdgwrewg',
+        'hello',
         'asdfsadf',
       ],
       name: 'what',
@@ -321,7 +323,10 @@ You can chose how options will be shown in the dropdown, with 6 being the defaul
   >
     {(args) => (
       <Box width="25rem" height="25rem">
-        <FormGroup label="i have three shownOptions" htmlFor="shownOptions02">
+        <FormGroup
+          label="i have three shownOptions but i am small"
+          htmlFor="shownOptions02"
+        >
           <SelectDropdown aria-label="shownOptions02" {...args} />
         </FormGroup>
       </Box>
@@ -331,7 +336,7 @@ You can chose how options will be shown in the dropdown, with 6 being the defaul
     name="shownOptions03"
     args={{
       options: [
-        'i am also small',
+        'i am a little small',
         ':)',
         'a',
         'b',
@@ -340,14 +345,14 @@ You can chose how options will be shown in the dropdown, with 6 being the defaul
         'g',
         'asdf',
         'fasdfas;',
-        'sdfasdgwrewg',
+        'heyyy',
         'asdfsadf',
       ],
       name: 'what',
       isSearchable: true,
-      placeholder: 'no its two...',
+      placeholder: 'its three but small this time',
       size: 'small',
-      shownOptions: 2,
+      shownOptions: 3,
     }}
   >
     {(args) => (
