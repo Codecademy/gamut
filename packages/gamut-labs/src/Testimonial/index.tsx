@@ -70,9 +70,6 @@ export type TestimonialProps = ComponentProps<typeof TestimonialCard> &
      * An avatar portrait
      */
     imageUrl?: string;
-    /**
-     * A long quote to replace the text with at SM viewports and higher.
-     */
     href?: string;
     onClick?: () => void;
     hideAvatar?: boolean;
