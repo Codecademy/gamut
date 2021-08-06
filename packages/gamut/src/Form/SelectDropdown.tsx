@@ -167,9 +167,9 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
       }),
 
       menuList: (provided, state) => {
-        const heightInRem = state.selectProps.shownOptions ?? 6;
+        const numberOfShown = state.selectProps.shownOptions ?? 6;
         const sizeInteger = state.selectProps.size === 'small' ? 2 : 3;
-        const maxHeight = `${heightInRem * sizeInteger}rem`;
+        const maxHeight = `${numberOfShown * sizeInteger}rem`;
         return {
           ...provided,
           maxHeight,
