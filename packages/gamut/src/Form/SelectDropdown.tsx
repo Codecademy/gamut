@@ -141,6 +141,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
       }),
 
       input: (provided, state) => ({
+        ...textColor({ theme }),
         padding: '0',
         margin: '0',
       }),
