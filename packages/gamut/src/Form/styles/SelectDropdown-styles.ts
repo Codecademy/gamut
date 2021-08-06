@@ -71,7 +71,6 @@ export const sizeVariants = (sizeVariant?: 'small' | 'base') => {
 
 export const formDropdownStyles = (error: boolean) => {
   const borderColorTop = error ? 'feedback-error' : 'primary';
-
   return system.css({
     ...formBaseComponentStyles,
     border: 1,

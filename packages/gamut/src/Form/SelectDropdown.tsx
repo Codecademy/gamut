@@ -42,6 +42,7 @@ interface SelectDropdownProps
   name?: string;
   placeholder?: string;
   size?: 'base' | 'small';
+  shownOptions?: 1 | 2 | 3 | 4 | 5 | 6;
 }
 
 type OptionStrict = {
@@ -101,6 +102,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
   inputProps,
   isSearchable = false,
   size = 'base',
+  shownOptions,
   ...rest
 }) => {
   const [activated, setActivated] = useState(false);
@@ -161,6 +163,15 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
         ...formDropdownStyles(state.selectProps.error),
       }),
 
+      menuList: (provided, state) => {
+        const heightInRem = state.selectProps.shownOptions ?? 6;
+        const maxHeight = `${heightInRem * 3.33 + 0.5}rem`;
+        return {
+          ...provided,
+          maxHeight,
+        };
+      },
+
       placeholder: (provided, state) => ({
         ...provided,
         ...placeholderColor,
@@ -211,6 +222,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
       styles={memoizedStyles}
       isSearchable={isSearchable}
       size={size}
+      shownOptions={shownOptions}
       {...rest}
     />
   );
