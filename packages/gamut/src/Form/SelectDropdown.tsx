@@ -180,7 +180,6 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
       }),
 
       option: (provided, state) => ({
-        padding: state.selectProps.size === 'small' ? '3px 14px' : '11px 14px',
         cursor: 'pointer',
         ...optionBackground(state.isSelected, state.isFocused)({ theme }),
       }),
