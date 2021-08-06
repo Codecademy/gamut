@@ -105,7 +105,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
   placeholder = 'Select an option',
   inputProps,
   isSearchable = false,
-  size = 'base',
+  size,
   ...rest
 }) => {
   const [activated, setActivated] = useState(false);
