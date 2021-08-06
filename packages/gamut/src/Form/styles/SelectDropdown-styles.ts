@@ -1,11 +1,9 @@
-import { system, theme } from '@codecademy/gamut-styles';
+import { system } from '@codecademy/gamut-styles';
 
 import {
-  conditionalStyleProps,
   formBaseComponentStyles,
   formBaseFieldStylesObject,
   formFieldDisabledStyles,
-  formFieldFocusStyles,
   formFieldPaddingStyles,
   InputSelectors,
 } from '.';
@@ -14,69 +12,51 @@ export const selectDropdownStyles = system.css({
   ...formBaseFieldStylesObject,
   display: 'flex',
   zIndex: 3,
-})({ theme });
+});
 
-export const conditionalBorderStyles = ({
-  error,
-  activated,
-  isFocused,
-  isDisabled,
-}: conditionalStyleProps) => {
-  if (isDisabled) {
-    return system.css(formFieldDisabledStyles)({ theme });
-  }
+export const selectFocusStyles = {
+  color: 'primary',
+  borderColor: 'currentColor',
+  boxShadow: `inset 0 0 0 1px currentColor`,
+} as const;
 
-  if (error && isFocused) {
-    return system.css({
-      borderColor: 'feedback-error',
-      boxShadow: `inset 0 0 0 1px ${theme.colors['feedback-error']}`,
-
-      [InputSelectors.HOVER]: {
-        borderColor: 'feedback-error',
-      },
-    })({ theme });
-  }
-
-  if (error) {
-    return system.css({
-      borderColor: 'feedback-error',
-
-      [InputSelectors.HOVER]: {
-        borderColor: 'feedback-error',
-      },
-    })({ theme });
-  }
-
-  if (isFocused) {
-    return system.css(formFieldFocusStyles)({ theme });
-  }
-
-  if (activated) {
-    return system.css({
+export const conditionalBorderStates = system.states({
+  isFocused: selectFocusStyles,
+  activated: { borderColor: 'currentColor' },
+  error: {
+    color: 'feedback-error',
+    borderColor: 'currentColor',
+    [InputSelectors.HOVER]: {
       borderColor: 'currentColor',
-    })({ theme });
-  }
-};
+    },
+  },
+  isDisabled: formFieldDisabledStyles,
+});
 
-export const sizeVariants = (sizeVariant?: 'small' | 'base') => {
-  if (sizeVariant === 'small') {
-    return system.css({
-      height: '2rem',
-      px: 8,
-      py: 0,
-    })({ theme });
-  }
-  return system.css(formFieldPaddingStyles)({ theme });
-};
+export type sizeVariantOptions = 'base' | 'small';
 
-export const formDropdownStyles = (error: boolean) => {
-  const borderColorTop = error ? 'feedback-error' : 'primary';
-  return system.css({
-    ...formBaseComponentStyles,
-    border: 1,
-    borderColorTop,
-  })({ theme });
-};
+export const sizeVariants = system.variant({
+  prop: 'size',
+  defaultVariant: 'base',
+  variants: {
+    base: formFieldPaddingStyles,
+    small: { height: '2rem', px: 8, py: 0 },
+  },
+});
+
+export const dropdownBorderStates = system.states({
+  error: { borderColorTop: 'feedback-error' },
+});
+
+export const dropdownBorderStyles = system.css({
+  ...formBaseComponentStyles,
+  border: 1,
+  borderColor: 'currentColor',
+  position: 'absolute',
+  marginTop: 0,
+  borderRadius: 0,
+  zIndex: 2,
+});
 
 export const optionBackground = (isSelected: boolean, isFocused: boolean) => {
   const backgroundColor = isFocused
@@ -84,11 +64,16 @@ export const optionBackground = (isSelected: boolean, isFocused: boolean) => {
     : isSelected
     ? 'background-selected'
     : 'transparent';
+
   return system.css({
     bg: backgroundColor,
-  })({ theme });
+  });
 };
+
+export const textColor = system.css({
+  color: 'text',
+});
 
 export const placeholderColor = system.css({
   color: 'text-disabled',
-})({ theme });
+});
