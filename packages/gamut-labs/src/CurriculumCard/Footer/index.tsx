@@ -19,7 +19,7 @@ export const Footer: React.FC<FooterProps> = ({
   if (!progressState) {
     if (beta) {
       return (
-        <Box position="absolute" bottom={0} right={0} pb={12} pr={12}>
+        <Box position="absolute" bottom={0} right={0} pb={16} pr={16}>
           <BetaSticker />
         </Box>
       );
