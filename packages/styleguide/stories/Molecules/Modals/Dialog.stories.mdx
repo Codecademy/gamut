@@ -14,7 +14,8 @@ import { LinkTo, PropsTable } from '~styleguide/blocks';
     source: 'gamut',
     design: {
       type: 'figma',
-      url: 'https://www.figma.com/file/lIQbbBHl6v80CevfWogVhr',
+      url:
+        'https://www.figma.com/file/PtSjm2jy8jVJICTpDhahzE/Modals?node-id=1%3A87',
     },
   }}
   args={{
@@ -45,8 +46,6 @@ import { LinkTo, PropsTable } from '~styleguide/blocks';
   </Story>
 </Canvas>
 
-<PropsTable story="Dialog" />
-
 ## Usage Guidelines
 
 - Dialogs have a min-width of 400px
@@ -59,6 +58,28 @@ import { LinkTo, PropsTable } from '~styleguide/blocks';
 ## Location
 
 - Dialogs should be centered inside of the window.
+
+## Variants
+
+### Primary
+
+<Canvas>
+  <Story name="Primary" height="600px">
+    {(args) => {
+      return <Dialog {...args} />;
+    }}
+  </Story>
+</Canvas>
+
+### Danger
+
+<Canvas>
+  <Story name="Danger" height="600px" args={{ variant: 'danger' }}>
+    {(args) => {
+      return <Dialog {...args} />;
+    }}
+  </Story>
+</Canvas>
 
 ## Color Modes
 
@@ -88,3 +109,9 @@ Check it out:
     }}
   </Story>
 </Canvas>
+
+## Code Playground
+
+Edit attributes and see what’s possible to do with this component or get the exact output you want.
+
+<PropsTable story="Dialog" />

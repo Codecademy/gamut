@@ -1,22 +1,15 @@
+import { MiniDeleteIcon } from '@codecademy/gamut-icons';
 import React, { ComponentProps } from 'react';
 
-import { MiniDeleteIcon } from '../../../gamut-icons/dist';
 import { Box } from '../Box';
 import { IconButton } from '../Button';
-import { Overlay, OverlayProps } from '../Overlay';
+import { Overlay } from '../Overlay';
 import { Text } from '../Typography';
 import { ModalContainer } from './elements';
+import { ModalBaseProps } from './types';
 
-export type ModalOverlayProps = Pick<
-  OverlayProps,
-  'isOpen' | 'onRequestClose' | 'clickOutsideCloses' | 'escapeCloses'
->;
-
-export interface ModalProps extends ModalOverlayProps {
-  className?: string;
+export interface ModalProps extends ModalBaseProps {
   size?: ComponentProps<typeof ModalContainer>['size'];
-  title: React.ReactNode;
-  children: React.ReactNode;
   /**
    * Whether to hide the default close button and pass your own through children
    */
@@ -27,6 +20,7 @@ export const Modal: React.FC<ModalProps> = ({
   children,
   title,
   className,
+  size = 'fluid',
   onRequestClose,
   showCloseButton = true,
   ...rest
@@ -44,6 +38,7 @@ export const Modal: React.FC<ModalProps> = ({
         aria-modal="true"
         role="dialog"
         layout="standard"
+        size={size}
       >
         {title && (
           <Text as="h2" fontSize={20} lineHeight="base" gridArea="title">
@@ -55,7 +50,6 @@ export const Modal: React.FC<ModalProps> = ({
             aria-label="Close Dialog"
             size="small"
             alignSelf="start"
-            variant="secondary"
             icon={MiniDeleteIcon}
             onClick={onRequestClose}
             gridArea="close"

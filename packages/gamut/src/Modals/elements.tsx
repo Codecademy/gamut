@@ -7,9 +7,13 @@ import { FloatingCard } from '../FloatingCard/FloatingCard';
 const sizeVariant = variant({
   prop: 'size',
   defaultVariant: 'small',
+  base: { maxWidth: 'calc(100vw - 4rem)', maxHeight: 'calc(100vh - 4rem)' },
   variants: {
     small: { width: '400px', minHeight: '170px' },
     medium: { width: '540px', minHeight: '240px' },
+    fluid: {
+      width: 'max-content',
+    },
   },
 });
 

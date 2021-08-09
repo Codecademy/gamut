@@ -1,9 +1,4 @@
-import {
-  ButtonDeprecated,
-  Container,
-  Overlay,
-  Text,
-} from '@codecademy/gamut/src';
+import { Container, FillButton, Overlay, Text } from '@codecademy/gamut/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
@@ -19,16 +14,17 @@ import { useState } from '@storybook/addons';
   }}
 />
 
-Unlike the legacy `ModalDeprecated` implementations in the monolith, this: -always
-assumes viewport is locked, by making content `position: fixed` - cannot override
-contentProps, animation, or shouldFocusOnMount.
+Unlike the legacy `Modal` implementations in the monolith, this:
+
+- always assumes viewport is locked, by making content `position: fixed`
+- cannot override contentProps, animation, or shouldFocusOnMount.
 
 Use this overlay only for actual 'overlay' content that takes
 up the full screen. Do not use it for dropdowns or other small
 interactive items.
 
 Note that this atom does not come with styles defined. If you need styles such as
-a background behind content, see `ModalDeprecated`.
+a background behind content, see `Modal` for general modals and `Dialog` for confirmation flows.
 
 <Canvas>
   <Story name="Overlay">
@@ -36,9 +32,7 @@ a background behind content, see `ModalDeprecated`.
       const [open, setOpen] = useState(false);
       return (
         <>
-          <ButtonDeprecated onClick={() => setOpen(true)}>
-            Open Overlay
-          </ButtonDeprecated>
+          <FillButton onClick={() => setOpen(true)}>Open Overlay</FillButton>
           <Container>
             <Overlay
               {...args}
@@ -48,9 +42,9 @@ a background behind content, see `ModalDeprecated`.
             >
               <Container>
                 <Text size={48}>Hooray!</Text>
-                <ButtonDeprecated onClick={() => setOpen(false)}>
+                <FillButton onClick={() => setOpen(false)}>
                   Close Overlay
-                </ButtonDeprecated>
+                </FillButton>
               </Container>
             </Overlay>
           </Container>
@@ -59,5 +53,9 @@ a background behind content, see `ModalDeprecated`.
     }}
   </Story>
 </Canvas>
+
+## Code Playground
+
+Edit attributes and see what’s possible to do with this component or get the exact output you want.
 
 <PropsTable story="Overlay" />

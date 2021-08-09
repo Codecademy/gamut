@@ -1,0 +1,119 @@
+import { FillButton, FlexBox, Modal, Overlay } from '@codecademy/gamut/src';
+import title from '@codecademy/macros/lib/title.macro';
+import { PropsTable } from '@codecademy/storybook-addon-variance';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import LinkTo from '@storybook/addon-links/react';
+
+<Meta
+  title={title}
+  component={Modal}
+  parameters={{
+    subtitle: `Simple Modal portal to escape current DOM Context.`,
+    status: 'current',
+    source: 'gamut',
+    design: {
+      type: 'figma',
+      url:
+        'https://www.figma.com/file/PtSjm2jy8jVJICTpDhahzE/Modals?node-id=1%3A87',
+    },
+  }}
+  args={{
+    title: 'Modal Modality',
+    size: 'small',
+    inline: true,
+    isOpen: true,
+    children: 'Waffles a la modal',
+  }}
+/>
+
+<Canvas>
+  <Story name="Modal" height="600px">
+    {(args) => <Modal {...args} />}
+  </Story>
+</Canvas>
+
+> For flows with clear confirm / cancellation paths please prefer <LinkTo kind="Molecules/Dialog" story="Dialog">Dialog</LinkTo> instead.
+
+### Creating a custom close button
+
+By default, the Modal will render a close button.
+
+You can disable the default close button with the `showCloseButton` prop by setting it to false.
+
+You can then use the `isOpen` prop to create other controls that toggle the Modal on and off.
+
+<Canvas>
+  <Story
+    name="Without Close Default"
+    args={{ showCloseButton: false }}
+    height="600px"
+  >
+    {(args) => <Modal {...args} />}
+  </Story>
+</Canvas>
+
+### Alternative closing methods
+
+Other than creating buttons that can close the Modal, there are other ways a Modal can be closed by the user.
+
+1. Clicking the content outside of the Modal
+2. Clicking the escape key on their keyboard
+
+All of these methods default to true for accessibility reasons, and rely on setting the required `onRequestClose` prop and making sure it toggles the `isOpen` prop on the Modal.
+
+<Canvas>
+  <Story
+    name="Clicking Outside"
+    args={{
+      title: undefined,
+      showCloseButton: false,
+      children: (
+        <FlexBox center fit>
+          <FillButton>Better remember to put me in!</FillButton>
+        </FlexBox>
+      ),
+    }}
+    height="600px"
+  >
+    {(args) => <Modal {...args} />}
+  </Story>
+</Canvas>
+
+### Size variants
+
+#### Small
+
+<Canvas>
+  <Story name="Small" args={{ size: 'small' }} height="600px">
+    {(args) => <Modal {...args} />}
+  </Story>
+</Canvas>
+
+#### Medium
+
+<Canvas>
+  <Story name="Medium" args={{ size: 'medium' }} height="600px">
+    {(args) => <Modal {...args} />}
+  </Story>
+</Canvas>
+
+#### Fluid
+
+<Canvas>
+  <Story
+    name="Fluid"
+    args={{
+      size: 'fluid',
+      children: <FlexBox height="500px" width="800px" bg="beige" />,
+    }}
+    height="600px"
+  >
+    {(args) => <Modal {...args} />}
+  </Story>
+</Canvas>
+
+### Code Playground
+
+Edit attributes and see what’s possible to do with this component or get the exact output you want.
+
+<PropsTable components={{ Modal, Overlay }} />

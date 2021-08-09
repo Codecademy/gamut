@@ -3,18 +3,14 @@ import React from 'react';
 
 import { Box } from '../Box';
 import { FillButton, IconButton, TextButton } from '../Button';
-import { Overlay, OverlayProps } from '../Overlay';
+import { Overlay } from '../Overlay';
 import { Text } from '../Typography';
 import { ModalContainer, ModalContainerProps } from './elements';
+import { ModalBaseProps } from './types';
 
-export interface DialogProps
-  extends Pick<
-      OverlayProps,
-      'isOpen' | 'onRequestClose' | 'clickOutsideCloses' | 'escapeCloses'
-    >,
-    Pick<ModalContainerProps, 'size'> {
-  title: React.ReactNode;
-  children: React.ReactNode;
+export interface DialogProps extends ModalBaseProps {
+  title: ModalBaseProps['title'];
+  size?: Exclude<ModalContainerProps['size'], 'fluid'>;
   confirmCta: {
     children: React.ReactNode;
     onClick?: () => void;
@@ -60,7 +56,6 @@ export const Dialog: React.FC<DialogProps> = ({
           aria-label="Close Dialog"
           size="small"
           alignSelf="start"
-          variant="secondary"
           icon={MiniDeleteIcon}
           onClick={onCancel}
           gridArea="close"
