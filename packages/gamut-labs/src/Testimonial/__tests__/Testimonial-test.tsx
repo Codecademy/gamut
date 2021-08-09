@@ -1,4 +1,5 @@
-import { setupRtl } from '../../../../gamut-tests/dist';
+import { setupRtl } from '@codecademy/gamut-tests';
+
 import { Testimonial, TestimonialProps } from '..';
 
 describe('Testimonial', () => {
