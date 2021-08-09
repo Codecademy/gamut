@@ -59,7 +59,6 @@ export type TestimonialProps = ComponentProps<typeof TestimonialCard> &
   ComponentProps<typeof TestimonialContent> & {
     firstName: string;
     lastName: string;
-    occupation?: string;
     quote: string;
     longQuote: string;
     /**
@@ -67,16 +66,26 @@ export type TestimonialProps = ComponentProps<typeof TestimonialCard> &
      */
     location: string;
     /**
+     * associated occupation of the person.
+     */
+    occupation?: string;
+    /**
      * Associated workplace or institution
      */
     company?: string;
     /**
-     * Portrait image href
+     * Portrait image src
      */
     imageUrl?: string;
+    /**
+     * setting this href will wrap the testimonial card with an anchor tag.
+     */
     href?: string;
-    onClick?: () => void;
+    /**
+     * used to conditonally hide the portrait photo
+     */
     hidePhoto?: boolean;
+    onClick?: () => void;
   };
 
 export const Testimonial: React.FC<TestimonialProps> = ({
