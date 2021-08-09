@@ -60,7 +60,7 @@ export type TestimonialProps = ComponentProps<typeof TestimonialCard> &
     firstName: string;
     lastName: string;
     occupation?: string;
-    shortQuote: string;
+    quote: string;
     longQuote: string;
     /**
      * City location
@@ -96,50 +96,56 @@ export const Testimonial: React.FC<TestimonialProps> = ({
 }) => {
   const isVerticleLayout = variant === 'vertical';
 
-  return (
-    <Anchor href={href} variant="interface" onClick={onClick}>
-      <TestimonialCard
-        {...rest}
-        p={32}
-        minWidth="22rem"
-        width="100%"
-        height="100%"
-        mode={mode}
-      >
-        <TestimonialContent variant={variant}>
-          {!hidePhoto && imageUrl && (
-            <TestimonialPicture
-              data-testid="testimonial-photo"
-              src={imageUrl}
-              alt="testimonial"
-            />
-          )}
-          <Box
-            my={{ _: 'auto', md: isVerticleLayout && !hidePhoto ? 'auto' : 0 }}
-            mr={32}
-            gridArea={!hidePhoto ? 'byline' : 'avatar'}
-          >
-            <Text variant="p-small" as="p" fontFamily="accent">
-              {`${firstName} ${lastName[0]}.`}
-            </Text>
-            <Text variant="p-small" as="p" fontFamily="accent">
-              {occupation}
-            </Text>
-            <Text variant="p-small" as="p" fontFamily="accent">
-              {`@ ${company}${location ? `, ${location}` : ''}`}
-            </Text>
-          </Box>
-          <QuoteArt src={darkQuotes} />
-          <Text
-            pt={{ _: 0, md: isVerticleLayout ? 0 : 4 }}
-            gridArea="text"
-            variant="title-md"
-            as="p"
-          >
-            {quote}
+  const renderTestimonial = () => (
+    <TestimonialCard
+      {...rest}
+      p={32}
+      minWidth="22rem"
+      width="100%"
+      height="100%"
+      mode={mode}
+    >
+      <TestimonialContent variant={variant}>
+        {!hidePhoto && imageUrl && (
+          <TestimonialPicture
+            data-testid="testimonial-photo"
+            src={imageUrl}
+            alt="testimonial"
+          />
+        )}
+        <Box
+          my={{ _: 'auto', md: isVerticleLayout && !hidePhoto ? 'auto' : 0 }}
+          mr={32}
+          gridArea={!hidePhoto ? 'byline' : 'avatar'}
+        >
+          <Text variant="p-small" as="p" fontFamily="accent">
+            {`${firstName} ${lastName[0]}.`}
           </Text>
-        </TestimonialContent>
-      </TestimonialCard>
+          <Text variant="p-small" as="p" fontFamily="accent">
+            {occupation}
+          </Text>
+          <Text variant="p-small" as="p" fontFamily="accent">
+            {`@ ${company}${location ? `, ${location}` : ''}`}
+          </Text>
+        </Box>
+        <QuoteArt src={darkQuotes} />
+        <Text
+          pt={{ _: 0, md: isVerticleLayout ? 0 : 4 }}
+          gridArea="text"
+          variant="title-md"
+          as="p"
+        >
+          {quote}
+        </Text>
+      </TestimonialContent>
+    </TestimonialCard>
+  );
+
+  const renderTestimonialWithAnchor = () => (
+    <Anchor href={href} variant="interface" onClick={onClick}>
+      {renderTestimonial()}
     </Anchor>
   );
+
+  return href ? renderTestimonialWithAnchor() : renderTestimonial();
 };
