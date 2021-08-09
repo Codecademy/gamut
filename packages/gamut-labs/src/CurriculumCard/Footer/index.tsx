@@ -1,7 +1,6 @@
-import { FlexBox, Text } from '@codecademy/gamut';
+import { BetaSticker, Box, FlexBox, Text } from '@codecademy/gamut';
 import React from 'react';
 
-import { BottomBetaSticker } from '../BottomBetaSticker';
 import { BottomTag, TagColor } from '../BottomTag/index';
 
 export type FooterProps = {
@@ -19,7 +18,11 @@ export const Footer: React.FC<FooterProps> = ({
 }) => {
   if (!progressState) {
     if (beta) {
-      return <BottomBetaSticker />;
+      return (
+        <Box position="absolute" bottom={0} right={0} pb={12} pr={12}>
+          <BetaSticker />
+        </Box>
+      );
     }
     if (tag && tagColor) {
       return <BottomTag text={tag} color={tagColor} />;
