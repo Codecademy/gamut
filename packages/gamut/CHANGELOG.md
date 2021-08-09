@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [35.14.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@35.13.0...@codecademy/gamut@35.14.0) (2021-08-09)
+
+
+### Features
+
+* Badge Variant Text Color Edit ([43846a6](https://github.com/Codecademy/client-modules/commit/43846a633f51ceaf227f434cb656dc3d98c8f35a))
+
+
+
 ## [35.13.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@35.12.3...@codecademy/gamut@35.13.0) (2021-08-09)
 
 
