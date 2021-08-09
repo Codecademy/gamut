@@ -45,7 +45,10 @@
       "packages/*"
     ],
     "nohoist": [
-      "**/@storybook/**"
+      "**/@storybook",
+      "**/@storybook/**",
+      "**/storybook-addon-designs",
+      "**/storybook-addon-designs/**"
     ]
   },
   "dependencies": {

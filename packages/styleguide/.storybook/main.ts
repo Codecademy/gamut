@@ -20,6 +20,7 @@ module.exports = {
     '@storybook/addon-a11y',
     '@storybook/addon-links',
     './addons/system/preset',
+    'storybook-addon-designs',
   ],
   stories: getStories(),
   typescript: {
