@@ -151,7 +151,12 @@ export const Testimonial: React.FC<TestimonialProps> = ({
   );
 
   const renderTestimonialWithAnchor = () => (
-    <Anchor href={href} variant="interface" onClick={onClick}>
+    <Anchor
+      data-testid="testimonial-link"
+      href={href}
+      variant="interface"
+      onClick={onClick}
+    >
       {renderTestimonial()}
     </Anchor>
   );
