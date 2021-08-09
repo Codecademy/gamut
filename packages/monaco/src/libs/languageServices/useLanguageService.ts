@@ -1,32 +1,12 @@
 import type { editor as Editor } from 'monaco-editor';
 import { useEffect, useState } from 'react';
 
-// TODO add missing languages
 import { getLanguageForFile } from '../getLanguage';
-import { LanguageIds } from '../services/languageIds';
+import { importedLanguages } from '.';
 import { LanguageServices } from './LanguageService';
 import { LanguageRegistration, Monaco } from './types';
 
-const languageServices = new LanguageServices(
-  new Map([
-    // [codecademyCpp, () => import('../services/cpp')],
-    // [codecademyCSharp, () => import('../services/csharp')],
-    // [codecademyCss, () => import('../services/css')],
-    // [codecademyGo, () => import('../services/go')],
-    // [codecademyHtml, () => import('../services/html')],
-    // [codecademyJava, () => import('../services/java')],
-    [LanguageIds.codecademyJs, () => import('../services/javascript')],
-    // [codecademyKotlin, () => import('../services/kotlin')],
-    // [codecademyPhp, () => import('../services/php')],
-    // [codecademyPython, () => import('../services/python')],
-    // [codecademyR, () => import('../services/r')],
-    // [codecademyRazor, () => import('../services/razor')],
-    // [codecademyRuby, () => import('../services/ruby')],
-    // [codecademyScss, () => import('../services/scss')],
-    // [codecademySql, () => import('../services/sql')],
-    // [codecademySwift, () => import('../services/swift')],
-  ])
-);
+const languageServices = new LanguageServices(importedLanguages);
 
 export type LanguageService = {
   id?: string;

@@ -1,14 +1,14 @@
-import { deprecatedColors } from '@codecademy/gamut-styles';
+import { theme } from '@codecademy/gamut-styles';
 import { css } from '@emotion/react';
 
 const lintDecoration = css`
-  background-color: ${deprecatedColors.red[500]};
+  background-color: ${theme.colors.red[500]};
   transform: scaleY(0.85);
 `;
 const lintGlyph = css`
   ::after {
     content: ' ';
-    background-color: ${deprecatedColors.red[500]};
+    background-color: ${theme.colors.red[500]};
     border-radius: 100%;
     display: block;
     height: 10px;
@@ -16,7 +16,7 @@ const lintGlyph = css`
   }
 `;
 const lintedText = css`
-  color: ${deprecatedColors.white};
+  color: ${theme.colors.white};
 `;
 export type RawValidationComplaint = {
   col: number;
