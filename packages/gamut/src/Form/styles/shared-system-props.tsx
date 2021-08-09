@@ -225,8 +225,20 @@ export const checkboxLabel = system.css({
   cursor: 'pointer',
   m: 4,
   px: 0,
-  py: 16,
   ...formBaseStyles,
+});
+
+export const checkboxPadding = system.variant({
+  defaultVariant: 'base',
+  prop: 'spacing',
+  variants: {
+    base: {
+      py: 16,
+    },
+    tight: {
+      py: 4,
+    },
+  },
 });
 
 export const checkboxLabelStates = system.states({

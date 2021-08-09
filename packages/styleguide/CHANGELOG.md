@@ -3,6 +3,71 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [42.7.7](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@42.7.6...@codecademy/styleguide@42.7.7) (2021-08-09)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [42.7.6](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@42.7.5...@codecademy/styleguide@42.7.6) (2021-08-09)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [42.7.5](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@42.7.4...@codecademy/styleguide@42.7.5) (2021-08-09)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [42.7.4](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@42.7.3...@codecademy/styleguide@42.7.4) (2021-08-09)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [42.7.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@42.7.2...@codecademy/styleguide@42.7.3) (2021-08-06)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [42.7.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@42.7.1...@codecademy/styleguide@42.7.2) (2021-08-05)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [42.7.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@42.7.0...@codecademy/styleguide@42.7.1) (2021-08-05)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [42.7.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@42.6.7...@codecademy/styleguide@42.7.0) (2021-08-05)
+
+
+### Features
+
+* tight variant for Checkbox ([6d6857a](https://github.com/Codecademy/client-modules/commit/6d6857ac3664a4c257cec8b774e10057cd85c1ee))
+
+
+
 ### [42.6.7](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@42.6.6...@codecademy/styleguide@42.6.7) (2021-08-04)
 
 **Note:** Version bump only for package @codecademy/styleguide
