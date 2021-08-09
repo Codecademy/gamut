@@ -25,7 +25,7 @@ const badgeVariants = variant({
     },
     yellow: {
       bg: 'feedback-warning',
-      textColor: 'black',
+      textColor: 'navy',
     },
     grey: {
       bg: `navy-500`,
