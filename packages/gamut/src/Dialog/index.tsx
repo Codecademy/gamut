@@ -11,10 +11,11 @@ import { Text } from '../Typography';
 
 const ShroudedOverlay = styled(Overlay)(system.css({ bg: 'shadow-opaque' }));
 
-type DialogButtonProps = Pick<
-  ComponentProps<typeof FillButton>,
-  'href' | 'onClick' | 'children'
->;
+interface DialogButtonProps {
+ children: FillButton['children'];
+ onClick?: FillButton['onClick'];
+ href?: FillButton['href'];
+};
 export interface DialogProps
   extends Pick<
     OverlayProps,
