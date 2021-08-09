@@ -185,6 +185,20 @@ export const notifications = (
   };
 };
 
+/**
+ * Note: this is currently experimental!
+ * This will be cleaned up as part of EGG-1644.
+ */
+export const favorites = (
+  renderFavorites: () => ReactNode
+): AppHeaderRenderElementItem => {
+  return {
+    id: 'favorites',
+    renderElement: renderFavorites,
+    type: 'render-element',
+  };
+};
+
 const profileMyProfile: AppHeaderLinkItem = {
   id: 'my-profile',
   icon: PersonIcon,

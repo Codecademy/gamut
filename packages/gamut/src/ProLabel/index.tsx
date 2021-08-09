@@ -34,9 +34,10 @@ const placementVariants = variant({
 
 const modeVariants = variant({
   prop: 'mode',
+  base: { textColor: 'background-current' },
   variants: {
-    light: { bg: 'navy', textColor: 'beige' },
-    dark: { bg: 'beige', textColor: 'navy' },
+    light: { bg: 'navy' },
+    dark: { bg: 'beige' },
   },
 });
 

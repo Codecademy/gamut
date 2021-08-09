@@ -3,6 +3,39 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [5.8.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@5.8.0...@codecademy/gamut-icons@5.8.1) (2021-08-05)
+
+**Note:** Version bump only for package @codecademy/gamut-icons
+
+
+
+
+
+## [5.8.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@5.7.5...@codecademy/gamut-icons@5.8.0) (2021-08-03)
+
+
+### Features
+
+* **Favorites:** allow global header to receive favorites section ([f1d45fc](https://github.com/Codecademy/client-modules/commit/f1d45fc444f6858db69b6031511ea9d33ff9fa42))
+
+
+
+### [5.7.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@5.7.4...@codecademy/gamut-icons@5.7.5) (2021-08-03)
+
+**Note:** Version bump only for package @codecademy/gamut-icons
+
+
+
+
+
+### [5.7.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@5.7.3...@codecademy/gamut-icons@5.7.4) (2021-07-29)
+
+**Note:** Version bump only for package @codecademy/gamut-icons
+
+
+
+
+
 ### [5.7.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@5.7.2...@codecademy/gamut-icons@5.7.3) (2021-07-19)
 
 **Note:** Version bump only for package @codecademy/gamut-icons

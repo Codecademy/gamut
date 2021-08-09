@@ -81,7 +81,7 @@ const InputElement = styled.input<StyledInputProps>`
 
 const inputStates = {
   error: {
-    color: 'danger',
+    color: 'feedback-error',
     icon: AlertIcon,
   },
   valid: {

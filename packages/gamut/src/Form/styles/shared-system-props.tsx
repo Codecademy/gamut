@@ -104,13 +104,13 @@ export const formFieldStyles = system.css({
 export const conditionalStyles = system.variant({
   variants: {
     error: {
-      borderColor: 'danger',
+      borderColor: 'feedback-error',
       [InputSelectors.HOVER]: {
-        borderColor: 'danger-hover',
+        borderColor: 'feedback-error',
       },
       [InputSelectors.FOCUS]: {
-        borderColor: 'danger-hover',
-        boxShadow: `inset 0 0 0 1px ${theme.colors['danger-hover']}`,
+        borderColor: 'feedback-error',
+        boxShadow: `inset 0 0 0 1px ${theme.colors['feedback-error']}`,
       },
     },
     activated: { borderColor: 'currentColor' },
@@ -186,7 +186,7 @@ export const conditionalRadioLabelStyles = system.variant({
   variants: {
     error: {
       [InputSelectors.BEFORE_AND_AFTER]: {
-        color: 'danger',
+        color: 'feedback-error',
       },
     },
     disabled: {
@@ -225,8 +225,20 @@ export const checkboxLabel = system.css({
   cursor: 'pointer',
   m: 4,
   px: 0,
-  py: 16,
   ...formBaseStyles,
+});
+
+export const checkboxPadding = system.variant({
+  defaultVariant: 'base',
+  prop: 'spacing',
+  variants: {
+    base: {
+      py: 16,
+    },
+    tight: {
+      py: 4,
+    },
+  },
 });
 
 export const checkboxLabelStates = system.states({
