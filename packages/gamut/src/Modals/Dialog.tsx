@@ -1,22 +1,18 @@
 import { MiniDeleteIcon } from '@codecademy/gamut-icons';
-import { system } from '@codecademy/gamut-styles';
-import styled from '@emotion/styled';
-import React, { ComponentProps } from 'react';
+import React from 'react';
 
 import { Box } from '../Box';
 import { FillButton, IconButton, TextButton } from '../Button';
-import { FloatingCard } from '../FloatingCard/FloatingCard';
 import { Overlay, OverlayProps } from '../Overlay';
 import { Text } from '../Typography';
-
-const ShroudedOverlay = styled(Overlay)(system.css({ bg: 'shadow-opaque' }));
+import { ModalContainer, ModalContainerProps } from './elements';
 
 export interface DialogProps
   extends Pick<
-    OverlayProps,
-    'isOpen' | 'onRequestClose' | 'clickOutsideCloses' | 'escapeCloses'
-  > {
-  size?: ComponentProps<typeof DialogContainer>['size'];
+      OverlayProps,
+      'isOpen' | 'onRequestClose' | 'clickOutsideCloses' | 'escapeCloses'
+    >,
+    Pick<ModalContainerProps, 'size'> {
   title: React.ReactNode;
   children: React.ReactNode;
   confirmCta: {
@@ -28,28 +24,6 @@ export interface DialogProps
     onClick?: () => void;
   };
 }
-
-const DialogContainer = styled(FloatingCard)(
-  system.variant({
-    prop: 'size',
-    defaultVariant: 'small',
-    base: {
-      display: 'grid',
-      p: 24,
-      rowGap: 12,
-      columnGap: 16,
-      gridTemplateColumns: '1fr min-content 2rem',
-      gridTemplateRows: 'max-content 1fr max-content',
-      gridTemplateAreas: `'title title close'
-  'content content content'
-  'cancel confirm confirm'`,
-    },
-    variants: {
-      small: { width: '400px', minHeight: '170px' },
-      medium: { width: '540px', minHeight: '240px' },
-    },
-  })
-);
 
 export const Dialog: React.FC<DialogProps> = ({
   title,
@@ -71,12 +45,13 @@ export const Dialog: React.FC<DialogProps> = ({
   };
 
   return (
-    <ShroudedOverlay onRequestClose={onCancel} {...rest}>
-      <DialogContainer
+    <Overlay shroud onRequestClose={onCancel} {...rest}>
+      <ModalContainer
         size={size}
         aria-hidden="false"
         aria-modal="true"
         role="dialog"
+        layout="dialog"
       >
         <Text as="h2" fontSize={20} lineHeight="base" gridArea="title">
           {title}
@@ -102,7 +77,7 @@ export const Dialog: React.FC<DialogProps> = ({
           />
         )}
         <FillButton {...confirmCta} onClick={onConfirm} gridArea="confirm" />
-      </DialogContainer>
-    </ShroudedOverlay>
+      </ModalContainer>
+    </Overlay>
   );
 };

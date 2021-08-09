@@ -1,0 +1,47 @@
+import { variant } from '@codecademy/gamut-styles';
+import { StyleProps } from '@codecademy/variance';
+import styled from '@emotion/styled';
+
+import { FloatingCard } from '../FloatingCard/FloatingCard';
+
+const sizeVariant = variant({
+  prop: 'size',
+  defaultVariant: 'small',
+  variants: {
+    small: { width: '400px', minHeight: '170px' },
+    medium: { width: '540px', minHeight: '240px' },
+  },
+});
+
+const layoutVariant = variant({
+  prop: 'layout',
+  defaultVariant: 'standard',
+  base: {
+    display: 'grid',
+    p: 24,
+    rowGap: 12,
+    columnGap: 16,
+    gridTemplateColumns: '1fr min-content 2rem',
+    gridTemplateRows: 'max-content 1fr max-content',
+  },
+  variants: {
+    standard: {
+      gridTemplateAreas: `'title title close'
+      'content content content'
+      'content content content'`,
+    },
+    dialog: {
+      gridTemplateAreas: `'title title close'
+      'content content content'
+      'cancel confirm confirm'`,
+    },
+  },
+});
+export interface ModalContainerProps
+  extends StyleProps<typeof sizeVariant>,
+    StyleProps<typeof layoutVariant> {}
+
+export const ModalContainer = styled(FloatingCard)<ModalContainerProps>(
+  sizeVariant,
+  layoutVariant
+);
