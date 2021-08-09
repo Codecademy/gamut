@@ -59,20 +59,24 @@ export type TestimonialProps = ComponentProps<typeof TestimonialCard> &
   ComponentProps<typeof TestimonialContent> & {
     firstName: string;
     lastName: string;
-    occupation: string;
-    quote: string;
+    occupation?: string;
+    shortQuote: string;
+    longQuote: string;
+    /**
+     * City location
+     */
     location: string;
     /**
      * Associated workplace or institution
      */
     company?: string;
     /**
-     * An avatar portrait
+     * Portrait image href
      */
     imageUrl?: string;
     href?: string;
     onClick?: () => void;
-    hideAvatar?: boolean;
+    hidePhoto?: boolean;
   };
 
 export const Testimonial: React.FC<TestimonialProps> = ({
@@ -84,7 +88,7 @@ export const Testimonial: React.FC<TestimonialProps> = ({
   href,
   quote,
   onClick,
-  hideAvatar,
+  hidePhoto,
   imageUrl,
   variant,
   mode,
@@ -103,13 +107,17 @@ export const Testimonial: React.FC<TestimonialProps> = ({
         mode={mode}
       >
         <TestimonialContent variant={variant}>
-          {!hideAvatar && (
-            <TestimonialPicture src={imageUrl} alt="testimonial" />
+          {!hidePhoto && imageUrl && (
+            <TestimonialPicture
+              data-testid="testimonial-photo"
+              src={imageUrl}
+              alt="testimonial"
+            />
           )}
           <Box
-            my={{ _: 'auto', md: isVerticleLayout && !hideAvatar ? 'auto' : 0 }}
+            my={{ _: 'auto', md: isVerticleLayout && !hidePhoto ? 'auto' : 0 }}
             mr={32}
-            gridArea={!hideAvatar ? 'byline' : 'avatar'}
+            gridArea={!hidePhoto ? 'byline' : 'avatar'}
           >
             <Text variant="p-small" as="p" fontFamily="accent">
               {`${firstName} ${lastName[0]}.`}
