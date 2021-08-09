@@ -23,7 +23,11 @@ import { ColorModeExample } from './examples';
     subtitle: `GridForm is the most efficient way to build and design forms at Codecademy.`,
     source: 'gamut',
     status: 'updating',
-    figmaId: 'ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=1689%3A3910',
+    design: {
+      type: 'figma',
+      url:
+        'https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=1689%3A3910',
+    },
   }}
 />
 
@@ -63,6 +67,7 @@ GridForm provides the following benefits:
             type: 'select',
             validation: {
               required: 'Please select an option',
+              markdown: true,
             },
           },
           {
@@ -1023,6 +1028,36 @@ We call it a "sweet container" so that bots do not immediately detect it as a ho
   </Story>
 </Canvas>
 
+## Markdown Errors
+
+GridForm renders errors through our <LinkTo id="atoms-markdown--basics">Markdown</LinkTo> component so we can optionally add markdown to our validation messages.
+
+<Canvas>
+  <Story name="Markdown Errors">
+    {(args) => (
+      <GridForm
+        fields={[
+          {
+            label: 'there is a markdown error here!',
+            name: 'markdown-error',
+            type: 'email',
+            validation: {
+              required:
+                'This is [an example](https://www.youtube.com/watch?v=5IuRzJRrRpQ) error link.',
+            },
+          },
+        ]}
+        onSubmit={async (values) => {
+          action('Form Submitted')(values);
+        }}
+        submit={{
+          contents: 'Submit',
+        }}
+      />
+    )}
+  </Story>
+</Canvas>
+
 ## `<ColorMode />`
 
 Here's an example using components in context. By toggling dark mode you can see all the colors map to a new color that is accessible for the mode by default.
@@ -1030,3 +1065,62 @@ Here's an example using components in context. By toggling dark mode you can see
 Please note you **cannot** use the deprecated 'business' button type with `ColorMode`.
 
 <ColorModeExample />
+
+## Checkbox Spacing
+
+If you need to checkboxes to fit into a smaller space, you can use our `tight` variant for checkboxes that are a bit closer together.
+
+<Canvas>
+  <Story name="Checkbox Spacing">
+    {(args) => (
+      <GridForm
+        rowGap={0}
+        fields={[
+          {
+            description: 'i am cozy',
+            name: 'cozy-check-0',
+            size: 6,
+            type: 'checkbox',
+            id: 'cozy-check-0',
+            defaultValue: true,
+            spacing: 'tight',
+          },
+          {
+            description: 'i am also cozy',
+            name: 'cozy-check-1',
+            size: 6,
+            type: 'checkbox',
+            id: 'cozy-check-1',
+            defaultValue: true,
+            spacing: 'tight',
+          },
+          {
+            description: 'i am cozy as well',
+            name: 'cozy-check-2',
+            size: 6,
+            type: 'checkbox',
+            id: 'cozy-check-2',
+            defaultValue: true,
+            spacing: 'tight',
+          },
+          {
+            description: 'i am cozy too',
+            name: 'cozy-check-3',
+            size: 6,
+            type: 'checkbox',
+            id: 'cozy-check-3',
+            defaultValue: true,
+            spacing: 'tight',
+          },
+        ]}
+        onSubmit={async (values) => {
+          action('Form Submitted')(values);
+        }}
+        submit={{
+          contents: 'Submit',
+          position: 'right',
+        }}
+      />
+    )}
+  </Story>
+</Canvas>

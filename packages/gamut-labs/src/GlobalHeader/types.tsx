@@ -10,6 +10,11 @@ type RenderNotifications = {
   desktop: () => ReactNode;
   mobile: () => ReactNode;
 };
+
+type RenderFavorites = {
+  desktop: () => ReactNode;
+};
+
 type RenderProfile = { desktop: () => ReactNode; mobile: () => ReactNode };
 
 type BaseHeader = {
@@ -36,6 +41,7 @@ export type User = {
 type LoggedInHeader = BaseHeader & {
   renderNotifications?: RenderNotifications;
   renderProfile?: RenderProfile;
+  renderFavorites?: RenderFavorites;
   user: User;
 };
 

@@ -166,7 +166,7 @@ describe('GridFormInputGroup', () => {
       error: 'It broke',
       isFirstError: true,
     });
-    expect(wrapper.find('span').prop('aria-live')).toEqual('assertive');
+    expect(wrapper.find('ErrorSpan').prop('aria-live')).toEqual('assertive');
   });
 
   it('sets aria-live to off if isFirstError flag is off', () => {
@@ -175,7 +175,7 @@ describe('GridFormInputGroup', () => {
       error: 'It broke',
       isFirstError: false,
     });
-    expect(wrapper.find('span').prop('aria-live')).toEqual('off');
+    expect(wrapper.find('ErrorSpan').prop('aria-live')).toEqual('off');
   });
 
   it('does not create a column for sweet container inputs', () => {

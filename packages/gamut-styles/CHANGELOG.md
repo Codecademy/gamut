@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [11.7.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@11.7.0...@codecademy/gamut-styles@11.7.1) (2021-08-05)
+
+
+### Bug Fixes
+
+* Cards now correctly set color mode for their contents GM-308 ([7621edc](https://github.com/Codecademy/client-modules/commit/7621edc5bfb908b1e26bc8a77933ea0e310d76e7))
+
+
+
+## [11.7.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@11.6.3...@codecademy/gamut-styles@11.7.0) (2021-08-03)
+
+
+### Features
+
+* **Background:** Set current background color to local CSS variable GM-259 ([bbb71e6](https://github.com/Codecademy/client-modules/commit/bbb71e6ef4a0b8d7d10409f81f936693a7b34962))
+
+
+
 ### [11.6.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@11.6.2...@codecademy/gamut-styles@11.6.3) (2021-07-29)
 
 
