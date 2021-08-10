@@ -67,9 +67,10 @@ describe('Select', () => {
     expect(options.first().getDOMNode()).toHaveStyle('padding : 3px 14px');
   });
 
-  it.only('renders a dropdown with the correct maxHeight when shownOptions is specified', () => {
+  it('renders a dropdown with the correct maxHeight when shownOptions is specified', () => {
     const { wrapper } = renderWrapper({
       options: selectOptionsObject,
+      shownOptions: 4,
     });
 
     wrapper.find('DropdownIndicator').first().simulate('mouseDown', {
@@ -77,6 +78,21 @@ describe('Select', () => {
     });
 
     const menuList = wrapper.find('MenuList');
-    expect(menuList.getDOMNode()).toHaveStyle('max-height : 18rem');
+    expect(menuList.getDOMNode()).toHaveStyle('max-height : 12rem');
+  });
+
+  it('renders a dropdown with the correct maxHeight when shownOptions is specified + size is "small"', () => {
+    const { wrapper } = renderWrapper({
+      options: selectOptionsObject,
+      shownOptions: 4,
+      size: 'small',
+    });
+
+    wrapper.find('DropdownIndicator').first().simulate('mouseDown', {
+      button: 0,
+    });
+
+    const menuList = wrapper.find('MenuList');
+    expect(menuList.getDOMNode()).toHaveStyle('max-height : 8rem');
   });
 });
