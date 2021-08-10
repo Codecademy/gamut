@@ -1,4 +1,11 @@
-import { FillButton, FlexBox, Modal, Overlay } from '@codecademy/gamut/src';
+import {
+  Column,
+  FillButton,
+  FlexBox,
+  LayoutGrid,
+  Modal,
+  Overlay,
+} from '@codecademy/gamut/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
@@ -27,7 +34,7 @@ import LinkTo from '@storybook/addon-links/react';
 />
 
 <Canvas>
-  <Story name="Modal" height="600px">
+  <Story name="Modal" height="350px">
     {(args) => <Modal {...args} />}
   </Story>
 </Canvas>
@@ -46,7 +53,7 @@ You can then use the `isOpen` prop to create other controls that toggle the Moda
   <Story
     name="Without Close Default"
     args={{ showCloseButton: false }}
-    height="600px"
+    height="350px"
   >
     {(args) => <Modal {...args} />}
   </Story>
@@ -73,44 +80,56 @@ All of these methods default to true for accessibility reasons, and rely on sett
         </FlexBox>
       ),
     }}
-    height="600px"
+    height="350px"
   >
     {(args) => <Modal {...args} />}
   </Story>
 </Canvas>
 
-### Size variants
+## Size variants
 
-#### Small
+<LayoutGrid gap={24} mt={32}>
+<Column size={6} display="block">
+
+### Small
 
 <Canvas>
-  <Story name="Small" args={{ size: 'small' }} height="600px">
+  <Story name="Small" args={{ size: 'small' }} height="350px">
     {(args) => <Modal {...args} />}
   </Story>
 </Canvas>
 
-#### Medium
+</Column>
+<Column size={6}  display="block">
+
+### Medium
 
 <Canvas>
-  <Story name="Medium" args={{ size: 'medium' }} height="600px">
+  <Story name="Medium" args={{ size: 'medium' }} height="350px">
     {(args) => <Modal {...args} />}
   </Story>
 </Canvas>
 
-#### Fluid
+</Column>
+<Column>
+
+### Fluid
 
 <Canvas>
   <Story
     name="Fluid"
     args={{
       size: 'fluid',
-      children: <FlexBox height="500px" width="800px" bg="beige" />,
+      children: <FlexBox height="350px" width="800px" bg="beige" />,
     }}
-    height="600px"
+    height="500px"
   >
     {(args) => <Modal {...args} />}
   </Story>
 </Canvas>
+
+</Column>
+</LayoutGrid>
 
 ### Code Playground
 
