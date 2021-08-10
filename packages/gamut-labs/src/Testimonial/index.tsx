@@ -60,7 +60,6 @@ export type TestimonialProps = ComponentProps<typeof TestimonialCard> &
     firstName: string;
     lastName: string;
     quote: string;
-    longQuote: string;
     /**
      * City location
      */

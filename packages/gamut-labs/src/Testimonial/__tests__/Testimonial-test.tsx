@@ -8,10 +8,9 @@ describe('Testimonial', () => {
     lastName: 'Moltisanti',
     imageUrl: 'okthen',
     href: 'bloip',
-    quote: "He's the hair apparent",
     location: 'New Jersey',
     occupation: 'Waste Management',
-    longQuote:
+    quote:
       "Like everybody starts out somewheres. and they do something, something gets done to them and it changes their life. That's called an arc. Where's my arc?",
   };
   const renderView = setupRtl(Testimonial, defaultProps);
