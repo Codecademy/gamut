@@ -13,6 +13,9 @@ const selectOptionsObject = {
   red: 'red',
   yellow: 'yellow',
   green: 'green',
+  blue: 'blue',
+  teal: 'teal',
+  orange: 'orange',
 };
 
 const renderWrapper = setupEnzyme(SelectDropdown, {
@@ -62,5 +65,19 @@ describe('Select', () => {
     const options = wrapper.find('Option');
     expect(dropdown.getDOMNode()).toHaveStyle('height : 2rem');
     expect(options.first().getDOMNode()).toHaveStyle('padding : 3px 14px');
+  });
+
+  it.only('renders a dropdown with the correct maxHeight when shownOptions is specified', () => {
+    const { wrapper } = renderWrapper({
+      options: selectOptionsObject,
+    });
+
+    wrapper.find('DropdownIndicator').first().simulate('mouseDown', {
+      button: 0,
+    });
+
+    const menuList = wrapper.find('MenuList').getDOMNode();
+    console.log(menuList);
+    // expect(menuList.getDOMNode()).toHaveStyle('height : 2rem');
   });
 });
