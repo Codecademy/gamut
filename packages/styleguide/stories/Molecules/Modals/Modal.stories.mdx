@@ -4,13 +4,11 @@ import {
   FlexBox,
   GridBox,
   Modal,
-  Overlay,
 } from '@codecademy/gamut/src';
 import { ModalContainer } from '@codecademy/gamut/src/Modals/elements';
 import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
-import LinkTo from '@storybook/addon-links/react';
 
 <Meta
   title={title}
@@ -34,13 +32,22 @@ import LinkTo from '@storybook/addon-links/react';
   }}
 />
 
-<Canvas>
-  <Story name="Modal" height="350px">
-    {(args) => <Modal {...args} />}
-  </Story>
-</Canvas>
+### Related Components
 
-> For flows with clear confirm / cancellation paths please prefer <LinkTo kind="Molecules/Dialog" story="Dialog">Dialog</LinkTo> instead.
+#### User Feedback
+
+- `Dialog`: Structured modals with binary user interaction paths (Confirm / Cancel).
+- `Toast`: Low priority decorative and celebratory user feedback.
+- `Coachmark`: Highlight a desired interaction or new feature.
+- `Alert`: Actionable direct user feedback.
+
+#### Subcomponents
+
+- `Overlay`: Accessible and content agnostic screen takeovers.
+- `BodyPortal`: Escaping the current DOM context.
+- `FloatingCard`: Cards with pattern drop shadows.
+
+## Customizing Close Behavior
 
 ### Creating a custom close button
 
@@ -60,7 +67,7 @@ You can then use the `isOpen` prop to create other controls that toggle the Moda
   </Story>
 </Canvas>
 
-### Alternative closing methods
+#### Alternative closing methods
 
 Other than creating buttons that can close the Modal, there are other ways a Modal can be closed by the user.
 
@@ -170,4 +177,10 @@ All of these methods default to true for accessibility reasons, and rely on sett
 
 Edit attributes and see what’s possible to do with this component or get the exact output you want.
 
-<PropsTable components={{ Modal, Overlay }} />
+<Canvas>
+  <Story name="Modal" height="350px">
+    {(args) => <Modal {...args} />}
+  </Story>
+</Canvas>
+
+<PropsTable story="Modal" />
