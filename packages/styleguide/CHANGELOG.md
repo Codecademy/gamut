@@ -3,6 +3,51 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [43.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@42.7.7...@codecademy/styleguide@43.0.0) (2021-08-10)
+
+
+### ⚠ BREAKING CHANGES
+
+* **GridForm:** remove business button
+
+### Code Refactoring
+
+* **GridForm:** remove business button ([6458188](https://github.com/Codecademy/client-modules/commit/64581888cef91c8ff6e27ceecabedfa67f939274))
+
+
+
+### [42.7.7](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@42.7.6...@codecademy/styleguide@42.7.7) (2021-08-09)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [42.7.6](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@42.7.5...@codecademy/styleguide@42.7.6) (2021-08-09)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [42.7.5](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@42.7.4...@codecademy/styleguide@42.7.5) (2021-08-09)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [42.7.4](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@42.7.3...@codecademy/styleguide@42.7.4) (2021-08-09)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
 ### [42.7.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@42.7.2...@codecademy/styleguide@42.7.3) (2021-08-06)
 
 **Note:** Version bump only for package @codecademy/styleguide
