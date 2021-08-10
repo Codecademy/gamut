@@ -1,4 +1,5 @@
 import React, { ComponentProps } from 'react';
+import { Mode, useFormContext } from 'react-hook-form';
 
 import { Box } from '../../Box';
 import { CTAButton, FillButton, TextButton } from '../../Button';
@@ -17,6 +18,7 @@ export type GridFormSubmitProps = {
   disabled?: ButtonProps['disabled'];
   mode?: VisualTheme;
   type?: SubmitButtonType;
+  validation?: Mode;
 };
 
 export type GridFormCancelButtonProps = {
@@ -38,34 +40,47 @@ const positions = {
 
 export const GridFormButtons: React.FC<
   GridFormSubmitProps & CancelButtonProps
-> = (props) => {
+> = ({
+  validation,
+  type,
+  mode,
+  disabled,
+  contents,
+  size,
+  position,
+  cancel,
+}) => {
+  const { formState } = useFormContext();
+  const isDisabled =
+    (validation === 'onChange' && !formState.isValid) || disabled;
+
   const getButton = () => {
-    switch (props.type) {
+    switch (type) {
       case 'cta':
         return (
-          <CTAButton type="submit" mode={props.mode} disabled={props.disabled}>
-            {props.contents}
+          <CTAButton type="submit" mode={mode} disabled={isDisabled}>
+            {contents}
           </CTAButton>
         );
 
       default:
         return (
-          <FillButton type="submit" mode={props.mode} disabled={props.disabled}>
-            {props.contents}
+          <FillButton type="submit" mode={mode} disabled={isDisabled}>
+            {contents}
           </FillButton>
         );
     }
   };
 
   return (
-    <Column size={props.size}>
+    <Column size={size}>
       <Box
         mb={8}
         alignSelf="center"
-        justifySelf={positions[props.position || 'left']}
+        justifySelf={positions[position || 'left']}
       >
-        {props.cancel && (
-          <TextButton {...props.cancel} mr={32} data-testid="cancel-button" />
+        {cancel && (
+          <TextButton {...cancel} mr={32} data-testid="cancel-button" />
         )}
         {getButton()}
       </Box>
