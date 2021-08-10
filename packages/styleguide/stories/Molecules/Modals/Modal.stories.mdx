@@ -1,11 +1,14 @@
 import {
+  Box,
   Column,
   FillButton,
   FlexBox,
   LayoutGrid,
   Modal,
+  GridBox,
   Overlay,
 } from '@codecademy/gamut/src';
+import { ModalContainer } from '@codecademy/gamut/src/Modals/elements';
 import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
@@ -88,48 +91,80 @@ All of these methods default to true for accessibility reasons, and rely on sett
 
 ## Size variants
 
-<LayoutGrid gap={24} mt={32}>
-<Column size={6} display="block">
-
-### Small
-
-<Canvas>
-  <Story name="Small" args={{ size: 'small' }} height="350px">
-    {(args) => <Modal {...args} />}
-  </Story>
-</Canvas>
-
-</Column>
-<Column size={6}  display="block">
-
-### Medium
-
-<Canvas>
-  <Story name="Medium" args={{ size: 'medium' }} height="350px">
-    {(args) => <Modal {...args} />}
-  </Story>
-</Canvas>
-
-</Column>
-<Column>
+<GridBox
+  mt={32}
+  gap={24}
+  gridTemplateColumns="1fr 1fr"
+  gridTemplateRows="repeat(2, 280px)"
+  gridTemplateAreas="'fluid medium' 'fluid small'"
+>
+<Box gridArea="fluid">
 
 ### Fluid
 
-<Canvas>
-  <Story
-    name="Fluid"
-    args={{
-      size: 'fluid',
-      children: <FlexBox height="350px" width="800px" bg="beige" />,
-    }}
-    height="500px"
-  >
-    {(args) => <Modal {...args} />}
-  </Story>
-</Canvas>
+<Story
+  name="Fluid"
+  args={{
+    size: 'fluid',
+    children: (
+      <>
+        <FlexBox gridArea="title" bg="beige" height="2rem" />
+        <FlexBox gridArea="close" bg="beige" height="2rem" />
+        <FlexBox height="380px" width="540px" bg="beige" gridArea="content" />
+      </>
+    ),
+  }}
+  height="500px"
+>
+  {(args) => <ModalContainer {...args} />}
+</Story>
 
-</Column>
-</LayoutGrid>
+</Box>
+<Box gridArea="medium">
+
+### Medium
+
+<Story
+  name="Medium"
+  args={{
+    size: 'medium',
+    children: (
+      <>
+        <FlexBox gridArea="title" bg="beige" height="2rem" />
+        <FlexBox gridArea="close" bg="beige" height="2rem" />
+        <FlexBox height="auto" bg="beige" gridArea="content" />
+      </>
+    ),
+  }}
+  height="350px"
+>
+  {(args) => <ModalContainer {...args} />}
+</Story>
+
+</Box>
+<Box gridArea="small">
+
+### Small
+
+<Story
+  name="Small"
+  args={{
+    size: 'small',
+    children: (
+      <>
+        <FlexBox gridArea="title" bg="beige" height="2rem" />
+        <FlexBox gridArea="close" bg="beige" height="2rem" />
+        <FlexBox gridArea="content" bg="beige" height="auto" />
+      </>
+    ),
+  }}
+  height="350px"
+>
+  {(args) => <ModalContainer {...args} />}
+</Story>
+
+</Box>
+</GridBox>
 
 ### Code Playground
 
