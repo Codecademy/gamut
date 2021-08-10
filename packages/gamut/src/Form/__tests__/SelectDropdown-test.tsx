@@ -59,7 +59,8 @@ describe('Select', () => {
     });
 
     const dropdown = wrapper.find('Control');
-
+    const options = wrapper.find('Option');
     expect(dropdown.getDOMNode()).toHaveStyle('height : 2rem');
+    expect(options.first().getDOMNode()).toHaveStyle('padding : 3px 14px');
   });
 });
