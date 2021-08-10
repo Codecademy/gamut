@@ -76,8 +76,7 @@ describe('Select', () => {
       button: 0,
     });
 
-    const menuList = wrapper.find('MenuList').getDOMNode();
-    console.log(menuList);
-    // expect(menuList.getDOMNode()).toHaveStyle('height : 2rem');
+    const menuList = wrapper.find('MenuList');
+    expect(menuList.getDOMNode()).toHaveStyle('max-height : 18rem');
   });
 });
