@@ -1,9 +1,7 @@
 import {
   Box,
-  Column,
   FillButton,
   FlexBox,
-  LayoutGrid,
   Modal,
   GridBox,
   Overlay,
@@ -96,9 +94,9 @@ All of these methods default to true for accessibility reasons, and rely on sett
   gap={24}
   gridTemplateColumns="1fr 1fr"
   gridTemplateRows="repeat(2, 280px)"
-  gridTemplateAreas="'fluid medium' 'fluid small'"
+  gridAutoFlow="row dense"
 >
-<Box gridArea="fluid">
+<Box gridRowEnd="span 2">
 
 ### Fluid
 
@@ -120,7 +118,7 @@ All of these methods default to true for accessibility reasons, and rely on sett
 </Story>
 
 </Box>
-<Box gridArea="medium">
+<Box>
 
 ### Medium
 
@@ -142,7 +140,7 @@ All of these methods default to true for accessibility reasons, and rely on sett
 </Story>
 
 </Box>
-<Box gridArea="small">
+<Box >
 
 ### Small
 
