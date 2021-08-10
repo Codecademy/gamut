@@ -217,5 +217,3 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
     />
   );
 };
-
-<SelectDropdown options={['one', '2', '3']} size="small" />;
