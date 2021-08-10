@@ -1179,6 +1179,14 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
+"@codecademy/gamut-styles@11.6.2":
+  version "11.6.2"
+  resolved "https://registry.npmjs.org/@codecademy/gamut-styles/-/gamut-styles-11.6.2.tgz#1e9a81414120f26f5ef2856883d409ab78f03cbb"
+  integrity sha512-9F1EWRtyl9gFzVWzSUBCrFqyrycId2Shz56p8FpMEkmzktyVovBYiFimGKnsS5PrA4DlVApyENT51SrO+r7L9g==
+  dependencies:
+    "@codecademy/variance" "^0.17.2"
+    polished "^4.1.2"
+
 "@codecademy/gamut@35.2.0":
   version "35.2.0"
   resolved "https://registry.npmjs.org/@codecademy/gamut/-/gamut-35.2.0.tgz#e7da80d117c4fd13f4b7667ddc5006578fa1b5a9"

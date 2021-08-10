@@ -47,4 +47,19 @@ describe('Select', () => {
 
     expect(getByLabel.exists()).toBe(true);
   });
+
+  it('renders a small dropdown when size is "small"', () => {
+    const { wrapper } = renderWrapper({
+      options: selectOptionsObject,
+      size: 'small',
+    });
+
+    wrapper.find('DropdownIndicator').first().simulate('mouseDown', {
+      button: 0,
+    });
+
+    const dropdown = wrapper.find('Control');
+
+    expect(dropdown.getDOMNode()).toHaveStyle('height : 2rem');
+  });
 });
