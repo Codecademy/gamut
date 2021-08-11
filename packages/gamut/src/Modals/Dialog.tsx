@@ -27,6 +27,7 @@ export interface DialogProps extends ModalBaseProps {
 
 export const Dialog: React.FC<DialogProps> = ({
   title,
+  variant,
   children,
   confirmCta,
   cancelCta,
@@ -75,7 +76,12 @@ export const Dialog: React.FC<DialogProps> = ({
             gridArea="cancel"
           />
         )}
-        <FillButton {...confirmCta} onClick={onConfirm} gridArea="confirm" />
+        <FillButton
+          {...confirmCta}
+          variant={variant}
+          onClick={onConfirm}
+          gridArea="confirm"
+        />
       </ModalContainer>
     </Overlay>
   );

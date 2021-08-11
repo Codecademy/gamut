@@ -1,8 +1,4 @@
-import {
-  ButtonDeprecated,
-  ModalDeprecated,
-  Overlay,
-} from '@codecademy/gamut/src';
+import { ButtonDeprecated, ModalDeprecated } from '@codecademy/gamut/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
@@ -46,7 +42,7 @@ import { useState } from 'react';
 
 > Prefer <LinkTo kind="Molecules/Dialog" story="Dialog">Dialog</LinkTo> instead.
 
-<PropsTable components={{ ModalDeprecated, Overlay }} />
+<PropsTable story="ModalDeprecated" />
 
 ### Creating a custom close button
 
