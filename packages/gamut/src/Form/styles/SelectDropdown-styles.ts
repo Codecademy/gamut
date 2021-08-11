@@ -10,6 +10,7 @@ import {
 
 export const selectDropdownStyles = system.css({
   ...formBaseFieldStylesObject,
+  ...formFieldPaddingStyles,
   display: 'flex',
   zIndex: 3,
 });
@@ -62,7 +63,6 @@ export const optionBackground = (isSelected: boolean, isFocused: boolean) => {
     : isSelected
     ? 'background-selected'
     : 'transparent';
-
   return system.css({
     bg: backgroundColor,
   });

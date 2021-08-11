@@ -1,4 +1,5 @@
 import 'focus-visible/dist/focus-visible.min.js';
+import { withDesign } from 'storybook-addon-designs';
 
 import { withEmotion } from './decorators/theme';
 import { DocsPage, DocsContainer } from './components';
@@ -112,4 +113,4 @@ export const parameters = {
   layout: 'fullscreen',
 };
 
-export const decorators = [withEmotion];
+export const decorators = [withEmotion, withDesign];
