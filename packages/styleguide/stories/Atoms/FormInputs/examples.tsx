@@ -6,9 +6,12 @@ import {
   Column,
   FormGroup,
   LayoutGrid,
+  SelectDropdown,
 } from '@codecademy/gamut/src';
 import { Background, ColorMode } from '@codecademy/gamut-styles/src';
 import React, { ChangeEvent, useState } from 'react';
+
+import { ColorModeExampleWrapper } from '../../Foundations/ColorMode/examples';
 
 type CustomCheckboxProps = Omit<CheckboxProps, 'checked'> & {
   defaultChecked?: boolean;
@@ -43,7 +46,7 @@ const CustomCheckbox: React.FC<CustomCheckboxProps> = ({
   );
 };
 
-export const CheckboxExample = () => {
+export const CheckboxExample: React.FC = () => {
   return (
     <ColorMode mode="light">
       <Box bg="background" border={1} p={16}>
@@ -74,5 +77,44 @@ export const CheckboxExample = () => {
         </LayoutGrid>
       </Box>
     </ColorMode>
+  );
+};
+
+export const SelectDropdownExample: React.FC = () => {
+  return (
+    <ColorModeExampleWrapper>
+      <Box height="25rem">
+        <FormGroup label="i have a fancy colormode" htmlFor="colormode">
+          <SelectDropdown
+            aria-label="updog"
+            options={['ooo fancy', 'yes I am!', ':)']}
+            name="colormode"
+            isSearchable
+          />
+        </FormGroup>
+        <FormGroup
+          label="i have an error"
+          htmlFor="colormode-error"
+          error="cry cry cry"
+        >
+          <SelectDropdown
+            aria-label="updog"
+            options={['ooo fancy', 'yes I am!', ':)']}
+            name="colormode-error"
+            isSearchable
+            error
+          />
+        </FormGroup>
+        <FormGroup label="i am disabled" htmlFor="colormode-disabled">
+          <SelectDropdown
+            aria-label="updog"
+            options={['ooo fancy', 'yes I am!', ':)']}
+            name="colormode-disabled"
+            isSearchable
+            disabled
+          />
+        </FormGroup>
+      </Box>
+    </ColorModeExampleWrapper>
   );
 };
