@@ -468,25 +468,6 @@ the <LinkTo id="atoms-button--fill-button">`FillButton`</LinkTo> or <LinkTo id="
             mode: 'dark',
           }}
         />
-        <GridForm
-          fields={[
-            {
-              label: 'Simple text',
-              name: 'deprecated-simple-text',
-              size: 6,
-              type: 'text',
-            },
-          ]}
-          onSubmit={async (values) => {
-            action('Form Submitted')(values);
-          }}
-          submit={{
-            type: 'business',
-            contents: 'Deprecated Button',
-            size: 12,
-            theme: 'brand-purple',
-          }}
-        />
       </>
     )}
   </Story>
@@ -1068,7 +1049,7 @@ Please note you **cannot** use the deprecated 'business' button type with `Color
 
 ## Checkbox Spacing
 
-If you need to checkboxes to fit into a smaller space, you can use our `tight` variant for checkboxes that are a bit closer together.
+If you need to checkboxes to fit into a smaller space, you can use our our `tight` spacing prop for checkboxes that are a bit closer together.
 
 <Canvas>
   <Story name="Checkbox Spacing">
