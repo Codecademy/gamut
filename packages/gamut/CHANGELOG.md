@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [36.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@36.0.0...@codecademy/gamut@36.0.1) (2021-08-11)
+
+
+### Bug Fixes
+
+* **Anchor:** Interface hover => primary GM-314 ([0f462e0](https://github.com/Codecademy/client-modules/commit/0f462e0b1b3669d6d8130c81ca1aeac47eca18cb))
+
+
+
 ## [36.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@35.14.0...@codecademy/gamut@36.0.0) (2021-08-10)
 
 
