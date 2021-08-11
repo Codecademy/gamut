@@ -1,4 +1,4 @@
-import styled from '@emotion/styled';
+import { css, Global } from '@emotion/react';
 import type { editor as EditorType } from 'monaco-editor';
 import React, { Component } from 'react';
 import ReactMonacoEditor from 'react-monaco-editor';
@@ -6,7 +6,7 @@ import ReactResizeDetector from 'react-resize-detector';
 
 import { Editor, Monaco, MonacoFile } from '../types';
 
-const InnerEditor = styled.div`
+const innerEditorStyles = css`
   padding-top: 0.95rem;
   position: absolute;
   top: 0;
@@ -14,6 +14,8 @@ const InnerEditor = styled.div`
   left: 0;
   right: 0;
 `;
+
+const InnerEditor = () => <Global styles={innerEditorStyles} />;
 
 export type SimpleMonacoEditorProps = {
   file: MonacoFile;
@@ -54,16 +56,15 @@ export class SimpleMonacoEditor extends Component<SimpleMonacoEditorProps> {
         refreshMode="debounce"
         refreshRate={500}
       >
-        <InnerEditor data-language-id={this.props.languageId}>
-          <ReactMonacoEditor
-            editorDidMount={this.editorDidMount}
-            editorWillMount={this.editorWillMount}
-            onChange={this.props.onChange}
-            options={this.props.options}
-            theme={this.props.options.theme}
-            value={this.props.file.content}
-          />
-        </InnerEditor>
+        <InnerEditor />
+        <ReactMonacoEditor
+          editorDidMount={this.editorDidMount}
+          editorWillMount={this.editorWillMount}
+          onChange={this.props.onChange}
+          options={this.props.options}
+          theme={this.props.options.theme}
+          value={this.props.file.content}
+        />
       </ReactResizeDetector>
     );
   }
