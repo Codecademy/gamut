@@ -468,25 +468,6 @@ the <LinkTo id="atoms-button--fill-button">`FillButton`</LinkTo> or <LinkTo id="
             mode: 'dark',
           }}
         />
-        <GridForm
-          fields={[
-            {
-              label: 'Simple text',
-              name: 'deprecated-simple-text',
-              size: 6,
-              type: 'text',
-            },
-          ]}
-          onSubmit={async (values) => {
-            action('Form Submitted')(values);
-          }}
-          submit={{
-            type: 'business',
-            contents: 'Deprecated Button',
-            size: 12,
-            theme: 'brand-purple',
-          }}
-        />
       </>
     )}
   </Story>
