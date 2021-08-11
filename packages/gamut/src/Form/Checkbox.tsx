@@ -17,7 +17,7 @@ import {
   checkboxPadding,
   checkboxTextStates,
   polyline,
-} from './styles/shared-system-props';
+} from './styles';
 
 export type CheckboxTextProps = StyleProps<typeof checkboxTextStates>;
 export type CheckboxPaddingProps = StyleProps<typeof checkboxPadding>;

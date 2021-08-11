@@ -19,7 +19,7 @@ import {
   conditionalStyles,
   conditionalStyleState,
   formFieldStyles,
-} from './styles/shared-system-props';
+} from './styles';
 import { parseSelectOptions } from './utils';
 
 export type SelectComponentProps = Pick<
