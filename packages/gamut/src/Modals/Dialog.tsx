@@ -71,6 +71,7 @@ export const Dialog: React.FC<DialogProps> = ({
         {cancelCta && (
           <TextButton
             {...cancelCta}
+            variant="secondary"
             onClick={onCancel}
             justifySelf="end"
             gridArea="cancel"
