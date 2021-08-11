@@ -38,14 +38,6 @@ import { LinkTo, PropsTable } from '~styleguide/blocks';
 - Dialogs appear unprompted and require confirmation before the user can continue.
 - Use the modal component sparingly. This is the most dispruptive tool in our arsenal. We should only have a small handful of these in our system at any given time.
 
-<Canvas>
-  <Story name="Dialog" height="600px">
-    {(args) => {
-      return <Dialog {...args} />;
-    }}
-  </Story>
-</Canvas>
-
 ## Usage Guidelines
 
 - Dialogs have a min-width of 400px
@@ -64,7 +56,7 @@ import { LinkTo, PropsTable } from '~styleguide/blocks';
 ### Primary
 
 <Canvas>
-  <Story name="Primary" height="600px">
+  <Story name="Primary" height="500px">
     {(args) => {
       return <Dialog {...args} />;
     }}
@@ -74,7 +66,7 @@ import { LinkTo, PropsTable } from '~styleguide/blocks';
 ### Danger
 
 <Canvas>
-  <Story name="Danger" height="600px" args={{ variant: 'danger' }}>
+  <Story name="Danger" height="500px" args={{ variant: 'danger' }}>
     {(args) => {
       return <Dialog {...args} />;
     }}
@@ -89,7 +81,7 @@ Check it out:
 ### Light
 
 <Canvas>
-  <Story name="Light" height="600px">
+  <Story name="Light" height="500px">
     {(args) => {
       return <Dialog {...args} />;
     }}
@@ -99,7 +91,7 @@ Check it out:
 ### Dark
 
 <Canvas>
-  <Story name="Dark" height="600px" args={{ mode: 'dark' }}>
+  <Story name="Dark" height="500px" args={{ mode: 'dark' }}>
     {(args) => {
       return (
         <ColorMode mode="dark">
@@ -113,5 +105,13 @@ Check it out:
 ## Code Playground
 
 Edit attributes and see what’s possible to do with this component or get the exact output you want.
+
+<Canvas>
+  <Story name="Dialog" height="500px">
+    {(args) => {
+      return <Dialog {...args} />;
+    }}
+  </Story>
+</Canvas>
 
 <PropsTable story="Dialog" />

@@ -1,5 +1,5 @@
 import { MiniDeleteIcon } from '@codecademy/gamut-icons';
-import React from 'react';
+import React, { ComponentProps } from 'react';
 
 import { Box } from '../Box';
 import { FillButton, IconButton, TextButton } from '../Button';
@@ -8,17 +8,21 @@ import { Text } from '../Typography';
 import { ModalContainer, ModalContainerProps } from './elements';
 import { ModalBaseProps } from './types';
 
+interface DialogButtonProps {
+  children: React.ReactNode;
+  href?: string;
+  onClick?: ComponentProps<typeof FillButton>['onClick'];
+}
+
 export interface DialogProps extends ModalBaseProps {
   title: ModalBaseProps['title'];
   size?: Exclude<ModalContainerProps['size'], 'fluid'>;
-  confirmCta: {
-    children: React.ReactNode;
-    onClick?: () => void;
-  };
-  cancelCta?: {
-    children: React.ReactNode;
-    onClick?: () => void;
-  };
+  variant?: Extract<
+    ComponentProps<typeof FillButton>['variant'],
+    'primary' | 'danger'
+  >;
+  confirmCta: DialogButtonProps;
+  cancelCta?: DialogButtonProps;
 }
 
 export const Dialog: React.FC<DialogProps> = ({
@@ -30,18 +34,18 @@ export const Dialog: React.FC<DialogProps> = ({
   size = 'small',
   ...rest
 }) => {
-  const onConfirm = () => {
+  const onConfirm: DialogButtonProps['onClick'] = (e) => {
     onRequestClose();
-    confirmCta.onClick?.();
+    confirmCta.onClick?.(e);
   };
 
-  const onCancel = () => {
+  const onCancel: DialogButtonProps['onClick'] = (e) => {
     onRequestClose();
-    cancelCta?.onClick?.();
+    cancelCta?.onClick?.(e);
   };
 
   return (
-    <Overlay shroud onRequestClose={onCancel} {...rest}>
+    <Overlay shroud onRequestClose={onCancel as () => void} {...rest}>
       <ModalContainer
         size={size}
         aria-hidden="false"
