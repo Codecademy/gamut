@@ -1,4 +1,12 @@
-import { get, identity, isFunction, isObject, isString, merge } from 'lodash';
+import {
+  get,
+  identity,
+  isArray,
+  isFunction,
+  isObject,
+  isString,
+  merge,
+} from 'lodash';
 
 import {
   AbstractParser,
@@ -97,6 +105,7 @@ export const variance = {
       ...config,
       prop,
       styleFn: (value, prop, props) => {
+        const val = value as string | number;
         const styles: CSSObject = {};
         let useTransform = false;
         let usedValue: string | number;
@@ -105,11 +114,12 @@ export const variance = {
         if (isFunction(value)) {
           usedValue = value(props.theme);
         } else {
-          if (isString(scale)) scaleVal = get(props, `theme.${scale}.${value}`);
-          if (isObject(scale)) scaleVal = get(scale, `${value}`);
+          if (isString(scale)) scaleVal = get(props, ['theme', scale, val]);
+          if (isObject(scale)) scaleVal = get(scale, val);
+          if (isArray(scale)) scaleVal = val;
 
           useTransform = scaleVal !== undefined || scale === undefined;
-          usedValue = scaleVal ?? (value as string | number);
+          usedValue = scaleVal ?? val;
         }
 
         // for each property look up the scale value from theme if passed and apply any
