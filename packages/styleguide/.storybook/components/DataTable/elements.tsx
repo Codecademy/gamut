@@ -1,7 +1,6 @@
-import { themed } from '@codecademy/gamut-styles';
-import { variant } from '@codecademy/gamut-styles/src';
-import { HandlerProps } from '@codecademy/gamut-system';
+import { variant, themed } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
+import { StyleProps } from '@codecademy/variance';
 
 export const Table = styled.div`
   display: grid;
@@ -31,7 +30,7 @@ export const Row = styled.div<Parameters<typeof rowVariants>[0]>`
   }
 `;
 
-type ColSize = HandlerProps<typeof colSizes>;
+type ColSize = StyleProps<typeof colSizes>;
 
 const colSizes = variant({
   prop: 'size',
@@ -58,7 +57,7 @@ const colSizes = variant({
   },
 });
 
-type ColVariants = HandlerProps<typeof colVariants>;
+type ColVariants = StyleProps<typeof colVariants>;
 
 const colVariants = variant({
   variants: {
