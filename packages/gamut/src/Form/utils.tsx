@@ -2,10 +2,12 @@ import { each, isObject } from 'lodash';
 import React from 'react';
 import { OptionTypeBase } from 'react-select';
 
-export type ParseOptionProps = {
+import { SelectDropdownOptions } from './SelectDropdown';
+
+export interface ParseOptionProps {
   id?: string | number;
-  options?: string[] | Record<string, string | number>;
-};
+  options?: SelectDropdownOptions;
+}
 
 const formatAsOptions = ({ label, value, key }: OptionTypeBase) => {
   const option = key ? (
@@ -25,8 +27,13 @@ export const parseOptions = ({ options, id }: ParseOptionProps) => {
 
   if (options instanceof Array) {
     options.forEach((value) => {
-      const label = id ? `${id}-${value}` : value;
-      parsedOptions.push({ label, value });
+      if (typeof value === 'string') {
+        const label = id ? `${id}-${value}` : value;
+        parsedOptions.push({ label, value });
+      } else {
+        const key = id ? `${id}-${value.value}` : value.value;
+        parsedOptions.push({ ...value, key });
+      }
     });
   } else if (isObject(options)) {
     each(options, (label, value) => {

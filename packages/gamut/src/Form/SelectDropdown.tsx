@@ -15,7 +15,8 @@ import ReactSelect, {
   StylesConfig,
 } from 'react-select';
 
-import { SelectComponentProps } from './Select';
+import { Box } from '../Box';
+import { SelectComponentProps, SelectOptions } from './Select';
 import {
   conditionalBorderStates,
   dropdownBorderStates,
@@ -27,12 +28,19 @@ import {
 } from './styles';
 import { parseOptions } from './utils';
 
-const { DropdownIndicator, SelectContainer } = SelectDropdownElements;
+export interface FancyOption {
+  label: string;
+  value: string;
+  Icon?: typeof ArrowChevronDownIcon;
+}
 
 type SelectDropdownBaseProps = Omit<
   SelectComponentProps,
-  'onChange' | 'defaultValue'
+  'onChange' | 'defaultValue' | 'options'
 >;
+
+export type SelectDropdownOptions = SelectOptions | FancyOption[];
+
 interface SelectDropdownProps
   extends SelectDropdownBaseProps,
     Pick<NamedProps, 'onChange' | 'isSearchable'>,
@@ -40,13 +48,15 @@ interface SelectDropdownProps
   inputProps?: Record<string, string | number | boolean>;
   name?: string;
   placeholder?: string;
+  options?: SelectDropdownOptions;
 }
 
-type OptionStrict = {
+const { DropdownIndicator, SelectContainer } = SelectDropdownElements;
+
+export interface OptionStrict {
   label: string;
   value: string;
-  icon: typeof ArrowChevronDownIcon;
-};
+}
 
 type CustomContainerProps = ContainerProps<OptionStrict, false> & {
   children?: ReactNode[];
@@ -75,11 +85,13 @@ const CustomContainer = ({ children, ...rest }: CustomContainerProps) => {
   );
 };
 
-const formatOptionLabel = ({ value, label, icon }) => (
-  <div style={{ display: 'flex' }}>
-    <div>{label}</div>
-    <div style={{ marginLeft: '10px', color: '#ccc' }}>{icon}</div>
-  </div>
+const formatOptionLabel = ({ label, Icon }: FancyOption) => (
+  <Box display="flex">
+    {Icon && <Icon size={24} color="text" ml={4} />}
+    <Box as="span" pl={Icon ? 16 : 0}>
+      {label}
+    </Box>
+  </Box>
 );
 
 const defaultProps = {
@@ -202,6 +214,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
       value={parsedValue}
       activated={activated}
       error={Boolean(error)}
+      formatOptionLabel={formatOptionLabel}
       onChange={changeHandler}
       inputProps={{ ...inputProps, ...baseInputProps }}
       isDisabled={disabled}

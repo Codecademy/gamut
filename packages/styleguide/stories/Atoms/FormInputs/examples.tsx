@@ -8,6 +8,7 @@ import {
   LayoutGrid,
   SelectDropdown,
 } from '@codecademy/gamut/src';
+import { LockIcon, NetworkUserIcon } from '@codecademy/gamut-icons/src';
 import { Background, ColorMode } from '@codecademy/gamut-styles/src';
 import React, { ChangeEvent, useState } from 'react';
 
@@ -112,6 +113,25 @@ export const SelectDropdownExample: React.FC = () => {
             name="colormode-disabled"
             isSearchable
             disabled
+          />
+        </FormGroup>
+        <FormGroup label="i have icons" htmlFor="colormode-icons">
+          <SelectDropdown
+            aria-label="icon"
+            options={[
+              {
+                label: 'Private: Only you can prevent forest fires',
+                value: 'private',
+                Icon: LockIcon,
+              },
+              {
+                label: 'Public: Wait what?',
+                value: 'public',
+                Icon: NetworkUserIcon,
+              },
+            ]}
+            name="colormode-disabled"
+            isSearchable
           />
         </FormGroup>
       </Box>
