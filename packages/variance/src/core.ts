@@ -1,13 +1,6 @@
-import {
-  get,
-  identity,
-  isArray,
-  isFunction,
-  isObject,
-  isString,
-  merge,
-} from 'lodash';
+import { get, identity, isFunction, isObject, merge } from 'lodash';
 
+import { createScaleLookup } from './scales/createScaleLookup';
 import {
   AbstractParser,
   AbstractPropTransformer,
@@ -100,6 +93,7 @@ export const variance = {
       properties = [property],
       scale,
     } = config;
+    const getScaleValue = createScaleLookup(scale);
 
     return {
       ...config,
@@ -114,10 +108,7 @@ export const variance = {
         if (isFunction(value)) {
           usedValue = value(props.theme);
         } else {
-          if (isString(scale)) scaleVal = get(props, ['theme', scale, val]);
-          if (isObject(scale)) scaleVal = get(scale, val);
-          if (isArray(scale)) scaleVal = val;
-
+          scaleVal = getScaleValue(val, props);
           useTransform = scaleVal !== undefined || scale === undefined;
           usedValue = scaleVal ?? val;
         }
