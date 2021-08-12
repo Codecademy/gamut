@@ -114,6 +114,15 @@ export const SelectDropdownExample: React.FC = () => {
             disabled
           />
         </FormGroup>
+        <FormGroup label="i am smol" htmlFor="colormode-small">
+          <SelectDropdown
+            aria-label="updog"
+            options={['small', 'yes', 'very very']}
+            size="small"
+            name="colormode-small"
+            isSearchable
+          />
+        </FormGroup>
       </Box>
     </ColorModeExampleWrapper>
   );
