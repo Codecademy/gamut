@@ -45,7 +45,7 @@ interface SelectDropdownProps
   name?: string;
   placeholder?: string;
   shownOptions?: 1 | 2 | 3 | 4 | 5 | 6;
-  size?: 'small' | 'base';
+  size?: 'small' | 'medium';
 }
 
 type OptionStrict = {
@@ -57,17 +57,27 @@ type CustomContainerProps = ContainerProps<OptionStrict, false> & {
   children?: ReactNode[];
 };
 
+const indicatorSizes = {
+  small: {
+    size: 12,
+    icon: MiniChevronDownIcon,
+  },
+  medium: {
+    size: 16,
+    icon: ArrowChevronDownIcon,
+  },
+};
+
 const ChevronDropdown = (props: IndicatorProps<OptionTypeBase, false>) => {
   const { size } = props.selectProps;
   const color = props.isDisabled ? 'text-disabled' : 'text';
+  const { icon: IndicatorIcon, ...iconProps } = indicatorSizes[
+    size === 'small' ? 'small' : 'medium'
+  ];
 
   return (
     <DropdownIndicator {...props}>
-      {size === 'small' ? (
-        <MiniChevronDownIcon size={12} color={color} />
-      ) : (
-        <ArrowChevronDownIcon size={16} color={color} />
-      )}
+      <IndicatorIcon {...iconProps} color={color} />
     </DropdownIndicator>
   );
 };
@@ -134,8 +144,8 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
 
       control: (provided, state) => {
         return {
-          ...sizeVariants({ size: state.selectProps.size, theme }),
           ...selectDropdownStyles({ theme }),
+          ...sizeVariants({ size: state.selectProps.size, theme }),
           ...conditionalBorderStates({
             isFocused: state.isFocused,
             isDisabled: state.isDisabled,

@@ -35,9 +35,9 @@ export const conditionalBorderStates = system.states({
 
 export const sizeVariants = system.variant({
   prop: 'size',
-  defaultVariant: 'base',
+  defaultVariant: 'medium',
   variants: {
-    base: formFieldPaddingStyles,
+    medium: formFieldPaddingStyles,
     small: { height: '2rem', px: 8, py: 0 },
   },
 });
@@ -62,7 +62,6 @@ export const optionBackground = (isSelected: boolean, isFocused: boolean) => {
     : isSelected
     ? 'background-selected'
     : 'transparent';
-
   return system.css({
     bg: backgroundColor,
   });
