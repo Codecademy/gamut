@@ -33,10 +33,16 @@ import { parseOptions } from './utils';
 
 const { DropdownIndicator, SelectContainer } = SelectDropdownElements;
 
+interface SelectDropdownSizes {
+  size?: 'small' | 'medium';
+}
+
 type SelectDropdownBaseProps = Omit<
   SelectComponentProps,
   'onChange' | 'defaultValue'
->;
+> &
+  SelectDropdownSizes;
+
 interface SelectDropdownProps
   extends SelectDropdownBaseProps,
     Pick<NamedProps, 'onChange' | 'isSearchable'>,
@@ -44,7 +50,6 @@ interface SelectDropdownProps
   inputProps?: Record<string, string | number | boolean>;
   name?: string;
   placeholder?: string;
-  size?: 'small' | 'medium';
 }
 
 type OptionStrict = {
@@ -67,7 +72,10 @@ const indicatorSizes = {
   },
 };
 
-const ChevronDropdown = (props: IndicatorProps<OptionTypeBase, false>) => {
+interface SizedIndicatorProps extends IndicatorProps<OptionTypeBase, false> {
+  selectProps: SelectDropdownSizes;
+}
+const ChevronDropdown = (props: SizedIndicatorProps) => {
   const { size } = props.selectProps;
   const color = props.isDisabled ? 'text-disabled' : 'text';
   const { icon: IndicatorIcon, ...iconProps } = indicatorSizes[size ?? 'small'];
