@@ -1,7 +1,7 @@
 {
   "name": "@codecademy/gamut-styles",
   "description": "Styleguide & Component library for codecademy.com",
-  "version": "11.7.1",
+  "version": "11.7.2",
   "author": "Jake Hiller <jake@codecademy.com>",
   "main": "dist/index.js",
   "module": "dist/index.js",
@@ -17,7 +17,7 @@
     "url": "git@github.com:Codecademy/client-modules.git"
   },
   "dependencies": {
-    "@codecademy/variance": "^0.17.2",
+    "@codecademy/variance": "^0.17.3",
     "polished": "^4.1.2"
   },
   "peerDependencies": {
