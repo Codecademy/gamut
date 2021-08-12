@@ -44,7 +44,7 @@ interface SelectDropdownProps
   inputProps?: Record<string, string | number | boolean>;
   name?: string;
   placeholder?: string;
-  shownOptions?: 1 | 2 | 3 | 4 | 5 | 6;
+  shownOptionsLimit?: 1 | 2 | 3 | 4 | 5 | 6;
   size?: 'small' | 'medium';
 }
 
@@ -115,7 +115,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
   placeholder = 'Select an option',
   inputProps,
   isSearchable = false,
-  shownOptions,
+  shownOptionsLimit = 6,
   size,
   ...rest
 }) => {
@@ -176,9 +176,10 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
       }),
 
       menuList: (provided, state) => {
-        const numberOfShown = state.selectProps.shownOptions ?? 6;
         const sizeInteger = state.selectProps.size === 'small' ? 2 : 3;
-        const maxHeight = `${numberOfShown * sizeInteger}rem`;
+        const maxHeight = `${
+          state.selectProps.shownOptionsLimit * sizeInteger
+        }rem`;
         return {
           ...provided,
           maxHeight,
@@ -235,7 +236,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
       styles={memoizedStyles}
       isSearchable={isSearchable}
       size={size}
-      shownOptions={shownOptions}
+      shownOptionsLimit={shownOptionsLimit}
       {...rest}
     />
   );

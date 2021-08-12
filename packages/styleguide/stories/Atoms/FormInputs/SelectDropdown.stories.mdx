@@ -264,7 +264,7 @@ We have a smaller SelectDropdown for more compact spaces.
   </Story>
 </Canvas>
 
-### shownOptions
+### shownOptionsLimit
 
 You can chose how options will be shown in the dropdown, with 6 being the default and the max.
 
@@ -285,7 +285,7 @@ You can chose how options will be shown in the dropdown, with 6 being the defaul
         'hi',
         'asdfsadf',
       ],
-      name: 'shownOptions01',
+      name: 'shownOptionsLimit01',
       isSearchable: true,
       placeholder: 'six is the magic number',
     }}
@@ -293,7 +293,7 @@ You can chose how options will be shown in the dropdown, with 6 being the defaul
     {(args) => (
       <Box width="20rem" height="10rem">
         <FormGroup
-          label="i have the default shownOptions"
+          label="i have the default shownOptionsLimit"
           htmlFor="shownOptions01"
         >
           <SelectDropdown aria-label="shownOptions01" {...args} />
@@ -325,10 +325,7 @@ You can chose how options will be shown in the dropdown, with 6 being the defaul
   >
     {(args) => (
       <Box width="20rem" height="10rem">
-        <FormGroup
-          label="i have three shownOptions but i am small"
-          htmlFor="shownOptions02"
-        >
+        <FormGroup label="i have three" htmlFor="shownOptions02">
           <SelectDropdown aria-label="shownOptions02" {...args} />
         </FormGroup>
       </Box>
