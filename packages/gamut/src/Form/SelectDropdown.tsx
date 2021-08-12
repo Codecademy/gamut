@@ -56,17 +56,27 @@ type CustomContainerProps = ContainerProps<OptionStrict, false> & {
   children?: ReactNode[];
 };
 
+const indicatorSizes = {
+  small: {
+    size: 12,
+    icon: MiniChevronDownIcon,
+  },
+  medium: {
+    size: 16,
+    icon: ArrowChevronDownIcon,
+  },
+};
+
 const ChevronDropdown = (props: IndicatorProps<OptionTypeBase, false>) => {
   const { size } = props.selectProps;
   const color = props.isDisabled ? 'text-disabled' : 'text';
+  const { icon: IndicatorIcon, ...iconProps } = indicatorSizes[
+    size === 'small' ? 'small' : 'medium'
+  ];
 
   return (
     <DropdownIndicator {...props}>
-      {size === 'small' ? (
-        <MiniChevronDownIcon size={12} color={color} />
-      ) : (
-        <ArrowChevronDownIcon size={16} color={color} />
-      )}
+      <IndicatorIcon {...iconProps} color={color} />
     </DropdownIndicator>
   );
 };
