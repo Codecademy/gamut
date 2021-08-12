@@ -44,7 +44,7 @@ interface SelectDropdownProps
   inputProps?: Record<string, string | number | boolean>;
   name?: string;
   placeholder?: string;
-  size?: 'small' | 'base';
+  size?: 'small' | 'medium';
 }
 
 type OptionStrict = {
@@ -132,8 +132,8 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
 
       control: (provided, state) => {
         return {
-          ...sizeVariants({ size: state.selectProps.size, theme }),
           ...selectDropdownStyles({ theme }),
+          ...sizeVariants({ size: state.selectProps.size, theme }),
           ...conditionalBorderStates({
             isFocused: state.isFocused,
             isDisabled: state.isDisabled,
