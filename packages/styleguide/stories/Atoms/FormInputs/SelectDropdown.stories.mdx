@@ -266,7 +266,7 @@ We have a smaller SelectDropdown for more compact spaces.
 
 ### shownOptionsLimit
 
-You can chose how options will be shown in the dropdown, with 6 being the default and the max.
+You can chose how options will be shown in the dropdown. 6 is the default limit and the maximum number of options you can show in the dropdown at once.
 
 <Canvas>
   <Story
@@ -320,7 +320,7 @@ You can chose how options will be shown in the dropdown, with 6 being the defaul
       name: 'shownOptions02',
       isSearchable: true,
       placeholder: 'no its three actually',
-      shownOptions: 3,
+      shownOptionsLimit: 3,
     }}
   >
     {(args) => (
@@ -351,7 +351,7 @@ You can chose how options will be shown in the dropdown, with 6 being the defaul
       isSearchable: true,
       placeholder: 'its three but small this time',
       size: 'small',
-      shownOptions: 3,
+      shownOptionsLimit: 3,
     }}
   >
     {(args) => (
