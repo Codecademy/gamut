@@ -16,38 +16,39 @@ export const Footer: React.FC<FooterProps> = ({
   tag,
   tagColor,
 }) => {
-  if (!progressState) {
-    if (beta) {
-      return (
-        <Box position="absolute" bottom={0} right={0} pb={16} pr={16}>
-          <BetaSticker />
-        </Box>
-      );
-    }
-    if (tag && tagColor) {
-      return <BottomTag text={tag} color={tagColor} />;
-    }
-  }
-  return (
-    <div>
-      {progressState === 'completed' && (
-        <Text fontSize={16} fontFamily="accent" textColor="yellow">
-          Completed
-        </Text>
-      )}
-      {progressState === 'inProgress' && (
-        <FlexBox
-          flexWrap="wrap"
-          justifyContent="space-between"
-          alignItems="flex-end"
-          width="100%"
-        >
-          <Text fontFamily="accent" fontSize={14}>
-            Enrolled...
+  if (progressState) {
+    return (
+      <div>
+        {progressState === 'completed' && (
+          <Text fontSize={16} fontFamily="accent" textColor="yellow">
+            Completed
           </Text>
-          <Text textColor="hyper">Keep Going</Text>
-        </FlexBox>
-      )}
-    </div>
-  );
+        )}
+        {progressState === 'inProgress' && (
+          <FlexBox
+            flexWrap="wrap"
+            justifyContent="space-between"
+            alignItems="flex-end"
+            width="100%"
+          >
+            <Text fontFamily="accent" fontSize={14}>
+              Enrolled...
+            </Text>
+            <Text textColor="hyper">Keep Going</Text>
+          </FlexBox>
+        )}
+      </div>
+    );
+  }
+  if (beta) {
+    return (
+      <Box position="absolute" bottom={0} right={0} pb={16} pr={16}>
+        <BetaSticker />
+      </Box>
+    );
+  }
+  if (tag && tagColor) {
+    return <BottomTag text={tag} color={tagColor} />;
+  }
+  return null;
 };
