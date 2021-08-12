@@ -45,6 +45,7 @@ interface SelectDropdownProps
 type OptionStrict = {
   label: string;
   value: string;
+  icon: typeof ArrowChevronDownIcon;
 };
 
 type CustomContainerProps = ContainerProps<OptionStrict, false> & {
@@ -73,6 +74,13 @@ const CustomContainer = ({ children, ...rest }: CustomContainerProps) => {
     </SelectContainer>
   );
 };
+
+const formatOptionLabel = ({ value, label, icon }) => (
+  <div style={{ display: 'flex' }}>
+    <div>{label}</div>
+    <div style={{ marginLeft: '10px', color: '#ccc' }}>{icon}</div>
+  </div>
+);
 
 const defaultProps = {
   name: undefined,
