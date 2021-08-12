@@ -1,6 +1,7 @@
 import {
   get,
   identity,
+  isArray,
   isFunction,
   isNumber,
   isObject,
@@ -103,6 +104,7 @@ export const variance = {
       scale,
     } = config;
     const getScaleValue = createScaleLookup(scale);
+    const alwaysTransform = scale === undefined || isArray(scale);
 
     return {
       ...config,
@@ -119,7 +121,7 @@ export const variance = {
 
         if (isString(value) || isNumber(value)) {
           scaleVal = getScaleValue(value, props);
-          useTransform = scaleVal !== undefined || scale === undefined;
+          useTransform = scaleVal !== undefined || alwaysTransform;
           usedValue = scaleVal ?? value;
         }
 
@@ -131,6 +133,7 @@ export const variance = {
         // final transforms to the value
         properties.forEach((property) => {
           let styleValue: ReturnType<typeof transform> = usedValue;
+
           if (useTransform) {
             styleValue = transform(styleValue, property, props);
           }

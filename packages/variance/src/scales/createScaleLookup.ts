@@ -12,11 +12,11 @@ export const createScaleLookup = (scale: Prop['scale']): GetScaleValue => {
   if (isString(scale)) {
     return (val, props) => get(props, ['theme', scale, val]);
   }
-  if (isObject(scale)) {
-    return (val) => get(scale, val);
-  }
   if (isArray(scale)) {
     return (val) => val;
+  }
+  if (isObject(scale)) {
+    return (val) => get(scale, val);
   }
 
   return (val, props) => undefined;
