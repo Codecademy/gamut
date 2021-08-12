@@ -70,9 +70,7 @@ const indicatorSizes = {
 const ChevronDropdown = (props: IndicatorProps<OptionTypeBase, false>) => {
   const { size } = props.selectProps;
   const color = props.isDisabled ? 'text-disabled' : 'text';
-  const { icon: IndicatorIcon, ...iconProps } = indicatorSizes[
-    size === 'small' ? 'small' : 'medium'
-  ];
+  const { icon: IndicatorIcon, ...iconProps } = indicatorSizes[size ?? 'small'];
 
   return (
     <DropdownIndicator {...props}>
