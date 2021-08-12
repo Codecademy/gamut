@@ -8,7 +8,11 @@ import {
   LayoutGrid,
   SelectDropdown,
 } from '@codecademy/gamut/src';
-import { LockIcon, NetworkUserIcon } from '@codecademy/gamut-icons/src';
+import {
+  LockIcon,
+  NetworkUserIcon,
+  PeopleIcon,
+} from '@codecademy/gamut-icons/src';
 import { Background, ColorMode } from '@codecademy/gamut-styles/src';
 import React, { ChangeEvent, useState } from 'react';
 
@@ -128,6 +132,11 @@ export const SelectDropdownExample: React.FC = () => {
                 label: 'Public: Wait what?',
                 value: 'public',
                 Icon: NetworkUserIcon,
+              },
+              {
+                label: 'Monsters: Monsters are such interesting people',
+                value: 'public',
+                Icon: PeopleIcon,
               },
             ]}
             name="colormode-disabled"
