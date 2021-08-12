@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [19.20.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.19.10...@codecademy/gamut-labs@19.20.0) (2021-08-12)
+
+
+### Features
+
+* **CurriculumCard:** Add beta sticker option to CurriculumCard ([84b30d5](https://github.com/Codecademy/client-modules/commit/84b30d52996e2323e5589ae0f5f65a3570951235))
+
+
+
 ### [19.19.10](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.19.9...@codecademy/gamut-labs@19.19.10) (2021-08-11)
 
 **Note:** Version bump only for package @codecademy/gamut-labs

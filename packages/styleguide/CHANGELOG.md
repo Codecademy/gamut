@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [43.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@43.1.0...@codecademy/styleguide@43.2.0) (2021-08-12)
+
+
+### Features
+
+* **CurriculumCard:** Add beta sticker option to CurriculumCard ([84b30d5](https://github.com/Codecademy/client-modules/commit/84b30d52996e2323e5589ae0f5f65a3570951235))
+
+
+
 ## [43.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@43.0.1...@codecademy/styleguide@43.1.0) (2021-08-11)
 
 
