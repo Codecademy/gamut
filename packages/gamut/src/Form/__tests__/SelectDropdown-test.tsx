@@ -67,10 +67,10 @@ describe('Select', () => {
     expect(options.first().getDOMNode()).toHaveStyle('padding : 3px 14px');
   });
 
-  it('renders a dropdown with the correct maxHeight when shownOptions is specified', () => {
+  it('renders a dropdown with the correct maxHeight when shownOptionsLimit is specified', () => {
     const { wrapper } = renderWrapper({
       options: selectOptionsObject,
-      shownOptions: 4,
+      shownOptionsLimit: 4,
     });
 
     wrapper.find('DropdownIndicator').first().simulate('mouseDown', {
@@ -81,10 +81,10 @@ describe('Select', () => {
     expect(menuList.getDOMNode()).toHaveStyle('max-height : 12rem');
   });
 
-  it('renders a dropdown with the correct maxHeight when shownOptions is specified + size is "small"', () => {
+  it('renders a dropdown with the correct maxHeight when shownOptionsLimit is specified + size is "small"', () => {
     const { wrapper } = renderWrapper({
       options: selectOptionsObject,
-      shownOptions: 4,
+      shownOptionsLimit: 4,
       size: 'small',
     });
 
