@@ -1,4 +1,13 @@
-import { get, identity, isFunction, isObject, merge } from 'lodash';
+import {
+  get,
+  identity,
+  isFunction,
+  isNumber,
+  isObject,
+  isString,
+  isUndefined,
+  merge,
+} from 'lodash';
 
 import { createScaleLookup } from './scales/createScaleLookup';
 import {
@@ -99,32 +108,38 @@ export const variance = {
       ...config,
       prop,
       styleFn: (value, prop, props) => {
-        const val = value as string | number;
         const styles: CSSObject = {};
+        if (isUndefined(value)) {
+          return styles;
+        }
+
         let useTransform = false;
         let usedValue: string | number;
         let scaleVal: string | number | undefined;
 
+        if (isString(value) || isNumber(value)) {
+          scaleVal = getScaleValue(value, props);
+          useTransform = scaleVal !== undefined || scale === undefined;
+          usedValue = scaleVal ?? value;
+        }
+
         if (isFunction(value)) {
           usedValue = value(props.theme);
-        } else {
-          scaleVal = getScaleValue(val, props);
-          useTransform = scaleVal !== undefined || scale === undefined;
-          usedValue = scaleVal ?? val;
         }
 
         // for each property look up the scale value from theme if passed and apply any
         // final transforms to the value
         properties.forEach((property) => {
-          const finalValue = useTransform
-            ? transform(usedValue, property, props)
-            : usedValue;
-
-          if (isObject(finalValue)) {
-            Object.assign(styles, finalValue);
-          } else {
-            Object.assign(styles, { [property]: finalValue });
+          let styleValue: ReturnType<typeof transform> = usedValue;
+          if (useTransform) {
+            styleValue = transform(styleValue, property, props);
           }
+
+          if (isObject(styleValue)) {
+            return Object.assign(styles, styleValue);
+          }
+
+          styles[property] = styleValue;
         });
         // return the resulting styles object
         return styles;
