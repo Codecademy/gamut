@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [0.17.3](https://github.com/Codecademy/client-modules/compare/@codecademy/variance@0.17.2...@codecademy/variance@0.17.3) (2021-08-12)
+
+
+### Bug Fixes
+
+* **variance:** Ensure array scales always qualify for transformation ([66f1760](https://github.com/Codecademy/client-modules/commit/66f1760c85aa605bae89195801683faab01822e3))
+
+
+
 ### [0.17.2](https://github.com/Codecademy/client-modules/compare/@codecademy/variance@0.17.1...@codecademy/variance@0.17.2) (2021-07-19)
 
 

@@ -1,7 +1,13 @@
 import { DocsContextProps } from '@storybook/addon-docs/blocks';
-import { set, head, keyBy, isEmpty, tail, update } from 'lodash';
+import { set, head, keyBy, isEmpty, tail, update, assign } from 'lodash';
 import { merge } from 'lodash/fp';
-import { ContentItem, Hierarchy, Taxonomy, TaxonomyStatus } from './types';
+import {
+  ComponentRegistry,
+  ContentItem,
+  Hierarchy,
+  Taxonomy,
+  TaxonomyStatus,
+} from './types';
 
 export const INDEX_KIND = 'About';
 
@@ -83,6 +89,7 @@ export const createTaxonomy = (context: DocsContextProps): Taxonomy => {
   const allKinds = Object.keys(kinds);
   const taxonomy = {} as Taxonomy;
   const hierarchy = {} as Hierarchy;
+  const componentRegistry = {} as ComponentRegistry;
 
   const config = {
     root: root.toLowerCase() as string,
@@ -97,6 +104,7 @@ export const createTaxonomy = (context: DocsContextProps): Taxonomy => {
       subcomponents = {},
     } = kinds[kind]?.parameters;
     const kindMeta = getKind(kind, config);
+    const componentName = component?.name || component?.displayName;
 
     switch (kindMeta.type) {
       case 'root':
@@ -116,6 +124,15 @@ export const createTaxonomy = (context: DocsContextProps): Taxonomy => {
             status,
           })
         );
+        if (component) {
+          assign(componentRegistry, {
+            [componentName]: {
+              id: kindMeta.id,
+              title: componentName,
+            },
+          });
+        }
+
         break;
       default:
         let components = {};
@@ -123,9 +140,10 @@ export const createTaxonomy = (context: DocsContextProps): Taxonomy => {
         const firstIndex = subStories[0] || {
           id: kindMeta.id.concat('--page'),
         };
+
         if (component || !isEmpty(subcomponents)) {
           components = keyBy(
-            [component?.name, ...Object.keys(subcomponents)]
+            [componentName, ...Object.keys(subcomponents)]
               .filter(Boolean)
               .map((component) => ({
                 title: component,
@@ -135,6 +153,8 @@ export const createTaxonomy = (context: DocsContextProps): Taxonomy => {
               })),
             ({ title }) => title
           );
+
+          assign(componentRegistry, components);
         }
 
         update(
@@ -151,6 +171,7 @@ export const createTaxonomy = (context: DocsContextProps): Taxonomy => {
     }
   });
 
+  set(taxonomy, 'components', componentRegistry);
   set(taxonomy, 'hierarchy', hierarchy);
 
   return taxonomy;
