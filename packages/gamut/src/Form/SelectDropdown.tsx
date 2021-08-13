@@ -75,6 +75,7 @@ const indicatorSizes = {
 interface SizedIndicatorProps extends IndicatorProps<OptionTypeBase, false> {
   selectProps: SelectDropdownSizes;
 }
+
 const ChevronDropdown = (props: SizedIndicatorProps) => {
   const { size } = props.selectProps;
   const color = props.isDisabled ? 'text-disabled' : 'text';
