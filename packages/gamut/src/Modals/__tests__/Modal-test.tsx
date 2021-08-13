@@ -30,13 +30,13 @@ describe('ModalDeprecated', () => {
 
   it('does not render its close button if hideDefaultCloseButton is true', () => {
     renderModal({
-      showCloseButton: false,
+      hideCloseButton: true,
     });
 
     expect(screen.queryAllByRole('button').length).toBe(0);
   });
 
-  it('renders its close button if showCloseButton is true', () => {
+  it('renders its close button if hideCloseButton is false', () => {
     renderModal();
 
     expect(screen.queryAllByRole('button').length).toBe(1);
