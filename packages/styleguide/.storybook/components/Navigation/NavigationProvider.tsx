@@ -1,7 +1,8 @@
 import { DocsContext } from '@storybook/addon-docs/blocks';
-import { get } from 'lodash';
+import { get, mapValues } from 'lodash';
 import React, { useContext, createContext, useMemo } from 'react';
 import {
+  ComponentRegistry,
   ContentItem,
   ContentLink,
   Hierarchy,
@@ -11,6 +12,7 @@ import { getChildLinks, createTaxonomy, getKind } from './utils';
 
 export type NavigationContextShape = {
   hierarchy: Hierarchy;
+  components: ComponentRegistry;
   getTableOfContents: (kind: string) => TableOfContentsShape;
   getBreadCrumbs: (kind: string) => ContentLink[];
   getChildLinks: (kind: Hierarchy) => ContentItem[];
@@ -27,7 +29,7 @@ export const NavigationProvider: React.FC = ({ children }) => {
       taxonomy: { root, indexPage },
     },
   } = context;
-  const { root: rootToC, hierarchy } = createTaxonomy(context);
+  const { root: rootToC, hierarchy, components } = createTaxonomy(context);
 
   const getTableOfContents = (kind: string): TableOfContentsShape => {
     const { type, hierarchyOrder = '' } = getKind(kind, {
@@ -77,6 +79,7 @@ export const NavigationProvider: React.FC = ({ children }) => {
     <NavigationContext.Provider
       value={{
         hierarchy,
+        components,
         getTableOfContents,
         getBreadCrumbs,
         getChildLinks,
@@ -98,4 +101,11 @@ export function useNavigation() {
     }),
     [kind]
   );
+}
+
+export function useComponentLinks() {
+  const { components } = useContext(NavigationContext);
+  return useMemo(() => {
+    return mapValues(components, ({ id }) => id);
+  }, [components]);
 }

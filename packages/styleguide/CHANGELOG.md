@@ -3,6 +3,81 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [43.6.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@43.5.0...@codecademy/styleguide@43.6.0) (2021-08-13)
+
+
+### Features
+
+* Modal GM-179 ([9fbb540](https://github.com/Codecademy/client-modules/commit/9fbb540adc32089ad971a71fa3cadf0257c02e3d))
+
+
+
+## [43.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@43.4.0...@codecademy/styleguide@43.5.0) (2021-08-13)
+
+
+### Features
+
+* **SelectDropdown:** shownOptionsLimit ([82b9cb0](https://github.com/Codecademy/client-modules/commit/82b9cb08bf14a1565cdf1648714f3660f7c97cf9))
+
+
+
+## [43.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@43.3.0...@codecademy/styleguide@43.4.0) (2021-08-13)
+
+
+### Features
+
+* **SelectDropdown:** small variant ([de29b2d](https://github.com/Codecademy/client-modules/commit/de29b2db2339be52200931a5643ab071d2e3198e))
+
+
+
+## [43.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@43.2.2...@codecademy/styleguide@43.3.0) (2021-08-13)
+
+
+### Features
+
+* **styleguide:** Allow component level links ([b7bbe42](https://github.com/Codecademy/client-modules/commit/b7bbe428a2c35cc92ac4de6edec95e7178647bab))
+
+
+### Bug Fixes
+
+* **Styleguide:** Fixes system prop tooltip colors GM-322 ([77a9aaa](https://github.com/Codecademy/client-modules/commit/77a9aaa98e3b92eea436151f498c23f7c17c0a2c))
+
+
+
+### [43.2.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@43.2.1...@codecademy/styleguide@43.2.2) (2021-08-13)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [43.2.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@43.2.0...@codecademy/styleguide@43.2.1) (2021-08-12)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [43.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@43.1.0...@codecademy/styleguide@43.2.0) (2021-08-12)
+
+
+### Features
+
+* **CurriculumCard:** Add beta sticker option to CurriculumCard ([84b30d5](https://github.com/Codecademy/client-modules/commit/84b30d52996e2323e5589ae0f5f65a3570951235))
+
+
+
+## [43.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@43.0.1...@codecademy/styleguide@43.1.0) (2021-08-11)
+
+
+### Features
+
+* **SelectDropdown:** ColorModes ([c867505](https://github.com/Codecademy/client-modules/commit/c867505c509a042c9217f1b7608f8e27a1fc4063))
+
+
+
 ### [43.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@43.0.0...@codecademy/styleguide@43.0.1) (2021-08-11)
 
 **Note:** Version bump only for package @codecademy/styleguide
