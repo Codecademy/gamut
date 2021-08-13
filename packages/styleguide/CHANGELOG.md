@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [43.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@43.3.0...@codecademy/styleguide@43.4.0) (2021-08-13)
+
+
+### Features
+
+* **SelectDropdown:** small variant ([de29b2d](https://github.com/Codecademy/client-modules/commit/de29b2db2339be52200931a5643ab071d2e3198e))
+
+
+
 ## [43.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@43.2.2...@codecademy/styleguide@43.3.0) (2021-08-13)
 
 
