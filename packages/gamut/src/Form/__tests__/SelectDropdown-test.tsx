@@ -57,7 +57,8 @@ describe('Select', () => {
       size: 'small',
     });
 
-    expect(wrapper.find('MiniChevronDownIcon').toExist());
+    const dropdownIconTitle = wrapper.find('DropdownIndicator').text();
+    expect(dropdownIconTitle).toEqual('Mini Chevron Down Icon');
   });
 
   it('renders a medium dropdown when size is "medium"', () => {
@@ -66,7 +67,8 @@ describe('Select', () => {
       size: 'medium',
     });
 
-    expect(wrapper.find('ArrowChevronDownIcon').toExist());
+    const dropdownIconTitle = wrapper.find('DropdownIndicator').text();
+    expect(dropdownIconTitle).toEqual('Arrow Chevron Down Icon');
   });
 
   it('renders a medium dropdown by default', () => {
@@ -74,7 +76,8 @@ describe('Select', () => {
       options: selectOptionsObject,
     });
 
-    expect(wrapper.find('ArrowChevronDownIcon')).toBe(true);
+    const dropdownIconTitle = wrapper.find('DropdownIndicator').text();
+    expect(dropdownIconTitle).toEqual('Arrow Chevron Down Icon');
   });
 
   it('renders a dropdown with the correct maxHeight when shownOptionsLimit is specified', () => {
