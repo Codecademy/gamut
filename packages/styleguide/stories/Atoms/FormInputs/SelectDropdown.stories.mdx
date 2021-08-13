@@ -1,11 +1,11 @@
 import { Box, FormGroup, SelectDropdown } from '@codecademy/gamut';
-import { LockIcon, NetworkUserIcon, PeopleIcon } from '@codecademy/gamut-icons';
 import title from '@codecademy/macros/lib/title.macro';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import LinkTo from '@storybook/addon-links/react';
 
 import { PropsTable } from '~styleguide/blocks';
 
-import { SelectDropdownExample } from './examples';
+import { SelectDropdownExample, SelectDropdownIconExample } from './examples';
 
 export const fruitOptions = [
   'Apple',
@@ -292,7 +292,7 @@ You can chose how options will be shown in the dropdown. 6 is the default limit 
     }}
   >
     {(args) => (
-      <Box width="20rem" height="25rem">
+      <Box width="20rem" height="22rem">
         <FormGroup
           label="i have the default shownOptionsLimit"
           htmlFor="shownOptions01"
@@ -367,41 +367,41 @@ You can chose how options will be shown in the dropdown. 6 is the default limit 
 
 ### SelectDropdown Option Icons
 
-To add some pizzazz to your dropdown, you can add any of `gamut-icons` to your options.
+To add some pizzazz to your dropdown, you can add any of our <LinkTo kind='Atoms/Icons'>gamut-icons</LinkTo> to your options.
 
-<Canvas>
-  <Story
-    name="SelectDropdown"
-    args={{
-      options: [
-        {
-          label: 'Private: Only you can prevent forest fires',
-          value: 'private',
-          Icon: LockIcon,
-        },
-        {
-          label: 'Public: Wait what?',
-          value: 'public',
-          Icon: NetworkUserIcon,
-        },
-        {
-          label: 'Monsters: Monsters are such interesting people',
-          value: 'monsters',
-          Icon: PeopleIcon,
-        },
-      ],
-      value: 'oh no',
-    }}
-  >
-    {(args) => (
-      <Box width="25rem" height="35rem">
-        <FormGroup label="i have pizzazz">
-          <SelectDropdown {...args} />
-        </FormGroup>
-      </Box>
-    )}
-  </Story>
-</Canvas>
+<SelectDropdownIconExample />
+
+```tsx
+import { Box, FormGroup, SelectDropdown } from '@codecademy/gamut/src';
+import { RadarIcon, ResponsiveIcon, RocketIcon } from '@codecademy/gamut-icons';
+import React from 'react';
+
+export const SelectDropdownIconExample: React.FC = () => (
+  <Box p={16} width="100%" height="12rem" border={1} bg="palePink">
+    <FormGroup label="i have pizzazz">
+      <SelectDropdown
+        options={[
+          {
+            label: 'ohai',
+            value: 'ohai',
+            Icon: RocketIcon,
+          },
+          {
+            label: 'surprise pacman',
+            value: 'pacman',
+            Icon: RadarIcon,
+          },
+          {
+            label: `who's that pokemon?`,
+            value: 'what',
+            Icon: ResponsiveIcon,
+          },
+        ]}
+      />
+    </FormGroup>
+  </Box>
+);
+```
 
 ### Custom inputProps
 

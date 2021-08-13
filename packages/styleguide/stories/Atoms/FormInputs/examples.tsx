@@ -8,6 +8,7 @@ import {
   LayoutGrid,
   SelectDropdown,
 } from '@codecademy/gamut/src';
+import { RadarIcon, ResponsiveIcon, RocketIcon } from '@codecademy/gamut-icons';
 import {
   LockIcon,
   NetworkUserIcon,
@@ -85,10 +86,36 @@ export const CheckboxExample: React.FC = () => {
   );
 };
 
+export const SelectDropdownIconExample: React.FC = () => (
+  <Box p={16} width="100%" height="12rem" border={1} bg="palePink">
+    <FormGroup label="i have pizzazz">
+      <SelectDropdown
+        options={[
+          {
+            label: 'ohai',
+            value: 'ohai',
+            Icon: RocketIcon,
+          },
+          {
+            label: 'surprise pacman',
+            value: 'pacman',
+            Icon: RadarIcon,
+          },
+          {
+            label: `who's that pokemon?`,
+            value: 'what',
+            Icon: ResponsiveIcon,
+          },
+        ]}
+      />
+    </FormGroup>
+  </Box>
+);
+
 export const SelectDropdownExample: React.FC = () => {
   return (
     <ColorModeExampleWrapper>
-      <Box height="25rem">
+      <Box height="34rem">
         <FormGroup label="i have a fancy colormode" htmlFor="colormode">
           <SelectDropdown
             aria-label="colormode"
