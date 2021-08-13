@@ -30,7 +30,7 @@ export * from './Interstitial';
 export * from './Layout/Column';
 export * from './Layout/LayoutGrid';
 export * from './Markdown';
-export * from './Dialog';
+export * from './Modals';
 export * from './ModalDeprecated';
 export * from './NotificationList';
 export * from './NotificationList/NotificationItem';
