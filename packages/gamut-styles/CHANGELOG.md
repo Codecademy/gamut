@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [11.8.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@11.7.2...@codecademy/gamut-styles@11.8.0) (2021-08-13)
+
+
+### Features
+
+* Add 2.5rem interval to spacing GM-317 ([755a224](https://github.com/Codecademy/client-modules/commit/755a2247ed0dd24c1f31a56bd6db922895ef9547))
+
+
+
 ### [11.7.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@11.7.1...@codecademy/gamut-styles@11.7.2) (2021-08-12)
 
 **Note:** Version bump only for package @codecademy/gamut-styles
