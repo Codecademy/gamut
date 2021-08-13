@@ -13,6 +13,9 @@ const selectOptionsObject = {
   red: 'red',
   yellow: 'yellow',
   green: 'green',
+  blue: 'blue',
+  teal: 'teal',
+  orange: 'orange',
 };
 
 const renderWrapper = setupEnzyme(SelectDropdown, {
@@ -48,21 +51,14 @@ describe('Select', () => {
     expect(getByLabel.exists()).toBe(true);
   });
 
-  it('renders a medium dropdown by default', () => {
-    const { wrapper } = renderWrapper({
-      options: selectOptionsObject,
-    });
-
-    expect(wrapper.find('ArrowChevronDownIcon'));
-  });
-
   it('renders a small dropdown when size is "small"', () => {
     const { wrapper } = renderWrapper({
       options: selectOptionsObject,
       size: 'small',
     });
 
-    expect(wrapper.find('MiniChevronDownIcon'));
+    const dropdownIconTitle = wrapper.find('DropdownIndicator').text();
+    expect(dropdownIconTitle).toEqual('Mini Chevron Down Icon');
   });
 
   it('renders a medium dropdown when size is "medium"', () => {
@@ -71,6 +67,45 @@ describe('Select', () => {
       size: 'medium',
     });
 
-    expect(wrapper.find('ArrowChevronDownIcon'));
+    const dropdownIconTitle = wrapper.find('DropdownIndicator').text();
+    expect(dropdownIconTitle).toEqual('Arrow Chevron Down Icon');
+  });
+
+  it('renders a medium dropdown by default', () => {
+    const { wrapper } = renderWrapper({
+      options: selectOptionsObject,
+    });
+
+    const dropdownIconTitle = wrapper.find('DropdownIndicator').text();
+    expect(dropdownIconTitle).toEqual('Arrow Chevron Down Icon');
+  });
+
+  it('renders a dropdown with the correct maxHeight when shownOptionsLimit is specified', () => {
+    const { wrapper } = renderWrapper({
+      options: selectOptionsObject,
+      shownOptionsLimit: 4,
+    });
+
+    wrapper.find('DropdownIndicator').first().simulate('mouseDown', {
+      button: 0,
+    });
+
+    const menuList = wrapper.find('MenuList');
+    expect(menuList.getDOMNode()).toHaveStyle('max-height : 12rem');
+  });
+
+  it('renders a dropdown with the correct maxHeight when shownOptionsLimit is specified + size is "small"', () => {
+    const { wrapper } = renderWrapper({
+      options: selectOptionsObject,
+      shownOptionsLimit: 4,
+      size: 'small',
+    });
+
+    wrapper.find('DropdownIndicator').first().simulate('mouseDown', {
+      button: 0,
+    });
+
+    const menuList = wrapper.find('MenuList');
+    expect(menuList.getDOMNode()).toHaveStyle('max-height : 8rem');
   });
 });

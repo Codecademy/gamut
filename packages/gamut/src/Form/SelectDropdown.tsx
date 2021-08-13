@@ -50,6 +50,7 @@ interface SelectDropdownProps
   inputProps?: Record<string, string | number | boolean>;
   name?: string;
   placeholder?: string;
+  shownOptionsLimit?: 1 | 2 | 3 | 4 | 5 | 6;
 }
 
 type OptionStrict = {
@@ -79,7 +80,9 @@ interface SizedIndicatorProps extends IndicatorProps<OptionTypeBase, false> {
 const ChevronDropdown = (props: SizedIndicatorProps) => {
   const { size } = props.selectProps;
   const color = props.isDisabled ? 'text-disabled' : 'text';
-  const { icon: IndicatorIcon, ...iconProps } = indicatorSizes[size ?? 'small'];
+  const { icon: IndicatorIcon, ...iconProps } = indicatorSizes[
+    size ?? 'medium'
+  ];
 
   return (
     <DropdownIndicator {...props}>
@@ -121,6 +124,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
   placeholder = 'Select an option',
   inputProps,
   isSearchable = false,
+  shownOptionsLimit = 6,
   size,
   ...rest
 }) => {
@@ -180,6 +184,17 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
         ...dropdownBorderStates({ error: state.selectProps.error, theme }),
       }),
 
+      menuList: (provided, state) => {
+        const sizeInteger = state.selectProps.size === 'small' ? 2 : 3;
+        const maxHeight = `${
+          state.selectProps.shownOptionsLimit * sizeInteger
+        }rem`;
+        return {
+          ...provided,
+          maxHeight,
+        };
+      },
+
       placeholder: (provided, state) => ({
         ...provided,
         ...placeholderColor({ theme }),
@@ -230,6 +245,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
       styles={memoizedStyles}
       isSearchable={isSearchable}
       size={size}
+      shownOptionsLimit={shownOptionsLimit}
       {...rest}
     />
   );
