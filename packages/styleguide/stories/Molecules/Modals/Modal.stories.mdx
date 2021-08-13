@@ -32,35 +32,20 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
   }}
 />
 
-### Related Components
-
-#### User Feedback
-
-- `Dialog`: Structured modals with binary user interaction paths (Confirm / Cancel).
-- `Toast`: Low priority decorative and celebratory user feedback.
-- `Coachmark`: Highlight a desired interaction or new feature.
-- `Alert`: Actionable direct user feedback.
-
-#### Subcomponents
-
-- `Overlay`: Accessible and content agnostic screen takeovers.
-- `BodyPortal`: Escaping the current DOM context.
-- `FloatingCard`: Cards with pattern drop shadows.
-
 ## Customizing Close Behavior
 
 ### Creating a custom close button
 
 By default, the Modal will render a close button.
 
-You can disable the default close button with the `showCloseButton` prop by setting it to false.
+You can disable the default close button with the `hideCloseButton` prop by setting it to false.
 
 You can then use the `isOpen` prop to create other controls that toggle the Modal on and off.
 
 <Canvas>
   <Story
     name="Without Close Default"
-    args={{ showCloseButton: false }}
+    args={{ hideCloseButton: true }}
     height="350px"
   >
     {(args) => <Modal {...args} />}

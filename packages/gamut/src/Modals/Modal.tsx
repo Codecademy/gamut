@@ -13,7 +13,7 @@ export interface ModalProps extends ModalBaseProps {
   /**
    * Whether to hide the default close button and pass your own through children
    */
-  showCloseButton?: boolean;
+  hideCloseButton?: boolean;
 }
 
 export const Modal: React.FC<ModalProps> = ({
@@ -22,7 +22,7 @@ export const Modal: React.FC<ModalProps> = ({
   className,
   size = 'fluid',
   onRequestClose,
-  showCloseButton = true,
+  hideCloseButton = false,
   ...rest
 }) => {
   return (
@@ -45,7 +45,7 @@ export const Modal: React.FC<ModalProps> = ({
             {title}
           </Text>
         )}
-        {showCloseButton && (
+        {!hideCloseButton && (
           <IconButton
             aria-label="Close Dialog"
             size="small"
