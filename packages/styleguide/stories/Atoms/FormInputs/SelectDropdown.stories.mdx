@@ -1,4 +1,5 @@
 import { Box, FormGroup, SelectDropdown } from '@codecademy/gamut';
+import { LockIcon, NetworkUserIcon, PeopleIcon } from '@codecademy/gamut-icons';
 import title from '@codecademy/macros/lib/title.macro';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 
@@ -191,6 +192,44 @@ export const CustomDropdown: React.FC = ({
           error="error message!! no :'("
         >
           <SelectDropdown error {...args} />
+        </FormGroup>
+      </Box>
+    )}
+  </Story>
+</Canvas>
+
+### SelectDropdown Option Icons
+
+To add some pizzazz to your dropdown, you can add any of `gamut-icons` to your options.
+
+<Canvas>
+  <Story
+    name="SelectDropdown"
+    args={{
+      options: [
+        {
+          label: 'Private: Only you can prevent forest fires',
+          value: 'private',
+          Icon: LockIcon,
+        },
+        {
+          label: 'Public: Wait what?',
+          value: 'public',
+          Icon: NetworkUserIcon,
+        },
+        {
+          label: 'Monsters: Monsters are such interesting people',
+          value: 'monsters',
+          Icon: PeopleIcon,
+        },
+      ],
+      value: 'oh no',
+    }}
+  >
+    {(args) => (
+      <Box width="25rem" height="35rem">
+        <FormGroup label="i hacve">
+          <SelectDropdown {...args} />
         </FormGroup>
       </Box>
     )}

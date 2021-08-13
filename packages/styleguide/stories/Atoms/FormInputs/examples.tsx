@@ -135,7 +135,7 @@ export const SelectDropdownExample: React.FC = () => {
               },
               {
                 label: 'Monsters: Monsters are such interesting people',
-                value: 'public',
+                value: 'monsters',
                 Icon: PeopleIcon,
               },
             ]}
