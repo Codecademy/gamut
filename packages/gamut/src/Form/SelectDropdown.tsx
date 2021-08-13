@@ -51,7 +51,6 @@ interface SelectDropdownProps
   name?: string;
   placeholder?: string;
   shownOptionsLimit?: 1 | 2 | 3 | 4 | 5 | 6;
-  size?: 'small' | 'medium';
 }
 
 type OptionStrict = {
