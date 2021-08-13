@@ -3,6 +3,7 @@ export type TaxonomyStatus = 'current' | 'deprecated' | 'updating' | 'static';
 export interface Taxonomy {
   root: Hierarchy;
   hierarchy: Hierarchy;
+  components: ComponentRegistry;
 }
 
 export interface Hierarchy {
@@ -13,6 +14,11 @@ export interface Hierarchy {
   status: TaxonomyStatus;
   children: Hierarchy;
 }
+
+export interface ComponentRegistry {
+  [ComponentName: string]: any;
+}
+
 export interface ContentLink {
   title: string;
   subtitle: string;

@@ -91,7 +91,7 @@ export const SelectDropdownExample: React.FC = () => {
       <Box height="25rem">
         <FormGroup label="i have a fancy colormode" htmlFor="colormode">
           <SelectDropdown
-            aria-label="updog"
+            aria-label="colormode"
             options={['ooo fancy', 'yes I am!', ':)']}
             name="colormode"
             isSearchable
@@ -103,7 +103,7 @@ export const SelectDropdownExample: React.FC = () => {
           error="cry cry cry"
         >
           <SelectDropdown
-            aria-label="updog"
+            aria-label="colormode-error"
             options={['ooo fancy', 'yes I am!', ':)']}
             name="colormode-error"
             isSearchable
@@ -112,7 +112,7 @@ export const SelectDropdownExample: React.FC = () => {
         </FormGroup>
         <FormGroup label="i am disabled" htmlFor="colormode-disabled">
           <SelectDropdown
-            aria-label="updog"
+            aria-label="colormode-disabled"
             options={['ooo fancy', 'yes I am!', ':)']}
             name="colormode-disabled"
             isSearchable
@@ -140,6 +140,14 @@ export const SelectDropdownExample: React.FC = () => {
               },
             ]}
             name="colormode-disabled"
+          />
+        </FormGroup>
+        <FormGroup label="i am smol" htmlFor="colormode-small">
+          <SelectDropdown
+            aria-label="colormode-small"
+            options={['small', 'yes', 'very very']}
+            size="small"
+            name="colormode-small"
             isSearchable
           />
         </FormGroup>
