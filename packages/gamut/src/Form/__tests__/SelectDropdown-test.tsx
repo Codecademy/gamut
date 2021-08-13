@@ -57,14 +57,24 @@ describe('Select', () => {
       size: 'small',
     });
 
-    wrapper.find('DropdownIndicator').first().simulate('mouseDown', {
-      button: 0,
+    expect(wrapper.find('MiniChevronDownIcon'));
+  });
+
+  it('renders a medium dropdown when size is "medium"', () => {
+    const { wrapper } = renderWrapper({
+      options: selectOptionsObject,
+      size: 'medium',
     });
 
-    const dropdown = wrapper.find('Control');
-    const options = wrapper.find('Option');
-    expect(dropdown.getDOMNode()).toHaveStyle('height : 2rem');
-    expect(options.first().getDOMNode()).toHaveStyle('padding : 3px 14px');
+    expect(wrapper.find('ArrowChevronDownIcon'));
+  });
+
+  it('renders a medium dropdown by default', () => {
+    const { wrapper } = renderWrapper({
+      options: selectOptionsObject,
+    });
+
+    expect(wrapper.find('ArrowChevronDownIcon'));
   });
 
   it('renders a dropdown with the correct maxHeight when shownOptionsLimit is specified', () => {
