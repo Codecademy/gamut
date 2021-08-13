@@ -1,3 +1,5 @@
+import { states } from '@codecademy/gamut-styles';
+import styled from '@emotion/styled';
 import React, { useCallback } from 'react';
 
 import { BodyPortal } from '../BodyPortal';
@@ -26,11 +28,25 @@ export type OverlayProps = {
   isOpen?: boolean;
   /** Whether the overlay renders inline to its container or creates a portal to the end of the body */
   inline?: boolean;
+  /** Whether the overlay has a transparent or a shrouded opaque background */
+  shroud?: boolean;
 };
+
+const OverlayContainer = styled(FlexBox)(
+  states({
+    shroud: {
+      bg: 'shadow-opaque',
+    },
+    inline: {
+      position: 'absolute',
+    },
+  })
+);
 
 export const Overlay: React.FC<OverlayProps> = ({
   className,
   children,
+  shroud = false,
   inline = false,
   clickOutsideCloses = true,
   escapeCloses = true,
@@ -48,13 +64,14 @@ export const Overlay: React.FC<OverlayProps> = ({
   if (!isOpen) return null;
 
   const content = (
-    <FlexBox
+    <OverlayContainer
+      position="fixed"
       data-testid="overlay-content-container"
-      position={inline ? 'absolute' : 'fixed'}
-      justifyContent="center"
-      alignItems="center"
+      center
       inset={0}
       className={className}
+      inline={inline}
+      shroud={shroud}
     >
       <FocusTrap
         active={!inline}
@@ -63,7 +80,7 @@ export const Overlay: React.FC<OverlayProps> = ({
       >
         {children}
       </FocusTrap>
-    </FlexBox>
+    </OverlayContainer>
   );
 
   if (inline) return content;
