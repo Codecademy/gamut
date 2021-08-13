@@ -47,4 +47,30 @@ describe('Select', () => {
 
     expect(getByLabel.exists()).toBe(true);
   });
+
+  it('renders a medium dropdown by default', () => {
+    const { wrapper } = renderWrapper({
+      options: selectOptionsObject,
+    });
+
+    expect(wrapper.find('ArrowChevronDownIcon'));
+  });
+
+  it('renders a small dropdown when size is "small"', () => {
+    const { wrapper } = renderWrapper({
+      options: selectOptionsObject,
+      size: 'small',
+    });
+
+    expect(wrapper.find('MiniChevronDownIcon'));
+  });
+
+  it('renders a medium dropdown when size is "medium"', () => {
+    const { wrapper } = renderWrapper({
+      options: selectOptionsObject,
+      size: 'medium',
+    });
+
+    expect(wrapper.find('ArrowChevronDownIcon'));
+  });
 });

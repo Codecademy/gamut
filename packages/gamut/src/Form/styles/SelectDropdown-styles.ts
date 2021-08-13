@@ -10,7 +10,6 @@ import {
 
 export const selectDropdownStyles = system.css({
   ...formBaseFieldStylesObject,
-  ...formFieldPaddingStyles,
   display: 'flex',
   zIndex: 3,
 });
@@ -32,6 +31,15 @@ export const conditionalBorderStates = system.states({
     },
   },
   isDisabled: formFieldDisabledStyles,
+});
+
+export const sizeVariants = system.variant({
+  prop: 'size',
+  defaultVariant: 'medium',
+  variants: {
+    medium: formFieldPaddingStyles,
+    small: { height: '2rem', px: 8, py: 0 },
+  },
 });
 
 export const dropdownBorderStates = system.states({
