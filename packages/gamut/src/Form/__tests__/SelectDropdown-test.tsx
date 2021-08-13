@@ -69,7 +69,7 @@ describe('Select', () => {
     expect(wrapper.find('ArrowChevronDownIcon').toExist());
   });
 
-  it.only('renders a medium dropdown by default', () => {
+  it('renders a medium dropdown by default', () => {
     const { wrapper } = renderWrapper({
       options: selectOptionsObject,
     });
