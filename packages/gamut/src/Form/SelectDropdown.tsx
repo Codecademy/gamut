@@ -80,7 +80,9 @@ interface SizedIndicatorProps extends IndicatorProps<OptionTypeBase, false> {
 const ChevronDropdown = (props: SizedIndicatorProps) => {
   const { size } = props.selectProps;
   const color = props.isDisabled ? 'text-disabled' : 'text';
-  const { icon: IndicatorIcon, ...iconProps } = indicatorSizes[size ?? 'small'];
+  const { icon: IndicatorIcon, ...iconProps } = indicatorSizes[
+    size ?? 'medium'
+  ];
 
   return (
     <DropdownIndicator {...props}>
