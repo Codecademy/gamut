@@ -48,15 +48,12 @@ export const Link: React.FC<LinkProps> = ({
     storyId = componentLinks[component] ?? id;
   }
 
-  const computedProps = {} as Pick<LinkProps, 'onClick'>;
   const onClick = linkTo(storyId);
 
   if (variant === 'area') {
-    return <AreaLink {...props} {...computedProps} onClick={onClick} />;
+    return <AreaLink {...props} onClick={onClick} />;
   }
-  return (
-    <Anchor {...props} {...computedProps} onClick={onClick} variant={variant} />
-  );
+  return <Anchor {...props} onClick={onClick} variant={variant} />;
 };
 
 export const LinkTo = Link;
