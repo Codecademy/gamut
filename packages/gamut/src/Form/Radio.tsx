@@ -9,7 +9,7 @@ import {
   radioInput,
   radioLabel,
   radioWrapper,
-} from './styles/shared-system-props';
+} from './styles';
 
 export type RadioProps = InputHTMLAttributes<HTMLInputElement> & {
   checked?: boolean;
