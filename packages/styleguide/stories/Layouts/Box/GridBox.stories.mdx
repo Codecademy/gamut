@@ -2,7 +2,8 @@ import { Box, GridBox } from '@codecademy/gamut/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
-import LinkTo from '@storybook/addon-links/react';
+
+import { LinkTo } from '~styleguide/blocks';
 
 <Meta
   title={title}
@@ -10,14 +11,8 @@ import LinkTo from '@storybook/addon-links/react';
   parameters={{ status: 'updating', source: 'gamut' }}
 />
 
-<p>
-  For Grid layouts we&apos;ve added a specific flex <code>GridBox</code>{' '}
-  component that extends{' '}
-  <code>
-    <LinkTo kind="Layouts/Box">Box</LinkTo>
-  </code>{' '}
-  with added flex props.
-</p>
+For Grid layouts we&apos;ve added a specific flex <code>GridBox</code>
+component that extends <LinkTo component="Box">Box</LinkTo> with added flex props.
 
 <Canvas>
   <Story
