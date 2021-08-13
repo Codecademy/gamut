@@ -3,6 +3,7 @@ import { Anchor } from '@codecademy/gamut/src';
 import styled from '@emotion/styled';
 import React, { ComponentProps } from 'react';
 import { linkTo } from '@storybook/addon-links';
+import { useComponentLinks } from '../Navigation';
 
 export const Reset = styled.div`
   p:first-of-type {
@@ -33,15 +34,26 @@ type LinkProps = Omit<ComponentProps<typeof Anchor>, 'variant'> & {
   variant?: ComponentProps<typeof Anchor>['variant'] | 'area';
 };
 
-export const Link: React.FC<LinkProps> = ({ ref, id, variant, ...props }) => {
-  const computedProps = {} as Pick<LinkProps, 'onClick'>;
-  if (id) {
-    computedProps.onClick = linkTo(id);
+export const Link: React.FC<LinkProps> = ({
+  ref,
+  id,
+  component,
+  variant,
+  ...props
+}) => {
+  let storyId = id;
+  const componentLinks = useComponentLinks();
+
+  if (component) {
+    storyId = componentLinks[component] ?? id;
   }
+
+  const onClick = linkTo(storyId);
+
   if (variant === 'area') {
-    return <AreaLink {...props} {...computedProps} />;
+    return <AreaLink {...props} onClick={onClick} />;
   }
-  return <Anchor {...props} {...computedProps} variant={variant} />;
+  return <Anchor {...props} onClick={onClick} variant={variant} />;
 };
 
 export const LinkTo = Link;
@@ -55,7 +67,7 @@ export const Code = styled.code`
   border-radius: 3px;
   font-size: 0.8em;
   border: 1px solid ${themed('colors.gray-200')};
-  color: ${themed('colors.gray-700')};
+  color: ${themed('colors.navy-700')};
   background-color: ${themed('colors.gray-100')};
   display: inline-block;
   overflow-x: scroll;
