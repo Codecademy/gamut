@@ -57,7 +57,7 @@ describe('Select', () => {
       size: 'small',
     });
 
-    expect(wrapper.find('MiniChevronDownIcon'));
+    expect(wrapper.find('MiniChevronDownIcon').toExist());
   });
 
   it('renders a medium dropdown when size is "medium"', () => {
@@ -66,15 +66,15 @@ describe('Select', () => {
       size: 'medium',
     });
 
-    expect(wrapper.find('ArrowChevronDownIcon'));
+    expect(wrapper.find('ArrowChevronDownIcon').toExist());
   });
 
-  it('renders a medium dropdown by default', () => {
+  it.only('renders a medium dropdown by default', () => {
     const { wrapper } = renderWrapper({
       options: selectOptionsObject,
     });
 
-    expect(wrapper.find('ArrowChevronDownIcon'));
+    expect(wrapper.find('ArrowChevronDownIcon')).toBe(true);
   });
 
   it('renders a dropdown with the correct maxHeight when shownOptionsLimit is specified', () => {
