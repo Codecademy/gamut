@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [19.21.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.21.0...@codecademy/gamut-labs@19.21.1) (2021-08-16)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+## [19.21.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.20.6...@codecademy/gamut-labs@19.21.0) (2021-08-16)
+
+
+### Features
+
+* **Testimonial:** Add new Testimonial Component ([efe1568](https://github.com/Codecademy/client-modules/commit/efe156813cd10586b7a61f1013564cb5387f5aa3))
+
+
+
 ### [19.20.6](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.20.5...@codecademy/gamut-labs@19.20.6) (2021-08-13)
 
 **Note:** Version bump only for package @codecademy/gamut-labs
