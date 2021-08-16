@@ -44,17 +44,18 @@ const getAppHeaderItems = (
     case 'anon':
       switch (props.variant) {
         case 'landing':
-          return anonLandingHeaderItems();
+          return anonLandingHeaderItems(props.hidePricing);
         case 'login':
-          return anonLoginHeaderItems();
+          return anonLoginHeaderItems(props.hidePricing);
         case 'signup':
-          return anonSignupHeaderItems();
+          return anonSignupHeaderItems(props.hidePricing);
         default:
-          return anonDefaultHeaderItems();
+          return anonDefaultHeaderItems(props.hidePricing);
       }
     case 'free':
       return freeHeaderItems(
         props.user,
+        props.hidePricing,
         props.renderNotifications?.desktop,
         props.renderFavorites?.desktop
       );
@@ -76,17 +77,18 @@ const getMobileAppHeaderItems = (
     case 'anon':
       switch (props.variant) {
         case 'landing':
-          return anonLandingMobileHeaderItems();
+          return anonLandingMobileHeaderItems(props.hidePricing);
         case 'login':
-          return anonLoginMobileHeaderItems();
+          return anonLoginMobileHeaderItems(props.hidePricing);
         case 'signup':
-          return anonSignupMobileHeaderItems();
+          return anonSignupMobileHeaderItems(props.hidePricing);
         default:
-          return anonDefaultMobileHeaderItems();
+          return anonDefaultMobileHeaderItems(props.hidePricing);
       }
     case 'free':
       return freeMobileHeaderItems(
         props.user,
+        props.hidePricing,
         props.renderNotifications?.mobile
       );
     case 'pro':
