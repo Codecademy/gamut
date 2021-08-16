@@ -40,6 +40,7 @@ const FooterContainer = styled.footer`
 
 export const GlobalFooter: React.FC<GlobalFooterProps> = ({
   className,
+  hidePricing,
   onClick,
   onMadeInClick,
   userGeo,
