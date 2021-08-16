@@ -7,12 +7,10 @@ import ReactResizeDetector from 'react-resize-detector';
 import { Monaco, MonacoFile } from '../types';
 
 const innerEditorStyles = css`
-  padding-top: 0.95rem;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  & .monaco-editor.rename-box,
+  .monaco-hover {
+    top: 0;
+  }
 `;
 
 const InnerEditor = () => <Global styles={innerEditorStyles} />;
@@ -51,12 +49,13 @@ export class SimpleMonacoEditor extends Component<SimpleMonacoEditorProps> {
         handleHeight
         handleWidth
         onResize={(width: number, height: number) => {
+          console.log(width, height);
           width > 0 && height > 0 && this.editor?.layout();
         }}
         refreshMode="debounce"
         refreshRate={500}
       >
-        <InnerEditor />
+        {/* <InnerEditor /> */}
         <Editor
           onMount={this.editorDidMount}
           beforeMount={this.editorWillMount}

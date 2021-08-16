@@ -5,6 +5,7 @@ import { MonacoThemeColors } from './types';
 const colorMode = 'dark';
 const getColorValue = (color: keyof typeof theme.modes.dark) =>
   theme._getColorValue(theme.modes[colorMode][color]);
+
 export const CodecademyColors: MonacoThemeColors = {
   syntax: {
     attribute: getColorValue('editor-attribute'),

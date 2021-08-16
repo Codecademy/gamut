@@ -20,13 +20,9 @@
     "@emotion/styled": "^11.3.0",
     "monaco-editor": "0.26.1",
     "@monaco-editor/react": "4.2.1",
-    "react-monaco-editor": "0.34.0",
-    "react-resize-detector": "5.2.0"
+    "react-resize-detector": "6.7.6"
   },
-  "devDependencies": {
-    "@types/react-resize-detector": "5.0.0",
-    "monaco-editor-webpack-plugin": "1.9.1"
-  },
+  "devDependencies": {},
   "scripts": {
     "build:clean": "rm -rf dist",
     "build:compile": "babel ./src --out-dir ./dist --copy-files --extensions \".ts,.tsx\"",
