@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [43.6.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@43.6.0...@codecademy/styleguide@43.6.1) (2021-08-13)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [43.6.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@43.5.0...@codecademy/styleguide@43.6.0) (2021-08-13)
+
+
+### Features
+
+* Modal GM-179 ([9fbb540](https://github.com/Codecademy/client-modules/commit/9fbb540adc32089ad971a71fa3cadf0257c02e3d))
+
+
+
+## [43.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@43.4.0...@codecademy/styleguide@43.5.0) (2021-08-13)
+
+
+### Features
+
+* **SelectDropdown:** shownOptionsLimit ([82b9cb0](https://github.com/Codecademy/client-modules/commit/82b9cb08bf14a1565cdf1648714f3660f7c97cf9))
+
+
+
 ## [43.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@43.3.0...@codecademy/styleguide@43.4.0) (2021-08-13)
 
 
