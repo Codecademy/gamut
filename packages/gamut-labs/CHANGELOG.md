@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [19.22.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.22.0...@codecademy/gamut-labs@19.22.1) (2021-08-16)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+## [19.22.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.21.1...@codecademy/gamut-labs@19.22.0) (2021-08-16)
+
+
+### Features
+
+* added hidePricing prop to GlobalFooter, GlobalHeader ([6802441](https://github.com/Codecademy/client-modules/commit/6802441e394b0ef173753b3be95e97606382d794))
+
+
+
 ### [19.21.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.21.0...@codecademy/gamut-labs@19.21.1) (2021-08-16)
 
 **Note:** Version bump only for package @codecademy/gamut-labs
