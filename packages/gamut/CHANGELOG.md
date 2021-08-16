@@ -3,6 +3,42 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [36.4.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@36.4.0...@codecademy/gamut@36.4.1) (2021-08-13)
+
+
+### Bug Fixes
+
+* Performance boost for <Truncate /> ([7d15b2f](https://github.com/Codecademy/client-modules/commit/7d15b2fd5abb39d44e87214706c4ab52c00a305f))
+
+
+
+## [36.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@36.3.0...@codecademy/gamut@36.4.0) (2021-08-13)
+
+
+### Features
+
+* Modal GM-179 ([9fbb540](https://github.com/Codecademy/client-modules/commit/9fbb540adc32089ad971a71fa3cadf0257c02e3d))
+
+
+
+## [36.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@36.2.0...@codecademy/gamut@36.3.0) (2021-08-13)
+
+
+### Features
+
+* **SelectDropdown:** shownOptionsLimit ([82b9cb0](https://github.com/Codecademy/client-modules/commit/82b9cb08bf14a1565cdf1648714f3660f7c97cf9))
+
+
+
+## [36.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@36.1.2...@codecademy/gamut@36.2.0) (2021-08-13)
+
+
+### Features
+
+* **SelectDropdown:** small variant ([de29b2d](https://github.com/Codecademy/client-modules/commit/de29b2db2339be52200931a5643ab071d2e3198e))
+
+
+
 ### [36.1.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@36.1.1...@codecademy/gamut@36.1.2) (2021-08-13)
 
 **Note:** Version bump only for package @codecademy/gamut
