@@ -1,4 +1,5 @@
-import { createTheme } from '../../../variance/dist';
+import { createTheme } from '@codecademy/variance';
+
 import { coreTheme } from './core';
 
 export const adminTheme = createTheme(coreTheme)
