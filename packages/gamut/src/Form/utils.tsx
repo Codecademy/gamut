@@ -4,12 +4,17 @@ import { OptionTypeBase } from 'react-select';
 
 import { SelectDropdownOptions } from './SelectDropdown';
 
+export interface SelectOptionBase {
+  label: string;
+  value: string;
+  key?: string;
+}
 export interface ParseOptionProps {
   id?: string | number;
   options?: SelectDropdownOptions;
 }
 
-const formatAsOptions = ({ label, value, key }: OptionTypeBase) => {
+const formatAsOptions = ({ label, value, key }: SelectOptionBase) => {
   const option = key ? (
     <option label={label} key={key} value={value} data-testid={key}>
       {label}
