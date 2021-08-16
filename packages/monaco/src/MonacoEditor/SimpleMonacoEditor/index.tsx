@@ -1,10 +1,10 @@
 import { css, Global } from '@emotion/react';
+import Editor from '@monaco-editor/react';
 import type { editor as EditorType } from 'monaco-editor';
 import React, { Component } from 'react';
-import ReactMonacoEditor from 'react-monaco-editor';
 import ReactResizeDetector from 'react-resize-detector';
 
-import { Editor, Monaco, MonacoFile } from '../types';
+import { Monaco, MonacoFile } from '../types';
 
 const innerEditorStyles = css`
   padding-top: 0.95rem;
@@ -22,12 +22,12 @@ export type SimpleMonacoEditorProps = {
   languageId?: string;
   onChange?: (newValue: string) => void;
   options: EditorType.IStandaloneEditorConstructionOptions;
-  setEditor: (editor: Editor.IStandaloneCodeEditor) => void;
+  setEditor: (editor: EditorType.IStandaloneCodeEditor) => void;
   setMonaco: (monaco: Monaco) => void;
 };
 
 export class SimpleMonacoEditor extends Component<SimpleMonacoEditorProps> {
-  editor?: Editor.IStandaloneCodeEditor;
+  editor?: EditorType.IStandaloneCodeEditor;
 
   shouldComponentUpdate(prevProps: SimpleMonacoEditorProps) {
     return (
@@ -36,7 +36,7 @@ export class SimpleMonacoEditor extends Component<SimpleMonacoEditorProps> {
     );
   }
 
-  editorDidMount = (editor: Editor.IStandaloneCodeEditor) => {
+  editorDidMount = (editor: EditorType.IStandaloneCodeEditor) => {
     this.editor = editor;
     this.props.setEditor(editor);
   };
@@ -57,9 +57,9 @@ export class SimpleMonacoEditor extends Component<SimpleMonacoEditorProps> {
         refreshRate={500}
       >
         <InnerEditor />
-        <ReactMonacoEditor
-          editorDidMount={this.editorDidMount}
-          editorWillMount={this.editorWillMount}
+        <Editor
+          onMount={this.editorDidMount}
+          beforeMount={this.editorWillMount}
           onChange={this.props.onChange}
           options={this.props.options}
           theme={this.props.options.theme}
