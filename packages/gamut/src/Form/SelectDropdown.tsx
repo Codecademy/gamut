@@ -1,5 +1,6 @@
 import {
   ArrowChevronDownIcon,
+  GamutIconProps,
   MiniChevronDownIcon,
 } from '@codecademy/gamut-icons';
 import { useTheme } from '@emotion/react';
@@ -35,7 +36,7 @@ import { parseOptions } from './utils';
 export interface FancyOption {
   label: string;
   value: string;
-  Icon?: typeof ArrowChevronDownIcon;
+  icon?: React.ComponentType<GamutIconProps>;
 }
 
 interface SelectDropdownSizes {
@@ -113,7 +114,7 @@ const CustomContainer = ({ children, ...rest }: CustomContainerProps) => {
   );
 };
 
-const formatOptionLabel = ({ label, Icon }: FancyOption) => (
+const formatOptionLabel = ({ label, icon: Icon }: FancyOption) => (
   <Box display="flex" alignItems="center">
     {Icon && <Icon size={24} color="text" ml={4} />}
     <Box as="span" pl={Icon ? 16 : 0}>

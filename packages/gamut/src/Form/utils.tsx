@@ -1,4 +1,4 @@
-import { each, isObject } from 'lodash';
+import { each, isArray, isObject } from 'lodash';
 import React from 'react';
 import { OptionTypeBase } from 'react-select';
 
@@ -30,7 +30,7 @@ const formatAsOptions = ({ label, value, key }: SelectOptionBase) => {
 export const parseOptions = ({ options, id }: ParseOptionProps) => {
   const parsedOptions: Array<OptionTypeBase> = [];
 
-  if (options instanceof Array) {
+  if (isArray(options)) {
     options.forEach((value) => {
       if (typeof value === 'string') {
         const label = id ? `${id}-${value}` : value;
