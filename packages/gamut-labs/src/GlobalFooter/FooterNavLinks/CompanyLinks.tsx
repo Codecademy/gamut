@@ -12,7 +12,6 @@ import { SocialMediaLinks } from './SocialMediaLinks';
 export type CompanyLinksProps = {
   onClick: GlobalFooterClickHandler;
   userGeo: string;
-  showLearnerStories: boolean;
 };
 
 const MobileImageItem = styled(Box)();
@@ -37,7 +36,6 @@ MobileImageLink.defaultProps = {
 export const CompanyLinks: React.FC<CompanyLinksProps> = ({
   onClick,
   userGeo,
-  showLearnerStories,
 }) => {
   const community = (
     <Box>
@@ -70,17 +68,15 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
             Events
           </Anchor>
         </FooterLinkItem>
-        {showLearnerStories && (
-          <FooterLinkItem>
-            <Anchor
-              href="/learner-stories"
-              onClick={(event) => onClick({ event, target: 'learner-stories' })}
-              variant="interface"
-            >
-              Learner Stories
-            </Anchor>
-          </FooterLinkItem>
-        )}
+        <FooterLinkItem>
+          <Anchor
+            href="/learner-stories"
+            onClick={(event) => onClick({ event, target: 'learner-stories' })}
+            variant="interface"
+          >
+            Learner Stories
+          </Anchor>
+        </FooterLinkItem>
       </FooterLinkItems>
     </Box>
   );
