@@ -120,7 +120,7 @@ describe('Select', () => {
     expect(menuList.getDOMNode()).toHaveStyle('max-height : 8rem');
   });
 
-  it.only('renders a dropdown with icons', () => {
+  it('renders a dropdown with icons', () => {
     const { wrapper } = renderWrapper({
       options: optionsIconsArray,
       size: 'small',
