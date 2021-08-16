@@ -10,6 +10,7 @@ import getItOnGooglePlay from './assets/get-it-on-google-play.png';
 import { SocialMediaLinks } from './SocialMediaLinks';
 
 export type CompanyLinksProps = {
+  hidePricing?: boolean;
   onClick: GlobalFooterClickHandler;
   userGeo: string;
 };
@@ -34,6 +35,7 @@ MobileImageLink.defaultProps = {
 };
 
 export const CompanyLinks: React.FC<CompanyLinksProps> = ({
+  hidePricing,
   onClick,
   userGeo,
 }) => {
@@ -273,7 +275,7 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
       {resources}
       {support({ _: 'unset', sm: 'none' })}
       {community}
-      {individualPlans}
+      {hidePricing ? null : individualPlans}
       {enterprisePlans}
       {mobile}
       {support({ _: 'none', sm: 'unset' })}

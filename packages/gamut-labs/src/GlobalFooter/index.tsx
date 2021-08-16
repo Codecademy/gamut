@@ -10,6 +10,11 @@ export type GlobalFooterProps = {
   className?: string;
 
   /**
+   * Hide pricing details, such as for rendering in an app store app.
+   */
+  hidePricing?: boolean;
+
+  /**
    * Called whenever a link is clicked.
    */
   onClick: GlobalFooterClickHandler;
@@ -42,7 +47,11 @@ export const GlobalFooter: React.FC<GlobalFooterProps> = ({
   return (
     <FooterContainer className={className} role="contentinfo">
       <ContentContainer>
-        <FooterNavLinks onClick={onClick} userGeo={userGeo} />
+        <FooterNavLinks
+          hidePricing={hidePricing}
+          onClick={onClick}
+          userGeo={userGeo}
+        />
       </ContentContainer>
       <FooterLegal onClick={onClick} onMadeInClick={onMadeInClick} />
     </FooterContainer>
