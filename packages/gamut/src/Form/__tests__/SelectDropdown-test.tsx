@@ -1,7 +1,9 @@
 import {
+  ArrowChevronDownIcon,
   CalendarIcon,
   DataTransferVerticalIcon,
   EarthIcon,
+  MiniChevronDownIcon,
 } from '@codecademy/gamut-icons';
 import { setupEnzyme } from '@codecademy/gamut-tests';
 
@@ -68,8 +70,7 @@ describe('Select', () => {
       size: 'small',
     });
 
-    const dropdownIconTitle = wrapper.find('DropdownIndicator').text();
-    expect(dropdownIconTitle).toEqual('Mini Chevron Down Icon');
+    expect(wrapper.find(MiniChevronDownIcon)).toBeDefined();
   });
 
   it('renders a medium dropdown when size is "medium"', () => {
@@ -78,8 +79,7 @@ describe('Select', () => {
       size: 'medium',
     });
 
-    const dropdownIconTitle = wrapper.find('DropdownIndicator').text();
-    expect(dropdownIconTitle).toEqual('Arrow Chevron Down Icon');
+    expect(wrapper.find(ArrowChevronDownIcon)).toBeDefined();
   });
 
   it('renders a medium dropdown by default', () => {
@@ -87,8 +87,7 @@ describe('Select', () => {
       options: selectOptionsObject,
     });
 
-    const dropdownIconTitle = wrapper.find('DropdownIndicator').text();
-    expect(dropdownIconTitle).toEqual('Arrow Chevron Down Icon');
+    expect(wrapper.find(ArrowChevronDownIcon)).toBeDefined();
   });
 
   it('renders a dropdown with the correct maxHeight when shownOptionsLimit is specified', () => {
