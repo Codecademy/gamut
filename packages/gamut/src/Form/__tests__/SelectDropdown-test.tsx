@@ -1,3 +1,8 @@
+import {
+  CalendarIcon,
+  DataTransferVerticalIcon,
+  EarthIcon,
+} from '@codecademy/gamut-icons';
 import { setupEnzyme } from '@codecademy/gamut-tests';
 
 import { SelectDropdown } from '../SelectDropdown';
@@ -17,6 +22,12 @@ const selectOptionsObject = {
   teal: 'teal',
   orange: 'orange',
 };
+
+const optionsIconsArray = [
+  { label: 'first icon', value: 'one', Icon: DataTransferVerticalIcon },
+  { label: 'second icon', value: 'two', Icon: CalendarIcon },
+  { label: 'third icon', value: 'three', Icon: EarthIcon },
+];
 
 const renderWrapper = setupEnzyme(SelectDropdown, {
   options: selectOptions,
@@ -107,5 +118,23 @@ describe('Select', () => {
 
     const menuList = wrapper.find('MenuList');
     expect(menuList.getDOMNode()).toHaveStyle('max-height : 8rem');
+  });
+
+  it.only('renders a dropdown with icons', () => {
+    const { wrapper } = renderWrapper({
+      options: optionsIconsArray,
+      size: 'small',
+    });
+
+    wrapper.find('DropdownIndicator').first().simulate('mouseDown', {
+      button: 0,
+    });
+    const icon1 = wrapper.find('DataTransferVerticalIcon').text();
+    const icon2 = wrapper.find('CalendarIcon').text();
+    const icon3 = wrapper.find('EarthIcon').text();
+
+    expect(icon1).toBe('Data Transfer Vertical Icon');
+    expect(icon2).toBe('Calendar Icon');
+    expect(icon3).toBe('Earth Icon');
   });
 });
