@@ -125,7 +125,9 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
 
   const enterprisePlans = (
     <Box>
-      <FooterHeading>Enterprise Plans</FooterHeading>
+      <FooterHeading mt={hidePricing ? { sm: 16 } : {}}>
+        Enterprise Plans
+      </FooterHeading>
       <FooterLinkItems>
         <FooterLinkItem>
           <Anchor
