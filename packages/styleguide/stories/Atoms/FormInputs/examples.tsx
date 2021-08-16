@@ -166,7 +166,7 @@ export const SelectDropdownExample: React.FC = () => {
                 Icon: PeopleIcon,
               },
             ]}
-            name="colormode-disabled"
+            name="colormode-icons"
           />
         </FormGroup>
         <FormGroup label="i am smol" htmlFor="colormode-small">
