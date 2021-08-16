@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [11.9.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@11.9.0...@codecademy/gamut-styles@11.9.1) (2021-08-16)
+
+
+### Bug Fixes
+
+* Import path  ([5aa461c](https://github.com/Codecademy/client-modules/commit/5aa461c53dea7580588a39dfa1b48b4eeac44684))
+
+
+
 ## [11.9.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@11.8.0...@codecademy/gamut-styles@11.9.0) (2021-08-16)
 
 
