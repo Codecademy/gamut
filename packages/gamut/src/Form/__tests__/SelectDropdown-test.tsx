@@ -130,12 +130,8 @@ describe('Select', () => {
       button: 0,
     });
 
-    const icon1 = wrapper.find(DataTransferVerticalIcon).text();
-    const icon2 = wrapper.find(CalendarIcon).text();
-    const icon3 = wrapper.find(EarthIcon).text();
-
-    expect(icon1).toBe('Data Transfer Vertical Icon');
-    expect(icon2).toBe('Calendar Icon');
-    expect(icon3).toBe('Earth Icon');
+    expect(wrapper.find(DataTransferVerticalIcon)).toBeDefined();
+    expect(wrapper.find(CalendarIcon)).toBeDefined();
+    expect(wrapper.find(EarthIcon)).toBeDefined();
   });
 });
