@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [11.9.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@11.8.0...@codecademy/gamut-styles@11.9.0) (2021-08-16)
+
+
+### Features
+
+* **Testimonial:** Add new Testimonial Component ([efe1568](https://github.com/Codecademy/client-modules/commit/efe156813cd10586b7a61f1013564cb5387f5aa3))
+
+
+
 ## [11.8.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@11.7.2...@codecademy/gamut-styles@11.8.0) (2021-08-13)
 
 

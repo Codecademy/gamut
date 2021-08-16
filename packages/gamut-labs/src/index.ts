@@ -16,6 +16,7 @@ export * from './Logo';
 export * from './ProLogo';
 export * from './ProLogoAlt';
 export * from './TestimonialDeprecated';
+export * from './Testimonial';
 export * from './Coachmark';
 export * from './DropdownButton';
 export * from './HubCard';
