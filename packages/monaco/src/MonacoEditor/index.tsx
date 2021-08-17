@@ -19,14 +19,6 @@ export type MonacoEditorProps = {
   updateEditorInterfaceSettings?: (setting: string) => void;
 };
 
-export const defaultEditorInterfaceSettings: EditorInterfaceSettings = {
-  autoCloseTokens: true,
-  editorFontSize: 'reg',
-  highContrast: false,
-  renderWhitespace: false,
-  screenReader: false,
-};
-
 export const MonacoEditor: React.FC<MonacoEditorProps> = ({
   className,
   file,
@@ -42,14 +34,14 @@ export const MonacoEditor: React.FC<MonacoEditorProps> = ({
 
   useDeltaDecorations(editor, languageService.registration);
   useEditorTheming(
-    editorInterfaceSettings || defaultEditorInterfaceSettings,
+    editorInterfaceSettings,
     updateEditorInterfaceSettings,
     editor,
     monaco,
     theme
   );
   useEditorSettings(
-    editorInterfaceSettings || defaultEditorInterfaceSettings,
+    editorInterfaceSettings,
     updateEditorInterfaceSettings,
     editor,
     monaco
@@ -63,7 +55,7 @@ export const MonacoEditor: React.FC<MonacoEditorProps> = ({
       options={{
         ...createMonacoOptions(
           className,
-          editorInterfaceSettings || defaultEditorInterfaceSettings,
+          editorInterfaceSettings,
           languageService.id
         ),
         readOnly,

@@ -12,18 +12,11 @@ import { TransmitEditor } from '../transmitKeyboardEvents/resolveMonacoKeyboardE
 import { Editor, EditorInterfaceSettings, Monaco } from '../types';
 
 export const useEditorSettings = (
-  userInterfaceSettings: EditorInterfaceSettings,
-  updateUserInterfaceSettings?: (setting: string) => void,
+  editorInterfaceSettings?: EditorInterfaceSettings,
+  updateEditorInterfaceSettings?: (setting: string) => void,
   editor?: Editor.IStandaloneCodeEditor,
   monaco?: Monaco
 ) => {
-  const {
-    editorFontSize,
-    screenReader,
-    renderWhitespace,
-    autoCloseTokens,
-  } = userInterfaceSettings;
-
   useEffect(() => {
     if (!editor || !monaco) {
       return;
@@ -61,8 +54,8 @@ export const useEditorSettings = (
       id: 'a11y-screenreader-mode',
       label: 'Toggle Screenreader Mode',
       run: () => {
-        if (updateUserInterfaceSettings) {
-          updateUserInterfaceSettings('screenReader');
+        if (updateEditorInterfaceSettings) {
+          updateEditorInterfaceSettings('screenReader');
         }
       },
     });
@@ -76,33 +69,39 @@ export const useEditorSettings = (
     );
 
     transmitKeyboardEvents(editor as TransmitEditor, monaco.KeyCode, document);
-  }, [updateUserInterfaceSettings, editor, monaco]);
+  }, [updateEditorInterfaceSettings, editor, monaco]);
 
   // We intentionally don't re-initialize Monaco in React land for performance,
   // so we have to imperatively set options updates here
   useEffect(() => {
     editor?.updateOptions({
-      wordWrap: wordWrapOption(screenReader),
+      wordWrap: wordWrapOption(editorInterfaceSettings?.screenReader),
     });
-  }, [editor, screenReader]);
+  }, [editor, editorInterfaceSettings?.screenReader]);
 
   useEffect(() => {
     editor?.updateOptions({
-      renderWhitespace: renderWhitespaceOption(renderWhitespace),
+      renderWhitespace: renderWhitespaceOption(
+        editorInterfaceSettings?.renderWhitespace
+      ),
     });
-  }, [editor, renderWhitespace]);
+  }, [editor, editorInterfaceSettings?.renderWhitespace]);
 
   useEffect(() => {
     editor?.updateOptions({
-      autoClosingBrackets: autoCloseTokensOption(autoCloseTokens),
-      autoClosingQuotes: autoCloseTokensOption(autoCloseTokens),
+      autoClosingBrackets: autoCloseTokensOption(
+        editorInterfaceSettings?.autoCloseTokens
+      ),
+      autoClosingQuotes: autoCloseTokensOption(
+        editorInterfaceSettings?.autoCloseTokens
+      ),
     });
-  }, [editor, autoCloseTokens]);
+  }, [editor, editorInterfaceSettings?.autoCloseTokens]);
 
   useEffect(() => {
     editor?.updateOptions({
-      fontSize: fontSizeOption(editorFontSize),
-      lineHeight: lineHeightOption(editorFontSize),
+      fontSize: fontSizeOption(editorInterfaceSettings?.editorFontSize),
+      lineHeight: lineHeightOption(editorInterfaceSettings?.editorFontSize),
     });
-  }, [editor, editorFontSize]);
+  }, [editor, editorInterfaceSettings?.editorFontSize]);
 };

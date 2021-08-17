@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 import { Monaco } from '../../libs/languageServices/types';
-import { CodecademyTheme, darkTheme } from '../../libs/theme';
+import { codecademyTheme, darkTheme } from '../../libs/theme';
 import { EditorTheme } from '../../libs/theme/editorTheme';
 import { Editor, EditorInterfaceSettings } from '../types';
 
@@ -14,13 +14,12 @@ export enum MonacoThemeType {
 }
 
 export const useEditorTheming = (
-  interfaceSettings: EditorInterfaceSettings,
+  interfaceSettings?: EditorInterfaceSettings,
   updateEditorInterfaceSettings?: (setting: string) => void,
   editor?: Editor.IStandaloneCodeEditor,
   monaco?: Monaco,
   themeType: MonacoThemeType = MonacoThemeType.static
 ) => {
-  const { highContrast } = interfaceSettings;
   const [, setThemeDefined] = useState(false);
 
   useEffect(() => {
@@ -28,7 +27,7 @@ export const useEditorTheming = (
       return;
     }
 
-    if (highContrast) {
+    if (interfaceSettings?.highContrast) {
       monaco.editor.setTheme(EditorTheme.highContrast);
       return;
     }
@@ -37,14 +36,14 @@ export const useEditorTheming = (
       if (!themeDefined) {
         monaco.editor.defineTheme(
           EditorTheme.dark,
-          themeType === MonacoThemeType.static ? darkTheme : CodecademyTheme
+          themeType === MonacoThemeType.static ? darkTheme : codecademyTheme
         );
       }
 
       monaco.editor.setTheme(EditorTheme.dark);
       return true;
     });
-  }, [highContrast, monaco, themeType]);
+  }, [interfaceSettings?.highContrast, monaco, themeType]);
 
   // We're overriding the monaco native toggleHighContrast action here.
   // The original toggleHighContrastAction can be obtained by
