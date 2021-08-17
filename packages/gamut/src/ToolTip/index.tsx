@@ -217,6 +217,7 @@ export const ToolTip: React.FC<ToolTipProps> = ({
   return (
     <TooltipWrapper className={containerClassName}>
       <TargetContainer
+        data-testid="tooltip-target-container"
         aria-describedby={id}
         onKeyDown={(event) => {
           if (event.key === 'Escape') {

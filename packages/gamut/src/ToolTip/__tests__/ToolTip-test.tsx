@@ -10,7 +10,7 @@ describe('ToolTip', () => {
   it('does not give its container a tabIndex when it is not focusable', () => {
     const { view } = renderView({ children, id: 'test-id' });
 
-    const container = view.getByLabelText(children);
+    const container = view.getByTestId('tooltip-target-container');
 
     expect(container).not.toHaveAttribute('tabIndex');
   });
@@ -19,7 +19,7 @@ describe('ToolTip', () => {
     const children = 'Hello';
     const { view } = renderView({ children, focusable: true, id: 'test-id' });
 
-    const container = view.getByLabelText(children);
+    const container = view.getByTestId('tooltip-target-container');
 
     expect(container).toHaveAttribute('tabIndex', '0');
   });
