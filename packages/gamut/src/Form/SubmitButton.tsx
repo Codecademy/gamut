@@ -22,7 +22,11 @@ export const SubmitButton = forwardRef<HTMLButtonElement, SubmitButtonProps>(
   ({ as: Button = CTAButton, children, disabled, loading, ...rest }, ref) => {
     const {
       formState: { isSubmitting, isValidating, isValid },
+      control: { mode },
     } = useFormContext();
+
+    const disableOnInvalid = mode?.isOnChange && !isValid;
+
     const isLoading =
       typeof loading === 'function'
         ? loading({ isValidating, isSubmitting })
@@ -33,7 +37,7 @@ export const SubmitButton = forwardRef<HTMLButtonElement, SubmitButtonProps>(
     const isDisabled =
       typeof disabled === 'function'
         ? disabled({ isValidating, isSubmitting, isValid })
-        : disabled;
+        : disabled || disableOnInvalid;
 
     return (
       <Button ref={ref} type="submit" disabled={isDisabled} {...rest}>
