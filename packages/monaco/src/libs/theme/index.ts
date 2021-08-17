@@ -629,4 +629,4 @@ const theme = ({
 });
 
 export const darkTheme = theme(darkColors);
-export const LETheme = theme(CodecademyColors);
+export const CodecademyTheme = theme(CodecademyColors);

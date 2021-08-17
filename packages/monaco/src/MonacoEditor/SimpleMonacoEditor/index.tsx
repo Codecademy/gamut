@@ -46,24 +46,23 @@ export class SimpleMonacoEditor extends Component<SimpleMonacoEditorProps> {
   render() {
     return (
       <ReactResizeDetector
-        handleHeight
-        handleWidth
         onResize={(width: number, height: number) => {
-          console.log(width, height);
           width > 0 && height > 0 && this.editor?.layout();
         }}
         refreshMode="debounce"
         refreshRate={500}
       >
-        {/* <InnerEditor /> */}
-        <Editor
-          onMount={this.editorDidMount}
-          beforeMount={this.editorWillMount}
-          onChange={this.props.onChange}
-          options={this.props.options}
-          theme={this.props.options.theme}
-          value={this.props.file.content}
-        />
+        <>
+          <InnerEditor />
+          <Editor
+            onMount={this.editorDidMount}
+            beforeMount={this.editorWillMount}
+            onChange={this.props.onChange}
+            options={this.props.options}
+            theme={this.props.options.theme}
+            value={this.props.file.content}
+          />
+        </>
       </ReactResizeDetector>
     );
   }

@@ -6,7 +6,7 @@ export type MonacoFile = {
   name?: string;
 };
 
-export type UserInterfaceSettings = {
+export type EditorInterfaceSettings = {
   highContrast: boolean;
   screenReader: boolean;
   autoCloseTokens: boolean;

@@ -1,7 +1,8 @@
 import { Box } from '@codecademy/gamut';
 import title from '@codecademy/macros/lib/title.macro';
 import { MonacoEditor } from '@codecademy/monaco';
-import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/blocks';
+import { PropsTable } from '@codecademy/storybook-addon-variance';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 
 <Meta
   component={MonacoEditor}
@@ -14,18 +15,18 @@ import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/blocks';
   args={{
     file: { name: 'main.js', content: 'console.log("hello world")' },
     onChange: () => {},
-    readOnly: false,
+    readOnly: true,
   }}
 />
 
 <Canvas>
   <Story name="MonacoEditor">
     {(args) => (
-      <Box height="300px" width="100%" bg="green">
+      <Box height="350px" width="100%">
         <MonacoEditor {...args} />
       </Box>
     )}
   </Story>
 </Canvas>
 
-<Props story="MonacoEditor" />
+<PropsTable story="MonacoEditor" />

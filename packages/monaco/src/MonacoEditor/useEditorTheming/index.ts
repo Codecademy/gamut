@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 import { Monaco } from '../../libs/languageServices/types';
-import { darkTheme, LETheme } from '../../libs/theme';
+import { CodecademyTheme, darkTheme } from '../../libs/theme';
 import { EditorTheme } from '../../libs/theme/editorTheme';
 import { Editor, UserInterfaceSettings } from '../types';
 
@@ -36,7 +36,7 @@ export const useEditorTheming = (
       if (!themeDefined) {
         monaco.editor.defineTheme(
           EditorTheme.dark,
-          themeType === MonacoThemeType.static ? darkTheme : LETheme
+          themeType === MonacoThemeType.static ? darkTheme : CodecademyTheme
         );
       }
 

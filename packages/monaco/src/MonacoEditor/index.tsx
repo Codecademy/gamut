@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import useLanguageService from '../libs/languageServices/useLanguageService';
 import { SimpleMonacoEditor } from './SimpleMonacoEditor';
-import { Editor, Monaco, MonacoFile, UserInterfaceSettings } from './types';
+import { Editor, EditorInterfaceSettings, Monaco, MonacoFile } from './types';
 import { useDeltaDecorations } from './useDeltaDecorations';
 import { MonacoThemeType, useEditorTheming } from './useEditorTheming';
 
@@ -12,10 +12,10 @@ export type MonacoEditorProps = {
   onChange?: (value: string) => void;
   readOnly?: boolean;
   theme?: MonacoThemeType;
-  userInterfaceSettings?: UserInterfaceSettings;
+  editorInterfaceSettings?: EditorInterfaceSettings;
 };
 
-export const defaultUserInterfaceSettings: UserInterfaceSettings = {
+export const defaultUserInterfaceSettings: EditorInterfaceSettings = {
   autoCloseTokens: true,
   editorFontSize: 'reg',
   highContrast: false,
@@ -27,7 +27,7 @@ export const MonacoEditor: React.FC<MonacoEditorProps> = ({
   file,
   onChange,
   theme = MonacoThemeType.static,
-  userInterfaceSettings,
+  editorInterfaceSettings,
 }) => {
   // TODO import editor settings hook
   const [editor, setEditor] = useState<Editor.IStandaloneCodeEditor>();
@@ -36,7 +36,7 @@ export const MonacoEditor: React.FC<MonacoEditorProps> = ({
 
   useDeltaDecorations(editor, languageService.registration);
   useEditorTheming(
-    userInterfaceSettings || defaultUserInterfaceSettings,
+    editorInterfaceSettings || defaultUserInterfaceSettings,
     editor,
     monaco,
     theme
