@@ -1,22 +1,23 @@
+import { ColorModes } from '@codecademy/gamut-styles';
 import React, { ComponentProps } from 'react';
 
 import { Box } from '../../Box';
 import { CTAButton, FillButton, TextButton } from '../../Button';
 import { ButtonProps } from '../../Button/shared';
-import { SubmitButton } from '../../Form';
+import { SubmitButton, SubmitButtonProps } from '../../Form';
 import { Column } from '../../Layout';
-import { VisualTheme } from '../../theming/VisualTheme';
 
 export type GridFormButtonsPosition = keyof typeof positions;
 
-export type SubmitButtonType = 'cta' | 'fill';
+export type SubmitButtonType = keyof typeof buttonMap;
 
 export type GridFormSubmitProps = {
   contents: React.ReactNode;
   position?: GridFormButtonsPosition;
   size: ComponentProps<typeof Column>['size'];
-  disabled?: ButtonProps['disabled'];
-  mode?: VisualTheme;
+  disabled?: SubmitButtonProps['disabled'];
+  loading?: SubmitButtonProps['loading'];
+  mode?: ColorModes;
   type?: SubmitButtonType;
 };
 
@@ -59,6 +60,7 @@ export const GridFormButtons: React.FC<
           as={buttonMap[type]}
           mode={props.mode}
           disabled={props.disabled}
+          loading={props.loading}
         >
           {props.contents}
         </SubmitButton>

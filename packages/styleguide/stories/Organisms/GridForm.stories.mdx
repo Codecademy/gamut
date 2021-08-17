@@ -1105,3 +1105,29 @@ If you need to checkboxes to fit into a smaller space, you can use our our `tigh
     )}
   </Story>
 </Canvas>
+
+## Loading
+
+<Canvas>
+  <Story name="Loading States">
+    {(args) => (
+      <GridForm
+        fields={[
+          {
+            label: 'Email',
+            placeholder: 'Your email',
+            name: 'placeholder',
+            type: 'email',
+          },
+        ]}
+        onSubmit={async (values) => {
+          action('Form Submitted')(values);
+        }}
+        submit={{
+          loading: true,
+          contents: 'Submit Me!?',
+        }}
+      />
+    )}
+  </Story>
+</Canvas>
