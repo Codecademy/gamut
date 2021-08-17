@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-escape */
 /*
 This code was copied and modified per the Monaco team's suggestion from:
 https://github.com/microsoft/monaco-languages/blob/master/src/html/html.ts
