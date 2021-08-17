@@ -66,6 +66,7 @@ export const AccordionMenu: React.FC<AccordionMenuProps> = ({
             onSectionToggle(section.slug);
             setExpanded((prev) => !prev);
           }}
+          aria-expanded={expanded}
         >
           <Text variant="title-xs">{section.title}</Text>
           <ExpandChevron ml={12} size={14} expanded={expanded} />
