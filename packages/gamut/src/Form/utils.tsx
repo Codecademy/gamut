@@ -2,7 +2,7 @@ import { each, isArray, isObject } from 'lodash';
 import React from 'react';
 import { OptionTypeBase } from 'react-select';
 
-import { SelectDropdownOptions } from './SelectDropdown';
+import { IconOption, SelectDropdownOptions } from './SelectDropdown';
 
 export interface SelectOptionBase {
   label: string;
@@ -31,7 +31,7 @@ export const parseOptions = ({ options, id }: ParseOptionProps) => {
   const parsedOptions: Array<OptionTypeBase> = [];
 
   if (isArray(options)) {
-    options.forEach((value) => {
+    options.forEach((value: string | IconOption) => {
       if (typeof value === 'string') {
         const label = id ? `${id}-${value}` : value;
         parsedOptions.push({ label, value });
