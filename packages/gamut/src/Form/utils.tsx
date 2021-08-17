@@ -34,7 +34,7 @@ const formatAsOptions = ({ label, value, key }: SelectOptionBase) => {
 export const parseOptions = ({ options, id, size }: ParseOptionProps) => {
   const parsedOptions: Array<OptionTypeBase> = [];
 
-  if (isArray(options)) {
+  if (isArray(options) && options.length > 0) {
     options.forEach((value: string | IconOption) => {
       if (typeof value === 'string') {
         const label = id ? `${id}-${value}` : value;
