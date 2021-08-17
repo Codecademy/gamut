@@ -33,7 +33,7 @@ import {
 } from './styles';
 import { parseOptions } from './utils';
 
-export interface FancyOption {
+export interface IconOption {
   label: string;
   value: string;
   icon?: React.ComponentType<GamutIconProps>;
@@ -49,7 +49,7 @@ type SelectDropdownBaseProps = Omit<
 > &
   SelectDropdownSizes;
 
-export type SelectDropdownOptions = SelectOptions | FancyOption[];
+export type SelectDropdownOptions = SelectOptions | IconOption[];
 
 interface SelectDropdownProps
   extends SelectDropdownBaseProps,
