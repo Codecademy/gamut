@@ -3,6 +3,7 @@ import React, { ComponentProps } from 'react';
 import { Box } from '../../Box';
 import { CTAButton, FillButton, TextButton } from '../../Button';
 import { ButtonProps } from '../../Button/shared';
+import { SubmitButton } from '../../Form';
 import { Column } from '../../Layout';
 import { VisualTheme } from '../../theming/VisualTheme';
 
@@ -36,27 +37,14 @@ const positions = {
   stretch: 'stretch',
 };
 
+const buttonMap = {
+  cta: CTAButton,
+  fill: FillButton,
+};
+
 export const GridFormButtons: React.FC<
   GridFormSubmitProps & CancelButtonProps
-> = (props) => {
-  const getButton = () => {
-    switch (props.type) {
-      case 'cta':
-        return (
-          <CTAButton type="submit" mode={props.mode} disabled={props.disabled}>
-            {props.contents}
-          </CTAButton>
-        );
-
-      default:
-        return (
-          <FillButton type="submit" mode={props.mode} disabled={props.disabled}>
-            {props.contents}
-          </FillButton>
-        );
-    }
-  };
-
+> = ({ type = 'fill', ...props }) => {
   return (
     <Column size={props.size}>
       <Box
@@ -67,7 +55,13 @@ export const GridFormButtons: React.FC<
         {props.cancel && (
           <TextButton {...props.cancel} mr={32} data-testid="cancel-button" />
         )}
-        {getButton()}
+        <SubmitButton
+          as={buttonMap[type]}
+          mode={props.mode}
+          disabled={props.disabled}
+        >
+          {props.contents}
+        </SubmitButton>
       </Box>
     </Column>
   );
