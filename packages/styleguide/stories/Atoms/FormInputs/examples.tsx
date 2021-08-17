@@ -153,17 +153,17 @@ export const SelectDropdownExample: React.FC = () => {
               {
                 label: 'Private: Only you can prevent forest fires',
                 value: 'private',
-                Icon: LockIcon,
+                icon: LockIcon,
               },
               {
                 label: 'Public: Wait what?',
                 value: 'public',
-                Icon: NetworkUserIcon,
+                icon: NetworkUserIcon,
               },
               {
                 label: 'Monsters: Monsters are such interesting people',
                 value: 'monsters',
-                Icon: PeopleIcon,
+                icon: PeopleIcon,
               },
             ]}
             name="colormode-icons"
