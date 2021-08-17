@@ -116,15 +116,12 @@ const CustomContainer = ({ children, ...rest }: CustomContainerProps) => {
 
 const formatOptionLabel = ({ label, icon: Icon, size }: any) => {
   return (
-    <>
-      {console.log(size)}
-      <Box display="flex" alignItems="center">
-        {Icon && <Icon size={size === 'small' ? 16 : 24} color="text" ml={4} />}
-        <Box as="span" pl={Icon ? 16 : 0}>
-          {label}
-        </Box>
+    <Box display="flex" alignItems="center">
+      {Icon && <Icon size={size === 'small' ? 16 : 24} color="text" ml={4} />}
+      <Box as="span" pl={Icon ? 16 : 0}>
+        {label}
       </Box>
-    </>
+    </Box>
   );
 };
 
@@ -245,7 +242,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
 
   const selectOptions = useMemo(() => {
     return parseOptions({ options, id, size });
-  }, [options, id]);
+  }, [options, id, size]);
 
   const parsedValue = useMemo(() => {
     const currentValue = selectOptions.find(
