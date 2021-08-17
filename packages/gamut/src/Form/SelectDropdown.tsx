@@ -114,7 +114,7 @@ const CustomContainer = ({ children, ...rest }: CustomContainerProps) => {
   );
 };
 
-const formatOptionLabel = ({ label, icon: Icon }: FancyOption) => (
+const formatOptionLabel = ({ label, icon: Icon }: IconOption) => (
   <Box display="flex" alignItems="center">
     {Icon && <Icon size={24} color="text" ml={4} />}
     <Box as="span" pl={Icon ? 16 : 0}>
