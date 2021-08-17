@@ -4,10 +4,7 @@ import styled from '@emotion/styled';
 import React, { HTMLAttributes } from 'react';
 
 import { ToolTip, ToolTipProps } from '../ToolTip';
-import {
-  formBaseStyles,
-  formFieldTextDisabledStyles,
-} from './styles/shared-system-props';
+import { formBaseStyles, formFieldTextDisabledStyles } from './styles';
 
 const StyledToolTipContainer = styled.span`
   position: absolute;

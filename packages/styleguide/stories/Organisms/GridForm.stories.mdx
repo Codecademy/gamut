@@ -23,7 +23,11 @@ import { ColorModeExample } from './examples';
     subtitle: `GridForm is the most efficient way to build and design forms at Codecademy.`,
     source: 'gamut',
     status: 'updating',
-    figmaId: 'ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=1689%3A3910',
+    design: {
+      type: 'figma',
+      url:
+        'https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=1689%3A3910',
+    },
   }}
 />
 
@@ -462,25 +466,6 @@ the <LinkTo id="atoms-button--fill-button">`FillButton`</LinkTo> or <LinkTo id="
             contents: 'CTA Button Dark Mode',
             size: 12,
             mode: 'dark',
-          }}
-        />
-        <GridForm
-          fields={[
-            {
-              label: 'Simple text',
-              name: 'deprecated-simple-text',
-              size: 6,
-              type: 'text',
-            },
-          ]}
-          onSubmit={async (values) => {
-            action('Form Submitted')(values);
-          }}
-          submit={{
-            type: 'business',
-            contents: 'Deprecated Button',
-            size: 12,
-            theme: 'brand-purple',
           }}
         />
       </>
@@ -1064,7 +1049,7 @@ Please note you **cannot** use the deprecated 'business' button type with `Color
 
 ## Checkbox Spacing
 
-If you need to checkboxes to fit into a smaller space, you can use our `tight` variant for checkboxes that are a bit closer together.
+If you need to checkboxes to fit into a smaller space, you can use our our `tight` spacing prop for checkboxes that are a bit closer together.
 
 <Canvas>
   <Story name="Checkbox Spacing">

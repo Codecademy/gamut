@@ -4,6 +4,8 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 
 import { PropsTable } from '~styleguide/blocks';
 
+import { SelectDropdownExample } from './examples';
+
 export const fruitOptions = [
   'Apple',
   'Banana',
@@ -20,7 +22,11 @@ export const fruitOptions = [
       'A variant of our `Select` component with a styled dropdown menu.',
     source: 'gamut',
     status: 'updating',
-    figmaId: 'ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=1189%3A0',
+    design: {
+      type: 'figma',
+      url:
+        'https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=1189%3A0',
+    },
   }}
   args={{
     htmlFor: 'example-select',
@@ -39,7 +45,7 @@ export const fruitOptions = [
 <Canvas>
   <Story name="SelectDropdown">
     {(args) => (
-      <Box height="25rem">
+      <Box height="18rem">
         <SelectDropdown {...args} />
       </Box>
     )}
@@ -63,7 +69,7 @@ If you are using this in a standard form, `SelectDropdown` must be provided an `
     }}
   >
     {(args) => (
-      <Box width="10rem" height="12rem">
+      <Box width="10rem" height="15rem">
         <SelectDropdown {...args} />
       </Box>
     )}
@@ -164,7 +170,7 @@ export const CustomDropdown: React.FC = ({
     }}
   >
     {(args) => (
-      <Box width="25rem" height="35rem">
+      <Box width="25rem" height="15rem">
         <FormGroup label="i am big label" labelSize="large">
           <SelectDropdown {...args} />
         </FormGroup>
@@ -179,12 +185,179 @@ export const CustomDropdown: React.FC = ({
     }}
   >
     {(args) => (
-      <Box width="25rem" height="25rem">
+      <Box width="25rem" height="15rem">
         <FormGroup
           label="i am ~styled... but something is wrong"
           error="error message!! no :'("
         >
           <SelectDropdown error {...args} />
+        </FormGroup>
+      </Box>
+    )}
+  </Story>
+</Canvas>
+
+### Size Variant
+
+We have a smaller SelectDropdown for more compact spaces.
+
+<Canvas>
+  <Story
+    name="size-search"
+    args={{
+      options: [
+        'i am smol',
+        'yes I am!',
+        ':)',
+        'a',
+        'b',
+        'g',
+        'v',
+        'g',
+        'asdf',
+        'fasdfas;',
+        'sdfasdgwrewg',
+        'asdfsadf',
+      ],
+      name: 'size-search',
+      isSearchable: true,
+      size: 'small',
+      placeholder: 'type here!',
+    }}
+  >
+    {(args) => (
+      <Box width="180px" height="15rem">
+        <FormGroup label="search!" htmlFor="typeSeach">
+          <SelectDropdown aria-label="typeSeach" {...args} />
+        </FormGroup>
+      </Box>
+    )}
+  </Story>
+  <Story
+    name="size-no-search"
+    args={{
+      options: [
+        'i am also small',
+        ':)',
+        'a',
+        'b',
+        'g',
+        'v',
+        'g',
+        'asdf',
+        'fasdfas;',
+        'sdfasdgwrewg',
+        'asdfsadf',
+      ],
+      name: 'size-no-search',
+      size: 'small',
+      placeholder: 'no click here instead!',
+    }}
+  >
+    {(args) => (
+      <Box width="25rem" height="15rem">
+        <FormGroup label="click!" htmlFor="clickSearch">
+          <SelectDropdown aria-label="clickSearch" {...args} />
+        </FormGroup>
+      </Box>
+    )}
+  </Story>
+</Canvas>
+
+### shownOptionsLimit
+
+You can chose how options will be shown in the dropdown. 6 is the default limit and the maximum number of options you can show in the dropdown at once.
+
+<Canvas>
+  <Story
+    name="shownOptions01"
+    args={{
+      options: [
+        'i am not small',
+        ':)',
+        'a',
+        'b',
+        'g',
+        'v',
+        'g',
+        'asdf',
+        'fasdfas;',
+        'hi',
+        'asdfsadf',
+      ],
+      name: 'shownOptionsLimit01',
+      isSearchable: true,
+      placeholder: 'six is the magic number',
+    }}
+  >
+    {(args) => (
+      <Box width="20rem" height="25rem">
+        <FormGroup
+          label="i have the default shownOptionsLimit"
+          htmlFor="shownOptions01"
+        >
+          <SelectDropdown aria-label="shownOptions01" {...args} />
+        </FormGroup>
+      </Box>
+    )}
+  </Story>
+  <Story
+    name="shownOptions02"
+    args={{
+      options: [
+        'i am not small',
+        ':)',
+        'a',
+        'b',
+        'g',
+        'v',
+        'g',
+        'asdf',
+        'fasdfas;',
+        'hello',
+        'asdfsadf',
+      ],
+      name: 'shownOptions02',
+      isSearchable: true,
+      placeholder: 'no its three actually',
+      shownOptionsLimit: 3,
+    }}
+  >
+    {(args) => (
+      <Box width="20rem" height="10rem">
+        <FormGroup label="i have three" htmlFor="shownOptions02">
+          <SelectDropdown aria-label="shownOptions02" {...args} />
+        </FormGroup>
+      </Box>
+    )}
+  </Story>
+  <Story
+    name="shownOptions03"
+    args={{
+      options: [
+        'i am a little small',
+        ':)',
+        'a',
+        'b',
+        'g',
+        'v',
+        'g',
+        'asdf',
+        'fasdfas;',
+        'heyyy',
+        'asdfsadf',
+      ],
+      name: 'shownOptions03',
+      isSearchable: true,
+      placeholder: 'its three but small this time',
+      size: 'small',
+      shownOptionsLimit: 3,
+    }}
+  >
+    {(args) => (
+      <Box width="20rem" height="10rem">
+        <FormGroup label="i have two shownOptions" htmlFor="shownOptions03">
+          <SelectDropdown aria-label="shownOptions03" {...args} />
         </FormGroup>
       </Box>
     )}
@@ -206,7 +379,7 @@ Some of our forms require special props be passed directly onto the `<input/>` c
     }}
   >
     {(args) => (
-      <Box width="25rem" height="25rem">
+      <Box width="25rem" height="12rem">
         <FormGroup label="i am ~styled" htmlFor="updog">
           <SelectDropdown aria-label="updog" {...args} />
         </FormGroup>
@@ -214,3 +387,9 @@ Some of our forms require special props be passed directly onto the `<input/>` c
     )}
   </Story>
 </Canvas>
+
+### ColorMode
+
+Our SelectDropdown is responsive to ColorMode!
+
+<SelectDropdownExample />

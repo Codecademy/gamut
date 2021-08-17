@@ -27,14 +27,19 @@ export const Truncate: React.FC<TruncateProps> = ({
     onTruncate(isTruncated);
   }, [isTruncated, onTruncate]);
 
-  /** Truncate markup expects a single child element */
-  const truncatedChildren = (
+  /** If lines is false do not attempt to truncate */
+  return expanded ? (
+    <Box as="span" display="inline-block" width="100%" className={className}>
+      {children}
+    </Box>
+  ) : (
     <TruncateMarkup
       tokenize="characters"
       ellipsis={<span>...</span>}
       lines={lines}
       onTruncate={setIsTruncated}
     >
+      {/** Truncate markup expects a single child element */}
       <Box as="span" display="inline-block" width="100%" className={className}>
         {React.Children.map(children, (child) =>
           isValidElement(child) || typeof child === 'string' ? (
@@ -45,15 +50,5 @@ export const Truncate: React.FC<TruncateProps> = ({
         )}
       </Box>
     </TruncateMarkup>
-  );
-
-  /** If lines is false do not attempt to truncate */
-
-  return expanded ? (
-    <Box as="span" display="inline-block" width="100%" className={className}>
-      {children}
-    </Box>
-  ) : (
-    truncatedChildren
   );
 };

@@ -1,5 +1,16 @@
-import { get, identity, isFunction, isObject, isString, merge } from 'lodash';
+import {
+  get,
+  identity,
+  isArray,
+  isFunction,
+  isNumber,
+  isObject,
+  isString,
+  isUndefined,
+  merge,
+} from 'lodash';
 
+import { createScaleLookup } from './scales/createScaleLookup';
 import {
   AbstractParser,
   AbstractPropTransformer,
@@ -92,38 +103,46 @@ export const variance = {
       properties = [property],
       scale,
     } = config;
+    const getScaleValue = createScaleLookup(scale);
+    const alwaysTransform = scale === undefined || isArray(scale);
 
     return {
       ...config,
       prop,
       styleFn: (value, prop, props) => {
         const styles: CSSObject = {};
+        if (isUndefined(value)) {
+          return styles;
+        }
+
         let useTransform = false;
         let usedValue: string | number;
         let scaleVal: string | number | undefined;
 
+        if (isString(value) || isNumber(value)) {
+          scaleVal = getScaleValue(value, props);
+          useTransform = scaleVal !== undefined || alwaysTransform;
+          usedValue = scaleVal ?? value;
+        }
+
         if (isFunction(value)) {
           usedValue = value(props.theme);
-        } else {
-          if (isString(scale)) scaleVal = get(props, `theme.${scale}.${value}`);
-          if (isObject(scale)) scaleVal = get(scale, `${value}`);
-
-          useTransform = scaleVal !== undefined || scale === undefined;
-          usedValue = scaleVal ?? (value as string | number);
         }
 
         // for each property look up the scale value from theme if passed and apply any
         // final transforms to the value
         properties.forEach((property) => {
-          const finalValue = useTransform
-            ? transform(usedValue, property, props)
-            : usedValue;
+          let styleValue: ReturnType<typeof transform> = usedValue;
 
-          if (isObject(finalValue)) {
-            Object.assign(styles, finalValue);
-          } else {
-            Object.assign(styles, { [property]: finalValue });
+          if (useTransform) {
+            styleValue = transform(styleValue, property, props);
           }
+
+          if (isObject(styleValue)) {
+            return Object.assign(styles, styleValue);
+          }
+
+          styles[property] = styleValue;
         });
         // return the resulting styles object
         return styles;

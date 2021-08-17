@@ -97,15 +97,12 @@ describe('mapDestinations', () => {
       expect(identifyPreferences).toEqual(expect.objectContaining(output));
     };
 
-    it('does not include FullStory when there is no user', () => {
+    it('does not include FullStory when consent does not include C0003', () => {
       testCase({}, { FullStory: false });
     });
 
-    it('includes FullStory when there is a user', () => {
-      testCase(
-        { user: { email: 'test@test.com', id: 'bcd234' } },
-        { FullStory: true }
-      );
+    it('includes FullStory when consent includes C0002', () => {
+      testCase({ consentDecision: [Consent.Performance] }, { FullStory: true });
     });
 
     it('does not include Hindsight when consent does not include C0004', () => {

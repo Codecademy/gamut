@@ -3,6 +3,131 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [36.4.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@36.4.3...@codecademy/gamut@36.4.4) (2021-08-16)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [36.4.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@36.4.2...@codecademy/gamut@36.4.3) (2021-08-16)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [36.4.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@36.4.1...@codecademy/gamut@36.4.2) (2021-08-16)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [36.4.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@36.4.0...@codecademy/gamut@36.4.1) (2021-08-13)
+
+
+### Bug Fixes
+
+* Performance boost for <Truncate /> ([7d15b2f](https://github.com/Codecademy/client-modules/commit/7d15b2fd5abb39d44e87214706c4ab52c00a305f))
+
+
+
+## [36.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@36.3.0...@codecademy/gamut@36.4.0) (2021-08-13)
+
+
+### Features
+
+* Modal GM-179 ([9fbb540](https://github.com/Codecademy/client-modules/commit/9fbb540adc32089ad971a71fa3cadf0257c02e3d))
+
+
+
+## [36.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@36.2.0...@codecademy/gamut@36.3.0) (2021-08-13)
+
+
+### Features
+
+* **SelectDropdown:** shownOptionsLimit ([82b9cb0](https://github.com/Codecademy/client-modules/commit/82b9cb08bf14a1565cdf1648714f3660f7c97cf9))
+
+
+
+## [36.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@36.1.2...@codecademy/gamut@36.2.0) (2021-08-13)
+
+
+### Features
+
+* **SelectDropdown:** small variant ([de29b2d](https://github.com/Codecademy/client-modules/commit/de29b2db2339be52200931a5643ab071d2e3198e))
+
+
+
+### [36.1.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@36.1.1...@codecademy/gamut@36.1.2) (2021-08-13)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [36.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@36.1.0...@codecademy/gamut@36.1.1) (2021-08-12)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [36.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@36.0.1...@codecademy/gamut@36.1.0) (2021-08-11)
+
+
+### Features
+
+* **SelectDropdown:** ColorModes ([c867505](https://github.com/Codecademy/client-modules/commit/c867505c509a042c9217f1b7608f8e27a1fc4063))
+
+
+
+### [36.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@36.0.0...@codecademy/gamut@36.0.1) (2021-08-11)
+
+
+### Bug Fixes
+
+* **Anchor:** Interface hover => primary GM-314 ([0f462e0](https://github.com/Codecademy/client-modules/commit/0f462e0b1b3669d6d8130c81ca1aeac47eca18cb))
+
+
+
+## [36.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@35.14.0...@codecademy/gamut@36.0.0) (2021-08-10)
+
+
+### ⚠ BREAKING CHANGES
+
+* **GridForm:** remove business button
+
+### Code Refactoring
+
+* **GridForm:** remove business button ([6458188](https://github.com/Codecademy/client-modules/commit/64581888cef91c8ff6e27ceecabedfa67f939274))
+
+
+
+## [35.14.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@35.13.0...@codecademy/gamut@35.14.0) (2021-08-09)
+
+
+### Features
+
+* Badge Variant Text Color Edit ([43846a6](https://github.com/Codecademy/client-modules/commit/43846a633f51ceaf227f434cb656dc3d98c8f35a))
+
+
+
+## [35.13.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@35.12.3...@codecademy/gamut@35.13.0) (2021-08-09)
+
+
+### Features
+
+* **Markdown:** Add default bottom margin ([38b4774](https://github.com/Codecademy/client-modules/commit/38b4774ba3a4b6cd7228a7019a7c25f5311485d7))
+
+
+
 ### [35.12.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@35.12.2...@codecademy/gamut@35.12.3) (2021-08-06)
 
 

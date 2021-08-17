@@ -17,7 +17,7 @@ import {
   formFieldFocusStyles,
   formFieldPaddingStyles,
   formFieldStyles,
-} from './styles/shared-system-props';
+} from './styles';
 
 export type InputProps = InputHTMLAttributes<HTMLInputElement> & {
   id?: string;

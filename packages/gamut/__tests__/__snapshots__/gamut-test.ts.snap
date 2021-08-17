@@ -60,6 +60,7 @@ Array [
   "Menu",
   "MenuItem",
   "MenuSeparator",
+  "Modal",
   "ModalDeprecated",
   "NotificationItem",
   "NotificationList",

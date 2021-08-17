@@ -9,10 +9,14 @@ import { LinkTo, PropsTable } from '~styleguide/blocks';
   title={title}
   component={Dialog}
   parameters={{
-    subtitle: `Constrained Dialog Dialog`,
+    subtitle: `Structured dialog modals with binary options`,
     status: 'current',
     source: 'gamut',
-    figmaId: 'lIQbbBHl6v80CevfWogVhr',
+    design: {
+      type: 'figma',
+      url:
+        'https://www.figma.com/file/PtSjm2jy8jVJICTpDhahzE/Modals?node-id=1%3A87',
+    },
   }}
   args={{
     inline: true,
@@ -34,16 +38,6 @@ import { LinkTo, PropsTable } from '~styleguide/blocks';
 - Dialogs appear unprompted and require confirmation before the user can continue.
 - Use the modal component sparingly. This is the most dispruptive tool in our arsenal. We should only have a small handful of these in our system at any given time.
 
-<Canvas>
-  <Story name="Dialog" height="600px">
-    {(args) => {
-      return <Dialog {...args} />;
-    }}
-  </Story>
-</Canvas>
-
-<PropsTable story="Dialog" />
-
 ## Usage Guidelines
 
 - Dialogs have a min-width of 400px
@@ -57,6 +51,28 @@ import { LinkTo, PropsTable } from '~styleguide/blocks';
 
 - Dialogs should be centered inside of the window.
 
+## Variants
+
+### Primary
+
+<Canvas>
+  <Story name="Primary" height="500px">
+    {(args) => {
+      return <Dialog {...args} />;
+    }}
+  </Story>
+</Canvas>
+
+### Danger
+
+<Canvas>
+  <Story name="Danger" height="500px" args={{ variant: 'danger' }}>
+    {(args) => {
+      return <Dialog {...args} />;
+    }}
+  </Story>
+</Canvas>
+
 ## Color Modes
 
 Dialog components respond to the current <LinkTo id="foundations-color-mode--page">Color Mode</LinkTo> they are used in. Each component inside of dialog will correctly display for the current color mode without any extra configuration.
@@ -65,7 +81,7 @@ Check it out:
 ### Light
 
 <Canvas>
-  <Story name="Light" height="600px">
+  <Story name="Light" height="500px">
     {(args) => {
       return <Dialog {...args} />;
     }}
@@ -75,7 +91,7 @@ Check it out:
 ### Dark
 
 <Canvas>
-  <Story name="Dark" height="600px" args={{ mode: 'dark' }}>
+  <Story name="Dark" height="500px" args={{ mode: 'dark' }}>
     {(args) => {
       return (
         <ColorMode mode="dark">
@@ -85,3 +101,17 @@ Check it out:
     }}
   </Story>
 </Canvas>
+
+## Code Playground
+
+Edit attributes and see what’s possible to do with this component or get the exact output you want.
+
+<Canvas>
+  <Story name="Dialog" height="500px">
+    {(args) => {
+      return <Dialog {...args} />;
+    }}
+  </Story>
+</Canvas>
+
+<PropsTable story="Dialog" />
