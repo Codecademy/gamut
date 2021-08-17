@@ -1,23 +1,20 @@
-import {
-  ButtonDeprecated,
-  ModalDeprecated,
-  Overlay,
-} from '@codecademy/gamut/src';
+import { ButtonDeprecated, ModalDeprecated } from '@codecademy/gamut/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
-import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
-import LinkTo from '@storybook/addon-links/react';
+import { Canvas, LinkTo, Meta, Story } from '@storybook/addon-docs/blocks';
 import { useState } from 'react';
 
 <Meta
   title={title}
   component={ModalDeprecated}
-  subcomponents={{ Overlay }}
   parameters={{
-    subtitle: `Simple ModalDeprecated portal to escape current DOM Context.`,
+    subtitle: `Please see the Modal page for all new Modals.`,
     status: 'deprecated',
     source: 'gamut',
-    figmaId: 'yt7NdZTETDRPUn0CtRu3v0',
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/file/yt7NdZTETDRPUn0CtRu3v0',
+    },
   }}
 />
 
@@ -42,9 +39,9 @@ import { useState } from 'react';
   </Story>
 </Canvas>
 
-> Prefer <LinkTo kind="Molecules/Dialog" story="Dialog">Dialog</LinkTo> instead.
+> Prefer <LinkTo component="Modal">Modal</LinkTo> instead.
 
-<PropsTable components={{ ModalDeprecated, Overlay }} />
+<PropsTable story="ModalDeprecated" />
 
 ### Creating a custom close button
 

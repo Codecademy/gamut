@@ -1,8 +1,7 @@
 import { Box } from '@codecademy/gamut/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
-import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
-import LinkTo from '@storybook/addon-links/react';
+import { Canvas, LinkTo, Meta, Story } from '@storybook/addon-docs/blocks';
 
 <Meta
   title={title}
@@ -18,18 +17,8 @@ This is our primitive box component that is meant to be a kitchen sink utility c
 
 You can use this for pretty much anything. So try it out!
 
-<p>
-  While this can be made to be a <code>grid</code> or <code>flex</code>{' '}
-  container, we also provide two specific components to handle those in addition
-  to everything that Box does!{' '}
-  <code>
-    <LinkTo kind="/Layouts/Box/GridBox">GridBox</LinkTo>
-  </code>{' '}
-  and{' '}
-  <code>
-    <LinkTo kind="/Layouts/Box/FlexBox">FlexBox</LinkTo>
-  </code>
-</p>
+While this can be made to be a `grid` or `flex` container, we also provide two
+specific components to handle those in addition to everything that Box does! <LinkTo component="GridBox">GridBox</LinkTo> and <LinkTo component="FlexBox">FlexBox</LinkTo>
 
 <Canvas>
   <Story

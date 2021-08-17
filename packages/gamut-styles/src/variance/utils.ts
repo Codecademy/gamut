@@ -1,6 +1,6 @@
+import { ThemeProps } from '@codecademy/variance';
 import isPropValid from '@emotion/is-prop-valid';
 
-import { ThemeProps } from '../../../variance/dist';
 import { all as allProps } from './config';
 
 const allPropnames = ['mode', 'variant', ...Object.keys(allProps)] as [

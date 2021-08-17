@@ -1,31 +1,31 @@
-import styled from '@emotion/styled';
+import { css, Global } from '@emotion/react';
+import Editor from '@monaco-editor/react';
 import type { editor as EditorType } from 'monaco-editor';
 import React, { Component } from 'react';
-import ReactMonacoEditor from 'react-monaco-editor';
 import ReactResizeDetector from 'react-resize-detector';
 
-import { Editor, Monaco, MonacoFile } from '../types';
+import { Monaco, MonacoFile } from '../types';
 
-const InnerEditor = styled.div`
-  padding-top: 0.95rem;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
+const innerEditorStyles = css`
+  & .monaco-editor.rename-box,
+  .monaco-hover {
+    top: 0;
+  }
 `;
+
+const InnerEditor = () => <Global styles={innerEditorStyles} />;
 
 export type SimpleMonacoEditorProps = {
   file: MonacoFile;
   languageId?: string;
   onChange?: (newValue: string) => void;
   options: EditorType.IStandaloneEditorConstructionOptions;
-  setEditor: (editor: Editor.IStandaloneCodeEditor) => void;
+  setEditor: (editor: EditorType.IStandaloneCodeEditor) => void;
   setMonaco: (monaco: Monaco) => void;
 };
 
 export class SimpleMonacoEditor extends Component<SimpleMonacoEditorProps> {
-  editor?: Editor.IStandaloneCodeEditor;
+  editor?: EditorType.IStandaloneCodeEditor;
 
   shouldComponentUpdate(prevProps: SimpleMonacoEditorProps) {
     return (
@@ -34,7 +34,7 @@ export class SimpleMonacoEditor extends Component<SimpleMonacoEditorProps> {
     );
   }
 
-  editorDidMount = (editor: Editor.IStandaloneCodeEditor) => {
+  editorDidMount = (editor: EditorType.IStandaloneCodeEditor) => {
     this.editor = editor;
     this.props.setEditor(editor);
   };
@@ -46,24 +46,23 @@ export class SimpleMonacoEditor extends Component<SimpleMonacoEditorProps> {
   render() {
     return (
       <ReactResizeDetector
-        handleHeight
-        handleWidth
         onResize={(width: number, height: number) => {
           width > 0 && height > 0 && this.editor?.layout();
         }}
         refreshMode="debounce"
         refreshRate={500}
       >
-        <InnerEditor data-language-id={this.props.languageId}>
-          <ReactMonacoEditor
-            editorDidMount={this.editorDidMount}
-            editorWillMount={this.editorWillMount}
+        <>
+          <InnerEditor />
+          <Editor
+            onMount={this.editorDidMount}
+            beforeMount={this.editorWillMount}
             onChange={this.props.onChange}
             options={this.props.options}
             theme={this.props.options.theme}
             value={this.props.file.content}
           />
-        </InnerEditor>
+        </>
       </ReactResizeDetector>
     );
   }

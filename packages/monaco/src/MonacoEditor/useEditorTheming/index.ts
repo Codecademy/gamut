@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 
 import { Monaco } from '../../libs/languageServices/types';
-import { darkTheme, LETheme } from '../../libs/theme';
+import { CodecademyTheme, darkTheme } from '../../libs/theme';
 import { EditorTheme } from '../../libs/theme/editorTheme';
-import { Editor, UserInterfaceSettings } from '../types';
+import { Editor, EditorInterfaceSettings } from '../types';
 
 export enum MonacoThemeType {
   // 'static' here refers to the legacy LE monaco theme, which is a set mapping
@@ -14,13 +14,12 @@ export enum MonacoThemeType {
 }
 
 export const useEditorTheming = (
-  interfaceSettings: UserInterfaceSettings,
-  updateUserInterfaceSettings?: (setting: string) => void,
+  interfaceSettings: EditorInterfaceSettings,
+  updateEditorInterfaceSettings?: (setting: string) => void,
   editor?: Editor.IStandaloneCodeEditor,
   monaco?: Monaco,
   themeType: MonacoThemeType = MonacoThemeType.static
 ) => {
-  // TODO get user interface settings
   const { highContrast } = interfaceSettings;
   const [, setThemeDefined] = useState(false);
 
@@ -38,7 +37,7 @@ export const useEditorTheming = (
       if (!themeDefined) {
         monaco.editor.defineTheme(
           EditorTheme.dark,
-          themeType === MonacoThemeType.static ? darkTheme : LETheme
+          themeType === MonacoThemeType.static ? darkTheme : CodecademyTheme
         );
       }
 
@@ -55,10 +54,10 @@ export const useEditorTheming = (
       id: 'editor.action.toggleHighContrast',
       label: 'Toggle High Contrast Theme',
       run: () => {
-        if (updateUserInterfaceSettings) {
-          updateUserInterfaceSettings('highContrast');
+        if (updateEditorInterfaceSettings) {
+          updateEditorInterfaceSettings('highContrast');
         }
       },
     });
-  }, [updateUserInterfaceSettings, editor]);
+  }, [updateEditorInterfaceSettings, editor]);
 };

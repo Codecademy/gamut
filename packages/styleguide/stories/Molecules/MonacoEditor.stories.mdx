@@ -1,0 +1,32 @@
+import { Box } from '@codecademy/gamut';
+import title from '@codecademy/macros/lib/title.macro';
+import { MonacoEditor } from '@codecademy/monaco';
+import { PropsTable } from '@codecademy/storybook-addon-variance';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+
+<Meta
+  component={MonacoEditor}
+  parameters={{
+    source: 'monaco',
+    status: 'volatile',
+    subtitle: `Code editor`,
+  }}
+  title={title}
+  args={{
+    file: { name: 'main.js', content: 'console.log("hello world")' },
+    onChange: () => {},
+    readOnly: true,
+  }}
+/>
+
+<Canvas>
+  <Story name="MonacoEditor">
+    {(args) => (
+      <Box height="350px" width="100%">
+        <MonacoEditor {...args} />
+      </Box>
+    )}
+  </Story>
+</Canvas>
+
+<PropsTable story="MonacoEditor" />

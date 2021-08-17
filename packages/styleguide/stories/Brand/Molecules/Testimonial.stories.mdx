@@ -1,4 +1,4 @@
-import { Box, GridBox } from '@codecademy/gamut/src';
+import { Column, LayoutGrid } from '@codecademy/gamut';
 import { Testimonial } from '@codecademy/gamut-labs/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
@@ -11,8 +11,7 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
     firstName: 'Lacey',
     lastName: 'Bathala',
     occupation: 'Data Analyst',
-    quote: "Coding isn't rocket science, it’s just falsely intimidating.",
-    mode: 'dark',
+    quote: "Coding isn't a rocket appliance, it’s just falsely intimidating.",
     company: 'Microsoft',
     imageUrl:
       'http://images.ctfassets.net/go6kr6r0ykrq/4MdZk5XTPtg52O0uUBDMXB/e829b4fe7ea9e02220c4f86b0a17d7b3/lacey_bathala_480.png?w=120&h=120',
@@ -29,87 +28,57 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
   }}
 />
 
+## Horizontal
+
+Testimonials default to the horizontal layout.
+
 <Canvas withSource="open">
   <Story name="Testimonial">{(args) => <Testimonial {...args} />}</Story>
 </Canvas>
 
 <PropsTable story="Testimonial" />
 
-## In a grid
+## Color modes
 
-<Canvas withSource="closed">
-  <Story name="In a grid">
-    {(args) => (
-      <GridBox
-        rowGap={32}
-        columnGap={32}
-        gridTemplateColumns={{ base: '1fr', sm: '1fr 1fr' }}
-      >
-        <Testimonial {...args} />
-        <Testimonial {...args} imageUrl="" />
-        <Testimonial {...args} mode="light" />
-      </GridBox>
-    )}
-  </Story>
-</Canvas>
+Testimonials can be displayed in both light and dark color modes.
 
-## In large container
+<LayoutGrid gap={32}>
+<Column size={6}>
 
-<Canvas withSource="closed">
-  <Story name="In large container">{(args) => <Testimonial {...args} />}</Story>
-</Canvas>
+### Light mode
 
-## Optional long quote
+<Story name="Light Mode">{(args) => <Testimonial {...args} />}</Story>
 
-The optional long quote will replace the quote text at [SM breakpoint and above](?path=/docs/foundations-theme--breakpoints).
+</Column>
+<Column size={6}>
 
-<Canvas withSource="closed">
-  <Story
-    name="Optional long quote"
-    args={{
-      longQuote:
-        'If it weren’t for Codecademy, I’d probably be in my old job. Codecademy enabled me to learn quick lessons between calls, on my lunch break, while multitasking. It was fun and easy and I went from 0 coding skills to a promotion within 6 months.',
-    }}
-  >
-    {(args) => <Testimonial {...args} />}
-  </Story>
-</Canvas>
+### Dark mode
 
-## Light theme
+<Story name="Dark Mode">
+  {(args) => <Testimonial hideAvatar mode="dark" {...args} />}
+</Story>
 
-Use the `light` value for `mode` for "light mode" styles.
+</Column>
+<Column display="block"  size={6}>
 
-<Canvas withSource="closed">
-  <Story name="Light theme" args={{ mode: 'light' }}>
-    {(args) => <Testimonial {...args} />}
-  </Story>
-</Canvas>
+### Vertical Variant
 
-## Without avatar image
+Testimonial can use the vertical layout for smaller containers. Testimonial will also switch to this variant for mobile viewports.
 
-The avatar image is optional.
+<Story name="Small Light">
+  {(args) => <Testimonial variant="vertical" {...args} />}
+</Story>
 
-<Canvas withSource="closed">
-  <Story
-    name="Without avatar image"
-    args={{
-      imageUrl: '',
-      longQuote:
-        'If it weren’t for Codecademy, I’d probably be in my old job. Codecademy enabled me to learn quick lessons between calls, on my lunch break, while multitasking. It was fun and easy and I went from 0 coding skills to a promotion within 6 months.',
-    }}
-  >
-    {(args) => <Testimonial {...args} />}
-  </Story>
-</Canvas>
+</Column>
+<Column display="block" flexDirection="column" size={6}>
 
-## Small container without avatar image
+### Hidden Picture
 
-<Canvas withSource="closed">
-  <Story name="Small container without avatar image" args={{ imageUrl: '' }}>
-    {(args) => (
-      <Box maxWidth={400}>
-        <Testimonial {...args} />
-      </Box>
-    )}
-  </Story>
-</Canvas>
+Testimonial will hide the picture automatically if the `imageUrl` prop is `undefined`. It can also be hidden via the `hidePhoto` prop
+
+<Story name="Medium Dark">
+  {(args) => <Testimonial {...args} variant="horizontal" hidePhoto />}
+</Story>
+
+</Column>
+</LayoutGrid>

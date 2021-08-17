@@ -17,6 +17,11 @@ import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/blocks';
   parameters={{
     subtitle: `Curriculum cards for paths and courses.`,
     source: 'gamut-labs',
+    design: {
+      type: 'figma',
+      url:
+        'https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=736%3A2752',
+    },
   }}
 />
 
@@ -61,6 +66,21 @@ import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/blocks';
     name="Curriculum Card Completed"
     args={{
       progressState: 'completed',
+    }}
+  >
+    {(args) => <CurriculumCard {...args} />}
+  </Story>
+</Canvas>
+
+## Curriculum Card with Beta Sticker
+
+If `beta` is true, no other tag information will be rendered. In-progress and completed progress states will override the beta sticker.
+
+<Canvas>
+  <Story
+    name="Curriculum Card Beta"
+    args={{
+      beta: true,
     }}
   >
     {(args) => <CurriculumCard {...args} />}

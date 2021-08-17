@@ -1,10 +1,10 @@
 import type { languages } from 'monaco-editor';
 
-import { LanguageIds } from './languageIds';
+import { LanguageId } from './languageIds';
 
 export const registerLanguage = (
   monaco: typeof import('monaco-editor'),
-  languageId: LanguageIds,
+  languageId: LanguageId,
   languageConfiguration: languages.LanguageConfiguration,
   languageDefinition: languages.IMonarchLanguage
 ) => {

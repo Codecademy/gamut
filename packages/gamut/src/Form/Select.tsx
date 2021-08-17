@@ -19,7 +19,7 @@ import {
   conditionalStyles,
   conditionalStyleState,
   formFieldStyles,
-} from './styles/shared-system-props';
+} from './styles';
 import { parseSelectOptions } from './utils';
 
 export type SelectComponentProps = Pick<
@@ -106,7 +106,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectWrapperProps>(
       >
         <StyledFlexbox
           pr={12}
-          color={error ? 'danger' : disabled ? 'text-disabled' : 'text'}
+          color={error ? 'feedback-error' : disabled ? 'text-disabled' : 'text'}
           alignItems="center"
           position="absolute"
           right="0"

@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 
 import useLanguageService from '../libs/languageServices/useLanguageService';
-import { LanguageIds } from '../libs/services/languageIds';
+import { LanguageId } from '../libs/services/languageIds';
 import { createMonacoOptions } from './createMonacoOptions';
 import { SimpleMonacoEditor } from './SimpleMonacoEditor';
-import { Editor, Monaco, MonacoFile, UserInterfaceSettings } from './types';
+import { Editor, EditorInterfaceSettings, Monaco, MonacoFile } from './types';
 import { useDeltaDecorations } from './useDeltaDecorations';
 import { useEditorSettings } from './useEditorSettings';
 import { MonacoThemeType, useEditorTheming } from './useEditorTheming';
@@ -15,11 +15,11 @@ export type MonacoEditorProps = {
   onChange?: (value: string) => void;
   readOnly?: boolean;
   theme?: MonacoThemeType;
-  userInterfaceSettings?: UserInterfaceSettings;
-  updateUserInterfaceSettings?: (setting: string) => void;
+  editorInterfaceSettings?: EditorInterfaceSettings;
+  updateEditorInterfaceSettings?: (setting: string) => void;
 };
 
-export const defaultEditorInterfaceSettings: UserInterfaceSettings = {
+export const defaultEditorInterfaceSettings: EditorInterfaceSettings = {
   autoCloseTokens: true,
   editorFontSize: 'reg',
   highContrast: false,
@@ -33,8 +33,8 @@ export const MonacoEditor: React.FC<MonacoEditorProps> = ({
   onChange,
   readOnly,
   theme = MonacoThemeType.static,
-  userInterfaceSettings,
-  updateUserInterfaceSettings,
+  editorInterfaceSettings,
+  updateEditorInterfaceSettings,
 }) => {
   const [editor, setEditor] = useState<Editor.IStandaloneCodeEditor>();
   const [monaco, setMonaco] = useState<Monaco>();
@@ -42,15 +42,15 @@ export const MonacoEditor: React.FC<MonacoEditorProps> = ({
 
   useDeltaDecorations(editor, languageService.registration);
   useEditorTheming(
-    userInterfaceSettings || defaultEditorInterfaceSettings,
-    updateUserInterfaceSettings,
+    editorInterfaceSettings || defaultEditorInterfaceSettings,
+    updateEditorInterfaceSettings,
     editor,
     monaco,
     theme
   );
   useEditorSettings(
-    userInterfaceSettings || defaultEditorInterfaceSettings,
-    updateUserInterfaceSettings,
+    editorInterfaceSettings || defaultEditorInterfaceSettings,
+    updateEditorInterfaceSettings,
     editor,
     monaco
   );
@@ -58,12 +58,12 @@ export const MonacoEditor: React.FC<MonacoEditorProps> = ({
   return (
     <SimpleMonacoEditor
       file={file}
-      languageId={languageService.id || LanguageIds.codecademyDefault}
+      languageId={languageService.id || LanguageId.Default}
       onChange={onChange}
       options={{
         ...createMonacoOptions(
           className,
-          userInterfaceSettings || defaultEditorInterfaceSettings,
+          editorInterfaceSettings || defaultEditorInterfaceSettings,
           languageService.id
         ),
         readOnly,

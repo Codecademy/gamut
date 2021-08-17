@@ -1,7 +1,7 @@
 import type * as monaco from 'monaco-editor';
 
+import { CodecademyColors } from './colorsCodecademyThemed';
 import { darkColors } from './colorsDark';
-import { LEColors } from './colorsLEThemed';
 import type { MonacoThemeColors } from './types';
 
 const c = (color: string) => color.substr(1);
@@ -629,4 +629,4 @@ const theme = ({
 });
 
 export const darkTheme = theme(darkColors);
-export const LETheme = theme(LEColors);
+export const CodecademyTheme = theme(CodecademyColors);

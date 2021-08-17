@@ -17,7 +17,7 @@ import {
   formFieldFocusStyles,
   formFieldPaddingStyles,
   formFieldStyles,
-} from './styles/shared-system-props';
+} from './styles';
 
 export type InputProps = InputHTMLAttributes<HTMLInputElement> & {
   id?: string;
@@ -81,7 +81,7 @@ const InputElement = styled.input<StyledInputProps>`
 
 const inputStates = {
   error: {
-    color: 'danger',
+    color: 'feedback-error',
     icon: AlertIcon,
   },
   valid: {

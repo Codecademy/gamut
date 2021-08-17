@@ -1,6 +1,7 @@
 import { Box } from '@codecademy/gamut';
+import { system, transitionConcat } from '@codecademy/gamut-styles';
 import { useTheme } from '@emotion/react';
-import cx from 'classnames';
+import styled from '@emotion/styled';
 import React, { useCallback, useEffect, useState } from 'react';
 
 import { AppHeader, AppHeaderMobile } from '..';
@@ -28,7 +29,6 @@ import {
   proHeaderItems,
   proMobileHeaderItems,
 } from './GlobalHeaderVariants';
-import styles from './styles.module.scss';
 import { AnonHeader, FreeHeader, LoadingHeader, ProHeader } from './types';
 
 export type GlobalHeaderProps =
@@ -44,18 +44,27 @@ const getAppHeaderItems = (
     case 'anon':
       switch (props.variant) {
         case 'landing':
-          return anonLandingHeaderItems();
+          return anonLandingHeaderItems(props.hidePricing);
         case 'login':
-          return anonLoginHeaderItems();
+          return anonLoginHeaderItems(props.hidePricing);
         case 'signup':
-          return anonSignupHeaderItems();
+          return anonSignupHeaderItems(props.hidePricing);
         default:
-          return anonDefaultHeaderItems();
+          return anonDefaultHeaderItems(props.hidePricing);
       }
     case 'free':
-      return freeHeaderItems(props.user, props.renderNotifications?.desktop);
+      return freeHeaderItems(
+        props.user,
+        props.hidePricing,
+        props.renderNotifications?.desktop,
+        props.renderFavorites?.desktop
+      );
     case 'pro':
-      return proHeaderItems(props.user, props.renderNotifications?.desktop);
+      return proHeaderItems(
+        props.user,
+        props.renderNotifications?.desktop,
+        props.renderFavorites?.desktop
+      );
     case 'loading':
       return loadingHeaderItems;
   }
@@ -68,17 +77,18 @@ const getMobileAppHeaderItems = (
     case 'anon':
       switch (props.variant) {
         case 'landing':
-          return anonLandingMobileHeaderItems();
+          return anonLandingMobileHeaderItems(props.hidePricing);
         case 'login':
-          return anonLoginMobileHeaderItems();
+          return anonLoginMobileHeaderItems(props.hidePricing);
         case 'signup':
-          return anonSignupMobileHeaderItems();
+          return anonSignupMobileHeaderItems(props.hidePricing);
         default:
-          return anonDefaultMobileHeaderItems();
+          return anonDefaultMobileHeaderItems(props.hidePricing);
       }
     case 'free':
       return freeMobileHeaderItems(
         props.user,
+        props.hidePricing,
         props.renderNotifications?.mobile
       );
     case 'pro':
@@ -90,6 +100,27 @@ const getMobileAppHeaderItems = (
       return loadingMobileHeaderItems;
   }
 };
+
+const HeaderContainer = styled(Box)(
+  system.css({
+    borderBottom: 1,
+    bg: 'background',
+    top: 0,
+    zIndex: 2,
+    width: 1,
+    transition: transitionConcat(
+      ['background-color', 'border-bottom-color'],
+      'fast',
+      'ease-in-out'
+    ),
+  }),
+  system.states({
+    faded: {
+      bg: 'background-current',
+      borderColor: 'background-current',
+    },
+  })
+);
 
 export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
   const { action, onLinkAction } = props;
@@ -116,17 +147,12 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
     [action, onLinkAction]
   );
 
-  const headerClasses = cx(
-    styles.stickyHeader,
-    isInHeaderRegion && styles.transitionFadeOut
-  );
-
   return (
     <Box as="header" position="sticky" top={0} zIndex={theme.elements.headerZ}>
-      <Box
+      <HeaderContainer
         display={{ _: 'none', md: 'block' }}
         height={theme.elements.headerHeight}
-        className={headerClasses}
+        faded={isInHeaderRegion}
       >
         <AppHeader
           action={combinedAction}
@@ -136,11 +162,11 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
             props.type === 'anon' ? props.redirectParam : undefined
           }
         />
-      </Box>
-      <Box
+      </HeaderContainer>
+      <HeaderContainer
         display={{ _: 'block', md: 'none' }}
         height={theme.elements.headerHeight}
-        className={headerClasses}
+        faded={isInHeaderRegion}
       >
         <AppHeaderMobile
           action={combinedAction}
@@ -150,7 +176,7 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
             props.type === 'anon' ? props.redirectParam : undefined
           }
         />
-      </Box>
+      </HeaderContainer>
       {props.children}
     </Box>
   );

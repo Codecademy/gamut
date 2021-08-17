@@ -5,6 +5,7 @@ import {
   MenuItem,
   MenuSeparator,
 } from '@codecademy/gamut';
+import { MultipleUsersIcon } from '@codecademy/gamut-icons';
 import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
@@ -16,7 +17,10 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
     subtitle: 'Menu list components',
     source: 'gamut',
     status: 'current',
-    figmaId: 'r5Y0iuLDFPXy8SmYX1UW2H',
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/file/r5Y0iuLDFPXy8SmYX1UW2H',
+    },
   }}
   argTypes={{
     children: {
@@ -33,7 +37,7 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
         <MenuItem>Menu Item</MenuItem>
         <MenuItem active>Active Item</MenuItem>
         <MenuSeparator />
-        <MenuItem>Menu Item</MenuItem>
+        <MenuItem icon={MultipleUsersIcon}>Icon Item</MenuItem>
         <MenuItem>Menu Item</MenuItem>
       </>
     ),

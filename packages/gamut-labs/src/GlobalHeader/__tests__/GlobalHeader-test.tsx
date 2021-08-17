@@ -1,8 +1,6 @@
 import { IconButton } from '@codecademy/gamut';
 import { BellIcon } from '@codecademy/gamut-icons';
-import { theme } from '@codecademy/gamut-styles';
-import { ThemeProvider } from '@emotion/react';
-import { render, screen } from '@testing-library/react';
+import { setupRtl } from '@codecademy/gamut-tests';
 import React from 'react';
 
 import { GlobalHeader, GlobalHeaderProps } from '..';
@@ -116,252 +114,263 @@ const renderElementProps: GlobalHeaderProps = {
   user,
 };
 
-const renderGlobalHeader = (props: GlobalHeaderProps) => {
-  return render(
-    <ThemeProvider theme={theme}>
-      <GlobalHeader {...props} />
-    </ThemeProvider>
-  );
-};
+const renderView = setupRtl(GlobalHeader);
 
 describe('GlobalHeader', () => {
   describe('anonymous users', () => {
-    beforeEach(() => {
-      renderGlobalHeader(anonHeaderProps);
-    });
-
     /* since we're using css to toggle the display of the header between desktop & mobile, these tests check for visibility of elements
      & use 'getAllByTestId' b/c there will be duplicate elements in the DOM (since mobile & desktop render some of the same app header items) */
-    test('logo', () => {
-      const logoElements = screen.getAllByTestId('header-logo');
+    it('renders logo', () => {
+      const { view } = renderView(anonHeaderProps);
+      const logoElements = view.getAllByTestId('header-logo');
       expect(logoElements[0]).not.toBeVisible();
       expect(logoElements[1]).toBeVisible();
     });
 
-    test('courseCatalog', () => {
-      screen.getAllByText(courseCatalog.text);
+    it('renders courseCatalog', () => {
+      const { view } = renderView(anonHeaderProps);
+      view.getAllByText(courseCatalog.text);
     });
 
-    test('resourcesDropdown', () => {
-      screen.getAllByText(resourcesDropdown.text);
+    it('renders resourcesDropdown', () => {
+      const { view } = renderView(anonHeaderProps);
+      view.getAllByText(resourcesDropdown.text);
     });
 
-    test('communityDropdown', () => {
-      screen.getAllByText(communityDropdown.text);
+    it('renders communityDropdown', () => {
+      const { view } = renderView(anonHeaderProps);
+      view.getAllByText(communityDropdown.text);
     });
 
-    test('plansPricingDropdown', () => {
-      screen.getAllByText(pricingDropdown.text);
+    it('renders pricingDropdown when hidePricing is falsy', () => {
+      const { view } = renderView(anonHeaderProps);
+      view.getAllByText(pricingDropdown.text);
     });
 
-    test('forEnterprise', () => {
-      screen.getAllByText(forBusiness.text);
+    it('does not render pricingDropdown when hidePricing is true', () => {
+      const { view } = renderView({ ...anonHeaderProps, hidePricing: true });
+      expect(view.queryByText(pricingDropdown.text)).toBeFalsy();
     });
 
-    test('login', () => {
-      screen.getAllByText(login.text);
+    it('renders forEnterprise', () => {
+      const { view } = renderView(anonHeaderProps);
+      view.getAllByText(forBusiness.text);
     });
 
-    test('signup', () => {
-      screen.getAllByText(signUp.text);
+    it('renders login', () => {
+      const { view } = renderView(anonHeaderProps);
+      view.getAllByText(login.text);
+    });
+
+    it('renders signup', () => {
+      const { view } = renderView(anonHeaderProps);
+      view.getAllByText(signUp.text);
     });
   });
 
   describe('anonymous users (variants)', () => {
     describe('landing page', () => {
-      beforeEach(() => {
-        renderGlobalHeader(anonLandingHeaderProps);
+      it('renders search', () => {
+        const { view } = renderView(anonLandingHeaderProps);
+        view.getByTitle('Search Icon');
       });
 
-      test('shows search', () => {
-        screen.getByTitle('Search Icon');
+      it('renders login', () => {
+        const { view } = renderView(anonLandingHeaderProps);
+        view.getAllByText(login.text);
       });
 
-      test('shows login', () => {
-        screen.getAllByText(login.text);
-      });
-
-      test('does not show signup', () => {
-        expect(screen.queryByText(signUp.text)).toBeFalsy();
+      it('does not render signup', () => {
+        const { view } = renderView(anonLandingHeaderProps);
+        expect(view.queryByText(signUp.text)).toBeFalsy();
       });
     });
 
     describe('login page', () => {
-      beforeEach(() => {
-        renderGlobalHeader(anonLoginHeaderProps);
+      it('renders search', () => {
+        const { view } = renderView(anonLoginHeaderProps);
+        view.getByTitle('Search Icon');
       });
 
-      test('shows search', () => {
-        screen.getByTitle('Search Icon');
+      it('does not render login', () => {
+        const { view } = renderView(anonLoginHeaderProps);
+        expect(view.queryByText(login.text)).toBeFalsy();
       });
 
-      test('does not show login', () => {
-        expect(screen.queryByText(login.text)).toBeFalsy();
-      });
-
-      test('shows signup', () => {
-        screen.getAllByText(signUp.text);
+      it('renders signup', () => {
+        const { view } = renderView(anonLoginHeaderProps);
+        view.getAllByText(signUp.text);
       });
     });
 
     describe('sign up page', () => {
-      beforeEach(() => {
-        renderGlobalHeader(anonSignUpHeaderProps);
+      it('renders search', () => {
+        const { view } = renderView(anonSignUpHeaderProps);
+        view.getAllByTitle('Search Icon');
       });
 
-      test('shows search', () => {
-        screen.getAllByTitle('Search Icon');
+      it('renders login', () => {
+        const { view } = renderView(anonSignUpHeaderProps);
+        view.getAllByText(login.text);
       });
 
-      test('shows login', () => {
-        screen.getAllByText(login.text);
-      });
-
-      test('does not show sign up', () => {
-        expect(screen.queryByText(signUp.text)).toBeFalsy();
+      it('does not render sign up', () => {
+        const { view } = renderView(anonSignUpHeaderProps);
+        expect(view.queryByText(signUp.text)).toBeFalsy();
       });
     });
   });
 
   describe('free users', () => {
     describe('default', () => {
-      beforeEach(() => {
-        renderGlobalHeader(freeHeaderProps);
+      it('renders logo', () => {
+        const { view } = renderView(freeHeaderProps);
+        view.getAllByTestId('header-logo');
       });
 
-      test('logo', () => {
-        screen.getAllByTestId('header-logo');
+      it('renders myHome', () => {
+        const { view } = renderView(freeHeaderProps);
+        view.getByText(myHome.text);
       });
 
-      test('myHome', () => {
-        screen.getByText(myHome.text);
+      it('renders courseCatalog', () => {
+        const { view } = renderView(freeHeaderProps);
+        view.getByText(courseCatalog.text);
       });
 
-      test('courseCatalog', () => {
-        screen.getByText(courseCatalog.text);
+      it('renders resourcesDropdown', () => {
+        const { view } = renderView(freeHeaderProps);
+        view.getByText(resourcesDropdown.text);
       });
 
-      test('resourcesDropdown', () => {
-        screen.getByText(resourcesDropdown.text);
+      it('renders communityDropdown', () => {
+        const { view } = renderView(freeHeaderProps);
+        view.getByText(communityDropdown.text);
       });
 
-      test('communityDropdown', () => {
-        screen.getByText(communityDropdown.text);
+      it('renders pricingDropdown when hidePricing is falsy', () => {
+        const { view } = renderView(freeHeaderProps);
+        view.getByText(pricingDropdown.text);
       });
 
-      test('plansPricingDropdown', () => {
-        screen.getByText(pricingDropdown.text);
+      it('does not render pricingDropdown when hidePricing is true', () => {
+        const { view } = renderView({ ...freeHeaderProps, hidePricing: true });
+        expect(view.queryByText(pricingDropdown.text)).toBeFalsy();
       });
 
-      test('forEnterprise', () => {
-        screen.getByText(forBusiness.text);
+      it('renders forEnterprise', () => {
+        const { view } = renderView(freeHeaderProps);
+        view.getByText(forBusiness.text);
       });
 
-      test('profileDropdown', () => {
-        screen.getByTestId('avatar');
+      it('renders profileDropdown', () => {
+        const { view } = renderView(freeHeaderProps);
+        view.getByTestId('avatar');
       });
 
-      test('tryProForFree', () => {
-        screen.getByText(tryProForFree().text);
+      it('renders tryProForFree', () => {
+        const { view } = renderView(freeHeaderProps);
+        view.getByText(tryProForFree().text);
       });
     });
 
     describe('custom checkout url', () => {
-      test('tryProForFree', () => {
-        renderGlobalHeader(freeCustomCheckoutUrlHeaderProps);
-        screen.getByText(tryProForFree().text);
+      it('renders tryProForFree', () => {
+        const { view } = renderView(freeCustomCheckoutUrlHeaderProps);
+        view.getByText(tryProForFree().text);
       });
     });
 
     describe('has completed trial', () => {
-      test('upgradeToPro', () => {
-        renderGlobalHeader(freeCompletedTrialHeaderProps);
-        screen.getByText(upgradeToPro().text);
+      it('renders upgradeToPro', () => {
+        const { view } = renderView(freeCompletedTrialHeaderProps);
+        view.getByText(upgradeToPro().text);
       });
     });
   });
 
   describe('pro users', () => {
     describe('default', () => {
-      beforeEach(() => {
-        renderGlobalHeader(proHeaderProps);
+      it('renders proLogo', () => {
+        const { view } = renderView(proHeaderProps);
+        view.getAllByTestId('header-pro-logo');
       });
 
-      test('proLogo', () => {
-        screen.getAllByTestId('header-pro-logo');
+      it('renders myHome', () => {
+        const { view } = renderView(proHeaderProps);
+        view.getByText(myHome.text);
       });
 
-      test('myHome', () => {
-        screen.getByText(myHome.text);
+      it('renders courseCatalog', () => {
+        const { view } = renderView(proHeaderProps);
+        view.getByText(courseCatalog.text);
       });
 
-      test('courseCatalog', () => {
-        screen.getByText(courseCatalog.text);
+      it('renders resourcesDropdown', () => {
+        const { view } = renderView(proHeaderProps);
+        view.getByText(resourcesDropdown.text);
       });
 
-      test('resourcesDropdown', () => {
-        screen.getByText(resourcesDropdown.text);
+      it('renders communityDropdown', () => {
+        const { view } = renderView(proHeaderProps);
+        view.getByText(communityDropdown.text);
       });
 
-      test('communityDropdown', () => {
-        screen.getByText(communityDropdown.text);
+      it('renders profileDropdown', () => {
+        const { view } = renderView(proHeaderProps);
+        view.getByTestId('avatar');
       });
 
-      test('profileDropdown', () => {
-        screen.getByTestId('avatar');
-      });
-      test('referrals', () => {
-        screen.getByTestId('avatar').click();
-        screen.getByText(referrals.text);
+      it('renders referrals', () => {
+        const { view } = renderView(proHeaderProps);
+        view.getByTestId('avatar').click();
+        view.getByText(referrals.text);
       });
     });
 
     describe('is paused', () => {
-      test('unpause', () => {
-        renderGlobalHeader(proPausedHeaderProps);
-        screen.getByText(unpausePro.text);
+      it('renders unpause', () => {
+        const { view } = renderView(proPausedHeaderProps);
+        view.getByText(unpausePro.text);
       });
     });
   });
 
   describe('loading', () => {
-    beforeEach(() => {
-      renderGlobalHeader(loadingHeaderProps);
-    });
-
-    test('logo', () => {
-      screen.getAllByTestId('header-logo');
+    it('renders logo', () => {
+      const { view } = renderView(loadingHeaderProps);
+      view.getAllByTestId('header-logo');
     });
   });
 
   describe('renders a custom element when provided one', () => {
-    beforeEach(() => {
-      renderGlobalHeader(renderElementProps);
+    beforeEach(() => {});
+
+    it('renders search', () => {
+      const { view } = renderView(renderElementProps);
+      view.getByTitle('Search Icon');
     });
 
-    test('search', () => {
-      screen.getByTitle('Search Icon');
-    });
-
-    test('notifications', () => {
-      screen.getAllByTitle('Bell Icon');
+    it('renders notifications', () => {
+      const { view } = renderView(renderElementProps);
+      view.getAllByTitle('Bell Icon');
     });
   });
 
   describe('onClick handlers', () => {
     const onLinkAction = jest.fn();
 
-    test('fires only action upon clicking an element', () => {
-      renderGlobalHeader({ ...anonHeaderProps, onLinkAction });
-      screen.getByText(pricingDropdown.text).click();
+    it('renders fires only action upon clicking an element', () => {
+      const { view } = renderView({ ...anonHeaderProps, onLinkAction });
+      view.getByText(pricingDropdown.text).click();
 
       expect(action).toHaveBeenCalledTimes(1);
       expect(onLinkAction).not.toHaveBeenCalled();
     });
 
-    test('fires action & onLinkAction upon clicking a link element', () => {
-      renderGlobalHeader({ ...anonHeaderProps, onLinkAction });
-      screen.getAllByRole('link')[0].click();
+    it('renders fires action & onLinkAction upon clicking a link element', () => {
+      const { view } = renderView({ ...anonHeaderProps, onLinkAction });
+      view.getAllByRole('link')[0].click();
 
       expect(action).toHaveBeenCalledTimes(1);
       expect(onLinkAction).toHaveBeenCalledTimes(1);
