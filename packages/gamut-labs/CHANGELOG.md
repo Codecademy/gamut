@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [19.22.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.22.1...@codecademy/gamut-labs@19.22.2) (2021-08-17)
+
+
+### Bug Fixes
+
+* **LayoutMenu:** add aria-expanded ([f7143ab](https://github.com/Codecademy/client-modules/commit/f7143ab936d9d650ec2ca7f309f4e130d0fa3e6f))
+
+
+
 ### [19.22.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.22.0...@codecademy/gamut-labs@19.22.1) (2021-08-16)
 
 **Note:** Version bump only for package @codecademy/gamut-labs
