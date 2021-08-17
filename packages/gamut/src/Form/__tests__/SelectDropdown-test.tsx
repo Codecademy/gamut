@@ -26,9 +26,9 @@ const selectOptionsObject = {
 };
 
 const optionsIconsArray = [
-  { label: 'first icon', value: 'one', Icon: DataTransferVerticalIcon },
-  { label: 'second icon', value: 'two', Icon: CalendarIcon },
-  { label: 'third icon', value: 'three', Icon: EarthIcon },
+  { label: 'first icon', value: 'one', icon: DataTransferVerticalIcon },
+  { label: 'second icon', value: 'two', icon: CalendarIcon },
+  { label: 'third icon', value: 'three', icon: EarthIcon },
 ];
 
 const renderWrapper = setupEnzyme(SelectDropdown, {
