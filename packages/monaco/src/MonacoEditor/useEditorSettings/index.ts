@@ -9,10 +9,10 @@ import {
 } from '../createMonacoOptions/interfaceSettingsOptions';
 import { transmitKeyboardEvents } from '../transmitKeyboardEvents';
 import { TransmitEditor } from '../transmitKeyboardEvents/resolveMonacoKeyboardEvent';
-import { Editor, Monaco, UserInterfaceSettings } from '../types';
+import { Editor, EditorInterfaceSettings, Monaco } from '../types';
 
 export const useEditorSettings = (
-  userInterfaceSettings: UserInterfaceSettings,
+  userInterfaceSettings: EditorInterfaceSettings,
   updateUserInterfaceSettings?: (setting: string) => void,
   editor?: Editor.IStandaloneCodeEditor,
   monaco?: Monaco

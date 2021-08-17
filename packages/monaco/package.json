@@ -18,9 +18,11 @@
     "@codecademy/gamut-styles": "11.6.2",
     "@emotion/react": "^11.4.0",
     "@emotion/styled": "^11.3.0",
-    "monaco-editor": "0.26.1",
     "@monaco-editor/react": "4.2.1",
-    "react-resize-detector": "6.7.6"
+    "htmlhint": "0.9.13",
+    "monaco-editor": "0.26.1",
+    "react-resize-detector": "6.7.6",
+    "tabbable": "5.1.3"
   },
   "devDependencies": {},
   "scripts": {

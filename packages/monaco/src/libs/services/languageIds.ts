@@ -6,7 +6,7 @@ export enum LanguageId {
   Default = 'plaintext',
   // Css = 'codecademy-css',
   // Go = 'codecademy-go',
-  // Html = 'codecademy-html',
+  Html = 'codecademy-html',
   // Java = 'codecademy-java',
   Javascript = 'codecademy-js',
   // Php = 'codecademy-php',

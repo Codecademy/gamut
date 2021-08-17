@@ -1,10 +1,8 @@
-import { LanguageIds } from '../../libs/services/languageIds';
+import { LanguageId } from '../../libs/services/languageIds';
 import { EditorTheme } from '../../libs/theme/editorTheme';
 import { EditorFontSize } from '../types';
 
-const hiddenBracketLanguages = new Set<string | undefined>([
-  LanguageIds.codecademyHtml,
-]);
+const hiddenBracketLanguages = new Set<string | undefined>([LanguageId.Html]);
 
 export const autoCloseTokensOption = (autoCloseTokens: boolean | undefined) =>
   autoCloseTokens ? 'always' : 'never';
@@ -15,16 +13,16 @@ export const matchBracketsOption = (
 ) =>
   screenReader || hiddenBracketLanguages.has(languageId) ? 'never' : 'near';
 
-export const renderWhitespaceOption = (renderWhitespace: boolean) =>
+export const renderWhitespaceOption = (renderWhitespace: boolean | undefined) =>
   renderWhitespace ? 'all' : 'none';
 
-export const themeOption = (highContrast: boolean) =>
+export const themeOption = (highContrast: boolean | undefined) =>
   highContrast ? EditorTheme.highContrast : EditorTheme.dark;
 
-export const wordWrapOption = (screenReader: boolean) =>
+export const wordWrapOption = (screenReader: boolean | undefined) =>
   screenReader ? 'off' : 'on';
 
-export const fontSizeOption = (fontSize: EditorFontSize) => {
+export const fontSizeOption = (fontSize: EditorFontSize | undefined) => {
   switch (fontSize) {
     case 'lg':
       return 16;
@@ -35,7 +33,7 @@ export const fontSizeOption = (fontSize: EditorFontSize) => {
   }
 };
 
-export const lineHeightOption = (fontSize: EditorFontSize) => {
+export const lineHeightOption = (fontSize: EditorFontSize | undefined) => {
   switch (fontSize) {
     case 'lg':
       return 26;

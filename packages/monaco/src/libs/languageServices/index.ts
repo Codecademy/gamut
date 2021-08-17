@@ -8,6 +8,7 @@ const languageToImport: Record<
   LanguageCreatorImporter<unknown>
 > = {
   [LanguageId.Javascript]: () => import('../services/javascript'),
+  [LanguageId.Html]: () => import('../services/html'),
 };
 
 export const importedLanguages = new Map(Object.entries(languageToImport));

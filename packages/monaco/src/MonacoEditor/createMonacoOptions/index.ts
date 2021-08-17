@@ -1,7 +1,7 @@
 import cx from 'classnames';
 import type { editor } from 'monaco-editor';
 
-import { UserInterfaceSettings } from '../types';
+import { EditorInterfaceSettings } from '../types';
 import {
   autoCloseTokensOption,
   fontSizeOption,
@@ -15,16 +15,18 @@ import styles from './styles.module.scss';
 
 export const createMonacoOptions = (
   className: string | undefined,
-  interfaceSettings: UserInterfaceSettings,
+  interfaceSettings?: EditorInterfaceSettings,
   languageId?: string
 ): editor.IStandaloneEditorConstructionOptions => {
   return {
     acceptSuggestionOnCommitCharacter: false,
     acceptSuggestionOnEnter: 'off',
     autoClosingBrackets: autoCloseTokensOption(
-      interfaceSettings.autoCloseTokens
+      interfaceSettings?.autoCloseTokens
     ),
-    autoClosingQuotes: autoCloseTokensOption(interfaceSettings.autoCloseTokens),
+    autoClosingQuotes: autoCloseTokensOption(
+      interfaceSettings?.autoCloseTokens
+    ),
     codeLens: false,
     colorDecorators: false,
     contextmenu: false,
@@ -35,7 +37,7 @@ export const createMonacoOptions = (
     },
     fontFamily:
       "Monaco, Menlo, 'Ubuntu Mono', 'Droid Sans Mono', Consolas, monospace",
-    fontSize: fontSizeOption(interfaceSettings.editorFontSize),
+    fontSize: fontSizeOption(interfaceSettings?.editorFontSize),
     glyphMargin: true,
     highlightActiveIndentGuide: false,
     lightbulb: {
@@ -43,9 +45,9 @@ export const createMonacoOptions = (
     },
     lineDecorationsWidth: 0,
     lineNumbersMinChars: 3,
-    lineHeight: lineHeightOption(interfaceSettings.editorFontSize),
+    lineHeight: lineHeightOption(interfaceSettings?.editorFontSize),
     matchBrackets: matchBracketsOption(
-      interfaceSettings.screenReader,
+      interfaceSettings?.screenReader,
       languageId
     ),
     minimap: {
@@ -56,7 +58,7 @@ export const createMonacoOptions = (
     renderIndentGuides: false,
     renderLineHighlight: 'none',
     renderWhitespace: renderWhitespaceOption(
-      interfaceSettings.renderWhitespace
+      interfaceSettings?.renderWhitespace
     ),
     scrollbar: {
       verticalScrollbarSize: 6,
@@ -94,8 +96,8 @@ export const createMonacoOptions = (
       showWords: false,
     },
     tabSize: 2,
-    theme: themeOption(interfaceSettings.highContrast),
+    theme: themeOption(interfaceSettings?.highContrast),
     wordBasedSuggestions: false,
-    wordWrap: wordWrapOption(interfaceSettings.screenReader),
+    wordWrap: wordWrapOption(interfaceSettings?.screenReader),
   };
 };
