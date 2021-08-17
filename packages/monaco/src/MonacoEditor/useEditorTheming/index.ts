@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { Monaco } from '../../libs/languageServices/types';
 import { CodecademyTheme, darkTheme } from '../../libs/theme';
 import { EditorTheme } from '../../libs/theme/editorTheme';
-import { Editor, UserInterfaceSettings } from '../types';
+import { Editor, EditorInterfaceSettings } from '../types';
 
 export enum MonacoThemeType {
   // 'static' here refers to the legacy LE monaco theme, which is a set mapping
@@ -14,7 +14,7 @@ export enum MonacoThemeType {
 }
 
 export const useEditorTheming = (
-  interfaceSettings: UserInterfaceSettings,
+  interfaceSettings: EditorInterfaceSettings,
   editor?: Editor.IStandaloneCodeEditor,
   monaco?: Monaco,
   themeType: MonacoThemeType = MonacoThemeType.static

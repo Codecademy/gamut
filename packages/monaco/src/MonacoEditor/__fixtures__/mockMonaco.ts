@@ -1,4 +1,4 @@
-import { Editor, Monaco, UserInterfaceSettings } from '../types';
+import { Editor, EditorInterfaceSettings, Monaco } from '../types';
 
 export const createMockMonaco = () => {
   const actions: Record<string, Editor.IActionDescriptor> = {};
@@ -56,7 +56,7 @@ export const createMockMonaco = () => {
   };
 };
 
-export const mockUserInterfaceSettings: UserInterfaceSettings = {
+export const mockUserInterfaceSettings: EditorInterfaceSettings = {
   autoCloseTokens: true,
   editorFontSize: 'reg',
   highContrast: false,
