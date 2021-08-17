@@ -39,7 +39,7 @@ export interface IconOption {
   icon?: React.ComponentType<GamutIconProps>;
 }
 
-interface SelectDropdownSizes {
+export interface SelectDropdownSizes {
   size?: 'small' | 'medium';
 }
 
@@ -114,14 +114,19 @@ const CustomContainer = ({ children, ...rest }: CustomContainerProps) => {
   );
 };
 
-const formatOptionLabel = ({ label, icon: Icon }: IconOption) => (
-  <Box display="flex" alignItems="center">
-    {Icon && <Icon size={24} color="text" ml={4} />}
-    <Box as="span" pl={Icon ? 16 : 0}>
-      {label}
-    </Box>
-  </Box>
-);
+const formatOptionLabel = ({ label, icon: Icon, size }: any) => {
+  return (
+    <>
+      {console.log(size)}
+      <Box display="flex" alignItems="center">
+        {Icon && <Icon size={size === 'small' ? 16 : 24} color="text" ml={4} />}
+        <Box as="span" pl={Icon ? 16 : 0}>
+          {label}
+        </Box>
+      </Box>
+    </>
+  );
+};
 
 const defaultProps = {
   name: undefined,
@@ -239,7 +244,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
   }, [theme]);
 
   const selectOptions = useMemo(() => {
-    return parseOptions({ options, id });
+    return parseOptions({ options, id, size });
   }, [options, id]);
 
   const parsedValue = useMemo(() => {

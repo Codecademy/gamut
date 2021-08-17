@@ -384,21 +384,45 @@ export const SelectDropdownIconExample: React.FC = () => (
           {
             label: 'ohai',
             value: 'ohai',
-            Icon: RocketIcon,
+            icon: RocketIcon,
           },
           {
             label: 'surprise pacman',
             value: 'pacman',
-            Icon: RadarIcon,
+            icon: RadarIcon,
           },
           {
             label: `who's that pokemon?`,
             value: 'what',
-            Icon: ResponsiveIcon,
+            icon: ResponsiveIcon,
           },
         ]}
       />
     </FormGroup>
+    <Background p={16} bg="navy">
+      <FormGroup label="i am fancy">
+        <SelectDropdown
+          size="small"
+          options={[
+            {
+              label: 'ohai',
+              value: 'ohai',
+              icon: RocketIcon,
+            },
+            {
+              label: 'surprise pacman',
+              value: 'pacman',
+              icon: RadarIcon,
+            },
+            {
+              label: `who's that pokemon?`,
+              value: 'what',
+              icon: ResponsiveIcon,
+            },
+          ]}
+        />
+      </FormGroup>
+    </Background>
   </Box>
 );
 ```
