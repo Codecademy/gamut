@@ -224,7 +224,7 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
             <Anchor
               href={resource.href}
               onClick={(event) =>
-                onClick({ event, target: resource.footerTrackingTarget })
+                onClick({ event, target: resource.trackingTarget })
               }
               variant="interface"
             >
