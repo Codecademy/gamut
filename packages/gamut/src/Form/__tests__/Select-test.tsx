@@ -61,13 +61,12 @@ describe('Select', () => {
     expect(getFirstOption.text()).toBe('red');
   });
 
-  it.only('sets the key of option tags using the form of `${id}-${value}` when the prop id is passed and options is an object', () => {
+  it('sets the key of option tags using the form of `${id}-${value}` when the prop id is passed and options is an object', () => {
     const { wrapper } = renderWrapper({ options: selectOptionsObject });
 
     const keyWithId = `${defaultProps.id}-redKey`;
 
     const getByTestId = wrapper.find(`[data-testid="${keyWithId}"]`);
-    console.log(keyWithId);
     expect(getByTestId.exists()).toBe(true);
   });
 });
