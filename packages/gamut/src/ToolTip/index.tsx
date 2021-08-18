@@ -217,7 +217,6 @@ export const ToolTip: React.FC<ToolTipProps> = ({
   return (
     <TooltipWrapper className={containerClassName}>
       <TargetContainer
-        data-testid="tooltip-target-container"
         aria-labelledby={id}
         role="button"
         onKeyDown={(event) => {
