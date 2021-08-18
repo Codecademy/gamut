@@ -2,8 +2,13 @@ import { Anchor, Box, BoxProps, GridBox } from '@codecademy/gamut';
 import styled from '@emotion/styled';
 import React from 'react';
 
+import { resourcesList } from '../../lib/resourcesList';
 import { FooterHeading } from '../FooterHeading';
-import { FooterLinkItem, FooterLinkItems } from '../FooterLinks';
+import {
+  FooterLinkItem,
+  FooterLinkItems,
+  FooterLinkItemWithAnchor,
+} from '../FooterLinks';
 import { GlobalFooterClickHandler } from '../types';
 import downloadOnTheAppStore from './assets/download-on-the-app-store.svg';
 import getItOnGooglePlay from './assets/get-it-on-google-play.png';
@@ -218,33 +223,18 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
     <Box>
       <FooterHeading>Resources</FooterHeading>
       <FooterLinkItems>
-        <FooterLinkItem>
-          <Anchor
-            href="https://codecademy.com/resources/blog/"
-            onClick={(event) => onClick({ event, target: 'blog' })}
+        {resourcesList.map(({ id, trackingTarget, href, text, newTab }) => (
+          <FooterLinkItemWithAnchor
+            key={id}
+            footerOnClick={onClick}
+            trackingTarget={trackingTarget}
+            href={href}
             variant="interface"
+            target={newTab ? '_blank' : ''}
           >
-            Blog
-          </Anchor>
-        </FooterLinkItem>
-        <FooterLinkItem>
-          <Anchor
-            href="/resources/cheatsheets/all"
-            onClick={(event) => onClick({ event, target: 'cheatsheets_home' })}
-            variant="interface"
-          >
-            Cheatsheets
-          </Anchor>
-        </FooterLinkItem>
-        <FooterLinkItem>
-          <Anchor
-            href="/articles"
-            onClick={(event) => onClick({ event, target: 'articles' })}
-            variant="interface"
-          >
-            Articles
-          </Anchor>
-        </FooterLinkItem>
+            {text}
+          </FooterLinkItemWithAnchor>
+        ))}
       </FooterLinkItems>
     </Box>
   );
