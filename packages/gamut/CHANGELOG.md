@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [36.4.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@36.4.4...@codecademy/gamut@36.4.5) (2021-08-18)
+
+
+### Bug Fixes
+
+* add role to ToolTip for axe ([7c9de8a](https://github.com/Codecademy/client-modules/commit/7c9de8a105b2e01cf01b5cbebf07e82ce1b7c4c2))
+
+
+
 ### [36.4.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@36.4.3...@codecademy/gamut@36.4.4) (2021-08-16)
 
 **Note:** Version bump only for package @codecademy/gamut
