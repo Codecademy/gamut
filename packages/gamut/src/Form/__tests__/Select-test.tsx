@@ -25,7 +25,7 @@ describe('Select', () => {
     expect(wrapper.find('SelectBase').props().id).toBe(defaultProps.id);
   });
 
-  it('renders the same number of option as options', () => {
+  it('renders the same number of options as options', () => {
     const { wrapper } = renderWrapper();
 
     expect(wrapper.find('SelectBase').props().children).toHaveLength(
@@ -33,7 +33,7 @@ describe('Select', () => {
     );
   });
 
-  it('sets the key of option tags using the form of `${id}-${value} when the prop id is passed`', () => {
+  it('sets the key of option tags using the form of `${id}-${value}` when the prop id is passed', () => {
     const { wrapper } = renderWrapper();
 
     const keyWithId = `${defaultProps.id}-${selectOptions[0]}`;
@@ -44,13 +44,11 @@ describe('Select', () => {
   });
 
   it('renders options when options is an object', () => {
-    const { wrapper } = renderWrapper();
+    const { wrapper } = renderWrapper({ options: selectOptionsObject });
 
-    const keyWithId = `${defaultProps.id}-${selectOptions[0]}`;
-
-    const getByTestId = wrapper.find(`option[data-testid="${keyWithId}"]`);
-
-    expect(getByTestId.exists()).toBe(true);
+    expect(wrapper.find('SelectBase').props().children).toHaveLength(
+      Object.keys(selectOptionsObject).length
+    );
   });
 
   it('renders options as an object with the correct label + value', () => {
@@ -61,5 +59,15 @@ describe('Select', () => {
 
     expect(getByValue.exists()).toBe(true);
     expect(getFirstOption.text()).toBe('red');
+  });
+
+  it.only('sets the key of option tags using the form of `${id}-${value}` when the prop id is passed and options is an object', () => {
+    const { wrapper } = renderWrapper({ options: selectOptionsObject });
+
+    const keyWithId = `${defaultProps.id}-redKey`;
+
+    const getByTestId = wrapper.find(`[data-testid="${keyWithId}"]`);
+    console.log(keyWithId);
+    expect(getByTestId.exists()).toBe(true);
   });
 });

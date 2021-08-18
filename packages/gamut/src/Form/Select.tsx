@@ -96,6 +96,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectWrapperProps>(
     };
 
     const selectOptions = useMemo(() => {
+      console.log('memoing', options);
       return parseSelectOptions({ options, id });
     }, [options, id]);
 
