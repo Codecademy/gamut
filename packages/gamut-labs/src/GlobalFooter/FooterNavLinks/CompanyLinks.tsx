@@ -2,6 +2,7 @@ import { Anchor, Box, BoxProps, GridBox } from '@codecademy/gamut';
 import styled from '@emotion/styled';
 import React from 'react';
 
+import { resourcesList } from '../../lib/resourcesList';
 import { FooterHeading } from '../FooterHeading';
 import { FooterLinkItem, FooterLinkItems } from '../FooterLinks';
 import { GlobalFooterClickHandler } from '../types';
@@ -218,33 +219,19 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
     <Box>
       <FooterHeading>Resources</FooterHeading>
       <FooterLinkItems>
-        <FooterLinkItem>
-          <Anchor
-            href="https://codecademy.com/resources/blog/"
-            onClick={(event) => onClick({ event, target: 'blog' })}
-            variant="interface"
-          >
-            Blog
-          </Anchor>
-        </FooterLinkItem>
-        <FooterLinkItem>
-          <Anchor
-            href="/resources/cheatsheets/all"
-            onClick={(event) => onClick({ event, target: 'cheatsheets_home' })}
-            variant="interface"
-          >
-            Cheatsheets
-          </Anchor>
-        </FooterLinkItem>
-        <FooterLinkItem>
-          <Anchor
-            href="/articles"
-            onClick={(event) => onClick({ event, target: 'articles' })}
-            variant="interface"
-          >
-            Articles
-          </Anchor>
-        </FooterLinkItem>
+        {resourcesList.map((resource) => (
+          <FooterLinkItem>
+            <Anchor
+              href={resource.href}
+              onClick={(event) =>
+                onClick({ event, target: resource.footerTrackingTarget })
+              }
+              variant="interface"
+            >
+              {resource.text}
+            </Anchor>
+          </FooterLinkItem>
+        ))}
       </FooterLinkItems>
     </Box>
   );
