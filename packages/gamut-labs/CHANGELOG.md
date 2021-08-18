@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [19.23.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.22.2...@codecademy/gamut-labs@19.23.0) (2021-08-18)
+
+
+### Features
+
+* **footer:** add link to docs resources footer and header ([7ce7205](https://github.com/Codecademy/client-modules/commit/7ce7205e9e0c2c41c24e2f14470687ace17b2f14))
+
+
+
 ### [19.22.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.22.1...@codecademy/gamut-labs@19.22.2) (2021-08-17)
 
 
