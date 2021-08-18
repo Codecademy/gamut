@@ -1,10 +1,15 @@
 import { Anchor, Box, BoxProps, GridBox } from '@codecademy/gamut';
+import { Target } from '@codecademy/gamut-illustrations';
 import styled from '@emotion/styled';
 import React from 'react';
 
 import { resourcesList } from '../../lib/resourcesList';
 import { FooterHeading } from '../FooterHeading';
-import { FooterLinkItem, FooterLinkItems } from '../FooterLinks';
+import {
+  FooterLinkItem,
+  FooterLinkItems,
+  FooterLinkItemWithAnchor,
+} from '../FooterLinks';
 import { GlobalFooterClickHandler } from '../types';
 import downloadOnTheAppStore from './assets/download-on-the-app-store.svg';
 import getItOnGooglePlay from './assets/get-it-on-google-play.png';
@@ -220,17 +225,16 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
       <FooterHeading>Resources</FooterHeading>
       <FooterLinkItems>
         {resourcesList.map((resource) => (
-          <FooterLinkItem>
-            <Anchor
-              href={resource.href}
-              onClick={(event) =>
-                onClick({ event, target: resource.trackingTarget })
-              }
-              variant="interface"
-            >
-              {resource.text}
-            </Anchor>
-          </FooterLinkItem>
+          <FooterLinkItemWithAnchor
+            key={resource.id}
+            footerOnClick={onClick}
+            trackingTarget={resource.trackingTarget}
+            href={resource.href}
+            variant="interface"
+            target={resource.newTab ? 'blank' : ''}
+          >
+            {resource.text}
+          </FooterLinkItemWithAnchor>
         ))}
       </FooterLinkItems>
     </Box>

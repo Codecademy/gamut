@@ -1,6 +1,9 @@
-import { Box } from '@codecademy/gamut';
+import { Anchor, Box } from '@codecademy/gamut';
 import { theme } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
+import React, { ComponentProps, useCallback } from 'react';
+
+import { GlobalFooterClickHandler } from './types';
 
 export const FooterLinkItems = styled(Box)`
   list-style-type: none;
@@ -25,3 +28,23 @@ export const FooterLinkItem = styled.li`
     margin: 0.15rem 0;
   }
 `;
+
+export const FooterLinkItemWithAnchor: React.FC<
+  ComponentProps<typeof Anchor> & {
+    trackingTarget: string;
+    footerOnClick: GlobalFooterClickHandler;
+  }
+> = ({ trackingTarget, footerOnClick, ...anchorProps }) => {
+  const anchorOnClick = useCallback(
+    (event) => {
+      footerOnClick({ event, target: trackingTarget });
+    },
+    [footerOnClick, trackingTarget]
+  );
+
+  return (
+    <FooterLinkItem>
+      <Anchor {...anchorProps} onClick={anchorOnClick} />
+    </FooterLinkItem>
+  );
+};
