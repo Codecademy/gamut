@@ -52,7 +52,7 @@ export const parseOptions = ({ options, id, size }: ParseOptionProps) => {
     });
   }
 
-  return parsedOptions;
+  return [...parsedOptions];
 };
 
 export const parseSelectOptions = (props: ParseOptionProps) => {
