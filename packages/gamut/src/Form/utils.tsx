@@ -33,15 +33,14 @@ const formatAsOptions = ({ label, value, key }: SelectOptionBase) => {
 };
 export const parseOptions = ({ options, id, size }: ParseOptionProps) => {
   const parsedOptions: Array<OptionTypeBase> = [];
-
+  console.log('everything is great!', options);
   if (Array.isArray(options)) {
     options.forEach((value: string | IconOption) => {
       if (typeof value === 'string') {
-        console.log('here');
+        console.log('here', value);
         const label = id ? `${id}-${value}` : value;
         parsedOptions.push({ label, value });
       } else if (value?.value) {
-        console.log('or here');
         const key = id ? `${id}-${value.value}` : value.value;
         parsedOptions.push({ ...value, key, size });
       }
