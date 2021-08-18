@@ -218,8 +218,8 @@ export const ToolTip: React.FC<ToolTipProps> = ({
     <TooltipWrapper className={containerClassName}>
       <TargetContainer
         data-testid="tooltip-target-container"
-        aria-describedby={id}
-        aria-label="info"
+        aria-labelledby={id}
+        role="complementary"
         onKeyDown={(event) => {
           if (event.key === 'Escape') {
             (event.target as HTMLElement).blur();
