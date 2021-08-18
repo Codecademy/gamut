@@ -223,16 +223,16 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
     <Box>
       <FooterHeading>Resources</FooterHeading>
       <FooterLinkItems>
-        {resourcesList.map((resource) => (
+        {resourcesList.map(({ id, trackingTarget, href, text, newTab }) => (
           <FooterLinkItemWithAnchor
-            key={resource.id}
+            key={id}
             footerOnClick={onClick}
-            trackingTarget={resource.trackingTarget}
-            href={resource.href}
+            trackingTarget={trackingTarget}
+            href={href}
             variant="interface"
-            target={resource.newTab ? 'blank' : ''}
+            target={newTab ? '_blank' : ''}
           >
-            {resource.text}
+            {text}
           </FooterLinkItemWithAnchor>
         ))}
       </FooterLinkItems>
