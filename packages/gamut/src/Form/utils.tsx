@@ -35,12 +35,12 @@ export const parseOptions = ({ options, id, size }: ParseOptionProps) => {
   const parsedOptions: Array<OptionTypeBase> = [];
   if (Array.isArray(options)) {
     options.forEach((value: string | IconOption) => {
-      if (typeof value === 'string') {
+      if (isObject(value)) {
+        const key = id ? `${id}-${value?.value}` : value?.value;
+        parsedOptions.push({ ...value, key, size });
+      } else {
         const label = id ? `${id}-${value}` : value;
         parsedOptions.push({ label, value });
-      } else {
-        const key = id ? `${id}-${value.value}` : value.value;
-        parsedOptions.push({ ...value, key, size });
       }
     });
   } else if (isObject(options)) {
