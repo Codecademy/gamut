@@ -5,3 +5,13 @@ export type MonacoFile = {
   content?: string;
   name?: string;
 };
+
+export type EditorInterfaceSettings = {
+  highContrast: boolean;
+  screenReader: boolean;
+  autoCloseTokens: boolean;
+  renderWhitespace: boolean;
+  editorFontSize: EditorFontSize;
+};
+
+export type EditorFontSize = 'reg' | 'lg' | 'xl';

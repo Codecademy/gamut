@@ -1,1 +1,1 @@
-export * from './MonacoEditor';
+export { createMonacoOptions } from './MonacoEditor/createMonacoOptions';
