@@ -37,9 +37,11 @@ export const parseOptions = ({ options, id, size }: ParseOptionProps) => {
   if (Array.isArray(options)) {
     options.forEach((value: string | IconOption) => {
       if (typeof value === 'string') {
+        console.log('here');
         const label = id ? `${id}-${value}` : value;
         parsedOptions.push({ label, value });
-      } else {
+      } else if (value?.value) {
+        console.log('or here');
         const key = id ? `${id}-${value.value}` : value.value;
         parsedOptions.push({ ...value, key, size });
       }
