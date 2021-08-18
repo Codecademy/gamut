@@ -1,5 +1,4 @@
 import { Anchor, Box, BoxProps, GridBox } from '@codecademy/gamut';
-import { Target } from '@codecademy/gamut-illustrations';
 import styled from '@emotion/styled';
 import React from 'react';
 
