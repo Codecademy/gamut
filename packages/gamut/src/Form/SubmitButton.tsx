@@ -5,18 +5,17 @@ import { Box, FlexBox } from '../Box';
 import { ButtonProps, FillButton } from '../Button';
 import { Spinner } from '../Spinner';
 
-type CheckLoading = (
-  formState: Pick<FormState<{}>, 'isValidating' | 'isSubmitting'>
-) => boolean;
-
-type CheckDisabled = (
-  formState: Pick<FormState<{}>, 'isValidating' | 'isSubmitting' | 'isValid'>
+export type FormStateCallback = (
+  formState: Pick<
+    FormState<{}>,
+    'isValidating' | 'isSubmitting' | 'isValid' | 'isDirty'
+  >
 ) => boolean;
 
 export interface SubmitButtonProps extends Omit<ButtonProps, 'as'> {
   as?: ComponentType<ButtonProps>;
-  loading?: CheckLoading | boolean;
-  disabled?: CheckDisabled | boolean;
+  loading?: FormStateCallback | boolean;
+  disabled?: FormStateCallback | boolean;
 }
 
 export const SubmitButton: React.FC<SubmitButtonProps> = ({
@@ -28,25 +27,21 @@ export const SubmitButton: React.FC<SubmitButtonProps> = ({
 }) => {
   const {
     formState,
-    formState: { isSubmitting, isValidating },
+    formState: { isSubmitting, isValidating, isDirty },
     control: { mode },
   } = useFormContext();
-  let isValid = true;
 
-  if (!mode.isOnSubmit) {
-    isValid = formState?.isValid === false ? formState?.isValid : true;
-  }
-
+  const isValid = formState?.isValid ?? true;
   const disableOnInvalid = mode?.isOnChange && !isValid;
 
   const isLoading =
     typeof loading === 'function'
-      ? loading({ isValidating, isSubmitting })
+      ? loading({ isValidating, isSubmitting, isValid, isDirty })
       : loading;
 
   const isDisabled =
     typeof disabled === 'function'
-      ? disabled({ isValidating, isSubmitting, isValid })
+      ? disabled({ isValidating, isSubmitting, isValid, isDirty })
       : disabled || disableOnInvalid;
 
   if (isLoading) {

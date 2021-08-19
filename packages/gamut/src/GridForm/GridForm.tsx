@@ -149,14 +149,7 @@ export function GridForm<Values extends FormValues>({
             })}
           </>
 
-          <GridFormButtons
-            cancel={cancel}
-            {...submit}
-            disabled={
-              (validation === 'onChange' && !formState.isValid) ||
-              submit.disabled
-            }
-          />
+          <GridFormButtons cancel={cancel} {...submit} />
           {children}
         </LayoutGrid>
       </Form>
