@@ -120,7 +120,7 @@ export const Testimonial: React.FC<TestimonialProps> = ({
       height="100%"
       mode={mode}
     >
-      <TestimonialContent data-testid="testimonial-content" variant={variant}>
+      <TestimonialContent variant={variant}>
         {!hidePhoto && imageUrl && (
           <TestimonialPicture
             data-testid="testimonial-photo"
