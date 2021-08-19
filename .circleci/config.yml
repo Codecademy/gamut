@@ -5,7 +5,7 @@ orbs:
 references:
   default_env: &default_env
     docker:
-      - image: circleci/node:12.16.0
+      - image: circleci/node:14.17.2
     working_directory: ~/repo
     environment:
       IGNORE_COMMIT_MESSAGE: 'chore(release): publish'
