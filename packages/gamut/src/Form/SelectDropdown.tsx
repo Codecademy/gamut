@@ -45,7 +45,7 @@ type SelectDropdownBaseProps = Omit<
 
 interface SelectDropdownProps
   extends SelectDropdownBaseProps,
-    Pick<NamedProps, 'onChange' | 'isSearchable'>,
+    Pick<NamedProps, 'onChange' | 'isSearchable' | 'onInputChange'>,
     Pick<SelectHTMLAttributes<HTMLSelectElement>, 'value' | 'disabled'> {
   inputProps?: Record<string, string | number | boolean>;
   name?: string;
