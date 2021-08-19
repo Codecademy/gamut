@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [36.4.6](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@36.4.5...@codecademy/gamut@36.4.6) (2021-08-19)
+
+
+### Bug Fixes
+
+* **ToolTip:** role button conditional on focusable prop ([d759960](https://github.com/Codecademy/client-modules/commit/d75996089f5928f99bceede8c3485827b58c0588))
+
+
+
 ### [36.4.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@36.4.4...@codecademy/gamut@36.4.5) (2021-08-18)
 
 
