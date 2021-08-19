@@ -59,7 +59,7 @@ describe('Testimonial', () => {
   describe('when  company is undefined', () => {
     it('does not render company formatting text', () => {
       const { view } = renderView();
-      expect(view.getAllByText('@', { exact: false }).length).toBeFalsy();
+      expect(view.queryAllByText('@', { exact: false }).length).toBeFalsy();
     });
   });
 

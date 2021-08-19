@@ -1,7 +1,7 @@
 import { Anchor, Box, FloatingCard, Text } from '@codecademy/gamut';
 import { modeColorProps, system } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
-import React, { ComponentProps } from 'react';
+import React, { ComponentProps, useMemo } from 'react';
 
 import darkQuotes from '../assets/navyQuotes.svg';
 
@@ -104,6 +104,13 @@ export const Testimonial: React.FC<TestimonialProps> = ({
 }) => {
   const isVerticleLayout = variant === 'vertical';
 
+  const bottomText: string = useMemo(() => {
+    if (company && location) return `@ ${company}, ${location}`;
+    if (!company && location) return `${location}`;
+    if (company && !location) return `@ ${company}`;
+    return '';
+  }, [company, location]);
+
   const renderTestimonial = () => (
     <TestimonialCard
       {...rest}
@@ -132,9 +139,11 @@ export const Testimonial: React.FC<TestimonialProps> = ({
           <Text variant="p-small" as="p" fontFamily="accent">
             {occupation}
           </Text>
-          <Text variant="p-small" as="p" fontFamily="accent">
-            {`@ ${company}${location ? `, ${location}` : ''}`}
-          </Text>
+          {!!bottomText && (
+            <Text variant="p-small" as="p" fontFamily="accent">
+              {bottomText}
+            </Text>
+          )}
         </Box>
         <QuoteArt src={darkQuotes} />
         <Text
