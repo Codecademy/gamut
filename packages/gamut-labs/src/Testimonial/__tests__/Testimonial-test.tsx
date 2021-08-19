@@ -55,4 +55,22 @@ describe('Testimonial', () => {
       );
     });
   });
+
+  describe('when  company is undefined', () => {
+    it('does not render company formatting text', () => {
+      const { view } = renderView();
+      expect(view.getAllByText('@', { exact: false }).length).toBeFalsy();
+    });
+  });
+
+  describe('when company is defined', () => {
+    it('renders formatted company text', () => {
+      const company = 'Satriolies';
+      const { view } = renderView({ company });
+
+      expect(view.getAllByText(`@ ${company}`, { exact: false }).length).toBe(
+        1
+      );
+    });
+  });
 });
