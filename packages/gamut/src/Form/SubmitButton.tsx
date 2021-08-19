@@ -1,6 +1,7 @@
 import React, { ComponentType } from 'react';
 import { FormState, useFormContext } from 'react-hook-form';
 
+import { Box, FlexBox } from '../Box';
 import { ButtonProps, FillButton } from '../Button';
 import { Spinner } from '../Spinner';
 
@@ -26,9 +27,11 @@ export const SubmitButton: React.FC<SubmitButtonProps> = ({
   ...rest
 }) => {
   const {
-    formState: { isSubmitting, isValidating, isValid },
+    formState: { isSubmitting, isValidating, ...state },
     control: { mode },
   } = useFormContext();
+
+  const isValid = state?.isValid;
 
   const disableOnInvalid = mode?.isOnChange && !isValid;
 
@@ -37,8 +40,6 @@ export const SubmitButton: React.FC<SubmitButtonProps> = ({
       ? loading({ isValidating, isSubmitting })
       : loading;
 
-  const content = isLoading ? <Spinner size={16} /> : children;
-
   const isDisabled =
     typeof disabled === 'function'
       ? disabled({ isValidating, isSubmitting, isValid })
@@ -46,7 +47,14 @@ export const SubmitButton: React.FC<SubmitButtonProps> = ({
 
   return (
     <Button type="submit" disabled={isDisabled} {...rest}>
-      {content}
+      <Box opacity={isLoading ? 0 : 1} aria-hidden={isLoading}>
+        {children}
+      </Box>
+      {isLoading && (
+        <FlexBox position="absolute" inset={0} center aria-label="Loading...">
+          <Spinner size={16} />
+        </FlexBox>
+      )}
     </Button>
   );
 };
