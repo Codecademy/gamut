@@ -49,21 +49,30 @@ export const SubmitButton: React.FC<SubmitButtonProps> = ({
       ? disabled({ isValidating, isSubmitting, isValid })
       : disabled || disableOnInvalid;
 
+  if (isLoading) {
+    return (
+      <Button
+        type="submit"
+        disabled={isDisabled || isLoading}
+        {...rest}
+        aria-label={isLoading ? 'Loading' : undefined}
+      >
+        {/** This maintains button dimensions while hiding it from screen readers and the page */}
+        <Box as="span" opacity={isLoading ? 0 : 1} aria-hidden={isLoading}>
+          {children}
+        </Box>
+        {isLoading && (
+          <FlexBox position="absolute" inset={0} center>
+            <Spinner size={16} />
+          </FlexBox>
+        )}
+      </Button>
+    );
+  }
+
   return (
-    <Button
-      type="submit"
-      disabled={isDisabled || isLoading}
-      {...rest}
-      aria-label={isLoading ? 'Loading' : undefined}
-    >
-      <Box opacity={isLoading ? 0 : 1} aria-hidden={isLoading}>
-        {children}
-      </Box>
-      {isLoading && (
-        <FlexBox position="absolute" inset={0} center>
-          <Spinner size={16} />
-        </FlexBox>
-      )}
+    <Button type="submit" disabled={isDisabled || isLoading} {...rest}>
+      {children}
     </Button>
   );
 };
