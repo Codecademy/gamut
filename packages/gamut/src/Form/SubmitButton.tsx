@@ -22,8 +22,8 @@ export interface SubmitButtonProps extends Omit<ButtonProps, 'as'> {
 export const SubmitButton: React.FC<SubmitButtonProps> = ({
   as: Button = FillButton,
   children,
-  disabled,
-  loading,
+  disabled = false,
+  loading = false,
   ...rest
 }) => {
   const {
@@ -34,7 +34,7 @@ export const SubmitButton: React.FC<SubmitButtonProps> = ({
   let isValid = true;
 
   if (!mode.isOnSubmit) {
-    isValid = formState?.isValid;
+    isValid = formState?.isValid === false ? formState?.isValid : true;
   }
 
   const disableOnInvalid = mode?.isOnChange && !isValid;
@@ -52,13 +52,13 @@ export const SubmitButton: React.FC<SubmitButtonProps> = ({
   if (isLoading) {
     return (
       <Button
-        type="submit"
-        disabled={isDisabled || isLoading}
         {...rest}
+        type="submit"
+        disabled
         aria-label={isLoading ? 'Loading' : undefined}
       >
         {/** This maintains button dimensions while hiding it from screen readers and the page */}
-        <Box as="span" opacity={isLoading ? 0 : 1} aria-hidden={isLoading}>
+        <Box as="span" opacity={0} aria-hidden>
           {children}
         </Box>
         {isLoading && (
@@ -71,7 +71,7 @@ export const SubmitButton: React.FC<SubmitButtonProps> = ({
   }
 
   return (
-    <Button type="submit" disabled={isDisabled || isLoading} {...rest}>
+    <Button {...rest} type="submit" disabled={isDisabled}>
       {children}
     </Button>
   );
