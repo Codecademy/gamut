@@ -27,11 +27,15 @@ export const SubmitButton: React.FC<SubmitButtonProps> = ({
   ...rest
 }) => {
   const {
-    formState: { isSubmitting, isValidating, ...state },
+    formState,
+    formState: { isSubmitting, isValidating },
     control: { mode },
   } = useFormContext();
+  let isValid = true;
 
-  const isValid = state?.isValid;
+  if (!mode.isOnSubmit) {
+    isValid = formState?.isValid;
+  }
 
   const disableOnInvalid = mode?.isOnChange && !isValid;
 
@@ -46,12 +50,17 @@ export const SubmitButton: React.FC<SubmitButtonProps> = ({
       : disabled || disableOnInvalid;
 
   return (
-    <Button type="submit" disabled={isDisabled} {...rest}>
+    <Button
+      type="submit"
+      disabled={isDisabled || isLoading}
+      {...rest}
+      aria-label={isLoading ? 'Loading' : undefined}
+    >
       <Box opacity={isLoading ? 0 : 1} aria-hidden={isLoading}>
         {children}
       </Box>
       {isLoading && (
-        <FlexBox position="absolute" inset={0} center aria-label="Loading...">
+        <FlexBox position="absolute" inset={0} center>
           <Spinner size={16} />
         </FlexBox>
       )}
