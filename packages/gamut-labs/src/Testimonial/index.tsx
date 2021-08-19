@@ -67,19 +67,19 @@ export type TestimonialProps = ComponentProps<typeof TestimonialCard> &
     /**
      * associated occupation of the person.
      */
-    occupation?: string;
+    occupation?: string | null;
     /**
      * Associated workplace or institution
      */
-    company?: string;
+    company?: string | null;
     /**
      * Portrait image src
      */
-    imageUrl?: string;
+    imageUrl?: string | null;
     /**
      * setting this href will wrap the testimonial card with an anchor tag.
      */
-    href?: string;
+    href?: string | null;
     /**
      * used to conditonally hide the portrait photo
      */
