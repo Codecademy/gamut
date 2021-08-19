@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [36.4.7](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@36.4.6...@codecademy/gamut@36.4.7) (2021-08-19)
+
+
+### Bug Fixes
+
+* **ToolTip:** fix ternary for focusable ([ca5af1f](https://github.com/Codecademy/client-modules/commit/ca5af1f3ac0bf468685daa7ea16f128ea6912bea))
+
+
+
 ### [36.4.6](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@36.4.5...@codecademy/gamut@36.4.6) (2021-08-19)
 
 
