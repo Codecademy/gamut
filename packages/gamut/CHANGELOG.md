@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [36.6.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@36.5.0...@codecademy/gamut@36.6.0) (2021-08-20)
+
+
+### Features
+
+* **SelectDropdown:** onInputChange ([cfdb56c](https://github.com/Codecademy/client-modules/commit/cfdb56c71a9f1eb49436eee7c8b020fa4763c483))
+
+
+
 ## [36.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@36.4.7...@codecademy/gamut@36.5.0) (2021-08-20)
 
 
