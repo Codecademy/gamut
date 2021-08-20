@@ -3,7 +3,6 @@ import React from 'react';
 
 import { FlexBox } from '..';
 import { ContentContainer } from '../ContentContainer';
-import styles from './styles/index.module.scss';
 
 export type AppBarProps = {
   className?: string;
@@ -18,15 +17,18 @@ export const AppBar: React.FC<AppBarProps> = ({
   children,
   className,
 }) => {
-  const classes = cx(styles.wrapper, className);
-
   return (
-    <div className={classes}>
+    <FlexBox
+      className={className}
+      alignItems="center"
+      height="100%"
+      zIndex={14}
+    >
       <ContentContainer size={wide ? 'wide' : 'medium'}>
         <FlexBox alignItems="center" height="100%">
           {children}
         </FlexBox>
       </ContentContainer>
-    </div>
+    </FlexBox>
   );
 };

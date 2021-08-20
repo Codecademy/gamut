@@ -1,29 +1,28 @@
-import cx from 'classnames';
-import React from 'react';
+import { variant } from '@codecademy/gamut-styles';
+import styled from '@emotion/styled';
 
-import styles from './styles/index.module.scss';
-
-export type AppBarSectionProps = {
-  /**
-   * Position of the the section within the AppBar.
-   */
-  position?: 'left' | 'center' | 'right';
-  className?: string;
-};
-
-export const AppBarSection: React.FC<AppBarSectionProps> = ({
-  position,
-  className,
-  children,
-}) => {
-  const classes = cx(
-    styles.section,
-    {
-      [styles.sectionRight]: position === 'right',
-      [styles.sectionLeft]: position === 'left',
-      [styles.sectionCenter]: position === 'center',
+export const AppBarSection = styled.div(
+  variant({
+    prop: 'position',
+    base: {
+      display: 'flex',
+      alignItems: 'center',
+      height: '100%',
+      zIndex: 1,
     },
-    className
-  );
-  return <div className={classes}>{children}</div>;
-};
+    variants: {
+      left: {
+        flex: 1,
+      },
+      center: {
+        flex: 2,
+        justifyContent: 'center',
+        textAlign: 'center',
+      },
+      right: {
+        flex: 1,
+        justifyContent: 'flex-end',
+      },
+    },
+  })
+);
