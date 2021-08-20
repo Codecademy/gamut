@@ -6,6 +6,7 @@ import {
   LayoutGrid,
   Markdown,
 } from '@codecademy/gamut/src';
+import { Background } from '@codecademy/gamut-styles';
 import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { action } from '@storybook/addon-actions';
@@ -1102,6 +1103,55 @@ If you need to checkboxes to fit into a smaller space, you can use our our `tigh
           position: 'right',
         }}
       />
+    )}
+  </Story>
+</Canvas>
+
+## Loading
+
+<Canvas>
+  <Story name="Loading States">
+    {(args) => (
+      <>
+        <Background bg="beige" p={32}>
+          <GridForm
+            fields={[
+              {
+                label: 'Email',
+                placeholder: 'Your email',
+                name: 'placeholder',
+                type: 'email',
+              },
+            ]}
+            onSubmit={async (values) => {
+              action('Form Submitted')(values);
+            }}
+            submit={{
+              loading: true,
+              contents: 'Submit Me!?',
+            }}
+          />
+        </Background>
+        <Background bg="navy" p={32}>
+          <GridForm
+            fields={[
+              {
+                label: 'Email',
+                placeholder: 'Your email',
+                name: 'placeholder-2',
+                type: 'email',
+              },
+            ]}
+            onSubmit={async (values) => {
+              action('Form Submitted')(values);
+            }}
+            submit={{
+              disabled: true,
+              contents: 'Submit Me!?',
+            }}
+          />
+        </Background>
+      </>
     )}
   </Story>
 </Canvas>

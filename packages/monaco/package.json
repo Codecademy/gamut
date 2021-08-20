@@ -14,8 +14,8 @@
     "react-dom": ">=16.8.1"
   },
   "dependencies": {
-    "@codecademy/gamut": "35.2.0",
-    "@codecademy/gamut-styles": "11.6.2",
+    "@codecademy/gamut": "^36.4.4",
+    "@codecademy/gamut-styles": "^11.9.1",
     "@emotion/react": "^11.4.0",
     "@emotion/styled": "^11.3.0",
     "monaco-editor": "0.20.0",
