@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [43.9.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@43.8.1...@codecademy/styleguide@43.9.0) (2021-08-20)
+
+
+### Features
+
+* **SubmitButton:** The mission for submission GM-315 ([0df7859](https://github.com/Codecademy/client-modules/commit/0df7859fb84d6e4f01437b1202a12b0761709d0a))
+
+
+
 ### [43.8.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@43.8.0...@codecademy/styleguide@43.8.1) (2021-08-20)
 
 **Note:** Version bump only for package @codecademy/styleguide

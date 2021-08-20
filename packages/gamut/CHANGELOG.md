@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [36.7.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@36.6.0...@codecademy/gamut@36.7.0) (2021-08-20)
+
+
+### Features
+
+* **SubmitButton:** The mission for submission GM-315 ([0df7859](https://github.com/Codecademy/client-modules/commit/0df7859fb84d6e4f01437b1202a12b0761709d0a))
+
+
+
 ## [36.6.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@36.5.0...@codecademy/gamut@36.6.0) (2021-08-20)
 
 
