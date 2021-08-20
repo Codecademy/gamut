@@ -5,11 +5,8 @@ import { Box, FlexBox } from '../Box';
 import { ButtonProps, FillButton } from '../Button';
 import { Spinner } from '../Spinner';
 
-export type FormStateCallback = (
-  formState: Pick<
-    FormState<{}>,
-    'isValidating' | 'isSubmitting' | 'isValid' | 'isDirty'
-  >
+export type FormStateCallback<Values = {}> = (
+  formState: FormState<Values>
 ) => boolean;
 
 export interface SubmitButtonProps extends Omit<ButtonProps, 'as'> {
@@ -25,24 +22,13 @@ export const SubmitButton: React.FC<SubmitButtonProps> = ({
   loading = false,
   ...rest
 }) => {
-  const {
-    formState,
-    formState: { isSubmitting, isValidating, isDirty },
-    control: { mode },
-  } = useFormContext();
-
-  const isValid = formState?.isValid ?? true;
-  const disableOnInvalid = mode?.isOnChange && !isValid;
+  const { formState } = useFormContext();
 
   const isLoading =
-    typeof loading === 'function'
-      ? loading({ isValidating, isSubmitting, isValid, isDirty })
-      : loading;
+    typeof loading === 'function' ? loading(formState) : loading;
 
   const isDisabled =
-    typeof disabled === 'function'
-      ? disabled({ isValidating, isSubmitting, isValid, isDirty })
-      : disabled || disableOnInvalid;
+    typeof disabled === 'function' ? disabled(formState) : disabled;
 
   if (isLoading) {
     return (
