@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [36.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@36.4.7...@codecademy/gamut@36.5.0) (2021-08-20)
+
+
+### Features
+
+* **SelectDropdown:** icons in options ([7d9f898](https://github.com/Codecademy/client-modules/commit/7d9f898e82378c071f85c53fc1c1a49337258786))
+
+
+
 ### [36.4.7](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@36.4.6...@codecademy/gamut@36.4.7) (2021-08-19)
 
 
