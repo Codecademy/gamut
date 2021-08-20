@@ -23,4 +23,20 @@ describe('ToolTip', () => {
 
     expect(container).toHaveAttribute('tabIndex', '0');
   });
+
+  it('does not give its container a role=button when it is not focusable', () => {
+    const { view } = renderView({ children, id: 'test-id' });
+
+    const container = view.getByLabelText(children);
+
+    expect(container).not.toHaveAttribute('role');
+  });
+
+  it('does give its container a role=button when it is focusable', () => {
+    const { view } = renderView({ children, focusable: true, id: 'test-id' });
+
+    const container = view.getByRole('button');
+
+    expect(container).toBeDefined();
+  });
 });
