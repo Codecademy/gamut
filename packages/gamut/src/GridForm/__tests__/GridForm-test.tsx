@@ -185,6 +185,11 @@ describe('GridForm', () => {
       const { view } = renderView({
         fields,
         validation: 'onChange',
+        submit: {
+          contents: <>Submit</>,
+          size: 6,
+          disabled: ({ isValid }) => !isValid,
+        },
       });
 
       const textField = view.getByRole('textbox', { name: 'Stub Text' });
