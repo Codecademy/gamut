@@ -56,7 +56,7 @@ There are 2 types of shadow directions. By default, FloatingCards is set with a 
   <Story name="FloatingCard Shadow">
     {(args) => (
       <GridBox gridAutoFlow="column" columnGap={24} py={16}>
-        {['bottom-left', 'bottom-right'].map((shadow) => (
+        {['bottomLeft', 'bottomRight'].map((shadow) => (
           <FloatingCard shadow={shadow}>{shadow}</FloatingCard>
         ))}
       </GridBox>
@@ -74,7 +74,7 @@ import { DotDense } from '@codecademy/gamut-patterns';
 
 export const MyComponent: React.FC = () => {
   return (
-    <FloatingCard shadow="bottom-right" pattern={DotDense}>
+    <FloatingCard shadow="bottomRight" pattern={DotDense}>
       We all float down here.
     </FloatingCard>
   );

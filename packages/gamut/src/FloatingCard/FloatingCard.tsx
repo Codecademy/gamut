@@ -84,7 +84,7 @@ const CardBody = styled('div', styledOptions)<
 export type FloatingCardProps = {
   className?: string;
   pattern?: React.ComponentType<PatternProps>;
-  shadow?: 'bottom-left' | 'bottom-right';
+  shadow?: 'bottomLeft' | 'bottomRight';
 } & ComponentProps<typeof CardBody>;
 
 export const FloatingCard = forwardRef<HTMLDivElement, FloatingCardProps>(
@@ -103,8 +103,8 @@ export const FloatingCard = forwardRef<HTMLDivElement, FloatingCardProps>(
         dimensions={1}
         position="absolute"
         top="0.5rem"
-        left={shadow === 'bottom-left' ? '-0.5rem' : undefined}
-        right={shadow === 'bottom-right' ? '-0.5rem' : undefined}
+        left={shadow === 'bottomLeft' ? '-0.5rem' : undefined}
+        right={shadow === 'bottomRight' ? '-0.5rem' : undefined}
       />
       <CardBody className={className} {...rest} ref={ref}>
         {children}
