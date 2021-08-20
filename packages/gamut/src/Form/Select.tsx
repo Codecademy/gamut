@@ -22,13 +22,15 @@ import {
 } from './styles';
 import { parseSelectOptions } from './utils';
 
+export type SelectOptions = string[] | Record<string, number | string>;
+
 export type SelectComponentProps = Pick<
   SelectHTMLAttributes<HTMLSelectElement>,
   'disabled' | 'id'
 > & {
   error?: boolean;
   htmlFor?: string;
-  options?: string[] | Record<string, number | string>;
+  options?: SelectOptions;
 };
 
 export type SelectWrapperProps = SelectComponentProps &
