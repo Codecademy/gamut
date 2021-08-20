@@ -64,8 +64,8 @@ export const GlobalPage: React.FC<GlobalPageProps> = ({
 }) => {
   return (
     <GlobalPageWrapper bg={backgroundColor} minHeight="100vh">
-      {banner && <Banner {...banner} />}
       <SkipToContent contentId={skipToContentId || defaultSkipToContentId} />
+      {banner && <Banner {...banner} />}
       <GlobalHeader {...header} />
       {!skipToContentId && <SkipToContentTarget id={defaultSkipToContentId} />}
       <AppWrapper as={contentAs}>{children}</AppWrapper>
