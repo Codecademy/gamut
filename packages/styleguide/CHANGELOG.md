@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [43.8.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@43.7.9...@codecademy/styleguide@43.8.0) (2021-08-20)
+
+
+### Features
+
+* **SelectDropdown:** icons in options ([7d9f898](https://github.com/Codecademy/client-modules/commit/7d9f898e82378c071f85c53fc1c1a49337258786))
+
+
+
 ### [43.7.9](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@43.7.8...@codecademy/styleguide@43.7.9) (2021-08-19)
 
 **Note:** Version bump only for package @codecademy/styleguide
