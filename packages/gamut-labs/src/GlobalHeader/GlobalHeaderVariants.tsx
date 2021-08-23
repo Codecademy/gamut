@@ -28,14 +28,15 @@ import { User } from './types';
 
 const anonHeaderItems = (
   renderLogin: boolean,
-  renderSignUp: boolean
+  renderSignUp: boolean,
+  hidePricing?: boolean
 ): FormattedAppHeaderItems => {
   const leftItems: AppHeaderItem[] = [
     logo,
     courseCatalog,
     resourcesDropdown,
     communityDropdown,
-    pricingDropdown,
+    ...(hidePricing ? [] : [pricingDropdown]),
     forBusiness,
   ];
 
@@ -51,7 +52,8 @@ const anonHeaderItems = (
 
 const anonMobileHeaderItems = (
   renderLogin: boolean,
-  renderSignUp: boolean
+  renderSignUp: boolean,
+  hidePricing?: boolean
 ): FormattedMobileAppHeaderItems => {
   const leftItems: AppHeaderItem[] = [logo];
 
@@ -63,7 +65,7 @@ const anonMobileHeaderItems = (
     courseCatalog,
     resourcesDropdown,
     communityDropdown,
-    pricingDropdown,
+    ...(hidePricing ? [] : [pricingDropdown]),
     forBusiness,
     signUp,
     login,
@@ -76,40 +78,57 @@ const anonMobileHeaderItems = (
   };
 };
 
-export const anonDefaultHeaderItems = (): FormattedAppHeaderItems => {
-  return anonHeaderItems(true, true);
+export const anonDefaultHeaderItems = (
+  hidePricing?: boolean
+): FormattedAppHeaderItems => {
+  return anonHeaderItems(true, true, hidePricing);
 };
 
-export const anonDefaultMobileHeaderItems = (): FormattedMobileAppHeaderItems => {
-  return anonMobileHeaderItems(true, true);
+export const anonDefaultMobileHeaderItems = (
+  hidePricing?: boolean
+): FormattedMobileAppHeaderItems => {
+  return anonMobileHeaderItems(true, true, hidePricing);
 };
 
-export const anonLandingHeaderItems = (): FormattedAppHeaderItems => {
-  return anonHeaderItems(true, false);
+export const anonLandingHeaderItems = (
+  hidePricing?: boolean
+): FormattedAppHeaderItems => {
+  return anonHeaderItems(true, false, hidePricing);
 };
 
-export const anonLandingMobileHeaderItems = (): FormattedMobileAppHeaderItems => {
-  return anonMobileHeaderItems(true, false);
+export const anonLandingMobileHeaderItems = (
+  hidePricing?: boolean
+): FormattedMobileAppHeaderItems => {
+  return anonMobileHeaderItems(true, false, hidePricing);
 };
 
-export const anonLoginHeaderItems = (): FormattedAppHeaderItems => {
-  return anonHeaderItems(false, true);
+export const anonLoginHeaderItems = (
+  hidePricing?: boolean
+): FormattedAppHeaderItems => {
+  return anonHeaderItems(false, true, hidePricing);
 };
 
-export const anonLoginMobileHeaderItems = (): FormattedMobileAppHeaderItems => {
-  return anonMobileHeaderItems(false, true);
+export const anonLoginMobileHeaderItems = (
+  hidePricing?: boolean
+): FormattedMobileAppHeaderItems => {
+  return anonMobileHeaderItems(false, true, hidePricing);
 };
 
-export const anonSignupHeaderItems = (): FormattedAppHeaderItems => {
-  return anonHeaderItems(true, false);
+export const anonSignupHeaderItems = (
+  hidePricing?: boolean
+): FormattedAppHeaderItems => {
+  return anonHeaderItems(true, false, hidePricing);
 };
 
-export const anonSignupMobileHeaderItems = (): FormattedMobileAppHeaderItems => {
-  return anonMobileHeaderItems(true, false);
+export const anonSignupMobileHeaderItems = (
+  hidePricing?: boolean
+): FormattedMobileAppHeaderItems => {
+  return anonMobileHeaderItems(true, false, hidePricing);
 };
 
 export const freeHeaderItems = (
   user: User,
+  hidePricing?: boolean,
   renderNotifications?: () => ReactNode,
   renderFavorites?: () => ReactNode
 ): FormattedAppHeaderItems => {
@@ -119,7 +138,7 @@ export const freeHeaderItems = (
     courseCatalog,
     resourcesDropdown,
     communityDropdown,
-    pricingDropdown,
+    ...(hidePricing ? [] : [pricingDropdown]),
     forBusiness,
   ];
 
@@ -142,6 +161,7 @@ export const freeHeaderItems = (
 
 export const freeMobileHeaderItems = (
   user: User,
+  hidePricing?: boolean,
   renderNotifications?: () => ReactNode
 ): FormattedMobileAppHeaderItems => {
   const leftItems: AppHeaderItem[] = [logo];
@@ -154,7 +174,7 @@ export const freeMobileHeaderItems = (
     courseCatalog,
     resourcesDropdown,
     communityDropdown,
-    pricingDropdown,
+    ...(hidePricing ? [] : [pricingDropdown]),
     forBusiness,
     freeProfile(user, true),
   ];

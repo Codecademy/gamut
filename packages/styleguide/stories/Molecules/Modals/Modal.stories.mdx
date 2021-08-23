@@ -1,0 +1,171 @@
+import {
+  Box,
+  FillButton,
+  FlexBox,
+  GridBox,
+  Modal,
+} from '@codecademy/gamut/src';
+import { ModalContainer } from '@codecademy/gamut/src/Modals/elements';
+import title from '@codecademy/macros/lib/title.macro';
+import { PropsTable } from '@codecademy/storybook-addon-variance';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+
+<Meta
+  title={title}
+  component={Modal}
+  parameters={{
+    subtitle: `Simple Modal portal to escape current DOM Context.`,
+    status: 'current',
+    source: 'gamut',
+    design: {
+      type: 'figma',
+      url:
+        'https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=2449%3A3770',
+    },
+  }}
+  args={{
+    title: 'Modal Modality',
+    size: 'small',
+    inline: true,
+    isOpen: true,
+    children: 'Waffles a la modal',
+  }}
+/>
+
+## Customizing Close Behavior
+
+### Creating a custom close button
+
+By default, the Modal will render a close button.
+
+You can disable the default close button with the `hideCloseButton` prop by setting it to false.
+
+You can then use the `isOpen` prop to create other controls that toggle the Modal on and off.
+
+<Canvas>
+  <Story
+    name="Without Close Default"
+    args={{ hideCloseButton: true }}
+    height="350px"
+  >
+    {(args) => <Modal {...args} />}
+  </Story>
+</Canvas>
+
+#### Alternative closing methods
+
+Other than creating buttons that can close the Modal, there are other ways a Modal can be closed by the user.
+
+1. Clicking the content outside of the Modal
+2. Clicking the escape key on their keyboard
+
+All of these methods default to true for accessibility reasons, and rely on setting the required `onRequestClose` prop and making sure it toggles the `isOpen` prop on the Modal.
+
+<Canvas>
+  <Story
+    name="Clicking Outside"
+    args={{
+      title: undefined,
+      showCloseButton: false,
+      children: (
+        <FlexBox center fit>
+          <FillButton>Better remember to put me in!</FillButton>
+        </FlexBox>
+      ),
+    }}
+    height="350px"
+  >
+    {(args) => <Modal {...args} />}
+  </Story>
+</Canvas>
+
+## Size variants
+
+<GridBox
+  mt={32}
+  gap={24}
+  gridTemplateColumns="1fr 1fr"
+  gridTemplateRows="repeat(2, 280px)"
+  gridAutoFlow="row dense"
+>
+
+<Box gridRowEnd="span 2">
+
+### Fluid
+
+<Story
+  name="Fluid"
+  args={{
+    size: 'fluid',
+    children: (
+      <>
+        <FlexBox gridArea="title" bg="beige" height="2rem" />
+        <FlexBox gridArea="close" bg="beige" height="2rem" />
+        <FlexBox height="380px" width="540px" bg="beige" gridArea="content" />
+      </>
+    ),
+  }}
+  height="500px"
+>
+  {(args) => <ModalContainer {...args} />}
+</Story>
+
+</Box>
+<Box>
+
+### Medium
+
+<Story
+  name="Medium"
+  args={{
+    size: 'medium',
+    children: (
+      <>
+        <FlexBox gridArea="title" bg="beige" height="2rem" />
+        <FlexBox gridArea="close" bg="beige" height="2rem" />
+        <FlexBox height="auto" bg="beige" gridArea="content" />
+      </>
+    ),
+  }}
+  height="350px"
+>
+  {(args) => <ModalContainer {...args} />}
+</Story>
+
+</Box>
+<Box >
+
+### Small
+
+<Story
+  name="Small"
+  args={{
+    size: 'small',
+    children: (
+      <>
+        <FlexBox gridArea="title" bg="beige" height="2rem" />
+        <FlexBox gridArea="close" bg="beige" height="2rem" />
+        <FlexBox gridArea="content" bg="beige" height="auto" />
+      </>
+    ),
+  }}
+  height="350px"
+>
+  {(args) => <ModalContainer {...args} />}
+</Story>
+
+</Box>
+
+</GridBox>
+
+### Code Playground
+
+Edit attributes and see what’s possible to do with this component or get the exact output you want.
+
+<Canvas>
+  <Story name="Modal" height="350px">
+    {(args) => <Modal {...args} />}
+  </Story>
+</Canvas>
+
+<PropsTable story="Modal" />

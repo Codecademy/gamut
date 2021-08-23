@@ -1,4 +1,8 @@
-import { AlertIcon, CheckCircledIcon } from '@codecademy/gamut-icons';
+import {
+  AlertIcon,
+  CheckCircledIcon,
+  GamutIconProps,
+} from '@codecademy/gamut-icons';
 import { system } from '@codecademy/gamut-styles';
 import styled, { StyledComponent } from '@emotion/styled';
 import React, {
@@ -17,7 +21,7 @@ import {
   formFieldFocusStyles,
   formFieldPaddingStyles,
   formFieldStyles,
-} from './styles/shared-system-props';
+} from './styles';
 
 export type InputProps = InputHTMLAttributes<HTMLInputElement> & {
   id?: string;
@@ -52,7 +56,7 @@ export interface InputWrapperProps extends InputProps {
   /**
    * A custom icon svg from gamut-icons.
    */
-  icon?: typeof AlertIcon;
+  icon?: React.ComponentType<GamutIconProps>;
 }
 
 /**  We greatly prefer NOT to do this but ReactRecurly has some specific needs around focus-styles + padding that force us to export them seperately. If we ever stop using React-Recurly, this code will be 🔪.

@@ -4,7 +4,7 @@
     "url": "https://github.com/Codecademy/client-modules/issues"
   },
   "dependencies": {
-    "@codecademy/gamut-styles": "^11.7.1",
+    "@codecademy/gamut-styles": "^11.9.1",
     "classnames": "^2.2.5"
   },
   "description": "Pattern library for Codecademy",
@@ -41,5 +41,5 @@
     "lernaBuildTask": "yarn build"
   },
   "sideEffects": false,
-  "version": "0.5.3"
+  "version": "0.5.7"
 }

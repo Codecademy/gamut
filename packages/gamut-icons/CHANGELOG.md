@@ -3,6 +3,47 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [5.9.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@5.9.0...@codecademy/gamut-icons@5.9.1) (2021-08-16)
+
+**Note:** Version bump only for package @codecademy/gamut-icons
+
+
+
+
+
+## [5.9.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@5.8.4...@codecademy/gamut-icons@5.9.0) (2021-08-16)
+
+
+### Features
+
+* **icon:** hyper link 3 icon ([2941361](https://github.com/Codecademy/client-modules/commit/2941361a29ad7214422c2720f640940a6139d8f1))
+
+
+
+### [5.8.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@5.8.3...@codecademy/gamut-icons@5.8.4) (2021-08-16)
+
+**Note:** Version bump only for package @codecademy/gamut-icons
+
+
+
+
+
+### [5.8.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@5.8.2...@codecademy/gamut-icons@5.8.3) (2021-08-13)
+
+**Note:** Version bump only for package @codecademy/gamut-icons
+
+
+
+
+
+### [5.8.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@5.8.1...@codecademy/gamut-icons@5.8.2) (2021-08-12)
+
+**Note:** Version bump only for package @codecademy/gamut-icons
+
+
+
+
+
 ### [5.8.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@5.8.0...@codecademy/gamut-icons@5.8.1) (2021-08-05)
 
 **Note:** Version bump only for package @codecademy/gamut-icons

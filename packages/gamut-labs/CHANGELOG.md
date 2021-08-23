@@ -3,6 +3,187 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [19.23.6](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.23.5...@codecademy/gamut-labs@19.23.6) (2021-08-20)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [19.23.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.23.4...@codecademy/gamut-labs@19.23.5) (2021-08-20)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [19.23.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.23.3...@codecademy/gamut-labs@19.23.4) (2021-08-20)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [19.23.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.23.2...@codecademy/gamut-labs@19.23.3) (2021-08-19)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [19.23.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.23.1...@codecademy/gamut-labs@19.23.2) (2021-08-19)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [19.23.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.23.0...@codecademy/gamut-labs@19.23.1) (2021-08-18)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+## [19.23.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.22.2...@codecademy/gamut-labs@19.23.0) (2021-08-18)
+
+
+### Features
+
+* **footer:** add link to docs resources footer and header ([7ce7205](https://github.com/Codecademy/client-modules/commit/7ce7205e9e0c2c41c24e2f14470687ace17b2f14))
+
+
+
+### [19.22.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.22.1...@codecademy/gamut-labs@19.22.2) (2021-08-17)
+
+
+### Bug Fixes
+
+* **LayoutMenu:** add aria-expanded ([f7143ab](https://github.com/Codecademy/client-modules/commit/f7143ab936d9d650ec2ca7f309f4e130d0fa3e6f))
+
+
+
+### [19.22.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.22.0...@codecademy/gamut-labs@19.22.1) (2021-08-16)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+## [19.22.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.21.1...@codecademy/gamut-labs@19.22.0) (2021-08-16)
+
+
+### Features
+
+* added hidePricing prop to GlobalFooter, GlobalHeader ([6802441](https://github.com/Codecademy/client-modules/commit/6802441e394b0ef173753b3be95e97606382d794))
+
+
+
+### [19.21.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.21.0...@codecademy/gamut-labs@19.21.1) (2021-08-16)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+## [19.21.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.20.6...@codecademy/gamut-labs@19.21.0) (2021-08-16)
+
+
+### Features
+
+* **Testimonial:** Add new Testimonial Component ([efe1568](https://github.com/Codecademy/client-modules/commit/efe156813cd10586b7a61f1013564cb5387f5aa3))
+
+
+
+### [19.20.6](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.20.5...@codecademy/gamut-labs@19.20.6) (2021-08-13)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [19.20.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.20.4...@codecademy/gamut-labs@19.20.5) (2021-08-13)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [19.20.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.20.3...@codecademy/gamut-labs@19.20.4) (2021-08-13)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [19.20.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.20.2...@codecademy/gamut-labs@19.20.3) (2021-08-13)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [19.20.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.20.1...@codecademy/gamut-labs@19.20.2) (2021-08-13)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [19.20.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.20.0...@codecademy/gamut-labs@19.20.1) (2021-08-12)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+## [19.20.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.19.10...@codecademy/gamut-labs@19.20.0) (2021-08-12)
+
+
+### Features
+
+* **CurriculumCard:** Add beta sticker option to CurriculumCard ([84b30d5](https://github.com/Codecademy/client-modules/commit/84b30d52996e2323e5589ae0f5f65a3570951235))
+
+
+
+### [19.19.10](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.19.9...@codecademy/gamut-labs@19.19.10) (2021-08-11)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [19.19.9](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.19.8...@codecademy/gamut-labs@19.19.9) (2021-08-11)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [19.19.8](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.19.7...@codecademy/gamut-labs@19.19.8) (2021-08-10)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
 ### [19.19.7](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.19.6...@codecademy/gamut-labs@19.19.7) (2021-08-09)
 
 **Note:** Version bump only for package @codecademy/gamut-labs

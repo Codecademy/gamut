@@ -19,8 +19,10 @@ import {
   conditionalStyles,
   conditionalStyleState,
   formFieldStyles,
-} from './styles/shared-system-props';
+} from './styles';
 import { parseSelectOptions } from './utils';
+
+export type SelectOptions = string[] | Record<string, number | string>;
 
 export type SelectComponentProps = Pick<
   SelectHTMLAttributes<HTMLSelectElement>,
@@ -28,7 +30,7 @@ export type SelectComponentProps = Pick<
 > & {
   error?: boolean;
   htmlFor?: string;
-  options?: string[] | Record<string, number | string>;
+  options?: SelectOptions;
 };
 
 export type SelectWrapperProps = SelectComponentProps &

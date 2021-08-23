@@ -3,6 +3,167 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [36.7.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@36.6.0...@codecademy/gamut@36.7.0) (2021-08-20)
+
+
+### Features
+
+* **SubmitButton:** The mission for submission GM-315 ([0df7859](https://github.com/Codecademy/client-modules/commit/0df7859fb84d6e4f01437b1202a12b0761709d0a))
+
+
+
+## [36.6.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@36.5.0...@codecademy/gamut@36.6.0) (2021-08-20)
+
+
+### Features
+
+* **SelectDropdown:** onInputChange ([cfdb56c](https://github.com/Codecademy/client-modules/commit/cfdb56c71a9f1eb49436eee7c8b020fa4763c483))
+
+
+
+## [36.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@36.4.7...@codecademy/gamut@36.5.0) (2021-08-20)
+
+
+### Features
+
+* **SelectDropdown:** icons in options ([7d9f898](https://github.com/Codecademy/client-modules/commit/7d9f898e82378c071f85c53fc1c1a49337258786))
+
+
+
+### [36.4.7](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@36.4.6...@codecademy/gamut@36.4.7) (2021-08-19)
+
+
+### Bug Fixes
+
+* **ToolTip:** fix ternary for focusable ([ca5af1f](https://github.com/Codecademy/client-modules/commit/ca5af1f3ac0bf468685daa7ea16f128ea6912bea))
+
+
+
+### [36.4.6](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@36.4.5...@codecademy/gamut@36.4.6) (2021-08-19)
+
+
+### Bug Fixes
+
+* **ToolTip:** role button conditional on focusable prop ([d759960](https://github.com/Codecademy/client-modules/commit/d75996089f5928f99bceede8c3485827b58c0588))
+
+
+
+### [36.4.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@36.4.4...@codecademy/gamut@36.4.5) (2021-08-18)
+
+
+### Bug Fixes
+
+* add role to ToolTip for axe ([7c9de8a](https://github.com/Codecademy/client-modules/commit/7c9de8a105b2e01cf01b5cbebf07e82ce1b7c4c2))
+
+
+
+### [36.4.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@36.4.3...@codecademy/gamut@36.4.4) (2021-08-16)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [36.4.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@36.4.2...@codecademy/gamut@36.4.3) (2021-08-16)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [36.4.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@36.4.1...@codecademy/gamut@36.4.2) (2021-08-16)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [36.4.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@36.4.0...@codecademy/gamut@36.4.1) (2021-08-13)
+
+
+### Bug Fixes
+
+* Performance boost for <Truncate /> ([7d15b2f](https://github.com/Codecademy/client-modules/commit/7d15b2fd5abb39d44e87214706c4ab52c00a305f))
+
+
+
+## [36.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@36.3.0...@codecademy/gamut@36.4.0) (2021-08-13)
+
+
+### Features
+
+* Modal GM-179 ([9fbb540](https://github.com/Codecademy/client-modules/commit/9fbb540adc32089ad971a71fa3cadf0257c02e3d))
+
+
+
+## [36.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@36.2.0...@codecademy/gamut@36.3.0) (2021-08-13)
+
+
+### Features
+
+* **SelectDropdown:** shownOptionsLimit ([82b9cb0](https://github.com/Codecademy/client-modules/commit/82b9cb08bf14a1565cdf1648714f3660f7c97cf9))
+
+
+
+## [36.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@36.1.2...@codecademy/gamut@36.2.0) (2021-08-13)
+
+
+### Features
+
+* **SelectDropdown:** small variant ([de29b2d](https://github.com/Codecademy/client-modules/commit/de29b2db2339be52200931a5643ab071d2e3198e))
+
+
+
+### [36.1.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@36.1.1...@codecademy/gamut@36.1.2) (2021-08-13)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [36.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@36.1.0...@codecademy/gamut@36.1.1) (2021-08-12)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [36.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@36.0.1...@codecademy/gamut@36.1.0) (2021-08-11)
+
+
+### Features
+
+* **SelectDropdown:** ColorModes ([c867505](https://github.com/Codecademy/client-modules/commit/c867505c509a042c9217f1b7608f8e27a1fc4063))
+
+
+
+### [36.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@36.0.0...@codecademy/gamut@36.0.1) (2021-08-11)
+
+
+### Bug Fixes
+
+* **Anchor:** Interface hover => primary GM-314 ([0f462e0](https://github.com/Codecademy/client-modules/commit/0f462e0b1b3669d6d8130c81ca1aeac47eca18cb))
+
+
+
+## [36.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@35.14.0...@codecademy/gamut@36.0.0) (2021-08-10)
+
+
+### ⚠ BREAKING CHANGES
+
+* **GridForm:** remove business button
+
+### Code Refactoring
+
+* **GridForm:** remove business button ([6458188](https://github.com/Codecademy/client-modules/commit/64581888cef91c8ff6e27ceecabedfa67f939274))
+
+
+
 ## [35.14.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@35.13.0...@codecademy/gamut@35.14.0) (2021-08-09)
 
 
