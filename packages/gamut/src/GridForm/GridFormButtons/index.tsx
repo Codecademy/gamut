@@ -1,6 +1,5 @@
 import { ColorModes } from '@codecademy/gamut-styles';
 import React, { ComponentProps } from 'react';
-import { Mode, useFormContext } from 'react-hook-form';
 
 import { Box } from '../../Box';
 import { CTAButton, FillButton, TextButton } from '../../Button';
@@ -20,7 +19,6 @@ export type GridFormSubmitProps = {
   loading?: SubmitButtonProps['loading'];
   mode?: ColorModes;
   type?: SubmitButtonType;
-  validation?: Mode;
 };
 
 export type GridFormCancelButtonProps = {
@@ -49,14 +47,14 @@ export const GridFormButtons: React.FC<
   GridFormSubmitProps & CancelButtonProps
 > = ({ type = 'fill', ...props }) => {
   return (
-    <Column size={size}>
+    <Column size={props.size}>
       <Box
         mb={8}
         alignSelf="center"
-        justifySelf={positions[position || 'left']}
+        justifySelf={positions[props.position || 'left']}
       >
-        {cancel && (
-          <TextButton {...cancel} mr={32} data-testid="cancel-button" />
+        {props.cancel && (
+          <TextButton {...props.cancel} mr={32} data-testid="cancel-button" />
         )}
         <SubmitButton
           as={buttonMap[type]}
