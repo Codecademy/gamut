@@ -7,9 +7,15 @@ const renderView = setupRtl(FloatingCard, { children: 'Float on okay' });
 
 describe('FloatingCard', () => {
   it('renders with default props', () => {
-    const { view } = renderView();
+    const { props, view } = renderView();
     view.getByText('Float on okay');
     view.getByTitle('Checker Dense');
+    expect(props.shadow).not.toBeNull();
+  });
+
+  it('changes the shadow direction when props is passed', () => {
+    const { props } = renderView({ shadow: 'bottomRight' });
+    expect(props.shadow).toEqual('bottomRight');
   });
 
   it('renders a non-default pattern when passed a valid Gamut pattern', () => {
