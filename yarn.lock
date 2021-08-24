@@ -1179,41 +1179,6 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
-"@codecademy/gamut-styles@11.6.2":
-  version "11.6.2"
-  resolved "https://registry.npmjs.org/@codecademy/gamut-styles/-/gamut-styles-11.6.2.tgz#1e9a81414120f26f5ef2856883d409ab78f03cbb"
-  integrity sha512-9F1EWRtyl9gFzVWzSUBCrFqyrycId2Shz56p8FpMEkmzktyVovBYiFimGKnsS5PrA4DlVApyENT51SrO+r7L9g==
-  dependencies:
-    "@codecademy/variance" "^0.17.2"
-    polished "^4.1.2"
-
-"@codecademy/gamut@35.2.0":
-  version "35.2.0"
-  resolved "https://registry.npmjs.org/@codecademy/gamut/-/gamut-35.2.0.tgz#e7da80d117c4fd13f4b7667ddc5006578fa1b5a9"
-  integrity sha512-mbN1wGpJ3P1c+HP2Qw+7DPF4Z7Am+MhMfiIgrV96lNnjdbx2XTzZFaKesbCuSnIkDr2WavMq7rNzuqqgbtt0zw==
-  dependencies:
-    "@codecademy/gamut-icons" "^5.7.3"
-    "@codecademy/gamut-illustrations" "^0.17.12"
-    "@codecademy/gamut-styles" "^11.6.2"
-    "@codecademy/variance" "^0.17.2"
-    "@types/marked" "^1.1.0"
-    "@types/react-select" "^4.0.13"
-    classnames "^2.2.5"
-    framer-motion "^2.7.9"
-    html-to-react "^1.4.2"
-    invariant "^2.2.4"
-    lodash "^4.17.5"
-    marked "^0.7.0"
-    polished "^4.1.2"
-    react-aria-tabpanel "^4.4.0"
-    react-focus-on "^3.5.1"
-    react-hook-form "6.8.5"
-    react-player "^2.3.1"
-    react-select "^4.3.0"
-    react-truncate-markup "^5.1.0"
-    react-use "^15.3.8"
-    sanitize-markdown "^2.6.6"
-
 "@emotion/babel-plugin@^11.3.0":
   version "11.3.0"
   resolved "https://registry.npmjs.org/@emotion/babel-plugin/-/babel-plugin-11.3.0.tgz#3a16850ba04d8d9651f07f3fb674b3436a4fb9d7"
@@ -14361,10 +14326,10 @@ react-helmet@6.1.0:
     react-fast-compare "^3.1.1"
     react-side-effect "^2.1.0"
 
-react-hook-form@6.8.5:
-  version "6.8.5"
-  resolved "https://registry.npmjs.org/react-hook-form/-/react-hook-form-6.8.5.tgz#77cb5f208038605ed36c0645d7676d0cb2014403"
-  integrity sha512-H/4d4IV/nLiz2Q2NHC9uT4ZwK2m1LIObf7tOszpkhYKIyfHamFBHezhAbLm4ipnA4EN1nn/uK166MDfZI6Cj9A==
+react-hook-form@6.15.5:
+  version "6.15.5"
+  resolved "https://registry.npmjs.org/react-hook-form/-/react-hook-form-6.15.5.tgz#c2578f9ce6a6df7b33015587d40cd880dc13e2db"
+  integrity sha512-so2jEPYKdVk1olMo+HQ9D9n1hVzaPPFO4wsjgSeZ964R7q7CHsYRbVF0PGBi83FcycA5482WHflasdwLIUVENg==
 
 react-hotkeys-hook@^2.3.1:
   version "2.4.1"
