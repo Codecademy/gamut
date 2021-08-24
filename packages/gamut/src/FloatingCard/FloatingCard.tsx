@@ -93,7 +93,7 @@ export const FloatingCard = forwardRef<HTMLDivElement, FloatingCardProps>(
       children,
       className,
       pattern: Pattern = CheckerDense,
-      shadow = 'bottom-left',
+      shadow = 'bottomLeft',
       ...rest
     },
     ref
