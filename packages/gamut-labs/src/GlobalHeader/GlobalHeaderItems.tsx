@@ -68,6 +68,13 @@ export const resourcesDropdown: AppHeaderSimpleDropdownItem = {
   text: 'Resources',
   popover: [
     {
+      id: 'docs',
+      href: '/resources/docs',
+      trackingTarget: 'topnav_resources_docs',
+      text: 'Docs',
+      type: 'link',
+    },
+    {
       id: 'cheatsheets',
       href: '/resources/cheatsheets/all',
       trackingTarget: 'topnav_resources_cheatsheets',

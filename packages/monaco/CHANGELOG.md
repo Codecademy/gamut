@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [0.3.1](http://github.com///compare/@codecademy/monaco@0.3.0...@codecademy/monaco@0.3.1) (2021-08-24)
+
+**Note:** Version bump only for package @codecademy/monaco
+
+
+
+
+
+## [0.3.0](http://github.com///compare/@codecademy/monaco@0.2.0...@codecademy/monaco@0.3.0) (2021-08-20)
+
+
+### Features
+
+* **SubmitButton:** The mission for submission GM-315 ([0df7859](http://github.com///commit/0df7859fb84d6e4f01437b1202a12b0761709d0a))
+
+
+
 ## [0.2.0](http://github.com///compare/@codecademy/monaco@0.1.0...@codecademy/monaco@0.2.0) (2021-08-06)
 
 

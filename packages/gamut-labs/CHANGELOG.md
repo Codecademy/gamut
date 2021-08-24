@@ -3,6 +3,80 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [19.23.7](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.23.6...@codecademy/gamut-labs@19.23.7) (2021-08-24)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [19.23.6](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.23.5...@codecademy/gamut-labs@19.23.6) (2021-08-20)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [19.23.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.23.4...@codecademy/gamut-labs@19.23.5) (2021-08-20)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [19.23.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.23.3...@codecademy/gamut-labs@19.23.4) (2021-08-20)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [19.23.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.23.2...@codecademy/gamut-labs@19.23.3) (2021-08-19)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [19.23.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.23.1...@codecademy/gamut-labs@19.23.2) (2021-08-19)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [19.23.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.23.0...@codecademy/gamut-labs@19.23.1) (2021-08-18)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+## [19.23.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.22.2...@codecademy/gamut-labs@19.23.0) (2021-08-18)
+
+
+### Features
+
+* **footer:** add link to docs resources footer and header ([7ce7205](https://github.com/Codecademy/client-modules/commit/7ce7205e9e0c2c41c24e2f14470687ace17b2f14))
+
+
+
+### [19.22.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.22.1...@codecademy/gamut-labs@19.22.2) (2021-08-17)
+
+
+### Bug Fixes
+
+* **LayoutMenu:** add aria-expanded ([f7143ab](https://github.com/Codecademy/client-modules/commit/f7143ab936d9d650ec2ca7f309f4e130d0fa3e6f))
+
+
+
 ### [19.22.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.22.0...@codecademy/gamut-labs@19.22.1) (2021-08-16)
 
 **Note:** Version bump only for package @codecademy/gamut-labs

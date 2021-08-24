@@ -5,7 +5,10 @@ import { Form } from '../Form';
 import { FormProps } from './Form';
 import { FormValues } from './types';
 
-export type FormWrapperProps<Values extends {}> = FormProps & {
+export type FormWrapperProps<Values extends {}> = Omit<
+  FormProps,
+  'onSubmit'
+> & {
   children?: React.ReactNode;
 
   /**
