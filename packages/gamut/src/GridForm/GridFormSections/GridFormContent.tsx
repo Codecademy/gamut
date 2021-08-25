@@ -13,9 +13,13 @@ export const GridFormContent: React.FC<GridFormContentProps> = ({
   field,
   showRequired,
 }) => {
-  const { error, isFirstError, register, setValue } = useFieldContext(
-    field.name
-  );
+  const {
+    error,
+    isFirstError,
+    register,
+    setValue,
+    isDisabled,
+  } = useFieldContext(field.name);
 
   const requiredBoolean = !!(
     field.type !== 'hidden' &&
@@ -28,6 +32,7 @@ export const GridFormContent: React.FC<GridFormContentProps> = ({
       <GridFormInputGroup
         error={error}
         isFirstError={isFirstError}
+        isDisabled={isDisabled}
         field={field}
         key={field.name}
         register={register}

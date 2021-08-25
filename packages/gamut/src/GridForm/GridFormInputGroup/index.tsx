@@ -32,6 +32,7 @@ const ErrorAnchor = styled(Anchor)(
 export type GridFormInputGroupProps = {
   error?: string;
   isFirstError?: boolean;
+  isDisabled?: boolean;
   field: GridFormField;
   register: UseFormMethods['register'];
   setValue: UseFormMethods['setValue'];
@@ -42,6 +43,7 @@ export type GridFormInputGroupProps = {
 export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
   error,
   isFirstError,
+  isDisabled,
   field,
   register,
   setValue,
@@ -49,13 +51,17 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
   required,
 }) => {
   const errorMessage = error || field.customError;
-  const isRequired = showRequired && required;
+  const disabled = isDisabled || field.disabled;
 
   const getInput = () => {
     switch (field.type) {
       case 'checkbox':
         return (
-          <GridFormCheckboxInput field={field} showRequired={isRequired} />
+          <GridFormCheckboxInput
+            field={field}
+            required={required}
+            disabled={disabled}
+          />
         );
 
       case 'custom':
@@ -74,9 +80,10 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
           <GridFormRadioGroupInput
             field={field}
             register={register}
-            showRequired={isRequired}
+            required={required}
             setValue={setValue}
             error={!!errorMessage}
+            disabled={disabled}
           />
         );
 
@@ -86,7 +93,8 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
             error={!!errorMessage}
             field={field}
             register={register}
-            showRequired={isRequired}
+            required={required}
+            disabled={disabled}
           />
         );
 
@@ -96,7 +104,8 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
             error={!!errorMessage}
             field={field}
             register={register}
-            showRequired={isRequired}
+            required={required}
+            disabled={disabled}
           />
         );
 
@@ -106,7 +115,8 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
             error={!!errorMessage}
             field={field}
             register={register}
-            showRequired={isRequired}
+            required={required}
+            disabled={disabled}
           />
         );
       case 'hidden':
@@ -127,7 +137,8 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
             error={!!errorMessage}
             field={field}
             register={register}
-            showRequired={isRequired}
+            required={required}
+            disabled={disabled}
           />
         );
     }
@@ -152,10 +163,10 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
 
   const label = (
     <FormGroupLabel
-      disabled={field.disabled}
+      disabled={disabled}
       htmlFor={field.id || field.name}
       tooltip={field.tooltip}
-      showRequired={isRequired}
+      showRequired={showRequired}
     >
       {field.label}
     </FormGroupLabel>

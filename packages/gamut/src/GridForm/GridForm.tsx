@@ -108,7 +108,7 @@ export function GridForm<Values extends FormValues>({
       onSubmit={onSubmit}
       validation={validation}
       defaultValues={defaultValues}
-      disableFieldsOnSubmit={disableFieldsOnSubmit}
+      disableFieldsOnSubmit
     >
       <LayoutGrid columnGap={columnGap} rowGap={rowGap}>
         <>

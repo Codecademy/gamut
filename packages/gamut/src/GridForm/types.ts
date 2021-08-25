@@ -6,6 +6,13 @@ import { ColumnProps } from '../Layout';
 import { ToolTipProps } from '../ToolTip';
 import { TextProps } from '../Typography/Text';
 
+export interface BaseFormInputProps {
+  className?: string;
+  required?: boolean;
+  disabled?: boolean;
+  error?: boolean;
+}
+
 export type BaseFormField<Value> = {
   defaultValue?: Value;
   customError?: string;
