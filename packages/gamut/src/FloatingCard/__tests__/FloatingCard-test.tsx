@@ -10,12 +10,12 @@ describe('FloatingCard', () => {
     const { props, view } = renderView();
     view.getByText('Float on okay');
     view.getByTitle('Checker Dense');
-    expect(props.shadow).not.toBeNull();
+    expect(props.shadow).toBeUndefined();
   });
 
-  it('changes the shadow direction when props is passed', () => {
-    const { props } = renderView({ shadow: 'bottomRight' });
-    expect(props.shadow).toEqual('bottomRight');
+  it('renders the default pattern when no pattern prop is passed', () => {
+    const { view } = renderView();
+    view.getByTitle('Checker Dense');
   });
 
   it('renders a non-default pattern when passed a valid Gamut pattern', () => {
