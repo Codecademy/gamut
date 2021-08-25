@@ -11,3 +11,4 @@ export * from './Form';
 export * from './TextArea';
 export * from './Radio';
 export * from './RadioGroup';
+export * from './SubmitButton';
