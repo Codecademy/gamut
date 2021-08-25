@@ -1,8 +1,8 @@
 import React from 'react';
-import { FieldError, useFormContext } from 'react-hook-form';
 
 import { GridFormInputGroup } from '../GridFormInputGroup';
 import { GridFormField } from '../types';
+import { useFieldContext } from '../utils';
 
 export type GridFormContentProps = {
   field: GridFormField;
@@ -13,14 +13,9 @@ export const GridFormContent: React.FC<GridFormContentProps> = ({
   field,
   showRequired,
 }) => {
-  const { register, errors, setValue } = useFormContext();
-
-  /**
-   * Keep track of the first error in this form.
-   * This is so we only add the correct aria-live props on the first error.
-   */
-  const isFirstError = Object.keys(errors)[0] === field.name;
-  const errorMessage = (errors[field.name] as FieldError)?.message;
+  const { error, isFirstError, register, setValue } = useFieldContext(
+    field.name
+  );
 
   const requiredBoolean = !!(
     field.type !== 'hidden' &&
@@ -31,7 +26,7 @@ export const GridFormContent: React.FC<GridFormContentProps> = ({
   return (
     <>
       <GridFormInputGroup
-        error={errorMessage}
+        error={error}
         isFirstError={isFirstError}
         field={field}
         key={field.name}

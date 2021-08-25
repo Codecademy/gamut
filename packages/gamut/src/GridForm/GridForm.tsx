@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import { Mode, SubmitHandler } from 'react-hook-form';
 
+import { DisableOnSubmit } from '..';
 import { ButtonProps } from '../Button/shared';
 import { FormWrapper } from '../Form';
 import { FormValues } from '../Form/types';
@@ -31,7 +32,7 @@ const isGridFormSection = (
   return (field as GridFormSectionProps).title !== undefined;
 };
 
-export type GridFormProps<Values extends {}> = {
+export type GridFormProps<Values extends {}> = DisableOnSubmit & {
   children?: React.ReactNode;
   className?: string;
 
@@ -88,6 +89,7 @@ export function GridForm<Values extends FormValues>({
   submit,
   validation = 'onSubmit',
   showRequired = false,
+  disableFieldsOnSubmit = false,
 }: GridFormProps<Values>) {
   const flatFields = fields.flatMap((field) =>
     isGridFormSection(field) ? field.fields : field
@@ -106,6 +108,7 @@ export function GridForm<Values extends FormValues>({
       onSubmit={onSubmit}
       validation={validation}
       defaultValues={defaultValues}
+      disableFieldsOnSubmit={disableFieldsOnSubmit}
     >
       <LayoutGrid columnGap={columnGap} rowGap={rowGap}>
         <>
