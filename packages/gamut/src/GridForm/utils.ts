@@ -1,6 +1,8 @@
 import { FieldError, useFormContext, UseFormMethods } from 'react-hook-form';
 
-type formContext = UseFormMethods & { disableFieldsOnSubmit?: boolean };
+import { DisableOnSubmit } from '..';
+
+type formContext = UseFormMethods & DisableOnSubmit;
 
 export const useIsFieldDisabled = (disabled: boolean) => {
   const { formState, disableFieldsOnSubmit } = <formContext>useFormContext();

@@ -12,37 +12,33 @@ import { Form } from '../Form';
 import { FormProps } from './Form';
 import { FormValues } from './types';
 
-export type DisableOnSubmit = { disableFieldsOnSubmit?: boolean };
-
-export type FormWrapperProps<Values extends {}> = Omit<
-  FormProps,
-  'onSubmit'
-> & {
-  children?: React.ReactNode;
-
-  /**
-   * Function called with field values on submit, if all validations have passed.
-   */
-  onSubmit: SubmitHandler<Values>;
-
-  defaultValues?: FormValues;
-
-  /**
-   * Which react hook form mode we are going to use for validation.
-   * If you use the onChange mode the submit button will be disabled until all
-   * required fields are completed.
-   */
-  validation?: Mode;
-
+export type DisableOnSubmit = {
   /**
    * If fields should be disabled while form is being submitted and after successful submission.
    */
   disableFieldsOnSubmit?: boolean;
 };
 
-interface FormProviderCustomProps extends FormProviderProps {
-  disableFieldsOnSubmit?: boolean;
-}
+export type FormWrapperProps<Values extends {}> = DisableOnSubmit &
+  Omit<FormProps, 'onSubmit'> & {
+    children?: React.ReactNode;
+
+    /**
+     * Function called with field values on submit, if all validations have passed.
+     */
+    onSubmit: SubmitHandler<Values>;
+
+    defaultValues?: FormValues;
+
+    /**
+     * Which react hook form mode we are going to use for validation.
+     * If you use the onChange mode the submit button will be disabled until all
+     * required fields are completed.
+     */
+    validation?: Mode;
+  };
+
+export type FormProviderCustomProps = FormProviderProps & DisableOnSubmit;
 
 const CustomFormProvider = styled(FormProvider)<FormProviderCustomProps>();
 
