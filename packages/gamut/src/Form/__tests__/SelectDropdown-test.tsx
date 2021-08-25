@@ -45,7 +45,7 @@ describe('Select', () => {
   it('renders the same number of options as options', () => {
     const { wrapper } = renderWrapper();
 
-    wrapper.find('DropdownIndicator').first().simulate('mouseDown', {
+    wrapper.find('DropdownIndicator').simulate('mouseDown', {
       button: 0,
     });
 
@@ -55,7 +55,7 @@ describe('Select', () => {
   it('renders options when options is an object', () => {
     const { wrapper } = renderWrapper({ options: selectOptionsObject });
 
-    wrapper.find('DropdownIndicator').first().simulate('mouseDown', {
+    wrapper.find('DropdownIndicator').simulate('mouseDown', {
       button: 0,
     });
 
@@ -96,7 +96,7 @@ describe('Select', () => {
       shownOptionsLimit: 4,
     });
 
-    wrapper.find('DropdownIndicator').first().simulate('mouseDown', {
+    wrapper.find('DropdownIndicator').simulate('mouseDown', {
       button: 0,
     });
 
@@ -111,7 +111,7 @@ describe('Select', () => {
       size: 'small',
     });
 
-    wrapper.find('DropdownIndicator').first().simulate('mouseDown', {
+    wrapper.find('DropdownIndicator').simulate('mouseDown', {
       button: 0,
     });
 
@@ -125,12 +125,29 @@ describe('Select', () => {
       size: 'small',
     });
 
-    wrapper.find('DropdownIndicator').first().simulate('mouseDown', {
+    wrapper.find('DropdownIndicator').simulate('mouseDown', {
       button: 0,
     });
 
     expect(wrapper.find(DataTransferVerticalIcon)).toBeDefined();
     expect(wrapper.find(CalendarIcon)).toBeDefined();
     expect(wrapper.find(EarthIcon)).toBeDefined();
+  });
+
+  it('function passed to onInputChanges is called on input change', () => {
+    const onInputChange = jest.fn();
+
+    const { wrapper } = renderWrapper({
+      options: optionsIconsArray,
+      onInputChange,
+    });
+
+    wrapper.find('DropdownIndicator').simulate('mouseDown', {
+      button: 0,
+    });
+
+    wrapper.find('Option').first().simulate('click');
+
+    expect(onInputChange).toHaveBeenCalled();
   });
 });
