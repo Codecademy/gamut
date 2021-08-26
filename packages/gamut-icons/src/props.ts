@@ -27,14 +27,7 @@ export const iconProps = variance.compose(
   system.color,
   system.space,
   system.positioning,
-  system.border,
-  variance.create({
-    size: {
-      property: 'width',
-      properties: ['width', 'height'],
-      transform: transformSize,
-    },
-  })
+  system.border
 );
 
 export const Svg = styled('svg', styledOptions<'svg'>())(iconProps);
