@@ -1,0 +1,72 @@
+import { FillButton, Toast, Toaster } from '@codecademy/gamut';
+import title from '@codecademy/macros/lib/title.macro';
+import { PropsTable } from '@codecademy/storybook-addon-variance';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { uniqueId } from 'lodash';
+import { useState } from 'react';
+
+<Meta
+  title={title}
+  component={Toaster}
+  parameters={{
+    subtitle:
+      'A positioned container for incoming Toast messages in the bottom right corner of the page',
+    source: 'gamut',
+    status: 'current',
+    design: {
+      type: 'figma',
+      url:
+        'https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=1086%3A0',
+    },
+    docs: {
+      inlineStories: false,
+      iframeHeight: 500,
+    },
+  }}
+  args={{ inline: false }}
+/>
+
+## Usage
+
+- Toaster may only have children of `Toast` components. Either a single element or an array.
+- As elements are added and removed from the dom they will slide to the right.
+
+```tsx
+<Toaster>
+  {toasts.map(({ title, children, icon }) => (
+    <Toast title={title} icon={icon}>
+      {children}
+    </Toast>
+  ))}
+</Toaster>
+```
+
+export const ToasterTemplate = () => {
+  const [toasts, setToasts] = useState([uniqueId()]);
+  return (
+    <div>
+      <FillButton onClick={() => setToasts((prev) => prev.concat(uniqueId()))}>
+        Add Toast
+      </FillButton>
+      <Toaster>
+        {toasts.map((toast) => (
+          <Toast
+            key={toast}
+            title="Cool Title Here"
+            onClose={() =>
+              setToasts((prev) => prev.filter((id) => id !== toast))
+            }
+          >
+            An even cooler message
+          </Toast>
+        ))}
+      </Toaster>
+    </div>
+  );
+};
+
+<Canvas>
+  <Story name="Toaster">{ToasterTemplate.bind({})}</Story>
+</Canvas>
+
+<PropsTable story="Toaster" />
