@@ -148,6 +148,7 @@ export const Testimonial: React.FC<TestimonialProps> = ({
         <QuoteArt src={darkQuotes} />
         <Text
           pt={{ _: 0, md: isVerticleLayout ? 0 : 4 }}
+          pr={{ _: 16, sm: 0 }}
           gridArea="text"
           variant="title-md"
           as="p"
