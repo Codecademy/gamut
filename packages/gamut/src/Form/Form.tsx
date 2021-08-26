@@ -22,5 +22,5 @@ export const Form: React.FC<FormProps> = ({
   flexDirection = 'column',
   ...props
 }) => {
-  return <StyledForm {...props} method={method} />;
+  return <StyledForm {...props} noValidate method={method} />;
 };
