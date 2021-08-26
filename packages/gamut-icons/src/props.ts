@@ -1,8 +1,10 @@
 import { styledOptions, system } from '@codecademy/gamut-styles';
-import { StyleProps, transformSize, variance } from '@codecademy/variance';
+import { StyleProps, variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
 
-export interface IconStyleProps extends StyleProps<typeof iconProps> {}
+export interface IconStyleProps extends StyleProps<typeof iconProps> {
+  size?: StyleProps<typeof iconProps>['width'];
+}
 
 export interface GamutIconProps
   extends Omit<React.SVGProps<SVGSVGElement>, keyof IconStyleProps>,

@@ -10,8 +10,8 @@ module.exports = {
     fill: 'currentColor',
     role: 'img',
     'aria-hidden': 'true',
-    width: '{width || size}',
-    height: '{height || size}',
+    width: '{width}',
+    height: '{height}',
   },
   prettierConfig: {
     parser: 'typescript',

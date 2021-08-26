@@ -15,8 +15,8 @@ function iconTemplate(api, opts, { jsx }) {
       title = "${title}",
       titleId,
       size = 16,
-      height,
-      width,
+      height = size,
+      width = size,
       ...props
     },
       svgRef
