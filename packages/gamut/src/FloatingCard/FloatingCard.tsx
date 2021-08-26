@@ -84,16 +84,27 @@ const CardBody = styled('div', styledOptions)<
 export type FloatingCardProps = {
   className?: string;
   pattern?: React.ComponentType<PatternProps>;
+  shadow?: 'bottomLeft' | 'bottomRight';
 } & ComponentProps<typeof CardBody>;
 
 export const FloatingCard = forwardRef<HTMLDivElement, FloatingCardProps>(
-  ({ children, className, pattern = CheckerDense, ...rest }, ref) => (
+  (
+    {
+      children,
+      className,
+      pattern: Pattern = CheckerDense,
+      shadow = 'bottomLeft',
+      ...rest
+    },
+    ref
+  ) => (
     <CardWrapper>
-      <CheckerDense
+      <Pattern
         dimensions={1}
         position="absolute"
-        top=".5rem"
-        left="-0.5rem"
+        top="0.5rem"
+        left={shadow === 'bottomLeft' ? '-0.5rem' : undefined}
+        right={shadow === 'bottomRight' ? '-0.5rem' : undefined}
       />
       <CardBody className={className} {...rest} ref={ref}>
         {children}
