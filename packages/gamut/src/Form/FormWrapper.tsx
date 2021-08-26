@@ -40,8 +40,8 @@ export type FormWrapperProps<Values extends {}> = DisableOnSubmit &
 
 export type FormProviderCustomProps = FormProviderProps & DisableOnSubmit;
 
-const CustomFormProvider = styled(FormProvider)<FormProviderCustomProps>();
-
+const PropsContext = React.createContext({ disableFieldsOnSubmit: false });
+const PropsProvider = PropsContext.Provider;
 /**
  * This is an in progress API! please reach out to the web-plat team if you're interested in using it.
  */
@@ -59,15 +59,16 @@ export function FormWrapper<Values extends FormValues>({
   });
 
   return (
-    <CustomFormProvider
-      handleSubmit={handleSubmit}
-      formState={formState}
-      disableFieldsOnSubmit={disableFieldsOnSubmit}
-      {...methods}
-    >
-      <Form onSubmit={handleSubmit(onSubmit)} noValidate {...rest}>
-        {children}
-      </Form>
-    </CustomFormProvider>
+    <PropsProvider value={{ disableFieldsOnSubmit }}>
+      <FormProvider
+        handleSubmit={handleSubmit}
+        formState={formState}
+        {...methods}
+      >
+        <Form onSubmit={handleSubmit(onSubmit)} noValidate {...rest}>
+          {children}
+        </Form>
+      </FormProvider>
+    </PropsProvider>
   );
 }
