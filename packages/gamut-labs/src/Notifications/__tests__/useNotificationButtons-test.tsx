@@ -18,8 +18,6 @@ const actions = {
 
 const defaultProps = { actions };
 
-globalThis.fetch = jest.fn();
-
 describe('useNotificationButtons', () => {
   it('returns null buttons when there fewer notifications than the display limit', async () => {
     const notifications = [createStubNotification()];
@@ -30,7 +28,7 @@ describe('useNotificationButtons', () => {
     expect(hook.result.current).toEqual([null, null, notifications]);
   });
 
-  it('sets notifications to an empty array when the Clear All button is pressed', async () => {
+  it('clears notifications when the Clear All button is pressed', async () => {
     const hook = renderHook(() =>
       useNotificationButtons({
         ...defaultProps,
@@ -46,13 +44,8 @@ describe('useNotificationButtons', () => {
 
     userEvent.click(view.getByLabelText('Clear all 4 notifications'));
 
-    expect(fetch).toHaveBeenCalledWith(`/notifications?target=web`, {
-      method: 'DELETE',
-    });
-    expect(defaultProps.actions.clear).toHaveBeenCalled();
-    expect(defaultProps.actions.clear).toHaveBeenCalledWith(
-      'notification_clear_all'
-    );
+    expect(actions.clear).toHaveBeenCalled();
+    expect(actions.track).toHaveBeenCalledWith('notification_clear_all');
   });
 
   it('expands notifications when the Show More button is pressed', async () => {
@@ -72,7 +65,7 @@ describe('useNotificationButtons', () => {
     });
 
     expect(hook.result.current[2]).toEqual(notifications);
-    expect(actions.click).toHaveBeenCalledWith('notification_show_more');
+    expect(actions.track).toHaveBeenCalledWith('notification_show_more');
   });
 
   it('contracts notifications when the Show Less button is pressed', async () => {
@@ -94,6 +87,6 @@ describe('useNotificationButtons', () => {
     });
 
     expect(hook.result.current[2]).toEqual(notifications.slice(0, 3));
-    expect(actions.click).toHaveBeenCalledWith('notification_show_more');
+    expect(actions.track).toHaveBeenCalledTimes(1);
   });
 });

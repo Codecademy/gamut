@@ -111,7 +111,7 @@ export const SearchPane: React.FC<SearchPaneProps> = ({
       >
         <Box
           bg="white"
-          borderColorBottom="navy"
+          borderColorBottom="text"
           borderColorTop="gray-100"
           borderStyle="solid"
           borderWidth="2px 0 1px"

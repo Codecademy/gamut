@@ -25,11 +25,9 @@ export const NotificationsContents: React.FC<NotificationsContentsProps> = (
   const onNotificationClick = (notification: Notification) => {
     actions.click(notification);
 
-    if (!notification.unread) {
-      return;
+    if (notification.unread) {
+      actions.read(notification);
     }
-
-    actions.read(notification);
   };
 
   return (

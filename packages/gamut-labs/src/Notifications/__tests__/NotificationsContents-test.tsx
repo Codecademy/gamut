@@ -16,31 +16,42 @@ const renderView = setupRtl(NotificationsContents, {
 });
 
 describe('NotificationsContents', () => {
-  it('dismisses the notification when an unread notification is clicked', () => {
+  it('tracks a click for a notification when the notification is clicked', () => {
     const notifications = [
       createStubNotification({ id: '1' }),
       createStubNotification({ id: '2' }),
+      createStubNotification({ id: '3' }),
     ];
     const { props, view } = renderView({ notifications });
 
-    userEvent.click(view.getAllByLabelText('Dismiss Notification')[0]);
+    userEvent.click(view.getAllByRole('link')[1]);
 
-    expect(props.actions.dismiss).toHaveBeenCalledWith([notifications[1]]);
+    expect(props.actions.click).toHaveBeenCalledWith(notifications[1]);
   });
 
-  it('does not dismiss the notification when a read notification is clicked', () => {
+  it('marks the notification as read when an unread notification is clicked', () => {
     const notifications = [
-      createStubNotification({ id: '1', unread: false }),
+      createStubNotification({ id: '1' }),
       createStubNotification({ id: '2', unread: true }),
+      createStubNotification({ id: '3' }),
     ];
     const { props, view } = renderView({ notifications });
 
-    userEvent.click(view.getAllByRole('link')[0]);
+    userEvent.click(view.getAllByRole('link')[1]);
 
-    expect(props.actions.click).toHaveBeenCalledWith(
-      'notification_bell_cta',
-      notifications[0]
-    );
-    expect(props.actions.dismiss).not.toHaveBeenCalled();
+    expect(props.actions.read).toHaveBeenCalledWith(notifications[1]);
+  });
+
+  it('does not the notification as read when a read notification is clicked', () => {
+    const notifications = [
+      createStubNotification({ id: '1' }),
+      createStubNotification({ id: '2', unread: false }),
+      createStubNotification({ id: '3' }),
+    ];
+    const { props, view } = renderView({ notifications });
+
+    userEvent.click(view.getAllByRole('link')[1]);
+
+    expect(props.actions.read).not.toHaveBeenCalled();
   });
 });

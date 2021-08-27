@@ -112,16 +112,20 @@ const loadingHeaderProps: GlobalHeaderProps = {
   type: 'loading',
 };
 
-const renderElementProps: GlobalHeaderProps = {
-  ...defaultProps,
-  type: 'pro',
-  user,
-};
-
 const renderView = setupRtl(GlobalHeader);
 
 describe('GlobalHeader', () => {
   describe('anonymous users', () => {
+    it('renders search', () => {
+      const { view } = renderView(anonHeaderProps);
+      view.getByTitle('Search Icon');
+    });
+
+    it('does not renders notifications', () => {
+      const { view } = renderView(anonHeaderProps);
+      expect(view.queryByTitle('Bell Icon')).toBeFalsy();
+    });
+
     /* since we're using css to toggle the display of the header between desktop & mobile, these tests check for visibility of elements
      & use 'getAllByTestId' b/c there will be duplicate elements in the DOM (since mobile & desktop render some of the same app header items) */
     it('renders logo', () => {
@@ -226,6 +230,16 @@ describe('GlobalHeader', () => {
   });
 
   describe('free users', () => {
+    it('renders search', () => {
+      const { view } = renderView(freeHeaderProps);
+      view.getByTitle('Search Icon');
+    });
+
+    it('renders notifications', () => {
+      const { view } = renderView(freeHeaderProps);
+      view.getAllByTitle('Bell Icon');
+    });
+
     describe('default', () => {
       it('renders logo', () => {
         const { view } = renderView(freeHeaderProps);
@@ -294,6 +308,16 @@ describe('GlobalHeader', () => {
   });
 
   describe('pro users', () => {
+    it('renders search', () => {
+      const { view } = renderView(proHeaderProps);
+      view.getByTitle('Search Icon');
+    });
+
+    it('renders notifications', () => {
+      const { view } = renderView(proHeaderProps);
+      view.getAllByTitle('Bell Icon');
+    });
+
     describe('default', () => {
       it('renders proLogo', () => {
         const { view } = renderView(proHeaderProps);
@@ -344,20 +368,6 @@ describe('GlobalHeader', () => {
     it('renders logo', () => {
       const { view } = renderView(loadingHeaderProps);
       view.getAllByTestId('header-logo');
-    });
-  });
-
-  describe('renders a custom element when provided one', () => {
-    beforeEach(() => {});
-
-    it('renders search', () => {
-      const { view } = renderView(renderElementProps);
-      view.getByTitle('Search Icon');
-    });
-
-    it('renders notifications', () => {
-      const { view } = renderView(renderElementProps);
-      view.getByTitle('Bell Icon');
     });
   });
 

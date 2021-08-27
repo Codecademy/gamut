@@ -1,6 +1,6 @@
+import { ButtonBaseElements } from '@codecademy/gamut';
 import React, { useRef, useState } from 'react';
 
-import { ButtonBaseElements } from '../../../gamut/dist';
 import { AnimatedHeaderZone } from '../AppHeader/shared';
 import { NotificationBell } from './NotificationBell';
 import { AppHeaderNotifications, NotificationsRendererProps } from './types';
