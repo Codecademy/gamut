@@ -165,6 +165,11 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
         <AppHeaderMobile
           action={combinedAction}
           items={getMobileAppHeaderItems(props)}
+          {...(props.type === 'anon' || props.type === 'loading'
+            ? {}
+            : {
+                notifications: props.notifications,
+              })}
           onSearch={props.search.onSearch}
           redirectParam={
             props.type === 'anon' ? props.redirectParam : undefined

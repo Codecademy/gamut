@@ -9,10 +9,10 @@ import {
 import { Background } from '@codecademy/gamut-styles';
 import React from 'react';
 
-import { NotificationsPaneContentsProps } from './types';
+import { NotificationsContentsProps } from './types';
 import { useNotificationButtons } from './useNotificationButtons';
 
-export const NotificationsPaneContents: React.FC<NotificationsPaneContentsProps> = (
+export const NotificationsContents: React.FC<NotificationsContentsProps> = (
   props
 ) => {
   const { actions, notifications } = props;

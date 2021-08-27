@@ -24,7 +24,9 @@ const defaultProps = {
 
 describe('useHeaderNotifications', () => {
   it('returns nulls when there are no notifications', async () => {
-    const hook = renderHook(() => useHeaderNotifications(undefined));
+    const hook = renderHook(() =>
+      useHeaderNotifications(undefined, () => <div>hi!</div>)
+    );
 
     expect(hook.result.current).toEqual([null, null]);
   });
@@ -32,7 +34,9 @@ describe('useHeaderNotifications', () => {
   it('renders its notifications pane as invisible by default when there are notifications', async () => {
     const notifications = [createStubNotification()];
     const hook = renderHook(() =>
-      useHeaderNotifications({ ...defaultProps, notifications })
+      useHeaderNotifications({ ...defaultProps, notifications }, () => (
+        <div>hi!</div>
+      ))
     );
 
     const view = render(
@@ -45,7 +49,9 @@ describe('useHeaderNotifications', () => {
   it('renders its notifications pane as visible when the bell is clicked and there are notifications', async () => {
     const notifications = [createStubNotification()];
     const hook = renderHook(() =>
-      useHeaderNotifications({ ...defaultProps, notifications })
+      useHeaderNotifications({ ...defaultProps, notifications }, () => (
+        <div>hi!</div>
+      ))
     );
 
     const buttonView = render(

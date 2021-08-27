@@ -1,4 +1,4 @@
-import { Notification } from '@codecademy/gamut';
+import { ButtonBaseElements, Notification } from '@codecademy/gamut';
 
 export type NotificationActions = {
   clear: () => void;
@@ -14,7 +14,12 @@ export type AppHeaderNotifications = {
   onEnable: () => void;
 };
 
-export type NotificationsPaneContentsProps = {
+export type NotificationsContentsProps = {
   actions: NotificationActions;
   notifications: Notification[];
+};
+
+export type NotificationsRendererProps = NotificationsContentsProps & {
+  bellRef: React.RefObject<ButtonBaseElements>;
+  onClose: () => void;
 };

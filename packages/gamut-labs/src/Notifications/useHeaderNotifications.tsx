@@ -1,13 +1,13 @@
 import React, { useRef, useState } from 'react';
 
-import { ButtonBaseElements } from '../../../../gamut/dist';
-import { AnimatedHeaderZone } from '../shared';
+import { ButtonBaseElements } from '../../../gamut/dist';
+import { AnimatedHeaderZone } from '../AppHeader/shared';
 import { NotificationBell } from './NotificationBell';
-import { NotificationsPane } from './NotificationsPane';
-import { AppHeaderNotifications } from './types';
+import { AppHeaderNotifications, NotificationsRendererProps } from './types';
 
 export const useHeaderNotifications = (
-  settings: AppHeaderNotifications | undefined
+  settings: AppHeaderNotifications | undefined,
+  Renderer: React.ComponentType<NotificationsRendererProps>
 ) => {
   const [isPaneVisible, setIsPaneVisible] = useState(false);
   const bellRef = useRef<ButtonBaseElements>(null);
@@ -37,7 +37,7 @@ export const useHeaderNotifications = (
       ),
     },
     <AnimatedHeaderZone visible={isPaneVisible}>
-      <NotificationsPane
+      <Renderer
         actions={settings.actions}
         bellRef={bellRef}
         notifications={settings.notifications}

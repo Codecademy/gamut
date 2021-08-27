@@ -9,6 +9,9 @@ import styled from '@emotion/styled';
 import React, { ReactNode } from 'react';
 
 import { formatUrlWithRedirect } from '../GlobalHeader/urlHelpers';
+import { NotificationsPopover } from '../Notifications/NotificationsPopover';
+import { AppHeaderNotifications } from '../Notifications/types';
+import { useHeaderNotifications } from '../Notifications/useHeaderNotifications';
 import { AppHeaderDropdown } from './AppHeaderElements/AppHeaderDropdown';
 import { AppHeaderLink } from './AppHeaderElements/AppHeaderLink';
 import { AppHeaderLogo } from './AppHeaderElements/AppHeaderLogo';
@@ -17,8 +20,6 @@ import {
   AppHeaderClickHandler,
   AppHeaderItem,
 } from './AppHeaderElements/types';
-import { AppHeaderNotifications } from './Notifications/types';
-import { useHeaderNotifications } from './Notifications/useHeaderNotifications';
 import { AppHeaderSearch, useHeaderSearch } from './Search/useHeaderSearch';
 import { FormattedAppHeaderItems } from './types';
 
@@ -104,8 +105,9 @@ export const AppHeader: React.FC<AppHeaderProps> = ({
     ));
   };
 
-  const [notificationsBell, notificationsPane] = useHeaderNotifications(
-    notifications
+  const [notificationsBell, notificationsView] = useHeaderNotifications(
+    notifications,
+    NotificationsPopover
   );
   const [searchButton, searchPane] = useHeaderSearch(search);
 
@@ -125,7 +127,7 @@ export const AppHeader: React.FC<AppHeaderProps> = ({
           {mapItemsToElement(right)}
         </AppBarSection>
       </StyledAppBar>
-      {notificationsPane}
+      {notificationsView}
       {searchPane}
     </>
   );

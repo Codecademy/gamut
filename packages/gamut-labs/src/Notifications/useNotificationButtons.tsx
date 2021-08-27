@@ -1,14 +1,14 @@
 import { Box, TextButton } from '@codecademy/gamut';
 import React, { useState } from 'react';
 
-import { NotificationsPaneContentsProps } from './types';
+import { NotificationsContentsProps } from './types';
 
 const defaultDisplayLimit = 3;
 
 export const useNotificationButtons = ({
   actions,
   notifications,
-}: NotificationsPaneContentsProps) => {
+}: NotificationsContentsProps) => {
   const [showMore, setShowMore] = useState(false);
   const [displayLimit, amountAdjective] = showMore
     ? [notifications.length, 'Less']

@@ -4,8 +4,8 @@ import {
   AppHeaderClickHandler,
   AppHeaderItemWithHref,
 } from '../AppHeader/AppHeaderElements/types';
-import { AppHeaderNotifications } from '../AppHeader/Notifications/types';
 import { AppHeaderSearch } from '../AppHeader/Search/useHeaderSearch';
+import { AppHeaderNotifications } from '../Notifications/types';
 
 type RenderFavorites = {
   desktop: () => ReactNode;

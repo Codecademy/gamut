@@ -21,10 +21,14 @@ import {
 } from '../AppHeader/AppHeaderElements/types';
 import { FormattedMobileAppHeaderItems } from '../AppHeader/types';
 import { AppHeaderMainMenuMobile } from '../AppHeaderMobile/AppHeaderMainMenuMobile';
+import { NotificationsContents } from '../Notifications/NotificationsContents';
+import { AppHeaderNotifications } from '../Notifications/types';
+import { useHeaderNotifications } from '../Notifications/useHeaderNotifications';
 
 export type AppHeaderMobileProps = {
   action: AppHeaderClickHandler;
   items: FormattedMobileAppHeaderItems;
+  notifications?: AppHeaderNotifications;
   redirectParam?: string;
   onSearch: (query: string) => void;
 };
@@ -57,11 +61,16 @@ const StyledOverlay = styled(Overlay)`
 export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
   action,
   items,
+  notifications,
   onSearch,
   redirectParam,
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
 
+  const [notificationsBell, notificationsView] = useHeaderNotifications(
+    notifications,
+    NotificationsContents
+  );
   const openMobileMenu = () => {
     setMobileMenuOpen(true);
   };
@@ -86,8 +95,10 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
             {mapItemsToElement(items.left)}
           </AppBarSection>
           <AppBarSection position="right">
-            {mapItemsToElement(items.right)}
-
+            {mapItemsToElement([
+              ...(notificationsBell ? [notificationsBell] : []),
+              ...items.right,
+            ])}
             <FlexBox ml={24}>
               <IconButton
                 type="button"
@@ -103,6 +114,7 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
           </AppBarSection>
         </StyledAppBar>
       )}
+      {notificationsView}
       <StyledOverlay
         clickOutsideCloses
         escapeCloses

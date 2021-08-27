@@ -2,9 +2,9 @@ import { setupRtl } from '@codecademy/gamut-tests';
 import userEvent from '@testing-library/user-event';
 
 import { createStubNotification } from '../__fixtures__/stubs';
-import { NotificationsPaneContents } from '../NotificationsPaneContents';
+import { NotificationsContents } from '../NotificationsContents';
 
-const renderView = setupRtl(NotificationsPaneContents, {
+const renderView = setupRtl(NotificationsContents, {
   actions: {
     clear: jest.fn(),
     click: jest.fn(),
@@ -15,7 +15,7 @@ const renderView = setupRtl(NotificationsPaneContents, {
   onTrackingClick: jest.fn(),
 });
 
-describe('NotificationsPaneContents', () => {
+describe('NotificationsContents', () => {
   it('dismisses the notification when an unread notification is clicked', () => {
     const notifications = [
       createStubNotification({ id: '1' }),

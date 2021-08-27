@@ -7,7 +7,7 @@ import {
 import { BellIcon } from '@codecademy/gamut-icons';
 import React, { useEffect } from 'react';
 
-import { HeaderIconButton } from '../shared';
+import { HeaderIconButton } from '../AppHeader/shared';
 
 export type NotificationBellProps = {
   bellRef: React.RefObject<ButtonBaseElements>;
