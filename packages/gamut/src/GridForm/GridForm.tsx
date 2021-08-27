@@ -106,6 +106,8 @@ export function GridForm<Values extends FormValues>({
       onSubmit={onSubmit}
       validation={validation}
       defaultValues={defaultValues}
+      display="flex"
+      flexDirection="column"
     >
       <LayoutGrid columnGap={columnGap} rowGap={rowGap}>
         <>
