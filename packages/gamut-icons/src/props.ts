@@ -1,8 +1,10 @@
 import { styledOptions, system } from '@codecademy/gamut-styles';
-import { StyleProps, transformSize, variance } from '@codecademy/variance';
+import { StyleProps, variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
 
-export interface IconStyleProps extends StyleProps<typeof iconProps> {}
+export interface IconStyleProps extends StyleProps<typeof iconProps> {
+  size?: StyleProps<typeof iconProps>['width'];
+}
 
 export interface GamutIconProps
   extends Omit<React.SVGProps<SVGSVGElement>, keyof IconStyleProps>,
@@ -27,16 +29,7 @@ export const iconProps = variance.compose(
   system.color,
   system.space,
   system.positioning,
-  system.border,
-  variance.create({
-    size: {
-      property: 'width',
-      properties: ['width', 'height'],
-      transform: transformSize,
-    },
-  })
+  system.border
 );
 
 export const Svg = styled('svg', styledOptions<'svg'>())(iconProps);
-
-Svg.defaultProps = { width: 16, height: 16 };
