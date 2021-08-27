@@ -1,20 +1,16 @@
 import React, { useRef, useState } from 'react';
 
 import { ButtonBaseElements } from '../../../../gamut/dist';
-import { HookAsComponent } from '../../utils/HookAsComponent';
 import { AnimatedHeaderZone } from '../shared';
 import { NotificationBell } from './NotificationBell';
-import { markNotificationsRead } from './notificationRequests';
 import { NotificationsPane } from './NotificationsPane';
 import { AppHeaderNotifications } from './types';
-import { useNotificationsPoll } from './useNotificationsPoll';
 
 export const useHeaderNotifications = (
   settings: AppHeaderNotifications | undefined
 ) => {
   const [isPaneVisible, setIsPaneVisible] = useState(false);
   const bellRef = useRef<ButtonBaseElements>(null);
-  const [notifications, setNotifications] = useState(settings?.initial ?? []);
 
   if (!settings) {
     return [null, null];
@@ -23,19 +19,6 @@ export const useHeaderNotifications = (
   const togglePane = () => {
     if (!isPaneVisible) {
       settings.onEnable();
-      setNotifications(
-        notifications.map((notification) => ({
-          ...notification,
-          unread: false,
-        }))
-      );
-
-      // We don't have any visual indication of this request failing
-      // eslint-disable-next-line @typescript-eslint/no-floating-promises
-      markNotificationsRead(
-        settings.baseUrl,
-        notifications.map((notification) => notification.id)
-      );
     }
 
     setIsPaneVisible((oldIsPaneVisible) => !oldIsPaneVisible);
@@ -46,26 +29,18 @@ export const useHeaderNotifications = (
       id: 'notifications',
       type: 'render-element',
       renderElement: () => (
-        <>
-          <HookAsComponent
-            args={[settings.baseUrl, notifications, setNotifications]}
-            hook={useNotificationsPoll}
-          />
-          <NotificationBell
-            bellRef={bellRef}
-            notifications={notifications}
-            onClick={togglePane}
-          />
-        </>
+        <NotificationBell
+          bellRef={bellRef}
+          notifications={settings.notifications}
+          onClick={togglePane}
+        />
       ),
     },
     <AnimatedHeaderZone visible={isPaneVisible}>
       <NotificationsPane
-        baseUrl={settings.baseUrl}
+        actions={settings.actions}
         bellRef={bellRef}
-        onTrackingClick={settings.onTrackingClick}
-        notifications={notifications}
-        setNotifications={setNotifications}
+        notifications={settings.notifications}
         onClose={togglePane}
       />
     </AnimatedHeaderZone>,

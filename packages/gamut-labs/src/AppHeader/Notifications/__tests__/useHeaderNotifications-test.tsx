@@ -5,18 +5,21 @@ import userEvent from '@testing-library/user-event';
 import React from 'react';
 
 import { createStubNotification } from '../__fixtures__/stubs';
-import { markNotificationsRead } from '../notificationRequests';
 import { useHeaderNotifications } from '../useHeaderNotifications';
 
 jest.mock('../notificationRequests');
 
 const onEnable = jest.fn();
-const onTrackingClick = jest.fn();
 
 const defaultProps = {
-  baseUrl: 'codecademy.com/test/',
+  actions: {
+    clear: jest.fn(),
+    click: jest.fn(),
+    dismiss: jest.fn(),
+    read: jest.fn(),
+    track: jest.fn(),
+  },
   onEnable,
-  onTrackingClick,
 };
 
 describe('useHeaderNotifications', () => {
@@ -27,9 +30,9 @@ describe('useHeaderNotifications', () => {
   });
 
   it('renders its notifications pane as invisible by default when there are notifications', async () => {
-    const initial = [createStubNotification()];
+    const notifications = [createStubNotification()];
     const hook = renderHook(() =>
-      useHeaderNotifications({ ...defaultProps, initial })
+      useHeaderNotifications({ ...defaultProps, notifications })
     );
 
     const view = render(
@@ -40,9 +43,9 @@ describe('useHeaderNotifications', () => {
   });
 
   it('renders its notifications pane as visible when the bell is clicked and there are notifications', async () => {
-    const initial = [createStubNotification()];
+    const notifications = [createStubNotification()];
     const hook = renderHook(() =>
-      useHeaderNotifications({ ...defaultProps, initial })
+      useHeaderNotifications({ ...defaultProps, notifications })
     );
 
     const buttonView = render(
@@ -59,9 +62,7 @@ describe('useHeaderNotifications', () => {
       <MockGamutProvider>{hook.result.current[1]}</MockGamutProvider>
     );
 
-    expect(markNotificationsRead).toHaveBeenCalledWith('codecademy.com/test/', [
-      initial[0].id,
-    ]);
+    expect(defaultProps.onEnable).toHaveBeenCalled();
     expect(paneView.container).not.toBeEmptyDOMElement();
   });
 });

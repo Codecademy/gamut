@@ -28,10 +28,15 @@ const user: User = {
 const defaultProps = {
   action,
   notifications: {
-    baseUrl: '',
-    initial: [],
+    actions: {
+      clear: jest.fn(),
+      click: jest.fn(),
+      dismiss: jest.fn(),
+      read: jest.fn(),
+      track: jest.fn(),
+    },
+    notifications: [],
     onEnable: jest.fn(),
-    onTrackingClick: jest.fn(),
   },
   search: {
     onEnable: jest.fn(),

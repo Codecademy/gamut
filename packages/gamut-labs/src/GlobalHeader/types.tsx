@@ -20,7 +20,6 @@ type BaseHeader = {
   onLinkAction?: AppHeaderClickHandler<AppHeaderItemWithHref>;
   className?: string;
   hidePricing?: boolean;
-  notifications: AppHeaderNotifications;
   search: AppHeaderSearch;
 };
 
@@ -37,6 +36,7 @@ export type User = {
 };
 
 type LoggedInHeader = BaseHeader & {
+  notifications: AppHeaderNotifications;
   renderProfile?: RenderProfile;
   renderFavorites?: RenderFavorites;
   user: User;

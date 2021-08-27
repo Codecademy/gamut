@@ -8,14 +8,15 @@ import React from 'react';
 import { createStubNotification } from '../__fixtures__/stubs';
 import { useNotificationButtons } from '../useNotificationButtons';
 
-const setNotifications = jest.fn();
-const onTrackingClick = jest.fn();
-
-const defaultProps = {
-  baseUrl: '',
-  setNotifications,
-  onTrackingClick,
+const actions = {
+  clear: jest.fn(),
+  click: jest.fn(),
+  dismiss: jest.fn(),
+  read: jest.fn(),
+  track: jest.fn(),
 };
+
+const defaultProps = { actions };
 
 globalThis.fetch = jest.fn();
 
@@ -48,8 +49,10 @@ describe('useNotificationButtons', () => {
     expect(fetch).toHaveBeenCalledWith(`/notifications?target=web`, {
       method: 'DELETE',
     });
-    expect(setNotifications).toHaveBeenCalledWith([]);
-    expect(onTrackingClick).toHaveBeenCalledWith('notification_clear_all');
+    expect(defaultProps.actions.clear).toHaveBeenCalled();
+    expect(defaultProps.actions.clear).toHaveBeenCalledWith(
+      'notification_clear_all'
+    );
   });
 
   it('expands notifications when the Show More button is pressed', async () => {
@@ -69,7 +72,7 @@ describe('useNotificationButtons', () => {
     });
 
     expect(hook.result.current[2]).toEqual(notifications);
-    expect(onTrackingClick).toHaveBeenCalledWith('notification_show_more');
+    expect(actions.click).toHaveBeenCalledWith('notification_show_more');
   });
 
   it('contracts notifications when the Show Less button is pressed', async () => {
@@ -91,6 +94,6 @@ describe('useNotificationButtons', () => {
     });
 
     expect(hook.result.current[2]).toEqual(notifications.slice(0, 3));
-    expect(onTrackingClick).toHaveBeenCalledWith('notification_show_more');
+    expect(actions.click).toHaveBeenCalledWith('notification_show_more');
   });
 });

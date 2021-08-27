@@ -1,16 +1,13 @@
 import { Box, TextButton } from '@codecademy/gamut';
 import React, { useState } from 'react';
 
-import { clearAllNotifications } from './notificationRequests';
 import { NotificationsPaneContentsProps } from './types';
 
 const defaultDisplayLimit = 3;
 
 export const useNotificationButtons = ({
-  baseUrl,
-  setNotifications,
+  actions,
   notifications,
-  onTrackingClick,
 }: NotificationsPaneContentsProps) => {
   const [showMore, setShowMore] = useState(false);
   const [displayLimit, amountAdjective] = showMore
@@ -25,16 +22,13 @@ export const useNotificationButtons = ({
     setShowMore(!showMore);
 
     if (!showMore) {
-      onTrackingClick('notification_show_more');
+      actions.track('notification_show_more');
     }
   };
 
   const clearAll = () => {
-    // We don't have any visual indication of this request failing
-    // eslint-disable-next-line @typescript-eslint/no-floating-promises
-    clearAllNotifications(baseUrl);
-    setNotifications([]);
-    onTrackingClick('notification_clear_all');
+    actions.clear();
+    actions.track('notification_clear_all');
   };
 
   return [

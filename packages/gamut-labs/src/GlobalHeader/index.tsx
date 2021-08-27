@@ -145,11 +145,16 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
         <AppHeader
           action={combinedAction}
           items={getAppHeaderItems(props)}
-          notifications={props.notifications}
           search={props.search}
-          redirectParam={
-            props.type === 'anon' ? props.redirectParam : undefined
-          }
+          {...(props.type === 'anon'
+            ? {
+                redirectParam: props.redirectParam,
+              }
+            : props.type === 'loading'
+            ? {}
+            : {
+                notifications: props.notifications,
+              })}
         />
       </HeaderContainer>
       <HeaderContainer

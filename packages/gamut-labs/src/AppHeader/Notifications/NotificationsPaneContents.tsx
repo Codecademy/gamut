@@ -15,35 +15,21 @@ import { useNotificationButtons } from './useNotificationButtons';
 export const NotificationsPaneContents: React.FC<NotificationsPaneContentsProps> = (
   props
 ) => {
-  const { notifications, onTrackingClick, setNotifications } = props;
+  const { actions, notifications } = props;
   const [
     clearButton,
     showButton,
     visibleNotifications,
   ] = useNotificationButtons(props);
 
-  const onDismiss = (notification: Notification) => {
-    setNotifications(
-      notifications.filter(
-        (oldNotification) => oldNotification.id !== notification.id
-      )
-    );
-  };
-
   const onNotificationClick = (notification: Notification) => {
-    onTrackingClick('notification_bell_cta', notification);
+    actions.click(notification);
 
     if (!notification.unread) {
       return;
     }
 
-    setNotifications(
-      notifications.map((oldNotification) =>
-        oldNotification.id === notification.id
-          ? { ...oldNotification, unread: false }
-          : oldNotification
-      )
-    );
+    actions.read(notification);
   };
 
   return (
@@ -74,7 +60,7 @@ export const NotificationsPaneContents: React.FC<NotificationsPaneContentsProps>
         <Box pb={16}>
           <NotificationList
             notifications={visibleNotifications}
-            onDismiss={onDismiss}
+            onDismiss={actions.dismiss}
             onNotificationClick={onNotificationClick}
           />
         </Box>
