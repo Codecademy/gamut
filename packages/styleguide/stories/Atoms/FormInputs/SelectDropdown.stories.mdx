@@ -1,10 +1,11 @@
 import { Box, FormGroup, SelectDropdown } from '@codecademy/gamut';
 import title from '@codecademy/macros/lib/title.macro';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import LinkTo from '@storybook/addon-links/react';
 
 import { PropsTable } from '~styleguide/blocks';
 
-import { SelectDropdownExample } from './examples';
+import { SelectDropdownExample, SelectDropdownIconExample } from './examples';
 
 export const fruitOptions = [
   'Apple',
@@ -291,7 +292,7 @@ You can chose how options will be shown in the dropdown. 6 is the default limit 
     }}
   >
     {(args) => (
-      <Box width="20rem" height="25rem">
+      <Box width="20rem" height="22rem">
         <FormGroup
           label="i have the default shownOptionsLimit"
           htmlFor="shownOptions01"
@@ -364,6 +365,68 @@ You can chose how options will be shown in the dropdown. 6 is the default limit 
   </Story>
 </Canvas>
 
+### SelectDropdown Option Icons
+
+To add some pizzazz to your dropdown, you can add any of our <LinkTo kind='Atoms/Icons'>gamut-icons</LinkTo> to your options.
+
+<SelectDropdownIconExample />
+
+```tsx
+import { Box, FormGroup, SelectDropdown } from '@codecademy/gamut/src';
+import { RadarIcon, ResponsiveIcon, RocketIcon } from '@codecademy/gamut-icons';
+import React from 'react';
+
+export const SelectDropdownIconExample: React.FC = () => (
+  <Box p={16} width="100%" height="12rem" border={1} bg="palePink">
+    <FormGroup label="i have pizzazz">
+      <SelectDropdown
+        options={[
+          {
+            label: 'ohai',
+            value: 'ohai',
+            icon: RocketIcon,
+          },
+          {
+            label: 'surprise pacman',
+            value: 'pacman',
+            icon: RadarIcon,
+          },
+          {
+            label: `who's that pokemon?`,
+            value: 'what',
+            icon: ResponsiveIcon,
+          },
+        ]}
+      />
+    </FormGroup>
+    <Background p={16} bg="navy">
+      <FormGroup label="i am fancy">
+        <SelectDropdown
+          size="small"
+          options={[
+            {
+              label: 'ohai',
+              value: 'ohai',
+              icon: RocketIcon,
+            },
+            {
+              label: 'surprise pacman',
+              value: 'pacman',
+              icon: RadarIcon,
+            },
+            {
+              label: `who's that pokemon?`,
+              value: 'what',
+              icon: ResponsiveIcon,
+            },
+          ]}
+        />
+      </FormGroup>
+    </Background>
+  </Box>
+);
+```
+
 ### Custom inputProps
 
 Some of our forms require special props be passed directly onto the `<input/>` component. We can do that by passing an object, formatted `{propName: value}`, into our inputProps prop.
@@ -393,3 +456,7 @@ Some of our forms require special props be passed directly onto the `<input/>` c
 Our SelectDropdown is responsive to ColorMode!
 
 <SelectDropdownExample />
+
+### onInputChange
+
+You can pass a function to the `onInputChange` prop that will be called whenever a new option is selected or the input text changes. If you are using `onInputChange` with a searchable `SelectDropdown`, please note that the function will be called on every keystroke.
