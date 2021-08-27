@@ -145,7 +145,7 @@ export const Testimonial: React.FC<TestimonialProps> = ({
             </Text>
           )}
         </Box>
-        <QuoteArt src={darkQuotes} />
+        <QuoteArt alt="" src={darkQuotes} />
         <Text
           pt={{ _: 0, md: isVerticleLayout ? 0 : 4 }}
           pr={{ _: 16, sm: 0 }}
