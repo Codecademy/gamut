@@ -1,11 +1,11 @@
 import React, { Fragment } from 'react';
 import { Mode, SubmitHandler } from 'react-hook-form';
 
-import { DisableOnSubmit } from '..';
 import { ButtonProps } from '../Button/shared';
 import { FormWrapper } from '../Form';
 import { FormValues } from '../Form/types';
 import { LayoutGrid, LayoutGridProps } from '../Layout';
+import { DisableOnSubmit } from './';
 import { GridFormButtons, GridFormSubmitProps } from './GridFormButtons';
 import {
   GridFormContent,
@@ -89,7 +89,6 @@ export function GridForm<Values extends FormValues>({
   submit,
   validation = 'onSubmit',
   showRequired = false,
-  disableFieldsOnSubmit = false,
 }: GridFormProps<Values>) {
   const flatFields = fields.flatMap((field) =>
     isGridFormSection(field) ? field.fields : field

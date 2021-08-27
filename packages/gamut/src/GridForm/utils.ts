@@ -1,13 +1,12 @@
-import { FieldError, useFormContext, UseFormMethods } from 'react-hook-form';
+import { useContext } from 'react';
+import { FieldError, useFormContext } from 'react-hook-form';
 
-import { DisableOnSubmit } from '..';
+import { PropsContext } from '../Form';
 
-type formContext = UseFormMethods & DisableOnSubmit;
-
+PropsContext;
 export const useFieldContext = (fieldName: string) => {
-  const { register, errors, setValue, formState, disableFieldsOnSubmit } = <
-    formContext
-  >useFormContext();
+  const { register, errors, setValue, formState } = useFormContext();
+  const { disableFieldsOnSubmit } = useContext(PropsContext);
   /**
    * Keep track of the first error in this form.
    * This is so we only add the correct aria-live props on the first error.
@@ -16,7 +15,7 @@ export const useFieldContext = (fieldName: string) => {
   return {
     isFirstError: Object.keys(errors)[0] === fieldName,
     error: (errors[fieldName] as FieldError)?.message,
-    isDisabled: true && true,
+    isDisabled: true && disableFieldsOnSubmit,
     register,
     setValue,
   };

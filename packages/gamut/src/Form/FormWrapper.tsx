@@ -1,4 +1,3 @@
-import styled from '@emotion/styled';
 import React from 'react';
 import {
   FormProvider,
@@ -40,8 +39,11 @@ export type FormWrapperProps<Values extends {}> = DisableOnSubmit &
 
 export type FormProviderCustomProps = FormProviderProps & DisableOnSubmit;
 
-const PropsContext = React.createContext({ disableFieldsOnSubmit: false });
+export const PropsContext = React.createContext({
+  disableFieldsOnSubmit: false,
+});
 const PropsProvider = PropsContext.Provider;
+
 /**
  * This is an in progress API! please reach out to the web-plat team if you're interested in using it.
  */
