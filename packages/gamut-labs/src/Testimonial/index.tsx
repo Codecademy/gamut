@@ -1,7 +1,7 @@
 import { Anchor, Box, FloatingCard, Text } from '@codecademy/gamut';
 import { modeColorProps, system } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
-import React, { ComponentProps } from 'react';
+import React, { ComponentProps, useMemo } from 'react';
 
 import darkQuotes from '../assets/navyQuotes.svg';
 
@@ -67,19 +67,19 @@ export type TestimonialProps = ComponentProps<typeof TestimonialCard> &
     /**
      * associated occupation of the person.
      */
-    occupation?: string;
+    occupation?: string | null;
     /**
      * Associated workplace or institution
      */
-    company?: string;
+    company?: string | null;
     /**
      * Portrait image src
      */
-    imageUrl?: string;
+    imageUrl?: string | null;
     /**
      * setting this href will wrap the testimonial card with an anchor tag.
      */
-    href?: string;
+    href?: string | null;
     /**
      * used to conditonally hide the portrait photo
      */
@@ -103,6 +103,13 @@ export const Testimonial: React.FC<TestimonialProps> = ({
   ...rest
 }) => {
   const isVerticleLayout = variant === 'vertical';
+
+  const bottomText: string = useMemo(() => {
+    if (company && location) return `@ ${company}, ${location}`;
+    if (!company && location) return `${location}`;
+    if (company && !location) return `@ ${company}`;
+    return '';
+  }, [company, location]);
 
   const renderTestimonial = () => (
     <TestimonialCard
@@ -132,13 +139,16 @@ export const Testimonial: React.FC<TestimonialProps> = ({
           <Text variant="p-small" as="p" fontFamily="accent">
             {occupation}
           </Text>
-          <Text variant="p-small" as="p" fontFamily="accent">
-            {`@ ${company}${location ? `, ${location}` : ''}`}
-          </Text>
+          {!!bottomText && (
+            <Text variant="p-small" as="p" fontFamily="accent">
+              {bottomText}
+            </Text>
+          )}
         </Box>
-        <QuoteArt src={darkQuotes} />
+        <QuoteArt alt="" src={darkQuotes} />
         <Text
           pt={{ _: 0, md: isVerticleLayout ? 0 : 4 }}
+          pr={{ _: 16, sm: 0 }}
           gridArea="text"
           variant="title-md"
           as="p"
