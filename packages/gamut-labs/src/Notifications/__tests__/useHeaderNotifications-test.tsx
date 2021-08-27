@@ -7,8 +7,6 @@ import React from 'react';
 import { createStubNotification } from '../__fixtures__/stubs';
 import { useHeaderNotifications } from '../useHeaderNotifications';
 
-jest.mock('../notificationRequests');
-
 const onEnable = jest.fn();
 
 const defaultProps = {
