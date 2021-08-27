@@ -15,7 +15,7 @@ export const useFieldContext = (fieldName: string) => {
   return {
     isFirstError: Object.keys(errors)[0] === fieldName,
     error: (errors[fieldName] as FieldError)?.message,
-    isDisabled: true && disableFieldsOnSubmit,
+    isDisabled: formState.isSubmitting && disableFieldsOnSubmit,
     register,
     setValue,
   };
