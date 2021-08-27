@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [19.23.11](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.23.10...@codecademy/gamut-labs@19.23.11) (2021-08-27)
+
+
+### Bug Fixes
+
+* **Testimonial:** axe issue on Testimonial ([e2a51d8](https://github.com/Codecademy/client-modules/commit/e2a51d8d1654850de1fbef1873a443cf4cde1a9c))
+
+
+
 ### [19.23.10](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.23.9...@codecademy/gamut-labs@19.23.10) (2021-08-26)
 
 
