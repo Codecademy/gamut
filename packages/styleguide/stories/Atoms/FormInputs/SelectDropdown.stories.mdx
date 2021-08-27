@@ -456,3 +456,7 @@ Some of our forms require special props be passed directly onto the `<input/>` c
 Our SelectDropdown is responsive to ColorMode!
 
 <SelectDropdownExample />
+
+### onInputChange
+
+You can pass a function to the `onInputChange` prop that will be called whenever a new option is selected or the input text changes. If you are using `onInputChange` with a searchable `SelectDropdown`, please note that the function will be called on every keystroke.
