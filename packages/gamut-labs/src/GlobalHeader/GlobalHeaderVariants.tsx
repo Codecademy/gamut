@@ -14,7 +14,6 @@ import {
   login,
   logo,
   myHome,
-  notifications,
   pricingDropdown,
   proLogo,
   proProfile,

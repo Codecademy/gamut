@@ -9,6 +9,12 @@ const renderView = setupRtl(GlobalPage, {
   },
   header: {
     action: jest.fn(),
+    notifications: {
+      baseUrl: '',
+      initial: [],
+      onEnable: jest.fn(),
+      onTrackingClick: jest.fn(),
+    },
     search: {
       onEnable: jest.fn(),
       onSearch: jest.fn(),

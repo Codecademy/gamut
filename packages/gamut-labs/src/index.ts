@@ -26,6 +26,7 @@ export * from './AppHeader/AppHeaderElements/AppHeaderDropdown';
 export * from './AppHeader/AppHeaderElements/types';
 export * from './AppHeader/AppHeaderElements/AppHeaderLink';
 export * from './AppHeader/AppHeaderElements/AppHeaderLogo';
+export type { AppHeaderNotifications } from './AppHeader/Notifications/types';
 export type { AppHeaderSearch } from './AppHeader/Search/useHeaderSearch';
 export * from './AppHeaderMobile';
 export * from './AppHeaderMobile/AppHeaderLinkMobile';
