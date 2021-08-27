@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { DocsContext, Title } from '@storybook/addon-docs/blocks';
+import { Figma } from 'storybook-addon-designs/blocks';
 
 import { Parameters } from '@storybook/addons';
 import { useNavigation } from '../Navigation/NavigationProvider';
@@ -56,12 +57,11 @@ export const DocsPage: React.FC = ({ children }) => {
   }
 
   const {
-    parameters: { figmaId, source, modes },
+    parameters: { design = {}, source, modes },
   } = storyStore?._kinds[kind];
 
   const showMeta = type === 'element';
   const npmLink = `https://www.npmjs.com/package/@codecademy/${source}`;
-  const figmaLink = `https://www.figma.com/file/${figmaId}`;
 
   const renderStatus = () => {
     if (storyStatus === 'static') return null;
@@ -108,13 +108,18 @@ export const DocsPage: React.FC = ({ children }) => {
                   @codecademy/{source} {linkIcon}
                 </Anchor>
               )}
-              {figmaId && (
-                <Anchor fontSize={16} target="_blank" href={figmaLink}>
+              {design?.url && (
+                <Anchor fontSize={16} target="_blank" href={design?.url}>
                   Figma Source File {linkIcon}
                 </Anchor>
               )}
             </GridBox>
           </Background>
+        )}
+        {design?.url && (
+          <GridBox mb={32}>
+            <Figma height="30%" collapsable url={design?.url} />
+          </GridBox>
         )}
         {children}
       </ContentContainer>

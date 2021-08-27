@@ -1,4 +1,5 @@
 import { variance } from '../../src/core';
+import { createScale } from '../../src/scales/createScale';
 import { transformSize } from '../../src/transforms/transformSize';
 import { theme } from '../__fixtures__/theme';
 
@@ -17,6 +18,7 @@ const layout = variance.create({
     transform: (val: string) => `${parseInt(val, 10) / 16}rem`,
   },
 });
+
 const rem = (val: number) => `${val / 16}rem`;
 
 type Assert<X, Y> = X extends Y ? true : false;
@@ -175,6 +177,19 @@ describe('style props', () => {
 
       expect(doubleSpace({ theme, p: 'initial' })).toEqual({
         padding: 'initial',
+      });
+    });
+    it('transforms array scale values always', () => {
+      const doubleSpace = variance.create({
+        p: {
+          property: 'padding',
+          scale: createScale<number>(),
+          transform: (val: number) => val * 2,
+        },
+      });
+
+      expect(doubleSpace({ theme, p: 16 })).toEqual({
+        padding: 32,
       });
     });
   });

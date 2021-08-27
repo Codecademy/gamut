@@ -11,12 +11,14 @@ import {
   RatingStarGiveIcon,
   SupportIcon,
 } from '@codecademy/gamut-icons';
+import { ReactNode } from 'react';
 
 import {
   AppHeaderFillButtonItem,
   AppHeaderLinkItem,
   AppHeaderLogoItem,
   AppHeaderProfileDropdownItem,
+  AppHeaderRenderElementItem,
   AppHeaderSimpleDropdownItem,
   AppHeaderTextButtonItem,
 } from '../AppHeader/AppHeaderElements/types';
@@ -65,6 +67,13 @@ export const resourcesDropdown: AppHeaderSimpleDropdownItem = {
   id: 'resources',
   text: 'Resources',
   popover: [
+    {
+      id: 'docs',
+      href: '/resources/docs',
+      trackingTarget: 'topnav_resources_docs',
+      text: 'Docs',
+      type: 'link',
+    },
     {
       id: 'cheatsheets',
       href: '/resources/cheatsheets/all',
@@ -171,6 +180,20 @@ export const forBusiness: AppHeaderLinkItem = {
   text: 'For Business',
   href: '/business',
   type: 'link',
+};
+
+/**
+ * Note: this is currently experimental!
+ * This will be cleaned up as part of EGG-1644.
+ */
+export const favorites = (
+  renderFavorites: () => ReactNode
+): AppHeaderRenderElementItem => {
+  return {
+    id: 'favorites',
+    renderElement: renderFavorites,
+    type: 'render-element',
+  };
 };
 
 const profileMyProfile: AppHeaderLinkItem = {

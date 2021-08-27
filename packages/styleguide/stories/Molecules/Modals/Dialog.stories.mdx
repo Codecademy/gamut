@@ -1,0 +1,120 @@
+import { Dialog } from '@codecademy/gamut/src';
+import { ColorMode } from '@codecademy/gamut-styles/src';
+import title from '@codecademy/macros/lib/title.macro';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+
+import { LinkTo, PropsTable } from '~styleguide/blocks';
+
+<Meta
+  title={title}
+  component={Dialog}
+  parameters={{
+    subtitle: `Structured dialog modals with binary options`,
+    status: 'current',
+    source: 'gamut',
+    design: {
+      type: 'figma',
+      url:
+        'https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=2449%3A3770',
+    },
+  }}
+  args={{
+    inline: true,
+    isOpen: true,
+    title: 'Depeche Modal',
+    children: 'All I ever wanted, all I ever needed is here in my',
+    confirmCta: { children: 'Arms!' },
+    cancelCta: { children: 'Heart?' },
+  }}
+/>
+
+## Use cases
+
+- Use regular Dialogs to have users accept a specific state of the system or force a user to see something.
+- Use warning Dialogs to warn the user of the consequences of the action they may take. This is helpful for cases like "Delete Account" or "Reset Progress" to make sure users confirm those types of actions.
+
+## Key principles
+
+- Dialogs appear unprompted and require confirmation before the user can continue.
+- Use the modal component sparingly. This is the most dispruptive tool in our arsenal. We should only have a small handful of these in our system at any given time.
+
+## Usage Guidelines
+
+- Dialogs have a width of 400px in the `small` size, and 540px in `medium`.
+  - Small is the default style, and works best with 1-2 lines of text.
+  - The Medium size is suitable for Dialogs that require more content or explanation.
+  - The `fluid` option fits to the maximum size of the components inside of it. This is useful when you want to incorporate elements beyond standard typography inside of your Dialog.
+- Dialog height changes depending on the body-text length.
+- Dialog has light and dark theme variants that respond to the appropriate <LinkTo id="foundations-color-mode--page">Color Mode</LinkTo>.
+- Warning Dialogs should use the Danger action colors, and will always be paired with a Cancel button.
+- Dialogs should always be displayed over an <LinkTo id="molecules-modals-overlay--overlay">Overlay</LinkTo>. Use the Overlay components in Gamut (and Figma) to capture the appropriate background opacity.
+  - The overlay in light mode should be white at 95% opacity, the overlay in dark mode should be black at 75% opacity.
+
+## Location
+
+- Dialogs should be centered inside of the window.
+
+## Variants
+
+### Primary
+
+<Canvas>
+  <Story name="Primary" height="500px">
+    {(args) => {
+      return <Dialog {...args} />;
+    }}
+  </Story>
+</Canvas>
+
+### Danger
+
+<Canvas>
+  <Story name="Danger" height="500px" args={{ variant: 'danger' }}>
+    {(args) => {
+      return <Dialog {...args} />;
+    }}
+  </Story>
+</Canvas>
+
+## Color Modes
+
+Dialog components respond to the current <LinkTo id="foundations-color-mode--page">Color Mode</LinkTo> they are used in. Each component inside of dialog will correctly display for the current color mode without any extra configuration.
+Check it out:
+
+### Light
+
+<Canvas>
+  <Story name="Light" height="500px">
+    {(args) => {
+      return <Dialog {...args} />;
+    }}
+  </Story>
+</Canvas>
+
+### Dark
+
+<Canvas>
+  <Story name="Dark" height="500px" args={{ mode: 'dark' }}>
+    {(args) => {
+      return (
+        <ColorMode mode="dark">
+          <Dialog {...args} />
+        </ColorMode>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Code Playground
+
+Edit attributes and see what’s possible to do with this component or get the exact output you want.
+
+<Canvas>
+  <Story name="Dialog" height="500px">
+    {(args) => {
+      return <Dialog {...args} />;
+    }}
+  </Story>
+</Canvas>
+
+<PropsTable story="Dialog" />

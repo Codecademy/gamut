@@ -3,6 +3,68 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [11.9.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@11.9.0...@codecademy/gamut-styles@11.9.1) (2021-08-16)
+
+
+### Bug Fixes
+
+* Import path  ([5aa461c](https://github.com/Codecademy/client-modules/commit/5aa461c53dea7580588a39dfa1b48b4eeac44684))
+
+
+
+## [11.9.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@11.8.0...@codecademy/gamut-styles@11.9.0) (2021-08-16)
+
+
+### Features
+
+* **Testimonial:** Add new Testimonial Component ([efe1568](https://github.com/Codecademy/client-modules/commit/efe156813cd10586b7a61f1013564cb5387f5aa3))
+
+
+
+## [11.8.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@11.7.2...@codecademy/gamut-styles@11.8.0) (2021-08-13)
+
+
+### Features
+
+* Add 2.5rem interval to spacing GM-317 ([755a224](https://github.com/Codecademy/client-modules/commit/755a2247ed0dd24c1f31a56bd6db922895ef9547))
+
+
+
+### [11.7.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@11.7.1...@codecademy/gamut-styles@11.7.2) (2021-08-12)
+
+**Note:** Version bump only for package @codecademy/gamut-styles
+
+
+
+
+
+### [11.7.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@11.7.0...@codecademy/gamut-styles@11.7.1) (2021-08-05)
+
+
+### Bug Fixes
+
+* Cards now correctly set color mode for their contents GM-308 ([7621edc](https://github.com/Codecademy/client-modules/commit/7621edc5bfb908b1e26bc8a77933ea0e310d76e7))
+
+
+
+## [11.7.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@11.6.3...@codecademy/gamut-styles@11.7.0) (2021-08-03)
+
+
+### Features
+
+* **Background:** Set current background color to local CSS variable GM-259 ([bbb71e6](https://github.com/Codecademy/client-modules/commit/bbb71e6ef4a0b8d7d10409f81f936693a7b34962))
+
+
+
+### [11.6.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@11.6.2...@codecademy/gamut-styles@11.6.3) (2021-07-29)
+
+
+### Bug Fixes
+
+* **colors:** Red Swap for accessible errors GM-281 ([c09d9f4](https://github.com/Codecademy/client-modules/commit/c09d9f4ad8254042ebdec9b02675e89f6a9aaac3))
+
+
+
 ### [11.6.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@11.6.1...@codecademy/gamut-styles@11.6.2) (2021-07-19)
 
 **Note:** Version bump only for package @codecademy/gamut-styles

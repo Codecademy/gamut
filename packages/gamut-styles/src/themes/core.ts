@@ -29,9 +29,9 @@ export const coreTheme = createTheme({
   .addColors(corePalette)
   .addColorModes('light', {
     light: {
-      text: { _: 'navy-800', disabled: 'navy-500' },
+      text: { _: 'navy-800', accent: 'navy-900', disabled: 'navy-500' },
       feedback: {
-        error: 'red-500',
+        error: 'red-600',
         success: 'green-700',
         warning: 'yellow',
       },
@@ -57,11 +57,11 @@ export const coreTheme = createTheme({
       },
       danger: {
         _: 'red-500',
-        hover: 'red-400',
+        hover: 'red-600',
       },
     },
     dark: {
-      text: { _: 'white', disabled: 'navy-200' },
+      text: { _: 'white', accent: 'beige', disabled: 'navy-200' },
       feedback: {
         error: 'red-0',
         success: 'green-0',

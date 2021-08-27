@@ -1,41 +1,25 @@
+import { ColorModes } from '@codecademy/gamut-styles';
 import React, { ComponentProps } from 'react';
 
 import { Box } from '../../Box';
 import { CTAButton, FillButton, TextButton } from '../../Button';
 import { ButtonProps } from '../../Button/shared';
-import {
-  ButtonDeprecated,
-  ButtonDeprecatedProps,
-} from '../../ButtonDeprecated';
+import { SubmitButton, SubmitButtonProps } from '../../Form';
 import { Column } from '../../Layout';
-import { VisualTheme } from '../../theming/VisualTheme';
 
 export type GridFormButtonsPosition = keyof typeof positions;
 
-export type SubmitButtonType = 'cta' | 'fill';
-export type SubmitButtonDeprecatedType = 'business';
+export type SubmitButtonType = keyof typeof buttonMap;
 
-type GridFormBase = {
+export type GridFormSubmitProps = {
   contents: React.ReactNode;
   position?: GridFormButtonsPosition;
   size: ComponentProps<typeof Column>['size'];
-  disabled?: ButtonDeprecatedProps['disabled'];
-  mode?: VisualTheme;
-};
-
-type GridFormButtonSubmitPropsDeprecated = GridFormBase & {
-  type?: SubmitButtonDeprecatedType;
-  theme?: ButtonDeprecatedProps['theme'];
-  outline?: ButtonDeprecatedProps['outline'];
-};
-
-type GridFormSubmitPropsStandard = GridFormBase & {
+  disabled?: SubmitButtonProps['disabled'];
+  loading?: SubmitButtonProps['loading'];
+  mode?: ColorModes;
   type?: SubmitButtonType;
 };
-
-export type GridFormSubmitProps =
-  | GridFormButtonSubmitPropsDeprecated
-  | GridFormSubmitPropsStandard;
 
 export type GridFormCancelButtonProps = {
   children: React.ReactNode;
@@ -54,45 +38,14 @@ const positions = {
   stretch: 'stretch',
 };
 
+const buttonMap = {
+  cta: CTAButton,
+  fill: FillButton,
+};
+
 export const GridFormButtons: React.FC<
   GridFormSubmitProps & CancelButtonProps
-> = (props) => {
-  const getButton = () => {
-    switch (props.type) {
-      case 'cta':
-        return (
-          <CTAButton type="submit" mode={props.mode} disabled={props.disabled}>
-            {props.contents}
-          </CTAButton>
-        );
-      case 'business':
-        /**
-         * There are current designs that currently rely on the deprecated button.
-         * Primarily business components such as /WorkerSupportApplication/index.tsx,
-         * /PlanInvitationBulkForm/PlanInvitationBulkForm.tsx and /PlanInvitationForm/PlanInvitationForm.tsx
-         * currently using brand-blue variant of the deprecated button. With the later two also using the also
-         * using the outline button. Once work is finished for the colorMode changes for buttons the deprecated button
-         * can be removed.
-         */
-        return (
-          <ButtonDeprecated
-            disabled={props.disabled}
-            outline={props.outline}
-            theme={props.theme}
-            type="submit"
-          >
-            {props.contents}
-          </ButtonDeprecated>
-        );
-      default:
-        return (
-          <FillButton type="submit" mode={props.mode} disabled={props.disabled}>
-            {props.contents}
-          </FillButton>
-        );
-    }
-  };
-
+> = ({ type = 'fill', ...props }) => {
   return (
     <Column size={props.size}>
       <Box
@@ -103,7 +56,14 @@ export const GridFormButtons: React.FC<
         {props.cancel && (
           <TextButton {...props.cancel} mr={32} data-testid="cancel-button" />
         )}
-        {getButton()}
+        <SubmitButton
+          as={buttonMap[type]}
+          mode={props.mode}
+          disabled={props.disabled}
+          loading={props.loading}
+        >
+          {props.contents}
+        </SubmitButton>
       </Box>
     </Column>
   );

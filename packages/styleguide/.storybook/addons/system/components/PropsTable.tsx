@@ -9,7 +9,14 @@ import {
   ToggleLabel,
 } from './Elements';
 import { useSystemProps } from './useSystemProps';
-import { Box, GridBox, FlexBox, Text, Toggle } from '@codecademy/gamut/src';
+import {
+  Box,
+  GridBox,
+  FlexBox,
+  Text,
+  Toggle,
+  FloatingCard,
+} from '@codecademy/gamut/src';
 import { Link } from '~styleguide/blocks';
 
 type PropTagProps = {
@@ -24,10 +31,13 @@ export const PropTag: React.FC<PropTagProps> = ({ prop, active, onClick }) => {
   return (
     <PropGroupTag variant={variant} onClick={onClick}>
       {prop}
+
       <PropGroupTooltip>
-        {propNames.map((propName: string) => (
-          <PropItem key={`${prop}-${propName}`}>{propName}</PropItem>
-        ))}
+        <FloatingCard beak="bottom-left" p={16}>
+          {propNames.sort().map((propName: string) => (
+            <PropItem key={`${prop}-${propName}`}>{propName}</PropItem>
+          ))}
+        </FloatingCard>
       </PropGroupTooltip>
     </PropGroupTag>
   );

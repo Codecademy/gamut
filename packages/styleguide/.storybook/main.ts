@@ -20,6 +20,7 @@ module.exports = {
     '@storybook/addon-a11y',
     '@storybook/addon-links',
     './addons/system/preset',
+    'storybook-addon-designs',
   ],
   stories: getStories(),
   typescript: {
@@ -59,10 +60,6 @@ module.exports = {
         '@codecademy/gamut-illustrations$': path.resolve(
           __dirname,
           '../../gamut-illustrations/src'
-        ),
-        '@codecademy/gamut-patterns$': path.resolve(
-          __dirname,
-          '../../gamut-patterns/src'
         ),
       },
     };

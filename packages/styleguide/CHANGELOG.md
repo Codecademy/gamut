@@ -3,6 +3,524 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [43.10.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@43.10.0...@codecademy/styleguide@43.10.1) (2021-08-26)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [43.10.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@43.9.2...@codecademy/styleguide@43.10.0) (2021-08-26)
+
+
+### Features
+
+* **FloatingCard:** Adds shadow offset direction and pattern ([7a4a069](https://github.com/Codecademy/client-modules/commit/7a4a069efa729e6c1931fbb4b6aa37df73bc6189))
+
+
+
+### [43.9.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@43.9.1...@codecademy/styleguide@43.9.2) (2021-08-25)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [43.9.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@43.9.0...@codecademy/styleguide@43.9.1) (2021-08-24)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [43.9.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@43.8.1...@codecademy/styleguide@43.9.0) (2021-08-20)
+
+
+### Features
+
+* **SubmitButton:** The mission for submission GM-315 ([0df7859](https://github.com/Codecademy/client-modules/commit/0df7859fb84d6e4f01437b1202a12b0761709d0a))
+
+
+
+### [43.8.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@43.8.0...@codecademy/styleguide@43.8.1) (2021-08-20)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [43.8.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@43.7.9...@codecademy/styleguide@43.8.0) (2021-08-20)
+
+
+### Features
+
+* **SelectDropdown:** icons in options ([7d9f898](https://github.com/Codecademy/client-modules/commit/7d9f898e82378c071f85c53fc1c1a49337258786))
+
+
+
+### [43.7.9](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@43.7.8...@codecademy/styleguide@43.7.9) (2021-08-19)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [43.7.8](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@43.7.7...@codecademy/styleguide@43.7.8) (2021-08-19)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [43.7.7](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@43.7.6...@codecademy/styleguide@43.7.7) (2021-08-19)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [43.7.6](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@43.7.5...@codecademy/styleguide@43.7.6) (2021-08-18)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [43.7.5](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@43.7.4...@codecademy/styleguide@43.7.5) (2021-08-18)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [43.7.4](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@43.7.3...@codecademy/styleguide@43.7.4) (2021-08-17)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [43.7.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@43.7.2...@codecademy/styleguide@43.7.3) (2021-08-16)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [43.7.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@43.7.1...@codecademy/styleguide@43.7.2) (2021-08-16)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [43.7.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@43.7.0...@codecademy/styleguide@43.7.1) (2021-08-16)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [43.7.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@43.6.1...@codecademy/styleguide@43.7.0) (2021-08-16)
+
+
+### Features
+
+* **Testimonial:** Add new Testimonial Component ([efe1568](https://github.com/Codecademy/client-modules/commit/efe156813cd10586b7a61f1013564cb5387f5aa3))
+
+
+
+### [43.6.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@43.6.0...@codecademy/styleguide@43.6.1) (2021-08-13)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [43.6.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@43.5.0...@codecademy/styleguide@43.6.0) (2021-08-13)
+
+
+### Features
+
+* Modal GM-179 ([9fbb540](https://github.com/Codecademy/client-modules/commit/9fbb540adc32089ad971a71fa3cadf0257c02e3d))
+
+
+
+## [43.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@43.4.0...@codecademy/styleguide@43.5.0) (2021-08-13)
+
+
+### Features
+
+* **SelectDropdown:** shownOptionsLimit ([82b9cb0](https://github.com/Codecademy/client-modules/commit/82b9cb08bf14a1565cdf1648714f3660f7c97cf9))
+
+
+
+## [43.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@43.3.0...@codecademy/styleguide@43.4.0) (2021-08-13)
+
+
+### Features
+
+* **SelectDropdown:** small variant ([de29b2d](https://github.com/Codecademy/client-modules/commit/de29b2db2339be52200931a5643ab071d2e3198e))
+
+
+
+## [43.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@43.2.2...@codecademy/styleguide@43.3.0) (2021-08-13)
+
+
+### Features
+
+* **styleguide:** Allow component level links ([b7bbe42](https://github.com/Codecademy/client-modules/commit/b7bbe428a2c35cc92ac4de6edec95e7178647bab))
+
+
+### Bug Fixes
+
+* **Styleguide:** Fixes system prop tooltip colors GM-322 ([77a9aaa](https://github.com/Codecademy/client-modules/commit/77a9aaa98e3b92eea436151f498c23f7c17c0a2c))
+
+
+
+### [43.2.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@43.2.1...@codecademy/styleguide@43.2.2) (2021-08-13)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [43.2.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@43.2.0...@codecademy/styleguide@43.2.1) (2021-08-12)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [43.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@43.1.0...@codecademy/styleguide@43.2.0) (2021-08-12)
+
+
+### Features
+
+* **CurriculumCard:** Add beta sticker option to CurriculumCard ([84b30d5](https://github.com/Codecademy/client-modules/commit/84b30d52996e2323e5589ae0f5f65a3570951235))
+
+
+
+## [43.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@43.0.1...@codecademy/styleguide@43.1.0) (2021-08-11)
+
+
+### Features
+
+* **SelectDropdown:** ColorModes ([c867505](https://github.com/Codecademy/client-modules/commit/c867505c509a042c9217f1b7608f8e27a1fc4063))
+
+
+
+### [43.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@43.0.0...@codecademy/styleguide@43.0.1) (2021-08-11)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [43.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@42.7.7...@codecademy/styleguide@43.0.0) (2021-08-10)
+
+
+### ⚠ BREAKING CHANGES
+
+* **GridForm:** remove business button
+
+### Code Refactoring
+
+* **GridForm:** remove business button ([6458188](https://github.com/Codecademy/client-modules/commit/64581888cef91c8ff6e27ceecabedfa67f939274))
+
+
+
+### [42.7.7](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@42.7.6...@codecademy/styleguide@42.7.7) (2021-08-09)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [42.7.6](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@42.7.5...@codecademy/styleguide@42.7.6) (2021-08-09)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [42.7.5](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@42.7.4...@codecademy/styleguide@42.7.5) (2021-08-09)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [42.7.4](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@42.7.3...@codecademy/styleguide@42.7.4) (2021-08-09)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [42.7.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@42.7.2...@codecademy/styleguide@42.7.3) (2021-08-06)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [42.7.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@42.7.1...@codecademy/styleguide@42.7.2) (2021-08-05)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [42.7.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@42.7.0...@codecademy/styleguide@42.7.1) (2021-08-05)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [42.7.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@42.6.7...@codecademy/styleguide@42.7.0) (2021-08-05)
+
+
+### Features
+
+* tight variant for Checkbox ([6d6857a](https://github.com/Codecademy/client-modules/commit/6d6857ac3664a4c257cec8b774e10057cd85c1ee))
+
+
+
+### [42.6.7](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@42.6.6...@codecademy/styleguide@42.6.7) (2021-08-04)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [42.6.6](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@42.6.5...@codecademy/styleguide@42.6.6) (2021-08-03)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [42.6.5](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@42.6.4...@codecademy/styleguide@42.6.5) (2021-08-03)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [42.6.4](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@42.6.3...@codecademy/styleguide@42.6.4) (2021-08-03)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [42.6.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@42.6.2...@codecademy/styleguide@42.6.3) (2021-08-03)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [42.6.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@42.6.1...@codecademy/styleguide@42.6.2) (2021-08-03)
+
+
+### Bug Fixes
+
+* **Testimonial:** Fixes visual regression + renames to TestimonialDeprecated ([11d445f](https://github.com/Codecademy/client-modules/commit/11d445fbf95ae28d124ec27d5a88fbf3200c5535))
+
+
+
+### [42.6.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@42.6.0...@codecademy/styleguide@42.6.1) (2021-08-03)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [42.6.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@42.5.0...@codecademy/styleguide@42.6.0) (2021-08-03)
+
+
+### Features
+
+* **Background:** Set current background color to local CSS variable GM-259 ([bbb71e6](https://github.com/Codecademy/client-modules/commit/bbb71e6ef4a0b8d7d10409f81f936693a7b34962))
+
+
+
+## [42.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@42.4.1...@codecademy/styleguide@42.5.0) (2021-08-03)
+
+
+### Features
+
+* **Menu:** Add icon support and convert DropdownButton to use action menus GM-301 ([2b9ca76](https://github.com/Codecademy/client-modules/commit/2b9ca7657630b099c77d84bf1324371ebcf492f8))
+
+
+
+### [42.4.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@42.4.0...@codecademy/styleguide@42.4.1) (2021-08-02)
+
+
+### Bug Fixes
+
+* Fix box stories ([fd2e554](https://github.com/Codecademy/client-modules/commit/fd2e5542467c6ec7d466bf42617f766b50f179c6))
+
+
+
+## [42.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@42.3.8...@codecademy/styleguide@42.4.0) (2021-08-02)
+
+
+### Features
+
+* add custom error messaging ([8d5dc0e](https://github.com/Codecademy/client-modules/commit/8d5dc0e20508c141cc7a9ada5bdb421483afe771))
+
+
+
+### [42.3.8](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@42.3.7...@codecademy/styleguide@42.3.8) (2021-08-02)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [42.3.7](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@42.3.6...@codecademy/styleguide@42.3.7) (2021-08-02)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [42.3.6](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@42.3.5...@codecademy/styleguide@42.3.6) (2021-07-30)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [42.3.5](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@42.3.4...@codecademy/styleguide@42.3.5) (2021-07-30)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [42.3.4](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@42.3.3...@codecademy/styleguide@42.3.4) (2021-07-29)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [42.3.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@42.3.2...@codecademy/styleguide@42.3.3) (2021-07-29)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [42.3.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@42.3.1...@codecademy/styleguide@42.3.2) (2021-07-27)
+
+
+### Bug Fixes
+
+* (Checkbox) remove ref  + fix default value ([a489f85](https://github.com/Codecademy/client-modules/commit/a489f855291a2c917873c9cd92287f07866b5123))
+
+
+
+### [42.3.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@42.3.0...@codecademy/styleguide@42.3.1) (2021-07-27)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [42.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@42.2.1...@codecademy/styleguide@42.3.0) (2021-07-27)
+
+
+### Features
+
+* **Patterns:** Add SVGR build process and SVGO settings ([56e50ff](https://github.com/Codecademy/client-modules/commit/56e50ffe021102b84a7f9e5d7bb33ea6de890994))
+
+
+
+### [42.2.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@42.2.0...@codecademy/styleguide@42.2.1) (2021-07-26)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [42.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@42.1.3...@codecademy/styleguide@42.2.0) (2021-07-26)
+
+
+### Features
+
+* **BetaSticker:** Add beta sticker ([a1d3470](https://github.com/Codecademy/client-modules/commit/a1d3470c57d6aace31e3c255e6e1f3175844db00))
+
+
+
+### [42.1.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@42.1.2...@codecademy/styleguide@42.1.3) (2021-07-23)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [42.1.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@42.1.1...@codecademy/styleguide@42.1.2) (2021-07-22)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [42.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@42.1.0...@codecademy/styleguide@42.1.1) (2021-07-22)
+
+
+### Bug Fixes
+
+* **SelectDropdown:** Fix axe accessibility input issue + styling inconsistencies ([b6cf7ca](https://github.com/Codecademy/client-modules/commit/b6cf7ca984c1faa32f1de4fa0c51f0b1eaa5aa7b))
+
+
+
 ## [42.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@42.0.1...@codecademy/styleguide@42.1.0) (2021-07-19)
 
 

@@ -21,6 +21,7 @@ export const LogoProCutout: React.FC<LogoProCutoutProps> = ({
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
     aria-label={ariaLabel}
+    role="img"
   >
     <rect width="30" height="16" fill={backgroundColor} />
     <path

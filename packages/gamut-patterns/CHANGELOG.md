@@ -3,6 +3,71 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [0.5.7](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-patterns@0.5.6...@codecademy/gamut-patterns@0.5.7) (2021-08-16)
+
+**Note:** Version bump only for package @codecademy/gamut-patterns
+
+
+
+
+
+### [0.5.6](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-patterns@0.5.5...@codecademy/gamut-patterns@0.5.6) (2021-08-16)
+
+**Note:** Version bump only for package @codecademy/gamut-patterns
+
+
+
+
+
+### [0.5.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-patterns@0.5.4...@codecademy/gamut-patterns@0.5.5) (2021-08-13)
+
+**Note:** Version bump only for package @codecademy/gamut-patterns
+
+
+
+
+
+### [0.5.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-patterns@0.5.3...@codecademy/gamut-patterns@0.5.4) (2021-08-12)
+
+**Note:** Version bump only for package @codecademy/gamut-patterns
+
+
+
+
+
+### [0.5.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-patterns@0.5.2...@codecademy/gamut-patterns@0.5.3) (2021-08-05)
+
+**Note:** Version bump only for package @codecademy/gamut-patterns
+
+
+
+
+
+### [0.5.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-patterns@0.5.1...@codecademy/gamut-patterns@0.5.2) (2021-08-03)
+
+**Note:** Version bump only for package @codecademy/gamut-patterns
+
+
+
+
+
+### [0.5.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-patterns@0.5.0...@codecademy/gamut-patterns@0.5.1) (2021-07-29)
+
+**Note:** Version bump only for package @codecademy/gamut-patterns
+
+
+
+
+
+## [0.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-patterns@0.4.7...@codecademy/gamut-patterns@0.5.0) (2021-07-27)
+
+
+### Features
+
+* **Patterns:** Add SVGR build process and SVGO settings ([56e50ff](https://github.com/Codecademy/client-modules/commit/56e50ffe021102b84a7f9e5d7bb33ea6de890994))
+
+
+
 ### [0.4.7](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-patterns@0.4.6...@codecademy/gamut-patterns@0.4.7) (2021-07-19)
 
 **Note:** Version bump only for package @codecademy/gamut-patterns

@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 import React from 'react';
 
 import { Pattern, PatternName } from '../Pattern';
+import { Text } from '../Typography';
 
 export type ProgressBarProps = {
   className?: string;
@@ -80,6 +81,17 @@ const progressBarBackgroundVariants = variant({
   },
 });
 
+const progressBarBackgroundOverride = variant({
+  defaultVariant: 'none',
+  prop: 'backgroundOverride',
+  variants: {
+    pattern: {
+      bg: 'transparent',
+    },
+    none: {},
+  },
+});
+
 const progressBarBorderVariants = variant({
   defaultVariant: 'basic',
   prop: 'border',
@@ -128,6 +140,7 @@ type ProgressBarElementProps = Pick<ProgressBarProps, 'variant' | 'size'>;
 
 type ProgressBarElementWrapperProps = ProgressBarElementProps & {
   border: 'basic' | 'bordered';
+  backgroundOverride: 'pattern' | 'none';
 };
 
 const ProgressBarWrapper = styled.div<ProgressBarElementWrapperProps>`
@@ -136,6 +149,7 @@ const ProgressBarWrapper = styled.div<ProgressBarElementWrapperProps>`
   ${progressBarBackgroundVariants};
   ${progressBarSizeVariants};
   ${progressBarBorderVariants};
+  ${progressBarBackgroundOverride};
 `;
 
 const Bar = styled.div(progressBarForegroundVariants);
@@ -157,13 +171,13 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
 }) => {
   return (
     <ProgressBarWrapper
-      aria-label={`Progress: ${percent}%`}
       aria-live="polite"
-      role="figure"
       border={bordered ? 'bordered' : 'basic'}
       size={size}
       variant={variant}
+      backgroundOverride={pattern ? 'pattern' : 'none'}
     >
+      <Text as="label" screenreader>{`Progress: ${percent}%`}</Text>
       {pattern && (
         <Pattern width="100%" position="absolute" zIndex={0} name={pattern} />
       )}
@@ -175,7 +189,7 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
         }}
       >
         {['large', 'xl'].includes(size) && (
-          <DisplayedPercent>{percent}%</DisplayedPercent>
+          <DisplayedPercent aria-hidden>{percent}%</DisplayedPercent>
         )}
       </Bar>
     </ProgressBarWrapper>

@@ -1,55 +1,42 @@
-import { theme } from '@codecademy/gamut-styles';
-import { ThemeProvider } from '@emotion/react';
-import { mount } from 'enzyme';
-import React from 'react';
+import { setupEnzyme } from '@codecademy/gamut-tests';
 
 import {
   stubCheckboxField,
   stubFileField,
+  stubHiddenField,
   stubRadioGroupField,
   stubSelectField,
+  stubSweetContainerField,
   stubTextareaField,
   stubTextField,
 } from '../../__tests__/stubs';
-import { GridFormInputGroup, GridFormInputGroupProps } from '..';
+import { GridFormInputGroupTestComponent } from '../__fixtures__/renderers';
 
-const renderComponent = (overrides: Partial<GridFormInputGroupProps>) => {
-  const props: GridFormInputGroupProps = {
-    field: stubSelectField,
-    setValue: jest.fn(),
-    register: jest.fn(),
-    ...overrides,
-  };
-
-  const wrapped = mount(
-    <ThemeProvider theme={theme}>
-      <GridFormInputGroup {...props} />
-    </ThemeProvider>
-  );
-
-  return { props, wrapped };
-};
+const renderWrapper = setupEnzyme(GridFormInputGroupTestComponent, {
+  setValue: jest.fn(),
+  register: jest.fn(),
+});
 
 describe('GridFormInputGroup', () => {
   it('renders error text when an error exists', () => {
     const error = 'Oh no!';
 
-    const { wrapped } = renderComponent({ error });
+    const { wrapper } = renderWrapper({ field: stubCheckboxField, error });
 
-    expect(wrapped.text()).toContain(error);
+    expect(wrapper.text()).toContain(error);
   });
 
   it('renders a checkbox input when the field type is checkbox', () => {
-    const { wrapped } = renderComponent({
+    const { wrapper } = renderWrapper({
       field: { ...stubCheckboxField, id: 'mycoolid' },
     });
 
-    expect(wrapped.find('input[type="checkbox"]#mycoolid')).toHaveLength(1);
+    expect(wrapper.find('input[type="checkbox"]#mycoolid')).toHaveLength(1);
   });
 
   it('renders a custom input when the field type is custom', () => {
     const text = 'Hello, world!';
-    const { wrapped } = renderComponent({
+    const { wrapper } = renderWrapper({
       field: {
         render: () => text,
         name: 'stub-custom',
@@ -58,59 +45,59 @@ describe('GridFormInputGroup', () => {
       },
     });
 
-    expect(wrapped.text()).toEqual(text);
+    expect(wrapper.text()).toEqual(text);
   });
 
   it('renders a radio group when the field type is radio-group', () => {
-    const { wrapped } = renderComponent({
+    const { wrapper } = renderWrapper({
       field: { ...stubRadioGroupField, id: 'mycoolid' },
     });
 
-    expect(wrapped.find('input[type="radio"]')).toHaveLength(2);
-    expect(wrapped.find('input#stub-radio-group-0-mycoolid')).toHaveLength(1);
+    expect(wrapper.find('input[type="radio"]')).toHaveLength(2);
+    expect(wrapper.find('input#stub-radio-group-0-mycoolid')).toHaveLength(1);
   });
 
   it('renders a select when the field type is select', () => {
-    const { wrapped } = renderComponent({
+    const { wrapper } = renderWrapper({
       field: { ...stubSelectField, id: 'mycoolid' },
     });
 
-    expect(wrapped.find('select#mycoolid')).toHaveLength(1);
+    expect(wrapper.find('select#mycoolid')).toHaveLength(1);
   });
 
   it('renders a text input when the field type is text', () => {
-    const { wrapped } = renderComponent({
+    const { wrapper } = renderWrapper({
       field: { ...stubTextField, id: 'mycoolid' },
     });
 
-    expect(wrapped.find('input[type="text"]#mycoolid')).toHaveLength(1);
+    expect(wrapper.find('input[type="text"]#mycoolid')).toHaveLength(1);
   });
 
   it('renders a file input when the field type is file', () => {
-    const { wrapped } = renderComponent({
+    const { wrapper } = renderWrapper({
       field: { ...stubFileField, id: 'mycoolid' },
     });
 
-    expect(wrapped.find('input[type="file"]#mycoolid')).toHaveLength(1);
+    expect(wrapper.find('input[type="file"]#mycoolid')).toHaveLength(1);
   });
 
   it('renders a textarea when the field type is textarea', () => {
-    const { wrapped } = renderComponent({
+    const { wrapper } = renderWrapper({
       field: { ...stubTextareaField, id: 'mycoolid' },
     });
 
-    expect(wrapped.find('textarea#mycoolid')).toHaveLength(1);
+    expect(wrapper.find('textarea#mycoolid')).toHaveLength(1);
   });
 
   it('invokes onUpdate when the field type is text and it gets changed', () => {
     const onUpdateSpy = jest.fn();
     const newVal = 'foo';
 
-    const { wrapped } = renderComponent({
+    const { wrapper } = renderWrapper({
       field: { ...stubTextField, onUpdate: onUpdateSpy },
     });
 
-    wrapped
+    wrapper
       .find('input[type="text"]')
       .simulate('change', { target: { value: newVal } });
 
@@ -121,11 +108,11 @@ describe('GridFormInputGroup', () => {
     const onUpdateSpy = jest.fn();
     const newVal = 'foo';
 
-    const { wrapped } = renderComponent({
+    const { wrapper } = renderWrapper({
       field: { ...stubTextareaField, onUpdate: onUpdateSpy },
     });
 
-    wrapped.find('textarea').simulate('change', { target: { value: newVal } });
+    wrapper.find('textarea').simulate('change', { target: { value: newVal } });
 
     expect(onUpdateSpy).toHaveBeenCalledWith(newVal);
   });
@@ -134,11 +121,11 @@ describe('GridFormInputGroup', () => {
     const onUpdateSpy = jest.fn();
     const newVal = 'foo';
 
-    const { wrapped } = renderComponent({
+    const { wrapper } = renderWrapper({
       field: { ...stubSelectField, onUpdate: onUpdateSpy },
     });
 
-    wrapped.find('select').simulate('change', { target: { value: newVal } });
+    wrapper.find('select').simulate('change', { target: { value: newVal } });
 
     expect(onUpdateSpy).toHaveBeenCalledWith(newVal);
   });
@@ -147,11 +134,11 @@ describe('GridFormInputGroup', () => {
     const onUpdateSpy = jest.fn();
     const newVal = true;
 
-    const { wrapped } = renderComponent({
+    const { wrapper } = renderWrapper({
       field: { ...stubCheckboxField, onUpdate: onUpdateSpy },
     });
 
-    wrapped
+    wrapper
       .find('input[type="checkbox"]')
       .simulate('change', { target: { checked: newVal } });
 
@@ -162,11 +149,11 @@ describe('GridFormInputGroup', () => {
     const onUpdateSpy = jest.fn();
     const newVal = ['I swear this is a file'];
 
-    const { wrapped } = renderComponent({
+    const { wrapper } = renderWrapper({
       field: { ...stubFileField, onUpdate: onUpdateSpy },
     });
 
-    wrapped
+    wrapper
       .find('input[type="file"]')
       .simulate('change', { target: { files: newVal } });
 
@@ -174,20 +161,34 @@ describe('GridFormInputGroup', () => {
   });
 
   it('sets aria-live to assertive if isFirstError flag is on', () => {
-    const { wrapped } = renderComponent({
+    const { wrapper } = renderWrapper({
       field: { ...stubRadioGroupField, id: 'mycoolid', size: 6 },
       error: 'It broke',
       isFirstError: true,
     });
-    expect(wrapped.find('span').prop('aria-live')).toEqual('assertive');
+    expect(wrapper.find('ErrorSpan').prop('aria-live')).toEqual('assertive');
   });
 
   it('sets aria-live to off if isFirstError flag is off', () => {
-    const { wrapped } = renderComponent({
+    const { wrapper } = renderWrapper({
       field: { ...stubRadioGroupField, id: 'mycoolid', size: 6 },
       error: 'It broke',
       isFirstError: false,
     });
-    expect(wrapped.find('span').prop('aria-live')).toEqual('off');
+    expect(wrapper.find('ErrorSpan').prop('aria-live')).toEqual('off');
+  });
+
+  it('does not create a column for sweet container inputs', () => {
+    const { wrapper } = renderWrapper({
+      field: { ...stubSweetContainerField },
+    });
+    expect(wrapper.find('Column').exists()).toBeFalsy();
+  });
+
+  it('does not create a column for hidden inputs', () => {
+    const { wrapper } = renderWrapper({
+      field: { ...stubHiddenField },
+    });
+    expect(wrapper.find('Column').exists()).toBeFalsy();
   });
 });

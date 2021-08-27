@@ -1,0 +1,41 @@
+{
+  "name": "@codecademy/monaco",
+  "description": "Monaco editor with Codecademy specific configuration",
+  "version": "0.3.3",
+  "author": "Codecademy Engineering",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Codecademy/client-modules/packages/monaco.git"
+  },
+  "peerDependencies": {
+    "react": ">=16.8.1",
+    "react-dom": ">=16.8.1"
+  },
+  "dependencies": {
+    "@codecademy/gamut": "^36.8.0",
+    "@codecademy/gamut-styles": "^11.9.1",
+    "@emotion/react": "^11.4.0",
+    "@emotion/styled": "^11.3.0",
+    "monaco-editor": "0.20.0",
+    "react-monaco-editor": "0.34.0",
+    "react-resize-detector": "5.2.0"
+  },
+  "devDependencies": {
+    "@types/react-resize-detector": "5.0.0",
+    "monaco-editor-webpack-plugin": "1.9.1"
+  },
+  "scripts": {
+    "build:clean": "rm -rf dist",
+    "build:compile": "babel ./src --out-dir ./dist --copy-files --extensions \".ts,.tsx\"",
+    "build:types": "tsc --emitDeclarationOnly",
+    "build": "yarn build:clean && yarn build:compile && yarn build:types",
+    "build:watch": "yarn build && onchange ./src -- yarn build:compile && yarn build:types",
+    "lernaBuildTask": "yarn build"
+  },
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  }
+}

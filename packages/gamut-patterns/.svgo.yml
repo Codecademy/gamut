@@ -1,0 +1,11 @@
+multipass: true
+
+plugins:
+  - inlineStyles:
+      onlyMatchedOnce: false
+  - removeDimensions: true
+  - removeViewBox: false
+  - removeTitle: true
+  - removeDesc: true
+  - mergePaths: false
+  - convertShapeToPath: false

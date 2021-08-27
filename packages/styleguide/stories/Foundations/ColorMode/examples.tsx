@@ -2,13 +2,18 @@
 import {
   Anchor,
   Box,
+  Checkbox,
   CTAButton,
   FillButton,
   FlexBox,
+  FormGroup,
   GridBox,
   IconButton,
+  Input,
   Logo,
   ProLabel,
+  Radio,
+  RadioGroup,
   StrokeButton,
   Text,
   TextButton,
@@ -19,6 +24,7 @@ import {
   MiniArrowRightIcon,
   MiniDeleteIcon,
   SearchIcon,
+  StreakIcon,
 } from '@codecademy/gamut-icons';
 import { Background, ColorMode } from '@codecademy/gamut-styles/src';
 import React, { ComponentProps, useState } from 'react';
@@ -84,7 +90,86 @@ const renderLinks = () => {
   );
 };
 
-export const ColorModeExample = () => {
+const renderInputs = () => {
+  return (
+    <GridBox
+      mt={32}
+      columnGap={32}
+      gridTemplateColumns="repeat(2, max-content)"
+    >
+      <FormGroup
+        error="this is still not updog..."
+        label="i am a large label, but something is wrong."
+        labelSize="large"
+      >
+        <Input
+          defaultValue="123"
+          error
+          htmlFor="example-123"
+          name="example-123"
+          placeholder="Placeholder"
+        />
+      </FormGroup>
+      <FormGroup label="ah yes, a radio group">
+        <RadioGroup name="example-radio">
+          <Radio label="Radio 1" value="1" />
+          <Radio label="Radio 2" value="2" />
+        </RadioGroup>
+      </FormGroup>
+      <FormGroup label="you can't type here.">
+        <Input
+          htmlFor="example-disabled"
+          name="example-disabled"
+          defaultValue="Ouch"
+          disabled
+          icon={StreakIcon}
+        />
+      </FormGroup>
+      <FormGroup label="a humble checkbox">
+        <Checkbox
+          htmlFor="example-checkbox"
+          label="ain't i neat?"
+          name="example-checkbox"
+          checked
+        />
+      </FormGroup>
+    </GridBox>
+  );
+};
+
+const ColorModeExampleContents = () => {
+  return (
+    <>
+      <GridBox
+        columnGap={16}
+        pb={16}
+        gridTemplateColumns="max-content max-content max-content"
+      >
+        <Logo variant="default" />
+        <Logo variant="pro" />
+        <Logo variant="mini" />
+      </GridBox>
+      <Text as="p" fontSize={16} fontFamily="accent" mb={16}>
+        <ProLabel height={22} verticalAlign="text-bottom" /> Cool Feature
+      </Text>
+      <Text as="p" mb={16}>
+        Lorem ipsum dolor sit amet, sed do eiusmod tempor incididunt ut labore
+        et dolore <Anchor>magna aliqua</Anchor>. Ut <a href="#cool">enim</a> ad
+        minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+        ex ea commodo consequat.
+      </Text>
+      {renderLinks()}
+      {renderButtons('primary', false, true)}
+      {renderButtons('primary')}
+      {renderButtons('primary', true)}
+      {renderButtons('secondary')}
+      {renderButtons('danger')}
+      {renderInputs()}
+    </>
+  );
+};
+
+export const ColorModeExampleWrapper: React.FC = ({ children }) => {
   const [isDark, setIsDark] = useState(false);
   return (
     <Box mt={16} mb={32}>
@@ -105,33 +190,18 @@ export const ColorModeExample = () => {
           <Text as="h3" mb={24}>
             {isDark ? 'Dark' : 'Light'} Mode
           </Text>
-          <GridBox
-            columnGap={16}
-            pb={16}
-            gridTemplateColumns="max-content max-content max-content"
-          >
-            <Logo variant="default" />
-            <Logo variant="pro" />
-            <Logo variant="mini" />
-          </GridBox>
-          <Text as="p" fontSize={16} fontFamily="accent" mb={16}>
-            <ProLabel height={22} verticalAlign="text-bottom" /> Cool Feature
-          </Text>
-          <Text as="p" mb={16}>
-            Lorem ipsum dolor sit amet, sed do eiusmod tempor incididunt ut
-            labore et dolore <Anchor>magna aliqua</Anchor>. Ut{' '}
-            <a href="#cool">enim</a> ad minim veniam, quis nostrud exercitation
-            ullamco laboris nisi ut aliquip ex ea commodo consequat.
-          </Text>
-          {renderLinks()}
-          {renderButtons('primary', false, true)}
-          {renderButtons('primary')}
-          {renderButtons('primary', true)}
-          {renderButtons('secondary')}
-          {renderButtons('danger')}
+          {children}
         </Box>
       </ColorMode>
     </Box>
+  );
+};
+
+export const ColorModeExample = () => {
+  return (
+    <ColorModeExampleWrapper>
+      <ColorModeExampleContents />
+    </ColorModeExampleWrapper>
   );
 };
 
