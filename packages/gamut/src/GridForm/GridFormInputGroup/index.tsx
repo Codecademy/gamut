@@ -50,7 +50,6 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
   showRequired,
   required,
 }) => {
-  const errorMessage = error || field.customError;
   const disabled = isDisabled || field.disabled;
 
   const getInput = () => {
@@ -71,7 +70,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
             field={field}
             register={register}
             setValue={setValue}
-            error={errorMessage}
+            error={error}
           />
         );
 
@@ -82,7 +81,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
             register={register}
             required={required}
             setValue={setValue}
-            error={!!errorMessage}
+            error={!!error}
             disabled={disabled}
           />
         );
@@ -90,7 +89,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
       case 'select':
         return (
           <GridFormSelectInput
-            error={!!errorMessage}
+            error={!!error}
             field={field}
             register={register}
             required={required}
@@ -101,7 +100,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
       case 'file':
         return (
           <GridFormFileInput
-            error={!!errorMessage}
+            error={!!error}
             field={field}
             register={register}
             required={required}
@@ -112,7 +111,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
       case 'textarea':
         return (
           <GridFormTextArea
-            error={!!errorMessage}
+            error={!!error}
             field={field}
             register={register}
             required={required}
@@ -134,7 +133,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
       default:
         return (
           <GridFormTextInput
-            error={!!errorMessage}
+            error={!!error}
             field={field}
             register={register}
             required={required}
@@ -180,7 +179,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
       >
         {field.hideLabel ? <HiddenText>{label}</HiddenText> : label}
         {getInput()}
-        {errorMessage && (
+        {error && (
           <FormError
             role={isFirstError ? 'alert' : 'status'}
             aria-live={isFirstError ? 'assertive' : 'off'}
@@ -199,7 +198,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
               }}
               skipDefaultOverrides={{ a: true }}
               inline
-              text={errorMessage}
+              text={error}
               spacing="none"
             />
           </FormError>

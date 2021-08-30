@@ -19,7 +19,7 @@ export const GridFormContent: React.FC<GridFormContentProps> = ({
     register,
     setValue,
     isDisabled,
-  } = useFieldContext(field.name);
+  } = useFieldContext(field);
 
   const requiredBoolean = !!(
     field.type !== 'hidden' &&
