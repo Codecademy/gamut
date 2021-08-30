@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [43.10.8](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@43.10.7...@codecademy/styleguide@43.10.8) (2021-08-30)
+
+
+### Bug Fixes
+
+* **styleguide:** Set Figma blocks aspect ratio to 16:9 GM-336 ([c62a833](https://github.com/Codecademy/client-modules/commit/c62a83372c7957d21e3801f71cd986972c1d3027))
+
+
+
 ### [43.10.7](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@43.10.6...@codecademy/styleguide@43.10.7) (2021-08-30)
 
 **Note:** Version bump only for package @codecademy/styleguide
