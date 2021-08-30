@@ -1155,3 +1155,36 @@ If you need to checkboxes to fit into a smaller space, you can use our our `tigh
     )}
   </Story>
 </Canvas>
+
+## Disabled Fields on Submit
+
+<Canvas>
+  <Story name="Disabled Fields on Submit">
+    {(args) => (
+      <>
+        <Background bg="beige" p={32}>
+          <GridForm
+            disableFieldsOnSubmit
+            fields={[
+              {
+                label: 'Email',
+                placeholder: 'yr email here',
+                name: 'placeholder',
+                type: 'email',
+                validation: {
+                  required: 'pls fill this out',
+                },
+              },
+            ]}
+            onSubmit={async (values) => {
+              action('Form Submitted')(values);
+            }}
+            submit={{
+              contents: 'Submit Me 💖',
+            }}
+          />
+        </Background>
+      </>
+    )}
+  </Story>
+</Canvas>

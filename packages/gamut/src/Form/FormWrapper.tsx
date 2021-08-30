@@ -39,10 +39,10 @@ export type FormWrapperProps<Values extends {}> = DisableOnSubmit &
 
 export type FormProviderCustomProps = FormProviderProps & DisableOnSubmit;
 
-export const PropsContext = React.createContext({
+export const FormPropsContext = React.createContext({
   disableFieldsOnSubmit: false,
 });
-const PropsProvider = PropsContext.Provider;
+const PropsProvider = FormPropsContext.Provider;
 
 /**
  * This is an in progress API! please reach out to the web-plat team if you're interested in using it.
