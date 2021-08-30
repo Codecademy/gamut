@@ -54,3 +54,5 @@ export * from './Toast/Toast';
 export * from './FloatingCard/FloatingCard';
 export * from './BetaSticker';
 export * from './Menu';
+export * from './ComponentProvider';
+export * from './Link';

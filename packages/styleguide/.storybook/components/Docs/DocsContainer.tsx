@@ -15,6 +15,7 @@ import {
   createEmotionCache,
   GamutProvider,
 } from '@codecademy/gamut-styles/src';
+import { ComponentProvider } from '@codecademy/gamut/src';
 import { NavigationProvider } from '../Navigation/NavigationProvider';
 import React, { useEffect } from 'react';
 import { merge } from 'lodash';
@@ -108,14 +109,16 @@ export const DocsContainer: React.FC<{ context: DocsContextProps }> = ({
         cache={createEmotionCache({ speedy: false })}
         theme={coreTheme}
       >
-        <AssetProvider />
-        <NavigationProvider>
-          <SourceContainer>
-            <ThemeProvider theme={overrides}>
-              <MDXProvider components={allComponents}>{children}</MDXProvider>
-            </ThemeProvider>
-          </SourceContainer>
-        </NavigationProvider>
+        <ComponentProvider overrides={{}}>
+          <AssetProvider />
+          <NavigationProvider>
+            <SourceContainer>
+              <ThemeProvider theme={overrides}>
+                <MDXProvider components={allComponents}>{children}</MDXProvider>
+              </ThemeProvider>
+            </SourceContainer>
+          </NavigationProvider>
+        </ComponentProvider>
       </GamutProvider>
     </DocsContext.Provider>
   );

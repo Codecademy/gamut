@@ -1,0 +1,28 @@
+import { Link } from '@codecademy/gamut';
+import title from '@codecademy/macros/lib/title.macro';
+import { PropsTable } from '@codecademy/storybook-addon-variance';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+
+<Meta
+  title={title}
+  component={Link}
+  parameters={{
+    subtitle: 'A universal Link component for client side routing',
+    source: 'gamut',
+    status: 'current',
+    design: {
+      type: 'figma',
+      url:
+        'https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=992%3A3',
+    },
+  }}
+  args={{
+    children: 'Now this is podracing',
+  }}
+/>
+
+<Canvas>
+  <Story name="Link">{(args) => <Link {...args} />}</Story>
+</Canvas>
+
+<PropsTable story="Link" />
