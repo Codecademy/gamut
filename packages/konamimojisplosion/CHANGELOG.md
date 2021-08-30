@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [0.2.54](https://github.com/Codecademy/client-modules/compare/@codecademy/konamimojisplosion@0.2.53...@codecademy/konamimojisplosion@0.2.54) (2021-08-30)
+
+**Note:** Version bump only for package @codecademy/konamimojisplosion
+
+
+
+
+
 ### [0.2.53](https://github.com/Codecademy/client-modules/compare/@codecademy/konamimojisplosion@0.2.52...@codecademy/konamimojisplosion@0.2.53) (2021-08-16)
 
 **Note:** Version bump only for package @codecademy/konamimojisplosion
