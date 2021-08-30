@@ -1,3 +1,10 @@
+import {
+  ArrowChevronDownIcon,
+  CalendarIcon,
+  DataTransferVerticalIcon,
+  EarthIcon,
+  MiniChevronDownIcon,
+} from '@codecademy/gamut-icons';
 import { setupEnzyme } from '@codecademy/gamut-tests';
 
 import { SelectDropdown } from '../SelectDropdown';
@@ -18,6 +25,12 @@ const selectOptionsObject = {
   orange: 'orange',
 };
 
+const optionsIconsArray = [
+  { label: 'first icon', value: 'one', icon: DataTransferVerticalIcon },
+  { label: 'second icon', value: 'two', icon: CalendarIcon },
+  { label: 'third icon', value: 'three', icon: EarthIcon },
+];
+
 const renderWrapper = setupEnzyme(SelectDropdown, {
   options: selectOptions,
   id: 'colors',
@@ -32,7 +45,7 @@ describe('Select', () => {
   it('renders the same number of options as options', () => {
     const { wrapper } = renderWrapper();
 
-    wrapper.find('DropdownIndicator').first().simulate('mouseDown', {
+    wrapper.find('DropdownIndicator').simulate('mouseDown', {
       button: 0,
     });
 
@@ -42,7 +55,7 @@ describe('Select', () => {
   it('renders options when options is an object', () => {
     const { wrapper } = renderWrapper({ options: selectOptionsObject });
 
-    wrapper.find('DropdownIndicator').first().simulate('mouseDown', {
+    wrapper.find('DropdownIndicator').simulate('mouseDown', {
       button: 0,
     });
 
@@ -57,8 +70,7 @@ describe('Select', () => {
       size: 'small',
     });
 
-    const dropdownIconTitle = wrapper.find('DropdownIndicator').text();
-    expect(dropdownIconTitle).toEqual('Mini Chevron Down Icon');
+    expect(wrapper.find(MiniChevronDownIcon)).toBeDefined();
   });
 
   it('renders a medium dropdown when size is "medium"', () => {
@@ -67,8 +79,7 @@ describe('Select', () => {
       size: 'medium',
     });
 
-    const dropdownIconTitle = wrapper.find('DropdownIndicator').text();
-    expect(dropdownIconTitle).toEqual('Arrow Chevron Down Icon');
+    expect(wrapper.find(ArrowChevronDownIcon)).toBeDefined();
   });
 
   it('renders a medium dropdown by default', () => {
@@ -76,8 +87,7 @@ describe('Select', () => {
       options: selectOptionsObject,
     });
 
-    const dropdownIconTitle = wrapper.find('DropdownIndicator').text();
-    expect(dropdownIconTitle).toEqual('Arrow Chevron Down Icon');
+    expect(wrapper.find(ArrowChevronDownIcon)).toBeDefined();
   });
 
   it('renders a dropdown with the correct maxHeight when shownOptionsLimit is specified', () => {
@@ -86,7 +96,7 @@ describe('Select', () => {
       shownOptionsLimit: 4,
     });
 
-    wrapper.find('DropdownIndicator').first().simulate('mouseDown', {
+    wrapper.find('DropdownIndicator').simulate('mouseDown', {
       button: 0,
     });
 
@@ -101,11 +111,43 @@ describe('Select', () => {
       size: 'small',
     });
 
-    wrapper.find('DropdownIndicator').first().simulate('mouseDown', {
+    wrapper.find('DropdownIndicator').simulate('mouseDown', {
       button: 0,
     });
 
     const menuList = wrapper.find('MenuList');
     expect(menuList.getDOMNode()).toHaveStyle('max-height : 8rem');
+  });
+
+  it('renders a dropdown with icons', () => {
+    const { wrapper } = renderWrapper({
+      options: optionsIconsArray,
+      size: 'small',
+    });
+
+    wrapper.find('DropdownIndicator').simulate('mouseDown', {
+      button: 0,
+    });
+
+    expect(wrapper.find(DataTransferVerticalIcon)).toBeDefined();
+    expect(wrapper.find(CalendarIcon)).toBeDefined();
+    expect(wrapper.find(EarthIcon)).toBeDefined();
+  });
+
+  it('function passed to onInputChanges is called on input change', () => {
+    const onInputChange = jest.fn();
+
+    const { wrapper } = renderWrapper({
+      options: optionsIconsArray,
+      onInputChange,
+    });
+
+    wrapper.find('DropdownIndicator').simulate('mouseDown', {
+      button: 0,
+    });
+
+    wrapper.find('Option').first().simulate('click');
+
+    expect(onInputChange).toHaveBeenCalled();
   });
 });

@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [5.9.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@5.9.1...@codecademy/gamut-icons@5.9.2) (2021-08-27)
+
+
+### Bug Fixes
+
+* **Icons:** Fix icon sizing browser compat issue ([afb53cc](https://github.com/Codecademy/client-modules/commit/afb53ccbb8aa58564609791486fb44eb66e7d9a3))
+
+
+
 ### [5.9.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@5.9.0...@codecademy/gamut-icons@5.9.1) (2021-08-16)
 
 **Note:** Version bump only for package @codecademy/gamut-icons

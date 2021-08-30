@@ -80,6 +80,7 @@ Array [
   "SkipToContentTarget",
   "Spinner",
   "StrokeButton",
+  "SubmitButton",
   "Tab",
   "TabList",
   "TabPanel",
