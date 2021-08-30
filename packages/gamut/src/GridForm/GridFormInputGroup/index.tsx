@@ -51,6 +51,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
   required,
 }) => {
   const disabled = isDisabled || field.disabled;
+  const errorMessage = error || field.customError;
 
   const getInput = () => {
     switch (field.type) {
@@ -70,7 +71,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
             field={field}
             register={register}
             setValue={setValue}
-            error={error}
+            error={errorMessage}
           />
         );
 
@@ -81,7 +82,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
             register={register}
             required={required}
             setValue={setValue}
-            error={!!error}
+            error={!!errorMessage}
             disabled={disabled}
           />
         );
@@ -89,7 +90,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
       case 'select':
         return (
           <GridFormSelectInput
-            error={!!error}
+            error={!!errorMessage}
             field={field}
             register={register}
             required={required}
@@ -100,7 +101,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
       case 'file':
         return (
           <GridFormFileInput
-            error={!!error}
+            error={!!errorMessage}
             field={field}
             register={register}
             required={required}
@@ -111,7 +112,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
       case 'textarea':
         return (
           <GridFormTextArea
-            error={!!error}
+            error={!!errorMessage}
             field={field}
             register={register}
             required={required}
@@ -133,7 +134,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
       default:
         return (
           <GridFormTextInput
-            error={!!error}
+            error={!!errorMessage}
             field={field}
             register={register}
             required={required}
