@@ -25,7 +25,11 @@ describe('useNotificationButtons', () => {
       useNotificationButtons({ ...defaultProps, notifications })
     );
 
-    expect(hook.result.current).toEqual([null, null, notifications]);
+    expect(hook.result.current).toEqual([
+      expect.anything(),
+      null,
+      notifications,
+    ]);
   });
 
   it('clears notifications when the Clear All button is pressed', async () => {
