@@ -23,6 +23,8 @@ Array [
   "CardShell",
   "Checkbox",
   "Column",
+  "ComponentContext",
+  "ComponentProvider",
   "Container",
   "ContentContainer",
   "createPromise",
@@ -52,6 +54,7 @@ Array [
   "Interstitial",
   "Item",
   "LayoutGrid",
+  "Link",
   "Logo",
   "LogoDefault",
   "LogoMini",
@@ -93,6 +96,7 @@ Array [
   "Toggle",
   "ToolTip",
   "Truncate",
+  "useComponent",
   "Video",
 ]
 `;
