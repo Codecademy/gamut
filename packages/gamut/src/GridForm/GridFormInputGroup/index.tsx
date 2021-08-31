@@ -42,48 +42,37 @@ export type GridFormInputGroupProps = {
 
 export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
   error,
+  field,
   isFirstError,
   isDisabled,
-  field,
-  register,
-  setValue,
   showRequired,
-  required,
+  ...rest
 }) => {
   const disabled = isDisabled || field.disabled;
   const errorMessage = error || field.customError;
+  const defaultProps = { disabled, ...rest };
 
   const getInput = () => {
     switch (field.type) {
       case 'checkbox':
-        return (
-          <GridFormCheckboxInput
-            field={field}
-            required={required}
-            disabled={disabled}
-          />
-        );
+        return <GridFormCheckboxInput field={field} {...defaultProps} />;
 
       case 'custom':
       case 'custom-group':
         return (
           <GridFormCustomInput
-            field={field}
-            register={register}
-            setValue={setValue}
             error={errorMessage}
+            field={field}
+            {...defaultProps}
           />
         );
 
       case 'radio-group':
         return (
           <GridFormRadioGroupInput
-            field={field}
-            register={register}
-            required={required}
-            setValue={setValue}
             error={!!errorMessage}
-            disabled={disabled}
+            field={field}
+            {...defaultProps}
           />
         );
 
@@ -92,9 +81,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
           <GridFormSelectInput
             error={!!errorMessage}
             field={field}
-            register={register}
-            required={required}
-            disabled={disabled}
+            {...defaultProps}
           />
         );
 
@@ -103,9 +90,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
           <GridFormFileInput
             error={!!errorMessage}
             field={field}
-            register={register}
-            required={required}
-            disabled={disabled}
+            {...defaultProps}
           />
         );
 
@@ -114,20 +99,18 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
           <GridFormTextArea
             error={!!errorMessage}
             field={field}
-            register={register}
-            required={required}
-            disabled={disabled}
+            {...defaultProps}
           />
         );
       case 'hidden':
-        return <GridFormHiddenInput register={register} field={field} />;
+        return <GridFormHiddenInput field={field} {...defaultProps} />;
 
       case 'sweet-container':
         return (
           <GridFormSweetContainerInput
-            register={register}
             field={field}
             label={field.label}
+            {...defaultProps}
           />
         );
 
@@ -136,9 +119,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
           <GridFormTextInput
             error={!!errorMessage}
             field={field}
-            register={register}
-            required={required}
-            disabled={disabled}
+            {...defaultProps}
           />
         );
     }

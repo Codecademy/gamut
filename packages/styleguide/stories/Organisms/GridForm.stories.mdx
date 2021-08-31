@@ -1158,7 +1158,7 @@ If you need to checkboxes to fit into a smaller space, you can use our our `tigh
 
 ## Disabled Fields on Submit
 
-This is will disable fields once the GridForm has been successfully submitted. If you have any server validation that needs to happen, be sure to have an error handler in your `onSubmit` or in the custom `validate` function in validation of your field.
+This is will disable fields once the GridForm has been successfully submitted. If you have any server validation that needs to happen, we reccommend using the `wasSubmitSuccessful` prop, but submission will also fail if a promise is rejected within your `onSubmit` or if a field does not pass validation.
 
 <Canvas>
   <Story name="Disabled Fields on Submit">
@@ -1193,11 +1193,34 @@ This is will disable fields once the GridForm has been successfully submitted. I
         <Background bg="black" p={32}>
           <GridForm
             disableFieldsOnSubmit
+            wasSubmitSuccessful={false}
             fields={[
               {
                 label: 'Email',
-                placeholder: 'i will NEVER disable',
+                placeholder: 'i will NEVER disable.',
                 name: 'disabled-fields-on-submit-ii',
+                type: 'email',
+                validation: {
+                  required: 'pls fill this out',
+                },
+              },
+            ]}
+            onSubmit={async (values) => {
+              action('Form Submitted')(values);
+            }}
+            submit={{
+              contents: 'Submit Me 😈',
+            }}
+          />
+        </Background>
+        <Background bg="paleBlue" p={32}>
+          <GridForm
+            disableFieldsOnSubmit
+            fields={[
+              {
+                label: 'Email',
+                placeholder: 'i will also never disable...',
+                name: 'disabled-fields-on-submit-iii',
                 type: 'email',
                 validation: {
                   required: 'pls fill this out',
@@ -1212,7 +1235,7 @@ This is will disable fields once the GridForm has been successfully submitted. I
               action('Form Submitted')(values);
             }}
             submit={{
-              contents: 'Submit Me 😈',
+              contents: 'Submit Me 🤷🏻',
             }}
           />
         </Background>

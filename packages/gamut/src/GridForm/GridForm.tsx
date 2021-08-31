@@ -89,6 +89,7 @@ export function GridForm<Values extends FormValues>({
   submit,
   validation = 'onSubmit',
   showRequired = false,
+  wasSubmitSuccessful,
 }: GridFormProps<Values>) {
   const flatFields = fields.flatMap((field) =>
     isGridFormSection(field) ? field.fields : field
@@ -108,6 +109,7 @@ export function GridForm<Values extends FormValues>({
       validation={validation}
       defaultValues={defaultValues}
       disableFieldsOnSubmit={disableFieldsOnSubmit}
+      wasSubmitSuccessful={wasSubmitSuccessful}
       display="flex"
       flexDirection="column"
     >

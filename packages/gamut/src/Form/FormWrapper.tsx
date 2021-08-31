@@ -20,6 +20,10 @@ export type FormContextProps = {
    * If fields should be reset after successful submission.
    */
   resetOnSubmit?: boolean;
+  /**
+   * Sets if form submission was successful - if `undefined` will fall back to react-hook-forms native formState.isSubmitSuccessful.
+   */
+  wasSubmitSuccessful?: boolean;
 };
 
 export type FormWrapperProps<Values extends {}> = FormContextProps &
@@ -43,11 +47,9 @@ export type FormWrapperProps<Values extends {}> = FormContextProps &
 
 export type FormProviderCustomProps = FormProviderProps & FormContextProps;
 
-export const FormPropsContext = React.createContext({
-  disableFieldsOnSubmit: false,
-  resetOnSubmit: false,
-});
-
+export const FormPropsContext = React.createContext<Partial<FormContextProps>>(
+  {}
+);
 const PropsProvider = FormPropsContext.Provider;
 
 /**
@@ -60,6 +62,7 @@ export function FormWrapper<Values extends FormValues>({
   validation = 'onSubmit',
   disableFieldsOnSubmit = false,
   resetOnSubmit = false,
+  wasSubmitSuccessful = undefined,
   ...rest
 }: FormWrapperProps<Values>) {
   const { handleSubmit, formState, ...methods } = useForm({
@@ -68,7 +71,9 @@ export function FormWrapper<Values extends FormValues>({
   });
 
   return (
-    <PropsProvider value={{ disableFieldsOnSubmit, resetOnSubmit }}>
+    <PropsProvider
+      value={{ disableFieldsOnSubmit, resetOnSubmit, wasSubmitSuccessful }}
+    >
       <FormProvider
         handleSubmit={handleSubmit}
         formState={formState}

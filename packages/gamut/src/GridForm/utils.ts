@@ -1,15 +1,32 @@
 import { useContext, useMemo } from 'react';
-import { FieldError, useFormContext } from 'react-hook-form';
+import { useFormContext } from 'react-hook-form';
 
 import { SubmitContextProps } from '..';
 import { FormPropsContext } from '../Form';
 import { GridFormField } from './types';
 
+const submitSuccessStatus = (
+  wasSubmitSuccessful: boolean | undefined,
+  isSubmitSuccessful: boolean
+) => {
+  return (
+    (wasSubmitSuccessful || wasSubmitSuccessful === undefined) &&
+    isSubmitSuccessful
+  );
+};
+
 export const useFieldContext = (field: GridFormField) => {
   const { register, errors, setValue, formState } = useFormContext();
-  const { disableFieldsOnSubmit } = useContext(FormPropsContext);
+  const { disableFieldsOnSubmit, wasSubmitSuccessful } = useContext(
+    FormPropsContext
+  );
 
-  const error = (errors[field.name] as FieldError)?.message;
+  const error = errors[field.name]?.message;
+
+  const isSubmitSuccessful = submitSuccessStatus(
+    wasSubmitSuccessful,
+    formState.isSubmitSuccessful
+  );
 
   return {
     /**
@@ -19,8 +36,7 @@ export const useFieldContext = (field: GridFormField) => {
     isFirstError: Object.keys(errors)[0] === field.name,
     error,
     isDisabled:
-      (formState.isSubmitting || formState.isSubmitSuccessful) &&
-      disableFieldsOnSubmit,
+      (formState.isSubmitting || isSubmitSuccessful) && disableFieldsOnSubmit,
     register,
     setValue,
   };
@@ -28,7 +44,7 @@ export const useFieldContext = (field: GridFormField) => {
 
 export const useSubmitContext = ({ loading, disabled }: SubmitContextProps) => {
   const { reset, formState } = useFormContext();
-  const { resetOnSubmit } = useContext(FormPropsContext);
+  const { resetOnSubmit, wasSubmitSuccessful } = useContext(FormPropsContext);
 
   const isLoading =
     typeof loading === 'function' ? loading(formState) : loading;
@@ -36,11 +52,16 @@ export const useSubmitContext = ({ loading, disabled }: SubmitContextProps) => {
   const isDisabled =
     typeof disabled === 'function' ? disabled(formState) : disabled;
 
+  const isSubmitSuccessful = submitSuccessStatus(
+    wasSubmitSuccessful,
+    formState.isSubmitSuccessful
+  );
+
   useMemo(() => {
-    if (formState.isSubmitSuccessful && resetOnSubmit) {
+    if (isSubmitSuccessful && resetOnSubmit) {
       reset();
     }
-  }, [formState.isSubmitSuccessful, resetOnSubmit, reset]);
+  }, [isSubmitSuccessful, resetOnSubmit, reset]);
 
   return { isLoading, isDisabled };
 };
