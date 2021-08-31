@@ -15,8 +15,6 @@ export const useFieldContext = (field: GridFormField) => {
     (wasSubmitSuccessful || wasSubmitSuccessful === undefined) &&
     formState.isSubmitSuccessful;
 
-  console.log(isSubmitSuccessful);
-
   return {
     /**
      * Keep track of the first error in this form.
