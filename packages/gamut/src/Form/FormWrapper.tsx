@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   FormProvider,
   FormProviderProps,
@@ -8,6 +8,7 @@ import {
 } from 'react-hook-form';
 
 import { Form } from '../Form';
+import { submitSuccessStatus } from '../GridForm/utils';
 import { FormProps } from './Form';
 import { FormValues } from './types';
 
@@ -65,10 +66,21 @@ export function FormWrapper<Values extends FormValues>({
   wasSubmitSuccessful = undefined,
   ...rest
 }: FormWrapperProps<Values>) {
-  const { handleSubmit, formState, ...methods } = useForm({
+  const { handleSubmit, formState, reset, ...methods } = useForm({
     defaultValues,
     mode: validation,
   });
+
+  const isSubmitSuccessful = submitSuccessStatus(
+    wasSubmitSuccessful,
+    formState.isSubmitSuccessful
+  );
+
+  useEffect(() => {
+    if (isSubmitSuccessful && resetOnSubmit) {
+      reset();
+    }
+  }, [isSubmitSuccessful, resetOnSubmit, reset]);
 
   return (
     <PropsProvider
@@ -77,6 +89,7 @@ export function FormWrapper<Values extends FormValues>({
       <FormProvider
         handleSubmit={handleSubmit}
         formState={formState}
+        reset={reset}
         {...methods}
       >
         <Form onSubmit={handleSubmit(onSubmit)} {...rest}>

@@ -15,7 +15,7 @@ import { useState } from '@storybook/addons';
 
 import { LinkTo } from '~styleguide/blocks';
 
-import { ColorModeExample } from './examples';
+import { ColorModeExample, FormLoadingExample } from './examples';
 
 <Meta
   title={title}
@@ -1158,7 +1158,7 @@ If you need to checkboxes to fit into a smaller space, you can use our our `tigh
 
 ## Disabled Fields on Submit
 
-This is will disable fields once the GridForm has been successfully submitted. If you have any server validation that needs to happen, we reccommend using the `wasSubmitSuccessful` prop, but submission will also fail if a promise is rejected within your `onSubmit` or if a field does not pass validation.
+`disableFieldsOnSubmit` will disable all form fields once the GridForm has been successfully submitted. If you have any server validation that needs to happen, we reccommend using the `wasSubmitSuccessful` prop, but submission will also fail if a promise is rejected within your `onSubmit` or if a field does not pass validation.
 
 <Canvas>
   <Story name="Disabled Fields on Submit">
@@ -1243,3 +1243,44 @@ This is will disable fields once the GridForm has been successfully submitted. I
     )}
   </Story>
 </Canvas>
+
+## Reset Form on Submit
+
+`resetOnSubmit` will reset the form once the GridForm has been successfully submitted. If you have any server validation that needs to happen, we reccommend using the `wasSubmitSuccessful` prop, but submission will also fail if a promise is rejected within your `onSubmit` or if a field does not pass validation.
+
+<Canvas>
+  <Story name="Reset Form on Submit">
+    {(args) => (
+      <>
+        <Background bg="beige" p={32}>
+          <GridForm
+            resetOnSubmit
+            fields={[
+              {
+                label: 'Email',
+                placeholder: 'i will reset on correct submission!',
+                name: 'reset-on-submit',
+                type: 'email',
+                validation: {
+                  required: 'pls fill this out',
+                  pattern: {
+                    value: /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,})+$/,
+                    message: 'that is not an email 😔',
+                  },
+                },
+              },
+            ]}
+            onSubmit={async (values) => {
+              action('Form Submitted')(values);
+            }}
+            submit={{
+              contents: 'Submit Me 💖',
+            }}
+          />
+        </Background>
+      </>
+    )}
+  </Story>
+</Canvas>
+
+<FormLoadingExample />

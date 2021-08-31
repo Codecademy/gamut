@@ -1,13 +1,13 @@
-import { useContext, useMemo } from 'react';
+import { useContext } from 'react';
 import { useFormContext } from 'react-hook-form';
 
 import { SubmitContextProps } from '..';
 import { FormPropsContext } from '../Form';
 import { GridFormField } from './types';
 
-const submitSuccessStatus = (
+export const submitSuccessStatus = (
   wasSubmitSuccessful: boolean | undefined,
-  isSubmitSuccessful: boolean
+  isSubmitSuccessful: boolean | undefined
 ) => {
   return (
     (wasSubmitSuccessful || wasSubmitSuccessful === undefined) &&
@@ -43,25 +43,13 @@ export const useFieldContext = (field: GridFormField) => {
 };
 
 export const useSubmitContext = ({ loading, disabled }: SubmitContextProps) => {
-  const { reset, formState } = useFormContext();
-  const { resetOnSubmit, wasSubmitSuccessful } = useContext(FormPropsContext);
+  const { formState } = useFormContext();
 
   const isLoading =
     typeof loading === 'function' ? loading(formState) : loading;
 
   const isDisabled =
     typeof disabled === 'function' ? disabled(formState) : disabled;
-
-  const isSubmitSuccessful = submitSuccessStatus(
-    wasSubmitSuccessful,
-    formState.isSubmitSuccessful
-  );
-
-  useMemo(() => {
-    if (isSubmitSuccessful && resetOnSubmit) {
-      reset();
-    }
-  }, [isSubmitSuccessful, resetOnSubmit, reset]);
 
   return { isLoading, isDisabled };
 };

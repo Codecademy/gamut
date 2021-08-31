@@ -82,14 +82,12 @@ export function GridForm<Values extends FormValues>({
   cancel,
   children,
   columnGap = defaultColumnGap,
-  disableFieldsOnSubmit,
   fields = [],
-  onSubmit,
   rowGap = 16,
   submit,
   validation = 'onSubmit',
   showRequired = false,
-  wasSubmitSuccessful,
+  ...rest
 }: GridFormProps<Values>) {
   const flatFields = fields.flatMap((field) =>
     isGridFormSection(field) ? field.fields : field
@@ -105,13 +103,11 @@ export function GridForm<Values extends FormValues>({
 
   return (
     <FormWrapper
-      onSubmit={onSubmit}
       validation={validation}
       defaultValues={defaultValues}
-      disableFieldsOnSubmit={disableFieldsOnSubmit}
-      wasSubmitSuccessful={wasSubmitSuccessful}
       display="flex"
       flexDirection="column"
+      {...rest}
     >
       <LayoutGrid columnGap={columnGap} rowGap={rowGap}>
         <>
