@@ -340,6 +340,7 @@ export const FormLoadingExample = () => {
                 message: 'that is not an email 😔',
               },
             },
+            size: 12,
           },
         ]}
         onSubmit={onSubmit}
