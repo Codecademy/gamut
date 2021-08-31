@@ -6,9 +6,16 @@ import { GridFormField } from './types';
 
 export const useFieldContext = (field: GridFormField) => {
   const { register, errors, setValue, formState } = useFormContext();
-  const { disableFieldsOnSubmit } = useContext(FormPropsContext);
+  const { disableFieldsOnSubmit, wasSubmitSuccessful } = useContext(
+    FormPropsContext
+  );
 
   const error = (errors[field.name] as FieldError)?.message;
+  const isSubmitSuccessful =
+    (wasSubmitSuccessful || wasSubmitSuccessful === undefined) &&
+    formState.isSubmitSuccessful;
+
+  console.log(isSubmitSuccessful);
 
   return {
     /**
@@ -18,8 +25,7 @@ export const useFieldContext = (field: GridFormField) => {
     isFirstError: Object.keys(errors)[0] === field.name,
     error,
     isDisabled:
-      (formState.isSubmitting || formState.isSubmitSuccessful) &&
-      disableFieldsOnSubmit,
+      (formState.isSubmitting || isSubmitSuccessful) && disableFieldsOnSubmit,
     register,
     setValue,
   };

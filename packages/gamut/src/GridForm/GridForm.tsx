@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import { Mode, SubmitHandler } from 'react-hook-form';
 
 import { ButtonProps } from '../Button/shared';
-import { DisableOnSubmit, FormWrapper } from '../Form';
+import { FormContextProps, FormWrapper } from '../Form';
 import { FormValues } from '../Form/types';
 import { LayoutGrid, LayoutGridProps } from '../Layout';
 import { GridFormButtons, GridFormSubmitProps } from './GridFormButtons';
@@ -31,7 +31,7 @@ const isGridFormSection = (
   return (field as GridFormSectionProps).title !== undefined;
 };
 
-export type GridFormProps<Values extends {}> = DisableOnSubmit & {
+export type GridFormProps<Values extends {}> = FormContextProps & {
   children?: React.ReactNode;
   className?: string;
 
@@ -89,6 +89,7 @@ export function GridForm<Values extends FormValues>({
   submit,
   validation = 'onSubmit',
   showRequired = false,
+  wasSubmitSuccessful,
 }: GridFormProps<Values>) {
   const flatFields = fields.flatMap((field) =>
     isGridFormSection(field) ? field.fields : field
@@ -108,6 +109,7 @@ export function GridForm<Values extends FormValues>({
       validation={validation}
       defaultValues={defaultValues}
       disableFieldsOnSubmit={disableFieldsOnSubmit}
+      wasSubmitSuccessful={wasSubmitSuccessful}
       display="flex"
       flexDirection="column"
     >
