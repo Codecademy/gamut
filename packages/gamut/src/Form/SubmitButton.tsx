@@ -3,16 +3,21 @@ import { FormState, useFormContext } from 'react-hook-form';
 
 import { Box, FlexBox } from '../Box';
 import { ButtonProps, FillButton } from '../Button';
+import { useSubmitContext } from '../GridForm/utils';
 import { Spinner } from '../Spinner';
 
 export type FormStateCallback<Values = {}> = (
   formState: FormState<Values>
 ) => boolean;
 
-export interface SubmitButtonProps extends Omit<ButtonProps, 'as'> {
-  as?: ComponentType<ButtonProps>;
+export interface SubmitContextProps {
   loading?: FormStateCallback | boolean;
   disabled?: FormStateCallback | boolean;
+}
+export interface SubmitButtonProps
+  extends Omit<ButtonProps, 'as'>,
+    SubmitContextProps {
+  as?: ComponentType<ButtonProps>;
 }
 
 export const SubmitButton: React.FC<SubmitButtonProps> = ({
@@ -22,13 +27,7 @@ export const SubmitButton: React.FC<SubmitButtonProps> = ({
   loading = false,
   ...rest
 }) => {
-  const { formState } = useFormContext();
-
-  const isLoading =
-    typeof loading === 'function' ? loading(formState) : loading;
-
-  const isDisabled =
-    typeof disabled === 'function' ? disabled(formState) : disabled;
+  const { isLoading, isDisabled } = useSubmitContext({ loading, disabled });
 
   if (isLoading) {
     return (

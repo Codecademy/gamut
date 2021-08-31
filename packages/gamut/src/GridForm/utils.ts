@@ -1,6 +1,7 @@
-import { useContext } from 'react';
+import { useContext, useMemo } from 'react';
 import { FieldError, useFormContext } from 'react-hook-form';
 
+import { SubmitContextProps } from '..';
 import { FormPropsContext } from '../Form';
 import { GridFormField } from './types';
 
@@ -23,4 +24,23 @@ export const useFieldContext = (field: GridFormField) => {
     register,
     setValue,
   };
+};
+
+export const useSubmitContext = ({ loading, disabled }: SubmitContextProps) => {
+  const { reset, formState } = useFormContext();
+  const { resetOnSubmit } = useContext(FormPropsContext);
+
+  const isLoading =
+    typeof loading === 'function' ? loading(formState) : loading;
+
+  const isDisabled =
+    typeof disabled === 'function' ? disabled(formState) : disabled;
+
+  useMemo(() => {
+    if (formState.isSubmitSuccessful && resetOnSubmit) {
+      reset();
+    }
+  }, [formState.isSubmitSuccessful, resetOnSubmit, reset]);
+
+  return { isLoading, isDisabled };
 };

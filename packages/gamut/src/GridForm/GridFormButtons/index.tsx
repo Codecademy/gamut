@@ -1,8 +1,9 @@
-import { ColorModes } from '@codecademy/gamut-styles';
+import { ColorModes, variant } from '@codecademy/gamut-styles';
+import styled from '@emotion/styled';
 import React, { ComponentProps } from 'react';
 
 import { Box } from '../../Box';
-import { CTAButton, FillButton, TextButton } from '../../Button';
+import { CTAButton, FillButton, StrokeButton, TextButton } from '../../Button';
 import { ButtonProps } from '../../Button/shared';
 import { SubmitButton, SubmitButtonProps } from '../../Form';
 import { Column } from '../../Layout';

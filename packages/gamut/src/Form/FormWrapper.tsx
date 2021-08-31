@@ -11,14 +11,18 @@ import { Form } from '../Form';
 import { FormProps } from './Form';
 import { FormValues } from './types';
 
-export type DisableOnSubmit = {
+export type FormContextProps = {
   /**
    * If fields should be disabled while form is being submitted and after successful submission.
    */
   disableFieldsOnSubmit?: boolean;
+  /**
+   * If fields should be reset after successful submission.
+   */
+  resetOnSubmit?: boolean;
 };
 
-export type FormWrapperProps<Values extends {}> = DisableOnSubmit &
+export type FormWrapperProps<Values extends {}> = FormContextProps &
   Omit<FormProps, 'onSubmit'> & {
     children?: React.ReactNode;
 
@@ -37,11 +41,13 @@ export type FormWrapperProps<Values extends {}> = DisableOnSubmit &
     validation?: Mode;
   };
 
-export type FormProviderCustomProps = FormProviderProps & DisableOnSubmit;
+export type FormProviderCustomProps = FormProviderProps & FormContextProps;
 
 export const FormPropsContext = React.createContext({
   disableFieldsOnSubmit: false,
+  resetOnSubmit: false,
 });
+
 const PropsProvider = FormPropsContext.Provider;
 
 /**
@@ -53,6 +59,7 @@ export function FormWrapper<Values extends FormValues>({
   defaultValues,
   validation = 'onSubmit',
   disableFieldsOnSubmit = false,
+  resetOnSubmit = false,
   ...rest
 }: FormWrapperProps<Values>) {
   const { handleSubmit, formState, ...methods } = useForm({
@@ -61,7 +68,7 @@ export function FormWrapper<Values extends FormValues>({
   });
 
   return (
-    <PropsProvider value={{ disableFieldsOnSubmit }}>
+    <PropsProvider value={{ disableFieldsOnSubmit, resetOnSubmit }}>
       <FormProvider
         handleSubmit={handleSubmit}
         formState={formState}
