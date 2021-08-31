@@ -43,10 +43,9 @@ export type FormWrapperProps<Values extends {}> = FormContextProps &
 
 export type FormProviderCustomProps = FormProviderProps & FormContextProps;
 
-export const FormPropsContext = React.createContext({
-  disableFieldsOnSubmit: false,
-  wasSubmitSuccessful: false,
-});
+export const FormPropsContext = React.createContext<Partial<FormContextProps>>(
+  {}
+);
 const PropsProvider = FormPropsContext.Provider;
 
 /**
