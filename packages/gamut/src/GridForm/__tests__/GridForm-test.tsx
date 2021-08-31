@@ -425,28 +425,5 @@ describe('GridForm', () => {
       expect(selectField).not.toBeDisabled();
       expect(textField).not.toBeDisabled();
     });
-
-    it.only('does not disable fields with custom validation errors', async () => {
-      const api = createPromise<{}>();
-      const onSubmit = async (values: {}) => api.resolve(values);
-
-      const { view } = renderView({
-        fields: [{ ...stubTextField, validation: { validate: () => false } }],
-        onSubmit,
-        disableFieldsOnSubmit: true,
-      });
-
-      const textField = view.getByRole('textbox', { name: 'Stub Text' });
-
-      fireEvent.input(textField, {
-        target: 'oh hi',
-      });
-
-      await act(async () => {
-        fireEvent.submit(view.getByRole('button'));
-      });
-
-      expect(textField).not.toBeDisabled();
-    });
   });
 });
