@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { FieldError, useFormContext } from 'react-hook-form';
+import { useFormContext } from 'react-hook-form';
 
 import { FormPropsContext } from '../Form';
 import { GridFormField } from './types';
@@ -10,7 +10,8 @@ export const useFieldContext = (field: GridFormField) => {
     FormPropsContext
   );
 
-  const error = (errors[field.name] as FieldError)?.message;
+  const error = errors[field.name]?.message;
+
   const isSubmitSuccessful =
     (wasSubmitSuccessful || wasSubmitSuccessful === undefined) &&
     formState.isSubmitSuccessful;
