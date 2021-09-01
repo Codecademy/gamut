@@ -55,8 +55,8 @@ export const mockUsers = [
 ];
 
 export const CondensedTemplate = (args) => (
-  <ColorMode mode={args.mode}>
-    <List variant="slat" spacing="condensed">
+  <ColorMode mode={args.mode} bg="background">
+    <List variant="table" spacing="condensed">
       {mockUsers.map(({ name, role, ship }, i, key = `example-row-${i}`) => (
         <ListRow key={key}>
           <ListCol size="lg">

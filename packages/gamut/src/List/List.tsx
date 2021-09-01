@@ -136,7 +136,7 @@ const RowEl = styled.div(
       },
       table: {
         '&:nth-child(2n)': {
-          bg: 'background-disabled',
+          bg: 'background-selected',
         },
       },
     },
@@ -202,11 +202,6 @@ const ColEl = styled.div(
     },
   }),
   states({
-    stack: {
-      flexDirection: 'column',
-      alignItems: 'flex-start',
-      justifyContent: 'center',
-    },
     right: {
       justifyContent: 'flex-end',
     },
