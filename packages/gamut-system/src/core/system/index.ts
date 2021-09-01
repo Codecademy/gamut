@@ -24,7 +24,7 @@ const create = <
   // Iterate over all the property groups
   entries(propGroups).forEach(([groupKey, groupProps]) => {
     // Create the style functions (handlers) for each of the specifieed properties.
-    const propHandlers = mapValues(groupProps, createHandler);
+    const propHandlers = mapValues(groupProps, createHandler as any);
 
     // Create a composed group handler for the group (handles all group properties at once)
     const groupHandler = compose(...values(propHandlers));

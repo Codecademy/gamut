@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [0.17.4](https://github.com/Codecademy/client-modules/compare/@codecademy/variance@0.17.3...@codecademy/variance@0.17.4) (2021-08-30)
+
+
+### Bug Fixes
+
+* **variance:** Fix theme computations and add more tests for prop behavior ([0cc017a](https://github.com/Codecademy/client-modules/commit/0cc017ac3b6a519da9ee4d4d4488a9e0da9029a2))
+
+
+
 ### [0.17.3](https://github.com/Codecademy/client-modules/compare/@codecademy/variance@0.17.2...@codecademy/variance@0.17.3) (2021-08-12)
 
 

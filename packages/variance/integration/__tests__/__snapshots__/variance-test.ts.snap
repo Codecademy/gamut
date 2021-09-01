@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`style props parsers media query styles Equivalent Syntax SM and MD -  [ <2 empty items>, 16, 0, [length]: 4 ] === { sm: 16, md: 0 } 1`] = `
+Object {
+  "MD": Object {
+    "margin": 0,
+  },
+  "SM": Object {
+    "margin": "1rem",
+  },
+}
+`;
+
+exports[`style props parsers media query styles Equivalent Syntax all media queries -  [ 4, 8, 16, 24, 32, 48, [length]: 6 ] === { _: 4, xs: 8, sm: 16, md: 24, lg: 32, xl: 48 } 1`] = `
+Object {
+  "LG": Object {
+    "margin": "2rem",
+  },
+  "MD": Object {
+    "margin": "1.5rem",
+  },
+  "SM": Object {
+    "margin": "1rem",
+  },
+  "XL": Object {
+    "margin": "3rem",
+  },
+  "XS": Object {
+    "margin": "0.5rem",
+  },
+  "margin": "0.25rem",
+}
+`;
+
+exports[`style props parsers media query styles Equivalent Syntax no media query base value -  [ 4, [length]: 1 ] === { _: 4 } 1`] = `
+Object {
+  "margin": "0.25rem",
+}
+`;
+
+exports[`style props parsers media query styles Equivalent Syntax only MD with undefined keys -  [ <3 empty items>, 0, [length]: 4 ] === { md: 0, _: undefined, sm: undefined } 1`] = `
+Object {
+  "MD": Object {
+    "margin": 0,
+  },
+}
+`;
+
+exports[`style props parsers media query styles Equivalent Syntax only XS -  [ <1 empty item>, 4, [length]: 2 ] === { xs: 4 } 1`] = `
+Object {
+  "XS": Object {
+    "margin": "0.25rem",
+  },
+}
+`;

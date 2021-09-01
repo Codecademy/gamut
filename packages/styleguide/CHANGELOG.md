@@ -3,6 +3,79 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [43.10.9](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@43.10.8...@codecademy/styleguide@43.10.9) (2021-08-31)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [43.10.8](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@43.10.7...@codecademy/styleguide@43.10.8) (2021-08-30)
+
+
+### Bug Fixes
+
+* **styleguide:** Set Figma blocks aspect ratio to 16:9 GM-336 ([c62a833](https://github.com/Codecademy/client-modules/commit/c62a83372c7957d21e3801f71cd986972c1d3027))
+
+
+
+### [43.10.7](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@43.10.6...@codecademy/styleguide@43.10.7) (2021-08-30)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [43.10.6](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@43.10.5...@codecademy/styleguide@43.10.6) (2021-08-27)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [43.10.5](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@43.10.4...@codecademy/styleguide@43.10.5) (2021-08-27)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [43.10.4](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@43.10.3...@codecademy/styleguide@43.10.4) (2021-08-27)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [43.10.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@43.10.2...@codecademy/styleguide@43.10.3) (2021-08-27)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [43.10.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@43.10.1...@codecademy/styleguide@43.10.2) (2021-08-27)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [43.10.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@43.10.0...@codecademy/styleguide@43.10.1) (2021-08-26)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
 ## [43.10.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@43.9.2...@codecademy/styleguide@43.10.0) (2021-08-26)
 
 
