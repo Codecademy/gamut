@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [36.8.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@36.8.3...@codecademy/gamut@36.8.4) (2021-09-01)
+
+
+### Bug Fixes
+
+* Hiding checkbox svg from accessibility api ([36b6e65](https://github.com/Codecademy/client-modules/commit/36b6e65aa56c47d27e4dcda2d45e5096c29ca52c))
+
+
+
 ### [36.8.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@36.8.2...@codecademy/gamut@36.8.3) (2021-08-31)
 
 **Note:** Version bump only for package @codecademy/gamut
