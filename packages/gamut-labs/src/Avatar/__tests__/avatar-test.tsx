@@ -1,7 +1,7 @@
 import { mount } from 'enzyme';
 import React from 'react';
 
-import { Avatar, defaultAvatarSize } from '..';
+import { Avatar, avatarSizes } from '..';
 
 describe('Avatar', () => {
   it('when an "alt" prop is passed, an "alt" attribute is added to the <img/>', () => {
@@ -21,10 +21,11 @@ describe('Avatar', () => {
   });
 
   it('when a "size" prop is passed, the <img/> height and width attributes are set accordingly', () => {
-    const avatarSize = 666;
-    const wrapper = mount(<Avatar src="" alt="" size={avatarSize} />);
+    const wrapper = mount(<Avatar src="" alt="" size="small" />);
     expect(
-      wrapper.find(`img[height="${avatarSize}px"][width="${avatarSize}px"]`)
+      wrapper.find(
+        `img[height="${avatarSizes.small}"][width="${avatarSizes.small}"]`
+      )
     ).toHaveLength(1);
   });
 
@@ -32,7 +33,7 @@ describe('Avatar', () => {
     const wrapper = mount(<Avatar src="" alt="" />);
     expect(
       wrapper.find(
-        `img[height="${defaultAvatarSize}px"][width="${defaultAvatarSize}px"]`
+        `img[height="${avatarSizes.medium}"][width="${avatarSizes.medium}"]`
       )
     ).toHaveLength(1);
   });

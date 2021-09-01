@@ -6,8 +6,6 @@ import React from 'react';
 
 const Image = styled.img();
 
-export const defaultAvatarSize = 118;
-
 const AvatarContainer = styled.div<{
   mode?: VisualTheme;
   disableDropshadow?: boolean;
@@ -64,9 +62,9 @@ export type AvatarBaseProps = {
   disableDropshadow?: boolean;
 
   /**
-   * width and height of the Avatar in px
+   * Size of the Avatar; small = 32x32, medium = 118x118
    */
-  size?: number;
+  size?: 'small' | 'medium';
 
   /**
    * Overrides styles on the Avatar container.
@@ -83,10 +81,15 @@ export type AvatarBaseProps = {
 
 export type AvatarProps = AvatarBaseProps & AvatarImageProps;
 
+export const avatarSizes = {
+  small: '32px',
+  medium: '118px',
+};
+
 export const Avatar: React.FC<AvatarProps> = ({
   mode,
   disableDropshadow,
-  size = defaultAvatarSize,
+  size = 'medium',
   className,
   ...avatarImageProps
 }) => (
@@ -96,6 +99,10 @@ export const Avatar: React.FC<AvatarProps> = ({
     disableDropshadow={disableDropshadow}
     data-testid="avatar-container"
   >
-    <Image width={`${size}px`} height={`${size}px`} {...avatarImageProps} />
+    <Image
+      width={avatarSizes[size]}
+      height={avatarSizes[size]}
+      {...avatarImageProps}
+    />
   </AvatarContainer>
 );
