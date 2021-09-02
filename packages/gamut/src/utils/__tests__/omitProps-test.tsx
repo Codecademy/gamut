@@ -1,3 +1,5 @@
+import { omit } from 'lodash';
+
 import { omitProps } from '../omitProps';
 
 describe('omitProps', () => {
@@ -17,7 +19,7 @@ describe('omitProps', () => {
       three: {},
     };
 
-    const { one, ...otherProps } = props;
+    const otherProps = omit(props, 'one');
 
     expect(omitProps(otherProps, props)).toEqual({ one: true });
   });

@@ -344,8 +344,6 @@ describe('GlobalHeader', () => {
   });
 
   describe('renders a custom element when provided one', () => {
-    beforeEach(() => {});
-
     it('renders search', () => {
       const { view } = renderView(renderElementProps);
       view.getByTitle('Search Icon');

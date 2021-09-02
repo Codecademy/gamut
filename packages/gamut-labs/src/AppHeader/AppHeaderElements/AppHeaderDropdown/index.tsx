@@ -40,7 +40,9 @@ export const AppHeaderDropdown: React.FC<AppHeaderDropdownProps> = ({
   const [isOpen, setIsOpen] = useState(false);
   const toggleIsOpen = (event: React.MouseEvent) => {
     setIsOpen(!isOpen);
-    !isOpen && action(event, item);
+    if (!isOpen) {
+      action(event, item);
+    }
   };
   const handleClose = () => {
     setIsOpen(false);

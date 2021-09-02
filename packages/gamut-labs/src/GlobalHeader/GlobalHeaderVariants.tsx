@@ -41,8 +41,12 @@ const anonHeaderItems = (
   ];
 
   const rightItems: AppHeaderItem[] = [];
-  renderLogin && rightItems.push(login);
-  renderSignUp && rightItems.push(signUp);
+  if (renderLogin) {
+    rightItems.push(login);
+  }
+  if (renderSignUp) {
+    rightItems.push(signUp);
+  }
 
   return {
     left: leftItems,
@@ -58,8 +62,12 @@ const anonMobileHeaderItems = (
   const leftItems: AppHeaderItem[] = [logo];
 
   const rightItems: AppHeaderItem[] = [];
-  renderLogin && rightItems.push(login);
-  renderSignUp && rightItems.push(signUp);
+  if (renderLogin) {
+    rightItems.push(login);
+  }
+  if (renderSignUp) {
+    rightItems.push(signUp);
+  }
 
   const mainMenuItems: AppHeaderItem[] = [
     courseCatalog,
@@ -143,8 +151,12 @@ export const freeHeaderItems = (
   ];
 
   const rightItems: AppHeaderItem[] = [];
-  renderNotifications && rightItems.push(notifications(renderNotifications));
-  renderFavorites && rightItems.push(favorites(renderFavorites));
+  if (renderNotifications) {
+    rightItems.push(notifications(renderNotifications));
+  }
+  if (renderFavorites) {
+    rightItems.push(favorites(renderFavorites));
+  }
 
   rightItems.push(freeProfile(user));
   rightItems.push(
@@ -167,7 +179,9 @@ export const freeMobileHeaderItems = (
   const leftItems: AppHeaderItem[] = [logo];
 
   const rightItems: AppHeaderItem[] = [];
-  renderNotifications && rightItems.push(notifications(renderNotifications));
+  if (renderNotifications) {
+    rightItems.push(notifications(renderNotifications));
+  }
 
   const mainMenuItems: AppHeaderItem[] = [
     myHome,
@@ -206,11 +220,17 @@ export const proHeaderItems = (
   ];
 
   const rightItems: AppHeaderItem[] = [];
-  renderNotifications && rightItems.push(notifications(renderNotifications));
-  renderFavorites && rightItems.push(favorites(renderFavorites));
+  if (renderNotifications) {
+    rightItems.push(notifications(renderNotifications));
+  }
+  if (renderFavorites) {
+    rightItems.push(favorites(renderFavorites));
+  }
 
   rightItems.push(proProfile(user));
-  user.isPaused && rightItems.push(unpausePro);
+  if (user.isPaused) {
+    rightItems.push(unpausePro);
+  }
 
   return {
     left: leftItems,
@@ -225,7 +245,9 @@ export const proMobileHeaderItems = (
   const leftItems: AppHeaderItem[] = [proLogo];
 
   const rightItems: AppHeaderItem[] = [];
-  renderNotifications && rightItems.push(notifications(renderNotifications));
+  if (renderNotifications) {
+    rightItems.push(notifications(renderNotifications));
+  }
 
   const mainMenuItems: AppHeaderItem[] = [
     myHome,
@@ -235,7 +257,9 @@ export const proMobileHeaderItems = (
     proProfile(user, true),
   ];
 
-  user.isPaused && mainMenuItems.push(unpausePro);
+  if (user.isPaused) {
+    mainMenuItems.push(unpausePro);
+  }
 
   return {
     left: leftItems,

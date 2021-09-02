@@ -57,6 +57,10 @@
   "license": "MIT",
   "devDependencies": {
     "@codecademy/gamut-tests": "^2.4.23",
+    "@testing-library/dom": "^7.31.2",
+    "@testing-library/react": "^11.0.4",
+    "@types/enzyme": "3.10.7",
+    "enzyme": "3.11.0",
     "onchange": "^7.0.2"
   },
   "publishConfig": {

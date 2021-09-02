@@ -54,11 +54,15 @@ export const Overlay: React.FC<OverlayProps> = ({
   isOpen,
 }) => {
   const handleOutsideClick = useCallback(() => {
-    clickOutsideCloses && onRequestClose();
+    if (clickOutsideCloses) {
+      onRequestClose();
+    }
   }, [clickOutsideCloses, onRequestClose]);
 
   const handleEscapeKey = useCallback(() => {
-    escapeCloses && onRequestClose();
+    if (escapeCloses) {
+      onRequestClose();
+    }
   }, [escapeCloses, onRequestClose]);
 
   if (!isOpen) return null;

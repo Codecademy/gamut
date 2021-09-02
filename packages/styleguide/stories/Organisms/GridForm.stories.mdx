@@ -205,7 +205,7 @@ If an input is not meant to be usable, such as when a portion of a form is disab
 
 <Canvas>
   <Story name="Disabled Inputs">
-    {(args) => (
+    {() => (
       <GridForm
         fields={[
           {
@@ -240,7 +240,7 @@ We can use the `size` and `rowspan` props (borrowed from <LinkTo id="layouts-lay
 
 <Canvas>
   <Story name="Rowspan Formatting">
-    {(args) => (
+    {() => (
       <GridForm
         fields={[
           {
@@ -309,7 +309,7 @@ value of left, center, right, or stretch.
 
 <Canvas>
   <Story name="Submit Button Position">
-    {(args) => (
+    {() => (
       <LayoutGrid>
         <Column size={6}>
           <GridForm
@@ -395,7 +395,7 @@ the <LinkTo id="atoms-button--fill-button">`FillButton`</LinkTo> or <LinkTo id="
 
 <Canvas>
   <Story name="Submit Button Options">
-    {(args) => (
+    {() => (
       <>
         <GridForm
           fields={[
@@ -488,7 +488,7 @@ align nicely with the input.
 
 <Canvas>
   <Story name="Inline Text Input With Label">
-    {(args) => (
+    {() => (
       <GridForm
         fields={[
           {
@@ -518,7 +518,7 @@ Optionally, include a cancel button.
 
 <Canvas>
   <Story name="Cancel button">
-    {(args) => (
+    {() => (
       <GridForm
         fields={[
           {
@@ -559,11 +559,11 @@ We also have a 'custom-group' type for when you are passing in a custom FormGrou
 
 <Canvas>
   <Story name="Custom Inputs">
-    {(args) => (
+    {() => (
       <GridForm
         fields={[
           {
-            render: ({ className, error, setValue }) => (
+            render: ({ error, setValue }) => (
               <>
                 <Input
                   error={!!error}
@@ -586,7 +586,7 @@ We also have a 'custom-group' type for when you are passing in a custom FormGrou
             type: 'custom',
           },
           {
-            render: ({ className, error, setValue }) => (
+            render: ({ error, setValue }) => (
               <FormGroup label="updog" width="100%">
                 <Input
                   error={!!error}
@@ -634,7 +634,7 @@ more details on why using placeholders is often bad.
 
 <Canvas>
   <Story name="Placeholder Text">
-    {(args) => (
+    {() => (
       <GridForm
         fields={[
           {
@@ -663,7 +663,7 @@ field's value in a parent component before onSubmit gets triggered.
 
 <Canvas>
   <Story name="On Field Update">
-    {(args) => {
+    {() => {
       const [text, setText] = useState('');
       return (
         <>
@@ -699,7 +699,7 @@ See the <LinkTo id="atoms-forminputs-radio--radio">`Radio`</LinkTo> story for an
 
 <Canvas>
   <Story name="Tooltip">
-    {(args) => (
+    {() => (
       <>
         <GridForm
           fields={[
@@ -811,7 +811,7 @@ When using the left-aligned layout, please note that the `title` takes up 3 colu
 
 <Canvas>
   <Story name="Sections">
-    {(args) => {
+    {() => {
       return (
         <GridForm
           fields={[
@@ -918,7 +918,7 @@ The following values can be passed to `breakType`:
 
 <Canvas>
   <Story name="Section Breaks">
-    {(args) => {
+    {() => {
       return (
         <GridForm
           breakType="none"
@@ -994,7 +994,7 @@ A field can take a custom error in addition to validation errors. The validation
 
 <Canvas>
   <Story name="Custom Error">
-    {(args) => {
+    {() => {
       return (
         <GridForm
           fields={[
@@ -1033,7 +1033,7 @@ Hidden inputs can be used to include data that users can't see or modify with th
 
 <Canvas>
   <Story name="Hidden Input">
-    {(args) => (
+    {() => (
       <GridForm
         fields={[
           {
@@ -1066,7 +1066,7 @@ We call it a "sweet container" so that bots do not immediately detect it as a ho
 
 <Canvas>
   <Story name="Sweet Container Input">
-    {(args) => (
+    {() => (
       <GridForm
         fields={[
           {
@@ -1097,7 +1097,7 @@ GridForm renders errors through our <LinkTo id="atoms-markdown--basics">Markdown
 
 <Canvas>
   <Story name="Markdown Errors">
-    {(args) => (
+    {() => (
       <GridForm
         fields={[
           {
@@ -1135,7 +1135,7 @@ If you need to checkboxes to fit into a smaller space, you can use our our `tigh
 
 <Canvas>
   <Story name="Checkbox Spacing">
-    {(args) => (
+    {() => (
       <GridForm
         rowGap={0}
         fields={[
@@ -1192,7 +1192,7 @@ If you need to checkboxes to fit into a smaller space, you can use our our `tigh
 
 <Canvas>
   <Story name="Loading States">
-    {(args) => (
+    {() => (
       <>
         <Background bg="beige" p={32}>
           <GridForm

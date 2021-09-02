@@ -35,14 +35,14 @@ It is best to provide `htmlFor` to both the FormGroup + inner form element to ma
 
 <Canvas>
   <Story name="FormGroupLabel">
-    {(args) => (
+    {() => (
       <FormGroup label="I am a label!!" htmlFor="example1">
         <Input htmlFor="example1" />
       </FormGroup>
     )}
   </Story>
   <Story name="FormGroupLabelDiv">
-    {(args) => (
+    {() => (
       <FormGroup label="I look like a label, but I'm actually a div...">
         <Input defaultValue="😔" />
       </FormGroup>
@@ -54,7 +54,7 @@ It is best to provide `htmlFor` to both the FormGroup + inner form element to ma
 
 <Canvas>
   <Story name="FormGroupRequired">
-    {(args) => (
+    {() => (
       <FormGroup
         showRequired
         label="I am required!!"
@@ -66,7 +66,7 @@ It is best to provide `htmlFor` to both the FormGroup + inner form element to ma
     )}
   </Story>
   <Story name="FormGroupError">
-    {(args) => (
+    {() => (
       <FormGroup
         showRequired
         label="I am also required!!"
@@ -79,7 +79,7 @@ It is best to provide `htmlFor` to both the FormGroup + inner form element to ma
     )}
   </Story>
   <Story name="FormGroupValidated">
-    {(args) => (
+    {() => (
       <FormGroup
         showRequired
         label="I am also required!!"
@@ -97,7 +97,7 @@ A field can include [our existing `ToolTip`](/?path=/docs/atoms-tooltip--tool-ti
 
 <Canvas>
   <Story name="FormGroupTooltip">
-    {(args) => (
+    {() => (
       <FormGroup
         label="light mode"
         tooltip={{
@@ -111,7 +111,7 @@ A field can include [our existing `ToolTip`](/?path=/docs/atoms-tooltip--tool-ti
     )}
   </Story>
   <Story name="FormGroupTooltipDark">
-    {(args) => (
+    {() => (
       <FormGroup
         label="dark mode"
         tooltip={{

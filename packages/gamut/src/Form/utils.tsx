@@ -32,7 +32,7 @@ const formatAsOptions = ({ label, value, key }: SelectOptionBase) => {
   return option;
 };
 export const parseOptions = ({ options, id, size }: ParseOptionProps) => {
-  const parsedOptions: Array<OptionTypeBase> = [];
+  const parsedOptions: OptionTypeBase[] = [];
   if (Array.isArray(options)) {
     options.forEach((value: string | IconOption) => {
       if (isObject(value)) {

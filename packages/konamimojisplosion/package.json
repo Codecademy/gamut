@@ -18,7 +18,8 @@
     "konami-code-js": "^0.8.1"
   },
   "devDependencies": {
-    "@codecademy/gamut-tests": "^2.4.23"
+    "@codecademy/gamut-tests": "^2.4.23",
+    "@testing-library/react-hooks": "^5.1.0"
   },
   "publishConfig": {
     "access": "public"

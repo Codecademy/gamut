@@ -61,7 +61,7 @@ const asyncRenderView = async (
   let renderResults: RenderViewReturn;
 
   await act(async () => {
-    renderResults = await renderView(...props);
+    renderResults = renderView(...props);
   });
 
   return renderResults!;
@@ -235,7 +235,7 @@ describe('GridForm', () => {
     });
 
     it('keeps the submit button disabled when overridden and there are no incomplete fields', async () => {
-      const fields: Array<GridFormField> = [];
+      const fields: GridFormField[] = [];
 
       const { view } = renderView({
         fields,
