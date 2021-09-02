@@ -55,7 +55,7 @@ const shadowVariants = variant({
 
 export interface CardProps
   extends Omit<ComponentProps<typeof CardWrapper>, 'outline' | 'bg'> {
-  variant?: 'navy' | 'white' | 'hyper' | 'yellow' | 'mode';
+  variant?: 'navy' | 'white' | 'hyper' | 'yellow';
 }
 
 interface CardWrapperProps extends StyleProps<typeof shadowVariants> {
@@ -73,8 +73,8 @@ const CardWrapper = styled(Background)<CardWrapperProps>(
   })
 );
 
-export const Card: React.FC<CardProps> = ({ variant = 'white', ...rest }) => {
-  if (variant === 'mode') {
+export const Card: React.FC<CardProps> = ({ variant, ...rest }) => {
+  if (!variant) {
     return (
       <DynamicCardWrapper
         border={1}
