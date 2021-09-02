@@ -34,9 +34,6 @@ export const Toaster: React.FC<ToasterProps> = ({ toasts = [], onClose }) => {
     return (
       <FadeInSlideOut key={id}>
         <Toast onClose={closeToast} title={name} icon={icon}>
-          <Text display="inline-block" mb={8}>
-            {description}
-          </Text>
           {children}
         </Toast>
       </FadeInSlideOut>
@@ -47,7 +44,11 @@ export const Toaster: React.FC<ToasterProps> = ({ toasts = [], onClose }) => {
     <BodyPortal>
       <ColorMode mode="light">
         <Box right={16} bottom={88} position="fixed" aria-live="polite">
-          <AnimatePresence>{toasts.map(renderToastByType)}</AnimatePresence>
+          <AnimatePresence>
+            <Toast onClose={closeToast} title={name} icon={icon}>
+              {toasts.map(renderToastByType)}
+            </Toast>
+          </AnimatePresence>
         </Box>
       </ColorMode>
     </BodyPortal>
