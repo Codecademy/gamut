@@ -9,6 +9,7 @@ import styled from '@emotion/styled';
 import React, { ReactNode } from 'react';
 
 import { formatUrlWithRedirect } from '../GlobalHeader/urlHelpers';
+import { HeaderHeightArea } from '../HeaderHeightArea';
 import { NotificationsPopover } from '../Notifications/NotificationsPopover';
 import { AppHeaderNotifications } from '../Notifications/types';
 import { useHeaderNotifications } from '../Notifications/useHeaderNotifications';
@@ -118,7 +119,7 @@ export const AppHeader: React.FC<AppHeaderProps> = ({
   ];
 
   return (
-    <>
+    <HeaderHeightArea display={{ _: 'none', md: 'block' }}>
       <StyledAppBar>
         <AppBarSection position="left">
           {mapItemsToElement(items.left)}
@@ -129,6 +130,6 @@ export const AppHeader: React.FC<AppHeaderProps> = ({
       </StyledAppBar>
       {notificationsView}
       {searchPane}
-    </>
+    </HeaderHeightArea>
   );
 };

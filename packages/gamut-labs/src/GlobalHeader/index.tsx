@@ -1,8 +1,6 @@
 import { Box } from '@codecademy/gamut';
-import { system, transitionConcat } from '@codecademy/gamut-styles';
 import { useTheme } from '@emotion/react';
-import styled from '@emotion/styled';
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback } from 'react';
 
 import { AppHeader, AppHeaderMobile } from '..';
 import {
@@ -89,42 +87,8 @@ const getMobileAppHeaderItems = (
   }
 };
 
-const HeaderContainer = styled(Box)(
-  system.css({
-    borderBottom: 1,
-    bg: 'background',
-    top: 0,
-    zIndex: 2,
-    width: 1,
-    transition: transitionConcat(
-      ['background-color', 'border-bottom-color'],
-      'fast',
-      'ease-in-out'
-    ),
-  }),
-  system.states({
-    faded: {
-      bg: 'background-current',
-      borderColor: 'background-current',
-    },
-  })
-);
-
 export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
   const { action, onLinkAction } = props;
-
-  const [isInHeaderRegion, setIsInHeaderRegion] = useState(true);
-
-  // it is not recommended to replicate this logic in other components unless absolutely necessary, as it is
-  // a workaround for style rehydration issues when using react-use/useWindowScroll. The reasoning behind this
-  // workaround is discussed here: https://github.com/Codecademy/client-modules/pull/1822#discussion_r650125406
-  useEffect(() => {
-    const checkScroll = () => setIsInHeaderRegion(window?.pageYOffset === 0);
-    checkScroll();
-    document.addEventListener('scroll', checkScroll);
-    return () => document.removeEventListener('scroll', checkScroll);
-  }, []);
-
   const theme = useTheme();
 
   const combinedAction = useCallback(
@@ -137,45 +101,31 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
 
   return (
     <Box as="header" position="sticky" top={0} zIndex={theme.elements.headerZ}>
-      <HeaderContainer
-        display={{ _: 'none', md: 'block' }}
-        height={theme.elements.headerHeight}
-        faded={isInHeaderRegion}
-      >
-        <AppHeader
-          action={combinedAction}
-          items={getAppHeaderItems(props)}
-          search={props.search}
-          {...(props.type === 'anon'
-            ? {
-                redirectParam: props.redirectParam,
-              }
-            : props.type === 'loading'
-            ? {}
-            : {
-                notifications: props.notifications,
-              })}
-        />
-      </HeaderContainer>
-      <HeaderContainer
-        display={{ _: 'block', md: 'none' }}
-        height={theme.elements.headerHeight}
-        faded={isInHeaderRegion}
-      >
-        <AppHeaderMobile
-          action={combinedAction}
-          items={getMobileAppHeaderItems(props)}
-          {...(props.type === 'anon' || props.type === 'loading'
-            ? {}
-            : {
-                notifications: props.notifications,
-              })}
-          onSearch={props.search.onSearch}
-          redirectParam={
-            props.type === 'anon' ? props.redirectParam : undefined
-          }
-        />
-      </HeaderContainer>
+      <AppHeader
+        action={combinedAction}
+        items={getAppHeaderItems(props)}
+        search={props.search}
+        {...(props.type === 'anon'
+          ? {
+              redirectParam: props.redirectParam,
+            }
+          : props.type === 'loading'
+          ? {}
+          : {
+              notifications: props.notifications,
+            })}
+      />
+      <AppHeaderMobile
+        action={combinedAction}
+        items={getMobileAppHeaderItems(props)}
+        {...(props.type === 'anon' || props.type === 'loading'
+          ? {}
+          : {
+              notifications: props.notifications,
+            })}
+        onSearch={props.search.onSearch}
+        redirectParam={props.type === 'anon' ? props.redirectParam : undefined}
+      />
       {props.children}
     </Box>
   );
