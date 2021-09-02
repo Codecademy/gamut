@@ -4,10 +4,12 @@ import {
   IconButton,
   List,
   ListCol,
+  ListProps,
   ListRow,
   Text,
   TextButton,
 } from '@codecademy/gamut';
+import { Box } from '@codecademy/gamut/src';
 import {
   MiniDeleteIcon,
   MiniKebabMenuIcon,
@@ -16,48 +18,40 @@ import {
   TrophyIcon,
 } from '@codecademy/gamut-icons';
 import { ColorMode } from '@codecademy/gamut-styles';
-import title from '@codecademy/macros/lib/title.macro';
-import { PropsTable } from '@codecademy/storybook-addon-variance';
-import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import React from 'react';
 
-<Meta
-  title={title}
-  component={List}
-  parameters={{
-    subtitle: 'Presentational components for creating rows with mixed content',
-    source: 'gamut',
-    status: 'current',
-    design: {
-      type: 'figma',
-      url:
-        'https://www.figma.com/file/QqN956bndK3HZ3AyFjmxNz/Code-Challenges?node-id=77%3A17795',
-    },
-  }}
-  args={{}}
-/>
-
-<Canvas>
-  <Story name="List">{(args) => <List {...args} />}</Story>
-</Canvas>
-
-<PropsTable story="List" />
-
-## Spacing
-
-### Normal
-
-For mixed content use the normal size to ensure that there is enough space for components
-
-export const mockUsers = [
+const rows = [
   { name: 'Jean Luc Picard', role: 'Captain', ship: 'USS Enterprise' },
   { name: 'Wesley Crusher', role: 'Deus Ex Machina', ship: 'USS Enterprise' },
-  { name: 'Amos Burton', role: 'Mechanic', ship: 'MCRN Rocinate' },
+  {
+    name: 'Geordie LaForge',
+    role: 'Chief Engineer / Rascal',
+    ship: 'Borg Cube',
+  },
+  {
+    name: 'Data',
+    role: 'Lt. Commander / Scamp',
+    ship: 'He is a ship',
+  },
 ];
 
-export const CondensedTemplate = (args) => (
-  <ColorMode mode={args.mode} bg="background">
-    <List variant="table" spacing="condensed">
-      {mockUsers.map(({ name, role, ship }, i, key = `example-row-${i}`) => (
+export const DemoTemplate: React.FC = (args) => {
+  return (
+    <List {...args}>
+      {rows.map(({ name, ship }) => (
+        <ListRow>
+          <ListCol size="md">{name}</ListCol>
+          <ListCol fill>{ship}</ListCol>
+        </ListRow>
+      ))}
+    </List>
+  );
+};
+
+export const CondensedTemplate: React.FC<ListProps> = (args, { mode }) => (
+  <ColorMode mode={mode}>
+    <List {...args}>
+      {rows.map(({ name, role, ship }, i, _, key = `example-row-${i}`) => (
         <ListRow key={key}>
           <ListCol size="lg">
             <Text fontWeight={700} truncate="ellipsis">
@@ -121,10 +115,10 @@ export const CondensedTemplate = (args) => (
   </ColorMode>
 );
 
-export const NormalTemplate = (args) => (
-  <ColorMode mode={args.mode}>
-    <List variant="slat" spacing="normal">
-      {mockUsers.map(({ name, role, ship }, i, key = `example-row-${i}`) => (
+export const NormalTemplate: React.FC<ListProps> = (args, { mode }) => (
+  <ColorMode mode={mode}>
+    <List {...args}>
+      {rows.map(({ name, role, ship }, i, _, key = `example-row-${i}`) => (
         <ListRow key={key}>
           <ListCol size="lg">
             <FlexBox column>
@@ -193,22 +187,20 @@ export const NormalTemplate = (args) => (
   </ColorMode>
 );
 
-<Story name="Normal - Light">{NormalTemplate.bind({})}</Story>
+const sizes = ['content', 'sm', 'md', 'lg', 'xl', 'fill'];
 
-<br />
-
-<Story name="Normal - Dark" args={{ mode: 'dark' }}>
-  {NormalTemplate.bind({})}
-</Story>
-
-### Condensed
-
-For a more compact list use the condensed spacing
-
-<Story name="Condensed - Light">{CondensedTemplate.bind({})}</Story>
-
-<br />
-
-<Story name="Condensed - Dark" args={{ mode: 'dark' }}>
-  {CondensedTemplate.bind({})}
-</Story>
+export const ColumnTemplate = () => {
+  return (
+    <List spacing="condensed">
+      {sizes.map((size) => (
+        <ListRow>
+          <ListCol size={size} fill={size === 'fill'}>
+            <Box height={1} flex={1} p={4} bg="background-selected">
+              {size}
+            </Box>
+          </ListCol>
+        </ListRow>
+      ))}
+    </List>
+  );
+};

@@ -1,0 +1,115 @@
+import { List } from '@codecademy/gamut/src';
+import title from '@codecademy/macros/lib/title.macro';
+import { PropsTable } from '@codecademy/storybook-addon-variance';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+
+import {
+  ColumnTemplate,
+  CondensedTemplate,
+  DemoTemplate,
+  NormalTemplate,
+} from './examples';
+
+<Meta
+  title={title}
+  component={List}
+  parameters={{
+    subtitle: 'Presentational components for creating rows with mixed content',
+    source: 'gamut',
+    status: 'current',
+    design: {
+      type: 'figma',
+      url:
+        'https://www.figma.com/file/QqN956bndK3HZ3AyFjmxNz/Code-Challenges?node-id=77%3A17795',
+    },
+  }}
+  args={{}}
+/>
+
+## Usage
+
+```tsx
+import { List, ListRow, ListCol } from '@codecademy/gamut';
+
+<List variant="slat" spacing="condensed">
+  <ListRow>
+    <ListCol size="md">Worf</ListCol>
+    <ListCol size="md">Lieutenant Commander</ListCol>
+  </ListRow>
+  <ListRow>
+    <ListCol size="md">Deanna Troi</ListCol>
+    <ListCol size="lg">Commander</ListCol>
+  </ListRow>
+</List>;
+```
+
+## Variants
+
+<br />
+
+### Table
+
+<br />
+
+<Story name="Table" args={{ variant: 'table', spacing: 'condensed' }}>
+  {CondensedTemplate.bind({})}
+</Story>
+
+<br />
+
+### Slat
+
+<br />
+
+<Story name="Slats" args={{ variant: 'slat', spacing: 'condensed' }}>
+  {CondensedTemplate.bind({})}
+</Story>
+
+<br />
+
+### Bar
+
+<br />
+
+<Story name="Bars" args={{ variant: 'bar', spacing: 'condensed' }}>
+  {CondensedTemplate.bind({})}
+</Story>
+
+<br />
+
+## Column Sizing
+
+<Story name="Column Sizes">{ColumnTemplate.bind({})}</Story>
+
+<br />
+
+## Spacing
+
+### Normal
+
+For mixed content use the normal size to ensure that there is enough space for components
+
+<Story name="Normal - Light" args={{ variant: 'slat', spacing: 'normal' }}>
+  {NormalTemplate.bind({})}
+</Story>
+
+### Condensed
+
+For a more compact list use the condensed spacing
+
+<Story
+  name="Condensed - Light"
+  args={{ variant: 'slat', spacing: 'condensed' }}
+>
+  {CondensedTemplate.bind({})}
+</Story>
+
+<br />
+
+## Code Playground
+
+<Canvas>
+  <Story name="List">{DemoTemplate.bind({})}</Story>
+</Canvas>
+
+<PropsTable story="List" />
