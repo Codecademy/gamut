@@ -426,4 +426,75 @@ describe('GridForm', () => {
       expect(textField).not.toBeDisabled();
     });
   });
+
+  describe('resetOnSubmit', () => {
+    it('resets fields when form is successfully submitted', async () => {
+      let submitCount = 0;
+      const api = createPromise<{}>();
+      const api2 = createPromise<{}>();
+      const onSubmit = async (values: {}) => {
+        return submitCount < 1 ? api.resolve(values) : api2.resolve(values);
+      };
+      const selectValue = stubSelectOptions[1];
+      const textValue = 'Hooray!';
+
+      const { view } = renderView({ onSubmit, resetOnSubmit: true });
+
+      const checkboxField = view.getByRole('checkbox', {
+        name: 'Stub Checkbox Check me!',
+      }) as HTMLInputElement;
+
+      const selectField = view.getByRole('combobox', {
+        name: 'Stub Select',
+      }) as HTMLInputElement;
+
+      const textField = view.getByRole('textbox', {
+        name: 'Stub Text',
+      }) as HTMLInputElement;
+
+      const firstValues = [
+        [selectField, selectValue],
+        [textField, textValue],
+      ] as const;
+
+      fireEvent.click(checkboxField);
+
+      for (const [selector, value] of firstValues) {
+        fireEvent.input(selector, {
+          target: {
+            value,
+          },
+        });
+      }
+
+      await act(async () => {
+        fireEvent.submit(view.getByRole('button'));
+      });
+
+      const firstResult = await api.innerPromise;
+
+      expect(firstResult).toEqual({
+        [stubCheckboxField.name]: true,
+        [stubSelectField.name]: selectValue,
+        [stubTextField.name]: textValue,
+      });
+
+      expect(checkboxField.checked).toEqual(false);
+      expect(selectField.value).toEqual('aaa');
+      expect(textField.value).toEqual('');
+
+      await act(async () => {
+        submitCount++;
+        fireEvent.submit(view.getByRole('button'));
+      });
+
+      const secondResult = await api2.innerPromise;
+
+      expect(secondResult).toEqual({
+        [stubCheckboxField.name]: true,
+        [stubSelectField.name]: 'aaa',
+        [stubTextField.name]: '',
+      });
+    });
+  });
 });

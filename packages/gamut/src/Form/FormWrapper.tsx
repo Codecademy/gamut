@@ -78,9 +78,9 @@ export function FormWrapper<Values extends FormValues>({
 
   useEffect(() => {
     if (isSubmitSuccessful && resetOnSubmit) {
-      reset();
+      reset(defaultValues);
     }
-  }, [isSubmitSuccessful, resetOnSubmit, reset]);
+  }, [isSubmitSuccessful, resetOnSubmit, reset, defaultValues]);
 
   return (
     <PropsProvider
