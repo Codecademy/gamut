@@ -115,7 +115,6 @@ export const Testimonial: React.FC<TestimonialProps> = ({
     <TestimonialCard
       {...rest}
       p={32}
-      minWidth="22rem"
       width="100%"
       height="100%"
       mode={mode}
