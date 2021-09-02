@@ -19,7 +19,7 @@ export const NotificationsPopover: React.FC<NotificationsRendererProps> = ({
       onRequestClose={onClose}
       targetRef={bellRef}
     >
-      <FlexBox bg="white" width={360} textAlign="left">
+      <FlexBox bg="white" textAlign="left">
         <NotificationsContents {...props} />
       </FlexBox>
     </Popover>
