@@ -14,39 +14,44 @@ export const useNotificationButtons = ({
     ? [notifications.length, 'Less']
     : [defaultDisplayLimit, 'More'];
 
-  const clearAll = () => {
-    actions.clear();
-    actions.track('notification_clear_all');
-  };
-
-  const clearAllButton = (
-    <TextButton
-      onClick={clearAll}
-      aria-label={`Clear all ${notifications.length} notifications`}
-    >
-      Clear All
-    </TextButton>
-  );
-
-  if (notifications.length < displayLimit) {
-    return [clearAllButton, null, notifications] as const;
+  if (notifications.length === 0) {
+    return [null, null, notifications] as const;
   }
 
-  const handleShowMoreOrLess = () => {
-    setShowMore(!showMore);
+  const clearAllButton =
+    notifications.length > 0 &&
+    (notifications.length <= displayLimit || showMore) ? (
+      <TextButton
+        onClick={() => {
+          actions.clear();
+          actions.track('notification_clear_all');
+        }}
+        aria-label={`Clear all ${notifications.length} notifications`}
+      >
+        Clear All
+      </TextButton>
+    ) : null;
 
-    if (!showMore) {
-      actions.track('notification_show_more');
-    }
-  };
+  const showMoreButton =
+    notifications.length <= displayLimit ? null : (
+      <Box px={32}>
+        <TextButton
+          onClick={() => {
+            setShowMore(!showMore);
+
+            if (!showMore) {
+              actions.track('notification_show_more');
+            }
+          }}
+        >
+          Show {amountAdjective}
+        </TextButton>
+      </Box>
+    );
 
   return [
     clearAllButton,
-    <Box px={32}>
-      <TextButton onClick={handleShowMoreOrLess}>
-        Show {amountAdjective}
-      </TextButton>
-    </Box>,
+    showMoreButton,
     notifications.slice(0, displayLimit),
   ] as const;
 };

@@ -49,7 +49,7 @@ export const NotificationsContents: React.FC<NotificationsContentsProps> = (
         <Text as="h1" fontSize={22}>
           My Notifications
         </Text>
-        {showButton}
+        {clearButton}
       </FlexBox>
       <Box px={32}>
         <Pattern name="checkerDense" height="1px" display="flex" />
@@ -62,7 +62,7 @@ export const NotificationsContents: React.FC<NotificationsContentsProps> = (
             onNotificationClick={onNotificationClick}
           />
         </Box>
-        {clearButton}
+        {showButton}
       </Box>
     </Background>
   );
