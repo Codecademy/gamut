@@ -1,6 +1,6 @@
 import { setupRtl } from '@codecademy/gamut-tests';
-import { fireEvent } from '@testing-library/dom';
-import { act } from '@testing-library/react';
+import { fireEvent, queries } from '@testing-library/dom';
+import { act, RenderResult } from '@testing-library/react';
 import React from 'react';
 
 import { createPromise } from '../../utils';
@@ -78,35 +78,58 @@ const asyncRenderView = async (
   return renderResults!;
 };
 
+const getBaseCases = (view: RenderResult<typeof queries, HTMLElement>) => {
+  const checkboxField = view.getByRole('checkbox', {
+    name: 'Stub Checkbox Check me!',
+  }) as HTMLInputElement;
+  const selectField = view.getByRole('combobox', {
+    name: 'Stub Select',
+  }) as HTMLInputElement;
+  const textField = view.getByRole('textbox', {
+    name: 'Stub Text',
+  }) as HTMLInputElement;
+  return { checkboxField, selectField, textField };
+};
+
+const selectValue = stubSelectOptions[1];
+const textValue = 'Hooray!';
+
+const doBaseFormActions = (
+  selectField: HTMLInputElement,
+  textField: HTMLInputElement,
+  checkboxField: HTMLInputElement
+) => {
+  const newValues = [
+    [selectField, selectValue],
+    [textField, textValue],
+  ] as const;
+
+  fireEvent.click(checkboxField);
+
+  for (const [selector, value] of newValues) {
+    fireEvent.input(selector, {
+      target: {
+        value,
+      },
+    });
+  }
+};
+
+const baseResults = {
+  [stubCheckboxField.name]: true,
+  [stubSelectField.name]: selectValue,
+  [stubTextField.name]: textValue,
+};
+
 describe('GridForm', () => {
   it('submits the form when all inputs are filled out', async () => {
     const api = createPromise<{}>();
     const onSubmit = async (values: {}) => api.resolve(values);
-    const selectValue = stubSelectOptions[1];
-    const textValue = 'Hooray!';
 
     const { view } = renderView({ onSubmit });
+    const { checkboxField, selectField, textField } = getBaseCases(view);
 
-    const checkboxField = view.getByRole('checkbox', {
-      name: 'Stub Checkbox Check me!',
-    });
-    const selectField = view.getByRole('combobox', { name: 'Stub Select' });
-    const textField = view.getByRole('textbox', { name: 'Stub Text' });
-
-    const newValues = [
-      [selectField, selectValue],
-      [textField, textValue],
-    ] as const;
-
-    fireEvent.click(checkboxField);
-
-    for (const [selector, value] of newValues) {
-      fireEvent.input(selector, {
-        target: {
-          value,
-        },
-      });
-    }
+    doBaseFormActions(selectField, textField, checkboxField);
 
     await act(async () => {
       fireEvent.submit(view.getByRole('button'));
@@ -116,11 +139,7 @@ describe('GridForm', () => {
 
     const result = await api.innerPromise;
 
-    expect(result).toEqual({
-      [stubCheckboxField.name]: true,
-      [stubSelectField.name]: selectValue,
-      [stubTextField.name]: textValue,
-    });
+    expect(result).toEqual(baseResults);
   });
 
   it('only sets aria-live prop on the first validation error in a form', async () => {
@@ -366,31 +385,11 @@ describe('GridForm', () => {
     it('disables fields when form is successfully submitted', async () => {
       const api = createPromise<{}>();
       const onSubmit = async (values: {}) => api.resolve(values);
-      const selectValue = stubSelectOptions[1];
-      const textValue = 'Hooray!';
 
       const { view } = renderView({ onSubmit, disableFieldsOnSubmit: true });
+      const { checkboxField, selectField, textField } = getBaseCases(view);
 
-      const checkboxField = view.getByRole('checkbox', {
-        name: 'Stub Checkbox Check me!',
-      });
-      const selectField = view.getByRole('combobox', { name: 'Stub Select' });
-      const textField = view.getByRole('textbox', { name: 'Stub Text' });
-
-      const newValues = [
-        [selectField, selectValue],
-        [textField, textValue],
-      ] as const;
-
-      fireEvent.click(checkboxField);
-
-      for (const [selector, value] of newValues) {
-        fireEvent.input(selector, {
-          target: {
-            value,
-          },
-        });
-      }
+      doBaseFormActions(selectField, textField, checkboxField);
 
       await act(async () => {
         fireEvent.submit(view.getByRole('button'));
@@ -411,11 +410,7 @@ describe('GridForm', () => {
         disableFieldsOnSubmit: true,
       });
 
-      const checkboxField = view.getByRole('checkbox', {
-        name: 'Stub Checkbox Check me!',
-      });
-      const selectField = view.getByRole('combobox', { name: 'Stub Select' });
-      const textField = view.getByRole('textbox', { name: 'Stub Text' });
+      const { checkboxField, selectField, textField } = getBaseCases(view);
 
       await act(async () => {
         fireEvent.submit(view.getByRole('button'));
@@ -435,37 +430,11 @@ describe('GridForm', () => {
       const onSubmit = async (values: {}) => {
         return submitCount < 1 ? api.resolve(values) : api2.resolve(values);
       };
-      const selectValue = stubSelectOptions[1];
-      const textValue = 'Hooray!';
 
       const { view } = renderView({ onSubmit, resetOnSubmit: true });
+      const { checkboxField, selectField, textField } = getBaseCases(view);
 
-      const checkboxField = view.getByRole('checkbox', {
-        name: 'Stub Checkbox Check me!',
-      }) as HTMLInputElement;
-
-      const selectField = view.getByRole('combobox', {
-        name: 'Stub Select',
-      }) as HTMLInputElement;
-
-      const textField = view.getByRole('textbox', {
-        name: 'Stub Text',
-      }) as HTMLInputElement;
-
-      const firstValues = [
-        [selectField, selectValue],
-        [textField, textValue],
-      ] as const;
-
-      fireEvent.click(checkboxField);
-
-      for (const [selector, value] of firstValues) {
-        fireEvent.input(selector, {
-          target: {
-            value,
-          },
-        });
-      }
+      doBaseFormActions(selectField, textField, checkboxField);
 
       await act(async () => {
         fireEvent.submit(view.getByRole('button'));
@@ -473,11 +442,7 @@ describe('GridForm', () => {
 
       const firstResult = await api.innerPromise;
 
-      expect(firstResult).toEqual({
-        [stubCheckboxField.name]: true,
-        [stubSelectField.name]: selectValue,
-        [stubTextField.name]: textValue,
-      });
+      expect(firstResult).toEqual(baseResults);
 
       expect(checkboxField.checked).toEqual(false);
       expect(selectField.value).toEqual('aaa');
@@ -491,7 +456,7 @@ describe('GridForm', () => {
       const secondResult = await api2.innerPromise;
 
       expect(secondResult).toEqual({
-        [stubCheckboxField.name]: true,
+        [stubCheckboxField.name]: false,
         [stubSelectField.name]: 'aaa',
         [stubTextField.name]: '',
       });
