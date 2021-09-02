@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [36.9.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@36.8.4...@codecademy/gamut@36.9.0) (2021-09-01)
+
+
+### Features
+
+* Adding option to set GridForm breakType to "none" ([3b1d4f4](https://github.com/Codecademy/client-modules/commit/3b1d4f4e3ceb286d7d248cbca948b7fc500b35e7))
+
+
+
 ### [36.8.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@36.8.3...@codecademy/gamut@36.8.4) (2021-09-01)
 
 
