@@ -122,7 +122,11 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
               <Polyline checked={checked} points="4 11 8 15 16 6" />
             </CheckboxVector>
           </CheckboxElement>
-          <CheckboxText multiline={multiline} disabled={disabled}>
+          <CheckboxText
+            id={id || htmlFor}
+            multiline={multiline}
+            disabled={disabled}
+          >
             {label}
           </CheckboxText>
         </CheckboxLabel>
