@@ -3,7 +3,6 @@ import {
   Box,
   ContentContainer,
   FlexBox,
-  GridBox,
   Overlay,
 } from '@codecademy/gamut';
 import { CloseIcon, MenuIcon } from '@codecademy/gamut-icons';
