@@ -37,7 +37,7 @@ const TestimonialContent = styled(Box)(
     base: {
       display: 'grid',
       color: 'text-accent',
-      gridTemplateColumns: 'minmax(0, max-content) minmax(0, max-content) minmax(0, 1fr);',
+      gridTemplateColumns: 'repeat(2, minmax(0, max-content)) minmax(0, 1fr);',
       gridTemplateRows: 'repeat(max-content, 4)',
       gap: 16,
     },
