@@ -1,5 +1,5 @@
 import React, { ComponentType } from 'react';
-import { FormState, useFormContext } from 'react-hook-form';
+import { FormState } from 'react-hook-form';
 
 import { Box, FlexBox } from '../Box';
 import { ButtonProps, FillButton } from '../Button';
