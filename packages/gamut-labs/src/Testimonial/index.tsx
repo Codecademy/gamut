@@ -112,13 +112,7 @@ export const Testimonial: React.FC<TestimonialProps> = ({
   }, [company, location]);
 
   const renderTestimonial = () => (
-    <TestimonialCard
-      {...rest}
-      p={32}
-      width="100%"
-      height="100%"
-      mode={mode}
-    >
+    <TestimonialCard {...rest} p={32} width="100%" height="100%" mode={mode}>
       <TestimonialContent variant={variant}>
         {!hidePhoto && imageUrl && (
           <TestimonialPicture
