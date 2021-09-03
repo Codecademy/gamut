@@ -3,7 +3,7 @@ import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
 import React, { ComponentProps } from 'react';
 
-import { Box } from '..';
+import { Box } from '../Box';
 
 const DynamicCardWrapper = styled(Box)<CardWrapperProps>(
   variant({
