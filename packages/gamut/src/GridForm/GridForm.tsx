@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import { Mode, SubmitHandler } from 'react-hook-form';
 
 import { ButtonProps } from '../Button/shared';
-import { FormWrapper } from '../Form';
+import { FormContextProps, FormWrapper } from '../Form';
 import { FormValues } from '../Form/types';
 import { LayoutGrid, LayoutGridProps } from '../Layout';
 import { GridFormButtons, GridFormSubmitProps } from './GridFormButtons';
@@ -32,9 +32,9 @@ const isGridFormSection = (
   return (field as GridFormSectionProps).title !== undefined;
 };
 
-export type GridFormProps<Values extends {}> = {
+export type GridFormProps<Values extends {}> = FormContextProps & {
   /**
-   * Section Break Type
+   * If a visual break should be added between sections.
    */
   breakType?: GridFormSectionBreakTypes;
 
@@ -89,12 +89,14 @@ export function GridForm<Values extends FormValues>({
   cancel,
   children,
   columnGap = defaultColumnGap,
+  disableFieldsOnSubmit,
   fields = [],
   onSubmit,
   rowGap = 16,
   submit,
   validation = 'onSubmit',
   showRequired = false,
+  wasSubmitSuccessful,
 }: GridFormProps<Values>) {
   const flatFields = fields.flatMap((field) =>
     isGridFormSection(field) ? field.fields : field
@@ -113,6 +115,8 @@ export function GridForm<Values extends FormValues>({
       onSubmit={onSubmit}
       validation={validation}
       defaultValues={defaultValues}
+      disableFieldsOnSubmit={disableFieldsOnSubmit}
+      wasSubmitSuccessful={wasSubmitSuccessful}
       display="flex"
       flexDirection="column"
     >
