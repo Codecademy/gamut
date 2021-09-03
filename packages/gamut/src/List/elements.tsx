@@ -29,10 +29,13 @@ const spacingVariants = variant({
   prop: 'spacing',
   variants: {
     normal: {
-      p: [8, , , 16],
+      p: { _: 8, sm: 16 },
+      gap: { _: 8, sm: 16 },
     },
     condensed: {
       p: 8,
+      px: 16,
+      gap: 8,
     },
   },
 });
@@ -41,7 +44,7 @@ const rowVariants = variant({
   prop: 'variant',
   base: {
     display: 'flex',
-    flexDirection: 'row',
+    flexDirection: { _: 'column', sm: 'row' },
   },
   variants: {
     slat: {
@@ -71,55 +74,35 @@ interface RowProps
 
 export const RowEl = styled.div<RowProps>(rowVariants, spacingVariants);
 
-const columnSpacing = variant({
-  prop: 'spacing',
-  base: {
-    px: 4,
-    pr: { lg: 16 },
-  },
-  variants: {
-    normal: {
-      py: { lg: 8 },
-      '&:first-child': {
-        pl: 8,
-      },
-      '&:last-child': {
-        pr: 0,
-      },
-    },
-    condensed: {
-      '&:first-child': {
-        pl: 8,
-      },
-      '&:last-child': {
-        pr: 0,
-      },
-    },
-  },
+const columnArea = variant({
+  prop: 'area',
+  defaultVariant: 'content',
+  variants: {},
 });
 
 const columnSizes = variant({
   prop: 'size',
-  base: { minWidth: 0 },
+  defaultVariant: 'content',
+  base: { flexBasis: 'min-content', minWidth: 0 },
   variants: {
     sm: {
-      flexBasis: '6rem',
-      maxWidth: '6rem',
+      flexBasis: { sm: '6rem' },
+      maxWidth: { sm: '6rem' },
     },
     md: {
-      flexBasis: '10rem',
-      maxWidth: '10rem',
+      flexBasis: { sm: '10rem' },
+      maxWidth: { sm: '10rem' },
     },
     lg: {
-      flexBasis: '12rem',
-      maxWidth: '12rem',
+      flexBasis: { sm: '12rem' },
+      maxWidth: { sm: '12rem' },
     },
     xl: {
-      flexBasis: '20rem',
-      maxWidth: '20rem',
+      flexBasis: { sm: '20rem' },
+      maxWidth: { sm: '20rem' },
     },
     content: {
-      flexBasis: 'min-content',
+      flexBasis: { sm: 'min-content' },
       flexShrink: 0,
     },
   },
@@ -129,19 +112,16 @@ const columnStates = states({
   right: {
     justifyContent: 'flex-end',
   },
-  flush: {
-    p: 0,
-    '&:first-child, &:last-child': {
-      p: 0,
-    },
-  },
   fill: { flexGrow: 1 },
-  collapse: { minWidth: 0, flexShrink: 1, flexBasis: 0 },
+  collapse: {
+    minWidth: 0,
+    flexShrink: 1,
+    flexBasis: 0,
+  },
 });
 
 interface ColProps
-  extends StyleProps<typeof columnSpacing>,
-    StyleProps<typeof columnSizes>,
+  extends StyleProps<typeof columnSizes>,
     StyleProps<typeof columnStates> {}
 
 export const ColEl = styled.div<ColProps>(
@@ -149,7 +129,6 @@ export const ColEl = styled.div<ColProps>(
     display: 'flex',
     alignItems: 'center',
   }),
-  columnSpacing,
   columnSizes,
   columnStates
 );
