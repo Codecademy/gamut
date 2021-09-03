@@ -24,7 +24,7 @@ describe('useNotificationButtons', () => {
       useNotificationButtons({ ...props, notifications: [] })
     );
 
-    expect(hook.result.current).toEqual([expect.anything(), null, []]);
+    expect(hook.result.current).toEqual([null, null, []]);
   });
 
   it('renders a Clear All button when there are fewer notifications than the display limit', () => {
@@ -35,8 +35,8 @@ describe('useNotificationButtons', () => {
 
     expect(hook.result.current).toEqual([
       expect.anything(),
-      expect.anything(),
-      [],
+      null,
+      notifications,
     ]);
   });
 
@@ -48,7 +48,11 @@ describe('useNotificationButtons', () => {
       useNotificationButtons({ ...props, notifications })
     );
 
-    expect(hook.result.current).toEqual([null, expect.anything(), []]);
+    expect(hook.result.current).toEqual([
+      null,
+      expect.anything(),
+      notifications,
+    ]);
   });
 
   it('renders a Clear All button when there are more notifications than the display limit and Show More was pressed', () => {
@@ -60,7 +64,7 @@ describe('useNotificationButtons', () => {
     );
 
     const view = render(
-      <MockGamutProvider>{hook.result.current[0]}</MockGamutProvider>
+      <MockGamutProvider>{hook.result.current[1]}</MockGamutProvider>
     );
 
     userEvent.click(view.getByLabelText('Show More'));
@@ -68,7 +72,7 @@ describe('useNotificationButtons', () => {
     expect(hook.result.current).toEqual([
       expect.anything(),
       expect.anything(),
-      [],
+      notifications,
     ]);
   });
 
@@ -76,7 +80,7 @@ describe('useNotificationButtons', () => {
     const hook = renderHook(() =>
       useNotificationButtons({
         ...props,
-        notifications: times(4, (id) =>
+        notifications: times(2, (id) =>
           createStubNotification({ id: `${id}` })
         ),
       })
@@ -86,7 +90,7 @@ describe('useNotificationButtons', () => {
       <MockGamutProvider>{hook.result.current[0]}</MockGamutProvider>
     );
 
-    userEvent.click(view.getByLabelText('Clear all 4 notifications'));
+    userEvent.click(view.getByLabelText('Clear all 2 notifications'));
 
     expect(actions.clear).toHaveBeenCalled();
     expect(actions.track).toHaveBeenCalledWith('notification_clear_all');
