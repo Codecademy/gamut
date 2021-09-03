@@ -59,14 +59,14 @@ export const CheckboxExample: React.FC = () => {
         <LayoutGrid>
           <Column size={4}>
             <CustomCheckbox
-              htmlFor="a custom checkbox"
+              htmlFor="a-custom-checkbox"
               label="a fancy custom checkbox made with the example below, isn't it so so nice?"
               multiline
             />
           </Column>
           <Column size={4}>
             <CustomCheckbox
-              htmlFor="a custom checkbox again"
+              htmlFor="a-custom-checkbox-again"
               label="disabled custom checkbox"
               defaultChecked
               disabled
@@ -75,7 +75,7 @@ export const CheckboxExample: React.FC = () => {
           <Column size={4}>
             <Background bg="black" pl={8}>
               <CustomCheckbox
-                htmlFor="a custom checkbox the third"
+                htmlFor="a-custom-checkbox-the-third"
                 label="a dark mode fancy checkbox"
               />
             </Background>
