@@ -3,6 +3,37 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [37.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@37.0.0...@codecademy/gamut@37.1.0) (2021-09-03)
+
+
+### Features
+
+* GridForm disableFieldsOnSubmit ([792e324](https://github.com/Codecademy/client-modules/commit/792e3243d5775442516826cc126a1ee11424200b))
+
+
+
+## [37.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@36.9.2...@codecademy/gamut@37.0.0) (2021-09-03)
+
+
+### ⚠ BREAKING CHANGES
+
+* **Card:** Add color mode to card
+
+### Features
+
+* **Card:** Add color mode to card ([d3309b4](https://github.com/Codecademy/client-modules/commit/d3309b41450ecc4071e8017d8bed55d0adb50e91))
+
+
+
+### [36.9.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@36.9.1...@codecademy/gamut@36.9.2) (2021-09-03)
+
+
+### Bug Fixes
+
+* **Checkbox:** Safari + Firefox accessibility but better this time  ([46f605b](https://github.com/Codecademy/client-modules/commit/46f605bcb1698d1742560960ac43efcf4e2305aa))
+
+
+
 ### [36.9.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@36.9.0...@codecademy/gamut@36.9.1) (2021-09-02)
 
 

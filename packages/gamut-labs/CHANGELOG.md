@@ -3,6 +3,48 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [19.24.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.24.3...@codecademy/gamut-labs@19.24.4) (2021-09-03)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [19.24.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.24.2...@codecademy/gamut-labs@19.24.3) (2021-09-03)
+
+
+### Bug Fixes
+
+* **Testimonial:** mobile sizing bug fix ([992b478](https://github.com/Codecademy/client-modules/commit/992b47890b38d3d4d9bce9db7fa0f97f49c1d3c5))
+
+
+
+### [19.24.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.24.1...@codecademy/gamut-labs@19.24.2) (2021-09-03)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [19.24.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.24.0...@codecademy/gamut-labs@19.24.1) (2021-09-03)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+## [19.24.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.23.18...@codecademy/gamut-labs@19.24.0) (2021-09-03)
+
+
+### Features
+
+* **Avatar:** add size prop ([db47c19](https://github.com/Codecademy/client-modules/commit/db47c1913c0c8ff5bcf81375cbe0cf183ce4289c))
+
+
+
 ### [19.23.18](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.23.17...@codecademy/gamut-labs@19.23.18) (2021-09-02)
 
 **Note:** Version bump only for package @codecademy/gamut-labs

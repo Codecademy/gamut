@@ -37,7 +37,7 @@ const TestimonialContent = styled(Box)(
     base: {
       display: 'grid',
       color: 'text-accent',
-      gridTemplateColumns: 'max-content max-content 1fr',
+      gridTemplateColumns: 'repeat(2, minmax(0, max-content)) minmax(0, 1fr);',
       gridTemplateRows: 'repeat(max-content, 4)',
       gap: 16,
     },
@@ -112,14 +112,7 @@ export const Testimonial: React.FC<TestimonialProps> = ({
   }, [company, location]);
 
   const renderTestimonial = () => (
-    <TestimonialCard
-      {...rest}
-      p={32}
-      minWidth="22rem"
-      width="100%"
-      height="100%"
-      mode={mode}
-    >
+    <TestimonialCard {...rest} p={32} width="100%" height="100%" mode={mode}>
       <TestimonialContent variant={variant}>
         {!hidePhoto && imageUrl && (
           <TestimonialPicture
