@@ -491,5 +491,34 @@ describe('GridForm', () => {
         [stubTextField.name]: '',
       });
     });
+
+    it('does not reset fields when form is has a validation error', async () => {
+      const api = createPromise<{}>();
+      const onSubmit = async (values: {}) => api.resolve(values);
+
+      const { view } = renderView({
+        fields: validationFields,
+        onSubmit,
+        resetOnSubmit: true,
+      });
+
+      const { checkboxField, selectField, textField } = getBaseCases(view);
+
+      await act(async () => {
+        fireEvent.input(textField, {
+          target: {
+            value: 'an arbitrary value',
+          },
+        });
+      });
+
+      await act(async () => {
+        fireEvent.submit(view.getByRole('button'));
+      });
+
+      expect(checkboxField.checked).toEqual(false);
+      expect(selectField.value).toEqual('aaa');
+      expect(textField.value).toEqual('an arbitrary value');
+    });
   });
 });
