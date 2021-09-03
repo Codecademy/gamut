@@ -91,7 +91,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
     return (
       <div className={className}>
         <Input
-          id={id || htmlFor}
+          labelled-by={`text-${id || htmlFor}`}
           type="checkbox"
           checked={checked}
           disabled={disabled}
@@ -123,7 +123,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
             </CheckboxVector>
           </CheckboxElement>
           <CheckboxText
-            id={id || htmlFor}
+            id={`text-${id || htmlFor}`}
             multiline={multiline}
             disabled={disabled}
           >
