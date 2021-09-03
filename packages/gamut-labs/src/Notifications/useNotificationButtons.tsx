@@ -33,10 +33,11 @@ export const useNotificationButtons = ({
     ) : null;
 
   const showMoreButton =
-    notifications.length <= displayLimit ? null : (
+    notifications.length <= defaultDisplayLimit ? null : (
       <Box px={32}>
         <TextButton
           onClick={() => {
+            // console.log('Clicky', { showMore });
             setShowMore(!showMore);
 
             if (!showMore) {

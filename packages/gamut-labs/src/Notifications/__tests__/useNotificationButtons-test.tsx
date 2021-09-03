@@ -51,7 +51,7 @@ describe('useNotificationButtons', () => {
     expect(hook.result.current).toEqual([
       null,
       expect.anything(),
-      notifications,
+      notifications.slice(0, 3),
     ]);
   });
 
@@ -67,7 +67,7 @@ describe('useNotificationButtons', () => {
       <MockGamutProvider>{hook.result.current[1]}</MockGamutProvider>
     );
 
-    userEvent.click(view.getByLabelText('Show More'));
+    view.getByText(/Show.*More/);
 
     expect(hook.result.current).toEqual([
       expect.anything(),
@@ -124,14 +124,24 @@ describe('useNotificationButtons', () => {
       useNotificationButtons({ ...props, notifications })
     );
 
-    const renderView = () =>
-      render(<MockGamutProvider>{hook.result.current[1]}</MockGamutProvider>);
+    const view = render(
+      <MockGamutProvider>{hook.result.current[1]}</MockGamutProvider>
+    );
 
     act(() => {
-      userEvent.click(renderView().getByText(/Show.*More/));
+      userEvent.click(view.getByText(/Show.*More/));
     });
+
     act(() => {
-      userEvent.click(renderView().getByText(/Show.*Less/));
+      view.rerender(
+        <MockGamutProvider>{hook.result.current[1]}</MockGamutProvider>
+      );
+    });
+
+    // hook.rerender();
+
+    act(() => {
+      userEvent.click(view.getByText(/Show.*Less/));
     });
 
     expect(hook.result.current[2]).toEqual(notifications.slice(0, 3));
