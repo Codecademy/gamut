@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [36.9.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@36.9.1...@codecademy/gamut@36.9.2) (2021-09-03)
+
+
+### Bug Fixes
+
+* **Checkbox:** Safari + Firefox accessibility but better this time  ([46f605b](https://github.com/Codecademy/client-modules/commit/46f605bcb1698d1742560960ac43efcf4e2305aa))
+
+
+
 ### [36.9.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@36.9.0...@codecademy/gamut@36.9.1) (2021-09-02)
 
 
