@@ -67,7 +67,9 @@ describe('useNotificationButtons', () => {
       <MockGamutProvider>{hook.result.current[1]}</MockGamutProvider>
     );
 
-    view.getByText(/Show.*More/);
+    act(() => {
+      userEvent.click(view.getByText(/Show.*More/));
+    });
 
     expect(hook.result.current).toEqual([
       expect.anything(),
