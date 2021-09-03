@@ -118,7 +118,7 @@ export const DocsPage: React.FC = ({ children }) => {
         )}
         {design?.url && (
           <GridBox mb={32}>
-            <Figma height="30%" collapsable url={design?.url} />
+            <Figma height="56.25%" collapsable url={design?.url} />
           </GridBox>
         )}
         {children}

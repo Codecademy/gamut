@@ -3,6 +3,58 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [36.9.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@36.9.1...@codecademy/gamut@36.9.2) (2021-09-03)
+
+
+### Bug Fixes
+
+* **Checkbox:** Safari + Firefox accessibility but better this time  ([46f605b](https://github.com/Codecademy/client-modules/commit/46f605bcb1698d1742560960ac43efcf4e2305aa))
+
+
+
+### [36.9.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@36.9.0...@codecademy/gamut@36.9.1) (2021-09-02)
+
+
+### Bug Fixes
+
+* **Checkbox:** safari and ff labelling ([ef22f59](https://github.com/Codecademy/client-modules/commit/ef22f5998ea1c0f13f26963582bfc10d3ace09bc))
+
+
+
+## [36.9.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@36.8.4...@codecademy/gamut@36.9.0) (2021-09-01)
+
+
+### Features
+
+* Adding option to set GridForm breakType to "none" ([3b1d4f4](https://github.com/Codecademy/client-modules/commit/3b1d4f4e3ceb286d7d248cbca948b7fc500b35e7))
+
+
+
+### [36.8.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@36.8.3...@codecademy/gamut@36.8.4) (2021-09-01)
+
+
+### Bug Fixes
+
+* Hiding checkbox svg from accessibility api ([36b6e65](https://github.com/Codecademy/client-modules/commit/36b6e65aa56c47d27e4dcda2d45e5096c29ca52c))
+
+
+
+### [36.8.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@36.8.2...@codecademy/gamut@36.8.3) (2021-08-31)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [36.8.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@36.8.1...@codecademy/gamut@36.8.2) (2021-08-30)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
 ### [36.8.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@36.8.0...@codecademy/gamut@36.8.1) (2021-08-27)
 
 **Note:** Version bump only for package @codecademy/gamut

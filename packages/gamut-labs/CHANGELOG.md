@@ -3,6 +3,63 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [19.24.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.24.0...@codecademy/gamut-labs@19.24.1) (2021-09-03)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+## [19.24.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.23.18...@codecademy/gamut-labs@19.24.0) (2021-09-03)
+
+
+### Features
+
+* **Avatar:** add size prop ([db47c19](https://github.com/Codecademy/client-modules/commit/db47c1913c0c8ff5bcf81375cbe0cf183ce4289c))
+
+
+
+### [19.23.18](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.23.17...@codecademy/gamut-labs@19.23.18) (2021-09-02)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [19.23.17](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.23.16...@codecademy/gamut-labs@19.23.17) (2021-09-01)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [19.23.16](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.23.15...@codecademy/gamut-labs@19.23.16) (2021-09-01)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [19.23.15](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.23.14...@codecademy/gamut-labs@19.23.15) (2021-08-31)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [19.23.14](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.23.13...@codecademy/gamut-labs@19.23.14) (2021-08-30)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
 ### [19.23.13](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.23.12...@codecademy/gamut-labs@19.23.13) (2021-08-27)
 
 **Note:** Version bump only for package @codecademy/gamut-labs
