@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [44.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@43.11.3...@codecademy/styleguide@44.0.0) (2021-09-03)
+
+
+### ⚠ BREAKING CHANGES
+
+* **Card:** Add color mode to card
+
+### Features
+
+* **Card:** Add color mode to card ([d3309b4](https://github.com/Codecademy/client-modules/commit/d3309b41450ecc4071e8017d8bed55d0adb50e91))
+
+
+
 ### [43.11.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@43.11.2...@codecademy/styleguide@43.11.3) (2021-09-03)
 
 
