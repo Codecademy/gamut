@@ -34,7 +34,7 @@ const isGridFormSection = (
 
 export type GridFormProps<Values extends {}> = FormContextProps & {
   /**
-   * Section Break Type
+   * If a visual break should be added between sections.
    */
   breakType?: GridFormSectionBreakTypes;
 
