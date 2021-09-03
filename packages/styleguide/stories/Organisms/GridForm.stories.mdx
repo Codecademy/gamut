@@ -1200,7 +1200,7 @@ If you need to checkboxes to fit into a smaller space, you can use our our `tigh
               {
                 label: 'Email',
                 placeholder: 'Your email',
-                name: 'placeholder',
+                name: 'loading-beige',
                 type: 'email',
               },
             ]}
@@ -1219,7 +1219,7 @@ If you need to checkboxes to fit into a smaller space, you can use our our `tigh
               {
                 label: 'Email',
                 placeholder: 'Your email',
-                name: 'placeholder-2',
+                name: 'loading-navy',
                 type: 'email',
               },
             ]}
@@ -1229,6 +1229,94 @@ If you need to checkboxes to fit into a smaller space, you can use our our `tigh
             submit={{
               disabled: true,
               contents: 'Submit Me!?',
+            }}
+          />
+        </Background>
+      </>
+    )}
+  </Story>
+</Canvas>
+
+## Disabled Fields on Submit
+
+`disableFieldsOnSubmit` will disable all form fields once the form has been successfully submitted. If you have any server-side validation that needs to happen, we reccommend using the `wasSubmitSuccessful` prop, but submission will also fail if a promise is rejected within your `onSubmit` or if a field does not pass validation.
+
+<Canvas>
+  <Story name="Disabled Fields on Submit">
+    {(args) => (
+      <>
+        <Background bg="palePink" p={32}>
+          <GridForm
+            disableFieldsOnSubmit
+            fields={[
+              {
+                label: 'Email',
+                placeholder: 'i will disable on correct submission!',
+                name: 'disabled-fields-on-submit',
+                type: 'email',
+                validation: {
+                  required: 'pls fill this out',
+                  pattern: {
+                    value: /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,})+$/,
+                    message: 'that is not an email 😔',
+                  },
+                },
+              },
+            ]}
+            onSubmit={async (values) => {
+              action('Form Submitted')(values);
+            }}
+            submit={{
+              contents: 'Submit Me 💖',
+            }}
+          />
+        </Background>
+        <Background bg="black" p={32}>
+          <GridForm
+            disableFieldsOnSubmit
+            wasSubmitSuccessful={false}
+            fields={[
+              {
+                label: 'Email',
+                placeholder: 'i will NEVER disable.',
+                name: 'disabled-fields-on-submit-ii',
+                type: 'email',
+                validation: {
+                  required: 'pls fill this out',
+                },
+              },
+            ]}
+            onSubmit={async (values) => {
+              action('Form Submitted')(values);
+            }}
+            submit={{
+              contents: 'Submit Me 😈',
+            }}
+          />
+        </Background>
+        <Background bg="paleBlue" p={32}>
+          <GridForm
+            disableFieldsOnSubmit
+            fields={[
+              {
+                label: 'Email',
+                placeholder: 'i will also never disable...',
+                name: 'disabled-fields-on-submit-iii',
+                type: 'email',
+                validation: {
+                  required: 'pls fill this out',
+                  validate: {
+                    checkValue: () =>
+                      false || "It's never gonna work out between us",
+                  },
+                },
+              },
+            ]}
+            onSubmit={async (values) => {
+              action('Form Submitted')(values);
+            }}
+            submit={{
+              contents: 'Submit Me 🤷🏻',
             }}
           />
         </Background>
