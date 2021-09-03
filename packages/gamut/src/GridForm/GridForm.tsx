@@ -15,6 +15,7 @@ import {
 import {
   GridFormField,
   GridFormFieldsProps,
+  GridFormSectionBreakTypes,
   GridFormSectionProps,
 } from './types';
 
@@ -32,6 +33,11 @@ const isGridFormSection = (
 };
 
 export type GridFormProps<Values extends {}> = FormContextProps & {
+  /**
+   * Section Break Type
+   */
+  breakType?: GridFormSectionBreakTypes;
+
   children?: React.ReactNode;
   className?: string;
 
@@ -79,6 +85,7 @@ export type GridFormProps<Values extends {}> = FormContextProps & {
 };
 
 export function GridForm<Values extends FormValues>({
+  breakType,
   cancel,
   children,
   columnGap = defaultColumnGap,
@@ -131,7 +138,7 @@ export function GridForm<Values extends FormValues>({
                     fields={fields}
                     showRequired={showRequired}
                   />
-                  <GridFormSectionBreak />
+                  <GridFormSectionBreak breakType={breakType} />
                 </Fragment>
               );
             }

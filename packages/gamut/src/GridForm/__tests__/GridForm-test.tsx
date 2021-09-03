@@ -351,6 +351,36 @@ describe('GridForm', () => {
     });
   });
 
+  describe('Section Break', () => {
+    const sectionFields = [
+      {
+        fields: [stubCheckboxField],
+        title: 'Test Title',
+      },
+      {
+        fields: [stubTextField],
+        title: 'Other Test Title',
+      },
+    ];
+
+    it('renders a section break by default', () => {
+      const { view } = renderView({
+        fields: sectionFields,
+      });
+      const sectionBreaks = view.getAllByTestId('form-section-break');
+      expect(sectionBreaks.length).toEqual(2);
+    });
+
+    it('does NOT render a section break if breakType is none', () => {
+      const { view } = renderView({
+        breakType: 'none',
+        fields: sectionFields,
+      });
+      const sectionBreaks = view.queryByTestId('form-section-break');
+      expect(sectionBreaks).not.toBeInTheDocument();
+    });
+  });
+
   describe('Cancel button', () => {
     it('renders a cancel and submit button when "cancel" props are provided', async () => {
       const cancelOnClick = jest.fn();
