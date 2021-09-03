@@ -26,7 +26,7 @@ const layoutVariant = variant({
     rowGap: 12,
     columnGap: 16,
     gridTemplateColumns: '1fr min-content 2rem',
-    gridTemplateRows: 'max-content 1fr max-content',
+    gridTemplateRows: 'max-content minmax(0, 1fr) max-content',
   },
   variants: {
     standard: {
