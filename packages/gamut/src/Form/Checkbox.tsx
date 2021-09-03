@@ -71,7 +71,7 @@ const Input = styled.input`
   ${checkboxInput}
 `;
 
-const CheckboxText = styled.span<CheckboxTextProps>(checkboxTextStates);
+const CheckboxText = styled.p<CheckboxTextProps>(checkboxTextStates);
 
 export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
   (
