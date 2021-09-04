@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [19.24.7](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.24.6...@codecademy/gamut-labs@19.24.7) (2021-09-04)
+
+
+### Bug Fixes
+
+* Revert "fix: add docs back to header and footer" ([880d9d7](https://github.com/Codecademy/client-modules/commit/880d9d74e5bcebba14834430cef4c0aa8f315724)), closes [Codecademy/client-modules#2024](https://github.com/Codecademy/client-modules/issues/2024)
+
+
+
 ### [19.24.6](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.24.5...@codecademy/gamut-labs@19.24.6) (2021-09-03)
 
 
