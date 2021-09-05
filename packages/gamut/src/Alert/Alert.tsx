@@ -1,5 +1,6 @@
 import { MiniChevronDownIcon, MiniDeleteIcon } from '@codecademy/gamut-icons';
 import { Background, system, timing, variant } from '@codecademy/gamut-styles';
+import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
 import { motion } from 'framer-motion';
 import React, { useState } from 'react';
@@ -10,12 +11,9 @@ import { Truncate } from '../Truncate';
 import { alertVariants, placementVariants } from './variants';
 
 export type AlertType = keyof typeof alertVariants;
-export type InlineAlertType = Exclude<AlertType, 'notice' | 'feature'>;
-export type AlertPlacements = 'inline' | 'floating';
 
-export type AlertBase = {
+export interface AlertProps extends StyleProps<typeof placementVariants> {
   type?: AlertType;
-  placement?: AlertPlacements;
   hidden?: boolean;
   className?: string;
   /** Callback to be called when the close icon is clicked */
@@ -25,19 +23,7 @@ export type AlertBase = {
     React.ComponentProps<typeof FillButton>,
     'variant' | 'mode' | 'size'
   > & { text?: string };
-};
-
-export type FloatingAlert = AlertBase & {
-  type?: AlertType;
-  placement?: 'floating';
-};
-
-export type InlineAlert = AlertBase & {
-  type?: InlineAlertType;
-  placement?: 'inline';
-};
-
-export type AlertProps = FloatingAlert | InlineAlert;
+}
 
 const AlertBanner = styled(Background)<Pick<AlertProps, 'type' | 'placement'>>(
   placementVariants
