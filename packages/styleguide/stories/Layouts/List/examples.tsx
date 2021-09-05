@@ -1,4 +1,5 @@
 import {
+  Box,
   FillButton,
   FlexBox,
   IconButton,
@@ -9,7 +10,6 @@ import {
   Text,
   TextButton,
 } from '@codecademy/gamut';
-import { Box } from '@codecademy/gamut/src';
 import {
   MiniDeleteIcon,
   MiniKebabMenuIcon,
@@ -53,59 +53,43 @@ export const CondensedTemplate: React.FC<ListProps> = (args, { mode }) => (
     <List {...args}>
       {rows.map(({ name, role, ship }, i, _, key = `example-row-${i}`) => (
         <ListRow key={key}>
-          <ListCol size="lg">
+          <ListCol size="lg" type="header">
             <Text fontWeight={700} truncate="ellipsis">
               {name}
             </Text>
           </ListCol>
-          <ListCol size="md">
+          <ListCol size="lg" collapse>
             <Text variant="p-small" color="text-disabled" truncate="ellipsis">
               {role}
             </Text>
           </ListCol>
-          <ListCol fill collapse>
+          <ListCol size="lg" fill collapse>
             <Text variant="p-small" color="text-disabled" truncate="ellipsis">
               {ship}
             </Text>
           </ListCol>
-          <ListCol size="md">
-            <Text
-              truncate="ellipsis"
-              variant="p-small"
-              color="text-disabled"
-              lineHeight="title"
-              mt={4}
-            >
-              <StreakIcon size={18} verticalAlign="middle" mr={8} mb={4} />
+          <ListCol size="sm">
+            <Text variant="p-small" color="text-disabled" lineHeight="title">
+              <StreakIcon verticalAlign="bottom" mr={8} />
               87%
             </Text>
           </ListCol>
-          <ListCol size="md">
-            <Text
-              variant="p-small"
-              color="text-disabled"
-              lineHeight="title"
-              mt={4}
-            >
-              <TrophyIcon size={18} verticalAlign="middle" mr={8} mb={4} />
+          <ListCol size="sm">
+            <Text variant="p-small" color="text-disabled" lineHeight="title">
+              <TrophyIcon verticalAlign="bottom" mr={8} />
               48%
             </Text>
           </ListCol>
-          <ListCol size="md">
-            <Text
-              variant="p-small"
-              color="text-disabled"
-              lineHeight="title"
-              mt={4}
-            >
-              <StarIcon size={18} verticalAlign="middle" mr={8} mb={4} />
+          <ListCol size="sm">
+            <Text variant="p-small" color="text-disabled" lineHeight="title">
+              <StarIcon verticalAlign="bottom" mr={8} />
               66%
             </Text>
           </ListCol>
-          <ListCol size="content" flush right>
-            <FillButton size="small" mr={8}>
-              Engage
-            </FillButton>
+          <ListCol>
+            <FillButton size="small">Engage</FillButton>
+          </ListCol>
+          <ListCol type="action">
             <IconButton icon={MiniKebabMenuIcon} size="small" />
             <IconButton icon={MiniDeleteIcon} size="small" />
           </ListCol>

@@ -5,8 +5,12 @@ import { useListContext } from './ListProvider';
 import { ListRowProps } from './types';
 
 export const ListRow = forwardRef<HTMLDivElement, ListRowProps>(
-  (props, ref) => {
+  ({ children, ...rest }, ref) => {
     const activeVariants = useListContext();
-    return <RowEl {...activeVariants} {...props} ref={ref} />;
+    return (
+      <RowEl {...activeVariants} {...rest} ref={ref}>
+        {children}
+      </RowEl>
+    );
   }
 );

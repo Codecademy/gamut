@@ -29,8 +29,8 @@ const spacingVariants = variant({
   prop: 'spacing',
   variants: {
     normal: {
-      p: { _: 8, sm: 16 },
-      gap: { _: 8, sm: 16 },
+      p: { _: 8, xs: 16 },
+      gap: { _: 8, xs: 16 },
     },
     condensed: {
       p: 8,
@@ -43,8 +43,10 @@ const spacingVariants = variant({
 const rowVariants = variant({
   prop: 'variant',
   base: {
-    display: 'flex',
-    flexDirection: { _: 'column', sm: 'row' },
+    display: { _: 'grid', xs: 'flex' },
+    gridAutoRows: 'minmax(1.5rem, max-content)',
+    gridTemplateColumns: 'minmax(0, 1fr) max-content',
+    flexDirection: { _: 'column', xs: 'row' },
   },
   variants: {
     slat: {
@@ -74,61 +76,74 @@ interface RowProps
 
 export const RowEl = styled.div<RowProps>(rowVariants, spacingVariants);
 
-const columnArea = variant({
-  prop: 'area',
+const columnType = variant({
+  prop: 'type',
   defaultVariant: 'content',
-  variants: {},
+  variants: {
+    header: {
+      gridColumn: 1,
+    },
+    content: {
+      gridColumnEnd: 'span 2',
+    },
+    action: {
+      alignItems: {
+        _: 'flex-start',
+        xs: 'center',
+      },
+      gridColumn: 2,
+      gridRow: 1,
+    },
+  },
 });
 
 const columnSizes = variant({
   prop: 'size',
   defaultVariant: 'content',
-  base: { flexBasis: 'min-content', minWidth: 0 },
+  base: { minWidth: 0, maxWidth: 1, flexShrink: 1 },
   variants: {
     sm: {
-      flexBasis: { sm: '6rem' },
-      maxWidth: { sm: '6rem' },
+      flexBasis: { xs: '6rem' },
+      width: { xs: '6rem' },
     },
     md: {
-      flexBasis: { sm: '10rem' },
-      maxWidth: { sm: '10rem' },
+      flexBasis: { xs: '10rem' },
+      width: { xs: '10rem' },
     },
     lg: {
-      flexBasis: { sm: '12rem' },
-      maxWidth: { sm: '12rem' },
+      flexBasis: { xs: '12rem' },
+      width: { xs: '12rem' },
     },
     xl: {
-      flexBasis: { sm: '20rem' },
-      maxWidth: { sm: '20rem' },
+      flexBasis: { xs: '20rem' },
+      width: { xs: '20rem' },
     },
     content: {
-      flexBasis: { sm: 'min-content' },
       flexShrink: 0,
     },
   },
 });
 
 const columnStates = states({
-  right: {
-    justifyContent: 'flex-end',
-  },
-  fill: { flexGrow: 1 },
+  fill: { flexGrow: { xs: 1 } },
   collapse: {
-    minWidth: 0,
-    flexShrink: 1,
-    flexBasis: 0,
+    flexShrink: { xs: 1 },
   },
 });
 
 interface ColProps
   extends StyleProps<typeof columnSizes>,
+    StyleProps<typeof columnType>,
     StyleProps<typeof columnStates> {}
 
 export const ColEl = styled.div<ColProps>(
   css({
-    display: 'flex',
+    display: 'inline-flex',
     alignItems: 'center',
+    whiteSpace: 'nowrap',
+    overflow: 'hidden',
   }),
   columnSizes,
+  columnType,
   columnStates
 );
