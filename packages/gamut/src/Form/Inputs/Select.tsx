@@ -14,12 +14,12 @@ import React, {
   useState,
 } from 'react';
 
-import { Box, FlexBox } from '../Box';
+import { Box, FlexBox } from '../../Box';
 import {
   conditionalStyles,
   conditionalStyleState,
   formFieldStyles,
-} from './styles';
+} from '../styles';
 import { parseSelectOptions } from './utils';
 
 export type SelectOptions = string[] | Record<string, number | string>;

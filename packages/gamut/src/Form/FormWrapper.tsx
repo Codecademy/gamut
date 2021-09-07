@@ -7,8 +7,8 @@ import {
   useForm,
 } from 'react-hook-form';
 
-import { Form } from '../Form';
 import { submitSuccessStatus } from '../GridForm/utils';
+import { Form } from '.';
 import { FormProps } from './Form';
 import { FormValues } from './types';
 

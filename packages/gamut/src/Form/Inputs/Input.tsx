@@ -12,7 +12,7 @@ import React, {
   useState,
 } from 'react';
 
-import { Box, FlexBox } from '../Box';
+import { Box, FlexBox } from '../../Box';
 import {
   conditionalStyleProps,
   conditionalStyles,
@@ -21,7 +21,7 @@ import {
   formFieldFocusStyles,
   formFieldPaddingStyles,
   formFieldStyles,
-} from './styles';
+} from '../styles';
 
 export type InputProps = InputHTMLAttributes<HTMLInputElement> & {
   id?: string;
