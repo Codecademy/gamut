@@ -19,8 +19,7 @@ import ReactSelect, {
   StylesConfig,
 } from 'react-select';
 
-import { Box } from '../Box';
-import { SelectComponentProps, SelectOptions } from './Select';
+import { Box } from '../../Box';
 import {
   conditionalBorderStates,
   dropdownBorderStates,
@@ -30,7 +29,8 @@ import {
   selectDropdownStyles,
   sizeVariants,
   textColor,
-} from './styles';
+} from '../styles';
+import { SelectComponentProps, SelectOptions } from './Select';
 import { parseOptions } from './utils';
 
 export interface IconOption {
