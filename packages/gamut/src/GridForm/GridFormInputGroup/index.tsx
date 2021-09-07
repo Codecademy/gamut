@@ -2,13 +2,13 @@ import React from 'react';
 import { UseFormMethods } from 'react-hook-form';
 
 import { ConnectedFormGroup } from '../../ConnectedForm';
+import { GridFormCheckboxInput } from '../../ConnectedForm/Inputs/GridFormCheckboxInput';
 import { Column } from '../../Layout';
 import {
   GridFormField,
   GridFormHiddenField,
   GridFormSweetContainerField,
 } from '../types';
-import { GridFormCheckboxInput } from './GridFormCheckboxInput';
 import { GridFormCustomInput } from './GridFormCustomInput';
 import { GridFormFileInput } from './GridFormFileInput';
 import { GridFormHiddenInput } from './GridFormHiddenInput';
