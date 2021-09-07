@@ -1,13 +1,8 @@
-import { css } from '@codecademy/gamut-styles';
-import styled from '@emotion/styled';
 import React from 'react';
 import { UseFormMethods } from 'react-hook-form';
 
-import { Anchor } from '../../Anchor';
-import { FormError, FormGroup, FormGroupLabel } from '../../Form';
-import { HiddenText } from '../../HiddenText';
+import { ConnectedFormGroup } from '../../ConnectedForm';
 import { Column } from '../../Layout';
-import { Markdown } from '../../Markdown';
 import {
   GridFormField,
   GridFormHiddenField,
@@ -22,12 +17,6 @@ import { GridFormSelectInput } from './GridFormSelectInput';
 import { GridFormSweetContainerInput } from './GridFormSweetContainerInput';
 import { GridFormTextArea } from './GridFormTextArea';
 import { GridFormTextInput } from './GridFormTextInput';
-
-const ErrorAnchor = styled(Anchor)(
-  css({
-    color: 'feedback-error',
-  })
-);
 
 export type GridFormInputGroupProps = {
   error?: string;
@@ -142,50 +131,26 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
     );
   }
 
-  const label = (
-    <FormGroupLabel
-      disabled={disabled}
-      htmlFor={field.id || field.name}
-      tooltip={field.tooltip}
-      showRequired={showRequired && rest?.required}
-    >
-      {field.label}
-    </FormGroupLabel>
-  );
-
   return (
     <Column size={field?.size} rowspan={field?.rowspan ?? 1}>
-      <FormGroup
-        pb={field.type === 'checkbox' && field?.spacing === 'tight' ? 0 : 8}
-        mb={0}
+      <ConnectedFormGroup
+        customError={field.customError}
+        disabled={field.disabled}
+        hideLabel={field.hideLabel}
+        id={field.id}
+        label={field.label}
+        name={field.name}
+        required={rest?.required}
+        showRequired={showRequired}
+        spacing={
+          field.type === 'checkbox' && field?.spacing === 'tight'
+            ? 'tight'
+            : 'base'
+        }
+        tooltip={field.tooltip}
       >
-        {field.hideLabel ? <HiddenText>{label}</HiddenText> : label}
         {getInput()}
-        {error && (
-          <FormError
-            role={isFirstError ? 'alert' : 'status'}
-            aria-live={isFirstError ? 'assertive' : 'off'}
-            variant="absolute"
-          >
-            <Markdown
-              overrides={{
-                a: {
-                  allowedAttributes: ['href', 'target'],
-                  component: ErrorAnchor,
-                  processNode: (
-                    node: unknown,
-                    props: { onClick?: () => void }
-                  ) => <ErrorAnchor {...props} />,
-                },
-              }}
-              skipDefaultOverrides={{ a: true }}
-              inline
-              text={error}
-              spacing="none"
-            />
-          </FormError>
-        )}
-      </FormGroup>
+      </ConnectedFormGroup>
     </Column>
   );
 };

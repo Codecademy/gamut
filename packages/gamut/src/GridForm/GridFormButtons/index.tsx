@@ -4,7 +4,7 @@ import React, { ComponentProps } from 'react';
 import { Box } from '../../Box';
 import { CTAButton, FillButton, TextButton } from '../../Button';
 import { ButtonProps } from '../../Button/shared';
-import { SubmitButton, SubmitButtonProps } from '../../Form';
+import { SubmitButton, SubmitButtonProps } from '../../ConnectedForm';
 import { Column } from '../../Layout';
 
 export type GridFormButtonsPosition = keyof typeof positions;

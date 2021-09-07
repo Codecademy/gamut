@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import { Mode, SubmitHandler } from 'react-hook-form';
 
 import { ButtonProps } from '../Button/shared';
-import { FormContextProps, FormWrapper } from '../Form';
+import { FormContextProps, FormWrapper } from '../ConnectedForm';
 import { FormValues } from '../Form/types';
 import { LayoutGrid, LayoutGridProps } from '../Layout';
 import { GridFormButtons, GridFormSubmitProps } from './GridFormButtons';

@@ -1,8 +1,8 @@
 import React from 'react';
 
+import { useFieldContext } from '../../ConnectedForm';
 import { GridFormInputGroup } from '../GridFormInputGroup';
 import { GridFormField } from '../types';
-import { useFieldContext } from '../utils';
 
 export type GridFormContentProps = {
   field: GridFormField;
@@ -19,7 +19,7 @@ export const GridFormContent: React.FC<GridFormContentProps> = ({
     register,
     setValue,
     isDisabled,
-  } = useFieldContext(field);
+  } = useFieldContext(field.name);
 
   const requiredBoolean = !!(
     field.type !== 'hidden' &&

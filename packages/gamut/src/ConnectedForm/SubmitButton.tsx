@@ -3,8 +3,8 @@ import { FormState } from 'react-hook-form';
 
 import { Box, FlexBox } from '../Box';
 import { ButtonProps, FillButton } from '../Button';
-import { useSubmitContext } from '../GridForm/utils';
 import { Spinner } from '../Spinner';
+import { useSubmitContext } from './utils';
 
 export type FormStateCallback<Values = {}> = (
   formState: FormState<Values>

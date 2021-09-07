@@ -7,10 +7,10 @@ import {
   useForm,
 } from 'react-hook-form';
 
-import { submitSuccessStatus } from '../GridForm/utils';
-import { Form } from '.';
-import { FormProps } from './Form';
-import { FormValues } from './types';
+import { Form } from '../Form';
+import { FormProps } from '../Form/Form';
+import { FormValues } from '../Form/types';
+import { submitSuccessStatus } from './utils';
 
 export type FormContextProps = {
   /**
