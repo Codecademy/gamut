@@ -337,7 +337,7 @@ export const FormLoadingExample = () => {
               required: 'pls fill this out',
               pattern: {
                 value: /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,})+$/,
-                message: 'that is not an email 😔',
+                message: 'that is not an email 😔😔',
               },
             },
             size: 12,
