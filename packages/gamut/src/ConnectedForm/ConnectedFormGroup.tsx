@@ -77,7 +77,7 @@ export const ConnectedFormGroup: React.FC<ConnectedFormGroupProps> = ({
             }}
             skipDefaultOverrides={{ a: true }}
             inline
-            text={error}
+            text={error || customError}
             spacing="none"
           />
         </FormError>
