@@ -1,21 +1,3 @@
 module.exports = {
-  projects: [
-    '<rootDir>/packages/*',
-    // '<rootDir>/packages/gamut',
-    // '<rootDir>/packages/gamut-icons',
-    // '<rootDir>/packages/gamut-illustrations',
-    // '<rootDir>/packages/gamut-kit',
-    // '<rootDir>/packages/gamut-labs',
-    // '<rootDir>/packages/gamut-patterns',
-    // '<rootDir>/packages/gamut-styles',
-    // '<rootDir>/packages/gamut-system',
-    // '<rootDir>/packages/gamut-tests',
-    // '<rootDir>/packages/konamimojisplosion',
-    // '<rootDir>/packages/macros',
-    // '<rootDir>/packages/markdown-overrides',
-    // '<rootDir>/packages/monaco',
-    // '<rootDir>/packages/styleguide',
-    // '<rootDir>/packages/tracking',
-    // '<rootDir>/packages/variance',
-  ],
+  projects: ['<rootDir>/packages/*'],
 };
