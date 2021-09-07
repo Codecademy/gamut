@@ -171,7 +171,7 @@ export const NormalTemplate: React.FC<ListProps> = (args, { mode }) => (
   </ColorMode>
 );
 
-const sizes = ['content', 'sm', 'md', 'lg', 'xl', 'fill'];
+const sizes = ['content', 'sm', 'md', 'lg', 'xl'];
 
 export const ColumnTemplate = () => {
   return (
@@ -179,12 +179,93 @@ export const ColumnTemplate = () => {
       {sizes.map((size) => (
         <ListRow>
           <ListCol size={size} fill={size === 'fill'}>
-            <Box height={1} flex={1} p={4} bg="background-selected">
+            <Box height={1} flex={1} p={8} bg="background-selected">
               {size}
             </Box>
           </ListCol>
         </ListRow>
       ))}
+    </List>
+  );
+};
+
+export const ColumnModifierTemplate = () => {
+  return (
+    <List spacing="condensed">
+      <ListRow>
+        <ListCol size="md" fill>
+          <Box height={1} flex={1} p={8} bg="background-selected">
+            Medium - Fill
+          </Box>
+        </ListCol>
+        <ListCol size="md">
+          <Box height={1} flex={1} p={8} bg="background-selected">
+            Medium
+          </Box>
+        </ListCol>
+        <ListCol size="md" collapse>
+          <Box height={1} flex={1} p={8} bg="background-selected">
+            Medium - Collapse
+          </Box>
+        </ListCol>
+      </ListRow>
+    </List>
+  );
+};
+
+export const ResponsiveAnatomyTemplate = () => {
+  return (
+    <List spacing="condensed">
+      <ListRow>
+        <ListCol type="header" size="md">
+          <Box height={1} flex={1} p={8} bg="background-selected">
+            Header
+          </Box>
+        </ListCol>
+        <ListCol size="md">
+          <Box height={1} flex={1} p={8} bg="background-selected">
+            Content
+          </Box>
+        </ListCol>
+        <ListCol size="md" fill>
+          <Box height={1} flex={1} p={8} bg="background-selected">
+            Content
+          </Box>
+        </ListCol>
+        <ListCol type="action" size="md" collapse>
+          <Box height={1} flex={1} p={8} bg="background-selected">
+            Controls
+          </Box>
+        </ListCol>
+      </ListRow>
+    </List>
+  );
+};
+
+export const ResponsiveTemplate = () => {
+  return (
+    <List spacing="condensed">
+      <ListRow>
+        <ListCol size="lg" type="header">
+          <Text fontWeight={700} truncate="ellipsis">
+            Header
+          </Text>
+        </ListCol>
+        <ListCol size="lg" collapse>
+          <Text variant="p-small" color="text-disabled" truncate="ellipsis">
+            Content
+          </Text>
+        </ListCol>
+        <ListCol size="lg" fill collapse>
+          <Text variant="p-small" color="text-disabled" truncate="ellipsis">
+            Content
+          </Text>
+        </ListCol>
+        <ListCol type="action">
+          <IconButton icon={MiniKebabMenuIcon} size="small" />
+          <IconButton icon={MiniDeleteIcon} size="small" />
+        </ListCol>
+      </ListRow>
     </List>
   );
 };
