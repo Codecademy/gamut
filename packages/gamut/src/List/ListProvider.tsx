@@ -1,8 +1,8 @@
 import { createContext, useContext, useMemo } from 'react';
 
-import { ListProps } from './types';
+import { PrivateListProps } from './types';
 
-export interface ListContextProps extends ListProps {
+export interface ListContextProps extends PrivateListProps {
   depth: number;
 }
 
@@ -19,7 +19,7 @@ export function useListContext() {
   return context;
 }
 
-export function useList({ spacing, variant }: ListProps) {
+export function useList({ spacing, variant, scrollable }: PrivateListProps) {
   const {
     depth = 0,
     variant: activeVariant = variant,
@@ -29,10 +29,11 @@ export function useList({ spacing, variant }: ListProps) {
   return useMemo(
     () => ({
       root: depth === 0,
+      scrollable,
       variant: activeVariant,
       spacing: activeSpacing,
       depth: depth + 1,
     }),
-    [activeVariant, activeSpacing, depth]
+    [scrollable, activeVariant, activeSpacing, depth]
   );
 }

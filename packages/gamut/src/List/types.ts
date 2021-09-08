@@ -1,8 +1,10 @@
-export interface ListProps {
-  spacing: 'normal' | 'condensed';
-  variant: 'slat' | 'table' | 'bar';
+export interface PrivateListProps {
+  scrollable?: boolean;
+  spacing?: 'normal' | 'condensed';
+  variant?: 'slat' | 'table' | 'bar';
 }
 
-export interface ListRowProps extends ListProps {}
+export type PublicListProps<T> = Omit<T, keyof PrivateListProps>;
 
-export interface ListColProps extends ListProps {}
+export type AllListProps<T> = Omit<T, keyof PrivateListProps> &
+  PrivateListProps;

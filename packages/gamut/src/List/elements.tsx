@@ -23,18 +23,33 @@ const listVariants = variant({
   },
 });
 
-export const ListEl = styled.div(listVariants);
+const listStates = states({
+  scrollable: {
+    overflowX: 'auto',
+    maxWidth: 1,
+  },
+});
+
+export interface ListProps
+  extends StyleProps<typeof listStates>,
+    StyleProps<typeof listVariants> {}
+
+export const ListEl = styled.div<ListProps>(listVariants, listStates);
+
+const rowStates = states({
+  scrollable: {
+    minWidth: 'min-content',
+    width: '100%',
+  },
+});
 
 const spacingVariants = variant({
   prop: 'spacing',
   variants: {
     normal: {
-      p: { _: 8, xs: 16 },
       gap: { _: 8, xs: 16 },
     },
     condensed: {
-      p: 8,
-      px: 16,
       gap: 8,
     },
   },
@@ -70,11 +85,15 @@ const rowVariants = variant({
   },
 });
 
-interface RowProps
+export interface RowProps
   extends StyleProps<typeof rowVariants>,
     StyleProps<typeof spacingVariants> {}
 
-export const RowEl = styled.div<RowProps>(rowVariants, spacingVariants);
+export const RowEl = styled.div<RowProps>(
+  rowVariants,
+  spacingVariants,
+  rowStates
+);
 
 const columnType = variant({
   prop: 'type',
@@ -129,9 +148,37 @@ const columnStates = states({
   collapse: {
     flexShrink: { xs: 1 },
   },
+  sticky: {
+    position: 'sticky',
+    left: 0,
+    bg: 'inherit',
+  },
+  ghost: {
+    visibility: 'hidden',
+  },
 });
 
-interface ColProps
+const columnSpacing = variant({
+  prop: 'spacing',
+  base: {
+    '&:first-child': {
+      pl: 16,
+    },
+    '&:last-child': {
+      pr: 16,
+    },
+  },
+  variants: {
+    normal: {
+      py: { _: 8, xs: 16 },
+    },
+    condensed: {
+      py: 8,
+    },
+  },
+});
+
+export interface ColProps
   extends StyleProps<typeof columnSizes>,
     StyleProps<typeof columnType>,
     StyleProps<typeof columnStates> {}
@@ -143,6 +190,7 @@ export const ColEl = styled.div<ColProps>(
     whiteSpace: 'nowrap',
     overflow: 'hidden',
   }),
+  columnSpacing,
   columnSizes,
   columnType,
   columnStates
