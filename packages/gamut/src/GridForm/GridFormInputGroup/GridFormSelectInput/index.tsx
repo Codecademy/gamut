@@ -2,27 +2,25 @@ import React from 'react';
 import { UseFormMethods } from 'react-hook-form';
 
 import { Select } from '../../../Form';
-import { GridFormSelectField } from '../../types';
+import { BaseFormInputProps, GridFormSelectField } from '../../types';
 
-export type GridFormSelectInputProps = {
-  className?: string;
-  error?: boolean;
-  showRequired?: boolean;
+export interface GridFormSelectInputProps extends BaseFormInputProps {
   field: Omit<GridFormSelectField, 'label'>;
   register: UseFormMethods['register'];
-};
+}
 
 export const GridFormSelectInput: React.FC<GridFormSelectInputProps> = ({
   className,
+  disabled,
   error,
   field,
   register,
-  showRequired,
+  required,
 }) => {
   return (
     <Select
       defaultValue={field.defaultValue}
-      disabled={field.disabled}
+      disabled={disabled}
       className={className}
       error={error}
       htmlFor={field.name}
@@ -32,7 +30,7 @@ export const GridFormSelectInput: React.FC<GridFormSelectInputProps> = ({
       options={field.options}
       id={field.id}
       aria-invalid={error}
-      aria-required={showRequired}
+      aria-required={required}
     />
   );
 };

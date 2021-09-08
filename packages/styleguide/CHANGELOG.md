@@ -3,6 +3,76 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [44.1.5](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@44.1.4...@codecademy/styleguide@44.1.5) (2021-09-08)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [44.1.4](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@44.1.3...@codecademy/styleguide@44.1.4) (2021-09-08)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [44.1.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@44.1.2...@codecademy/styleguide@44.1.3) (2021-09-04)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [44.1.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@44.1.1...@codecademy/styleguide@44.1.2) (2021-09-03)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [44.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@44.1.0...@codecademy/styleguide@44.1.1) (2021-09-03)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [44.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@44.0.1...@codecademy/styleguide@44.1.0) (2021-09-03)
+
+
+### Features
+
+* GridForm disableFieldsOnSubmit ([792e324](https://github.com/Codecademy/client-modules/commit/792e3243d5775442516826cc126a1ee11424200b))
+
+
+
+### [44.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@44.0.0...@codecademy/styleguide@44.0.1) (2021-09-03)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [44.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@43.11.3...@codecademy/styleguide@44.0.0) (2021-09-03)
+
+
+### ⚠ BREAKING CHANGES
+
+* **Card:** Add color mode to card
+
+### Features
+
+* **Card:** Add color mode to card ([d3309b4](https://github.com/Codecademy/client-modules/commit/d3309b41450ecc4071e8017d8bed55d0adb50e91))
+
+
+
 ### [43.11.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@43.11.2...@codecademy/styleguide@43.11.3) (2021-09-03)
 
 

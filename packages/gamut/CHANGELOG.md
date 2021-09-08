@@ -3,6 +3,46 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [37.1.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@37.1.1...@codecademy/gamut@37.1.2) (2021-09-08)
+
+
+### Bug Fixes
+
+* Set `Card` non variant text color to ensure no inheritance GM-347 ([1d5d440](https://github.com/Codecademy/client-modules/commit/1d5d440c0e0c5362e26cb4da54b9567381553f12))
+
+
+
+### [37.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@37.1.0...@codecademy/gamut@37.1.1) (2021-09-08)
+
+
+### Bug Fixes
+
+* **GridForm:** custom errors ([b37ccfe](https://github.com/Codecademy/client-modules/commit/b37ccfe8497f19934a4b8b22d14b631beb75b2cd))
+
+
+
+## [37.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@37.0.0...@codecademy/gamut@37.1.0) (2021-09-03)
+
+
+### Features
+
+* GridForm disableFieldsOnSubmit ([792e324](https://github.com/Codecademy/client-modules/commit/792e3243d5775442516826cc126a1ee11424200b))
+
+
+
+## [37.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@36.9.2...@codecademy/gamut@37.0.0) (2021-09-03)
+
+
+### ⚠ BREAKING CHANGES
+
+* **Card:** Add color mode to card
+
+### Features
+
+* **Card:** Add color mode to card ([d3309b4](https://github.com/Codecademy/client-modules/commit/d3309b41450ecc4071e8017d8bed55d0adb50e91))
+
+
+
 ### [36.9.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@36.9.1...@codecademy/gamut@36.9.2) (2021-09-03)
 
 
