@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [37.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@37.1.0...@codecademy/gamut@37.1.1) (2021-09-08)
+
+
+### Bug Fixes
+
+* **GridForm:** custom errors ([b37ccfe](https://github.com/Codecademy/client-modules/commit/b37ccfe8497f19934a4b8b22d14b631beb75b2cd))
+
+
+
 ## [37.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@37.0.0...@codecademy/gamut@37.1.0) (2021-09-03)
 
 
