@@ -1,131 +1,88 @@
 import { setupRtl } from '@codecademy/gamut-tests';
-import { fireEvent, screen } from '@testing-library/dom';
+import { fireEvent } from '@testing-library/dom';
 import { RenderResult, waitFor } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import React from 'react';
 import { act } from 'react-dom/test-utils';
 
 import { Flyout } from '..';
 
-const TestButtonText = 'Test';
-
-const renderFlyout = setupRtl(Flyout, {
-  renderButton: (onClick: () => void) => (
-    <button type="button" onClick={onClick}>
-      {TestButtonText}
-    </button>
-  ),
+const renderView = setupRtl(Flyout, {
   children: <div data-testid="flyout-content">Howdy!</div>,
-});
-
-renderFlyout.options({
+  closeLabel: 'Close flyout',
+  onClose: jest.fn(),
+  title: 'hi!!!',
+}).options({
   wrapper: ({ children }) => <div data-testid="flyout-outside">{children}</div>,
 });
 
 describe('Flyout', () => {
-  const clickToggleButton = async () =>
-    await act(async () => {
-      fireEvent.click(screen.getByText(TestButtonText));
+  const expectFlyoutOpen = (view: RenderResult) =>
+    waitFor(() => view.getByTestId('flyout-content'));
+
+  const expectFlyoutClosed = (view: RenderResult) =>
+    waitFor(() => expect(view.queryByTestId('flyout-content')).toBeNull());
+
+  it('renders flyout content when "expanded" is true', async () => {
+    const { view } = renderView({ expanded: true });
+    await expectFlyoutOpen(view);
+  });
+
+  it('does not render flyout content when "expanded" is false', async () => {
+    const { view } = renderView({ expanded: false });
+    await expectFlyoutClosed(view);
+  });
+
+  it('calls onClose on button click', async () => {
+    const { props, view } = renderView({ expanded: true });
+
+    act(() => {
+      userEvent.click(view.getByLabelText(props.closeLabel));
     });
 
-  const expectFlyoutOpen = () =>
-    waitFor(() => screen.getByTestId('flyout-content'));
-
-  const expectFlyoutClosed = () =>
-    waitFor(() => expect(screen.queryByTestId('flyout-content')).toBeNull());
-
-  it('renders flyout content when "initialExpanded" is true', async () => {
-    renderFlyout({ initialExpanded: true });
-    await expectFlyoutOpen();
-  });
-
-  it('does not render flyout content when "initialExpanded" is false', async () => {
-    renderFlyout();
-    await expectFlyoutClosed();
-  });
-
-  it('toggles the flyout expanded status on button click', async () => {
-    renderFlyout();
-    await expectFlyoutClosed();
-
-    await clickToggleButton();
-
-    await expectFlyoutOpen();
-
-    await clickToggleButton();
-
-    await expectFlyoutClosed();
+    expect(props.onClose).toHaveBeenCalled();
   });
 
   describe('clicking outside the flyout', () => {
-    const clickOutsideFlyout = async () =>
-      await act(async () => {
-        fireEvent.mouseDown(screen.getByTestId('flyout-outside'));
+    const clickOutsideFlyout = (view: RenderResult) =>
+      act(() => {
+        fireEvent.mouseDown(view.getByTestId('flyout-outside'));
       });
 
-    it('closes flyout when "clickOutsideDoesNotClose" is true', async () => {
-      renderFlyout({ clickOutsideDoesNotClose: true });
+    it('closes flyout', async () => {
+      const { view } = renderView();
 
-      await clickOutsideFlyout();
+      clickOutsideFlyout(view);
 
-      await expectFlyoutClosed();
-    });
-
-    it('does not close flyout when "clickOutsideDoesNotClose" is false', async () => {
-      renderFlyout({ initialExpanded: true });
-
-      await clickOutsideFlyout();
-
-      await expectFlyoutOpen();
+      await expectFlyoutClosed(view);
     });
   });
 
   it('does not close flyout when clicking inside flyout', async () => {
-    renderFlyout({ initialExpanded: true });
-    await act(async () => {
-      fireEvent.mouseDown(screen.getByTestId('flyout-content'));
+    const { view } = renderView({ expanded: true });
+
+    act(() => {
+      fireEvent.mouseDown(view.getByTestId('flyout-content'));
     });
 
-    await expectFlyoutOpen();
+    await expectFlyoutOpen(view);
   });
 
   describe('pressing the escape key', () => {
-    const pressEsc = async (view: RenderResult) =>
-      await act(async () => {
+    const pressEsc = (view: RenderResult) =>
+      act(() => {
         fireEvent.keyDown(view.baseElement, {
           key: 'Escape',
           code: 'Escape',
         });
       });
 
-    it('closes flyout when "escapeDoesNotClose" is true', async () => {
-      const { view } = renderFlyout({ escapeDoesNotClose: true });
+    it('closes the flyout', async () => {
+      const { view } = renderView();
 
-      await pressEsc(view);
+      pressEsc(view);
 
-      await expectFlyoutClosed();
+      await expectFlyoutClosed(view);
     });
-
-    it('does not close flyout when "escapeDoesNotClose" is false', async () => {
-      const { view } = renderFlyout({
-        escapeDoesNotClose: false,
-        initialExpanded: true,
-      });
-
-      await pressEsc(view);
-
-      await expectFlyoutOpen();
-    });
-  });
-
-  it('passes the ability to close the flyout to passed ref', async () => {
-    const closeFlyoutRef = { current: () => {} };
-
-    renderFlyout({ closeFlyoutRef, initialExpanded: true });
-
-    await expectFlyoutOpen();
-
-    act(closeFlyoutRef.current);
-
-    await expectFlyoutClosed();
   });
 });
