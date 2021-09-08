@@ -46,9 +46,38 @@ import { List, ListRow, ListCol } from '@codecademy/gamut';
 </List>;
 ```
 
+<br />
+
+## Spacing
+
+Lists come with 2 spacing variants `normal` and `condensed`.
+
+### Normal
+
+For mixed content use the normal size to ensure that there is enough space for components
+
+<Story name="Normal - Light" args={{ variant: 'slat', spacing: 'normal' }}>
+  {NormalTemplate.bind({})}
+</Story>
+
+### Condensed
+
+For a more compact list use the condensed spacing
+
+<Story
+  name="Condensed - Light"
+  args={{ variant: 'slat', spacing: 'condensed' }}
+>
+  {CondensedTemplate.bind({})}
+</Story>
+
 ## Variants
 
-<br />
+Lists have several style variants for different use cases:
+
+- `table`: Alternating backgrounds for visually separated rows of text.
+- `slat`: Bordered rows for mixed content with no vertical gutter.
+- `bar`: Bordered rows with a vertical gutter.
 
 ### Table
 
@@ -98,7 +127,9 @@ You can specify a column to expand or collapse beyond its normal flex basis. The
 
 <Story name="Modifiers">{ColumnModifierTemplate.bind({})}</Story>
 
-### Horizontally Scrolling Lists
+<br />
+
+## Scrolling
 
 If you have a list with many columns and would like to avoid collapsing any columns information you can use the `scrollable` prop which will lock the row header to the left hand side and expand all columns to the their minimum flex-basis. All rows and columns scroll along the X axis in tandem to ensure that you may compare data or take multiple actions between each row.
 
@@ -112,6 +143,8 @@ If you have a list with many columns and would like to avoid collapsing any colu
 </Story>
 
 </GridBox>
+
+<br />
 
 ### Responsive
 
@@ -146,27 +179,6 @@ List rows will switch to a mobile layout at screen widths less than smallest bre
 </Canvas>
 
 </GridBox>
-
-## Spacing
-
-### Normal
-
-For mixed content use the normal size to ensure that there is enough space for components
-
-<Story name="Normal - Light" args={{ variant: 'slat', spacing: 'normal' }}>
-  {NormalTemplate.bind({})}
-</Story>
-
-### Condensed
-
-For a more compact list use the condensed spacing
-
-<Story
-  name="Condensed - Light"
-  args={{ variant: 'slat', spacing: 'condensed' }}
->
-  {CondensedTemplate.bind({})}
-</Story>
 
 <br />
 

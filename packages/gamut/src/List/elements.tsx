@@ -164,10 +164,10 @@ const columnSpacing = variant({
   prop: 'spacing',
   base: {
     px: { _: 16, xs: 0 },
-    '&:first-child': {
+    '&:first-of-type': {
       pl: 16,
     },
-    '&:last-child': {
+    '&:last-of-type': {
       pr: 16,
     },
   },

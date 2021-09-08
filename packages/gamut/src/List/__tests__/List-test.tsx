@@ -18,6 +18,7 @@ describe('Menu', () => {
     const { wrapper } = renderWrapper();
 
     expect(wrapper.find('ListEl').prop('variant')).toBe('slat');
+    expect(wrapper.find('ListEl').prop('scrollable')).toBe(false);
   });
   it('configures rows with the correct variants', () => {
     const { wrapper } = renderWrapper();
@@ -30,5 +31,20 @@ describe('Menu', () => {
 
     expect(wrapper.find('ColEl').prop('variant')).toBe('slat');
     expect(wrapper.find('ColEl').prop('spacing')).toBe('normal');
+    expect(wrapper.find('ColEl').prop('sticky')).toBe(false);
+  });
+  it('fixes the row header column when scrollable - but not other columns', () => {
+    const { wrapper } = renderWrapper({
+      scrollable: true,
+      children: (
+        <ListRow>
+          <ListCol type="header">Hello</ListCol>
+          <ListCol>Content</ListCol>
+        </ListRow>
+      ),
+    });
+
+    expect(wrapper.find({ type: 'header', sticky: true }).length).toBe(1);
+    expect(wrapper.find({ type: 'content', sticky: true }).length).toBe(0);
   });
 });
