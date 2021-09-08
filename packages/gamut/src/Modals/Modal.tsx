@@ -25,7 +25,7 @@ export const Modal: React.FC<ModalProps> = ({
   title,
   className,
   size = 'fluid',
-  addOverflow,
+  addOverflow = false,
   onRequestClose,
   hideCloseButton = false,
   ...rest
