@@ -4,11 +4,10 @@ import React, { ReactNode } from 'react';
 
 import { BodyPortal } from '../BodyPortal';
 import { Box } from '../Box';
+import { FadeInSlideOut } from '../Motion/FadeInSlideOut';
 import { Toast } from '../Toast/Toast';
-import { Text } from '../Typography';
-import { FadeInSlideOut } from './FadeInSlideOut';
 
-export type NotificationEvent = {
+export type ToastProps = {
   id: string;
   name?: string;
   description: string;
@@ -17,37 +16,29 @@ export type NotificationEvent = {
 };
 
 export type ToasterProps = {
-  toasts: NotificationEvent[];
-  onClose: (ids: string) => void;
+  toasts: ToastProps[];
+  onClose: (id: string) => void;
 };
 
 export const Toaster: React.FC<ToasterProps> = ({ toasts = [], onClose }) => {
-  const renderToastByType = ({
-    id,
-    description,
-    name,
-    icon,
-    children,
-  }: NotificationEvent) => {
-    const closeToast = () => onClose(id);
-
-    return (
-      <FadeInSlideOut key={id}>
-        <Toast onClose={closeToast} title={name} icon={icon}>
-          {children}
-        </Toast>
-      </FadeInSlideOut>
-    );
-  };
+  const closeToast = (id: string) => onClose(id);
 
   return (
     <BodyPortal>
       <ColorMode mode="light">
         <Box right={16} bottom={88} position="fixed" aria-live="polite">
           <AnimatePresence>
-            <Toast onClose={closeToast} title={name} icon={icon}>
-              {toasts.map(renderToastByType)}
-            </Toast>
+            {toasts.map((toast) => (
+              <FadeInSlideOut key={toast.id}>
+                <Toast
+                  onClose={() => closeToast(toast.id)}
+                  title={toast.name}
+                  icon={toast.icon}
+                >
+                  {toast.children}
+                </Toast>
+              </FadeInSlideOut>
+            ))}
           </AnimatePresence>
         </Box>
       </ColorMode>
