@@ -161,7 +161,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
       >
         {field.hideLabel ? <HiddenText>{label}</HiddenText> : label}
         {getInput()}
-        {error && (
+        {errorMessage && (
           <FormError
             role={isFirstError ? 'alert' : 'status'}
             aria-live={isFirstError ? 'assertive' : 'off'}
@@ -180,7 +180,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
               }}
               skipDefaultOverrides={{ a: true }}
               inline
-              text={error}
+              text={errorMessage}
               spacing="none"
             />
           </FormError>
