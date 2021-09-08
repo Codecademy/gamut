@@ -15,9 +15,9 @@ export interface ModalProps extends ModalBaseProps {
    */
   hideCloseButton?: boolean;
   /**
-   * Whether to show scrollable on overflow
+   * Whether to show scrollbar on content overflow
    */
-  addOverflow?: boolean;
+  addOverflowAuto?: boolean;
 }
 
 export const Modal: React.FC<ModalProps> = ({
@@ -25,7 +25,7 @@ export const Modal: React.FC<ModalProps> = ({
   title,
   className,
   size = 'fluid',
-  addOverflow = false,
+  addOverflowAuto = false,
   onRequestClose,
   hideCloseButton = false,
   ...rest
@@ -60,7 +60,7 @@ export const Modal: React.FC<ModalProps> = ({
             gridArea="close"
           />
         )}
-        <Box overflowY={addOverflow && 'auto'} gridArea="content">
+        <Box overflowY={addOverflowAuto && 'auto'} gridArea="content">
           {children}
         </Box>
       </ModalContainer>
