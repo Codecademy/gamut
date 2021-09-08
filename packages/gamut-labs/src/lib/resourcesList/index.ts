@@ -15,14 +15,6 @@ type FooterResourceList = {
 
 export const resourcesList: ResourcesList[] = [
   {
-    id: 'docs',
-    href: '/resources/docs',
-    footerTrackingTarget: 'docs',
-    headerTrackingTarget: 'topnav_resources_docs',
-    text: 'Docs',
-    type: 'link',
-  },
-  {
     id: 'cheatsheets',
     href: '/resources/cheatsheets/all',
     footerTrackingTarget: 'cheatsheets_home',
