@@ -60,7 +60,10 @@ export const Modal: React.FC<ModalProps> = ({
             gridArea="close"
           />
         )}
-        <Box overflowY={addOverflowAuto && 'auto'} gridArea="content">
+        <Box
+          overflowY={addOverflowAuto ? 'auto' : 'visible'}
+          gridArea="content"
+        >
           {children}
         </Box>
       </ModalContainer>
