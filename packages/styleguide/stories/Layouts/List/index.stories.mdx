@@ -102,12 +102,16 @@ You can specify a column to expand or collapse beyond its normal flex basis. The
 
 If you have a list with many columns and would like to avoid collapsing any columns information you can use the `scrollable` prop which will lock the row header to the left hand side and expand all columns to the their minimum flex-basis. All rows and columns scroll along the X axis in tandem to ensure that you may compare data or take multiple actions between each row.
 
+<GridBox maxWidth="800px">
+
 <Story
   name="Scrollable"
   args={{ variant: 'slat', spacing: 'condensed', scrollable: true }}
 >
   {CondensedTemplate.bind({})}
 </Story>
+
+</GridBox>
 
 ### Responsive
 
