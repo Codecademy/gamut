@@ -58,6 +58,7 @@ const spacingVariants = variant({
 const rowVariants = variant({
   prop: 'variant',
   base: {
+    py: { _: 8, xs: 0 },
     display: { _: 'grid', xs: 'flex' },
     gridAutoRows: 'minmax(1.5rem, max-content)',
     gridTemplateColumns: 'minmax(0, 1fr) max-content',
@@ -161,6 +162,7 @@ const columnStates = states({
 const columnSpacing = variant({
   prop: 'spacing',
   base: {
+    px: { _: 16, xs: 0 },
     '&:first-child': {
       pl: 16,
     },
@@ -170,10 +172,10 @@ const columnSpacing = variant({
   },
   variants: {
     normal: {
-      py: { _: 8, xs: 16 },
+      py: { _: 0, xs: 16 },
     },
     condensed: {
-      py: 8,
+      py: { _: 0, xs: 8 },
     },
   },
 });
