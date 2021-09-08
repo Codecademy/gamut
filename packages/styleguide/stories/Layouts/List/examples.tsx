@@ -104,7 +104,7 @@ export const NormalTemplate: React.FC<ListProps> = (args, { mode }) => (
     <List {...args}>
       {rows.map(({ name, role, ship }, i, _, key = `example-row-${i}`) => (
         <ListRow key={key}>
-          <ListCol size="lg">
+          <ListCol size="lg" type="header">
             <FlexBox column>
               <Text
                 color="text-disabled"
@@ -116,7 +116,7 @@ export const NormalTemplate: React.FC<ListProps> = (args, { mode }) => (
               <Text variant="title-xs">{name}</Text>
             </FlexBox>
           </ListCol>
-          <ListCol fill collapse>
+          <ListCol size="md" fill collapse>
             <FlexBox column>
               <Text
                 color="text-disabled"
@@ -128,7 +128,7 @@ export const NormalTemplate: React.FC<ListProps> = (args, { mode }) => (
               <Text variant="title-xs">{role}</Text>
             </FlexBox>
           </ListCol>
-          <ListCol size="md">
+          <ListCol fill size="sm">
             <Text
               variant="p-small"
               color="text-disabled"
@@ -139,7 +139,7 @@ export const NormalTemplate: React.FC<ListProps> = (args, { mode }) => (
               87%
             </Text>
           </ListCol>
-          <ListCol size="md">
+          <ListCol fill size="sm">
             <Text
               variant="p-small"
               color="text-disabled"
@@ -150,7 +150,7 @@ export const NormalTemplate: React.FC<ListProps> = (args, { mode }) => (
               48%
             </Text>
           </ListCol>
-          <ListCol size="md">
+          <ListCol fill size="sm">
             <Text
               variant="p-small"
               color="text-disabled"
@@ -161,7 +161,7 @@ export const NormalTemplate: React.FC<ListProps> = (args, { mode }) => (
               66%
             </Text>
           </ListCol>
-          <ListCol size="lg" flush right>
+          <ListCol size="lg" type="action">
             <TextButton mr={16}>Hail</TextButton>
             <FillButton>Engage</FillButton>
           </ListCol>

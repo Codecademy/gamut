@@ -107,6 +107,7 @@ const columnType = variant({
       gridColumnEnd: 'span 2',
     },
     action: {
+      minWidth: 'min-content',
       alignItems: {
         _: 'flex-start',
         xs: 'center',

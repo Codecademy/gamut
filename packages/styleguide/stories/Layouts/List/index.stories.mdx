@@ -98,7 +98,18 @@ You can specify a column to expand or collapse beyond its normal flex basis. The
 
 <Story name="Modifiers">{ColumnModifierTemplate.bind({})}</Story>
 
-### Responsive Layouts
+### Horizontally Scrolling Lists
+
+If you have a list with many columns and would like to avoid collapsing any columns information you can use the `scrollable` prop which will lock the row header to the left hand side and expand all columns to the their minimum flex-basis. All rows and columns scroll along the X axis in tandem to ensure that you may compare data or take multiple actions between each row.
+
+<Story
+  name="Scrollable"
+  args={{ variant: 'slat', spacing: 'condensed', scrollable: true }}
+>
+  {CondensedTemplate.bind({})}
+</Story>
+
+### Responsive
 
 List rows will switch to a mobile layout at screen widths less than smallest breakpoint (480px). This layout is built for smaller screens and is restructured to a card like structure. There is no extra configuration needed for this to take effect pending you've configured a few named column types:
 
@@ -110,7 +121,7 @@ List rows will switch to a mobile layout at screen widths less than smallest bre
 
 <Canvas>
   <Story
-    name="Layouts"
+    name="Responsive Layout - Anatomy"
     parameters={{
       docs: { inlineStories: false, iframeHeight: 160 },
     }}
@@ -121,7 +132,7 @@ List rows will switch to a mobile layout at screen widths less than smallest bre
 
 <Canvas>
   <Story
-    name="Layout with Content"
+    name="Responsive Layout - Content"
     parameters={{
       docs: { inlineStories: false, iframeHeight: 160 },
     }}
