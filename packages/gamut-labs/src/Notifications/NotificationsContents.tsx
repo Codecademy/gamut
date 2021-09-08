@@ -37,6 +37,7 @@ export const NotificationsContents: React.FC<NotificationsContentsProps> = (
       pb={24}
       pt={32}
       role="dialog"
+      width={360}
     >
       <FlexBox
         alignItems="center"
