@@ -7,7 +7,7 @@ import { PublicListProps } from './types';
 export interface ListRowProps
   extends PublicListProps<ComponentProps<typeof RowEl>> {}
 
-export const ListRow = forwardRef<HTMLDivElement, ListRowProps>(
+export const ListRow = forwardRef<HTMLLIElement, ListRowProps>(
   ({ children, ...rest }, ref) => {
     const activeVariants = useListContext();
     return (
