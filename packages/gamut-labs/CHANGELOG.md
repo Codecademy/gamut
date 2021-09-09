@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [19.25.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.24.11...@codecademy/gamut-labs@19.25.0) (2021-09-09)
+
+
+### Features
+
+* add notifications to GlobalHeader ([867d35c](https://github.com/Codecademy/client-modules/commit/867d35c8471c6173b37f0d26c9952cc5ceab3461))
+
+
+
 ### [19.24.11](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.24.10...@codecademy/gamut-labs@19.24.11) (2021-09-09)
 
 **Note:** Version bump only for package @codecademy/gamut-labs
