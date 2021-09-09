@@ -166,6 +166,7 @@ const columnStates = states({
   sticky: {
     position: 'sticky',
     left: 0,
+    zIndex: 1,
     bg: 'inherit',
   },
 });
