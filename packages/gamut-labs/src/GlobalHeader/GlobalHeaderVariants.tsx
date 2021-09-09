@@ -14,7 +14,6 @@ import {
   login,
   logo,
   myHome,
-  notifications,
   pricingDropdown,
   proLogo,
   proProfile,
@@ -129,7 +128,6 @@ export const anonSignupMobileHeaderItems = (
 export const freeHeaderItems = (
   user: User,
   hidePricing?: boolean,
-  renderNotifications?: () => ReactNode,
   renderFavorites?: () => ReactNode
 ): FormattedAppHeaderItems => {
   const leftItems: AppHeaderItem[] = [
@@ -143,7 +141,6 @@ export const freeHeaderItems = (
   ];
 
   const rightItems: AppHeaderItem[] = [];
-  renderNotifications && rightItems.push(notifications(renderNotifications));
   renderFavorites && rightItems.push(favorites(renderFavorites));
 
   rightItems.push(freeProfile(user));
@@ -161,14 +158,9 @@ export const freeHeaderItems = (
 
 export const freeMobileHeaderItems = (
   user: User,
-  hidePricing?: boolean,
-  renderNotifications?: () => ReactNode
+  hidePricing?: boolean
 ): FormattedMobileAppHeaderItems => {
   const leftItems: AppHeaderItem[] = [logo];
-
-  const rightItems: AppHeaderItem[] = [];
-  renderNotifications && rightItems.push(notifications(renderNotifications));
-
   const mainMenuItems: AppHeaderItem[] = [
     myHome,
     courseCatalog,
@@ -177,24 +169,20 @@ export const freeMobileHeaderItems = (
     ...(hidePricing ? [] : [pricingDropdown]),
     forBusiness,
     freeProfile(user, true),
-  ];
-
-  mainMenuItems.push(
     user.showProUpgrade
       ? upgradeToPro(user.proCheckoutUrl)
-      : tryProForFree(user.proCheckoutUrl)
-  );
+      : tryProForFree(user.proCheckoutUrl),
+  ];
 
   return {
     left: leftItems,
-    right: rightItems,
+    right: [],
     mainMenu: mainMenuItems,
   };
 };
 
 export const proHeaderItems = (
   user: User,
-  renderNotifications?: () => ReactNode,
   renderFavorites?: () => ReactNode
 ): FormattedAppHeaderItems => {
   const leftItems: AppHeaderItem[] = [
@@ -206,7 +194,6 @@ export const proHeaderItems = (
   ];
 
   const rightItems: AppHeaderItem[] = [];
-  renderNotifications && rightItems.push(notifications(renderNotifications));
   renderFavorites && rightItems.push(favorites(renderFavorites));
 
   rightItems.push(proProfile(user));
@@ -219,13 +206,9 @@ export const proHeaderItems = (
 };
 
 export const proMobileHeaderItems = (
-  user: User,
-  renderNotifications?: () => ReactNode
+  user: User
 ): FormattedMobileAppHeaderItems => {
   const leftItems: AppHeaderItem[] = [proLogo];
-
-  const rightItems: AppHeaderItem[] = [];
-  renderNotifications && rightItems.push(notifications(renderNotifications));
 
   const mainMenuItems: AppHeaderItem[] = [
     myHome,
@@ -239,7 +222,7 @@ export const proMobileHeaderItems = (
 
   return {
     left: leftItems,
-    right: rightItems,
+    right: [],
     mainMenu: mainMenuItems,
   };
 };
