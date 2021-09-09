@@ -10,9 +10,8 @@ import { Toast } from '../Toast/Toast';
 export type ToastProps = {
   id: string;
   name?: string;
-  description: string;
   icon?: ReactNode;
-  children?: React.ReactChild;
+  children?: ReactNode;
 };
 
 export type ToasterProps = {

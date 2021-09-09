@@ -91,6 +91,7 @@ Array [
   "TextButton",
   "TextDeprecated",
   "Toast",
+  "Toaster",
   "Toggle",
   "ToolTip",
   "Truncate",
