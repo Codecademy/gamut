@@ -6,7 +6,10 @@ import { CheckboxProps } from '../../../Form/Inputs';
 import { useFieldContext } from '../../utils';
 import { BaseConnectedInputProps } from '../types';
 
-export type ConnectedCheckboxProps = Omit<CheckboxProps, 'defaultValue'> &
+export type ConnectedCheckboxProps = Omit<
+  CheckboxProps,
+  'defaultValue' | 'name'
+> &
   BaseConnectedInputProps;
 
 export const ConnectedCheckbox: React.FC<ConnectedCheckboxProps> = ({
@@ -21,13 +24,15 @@ export const ConnectedCheckbox: React.FC<ConnectedCheckboxProps> = ({
   spacing,
   validation,
 }) => {
-  const { isDisabled } = useFieldContext(name);
+  const { isDisabled, control } = useFieldContext(name);
   const currentlyDisabled = isDisabled || disabled;
 
   return (
     <Controller
       name={name}
-      render={({ onChange, onBlur, name, value }) => (
+      control={control}
+      defaultValue={false}
+      render={({ onChange, onBlur, name, value, ref }) => (
         <Checkbox
           checked={value}
           className={className}
@@ -42,6 +47,7 @@ export const ConnectedCheckbox: React.FC<ConnectedCheckboxProps> = ({
           label={label}
           multiline={multiline}
           id={id}
+          ref={ref}
           aria-required={required}
           spacing={spacing}
         />

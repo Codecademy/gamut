@@ -1,4 +1,5 @@
 import {
+  ConnectedCheckbox,
   ConnectedFormGroup,
   FormWrapper,
   SubmitButton,
@@ -28,11 +29,24 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
     args={{ validation: 'onSubmit', resetOnSubmit: true }}
   >
     {(args) => (
-      <FormWrapper onSubmit={() => console.log('hey')}>
-        <ConnectedFormGroup name="this-field" label="hi" size="large">
-          <div /> hey
+      <FormWrapper
+        onSubmit={(values) => console.log(values)}
+        defaultValues={{ 'this-field': true }}
+      >
+        <ConnectedFormGroup
+          name="this-field"
+          label="hi"
+          size="large"
+          spacing="tight"
+        >
+          <ConnectedCheckbox
+            label="check me out"
+            name="this-field"
+            htmlFor="this-field"
+            validation={{ required: 'check it...' }}
+          />
         </ConnectedFormGroup>
-        <SubmitButton>submit!!!</SubmitButton>
+        <SubmitButton mt={8}>submit!!!</SubmitButton>
       </FormWrapper>
     )}
   </Story>

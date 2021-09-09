@@ -15,13 +15,12 @@ export const submitSuccessStatus = (
 };
 
 export const useFieldContext = (fieldName: string) => {
-  const { register, errors, setValue, formState } = useFormContext();
+  const { control, register, errors, setValue, formState } = useFormContext();
   const { disableFieldsOnSubmit, wasSubmitSuccessful } = useContext(
     FormPropsContext
   );
 
   const error = errors[fieldName]?.message;
-  console.log(errors, error);
 
   const isSubmitSuccessful = submitSuccessStatus(
     wasSubmitSuccessful,
@@ -39,6 +38,7 @@ export const useFieldContext = (fieldName: string) => {
       (formState.isSubmitting || isSubmitSuccessful) && disableFieldsOnSubmit,
     register,
     setValue,
+    control,
   };
 };
 
