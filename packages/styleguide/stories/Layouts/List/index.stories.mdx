@@ -8,6 +8,7 @@ import {
   ColumnTemplate,
   CondensedTemplate,
   DemoTemplate,
+  JustifyTemplate,
   NormalTemplate,
   ResponsiveAnatomyTemplate,
   ResponsiveTemplate,
@@ -26,7 +27,9 @@ import {
         'https://www.figma.com/file/QqN956bndK3HZ3AyFjmxNz/Code-Challenges?node-id=77%3A17795',
     },
   }}
-  args={{}}
+  args={{
+    spacing: 'condensed',
+  }}
 />
 
 ## Usage
@@ -60,7 +63,7 @@ Lists come with 2 spacing variants `normal` and `condensed`.
 
 For mixed content use the normal size to ensure that there is enough space for components
 
-<Story name="Normal - Light" args={{ variant: 'slat', spacing: 'normal' }}>
+<Story name="Spacing - Normal" args={{ variant: 'slat', spacing: 'normal' }}>
   {DemoTemplate.bind({})}
 </Story>
 
@@ -69,7 +72,7 @@ For mixed content use the normal size to ensure that there is enough space for c
 For a more compact list use the condensed spacing
 
 <Story
-  name="Condensed - Light"
+  name="Spacing - Condensed"
   args={{ variant: 'slat', spacing: 'condensed' }}
 >
   {DemoTemplate.bind({})}
@@ -117,7 +120,9 @@ For content that doesn't need to be compared or visually adjacent to other items
 
 <br />
 
-## Column Sizing
+## Columns
+
+### Sizing
 
 Column size can either be a fixed value (outline of the prop aliases `xs`, `sm` etc) or by the columns content width.
 It is recommended that you use the aliases for any content that may have variable length to ensure that column sizing is consistent between each row. For column children that are static between each row - like buttons or truncated text you can specify `content` to remove white space and still render consistently between rows.
@@ -130,22 +135,30 @@ It is recommended that you use the aliases for any content that may have variabl
 
 <br />
 
-### Size Modifiers
+### Filling Empty Space
 
 You can specify a column to expand or collapse beyond its normal flex basis. These modifiers can be used in conjunction with any size specification:
 
 - `fill`: This fills any available space and pushes all other columns to the end of the row when specified.
-- `collapse`: Whether or not to shrink the row below its current flex-basis when no other space is available. This is useful in conjunction with low priority columns that may not provide valuable information to the user at a smaller screensize or can be easily truncated.
 
-<Story name="Modifiers">{ColumnModifierTemplate.bind({})}</Story>
-
-```tsx
-<ListCol size="md" fill />
-```
+<Canvas>
+  <Story name="Modifiers">{ColumnModifierTemplate.bind({})}</Story>
+</Canvas>
 
 <br />
 
-## List Layouts
+### Justifcation
+
+You can align the content to the right of each column using the `justify` prop on `ListCol`.
+
+- Alternating between left and right justifications is not recommended, once you've switched to a right alignment any additional columns should also align to the right.
+- You may want to also specify `fill` on one of the border columns to give space to the transition or use a larger column size.
+
+<Canvas>
+  <Story name="Justification">{JustifyTemplate.bind({})}</Story>
+</Canvas>
+
+## Layouts
 
 ### Horizontal Scrolling
 
@@ -153,18 +166,16 @@ If you have a list with many columns and would like to avoid collapsing any colu
 
 <GridBox maxWidth="800px">
 
-<Story
-  name="Scrollable"
-  args={{ variant: 'slat', spacing: 'condensed', scrollable: true }}
->
-  {CondensedTemplate.bind({})}
-</Story>
+<Canvas>
+  <Story
+    name="Scrollable"
+    args={{ variant: 'slat', spacing: 'condensed', scrollable: true }}
+  >
+    {CondensedTemplate.bind({})}
+  </Story>
+</Canvas>
 
 </GridBox>
-
-```tsx
-<List scrollable />
-```
 
 <br />
 
@@ -232,6 +243,15 @@ Here's some examples of Lists to use as guides.
   <Story
     name="Condensed - Example"
     args={{ variant: 'slat', spacing: 'condensed' }}
+  >
+    {CondensedTemplate.bind({})}
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story
+    name="Dark Mode - Example"
+    args={{ variant: 'table', spacing: 'condensed', mode: 'dark' }}
   >
     {CondensedTemplate.bind({})}
   </Story>

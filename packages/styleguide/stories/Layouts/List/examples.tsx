@@ -48,7 +48,7 @@ export const DemoTemplate: React.FC = (args) => {
   );
 };
 
-export const CondensedTemplate: React.FC<ListProps> = (args, { mode }) => (
+export const CondensedTemplate: React.FC<ListProps> = ({ mode, ...args }) => (
   <ColorMode mode={mode}>
     <List {...args}>
       {rows.map(({ name, role, ship }, i, _, key = `example-row-${i}`) => (
@@ -58,12 +58,12 @@ export const CondensedTemplate: React.FC<ListProps> = (args, { mode }) => (
               {name}
             </Text>
           </ListCol>
-          <ListCol size="lg" collapse>
+          <ListCol size="lg">
             <Text variant="p-small" color="text-disabled" truncate="ellipsis">
               {role}
             </Text>
           </ListCol>
-          <ListCol size="lg" fill collapse>
+          <ListCol size="lg" fill>
             <Text variant="p-small" color="text-disabled" truncate="ellipsis">
               {ship}
             </Text>
@@ -116,7 +116,7 @@ export const NormalTemplate: React.FC<ListProps> = (args, { mode }) => (
               <Text variant="title-xs">{name}</Text>
             </FlexBox>
           </ListCol>
-          <ListCol size="md" fill collapse>
+          <ListCol size="md" fill>
             <FlexBox column>
               <Text
                 color="text-disabled"
@@ -173,9 +173,9 @@ export const NormalTemplate: React.FC<ListProps> = (args, { mode }) => (
 
 const sizes = ['content', 'sm', 'md', 'lg', 'xl'];
 
-export const ColumnTemplate = () => {
+export const ColumnTemplate: React.FC<ListProps> = (args) => {
   return (
-    <List spacing="condensed">
+    <List {...args}>
       {sizes.map((size) => (
         <ListRow>
           <ListCol size={size} fill={size === 'fill'}>
@@ -189,10 +189,15 @@ export const ColumnTemplate = () => {
   );
 };
 
-export const ColumnModifierTemplate = () => {
+export const ColumnModifierTemplate: React.FC<ListProps> = (args) => {
   return (
-    <List spacing="condensed">
+    <List {...args}>
       <ListRow>
+        <ListCol size="md">
+          <Box height={1} flex={1} p={8} bg="background-selected">
+            Medium
+          </Box>
+        </ListCol>
         <ListCol size="md" fill>
           <Box height={1} flex={1} p={8} bg="background-selected">
             Medium - Fill
@@ -203,9 +208,14 @@ export const ColumnModifierTemplate = () => {
             Medium
           </Box>
         </ListCol>
-        <ListCol size="md" collapse>
+        <ListCol size="md" fill>
           <Box height={1} flex={1} p={8} bg="background-selected">
-            Medium - Collapse
+            Medium - Fill
+          </Box>
+        </ListCol>
+        <ListCol size="md">
+          <Box height={1} flex={1} p={8} bg="background-selected">
+            Medium
           </Box>
         </ListCol>
       </ListRow>
@@ -213,9 +223,24 @@ export const ColumnModifierTemplate = () => {
   );
 };
 
-export const ResponsiveAnatomyTemplate = () => {
+export const JustifyTemplate: React.FC<ListProps> = (args) => {
   return (
-    <List spacing="condensed">
+    <List {...args}>
+      <ListRow>
+        <ListCol size="md" justify="right" fill>
+          Right
+        </ListCol>
+        <ListCol size="md" fill>
+          Left
+        </ListCol>
+      </ListRow>
+    </List>
+  );
+};
+
+export const ResponsiveAnatomyTemplate: React.FC<ListProps> = (args) => {
+  return (
+    <List {...args}>
       <ListRow>
         <ListCol type="header" size="md">
           <Box height={1} flex={1} p={8} bg="background-selected">
@@ -232,7 +257,7 @@ export const ResponsiveAnatomyTemplate = () => {
             Content
           </Box>
         </ListCol>
-        <ListCol type="control" size="md" collapse>
+        <ListCol type="control" size="md">
           <Box height={1} flex={1} p={8} bg="background-selected">
             Controls
           </Box>
@@ -242,21 +267,21 @@ export const ResponsiveAnatomyTemplate = () => {
   );
 };
 
-export const ResponsiveTemplate = () => {
+export const ResponsiveTemplate: React.FC<ListProps> = (args) => {
   return (
-    <List spacing="condensed">
+    <List {...args}>
       <ListRow>
         <ListCol size="lg" type="header">
           <Text fontWeight={700} truncate="ellipsis">
             Header
           </Text>
         </ListCol>
-        <ListCol size="lg" collapse>
+        <ListCol size="lg">
           <Text variant="p-small" color="text-disabled" truncate="ellipsis">
             Content
           </Text>
         </ListCol>
-        <ListCol size="lg" fill collapse>
+        <ListCol size="lg" fill>
           <Text variant="p-small" color="text-disabled" truncate="ellipsis">
             Content
           </Text>

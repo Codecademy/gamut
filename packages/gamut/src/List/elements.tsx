@@ -121,6 +121,19 @@ const columnType = variant({
   },
 });
 
+const columnJustify = variant({
+  prop: 'justify',
+  defaultVariant: 'left',
+  variants: {
+    left: {
+      justifyContent: { xs: 'flex-start' },
+    },
+    right: {
+      justifyContent: { xs: 'flex-end' },
+    },
+  },
+});
+
 const columnSizes = variant({
   prop: 'size',
   defaultVariant: 'content',
@@ -150,16 +163,10 @@ const columnSizes = variant({
 
 const columnStates = states({
   fill: { flexGrow: { xs: 1 } },
-  collapse: {
-    flexShrink: { xs: 1 },
-  },
   sticky: {
     position: 'sticky',
     left: 0,
     bg: 'inherit',
-  },
-  ghost: {
-    visibility: 'hidden',
   },
 });
 
@@ -187,7 +194,8 @@ const columnSpacing = variant({
 export interface ColProps
   extends StyleProps<typeof columnSizes>,
     StyleProps<typeof columnType>,
-    StyleProps<typeof columnStates> {}
+    StyleProps<typeof columnStates>,
+    StyleProps<typeof columnJustify> {}
 
 export const ColEl = styled.div<ColProps>(
   css({
@@ -195,9 +203,11 @@ export const ColEl = styled.div<ColProps>(
     alignItems: 'center',
     whiteSpace: 'nowrap',
     overflow: 'hidden',
+    position: 'relative',
   }),
   columnSpacing,
   columnSizes,
   columnType,
-  columnStates
+  columnStates,
+  columnJustify
 );
