@@ -39,7 +39,8 @@ export const AppHeaderFillButton = styled(FillButton)(focusStyles);
 export const mapItemToElement = (
   action: AppHeaderClickHandler,
   item: AppHeaderItem,
-  redirectParam?: string
+  redirectParam?: string,
+  mobile = false
 ): ReactNode => {
   switch (item.type) {
     case 'logo':
@@ -54,6 +55,7 @@ export const mapItemToElement = (
     case 'text-button':
       return (
         <AppHeaderTextButton
+          size={mobile ? 'small' : 'normal'}
           onClick={(event: React.MouseEvent) => action(event, item)}
           data-testid={item.dataTestId}
           href={
@@ -68,6 +70,7 @@ export const mapItemToElement = (
     case 'fill-button':
       return (
         <AppHeaderFillButton
+          size={mobile ? 'small' : 'normal'}
           data-testid={item.dataTestId}
           href={
             item.redirect
