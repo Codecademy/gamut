@@ -472,12 +472,6 @@ describe('GridForm', () => {
 
       const firstResult = await api.innerPromise;
 
-      expect(firstResult).toEqual(baseResults);
-
-      expect(checkboxField.checked).toEqual(false);
-      expect(selectField.value).toEqual('aaa');
-      expect(textField.value).toEqual('');
-
       await act(async () => {
         submitCount++;
         fireEvent.submit(view.getByRole('button'));
@@ -485,6 +479,7 @@ describe('GridForm', () => {
 
       const secondResult = await api2.innerPromise;
 
+      expect(firstResult).toEqual(baseResults);
       expect(secondResult).toEqual({
         [stubCheckboxField.name]: false,
         [stubSelectField.name]: 'aaa',
