@@ -21,6 +21,7 @@ export const useFieldContext = (fieldName: string) => {
   );
 
   const error = errors[fieldName]?.message;
+  console.log(errors, error);
 
   const isSubmitSuccessful = submitSuccessStatus(
     wasSubmitSuccessful,
