@@ -3,6 +3,57 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [19.24.10](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.24.9...@codecademy/gamut-labs@19.24.10) (2021-09-09)
+
+
+### Bug Fixes
+
+* **GlobalHeader:** Limit buttons on mobile header < XS to 1 and use small size GM-345 ([d74aab8](https://github.com/Codecademy/client-modules/commit/d74aab8fb9fd05813efcce5e9607700ffbcf4877))
+
+
+
+### [19.24.9](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.24.8...@codecademy/gamut-labs@19.24.9) (2021-09-08)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [19.24.8](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.24.7...@codecademy/gamut-labs@19.24.8) (2021-09-08)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [19.24.7](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.24.6...@codecademy/gamut-labs@19.24.7) (2021-09-04)
+
+
+### Bug Fixes
+
+* Revert "fix: add docs back to header and footer" ([880d9d7](https://github.com/Codecademy/client-modules/commit/880d9d74e5bcebba14834430cef4c0aa8f315724)), closes [Codecademy/client-modules#2024](https://github.com/Codecademy/client-modules/issues/2024)
+
+
+
+### [19.24.6](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.24.5...@codecademy/gamut-labs@19.24.6) (2021-09-03)
+
+
+### Bug Fixes
+
+* add docs back to header and footer ([9df3b01](https://github.com/Codecademy/client-modules/commit/9df3b016ae0c506b3f270fbd32127a3c3912f996)), closes [Codecademy/client-modules#2022](https://github.com/Codecademy/client-modules/issues/2022)
+
+
+
+### [19.24.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.24.4...@codecademy/gamut-labs@19.24.5) (2021-09-03)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
 ### [19.24.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.24.3...@codecademy/gamut-labs@19.24.4) (2021-09-03)
 
 **Note:** Version bump only for package @codecademy/gamut-labs
