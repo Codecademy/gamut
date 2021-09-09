@@ -15,25 +15,43 @@ const badgeVariants = variant({
     fontWeight: 400,
     display: 'inline-block',
     textAlign: 'center',
-    width: 'min-content',
+    width: 'max-content',
   },
   defaultVariant: 'blue',
   variants: {
     blue: {
       bg: 'blue',
-      textColor: 'white',
+      color: 'white',
     },
     yellow: {
       bg: 'feedback-warning',
-      textColor: 'navy',
+      color: 'navy',
     },
     grey: {
       bg: `navy-500`,
-      textColor: 'white',
+      color: 'white',
     },
     hyper: {
       bg: `hyper-500`,
-      textColor: 'white',
+      color: 'white',
+    },
+    'in-progress': {
+      border: 1,
+      borderColor: 'currentColor',
+      bg: 'paleBlue',
+      color: 'hyper',
+    },
+    complete: {
+      border: 1,
+      borderColor: 'currentColor',
+      bg: 'paleGreen',
+      color: 'green',
+    },
+    new: {
+      border: 1,
+      borderColor: 'currentColor',
+      bg: 'palePink',
+      color: 'pink',
     },
   },
 });

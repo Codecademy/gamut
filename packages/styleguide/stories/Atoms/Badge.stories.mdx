@@ -1,4 +1,4 @@
-import { Anchor, Badge } from '@codecademy/gamut/src';
+import { Anchor, Badge, FlexBox } from '@codecademy/gamut/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
@@ -33,8 +33,47 @@ For example, non-admin Pro users can see a badge calling out Referrals in their 
         <Anchor href="https://codecademy.com/referrals" variant="interface">
           Referrals
         </Anchor>
-        <Badge>new</Badge>
+        <Badge ml={4}>new</Badge>
       </>
     )}
   </Story>
 </Canvas>
+
+### Variants
+
+Badge variants have different meanings between applications. While they are all specified on the `variant` prop not all of them can be used together. For user facing pages please use only status variants.
+
+#### Status
+
+These variants are for denoting the status of a piece of content without displaying a progress bar or content item icon.
+
+<Canvas>
+  <Story name="Product Variants">
+    {(args) => (
+      <FlexBox gap={16}>
+        <Badge variant="new">New</Badge>
+        <Badge variant="complete">Complete</Badge>
+        <Badge variant="in-progress">In-Progress</Badge>
+      </FlexBox>
+    )}
+  </Story>
+</Canvas>
+
+#### Admin
+
+These badge variants for admin pages and should not be used on user facing views.
+
+<Canvas>
+  <Story name="Admin Variants">
+    {(args) => (
+      <FlexBox gap={16}>
+        <Badge variant="grey">Grey</Badge>
+        <Badge variant="yellow">Yellow</Badge>
+        <Badge variant="hyper">Hyper</Badge>
+        <Badge variant="blue">Blue</Badge>
+      </FlexBox>
+    )}
+  </Story>
+</Canvas>
+
+### States
