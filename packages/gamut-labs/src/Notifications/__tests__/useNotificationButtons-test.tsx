@@ -140,8 +140,6 @@ describe('useNotificationButtons', () => {
       );
     });
 
-    // hook.rerender();
-
     act(() => {
       userEvent.click(view.getByText(/Show.*Less/));
     });
