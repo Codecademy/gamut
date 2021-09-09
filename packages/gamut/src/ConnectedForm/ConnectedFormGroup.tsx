@@ -2,8 +2,15 @@ import { css } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React from 'react';
 
+import {
+  FormError,
+  FormGroup,
+  FormGroupLabel,
+  FormGroupLabelProps,
+  FormGroupProps,
+} from '..';
 import { Anchor } from '../Anchor';
-import { FormError, FormGroup, FormGroupLabel } from '../Form';
+import {} from '../Form';
 import { HiddenText } from '../HiddenText';
 import { Markdown } from '../Markdown';
 import { useFieldContext } from './utils';
@@ -14,18 +21,17 @@ const ErrorAnchor = styled(Anchor)(
   })
 );
 
-export type ConnectedFormGroupProps = {
-  customError?: string;
-  disabled?: boolean;
-  hideLabel?: boolean;
-  id?: string;
-  label: React.ReactNode;
-  name: string;
-  required?: boolean;
-  showRequired?: boolean;
-  spacing?: 'base' | 'tight';
-  tooltip?: any;
-};
+export type ConnectedFormGroupProps = Omit<FormGroupProps, 'label'> &
+  Pick<FormGroupLabelProps, 'size'> & {
+    customError?: string;
+    hideLabel?: boolean;
+    label: React.ReactNode;
+    name: string;
+    required?: boolean;
+    showRequired?: boolean;
+    spacing?: 'base' | 'tight';
+    tooltip?: any;
+  };
 
 export const ConnectedFormGroup: React.FC<ConnectedFormGroupProps> = ({
   children,
@@ -37,8 +43,10 @@ export const ConnectedFormGroup: React.FC<ConnectedFormGroupProps> = ({
   name,
   required,
   showRequired,
+  size,
   spacing,
   tooltip,
+  ...rest
 }) => {
   const { error, isFirstError, isDisabled } = useFieldContext(name);
   const currentlyDisabled = isDisabled || disabled;
@@ -49,6 +57,7 @@ export const ConnectedFormGroup: React.FC<ConnectedFormGroupProps> = ({
       htmlFor={id || name}
       tooltip={tooltip}
       showRequired={showRequired && required}
+      size={size}
     >
       {label}
     </FormGroupLabel>
