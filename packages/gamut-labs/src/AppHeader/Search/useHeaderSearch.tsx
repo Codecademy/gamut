@@ -1,8 +1,7 @@
-import { IconButton } from '@codecademy/gamut';
 import { SearchIcon } from '@codecademy/gamut-icons';
-import styled from '@emotion/styled';
 import React, { useState } from 'react';
 
+import { AnimatedHeaderZone, HeaderIconButton } from '../shared';
 import { SearchPane } from './SearchPane';
 
 export type AppHeaderSearch = {
@@ -10,12 +9,6 @@ export type AppHeaderSearch = {
   onSearch: (query: string) => void;
   onTrackingClick: (target: string) => void;
 };
-
-const StyledIconButton = styled(IconButton)`
-  &:hover {
-    background: none;
-  }
-`;
 
 export const useHeaderSearch = ({
   onEnable,
@@ -25,7 +18,7 @@ export const useHeaderSearch = ({
   const [isSearchVisible, setIsSearchVisible] = useState(false);
 
   const toggleSearch = () => {
-    if (isSearchVisible) {
+    if (!isSearchVisible) {
       onEnable();
     }
 
@@ -37,7 +30,7 @@ export const useHeaderSearch = ({
       id: 'search',
       type: 'render-element',
       renderElement: () => (
-        <StyledIconButton
+        <HeaderIconButton
           aria-label="Search Codecademy Content"
           data-testid="header-search"
           onClick={toggleSearch}
@@ -45,11 +38,12 @@ export const useHeaderSearch = ({
         />
       ),
     },
-    <SearchPane
-      isSearchVisible={isSearchVisible}
-      onSearch={onSearch}
-      onTrackingClick={onTrackingClick}
-      toggleSearch={toggleSearch}
-    />,
+    <AnimatedHeaderZone visible={isSearchVisible}>
+      <SearchPane
+        onSearch={onSearch}
+        onTrackingClick={onTrackingClick}
+        toggleSearch={toggleSearch}
+      />
+    </AnimatedHeaderZone>,
   ] as const;
 };

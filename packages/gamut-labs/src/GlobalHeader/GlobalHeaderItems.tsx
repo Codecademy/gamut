@@ -146,16 +146,6 @@ export const forBusiness: AppHeaderLinkItem = {
   type: 'link',
 };
 
-export const notifications = (
-  renderNotifications: () => ReactNode
-): AppHeaderRenderElementItem => {
-  return {
-    id: 'notifications',
-    renderElement: renderNotifications,
-    type: 'render-element',
-  };
-};
-
 /**
  * Note: this is currently experimental!
  * This will be cleaned up as part of EGG-1644.
