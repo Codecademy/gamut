@@ -76,16 +76,29 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
     setMobileMenuOpen(true);
   };
 
-  const mapItemsToElement = <T extends AppHeaderItem[]>(items: T) => {
-    return items.map((item, index) => (
-      <Box
-        key={item.id}
-        ml={index === 0 ? 0 : 4}
-        mr={index === items.length - 1 ? 0 : 4}
-      >
-        {mapItemToElement(action, item, redirectParam)}
-      </Box>
-    ));
+  const mapItemsToElement = <T extends AppHeaderItem[]>(
+    items: T,
+    hideExtraItems?: boolean
+  ) => {
+    const shouldHideItems = hideExtraItems === true && items.length > 1;
+    return items.map((item, index) => {
+      const isFirstItem = index === 0;
+      const isLastItem = index + 1 === items.length;
+      const isHidable = !isLastItem && shouldHideItems;
+      return (
+        <Box
+          key={item.id}
+          ml={isFirstItem ? 0 : 4}
+          mr={isLastItem ? 0 : 4}
+          display={{
+            _: isHidable ? 'none' : 'block',
+            xs: 'block',
+          }}
+        >
+          {mapItemToElement(action, item, redirectParam, true)}
+        </Box>
+      );
+    });
   };
 
   return (
@@ -97,10 +110,13 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
               {mapItemsToElement(items.left)}
             </AppBarSection>
             <AppBarSection position="right">
-              {mapItemsToElement([
-                ...(notificationsBell ? [notificationsBell] : []),
-                ...items.right,
-              ])}
+              {mapItemsToElement(
+                [
+                  ...(notificationsBell ? [notificationsBell] : []),
+                  ...items.right,
+                ],
+                true
+              )}
               <FlexBox ml={24}>
                 <IconButton
                   type="button"

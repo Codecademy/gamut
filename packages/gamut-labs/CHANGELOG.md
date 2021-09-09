@@ -3,6 +3,39 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [19.24.11](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.24.10...@codecademy/gamut-labs@19.24.11) (2021-09-09)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [19.24.10](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.24.9...@codecademy/gamut-labs@19.24.10) (2021-09-09)
+
+
+### Bug Fixes
+
+* **GlobalHeader:** Limit buttons on mobile header < XS to 1 and use small size GM-345 ([d74aab8](https://github.com/Codecademy/client-modules/commit/d74aab8fb9fd05813efcce5e9607700ffbcf4877))
+
+
+
+### [19.24.9](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.24.8...@codecademy/gamut-labs@19.24.9) (2021-09-08)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [19.24.8](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.24.7...@codecademy/gamut-labs@19.24.8) (2021-09-08)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
 ### [19.24.7](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.24.6...@codecademy/gamut-labs@19.24.7) (2021-09-04)
 
 

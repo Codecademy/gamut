@@ -5,7 +5,6 @@ export * from './AvatarChooser';
 export * from './CurriculumCard';
 export * from './Byline';
 export * from './EditorialImage';
-export * from './EditorialQuote';
 export * from './ErrorContents';
 export * from './Flyout';
 export * from './Header/HeaderContainer';
