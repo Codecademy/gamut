@@ -1,14 +1,4 @@
-import {
-  get,
-  identity,
-  isArray,
-  isFunction,
-  isNumber,
-  isObject,
-  isString,
-  isUndefined,
-  merge,
-} from 'lodash';
+import { get, identity, isArray, isObject, isUndefined, merge } from 'lodash';
 
 import { createScaleLookup } from './scales/createScaleLookup';
 import {
@@ -63,6 +53,7 @@ export const variance = {
         switch (typeof value) {
           case 'string':
           case 'number':
+          case 'function':
             return Object.assign(styles, property.styleFn(value, prop, props));
           // handle any props configured with the responsive notation
           case 'object':
@@ -111,38 +102,50 @@ export const variance = {
       prop,
       styleFn: (value, prop, props) => {
         const styles: CSSObject = {};
+
         if (isUndefined(value)) {
           return styles;
         }
 
         let useTransform = false;
-        let usedValue: string | number;
-        let scaleVal: string | number | undefined;
+        let intermediateValue: string | number | undefined;
+        let scaleValue: string | number | undefined;
 
-        if (isString(value) || isNumber(value)) {
-          scaleVal = getScaleValue(value, props);
-          useTransform = scaleVal !== undefined || alwaysTransform;
-          usedValue = scaleVal ?? value;
-        }
-
-        if (isFunction(value)) {
-          usedValue = value(props.theme);
+        switch (typeof value) {
+          case 'number':
+          case 'string':
+            scaleValue = getScaleValue(value, props);
+            useTransform = scaleValue !== undefined || alwaysTransform;
+            intermediateValue = scaleValue ?? value;
+            break;
+          case 'function':
+            if (props.theme) {
+              intermediateValue = value(props.theme) as
+                | string
+                | number
+                | undefined;
+            }
+            break;
+          default:
+            return styles;
         }
 
         // for each property look up the scale value from theme if passed and apply any
         // final transforms to the value
         properties.forEach((property) => {
-          let styleValue: ReturnType<typeof transform> = usedValue;
+          let styleValue: ReturnType<typeof transform> = intermediateValue;
 
-          if (useTransform) {
+          if (useTransform && !isUndefined(styleValue)) {
             styleValue = transform(styleValue, property, props);
           }
-
-          if (isObject(styleValue)) {
-            return Object.assign(styles, styleValue);
+          switch (typeof styleValue) {
+            case 'number':
+            case 'string':
+              return (styles[property] = styleValue);
+            case 'object':
+              return Object.assign(styles, styleValue);
+            default:
           }
-
-          styles[property] = styleValue;
         });
         // return the resulting styles object
         return styles;

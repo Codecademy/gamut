@@ -2,27 +2,25 @@ import React from 'react';
 import { UseFormMethods } from 'react-hook-form';
 
 import { Input } from '../../../Form';
-import { GridFormFileField } from '../../types';
+import { BaseFormInputProps, GridFormFileField } from '../../types';
 
-export type GridFormFileInputProps = {
-  className?: string;
-  error?: boolean;
-  showRequired?: boolean;
+export interface GridFormFileInputProps extends BaseFormInputProps {
   field: Omit<GridFormFileField, 'label'>;
   register: UseFormMethods['register'];
-};
+}
 
 export const GridFormFileInput: React.FC<GridFormFileInputProps> = ({
   className,
+  disabled,
   error,
   field,
   register,
-  showRequired,
+  required,
 }) => {
   return (
     <Input
       className={className}
-      disabled={field.disabled}
+      disabled={disabled}
       error={error}
       htmlFor={field.name}
       name={field.name}
@@ -31,7 +29,7 @@ export const GridFormFileInput: React.FC<GridFormFileInputProps> = ({
       type="file"
       id={field.id}
       aria-invalid={error}
-      aria-required={showRequired}
+      aria-required={required}
     />
   );
 };

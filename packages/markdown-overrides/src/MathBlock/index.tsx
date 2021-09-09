@@ -20,7 +20,7 @@ const getKatex = (children: string) => {
       displayMode: true,
     });
   } catch (error) {
-    return error.message;
+    return error instanceof Error ? error.message : 'Error';
   }
 };
 

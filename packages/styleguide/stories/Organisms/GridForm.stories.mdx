@@ -907,6 +907,87 @@ When using the left-aligned layout, please note that the `title` takes up 3 colu
   </Story>
 </Canvas>
 
+### Section Break Type
+
+You can set the `breakType` prop to adjust the type of separation between each section.
+
+The following values can be passed to `breakType`:
+
+- `none`: no border
+- `default`: 1px solid border that matches color of `text`
+
+<Canvas>
+  <Story name="Section Breaks">
+    {(args) => {
+      return (
+        <GridForm
+          breakType="none"
+          fields={[
+            {
+              title: 'first section',
+              layout: 'left',
+              variant: 'title-xs',
+              fields: [
+                {
+                  label: 'hi?',
+                  name: 'text01-left-section',
+                  size: 4,
+                  type: 'text',
+                  validation: {
+                    required: true,
+                  },
+                },
+                {
+                  label: 'hello?',
+                  name: 'text02-left-section',
+                  size: 4,
+                  type: 'text',
+                  validation: {
+                    required: true,
+                  },
+                },
+                {
+                  label: 'Write a paragraph.',
+                  name: 'paragraph01-left-section',
+                  size: 8,
+                  type: 'textarea',
+                  validation: {
+                    required: 'Please write something about penguins!',
+                  },
+                },
+              ],
+            },
+            {
+              title: 'hi there... again',
+              as: 'h3',
+              fields: [
+                {
+                  label: 'hello....',
+                  name: 'text01-center-section',
+                  size: 5,
+                  type: 'text',
+                  validation: {
+                    required: true,
+                  },
+                },
+              ],
+            },
+          ]}
+          sectionGap={48}
+          onSubmit={async (values) => {
+            action('Form Submitted')(values);
+          }}
+          submit={{
+            contents: 'Submit me',
+            size: 12,
+          }}
+          validation="onSubmit"
+        />
+      );
+    }}
+  </Story>
+</Canvas>
+
 ## Custom Error
 
 A field can take a custom error in addition to validation errors. The validation error will always take precedence to the custom error.
@@ -1119,7 +1200,7 @@ If you need to checkboxes to fit into a smaller space, you can use our our `tigh
               {
                 label: 'Email',
                 placeholder: 'Your email',
-                name: 'placeholder',
+                name: 'loading-beige',
                 type: 'email',
               },
             ]}
@@ -1138,7 +1219,7 @@ If you need to checkboxes to fit into a smaller space, you can use our our `tigh
               {
                 label: 'Email',
                 placeholder: 'Your email',
-                name: 'placeholder-2',
+                name: 'loading-navy',
                 type: 'email',
               },
             ]}
@@ -1148,6 +1229,94 @@ If you need to checkboxes to fit into a smaller space, you can use our our `tigh
             submit={{
               disabled: true,
               contents: 'Submit Me!?',
+            }}
+          />
+        </Background>
+      </>
+    )}
+  </Story>
+</Canvas>
+
+## Disabled Fields on Submit
+
+`disableFieldsOnSubmit` will disable all form fields once the form has been successfully submitted. If you have any server-side validation that needs to happen, we reccommend using the `wasSubmitSuccessful` prop, but submission will also fail if a promise is rejected within your `onSubmit` or if a field does not pass validation.
+
+<Canvas>
+  <Story name="Disabled Fields on Submit">
+    {(args) => (
+      <>
+        <Background bg="palePink" p={32}>
+          <GridForm
+            disableFieldsOnSubmit
+            fields={[
+              {
+                label: 'Email',
+                placeholder: 'i will disable on correct submission!',
+                name: 'disabled-fields-on-submit',
+                type: 'email',
+                validation: {
+                  required: 'pls fill this out',
+                  pattern: {
+                    value: /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,})+$/,
+                    message: 'that is not an email 😔',
+                  },
+                },
+              },
+            ]}
+            onSubmit={async (values) => {
+              action('Form Submitted')(values);
+            }}
+            submit={{
+              contents: 'Submit Me 💖',
+            }}
+          />
+        </Background>
+        <Background bg="black" p={32}>
+          <GridForm
+            disableFieldsOnSubmit
+            wasSubmitSuccessful={false}
+            fields={[
+              {
+                label: 'Email',
+                placeholder: 'i will NEVER disable.',
+                name: 'disabled-fields-on-submit-ii',
+                type: 'email',
+                validation: {
+                  required: 'pls fill this out',
+                },
+              },
+            ]}
+            onSubmit={async (values) => {
+              action('Form Submitted')(values);
+            }}
+            submit={{
+              contents: 'Submit Me 😈',
+            }}
+          />
+        </Background>
+        <Background bg="paleBlue" p={32}>
+          <GridForm
+            disableFieldsOnSubmit
+            fields={[
+              {
+                label: 'Email',
+                placeholder: 'i will also never disable...',
+                name: 'disabled-fields-on-submit-iii',
+                type: 'email',
+                validation: {
+                  required: 'pls fill this out',
+                  validate: {
+                    checkValue: () =>
+                      false || "It's never gonna work out between us",
+                  },
+                },
+              },
+            ]}
+            onSubmit={async (values) => {
+              action('Form Submitted')(values);
+            }}
+            submit={{
+              contents: 'Submit Me 🤷🏻',
             }}
           />
         </Background>
