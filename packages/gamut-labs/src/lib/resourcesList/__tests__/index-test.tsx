@@ -1,6 +1,6 @@
 import { footerResourcesList, headerResourcesList } from '../index';
 
-const resourcesCount = 4;
+const resourcesCount = 5;
 
 describe('Resources List', () => {
   it('returns all the footer items', () => {
