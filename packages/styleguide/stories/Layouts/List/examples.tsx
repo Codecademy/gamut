@@ -89,7 +89,7 @@ export const CondensedTemplate: React.FC<ListProps> = (args, { mode }) => (
           <ListCol>
             <FillButton size="small">Engage</FillButton>
           </ListCol>
-          <ListCol type="action">
+          <ListCol type="control">
             <IconButton icon={MiniKebabMenuIcon} size="small" />
             <IconButton icon={MiniDeleteIcon} size="small" />
           </ListCol>
@@ -161,7 +161,7 @@ export const NormalTemplate: React.FC<ListProps> = (args, { mode }) => (
               66%
             </Text>
           </ListCol>
-          <ListCol size="lg" type="action">
+          <ListCol size="lg" type="control">
             <TextButton mr={16}>Hail</TextButton>
             <FillButton>Engage</FillButton>
           </ListCol>
@@ -232,7 +232,7 @@ export const ResponsiveAnatomyTemplate = () => {
             Content
           </Box>
         </ListCol>
-        <ListCol type="action" size="md" collapse>
+        <ListCol type="control" size="md" collapse>
           <Box height={1} flex={1} p={8} bg="background-selected">
             Controls
           </Box>
@@ -261,7 +261,7 @@ export const ResponsiveTemplate = () => {
             Content
           </Text>
         </ListCol>
-        <ListCol type="action">
+        <ListCol type="control">
           <IconButton icon={MiniKebabMenuIcon} size="small" />
           <IconButton icon={MiniDeleteIcon} size="small" />
         </ListCol>

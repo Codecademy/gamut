@@ -8,7 +8,7 @@ import { AllListProps } from './types';
 export interface ListProps
   extends AllListProps<ComponentProps<typeof ListEl>> {}
 
-export const List = forwardRef<HTMLDivElement, ListProps>(
+export const List = forwardRef<HTMLUListElement, ListProps>(
   (
     { variant = 'slat', spacing = 'normal', scrollable = false, children },
     ref

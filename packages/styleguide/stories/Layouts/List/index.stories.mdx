@@ -52,12 +52,16 @@ import { List, ListRow, ListCol } from '@codecademy/gamut';
 
 Lists come with 2 spacing variants `normal` and `condensed`.
 
+```tsx
+<List spacing="condensed" />
+```
+
 ### Normal
 
 For mixed content use the normal size to ensure that there is enough space for components
 
 <Story name="Normal - Light" args={{ variant: 'slat', spacing: 'normal' }}>
-  {NormalTemplate.bind({})}
+  {DemoTemplate.bind({})}
 </Story>
 
 ### Condensed
@@ -68,7 +72,7 @@ For a more compact list use the condensed spacing
   name="Condensed - Light"
   args={{ variant: 'slat', spacing: 'condensed' }}
 >
-  {CondensedTemplate.bind({})}
+  {DemoTemplate.bind({})}
 </Story>
 
 ## Variants
@@ -79,12 +83,16 @@ Lists have several style variants for different use cases:
 - `slat`: Bordered rows for mixed content with no vertical gutter.
 - `bar`: Bordered rows with a vertical gutter.
 
+```tsx
+<List variant="slat" />
+```
+
 ### Table
 
 For a table like view for content that has more metrics or actionable data use the `table` variant.
 
 <Story name="Table" args={{ variant: 'table', spacing: 'condensed' }}>
-  {CondensedTemplate.bind({})}
+  {DemoTemplate.bind({})}
 </Story>
 
 <br />
@@ -94,7 +102,7 @@ For a table like view for content that has more metrics or actionable data use t
 For displaying things with more abstract row contents (like buttons or custom rendered components) use the `slat` variant. This structure denotes borders between rows and separates interactive elements with more clarity than tables.
 
 <Story name="Slat" args={{ variant: 'slat', spacing: 'condensed' }}>
-  {CondensedTemplate.bind({})}
+  {DemoTemplate.bind({})}
 </Story>
 
 <br />
@@ -104,7 +112,7 @@ For displaying things with more abstract row contents (like buttons or custom re
 For content that doesn't need to be compared or visually adjacent to other items in a list (like current curriculum progress) use the `bar` variant.
 
 <Story name="Bar" args={{ variant: 'bar', spacing: 'condensed' }}>
-  {CondensedTemplate.bind({})}
+  {DemoTemplate.bind({})}
 </Story>
 
 <br />
@@ -115,6 +123,10 @@ Column size can either be a fixed value (outline of the prop aliases `xs`, `sm` 
 It is recommended that you use the aliases for any content that may have variable length to ensure that column sizing is consistent between each row. For column children that are static between each row - like buttons or truncated text you can specify `content` to remove white space and still render consistently between rows.
 
 <Story name="Sizes">{ColumnTemplate.bind({})}</Story>
+
+```tsx
+<ListCol size="md" />
+```
 
 <br />
 
@@ -127,9 +139,15 @@ You can specify a column to expand or collapse beyond its normal flex basis. The
 
 <Story name="Modifiers">{ColumnModifierTemplate.bind({})}</Story>
 
+```tsx
+<ListCol size="md" fill />
+```
+
 <br />
 
-## Scrolling
+## List Layouts
+
+### Horizontal Scrolling
 
 If you have a list with many columns and would like to avoid collapsing any columns information you can use the `scrollable` prop which will lock the row header to the left hand side and expand all columns to the their minimum flex-basis. All rows and columns scroll along the X axis in tandem to ensure that you may compare data or take multiple actions between each row.
 
@@ -144,6 +162,10 @@ If you have a list with many columns and would like to avoid collapsing any colu
 
 </GridBox>
 
+```tsx
+<List scrollable />
+```
+
 <br />
 
 ### Responsive
@@ -151,7 +173,7 @@ If you have a list with many columns and would like to avoid collapsing any colu
 List rows will switch to a mobile layout at screen widths less than smallest breakpoint (480px). This layout is built for smaller screens and is restructured to a card like structure. There is no extra configuration needed for this to take effect pending you've configured a few named column types:
 
 - `header`: The column of the row with any critical indifying information goes at the top of the view.
-- `action`: A column for buttons or other interactive elements. Typically these may be icon buttons with expandable menus with more options for controlling anything represented in the row.
+- `control`: A column for buttons or other interactive elements. Typically these may be icon buttons with expandable menus with more options for controlling anything represented in the row.
 - `content`: All other columns in the row are treated as content and will render in order they were specified.
 
 <GridBox gridTemplateColumns="repeat(2, minmax(0, 479px))" gap={64}>
@@ -181,6 +203,39 @@ List rows will switch to a mobile layout at screen widths less than smallest bre
 </GridBox>
 
 <br />
+
+### Example Configuration
+
+```tsx
+<List>
+  <ListRow>
+    <ListCol type="header">Header</ListCol>
+    <ListCol>Content</ListCol>
+    <ListCol type="control">
+      <IconButton />
+    </ListCol>
+  </ListRow>
+</List>
+```
+
+## Examples
+
+Here's some examples of Lists to use as guides.
+
+<Canvas>
+  <Story name="Normal - Example" args={{ variant: 'slat', spacing: 'normal' }}>
+    {NormalTemplate.bind({})}
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story
+    name="Condensed - Example"
+    args={{ variant: 'slat', spacing: 'condensed' }}
+  >
+    {CondensedTemplate.bind({})}
+  </Story>
+</Canvas>
 
 ## Code Playground
 

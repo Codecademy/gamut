@@ -6,6 +6,8 @@ const listVariants = variant({
   prop: 'variant',
   defaultVariant: 'slat',
   base: {
+    listStyleType: 'none',
+    p: 0,
     display: 'grid',
     gridAutoRows: '1fr',
     gridTemplateColumns: 'minmax(0, 1fr)',
@@ -34,7 +36,7 @@ export interface ListProps
   extends StyleProps<typeof listStates>,
     StyleProps<typeof listVariants> {}
 
-export const ListEl = styled.div<ListProps>(listVariants, listStates);
+export const ListEl = styled.ul<ListProps>(listVariants, listStates);
 
 const rowStates = states({
   scrollable: {
@@ -50,6 +52,7 @@ const spacingVariants = variant({
       gap: { _: 8, xs: 16 },
     },
     condensed: {
+      fontSize: 14,
       gap: 8,
     },
   },
@@ -90,7 +93,7 @@ export interface RowProps
   extends StyleProps<typeof rowVariants>,
     StyleProps<typeof spacingVariants> {}
 
-export const RowEl = styled.div<RowProps>(
+export const RowEl = styled.li<RowProps>(
   rowVariants,
   spacingVariants,
   rowStates
@@ -106,7 +109,7 @@ const columnType = variant({
     content: {
       gridColumnEnd: 'span 2',
     },
-    action: {
+    control: {
       minWidth: 'min-content',
       alignItems: {
         _: 'flex-start',
