@@ -18,7 +18,8 @@ import {
   title={title}
   component={List}
   parameters={{
-    subtitle: 'Presentational components for creating rows with mixed content',
+    subtitle:
+      'Presentational components for creating structured lists / tables with mixed content.',
     source: 'gamut',
     status: 'current',
     design: {
@@ -31,6 +32,12 @@ import {
     spacing: 'condensed',
   }}
 />
+
+Lists are one of the main design tools for displaying information in a structured / repeated way which are visually distinct from cards and functionally distinct from tables.
+
+- Lists can function like tables, but aren't exclusively for displaying table data.
+- Lists are distinct from Tables in that they have mixed column content (interactive elements / metrics) whereas tables have only metrics. If you plan on having row controls or options in your table, use a List.
+- When presenting repetitive content prefer using a List view over a Card view.
 
 ## Usage
 
@@ -193,7 +200,7 @@ List rows will switch to a mobile layout at screen widths less than smallest bre
   <Story
     name="Responsive Layout - Anatomy"
     parameters={{
-      docs: { inlineStories: false, iframeHeight: 160 },
+      docs: { inlineStories: false, iframeHeight: 180 },
     }}
   >
     {ResponsiveAnatomyTemplate.bind({})}
@@ -204,7 +211,7 @@ List rows will switch to a mobile layout at screen widths less than smallest bre
   <Story
     name="Responsive Layout - Content"
     parameters={{
-      docs: { inlineStories: false, iframeHeight: 160 },
+      docs: { inlineStories: false, iframeHeight: 180 },
     }}
   >
     {ResponsiveTemplate.bind({})}
