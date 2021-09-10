@@ -19,7 +19,7 @@ const targetRefObj = {
         width: 783,
         x: 57,
         y: 260,
-        toJSON: () => {},
+        toJSON: jest.fn(),
       };
     },
   },
@@ -117,7 +117,7 @@ describe('Popover', () => {
             width: 783,
             x: 41,
             y: -1,
-            toJSON: () => {},
+            toJSON: jest.fn(),
           };
         },
       },
@@ -145,7 +145,7 @@ describe('Popover', () => {
             width: 783,
             x: 41,
             y: 1,
-            toJSON: () => {},
+            toJSON: jest.fn(),
           };
         },
       },

@@ -37,7 +37,7 @@ import { LinkTo, PropsTable } from '~styleguide/blocks';
 FloatingCards can optionally display a beak. This is used to indicate a point of interest to the user - that the content of the card describes. Beaks are primarily used in `Coachmarks`.
 
 <Story name="Beaks">
-  {(args) => (
+  {() => (
     <GridBox gridAutoFlow="column" columnGap={24} py={16}>
       {['bottom-left', 'bottom-right', 'top-left', 'top-right'].map((beak) => (
         <FloatingCard beak={beak}>{beak}</FloatingCard>
@@ -54,7 +54,7 @@ There are 2 types of shadow directions. By default, FloatingCards is set with a 
 
 <Canvas>
   <Story name="FloatingCard Shadow">
-    {(args) => (
+    {() => (
       <GridBox gridAutoFlow="column" columnGap={24} py={16}>
         {['bottomLeft', 'bottomRight'].map((shadow) => (
           <FloatingCard shadow={shadow}>{shadow}</FloatingCard>

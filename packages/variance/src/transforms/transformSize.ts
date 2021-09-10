@@ -21,7 +21,7 @@ export const transformSize = (value: string | number) => {
     return value;
   }
 
-  const [match, number, unit] = value.match(valueWithUnit) || [];
+  const [match, number, unit] = valueWithUnit.exec(value) || [];
 
   if (match === undefined) {
     return value;

@@ -8,7 +8,7 @@ import { ModalDeprecated, ModalDeprecatedProps } from '..';
 const renderModal = (props?: Partial<ModalDeprecatedProps>) => {
   return render(
     <ThemeProvider theme={theme}>
-      <ModalDeprecated isOpen onRequestClose={() => {}} {...props}>
+      <ModalDeprecated isOpen onRequestClose={jest.fn()} {...props}>
         <div data-testid="modal-content">{props?.children}</div>
       </ModalDeprecated>
     </ThemeProvider>

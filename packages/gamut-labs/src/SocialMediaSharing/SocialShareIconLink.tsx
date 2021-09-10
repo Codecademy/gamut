@@ -31,8 +31,8 @@ export const SocialShareIconLink: React.FC<SocialShareIconLinkProps> = ({
     e.preventDefault();
     onClick?.(e);
     const popupSize = 570;
-    const left = (screen.width - popupSize) / 2;
-    const top = (screen.height - popupSize) / 2;
+    const left = (window.screen.width - popupSize) / 2;
+    const top = (window.screen.height - popupSize) / 2;
     const features = `menubar=no,toolbar=no,status=no,width=${popupSize},height=${popupSize},top=${top},left=${left}`;
     window.open(href, '_blank', features)?.focus();
   };
