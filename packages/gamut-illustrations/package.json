@@ -8,6 +8,9 @@
     "classnames": "^2.2.5"
   },
   "description": "Illustrations library for Codecademy",
+  "devDependencies": {
+    "@testing-library/react": "^11.0.4"
+  },
   "homepage": "https://github.com/Codecademy/client-modules#readme",
   "name": "@codecademy/gamut-illustrations",
   "module": "./dist/index.js",

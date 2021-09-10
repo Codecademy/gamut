@@ -3,7 +3,7 @@ import { setupRtl } from '@codecademy/gamut-tests';
 import { Konamimojisplosion } from '..';
 
 jest.mock('../useKonamimojisplosion', () => ({
-  useKonamimojisplosion: () => {},
+  useKonamimojisplosion: jest.fn(),
 }));
 
 const renderView = setupRtl(Konamimojisplosion);

@@ -187,14 +187,14 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
         };
       },
 
-      dropdownIndicator: (provided, state) => ({
+      dropdownIndicator: () => ({
         color: 'currentColor',
         display: 'flex',
         padding: '0',
         pointerEvents: 'none',
       }),
 
-      input: (provided, state) => ({
+      input: () => ({
         ...textColor({ theme }),
         padding: '0',
         margin: '0',
@@ -217,7 +217,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
         };
       },
 
-      placeholder: (provided, state) => ({
+      placeholder: (provided) => ({
         ...provided,
         ...placeholderColor({ theme }),
       }),
@@ -228,7 +228,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
         ...optionBackground(state.isSelected, state.isFocused)({ theme }),
       }),
 
-      singleValue: (provided, state) => ({
+      singleValue: () => ({
         ...textColor({ theme }),
         display: 'flex',
       }),

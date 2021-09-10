@@ -16,6 +16,9 @@ export const submitSuccessStatus = (
 };
 
 export const useFieldContext = (field: GridFormField) => {
+  // This is fixed in a later react-hook-form version:
+  // https://github.com/react-hook-form/react-hook-form/issues/2887
+  // eslint-disable-next-line @typescript-eslint/unbound-method
   const { register, errors, setValue, formState } = useFormContext();
   const { disableFieldsOnSubmit, wasSubmitSuccessful } = useContext(
     FormPropsContext

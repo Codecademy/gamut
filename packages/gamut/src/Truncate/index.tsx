@@ -19,12 +19,12 @@ export const Truncate: React.FC<TruncateProps> = ({
   children,
   lines,
   expanded,
-  onTruncate = () => {},
+  onTruncate,
 }) => {
   const [isTruncated, setIsTruncated] = useState(false);
 
   useEffect(() => {
-    onTruncate(isTruncated);
+    onTruncate?.(isTruncated);
   }, [isTruncated, onTruncate]);
 
   /** If lines is false do not attempt to truncate */
