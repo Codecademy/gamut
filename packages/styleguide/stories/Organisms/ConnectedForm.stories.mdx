@@ -1,0 +1,43 @@
+import {
+  ConnectedFormGroup,
+  FormWrapper,
+  SubmitButton,
+} from '@codecademy/gamut';
+import title from '@codecademy/macros/lib/title.macro';
+import { PropsTable } from '@codecademy/storybook-addon-variance';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+
+<Meta
+  title={title}
+  component={FormWrapper}
+  parameters={{
+    subtitle: 'The special sauce to creating modular forms',
+    source: 'gamut',
+    status: 'current',
+    design: {
+      type: 'figma',
+      url:
+        'https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=1189%3A0',
+    },
+  }}
+/>
+
+<Canvas>
+  <Story
+    name="FormWrapper"
+    args={{ validation: 'onSubmit', resetOnSubmit: true }}
+  >
+    {(args) => (
+      <FormWrapper onSubmit={() => console.log('hey')}>
+        <ConnectedFormGroup name="this-field" label="hi" size="large">
+          <div /> hey
+        </ConnectedFormGroup>
+        <SubmitButton>submit!!!</SubmitButton>
+      </FormWrapper>
+    )}
+  </Story>
+</Canvas>
+
+<PropsTable of={FormWrapper} />
+
+### Inputs

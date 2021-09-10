@@ -101,7 +101,7 @@ export function GridForm<Values extends FormValues>({
   );
 
   const defaultValues = flatFields.reduce<any>(
-    // since our checkbox is  a controlled input, it needs to be provided with a default value in order to reset correctly.
+    // since our checkbox is a controlled input, it needs to be provided with a default value in order to reset correctly.
     (defaultValues, field) => ({
       ...defaultValues,
       [field.name]:
