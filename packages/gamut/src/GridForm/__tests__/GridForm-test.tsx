@@ -473,7 +473,7 @@ describe('GridForm', () => {
       const firstResult = await api.innerPromise;
 
       await act(async () => {
-        submitCount++;
+        submitCount += 1;
         fireEvent.submit(view.getByRole('button'));
       });
 

@@ -321,7 +321,7 @@ export const FormLoadingExample = () => {
   const onSubmit = async () => {
     setLoading(true);
     await wait(2000);
-    await setLoading(false);
+    setLoading(false);
   };
 
   return (
