@@ -8,7 +8,7 @@ import { Box } from '../Box';
 import { FadeInSlideOut } from '../Motion/FadeInSlideOut';
 import { Toast } from '../Toast/Toast';
 
-interface ToasterItem extends ToastProps {
+interface ToasterItem extends Omit<ToastProps, 'onClose'> {
   id: string;
   children?: ReactNode;
 }

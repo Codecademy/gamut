@@ -4,6 +4,7 @@ const { intersection } = require('lodash');
 const DEFAULT_STORIES_GLOB = '../stories/**/*.stories.@(mdx|tsx)';
 const EXCLUDED_STORIES = [
   'Truncate',
+  'Toaster',
   'Popover',
   'Coachmark',
   'ModalDeprecated',

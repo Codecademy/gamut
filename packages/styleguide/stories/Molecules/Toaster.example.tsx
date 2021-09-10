@@ -32,7 +32,9 @@ export const ToasterExample: React.FC = () => {
   };
 
   const addToasts = () => {
-    setToasts(exampleToasts);
+    if (!toasts.length) {
+      setToasts(exampleToasts);
+    }
   };
 
   const removeOne = (id: string) => {
@@ -45,7 +47,7 @@ export const ToasterExample: React.FC = () => {
     <>
       <GridBox width={300}>
         <FillButton onClick={removeToasts} mb={24}>
-          Click Me To Remove Toasts
+          Click Me To Remove All Toasts
         </FillButton>
         <FillButton onClick={addToasts}>
           Click Me To Add All Toasts Again
