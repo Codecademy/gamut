@@ -6,13 +6,13 @@ import {
   ConnectedFormGroup,
   ConnectedInput,
   ConnectedSelect,
+  ConnectedTextArea,
   FloatingCard,
   FormWrapper,
   GridForm,
   Markdown,
   SubmitButton,
 } from '@codecademy/gamut/src';
-import { StreakIcon } from '@codecademy/gamut-icons';
 import { DotDense } from '@codecademy/gamut-patterns';
 import { Background } from '@codecademy/gamut-styles';
 import { action } from '@storybook/addon-actions';
@@ -386,11 +386,17 @@ export const HEY: React.FC = () => {
     >
       <FormWrapper
         onSubmit={(values) => console.log(values)}
-        defaultValues={{ 'check-field-0': true, 'our-field': 'boo' }}
+        defaultValues={{
+          'check-field-0': true,
+          'check-field-1': false,
+          'check-field-2': true,
+          'our-field': 'boo',
+        }}
+        resetOnSubmit
       >
         <FloatingCard beak="bottom-left" pattern={DotDense}>
           <SubmitButton variant="secondary" m={16}>
-            <StreakIcon /> don't forget to submit <StreakIcon />
+            don't forget to submit
           </SubmitButton>
         </FloatingCard>
 
@@ -470,6 +476,20 @@ export const HEY: React.FC = () => {
               />
             </ConnectedFormGroup>
           </Card>
+          <INeedSomeSpace>
+            <ConnectedFormGroup
+              name="example-text-area"
+              label="write text in here"
+              spacing="tight"
+              errorType="initial"
+            >
+              <ConnectedTextArea
+                name="example-text-area"
+                htmlFor="example-text-area"
+                placeholder="pls write your doctoral thesis ty"
+              />
+            </ConnectedFormGroup>
+          </INeedSomeSpace>
         </Background>
       </FormWrapper>
     </Background>
