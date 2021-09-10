@@ -31,7 +31,7 @@ export const Tab: FunctionComponent<TabProps> = ({
   disabled,
   id,
   defaultTheme = true,
-  onChange = () => {},
+  onChange,
   tabIndex = 0,
   ...rest
 }: TabProps) => {
@@ -57,7 +57,7 @@ export const Tab: FunctionComponent<TabProps> = ({
           return;
         }
 
-        onChange(tabIndex);
+        onChange?.(tabIndex);
       }}
       onKeyDown={(e: React.KeyboardEvent) => {
         if (disabled) {
@@ -67,7 +67,7 @@ export const Tab: FunctionComponent<TabProps> = ({
         // https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_link_role
         if (e.key === ' ' || e.key === 'Enter') {
           e.preventDefault();
-          onChange(tabIndex);
+          onChange?.(tabIndex);
         }
       }}
       role="tab"

@@ -17,7 +17,6 @@ export type TabListProps = {
 const defaultProps = {
   createBaseId: (i: number) => `${i}`,
   activeTabIndex: 0,
-  onChange: () => {},
 };
 
 /**
