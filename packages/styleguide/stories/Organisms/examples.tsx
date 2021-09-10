@@ -5,6 +5,8 @@ import {
   ConnectedCheckbox,
   ConnectedFormGroup,
   ConnectedInput,
+  ConnectedRadio,
+  ConnectedRadioGroup,
   ConnectedSelect,
   ConnectedTextArea,
   FloatingCard,
@@ -488,6 +490,27 @@ export const HEY: React.FC = () => {
                 htmlFor="example-text-area"
                 placeholder="pls write your doctoral thesis ty"
               />
+            </ConnectedFormGroup>
+          </INeedSomeSpace>
+          <INeedSomeSpace>
+            <ConnectedFormGroup
+              name="example-text-area"
+              label="write text in here"
+              spacing="tight"
+              errorType="initial"
+            >
+              <ConnectedRadioGroup name="example-radio-area">
+                <ConnectedRadio
+                  name="example-radio-area"
+                  label="Radio 1"
+                  value="1"
+                />
+                <ConnectedRadio
+                  label="Radio 2"
+                  value="2"
+                  name="example-radio-area"
+                />
+              </ConnectedRadioGroup>
             </ConnectedFormGroup>
           </INeedSomeSpace>
         </Background>
