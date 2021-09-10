@@ -105,10 +105,7 @@ const getInputState = (error: boolean, valid: boolean) => {
 };
 
 export const Input = forwardRef<HTMLInputElement, InputWrapperProps>(
-  (
-    { error, className, id, valid, activated, as: As, icon: Icon, ...rest },
-    ref
-  ) => {
+  ({ error, className, id, valid, as: As, icon: Icon, ...rest }, ref) => {
     const [activatedStyle, setActivatedStyle] = useState(false);
 
     const { color, icon } = inputStates[

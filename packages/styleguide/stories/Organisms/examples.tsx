@@ -1,8 +1,11 @@
 /* eslint-disable local-rules/gamut-import-paths */
 import { Box, GridForm, Markdown } from '@codecademy/gamut/src';
+import { action } from '@storybook/addon-actions';
 import React from 'react';
 
 import { ColorModeExampleWrapper } from '../Foundations/ColorMode/examples';
+
+const onSubmit = action('Submitted!');
 
 export const ColorModeExample = () => {
   return (
@@ -296,7 +299,7 @@ export const ColorModeExample = () => {
               title: 'something has gone wrong',
             },
           ]}
-          onSubmit={() => {}}
+          onSubmit={onSubmit}
           submit={{
             contents: 'Submit me',
             size: 12,

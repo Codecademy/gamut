@@ -11,13 +11,12 @@ const IconButtonInner = createButtonComponent(
 );
 
 export interface IconButtonProps extends ButtonProps {
-  children?: never;
   'aria-label': string;
   icon: React.ComponentType<GamutIconProps>;
 }
 
 export const IconButton = forwardRef<ButtonBaseElements, IconButtonProps>(
-  ({ icon: Icon, variant = 'secondary', ...props }, ref) => {
+  ({ children, icon: Icon, variant = 'secondary', ...props }, ref) => {
     return (
       <IconButtonInner {...props} variant={variant} ref={ref}>
         {Icon && (
@@ -27,6 +26,7 @@ export const IconButton = forwardRef<ButtonBaseElements, IconButtonProps>(
             aria-hidden
           />
         )}
+        {children}
       </IconButtonInner>
     );
   }

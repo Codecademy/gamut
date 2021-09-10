@@ -71,7 +71,9 @@ export const Interstitial: React.FC<InterstitialProps> = ({
   const [focusable, setFocusable] = useState(focus);
 
   useEffect(() => {
-    focus && headerRef.current?.focus();
+    if (focus) {
+      headerRef.current?.focus();
+    }
   }, [headerRef, focus]);
 
   return (
