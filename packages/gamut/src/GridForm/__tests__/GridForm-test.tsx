@@ -72,7 +72,7 @@ const asyncRenderView = async (
   let renderResults: RenderViewReturn;
 
   await act(async () => {
-    renderResults = await renderView(...props);
+    renderResults = renderView(...props);
   });
 
   return renderResults!;
@@ -257,7 +257,7 @@ describe('GridForm', () => {
     });
 
     it('keeps the submit button disabled when overridden and there are no incomplete fields', async () => {
-      const fields: Array<GridFormField> = [];
+      const fields: GridFormField[] = [];
 
       const { view } = renderView({
         fields,
@@ -472,19 +472,14 @@ describe('GridForm', () => {
 
       const firstResult = await api.innerPromise;
 
-      expect(firstResult).toEqual(baseResults);
-
-      expect(checkboxField.checked).toEqual(false);
-      expect(selectField.value).toEqual('aaa');
-      expect(textField.value).toEqual('');
-
       await act(async () => {
-        submitCount++;
+        submitCount += 1;
         fireEvent.submit(view.getByRole('button'));
       });
 
       const secondResult = await api2.innerPromise;
 
+      expect(firstResult).toEqual(baseResults);
       expect(secondResult).toEqual({
         [stubCheckboxField.name]: false,
         [stubSelectField.name]: 'aaa',

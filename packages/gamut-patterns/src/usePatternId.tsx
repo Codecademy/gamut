@@ -7,6 +7,6 @@ export function usePatternId(id: string) {
     const key = id.toLowerCase();
     const idCounter = counter?.[key] || 0;
     counter[key] = idCounter;
-    return `${id}-pattern-${counter[key]++}`;
+    return `${id}-pattern-${(counter[key] += 1)}`;
   }, [id]);
 }

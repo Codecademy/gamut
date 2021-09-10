@@ -1,10 +1,9 @@
 import { Consent } from './consent';
-import { SegmentDestination, UserIntegrationSummary } from './types';
+import { SegmentDestination } from './types';
 
 export type DestinationMapOptions = {
   consentDecision?: Consent[];
   destinations: SegmentDestination[];
-  user?: UserIntegrationSummary;
 };
 
 // The Functional category may need to be added here in the future.
@@ -23,7 +22,6 @@ const functionalCategories = ['SMS & Push Notifications'];
 export const mapDestinations = ({
   consentDecision = [Consent.StrictlyNecessary],
   destinations,
-  user,
 }: DestinationMapOptions) => {
   const destinationPreferences: Record<string, boolean> = Object.assign(
     {

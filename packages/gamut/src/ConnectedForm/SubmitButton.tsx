@@ -4,7 +4,7 @@ import { FormState } from 'react-hook-form';
 import { Box, FlexBox } from '../Box';
 import { ButtonProps, FillButton } from '../Button';
 import { Spinner } from '../Spinner';
-import { useSubmitContext } from './utils';
+import { useSubmitState } from './utils';
 
 export type FormStateCallback<Values = {}> = (
   formState: FormState<Values>
@@ -27,7 +27,7 @@ export const SubmitButton: React.FC<SubmitButtonProps> = ({
   loading = false,
   ...rest
 }) => {
-  const { isLoading, isDisabled } = useSubmitContext({ loading, disabled });
+  const { isLoading, isDisabled } = useSubmitState({ loading, disabled });
 
   if (isLoading) {
     return (

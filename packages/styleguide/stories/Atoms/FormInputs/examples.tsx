@@ -15,7 +15,7 @@ import {
   PeopleIcon,
 } from '@codecademy/gamut-icons/src';
 import { Background, ColorMode } from '@codecademy/gamut-styles/src';
-import React, { ChangeEvent, useState } from 'react';
+import React, { useState } from 'react';
 
 import { ColorModeExampleWrapper } from '../../Foundations/ColorMode/examples';
 
@@ -34,7 +34,7 @@ const CustomCheckbox: React.FC<CustomCheckboxProps> = ({
 }) => {
   const [currentChecked, setCurrentChecked] = useState(defaultChecked);
 
-  const changeHandler = (event: ChangeEvent<HTMLElement>) => {
+  const changeHandler = () => {
     setCurrentChecked(!currentChecked);
   };
 
