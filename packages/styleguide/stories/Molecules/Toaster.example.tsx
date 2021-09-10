@@ -24,7 +24,7 @@ export const exampleToasts = [
   },
 ];
 
-export const ToasterContainer: React.FC = () => {
+export const ToasterExample: React.FC = () => {
   const [toasts, setToasts] = useState(exampleToasts);
 
   const removeToasts = () => {

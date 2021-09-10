@@ -4,7 +4,7 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 
 import { PropsTable } from '~styleguide/blocks';
 
-import { ToasterContainer } from './Toaster.example';
+import { ToasterExample } from './Toaster.example';
 
 <Meta
   title={title}
@@ -19,7 +19,9 @@ import { ToasterContainer } from './Toaster.example';
 
 <Canvas>
   <Story name="Toaster">
-    <ToasterContainer />
+    {(args) => {
+      return <ToasterExample {...args} />;
+    }}
   </Story>
 </Canvas>
 
