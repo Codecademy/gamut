@@ -96,25 +96,21 @@ export function GridForm<Values extends FormValues>({
   showRequired = false,
   ...rest
 }: GridFormProps<Values>) {
-  const flatFields = useMemo(() => {
-    return fields.flatMap((field) =>
-      isGridFormSection(field) ? field.fields : field
-    );
-  }, [fields]);
+  const flatFields = fields.flatMap((field) =>
+    isGridFormSection(field) ? field.fields : field
+  );
 
-  const defaultValues = useMemo(() => {
-    return flatFields.reduce<any>(
-      // since our checkbox is a controlled input, it needs to be provided with a default value in order to reset correctly.
-      (defaultValues, field) => ({
-        ...defaultValues,
-        [field.name]:
-          field.type === 'checkbox' && field.defaultValue === undefined
-            ? false
-            : field.defaultValue,
-      }),
-      {}
-    );
-  }, [flatFields]);
+  const defaultValues = flatFields.reduce<any>(
+    // since our checkbox is a controlled input, it needs to be provided with a default value in order to reset correctly.
+    (defaultValues, field) => ({
+      ...defaultValues,
+      [field.name]:
+        field.type === 'checkbox' && field.defaultValue === undefined
+          ? false
+          : field.defaultValue,
+    }),
+    {}
+  );
 
   return (
     <FormWrapper
