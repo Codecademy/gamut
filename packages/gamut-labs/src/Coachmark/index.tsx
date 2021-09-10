@@ -24,6 +24,7 @@ export type CoachmarkProps = {
    * Props to be passed into the popover component.
    */
   popoverProps?: Partial<PopoverProps>;
+  className?: string;
 };
 
 export const Coachmark: React.FC<CoachmarkProps> = ({
@@ -33,6 +34,7 @@ export const Coachmark: React.FC<CoachmarkProps> = ({
   delay = 500,
   renderPopover,
   popoverProps,
+  className,
 }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
@@ -56,7 +58,12 @@ export const Coachmark: React.FC<CoachmarkProps> = ({
       <div ref={activeElRef} className={activeElClassName}>
         {children}
       </div>
-      <Popover {...popoverProps} targetRef={activeElRef} isOpen={isOpen}>
+      <Popover
+        {...popoverProps}
+        targetRef={activeElRef}
+        isOpen={isOpen}
+        className={className}
+      >
         {renderPopover()}
       </Popover>
     </>
