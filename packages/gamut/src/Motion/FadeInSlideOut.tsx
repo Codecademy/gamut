@@ -1,10 +1,10 @@
+import { timing } from '@codecademy/gamut-styles';
 import { motion } from 'framer-motion';
 import React from 'react';
 
 import { Box } from '../Box';
 
-const entranceDuration = 0.35;
-const exitDuration = entranceDuration / 2;
+const exitDuration = timing.toastExitDuration;
 
 const motionVariants = {
   initial: {
