@@ -3,23 +3,21 @@ import React from 'react';
 import { UseFormMethods } from 'react-hook-form';
 
 import { Radio, RadioGroup } from '../../../Form';
-import { GridFormRadioGroupField } from '../../types';
+import { BaseFormInputProps, GridFormRadioGroupField } from '../../types';
 
-export type GridFormRadioGroupInputProps = {
-  className?: string;
+export interface GridFormRadioGroupInputProps extends BaseFormInputProps {
   field: GridFormRadioGroupField;
   register: UseFormMethods['register'];
   setValue: (name: string, value: string) => void;
-  showRequired?: boolean;
-  error?: boolean;
-};
+}
 
 export const GridFormRadioGroupInput: React.FC<GridFormRadioGroupInputProps> = ({
   className,
+  disabled,
   field,
   register,
   setValue,
-  showRequired,
+  required,
   error,
 }) => {
   const ariaLabel: string | undefined =
@@ -32,7 +30,7 @@ export const GridFormRadioGroupInput: React.FC<GridFormRadioGroupInputProps> = (
       name={field.name}
       role="radiogroup"
       aria-label={ariaLabel}
-      aria-required={showRequired}
+      aria-required={required}
       onChange={(event) => {
         const { value } = event.target;
         setValue(field.name, value);
@@ -41,7 +39,7 @@ export const GridFormRadioGroupInput: React.FC<GridFormRadioGroupInputProps> = (
     >
       {field.options.map(({ label, value }) => (
         <Radio
-          disabled={field.disabled}
+          disabled={disabled}
           key={value}
           label={label}
           ref={register(field.validation)}
