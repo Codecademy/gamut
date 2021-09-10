@@ -400,7 +400,12 @@ export const HEY = () => {
           />
         </ConnectedFormGroup>
         <Background bg="navy" p={12} mt={12} borderRadius="10px">
-          <ConnectedFormGroup name="check-field-0" label="hi" spacing="tight">
+          <ConnectedFormGroup
+            name="check-field-0"
+            label="hi"
+            spacing="tight"
+            errorType="initial"
+          >
             <ConnectedCheckbox
               label="check me out"
               name="check-field-0"
@@ -409,7 +414,12 @@ export const HEY = () => {
               spacing="tight"
             />
           </ConnectedFormGroup>
-          <ConnectedFormGroup name="check-field-1" label="hi" spacing="tight">
+          <ConnectedFormGroup
+            name="check-field-1"
+            label="hi"
+            spacing="tight"
+            errorType="initial"
+          >
             <ConnectedCheckbox
               label="check me out"
               name="check-field-1"
@@ -418,7 +428,12 @@ export const HEY = () => {
               spacing="tight"
             />
           </ConnectedFormGroup>
-          <ConnectedFormGroup name="check-field-2" label="hi" spacing="tight">
+          <ConnectedFormGroup
+            name="check-field-2"
+            label="hi"
+            spacing="tight"
+            errorType="initial"
+          >
             <ConnectedCheckbox
               label="check me out"
               name="check-field-2"

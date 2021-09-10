@@ -33,7 +33,7 @@ import { HEY } from './examples';
     name="FormWrapper"
     args={{ validation: 'onSubmit', resetOnSubmit: true }}
   >
-    {(args) => (
+    {() => (
       <FormWrapper
         onSubmit={(values) => console.log(values)}
         defaultValues={{ 'this-field': true, 'that-field': 'three' }}
