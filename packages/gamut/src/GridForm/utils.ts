@@ -42,7 +42,7 @@ export const useFieldContext = (field: GridFormField) => {
   };
 };
 
-export const useSubmitContext = ({ loading, disabled }: SubmitContextProps) => {
+export const useSubmitState = ({ loading, disabled }: SubmitContextProps) => {
   const { formState } = useFormContext();
 
   const isLoading =
