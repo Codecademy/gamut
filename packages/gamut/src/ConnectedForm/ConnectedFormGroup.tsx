@@ -64,7 +64,10 @@ export const ConnectedFormGroup: React.FC<ConnectedFormGroupProps> = ({
   );
 
   return (
-    <FormGroup pb={spacing === 'tight' ? 0 : 8} mb={0}>
+    <FormGroup
+      pb={spacing === 'tight' ? 0 : 8}
+      mb={spacing === 'tight' ? 0 : 8}
+    >
       {hideLabel ? <HiddenText>{renderedLabel}</HiddenText> : renderedLabel}
       {children}
       {(error || customError) && (

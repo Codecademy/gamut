@@ -1,15 +1,14 @@
+/* eslint-disable local-rules/gamut-import-paths */
 import {
-  Card,
   ConnectedCheckbox,
   ConnectedFormGroup,
   ConnectedSelect,
   FormWrapper,
   SubmitButton,
-  Text,
 } from '@codecademy/gamut/src';
 import { StreakIcon } from '@codecademy/gamut-icons';
 import { Background } from '@codecademy/gamut-styles';
-import React, { useState } from 'react';
+import React from 'react';
 
 export const HEY = () => {
   return (
@@ -30,22 +29,20 @@ export const HEY = () => {
           <StreakIcon />
         </SubmitButton>
 
-        <Card>
-          <ConnectedFormGroup
+        <ConnectedFormGroup
+          name="your-field"
+          label="hey"
+          size="large"
+          spacing="tight"
+        >
+          <ConnectedSelect
             name="your-field"
-            label="hey"
-            size="large"
-            spacing="tight"
-          >
-            <ConnectedSelect
-              name="your-field"
-              htmlFor="your-field"
-              validation={{ required: 'check it...' }}
-              options={['one', 'two', 'three']}
-            />
-          </ConnectedFormGroup>
-        </Card>
-        <Background bg="navy" p={12} borderRadius="10px">
+            htmlFor="your-field"
+            validation={{ required: 'check it...' }}
+            options={['one', 'two', 'three']}
+          />
+        </ConnectedFormGroup>
+        <Background bg="navy" p={12} mt={12} borderRadius="10px">
           <ConnectedFormGroup name="check-field-0" label="hi" spacing="tight">
             <ConnectedCheckbox
               label="check me out"
