@@ -24,11 +24,8 @@ describe('GridFormContent', () => {
   it('renders the label and field', () => {
     const { view } = renderView();
 
-    const label = view.getByLabelText('Stub Text');
-    const field = view.getByRole('textbox', { name: 'Stub Text' });
-
-    expect(label).toBeTruthy;
-    expect(field).toBeTruthy;
+    view.getByLabelText('Stub Text');
+    view.getByRole('textbox', { name: 'Stub Text' });
   });
 
   it('gives the field access to form context and validation', async () => {

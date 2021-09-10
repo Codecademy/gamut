@@ -18,6 +18,7 @@
     "@babel/core": "^7.13.10",
     "@codecademy/gamut": "^37.2.0",
     "@codecademy/gamut-icons": "^5.9.3",
+    "@codecademy/gamut-illustrations": "^0.17.20",
     "@codecademy/gamut-labs": "^19.25.2",
     "@codecademy/gamut-patterns": "^0.5.8",
     "@codecademy/gamut-styles": "^11.9.2",
@@ -54,6 +55,7 @@
     "access": "public"
   },
   "devDependencies": {
+    "@testing-library/react": "^11.0.4",
     "@types/mdx-js__react": "^1.5.3",
     "css-loader": "^3.5.2",
     "glob": "^7.1.6",

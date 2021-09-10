@@ -10,7 +10,7 @@ const renderOverlay = (props?: Partial<OverlayProps>) => {
   return render(
     <ThemeProvider theme={theme}>
       <main>
-        <Overlay onRequestClose={() => {}} {...props}>
+        <Overlay onRequestClose={jest.fn()} {...props}>
           <div data-testid="overlay-content">
             Howdy!
             <button aria-label="Button" type="button" />
@@ -24,7 +24,7 @@ const renderOverlay = (props?: Partial<OverlayProps>) => {
 const mountOverlay = (props?: Partial<OverlayProps>) => {
   return mount(
     <ThemeProvider theme={theme}>
-      <Overlay onRequestClose={() => {}} {...props}>
+      <Overlay onRequestClose={jest.fn()} {...props}>
         <div data-testid="overlay-content">
           Howdy!
           <button aria-label="Button" type="button" />
