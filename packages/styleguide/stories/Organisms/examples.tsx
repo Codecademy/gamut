@@ -1,15 +1,19 @@
 /* eslint-disable local-rules/gamut-import-paths */
 import {
   Box,
+  Card,
   ConnectedCheckbox,
   ConnectedFormGroup,
+  ConnectedInput,
   ConnectedSelect,
+  FloatingCard,
   FormWrapper,
   GridForm,
   Markdown,
   SubmitButton,
 } from '@codecademy/gamut/src';
 import { StreakIcon } from '@codecademy/gamut-icons';
+import { DotDense } from '@codecademy/gamut-patterns';
 import { Background } from '@codecademy/gamut-styles';
 import { action } from '@storybook/addon-actions';
 import React, { useState } from 'react';
@@ -367,81 +371,105 @@ export const FormLoadingExample = () => {
   );
 };
 
-export const HEY = () => {
+const INeedSomeSpace: React.FC = ({ children }) => {
+  return <Box m={16}>{children}</Box>;
+};
+
+export const HEY: React.FC = () => {
   return (
     <Background
       bg="paleGreen"
       border={1}
       borderColor="navy"
       p={32}
-      display="flex"
+      borderRadius="10px"
     >
       <FormWrapper
         onSubmit={(values) => console.log(values)}
         defaultValues={{ 'check-field-0': true, 'our-field': 'boo' }}
       >
-        <SubmitButton variant="secondary" m={16}>
-          <StreakIcon />
-          i'm a submit button up here for some reason
-          <StreakIcon />
-        </SubmitButton>
+        <FloatingCard beak="bottom-left" pattern={DotDense}>
+          <SubmitButton variant="secondary" m={16}>
+            <StreakIcon /> don't forget to submit <StreakIcon />
+          </SubmitButton>
+        </FloatingCard>
 
-        <ConnectedFormGroup
-          name="your-field"
-          label="hey"
-          size="large"
-          spacing="tight"
-        >
-          <ConnectedSelect
-            name="your-field"
-            htmlFor="your-field"
-            validation={{ required: 'check it...' }}
-            options={['one', 'two', 'three']}
-          />
-        </ConnectedFormGroup>
-        <Background bg="navy" p={12} mt={12} borderRadius="10px">
-          <ConnectedFormGroup
-            name="check-field-0"
-            label="hi"
-            spacing="tight"
-            errorType="initial"
-          >
-            <ConnectedCheckbox
-              label="check me out"
+        <Box bg="palePink" border={1} p={12} mt={24} borderRadius="10px">
+          <INeedSomeSpace>
+            <ConnectedFormGroup
+              name="your-field"
+              label="hey"
+              size="large"
+              spacing="tight"
+            >
+              <ConnectedSelect
+                name="your-field"
+                htmlFor="your-field"
+                validation={{ required: 'check it...' }}
+                options={['one', 'two', 'three']}
+              />
+            </ConnectedFormGroup>
+          </INeedSomeSpace>
+          <INeedSomeSpace>
+            <ConnectedFormGroup
+              name="example-icon"
+              label="write text in here"
+              spacing="tight"
+              errorType="initial"
+            >
+              <ConnectedInput
+                name="example-icon"
+                htmlFor="example-icon"
+                defaultValue="hello..."
+              />
+            </ConnectedFormGroup>
+          </INeedSomeSpace>
+        </Box>
+        <Background bg="navy" p={16} mt={12} borderRadius="10px">
+          <Card shadow="medium">
+            <ConnectedFormGroup
               name="check-field-0"
-              htmlFor="check-field-0"
-              validation={{ required: 'check it...' }}
+              label="hi"
               spacing="tight"
-            />
-          </ConnectedFormGroup>
-          <ConnectedFormGroup
-            name="check-field-1"
-            label="hi"
-            spacing="tight"
-            errorType="initial"
-          >
-            <ConnectedCheckbox
-              label="check me out"
+              errorType="initial"
+            >
+              <ConnectedCheckbox
+                label="check me out"
+                name="check-field-0"
+                htmlFor="check-field-0"
+                validation={{ required: 'check it...' }}
+                spacing="tight"
+              />
+            </ConnectedFormGroup>
+            <ConnectedFormGroup
               name="check-field-1"
-              htmlFor="check-field-1"
-              validation={{ required: 'check it...' }}
+              label="hi"
               spacing="tight"
-            />
-          </ConnectedFormGroup>
-          <ConnectedFormGroup
-            name="check-field-2"
-            label="hi"
-            spacing="tight"
-            errorType="initial"
-          >
-            <ConnectedCheckbox
-              label="check me out"
+              errorType="initial"
+            >
+              <ConnectedCheckbox
+                label="check me out"
+                name="check-field-1"
+                htmlFor="check-field-1"
+                validation={{ required: 'check it...' }}
+                spacing="tight"
+              />
+            </ConnectedFormGroup>
+            <ConnectedFormGroup
               name="check-field-2"
-              htmlFor="check-field-2"
-              validation={{ required: 'check it...' }}
+              label="hi"
               spacing="tight"
-            />
-          </ConnectedFormGroup>
+              errorType="initial"
+            >
+              <ConnectedCheckbox
+                label="check me out"
+                name="check-field-2"
+                htmlFor="check-field-2"
+                validation={{ required: 'check it...' }}
+                spacing="tight"
+              />
+            </ConnectedFormGroup>
+          </Card>
         </Background>
       </FormWrapper>
     </Background>
