@@ -1,7 +1,7 @@
 {
   "name": "@codecademy/variance",
   "description": "Constraint based CSS in JS for building scalable design systems",
-  "version": "0.17.4",
+  "version": "0.18.0",
   "keywords": [
     "emotion",
     "css",
@@ -29,6 +29,7 @@
     "lernaBuildTask": "yarn build"
   },
   "peerDependencies": {
+    "@emotion/react": "*",
     "typescript": ">=4.3.5"
   },
   "dependencies": {
@@ -36,6 +37,10 @@
     "lodash": "^4.17.5"
   },
   "devDependencies": {
-    "@types/react-test-renderer": "^17.0.1"
+    "@emotion/jest": "^11.3.0",
+    "@emotion/styled": "^11.3.0",
+    "@types/react-test-renderer": "^17.0.1",
+    "react": "16.13.1",
+    "react-test-renderer": "16.13.1"
   }
 }
