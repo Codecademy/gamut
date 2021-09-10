@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [44.3.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@44.3.0...@codecademy/styleguide@44.3.1) (2021-09-10)
+
+
+### Bug Fixes
+
+* **GridFormCheckbox:** tight variant error spacing ([21b1974](https://github.com/Codecademy/client-modules/commit/21b19748484051df9bb250603cb91dbebed6cede))
+
+
+
 ## [44.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@44.2.3...@codecademy/styleguide@44.3.0) (2021-09-10)
 
 
