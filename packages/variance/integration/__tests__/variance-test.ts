@@ -1,3 +1,5 @@
+import { Theme } from '@emotion/react';
+
 import { variance } from '../../src/core';
 import { createScale } from '../../src/scales/createScale';
 import { transformSize } from '../../src/transforms/transformSize';
@@ -19,8 +21,6 @@ const layout = variance.create({
   },
 });
 
-const rem = (val: number) => `${val / 16}rem`;
-
 type Assert<X, Y> = X extends Y ? true : false;
 
 describe('style props', () => {
@@ -35,129 +35,108 @@ describe('style props', () => {
 
       expect(space.propNames.sort()).toEqual(['padding', 'margin'].sort());
     });
-    it('renders styles', () => {
-      expect(space({ margin: 4, theme })).toEqual({ margin: '0.25rem' });
-    });
-    it('renders media query arrays styles', () => {
-      const sizes = [4, 8, 16, 24, 32, 48] as const;
-      expect(space({ margin: sizes, theme })).toEqual({
-        margin: rem(sizes[0]),
-        XS: {
-          margin: rem(sizes[1]),
-        },
-        SM: {
-          margin: rem(sizes[2]),
-        },
-        MD: {
-          margin: rem(sizes[3]),
-        },
-        LG: {
-          margin: rem(sizes[4]),
-        },
-        XL: {
-          margin: rem(sizes[5]),
-        },
-      });
-    });
-    it('renders media query arrays styles', () => {
-      const sizes = [4, 8, 16, 24, 32, 48] as const;
 
-      expect(
-        space({
-          margin: sizes,
-          padding: sizes,
-          theme,
-        })
-      ).toEqual({
-        margin: rem(sizes[0]),
-        padding: rem(sizes[0]),
-        XS: {
-          margin: rem(sizes[1]),
-          padding: rem(sizes[1]),
-        },
-        SM: {
-          margin: rem(sizes[2]),
-          padding: rem(sizes[2]),
-        },
-        MD: {
-          margin: rem(sizes[3]),
-          padding: rem(sizes[3]),
-        },
-        LG: {
-          margin: rem(sizes[4]),
-          padding: rem(sizes[4]),
-        },
-        XL: {
-          margin: rem(sizes[5]),
-          padding: rem(sizes[5]),
-        },
-      });
-    });
-    it('renders media map arrays styles', () => {
-      const sizes = { _: 4, xs: 8, sm: 16, md: 24, lg: 32, xl: 48 } as const;
+    describe('media query styles', () => {
+      it.each([
+        ['no media query base value', [4], { _: 4 }],
+        [
+          'all media queries',
+          [4, 8, 16, 24, 32, 48],
+          { _: 4, xs: 8, sm: 16, md: 24, lg: 32, xl: 48 },
+        ],
+        ['only XS', [, 4], { xs: 4 }],
+        ['SM and MD', [, , 16, 0], { sm: 16, md: 0 }],
+        [
+          'only MD with undefined keys',
+          [, , , 0],
+          { md: 0, _: undefined, sm: undefined },
+        ],
+      ] as const)(
+        `Equivalent Syntax %s -  %o === %o`,
+        (_, arraySyntax, objectSyntax) => {
+          const arrayOutput = space({ margin: arraySyntax, theme });
+          const objectOutput = space({ margin: objectSyntax, theme });
 
-      expect(space({ margin: sizes, theme })).toEqual({
-        margin: rem(sizes._),
-        XS: {
-          margin: rem(sizes.xs),
-        },
-        SM: {
-          margin: rem(sizes.sm),
-        },
-        MD: {
-          margin: rem(sizes.md),
-        },
-        LG: {
-          margin: rem(sizes.lg),
-        },
-        XL: {
-          margin: rem(sizes.xl),
-        },
-      });
+          expect(arrayOutput).toEqual(objectOutput);
+          expect(arrayOutput).toMatchSnapshot();
+        }
+      );
     });
-    it('renders media map arrays styles', () => {
-      const sizes = { _: 4, xs: 8, sm: 16, md: 24, lg: 32, xl: 48 } as const;
+    describe('transforms', () => {
+      describe('literal values', () => {
+        const shapes = variance.create({
+          shape: {
+            property: 'height',
+            properties: ['width', 'height'],
+            transform: (val: number, property) => {
+              if (Math.sqrt(val) % 1 === 0) return `calc(100% - ${val}px)`;
+              if (val % 2 > 0 && property === 'width') return val * 2;
+              return val;
+            },
+          },
+        });
+        const perfectSquare = {
+          height: 'calc(100% - 4px)',
+          width: 'calc(100% - 4px)',
+        };
+        const oddRectangle = { height: 5, width: 10 };
+        const evenSquare = { height: 6, width: 6 };
+        const allTogether = {
+          ...perfectSquare,
+          XS: oddRectangle,
+          SM: evenSquare,
+        };
 
-      expect(space({ margin: sizes, padding: sizes, theme })).toEqual({
-        margin: rem(sizes._),
-        padding: rem(sizes._),
-        XS: {
-          margin: rem(sizes.xs),
-          padding: rem(sizes.xs),
-        },
-        SM: {
-          margin: rem(sizes.sm),
-          padding: rem(sizes.sm),
-        },
-        MD: {
-          margin: rem(sizes.md),
-          padding: rem(sizes.md),
-        },
-        LG: {
-          margin: rem(sizes.lg),
-          padding: rem(sizes.lg),
-        },
-        XL: {
-          margin: rem(sizes.xl),
-          padding: rem(sizes.xl),
-        },
+        it.each([
+          ['perfect square', 4, perfectSquare],
+          ['odd rectangle', 5, oddRectangle],
+          ['even square', 6, evenSquare],
+          ['array medias', [4, 5, 6], allTogether],
+          ['array medias', { _: 4, xs: 5, sm: 6 }, allTogether],
+          [
+            'functional',
+            ({ spacing }: Theme) => spacing[0],
+            { height: 0, width: 0 },
+          ],
+        ] as const)('transforms to %s - (%p)', (_, dimension, output) => {
+          expect(shapes({ theme, shape: dimension })).toEqual(output);
+        });
+      });
+      describe('scale values', () => {
+        const padding = variance.create({
+          p: {
+            property: 'padding',
+            scale: { 4: 4, 8: 8 },
+            transform: (val: number) => `${val / 16}rem`,
+          },
+        });
+
+        it.each([
+          ['scale value', 4, { padding: '0.25rem' }],
+          ['scale value', 8, { padding: '0.5rem' }],
+          [
+            'scale value (array)',
+            [4, 8],
+            { padding: '0.25rem', XS: { padding: '0.5rem' } },
+          ],
+          [
+            'scale value (object)',
+            { _: 4, xs: 8 },
+            { padding: '0.25rem', XS: { padding: '0.5rem' } },
+          ],
+          ['global value', 'initial', { padding: 'initial' }],
+          [
+            'global value (array)',
+            [4, 'initial'],
+            { padding: '0.25rem', XS: { padding: 'initial' } },
+          ],
+          ['numeric override', 5 as any, { padding: 5 }],
+        ] as const)('transforms to %s - %p', (_, p, output) => {
+          expect(padding({ theme, p })).toEqual(output);
+        });
       });
     });
-    it('passes through falsy values for basic props', () => {
-      expect(space({ margin: 0, theme })).toEqual({ margin: 0 });
-    });
-    it('passes through falsy values for object syntax props', () => {
-      expect(space({ margin: { sm: 16, md: 0 }, theme })).toEqual({
-        SM: { margin: '1rem' },
-        MD: { margin: 0 },
-      });
-    });
-    it('passes through falsy values for array syntax props', () => {
-      expect(space({ margin: [, , 16, 0], theme })).toEqual({
-        SM: { margin: '1rem' },
-        MD: { margin: 0 },
-      });
-    });
+
     it('transforms props', () => {
       const res = { height: '1.5rem' };
       expect(layout({ height: '24px', theme })).toEqual(res);
@@ -279,7 +258,7 @@ describe('css', () => {
   it('allows selectors with media queries', () => {
     const returnedFn = css({
       width: ['100%', '200%'],
-      boxShadow: [({ colors }) => `0px 0px 0px 0px ${colors.black}`],
+      boxShadow: ({ colors }) => `0px 0px 0px 0px ${colors.black}`,
       '&:hover': {
         width: ['50%', '25%'],
       },

@@ -2,7 +2,7 @@ import { Anchor, Box, BoxProps, GridBox } from '@codecademy/gamut';
 import styled from '@emotion/styled';
 import React from 'react';
 
-import { resourcesList } from '../../lib/resourcesList';
+import { footerResourcesList } from '../../lib/resourcesList';
 import { FooterHeading } from '../FooterHeading';
 import {
   FooterLinkItem,
@@ -223,18 +223,20 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
     <Box>
       <FooterHeading>Resources</FooterHeading>
       <FooterLinkItems>
-        {resourcesList.map(({ id, trackingTarget, href, text, newTab }) => (
-          <FooterLinkItemWithAnchor
-            key={id}
-            footerOnClick={onClick}
-            trackingTarget={trackingTarget}
-            href={href}
-            variant="interface"
-            target={newTab ? '_blank' : ''}
-          >
-            {text}
-          </FooterLinkItemWithAnchor>
-        ))}
+        {footerResourcesList.map(
+          ({ id, trackingTarget, href, text, newTab }) => (
+            <FooterLinkItemWithAnchor
+              key={id}
+              footerOnClick={onClick}
+              trackingTarget={trackingTarget}
+              href={href}
+              variant="interface"
+              target={newTab ? '_blank' : ''}
+            >
+              {text}
+            </FooterLinkItemWithAnchor>
+          )
+        )}
       </FooterLinkItems>
     </Box>
   );

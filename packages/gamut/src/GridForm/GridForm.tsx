@@ -1,8 +1,8 @@
 import React, { Fragment } from 'react';
-import { FormProvider, Mode, SubmitHandler, useForm } from 'react-hook-form';
+import { Mode, SubmitHandler } from 'react-hook-form';
 
 import { ButtonProps } from '../Button/shared';
-import { Form } from '../Form';
+import { FormContextProps, FormWrapper } from '../Form';
 import { FormValues } from '../Form/types';
 import { LayoutGrid, LayoutGridProps } from '../Layout';
 import { GridFormButtons, GridFormSubmitProps } from './GridFormButtons';
@@ -15,6 +15,7 @@ import {
 import {
   GridFormField,
   GridFormFieldsProps,
+  GridFormSectionBreakTypes,
   GridFormSectionProps,
 } from './types';
 
@@ -31,7 +32,12 @@ const isGridFormSection = (
   return (field as GridFormSectionProps).title !== undefined;
 };
 
-export type GridFormProps<Values extends {}> = {
+export type GridFormProps<Values extends {}> = FormContextProps & {
+  /**
+   * If a visual break should be added between sections.
+   */
+  breakType?: GridFormSectionBreakTypes;
+
   children?: React.ReactNode;
   className?: string;
 
@@ -79,75 +85,75 @@ export type GridFormProps<Values extends {}> = {
 };
 
 export function GridForm<Values extends FormValues>({
+  breakType,
   cancel,
   children,
-  className,
   columnGap = defaultColumnGap,
+  disableFieldsOnSubmit,
   fields = [],
   onSubmit,
   rowGap = 16,
   submit,
   validation = 'onSubmit',
   showRequired = false,
+  wasSubmitSuccessful,
 }: GridFormProps<Values>) {
   const flatFields = fields.flatMap((field) =>
     isGridFormSection(field) ? field.fields : field
   );
 
-  const { handleSubmit, formState, ...methods } = useForm({
-    defaultValues: flatFields.reduce<any>(
-      (defaultValues, field) => ({
-        ...defaultValues,
-        [field.name]: field.defaultValue,
-      }),
-      {}
-    ),
-    mode: validation,
-  });
+  const defaultValues = flatFields.reduce<any>(
+    (defaultValues, field) => ({
+      ...defaultValues,
+      [field.name]: field.defaultValue,
+    }),
+    {}
+  );
 
   return (
-    <FormProvider
-      handleSubmit={handleSubmit}
-      formState={formState}
-      {...methods}
+    <FormWrapper
+      onSubmit={onSubmit}
+      validation={validation}
+      defaultValues={defaultValues}
+      disableFieldsOnSubmit={disableFieldsOnSubmit}
+      wasSubmitSuccessful={wasSubmitSuccessful}
+      display="flex"
+      flexDirection="column"
     >
-      <Form className={className} onSubmit={handleSubmit(onSubmit)} noValidate>
-        <LayoutGrid columnGap={columnGap} rowGap={rowGap}>
-          <>
-            {fields.map((field) => {
-              if (isGridFormSection(field)) {
-                const { title, as, layout, fields, variant } = field;
-                return (
-                  <Fragment key={title}>
-                    <GridFormSectionTitle
-                      title={title}
-                      as={as}
-                      layout={layout}
-                      numberOfFields={fields.length}
-                      variant={variant}
-                    />
-                    <GridFormSection
-                      fields={fields}
-                      showRequired={showRequired}
-                    />
-                    <GridFormSectionBreak />
-                  </Fragment>
-                );
-              }
+      <LayoutGrid columnGap={columnGap} rowGap={rowGap}>
+        <>
+          {fields.map((field) => {
+            if (isGridFormSection(field)) {
+              const { title, as, layout, fields, variant } = field;
               return (
-                <GridFormContent
-                  field={field}
-                  showRequired={showRequired}
-                  key={field.name}
-                />
+                <Fragment key={title}>
+                  <GridFormSectionTitle
+                    title={title}
+                    as={as}
+                    layout={layout}
+                    numberOfFields={fields.length}
+                    variant={variant}
+                  />
+                  <GridFormSection
+                    fields={fields}
+                    showRequired={showRequired}
+                  />
+                  <GridFormSectionBreak breakType={breakType} />
+                </Fragment>
               );
-            })}
-          </>
-
-          <GridFormButtons cancel={cancel} {...submit} />
-          {children}
-        </LayoutGrid>
-      </Form>
-    </FormProvider>
+            }
+            return (
+              <GridFormContent
+                field={field}
+                showRequired={showRequired}
+                key={field.name}
+              />
+            );
+          })}
+        </>
+        <GridFormButtons cancel={cancel} {...submit} />
+        {children}
+      </LayoutGrid>
+    </FormWrapper>
   );
 }

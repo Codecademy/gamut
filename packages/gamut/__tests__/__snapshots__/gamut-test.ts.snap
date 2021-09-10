@@ -37,6 +37,7 @@ Array [
   "FormGroup",
   "FormGroupDescription",
   "FormGroupLabel",
+  "FormPropsContext",
   "FormWrapper",
   "generateResponsiveClassnames",
   "GridBox",
