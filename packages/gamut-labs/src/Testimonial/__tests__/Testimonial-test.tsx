@@ -56,7 +56,7 @@ describe('Testimonial', () => {
       );
     });
 
-    describe('when display is none', () => {
+    describe('and display is none', () => {
       it('does not render anchor tag', () => {
         const { view } = renderView({ display: 'none' });
         expect(view.queryByTestId('testimonial-link')).not.toBeVisible();
