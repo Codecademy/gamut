@@ -77,7 +77,6 @@ export function FormWrapper<Values extends FormValues>({
   );
 
   useEffect(() => {
-    console.log('rendering');
     if (isSubmitSuccessful && resetOnSubmit) {
       reset(defaultValues);
     }
