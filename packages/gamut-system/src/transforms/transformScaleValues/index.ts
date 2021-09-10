@@ -26,5 +26,5 @@ export const createScaleValueTransformer = <
   if (isString(scale)) {
     return (props: Props) => deriveScaleFunction(get(props, ['theme', scale]));
   }
-  return (props: Props) => deriveScaleFunction(scale);
+  return () => deriveScaleFunction(scale);
 };

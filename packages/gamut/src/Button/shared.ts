@@ -27,7 +27,7 @@ export const buttonProps = variance.compose(
 );
 
 export const templateVariants = <Variant extends string, Styles>(
-  variants: ReadonlyArray<Variant>,
+  variants: readonly Variant[],
   template: (colors: Variant) => Styles
 ) => {
   const variantConfig = {} as Record<Variant, ReturnType<typeof template>>;

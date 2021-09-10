@@ -52,6 +52,8 @@ const Label = styled
   .label(labelSizeVariants, labelColorStates)
   .withComponent((props: FormGroupLabelProps) => {
     if (props.htmlFor) {
+      // We know this is wrong because props.htmlFor exists...
+      // eslint-disable-next-line jsx-a11y/label-has-associated-control
       return <label {...props} />;
     }
     return <div {...props} />;

@@ -17,7 +17,6 @@ export type ProLogoProps =
 export const ProLogo: React.FC<ProLogoProps> = (props) => {
   if (props.variant === 'cutout') {
     const {
-      variant,
       backgroundColor = 'navy',
       cutoutColor = 'white',
       ...forwardedProps
@@ -31,7 +30,7 @@ export const ProLogo: React.FC<ProLogoProps> = (props) => {
     );
   }
 
-  const { variant, backgroundColor = 'white', ...forwardedProps } = props;
+  const { backgroundColor = 'white', ...forwardedProps } = props;
   return (
     <LogoProCutoutTransparent
       backgroundColor={colors[backgroundColor]}

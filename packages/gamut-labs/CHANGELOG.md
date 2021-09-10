@@ -3,6 +3,41 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [19.26.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.26.0...@codecademy/gamut-labs@19.26.1) (2021-09-10)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+## [19.26.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.25.2...@codecademy/gamut-labs@19.26.0) (2021-09-10)
+
+
+### Features
+
+* bump ESLint configs to latest ([e0a201a](https://github.com/Codecademy/client-modules/commit/e0a201abcc5f49718538d3d91af21cb37db4470e))
+
+
+
+### [19.25.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.25.1...@codecademy/gamut-labs@19.25.2) (2021-09-09)
+
+
+### Bug Fixes
+
+* **GlobalHeader:** corrected 360px for notifications ([a5c0741](https://github.com/Codecademy/client-modules/commit/a5c0741b13cc37eafd45a16dbbeb297647a72b6d))
+
+
+
+### [19.25.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.25.0...@codecademy/gamut-labs@19.25.1) (2021-09-09)
+
+
+### Bug Fixes
+
+* Revert "fix: Revert "fix: add docs back to header and footer"" ([df28352](https://github.com/Codecademy/client-modules/commit/df283522a0540eb79bb6c1c922a3acfc974465ca)), closes [Codecademy/client-modules#2025](https://github.com/Codecademy/client-modules/issues/2025)
+
+
+
 ## [19.25.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.24.11...@codecademy/gamut-labs@19.25.0) (2021-09-09)
 
 

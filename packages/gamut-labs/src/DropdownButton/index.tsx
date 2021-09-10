@@ -39,7 +39,9 @@ export const DropdownButton: React.FC<DropdownButtonProps> = ({
   const targetRef = useRef<HTMLDivElement>(null);
   const [isOpen, setIsOpen] = useState(false);
   const handleClick = (event: React.MouseEvent) => {
-    !isOpen && onClick && onClick(event);
+    if (!isOpen) {
+      onClick?.(event);
+    }
     setIsOpen(!isOpen);
   };
   const handleRequestClosed = () => {
