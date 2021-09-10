@@ -1,1 +1,2 @@
-export * from './ConnectedCheckboxInput';
+export * from './ConnectedCheckbox';
+export * from './ConnectedSelect';

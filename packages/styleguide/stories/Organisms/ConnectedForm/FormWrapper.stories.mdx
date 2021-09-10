@@ -1,8 +1,8 @@
 import {
   ConnectedCheckbox,
   ConnectedFormGroup,
+  ConnectedSelect,
   FormWrapper,
-  Select,
   SubmitButton,
 } from '@codecademy/gamut';
 import title from '@codecademy/macros/lib/title.macro';
@@ -26,6 +26,8 @@ import { HEY } from './examples';
   }}
 />
 
+<HEY />
+
 <Canvas>
   <Story
     name="FormWrapper"
@@ -34,7 +36,7 @@ import { HEY } from './examples';
     {(args) => (
       <FormWrapper
         onSubmit={(values) => console.log(values)}
-        defaultValues={{ 'this-field': true }}
+        defaultValues={{ 'this-field': true, 'that-field': 'three' }}
       >
         <ConnectedFormGroup
           name="this-field"
@@ -49,18 +51,18 @@ import { HEY } from './examples';
             validation={{ required: 'check it...' }}
           />
         </ConnectedFormGroup>
-        <ConnectedFormGroup
-          name="that-field"
-          label="hey"
-          size="large"
-          spacing="tight"
-        >
-          <Select
+        <ConnectedFormGroup name="that-field" label="hey" size="large">
+          <ConnectedSelect
             label="check me out"
             name="that-field"
             htmlFor="that-field"
-            validation={{ required: 'check it...' }}
-            options={['one', 'two', 'three']}
+            validation={{
+              pattern: {
+                value: /^(?:(?!zero).)*$/,
+                message: 'zero to hero',
+              },
+            }}
+            options={['zero', 'one', 'two', 'three']}
           />
         </ConnectedFormGroup>
         <SubmitButton mt={8}>submit!!!</SubmitButton>
@@ -72,5 +74,3 @@ import { HEY } from './examples';
 <PropsTable of={FormWrapper} />
 
 ### Inputs
-
-<HEY />
