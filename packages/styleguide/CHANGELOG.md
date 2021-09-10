@@ -3,6 +3,47 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [44.2.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@44.2.1...@codecademy/styleguide@44.2.2) (2021-09-09)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [44.2.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@44.2.0...@codecademy/styleguide@44.2.1) (2021-09-09)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [44.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@44.1.7...@codecademy/styleguide@44.2.0) (2021-09-09)
+
+
+### Features
+
+* add notifications to GlobalHeader ([867d35c](https://github.com/Codecademy/client-modules/commit/867d35c8471c6173b37f0d26c9952cc5ceab3461))
+
+
+
+### [44.1.7](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@44.1.6...@codecademy/styleguide@44.1.7) (2021-09-09)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [44.1.6](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@44.1.5...@codecademy/styleguide@44.1.6) (2021-09-09)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
 ### [44.1.5](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@44.1.4...@codecademy/styleguide@44.1.5) (2021-09-08)
 
 **Note:** Version bump only for package @codecademy/styleguide

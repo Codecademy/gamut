@@ -3,6 +3,50 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [19.25.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.25.1...@codecademy/gamut-labs@19.25.2) (2021-09-09)
+
+
+### Bug Fixes
+
+* **GlobalHeader:** corrected 360px for notifications ([a5c0741](https://github.com/Codecademy/client-modules/commit/a5c0741b13cc37eafd45a16dbbeb297647a72b6d))
+
+
+
+### [19.25.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.25.0...@codecademy/gamut-labs@19.25.1) (2021-09-09)
+
+
+### Bug Fixes
+
+* Revert "fix: Revert "fix: add docs back to header and footer"" ([df28352](https://github.com/Codecademy/client-modules/commit/df283522a0540eb79bb6c1c922a3acfc974465ca)), closes [Codecademy/client-modules#2025](https://github.com/Codecademy/client-modules/issues/2025)
+
+
+
+## [19.25.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.24.11...@codecademy/gamut-labs@19.25.0) (2021-09-09)
+
+
+### Features
+
+* add notifications to GlobalHeader ([867d35c](https://github.com/Codecademy/client-modules/commit/867d35c8471c6173b37f0d26c9952cc5ceab3461))
+
+
+
+### [19.24.11](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.24.10...@codecademy/gamut-labs@19.24.11) (2021-09-09)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [19.24.10](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.24.9...@codecademy/gamut-labs@19.24.10) (2021-09-09)
+
+
+### Bug Fixes
+
+* **GlobalHeader:** Limit buttons on mobile header < XS to 1 and use small size GM-345 ([d74aab8](https://github.com/Codecademy/client-modules/commit/d74aab8fb9fd05813efcce5e9607700ffbcf4877))
+
+
+
 ### [19.24.9](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.24.8...@codecademy/gamut-labs@19.24.9) (2021-09-08)
 
 **Note:** Version bump only for package @codecademy/gamut-labs
