@@ -28,7 +28,8 @@ const errorSpanVariants = variant({
 
 const ErrorSpan = styled.span(errorSpanVariants);
 
-type FormErrorProps = StyleProps<typeof errorSpanVariants> &
+export type FormVariantType = typeof errorSpanVariants;
+type FormErrorProps = StyleProps<FormVariantType> &
   HTMLAttributes<HTMLSpanElement>;
 
 export const FormError: React.FC<FormErrorProps> = (props) => {

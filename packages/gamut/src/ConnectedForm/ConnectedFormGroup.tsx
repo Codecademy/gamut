@@ -10,7 +10,6 @@ import {
   FormGroupProps,
 } from '..';
 import { Anchor } from '../Anchor';
-import {} from '../Form';
 import { HiddenText } from '../HiddenText';
 import { Markdown } from '../Markdown';
 import { useFieldContext } from './utils';
@@ -24,6 +23,7 @@ const ErrorAnchor = styled(Anchor)(
 export type ConnectedFormGroupProps = Omit<FormGroupProps, 'label'> &
   Pick<FormGroupLabelProps, 'size'> & {
     customError?: string;
+    errorType?: 'initial' | 'absolute';
     hideLabel?: boolean;
     label: React.ReactNode;
     name: string;
@@ -37,6 +37,7 @@ export const ConnectedFormGroup: React.FC<ConnectedFormGroupProps> = ({
   children,
   customError,
   disabled,
+  errorType = 'absolute',
   hideLabel,
   id,
   label,
@@ -46,7 +47,6 @@ export const ConnectedFormGroup: React.FC<ConnectedFormGroupProps> = ({
   size,
   spacing,
   tooltip,
-  ...rest
 }) => {
   const { error, isFirstError, isDisabled } = useFieldContext(name);
   const currentlyDisabled = isDisabled || disabled;
@@ -71,7 +71,7 @@ export const ConnectedFormGroup: React.FC<ConnectedFormGroupProps> = ({
         <FormError
           role={isFirstError ? 'alert' : 'status'}
           aria-live={isFirstError ? 'assertive' : 'off'}
-          variant="absolute"
+          variant={errorType}
         >
           <Markdown
             overrides={{
