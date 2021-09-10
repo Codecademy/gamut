@@ -13,9 +13,9 @@ export const FlyoutExample: React.FC<FlyoutProps> = (args) => {
         onClose={() => setExpanded(!expanded)}
       >
         <Box bg="navy" textColor="white" m={16}>
-          yyy Baharroth - Baharroth, "the Cry of the Wind," is the Winged
-          Phoenix, the oldest of the Swooping Hawks and the first Exarch of
-          those winged Aspect Warriors. Baharroth is the founder of the Eldar
+          yyy Baharroth - Baharroth, &quot;the Cry of the Wind,&quot; is the
+          Winged Phoenix, the oldest of the Swooping Hawks and the first Exarch
+          of those winged Aspect Warriors. Baharroth is the founder of the Eldar
           Warrior Path that is represented today by the Swooping Hawks Aspect
           Shrines. Baharroth is also known for his speed and is said to be the
           fastest of all the Eldar who have ever lived, a formidable claim that

@@ -4,6 +4,7 @@ import { fireEvent } from '@testing-library/dom';
 import { LayoutMenu } from '../LayoutMenu';
 
 const renderView = setupRtl(LayoutMenu, {
+  closeLabel: 'Close me',
   sections: [
     {
       title: 'main test title1',
