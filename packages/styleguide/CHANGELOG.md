@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [44.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@44.2.3...@codecademy/styleguide@44.3.0) (2021-09-10)
+
+
+### Features
+
+* bump ESLint configs to latest ([e0a201a](https://github.com/Codecademy/client-modules/commit/e0a201abcc5f49718538d3d91af21cb37db4470e))
+
+
+
 ### [44.2.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@44.2.2...@codecademy/styleguide@44.2.3) (2021-09-10)
 
 **Note:** Version bump only for package @codecademy/styleguide
