@@ -2,26 +2,23 @@ import { ColorMode } from '@codecademy/gamut-styles';
 import { AnimatePresence } from 'framer-motion';
 import React, { ReactNode } from 'react';
 
+import { ToastProps } from '..';
 import { BodyPortal } from '../BodyPortal';
 import { Box } from '../Box';
 import { FadeInSlideOut } from '../Motion/FadeInSlideOut';
 import { Toast } from '../Toast/Toast';
 
-export type ToastProps = {
+interface ToasterItem extends ToastProps {
   id: string;
-  name?: string;
-  icon?: ReactNode;
   children?: ReactNode;
-};
+}
 
 export type ToasterProps = {
-  toasts: ToastProps[];
+  toasts: ToasterItem[];
   onClose: (id: string) => void;
 };
 
 export const Toaster: React.FC<ToasterProps> = ({ toasts = [], onClose }) => {
-  const closeToast = (id: string) => onClose(id);
-
   return (
     <BodyPortal>
       <ColorMode mode="light">
@@ -30,8 +27,8 @@ export const Toaster: React.FC<ToasterProps> = ({ toasts = [], onClose }) => {
             {toasts.map((toast) => (
               <FadeInSlideOut key={toast.id}>
                 <Toast
-                  onClose={() => closeToast(toast.id)}
-                  title={toast.name}
+                  onClose={() => onClose(toast.id)}
+                  title={toast.title}
                   icon={toast.icon}
                 >
                   {toast.children}

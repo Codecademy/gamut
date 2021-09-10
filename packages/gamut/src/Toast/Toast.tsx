@@ -51,7 +51,7 @@ const IconContainer = styled(FlexBox)(
   })
 );
 
-type ToastProps = {
+export type ToastProps = {
   title?: ReactNode;
   icon?: ReactNode;
   onClose: () => void;
