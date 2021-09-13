@@ -393,6 +393,7 @@ export const HEY: React.FC = () => {
           'check-field-1': false,
           'check-field-2': true,
           'our-field': 'boo',
+          'example-radio-area': '2',
         }}
         resetOnSubmit
       >
