@@ -1,6 +1,6 @@
 {
   "name": "@codecademy/gamut-system",
-  "version": "0.8.0",
+  "version": "0.8.1",
   "description": "Typesafe styled component utilities",
   "devDependencies": {
     "@emotion/jest": "^11.3.0",
