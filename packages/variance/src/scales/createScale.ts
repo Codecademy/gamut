@@ -1,2 +1,2 @@
 export const createScale = <T extends string | number>() =>
-  [] as ReadonlyArray<T> & { length: 0 };
+  [] as readonly T[] & { length: 0 };

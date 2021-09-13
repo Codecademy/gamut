@@ -3,6 +3,40 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [19.26.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.26.2...@codecademy/gamut-labs@19.26.3) (2021-09-13)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [19.26.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.26.1...@codecademy/gamut-labs@19.26.2) (2021-09-13)
+
+
+### Bug Fixes
+
+* **Testimonial:** pass display prop to Anchor if href is defined ([b62e2dc](https://github.com/Codecademy/client-modules/commit/b62e2dc58ea6b807011b6cf1d9baa7f4f84b8a04))
+
+
+
+### [19.26.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.26.0...@codecademy/gamut-labs@19.26.1) (2021-09-10)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+## [19.26.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.25.2...@codecademy/gamut-labs@19.26.0) (2021-09-10)
+
+
+### Features
+
+* bump ESLint configs to latest ([e0a201a](https://github.com/Codecademy/client-modules/commit/e0a201abcc5f49718538d3d91af21cb37db4470e))
+
+
+
 ### [19.25.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.25.1...@codecademy/gamut-labs@19.25.2) (2021-09-09)
 
 

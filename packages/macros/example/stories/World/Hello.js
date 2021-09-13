@@ -1,6 +1,6 @@
 import alsoTitle, { title } from '../../../lib/title.macro';
 
-const meta = {
+export const meta = {
   default: alsoTitle,
   title,
 };

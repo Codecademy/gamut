@@ -57,7 +57,7 @@ export const ButtonBase = forwardRef<
   any
 >(
   (
-    { href, disabled, children, as, role = 'button', type = 'button', ...rest },
+    { href, disabled, children, role = 'button', type = 'button', ...rest },
     ref
   ) => {
     if (href == null) {
