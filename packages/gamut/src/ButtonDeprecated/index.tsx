@@ -1,3 +1,4 @@
+/* eslint-disable react/destructuring-assignment */
 import cx from 'classnames';
 import { hasIn } from 'lodash';
 import React, { ReactNode } from 'react';

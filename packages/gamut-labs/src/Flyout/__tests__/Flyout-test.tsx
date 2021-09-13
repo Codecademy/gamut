@@ -118,13 +118,13 @@ describe('Flyout', () => {
   });
 
   it('passes the ability to close the flyout to passed ref', async () => {
-    const closeFlyoutRef = { current: () => {} };
+    const closeFlyoutRef = { current: jest.fn() };
 
     renderFlyout({ closeFlyoutRef, initialExpanded: true });
 
     await expectFlyoutOpen();
 
-    act(closeFlyoutRef.current);
+    await act(closeFlyoutRef.current);
 
     await expectFlyoutClosed();
   });

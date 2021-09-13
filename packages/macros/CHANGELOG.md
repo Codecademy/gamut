@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/macros@2.1.1...@codecademy/macros@2.2.0) (2021-09-10)
+
+
+### Features
+
+* bump ESLint configs to latest ([e0a201a](https://github.com/Codecademy/client-modules/commit/e0a201abcc5f49718538d3d91af21cb37db4470e))
+
+
+
 ### [2.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/macros@2.1.0...@codecademy/macros@2.1.1) (2021-04-05)
 
 **Note:** Version bump only for package @codecademy/macros

@@ -49,7 +49,9 @@ export class SimpleMonacoEditor extends Component<SimpleMonacoEditorProps> {
         handleHeight
         handleWidth
         onResize={(width: number, height: number) => {
-          width > 0 && height > 0 && this.editor?.layout();
+          if (width > 0 && height > 0) {
+            this.editor?.layout();
+          }
         }}
         refreshMode="debounce"
         refreshRate={500}
