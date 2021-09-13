@@ -46,6 +46,7 @@ describe('Testimonial', () => {
       expect(view.queryAllByTestId('testimonial-link').length).toBeFalsy();
     });
   });
+
   describe('when href is defined', () => {
     it('renders the card inside of an anchor tag', () => {
       const { view } = renderView();
@@ -53,6 +54,13 @@ describe('Testimonial', () => {
         'href',
         defaultProps.href
       );
+    });
+
+    describe('and display is none', () => {
+      it('does not render anchor tag', () => {
+        const { view } = renderView({ display: 'none' });
+        expect(view.queryByTestId('testimonial-link')).not.toBeVisible();
+      });
     });
   });
 
