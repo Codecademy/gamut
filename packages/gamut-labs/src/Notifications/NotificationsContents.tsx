@@ -26,7 +26,7 @@ export const NotificationsContents: React.FC<NotificationsContentsProps> = (
     actions.click(notification);
 
     if (notification.unread) {
-      actions.read(notification);
+      actions.read([notification]);
     }
   };
 

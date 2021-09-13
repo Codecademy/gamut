@@ -1,9 +1,8 @@
 import { Box, TextButton } from '@codecademy/gamut';
 import React, { useState } from 'react';
 
+import { defaultDisplayLimit } from './constants';
 import { NotificationsContentsProps } from './types';
-
-const defaultDisplayLimit = 3;
 
 export const useNotificationButtons = ({
   actions,
@@ -37,11 +36,11 @@ export const useNotificationButtons = ({
       <Box px={32}>
         <TextButton
           onClick={() => {
-            // console.log('Clicky', { showMore });
             setShowMore(!showMore);
 
             if (!showMore) {
               actions.track('notification_show_more');
+              actions.read(notifications.slice(defaultDisplayLimit));
             }
           }}
         >

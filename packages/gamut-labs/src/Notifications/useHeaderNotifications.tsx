@@ -2,6 +2,7 @@ import { ButtonBaseElements } from '@codecademy/gamut';
 import React, { useRef, useState } from 'react';
 
 import { AnimatedHeaderZone } from '../AppHeader/shared';
+import { defaultDisplayLimit } from './constants';
 import { NotificationBell } from './NotificationBell';
 import { AppHeaderNotifications, NotificationsRendererProps } from './types';
 
@@ -19,6 +20,9 @@ export const useHeaderNotifications = (
   const togglePane = () => {
     if (!isPaneVisible) {
       settings.onEnable();
+      settings.actions.read(
+        settings.notifications.slice(0, defaultDisplayLimit)
+      );
     }
 
     setIsPaneVisible((oldIsPaneVisible) => !oldIsPaneVisible);

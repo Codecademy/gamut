@@ -39,10 +39,10 @@ describe('NotificationsContents', () => {
 
     userEvent.click(view.getAllByRole('link')[1]);
 
-    expect(props.actions.read).toHaveBeenCalledWith(notifications[1]);
+    expect(props.actions.read).toHaveBeenCalledWith([notifications[1]]);
   });
 
-  it('does not the notification as read when a read notification is clicked', () => {
+  it('does not mark the notification as read when a read notification is clicked', () => {
     const notifications = [
       createStubNotification({ id: '1' }),
       createStubNotification({ id: '2', unread: false }),

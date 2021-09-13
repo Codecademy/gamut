@@ -2,6 +2,7 @@ import { MockGamutProvider } from '@codecademy/gamut-tests';
 import { render } from '@testing-library/react';
 import { act, renderHook } from '@testing-library/react-hooks';
 import userEvent from '@testing-library/user-event';
+import { times } from 'lodash';
 import React from 'react';
 
 import { createStubNotification } from '../__fixtures__/stubs';
@@ -45,7 +46,9 @@ describe('useHeaderNotifications', () => {
   });
 
   it('renders its notifications pane as visible when the bell is clicked and there are notifications', async () => {
-    const notifications = [createStubNotification()];
+    const notifications = times(5, (id) =>
+      createStubNotification({ id: `${id}`, unread: true })
+    );
     const hook = renderHook(() =>
       useHeaderNotifications({ ...defaultProps, notifications }, () => (
         <div>hi!</div>
@@ -66,6 +69,9 @@ describe('useHeaderNotifications', () => {
       <MockGamutProvider>{hook.result.current[1]}</MockGamutProvider>
     );
 
+    expect(defaultProps.actions.read).toHaveBeenCalledWith(
+      notifications.slice(0, 3)
+    );
     expect(defaultProps.onEnable).toHaveBeenCalled();
     expect(paneView.container).not.toBeEmptyDOMElement();
   });
