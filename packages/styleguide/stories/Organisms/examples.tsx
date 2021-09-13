@@ -389,6 +389,8 @@ export const HEY: React.FC = () => {
       <FormWrapper
         onSubmit={(values) => console.log(values)}
         defaultValues={{
+          'your-field': 'two',
+          'example-icon': 'hey',
           'check-field-0': true,
           'check-field-1': false,
           'check-field-2': true,
@@ -399,7 +401,7 @@ export const HEY: React.FC = () => {
       >
         <FloatingCard beak="bottom-left" pattern={DotDense}>
           <SubmitButton variant="secondary" m={16}>
-            don't forget to submit
+            dont forget to submit
           </SubmitButton>
         </FloatingCard>
 
@@ -426,11 +428,7 @@ export const HEY: React.FC = () => {
               spacing="tight"
               errorType="initial"
             >
-              <ConnectedInput
-                name="example-icon"
-                htmlFor="example-icon"
-                defaultValue="hello..."
-              />
+              <ConnectedInput name="example-icon" htmlFor="example-icon" />
             </ConnectedFormGroup>
           </INeedSomeSpace>
         </Box>
@@ -503,12 +501,17 @@ export const HEY: React.FC = () => {
               <ConnectedRadioGroup name="example-radio-area">
                 <ConnectedRadio
                   name="example-radio-area"
-                  label="Radio 1"
+                  label="first"
                   value="1"
                 />
                 <ConnectedRadio
-                  label="Radio 2"
+                  label="second"
                   value="2"
+                  name="example-radio-area"
+                />
+                <ConnectedRadio
+                  label="third"
+                  value="3"
                   name="example-radio-area"
                 />
               </ConnectedRadioGroup>

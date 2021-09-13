@@ -5,11 +5,10 @@ import { useFieldContext } from '../../utils';
 import { BaseConnectedInputProps } from '../types';
 
 export type ConnectedRadioProps = Omit<RadioProps, 'defaultValue' | 'name'> &
-  BaseConnectedInputProps & { id: string };
+  BaseConnectedInputProps;
 
 export const ConnectedRadio: React.FC<ConnectedRadioProps> = ({
   disabled,
-  id,
   name,
   validation,
   ...rest
