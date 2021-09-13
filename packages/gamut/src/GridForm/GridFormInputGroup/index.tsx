@@ -51,6 +51,8 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
   const disabled = isDisabled || field.disabled;
   const errorMessage = error || field.customError;
   const defaultProps = { disabled, ...rest };
+  const isTightCheckbox =
+    field.type === 'checkbox' && field?.spacing === 'tight';
 
   const getInput = () => {
     switch (field.type) {
@@ -155,17 +157,14 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
 
   return (
     <Column size={field?.size} rowspan={field?.rowspan ?? 1}>
-      <FormGroup
-        pb={field.type === 'checkbox' && field?.spacing === 'tight' ? 0 : 8}
-        mb={0}
-      >
+      <FormGroup pb={isTightCheckbox ? 0 : 8} mb={0}>
         {field.hideLabel ? <HiddenText>{label}</HiddenText> : label}
         {getInput()}
         {errorMessage && (
           <FormError
             role={isFirstError ? 'alert' : 'status'}
             aria-live={isFirstError ? 'assertive' : 'off'}
-            variant="absolute"
+            variant={isTightCheckbox ? 'initial' : 'absolute'}
           >
             <Markdown
               overrides={{
