@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [44.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@44.3.3...@codecademy/styleguide@44.4.0) (2021-09-13)
+
+
+### Features
+
+* **Styleguide:** use green background for localhost storybook ([8dac0e7](https://github.com/Codecademy/client-modules/commit/8dac0e78d71efa429ebad43818db23f06fc9e4d1))
+
+
+
 ### [44.3.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@44.3.2...@codecademy/styleguide@44.3.3) (2021-09-13)
 
 **Note:** Version bump only for package @codecademy/styleguide
