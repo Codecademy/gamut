@@ -14,7 +14,9 @@ import {
   GridForm,
   Markdown,
   SubmitButton,
+  useFormState,
 } from '@codecademy/gamut/src';
+import { Keyhole } from '@codecademy/gamut-illustrations';
 import { DotDense } from '@codecademy/gamut-patterns';
 import { Background } from '@codecademy/gamut-styles';
 import { action } from '@storybook/addon-actions';
@@ -377,6 +379,110 @@ const INeedSomeSpace: React.FC = ({ children }) => {
   return <Box m={16}>{children}</Box>;
 };
 
+export const InnerHEYagain: React.FC = () => {
+  const { watch } = useFormState();
+  const watchedSelect = watch('your-fieldo');
+  const watchedSecondSelect = watch('another-fieldo');
+
+  const shouldIStayOrShouldIGo = () => {
+    if (watchedSelect === 'two' || watchedSelect === 'third') {
+      return (
+        <ConnectedFormGroup
+          name="another-fieldo"
+          label="hey there"
+          size="large"
+        >
+          <ConnectedSelect
+            name="another-fieldo"
+            htmlFor="another-fieldo"
+            options={['hide the check', 'show me the check']}
+          />
+        </ConnectedFormGroup>
+      );
+    }
+  };
+
+  const iMayBeHidden = () => {
+    const returnedComponent =
+      watchedSecondSelect === 'show me the check' ? (
+        <ConnectedFormGroup
+          name="yet-again"
+          label="hi..."
+          spacing="tight"
+          errorType="initial"
+        >
+          <ConnectedCheckbox
+            label="if you can see the check you must check the check"
+            name="yet-again"
+            htmlFor="check-field-0"
+            validation={{ required: 'check it...' }}
+            spacing="tight"
+          />
+        </ConnectedFormGroup>
+      ) : watchedSecondSelect === 'hide the check' ? (
+        <ConnectedFormGroup
+          name="example-icon"
+          label="please explain why you don't want to fill in the check"
+        >
+          <ConnectedInput
+            name="example-icon"
+            htmlFor="example-icon"
+            validation={{ required: 'explain yourself.' }}
+          />
+        </ConnectedFormGroup>
+      ) : null;
+    return returnedComponent;
+  };
+
+  return (
+    <>
+      <FloatingCard beak="bottom-left" pattern={DotDense}>
+        <SubmitButton variant="secondary" m={16}>
+          dont forget to submit
+        </SubmitButton>
+      </FloatingCard>
+
+      <Box width="20rem" m={24}>
+        <ConnectedFormGroup name="your-fieldo" label="hey" size="large">
+          <ConnectedSelect
+            name="your-fieldo"
+            htmlFor="your-field"
+            validation={{ required: 'check it...' }}
+            options={['one', 'two', 'third']}
+          />
+        </ConnectedFormGroup>
+        {shouldIStayOrShouldIGo()}
+        {iMayBeHidden()}
+      </Box>
+    </>
+  );
+};
+
+export const HEYagain: React.FC = () => {
+  return (
+    <Background
+      bg="black"
+      border={1}
+      borderColor="navy"
+      borderRadius="10px"
+      m={32}
+      p={32}
+      height="30rem"
+    >
+      <FormWrapper
+        onSubmit={(values) => console.log(values)}
+        defaultValues={{
+          'your-field': 'two',
+          'example-icon': 'hey',
+        }}
+        resetOnSubmit
+      >
+        <InnerHEYagain />
+      </FormWrapper>
+    </Background>
+  );
+};
+
 export const HEY: React.FC = () => {
   return (
     <Background
@@ -384,6 +490,7 @@ export const HEY: React.FC = () => {
       border={1}
       borderColor="navy"
       p={32}
+      m={32}
       borderRadius="10px"
     >
       <FormWrapper
@@ -395,7 +502,7 @@ export const HEY: React.FC = () => {
           'check-field-1': false,
           'check-field-2': true,
           'our-field': 'boo',
-          'example-radio-area': '2',
+          'example-radio-area': '5',
         }}
         resetOnSubmit
       >
@@ -421,16 +528,15 @@ export const HEY: React.FC = () => {
               />
             </ConnectedFormGroup>
           </INeedSomeSpace>
-          <INeedSomeSpace>
-            <ConnectedFormGroup
-              name="example-icon"
-              label="write text in here"
-              spacing="tight"
-              errorType="initial"
-            >
-              <ConnectedInput name="example-icon" htmlFor="example-icon" />
-            </ConnectedFormGroup>
-          </INeedSomeSpace>
+          <Keyhole height="8rem" />
+          <ConnectedFormGroup
+            name="example-icon"
+            label="write text in here"
+            spacing="tight"
+            errorType="initial"
+          >
+            <ConnectedInput name="example-icon" htmlFor="example-icon" />
+          </ConnectedFormGroup>
         </Box>
         <Background bg="navy" p={16} mt={12} borderRadius="10px">
           <Card shadow="medium">

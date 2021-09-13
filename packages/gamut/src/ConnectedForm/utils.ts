@@ -14,16 +14,21 @@ export const submitSuccessStatus = (
   );
 };
 
-export const useFieldContext = (fieldName: string) => {
+export const useFormState = () => {
   // This is fixed in a later react-hook-form version:
   // https://github.com/react-hook-form/react-hook-form/issues/2887
   // eslint-disable-next-line @typescript-eslint/unbound-method
-  const { control, register, errors, setValue, formState } = useFormContext();
+  const {
+    control,
+    register,
+    errors,
+    setValue,
+    formState,
+    watch,
+  } = useFormContext();
   const { disableFieldsOnSubmit, wasSubmitSuccessful } = useContext(
     FormPropsContext
   );
-
-  const error = errors[fieldName]?.message;
 
   const isSubmitSuccessful = submitSuccessStatus(
     wasSubmitSuccessful,
@@ -31,17 +36,32 @@ export const useFieldContext = (fieldName: string) => {
   );
 
   return {
+    control,
+    errors,
+    isDisabled:
+      (formState.isSubmitting || isSubmitSuccessful) && disableFieldsOnSubmit,
+    register,
+    setValue,
+    watch,
+  };
+};
+
+export const useFieldContext = (fieldName: string) => {
+  const { control, errors, isDisabled, register, setValue } = useFormState();
+
+  const error = errors[fieldName]?.message;
+
+  return {
+    control,
+    error,
+    isDisabled,
     /**
      * Keep track of the first error in this form.
      * This is so we only add the correct aria-live props on the first error.
      */
     isFirstError: Object.keys(errors)[0] === fieldName,
-    error,
-    isDisabled:
-      (formState.isSubmitting || isSubmitSuccessful) && disableFieldsOnSubmit,
     register,
     setValue,
-    control,
   };
 };
 
