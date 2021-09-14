@@ -22,11 +22,11 @@ describe('Avatar', () => {
 
   it('when a "size" prop is passed, the <img/> height and width attributes are set accordingly', () => {
     const wrapper = mount(<Avatar src="" alt="" size={32} />);
-    expect(wrapper.find(`img[height="32px"][width="32px"]`)).toHaveLength(1);
+    expect(wrapper.find('Image').props()).toMatchObject({ dimensions: 32 });
   });
 
   it('when a "size" prop is not passed, the <img/> height and width attributes are set to the default value', () => {
     const wrapper = mount(<Avatar src="" alt="" />);
-    expect(wrapper.find(`img[height="118px"][width="118px"]`)).toHaveLength(1);
+    expect(wrapper.find('Image').props()).toMatchObject({ dimensions: 118 });
   });
 });
