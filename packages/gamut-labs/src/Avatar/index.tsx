@@ -62,9 +62,9 @@ export type AvatarBaseProps = {
   disableDropshadow?: boolean;
 
   /**
-   * Size of the Avatar; small = 32x32, medium = 118x118
+   * Size of the Avatar.
    */
-  size?: 'small' | 'medium';
+  size?: 32 | 64 | 118;
 
   /**
    * Overrides styles on the Avatar container.
@@ -81,11 +81,6 @@ export type AvatarBaseProps = {
 
 export type AvatarProps = AvatarBaseProps & AvatarImageProps;
 
-export const avatarSizes = {
-  small: '32px',
-  medium: '118px',
-};
-
 export const Avatar: React.FC<AvatarProps> = ({
   mode,
   disableDropshadow,
@@ -99,10 +94,6 @@ export const Avatar: React.FC<AvatarProps> = ({
     disableDropshadow={disableDropshadow}
     data-testid="avatar-container"
   >
-    <Image
-      width={avatarSizes[size]}
-      height={avatarSizes[size]}
-      {...avatarImageProps}
-    />
+    <Image width={`${size}px`} height={`${size}px`} {...avatarImageProps} />
   </AvatarContainer>
 );
