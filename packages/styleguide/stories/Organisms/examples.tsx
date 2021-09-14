@@ -14,6 +14,7 @@ import {
   GridForm,
   Markdown,
   SubmitButton,
+  Text,
   useFormState,
 } from '@codecademy/gamut/src';
 import { Keyhole } from '@codecademy/gamut-illustrations';
@@ -505,14 +506,59 @@ export const HEY: React.FC = () => {
           'example-radio-area': '5',
         }}
         resetOnSubmit
+        display="grid"
+        gridTemplateRows="auto"
+        gridTemplateAreas="'illo illo header header'
+    'illo illo radio radio'
+    'illo illo main main'
+    'sidebar sidebar sidebar sidebar'"
       >
-        <FloatingCard beak="bottom-left" pattern={DotDense}>
-          <SubmitButton variant="secondary" m={16}>
-            dont forget to submit
-          </SubmitButton>
-        </FloatingCard>
-
-        <Box bg="palePink" border={1} p={12} mt={24} borderRadius="10px">
+        <Box display="flex" justifyContent="flex-end">
+          <FloatingCard beak="bottom-right" pattern={DotDense}>
+            <SubmitButton variant="secondary" m={32}>
+              dont forget to submit
+            </SubmitButton>
+          </FloatingCard>
+        </Box>
+        <Box
+          gridArea="radio"
+          bg="palePink"
+          border={1}
+          p={16}
+          m={24}
+          borderRadius="10px"
+        >
+          <INeedSomeSpace>
+            <ConnectedFormGroup name="example-text-area" label="pls answer">
+              <ConnectedRadioGroup name="example-radio-area">
+                <ConnectedRadio
+                  name="example-radio-area"
+                  label="first"
+                  value="1"
+                />
+                <ConnectedRadio
+                  label="second"
+                  value="2"
+                  name="example-radio-area"
+                />
+                <ConnectedRadio
+                  label="third"
+                  value="3"
+                  name="example-radio-area"
+                />
+              </ConnectedRadioGroup>
+            </ConnectedFormGroup>
+          </INeedSomeSpace>
+        </Box>
+        <Box
+          gridArea="main"
+          bg="palePink"
+          border={1}
+          p={24}
+          my={12}
+          mx={24}
+          borderRadius="10px"
+        >
           <INeedSomeSpace>
             <ConnectedFormGroup
               name="your-field"
@@ -528,17 +574,39 @@ export const HEY: React.FC = () => {
               />
             </ConnectedFormGroup>
           </INeedSomeSpace>
-          <Keyhole height="8rem" />
-          <ConnectedFormGroup
-            name="example-icon"
-            label="write text in here"
-            spacing="tight"
-            errorType="initial"
-          >
-            <ConnectedInput name="example-icon" htmlFor="example-icon" />
-          </ConnectedFormGroup>
+          <INeedSomeSpace>
+            <ConnectedFormGroup
+              name="example-icon"
+              label="write text in here"
+              spacing="tight"
+              errorType="initial"
+            >
+              <ConnectedInput name="example-icon" htmlFor="example-icon" />
+            </ConnectedFormGroup>
+          </INeedSomeSpace>
         </Box>
-        <Background bg="navy" p={16} mt={12} borderRadius="10px">
+        <Card shadow="medium" gridArea="illo">
+          <Keyhole />
+          <Background
+            bg="navy-900"
+            borderRadius="10px"
+            display="flex"
+            justifyContent="center"
+            p={16}
+          >
+            <Text as="code" justifySelf="center" truncate="fade">
+              we are always watching......
+            </Text>
+          </Background>
+        </Card>
+
+        <Background
+          gridArea="sidebar"
+          bg="navy"
+          p={16}
+          mt={12}
+          borderRadius="10px"
+        >
           <Card shadow="medium">
             <ConnectedFormGroup
               name="check-field-0"
@@ -595,32 +663,6 @@ export const HEY: React.FC = () => {
                 htmlFor="example-text-area"
                 placeholder="pls write your doctoral thesis ty"
               />
-            </ConnectedFormGroup>
-          </INeedSomeSpace>
-          <INeedSomeSpace>
-            <ConnectedFormGroup
-              name="example-text-area"
-              label="write text in here"
-              spacing="tight"
-              errorType="initial"
-            >
-              <ConnectedRadioGroup name="example-radio-area">
-                <ConnectedRadio
-                  name="example-radio-area"
-                  label="first"
-                  value="1"
-                />
-                <ConnectedRadio
-                  label="second"
-                  value="2"
-                  name="example-radio-area"
-                />
-                <ConnectedRadio
-                  label="third"
-                  value="3"
-                  name="example-radio-area"
-                />
-              </ConnectedRadioGroup>
             </ConnectedFormGroup>
           </INeedSomeSpace>
         </Background>
