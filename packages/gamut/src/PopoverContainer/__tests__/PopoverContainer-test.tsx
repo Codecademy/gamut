@@ -17,7 +17,7 @@ const defaultBounding = {
   width: 200,
   x: 0,
   y: 0,
-  toJSON: () => {},
+  toJSON: () => undefined,
 };
 
 const defaultTarget = {
@@ -91,6 +91,7 @@ describe('Popover', () => {
   it('triggers onRequestClose callback when clicking outside', () => {
     const onRequestClose = jest.fn();
     renderView({
+      inline: false,
       onRequestClose,
     });
     fireEvent.mouseDown(screen.getByTestId('outside-popover'));
@@ -100,6 +101,7 @@ describe('Popover', () => {
   it('does not trigger onRequestClose callback when clicking inside', () => {
     const onRequestClose = jest.fn();
     renderView({
+      inline: false,
       onRequestClose,
     });
     fireEvent.mouseDown(screen.getByTestId('popover-content-container'));
@@ -111,6 +113,7 @@ describe('Popover', () => {
     const {
       view: { baseElement },
     } = renderView({
+      inline: false,
       onRequestClose,
     });
     fireEvent.keyDown(baseElement, { key: 'escape', keyCode: 27 });

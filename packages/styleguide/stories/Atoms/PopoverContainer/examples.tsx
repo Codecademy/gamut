@@ -6,6 +6,7 @@ import {
 } from '@codecademy/gamut';
 import { Background } from '@codecademy/gamut-styles';
 import React, { useRef } from 'react';
+
 const SINGLE_DIRECTIONS = ['top', 'bottom', 'left', 'right'] as const;
 
 const MULTI_DIRECTIONS = [
@@ -15,7 +16,7 @@ const MULTI_DIRECTIONS = [
   'bottom-left',
 ] as const;
 
-export const PopoverTemplate = (args: PopoverContainerProps) => {
+export const PopoverTemplate: React.FC<PopoverContainerProps> = (args) => {
   const target = useRef<HTMLDivElement>(null);
 
   return (
@@ -47,7 +48,7 @@ export const PopoverTemplate = (args: PopoverContainerProps) => {
   );
 };
 
-export const AlignmentsTemplate = () => {
+export const AlignmentsTemplate: React.FC<PopoverContainerProps> = (args) => {
   const target = useRef<HTMLDivElement>(null);
 
   return (
@@ -56,6 +57,7 @@ export const AlignmentsTemplate = () => {
         {[...SINGLE_DIRECTIONS, ...MULTI_DIRECTIONS].map((alignment) => {
           return (
             <PopoverContainer
+              {...args}
               key={alignment}
               isOpen
               inline
@@ -94,7 +96,7 @@ export const AlignmentsTemplate = () => {
   );
 };
 
-export const InvertAxisTemplate = () => {
+export const InvertAxisTemplate: React.FC<PopoverContainerProps> = (args) => {
   const target = useRef<HTMLDivElement>(null);
 
   return (
@@ -104,6 +106,7 @@ export const InvertAxisTemplate = () => {
           return MULTI_DIRECTIONS.map((alignment) => {
             return (
               <PopoverContainer
+                {...args}
                 key={`${alignment}-${axis}`}
                 isOpen
                 invertAxis={axis}
@@ -146,7 +149,7 @@ export const InvertAxisTemplate = () => {
   );
 };
 
-export const OffsetTemplate = ({ offset }: PopoverContainerProps) => {
+export const OffsetTemplate: React.FC<PopoverContainerProps> = ({ offset }) => {
   const target = useRef<HTMLDivElement>(null);
 
   return (
@@ -195,7 +198,7 @@ export const OffsetTemplate = ({ offset }: PopoverContainerProps) => {
   );
 };
 
-export const XandYTemplate = ({ x, y }: PopoverContainerProps) => {
+export const XandYTemplate: React.FC<PopoverContainerProps> = ({ x, y }) => {
   const target = useRef<HTMLDivElement>(null);
 
   return (
