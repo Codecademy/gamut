@@ -2,7 +2,6 @@ import { ButtonBaseElements } from '@codecademy/gamut';
 import React, { useRef, useState } from 'react';
 
 import { AnimatedHeaderZone } from '../AppHeader/shared';
-import { defaultDisplayLimit } from './constants';
 import { NotificationBell } from './NotificationBell';
 import { AppHeaderNotifications, NotificationsRendererProps } from './types';
 
