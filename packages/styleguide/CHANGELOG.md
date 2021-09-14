@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [44.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@44.4.0...@codecademy/styleguide@44.5.0) (2021-09-14)
+
+
+### Features
+
+* **List:** Adds List presentation components GM-185 ([d95aa95](https://github.com/Codecademy/client-modules/commit/d95aa955380935a3579f298d45d94ff25012b461))
+
+
+
 ## [44.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@44.3.3...@codecademy/styleguide@44.4.0) (2021-09-13)
 
 
