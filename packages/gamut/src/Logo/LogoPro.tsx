@@ -1,10 +1,11 @@
+import { useCurrentMode } from '@codecademy/gamut-styles';
 import React, { forwardRef } from 'react';
 
-import { LogoProps, LogoSvg, useColorMode } from './shared';
+import { LogoProps, LogoSvg } from './shared';
 
 export const LogoPro = forwardRef<SVGSVGElement, LogoProps>(
   ({ mode, ...props }, ref) => {
-    const currentMode = useColorMode(mode);
+    const currentMode = useCurrentMode(mode);
 
     return (
       <LogoSvg {...props} mode={currentMode} viewBox="0 0 139 21.705" ref={ref}>

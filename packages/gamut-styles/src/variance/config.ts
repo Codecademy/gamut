@@ -1,6 +1,7 @@
 import { transformSize } from '@codecademy/variance';
 
 export const color = {
+  color: { property: 'color', scale: 'colors' },
   textColor: { property: 'color', scale: 'colors' },
   bg: { property: 'backgroundColor', scale: 'colors' },
   borderColor: { property: 'borderColor', scale: 'colors' },
@@ -151,6 +152,11 @@ export const background = {
 
 export const positioning = {
   position: { property: 'position' },
+  inset: {
+    property: 'inset',
+    properties: ['top', 'right', 'bottom', 'left'],
+    transform: transformSize,
+  },
   top: { property: 'top', transform: transformSize },
   right: { property: 'right', transform: transformSize },
   bottom: { property: 'bottom', transform: transformSize },

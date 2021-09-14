@@ -1,8 +1,7 @@
 import { mount } from 'enzyme';
 import React from 'react';
 
-import styles from '../../styles.module.scss';
-import { Avatar } from '..';
+import { Avatar, avatarSizes } from '..';
 
 describe('Avatar', () => {
   it('when an "alt" prop is passed, an "alt" attribute is added to the <img/>', () => {
@@ -21,27 +20,21 @@ describe('Avatar', () => {
     expect(wrapper.find('img[aria-labelledby="label"]')).toHaveLength(1);
   });
 
-  it('adds the light class to the container name as a default', () => {
+  it('when a "size" prop is passed, the <img/> height and width attributes are set accordingly', () => {
+    const wrapper = mount(<Avatar src="" alt="" size="small" />);
+    expect(
+      wrapper.find(
+        `img[height="${avatarSizes.small}"][width="${avatarSizes.small}"]`
+      )
+    ).toHaveLength(1);
+  });
+
+  it('when a "size" prop is not passed, the <img/> height and width attributes are set to the default value', () => {
     const wrapper = mount(<Avatar src="" alt="" />);
-
-    const containerClassName = wrapper.find(`div`).prop('className');
-
-    expect(containerClassName).toContain(styles.lightContainer);
-  });
-
-  it('adds the light class to the container name when its theme is light', () => {
-    const wrapper = mount(<Avatar src="" theme="light" alt="" />);
-
-    const containerClassName = wrapper.find(`div`).prop('className');
-
-    expect(containerClassName).toContain(styles.lightContainer);
-  });
-
-  it('adds the dark class to the container name when its theme is dark', () => {
-    const wrapper = mount(<Avatar src="" theme="dark" alt="" />);
-
-    const containerClassName = wrapper.find(`div`).prop('className');
-
-    expect(containerClassName).toContain(styles.darkContainer);
+    expect(
+      wrapper.find(
+        `img[height="${avatarSizes.medium}"][width="${avatarSizes.medium}"]`
+      )
+    ).toHaveLength(1);
   });
 });

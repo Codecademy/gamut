@@ -5,7 +5,7 @@ orbs:
 references:
   default_env: &default_env
     docker:
-      - image: circleci/node:12.16.0
+      - image: circleci/node:14.17.2
     working_directory: ~/repo
     environment:
       IGNORE_COMMIT_MESSAGE: 'chore(release): publish'
@@ -66,7 +66,7 @@ references:
     run:
       name: Build Required Packages
       command: |
-        yarn build-all --scope={@codecademy/gamut-system,@codecademy/variance,@codecademy/gamut-styles,@codecademy/gamut-icons}
+        yarn build-all --scope={@codecademy/variance,@codecademy/gamut-styles,@codecademy/gamut-icons,@codecademy/gamut-patterns}
 
   set_git_user: &set_git_user
     run:
@@ -222,7 +222,7 @@ jobs:
           name: deploy
           command: |
             DEPLOY_MESSAGE="User: ${CIRCLE_USERNAME} Project: ${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME} Pull Request: ${CIRCLE_PULL_REQUEST}"
-            npx netlify-cli@2.37.0 deploy --message="${DEPLOY_MESSAGE}" --dir=dist --json > .deploy-output
+            npx netlify-cli@2.37.0 deploy --message="${DEPLOY_MESSAGE}" --dir=dist/storybook --json > .deploy-output
       - setup_remote_docker
       - run: docker pull cloudposse/github-commenter:0.5.0-58
       - run:

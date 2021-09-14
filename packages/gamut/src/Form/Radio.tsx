@@ -1,7 +1,15 @@
-import cx from 'classnames';
+import { noSelect, screenReaderOnly } from '@codecademy/gamut-styles';
+import { StyleProps } from '@codecademy/variance';
+import styled from '@emotion/styled';
 import React, { forwardRef, InputHTMLAttributes, ReactNode } from 'react';
 
-import styles from './styles/Radio.module.scss';
+import {
+  conditionalRadioInputStyles,
+  conditionalRadioLabelStyles,
+  radioInput,
+  radioLabel,
+  radioWrapper,
+} from './styles';
 
 export type RadioProps = InputHTMLAttributes<HTMLInputElement> & {
   checked?: boolean;
@@ -15,6 +23,26 @@ export type RadioProps = InputHTMLAttributes<HTMLInputElement> & {
   tabIndex?: number;
   value?: string;
   readOnly?: boolean;
+  error?: boolean;
+};
+export interface RadioElementProps
+  extends RadioProps,
+    StyleProps<typeof conditionalRadioInputStyles> {}
+
+const RadioWrapper = styled.div(noSelect, radioWrapper);
+const RadioLabel = styled.label<RadioElementProps>(
+  noSelect,
+  radioLabel,
+  conditionalRadioLabelStyles
+);
+const RadioInput = styled.input<RadioElementProps>(
+  screenReaderOnly,
+  radioInput,
+  conditionalRadioInputStyles
+);
+
+const conditionalStyleState = (error?: boolean, disabled?: boolean) => {
+  return error ? 'error' : disabled ? 'disabled' : undefined;
 };
 
 export const Radio = forwardRef<HTMLInputElement, RadioProps>(
@@ -30,18 +58,17 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
       onChange,
       required,
       id,
+      error,
       ...rest
     },
     ref
   ) => {
-    const classNames = cx(styles.Radio, className);
-
     const inputId = id ? `${htmlFor}-${id}` : htmlFor;
+    const styleState = conditionalStyleState(error, disabled);
 
     return (
-      <div className={classNames}>
-        <input
-          className={styles.radioInput}
+      <RadioWrapper className={className}>
+        <RadioInput
           id={inputId}
           name={name}
           required={required}
@@ -51,12 +78,13 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
           onChange={onChange}
           ref={ref}
           value={value}
+          variant={styleState}
           {...rest}
         />
-        <label htmlFor={htmlFor} className={styles.radioLabel}>
+        <RadioLabel htmlFor={htmlFor} disabled={disabled} variant={styleState}>
           {label}
-        </label>
-      </div>
+        </RadioLabel>
+      </RadioWrapper>
     );
   }
 );

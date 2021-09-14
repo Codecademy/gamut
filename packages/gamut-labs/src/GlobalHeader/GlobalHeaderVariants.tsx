@@ -8,17 +8,16 @@ import {
 import {
   communityDropdown,
   courseCatalog,
+  favorites,
   forBusiness,
   freeProfile,
   login,
   logo,
   myHome,
-  notifications,
   pricingDropdown,
   proLogo,
   proProfile,
   resourcesDropdown,
-  search,
   signUp,
   tryProForFree,
   unpausePro,
@@ -29,21 +28,24 @@ import { User } from './types';
 const anonHeaderItems = (
   renderLogin: boolean,
   renderSignUp: boolean,
-  renderSearch?: () => ReactNode
+  hidePricing?: boolean
 ): FormattedAppHeaderItems => {
   const leftItems: AppHeaderItem[] = [
     logo,
     courseCatalog,
     resourcesDropdown,
     communityDropdown,
-    pricingDropdown,
+    ...(hidePricing ? [] : [pricingDropdown]),
     forBusiness,
   ];
 
   const rightItems: AppHeaderItem[] = [];
-  renderSearch && rightItems.push(search(renderSearch));
-  renderLogin && rightItems.push(login);
-  renderSignUp && rightItems.push(signUp);
+  if (renderLogin) {
+    rightItems.push(login);
+  }
+  if (renderSignUp) {
+    rightItems.push(signUp);
+  }
 
   return {
     left: leftItems,
@@ -53,19 +55,24 @@ const anonHeaderItems = (
 
 const anonMobileHeaderItems = (
   renderLogin: boolean,
-  renderSignUp: boolean
+  renderSignUp: boolean,
+  hidePricing?: boolean
 ): FormattedMobileAppHeaderItems => {
   const leftItems: AppHeaderItem[] = [logo];
 
   const rightItems: AppHeaderItem[] = [];
-  renderLogin && rightItems.push(login);
-  renderSignUp && rightItems.push(signUp);
+  if (renderLogin) {
+    rightItems.push(login);
+  }
+  if (renderSignUp) {
+    rightItems.push(signUp);
+  }
 
   const mainMenuItems: AppHeaderItem[] = [
     courseCatalog,
     resourcesDropdown,
     communityDropdown,
-    pricingDropdown,
+    ...(hidePricing ? [] : [pricingDropdown]),
     forBusiness,
     signUp,
     login,
@@ -79,47 +86,57 @@ const anonMobileHeaderItems = (
 };
 
 export const anonDefaultHeaderItems = (
-  renderSearch?: () => ReactNode
+  hidePricing?: boolean
 ): FormattedAppHeaderItems => {
-  return anonHeaderItems(true, true, renderSearch);
+  return anonHeaderItems(true, true, hidePricing);
 };
 
-export const anonDefaultMobileHeaderItems = (): FormattedMobileAppHeaderItems => {
-  return anonMobileHeaderItems(true, true);
+export const anonDefaultMobileHeaderItems = (
+  hidePricing?: boolean
+): FormattedMobileAppHeaderItems => {
+  return anonMobileHeaderItems(true, true, hidePricing);
 };
 
-export const anonLandingHeaderItems = (): FormattedAppHeaderItems => {
-  return anonHeaderItems(true, false);
+export const anonLandingHeaderItems = (
+  hidePricing?: boolean
+): FormattedAppHeaderItems => {
+  return anonHeaderItems(true, false, hidePricing);
 };
 
-export const anonLandingMobileHeaderItems = (): FormattedMobileAppHeaderItems => {
-  return anonMobileHeaderItems(true, false);
+export const anonLandingMobileHeaderItems = (
+  hidePricing?: boolean
+): FormattedMobileAppHeaderItems => {
+  return anonMobileHeaderItems(true, false, hidePricing);
 };
 
 export const anonLoginHeaderItems = (
-  renderSearch?: () => ReactNode
+  hidePricing?: boolean
 ): FormattedAppHeaderItems => {
-  return anonHeaderItems(false, true, renderSearch);
+  return anonHeaderItems(false, true, hidePricing);
 };
 
-export const anonLoginMobileHeaderItems = (): FormattedMobileAppHeaderItems => {
-  return anonMobileHeaderItems(false, true);
+export const anonLoginMobileHeaderItems = (
+  hidePricing?: boolean
+): FormattedMobileAppHeaderItems => {
+  return anonMobileHeaderItems(false, true, hidePricing);
 };
 
 export const anonSignupHeaderItems = (
-  renderSearch?: () => ReactNode
+  hidePricing?: boolean
 ): FormattedAppHeaderItems => {
-  return anonHeaderItems(true, false, renderSearch);
+  return anonHeaderItems(true, false, hidePricing);
 };
 
-export const anonSignupMobileHeaderItems = (): FormattedMobileAppHeaderItems => {
-  return anonMobileHeaderItems(true, false);
+export const anonSignupMobileHeaderItems = (
+  hidePricing?: boolean
+): FormattedMobileAppHeaderItems => {
+  return anonMobileHeaderItems(true, false, hidePricing);
 };
 
 export const freeHeaderItems = (
   user: User,
-  renderSearch?: () => ReactNode,
-  renderNotifications?: () => ReactNode
+  hidePricing?: boolean,
+  renderFavorites?: () => ReactNode
 ): FormattedAppHeaderItems => {
   const leftItems: AppHeaderItem[] = [
     logo,
@@ -127,16 +144,20 @@ export const freeHeaderItems = (
     courseCatalog,
     resourcesDropdown,
     communityDropdown,
-    pricingDropdown,
+    ...(hidePricing ? [] : [pricingDropdown]),
     forBusiness,
   ];
 
   const rightItems: AppHeaderItem[] = [];
-  renderSearch && rightItems.push(search(renderSearch));
-  renderNotifications && rightItems.push(notifications(renderNotifications));
+  if (renderFavorites) {
+    rightItems.push(favorites(renderFavorites));
+  }
+
   rightItems.push(freeProfile(user));
   rightItems.push(
-    user.showProUpgrade ? upgradeToPro : tryProForFree(user.proTrialCheckoutUrl)
+    user.showProUpgrade
+      ? upgradeToPro(user.proCheckoutUrl)
+      : tryProForFree(user.proCheckoutUrl)
   );
 
   return {
@@ -147,38 +168,32 @@ export const freeHeaderItems = (
 
 export const freeMobileHeaderItems = (
   user: User,
-  renderNotifications?: () => ReactNode
+  hidePricing?: boolean
 ): FormattedMobileAppHeaderItems => {
   const leftItems: AppHeaderItem[] = [logo];
-
-  const rightItems: AppHeaderItem[] = [];
-  renderNotifications && rightItems.push(notifications(renderNotifications));
-
   const mainMenuItems: AppHeaderItem[] = [
     myHome,
     courseCatalog,
     resourcesDropdown,
     communityDropdown,
-    pricingDropdown,
+    ...(hidePricing ? [] : [pricingDropdown]),
     forBusiness,
     freeProfile(user, true),
+    user.showProUpgrade
+      ? upgradeToPro(user.proCheckoutUrl)
+      : tryProForFree(user.proCheckoutUrl),
   ];
-
-  mainMenuItems.push(
-    user.showProUpgrade ? upgradeToPro : tryProForFree(user.proTrialCheckoutUrl)
-  );
 
   return {
     left: leftItems,
-    right: rightItems,
+    right: [],
     mainMenu: mainMenuItems,
   };
 };
 
 export const proHeaderItems = (
   user: User,
-  renderSearch?: () => ReactNode,
-  renderNotifications?: () => ReactNode
+  renderFavorites?: () => ReactNode
 ): FormattedAppHeaderItems => {
   const leftItems: AppHeaderItem[] = [
     proLogo,
@@ -189,10 +204,14 @@ export const proHeaderItems = (
   ];
 
   const rightItems: AppHeaderItem[] = [];
-  renderSearch && rightItems.push(search(renderSearch));
-  renderNotifications && rightItems.push(notifications(renderNotifications));
+  if (renderFavorites) {
+    rightItems.push(favorites(renderFavorites));
+  }
+
   rightItems.push(proProfile(user));
-  user.isPaused && rightItems.push(unpausePro);
+  if (user.isPaused) {
+    rightItems.push(unpausePro);
+  }
 
   return {
     left: leftItems,
@@ -201,13 +220,9 @@ export const proHeaderItems = (
 };
 
 export const proMobileHeaderItems = (
-  user: User,
-  renderNotifications?: () => ReactNode
+  user: User
 ): FormattedMobileAppHeaderItems => {
   const leftItems: AppHeaderItem[] = [proLogo];
-
-  const rightItems: AppHeaderItem[] = [];
-  renderNotifications && rightItems.push(notifications(renderNotifications));
 
   const mainMenuItems: AppHeaderItem[] = [
     myHome,
@@ -217,11 +232,13 @@ export const proMobileHeaderItems = (
     proProfile(user, true),
   ];
 
-  user.isPaused && mainMenuItems.push(unpausePro);
+  if (user.isPaused) {
+    mainMenuItems.push(unpausePro);
+  }
 
   return {
     left: leftItems,
-    right: rightItems,
+    right: [],
     mainMenu: mainMenuItems,
   };
 };

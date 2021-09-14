@@ -1,20 +1,14 @@
 import { mount } from 'enzyme';
 import React from 'react';
 
-import { AddIcon, GamutIconProps } from '../dist/index';
+import { AddIcon } from '../dist/index';
 
 describe('Compiled gamut-icons:', () => {
-  it('Converts size to equal width and height', () => {
-    const expectedSize = 76;
-    const iconProps: GamutIconProps = {
-      size: expectedSize,
-    };
+  it('Hides the icon from screen readers by default', () => {
+    const wrapper = mount(<AddIcon />);
 
-    const wrapper = mount(<AddIcon {...iconProps} />);
     const svgEl = wrapper.find('svg');
-
-    expect(svgEl.props().width).toEqual(expectedSize);
-    expect(svgEl.props().height).toEqual(expectedSize);
+    expect(svgEl.props()['aria-hidden']).toEqual('true');
   });
 
   it('Sets a title and id automatically and uses the appropriate aria label', () => {
@@ -38,13 +32,6 @@ describe('Compiled gamut-icons:', () => {
 
     const svgEl = wrapper.find('svg');
     expect(svgEl.props().fill).toEqual('currentColor');
-  });
-
-  it('Allows passing a custom color', () => {
-    const wrapper = mount(<AddIcon color="red" />);
-
-    const svgEl = wrapper.find('svg');
-    expect(svgEl.props().fill).toEqual('red');
   });
 
   it('Allows passing a ref', () => {

@@ -4,11 +4,13 @@
     "url": "https://github.com/Codecademy/client-modules/issues"
   },
   "dependencies": {
-    "@codecademy/gamut-styles": "^9.8.1",
-    "@codecademy/gamut-system": "^0.7.2",
+    "@codecademy/gamut-styles": "^11.10.1",
     "classnames": "^2.2.5"
   },
   "description": "Illustrations library for Codecademy",
+  "devDependencies": {
+    "@testing-library/react": "^11.0.4"
+  },
   "homepage": "https://github.com/Codecademy/client-modules#readme",
   "name": "@codecademy/gamut-illustrations",
   "module": "./dist/index.js",
@@ -39,5 +41,5 @@
     "dist/**/[A-Z]**/[A-Z]*.js",
     "dist/**/[A-Z]**/index.js"
   ],
-  "version": "0.14.1"
+  "version": "0.18.1"
 }

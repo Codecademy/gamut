@@ -6,8 +6,6 @@ import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 import LinkTo from '@storybook/addon-links/react';
 
-import { MOCK_DROPDOWN_1 } from './MockAppHeaderElements';
-
 <Meta
   title={title}
   component={AppHeader}
@@ -15,6 +13,11 @@ import { MOCK_DROPDOWN_1 } from './MockAppHeaderElements';
     layout: 'padded',
     status: 'updating',
     subtitle: `A flexible header component, used by GlobalHeader. Takes in an object with AppHeaderItems and maps those items to their corresponding AppHeader components.`,
+    design: {
+      type: 'figma',
+      url:
+        'https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=735%3A4',
+    },
   }}
   args={{
     items: {
@@ -33,7 +36,6 @@ import { MOCK_DROPDOWN_1 } from './MockAppHeaderElements';
           text: 'AppHeaderLink',
           type: 'link',
         },
-        MOCK_DROPDOWN_1,
       ],
       right: [
         {
@@ -56,6 +58,11 @@ import { MOCK_DROPDOWN_1 } from './MockAppHeaderElements';
           type: 'fill-button',
         },
       ],
+    },
+    search: {
+      onEnable: () => {},
+      onSearch: () => {},
+      onTrackingClick: () => {},
     },
   }}
 />

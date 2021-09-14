@@ -94,7 +94,7 @@ export const Toggle: React.FC<ToggleProps> = ({
   size = 'medium',
 }) => {
   const activeColor = variant;
-  const checkedColor = checked ? variant : 'gray-500';
+  const checkedColor = checked ? variant : 'gray-600';
   const sizeStyles = sizes[size];
 
   return (

@@ -1,3 +1,4 @@
+import { Column, LayoutGrid } from '@codecademy/gamut';
 import { Testimonial } from '@codecademy/gamut-labs/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
@@ -7,15 +8,19 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
   title={title}
   component={Testimonial}
   args={{
-    testimonial: {
-      firstName: 'Lacey',
-      lastName: 'Bathala',
-      company: 'Microsoft',
-      quote: 'Coding aint rocket science, it’s just falsely intimidating.',
-      imageUrl: 'https://content.codecademy.com/courses/free/boba.svg',
+    firstName: 'Lacey',
+    lastName: 'Bathala',
+    occupation: 'Data Analyst',
+    quote: "Coding isn't a rocket appliance, it’s just falsely intimidating.",
+    company: 'Microsoft',
+    imageUrl:
+      'http://images.ctfassets.net/go6kr6r0ykrq/4MdZk5XTPtg52O0uUBDMXB/e829b4fe7ea9e02220c4f86b0a17d7b3/lacey_bathala_480.png?w=120&h=120',
+    href:
+      'https://www.codecademy.com/learner-stories/data-science/1ogiwGOCDJNRTHczbLsyn8',
+    onClick: () => {
+      // eslint-disable-next-line no-console
+      console.log('You could add event tracking here.');
     },
-    size: 'small',
-    theme: 'dark',
   }}
   parameters={{
     subtitle: `A pull quote for use in an editorial page.`,
@@ -23,34 +28,57 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
   }}
 />
 
-<Canvas withSource="open" className="dark">
+## Horizontal
+
+Testimonials default to the horizontal layout.
+
+<Canvas withSource="open">
   <Story name="Testimonial">{(args) => <Testimonial {...args} />}</Story>
 </Canvas>
 
 <PropsTable story="Testimonial" />
 
-<Canvas className="dark" columns={1}>
-  <Story name="Medium" args={{ size: 'medium' }}>
-    {(args) => <Testimonial {...args} />}
-  </Story>
-  <Story name="Large" args={{ size: 'large' }}>
-    {(args) => <Testimonial {...args} />}
-  </Story>
-  <Story
-    name="No Avatar"
-    args={{
-      testamonial: {
-        firstName: 'Lacey',
-        lastName: 'Bathala',
-        company: 'Microsoft',
-        quote: 'Coding aint rocket science, it’s just falsely intimidating.',
-      },
-      size: 'large',
-    }}
-  >
-    {(args) => <Testimonial {...args} />}
-  </Story>
-  <Story name="Light Theme" args={{ theme: 'light' }}>
-    {(args) => <Testimonial {...args} />}
-  </Story>
-</Canvas>
+## Color modes
+
+Testimonials can be displayed in both light and dark color modes.
+
+<LayoutGrid gap={32}>
+<Column size={6}>
+
+### Light mode
+
+<Story name="Light Mode">{(args) => <Testimonial {...args} />}</Story>
+
+</Column>
+<Column size={6}>
+
+### Dark mode
+
+<Story name="Dark Mode">
+  {(args) => <Testimonial hideAvatar mode="dark" {...args} />}
+</Story>
+
+</Column>
+<Column display="block"  size={6}>
+
+### Vertical Variant
+
+Testimonial can use the vertical layout for smaller containers. Testimonial will also switch to this variant for mobile viewports.
+
+<Story name="Small Light">
+  {(args) => <Testimonial variant="vertical" {...args} />}
+</Story>
+
+</Column>
+<Column display="block" flexDirection="column" size={6}>
+
+### Hidden Picture
+
+Testimonial will hide the picture automatically if the `imageUrl` prop is `undefined`. It can also be hidden via the `hidePhoto` prop
+
+<Story name="Medium Dark">
+  {(args) => <Testimonial {...args} variant="horizontal" hidePhoto />}
+</Story>
+
+</Column>
+</LayoutGrid>

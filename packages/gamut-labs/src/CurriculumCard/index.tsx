@@ -17,6 +17,7 @@ const cardStyles = {
 } as const;
 
 export type CurriculumCardProps = SubtitleProps & {
+  beta?: boolean;
   text: string;
   title: string;
   headingLevel?: HeadingTags;
@@ -29,6 +30,7 @@ export type CurriculumCardProps = SubtitleProps & {
 };
 
 export const CurriculumCard: React.FC<CurriculumCardProps> = ({
+  beta,
   difficulty,
   headingLevel = 'h3',
   image,
@@ -54,7 +56,13 @@ export const CurriculumCard: React.FC<CurriculumCardProps> = ({
       shadow="medium"
       position="relative"
     >
-      <Text display="flex" fontSize={14} mb={12} fontFamily="accent">
+      <Text
+        display="flex"
+        fontSize={14}
+        mb={12}
+        fontFamily="accent"
+        textTransform="capitalize"
+      >
         {showProLogo && <ProLabel alignSelf="center" mr={8} mode={mode} />}
         {text}
       </Text>
@@ -70,12 +78,17 @@ export const CurriculumCard: React.FC<CurriculumCardProps> = ({
           />
         )}
       </FlexBox>
-      <FlexBox alignItems="center" justifyContent="center" pb={16}>
+      <FlexBox center pb={16}>
         {isFullSize && image && (
           <Image image={image} progressState={progressState} />
         )}
       </FlexBox>
-      <Footer progressState={progressState} tag={tag} tagColor={tagColor} />
+      <Footer
+        beta={beta}
+        progressState={progressState}
+        tag={tag}
+        tagColor={tagColor}
+      />
     </Card>
   );
 };

@@ -1,5 +1,6 @@
-import { get, identity, isObject, merge } from 'lodash';
+import { get, identity, isArray, isObject, isUndefined, merge } from 'lodash';
 
+import { createScaleLookup } from './scales/createScaleLookup';
 import {
   AbstractParser,
   AbstractPropTransformer,
@@ -8,6 +9,7 @@ import {
   Parser,
   Prop,
   PropTransformer,
+  States,
   TransformerMap,
   Variant,
 } from './types/config';
@@ -51,6 +53,7 @@ export const variance = {
         switch (typeof value) {
           case 'string':
           case 'number':
+          case 'function':
             return Object.assign(styles, property.styleFn(value, prop, props));
           // handle any props configured with the responsive notation
           case 'object':
@@ -91,42 +94,58 @@ export const variance = {
       properties = [property],
       scale,
     } = config;
+    const getScaleValue = createScaleLookup(scale);
+    const alwaysTransform = scale === undefined || isArray(scale);
 
     return {
       ...config,
       prop,
       styleFn: (value, prop, props) => {
         const styles: CSSObject = {};
-        let scaleVal: string | number | undefined;
-        switch (typeof scale) {
-          case 'string': {
-            const path = `theme.${scale}.${value}`;
-            scaleVal = get(props, path);
-            break;
-          }
-          case 'object': {
-            scaleVal = get(scale, `${value}`);
-            break;
-          }
-          case 'undefined':
-          default:
+
+        if (isUndefined(value)) {
+          return styles;
         }
 
-        const useTransform = scaleVal !== undefined || scale === undefined;
+        let useTransform = false;
+        let intermediateValue: string | number | undefined;
+        let scaleValue: string | number | undefined;
 
-        const usedValue = scaleVal ?? (value as string | number);
+        switch (typeof value) {
+          case 'number':
+          case 'string':
+            scaleValue = getScaleValue(value, props);
+            useTransform = scaleValue !== undefined || alwaysTransform;
+            intermediateValue = scaleValue ?? value;
+            break;
+          case 'function':
+            if (props.theme) {
+              intermediateValue = value(props.theme) as
+                | string
+                | number
+                | undefined;
+            }
+            break;
+          default:
+            return styles;
+        }
 
         // for each property look up the scale value from theme if passed and apply any
         // final transforms to the value
         properties.forEach((property) => {
-          const finalValue = useTransform
-            ? transform(usedValue, property, props)
-            : usedValue;
-          const mergeStyles = isObject(finalValue)
-            ? finalValue
-            : { [property]: finalValue };
+          let styleValue: ReturnType<typeof transform> = intermediateValue;
 
-          Object.assign(styles, mergeStyles);
+          if (useTransform && !isUndefined(styleValue)) {
+            styleValue = transform(styleValue, property, props);
+          }
+          switch (typeof styleValue) {
+            case 'number':
+            case 'string':
+              return (styles[property] = styleValue);
+            case 'object':
+              return Object.assign(styles, styleValue);
+            default:
+          }
         });
         // return the resulting styles object
         return styles;
@@ -158,6 +177,7 @@ export const variance = {
 
       /** Static CSS Properties get extracted if they match neither syntax */
       const staticCss = getStaticCss(cssProps, [
+        'theme', // Just in case this gets passed somehow
         ...selectors,
         ...filteredProps,
       ]);
@@ -166,13 +186,11 @@ export const variance = {
         if (cache) return cache;
         const css = parser({ ...cssProps, theme } as any);
         selectors.forEach((selector) => {
-          const selectorConfig = cssProps[selector];
-          if (isObject(selectorConfig)) {
-            css[selector] = {
-              ...getStaticCss(selectorConfig, filteredProps),
-              ...parser(Object.assign(selectorConfig, { theme }) as any),
-            };
-          }
+          const selectorConfig = cssProps[selector] ?? {};
+          css[selector] = {
+            ...getStaticCss(selectorConfig, filteredProps),
+            ...parser({ ...selectorConfig, theme } as any),
+          };
         });
 
         /** Merge the static and generated css and save it to the cache */
@@ -211,6 +229,33 @@ export const variance = {
           baseFn(props),
           variantFns?.[selected as Keys]?.(props)
         );
+      };
+    };
+  },
+  createStates<
+    Config extends Record<string, Prop>,
+    P extends Parser<TransformerMap<Config>>
+  >(config: Config): States<P> {
+    const css: CSS<P> = this.createCss(config);
+
+    return (states) => {
+      const orderedStates = Object.keys(states);
+      type Keys = keyof typeof states;
+      const stateFns = {} as Record<Keys, (props: ThemeProps) => CSSObject>;
+
+      orderedStates.forEach((key) => {
+        const stateKey = key as Keys;
+        const cssProps = states[stateKey];
+        stateFns[stateKey] = css(cssProps as any);
+      });
+
+      return (props) => {
+        const styles = {};
+        orderedStates.forEach((state) => {
+          merge(styles, props[state] && stateFns[state](props));
+        });
+
+        return styles;
       };
     };
   },

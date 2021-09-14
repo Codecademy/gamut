@@ -1,36 +1,35 @@
-import { themed } from '@codecademy/gamut-styles';
-import { variant } from '@codecademy/gamut-styles/src';
-import { HandlerProps } from '@codecademy/gamut-system';
+import { system, variant } from '@codecademy/gamut-styles/src';
 import styled from '@emotion/styled';
+import { StyleProps } from '@codecademy/variance';
 
-export const Table = styled.div`
-  display: grid;
-`;
+export const Table = styled.div(system.css({ display: 'grid' }));
 
 const rowVariants = variant({
-  inset: {
-    borderStyle: 'solid',
-    borderStyleTop: 'none',
-    borderWidth: '1px',
-    borderColor: 'gray-200',
-    backgroundColor: 'gray-100',
-    padding: 32,
+  variants: {
+    inset: {
+      border: 1,
+      borderTop: 'none',
+      borderColor: 'gray-200',
+      bg: 'gray-100',
+      p: 32,
+    },
   },
 });
 
-export const Row = styled.div<Parameters<typeof rowVariants>[0]>`
-  display: flex;
-  justify-content: space-between;
-  max-width: 100%;
-  border-bottom: 1px solid ${themed('colors.navy')};
-  ${rowVariants}
+interface RowProps extends StyleProps<typeof rowVariants> {}
 
-  &:last-child {
-    border-bottom: none;
-  }
-`;
-
-type ColSize = HandlerProps<typeof colSizes>;
+export const Row = styled.div<RowProps>(
+  system.css({
+    display: 'flex',
+    justifyContent: 'space-between',
+    maxWidth: 1,
+    borderBottom: 1,
+    '&:last-child': {
+      borderBottom: 'none',
+    },
+  }),
+  rowVariants
+);
 
 const colSizes = variant({
   prop: 'size',
@@ -52,34 +51,31 @@ const colSizes = variant({
       maxWidth: '20rem',
     },
     fill: {
-      flexGrow: 1,
-      flexShrink: 0,
-      flexBasis: 0,
+      flex: 1,
     },
   },
 });
 
-type ColVariants = HandlerProps<typeof colVariants>;
-
 const colVariants = variant({
-  header: {
-    fontWeight: 'title',
-    fontSize: 16,
+  variants: {
+    header: {
+      fontWeight: 'title',
+      fontSize: 16,
+    },
   },
 });
 
-export type ColProps = ColVariants & ColSize;
+export interface ColProps
+  extends StyleProps<typeof colVariants>,
+    StyleProps<typeof colSizes> {}
 
-export const Col = styled.div<ColProps>`
-  ${colSizes}
-  ${colVariants}
-  padding: ${themed('spacing.12')} ${themed('spacing.24')};
-
-  &:first-of-type {
-    padding-left: ${themed('spacing.4')};
-  }
-
-  &:last-of-type {
-    padding-right: ${themed('spacing.4')};
-  }
-`;
+export const Col = styled.div<ColProps>(
+  system.css({
+    py: 12,
+    px: 24,
+    '&:first-of-type': { pl: 4 },
+    '&:last-of-type': { pr: 4 },
+  }),
+  colSizes,
+  colVariants
+);

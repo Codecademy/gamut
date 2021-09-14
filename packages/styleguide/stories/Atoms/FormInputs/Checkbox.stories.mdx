@@ -3,6 +3,8 @@ import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 
+import { CheckboxExample } from './examples';
+
 <Meta
   title={title}
   component={Checkbox}
@@ -11,11 +13,19 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
       'A `<input type="checkbox" />` element for handling boolean values',
     source: 'gamut',
     status: 'current',
+    design: {
+      type: 'figma',
+      url:
+        'https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=1189%3A0',
+    },
   }}
   args={{
     htmlFor: 'example-checkbox',
     label: 'A Checkbox Label',
     name: 'example-checkbox',
+    checked: true,
+    readOnly: true,
+    onChange: () => {},
   }}
 />
 
@@ -25,16 +35,60 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 
 <PropsTable story="Checkbox" />
 
+### Controlled Checkboxes
+
+Our Checkboxes are [controlled components](https://reactjs.org/docs/forms.html#controlled-components), so their checked value must be controlled by an external state and onChange, for example:
+
+<CheckboxExample />
+
+```tsx
+import { Checkbox, CheckboxProps, FormGroup } from '@codecademy/gamut';
+import React, { ChangeEvent, useState } from 'react';
+
+type CustomCheckboxProps = Omit<CheckboxProps, 'checked'> & {
+  defaultChecked?: boolean;
+  errorMessage?: string;
+};
+
+const CustomCheckbox: React.FC<CustomCheckboxProps> = ({
+  htmlFor,
+  label,
+  defaultChecked = false,
+  errorMessage,
+  disabled,
+  ...rest
+}) => {
+  const [currentChecked, setCurrentChecked] = useState(defaultChecked);
+
+  const changeHandler = (event: ChangeEvent<HTMLElement>) => {
+    setCurrentChecked(!currentChecked);
+  };
+
+  return (
+    <FormGroup htmlFor={htmlFor} error={errorMessage} disabled={disabled}>
+      <Checkbox
+        htmlFor={htmlFor}
+        onChange={changeHandler}
+        label={label}
+        disabled={disabled}
+        checked={currentChecked}
+        {...rest}
+      />
+    </FormGroup>
+  );
+};
+```
+
 ### Input States
 
 <Canvas>
   <Story
-    name="Checked"
+    name="Unchecked"
     args={{
-      htmlFor: 'example-checked',
-      label: 'Checked',
-      name: 'example-checked',
-      checked: true,
+      htmlFor: 'example-unchecked',
+      label: 'unchecked',
+      name: 'example-unchecked',
+      checked: false,
     }}
   >
     {(args) => <Checkbox {...args} />}
@@ -46,6 +100,7 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
       label: 'Disabled',
       name: 'example-disabled',
       disabled: true,
+      checked: false,
     }}
   >
     {(args) => <Checkbox {...args} />}
@@ -70,19 +125,40 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
       label:
         'I am a longer label and will displayed at a smaller size in order to conserve valuable space.  This can be used to display some disclaimer about terms or conditions that might be a bit too long for a normal label area',
       multiline: true,
+      checked: false,
     }}
   >
     {(args) => <Checkbox {...args} />}
   </Story>
-  {/* <Story
-    name="Error"
-    args={{
-      htmlFor: 'example-error',
-      label: 'Error',
-      name: 'example-error',
-      error: true,
-    }}
-  >
-    {(args) => <Checkbox {...args} />}
-  </Story> */}
+</Canvas>
+
+### Spacing Variants
+
+If you need to checkboxes to fit into a smaller space, you can use our `tight` spacing prop for checkboxes that are a bit closer together.
+
+<Canvas>
+  <Story name="Tight Spacing">
+    <Checkbox
+      checked
+      readOnly
+      spacing="tight"
+      label="a small space"
+      htmlFor="spacing-1"
+      name="spacing-1"
+    />
+    <Checkbox
+      spacing="tight"
+      label="with three checkboxes"
+      htmlFor="spacing-2"
+      name="spacing-2"
+    />
+    <Checkbox
+      checked
+      readOnly
+      spacing="tight"
+      label="neat huh?"
+      htmlFor="spacing-3"
+      name="spacing-3"
+    />
+  </Story>
 </Canvas>

@@ -9,7 +9,7 @@ import { useState } from '@storybook/addons';
   component={FocusTrap}
   parameters={{
     subtitle:
-      "Used for modal and dialog experiences like `Overlay` and `Modal`, this component controls focus management behavior when we need to limit focus to a single area of the page for some amount of time. It doesn't need to be a modal or overlay, and can instead be controlled with the `active` prop.",
+      "Used for modal and dialog experiences like `Overlay` and `ModalDeprecated`, this component controls focus management behavior when we need to limit focus to a single area of the page for some amount of time. It doesn't need to be a modal or overlay, and can instead be controlled with the `active` prop.",
     source: 'gamut',
     status: 'current',
   }}
@@ -19,7 +19,7 @@ This component is a wrapper around the [react-focus-on](https://github.com/theKa
 
 <Canvas>
   <Story name="FocusTrap">
-    {({ active, ...args }) => {
+    {(args) => {
       const [trapActive, setActive] = useState(false);
       return (
         <>

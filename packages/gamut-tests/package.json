@@ -1,8 +1,9 @@
 {
   "author": "Codecademy Engineering <dev@codecademy.com>",
   "dependencies": {
-    "@codecademy/gamut-styles": "^9.8.1",
-    "component-test-setup": "*"
+    "@codecademy/gamut-styles": "^11.10.1",
+    "component-test-setup": "*",
+    "lodash": "^4.17.5"
   },
   "description": "Shared component test setup for Gamut applications",
   "keywords": [
@@ -13,10 +14,13 @@
     "rtl"
   ],
   "name": "@codecademy/gamut-tests",
-  "version": "2.3.28",
+  "version": "2.6.1",
   "license": "MIT",
   "main": "./dist/index.js",
   "module": "dist/index.js",
+  "peerDependencies": {
+    "react": ">=16.8.1"
+  },
   "publishConfig": {
     "access": "public"
   },

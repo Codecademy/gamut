@@ -1,3 +1,5 @@
+import { states } from '@codecademy/gamut-styles';
+import styled from '@emotion/styled';
 import React, { useCallback } from 'react';
 
 import { BodyPortal } from '../BodyPortal';
@@ -24,46 +26,68 @@ export type OverlayProps = {
    * Whether the overlay is rendered.
    */
   isOpen?: boolean;
+  /** Whether the overlay renders inline to its container or creates a portal to the end of the body */
+  inline?: boolean;
+  /** Whether the overlay has a transparent or a shrouded opaque background */
+  shroud?: boolean;
 };
+
+const OverlayContainer = styled(FlexBox)(
+  states({
+    shroud: {
+      bg: 'shadow-opaque',
+    },
+    inline: {
+      position: 'absolute',
+    },
+  })
+);
 
 export const Overlay: React.FC<OverlayProps> = ({
   className,
   children,
+  shroud = false,
+  inline = false,
   clickOutsideCloses = true,
   escapeCloses = true,
   onRequestClose,
   isOpen,
 }) => {
   const handleOutsideClick = useCallback(() => {
-    clickOutsideCloses && onRequestClose();
+    if (clickOutsideCloses) {
+      onRequestClose();
+    }
   }, [clickOutsideCloses, onRequestClose]);
 
   const handleEscapeKey = useCallback(() => {
-    escapeCloses && onRequestClose();
+    if (escapeCloses) {
+      onRequestClose();
+    }
   }, [escapeCloses, onRequestClose]);
 
   if (!isOpen) return null;
 
-  return (
-    <BodyPortal>
-      <FlexBox
-        data-testid="overlay-content-container"
-        position="fixed"
-        justifyContent="center"
-        alignItems="center"
-        bottom="0"
-        left="0"
-        right="0"
-        top="0"
-        className={className}
+  const content = (
+    <OverlayContainer
+      position="fixed"
+      data-testid="overlay-content-container"
+      center
+      inset={0}
+      className={className}
+      inline={inline}
+      shroud={shroud}
+    >
+      <FocusTrap
+        active={!inline}
+        onClickOutside={handleOutsideClick}
+        onEscapeKey={handleEscapeKey}
       >
-        <FocusTrap
-          onClickOutside={handleOutsideClick}
-          onEscapeKey={handleEscapeKey}
-        >
-          {children}
-        </FocusTrap>
-      </FlexBox>
-    </BodyPortal>
+        {children}
+      </FocusTrap>
+    </OverlayContainer>
   );
+
+  if (inline) return content;
+
+  return <BodyPortal>{content}</BodyPortal>;
 };

@@ -1,32 +1,36 @@
+import { isString } from 'lodash';
 import React from 'react';
 import { UseFormMethods } from 'react-hook-form';
 
 import { Radio, RadioGroup } from '../../../Form';
-import { GridFormRadioGroupField } from '../../types';
+import { BaseFormInputProps, GridFormRadioGroupField } from '../../types';
 
-export type GridFormRadioGroupInputProps = {
-  className?: string;
+export interface GridFormRadioGroupInputProps extends BaseFormInputProps {
   field: GridFormRadioGroupField;
   register: UseFormMethods['register'];
   setValue: (name: string, value: string) => void;
-  showRequired?: boolean;
-};
+}
 
 export const GridFormRadioGroupInput: React.FC<GridFormRadioGroupInputProps> = ({
   className,
+  disabled,
   field,
   register,
   setValue,
-  showRequired,
+  required,
+  error,
 }) => {
+  const ariaLabel: string | undefined =
+    field.ariaLabel ?? (isString(field.label) ? field.label : undefined);
+
   return (
     <RadioGroup
       className={className}
       htmlForPrefix={field.name}
       name={field.name}
       role="radiogroup"
-      aria-label={field.label}
-      aria-required={showRequired}
+      aria-label={ariaLabel}
+      aria-required={required}
       onChange={(event) => {
         const { value } = event.target;
         setValue(field.name, value);
@@ -35,12 +39,13 @@ export const GridFormRadioGroupInput: React.FC<GridFormRadioGroupInputProps> = (
     >
       {field.options.map(({ label, value }) => (
         <Radio
-          disabled={field.disabled}
+          disabled={disabled}
           key={value}
           label={label}
           ref={register(field.validation)}
           value={value}
           id={field.id}
+          error={error}
         />
       ))}
     </RadioGroup>

@@ -8,6 +8,7 @@ import {
   NotebookIcon,
   PersonIcon,
   PieLineGraphIcon,
+  RatingStarGiveIcon,
   SupportIcon,
 } from '@codecademy/gamut-icons';
 import { ReactNode } from 'react';
@@ -21,6 +22,7 @@ import {
   AppHeaderSimpleDropdownItem,
   AppHeaderTextButtonItem,
 } from '../AppHeader/AppHeaderElements/types';
+import { headerResourcesList } from '../lib/resourcesList';
 import { User } from './types';
 
 export const logo: AppHeaderLogoItem = {
@@ -65,37 +67,7 @@ export const resourcesDropdown: AppHeaderSimpleDropdownItem = {
   icon: NotebookIcon,
   id: 'resources',
   text: 'Resources',
-  popover: [
-    {
-      id: 'cheatsheets',
-      href: '/resources/cheatsheets/all',
-      trackingTarget: 'topnav_resources_cheatsheets',
-      text: 'Cheatsheets',
-      type: 'link',
-    },
-    {
-      id: 'projects',
-      href: '/projects',
-      trackingTarget: 'topnav_resources_projects',
-      text: 'Projects',
-      type: 'link',
-    },
-    {
-      id: 'articles',
-      href: '/articles',
-      trackingTarget: 'topnav_resources_articles',
-      text: 'Articles',
-      type: 'link',
-    },
-    {
-      id: 'blog',
-      href: 'https://news.codecademy.com/',
-      newTab: true,
-      trackingTarget: 'topnav_resources_blog',
-      text: 'Blog',
-      type: 'link',
-    },
-  ],
+  popover: headerResourcesList,
   trackingTarget: 'topnav_resources',
   type: 'dropdown',
 };
@@ -174,22 +146,16 @@ export const forBusiness: AppHeaderLinkItem = {
   type: 'link',
 };
 
-export const search = (
-  renderSearch: () => ReactNode
+/**
+ * Note: this is currently experimental!
+ * This will be cleaned up as part of EGG-1644.
+ */
+export const favorites = (
+  renderFavorites: () => ReactNode
 ): AppHeaderRenderElementItem => {
   return {
-    id: 'search',
-    renderElement: renderSearch,
-    type: 'render-element',
-  };
-};
-
-export const notifications = (
-  renderNotifications: () => ReactNode
-): AppHeaderRenderElementItem => {
-  return {
-    id: 'notifications',
-    renderElement: renderNotifications,
+    id: 'favorites',
+    renderElement: renderFavorites,
     type: 'render-element',
   };
 };
@@ -307,6 +273,10 @@ export const proProfile = (
   if (!isMobile && (user.isAccountManager || user.isAdmin)) {
     topSection.push(profileBusinessAccount);
   }
+  if (user.showReferrals) {
+    topSection.push(referrals);
+  }
+
   topSection.push(profileHelpCenter);
 
   const middleSection = [];
@@ -346,14 +316,16 @@ export const tryProForFree = (
   type: 'fill-button',
 });
 
-export const upgradeToPro: AppHeaderFillButtonItem = {
+export const upgradeToPro = (
+  checkoutUrl?: string
+): AppHeaderFillButtonItem => ({
   dataTestId: 'upgrade-link',
   id: 'upgrade-to-pro',
   text: 'Upgrade to Pro',
-  href: '/pro/membership',
+  href: checkoutUrl || '/pro/membership',
   trackingTarget: 'topnav_pro_upgrade',
   type: 'fill-button',
-};
+});
 
 export const unpausePro: AppHeaderFillButtonItem = {
   dataTestId: 'unpause-link',
@@ -382,4 +354,14 @@ export const signUp: AppHeaderFillButtonItem = {
   trackingTarget: 'topnav_signup',
   type: 'fill-button',
   redirect: true,
+};
+
+export const referrals: AppHeaderLinkItem = {
+  dataTestId: 'header-referrals',
+  id: 'referrals',
+  text: 'Give Pro, Get Pro',
+  href: '/referrals',
+  type: 'link',
+  icon: RatingStarGiveIcon,
+  trackingTarget: 'avatar_referrals',
 };

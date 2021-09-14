@@ -2,31 +2,46 @@ import { each, isObject } from 'lodash';
 import React from 'react';
 import { OptionTypeBase } from 'react-select';
 
-export type ParseOptionProps = {
-  id?: string | number;
-  options?: string[] | Record<string, string | number>;
-};
+import {
+  IconOption,
+  SelectDropdownOptions,
+  SelectDropdownSizes,
+} from './SelectDropdown';
 
-const formatAsOptions = ({ label, value, key }: OptionTypeBase) => {
+export interface SelectOptionBase {
+  label: string;
+  value: string;
+  key?: string;
+}
+export interface ParseOptionProps extends SelectDropdownSizes {
+  id?: string | number;
+  options?: SelectDropdownOptions;
+}
+
+const formatAsOptions = ({ label, value, key }: SelectOptionBase) => {
   const option = key ? (
-    <option key={key} value={value} data-testid={key}>
+    <option label={label} key={key} value={value} data-testid={key}>
       {label}
     </option>
   ) : (
-    <option key={label} value={value} data-testid={label}>
+    <option label={value} key={label} value={value} data-testid={label}>
       {value}
     </option>
   );
 
   return option;
 };
-export const parseOptions = ({ options, id }: ParseOptionProps) => {
-  const parsedOptions: Array<OptionTypeBase> = [];
-
-  if (options instanceof Array) {
-    options.forEach((value) => {
-      const label = id ? `${id}-${value}` : value;
-      parsedOptions.push({ label, value });
+export const parseOptions = ({ options, id, size }: ParseOptionProps) => {
+  const parsedOptions: OptionTypeBase[] = [];
+  if (Array.isArray(options)) {
+    options.forEach((value: string | IconOption) => {
+      if (isObject(value)) {
+        const key = id ? `${id}-${value?.value}` : value?.value;
+        parsedOptions.push({ ...value, key, size });
+      } else {
+        const label = id ? `${id}-${value}` : value;
+        parsedOptions.push({ label, value });
+      }
     });
   } else if (isObject(options)) {
     each(options, (label, value) => {
@@ -35,7 +50,7 @@ export const parseOptions = ({ options, id }: ParseOptionProps) => {
     });
   }
 
-  return parsedOptions;
+  return [...parsedOptions];
 };
 
 export const parseSelectOptions = (props: ParseOptionProps) => {

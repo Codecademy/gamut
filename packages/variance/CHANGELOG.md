@@ -3,6 +3,122 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [0.18.1](https://github.com/Codecademy/client-modules/compare/@codecademy/variance@0.18.0...@codecademy/variance@0.18.1) (2021-09-13)
+
+**Note:** Version bump only for package @codecademy/variance
+
+
+
+
+
+## [0.18.0](https://github.com/Codecademy/client-modules/compare/@codecademy/variance@0.17.4...@codecademy/variance@0.18.0) (2021-09-10)
+
+
+### Features
+
+* bump ESLint configs to latest ([e0a201a](https://github.com/Codecademy/client-modules/commit/e0a201abcc5f49718538d3d91af21cb37db4470e))
+
+
+
+### [0.17.4](https://github.com/Codecademy/client-modules/compare/@codecademy/variance@0.17.3...@codecademy/variance@0.17.4) (2021-08-30)
+
+
+### Bug Fixes
+
+* **variance:** Fix theme computations and add more tests for prop behavior ([0cc017a](https://github.com/Codecademy/client-modules/commit/0cc017ac3b6a519da9ee4d4d4488a9e0da9029a2))
+
+
+
+### [0.17.3](https://github.com/Codecademy/client-modules/compare/@codecademy/variance@0.17.2...@codecademy/variance@0.17.3) (2021-08-12)
+
+
+### Bug Fixes
+
+* **variance:** Ensure array scales always qualify for transformation ([66f1760](https://github.com/Codecademy/client-modules/commit/66f1760c85aa605bae89195801683faab01822e3))
+
+
+
+### [0.17.2](https://github.com/Codecademy/client-modules/compare/@codecademy/variance@0.17.1...@codecademy/variance@0.17.2) (2021-07-19)
+
+
+### Bug Fixes
+
+* Safe deep merge typings ([541272c](https://github.com/Codecademy/client-modules/commit/541272c424637c8699c16ef25e3fefb9b17041ea))
+
+
+
+### [0.17.1](https://github.com/Codecademy/client-modules/compare/@codecademy/variance@0.17.0...@codecademy/variance@0.17.1) (2021-07-16)
+
+
+### Bug Fixes
+
+* Theme extension merge logic ([9b32463](https://github.com/Codecademy/client-modules/commit/9b32463d044ead994b2c173bc07c5ebbd5511187))
+
+
+
+## [0.17.0](https://github.com/Codecademy/client-modules/compare/@codecademy/variance@0.16.0...@codecademy/variance@0.17.0) (2021-07-15)
+
+
+### Features
+
+* Add admin theme ([c5f7bf9](https://github.com/Codecademy/client-modules/commit/c5f7bf9faaf86b2aca3f8dffd67480d50999be7b))
+
+
+
+## [0.16.0](https://github.com/Codecademy/client-modules/compare/@codecademy/variance@0.15.0...@codecademy/variance@0.16.0) (2021-06-16)
+
+
+### Features
+
+* **variance:** Computed styles, and configurable CSSType narrowing [GM-233] ([c258c19](https://github.com/Codecademy/client-modules/commit/c258c19b7970b41361b6cfafe76e2a52b7b4c828))
+
+
+
+## [0.15.0](https://github.com/Codecademy/client-modules/compare/@codecademy/variance@0.14.0...@codecademy/variance@0.15.0) (2021-06-16)
+
+
+### Features
+
+* **Text:** Add more common utility variants / states as props GM-248 ([85b541c](https://github.com/Codecademy/client-modules/commit/85b541cbb85ef5c60b8012196680e1062d469ad1))
+
+
+
+## [0.14.0](https://github.com/Codecademy/client-modules/compare/@codecademy/variance@0.13.0...@codecademy/variance@0.14.0) (2021-06-10)
+
+
+### Features
+
+* Navy scale + color alias changes GM-237 ([bf896dd](https://github.com/Codecademy/client-modules/commit/bf896dd3fcf0435ef557694740d96df38d12173b)), closes [#10162](https://github.com/Codecademy/client-modules/issues/10162)
+
+
+
+## [0.13.0](https://github.com/Codecademy/client-modules/compare/@codecademy/variance@0.12.1...@codecademy/variance@0.13.0) (2021-06-10)
+
+
+### Features
+
+* **variance:** states boolean toggle styles GM-233 ([e463f0e](https://github.com/Codecademy/client-modules/commit/e463f0e77802a3565ddda4de2e14050372923678))
+
+
+
+### [0.12.1](https://github.com/Codecademy/client-modules/compare/@codecademy/variance@0.12.0...@codecademy/variance@0.12.1) (2021-06-02)
+
+
+### Bug Fixes
+
+* **variance:** Fix static css mutability for `css` [GM-235] ([5eab7d9](https://github.com/Codecademy/client-modules/commit/5eab7d99865947002a545db0ff372454b09494d3))
+
+
+
+## [0.12.0](https://github.com/Codecademy/client-modules/compare/@codecademy/variance@0.11.2...@codecademy/variance@0.12.0) (2021-05-18)
+
+
+### Features
+
+* **theme:** createTheme self containment ([59ddff7](https://github.com/Codecademy/client-modules/commit/59ddff7224cd8e0972212dd6ba1696f40ccac835)), closes [#666666](https://github.com/Codecademy/client-modules/issues/666666) [#666666](https://github.com/Codecademy/client-modules/issues/666666)
+
+
+
 ### [0.11.2](https://github.com/Codecademy/client-modules/compare/@codecademy/variance@0.11.1...@codecademy/variance@0.11.2) (2021-05-07)
 
 **Note:** Version bump only for package @codecademy/variance

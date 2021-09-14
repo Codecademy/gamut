@@ -1,7 +1,11 @@
-import { FlexBox, PopoverContainer, Text } from '@codecademy/gamut';
+import {
+  FlexBox,
+  PopoverContainer,
+  PopoverContainerProps,
+  Text,
+} from '@codecademy/gamut';
 import { Background } from '@codecademy/gamut-styles';
 import React, { useRef } from 'react';
-
 const SINGLE_DIRECTIONS = ['top', 'bottom', 'left', 'right'] as const;
 
 const MULTI_DIRECTIONS = [
@@ -11,19 +15,51 @@ const MULTI_DIRECTIONS = [
   'bottom-left',
 ] as const;
 
-export const SingleDirection = () => {
-  const targetRef = useRef<HTMLDivElement>(null);
-  const secondRef = useRef<HTMLDivElement>(null);
+export const PopoverTemplate = (args: PopoverContainerProps) => {
+  const target = useRef<HTMLDivElement>(null);
 
   return (
-    <FlexBox minHeight="640px" width={1} position="relative">
-      <FlexBox alignItems="center" justifyContent="center" flex={1}>
-        {[...SINGLE_DIRECTIONS, ...MULTI_DIRECTIONS].map((alignment, i) => {
+    <FlexBox minHeight="480px" width={1} position="relative">
+      <FlexBox center flex={1}>
+        <PopoverContainer isOpen inline targetRef={target} {...args}>
+          <Background
+            display="flex"
+            bg="navy"
+            alignItems="center"
+            justifyContent="center"
+            flexDirection="column"
+            dimensions="100px"
+          >
+            Pop Tart
+          </Background>
+        </PopoverContainer>
+        <FlexBox
+          justifyContent="center"
+          alignItems="center"
+          dimensions="200px"
+          border={1}
+          ref={target}
+        >
+          This balanced breakfast
+        </FlexBox>
+      </FlexBox>
+    </FlexBox>
+  );
+};
+
+export const AlignmentsTemplate = () => {
+  const target = useRef<HTMLDivElement>(null);
+
+  return (
+    <FlexBox minHeight="480px" width={1} position="relative">
+      <FlexBox center flex={1}>
+        {[...SINGLE_DIRECTIONS, ...MULTI_DIRECTIONS].map((alignment) => {
           return (
             <PopoverContainer
               key={alignment}
               isOpen
-              targetRef={targetRef}
+              inline
+              targetRef={target}
               alignment={alignment}
               offset={20}
             >
@@ -49,20 +85,29 @@ export const SingleDirection = () => {
           alignItems="center"
           dimensions="200px"
           border={1}
-          ref={targetRef}
+          ref={target}
         >
           Transform Axis
         </FlexBox>
       </FlexBox>
-      <FlexBox alignItems="center" justifyContent="center" flex={1}>
+    </FlexBox>
+  );
+};
+
+export const InvertAxisTemplate = () => {
+  const target = useRef<HTMLDivElement>(null);
+
+  return (
+    <FlexBox minHeight="480px" width={1} position="relative">
+      <FlexBox center flex={1}>
         {(['x', 'y'] as const).map((axis) => {
-          return MULTI_DIRECTIONS.map((alignment, i) => {
+          return MULTI_DIRECTIONS.map((alignment) => {
             return (
               <PopoverContainer
                 key={`${alignment}-${axis}`}
                 isOpen
-                insideAxis={axis}
-                targetRef={secondRef}
+                invertAxis={axis}
+                targetRef={target}
                 alignment={alignment}
                 inline
                 offset={20}
@@ -92,7 +137,106 @@ export const SingleDirection = () => {
           alignItems="center"
           dimensions="200px"
           border={1}
-          ref={secondRef}
+          ref={target}
+        >
+          Transform Axis
+        </FlexBox>
+      </FlexBox>
+    </FlexBox>
+  );
+};
+
+export const OffsetTemplate = ({ offset }: PopoverContainerProps) => {
+  const target = useRef<HTMLDivElement>(null);
+
+  return (
+    <FlexBox minHeight="480px" width={1} position="relative">
+      <FlexBox center flex={1}>
+        {[...SINGLE_DIRECTIONS, ...MULTI_DIRECTIONS].map((alignment) => {
+          return (
+            <PopoverContainer
+              key={`${alignment}-${offset}`}
+              isOpen
+              targetRef={target}
+              alignment={alignment}
+              inline
+              offset={offset}
+            >
+              <Background
+                display="flex"
+                bg="navy"
+                alignItems="center"
+                justifyContent="center"
+                flexDirection="column"
+                dimensions="100px"
+              >
+                <Text as="p" variant="p-small">
+                  {alignment}
+                </Text>
+                <Text as="p" variant="p-small">
+                  {offset}px
+                </Text>
+              </Background>
+            </PopoverContainer>
+          );
+        })}
+
+        <FlexBox
+          justifyContent="center"
+          alignItems="center"
+          dimensions="200px"
+          border={1}
+          ref={target}
+        >
+          Transform Axis
+        </FlexBox>
+      </FlexBox>
+    </FlexBox>
+  );
+};
+
+export const XandYTemplate = ({ x, y }: PopoverContainerProps) => {
+  const target = useRef<HTMLDivElement>(null);
+
+  return (
+    <FlexBox minHeight="480px" width={1} position="relative">
+      <FlexBox center flex={1}>
+        {[...SINGLE_DIRECTIONS, ...MULTI_DIRECTIONS].map((alignment) => {
+          return (
+            <PopoverContainer
+              key={`${alignment}-${x}-${y}`}
+              isOpen
+              targetRef={target}
+              alignment={alignment}
+              inline
+              x={x}
+              y={y}
+            >
+              <Background
+                display="flex"
+                bg="navy"
+                alignItems="center"
+                justifyContent="center"
+                flexDirection="column"
+                dimensions="100px"
+              >
+                <Text as="p" variant="p-small">
+                  {alignment}
+                </Text>
+                <Text as="p" variant="p-small">
+                  {x}px / {y}px
+                </Text>
+              </Background>
+            </PopoverContainer>
+          );
+        })}
+
+        <FlexBox
+          justifyContent="center"
+          alignItems="center"
+          dimensions="200px"
+          border={1}
+          ref={target}
         >
           Transform Axis
         </FlexBox>

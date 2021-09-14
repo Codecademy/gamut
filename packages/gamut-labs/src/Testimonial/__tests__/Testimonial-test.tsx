@@ -1,99 +1,84 @@
-import { mount } from 'enzyme';
-import React from 'react';
+import { setupRtl } from '@codecademy/gamut-tests';
 
-import styles from '../../styles.module.scss';
-import { Testimonial } from '..';
-
-const exampleTestmonial = {
-  firstName: 'Frank',
-  lastName: 'Reynolds',
-  occupation: "Co-Owner @ Paddy's Pub",
-  quote:
-    "I don't know how many years on this Earth I got left, I'm gonna get real weird with it.",
-};
+import { Testimonial, TestimonialProps } from '..';
 
 describe('Testimonial', () => {
-  it('adds the light class to the wrapper container when its theme is light', () => {
-    const wrapper = mount(
-      <Testimonial testimonial={exampleTestmonial} size="small" theme="light" />
-    );
+  const defaultProps: TestimonialProps = {
+    firstName: 'Christopher',
+    lastName: 'Moltisanti',
+    imageUrl: 'okthen',
+    href: 'bloip',
+    location: 'New Jersey',
+    occupation: 'Waste Management',
+    quote:
+      "Like everybody starts out somewheres. and they do something, something gets done to them and it changes their life. That's called an arc. Where's my arc?",
+  };
+  const renderView = setupRtl(Testimonial, defaultProps);
 
-    const containerClassName = wrapper
-      .find(`div.lightWrapper`)
-      .prop('className');
-
-    expect(containerClassName).toContain(styles.lightWrapper);
+  it('formats and renders the first and last name', () => {
+    const { view } = renderView();
+    view.getByText('Christopher M.');
   });
 
-  it('adds the dark class to the wrapper container when its theme is dark', () => {
-    const wrapper = mount(
-      <Testimonial testimonial={exampleTestmonial} size="small" theme="dark" />
-    );
-
-    const containerClassName = wrapper
-      .find(`div.darkWrapper`)
-      .prop('className');
-
-    expect(containerClassName).toContain(styles.darkWrapper);
+  describe('when the image url is defined', () => {
+    it('displays testimonial photo', () => {
+      const { view } = renderView();
+      view.getByTestId('testimonial-photo');
+    });
+    describe('when hidePhoto is true', () => {
+      it('does not display testimonial photo', () => {
+        const { view } = renderView({ hidePhoto: true });
+        expect(view.queryAllByTestId('testimonial-photo').length).toBe(0);
+      });
+    });
   });
 
-  it('adds the small class to the content container when its size is small', () => {
-    const wrapper = mount(
-      <Testimonial testimonial={exampleTestmonial} size="small" theme="dark" />
-    );
-
-    const containerClassName = wrapper
-      .find('div.smallContainer')
-      .prop('className');
-
-    expect(containerClassName).toContain(styles.smallContainer);
+  describe('when image url is undefined', () => {
+    it('does not display testimonial photo', () => {
+      const { view } = renderView({ imageUrl: undefined });
+      expect(view.queryAllByTestId('testimonial-photo').length).toBe(0);
+    });
   });
 
-  it('adds the medium class to the content container when its size is medium', () => {
-    const wrapper = mount(
-      <Testimonial testimonial={exampleTestmonial} size="medium" theme="dark" />
-    );
-
-    const containerClassName = wrapper
-      .find('div.mediumContainer')
-      .prop('className');
-
-    expect(containerClassName).toContain(styles.mediumContainer);
+  describe('when href is undefined', () => {
+    it('does not render an anchor tag', () => {
+      const { view } = renderView({ href: undefined });
+      expect(view.queryAllByTestId('testimonial-link').length).toBeFalsy();
+    });
   });
 
-  it('adds the large class to the content container when its size is large', () => {
-    const wrapper = mount(
-      <Testimonial testimonial={exampleTestmonial} size="large" theme="dark" />
-    );
+  describe('when href is defined', () => {
+    it('renders the card inside of an anchor tag', () => {
+      const { view } = renderView();
+      expect(view.getByTestId('testimonial-link')).toHaveAttribute(
+        'href',
+        defaultProps.href
+      );
+    });
 
-    const containerClassName = wrapper
-      .find('div.largeContainer')
-      .prop('className');
-
-    expect(containerClassName).toContain(styles.largeContainer);
+    describe('and display is none', () => {
+      it('does not render anchor tag', () => {
+        const { view } = renderView({ display: 'none' });
+        expect(view.queryByTestId('testimonial-link')).not.toBeVisible();
+      });
+    });
   });
 
-  it('renders the Avatar component when an imageUrl prop is present', () => {
-    const wrapper = mount(
-      <Testimonial
-        testimonial={{ ...exampleTestmonial, imageUrl: 'someCoolUrl' }}
-        size="small"
-        theme="dark"
-      />
-    );
-
-    const avatarContainer = wrapper.find('div.avatarContainer');
-
-    expect(avatarContainer).toHaveLength(1);
+  describe('when  company is undefined', () => {
+    it('does not render company formatting text', () => {
+      const { view } = renderView();
+      expect(view.queryAllByText('@', { exact: false }).length).toBeFalsy();
+    });
   });
 
-  it('does _not_ render the Avatar component when an imageUrl prop is _not_ present', () => {
-    const wrapper = mount(
-      <Testimonial testimonial={exampleTestmonial} size="small" theme="dark" />
-    );
+  describe('when company is defined', () => {
+    it('renders formatted company text', () => {
+      const company = 'Satriolies';
+      const { view } = renderView({ company });
 
-    const avatarContainer = wrapper.find('div.avatarContainer');
-
-    expect(avatarContainer).toHaveLength(0);
+      expect(view.getAllByText(`@ ${company}`, { exact: false }).length).toBe(
+        1
+      );
+    });
   });
 });

@@ -1,11 +1,10 @@
 import {
   AppWrapper,
-  PageWrapper,
   SkipToContent,
   SkipToContentTarget,
 } from '@codecademy/gamut';
-import { BackgroundProps } from '@codecademy/gamut-styles';
-import React from 'react';
+import { Background, BackgroundProps } from '@codecademy/gamut-styles';
+import React, { ComponentProps, forwardRef } from 'react';
 
 import { GlobalFooter, GlobalFooterProps } from '../GlobalFooter';
 import { GlobalHeader, GlobalHeaderProps } from '../GlobalHeader';
@@ -36,6 +35,17 @@ export type GlobalPageProps = {
 
 const defaultSkipToContentId = 'page-skip-to-content-target';
 
+const RestrictedBackground = forwardRef<
+  HTMLDivElement,
+  ComponentProps<typeof Background>
+>(({ children, ...rest }, ref) => (
+  <Background data-testid="global-page-wrapper" {...rest} ref={ref}>
+    {children}
+  </Background>
+));
+
+const GlobalPageWrapper = AppWrapper.withComponent(RestrictedBackground);
+
 export const GlobalPage: React.FC<GlobalPageProps> = ({
   backgroundColor = 'background',
   children,
@@ -45,12 +55,12 @@ export const GlobalPage: React.FC<GlobalPageProps> = ({
   skipToContentId,
 }) => {
   return (
-    <PageWrapper bg={backgroundColor}>
+    <GlobalPageWrapper bg={backgroundColor} minHeight="100vh">
       <SkipToContent contentId={skipToContentId || defaultSkipToContentId} />
       <GlobalHeader {...header} />
       {!skipToContentId && <SkipToContentTarget id={defaultSkipToContentId} />}
       <AppWrapper as={contentAs}>{children}</AppWrapper>
       <GlobalFooter {...footer} />
-    </PageWrapper>
+    </GlobalPageWrapper>
   );
 };

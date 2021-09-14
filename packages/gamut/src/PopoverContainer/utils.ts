@@ -49,7 +49,7 @@ export const getPosition = ({
   offset = 0,
   x = 0,
   y = 0,
-  insideAxis,
+  invertAxis,
 }: PopoverPositionConfig) => {
   const { top, left, bottom, right, height, width } = container;
   const xOffset = width + offset + x;
@@ -74,7 +74,7 @@ export const getPosition = ({
         styles.left = left + width / 2;
     }
   } else {
-    const coef = AXIS[insideAxis ?? 'none'];
+    const coef = AXIS[invertAxis ?? 'none'];
     const [y, x] = alignments;
     styles.transform = `translate(${percent(coef[x])}, ${percent(coef[y])})`;
   }

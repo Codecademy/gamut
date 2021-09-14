@@ -9,6 +9,10 @@ import styled from '@emotion/styled';
 import React, { ReactNode } from 'react';
 
 import { formatUrlWithRedirect } from '../GlobalHeader/urlHelpers';
+import { HeaderHeightArea } from '../HeaderHeightArea';
+import { NotificationsPopover } from '../Notifications/NotificationsPopover';
+import { AppHeaderNotifications } from '../Notifications/types';
+import { useHeaderNotifications } from '../Notifications/useHeaderNotifications';
 import { AppHeaderDropdown } from './AppHeaderElements/AppHeaderDropdown';
 import { AppHeaderLink } from './AppHeaderElements/AppHeaderLink';
 import { AppHeaderLogo } from './AppHeaderElements/AppHeaderLogo';
@@ -17,12 +21,15 @@ import {
   AppHeaderClickHandler,
   AppHeaderItem,
 } from './AppHeaderElements/types';
+import { AppHeaderSearch, useHeaderSearch } from './Search/useHeaderSearch';
 import { FormattedAppHeaderItems } from './types';
 
 export type AppHeaderProps = {
   action: AppHeaderClickHandler;
   items: FormattedAppHeaderItems;
+  notifications?: AppHeaderNotifications;
   redirectParam?: string;
+  search: AppHeaderSearch;
 };
 
 export const StyledAppBar = styled(AppBar)`
@@ -37,7 +44,8 @@ export const AppHeaderFillButton = styled(FillButton)(focusStyles);
 export const mapItemToElement = (
   action: AppHeaderClickHandler,
   item: AppHeaderItem,
-  redirectParam?: string
+  redirectParam?: string,
+  mobile = false
 ): ReactNode => {
   switch (item.type) {
     case 'logo':
@@ -52,6 +60,7 @@ export const mapItemToElement = (
     case 'text-button':
       return (
         <AppHeaderTextButton
+          size={mobile ? 'small' : 'normal'}
           onClick={(event: React.MouseEvent) => action(event, item)}
           data-testid={item.dataTestId}
           href={
@@ -66,6 +75,7 @@ export const mapItemToElement = (
     case 'fill-button':
       return (
         <AppHeaderFillButton
+          size={mobile ? 'small' : 'normal'}
           data-testid={item.dataTestId}
           href={
             item.redirect
@@ -83,7 +93,9 @@ export const mapItemToElement = (
 export const AppHeader: React.FC<AppHeaderProps> = ({
   action,
   items,
+  notifications,
   redirectParam,
+  search,
 }) => {
   const mapItemsToElement = <T extends AppHeaderItem[]>(items: T) => {
     return items.map((item, index) => (
@@ -97,14 +109,30 @@ export const AppHeader: React.FC<AppHeaderProps> = ({
     ));
   };
 
+  const [notificationsBell, notificationsView] = useHeaderNotifications(
+    notifications,
+    NotificationsPopover
+  );
+  const [searchButton, searchPane] = useHeaderSearch(search);
+
+  const right = [
+    searchButton,
+    ...(notificationsBell ? [notificationsBell] : []),
+    ...items.right,
+  ];
+
   return (
-    <StyledAppBar>
-      <AppBarSection position="left">
-        {mapItemsToElement(items.left)}
-      </AppBarSection>
-      <AppBarSection position="right">
-        {mapItemsToElement(items.right)}
-      </AppBarSection>
-    </StyledAppBar>
+    <HeaderHeightArea display={{ _: 'none', md: 'block' }}>
+      <StyledAppBar>
+        <AppBarSection position="left">
+          {mapItemsToElement(items.left)}
+        </AppBarSection>
+        <AppBarSection position="right">
+          {mapItemsToElement(right)}
+        </AppBarSection>
+      </StyledAppBar>
+      {notificationsView}
+      {searchPane}
+    </HeaderHeightArea>
   );
 };

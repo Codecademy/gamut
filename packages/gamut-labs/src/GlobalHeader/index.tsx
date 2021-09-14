@@ -1,10 +1,12 @@
 import { Box } from '@codecademy/gamut';
 import { useTheme } from '@emotion/react';
-import cx from 'classnames';
-import React from 'react';
-import { useWindowScroll } from 'react-use';
+import React, { useCallback } from 'react';
 
 import { AppHeader, AppHeaderMobile } from '..';
+import {
+  AppHeaderItem,
+  isAppHeaderItemWithHref,
+} from '../AppHeader/AppHeaderElements/types';
 import {
   FormattedAppHeaderItems,
   FormattedMobileAppHeaderItems,
@@ -25,7 +27,6 @@ import {
   proHeaderItems,
   proMobileHeaderItems,
 } from './GlobalHeaderVariants';
-import styles from './styles.module.scss';
 import { AnonHeader, FreeHeader, LoadingHeader, ProHeader } from './types';
 
 export type GlobalHeaderProps =
@@ -41,26 +42,22 @@ const getAppHeaderItems = (
     case 'anon':
       switch (props.variant) {
         case 'landing':
-          return anonLandingHeaderItems();
+          return anonLandingHeaderItems(props.hidePricing);
         case 'login':
-          return anonLoginHeaderItems(props.renderSearch?.desktop);
+          return anonLoginHeaderItems(props.hidePricing);
         case 'signup':
-          return anonSignupHeaderItems(props.renderSearch?.desktop);
+          return anonSignupHeaderItems(props.hidePricing);
         default:
-          return anonDefaultHeaderItems(props.renderSearch?.desktop);
+          return anonDefaultHeaderItems(props.hidePricing);
       }
     case 'free':
       return freeHeaderItems(
         props.user,
-        props.renderSearch?.desktop,
-        props.renderNotifications?.desktop
+        props.hidePricing,
+        props.renderFavorites?.desktop
       );
     case 'pro':
-      return proHeaderItems(
-        props.user,
-        props.renderSearch?.desktop,
-        props.renderNotifications?.desktop
-      );
+      return proHeaderItems(props.user, props.renderFavorites?.desktop);
     case 'loading':
       return loadingHeaderItems;
   }
@@ -73,70 +70,63 @@ const getMobileAppHeaderItems = (
     case 'anon':
       switch (props.variant) {
         case 'landing':
-          return anonLandingMobileHeaderItems();
+          return anonLandingMobileHeaderItems(props.hidePricing);
         case 'login':
-          return anonLoginMobileHeaderItems();
+          return anonLoginMobileHeaderItems(props.hidePricing);
         case 'signup':
-          return anonSignupMobileHeaderItems();
+          return anonSignupMobileHeaderItems(props.hidePricing);
         default:
-          return anonDefaultMobileHeaderItems();
+          return anonDefaultMobileHeaderItems(props.hidePricing);
       }
     case 'free':
-      return freeMobileHeaderItems(
-        props.user,
-        props.renderNotifications?.mobile
-      );
+      return freeMobileHeaderItems(props.user, props.hidePricing);
     case 'pro':
-      return proMobileHeaderItems(
-        props.user,
-        props.renderNotifications?.mobile
-      );
+      return proMobileHeaderItems(props.user);
     case 'loading':
       return loadingMobileHeaderItems;
   }
 };
 
 export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
-  const { y } = useWindowScroll();
-
-  const isInHeaderRegion = y === 0;
-
+  const { action, onLinkAction } = props;
   const theme = useTheme();
 
-  const headerClasses = cx(
-    styles.stickyHeader,
-    isInHeaderRegion && styles.transitionFadeOut
+  const combinedAction = useCallback(
+    (event: React.MouseEvent, item: AppHeaderItem) => {
+      action(event, item);
+      if (isAppHeaderItemWithHref(item)) onLinkAction?.(event, item);
+    },
+    [action, onLinkAction]
   );
 
   return (
-    <>
-      <Box
-        display={{ _: 'none', md: 'block' }}
-        height={theme.elements.headerHeight}
-        className={headerClasses}
-      >
-        <AppHeader
-          action={props.action}
-          items={getAppHeaderItems(props)}
-          redirectParam={
-            props.type === 'anon' ? props.redirectParam : undefined
-          }
-        />
-      </Box>
-      <Box
-        display={{ _: 'block', md: 'none' }}
-        height={theme.elements.headerHeight}
-        className={headerClasses}
-      >
-        <AppHeaderMobile
-          action={props.action}
-          items={getMobileAppHeaderItems(props)}
-          renderSearch={props.renderSearch?.mobile}
-          redirectParam={
-            props.type === 'anon' ? props.redirectParam : undefined
-          }
-        />
-      </Box>
-    </>
+    <Box as="header" position="sticky" top={0} zIndex={theme.elements.headerZ}>
+      <AppHeader
+        action={combinedAction}
+        items={getAppHeaderItems(props)}
+        search={props.search}
+        {...(props.type === 'anon'
+          ? {
+              redirectParam: props.redirectParam,
+            }
+          : props.type === 'loading'
+          ? {}
+          : {
+              notifications: props.notifications,
+            })}
+      />
+      <AppHeaderMobile
+        action={combinedAction}
+        items={getMobileAppHeaderItems(props)}
+        {...(props.type === 'anon' || props.type === 'loading'
+          ? {}
+          : {
+              notifications: props.notifications,
+            })}
+        onSearch={props.search.onSearch}
+        redirectParam={props.type === 'anon' ? props.redirectParam : undefined}
+      />
+      {props.children}
+    </Box>
   );
 };

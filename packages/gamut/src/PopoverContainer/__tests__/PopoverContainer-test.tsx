@@ -226,7 +226,7 @@ describe('Popover', () => {
         ] as const)(
           '%s',
           (alignment: PopoverContainerProps['alignment'], expected: string) => {
-            renderView({ alignment, insideAxis: 'x' });
+            renderView({ alignment, invertAxis: 'x' });
             expect(
               screen.getByTestId('popover-content-container')
             ).toHaveStyleRule('transform', expected);

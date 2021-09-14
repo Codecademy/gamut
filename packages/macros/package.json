@@ -1,7 +1,7 @@
 {
   "name": "@codecademy/macros",
   "description": "Babel Utility Macros",
-  "version": "2.1.1",
+  "version": "2.2.1",
   "author": "codecademy",
   "homepage": "https://github.com/Codecademy/client-modules#readme",
   "license": "MIT",
@@ -28,5 +28,8 @@
   },
   "dependencies": {
     "babel-plugin-macros": "^3.0.1"
+  },
+  "devDependencies": {
+    "@babel/core": "7.13.10"
   }
 }

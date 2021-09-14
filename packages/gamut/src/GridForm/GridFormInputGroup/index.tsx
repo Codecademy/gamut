@@ -1,22 +1,38 @@
+import { css } from '@codecademy/gamut-styles';
+import styled from '@emotion/styled';
 import React from 'react';
 import { UseFormMethods } from 'react-hook-form';
 
+import { Anchor } from '../../Anchor';
 import { FormError, FormGroup, FormGroupLabel } from '../../Form';
 import { HiddenText } from '../../HiddenText';
 import { Column } from '../../Layout';
-import { GridFormField } from '../types';
+import { Markdown } from '../../Markdown';
+import {
+  GridFormField,
+  GridFormHiddenField,
+  GridFormSweetContainerField,
+} from '../types';
 import { GridFormCheckboxInput } from './GridFormCheckboxInput';
 import { GridFormCustomInput } from './GridFormCustomInput';
 import { GridFormFileInput } from './GridFormFileInput';
 import { GridFormHiddenInput } from './GridFormHiddenInput';
 import { GridFormRadioGroupInput } from './GridFormRadioGroupInput';
 import { GridFormSelectInput } from './GridFormSelectInput';
+import { GridFormSweetContainerInput } from './GridFormSweetContainerInput';
 import { GridFormTextArea } from './GridFormTextArea';
 import { GridFormTextInput } from './GridFormTextInput';
+
+const ErrorAnchor = styled(Anchor)(
+  css({
+    color: 'feedback-error',
+  })
+);
 
 export type GridFormInputGroupProps = {
   error?: string;
   isFirstError?: boolean;
+  isDisabled?: boolean;
   field: GridFormField;
   register: UseFormMethods['register'];
   setValue: UseFormMethods['setValue'];
@@ -26,44 +42,39 @@ export type GridFormInputGroupProps = {
 
 export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
   error,
-  isFirstError,
   field,
-  register,
-  setValue,
+  isFirstError,
+  isDisabled,
   showRequired,
-  required,
+  ...rest
 }) => {
+  const disabled = isDisabled || field.disabled;
   const errorMessage = error || field.customError;
-  const isRequired = showRequired && required;
+  const defaultProps = { disabled, ...rest };
+  const isTightCheckbox =
+    field.type === 'checkbox' && field?.spacing === 'tight';
 
   const getInput = () => {
     switch (field.type) {
       case 'checkbox':
-        return (
-          <GridFormCheckboxInput
-            field={field}
-            register={register}
-            showRequired={isRequired}
-          />
-        );
+        return <GridFormCheckboxInput field={field} {...defaultProps} />;
 
       case 'custom':
+      case 'custom-group':
         return (
           <GridFormCustomInput
-            field={field}
-            register={register}
-            setValue={setValue}
             error={errorMessage}
+            field={field}
+            {...defaultProps}
           />
         );
 
       case 'radio-group':
         return (
           <GridFormRadioGroupInput
+            error={!!errorMessage}
             field={field}
-            register={register}
-            showRequired={isRequired}
-            setValue={setValue}
+            {...defaultProps}
           />
         );
 
@@ -72,8 +83,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
           <GridFormSelectInput
             error={!!errorMessage}
             field={field}
-            register={register}
-            showRequired={isRequired}
+            {...defaultProps}
           />
         );
 
@@ -82,8 +92,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
           <GridFormFileInput
             error={!!errorMessage}
             field={field}
-            register={register}
-            showRequired={isRequired}
+            {...defaultProps}
           />
         );
 
@@ -92,48 +101,87 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
           <GridFormTextArea
             error={!!errorMessage}
             field={field}
-            register={register}
-            showRequired={isRequired}
+            {...defaultProps}
           />
         );
       case 'hidden':
-        return <GridFormHiddenInput register={register} field={field} />;
+        return <GridFormHiddenInput field={field} {...defaultProps} />;
+
+      case 'sweet-container':
+        return (
+          <GridFormSweetContainerInput
+            field={field}
+            label={field.label}
+            {...defaultProps}
+          />
+        );
 
       default:
         return (
           <GridFormTextInput
             error={!!errorMessage}
             field={field}
-            register={register}
-            showRequired={isRequired}
+            {...defaultProps}
           />
         );
     }
   };
-  if (field.type === 'hidden') return getInput();
+
+  const unwrappedInput = (
+    field: GridFormField
+  ): field is GridFormHiddenField | GridFormSweetContainerField =>
+    ['hidden', 'sweet-container'].includes(field.type);
+
+  if (unwrappedInput(field)) {
+    return getInput();
+  }
+
+  if (field.type === 'custom-group') {
+    return (
+      <Column size={field?.size} rowspan={field?.rowspan ?? 1}>
+        {getInput()}
+      </Column>
+    );
+  }
 
   const label = (
     <FormGroupLabel
-      disabled={field.disabled}
+      disabled={disabled}
       htmlFor={field.id || field.name}
       tooltip={field.tooltip}
-      showRequired={isRequired}
+      showRequired={showRequired && rest?.required}
     >
       {field.label}
     </FormGroupLabel>
   );
 
   return (
-    <Column size={field.size}>
-      <FormGroup mb={0}>
+    <Column size={field?.size} rowspan={field?.rowspan ?? 1}>
+      <FormGroup pb={isTightCheckbox ? 0 : 8} mb={0}>
         {field.hideLabel ? <HiddenText>{label}</HiddenText> : label}
         {getInput()}
         {errorMessage && (
           <FormError
             role={isFirstError ? 'alert' : 'status'}
             aria-live={isFirstError ? 'assertive' : 'off'}
+            variant={isTightCheckbox ? 'initial' : 'absolute'}
           >
-            {errorMessage}
+            <Markdown
+              overrides={{
+                a: {
+                  allowedAttributes: ['href', 'target'],
+                  component: ErrorAnchor,
+                  processNode: (
+                    node: unknown,
+                    props: { onClick?: () => void }
+                  ) => <ErrorAnchor {...props} />,
+                },
+              }}
+              skipDefaultOverrides={{ a: true }}
+              inline
+              text={errorMessage}
+              spacing="none"
+            />
           </FormError>
         )}
       </FormGroup>

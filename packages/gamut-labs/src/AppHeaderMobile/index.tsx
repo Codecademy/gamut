@@ -8,7 +8,7 @@ import {
 import { CloseIcon, MenuIcon } from '@codecademy/gamut-icons';
 import { breakpoints } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
-import React, { ReactNode, useState } from 'react';
+import React, { useState } from 'react';
 
 import { mapItemToElement, StyledAppBar } from '../AppHeader';
 import {
@@ -21,12 +21,17 @@ import {
 } from '../AppHeader/AppHeaderElements/types';
 import { FormattedMobileAppHeaderItems } from '../AppHeader/types';
 import { AppHeaderMainMenuMobile } from '../AppHeaderMobile/AppHeaderMainMenuMobile';
+import { HeaderHeightArea } from '../HeaderHeightArea';
+import { NotificationsContents } from '../Notifications/NotificationsContents';
+import { AppHeaderNotifications } from '../Notifications/types';
+import { useHeaderNotifications } from '../Notifications/useHeaderNotifications';
 
 export type AppHeaderMobileProps = {
   action: AppHeaderClickHandler;
   items: FormattedMobileAppHeaderItems;
-  renderSearch?: () => ReactNode;
+  notifications?: AppHeaderNotifications;
   redirectParam?: string;
+  onSearch: (query: string) => void;
 };
 
 const IconButton = styled.button`
@@ -57,86 +62,112 @@ const StyledOverlay = styled(Overlay)`
 export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
   action,
   items,
-  renderSearch,
+  notifications,
+  onSearch,
   redirectParam,
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
 
+  const [notificationsBell, notificationsView] = useHeaderNotifications(
+    notifications,
+    NotificationsContents
+  );
   const openMobileMenu = () => {
     setMobileMenuOpen(true);
   };
 
-  const mapItemsToElement = <T extends AppHeaderItem[]>(items: T) => {
-    return items.map((item, index) => (
-      <Box
-        key={item.id}
-        ml={index === 0 ? 0 : 4}
-        mr={index === items.length - 1 ? 0 : 4}
-      >
-        {mapItemToElement(action, item, redirectParam)}
-      </Box>
-    ));
+  const mapItemsToElement = <T extends AppHeaderItem[]>(
+    items: T,
+    hideExtraItems?: boolean
+  ) => {
+    const shouldHideItems = hideExtraItems === true && items.length > 1;
+    return items.map((item, index) => {
+      const isFirstItem = index === 0;
+      const isLastItem = index + 1 === items.length;
+      const isHidable = !isLastItem && shouldHideItems;
+      return (
+        <Box
+          key={item.id}
+          ml={isFirstItem ? 0 : 4}
+          mr={isLastItem ? 0 : 4}
+          display={{
+            _: isHidable ? 'none' : 'block',
+            xs: 'block',
+          }}
+        >
+          {mapItemToElement(action, item, redirectParam, true)}
+        </Box>
+      );
+    });
   };
 
   return (
     <>
-      {!mobileMenuOpen && ( // need this bc AppBar has a hardcoded z-Index of 15
-        <StyledAppBar>
-          <AppBarSection position="left">
-            {mapItemsToElement(items.left)}
-          </AppBarSection>
-          <AppBarSection position="right">
-            {mapItemsToElement(items.right)}
-
-            <FlexBox ml={24}>
-              <IconButton
-                type="button"
-                data-testid="header-mobile-menu"
-                aria-label="open navigation menu"
-                onClick={() => {
-                  openMobileMenu();
-                }}
-              >
-                <MenuIcon height={20} width={20} />
-              </IconButton>
-            </FlexBox>
-          </AppBarSection>
-        </StyledAppBar>
-      )}
-      <StyledOverlay
-        clickOutsideCloses
-        escapeCloses
-        isOpen={mobileMenuOpen}
-        onRequestClose={() => setMobileMenuOpen(false)}
-      >
-        <div data-testid="header-mobile-menu-dropdown">
+      <HeaderHeightArea display={{ _: 'block', md: 'none' }}>
+        {!mobileMenuOpen && ( // need this bc AppBar has a hardcoded z-Index of 15
           <StyledAppBar>
             <AppBarSection position="left">
               {mapItemsToElement(items.left)}
             </AppBarSection>
             <AppBarSection position="right">
-              <FlexBox>
+              {mapItemsToElement(
+                [
+                  ...(notificationsBell ? [notificationsBell] : []),
+                  ...items.right,
+                ],
+                true
+              )}
+              <FlexBox ml={24}>
                 <IconButton
                   type="button"
-                  aria-label="close menu"
+                  data-testid="header-mobile-menu"
+                  aria-label="open navigation menu"
                   onClick={() => {
-                    setMobileMenuOpen(false);
+                    openMobileMenu();
                   }}
                 >
-                  <CloseIcon width={20} height={20} />
+                  <MenuIcon height={20} width={20} />
                 </IconButton>
               </FlexBox>
             </AppBarSection>
           </StyledAppBar>
-          <ContentContainer>
-            <AppHeaderMainMenuMobile
-              items={items.mainMenu}
-              action={action}
-              renderSearch={renderSearch}
-            />
-          </ContentContainer>
-        </div>
-      </StyledOverlay>
+        )}
+        <StyledOverlay
+          clickOutsideCloses
+          escapeCloses
+          isOpen={mobileMenuOpen}
+          onRequestClose={() => setMobileMenuOpen(false)}
+        >
+          <div data-testid="header-mobile-menu-dropdown">
+            <StyledAppBar>
+              <AppBarSection position="left">
+                {mapItemsToElement(items.left)}
+              </AppBarSection>
+              <AppBarSection position="right">
+                <FlexBox>
+                  <IconButton
+                    type="button"
+                    aria-label="close menu"
+                    onClick={() => {
+                      setMobileMenuOpen(false);
+                    }}
+                  >
+                    <CloseIcon width={20} height={20} />
+                  </IconButton>
+                </FlexBox>
+              </AppBarSection>
+            </StyledAppBar>
+            <ContentContainer>
+              <AppHeaderMainMenuMobile
+                action={action}
+                items={items.mainMenu}
+                onSearch={onSearch}
+              />
+            </ContentContainer>
+          </div>
+        </StyledOverlay>
+      </HeaderHeightArea>
+      {notificationsView}
     </>
   );
 };

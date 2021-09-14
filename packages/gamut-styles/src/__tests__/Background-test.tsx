@@ -5,7 +5,7 @@ import { overArgs } from 'lodash';
 import React from 'react';
 
 import { Background } from '../Background';
-import { theme } from '../theme';
+import { coreTheme as theme } from '../themes';
 
 expect.extend(matchers);
 
@@ -31,18 +31,21 @@ const renderView = setupRtl(Background, {
 });
 
 const ActiveMode = () => {
-  const {
-    colorModes: { active },
-  } = useTheme();
-  return <div>{active}</div>;
+  const { mode } = useTheme();
+  return <div>{mode}</div>;
 };
 
 describe('Background', () => {
   it('switches the default colormode when contrast standards are not met', () => {
     const { view } = renderView({ bg: 'navy' });
     expect(view.getByTestId('content').parentElement).toHaveStyleRule(
-      'background-color',
+      '--color-background-current',
       theme.colors.navy
+    );
+
+    expect(view.getByTestId('content').parentElement).toHaveStyleRule(
+      'background-color',
+      theme.colors['background-current']
     );
   });
 
@@ -58,31 +61,14 @@ describe('Background', () => {
       ),
     });
     expect(view.getByTestId('content').parentElement).toHaveStyleRule(
-      'background-color',
+      '--color-background-current',
       theme.colors.navy
     );
 
     expect(view.getByTestId('nested-content').parentElement).toHaveStyleRule(
-      'background-color',
+      '--color-background-current',
       theme.colors.beige
     );
-
-    /** text color reset should be on the variable provisioner if needed */
-    expect(view.getByTestId('nested-content').parentElement).toHaveStyleRule(
-      'color',
-      theme.colors.text
-    );
-  });
-
-  it('does not change the color mode when contrasts do not conflict', () => {
-    const { view } = renderView({
-      bg: 'white',
-    });
-
-    // Grand parent
-    expect(
-      view.getByTestId('content').parentElement?.parentElement
-    ).not.toHaveStyleRule('color', theme.colors.text);
   });
 
   it('updates the theme context to the current mode', () => {
@@ -101,5 +87,21 @@ describe('Background', () => {
     });
 
     view.getByText('light');
+  });
+
+  it('it sets the current background color to the specified bg', () => {
+    const { view } = renderView({ bg: 'paleBlue' });
+    expect(view.getByTestId('content').parentElement).toHaveStyleRule(
+      '--color-background-current',
+      theme.colors.paleBlue
+    );
+  });
+
+  it('it sets the current background color to the specified bg when switch modes', () => {
+    const { view } = renderView({ bg: 'navy' });
+    expect(view.getByTestId('content').parentElement).toHaveStyleRule(
+      '--color-background-current',
+      theme.colors.navy
+    );
   });
 });

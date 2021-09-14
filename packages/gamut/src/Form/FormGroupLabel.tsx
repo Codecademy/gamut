@@ -1,11 +1,10 @@
 import { MiniInfoOutlineIcon } from '@codecademy/gamut-icons';
-import { theme, variant } from '@codecademy/gamut-styles';
-import { css } from '@emotion/react';
+import { states, variant } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React, { HTMLAttributes } from 'react';
 
 import { ToolTip, ToolTipProps } from '../ToolTip';
-import { formBaseStyles } from './styles/shared';
+import { formBaseStyles, formFieldTextDisabledStyles } from './styles';
 
 const StyledToolTipContainer = styled.span`
   position: absolute;
@@ -28,17 +27,14 @@ export type FormGroupLabelProps = HTMLAttributes<HTMLDivElement> &
     size?: 'small' | 'large';
   };
 
-type disabledLabelStyleProps = {
-  disabled?: boolean;
-};
-
 const labelSizeVariants = variant({
-  default: 'small',
+  defaultVariant: 'small',
   prop: 'size',
+  base: { display: 'block', ...formBaseStyles },
   variants: {
     small: {
       lineHeight: 'title',
-      marginBottom: 4,
+      mb: 4,
     },
     large: {
       fontSize: 22,
@@ -48,25 +44,16 @@ const labelSizeVariants = variant({
   },
 });
 
-const disabledLabelStyle = ({ disabled }: disabledLabelStyleProps) => {
-  if (disabled) {
-    return css`
-      color: ${theme.colors[`gray-400`]};
-    `;
-  }
-};
-
-const formLabelStyles = ({ size, disabled }: FormGroupLabelProps) => css`
-  ${formBaseStyles}
-  ${disabledLabelStyle({ disabled })}
-  ${labelSizeVariants({ size })}
-  display: block;
-`;
+const labelColorStates = states({
+  disabled: formFieldTextDisabledStyles,
+});
 
 const Label = styled
-  .label(formLabelStyles)
+  .label(labelSizeVariants, labelColorStates)
   .withComponent((props: FormGroupLabelProps) => {
     if (props.htmlFor) {
+      // We know this is wrong because props.htmlFor exists...
+      // eslint-disable-next-line jsx-a11y/label-has-associated-control
       return <label {...props} />;
     }
     return <div {...props} />;
@@ -95,9 +82,9 @@ export const FormGroupLabel: React.FC<FormGroupLabelProps> = ({
       {tooltip && (
         <StyledToolTipContainer>
           <StyledToolTip
-            {...tooltip}
             alignment="bottom-right"
-            target={<MiniInfoOutlineIcon size="0.8rem" />}
+            target={<MiniInfoOutlineIcon size="0.8rem" aria-hidden="false" />}
+            {...tooltip}
           />
         </StyledToolTipContainer>
       )}

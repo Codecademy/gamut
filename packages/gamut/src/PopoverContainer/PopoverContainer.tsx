@@ -32,7 +32,7 @@ export const PopoverContainer: React.FC<PopoverContainerProps> = ({
   offset = 20,
   y = 0,
   x = 0,
-  insideAxis,
+  invertAxis,
   inline = false,
   isOpen,
   onRequestClose,
@@ -50,14 +50,14 @@ export const PopoverContainer: React.FC<PopoverContainerProps> = ({
       return getPosition({
         alignment,
         container: parent,
-        insideAxis,
+        invertAxis,
         offset,
         x,
         y,
       });
     }
     return {};
-  }, [parent, x, y, offset, alignment, insideAxis]);
+  }, [parent, x, y, offset, alignment, invertAxis]);
 
   useEffect(() => {
     const target = targetRef?.current;
@@ -66,9 +66,9 @@ export const PopoverContainer: React.FC<PopoverContainerProps> = ({
   }, [targetRef, inline, winW, winH, winX, winY]);
 
   useLayoutEffect(() => {
-    containers?.viewport &&
-      !isInView(containers?.viewport) &&
+    if (containers?.viewport && !isInView(containers?.viewport)) {
       onRequestClose?.();
+    }
   }, [containers?.viewport, onRequestClose]);
 
   /**
@@ -84,6 +84,7 @@ export const PopoverContainer: React.FC<PopoverContainerProps> = ({
 
   const content = (
     <FocusTrap
+      active={!inline}
       allowPageInteraction
       onClickOutside={handleClickOutside}
       onEscapeKey={onRequestClose}

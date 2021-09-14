@@ -1,81 +1,98 @@
 import {
-  colors,
-  styledConfig,
-  swatches,
+  ColorModes,
+  fontSmoothPixel,
+  modeColorProps,
+  styledOptions,
   system,
+  transitionConcat,
 } from '@codecademy/gamut-styles';
-import { Theme, useTheme } from '@emotion/react';
+import {
+  CSSObject,
+  StyleProps,
+  ThemeProps,
+  variance,
+} from '@codecademy/variance';
+import styled from '@emotion/styled';
+import { ComponentProps, HTMLProps } from 'react';
 
-export const modeColorGroups = {
-  dark: {
-    primary: {
-      background: colors.yellow,
-      backgroundDull: swatches.yellow[400],
-      backgroundEmphasized: swatches.blue[800],
-      backgroundMuted: swatches.gray[600],
-      foregroundMuted: swatches.gray[200],
-      foreground: colors.black,
-      shadow: colors.white,
-    },
-    secondary: {
-      background: colors.white,
-      backgroundDull: swatches.gray[200],
-      backgroundEmphasized: swatches.blue[800],
-      backgroundMuted: swatches.gray[600],
-      foregroundMuted: swatches.gray[200],
-      foreground: colors.navy,
-      shadow: colors['gray-200'],
-    },
-  },
-  light: {
-    primary: {
-      background: colors.hyper,
-      backgroundDull: swatches.hyper[400],
-      backgroundEmphasized: swatches.gray[100],
-      backgroundMuted: swatches.gray[200],
-      foregroundMuted: swatches.gray[600],
-      foreground: colors.white,
-      shadow: colors.navy,
-    },
-    secondary: {
-      background: colors.navy,
-      backgroundDull: swatches.gray[600],
-      backgroundEmphasized: swatches.gray[100],
-      backgroundMuted: swatches.gray[200],
-      foregroundMuted: swatches.gray[600],
-      foreground: colors.white,
-      shadow: colors.black,
-    },
-  },
+import { ButtonBase, ButtonSelectors } from '../ButtonBase/ButtonBase';
+
+export const config = styledOptions<'button', 'size'>(['size']);
+
+export const buttonProps = variance.compose(
+  system.layout,
+  system.positioning,
+  system.space,
+  system.border
+);
+
+export const templateVariants = <Variant extends string, Styles>(
+  variants: readonly Variant[],
+  template: (colors: Variant) => Styles
+) => {
+  const variantConfig = {} as Record<Variant, ReturnType<typeof template>>;
+  variants.forEach((key: Variant) => {
+    variantConfig[key] = template(key);
+  });
+  return system.variant({
+    defaultVariant: variants[0],
+    variants: variantConfig,
+  });
 };
 
-export const config = styledConfig(['size']);
+export const buttonVariants = ['primary', 'secondary', 'danger'] as const;
 
-export function useColorMode(mode?: keyof Theme['colorModes']['modes']) {
-  const theme = useTheme();
-
-  // This is a defense against theme being undefined in specific tests and should not come into play for actual code
-  const { active = 'light' } = theme?.colorModes || {};
-  return mode ?? active;
-}
-
-export const buttonSizing = system.variant({
-  prop: 'size',
-  defaultVariant: 'normal',
-  variants: {
-    normal: {
-      fontSize: 16,
-      height: 40,
-      minWidth: 40,
-      py: 4,
-      px: 16,
-    },
-    small: {
-      fontSize: 14,
-      height: 32,
-      minWidth: 32,
-      py: 4,
-      px: 8,
-    },
+export const buttonStyles = system.css({
+  position: 'relative',
+  fontWeight: 'title',
+  whiteSpace: 'nowrap',
+  display: 'inline-flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  border: 2,
+  borderRadius: '4px',
+  borderColor: 'transparent',
+  transition: transitionConcat(
+    ['border-color', 'color', 'background-color', 'box-shadow'],
+    'fast',
+    'ease-in'
+  ),
+  [ButtonSelectors.DISABLED]: {
+    cursor: 'not-allowed',
+    userSelect: 'none',
+  },
+  [ButtonSelectors.OUTLINE]: {
+    content: '""',
+    transition: transitionConcat(['opacity'], 'fast'),
+    position: 'absolute',
+    borderRadius: '6px',
+    border: 2,
+    inset: -5,
+    opacity: 0,
+    zIndex: 0,
+  },
+  [ButtonSelectors.OUTLINE_FOCUS_VISIBLE]: {
+    opacity: 1,
   },
 });
+
+export interface ButtonProps
+  extends ComponentProps<typeof ButtonBase>,
+    StyleProps<typeof buttonProps> {
+  onClick?: HTMLProps<HTMLButtonElement>['onClick'];
+  variant?: typeof buttonVariants[number];
+  size?: 'normal' | 'small';
+  as?: never;
+  mode?: ColorModes;
+}
+
+export const createButtonComponent = <P>(
+  ...args: (<T extends ThemeProps>(props: T) => CSSObject)[]
+) =>
+  styled(ButtonBase)<ButtonProps & P>(
+    fontSmoothPixel,
+    modeColorProps,
+    buttonStyles,
+    ...args,
+    buttonProps
+  );

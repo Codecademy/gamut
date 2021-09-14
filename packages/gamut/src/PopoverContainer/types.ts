@@ -42,7 +42,7 @@ export interface PopoverAlignment {
    */
   alignment?: Alignments;
   /** Align to the inside edge of the target div */
-  insideAxis?: 'x' | 'y';
+  invertAxis?: 'x' | 'y';
   /** Whether the popover renders inside the current DOM context or escapes with a portal */
   inline?: boolean;
   /**

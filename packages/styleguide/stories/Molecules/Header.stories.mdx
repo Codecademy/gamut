@@ -10,13 +10,16 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
     subtitle: `Header navigation bar and tabs with configurable areas.`,
     status: 'deprecated',
     source: 'gamut-labs',
-    figmaId: 'TemYhRWOavsERWprDzRJCx',
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/file/TemYhRWOavsERWprDzRJCx',
+    },
   }}
 />
 
 <Canvas withSource="open">
   <Story name="Header">
-    {(args) => (
+    {() => (
       <HeaderContainer
         sections={{
           left: <HeaderTab>Hello</HeaderTab>,

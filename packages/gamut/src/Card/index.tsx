@@ -1,40 +1,39 @@
-import { system, theme } from '@codecademy/gamut-styles';
+import { Background, system, theme, variant } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
+import React, { ComponentProps } from 'react';
 
 import { Box } from '../Box';
 
-const cardVariants = system.variant({
-  base: {
-    border: 1,
-    borderRadius: '2px',
-  },
-  variants: {
-    yellow: {
-      bg: 'yellow',
-      textColor: 'navy',
+const DynamicCardWrapper = styled(Box)<CardWrapperProps>(
+  variant({
+    prop: 'shadow',
+    base: {
+      position: 'relative',
+      boxShadow: `0px 0px 0 currentColor`,
+      transition: 'box-shadow 200ms ease, transform 200ms ease',
     },
-    navy: {
-      bg: 'navy',
-      textColor: 'white',
-      '&:hover': {
-        outline: '1px solid currentColor',
+    variants: {
+      small: {
+        '&:hover': {
+          transform: 'translate(2px, -2px)',
+          boxShadow: `-4px 4px 0 currentColor`,
+        },
+      },
+      medium: {
+        '&:hover': {
+          transform: 'translate(4px, -4px)',
+          boxShadow: `-8px 8px 0 currentColor`,
+        },
       },
     },
-    white: {
-      bg: 'white',
-      textColor: 'navy',
-    },
-    hyper: {
-      bg: 'hyper',
-      textColor: 'white',
-    },
-  },
-});
+  })
+);
 
-const shadowVariants = system.variant({
+const shadowVariants = variant({
   prop: 'shadow',
   base: {
+    position: 'relative',
     boxShadow: `0px 0px 0 ${theme.colors.navy}`,
     transition: 'box-shadow 200ms ease, transform 200ms ease',
   },
@@ -54,12 +53,48 @@ const shadowVariants = system.variant({
   },
 });
 
-export type CardProps = StyleProps<typeof cardVariants> &
-  StyleProps<typeof shadowVariants>;
+export interface CardProps
+  extends Omit<ComponentProps<typeof CardWrapper>, 'outline' | 'bg'> {
+  variant?: 'navy' | 'white' | 'hyper' | 'yellow';
+}
 
-export const Card = styled(Box)<CardProps>(cardVariants, shadowVariants);
+interface CardWrapperProps extends StyleProps<typeof shadowVariants> {
+  outline?: boolean;
+}
 
-Card.defaultProps = {
-  p: 16,
-  variant: 'white',
+const CardWrapper = styled(Background)<CardWrapperProps>(
+  shadowVariants,
+  system.states({
+    outline: {
+      '&:hover': {
+        outline: '1px solid currentColor',
+      },
+    },
+  })
+);
+
+export const Card: React.FC<CardProps> = ({ variant, ...rest }) => {
+  if (!variant) {
+    return (
+      <DynamicCardWrapper
+        border={1}
+        borderColor="secondary-hover"
+        bg="background"
+        color="text"
+        p={16}
+        {...rest}
+      />
+    );
+  }
+
+  return (
+    <CardWrapper
+      bg={variant}
+      border={1}
+      borderColor="navy"
+      p={16}
+      outline={variant === 'navy'}
+      {...rest}
+    />
+  );
 };

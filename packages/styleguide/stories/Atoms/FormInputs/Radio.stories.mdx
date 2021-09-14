@@ -1,4 +1,5 @@
-import { Radio } from '@codecademy/gamut';
+import { Box, Radio, ToolTip } from '@codecademy/gamut';
+import { MiniInfoOutlineIcon } from '@codecademy/gamut-icons';
 import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
@@ -11,6 +12,11 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
       'A `<input type="radio" />` element to be used with a `<RadioGroup />` component',
     source: 'gamut',
     status: 'current',
+    design: {
+      type: 'figma',
+      url:
+        'https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=1189%3A0',
+    },
   }}
   args={{
     htmlFor: 'example-radio',
@@ -61,5 +67,39 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
     }}
   >
     {(args) => <Radio {...args} />}
+  </Story>
+</Canvas>
+
+### Custom labels
+
+The label is a ReactNode, making it customizable outside of a standard text label.
+
+<Canvas>
+  <Story
+    name="Custom labels"
+    args={{
+      htmlFor: 'example-custom',
+      name: 'example-custom',
+      label: (
+        <>
+          Option with tooltip
+          <Box pl={8}>
+            <ToolTip
+              alignment="bottom-right"
+              id="radio-tooltip"
+              target={<MiniInfoOutlineIcon size="0.8rem" />}
+            >
+              More info!
+            </ToolTip>
+          </Box>
+        </>
+      ),
+    }}
+  >
+    {(args) => (
+      <Box height="5rem" bg="beige" p={5}>
+        <Radio {...args} />
+      </Box>
+    )}
   </Story>
 </Canvas>

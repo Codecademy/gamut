@@ -9,7 +9,27 @@ const renderView = setupRtl(GlobalPage, {
   },
   header: {
     action: jest.fn(),
-    type: 'anon',
+    notifications: {
+      actions: {
+        clear: jest.fn(),
+        click: jest.fn(),
+        dismiss: jest.fn(),
+        read: jest.fn(),
+        track: jest.fn(),
+      },
+      notifications: [],
+      onEnable: jest.fn(),
+    },
+    search: {
+      onEnable: jest.fn(),
+      onSearch: jest.fn(),
+      onTrackingClick: jest.fn(),
+    },
+    type: 'pro',
+    user: {
+      avatar: '',
+      displayName: '',
+    },
   },
 });
 

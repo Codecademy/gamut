@@ -22,6 +22,7 @@ const logoProps: AppHeaderMobileProps = {
     right: [],
     mainMenu: [],
   },
+  onSearch: jest.fn(),
 };
 
 const linkProps: AppHeaderMobileProps = {
@@ -39,6 +40,7 @@ const linkProps: AppHeaderMobileProps = {
     right: [],
     mainMenu: [],
   },
+  onSearch: jest.fn(),
 };
 
 const mainMenuProps: AppHeaderMobileProps = {
@@ -55,7 +57,7 @@ const mainMenuProps: AppHeaderMobileProps = {
         type: 'link',
       },
       {
-        id: 'link',
+        id: 'link2',
         href: 'http://codecademy.com',
         trackingTarget: 'tracking-target',
         text: 'App Header Button',
@@ -63,6 +65,7 @@ const mainMenuProps: AppHeaderMobileProps = {
       },
     ],
   },
+  onSearch: jest.fn(),
 };
 
 const renderAppHeader = (props: AppHeaderMobileProps) => {
@@ -101,13 +104,15 @@ describe('AppHeaderMobile', () => {
     });
 
     it('hides the mobile app header', () => {
-      expect(screen.queryByTestId('header-mobile-menu')).not.toBeInTheDocument;
+      expect(
+        screen.queryByTestId('header-mobile-menu')
+      ).not.toBeInTheDocument();
     });
 
     it('renders a button to close the mobile menu', () => {
       const closeButton = screen.getByLabelText('close menu');
       closeButton.click();
-      expect(screen.queryByTestId('header-mobile-menu')).toBeInTheDocument;
+      expect(screen.queryByTestId('header-mobile-menu')).toBeInTheDocument();
     });
   });
 });

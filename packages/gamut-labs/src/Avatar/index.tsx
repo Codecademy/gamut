@@ -1,46 +1,108 @@
 import { VisualTheme } from '@codecademy/gamut';
-import cx from 'classnames';
+import { theme } from '@codecademy/gamut-styles';
+import { css } from '@emotion/react';
+import styled from '@emotion/styled';
 import React from 'react';
 
-import styles from './styles.module.scss';
+const Image = styled.img();
 
-type AvatarImageProps =
-  | {
-      alt: string;
-      'aria-labelledby'?: never;
-    }
+const AvatarContainer = styled.div<{
+  mode?: VisualTheme;
+  disableDropshadow?: boolean;
+}>`
+  position: relative;
+  display: table;
+
+  ${({ disableDropshadow, mode }) =>
+    !disableDropshadow &&
+    css`
+      &::before {
+        content: '';
+        position: absolute;
+        border-radius: 50%;
+        transform: scale(0.92);
+        transform-origin: bottom right;
+        height: 100%;
+        width: 100%;
+        background-color: ${mode
+          ? mode === 'light'
+            ? theme.colors.lightGreen
+            : theme.colors.green
+          : theme.colors['feedback-success']};
+      }
+    `}
+
+  ${Image} {
+    position: relative;
+    border-radius: 50%;
+    object-fit: cover;
+
+    ${({ disableDropshadow }) =>
+      !disableDropshadow &&
+      css`
+        transform: scale(0.92);
+        transform-origin: top left;
+      `}
+  }
+`;
+
+export type AvatarImageProps =
+  | { alt: string; 'aria-labelledby'?: never }
   | { alt?: never; 'aria-labelledby': string };
 
-type AvatarBaseProps = {
+export type AvatarBaseProps = {
   /**
    * path to image asset
    */
   src: string;
+
   /**
-   * chooses color of drop shadow
+   * Disables the drop shadow entirely.
    */
-  theme?: VisualTheme;
-  className?: string; // useful if avatar size needs to be overridden
+  disableDropshadow?: boolean;
+
+  /**
+   * Size of the Avatar; small = 32x32, medium = 118x118
+   */
+  size?: 'small' | 'medium';
+
+  /**
+   * Overrides styles on the Avatar container.
+   */
+  className?: string;
+
+  /**
+   * @deprecated
+   * This will be determined automatically by the theme moving forward.
+   * Supplying it will determine the color of drop shadow.
+   */
+  mode?: VisualTheme;
 };
 
-type AvatarProps = AvatarBaseProps & AvatarImageProps;
+export type AvatarProps = AvatarBaseProps & AvatarImageProps;
+
+export const avatarSizes = {
+  small: '32px',
+  medium: '118px',
+};
 
 export const Avatar: React.FC<AvatarProps> = ({
-  theme = 'light',
+  mode,
+  disableDropshadow,
+  size = 'medium',
   className,
   ...avatarImageProps
-}) => {
-  return (
-    <div
-      className={cx(
-        styles.container,
-        className,
-        theme === 'dark' ? styles.darkContainer : styles.lightContainer
-      )}
-    >
-      {/*  The current rules for alt-text don't allow images with aria-labelledby to have no alt. So, we need to disable the rule for that line. https://github.com/evcohen/eslint-plugin-jsx-a11y/issues/411#issue-306995775 */}
-      {/* eslint-disable-next-line jsx-a11y/alt-text */}
-      <img {...avatarImageProps} />
-    </div>
-  );
-};
+}) => (
+  <AvatarContainer
+    className={className}
+    mode={mode}
+    disableDropshadow={disableDropshadow}
+    data-testid="avatar-container"
+  >
+    <Image
+      width={avatarSizes[size]}
+      height={avatarSizes[size]}
+      {...avatarImageProps}
+    />
+  </AvatarContainer>
+);

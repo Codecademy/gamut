@@ -1,5 +1,4 @@
-import { ColorMode, system } from '@codecademy/gamut-styles';
-import { useTheme } from '@emotion/react';
+import { ColorMode, system, useCurrentMode } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
@@ -11,9 +10,7 @@ const PortalWrapper = styled
 
 export const BodyPortal: React.FC = ({ children }) => {
   const [ready, setReady] = useState(false);
-  const {
-    colorModes: { active },
-  } = useTheme();
+  const mode = useCurrentMode();
 
   /** Delay initial render once to ensure that rehydration does not conflict with portal mounting */
   useIsomorphicLayoutEffect(() => {
@@ -23,7 +20,7 @@ export const BodyPortal: React.FC = ({ children }) => {
   if (!ready) return null;
 
   return ReactDOM.createPortal(
-    <PortalWrapper mode={active} alwaysSetVariables>
+    <PortalWrapper mode={mode} alwaysSetVariables>
       {children}
     </PortalWrapper>,
     document.body
