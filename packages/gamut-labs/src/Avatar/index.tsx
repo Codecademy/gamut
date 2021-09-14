@@ -64,7 +64,7 @@ export type AvatarBaseProps = {
   /**
    * Size of the Avatar.
    */
-  size?: 32 | 64 | 118;
+  size?: 32 | 48 | 64 | 118;
 
   /**
    * Overrides styles on the Avatar container.
