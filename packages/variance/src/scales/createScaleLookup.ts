@@ -19,5 +19,5 @@ export const createScaleLookup = (scale: Prop['scale']): GetScaleValue => {
     return (val) => get(scale, val);
   }
 
-  return (val, props) => undefined;
+  return () => undefined;
 };

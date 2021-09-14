@@ -7,7 +7,8 @@
  */
 export const runSegmentSnippet = () => {
   // Create a queue, but don't obliterate an existing one!
-  const analytics = (window.analytics = window.analytics || []);
+  window.analytics ||= [];
+  const { analytics } = window;
 
   // If the real analytics.js is already on the page return.
   if (analytics.initialize) return;
@@ -60,7 +61,7 @@ export const runSegmentSnippet = () => {
   };
 
   // For each of our methods, generate a queueing stub.
-  for (let i = 0; i < analytics.methods.length; i++) {
+  for (let i = 0; i < analytics.methods.length; i += 1) {
     const key = analytics.methods[i];
     analytics[key] = analytics.factory(key);
   }

@@ -1,5 +1,4 @@
-import { Box, IconButton } from '@codecademy/gamut/src';
-import { BellIcon } from '@codecademy/gamut-icons/src';
+import { Box } from '@codecademy/gamut/src';
 import { GlobalHeader } from '@codecademy/gamut-labs/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
@@ -93,10 +92,31 @@ The following are available variations for the GlobalHeader component.
 
 <Canvas>
   <Story name="Free User - Default">
-    {(args) => (
+    {() => (
       <Box position="relative" zIndex={0}>
         <GlobalHeader
           action={() => {}}
+          notifications={{
+            baseUrl: '',
+            notifications: [
+              {
+                campaign: 'existence_is_pain',
+                date: '5 hours',
+                id: '1',
+                link: 'https://codecademy.com',
+                text: "Look at me! I'm Mr. Notification!",
+                unread: true,
+              },
+            ],
+            onEnable: () => {},
+            actions: {
+              clear: () => {},
+              click: () => {},
+              dismiss: () => {},
+              read: () => {},
+              track: () => {},
+            },
+          }}
           search={{
             onEnable: () => {},
             onSearch: () => {},
@@ -121,9 +141,30 @@ The Try Pro For Free button can take in an optional custom path.
 
 <Canvas>
   <Story name="Free User - Custom Trial CTA URL">
-    {(args) => (
+    {() => (
       <GlobalHeader
         action={() => {}}
+        notifications={{
+          baseUrl: '',
+          notifications: [
+            {
+              campaign: 'existence_is_pain',
+              date: '5 hours',
+              id: '1',
+              link: 'https://codecademy.com',
+              text: "Look at me! I'm Mr. Notification!",
+              unread: true,
+            },
+          ],
+          onEnable: () => {},
+          actions: {
+            clear: () => {},
+            click: () => {},
+            dismiss: () => {},
+            read: () => {},
+            track: () => {},
+          },
+        }}
         search={{
           onEnable: () => {},
           onSearch: () => {},
@@ -145,9 +186,30 @@ The Try Pro For Free button can take in an optional custom path.
 
 <Canvas>
   <Story name="Free User - Pro Upgrade">
-    {(args) => (
+    {() => (
       <GlobalHeader
         action={() => {}}
+        notifications={{
+          baseUrl: '',
+          notifications: [
+            {
+              campaign: 'existence_is_pain',
+              date: '5 hours',
+              id: '1',
+              link: 'https://codecademy.com',
+              text: "Look at me! I'm Mr. Notification!",
+              unread: true,
+            },
+          ],
+          onEnable: () => {},
+          actions: {
+            clear: () => {},
+            click: () => {},
+            dismiss: () => {},
+            read: () => {},
+            track: () => {},
+          },
+        }}
         search={{
           onEnable: () => {},
           onSearch: () => {},
@@ -171,9 +233,30 @@ The Try Pro For Free button can take in an optional custom path.
 
 <Canvas>
   <Story name="Pro User - Default">
-    {(args) => (
+    {() => (
       <GlobalHeader
         action={() => {}}
+        notifications={{
+          baseUrl: '',
+          notifications: [
+            {
+              campaign: 'existence_is_pain',
+              date: '5 hours',
+              id: '1',
+              link: 'https://codecademy.com',
+              text: "Look at me! I'm Mr. Notification!",
+              unread: true,
+            },
+          ],
+          onEnable: () => {},
+          actions: {
+            clear: () => {},
+            click: () => {},
+            dismiss: () => {},
+            read: () => {},
+            track: () => {},
+          },
+        }}
         search={{
           onEnable: () => {},
           onSearch: () => {},
@@ -194,9 +277,30 @@ The Try Pro For Free button can take in an optional custom path.
 
 <Canvas>
   <Story name="Pro User - Paused">
-    {(args) => (
+    {() => (
       <GlobalHeader
         action={() => {}}
+        notifications={{
+          baseUrl: '',
+          notifications: [
+            {
+              campaign: 'existence_is_pain',
+              date: '5 hours',
+              id: '1',
+              link: 'https://codecademy.com',
+              text: "Look at me! I'm Mr. Notification!",
+              unread: true,
+            },
+          ],
+          onEnable: () => {},
+          actions: {
+            clear: () => {},
+            click: () => {},
+            dismiss: () => {},
+            read: () => {},
+            track: () => {},
+          },
+        }}
         search={{
           onEnable: () => {},
           onSearch: () => {},
@@ -218,9 +322,30 @@ The Try Pro For Free button can take in an optional custom path.
 
 <Canvas>
   <Story name="Pro User - Admin">
-    {(args) => (
+    {() => (
       <GlobalHeader
         action={() => {}}
+        notifications={{
+          baseUrl: '',
+          notifications: [
+            {
+              campaign: 'existence_is_pain',
+              date: '5 hours',
+              id: '1',
+              link: 'https://codecademy.com',
+              text: "Look at me! I'm Mr. Notification!",
+              unread: true,
+            },
+          ],
+          onEnable: () => {},
+          actions: {
+            clear: () => {},
+            click: () => {},
+            dismiss: () => {},
+            read: () => {},
+            track: () => {},
+          },
+        }}
         search={{
           onEnable: () => {},
           onSearch: () => {},
@@ -242,9 +367,30 @@ The Try Pro For Free button can take in an optional custom path.
 
 <Canvas>
   <Story name="Pro User - Customer Support">
-    {(args) => (
+    {() => (
       <GlobalHeader
         action={() => {}}
+        notifications={{
+          baseUrl: '',
+          notifications: [
+            {
+              campaign: 'existence_is_pain',
+              date: '5 hours',
+              id: '1',
+              link: 'https://codecademy.com',
+              text: "Look at me! I'm Mr. Notification!",
+              unread: true,
+            },
+          ],
+          onEnable: () => {},
+          actions: {
+            clear: () => {},
+            click: () => {},
+            dismiss: () => {},
+            read: () => {},
+            track: () => {},
+          },
+        }}
         search={{
           onEnable: () => {},
           onSearch: () => {},
@@ -267,9 +413,30 @@ The Try Pro For Free button can take in an optional custom path.
 
 <Canvas>
   <Story name="Business Account Manager - Pro">
-    {(args) => (
+    {() => (
       <GlobalHeader
         action={() => {}}
+        notifications={{
+          baseUrl: '',
+          notifications: [
+            {
+              campaign: 'existence_is_pain',
+              date: '5 hours',
+              id: '1',
+              link: 'https://codecademy.com',
+              text: "Look at me! I'm Mr. Notification!",
+              unread: true,
+            },
+          ],
+          onEnable: () => {},
+          actions: {
+            clear: () => {},
+            click: () => {},
+            dismiss: () => {},
+            read: () => {},
+            track: () => {},
+          },
+        }}
         search={{
           onEnable: () => {},
           onSearch: () => {},
@@ -291,9 +458,30 @@ The Try Pro For Free button can take in an optional custom path.
 
 <Canvas>
   <Story name="Business Account Manager - Free">
-    {(args) => (
+    {() => (
       <GlobalHeader
         action={() => {}}
+        notifications={{
+          baseUrl: '',
+          notifications: [
+            {
+              campaign: 'existence_is_pain',
+              date: '5 hours',
+              id: '1',
+              link: 'https://codecademy.com',
+              text: "Look at me! I'm Mr. Notification!",
+              unread: true,
+            },
+          ],
+          onEnable: () => {},
+          actions: {
+            clear: () => {},
+            click: () => {},
+            dismiss: () => {},
+            read: () => {},
+            track: () => {},
+          },
+        }}
         search={{
           onEnable: () => {},
           onSearch: () => {},
@@ -317,7 +505,7 @@ The Try Pro For Free button can take in an optional custom path.
 
 <Canvas>
   <Story name="Anonymous User - Default">
-    {(args) => (
+    {() => (
       <GlobalHeader
         action={() => {}}
         search={{
@@ -335,7 +523,7 @@ The Try Pro For Free button can take in an optional custom path.
 
 <Canvas>
   <Story name="Anonymous User - Landing Page">
-    {(args) => (
+    {() => (
       <GlobalHeader
         action={() => {}}
         search={{
@@ -354,7 +542,7 @@ The Try Pro For Free button can take in an optional custom path.
 
 <Canvas>
   <Story name="Anonymous User - Login Page">
-    {(args) => (
+    {() => (
       <GlobalHeader
         action={() => {}}
         search={{
@@ -373,7 +561,7 @@ The Try Pro For Free button can take in an optional custom path.
 
 <Canvas>
   <Story name="Anonymous User - Signup Page">
-    {(args) => (
+    {() => (
       <GlobalHeader
         action={() => {}}
         search={{
@@ -394,13 +582,9 @@ To mock this, IconButtons are provided as placeholders.
 
 <Canvas>
   <Story name="GlobalHeader With Search and Notifications">
-    {(args) => (
+    {() => (
       <GlobalHeader
         action={() => {}}
-        renderNotifications={{
-          desktop: () => <IconButton icon={BellIcon} />,
-          mobile: () => <IconButton icon={BellIcon} />,
-        }}
         search={{
           onEnable: () => {},
           onSearch: () => {},
@@ -421,7 +605,7 @@ To mock this, IconButtons are provided as placeholders.
 
 <Canvas>
   <Story name="GlobalHeader Over Background Color">
-    {(args) => (
+    {() => (
       <Box bg="beige" width="100%">
         <GlobalHeader
           action={() => {}}
@@ -448,7 +632,7 @@ To mock this, a very basic action function is provided, which prints out the eve
 
 <Canvas>
   <Story name="GlobalHeader With an Action Function">
-    {(args) => (
+    {() => (
       <GlobalHeader
         action={(event, item) => {
           // eslint-disable-next-line no-console
@@ -473,7 +657,7 @@ A version of the header with just the logo, for use when data has not been fetch
 
 <Canvas>
   <Story name="Loading">
-    {(args) => (
+    {() => (
       <GlobalHeader
         action={() => {}}
         search={{

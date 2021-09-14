@@ -6,7 +6,7 @@ import { StepButton, StepButtonProps } from '..';
 const renderStepBtn = (overrideProps: Partial<StepButtonProps>) => {
   const props: StepButtonProps = {
     type: 'up',
-    onClick: () => {},
+    onClick: jest.fn(),
     labelledBy: '',
     ...overrideProps,
   };

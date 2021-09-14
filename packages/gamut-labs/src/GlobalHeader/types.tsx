@@ -5,11 +5,7 @@ import {
   AppHeaderItemWithHref,
 } from '../AppHeader/AppHeaderElements/types';
 import { AppHeaderSearch } from '../AppHeader/Search/useHeaderSearch';
-
-type RenderNotifications = {
-  desktop: () => ReactNode;
-  mobile: () => ReactNode;
-};
+import { AppHeaderNotifications } from '../Notifications/types';
 
 type RenderFavorites = {
   desktop: () => ReactNode;
@@ -40,7 +36,7 @@ export type User = {
 };
 
 type LoggedInHeader = BaseHeader & {
-  renderNotifications?: RenderNotifications;
+  notifications: AppHeaderNotifications;
   renderProfile?: RenderProfile;
   renderFavorites?: RenderFavorites;
   user: User;

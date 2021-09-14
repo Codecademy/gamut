@@ -4,11 +4,10 @@ import React from 'react';
 import { FlexBox, Text } from '..';
 
 type BetaStickerProps = {
-  className?: string;
   children?: never;
 };
 
-export const BetaSticker: React.FC<BetaStickerProps> = (props) => {
+export const BetaSticker: React.FC<BetaStickerProps> = () => {
   const {
     colors: { text },
   } = useTheme();

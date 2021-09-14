@@ -3,6 +3,50 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [37.3.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@37.3.1...@codecademy/gamut@37.3.2) (2021-09-13)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [37.3.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@37.3.0...@codecademy/gamut@37.3.1) (2021-09-10)
+
+
+### Bug Fixes
+
+* **GridFormCheckbox:** tight variant error spacing ([21b1974](https://github.com/Codecademy/client-modules/commit/21b19748484051df9bb250603cb91dbebed6cede))
+
+
+
+## [37.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@37.2.0...@codecademy/gamut@37.3.0) (2021-09-10)
+
+
+### Features
+
+* bump ESLint configs to latest ([e0a201a](https://github.com/Codecademy/client-modules/commit/e0a201abcc5f49718538d3d91af21cb37db4470e))
+
+
+
+## [37.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@37.1.2...@codecademy/gamut@37.2.0) (2021-09-09)
+
+
+### Features
+
+* add notifications to GlobalHeader ([867d35c](https://github.com/Codecademy/client-modules/commit/867d35c8471c6173b37f0d26c9952cc5ceab3461))
+
+
+
+### [37.1.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@37.1.1...@codecademy/gamut@37.1.2) (2021-09-08)
+
+
+### Bug Fixes
+
+* Set `Card` non variant text color to ensure no inheritance GM-347 ([1d5d440](https://github.com/Codecademy/client-modules/commit/1d5d440c0e0c5362e26cb4da54b9567381553f12))
+
+
+
 ### [37.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@37.1.0...@codecademy/gamut@37.1.1) (2021-09-08)
 
 
