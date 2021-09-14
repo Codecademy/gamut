@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [37.4.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@37.4.0...@codecademy/gamut@37.4.1) (2021-09-14)
+
+
+### Bug Fixes
+
+* **Markdown:** use empty content for li::before ([0082d0c](https://github.com/Codecademy/client-modules/commit/0082d0cb151d6474777e7cb5e4228498b357bc4e))
+
+
+
 ## [37.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@37.3.2...@codecademy/gamut@37.4.0) (2021-09-14)
 
 
