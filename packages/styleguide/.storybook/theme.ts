@@ -2,9 +2,11 @@ import { create } from '@storybook/theming';
 import { theme as gamutTheme, colors } from '@codecademy/gamut-styles/src';
 import logo from './assets/logo.svg';
 
+const isLocalhost = globalThis.location?.toString().includes('localhost');
+
 export const theme = create({
   base: 'light',
-  brandTitle: 'Gamut',
+  brandTitle: isLocalhost ? 'Gamut Local' : 'Gamut',
   brandImage: logo,
   brandUrl: '/',
   fontBase: gamutTheme.fontFamily.base,
@@ -13,8 +15,8 @@ export const theme = create({
   colorSecondary: colors.navy,
 
   // UI
-  appBg: colors.white,
-  appContentBg: colors.white,
+  appBg: isLocalhost ? colors['green-0'] : colors.white,
+  appContentBg: isLocalhost ? colors['green-0'] : colors.white,
   appBorderColor: colors.navy,
   appBorderRadius: 4,
 
