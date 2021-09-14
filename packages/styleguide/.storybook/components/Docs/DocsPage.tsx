@@ -18,7 +18,7 @@ import { OpenIcon } from '@codecademy/gamut-icons';
 import { StatusIndicator } from './StatusIndicator';
 import { Background } from '@codecademy/gamut-styles/src';
 
-const isLocalHost = globalThis.location?.toString().includes('localhost');
+const isLocalhost = globalThis.location?.toString().includes('localhost');
 
 export interface GamutParameters extends Parameters {
   subtitle?: string;
@@ -86,7 +86,7 @@ export const DocsPage: React.FC = ({ children }) => {
   return (
     <Background
       minHeight="100vh"
-      bg={isLocalHost ? 'beige' : 'paleBlue'}
+      bg={isLocalhost ? 'beige' : 'paleBlue'}
       py={48}
     >
       <ContentContainer>
