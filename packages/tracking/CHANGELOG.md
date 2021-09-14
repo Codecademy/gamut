@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [0.14.2](https://github.com/Codecademy/client-modules/compare/@codecademy/tracking@0.14.1...@codecademy/tracking@0.14.2) (2021-09-13)
+
+**Note:** Version bump only for package @codecademy/tracking
+
+
+
+
+
 ### [0.14.1](https://github.com/Codecademy/client-modules/compare/@codecademy/tracking@0.14.0...@codecademy/tracking@0.14.1) (2021-09-10)
 
 **Note:** Version bump only for package @codecademy/tracking
