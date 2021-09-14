@@ -69,9 +69,6 @@ describe('useHeaderNotifications', () => {
       <MockGamutProvider>{hook.result.current[1]}</MockGamutProvider>
     );
 
-    expect(defaultProps.actions.read).toHaveBeenCalledWith(
-      notifications.slice(0, 3)
-    );
     expect(defaultProps.onEnable).toHaveBeenCalled();
     expect(paneView.container).not.toBeEmptyDOMElement();
   });

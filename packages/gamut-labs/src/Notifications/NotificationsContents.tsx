@@ -7,7 +7,7 @@ import {
   Text,
 } from '@codecademy/gamut';
 import { Background } from '@codecademy/gamut-styles';
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { NotificationsContentsProps } from './types';
 import { useNotificationButtons } from './useNotificationButtons';
@@ -29,6 +29,16 @@ export const NotificationsContents: React.FC<NotificationsContentsProps> = (
       actions.read([notification]);
     }
   };
+
+  useEffect(() => {
+    const unreadVisibleNotifications = visibleNotifications.filter(
+      (notification) => notification.unread
+    );
+
+    if (unreadVisibleNotifications.length) {
+      actions.read(unreadVisibleNotifications);
+    }
+  }, [actions, visibleNotifications]);
 
   return (
     <Background

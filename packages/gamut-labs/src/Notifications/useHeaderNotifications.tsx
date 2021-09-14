@@ -20,9 +20,6 @@ export const useHeaderNotifications = (
   const togglePane = () => {
     if (!isPaneVisible) {
       settings.onEnable();
-      settings.actions.read(
-        settings.notifications.slice(0, defaultDisplayLimit)
-      );
     }
 
     setIsPaneVisible((oldIsPaneVisible) => !oldIsPaneVisible);
