@@ -1,10 +1,4 @@
-import {
-  BodyPortal,
-  Box,
-  FocusTrap,
-  IconButton,
-  Text,
-} from '@codecademy/gamut';
+import { Box, IconButton, Overlay, Text } from '@codecademy/gamut';
 import { MiniDeleteIcon } from '@codecademy/gamut-icons';
 import { variant } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
@@ -70,42 +64,46 @@ export const Flyout: React.FC<FlyoutProps> = ({
   const initialX = openFrom === 'left' ? -1000 : 1000;
 
   return (
-    <AnimatePresence>
-      {expanded ? (
-        <BodyPortal>
-          <FocusTrap onClickOutside={onClose} onEscapeKey={onClose}>
-            <DrawerBase
-              aria-expanded={expanded}
-              initial={{ x: initialX }}
-              bg="background"
-              animate={{ x: 0 }}
-              exit={{ x: initialX }}
-              transition={{ duration: transitionDuration }}
-              width={{ _: '75%', sm: `${openWidth}rem` }}
-              maxWidth={`${openWidth}rem`}
-              openFrom={openFrom}
-              position="fixed"
-              bottom="0"
-              top="0"
-              overflowY="auto"
-              overflowX="hidden"
-            >
-              <Text as="h2" fontSize={22} ml={16} mt={16}>
-                {title}
-              </Text>
-              <IconButton
-                aria-label={closeLabel}
-                icon={MiniDeleteIcon}
-                onClick={onClose}
-                position="absolute"
-                top="0.5rem"
-                right="0.5rem"
-              />
-              {children}
-            </DrawerBase>
-          </FocusTrap>
-        </BodyPortal>
-      ) : null}
-    </AnimatePresence>
+    <Overlay
+      clickOutsideCloses
+      escapeCloses
+      isOpen={expanded}
+      onRequestClose={onClose}
+      shroud
+    >
+      <AnimatePresence>
+        {expanded ? (
+          <DrawerBase
+            aria-expanded={expanded}
+            initial={{ x: initialX }}
+            bg="background"
+            animate={{ x: 0 }}
+            exit={{ x: initialX }}
+            transition={{ duration: transitionDuration }}
+            width={{ _: '75%', sm: `${openWidth}rem` }}
+            maxWidth={`${openWidth}rem`}
+            openFrom={openFrom}
+            position="fixed"
+            bottom="0"
+            top="0"
+            overflowY="auto"
+            overflowX="hidden"
+          >
+            <Text as="h2" fontSize={22} mb={8} ml={16} mt={24}>
+              {title}
+            </Text>
+            <IconButton
+              aria-label={closeLabel}
+              icon={MiniDeleteIcon}
+              onClick={onClose}
+              position="absolute"
+              top="1rem"
+              right="0.5rem"
+            />
+            {children}
+          </DrawerBase>
+        ) : null}
+      </AnimatePresence>
+    </Overlay>
   );
 };
