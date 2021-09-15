@@ -8,7 +8,9 @@ import {
 } from '@codecademy/gamut-styles';
 import { MediaQueryMap } from '@codecademy/variance';
 import styled from '@emotion/styled';
-import React, { ComponentProps, ReactNode } from 'react';
+import React, { ReactNode } from 'react';
+
+import { Box, BoxProps } from '..';
 
 export type ToolTipAlignment =
   | 'bottom-center'
@@ -151,7 +153,7 @@ ${({ alignment }) =>
     `}
 `;
 
-const ToolTipBody = styled.div<ToolTipContainerProps>`
+const ToolTipBody = styled(Box)<ToolTipContainerProps>`
   border: 1px solid;
   border-radius: 3px;
   display: inline-block;
@@ -224,10 +226,7 @@ export type ToolTipProps = {
   mode?: ColorModes;
   target?: ReactNode;
 
-  toolTipStyles?: Omit<
-    ComponentProps<typeof ToolTipBody>,
-    keyof ToolTipContainerProps
-  >;
+  toolTipStyles?: BoxProps;
 };
 
 // don't show on mobile - really based on breakpoints
