@@ -19,7 +19,7 @@ export const EmptyNotification = () => {
       data-testid="empty-notification"
     >
       <FlexBox pb={16}>
-        <Image width={80} height={60} />
+        <Image aria-hidden width={80} height={60} />
       </FlexBox>
       <FlexBox flexDirection="column" alignItems="center">
         <Text as="p" mb={16}>
