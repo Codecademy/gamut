@@ -3,6 +3,140 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [44.6.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@44.5.3...@codecademy/styleguide@44.6.0) (2021-09-15)
+
+
+### Features
+
+* **GridForm:** resetOnSubmit ([83be450](https://github.com/Codecademy/client-modules/commit/83be45087b3a66360011f92f3d4d86070f51e9d0))
+
+
+
+### [44.5.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@44.5.2...@codecademy/styleguide@44.5.3) (2021-09-15)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [44.5.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@44.5.1...@codecademy/styleguide@44.5.2) (2021-09-14)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [44.5.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@44.5.0...@codecademy/styleguide@44.5.1) (2021-09-14)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [44.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@44.4.0...@codecademy/styleguide@44.5.0) (2021-09-14)
+
+
+### Features
+
+* **List:** Adds List presentation components GM-185 ([d95aa95](https://github.com/Codecademy/client-modules/commit/d95aa955380935a3579f298d45d94ff25012b461))
+
+
+
+## [44.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@44.3.3...@codecademy/styleguide@44.4.0) (2021-09-13)
+
+
+### Features
+
+* **Styleguide:** use green background for localhost storybook ([8dac0e7](https://github.com/Codecademy/client-modules/commit/8dac0e78d71efa429ebad43818db23f06fc9e4d1))
+
+
+
+### [44.3.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@44.3.2...@codecademy/styleguide@44.3.3) (2021-09-13)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [44.3.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@44.3.1...@codecademy/styleguide@44.3.2) (2021-09-13)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [44.3.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@44.3.0...@codecademy/styleguide@44.3.1) (2021-09-10)
+
+
+### Bug Fixes
+
+* **GridFormCheckbox:** tight variant error spacing ([21b1974](https://github.com/Codecademy/client-modules/commit/21b19748484051df9bb250603cb91dbebed6cede))
+
+
+
+## [44.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@44.2.3...@codecademy/styleguide@44.3.0) (2021-09-10)
+
+
+### Features
+
+* bump ESLint configs to latest ([e0a201a](https://github.com/Codecademy/client-modules/commit/e0a201abcc5f49718538d3d91af21cb37db4470e))
+
+
+
+### [44.2.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@44.2.2...@codecademy/styleguide@44.2.3) (2021-09-10)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [44.2.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@44.2.1...@codecademy/styleguide@44.2.2) (2021-09-09)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [44.2.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@44.2.0...@codecademy/styleguide@44.2.1) (2021-09-09)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [44.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@44.1.7...@codecademy/styleguide@44.2.0) (2021-09-09)
+
+
+### Features
+
+* add notifications to GlobalHeader ([867d35c](https://github.com/Codecademy/client-modules/commit/867d35c8471c6173b37f0d26c9952cc5ceab3461))
+
+
+
+### [44.1.7](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@44.1.6...@codecademy/styleguide@44.1.7) (2021-09-09)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [44.1.6](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@44.1.5...@codecademy/styleguide@44.1.6) (2021-09-09)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
 ### [44.1.5](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@44.1.4...@codecademy/styleguide@44.1.5) (2021-09-08)
 
 **Note:** Version bump only for package @codecademy/styleguide

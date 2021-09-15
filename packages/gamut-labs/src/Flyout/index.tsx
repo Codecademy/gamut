@@ -66,7 +66,7 @@ type FlyoutProps = FlyoutStyleProps & {
   /**
    * A means of the parent method to get a reference to the closeFlyout function
    */
-  closeFlyoutRef?: React.MutableRefObject<Function>;
+  closeFlyoutRef?: React.MutableRefObject<Function | undefined>;
 };
 
 export const Flyout: React.FC<FlyoutProps> = ({
@@ -96,17 +96,21 @@ export const Flyout: React.FC<FlyoutProps> = ({
     if (closeFlyoutRef) {
       closeFlyoutRef.current = closeFlyout;
       return () => {
-        closeFlyoutRef.current = () => {};
+        closeFlyoutRef.current = undefined;
       };
     }
   }, [closeFlyoutRef, closeFlyout]);
 
   const handleOutsideClick = useCallback(() => {
-    !clickOutsideDoesNotClose && closeFlyout();
+    if (!clickOutsideDoesNotClose) {
+      closeFlyout();
+    }
   }, [clickOutsideDoesNotClose, closeFlyout]);
 
   const handleEscapeKey = useCallback(() => {
-    !escapeDoesNotClose && closeFlyout();
+    if (!escapeDoesNotClose) {
+      closeFlyout();
+    }
   }, [escapeDoesNotClose, closeFlyout]);
 
   return (

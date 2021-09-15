@@ -19,9 +19,7 @@ Ideally those cases should be exceedingly rare; unfortunately, some of our older
 See https://wdn.unl.edu/page-title-h1-best-practices for more information.
 
 <Canvas withSource="open">
-  <Story name="HiddenText">
-    {(args) => <HiddenText>Surprise!</HiddenText>}
-  </Story>
+  <Story name="HiddenText">{() => <HiddenText>Surprise!</HiddenText>}</Story>
 </Canvas>
 
 <PropsTable story="HiddenText" />

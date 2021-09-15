@@ -34,7 +34,7 @@ percentage label.
 
 <Canvas>
   <Story name="ProgressBar">
-    {(args) => (
+    {() => (
       <LayoutGrid gap={16}>
         {bars.map(({ size, variant }) => (
           <Column key={[size, variant].join()} size={{ md: 6, lg: 3 }}>
