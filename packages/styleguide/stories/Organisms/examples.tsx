@@ -551,6 +551,19 @@ export const HEY: React.FC = () => {
               </ConnectedRadioGroup>
             </ConnectedFormGroup>
           </INeedSomeSpace>
+          <INeedSomeSpace>
+            <ConnectedFormGroup
+              name="render-input"
+              label="render i am tre custom"
+              render={({ name, currentlyDisabled, register }) => (
+                <input
+                  name={name}
+                  disabled={currentlyDisabled}
+                  ref={register({ required: 'heyyyyyyyy...' })}
+                />
+              )}
+            />
+          </INeedSomeSpace>
         </Box>
         <Box
           gridArea="main"

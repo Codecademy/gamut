@@ -1,6 +1,7 @@
 import { css } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React from 'react';
+import { UseFormMethods } from 'react-hook-form';
 
 import {
   FormError,
@@ -20,6 +21,14 @@ const ErrorAnchor = styled(Anchor)(
   })
 );
 
+export interface CustomFieldRenderProps {
+  name?: string;
+  error?: string;
+  isFirstError?: boolean;
+  currentlyDisabled?: boolean;
+  register: UseFormMethods['register'];
+}
+
 export type ConnectedFormGroupProps = Omit<FormGroupProps, 'label'> &
   Pick<FormGroupLabelProps, 'size'> & {
     customError?: string;
@@ -27,6 +36,7 @@ export type ConnectedFormGroupProps = Omit<FormGroupProps, 'label'> &
     hideLabel?: boolean;
     label: React.ReactNode;
     name: string;
+    render?: (name: CustomFieldRenderProps) => JSX.Element;
     required?: boolean;
     showRequired?: boolean;
     spacing?: 'base' | 'tight';
@@ -42,13 +52,14 @@ export const ConnectedFormGroup: React.FC<ConnectedFormGroupProps> = ({
   id,
   label,
   name,
+  render,
   required,
   showRequired,
   size,
   spacing,
   tooltip,
 }) => {
-  const { error, isFirstError, isDisabled } = useFieldContext(name);
+  const { error, isFirstError, isDisabled, register } = useFieldContext(name);
   const currentlyDisabled = isDisabled || disabled;
 
   const renderedLabel = (
@@ -70,6 +81,7 @@ export const ConnectedFormGroup: React.FC<ConnectedFormGroupProps> = ({
     >
       {hideLabel ? <HiddenText>{renderedLabel}</HiddenText> : renderedLabel}
       {children}
+      {render?.({ name, error, isFirstError, currentlyDisabled, register })}
       {(error || customError) && (
         <FormError
           role={isFirstError ? 'alert' : 'status'}
