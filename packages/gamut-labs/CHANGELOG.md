@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [19.26.6](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.26.5...@codecademy/gamut-labs@19.26.6) (2021-09-14)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [19.26.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.26.4...@codecademy/gamut-labs@19.26.5) (2021-09-14)
+
+
+### Bug Fixes
+
+* Set HubCard Card variant ([815030d](https://github.com/Codecademy/client-modules/commit/815030d936421763934d74b3ee9c6a3144052cb7))
+
+
+
 ### [19.26.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.26.3...@codecademy/gamut-labs@19.26.4) (2021-09-14)
 
 **Note:** Version bump only for package @codecademy/gamut-labs
