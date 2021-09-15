@@ -1,4 +1,3 @@
-import { Box } from '@codecademy/gamut';
 import {
   modeColorProps,
   pxRem,
@@ -46,12 +45,6 @@ interface PresentationalAvatarProps extends ComponentProps<typeof AvatarImage> {
 
 export type AvatarProps = InputAvatarProps | PresentationalAvatarProps;
 
-export const Avatar: React.FC<AvatarProps> = ({
-  size = 118,
-  className,
-  ...avatarImageProps
-}) => (
-  <Box position="relative" className={className} data-testid="avatar-container">
-    <AvatarImage size={size} {...avatarImageProps} />
-  </Box>
+export const Avatar: React.FC<AvatarProps> = ({ size = 118, ...rest }) => (
+  <AvatarImage size={size} {...rest} />
 );
