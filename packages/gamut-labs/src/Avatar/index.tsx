@@ -1,10 +1,11 @@
 import { VisualTheme } from '@codecademy/gamut';
-import { theme } from '@codecademy/gamut-styles';
+import { styledOptions, system, theme } from '@codecademy/gamut-styles';
+import { ResponsiveProp } from '@codecademy/variance';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import React from 'react';
 
-const Image = styled.img();
+const Image = styled('img', styledOptions<'img'>())(system.layout);
 
 const AvatarContainer = styled.div<{
   mode?: VisualTheme;
@@ -62,9 +63,9 @@ export type AvatarBaseProps = {
   disableDropshadow?: boolean;
 
   /**
-   * Size of the Avatar; small = 32x32, medium = 118x118
+   * Size of the Avatar.
    */
-  size?: 'small' | 'medium';
+  size?: ResponsiveProp<32 | 48 | 64 | 118>;
 
   /**
    * Overrides styles on the Avatar container.
@@ -81,15 +82,10 @@ export type AvatarBaseProps = {
 
 export type AvatarProps = AvatarBaseProps & AvatarImageProps;
 
-export const avatarSizes = {
-  small: '32px',
-  medium: '118px',
-};
-
 export const Avatar: React.FC<AvatarProps> = ({
   mode,
   disableDropshadow,
-  size = 'medium',
+  size = 118,
   className,
   ...avatarImageProps
 }) => (
@@ -99,10 +95,6 @@ export const Avatar: React.FC<AvatarProps> = ({
     disableDropshadow={disableDropshadow}
     data-testid="avatar-container"
   >
-    <Image
-      width={avatarSizes[size]}
-      height={avatarSizes[size]}
-      {...avatarImageProps}
-    />
+    <Image dimensions={size} {...avatarImageProps} />
   </AvatarContainer>
 );
