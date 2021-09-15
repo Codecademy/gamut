@@ -25,6 +25,10 @@ export type LayoutMenuProps = {
    * Breakpoint above which the menu button displays as a full sidebar
    */
   breakpoint?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+  /**
+   * An additional link section on top of the layout menu
+   */
+  topLinkSection?: React.ReactNode;
 };
 
 export const LayoutMenu: React.FC<LayoutMenuProps> = ({
@@ -34,6 +38,7 @@ export const LayoutMenu: React.FC<LayoutMenuProps> = ({
   mobileButtonText,
   breakpoint = 'lg',
   children,
+  topLinkSection,
 }) => {
   const closeFlyoutRef = useRef<() => void>();
 
@@ -66,12 +71,14 @@ export const LayoutMenu: React.FC<LayoutMenuProps> = ({
         >
           <Box bg="white" minHeight={1} p={16}>
             <Logo mb={32} />
+            {topLinkSection}
             {accordionMenuSections}
             {children}
           </Box>
         </Flyout>
       </Box>
       <Box display={{ _: 'none', [breakpoint]: 'block' }}>
+        {topLinkSection}
         {accordionMenuSections}
         {children}
       </Box>

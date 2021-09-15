@@ -8,6 +8,8 @@ import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 
+import { TopLinkExample } from './examples';
+
 <Meta
   title={title}
   component={LayoutMenu}
@@ -89,6 +91,30 @@ Additional links outside of an accordion can be added as `children`. You can use
   <Story name="With Additional Links">
     {(args) => (
       <LayoutMenu {...args}>
+        <Box pb={32}>
+          <SelectedSectionItem>Full Catalog</SelectedSectionItem>
+        </Box>
+        <Box pb={32}>
+          <SectionItemLink
+            onClick={() =>
+              (window.location.href =
+                'https://www.codecademy.com/explore/sorting-quiz')
+            }
+          >
+            Where do I begin?
+          </SectionItemLink>
+        </Box>
+      </LayoutMenu>
+    )}
+  </Story>
+</Canvas>
+
+## With Additional Links on Top and Bottom
+
+<Canvas>
+  <Story name="With Additional Links on Top and Bottom">
+    {(args) => (
+      <LayoutMenu {...args} topLinkSection={<TopLinkExample />}>
         <Box pb={32}>
           <SelectedSectionItem>Full Catalog</SelectedSectionItem>
         </Box>
