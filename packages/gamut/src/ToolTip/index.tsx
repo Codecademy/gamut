@@ -6,8 +6,9 @@ import {
   timing,
   variant,
 } from '@codecademy/gamut-styles';
+import { MediaQueryMap } from '@codecademy/variance';
 import styled from '@emotion/styled';
-import React, { ReactNode } from 'react';
+import React, { ComponentProps, ReactNode } from 'react';
 
 export type ToolTipAlignment =
   | 'bottom-center'
@@ -35,7 +36,13 @@ const TargetContainer = styled.div`
 type ToolTipContainerProps = {
   alignment: ToolTipAlignment;
   mode: ColorModes;
+  hideBreakpoints?: HideBreakpoints;
 };
+
+const toolTipIsVisibleCSS = `
+  opacity: 1;
+  visibility: visible;
+`;
 
 const ToolTipContainer = styled.div<ToolTipContainerProps>`
   ${fontSmoothPixel}
@@ -74,8 +81,15 @@ const ToolTipContainer = styled.div<ToolTipContainerProps>`
   ${TargetContainer}:hover + &,
   ${TargetContainer}:focus-within + &,
   &:hover {
-    opacity: 1;
-    visibility: visible;
+    ${({ theme, hideBreakpoints }) =>
+      hideBreakpoints &&
+      Object.keys(hideBreakpoints).map(
+        (key: keyof HideBreakpoints) =>
+          !hideBreakpoints[key] &&
+          (key === '_'
+            ? toolTipIsVisibleCSS
+            : `${theme.breakpoints[key]} { ${toolTipIsVisibleCSS} }`)
+      )}
   }
 
   ${({ alignment }) =>
@@ -172,6 +186,8 @@ const ToolTipBody = styled.div<ToolTipContainerProps>`
   })}
 `;
 
+type HideBreakpoints = MediaQueryMap<boolean>;
+
 export type ToolTipProps = {
   /**
    * How to align the tooltip relative to the target.
@@ -199,10 +215,23 @@ export type ToolTipProps = {
    */
   focusable?: boolean;
 
+  /**
+   * Dictionary describing breakpoints in which the tool tip children should be hidden overriding regular showing behavior
+   */
+  hideBreakpoints?: HideBreakpoints;
+
   id: string;
   mode?: ColorModes;
   target?: ReactNode;
+
+  toolTipStyles?: Omit<
+    ComponentProps<typeof ToolTipBody>,
+    keyof ToolTipContainerProps
+  >;
 };
+
+// don't show on mobile - really based on breakpoints
+// add tool tip styles - so we can override certain properties like padding. this will also fix the width
 
 export const ToolTip: React.FC<ToolTipProps> = ({
   alignment = 'top-right',
@@ -210,9 +239,11 @@ export const ToolTip: React.FC<ToolTipProps> = ({
   className,
   containerClassName,
   focusable,
+  hideBreakpoints,
   id,
   mode = 'light',
   target,
+  toolTipStyles,
 }) => {
   return (
     <TooltipWrapper className={containerClassName}>
@@ -238,8 +269,9 @@ export const ToolTip: React.FC<ToolTipProps> = ({
         role="tooltip"
         mode={mode}
         aria-live="polite"
+        hideBreakpoints={hideBreakpoints}
       >
-        <ToolTipBody alignment={alignment} mode={mode}>
+        <ToolTipBody alignment={alignment} mode={mode} {...toolTipStyles}>
           {children}
         </ToolTipBody>
       </ToolTipContainer>
