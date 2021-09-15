@@ -7,7 +7,7 @@ import {
   Text,
 } from '@codecademy/gamut';
 import { Background } from '@codecademy/gamut-styles';
-import React from 'react';
+import React, { useRef } from 'react';
 
 import { NotificationsContentsProps } from './types';
 import { useNotificationButtons } from './useNotificationButtons';
@@ -15,12 +15,17 @@ import { useNotificationButtons } from './useNotificationButtons';
 export const NotificationsContents: React.FC<NotificationsContentsProps> = (
   props
 ) => {
+  const notificationListRef = useRef<HTMLDivElement>(null);
   const { actions, notifications } = props;
   const [
-    clearButton,
+    clearAllButton,
     showButton,
     visibleNotifications,
-  ] = useNotificationButtons(props);
+  ] = useNotificationButtons({
+    actions,
+    notifications,
+    notificationListRef,
+  });
 
   const onNotificationClick = (notification: Notification) => {
     actions.click(notification);
@@ -53,13 +58,13 @@ export const NotificationsContents: React.FC<NotificationsContentsProps> = (
         <Text as="h1" fontSize={22}>
           My Notifications
         </Text>
-        {clearButton}
+        {clearAllButton}
       </FlexBox>
       <Box px={32}>
         <Pattern name="checkerDense" height="1px" display="flex" />
       </Box>
       <Box maxHeight="520px" overflow="auto">
-        <Box pb={16}>
+        <Box pb={16} tabIndex={0} ref={notificationListRef}>
           <NotificationList
             notifications={visibleNotifications}
             onDismiss={actions.dismiss}

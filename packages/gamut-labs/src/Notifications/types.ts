@@ -17,6 +17,7 @@ export type AppHeaderNotifications = {
 export type NotificationsContentsProps = {
   actions: NotificationActions;
   notifications: Notification[];
+  notificationListRef?: React.RefObject<HTMLDivElement>;
 };
 
 export type NotificationsRendererProps = NotificationsContentsProps & {
