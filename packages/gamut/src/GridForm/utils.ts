@@ -1,8 +1,19 @@
 import { useContext } from 'react';
 import { useFormContext } from 'react-hook-form';
 
+import { SubmitContextProps } from '..';
 import { FormPropsContext } from '../Form';
 import { GridFormField } from './types';
+
+export const submitSuccessStatus = (
+  wasSubmitSuccessful: boolean | undefined,
+  isSubmitSuccessful: boolean | undefined
+) => {
+  return (
+    (wasSubmitSuccessful || wasSubmitSuccessful === undefined) &&
+    isSubmitSuccessful
+  );
+};
 
 export const useFieldContext = (field: GridFormField) => {
   // This is fixed in a later react-hook-form version:
@@ -15,9 +26,10 @@ export const useFieldContext = (field: GridFormField) => {
 
   const error = errors[field.name]?.message;
 
-  const isSubmitSuccessful =
-    (wasSubmitSuccessful || wasSubmitSuccessful === undefined) &&
-    formState.isSubmitSuccessful;
+  const isSubmitSuccessful = submitSuccessStatus(
+    wasSubmitSuccessful,
+    formState.isSubmitSuccessful
+  );
 
   return {
     /**
@@ -31,4 +43,16 @@ export const useFieldContext = (field: GridFormField) => {
     register,
     setValue,
   };
+};
+
+export const useSubmitState = ({ loading, disabled }: SubmitContextProps) => {
+  const { formState } = useFormContext();
+
+  const isLoading =
+    typeof loading === 'function' ? loading(formState) : loading;
+
+  const isDisabled =
+    typeof disabled === 'function' ? disabled(formState) : disabled;
+
+  return { isLoading, isDisabled };
 };
