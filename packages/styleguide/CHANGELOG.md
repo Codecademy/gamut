@@ -3,6 +3,56 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [44.6.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@44.6.0...@codecademy/styleguide@44.6.1) (2021-09-15)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [44.6.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@44.5.3...@codecademy/styleguide@44.6.0) (2021-09-15)
+
+
+### Features
+
+* **GridForm:** resetOnSubmit ([83be450](https://github.com/Codecademy/client-modules/commit/83be45087b3a66360011f92f3d4d86070f51e9d0))
+
+
+
+### [44.5.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@44.5.2...@codecademy/styleguide@44.5.3) (2021-09-15)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [44.5.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@44.5.1...@codecademy/styleguide@44.5.2) (2021-09-14)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [44.5.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@44.5.0...@codecademy/styleguide@44.5.1) (2021-09-14)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [44.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@44.4.0...@codecademy/styleguide@44.5.0) (2021-09-14)
+
+
+### Features
+
+* **List:** Adds List presentation components GM-185 ([d95aa95](https://github.com/Codecademy/client-modules/commit/d95aa955380935a3579f298d45d94ff25012b461))
+
+
+
 ## [44.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@44.3.3...@codecademy/styleguide@44.4.0) (2021-09-13)
 
 
