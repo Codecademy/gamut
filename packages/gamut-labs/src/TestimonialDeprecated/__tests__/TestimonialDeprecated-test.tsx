@@ -22,6 +22,7 @@ describe('Testimonial', () => {
     });
 
     expect(wrapper.find(`img[src="someCoolUrl"]`)).toHaveLength(1);
+    expect(wrapper.find('img')).toHaveLength(2);
   });
 
   it('does _not_ render the Avatar component when an imageUrl prop is _not_ present', () => {
@@ -29,6 +30,6 @@ describe('Testimonial', () => {
       mode: 'dark',
     });
 
-    expect(wrapper.find('img')).toHaveLength(0);
+    expect(wrapper.find('img')).toHaveLength(1);
   });
 });
