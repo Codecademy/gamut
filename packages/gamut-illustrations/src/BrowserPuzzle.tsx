@@ -15,6 +15,7 @@ export const BrowserPuzzle: React.FC<IllustrationProps> = ({
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
   >
+    <title>Browser Puzzler Illustration</title>
     <mask id="a" fill="#fff">
       <path
         fillRule="evenodd"

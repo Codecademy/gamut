@@ -16,6 +16,7 @@ export const Confetti: React.FC<IllustrationProps> = ({
     xmlns="http://www.w3.org/2000/svg"
     xmlnsXlink="http://www.w3.org/1999/xlink"
   >
+    <title>Confetti Illustration</title>
     <rect width="80" height="60" fill="white" />
     <path
       d="M51.9001 43.4534L21.9763 52.8439L10 56.6023L23.2835 14.2055"
