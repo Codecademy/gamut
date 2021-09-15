@@ -159,6 +159,7 @@ export const Testimonial: React.FC<TestimonialProps> = ({
       href={href}
       variant="interface"
       onClick={onClick}
+      aria-label="link"
     >
       {renderTestimonial()}
     </Anchor>
