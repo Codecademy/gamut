@@ -15,23 +15,6 @@ type AvatarChooserProps = {
   error?: string;
 };
 
-const baseSize = 75;
-const smBreakpointSize = 120;
-
-const StyledAvatar = styled(Avatar)`
-  img {
-    width: ${pxRem(baseSize)};
-    height: ${pxRem(baseSize)};
-  }
-
-  ${theme.breakpoints.sm} {
-    img {
-      width: ${pxRem(smBreakpointSize)};
-      height: ${pxRem(smBreakpointSize)};
-    }
-  }
-`;
-
 const ChoosePhotoLabel = styled.label`
   padding-top: ${theme.spacing[16]};
   ${theme.breakpoints.sm} {
@@ -96,7 +79,7 @@ export const AvatarChooser: React.FC<AvatarChooserProps> = ({
       width="fit-content"
       maxWidth={pxRem(120)}
     >
-      <StyledAvatar src={imageSrc} disableDropshadow alt="Avatar Photo" />
+      <Avatar size={{ _: 64, sm: 118 }} src={imageSrc} alt="Avatar Photo" />
       <ChoosePhotoLabel ref={choosePhotoLabelRef} htmlFor="avatar-chooser">
         <ChoosePhotoSpan
           role="button"

@@ -1,108 +1,57 @@
-import { VisualTheme } from '@codecademy/gamut';
-import { theme } from '@codecademy/gamut-styles';
-import { css } from '@emotion/react';
+import { Box } from '@codecademy/gamut';
+import {
+  modeColorProps,
+  pxRem,
+  styledOptions,
+  system,
+} from '@codecademy/gamut-styles';
+import { StyleProps, variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
-import React from 'react';
+import React, { ComponentProps } from 'react';
 
-const Image = styled.img();
+interface AvatarImageProps
+  extends StyleProps<typeof avatarProps>,
+    StyleProps<typeof system['layout']>,
+    StyleProps<typeof modeColorProps> {}
 
-const AvatarContainer = styled.div<{
-  mode?: VisualTheme;
-  disableDropshadow?: boolean;
-}>`
-  position: relative;
-  display: table;
+const avatarProps = variance.create({
+  size: {
+    property: 'width',
+    properties: ['width', 'height'],
+    scale: { 32: 32, 48: 48, 64: 64, 98: 98, 118: 118 },
+    transform: (value: number) => pxRem(value),
+  },
+});
 
-  ${({ disableDropshadow, mode }) =>
-    !disableDropshadow &&
-    css`
-      &::before {
-        content: '';
-        position: absolute;
-        border-radius: 50%;
-        transform: scale(0.92);
-        transform-origin: bottom right;
-        height: 100%;
-        width: 100%;
-        background-color: ${mode
-          ? mode === 'light'
-            ? theme.colors.lightGreen
-            : theme.colors.green
-          : theme.colors['feedback-success']};
-      }
-    `}
+const AvatarImage = styled('img', styledOptions<'img'>())<AvatarImageProps>(
+  modeColorProps,
+  system.css({
+    position: 'relative',
+    borderRadius: '50%',
+    objectFit: 'cover',
+  }),
+  system.layout,
+  avatarProps
+);
 
-  ${Image} {
-    position: relative;
-    border-radius: 50%;
-    object-fit: cover;
+interface InputAvatarProps extends ComponentProps<typeof AvatarImage> {
+  alt: string;
+  'aria-labelledby'?: never;
+}
 
-    ${({ disableDropshadow }) =>
-      !disableDropshadow &&
-      css`
-        transform: scale(0.92);
-        transform-origin: top left;
-      `}
-  }
-`;
+interface PresentationalAvatarProps extends ComponentProps<typeof AvatarImage> {
+  alt?: never;
+  'aria-labelledby': string;
+}
 
-export type AvatarImageProps =
-  | { alt: string; 'aria-labelledby'?: never }
-  | { alt?: never; 'aria-labelledby': string };
-
-export type AvatarBaseProps = {
-  /**
-   * path to image asset
-   */
-  src: string;
-
-  /**
-   * Disables the drop shadow entirely.
-   */
-  disableDropshadow?: boolean;
-
-  /**
-   * Size of the Avatar; small = 32x32, medium = 118x118
-   */
-  size?: 'small' | 'medium';
-
-  /**
-   * Overrides styles on the Avatar container.
-   */
-  className?: string;
-
-  /**
-   * @deprecated
-   * This will be determined automatically by the theme moving forward.
-   * Supplying it will determine the color of drop shadow.
-   */
-  mode?: VisualTheme;
-};
-
-export type AvatarProps = AvatarBaseProps & AvatarImageProps;
-
-export const avatarSizes = {
-  small: '32px',
-  medium: '118px',
-};
+export type AvatarProps = InputAvatarProps | PresentationalAvatarProps;
 
 export const Avatar: React.FC<AvatarProps> = ({
-  mode,
-  disableDropshadow,
-  size = 'medium',
+  size = 118,
   className,
   ...avatarImageProps
 }) => (
-  <AvatarContainer
-    className={className}
-    mode={mode}
-    disableDropshadow={disableDropshadow}
-    data-testid="avatar-container"
-  >
-    <Image
-      width={avatarSizes[size]}
-      height={avatarSizes[size]}
-      {...avatarImageProps}
-    />
-  </AvatarContainer>
+  <Box position="relative" className={className} data-testid="avatar-container">
+    <AvatarImage size={size} {...avatarImageProps} />
+  </Box>
 );

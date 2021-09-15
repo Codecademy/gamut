@@ -4,18 +4,13 @@ import styled from '@emotion/styled';
 import React, { ComponentProps, useMemo } from 'react';
 
 import darkQuotes from '../assets/navyQuotes.svg';
+import { Avatar } from '../Avatar';
 
 const QuoteArt = styled.img`
   height: 25px;
   grid-area: art;
 `;
 
-const TestimonialPicture = styled.img`
-  height: 98px;
-  width: 98px;
-  border-radius: 70px;
-  grid-area: avatar;
-`;
 const TestimonialCard = styled(FloatingCard)(modeColorProps);
 
 const gridLayouts = {
@@ -115,11 +110,14 @@ export const Testimonial: React.FC<TestimonialProps> = ({
     <TestimonialCard {...rest} p={32} width="100%" height="100%" mode={mode}>
       <TestimonialContent variant={variant}>
         {!hidePhoto && imageUrl && (
-          <TestimonialPicture
-            data-testid="testimonial-photo"
-            src={imageUrl}
-            alt="testimonial"
-          />
+          <Box gridArea="avatar">
+            <Avatar
+              size={98}
+              data-testid="testimonial-photo"
+              src={imageUrl}
+              alt="testimonial"
+            />
+          </Box>
         )}
         <Box
           my={{ _: 'auto', md: isVerticleLayout && !hidePhoto ? 'auto' : 0 }}
