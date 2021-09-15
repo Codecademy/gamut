@@ -1,3 +1,4 @@
+import { FlexBox } from '@codecademy/gamut';
 import { Avatar } from '@codecademy/gamut-labs/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
@@ -21,8 +22,41 @@ Commonly paired with a \`Byline\`.with the user with various connotations.`,
   }}
 />
 
+export const AvatarTemplate = (args) => <Avatar {...args} />;
+
+## Usage
+
+```tsx
+import { Avatar } from '@codecademy/gamut-labs';
+
+<Avatar size={{ _: 32, sm: 64 }} />;
+```
+
+## Sizes
+
+We have several options for avatar sizes (118, 98, 64, 48, 32) which you may configure with the responsive syntax. While we do not allow arbitrary sizes for Avatars if these sizes do not fit your use case please suggest a new size or consolidation of sizes.
+
+<Canvas>
+  <Story name="Sizes">
+    {(args) => (
+      <FlexBox gap={24} alignItems="flex-end">
+        {[118, 98, 64, 48, 32].map((size) => (
+          <FlexBox column gap={16}>
+            <Avatar {...args} size={size} />
+            <FlexBox fontFamily="accent" center>
+              {size}px
+            </FlexBox>
+          </FlexBox>
+        ))}
+      </FlexBox>
+    )}
+  </Story>
+</Canvas>
+
+## Code Playground
+
 <Canvas withSource="open">
-  <Story name="Avatar">{(args) => <Avatar {...args} />}</Story>
+  <Story name="Avatar">{AvatarTemplate.bind()}</Story>
 </Canvas>
 
 <PropsTable story="Avatar" />
