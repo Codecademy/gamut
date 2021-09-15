@@ -15,6 +15,7 @@ export const Target: React.FC<IllustrationProps> = ({
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
   >
+    <title>Target</title>
     <path
       d="M6.93 24.844L48 1.133l41.07 23.711v47.423L48 95.978 6.93 72.267V24.844z"
       fill="#FFF0E5"

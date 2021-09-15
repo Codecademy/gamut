@@ -16,6 +16,7 @@ export const Sun: React.FC<IllustrationProps> = ({
     xmlns="http://www.w3.org/2000/svg"
     xmlnsXlink="http://www.w3.org/1999/xlink"
   >
+    <title>Sun Illustration</title>
     <rect width="80" height="60" fill="white" />
     <circle
       cx="40.0598"
