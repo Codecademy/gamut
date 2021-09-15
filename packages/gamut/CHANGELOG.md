@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [37.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@37.4.1...@codecademy/gamut@37.5.0) (2021-09-15)
+
+
+### Features
+
+* **GridForm:** resetOnSubmit ([83be450](https://github.com/Codecademy/client-modules/commit/83be45087b3a66360011f92f3d4d86070f51e9d0))
+
+
+
 ### [37.4.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@37.4.0...@codecademy/gamut@37.4.1) (2021-09-14)
 
 
