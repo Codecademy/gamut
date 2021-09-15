@@ -452,8 +452,10 @@ export const InnerHEYagain: React.FC = () => {
             options={['one', 'two', 'third']}
           />
         </ConnectedFormGroup>
-        {shouldIStayOrShouldIGo()}
-        {iMayBeHidden()}
+        <div aria-live="assertive">
+          {shouldIStayOrShouldIGo()}
+          {iMayBeHidden()}
+        </div>
       </Box>
     </>
   );
@@ -529,7 +531,7 @@ export const HEY: React.FC = () => {
           borderRadius="10px"
         >
           <INeedSomeSpace>
-            <ConnectedFormGroup name="example-text-area" label="pls answer">
+            <ConnectedFormGroup name="example-radio-area" label="pls answer">
               <ConnectedRadioGroup name="example-radio-area">
                 <ConnectedRadio
                   name="example-radio-area"
@@ -641,6 +643,7 @@ export const HEY: React.FC = () => {
               label="hi"
               spacing="tight"
               errorType="initial"
+              afan="fnkdajfn"
             >
               <ConnectedCheckbox
                 label="check me out"
