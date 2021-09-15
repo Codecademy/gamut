@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import { Mode, SubmitHandler } from 'react-hook-form';
 
 import { ButtonProps } from '../Button/shared';
-import { FormContextProps, FormWrapper } from '../ConnectedForm';
+import { ConnectedForm, FormContextProps } from '../ConnectedForm';
 import { FormValues } from '../Form/types';
 import { LayoutGrid, LayoutGridProps } from '../Layout';
 import { GridFormButtons, GridFormSubmitProps } from './GridFormButtons';
@@ -113,7 +113,7 @@ export function GridForm<Values extends FormValues>({
   );
 
   return (
-    <FormWrapper
+    <ConnectedForm
       validation={validation}
       defaultValues={defaultValues}
       display="flex"
@@ -154,6 +154,6 @@ export function GridForm<Values extends FormValues>({
         <GridFormButtons cancel={cancel} {...submit} />
         {children}
       </LayoutGrid>
-    </FormWrapper>
+    </ConnectedForm>
   );
 }

@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { useFormContext } from 'react-hook-form';
 
-import { FormPropsContext } from './FormWrapper';
+import { FormPropsContext } from './ConnectedForm';
 import { SubmitContextProps } from './SubmitButton';
 
 export const submitSuccessStatus = (

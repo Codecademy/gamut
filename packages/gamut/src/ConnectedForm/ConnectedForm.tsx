@@ -27,7 +27,7 @@ export type FormContextProps = {
   wasSubmitSuccessful?: boolean;
 };
 
-export type FormWrapperProps<Values extends {}> = FormContextProps &
+export type ConnectedFormProps<Values extends {}> = FormContextProps &
   Omit<FormProps, 'onSubmit'> & {
     children?: React.ReactNode;
 
@@ -56,7 +56,7 @@ const PropsProvider = FormPropsContext.Provider;
 /**
  * This is an in progress API! please reach out to the web-plat team if you're interested in using it.
  */
-export function FormWrapper<Values extends FormValues>({
+export function ConnectedForm<Values extends FormValues>({
   children,
   onSubmit,
   defaultValues,
@@ -65,7 +65,7 @@ export function FormWrapper<Values extends FormValues>({
   resetOnSubmit = false,
   wasSubmitSuccessful = undefined,
   ...rest
-}: FormWrapperProps<Values>) {
+}: ConnectedFormProps<Values>) {
   const { handleSubmit, formState, reset, ...methods } = useForm({
     defaultValues,
     mode: validation,

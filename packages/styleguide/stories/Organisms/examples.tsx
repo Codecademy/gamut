@@ -3,6 +3,7 @@ import {
   Box,
   Card,
   ConnectedCheckbox,
+  ConnectedForm,
   ConnectedFormGroup,
   ConnectedInput,
   ConnectedRadio,
@@ -10,7 +11,6 @@ import {
   ConnectedSelect,
   ConnectedTextArea,
   FloatingCard,
-  FormWrapper,
   GridForm,
   Markdown,
   SubmitButton,
@@ -472,7 +472,7 @@ export const HEYagain: React.FC = () => {
       p={32}
       height="30rem"
     >
-      <FormWrapper
+      <ConnectedForm
         onSubmit={(values) => console.log(values)}
         defaultValues={{
           'your-field': 'two',
@@ -481,7 +481,7 @@ export const HEYagain: React.FC = () => {
         resetOnSubmit
       >
         <InnerHEYagain />
-      </FormWrapper>
+      </ConnectedForm>
     </Background>
   );
 };
@@ -496,7 +496,7 @@ export const HEY: React.FC = () => {
       m={32}
       borderRadius="10px"
     >
-      <FormWrapper
+      <ConnectedForm
         onSubmit={(values) => console.log(values)}
         defaultValues={{
           'your-field': 'two',
@@ -682,7 +682,7 @@ export const HEY: React.FC = () => {
             </ConnectedFormGroup>
           </INeedSomeSpace>
         </Background>
-      </FormWrapper>
+      </ConnectedForm>
     </Background>
   );
 };
