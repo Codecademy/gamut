@@ -15,6 +15,7 @@ export const NumberBlocks: React.FC<IllustrationProps> = ({
     width={width}
     xmlns="http://www.w3.org/2000/svg"
   >
+    <title>Number Blocks Illustration</title>
     <path
       stroke="#10162F"
       strokeLinejoin="round"
