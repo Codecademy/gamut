@@ -10,7 +10,7 @@ import { MediaQueryMap } from '@codecademy/variance';
 import styled from '@emotion/styled';
 import React, { ReactNode } from 'react';
 
-import { Box, BoxProps } from '..';
+import { Box, BoxProps } from '../Box';
 
 export type ToolTipAlignment =
   | 'bottom-center'
