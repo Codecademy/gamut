@@ -32,7 +32,11 @@ export const NotificationsContents: React.FC<NotificationsContentsProps> = (
 
   return (
     <Background
-      aria-label={`My ${notifications.length} notifications`}
+      aria-label={
+        notifications.length
+          ? `My ${notifications.length} notifications`
+          : `My Notifications`
+      }
       bg="white"
       pb={24}
       pt={32}

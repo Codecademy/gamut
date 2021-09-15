@@ -17,6 +17,7 @@ export const EmptyNotification = () => {
       pt={32}
       pb={48}
       data-testid="empty-notification"
+      aria-label="You have no notifications"
     >
       <FlexBox pb={16}>
         <Image aria-hidden width={80} height={60} />
