@@ -3,6 +3,7 @@ import {
   fontSmoothPixel,
   lineHeight,
   pxRem,
+  theme,
   timing,
   variant,
 } from '@codecademy/gamut-styles';
@@ -30,6 +31,10 @@ const TargetContainer = styled.div`
   border: 0;
   background: none;
   padding: 0;
+
+  &:focus-visible {
+    outline: 0.3rem auto ${theme.colors.hyper};
+  }
 `;
 
 type ToolTipContainerProps = {
