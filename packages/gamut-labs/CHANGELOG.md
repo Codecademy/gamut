@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [20.0.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@20.0.1...@codecademy/gamut-labs@20.0.2) (2021-09-16)
+
+
+### Bug Fixes
+
+* **NotificationList:** a11y improvements ([da9c7ee](https://github.com/Codecademy/client-modules/commit/da9c7ee9219983be2b669426e9e09ed262e8a504))
+
+
+
 ### [20.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@20.0.0...@codecademy/gamut-labs@20.0.1) (2021-09-15)
 
 **Note:** Version bump only for package @codecademy/gamut-labs
