@@ -2,7 +2,8 @@ import { Box, Logo, StrokeButton } from '@codecademy/gamut';
 import React, { useRef } from 'react';
 
 import { Flyout } from '../Flyout';
-import { AccordionMenu, Section } from './AccordionMenu';
+import { AccordionMenu, Section, SectionItem } from './AccordionMenu';
+import { TopLinkSection } from './TopLinkSection';
 
 export type LayoutMenuProps = {
   /**
@@ -28,7 +29,7 @@ export type LayoutMenuProps = {
   /**
    * An additional link section on top of the layout menu
    */
-  topLinkSection?: React.ReactNode;
+  topLinkSections?: SectionItem[];
 };
 
 export const LayoutMenu: React.FC<LayoutMenuProps> = ({
@@ -38,7 +39,7 @@ export const LayoutMenu: React.FC<LayoutMenuProps> = ({
   mobileButtonText,
   breakpoint = 'lg',
   children,
-  topLinkSection,
+  topLinkSections,
 }) => {
   const closeFlyoutRef = useRef<() => void>();
 
@@ -71,14 +72,26 @@ export const LayoutMenu: React.FC<LayoutMenuProps> = ({
         >
           <Box bg="white" minHeight={1} p={16}>
             <Logo mb={32} />
-            {topLinkSection}
+            {topLinkSections && (
+              <TopLinkSection
+                sections={topLinkSections}
+                onItemClick={closeFlyout}
+                selectedItem={selectedItem}
+              />
+            )}
             {accordionMenuSections}
             {children}
           </Box>
         </Flyout>
       </Box>
       <Box display={{ _: 'none', [breakpoint]: 'block' }}>
-        {topLinkSection}
+        {topLinkSections && (
+          <TopLinkSection
+            sections={topLinkSections}
+            onItemClick={closeFlyout}
+            selectedItem={selectedItem}
+          />
+        )}
         {accordionMenuSections}
         {children}
       </Box>
