@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [20.0.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@20.0.2...@codecademy/gamut-labs@20.0.3) (2021-09-16)
+
+
+### Bug Fixes
+
+* **Testimonial:** aria-label on Anchor  ([4b9a0a6](https://github.com/Codecademy/client-modules/commit/4b9a0a6d467f45d4531dcd046145a8634b222603))
+
+
+
 ### [20.0.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@20.0.1...@codecademy/gamut-labs@20.0.2) (2021-09-16)
 
 
