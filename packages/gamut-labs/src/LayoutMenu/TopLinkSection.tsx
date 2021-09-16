@@ -16,7 +16,7 @@ export const TopLinkSection: React.FC<TopLinkSectionProps> = ({
   onItemClick,
   selectedItem,
 }) => (
-  <Box>
+  <Box pb={32}>
     {sections.map((item) => (
       <Box key={item.slug} py={8} px={4} pb={16}>
         {selectedItem === item.slug ? (

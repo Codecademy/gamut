@@ -27,7 +27,7 @@ export type LayoutMenuProps = {
    */
   breakpoint?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
   /**
-   * An additional link section on top of the layout menu
+   * An array of section items containing the title, slug, href, and onClick, each of which become an additional link on top of the accordion section.
    */
   topLinkSections?: SectionItem[];
 };
