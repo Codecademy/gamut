@@ -33,7 +33,7 @@ const TargetContainer = styled.div`
   padding: 0;
 
   &:focus-visible {
-    outline: 0.3rem auto ${theme.colors.hyper};
+    outline: 0.3rem auto ${theme.colors['primary-hover']};
   }
 `;
 
