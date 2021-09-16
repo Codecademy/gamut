@@ -6,8 +6,8 @@
   "scripts": {
     "start": "yarn storybook",
     "storybook": "start-storybook -p 6006 -c .storybook --ci --quiet",
-    "build-storybook": "NODE_ENV=production build-storybook --quiet -c .storybook -o ../../dist/storybook",
-    "build-storybook-alpha": "NODE_ENV=production build-storybook --quiet -c .storybook -o ../../dist/storybook"
+    "build-storybook": "NODE_ENV=production build-storybook --quiet -c .storybook -o ../../dist/docs",
+    "build-storybook-alpha": "NODE_ENV=production build-storybook --quiet -c .storybook -o ../../dist/docs"
   },
   "repository": {
     "type": "git",
