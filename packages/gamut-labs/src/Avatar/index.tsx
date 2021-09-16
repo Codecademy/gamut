@@ -10,6 +10,8 @@ import React, { ComponentProps } from 'react';
 
 interface AvatarImageProps
   extends StyleProps<typeof avatarProps>,
+    StyleProps<typeof system['space']>,
+    StyleProps<typeof system['border']>,
     StyleProps<typeof system['layout']>,
     StyleProps<typeof modeColorProps> {}
 
@@ -29,8 +31,8 @@ const AvatarImage = styled('img', styledOptions<'img'>())<AvatarImageProps>(
     borderRadius: '50%',
     objectFit: 'cover',
   }),
-  system.layout,
-  avatarProps
+  variance.compose(system.space, system.border, system.layout),
+  avatarProps // This needs to be kept separate to ensure cascade ordering for now.
 );
 
 interface InputAvatarProps extends ComponentProps<typeof AvatarImage> {
