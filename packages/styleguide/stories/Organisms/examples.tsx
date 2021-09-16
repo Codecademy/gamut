@@ -1,6 +1,5 @@
 /* eslint-disable local-rules/gamut-import-paths */
 import { Box, GridForm, Markdown } from '@codecademy/gamut/src';
-import { SectionItemLink } from '@codecademy/gamut-labs/dist';
 import { Background } from '@codecademy/gamut-styles/src';
 import { action } from '@storybook/addon-actions';
 import React, { useState } from 'react';
