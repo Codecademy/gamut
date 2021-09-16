@@ -3,7 +3,7 @@ import React, { useRef } from 'react';
 
 import { Flyout } from '../Flyout';
 import { AccordionMenu, Section, SectionItem } from './AccordionMenu';
-import { TopLinkSection } from './TopLinkSection';
+import { LayoutMenuSection } from './LayoutMenuSection';
 
 export type LayoutMenuProps = {
   /**
@@ -16,7 +16,7 @@ export type LayoutMenuProps = {
   selectedItem?: string;
   /**
    * Callback to be run on click of the accordion button
-   */
+   *
   onSectionToggle: (sectionSlug: string) => void;
   /**
    * Text shown in mobile button that opens flyout on click
@@ -73,10 +73,11 @@ export const LayoutMenu: React.FC<LayoutMenuProps> = ({
           <Box bg="white" minHeight={1} p={16}>
             <Logo mb={32} />
             {topLinkSections && (
-              <TopLinkSection
+              <LayoutMenuSection
                 items={topLinkSections}
                 onItemClick={closeFlyout}
                 selectedItem={selectedItem}
+                pb={32}
               />
             )}
             {accordionMenuSections}
@@ -86,10 +87,11 @@ export const LayoutMenu: React.FC<LayoutMenuProps> = ({
       </Box>
       <Box display={{ _: 'none', [breakpoint]: 'block' }}>
         {topLinkSections && (
-          <TopLinkSection
+          <LayoutMenuSection
             items={topLinkSections}
             onItemClick={closeFlyout}
             selectedItem={selectedItem}
+            pb={32}
           />
         )}
         {accordionMenuSections}

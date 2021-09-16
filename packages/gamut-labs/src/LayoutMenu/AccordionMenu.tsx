@@ -5,7 +5,6 @@ import React, { useState } from 'react';
 
 import { system, transitionConcat } from '../../../gamut-styles/dist';
 import { LayoutMenuSection } from './LayoutMenuSection';
-// this is needed to add a few pixels of extra space for the left side of the focus-visible outline
 
 const StyledAccordionArea = styled(AccordionArea)`
   padding-bottom: ${({ theme }) => theme.spacing[32]};
