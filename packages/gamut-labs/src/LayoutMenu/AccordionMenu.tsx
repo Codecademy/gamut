@@ -1,12 +1,10 @@
-import { AccordionArea, Anchor, Box, Text } from '@codecademy/gamut';
+import { AccordionArea, Anchor, Text } from '@codecademy/gamut';
 import { MiniChevronDownIcon } from '@codecademy/gamut-icons';
 import styled from '@emotion/styled';
 import React, { useState } from 'react';
 
 import { system, transitionConcat } from '../../../gamut-styles/dist';
-import { SectionItemLink } from './SectionItemLink';
-import { SelectedSectionItem } from './SelectedSectionItem';
-
+import { LayoutMenuSection } from './LayoutMenuSection';
 // this is needed to add a few pixels of extra space for the left side of the focus-visible outline
 
 const StyledAccordionArea = styled(AccordionArea)`
@@ -73,23 +71,11 @@ export const AccordionMenu: React.FC<AccordionMenuProps> = ({
         </Anchor>
       }
     >
-      {section.items.map((item) => (
-        <Box key={item.slug} py={8} px={4}>
-          {selectedItem === item.slug ? (
-            <SelectedSectionItem>{item.title}</SelectedSectionItem>
-          ) : (
-            <SectionItemLink
-              href={item.href}
-              onClick={(event) => {
-                item.onClick(event);
-                onItemClick();
-              }}
-            >
-              {item.title}
-            </SectionItemLink>
-          )}
-        </Box>
-      ))}
+      <LayoutMenuSection
+        items={section.items}
+        selectedItem={selectedItem}
+        onItemClick={onItemClick}
+      />
     </StyledAccordionArea>
   );
 };

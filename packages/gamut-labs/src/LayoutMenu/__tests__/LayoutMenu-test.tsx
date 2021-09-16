@@ -45,4 +45,19 @@ describe('LayoutMenu', () => {
     fireEvent.click(view.getByText('test button'));
     view.getByTitle('Codecademy Logo');
   });
+
+  it('renders a top link section', () => {
+    const { view } = renderView({
+      topLinkSections: [
+        {
+          title: `Hello!`,
+          slug: 'this-works-everybody',
+          href: '',
+          onClick: jest.fn(),
+        },
+      ],
+    });
+
+    view.getByText(`Hello!`);
+  });
 });

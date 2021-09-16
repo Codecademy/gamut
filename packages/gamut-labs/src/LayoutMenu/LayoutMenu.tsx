@@ -27,7 +27,7 @@ export type LayoutMenuProps = {
    */
   breakpoint?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
   /**
-   * An array of section items containing the title, slug, href, and onClick, each of which become an additional link on top of the accordion section.
+   * An array of section items, each of which become an additional link on top of the accordion section.
    */
   topLinkSections?: SectionItem[];
 };
@@ -74,7 +74,7 @@ export const LayoutMenu: React.FC<LayoutMenuProps> = ({
             <Logo mb={32} />
             {topLinkSections && (
               <TopLinkSection
-                sections={topLinkSections}
+                items={topLinkSections}
                 onItemClick={closeFlyout}
                 selectedItem={selectedItem}
               />
@@ -87,7 +87,7 @@ export const LayoutMenu: React.FC<LayoutMenuProps> = ({
       <Box display={{ _: 'none', [breakpoint]: 'block' }}>
         {topLinkSections && (
           <TopLinkSection
-            sections={topLinkSections}
+            items={topLinkSections}
             onItemClick={closeFlyout}
             selectedItem={selectedItem}
           />
