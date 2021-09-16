@@ -357,13 +357,3 @@ export const FormLoadingExample = () => {
     </Background>
   );
 };
-
-export const TopLinkExample = () => {
-  return (
-    <Box pb={32}>
-      <SectionItemLink href="not-a-real-link" onClick={() => null}>
-        A Top Link!
-      </SectionItemLink>
-    </Box>
-  );
-};
