@@ -8,6 +8,7 @@ const defaultDisplayLimit = 3;
 export const useNotificationButtons = ({
   actions,
   notifications,
+  notificationListRef,
 }: NotificationsContentsProps) => {
   const [showMore, setShowMore] = useState(false);
   const [displayLimit, amountAdjective] = showMore
@@ -25,6 +26,7 @@ export const useNotificationButtons = ({
         onClick={() => {
           actions.clear();
           actions.track('notification_clear_all');
+          notificationListRef?.current?.focus();
         }}
         aria-label={`Clear all ${notifications.length} notifications`}
       >
@@ -37,7 +39,6 @@ export const useNotificationButtons = ({
       <Box px={32}>
         <TextButton
           onClick={() => {
-            // console.log('Clicky', { showMore });
             setShowMore(!showMore);
 
             if (!showMore) {
