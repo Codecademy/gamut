@@ -15,26 +15,23 @@ export const Subtitle: React.FC<SubtitleProps> = ({
   scope,
   showAltSubtitle,
 }) => {
-  const scopeToMap = Object.keys(scope);
+  const scopeToMap = Object.keys(scope).filter((val) => scope[val] > 0);
+
   const separatingChar = showAltSubtitle ? '|' : ',';
 
   return (
     <>
-      {!showAltSubtitle && (
-        <>
-          <Difficulty difficulty={difficulty} />,{' '}
-        </>
-      )}
-      {scopeToMap.map((scopeType, index) =>
-        scope[scopeType] ? (
-          <Text ml={4} variant="p-small" key={`${scopeType}-count`}>
-            {index !== 0 && separatingChar} <b>{scope[scopeType]}</b>{' '}
-            <Text textColor="gray-900">
-              {capitalize(pluralizeWithS(scopeType, scope[scopeType]))}
-            </Text>{' '}
-          </Text>
-        ) : null
-      )}
+      {!showAltSubtitle && <Difficulty difficulty={difficulty} />}
+      {!showAltSubtitle && scopeToMap.length && separatingChar}
+      {scopeToMap.map((scopeType, index) => (
+        <Text ml={4} variant="p-small" key={`${scopeType}-count`}>
+          <b>{scope[scopeType]}</b>{' '}
+          <Text textColor="gray-900">
+            {capitalize(pluralizeWithS(scopeType, scope[scopeType]))}
+          </Text>{' '}
+          {index < scopeToMap.length - 1 && separatingChar}
+        </Text>
+      ))}
     </>
   );
 };
