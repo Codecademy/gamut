@@ -22,7 +22,7 @@ export const Subtitle: React.FC<SubtitleProps> = ({
     <>
       {!showAltSubtitle && (
         <>
-          <Difficulty difficulty={difficulty} />{' '}
+          <Difficulty difficulty={difficulty} />,{' '}
         </>
       )}
       {scopeToMap.map((scopeType, index) =>

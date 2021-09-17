@@ -20,6 +20,6 @@ export const Difficulty: React.FC<DifficultyProps> = ({ difficulty }) => (
   <Text fontSize={14}>
     <DifficultySpan bg={difficulty >= 0 ? 'navy' : 'white'} />
     <DifficultySpan bg={difficulty >= 1 ? 'navy' : 'white'} />
-    {difficulty === 0 ? 'Beginner friendly' : 'Intermediate'},
+    {difficulty === 0 ? 'Beginner friendly' : 'Intermediate'}
   </Text>
 );
