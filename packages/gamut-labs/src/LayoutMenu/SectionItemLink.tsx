@@ -15,7 +15,7 @@ export const SectionItemLink: React.FC<SectionItemLinkProps> = ({
     <Anchor
       variant="interface"
       display="block"
-      width="max-content"
+      width="fit-content"
       href={href}
       onClick={onClick}
     >
