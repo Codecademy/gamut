@@ -16,7 +16,7 @@ export type LayoutMenuProps = {
   selectedItem?: string;
   /**
    * Callback to be run on click of the accordion button
-   *
+   */
   onSectionToggle: (sectionSlug: string) => void;
   /**
    * Text shown in mobile button that opens flyout on click
