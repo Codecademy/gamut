@@ -43,6 +43,7 @@ export const ClickPopover: React.FC<ClickPopoverProps> = ({
       {...innerPopoverProps}
       targetRef={targetRef}
       handleClickOutside={handleClickOutside}
+      closePopover={onRequestClose ?? (() => {})}
     >
       {children}
     </InnerPopover>

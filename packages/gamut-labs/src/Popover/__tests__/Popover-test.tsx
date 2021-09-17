@@ -6,10 +6,15 @@ import React from 'react';
 
 import { Popover, PopoverProps } from '..';
 
-const mockIntersectionObserver = () => ({
-  observe: jest.fn(),
-  disconnect: jest.fn(),
-});
+let observerFunction = jest.fn();
+const mockIntersectionObserver = (obsFunction: jest.Mock<any, any>) => {
+  observerFunction = obsFunction;
+
+  return {
+    observe: jest.fn(),
+    disconnect: jest.fn(),
+  };
+};
 
 window.IntersectionObserver = jest
   .fn()
@@ -36,10 +41,15 @@ const targetRefObj = {
 
 const onRequestClose = jest.fn();
 
-const renderPopover = (props?: Partial<PopoverProps>) => {
-  return render(
+const renderPopover = (props?: Partial<PopoverProps>) =>
+  render(
     <ThemeProvider theme={theme}>
-      <Popover isOpen targetRef={targetRefObj} {...props}>
+      <Popover
+        isOpen
+        targetRef={targetRefObj}
+        onRequestClose={onRequestClose}
+        {...props}
+      >
         <div data-testid="popover-content">
           Howdy!
           <button aria-label="Click me!" type="button" />
@@ -50,12 +60,16 @@ const renderPopover = (props?: Partial<PopoverProps>) => {
       </div>
     </ThemeProvider>
   );
-};
 
-const mountPopover = (props?: Partial<PopoverProps>) => {
-  return mount(
+const mountPopover = (props?: Partial<PopoverProps>) =>
+  mount(
     <ThemeProvider theme={theme}>
-      <Popover isOpen targetRef={targetRefObj} {...props}>
+      <Popover
+        isOpen
+        targetRef={targetRefObj}
+        onRequestClose={onRequestClose}
+        {...props}
+      >
         <div data-testid="popover-content">
           Howdy!
           <button aria-label="Click me!" type="button" />
@@ -63,11 +77,9 @@ const mountPopover = (props?: Partial<PopoverProps>) => {
       </Popover>
     </ThemeProvider>
   );
-};
 
-const popoverIsRendered = () => {
-  return Boolean(screen.queryByTestId('popover-content'));
-};
+const popoverIsRendered = () =>
+  Boolean(screen.queryByTestId('popover-content'));
 
 describe('Popover', () => {
   describe('ClickPopover', () => {
@@ -78,90 +90,54 @@ describe('Popover', () => {
     });
 
     it('renders children when isOpen is true', () => {
-      renderPopover({ isOpen: true });
+      renderPopover();
       expect(popoverIsRendered()).toBeTruthy();
     });
   });
 
   describe('calls onRequestClose', () => {
     it('when clicking outside', () => {
-      renderPopover({
-        isOpen: true,
-        onRequestClose,
-      });
+      renderPopover();
       fireEvent.mouseDown(screen.getByTestId('outside-popover'));
       expect(onRequestClose).toBeCalledTimes(1);
     });
 
     it('unless clicking inside', () => {
-      renderPopover({
-        isOpen: true,
-        onRequestClose,
-      });
+      renderPopover();
       fireEvent.mouseDown(screen.getByTestId('popover-content-container'));
       expect(onRequestClose).toBeCalledTimes(0);
     });
 
     it('when escape key is triggered', () => {
-      const { baseElement } = renderPopover({
-        isOpen: true,
-        onRequestClose,
-      });
+      const { baseElement } = renderPopover();
       fireEvent.keyDown(baseElement, { key: 'escape', keyCode: 27 });
       expect(onRequestClose).toBeCalledTimes(1);
     });
 
-    it('when popover is inside viewport', () => {
-      /* element is inside the viewport if the top and left value is greater than or equal to 0,
-        and right value is less than or equal to window.innerWidth
-        and bottom value is less than or equal to window.innerHeight */
-      const targetRefObj = {
-        current: ({
-          contains: () => true,
-          getBoundingClientRect: () => ({
-            ...baseBoundingClient,
-            top: -1,
-            y: -1,
-          }),
-        } as unknown) as HTMLElement,
-      };
-      renderPopover({
-        targetRef: targetRefObj,
-        isOpen: true,
-        onRequestClose,
-      });
+    it('when popover is outside viewport', () => {
+      renderPopover();
+
+      observerFunction([{ isIntersecting: false }]);
       expect(onRequestClose).toBeCalledTimes(1);
     });
 
-    it('unless popover is out of viewport', () => {
-      const targetRefObj = {
-        current: ({
-          contains: () => true,
-          getBoundingClientRect: () => ({
-            ...baseBoundingClient,
-            top: 1,
-            y: 1,
-          }),
-        } as unknown) as HTMLElement,
-      };
-      renderPopover({
-        targetRef: targetRefObj,
-        isOpen: true,
-        onRequestClose,
-      });
+    it('unless popover is inside viewport', () => {
+      renderPopover();
+
+      observerFunction([{ isIntersecting: true }]);
       expect(onRequestClose).toBeCalledTimes(0);
     });
   });
 
   describe('renders a beak', () => {
     it('if the prop is provided', () => {
-      renderPopover({ isOpen: true, beak: 'right' });
+      renderPopover({ beak: 'right' });
 
       expect(screen.queryByTestId('popover-beak')).toBeInTheDocument();
     });
 
     it('unless the prop is not provided', () => {
-      renderPopover({ isOpen: true });
+      renderPopover();
 
       expect(screen.queryByTestId('popover-beak')).not.toBeInTheDocument();
     });
@@ -172,9 +148,7 @@ describe('Popover', () => {
       Object.defineProperty(window, 'scrollY', { value: 1 });
       Object.defineProperty(window, 'scrollX', { value: 1 });
 
-      const wrapped = mountPopover({
-        isOpen: true,
-      });
+      const wrapped = mountPopover();
 
       expect(
         wrapped
@@ -194,7 +168,6 @@ describe('Popover', () => {
       Object.defineProperty(window, 'scrollX', { value: 1 });
 
       const wrapped = mountPopover({
-        isOpen: true,
         position: 'above',
         align: 'right',
       });
@@ -217,7 +190,6 @@ describe('Popover', () => {
       Object.defineProperty(window, 'scrollX', { value: 1 });
 
       const wrapped = mountPopover({
-        isOpen: true,
         position: 'above',
         align: 'right',
         verticalOffset: 29,
@@ -241,7 +213,6 @@ describe('Popover', () => {
       Object.defineProperty(window, 'scrollX', { value: 1 });
 
       const wrapped = mountPopover({
-        isOpen: true,
         position: 'above',
         align: 'right',
         horizontalOffset: 30,
@@ -265,7 +236,6 @@ describe('Popover', () => {
       Object.defineProperty(window, 'scrollX', { value: 1.5 });
 
       const wrapped = mountPopover({
-        isOpen: true,
         position: 'above',
         align: 'right',
         verticalOffset: 30,
@@ -287,16 +257,13 @@ describe('Popover', () => {
 
   describe('shows a pattern', () => {
     it('if the prop is provided', () => {
-      renderPopover({
-        isOpen: true,
-        pattern: 'checkerDense',
-      });
+      renderPopover({ pattern: 'checkerDense' });
 
       expect(screen.queryByTestId('popover-pattern')).toBeInTheDocument();
     });
 
     it('unless the prop is not provided', () => {
-      renderPopover({ isOpen: true });
+      renderPopover();
 
       expect(screen.queryByTestId('popover-pattern')).not.toBeInTheDocument();
     });

@@ -42,12 +42,6 @@ export type BasePopoverProps = {
   pattern?: PatternName;
 
   /**
-   * Called when the Popover requests to be closed,
-   * this could be due to clicking outside of the popover, or by pressing the escape key.
-   */
-  onRequestClose?: () => void;
-
-  /**
    * The target element around which the popover will be positioned.
    */
   targetRef: React.RefObject<HTMLElement>;

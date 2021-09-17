@@ -25,6 +25,7 @@ describe('GridFormInputGroup', () => {
 
     expect(wrapper.text()).toContain(error);
   });
+
   it('renders error text when an custom error exists', () => {
     const error = 'Oh no!';
 

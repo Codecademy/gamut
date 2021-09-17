@@ -85,7 +85,12 @@ export const HoverPopover: React.FC<HoverPopoverProps> = ({
       {target}
       <HoverContainer shownAt={shownAt}>
         {isHovering && (
-          <InnerPopover {...innerPopoverProps} targetRef={targetRef}>
+          <InnerPopover
+            {...innerPopoverProps}
+            targetRef={targetRef}
+            closePopover={onHoverOut}
+            handleClickOutside={onHoverOut}
+          >
             {children}
           </InnerPopover>
         )}

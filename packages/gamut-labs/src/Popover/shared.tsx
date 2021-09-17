@@ -74,12 +74,13 @@ export const PatternContainer = styled.div<StyleProps>`
 `;
 
 type InnerPopoverProps = BasePopoverProps & {
-  handleClickOutside?: FocusTrapProps['onClickOutside'];
+  handleClickOutside: FocusTrapProps['onClickOutside'];
+  closePopover: () => void;
 };
 
 export const InnerPopover: React.FC<InnerPopoverProps> = ({
   handleClickOutside,
-  onRequestClose,
+  closePopover,
   children,
   className,
   targetRef,
@@ -96,8 +97,7 @@ export const InnerPopover: React.FC<InnerPopoverProps> = ({
     if (!observerRef.current) {
       observerRef.current = new IntersectionObserver((entries) =>
         entries.forEach(
-          (popoverTarget) =>
-            !popoverTarget.isIntersecting && onRequestClose?.(),
+          (popoverTarget) => !popoverTarget.isIntersecting && closePopover(),
           { threshold: 0 }
         )
       );
@@ -143,7 +143,7 @@ export const InnerPopover: React.FC<InnerPopoverProps> = ({
       <FocusTrap
         allowPageInteraction
         onClickOutside={handleClickOutside}
-        onEscapeKey={onRequestClose}
+        onEscapeKey={closePopover}
       >
         <PopoverContainer
           position={position}
