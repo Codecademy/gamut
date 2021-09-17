@@ -1,6 +1,6 @@
 import { RegisterOptions } from 'react-hook-form';
 
-import { SelectProps } from '../../Form';
+import { InputProps, SelectProps } from '../../Form';
 import {
   ConnectedCheckbox,
   ConnectedInput,
@@ -9,12 +9,12 @@ import {
   ConnectedTextArea,
 } from '.';
 
-export interface SuperBasedConnectedInputProps {
+export interface BaseConnectedFieldProps {
   onUpdate?: (value: boolean) => void;
   validation?: RegisterOptions;
 }
 
-export interface BaseConnectedInputProps extends SuperBasedConnectedInputProps {
+export interface ConnectedFieldProps extends BaseConnectedFieldProps {
   name: string;
 }
 
@@ -23,12 +23,21 @@ export type ConnectedBaseSelectProps = Omit<
   'defaultValue' | 'name'
 >;
 
-export type ConnectedSelectProps = ConnectedBaseSelectProps &
-  BaseConnectedInputProps;
+export type ConnectedBaseInputProps = Omit<InputProps, 'defaultValue' | 'name'>;
 
-export type SelectField = SuperBasedConnectedInputProps &
+export type ConnectedInputProps = ConnectedBaseInputProps & ConnectedFieldProps;
+
+export type ConnectedSelectProps = ConnectedBaseSelectProps &
+  ConnectedFieldProps;
+
+export type SelectField = BaseConnectedFieldProps &
   ConnectedBaseSelectProps & {
     component: typeof ConnectedSelect;
   };
 
-export type ConnectedField = SelectField;
+export type InputField = BaseConnectedFieldProps &
+  ConnectedBaseInputProps & {
+    component: typeof ConnectedInput;
+  };
+
+export type ConnectedField = SelectField | InputField;

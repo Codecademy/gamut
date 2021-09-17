@@ -1,11 +1,8 @@
 import React from 'react';
 
-import { Input, InputProps } from '../../../Form';
+import { Input } from '../../../Form';
 import { useFieldContext } from '../../utils';
-import { BaseConnectedInputProps } from '../types';
-
-export type ConnectedInputProps = Omit<InputProps, 'defaultValue' | 'name'> &
-  BaseConnectedInputProps;
+import { ConnectedInputProps } from '../types';
 
 export const ConnectedInput: React.FC<ConnectedInputProps> = ({
   disabled,
