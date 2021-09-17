@@ -3,10 +3,8 @@ import { withDesign } from 'storybook-addon-designs';
 
 import { withEmotion } from './decorators/theme';
 import { DocsPage, DocsContainer } from './components';
-import { theme as gamutTheme } from '@codecademy/gamut-styles/src';
+import { breakpoints } from '@codecademy/gamut-styles/src';
 import { theme } from './theme';
-
-const { breakpoints } = gamutTheme;
 
 export const parameters = {
   viewMode: 'docs',

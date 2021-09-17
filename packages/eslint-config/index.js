@@ -22,22 +22,43 @@ module.exports = {
 
   overrides: [
     {
-      files: ['**/*.js'],
-      rules: {
-        '@typescript-eslint/no-unsafe-assignment': 'off',
-        '@typescript-eslint/no-unsafe-call': 'off',
-        '@typescript-eslint/no-unsafe-member-access': 'off',
-        '@typescript-eslint/no-unsafe-return': 'off',
-        '@typescript-eslint/no-var-requires': 'off',
-        '@typescript-eslint/restrict-template-expressions': 'off',
-      },
-    },
-    {
       files: ['*.ts', '*.tsx'],
       rules: {
         // These off-by-default or configurable rules are good and we like having them on
         '@typescript-eslint/non-nullable-type-assertion-style': 'error',
         '@typescript-eslint/prefer-optional-chain': 'error',
+      },
+    },
+    // Stories generally have empty functions and other syntax shenanigans for code examples
+    {
+      files: ['*.stories.*'],
+      rules: {
+        '@typescript-eslint/no-empty-function': 'off',
+      },
+    },
+    // JS and test files generally don't need quite the same level of 'any' scrutiny
+    {
+      files: [
+        '*-test.*',
+        '*.js',
+        '*.spec.*',
+        '*.test.*',
+        '**/__fixtures__/*',
+        '**/__tests__/*',
+      ],
+      rules: {
+        'import/no-extraneous-dependencies': [
+          'error',
+          { devDependencies: true },
+        ],
+        '@typescript-eslint/no-unsafe-assignment': 'off',
+        '@typescript-eslint/no-unsafe-call': 'off',
+        '@typescript-eslint/no-unsafe-member-access': 'off',
+        '@typescript-eslint/no-unsafe-return': 'off',
+        '@typescript-eslint/no-var-requires': 'off',
+        '@typescript-eslint/require-await': 'off',
+        '@typescript-eslint/restrict-template-expressions': 'off',
+        '@typescript-eslint/unbound-method': 'off',
       },
     },
   ],
@@ -89,13 +110,11 @@ module.exports = {
     // Note that these are only the rules we don't want in *any* consuming repository
     // Rules to be temporarily disabled for convenience should be done so in those repositories
     '@typescript-eslint/ban-types': 'off',
-    '@typescript-eslint/consistent-type-definitions': 'off',
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     '@typescript-eslint/no-empty-interface': 'off',
     '@typescript-eslint/no-magic-numbers': 'off',
     '@typescript-eslint/no-type-alias': 'off',
-    '@typescript-eslint/no-unused-vars': 'off', // https://github.com/bradzacher/eslint-plugin-typescript/issues/283
     '@typescript-eslint/typedef': 'off',
     'arrow-body-style': 'off',
     camelcase: 'off',
@@ -118,15 +137,18 @@ module.exports = {
     'no-fallthrough': 'off',
     'no-nested-ternary': 'off',
     'no-param-reassign': 'off',
+    'no-multi-assign': 'off',
     'no-restricted-syntax': 'off',
     'no-return-assign': 'off',
     'no-return-await': 'off',
     'no-shadow': 'off',
     'no-sparse-arrays': 'off',
+    'no-template-curly-in-string': 'off',
     'no-underscore-dangle': 'off',
     'no-use-before-define': 'off',
     'no-useless-constructor': 'off',
     'prefer-template': 'off',
+    'react/destructuring-assignment': 'off',
     'react/jsx-filename-extension': 'off',
     'react/jsx-no-bind': 'off',
     'react/jsx-one-expression-per-line': 'off',
@@ -134,6 +156,7 @@ module.exports = {
     'react/jsx-props-no-spreading': 'off',
     'react/prefer-es6-class': 'off',
     'react/require-default-props': 'off',
+    'react/sort-comp': 'off',
     'react/state-in-constructor': 'off',
     'react/static-property-placement': 'off',
     'react/style-prop-object': 'off',

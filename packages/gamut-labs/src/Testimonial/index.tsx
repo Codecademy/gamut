@@ -111,6 +111,8 @@ export const Testimonial: React.FC<TestimonialProps> = ({
     return '';
   }, [company, location]);
 
+  const ariaLabel = `${firstName} ${lastName} ${bottomText}. ${quote}`;
+
   const renderTestimonial = () => (
     <TestimonialCard {...rest} p={32} width="100%" height="100%" mode={mode}>
       <TestimonialContent variant={variant}>
@@ -154,10 +156,12 @@ export const Testimonial: React.FC<TestimonialProps> = ({
 
   const renderTestimonialWithAnchor = () => (
     <Anchor
+      display={rest.display}
       data-testid="testimonial-link"
       href={href}
       variant="interface"
       onClick={onClick}
+      aria-label={ariaLabel}
     >
       {renderTestimonial()}
     </Anchor>

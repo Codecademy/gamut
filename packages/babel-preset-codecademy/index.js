@@ -49,12 +49,7 @@ module.exports = (api, { type = PACKAGE_LIBRARY } = {}) => {
     plugins: [
       require('@babel/plugin-transform-destructuring').default,
       [require('@babel/plugin-proposal-decorators'), { legacy: true }],
-      [
-        require('@babel/plugin-proposal-class-properties').default,
-        {
-          loose: true,
-        },
-      ],
+      require('@babel/plugin-proposal-class-properties').default,
       [
         require('@babel/plugin-proposal-object-rest-spread').default,
         {
