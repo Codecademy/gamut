@@ -111,7 +111,7 @@ export const communityDropdown: AppHeaderSimpleDropdownItem = {
     {
       id: 'learner-stories',
       href: '/learner-stories',
-      trackingTarget: 'topnav_learner_stories',
+      trackingTarget: 'topnav_learner_stories_hub',
       text: 'Learner Stories',
       type: 'link',
     },

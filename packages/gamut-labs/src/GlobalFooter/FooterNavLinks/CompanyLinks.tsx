@@ -78,7 +78,9 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
         <FooterLinkItem>
           <Anchor
             href="/learner-stories"
-            onClick={(event) => onClick({ event, target: 'learner-stories' })}
+            onClick={(event) =>
+              onClick({ event, target: 'learner_stories_hub' })
+            }
             variant="interface"
           >
             Learner Stories
