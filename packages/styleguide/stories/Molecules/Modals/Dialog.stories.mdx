@@ -15,7 +15,7 @@ import { LinkTo, PropsTable } from '~styleguide/blocks';
     design: {
       type: 'figma',
       url:
-        'https://www.figma.com/file/PtSjm2jy8jVJICTpDhahzE/Modals?node-id=1%3A87',
+        'https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=2449%3A3770',
     },
   }}
   args={{
@@ -31,7 +31,7 @@ import { LinkTo, PropsTable } from '~styleguide/blocks';
 ## Use cases
 
 - Use regular Dialogs to have users accept a specific state of the system or force a user to see something.
-- Use warning Dialogs to warn the user of the consequences of the action they may take
+- Use warning Dialogs to warn the user of the consequences of the action they may take. This is helpful for cases like "Delete Account" or "Reset Progress" to make sure users confirm those types of actions.
 
 ## Key principles
 
@@ -40,12 +40,15 @@ import { LinkTo, PropsTable } from '~styleguide/blocks';
 
 ## Usage Guidelines
 
-- Dialogs have a min-width of 400px
+- Dialogs have a width of 400px in the `small` size, and 540px in `medium`.
+  - Small is the default style, and works best with 1-2 lines of text.
+  - The Medium size is suitable for Dialogs that require more content or explanation.
+  - The `fluid` option fits to the maximum size of the components inside of it. This is useful when you want to incorporate elements beyond standard typography inside of your Dialog.
 - Dialog height changes depending on the body-text length.
-- Dialog has light and dark theme variants and each mode is colored differently.
-- Warning Dialogs should use a red CTA button (light mode: white text on #E91C11 background, dark mode: navy text on #E85D7F background)
-- Dialogs use pattern at 80% opacity to give component depth.
-- Dialogs should always be displayed over an overlay. The overlay in light mode should be white at 95% opacity, the overlay in dark mode should be black at 75% opacity.
+- Dialog has light and dark theme variants that respond to the appropriate <LinkTo id="foundations-color-mode--page">Color Mode</LinkTo>.
+- Warning Dialogs should use the Danger action colors, and will always be paired with a Cancel button.
+- Dialogs should always be displayed over an <LinkTo id="molecules-modals-overlay--overlay">Overlay</LinkTo>. Use the Overlay components in Gamut (and Figma) to capture the appropriate background opacity.
+  - The overlay in light mode should be white at 95% opacity, the overlay in dark mode should be black at 75% opacity.
 
 ## Location
 

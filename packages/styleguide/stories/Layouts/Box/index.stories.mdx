@@ -1,7 +1,9 @@
 import { Box } from '@codecademy/gamut/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
-import { Canvas, LinkTo, Meta, Story } from '@storybook/addon-docs/blocks';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+
+import { LinkTo } from '~styleguide/blocks';
 
 <Meta
   title={title}
@@ -92,7 +94,7 @@ Positioning elements and maintaining stacking contexts can be annoying, especial
 
 <Canvas>
   <Story name="Positioning">
-    {(args) => (
+    {() => (
       <Box position="relative" height="500px">
         <Box position="absolute" left="0" top="0" bg="gray-200" p={16}>
           Top Left

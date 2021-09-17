@@ -15,6 +15,7 @@ export const HubCard: React.FC<HubCardProps> = ({
   backgroundImage,
 }) => (
   <Card
+    variant="white"
     shadow="medium"
     display="flex"
     justifyContent="center"

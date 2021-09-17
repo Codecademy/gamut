@@ -8,7 +8,7 @@ import { Modal, ModalProps } from '..';
 const renderModal = (props?: Partial<ModalProps>) => {
   return render(
     <ThemeProvider theme={theme}>
-      <Modal isOpen onRequestClose={() => {}} {...props}>
+      <Modal isOpen onRequestClose={jest.fn()} {...props}>
         <div data-testid="modal-content">{props?.children}</div>
       </Modal>
     </ThemeProvider>

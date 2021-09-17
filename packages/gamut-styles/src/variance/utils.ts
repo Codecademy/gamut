@@ -1,6 +1,6 @@
+import { ThemeProps } from '@codecademy/variance';
 import isPropValid from '@emotion/is-prop-valid';
 
-import { ThemeProps } from '../../../variance/dist';
 import { all as allProps } from './config';
 
 const allPropnames = ['mode', 'variant', ...Object.keys(allProps)] as [
@@ -28,7 +28,7 @@ export type ForwardableProps<El extends ElementOrProps, Additional> = Exclude<
 export function createStyledOptions<
   El extends ElementOrProps = 'div',
   Additional extends string = never
->(additional: ReadonlyArray<Additional> = []) {
+>(additional: readonly Additional[] = []) {
   // Cache possible valid prop names to prevent searching a larger list.
   const additionalExclusions = additional.filter(isPropValid);
   return {

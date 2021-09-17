@@ -5,7 +5,7 @@ import { Tab, TabList, TabPanel, Tabs } from '..';
 
 const createTab = (i: number) => {
   return (
-    <Tab tabIndex={i} onChange={() => {}} id={`tab-${i}`} key={`${i}`}>
+    <Tab tabIndex={i} onChange={jest.fn()} id={`tab-${i}`} key={`${i}`}>
       Tab {i}
     </Tab>
   );
@@ -23,7 +23,7 @@ const createTabPanel = (i: number) => {
 const getTabs = (props: any) => {
   const tabList = (
     <TabList
-      onChange={() => {}}
+      onChange={jest.fn()}
       activeTabIndex={1}
       createBaseId={(i) => `${i}`}
     >
@@ -124,11 +124,11 @@ describe('Tabs', () => {
   describe('Tabs Functionality', () => {
     it('can render inactive panels into the DOM if necessary (for interoperability with JS libraries like recaptcha', () => {
       const wrapper = shallow(
-        getTabs({ activeTabIndex: 0, onChange: () => {} })
+        getTabs({ activeTabIndex: 0, onChange: jest.fn() })
       );
 
       const inactivePanelHasChildren = (wrp: ShallowWrapper) =>
-        !!wrp.html().match('welcome to tab 2');
+        !!/welcome to tab 2/.exec(wrp.html());
 
       expect(inactivePanelHasChildren(wrapper)).toBe(false);
 

@@ -3,7 +3,7 @@ import { Property, StandardPropertiesHyphen } from 'csstype';
 import { timing } from '../variables';
 
 export const transitionConcat = (
-  arrayOfProperties: Array<keyof StandardPropertiesHyphen>,
+  arrayOfProperties: (keyof StandardPropertiesHyphen)[],
   transition: keyof typeof timing,
   timingFn: Property.TransitionTimingFunction = 'linear'
 ) => {

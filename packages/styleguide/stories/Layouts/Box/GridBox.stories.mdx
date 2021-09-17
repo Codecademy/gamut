@@ -21,7 +21,7 @@ component that extends <LinkTo component="Box">Box</LinkTo> with added flex prop
       rowGap: 16,
     }}
   >
-    {({ as = 'div', ...args }) => {
+    {(args) => {
       const elProps = {
         border: 1,
         p: 16,
@@ -42,7 +42,7 @@ component that extends <LinkTo component="Box">Box</LinkTo> with added flex prop
 
 <Canvas>
   <Story name="4 Column Grid">
-    {(args) => {
+    {() => {
       const elProps = {
         border: 1,
         p: 16,

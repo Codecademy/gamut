@@ -19,4 +19,14 @@ describe('Avatar', () => {
     );
     expect(wrapper.find('img[aria-labelledby="label"]')).toHaveLength(1);
   });
+
+  it('when a "size" prop is passed, the <img/> height and width attributes are set accordingly', () => {
+    const wrapper = mount(<Avatar src="" alt="" size={32} />);
+    expect(wrapper.find('Image').prop('dimensions')).toBe(32);
+  });
+
+  it('when a "size" prop is not passed, the <img/> height and width attributes are set to the default value', () => {
+    const wrapper = mount(<Avatar src="" alt="" />);
+    expect(wrapper.find('Image').prop('dimensions')).toBe(118);
+  });
 });

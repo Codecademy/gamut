@@ -54,14 +54,17 @@
   }
 
   .ul .li::before {
-    content: "\25CF";
+    background: $color-black;
+    border-radius: 100%;
+    content: " ";
+    display: inline-block;
+    height: 0.5rem;
+    left: -1.25rem;
+    line-height: 1.6;
     position: absolute;
-    transform: scale(0.6);
-    top: 0;
-    left: -$base-unit * 2;
-    width: $base-unit * 2;
-    line-height: $line-height;
     text-align: center;
+    top: (1.6 - $base-unit);
+    width: 0.5rem;
   }
 
   .ol {

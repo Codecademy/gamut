@@ -1,5 +1,6 @@
 import {
   ArrowChevronDownIcon,
+  GamutIconProps,
   MiniChevronDownIcon,
 } from '@codecademy/gamut-icons';
 import { useTheme } from '@emotion/react';
@@ -18,7 +19,8 @@ import ReactSelect, {
   StylesConfig,
 } from 'react-select';
 
-import { SelectComponentProps } from './Select';
+import { Box } from '../Box';
+import { SelectComponentProps, SelectOptions } from './Select';
 import {
   conditionalBorderStates,
   dropdownBorderStates,
@@ -31,32 +33,41 @@ import {
 } from './styles';
 import { parseOptions } from './utils';
 
-const { DropdownIndicator, SelectContainer } = SelectDropdownElements;
+export interface IconOption {
+  label: string;
+  value: string;
+  icon?: React.ComponentType<GamutIconProps>;
+}
 
-interface SelectDropdownSizes {
+export interface SelectDropdownSizes {
   size?: 'small' | 'medium';
 }
 
 type SelectDropdownBaseProps = Omit<
   SelectComponentProps,
-  'onChange' | 'defaultValue'
+  'onChange' | 'defaultValue' | 'options'
 > &
   SelectDropdownSizes;
 
+export type SelectDropdownOptions = SelectOptions | IconOption[];
+
 interface SelectDropdownProps
   extends SelectDropdownBaseProps,
-    Pick<NamedProps, 'onChange' | 'isSearchable'>,
+    Pick<NamedProps, 'onChange' | 'isSearchable' | 'onInputChange'>,
     Pick<SelectHTMLAttributes<HTMLSelectElement>, 'value' | 'disabled'> {
   inputProps?: Record<string, string | number | boolean>;
   name?: string;
   placeholder?: string;
+  options?: SelectDropdownOptions;
   shownOptionsLimit?: 1 | 2 | 3 | 4 | 5 | 6;
 }
 
-type OptionStrict = {
+const { DropdownIndicator, SelectContainer } = SelectDropdownElements;
+
+export interface OptionStrict {
   label: string;
   value: string;
-};
+}
 
 type CustomContainerProps = ContainerProps<OptionStrict, false> & {
   children?: ReactNode[];
@@ -100,6 +111,17 @@ const CustomContainer = ({ children, ...rest }: CustomContainerProps) => {
       {children}
       <input type="hidden" value={value} name={name} {...inputProps} />
     </SelectContainer>
+  );
+};
+
+const formatOptionLabel = ({ label, icon: Icon, size }: any) => {
+  return (
+    <Box display="flex" alignItems="center">
+      {Icon && <Icon size={size === 'small' ? 16 : 24} color="text" ml={4} />}
+      <Box as="span" pl={Icon ? 16 : 0}>
+        {label}
+      </Box>
+    </Box>
   );
 };
 
@@ -165,14 +187,14 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
         };
       },
 
-      dropdownIndicator: (provided, state) => ({
+      dropdownIndicator: () => ({
         color: 'currentColor',
         display: 'flex',
         padding: '0',
         pointerEvents: 'none',
       }),
 
-      input: (provided, state) => ({
+      input: () => ({
         ...textColor({ theme }),
         padding: '0',
         margin: '0',
@@ -195,7 +217,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
         };
       },
 
-      placeholder: (provided, state) => ({
+      placeholder: (provided) => ({
         ...provided,
         ...placeholderColor({ theme }),
       }),
@@ -206,7 +228,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
         ...optionBackground(state.isSelected, state.isFocused)({ theme }),
       }),
 
-      singleValue: (provided, state) => ({
+      singleValue: () => ({
         ...textColor({ theme }),
         display: 'flex',
       }),
@@ -219,8 +241,8 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
   }, [theme]);
 
   const selectOptions = useMemo(() => {
-    return parseOptions({ options, id });
-  }, [options, id]);
+    return parseOptions({ options, id, size });
+  }, [options, id, size]);
 
   const parsedValue = useMemo(() => {
     const currentValue = selectOptions.find(
@@ -237,6 +259,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
       value={parsedValue}
       activated={activated}
       error={Boolean(error)}
+      formatOptionLabel={formatOptionLabel}
       onChange={changeHandler}
       inputProps={{ ...inputProps, ...baseInputProps }}
       isDisabled={disabled}

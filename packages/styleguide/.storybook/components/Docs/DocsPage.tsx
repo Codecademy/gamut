@@ -18,6 +18,8 @@ import { OpenIcon } from '@codecademy/gamut-icons';
 import { StatusIndicator } from './StatusIndicator';
 import { Background } from '@codecademy/gamut-styles/src';
 
+const isLocalhost = globalThis.location?.toString().includes('localhost');
+
 export interface GamutParameters extends Parameters {
   subtitle?: string;
   status?: 'current' | 'updating' | 'deprecated' | 'static';
@@ -82,7 +84,11 @@ export const DocsPage: React.FC = ({ children }) => {
 
   const linkIcon = <OpenIcon size={14} ml={8} />;
   return (
-    <Background minHeight="100vh" bg="paleBlue" py={48}>
+    <Background
+      minHeight="100vh"
+      bg={isLocalhost ? 'beige' : 'paleBlue'}
+      py={48}
+    >
       <ContentContainer>
         <BreadCrumbs />
         <Title>{title}</Title>
@@ -118,7 +124,7 @@ export const DocsPage: React.FC = ({ children }) => {
         )}
         {design?.url && (
           <GridBox mb={32}>
-            <Figma height="30%" collapsable url={design?.url} />
+            <Figma height="56.25%" collapsable url={design?.url} />
           </GridBox>
         )}
         {children}

@@ -12,7 +12,7 @@ import {
 import { AllUnionKeys, Key, KeyFromUnion } from './utils';
 
 export type MapScale = Record<string | number, string | number>;
-export type ArrayScale = ReadonlyArray<string | number> & { length: 0 };
+export type ArrayScale = readonly (string | number)[] & { length: 0 };
 
 export interface BaseProperty {
   property: keyof PropertyTypes;
@@ -47,19 +47,23 @@ export type PropertyValues<
   All extends true ? never : object | any[]
 >;
 
+export type ScaleValue<
+  Config extends Prop
+> = Config['scale'] extends keyof Theme
+  ? keyof Theme[Config['scale']] | PropertyValues<Config['property']>
+  : Config['scale'] extends MapScale
+  ? keyof Config['scale'] | PropertyValues<Config['property']>
+  : Config['scale'] extends ArrayScale
+  ? Config['scale'][number] | PropertyValues<Config['property']>
+  : PropertyValues<Config['property'], true>;
+
 export type Scale<Config extends Prop> = ResponsiveProp<
-  Config['scale'] extends keyof Theme
-    ? keyof Theme[Config['scale']] | PropertyValues<Config['property']>
-    : Config['scale'] extends MapScale
-    ? keyof Config['scale'] | PropertyValues<Config['property']>
-    : Config['scale'] extends ArrayScale
-    ? Config['scale'][number] | PropertyValues<Config['property']>
-    : PropertyValues<Config['property'], true>
+  ScaleValue<Config> | ((theme: Theme) => ScaleValue<Config>)
 >;
 
 export interface TransformFn<P extends string, Config extends Prop> {
   (
-    value: Scale<Config>,
+    value: Scale<Config> | Scale<Config>,
     prop: P,
     props: ThemeProps<{ [K in P]?: Scale<Config> }>
   ): CSSObject;
@@ -126,9 +130,10 @@ export type ParserProps<
 >;
 
 export type SystemProps<P extends AbstractParser> = {
-  [K in keyof Omit<Parameters<P>[0], 'theme'>]:
-    | Omit<Parameters<P>[0], 'theme'>[K]
-    | ResponsiveProp<(theme: Theme) => Omit<Parameters<P>[0], 'theme'>[K]>;
+  [K in keyof Omit<Parameters<P>[0], 'theme'>]: Omit<
+    Parameters<P>[0],
+    'theme'
+  >[K];
 };
 
 export type VariantProps<T extends string, V> = {

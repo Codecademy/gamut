@@ -22,6 +22,7 @@ import {
   AppHeaderSimpleDropdownItem,
   AppHeaderTextButtonItem,
 } from '../AppHeader/AppHeaderElements/types';
+import { headerResourcesList } from '../lib/resourcesList';
 import { User } from './types';
 
 export const logo: AppHeaderLogoItem = {
@@ -66,37 +67,7 @@ export const resourcesDropdown: AppHeaderSimpleDropdownItem = {
   icon: NotebookIcon,
   id: 'resources',
   text: 'Resources',
-  popover: [
-    {
-      id: 'cheatsheets',
-      href: '/resources/cheatsheets/all',
-      trackingTarget: 'topnav_resources_cheatsheets',
-      text: 'Cheatsheets',
-      type: 'link',
-    },
-    {
-      id: 'projects',
-      href: '/projects',
-      trackingTarget: 'topnav_resources_projects',
-      text: 'Projects',
-      type: 'link',
-    },
-    {
-      id: 'articles',
-      href: '/articles',
-      trackingTarget: 'topnav_resources_articles',
-      text: 'Articles',
-      type: 'link',
-    },
-    {
-      id: 'blog',
-      href: 'https://codecademy.com/resources/blog',
-      newTab: true,
-      trackingTarget: 'topnav_resources_blog',
-      text: 'Blog',
-      type: 'link',
-    },
-  ],
+  popover: headerResourcesList,
   trackingTarget: 'topnav_resources',
   type: 'dropdown',
 };
@@ -180,16 +151,6 @@ export const forBusiness: AppHeaderLinkItem = {
   text: 'For Business',
   href: '/business',
   type: 'link',
-};
-
-export const notifications = (
-  renderNotifications: () => ReactNode
-): AppHeaderRenderElementItem => {
-  return {
-    id: 'notifications',
-    renderElement: renderNotifications,
-    type: 'render-element',
-  };
 };
 
 /**

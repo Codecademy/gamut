@@ -46,12 +46,38 @@ describe('Testimonial', () => {
       expect(view.queryAllByTestId('testimonial-link').length).toBeFalsy();
     });
   });
+
   describe('when href is defined', () => {
     it('renders the card inside of an anchor tag', () => {
       const { view } = renderView();
       expect(view.getByTestId('testimonial-link')).toHaveAttribute(
         'href',
         defaultProps.href
+      );
+    });
+
+    describe('and display is none', () => {
+      it('does not render anchor tag', () => {
+        const { view } = renderView({ display: 'none' });
+        expect(view.queryByTestId('testimonial-link')).not.toBeVisible();
+      });
+    });
+  });
+
+  describe('when  company is undefined', () => {
+    it('does not render company formatting text', () => {
+      const { view } = renderView();
+      expect(view.queryAllByText('@', { exact: false }).length).toBeFalsy();
+    });
+  });
+
+  describe('when company is defined', () => {
+    it('renders formatted company text', () => {
+      const company = 'Satriolies';
+      const { view } = renderView({ company });
+
+      expect(view.getAllByText(`@ ${company}`, { exact: false }).length).toBe(
+        1
       );
     });
   });

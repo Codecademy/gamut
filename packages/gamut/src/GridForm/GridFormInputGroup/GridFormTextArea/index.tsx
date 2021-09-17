@@ -2,27 +2,25 @@ import React from 'react';
 import { UseFormMethods } from 'react-hook-form';
 
 import { TextArea } from '../../../Form';
-import { GridFormTextAreaField } from '../../types';
+import { BaseFormInputProps, GridFormTextAreaField } from '../../types';
 
-export type GridFormTextAreaProps = {
-  className?: string;
-  error?: boolean;
-  showRequired?: boolean;
+export interface GridFormTextAreaProps extends BaseFormInputProps {
   field: Omit<GridFormTextAreaField, 'label'>;
   register: UseFormMethods['register'];
-};
+}
 
 export const GridFormTextArea: React.FC<GridFormTextAreaProps> = ({
   className,
+  disabled,
   error,
   field,
   register,
-  showRequired,
+  required,
 }) => {
   return (
     <TextArea
       className={className}
-      disabled={field.disabled}
+      disabled={disabled}
       error={error}
       htmlFor={field.name}
       name={field.name}
@@ -30,7 +28,7 @@ export const GridFormTextArea: React.FC<GridFormTextAreaProps> = ({
       ref={register(field.validation)}
       id={field.id}
       aria-invalid={error}
-      aria-required={showRequired}
+      aria-required={required}
       placeholder={field.placeholder}
     />
   );

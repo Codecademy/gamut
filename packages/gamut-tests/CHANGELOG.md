@@ -3,6 +3,48 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [2.6.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-tests@2.6.0...@codecademy/gamut-tests@2.6.1) (2021-09-13)
+
+**Note:** Version bump only for package @codecademy/gamut-tests
+
+
+
+
+
+## [2.6.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-tests@2.5.0...@codecademy/gamut-tests@2.6.0) (2021-09-10)
+
+
+### Features
+
+* bump ESLint configs to latest ([e0a201a](https://github.com/Codecademy/client-modules/commit/e0a201abcc5f49718538d3d91af21cb37db4470e))
+
+
+
+## [2.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-tests@2.4.23...@codecademy/gamut-tests@2.5.0) (2021-09-09)
+
+
+### Features
+
+* add notifications to GlobalHeader ([867d35c](https://github.com/Codecademy/client-modules/commit/867d35c8471c6173b37f0d26c9952cc5ceab3461))
+
+
+
+### [2.4.23](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-tests@2.4.22...@codecademy/gamut-tests@2.4.23) (2021-08-30)
+
+**Note:** Version bump only for package @codecademy/gamut-tests
+
+
+
+
+
+### [2.4.22](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-tests@2.4.21...@codecademy/gamut-tests@2.4.22) (2021-08-16)
+
+**Note:** Version bump only for package @codecademy/gamut-tests
+
+
+
+
+
 ### [2.4.21](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-tests@2.4.20...@codecademy/gamut-tests@2.4.21) (2021-08-16)
 
 **Note:** Version bump only for package @codecademy/gamut-tests

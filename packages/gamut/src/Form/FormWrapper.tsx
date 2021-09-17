@@ -1,27 +1,57 @@
-import React from 'react';
-import { FormProvider, Mode, SubmitHandler, useForm } from 'react-hook-form';
+import React, { useEffect } from 'react';
+import {
+  FormProvider,
+  FormProviderProps,
+  Mode,
+  SubmitHandler,
+  useForm,
+} from 'react-hook-form';
 
 import { Form } from '../Form';
+import { submitSuccessStatus } from '../GridForm/utils';
 import { FormProps } from './Form';
 import { FormValues } from './types';
 
-export type FormWrapperProps<Values extends {}> = FormProps & {
-  children?: React.ReactNode;
-
+export type FormContextProps = {
   /**
-   * Function called with field values on submit, if all validations have passed.
+   * If fields should be disabled while form is being submitted and after successful submission.
    */
-  onSubmit: SubmitHandler<Values>;
-
-  defaultValues?: FormValues;
-
+  disableFieldsOnSubmit?: boolean;
   /**
-   * Which react hook form mode we are going to use for validation.
-   * If you use the onChange mode the submit button will be disabled until all
-   * required fields are completed.
+   * If fields should be reset after successful submission.
    */
-  validation?: Mode;
+  resetOnSubmit?: boolean;
+  /**
+   * Sets if form submission was successful - if `undefined` will fall back to react-hook-forms native formState.isSubmitSuccessful.
+   */
+  wasSubmitSuccessful?: boolean;
 };
+
+export type FormWrapperProps<Values extends {}> = FormContextProps &
+  Omit<FormProps, 'onSubmit'> & {
+    children?: React.ReactNode;
+
+    /**
+     * Function called with field values on submit, if all validations have passed.
+     */
+    onSubmit: SubmitHandler<Values>;
+
+    defaultValues?: FormValues;
+
+    /**
+     * Which react hook form mode we are going to use for validation.
+     * If you use the onChange mode the submit button will be disabled until all
+     * required fields are completed.
+     */
+    validation?: Mode;
+  };
+
+export type FormProviderCustomProps = FormProviderProps & FormContextProps;
+
+export const FormPropsContext = React.createContext<Partial<FormContextProps>>(
+  {}
+);
+const PropsProvider = FormPropsContext.Provider;
 
 /**
  * This is an in progress API! please reach out to the web-plat team if you're interested in using it.
@@ -31,22 +61,41 @@ export function FormWrapper<Values extends FormValues>({
   onSubmit,
   defaultValues,
   validation = 'onSubmit',
+  disableFieldsOnSubmit = false,
+  resetOnSubmit = false,
+  wasSubmitSuccessful = undefined,
   ...rest
 }: FormWrapperProps<Values>) {
-  const { handleSubmit, formState, ...methods } = useForm({
+  const { handleSubmit, formState, reset, ...methods } = useForm({
     defaultValues,
     mode: validation,
   });
 
+  const isSubmitSuccessful = submitSuccessStatus(
+    wasSubmitSuccessful,
+    formState.isSubmitSuccessful
+  );
+
+  useEffect(() => {
+    if (isSubmitSuccessful && resetOnSubmit) {
+      reset(defaultValues);
+    }
+  }, [isSubmitSuccessful, resetOnSubmit, reset, defaultValues]);
+
   return (
-    <FormProvider
-      handleSubmit={handleSubmit}
-      formState={formState}
-      {...methods}
+    <PropsProvider
+      value={{ disableFieldsOnSubmit, resetOnSubmit, wasSubmitSuccessful }}
     >
-      <Form onSubmit={handleSubmit(onSubmit)} noValidate {...rest}>
-        {children}
-      </Form>
-    </FormProvider>
+      <FormProvider
+        handleSubmit={handleSubmit}
+        formState={formState}
+        reset={reset}
+        {...methods}
+      >
+        <Form onSubmit={handleSubmit(onSubmit)} {...rest}>
+          {children}
+        </Form>
+      </FormProvider>
+    </PropsProvider>
   );
 }

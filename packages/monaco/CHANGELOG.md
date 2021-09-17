@@ -3,6 +3,200 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [0.4.7](http://github.com///compare/@codecademy/monaco@0.4.6...@codecademy/monaco@0.4.7) (2021-09-16)
+
+**Note:** Version bump only for package @codecademy/monaco
+
+
+
+
+
+### [0.4.6](http://github.com///compare/@codecademy/monaco@0.4.5...@codecademy/monaco@0.4.6) (2021-09-15)
+
+**Note:** Version bump only for package @codecademy/monaco
+
+
+
+
+
+### [0.4.5](http://github.com///compare/@codecademy/monaco@0.4.4...@codecademy/monaco@0.4.5) (2021-09-15)
+
+**Note:** Version bump only for package @codecademy/monaco
+
+
+
+
+
+### [0.4.4](http://github.com///compare/@codecademy/monaco@0.4.3...@codecademy/monaco@0.4.4) (2021-09-14)
+
+**Note:** Version bump only for package @codecademy/monaco
+
+
+
+
+
+### [0.4.3](http://github.com///compare/@codecademy/monaco@0.4.2...@codecademy/monaco@0.4.3) (2021-09-14)
+
+**Note:** Version bump only for package @codecademy/monaco
+
+
+
+
+
+### [0.4.2](http://github.com///compare/@codecademy/monaco@0.4.1...@codecademy/monaco@0.4.2) (2021-09-13)
+
+**Note:** Version bump only for package @codecademy/monaco
+
+
+
+
+
+### [0.4.1](http://github.com///compare/@codecademy/monaco@0.4.0...@codecademy/monaco@0.4.1) (2021-09-10)
+
+**Note:** Version bump only for package @codecademy/monaco
+
+
+
+
+
+## [0.4.0](http://github.com///compare/@codecademy/monaco@0.3.15...@codecademy/monaco@0.4.0) (2021-09-10)
+
+
+### Features
+
+* bump ESLint configs to latest ([e0a201a](http://github.com///commit/e0a201abcc5f49718538d3d91af21cb37db4470e))
+
+
+
+### [0.3.15](http://github.com///compare/@codecademy/monaco@0.3.14...@codecademy/monaco@0.3.15) (2021-09-09)
+
+**Note:** Version bump only for package @codecademy/monaco
+
+
+
+
+
+### [0.3.14](http://github.com///compare/@codecademy/monaco@0.3.13...@codecademy/monaco@0.3.14) (2021-09-08)
+
+**Note:** Version bump only for package @codecademy/monaco
+
+
+
+
+
+### [0.3.13](http://github.com///compare/@codecademy/monaco@0.3.12...@codecademy/monaco@0.3.13) (2021-09-08)
+
+**Note:** Version bump only for package @codecademy/monaco
+
+
+
+
+
+### [0.3.12](http://github.com///compare/@codecademy/monaco@0.3.11...@codecademy/monaco@0.3.12) (2021-09-03)
+
+**Note:** Version bump only for package @codecademy/monaco
+
+
+
+
+
+### [0.3.11](http://github.com///compare/@codecademy/monaco@0.3.10...@codecademy/monaco@0.3.11) (2021-09-03)
+
+**Note:** Version bump only for package @codecademy/monaco
+
+
+
+
+
+### [0.3.10](http://github.com///compare/@codecademy/monaco@0.3.9...@codecademy/monaco@0.3.10) (2021-09-03)
+
+**Note:** Version bump only for package @codecademy/monaco
+
+
+
+
+
+### [0.3.9](http://github.com///compare/@codecademy/monaco@0.3.8...@codecademy/monaco@0.3.9) (2021-09-02)
+
+**Note:** Version bump only for package @codecademy/monaco
+
+
+
+
+
+### [0.3.8](http://github.com///compare/@codecademy/monaco@0.3.7...@codecademy/monaco@0.3.8) (2021-09-01)
+
+**Note:** Version bump only for package @codecademy/monaco
+
+
+
+
+
+### [0.3.7](http://github.com///compare/@codecademy/monaco@0.3.6...@codecademy/monaco@0.3.7) (2021-09-01)
+
+**Note:** Version bump only for package @codecademy/monaco
+
+
+
+
+
+### [0.3.6](http://github.com///compare/@codecademy/monaco@0.3.5...@codecademy/monaco@0.3.6) (2021-08-31)
+
+**Note:** Version bump only for package @codecademy/monaco
+
+
+
+
+
+### [0.3.5](http://github.com///compare/@codecademy/monaco@0.3.4...@codecademy/monaco@0.3.5) (2021-08-30)
+
+**Note:** Version bump only for package @codecademy/monaco
+
+
+
+
+
+### [0.3.4](http://github.com///compare/@codecademy/monaco@0.3.3...@codecademy/monaco@0.3.4) (2021-08-27)
+
+**Note:** Version bump only for package @codecademy/monaco
+
+
+
+
+
+### [0.3.3](http://github.com///compare/@codecademy/monaco@0.3.2...@codecademy/monaco@0.3.3) (2021-08-26)
+
+**Note:** Version bump only for package @codecademy/monaco
+
+
+
+
+
+### [0.3.2](http://github.com///compare/@codecademy/monaco@0.3.1...@codecademy/monaco@0.3.2) (2021-08-25)
+
+**Note:** Version bump only for package @codecademy/monaco
+
+
+
+
+
+### [0.3.1](http://github.com///compare/@codecademy/monaco@0.3.0...@codecademy/monaco@0.3.1) (2021-08-24)
+
+**Note:** Version bump only for package @codecademy/monaco
+
+
+
+
+
+## [0.3.0](http://github.com///compare/@codecademy/monaco@0.2.0...@codecademy/monaco@0.3.0) (2021-08-20)
+
+
+### Features
+
+* **SubmitButton:** The mission for submission GM-315 ([0df7859](http://github.com///commit/0df7859fb84d6e4f01437b1202a12b0761709d0a))
+
+
+
 ## [0.2.0](http://github.com///compare/@codecademy/monaco@0.1.0...@codecademy/monaco@0.2.0) (2021-08-06)
 
 

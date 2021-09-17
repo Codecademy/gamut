@@ -3,6 +3,48 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [5.10.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@5.10.0...@codecademy/gamut-icons@5.10.1) (2021-09-13)
+
+**Note:** Version bump only for package @codecademy/gamut-icons
+
+
+
+
+
+## [5.10.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@5.9.3...@codecademy/gamut-icons@5.10.0) (2021-09-10)
+
+
+### Features
+
+* bump ESLint configs to latest ([e0a201a](https://github.com/Codecademy/client-modules/commit/e0a201abcc5f49718538d3d91af21cb37db4470e))
+
+
+
+### [5.9.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@5.9.2...@codecademy/gamut-icons@5.9.3) (2021-08-30)
+
+**Note:** Version bump only for package @codecademy/gamut-icons
+
+
+
+
+
+### [5.9.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@5.9.1...@codecademy/gamut-icons@5.9.2) (2021-08-27)
+
+
+### Bug Fixes
+
+* **Icons:** Fix icon sizing browser compat issue ([afb53cc](https://github.com/Codecademy/client-modules/commit/afb53ccbb8aa58564609791486fb44eb66e7d9a3))
+
+
+
+### [5.9.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@5.9.0...@codecademy/gamut-icons@5.9.1) (2021-08-16)
+
+**Note:** Version bump only for package @codecademy/gamut-icons
+
+
+
+
+
 ## [5.9.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@5.8.4...@codecademy/gamut-icons@5.9.0) (2021-08-16)
 
 

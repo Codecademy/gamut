@@ -3,6 +3,48 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [0.18.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-illustrations@0.18.1...@codecademy/gamut-illustrations@0.18.2) (2021-09-15)
+
+
+### Bug Fixes
+
+* **Illustrations:** add titles to illustrations ([26ecdf9](https://github.com/Codecademy/client-modules/commit/26ecdf981625e42b33e46cd9d96097f505df7955))
+
+
+
+### [0.18.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-illustrations@0.18.0...@codecademy/gamut-illustrations@0.18.1) (2021-09-13)
+
+**Note:** Version bump only for package @codecademy/gamut-illustrations
+
+
+
+
+
+## [0.18.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-illustrations@0.17.20...@codecademy/gamut-illustrations@0.18.0) (2021-09-10)
+
+
+### Features
+
+* bump ESLint configs to latest ([e0a201a](https://github.com/Codecademy/client-modules/commit/e0a201abcc5f49718538d3d91af21cb37db4470e))
+
+
+
+### [0.17.20](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-illustrations@0.17.19...@codecademy/gamut-illustrations@0.17.20) (2021-08-30)
+
+**Note:** Version bump only for package @codecademy/gamut-illustrations
+
+
+
+
+
+### [0.17.19](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-illustrations@0.17.18...@codecademy/gamut-illustrations@0.17.19) (2021-08-16)
+
+**Note:** Version bump only for package @codecademy/gamut-illustrations
+
+
+
+
+
 ### [0.17.18](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-illustrations@0.17.17...@codecademy/gamut-illustrations@0.17.18) (2021-08-16)
 
 **Note:** Version bump only for package @codecademy/gamut-illustrations

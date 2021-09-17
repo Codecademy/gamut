@@ -32,6 +32,7 @@ const ErrorAnchor = styled(Anchor)(
 export type GridFormInputGroupProps = {
   error?: string;
   isFirstError?: boolean;
+  isDisabled?: boolean;
   field: GridFormField;
   register: UseFormMethods['register'];
   setValue: UseFormMethods['setValue'];
@@ -41,42 +42,39 @@ export type GridFormInputGroupProps = {
 
 export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
   error,
-  isFirstError,
   field,
-  register,
-  setValue,
+  isFirstError,
+  isDisabled,
   showRequired,
-  required,
+  ...rest
 }) => {
+  const disabled = isDisabled || field.disabled;
   const errorMessage = error || field.customError;
-  const isRequired = showRequired && required;
+  const defaultProps = { disabled, ...rest };
+  const isTightCheckbox =
+    field.type === 'checkbox' && field?.spacing === 'tight';
 
   const getInput = () => {
     switch (field.type) {
       case 'checkbox':
-        return (
-          <GridFormCheckboxInput field={field} showRequired={isRequired} />
-        );
+        return <GridFormCheckboxInput field={field} {...defaultProps} />;
 
       case 'custom':
       case 'custom-group':
         return (
           <GridFormCustomInput
-            field={field}
-            register={register}
-            setValue={setValue}
             error={errorMessage}
+            field={field}
+            {...defaultProps}
           />
         );
 
       case 'radio-group':
         return (
           <GridFormRadioGroupInput
-            field={field}
-            register={register}
-            showRequired={isRequired}
-            setValue={setValue}
             error={!!errorMessage}
+            field={field}
+            {...defaultProps}
           />
         );
 
@@ -85,8 +83,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
           <GridFormSelectInput
             error={!!errorMessage}
             field={field}
-            register={register}
-            showRequired={isRequired}
+            {...defaultProps}
           />
         );
 
@@ -95,8 +92,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
           <GridFormFileInput
             error={!!errorMessage}
             field={field}
-            register={register}
-            showRequired={isRequired}
+            {...defaultProps}
           />
         );
 
@@ -105,19 +101,18 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
           <GridFormTextArea
             error={!!errorMessage}
             field={field}
-            register={register}
-            showRequired={isRequired}
+            {...defaultProps}
           />
         );
       case 'hidden':
-        return <GridFormHiddenInput register={register} field={field} />;
+        return <GridFormHiddenInput field={field} {...defaultProps} />;
 
       case 'sweet-container':
         return (
           <GridFormSweetContainerInput
-            register={register}
             field={field}
             label={field.label}
+            {...defaultProps}
           />
         );
 
@@ -126,8 +121,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
           <GridFormTextInput
             error={!!errorMessage}
             field={field}
-            register={register}
-            showRequired={isRequired}
+            {...defaultProps}
           />
         );
     }
@@ -152,10 +146,10 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
 
   const label = (
     <FormGroupLabel
-      disabled={field.disabled}
+      disabled={disabled}
       htmlFor={field.id || field.name}
       tooltip={field.tooltip}
-      showRequired={isRequired}
+      showRequired={showRequired && rest?.required}
     >
       {field.label}
     </FormGroupLabel>
@@ -163,17 +157,14 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
 
   return (
     <Column size={field?.size} rowspan={field?.rowspan ?? 1}>
-      <FormGroup
-        pb={field.type === 'checkbox' && field?.spacing === 'tight' ? 0 : 8}
-        mb={0}
-      >
+      <FormGroup pb={isTightCheckbox ? 0 : 8} mb={0}>
         {field.hideLabel ? <HiddenText>{label}</HiddenText> : label}
         {getInput()}
         {errorMessage && (
           <FormError
             role={isFirstError ? 'alert' : 'status'}
             aria-live={isFirstError ? 'assertive' : 'off'}
-            variant="absolute"
+            variant={isTightCheckbox ? 'initial' : 'absolute'}
           >
             <Markdown
               overrides={{

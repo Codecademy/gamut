@@ -3,6 +3,47 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [0.6.1](https://github.com/Codecademy/client-modules/compare/@codecademy/markdown-overrides@0.6.0...@codecademy/markdown-overrides@0.6.1) (2021-09-13)
+
+**Note:** Version bump only for package @codecademy/markdown-overrides
+
+
+
+
+
+## [0.6.0](https://github.com/Codecademy/client-modules/compare/@codecademy/markdown-overrides@0.5.67...@codecademy/markdown-overrides@0.6.0) (2021-09-10)
+
+
+### Features
+
+* bump ESLint configs to latest ([e0a201a](https://github.com/Codecademy/client-modules/commit/e0a201abcc5f49718538d3d91af21cb37db4470e))
+
+
+
+### [0.5.67](https://github.com/Codecademy/client-modules/compare/@codecademy/markdown-overrides@0.5.66...@codecademy/markdown-overrides@0.5.67) (2021-08-30)
+
+**Note:** Version bump only for package @codecademy/markdown-overrides
+
+
+
+
+
+### [0.5.66](https://github.com/Codecademy/client-modules/compare/@codecademy/markdown-overrides@0.5.65...@codecademy/markdown-overrides@0.5.66) (2021-08-30)
+
+**Note:** Version bump only for package @codecademy/markdown-overrides
+
+
+
+
+
+### [0.5.65](https://github.com/Codecademy/client-modules/compare/@codecademy/markdown-overrides@0.5.64...@codecademy/markdown-overrides@0.5.65) (2021-08-16)
+
+**Note:** Version bump only for package @codecademy/markdown-overrides
+
+
+
+
+
 ### [0.5.64](https://github.com/Codecademy/client-modules/compare/@codecademy/markdown-overrides@0.5.63...@codecademy/markdown-overrides@0.5.64) (2021-08-16)
 
 **Note:** Version bump only for package @codecademy/markdown-overrides

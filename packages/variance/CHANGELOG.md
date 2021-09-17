@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [0.18.1](https://github.com/Codecademy/client-modules/compare/@codecademy/variance@0.18.0...@codecademy/variance@0.18.1) (2021-09-13)
+
+**Note:** Version bump only for package @codecademy/variance
+
+
+
+
+
+## [0.18.0](https://github.com/Codecademy/client-modules/compare/@codecademy/variance@0.17.4...@codecademy/variance@0.18.0) (2021-09-10)
+
+
+### Features
+
+* bump ESLint configs to latest ([e0a201a](https://github.com/Codecademy/client-modules/commit/e0a201abcc5f49718538d3d91af21cb37db4470e))
+
+
+
+### [0.17.4](https://github.com/Codecademy/client-modules/compare/@codecademy/variance@0.17.3...@codecademy/variance@0.17.4) (2021-08-30)
+
+
+### Bug Fixes
+
+* **variance:** Fix theme computations and add more tests for prop behavior ([0cc017a](https://github.com/Codecademy/client-modules/commit/0cc017ac3b6a519da9ee4d4d4488a9e0da9029a2))
+
+
+
 ### [0.17.3](https://github.com/Codecademy/client-modules/compare/@codecademy/variance@0.17.2...@codecademy/variance@0.17.3) (2021-08-12)
 
 

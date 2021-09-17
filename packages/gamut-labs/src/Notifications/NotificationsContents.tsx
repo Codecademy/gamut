@@ -1,0 +1,78 @@
+import {
+  Box,
+  FlexBox,
+  Notification,
+  NotificationList,
+  Pattern,
+  Text,
+} from '@codecademy/gamut';
+import { Background } from '@codecademy/gamut-styles';
+import React, { useRef } from 'react';
+
+import { NotificationsContentsProps } from './types';
+import { useNotificationButtons } from './useNotificationButtons';
+
+export const NotificationsContents: React.FC<NotificationsContentsProps> = (
+  props
+) => {
+  const notificationListRef = useRef<HTMLDivElement>(null);
+  const { actions, notifications } = props;
+  const [
+    clearAllButton,
+    showButton,
+    visibleNotifications,
+  ] = useNotificationButtons({
+    actions,
+    notifications,
+    notificationListRef,
+  });
+
+  const onNotificationClick = (notification: Notification) => {
+    actions.click(notification);
+
+    if (notification.unread) {
+      actions.read(notification);
+    }
+  };
+
+  return (
+    <Background
+      aria-label={
+        notifications.length
+          ? `My ${notifications.length} notifications`
+          : `My Notifications`
+      }
+      bg="white"
+      pb={24}
+      pt={32}
+      role="dialog"
+    >
+      <FlexBox
+        alignItems="center"
+        flexDirection="row"
+        height="40"
+        justifyContent="space-between"
+        mb={16}
+        px={32}
+      >
+        <Text as="h1" fontSize={22}>
+          My Notifications
+        </Text>
+        {clearAllButton}
+      </FlexBox>
+      <Box px={32}>
+        <Pattern name="checkerDense" height="1px" display="flex" />
+      </Box>
+      <Box maxHeight="520px" overflow="auto">
+        <Box pb={16} tabIndex={0} ref={notificationListRef}>
+          <NotificationList
+            notifications={visibleNotifications}
+            onDismiss={actions.dismiss}
+            onNotificationClick={onNotificationClick}
+          />
+        </Box>
+        {showButton}
+      </Box>
+    </Background>
+  );
+};

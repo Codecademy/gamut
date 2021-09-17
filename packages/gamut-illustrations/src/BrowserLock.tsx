@@ -15,6 +15,7 @@ export const BrowserLock: React.FC<IllustrationProps> = ({
     width={width}
     xmlns="http://www.w3.org/2000/svg"
   >
+    <title>Browser Lock Illustration</title>
     <path
       fill="#10162F"
       stroke="#10162F"
