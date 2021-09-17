@@ -11,7 +11,7 @@ export const FlyoutExample: React.FC<FlyoutProps> = (args) => {
         {...args}
         expanded={expanded}
         title="About Baharroth"
-        onClose={() => setExpanded(!expanded)}
+        onClose={() => setExpanded(false)}
       >
         <Box bg="background" textColor="text" m={16}>
           Baharroth, &quot;the Cry of the Wind,&quot; is the Winged Phoenix, the
@@ -24,7 +24,7 @@ export const FlyoutExample: React.FC<FlyoutProps> = (args) => {
           grace of a zephyr, he attacks with the force of a hurricane.
         </Box>
       </Flyout>
-      <StrokeButton onClick={() => setExpanded(!expanded)}>
+      <StrokeButton onClick={() => setExpanded(true)}>
         Tell me more?!
       </StrokeButton>
     </>

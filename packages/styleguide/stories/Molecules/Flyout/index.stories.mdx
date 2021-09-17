@@ -16,8 +16,6 @@ import { FlyoutExample } from './FlyoutExample';
   }}
 />
 
-Our Checkboxes are [controlled components](https://reactjs.org/docs/forms.html#controlled-components), so their checked value must be controlled by an external state passed in as `expanded` and `onChange`:
-
 <Canvas>
   <Story name="Flyout">
     {(args) => (
@@ -35,5 +33,23 @@ Our Checkboxes are [controlled components](https://reactjs.org/docs/forms.html#c
     )}
   </Story>
 </Canvas>
+
+## Controlled Flyouts
+
+Our Flyouts are [controlled components](https://reactjs.org/docs/forms.html#controlled-components), so their checked value must be controlled by an external state passed in as `expanded` and `onChange`:
+
+```tsx
+<Flyout
+  closeLabel="Close My Pane"
+  expanded={expanded}
+  title="My Pane"
+  onClose={() => setExpanded(false)}
+>
+  Put your flyout contents here?
+</Flyout>
+<StrokeButton onClick={() => setExpanded(true)}>
+  Activate!
+</StrokeButton>
+```
 
 <Props story="Flyout" />
