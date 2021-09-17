@@ -26,22 +26,26 @@ export const NotificationList: React.FC<NotificationListProps> = ({
   onDismiss,
   headerElementId,
 }) => {
-  return isEmpty(notifications) ? (
-    <EmptyNotification />
-  ) : (
-    <UnstyledUnorderedList
-      bg="white"
-      aria-labelledby={headerElementId}
-      aria-live="polite"
-    >
-      {notifications.map((notification: Notification) => (
-        <NotificationItem
-          key={notification.id}
-          notification={notification}
-          handleClick={() => onNotificationClick?.(notification)}
-          handleDismiss={() => onDismiss?.(notification)}
-        />
-      ))}
-    </UnstyledUnorderedList>
+  return (
+    <div aria-live="polite">
+      {isEmpty(notifications) ? (
+        <EmptyNotification />
+      ) : (
+        <UnstyledUnorderedList
+          bg="white"
+          aria-labelledby={headerElementId}
+          aria-live="polite"
+        >
+          {notifications.map((notification: Notification) => (
+            <NotificationItem
+              key={notification.id}
+              notification={notification}
+              handleClick={() => onNotificationClick?.(notification)}
+              handleDismiss={() => onDismiss?.(notification)}
+            />
+          ))}
+        </UnstyledUnorderedList>
+      )}
+    </div>
   );
 };
