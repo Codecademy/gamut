@@ -1,11 +1,8 @@
 import React from 'react';
 
-import { Select, SelectProps } from '../../../Form';
+import { Select } from '../../../Form';
 import { useFieldContext } from '../../utils';
-import { BaseConnectedInputProps } from '../types';
-
-export type ConnectedSelectProps = Omit<SelectProps, 'defaultValue' | 'name'> &
-  BaseConnectedInputProps;
+import { ConnectedSelectProps } from '../types';
 
 export const ConnectedSelect: React.FC<ConnectedSelectProps> = ({
   disabled,

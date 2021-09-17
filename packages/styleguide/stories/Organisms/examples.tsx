@@ -5,6 +5,7 @@ import {
   ConnectedCheckbox,
   ConnectedForm,
   ConnectedFormGroup,
+  ConnectedFormGroup2,
   ConnectedInput,
   ConnectedRadio,
   ConnectedRadioGroup,
@@ -575,19 +576,21 @@ export const HEY: React.FC = () => {
           borderRadius="10px"
         >
           <INeedSomeSpace>
-            <ConnectedFormGroup
-              name="your-field"
-              label="hey"
-              size="large"
-              spacing="tight"
-            >
-              <ConnectedSelect
-                name="your-field"
-                htmlFor="your-field"
-                validation={{ required: 'check it...' }}
-                options={['one', 'two', 'three']}
-              />
-            </ConnectedFormGroup>
+            "yo"
+            <ConnectedFormGroup2
+              name="render-select"
+              label="render select ok"
+              field={{
+                component: ConnectedSelect,
+                validation: {
+                  pattern: {
+                    value: /^(?:(?!zero).)*$/,
+                    message: 'zero to hero',
+                  },
+                },
+                options: ['zero', 'two', 'three'],
+              }}
+            />
           </INeedSomeSpace>
           <INeedSomeSpace>
             <ConnectedFormGroup
@@ -656,7 +659,6 @@ export const HEY: React.FC = () => {
               label="hi"
               spacing="tight"
               errorType="initial"
-              afan="fnkdajfn"
             >
               <ConnectedCheckbox
                 label="check me out"
