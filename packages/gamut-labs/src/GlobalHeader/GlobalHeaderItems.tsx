@@ -108,6 +108,13 @@ export const communityDropdown: AppHeaderSimpleDropdownItem = {
       text: 'Events',
       type: 'link',
     },
+    {
+      id: 'learner-stories',
+      href: '/learner-stories',
+      trackingTarget: 'topnav_learner_stories_hub',
+      text: 'Learner Stories',
+      type: 'link',
+    },
   ],
   trackingTarget: 'topnav_community',
   type: 'dropdown',
