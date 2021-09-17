@@ -25,7 +25,7 @@ export const FlyoutExample: React.FC<FlyoutProps> = (args) => {
         </Box>
       </Flyout>
       <StrokeButton onClick={() => setExpanded(!expanded)}>
-        chiller time
+        Tell me more?!
       </StrokeButton>
     </>
   );
