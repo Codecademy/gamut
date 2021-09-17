@@ -241,7 +241,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
   }, [theme]);
 
   const selectOptions = useMemo(() => {
-    return parseOptions({ options, id, size });
+    return parseOptions({ options, id, size, type: 'dropdown' });
   }, [options, id, size]);
 
   const parsedValue = useMemo(() => {

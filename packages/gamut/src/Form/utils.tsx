@@ -16,6 +16,7 @@ export interface SelectOptionBase {
 export interface ParseOptionProps extends SelectDropdownSizes {
   id?: string | number;
   options?: SelectDropdownOptions;
+  type: 'base' | 'dropdown';
 }
 
 const formatAsOptions = ({ label, value, key }: SelectOptionBase) => {
@@ -31,7 +32,7 @@ const formatAsOptions = ({ label, value, key }: SelectOptionBase) => {
 
   return option;
 };
-export const parseOptions = ({ options, id, size }: ParseOptionProps) => {
+export const parseOptions = ({ options, id, size, type }: ParseOptionProps) => {
   const parsedOptions: OptionTypeBase[] = [];
   if (Array.isArray(options)) {
     options.forEach((value: string | IconOption) => {
@@ -39,7 +40,7 @@ export const parseOptions = ({ options, id, size }: ParseOptionProps) => {
         const key = id ? `${id}-${value?.value}` : value?.value;
         parsedOptions.push({ ...value, key, size });
       } else {
-        const label = id ? `${id}-${value}` : value;
+        const label = id && type === 'base' ? `${id}-${value}` : value;
         parsedOptions.push({ label, value });
       }
     });
@@ -49,7 +50,6 @@ export const parseOptions = ({ options, id, size }: ParseOptionProps) => {
       parsedOptions.push({ label, value, key });
     });
   }
-
   return [...parsedOptions];
 };
 
