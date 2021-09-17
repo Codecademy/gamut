@@ -42,7 +42,7 @@ export type HoverPopoverProps = BasePopoverProps &
      */
     target: JSX.Element;
 
-    popoverType?: 'hover';
+    popoverType: 'hover';
   };
 
 export const HoverPopover: React.FC<HoverPopoverProps> = ({
@@ -52,14 +52,7 @@ export const HoverPopover: React.FC<HoverPopoverProps> = ({
   ...innerPopoverProps
 }) => {
   const [isHovering, setIsHovering] = useState(false);
-
   const targetRef = useRef<HTMLDivElement>(null);
-
-  // TODO_MS
-  // Add a state variable for isOpen
-  // Add a listener for mouseEnter/mouseLeave & perhaps on focus (for focus within if it bubbles)
-  // Then toggle that state and conditionally render the inner popover
-  // This is being done to avoid calculating a shitton of otherwise hidden popovers
 
   const onHoverIn = useCallback(() => {
     if (!isHovering) setIsHovering(true);
