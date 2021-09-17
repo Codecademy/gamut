@@ -1,8 +1,12 @@
 /* eslint-disable local-rules/gamut-import-paths */
 import { Box, GridForm, Markdown } from '@codecademy/gamut/src';
-import React from 'react';
+import { Background } from '@codecademy/gamut-styles/src';
+import { action } from '@storybook/addon-actions';
+import React, { useState } from 'react';
 
 import { ColorModeExampleWrapper } from '../Foundations/ColorMode/examples';
+
+const onSubmit = action('Submitted!');
 
 export const ColorModeExample = () => {
   return (
@@ -296,7 +300,7 @@ export const ColorModeExample = () => {
               title: 'something has gone wrong',
             },
           ]}
-          onSubmit={() => {}}
+          onSubmit={onSubmit}
           submit={{
             contents: 'Submit me',
             size: 12,
@@ -305,5 +309,50 @@ export const ColorModeExample = () => {
         />
       </Box>
     </ColorModeExampleWrapper>
+  );
+};
+
+export const FormLoadingExample = () => {
+  const [loading, setLoading] = useState(false);
+
+  const wait = (ms: number) =>
+    new Promise((resolve) => setTimeout(resolve, ms));
+
+  const onSubmit = async () => {
+    setLoading(true);
+    await wait(2000);
+    setLoading(false);
+  };
+
+  return (
+    <Background bg="navy" p={32}>
+      <GridForm
+        disableFieldsOnSubmit
+        resetOnSubmit
+        fields={[
+          {
+            label: 'Email',
+            placeholder:
+              'i will disable form fields on loading and reset on correct submission!',
+            name: 'im-new',
+            type: 'email',
+            validation: {
+              required: 'pls fill this out',
+              pattern: {
+                value: /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,})+$/,
+                message: 'that is not an email 😔',
+              },
+            },
+            size: 12,
+          },
+        ]}
+        onSubmit={onSubmit}
+        submit={{
+          loading,
+          contents: 'Submit Me 💖',
+          size: 5,
+        }}
+      />
+    </Background>
   );
 };

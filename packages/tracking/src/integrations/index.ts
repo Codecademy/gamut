@@ -64,7 +64,6 @@ export const initializeTrackingIntegrations = async ({
   const { destinationPreferences, identifyPreferences } = mapDestinations({
     consentDecision: scope.OnetrustActiveGroups,
     destinations,
-    user,
   });
 
   // 6. We load only those allowed destinations using Segment's `analytics.load`

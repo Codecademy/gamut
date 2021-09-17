@@ -16,6 +16,7 @@ export const Bee: React.FC<IllustrationProps> = ({
     xmlns="http://www.w3.org/2000/svg"
     xmlnsXlink="http://www.w3.org/1999/xlink"
   >
+    <title>Bee Illustration</title>
     <path d="M43.6726 13.6659V6.87367" stroke="#10162F" />
     <circle
       cx="43.6726"

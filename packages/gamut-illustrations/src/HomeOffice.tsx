@@ -15,6 +15,7 @@ export const HomeOffice: React.FC<IllustrationProps> = ({
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
   >
+    <title>Home Office Illustration</title>
     <mask
       id="a"
       maskUnits="userSpaceOnUse"

@@ -40,6 +40,7 @@ tmp
 
 # Storybook build
 dist/storybook
+dist/docs
 
 packages/gamut-styles/demo-styles
 

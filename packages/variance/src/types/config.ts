@@ -12,7 +12,7 @@ import {
 import { AllUnionKeys, Key, KeyFromUnion } from './utils';
 
 export type MapScale = Record<string | number, string | number>;
-export type ArrayScale = ReadonlyArray<string | number> & { length: 0 };
+export type ArrayScale = readonly (string | number)[] & { length: 0 };
 
 export interface BaseProperty {
   property: keyof PropertyTypes;

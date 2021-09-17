@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [0.14.2](https://github.com/Codecademy/client-modules/compare/@codecademy/tracking@0.14.1...@codecademy/tracking@0.14.2) (2021-09-13)
+
+**Note:** Version bump only for package @codecademy/tracking
+
+
+
+
+
+### [0.14.1](https://github.com/Codecademy/client-modules/compare/@codecademy/tracking@0.14.0...@codecademy/tracking@0.14.1) (2021-09-10)
+
+**Note:** Version bump only for package @codecademy/tracking
+
+
+
+
+
+## [0.14.0](https://github.com/Codecademy/client-modules/compare/@codecademy/tracking@0.13.1...@codecademy/tracking@0.14.0) (2021-09-10)
+
+
+### Features
+
+* bump ESLint configs to latest ([e0a201a](https://github.com/Codecademy/client-modules/commit/e0a201abcc5f49718538d3d91af21cb37db4470e))
+
+
+
 ### [0.13.1](https://github.com/Codecademy/client-modules/compare/@codecademy/tracking@0.13.0...@codecademy/tracking@0.13.1) (2021-08-13)
 
 **Note:** Version bump only for package @codecademy/tracking
