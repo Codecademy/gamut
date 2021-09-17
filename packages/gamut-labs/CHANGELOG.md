@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [20.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@20.0.3...@codecademy/gamut-labs@20.1.0) (2021-09-17)
+
+
+### Features
+
+* **GlobalHeader, GlobalFooter:** Learner stories link in global footer and global header ([d202a3f](https://github.com/Codecademy/client-modules/commit/d202a3ff53f631ae2e5e8dd6a74c98cafed5bfb8))
+
+
+
 ### [20.0.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@20.0.2...@codecademy/gamut-labs@20.0.3) (2021-09-16)
 
 
