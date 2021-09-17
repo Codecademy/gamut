@@ -1,6 +1,6 @@
 import { breakpoints, timing } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
 
 import { Breakpoint } from '..';
 import { InnerPopover } from './shared';
