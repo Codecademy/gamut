@@ -103,7 +103,6 @@ describe('Popover', () => {
     });
 
     it('when escape key is triggered', () => {
-      const onRequestClose = jest.fn();
       const { baseElement } = renderPopover({
         isOpen: true,
         onRequestClose,
@@ -112,7 +111,7 @@ describe('Popover', () => {
       expect(onRequestClose).toBeCalledTimes(1);
     });
 
-    it('when popover is out of viewport', () => {
+    it('when popover is inside viewport', () => {
       /* element is inside the viewport if the top and left value is greater than or equal to 0,
         and right value is less than or equal to window.innerWidth
         and bottom value is less than or equal to window.innerHeight */
@@ -121,9 +120,7 @@ describe('Popover', () => {
           contains: () => true,
           getBoundingClientRect: () => ({
             ...baseBoundingClient,
-            bottom: 35,
             top: -1,
-            x: 41,
             y: -1,
           }),
         } as unknown) as HTMLElement,
@@ -142,14 +139,11 @@ describe('Popover', () => {
           contains: () => true,
           getBoundingClientRect: () => ({
             ...baseBoundingClient,
-            bottom: 35,
             top: 1,
-            x: 41,
             y: 1,
           }),
         } as unknown) as HTMLElement,
       };
-      const onRequestClose = jest.fn();
       renderPopover({
         targetRef: targetRefObj,
         isOpen: true,
