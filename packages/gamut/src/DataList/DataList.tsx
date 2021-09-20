@@ -5,7 +5,7 @@ import { DataHeader } from './Header';
 import { DataRow } from './Row';
 import { ColumnConfig, Query } from './types';
 
-interface DataListProps<
+export interface DataListProps<
   Rows,
   IdKey extends keyof Rows,
   Ids extends Rows[IdKey],

@@ -1,99 +1,123 @@
-import { DataList, DataListProps } from '@codecademy/gamut';
+import { ColumnConfig, DataList } from '@codecademy/gamut';
 import { Background } from '@codecademy/gamut-styles';
 import { orderBy } from 'lodash';
 import React, { useMemo, useState } from 'react';
 
 const columns = [
   { label: 'Name', key: 'name', size: 'lg', queryType: 'sort', type: 'header' },
-  { label: 'Rank', key: 'role', size: 'lg', queryType: 'sort', fill: true },
-  { label: 'Ship', key: 'ship', size: 'lg', queryType: 'sort', fill: true },
+  { label: 'Rank', key: 'role', size: 'lg', queryType: 'sort' },
+  { label: 'Ship', key: 'ship', size: 'xl', queryType: 'sort' },
   {
-    label: 'Rank 2',
-    key: 'role',
-    size: 'lg',
-    queryType: 'sort',
+    label: 'Power',
+    key: 'power',
+    size: 'xl',
     fill: true,
-    justify: 'right',
+    queryType: 'sort',
   },
   {
-    label: 'Rank 3',
-    key: 'role',
+    label: 'Species',
+    key: 'species',
     size: 'lg',
-    queryType: 'sort',
-    fill: true,
     justify: 'right',
-  },
-  {
-    label: 'Rank 4',
-    key: 'role',
-    size: 'lg',
     queryType: 'sort',
-    justify: 'right',
   },
-] as const;
+] as ColumnConfig<typeof rows[number]>[];
 
 const rows = [
-  { name: 'Jean Luc Picard', role: 'Captain', ship: 'USS Enterprise' },
+  {
+    name: 'Jean Luc Picard',
+    role: 'Captain',
+    ship: 'USS Enterprise',
+    species: 'Human',
+    power: 'Monologues',
+  },
   {
     name: 'Wesley Crusher',
     role: 'Deus Ex Machina',
     ship: 'USS Enterprise',
+    species: 'Mary Sue',
+    power: 'Being super preachy',
   },
   {
     name: 'Geordie LaForge',
     role: 'Rascal',
     ship: 'USS Enterprise',
+    species: 'Human',
+    power: 'Really bad a first dates',
   },
   {
     name: 'Data',
     role: 'Scamp',
-    ship: 'Accidentally fused with the Enterprise',
+    ship: 'USS Enterprise',
+    species: 'Android',
+    power: 'Annoying existentialism.  Real magnet for zany adventures',
   },
   {
     name: 'Tasha Yar',
     role: 'Fond Memory',
     ship: "Yesterday's Enterprise",
+    species: 'Ectoplasm',
+    power:
+      'Coming back to the show after getting written off as their own clone',
   },
   {
     name: 'Beverly Crusher',
     role: 'Medical Officer',
     ship: "Jean Luc's Dreams",
+    species: 'Human',
+    power: 'Knowing glances',
   },
   {
     name: 'William Riker',
     role: 'Numba One',
     ship: 'Pleasure Cruiser',
+    species: 'Hedonist',
+    power: 'Seduction of alien dignataries',
   },
   {
     name: 'Barclay',
     role: 'Punching Bag',
     ship: 'Titanic (Holodeck)',
+    species: 'Demigod',
+    power: 'Immunity to addiction therapies',
   },
   {
     name: 'Worf',
     role: 'Security Officer',
     ship: 'Just another victim of the ambient honorability',
+    species: 'Klingon',
+    power: 'Combusts if they act dishonorably',
   },
   {
     name: 'Q',
     role: 'Costume Budget Line Item',
     ship: 'USS Moral Quandry',
+    species: 'Q',
+    power: 'World class showman',
   },
   {
     name: 'Deanna Troi',
     role: 'Hot Chocolate Enthusiast',
     ship: 'USS Enterprise',
+    species: 'Human / Betazoid',
+    power: 'Really good at asking the ship for hot chocolate',
   },
   {
     name: 'Guinan',
     role: "Picking up Deanna's slack",
     ship: 'Saucer Section every few seasons',
+    species: "Q d'etat",
+    power: 'Quantum sensitivity, talk therapy',
   },
-] as const;
+];
 
-export const DataListTemplate = (args: DataListProps) => {
-  const [selectedRows, setSelectedRows] = useState([]);
-  const [expandedRows, setExpandedRows] = useState([]);
+export const DataListTemplate = (args: any) => {
+  const [selectedRows, setSelectedRows] = useState<
+    typeof rows[number]['role'][]
+  >([]);
+  const [expandedRows, setExpandedRows] = useState<
+    typeof rows[number]['role'][]
+  >([]);
   const [query, setQuery] = useState<any>({
     sort: {},
   });
@@ -115,8 +139,7 @@ export const DataListTemplate = (args: DataListProps) => {
   return (
     <Background bg="white" maxHeight={500} overflowY="auto">
       <DataList
-        {...args}
-        idKey="role"
+        idKey="name"
         rows={sortedRows}
         columns={columns}
         selectedRows={selectedRows}

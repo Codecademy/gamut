@@ -57,4 +57,4 @@ export * from './FloatingCard/FloatingCard';
 export * from './BetaSticker';
 export * from './Menu';
 export * from './List';
-export * from './DataList/DataList';
+export * from './DataList';
