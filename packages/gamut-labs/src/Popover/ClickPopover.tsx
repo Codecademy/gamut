@@ -1,9 +1,14 @@
 import React, { useCallback } from 'react';
 
-import { InnerPopover } from './shared';
-import { BasePopoverProps } from './types';
+import { BasePopover } from './BasePopover';
+import { SharedPopoverProps } from './types';
 
-export type ClickPopoverProps = BasePopoverProps & {
+export type ClickPopoverProps = SharedPopoverProps & {
+  /**
+   * The target element around which the popover will be positioned.
+   */
+  targetRef: React.RefObject<HTMLElement>;
+
   /**
    * Whether the popover is rendered.
    */
@@ -39,13 +44,13 @@ export const ClickPopover: React.FC<ClickPopoverProps> = ({
   if (!isOpen || !targetRef || !targetRef.current) return null;
 
   return (
-    <InnerPopover
+    <BasePopover
       {...innerPopoverProps}
       targetRef={targetRef}
       handleClickOutside={handleClickOutside}
       closePopover={onRequestClose ?? (() => {})}
     >
       {children}
-    </InnerPopover>
+    </BasePopover>
   );
 };

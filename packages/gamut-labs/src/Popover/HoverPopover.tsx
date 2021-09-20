@@ -1,10 +1,10 @@
 import { breakpoints, timing } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
-import React, { useCallback, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 
 import { Breakpoint } from '..';
-import { InnerPopover } from './shared';
-import { BasePopoverProps } from './types';
+import { BasePopover } from './BasePopover';
+import { SharedPopoverProps } from './types';
 
 type HoverContainerProps = {
   /**
@@ -33,16 +33,16 @@ const HoverContainer = styled.div<HoverContainerProps>`
   }}
 `;
 
-export type HoverPopoverProps = BasePopoverProps &
+export type HoverPopoverProps = SharedPopoverProps &
   HoverContainerProps & {
+    popoverType: 'hover';
+
     /**
      * The target element around which the popover will be positioned,
      * without the need to provide your own ref to it.
      * Just provide the element and we'll do the rest
      */
     target: JSX.Element;
-
-    popoverType: 'hover';
   };
 
 export const HoverPopover: React.FC<HoverPopoverProps> = ({
@@ -54,18 +54,13 @@ export const HoverPopover: React.FC<HoverPopoverProps> = ({
   const [isHovering, setIsHovering] = useState(false);
   const targetRef = useRef<HTMLDivElement>(null);
 
-  const onHoverIn = useCallback(() => {
-    if (!isHovering) setIsHovering(true);
-  }, [isHovering]);
+  const onHoverIn = () => setIsHovering(true);
+  const onHoverOut = () => setIsHovering(false);
 
-  const onHoverOut = useCallback(() => {
-    if (isHovering) setIsHovering(false);
-  }, [isHovering]);
-
-  const onBlur = useCallback(
-    () => !targetRef.current?.contains(document.activeElement) && onHoverOut(),
-    [onHoverOut]
-  );
+  const onBlur = () =>
+    targetRef.current &&
+    !targetRef.current.contains(document.activeElement) &&
+    onHoverOut();
 
   return (
     <div
@@ -78,14 +73,14 @@ export const HoverPopover: React.FC<HoverPopoverProps> = ({
       {target}
       <HoverContainer shownAt={shownAt}>
         {isHovering && (
-          <InnerPopover
+          <BasePopover
             {...innerPopoverProps}
             targetRef={targetRef}
             closePopover={onHoverOut}
             handleClickOutside={onHoverOut}
           >
             {children}
-          </InnerPopover>
+          </BasePopover>
         )}
       </HoverContainer>
     </div>

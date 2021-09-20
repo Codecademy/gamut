@@ -95,6 +95,12 @@ describe('Popover', () => {
     });
   });
 
+  describe('HoverPopover', () => {
+    it('renders popover content on hover', () => {
+      //
+    });
+  });
+
   describe('calls onRequestClose', () => {
     it('when clicking outside', () => {
       renderPopover();

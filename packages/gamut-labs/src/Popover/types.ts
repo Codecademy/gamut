@@ -1,6 +1,6 @@
 import { PatternName } from '@codecademy/gamut';
 
-export type BasePopoverProps = {
+export type SharedPopoverProps = {
   /** Popover contents */
   children: React.ReactElement<any>;
 
@@ -40,11 +40,6 @@ export type BasePopoverProps = {
    * Whether to add a pattern background.
    */
   pattern?: PatternName;
-
-  /**
-   * The target element around which the popover will be positioned.
-   */
-  targetRef: React.RefObject<HTMLElement>;
 
   /**
    * What kind of user interaction triggers the popover.

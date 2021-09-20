@@ -8,7 +8,7 @@ import styled from '@emotion/styled';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useWindowScroll, useWindowSize } from 'react-use';
 
-import { BasePopoverProps } from './types';
+import { SharedPopoverProps } from './types';
 
 type StyleProps = {
   outline?: boolean;
@@ -73,12 +73,17 @@ export const PatternContainer = styled.div<StyleProps>`
   left: ${({ align }) => (align === 'left' ? '8px' : '-8px')};
 `;
 
-type InnerPopoverProps = BasePopoverProps & {
+type BasePopoverProps = SharedPopoverProps & {
+  /**
+   * The target element around which the popover will be positioned.
+   */
+  targetRef: React.RefObject<HTMLElement>;
+
   handleClickOutside: FocusTrapProps['onClickOutside'];
   closePopover: () => void;
 };
 
-export const InnerPopover: React.FC<InnerPopoverProps> = ({
+export const BasePopover: React.FC<BasePopoverProps> = ({
   handleClickOutside,
   closePopover,
   children,
