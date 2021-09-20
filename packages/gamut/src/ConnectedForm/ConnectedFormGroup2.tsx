@@ -13,7 +13,14 @@ import {
 import { Anchor } from '../Anchor';
 import { HiddenText } from '../HiddenText';
 import { Markdown } from '../Markdown';
-import { ConnectedField } from './Inputs/types';
+import { ConnectedSelect } from './Inputs';
+import {
+  ConnectedBaseInputProps,
+  ConnectedBaseSelectProps,
+  ConnectedField,
+  ConnectedSelectProps,
+  renderField,
+} from './Inputs/types';
 import { useFieldContext } from './utils';
 
 const ErrorAnchor = styled(Anchor)(
@@ -60,7 +67,6 @@ export const ConnectedFormGroup2: React.FC<ConnectedFormGroupProps2> = ({
   tooltip,
 }) => {
   const { error, isFirstError, isDisabled } = useFieldContext(name);
-  const { component: Component, ...rest } = field;
   const currentlyDisabled = isDisabled || disabled;
 
   const renderedLabel = (
@@ -81,7 +87,10 @@ export const ConnectedFormGroup2: React.FC<ConnectedFormGroupProps2> = ({
       mb={spacing === 'tight' ? 0 : 8}
     >
       {hideLabel ? <HiddenText>{renderedLabel}</HiddenText> : renderedLabel}
-      <Component name={name} {...rest} />
+
+      <field.component {...field} />
+
+      {renderField(field, name)}
       {(error || customError) && (
         <FormError
           role={isFirstError ? 'alert' : 'status'}

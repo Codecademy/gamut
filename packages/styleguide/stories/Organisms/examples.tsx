@@ -591,6 +591,20 @@ export const HEY: React.FC = () => {
                 options: ['zero', 'two', 'three'],
               }}
             />
+            <ConnectedFormGroup2
+              name="render-select"
+              label="render select ok"
+              field={{
+                component: ConnectedInput,
+                validation: {
+                  pattern: {
+                    value: /^(?:(?!zero).)*$/,
+                    message: 'zero to hero',
+                  },
+                },
+                options: ['zero', 'two', 'three'],
+              }}
+            />
           </INeedSomeSpace>
           <INeedSomeSpace>
             <ConnectedFormGroup
