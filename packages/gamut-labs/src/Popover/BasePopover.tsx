@@ -81,6 +81,8 @@ type BasePopoverProps = SharedPopoverProps & {
 
   handleClickOutside: FocusTrapProps['onClickOutside'];
   closePopover: () => void;
+
+  doNotTrapFocus?: boolean;
 };
 
 export const BasePopover: React.FC<BasePopoverProps> = ({
@@ -92,6 +94,7 @@ export const BasePopover: React.FC<BasePopoverProps> = ({
   outline,
   beak,
   pattern,
+  doNotTrapFocus,
   position = 'below',
   align = 'left',
   verticalOffset = 20,
@@ -143,40 +146,48 @@ export const BasePopover: React.FC<BasePopoverProps> = ({
 
   const popoverRef = useRef<HTMLDivElement>(null);
 
+  const popoverContent = (
+    <PopoverContainer
+      position={position}
+      align={align}
+      ref={popoverRef}
+      className={className}
+      style={getPopoverPosition()}
+      data-testid="popover-content-container"
+      tabIndex={-1}
+    >
+      <RaisedDiv outline={outline}>
+        {beak && (
+          <Beak
+            outline={outline}
+            position={position}
+            beak={beak}
+            data-testid="popover-beak"
+          />
+        )}
+        {children}
+      </RaisedDiv>
+      {pattern && (
+        <PatternContainer position={position} align={align}>
+          <Pattern data-testid="popover-pattern" name={pattern} fit />
+        </PatternContainer>
+      )}
+    </PopoverContainer>
+  );
+
   return (
     <BodyPortal>
-      <FocusTrap
-        allowPageInteraction
-        onClickOutside={handleClickOutside}
-        onEscapeKey={closePopover}
-      >
-        <PopoverContainer
-          position={position}
-          align={align}
-          ref={popoverRef}
-          className={className}
-          style={getPopoverPosition()}
-          data-testid="popover-content-container"
-          tabIndex={-1}
+      {doNotTrapFocus ? (
+        popoverContent
+      ) : (
+        <FocusTrap
+          allowPageInteraction
+          onClickOutside={handleClickOutside}
+          onEscapeKey={closePopover}
         >
-          <RaisedDiv outline={outline}>
-            {beak && (
-              <Beak
-                outline={outline}
-                position={position}
-                beak={beak}
-                data-testid="popover-beak"
-              />
-            )}
-            {children}
-          </RaisedDiv>
-          {pattern && (
-            <PatternContainer position={position} align={align}>
-              <Pattern data-testid="popover-pattern" name={pattern} fit />
-            </PatternContainer>
-          )}
-        </PopoverContainer>
-      </FocusTrap>
+          {popoverContent}
+        </FocusTrap>
+      )}
     </BodyPortal>
   );
 };

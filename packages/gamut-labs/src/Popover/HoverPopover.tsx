@@ -78,6 +78,7 @@ export const HoverPopover: React.FC<HoverPopoverProps> = ({
             targetRef={targetRef}
             closePopover={onHoverOut}
             handleClickOutside={onHoverOut}
+            doNotTrapFocus
           >
             {children}
           </BasePopover>
