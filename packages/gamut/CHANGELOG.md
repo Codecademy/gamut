@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [37.6.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@37.5.2...@codecademy/gamut@37.6.0) (2021-09-20)
+
+
+### Features
+
+* **modal:** scrollable prop to Modal ([e9796d7](https://github.com/Codecademy/client-modules/commit/e9796d72c9f9f92c5535601e5559fd7709eaa176))
+
+
+
 ### [37.5.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@37.5.1...@codecademy/gamut@37.5.2) (2021-09-16)
 
 
