@@ -58,7 +58,7 @@ export const AccordionArea: React.FC<AccordionAreaProps> = ({
         initial={expanded ? 'expanded' : 'folded'}
         animate={expanded ? 'expanded' : 'folded'}
         variants={variants}
-        transition={{ duration: transitionDuration, ease: 'easeInOut' }}
+        transition={{ duration: 0.2, ease: 'easeInOut' }}
       >
         {(expanded || delayExpanded) && children}
       </StyledAccordionBody>

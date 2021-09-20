@@ -8,13 +8,11 @@ const listVariants = variant({
   base: {
     listStyleType: 'none',
     p: 0,
-    display: 'grid',
-    gridAutoRows: '1fr',
-    gridTemplateColumns: 'minmax(0, 1fr)',
+    display: 'flex',
+    flexDirection: 'column',
   },
   variants: {
     slat: {
-      border: 1,
       borderRadius: '2px',
       overflow: 'hidden',
     },
@@ -25,23 +23,19 @@ const listVariants = variant({
   },
 });
 
-const listStates = states({
-  scrollable: {
-    overflowX: 'auto',
-    maxWidth: 1,
-  },
-});
-
 export interface ListProps
-  extends StyleProps<typeof listStates>,
-    StyleProps<typeof listVariants> {}
+  extends StyleProps<typeof listVariants>,
+    StyleProps<typeof spacingVariants> {}
 
-export const ListEl = styled.ul<ListProps>(listVariants, listStates);
+export const ListEl = styled.ul<ListProps>(listVariants);
 
 const rowStates = states({
   scrollable: {
     minWidth: 'min-content',
     width: '100%',
+  },
+  expanded: {
+    flexDirection: { xs: 'column' },
   },
 });
 
@@ -60,24 +54,22 @@ const spacingVariants = variant({
 
 const rowVariants = variant({
   prop: 'variant',
-  base: {
-    py: { _: 8, xs: 0 },
-    display: { _: 'grid', xs: 'flex' },
-    gridAutoRows: 'minmax(1.5rem, max-content)',
-    gridTemplateColumns: 'minmax(0, 1fr) max-content',
-    flexDirection: { _: 'column', xs: 'row' },
-  },
   variants: {
     slat: {
       bg: 'background',
-      borderBottom: 1,
-      '&:last-child': {
-        borderBottom: 'none',
+      border: 1,
+      marginTop: '-1px',
+      marginBottom: '-1px',
+      '&:last-of-type': {
+        marginBottom: 0,
+      },
+      '&:first-of-type': {
+        marginTop: 0,
       },
     },
     table: {
       bg: 'background',
-      '&:nth-child(2n)': {
+      '&:nth-child(2n - 1)': {
         bg: 'background-selected',
       },
     },
@@ -91,10 +83,36 @@ const rowVariants = variant({
 
 export interface RowProps
   extends StyleProps<typeof rowVariants>,
-    StyleProps<typeof spacingVariants> {}
+    StyleProps<typeof spacingVariants>,
+    StyleProps<typeof rowStates> {}
 
 export const RowEl = styled.li<RowProps>(
+  css({
+    py: { _: 8, xs: 0 },
+    display: { _: 'grid', xs: 'flex' },
+    gridAutoRows: 'minmax(1.5rem, max-content)',
+    gridTemplateColumns: 'minmax(0, 1fr) max-content',
+    flexDirection: { _: 'column', xs: 'row' },
+    bg: 'inherit',
+  }),
   rowVariants,
+  spacingVariants,
+  rowStates
+);
+
+export interface HeaderProps
+  extends StyleProps<typeof spacingVariants>,
+    StyleProps<typeof rowStates> {}
+
+export const HeaderEl = styled.div<HeaderProps>(
+  css({
+    display: 'flex',
+    position: 'sticky',
+    top: 0,
+    bg: 'background-current',
+    zIndex: 2,
+    fontFamily: 'accent',
+  }),
   spacingVariants,
   rowStates
 );
@@ -117,6 +135,9 @@ const columnType = variant({
       },
       gridColumn: 2,
       gridRow: 1,
+    },
+    expand: {
+      minWidth: 'min-content',
     },
   },
 });
@@ -168,6 +189,22 @@ const columnStates = states({
     left: 0,
     zIndex: 1,
     bg: 'inherit',
+    '&:not(:first-of-type)': {
+      left: { xs: 16 },
+      overflow: 'visible',
+    },
+    '&:not(:first-of-type):before': {
+      display: { _: 'none', xs: 'block' },
+      content: '""',
+      bg: 'inherit',
+      left: -16,
+      height: 1,
+      width: 16,
+      position: 'absolute',
+    },
+  },
+  ghost: {
+    visibility: 'hidden',
   },
 });
 
@@ -194,6 +231,7 @@ const columnSpacing = variant({
 
 export interface ColProps
   extends StyleProps<typeof columnSizes>,
+    StyleProps<typeof columnSpacing>,
     StyleProps<typeof columnType>,
     StyleProps<typeof columnStates>,
     StyleProps<typeof columnJustify> {}
@@ -209,6 +247,27 @@ export const ColEl = styled.div<ColProps>(
   columnSpacing,
   columnSizes,
   columnType,
+  columnStates,
+  columnJustify
+);
+
+export interface ColHeaderProps
+  extends StyleProps<typeof columnSizes>,
+    StyleProps<typeof columnSpacing>,
+    StyleProps<typeof columnStates>,
+    StyleProps<typeof columnJustify> {}
+
+export const ColHeader = styled.div<ColHeaderProps>(
+  css({
+    display: 'inline-flex',
+    gap: 4,
+    alignItems: 'center',
+    position: 'relative',
+    cursor: 'pointer',
+    userSelect: 'none',
+  }),
+  columnSpacing,
+  columnSizes,
   columnStates,
   columnJustify
 );

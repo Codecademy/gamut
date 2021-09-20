@@ -1,0 +1,60 @@
+import { DataList } from '@codecademy/gamut';
+import title from '@codecademy/macros/lib/title.macro';
+import { PropsTable } from '@codecademy/storybook-addon-variance';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+
+import { DataListTemplate } from './examples.tsx';
+
+<Meta
+  title={title}
+  component={DataList}
+  parameters={{
+    subtitle: 'Render lists of content with sorting and selection',
+    source: 'gamut',
+    status: 'current',
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/file/',
+    },
+  }}
+  args={{
+    idKey: 'name',
+    query: { sort: { name: 'desc', role: 'asc' } },
+    rows: [
+      { name: 'Jean Luc Picard', role: 'Captain', ship: 'USS Enterprise' },
+      {
+        name: 'Wesley Crusher',
+        role: 'Deus Ex Machina',
+        ship: 'USS Enterprise',
+      },
+      {
+        name: 'Geordie LaForge',
+        role: 'Chief Engineer / Rascal',
+        ship: 'Borg Cube',
+      },
+      {
+        name: 'Data',
+        role: 'Lt. Commander / Scamp',
+        ship: 'He is a ship',
+      },
+    ],
+    columns: [
+      { label: 'Name', key: 'name', size: 'lg', queryType: 'sort' },
+      { label: 'Rank', key: 'role', size: 'lg', queryType: 'sort' },
+      { label: 'Ship', key: 'ship', size: 'lg', queryType: 'sort', fill: true },
+    ],
+    selectedRows: ['Jean Luc Picard'],
+    expandedRows: ['Geordie LaForge'],
+    variant: 'table',
+    spacing: 'condensed',
+    renderExpanded: ({ name }) => <>{name}: This is pretty cool</>,
+  }}
+/>
+
+<Canvas>
+  <Story name="Kitchen Sink">{DataListTemplate.bind({})}</Story>
+</Canvas>
+
+<Story name="DataList">{(args) => <DataList {...args} />}</Story>
+
+<PropsTable story="DataList" />
