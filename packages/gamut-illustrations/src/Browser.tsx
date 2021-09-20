@@ -16,6 +16,7 @@ export const Browser: React.FC<IllustrationProps> = ({
     xmlns="http://www.w3.org/2000/svg"
     xmlnsXlink="http://www.w3.org/1999/xlink"
   >
+    <title>Browser Illustration</title>
     <rect width="80" height="60" fill="white" />
     <path
       d="M70 5H10V55.3278H70V5Z"

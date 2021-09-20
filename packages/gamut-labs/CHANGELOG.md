@@ -3,6 +3,104 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [20.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@20.0.3...@codecademy/gamut-labs@20.1.0) (2021-09-17)
+
+
+### Features
+
+* **GlobalHeader, GlobalFooter:** Learner stories link in global footer and global header ([d202a3f](https://github.com/Codecademy/client-modules/commit/d202a3ff53f631ae2e5e8dd6a74c98cafed5bfb8))
+
+
+
+### [20.0.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@20.0.2...@codecademy/gamut-labs@20.0.3) (2021-09-16)
+
+
+### Bug Fixes
+
+* **Testimonial:** aria-label on Anchor  ([4b9a0a6](https://github.com/Codecademy/client-modules/commit/4b9a0a6d467f45d4531dcd046145a8634b222603))
+
+
+
+### [20.0.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@20.0.1...@codecademy/gamut-labs@20.0.2) (2021-09-16)
+
+
+### Bug Fixes
+
+* **NotificationList:** a11y improvements ([da9c7ee](https://github.com/Codecademy/client-modules/commit/da9c7ee9219983be2b669426e9e09ed262e8a504))
+
+
+
+### [20.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@20.0.0...@codecademy/gamut-labs@20.0.1) (2021-09-15)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+## [20.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.26.7...@codecademy/gamut-labs@20.0.0) (2021-09-15)
+
+
+### ⚠ BREAKING CHANGES
+
+* **Avatar:** convert avatar sizes to using numbers over string enum
+
+### Features
+
+* **Avatar:** convert avatar sizes to using numbers over string enum ([a9a74fa](https://github.com/Codecademy/client-modules/commit/a9a74fa95e29addece2af1e39225d24c8f2e7315))
+
+
+
+### [19.26.7](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.26.6...@codecademy/gamut-labs@19.26.7) (2021-09-15)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [19.26.6](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.26.5...@codecademy/gamut-labs@19.26.6) (2021-09-14)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [19.26.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.26.4...@codecademy/gamut-labs@19.26.5) (2021-09-14)
+
+
+### Bug Fixes
+
+* Set HubCard Card variant ([815030d](https://github.com/Codecademy/client-modules/commit/815030d936421763934d74b3ee9c6a3144052cb7))
+
+
+
+### [19.26.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.26.3...@codecademy/gamut-labs@19.26.4) (2021-09-14)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [19.26.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.26.2...@codecademy/gamut-labs@19.26.3) (2021-09-13)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [19.26.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.26.1...@codecademy/gamut-labs@19.26.2) (2021-09-13)
+
+
+### Bug Fixes
+
+* **Testimonial:** pass display prop to Anchor if href is defined ([b62e2dc](https://github.com/Codecademy/client-modules/commit/b62e2dc58ea6b807011b6cf1d9baa7f4f84b8a04))
+
+
+
 ### [19.26.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@19.26.0...@codecademy/gamut-labs@19.26.1) (2021-09-10)
 
 **Note:** Version bump only for package @codecademy/gamut-labs
