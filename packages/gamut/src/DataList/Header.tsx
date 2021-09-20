@@ -4,9 +4,19 @@ import {
 } from '@codecademy/gamut-icons';
 import { states } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
-import React, { ComponentProps } from 'react';
+import React, { ComponentProps, useState } from 'react';
 
-import { Checkbox, FlexBox, IconButton, ListHeader, Text } from '..';
+import {
+  Box,
+  Checkbox,
+  FlexBox,
+  FocusTrap,
+  IconButton,
+  ListHeader,
+  Menu,
+  MenuItem,
+  Text,
+} from '..';
 import { ColHeader } from '../List/elements';
 import { useListContext } from '../List/ListProvider';
 import { ColumnConfig, Query, SortDirection } from './types';
@@ -60,6 +70,93 @@ const SortControl: React.FC<SortControlProps> = ({
         <SortIcon asc size={9} disabled={direction !== 'asc'} />
         <SortIcon size={9} disabled={direction !== 'desc'} />
       </FlexBox>
+    </ColHeader>
+  );
+};
+
+interface FilterControlProps extends ComponentProps<typeof ColHeader> {
+  columnKey: string | symbol | number;
+  options?: string[];
+  filters?: string[];
+  onQuery: (
+    type: keyof Query<any>,
+    dimension: keyof any,
+    value: Query<any>[keyof Query<any>][string]
+  ) => void;
+}
+
+const getNextFilters = (option: string, filters: string[]) => {
+  if (filters.includes(option)) {
+    return filters.filter((filt) => filt !== option);
+  }
+  return [...filters, option];
+};
+
+const FilterControl: React.FC<FilterControlProps> = ({
+  columnKey,
+  filters = [],
+  onQuery,
+  options = [],
+  children,
+  ...rest
+}) => {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const menuProps = {
+    [rest?.justify || 'left']: 0,
+  };
+
+  return (
+    <ColHeader {...rest} onClick={() => setMenuOpen(true)}>
+      <Box position="relative">
+        {children}
+        {menuOpen && (
+          <Box position="absolute" top={24} {...menuProps} zIndex={0}>
+            <FocusTrap
+              onClickOutside={() => setMenuOpen(false)}
+              onEscapeKey={() => setMenuOpen(false)}
+            >
+              <Menu
+                spacing="condensed"
+                maxHeight={300}
+                overflowY="auto"
+                width={300}
+                variant="action"
+              >
+                {[...options].map((opt) => {
+                  const id = `${opt}-${String(columnKey)}`;
+
+                  const optionSelected = filters.includes(opt);
+                  const onClick = () => {
+                    onQuery('filter', columnKey, getNextFilters(opt, filters));
+                  };
+
+                  return (
+                    <MenuItem key={opt}>
+                      <Checkbox
+                        htmlFor={id}
+                        name={id}
+                        onClick={onClick}
+                        label={
+                          <Text
+                            variant="p-small"
+                            fontFamily="base"
+                            alignSelf="center"
+                          >
+                            {opt}
+                          </Text>
+                        }
+                        spacing="tight"
+                        checked={optionSelected}
+                      />
+                    </MenuItem>
+                  );
+                })}
+              </Menu>
+            </FocusTrap>
+          </Box>
+        )}
+      </Box>
+      <MiniChevronDownIcon ml={4} size={10} />
     </ColHeader>
   );
 };
@@ -133,6 +230,24 @@ export function DataHeader<Cols extends ColumnConfig<any>[]>({
               </SortControl>
             );
           }
+          case 'filter': {
+            const columnFilter = query?.filter?.[key as string];
+
+            return (
+              <FilterControl
+                key={renderKey}
+                spacing={spacing}
+                sticky={sticky}
+                columnKey={key}
+                onQuery={onQuery}
+                {...colProps}
+                filters={columnFilter}
+              >
+                {columnText}
+              </FilterControl>
+            );
+          }
+
           default: {
             return (
               <ColHeader

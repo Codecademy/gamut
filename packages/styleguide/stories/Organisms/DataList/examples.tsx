@@ -1,25 +1,24 @@
 import { ColumnConfig, DataList } from '@codecademy/gamut';
 import { Background } from '@codecademy/gamut-styles';
-import { orderBy } from 'lodash';
+import { orderBy, uniq } from 'lodash';
 import React, { useMemo, useState } from 'react';
 
 const columns = [
   { label: 'Name', key: 'name', size: 'lg', queryType: 'sort', type: 'header' },
   { label: 'Rank', key: 'role', size: 'lg', queryType: 'sort' },
-  { label: 'Ship', key: 'ship', size: 'xl', queryType: 'sort' },
+  { label: 'Ship', key: 'ship', size: 'xl', queryType: 'filter' },
   {
     label: 'Power',
     key: 'power',
     size: 'xl',
     fill: true,
-    queryType: 'sort',
   },
   {
     label: 'Species',
     key: 'species',
     size: 'lg',
     justify: 'right',
-    queryType: 'sort',
+    queryType: 'filter',
   },
 ] as ColumnConfig<typeof rows[number]>[];
 
@@ -120,14 +119,41 @@ export const DataListTemplate = (args: any) => {
   >([]);
   const [query, setQuery] = useState<any>({
     sort: {},
+    filter: {},
   });
 
+  const columnsWithOptions = useMemo(() => {
+    return columns.map((col) => {
+      if (col.queryType === 'filter') {
+        return {
+          ...col,
+          options: uniq(rows.map(({ [col.key]: opt }) => opt)),
+        };
+      }
+      return col;
+    });
+  }, []);
+
   const sortedRows = useMemo(() => {
-    const { sort } = query;
+    const { sort, filter } = query;
+    const filterDimensions = Object.entries(filter);
+
+    const filteredRows = rows.filter((row) => {
+      if (filterDimensions.length === 0) return true;
+      for (const [key, value] of filterDimensions) {
+        if ((value as string[]).length > 0) {
+          if (!(value as string[]).includes(row[key as keyof typeof row])) {
+            return false;
+          }
+        }
+      }
+      return true;
+    });
+
     const dimensions = Object.keys(sort);
     const directions = Object.values(sort);
     const nextRows = orderBy(
-      rows,
+      filteredRows,
       dimensions.map((key: keyof typeof rows[number]) => ({ [key]: val }) =>
         val.toLowerCase()
       ),
@@ -137,11 +163,11 @@ export const DataListTemplate = (args: any) => {
   }, [query]);
 
   return (
-    <Background bg="white" maxHeight={500} overflowY="auto">
+    <Background bg="white" height={600} overflowY="auto">
       <DataList
         idKey="name"
         rows={sortedRows}
-        columns={columns}
+        columns={columnsWithOptions}
         selectedRows={selectedRows}
         onRowSelect={setSelectedRows}
         expandedRows={expandedRows}

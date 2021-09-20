@@ -20,6 +20,7 @@ export interface ColumnConfig<T> {
   size?: ListColProps['size'];
   render?: (row: T) => ReactElement<any, any> | null;
   queryType?: keyof Query<T>;
+  options?: string[];
   fill?: boolean;
 }
 

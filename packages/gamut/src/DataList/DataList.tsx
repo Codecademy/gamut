@@ -65,20 +65,23 @@ export function DataList<
   scrollable = true,
 }: DataListProps<Rows, IdKey, Ids, Cols>) {
   const allSelected = rows.length === selectedRows?.length;
+
   const computedColumns = useColumns(columns, !!onRowExpand, !!onRowSelect);
 
   const onQuery = useCallback(
     (
       type: keyof Query<Rows>,
       dimension: keyof Rows,
-      value: Query<Rows>[keyof Query<Rows>]
+      value:
+        | Query<Rows>[keyof Query<Rows>][keyof Rows]
+        | Query<Rows>[keyof Query<Rows>]
     ) => {
-      if (type === 'sort' && value === 'none') {
+      if (value === 'none') {
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        const { [dimension]: omit, ...nextSort } = query?.sort;
+        const { [dimension]: omit, ...nextQuery } = query?.[type];
         onQueryChange?.({
           ...query,
-          sort: nextSort,
+          [type]: nextQuery,
         } as any);
       } else {
         onQueryChange?.({
