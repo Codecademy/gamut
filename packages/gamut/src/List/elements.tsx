@@ -123,6 +123,7 @@ const columnType = variant({
   variants: {
     header: {
       gridColumn: 1,
+      fontWeight: 700,
     },
     content: {
       gridColumnEnd: 'span 2',
