@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.12.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@5.11.0...@codecademy/gamut-icons@5.12.0) (2021-09-20)
+
+
+### Features
+
+* **icon:** StarCircleIcon ([d3fa9f3](https://github.com/Codecademy/client-modules/commit/d3fa9f3b15d09e2d9518ad9742a504183da9eb29))
+* **icons:** full suite of mini-arrows ([d08cf7e](https://github.com/Codecademy/client-modules/commit/d08cf7e3ed9f08420383df4ab51b488fbe043536))
+
+
+
 ## [5.11.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@5.10.1...@codecademy/gamut-icons@5.11.0) (2021-09-20)
 
 

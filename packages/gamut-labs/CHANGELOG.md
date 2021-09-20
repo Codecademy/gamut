@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [20.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@20.1.2...@codecademy/gamut-labs@20.2.0) (2021-09-20)
+
+
+### Features
+
+* **LayoutMenu:** additional links section above accordions ([ca95ae7](https://github.com/Codecademy/client-modules/commit/ca95ae7cd4f76b079530cad4984d2a1825f51cfb))
+
+
+
 ### [20.1.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@20.1.1...@codecademy/gamut-labs@20.1.2) (2021-09-20)
 
 **Note:** Version bump only for package @codecademy/gamut-labs
