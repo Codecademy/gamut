@@ -65,7 +65,7 @@ export type AvatarBaseProps = {
   /**
    * Size of the Avatar.
    */
-  size?: ResponsiveProp<32 | 48 | 64 | 118>;
+  size?: ResponsiveProp<24 | 32 | 40 | 48 | 64 | 118>;
 
   /**
    * Overrides styles on the Avatar container.

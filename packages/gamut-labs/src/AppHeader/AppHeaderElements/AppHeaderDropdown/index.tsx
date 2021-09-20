@@ -1,12 +1,12 @@
-import { Box } from '@codecademy/gamut';
+import { Box, IconButton } from '@codecademy/gamut';
 import { ArrowChevronDownFilledIcon } from '@codecademy/gamut-icons';
 import styled from '@emotion/styled';
 import cx from 'classnames';
 import { AnimatePresence, motion } from 'framer-motion';
 import React, { useRef, useState } from 'react';
 
+import { Avatar } from '../../../Avatar';
 import { Popover } from '../../../Popover';
-import { AppHeaderAvatar } from '../AppHeaderAvatar';
 import { AppHeaderLinkSections } from '../AppHeaderLinkSections';
 import { focusStyles, hoverStyles, textButtonStyles } from '../SharedStyles';
 import { AppHeaderClickHandler, AppHeaderDropdownItem } from '../types';
@@ -14,15 +14,6 @@ import styles from './styles.module.scss';
 
 const AppHeaderTextTargetButton = styled.button`
   ${textButtonStyles}
-  ${hoverStyles}
-  ${focusStyles}
-`;
-
-const AppHeaderAvatarTargetButton = styled.button`
-  background-color: transparent;
-  border: transparent;
-  font-weight: normal;
-  padding: 2px 0;
   ${hoverStyles}
   ${focusStyles}
 `;
@@ -49,9 +40,14 @@ export const AppHeaderDropdown: React.FC<AppHeaderDropdownProps> = ({
   };
   const clickTarget =
     item.type === 'profile-dropdown' ? (
-      <AppHeaderAvatarTargetButton onClick={(event) => toggleIsOpen(event)}>
-        <AppHeaderAvatar imageUrl={item.avatar} />
-      </AppHeaderAvatarTargetButton>
+      <IconButton onClick={toggleIsOpen}>
+        <Avatar
+          src={item.avatar}
+          alt="User profile avatar"
+          disableDropshadow
+          size={40}
+        />
+      </IconButton>
     ) : (
       <AppHeaderTextTargetButton
         className={cx(styles.target, isOpen && styles.open)}
@@ -89,7 +85,7 @@ export const AppHeaderDropdown: React.FC<AppHeaderDropdownProps> = ({
         {isOpen && (
           <Popover
             align={item.type === 'profile-dropdown' ? 'right' : 'left'}
-            verticalOffset={item.type === 'profile-dropdown' ? 0 : -2}
+            verticalOffset={item.type === 'profile-dropdown' ? 4 : -2}
             outline
             isOpen={isOpen}
             onRequestClose={handleClose}

@@ -3,13 +3,13 @@ import { ArrowChevronRightIcon } from '@codecademy/gamut-icons';
 import styled from '@emotion/styled';
 import React from 'react';
 
-import { AppHeaderAvatar } from '../../AppHeader/AppHeaderElements/AppHeaderAvatar';
 import {
   focusStyles,
   hoverStyles,
   textButtonStyles,
 } from '../../AppHeader/AppHeaderElements/SharedStyles';
 import { AppHeaderDropdownItem } from '../../AppHeader/AppHeaderElements/types';
+import { Avatar } from '../../Avatar';
 
 export type AppHeaderSubMenuTargetProps = {
   item: AppHeaderDropdownItem;
@@ -44,7 +44,14 @@ export const AppHeaderSubMenuTarget: React.FC<AppHeaderSubMenuTargetProps> = ({
       const Icon = item.icon;
       return Icon && <Icon size={24} aria-hidden />;
     }
-    return <AppHeaderAvatar avatarSize={24} imageUrl={item.avatar} />;
+    return (
+      <Avatar
+        src={item.avatar}
+        alt="User profile avatar"
+        disableDropshadow
+        size={24}
+      />
+    );
   };
 
   return (
