@@ -7,13 +7,13 @@ import { pluralizeWithS } from './helpers';
 
 export type SubtitleProps = DifficultyProps & {
   scope: Record<string, number>;
-  showAltSubtitle: boolean;
+  showAltSubtitle?: boolean;
 };
 
 export const Subtitle: React.FC<SubtitleProps> = ({
   difficulty,
   scope,
-  showAltSubtitle,
+  showAltSubtitle = false,
 }) => {
   const scopeToMap = Object.keys(scope).filter((val) => scope[val] > 0);
 
@@ -21,19 +21,25 @@ export const Subtitle: React.FC<SubtitleProps> = ({
 
   return (
     <>
-      {!showAltSubtitle && <Difficulty difficulty={difficulty} />}
-      {!showAltSubtitle && scopeToMap.length ? separatingChar : null}
-      {scopeToMap.map((scopeType, index) => {
-        return (
-          <Text ml={4} variant="p-small" key={`${scopeType}-count`}>
-            <b>{scope[scopeType]}</b>{' '}
-            <Text textColor="gray-900">
-              {capitalize(pluralizeWithS(scopeType, scope[scopeType]))}
-            </Text>{' '}
-            {index < scopeToMap.length - 1 && separatingChar}
-          </Text>
-        );
-      })}
+      {!showAltSubtitle && (
+        <>
+          <Difficulty difficulty={difficulty} />
+          {scopeToMap.length ? separatingChar : null}
+        </>
+      )}
+      {scopeToMap.map((scopeType, index) => (
+        <Text
+          ml={showAltSubtitle && index === 0 ? 0 : 4}
+          variant="p-small"
+          key={`${scopeType}-count`}
+        >
+          <b>{scope[scopeType]}</b>{' '}
+          <Text textColor="gray-900">
+            {capitalize(pluralizeWithS(scopeType, scope[scopeType]))}
+          </Text>{' '}
+          {index < scopeToMap.length - 1 && separatingChar}{' '}
+        </Text>
+      ))}
     </>
   );
 };
