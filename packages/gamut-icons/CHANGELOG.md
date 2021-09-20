@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.11.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@5.10.1...@codecademy/gamut-icons@5.11.0) (2021-09-20)
+
+
+### Features
+
+* **icon:** Megaphone Icon ([a035cd1](https://github.com/Codecademy/client-modules/commit/a035cd104db58ae7799e39b26c0ed6c9050245fd))
+
+
+
 ### [5.10.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@5.10.0...@codecademy/gamut-icons@5.10.1) (2021-09-13)
 
 **Note:** Version bump only for package @codecademy/gamut-icons

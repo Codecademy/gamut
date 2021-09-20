@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [44.7.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@44.7.0...@codecademy/styleguide@44.7.1) (2021-09-20)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [44.7.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@44.6.6...@codecademy/styleguide@44.7.0) (2021-09-20)
+
+
+### Features
+
+* **modal:** scrollable prop to Modal ([e9796d7](https://github.com/Codecademy/client-modules/commit/e9796d72c9f9f92c5535601e5559fd7709eaa176))
+
+
+
 ### [44.6.6](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@44.6.5...@codecademy/styleguide@44.6.6) (2021-09-17)
 
 **Note:** Version bump only for package @codecademy/styleguide
