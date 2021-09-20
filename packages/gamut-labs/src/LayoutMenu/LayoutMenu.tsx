@@ -2,7 +2,8 @@ import { Box, Logo, StrokeButton } from '@codecademy/gamut';
 import React, { useRef } from 'react';
 
 import { Flyout } from '../Flyout';
-import { AccordionMenu, Section } from './AccordionMenu';
+import { AccordionMenu, Section, SectionItem } from './AccordionMenu';
+import { LayoutMenuSection } from './LayoutMenuSection';
 
 export type LayoutMenuProps = {
   /**
@@ -25,6 +26,10 @@ export type LayoutMenuProps = {
    * Breakpoint above which the menu button displays as a full sidebar
    */
   breakpoint?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+  /**
+   * An array of section items, each of which become an additional link on top of the accordion section.
+   */
+  topLinkSections?: SectionItem[];
 };
 
 export const LayoutMenu: React.FC<LayoutMenuProps> = ({
@@ -34,6 +39,7 @@ export const LayoutMenu: React.FC<LayoutMenuProps> = ({
   mobileButtonText,
   breakpoint = 'lg',
   children,
+  topLinkSections,
 }) => {
   const closeFlyoutRef = useRef<() => void>();
 
@@ -66,12 +72,28 @@ export const LayoutMenu: React.FC<LayoutMenuProps> = ({
         >
           <Box bg="white" minHeight={1} p={16}>
             <Logo mb={32} />
+            {topLinkSections && (
+              <LayoutMenuSection
+                items={topLinkSections}
+                onItemClick={closeFlyout}
+                selectedItem={selectedItem}
+                pb={32}
+              />
+            )}
             {accordionMenuSections}
             {children}
           </Box>
         </Flyout>
       </Box>
       <Box display={{ _: 'none', [breakpoint]: 'block' }}>
+        {topLinkSections && (
+          <LayoutMenuSection
+            items={topLinkSections}
+            onItemClick={closeFlyout}
+            selectedItem={selectedItem}
+            pb={32}
+          />
+        )}
         {accordionMenuSections}
         {children}
       </Box>
