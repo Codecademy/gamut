@@ -38,7 +38,7 @@ Array [
 ]
 `;
 
-exports[`parseSelectOptions creates an option list 3`] = `
+exports[`parseSelectOptions creates an option list as object 1`] = `
 Array [
   Object {
     "key": "test-val",
@@ -53,7 +53,7 @@ Array [
 ]
 `;
 
-exports[`parseSelectOptions creates an option list 4`] = `
+exports[`parseSelectOptions creates an option list as object without generated labels 1`] = `
 Array [
   Object {
     "label": "val",
