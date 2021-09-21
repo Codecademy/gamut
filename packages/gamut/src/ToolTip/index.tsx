@@ -35,29 +35,46 @@ const TargetContainer = styled.div`
   padding: 0;
 `;
 
+type BreakpointVisibility = MediaQueryMap<boolean>;
+
 type ToolTipContainerProps = {
-  alignment: ToolTipAlignment;
+  /**
+   * How to align the tooltip relative to the target.
+   */
+  alignment?: ToolTipAlignment;
+
+  /**
+   * Dictionary describing breakpoints in which the tool tip children should be hidden overriding regular showing behavior.
+   * Default is to be visible at all widths.
+   */
+  breakpointVisibility?: BreakpointVisibility;
+
   mode: ColorModes;
-  hideBreakpoints?: HideBreakpoints;
 };
 
-const toolTipIsVisibleCSS = `
+const getToolTipVisibilityCSS = (visibility: boolean) =>
+  visibility
+    ? `
   opacity: 1;
   visibility: visible;
+`
+    : `
+  opacity: 0;
+  visibility: hidden;
 `;
 
 const ToolTipContainer = styled.div<ToolTipContainerProps>`
   ${fontSmoothPixel}
   display: flex;
-  opacity: 0;
   transition: opacity ${timing.fast};
   transition-delay: ${timing.fast};
   position: absolute;
   max-width: ${({ alignment }) =>
-    alignment.includes('center') ? '8rem' : '16rem'};
-  visibility: hidden;
+    alignment?.includes('center') ? '8rem' : '16rem'};
   width: 70vw;
   z-index: 1;
+
+  ${getToolTipVisibilityCSS(false)}
 
   &::after {
     content: '';
@@ -83,19 +100,23 @@ const ToolTipContainer = styled.div<ToolTipContainerProps>`
   ${TargetContainer}:hover + &,
   ${TargetContainer}:focus-within + &,
   &:hover {
-    ${({ theme, hideBreakpoints }) =>
-      hideBreakpoints &&
-      Object.keys(hideBreakpoints).map(
-        (key: keyof HideBreakpoints) =>
-          !hideBreakpoints[key] &&
-          (key === '_'
-            ? toolTipIsVisibleCSS
-            : `${theme.breakpoints[key]} { ${toolTipIsVisibleCSS} }`)
+    ${({ theme, breakpointVisibility }) =>
+      breakpointVisibility &&
+      Object.keys(breakpointVisibility).map(
+        (key: keyof BreakpointVisibility) => {
+          const isVisible = breakpointVisibility[key];
+          return key === '_'
+            ? getToolTipVisibilityCSS(isVisible ?? true) // default to shown
+            : typeof isVisible !== 'undefined' &&
+                `${theme.breakpoints[key]} { ${getToolTipVisibilityCSS(
+                  isVisible
+                )} }`;
+        }
       )}
   }
 
   ${({ alignment }) =>
-    alignment.includes('top') &&
+    alignment?.includes('top') &&
     `
       bottom: 100%;
       padding-bottom: ${containerOffsetVertical};
@@ -108,7 +129,7 @@ const ToolTipContainer = styled.div<ToolTipContainerProps>`
     `}
 
   ${({ alignment }) =>
-    alignment.includes('bottom') &&
+    alignment?.includes('bottom') &&
     `
       top: 100%;
       padding-top: ${containerOffsetVertical};
@@ -121,7 +142,7 @@ const ToolTipContainer = styled.div<ToolTipContainerProps>`
     `}
 
 ${({ alignment }) =>
-    alignment.includes('center') &&
+    alignment?.includes('center') &&
     `
       left: calc(50% - 4rem);
 
@@ -131,7 +152,7 @@ ${({ alignment }) =>
     `}
 
   ${({ alignment }) =>
-    alignment.includes('left') &&
+    alignment?.includes('left') &&
     `
       justify-content: flex-end;
 
@@ -143,7 +164,7 @@ ${({ alignment }) =>
     `}
 
   ${({ alignment }) =>
-    alignment.includes('right') &&
+    alignment?.includes('right') &&
     `
       &::after {
         left: 1.5rem;
@@ -160,7 +181,7 @@ const ToolTipBody = styled(Box)<ToolTipContainerProps>`
   font-size: ${pxRem(14)};
   line-height: ${lineHeight.base};
   ${({ alignment }) =>
-    alignment.includes('center')
+    alignment?.includes('center')
       ? `
       margin: auto;
       padding: 0.5rem;
@@ -188,14 +209,7 @@ const ToolTipBody = styled(Box)<ToolTipContainerProps>`
   })}
 `;
 
-type HideBreakpoints = MediaQueryMap<boolean>;
-
-export type ToolTipProps = {
-  /**
-   * How to align the tooltip relative to the target.
-   */
-  alignment?: ToolTipAlignment;
-
+export type ToolTipProps = ToolTipContainerProps & {
   children?: ReactNode;
 
   /**
@@ -217,11 +231,6 @@ export type ToolTipProps = {
    */
   focusable?: boolean;
 
-  /**
-   * Dictionary describing breakpoints in which the tool tip children should be hidden overriding regular showing behavior
-   */
-  hideBreakpoints?: HideBreakpoints;
-
   id: string;
   mode?: ColorModes;
   target?: ReactNode;
@@ -238,7 +247,7 @@ export const ToolTip: React.FC<ToolTipProps> = ({
   className,
   containerClassName,
   focusable,
-  hideBreakpoints,
+  breakpointVisibility,
   id,
   mode = 'light',
   target,
@@ -268,7 +277,7 @@ export const ToolTip: React.FC<ToolTipProps> = ({
         role="tooltip"
         mode={mode}
         aria-live="polite"
-        hideBreakpoints={hideBreakpoints}
+        breakpointVisibility={breakpointVisibility}
       >
         <ToolTipBody alignment={alignment} mode={mode} {...toolTipStyles}>
           {children}
