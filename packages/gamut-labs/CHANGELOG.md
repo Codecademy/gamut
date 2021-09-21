@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [21.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@20.2.0...@codecademy/gamut-labs@21.0.0) (2021-09-21)
+
+
+### ⚠ BREAKING CHANGES
+
+* **GlobalHeader:** mark visible notifications as read upon opening
+
+### Bug Fixes
+
+* **GlobalHeader:** mark visible notifications as read upon opening ([fe7b76b](https://github.com/Codecademy/client-modules/commit/fe7b76bd8d4e15f2b562954579d570a18faebeec))
+
+
+
 ## [20.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@20.1.2...@codecademy/gamut-labs@20.2.0) (2021-09-20)
 
 
