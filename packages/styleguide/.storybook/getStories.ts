@@ -6,6 +6,7 @@ const EXCLUDED_STORIES = [
   'Truncate',
   'Popover',
   'Coachmark',
+  'Flyout',
   'ModalDeprecated',
   'Props',
 ];
