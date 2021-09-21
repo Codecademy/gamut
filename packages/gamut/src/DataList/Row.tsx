@@ -1,15 +1,9 @@
-import { ArrowChevronDownIcon } from '@codecademy/gamut-icons';
-import { motion } from 'framer-motion';
 import React from 'react';
 
-import { Checkbox, IconButton, ListCol, ListRow, Text } from '..';
+import { Checkbox, ListCol, ListRow, Text } from '..';
 import { ExpandCol } from './Columns/ExpandCol';
+import { SelectCol } from './Columns/SelectCol';
 import { ColumnConfig } from './types';
-
-interface ExpandButtonProps {
-  expanded?: boolean;
-  onClick?: () => void;
-}
 
 interface DataRowProps<
   Rows,
@@ -66,18 +60,7 @@ export function DataRow<
       {columns.map(({ key, render, ...columnProps }) => {
         const columnKey = `${id}-col-${key}`;
         if (key === 'select') {
-          return (
-            <ListCol key={columnKey} {...columnProps}>
-              <Checkbox
-                spacing="tight"
-                label={<Text screenreader>Select Row {id}</Text>}
-                name={columnKey}
-                htmlFor={columnKey}
-                checked={selected}
-                onChange={() => onSelect?.(id)}
-              />
-            </ListCol>
-          );
+          return <SelectCol key={columnKey} id={id} onSelect={onSelect} />;
         }
         if (key === 'expand') {
           return (

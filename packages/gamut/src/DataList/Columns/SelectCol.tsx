@@ -3,9 +3,9 @@ import React from 'react';
 import { Checkbox, ListCol, Text } from '../..';
 
 export const SelectCol: React.FC<{
-  id: string;
+  id: any;
   selected?: boolean;
-  onSelect?: () => void;
+  onSelect?: (id?: any) => void;
 }> = ({ id, selected, onSelect }) => {
   const isHeader = id === 'header';
   const label = isHeader ? 'Select All Rows' : `Select ${id} Row`;
@@ -18,7 +18,7 @@ export const SelectCol: React.FC<{
         label={<Text screenreader>{label}</Text>}
         htmlFor={htmlId}
         checked={selected}
-        onChange={onSelect}
+        onChange={() => onSelect?.(id)}
       />
     </ListCol>
   );
