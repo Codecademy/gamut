@@ -49,7 +49,7 @@ type ToolTipContainerProps = {
    */
   breakpointVisibility?: BreakpointVisibility;
 
-  mode: ColorModes;
+  mode?: ColorModes;
 };
 
 const getToolTipVisibilityCSS = (visibility: boolean) =>
@@ -63,14 +63,14 @@ const getToolTipVisibilityCSS = (visibility: boolean) =>
   visibility: hidden;
 `;
 
-const ToolTipContainer = styled.div<ToolTipContainerProps>`
+const ToolTipContainer = styled.div<Required<ToolTipContainerProps>>`
   ${fontSmoothPixel}
   display: flex;
   transition: opacity ${timing.fast};
   transition-delay: ${timing.fast};
   position: absolute;
   max-width: ${({ alignment }) =>
-    alignment?.includes('center') ? '8rem' : '16rem'};
+    alignment.includes('center') ? '8rem' : '16rem'};
   width: 70vw;
   z-index: 1;
 
@@ -116,7 +116,7 @@ const ToolTipContainer = styled.div<ToolTipContainerProps>`
   }
 
   ${({ alignment }) =>
-    alignment?.includes('top') &&
+    alignment.includes('top') &&
     `
       bottom: 100%;
       padding-bottom: ${containerOffsetVertical};
@@ -129,7 +129,7 @@ const ToolTipContainer = styled.div<ToolTipContainerProps>`
     `}
 
   ${({ alignment }) =>
-    alignment?.includes('bottom') &&
+    alignment.includes('bottom') &&
     `
       top: 100%;
       padding-top: ${containerOffsetVertical};
@@ -142,7 +142,7 @@ const ToolTipContainer = styled.div<ToolTipContainerProps>`
     `}
 
 ${({ alignment }) =>
-    alignment?.includes('center') &&
+    alignment.includes('center') &&
     `
       left: calc(50% - 4rem);
 
@@ -152,7 +152,7 @@ ${({ alignment }) =>
     `}
 
   ${({ alignment }) =>
-    alignment?.includes('left') &&
+    alignment.includes('left') &&
     `
       justify-content: flex-end;
 
@@ -164,7 +164,7 @@ ${({ alignment }) =>
     `}
 
   ${({ alignment }) =>
-    alignment?.includes('right') &&
+    alignment.includes('right') &&
     `
       &::after {
         left: 1.5rem;
@@ -181,7 +181,7 @@ const ToolTipBody = styled(Box)<ToolTipContainerProps>`
   font-size: ${pxRem(14)};
   line-height: ${lineHeight.base};
   ${({ alignment }) =>
-    alignment?.includes('center')
+    alignment.includes('center')
       ? `
       margin: auto;
       padding: 0.5rem;
@@ -232,7 +232,6 @@ export type ToolTipProps = ToolTipContainerProps & {
   focusable?: boolean;
 
   id: string;
-  mode?: ColorModes;
   target?: ReactNode;
 
   toolTipStyles?: BoxProps;
@@ -243,11 +242,11 @@ export type ToolTipProps = ToolTipContainerProps & {
 
 export const ToolTip: React.FC<ToolTipProps> = ({
   alignment = 'top-right',
+  breakpointVisibility = {},
   children,
   className,
   containerClassName,
   focusable,
-  breakpointVisibility,
   id,
   mode = 'light',
   target,
