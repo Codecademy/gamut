@@ -4,6 +4,7 @@ import styled from '@emotion/styled';
 import React from 'react';
 
 import { FlexBox } from '../..';
+import { ButtonBase } from '../../ButtonBase';
 import { Query, SortDirection } from '..';
 
 const SortIcon = styled(ArrowChevronDownFilledIcon)(
@@ -43,16 +44,18 @@ export const SortControl: React.FC<SortControlProps> = ({
   children,
 }) => {
   return (
-    <FlexBox
+    <ButtonBase
       onClick={() =>
         onQuery('sort', columnKey, getNextSortDirection(direction))
       }
     >
-      {children}
-      <FlexBox column height={24} width={16} center>
-        <SortIcon asc size={9} disabled={direction !== 'asc'} />
-        <SortIcon size={9} disabled={direction !== 'desc'} />
+      <FlexBox alignItems="center" gap={4}>
+        {children}
+        <FlexBox column width={16}>
+          <SortIcon asc size={9} disabled={direction !== 'asc'} />
+          <SortIcon size={9} disabled={direction !== 'desc'} />
+        </FlexBox>
       </FlexBox>
-    </FlexBox>
+    </ButtonBase>
   );
 };

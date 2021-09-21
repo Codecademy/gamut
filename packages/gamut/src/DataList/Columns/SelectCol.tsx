@@ -4,8 +4,8 @@ import { Checkbox, ListCol, Text } from '../..';
 
 export const SelectCol: React.FC<{
   id: string;
-  selected: boolean;
-  onSelect: () => void;
+  selected?: boolean;
+  onSelect?: () => void;
 }> = ({ id, selected, onSelect }) => {
   const isHeader = id === 'header';
   const label = isHeader ? 'Select All Rows' : `Select ${id} Row`;

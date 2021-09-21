@@ -207,6 +207,10 @@ const columnStates = states({
   ghost: {
     visibility: 'hidden',
   },
+  columnHeader: {
+    fontWeight: 400,
+    overflow: 'visible',
+  },
 });
 
 const columnSpacing = variant({

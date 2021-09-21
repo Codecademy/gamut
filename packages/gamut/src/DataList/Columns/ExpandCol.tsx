@@ -6,22 +6,21 @@ import { IconButton, ListCol } from '../..';
 
 export interface ExpandColProps {
   expanded?: boolean;
-  onClick?: () => void;
+  onExpand?: (id: any) => void;
   ghost?: boolean;
-  id?: string;
+  id?: any;
 }
 
 export const ExpandCol: React.FC<ExpandColProps> = ({
   id,
   expanded,
-  onClick,
+  onExpand,
   ghost,
 }) => (
-  <ListCol size="content" ghost>
+  <ListCol size="content" ghost aria-hidden={ghost}>
     <IconButton
       size="smalls"
-      onClick={() => onClick?.()}
-      aria-hidden={ghost}
+      onClick={() => onExpand?.(id)}
       aria-label={`Expand ${id} Row`}
     >
       <motion.div

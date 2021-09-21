@@ -3,26 +3,13 @@ import { motion } from 'framer-motion';
 import React from 'react';
 
 import { Checkbox, IconButton, ListCol, ListRow, Text } from '..';
+import { ExpandCol } from './Columns/ExpandCol';
 import { ColumnConfig } from './types';
 
 interface ExpandButtonProps {
   expanded?: boolean;
   onClick?: () => void;
 }
-
-const ExpandButton: React.FC<ExpandButtonProps> = ({ expanded, onClick }) => (
-  <IconButton size="smalls" onClick={() => onClick?.()}>
-    <motion.div
-      animate={expanded ? 'expanded' : 'collapsed'}
-      variants={{
-        expanded: { transform: 'translate(180deg)' },
-        collapsed: { transform: 'translate(0deg)' },
-      }}
-    >
-      <ArrowChevronDownIcon />
-    </motion.div>
-  </IconButton>
-);
 
 interface DataRowProps<
   Rows,
@@ -94,13 +81,12 @@ export function DataRow<
         }
         if (key === 'expand') {
           return (
-            <ListCol key={columnKey} {...columnProps}>
-              <ExpandButton
-                aria-label={`Expand row ${id}`}
-                expanded={expanded}
-                onClick={() => onExpand?.(id)}
-              />
-            </ListCol>
+            <ExpandCol
+              key={columnKey}
+              id={id}
+              expanded={expanded}
+              onExpand={onExpand}
+            />
           );
         }
 

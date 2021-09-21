@@ -1,8 +1,9 @@
-import { MiniChevronDownIcon } from '@codecademy/gamut-icons';
 import React from 'react';
 
-import { Checkbox, IconButton, ListHeader, Text } from '..';
+import { ListHeader } from '..';
 import { ListCol } from '../List/ListCol';
+import { ExpandCol } from './Columns/ExpandCol';
+import { SelectCol } from './Columns/SelectCol';
 import { FilterControl } from './Controls/FilterControl';
 import { SortControl } from './Controls/SortControl';
 import { ColumnConfig, Query } from './types';
@@ -28,35 +29,23 @@ export function HeaderRow<Cols extends ColumnConfig<any>[]>({
 }: HeaderRowProps<Cols>) {
   return (
     <ListHeader>
-      {columns.map(({ key, label, queryType, ...colProps }) => {
+      {columns.map(({ key, label, queryType, options, ...colProps }) => {
         const renderKey = `header-col-${String(key)}`;
         const columnText = label || key;
 
         if (key === 'select') {
           return (
-            <ListCol key={renderKey} size="content">
-              <Checkbox
-                spacing="tight"
-                label={<Text screenreader>Select All Rows</Text>}
-                htmlFor="select-all-rows"
-                checked={selected}
-                onChange={onSelect}
-              />
-            </ListCol>
+            <SelectCol id="header" selected={selected} onSelect={onSelect} />
           );
         }
         if (key === 'expand') {
-          return (
-            <ListCol aria-hidden key={renderKey} ghost {...colProps}>
-              <IconButton size="small" icon={MiniChevronDownIcon} />
-            </ListCol>
-          );
+          return <ExpandCol ghost />;
         }
         switch (queryType) {
           case 'sort': {
             const direction = query?.sort[key] || 'none';
             return (
-              <ListCol key={renderKey} {...colProps}>
+              <ListCol key={renderKey} {...colProps} columnHeader>
                 <SortControl
                   columnKey={key}
                   direction={direction}
@@ -71,11 +60,12 @@ export function HeaderRow<Cols extends ColumnConfig<any>[]>({
             const columnFilter = query?.filter?.[key as string];
 
             return (
-              <ListCol key={renderKey} {...colProps}>
+              <ListCol key={renderKey} {...colProps} columnHeader>
                 <FilterControl
                   columnKey={key}
                   onQuery={onQuery}
                   filters={columnFilter}
+                  options={options}
                 >
                   {columnText}
                 </FilterControl>
@@ -85,7 +75,7 @@ export function HeaderRow<Cols extends ColumnConfig<any>[]>({
 
           default: {
             return (
-              <ListCol key={renderKey} {...colProps}>
+              <ListCol key={renderKey} {...colProps} columnHeader>
                 {columnText}
               </ListCol>
             );
