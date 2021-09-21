@@ -24,19 +24,22 @@ export const ExpandCol: React.FC<ExpandColProps> = ({
       onClick={() => onExpand?.(id)}
       aria-label={`Expand ${id} Row`}
     >
-      <FlexBox center>
-        <motion.div
-          animate={expanded ? 'expanded' : 'collapsed'}
-          style={{ transformOrigin: 'center' }}
-          variants={{
-            expanded: { rotate: 180 },
-            collapsed: { rotate: 0 },
-          }}
-          transition={{ duration: 0.2, ease: 'easeInOut' }}
-        >
-          <ArrowChevronDownIcon />
-        </motion.div>
-      </FlexBox>
+      <motion.div
+        animate={expanded ? 'expanded' : 'collapsed'}
+        style={{
+          transformOrigin: 'center',
+          alignSelf: 'center',
+          height: 16,
+          width: 16,
+        }}
+        variants={{
+          expanded: { rotate: 180 },
+          collapsed: { rotate: 0 },
+        }}
+        transition={{ duration: 0.2, ease: 'easeInOut' }}
+      >
+        <ArrowChevronDownIcon />
+      </motion.div>
     </IconButton>
   </ListCol>
 );
