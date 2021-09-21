@@ -10,7 +10,7 @@ import { MediaQueryMap } from '@codecademy/variance';
 import styled from '@emotion/styled';
 import React, { ReactNode } from 'react';
 
-import { Box, BoxProps } from '..';
+import { Box, BoxProps } from '../Box';
 
 export type ToolTipAlignment =
   | 'bottom-center'
@@ -237,9 +237,6 @@ export type ToolTipProps = ToolTipContainerProps & {
 
   toolTipStyles?: BoxProps;
 };
-
-// don't show on mobile - really based on breakpoints
-// add tool tip styles - so we can override certain properties like padding. this will also fix the width
 
 export const ToolTip: React.FC<ToolTipProps> = ({
   alignment = 'top-right',
