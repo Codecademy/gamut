@@ -42,15 +42,26 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
   }}
 />
 
-## With title, desc, and CTA
-
 <Canvas>
-  <Story name="With Title, Desc, CTA">
-    {(args) => <PageVideoGallery {...args} />}
-  </Story>
+  <Story name="Video Gallery">{(args) => <PageVideoGallery {...args} />}</Story>
 </Canvas>
 
-<PropsTable story="With Title, Desc, CTA" />
+<PropsTable story="Video Gallery" />
+
+## Regular Button
+
+Pass `buttonType` as `regular` to show a regular `FillButton` instead of the larger `CTAButton`.
+
+<Canvas>
+  <Story name="Regular Button">
+    {(args) => (
+      <PageVideoGallery
+        {...args}
+        cta={{ ...args.cta, buttonType: 'regular' }}
+      />
+    )}
+  </Story>
+</Canvas>
 
 ## Gallery only
 

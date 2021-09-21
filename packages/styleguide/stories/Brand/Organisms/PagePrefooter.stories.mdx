@@ -42,10 +42,7 @@ Pass `buttonType` as `regular` to show a regular `FillButton` instead of the lar
 <Canvas>
   <Story name="Regular Button">
     {(args) => (
-      <PagePrefooter
-        {...args}
-        cta={{ text: 'Click Me', href: '#', buttonType: 'regular' }}
-      />
+      <PagePrefooter {...args} cta={{ ...args.cta, buttonType: 'regular' }} />
     )}
   </Story>
 </Canvas>

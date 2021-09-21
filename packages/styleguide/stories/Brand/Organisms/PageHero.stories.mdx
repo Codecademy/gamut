@@ -37,18 +37,26 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
   }}
 />
 
-## With CTA
-
 <Canvas>
-  <Story name="With CTA">{(args) => <PageHero {...args} />}</Story>
+  <Story name="Page Hero">{(args) => <PageHero {...args} />}</Story>
 </Canvas>
 
-<PropsTable story="With CTA" />
+<PropsTable story="Page Hero" />
 
-## Without CTA
+## Regular Button
 
 <Canvas>
-  <Story name="Without CTA">
+  <Story name="Regular Button">
+    {(args) => (
+      <PageHero {...args} cta={{ ...args.cta, buttonType: 'regular' }} />
+    )}
+  </Story>
+</Canvas>
+
+## Without Button
+
+<Canvas>
+  <Story name="Without Button">
     {(args) => <PageHero {...args} cta={undefined} />}
   </Story>
 </Canvas>
