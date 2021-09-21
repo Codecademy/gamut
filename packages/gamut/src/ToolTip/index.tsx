@@ -192,7 +192,6 @@ const ToolTipBody = styled(Box)<Required<ToolTipBodyProps>>`
       : `
       padding: 1rem;
     `}
-  min-width: 4rem;
 
   ${variant({
     prop: 'mode',
@@ -280,7 +279,12 @@ export const ToolTip: React.FC<ToolTipProps> = ({
         aria-live="polite"
         breakpointVisibility={breakpointVisibility}
       >
-        <ToolTipBody alignment={alignment} mode={mode} {...toolTipStyles}>
+        <ToolTipBody
+          alignment={alignment}
+          mode={mode}
+          minWidth="4rem"
+          {...toolTipStyles}
+        >
           {children}
         </ToolTipBody>
       </ToolTipContainer>
