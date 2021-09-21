@@ -107,12 +107,14 @@ const ToolTipContainer = styled.div<Required<ToolTipContainerProps>>`
       Object.keys(breakpointVisibility).map(
         (key: keyof BreakpointVisibility) => {
           const isVisible = breakpointVisibility[key];
-          return key === '_'
-            ? getToolTipVisibilityCSS(isVisible ?? true) // default to shown
-            : typeof isVisible !== 'undefined' &&
-                `${theme.breakpoints[key]} { ${getToolTipVisibilityCSS(
+          return (
+            typeof isVisible !== 'undefined' &&
+            (key === '_'
+              ? getToolTipVisibilityCSS(isVisible)
+              : `${theme.breakpoints[key]} { ${getToolTipVisibilityCSS(
                   isVisible
-                )} }`;
+                )} }`)
+          );
         }
       )}
   }
@@ -240,7 +242,7 @@ export type ToolTipProps = ToolTipContainerProps & {
 
 export const ToolTip: React.FC<ToolTipProps> = ({
   alignment = 'top-right',
-  breakpointVisibility = {},
+  breakpointVisibility = { _: true },
   children,
   className,
   containerClassName,
