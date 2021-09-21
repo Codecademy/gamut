@@ -3,6 +3,7 @@ import {
   Box,
   Card,
   ConnectedCheckbox,
+  ConnectedCustomInput,
   ConnectedForm,
   ConnectedFormGroup,
   ConnectedFormGroup2,
@@ -23,7 +24,7 @@ import { Keyhole } from '@codecademy/gamut-illustrations';
 import { DotDense } from '@codecademy/gamut-patterns';
 import { Background } from '@codecademy/gamut-styles';
 import { action } from '@storybook/addon-actions';
-import React, { useState } from 'react';
+import React, { InputHTMLAttributes, useState } from 'react';
 
 import { ColorModeExampleWrapper } from '../Foundations/ColorMode/examples';
 
@@ -488,6 +489,28 @@ export const HEYagain: React.FC = () => {
   );
 };
 
+const selectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+  console.log(event);
+};
+
+const inputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  console.log(event);
+
+  // do the rest here
+};
+
+const CustomInput = (props: InputHTMLAttributes<HTMLInputElement>) => {
+  return <input {...props} />;
+
+  // do the rest here
+};
+
+const CustomInput2 = React.forwardRef<HTMLInputElement>(({ ...rest }, ref) => {
+  return <input {...rest} ref={ref} />;
+
+  // do the rest here
+});
+
 export const HEY: React.FC = () => {
   return (
     <Background
@@ -554,16 +577,11 @@ export const HEY: React.FC = () => {
             </ConnectedFormGroup>
           </INeedSomeSpace>
           <INeedSomeSpace>
-            <ConnectedFormGroup
-              name="render-input"
-              label="render i am tre custom"
-              render={({ name, currentlyDisabled, register }) => (
-                <input
-                  name={name}
-                  disabled={currentlyDisabled}
-                  ref={register({ required: 'heyyyyyyyy...' })}
-                />
-              )}
+            hi
+            <ConnectedCustomInput
+              name="render-input-two"
+              component={CustomInput2}
+              validation={{ required: 'hey' }}
             />
           </INeedSomeSpace>
         </Box>
@@ -590,6 +608,7 @@ export const HEY: React.FC = () => {
                   },
                 },
                 options: ['zero', 'two', 'three'],
+                onChange: selectChange,
               }}
             />
             <ConnectedFormGroup2
@@ -603,6 +622,7 @@ export const HEY: React.FC = () => {
                     message: 'zero to hero',
                   },
                 },
+                onChange: inputChange,
               }}
             />
             <ConnectedFormGroup2

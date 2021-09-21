@@ -13,14 +13,7 @@ import {
 import { Anchor } from '../Anchor';
 import { HiddenText } from '../HiddenText';
 import { Markdown } from '../Markdown';
-import { ConnectedSelect } from './Inputs';
-import {
-  ConnectedBaseInputProps,
-  ConnectedBaseSelectProps,
-  ConnectedField,
-  ConnectedSelectProps,
-  renderField,
-} from './Inputs/types';
+import { ConnectedField, renderField } from './Inputs/types';
 import { useFieldContext } from './utils';
 
 const ErrorAnchor = styled(Anchor)(
@@ -53,6 +46,7 @@ export type ConnectedFormGroupProps2 = Omit<FormGroupProps, 'label'> &
 
 export const ConnectedFormGroup2: React.FC<ConnectedFormGroupProps2> = ({
   customError,
+  children,
   disabled,
   errorType = 'absolute',
   field,
@@ -88,6 +82,7 @@ export const ConnectedFormGroup2: React.FC<ConnectedFormGroupProps2> = ({
     >
       {hideLabel ? <HiddenText>{renderedLabel}</HiddenText> : renderedLabel}
       {renderField(field, name)}
+      {children}
       {(error || customError) && (
         <FormError
           role={isFirstError ? 'alert' : 'status'}

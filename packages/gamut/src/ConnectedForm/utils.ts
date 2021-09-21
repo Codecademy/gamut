@@ -47,6 +47,7 @@ export const useFormState = () => {
 };
 
 export const useFieldContext = (fieldName: string) => {
+  // eslint-disable-next-line @typescript-eslint/unbound-method
   const { control, errors, isDisabled, register, setValue } = useFormState();
 
   const error = errors[fieldName]?.message;
