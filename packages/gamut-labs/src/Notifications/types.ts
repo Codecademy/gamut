@@ -4,7 +4,7 @@ export type NotificationActions = {
   clear: () => void;
   click: (notification: Notification) => void;
   dismiss: (notification: Notification) => void;
-  read: (notification: Notification) => void;
+  read: (notifications: Notification[]) => void;
   track: (target: string) => void;
 };
 
