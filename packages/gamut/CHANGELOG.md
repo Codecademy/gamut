@@ -3,6 +3,66 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [37.6.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@37.6.1...@codecademy/gamut@37.6.2) (2021-09-20)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [37.6.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@37.6.0...@codecademy/gamut@37.6.1) (2021-09-20)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [37.6.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@37.5.2...@codecademy/gamut@37.6.0) (2021-09-20)
+
+
+### Features
+
+* **modal:** scrollable prop to Modal ([e9796d7](https://github.com/Codecademy/client-modules/commit/e9796d72c9f9f92c5535601e5559fd7709eaa176))
+
+
+
+### [37.5.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@37.5.1...@codecademy/gamut@37.5.2) (2021-09-16)
+
+
+### Bug Fixes
+
+* **NotificationList:** a11y improvements ([da9c7ee](https://github.com/Codecademy/client-modules/commit/da9c7ee9219983be2b669426e9e09ed262e8a504))
+
+
+
+### [37.5.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@37.5.0...@codecademy/gamut@37.5.1) (2021-09-15)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [37.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@37.4.1...@codecademy/gamut@37.5.0) (2021-09-15)
+
+
+### Features
+
+* **GridForm:** resetOnSubmit ([83be450](https://github.com/Codecademy/client-modules/commit/83be45087b3a66360011f92f3d4d86070f51e9d0))
+
+
+
+### [37.4.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@37.4.0...@codecademy/gamut@37.4.1) (2021-09-14)
+
+
+### Bug Fixes
+
+* **Markdown:** use empty content for li::before ([0082d0c](https://github.com/Codecademy/client-modules/commit/0082d0cb151d6474777e7cb5e4228498b357bc4e))
+
+
+
 ## [37.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@37.3.2...@codecademy/gamut@37.4.0) (2021-09-14)
 
 

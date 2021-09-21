@@ -37,8 +37,8 @@ export const NotificationBell: React.FC<NotificationBellProps> = ({
     <HeaderIconButton
       aria-label={
         unread
-          ? `Toggle Notification Menu, ${unread} notifications`
-          : 'Toggle Notification Menu'
+          ? `Toggle Notification Menu, ${unread} unread notifications`
+          : 'Toggle Notification Menu, no unread notifications'
       }
       icon={BellIcon}
       onClick={onClick}

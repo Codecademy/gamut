@@ -7,6 +7,7 @@ import { NotificationsContentsProps } from './types';
 export const useNotificationButtons = ({
   actions,
   notifications,
+  notificationListRef,
 }: NotificationsContentsProps) => {
   const [showMore, setShowMore] = useState(false);
   const [displayLimit, amountAdjective] = showMore
@@ -24,6 +25,7 @@ export const useNotificationButtons = ({
         onClick={() => {
           actions.clear();
           actions.track('notification_clear_all');
+          notificationListRef?.current?.focus();
         }}
         aria-label={`Clear all ${notifications.length} notifications`}
       >
