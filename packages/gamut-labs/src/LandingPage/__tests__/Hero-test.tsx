@@ -3,7 +3,7 @@ import { fireEvent } from '@testing-library/react';
 
 import { PageHero } from '..';
 
-const renderView = setupRtl(PageHero);
+const renderView = setupRtl(PageHero, { textLength: 'long' });
 
 describe('PageHero', () => {
   it('should render a title when one is provided', () => {

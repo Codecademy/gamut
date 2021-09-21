@@ -35,12 +35,12 @@ type ColumnLayout = {
 
 export type PageHeroProps = BaseProps & {
   media?: MediaProps;
-  variant: 'short' | 'long';
+  textLength: 'short' | 'long';
 };
 
 const getColumnLayout = (
   mediaType: 'image' | 'video' | undefined,
-  variant: PageHeroProps['variant']
+  textLength: PageHeroProps['textLength']
 ): ColumnLayout => {
   if (mediaType === 'video') {
     return {
@@ -49,7 +49,7 @@ const getColumnLayout = (
     };
   }
   if (mediaType === 'image') {
-    switch (variant) {
+    switch (textLength) {
       case 'long':
         return {
           left: 9,
@@ -73,11 +73,11 @@ export const PageHero: React.FC<PageHeroProps> = ({
   desc,
   cta,
   media,
-  variant,
+  textLength,
   testId,
   onAnchorClick,
 }) => {
-  const { right, left } = getColumnLayout(media?.type, variant);
+  const { right, left } = getColumnLayout(media?.type, textLength);
 
   return (
     <LayoutGrid data-testid={testId} rowGap={16} columnGap={{ _: 8, sm: 32 }}>
