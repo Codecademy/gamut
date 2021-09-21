@@ -251,24 +251,3 @@ export const ColEl = styled.div<ColProps>(
   columnStates,
   columnJustify
 );
-
-export interface ColHeaderProps
-  extends StyleProps<typeof columnSizes>,
-    StyleProps<typeof columnSpacing>,
-    StyleProps<typeof columnStates>,
-    StyleProps<typeof columnJustify> {}
-
-export const ColHeader = styled.div<ColHeaderProps>(
-  css({
-    display: 'inline-flex',
-    gap: 4,
-    alignItems: 'center',
-    position: 'relative',
-    cursor: 'pointer',
-    userSelect: 'none',
-  }),
-  columnSpacing,
-  columnSizes,
-  columnStates,
-  columnJustify
-);

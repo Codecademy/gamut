@@ -1,6 +1,5 @@
 import { ArrowChevronDownIcon } from '@codecademy/gamut-icons';
-import { css, states, transitionConcat } from '@codecademy/gamut-styles';
-import styled from '@emotion/styled';
+import { motion } from 'framer-motion';
 import React from 'react';
 
 import { Checkbox, IconButton, ListCol, ListRow, Text } from '..';
@@ -8,21 +7,21 @@ import { ColumnConfig } from './types';
 
 interface ExpandButtonProps {
   expanded?: boolean;
+  onClick?: () => void;
 }
 
-const ExpandButton = styled(IconButton)<ExpandButtonProps>(
-  css({
-    svg: {
-      transition: transitionConcat(['transform'], 'fast', 'linear'),
-    },
-  }),
-  states({
-    expanded: {
-      svg: {
-        transform: 'rotate(180deg)',
-      },
-    },
-  })
+const ExpandButton: React.FC<ExpandButtonProps> = ({ expanded, onClick }) => (
+  <IconButton size="smalls" onClick={() => onClick?.()}>
+    <motion.div
+      animate={expanded ? 'expanded' : 'collapsed'}
+      variants={{
+        expanded: { transform: 'translate(180deg)' },
+        collapsed: { transform: 'translate(0deg)' },
+      }}
+    >
+      <ArrowChevronDownIcon />
+    </motion.div>
+  </IconButton>
 );
 
 interface DataRowProps<
@@ -97,10 +96,7 @@ export function DataRow<
           return (
             <ListCol key={columnKey} {...columnProps}>
               <ExpandButton
-                ml={8}
-                size="small"
                 aria-label={`Expand row ${id}`}
-                icon={ArrowChevronDownIcon}
                 expanded={expanded}
                 onClick={() => onExpand?.(id)}
               />

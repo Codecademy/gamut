@@ -1,7 +1,7 @@
 import React, { ComponentProps, useCallback, useMemo } from 'react';
 
 import { List } from '../List';
-import { DataHeader } from './Header';
+import { HeaderRow } from './Header';
 import { DataRow } from './Row';
 import { ColumnConfig, Query } from './types';
 
@@ -44,6 +44,59 @@ const useColumns = <T extends ColumnConfig<any>[]>(
   }, [columns, isExpandable, isSelectable]);
 };
 
+const useSelectableRows = <
+  Rows,
+  IdKey extends keyof Rows,
+  Ids extends Rows[IdKey]
+>(
+  rows: Rows[],
+  selectedRows: Ids[],
+  idKey: IdKey,
+  onRowSelect?: (nextSelected: Ids[]) => void
+) => {
+  const allSelected = rows.length === selectedRows?.length;
+  const rowIds = rows.map(({ [idKey]: id }) => id as Ids);
+
+  const onSelect = useCallback(
+    (selectedId) => {
+      if (selectedRows.includes(selectedId)) {
+        onRowSelect?.(selectedRows.filter((id) => id !== selectedId));
+      } else {
+        onRowSelect?.([...selectedRows, selectedId]);
+      }
+    },
+    [selectedRows, onRowSelect]
+  );
+
+  const onSelectAll = useCallback(() => {
+    if (allSelected) {
+      onRowSelect?.([]);
+    } else {
+      onRowSelect?.(rowIds);
+    }
+  }, [rowIds, onRowSelect, allSelected]);
+
+  return { allSelected, onSelect, onSelectAll };
+};
+
+const useExpandableRows = <Ids extends any>(
+  expandedRows: Ids[],
+  onRowExpand?: (ids: Ids[]) => void
+) => {
+  const onExpand = useCallback(
+    (id: Ids) => {
+      if (expandedRows.includes(id)) {
+        onRowExpand?.(expandedRows.filter((expandedId) => expandedId !== id));
+      } else {
+        onRowExpand?.([...expandedRows, id]);
+      }
+    },
+    [expandedRows, onRowExpand]
+  );
+
+  return { onExpand };
+};
+
 export function DataList<
   Rows,
   IdKey extends keyof Rows,
@@ -64,9 +117,14 @@ export function DataList<
   spacing = 'condensed',
   scrollable = true,
 }: DataListProps<Rows, IdKey, Ids, Cols>) {
-  const allSelected = rows.length === selectedRows?.length;
-
   const computedColumns = useColumns(columns, !!onRowExpand, !!onRowSelect);
+  const { onSelect, onSelectAll, allSelected } = useSelectableRows(
+    rows,
+    selectedRows,
+    idKey,
+    onRowSelect
+  );
+  const { onExpand } = useExpandableRows(expandedRows, onRowExpand);
 
   const onQuery = useCallback(
     (
@@ -96,44 +154,13 @@ export function DataList<
     [onQueryChange, query]
   );
 
-  const onSelect = useCallback(
-    (selectedId) => {
-      if (selectedRows.includes(selectedId)) {
-        onRowSelect?.(selectedRows.filter((id) => id !== selectedId));
-      } else {
-        onRowSelect?.([...selectedRows, selectedId]);
-      }
-    },
-    [selectedRows, onRowSelect]
-  );
-
-  const onSelectAll = useCallback(() => {
-    if (allSelected) {
-      onRowSelect?.([]);
-    } else {
-      const allIds = rows.map(({ [idKey]: id }) => id) as Ids[];
-      onRowSelect?.(allIds);
-    }
-  }, [rows, onRowSelect, allSelected, idKey]);
-
-  const onExpand = useCallback(
-    (id) => {
-      if (expandedRows.includes(id)) {
-        onRowExpand?.(expandedRows.filter((expandedId) => expandedId !== id));
-      } else {
-        onRowExpand?.([...expandedRows, id]);
-      }
-    },
-    [expandedRows, onRowExpand]
-  );
-
   return (
     <List
       scrollable={scrollable}
       variant={variant}
       spacing={spacing}
       header={
-        <DataHeader
+        <HeaderRow
           columns={computedColumns}
           query={query}
           onQuery={onQuery}
