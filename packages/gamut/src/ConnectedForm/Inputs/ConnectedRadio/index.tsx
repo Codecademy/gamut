@@ -1,11 +1,8 @@
 import React from 'react';
 
-import { Radio, RadioProps } from '../../../Form';
+import { Radio } from '../../../Form';
 import { useFieldContext } from '../../utils';
-import { BaseConnectedInputProps } from '../types';
-
-export type ConnectedRadioProps = Omit<RadioProps, 'defaultValue' | 'name'> &
-  BaseConnectedInputProps;
+import { ConnectedRadioProps } from '../types';
 
 export const ConnectedRadio: React.FC<ConnectedRadioProps> = ({
   disabled,

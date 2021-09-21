@@ -2,15 +2,8 @@ import React from 'react';
 import { Controller } from 'react-hook-form';
 
 import { Checkbox } from '../../../Form';
-import { CheckboxProps } from '../../../Form/Inputs';
 import { useFieldContext } from '../../utils';
-import { BaseConnectedInputProps } from '../types';
-
-export type ConnectedCheckboxProps = Omit<
-  CheckboxProps,
-  'defaultValue' | 'name'
-> &
-  BaseConnectedInputProps;
+import { ConnectedCheckboxProps } from '../types';
 
 export const ConnectedCheckbox: React.FC<ConnectedCheckboxProps> = ({
   className,

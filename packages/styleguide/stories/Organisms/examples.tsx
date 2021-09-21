@@ -9,6 +9,7 @@ import {
   ConnectedInput,
   ConnectedRadio,
   ConnectedRadioGroup,
+  ConnectedRadioGroupInput,
   ConnectedSelect,
   ConnectedTextArea,
   FloatingCard,
@@ -576,7 +577,7 @@ export const HEY: React.FC = () => {
           borderRadius="10px"
         >
           <INeedSomeSpace>
-            "yo"
+            "you"
             <ConnectedFormGroup2
               name="render-select"
               label="render select ok"
@@ -602,6 +603,22 @@ export const HEY: React.FC = () => {
                     message: 'zero to hero',
                   },
                 },
+              }}
+            />
+            <ConnectedFormGroup2
+              name="render-radio"
+              label="render radio ok"
+              field={{
+                component: ConnectedRadioGroupInput,
+                validation: {
+                  required: 'hey...',
+                },
+                options: [
+                  { label: 'one', value: 'first' },
+                  { label: 'two', value: 'two' },
+                  { label: 'three', value: 'three' },
+                  { label: 'zilch', value: 'zero' },
+                ],
               }}
             />
           </INeedSomeSpace>

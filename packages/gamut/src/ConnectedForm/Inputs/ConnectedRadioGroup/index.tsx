@@ -1,14 +1,8 @@
 import React from 'react';
 
-import { RadioGroup, RadioGroupProps } from '../../../Form';
+import { RadioGroup } from '../../../Form';
 import { useFieldContext } from '../../utils';
-import { BaseConnectedInputProps } from '../types';
-
-export type ConnectedRadioGroupProps = Omit<
-  RadioGroupProps,
-  'defaultValue' | 'name'
-> &
-  BaseConnectedInputProps;
+import { ConnectedRadioGroupProps } from '../types';
 
 export const ConnectedRadioGroup: React.FC<ConnectedRadioGroupProps> = ({
   name,

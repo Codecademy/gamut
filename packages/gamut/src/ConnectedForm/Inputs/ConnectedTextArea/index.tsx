@@ -1,14 +1,8 @@
 import React from 'react';
 
-import { TextArea, TextAreaProps } from '../../../Form';
+import { TextArea } from '../../../Form';
 import { useFieldContext } from '../../utils';
-import { ConnectedFieldProps } from '../types';
-
-export type ConnectedTextAreaProps = Omit<
-  TextAreaProps,
-  'defaultValue' | 'name'
-> &
-  ConnectedFieldProps;
+import { ConnectedTextAreaProps } from '../types';
 
 export const ConnectedTextArea: React.FC<ConnectedTextAreaProps> = ({
   disabled,
