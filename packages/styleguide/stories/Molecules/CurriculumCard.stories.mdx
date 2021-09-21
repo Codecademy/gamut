@@ -10,8 +10,7 @@ import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/blocks';
     difficulty: 0,
     tag: 'Language Fluency',
     tagColor: 'blue',
-    scope: 'Lesson',
-    scopeCount: 25,
+    scope: { Lesson: 24 },
     text: 'Course',
   }}
   parameters={{
@@ -39,8 +38,8 @@ import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/blocks';
       title: 'Front-End Engineer',
       image:
         'https://static-assets.codecademy.com/components/curriculum/path/front-end-engineer-career-path/curriculum-card.svg',
-      scopeCount: 94,
       isFullSize: true,
+      scope: { Lesson: 94 },
       color: 'pink',
       tag: 'Job Essentials',
       showProLogo: true,
@@ -81,6 +80,26 @@ If `beta` is true, no other tag information will be rendered. In-progress and co
     name="Curriculum Card Beta"
     args={{
       beta: true,
+    }}
+  >
+    {(args) => <CurriculumCard {...args} />}
+  </Story>
+</Canvas>
+
+## Curriculum Card with Alternative Subtitle
+
+If `showAltSubtitle` is true, only the scope will render in the subtitle.
+
+<Canvas>
+  <Story
+    name="Curriculum Card Alternative Subtitle"
+    args={{
+      showAltSubtitle: true,
+      scope: {
+        Lesson: 25,
+        Quiz: 30,
+        article: 100,
+      },
     }}
   >
     {(args) => <CurriculumCard {...args} />}

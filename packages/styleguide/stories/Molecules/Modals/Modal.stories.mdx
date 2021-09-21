@@ -158,6 +158,32 @@ All of these methods default to true for accessibility reasons, and rely on sett
 
 </GridBox>
 
+## Scrollable
+
+<Canvas>
+  <Story
+    name="Scrollable"
+    args={{
+      title: undefined,
+      showCloseButton: false,
+      size: 'medium',
+      scrollable: true,
+      children: (
+        <FlexBox flexDirection="column">
+          <Box height="600px">
+            Hello, I'm a very large box... Try zooming in and you'll be able to
+            scroll down to the button!
+          </Box>
+          <FillButton>Better remember to put me in!</FillButton>
+        </FlexBox>
+      ),
+    }}
+    height="750px"
+  >
+    {(args) => <Modal {...args} />}
+  </Story>
+</Canvas>
+
 ### Code Playground
 
 Edit attributes and see what’s possible to do with this component or get the exact output you want.
