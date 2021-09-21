@@ -87,12 +87,21 @@ export const PageHero: React.FC<PageHeroProps> = ({
           sm: left,
         }}
       >
-        {eyebrow && (
-          <Text fontSize={{ _: 20, sm: 22 }} fontFamily="accent" mb={16}>
-            {eyebrow}
-          </Text>
+        {title && (
+          <Title isPageHeading>
+            {eyebrow && (
+              <Text
+                fontSize={{ _: 20, sm: 22 }}
+                fontFamily="accent"
+                mb={16}
+                display="block"
+              >
+                {eyebrow}
+              </Text>
+            )}
+            {title}
+          </Title>
         )}
-        {title && <Title isPageHeading>{title}</Title>}
         {desc && <Description text={desc} onAnchorClick={onAnchorClick} />}
         {cta && (
           <CTA href={cta.href} onCtaButtonClick={cta.onClick}>
