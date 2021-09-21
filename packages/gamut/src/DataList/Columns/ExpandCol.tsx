@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 import React from 'react';
 
 import { IconButton, ListCol } from '../..';
-import { FlexBox } from '../../Box';
 
 export interface ExpandColProps {
   expanded?: boolean;
