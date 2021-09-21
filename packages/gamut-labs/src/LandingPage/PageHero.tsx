@@ -1,16 +1,19 @@
-import { Column, ColumnProps, LayoutGrid, VideoProps } from '@codecademy/gamut';
-import styled from '@emotion/styled';
+import {
+  Box,
+  Column,
+  ColumnProps,
+  LayoutGrid,
+  Video,
+  VideoProps,
+} from '@codecademy/gamut';
 import React from 'react';
 
 import { CTA } from './CTA';
 import { Description } from './Description';
-import { PageHeroMedia } from './PageHeroMedia';
 import { Title } from './Title';
 import { BaseProps } from './types';
 
-const LeftColumn = styled(Column)`
-  align-content: center;
-`;
+const Image = Box.withComponent('img');
 
 export type ImageProps = {
   src: string;
@@ -32,26 +35,37 @@ type ColumnLayout = {
 
 export type PageHeroProps = BaseProps & {
   media?: MediaProps;
+  variant: 'short' | 'long';
 };
 
-const getColumnLayout = (media: MediaProps | undefined): ColumnLayout => {
-  switch (media?.type) {
-    case 'image':
-      return {
-        left: 9,
-        right: 3,
-      };
-    case 'video':
-      return {
-        left: 7,
-        right: 5,
-      };
-    default:
-      return {
-        left: 12,
-        right: 12,
-      };
+const getColumnLayout = (
+  mediaType: 'image' | 'video' | undefined,
+  variant: PageHeroProps['variant']
+): ColumnLayout => {
+  if (mediaType === 'video') {
+    return {
+      left: 7,
+      right: 5,
+    };
   }
+  if (mediaType === 'image') {
+    switch (variant) {
+      case 'long':
+        return {
+          left: 9,
+          right: 3,
+        };
+      case 'short':
+        return {
+          left: 6,
+          right: 6,
+        };
+    }
+  }
+  return {
+    left: 12,
+    right: 12,
+  };
 };
 
 export const PageHero: React.FC<PageHeroProps> = ({
@@ -59,19 +73,15 @@ export const PageHero: React.FC<PageHeroProps> = ({
   desc,
   cta,
   media,
+  variant,
   testId,
   onAnchorClick,
 }) => {
-  const { right, left } = getColumnLayout(media);
+  const { right, left } = getColumnLayout(media?.type, variant);
 
   return (
     <LayoutGrid data-testid={testId} rowGap={16} columnGap={{ _: 8, sm: 32 }}>
-      <LeftColumn
-        size={{
-          _: 12,
-          sm: left,
-        }}
-      >
+      <Column size={{ sm: left }} alignContent="flex-start">
         {title && <Title isPageHeading>{title}</Title>}
         {desc && <Description text={desc} onAnchorClick={onAnchorClick} />}
         {cta && (
@@ -79,8 +89,21 @@ export const PageHero: React.FC<PageHeroProps> = ({
             {cta.text}
           </CTA>
         )}
-      </LeftColumn>
-      {media && <PageHeroMedia media={media} size={right} />}
+      </Column>
+      {media && (
+        <Column size={{ sm: right }}>
+          {media.type === 'image' ? (
+            <Image
+              src={media.src}
+              alt={media.alt}
+              width={1}
+              display={{ _: 'none', sm: 'initial' }}
+            />
+          ) : (
+            <Video {...media} />
+          )}
+        </Column>
+      )}
     </LayoutGrid>
   );
 };
