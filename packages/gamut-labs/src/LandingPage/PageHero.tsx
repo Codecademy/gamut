@@ -1,4 +1,10 @@
-import { Column, ColumnProps, LayoutGrid, VideoProps } from '@codecademy/gamut';
+import {
+  Box,
+  Column,
+  ColumnProps,
+  LayoutGrid,
+  VideoProps,
+} from '@codecademy/gamut';
 import styled from '@emotion/styled';
 import React from 'react';
 
@@ -75,9 +81,11 @@ export const PageHero: React.FC<PageHeroProps> = ({
         {title && <Title isPageHeading>{title}</Title>}
         {desc && <Description text={desc} onAnchorClick={onAnchorClick} />}
         {cta && (
-          <CTA href={cta.href} onCtaButtonClick={cta.onClick}>
-            {cta.text}
-          </CTA>
+          <Box mt={32}>
+            <CTA href={cta.href} onCtaButtonClick={cta.onClick}>
+              {cta.text}
+            </CTA>
+          </Box>
         )}
       </LeftColumn>
       {media && <PageHeroMedia media={media} size={right} />}

@@ -107,9 +107,11 @@ export const PageFeatures: React.FC<PageFeaturesProps> = ({
       {title && <Title isPageHeading={false}>{title}</Title>}
       {desc && <Description text={desc} onAnchorClick={onAnchorClick} />}
       {cta && (
-        <CTA href={cta.href} onCtaButtonClick={cta.onClick}>
-          {cta.text}
-        </CTA>
+        <Box mt={32}>
+          <CTA href={cta.href} onCtaButtonClick={cta.onClick}>
+            {cta.text}
+          </CTA>
+        </Box>
       )}
     </div>
     <Box mt={16}>

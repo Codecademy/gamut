@@ -16,12 +16,16 @@ export type BaseProps = {
    * href: url to navigate to when clicking the button
    *
    * onClick: callback when the button is clicked
+   *
+   * buttonType: whether to show a CTA button or a regular fill button
    */
   cta?: {
     text: string;
     href: string;
     onClick?: React.MouseEventHandler;
+    buttonType?: 'cta' | 'regular';
   };
+
   testId?: string;
 };
 
