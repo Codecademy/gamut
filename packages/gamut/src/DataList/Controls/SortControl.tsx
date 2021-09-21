@@ -3,7 +3,7 @@ import { states } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React from 'react';
 
-import { Box, FlexBox } from '../..';
+import { FlexBox } from '../..';
 import { Query, SortDirection } from '..';
 
 const SortIcon = styled(ArrowChevronDownFilledIcon)(
