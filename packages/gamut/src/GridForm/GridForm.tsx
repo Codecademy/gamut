@@ -89,36 +89,36 @@ export function GridForm<Values extends FormValues>({
   cancel,
   children,
   columnGap = defaultColumnGap,
-  disableFieldsOnSubmit,
   fields = [],
-  onSubmit,
   rowGap = 16,
   submit,
   validation = 'onSubmit',
   showRequired = false,
-  wasSubmitSuccessful,
+  ...rest
 }: GridFormProps<Values>) {
   const flatFields = fields.flatMap((field) =>
     isGridFormSection(field) ? field.fields : field
   );
 
   const defaultValues = flatFields.reduce<any>(
+    // since our checkbox is a controlled input, it needs to be provided with a default value in order to reset correctly.
     (defaultValues, field) => ({
       ...defaultValues,
-      [field.name]: field.defaultValue,
+      [field.name]:
+        field.type === 'checkbox' && field.defaultValue === undefined
+          ? false
+          : field.defaultValue,
     }),
     {}
   );
 
   return (
     <FormWrapper
-      onSubmit={onSubmit}
       validation={validation}
       defaultValues={defaultValues}
-      disableFieldsOnSubmit={disableFieldsOnSubmit}
-      wasSubmitSuccessful={wasSubmitSuccessful}
       display="flex"
       flexDirection="column"
+      {...rest}
     >
       <LayoutGrid columnGap={columnGap} rowGap={rowGap}>
         <>
