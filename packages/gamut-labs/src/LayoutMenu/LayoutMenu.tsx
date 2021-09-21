@@ -58,6 +58,15 @@ export const LayoutMenu: React.FC<LayoutMenuProps> = ({
     />
   ));
 
+  const topLinkLayoutMenuSections = topLinkSections && (
+    <LayoutMenuSection
+      items={topLinkSections}
+      onItemClick={() => setExpanded(false)}
+      selectedItem={selectedItem}
+      pb={32}
+    />
+  );
+
   return (
     <nav>
       <Box display={{ _: 'block', [breakpoint]: 'none' }}>
@@ -68,14 +77,7 @@ export const LayoutMenu: React.FC<LayoutMenuProps> = ({
           title={<Logo mb={32} />}
         >
           <Box px={16}>
-            {topLinkSections && (
-              <LayoutMenuSection
-                items={topLinkSections}
-                onItemClick={() => setExpanded(false)}
-                selectedItem={selectedItem}
-                pb={32}
-              />
-            )}
+            {topLinkLayoutMenuSections}
             {accordionMenuSections}
             {children}
           </Box>
@@ -89,14 +91,7 @@ export const LayoutMenu: React.FC<LayoutMenuProps> = ({
         </StrokeButton>
       </Box>
       <Box display={{ _: 'none', [breakpoint]: 'block' }}>
-        {topLinkSections && (
-          <LayoutMenuSection
-            items={topLinkSections}
-            onItemClick={() => setExpanded(false)}
-            selectedItem={selectedItem}
-            pb={32}
-          />
-        )}
+        {topLinkLayoutMenuSections}
         {accordionMenuSections}
         {children}
       </Box>
