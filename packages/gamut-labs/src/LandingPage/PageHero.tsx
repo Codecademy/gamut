@@ -82,7 +82,11 @@ export const PageHero: React.FC<PageHeroProps> = ({
         {desc && <Description text={desc} onAnchorClick={onAnchorClick} />}
         {cta && (
           <Box mt={32}>
-            <CTA href={cta.href} onCtaButtonClick={cta.onClick}>
+            <CTA
+              href={cta.href}
+              onCtaButtonClick={cta.onClick}
+              buttonType={cta.buttonType}
+            >
               {cta.text}
             </CTA>
           </Box>
