@@ -17,7 +17,7 @@ export type BaseProps = {
    *
    * onClick: callback when the button is clicked
    *
-   * buttonType: whether to show a CTA button or a regular fill button
+   * buttonType: whether to show a CTA button or a regular fill button, defaults to CTA button
    */
   cta?: {
     text: string;

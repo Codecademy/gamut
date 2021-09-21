@@ -10,18 +10,11 @@ export type CTAProps = DarkModeProps & {
 };
 
 export const CTA: React.FC<CTAProps> = ({
-  href,
-  mode,
-  onCtaButtonClick,
-  buttonType,
-  children,
+  buttonType = 'cta',
+  ...buttonProps
 }) =>
   buttonType === 'regular' ? (
-    <FillButton href={href} onClick={onCtaButtonClick} mode={mode}>
-      {children}
-    </FillButton>
+    <FillButton {...buttonProps} />
   ) : (
-    <CTAButton href={href} onClick={onCtaButtonClick} mode={mode}>
-      {children}
-    </CTAButton>
+    <CTAButton {...buttonProps} />
   );
