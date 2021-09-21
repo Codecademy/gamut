@@ -1,7 +1,9 @@
-import { Box, FlexBox, TextButton } from '@codecademy/gamut/src';
+import { Box, FlexBox } from '@codecademy/gamut/src';
 import { Flyout } from '@codecademy/gamut-labs/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/blocks';
+
+import { FlyoutExample } from './FlyoutExample';
 
 <Meta
   title={title}
@@ -16,26 +18,9 @@ import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/blocks';
 
 <Canvas>
   <Story name="Flyout">
-    {() => (
+    {(args) => (
       <Box height="20rem">
-        <Flyout
-          openFrom="left"
-          renderButton={(onClick) => (
-            <TextButton onClick={onClick}>chiller time</TextButton>
-          )}
-        >
-          <Box bg="navy" textColor="white" margin={16}>
-            Baharroth - Baharroth, "the Cry of the Wind," is the Winged Phoenix,
-            the oldest of the Swooping Hawks and the first Exarch of those
-            winged Aspect Warriors. Baharroth is the founder of the Eldar
-            Warrior Path that is represented today by the Swooping Hawks Aspect
-            Shrines. Baharroth is also known for his speed and is said to be the
-            fastest of all the Eldar who have ever lived, a formidable claim
-            that would make him a deadly opponent indeed. Though he moves with
-            the subtlety and grace of a zephyr, he attacks with the force of a
-            hurricane.
-          </Box>
-        </Flyout>
+        <FlyoutExample {...args} />
         <FlexBox>
           An Avatar of Khaine is the term normally applied to the physical form
           that the spirit of an Eldar God has managed to possess and animate.
@@ -48,5 +33,23 @@ import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/blocks';
     )}
   </Story>
 </Canvas>
+
+## Controlled Flyouts
+
+Our Flyouts are [controlled components](https://reactjs.org/docs/forms.html#controlled-components), so their checked value must be controlled by an external state passed in as `expanded` and `onChange`:
+
+```tsx
+<Flyout
+  closeLabel="Close My Pane"
+  expanded={expanded}
+  title="My Pane"
+  onClose={() => setExpanded(false)}
+>
+  Put your flyout contents here?
+</Flyout>
+<StrokeButton onClick={() => setExpanded(true)}>
+  Activate!
+</StrokeButton>
+```
 
 <Props story="Flyout" />

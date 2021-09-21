@@ -27,6 +27,7 @@ export type CurriculumCardProps = SubtitleProps & {
   showProLogo?: boolean;
   tag?: string;
   tagColor?: TagColor;
+  showAltSubtitle?: boolean;
 };
 
 export const CurriculumCard: React.FC<CurriculumCardProps> = ({
@@ -37,12 +38,12 @@ export const CurriculumCard: React.FC<CurriculumCardProps> = ({
   isFullSize = false,
   progressState,
   scope,
-  scopeCount,
   showProLogo,
   tag,
   tagColor,
   text,
   title,
+  showAltSubtitle = false,
 }) => {
   const boxVariant = progressState && cardStyles[progressState];
   const mode = progressState === 'completed' ? 'dark' : 'light';
@@ -73,8 +74,8 @@ export const CurriculumCard: React.FC<CurriculumCardProps> = ({
         {!progressState && (
           <Subtitle
             scope={scope}
-            scopeCount={scopeCount}
             difficulty={difficulty}
+            showAltSubtitle={showAltSubtitle}
           />
         )}
       </FlexBox>
