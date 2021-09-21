@@ -1,4 +1,4 @@
-import React, { ComponentType } from 'react';
+import React from 'react';
 import { RegisterOptions } from 'react-hook-form';
 
 import { InputProps, SelectProps } from '../../Form';
@@ -27,32 +27,24 @@ export type ConnectedSelectProps = ConnectedBaseSelectProps &
 
 export type SelectField = BaseConnectedFieldProps &
   ConnectedBaseSelectProps & {
-    component: ComponentType<ConnectedSelectProps>;
-    // type: 'select';
+    component: typeof ConnectedSelect;
   };
 
 export type InputField = BaseConnectedFieldProps &
   ConnectedBaseInputProps & {
-    component: ComponentType<ConnectedInputProps>;
-    // type: 'input';
+    component: typeof ConnectedInput;
   };
 
 export type ConnectedField = SelectField | InputField;
+const isSelect = (field: ConnectedField): field is SelectField => {
+  return true;
+};
 
-// export const renderField = (field: ConnectedField, name: string) => {
-//   switch (field.type) {
-//     case 'select':
-//       return <ConnectedSelect name={name} {...field} />;
-//     case 'input':
-//       return <ConnectedInput name={name} {...field} />;
-//   }
-// };
-
-// export const renderComponent = (field: ConnectedField, name: string) => {
-//   switch (field.component) {
-//     case (React.FC<ConnectedSelectProps>):
-//       return <field.component name={name} {...field} />;
-//     case ConnectedInput:
-//       return <field.component name={name} {...field} />;
-//   }
-// };
+export const renderComponent = (field: ConnectedField, name: string) => {
+  if (isSelect(field)) {
+    const { component: Component, ...rest } = field;
+    return <Component name={name} {...rest} />;
+  }
+  const { component: Component, ...rest } = field;
+  return <Component name="not hey" {...rest} />;
+};

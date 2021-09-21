@@ -592,8 +592,8 @@ export const HEY: React.FC = () => {
               }}
             />
             <ConnectedFormGroup2
-              name="render-select"
-              label="render select ok"
+              name="render-input"
+              label="render input ok"
               field={{
                 component: ConnectedInput,
                 validation: {
@@ -602,7 +602,6 @@ export const HEY: React.FC = () => {
                     message: 'zero to hero',
                   },
                 },
-                options: ['zero', 'two', 'three'],
               }}
             />
           </INeedSomeSpace>

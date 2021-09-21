@@ -87,9 +87,6 @@ export const ConnectedFormGroup2: React.FC<ConnectedFormGroupProps2> = ({
       mb={spacing === 'tight' ? 0 : 8}
     >
       {hideLabel ? <HiddenText>{renderedLabel}</HiddenText> : renderedLabel}
-
-      <field.component {...field} />
-
       {renderField(field, name)}
       {(error || customError) && (
         <FormError
