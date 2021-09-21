@@ -11,7 +11,6 @@ export type ConnectedCustomInputProps<T> = ConnectedFieldProps & {
 
 export function ConnectedCustomInput<ComponentProps>({
   component: Component,
-  // component2: Component2,
   disabled,
   name,
   validation,
