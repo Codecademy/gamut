@@ -4,8 +4,7 @@ import { CurriculumCard } from '../index';
 
 const renderView = setupRtl(CurriculumCard, {
   difficulty: 0,
-  scope: 'lesson',
-  scopeCount: 12,
+  scope: { lesson: 12 },
   text: 'Course',
   title: 'I am a card',
 });
