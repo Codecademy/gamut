@@ -37,19 +37,21 @@ const TargetContainer = styled.div`
 
 type BreakpointVisibility = MediaQueryMap<boolean>;
 
-type ToolTipContainerProps = {
+type ToolTipBodyProps = {
   /**
    * How to align the tooltip relative to the target.
    */
   alignment?: ToolTipAlignment;
 
+  mode?: ColorModes;
+};
+
+type ToolTipContainerProps = ToolTipBodyProps & {
   /**
    * Dictionary describing breakpoints in which the tool tip children should be hidden overriding regular showing behavior.
    * Default is to be visible at all widths.
    */
   breakpointVisibility?: BreakpointVisibility;
-
-  mode?: ColorModes;
 };
 
 const getToolTipVisibilityCSS = (visibility: boolean) =>
@@ -174,7 +176,7 @@ ${({ alignment }) =>
     `}
 `;
 
-const ToolTipBody = styled(Box)<ToolTipContainerProps>`
+const ToolTipBody = styled(Box)<Required<ToolTipBodyProps>>`
   border: 1px solid;
   border-radius: 3px;
   display: inline-block;
