@@ -1,11 +1,15 @@
 import { Box, Logo, StrokeButton } from '@codecademy/gamut';
-import React, { useRef } from 'react';
+import React, { useState } from 'react';
 
 import { Flyout } from '../Flyout';
 import { AccordionMenu, Section, SectionItem } from './AccordionMenu';
 import { LayoutMenuSection } from './LayoutMenuSection';
 
 export type LayoutMenuProps = {
+  /**
+   * Accessibility label for the mobile Flyout's close button.
+   */
+  closeLabel: string;
   /**
    * An array of sections containing the title, slug, and items, each of which will become an accordion. Each item contains a title, slug, and onClick.
    */
@@ -33,6 +37,7 @@ export type LayoutMenuProps = {
 };
 
 export const LayoutMenu: React.FC<LayoutMenuProps> = ({
+  closeLabel,
   sections,
   onSectionToggle,
   selectedItem,
@@ -41,59 +46,52 @@ export const LayoutMenu: React.FC<LayoutMenuProps> = ({
   children,
   topLinkSections,
 }) => {
-  const closeFlyoutRef = useRef<() => void>();
-
-  const closeFlyout = () => closeFlyoutRef.current?.();
+  const [expanded, setExpanded] = useState(false);
 
   const accordionMenuSections = sections.map((section) => (
     <AccordionMenu
       key={section.slug}
       section={section}
       onSectionToggle={onSectionToggle}
-      onItemClick={closeFlyout}
+      onItemClick={() => setExpanded(false)}
       selectedItem={selectedItem}
     />
   ));
 
-  const renderButton = (onClick: () => void) => (
-    <StrokeButton variant="secondary" width={1} onClick={onClick}>
-      {mobileButtonText}
-    </StrokeButton>
+  const topLinkLayoutMenuSections = topLinkSections && (
+    <LayoutMenuSection
+      items={topLinkSections}
+      onItemClick={() => setExpanded(false)}
+      selectedItem={selectedItem}
+      pb={32}
+    />
   );
 
   return (
     <nav>
       <Box display={{ _: 'block', [breakpoint]: 'none' }}>
         <Flyout
-          renderButton={renderButton}
-          closeFlyoutRef={closeFlyoutRef}
-          overflowY="auto"
-          overflowX="hidden"
+          closeLabel={closeLabel}
+          expanded={expanded}
+          onClose={() => setExpanded(false)}
+          title={<Logo mb={32} />}
         >
-          <Box bg="white" minHeight={1} p={16}>
-            <Logo mb={32} />
-            {topLinkSections && (
-              <LayoutMenuSection
-                items={topLinkSections}
-                onItemClick={closeFlyout}
-                selectedItem={selectedItem}
-                pb={32}
-              />
-            )}
+          <Box px={16}>
+            {topLinkLayoutMenuSections}
             {accordionMenuSections}
             {children}
           </Box>
         </Flyout>
+        <StrokeButton
+          variant="secondary"
+          width={1}
+          onClick={() => setExpanded(true)}
+        >
+          {mobileButtonText}
+        </StrokeButton>
       </Box>
       <Box display={{ _: 'none', [breakpoint]: 'block' }}>
-        {topLinkSections && (
-          <LayoutMenuSection
-            items={topLinkSections}
-            onItemClick={closeFlyout}
-            selectedItem={selectedItem}
-            pb={32}
-          />
-        )}
+        {topLinkLayoutMenuSections}
         {accordionMenuSections}
         {children}
       </Box>
