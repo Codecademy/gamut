@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [22.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@21.0.0...@codecademy/gamut-labs@22.0.0) (2021-09-21)
+
+
+### ⚠ BREAKING CHANGES
+
+* **Flyout:** switch to controlled component
+
+### Features
+
+* **Flyout:** switch to controlled component ([15919cd](https://github.com/Codecademy/client-modules/commit/15919cd7b045c817cde49340fdeba3d9ae633515))
+
+
+
 ## [21.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@20.2.0...@codecademy/gamut-labs@21.0.0) (2021-09-21)
 
 
