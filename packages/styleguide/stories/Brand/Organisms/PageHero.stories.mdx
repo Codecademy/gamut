@@ -43,28 +43,12 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 
 <PropsTable story="Page Hero" />
 
-## Regular Button
+## Video
+
+Change the `media` prop to `type: video` and pass required video props to show a video in the hero.
 
 <Canvas>
-  <Story name="Regular Button">
-    {(args) => (
-      <PageHero {...args} cta={{ ...args.cta, buttonType: 'regular' }} />
-    )}
-  </Story>
-</Canvas>
-
-## Without Button
-
-<Canvas>
-  <Story name="Without Button">
-    {(args) => <PageHero {...args} cta={undefined} />}
-  </Story>
-</Canvas>
-
-## With Video
-
-<Canvas>
-  <Story name="With Video">
+  <Story name="Video">
     {(args) => (
       <PageHero
         {...args}
@@ -78,5 +62,37 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
         title="What's it like to be a Software Engineer"
       />
     )}
+  </Story>
+</Canvas>
+
+## Regular Button
+
+Pass `buttonType` as `regular` to show a regular `FillButton` instead of the larger `CTAButton`.
+
+<Canvas>
+  <Story name="Regular Button">
+    {(args) => (
+      <PageHero {...args} cta={{ ...args.cta, buttonType: 'regular' }} />
+    )}
+  </Story>
+</Canvas>
+
+## Without Button
+
+Omit the `cta` prop to not show a button.
+
+<Canvas>
+  <Story name="Without Button">
+    {(args) => <PageHero {...args} cta={undefined} />}
+  </Story>
+</Canvas>
+
+## Without Description
+
+Omit the `desc` prop to not show a description.
+
+<Canvas>
+  <Story name="Without Description">
+    {(args) => <PageHero {...args} desc={undefined} />}
   </Story>
 </Canvas>
