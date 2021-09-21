@@ -51,7 +51,7 @@ export const FilterControl: React.FC<FilterProps> = ({
               spacing="condensed"
               maxHeight={300}
               overflowY="auto"
-              width={300}
+              width="max-content"
               variant="action"
             >
               {['Select All', ...options].map((opt) => {
@@ -78,6 +78,7 @@ export const FilterControl: React.FC<FilterProps> = ({
                           variant="p-small"
                           fontFamily="base"
                           alignSelf="center"
+                          display="inline-block"
                         >
                           {opt}
                         </Text>
