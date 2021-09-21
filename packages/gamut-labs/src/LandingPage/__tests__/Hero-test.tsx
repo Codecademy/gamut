@@ -16,8 +16,11 @@ describe('PageHero', () => {
     wrapper.getByText('desc');
   });
 
-  it('should render an eyebrow when one is provided', () => {
-    const { view: wrapper } = renderView({ eyebrow: 'eyebrow' });
+  it('should render an eyebrow when one is provided with a title', () => {
+    const { view: wrapper } = renderView({
+      eyebrow: 'eyebrow',
+      title: 'title',
+    });
     wrapper.getByText('eyebrow');
   });
 
