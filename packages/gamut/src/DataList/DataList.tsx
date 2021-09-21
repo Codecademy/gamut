@@ -56,7 +56,6 @@ const useSelectableRows = <
 ) => {
   const allSelected = rows.length === selectedRows?.length;
   const rowIds = rows.map(({ [idKey]: id }) => id as Ids);
-
   const onSelect = useCallback(
     (selectedId) => {
       if (selectedRows.includes(selectedId)) {

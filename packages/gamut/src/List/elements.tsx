@@ -69,7 +69,7 @@ const rowVariants = variant({
     },
     table: {
       bg: 'background',
-      '&:nth-child(2n - 1)': {
+      '&:nth-of-type(2n - 1)': {
         bg: 'background-selected',
       },
     },

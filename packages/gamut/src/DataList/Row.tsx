@@ -60,7 +60,14 @@ export function DataRow<
       {columns.map(({ key, render, ...columnProps }) => {
         const columnKey = `${id}-col-${key}`;
         if (key === 'select') {
-          return <SelectCol key={columnKey} id={id} onSelect={onSelect} />;
+          return (
+            <SelectCol
+              key={columnKey}
+              id={id}
+              onSelect={onSelect}
+              selected={selected}
+            />
+          );
         }
         if (key === 'expand') {
           return (

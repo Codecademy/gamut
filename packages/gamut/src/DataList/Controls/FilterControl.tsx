@@ -14,6 +14,7 @@ export interface FilterProps {
     dimension: keyof any,
     value: Query<any>[keyof Query<any>][string]
   ) => void;
+  justify?: 'left' | 'right';
 }
 
 const getNextFilters = (
@@ -34,61 +35,61 @@ export const FilterControl: React.FC<FilterProps> = ({
   onQuery,
   options = [],
   children,
+  justify = 'left',
 }) => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <>
+    <FlexBox position="relative" column>
       {menuOpen && (
-        <Box position="relative">
-          <Box position="absolute" top={24} zIndex={1}>
-            <FocusTrap
-              onClickOutside={() => setMenuOpen(false)}
-              onEscapeKey={() => setMenuOpen(false)}
+        <Box position="absolute" top={24} {...{ [justify]: 0 }} zIndex={1}>
+          <FocusTrap
+            onClickOutside={() => setMenuOpen(false)}
+            onEscapeKey={() => setMenuOpen(false)}
+          >
+            <Menu
+              spacing="condensed"
+              maxHeight={300}
+              overflowY="auto"
+              width={300}
+              variant="action"
             >
-              <Menu
-                spacing="condensed"
-                maxHeight={300}
-                overflowY="auto"
-                width={300}
-                variant="action"
-              >
-                {['Select All', ...options].map((opt) => {
-                  const id = `${opt}-${String(columnKey)}`;
-                  const allSelected =
-                    filters.length === options.length || filters.length === 0;
-                  const optionSelected = filters.includes(opt) || allSelected;
+              {['Select All', ...options].map((opt) => {
+                const id = `${opt}-${String(columnKey)}`;
+                const allSelected =
+                  filters.length === options.length || filters.length === 0;
+                const optionSelected = filters.includes(opt) || allSelected;
 
-                  return (
-                    <MenuItem key={opt}>
-                      <Checkbox
-                        htmlFor={id}
-                        name={id}
-                        onClick={() => {
-                          onQuery(
-                            'filter',
-                            columnKey,
-                            getNextFilters(opt, filters, options)
-                          );
-                        }}
-                        label={
-                          <Text
-                            variant="p-small"
-                            fontFamily="base"
-                            alignSelf="center"
-                          >
-                            {opt}
-                          </Text>
-                        }
-                        spacing="tight"
-                        checked={optionSelected}
-                      />
-                    </MenuItem>
-                  );
-                })}
-              </Menu>
-            </FocusTrap>
-          </Box>
+                return (
+                  <MenuItem key={opt}>
+                    <Checkbox
+                      htmlFor={id}
+                      name={id}
+                      disabled={opt === 'Select All' && allSelected}
+                      onClick={() => {
+                        onQuery(
+                          'filter',
+                          columnKey,
+                          getNextFilters(opt, filters, options)
+                        );
+                      }}
+                      label={
+                        <Text
+                          variant="p-small"
+                          fontFamily="base"
+                          alignSelf="center"
+                        >
+                          {opt}
+                        </Text>
+                      }
+                      spacing="tight"
+                      checked={optionSelected}
+                    />
+                  </MenuItem>
+                );
+              })}
+            </Menu>
+          </FocusTrap>
         </Box>
       )}
       <ButtonBase onClick={() => setMenuOpen(true)}>
@@ -97,6 +98,6 @@ export const FilterControl: React.FC<FilterProps> = ({
           <MiniChevronDownIcon size={10} />
         </FlexBox>
       </ButtonBase>
-    </>
+    </FlexBox>
   );
 };

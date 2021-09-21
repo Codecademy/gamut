@@ -66,6 +66,7 @@ export function HeaderRow<Cols extends ColumnConfig<any>[]>({
                   onQuery={onQuery}
                   filters={columnFilter}
                   options={options}
+                  justify={colProps.justify}
                 >
                   {columnText}
                 </FilterControl>

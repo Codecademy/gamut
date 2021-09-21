@@ -22,6 +22,7 @@ export interface ColumnConfig<T> {
   queryType?: keyof Query<T>;
   options?: string[];
   fill?: boolean;
+  justify?: 'left' | 'right';
 }
 
 export type RowChange<T> = T[];

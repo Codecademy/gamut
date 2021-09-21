@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import React from 'react';
 
 import { IconButton, ListCol } from '../..';
+import { FlexBox } from '../../Box';
 
 export interface ExpandColProps {
   expanded?: boolean;
@@ -17,21 +18,25 @@ export const ExpandCol: React.FC<ExpandColProps> = ({
   onExpand,
   ghost,
 }) => (
-  <ListCol size="content" ghost aria-hidden={ghost}>
+  <ListCol size="content" aria-hidden={ghost} ghost={ghost}>
     <IconButton
-      size="smalls"
+      size="small"
       onClick={() => onExpand?.(id)}
       aria-label={`Expand ${id} Row`}
     >
-      <motion.div
-        animate={expanded ? 'expanded' : 'collapsed'}
-        variants={{
-          expanded: { transform: 'translate(180deg)' },
-          collapsed: { transform: 'translate(0deg)' },
-        }}
-      >
-        <ArrowChevronDownIcon />
-      </motion.div>
+      <FlexBox center>
+        <motion.div
+          animate={expanded ? 'expanded' : 'collapsed'}
+          style={{ transformOrigin: 'center' }}
+          variants={{
+            expanded: { rotate: 180 },
+            collapsed: { rotate: 0 },
+          }}
+          transition={{ duration: 0.2, ease: 'easeInOut' }}
+        >
+          <ArrowChevronDownIcon />
+        </motion.div>
+      </FlexBox>
     </IconButton>
   </ListCol>
 );
