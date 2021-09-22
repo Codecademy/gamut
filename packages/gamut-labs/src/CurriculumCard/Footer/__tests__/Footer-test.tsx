@@ -45,7 +45,7 @@ describe('CurriculumCard Footer', () => {
 
   it('displays enrolled footer variant by default', () => {
     const { view } = renderView({ progressState: 'inProgress' });
-    expect(view.queryByText('Enrolled...')).toBeTruthy();
+    view.getByText('Enrolled...'));
   });
 
   it('displays inProgress footer variant', () => {
