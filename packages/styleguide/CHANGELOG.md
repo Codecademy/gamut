@@ -3,6 +3,49 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [46.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@46.0.0...@codecademy/styleguide@46.0.1) (2021-09-22)
+
+
+### Bug Fixes
+
+* **SelectDropdown:** parse options fix for select dropdown ([f92e8a5](https://github.com/Codecademy/client-modules/commit/f92e8a527f5470038e41c38776612f2336225896))
+
+
+
+## [46.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@45.0.0...@codecademy/styleguide@46.0.0) (2021-09-21)
+
+
+### ⚠ BREAKING CHANGES
+
+* **CurriculumCard:** Updated scope to support more content items, added alternative subtitle
+
+### Features
+
+* **CurriculumCard:** Updated scope to support more content items, added alternative subtitle ([1f038a8](https://github.com/Codecademy/client-modules/commit/1f038a8299bf47b84e9eaf2deb2c71e78680d7d4))
+
+
+
+## [45.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@44.8.1...@codecademy/styleguide@45.0.0) (2021-09-21)
+
+
+### ⚠ BREAKING CHANGES
+
+* **Flyout:** switch to controlled component
+
+### Features
+
+* **Flyout:** switch to controlled component ([15919cd](https://github.com/Codecademy/client-modules/commit/15919cd7b045c817cde49340fdeba3d9ae633515))
+
+
+
+### [44.8.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@44.8.0...@codecademy/styleguide@44.8.1) (2021-09-21)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
 ## [44.8.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@44.7.1...@codecademy/styleguide@44.8.0) (2021-09-20)
 
 
