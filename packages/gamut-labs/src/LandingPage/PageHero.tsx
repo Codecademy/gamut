@@ -36,6 +36,7 @@ type ColumnLayout = {
 export type PageHeroProps = BaseProps & {
   media?: MediaProps;
   textLength: 'short' | 'long';
+  showImageOnMobile?: boolean;
 };
 
 const getColumnLayout = (
@@ -74,6 +75,7 @@ export const PageHero: React.FC<PageHeroProps> = ({
   cta,
   media,
   textLength,
+  showImageOnMobile,
   testId,
   onAnchorClick,
 }) => {
@@ -91,13 +93,18 @@ export const PageHero: React.FC<PageHeroProps> = ({
         )}
       </Column>
       {media && (
-        <Column size={{ sm: right }}>
+        <Column
+          size={{ sm: right }}
+          gridRowStart={showImageOnMobile ? 1 : undefined}
+        >
           {media.type === 'image' ? (
             <Image
               src={media.src}
               alt={media.alt}
               width={1}
-              display={{ _: 'none', sm: 'initial' }}
+              display={
+                showImageOnMobile ? undefined : { _: 'none', sm: 'initial' }
+              }
             />
           ) : (
             <Video {...media} />
