@@ -2,6 +2,7 @@ import React from 'react';
 
 import { ListHeader } from '..';
 import { ListCol } from '../List/ListCol';
+import { QueryValues } from '.';
 import { ExpandCol } from './Columns/ExpandCol';
 import { SelectCol } from './Columns/SelectCol';
 import { FilterControl } from './Controls/FilterControl';
@@ -16,7 +17,7 @@ interface HeaderRowProps<Cols extends ColumnConfig<any>[]> {
   onQuery: (
     type: keyof Query<any>,
     dimension: keyof any,
-    value: Query<any>[keyof Query<any>]
+    value: QueryValues<any>
   ) => void;
 }
 
@@ -43,7 +44,7 @@ export function HeaderRow<Cols extends ColumnConfig<any>[]>({
         }
         switch (queryType) {
           case 'sort': {
-            const direction = query?.sort[key] || 'none';
+            const direction = query?.sort?.[key as string] || 'none';
             return (
               <ListCol key={renderKey} {...colProps} columnHeader>
                 <SortControl

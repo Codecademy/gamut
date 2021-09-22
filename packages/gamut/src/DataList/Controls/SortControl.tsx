@@ -5,7 +5,7 @@ import React from 'react';
 
 import { FlexBox } from '../..';
 import { ButtonBase } from '../../ButtonBase';
-import { Query, SortDirection } from '..';
+import { Query, QueryValues, SortDirection } from '..';
 
 const SortIcon = styled(ArrowChevronDownFilledIcon)(
   states({
@@ -24,7 +24,7 @@ interface SortControlProps {
   onQuery: (
     type: keyof Query<any>,
     dimension: keyof any,
-    value: Query<any>[keyof Query<any>][string]
+    value: QueryValues<any>
   ) => void;
 }
 

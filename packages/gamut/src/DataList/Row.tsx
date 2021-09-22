@@ -16,9 +16,9 @@ interface DataRowProps<
   columns: Cols;
   onSelect?: (id: Ids) => void;
   onExpand?: (id: Ids) => void;
-  renderExpanded: (row: Rows) => React.ReactNode;
-  selected: boolean;
-  expanded: boolean;
+  renderExpanded?: (row: Rows) => React.ReactNode;
+  selected?: boolean;
+  expanded?: boolean;
 }
 
 export function DataRow<

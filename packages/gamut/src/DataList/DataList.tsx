@@ -1,6 +1,7 @@
 import React, { ComponentProps, useCallback, useMemo } from 'react';
 
 import { List } from '../List';
+import { QueryValues } from '.';
 import { HeaderRow } from './Header';
 import { DataRow } from './Row';
 import { ColumnConfig, Query } from './types';
@@ -18,9 +19,9 @@ export interface DataListProps<
   onQueryChange?: (nextQuery: Query<Rows>) => void;
   onRowSelect?: (nextSelected: Ids[]) => void;
   onRowExpand?: (nextExpanded: Ids[]) => void;
-  renderExpanded: (row: Rows) => React.ReactNode;
-  expandedRows: Ids[];
-  selectedRows: Ids[];
+  renderExpanded?: (row: Rows) => React.ReactNode;
+  expandedRows?: Ids[];
+  selectedRows?: Ids[];
 }
 
 const SELECT_COLUMN = { key: 'select', label: '', size: 'content' } as const;
@@ -50,7 +51,7 @@ const useSelectableRows = <
   Ids extends Rows[IdKey]
 >(
   rows: Rows[],
-  selectedRows: Ids[],
+  selectedRows: Ids[] = [],
   idKey: IdKey,
   onRowSelect?: (nextSelected: Ids[]) => void
 ) => {
@@ -79,7 +80,7 @@ const useSelectableRows = <
 };
 
 const useExpandableRows = <Ids extends any>(
-  expandedRows: Ids[],
+  expandedRows: Ids[] = [],
   onRowExpand?: (ids: Ids[]) => void
 ) => {
   const onExpand = useCallback(
@@ -129,9 +130,7 @@ export function DataList<
     (
       type: keyof Query<Rows>,
       dimension: keyof Rows,
-      value:
-        | Query<Rows>[keyof Query<Rows>][keyof Rows]
-        | Query<Rows>[keyof Query<Rows>]
+      value: QueryValues<Rows>
     ) => {
       if (value === 'none') {
         // eslint-disable-next-line @typescript-eslint/no-unused-vars

@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 
 import { Box, Checkbox, FlexBox, FocusTrap, Menu, MenuItem, Text } from '../..';
 import { ButtonBase } from '../../ButtonBase';
-import { Query } from '..';
+import { Query, QueryValues } from '..';
 
 export interface FilterProps {
   columnKey: string | symbol | number;
@@ -12,7 +12,7 @@ export interface FilterProps {
   onQuery: (
     type: keyof Query<any>,
     dimension: keyof any,
-    value: Query<any>[keyof Query<any>][string]
+    value: QueryValues<any>
   ) => void;
   justify?: 'left' | 'right';
 }

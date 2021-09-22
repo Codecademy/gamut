@@ -4,10 +4,15 @@ import { ListColProps } from '..';
 
 export type SortDirection = 'asc' | 'desc' | 'none';
 
+export type Filter<T> = { [K in keyof T]?: T[K] | 'none' };
+
+export type Sort<T> = { [K in keyof T]?: Exclude<SortDirection, 'none'> };
 export interface Query<T> {
-  filter: { [K in keyof T]?: T[K] | 'none' };
-  sort: Record<keyof T, Exclude<SortDirection, 'none'>>;
+  filter?: Filter<T>;
+  sort?: Sort<T>;
 }
+
+export type QueryValues<T> = Sort<T>[keyof T] | Filter<T>[keyof T];
 
 export type QueryChangeEvent<T> = {
   nextQuery: Query<T>;
