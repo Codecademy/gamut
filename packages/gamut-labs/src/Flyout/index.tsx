@@ -1,23 +1,14 @@
-import { BodyPortal, FocusTrap, IconButton } from '@codecademy/gamut';
+import { Box, IconButton, Overlay, Text } from '@codecademy/gamut';
 import { MiniDeleteIcon } from '@codecademy/gamut-icons';
-import { system, variant } from '@codecademy/gamut-styles';
-import { StyleProps, variance } from '@codecademy/variance';
+import { variant } from '@codecademy/gamut-styles';
+import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
 import { AnimatePresence, motion } from 'framer-motion';
-import React, { useCallback, useEffect, useState } from 'react';
+import React from 'react';
 
 export const transitionDuration = 0.35;
 
-const flyoutStyles = variance.compose(
-  system.background,
-  system.border,
-  system.flex,
-  system.grid,
-  system.layout,
-  system.positioning
-);
-
-const flyoutOpenVariants = variant({
+const drawerOpenVariants = variant({
   defaultVariant: 'left',
   prop: 'openFrom',
   variants: {
@@ -32,124 +23,87 @@ const flyoutOpenVariants = variant({
   },
 });
 
-export type FlyoutStyles = StyleProps<typeof flyoutStyles> &
-  StyleProps<typeof flyoutOpenVariants>;
-export interface FlyoutStyleProps extends FlyoutStyles {}
+interface FlyoutStyleProps extends StyleProps<typeof drawerOpenVariants> {}
 
-export const DrawerBase = styled(motion.div)<FlyoutStyleProps>(
-  flyoutStyles,
-  flyoutOpenVariants
+const DrawerBase = styled(motion.custom(Box))<FlyoutStyleProps>(
+  drawerOpenVariants
 );
 
-type FlyoutProps = FlyoutStyleProps & {
+const openWidth = 30;
+
+export interface FlyoutProps extends StyleProps<typeof drawerOpenVariants> {
   /**
-   * if the drawer should be open or closed
+   * Accessibility label for the close button.
    */
-  initialExpanded?: boolean;
-  /**
-   * width of the open drawer in rem
-   */
-  openWidth?: number;
-  /**
-   * toggles the Flyout
-   */
-  renderButton: (onClick: () => void) => React.ReactNode;
-  /**
-   * Whether clicking on the screen outside of the container should close the Flyout
-   */
-  clickOutsideDoesNotClose?: boolean;
-  /**
-   * Whether clicking the escape key should close the Flyout
-   */
-  escapeDoesNotClose?: boolean;
+  closeLabel: string;
 
   /**
-   * A means of the parent method to get a reference to the closeFlyout function
+   * Whether the flyout should be open.
    */
-  closeFlyoutRef?: React.MutableRefObject<Function | undefined>;
-};
+  expanded?: boolean;
+
+  /**
+   * Called by the Flyout to close itself.
+   */
+  onClose: () => void;
+
+  /**
+   * Contents for a top-left h2.
+   */
+  title: React.ReactNode;
+}
 
 export const Flyout: React.FC<FlyoutProps> = ({
   children,
-  renderButton,
-  initialExpanded,
+  closeLabel,
+  expanded,
   openFrom = 'left',
-  openWidth = 30,
-  clickOutsideDoesNotClose,
-  escapeDoesNotClose,
-  closeFlyoutRef,
-  ...styleProps
+  onClose,
+  title,
 }) => {
   const initialX = openFrom === 'left' ? -1000 : 1000;
 
-  const [isExpanded, setIsExpanded] = useState(!!initialExpanded);
-  const toggleExpanded = useCallback(
-    () => setIsExpanded((isExpanded) => !isExpanded),
-    []
-  );
-  const closeFlyout = useCallback(() => {
-    setIsExpanded(false);
-  }, []);
-
-  useEffect(() => {
-    // Passes the function up to any interested parent component
-    if (closeFlyoutRef) {
-      closeFlyoutRef.current = closeFlyout;
-      return () => {
-        closeFlyoutRef.current = undefined;
-      };
-    }
-  }, [closeFlyoutRef, closeFlyout]);
-
-  const handleOutsideClick = useCallback(() => {
-    if (!clickOutsideDoesNotClose) {
-      closeFlyout();
-    }
-  }, [clickOutsideDoesNotClose, closeFlyout]);
-
-  const handleEscapeKey = useCallback(() => {
-    if (!escapeDoesNotClose) {
-      closeFlyout();
-    }
-  }, [escapeDoesNotClose, closeFlyout]);
-
   return (
-    <>
+    <Overlay
+      clickOutsideCloses
+      escapeCloses
+      isOpen={expanded}
+      onRequestClose={onClose}
+      shroud
+    >
       <AnimatePresence>
-        {isExpanded ? (
-          <BodyPortal>
-            <FocusTrap
-              onClickOutside={handleOutsideClick}
-              onEscapeKey={handleEscapeKey}
-            >
-              <DrawerBase
-                aria-expanded={isExpanded}
-                initial={{ x: initialX }}
-                animate={{ x: 0 }}
-                exit={{ x: initialX }}
-                transition={{ duration: transitionDuration }}
-                width={{ _: '75%', sm: `${openWidth}rem` }}
-                maxWidth={`${openWidth}rem`}
-                openFrom={openFrom}
-                position="fixed"
-                bottom="0"
-                top="0"
-                {...styleProps}
-              >
-                <IconButton
-                  icon={MiniDeleteIcon}
-                  onClick={toggleExpanded}
-                  position="absolute"
-                  top="0.5rem"
-                  right="0.5rem"
-                />
-                {children}
-              </DrawerBase>
-            </FocusTrap>
-          </BodyPortal>
+        {expanded ? (
+          <DrawerBase
+            aria-expanded={expanded}
+            initial={{ x: initialX }}
+            bg="background"
+            animate={{ x: 0 }}
+            exit={{ x: initialX }}
+            transition={{ duration: transitionDuration }}
+            width={{ _: '75%', sm: `${openWidth}rem` }}
+            maxWidth={`${openWidth}rem`}
+            openFrom={openFrom}
+            position="fixed"
+            bottom="0"
+            top="0"
+            overflowY="auto"
+            overflowX="hidden"
+          >
+            <Text as="h2" fontSize={22} mb={8} ml={16} mt={24}>
+              {title}
+            </Text>
+            <IconButton
+              aria-label={closeLabel}
+              icon={MiniDeleteIcon}
+              onClick={onClose}
+              position="absolute"
+              top="1rem"
+              right="0.5rem"
+            />
+            {children}
+          </DrawerBase>
         ) : null}
       </AnimatePresence>
-      {renderButton(toggleExpanded)}
-    </>
+    </Overlay>
   );
 };
