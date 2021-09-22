@@ -95,7 +95,7 @@ export const PageHero: React.FC<PageHeroProps> = ({
       {media && (
         <Column
           size={{ sm: right }}
-          gridRowStart={showImageOnMobile ? 1 : undefined}
+          gridRowStart={showImageOnMobile ? { _: 1, sm: 'initial' } : undefined}
         >
           {media.type === 'image' ? (
             <Image
