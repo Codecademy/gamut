@@ -17,12 +17,8 @@ export interface FilterProps {
   justify?: 'left' | 'right';
 }
 
-const getNextFilters = (
-  option: string,
-  filters: string[],
-  options: string[]
-) => {
-  if (option === 'Select All') return options;
+const getNextFilters = (option: string, filters: string[]) => {
+  if (option === 'Select All') return [];
   if (filters.includes(option)) {
     return filters.filter((filt) => filt !== option);
   }
@@ -56,21 +52,20 @@ export const FilterControl: React.FC<FilterProps> = ({
             >
               {['Select All', ...options].map((opt) => {
                 const id = `${opt}-${String(columnKey)}`;
-                const allSelected =
-                  filters.length === options.length || filters.length === 0;
-                const optionSelected = filters.includes(opt) || allSelected;
+                const allSelected = filters.length === 0;
+                const optionSelected =
+                  opt === 'Select All' ? allSelected : !filters.includes(opt);
 
                 return (
                   <MenuItem key={opt}>
                     <Checkbox
                       htmlFor={id}
                       name={id}
-                      disabled={opt === 'Select All' && allSelected}
                       onClick={() => {
                         onQuery(
                           'filter',
                           columnKey,
-                          getNextFilters(opt, filters, options)
+                          getNextFilters(opt, filters)
                         );
                       }}
                       label={
