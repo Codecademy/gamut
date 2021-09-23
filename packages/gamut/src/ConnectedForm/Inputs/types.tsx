@@ -28,7 +28,7 @@ export interface ConnectedFieldProps extends BaseConnectedFieldProps {
 
 export type ConnectedBaseCheckboxProps = Omit<
   CheckboxProps,
-  'defaultValue' | 'name'
+  'defaultValue' | 'name' | 'htmlFor'
 >;
 
 export type ConnectedBaseInputProps = Omit<InputProps, 'defaultValue' | 'name'>;

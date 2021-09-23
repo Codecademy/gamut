@@ -12,6 +12,10 @@ import { FormProps } from '../Form/Form';
 import { FormValues } from '../Form/types';
 import { submitSuccessStatus } from './utils';
 
+export type TestGeneric<T> = {
+  [key in keyof T]?: boolean | string | Pick<FileList, 'item'>;
+};
+
 export type FormContextProps = {
   /**
    * If fields should be disabled while form is being submitted and after successful submission.
@@ -27,7 +31,7 @@ export type FormContextProps = {
   wasSubmitSuccessful?: boolean;
 };
 
-export type ConnectedFormProps<Values extends {}> = FormContextProps &
+export type ConnectedFormProps<Values> = FormContextProps &
   Omit<FormProps, 'onSubmit'> & {
     children?: React.ReactNode;
 
@@ -56,7 +60,7 @@ const PropsProvider = FormPropsContext.Provider;
 /**
  * This is an in progress API! please reach out to the web-plat team if you're interested in using it.
  */
-export function ConnectedForm<Values extends FormValues>({
+export function ConnectedForm<Values extends TestGeneric<Values>>({
   children,
   onSubmit,
   defaultValues,

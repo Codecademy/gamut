@@ -17,12 +17,14 @@ import {
   GridForm,
   Markdown,
   SubmitButton,
+  TestOne,
   Text,
   useFormState,
 } from '@codecademy/gamut/src';
 import { Keyhole } from '@codecademy/gamut-illustrations';
 import { DotDense } from '@codecademy/gamut-patterns';
 import { Background } from '@codecademy/gamut-styles';
+import styled from '@emotion/styled';
 import { action } from '@storybook/addon-actions';
 import React, { InputHTMLAttributes, useState } from 'react';
 
@@ -391,17 +393,15 @@ export const InnerHEYagain: React.FC = () => {
   const shouldIStayOrShouldIGo = () => {
     if (watchedSelect === 'two' || watchedSelect === 'third') {
       return (
-        <ConnectedFormGroup
+        <ConnectedFormGroup2
           name="another-fieldo"
           label="hey there"
           size="large"
-        >
-          <ConnectedSelect
-            name="another-fieldo"
-            htmlFor="another-fieldo"
-            options={['hide the check', 'show me the check']}
-          />
-        </ConnectedFormGroup>
+          field={{
+            component: ConnectedSelect,
+            options: ['hide the check', 'show me the check'],
+          }}
+        />
       );
     }
   };
@@ -409,31 +409,25 @@ export const InnerHEYagain: React.FC = () => {
   const iMayBeHidden = () => {
     const returnedComponent =
       watchedSecondSelect === 'show me the check' ? (
-        <ConnectedFormGroup
+        <ConnectedFormGroup2
           name="yet-again"
           label="hi..."
           spacing="tight"
           errorType="initial"
-        >
-          <ConnectedCheckbox
-            label="if you can see the check you must check the check"
-            name="yet-again"
-            htmlFor="check-field-0"
-            validation={{ required: 'check it...' }}
-            spacing="tight"
-          />
-        </ConnectedFormGroup>
+          field={{
+            component: ConnectedCheckbox,
+            label: 'hey',
+          }}
+        />
       ) : watchedSecondSelect === 'hide the check' ? (
-        <ConnectedFormGroup
+        <ConnectedFormGroup2
           name="example-icon"
           label="please explain why you don't want to fill in the check"
-        >
-          <ConnectedInput
-            name="example-icon"
-            htmlFor="example-icon"
-            validation={{ required: 'explain yourself.' }}
-          />
-        </ConnectedFormGroup>
+          field={{
+            component: ConnectedInput,
+            validation: { required: 'explain yourself' },
+          }}
+        />
       ) : null;
     return returnedComponent;
   };
@@ -447,14 +441,16 @@ export const InnerHEYagain: React.FC = () => {
       </FloatingCard>
 
       <Box width="20rem" m={24}>
-        <ConnectedFormGroup name="your-fieldo" label="hey" size="large">
-          <ConnectedSelect
-            name="your-fieldo"
-            htmlFor="your-field"
-            validation={{ required: 'check it...' }}
-            options={['one', 'two', 'third']}
-          />
-        </ConnectedFormGroup>
+        <ConnectedFormGroup2
+          name="your-fieldo"
+          label="hey"
+          size="large"
+          field={{
+            component: ConnectedSelect,
+            validation: { required: 'check it...' },
+            options: ['one', 'two', 'three'],
+          }}
+        />
         <div aria-live="assertive">
           {shouldIStayOrShouldIGo()}
           {iMayBeHidden()}
@@ -505,11 +501,15 @@ const CustomInput = (props: InputHTMLAttributes<HTMLInputElement>) => {
   // do the rest here
 };
 
-const CustomInput2 = React.forwardRef<HTMLInputElement>(({ ...rest }, ref) => {
-  return <input {...rest} ref={ref} />;
+// const CustomInput2 = React.forwardRef<HTMLInputElement>(({ ...rest }, ref) => {
+//   return <input {...rest} ref={ref} />;
 
-  // do the rest here
-});
+//   // do the rest here
+// });
+
+const CustomInput2 = styled.input`
+  background-color: limegreen;
+`;
 
 export const HEY: React.FC = () => {
   return (
@@ -531,6 +531,7 @@ export const HEY: React.FC = () => {
           'check-field-2': true,
           'our-field': 'boo',
           'example-radio-area': '5',
+          'render-select': 'two',
         }}
         resetOnSubmit
         display="grid"
@@ -556,25 +557,21 @@ export const HEY: React.FC = () => {
           borderRadius="10px"
         >
           <INeedSomeSpace>
-            <ConnectedFormGroup name="example-radio-area" label="pls answer">
-              <ConnectedRadioGroup name="example-radio-area">
-                <ConnectedRadio
-                  name="example-radio-area"
-                  label="first"
-                  value="1"
-                />
-                <ConnectedRadio
-                  label="second"
-                  value="2"
-                  name="example-radio-area"
-                />
-                <ConnectedRadio
-                  label="third"
-                  value="3"
-                  name="example-radio-area"
-                />
-              </ConnectedRadioGroup>
-            </ConnectedFormGroup>
+            <ConnectedFormGroup2
+              name="example-radio-area"
+              label="pls answer"
+              field={{
+                component: ConnectedRadioGroupInput,
+                validation: {
+                  required: 'hey...',
+                },
+                options: [
+                  { label: 'first', value: '1' },
+                  { label: 'second', value: '2' },
+                  { label: 'third', value: '3' },
+                ],
+              }}
+            />
           </INeedSomeSpace>
           <INeedSomeSpace>
             hi
@@ -654,6 +651,7 @@ export const HEY: React.FC = () => {
           </INeedSomeSpace>
         </Box>
         <Card shadow="medium" gridArea="illo">
+          <TestOne />
           <Keyhole />
           <Background
             bg="navy-900"
@@ -685,7 +683,6 @@ export const HEY: React.FC = () => {
               <ConnectedCheckbox
                 label="check me out"
                 name="check-field-0"
-                htmlFor="check-field-0"
                 validation={{ required: 'check it...' }}
                 spacing="tight"
               />
@@ -699,7 +696,6 @@ export const HEY: React.FC = () => {
               <ConnectedCheckbox
                 label="check me out"
                 name="check-field-1"
-                htmlFor="check-field-1"
                 validation={{ required: 'check it...' }}
                 spacing="tight"
               />
@@ -713,7 +709,6 @@ export const HEY: React.FC = () => {
               <ConnectedCheckbox
                 label="check me out"
                 name="check-field-2"
-                htmlFor="check-field-2"
                 validation={{ required: 'check it...' }}
                 spacing="tight"
               />
