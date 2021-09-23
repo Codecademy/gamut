@@ -37,3 +37,31 @@ Array [
   </option>,
 ]
 `;
+
+exports[`parseSelectOptions creates an option list as object 1`] = `
+Array [
+  Object {
+    "key": "test-val",
+    "label": "Value",
+    "value": "val",
+  },
+  Object {
+    "key": "test-val2",
+    "label": "Value 2",
+    "value": "val2",
+  },
+]
+`;
+
+exports[`parseSelectOptions creates an option list as object without generated labels 1`] = `
+Array [
+  Object {
+    "label": "val",
+    "value": "val",
+  },
+  Object {
+    "label": "val2",
+    "value": "val2",
+  },
+]
+`;

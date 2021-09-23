@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [46.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@46.0.0...@codecademy/styleguide@46.0.1) (2021-09-22)
+
+
+### Bug Fixes
+
+* **SelectDropdown:** parse options fix for select dropdown ([f92e8a5](https://github.com/Codecademy/client-modules/commit/f92e8a527f5470038e41c38776612f2336225896))
+
+
+
 ## [46.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@45.0.0...@codecademy/styleguide@46.0.0) (2021-09-21)
 
 
