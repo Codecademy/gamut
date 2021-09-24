@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
-import { useFormContext } from 'react-hook-form';
+import { SubmitHandler, useFormContext } from 'react-hook-form';
 
-import { ConnectedForm, ConnectedFormGroup, FormPropsContext } from '.';
+import { ConnectedForm, ConnectedFormGroup3, FormPropsContext } from '.';
 import { SubmitContextProps } from './SubmitButton';
 
 export const submitSuccessStatus = (
@@ -27,15 +27,21 @@ const useCassForms = <
   validation,
 }: CassForm<Values, ValidationRules>) => {
   return [
-    <N extends keyof Values>(props: { name: N }) => <></>,
-    (props: { onSubmit: (values: Values) => void }) => <></>,
+    <N extends keyof Values>(props: { name: N }) => (
+      <ConnectedFormGroup3 validation={validation[props.name]} {...props} />
+    ),
+    (props: { onSubmit: SubmitHandler<Values>; children: React.ReactNode }) => (
+      <ConnectedForm defaultValues={defaultValues} {...props}>
+        {props.children}
+      </ConnectedForm>
+    ),
   ];
 };
 
 // Make ConnectedForm + ConnectedFormGroup able to accept a generic
 
 export const TestOne = () => {
-  const [ConnectedFormGroup, ConnectedForm] = useCassForms({
+  const [ConnectedFormGroup2, ConnectedForm] = useCassForms({
     defaultValues: { cool: true, beans: false },
     validation: {
       cool: { required: true },
@@ -47,8 +53,8 @@ export const TestOne = () => {
 
   return (
     <ConnectedForm onSubmit={({ cool }) => cool}>
-      <ConnectedFormGroup name="cool" />
-      <ConnectedFormGroup name="beans" />
+      <ConnectedFormGroup2 name="cool" />
+      <ConnectedFormGroup2 name="beans" />
     </ConnectedForm>
   );
 };

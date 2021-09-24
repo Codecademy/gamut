@@ -31,7 +31,7 @@ export type FormContextProps = {
   wasSubmitSuccessful?: boolean;
 };
 
-export type ConnectedFormProps<Values> = FormContextProps &
+export type ConnectedFormProps<Values extends {}> = FormContextProps &
   Omit<FormProps, 'onSubmit'> & {
     children?: React.ReactNode;
 
@@ -40,7 +40,7 @@ export type ConnectedFormProps<Values> = FormContextProps &
      */
     onSubmit: SubmitHandler<Values>;
 
-    defaultValues?: FormValues;
+    defaultValues?: Values;
 
     /**
      * Which react hook form mode we are going to use for validation.
@@ -60,7 +60,7 @@ const PropsProvider = FormPropsContext.Provider;
 /**
  * This is an in progress API! please reach out to the web-plat team if you're interested in using it.
  */
-export function ConnectedForm<Values extends TestGeneric<Values>>({
+export function ConnectedForm<Values extends FormValues>({
   children,
   onSubmit,
   defaultValues,

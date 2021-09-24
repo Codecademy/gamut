@@ -6,10 +6,8 @@ import {
   ConnectedCustomInput,
   ConnectedForm,
   ConnectedFormGroup,
-  ConnectedFormGroup2,
+  ConnectedFormGroup3,
   ConnectedInput,
-  ConnectedRadio,
-  ConnectedRadioGroup,
   ConnectedRadioGroupInput,
   ConnectedSelect,
   ConnectedTextArea,
@@ -393,13 +391,15 @@ export const InnerHEYagain: React.FC = () => {
   const shouldIStayOrShouldIGo = () => {
     if (watchedSelect === 'two' || watchedSelect === 'third') {
       return (
-        <ConnectedFormGroup2
+        <ConnectedFormGroup3
           name="another-fieldo"
           label="hey there"
           size="large"
           field={{
             component: ConnectedSelect,
-            options: ['hide the check', 'show me the check'],
+            testProps: {
+              options: ['hide the check', 'show me the check'],
+            },
           }}
         />
       );
@@ -409,18 +409,20 @@ export const InnerHEYagain: React.FC = () => {
   const iMayBeHidden = () => {
     const returnedComponent =
       watchedSecondSelect === 'show me the check' ? (
-        <ConnectedFormGroup2
+        <ConnectedFormGroup3
           name="yet-again"
           label="hi..."
           spacing="tight"
           errorType="initial"
           field={{
             component: ConnectedCheckbox,
-            label: 'hey',
+            testProps: {
+              label: 'hey',
+            },
           }}
         />
       ) : watchedSecondSelect === 'hide the check' ? (
-        <ConnectedFormGroup2
+        <ConnectedFormGroup3
           name="example-icon"
           label="please explain why you don't want to fill in the check"
           field={{
@@ -441,14 +443,16 @@ export const InnerHEYagain: React.FC = () => {
       </FloatingCard>
 
       <Box width="20rem" m={24}>
-        <ConnectedFormGroup2
+        <ConnectedFormGroup3
           name="your-fieldo"
           label="hey"
           size="large"
           field={{
             component: ConnectedSelect,
+            testProps: {
+              options: ['one', 'two', 'three'],
+            },
             validation: { required: 'check it...' },
-            options: ['one', 'two', 'three'],
           }}
         />
         <div aria-live="assertive">
@@ -557,7 +561,7 @@ export const HEY: React.FC = () => {
           borderRadius="10px"
         >
           <INeedSomeSpace>
-            <ConnectedFormGroup2
+            <ConnectedFormGroup3
               name="example-radio-area"
               label="pls answer"
               field={{
@@ -565,11 +569,13 @@ export const HEY: React.FC = () => {
                 validation: {
                   required: 'hey...',
                 },
-                options: [
-                  { label: 'first', value: '1' },
-                  { label: 'second', value: '2' },
-                  { label: 'third', value: '3' },
-                ],
+                testProps: {
+                  options: [
+                    { label: 'first', value: '1' },
+                    { label: 'second', value: '2' },
+                    { label: 'third', value: '3' },
+                  ],
+                },
               }}
             />
           </INeedSomeSpace>
@@ -593,7 +599,7 @@ export const HEY: React.FC = () => {
         >
           <INeedSomeSpace>
             "you"
-            <ConnectedFormGroup2
+            <ConnectedFormGroup3
               name="render-select"
               label="render select ok"
               field={{
@@ -604,11 +610,29 @@ export const HEY: React.FC = () => {
                     message: 'zero to hero',
                   },
                 },
-                options: ['zero', 'two', 'three'],
-                onChange: selectChange,
+                testProps: {
+                  options: ['zero', 'two', 'three'],
+                  onChange: selectChange,
+                },
               }}
             />
-            <ConnectedFormGroup2
+            <ConnectedFormGroup3
+              name="render-select"
+              label="render select ok tré"
+              field={{
+                component: ConnectedSelect,
+                testProps: {
+                  options: ['zero', 'one', 'two'],
+                },
+                validation: {
+                  pattern: {
+                    value: /^(?:(?!zero).)*$/,
+                    message: 'zero to hero',
+                  },
+                },
+              }}
+            />
+            <ConnectedFormGroup3
               name="render-input"
               label="render input ok"
               field={{
@@ -619,10 +643,12 @@ export const HEY: React.FC = () => {
                     message: 'zero to hero',
                   },
                 },
-                onChange: inputChange,
+                testProps: {
+                  onChange: inputChange,
+                },
               }}
             />
-            <ConnectedFormGroup2
+            <ConnectedFormGroup3
               name="render-radio"
               label="render radio ok"
               field={{
@@ -630,12 +656,14 @@ export const HEY: React.FC = () => {
                 validation: {
                   required: 'hey...',
                 },
-                options: [
-                  { label: 'one', value: 'first' },
-                  { label: 'two', value: 'two' },
-                  { label: 'three', value: 'three' },
-                  { label: 'zilch', value: 'zero' },
-                ],
+                testProps: {
+                  options: [
+                    { label: 'one', value: 'first' },
+                    { label: 'two', value: 'two' },
+                    { label: 'three', value: 'three' },
+                    { label: 'zilch', value: 'zero' },
+                  ],
+                },
               }}
             />
           </INeedSomeSpace>

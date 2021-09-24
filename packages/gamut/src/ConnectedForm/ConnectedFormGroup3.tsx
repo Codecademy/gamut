@@ -1,7 +1,6 @@
 import { css } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React from 'react';
-import { UseFormMethods } from 'react-hook-form';
 
 import {
   FormError,
@@ -13,7 +12,7 @@ import {
 import { Anchor } from '../Anchor';
 import { HiddenText } from '../HiddenText';
 import { Markdown } from '../Markdown';
-import { ConnectedField, renderField } from './Inputs/types';
+import { ConnectTestProp, TestConnectedField } from './Inputs/types';
 import { useFieldContext } from './utils';
 
 const ErrorAnchor = styled(Anchor)(
@@ -22,29 +21,30 @@ const ErrorAnchor = styled(Anchor)(
   })
 );
 
-export interface CustomFieldRenderProps2 {
-  name?: string;
-  error?: string;
-  isFirstError?: boolean;
-  currentlyDisabled?: boolean;
-  register: UseFormMethods['register'];
-}
-
-export type ConnectedFormGroupProps2 = Omit<FormGroupProps, 'label'> &
+export type ConnectedFormGroupBaseProps3 = Omit<FormGroupProps, 'label'> &
   Pick<FormGroupLabelProps, 'size'> & {
     customError?: string;
     errorType?: 'initial' | 'absolute';
-    field: ConnectedField;
     hideLabel?: boolean;
     label: React.ReactNode;
-    name: string;
     required?: boolean;
     showRequired?: boolean;
     spacing?: 'base' | 'tight';
     tooltip?: any;
   };
 
-export const ConnectedFormGroup2: React.FC<ConnectedFormGroupProps2> = ({
+export interface ConnectedFormGroupProps3<
+  N extends string,
+  T extends TestConnectedField
+> extends ConnectedFormGroupBaseProps3 {
+  field: ConnectTestProp<T>;
+  name: N;
+}
+
+export function ConnectedFormGroup3<
+  N extends string,
+  T extends TestConnectedField
+>({
   customError,
   children,
   disabled,
@@ -59,8 +59,9 @@ export const ConnectedFormGroup2: React.FC<ConnectedFormGroupProps2> = ({
   size,
   spacing,
   tooltip,
-}) => {
+}: ConnectedFormGroupProps3<N, T>) {
   const { error, isFirstError, isDisabled } = useFieldContext(name);
+
   const currentlyDisabled = isDisabled || disabled;
 
   const renderedLabel = (
@@ -81,7 +82,7 @@ export const ConnectedFormGroup2: React.FC<ConnectedFormGroupProps2> = ({
       mb={spacing === 'tight' ? 0 : 8}
     >
       {hideLabel ? <HiddenText>{renderedLabel}</HiddenText> : renderedLabel}
-      {renderField(field, name)}
+      {field.component}
       {children}
       {(error || customError) && (
         <FormError
@@ -109,4 +110,4 @@ export const ConnectedFormGroup2: React.FC<ConnectedFormGroupProps2> = ({
       )}
     </FormGroup>
   );
-};
+}
