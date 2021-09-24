@@ -40,7 +40,7 @@ export type ConnectedFormProps<Values extends {}> = FormContextProps &
      */
     onSubmit: SubmitHandler<Values>;
 
-    defaultValues?: Values;
+    defaultValues?: FormValues;
 
     /**
      * Which react hook form mode we are going to use for validation.
