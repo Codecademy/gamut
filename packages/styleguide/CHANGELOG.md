@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [46.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@46.2.0...@codecademy/styleguide@46.3.0) (2021-09-24)
+
+
+### Features
+
+* update landing page `CTA` to show fill button or cta button ([c18f7f8](https://github.com/Codecademy/client-modules/commit/c18f7f8bb494dfa4d0c9f0d53dd3decae56b3664))
+
+
+
 ## [46.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@46.1.0...@codecademy/styleguide@46.2.0) (2021-09-24)
 
 
