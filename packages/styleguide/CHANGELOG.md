@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [46.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@46.0.1...@codecademy/styleguide@46.1.0) (2021-09-24)
+
+
+### Features
+
+* **docs:** elaborate Popover vs ToolTip ([7bba879](https://github.com/Codecademy/client-modules/commit/7bba8793aec477ccce1cd8ce2861533327447c09))
+
+
+
 ### [46.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@46.0.0...@codecademy/styleguide@46.0.1) (2021-09-22)
 
 
