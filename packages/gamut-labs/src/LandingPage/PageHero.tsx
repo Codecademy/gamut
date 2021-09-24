@@ -37,6 +37,7 @@ export type PageHeroProps = BaseProps & {
   media?: MediaProps;
   textLength: 'short' | 'long';
   showImageOnMobile?: boolean;
+  isSubheader?: boolean;
 };
 
 const getColumnLayout = (
@@ -76,6 +77,7 @@ export const PageHero: React.FC<PageHeroProps> = ({
   media,
   textLength,
   showImageOnMobile,
+  isSubheader,
   testId,
   onAnchorClick,
 }) => {
@@ -84,7 +86,7 @@ export const PageHero: React.FC<PageHeroProps> = ({
   return (
     <LayoutGrid data-testid={testId} rowGap={16} columnGap={{ _: 8, sm: 32 }}>
       <Column size={{ sm: left }} alignContent="flex-start">
-        {title && <Title isPageHeading>{title}</Title>}
+        {title && <Title isPageHeading={!isSubheader}>{title}</Title>}
         {desc && <Description text={desc} onAnchorClick={onAnchorClick} />}
         {cta && (
           <CTA href={cta.href} onCtaButtonClick={cta.onClick}>

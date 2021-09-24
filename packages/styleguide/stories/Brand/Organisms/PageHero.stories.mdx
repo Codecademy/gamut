@@ -87,3 +87,20 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
     {(args) => <PageHero {...args} showImageOnMobile />}
   </Story>
 </Canvas>
+
+## Subheader
+
+<Canvas>
+  <Story name="Subheader">
+    {(args) => (
+      <PageHero
+        {...args}
+        title="Short Headline"
+        desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet dolor in porta adipiscing euismod id sodales velit. Consequat, nibh quam suscipit pharetra, lacus nam. Elit ullamcorper magna ultricies cursus tempus amet. Urna, sagittis lobortis sit quis nibh facilisis euismod dolor. Dolor iaculis congue sit pharetra. A lorem sed dapibus est vel eros mauris malesuada tortor."
+        isSubheader
+        textLength="short"
+        buttonType="regular"
+      />
+    )}
+  </Story>
+</Canvas>
