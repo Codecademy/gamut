@@ -7,15 +7,14 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
   title={title}
   component={PageHero}
   args={{
-    title:
-      "I'd rather be listening to Grammy-Award winning 1999 hit Smooth by Santana",
+    title: 'Welcome to Codecademy',
     desc:
       'feat. [Rob Thomas of Matchbox Twenty](https://en.wikipedia.org/wiki/Rob_Thomas_(musician)) off the multi-platinum album',
     onAnchorClick: () =>
       // eslint-disable-next-line no-console
       console.log('You clicked me an anchor tag inside Markdown!'),
     cta: {
-      text: 'Supernatural',
+      text: 'Click Me',
       href:
         'https://open.spotify.com/album/10aiDpdFGyfCFEcqpx6XTq?si=xR1nDqVqROK6KYM8J-l_rw',
       onClick: () => {
@@ -25,10 +24,8 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
     },
     media: {
       type: 'image',
-      src:
-        'https://www.tshirtvortex.net/wp-content/uploads/2019/03/rathersmooth.jpg',
-      alt:
-        'A burly person with long blonde hair is seen from behind wearing a white t-shirt with bold black lettering that reads "I\'d rather be listening to Grammy-Award winning 1999 hit Smooth by Santana feat. Rob Thomas of Matchbox Twenty off the multi-platinum album Supernatural',
+      src: 'https://content.codecademy.com/courses/free/boba.svg',
+      alt: 'Codey',
     },
   }}
   parameters={{
@@ -92,5 +89,15 @@ Omit the `desc` prop to not show a description.
 <Canvas>
   <Story name="Without Description">
     {(args) => <PageHero {...args} desc={undefined} />}
+  </Story>
+</Canvas>
+
+## Eyebrow
+
+Using the `eyebrow` prop, you can add eyebrow text to the hero.
+
+<Canvas>
+  <Story name="Eyebrow">
+    {(args) => <PageHero {...args} eyebrow="Hello there" />}
   </Story>
 </Canvas>

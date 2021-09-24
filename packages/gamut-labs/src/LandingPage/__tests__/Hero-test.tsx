@@ -16,6 +16,14 @@ describe('PageHero', () => {
     wrapper.getByText('desc');
   });
 
+  it('should render an eyebrow when one is provided with a title', () => {
+    const { view: wrapper } = renderView({
+      eyebrow: 'eyebrow',
+      title: 'title',
+    });
+    wrapper.getByText('eyebrow');
+  });
+
   it('can pass a callback for when anchor tags in the description are clicked', () => {
     const testOnClick = jest.fn();
 
@@ -61,6 +69,7 @@ describe('PageHero', () => {
     });
     wrapper.getByTitle('video-title');
   });
+
   it('should not render a video when media prop is not provided', () => {
     const { view: wrapper } = renderView({ title: 'title' });
     expect(wrapper.queryByTitle('video-title')).not.toBeInTheDocument();
