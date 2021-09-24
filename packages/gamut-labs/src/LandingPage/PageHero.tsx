@@ -1,4 +1,5 @@
 import {
+  Box,
   Column,
   ColumnProps,
   LayoutGrid,
@@ -104,9 +105,15 @@ export const PageHero: React.FC<PageHeroProps> = ({
         )}
         {desc && <Description text={desc} onAnchorClick={onAnchorClick} />}
         {cta && (
-          <CTA href={cta.href} onCtaButtonClick={cta.onClick}>
-            {cta.text}
-          </CTA>
+          <Box mt={32}>
+            <CTA
+              href={cta.href}
+              onCtaButtonClick={cta.onClick}
+              buttonType={cta.buttonType}
+            >
+              {cta.text}
+            </CTA>
+          </Box>
         )}
       </LeftColumn>
       {media && <PageHeroMedia media={media} size={right} />}

@@ -62,22 +62,22 @@ Change the `media` prop to `type: video` and pass required video props to show a
   </Story>
 </Canvas>
 
-## Eyebrow
+## Regular Button
 
-Using the `eyebrow` prop, you can add eyebrow text to the hero.
+Pass `buttonType` as `fill` to show a `FillButton` instead of the larger `CTAButton`. Text should always be Call to Action text regardless of button type.
 
 <Canvas>
-  <Story name="Eyebrow">
-    {(args) => <PageHero {...args} eyebrow="Hello there" />}
+  <Story name="Regular Button">
+    {(args) => <PageHero {...args} cta={{ ...args.cta, buttonType: 'fill' }} />}
   </Story>
 </Canvas>
 
-## Without CTA
+## Without Button
 
-Omit the `cta` prop to not show a CTA.
+Omit the `cta` prop to not show a button.
 
 <Canvas>
-  <Story name="Without CTA">
+  <Story name="Without Button">
     {(args) => <PageHero {...args} cta={undefined} />}
   </Story>
 </Canvas>
@@ -89,5 +89,15 @@ Omit the `desc` prop to not show a description.
 <Canvas>
   <Story name="Without Description">
     {(args) => <PageHero {...args} desc={undefined} />}
+  </Story>
+</Canvas>
+
+## Eyebrow
+
+Using the `eyebrow` prop, you can add eyebrow text to the hero.
+
+<Canvas>
+  <Story name="Eyebrow">
+    {(args) => <PageHero {...args} eyebrow="Hello there" />}
   </Story>
 </Canvas>
