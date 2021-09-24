@@ -3,6 +3,7 @@ import {
   Column,
   ColumnProps,
   LayoutGrid,
+  Text,
   VideoProps,
 } from '@codecademy/gamut';
 import styled from '@emotion/styled';
