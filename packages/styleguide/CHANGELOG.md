@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [46.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@46.1.0...@codecademy/styleguide@46.2.0) (2021-09-24)
+
+
+### Features
+
+* **PageHero:** add optional eyebrow text ([ea3ce0b](https://github.com/Codecademy/client-modules/commit/ea3ce0bc6f5f330514c1ac297ad7d3c9fdacc739))
+
+
+
 ## [46.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@46.0.1...@codecademy/styleguide@46.1.0) (2021-09-24)
 
 
