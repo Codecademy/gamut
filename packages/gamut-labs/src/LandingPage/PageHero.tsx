@@ -1,4 +1,10 @@
-import { Column, ColumnProps, LayoutGrid, VideoProps } from '@codecademy/gamut';
+import {
+  Column,
+  ColumnProps,
+  LayoutGrid,
+  Text,
+  VideoProps,
+} from '@codecademy/gamut';
 import styled from '@emotion/styled';
 import React from 'react';
 
@@ -31,7 +37,15 @@ type ColumnLayout = {
 };
 
 export type PageHeroProps = BaseProps & {
+  /**
+   * Whether to show an image or a video, with the associated props to do so
+   */
   media?: MediaProps;
+
+  /**
+   * Eyebrow text shown above title
+   */
+  eyebrow?: string;
 };
 
 const getColumnLayout = (media: MediaProps | undefined): ColumnLayout => {
@@ -59,6 +73,7 @@ export const PageHero: React.FC<PageHeroProps> = ({
   desc,
   cta,
   media,
+  eyebrow,
   testId,
   onAnchorClick,
 }) => {
@@ -72,7 +87,21 @@ export const PageHero: React.FC<PageHeroProps> = ({
           sm: left,
         }}
       >
-        {title && <Title isPageHeading>{title}</Title>}
+        {title && (
+          <Title isPageHeading>
+            {eyebrow && (
+              <Text
+                fontSize={{ _: 20, sm: 22 }}
+                fontFamily="accent"
+                mb={16}
+                display="block"
+              >
+                {eyebrow}
+              </Text>
+            )}
+            {title}
+          </Title>
+        )}
         {desc && <Description text={desc} onAnchorClick={onAnchorClick} />}
         {cta && (
           <CTA href={cta.href} onCtaButtonClick={cta.onClick}>
