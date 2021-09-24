@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [23.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@23.1.0...@codecademy/gamut-labs@23.2.0) (2021-09-24)
+
+
+### Features
+
+* update landing page `CTA` to show fill button or cta button ([c18f7f8](https://github.com/Codecademy/client-modules/commit/c18f7f8bb494dfa4d0c9f0d53dd3decae56b3664))
+
+
+
 ## [23.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@23.0.1...@codecademy/gamut-labs@23.1.0) (2021-09-24)
 
 
