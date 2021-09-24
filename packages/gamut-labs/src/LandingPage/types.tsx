@@ -23,7 +23,7 @@ export type BaseProps = {
     text: string;
     href: string;
     onClick?: React.MouseEventHandler;
-    buttonType?: 'cta' | 'regular';
+    buttonType?: 'cta' | 'fill';
   };
 
   testId?: string;

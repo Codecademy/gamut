@@ -37,12 +37,12 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 
 ## Regular Button
 
-Pass `buttonType` as `regular` to show a regular `FillButton` instead of the larger `CTAButton`.
+Pass `buttonType` as `fill` to show a `FillButton` instead of the larger `CTAButton`. Text should always be Call to Action text regardless of button type.
 
 <Canvas>
   <Story name="Regular Button">
     {(args) => (
-      <PagePrefooter {...args} cta={{ ...args.cta, buttonType: 'regular' }} />
+      <PagePrefooter {...args} cta={{ ...args.cta, buttonType: 'fill' }} />
     )}
   </Story>
 </Canvas>

@@ -160,7 +160,7 @@ Omit the `desc` prop to not show a description. You can also omit the `desc` pro
 
 ## Regular Button
 
-Pass `buttonType` as `regular` to show a regular `FillButton` instead of the larger `CTAButton`.
+Pass `buttonType` as `fill` to show a `FillButton` instead of the larger `CTAButton`. Text should always be Call to Action text regardless of button type.
 
 <Canvas>
   <Story
@@ -173,7 +173,7 @@ Pass `buttonType` as `regular` to show a regular `FillButton` instead of the lar
       <PageFeatures
         {...args}
         features={args.features.slice(0, 3)}
-        cta={{ ...args.cta, buttonType: 'regular' }}
+        cta={{ ...args.cta, buttonType: 'fill' }}
       />
     )}
   </Story>

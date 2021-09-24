@@ -67,13 +67,11 @@ Change the `media` prop to `type: video` and pass required video props to show a
 
 ## Regular Button
 
-Pass `buttonType` as `regular` to show a regular `FillButton` instead of the larger `CTAButton`.
+Pass `buttonType` as `fill` to show a `FillButton` instead of the larger `CTAButton`. Text should always be Call to Action text regardless of button type.
 
 <Canvas>
   <Story name="Regular Button">
-    {(args) => (
-      <PageHero {...args} cta={{ ...args.cta, buttonType: 'regular' }} />
-    )}
+    {(args) => <PageHero {...args} cta={{ ...args.cta, buttonType: 'fill' }} />}
   </Story>
 </Canvas>
 

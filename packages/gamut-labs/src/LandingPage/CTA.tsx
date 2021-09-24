@@ -6,14 +6,14 @@ import { DarkModeProps } from './types';
 export type CTAProps = DarkModeProps & {
   href: string;
   onCtaButtonClick?: React.MouseEventHandler;
-  buttonType?: 'cta' | 'regular';
+  buttonType?: 'cta' | 'fill';
 };
 
 export const CTA: React.FC<CTAProps> = ({
   buttonType = 'cta',
   ...buttonProps
 }) =>
-  buttonType === 'regular' ? (
+  buttonType === 'fill' ? (
     <FillButton {...buttonProps} />
   ) : (
     <CTAButton {...buttonProps} />
