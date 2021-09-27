@@ -217,8 +217,6 @@ export type ToolTipProps = ToolTipContainerProps & {
   toolTipStyles?: BoxProps;
 };
 
-let tooltipIdCounter = 0;
-
 export const ToolTip: React.FC<ToolTipProps> = ({
   alignment = 'top-right',
   children,
