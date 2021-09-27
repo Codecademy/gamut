@@ -6,7 +6,6 @@ import {
   timing,
   variant,
 } from '@codecademy/gamut-styles';
-import { MediaQueryMap } from '@codecademy/variance';
 import styled from '@emotion/styled';
 import React, { ReactNode } from 'react';
 
@@ -35,8 +34,6 @@ const TargetContainer = styled.div`
   padding: 0;
 `;
 
-type BreakpointVisibility = MediaQueryMap<boolean>;
-
 type ToolTipBodyProps = {
   /**
    * How to align the tooltip relative to the target.
@@ -46,13 +43,7 @@ type ToolTipBodyProps = {
   mode?: ColorModes;
 };
 
-type ToolTipContainerProps = ToolTipBodyProps & {
-  /**
-   * Dictionary describing breakpoints in which the tool tip children should be hidden overriding regular showing behavior.
-   * Default is to be visible at all widths.
-   */
-  breakpointVisibility?: BreakpointVisibility;
-};
+type ToolTipContainerProps = ToolTipBodyProps;
 
 const getToolTipVisibilityCSS = (visibility: boolean) =>
   visibility
@@ -102,21 +93,7 @@ const ToolTipContainer = styled.div<Required<ToolTipContainerProps>>`
   ${TargetContainer}:hover + &,
   ${TargetContainer}:focus-within + &,
   &:hover {
-    ${({ theme, breakpointVisibility }) =>
-      breakpointVisibility &&
-      Object.keys(breakpointVisibility).map(
-        (key: keyof BreakpointVisibility) => {
-          const isVisible = breakpointVisibility[key];
-          return (
-            typeof isVisible !== 'undefined' &&
-            (key === '_'
-              ? getToolTipVisibilityCSS(isVisible)
-              : `${theme.breakpoints[key]} { ${getToolTipVisibilityCSS(
-                  isVisible
-                )} }`)
-          );
-        }
-      )}
+    ${getToolTipVisibilityCSS(true)}
   }
 
   ${({ alignment }) =>
@@ -240,9 +217,10 @@ export type ToolTipProps = ToolTipContainerProps & {
   toolTipStyles?: BoxProps;
 };
 
+let tooltipIdCounter = 0;
+
 export const ToolTip: React.FC<ToolTipProps> = ({
   alignment = 'top-right',
-  breakpointVisibility = { _: true },
   children,
   className,
   containerClassName,
@@ -276,7 +254,6 @@ export const ToolTip: React.FC<ToolTipProps> = ({
         role="tooltip"
         mode={mode}
         aria-live="polite"
-        breakpointVisibility={breakpointVisibility}
       >
         <ToolTipBody
           alignment={alignment}

@@ -146,22 +146,3 @@ Tooltips can be of a `dark` or `light` visual mode.
     }}
   </Story>
 </Canvas>
-
-## Breakpoint Visibility
-
-Tooltips can be hidden at various breakpoints. They're shown at all by default, but you can go wild (not that you should) and show/hide tooltips at certain ranges. Try resizing your window to different breakpoints and confirm you
-do (not) see the tooltip render.
-
-<Canvas>
-  <Story name="Breakpoint Visibility">
-    {(args) => {
-      return (
-        <ToolTip
-          {...args}
-          target="Information!"
-          breakpointVisibility={{ xs: false, sm: true, md: false, lg: true }}
-        />
-      );
-    }}
-  </Story>
-</Canvas>
