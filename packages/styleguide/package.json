@@ -1,7 +1,7 @@
 {
   "name": "@codecademy/styleguide",
   "description": "Styleguide & Component library for codecademy.com",
-  "version": "46.3.0",
+  "version": "46.3.1",
   "author": "Codecademy Engineering",
   "scripts": {
     "start": "yarn storybook",
@@ -33,7 +33,6 @@
     "@storybook/addon-docs": "6.3.4",
     "@storybook/addon-essentials": "6.3.4",
     "@storybook/addon-links": "6.3.4",
-    "@storybook/addon-storyshots": "6.3.4",
     "@storybook/addons": "6.3.4",
     "@storybook/react": "6.3.4",
     "@storybook/theming": "6.3.4",
