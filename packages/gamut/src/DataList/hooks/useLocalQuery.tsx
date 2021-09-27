@@ -1,7 +1,7 @@
 import { orderBy, uniq } from 'lodash';
 import { useMemo, useState } from 'react';
 
-import { ColumnConfig, Query } from '..';
+import { ColumnConfig, Query, SortDirection } from '..';
 
 export interface LocalQueryShape<
   Rows,
@@ -62,11 +62,15 @@ export const useLocalQuery = <
     }
 
     if (sort) {
-      const dimensions = Object.keys(sort);
-      const directions = Object.values(sort);
+      const dimensions = Object.keys(sort) as (keyof Rows)[];
+      const directions = Object.values(sort) as Exclude<
+        SortDirection,
+        'none'
+      >[];
+
       computedRows = orderBy(
         computedRows,
-        dimensions.map((key) => ({ [key as keyof Rows]: val }: Rows) =>
+        dimensions.map((key) => ({ [key]: val }: Rows) =>
           typeof val === 'string' ? val.toLowerCase() : val
         ),
         directions as []

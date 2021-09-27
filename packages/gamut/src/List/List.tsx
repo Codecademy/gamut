@@ -24,8 +24,8 @@ export const List = forwardRef<HTMLUListElement, ListProps>(
     const value = useList({ variant, spacing, scrollable });
     return (
       <ListProvider value={value}>
-        {header}
-        <Box position="relative">
+        <Box position="relative" maxWidth={1} overflowX="auto">
+          {header}
           <ListEl ref={ref} variant={value.variant}>
             {children}
           </ListEl>

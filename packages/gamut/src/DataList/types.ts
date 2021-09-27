@@ -7,6 +7,13 @@ export type SortDirection = 'asc' | 'desc' | 'none';
 export type Filter<T> = { [K in keyof T]?: T[K] | 'none' };
 
 export type Sort<T> = { [K in keyof T]?: Exclude<SortDirection, 'none'> };
+
+export interface PaginatedQuery {
+  page: number;
+  size: number;
+  total: number;
+}
+
 export interface Query<T> {
   filter?: Filter<T>;
   sort?: Sort<T>;
