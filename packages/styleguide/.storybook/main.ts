@@ -1,6 +1,5 @@
 const path = require('path');
 const { configs } = require('@codecademy/webpack-config');
-const getStories = require('./getStories');
 
 // https://github.com/storybookjs/storybook/issues/12262#issuecomment-681953346
 // make a shallow copy of an object, rejecting keys that match /emotion/
@@ -22,7 +21,7 @@ module.exports = {
     './addons/system/preset',
     'storybook-addon-designs',
   ],
-  stories: getStories(),
+  stories: ['../stories/**/*.stories.@(mdx|tsx)'],
   typescript: {
     reactDocgen: 'react-docgen-typescript',
     reactDocgenTypescriptOptions: {
