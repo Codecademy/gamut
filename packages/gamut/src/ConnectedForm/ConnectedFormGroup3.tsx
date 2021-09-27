@@ -12,12 +12,7 @@ import {
 import { Anchor } from '../Anchor';
 import { HiddenText } from '../HiddenText';
 import { Markdown } from '../Markdown';
-import {
-  ConnectedField2,
-  ConnectTestProp,
-  IFieldProps,
-  renderField,
-} from './Inputs/types';
+import { ConnectedField2, FieldProps } from './Inputs/types';
 import { useFieldContext } from './utils';
 
 const ErrorAnchor = styled(Anchor)(
@@ -41,7 +36,7 @@ export type ConnectedFormGroupBaseProps3 = Omit<FormGroupProps, 'label'> &
 
 export interface ConnectedFormGroupProps3<T extends ConnectedField2>
   extends ConnectedFormGroupBaseProps3 {
-  field: ConnectTestProp<T>;
+  field: Omit<React.ComponentProps<T>, 'name'> & FieldProps<T>;
 }
 
 export function ConnectedFormGroup3<T extends ConnectedField2>({
@@ -61,6 +56,7 @@ export function ConnectedFormGroup3<T extends ConnectedField2>({
   tooltip,
 }: ConnectedFormGroupProps3<T>) {
   const { error, isFirstError, isDisabled } = useFieldContext(name);
+  const { component: Component, ...rest } = field;
   const currentlyDisabled = isDisabled || disabled;
 
   const renderedLabel = (
@@ -81,7 +77,7 @@ export function ConnectedFormGroup3<T extends ConnectedField2>({
       mb={spacing === 'tight' ? 0 : 8}
     >
       {hideLabel ? <HiddenText>{renderedLabel}</HiddenText> : renderedLabel}
-      {renderField(field, name)}
+      <Component name={name} {...(rest as any)} />
       {children}
       {(error || customError) && (
         <FormError

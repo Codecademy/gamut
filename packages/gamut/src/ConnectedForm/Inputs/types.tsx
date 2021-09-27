@@ -45,10 +45,17 @@ export type ConnectedBaseRadioInputProps = Omit<ConnectedRadioProps, 'name'> & {
   value: string | number;
 };
 
-export type ConnectedBaseRadioGroupInputProps = ConnectedBaseRadioGroupProps & {
+export type ConnectedBaseRadioGroupInputProps = Omit<
+  ConnectedBaseRadioGroupProps,
+  'children'
+> & {
   options: ConnectedBaseRadioInputProps[];
 };
-export type ConnectedBaseSelectProps = Omit<SelectProps, 'defaultValue'>;
+
+export type ConnectedBaseSelectProps = Omit<
+  SelectProps,
+  'defaultValue' | 'name'
+>;
 
 export type ConnectedBaseTextAreaProps = Omit<TextAreaProps, 'defaultValue'>;
 
@@ -128,12 +135,16 @@ export type ConnectedField2 =
   | typeof ConnectedSelect
   | typeof ConnectedTextArea;
 
-export type ConnectedField3 =
-  | React.FC<ConnectedCheckboxProps>
-  | React.FC<ConnectedInputProps>
-  | React.FC<ConnectedRadioGroupInputProps>
-  | React.FC<ConnectedSelectProps>
-  | React.FC<ConnectedTextAreaProps>;
+export interface FieldProps<T extends ConnectedField2> {
+  component: T;
+  onUpdate?: (value: boolean) => void;
+  validation?: RegisterOptions;
+}
+
+export interface FieldTypeCheck<T extends ConnectedField2> {
+  field: Omit<React.ComponentProps<T>, 'name'> & FieldProps<T>;
+  name: string;
+}
 
 const isCheckbox2 = (
   component: ConnectedField2
@@ -142,8 +153,8 @@ const isCheckbox2 = (
 };
 
 const isCheckbox3 = (
-  props: React.ComponentProps<ConnectedField2>
-): props is typeof ConnectedCheckbox => {
+  props: Omit<React.ComponentProps<ConnectedField2>, 'name'>
+): props is Omit<React.ComponentProps<ConnectedField2>, 'name'> => {
   return true;
 };
 
@@ -192,65 +203,35 @@ export const renderField = (field: ConnectedField, name: string) => {
   return <Component name={name} {...rest} />;
 };
 
-export const renderField2 = <T extends ConnectedField3>({
+export const renderField2 = <T extends ConnectedField2>({
   field,
   name,
-}: MySweetFunc<T>) => {
+}: FieldTypeCheck<T>) => {
   if (isCheckbox2(field.component)) {
-    if (isCheckbox3(field.props)) {
-      const { component: Component, props, ...rest } = field;
-      return <Component {...props} />;
-    }
+    const { component: Component, ...rest } = field;
+    return <Component {...(rest as React.ComponentProps<T>)} />;
   }
 
   if (isRadioGroup2(field.component)) {
-    const { component: Component, props, ...rest } = field;
-    return <Component name={name} {...props} />;
+    const { component: Component, ...rest } = field;
+    return <Component {...rest} />;
   }
 
   if (isSelect2(field.component)) {
-    const { component: Component, props, ...rest } = field;
-    return <Component name={name} {...(rest, props)} />;
+    const { component: Component, ...rest } = field;
+    return <Component {...(rest as React.ComponentProps<typeof Component>)} />;
   }
 
   if (isTextArea2(field.component)) {
-    const { component: Component, props, ...rest } = field;
+    const { component: Component, ...rest } = field;
     return <Component name={name} {...rest} />;
   }
 
-  const { component: Component, props, ...rest } = field;
+  const { component: Component, ...rest } = field;
   return <Component name={name} {...rest} />;
 };
-
-export interface IFieldProps<P extends ConnectedField2> {
-  is: React.ComponentType<P>;
-  props: BaseProps & React.ComponentProps<P>;
-}
 
 interface BaseProps {
   onUpdate?: (value: boolean) => void;
   validation?: RegisterOptions;
 }
-export interface ConnectTestProp<T extends ConnectedField3> {
-  component: ConnectedField3;
-  // to-do : how do i do this w/o nesting
-  props: React.ComponentProps<T>;
-  onUpdate?: (value: boolean) => void;
-  validation?: RegisterOptions;
-}
-
-export interface MySweetFunc<T extends ConnectedField3> {
-  field: ConnectTestProp<T>;
-  name: string;
-}
-export const renderField22 = <C extends ConnectedField3>({
-  field,
-  name,
-}: MySweetFunc<C>) => {
-  type P = React.ComponentProps<C>;
-
-  const { component: Component, props, ...rest } = field;
-  const newProps = { ...props, ...rest };
-
-  return <Component {...(newProps as P)} />;
-};

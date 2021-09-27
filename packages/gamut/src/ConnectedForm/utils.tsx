@@ -1,7 +1,13 @@
 import React, { useContext } from 'react';
 import { SubmitHandler, useFormContext } from 'react-hook-form';
 
-import { ConnectedForm, ConnectedFormGroup3, FormPropsContext } from '.';
+import {
+  ConnectedField2,
+  ConnectedFormGroup3,
+  ConnectedFormGroupProps3,
+  FormPropsContext,
+} from '.';
+import { ConnectedFieldProps } from './Inputs/types';
 import { SubmitContextProps } from './SubmitButton';
 
 export const submitSuccessStatus = (
@@ -19,6 +25,10 @@ interface CassForm<V, R extends { [K in keyof V]: any }> {
   validation: R;
 }
 
+interface CassField2<N> {
+  <T extends ConnectedField2>(props: T & { name: N }): JSX.Element;
+}
+
 const useCassForms = <
   Values,
   ValidationRules extends { [K in keyof Values]: any }
@@ -26,22 +36,23 @@ const useCassForms = <
   defaultValues,
   validation,
 }: CassForm<Values, ValidationRules>) => {
-  return [
-    <N extends keyof Values>(props: { name: N }) => (
-      <ConnectedFormGroup3 validation={validation[props.name]} {...props} />
-    ),
-    (props: { onSubmit: SubmitHandler<Values>; children: React.ReactNode }) => (
-      <ConnectedForm defaultValues={defaultValues} {...props}>
-        {props.children}
-      </ConnectedForm>
-    ),
-  ];
+  const formOverFunction = ((
+    props: React.ComponentProps<typeof ConnectedFormGroup3>
+  ) => <ConnectedFormGroup3 {...props} />) as CassField2<keyof Values>;
+  return [formOverFunction];
 };
 
+//[pass key of validation into the key of ]
+
+// props: { onSubmit: SubmitHandler<Values>; children: React.ReactNode }) => (
+//   <ConnectedForm defaultValues={defaultValues} {...props}>
+//     {props.children}
+//   </ConnectedForm>
+// ),
 // Make ConnectedForm + ConnectedFormGroup able to accept a generic
 
 export const TestOne = () => {
-  const [ConnectedFormGroup2, ConnectedForm] = useCassForms({
+  const [ConnectedFormGroup3, ConnectedForm] = useCassForms({
     defaultValues: { cool: true, beans: false },
     validation: {
       cool: { required: true },
@@ -53,8 +64,8 @@ export const TestOne = () => {
 
   return (
     <ConnectedForm onSubmit={({ cool }) => cool}>
-      <ConnectedFormGroup2 name="cool" />
-      <ConnectedFormGroup2 name="beans" />
+      <ConnectedFormGroup3 name="cool" />
+      <ConnectedFormGroup3 name="beans" />
     </ConnectedForm>
   );
 };

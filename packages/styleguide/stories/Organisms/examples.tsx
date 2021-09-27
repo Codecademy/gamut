@@ -397,9 +397,7 @@ export const InnerHEYagain: React.FC = () => {
           size="large"
           field={{
             component: ConnectedSelect,
-            testProps: {
-              options: ['hide the check', 'show me the check'],
-            },
+            options: ['hide the check', 'show me the check'],
           }}
         />
       );
@@ -416,9 +414,7 @@ export const InnerHEYagain: React.FC = () => {
           errorType="initial"
           field={{
             component: ConnectedCheckbox,
-            testProps: {
-              label: 'hey',
-            },
+            label: 'hey',
           }}
         />
       ) : watchedSecondSelect === 'hide the check' ? (
@@ -449,9 +445,7 @@ export const InnerHEYagain: React.FC = () => {
           size="large"
           field={{
             component: ConnectedSelect,
-            testProps: {
-              options: ['one', 'two', 'three'],
-            },
+            options: ['one', 'two', 'three'],
             validation: { required: 'check it...' },
           }}
         />
@@ -569,22 +563,20 @@ export const HEY: React.FC = () => {
                 validation: {
                   required: 'hey...',
                 },
-                testProps: {
-                  options: [
-                    { label: 'first', value: '1' },
-                    { label: 'second', value: '2' },
-                    { label: 'third', value: '3' },
-                  ],
-                },
+                options: [
+                  { label: 'first', value: '1' },
+                  { label: 'second', value: '2' },
+                  { label: 'third', value: '3' },
+                ],
               }}
             />
           </INeedSomeSpace>
           <INeedSomeSpace>
             hi
-            <ConnectedCustomInput
+            <ConnectedSelect
               name="render-input-two"
-              component={CustomInput2}
               validation={{ required: 'hey' }}
+              options={['one', 'two']}
             />
           </INeedSomeSpace>
         </Box>
@@ -610,10 +602,8 @@ export const HEY: React.FC = () => {
                     message: 'zero to hero',
                   },
                 },
-                testProps: {
-                  options: ['zero', 'two', 'three'],
-                  onChange: selectChange,
-                },
+                options: ['zero', 'two', 'three'],
+                onChange: selectChange,
               }}
             />
             <ConnectedFormGroup3
@@ -621,9 +611,7 @@ export const HEY: React.FC = () => {
               label="render select ok tré"
               field={{
                 component: ConnectedSelect,
-                testProps: {
-                  options: ['zero', 'one', 'two'],
-                },
+                options: ['zero', 'one', 'two'],
                 validation: {
                   pattern: {
                     value: /^(?:(?!zero).)*$/,
@@ -637,14 +625,12 @@ export const HEY: React.FC = () => {
               label="render input ok"
               field={{
                 component: ConnectedInput,
+                onChange: inputChange,
                 validation: {
                   pattern: {
                     value: /^(?:(?!zero).)*$/,
                     message: 'zero to hero',
                   },
-                },
-                testProps: {
-                  onChange: inputChange,
                 },
               }}
             />
@@ -656,14 +642,12 @@ export const HEY: React.FC = () => {
                 validation: {
                   required: 'hey...',
                 },
-                testProps: {
-                  options: [
-                    { label: 'one', value: 'first' },
-                    { label: 'two', value: 'two' },
-                    { label: 'three', value: 'three' },
-                    { label: 'zilch', value: 'zero' },
-                  ],
-                },
+                options: [
+                  { label: 'one', value: 'first' },
+                  { label: 'two', value: 'two' },
+                  { label: 'three', value: 'three' },
+                  { label: 'zilch', value: 'zero' },
+                ],
               }}
             />
           </INeedSomeSpace>
