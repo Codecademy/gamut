@@ -1,4 +1,4 @@
-import { Video } from '@codecademy/gamut';
+import { Box, Video } from '@codecademy/gamut';
 import { mediaQueries } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React from 'react';
@@ -63,11 +63,7 @@ export const PageVideoGallery: React.FC<PageVideoGalleryProps> = ({
   testId,
 }) => (
   <div>
-    {title && (
-      <Title mode={mode} isPageHeading>
-        {title}
-      </Title>
-    )}
+    {title && <Title mode={mode}>{title}</Title>}
     {desc && (
       <StyledDesc text={desc} onAnchorClick={onAnchorClick} mode={mode} />
     )}
@@ -82,9 +78,16 @@ export const PageVideoGallery: React.FC<PageVideoGalleryProps> = ({
       ))}
     </Grid>
     {cta && (
-      <CTA href={cta.href} onCtaButtonClick={cta.onClick} mode={mode}>
-        {cta.text}
-      </CTA>
+      <Box mt={32}>
+        <CTA
+          href={cta.href}
+          onCtaButtonClick={cta.onClick}
+          mode={mode}
+          buttonType={cta.buttonType}
+        >
+          {cta.text}
+        </CTA>
+      </Box>
     )}
   </div>
 );
