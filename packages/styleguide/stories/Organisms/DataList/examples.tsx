@@ -126,6 +126,7 @@ export const DataListTemplate = (args: any) => {
   return (
     <Background bg="white" height={600} overflowY="auto">
       <DataList
+        id="example"
         idKey={idKey}
         rows={rows}
         columns={columns}

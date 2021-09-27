@@ -44,8 +44,8 @@ export function DataRow<
             disabled
             spacing="tight"
             label={<Text screenreader>Select Row {id}</Text>}
-            name="placeholder"
-            htmlFor="placeholder"
+            name={`${id}-placeholder-select`}
+            htmlFor={`${id}-placeholder-select`}
             checked={selected}
             onChange={() => onSelect?.(id)}
           />

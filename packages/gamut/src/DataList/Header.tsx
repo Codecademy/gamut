@@ -10,6 +10,7 @@ import { SortControl } from './Controls/SortControl';
 import { ColumnConfig, Query } from './types';
 
 interface HeaderRowProps<Cols extends ColumnConfig<any>[]> {
+  id: string;
   selected?: boolean;
   onSelect?: () => void;
   columns: Cols;
@@ -22,6 +23,7 @@ interface HeaderRowProps<Cols extends ColumnConfig<any>[]> {
 }
 
 export function HeaderRow<Cols extends ColumnConfig<any>[]>({
+  id,
   columns,
   query,
   onQuery,
@@ -31,12 +33,16 @@ export function HeaderRow<Cols extends ColumnConfig<any>[]>({
   return (
     <ListHeader>
       {columns.map(({ key, label, queryType, options, ...colProps }) => {
-        const renderKey = `header-col-${String(key)}`;
+        const renderKey = `${id}-header-col-${String(key)}`;
         const columnText = label || key;
 
         if (key === 'select') {
           return (
-            <SelectCol id="header" selected={selected} onSelect={onSelect} />
+            <SelectCol
+              id={`${id}-header`}
+              selected={selected}
+              onSelect={onSelect}
+            />
           );
         }
         if (key === 'expand') {
@@ -63,6 +69,7 @@ export function HeaderRow<Cols extends ColumnConfig<any>[]>({
             return (
               <ListCol key={renderKey} {...colProps} columnHeader>
                 <FilterControl
+                  id={id}
                   columnKey={key}
                   onQuery={onQuery}
                   filters={columnFilter}

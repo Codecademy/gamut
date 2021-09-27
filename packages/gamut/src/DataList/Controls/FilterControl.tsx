@@ -6,6 +6,7 @@ import { ButtonBase } from '../../ButtonBase';
 import { Query, QueryValues } from '..';
 
 export interface FilterProps {
+  id: string;
   columnKey: string | symbol | number;
   options?: string[];
   filters?: string[];
@@ -26,6 +27,7 @@ const getNextFilters = (option: string, filters: string[]) => {
 };
 
 export const FilterControl: React.FC<FilterProps> = ({
+  id,
   columnKey,
   filters = [],
   onQuery,
@@ -51,7 +53,7 @@ export const FilterControl: React.FC<FilterProps> = ({
               variant="action"
             >
               {['Select All', ...options].map((opt) => {
-                const id = `${opt}-${String(columnKey)}`;
+                const optionId = `${id}-${opt}-${String(columnKey)}`;
                 const allSelected = filters.length === 0;
                 const optionSelected =
                   opt === 'Select All' ? allSelected : !filters.includes(opt);
@@ -59,8 +61,8 @@ export const FilterControl: React.FC<FilterProps> = ({
                 return (
                   <MenuItem key={opt}>
                     <Checkbox
-                      htmlFor={id}
-                      name={id}
+                      htmlFor={optionId}
+                      name={optionId}
                       onClick={() => {
                         onQuery(
                           'filter',

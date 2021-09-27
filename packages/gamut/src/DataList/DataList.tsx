@@ -12,6 +12,7 @@ export interface DataListProps<
   Ids extends Rows[IdKey],
   Cols extends ColumnConfig<Rows>[]
 > extends Omit<ComponentProps<typeof List>, 'header'> {
+  id: string;
   idKey: IdKey;
   rows: Rows[];
   columns: Cols;
@@ -103,6 +104,7 @@ export function DataList<
   Ids extends Rows[IdKey],
   Cols extends ColumnConfig<Rows>[]
 >({
+  id,
   idKey,
   rows,
   columns,
@@ -159,6 +161,7 @@ export function DataList<
       spacing={spacing}
       header={
         <HeaderRow
+          id={id}
           columns={computedColumns}
           query={query}
           onQuery={onQuery}
@@ -169,7 +172,7 @@ export function DataList<
     >
       {rows.map((row) => (
         <DataRow
-          key={`${row[idKey]}-row`}
+          key={`${id}-${row[idKey]}-row`}
           id={row[idKey]}
           row={row}
           columns={computedColumns}
