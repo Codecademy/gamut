@@ -3,7 +3,7 @@ import { Controller } from 'react-hook-form';
 
 import { Checkbox } from '../../../Form';
 import { useFieldContext } from '../../utils';
-import { ConnectedCheckboxProps } from '../types';
+import { ConnectedCheckboxProps } from '../type';
 
 export const ConnectedCheckbox: React.FC<ConnectedCheckboxProps> = ({
   className,
