@@ -1,4 +1,9 @@
-import { ColumnConfig, DataList, useLocalQuery } from '@codecademy/gamut';
+import {
+  ColumnConfig,
+  DataList,
+  DataListProps,
+  useLocalQuery,
+} from '@codecademy/gamut';
 import { Background } from '@codecademy/gamut-styles';
 import React, { useState } from 'react';
 
@@ -109,7 +114,9 @@ const crew = [
   },
 ];
 
-export const DataListTemplate = (args: any) => {
+export const DataListTemplate = (
+  args: DataListProps<typeof crew[number], 'name', any, typeof cols>
+) => {
   const [selectedRows, setSelectedRows] = useState<
     typeof rows[number][typeof idKey][]
   >([]);
@@ -126,6 +133,7 @@ export const DataListTemplate = (args: any) => {
   return (
     <Background bg="white" height={600} overflowY="auto">
       <DataList
+        {...args}
         id="example"
         idKey={idKey}
         rows={rows}
