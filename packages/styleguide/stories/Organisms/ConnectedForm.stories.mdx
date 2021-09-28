@@ -41,28 +41,26 @@ import { HEY, HEYagain } from './examples';
           label="hi"
           size="large"
           spacing="tight"
-        >
-          <ConnectedCheckbox
-            label="check me out"
-            name="this-field"
-            htmlFor="this-field"
-            validation={{ required: 'check it...' }}
-          />
-        </ConnectedFormGroup>
-        <ConnectedFormGroup name="that-field" label="hey" size="large">
-          <ConnectedSelect
-            label="check me out"
-            name="that-field"
-            htmlFor="that-field"
-            validation={{
+          field={{
+            component: ConnectedCheckbox,
+            label: 'check me out',
+          }}
+        />
+        <ConnectedFormGroup
+          name="that-field"
+          label="hey"
+          size="large"
+          field={{
+            component: ConnectedSelect,
+            validation: {
               pattern: {
                 value: /^(?:(?!zero).)*$/,
                 message: 'zero to hero',
               },
-            }}
-            options={['zero', 'one', 'two', 'three']}
-          />
-        </ConnectedFormGroup>
+            },
+            options: ['zero', 'one', 'two', 'three'],
+          }}
+        />
         <SubmitButton mt={8}>submit!!!</SubmitButton>
       </ConnectedForm>
     )}
