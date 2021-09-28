@@ -214,16 +214,9 @@ export type ToolTipProps = ToolTipContainerProps & {
   target?: ReactNode;
 
   toolTipStyles?: BoxProps;
-} & (
-    | {
-        id: string;
-        noLabelRequired?: never;
-      }
-    | {
-        id?: never;
-        noLabelRequired: true;
-      }
-  );
+
+  id: string | null;
+};
 
 export const ToolTip: React.FC<ToolTipProps> = ({
   alignment = 'top-right',
@@ -236,10 +229,12 @@ export const ToolTip: React.FC<ToolTipProps> = ({
   target,
   toolTipStyles,
 }) => {
+  const effectiveId = id || undefined;
+
   return (
     <TooltipWrapper className={containerClassName}>
       <TargetContainer
-        aria-labelledby={id}
+        aria-labelledby={effectiveId}
         role={focusable ? 'button' : undefined}
         onKeyDown={(event) => {
           if (event.key === 'Escape') {
@@ -256,7 +251,7 @@ export const ToolTip: React.FC<ToolTipProps> = ({
       <ToolTipContainer
         alignment={alignment}
         className={className}
-        id={id}
+        id={effectiveId}
         role="tooltip"
         mode={mode}
         aria-live="polite"
