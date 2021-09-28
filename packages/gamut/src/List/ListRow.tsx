@@ -31,7 +31,6 @@ export const ListRow = forwardRef<HTMLLIElement, ListRowProps>(
           {children}
         </RowEl>
         <motion.div
-          aria-expanded={expanded}
           initial={expanded ? 'expanded' : 'collapsed'}
           animate={expanded ? 'expanded' : 'collapsed'}
           style={{ overflow: 'hidden' }}
@@ -41,7 +40,7 @@ export const ListRow = forwardRef<HTMLLIElement, ListRowProps>(
           }}
           transition={{ duration: 0.2, ease: 'easeInOut' }}
         >
-          <RowEl as="div" {...rowConfig} {...rest}>
+          <RowEl as="div" {...rowConfig} {...rest} role="region">
             {renderExpanded}
           </RowEl>
         </motion.div>

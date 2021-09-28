@@ -4,7 +4,7 @@ import { ListColProps } from '..';
 
 export type SortDirection = 'asc' | 'desc' | 'none';
 
-export type Filter<T> = { [K in keyof T]?: T[K] | 'none' };
+export type Filter<T> = { [K in keyof T]?: T[K] | T[K][] | 'none' };
 
 export type Sort<T> = { [K in keyof T]?: Exclude<SortDirection, 'none'> };
 

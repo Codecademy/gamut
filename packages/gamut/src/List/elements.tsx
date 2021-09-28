@@ -1,4 +1,4 @@
-import { css, states, variant } from '@codecademy/gamut-styles';
+import { css, states, styledOptions, variant } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
 
@@ -27,7 +27,10 @@ export interface ListProps
   extends StyleProps<typeof listVariants>,
     StyleProps<typeof spacingVariants> {}
 
-export const ListEl = styled.ul<ListProps>(listVariants);
+export const ListEl = styled(
+  'ul',
+  styledOptions<'ul'>()
+)<ListProps>(listVariants);
 
 const rowStates = states({
   scrollable: {
@@ -69,7 +72,7 @@ const rowVariants = variant({
     },
     table: {
       bg: 'background',
-      '&:nth-of-type(2n - 1)': {
+      '&:nth-of-type(2n-1)': {
         bg: 'background-selected',
       },
     },
@@ -86,7 +89,7 @@ export interface RowProps
     StyleProps<typeof spacingVariants>,
     StyleProps<typeof rowStates> {}
 
-export const RowEl = styled.li<RowProps>(
+export const RowEl = styled('li', styledOptions<'li'>())<RowProps>(
   css({
     py: { _: 8, xs: 0 },
     display: { _: 'grid', xs: 'flex' },
@@ -104,7 +107,7 @@ export interface HeaderProps
   extends StyleProps<typeof spacingVariants>,
     StyleProps<typeof rowStates> {}
 
-export const HeaderEl = styled.div<HeaderProps>(
+export const HeaderEl = styled('div', styledOptions)<HeaderProps>(
   css({
     display: 'flex',
     position: 'sticky',
@@ -241,7 +244,19 @@ export interface ColProps
     StyleProps<typeof columnStates>,
     StyleProps<typeof columnJustify> {}
 
-export const ColEl = styled.div<ColProps>(
+export const ColEl = styled(
+  'div',
+  styledOptions([
+    'fill',
+    'ghost',
+    'spacing',
+    'columnHeader',
+    'sticky',
+    'size',
+    'justify',
+    'type',
+  ])
+)<ColProps>(
   css({
     display: 'inline-flex',
     alignItems: 'center',

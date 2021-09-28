@@ -19,7 +19,7 @@ const SortIcon = styled(ArrowChevronDownFilledIcon)(
 );
 
 interface SortControlProps {
-  columnKey: string | symbol | number;
+  columnKey: string;
   direction: SortDirection;
   onQuery: (
     type: keyof Query<any>,
@@ -52,8 +52,17 @@ export const SortControl: React.FC<SortControlProps> = ({
       <FlexBox alignItems="center" gap={4}>
         {children}
         <FlexBox column width={16}>
-          <SortIcon asc size={9} disabled={direction !== 'asc'} />
-          <SortIcon size={9} disabled={direction !== 'desc'} />
+          <SortIcon
+            asc
+            size={9}
+            disabled={direction !== 'asc'}
+            aria-label="ascending"
+          />
+          <SortIcon
+            size={9}
+            disabled={direction !== 'desc'}
+            aria-label="descending"
+          />
         </FlexBox>
       </FlexBox>
     </ButtonBase>

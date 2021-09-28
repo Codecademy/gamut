@@ -39,6 +39,7 @@ export function HeaderRow<Cols extends ColumnConfig<any>[]>({
         if (key === 'select') {
           return (
             <SelectCol
+              key={renderKey}
               id={`${id}-header`}
               selected={selected}
               onSelect={onSelect}
@@ -46,7 +47,7 @@ export function HeaderRow<Cols extends ColumnConfig<any>[]>({
           );
         }
         if (key === 'expand') {
-          return <ExpandCol ghost />;
+          return <ExpandCol key={renderKey} ghost />;
         }
         switch (queryType) {
           case 'sort': {
@@ -54,7 +55,7 @@ export function HeaderRow<Cols extends ColumnConfig<any>[]>({
             return (
               <ListCol key={renderKey} {...colProps} columnHeader>
                 <SortControl
-                  columnKey={key}
+                  columnKey={key as string}
                   direction={direction}
                   onQuery={onQuery}
                 >

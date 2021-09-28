@@ -140,7 +140,7 @@ export function DataList<
         onQueryChange?.({
           ...query,
           [type]: nextQuery,
-        } as any);
+        });
       } else {
         onQueryChange?.({
           ...query,
@@ -148,7 +148,7 @@ export function DataList<
             ...query?.[type],
             [dimension]: value,
           },
-        } as Query<Rows>);
+        });
       }
     },
     [onQueryChange, query]

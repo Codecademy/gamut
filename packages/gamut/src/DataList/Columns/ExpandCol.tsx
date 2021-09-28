@@ -22,6 +22,7 @@ export const ExpandCol: React.FC<ExpandColProps> = ({
       size="small"
       onClick={() => onExpand?.(id)}
       aria-label={`Expand ${id} Row`}
+      aria-expanded={expanded}
     >
       <motion.div
         animate={expanded ? 'expanded' : 'collapsed'}

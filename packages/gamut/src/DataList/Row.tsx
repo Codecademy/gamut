@@ -57,12 +57,18 @@ export function DataRow<
 
   return (
     <ListRow expanded={expanded} renderExpanded={expandedContent}>
-      {columns.map(({ key, render, ...columnProps }) => {
-        const columnKey = `${id}-col-${key}`;
+      {columns.map(({ key, render, size, justify, fill }) => {
+        const colProps = {
+          size,
+          justify,
+          fill,
+          key: `${id}-col-${key}`,
+        };
+
         if (key === 'select') {
           return (
             <SelectCol
-              key={columnKey}
+              key={colProps.key}
               id={id}
               onSelect={onSelect}
               selected={selected}
@@ -72,18 +78,15 @@ export function DataRow<
         if (key === 'expand') {
           return (
             <ExpandCol
-              key={columnKey}
+              key={colProps.key}
               id={id}
               expanded={expanded}
               onExpand={onExpand}
             />
           );
         }
-
         return (
-          <ListCol key={`${id}-col-${key}`} {...columnProps}>
-            {render ? render(row) : row[key]}
-          </ListCol>
+          <ListCol {...colProps}>{render ? render(row) : row[key]}</ListCol>
         );
       })}
     </ListRow>

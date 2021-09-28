@@ -63,7 +63,7 @@ export const FilterControl: React.FC<FilterProps> = ({
                     <Checkbox
                       htmlFor={optionId}
                       name={optionId}
-                      onClick={() => {
+                      onChange={() => {
                         onQuery(
                           'filter',
                           columnKey,
@@ -90,7 +90,11 @@ export const FilterControl: React.FC<FilterProps> = ({
           </FocusTrap>
         </Box>
       )}
-      <ButtonBase onClick={() => setMenuOpen(true)}>
+      <ButtonBase
+        onClick={() => setMenuOpen(true)}
+        aria-haspopup="true"
+        aria-expanded={menuOpen}
+      >
         <FlexBox alignItems="center" gap={4}>
           {children}
           <MiniChevronDownIcon size={10} />
