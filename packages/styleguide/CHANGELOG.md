@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [46.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@46.3.1...@codecademy/styleguide@46.4.0) (2021-09-28)
+
+
+### Features
+
+* **CurriculumCard:** updated footer text variant ([5ad0005](https://github.com/Codecademy/client-modules/commit/5ad0005c34da14b7a7e06a4410264f989d97a27a))
+
+
+
 ### [46.3.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@46.3.0...@codecademy/styleguide@46.3.1) (2021-09-27)
 
 **Note:** Version bump only for package @codecademy/styleguide
