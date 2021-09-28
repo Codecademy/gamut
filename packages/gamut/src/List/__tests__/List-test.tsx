@@ -18,13 +18,13 @@ describe('Menu', () => {
     const { wrapper } = renderWrapper();
 
     expect(wrapper.find('ListEl').prop('variant')).toBe('slat');
-    expect(wrapper.find('ListEl').prop('scrollable')).toBe(false);
+    expect(wrapper.find('ListEl').prop('scrollable')).toBe(undefined);
   });
   it('configures rows with the correct variants', () => {
     const { wrapper } = renderWrapper();
-
-    expect(wrapper.find('RowEl').prop('variant')).toBe('slat');
-    expect(wrapper.find('RowEl').prop('spacing')).toBe('normal');
+    const wrappingRow = wrapper.find('RowEl').at(0);
+    expect(wrappingRow.prop('variant')).toBe('slat');
+    expect(wrappingRow.prop('spacing')).toBe('normal');
   });
   it('configures columns with the correct variants', () => {
     const { wrapper } = renderWrapper();

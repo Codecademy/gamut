@@ -99,6 +99,7 @@ Array [
   "Toggle",
   "ToolTip",
   "Truncate",
+  "useLocalQuery",
   "Video",
 ]
 `;
