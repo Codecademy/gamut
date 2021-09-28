@@ -9,8 +9,6 @@ import {
 import styled from '@emotion/styled';
 import React, { ReactNode } from 'react';
 
-import { Box, BoxProps } from '../Box';
-
 export type ToolTipAlignment =
   | 'bottom-center'
   | 'bottom-left'
@@ -41,6 +39,8 @@ type ToolTipBodyProps = {
   alignment?: ToolTipAlignment;
 
   mode?: ColorModes;
+
+  widthMode?: 'standard' | 'unlimited';
 };
 
 type ToolTipContainerProps = ToolTipBodyProps;
@@ -155,12 +155,13 @@ ${({ alignment }) =>
     `}
 `;
 
-const ToolTipBody = styled(Box)<Required<ToolTipBodyProps>>`
+const ToolTipBody = styled.div<Required<ToolTipBodyProps>>`
   border: 1px solid;
   border-radius: 3px;
   display: inline-block;
   font-size: ${pxRem(14)};
   line-height: ${lineHeight.base};
+
   ${({ alignment }) =>
     alignment.includes('center')
       ? `
@@ -187,6 +188,8 @@ const ToolTipBody = styled(Box)<Required<ToolTipBodyProps>>`
       },
     },
   })}
+
+  ${({ widthMode }) => (widthMode === 'unlimited' ? {} : { minWidth: '4rem' })}
 `;
 
 export type ToolTipProps = ToolTipContainerProps & {
@@ -212,8 +215,6 @@ export type ToolTipProps = ToolTipContainerProps & {
   focusable?: boolean;
 
   target?: ReactNode;
-
-  toolTipStyles?: BoxProps;
 } & (
     | // TODO [REACH-1339]: Refactor this to handle its own id creation and association, so callers
     // don't need to provide `id`
@@ -235,8 +236,8 @@ export const ToolTip: React.FC<ToolTipProps> = ({
   focusable,
   id,
   mode = 'light',
+  widthMode = 'standard',
   target,
-  toolTipStyles,
 }) => {
   return (
     <TooltipWrapper className={containerClassName}>
@@ -261,14 +262,10 @@ export const ToolTip: React.FC<ToolTipProps> = ({
         id={id}
         role="tooltip"
         mode={mode}
+        widthMode={widthMode}
         aria-live="polite"
       >
-        <ToolTipBody
-          alignment={alignment}
-          mode={mode}
-          minWidth="4rem"
-          {...toolTipStyles}
-        >
+        <ToolTipBody alignment={alignment} mode={mode} widthMode={widthMode}>
           {children}
         </ToolTipBody>
       </ToolTipContainer>
