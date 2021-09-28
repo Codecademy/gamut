@@ -16,7 +16,7 @@ export type FormValues<T> = {
   [key in keyof T]?: boolean | string | Pick<FileList, 'item'>;
 };
 
-export type FormContextProps = {
+export interface FormContextProps {
   /**
    * If fields should be disabled while form is being submitted and after successful submission.
    */
@@ -29,26 +29,27 @@ export type FormContextProps = {
    * Sets if form submission was successful - if `undefined` will fall back to react-hook-forms native formState.isSubmitSuccessful.
    */
   wasSubmitSuccessful?: boolean;
-};
+}
 
-export type ConnectedFormProps<Values extends {}> = FormContextProps &
-  Omit<FormProps, 'onSubmit'> & {
-    children?: React.ReactNode;
+export interface ConnectedFormProps<Values extends {}>
+  extends FormContextProps,
+    Omit<FormProps, 'onSubmit'> {
+  children?: React.ReactNode;
 
-    /**
-     * Function called with field values on submit, if all validations have passed.
-     */
-    onSubmit: SubmitHandler<Values>;
+  /**
+   * Function called with field values on submit, if all validations have passed.
+   */
+  onSubmit: SubmitHandler<Values>;
 
-    defaultValues?: UseFormOptions<Values>['defaultValues'];
+  defaultValues?: UseFormOptions<Values>['defaultValues'];
 
-    /**
-     * Which react hook form mode we are going to use for validation.
-     * If you use the onChange mode the submit button will be disabled until all
-     * required fields are completed.
-     */
-    validation?: Mode;
-  };
+  /**
+   * Which react hook form mode we are going to use for validation.
+   * If you use the onChange mode the submit button will be disabled until all
+   * required fields are completed.
+   */
+  validation?: Mode;
+}
 
 export type FormProviderCustomProps = FormProviderProps & FormContextProps;
 

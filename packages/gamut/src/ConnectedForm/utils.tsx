@@ -1,10 +1,15 @@
 import React, { useContext } from 'react';
 import { useFormContext } from 'react-hook-form';
 
-import { ConnectedInput } from '..';
-import { ConnectedFormGroup, FormPropsContext } from '.';
+import { ConnectedFormGroupProps } from '..';
+import {
+  ConnectedForm,
+  ConnectedFormGroup,
+  ConnectedFormProps,
+  ConnectedInput,
+  FormPropsContext,
+} from '.';
 import { SubmitContextProps } from './SubmitButton';
-import { ConnectedField } from './types';
 
 export const submitSuccessStatus = (
   wasSubmitSuccessful: boolean | undefined,
@@ -34,15 +39,23 @@ const useCassForms = <
   defaultValues,
   validation,
 }: CassForm<Values, ValidationRules>) => {
-  const fieldOverForm = ((
+  const ConnectedFormGroup = ((
     props: React.ComponentProps<typeof ConnectedFormGroup>
   ) => <ConnectedFormGroup {...props} />) as CassField2<keyof Values>;
 
-  return [fieldOverForm];
+  const ConnectedForm = (props: ConnectedFormProps<Values>) => (
+    <ConnectedForm {...props} />
+  );
+
+  // const fream = ((props: ConnectedFormProps<any>) => (
+  //   <ConnectedForm {...props} />
+  // )) as CassField2<keyof Values>;
+
+  return { ConnectedFormGroup, ConnectedForm };
 };
 
 export const TestOne = () => {
-  const [ConnectedFormGroup, ConnectedForm] = useCassForms({
+  const { ConnectedFormGroup, ConnectedForm } = useCassForms({
     defaultValues: { cool: true, beans: false },
     validation: {
       cool: { required: true },
@@ -53,7 +66,7 @@ export const TestOne = () => {
   });
 
   return (
-    <ConnectedForm onSubmit={({ cool }) => cool}>
+    <ConnectedForm onSubmit={({ cool }) => console.log(cool)}>
       <ConnectedFormGroup
         name="cool"
         label="please explain why you don't want to fill in the check"
@@ -62,7 +75,14 @@ export const TestOne = () => {
           validation: { required: 'explain yourself' },
         }}
       />
-      <ConnectedFormGroup name="beans" />
+      <ConnectedFormGroup
+        name="beans"
+        label="please explain why you don't want to fill in the check"
+        field={{
+          component: ConnectedInput,
+          validation: { required: 'explain yourself' },
+        }}
+      />
     </ConnectedForm>
   );
 };
