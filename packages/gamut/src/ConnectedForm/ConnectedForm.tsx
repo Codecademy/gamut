@@ -5,14 +5,14 @@ import {
   Mode,
   SubmitHandler,
   useForm,
+  UseFormOptions,
 } from 'react-hook-form';
 
 import { Form } from '../Form';
 import { FormProps } from '../Form/Form';
-import { FormValues } from '../Form/types';
 import { submitSuccessStatus } from './utils';
 
-export type TestGeneric<T> = {
+export type FormValues<T> = {
   [key in keyof T]?: boolean | string | Pick<FileList, 'item'>;
 };
 
@@ -40,7 +40,7 @@ export type ConnectedFormProps<Values extends {}> = FormContextProps &
      */
     onSubmit: SubmitHandler<Values>;
 
-    defaultValues?: Values;
+    defaultValues?: UseFormOptions<Values>['defaultValues'];
 
     /**
      * Which react hook form mode we are going to use for validation.
@@ -60,7 +60,7 @@ const PropsProvider = FormPropsContext.Provider;
 /**
  * This is an in progress API! please reach out to the web-plat team if you're interested in using it.
  */
-export function ConnectedForm<Values extends {}>({
+export function ConnectedFormr<Values extends FormValues<Values>>({
   children,
   onSubmit,
   defaultValues,
