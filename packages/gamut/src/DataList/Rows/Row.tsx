@@ -1,9 +1,9 @@
 import React from 'react';
 
-import { Checkbox, ListCol, ListRow, Text } from '..';
-import { ExpandCol } from './Columns/ExpandCol';
-import { SelectCol } from './Columns/SelectCol';
-import { ColumnConfig } from './types';
+import { Checkbox, ListCol, ListRow, Text } from '../..';
+import { ExpandCol } from '../Columns/ExpandCol';
+import { SelectCol } from '../Columns/SelectCol';
+import { ColumnConfig } from '../types';
 
 interface DataRowProps<
   Rows,

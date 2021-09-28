@@ -2,8 +2,8 @@ import React, { ComponentProps, useCallback, useMemo } from 'react';
 
 import { List } from '../List';
 import { QueryValues } from '.';
-import { HeaderRow } from './Header';
-import { DataRow } from './Row';
+import { HeaderRow } from './Rows/HeaderRow';
+import { DataRow } from './Rows/Row';
 import { ColumnConfig, Query } from './types';
 
 export interface DataListProps<

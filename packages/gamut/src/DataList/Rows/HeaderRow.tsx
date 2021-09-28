@@ -1,13 +1,13 @@
 import React from 'react';
 
-import { ListHeader } from '..';
-import { ListCol } from '../List/ListCol';
-import { QueryValues } from '.';
-import { ExpandCol } from './Columns/ExpandCol';
-import { SelectCol } from './Columns/SelectCol';
-import { FilterControl } from './Controls/FilterControl';
-import { SortControl } from './Controls/SortControl';
-import { ColumnConfig, Query } from './types';
+import { ListHeader } from '../..';
+import { ListCol } from '../../List/ListCol';
+import { QueryValues } from '..';
+import { ExpandCol } from '../Columns/ExpandCol';
+import { SelectCol } from '../Columns/SelectCol';
+import { FilterControl } from '../Controls/FilterControl';
+import { SortControl } from '../Controls/SortControl';
+import { ColumnConfig, Query } from '../types';
 
 interface HeaderRowProps<Cols extends ColumnConfig<any>[]> {
   id: string;
