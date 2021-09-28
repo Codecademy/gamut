@@ -55,6 +55,8 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
   }}
 />
 
+<br />
+
 ## Featured Info
 
 Display text-only featurettes with no media associated.
@@ -90,7 +92,30 @@ Small icons can be used instead of full size images by setting the `featuresMedi
 Promote a single stat by setting the `featuresMedia` prop to `stat` and providing `statText`.
 
 <Canvas>
-  <Story name="Featured Stats" args={{ featuresMedia: 'stat' }}>
+  <Story
+    name="Featured Stats"
+    args={{
+      featuresMedia: 'stat',
+      features: [
+        {
+          statText: '45 mil.',
+          title: 'Software Engineer',
+        },
+        {
+          statText: '170',
+          title: 'Data Scientist',
+        },
+        {
+          statText: '200+',
+          title: 'Product Manager',
+        },
+        {
+          statText: '100%',
+          title: 'Product Designer',
+        },
+      ],
+    }}
+  >
     {(args) => <PageFeatures {...args} />}
   </Story>
 </Canvas>
@@ -102,5 +127,54 @@ If you specify a `maxCols` the features at desktop will wrap at that number of c
 <Canvas>
   <Story name="Features Grid" args={{ maxCols: 3, featuresMedia: 'icon' }}>
     {(args) => <PageFeatures {...args} />}
+  </Story>
+</Canvas>
+
+## Without Description
+
+Omit the `desc` prop to not show a description. You can also omit the `desc` prop on each object in the features array to not show a featured item description.
+
+<Canvas>
+  <Story
+    name="Without Description"
+    args={{
+      featuresMedia: 'icon',
+      desc: undefined,
+      features: [
+        {
+          imgSrc: 'https://content.codecademy.com/courses/free/boba.svg',
+          imgAlt: 'Codey boba tea',
+          title: 'Software Engineer',
+        },
+        {
+          imgSrc: 'https://content.codecademy.com/courses/free/boba.svg',
+          imgAlt: 'Codey boba tea',
+          title: 'Data Scientist',
+        },
+      ],
+    }}
+  >
+    {(args) => <PageFeatures {...args} />}
+  </Story>
+</Canvas>
+
+## Regular Button
+
+Pass `buttonType` as `fill` to show a `FillButton` instead of the larger `CTAButton`. Text should always be Call to Action text regardless of button type.
+
+<Canvas>
+  <Story
+    name="Regular Button"
+    args={{
+      featuresMedia: 'image',
+    }}
+  >
+    {(args) => (
+      <PageFeatures
+        {...args}
+        features={args.features.slice(0, 3)}
+        cta={{ ...args.cta, buttonType: 'fill' }}
+      />
+    )}
   </Story>
 </Canvas>

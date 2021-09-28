@@ -36,7 +36,7 @@ const renderWrapper = setupEnzyme(SelectDropdown, {
   id: 'colors',
 });
 
-describe('Select', () => {
+describe('SelectDropdown', () => {
   it('sets the id prop on the select tag', () => {
     const { wrapper } = renderWrapper();
     expect(wrapper.find('SelectDropdown').props().id).toBe(defaultProps.id);
@@ -50,6 +50,18 @@ describe('Select', () => {
     });
 
     expect(wrapper.find('Option').length).toEqual(3);
+  });
+
+  it('renders options when options is an array', () => {
+    const { wrapper } = renderWrapper();
+
+    wrapper.find('DropdownIndicator').simulate('mouseDown', {
+      button: 0,
+    });
+
+    const getByLabel = wrapper.find(`[label="green"]`);
+
+    expect(getByLabel.exists()).toBe(true);
   });
 
   it('renders options when options is an object', () => {
