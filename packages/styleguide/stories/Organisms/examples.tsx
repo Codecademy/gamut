@@ -6,7 +6,6 @@ import {
   ConnectedCustomInput,
   ConnectedForm,
   ConnectedFormGroup,
-  ConnectedFormGroup3,
   ConnectedInput,
   ConnectedRadioGroupInput,
   ConnectedSelect,
@@ -19,6 +18,7 @@ import {
   Text,
   useFormState,
 } from '@codecademy/gamut/src';
+import { ViewIcon } from '@codecademy/gamut-icons';
 import { Keyhole } from '@codecademy/gamut-illustrations';
 import { DotDense } from '@codecademy/gamut-patterns';
 import { Background } from '@codecademy/gamut-styles';
@@ -391,7 +391,7 @@ export const InnerHEYagain: React.FC = () => {
   const shouldIStayOrShouldIGo = () => {
     if (watchedSelect === 'two' || watchedSelect === 'third') {
       return (
-        <ConnectedFormGroup3
+        <ConnectedFormGroup
           name="another-fieldo"
           label="hey there"
           size="large"
@@ -407,7 +407,7 @@ export const InnerHEYagain: React.FC = () => {
   const iMayBeHidden = () => {
     const returnedComponent =
       watchedSecondSelect === 'show me the check' ? (
-        <ConnectedFormGroup3
+        <ConnectedFormGroup
           name="yet-again"
           label="hi..."
           spacing="tight"
@@ -418,7 +418,7 @@ export const InnerHEYagain: React.FC = () => {
           }}
         />
       ) : watchedSecondSelect === 'hide the check' ? (
-        <ConnectedFormGroup3
+        <ConnectedFormGroup
           name="example-icon"
           label="please explain why you don't want to fill in the check"
           field={{
@@ -439,7 +439,7 @@ export const InnerHEYagain: React.FC = () => {
       </FloatingCard>
 
       <Box width="20rem" m={24}>
-        <ConnectedFormGroup3
+        <ConnectedFormGroup
           name="your-fieldo"
           label="hey"
           size="large"
@@ -555,7 +555,7 @@ export const HEY: React.FC = () => {
           borderRadius="10px"
         >
           <INeedSomeSpace>
-            <ConnectedFormGroup3
+            <ConnectedFormGroup
               name="example-radio-area"
               label="pls answer"
               field={{
@@ -564,9 +564,10 @@ export const HEY: React.FC = () => {
                   required: 'hey...',
                 },
                 options: [
-                  { label: 'first', value: '1' },
-                  { label: 'second', value: '2' },
-                  { label: 'third', value: '3' },
+                  { label: 'one', value: 'first' },
+                  { label: 'two', value: 'two' },
+                  { label: 'three', value: 'three' },
+                  { label: 'zilch', value: 'zero' },
                 ],
               }}
             />
@@ -590,8 +591,7 @@ export const HEY: React.FC = () => {
           borderRadius="10px"
         >
           <INeedSomeSpace>
-            "you"
-            <ConnectedFormGroup3
+            <ConnectedFormGroup
               name="render-select"
               label="render select ok"
               field={{
@@ -606,7 +606,7 @@ export const HEY: React.FC = () => {
                 onChange: selectChange,
               }}
             />
-            <ConnectedFormGroup3
+            <ConnectedFormGroup
               name="render-select"
               label="render select ok tré"
               field={{
@@ -620,7 +620,7 @@ export const HEY: React.FC = () => {
                 },
               }}
             />
-            <ConnectedFormGroup3
+            <ConnectedFormGroup
               name="render-input"
               label="render input ok"
               field={{
@@ -634,7 +634,7 @@ export const HEY: React.FC = () => {
                 },
               }}
             />
-            <ConnectedFormGroup3
+            <ConnectedFormGroup
               name="render-radio"
               label="render radio ok"
               field={{
@@ -657,9 +657,11 @@ export const HEY: React.FC = () => {
               label="write text in here"
               spacing="tight"
               errorType="initial"
-            >
-              <ConnectedInput name="example-icon" htmlFor="example-icon" />
-            </ConnectedFormGroup>
+              field={{
+                component: ConnectedInput,
+                icon: ViewIcon,
+              }}
+            />
           </INeedSomeSpace>
         </Box>
         <Card shadow="medium" gridArea="illo">
@@ -691,40 +693,37 @@ export const HEY: React.FC = () => {
               label="hi"
               spacing="tight"
               errorType="initial"
-            >
-              <ConnectedCheckbox
-                label="check me out"
-                name="check-field-0"
-                validation={{ required: 'check it...' }}
-                spacing="tight"
-              />
-            </ConnectedFormGroup>
+              field={{
+                component: ConnectedCheckbox,
+                label: 'check me out',
+                validation: { required: 'check it...' },
+                spacing: 'tight',
+              }}
+            />
             <ConnectedFormGroup
               name="check-field-1"
               label="hi"
               spacing="tight"
               errorType="initial"
-            >
-              <ConnectedCheckbox
-                label="check me out"
-                name="check-field-1"
-                validation={{ required: 'check it...' }}
-                spacing="tight"
-              />
-            </ConnectedFormGroup>
+              field={{
+                component: ConnectedCheckbox,
+                label: 'check me out',
+                validation: { required: 'check it...' },
+                spacing: 'tight',
+              }}
+            />
             <ConnectedFormGroup
               name="check-field-2"
               label="hi"
               spacing="tight"
               errorType="initial"
-            >
-              <ConnectedCheckbox
-                label="check me out"
-                name="check-field-2"
-                validation={{ required: 'check it...' }}
-                spacing="tight"
-              />
-            </ConnectedFormGroup>
+              field={{
+                component: ConnectedCheckbox,
+                label: 'check me out',
+                validation: { required: 'check it...' },
+                spacing: 'tight',
+              }}
+            />
           </Card>
           <INeedSomeSpace>
             <ConnectedFormGroup
@@ -732,13 +731,11 @@ export const HEY: React.FC = () => {
               label="write text in here"
               spacing="tight"
               errorType="initial"
-            >
-              <ConnectedTextArea
-                name="example-text-area"
-                htmlFor="example-text-area"
-                placeholder="pls write your doctoral thesis ty"
-              />
-            </ConnectedFormGroup>
+              field={{
+                component: ConnectedTextArea,
+                placeholder: 'pls write your doctoral thesis ty',
+              }}
+            />
           </INeedSomeSpace>
         </Background>
       </ConnectedForm>

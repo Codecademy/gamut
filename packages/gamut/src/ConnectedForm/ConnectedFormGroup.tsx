@@ -1,7 +1,6 @@
 import { css } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React from 'react';
-import { UseFormMethods } from 'react-hook-form';
 
 import {
   FormError,
@@ -13,6 +12,7 @@ import {
 import { Anchor } from '../Anchor';
 import { HiddenText } from '../HiddenText';
 import { Markdown } from '../Markdown';
+import { ConnectedField, FieldProps } from './types';
 import { useFieldContext } from './utils';
 
 const ErrorAnchor = styled(Anchor)(
@@ -21,45 +21,42 @@ const ErrorAnchor = styled(Anchor)(
   })
 );
 
-export interface CustomFieldRenderProps {
-  name?: string;
-  error?: string;
-  isFirstError?: boolean;
-  currentlyDisabled?: boolean;
-  register: UseFormMethods['register'];
-}
-
-export type ConnectedFormGroupProps = Omit<FormGroupProps, 'label'> &
+export type ConnectedFormGroupBaseProps = Omit<FormGroupProps, 'label'> &
   Pick<FormGroupLabelProps, 'size'> & {
     customError?: string;
     errorType?: 'initial' | 'absolute';
     hideLabel?: boolean;
-    label: React.ReactNode;
     name: string;
-    render?: (name: CustomFieldRenderProps) => JSX.Element;
+    label: React.ReactNode;
     required?: boolean;
     showRequired?: boolean;
     spacing?: 'base' | 'tight';
     tooltip?: any;
   };
 
-export const ConnectedFormGroup: React.FC<ConnectedFormGroupProps> = ({
-  children,
+export interface ConnectedFormGroupProps<T extends ConnectedField>
+  extends ConnectedFormGroupBaseProps {
+  field: Omit<React.ComponentProps<T>, 'name'> & FieldProps<T>;
+}
+
+export function ConnectedFormGroup<T extends ConnectedField>({
   customError,
+  children,
   disabled,
   errorType = 'absolute',
+  field,
   hideLabel,
   id,
   label,
   name,
-  render,
   required,
   showRequired,
   size,
   spacing,
   tooltip,
-}) => {
-  const { error, isFirstError, isDisabled, register } = useFieldContext(name);
+}: ConnectedFormGroupProps<T>) {
+  const { error, isFirstError, isDisabled } = useFieldContext(name);
+  const { component: Component, ...rest } = field;
   const currentlyDisabled = isDisabled || disabled;
 
   const renderedLabel = (
@@ -80,8 +77,8 @@ export const ConnectedFormGroup: React.FC<ConnectedFormGroupProps> = ({
       mb={spacing === 'tight' ? 0 : 8}
     >
       {hideLabel ? <HiddenText>{renderedLabel}</HiddenText> : renderedLabel}
+      <Component name={name} {...(rest as any)} />
       {children}
-      {render?.({ name, error, isFirstError, currentlyDisabled, register })}
       {(error || customError) && (
         <FormError
           role={isFirstError ? 'alert' : 'status'}
@@ -108,4 +105,4 @@ export const ConnectedFormGroup: React.FC<ConnectedFormGroupProps> = ({
       )}
     </FormGroup>
   );
-};
+}

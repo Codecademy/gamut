@@ -1,14 +1,10 @@
 import React, { useContext } from 'react';
-import { SubmitHandler, useFormContext } from 'react-hook-form';
+import { useFormContext } from 'react-hook-form';
 
-import {
-  ConnectedField2,
-  ConnectedFormGroup3,
-  ConnectedFormGroupProps3,
-  FormPropsContext,
-} from '.';
-import { ConnectedFieldProps } from './Inputs/types';
+import { ConnectedInput } from '..';
+import { ConnectedFormGroup, FormPropsContext } from '.';
 import { SubmitContextProps } from './SubmitButton';
+import { ConnectedField } from './types';
 
 export const submitSuccessStatus = (
   wasSubmitSuccessful: boolean | undefined,
@@ -26,7 +22,9 @@ interface CassForm<V, R extends { [K in keyof V]: any }> {
 }
 
 interface CassField2<N> {
-  <T extends ConnectedField2>(props: T & { name: N }): JSX.Element;
+  <T extends React.ComponentProps<typeof ConnectedFormGroup>>(
+    props: T & { name: N }
+  ): JSX.Element;
 }
 
 const useCassForms = <
@@ -36,23 +34,15 @@ const useCassForms = <
   defaultValues,
   validation,
 }: CassForm<Values, ValidationRules>) => {
-  const formOverFunction = ((
-    props: React.ComponentProps<typeof ConnectedFormGroup3>
-  ) => <ConnectedFormGroup3 {...props} />) as CassField2<keyof Values>;
-  return [formOverFunction];
+  const fieldOverForm = ((
+    props: React.ComponentProps<typeof ConnectedFormGroup>
+  ) => <ConnectedFormGroup {...props} />) as CassField2<keyof Values>;
+
+  return [fieldOverForm];
 };
 
-//[pass key of validation into the key of ]
-
-// props: { onSubmit: SubmitHandler<Values>; children: React.ReactNode }) => (
-//   <ConnectedForm defaultValues={defaultValues} {...props}>
-//     {props.children}
-//   </ConnectedForm>
-// ),
-// Make ConnectedForm + ConnectedFormGroup able to accept a generic
-
 export const TestOne = () => {
-  const [ConnectedFormGroup3, ConnectedForm] = useCassForms({
+  const [ConnectedFormGroup, ConnectedForm] = useCassForms({
     defaultValues: { cool: true, beans: false },
     validation: {
       cool: { required: true },
@@ -64,11 +54,27 @@ export const TestOne = () => {
 
   return (
     <ConnectedForm onSubmit={({ cool }) => cool}>
-      <ConnectedFormGroup3 name="cool" />
-      <ConnectedFormGroup3 name="beans" />
+      <ConnectedFormGroup
+        name="cool"
+        label="please explain why you don't want to fill in the check"
+        field={{
+          component: ConnectedInput,
+          validation: { required: 'explain yourself' },
+        }}
+      />
+      <ConnectedFormGroup name="beans" />
     </ConnectedForm>
   );
 };
+
+// [pass key of validation into the key of ]
+
+// props: { onSubmit: SubmitHandler<Values>; children: React.ReactNode }) => (
+//   <ConnectedForm defaultValues={defaultValues} {...props}>
+//     {props.children}
+//   </ConnectedForm>
+// ),
+// Make ConnectedForm + ConnectedFormGroup able to accept a generic
 
 export const useFormState = () => {
   // This is fixed in a later react-hook-form version:
