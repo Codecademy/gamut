@@ -1,7 +1,10 @@
 import React, { useContext } from 'react';
-import { useFormContext } from 'react-hook-form';
+import {
+  DeepPartial,
+  UnpackNestedValue,
+  useFormContext,
+} from 'react-hook-form';
 
-import { ConnectedFormGroupProps } from '..';
 import {
   ConnectedForm,
   ConnectedFormGroup,
@@ -19,6 +22,10 @@ export const submitSuccessStatus = (
     (wasSubmitSuccessful || wasSubmitSuccessful === undefined) &&
     isSubmitSuccessful
   );
+};
+
+export type FormValues<T> = {
+  [key in keyof T]?: boolean | string | Pick<FileList, 'item'>;
 };
 
 interface CassForm<V, R extends { [K in keyof V]: any }> {
@@ -39,23 +46,31 @@ const useCassForms = <
   defaultValues,
   validation,
 }: CassForm<Values, ValidationRules>) => {
-  const ConnectedFormGroup = ((
+  const ConnectedFormGroup2 = ((
     props: React.ComponentProps<typeof ConnectedFormGroup>
-  ) => <ConnectedFormGroup {...props} />) as CassField2<keyof Values>;
+  ) => {
+    props.field.validation = validation['hey'];
+    return <ConnectedFormGroup {...props} />;
+  }) as CassField2<keyof Values>;
 
-  const ConnectedForm = (props: ConnectedFormProps<Values>) => (
-    <ConnectedForm {...props} />
+  const ConnectedForm2 = (props: ConnectedFormProps<Values>) => (
+    <ConnectedForm
+      defaultValues={
+        defaultValues as UnpackNestedValue<DeepPartial<typeof defaultValues>>
+      }
+      {...props}
+    />
   );
 
   // const fream = ((props: ConnectedFormProps<any>) => (
   //   <ConnectedForm {...props} />
   // )) as CassField2<keyof Values>;
 
-  return { ConnectedFormGroup, ConnectedForm };
+  return { ConnectedFormGroup2, ConnectedForm2 };
 };
 
 export const TestOne = () => {
-  const { ConnectedFormGroup, ConnectedForm } = useCassForms({
+  const { ConnectedFormGroup2, ConnectedForm2 } = useCassForms({
     defaultValues: { cool: true, beans: false },
     validation: {
       cool: { required: true },
@@ -66,8 +81,8 @@ export const TestOne = () => {
   });
 
   return (
-    <ConnectedForm onSubmit={({ cool }) => console.log(cool)}>
-      <ConnectedFormGroup
+    <ConnectedForm2 onSubmit={({ cool }) => console.log(cool)}>
+      <ConnectedFormGroup2
         name="cool"
         label="please explain why you don't want to fill in the check"
         field={{
@@ -75,7 +90,7 @@ export const TestOne = () => {
           validation: { required: 'explain yourself' },
         }}
       />
-      <ConnectedFormGroup
+      <ConnectedFormGroup2
         name="beans"
         label="please explain why you don't want to fill in the check"
         field={{
@@ -83,7 +98,7 @@ export const TestOne = () => {
           validation: { required: 'explain yourself' },
         }}
       />
-    </ConnectedForm>
+    </ConnectedForm2>
   );
 };
 
