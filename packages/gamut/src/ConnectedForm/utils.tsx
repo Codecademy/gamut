@@ -46,14 +46,14 @@ const useCassForms = <
   defaultValues,
   validation,
 }: CassForm<Values, ValidationRules>) => {
-  const ConnectedFormGroup2 = ((
+  const ConnectedFormGroup = ((
     props: React.ComponentProps<typeof ConnectedFormGroup>
   ) => {
-    props.field.validation = validation['hey'];
+    props.field.validation = validation[props.name];
     return <ConnectedFormGroup {...props} />;
   }) as CassField2<keyof Values>;
 
-  const ConnectedForm2 = (props: ConnectedFormProps<Values>) => (
+  const ConnectedForm = (props: ConnectedFormProps<Values>) => (
     <ConnectedForm
       defaultValues={
         defaultValues as UnpackNestedValue<DeepPartial<typeof defaultValues>>
@@ -62,15 +62,11 @@ const useCassForms = <
     />
   );
 
-  // const fream = ((props: ConnectedFormProps<any>) => (
-  //   <ConnectedForm {...props} />
-  // )) as CassField2<keyof Values>;
-
-  return { ConnectedFormGroup2, ConnectedForm2 };
+  return { ConnectedFormGroup, ConnectedForm };
 };
 
 export const TestOne = () => {
-  const { ConnectedFormGroup2, ConnectedForm2 } = useCassForms({
+  const { ConnectedFormGroup, ConnectedForm } = useCassForms({
     defaultValues: { cool: true, beans: false },
     validation: {
       cool: { required: true },
@@ -81,24 +77,24 @@ export const TestOne = () => {
   });
 
   return (
-    <ConnectedForm2 onSubmit={({ cool }) => console.log(cool)}>
-      <ConnectedFormGroup2
+    <ConnectedForm onSubmit={({ cool }) => console.log(cool)}>
+      <ConnectedFormGroup
         name="cool"
-        label="please explain why you don't want to fill in the check"
+        label="cool"
         field={{
           component: ConnectedInput,
           validation: { required: 'explain yourself' },
         }}
       />
-      <ConnectedFormGroup2
+      <ConnectedFormGroup
         name="beans"
-        label="please explain why you don't want to fill in the check"
+        label="beans"
         field={{
           component: ConnectedInput,
           validation: { required: 'explain yourself' },
         }}
       />
-    </ConnectedForm2>
+    </ConnectedForm>
   );
 };
 
