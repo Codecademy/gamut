@@ -3,14 +3,23 @@ import {
   SkipToContent,
   SkipToContentTarget,
 } from '@codecademy/gamut';
-import { Background, BackgroundProps } from '@codecademy/gamut-styles';
+import { Background } from '@codecademy/gamut-styles';
 import React, { ComponentProps, forwardRef } from 'react';
 
 import { GlobalFooter, GlobalFooterProps } from '../GlobalFooter';
 import { GlobalHeader, GlobalHeaderProps } from '../GlobalHeader';
 
+export type GlobalPageBackgroundColor =
+  | 'beige'
+  | 'background'
+  | 'navy'
+  | 'paleBlue'
+  | 'paleGreen'
+  | 'paleYellow'
+  | 'white';
+
 export type GlobalPageProps = {
-  backgroundColor?: BackgroundProps['bg'];
+  backgroundColor?: GlobalPageBackgroundColor;
 
   /**
    * Element type to render around the children.
