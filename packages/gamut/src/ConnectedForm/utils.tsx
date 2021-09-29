@@ -1,3 +1,4 @@
+import { TerminalIcon } from '@codecademy/gamut-icons';
 import React, { useContext } from 'react';
 import {
   DeepPartial,
@@ -6,6 +7,7 @@ import {
 } from 'react-hook-form';
 
 import {
+  ConnectedCheckbox,
   ConnectedForm,
   ConnectedFormGroup,
   ConnectedFormProps,
@@ -25,13 +27,14 @@ export const submitSuccessStatus = (
   );
 };
 
+// TO DO: change to new GridForm generic reference
 export type FormValues<T> = {
   [key in keyof T]?: boolean | string | Pick<FileList, 'item'>;
 };
 
-interface CassForm<V, R extends { [K in keyof V]: any }> {
+interface CassForm<V, R extends { [K in keyof V]?: any }> {
   defaultValues: V;
-  validation: R;
+  validation: Partial<R>;
 }
 
 interface CassField2<N> {
@@ -76,7 +79,7 @@ const useCassForms = <
 
 export const TestOne = () => {
   const { ComposedFormGroup, ComposedForm } = useCassForms({
-    defaultValues: { cool: 'cool', beans: 'beans!' },
+    defaultValues: { cool: 'gnbsdlfkjndlskfj', beans: 'beans!', check: true },
     validation: {
       cool: { required: 'explain yourself cool' },
       beans: {
@@ -86,7 +89,11 @@ export const TestOne = () => {
   });
 
   return (
-    <ComposedForm m={48} onSubmit={({ cool }) => console.log(cool)}>
+    <ComposedForm
+      m={48}
+      onSubmit={({ check }) => console.log(check)}
+      resetOnSubmit
+    >
       <SubmitButton variant="secondary" m={32}>
         dont forget to submit, okay?
       </SubmitButton>
@@ -95,6 +102,7 @@ export const TestOne = () => {
         label="cool"
         field={{
           component: ConnectedInput,
+          icon: TerminalIcon,
         }}
       />
       <ComposedFormGroup
@@ -102,6 +110,14 @@ export const TestOne = () => {
         label="beans"
         field={{
           component: ConnectedInput,
+        }}
+      />
+      <ComposedFormGroup
+        name="check"
+        label="a yes a check"
+        field={{
+          component: ConnectedCheckbox,
+          label: 'yeeeees',
         }}
       />
     </ComposedForm>
