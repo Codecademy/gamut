@@ -35,7 +35,7 @@ export const Drawer: React.FC<DrawerProps> = ({
           transition={{ duration: timingValues.slow / 1000 }}
           {...props}
         >
-          <Box left="0" position="absolute" width={fullWidth}>
+          <Box position="relative" width={fullWidth}>
             {children}
           </Box>
         </DrawerBase>
