@@ -214,19 +214,10 @@ export type ToolTipProps = ToolTipContainerProps & {
    */
   focusable?: boolean;
 
+  id: string;
+
   target?: ReactNode;
-} & (
-    | // TODO [REACH-1339]: Refactor this to handle its own id creation and association, so callers
-    // don't need to provide `id`
-    {
-        id: string;
-        noLabelRequired?: never;
-      }
-    | {
-        id?: never;
-        noLabelRequired: true;
-      }
-  );
+};
 
 export const ToolTip: React.FC<ToolTipProps> = ({
   alignment = 'top-right',
