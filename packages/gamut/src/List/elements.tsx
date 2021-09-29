@@ -20,7 +20,6 @@ const listVariants = variant({
   variants: {
     slat: {
       borderRadius: '2px',
-      overflow: 'hidden',
     },
     table: {},
     bar: {
@@ -67,14 +66,9 @@ const rowVariants = variant({
   variants: {
     slat: {
       bg: 'background',
-      border: 1,
-      marginTop: '-1px',
-      marginBottom: '-1px',
-      '&:last-of-type': {
-        marginBottom: 0,
-      },
+      borderBottom: 1,
       '&:first-of-type': {
-        marginTop: 0,
+        borderTop: 1,
       },
     },
     table: {
@@ -110,9 +104,21 @@ export const RowEl = styled('li', styledOptions<'li'>())<RowProps>(
   rowStates
 );
 
+const headerVariants = variant({
+  prop: 'variant',
+  variants: {
+    slat: {},
+    bar: {},
+    table: {
+      borderY: 1,
+    },
+  },
+});
+
 export interface HeaderProps
   extends StyleProps<typeof spacingVariants>,
-    StyleProps<typeof rowStates> {}
+    StyleProps<typeof rowStates>,
+    StyleProps<typeof listVariants> {}
 
 export const HeaderEl = styled('div', styledOptions)<HeaderProps>(
   css({
@@ -123,10 +129,10 @@ export const HeaderEl = styled('div', styledOptions)<HeaderProps>(
     bg: 'background-current',
     zIndex: 2,
     fontFamily: 'accent',
-    borderBottom: 2,
   }),
   spacingVariants,
-  rowStates
+  rowStates,
+  headerVariants
 );
 
 const columnType = variant({
@@ -224,6 +230,9 @@ const columnStates = states({
   columnHeader: {
     fontWeight: 400,
     overflow: 'visible',
+  },
+  wrap: {
+    whiteSpace: 'normal',
   },
 });
 

@@ -2,7 +2,7 @@ import { MiniChevronDownIcon } from '@codecademy/gamut-icons';
 import React, { useState } from 'react';
 
 import { Box, Checkbox, FlexBox, FocusTrap, Menu, MenuItem, Text } from '../..';
-import { ButtonBase } from '../../ButtonBase';
+import { Anchor } from '../../Anchor';
 import { Query, QueryValues } from '..';
 
 export interface FilterProps {
@@ -90,16 +90,17 @@ export const FilterControl: React.FC<FilterProps> = ({
           </FocusTrap>
         </Box>
       )}
-      <ButtonBase
+      <Anchor
+        variant="interface"
         onClick={() => setMenuOpen(true)}
         aria-haspopup="true"
         aria-expanded={menuOpen}
       >
-        <FlexBox alignItems="center" gap={4}>
-          {children}
-          <MiniChevronDownIcon size={10} />
+        <FlexBox alignItems="center">
+          <Text whiteSpace="normal">{children}</Text>
+          <MiniChevronDownIcon ml={8} size={12} alignSelf="center" />
         </FlexBox>
-      </ButtonBase>
+      </Anchor>
     </FlexBox>
   );
 };

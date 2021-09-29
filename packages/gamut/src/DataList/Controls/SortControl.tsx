@@ -3,8 +3,8 @@ import { states } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React from 'react';
 
+import { Anchor } from '../..';
 import { FlexBox } from '../../Box';
-import { ButtonBase } from '../../ButtonBase';
 import { Query, QueryValues, SortDirection } from '..';
 
 const SortIcon = styled(ArrowChevronDownFilledIcon)(
@@ -19,6 +19,7 @@ const SortIcon = styled(ArrowChevronDownFilledIcon)(
 );
 
 interface SortControlProps {
+  justify?: 'left' | 'right';
   columnKey: string;
   direction: SortDirection;
   onQuery: (
@@ -38,33 +39,36 @@ const getNextSortDirection = (dir: SortDirection) => {
 };
 
 export const SortControl: React.FC<SortControlProps> = ({
+  justify = 'left',
   columnKey,
   direction,
   onQuery,
   children,
 }) => {
   return (
-    <ButtonBase
+    <Anchor
+      variant="interface"
       onClick={() =>
         onQuery('sort', columnKey, getNextSortDirection(direction))
       }
+      display="inline-flex"
     >
-      <FlexBox alignItems="center" gap={4}>
+      <FlexBox inline textAlign={justify} mr={8}>
         {children}
-        <FlexBox column width={16}>
-          <SortIcon
-            asc
-            size={9}
-            disabled={direction !== 'asc'}
-            aria-label="ascending"
-          />
-          <SortIcon
-            size={9}
-            disabled={direction !== 'desc'}
-            aria-label="descending"
-          />
-        </FlexBox>
       </FlexBox>
-    </ButtonBase>
+      <FlexBox inline column width={16}>
+        <SortIcon
+          asc
+          size={10}
+          disabled={direction !== 'asc'}
+          aria-label="ascending"
+        />
+        <SortIcon
+          size={10}
+          disabled={direction !== 'desc'}
+          aria-label="descending"
+        />
+      </FlexBox>
+    </Anchor>
   );
 };

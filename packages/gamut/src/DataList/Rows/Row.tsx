@@ -59,7 +59,11 @@ export function DataRow<
 
         if (key === 'select') {
           return (
-            <ListCol {...colProps} display={{ _: 'flex', xs: 'flex' }}>
+            <ListCol
+              {...colProps}
+              display={{ _: 'flex', xs: 'flex' }}
+              type="control"
+            >
               <SelectControl
                 label={`Select ${id}`}
                 name={`${idPrefix}-${id}`}
