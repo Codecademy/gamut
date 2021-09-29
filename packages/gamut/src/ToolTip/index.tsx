@@ -37,23 +37,42 @@ const TargetContainer = styled.div`
   }
 `;
 
-type ToolTipContainerProps = {
-  alignment: ToolTipAlignment;
-  mode: ColorModes;
+type ToolTipBodyProps = {
+  /**
+   * How to align the tooltip relative to the target.
+   */
+  alignment?: ToolTipAlignment;
+
+  mode?: ColorModes;
+
+  widthMode?: 'standard' | 'unlimited';
 };
 
-const ToolTipContainer = styled.div<ToolTipContainerProps>`
+type ToolTipContainerProps = ToolTipBodyProps;
+
+const getToolTipVisibilityCSS = (visibility: boolean) =>
+  visibility
+    ? `
+  opacity: 1;
+  visibility: visible;
+`
+    : `
+  opacity: 0;
+  visibility: hidden;
+`;
+
+const ToolTipContainer = styled.div<Required<ToolTipContainerProps>>`
   ${fontSmoothPixel}
   display: flex;
-  opacity: 0;
   transition: opacity ${timing.fast};
   transition-delay: ${timing.fast};
   position: absolute;
   max-width: ${({ alignment }) =>
     alignment.includes('center') ? '8rem' : '16rem'};
-  visibility: hidden;
   width: 70vw;
   z-index: 1;
+
+  ${getToolTipVisibilityCSS(false)}
 
   &::after {
     content: '';
@@ -79,8 +98,7 @@ const ToolTipContainer = styled.div<ToolTipContainerProps>`
   ${TargetContainer}:hover + &,
   ${TargetContainer}:focus-within + &,
   &:hover {
-    opacity: 1;
-    visibility: visible;
+    ${getToolTipVisibilityCSS(true)}
   }
 
   ${({ alignment }) =>
@@ -142,12 +160,13 @@ ${({ alignment }) =>
     `}
 `;
 
-const ToolTipBody = styled.div<ToolTipContainerProps>`
+const ToolTipBody = styled.div<Required<ToolTipBodyProps>>`
   border: 1px solid;
   border-radius: 3px;
   display: inline-block;
   font-size: ${pxRem(14)};
   line-height: ${lineHeight.base};
+
   ${({ alignment }) =>
     alignment.includes('center')
       ? `
@@ -158,7 +177,6 @@ const ToolTipBody = styled.div<ToolTipContainerProps>`
       : `
       padding: 1rem;
     `}
-  min-width: 4rem;
 
   ${variant({
     prop: 'mode',
@@ -175,14 +193,11 @@ const ToolTipBody = styled.div<ToolTipContainerProps>`
       },
     },
   })}
+
+  ${({ widthMode }) => (widthMode === 'unlimited' ? {} : { minWidth: '4rem' })}
 `;
 
-export type ToolTipProps = {
-  /**
-   * How to align the tooltip relative to the target.
-   */
-  alignment?: ToolTipAlignment;
-
+export type ToolTipProps = ToolTipContainerProps & {
   children?: ReactNode;
 
   /**
@@ -205,7 +220,7 @@ export type ToolTipProps = {
   focusable?: boolean;
 
   id: string;
-  mode?: ColorModes;
+
   target?: ReactNode;
 };
 
@@ -217,6 +232,7 @@ export const ToolTip: React.FC<ToolTipProps> = ({
   focusable,
   id,
   mode = 'light',
+  widthMode = 'standard',
   target,
 }) => {
   return (
@@ -242,9 +258,10 @@ export const ToolTip: React.FC<ToolTipProps> = ({
         id={id}
         role="tooltip"
         mode={mode}
+        widthMode={widthMode}
         aria-live="polite"
       >
-        <ToolTipBody alignment={alignment} mode={mode}>
+        <ToolTipBody alignment={alignment} mode={mode} widthMode={widthMode}>
           {children}
         </ToolTipBody>
       </ToolTipContainer>

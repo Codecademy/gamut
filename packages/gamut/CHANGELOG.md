@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [37.7.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@37.6.3...@codecademy/gamut@37.7.0) (2021-09-29)
+
+
+### Features
+
+* **Tooltip:** introduced widthMode ([903a358](https://github.com/Codecademy/client-modules/commit/903a358d93e87543f2c4f913016404ac059f4060))
+
+
+
 ### [37.6.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@37.6.2...@codecademy/gamut@37.6.3) (2021-09-22)
 
 

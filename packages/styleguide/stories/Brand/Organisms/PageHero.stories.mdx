@@ -24,12 +24,14 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
     },
     media: {
       type: 'image',
-      src: 'https://content.codecademy.com/courses/free/boba.svg',
-      alt: 'Codey',
+      src:
+        'https://cdn.mos.cms.futurecdn.net/wtqqnkYDYi2ifsWZVW2MT4-1200-80.jpg',
+      alt: 'beach',
     },
+    textLength: 'long',
   }}
   parameters={{
-    subtitle: `Hero component for landing pages created in Contentful. All props are optional. Image is hidden at sm screen size and below.`,
+    subtitle: `Hero component for landing pages created in Contentful. All props are optional. Image is hidden at below sm breakpoint.`,
     status: 'updating',
   }}
 />
@@ -59,6 +61,14 @@ Change the `media` prop to `type: video` and pass required video props to show a
         title="What's it like to be a Software Engineer"
       />
     )}
+  </Story>
+</Canvas>
+
+## Short Text
+
+<Canvas>
+  <Story name="Short Text">
+    {(args) => <PageHero {...args} textLength="short" />}
   </Story>
 </Canvas>
 
@@ -99,5 +109,13 @@ Using the `eyebrow` prop, you can add eyebrow text to the hero.
 <Canvas>
   <Story name="Eyebrow">
     {(args) => <PageHero {...args} eyebrow="Hello there" />}
+  </Story>
+</Canvas>
+
+## Show Image On Mobile
+
+<Canvas>
+  <Story name="Show Image On Mobile">
+    {(args) => <PageHero {...args} showImageOnMobile />}
   </Story>
 </Canvas>
