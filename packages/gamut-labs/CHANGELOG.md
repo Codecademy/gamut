@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [24.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@23.3.1...@codecademy/gamut-labs@24.0.0) (2021-09-29)
+
+
+### ⚠ BREAKING CHANGES
+
+* **PageHero:** add short text variation
+
+### Features
+
+* **PageHero:** add short text variation ([f93b7ef](https://github.com/Codecademy/client-modules/commit/f93b7efd82d469dcd948f2b2487eac77c3f6303c))
+
+
+
 ### [23.3.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@23.3.0...@codecademy/gamut-labs@23.3.1) (2021-09-29)
 
 **Note:** Version bump only for package @codecademy/gamut-labs
