@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [24.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@24.0.0...@codecademy/gamut-labs@24.1.0) (2021-09-29)
+
+
+### Features
+
+* **PageHero:** add option to show image on mobile ([efa83a2](https://github.com/Codecademy/client-modules/commit/efa83a2d79c85e48c732ccfdcef1efa3e298a745))
+
+
+
 ## [24.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@23.3.1...@codecademy/gamut-labs@24.0.0) (2021-09-29)
 
 
