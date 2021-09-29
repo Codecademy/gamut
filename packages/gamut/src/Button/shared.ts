@@ -1,5 +1,6 @@
 import {
   ColorModes,
+  css,
   fontSmoothPixel,
   modeColorProps,
   styledOptions,
@@ -8,6 +9,7 @@ import {
 } from '@codecademy/gamut-styles';
 import {
   CSSObject,
+  CSSProps,
   StyleProps,
   ThemeProps,
   variance,
@@ -57,6 +59,25 @@ export const buttonStyles = system.css({
     'fast',
     'ease-in'
   ),
+  [ButtonSelectors.SHADOW]: {
+    content: '""',
+    transition: transitionConcat(['opacity'], 'fast', 'ease-in'),
+    position: 'absolute',
+    borderRadius: '4px',
+    bg: 'text',
+    inset: -2,
+    opacity: 0,
+    zIndex: 0,
+  },
+  [ButtonSelectors.SHADOW_HOVER]: {
+    opacity: 0.06,
+  },
+  [ButtonSelectors.SHADOW_ACTIVE]: {
+    opacity: 0.025,
+  },
+  [ButtonSelectors.SHADOW_DISABLED]: {
+    opacity: 0,
+  },
   [ButtonSelectors.DISABLED]: {
     cursor: 'not-allowed',
     userSelect: 'none',

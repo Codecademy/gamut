@@ -23,6 +23,10 @@ export enum ButtonSelectors {
   FOCUS_VISIBLE = ' &:focus-visible',
   OUTLINE = '&:before',
   OUTLINE_FOCUS_VISIBLE = '&:focus-visible:before',
+  SHADOW = '&:after',
+  SHADOW_HOVER = '&:hover:after',
+  SHADOW_ACTIVE = '&:active:after',
+  SHADOW_DISABLED = "[disabled]:after, &:disabled:after, &[aria-disabled='true']:after",
 }
 
 export enum Selectors {

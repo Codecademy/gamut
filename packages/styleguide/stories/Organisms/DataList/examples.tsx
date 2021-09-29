@@ -2,6 +2,9 @@ import {
   ColumnConfig,
   DataList,
   DataListProps,
+  FillButton,
+  FlexBox,
+  Text,
   useLocalQuery,
 } from '@codecademy/gamut';
 import { Background } from '@codecademy/gamut-styles';
@@ -142,8 +145,21 @@ export const DataListTemplate = (
         onRowSelect={setSelectedRows}
         expandedRows={expandedRows}
         onRowExpand={setExpandedRows}
-        renderExpanded={({ name }: typeof rows[number]) => (
-          <>{name}: This is pretty cool</>
+        renderExpanded={({ onCollapse }) => (
+          <FlexBox
+            borderTop={1}
+            borderColor="background-hover"
+            center
+            column
+            p={32}
+            flex={1}
+            gap={16}
+          >
+            <Text variant="title-md">Nothing to see here</Text>
+            <FillButton onClick={onCollapse} size="small">
+              Get me out of here!
+            </FillButton>
+          </FlexBox>
         )}
         query={query}
         onQueryChange={onQueryChange}

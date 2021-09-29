@@ -1,8 +1,7 @@
 import React from 'react';
 
-import { Checkbox, ListCol, ListRow, Text } from '../..';
-import { ExpandCol } from '../Columns/ExpandCol';
-import { SelectCol } from '../Columns/SelectCol';
+import { ListCol, ListRow } from '../../List';
+import { ExpandControl, SelectControl } from '../Controls';
 import { ColumnConfig } from '../types';
 
 interface DataRowProps<
@@ -12,11 +11,15 @@ interface DataRowProps<
   Ids extends Rows[IdKey]
 > {
   id: Ids;
+  idPrefix: string;
   row: Rows;
   columns: Cols;
   onSelect?: (id: Ids) => void;
   onExpand?: (id: Ids) => void;
-  renderExpanded?: (row: Rows) => React.ReactNode;
+  renderExpanded?: (props: {
+    row: Rows;
+    onCollapse: () => void;
+  }) => React.ReactNode;
   selected?: boolean;
   expanded?: boolean;
 }
@@ -28,6 +31,7 @@ export function DataRow<
   Ids extends Rows[IdKey]
 >({
   id,
+  idPrefix,
   columns,
   row,
   onSelect,
@@ -36,55 +40,43 @@ export function DataRow<
   onExpand,
   renderExpanded,
 }: DataRowProps<Rows, Cols, IdKey, Ids>) {
-  const expandedContent = (
-    <>
-      {columns[0].key === 'select' && (
-        <ListCol size="content" aria-hidden ghost>
-          <Checkbox
-            disabled
-            spacing="tight"
-            label={<Text screenreader>Select Row {id}</Text>}
-            name={`${id}-placeholder-select`}
-            htmlFor={`${id}-placeholder-select`}
-            checked={selected}
-            onChange={() => onSelect?.(id)}
-          />
-        </ListCol>
-      )}
-      <ListCol fill>{renderExpanded?.(row)}</ListCol>
-    </>
-  );
+  const expandable = renderExpanded && onExpand;
+
+  const renderExpandedContent =
+    expandable &&
+    (() => renderExpanded({ row, onCollapse: () => onExpand(id) }));
 
   return (
-    <ListRow expanded={expanded} renderExpanded={expandedContent}>
-      {columns.map(({ key, render, size, justify, fill }) => {
+    <ListRow expanded={expanded} renderExpanded={renderExpandedContent}>
+      {columns.map(({ key, render, size, justify, fill, type }) => {
         const colProps = {
           size,
           justify,
           fill,
+          type,
           key: `${id}-col-${key}`,
         };
 
         if (key === 'select') {
           return (
-            <SelectCol
-              key={colProps.key}
-              id={id}
-              onSelect={onSelect}
-              selected={selected}
-            />
+            <ListCol {...colProps} display={{ _: 'flex', xs: 'flex' }}>
+              <SelectControl
+                label={`Select ${id}`}
+                name={`${idPrefix}-${id}`}
+                onSelect={() => onSelect?.(id)}
+                selected={selected}
+              />
+            </ListCol>
           );
         }
         if (key === 'expand') {
           return (
-            <ExpandCol
-              key={colProps.key}
-              id={id}
-              expanded={expanded}
-              onExpand={onExpand}
-            />
+            <ListCol {...colProps} order={[1000, 'initial']}>
+              <ExpandControl id={id} expanded={expanded} onExpand={onExpand} />
+            </ListCol>
           );
         }
+
         return (
           <ListCol {...colProps}>{render ? render(row) : row[key]}</ListCol>
         );

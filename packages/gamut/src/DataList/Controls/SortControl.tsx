@@ -3,7 +3,7 @@ import { states } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React from 'react';
 
-import { FlexBox } from '../..';
+import { FlexBox } from '../../Box';
 import { ButtonBase } from '../../ButtonBase';
 import { Query, QueryValues, SortDirection } from '..';
 
@@ -13,7 +13,7 @@ const SortIcon = styled(ArrowChevronDownFilledIcon)(
       transform: 'rotate(180deg)',
     },
     disabled: {
-      color: 'background-hover',
+      color: 'background-disabled',
     },
   })
 );

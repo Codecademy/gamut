@@ -27,7 +27,7 @@ const props = {
   onRowSelect,
   onRowExpand,
   onQueryChange,
-  renderExpanded: ({ id }) => <div>Expanded {id}</div>,
+  renderExpanded: ({ row: { id } }) => <div>Expanded {id}</div>,
 } as Props;
 
 const renderView = setupRtl(DataList, props as any) as <
@@ -81,7 +81,7 @@ describe('DataList', () => {
     it("clicking the row's checkbox selects the row", () => {
       renderView();
 
-      const checkbox = screen.getByRole('checkbox', { name: 'Select 1 Row' });
+      const checkbox = screen.getByRole('checkbox', { name: 'Select 1' });
 
       act(() => {
         fireEvent.click(checkbox);
@@ -92,7 +92,7 @@ describe('DataList', () => {
     it("clicking the row's checkbox deselects the row when the row is already selected", () => {
       renderView({ selectedRows: [1] });
 
-      const checkbox = screen.getByRole('checkbox', { name: 'Select 1 Row' });
+      const checkbox = screen.getByRole('checkbox', { name: 'Select 1' });
 
       act(() => {
         fireEvent.click(checkbox);
@@ -104,7 +104,7 @@ describe('DataList', () => {
     it('selecting another row adds the row to the selection', () => {
       renderView({ selectedRows: [2] });
 
-      const checkbox = screen.getByRole('checkbox', { name: 'Select 1 Row' });
+      const checkbox = screen.getByRole('checkbox', { name: 'Select 1' });
 
       act(() => {
         fireEvent.click(checkbox);
@@ -117,7 +117,7 @@ describe('DataList', () => {
       renderView();
 
       const checkbox = screen.getByRole('checkbox', {
-        name: 'Select test-header Row',
+        name: 'Select All',
       });
 
       act(() => {
@@ -130,7 +130,7 @@ describe('DataList', () => {
       renderView({ selectedRows: [1, 2, 3] });
 
       const checkbox = screen.getByRole('checkbox', {
-        name: 'Select test-header Row',
+        name: 'Select All',
       });
 
       act(() => {

@@ -1,12 +1,13 @@
 import React from 'react';
 
-import { ListHeader } from '../..';
-import { ListCol } from '../../List/ListCol';
+import { ListCol, ListHeader } from '../../List';
 import { QueryValues } from '..';
-import { ExpandCol } from '../Columns/ExpandCol';
-import { SelectCol } from '../Columns/SelectCol';
-import { FilterControl } from '../Controls/FilterControl';
-import { SortControl } from '../Controls/SortControl';
+import {
+  ExpandControl,
+  FilterControl,
+  SelectControl,
+  SortControl,
+} from '../Controls';
 import { ColumnConfig, Query } from '../types';
 
 interface HeaderRowProps<Cols extends ColumnConfig<any>[]> {
@@ -38,16 +39,22 @@ export function HeaderRow<Cols extends ColumnConfig<any>[]>({
 
         if (key === 'select') {
           return (
-            <SelectCol
-              key={renderKey}
-              id={`${id}-header`}
-              selected={selected}
-              onSelect={onSelect}
-            />
+            <ListCol size="content" key={renderKey}>
+              <SelectControl
+                name={`${id}-all`}
+                label="Select All"
+                selected={selected}
+                onSelect={() => onSelect?.()}
+              />
+            </ListCol>
           );
         }
         if (key === 'expand') {
-          return <ExpandCol key={renderKey} ghost />;
+          return (
+            <ListCol key={renderKey} ghost>
+              <ExpandControl />
+            </ListCol>
+          );
         }
         switch (queryType) {
           case 'sort': {

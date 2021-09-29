@@ -20,7 +20,10 @@ export interface DataListProps<
   onQueryChange?: (nextQuery: Query<Rows>) => void;
   onRowSelect?: (nextSelected: Ids[]) => void;
   onRowExpand?: (nextExpanded: Ids[]) => void;
-  renderExpanded?: (row: Rows) => React.ReactNode;
+  renderExpanded?: (props: {
+    row: Rows;
+    onCollapse: () => void;
+  }) => React.ReactNode;
   expandedRows?: Ids[];
   selectedRows?: Ids[];
 }
@@ -173,6 +176,7 @@ export function DataList<
       {rows.map((row) => (
         <DataRow
           key={`${id}-${row[idKey]}-row`}
+          idPrefix={id}
           id={row[idKey]}
           row={row}
           columns={computedColumns}

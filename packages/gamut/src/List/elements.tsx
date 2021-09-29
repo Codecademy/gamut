@@ -1,4 +1,10 @@
-import { css, states, styledOptions, variant } from '@codecademy/gamut-styles';
+import {
+  css,
+  states,
+  styledOptions,
+  system,
+  variant,
+} from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
 
@@ -38,6 +44,7 @@ const rowStates = states({
     width: '100%',
   },
   expanded: {
+    display: 'flex',
     flexDirection: { xs: 'column' },
   },
 });
@@ -72,7 +79,7 @@ const rowVariants = variant({
     },
     table: {
       bg: 'background',
-      '&:nth-of-type(2n-1)': {
+      '&:nth-of-type(2n)': {
         bg: 'background-selected',
       },
     },
@@ -110,11 +117,13 @@ export interface HeaderProps
 export const HeaderEl = styled('div', styledOptions)<HeaderProps>(
   css({
     display: 'flex',
-    position: 'sticky',
+    position: { _: 'initial', xs: 'sticky' },
+    flexDirection: ['column', 'row'],
     top: 0,
     bg: 'background-current',
     zIndex: 2,
     fontFamily: 'accent',
+    borderBottom: 2,
   }),
   spacingVariants,
   rowStates
@@ -209,6 +218,8 @@ const columnStates = states({
   },
   ghost: {
     visibility: 'hidden',
+    pointerEvents: 'none',
+    opacity: 0,
   },
   columnHeader: {
     fontWeight: 400,
@@ -242,7 +253,8 @@ export interface ColProps
     StyleProps<typeof columnSpacing>,
     StyleProps<typeof columnType>,
     StyleProps<typeof columnStates>,
-    StyleProps<typeof columnJustify> {}
+    StyleProps<typeof columnJustify>,
+    StyleProps<typeof system['layout']> {}
 
 export const ColEl = styled(
   'div',
@@ -268,5 +280,6 @@ export const ColEl = styled(
   columnSizes,
   columnType,
   columnStates,
-  columnJustify
+  columnJustify,
+  system.layout
 );
