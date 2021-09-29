@@ -110,7 +110,7 @@ const headerVariants = variant({
     slat: {},
     bar: {},
     table: {
-      borderY: 1,
+      borderBottom: 1,
     },
   },
 });
