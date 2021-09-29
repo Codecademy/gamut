@@ -14,11 +14,11 @@ import {
   GridForm,
   Markdown,
   SubmitButton,
-  TestOne,
   Text,
+  useCassForms,
   useFormState,
 } from '@codecademy/gamut/src';
-import { ViewIcon } from '@codecademy/gamut-icons';
+import { TerminalIcon, ViewIcon } from '@codecademy/gamut-icons';
 import { Keyhole } from '@codecademy/gamut-illustrations';
 import { DotDense } from '@codecademy/gamut-patterns';
 import { Background } from '@codecademy/gamut-styles';
@@ -509,6 +509,85 @@ const CustomInput2 = styled.input`
   background-color: limegreen;
 `;
 
+export const TestOne = () => {
+  const { ComposedFormGroup, ComposedForm } = useCassForms({
+    defaultValues: {
+      cool: 'gnbsdlfkjndlskfj',
+      beans: 'beans!',
+      check: true,
+      selected: 'not to mention nested',
+    },
+    validation: {
+      cool: { required: 'explain yourself cool' },
+      beans: {
+        required: 'explain yourself beans',
+      },
+    },
+  });
+
+  return (
+    <Background bg="black" borderRadius="40rem">
+      <ComposedForm
+        m={64}
+        p={64}
+        onSubmit={(values) => console.log(values)}
+        resetOnSubmit
+      >
+        <Text as="h4" variant="title-lg">
+          Composed Forms
+        </Text>
+        <SubmitButton variant="secondary" m={32}>
+          dont forget to submit, okay?
+        </SubmitButton>
+        <ComposedFormGroup
+          name="cool"
+          label="cool"
+          field={{
+            component: ConnectedInput,
+            icon: TerminalIcon,
+          }}
+        />
+        <Background
+          bg="paleYellow"
+          border={1}
+          m={12}
+          p={12}
+          borderRadius="5rem"
+        >
+          <Text>blah blah blah blah blah</Text>
+        </Background>
+        <ComposedFormGroup
+          name="beans"
+          label="beans"
+          field={{
+            component: ConnectedInput,
+          }}
+        />
+        <ComposedFormGroup
+          name="check"
+          label="ah yes a check"
+          field={{
+            component: ConnectedCheckbox,
+            label: 'yeeeees',
+          }}
+        />
+        <ComposedFormGroup
+          name="selected"
+          label="selected or dejected"
+          field={{
+            component: ConnectedSelect,
+            options: [
+              'perhaps just disrespected?',
+              'not to mention nested',
+              "but maybe that's expected",
+            ],
+          }}
+        />
+      </ComposedForm>
+    </Background>
+  );
+};
+
 export const HEY: React.FC = () => {
   return (
     <Background
@@ -519,7 +598,6 @@ export const HEY: React.FC = () => {
       m={32}
       borderRadius="10px"
     >
-      <TestOne />
       <ConnectedForm
         onSubmit={(values) => console.log(values)}
         defaultValues={{

@@ -1,4 +1,3 @@
-import { TerminalIcon } from '@codecademy/gamut-icons';
 import React, { useContext } from 'react';
 import {
   DeepPartial,
@@ -6,16 +5,18 @@ import {
   useFormContext,
 } from 'react-hook-form';
 
+import { ConnectedSelect } from '..';
 import {
   ConnectedCheckbox,
   ConnectedForm,
   ConnectedFormGroup,
+  ConnectedFormGroupProps,
   ConnectedFormProps,
   ConnectedInput,
   FormPropsContext,
-  SubmitButton,
 } from '.';
 import { SubmitContextProps } from './SubmitButton';
+import { ConnectedField } from './types';
 
 export const submitSuccessStatus = (
   wasSubmitSuccessful: boolean | undefined,
@@ -27,43 +28,32 @@ export const submitSuccessStatus = (
   );
 };
 
-// TO DO: change to new GridForm generic reference
-export type FormValues<T> = {
-  [key in keyof T]?: boolean | string | Pick<FileList, 'item'>;
-};
-
 interface CassForm<V, R extends { [K in keyof V]?: any }> {
   defaultValues: V;
   validation: Partial<R>;
 }
 
-interface CassField2<N> {
-  <T extends React.ComponentProps<typeof ConnectedFormGroup>>(
-    props: T & { name: N }
-  ): JSX.Element;
-}
-
-const useCassForms = <
+export const useCassForms = <
   Values,
   ValidationRules extends { [K in keyof Values]: any }
 >({
   defaultValues,
   validation,
 }: CassForm<Values, ValidationRules>) => {
-  const ComposedFormGroup = ((
-    props: React.ComponentProps<typeof ConnectedFormGroup>
-  ) => {
+  function ComposedFormGroup<C extends ConnectedField>(
+    props: ConnectedFormGroupProps<C> & { name: keyof Values }
+  ) {
     const { field, ...rest } = props;
     return (
       <ConnectedFormGroup
-        {...rest}
         field={{
-          validation: { ...validation[rest.name as keyof typeof validation] },
+          validation: { ...validation[rest.name] },
           ...field,
         }}
+        {...rest}
       />
     );
-  }) as CassField2<keyof Values>;
+  }
 
   const ComposedForm = (props: ConnectedFormProps<Values>) => (
     <ConnectedForm
@@ -79,7 +69,12 @@ const useCassForms = <
 
 export const TestOne = () => {
   const { ComposedFormGroup, ComposedForm } = useCassForms({
-    defaultValues: { cool: 'gnbsdlfkjndlskfj', beans: 'beans!', check: true },
+    defaultValues: {
+      cool: 'gnbsdlfkjndlskfj',
+      beans: 'beans!',
+      check: true,
+      another: 'hey',
+    },
     validation: {
       cool: { required: 'explain yourself cool' },
       beans: {
@@ -90,19 +85,25 @@ export const TestOne = () => {
 
   return (
     <ComposedForm
-      m={48}
+      m={64}
+      p={64}
       onSubmit={({ check }) => console.log(check)}
       resetOnSubmit
     >
-      <SubmitButton variant="secondary" m={32}>
-        dont forget to submit, okay?
-      </SubmitButton>
       <ComposedFormGroup
         name="cool"
         label="cool"
         field={{
           component: ConnectedInput,
-          icon: TerminalIcon,
+        }}
+      />
+
+      <ComposedFormGroup
+        name="another"
+        label="cool"
+        field={{
+          component: ConnectedSelect,
+          options: ['one', 'hey', 'stop'],
         }}
       />
       <ComposedFormGroup
@@ -114,7 +115,7 @@ export const TestOne = () => {
       />
       <ComposedFormGroup
         name="check"
-        label="a yes a check"
+        label="ah yes a check"
         field={{
           component: ConnectedCheckbox,
           label: 'yeeeees',
