@@ -67,64 +67,6 @@ export const useCassForms = <
   return { ComposedFormGroup, ComposedForm };
 };
 
-export const TestOne = () => {
-  const { ComposedFormGroup, ComposedForm } = useCassForms({
-    defaultValues: {
-      cool: 'gnbsdlfkjndlskfj',
-      beans: 'beans!',
-      check: true,
-      another: 'hey',
-    },
-    validation: {
-      cool: { required: 'explain yourself cool' },
-      beans: {
-        required: 'explain yourself beans',
-      },
-    },
-  });
-
-  return (
-    <ComposedForm
-      m={64}
-      p={64}
-      onSubmit={({ check }) => console.log(check)}
-      resetOnSubmit
-    >
-      <ComposedFormGroup
-        name="cool"
-        label="cool"
-        field={{
-          component: ConnectedInput,
-        }}
-      />
-
-      <ComposedFormGroup
-        name="another"
-        label="cool"
-        field={{
-          component: ConnectedSelect,
-          options: ['one', 'hey', 'stop'],
-        }}
-      />
-      <ComposedFormGroup
-        name="beans"
-        label="beans"
-        field={{
-          component: ConnectedInput,
-        }}
-      />
-      <ComposedFormGroup
-        name="check"
-        label="ah yes a check"
-        field={{
-          component: ConnectedCheckbox,
-          label: 'yeeeees',
-        }}
-      />
-    </ComposedForm>
-  );
-};
-
 export const useFormState = () => {
   // This is fixed in a later react-hook-form version:
   // https://github.com/react-hook-form/react-hook-form/issues/2887

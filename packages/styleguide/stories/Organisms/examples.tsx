@@ -516,17 +516,33 @@ export const TestOne = () => {
       beans: 'beans!',
       check: true,
       selected: 'not to mention nested',
+      tv: 'three',
     },
     validation: {
       cool: { required: 'explain yourself cool' },
       beans: {
-        required: 'explain yourself beans',
+        pattern: {
+          value: /^(?:(?!zero).)*$/,
+          message: 'zero to hero',
+        },
+      },
+      selected: {
+        pattern: {
+          value: /^(?:(?!zero).)*$/,
+          message: 'not zero.',
+        },
+      },
+      tv: {
+        pattern: {
+          value: /^(?:(?!zilch).)*$/,
+          message: 'not zero.',
+        },
       },
     },
   });
 
   return (
-    <Background bg="black" borderRadius="40rem">
+    <Background bg="black" borderRadius="15rem">
       <ComposedForm
         m={64}
         p={64}
@@ -580,6 +596,20 @@ export const TestOne = () => {
               'perhaps just disrespected?',
               'not to mention nested',
               "but maybe that's expected",
+              'zero',
+            ],
+          }}
+        />
+        <ComposedFormGroup
+          name="tv"
+          label="tv on the radio"
+          field={{
+            component: ConnectedRadioGroupInput,
+            options: [
+              { label: 'one', value: 'first' },
+              { label: 'two', value: 'two' },
+              { label: 'three', value: 'three' },
+              { label: 'zilch', value: 'zero' },
             ],
           }}
         />
@@ -640,7 +670,10 @@ export const HEY: React.FC = () => {
               field={{
                 component: ConnectedRadioGroupInput,
                 validation: {
-                  required: 'hey...',
+                  pattern: {
+                    value: /^(?:(?!zero).)*$/,
+                    message: 'not zero.',
+                  },
                 },
                 options: [
                   { label: 'one', value: 'first' },

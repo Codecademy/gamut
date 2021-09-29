@@ -1,5 +1,6 @@
 import { css } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
+import { isBoolean } from 'lodash';
 import React from 'react';
 
 import {
@@ -76,8 +77,9 @@ export function ConnectedFormGroup<T extends ConnectedField>({
       pb={spacing === 'tight' ? 0 : 8}
       mb={spacing === 'tight' ? 0 : 8}
     >
+      {console.log(error)}
       {hideLabel ? <HiddenText>{renderedLabel}</HiddenText> : renderedLabel}
-      <Component name={name} {...(rest as any)} />
+      <Component name={name} error={isBoolean(error)} {...(rest as any)} />
       {children}
       {(error || customError) && (
         <FormError

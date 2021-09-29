@@ -138,7 +138,10 @@ GridForm provides the following benefits:
             size: 4,
             type: 'radio-group',
             validation: {
-              required: 'You gotta pick one!',
+              pattern: {
+                value: /^(?:(?!nicki).)*$/,
+                message: 'not zero.',
+              },
             },
           },
           {

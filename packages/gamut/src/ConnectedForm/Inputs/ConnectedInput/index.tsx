@@ -1,3 +1,4 @@
+import { isBoolean } from 'lodash';
 import React from 'react';
 
 import { Input } from '../../../Form';
@@ -10,15 +11,19 @@ export const ConnectedInput: React.FC<ConnectedInputProps> = ({
   validation,
   ...rest
 }) => {
-  const { isDisabled, register } = useFieldContext(name);
+  const { error, isDisabled, register } = useFieldContext(name);
   const currentlyDisabled = isDisabled || disabled;
 
   return (
-    <Input
-      disabled={currentlyDisabled}
-      name={name}
-      ref={register(validation)}
-      {...rest}
-    />
+    <>
+      {console.log('HEY', error, name)}
+      <Input
+        disabled={currentlyDisabled}
+        name={name}
+        ref={register(validation)}
+        {...rest}
+        error={error}
+      />
+    </>
   );
 };
