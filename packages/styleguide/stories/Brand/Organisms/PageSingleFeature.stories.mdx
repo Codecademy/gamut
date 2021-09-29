@@ -1,0 +1,139 @@
+import { PageSingleFeature } from '@codecademy/gamut-labs/src';
+import title from '@codecademy/macros/lib/title.macro';
+import { PropsTable } from '@codecademy/storybook-addon-variance';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+
+<Meta
+  title={title}
+  component={PageSingleFeature}
+  args={{
+    eyebrow: 'Codecademy',
+    title: 'Build a Better Future',
+    desc:
+      'feat. [Rob Thomas of Matchbox Twenty](https://en.wikipedia.org/wiki/Rob_Thomas_(musician)) off the multi-platinum album',
+    onAnchorClick: () =>
+      // eslint-disable-next-line no-console
+      console.log('You clicked me an anchor tag inside Markdown!'),
+    cta: {
+      text: 'Click Me',
+      href:
+        'https://open.spotify.com/album/10aiDpdFGyfCFEcqpx6XTq?si=xR1nDqVqROK6KYM8J-l_rw',
+      onClick: () => {
+        // eslint-disable-next-line no-console
+        console.log('You could add event tracking here');
+      },
+    },
+    media: {
+      type: 'image',
+      src:
+        'https://cdn.mos.cms.futurecdn.net/wtqqnkYDYi2ifsWZVW2MT4-1200-80.jpg',
+      alt: 'beach',
+    },
+  }}
+  parameters={{
+    subtitle: `
+      Single Feature component for landing pages created in Contentful.
+      All props are optional.
+    `,
+    status: 'updating',
+  }}
+/>
+
+<Canvas>
+  <Story name="Single Feature">
+    {(args) => <PageSingleFeature {...args} />}
+  </Story>
+</Canvas>
+
+<PropsTable story="Single Feature" />
+
+## Video
+
+Change the `media` prop to `type: video` and pass required video props to show a video in the feature.
+
+<Canvas>
+  <Story name="Video">
+    {(args) => (
+      <PageSingleFeature
+        {...args}
+        media={{
+          type: 'video',
+          videoUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+          videoTitle: 'Workout with Rick Sanchez',
+          placeholderImage: 'https://placekitten.com/400/300',
+          autoplay: true,
+        }}
+        title="What's it like to be a Software Engineer"
+      />
+    )}
+  </Story>
+</Canvas>
+
+## Adjust the media width
+
+You can set the number of columns that the media shoul occupy in a 12 column grid.
+
+<Canvas>
+  <Story name="Adjust the media width">
+    {(args) => <PageSingleFeature {...args} mediaWidth={3} />}
+  </Story>
+</Canvas>
+
+## Regular Button
+
+Pass `buttonType` as `fill` to show a `FillButton` instead of the larger `CTAButton`. Text should always be Call to Action text regardless of button type.
+
+<Canvas>
+  <Story name="Regular Button">
+    {(args) => (
+      <PageSingleFeature {...args} cta={{ ...args.cta, buttonType: 'fill' }} />
+    )}
+  </Story>
+</Canvas>
+
+## Without Button
+
+Omit the `cta` prop to not show a button.
+
+<Canvas>
+  <Story name="Without Button">
+    {(args) => <PageSingleFeature {...args} cta={undefined} />}
+  </Story>
+</Canvas>
+
+## Without Description
+
+Omit the `desc` prop to not show a description.
+
+<Canvas>
+  <Story name="Without Description">
+    {(args) => <PageSingleFeature {...args} desc={undefined} />}
+  </Story>
+</Canvas>
+
+## Without Eyebrow
+
+Omit the `eyebrow` prop to not show a description.
+The `eyebrow` will only display if the title is present.
+
+<Canvas>
+  <Story name="Without Eyebrow">
+    {(args) => <PageSingleFeature {...args} eyebrow={undefined} />}
+  </Story>
+</Canvas>
+
+## Without Media
+
+<Canvas>
+  <Story name="Without Media">
+    {(args) => <PageSingleFeature {...args} media={undefined} />}
+  </Story>
+</Canvas>
+
+## Hide the media on mobile
+
+<Canvas>
+  <Story name="Hide the media on mobile">
+    {(args) => <PageSingleFeature {...args} hideMediaOnMobile />}
+  </Story>
+</Canvas>

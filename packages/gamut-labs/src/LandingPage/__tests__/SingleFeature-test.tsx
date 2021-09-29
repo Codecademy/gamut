@@ -1,11 +1,11 @@
 import { setupRtl } from '@codecademy/gamut-tests';
 import { fireEvent } from '@testing-library/react';
 
-import { PageHero } from '..';
+import { PageSingleFeature } from '..';
 
-const renderView = setupRtl(PageHero, { textLength: 'long' });
+const renderView = setupRtl(PageSingleFeature);
 
-describe('PageHero', () => {
+describe('PageSingleFeature', () => {
   it('should render a title when one is provided', () => {
     const { view: wrapper } = renderView({ title: 'title' });
     wrapper.getByText('title');
@@ -22,6 +22,13 @@ describe('PageHero', () => {
       title: 'title',
     });
     wrapper.getByText('eyebrow');
+  });
+
+  it('should not render an eyebrow when title is not present', () => {
+    const { view: wrapper } = renderView({
+      eyebrow: 'eyebrow',
+    });
+    expect(wrapper.queryByText('eyebrow')).not.toBeInTheDocument();
   });
 
   it('can pass a callback for when anchor tags in the description are clicked', () => {
@@ -78,5 +85,13 @@ describe('PageHero', () => {
   it('should not render anything when no props are provided', () => {
     const { view: wrapper } = renderView();
     expect(wrapper.queryByText(/.+/)).not.toBeInTheDocument();
+  });
+
+  it('should render an h1 when passed hasPageHeading', () => {
+    const { view: wrapper } = renderView({
+      title: 'title',
+      hasPageHeading: true,
+    });
+    wrapper.getByRole('heading', { level: 1 });
   });
 });
