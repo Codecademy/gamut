@@ -48,8 +48,10 @@ export const Flyout: React.FC<FlyoutProps> = ({
       shroud
     >
       <Drawer
-        expanded={expanded}
         bottom={0}
+        display="flex"
+        expanded={expanded}
+        flexDirection={openFrom === 'left' ? 'row' : 'row-reverse'}
         position="fixed"
         top={0}
         {...{ [openFrom]: 0 }}

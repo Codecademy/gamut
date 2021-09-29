@@ -1,16 +1,12 @@
-import { Box } from '@codecademy/gamut';
-import { breakpoints, system, timingValues } from '@codecademy/gamut-styles';
-import { StyleProps, variance } from '@codecademy/variance';
-import styled from '@emotion/styled';
+import { Box, BoxProps } from '@codecademy/gamut';
+import { breakpoints, timingValues } from '@codecademy/gamut-styles';
 import { AnimatePresence, motion } from 'framer-motion';
 import React from 'react';
 import { useMedia } from 'react-use';
 
-const drawerProps = variance.compose(system.positioning);
+const DrawerBase = motion.custom(Box);
 
-const DrawerBase = styled(motion.custom(Box))(drawerProps);
-
-export interface DrawerProps extends StyleProps<typeof drawerProps> {
+export interface DrawerProps extends Omit<BoxProps, 'width'> {
   /**
    * Whether the drawer should be open.
    */
