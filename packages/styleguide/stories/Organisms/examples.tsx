@@ -519,6 +519,8 @@ export const HEY: React.FC = () => {
       m={32}
       borderRadius="10px"
     >
+      <TestOne />
+
       <ConnectedForm
         onSubmit={(values) => console.log(values)}
         defaultValues={{
@@ -665,7 +667,6 @@ export const HEY: React.FC = () => {
           </INeedSomeSpace>
         </Box>
         <Card shadow="medium" gridArea="illo">
-          {/* <TestOne /> */}
           <Keyhole />
           <Background
             bg="navy-900"

@@ -11,6 +11,7 @@ import {
   ConnectedFormProps,
   ConnectedInput,
   FormPropsContext,
+  SubmitButton,
 } from '.';
 import { SubmitContextProps } from './SubmitButton';
 
@@ -49,8 +50,16 @@ const useCassForms = <
   const ConnectedFormGroup2 = ((
     props: React.ComponentProps<typeof ConnectedFormGroup>
   ) => {
-    props.field.validation = validation[props.name];
-    return <ConnectedFormGroup {...props} />;
+    const { field, ...rest } = props;
+    return (
+      <ConnectedFormGroup
+        {...rest}
+        field={{
+          validation: { ...validation[rest.name as keyof typeof validation] },
+          ...field,
+        }}
+      />
+    );
   }) as CassField2<keyof Values>;
 
   const ConnectedForm1 = (props: ConnectedFormProps<Values>) => (
@@ -67,45 +76,37 @@ const useCassForms = <
 
 export const TestOne = () => {
   const { ConnectedFormGroup2, ConnectedForm1 } = useCassForms({
-    defaultValues: { cool: true, beans: false },
+    defaultValues: { cool: 'cool', beans: 'beans!' },
     validation: {
-      cool: { required: true },
+      cool: { required: 'explain yourself cool' },
       beans: {
-        required: true,
+        required: 'explain yourself beans',
       },
     },
   });
 
   return (
-    <ConnectedForm1 onSubmit={({ cool }) => console.log(cool)}>
+    <ConnectedForm1 m={48} onSubmit={({ cool }) => console.log(cool)}>
+      <SubmitButton variant="secondary" m={32}>
+        dont forget to submit, okay?
+      </SubmitButton>
       <ConnectedFormGroup2
         name="cool"
         label="cool"
         field={{
           component: ConnectedInput,
-          validation: { required: 'explain yourself' },
         }}
       />
-      <ConnectedFormGroup
+      <ConnectedFormGroup2
         name="beans"
         label="beans"
         field={{
           component: ConnectedInput,
-          validation: { required: 'explain yourself' },
         }}
       />
     </ConnectedForm1>
   );
 };
-
-// [pass key of validation into the key of ]
-
-// props: { onSubmit: SubmitHandler<Values>; children: React.ReactNode }) => (
-//   <ConnectedForm defaultValues={defaultValues} {...props}>
-//     {props.children}
-//   </ConnectedForm>
-// ),
-// Make ConnectedForm + ConnectedFormGroup able to accept a generic
 
 export const useFormState = () => {
   // This is fixed in a later react-hook-form version:
