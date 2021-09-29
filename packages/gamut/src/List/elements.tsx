@@ -66,7 +66,8 @@ const rowVariants = variant({
   variants: {
     slat: {
       bg: 'background',
-      borderBottom: 1,
+      border: 1,
+      borderTop: 'none',
       '&:first-of-type': {
         borderTop: 1,
       },
