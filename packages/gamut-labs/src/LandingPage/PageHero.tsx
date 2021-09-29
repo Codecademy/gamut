@@ -36,13 +36,14 @@ type ColumnLayout = {
 
 export type PageHeroProps = BaseProps & {
   /**
-   * Whether to show an image or a video, with the associated props to do so
-   */
-  media?: MediaProps;
-  /**
    * Eyebrow text shown above title
    */
   eyebrow?: string;
+  /**
+   * Whether to show an image or a video, with the associated props to do so
+   */
+  media?: MediaProps;
+  showImageOnMobile?: boolean;
   textLength?: 'short' | 'long';
 };
 
@@ -78,14 +79,15 @@ const getColumnLayout = (
 };
 
 export const PageHero: React.FC<PageHeroProps> = ({
-  title,
   desc,
   cta,
-  media,
   eyebrow,
+  media,
+  onAnchorClick,
+  showImageOnMobile,
   testId,
   textLength = 'long',
-  onAnchorClick,
+  title,
 }) => {
   const { right, left } = getColumnLayout(media?.type, textLength);
 
@@ -121,13 +123,22 @@ export const PageHero: React.FC<PageHeroProps> = ({
         )}
       </Column>
       {media && (
-        <Column size={{ sm: right }}>
+        <Column
+          size={{ sm: right }}
+          gridRowStart={{
+            _: showImageOnMobile ? 1 : 'initial',
+            sm: 'initial',
+          }}
+        >
           {media.type === 'image' ? (
             <Image
               src={media.src}
               alt={media.alt}
               width={1}
-              display={{ _: 'none', sm: 'initial' }}
+              display={{
+                _: showImageOnMobile ? 'initial' : 'none',
+                sm: 'initial',
+              }}
             />
           ) : (
             <Video {...media} />
