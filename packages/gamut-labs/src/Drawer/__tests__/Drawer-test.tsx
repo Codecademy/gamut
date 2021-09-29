@@ -5,6 +5,7 @@ import React from 'react';
 import { Drawer } from '..';
 
 jest.mock('react-use', () => ({
+  ...jest.requireActual<{}>('react-use'),
   useMedia: () => false,
 }));
 
