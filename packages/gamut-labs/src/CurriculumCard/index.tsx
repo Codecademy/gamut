@@ -9,6 +9,8 @@ import { Subtitle, SubtitleProps } from './Subtitle';
 
 export type ProgressState = 'inProgress' | 'completed';
 
+export type FooterTextVariantType = 'enrolled' | 'inProgress';
+
 const cardHeight = 180;
 
 const cardStyles = {
@@ -28,6 +30,10 @@ export type CurriculumCardProps = SubtitleProps & {
   tag?: string;
   tagColor?: TagColor;
   showAltSubtitle?: boolean;
+  /**
+   * Changes In Progress card footer text from "Enrolled..." to "In Progress..."
+   */
+  footerTextVariant?: FooterTextVariantType;
 };
 
 export const CurriculumCard: React.FC<CurriculumCardProps> = ({
@@ -44,6 +50,7 @@ export const CurriculumCard: React.FC<CurriculumCardProps> = ({
   text,
   title,
   showAltSubtitle = false,
+  footerTextVariant = 'enrolled',
 }) => {
   const boxVariant = progressState && cardStyles[progressState];
   const mode = progressState === 'completed' ? 'dark' : 'light';
@@ -89,6 +96,7 @@ export const CurriculumCard: React.FC<CurriculumCardProps> = ({
         progressState={progressState}
         tag={tag}
         tagColor={tagColor}
+        footerTextVariant={footerTextVariant}
       />
     </Card>
   );

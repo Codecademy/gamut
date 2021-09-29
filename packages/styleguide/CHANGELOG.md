@@ -3,6 +3,67 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [46.4.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@46.4.0...@codecademy/styleguide@46.4.1) (2021-09-29)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [46.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@46.3.1...@codecademy/styleguide@46.4.0) (2021-09-28)
+
+
+### Features
+
+* **CurriculumCard:** updated footer text variant ([5ad0005](https://github.com/Codecademy/client-modules/commit/5ad0005c34da14b7a7e06a4410264f989d97a27a))
+
+
+
+### [46.3.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@46.3.0...@codecademy/styleguide@46.3.1) (2021-09-27)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [46.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@46.2.0...@codecademy/styleguide@46.3.0) (2021-09-24)
+
+
+### Features
+
+* update landing page `CTA` to show fill button or cta button ([c18f7f8](https://github.com/Codecademy/client-modules/commit/c18f7f8bb494dfa4d0c9f0d53dd3decae56b3664))
+
+
+
+## [46.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@46.1.0...@codecademy/styleguide@46.2.0) (2021-09-24)
+
+
+### Features
+
+* **PageHero:** add optional eyebrow text ([ea3ce0b](https://github.com/Codecademy/client-modules/commit/ea3ce0bc6f5f330514c1ac297ad7d3c9fdacc739))
+
+
+
+## [46.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@46.0.1...@codecademy/styleguide@46.1.0) (2021-09-24)
+
+
+### Features
+
+* **docs:** elaborate Popover vs ToolTip ([7bba879](https://github.com/Codecademy/client-modules/commit/7bba8793aec477ccce1cd8ce2861533327447c09))
+
+
+
+### [46.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@46.0.0...@codecademy/styleguide@46.0.1) (2021-09-22)
+
+
+### Bug Fixes
+
+* **SelectDropdown:** parse options fix for select dropdown ([f92e8a5](https://github.com/Codecademy/client-modules/commit/f92e8a527f5470038e41c38776612f2336225896))
+
+
+
 ## [46.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@45.0.0...@codecademy/styleguide@46.0.0) (2021-09-21)
 
 

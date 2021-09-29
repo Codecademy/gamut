@@ -42,15 +42,23 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
   }}
 />
 
-## With title, desc, and CTA
-
 <Canvas>
-  <Story name="With Title, Desc, CTA">
-    {(args) => <PageVideoGallery {...args} />}
-  </Story>
+  <Story name="Video Gallery">{(args) => <PageVideoGallery {...args} />}</Story>
 </Canvas>
 
-<PropsTable story="With Title, Desc, CTA" />
+<PropsTable story="Video Gallery" />
+
+## Regular Button
+
+Pass `buttonType` as `fill` to show a `FillButton` instead of the larger `CTAButton`. Text should always be Call to Action text regardless of button type.
+
+<Canvas>
+  <Story name="Regular Button">
+    {(args) => (
+      <PageVideoGallery {...args} cta={{ ...args.cta, buttonType: 'fill' }} />
+    )}
+  </Story>
+</Canvas>
 
 ## Gallery only
 
