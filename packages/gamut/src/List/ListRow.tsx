@@ -44,6 +44,7 @@ const ExpandInCollapseOut: React.FC = ({ children }) => {
 export const ListRow = forwardRef<HTMLLIElement, ListRowProps>(
   ({ children, expanded, renderExpanded, ...rest }, ref) => {
     const { variant, scrollable, ...rowConfig } = useListContext();
+    const wrapperProps = !renderExpanded ? rowConfig : {};
     let content = children;
 
     if (renderExpanded) {
@@ -59,6 +60,7 @@ export const ListRow = forwardRef<HTMLLIElement, ListRowProps>(
         variant={variant}
         expanded={!!renderExpanded}
         scrollable={scrollable}
+        {...wrapperProps}
       >
         {content}
         <AnimatePresence>
