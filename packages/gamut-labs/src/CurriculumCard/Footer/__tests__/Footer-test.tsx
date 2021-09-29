@@ -42,4 +42,17 @@ describe('CurriculumCard Footer', () => {
     const { view } = renderView({ beta: true, progressState: 'completed' });
     expect(view.queryByText('BETA')).toBeFalsy();
   });
+
+  it('displays enrolled footer variant by default', () => {
+    const { view } = renderView({ progressState: 'inProgress' });
+    view.getByText('Enrolled...');
+  });
+
+  it('displays inProgress footer variant', () => {
+    const { view } = renderView({
+      progressState: 'inProgress',
+      footerTextVariant: 'inProgress',
+    });
+    expect(view.queryByText('In Progress...')).toBeTruthy();
+  });
 });

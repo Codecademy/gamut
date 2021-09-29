@@ -8,6 +8,7 @@ export type FooterProps = {
   progressState?: 'completed' | 'inProgress';
   tag?: string;
   tagColor?: TagColor;
+  footerTextVariant?: 'enrolled' | 'inProgress';
 };
 
 export const Footer: React.FC<FooterProps> = ({
@@ -15,6 +16,7 @@ export const Footer: React.FC<FooterProps> = ({
   progressState,
   tag,
   tagColor,
+  footerTextVariant,
 }) => {
   if (progressState) {
     return (
@@ -32,7 +34,9 @@ export const Footer: React.FC<FooterProps> = ({
             width="100%"
           >
             <Text fontFamily="accent" fontSize={14}>
-              Enrolled...
+              {footerTextVariant === 'inProgress'
+                ? 'In Progress...'
+                : 'Enrolled...'}
             </Text>
             <Text textColor="hyper">Keep Going</Text>
           </FlexBox>
