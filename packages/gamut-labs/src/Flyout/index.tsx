@@ -49,11 +49,10 @@ export const Flyout: React.FC<FlyoutProps> = ({
     >
       <Drawer
         expanded={expanded}
-        bottom="0"
+        bottom={0}
         position="fixed"
-        top="0"
-        right="0"
-        {...(openFrom === 'left' && { left: 0, position: 'absolute' })}
+        top={0}
+        {...{ [openFrom]: 0 }}
       >
         <Text as="h2" fontSize={22} mb={8} ml={16} mt={24}>
           {title}
@@ -63,7 +62,7 @@ export const Flyout: React.FC<FlyoutProps> = ({
           icon={MiniDeleteIcon}
           onClick={onClose}
           position="absolute"
-          top="-0.5rem"
+          top="1rem"
           right="0.5rem"
         />
         {children}

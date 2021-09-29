@@ -4,6 +4,10 @@ import React from 'react';
 
 import { Drawer } from '..';
 
+jest.mock('react-use', () => ({
+  useMedia: () => false,
+}));
+
 const renderView = setupRtl(Drawer, {
   children: <div data-testid="drawer-content">Howdy!</div>,
 });
