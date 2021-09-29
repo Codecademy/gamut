@@ -47,7 +47,7 @@ const useCassForms = <
   defaultValues,
   validation,
 }: CassForm<Values, ValidationRules>) => {
-  const ConnectedFormGroup2 = ((
+  const ComposedFormGroup = ((
     props: React.ComponentProps<typeof ConnectedFormGroup>
   ) => {
     const { field, ...rest } = props;
@@ -62,7 +62,7 @@ const useCassForms = <
     );
   }) as CassField2<keyof Values>;
 
-  const ConnectedForm1 = (props: ConnectedFormProps<Values>) => (
+  const ComposedForm = (props: ConnectedFormProps<Values>) => (
     <ConnectedForm
       defaultValues={
         defaultValues as UnpackNestedValue<DeepPartial<typeof defaultValues>>
@@ -71,11 +71,11 @@ const useCassForms = <
     />
   );
 
-  return { ConnectedFormGroup2, ConnectedForm1 };
+  return { ComposedFormGroup, ComposedForm };
 };
 
 export const TestOne = () => {
-  const { ConnectedFormGroup2, ConnectedForm1 } = useCassForms({
+  const { ComposedFormGroup, ComposedForm } = useCassForms({
     defaultValues: { cool: 'cool', beans: 'beans!' },
     validation: {
       cool: { required: 'explain yourself cool' },
@@ -86,25 +86,25 @@ export const TestOne = () => {
   });
 
   return (
-    <ConnectedForm1 m={48} onSubmit={({ cool }) => console.log(cool)}>
+    <ComposedForm m={48} onSubmit={({ cool }) => console.log(cool)}>
       <SubmitButton variant="secondary" m={32}>
         dont forget to submit, okay?
       </SubmitButton>
-      <ConnectedFormGroup2
+      <ComposedFormGroup
         name="cool"
         label="cool"
         field={{
           component: ConnectedInput,
         }}
       />
-      <ConnectedFormGroup2
+      <ComposedFormGroup
         name="beans"
         label="beans"
         field={{
           component: ConnectedInput,
         }}
       />
-    </ConnectedForm1>
+    </ComposedForm>
   );
 };
 
