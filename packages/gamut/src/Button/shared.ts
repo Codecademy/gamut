@@ -1,6 +1,5 @@
 import {
   ColorModes,
-  css,
   fontSmoothPixel,
   modeColorProps,
   styledOptions,
@@ -9,7 +8,6 @@ import {
 } from '@codecademy/gamut-styles';
 import {
   CSSObject,
-  CSSProps,
   StyleProps,
   ThemeProps,
   variance,
