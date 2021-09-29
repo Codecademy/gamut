@@ -28,7 +28,7 @@
     "@codecademy/gamut-styles": "^12.0.0",
     "@codecademy/variance": "^0.19.0",
     "classnames": "^2.2.5",
-    "framer-motion": "^2.7.9",
+    "framer-motion": "^4.1.17",
     "lodash": "^4.17.5",
     "react-focus-on": "^3.5.1",
     "react-hook-form": "^6.15.5",

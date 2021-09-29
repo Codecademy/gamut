@@ -30,7 +30,7 @@
     "@types/marked": "^1.1.0",
     "@types/react-select": "^4.0.13",
     "classnames": "^2.2.5",
-    "framer-motion": "^2.7.9",
+    "framer-motion": "^4.1.17",
     "html-to-react": "^1.4.2",
     "invariant": "^2.2.4",
     "lodash": "^4.17.5",
