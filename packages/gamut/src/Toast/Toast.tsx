@@ -88,13 +88,7 @@ export const Toast: React.FC<ToastProps> = ({
   };
 
   return (
-    <ToastContainer
-      role="alert"
-      aria-live="assertive"
-      aria-atomic="true"
-      aria-label={`${title} toast`}
-      layout={layoutType}
-    >
+    <ToastContainer role="status" aria-live="polite" layout={layoutType}>
       {renderIcon()}
       <Box gridArea="message" py={4}>
         {title && (
