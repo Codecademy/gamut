@@ -111,7 +111,7 @@ const headerVariants = variant({
     slat: {},
     bar: {},
     table: {
-      borderBottom: 1,
+      borderBottom: 2,
     },
   },
 });
@@ -222,14 +222,13 @@ const columnStates = states({
       width: 16,
       position: 'absolute',
     },
-  },
-  delimiter: {
     '&:after': {
       display: { _: 'none', xs: 'block' },
       content: '""',
       bg: 'background-current',
       right: 0,
-      height: 1,
+      top: 0,
+      bottom: -2,
       width: 4,
       position: 'absolute',
     },
