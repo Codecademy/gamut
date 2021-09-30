@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [11.11.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@11.10.1...@codecademy/gamut-styles@11.11.0) (2021-09-30)
+
+
+### Features
+
+* **Drawer:** extract Drawer from Flyout ([76f261c](https://github.com/Codecademy/client-modules/commit/76f261cc7840bd640de368f70e125b5585638412))
+
+
+
 ### [11.10.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@11.10.0...@codecademy/gamut-styles@11.10.1) (2021-09-13)
 
 **Note:** Version bump only for package @codecademy/gamut-styles
