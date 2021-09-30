@@ -3,6 +3,7 @@ import { states, variant } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React, { HTMLAttributes } from 'react';
 
+import { FlexBox } from '..';
 import { ToolTip, ToolTipProps } from '../ToolTip';
 import { formBaseStyles, formFieldTextDisabledStyles } from './styles';
 
@@ -70,24 +71,29 @@ export const FormGroupLabel: React.FC<FormGroupLabelProps> = ({
   ...rest
 }) => {
   return (
-    <Label
-      {...rest}
-      htmlFor={htmlFor}
-      disabled={disabled}
-      className={className}
-      size={size}
-    >
-      {children}
-      {showRequired ? ' *' : ''}
+    <FlexBox>
+      <Label
+        {...rest}
+        htmlFor={htmlFor}
+        disabled={disabled}
+        className={className}
+        size={size}
+      >
+        {children}
+        {showRequired ? ' *' : ''}
+      </Label>
       {tooltip && (
         <StyledToolTipContainer>
           <StyledToolTip
             alignment="bottom-right"
-            target={<MiniInfoOutlineIcon size="0.8rem" aria-hidden="false" />}
+            focusable
+            target={
+              <MiniInfoOutlineIcon size="0.8rem" aria-hidden="false" mb={4} />
+            }
             {...tooltip}
           />
         </StyledToolTipContainer>
       )}
-    </Label>
+    </FlexBox>
   );
 };
