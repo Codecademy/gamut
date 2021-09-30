@@ -52,11 +52,11 @@ const spacingVariants = variant({
   prop: 'spacing',
   variants: {
     normal: {
-      gap: { _: 8, xs: 16 },
+      gap: { _: 8, xs: 40 },
     },
     condensed: {
       fontSize: 14,
-      gap: 8,
+      gap: { _: 8, xs: 32 },
     },
   },
 });
@@ -220,6 +220,17 @@ const columnStates = states({
       left: -16,
       height: 1,
       width: 16,
+      position: 'absolute',
+    },
+  },
+  delimiter: {
+    '&:after': {
+      display: { _: 'none', xs: 'block' },
+      content: '""',
+      bg: 'background-current',
+      right: 0,
+      height: 1,
+      width: 4,
       position: 'absolute',
     },
   },

@@ -149,19 +149,14 @@ export const DataListTemplate = (
         expandedRows={expandedRows}
         onRowExpand={setExpandedRows}
         renderExpanded={({ onCollapse }) => (
-          <FlexBox
-            borderTop={1}
-            borderColor="text-disabled"
-            center
-            column
-            p={32}
-            flex={1}
-            gap={16}
-          >
-            <Text variant="title-md">Nothing to see here</Text>
-            <FillButton onClick={onCollapse} size="small">
-              Get me out of here!
-            </FillButton>
+          <FlexBox column flex={1}>
+            <FlexBox borderTop={1} opacity={0.5} />
+            <FlexBox center column p={32} gap={16}>
+              <Text variant="title-md">Nothing to see here</Text>
+              <FillButton onClick={onCollapse} size="small">
+                Get me out of here!
+              </FillButton>
+            </FlexBox>
           </FlexBox>
         )}
         query={query}

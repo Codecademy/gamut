@@ -82,7 +82,9 @@ export function DataRow<
         }
 
         return (
-          <ListCol {...colProps}>{render ? render(row) : row[key]}</ListCol>
+          <ListCol {...colProps} delimiter={type === 'header' && !expanded}>
+            {render ? render(row) : row[key]}
+          </ListCol>
         );
       })}
     </ListRow>
