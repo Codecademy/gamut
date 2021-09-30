@@ -1,16 +1,20 @@
-import { Column, ColumnProps, LayoutGrid, VideoProps } from '@codecademy/gamut';
-import styled from '@emotion/styled';
+import {
+  Box,
+  Column,
+  ColumnProps,
+  LayoutGrid,
+  Text,
+  Video,
+  VideoProps,
+} from '@codecademy/gamut';
 import React from 'react';
 
 import { CTA } from './CTA';
 import { Description } from './Description';
-import { PageHeroMedia } from './PageHeroMedia';
 import { Title } from './Title';
 import { BaseProps } from './types';
 
-const LeftColumn = styled(Column)`
-  align-content: center;
-`;
+const Image = Box.withComponent('img');
 
 export type ImageProps = {
   src: string;
@@ -31,56 +35,116 @@ type ColumnLayout = {
 };
 
 export type PageHeroProps = BaseProps & {
+  /**
+   * Eyebrow text shown above title
+   */
+  eyebrow?: string;
+  /**
+   * Whether to show an image or a video, with the associated props to do so
+   */
   media?: MediaProps;
+  showImageOnMobile?: boolean;
+  textLength?: 'short' | 'long';
 };
 
-const getColumnLayout = (media: MediaProps | undefined): ColumnLayout => {
-  switch (media?.type) {
-    case 'image':
-      return {
-        left: 9,
-        right: 3,
-      };
-    case 'video':
-      return {
-        left: 7,
-        right: 5,
-      };
-    default:
-      return {
-        left: 12,
-        right: 12,
-      };
+const getColumnLayout = (
+  mediaType: 'image' | 'video' | undefined,
+  textLength: PageHeroProps['textLength']
+): ColumnLayout => {
+  if (mediaType === 'video') {
+    return {
+      left: 7,
+      right: 5,
+    };
   }
+  if (mediaType === 'image') {
+    switch (textLength) {
+      case 'short':
+        return {
+          left: 6,
+          right: 6,
+        };
+      case 'long':
+      default:
+        return {
+          left: 9,
+          right: 3,
+        };
+    }
+  }
+  return {
+    left: 12,
+    right: 12,
+  };
 };
 
 export const PageHero: React.FC<PageHeroProps> = ({
-  title,
   desc,
   cta,
+  eyebrow,
   media,
-  testId,
   onAnchorClick,
+  showImageOnMobile,
+  testId,
+  textLength = 'long',
+  title,
 }) => {
-  const { right, left } = getColumnLayout(media);
+  const { right, left } = getColumnLayout(media?.type, textLength);
 
   return (
     <LayoutGrid data-testid={testId} rowGap={16} columnGap={{ _: 8, sm: 32 }}>
-      <LeftColumn
-        size={{
-          _: 12,
-          sm: left,
-        }}
-      >
-        {title && <Title isPageHeading>{title}</Title>}
+      <Column size={{ sm: left }} alignContent="flex-start">
+        {title && (
+          <Title isPageHeading>
+            {eyebrow && (
+              <Text
+                fontSize={{ _: 20, sm: 22 }}
+                fontFamily="accent"
+                mb={16}
+                display="block"
+              >
+                {eyebrow}
+              </Text>
+            )}
+            {title}
+          </Title>
+        )}
         {desc && <Description text={desc} onAnchorClick={onAnchorClick} />}
         {cta && (
-          <CTA href={cta.href} onCtaButtonClick={cta.onClick}>
-            {cta.text}
-          </CTA>
+          <Box mt={32}>
+            <CTA
+              href={cta.href}
+              onCtaButtonClick={cta.onClick}
+              buttonType={cta.buttonType}
+            >
+              {cta.text}
+            </CTA>
+          </Box>
         )}
-      </LeftColumn>
-      {media && <PageHeroMedia media={media} size={right} />}
+      </Column>
+      {media && (
+        <Column
+          size={{ sm: right }}
+          gridRowStart={{
+            _: showImageOnMobile ? 1 : 'initial',
+            sm: 'initial',
+          }}
+        >
+          {media.type === 'image' ? (
+            <Image
+              src={media.src}
+              alt={media.alt}
+              width={1}
+              display={{
+                _: showImageOnMobile ? 'initial' : 'none',
+                sm: 'initial',
+              }}
+            />
+          ) : (
+            <Video {...media} />
+          )}
+        </Column>
+      )}
     </LayoutGrid>
   );
 };

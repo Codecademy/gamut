@@ -99,7 +99,7 @@ describe('useNotificationButtons', () => {
   });
 
   it('expands notifications when the Show More button is pressed', () => {
-    const notifications = times(4, (id) =>
+    const notifications = times(5, (id) =>
       createStubNotification({ id: `${id}` })
     );
     const hook = renderHook(() =>
@@ -115,6 +115,7 @@ describe('useNotificationButtons', () => {
     });
 
     expect(hook.result.current[2]).toEqual(notifications);
+    expect(actions.read).toHaveBeenCalledWith(notifications.slice(3));
     expect(actions.track).toHaveBeenCalledWith('notification_show_more');
   });
 
