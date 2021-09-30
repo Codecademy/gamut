@@ -1,6 +1,6 @@
 import { ColorMode } from '@codecademy/gamut-styles';
 import { AnimatePresence } from 'framer-motion';
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useEffect, useRef } from 'react';
 
 import { ToastProps } from '..';
 import { BodyPortal } from '../BodyPortal';
@@ -22,7 +22,15 @@ export const Toaster: React.FC<ToasterProps> = ({ toasts = [], onClose }) => {
   return (
     <BodyPortal>
       <ColorMode mode="light">
-        <Box right={16} bottom={88} position="fixed" aria-live="polite">
+        <Box
+          right={16}
+          bottom={88}
+          position="fixed"
+          role="status"
+          aria-live="polite"
+          aria-atomic="true"
+          data-delay="10000"
+        >
           <AnimatePresence>
             {toasts.map((toast) => (
               <FadeInSlideOut key={toast.id}>

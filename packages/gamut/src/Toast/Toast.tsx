@@ -88,7 +88,13 @@ export const Toast: React.FC<ToastProps> = ({
   };
 
   return (
-    <ToastContainer role="status" layout={layoutType}>
+    <ToastContainer
+      role="alert"
+      aria-live="assertive"
+      aria-atomic="true"
+      aria-label={`${title} toast`}
+      layout={layoutType}
+    >
       {renderIcon()}
       <Box gridArea="message" py={4}>
         {title && (
@@ -106,6 +112,7 @@ export const Toast: React.FC<ToastProps> = ({
         variant="secondary"
         icon={MiniDeleteIcon}
         alignSelf="start"
+        aria-label="Dismiss Toast"
       />
     </ToastContainer>
   );
