@@ -1,7 +1,7 @@
 export const timing = {
   fast: '150ms',
-  medium: '200ms',
-  slow: '350ms',
+  medium: `${timingValues.medium}ms`,
+  slow: `${timingValues.slow}ms`,
 };
 
 export const timingValues = {
