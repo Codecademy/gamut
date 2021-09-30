@@ -87,11 +87,19 @@ describe('PageSingleFeature', () => {
     expect(wrapper.queryByText(/.+/)).not.toBeInTheDocument();
   });
 
-  it('should render an h1 when passed hasPageHeading', () => {
+  it('should render an h1 when passed isPageHeading', () => {
     const { view: wrapper } = renderView({
       title: 'title',
-      hasPageHeading: true,
+      isPageHeading: true,
     });
     wrapper.getByRole('heading', { level: 1 });
+  });
+
+  it('should render an h2 when isPageHeading is false', () => {
+    const { view: wrapper } = renderView({
+      title: 'title',
+      isPageHeading: false,
+    });
+    wrapper.getByRole('heading', { level: 2 });
   });
 });

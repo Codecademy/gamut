@@ -7,10 +7,9 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
   title={title}
   component={PageSingleFeature}
   args={{
-    eyebrow: 'Codecademy',
     title: 'Build a Better Future',
     desc:
-      'feat. [Rob Thomas of Matchbox Twenty](https://en.wikipedia.org/wiki/Rob_Thomas_(musician)) off the multi-platinum album',
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet dolor in porta adipiscing euismod id sodales velit. Consequat, nibh quam suscipit pharetra, lacus nam. Elit ullamcorper magna ultricies cursus tempus amet. Urna, sagittis lobortis sit quis nibh facilisis euismod dolor. Dolor iaculis congue sit pharetra. A lorem sed dapibus est vel eros mauris malesuada tortor.',
     onAnchorClick: () =>
       // eslint-disable-next-line no-console
       console.log('You clicked me an anchor tag inside Markdown!'),
@@ -69,13 +68,13 @@ Change the `media` prop to `type: video` and pass required video props to show a
   </Story>
 </Canvas>
 
-## Adjust the media width
+## Adjust the Media Width
 
-You can set the number of columns that the media shoul occupy in a 12 column grid.
+You can set the number of columns that the media should occupy in a 12 column grid with the `mediaWidth` prop. Only `3`, `4`, `5`, `6` are currently supported.
 
 <Canvas>
-  <Story name="Adjust the media width">
-    {(args) => <PageSingleFeature {...args} mediaWidth={3} />}
+  <Story name="Adjust the Media Width">
+    {(args) => <PageSingleFeature {...args} mediaWidth={5} />}
   </Story>
 </Canvas>
 
@@ -86,7 +85,11 @@ Pass `buttonType` as `fill` to show a `FillButton` instead of the larger `CTABut
 <Canvas>
   <Story name="Regular Button">
     {(args) => (
-      <PageSingleFeature {...args} cta={{ ...args.cta, buttonType: 'fill' }} />
+      <PageSingleFeature
+        {...args}
+        cta={{ ...args.cta, buttonType: 'fill' }}
+        mediaWidth={4}
+      />
     )}
   </Story>
 </Canvas>
@@ -97,7 +100,7 @@ Omit the `cta` prop to not show a button.
 
 <Canvas>
   <Story name="Without Button">
-    {(args) => <PageSingleFeature {...args} cta={undefined} />}
+    {(args) => <PageSingleFeature {...args} cta={undefined} mediaWidth={3} />}
   </Story>
 </Canvas>
 
@@ -107,33 +110,36 @@ Omit the `desc` prop to not show a description.
 
 <Canvas>
   <Story name="Without Description">
-    {(args) => <PageSingleFeature {...args} desc={undefined} />}
+    {(args) => <PageSingleFeature {...args} desc={undefined} mediaWidth={4} />}
   </Story>
 </Canvas>
 
-## Without Eyebrow
+## Eyebrow
 
-Omit the `eyebrow` prop to not show a description.
-The `eyebrow` will only display if the title is present.
+Using the `eyebrow` prop, you can add eyebrow text to the hero. The eyebrow will only display if there is also a `title`.
 
 <Canvas>
-  <Story name="Without Eyebrow">
-    {(args) => <PageSingleFeature {...args} eyebrow={undefined} />}
+  <Story name="Eyebrow">
+    {(args) => <PageSingleFeature {...args} eyebrow="Codecademy" />}
+  </Story>
+</Canvas>
+
+## Hide Image On Mobile
+
+Using the `hideImageOnMobile` prop, you can opt to hide the image on mobile. The default behavior is to show the image on mobile. Note: videos are always shown on mobile for accessibility.
+
+<Canvas>
+  <Story name="Hide Image on Mobile">
+    {(args) => <PageSingleFeature {...args} hideImageOnMobile mediaWidth={5} />}
   </Story>
 </Canvas>
 
 ## Without Media
 
+Omit the `media` prop to not show any media.
+
 <Canvas>
   <Story name="Without Media">
     {(args) => <PageSingleFeature {...args} media={undefined} />}
-  </Story>
-</Canvas>
-
-## Hide the media on mobile
-
-<Canvas>
-  <Story name="Hide the media on mobile">
-    {(args) => <PageSingleFeature {...args} hideMediaOnMobile />}
   </Story>
 </Canvas>

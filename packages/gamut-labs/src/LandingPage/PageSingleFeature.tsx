@@ -16,30 +16,51 @@ import { BaseProps } from './types';
 
 const Image = Box.withComponent('img');
 
+type ColumnSize = Extract<ColumnProps['size'], number>;
+export type MediaColumnsSize = Extract<ColumnSize, 3 | 4 | 5 | 6>;
+
+type ImageProps = {
+  src: string;
+  alt: string;
+};
+
 type MediaProps =
   | ({
       type: 'image';
-    } & React.ComponentProps<typeof Image>)
+    } & ImageProps)
   | ({
       type: 'video';
     } & VideoProps);
 
 export type PageSingleFeatureProps = BaseProps & {
-  className?: string;
+  /**
+   * Eyebrow text shown above title
+   */
   eyebrow?: string;
-  hasPageHeading?: boolean;
-  hideMediaOnMobile?: boolean;
+  /**
+   * Whether the image should be hidden on mobile. Note that videos are always shown on mobile for accessibility
+   */
+  hideImageOnMobile?: boolean;
+  /**
+   * If the heading is the page h1 heading or a smaller heading
+   */
+  isPageHeading?: boolean;
+  /**
+   * Whether to show an image or a video, with the associated props to do so
+   */
   media?: MediaProps;
-  mediaWidth?: Extract<ColumnProps['size'], number>;
+  /**
+   * Number of columns out of 12 that the media should take up, defaults to 6. The remaining columns will be used for the text
+   */
+  mediaWidth?: MediaColumnsSize;
 };
 
 export const PageSingleFeature: React.FC<PageSingleFeatureProps> = ({
-  className,
   cta,
   desc,
   eyebrow,
-  hasPageHeading,
-  hideMediaOnMobile,
+  hideImageOnMobile,
+  isPageHeading,
   media,
   mediaWidth = 6,
   onAnchorClick,
@@ -48,17 +69,21 @@ export const PageSingleFeature: React.FC<PageSingleFeatureProps> = ({
 }) => {
   const primaryContent = (
     <>
-      {eyebrow && title && (
-        <Text
-          fontSize={{ _: 20, sm: 22 }}
-          fontFamily="accent"
-          mb={16}
-          display="block"
-        >
-          {eyebrow}
-        </Text>
+      {title && (
+        <Title isPageHeading={isPageHeading}>
+          {eyebrow && (
+            <Text
+              fontSize={{ _: 20, sm: 22 }}
+              fontFamily="accent"
+              mb={16}
+              display="block"
+            >
+              {eyebrow}
+            </Text>
+          )}
+          {title}
+        </Title>
       )}
-      {title && <Title isPageHeading={hasPageHeading}>{title}</Title>}
       {desc && <Description text={desc} onAnchorClick={onAnchorClick} />}
       {cta && (
         <Box mt={32}>
@@ -75,40 +100,31 @@ export const PageSingleFeature: React.FC<PageSingleFeatureProps> = ({
   );
 
   if (!media) {
-    return (
-      <div data-testid={testId} className={className}>
-        {primaryContent}
-      </div>
-    );
+    return <div data-testid={testId}>{primaryContent}</div>;
   }
 
-  let left: Extract<ColumnProps['size'], number> = 12;
-  let right: Extract<ColumnProps['size'], number> = 12;
-
-  if (mediaWidth > 0 && mediaWidth < 12) {
-    left = (12 - mediaWidth) as Extract<ColumnProps['size'], number>;
-    right = mediaWidth;
-  }
+  const textWidth = (12 - mediaWidth) as ColumnSize;
 
   return (
-    <LayoutGrid
-      data-testid={testId}
-      rowGap={16}
-      columnGap={{ _: 8, sm: 32 }}
-      className={className}
-    >
-      <Column size={{ sm: left }} alignContent="flex-start">
+    <LayoutGrid data-testid={testId} rowGap={16} columnGap={{ _: 8, sm: 32 }}>
+      <Column size={{ sm: textWidth }} alignContent="flex-start">
         {primaryContent}
       </Column>
       <Column
-        size={{ sm: right }}
-        gridRowStart={{ _: 1, sm: 'initial' }}
-        display={{
-          _: hideMediaOnMobile ? 'none' : 'initial',
-          sm: 'initial',
-        }}
+        size={{ sm: mediaWidth }}
+        gridRowStart={{ _: hideImageOnMobile ? 'initial' : 1, sm: 'initial' }}
+        alignContent="flex-start"
       >
-        {media.type === 'image' && <Image {...media} width={1} />}
+        {media.type === 'image' && (
+          <Image
+            {...media}
+            width={1}
+            display={{
+              _: hideImageOnMobile ? 'none' : 'initial',
+              sm: 'initial',
+            }}
+          />
+        )}
         {media.type === 'video' && <Video {...media} />}
       </Column>
     </LayoutGrid>
