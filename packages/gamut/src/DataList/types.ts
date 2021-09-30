@@ -38,3 +38,24 @@ export interface ColumnConfig<T> {
 }
 
 export type RowChange<T> = T[];
+
+export interface DataListControls<
+  Row,
+  IdKey extends keyof Row,
+  RowIds extends Row[IdKey],
+  Cols extends ColumnConfig<Row>[]
+> {
+  idKey: IdKey;
+  rows: Row[];
+  columns: Cols;
+  query?: Query<Row>;
+  onQueryChange?: (nextQuery: Query<Row>) => void;
+  onRowSelect?: (nextSelected: RowIds[]) => void;
+  onRowExpand?: (nextExpanded: RowIds[]) => void;
+  renderExpanded?: (props: {
+    row: Row;
+    onCollapse: () => void;
+  }) => React.ReactNode;
+  expandedRows?: RowIds[];
+  selectedRows?: RowIds[];
+}

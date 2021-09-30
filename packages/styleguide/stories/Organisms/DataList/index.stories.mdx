@@ -53,7 +53,15 @@ import { DataListTemplate } from './examples.tsx';
 />
 
 <Canvas>
-  <Story name="Kitchen Sink">{DataListTemplate.bind({})}</Story>
+  <Story name="Light" args={{ mode: 'light' }}>
+    {DataListTemplate.bind({})}
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="Dark" args={{ mode: 'dark' }}>
+    {DataListTemplate.bind({})}
+  </Story>
 </Canvas>
 
 <Story name="DataList">{(args) => <DataList {...args} />}</Story>

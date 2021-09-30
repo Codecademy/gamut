@@ -7,7 +7,8 @@ import {
   Text,
   useLocalQuery,
 } from '@codecademy/gamut';
-import { Background } from '@codecademy/gamut-styles';
+import { ColorMode } from '@codecademy/gamut-styles';
+import { ColorModes } from '@codecademy/gamut-styles/src';
 import React, { useState } from 'react';
 
 const cols = [
@@ -118,7 +119,9 @@ const crew = [
 ];
 
 export const DataListTemplate = (
-  args: DataListProps<typeof crew[number], 'name', any, typeof cols>
+  args: DataListProps<typeof crew[number], 'name', any, typeof cols> & {
+    mode: ColorModes;
+  }
 ) => {
   const [selectedRows, setSelectedRows] = useState<
     typeof rows[number][typeof idKey][]
@@ -134,7 +137,7 @@ export const DataListTemplate = (
   });
 
   return (
-    <Background bg="white" height={600} overflowY="auto">
+    <ColorMode mode={args.mode} bg="background" height={600} overflowY="auto">
       <DataList
         {...args}
         id="example"
@@ -148,7 +151,7 @@ export const DataListTemplate = (
         renderExpanded={({ onCollapse }) => (
           <FlexBox
             borderTop={1}
-            borderColor="background-hover"
+            borderColor="text-disabled"
             center
             column
             p={32}
@@ -164,6 +167,6 @@ export const DataListTemplate = (
         query={query}
         onQueryChange={onQueryChange}
       />
-    </Background>
+    </ColorMode>
   );
 };

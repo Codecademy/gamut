@@ -5,19 +5,19 @@ import { ExpandControl, SelectControl } from '../Controls';
 import { ColumnConfig } from '../types';
 
 interface DataRowProps<
-  Rows,
-  Cols extends ColumnConfig<Rows>[],
-  IdKey extends keyof Rows,
-  Ids extends Rows[IdKey]
+  Row,
+  Cols extends ColumnConfig<Row>[],
+  IdKey extends keyof Row,
+  RowIds extends Row[IdKey]
 > {
-  id: Ids;
+  id: RowIds;
   idPrefix: string;
-  row: Rows;
+  row: Row;
   columns: Cols;
-  onSelect?: (id: Ids) => void;
-  onExpand?: (id: Ids) => void;
+  onSelect?: (id: RowIds) => void;
+  onExpand?: (id: RowIds) => void;
   renderExpanded?: (props: {
-    row: Rows;
+    row: Row;
     onCollapse: () => void;
   }) => React.ReactNode;
   selected?: boolean;
@@ -25,10 +25,10 @@ interface DataRowProps<
 }
 
 export function DataRow<
-  Rows,
-  Cols extends ColumnConfig<Rows>[],
-  IdKey extends keyof Rows,
-  Ids extends Rows[IdKey]
+  Row,
+  Cols extends ColumnConfig<Row>[],
+  IdKey extends keyof Row,
+  RowIds extends Row[IdKey]
 >({
   id,
   idPrefix,
@@ -39,7 +39,7 @@ export function DataRow<
   expanded,
   onExpand,
   renderExpanded,
-}: DataRowProps<Rows, Cols, IdKey, Ids>) {
+}: DataRowProps<Row, Cols, IdKey, RowIds>) {
   const expandable = renderExpanded && onExpand;
 
   const renderExpandedContent =

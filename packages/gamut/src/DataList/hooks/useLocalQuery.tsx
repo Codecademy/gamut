@@ -4,25 +4,25 @@ import { useMemo, useState } from 'react';
 import { ColumnConfig, Query, SortDirection } from '..';
 
 export interface LocalQueryShape<
-  Rows,
-  IdKey extends keyof Rows,
-  Cols extends ColumnConfig<Rows>[]
+  Row,
+  IdKey extends keyof Row,
+  Cols extends ColumnConfig<Row>[]
 > {
-  rows: Rows[];
+  rows: Row[];
   idKey: IdKey;
   columns: Cols;
 }
 
 export const useLocalQuery = <
-  Rows,
-  Cols extends ColumnConfig<Rows>[],
-  IdKey extends keyof Rows
+  Row,
+  Cols extends ColumnConfig<Row>[],
+  IdKey extends keyof Row
 >({
   idKey,
   rows,
   columns,
-}: LocalQueryShape<Rows, IdKey, Cols>) => {
-  const [query, setQuery] = useState<Query<Rows>>({
+}: LocalQueryShape<Row, IdKey, Cols>) => {
+  const [query, setQuery] = useState<Query<Row>>({
     sort: {},
     filter: {},
   });
@@ -44,8 +44,8 @@ export const useLocalQuery = <
     let computedRows = rows;
     if (filter) {
       const filterDimensions = Object.entries(filter) as [
-        keyof Rows,
-        Rows[keyof Rows][]
+        keyof Row,
+        Row[keyof Row][]
       ][];
 
       computedRows = rows.filter((row) => {
@@ -62,7 +62,7 @@ export const useLocalQuery = <
     }
 
     if (sort) {
-      const dimensions = Object.keys(sort) as (keyof Rows)[];
+      const dimensions = Object.keys(sort) as (keyof Row)[];
       const directions = Object.values(sort) as Exclude<
         SortDirection,
         'none'
@@ -70,7 +70,7 @@ export const useLocalQuery = <
 
       computedRows = orderBy(
         computedRows,
-        dimensions.map((key) => ({ [key]: val }: Rows) =>
+        dimensions.map((key) => ({ [key]: val }: Row) =>
           typeof val === 'string' ? val.toLowerCase() : val
         ),
         directions as []
