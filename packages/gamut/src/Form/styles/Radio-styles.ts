@@ -39,11 +39,11 @@ export const radioLabel = system.css({
   [InputSelectors.BEFORE]: {
     bg: 'background',
     boxShadow: `0 0 0 1px ${theme.colors[`text-disabled`]}`,
-    transition: timing.slow,
+    transition: timing.medium,
   },
   [InputSelectors.AFTER]: {
     position: 'absolute',
-    transition: transitionConcat(['transform'], 'slow', 'ease-in-out'),
+    transition: transitionConcat(['transform'], 'medium', 'ease-in-out'),
     borderWidth: 5,
     borderStyle: 'solid',
     borderColor: 'background',
