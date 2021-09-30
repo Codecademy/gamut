@@ -222,6 +222,8 @@ const columnStates = states({
       width: 16,
       position: 'absolute',
     },
+  },
+  delimiter: {
     '&:after': {
       display: { _: 'none', xs: 'block' },
       content: '""',
