@@ -48,21 +48,17 @@ export const PageSingleFeature: React.FC<PageSingleFeatureProps> = ({
 }) => {
   const primaryContent = (
     <>
-      {title && (
-        <>
-          {eyebrow && (
-            <Text
-              fontSize={{ _: 20, sm: 22 }}
-              fontFamily="accent"
-              mb={16}
-              display="block"
-            >
-              {eyebrow}
-            </Text>
-          )}
-          <Title isPageHeading={hasPageHeading}>{title}</Title>
-        </>
+      {eyebrow && title && (
+        <Text
+          fontSize={{ _: 20, sm: 22 }}
+          fontFamily="accent"
+          mb={16}
+          display="block"
+        >
+          {eyebrow}
+        </Text>
       )}
+      {title && <Title isPageHeading={hasPageHeading}>{title}</Title>}
       {desc && <Description text={desc} onAnchorClick={onAnchorClick} />}
       {cta && (
         <Box mt={32}>
