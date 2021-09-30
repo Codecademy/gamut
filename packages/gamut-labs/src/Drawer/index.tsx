@@ -32,10 +32,11 @@ export const Drawer: React.FC<DrawerProps> = ({
           initial={{ width: 0 }}
           overflowX="hidden"
           overflowY="auto"
+          position="relative"
           transition={{ duration: timingValues.slow / 1000 }}
           {...props}
         >
-          <Box position="relative" width={fullWidth}>
+          <Box left="0" position="absolute" width={fullWidth}>
             {children}
           </Box>
         </DrawerBase>
