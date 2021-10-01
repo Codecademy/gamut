@@ -7,8 +7,8 @@ import {
   Text,
   useLocalQuery,
 } from '@codecademy/gamut';
-import { ColorMode, ColorModes } from '@codecademy/gamut-styles';
-import React, { useCallback, useState } from 'react';
+import { ColorModes } from '@codecademy/gamut-styles';
+import React, { useCallback, useMemo, useState } from 'react';
 
 const cols = [
   {
@@ -141,6 +141,11 @@ export const DataListTemplate = () => {
     columns: cols,
   });
 
+  const allIds = useMemo(() => rows.map(({ [idKey]: id }) => id), [
+    idKey,
+    rows,
+  ]);
+
   const onRowSelect = useCallback(
     ({ type, payload: { toggle, rowId } }) => {
       if (type === 'select') {
@@ -149,10 +154,10 @@ export const DataListTemplate = () => {
         });
       }
       if (type === 'select-all') {
-        return setSelectedRows(toggle ? [] : rows.map(({ [idKey]: id }) => id));
+        return setSelectedRows(toggle ? [] : allIds);
       }
     },
-    [setSelectedRows]
+    [setSelectedRows, allIds]
   );
 
   const onRowExpand = useCallback(({ payload: { toggle, rowId } }) => {
@@ -177,20 +182,18 @@ export const DataListTemplate = () => {
   );
 
   return (
-    <ColorMode bg="background">
-      <DataList
-        id="example"
-        idKey={idKey}
-        rows={rows}
-        columns={cols}
-        selected={selectedRows}
-        onRowSelect={onRowSelect}
-        expanded={expandedRows}
-        onRowExpand={onRowExpand}
-        expandedContent={expandedContent}
-        query={query}
-        onQueryChange={onQueryChange}
-      />
-    </ColorMode>
+    <DataList
+      id="example"
+      idKey={idKey}
+      rows={rows}
+      columns={cols}
+      selected={selectedRows}
+      onRowSelect={onRowSelect}
+      expanded={expandedRows}
+      onRowExpand={onRowExpand}
+      expandedContent={expandedContent}
+      query={query}
+      onQueryChange={onQueryChange}
+    />
   );
 };

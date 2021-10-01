@@ -1,7 +1,7 @@
 import { DataList } from '@codecademy/gamut';
 import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
-import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { Meta, Story } from '@storybook/addon-docs/blocks';
 
 import { DataListTemplate } from './examples.tsx';
 
@@ -83,15 +83,9 @@ const DataTown = () => {
 
 Column Options:
 
-<Story name="Light" args={{ mode: 'light' }}>
+<Story name="Demo">
   <DataListTemplate />
 </Story>
-
-<Canvas>
-  <Story name="Dark" args={{ mode: 'dark' }}>
-    {DataListTemplate.bind({})}
-  </Story>
-</Canvas>
 
 <Story name="DataList">{(args) => <DataList {...args} />}</Story>
 
