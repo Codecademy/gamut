@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { ReactElement, useCallback } from 'react';
 
 import { ListCol, ListRow } from '../../List';
 import { IdentifiableKeys } from '..';
@@ -6,31 +6,17 @@ import { ExpandControl, SelectControl } from '../Controls';
 import { useControlContext } from '../hooks/useListControls';
 import { ColumnConfig } from '../types';
 
-interface DataRowProps<
-  Row,
-  Cols extends ColumnConfig<Row>[],
-  IdKey extends IdentifiableKeys<Row>,
-  RowIds extends Row[IdKey]
-> {
-  id: RowIds;
-  row: Row;
-  columns: Cols;
-  selected?: boolean;
-  expanded?: boolean;
+interface DataRow {
+  <Row, IdKey extends IdentifiableKeys<Row>, RowIds extends Row[IdKey]>(props: {
+    id: RowIds;
+    row: Row;
+    columns: ColumnConfig<Row>[];
+    selected?: boolean;
+    expanded?: boolean;
+  }): ReactElement<any, any>;
 }
 
-export function Row<
-  Row,
-  Cols extends ColumnConfig<Row>[],
-  IdKey extends IdentifiableKeys<Row>,
-  RowIds extends Row[IdKey]
->({
-  id,
-  columns,
-  row,
-  selected,
-  expanded,
-}: DataRowProps<Row, Cols, IdKey, RowIds>) {
+export const Row: DataRow = ({ id, columns, row, selected, expanded }) => {
   const {
     expandable,
     selectable,
@@ -80,6 +66,6 @@ export function Row<
       )}
     </ListRow>
   );
-}
+};
 
-export const DataRow = React.memo(Row);
+export const DataRow = React.memo(Row) as DataRow;

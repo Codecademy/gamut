@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 
 import { ListCol, ListHeader } from '../../List';
 import {
@@ -10,18 +10,16 @@ import {
 import { useControlContext } from '../hooks/useListControls';
 import { ColumnConfig, Query } from '../types';
 
-interface HeaderRowProps<Row, Cols extends ColumnConfig<Row>[]> {
-  id: string;
-  selected?: boolean;
-  columns: Cols;
-  query?: Query<Row>;
+interface HeaderComponent {
+  <Row>(props: {
+    id: string;
+    selected?: boolean;
+    columns: ColumnConfig<Row>[];
+    query?: Query<Row>;
+  }): ReactElement<any, any>;
 }
 
-export function Header<Row, Cols extends ColumnConfig<Row>[]>({
-  id,
-  columns,
-  selected,
-}: HeaderRowProps<Row, Cols>) {
+export const Header: HeaderComponent = ({ id, columns, selected }) => {
   const {
     expandable,
     selectable,
@@ -89,6 +87,6 @@ export function Header<Row, Cols extends ColumnConfig<Row>[]>({
       )}
     </ListHeader>
   );
-}
+};
 
-export const HeaderRow = React.memo(Header);
+export const HeaderRow = React.memo(Header) as HeaderComponent;
