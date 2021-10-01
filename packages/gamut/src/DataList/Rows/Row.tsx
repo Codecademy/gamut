@@ -19,7 +19,7 @@ interface DataRowProps<
   expanded?: boolean;
 }
 
-export function DataRow<
+export function Row<
   Row,
   Cols extends ColumnConfig<Row>[],
   IdKey extends IdentifiableKeys<Row>,
@@ -81,3 +81,5 @@ export function DataRow<
     </ListRow>
   );
 }
+
+export const DataRow = React.memo(Row);

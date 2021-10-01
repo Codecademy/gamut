@@ -6,6 +6,7 @@ import React from 'react';
 import { Anchor } from '../..';
 import { FlexBox } from '../../Box';
 import { OnSort, SortDirection, SortOrder } from '..';
+import { useListState } from '../hooks/useListState';
 
 const SortIcon = styled(ArrowChevronDownFilledIcon)(
   states({
@@ -23,8 +24,7 @@ const SortIcon = styled(ArrowChevronDownFilledIcon)(
 
 interface SortControlProps {
   justify?: 'left' | 'right';
-  columnKey: keyof any;
-  direction: SortDirection;
+  columnKey: string;
   onSort?: OnSort<any>;
 }
 
@@ -40,10 +40,11 @@ const getNextSortDirection = (dir: SortDirection) => {
 export const SortControl: React.FC<SortControlProps> = ({
   justify = 'left',
   columnKey,
-  direction,
   onSort,
   children,
 }) => {
+  const direction = useListState().query?.sort?.[columnKey] ?? 'none';
+
   return (
     <Anchor
       variant="interface"

@@ -4,6 +4,7 @@ import React, { ComponentProps, useMemo } from 'react';
 import { List } from '../List';
 import { DataListControls, IdentifiableKeys } from '.';
 import { ListControlContext, useListControls } from './hooks/useListControls';
+import { ListStateContext } from './hooks/useListState';
 import { HeaderRow } from './Rows/HeaderRow';
 import { DataRow } from './Rows/Row';
 import { ColumnConfig } from './types';
@@ -44,32 +45,29 @@ export function DataList<
   }, [rows, selected, idKey]);
 
   return (
-    <ListControlContext.Provider value={listControls}>
-      <List
-        scrollable={scrollable}
-        variant={variant}
-        spacing={spacing}
-        header={
-          <HeaderRow
-            id={id}
-            columns={columns}
-            query={query}
-            selected={allSelected}
-          />
-        }
-        {...rest}
-      >
-        {rows.map((row) => (
-          <DataRow
-            key={`${id}-${row[idKey]}-row`}
-            id={row[idKey]}
-            row={row}
-            columns={columns}
-            selected={selected?.includes(row[idKey])}
-            expanded={expanded?.includes(row[idKey])}
-          />
-        ))}
-      </List>
-    </ListControlContext.Provider>
+    <ListStateContext.Provider value={{ query, selected, expanded }}>
+      <ListControlContext.Provider value={listControls}>
+        <List
+          scrollable={scrollable}
+          variant={variant}
+          spacing={spacing}
+          header={
+            <HeaderRow id={id} columns={columns} selected={allSelected} />
+          }
+          {...rest}
+        >
+          {rows.map((row) => (
+            <DataRow
+              key={`${id}-${row[idKey]}-row`}
+              id={row[idKey]}
+              row={row}
+              columns={columns}
+              selected={selected?.includes(row[idKey])}
+              expanded={expanded?.includes(row[idKey])}
+            />
+          ))}
+        </List>
+      </ListControlContext.Provider>
+    </ListStateContext.Provider>
   );
 }

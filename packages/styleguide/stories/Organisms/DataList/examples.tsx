@@ -8,7 +8,7 @@ import {
   useLocalQuery,
 } from '@codecademy/gamut';
 import { ColorMode, ColorModes } from '@codecademy/gamut-styles';
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 
 const cols = [
   {
@@ -127,7 +127,7 @@ type TemplateProps = DataListProps<typeof crew[number], 'name', typeof cols> & {
   mode: ColorModes;
 };
 
-export const DataListTemplate = (args: TemplateProps) => {
+export const DataListTemplate = () => {
   const [selectedRows, setSelectedRows] = useState<TemplateProps['selected']>(
     []
   );
@@ -135,52 +135,59 @@ export const DataListTemplate = (args: TemplateProps) => {
     []
   );
 
-  const { idKey, query, rows, columns, onQueryChange } = useLocalQuery({
+  const { idKey, query, rows, onQueryChange } = useLocalQuery({
     idKey: 'name',
     rows: crew,
     columns: cols,
   });
 
-  const onRowSelect = ({ type, payload: { toggle, rowId } }) => {
-    if (type === 'select') {
-      return setSelectedRows((prev = []) => {
-        return toggle ? prev?.filter((id) => id !== rowId) : [...prev, rowId];
-      });
-    }
-    if (type === 'select-all') {
-      return setSelectedRows(toggle ? [] : rows.map(({ [idKey]: id }) => id));
-    }
-  };
+  const onRowSelect = useCallback(
+    ({ type, payload: { toggle, rowId } }) => {
+      if (type === 'select') {
+        return setSelectedRows((prev = []) => {
+          return toggle ? prev?.filter((id) => id !== rowId) : [...prev, rowId];
+        });
+      }
+      if (type === 'select-all') {
+        return setSelectedRows(toggle ? [] : rows.map(({ [idKey]: id }) => id));
+      }
+    },
+    [setSelectedRows]
+  );
 
-  const onRowExpand = ({ payload: { toggle, rowId } }) => {
+  const onRowExpand = useCallback(({ payload: { toggle, rowId } }) => {
     return setExpandedRows((prev = []) => {
       return toggle ? prev?.filter((id) => id !== rowId) : [...prev, rowId];
     });
-  };
+  }, []);
+
+  const expandedContent = useCallback(
+    ({ onCollapse }) => (
+      <FlexBox column flex={1}>
+        <FlexBox borderTop={1} opacity={0.5} />
+        <FlexBox center column p={32} gap={16}>
+          <Text variant="title-md">Nothing to see here</Text>
+          <FillButton onClick={onCollapse} size="small">
+            Get me out of here!
+          </FillButton>
+        </FlexBox>
+      </FlexBox>
+    ),
+    []
+  );
 
   return (
-    <ColorMode mode={args.mode} bg="background">
+    <ColorMode bg="background">
       <DataList
-        {...args}
         id="example"
         idKey={idKey}
         rows={rows}
-        columns={columns}
+        columns={cols}
         selected={selectedRows}
         onRowSelect={onRowSelect}
         expanded={expandedRows}
         onRowExpand={onRowExpand}
-        expandedContent={({ onCollapse }) => (
-          <FlexBox column flex={1}>
-            <FlexBox borderTop={1} opacity={0.5} />
-            <FlexBox center column p={32} gap={16}>
-              <Text variant="title-md">Nothing to see here</Text>
-              <FillButton onClick={onCollapse} size="small">
-                Get me out of here!
-              </FillButton>
-            </FlexBox>
-          </FlexBox>
-        )}
+        expandedContent={expandedContent}
         query={query}
         onQueryChange={onQueryChange}
       />

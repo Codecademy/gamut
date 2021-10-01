@@ -17,10 +17,9 @@ interface HeaderRowProps<Row, Cols extends ColumnConfig<Row>[]> {
   query?: Query<Row>;
 }
 
-export function HeaderRow<Row, Cols extends ColumnConfig<Row>[]>({
+export function Header<Row, Cols extends ColumnConfig<Row>[]>({
   id,
   columns,
-  query,
   selected,
 }: HeaderRowProps<Row, Cols>) {
   const {
@@ -45,33 +44,26 @@ export function HeaderRow<Row, Cols extends ColumnConfig<Row>[]>({
         </ListCol>
       )}
       {columns.map(({ key, header, queryType, options, ...colProps }) => {
-        const renderKey = prefixId(`header-col-${String(key)}`);
+        const rowProperty = key as string;
+        const renderKey = prefixId(`header-col-${rowProperty}`);
         const columnText = header || key;
         switch (queryType) {
           case 'sort': {
-            const direction = query?.sort?.[key] ?? 'none';
             return (
               <ListCol key={renderKey} {...colProps} columnHeader>
-                <SortControl
-                  columnKey={key}
-                  direction={direction}
-                  onSort={onSort}
-                >
+                <SortControl columnKey={rowProperty} onSort={onSort}>
                   {columnText}
                 </SortControl>
               </ListCol>
             );
           }
           case 'filter': {
-            const columnFilter = query?.filter?.[key];
-
             return (
               <ListCol key={renderKey} {...colProps} columnHeader>
                 <FilterControl
                   id={id}
-                  columnKey={key}
+                  columnKey={rowProperty}
                   onFilter={onFilter}
-                  filters={columnFilter}
                   options={options}
                   justify={colProps.justify}
                 >
@@ -98,3 +90,5 @@ export function HeaderRow<Row, Cols extends ColumnConfig<Row>[]>({
     </ListHeader>
   );
 }
+
+export const HeaderRow = React.memo(Header);

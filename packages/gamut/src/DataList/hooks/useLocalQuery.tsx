@@ -1,4 +1,4 @@
-import { orderBy, uniq } from 'lodash';
+import { orderBy } from 'lodash';
 import { useCallback, useMemo, useState } from 'react';
 
 import { ColumnConfig, IdentifiableKeys, OnQueryChange, Query } from '..';
@@ -20,7 +20,6 @@ export const useLocalQuery = <
 >({
   idKey,
   rows,
-  columns,
 }: LocalQueryShape<Row, IdKey, Cols>) => {
   const [query, setQuery] = useState<Query<Row>>({
     sort: {},
@@ -33,18 +32,6 @@ export const useLocalQuery = <
     },
     [setQuery]
   );
-
-  const columnsWithOptions = useMemo(() => {
-    return columns.map((col) => {
-      if (col.queryType === 'filter') {
-        return {
-          ...col,
-          options: uniq(rows.map(({ [col.key]: opt }) => opt)),
-        };
-      }
-      return col;
-    });
-  }, [columns, rows]);
 
   const sortedRows = useMemo(() => {
     const { sort, filter } = query;
@@ -89,7 +76,6 @@ export const useLocalQuery = <
     idKey,
     query,
     rows: sortedRows,
-    columns: columnsWithOptions,
     onQueryChange,
   };
 };

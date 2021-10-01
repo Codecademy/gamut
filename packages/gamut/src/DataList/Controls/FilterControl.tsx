@@ -4,13 +4,13 @@ import React, { useState } from 'react';
 
 import { Box, Checkbox, FlexBox, FocusTrap, Menu, MenuItem, Text } from '../..';
 import { Anchor } from '../../Anchor';
-import { FilterValues, OnFilter } from '..';
+import { OnFilter } from '..';
+import { useListState } from '../hooks/useListState';
 
 export interface FilterProps {
   id: string;
-  columnKey: string | symbol | number;
+  columnKey: string;
   options?: string[];
-  filters?: FilterValues<any>;
   onFilter?: OnFilter<any>;
   justify?: 'left' | 'right';
 }
@@ -26,7 +26,6 @@ const getNextFilters = (option: string, filters: string[]) => {
 export const FilterControl: React.FC<FilterProps> = ({
   id,
   columnKey,
-  filters = [],
   onFilter,
   options = [],
   children,
@@ -34,6 +33,7 @@ export const FilterControl: React.FC<FilterProps> = ({
 }) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const dimension = String(columnKey);
+  const filters = useListState().query?.filter?.[columnKey] ?? [];
 
   return (
     <FlexBox position="relative" column>

@@ -1,5 +1,5 @@
 import { kebabCase } from 'lodash';
-import { createContext, useCallback, useContext } from 'react';
+import { createContext, useCallback, useContext, useMemo } from 'react';
 
 import {
   ColumnConfig,
@@ -81,18 +81,32 @@ export function useListControls<
     [onQueryChange]
   );
 
-  return {
-    idKey,
-    prefixId,
-    onSelectAll,
-    onSelect,
-    onExpand,
-    onFilter,
-    onSort,
-    expandedContent,
-    expandable,
-    selectable,
-  };
+  return useMemo(
+    () => ({
+      idKey,
+      prefixId,
+      onSelectAll,
+      onSelect,
+      onExpand,
+      onFilter,
+      onSort,
+      expandedContent,
+      expandable,
+      selectable,
+    }),
+    [
+      idKey,
+      prefixId,
+      onSelectAll,
+      onSelect,
+      onExpand,
+      onFilter,
+      onSort,
+      expandedContent,
+      expandable,
+      selectable,
+    ]
+  );
 }
 
 interface Controls {
