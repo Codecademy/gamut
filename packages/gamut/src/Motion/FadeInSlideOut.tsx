@@ -1,10 +1,10 @@
-import { timing } from '@codecademy/gamut-styles';
+import { timingValues } from '@codecademy/gamut-styles';
 import { motion } from 'framer-motion';
 import React from 'react';
 
 import { Box } from '../Box';
 
-const exitDuration = timing.toastExitDuration;
+const exitDuration = timingValues.fast / 1000;
 
 const motionVariants = {
   initial: {
@@ -24,13 +24,16 @@ const motionVariants = {
   },
 };
 
+const BaseContainer = motion.custom(Box);
+
 export const FadeInSlideOut: React.FC = ({ children }) => (
-  <motion.div
+  <BaseContainer
     variants={motionVariants}
     initial="initial"
     animate="visible"
     exit="exit"
+    py={8}
   >
-    <Box py={8}>{children}</Box>
-  </motion.div>
+    {children}
+  </BaseContainer>
 );

@@ -33,7 +33,7 @@ export const ToasterExample: React.FC = () => {
 
   const addToasts = () => {
     if (!toasts.length) {
-      setToasts(exampleToasts);
+      setTimeout(() => setToasts(exampleToasts), 1000);
     }
   };
 
