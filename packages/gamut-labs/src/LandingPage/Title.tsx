@@ -1,15 +1,8 @@
 import { Text } from '@codecademy/gamut';
-import styled from '@emotion/styled';
 import React from 'react';
 
-import { DarkModeProps } from './types';
-import { darkModeVariants } from './variants';
-
-const TitleText = styled(Text)(darkModeVariants);
-
-export type TitleProps = DarkModeProps & {
+export type TitleProps = {
   isPageHeading?: boolean;
-  className?: string;
 };
 
 const titleProps = {
@@ -30,12 +23,11 @@ const titleProps = {
   },
 } as const;
 
-export const Title: React.FC<TitleProps> = ({ isPageHeading, ...rest }) => {
+export const Title: React.FC<TitleProps> = ({ isPageHeading }) => {
   return (
-    <TitleText
+    <Text
       maxWidth="58rem"
       {...titleProps[isPageHeading ? 'heading' : 'subheading']}
-      {...rest}
     />
   );
 };

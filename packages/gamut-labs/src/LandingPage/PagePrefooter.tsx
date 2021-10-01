@@ -4,19 +4,18 @@ import React from 'react';
 import { CTA } from './CTA';
 import { Description } from './Description';
 import { Title } from './Title';
-import { BaseProps, DarkModeProps } from './types';
+import { BaseProps } from './types';
 
-export const PagePrefooter: React.FC<BaseProps & DarkModeProps> = ({
+export const PagePrefooter: React.FC<BaseProps> = ({
   title,
   desc,
   cta,
   onAnchorClick,
-  mode,
   testId,
 }) => {
-  const SectionTitle = title && <Title mode={mode}>{title}</Title>;
+  const SectionTitle = title && <Title>{title}</Title>;
   const Desc = desc && (
-    <Description text={desc} onAnchorClick={onAnchorClick} mode={mode} />
+    <Description text={desc} onAnchorClick={onAnchorClick} />
   );
 
   return cta ? (
@@ -31,12 +30,7 @@ export const PagePrefooter: React.FC<BaseProps & DarkModeProps> = ({
         {Desc}
       </Box>
       <Box mt={{ _: 32, sm: 0 }} ml={{ sm: 32 }}>
-        <CTA
-          href={cta.href}
-          onClick={cta.onClick}
-          mode={mode}
-          buttonType={cta.buttonType}
-        >
+        <CTA href={cta.href} onClick={cta.onClick} buttonType={cta.buttonType}>
           {cta.text}
         </CTA>
       </Box>
