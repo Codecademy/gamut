@@ -1,0 +1,36 @@
+import { Toaster } from '@codecademy/gamut/src';
+import title from '@codecademy/macros/lib/title.macro';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+
+import { PropsTable } from '~styleguide/blocks';
+
+import { ToasterExample } from './Toaster.example';
+
+<Meta
+  title={title}
+  component={Toaster}
+  parameters={{
+    subtitle: 'A toaster component that applies motion and renders toasts.',
+    source: 'gamut',
+    status: 'current',
+    docs: { inlineStories: false, iframeHeight: 580 },
+  }}
+/>
+
+<Canvas>
+  <Story name="Toaster">
+    {(args) => {
+      return <ToasterExample {...args} />;
+    }}
+  </Story>
+</Canvas>
+
+## Usage
+
+```tsx
+import { Toaster } from '@codecademy/gamut';
+
+<Toaster toasts={toasts} onClose={() => {}} />;
+```
+
+<PropsTable story="Toaster" />
