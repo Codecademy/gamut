@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [37.9.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@37.8.0...@codecademy/gamut@37.9.0) (2021-10-01)
+
+
+### Features
+
+* Toaster ([06dc6fa](https://github.com/Codecademy/client-modules/commit/06dc6fad67369857c31887f213dab4ebd154bea9))
+
+
+
 ## [37.8.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@37.7.1...@codecademy/gamut@37.8.0) (2021-09-30)
 
 
