@@ -23,11 +23,11 @@ const titleProps = {
   },
 } as const;
 
-export const Title: React.FC<TitleProps> = ({ isPageHeading }) => {
-  return (
-    <Text
-      maxWidth="58rem"
-      {...titleProps[isPageHeading ? 'heading' : 'subheading']}
-    />
-  );
-};
+export const Title: React.FC<TitleProps> = ({ isPageHeading, children }) => (
+  <Text
+    maxWidth="58rem"
+    {...titleProps[isPageHeading ? 'heading' : 'subheading']}
+  >
+    {children}
+  </Text>
+);
