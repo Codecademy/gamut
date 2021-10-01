@@ -1,8 +1,10 @@
-import { useCallback } from 'react';
+import { kebabCase } from 'lodash';
+import { createContext, useCallback, useContext } from 'react';
 
 import {
   ColumnConfig,
   DataListControls,
+  ExpandRow,
   IdentifiableKeys,
   OnFilter,
   OnSort,
@@ -14,7 +16,8 @@ export function useListControls<
   IdKey extends IdentifiableKeys<Row>,
   Cols extends ColumnConfig<Row>[]
 >({
-  columns,
+  idKey,
+  id,
   onQueryChange,
   onRowExpand,
   onRowSelect,
@@ -22,6 +25,11 @@ export function useListControls<
 }: DataListControls<Row, IdKey, Cols>) {
   const expandable = !!onRowExpand && !!expandedContent;
   const selectable = !!onRowSelect;
+
+  const prefixId = useCallback(
+    <T extends keyof any>(affix: T) => `${id}-${kebabCase(`${affix}`)}`,
+    [id]
+  );
 
   const onSelect: RowChange<Row[IdKey]> = useCallback(
     (payload) => {
@@ -74,11 +82,34 @@ export function useListControls<
   );
 
   return {
-    columns,
-    onSelectAll: selectable ? onSelectAll : undefined,
-    onSelect: selectable ? onSelect : undefined,
-    onExpand: expandable ? onExpand : undefined,
+    idKey,
+    prefixId,
+    onSelectAll,
+    onSelect,
+    onExpand,
     onFilter,
     onSort,
+    expandedContent,
+    expandable,
+    selectable,
   };
 }
+
+interface Controls {
+  idKey: any;
+  expandedContent?: ExpandRow<any>;
+  prefixId: <T extends keyof any>(affix: T) => string;
+  onFilter: OnFilter<any>;
+  onSort: OnSort<any>;
+  onSelect: RowChange<any>;
+  onSelectAll: RowChange<any>;
+  onExpand: RowChange<any>;
+  expandable: boolean;
+  selectable: boolean;
+}
+
+export const ListControlContext = createContext<Controls>({} as Controls);
+
+export const useControlContext = () => {
+  return useContext(ListControlContext);
+};

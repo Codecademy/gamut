@@ -1,50 +1,51 @@
 import React from 'react';
 
 import { ListCol, ListHeader } from '../../List';
-import { OnFilter, OnSort, RowChange } from '..';
 import {
   ExpandControl,
   FilterControl,
   SelectControl,
   SortControl,
 } from '../Controls';
+import { useControlContext } from '../hooks/useListControls';
 import { ColumnConfig, Query } from '../types';
 
 interface HeaderRowProps<Row, Cols extends ColumnConfig<Row>[]> {
   id: string;
   selected?: boolean;
-  onSelect?: RowChange<Row>;
-  onExpand?: RowChange<Row>;
   columns: Cols;
   query?: Query<Row>;
-  onSort?: OnSort<Row>;
-  onFilter?: OnFilter<Row>;
 }
 
 export function HeaderRow<Row, Cols extends ColumnConfig<Row>[]>({
   id,
   columns,
   query,
-  onFilter,
-  onSort,
-  onSelect,
-  onExpand,
   selected,
 }: HeaderRowProps<Row, Cols>) {
+  const {
+    expandable,
+    selectable,
+    onSelectAll,
+    onFilter,
+    onSort,
+    prefixId,
+  } = useControlContext();
+
   return (
     <ListHeader>
-      {onSelect && (
+      {selectable && (
         <ListCol size="content">
           <SelectControl
-            name={`${id}-all`}
+            name={prefixId('all')}
             label="Select All"
             selected={selected}
-            onSelect={() => onSelect?.({ toggle: selected })}
+            onSelect={() => onSelectAll?.({ toggle: selected })}
           />
         </ListCol>
       )}
       {columns.map(({ key, header, queryType, options, ...colProps }) => {
-        const renderKey = `${id}-header-col-${String(key)}`;
+        const renderKey = prefixId(`header-col-${String(key)}`);
         const columnText = header || key;
         switch (queryType) {
           case 'sort': {
@@ -89,7 +90,7 @@ export function HeaderRow<Row, Cols extends ColumnConfig<Row>[]>({
           }
         }
       })}
-      {onExpand && (
+      {expandable && (
         <ListCol size="content" ghost>
           <ExpandControl />
         </ListCol>

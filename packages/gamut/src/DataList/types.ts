@@ -85,6 +85,7 @@ export interface DataListControls<
   IdKey extends IdentifiableKeys<Row>,
   Cols extends ColumnConfig<Row>[]
 > {
+  id: string;
   idKey: IdKey;
   rows: Row[];
   expanded?: Row[IdKey][];

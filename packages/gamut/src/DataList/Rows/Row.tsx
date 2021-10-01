@@ -1,8 +1,9 @@
 import React, { useCallback } from 'react';
 
 import { ListCol, ListRow } from '../../List';
-import { IdentifiableKeys, RowChange } from '..';
+import { IdentifiableKeys } from '..';
 import { ExpandControl, SelectControl } from '../Controls';
+import { useControlContext } from '../hooks/useListControls';
 import { ColumnConfig } from '../types';
 
 interface DataRowProps<
@@ -12,15 +13,8 @@ interface DataRowProps<
   RowIds extends Row[IdKey]
 > {
   id: RowIds;
-  idPrefix: string;
   row: Row;
   columns: Cols;
-  onSelect?: RowChange<Row[IdKey]>;
-  onExpand?: RowChange<Row[IdKey]>;
-  renderExpanded?: (props: {
-    row: Row;
-    onCollapse: () => void;
-  }) => React.ReactNode;
   selected?: boolean;
   expanded?: boolean;
 }
@@ -32,22 +26,27 @@ export function DataRow<
   RowIds extends Row[IdKey]
 >({
   id,
-  idPrefix,
   columns,
   row,
-  onSelect,
   selected,
   expanded,
-  onExpand,
-  renderExpanded,
 }: DataRowProps<Row, Cols, IdKey, RowIds>) {
+  const {
+    expandable,
+    selectable,
+    expandedContent,
+    onExpand,
+    onSelect,
+    prefixId,
+  } = useControlContext();
+
   const renderExpandedContent = useCallback(() => {
-    return renderExpanded?.({ row, onCollapse: () => onExpand?.(id) });
-  }, [onExpand, renderExpanded, id, row]);
+    return expandedContent?.({ row, onCollapse: () => onExpand?.(id) });
+  }, [onExpand, expandedContent, id, row]);
 
   return (
     <ListRow expanded={expanded} renderExpanded={renderExpandedContent}>
-      {onSelect && (
+      {selectable && (
         <ListCol
           display={{ _: 'flex', xs: 'flex' }}
           size="content"
@@ -55,7 +54,7 @@ export function DataRow<
         >
           <SelectControl
             label={`Select ${id}`}
-            name={`${idPrefix}-${id}`}
+            name={prefixId(id)}
             onSelect={() => onSelect?.({ rowId: id, toggle: selected })}
             selected={selected}
           />
@@ -74,7 +73,7 @@ export function DataRow<
           <ListCol {...colProps}>{render ? render(row) : row[key]}</ListCol>
         );
       })}
-      {onExpand && (
+      {expandable && (
         <ListCol size="content" order={[1000, 'initial']}>
           <ExpandControl id={id} expanded={expanded} onExpand={onExpand} />
         </ListCol>
