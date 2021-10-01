@@ -1,7 +1,7 @@
 import React, { ComponentProps } from 'react';
 
 import { List } from '../List';
-import { DataListControls } from '.';
+import { DataListControls, IdentifiableKeys } from '.';
 import { useListControls } from './hooks/useListControls';
 import { HeaderRow } from './Rows/HeaderRow';
 import { DataRow } from './Rows/Row';
@@ -9,27 +9,25 @@ import { ColumnConfig } from './types';
 
 export interface DataListProps<
   Row,
-  IdKey extends keyof Row,
-  RowIds extends Row[IdKey],
+  IdKey extends IdentifiableKeys<Row>,
   Cols extends ColumnConfig<Row>[]
-> extends DataListControls<Row, IdKey, RowIds, Cols>,
+> extends DataListControls<Row, IdKey, Cols>,
     Omit<ComponentProps<typeof List>, 'header'> {
   id: string;
 }
 
 export function DataList<
-  Rows,
-  IdKey extends keyof Rows,
-  Ids extends Rows[IdKey],
-  Cols extends ColumnConfig<Rows>[]
+  Row,
+  IdKey extends IdentifiableKeys<Row>,
+  Cols extends ColumnConfig<Row>[]
 >({
   id,
   idKey,
   rows,
   columns: rawColumns,
-  renderExpanded,
-  selectedRows,
-  expandedRows,
+  expandedContent,
+  selected,
+  expanded,
   query,
   onQueryChange,
   onRowSelect,
@@ -38,7 +36,7 @@ export function DataList<
   spacing = 'condensed',
   scrollable = true,
   ...rest
-}: DataListProps<Rows, IdKey, Ids, Cols>) {
+}: DataListProps<Row, IdKey, Cols>) {
   const {
     columns,
     onQuery,
@@ -49,11 +47,11 @@ export function DataList<
   } = useListControls({
     query,
     onQueryChange,
-    expandedRows,
+    expanded,
     onRowExpand,
-    renderExpanded,
+    expandedContent,
     onRowSelect,
-    selectedRows,
+    selected,
     idKey,
     columns: rawColumns,
     rows,
@@ -72,6 +70,7 @@ export function DataList<
           onQuery={onQuery}
           selected={allSelected}
           onSelect={onSelectAll}
+          onExpand={onExpand}
         />
       }
       {...rest}
@@ -83,10 +82,10 @@ export function DataList<
           id={row[idKey]}
           row={row}
           columns={columns}
-          renderExpanded={renderExpanded}
-          selected={selectedRows?.includes(row[idKey] as Ids)}
+          renderExpanded={expandedContent}
+          selected={selected?.includes(row[idKey])}
           onSelect={onSelect}
-          expanded={expandedRows?.includes(row[idKey] as Ids)}
+          expanded={expanded?.includes(row[idKey])}
           onExpand={onExpand}
         />
       ))}

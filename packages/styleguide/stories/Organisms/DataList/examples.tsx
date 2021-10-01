@@ -7,8 +7,7 @@ import {
   Text,
   useLocalQuery,
 } from '@codecademy/gamut';
-import { ColorMode } from '@codecademy/gamut-styles';
-import { ColorModes } from '@codecademy/gamut-styles/src';
+import { ColorMode, ColorModes } from '@codecademy/gamut-styles';
 import React, { useState } from 'react';
 
 const cols = [
@@ -118,17 +117,17 @@ const crew = [
   },
 ];
 
-export const DataListTemplate = (
-  args: DataListProps<typeof crew[number], 'name', any, typeof cols> & {
-    mode: ColorModes;
-  }
-) => {
-  const [selectedRows, setSelectedRows] = useState<
-    typeof rows[number][typeof idKey][]
-  >([]);
-  const [expandedRows, setExpandedRows] = useState<
-    typeof rows[number][typeof idKey][]
-  >([]);
+type TemplateProps = DataListProps<typeof crew[number], 'name', typeof cols> & {
+  mode: ColorModes;
+};
+
+export const DataListTemplate = (args: TemplateProps) => {
+  const [selectedRows, setSelectedRows] = useState<TemplateProps['selected']>(
+    []
+  );
+  const [expandedRows, setExpandedRows] = useState<TemplateProps['expanded']>(
+    []
+  );
 
   const { idKey, query, rows, columns, onQueryChange } = useLocalQuery({
     idKey: 'name',
@@ -137,18 +136,18 @@ export const DataListTemplate = (
   });
 
   return (
-    <ColorMode mode={args.mode} bg="background" height={600} overflowY="auto">
+    <ColorMode mode={args.mode} bg="background">
       <DataList
         {...args}
         id="example"
         idKey={idKey}
         rows={rows}
         columns={columns}
-        selectedRows={selectedRows}
-        onRowSelect={setSelectedRows}
-        expandedRows={expandedRows}
-        onRowExpand={setExpandedRows}
-        renderExpanded={({ onCollapse }) => (
+        selected={selectedRows}
+        onRowSelect={({ next }) => setSelectedRows(next)}
+        expanded={expandedRows}
+        onRowExpand={({ next }) => setExpandedRows(next)}
+        expandedContent={({ onCollapse }) => (
           <FlexBox column flex={1}>
             <FlexBox borderTop={1} opacity={0.5} />
             <FlexBox center column p={32} gap={16}>

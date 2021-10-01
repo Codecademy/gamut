@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { ListCol, ListHeader } from '../../List';
-import { QueryValues } from '..';
+import { OnQuery } from '..';
 import {
   ExpandControl,
   FilterControl,
@@ -10,59 +10,47 @@ import {
 } from '../Controls';
 import { ColumnConfig, Query } from '../types';
 
-interface HeaderRowProps<Cols extends ColumnConfig<any>[]> {
+interface HeaderRowProps<Row, Cols extends ColumnConfig<Row>[]> {
   id: string;
   selected?: boolean;
-  onSelect?: () => void;
+  onSelect?: (select?: boolean) => void;
+  onExpand?: (select?: boolean) => void;
   columns: Cols;
-  query?: Query<any>;
-  onQuery: (
-    type: keyof Query<any>,
-    dimension: keyof any,
-    value: QueryValues<any>
-  ) => void;
+  query?: Query<Row>;
+  onQuery: OnQuery<Row>;
 }
 
-export function HeaderRow<Cols extends ColumnConfig<any>[]>({
+export function HeaderRow<Row, Cols extends ColumnConfig<Row>[]>({
   id,
   columns,
   query,
   onQuery,
   onSelect,
+  onExpand,
   selected,
-}: HeaderRowProps<Cols>) {
+}: HeaderRowProps<Row, Cols>) {
   return (
     <ListHeader>
+      {onSelect && (
+        <ListCol size="content">
+          <SelectControl
+            name={`${id}-all`}
+            label="Select All"
+            selected={selected}
+            onSelect={() => onSelect?.(selected)}
+          />
+        </ListCol>
+      )}
       {columns.map(({ key, label, queryType, options, ...colProps }) => {
         const renderKey = `${id}-header-col-${String(key)}`;
         const columnText = label || key;
-
-        if (key === 'select') {
-          return (
-            <ListCol size="content" key={renderKey}>
-              <SelectControl
-                name={`${id}-all`}
-                label="Select All"
-                selected={selected}
-                onSelect={() => onSelect?.()}
-              />
-            </ListCol>
-          );
-        }
-        if (key === 'expand') {
-          return (
-            <ListCol key={renderKey} ghost>
-              <ExpandControl />
-            </ListCol>
-          );
-        }
         switch (queryType) {
           case 'sort': {
-            const direction = query?.sort?.[key as string] || 'none';
+            const direction = query?.sort?.[key] ?? 'none';
             return (
               <ListCol key={renderKey} {...colProps} columnHeader>
                 <SortControl
-                  columnKey={key as string}
+                  columnKey={key}
                   direction={direction}
                   onQuery={onQuery}
                 >
@@ -72,7 +60,7 @@ export function HeaderRow<Cols extends ColumnConfig<any>[]>({
             );
           }
           case 'filter': {
-            const columnFilter = query?.filter?.[key as string];
+            const columnFilter = query?.filter?.[key];
 
             return (
               <ListCol key={renderKey} {...colProps} columnHeader>
@@ -99,6 +87,11 @@ export function HeaderRow<Cols extends ColumnConfig<any>[]>({
           }
         }
       })}
+      {onExpand && (
+        <ListCol size="content" ghost>
+          <ExpandControl />
+        </ListCol>
+      )}
     </ListHeader>
   );
 }

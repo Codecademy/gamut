@@ -1,13 +1,14 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 
 import { ListCol, ListRow } from '../../List';
+import { IdentifiableKeys } from '..';
 import { ExpandControl, SelectControl } from '../Controls';
 import { ColumnConfig } from '../types';
 
 interface DataRowProps<
   Row,
   Cols extends ColumnConfig<Row>[],
-  IdKey extends keyof Row,
+  IdKey extends IdentifiableKeys<Row>,
   RowIds extends Row[IdKey]
 > {
   id: RowIds;
@@ -27,7 +28,7 @@ interface DataRowProps<
 export function DataRow<
   Row,
   Cols extends ColumnConfig<Row>[],
-  IdKey extends keyof Row,
+  IdKey extends IdentifiableKeys<Row>,
   RowIds extends Row[IdKey]
 >({
   id,
@@ -40,14 +41,26 @@ export function DataRow<
   onExpand,
   renderExpanded,
 }: DataRowProps<Row, Cols, IdKey, RowIds>) {
-  const expandable = renderExpanded && onExpand;
-
-  const renderExpandedContent =
-    expandable &&
-    (() => renderExpanded({ row, onCollapse: () => onExpand(id) }));
+  const renderExpandedContent = useCallback(() => {
+    return renderExpanded?.({ row, onCollapse: () => onExpand?.(id) });
+  }, [onExpand, renderExpanded, id, row]);
 
   return (
     <ListRow expanded={expanded} renderExpanded={renderExpandedContent}>
+      {onSelect && (
+        <ListCol
+          display={{ _: 'flex', xs: 'flex' }}
+          size="content"
+          type="control"
+        >
+          <SelectControl
+            label={`Select ${id}`}
+            name={`${idPrefix}-${id}`}
+            onSelect={() => onSelect?.(id)}
+            selected={selected}
+          />
+        </ListCol>
+      )}
       {columns.map(({ key, render, size, justify, fill, type }) => {
         const colProps = {
           size,
@@ -57,34 +70,15 @@ export function DataRow<
           key: `${id}-col-${key}`,
         };
 
-        if (key === 'select') {
-          return (
-            <ListCol
-              {...colProps}
-              display={{ _: 'flex', xs: 'flex' }}
-              type="control"
-            >
-              <SelectControl
-                label={`Select ${id}`}
-                name={`${idPrefix}-${id}`}
-                onSelect={() => onSelect?.(id)}
-                selected={selected}
-              />
-            </ListCol>
-          );
-        }
-        if (key === 'expand') {
-          return (
-            <ListCol {...colProps} order={[1000, 'initial']}>
-              <ExpandControl id={id} expanded={expanded} onExpand={onExpand} />
-            </ListCol>
-          );
-        }
-
         return (
           <ListCol {...colProps}>{render ? render(row) : row[key]}</ListCol>
         );
       })}
+      {onExpand && (
+        <ListCol size="content" order={[1000, 'initial']}>
+          <ExpandControl id={id} expanded={expanded} onExpand={onExpand} />
+        </ListCol>
+      )}
     </ListRow>
   );
 }

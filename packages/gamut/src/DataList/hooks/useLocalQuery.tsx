@@ -1,11 +1,11 @@
 import { orderBy, uniq } from 'lodash';
-import { useMemo, useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 
-import { ColumnConfig, Query, SortDirection } from '..';
+import { ColumnConfig, IdentifiableKeys, OnQueryChange, Query } from '..';
 
 export interface LocalQueryShape<
   Row,
-  IdKey extends keyof Row,
+  IdKey extends IdentifiableKeys<Row>,
   Cols extends ColumnConfig<Row>[]
 > {
   rows: Row[];
@@ -16,7 +16,7 @@ export interface LocalQueryShape<
 export const useLocalQuery = <
   Row,
   Cols extends ColumnConfig<Row>[],
-  IdKey extends keyof Row
+  IdKey extends IdentifiableKeys<Row>
 >({
   idKey,
   rows,
@@ -26,6 +26,13 @@ export const useLocalQuery = <
     sort: {},
     filter: {},
   });
+
+  const onQueryChange: OnQueryChange<Row> = useCallback(
+    ({ next }) => {
+      setQuery(next);
+    },
+    [setQuery]
+  );
 
   const columnsWithOptions = useMemo(() => {
     return columns.map((col) => {
@@ -63,10 +70,7 @@ export const useLocalQuery = <
 
     if (sort) {
       const dimensions = Object.keys(sort) as (keyof Row)[];
-      const directions = Object.values(sort) as Exclude<
-        SortDirection,
-        'none'
-      >[];
+      const directions = Object.values(sort);
 
       computedRows = orderBy(
         computedRows,
@@ -85,6 +89,6 @@ export const useLocalQuery = <
     query,
     rows: sortedRows,
     columns: columnsWithOptions,
-    onQueryChange: setQuery,
+    onQueryChange,
   };
 };

@@ -52,11 +52,40 @@ import { DataListTemplate } from './examples.tsx';
   }}
 />
 
-<Canvas>
-  <Story name="Light" args={{ mode: 'light' }}>
-    {DataListTemplate.bind({})}
-  </Story>
-</Canvas>
+## Usage
+
+```tsx
+const DataTown = () => {
+  const [selectedRows, setSelectedRows] = useState([]);
+  const [expandedRows, setExpandedRows] = useState([]);
+
+  const queryData = useLocalQuery({
+    idKey: 'name',
+    rows: crew,
+    columns: cols,
+  });
+
+  return (
+    <DataList
+      id="example"
+      selectedRows={selectedRows}
+      onRowSelect={setSelectedRows}
+      expandedRows={expandedRows}
+      onRowExpand={setExpandedRows}
+      renderExpanded={({ name }) => <>{name}: This is pretty cool</>}
+      {...queryData}
+    />
+  );
+};
+```
+
+### Columns
+
+Column Options:
+
+<Story name="Light" args={{ mode: 'light' }}>
+  {DataListTemplate.bind({})}
+</Story>
 
 <Canvas>
   <Story name="Dark" args={{ mode: 'dark' }}>

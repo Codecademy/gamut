@@ -3,18 +3,14 @@ import React, { useState } from 'react';
 
 import { Box, Checkbox, FlexBox, FocusTrap, Menu, MenuItem, Text } from '../..';
 import { Anchor } from '../../Anchor';
-import { Query, QueryValues } from '..';
+import { FilterValues, OnQuery } from '..';
 
 export interface FilterProps {
   id: string;
   columnKey: string | symbol | number;
   options?: string[];
-  filters?: string[];
-  onQuery: (
-    type: keyof Query<any>,
-    dimension: keyof any,
-    value: QueryValues<any>
-  ) => void;
+  filters?: FilterValues<any>;
+  onQuery: OnQuery;
   justify?: 'left' | 'right';
 }
 
@@ -36,6 +32,7 @@ export const FilterControl: React.FC<FilterProps> = ({
   justify = 'left',
 }) => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const filterDimension = String(columnKey);
 
   return (
     <FlexBox position="relative" column>
@@ -56,7 +53,9 @@ export const FilterControl: React.FC<FilterProps> = ({
                 const optionId = `${id}-${opt}-${String(columnKey)}`;
                 const allSelected = filters.length === 0;
                 const optionSelected =
-                  opt === 'Select All' ? allSelected : !filters.includes(opt);
+                  opt === `Select All ${filterDimension}`
+                    ? allSelected
+                    : !filters.includes(opt);
 
                 return (
                   <MenuItem key={opt}>

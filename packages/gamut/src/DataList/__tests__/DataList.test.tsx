@@ -9,7 +9,7 @@ import { ColumnConfig } from '../types';
 type Row = { id: number; name: string; sin: string };
 type Columns = ColumnConfig<Row>[];
 
-type Props = DataListProps<Row, 'id', 1 | 2 | 3, Columns>;
+type Props = DataListProps<Row, 'id', Columns>;
 
 const onRowSelect = jest.fn();
 const onRowExpand = jest.fn();
@@ -27,7 +27,7 @@ const props = {
   onRowSelect,
   onRowExpand,
   onQueryChange,
-  renderExpanded: ({ row: { id } }) => <div>Expanded {id}</div>,
+  expandedContent: ({ row: { id } }) => <div>Expanded {id}</div>,
 } as Props;
 
 const renderView = setupRtl(DataList, props as any) as <
@@ -87,10 +87,14 @@ describe('DataList', () => {
         fireEvent.click(checkbox);
       });
 
-      expect(onRowSelect).toHaveBeenLastCalledWith([1]);
+      expect(onRowSelect).toHaveBeenLastCalledWith({
+        next: [1],
+        type: 'select',
+        rowId: 1,
+      });
     });
     it("clicking the row's checkbox deselects the row when the row is already selected", () => {
-      renderView({ selectedRows: [1] });
+      renderView({ selected: [1] });
 
       const checkbox = screen.getByRole('checkbox', { name: 'Select 1' });
 
@@ -98,11 +102,15 @@ describe('DataList', () => {
         fireEvent.click(checkbox);
       });
 
-      expect(onRowSelect).toHaveBeenLastCalledWith([]);
+      expect(onRowSelect).toHaveBeenLastCalledWith({
+        next: [],
+        type: 'deselect',
+        rowId: 1,
+      });
     });
 
     it('selecting another row adds the row to the selection', () => {
-      renderView({ selectedRows: [2] });
+      renderView({ selected: [2] });
 
       const checkbox = screen.getByRole('checkbox', { name: 'Select 1' });
 
@@ -110,7 +118,11 @@ describe('DataList', () => {
         fireEvent.click(checkbox);
       });
 
-      expect(onRowSelect).toHaveBeenLastCalledWith([2, 1]);
+      expect(onRowSelect).toHaveBeenLastCalledWith({
+        next: [2, 1],
+        type: 'select',
+        rowId: 1,
+      });
     });
 
     it('selects all rows when the header checkbox is clicked', () => {
@@ -118,39 +130,44 @@ describe('DataList', () => {
 
       const checkbox = screen.getByRole('checkbox', {
         name: 'Select All',
+        hidden: true,
       });
 
       act(() => {
         fireEvent.click(checkbox);
       });
 
-      expect(onRowSelect).toHaveBeenLastCalledWith([1, 2, 3]);
+      expect(onRowSelect).toHaveBeenLastCalledWith({
+        next: [1, 2, 3],
+        type: 'all',
+      });
     });
     it('it unselects all rows when the header checkbox is clicked and all rows are selected', () => {
-      renderView({ selectedRows: [1, 2, 3] });
+      renderView({ selected: [1, 2, 3] });
 
       const checkbox = screen.getByRole('checkbox', {
         name: 'Select All',
+        hidden: true,
       });
 
       act(() => {
         fireEvent.click(checkbox);
       });
 
-      expect(onRowSelect).toHaveBeenLastCalledWith([]);
+      expect(onRowSelect).toHaveBeenLastCalledWith({ next: [], type: 'none' });
     });
   });
 
   describe('Expanding Rows', () => {
     it('Renders an expanded row when passed the correct id', () => {
-      renderView({ expandedRows: [1] });
+      renderView({ expanded: [1] });
 
       screen.getByText('Expanded 1');
       screen.getByRole('button', { expanded: true });
     });
 
     it('allows multiple expanded rows by default', () => {
-      renderView({ expandedRows: [1, 2] });
+      renderView({ expanded: [1, 2] });
 
       screen.getByText('Expanded 1');
       screen.getByText('Expanded 2');
@@ -166,10 +183,14 @@ describe('DataList', () => {
       act(() => {
         fireEvent.click(expandButton);
       });
-      expect(onRowExpand).toHaveBeenLastCalledWith([1]);
+      expect(onRowExpand).toHaveBeenLastCalledWith({
+        type: 'expand',
+        rowId: 1,
+        next: [1],
+      });
     });
     it('calls the onRowExpand with the id omitted when an expanded row toggle is clicked', () => {
-      renderView({ expandedRows: [1] });
+      renderView({ expanded: [1] });
 
       const expandButton = screen.getByRole('button', { name: `Expand 1 Row` });
 
@@ -177,7 +198,11 @@ describe('DataList', () => {
         fireEvent.click(expandButton);
       });
 
-      expect(onRowExpand).toHaveBeenLastCalledWith([]);
+      expect(onRowExpand).toHaveBeenLastCalledWith({
+        next: [],
+        type: 'collapse',
+        rowId: 1,
+      });
     });
   });
 
@@ -219,7 +244,9 @@ describe('DataList', () => {
         });
 
         expect(onQueryChange).toHaveBeenLastCalledWith({
-          sort: { name: 'asc' },
+          type: 'sort',
+          dimension: 'name',
+          next: { sort: { name: 'asc' } },
         });
       });
 
@@ -233,7 +260,9 @@ describe('DataList', () => {
         });
 
         expect(onQueryChange).toHaveBeenLastCalledWith({
-          sort: { name: 'desc' },
+          type: 'sort',
+          dimension: 'name',
+          next: { sort: { name: 'desc' } },
         });
       });
 
@@ -247,7 +276,9 @@ describe('DataList', () => {
         });
 
         expect(onQueryChange).toHaveBeenLastCalledWith({
-          sort: {},
+          type: 'sort',
+          dimension: 'name',
+          next: { sort: {} },
         });
       });
 
@@ -264,7 +295,11 @@ describe('DataList', () => {
         });
 
         expect(onQueryChange).toHaveBeenLastCalledWith({
-          sort: { name: 'desc', sin: 'desc' },
+          type: 'sort',
+          dimension: 'sin',
+          next: {
+            sort: { name: 'desc', sin: 'desc' },
+          },
         });
       });
     });
@@ -310,9 +345,21 @@ describe('DataList', () => {
           fireEvent.click(button);
         });
 
-        screen.getByRole('checkbox', { name: 'Select All', checked: true });
-        screen.getByRole('checkbox', { name: 'idk', checked: true });
-        screen.getByRole('checkbox', { name: 'dude', checked: true });
+        screen.getByRole('checkbox', {
+          name: 'Select All',
+          checked: true,
+          hidden: true,
+        });
+        screen.getByRole('checkbox', {
+          name: 'idk',
+          checked: true,
+          hidden: true,
+        });
+        screen.getByRole('checkbox', {
+          name: 'dude',
+          checked: true,
+          hidden: true,
+        });
       });
 
       it('calls onQueryChange when an option is clicked', () => {
@@ -334,14 +381,19 @@ describe('DataList', () => {
           fireEvent.click(button);
         });
 
-        const checkbox = screen.getByRole('checkbox', { name: 'idk' });
+        const checkbox = screen.getByRole('checkbox', {
+          name: 'idk',
+          hidden: true,
+        });
 
         act(() => {
           fireEvent.click(checkbox);
         });
 
         expect(onQueryChange).toHaveBeenLastCalledWith({
-          filter: { sin: ['idk'] },
+          type: 'filter',
+          dimension: 'sin',
+          next: { filter: { sin: ['idk'] } },
         });
       });
 
@@ -364,8 +416,16 @@ describe('DataList', () => {
           fireEvent.click(button);
         });
 
-        screen.getByRole('checkbox', { name: 'idk', checked: false });
-        screen.getByRole('checkbox', { name: 'Select All', checked: false });
+        screen.getByRole('checkbox', {
+          name: 'idk',
+          checked: false,
+          hidden: true,
+        });
+        screen.getByRole('checkbox', {
+          name: 'Select All',
+          checked: false,
+          hidden: true,
+        });
       });
     });
   });

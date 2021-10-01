@@ -123,7 +123,7 @@ export interface HeaderProps
 
 export const HeaderEl = styled('div', styledOptions)<HeaderProps>(
   css({
-    display: 'flex',
+    display: { _: 'none', xs: 'flex' },
     position: { _: 'initial', xs: 'sticky' },
     flexDirection: ['column', 'row'],
     top: 0,

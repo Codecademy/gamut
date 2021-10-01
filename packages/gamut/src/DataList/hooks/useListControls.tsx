@@ -1,92 +1,101 @@
-import { useCallback, useMemo } from 'react';
+import { useCallback } from 'react';
 
-import { ColumnConfig, DataListControls, Query, QueryValues } from '..';
-
-const SELECT_COLUMN = {
-  key: 'select',
-  label: '',
-  size: 'content',
-} as ColumnConfig<any>;
-const EXPAND_COLUMN = {
-  key: 'expand',
-  label: '',
-  size: 'content',
-} as ColumnConfig<any>;
+import { ColumnConfig, DataListControls, IdentifiableKeys, OnQuery } from '..';
 
 export function useListControls<
-  Rows,
-  IdKey extends keyof Rows,
-  Ids extends Rows[IdKey],
-  Cols extends ColumnConfig<Rows>[]
+  Row,
+  IdKey extends IdentifiableKeys<Row>,
+  Cols extends ColumnConfig<Row>[]
 >({
   idKey,
   rows,
-  columns: rawColumns,
-  renderExpanded,
-  selectedRows = [],
-  expandedRows = [],
+  columns,
+  selected = [],
+  expanded = [],
   query,
   onQueryChange,
-  onRowSelect,
   onRowExpand,
-}: DataListControls<Rows, IdKey, Ids, Cols>) {
-  const isExpandable = !!onRowExpand && !!renderExpanded;
-  const isSelectable = !!onRowSelect;
-  const allSelected = rows.length === selectedRows?.length;
+  onRowSelect,
+  expandedContent,
+}: DataListControls<Row, IdKey, Cols>) {
+  const allSelected = rows.length === selected?.length;
 
-  const rowIds = rows.map(({ [idKey]: id }) => id as Ids);
+  const expandable = !!onRowExpand && !!expandedContent;
+  const selectable = !!onRowSelect;
 
-  const columns = useMemo(() => {
-    const computedColumns = [...rawColumns];
-
-    if (isSelectable) {
-      computedColumns.unshift(SELECT_COLUMN);
-    }
-    if (isExpandable) {
-      computedColumns.push(EXPAND_COLUMN);
-    }
-
-    return computedColumns;
-  }, [rawColumns, isExpandable, isSelectable]);
+  const rowIds = rows.map(({ [idKey]: id }) => id);
 
   const onSelect = useCallback(
-    (selectedId) => {
-      if (selectedRows.includes(selectedId)) {
-        onRowSelect?.(selectedRows.filter((id) => id !== selectedId));
+    (id) => {
+      if (selected?.includes(id)) {
+        onRowSelect?.({
+          type: 'deselect',
+          rowId: id,
+          next: selected.filter((rowId) => rowId !== id),
+        });
       } else {
-        onRowSelect?.([...selectedRows, selectedId]);
+        onRowSelect?.({
+          type: 'select',
+          rowId: id,
+          next: [...selected, id],
+        });
       }
     },
-    [selectedRows, onRowSelect]
+    [selected, onRowSelect]
   );
 
-  const onSelectAll = useCallback(() => {
-    if (allSelected) {
-      onRowSelect?.([]);
-    } else {
-      onRowSelect?.(rowIds);
-    }
-  }, [rowIds, onRowSelect, allSelected]);
+  const onSelectAll = useCallback(
+    (selected?: boolean) => {
+      onRowSelect?.({
+        type: selected ? 'none' : 'all',
+        next: selected ? [] : rowIds,
+      });
+    },
+    [onRowSelect, rowIds]
+  );
 
-  const onQuery = useCallback(
-    (
-      type: keyof Query<Rows>,
-      dimension: keyof Rows,
-      value: QueryValues<Rows>
-    ) => {
+  const onExpand = useCallback(
+    (id: Row[IdKey]) => {
+      if (expanded?.includes(id)) {
+        onRowExpand?.({
+          type: 'collapse',
+          rowId: id,
+          next: expanded?.filter((expandedId) => expandedId !== id),
+        });
+      } else {
+        onRowExpand?.({
+          type: 'expand',
+          rowId: id,
+          next: [...expanded, id],
+        });
+      }
+    },
+    [expanded, onRowExpand]
+  );
+
+  const onQuery: OnQuery<Row> = useCallback(
+    (type, dimension, value) => {
       if (value === 'none') {
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
         const { [dimension]: omit, ...nextQuery } = query?.[type];
         onQueryChange?.({
-          ...query,
-          [type]: nextQuery,
+          type,
+          dimension,
+          next: {
+            ...query,
+            [type]: nextQuery,
+          },
         });
       } else {
         onQueryChange?.({
-          ...query,
-          [type]: {
-            ...query?.[type],
-            [dimension]: value,
+          type,
+          dimension,
+          next: {
+            ...query,
+            [type]: {
+              ...query?.[type],
+              [dimension]: value,
+            },
           },
         });
       }
@@ -94,16 +103,12 @@ export function useListControls<
     [onQueryChange, query]
   );
 
-  const onExpand = useCallback(
-    (id: Ids) => {
-      if (expandedRows.includes(id)) {
-        onRowExpand?.(expandedRows.filter((expandedId) => expandedId !== id));
-      } else {
-        onRowExpand?.([...expandedRows, id]);
-      }
-    },
-    [expandedRows, onRowExpand]
-  );
-
-  return { columns, allSelected, onSelectAll, onSelect, onQuery, onExpand };
+  return {
+    columns,
+    onQuery,
+    allSelected,
+    onSelectAll: selectable ? onSelectAll : undefined,
+    onSelect: selectable ? onSelect : undefined,
+    onExpand: expandable ? onExpand : undefined,
+  };
 }

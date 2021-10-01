@@ -5,7 +5,7 @@ import React from 'react';
 
 import { Anchor } from '../..';
 import { FlexBox } from '../../Box';
-import { Query, QueryValues, SortDirection } from '..';
+import { OnQuery, SortDirection } from '..';
 
 const SortIcon = styled(ArrowChevronDownFilledIcon)(
   states({
@@ -23,13 +23,9 @@ const SortIcon = styled(ArrowChevronDownFilledIcon)(
 
 interface SortControlProps {
   justify?: 'left' | 'right';
-  columnKey: string;
+  columnKey: keyof any;
   direction: SortDirection;
-  onQuery: (
-    type: keyof Query<any>,
-    dimension: keyof any,
-    value: QueryValues<any>
-  ) => void;
+  onQuery: OnQuery;
 }
 
 const SORT_DIRECTIONS = ['asc', 'desc', 'none'] as const;
