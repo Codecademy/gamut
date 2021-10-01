@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 
 import { ListCol, ListRow } from '../../List';
-import { IdentifiableKeys } from '..';
+import { IdentifiableKeys, RowChange } from '..';
 import { ExpandControl, SelectControl } from '../Controls';
 import { ColumnConfig } from '../types';
 
@@ -15,8 +15,8 @@ interface DataRowProps<
   idPrefix: string;
   row: Row;
   columns: Cols;
-  onSelect?: (id: RowIds) => void;
-  onExpand?: (id: RowIds) => void;
+  onSelect?: RowChange<Row[IdKey]>;
+  onExpand?: RowChange<Row[IdKey]>;
   renderExpanded?: (props: {
     row: Row;
     onCollapse: () => void;
@@ -56,7 +56,7 @@ export function DataRow<
           <SelectControl
             label={`Select ${id}`}
             name={`${idPrefix}-${id}`}
-            onSelect={() => onSelect?.(id)}
+            onSelect={() => onSelect?.({ rowId: id, toggle: selected })}
             selected={selected}
           />
         </ListCol>

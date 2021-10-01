@@ -5,7 +5,7 @@ import React from 'react';
 
 import { Anchor } from '../..';
 import { FlexBox } from '../../Box';
-import { OnQuery, SortDirection } from '..';
+import { OnSort, SortDirection, SortOrder } from '..';
 
 const SortIcon = styled(ArrowChevronDownFilledIcon)(
   states({
@@ -25,30 +25,33 @@ interface SortControlProps {
   justify?: 'left' | 'right';
   columnKey: keyof any;
   direction: SortDirection;
-  onQuery: OnQuery;
+  onSort?: OnSort<any>;
 }
 
-const SORT_DIRECTIONS = ['asc', 'desc', 'none'] as const;
+const defaultSortOrder = ['asc', 'desc', 'none'] as SortOrder;
 
 const getNextSortDirection = (dir: SortDirection) => {
-  const currentIdx = SORT_DIRECTIONS.indexOf(dir);
+  const currentIdx = defaultSortOrder.indexOf(dir);
   const nextIdx =
-    currentIdx === SORT_DIRECTIONS.length - 1 ? 0 : currentIdx + 1;
-  return SORT_DIRECTIONS[nextIdx];
+    currentIdx === defaultSortOrder.length - 1 ? 0 : currentIdx + 1;
+  return defaultSortOrder[nextIdx];
 };
 
 export const SortControl: React.FC<SortControlProps> = ({
   justify = 'left',
   columnKey,
   direction,
-  onQuery,
+  onSort,
   children,
 }) => {
   return (
     <Anchor
       variant="interface"
       onClick={() =>
-        onQuery('sort', columnKey, getNextSortDirection(direction))
+        onSort?.({
+          dimension: columnKey,
+          value: getNextSortDirection(direction),
+        })
       }
       display="inline-flex"
     >

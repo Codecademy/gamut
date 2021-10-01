@@ -4,6 +4,8 @@ import { ListColProps } from '..';
 
 export type SortDirection = 'asc' | 'desc' | 'none';
 
+export type SortOrder = SortDirection[];
+
 export type Filter<T> = { [K in keyof T]?: T[K][] };
 
 export type Sort<T> = { [K in keyof T]?: Exclude<SortDirection, 'none'> };
@@ -23,16 +25,24 @@ export type FilterValues<T> = Filter<T>[keyof T];
 
 export type QueryType = keyof Query;
 
-export interface OnQuery<T = any> {
-  <Q extends QueryType>(
-    type: QueryType,
-    dimension: keyof T,
-    value: Q extends 'sort' ? SortDirection : FilterValues<T>
-  ): void;
+export interface OnQuery<Row, Type extends QueryType> {
+  (payload: {
+    dimension: keyof Row;
+    value: Type extends 'sort' ? SortDirection : FilterValues<Row>;
+  }): void;
 }
 
+export type OnSort<Row> = OnQuery<Row, 'sort'>;
+export type OnFilter<Row> = OnQuery<Row, 'filter'>;
+
 export interface OnQueryChange<T> {
-  (change: { type: QueryType; dimension: keyof T; next: Query<T> }): void;
+  <Type extends QueryType>(change: {
+    type: Type;
+    payload: {
+      dimension: keyof T;
+      value: Type extends 'sort' ? SortDirection : FilterValues<T>;
+    };
+  }): void;
 }
 
 export type IdentifiableKeys<T> = Extract<
@@ -44,7 +54,7 @@ export type IdentifiableKeys<T> = Extract<
 
 export interface ColumnConfig<T> {
   key: keyof T;
-  label?: string;
+  header?: string;
   type?: ListColProps['type'];
   size?: ListColProps['size'];
   render?: (row: T) => ReactElement<any, any> | null;
@@ -54,13 +64,17 @@ export interface ColumnConfig<T> {
   justify?: 'left' | 'right';
 }
 
-export interface RowStateChange<Types, Ids> {
-  (change: { type: Types; rowId?: Ids; next: Ids[] }): void;
+export interface RowChange<Id> {
+  (payload: { rowId?: Id; toggle?: boolean }): void;
 }
 
-export type SelectEvents = 'select' | 'deselect' | 'all' | 'none';
+export interface RowStateChange<Types, Ids> {
+  (change: { type: Types; payload: { rowId?: Ids; toggle?: boolean } }): void;
+}
 
-export type ExpandEvents = 'expand' | 'collapse';
+export type SelectEvents = 'select' | 'select-all';
+
+export type ExpandEvents = 'expand';
 
 export interface ExpandRow<Row> {
   (props: { row: Row; onCollapse: () => void }): React.ReactNode;

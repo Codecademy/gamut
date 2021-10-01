@@ -1,4 +1,5 @@
-import React, { ComponentProps } from 'react';
+import { isEqual } from 'lodash';
+import React, { ComponentProps, useMemo } from 'react';
 
 import { List } from '../List';
 import { DataListControls, IdentifiableKeys } from '.';
@@ -39,10 +40,10 @@ export function DataList<
 }: DataListProps<Row, IdKey, Cols>) {
   const {
     columns,
-    onQuery,
+    onSort,
+    onFilter,
     onSelect,
     onSelectAll,
-    allSelected,
     onExpand,
   } = useListControls({
     query,
@@ -57,6 +58,13 @@ export function DataList<
     rows,
   });
 
+  const allSelected = useMemo(() => {
+    return isEqual(
+      rows.map(({ [idKey]: id }) => id),
+      selected
+    );
+  }, [rows, selected, idKey]);
+
   return (
     <List
       scrollable={scrollable}
@@ -67,8 +75,9 @@ export function DataList<
           id={id}
           columns={columns}
           query={query}
-          onQuery={onQuery}
           selected={allSelected}
+          onSort={onSort}
+          onFilter={onFilter}
           onSelect={onSelectAll}
           onExpand={onExpand}
         />

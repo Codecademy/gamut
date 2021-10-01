@@ -4,10 +4,11 @@ import React from 'react';
 
 import { FlexBox } from '../../Box/FlexBox';
 import { TextButton } from '../../Button/TextButton';
+import { RowChange } from '..';
 
 export interface ExpandColProps {
   expanded?: boolean;
-  onExpand?: (id: any) => void;
+  onExpand?: RowChange<any>;
   ghost?: boolean;
   id?: any;
 }
@@ -44,7 +45,9 @@ export const ExpandControl: React.FC<ExpandColProps> = ({
       variant="secondary"
       width={{ _: 1, xs: 32 }}
       size="small"
-      onClick={() => onExpand?.(id)}
+      onClick={() => {
+        onExpand?.({ rowId: id, toggle: expanded });
+      }}
       aria-label={`Expand ${id} Row`}
       aria-expanded={expanded}
     >

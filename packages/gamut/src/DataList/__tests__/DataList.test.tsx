@@ -66,7 +66,7 @@ describe('DataList', () => {
     });
 
     it('allows custom header labels', () => {
-      renderView({ columns: [{ key: 'sin', label: 'Mortal Sin' }] });
+      renderView({ columns: [{ key: 'sin', header: 'Mortal Sin' }] });
 
       screen.getByText('Mortal Sin');
     });
@@ -88,9 +88,8 @@ describe('DataList', () => {
       });
 
       expect(onRowSelect).toHaveBeenLastCalledWith({
-        next: [1],
         type: 'select',
-        rowId: 1,
+        payload: { rowId: 1, toggle: undefined },
       });
     });
     it("clicking the row's checkbox deselects the row when the row is already selected", () => {
@@ -103,9 +102,11 @@ describe('DataList', () => {
       });
 
       expect(onRowSelect).toHaveBeenLastCalledWith({
-        next: [],
-        type: 'deselect',
-        rowId: 1,
+        type: 'select',
+        payload: {
+          rowId: 1,
+          toggle: true,
+        },
       });
     });
 
@@ -119,9 +120,11 @@ describe('DataList', () => {
       });
 
       expect(onRowSelect).toHaveBeenLastCalledWith({
-        next: [2, 1],
         type: 'select',
-        rowId: 1,
+        payload: {
+          rowId: 1,
+          toggle: false,
+        },
       });
     });
 
@@ -138,8 +141,8 @@ describe('DataList', () => {
       });
 
       expect(onRowSelect).toHaveBeenLastCalledWith({
-        next: [1, 2, 3],
-        type: 'all',
+        type: 'select-all',
+        payload: { toggle: false },
       });
     });
     it('it unselects all rows when the header checkbox is clicked and all rows are selected', () => {
@@ -154,7 +157,10 @@ describe('DataList', () => {
         fireEvent.click(checkbox);
       });
 
-      expect(onRowSelect).toHaveBeenLastCalledWith({ next: [], type: 'none' });
+      expect(onRowSelect).toHaveBeenLastCalledWith({
+        type: 'select-all',
+        payload: { toggle: true },
+      });
     });
   });
 
@@ -185,8 +191,10 @@ describe('DataList', () => {
       });
       expect(onRowExpand).toHaveBeenLastCalledWith({
         type: 'expand',
-        rowId: 1,
-        next: [1],
+        payload: {
+          rowId: 1,
+          toggle: undefined,
+        },
       });
     });
     it('calls the onRowExpand with the id omitted when an expanded row toggle is clicked', () => {
@@ -199,9 +207,11 @@ describe('DataList', () => {
       });
 
       expect(onRowExpand).toHaveBeenLastCalledWith({
-        next: [],
-        type: 'collapse',
-        rowId: 1,
+        type: 'expand',
+        payload: {
+          rowId: 1,
+          toggle: true,
+        },
       });
     });
   });
@@ -245,8 +255,10 @@ describe('DataList', () => {
 
         expect(onQueryChange).toHaveBeenLastCalledWith({
           type: 'sort',
-          dimension: 'name',
-          next: { sort: { name: 'asc' } },
+          payload: {
+            dimension: 'name',
+            value: 'asc',
+          },
         });
       });
 
@@ -261,8 +273,10 @@ describe('DataList', () => {
 
         expect(onQueryChange).toHaveBeenLastCalledWith({
           type: 'sort',
-          dimension: 'name',
-          next: { sort: { name: 'desc' } },
+          payload: {
+            dimension: 'name',
+            value: 'desc',
+          },
         });
       });
 
@@ -277,8 +291,10 @@ describe('DataList', () => {
 
         expect(onQueryChange).toHaveBeenLastCalledWith({
           type: 'sort',
-          dimension: 'name',
-          next: { sort: {} },
+          payload: {
+            dimension: 'name',
+            value: 'none',
+          },
         });
       });
 
@@ -296,9 +312,9 @@ describe('DataList', () => {
 
         expect(onQueryChange).toHaveBeenLastCalledWith({
           type: 'sort',
-          dimension: 'sin',
-          next: {
-            sort: { name: 'desc', sin: 'desc' },
+          payload: {
+            dimension: 'sin',
+            value: 'desc',
           },
         });
       });
@@ -309,7 +325,7 @@ describe('DataList', () => {
           columns: [
             {
               key: 'sin',
-              label: 'Some Filter',
+              header: 'Some Filter',
               queryType: 'filter',
               options: ['idk', 'dude'],
             },
@@ -331,7 +347,7 @@ describe('DataList', () => {
           columns: [
             {
               key: 'sin',
-              label: 'Some Filter',
+              header: 'Some Filter',
               queryType: 'filter',
               options: ['idk', 'dude'],
             },
@@ -346,7 +362,7 @@ describe('DataList', () => {
         });
 
         screen.getByRole('checkbox', {
-          name: 'Select All',
+          name: 'Select All sin',
           checked: true,
           hidden: true,
         });
@@ -367,7 +383,7 @@ describe('DataList', () => {
           columns: [
             {
               key: 'sin',
-              label: 'Some Filter',
+              header: 'Some Filter',
               queryType: 'filter',
               options: ['idk', 'dude'],
             },
@@ -392,8 +408,10 @@ describe('DataList', () => {
 
         expect(onQueryChange).toHaveBeenLastCalledWith({
           type: 'filter',
-          dimension: 'sin',
-          next: { filter: { sin: ['idk'] } },
+          payload: {
+            dimension: 'sin',
+            value: ['idk'],
+          },
         });
       });
 
@@ -402,7 +420,7 @@ describe('DataList', () => {
           columns: [
             {
               key: 'sin',
-              label: 'Some Filter',
+              header: 'Some Filter',
               queryType: 'filter',
               options: ['idk', 'dude'],
             },
@@ -422,7 +440,7 @@ describe('DataList', () => {
           hidden: true,
         });
         screen.getByRole('checkbox', {
-          name: 'Select All',
+          name: 'Select All sin',
           checked: false,
           hidden: true,
         });

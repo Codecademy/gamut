@@ -11,17 +11,23 @@ import { ColorMode, ColorModes } from '@codecademy/gamut-styles';
 import React, { useState } from 'react';
 
 const cols = [
-  { label: 'Name', key: 'name', size: 'lg', queryType: 'sort', type: 'header' },
-  { label: 'Rank', key: 'role', size: 'lg', queryType: 'sort' },
-  { label: 'Ship', key: 'ship', size: 'xl', queryType: 'filter' },
   {
-    label: 'Power',
+    header: 'Name',
+    key: 'name',
+    size: 'lg',
+    queryType: 'sort',
+    type: 'header',
+  },
+  { header: 'Rank', key: 'role', size: 'lg', queryType: 'sort' },
+  { header: 'Ship', key: 'ship', size: 'xl', queryType: 'filter' },
+  {
+    header: 'Power',
     key: 'power',
     size: 'xl',
     fill: true,
   },
   {
-    label: 'Species',
+    header: 'Species',
     key: 'species',
     size: 'lg',
     justify: 'right',
@@ -135,6 +141,23 @@ export const DataListTemplate = (args: TemplateProps) => {
     columns: cols,
   });
 
+  const onRowSelect = ({ type, payload: { toggle, rowId } }) => {
+    if (type === 'select') {
+      return setSelectedRows((prev = []) => {
+        return toggle ? prev?.filter((id) => id !== rowId) : [...prev, rowId];
+      });
+    }
+    if (type === 'select-all') {
+      return setSelectedRows(toggle ? [] : rows.map(({ [idKey]: id }) => id));
+    }
+  };
+
+  const onRowExpand = ({ payload: { toggle, rowId } }) => {
+    return setExpandedRows((prev = []) => {
+      return toggle ? prev?.filter((id) => id !== rowId) : [...prev, rowId];
+    });
+  };
+
   return (
     <ColorMode mode={args.mode} bg="background">
       <DataList
@@ -144,9 +167,9 @@ export const DataListTemplate = (args: TemplateProps) => {
         rows={rows}
         columns={columns}
         selected={selectedRows}
-        onRowSelect={({ next }) => setSelectedRows(next)}
+        onRowSelect={onRowSelect}
         expanded={expandedRows}
-        onRowExpand={({ next }) => setExpandedRows(next)}
+        onRowExpand={onRowExpand}
         expandedContent={({ onCollapse }) => (
           <FlexBox column flex={1}>
             <FlexBox borderTop={1} opacity={0.5} />

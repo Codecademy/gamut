@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { ListCol, ListHeader } from '../../List';
-import { OnQuery } from '..';
+import { OnFilter, OnSort, RowChange } from '..';
 import {
   ExpandControl,
   FilterControl,
@@ -13,18 +13,20 @@ import { ColumnConfig, Query } from '../types';
 interface HeaderRowProps<Row, Cols extends ColumnConfig<Row>[]> {
   id: string;
   selected?: boolean;
-  onSelect?: (select?: boolean) => void;
-  onExpand?: (select?: boolean) => void;
+  onSelect?: RowChange<Row>;
+  onExpand?: RowChange<Row>;
   columns: Cols;
   query?: Query<Row>;
-  onQuery: OnQuery<Row>;
+  onSort?: OnSort<Row>;
+  onFilter?: OnFilter<Row>;
 }
 
 export function HeaderRow<Row, Cols extends ColumnConfig<Row>[]>({
   id,
   columns,
   query,
-  onQuery,
+  onFilter,
+  onSort,
   onSelect,
   onExpand,
   selected,
@@ -37,13 +39,13 @@ export function HeaderRow<Row, Cols extends ColumnConfig<Row>[]>({
             name={`${id}-all`}
             label="Select All"
             selected={selected}
-            onSelect={() => onSelect?.(selected)}
+            onSelect={() => onSelect?.({ toggle: selected })}
           />
         </ListCol>
       )}
-      {columns.map(({ key, label, queryType, options, ...colProps }) => {
+      {columns.map(({ key, header, queryType, options, ...colProps }) => {
         const renderKey = `${id}-header-col-${String(key)}`;
-        const columnText = label || key;
+        const columnText = header || key;
         switch (queryType) {
           case 'sort': {
             const direction = query?.sort?.[key] ?? 'none';
@@ -52,7 +54,7 @@ export function HeaderRow<Row, Cols extends ColumnConfig<Row>[]>({
                 <SortControl
                   columnKey={key}
                   direction={direction}
-                  onQuery={onQuery}
+                  onSort={onSort}
                 >
                   {columnText}
                 </SortControl>
@@ -67,7 +69,7 @@ export function HeaderRow<Row, Cols extends ColumnConfig<Row>[]>({
                 <FilterControl
                   id={id}
                   columnKey={key}
-                  onQuery={onQuery}
+                  onFilter={onFilter}
                   filters={columnFilter}
                   options={options}
                   justify={colProps.justify}

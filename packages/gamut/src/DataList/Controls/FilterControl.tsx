@@ -1,16 +1,17 @@
 import { MiniChevronDownIcon } from '@codecademy/gamut-icons';
+import { kebabCase } from 'lodash';
 import React, { useState } from 'react';
 
 import { Box, Checkbox, FlexBox, FocusTrap, Menu, MenuItem, Text } from '../..';
 import { Anchor } from '../../Anchor';
-import { FilterValues, OnQuery } from '..';
+import { FilterValues, OnFilter } from '..';
 
 export interface FilterProps {
   id: string;
   columnKey: string | symbol | number;
   options?: string[];
   filters?: FilterValues<any>;
-  onQuery: OnQuery;
+  onFilter?: OnFilter<any>;
   justify?: 'left' | 'right';
 }
 
@@ -26,13 +27,13 @@ export const FilterControl: React.FC<FilterProps> = ({
   id,
   columnKey,
   filters = [],
-  onQuery,
+  onFilter,
   options = [],
   children,
   justify = 'left',
 }) => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const filterDimension = String(columnKey);
+  const dimension = String(columnKey);
 
   return (
     <FlexBox position="relative" column>
@@ -50,12 +51,13 @@ export const FilterControl: React.FC<FilterProps> = ({
               variant="action"
             >
               {['Select All', ...options].map((opt) => {
-                const optionId = `${id}-${opt}-${String(columnKey)}`;
+                const optionId = `${id}-${kebabCase(opt)}-${dimension}`;
                 const allSelected = filters.length === 0;
-                const optionSelected =
-                  opt === `Select All ${filterDimension}`
-                    ? allSelected
-                    : !filters.includes(opt);
+                const isSelectAll = opt === 'Select All';
+
+                const optionSelected = isSelectAll
+                  ? allSelected
+                  : !filters.includes(opt);
 
                 return (
                   <MenuItem key={opt}>
@@ -63,11 +65,10 @@ export const FilterControl: React.FC<FilterProps> = ({
                       htmlFor={optionId}
                       name={optionId}
                       onChange={() => {
-                        onQuery(
-                          'filter',
-                          columnKey,
-                          getNextFilters(opt, filters)
-                        );
+                        onFilter?.({
+                          dimension,
+                          value: getNextFilters(opt, filters),
+                        });
                       }}
                       label={
                         <Text
@@ -77,6 +78,9 @@ export const FilterControl: React.FC<FilterProps> = ({
                           display="inline-block"
                         >
                           {opt}
+                          {isSelectAll && (
+                            <Text screenreader> {dimension}</Text>
+                          )}
                         </Text>
                       }
                       spacing="tight"

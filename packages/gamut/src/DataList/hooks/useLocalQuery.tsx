@@ -28,8 +28,8 @@ export const useLocalQuery = <
   });
 
   const onQueryChange: OnQueryChange<Row> = useCallback(
-    ({ next }) => {
-      setQuery(next);
+    ({ type, payload: { dimension, value } }) => {
+      setQuery((prev) => ({ ...prev, [type]: { [dimension]: value } }));
     },
     [setQuery]
   );
@@ -49,6 +49,7 @@ export const useLocalQuery = <
   const sortedRows = useMemo(() => {
     const { sort, filter } = query;
     let computedRows = rows;
+
     if (filter) {
       const filterDimensions = Object.entries(filter) as [
         keyof Row,
