@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [37.8.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@37.7.1...@codecademy/gamut@37.8.0) (2021-09-30)
+
+
+### Features
+
+* **Drawer:** extract Drawer from Flyout ([76f261c](https://github.com/Codecademy/client-modules/commit/76f261cc7840bd640de368f70e125b5585638412))
+
+
+
 ### [37.7.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@37.7.0...@codecademy/gamut@37.7.1) (2021-09-29)
 
 

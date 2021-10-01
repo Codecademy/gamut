@@ -1,5 +1,11 @@
+export const timingValues = {
+  fast: 150,
+  medium: 200,
+  slow: 350,
+};
+
 export const timing = {
-  fast: '150ms',
-  slow: '200ms',
-  toastExitDuration: 0.175,
+  fast: `${timingValues.fast}ms`,
+  medium: `${timingValues.medium}ms`,
+  slow: `${timingValues.slow}ms`,
 };
