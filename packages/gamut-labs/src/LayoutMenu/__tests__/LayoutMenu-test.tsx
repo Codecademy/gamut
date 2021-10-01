@@ -3,7 +3,13 @@ import { fireEvent } from '@testing-library/dom';
 
 import { LayoutMenu } from '../LayoutMenu';
 
+jest.mock('react-use', () => ({
+  ...jest.requireActual<{}>('react-use'),
+  useMedia: () => false,
+}));
+
 const renderView = setupRtl(LayoutMenu, {
+  closeLabel: 'Close me',
   sections: [
     {
       title: 'main test title1',
@@ -44,5 +50,20 @@ describe('LayoutMenu', () => {
     const { view } = renderView();
     fireEvent.click(view.getByText('test button'));
     view.getByTitle('Codecademy Logo');
+  });
+
+  it('renders a top link section', () => {
+    const { view } = renderView({
+      topLinkSections: [
+        {
+          title: `Hello!`,
+          slug: 'this-works-everybody',
+          href: '',
+          onClick: jest.fn(),
+        },
+      ],
+    });
+
+    view.getByText(`Hello!`);
   });
 });

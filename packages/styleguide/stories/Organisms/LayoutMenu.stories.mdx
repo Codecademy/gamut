@@ -106,3 +106,43 @@ Additional links outside of an accordion can be added as `children`. You can use
     )}
   </Story>
 </Canvas>
+
+## With Additional Links on Top and Bottom
+
+Another way to add additional links outside of the accordion section is to pass an array of items that each contain a `title`, `slug`, and `onClick` to `topLinkSections`. Each of these items will become a link on top of the accordion section.
+
+<Canvas>
+  <Story name="With Additional Links on Top and Bottom">
+    {(args) => (
+      <LayoutMenu
+        {...args}
+        selectedItem="top-link"
+        topLinkSections={[
+          {
+            title: 'A top link!',
+            slug: 'top-link',
+            href: '/not-a-real-link',
+            onClick: () => null,
+          },
+          {
+            title: 'Another link!',
+            slug: 'test-link-2',
+            href: '/do-not-press-me',
+            onClick: () => null,
+          },
+        ]}
+      >
+        <Box pb={32}>
+          <SectionItemLink
+            onClick={() =>
+              (window.location.href =
+                'https://www.codecademy.com/explore/sorting-quiz')
+            }
+          >
+            Where do I begin?
+          </SectionItemLink>
+        </Box>
+      </LayoutMenu>
+    )}
+  </Story>
+</Canvas>

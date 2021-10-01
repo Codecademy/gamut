@@ -3,7 +3,7 @@ import { fireEvent } from '@testing-library/react';
 
 import { PageHero } from '..';
 
-const renderView = setupRtl(PageHero);
+const renderView = setupRtl(PageHero, { textLength: 'long' });
 
 describe('PageHero', () => {
   it('should render a title when one is provided', () => {
@@ -14,6 +14,14 @@ describe('PageHero', () => {
   it('should render a description when one is provided', () => {
     const { view: wrapper } = renderView({ desc: 'desc' });
     wrapper.getByText('desc');
+  });
+
+  it('should render an eyebrow when one is provided with a title', () => {
+    const { view: wrapper } = renderView({
+      eyebrow: 'eyebrow',
+      title: 'title',
+    });
+    wrapper.getByText('eyebrow');
   });
 
   it('can pass a callback for when anchor tags in the description are clicked', () => {
@@ -61,6 +69,7 @@ describe('PageHero', () => {
     });
     wrapper.getByTitle('video-title');
   });
+
   it('should not render a video when media prop is not provided', () => {
     const { view: wrapper } = renderView({ title: 'title' });
     expect(wrapper.queryByTitle('video-title')).not.toBeInTheDocument();

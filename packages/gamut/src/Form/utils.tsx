@@ -13,11 +13,14 @@ export interface SelectOptionBase {
   value: string;
   key?: string;
 }
-export interface ParseOptionProps extends SelectDropdownSizes {
+export interface ParseSelectOptionProps extends SelectDropdownSizes {
   id?: string | number;
   options?: SelectDropdownOptions;
 }
 
+export interface ParseOptionProps extends ParseSelectOptionProps {
+  labelAsKey?: boolean;
+}
 const formatAsOptions = ({ label, value, key }: SelectOptionBase) => {
   const option = key ? (
     <option label={label} key={key} value={value} data-testid={key}>
@@ -31,7 +34,12 @@ const formatAsOptions = ({ label, value, key }: SelectOptionBase) => {
 
   return option;
 };
-export const parseOptions = ({ options, id, size }: ParseOptionProps) => {
+export const parseOptions = ({
+  options,
+  id,
+  size,
+  labelAsKey,
+}: ParseOptionProps) => {
   const parsedOptions: OptionTypeBase[] = [];
   if (Array.isArray(options)) {
     options.forEach((value: string | IconOption) => {
@@ -39,7 +47,7 @@ export const parseOptions = ({ options, id, size }: ParseOptionProps) => {
         const key = id ? `${id}-${value?.value}` : value?.value;
         parsedOptions.push({ ...value, key, size });
       } else {
-        const label = id ? `${id}-${value}` : value;
+        const label = id && labelAsKey ? `${id}-${value}` : value;
         parsedOptions.push({ label, value });
       }
     });
@@ -49,10 +57,9 @@ export const parseOptions = ({ options, id, size }: ParseOptionProps) => {
       parsedOptions.push({ label, value, key });
     });
   }
-
   return [...parsedOptions];
 };
 
-export const parseSelectOptions = (props: ParseOptionProps) => {
-  return parseOptions(props).map(formatAsOptions);
+export const parseSelectOptions = (props: ParseSelectOptionProps) => {
+  return parseOptions({ ...props, labelAsKey: true }).map(formatAsOptions);
 };
