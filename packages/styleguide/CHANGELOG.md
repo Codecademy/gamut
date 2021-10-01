@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [47.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@47.2.0...@codecademy/styleguide@47.3.0) (2021-10-01)
+
+
+### Features
+
+* Toaster ([06dc6fa](https://github.com/Codecademy/client-modules/commit/06dc6fad67369857c31887f213dab4ebd154bea9))
+
+
+
+## [47.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@47.1.1...@codecademy/styleguide@47.2.0) (2021-09-30)
+
+
+### Features
+
+* **Drawer:** extract Drawer from Flyout ([76f261c](https://github.com/Codecademy/client-modules/commit/76f261cc7840bd640de368f70e125b5585638412))
+
+
+
 ### [47.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@47.1.0...@codecademy/styleguide@47.1.1) (2021-09-29)
 
 

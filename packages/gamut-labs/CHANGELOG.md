@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [24.2.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@24.2.0...@codecademy/gamut-labs@24.2.1) (2021-10-01)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+## [24.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@24.1.1...@codecademy/gamut-labs@24.2.0) (2021-09-30)
+
+
+### Features
+
+* **Drawer:** extract Drawer from Flyout ([76f261c](https://github.com/Codecademy/client-modules/commit/76f261cc7840bd640de368f70e125b5585638412))
+
+
+
 ### [24.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@24.1.0...@codecademy/gamut-labs@24.1.1) (2021-09-29)
 
 **Note:** Version bump only for package @codecademy/gamut-labs
