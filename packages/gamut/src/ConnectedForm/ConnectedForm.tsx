@@ -3,6 +3,7 @@ import {
   FormProvider,
   FormProviderProps,
   Mode,
+  RegisterOptions,
   SubmitHandler,
   useForm,
   UseFormOptions,
@@ -44,6 +45,11 @@ export interface ConnectedFormProps<Values extends {}>
   defaultValues?: UseFormOptions<Values>['defaultValues'];
 
   /**
+   * Function called with field values on submit, if all validations have passed.
+   */
+  validationRules?: Partial<{ [Key in keyof Values]?: RegisterOptions }>;
+
+  /**
    * Which react hook form mode we are going to use for validation.
    * If you use the onChange mode the submit button will be disabled until all
    * required fields are completed.
@@ -68,6 +74,7 @@ export function ConnectedForm<Values extends FormValues<Values>>({
   validation = 'onSubmit',
   disableFieldsOnSubmit = false,
   resetOnSubmit = false,
+  validationRules,
   wasSubmitSuccessful = undefined,
   ...rest
 }: ConnectedFormProps<Values>) {
@@ -89,7 +96,12 @@ export function ConnectedForm<Values extends FormValues<Values>>({
 
   return (
     <PropsProvider
-      value={{ disableFieldsOnSubmit, resetOnSubmit, wasSubmitSuccessful }}
+      value={{
+        disableFieldsOnSubmit,
+        resetOnSubmit,
+        validationRules,
+        wasSubmitSuccessful,
+      }}
     >
       <FormProvider
         handleSubmit={handleSubmit}

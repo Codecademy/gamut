@@ -1,11 +1,6 @@
 import React, { useContext } from 'react';
-import {
-  DeepPartial,
-  UnpackNestedValue,
-  useFormContext,
-} from 'react-hook-form';
+import { RegisterOptions, useFormContext } from 'react-hook-form';
 
-import { ConnectedSelect } from '..';
 import {
   ConnectedCheckbox,
   ConnectedForm,
@@ -13,6 +8,8 @@ import {
   ConnectedFormGroupProps,
   ConnectedFormProps,
   ConnectedInput,
+  ConnectedRadioGroupInput,
+  ConnectedSelect,
   FormPropsContext,
 } from '.';
 import { SubmitContextProps } from './SubmitButton';
@@ -28,43 +25,137 @@ export const submitSuccessStatus = (
   );
 };
 
-interface CassForm<V, R extends { [K in keyof V]?: any }> {
-  defaultValues: V;
-  validation: Partial<R>;
+interface ComposedGroupProps<Values extends {}> {
+  <Name extends keyof Values, Component extends ConnectedField>(
+    props: {
+      name: Name;
+    } & ConnectedFormGroupProps<Component>
+  ): ReturnType<typeof ConnectedFormGroup>;
 }
 
-export const useCassForms = <
+interface UseComposedFormProps<
   Values,
-  ValidationRules extends { [K in keyof Values]: any }
+  Rules extends { [Key in keyof Values]?: RegisterOptions }
+> {
+  defaultValues: Values;
+  validationRules: Partial<Rules>;
+}
+
+interface ComposedFormProps<Values, Rules>
+  extends UseComposedFormProps<Values, Rules> {
+  (
+    props: UseComposedFormProps<Values, Rules> & ConnectedFormProps<Values>
+  ): ReturnType<typeof ConnectedForm>;
+}
+
+export const useComposedForm = <
+  Values,
+  ValidationRules extends { [K in keyof Values]: RegisterOptions }
 >({
   defaultValues,
-  validation,
-}: CassForm<Values, ValidationRules>) => {
-  function ComposedFormGroup<C extends ConnectedField>(
-    props: ConnectedFormGroupProps<C> & { name: keyof Values }
-  ) {
-    const { field, ...rest } = props;
-    return (
-      <ConnectedFormGroup
+  validationRules,
+}: UseComposedFormProps<Values, ValidationRules>) => {
+  const ComposedFormGroup = ConnectedFormGroup as ComposedGroupProps<Values>;
+
+  const ComposedForm = ConnectedForm as ComposedFormProps<
+    Values,
+    ValidationRules
+  >;
+
+  const wrapperProps = {
+    defaultValues,
+    validationRules,
+  };
+
+  return { ComposedFormGroup, ComposedForm, wrapperProps };
+};
+
+export const TestOne = () => {
+  const { ComposedFormGroup, ComposedForm, wrapperProps } = useComposedForm({
+    defaultValues: {
+      cool: 'gnbsdlfkjndlskfj',
+      beans: 'beans!',
+      check: true,
+      selected: 'not to mention nested',
+      tv: 'three',
+    },
+    validationRules: {
+      cool: { required: 'explain yourself cool' },
+      beans: {
+        pattern: {
+          value: /^(?:(?!zero).)*$/,
+          message: 'zero to hero',
+        },
+      },
+      selected: {
+        pattern: {
+          value: /^(?:(?!zero).)*$/,
+          message: 'not zero.',
+        },
+      },
+      tv: {
+        fbasdhjfb: 'fdsajkf',
+      },
+    },
+  });
+
+  return (
+    <ComposedForm
+      m={64}
+      p={64}
+      onSubmit={(values) => console.log(values)}
+      resetOnSubmit
+      {...wrapperProps}
+    >
+      <ComposedFormGroup
+        name="selected"
+        label="cool"
         field={{
-          validation: { ...validation[rest.name] },
-          ...field,
+          component: ConnectedInput,
         }}
-        {...rest}
       />
-    );
-  }
-
-  const ComposedForm = (props: ConnectedFormProps<Values>) => (
-    <ConnectedForm
-      defaultValues={
-        defaultValues as UnpackNestedValue<DeepPartial<typeof defaultValues>>
-      }
-      {...props}
-    />
+      <ComposedFormGroup
+        name="check"
+        label="beans"
+        field={{
+          component: ConnectedInput,
+        }}
+      />
+      <ComposedFormGroup
+        name="check"
+        label="ah yes a check"
+        field={{
+          component: ConnectedCheckbox,
+          label: 'yeeeees',
+        }}
+      />
+      <ComposedFormGroup
+        name="selected"
+        label="selected or dejected"
+        field={{
+          component: ConnectedSelect,
+          options: [
+            'perhaps just disrespected?',
+            "but maybe that's expected",
+            'zero',
+          ],
+        }}
+      />
+      <ComposedFormGroup
+        name="tv"
+        label="tv on the radio"
+        field={{
+          component: ConnectedRadioGroupInput,
+          options: [
+            { label: 'one', value: 'first' },
+            { label: 'two', value: 'two' },
+            { label: 'three', value: 'three' },
+            { label: 'zilch', value: 'zero' },
+          ],
+        }}
+      />
+    </ComposedForm>
   );
-
-  return { ComposedFormGroup, ComposedForm };
 };
 
 export const useFormState = () => {
