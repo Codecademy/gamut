@@ -14,6 +14,7 @@ const listVariants = variant({
   base: {
     listStyleType: 'none',
     p: 0,
+    m: 0,
     display: 'flex',
     flexDirection: 'column',
   },
@@ -228,7 +229,7 @@ const columnStates = states({
       display: { _: 'none', xs: 'block' },
       content: '""',
       bg: 'background-current',
-      right: 0,
+      right: -4,
       top: 0,
       bottom: -2,
       width: 4,

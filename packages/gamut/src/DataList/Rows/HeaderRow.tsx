@@ -56,18 +56,20 @@ export const Header: HeaderComponent = ({ columns, selected }) => {
             );
           }
           case 'filter': {
-            return (
-              <ListCol key={renderKey} {...colProps} columnHeader>
-                <FilterControl
-                  columnKey={rowProperty}
-                  onFilter={onFilter}
-                  options={options}
-                  justify={colProps.justify}
-                >
-                  {columnText}
-                </FilterControl>
-              </ListCol>
-            );
+            if (options?.length) {
+              return (
+                <ListCol key={renderKey} {...colProps} columnHeader>
+                  <FilterControl
+                    columnKey={rowProperty}
+                    onFilter={onFilter}
+                    options={options}
+                    justify={colProps.justify}
+                  >
+                    {columnText}
+                  </FilterControl>
+                </ListCol>
+              );
+            }
           }
 
           default: {

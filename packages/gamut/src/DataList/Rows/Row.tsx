@@ -1,5 +1,6 @@
 import React, { ReactElement, useCallback } from 'react';
 
+import { Box } from '../..';
 import { ListCol, ListRow } from '../../List';
 import { IdentifiableKeys } from '..';
 import { ExpandControl, SelectControl } from '../Controls';
@@ -13,10 +14,18 @@ interface DataRow {
     columns: ColumnConfig<Row>[];
     selected?: boolean;
     expanded?: boolean;
+    loading?: boolean;
   }): ReactElement<any, any>;
 }
 
-export const Row: DataRow = ({ id, columns, row, expanded, selected }) => {
+export const Row: DataRow = ({
+  id,
+  columns,
+  row,
+  expanded,
+  selected,
+  loading,
+}) => {
   const {
     expandable,
     selectable,
@@ -39,6 +48,7 @@ export const Row: DataRow = ({ id, columns, row, expanded, selected }) => {
           type="control"
         >
           <SelectControl
+            disabled={loading}
             label={`Select ${id}`}
             name={prefixId(id)}
             rowId={id}
@@ -53,8 +63,18 @@ export const Row: DataRow = ({ id, columns, row, expanded, selected }) => {
           justify,
           fill,
           type,
-          key: `${id}-col-${key}`,
+          key: prefixId(`${id}-col-${key}`),
         };
+
+        if (loading) {
+          return (
+            <ListCol {...colProps}>
+              <Box height="calc(100% - 1rem)" width="calc(100% - 0.5rem)">
+                <Box bg="text" opacity={0.3} fit borderRadius="2px" />
+              </Box>
+            </ListCol>
+          );
+        }
 
         return (
           <ListCol {...colProps}>{render ? render(row) : row[key]}</ListCol>
@@ -62,7 +82,12 @@ export const Row: DataRow = ({ id, columns, row, expanded, selected }) => {
       })}
       {expandable && (
         <ListCol size="content" order={[1000, 'initial']}>
-          <ExpandControl id={id} expanded={expanded} onExpand={onExpand} />
+          <ExpandControl
+            id={id}
+            expanded={expanded}
+            onExpand={onExpand}
+            disabled={loading}
+          />
         </ListCol>
       )}
     </ListRow>

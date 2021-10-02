@@ -13,7 +13,9 @@ export interface DataListProps<
   IdKey extends IdentifiableKeys<Row>,
   Cols extends ColumnConfig<Row>[]
 > extends DataListControls<Row, IdKey, Cols>,
-    Omit<ComponentProps<typeof List>, 'header' | 'id'> {}
+    Omit<ComponentProps<typeof List>, 'header' | 'id'> {
+  loading?: boolean;
+}
 
 export function DataList<
   Row,
@@ -26,6 +28,7 @@ export function DataList<
     variant = 'table',
     spacing = 'condensed',
     scrollable = true,
+    shadow = scrollable,
     height = scrollable ? '100%' : 'initial',
     columns,
     idKey,
@@ -33,6 +36,7 @@ export function DataList<
     selected,
     expanded,
     query,
+    loading,
     ...rest
   } = props;
 
@@ -55,6 +59,7 @@ export function DataList<
       <ListControlContext.Provider value={listControls}>
         <List
           {...rest}
+          shadow={shadow}
           height={height}
           scrollable={scrollable}
           variant={variant}
@@ -72,6 +77,7 @@ export function DataList<
                 columns={columns}
                 selected={selectedRows?.[rowId]}
                 expanded={expandedRows?.[rowId]}
+                loading={loading}
               />
             );
           })}
