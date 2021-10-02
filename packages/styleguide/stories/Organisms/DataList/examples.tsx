@@ -1,14 +1,11 @@
 import {
-  Box,
   ColumnConfig,
   DataList,
-  DataListProps,
   FillButton,
   FlexBox,
   Text,
   useLocalQuery,
 } from '@codecademy/gamut';
-import { ColorModes } from '@codecademy/gamut-styles';
 import React, { useCallback, useMemo, useState } from 'react';
 
 const cols = [
