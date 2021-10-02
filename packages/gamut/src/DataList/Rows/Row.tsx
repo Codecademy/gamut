@@ -16,7 +16,7 @@ interface DataRow {
   }): ReactElement<any, any>;
 }
 
-export const Row: DataRow = ({ id, columns, row, selected, expanded }) => {
+export const Row: DataRow = ({ id, columns, row, expanded, selected }) => {
   const {
     expandable,
     selectable,
@@ -41,8 +41,9 @@ export const Row: DataRow = ({ id, columns, row, selected, expanded }) => {
           <SelectControl
             label={`Select ${id}`}
             name={prefixId(id)}
-            onSelect={() => onSelect?.({ rowId: id, toggle: selected })}
+            rowId={id}
             selected={selected}
+            onSelect={onSelect}
           />
         </ListCol>
       )}

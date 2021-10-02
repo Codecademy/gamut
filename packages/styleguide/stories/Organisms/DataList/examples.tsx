@@ -1,4 +1,5 @@
 import {
+  Box,
   ColumnConfig,
   DataList,
   DataListProps,
@@ -123,17 +124,13 @@ const crew = [
   },
 ];
 
-type TemplateProps = DataListProps<typeof crew[number], 'name', typeof cols> & {
-  mode: ColorModes;
-};
-
 export const DataListTemplate = () => {
-  const [selectedRows, setSelectedRows] = useState<TemplateProps['selected']>(
-    []
-  );
-  const [expandedRows, setExpandedRows] = useState<TemplateProps['expanded']>(
-    []
-  );
+  const [selectedRows, setSelectedRows] = useState<
+    typeof crew[number]['name'][]
+  >([]);
+  const [expandedRows, setExpandedRows] = useState<
+    typeof crew[number]['name'][]
+  >([]);
 
   const { idKey, query, rows, onQueryChange } = useLocalQuery({
     idKey: 'name',
@@ -141,10 +138,7 @@ export const DataListTemplate = () => {
     columns: cols,
   });
 
-  const allIds = useMemo(() => rows.map(({ [idKey]: id }) => id), [
-    idKey,
-    rows,
-  ]);
+  const allIds = useMemo(() => crew.map(({ [idKey]: id }) => id), [idKey]);
 
   const onRowSelect = useCallback(
     ({ type, payload: { toggle, rowId } }) => {
@@ -183,6 +177,7 @@ export const DataListTemplate = () => {
 
   return (
     <DataList
+      height={500}
       id="example"
       idKey={idKey}
       rows={rows}

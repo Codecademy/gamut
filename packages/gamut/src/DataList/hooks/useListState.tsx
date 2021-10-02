@@ -3,8 +3,6 @@ import { createContext, useContext } from 'react';
 import { Query } from '..';
 
 interface ListState {
-  selected?: (keyof any)[];
-  expanded?: (keyof any)[];
   query?: Query<any>;
 }
 

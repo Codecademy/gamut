@@ -1,4 +1,3 @@
-import { isEqual } from 'lodash';
 import React, { ComponentProps, useMemo } from 'react';
 
 import { List } from '../List';
@@ -27,45 +26,55 @@ export function DataList<
     variant = 'table',
     spacing = 'condensed',
     scrollable = true,
+    height = scrollable ? '100%' : 'initial',
     columns,
     idKey,
     rows,
     selected,
     expanded,
-    id,
     query,
     ...rest
   } = props;
 
   const allSelected = useMemo(() => {
-    return isEqual(
-      rows.map(({ [idKey]: id }) => id),
-      selected
-    );
+    const ids = rows.map(({ [idKey]: id }) => id);
+    const unselected = ids.filter((id) => !selected?.includes(id));
+    return unselected.length === 0;
   }, [rows, selected, idKey]);
 
+  const selectedRows = useMemo(() => {
+    return selected?.reduce((carry, next) => ({ ...carry, [next]: true }), {});
+  }, [selected]);
+
+  const expandedRows = useMemo(() => {
+    return expanded?.reduce((carry, next) => ({ ...carry, [next]: true }), {});
+  }, [expanded]);
+
   return (
-    <ListStateContext.Provider value={{ query, selected, expanded }}>
+    <ListStateContext.Provider value={{ query }}>
       <ListControlContext.Provider value={listControls}>
         <List
+          {...rest}
+          height={height}
           scrollable={scrollable}
           variant={variant}
           spacing={spacing}
-          header={
-            <HeaderRow id={id} columns={columns} selected={allSelected} />
-          }
-          {...rest}
+          header={<HeaderRow columns={columns} selected={allSelected} />}
         >
-          {rows.map((row) => (
-            <DataRow
-              key={`${id}-${row[idKey]}-row`}
-              id={row[idKey]}
-              row={row}
-              columns={columns}
-              selected={selected?.includes(row[idKey])}
-              expanded={expanded?.includes(row[idKey])}
-            />
-          ))}
+          {rows.map((row) => {
+            const rowId = row[idKey];
+            const key = listControls.prefixId(`${rowId}-row`);
+            return (
+              <DataRow
+                key={key}
+                id={rowId}
+                row={row}
+                columns={columns}
+                selected={selectedRows?.[rowId]}
+                expanded={expandedRows?.[rowId]}
+              />
+            );
+          })}
         </List>
       </ListControlContext.Provider>
     </ListStateContext.Provider>

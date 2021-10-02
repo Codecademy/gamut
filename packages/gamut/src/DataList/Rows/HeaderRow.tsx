@@ -12,18 +12,17 @@ import { ColumnConfig, Query } from '../types';
 
 interface HeaderComponent {
   <Row>(props: {
-    id: string;
-    selected?: boolean;
     columns: ColumnConfig<Row>[];
     query?: Query<Row>;
+    selected?: boolean;
   }): ReactElement<any, any>;
 }
 
-export const Header: HeaderComponent = ({ id, columns, selected }) => {
+export const Header: HeaderComponent = ({ columns, selected }) => {
   const {
     expandable,
     selectable,
-    onSelectAll,
+    onSelect,
     onFilter,
     onSort,
     prefixId,
@@ -34,10 +33,11 @@ export const Header: HeaderComponent = ({ id, columns, selected }) => {
       {selectable && (
         <ListCol size="content">
           <SelectControl
+            rowId="header"
             name={prefixId('all')}
             label="Select All"
+            onSelect={onSelect}
             selected={selected}
-            onSelect={() => onSelectAll?.({ toggle: selected })}
           />
         </ListCol>
       )}
@@ -59,7 +59,6 @@ export const Header: HeaderComponent = ({ id, columns, selected }) => {
             return (
               <ListCol key={renderKey} {...colProps} columnHeader>
                 <FilterControl
-                  id={id}
                   columnKey={rowProperty}
                   onFilter={onFilter}
                   options={options}

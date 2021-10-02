@@ -5,10 +5,10 @@ import React, { useState } from 'react';
 import { Box, Checkbox, FlexBox, FocusTrap, Menu, MenuItem, Text } from '../..';
 import { Anchor } from '../../Anchor';
 import { OnFilter } from '..';
+import { useControlContext } from '../hooks/useListControls';
 import { useListState } from '../hooks/useListState';
 
 export interface FilterProps {
-  id: string;
   columnKey: string;
   options?: string[];
   onFilter?: OnFilter<any>;
@@ -24,13 +24,13 @@ const getNextFilters = (option: string, filters: string[]) => {
 };
 
 export const FilterControl: React.FC<FilterProps> = ({
-  id,
   columnKey,
   onFilter,
   options = [],
   children,
   justify = 'left',
 }) => {
+  const { prefixId } = useControlContext();
   const [menuOpen, setMenuOpen] = useState(false);
   const dimension = String(columnKey);
   const filters = useListState().query?.filter?.[columnKey] ?? [];
@@ -51,7 +51,7 @@ export const FilterControl: React.FC<FilterProps> = ({
               variant="action"
             >
               {['Select All', ...options].map((opt) => {
-                const optionId = `${id}-${kebabCase(opt)}-${dimension}`;
+                const optionId = prefixId(`${kebabCase(opt)}-${dimension}`);
                 const allSelected = filters.length === 0;
                 const isSelectAll = opt === 'Select All';
 

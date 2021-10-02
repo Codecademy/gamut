@@ -32,20 +32,11 @@ export function useListControls<
   );
 
   const onSelect: RowChange<Row[IdKey]> = useCallback(
-    (payload) => {
+    ({ rowId, ...payload }) => {
+      const isHeader = rowId === 'header';
       onRowSelect?.({
-        type: 'select',
-        payload,
-      });
-    },
-    [onRowSelect]
-  );
-
-  const onSelectAll: RowChange<Row[IdKey]> = useCallback(
-    (payload) => {
-      onRowSelect?.({
-        type: 'select-all',
-        payload,
+        type: isHeader ? 'select-all' : 'select',
+        payload: isHeader ? payload : { rowId, ...payload },
       });
     },
     [onRowSelect]
@@ -85,7 +76,6 @@ export function useListControls<
     () => ({
       idKey,
       prefixId,
-      onSelectAll,
       onSelect,
       onExpand,
       onFilter,
@@ -97,7 +87,6 @@ export function useListControls<
     [
       idKey,
       prefixId,
-      onSelectAll,
       onSelect,
       onExpand,
       onFilter,
@@ -116,7 +105,6 @@ interface Controls {
   onFilter: OnFilter<any>;
   onSort: OnSort<any>;
   onSelect: RowChange<any>;
-  onSelectAll: RowChange<any>;
   onExpand: RowChange<any>;
   expandable: boolean;
   selectable: boolean;
