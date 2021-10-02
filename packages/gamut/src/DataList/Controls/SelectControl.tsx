@@ -11,7 +11,7 @@ export const SelectControl: React.FC<{
   label: string;
   selected?: boolean;
   onSelect?: RowChange<any>;
-}> = ({ disabled, onSelect, rowId, label, selected, name }) => {
+}> = ({ disabled, onSelect, rowId, label, selected = false, name }) => {
   return (
     <Checkbox
       disabled={disabled}

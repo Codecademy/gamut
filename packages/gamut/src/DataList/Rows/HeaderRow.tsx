@@ -18,7 +18,7 @@ interface HeaderComponent {
   }): ReactElement<any, any>;
 }
 
-export const Header: HeaderComponent = ({ columns, selected }) => {
+export const Header: HeaderComponent = ({ columns, selected = false }) => {
   const {
     expandable,
     selectable,

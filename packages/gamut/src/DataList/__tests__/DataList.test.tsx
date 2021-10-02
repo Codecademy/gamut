@@ -89,7 +89,7 @@ describe('DataList', () => {
 
       expect(onRowSelect).toHaveBeenLastCalledWith({
         type: 'select',
-        payload: { rowId: 1, toggle: undefined },
+        payload: { rowId: 1, toggle: false },
       });
     });
     it("clicking the row's checkbox deselects the row when the row is already selected", () => {
@@ -193,7 +193,7 @@ describe('DataList', () => {
         type: 'expand',
         payload: {
           rowId: 1,
-          toggle: undefined,
+          toggle: false,
         },
       });
     });

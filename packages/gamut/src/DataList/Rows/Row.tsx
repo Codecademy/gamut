@@ -22,9 +22,9 @@ export const Row: DataRow = ({
   id,
   columns,
   row,
-  expanded,
-  selected,
-  loading,
+  expanded = false,
+  selected = false,
+  loading = false,
 }) => {
   const {
     expandable,
