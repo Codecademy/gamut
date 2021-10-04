@@ -40,9 +40,9 @@ import { DataListTemplate } from './examples.tsx';
       },
     ],
     columns: [
-      { label: 'Name', key: 'name', size: 'lg', queryType: 'sort' },
-      { label: 'Rank', key: 'role', size: 'lg', queryType: 'sort' },
-      { label: 'Ship', key: 'ship', size: 'lg', queryType: 'sort', fill: true },
+      { label: 'Name', key: 'name', size: 'lg', sortable: true },
+      { label: 'Rank', key: 'role', size: 'lg', sortable: true },
+      { label: 'Ship', key: 'ship', size: 'lg', sortable: true, fill: true },
     ],
     selectedRows: ['Jean Luc Picard'],
     expandedRows: ['Geordie LaForge'],
@@ -62,7 +62,10 @@ const DataTown = () => {
   const queryData = useLocalQuery({
     idKey: 'name',
     rows: crew,
-    columns: cols,
+    columns: [{
+      { key: 'name', sortable: true, size: 'sm'},
+      { key: 'ship', sortable: true, size: 'sm'}
+    }],
   });
 
   return (
