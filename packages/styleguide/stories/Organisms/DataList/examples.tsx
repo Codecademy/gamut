@@ -6,32 +6,8 @@ import {
   Text,
   useLocalQuery,
 } from '@codecademy/gamut';
+import { uniq } from 'lodash';
 import React, { useCallback, useMemo, useState } from 'react';
-
-const cols = [
-  {
-    header: 'Name',
-    key: 'name',
-    size: 'lg',
-    queryType: 'sort',
-    type: 'header',
-  },
-  { header: 'Rank', key: 'role', size: 'lg', queryType: 'sort' },
-  { header: 'Ship', key: 'ship', size: 'xl', queryType: 'filter' },
-  {
-    header: 'Power',
-    key: 'power',
-    size: 'xl',
-    fill: true,
-  },
-  {
-    header: 'Species',
-    key: 'species',
-    size: 'lg',
-    justify: 'right',
-    queryType: 'filter',
-  },
-] as ColumnConfig<typeof crew[number]>[];
 
 const crew = [
   {
@@ -120,6 +96,40 @@ const crew = [
     power: 'Quantum sensitivity, talk therapy',
   },
 ];
+
+const shipFilters = uniq(crew.map(({ ship }) => ship));
+
+const cols = [
+  {
+    header: 'Name',
+    key: 'name',
+    size: 'lg',
+    sortable: true,
+    type: 'header',
+  },
+  { header: 'Rank', key: 'role', size: 'lg', sortable: true },
+  {
+    header: 'Ship',
+    key: 'ship',
+    size: 'xl',
+    sortable: true,
+    filters: shipFilters,
+  },
+  {
+    header: 'Power',
+    key: 'power',
+    size: 'xl',
+    fill: true,
+    sortable: true,
+  },
+  {
+    header: 'Species',
+    key: 'species',
+    size: 'lg',
+    justify: 'right',
+    sortable: true,
+  },
+] as ColumnConfig<typeof crew[number]>[];
 
 export const DataListTemplate = () => {
   const [selectedRows, setSelectedRows] = useState<

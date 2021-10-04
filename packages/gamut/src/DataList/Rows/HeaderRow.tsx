@@ -1,5 +1,6 @@
 import React, { ReactElement } from 'react';
 
+import { FlexBox } from '../..';
 import { ListCol, ListHeader } from '../../List';
 import {
   ExpandControl,
@@ -41,45 +42,28 @@ export const Header: HeaderComponent = ({ columns, selected = false }) => {
           />
         </ListCol>
       )}
-      {columns.map(({ key, header, queryType, options, ...colProps }) => {
+      {columns.map(({ key, header, sortable, filters, ...colProps }) => {
         const rowProperty = key as string;
         const renderKey = prefixId(`header-col-${rowProperty}`);
         const columnText = header || key;
-        switch (queryType) {
-          case 'sort': {
-            return (
-              <ListCol key={renderKey} {...colProps} columnHeader>
-                <SortControl columnKey={rowProperty} onSort={onSort}>
-                  {columnText}
-                </SortControl>
-              </ListCol>
-            );
-          }
-          case 'filter': {
-            if (options?.length) {
-              return (
-                <ListCol key={renderKey} {...colProps} columnHeader>
-                  <FilterControl
-                    columnKey={rowProperty}
-                    onFilter={onFilter}
-                    options={options}
-                    justify={colProps.justify}
-                  >
-                    {columnText}
-                  </FilterControl>
-                </ListCol>
-              );
-            }
-          }
-
-          default: {
-            return (
-              <ListCol key={renderKey} {...colProps} columnHeader>
-                {columnText}
-              </ListCol>
-            );
-          }
-        }
+        return (
+          <ListCol key={renderKey} {...colProps} columnHeader>
+            <FlexBox gap={8} alignItems="center">
+              {sortable && (
+                <SortControl columnKey={rowProperty} onSort={onSort} />
+              )}
+              {columnText}
+              {filters && (
+                <FilterControl
+                  columnKey={rowProperty}
+                  onFilter={onFilter}
+                  options={filters}
+                  justify={colProps.justify}
+                />
+              )}
+            </FlexBox>
+          </ListCol>
+        );
       })}
       {expandable && (
         <ListCol size="content" ghost>

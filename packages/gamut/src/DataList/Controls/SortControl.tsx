@@ -23,7 +23,6 @@ const SortIcon = styled(ArrowChevronDownFilledIcon)(
 );
 
 interface SortControlProps {
-  justify?: 'left' | 'right';
   columnKey: string;
   onSort?: OnSort<any>;
 }
@@ -38,10 +37,8 @@ const getNextSortDirection = (dir: SortDirection) => {
 };
 
 export const SortControl: React.FC<SortControlProps> = ({
-  justify = 'left',
   columnKey,
   onSort,
-  children,
 }) => {
   const direction = useListState().query?.sort?.[columnKey] ?? 'none';
 
@@ -55,11 +52,9 @@ export const SortControl: React.FC<SortControlProps> = ({
         })
       }
       display="inline-flex"
+      aria-label={`sort by ${columnKey}`}
     >
-      <FlexBox inline textAlign={justify} mr={8}>
-        {children}
-      </FlexBox>
-      <FlexBox inline column width={16}>
+      <FlexBox inline column width={16} center>
         <SortIcon
           asc
           active={direction === 'asc'}

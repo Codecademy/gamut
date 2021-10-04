@@ -220,7 +220,7 @@ describe('DataList', () => {
     describe('Sorting', () => {
       it('renders the column header with an ascending label when sorted', () => {
         renderView({
-          columns: [{ key: 'name', queryType: 'sort' }],
+          columns: [{ key: 'name', sortable: true }],
           query: { sort: {} },
         });
 
@@ -228,7 +228,7 @@ describe('DataList', () => {
       });
       it('renders the column header with an descending label when sorted', () => {
         renderView({
-          columns: [{ key: 'name', queryType: 'sort' }],
+          columns: [{ key: 'name', sortable: true }],
           query: { sort: { name: 'desc' } },
         });
 
@@ -236,21 +236,20 @@ describe('DataList', () => {
       });
       it('renders the column header with no label when not sorted', () => {
         renderView({
-          columns: [{ key: 'name', queryType: 'sort' }],
+          columns: [{ key: 'name', sortable: true }],
           query: { sort: {} },
         });
 
-        expect(screen.queryByText('ascending')).toBeNull();
-        expect(screen.queryByText('descending')).toBeNull();
+        expect(screen.queryByText('sort by name')).toBeNull();
       });
 
       it('calls onQueryChange with the column as desc when previously unsorted', () => {
         renderView({
-          columns: [{ key: 'name', queryType: 'sort' }],
+          columns: [{ key: 'name', sortable: true }],
           query: { sort: {} },
         });
         act(() => {
-          fireEvent.click(screen.getByText('name'));
+          fireEvent.click(screen.getByLabelText('sort by name'));
         });
 
         expect(onQueryChange).toHaveBeenLastCalledWith({
@@ -264,11 +263,11 @@ describe('DataList', () => {
 
       it('calls onQueryChange with the column as desc when previously asc', () => {
         renderView({
-          columns: [{ key: 'name', queryType: 'sort' }],
+          columns: [{ key: 'name', sortable: true }],
           query: { sort: { name: 'asc' } },
         });
         act(() => {
-          fireEvent.click(screen.getByText('name'));
+          fireEvent.click(screen.getByLabelText('sort by name'));
         });
 
         expect(onQueryChange).toHaveBeenLastCalledWith({
@@ -282,11 +281,11 @@ describe('DataList', () => {
 
       it('calls onQueryChange with the column unsorted when previously desc', () => {
         renderView({
-          columns: [{ key: 'name', queryType: 'sort' }],
+          columns: [{ key: 'name', sortable: true }],
           query: { sort: { name: 'desc' } },
         });
         act(() => {
-          fireEvent.click(screen.getByText('name'));
+          fireEvent.click(screen.getByLabelText('sort by name'));
         });
 
         expect(onQueryChange).toHaveBeenLastCalledWith({
@@ -301,13 +300,13 @@ describe('DataList', () => {
       it('preserves multiple dimensions of sorted columns', () => {
         renderView({
           columns: [
-            { key: 'name', queryType: 'sort' },
-            { key: 'sin', queryType: 'sort' },
+            { key: 'name', sortable: true },
+            { key: 'sin', sortable: true },
           ],
           query: { sort: { name: 'desc', sin: 'asc' } },
         });
         act(() => {
-          fireEvent.click(screen.getByText('sin'));
+          fireEvent.click(screen.getByLabelText('sort by sin'));
         });
 
         expect(onQueryChange).toHaveBeenLastCalledWith({
@@ -326,14 +325,13 @@ describe('DataList', () => {
             {
               key: 'sin',
               header: 'Some Filter',
-              queryType: 'filter',
-              options: ['idk', 'dude'],
+              filters: ['idk', 'dude'],
             },
           ],
           query: {},
         });
 
-        const button = screen.getByText('Some Filter');
+        const button = screen.getByLabelText('filter by sin');
 
         act(() => {
           fireEvent.click(button);
@@ -348,14 +346,13 @@ describe('DataList', () => {
             {
               key: 'sin',
               header: 'Some Filter',
-              queryType: 'filter',
-              options: ['idk', 'dude'],
+              filters: ['idk', 'dude'],
             },
           ],
           query: {},
         });
 
-        const button = screen.getByText('Some Filter');
+        const button = screen.getByLabelText('filter by sin');
 
         act(() => {
           fireEvent.click(button);
@@ -384,14 +381,13 @@ describe('DataList', () => {
             {
               key: 'sin',
               header: 'Some Filter',
-              queryType: 'filter',
-              options: ['idk', 'dude'],
+              filters: ['idk', 'dude'],
             },
           ],
           query: {},
         });
 
-        const button = screen.getByText('Some Filter');
+        const button = screen.getByLabelText('filter by sin');
 
         act(() => {
           fireEvent.click(button);
@@ -421,14 +417,13 @@ describe('DataList', () => {
             {
               key: 'sin',
               header: 'Some Filter',
-              queryType: 'filter',
-              options: ['idk', 'dude'],
+              filters: ['idk', 'dude'],
             },
           ],
           query: { filter: { sin: ['idk'] } },
         });
 
-        const button = screen.getByText('Some Filter');
+        const button = screen.getByLabelText('filter by sin');
 
         act(() => {
           fireEvent.click(button);

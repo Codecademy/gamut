@@ -1,4 +1,4 @@
-import { MiniChevronDownIcon } from '@codecademy/gamut-icons';
+import { FilterIcon } from '@codecademy/gamut-icons';
 import { kebabCase } from 'lodash';
 import React, { useState } from 'react';
 
@@ -27,7 +27,6 @@ export const FilterControl: React.FC<FilterProps> = ({
   columnKey,
   onFilter,
   options = [],
-  children,
   justify = 'left',
 }) => {
   const { prefixId } = useControlContext();
@@ -94,14 +93,15 @@ export const FilterControl: React.FC<FilterProps> = ({
         </Box>
       )}
       <Anchor
+        display="inline-flex"
         variant="interface"
         onClick={() => setMenuOpen(true)}
         aria-haspopup="true"
         aria-expanded={menuOpen}
+        aria-label={`filter by ${columnKey}`}
       >
-        <FlexBox alignItems="center">
-          <Text whiteSpace="normal">{children}</Text>
-          <MiniChevronDownIcon ml={8} size={12} alignSelf="center" />
+        <FlexBox center dimensions={16}>
+          <FilterIcon size={14} />
         </FlexBox>
       </Anchor>
     </FlexBox>

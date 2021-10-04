@@ -58,7 +58,8 @@ export interface ColumnConfig<T> {
   type?: ListColProps['type'];
   size?: ListColProps['size'];
   render?: (row: T) => ReactElement<any, any> | null;
-  queryType?: QueryType;
+  sortable?: boolean;
+  filters?: string[];
   options?: string[];
   fill?: boolean;
   justify?: 'left' | 'right';

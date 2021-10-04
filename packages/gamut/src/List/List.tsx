@@ -9,6 +9,7 @@ export interface ListProps extends AllListProps<ComponentProps<typeof ListEl>> {
   scrollable?: boolean;
   header?: React.ReactNode;
   height?: BoxProps['height'];
+  minHeight?: BoxProps['minHeight'];
   shadow?: boolean;
 }
 
@@ -20,6 +21,7 @@ export const List = forwardRef<HTMLUListElement, ListProps>(
       scrollable = false,
       shadow = false,
       height,
+      minHeight,
       children,
       header,
     },
@@ -33,6 +35,7 @@ export const List = forwardRef<HTMLUListElement, ListProps>(
             position="relative"
             maxWidth={1}
             maxHeight={height}
+            minHeight={minHeight}
             overflow="auto"
           >
             {header}
