@@ -6,7 +6,7 @@ import React from 'react';
 import { CTA } from './CTA';
 import { Description } from './Description';
 import { Title } from './Title';
-import { BaseProps, DarkModeProps } from './types';
+import { BaseProps } from './types';
 
 const Grid = styled.div`
   display: grid;
@@ -38,24 +38,18 @@ const GridVideo = styled(Video)`
   }
 `;
 
-const StyledDesc = styled(Description)`
-  margin-bottom: 2rem;
-`;
-
 export type PageVideo = {
   url: string;
   title: string;
   placeholderImage?: string;
 };
 
-export type PageVideoGalleryProps = BaseProps &
-  DarkModeProps & {
-    videos: PageVideo[];
-  };
+export type PageVideoGalleryProps = BaseProps & {
+  videos: PageVideo[];
+};
 
 export const PageVideoGallery: React.FC<PageVideoGalleryProps> = ({
   videos,
-  mode,
   title,
   desc,
   onAnchorClick,
@@ -63,9 +57,11 @@ export const PageVideoGallery: React.FC<PageVideoGalleryProps> = ({
   testId,
 }) => (
   <div>
-    {title && <Title mode={mode}>{title}</Title>}
-    {desc && (
-      <StyledDesc text={desc} onAnchorClick={onAnchorClick} mode={mode} />
+    {(title || desc) && (
+      <Box mb={32}>
+        {title && <Title>{title}</Title>}
+        {desc && <Description text={desc} onAnchorClick={onAnchorClick} />}
+      </Box>
     )}
     <Grid data-testid={testId}>
       {videos.map((video) => (
@@ -79,12 +75,7 @@ export const PageVideoGallery: React.FC<PageVideoGalleryProps> = ({
     </Grid>
     {cta && (
       <Box mt={32}>
-        <CTA
-          href={cta.href}
-          onClick={cta.onClick}
-          mode={mode}
-          buttonType={cta.buttonType}
-        >
+        <CTA href={cta.href} onClick={cta.onClick} buttonType={cta.buttonType}>
           {cta.text}
         </CTA>
       </Box>
