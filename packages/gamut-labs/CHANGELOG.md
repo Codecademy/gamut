@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [24.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@24.3.1...@codecademy/gamut-labs@24.4.0) (2021-10-04)
+
+
+### Features
+
+* **PageSingleFeature:** Abstract to PageSingleFeature ([7aaacb1](https://github.com/Codecademy/client-modules/commit/7aaacb13154872356f4c94906ba409bf96ec38b1))
+
+
+
 ### [24.3.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@24.3.0...@codecademy/gamut-labs@24.3.1) (2021-10-04)
 
 
