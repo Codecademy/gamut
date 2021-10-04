@@ -51,7 +51,7 @@ const IconContainer = styled(FlexBox)(
   })
 );
 
-type ToastProps = {
+export type ToastProps = {
   title?: ReactNode;
   icon?: ReactNode;
   onClose: () => void;
@@ -88,7 +88,7 @@ export const Toast: React.FC<ToastProps> = ({
   };
 
   return (
-    <ToastContainer role="status" layout={layoutType}>
+    <ToastContainer role="status" aria-live="polite" layout={layoutType}>
       {renderIcon()}
       <Box gridArea="message" py={4}>
         {title && (
@@ -106,6 +106,7 @@ export const Toast: React.FC<ToastProps> = ({
         variant="secondary"
         icon={MiniDeleteIcon}
         alignSelf="start"
+        aria-label="Dismiss Toast"
       />
     </ToastContainer>
   );

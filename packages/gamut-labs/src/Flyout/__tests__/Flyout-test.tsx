@@ -7,6 +7,11 @@ import { act } from 'react-dom/test-utils';
 
 import { Flyout } from '..';
 
+jest.mock('react-use', () => ({
+  ...jest.requireActual<{}>('react-use'),
+  useMedia: () => false,
+}));
+
 const renderView = setupRtl(Flyout, {
   children: <div data-testid="flyout-content">Howdy!</div>,
   closeLabel: 'Close flyout',

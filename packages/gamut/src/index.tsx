@@ -54,6 +54,7 @@ export * from './typings/responsive-properties';
 export * from './Logo';
 export * from './ProLabel';
 export * from './Toast/Toast';
+export * from './Toaster';
 export * from './FloatingCard/FloatingCard';
 export * from './BetaSticker';
 export * from './Menu';
