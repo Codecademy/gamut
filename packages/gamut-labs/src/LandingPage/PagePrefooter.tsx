@@ -33,7 +33,7 @@ export const PagePrefooter: React.FC<BaseProps & DarkModeProps> = ({
       <Box mt={{ _: 32, sm: 0 }} ml={{ sm: 32 }}>
         <CTA
           href={cta.href}
-          onCtaButtonClick={cta.onClick}
+          onClick={cta.onClick}
           mode={mode}
           buttonType={cta.buttonType}
         >

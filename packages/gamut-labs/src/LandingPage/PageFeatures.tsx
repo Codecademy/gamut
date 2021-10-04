@@ -110,7 +110,7 @@ export const PageFeatures: React.FC<PageFeaturesProps> = ({
         <Box mt={32}>
           <CTA
             href={cta.href}
-            onCtaButtonClick={cta.onClick}
+            onClick={cta.onClick}
             buttonType={cta.buttonType}
           >
             {cta.text}
