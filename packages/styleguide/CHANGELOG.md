@@ -3,6 +3,49 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [47.3.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@47.3.1...@codecademy/styleguide@47.3.2) (2021-10-04)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [47.3.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@47.3.0...@codecademy/styleguide@47.3.1) (2021-10-04)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [47.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@47.2.0...@codecademy/styleguide@47.3.0) (2021-10-01)
+
+
+### Features
+
+* Toaster ([06dc6fa](https://github.com/Codecademy/client-modules/commit/06dc6fad67369857c31887f213dab4ebd154bea9))
+
+
+
+## [47.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@47.1.1...@codecademy/styleguide@47.2.0) (2021-09-30)
+
+
+### Features
+
+* **Drawer:** extract Drawer from Flyout ([76f261c](https://github.com/Codecademy/client-modules/commit/76f261cc7840bd640de368f70e125b5585638412))
+
+
+
+### [47.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@47.1.0...@codecademy/styleguide@47.1.1) (2021-09-29)
+
+
+### Bug Fixes
+
+* **GridForm:** Add keyboard focus on form tooltips ([a021828](https://github.com/Codecademy/client-modules/commit/a021828f3585a52828ac43eaff5193e4aca72082))
+
+
+
 ## [47.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@47.0.0...@codecademy/styleguide@47.1.0) (2021-09-29)
 
 

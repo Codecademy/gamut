@@ -3,6 +3,33 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [37.9.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@37.8.0...@codecademy/gamut@37.9.0) (2021-10-01)
+
+
+### Features
+
+* Toaster ([06dc6fa](https://github.com/Codecademy/client-modules/commit/06dc6fad67369857c31887f213dab4ebd154bea9))
+
+
+
+## [37.8.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@37.7.1...@codecademy/gamut@37.8.0) (2021-09-30)
+
+
+### Features
+
+* **Drawer:** extract Drawer from Flyout ([76f261c](https://github.com/Codecademy/client-modules/commit/76f261cc7840bd640de368f70e125b5585638412))
+
+
+
+### [37.7.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@37.7.0...@codecademy/gamut@37.7.1) (2021-09-29)
+
+
+### Bug Fixes
+
+* **GridForm:** Add keyboard focus on form tooltips ([a021828](https://github.com/Codecademy/client-modules/commit/a021828f3585a52828ac43eaff5193e4aca72082))
+
+
+
 ## [37.7.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@37.6.3...@codecademy/gamut@37.7.0) (2021-09-29)
 
 
