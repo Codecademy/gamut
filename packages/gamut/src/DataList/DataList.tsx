@@ -28,7 +28,7 @@ export function DataList<
     variant = 'table',
     spacing = 'condensed',
     scrollable = true,
-    shadow = scrollable,
+    shadow = false,
     height = scrollable ? '100%' : 'initial',
     columns,
     idKey,
