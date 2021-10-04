@@ -87,6 +87,12 @@ Column Options:
   <DataListTemplate />
 </Story>
 
+### Empty
+
+<Story name="Empty" args={{ rows: [] }}>
+  {(args) => <DataList {...args} />}
+</Story>
+
 <Story name="DataList">{(args) => <DataList {...args} />}</Story>
 
 <PropsTable story="DataList" />

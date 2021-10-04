@@ -1,3 +1,4 @@
+import { isArray } from 'lodash';
 import React, { ComponentProps, forwardRef } from 'react';
 
 import { Box, BoxProps } from '../Box';
@@ -11,6 +12,7 @@ export interface ListProps extends AllListProps<ComponentProps<typeof ListEl>> {
   height?: BoxProps['height'];
   minHeight?: BoxProps['minHeight'];
   shadow?: boolean;
+  emptyMessage?: React.ReactNode;
 }
 
 export const List = forwardRef<HTMLUListElement, ListProps>(
@@ -24,10 +26,19 @@ export const List = forwardRef<HTMLUListElement, ListProps>(
       minHeight,
       children,
       header,
+      emptyMessage,
     },
     ref
   ) => {
+    const isEmpty = !children || (isArray(children) && children.length === 0);
     const value = useList({ variant, spacing, scrollable });
+
+    const listContent = (
+      <ListEl ref={ref} variant={value.variant}>
+        {children}
+      </ListEl>
+    );
+
     return (
       <ListProvider value={value}>
         <Box position="relative" overflow="auto">
@@ -39,9 +50,7 @@ export const List = forwardRef<HTMLUListElement, ListProps>(
             overflow="auto"
           >
             {header}
-            <ListEl ref={ref} variant={value.variant}>
-              {children}
-            </ListEl>
+            {isEmpty ? emptyMessage : listContent}
           </Box>
           {shadow && (
             <Box

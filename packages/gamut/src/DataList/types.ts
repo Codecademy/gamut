@@ -36,13 +36,17 @@ export type OnSort<Row> = OnQuery<Row, 'sort'>;
 export type OnFilter<Row> = OnQuery<Row, 'filter'>;
 
 export interface OnQueryChange<T> {
-  <Type extends QueryType>(change: {
-    type: Type;
-    payload: {
-      dimension: keyof T;
-      value: Type extends 'sort' ? SortDirection : FilterValues<T>;
-    };
-  }): void;
+  <Type extends QueryType>(
+    change:
+      | {
+          type: Type;
+          payload: {
+            dimension: keyof T;
+            value: Type extends 'sort' ? SortDirection : FilterValues<T>;
+          };
+        }
+      | { type: 'reset'; payload?: never }
+  ): void;
 }
 
 export type IdentifiableKeys<T> = Extract<

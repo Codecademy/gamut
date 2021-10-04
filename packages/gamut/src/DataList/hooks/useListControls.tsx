@@ -72,6 +72,12 @@ export function useListControls<
     [onQueryChange]
   );
 
+  const onResetQuery = useCallback(() => {
+    onQueryChange?.({
+      type: 'reset',
+    });
+  }, [onQueryChange]);
+
   return useMemo(
     () => ({
       idKey,
@@ -79,6 +85,7 @@ export function useListControls<
       onSelect,
       onExpand,
       onFilter,
+      onResetQuery,
       onSort,
       expandedContent,
       expandable,
@@ -90,6 +97,7 @@ export function useListControls<
       onSelect,
       onExpand,
       onFilter,
+      onResetQuery,
       onSort,
       expandedContent,
       expandable,
@@ -104,6 +112,7 @@ interface Controls {
   prefixId: <T extends keyof any>(affix: T) => string;
   onFilter: OnFilter<any>;
   onSort: OnSort<any>;
+  onResetQuery: () => void;
   onSelect: RowChange<any>;
   onExpand: RowChange<any>;
   expandable: boolean;

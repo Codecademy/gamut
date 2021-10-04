@@ -2,6 +2,7 @@ import React, { ComponentProps, useMemo } from 'react';
 
 import { List } from '../List';
 import { DataListControls, IdentifiableKeys } from '.';
+import { EmptyRows } from './EmptyRows';
 import { ListControlContext, useListControls } from './hooks/useListControls';
 import { ListStateContext } from './hooks/useListState';
 import { HeaderRow } from './Rows/HeaderRow';
@@ -40,11 +41,14 @@ export function DataList<
     ...rest
   } = props;
 
+  const empty = rows.length === 0;
+
   const allSelected = useMemo(() => {
+    if (empty) return false;
     const ids = rows.map(({ [idKey]: id }) => id);
     const unselected = ids.filter((id) => !selected?.includes(id));
     return unselected.length === 0;
-  }, [rows, selected, idKey]);
+  }, [rows, selected, idKey, empty]);
 
   const selectedRows = useMemo(() => {
     return selected?.reduce((carry, next) => ({ ...carry, [next]: true }), {});
@@ -61,10 +65,12 @@ export function DataList<
           {...rest}
           shadow={shadow}
           height={height}
-          scrollable={scrollable}
+          scrollable={scrollable && !empty}
           variant={variant}
           spacing={spacing}
+          minHeight={500}
           header={<HeaderRow columns={columns} selected={allSelected} />}
+          emptyMessage={<EmptyRows />}
         >
           {rows.map((row) => {
             const rowId = row[idKey];
