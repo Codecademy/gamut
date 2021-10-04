@@ -81,7 +81,7 @@ export const PageVideoGallery: React.FC<PageVideoGalleryProps> = ({
       <Box mt={32}>
         <CTA
           href={cta.href}
-          onCtaButtonClick={cta.onClick}
+          onClick={cta.onClick}
           mode={mode}
           buttonType={cta.buttonType}
         >
