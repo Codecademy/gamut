@@ -69,7 +69,9 @@ export function DataList<
           variant={variant}
           spacing={spacing}
           minHeight={500}
-          header={<HeaderRow columns={columns} selected={allSelected} />}
+          header={
+            <HeaderRow columns={columns} selected={allSelected} empty={empty} />
+          }
           emptyMessage={<EmptyRows />}
         >
           {rows.map((row) => {

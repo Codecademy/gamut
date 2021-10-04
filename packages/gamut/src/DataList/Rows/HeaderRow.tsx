@@ -16,10 +16,15 @@ interface HeaderComponent {
     columns: ColumnConfig<Row>[];
     query?: Query<Row>;
     selected?: boolean;
+    empty?: boolean;
   }): ReactElement<any, any>;
 }
 
-export const Header: HeaderComponent = ({ columns, selected = false }) => {
+export const Header: HeaderComponent = ({
+  columns,
+  selected = false,
+  empty = false,
+}) => {
   const {
     expandable,
     selectable,
@@ -34,6 +39,7 @@ export const Header: HeaderComponent = ({ columns, selected = false }) => {
       {selectable && (
         <ListCol size="content">
           <SelectControl
+            disabled={empty}
             rowId="header"
             name={prefixId('all')}
             label="Select All"
