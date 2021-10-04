@@ -19,27 +19,30 @@ export interface ConnectedFieldProps extends BaseConnectedFieldProps {
   name: string;
 }
 
-// to-do; DRY up defaultValue + name
+// to-do; DRY up Omit?
 export interface ConnectedCheckboxProps
-  extends Omit<CheckboxProps, 'defaultValue' | 'name' | 'htmlFor'>,
+  extends Omit<
+      CheckboxProps,
+      'defaultValue' | 'name' | 'htmlFor' | 'validation'
+    >,
     ConnectedFieldProps {}
 
 export interface ConnectedInputProps
-  extends Omit<InputWrapperProps, 'defaultValue' | 'name'>,
+  extends Omit<InputWrapperProps, 'defaultValue' | 'name' | 'validation'>,
     ConnectedFieldProps {}
 
 export interface ConnectedRadioProps
-  extends Omit<RadioProps, 'defaultValue' | 'name'>,
+  extends Omit<RadioProps, 'defaultValue' | 'name' | 'validation'>,
     ConnectedFieldProps {}
 
 export type ConnectedBaseRadioGroupProps = Omit<
   RadioGroupProps,
-  'defaultValue' | 'name'
+  'defaultValue' | 'name' | 'validation'
 >;
 
 export type ConnectedBaseRadioInputProps = Omit<
   RadioProps,
-  'defaultValue' | 'name'
+  'defaultValue' | 'name' | 'validation'
 > & {
   label: ReactNode;
   value: string | number;
@@ -56,9 +59,9 @@ export interface ConnectedRadioGroupInputProps
 }
 
 export interface ConnectedSelectProps
-  extends Omit<SelectProps, 'defaultValue' | 'name'>,
+  extends Omit<SelectProps, 'defaultValue' | 'name' | 'validation'>,
     ConnectedFieldProps {}
 
 export interface ConnectedTextAreaProps
-  extends Omit<TextAreaProps, 'defaultValue' | 'name'>,
+  extends Omit<TextAreaProps, 'defaultValue' | 'name' | 'validation'>,
     ConnectedFieldProps {}

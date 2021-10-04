@@ -3,7 +3,6 @@ import {
   Box,
   Card,
   ConnectedCheckbox,
-  ConnectedCustomInput,
   ConnectedForm,
   ConnectedFormGroup,
   ConnectedInput,
@@ -15,7 +14,7 @@ import {
   Markdown,
   SubmitButton,
   Text,
-  useCassForms,
+  useConnectedForm,
   useFormState,
 } from '@codecademy/gamut/src';
 import { TerminalIcon, ViewIcon } from '@codecademy/gamut-icons';
@@ -510,15 +509,15 @@ const CustomInput2 = styled.input`
 `;
 
 export const TestOne = () => {
-  const { ComposedFormGroup, ComposedForm } = useCassForms({
+  const { ConnectedFormGroup, ConnectedForm, wrapperProps } = useConnectedForm({
     defaultValues: {
       cool: 'gnbsdlfkjndlskfj',
       beans: 'beans!',
       check: true,
       selected: 'not to mention nested',
-      tv: 'three',
+      tv: undefined,
     },
-    validation: {
+    validationRules: {
       cool: { required: 'explain yourself cool' },
       beans: {
         pattern: {
@@ -526,95 +525,76 @@ export const TestOne = () => {
           message: 'zero to hero',
         },
       },
+      check: { required: 'explain yourself check' },
       selected: {
         pattern: {
           value: /^(?:(?!zero).)*$/,
           message: 'not zero.',
         },
       },
-      tv: {
-        pattern: {
-          value: /^(?:(?!zilch).)*$/,
-          message: 'not zero.',
-        },
-      },
+      tv: { required: 'explain yourself tv' },
     },
   });
 
   return (
-    <Background bg="black" borderRadius="15rem">
-      <ComposedForm
-        m={64}
-        p={64}
-        onSubmit={(values) => console.log(values)}
-        resetOnSubmit
-      >
-        <Text as="h4" variant="title-lg">
-          Composed Forms
-        </Text>
-        <SubmitButton variant="secondary" m={32}>
-          dont forget to submit, okay?
-        </SubmitButton>
-        <ComposedFormGroup
-          name="cool"
-          label="cool"
-          field={{
-            component: ConnectedInput,
-            icon: TerminalIcon,
-          }}
-        />
-        <Background
-          bg="paleYellow"
-          border={1}
-          m={12}
-          p={12}
-          borderRadius="5rem"
-        >
-          <Text>blah blah blah blah blah</Text>
-        </Background>
-        <ComposedFormGroup
-          name="beans"
-          label="beans"
-          field={{
-            component: ConnectedInput,
-          }}
-        />
-        <ComposedFormGroup
-          name="check"
-          label="ah yes a check"
-          field={{
-            component: ConnectedCheckbox,
-            label: 'yeeeees',
-          }}
-        />
-        <ComposedFormGroup
-          name="selected"
-          label="selected or dejected"
-          field={{
-            component: ConnectedSelect,
-            options: [
-              'perhaps just disrespected?',
-              'not to mention nested',
-              "but maybe that's expected",
-              'zero',
-            ],
-          }}
-        />
-        <ComposedFormGroup
-          name="tv"
-          label="tv on the radio"
-          field={{
-            component: ConnectedRadioGroupInput,
-            options: [
-              { label: 'one', value: 'first' },
-              { label: 'two', value: 'two' },
-              { label: 'three', value: 'three' },
-              { label: 'zilch', value: 'zero' },
-            ],
-          }}
-        />
-      </ComposedForm>
-    </Background>
+    <ConnectedForm
+      m={64}
+      p={64}
+      onSubmit={(values) => console.log(values)}
+      resetOnSubmit
+      {...wrapperProps}
+    >
+      <SubmitButton variant="secondary" m={32}>
+        dont forget to submit
+      </SubmitButton>
+      <ConnectedFormGroup
+        name="cool"
+        label="cool"
+        field={{
+          component: ConnectedInput,
+        }}
+      />
+      <ConnectedFormGroup
+        name="beans"
+        label="beans"
+        field={{
+          component: ConnectedInput,
+        }}
+      />
+      <ConnectedFormGroup
+        name="check"
+        label="ah yes a check"
+        field={{
+          component: ConnectedCheckbox,
+          label: 'yeeeees',
+        }}
+      />
+      <ConnectedFormGroup
+        name="selected"
+        label="selected or dejected"
+        field={{
+          component: ConnectedSelect,
+          options: [
+            'perhaps just disrespected?',
+            "but maybe that's expected",
+            'zero',
+          ],
+        }}
+      />
+      <ConnectedFormGroup
+        name="tv"
+        label="tv on the radio"
+        field={{
+          component: ConnectedRadioGroupInput,
+          options: [
+            { label: 'one', value: 'first' },
+            { label: 'two', value: 'two' },
+            { label: 'three', value: 'three' },
+            { label: 'zilch', value: 'zero' },
+          ],
+        }}
+      />
+    </ConnectedForm>
   );
 };
 

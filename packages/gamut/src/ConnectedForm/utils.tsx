@@ -25,7 +25,7 @@ export const submitSuccessStatus = (
   );
 };
 
-interface ComposedGroupProps<Values extends {}> {
+interface ConnectedGroupStrictProps<Values extends {}> {
   <Name extends keyof Values, Component extends ConnectedField>(
     props: {
       name: Name;
@@ -33,7 +33,7 @@ interface ComposedGroupProps<Values extends {}> {
   ): ReturnType<typeof ConnectedFormGroup>;
 }
 
-interface UseComposedFormProps<
+interface UseConnectedFormProps<
   Values,
   Rules extends { [Key in keyof Values]?: RegisterOptions }
 > {
@@ -41,37 +41,35 @@ interface UseComposedFormProps<
   validationRules: Partial<Rules>;
 }
 
-interface ComposedFormProps<Values, Rules>
-  extends UseComposedFormProps<Values, Rules> {
+interface ConnectedFormStrictProps<Values, Rules>
+  extends UseConnectedFormProps<Values, Rules> {
   (
-    props: UseComposedFormProps<Values, Rules> & ConnectedFormProps<Values>
+    props: UseConnectedFormProps<Values, Rules> & ConnectedFormProps<Values>
   ): ReturnType<typeof ConnectedForm>;
 }
 
-export const useComposedForm = <
+export const useConnectedForm = <
   Values,
   ValidationRules extends { [K in keyof Values]: RegisterOptions }
 >({
   defaultValues,
   validationRules,
-}: UseComposedFormProps<Values, ValidationRules>) => {
-  const ComposedFormGroup = ConnectedFormGroup as ComposedGroupProps<Values>;
-
-  const ComposedForm = ConnectedForm as ComposedFormProps<
-    Values,
-    ValidationRules
-  >;
-
-  const wrapperProps = {
-    defaultValues,
-    validationRules,
+}: UseConnectedFormProps<Values, ValidationRules>) => {
+  return {
+    ConnectedFormGroup: ConnectedFormGroup as ConnectedGroupStrictProps<Values>,
+    ConnectedForm: ConnectedForm as ConnectedFormStrictProps<
+      Values,
+      ValidationRules
+    >,
+    wrapperProps: {
+      defaultValues,
+      validationRules,
+    },
   };
-
-  return { ComposedFormGroup, ComposedForm, wrapperProps };
 };
 
 export const TestOne = () => {
-  const { ComposedFormGroup, ComposedForm, wrapperProps } = useComposedForm({
+  const { ConnectedFormGroup, ConnectedForm, wrapperProps } = useConnectedForm({
     defaultValues: {
       cool: 'gnbsdlfkjndlskfj',
       beans: 'beans!',
@@ -100,28 +98,28 @@ export const TestOne = () => {
   });
 
   return (
-    <ComposedForm
+    <ConnectedForm
       m={64}
       p={64}
       onSubmit={(values) => console.log(values)}
       resetOnSubmit
       {...wrapperProps}
     >
-      <ComposedFormGroup
+      <ConnectedFormGroup
         name="selected"
         label="cool"
         field={{
           component: ConnectedInput,
         }}
       />
-      <ComposedFormGroup
+      <ConnectedFormGroup
         name="check"
         label="beans"
         field={{
           component: ConnectedInput,
         }}
       />
-      <ComposedFormGroup
+      <ConnectedFormGroup
         name="check"
         label="ah yes a check"
         field={{
@@ -129,7 +127,7 @@ export const TestOne = () => {
           label: 'yeeeees',
         }}
       />
-      <ComposedFormGroup
+      <ConnectedFormGroup
         name="selected"
         label="selected or dejected"
         field={{
@@ -141,7 +139,7 @@ export const TestOne = () => {
           ],
         }}
       />
-      <ComposedFormGroup
+      <ConnectedFormGroup
         name="tv"
         label="tv on the radio"
         field={{
@@ -154,7 +152,7 @@ export const TestOne = () => {
           ],
         }}
       />
-    </ComposedForm>
+    </ConnectedForm>
   );
 };
 
@@ -170,9 +168,11 @@ export const useFormState = () => {
     formState,
     watch,
   } = useFormContext();
-  const { disableFieldsOnSubmit, wasSubmitSuccessful } = useContext(
-    FormPropsContext
-  );
+  const {
+    disableFieldsOnSubmit,
+    wasSubmitSuccessful,
+    validationRules,
+  } = useContext(FormPropsContext);
 
   const isSubmitSuccessful = submitSuccessStatus(
     wasSubmitSuccessful,
@@ -186,15 +186,27 @@ export const useFormState = () => {
       (formState.isSubmitting || isSubmitSuccessful) && disableFieldsOnSubmit,
     register,
     setValue,
+    validationRules,
     watch,
   };
 };
 
 export const useFieldContext = (fieldName: string) => {
   // eslint-disable-next-line @typescript-eslint/unbound-method
-  const { control, errors, isDisabled, register, setValue } = useFormState();
+  const {
+    control,
+    errors,
+    isDisabled,
+    register,
+    setValue,
+    validationRules,
+  } = useFormState();
 
   const error = errors[fieldName]?.message;
+  const validation =
+    (validationRules &&
+      validationRules[fieldName as keyof typeof validationRules]) ??
+    undefined;
 
   return {
     control,
@@ -205,6 +217,7 @@ export const useFieldContext = (fieldName: string) => {
      * This is so we only add the correct aria-live props on the first error.
      */
     isFirstError: Object.keys(errors)[0] === fieldName,
+    validation,
     register,
     setValue,
   };

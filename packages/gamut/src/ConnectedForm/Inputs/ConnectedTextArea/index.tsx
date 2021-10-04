@@ -7,10 +7,9 @@ import { ConnectedTextAreaProps } from '../types';
 export const ConnectedTextArea: React.FC<ConnectedTextAreaProps> = ({
   disabled,
   name,
-  validation,
   ...rest
 }) => {
-  const { isDisabled, register } = useFieldContext(name);
+  const { isDisabled, register, validation } = useFieldContext(name);
   const currentlyDisabled = isDisabled || disabled;
 
   return (

@@ -7,10 +7,9 @@ import { ConnectedRadioProps } from '../types';
 export const ConnectedRadio: React.FC<ConnectedRadioProps> = ({
   disabled,
   name,
-  validation,
   ...rest
 }) => {
-  const { isDisabled, register } = useFieldContext(name);
+  const { isDisabled, register, validation } = useFieldContext(name);
   const currentlyDisabled = isDisabled || disabled;
 
   return (

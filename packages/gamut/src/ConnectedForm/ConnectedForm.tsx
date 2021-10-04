@@ -27,13 +27,17 @@ export interface FormContextProps {
    */
   resetOnSubmit?: boolean;
   /**
+   * Function called with field values on submit, if all validations have passed.
+   */
+  validationRules?: { string?: RegisterOptions };
+  /**
    * Sets if form submission was successful - if `undefined` will fall back to react-hook-forms native formState.isSubmitSuccessful.
    */
   wasSubmitSuccessful?: boolean;
 }
 
 export interface ConnectedFormProps<Values extends {}>
-  extends FormContextProps,
+  extends Omit<FormContextProps, 'validationRules'>,
     Omit<FormProps, 'onSubmit'> {
   children?: React.ReactNode;
 
@@ -49,6 +53,7 @@ export interface ConnectedFormProps<Values extends {}>
    */
   validationRules?: Partial<{ [Key in keyof Values]?: RegisterOptions }>;
 
+  /**
   /**
    * Which react hook form mode we are going to use for validation.
    * If you use the onChange mode the submit button will be disabled until all
