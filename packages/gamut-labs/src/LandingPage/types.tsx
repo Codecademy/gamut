@@ -1,5 +1,3 @@
-import { ColorModes } from '@codecademy/gamut-styles';
-
 export type BaseProps = {
   title?: string;
   /**
@@ -28,5 +26,3 @@ export type BaseProps = {
 
   testId?: string;
 };
-
-export type DarkModeProps = { mode?: ColorModes };
