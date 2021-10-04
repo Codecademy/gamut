@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [24.3.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@24.3.0...@codecademy/gamut-labs@24.3.1) (2021-10-04)
+
+
+### Bug Fixes
+
+* **Drawer:** add 100% height to inner Box ([6572bea](https://github.com/Codecademy/client-modules/commit/6572bea9caeee3a2d96c571dbfd8770d8c2d6849))
+
+
+
 ## [24.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@24.2.1...@codecademy/gamut-labs@24.3.0) (2021-10-04)
 
 
