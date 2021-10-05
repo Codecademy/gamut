@@ -23,6 +23,7 @@ export const List = forwardRef<HTMLUListElement, ListProps>(
       scrollable = false,
       shadow = false,
       height,
+      minHeight,
       children,
       header,
       emptyMessage,
@@ -30,6 +31,7 @@ export const List = forwardRef<HTMLUListElement, ListProps>(
     ref
   ) => {
     const isEmpty = !children || (isArray(children) && children.length === 0);
+    const showShadow = shadow && scrollable && !isEmpty;
     const value = useList({ variant, spacing, scrollable });
 
     const listContent = (
@@ -44,13 +46,14 @@ export const List = forwardRef<HTMLUListElement, ListProps>(
           <Box
             position="relative"
             maxWidth={1}
+            minHeight={minHeight}
             maxHeight={height}
             overflow="overlay"
           >
             {header}
             {isEmpty ? emptyMessage : listContent}
           </Box>
-          {shadow && (
+          {showShadow && (
             <Box
               position="absolute"
               right={-10}

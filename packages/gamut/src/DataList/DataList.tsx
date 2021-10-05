@@ -38,6 +38,7 @@ export function DataList<
     expanded,
     query,
     loading,
+    minHeight = 0,
     ...rest
   } = props;
 
@@ -68,7 +69,7 @@ export function DataList<
           scrollable={scrollable && !empty}
           variant={variant}
           spacing={spacing}
-          minHeight={500}
+          minHeight={minHeight}
           header={
             <HeaderRow columns={columns} selected={allSelected} empty={empty} />
           }
