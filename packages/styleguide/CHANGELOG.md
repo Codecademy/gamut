@@ -3,6 +3,105 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [47.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@47.4.1...@codecademy/styleguide@47.5.0) (2021-10-05)
+
+
+### Features
+
+* **PopoverContainer:** Decoupled Positioning Logic [GM-222] ([2ecbb4e](https://github.com/Codecademy/client-modules/commit/2ecbb4e7680b274ce1c8413b1b0c6f5aeffad771))
+
+
+
+### [47.4.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@47.4.0...@codecademy/styleguide@47.4.1) (2021-10-04)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [47.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@47.3.2...@codecademy/styleguide@47.4.0) (2021-10-04)
+
+
+### Features
+
+* **PageSingleFeature:** Abstract to PageSingleFeature ([7aaacb1](https://github.com/Codecademy/client-modules/commit/7aaacb13154872356f4c94906ba409bf96ec38b1))
+
+
+
+### [47.3.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@47.3.1...@codecademy/styleguide@47.3.2) (2021-10-04)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [47.3.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@47.3.0...@codecademy/styleguide@47.3.1) (2021-10-04)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [47.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@47.2.0...@codecademy/styleguide@47.3.0) (2021-10-01)
+
+
+### Features
+
+* Toaster ([06dc6fa](https://github.com/Codecademy/client-modules/commit/06dc6fad67369857c31887f213dab4ebd154bea9))
+
+
+
+## [47.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@47.1.1...@codecademy/styleguide@47.2.0) (2021-09-30)
+
+
+### Features
+
+* **Drawer:** extract Drawer from Flyout ([76f261c](https://github.com/Codecademy/client-modules/commit/76f261cc7840bd640de368f70e125b5585638412))
+
+
+
+### [47.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@47.1.0...@codecademy/styleguide@47.1.1) (2021-09-29)
+
+
+### Bug Fixes
+
+* **GridForm:** Add keyboard focus on form tooltips ([a021828](https://github.com/Codecademy/client-modules/commit/a021828f3585a52828ac43eaff5193e4aca72082))
+
+
+
+## [47.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@47.0.0...@codecademy/styleguide@47.1.0) (2021-09-29)
+
+
+### Features
+
+* **PageHero:** add option to show image on mobile ([efa83a2](https://github.com/Codecademy/client-modules/commit/efa83a2d79c85e48c732ccfdcef1efa3e298a745))
+
+
+
+## [47.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@46.4.1...@codecademy/styleguide@47.0.0) (2021-09-29)
+
+
+### ⚠ BREAKING CHANGES
+
+* **PageHero:** add short text variation
+
+### Features
+
+* **PageHero:** add short text variation ([f93b7ef](https://github.com/Codecademy/client-modules/commit/f93b7efd82d469dcd948f2b2487eac77c3f6303c))
+
+
+
+### [46.4.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@46.4.0...@codecademy/styleguide@46.4.1) (2021-09-29)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
 ## [46.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@46.3.1...@codecademy/styleguide@46.4.0) (2021-09-28)
 
 

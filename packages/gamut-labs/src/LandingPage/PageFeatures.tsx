@@ -2,11 +2,9 @@ import {
   Box,
   Column,
   ColumnProps,
-  Container,
+  FlexBox,
   LayoutGrid,
 } from '@codecademy/gamut';
-import { mediaQueries } from '@codecademy/gamut-styles';
-import styled from '@emotion/styled';
 import React, { ReactNode } from 'react';
 
 import { CTA } from './CTA';
@@ -21,12 +19,6 @@ import {
 } from './Feature';
 import { Title } from './Title';
 import { BaseProps } from './types';
-
-const FlexContainer = styled(Container)`
-  ${mediaQueries.sm} {
-    flex-direction: row;
-  }
-`;
 
 export type PageFeaturesProps = BaseProps & {
   maxCols?: 1 | 2 | 3 | 4;
@@ -47,11 +39,11 @@ const rowRenderEach = (
 ): ReactNode => {
   /* eslint-disable react/no-array-index-key */
   return (
-    <FlexContainer nowrap column>
+    <FlexBox flexDirection={{ _: 'column', sm: 'row' }}>
       {items.map((item, i) => (
         <React.Fragment key={i}>{itemRenderer(item)}</React.Fragment>
       ))}
-    </FlexContainer>
+    </FlexBox>
   );
   /* eslint-enable react/no-array-index-key */
 };
@@ -110,7 +102,7 @@ export const PageFeatures: React.FC<PageFeaturesProps> = ({
         <Box mt={32}>
           <CTA
             href={cta.href}
-            onCtaButtonClick={cta.onClick}
+            onClick={cta.onClick}
             buttonType={cta.buttonType}
           >
             {cta.text}

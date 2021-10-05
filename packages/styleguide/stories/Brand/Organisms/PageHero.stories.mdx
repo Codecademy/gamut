@@ -1,4 +1,5 @@
 import { PageHero } from '@codecademy/gamut-labs/src';
+import { Background } from '@codecademy/gamut-styles/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
@@ -24,12 +25,14 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
     },
     media: {
       type: 'image',
-      src: 'https://content.codecademy.com/courses/free/boba.svg',
-      alt: 'Codey',
+      src:
+        'https://cdn.mos.cms.futurecdn.net/wtqqnkYDYi2ifsWZVW2MT4-1200-80.jpg',
+      alt: 'beach',
     },
+    textLength: 'long',
   }}
   parameters={{
-    subtitle: `Hero component for landing pages created in Contentful. All props are optional. Image is hidden at sm screen size and below.`,
+    subtitle: `Hero component for landing pages created in Contentful. All props are optional.`,
     status: 'updating',
   }}
 />
@@ -42,7 +45,7 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 
 ## Video
 
-Change the `media` prop to `type: video` and pass required video props to show a video in the hero.
+Change the `media` prop to `type: video` and pass required video props to show a video in the hero. The video will take up 5 columns (and the text 7 columns), and the video will always show on mobile below the text.
 
 <Canvas>
   <Story name="Video">
@@ -59,6 +62,16 @@ Change the `media` prop to `type: video` and pass required video props to show a
         title="What's it like to be a Software Engineer"
       />
     )}
+  </Story>
+</Canvas>
+
+## Short Text
+
+Pass `textLength` as `short` to have a 50/50 split between the text and media (each taking up 6 columns), instead of the default 75/25 (text taking up 9 columns, media taking up 3 columns). Note: this currently does not affect videos.
+
+<Canvas>
+  <Story name="Short Text">
+    {(args) => <PageHero {...args} textLength="short" />}
   </Story>
 </Canvas>
 
@@ -94,10 +107,44 @@ Omit the `desc` prop to not show a description.
 
 ## Eyebrow
 
-Using the `eyebrow` prop, you can add eyebrow text to the hero.
+Using the `eyebrow` prop, you can add eyebrow text to the hero. The eyebrow will only display if there is also a `title`.
 
 <Canvas>
   <Story name="Eyebrow">
-    {(args) => <PageHero {...args} eyebrow="Hello there" />}
+    {(args) => <PageHero {...args} eyebrow="Hello there" textLength="short" />}
+  </Story>
+</Canvas>
+
+## Show Image On Mobile
+
+Using the `showImageOnMobile` prop, you can opt to show the image on mobile. The default behavior is to hide the image on mobile. Note: videos are always shown on mobile for accessibility.
+
+<Canvas>
+  <Story name="Show Image On Mobile">
+    {(args) => <PageHero {...args} showImageOnMobile textLength="short" />}
+  </Story>
+</Canvas>
+
+## Without Media
+
+Omit the `media` prop to not show any media.
+
+<Canvas>
+  <Story name="Without Media">
+    {(args) => <PageHero {...args} media={undefined} />}
+  </Story>
+</Canvas>
+
+## Dark Mode
+
+Automatically adjusts to the current Color Mode. No configuration is needed to meet contrast and design guidelines.
+
+<Canvas>
+  <Story name="Dark Mode">
+    {(args) => (
+      <Background bg="navy" p={16}>
+        <PageHero {...args} />
+      </Background>
+    )}
   </Story>
 </Canvas>

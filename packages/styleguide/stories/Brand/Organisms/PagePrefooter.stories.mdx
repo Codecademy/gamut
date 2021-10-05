@@ -1,5 +1,5 @@
-import { Box } from '@codecademy/gamut/src';
 import { PagePrefooter } from '@codecademy/gamut-labs/src';
+import { Background } from '@codecademy/gamut-styles/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
@@ -47,20 +47,6 @@ Pass `buttonType` as `fill` to show a `FillButton` instead of the larger `CTABut
   </Story>
 </Canvas>
 
-## Dark Mode
-
-Pass the `mode` prop as `'dark'` to use dark mode, which swaps the text color to beige and button to yellow.
-
-<Canvas>
-  <Story name="Dark Mode">
-    {(args) => (
-      <Box bg="navy" p={16}>
-        <PagePrefooter {...args} mode="dark" />
-      </Box>
-    )}
-  </Story>
-</Canvas>
-
 ## Without Button
 
 Omit the `cta` prop to not show a button.
@@ -78,5 +64,19 @@ Omit the `desc` prop to not show a description.
 <Canvas>
   <Story name="Without Description">
     {(args) => <PagePrefooter {...args} desc={undefined} />}
+  </Story>
+</Canvas>
+
+## Dark Mode
+
+Automatically adjusts to the current Color Mode. No configuration is needed to meet contrast and design guidelines.
+
+<Canvas>
+  <Story name="Dark Mode">
+    {(args) => (
+      <Background bg="navy" p={16}>
+        <PagePrefooter {...args} />
+      </Background>
+    )}
   </Story>
 </Canvas>

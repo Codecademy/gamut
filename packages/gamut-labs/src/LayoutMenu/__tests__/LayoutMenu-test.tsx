@@ -3,6 +3,11 @@ import { fireEvent } from '@testing-library/dom';
 
 import { LayoutMenu } from '../LayoutMenu';
 
+jest.mock('react-use', () => ({
+  ...jest.requireActual<{}>('react-use'),
+  useMedia: () => false,
+}));
+
 const renderView = setupRtl(LayoutMenu, {
   closeLabel: 'Close me',
   sections: [
