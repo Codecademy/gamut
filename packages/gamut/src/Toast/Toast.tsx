@@ -41,8 +41,8 @@ const ToastContainer = styled(FloatingCard)<StyleProps<typeof layoutVariants>>(
 const IconContainer = styled(FlexBox)(
   system.css({
     alignSelf: 'center',
-    width: 64,
-    height: 64,
+    width: `${(props: { width?: number }) => props.width}`,
+    height: `${(props: { height?: number }) => props.height}`,
     gridArea: 'icon',
     backgroundSize: 'contain',
   })
@@ -51,6 +51,7 @@ const IconContainer = styled(FlexBox)(
 export type ToastProps = {
   title?: ReactNode;
   icon?: ReactNode;
+  iconSize?: number;
   onClose: () => void;
 };
 
@@ -58,6 +59,7 @@ export const Toast: React.FC<ToastProps> = ({
   title,
   children,
   icon,
+  iconSize = 64,
   onClose,
 }) => {
   const layoutType = useMemo(() => {
@@ -74,11 +76,13 @@ export const Toast: React.FC<ToastProps> = ({
           gridArea="icon"
           borderRadius="50%"
           backgroundImage={`url(${icon})`}
+          height={iconSize}
+          width={iconSize}
         />
       );
     }
     return (
-      <IconContainer gridArea="icon" center>
+      <IconContainer gridArea="icon" height={iconSize} width={iconSize} center>
         {icon}
       </IconContainer>
     );
