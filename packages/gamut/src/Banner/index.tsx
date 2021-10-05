@@ -1,7 +1,7 @@
 import { MiniDeleteIcon } from '@codecademy/gamut-icons';
 import { Background, BackgroundProps, system } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
-import React, { useEffect, useMemo } from 'react';
+import React, { useMemo } from 'react';
 
 import { Box } from '../Box';
 import { IconButton, TextButton } from '../Button';
@@ -17,8 +17,6 @@ export interface BannerProps extends Omit<BackgroundProps, 'bg'> {
   onClose: () => void;
   /** Call to action click callback */
   onCtaClick?: () => void;
-  /**  Callback called only on mount. If this value is changed during normal component lifecycle, updates to this method will be ignored */
-  onMount?: () => void;
 }
 
 const BannerContainer = styled(Background)(
@@ -58,7 +56,6 @@ export const Banner: React.FC<BannerProps> = ({
   variant = 'navy',
   onCtaClick,
   onClose,
-  onMount,
   ...rest
 }: BannerProps) => {
   const overrides = useMemo(
@@ -67,11 +64,6 @@ export const Banner: React.FC<BannerProps> = ({
     }),
     [onCtaClick]
   );
-
-  useEffect(() => {
-    onMount?.();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   return (
     <BannerContainer {...rest} bg={variant}>
