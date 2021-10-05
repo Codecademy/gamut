@@ -15,7 +15,7 @@ import { useState } from '@storybook/addons';
 
 import { LinkTo } from '~styleguide/blocks';
 
-import { ColorModeExample } from './examples';
+import { ColorModeExample, FormLoadingExample } from './examples';
 
 <Meta
   title={title}
@@ -42,7 +42,7 @@ GridForm provides the following benefits:
 4. **Visual Consistency**: Aligns all input elements with the correct vertical rhythms and grid spacing
 
 <Canvas>
-  <Story name="GridForm" args={{ validation: 'onSubmit' }}>
+  <Story name="GridForm" args={{ validation: 'onSubmit', resetOnSubmit: true }}>
     {(args) => (
       <GridForm
         {...args}
@@ -1330,3 +1330,47 @@ If you need to checkboxes to fit into a smaller space, you can use our our `tigh
     )}
   </Story>
 </Canvas>
+
+## Reset Form on Submit
+
+`resetOnSubmit` will reset the form once the GridForm has been successfully submitted. If you have any server validation that needs to happen, we reccommend using the `wasSubmitSuccessful` prop, but submission will also fail if a promise is rejected within your `onSubmit` or if a field does not pass validation.
+
+<Canvas>
+  <Story name="Reset Form on Submit">
+    {() => (
+      <>
+        <Background bg="beige" p={32}>
+          <GridForm
+            resetOnSubmit
+            fields={[
+              {
+                label: 'Email',
+                placeholder: 'i will reset on correct submission!',
+                name: 'reset-on-submit',
+                type: 'email',
+                validation: {
+                  required: 'pls fill this out',
+                  pattern: {
+                    value: /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,})+$/,
+                    message: 'that is not an email 😔',
+                  },
+                },
+                size: 12,
+              },
+            ]}
+            onSubmit={async (values) => {
+              action('Form Submitted')(values);
+            }}
+            submit={{
+              contents: 'Submit Me 💖',
+            }}
+          />
+        </Background>
+      </>
+    )}
+  </Story>
+</Canvas>
+
+We can combine these together to create some pretty cool forms which have a loading state, disable their fields while submitting, and reset the form when the submit was successful.
+
+<FormLoadingExample />

@@ -3,6 +3,120 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [37.9.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@37.8.0...@codecademy/gamut@37.9.0) (2021-10-01)
+
+
+### Features
+
+* Toaster ([06dc6fa](https://github.com/Codecademy/client-modules/commit/06dc6fad67369857c31887f213dab4ebd154bea9))
+
+
+
+## [37.8.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@37.7.1...@codecademy/gamut@37.8.0) (2021-09-30)
+
+
+### Features
+
+* **Drawer:** extract Drawer from Flyout ([76f261c](https://github.com/Codecademy/client-modules/commit/76f261cc7840bd640de368f70e125b5585638412))
+
+
+
+### [37.7.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@37.7.0...@codecademy/gamut@37.7.1) (2021-09-29)
+
+
+### Bug Fixes
+
+* **GridForm:** Add keyboard focus on form tooltips ([a021828](https://github.com/Codecademy/client-modules/commit/a021828f3585a52828ac43eaff5193e4aca72082))
+
+
+
+## [37.7.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@37.6.3...@codecademy/gamut@37.7.0) (2021-09-29)
+
+
+### Features
+
+* **Tooltip:** introduced widthMode ([903a358](https://github.com/Codecademy/client-modules/commit/903a358d93e87543f2c4f913016404ac059f4060))
+
+
+
+### [37.6.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@37.6.2...@codecademy/gamut@37.6.3) (2021-09-22)
+
+
+### Bug Fixes
+
+* **SelectDropdown:** parse options fix for select dropdown ([f92e8a5](https://github.com/Codecademy/client-modules/commit/f92e8a527f5470038e41c38776612f2336225896))
+
+
+
+### [37.6.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@37.6.1...@codecademy/gamut@37.6.2) (2021-09-20)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [37.6.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@37.6.0...@codecademy/gamut@37.6.1) (2021-09-20)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [37.6.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@37.5.2...@codecademy/gamut@37.6.0) (2021-09-20)
+
+
+### Features
+
+* **modal:** scrollable prop to Modal ([e9796d7](https://github.com/Codecademy/client-modules/commit/e9796d72c9f9f92c5535601e5559fd7709eaa176))
+
+
+
+### [37.5.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@37.5.1...@codecademy/gamut@37.5.2) (2021-09-16)
+
+
+### Bug Fixes
+
+* **NotificationList:** a11y improvements ([da9c7ee](https://github.com/Codecademy/client-modules/commit/da9c7ee9219983be2b669426e9e09ed262e8a504))
+
+
+
+### [37.5.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@37.5.0...@codecademy/gamut@37.5.1) (2021-09-15)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [37.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@37.4.1...@codecademy/gamut@37.5.0) (2021-09-15)
+
+
+### Features
+
+* **GridForm:** resetOnSubmit ([83be450](https://github.com/Codecademy/client-modules/commit/83be45087b3a66360011f92f3d4d86070f51e9d0))
+
+
+
+### [37.4.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@37.4.0...@codecademy/gamut@37.4.1) (2021-09-14)
+
+
+### Bug Fixes
+
+* **Markdown:** use empty content for li::before ([0082d0c](https://github.com/Codecademy/client-modules/commit/0082d0cb151d6474777e7cb5e4228498b357bc4e))
+
+
+
+## [37.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@37.3.2...@codecademy/gamut@37.4.0) (2021-09-14)
+
+
+### Features
+
+* **List:** Adds List presentation components GM-185 ([d95aa95](https://github.com/Codecademy/client-modules/commit/d95aa955380935a3579f298d45d94ff25012b461))
+
+
+
 ### [37.3.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@37.3.1...@codecademy/gamut@37.3.2) (2021-09-13)
 
 **Note:** Version bump only for package @codecademy/gamut

@@ -15,8 +15,8 @@ export const theme = create({
   colorSecondary: colors.navy,
 
   // UI
-  appBg: isLocalhost ? colors['green-0'] : colors.white,
-  appContentBg: isLocalhost ? colors['green-0'] : colors.white,
+  appBg: colors.white,
+  appContentBg: colors.white,
   appBorderColor: colors.navy,
   appBorderRadius: 4,
 

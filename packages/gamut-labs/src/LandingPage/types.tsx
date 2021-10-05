@@ -1,5 +1,3 @@
-import { ColorModes } from '@codecademy/gamut-styles';
-
 export type BaseProps = {
   title?: string;
   /**
@@ -16,13 +14,15 @@ export type BaseProps = {
    * href: url to navigate to when clicking the button
    *
    * onClick: callback when the button is clicked
+   *
+   * buttonType: whether to show a CTA button or a regular fill button, defaults to CTA button
    */
   cta?: {
     text: string;
     href: string;
     onClick?: React.MouseEventHandler;
+    buttonType?: 'cta' | 'fill';
   };
+
   testId?: string;
 };
-
-export type DarkModeProps = { mode?: ColorModes };

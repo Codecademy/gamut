@@ -1,4 +1,5 @@
 import { PageVideoGallery } from '@codecademy/gamut-labs/src';
+import { Background } from '@codecademy/gamut-styles/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
@@ -42,20 +43,52 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
   }}
 />
 
-## With title, desc, and CTA
+<Canvas>
+  <Story name="Video Gallery">{(args) => <PageVideoGallery {...args} />}</Story>
+</Canvas>
+
+<PropsTable story="Video Gallery" />
+
+## Regular Button
+
+Pass `buttonType` as `fill` to show a `FillButton` instead of the larger `CTAButton`. Text should always be Call to Action text regardless of button type.
 
 <Canvas>
-  <Story name="With Title, Desc, CTA">
-    {(args) => <PageVideoGallery {...args} />}
+  <Story name="Regular Button">
+    {(args) => (
+      <PageVideoGallery {...args} cta={{ ...args.cta, buttonType: 'fill' }} />
+    )}
   </Story>
 </Canvas>
 
-<PropsTable story="With Title, Desc, CTA" />
+## Without Description
+
+Omit the `desc` prop to not show a description.
+
+<Canvas>
+  <Story name="Without Description">
+    {(args) => <PageVideoGallery {...args} desc={undefined} />}
+  </Story>
+</Canvas>
 
 ## Gallery only
 
 <Canvas>
   <Story name="Gallery Only">
     {(args) => <PageVideoGallery videos={args.videos} />}
+  </Story>
+</Canvas>
+
+## Dark Mode
+
+Automatically adjusts to the current Color Mode. No configuration is needed to meet contrast and design guidelines.
+
+<Canvas>
+  <Story name="Dark Mode">
+    {(args) => (
+      <Background bg="navy" p={16}>
+        <PageVideoGallery {...args} />
+      </Background>
+    )}
   </Story>
 </Canvas>

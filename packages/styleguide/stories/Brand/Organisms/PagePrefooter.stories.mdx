@@ -1,4 +1,5 @@
 import { PagePrefooter } from '@codecademy/gamut-labs/src';
+import { Background } from '@codecademy/gamut-styles/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
@@ -28,18 +29,54 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
   }}
 />
 
-## With CTA
-
 <Canvas>
-  <Story name="With CTA">{(args) => <PagePrefooter {...args} />}</Story>
+  <Story name="Prefooter">{(args) => <PagePrefooter {...args} />}</Story>
 </Canvas>
 
-<PropsTable story="With CTA" />
+<PropsTable story="Prefooter" />
 
-## Without CTA
+## Regular Button
+
+Pass `buttonType` as `fill` to show a `FillButton` instead of the larger `CTAButton`. Text should always be Call to Action text regardless of button type.
 
 <Canvas>
-  <Story name="Without CTA">
+  <Story name="Regular Button">
+    {(args) => (
+      <PagePrefooter {...args} cta={{ ...args.cta, buttonType: 'fill' }} />
+    )}
+  </Story>
+</Canvas>
+
+## Without Button
+
+Omit the `cta` prop to not show a button.
+
+<Canvas>
+  <Story name="Without Button">
     {(args) => <PagePrefooter {...args} cta={undefined} />}
+  </Story>
+</Canvas>
+
+## Without Description
+
+Omit the `desc` prop to not show a description.
+
+<Canvas>
+  <Story name="Without Description">
+    {(args) => <PagePrefooter {...args} desc={undefined} />}
+  </Story>
+</Canvas>
+
+## Dark Mode
+
+Automatically adjusts to the current Color Mode. No configuration is needed to meet contrast and design guidelines.
+
+<Canvas>
+  <Story name="Dark Mode">
+    {(args) => (
+      <Background bg="navy" p={16}>
+        <PagePrefooter {...args} />
+      </Background>
+    )}
   </Story>
 </Canvas>

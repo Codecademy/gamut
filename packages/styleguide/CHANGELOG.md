@@ -3,6 +3,299 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [47.4.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@47.4.0...@codecademy/styleguide@47.4.1) (2021-10-04)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [47.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@47.3.2...@codecademy/styleguide@47.4.0) (2021-10-04)
+
+
+### Features
+
+* **PageSingleFeature:** Abstract to PageSingleFeature ([7aaacb1](https://github.com/Codecademy/client-modules/commit/7aaacb13154872356f4c94906ba409bf96ec38b1))
+
+
+
+### [47.3.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@47.3.1...@codecademy/styleguide@47.3.2) (2021-10-04)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [47.3.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@47.3.0...@codecademy/styleguide@47.3.1) (2021-10-04)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [47.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@47.2.0...@codecademy/styleguide@47.3.0) (2021-10-01)
+
+
+### Features
+
+* Toaster ([06dc6fa](https://github.com/Codecademy/client-modules/commit/06dc6fad67369857c31887f213dab4ebd154bea9))
+
+
+
+## [47.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@47.1.1...@codecademy/styleguide@47.2.0) (2021-09-30)
+
+
+### Features
+
+* **Drawer:** extract Drawer from Flyout ([76f261c](https://github.com/Codecademy/client-modules/commit/76f261cc7840bd640de368f70e125b5585638412))
+
+
+
+### [47.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@47.1.0...@codecademy/styleguide@47.1.1) (2021-09-29)
+
+
+### Bug Fixes
+
+* **GridForm:** Add keyboard focus on form tooltips ([a021828](https://github.com/Codecademy/client-modules/commit/a021828f3585a52828ac43eaff5193e4aca72082))
+
+
+
+## [47.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@47.0.0...@codecademy/styleguide@47.1.0) (2021-09-29)
+
+
+### Features
+
+* **PageHero:** add option to show image on mobile ([efa83a2](https://github.com/Codecademy/client-modules/commit/efa83a2d79c85e48c732ccfdcef1efa3e298a745))
+
+
+
+## [47.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@46.4.1...@codecademy/styleguide@47.0.0) (2021-09-29)
+
+
+### ⚠ BREAKING CHANGES
+
+* **PageHero:** add short text variation
+
+### Features
+
+* **PageHero:** add short text variation ([f93b7ef](https://github.com/Codecademy/client-modules/commit/f93b7efd82d469dcd948f2b2487eac77c3f6303c))
+
+
+
+### [46.4.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@46.4.0...@codecademy/styleguide@46.4.1) (2021-09-29)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [46.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@46.3.1...@codecademy/styleguide@46.4.0) (2021-09-28)
+
+
+### Features
+
+* **CurriculumCard:** updated footer text variant ([5ad0005](https://github.com/Codecademy/client-modules/commit/5ad0005c34da14b7a7e06a4410264f989d97a27a))
+
+
+
+### [46.3.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@46.3.0...@codecademy/styleguide@46.3.1) (2021-09-27)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [46.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@46.2.0...@codecademy/styleguide@46.3.0) (2021-09-24)
+
+
+### Features
+
+* update landing page `CTA` to show fill button or cta button ([c18f7f8](https://github.com/Codecademy/client-modules/commit/c18f7f8bb494dfa4d0c9f0d53dd3decae56b3664))
+
+
+
+## [46.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@46.1.0...@codecademy/styleguide@46.2.0) (2021-09-24)
+
+
+### Features
+
+* **PageHero:** add optional eyebrow text ([ea3ce0b](https://github.com/Codecademy/client-modules/commit/ea3ce0bc6f5f330514c1ac297ad7d3c9fdacc739))
+
+
+
+## [46.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@46.0.1...@codecademy/styleguide@46.1.0) (2021-09-24)
+
+
+### Features
+
+* **docs:** elaborate Popover vs ToolTip ([7bba879](https://github.com/Codecademy/client-modules/commit/7bba8793aec477ccce1cd8ce2861533327447c09))
+
+
+
+### [46.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@46.0.0...@codecademy/styleguide@46.0.1) (2021-09-22)
+
+
+### Bug Fixes
+
+* **SelectDropdown:** parse options fix for select dropdown ([f92e8a5](https://github.com/Codecademy/client-modules/commit/f92e8a527f5470038e41c38776612f2336225896))
+
+
+
+## [46.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@45.0.0...@codecademy/styleguide@46.0.0) (2021-09-21)
+
+
+### ⚠ BREAKING CHANGES
+
+* **CurriculumCard:** Updated scope to support more content items, added alternative subtitle
+
+### Features
+
+* **CurriculumCard:** Updated scope to support more content items, added alternative subtitle ([1f038a8](https://github.com/Codecademy/client-modules/commit/1f038a8299bf47b84e9eaf2deb2c71e78680d7d4))
+
+
+
+## [45.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@44.8.1...@codecademy/styleguide@45.0.0) (2021-09-21)
+
+
+### ⚠ BREAKING CHANGES
+
+* **Flyout:** switch to controlled component
+
+### Features
+
+* **Flyout:** switch to controlled component ([15919cd](https://github.com/Codecademy/client-modules/commit/15919cd7b045c817cde49340fdeba3d9ae633515))
+
+
+
+### [44.8.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@44.8.0...@codecademy/styleguide@44.8.1) (2021-09-21)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [44.8.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@44.7.1...@codecademy/styleguide@44.8.0) (2021-09-20)
+
+
+### Features
+
+* **LayoutMenu:** additional links section above accordions ([ca95ae7](https://github.com/Codecademy/client-modules/commit/ca95ae7cd4f76b079530cad4984d2a1825f51cfb))
+
+
+
+### [44.7.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@44.7.0...@codecademy/styleguide@44.7.1) (2021-09-20)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [44.7.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@44.6.6...@codecademy/styleguide@44.7.0) (2021-09-20)
+
+
+### Features
+
+* **modal:** scrollable prop to Modal ([e9796d7](https://github.com/Codecademy/client-modules/commit/e9796d72c9f9f92c5535601e5559fd7709eaa176))
+
+
+
+### [44.6.6](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@44.6.5...@codecademy/styleguide@44.6.6) (2021-09-17)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [44.6.5](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@44.6.4...@codecademy/styleguide@44.6.5) (2021-09-16)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [44.6.4](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@44.6.3...@codecademy/styleguide@44.6.4) (2021-09-16)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [44.6.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@44.6.2...@codecademy/styleguide@44.6.3) (2021-09-16)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [44.6.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@44.6.1...@codecademy/styleguide@44.6.2) (2021-09-15)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [44.6.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@44.6.0...@codecademy/styleguide@44.6.1) (2021-09-15)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [44.6.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@44.5.3...@codecademy/styleguide@44.6.0) (2021-09-15)
+
+
+### Features
+
+* **GridForm:** resetOnSubmit ([83be450](https://github.com/Codecademy/client-modules/commit/83be45087b3a66360011f92f3d4d86070f51e9d0))
+
+
+
+### [44.5.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@44.5.2...@codecademy/styleguide@44.5.3) (2021-09-15)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [44.5.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@44.5.1...@codecademy/styleguide@44.5.2) (2021-09-14)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [44.5.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@44.5.0...@codecademy/styleguide@44.5.1) (2021-09-14)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [44.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@44.4.0...@codecademy/styleguide@44.5.0) (2021-09-14)
+
+
+### Features
+
+* **List:** Adds List presentation components GM-185 ([d95aa95](https://github.com/Codecademy/client-modules/commit/d95aa955380935a3579f298d45d94ff25012b461))
+
+
+
 ## [44.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@44.3.3...@codecademy/styleguide@44.4.0) (2021-09-13)
 
 
