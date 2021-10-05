@@ -82,6 +82,8 @@ const DataTown = () => {
 };
 ```
 
+<br />
+
 ### Columns
 
 Column Options:
@@ -90,12 +92,38 @@ Column Options:
   <DataListTemplate />
 </Story>
 
+<br />
+
 ### Empty
 
 <Story name="Empty" args={{ rows: [] }}>
   {(args) => <DataList {...args} />}
 </Story>
 
+<br />
+
+### Loading
+
+<Story name="Loading" args={{ loading: true }}>
+  {(args) => <DataList {...args} />}
+</Story>
+
+<br />
+
+### Shadowed
+
+<Story name="Shadow" args={{ shadow: true }}>
+  {(args) => <DataList {...args} />}
+</Story>
+
+<br />
+
+### Code Playground
+
 <Story name="DataList">{(args) => <DataList {...args} />}</Story>
+
+<br />
+<br />
+<br />
 
 <PropsTable story="DataList" />

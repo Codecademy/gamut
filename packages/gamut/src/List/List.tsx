@@ -23,7 +23,6 @@ export const List = forwardRef<HTMLUListElement, ListProps>(
       scrollable = false,
       shadow = false,
       height,
-      minHeight,
       children,
       header,
       emptyMessage,
@@ -41,13 +40,12 @@ export const List = forwardRef<HTMLUListElement, ListProps>(
 
     return (
       <ListProvider value={value}>
-        <Box position="relative" overflow="auto">
+        <Box position="relative" overflow="hidden">
           <Box
             position="relative"
             maxWidth={1}
             maxHeight={height}
-            minHeight={minHeight}
-            overflow="auto"
+            overflow="overlay"
           >
             {header}
             {isEmpty ? emptyMessage : listContent}

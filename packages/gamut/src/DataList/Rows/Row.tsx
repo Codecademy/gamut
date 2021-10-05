@@ -1,7 +1,7 @@
 import React, { ReactElement, useCallback } from 'react';
 
-import { Box } from '../..';
 import { ListCol, ListRow } from '../../List';
+import { Shimmer } from '../../Loading/Shimmer';
 import { IdentifiableKeys } from '..';
 import { ExpandControl, SelectControl } from '../Controls';
 import { useControlContext } from '../hooks/useListControls';
@@ -69,9 +69,7 @@ export const Row: DataRow = ({
         if (loading) {
           return (
             <ListCol {...colProps}>
-              <Box height="calc(100% - 1rem)" width="calc(100% - 0.5rem)">
-                <Box bg="text" opacity={0.3} fit borderRadius="2px" />
-              </Box>
+              <Shimmer height="calc(100% - 1rem)" width="calc(100% - 0.5rem)" />
             </ListCol>
           );
         }
