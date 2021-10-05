@@ -14,15 +14,12 @@ const layoutVariants = system.variant({
   defaultVariant: 'message',
   variants: {
     message: {
-      minHeight: '80px',
       gridTemplateAreas: `'message message close'`,
     },
     'icon-message': {
       gridTemplateAreas: `'icon message close'`,
-      minHeight: '104px',
     },
     'title-message': {
-      minHeight: '104px',
       gridTemplateAreas: `'message message close'`,
     },
   },
