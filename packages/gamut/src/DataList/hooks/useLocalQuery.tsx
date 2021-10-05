@@ -28,17 +28,22 @@ export const useLocalQuery = <
 
   const onQueryChange: OnQueryChange<Row> = useCallback(
     (action) => {
-      if (action.payload) {
-        const {
-          type,
-          payload: { dimension, value },
-        } = action;
-        return setQuery((prev) => ({
-          ...prev,
-          [type]: { [dimension]: value },
-        }));
+      switch (action.type) {
+        case 'sort':
+        case 'filter': {
+          const {
+            type,
+            payload: { dimension, value },
+          } = action;
+          return setQuery((prev) => ({
+            ...prev,
+            [type]: { [dimension]: value },
+          }));
+        }
+        case 'reset': {
+          return setQuery({});
+        }
       }
-      return setQuery({});
     },
     [setQuery]
   );

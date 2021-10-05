@@ -35,18 +35,25 @@ export interface OnQuery<Row, Type extends QueryType> {
 export type OnSort<Row> = OnQuery<Row, 'sort'>;
 export type OnFilter<Row> = OnQuery<Row, 'filter'>;
 
+export type QueryChangeEvent<T> =
+  | {
+      type: 'filter';
+      payload: {
+        dimension: keyof T;
+        value: FilterValues<T>;
+      };
+    }
+  | {
+      type: 'sort';
+      payload: {
+        dimension: keyof T;
+        value: SortDirection;
+      };
+    }
+  | { type: 'reset'; payload?: never };
+
 export interface OnQueryChange<T> {
-  <Type extends QueryType>(
-    change:
-      | {
-          type: Type;
-          payload: {
-            dimension: keyof T;
-            value: Type extends 'sort' ? SortDirection : FilterValues<T>;
-          };
-        }
-      | { type: 'reset'; payload?: never }
-  ): void;
+  (change: QueryChangeEvent<T>): void;
 }
 
 export type IdentifiableKeys<T> = Extract<
@@ -56,6 +63,8 @@ export type IdentifiableKeys<T> = Extract<
   }
 >;
 
+export type FilterOption = string | { text: string; value: string };
+
 export interface ColumnConfig<T> {
   key: keyof T;
   header?: string;
@@ -64,7 +73,7 @@ export interface ColumnConfig<T> {
   render?: (row: T) => ReactElement<any, any> | null;
   sortable?: boolean;
   filters?: string[];
-  options?: string[];
+  options?: FilterOption[];
   fill?: boolean;
   justify?: 'left' | 'right';
 }

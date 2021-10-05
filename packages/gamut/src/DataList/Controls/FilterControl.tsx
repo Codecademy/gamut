@@ -4,13 +4,13 @@ import React, { useState } from 'react';
 
 import { Box, Checkbox, FlexBox, FocusTrap, Menu, MenuItem, Text } from '../..';
 import { Anchor } from '../../Anchor';
-import { OnFilter } from '..';
+import { FilterOption, OnFilter } from '..';
 import { useControlContext } from '../hooks/useListControls';
 import { useListState } from '../hooks/useListState';
 
 export interface FilterProps {
   columnKey: string;
-  options?: string[];
+  options?: FilterOption[];
   onFilter?: OnFilter<any>;
   justify?: 'left' | 'right';
 }
@@ -21,6 +21,18 @@ const getNextFilters = (option: string, filters: string[]) => {
     return filters.filter((filt) => filt !== option);
   }
   return [...filters, option];
+};
+
+const formatOption = (option: FilterOption) => {
+  if (typeof option === 'string') {
+    return { text: option, value: option };
+  }
+  return option;
+};
+
+const SELECT_ALL = {
+  text: 'Select All',
+  value: 'all',
 };
 
 export const FilterControl: React.FC<FilterProps> = ({
@@ -49,24 +61,25 @@ export const FilterControl: React.FC<FilterProps> = ({
               width="max-content"
               variant="action"
             >
-              {['Select All', ...options].map((opt) => {
-                const optionId = prefixId(`${kebabCase(opt)}-${dimension}`);
+              {[SELECT_ALL, ...options].map((opt) => {
+                const { text, value } = formatOption(opt);
+                const optionId = prefixId(`${kebabCase(value)}-${dimension}`);
                 const allSelected = filters.length === 0;
-                const isSelectAll = opt === 'Select All';
+                const isSelectAll = value === 'all';
 
                 const optionSelected = isSelectAll
                   ? allSelected
-                  : !filters.includes(opt);
+                  : !filters.includes(value);
 
                 return (
-                  <MenuItem key={opt}>
+                  <MenuItem key={prefixId(`filter-${columnKey}-${value}`)}>
                     <Checkbox
                       htmlFor={optionId}
                       name={optionId}
                       onChange={() => {
                         onFilter?.({
                           dimension,
-                          value: getNextFilters(opt, filters),
+                          value: getNextFilters(value, filters),
                         });
                       }}
                       label={
@@ -76,7 +89,7 @@ export const FilterControl: React.FC<FilterProps> = ({
                           alignSelf="center"
                           display="inline-block"
                         >
-                          {opt}
+                          {text}
                           {isSelectAll && (
                             <Text screenreader> {dimension}</Text>
                           )}
