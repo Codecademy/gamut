@@ -277,7 +277,7 @@ export const proProfile = (
   isMobile?: boolean
 ): AppHeaderProfileDropdownItem => {
   const topSection = [profileMyProfile, profileAccount, profileMyHome];
-  if (!isMobile && (user.isAccountManager || user.isAdmin)) {
+  if (!isMobile && (user.isAccountManager || user.isBusinessAdmin)) {
     topSection.push(profileBusinessAccount);
   }
   if (user.showReferrals) {
