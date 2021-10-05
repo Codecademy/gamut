@@ -1,4 +1,6 @@
 import { FilterIcon } from '@codecademy/gamut-icons';
+import { states } from '@codecademy/gamut-styles';
+import styled from '@emotion/styled';
 import { kebabCase } from 'lodash';
 import React, { useState } from 'react';
 
@@ -16,7 +18,7 @@ export interface FilterProps {
 }
 
 const getNextFilters = (option: string, filters: string[]) => {
-  if (option === 'Select All') return [];
+  if (option === 'all') return [];
   if (filters.includes(option)) {
     return filters.filter((filt) => filt !== option);
   }
@@ -35,6 +37,14 @@ const SELECT_ALL = {
   value: 'all',
 };
 
+const FilterToggle = styled(Anchor)(
+  states({
+    open: {
+      pointerEvents: 'none',
+    },
+  })
+);
+
 export const FilterControl: React.FC<FilterProps> = ({
   columnKey,
   onFilter,
@@ -51,7 +61,10 @@ export const FilterControl: React.FC<FilterProps> = ({
       {menuOpen && (
         <Box position="absolute" top={24} {...{ [justify]: 0 }} zIndex={1}>
           <FocusTrap
-            onClickOutside={() => setMenuOpen(false)}
+            allowPageInteraction
+            onClickOutside={() => {
+              setMenuOpen(false);
+            }}
             onEscapeKey={() => setMenuOpen(false)}
           >
             <Menu
@@ -105,7 +118,8 @@ export const FilterControl: React.FC<FilterProps> = ({
           </FocusTrap>
         </Box>
       )}
-      <Anchor
+      <FilterToggle
+        open={menuOpen}
         display="inline-flex"
         variant="interface"
         onClick={() => setMenuOpen(true)}
@@ -114,9 +128,12 @@ export const FilterControl: React.FC<FilterProps> = ({
         aria-label={`filter by ${columnKey}`}
       >
         <FlexBox center dimensions={16}>
-          <FilterIcon size={14} />
+          <FilterIcon
+            size={14}
+            color={filters.length > 0 ? 'primary' : 'text'}
+          />
         </FlexBox>
-      </Anchor>
+      </FilterToggle>
     </FlexBox>
   );
 };

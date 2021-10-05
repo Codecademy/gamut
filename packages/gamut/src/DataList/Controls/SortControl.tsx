@@ -16,9 +16,6 @@ const SortIcon = styled(ArrowChevronDownFilledIcon)(
     active: {
       color: 'primary',
     },
-    disabled: {
-      color: 'background-disabled',
-    },
   })
 );
 
@@ -57,15 +54,15 @@ export const SortControl: React.FC<SortControlProps> = ({
       <FlexBox inline column width={16} center>
         <SortIcon
           asc
+          color="text-disabled"
           active={direction === 'asc'}
           size={10}
-          disabled={direction !== 'asc'}
           aria-label="ascending"
         />
         <SortIcon
           size={10}
+          color="text-disabled"
           active={direction === 'desc'}
-          disabled={direction !== 'desc'}
           aria-label="descending"
         />
       </FlexBox>
