@@ -84,10 +84,17 @@ export const Toast: React.FC<ToastProps> = ({
     );
   };
 
+  const messageDisplayProps = title
+    ? null
+    : {
+        display: 'flex',
+        alignItems: 'center',
+      };
+
   return (
     <ToastContainer role="status" aria-live="polite" layout={layoutType}>
       {renderIcon()}
-      <Box gridArea="message" py={4}>
+      <Box gridArea="message" py={4} {...messageDisplayProps}>
         {title && (
           <Text variant="p-base" fontWeight="title" mb={4}>
             {title}
