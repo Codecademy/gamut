@@ -73,6 +73,7 @@ Array [
   "omitProps",
   "Overlay",
   "Pattern",
+  "PopoverContainer",
   "ProgressBar",
   "ProLabel",
   "RadialProgress",

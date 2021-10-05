@@ -76,7 +76,7 @@ We provide a single package to manage the versions of a few core dependencies: `
 1.  Make sure to update your PR title and add a short description of your changes for the changelog (see the [PR Title Guide](https://github.com/Codecademy/client-modules#pr-title-guide))
 1.  To merge your changes, add the `Ship It` label to your Pull Request.
 1.  Once your branch is merged into main, it will be published automatically by CircleCI.
-1.  You can check the main branch or CircleCI for the new version number
+1.  You can find the new version number on npmjs.com/package/<package-name>, or find it in that package's `package.json` on the `main` branch
 
 ### Publishing an alpha version of a module
 

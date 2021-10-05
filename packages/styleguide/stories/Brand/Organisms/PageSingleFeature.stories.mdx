@@ -1,4 +1,4 @@
-import { PageHero } from '@codecademy/gamut-labs/src';
+import { PageSingleFeature } from '@codecademy/gamut-labs/src';
 import { Background } from '@codecademy/gamut-styles/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
@@ -6,11 +6,11 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 
 <Meta
   title={title}
-  component={PageHero}
+  component={PageSingleFeature}
   args={{
-    title: 'Welcome to Codecademy',
+    title: 'Build a Better Future',
     desc:
-      'feat. [Rob Thomas of Matchbox Twenty](https://en.wikipedia.org/wiki/Rob_Thomas_(musician)) off the multi-platinum album',
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet dolor in porta adipiscing euismod id sodales velit. Consequat, nibh quam suscipit pharetra, lacus nam. Elit ullamcorper magna ultricies cursus tempus amet. Urna, sagittis lobortis sit quis nibh facilisis euismod dolor. Dolor iaculis congue sit pharetra. A lorem sed dapibus est vel eros mauris malesuada tortor.',
     onAnchorClick: () =>
       // eslint-disable-next-line no-console
       console.log('You clicked me an anchor tag inside Markdown!'),
@@ -29,28 +29,32 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
         'https://cdn.mos.cms.futurecdn.net/wtqqnkYDYi2ifsWZVW2MT4-1200-80.jpg',
       alt: 'beach',
     },
-    textLength: 'long',
   }}
   parameters={{
-    subtitle: `Hero component for landing pages created in Contentful. All props are optional.`,
+    subtitle: `
+      Single Feature component for landing pages created in Contentful.
+      All props are optional.
+    `,
     status: 'updating',
   }}
 />
 
 <Canvas>
-  <Story name="Page Hero">{(args) => <PageHero {...args} />}</Story>
+  <Story name="Single Feature">
+    {(args) => <PageSingleFeature {...args} />}
+  </Story>
 </Canvas>
 
-<PropsTable story="Page Hero" />
+<PropsTable story="Single Feature" />
 
 ## Video
 
-Change the `media` prop to `type: video` and pass required video props to show a video in the hero. The video will take up 5 columns (and the text 7 columns), and the video will always show on mobile below the text.
+Change the `media` prop to `type: video` and pass required video props to show a video in the feature.
 
 <Canvas>
   <Story name="Video">
     {(args) => (
-      <PageHero
+      <PageSingleFeature
         {...args}
         media={{
           type: 'video',
@@ -65,13 +69,13 @@ Change the `media` prop to `type: video` and pass required video props to show a
   </Story>
 </Canvas>
 
-## Short Text
+## Adjust the Media Width
 
-Pass `textLength` as `short` to have a 50/50 split between the text and media (each taking up 6 columns), instead of the default 75/25 (text taking up 9 columns, media taking up 3 columns). Note: this currently does not affect videos.
+You can set the number of columns that the media should occupy in a 12 column grid with the `mediaWidth` prop. Only `3`, `4`, `5`, `6` are currently supported.
 
 <Canvas>
-  <Story name="Short Text">
-    {(args) => <PageHero {...args} textLength="short" />}
+  <Story name="Adjust the Media Width">
+    {(args) => <PageSingleFeature {...args} mediaWidth={5} />}
   </Story>
 </Canvas>
 
@@ -81,7 +85,13 @@ Pass `buttonType` as `fill` to show a `FillButton` instead of the larger `CTABut
 
 <Canvas>
   <Story name="Regular Button">
-    {(args) => <PageHero {...args} cta={{ ...args.cta, buttonType: 'fill' }} />}
+    {(args) => (
+      <PageSingleFeature
+        {...args}
+        cta={{ ...args.cta, buttonType: 'fill' }}
+        mediaWidth={4}
+      />
+    )}
   </Story>
 </Canvas>
 
@@ -91,7 +101,7 @@ Omit the `cta` prop to not show a button.
 
 <Canvas>
   <Story name="Without Button">
-    {(args) => <PageHero {...args} cta={undefined} />}
+    {(args) => <PageSingleFeature {...args} cta={undefined} mediaWidth={3} />}
   </Story>
 </Canvas>
 
@@ -101,7 +111,7 @@ Omit the `desc` prop to not show a description.
 
 <Canvas>
   <Story name="Without Description">
-    {(args) => <PageHero {...args} desc={undefined} />}
+    {(args) => <PageSingleFeature {...args} desc={undefined} mediaWidth={4} />}
   </Story>
 </Canvas>
 
@@ -111,17 +121,17 @@ Using the `eyebrow` prop, you can add eyebrow text to the hero. The eyebrow will
 
 <Canvas>
   <Story name="Eyebrow">
-    {(args) => <PageHero {...args} eyebrow="Hello there" textLength="short" />}
+    {(args) => <PageSingleFeature {...args} eyebrow="Codecademy" />}
   </Story>
 </Canvas>
 
-## Show Image On Mobile
+## Hide Image On Mobile
 
-Using the `showImageOnMobile` prop, you can opt to show the image on mobile. The default behavior is to hide the image on mobile. Note: videos are always shown on mobile for accessibility.
+Using the `hideImageOnMobile` prop, you can opt to hide the image on mobile. The default behavior is to show the image on mobile. Note: videos are always shown on mobile for accessibility.
 
 <Canvas>
-  <Story name="Show Image On Mobile">
-    {(args) => <PageHero {...args} showImageOnMobile textLength="short" />}
+  <Story name="Hide Image on Mobile">
+    {(args) => <PageSingleFeature {...args} hideImageOnMobile mediaWidth={5} />}
   </Story>
 </Canvas>
 
@@ -131,7 +141,7 @@ Omit the `media` prop to not show any media.
 
 <Canvas>
   <Story name="Without Media">
-    {(args) => <PageHero {...args} media={undefined} />}
+    {(args) => <PageSingleFeature {...args} media={undefined} />}
   </Story>
 </Canvas>
 
@@ -143,7 +153,7 @@ Automatically adjusts to the current Color Mode. No configuration is needed to m
   <Story name="Dark Mode">
     {(args) => (
       <Background bg="navy" p={16}>
-        <PageHero {...args} />
+        <PageSingleFeature {...args} />
       </Background>
     )}
   </Story>

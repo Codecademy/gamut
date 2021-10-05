@@ -1,0 +1,124 @@
+import { PopoverContainer } from '@codecademy/gamut';
+import title from '@codecademy/macros/lib/title.macro';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+
+import { PropsTable } from '~styleguide/blocks';
+
+import {
+  AlignmentsTemplate,
+  InvertAxisTemplate,
+  OffsetTemplate,
+  PopoverTemplate,
+  XandYTemplate,
+} from './examples.tsx';
+
+<Meta
+  title={title}
+  component={PopoverContainer}
+  parameters={{
+    subtitle:
+      'Utility component for positioning content relative to a target element.',
+    source: 'gamut',
+    status: 'current',
+    figmaId: '',
+  }}
+  argTypes={{
+    targetRef: {
+      control: {
+        disable: true,
+      },
+    },
+  }}
+  args={{
+    alignment: 'top-left',
+    isOpen: true,
+    inline: true,
+    inside: false,
+    x: 0,
+    y: 0,
+    offset: 20,
+  }}
+/>
+
+## Usage
+
+```tsx
+const MyComponent = () => {
+  const target = useRef<HTMLButtonElement>(null);
+
+  return (
+    <Box>
+      <Box position="relative">
+        <FillButton ref={target} />
+        <PopoverContainer inline targetRef={target} alignment="left">
+          I render relative to my nearest parent!
+        </PopoverContainer>
+      </Box>
+      <PopoverContainer targetRef={target} alignment="left">
+        I render relative to the window!
+      </PopoverContainer>
+    </Box>
+  );
+};
+```
+
+## Guidelines
+
+- It is only responsible for positioning its content and does not include any styles for its content.
+- Use the `inline` prop to ensure that scrolling and resizing do not result in unnecessary rerenders / jumpy popovers. The popover renders with absolute position relative to the current stacking context.
+- Do not use `inline` when the current stacking context is too small or the container is wrapped with an element that specifies `overflow: hidden`.
+
+## Positioning
+
+There are multiple props that can be used to position the popover. Progressively getting more specific:
+
+1. `alignment`: Positions the popover along the edge of the targets dimensions.
+2. `invertAxis`: Mirror the content 100% of its dimensions along its inside border on either axis (can only affect multi-directional alignments like `top-left`)
+3. `offset`: Adds addition offset in the direction of the `alignment` (e.g. 30 and `top-left` will move the popover 30px to the top and left.
+4. `x` + `y`: Offset each axis individually if needed for more surgical control.
+
+### `alignment`
+
+Position the popover at the exact edge of these coordinates.
+
+<Canvas>
+  <Story name="Alignment">{AlignmentsTemplate.bind({})}</Story>
+</Canvas>
+
+### `invertAxis`
+
+Flip the popover content along either the x or y axis relative to the alignment. top-left and x would render the popover on the inside left edge rather than outside.
+
+<Canvas>
+  <Story name="Invert Axis">{InvertAxisTemplate.bind({})}</Story>
+</Canvas>
+
+### `offset`
+
+Addition pixel offset from center in the direction of the alignment (e.g. top-left and offset 20 results in 20 pixels to the left/top).
+
+<Canvas>
+  <Story name="Offset" args={{ offset: 50 }}>
+    {OffsetTemplate.bind({})}
+  </Story>
+</Canvas>
+
+### Individual Axis offsets `x` and `y`
+
+Absolute offset values irrespective of the relative position. (e.g. x={-4} will be 4 pixels to the left in every position unlike offset).
+
+<Canvas>
+  <Story name="X and Y" args={{ x: -50, y: -50, offset: 0 }}>
+    {XandYTemplate.bind({})}
+  </Story>
+</Canvas>
+
+## Code Playground
+
+Edit attributes and see what’s possible to do with this component or get the exact output you want.
+
+<Canvas>
+  <Story name="Popover">{PopoverTemplate.bind({})}</Story>
+</Canvas>
+
+<PropsTable story="Popover" />
