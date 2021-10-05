@@ -82,6 +82,7 @@ Array [
   "reactRecurlyFormFieldPaddingStyles",
   "Select",
   "SelectDropdown",
+  "Shimmer",
   "SkipToContent",
   "SkipToContentTarget",
   "Spinner",
