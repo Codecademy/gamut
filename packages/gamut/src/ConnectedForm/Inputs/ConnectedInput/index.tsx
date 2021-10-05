@@ -15,10 +15,10 @@ export const ConnectedInput: React.FC<ConnectedInputProps> = ({
   return (
     <Input
       disabled={currentlyDisabled}
+      error={error}
       name={name}
       ref={register(validation)}
       {...rest}
-      error={error}
     />
   );
 };
