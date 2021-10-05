@@ -128,6 +128,7 @@ const cols = [
     size: 'lg',
     justify: 'right',
     sortable: true,
+    filters: ['Human'],
   },
 ] as ColumnConfig<typeof crew[number]>[];
 

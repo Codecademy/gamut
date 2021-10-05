@@ -84,14 +84,14 @@ export const PopoverContainer: React.FC<PopoverContainerProps> = ({
 
   const content = (
     <FocusTrap
-      active={!inline}
-      allowPageInteraction
+      allowPageInteraction={inline}
       onClickOutside={handleClickOutside}
       onEscapeKey={onRequestClose}
     >
       <PopoverContent
         ref={popoverRef}
         tabIndex={-1}
+        zIndex={inline ? 5 : 'initial'}
         position="absolute"
         data-testid="popover-content-container"
         {...popoverPosition}
