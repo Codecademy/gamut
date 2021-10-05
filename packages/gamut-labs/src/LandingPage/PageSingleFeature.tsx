@@ -38,6 +38,10 @@ export type PageSingleFeatureProps = BaseProps & {
    */
   eyebrow?: string;
   /**
+   * If the eyebrow text color should be an accent blue or the standard color for the current color mode
+   */
+  accentEyebrow?: boolean;
+  /**
    * Whether the image should be hidden on mobile. Note that videos are always shown on mobile for accessibility
    */
   hideImageOnMobile?: boolean;
@@ -59,6 +63,7 @@ export const PageSingleFeature: React.FC<PageSingleFeatureProps> = ({
   cta,
   desc,
   eyebrow,
+  accentEyebrow,
   hideImageOnMobile,
   isPageHeading,
   media,
@@ -77,6 +82,7 @@ export const PageSingleFeature: React.FC<PageSingleFeatureProps> = ({
               fontFamily="accent"
               mb={16}
               display="block"
+              color={accentEyebrow ? 'blue' : undefined}
             >
               {eyebrow}
             </Text>
