@@ -7,6 +7,7 @@ import {
   ConnectedRadioGroupInput,
   ConnectedSelect,
   ConnectedTextArea,
+  FlexBox,
   FloatingCard,
   SubmitButton,
   Text,
@@ -149,7 +150,7 @@ export const FancyConnectedFormExample: React.FC = () => {
         gridTemplateRows="auto"
         gridTemplateAreas="'illo illo header header'
     'illo illo radio radio'
-    'illo illo main main'
+    'main main main main'
     'sidebar sidebar sidebar sidebar'"
         {...connectedFormProps}
       >
@@ -227,6 +228,8 @@ export const FancyConnectedFormExample: React.FC = () => {
                 component: ConnectedInput,
               }}
             />
+          </INeedSomeSpace>
+          <FlexBox m={12}>
             <ConnectedFormGroup
               name="exampleRadioArea1"
               label="render radio ok"
@@ -241,8 +244,6 @@ export const FancyConnectedFormExample: React.FC = () => {
                 ],
               }}
             />
-          </INeedSomeSpace>
-          <INeedSomeSpace>
             <ConnectedFormGroup
               name="exampleIcon"
               label="write text in here"
@@ -253,7 +254,7 @@ export const FancyConnectedFormExample: React.FC = () => {
                 icon: ViewIcon,
               }}
             />
-          </INeedSomeSpace>
+          </FlexBox>
         </Box>
         <Card shadow="medium" gridArea="illo">
           <Keyhole />
