@@ -9,13 +9,14 @@ import { DataListTemplate } from './examples.tsx';
   title={title}
   component={DataList}
   parameters={{
-    subtitle: 'Render lists of content with sorting and selection',
+    subtitle:
+      'Displays rich information and supports visually distinctive formats for individual List Items',
     source: 'gamut',
     status: 'current',
     design: {
       type: 'figma',
       url:
-        'https://www.figma.com/file/MkQYGsGhMCCUls9TK0pn4U/Lists?node-id=304%3A8428',
+        'https://www.figma.com/file/MkQYGsGhMCCUls9TK0pn4U/Lists?node-id=302%3A8236',
     },
   }}
   args={{
@@ -77,26 +78,25 @@ import { DataListTemplate } from './examples.tsx';
 
 ## Design Principles
 
-Design Principles
+**Recommended for engaging with individual Items**
 
-- Recommended for bulk analysis across Rows
-- Tables best support information that needs sorting, filtering, pagination, and querying
-- Prioritize data and information that’s meant to be compared up front, then surface secondary information on external surfaces
+- Manage and open Items inside your List
+- Expand the format of items to surface advanced layouts
+- Include rich information and controls inside of each List Item
 
-Use Table affordances for best information design
+**Customize Items with rich information**
 
-- Design and arrange table metrics to encourage finding, scanning, and comparing information
+- Icons, graphics, complex layouts, other Atoms
 
-Use Cell-level interactions to activate specific data
+**Optional List-level interactions include**
 
-- Use Coachmarks, Tooltips, Modals, and Flyovers to augment information
-- Use Anchors and Links to direct users to another surface
+- Basic filtering and sorting across common attributes across Items
 
-Be careful about information overload
+**Be careful about placement and positioning**
 
-- Determine what’s helpful to see en-masse, versus what info should be drilled down into
-- Be mindful about the horizontal spacing between columns and headers
-- Order metrics based on priority, and consider collapsing extraneous metrics on smaller sizes
+- Make sure Item controls are visible on the right
+- Place Lists inside main containers to avoid overflow
+- Use a Table if you have a design that’s meant to compare information between items
 
 ## Usage
 

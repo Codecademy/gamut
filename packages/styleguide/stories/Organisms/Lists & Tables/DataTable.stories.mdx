@@ -9,7 +9,8 @@ import { DataTableTemplate } from './examples.tsx';
   title={title}
   component={DataTable}
   parameters={{
-    subtitle: 'Render lists of content with sorting and selection',
+    subtitle:
+      'Compare large amounts of data and perform bulk actions on Table Rows',
     source: 'gamut',
     status: 'current',
     design: {
@@ -59,22 +60,22 @@ import { DataTableTemplate } from './examples.tsx';
 
 ## Design Principles
 
-Design Principles
+**Design Principles**
 
 - Recommended for bulk analysis across Rows
 - Tables best support information that needs sorting, filtering, pagination, and querying
 - Prioritize data and information that’s meant to be compared up front, then surface secondary information on external surfaces
 
-Use Table affordances for best information design
+**Use Table affordances for best information design**
 
 - Design and arrange table metrics to encourage finding, scanning, and comparing information
 
-Use Cell-level interactions to activate specific data
+**Use Cell-level interactions to activate specific data**
 
 - Use Coachmarks, Tooltips, Modals, and Flyovers to augment information
 - Use Anchors and Links to direct users to another surface
 
-Be careful about information overload
+**Be careful about information overload**
 
 - Determine what’s helpful to see en-masse, versus what info should be drilled down into
 - Be mindful about the horizontal spacing between columns and headers
