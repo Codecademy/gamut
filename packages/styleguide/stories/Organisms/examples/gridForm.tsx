@@ -11,7 +11,7 @@ const onSubmit = action('Submitted!');
 export const ColorModeExample = () => {
   return (
     <ColorModeExampleWrapper>
-      <Box>
+      <Box m={8}>
         <GridForm
           fields={[
             {
