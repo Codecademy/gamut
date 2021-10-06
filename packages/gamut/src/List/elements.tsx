@@ -26,6 +26,7 @@ const listVariants = variant({
     bar: {
       gap: 16,
     },
+    plain: {},
   },
 });
 
@@ -84,6 +85,7 @@ const rowVariants = variant({
       borderRadius: '2px',
       bg: 'background',
     },
+    plain: {},
   },
 });
 
@@ -114,6 +116,7 @@ const headerVariants = variant({
     table: {
       borderBottom: 2,
     },
+    plain: {},
   },
 });
 

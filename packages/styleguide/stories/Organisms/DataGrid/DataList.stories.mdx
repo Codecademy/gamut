@@ -130,19 +130,13 @@ const DataTown = () => {
 
 <br />
 
-### Sorting and Filtering
+### Full Example
 
-<Story name="Sorting and Filtering">
+<Story name="Full Example">
   <DataListTemplate />
 </Story>
 
 <br />
-
-### Variants
-
-<Story name="Bars" args={{ variant: 'bar' }}>
-  {(args) => <DataList {...args} />}
-</Story>
 
 ### Expanded
 
@@ -150,19 +144,9 @@ const DataTown = () => {
   {(args) => <DataList {...args} />}
 </Story>
 
-### Empty
+### Selected
 
-<Story name="Empty State" args={{ rows: [] }}>
-  {(args) => <DataList {...args} />}
-</Story>
-
-<br />
-
-### Loading
-
-Replaces content of current rows with
-
-<Story name="Loading Rows" args={{ loading: true }}>
+<Story name="Selected" args={{ selected: ['Data'] }}>
   {(args) => <DataList {...args} />}
 </Story>
 
