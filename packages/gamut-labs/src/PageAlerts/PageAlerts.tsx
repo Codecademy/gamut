@@ -1,8 +1,8 @@
+import { Alert, BodyPortal } from '@codecademy/gamut/src';
 import { breakpoints } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React, { useContext, useEffect, useRef } from 'react';
 
-import { Alert, BodyPortal } from '..';
 import {
   PageAlertsContext,
   PageAlertsContextValue,
