@@ -11,11 +11,8 @@ import {
 
 import { Form } from '../Form';
 import { FormProps } from '../Form/Form';
+import { FormValues } from '../Form/types';
 import { submitSuccessStatus } from './utils';
-
-export type FormValues<T> = {
-  [key in keyof T]?: boolean | string | Pick<FileList, 'item'>;
-};
 
 export interface FormContextProps {
   /**
@@ -56,7 +53,6 @@ export interface ConnectedFormProps<Values extends {}>
    */
   validationRules?: Partial<{ [Key in keyof Values]?: RegisterOptions }>;
 
-  /**
   /**
    * Which react hook form mode we are going to use for validation.
    * If you use the onChange mode the submit button will be disabled until all
