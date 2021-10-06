@@ -22,9 +22,11 @@ export function useListContext() {
 export function useList({ spacing, variant, scrollable }: PrivateListProps) {
   const {
     depth = 0,
-    variant: activeVariant = variant,
-    spacing: activeSpacing = spacing,
+    variant: parentVariant,
+    spacing: parentSpacing,
   } = useListContext();
+  const activeVariant = variant ?? parentVariant;
+  const activeSpacing = spacing ?? parentSpacing;
 
   return useMemo(
     () => ({

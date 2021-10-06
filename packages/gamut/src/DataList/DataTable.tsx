@@ -1,18 +1,14 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 
-import { DataList, DataListProps } from './DataList';
+import { DataGrid, DataGridProps } from './DataGrid';
 import { ColumnConfig, IdentifiableKeys } from './types';
 
-export interface DataTableProps<
-  Row,
-  IdKey extends IdentifiableKeys<Row>,
-  Cols extends ColumnConfig<Row>[]
-> extends Omit<DataListProps<Row, IdKey, Cols>, 'variant'> {}
-
-export function DataTable<
-  Row,
-  IdKey extends IdentifiableKeys<Row>,
-  Cols extends ColumnConfig<Row>[]
->(props: DataTableProps<Row, IdKey, Cols>) {
-  return <DataList {...props} variant="table" />;
+export interface DataTable {
+  <Row, IdKey extends IdentifiableKeys<Row>, Cols extends ColumnConfig<Row>[]>(
+    props: Omit<DataGridProps<Row, IdKey, Cols>, 'variant' | 'header'>
+  ): ReactElement<any, any>;
 }
+
+export const DataTable: DataTable = (props) => {
+  return <DataGrid {...props} variant="table" />;
+};

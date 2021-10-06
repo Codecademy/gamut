@@ -42,7 +42,7 @@ export const List = forwardRef<HTMLUListElement, ListProps>(
 
     return (
       <ListProvider value={value}>
-        <Box position="relative" overflow="hidden">
+        <Box position="relative" overflow="hidden" width={1}>
           <Box
             position="relative"
             maxWidth={1}

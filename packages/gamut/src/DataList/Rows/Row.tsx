@@ -36,7 +36,10 @@ export const Row: DataRow = ({
   } = useControlContext();
 
   const renderExpandedContent = useCallback(() => {
-    return expandedContent?.({ row, onCollapse: () => onExpand?.(id) });
+    return expandedContent?.({
+      row,
+      onCollapse: () => onExpand({ rowId: id, toggle: true }),
+    });
   }, [onExpand, expandedContent, id, row]);
 
   return (

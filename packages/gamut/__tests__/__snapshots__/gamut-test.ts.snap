@@ -28,6 +28,7 @@ Array [
   "createPromise",
   "CTAButton",
   "DataList",
+  "DataTable",
   "Dialog",
   "FillButton",
   "FlexBox",

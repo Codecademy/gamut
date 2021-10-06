@@ -1,6 +1,7 @@
 import {
   ColumnConfig,
   DataList,
+  DataTable,
   FillButton,
   FlexBox,
   Text,
@@ -132,7 +133,7 @@ const cols = [
   },
 ] as ColumnConfig<typeof crew[number]>[];
 
-export const DataListTemplate = () => {
+export const createDemoTable = (Component: any, overrides = {}) => () => {
   const [selectedRows, setSelectedRows] = useState<
     typeof crew[number]['name'][]
   >([]);
@@ -184,7 +185,7 @@ export const DataListTemplate = () => {
   );
 
   return (
-    <DataList
+    <Component
       height={500}
       id="example"
       idKey={idKey}
@@ -197,6 +198,18 @@ export const DataListTemplate = () => {
       expandedContent={expandedContent}
       query={query}
       onQueryChange={onQueryChange}
+      {...overrides}
     />
   );
 };
+
+export const DataTableTemplate = createDemoTable(DataTable, {
+  onRowSelect: undefined,
+  onRowExpand: undefined,
+});
+
+export const DataListTemplate = createDemoTable(DataList, {
+  scrollable: false,
+  variant: 'slat',
+  height: 'auto',
+});

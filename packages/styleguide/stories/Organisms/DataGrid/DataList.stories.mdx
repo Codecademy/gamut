@@ -1,0 +1,179 @@
+import { DataList, DataTable, FlexBox } from '@codecademy/gamut';
+import title from '@codecademy/macros/lib/title.macro';
+import { PropsTable } from '@codecademy/storybook-addon-variance';
+import { Meta, Story } from '@storybook/addon-docs/blocks';
+
+import { DataListTemplate } from './examples.tsx';
+
+<Meta
+  title={title}
+  component={DataList}
+  parameters={{
+    subtitle: 'Render lists of content with sorting and selection',
+    source: 'gamut',
+    status: 'current',
+    design: {
+      type: 'figma',
+      url:
+        'https://www.figma.com/file/MkQYGsGhMCCUls9TK0pn4U/Lists?node-id=304%3A8428',
+    },
+  }}
+  args={{
+    id: 'crew',
+    idKey: 'name',
+    query: { sort: { name: 'desc', role: 'asc' } },
+    rows: [
+      { name: 'Jean Luc Picard', role: 'Captain', ship: 'USS Enterprise' },
+      {
+        name: 'Wesley Crusher',
+        role: 'Deus Ex Machina',
+        ship: 'USS Enterprise',
+      },
+      {
+        name: 'Geordie LaForge',
+        role: 'Chief Engineer / Rascal',
+        ship: 'Borg Cube',
+      },
+      {
+        name: 'Data',
+        role: 'Lt. Commander / Scamp',
+        ship: 'He is a ship',
+      },
+    ],
+    columns: [
+      {
+        label: 'Name',
+        key: 'name',
+        size: 'lg',
+        type: 'header',
+        sortable: true,
+      },
+      { label: 'Rank', key: 'role', size: 'lg', sortable: true },
+      { label: 'Ship', key: 'ship', size: 'lg', sortable: true, fill: true },
+    ],
+    header: false,
+    spacing: 'condensed',
+    expandedContent: ({ row }) => (
+      <FlexBox borderTop={1} borderColor="background-hover" p={16} pl={[0, 64]}>
+        <DataTable
+          id={row.name}
+          idKey="id"
+          header={false}
+          variant="table"
+          columns={[
+            { key: 'name', size: 'md' },
+            { key: 'text', size: 'lg' },
+          ]}
+          rows={[
+            { id: 1, name: 'Sub Row 1', text: 'Ooo very cool' },
+            { id: 2, name: 'Sub Row 2', text: 'Ooo very cool' },
+            { id: 3, name: 'Sub Row 3', text: 'Ooo very cool' },
+          ]}
+        />
+      </FlexBox>
+    ),
+  }}
+/>
+
+## Design Principles
+
+Design Principles
+
+- Recommended for bulk analysis across Rows
+- Tables best support information that needs sorting, filtering, pagination, and querying
+- Prioritize data and information that’s meant to be compared up front, then surface secondary information on external surfaces
+
+Use Table affordances for best information design
+
+- Design and arrange table metrics to encourage finding, scanning, and comparing information
+
+Use Cell-level interactions to activate specific data
+
+- Use Coachmarks, Tooltips, Modals, and Flyovers to augment information
+- Use Anchors and Links to direct users to another surface
+
+Be careful about information overload
+
+- Determine what’s helpful to see en-masse, versus what info should be drilled down into
+- Be mindful about the horizontal spacing between columns and headers
+- Order metrics based on priority, and consider collapsing extraneous metrics on smaller sizes
+
+## Usage
+
+```tsx
+const DataTown = () => {
+  const [selectedRows, setSelectedRows] = useState([]);
+  const [expandedRows, setExpandedRows] = useState([]);
+
+  const queryData = useLocalQuery({
+    idKey: 'name',
+    rows: crew,
+    columns: [{
+      { key: 'name', sortable: true, size: 'sm'},
+      { key: 'ship', sortable: true, size: 'sm'}
+    }],
+  });
+
+  return (
+    <DataList
+      id="example"
+      selectedRows={selectedRows}
+      onRowSelect={setSelectedRows}
+      expandedRows={expandedRows}
+      onRowExpand={setExpandedRows}
+      renderExpanded={({ name }) => <>{name}: This is pretty cool</>}
+      {...queryData}
+    />
+  );
+};
+```
+
+<br />
+
+### Sorting and Filtering
+
+<Story name="Sorting and Filtering">
+  <DataListTemplate />
+</Story>
+
+<br />
+
+### Variants
+
+<Story name="Bars" args={{ variant: 'bar' }}>
+  {(args) => <DataList {...args} />}
+</Story>
+
+### Expanded
+
+<Story name="Expanded" args={{ expanded: ['Data'] }}>
+  {(args) => <DataList {...args} />}
+</Story>
+
+### Empty
+
+<Story name="Empty State" args={{ rows: [] }}>
+  {(args) => <DataList {...args} />}
+</Story>
+
+<br />
+
+### Loading
+
+Replaces content of current rows with
+
+<Story name="Loading Rows" args={{ loading: true }}>
+  {(args) => <DataList {...args} />}
+</Story>
+
+<br />
+
+### Code Playground
+
+<Story name="DataList">{(args) => <DataList {...args} />}</Story>
+
+<br />
+<br />
+<br />
+
+<PropsTable story="DataList" />

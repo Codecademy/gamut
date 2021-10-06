@@ -1,20 +1,21 @@
-import { DataList } from '@codecademy/gamut';
+import { DataTable } from '@codecademy/gamut';
 import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Meta, Story } from '@storybook/addon-docs/blocks';
 
-import { DataListTemplate } from './examples.tsx';
+import { DataTableTemplate } from './examples.tsx';
 
 <Meta
   title={title}
-  component={DataList}
+  component={DataTable}
   parameters={{
     subtitle: 'Render lists of content with sorting and selection',
     source: 'gamut',
     status: 'current',
     design: {
       type: 'figma',
-      url: 'https://www.figma.com/file/',
+      url:
+        'https://www.figma.com/file/MkQYGsGhMCCUls9TK0pn4U/Lists?node-id=304%3A8428',
     },
   }}
   args={{
@@ -40,17 +41,42 @@ import { DataListTemplate } from './examples.tsx';
       },
     ],
     columns: [
-      { label: 'Name', key: 'name', size: 'lg', sortable: true },
+      {
+        label: 'Name',
+        key: 'name',
+        size: 'lg',
+        type: 'header',
+        sortable: true,
+      },
       { label: 'Rank', key: 'role', size: 'lg', sortable: true },
       { label: 'Ship', key: 'ship', size: 'lg', sortable: true, fill: true },
     ],
-    selectedRows: ['Jean Luc Picard'],
-    expandedRows: ['Geordie LaForge'],
-    variant: 'table',
     spacing: 'condensed',
-    renderExpanded: ({ name }) => <>{name}: This is pretty cool</>,
   }}
 />
+
+## Design Principles
+
+Design Principles
+
+- Recommended for bulk analysis across Rows
+- Tables best support information that needs sorting, filtering, pagination, and querying
+- Prioritize data and information that’s meant to be compared up front, then surface secondary information on external surfaces
+
+Use Table affordances for best information design
+
+- Design and arrange table metrics to encourage finding, scanning, and comparing information
+
+Use Cell-level interactions to activate specific data
+
+- Use Coachmarks, Tooltips, Modals, and Flyovers to augment information
+- Use Anchors and Links to direct users to another surface
+
+Be careful about information overload
+
+- Determine what’s helpful to see en-masse, versus what info should be drilled down into
+- Be mindful about the horizontal spacing between columns and headers
+- Order metrics based on priority, and consider collapsing extraneous metrics on smaller sizes
 
 ## Usage
 
@@ -69,7 +95,7 @@ const DataTown = () => {
   });
 
   return (
-    <DataList
+    <DataTable
       id="example"
       selectedRows={selectedRows}
       onRowSelect={setSelectedRows}
@@ -84,28 +110,28 @@ const DataTown = () => {
 
 <br />
 
-### Columns
+### Sorting and Filtering
 
-Column Options:
-
-<Story name="Demo">
-  <DataListTemplate />
+<Story name="Sorting and Filtering">
+  <DataTableTemplate />
 </Story>
 
 <br />
 
 ### Empty
 
-<Story name="Empty" args={{ rows: [] }}>
-  {(args) => <DataList {...args} />}
+<Story name="Empty State" args={{ rows: [] }}>
+  {(args) => <DataTable {...args} />}
 </Story>
 
 <br />
 
 ### Loading
 
-<Story name="Loading" args={{ loading: true }}>
-  {(args) => <DataList {...args} />}
+Replaces content of current rows with
+
+<Story name="Loading Rows" args={{ loading: true }}>
+  {(args) => <DataTable {...args} />}
 </Story>
 
 <br />
@@ -113,17 +139,17 @@ Column Options:
 ### Shadowed
 
 <Story name="Shadow" args={{ shadow: true }}>
-  {(args) => <DataList {...args} />}
+  {(args) => <DataTable {...args} />}
 </Story>
 
 <br />
 
 ### Code Playground
 
-<Story name="DataList">{(args) => <DataList {...args} />}</Story>
+<Story name="DataTable">{(args) => <DataTable {...args} />}</Story>
 
 <br />
 <br />
 <br />
 
-<PropsTable story="DataList" />
+<PropsTable story="DataTable" />
