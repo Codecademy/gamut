@@ -72,7 +72,11 @@ export const Row: DataRow = ({
         if (loading) {
           return (
             <ListCol {...colProps}>
-              <Shimmer height="calc(100% - 1rem)" width="calc(100% - 0.5rem)" />
+              <Shimmer
+                minHeight={24}
+                height="calc(100% - 1rem)"
+                width="calc(100% - 0.5rem)"
+              />
             </ListCol>
           );
         }

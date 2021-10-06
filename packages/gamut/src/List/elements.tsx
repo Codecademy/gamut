@@ -225,6 +225,7 @@ const columnStates = states({
     },
   },
   delimiter: {
+    overflow: 'visible',
     '&:after': {
       display: { _: 'none', xs: 'block' },
       content: '""',
