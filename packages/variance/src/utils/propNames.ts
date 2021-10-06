@@ -9,6 +9,7 @@ const SHORTHAND_PROPERTIES = [
   'borderWidth',
   'borderStyle',
   'borderColor',
+  'borderRadius',
   'background',
   'flex',
   'margin',
@@ -47,13 +48,13 @@ export const orderPropNames = (config: Record<string, BaseProperty>) =>
     const { property: aProp, properties: aProperties = [] } = aConf;
     const { property: bProp, properties: bProperties = [] } = bConf;
 
+    const aNum = aProperties.length;
+    const bNum = bProperties.length;
+
     const aIsShorthand = SHORTHAND_PROPERTIES.includes(aProp);
     const bIsShorthand = SHORTHAND_PROPERTIES.includes(bProp);
 
     if (aIsShorthand && bIsShorthand) {
-      const aNum = aProperties.length;
-      const bNum = bProperties.length;
-
       if (aProp !== bProp) {
         return compare(
           SHORTHAND_PROPERTIES.indexOf(aProp),
@@ -71,6 +72,12 @@ export const orderPropNames = (config: Record<string, BaseProperty>) =>
 
     if (aIsShorthand) return SORT.A_BEFORE_B;
     if (bIsShorthand) return SORT.B_BEFORE_A;
+
+    if (aNum > bNum) return SORT.A_BEFORE_B;
+    if (bNum > aNum) return SORT.B_BEFORE_A;
+
+    if (aProp > bProp) return SORT.A_BEFORE_B;
+    if (bProp > aProp) return SORT.B_BEFORE_A;
 
     return SORT.EQUAL;
   });

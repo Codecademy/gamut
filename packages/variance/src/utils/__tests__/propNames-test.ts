@@ -84,51 +84,6 @@ describe('orderPropNames', () => {
   it('orders all props', () => {
     const result = orderPropNames(testConfig);
 
-    expect(result).toEqual([
-      'border',
-      'borderX',
-      'borderY',
-      'borderTop',
-      'borderBottom',
-      'borderLeft',
-      'borderRight',
-      'borderWidth',
-      'borderWidthX',
-      'borderWidthY',
-      'borderStyle',
-      'borderStyleX',
-      'borderStyleY',
-      'borderColor',
-      'borderColorX',
-      'borderColorY',
-      'flex',
-      'm',
-      'mx',
-      'my',
-      'p',
-      'px',
-      'py',
-      // end shorthands
-      'textColor',
-      'bg',
-      'borderColorLeft',
-      'borderColorRight',
-      'borderColorTop',
-      'borderColorBottom',
-      'borderRadius',
-      'borderRadiusLeft',
-      'borderRadiusTop',
-      'borderRadiusBottom',
-      'borderRadiusRight',
-      'flexBasis',
-      'pt',
-      'pb',
-      'pr',
-      'pl',
-      'mt',
-      'mb',
-      'mr',
-      'ml',
-    ]);
+    expect(result).toMatchSnapshot();
   });
 });
