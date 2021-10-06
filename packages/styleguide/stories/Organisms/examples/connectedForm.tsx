@@ -23,7 +23,7 @@ const INeedSomeSpace: React.FC = ({ children }) => {
   return <Box m={16}>{children}</Box>;
 };
 
-const VeryCoolForm = () => {
+export const VeryCoolForm = () => {
   const {
     ConnectedFormGroup,
     ConnectedForm,
