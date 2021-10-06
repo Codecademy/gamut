@@ -23,7 +23,7 @@ const INeedSomeSpace: React.FC = ({ children }) => {
   return <Box m={16}>{children}</Box>;
 };
 
-const TestZero = () => {
+const VeryCoolForm = () => {
   const {
     ConnectedFormGroup,
     ConnectedForm,
@@ -46,35 +46,40 @@ const TestZero = () => {
   });
 
   return (
-    <ConnectedForm
-      onSubmit={({ thisField }) => console.log(thisField)}
-      {...connectedFormProps}
-    >
-      <ConnectedFormGroup
-        name="thisField"
-        label="cool"
-        field={{
-          component: ConnectedCheckbox,
-          label: 'check it ouuuut',
-        }}
-      />
-      <ConnectedFormGroup
-        name="thatField"
-        label="cool"
-        field={{
-          component: ConnectedSelect,
-          options: ['one', 'two', 'zero'],
-        }}
-      />
-      <ConnectedFormGroup
-        name="anotherField"
-        label="cool"
-        field={{
-          component: ConnectedInput,
-          icon: TerminalIcon,
-        }}
-      />
-    </ConnectedForm>
+    <Background bg="black">
+      <ConnectedForm
+        onSubmit={({ thisField }) => console.log(thisField)}
+        {...connectedFormProps}
+      >
+        <ConnectedFormGroup
+          name="thisField"
+          label="cool"
+          field={{
+            component: ConnectedCheckbox,
+            label: 'check it ouuuut',
+          }}
+        />
+        <Box>
+          <Text>I have something important to tell you.</Text>
+        </Box>
+        <ConnectedFormGroup
+          name="thatField"
+          label="cool"
+          field={{
+            component: ConnectedSelect,
+            options: ['one', 'two', 'zero'],
+          }}
+        />
+        <ConnectedFormGroup
+          name="anotherField"
+          label="cool"
+          field={{
+            component: ConnectedInput,
+            icon: TerminalIcon,
+          }}
+        />
+      </ConnectedForm>
+    </Background>
   );
 };
 

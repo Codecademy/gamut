@@ -1,20 +1,12 @@
-import {
-  ConnectedCheckbox,
-  // ConnectedForm,
-  // ConnectedFormGroup,
-  ConnectedSelect,
-  SubmitButton,
-  useConnectedForm,
-} from '@codecademy/gamut';
+import { ConnectedForm } from '@codecademy/gamut';
 import title from '@codecademy/macros/lib/title.macro';
-import { PropsTable } from '@codecademy/storybook-addon-variance';
-import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { Meta } from '@storybook/addon-docs/blocks';
 
-import { TestOne } from './examples';
+import { TestOne, VeryCoolForm } from './examples';
 
 <Meta
   title={title}
-  component={SubmitButton}
+  component={ConnectedForm}
   parameters={{
     subtitle: 'The special sauce to creating modular forms',
     source: 'gamut',
@@ -27,88 +19,73 @@ import { TestOne } from './examples';
   }}
 />
 
-<Canvas>
-  <Story
-    name="ConnectedForm"
-    args={{ validation: 'onSubmit', resetOnSubmit: true }}
-  >
-    {() => {
-const {
+## Usage
+
+```tsx
+const VeryCoolForm = () => {
+  const {
     ConnectedFormGroup,
     ConnectedForm,
     connectedFormProps,
   } = useConnectedForm({
     defaultValues: {
-      cool: 'gnbsdlfkjndlskfj',
-      beans: 'beans!',
-      check: true,
-      selected: 'not to mention nested',
-      tv: undefined,
+      thisField: true,
+      thatField: 'zero!',
+      anotherField: 'state your name',
     },
     validationRules: {
-      cool: { required: 'explain yourself cool' },
-      beans: {
+      thisField: { required: 'yes' },
+      thatField: {
         pattern: {
           value: /^(?:(?!zero).)*$/,
-          message: 'zero to hero',
-        },
-      },
-      check: { required: 'explain yourself check' },
-      selected: {
-        pattern: {
-          value: /^(?:(?!zero).)*$/,
-          message: 'not zero.',
+          message: 'notZero',
         },
       },
     },
   });
 
-      return (
-        <ConnectedForm
-          onSubmit={(values) => console.log(values)}
-          defaultValues={{ 'this-field': true, 'that-field': 'three' }}
-        >
-          <ConnectedFormGroup
-            name="this-field"
-            label="hi"
-            size="large"
-            spacing="tight"
-            field={{
-              component: ConnectedCheckbox,
-              label: 'check me out',
-            }}
-          />
-          <ConnectedFormGroup
-            name="that-field"
-            label="hey"
-            size="large"
-            field={{
-              component: ConnectedSelect,
-              validation: {
-                pattern: {
-                  value: /^(?:(?!zero).)*$/,
-                  message: 'zero to hero',
-                },
-              },
-              options: ['zero', 'one', 'two', 'three'],
-            }}
-          />
-          <SubmitButton mt={8}>submit!!!</SubmitButton>
-        </ConnectedForm>
-      );
-    }}
+  return (
+    <Background bg="black">
+      <ConnectedForm
+        onSubmit={({ thisField }) => console.log(thisField)}
+        {...connectedFormProps}
+      >
+        <ConnectedFormGroup
+          name="thisField"
+          label="cool"
+          field={{
+            component: ConnectedCheckbox,
+            label: 'check it ouuuut',
+          }}
+        />
+        <Box>
+          <Text>I have something important to tell you.</Text>
+        </Box>
+        <ConnectedFormGroup
+          name="thatField"
+          label="cool"
+          field={{
+            component: ConnectedSelect,
+            options: ['one', 'two', 'zero'],
+          }}
+        />
+        <ConnectedFormGroup
+          name="anotherField"
+          label="cool"
+          field={{
+            component: ConnectedInput,
+            icon: TerminalIcon,
+          }}
+        />
+      </ConnectedForm>
+    </Background>
+  );
+};
+};
+```
 
-  </Story>
-</Canvas>
+<VeryCoolForm />
 
-<PropsTable of={ConnectedForm} />
-
-## Inputs + Usage
+## Fancy Examples
 
 <TestOne />
-
-## useFormState
-
-### Dynamic Fields + Watch
-
-### Add some documenation around onChange
