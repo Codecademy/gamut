@@ -1,5 +1,5 @@
-export type FormValues = Record<
-  string,
-  boolean | string | undefined | FileList
->;
+export type FormValues<T> = {
+  [key in keyof T]?: boolean | string | Pick<FileList, 'item'>;
+};
+
 export { CheckboxPaddingProps } from './Inputs';

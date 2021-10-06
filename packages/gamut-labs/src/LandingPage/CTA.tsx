@@ -1,11 +1,9 @@
 import { CTAButton, FillButton } from '@codecademy/gamut';
 import React from 'react';
 
-import { DarkModeProps } from './types';
-
-export type CTAProps = DarkModeProps & {
+export type CTAProps = {
   href: string;
-  onCtaButtonClick?: React.MouseEventHandler;
+  onClick?: React.MouseEventHandler;
   buttonType?: 'cta' | 'fill';
 };
 

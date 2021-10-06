@@ -27,6 +27,7 @@ export type User = {
   avatar: string;
   displayName: string;
   isAdmin?: boolean;
+  isBusinessAdmin?: boolean;
   isCustomerSupport?: boolean;
   isAccountManager?: boolean;
   isPaused?: boolean;

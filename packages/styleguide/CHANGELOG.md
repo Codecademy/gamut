@@ -3,6 +3,56 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [47.5.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@47.5.0...@codecademy/styleguide@47.5.1) (2021-10-06)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [47.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@47.4.1...@codecademy/styleguide@47.5.0) (2021-10-05)
+
+
+### Features
+
+* **PopoverContainer:** Decoupled Positioning Logic [GM-222] ([2ecbb4e](https://github.com/Codecademy/client-modules/commit/2ecbb4e7680b274ce1c8413b1b0c6f5aeffad771))
+
+
+
+### [47.4.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@47.4.0...@codecademy/styleguide@47.4.1) (2021-10-04)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [47.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@47.3.2...@codecademy/styleguide@47.4.0) (2021-10-04)
+
+
+### Features
+
+* **PageSingleFeature:** Abstract to PageSingleFeature ([7aaacb1](https://github.com/Codecademy/client-modules/commit/7aaacb13154872356f4c94906ba409bf96ec38b1))
+
+
+
+### [47.3.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@47.3.1...@codecademy/styleguide@47.3.2) (2021-10-04)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [47.3.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@47.3.0...@codecademy/styleguide@47.3.1) (2021-10-04)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
 ## [47.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@47.2.0...@codecademy/styleguide@47.3.0) (2021-10-01)
 
 

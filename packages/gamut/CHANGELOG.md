@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [37.10.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@37.10.0...@codecademy/gamut@37.10.1) (2021-10-06)
+
+
+### Bug Fixes
+
+* **GridForm:** supports interfaces as form value type ([1d6e346](https://github.com/Codecademy/client-modules/commit/1d6e3469d2ea8e4073ed626ad601251409ecfd49))
+
+
+
+## [37.10.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@37.9.0...@codecademy/gamut@37.10.0) (2021-10-05)
+
+
+### Features
+
+* **PopoverContainer:** Decoupled Positioning Logic [GM-222] ([2ecbb4e](https://github.com/Codecademy/client-modules/commit/2ecbb4e7680b274ce1c8413b1b0c6f5aeffad771))
+
+
+
 ## [37.9.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@37.8.0...@codecademy/gamut@37.9.0) (2021-10-01)
 
 

@@ -5,15 +5,14 @@ import React from 'react';
 
 import { BaseProps } from './types';
 
-const Img = styled.img`
-  margin-bottom: 2rem;
-`;
+const Image = Box.withComponent('img');
+
 export type FeaturedImageProps = {
   src: string;
   alt: string;
 };
 export const FeaturedImage: React.FC<FeaturedImageProps> = ({ src, alt }) => (
-  <Img alt={alt} src={src} width="100%" data-testid="feature-image" />
+  <Image alt={alt} src={src} mb={32} width="100%" data-testid="feature-image" />
 );
 
 export type FeaturedIconProps = {
@@ -21,7 +20,7 @@ export type FeaturedIconProps = {
   alt: string;
 };
 export const FeaturedIcon: React.FC<FeaturedIconProps> = ({ src, alt }) => (
-  <Img alt={alt} src={src} width="64px" data-testid="feature-icon" />
+  <Image alt={alt} src={src} mb={32} width="64px" data-testid="feature-icon" />
 );
 
 export const FeaturedStat: React.FC = ({ children }) => (
@@ -62,9 +61,7 @@ export const FeaturedDescription: React.FC<FeaturedDescriptionProps> = ({
   desc,
   onAnchorClick,
 }) => (
-  <Box textColor="navy">
-    <StyledMarkdown text={desc} spacing="none" onAnchorClick={onAnchorClick} />
-  </Box>
+  <StyledMarkdown text={desc} spacing="none" onAnchorClick={onAnchorClick} />
 );
 
 const FeatureBlock = styled.div`

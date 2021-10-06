@@ -3,6 +3,57 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [24.4.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@24.4.2...@codecademy/gamut-labs@24.4.3) (2021-10-06)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [24.4.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@24.4.1...@codecademy/gamut-labs@24.4.2) (2021-10-05)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [24.4.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@24.4.0...@codecademy/gamut-labs@24.4.1) (2021-10-04)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+## [24.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@24.3.1...@codecademy/gamut-labs@24.4.0) (2021-10-04)
+
+
+### Features
+
+* **PageSingleFeature:** Abstract to PageSingleFeature ([7aaacb1](https://github.com/Codecademy/client-modules/commit/7aaacb13154872356f4c94906ba409bf96ec38b1))
+
+
+
+### [24.3.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@24.3.0...@codecademy/gamut-labs@24.3.1) (2021-10-04)
+
+
+### Bug Fixes
+
+* **Drawer:** add 100% height to inner Box ([6572bea](https://github.com/Codecademy/client-modules/commit/6572bea9caeee3a2d96c571dbfd8770d8c2d6849))
+
+
+
+## [24.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@24.2.1...@codecademy/gamut-labs@24.3.0) (2021-10-04)
+
+
+### Features
+
+* adding `isBusinessAdmin` field to User type ([85f5df5](https://github.com/Codecademy/client-modules/commit/85f5df5b03a16ac5612da921f3e878990f8eb709))
+
+
+
 ### [24.2.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@24.2.0...@codecademy/gamut-labs@24.2.1) (2021-10-01)
 
 **Note:** Version bump only for package @codecademy/gamut-labs
