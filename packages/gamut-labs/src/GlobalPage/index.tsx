@@ -15,6 +15,7 @@ export type GlobalPageBackgroundColor =
   | 'navy'
   | 'paleBlue'
   | 'paleGreen'
+  | 'palePink'
   | 'paleYellow'
   | 'white';
 
