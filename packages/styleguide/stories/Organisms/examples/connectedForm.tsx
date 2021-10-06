@@ -48,7 +48,7 @@ export const VeryCoolForm = () => {
   return (
     <Background bg="black" p={48}>
       <ConnectedForm
-        onSubmit={({ thisField }) => console.log(thisField)}
+        onSubmit={({ thisField }) => thisField}
         {...connectedFormProps}
       >
         <ConnectedFormGroup
@@ -144,7 +144,7 @@ export const FancyConnectedFormExample: React.FC = () => {
       borderRadius="10px"
     >
       <ConnectedForm
-        onSubmit={(values) => console.log(values)}
+        onSubmit={(values) => values}
         resetOnSubmit
         display="grid"
         gridTemplateRows="auto"
@@ -289,7 +289,6 @@ export const FancyConnectedFormExample: React.FC = () => {
               field={{
                 component: ConnectedCheckbox,
                 label: 'check me out',
-                validation: { required: 'check it...' },
                 spacing: 'tight',
               }}
             />
