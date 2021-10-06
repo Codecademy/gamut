@@ -54,7 +54,7 @@
   }
 
   .ul .li::before {
-    background: $color-black;
+    background: currentColor;
     border-radius: 100%;
     content: " ";
     display: inline-block;
