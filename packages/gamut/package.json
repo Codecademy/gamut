@@ -1,7 +1,7 @@
 {
   "name": "@codecademy/gamut",
   "description": "Styleguide & Component library for Codecademy",
-  "version": "37.9.0",
+  "version": "37.10.0",
   "author": "Codecademy Engineering <dev@codecademy.com>",
   "sideEffects": [
     "**/*.css",
@@ -57,6 +57,7 @@
   "license": "MIT",
   "devDependencies": {
     "@codecademy/gamut-tests": "^2.6.2",
+    "@emotion/jest": "^11.3.0",
     "@testing-library/dom": "^7.31.2",
     "@testing-library/react": "^11.0.4",
     "@types/enzyme": "3.10.7",
