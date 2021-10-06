@@ -46,6 +46,9 @@ export interface ConnectedFormProps<Values extends {}>
    */
   onSubmit: SubmitHandler<Values>;
 
+  /**
+   * Default values are highly recommended for reliable form behavior, particularly resets.
+   */
   defaultValues?: UseFormOptions<Values>['defaultValues'];
 
   /**

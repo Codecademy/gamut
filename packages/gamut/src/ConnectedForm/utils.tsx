@@ -1,15 +1,11 @@
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import { RegisterOptions, useFormContext } from 'react-hook-form';
 
 import {
-  ConnectedCheckbox,
   ConnectedForm,
   ConnectedFormGroup,
   ConnectedFormGroupProps,
   ConnectedFormProps,
-  ConnectedInput,
-  ConnectedRadioGroupInput,
-  ConnectedSelect,
   FormPropsContext,
 } from '.';
 import { SubmitContextProps } from './SubmitButton';
@@ -61,99 +57,11 @@ export const useConnectedForm = <
       Values,
       ValidationRules
     >,
-    wrapperProps: {
+    connectedFormProps: {
       defaultValues,
       validationRules,
     },
   };
-};
-
-export const TestOne = () => {
-  const { ConnectedFormGroup, ConnectedForm, wrapperProps } = useConnectedForm({
-    defaultValues: {
-      cool: 'gnbsdlfkjndlskfj',
-      beans: 'beans!',
-      check: true,
-      selected: 'not to mention nested',
-      tv: 'three',
-    },
-    validationRules: {
-      cool: { required: 'explain yourself cool' },
-      beans: {
-        pattern: {
-          value: /^(?:(?!zero).)*$/,
-          message: 'zero to hero',
-        },
-      },
-      selected: {
-        pattern: {
-          value: /^(?:(?!zero).)*$/,
-          message: 'not zero.',
-        },
-      },
-      tv: {
-        fbasdhjfb: 'fdsajkf',
-      },
-    },
-  });
-
-  return (
-    <ConnectedForm
-      m={64}
-      p={64}
-      onSubmit={(values) => console.log(values)}
-      resetOnSubmit
-      {...wrapperProps}
-    >
-      <ConnectedFormGroup
-        name="selected"
-        label="cool"
-        field={{
-          component: ConnectedInput,
-        }}
-      />
-      <ConnectedFormGroup
-        name="check"
-        label="beans"
-        field={{
-          component: ConnectedInput,
-        }}
-      />
-      <ConnectedFormGroup
-        name="check"
-        label="ah yes a check"
-        field={{
-          component: ConnectedCheckbox,
-          label: 'yeeeees',
-        }}
-      />
-      <ConnectedFormGroup
-        name="selected"
-        label="selected or dejected"
-        field={{
-          component: ConnectedSelect,
-          options: [
-            'perhaps just disrespected?',
-            "but maybe that's expected",
-            'zero',
-          ],
-        }}
-      />
-      <ConnectedFormGroup
-        name="tv"
-        label="tv on the radio"
-        field={{
-          component: ConnectedRadioGroupInput,
-          options: [
-            { label: 'one', value: 'first' },
-            { label: 'two', value: 'two' },
-            { label: 'three', value: 'three' },
-            { label: 'zilch', value: 'zero' },
-          ],
-        }}
-      />
-    </ConnectedForm>
-  );
 };
 
 export const useFormState = () => {
@@ -168,6 +76,7 @@ export const useFormState = () => {
     formState,
     watch,
   } = useFormContext();
+
   const {
     disableFieldsOnSubmit,
     wasSubmitSuccessful,
