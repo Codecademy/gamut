@@ -5,7 +5,16 @@ import ReactDOM from 'react-dom';
 import { useIsomorphicLayoutEffect } from 'react-use';
 
 const PortalWrapper = styled
-  .div(system.css({ position: 'absolute', zIndex: 1, inset: 0, bottom: 1 }))
+  .div(
+    system.css({
+      position: 'absolute',
+      zIndex: 1,
+      top: 0,
+      left: 0,
+      right: 0,
+      height: 0,
+    })
+  )
   .withComponent(ColorMode);
 
 export const BodyPortal: React.FC = ({ children }) => {
