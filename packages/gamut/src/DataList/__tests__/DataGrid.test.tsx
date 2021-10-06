@@ -2,14 +2,13 @@ import { setupRtl } from '@codecademy/gamut-tests';
 import { act, fireEvent, RenderResult, screen } from '@testing-library/react';
 import React from 'react';
 
-import { DataListProps } from '..';
-import { DataList } from '../DataList';
+import { DataGrid, DataGridProps } from '../DataGrid';
 import { ColumnConfig } from '../types';
 
 type Row = { id: number; name: string; sin: string };
 type Columns = ColumnConfig<Row>[];
 
-type Props = DataListProps<Row, 'id', Columns>;
+type Props = DataGridProps<Row, 'id', Columns>;
 
 const onRowSelect = jest.fn();
 const onRowExpand = jest.fn();
@@ -30,13 +29,13 @@ const props = {
   expandedContent: ({ row: { id } }) => <div>Expanded {id}</div>,
 } as Props;
 
-const renderView = setupRtl(DataList, props as any) as <
+const renderView = setupRtl(DataGrid, props as any) as <
   T extends Partial<Props>
 >(
   props?: T
 ) => { view: RenderResult };
 
-describe('DataList', () => {
+describe('DataGrid', () => {
   describe('Column Rendering', () => {
     it('renders rows with multiple columns', () => {
       renderView();
