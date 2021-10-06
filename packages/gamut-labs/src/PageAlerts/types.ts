@@ -1,6 +1,5 @@
+import { Alert } from '@codecademy/gamut/src/Alert';
 import { ComponentProps } from 'react';
-
-import { Alert } from '../Alert';
 
 type AlertProps = Required<ComponentProps<typeof Alert>>;
 

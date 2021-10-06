@@ -1,4 +1,4 @@
-import { Alert, BodyPortal } from '@codecademy/gamut/src';
+import { Alert, BodyPortal } from '@codecademy/gamut';
 import { breakpoints } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React, { useContext, useEffect, useRef } from 'react';
