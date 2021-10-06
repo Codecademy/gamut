@@ -22,8 +22,8 @@ const SHORTHAND_PROPERTIES = [
   'gridTemplate',
   'overflow',
   'transition',
+  'inset',
 ];
-
 const SORT = {
   A_BEFORE_B: -1,
   B_BEFORE_A: 1,
