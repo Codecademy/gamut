@@ -4,7 +4,6 @@ import { useFieldContext } from '../../utils';
 import { ConnectedFieldProps } from '../types';
 
 export type ConnectedCustomInputProps<T> = ConnectedFieldProps & {
-  // component: React.ComponentType<T>;
   component: React.ForwardRefExoticComponent<T>;
   disabled?: boolean;
 } & T;
