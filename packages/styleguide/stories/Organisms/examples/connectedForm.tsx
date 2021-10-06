@@ -149,20 +149,22 @@ export const FancyConnectedFormExample: React.FC = () => {
         display="grid"
         gridTemplateRows="auto"
         gridTemplateAreas="'illo illo header header'
-    'illo illo radio radio'
+    'illo illo rightBar rightBar'
     'main main main main'
-    'sidebar sidebar sidebar sidebar'"
+    'footer footer footer footer'"
         {...connectedFormProps}
       >
-        <Box display="flex" justifyContent="flex-end">
-          <FloatingCard beak="bottom-right" pattern={DotDense}>
-            <SubmitButton variant="secondary" m={32}>
-              dont forget to submit
-            </SubmitButton>
-          </FloatingCard>
+        <Box gridArea="header" display="flex" justifyContent="flex-end">
+          <Box>
+            <FloatingCard beak="bottom-right" pattern={DotDense}>
+              <SubmitButton variant="secondary" m={32}>
+                dont forget to submit
+              </SubmitButton>
+            </FloatingCard>
+          </Box>
         </Box>
         <Box
-          gridArea="radio"
+          gridArea="rightBar"
           bg="palePink"
           border={1}
           p={16}
@@ -272,7 +274,7 @@ export const FancyConnectedFormExample: React.FC = () => {
         </Card>
 
         <Background
-          gridArea="sidebar"
+          gridArea="footer"
           bg="navy"
           p={16}
           mt={12}
