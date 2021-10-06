@@ -11,16 +11,6 @@ import {
 import { SubmitContextProps } from './SubmitButton';
 import { ConnectedField } from './types';
 
-export const submitSuccessStatus = (
-  wasSubmitSuccessful: boolean | undefined,
-  isSubmitSuccessful: boolean | undefined
-) => {
-  return (
-    (wasSubmitSuccessful || wasSubmitSuccessful === undefined) &&
-    isSubmitSuccessful
-  );
-};
-
 interface ConnectedGroupStrictProps<Values extends {}> {
   <Name extends keyof Values, Component extends ConnectedField>(
     props: {
@@ -62,6 +52,16 @@ export const useConnectedForm = <
       validationRules,
     },
   };
+};
+
+export const submitSuccessStatus = (
+  wasSubmitSuccessful: boolean | undefined,
+  isSubmitSuccessful: boolean | undefined
+) => {
+  return (
+    (wasSubmitSuccessful || wasSubmitSuccessful === undefined) &&
+    isSubmitSuccessful
+  );
 };
 
 export const useFormState = () => {
