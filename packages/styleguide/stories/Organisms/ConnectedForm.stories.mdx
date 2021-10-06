@@ -2,7 +2,7 @@ import { ConnectedForm } from '@codecademy/gamut';
 import title from '@codecademy/macros/lib/title.macro';
 import { Meta } from '@storybook/addon-docs/blocks';
 
-import { TestOne, VeryCoolForm } from './examples';
+import { FancyConnectedFormExample, VeryCoolForm } from './examples';
 
 <Meta
   title={title}
@@ -22,7 +22,7 @@ import { TestOne, VeryCoolForm } from './examples';
 ## Usage
 
 ```tsx
-const VeryCoolForm = () => {
+export const VeryCoolForm = () => {
   const {
     ConnectedFormGroup,
     ConnectedForm,
@@ -30,22 +30,22 @@ const VeryCoolForm = () => {
   } = useConnectedForm({
     defaultValues: {
       thisField: true,
-      thatField: 'zero!',
+      thatField: 'zero',
       anotherField: 'state your name',
     },
     validationRules: {
-      thisField: { required: 'yes' },
+      thisField: { required: 'you need to check this.' },
       thatField: {
         pattern: {
           value: /^(?:(?!zero).)*$/,
-          message: 'notZero',
+          message: 'literally anything but zero',
         },
       },
     },
   });
 
   return (
-    <Background bg="black">
+    <Background bg="black" p={48}>
       <ConnectedForm
         onSubmit={({ thisField }) => console.log(thisField)}
         {...connectedFormProps}
@@ -59,7 +59,10 @@ const VeryCoolForm = () => {
           }}
         />
         <Box>
-          <Text>I have something important to tell you.</Text>
+          <Text>I have something important to tell you...</Text>
+          <SubmitButton variant="secondary" m={32}>
+            submit this form.
+          </SubmitButton>
         </Box>
         <ConnectedFormGroup
           name="thatField"
@@ -81,11 +84,10 @@ const VeryCoolForm = () => {
     </Background>
   );
 };
-};
 ```
 
 <VeryCoolForm />
 
 ## Fancy Examples
 
-<TestOne />
+<FancyConnectedFormExample />

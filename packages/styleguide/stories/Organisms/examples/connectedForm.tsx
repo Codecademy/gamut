@@ -11,7 +11,6 @@ import {
   SubmitButton,
   Text,
   useConnectedForm,
-  useFormState,
 } from '@codecademy/gamut/src';
 import { TerminalIcon, ViewIcon } from '@codecademy/gamut-icons';
 import { Keyhole } from '@codecademy/gamut-illustrations';
@@ -31,22 +30,22 @@ export const VeryCoolForm = () => {
   } = useConnectedForm({
     defaultValues: {
       thisField: true,
-      thatField: 'zero!',
+      thatField: 'zero',
       anotherField: 'state your name',
     },
     validationRules: {
-      thisField: { required: 'yes' },
+      thisField: { required: 'you need to check this, its important i SWEAR' },
       thatField: {
         pattern: {
           value: /^(?:(?!zero).)*$/,
-          message: 'notZero',
+          message: 'literally anything but zero',
         },
       },
     },
   });
 
   return (
-    <Background bg="black">
+    <Background bg="black" p={48}>
       <ConnectedForm
         onSubmit={({ thisField }) => console.log(thisField)}
         {...connectedFormProps}
@@ -61,6 +60,9 @@ export const VeryCoolForm = () => {
         />
         <Box>
           <Text>I have something important to tell you.</Text>
+          <SubmitButton variant="secondary" m={32}>
+            submit this form.
+          </SubmitButton>
         </Box>
         <ConnectedFormGroup
           name="thatField"
@@ -83,100 +85,54 @@ export const VeryCoolForm = () => {
   );
 };
 
-export const TestOne = () => {
+export const FancyConnectedFormExample: React.FC = () => {
   const {
     ConnectedFormGroup,
     ConnectedForm,
     connectedFormProps,
   } = useConnectedForm({
     defaultValues: {
-      cool: 'gnbsdlfkjndlskfj',
-      beans: 'beans!',
-      check: true,
-      selected: 'not to mention nested',
-      tv: undefined,
+      exampleRadioArea0: undefined,
+      select0: undefined,
+      select1: 'two',
+      select2: undefined,
+      input1: 'hey there.',
+      exampleRadioArea1: '5',
+      exampleIcon: 'hey',
+      check0: true,
+      check1: false,
+      check2: true,
+      exampleTextArea: '',
     },
     validationRules: {
-      cool: { required: 'explain yourself cool' },
-      beans: {
+      exampleRadioArea0: {
+        required: 'you must make a decision',
+      },
+      select0: { required: 'hey..' },
+      select1: {
         pattern: {
           value: /^(?:(?!zero).)*$/,
           message: 'zero to hero',
         },
       },
-      check: { required: 'explain yourself check' },
-      selected: {
+      select2: {
         pattern: {
-          value: /^(?:(?!zero).)*$/,
-          message: 'not zero.',
+          value: /^(?:(?!one).)*$/,
+          message: 'anything but one',
         },
       },
+      input1: {
+        pattern: {
+          value: /^(?:(?!zero).)*$/,
+          message: 'zero to hero',
+        },
+      },
+      check0: { required: 'check it...' },
+      check1: { required: 'check it...' },
+      check2: { required: 'check it...' },
     },
   });
 
-  return (
-    <ConnectedForm
-      m={64}
-      p={64}
-      onSubmit={(values) => console.log(values)}
-      resetOnSubmit
-      {...connectedFormProps}
-    >
-      <SubmitButton variant="secondary" m={32}>
-        dont forget to submit
-      </SubmitButton>
-      <ConnectedFormGroup
-        name="cool"
-        label="cool"
-        field={{
-          component: ConnectedInput,
-        }}
-      />
-      <ConnectedFormGroup
-        name="beans"
-        label="beans"
-        field={{
-          component: ConnectedInput,
-        }}
-      />
-      <ConnectedFormGroup
-        name="check"
-        label="ah yes a check"
-        field={{
-          component: ConnectedCheckbox,
-          label: 'yeeeees',
-        }}
-      />
-      <ConnectedFormGroup
-        name="selected"
-        label="selected or dejected"
-        field={{
-          component: ConnectedSelect,
-          options: [
-            'perhaps just disrespected?',
-            "but maybe that's expected",
-            'zero',
-          ],
-        }}
-      />
-      <ConnectedFormGroup
-        name="tv"
-        label="tv on the radio"
-        field={{
-          component: ConnectedRadioGroupInput,
-          options: [
-            { label: 'one', value: 'first' },
-            { label: 'two', value: 'two' },
-            { label: 'three', value: 'three' },
-            { label: 'zilch', value: 'zero' },
-          ],
-        }}
-      />
-    </ConnectedForm>
-  );
-};
-
-export const HEY: React.FC = () => {
   return (
     <Background
       bg="paleGreen"
@@ -188,16 +144,6 @@ export const HEY: React.FC = () => {
     >
       <ConnectedForm
         onSubmit={(values) => console.log(values)}
-        defaultValues={{
-          'your-field': 'two',
-          'example-icon': 'hey',
-          'check-field-0': true,
-          'check-field-1': false,
-          'check-field-2': true,
-          'our-field': 'boo',
-          'example-radio-area': '5',
-          'render-select': 'two',
-        }}
         resetOnSubmit
         display="grid"
         gridTemplateRows="auto"
@@ -205,6 +151,7 @@ export const HEY: React.FC = () => {
     'illo illo radio radio'
     'illo illo main main'
     'sidebar sidebar sidebar sidebar'"
+        {...connectedFormProps}
       >
         <Box display="flex" justifyContent="flex-end">
           <FloatingCard beak="bottom-right" pattern={DotDense}>
@@ -223,16 +170,10 @@ export const HEY: React.FC = () => {
         >
           <INeedSomeSpace>
             <ConnectedFormGroup
-              name="example-radio-area"
+              name="exampleRadioArea0"
               label="pls answer"
               field={{
                 component: ConnectedRadioGroupInput,
-                validation: {
-                  pattern: {
-                    value: /^(?:(?!zero).)*$/,
-                    message: 'not zero.',
-                  },
-                },
                 options: [
                   { label: 'one', value: 'first' },
                   { label: 'two', value: 'two' },
@@ -243,11 +184,13 @@ export const HEY: React.FC = () => {
             />
           </INeedSomeSpace>
           <INeedSomeSpace>
-            hi
-            <ConnectedSelect
-              name="render-input-two"
-              validation={{ required: 'hey' }}
-              options={['one', 'two']}
+            <ConnectedFormGroup
+              name="select0"
+              label="pls... answer..."
+              field={{
+                component: ConnectedSelect,
+                options: ['one', 'two'],
+              }}
             />
           </INeedSomeSpace>
         </Box>
@@ -262,66 +205,46 @@ export const HEY: React.FC = () => {
         >
           <INeedSomeSpace>
             <ConnectedFormGroup
-              name="render-select"
+              name="select1"
               label="render select ok"
               field={{
                 component: ConnectedSelect,
-                validation: {
-                  pattern: {
-                    value: /^(?:(?!zero).)*$/,
-                    message: 'zero to hero',
-                  },
-                },
                 options: ['zero', 'two', 'three'],
               }}
             />
             <ConnectedFormGroup
-              name="render-select"
+              name="select2"
               label="render select ok tré"
               field={{
                 component: ConnectedSelect,
                 options: ['zero', 'one', 'two'],
-                validation: {
-                  pattern: {
-                    value: /^(?:(?!zero).)*$/,
-                    message: 'zero to hero',
-                  },
-                },
               }}
             />
             <ConnectedFormGroup
-              name="render-input"
+              name="input1"
               label="render input ok"
               field={{
                 component: ConnectedInput,
-                validation: {
-                  pattern: {
-                    value: /^(?:(?!zero).)*$/,
-                    message: 'zero to hero',
-                  },
-                },
               }}
             />
             <ConnectedFormGroup
-              name="render-radio"
+              name="exampleRadioArea1"
               label="render radio ok"
               field={{
                 component: ConnectedRadioGroupInput,
-                validation: {
-                  required: 'hey...',
-                },
                 options: [
-                  { label: 'one', value: 'first' },
-                  { label: 'two', value: 'two' },
-                  { label: 'three', value: 'three' },
-                  { label: 'zilch', value: 'zero' },
+                  { label: 'one', value: '1' },
+                  { label: 'two', value: '2' },
+                  { label: 'three', value: '2' },
+                  { label: 'four', value: '4' },
+                  { label: 'five', value: '5' },
                 ],
               }}
             />
           </INeedSomeSpace>
           <INeedSomeSpace>
             <ConnectedFormGroup
-              name="example-icon"
+              name="exampleIcon"
               label="write text in here"
               spacing="tight"
               errorType="initial"
@@ -356,7 +279,7 @@ export const HEY: React.FC = () => {
         >
           <Card shadow="medium">
             <ConnectedFormGroup
-              name="check-field-0"
+              name="check0"
               label="hi"
               spacing="tight"
               errorType="initial"
@@ -368,33 +291,31 @@ export const HEY: React.FC = () => {
               }}
             />
             <ConnectedFormGroup
-              name="check-field-1"
+              name="check1"
               label="hi"
               spacing="tight"
               errorType="initial"
               field={{
                 component: ConnectedCheckbox,
                 label: 'check me out',
-                validation: { required: 'check it...' },
                 spacing: 'tight',
               }}
             />
             <ConnectedFormGroup
-              name="check-field-2"
+              name="check2"
               label="hi"
               spacing="tight"
               errorType="initial"
               field={{
                 component: ConnectedCheckbox,
                 label: 'check me out',
-                validation: { required: 'check it...' },
                 spacing: 'tight',
               }}
             />
           </Card>
           <INeedSomeSpace>
             <ConnectedFormGroup
-              name="example-text-area"
+              name="exampleTextArea"
               label="write text in here"
               spacing="tight"
               errorType="initial"
