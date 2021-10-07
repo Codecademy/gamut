@@ -8,17 +8,33 @@ const settings = {
 };
 
 describe('fetchDestinationsForWriteKey', () => {
-  afterEach(fetchMock.restore);
+  beforeEach(() => fetchMock.restore());
 
-  it('returns [] when the integrations fetch is not ok', async () => {
+  it('returns [] and logs an error when the integrations fetch is not ok', async () => {
+    const error = 'Oh no';
     fetchMock.get(
       `https://cdn.segment.com/v1/projects/${settings.writeKey}/integrations`,
-      { status: 500 }
+      { throws: error }
     );
 
     const destinations = await fetchDestinationsForWriteKey(settings);
 
     expect(destinations).toEqual([]);
+    expect(settings.onError).toHaveBeenCalledWith(
+      `Unknown error fetching Segment destinations for write key ${settings.writeKey}: ${error}`
+    );
+  });
+
+  it('returns [] and does not log an error when the integrations fetch is a known client issue', async () => {
+    fetchMock.get(
+      `https://cdn.segment.com/v1/projects/${settings.writeKey}/integrations`,
+      { throws: 'Failed to fetch' }
+    );
+
+    const destinations = await fetchDestinationsForWriteKey(settings);
+
+    expect(destinations).toEqual([]);
+    expect(settings.onError).not.toHaveBeenCalled();
   });
 
   it('returns [] when response.json() throws an error', async () => {
