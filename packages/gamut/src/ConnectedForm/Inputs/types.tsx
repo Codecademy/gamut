@@ -27,18 +27,17 @@ export interface ConnectedCheckboxProps
     >,
     ConnectedFieldProps {}
 
+type FieldComponent<T> = Omit<T, 'defaultValue' | 'name' | 'validation'>
+
 export interface ConnectedInputProps
-  extends Omit<InputWrapperProps, 'defaultValue' | 'name' | 'validation'>,
+  extends FieldComponent<InputWrapperProps>,
     ConnectedFieldProps {}
 
 export interface ConnectedRadioProps
-  extends Omit<RadioProps, 'defaultValue' | 'name' | 'validation'>,
+  extends FieldComponent<RadioProps>,
     ConnectedFieldProps {}
 
-export type ConnectedBaseRadioGroupProps = Omit<
-  RadioGroupProps,
-  'defaultValue' | 'name' | 'validation'
->;
+export type ConnectedBaseRadioGroupProps = FieldComponent<RadioGroupProps>;
 
 export type ConnectedBaseRadioInputProps = Omit<
   RadioProps,
