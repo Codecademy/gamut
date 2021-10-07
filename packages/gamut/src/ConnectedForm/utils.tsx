@@ -41,17 +41,20 @@ export const useConnectedForm = <
   defaultValues,
   validationRules,
 }: UseConnectedFormProps<Values, ValidationRules>) => {
-  return useMemo(() => ({
-    ConnectedFormGroup: ConnectedFormGroup as ConnectedGroupStrictProps<Values>,
-    ConnectedForm: ConnectedForm as ConnectedFormStrictProps<
-      Values,
-      ValidationRules
-    >,
-    connectedFormProps: {
-      defaultValues,
-      validationRules,
-    },
-  }), []);
+  return useMemo(
+    () => ({
+      ConnectedFormGroup: ConnectedFormGroup as ConnectedGroupStrictProps<Values>,
+      ConnectedForm: ConnectedForm as ConnectedFormStrictProps<
+        Values,
+        ValidationRules
+      >,
+      connectedFormProps: {
+        defaultValues,
+        validationRules,
+      },
+    }),
+    []
+  );
 };
 
 export const submitSuccessStatus = (
@@ -100,7 +103,7 @@ export const useFormState = () => {
   };
 };
 
-export const useFieldContext = (fieldName: string) => {
+export const useField = (fieldName: string) => {
   // eslint-disable-next-line @typescript-eslint/unbound-method
   const {
     control,

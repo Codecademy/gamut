@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { TextArea } from '../../../Form';
-import { useFieldContext } from '../../utils';
+import { useField } from '../../utils';
 import { ConnectedTextAreaProps } from '../types';
 
 export const ConnectedTextArea: React.FC<ConnectedTextAreaProps> = ({
@@ -9,7 +9,7 @@ export const ConnectedTextArea: React.FC<ConnectedTextAreaProps> = ({
   name,
   ...rest
 }) => {
-  const { isDisabled, register, validation, error } = useFieldContext(name);
+  const { isDisabled, register, validation, error } = useField(name);
   const currentlyDisabled = isDisabled || disabled;
 
   return (

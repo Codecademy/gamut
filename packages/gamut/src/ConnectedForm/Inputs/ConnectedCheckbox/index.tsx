@@ -2,7 +2,7 @@ import React from 'react';
 import { Controller } from 'react-hook-form';
 
 import { Checkbox } from '../../../Form';
-import { useFieldContext } from '../../utils';
+import { useField } from '../../utils';
 import { ConnectedCheckboxProps } from '../types';
 
 export const ConnectedCheckbox: React.FC<ConnectedCheckboxProps> = ({
@@ -16,7 +16,7 @@ export const ConnectedCheckbox: React.FC<ConnectedCheckboxProps> = ({
   onUpdate,
   spacing,
 }) => {
-  const { isDisabled, control, validation } = useFieldContext(name);
+  const { isDisabled, control, validation } = useField(name);
   const currentlyDisabled = isDisabled || disabled;
 
   return (

@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Input } from '../../../Form';
-import { useFieldContext } from '../../utils';
+import { useField } from '../../utils';
 import { ConnectedInputProps } from '../types';
 
 export const ConnectedInput: React.FC<ConnectedInputProps> = ({
@@ -9,7 +9,7 @@ export const ConnectedInput: React.FC<ConnectedInputProps> = ({
   name,
   ...rest
 }) => {
-  const { error, isDisabled, register, validation } = useFieldContext(name);
+  const { error, isDisabled, register, validation } = useField(name);
   const currentlyDisabled = isDisabled || disabled;
 
   return (

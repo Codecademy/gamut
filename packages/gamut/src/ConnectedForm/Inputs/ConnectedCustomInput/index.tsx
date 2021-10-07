@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { useFieldContext } from '../../utils';
+import { useField } from '../../utils';
 import { ConnectedFieldProps } from '../types';
 
 export type ConnectedCustomInputProps<T> = ConnectedFieldProps & {
@@ -15,7 +15,7 @@ export function ConnectedCustomInput<ComponentProps>({
   validation,
   ...rest
 }: ConnectedCustomInputProps<ComponentProps>) {
-  const { isDisabled, register } = useFieldContext(name);
+  const { isDisabled, register } = useField(name);
   const currentlyDisabled = isDisabled || disabled;
 
   return (

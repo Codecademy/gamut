@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { RadioGroup } from '../../../Form';
-import { useFieldContext } from '../../utils';
+import { useField } from '../../utils';
 import { ConnectedRadioGroupProps } from '../types';
 
 export const ConnectedRadioGroup: React.FC<ConnectedRadioGroupProps> = ({
@@ -9,7 +9,7 @@ export const ConnectedRadioGroup: React.FC<ConnectedRadioGroupProps> = ({
   onChange,
   ...rest
 }) => {
-  const { setValue } = useFieldContext(name);
+  const { setValue } = useField(name);
 
   return (
     <RadioGroup

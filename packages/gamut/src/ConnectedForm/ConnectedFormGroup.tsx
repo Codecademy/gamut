@@ -13,7 +13,7 @@ import { Anchor } from '../Anchor';
 import { HiddenText } from '../HiddenText';
 import { Markdown } from '../Markdown';
 import { ConnectedField, FieldProps } from './types';
-import { useFieldContext } from './utils';
+import { useField } from './utils';
 
 const ErrorAnchor = styled(Anchor)(
   css({
@@ -54,7 +54,7 @@ export function ConnectedFormGroup<T extends ConnectedField>({
   spacing = 'fit',
   tooltip,
 }: ConnectedFormGroupProps<T>) {
-  const { error, isFirstError, isDisabled } = useFieldContext(name);
+  const { error, isFirstError, isDisabled } = useField(name);
   const { component: Component, ...rest } = field;
   const currentlyDisabled = isDisabled || disabled;
 

@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Select } from '../../../Form';
-import { useFieldContext } from '../../utils';
+import { useField } from '../../utils';
 import { ConnectedSelectProps } from '../types';
 
 export const ConnectedSelect: React.FC<ConnectedSelectProps> = ({
@@ -9,7 +9,7 @@ export const ConnectedSelect: React.FC<ConnectedSelectProps> = ({
   name,
   ...rest
 }) => {
-  const { isDisabled, register, validation, error } = useFieldContext(name);
+  const { isDisabled, register, validation, error } = useField(name);
   const currentlyDisabled = isDisabled || disabled;
 
   return (
