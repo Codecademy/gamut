@@ -138,7 +138,6 @@ export const FancyConnectedFormExample: React.FC = () => {
     <Background
       bg="paleGreen"
       border={1}
-      borderColor="navy"
       p={32}
       m={32}
       borderRadius="10px"
