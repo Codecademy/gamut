@@ -4,7 +4,7 @@ import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
 import React, { ReactNode, useMemo } from 'react';
 
-import { Box, FlexBox } from '../Box';
+import { FlexBox } from '../Box';
 import { IconButton } from '../Button/IconButton';
 import { FloatingCard } from '../FloatingCard/FloatingCard';
 import { Text } from '../Typography';
@@ -69,6 +69,11 @@ export const Toast: React.FC<ToastProps> = ({
     return 'message';
   }, [title, icon]);
 
+  const justifyContent =
+    layoutType === 'message' || layoutType === 'icon-message'
+      ? 'center'
+      : 'initial';
+
   const renderIcon = () => {
     if (!icon) return null;
     if (typeof icon === 'string') {
@@ -90,7 +95,7 @@ export const Toast: React.FC<ToastProps> = ({
   return (
     <ToastContainer role="status" aria-live="polite" layout={layoutType}>
       {renderIcon()}
-      <Box gridArea="message" py={4}>
+      <FlexBox column justifyContent={justifyContent} gridArea="message" py={4}>
         {title && (
           <Text variant="p-base" fontWeight="title" mb={4}>
             {title}
@@ -99,7 +104,7 @@ export const Toast: React.FC<ToastProps> = ({
         <Text as="div" variant="p-small">
           {children}
         </Text>
-      </Box>
+      </FlexBox>
       <IconButton
         onClick={onClose}
         size="small"
