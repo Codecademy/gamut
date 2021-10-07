@@ -111,21 +111,26 @@ Using the `eyebrow` prop, you can add eyebrow text to the hero. The eyebrow will
 
 <Canvas>
   <Story name="Eyebrow">
-    {(args) => <PageHero {...args} eyebrow="Hello there" textLength="short" />}
+    {(args) => (
+      <PageHero
+        {...args}
+        eyebrow={{ text: 'Hello there' }}
+        textLength="short"
+      />
+    )}
   </Story>
 </Canvas>
 
 ## Accent Eyebrow
 
-Add the `accentEyebrow` prop to change the eyebrow text color to `#1557FF`. If you are using this component with a page or section background color, please ensure that the contrast meets accessibility guidelines.
+Set `accent` within `eyebrow` to true to change the eyebrow text color to `#1557FF`. If you are using this component with a page or section background color, please ensure that the contrast meets accessibility guidelines.
 
 <Canvas>
   <Story name="Accent Eyebrow">
     {(args) => (
       <PageHero
         {...args}
-        eyebrow="Hello there"
-        accentEyebrow
+        eyebrow={{ text: 'Hello there', accent: true }}
         textLength="short"
       />
     )}
