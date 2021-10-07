@@ -30,7 +30,6 @@ export type ConnectedFormGroupBaseProps = Omit<FormGroupProps, 'label'> &
     label: React.ReactNode;
     required?: boolean;
     showRequired?: boolean;
-    spacing?: 'base' | 'tight';
     tooltip?: any;
   };
 
@@ -52,7 +51,7 @@ export function ConnectedFormGroup<T extends ConnectedField>({
   required,
   showRequired,
   size,
-  spacing,
+  spacing = 'fit',
   tooltip,
 }: ConnectedFormGroupProps<T>) {
   const { error, isFirstError, isDisabled } = useFieldContext(name);
@@ -72,10 +71,7 @@ export function ConnectedFormGroup<T extends ConnectedField>({
   );
 
   return (
-    <FormGroup
-      pb={spacing === 'tight' ? 0 : 8}
-      mb={spacing === 'tight' ? 0 : 8}
-    >
+    <FormGroup spacing={spacing}>
       {hideLabel ? <HiddenText>{renderedLabel}</HiddenText> : renderedLabel}
       <Component name={name} {...(rest as any)} />
       {children}

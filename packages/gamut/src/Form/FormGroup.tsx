@@ -1,3 +1,5 @@
+import { variant } from '@codecademy/gamut-styles';
+import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
 import React, { ComponentProps } from 'react';
 
@@ -23,15 +25,36 @@ export interface FormGroupProps
   tooltip?: ToolTipProps;
 }
 
-const FormGroupContainer = styled(Box)`
+const formGroupSpacing = variant({
+  defaultVariant: 'loose',
+  prop: 'spacing',
+  variants: {
+    tight: {
+      px: 0,
+      py: 0,
+    },
+    fit: {
+      pb: 8,
+      mb: 8,
+    },
+    padded: {
+      pb: 8,
+      mb: 0,
+    },
+    loose: {
+      pb: 8,
+      mb: 24,
+    },
+  },
+});
+
+export type FormGroupSpacing = StyleProps<typeof formGroupSpacing>;
+
+const FormGroupContainer = styled(Box)<FormGroupSpacing>`
+  ${formGroupSpacing}
   position: relative;
   width: 100%;
 `;
-
-FormGroupContainer.defaultProps = {
-  pb: 8,
-  mb: 24,
-};
 
 export const FormGroup: React.FC<FormGroupProps> = ({
   tooltip,
@@ -44,6 +67,7 @@ export const FormGroup: React.FC<FormGroupProps> = ({
   error,
   labelSize,
   disabled,
+  spacing,
   ...rest
 }) => {
   const labelComponent = label ? (
@@ -65,7 +89,7 @@ export const FormGroup: React.FC<FormGroupProps> = ({
   ) : null;
 
   return (
-    <FormGroupContainer {...rest} className={className}>
+    <FormGroupContainer {...rest} className={className} spacing={spacing}>
       {labelComponent}
       {descriptionComponent}
       {children}
