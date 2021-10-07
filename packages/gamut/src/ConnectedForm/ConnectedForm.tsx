@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import {
   FormProvider,
   FormProviderProps,
@@ -23,6 +23,10 @@ export interface FormContextProps {
    * If fields should be reset after successful submission.
    */
   resetOnSubmit?: boolean;
+  /**
+   * If required field should show asterisks in labels.
+   */
+  showRequired?: boolean;
   /**
    * Function called with field values on submit, if all validations have passed.
    */
@@ -78,6 +82,7 @@ export function ConnectedForm<Values extends FormValues<Values>>({
   validation = 'onSubmit',
   disableFieldsOnSubmit = false,
   resetOnSubmit = false,
+  showRequired = false,
   validationRules,
   wasSubmitSuccessful = undefined,
   ...rest
@@ -98,15 +103,24 @@ export function ConnectedForm<Values extends FormValues<Values>>({
     }
   }, [isSubmitSuccessful, resetOnSubmit, reset, defaultValues]);
 
+  const contextValues = useMemo(() => {
+    return {
+      disableFieldsOnSubmit,
+      resetOnSubmit,
+      showRequired,
+      validationRules,
+      wasSubmitSuccessful,
+    };
+  }, [
+    disableFieldsOnSubmit,
+    resetOnSubmit,
+    showRequired,
+    validationRules,
+    wasSubmitSuccessful,
+  ]);
+
   return (
-    <PropsProvider
-      value={{
-        disableFieldsOnSubmit,
-        resetOnSubmit,
-        validationRules,
-        wasSubmitSuccessful,
-      }}
-    >
+    <PropsProvider value={contextValues}>
       <FormProvider
         handleSubmit={handleSubmit}
         formState={formState}

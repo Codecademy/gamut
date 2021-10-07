@@ -48,13 +48,17 @@ export function ConnectedFormGroup<T extends ConnectedField>({
   id,
   label,
   name,
-  required,
-  showRequired,
   size,
   spacing = 'fit',
   tooltip,
 }: ConnectedFormGroupProps<T>) {
-  const { error, isFirstError, isDisabled } = useField(name);
+  const {
+    error,
+    isFirstError,
+    isDisabled,
+    showRequired,
+    validation,
+  } = useField(name);
   const { component: Component, ...rest } = field;
   const currentlyDisabled = isDisabled || disabled;
 
@@ -63,7 +67,7 @@ export function ConnectedFormGroup<T extends ConnectedField>({
       disabled={currentlyDisabled}
       htmlFor={id || name}
       tooltip={tooltip}
-      showRequired={showRequired && required}
+      showRequired={showRequired && !!validation}
       size={size}
     >
       {label}

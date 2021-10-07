@@ -83,6 +83,7 @@ export const useFormState = () => {
 
   const {
     disableFieldsOnSubmit,
+    showRequired,
     wasSubmitSuccessful,
     validationRules,
   } = useContext(FormPropsContext);
@@ -99,6 +100,7 @@ export const useFormState = () => {
       (formState.isSubmitting || isSubmitSuccessful) && disableFieldsOnSubmit,
     register,
     setValue,
+    showRequired,
     validationRules,
     watch,
   };
@@ -112,6 +114,7 @@ export const useField = (fieldName: string) => {
     isDisabled,
     register,
     setValue,
+    showRequired,
     validationRules,
   } = useFormState();
 
@@ -133,6 +136,7 @@ export const useField = (fieldName: string) => {
     validation,
     register,
     setValue,
+    showRequired,
   };
 };
 
