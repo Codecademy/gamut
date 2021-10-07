@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useMemo } from 'react';
 import { RegisterOptions, useFormContext } from 'react-hook-form';
 
 import {
@@ -53,6 +53,7 @@ export const useConnectedForm = <
         validationRules,
       },
     }),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     []
   );
 };

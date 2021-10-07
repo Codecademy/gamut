@@ -48,9 +48,7 @@ const formGroupSpacing = variant({
   },
 });
 
-export type FormGroupSpacing = StyleProps<typeof formGroupSpacing>;
-
-const FormGroupContainer = styled(Box)<FormGroupSpacing>`
+const FormGroupContainer = styled(Box)<StyleProps<typeof formGroupSpacing>>`
   ${formGroupSpacing}
   position: relative;
   width: 100%;
