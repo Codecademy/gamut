@@ -41,7 +41,7 @@ export const useConnectedForm = <
   defaultValues,
   validationRules,
 }: UseConnectedFormProps<Values, ValidationRules>) => {
-  return {
+  return useMemo(() => ({
     ConnectedFormGroup: ConnectedFormGroup as ConnectedGroupStrictProps<Values>,
     ConnectedForm: ConnectedForm as ConnectedFormStrictProps<
       Values,
@@ -51,7 +51,7 @@ export const useConnectedForm = <
       defaultValues,
       validationRules,
     },
-  };
+  }), []);
 };
 
 export const submitSuccessStatus = (
