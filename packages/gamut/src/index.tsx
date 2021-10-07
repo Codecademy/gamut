@@ -52,6 +52,7 @@ export * from './Video';
 export * from './typings/responsive-properties';
 export * from './Logo';
 export * from './ProLabel';
+export * from './PopoverContainer';
 export * from './Toast/Toast';
 export * from './Toaster';
 export * from './FloatingCard/FloatingCard';
