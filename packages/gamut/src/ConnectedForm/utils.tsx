@@ -145,6 +145,7 @@ export const useField = ({ name, disabled, loading }: useFieldProps) => {
      */
     isFirstError: Object.keys(errors)[0] === name,
     isLoading,
+    register,
     validation,
     ref,
     setValue,
