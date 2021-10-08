@@ -12,17 +12,15 @@ export function ConnectedCustomInput<ComponentProps>({
   component: Component,
   disabled,
   name,
-  validation,
   ...rest
 }: ConnectedCustomInputProps<ComponentProps>) {
-  const { isDisabled, register } = useField(name);
-  const currentlyDisabled = isDisabled || disabled;
+  const { isDisabled, ref } = useField({ name, disabled });
 
   return (
     <Component
-      disabled={currentlyDisabled}
+      disabled={isDisabled}
       name={name}
-      ref={register(validation)}
+      ref={ref}
       {...(rest as ComponentProps)}
     />
   );
