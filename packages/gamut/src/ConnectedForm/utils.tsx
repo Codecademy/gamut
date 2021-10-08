@@ -159,7 +159,5 @@ export const useSubmitState = ({ loading, disabled }: SubmitContextProps) => {
   const isDisabled =
     typeof disabled === 'function' ? disabled(formState) : disabled;
 
-  console.log('useSubmit', isDisabled);
-
   return { isLoading, isDisabled };
 };

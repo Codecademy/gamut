@@ -25,19 +25,16 @@ export const GridFormContent: React.FC<GridFormContentProps> = ({
   );
 
   return (
-    <>
-      {console.log(isDisabled)}
-      <GridFormInputGroup
-        error={error}
-        isFirstError={isFirstError}
-        isDisabled={isDisabled}
-        field={field}
-        key={field.name}
-        register={register}
-        setValue={setValue}
-        required={requiredBoolean}
-        showRequired={showRequired}
-      />
-    </>
+    <GridFormInputGroup
+      error={error}
+      isFirstError={isFirstError}
+      isDisabled={isDisabled}
+      field={field}
+      key={field.name}
+      register={register}
+      setValue={setValue}
+      required={requiredBoolean}
+      showRequired={showRequired}
+    />
   );
 };
