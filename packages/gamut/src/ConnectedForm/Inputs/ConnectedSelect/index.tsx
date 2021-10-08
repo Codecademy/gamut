@@ -9,7 +9,7 @@ export const ConnectedSelect: React.FC<ConnectedSelectProps> = ({
   name,
   ...rest
 }) => {
-  const { isDisabled, register, validation, error } = useField({
+  const { error, isDisabled, ref } = useField({
     name,
     disabled,
   });
@@ -19,7 +19,7 @@ export const ConnectedSelect: React.FC<ConnectedSelectProps> = ({
       disabled={isDisabled}
       error={error}
       name={name}
-      ref={register(validation)}
+      ref={ref}
       {...rest}
     />
   );

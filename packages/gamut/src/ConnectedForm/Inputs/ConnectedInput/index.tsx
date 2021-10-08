@@ -9,7 +9,7 @@ export const ConnectedInput: React.FC<ConnectedInputProps> = ({
   name,
   ...rest
 }) => {
-  const { error, isDisabled, register, validation } = useField({
+  const { error, isDisabled, ref } = useField({
     name,
     disabled,
   });
@@ -19,7 +19,7 @@ export const ConnectedInput: React.FC<ConnectedInputProps> = ({
       disabled={isDisabled}
       error={error}
       name={name}
-      ref={register(validation)}
+      ref={ref}
       {...rest}
     />
   );

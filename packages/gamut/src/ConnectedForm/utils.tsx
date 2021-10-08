@@ -133,6 +133,8 @@ export const useField = ({ name, disabled, loading }: useFieldProps) => {
       validationRules[name as keyof typeof validationRules]) ??
     undefined;
 
+  const ref = register(validation);
+
   return {
     control,
     error,
@@ -144,7 +146,7 @@ export const useField = ({ name, disabled, loading }: useFieldProps) => {
     isFirstError: Object.keys(errors)[0] === name,
     isLoading,
     validation,
-    register,
+    ref,
     setValue,
     showRequired,
   };

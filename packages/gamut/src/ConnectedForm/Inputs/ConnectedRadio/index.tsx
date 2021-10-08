@@ -9,7 +9,7 @@ export const ConnectedRadio: React.FC<ConnectedRadioProps> = ({
   name,
   ...rest
 }) => {
-  const { isDisabled, register, validation, error } = useField({
+  const { error, isDisabled, ref } = useField({
     name,
     disabled,
   });
@@ -19,7 +19,7 @@ export const ConnectedRadio: React.FC<ConnectedRadioProps> = ({
       disabled={isDisabled}
       error={error}
       name={name}
-      ref={register(validation)}
+      ref={ref}
       {...rest}
     />
   );
