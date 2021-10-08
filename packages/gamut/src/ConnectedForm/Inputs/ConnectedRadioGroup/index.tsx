@@ -9,7 +9,7 @@ export const ConnectedRadioGroup: React.FC<ConnectedRadioGroupProps> = ({
   onChange,
   ...rest
 }) => {
-  const { setValue } = useField(name);
+  const { setValue } = useField({ name });
 
   return (
     <RadioGroup

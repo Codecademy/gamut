@@ -16,8 +16,7 @@ export const ConnectedCheckbox: React.FC<ConnectedCheckboxProps> = ({
   onUpdate,
   spacing,
 }) => {
-  const { isDisabled, control, validation } = useField(name);
-  const currentlyDisabled = isDisabled || disabled;
+  const { isDisabled, control, validation } = useField({ name, disabled });
 
   return (
     <Controller
@@ -28,7 +27,7 @@ export const ConnectedCheckbox: React.FC<ConnectedCheckboxProps> = ({
         <Checkbox
           checked={value}
           className={className}
-          disabled={currentlyDisabled}
+          disabled={isDisabled}
           htmlFor={name}
           name={name}
           onChange={(event) => {

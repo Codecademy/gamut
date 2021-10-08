@@ -97,7 +97,7 @@ export const FancyConnectedFormExample: React.FC = () => {
       select0: undefined,
       select1: 'two',
       select2: undefined,
-      input1: 'hey there.',
+      input1: 'howdy.',
       exampleRadioArea1: '5',
       exampleIcon: 'hey',
       check0: true,
@@ -135,13 +135,7 @@ export const FancyConnectedFormExample: React.FC = () => {
   });
 
   return (
-    <Background
-      bg="paleGreen"
-      border={1}
-      p={32}
-      m={32}
-      borderRadius="10px"
-    >
+    <Background bg="paleGreen" border={1} p={32} m={32} borderRadius="10px">
       <ConnectedForm
         onSubmit={(values) => values}
         resetOnSubmit

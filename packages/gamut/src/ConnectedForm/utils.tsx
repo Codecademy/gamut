@@ -8,8 +8,7 @@ import {
   ConnectedFormProps,
   FormPropsContext,
 } from '.';
-import { SubmitContextProps } from './SubmitButton';
-import { ConnectedField } from './types';
+import { ConnectedField, SubmitContextProps } from './types';
 
 interface ConnectedGroupStrictProps<Values extends {}> {
   <Name extends keyof Values, Component extends ConnectedField>(
@@ -106,22 +105,32 @@ export const useFormState = () => {
   };
 };
 
-export const useField = (fieldName: string) => {
+interface useFieldProps extends SubmitContextProps {
+  name: string;
+}
+
+export const useField = ({ name, disabled, loading }: useFieldProps) => {
   // eslint-disable-next-line @typescript-eslint/unbound-method
   const {
     control,
     errors,
-    isDisabled,
     register,
+    isDisabled: formStateDisabled,
     setValue,
     showRequired,
     validationRules,
   } = useFormState();
 
-  const error = errors[fieldName]?.message;
+  const error = errors[name]?.message;
+
+  const { isDisabled, isLoading } = useSubmitState({
+    disabled: disabled || formStateDisabled,
+    loading,
+  });
+
   const validation =
     (validationRules &&
-      validationRules[fieldName as keyof typeof validationRules]) ??
+      validationRules[name as keyof typeof validationRules]) ??
     undefined;
 
   return {
@@ -132,7 +141,8 @@ export const useField = (fieldName: string) => {
      * Keep track of the first error in this form.
      * This is so we only add the correct aria-live props on the first error.
      */
-    isFirstError: Object.keys(errors)[0] === fieldName,
+    isFirstError: Object.keys(errors)[0] === name,
+    isLoading,
     validation,
     register,
     setValue,
@@ -148,6 +158,8 @@ export const useSubmitState = ({ loading, disabled }: SubmitContextProps) => {
 
   const isDisabled =
     typeof disabled === 'function' ? disabled(formState) : disabled;
+
+  console.log('useSubmit', isDisabled);
 
   return { isLoading, isDisabled };
 };

@@ -12,7 +12,7 @@ import {
 import { Anchor } from '../Anchor';
 import { HiddenText } from '../HiddenText';
 import { Markdown } from '../Markdown';
-import { ConnectedField, FieldProps } from './types';
+import { ConnectedField, FieldProps, SubmitContextProps } from './types';
 import { useField } from './utils';
 
 const ErrorAnchor = styled(Anchor)(
@@ -21,7 +21,10 @@ const ErrorAnchor = styled(Anchor)(
   })
 );
 
-export type ConnectedFormGroupBaseProps = Omit<FormGroupProps, 'label'> &
+export type ConnectedFormGroupBaseProps = Omit<
+  FormGroupProps,
+  'label' | 'disabled'
+> &
   Pick<FormGroupLabelProps, 'size'> & {
     customError?: string;
     errorType?: 'initial' | 'absolute';
@@ -34,14 +37,15 @@ export type ConnectedFormGroupBaseProps = Omit<FormGroupProps, 'label'> &
   };
 
 export interface ConnectedFormGroupProps<T extends ConnectedField>
-  extends ConnectedFormGroupBaseProps {
-  field: Omit<React.ComponentProps<T>, 'name'> & FieldProps<T>;
+  extends SubmitContextProps,
+    ConnectedFormGroupBaseProps {
+  field: Omit<React.ComponentProps<T>, 'name' | 'disabled'> & FieldProps<T>;
 }
 
 export function ConnectedFormGroup<T extends ConnectedField>({
   customError,
   children,
-  disabled,
+  disabled = false,
   errorType = 'absolute',
   field,
   hideLabel,
@@ -58,13 +62,12 @@ export function ConnectedFormGroup<T extends ConnectedField>({
     isDisabled,
     showRequired,
     validation,
-  } = useField(name);
+  } = useField({ name, disabled });
   const { component: Component, ...rest } = field;
-  const currentlyDisabled = isDisabled || disabled;
 
   const renderedLabel = (
     <FormGroupLabel
-      disabled={currentlyDisabled}
+      disabled={isDisabled}
       htmlFor={id || name}
       tooltip={tooltip}
       showRequired={showRequired && !!validation}
@@ -77,7 +80,7 @@ export function ConnectedFormGroup<T extends ConnectedField>({
   return (
     <FormGroup spacing={spacing}>
       {hideLabel ? <HiddenText>{renderedLabel}</HiddenText> : renderedLabel}
-      <Component name={name} {...(rest as any)} />
+      <Component {...(rest as any)} name={name} disabled={disabled} />
       {children}
       {(error || customError) && (
         <FormError

@@ -9,12 +9,14 @@ export const ConnectedInput: React.FC<ConnectedInputProps> = ({
   name,
   ...rest
 }) => {
-  const { error, isDisabled, register, validation } = useField(name);
-  const currentlyDisabled = isDisabled || disabled;
+  const { error, isDisabled, register, validation } = useField({
+    name,
+    disabled,
+  });
 
   return (
     <Input
-      disabled={currentlyDisabled}
+      disabled={isDisabled}
       error={error}
       name={name}
       ref={register(validation)}

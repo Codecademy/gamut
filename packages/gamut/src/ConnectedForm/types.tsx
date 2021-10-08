@@ -1,3 +1,5 @@
+import { FormState } from 'react-hook-form';
+
 import {
   ConnectedCheckbox,
   ConnectedInput,
@@ -17,4 +19,13 @@ export type ConnectedField =
 export interface FieldProps<FieldComponent extends ConnectedField>
   extends BaseConnectedFieldProps {
   component: FieldComponent;
+}
+
+export type FormStateCallback<Values = {}> = (
+  formState: FormState<Values>
+) => boolean;
+
+export interface SubmitContextProps {
+  loading?: FormStateCallback | boolean;
+  disabled?: FormStateCallback | boolean;
 }

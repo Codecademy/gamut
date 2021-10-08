@@ -9,12 +9,14 @@ export const ConnectedTextArea: React.FC<ConnectedTextAreaProps> = ({
   name,
   ...rest
 }) => {
-  const { isDisabled, register, validation, error } = useField(name);
-  const currentlyDisabled = isDisabled || disabled;
+  const { isDisabled, register, validation, error } = useField({
+    name,
+    disabled,
+  });
 
   return (
     <TextArea
-      disabled={currentlyDisabled}
+      disabled={isDisabled}
       error={error}
       name={name}
       ref={register(validation)}
