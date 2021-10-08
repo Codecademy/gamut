@@ -32,11 +32,16 @@ type MediaProps =
       type: 'video';
     } & VideoProps);
 
+type Eyebrow = {
+  accent?: boolean;
+  text: string;
+};
+
 export type PageSingleFeatureProps = BaseProps & {
   /**
-   * Eyebrow text shown above title
+   * Object containing eyebrow text shown above title and optional accent boolean
    */
-  eyebrow?: string;
+  eyebrow?: Eyebrow;
   /**
    * Whether the image should be hidden on mobile. Note that videos are always shown on mobile for accessibility
    */
@@ -77,8 +82,9 @@ export const PageSingleFeature: React.FC<PageSingleFeatureProps> = ({
               fontFamily="accent"
               mb={16}
               display="block"
+              color={eyebrow.accent ? 'blue' : undefined}
             >
-              {eyebrow}
+              {eyebrow.text}
             </Text>
           )}
           {title}
