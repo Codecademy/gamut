@@ -1,3 +1,4 @@
+import { DiagonalADense } from '@codecademy/gamut-patterns';
 import { setupEnzyme } from '@codecademy/gamut-tests';
 
 import { ProgressBar } from '..';
@@ -48,7 +49,7 @@ describe('ProgressBar', () => {
   });
 
   it('uses an svg when given a pattern', () => {
-    const { wrapper } = renderWrapper({ pattern: 'diagonalStripesRegular' });
+    const { wrapper } = renderWrapper({ pattern: DiagonalADense });
 
     expect(wrapper.find('svg').length).toBe(1);
   });

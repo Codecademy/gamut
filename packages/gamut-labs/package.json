@@ -25,6 +25,7 @@
     "@codecademy/gamut": "^37.10.3",
     "@codecademy/gamut-icons": "^5.12.1",
     "@codecademy/gamut-illustrations": "^0.18.3",
+    "@codecademy/gamut-patterns": "^0.6.2",
     "@codecademy/gamut-styles": "^11.11.0",
     "@codecademy/variance": "^0.18.1",
     "classnames": "^2.2.5",
