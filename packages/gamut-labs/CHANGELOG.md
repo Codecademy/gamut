@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [25.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@24.4.5...@codecademy/gamut-labs@25.0.0) (2021-10-07)
+
+
+### ⚠ BREAKING CHANGES
+
+* **PageSingleFeature:** add option for accent eyebrow
+
+### Features
+
+* **PageSingleFeature:** add option for accent eyebrow ([aee6356](https://github.com/Codecademy/client-modules/commit/aee635692cf0d7de342e5e81797867a2ce7a5da2)), closes [#1557](https://github.com/Codecademy/client-modules/issues/1557)
+
+
+
 ### [24.4.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@24.4.4...@codecademy/gamut-labs@24.4.5) (2021-10-07)
 
 **Note:** Version bump only for package @codecademy/gamut-labs
