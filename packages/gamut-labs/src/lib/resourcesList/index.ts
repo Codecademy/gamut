@@ -57,7 +57,7 @@ export const resourcesList: ResourcesList[] = [
   },
   {
     id: 'career-center',
-    href: '/career-center',
+    href: '/pages/career-center',
     footerTrackingTarget: 'career_center',
     headerTrackingTarget: 'topnav_resources_career_center',
     text: 'Career Center',
