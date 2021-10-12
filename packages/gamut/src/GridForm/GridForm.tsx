@@ -1,5 +1,10 @@
 import React, { Fragment } from 'react';
-import { Mode, SubmitHandler } from 'react-hook-form';
+import {
+  DeepPartial,
+  Mode,
+  SubmitHandler,
+  UnpackNestedValue,
+} from 'react-hook-form';
 
 import { ButtonProps } from '../Button/shared';
 import { FormContextProps, FormWrapper } from '../Form';
@@ -84,7 +89,7 @@ export type GridFormProps<Values extends {}> = FormContextProps & {
   validation?: Exclude<Mode, 'onBlur'>;
 };
 
-export function GridForm<Values extends FormValues>({
+export function GridForm<Values extends FormValues<Values>>({
   breakType,
   cancel,
   children,
@@ -100,7 +105,9 @@ export function GridForm<Values extends FormValues>({
     isGridFormSection(field) ? field.fields : field
   );
 
-  const defaultValues = flatFields.reduce<any>(
+  type Defaults = UnpackNestedValue<DeepPartial<Values>>;
+
+  const defaultValues = flatFields.reduce<Defaults>(
     // since our checkbox is a controlled input, it needs to be provided with a default value in order to reset correctly.
     (defaultValues, field) => ({
       ...defaultValues,
@@ -109,11 +116,11 @@ export function GridForm<Values extends FormValues>({
           ? false
           : field.defaultValue,
     }),
-    {}
+    {} as Defaults
   );
 
   return (
-    <FormWrapper
+    <FormWrapper<Values>
       validation={validation}
       defaultValues={defaultValues}
       display="flex"

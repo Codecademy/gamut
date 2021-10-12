@@ -5,6 +5,7 @@ import {
   Mode,
   SubmitHandler,
   useForm,
+  UseFormOptions,
 } from 'react-hook-form';
 
 import { Form } from '../Form';
@@ -36,7 +37,7 @@ export type FormWrapperProps<Values extends {}> = FormContextProps &
      */
     onSubmit: SubmitHandler<Values>;
 
-    defaultValues?: FormValues;
+    defaultValues?: UseFormOptions<Values>['defaultValues'];
 
     /**
      * Which react hook form mode we are going to use for validation.
@@ -56,7 +57,7 @@ const PropsProvider = FormPropsContext.Provider;
 /**
  * This is an in progress API! please reach out to the web-plat team if you're interested in using it.
  */
-export function FormWrapper<Values extends FormValues>({
+export function FormWrapper<Values extends FormValues<Values>>({
   children,
   onSubmit,
   defaultValues,
