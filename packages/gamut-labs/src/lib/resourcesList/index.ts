@@ -47,6 +47,14 @@ export const resourcesList: ResourcesList[] = [
     type: 'link',
   },
   {
+    id: 'challenges',
+    href: '/challenges',
+    footerTrackingTarget: 'challenges',
+    headerTrackingTarget: 'topnav_resources_challenges',
+    text: 'Challenges',
+    type: 'link',
+  },
+  {
     id: 'blog',
     href: 'https://codecademy.com/resources/blog',
     footerTrackingTarget: 'blog',
