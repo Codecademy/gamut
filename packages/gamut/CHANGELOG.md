@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [37.10.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@37.10.2...@codecademy/gamut@37.10.3) (2021-10-07)
+
+
+### Bug Fixes
+
+* **Markdown:** fix bulletpoint color ([f69cc65](https://github.com/Codecademy/client-modules/commit/f69cc65a154390be70b77c45fe3da767957d2f5c))
+
+
+
+### [37.10.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@37.10.1...@codecademy/gamut@37.10.2) (2021-10-06)
+
+
+### Bug Fixes
+
+* F firefox ([b1da19b](https://github.com/Codecademy/client-modules/commit/b1da19b22402c837e8e1dd8f9a62610f3c8c29be))
+
+
+
 ### [37.10.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@37.10.0...@codecademy/gamut@37.10.1) (2021-10-06)
 
 

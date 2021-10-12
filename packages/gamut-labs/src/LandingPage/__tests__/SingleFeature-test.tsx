@@ -18,7 +18,7 @@ describe('PageSingleFeature', () => {
 
   it('should render an eyebrow when one is provided with a title', () => {
     const { view: wrapper } = renderView({
-      eyebrow: 'eyebrow',
+      eyebrow: { text: 'eyebrow' },
       title: 'title',
     });
     wrapper.getByText('eyebrow');
@@ -26,7 +26,7 @@ describe('PageSingleFeature', () => {
 
   it('should not render an eyebrow when title is not present', () => {
     const { view: wrapper } = renderView({
-      eyebrow: 'eyebrow',
+      eyebrow: { text: 'eyebrow' },
     });
     expect(wrapper.queryByText('eyebrow')).not.toBeInTheDocument();
   });
