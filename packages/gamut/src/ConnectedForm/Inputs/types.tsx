@@ -27,7 +27,7 @@ export interface ConnectedCheckboxProps
     >,
     ConnectedFieldProps {}
 
-type FieldComponent<T> = Omit<T, 'defaultValue' | 'name' | 'validation'>
+type FieldComponent<T> = Omit<T, 'defaultValue' | 'name' | 'validation'>;
 
 export interface ConnectedInputProps
   extends FieldComponent<InputWrapperProps>,
