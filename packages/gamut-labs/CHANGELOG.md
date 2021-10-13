@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [25.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@25.0.0...@codecademy/gamut-labs@25.1.0) (2021-10-12)
+
+
+### Features
+
+* **Nav:** add career center link ([b16c488](https://github.com/Codecademy/client-modules/commit/b16c48814d492e1c4f4f4ad9bfb69a644664fccf))
+
+
+
 ## [25.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@24.4.5...@codecademy/gamut-labs@25.0.0) (2021-10-07)
 
 
