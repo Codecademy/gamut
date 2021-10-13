@@ -53,8 +53,11 @@ export type SelectDropdownOptions = SelectOptions | IconOption[];
 
 interface SelectDropdownProps
   extends SelectDropdownBaseProps,
-    Pick<NamedProps, 'onChange' | 'isSearchable' | 'onInputChange'>,
-    Pick<SelectHTMLAttributes<HTMLSelectElement>, 'value' | 'disabled'> {
+    Omit<NamedProps, 'formatOptionLabel' | 'isDisabled' | 'value' | 'options'>,
+    Pick<
+      SelectHTMLAttributes<HTMLSelectElement>,
+      'value' | 'disabled' | 'onClick'
+    > {
   inputProps?: Record<string, string | number | boolean>;
   name?: string;
   placeholder?: string;
