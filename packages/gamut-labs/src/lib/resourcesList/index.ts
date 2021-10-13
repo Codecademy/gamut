@@ -63,6 +63,14 @@ export const resourcesList: ResourcesList[] = [
     newTab: true,
     type: 'link',
   },
+  {
+    id: 'career-center',
+    href: '/pages/career-center',
+    footerTrackingTarget: 'career_center',
+    headerTrackingTarget: 'topnav_resources_career_center',
+    text: 'Career Center',
+    type: 'link',
+  },
 ];
 
 export const headerResourcesList: AppHeaderLinkItem[] = resourcesList.map(
