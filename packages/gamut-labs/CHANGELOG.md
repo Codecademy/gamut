@@ -3,6 +3,53 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [25.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@25.1.0...@codecademy/gamut-labs@25.1.1) (2021-10-13)
+
+
+### Bug Fixes
+
+* changing logic of Business Account Management profile item to use `isBusinessAdmin` ([4a954e7](https://github.com/Codecademy/client-modules/commit/4a954e7f4ba9113ca0713e6d376ead23f5c7f314))
+
+
+
+## [25.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@25.0.0...@codecademy/gamut-labs@25.1.0) (2021-10-12)
+
+
+### Features
+
+* **Nav:** add career center link ([b16c488](https://github.com/Codecademy/client-modules/commit/b16c48814d492e1c4f4f4ad9bfb69a644664fccf))
+
+
+
+## [25.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@24.4.5...@codecademy/gamut-labs@25.0.0) (2021-10-07)
+
+
+### ⚠ BREAKING CHANGES
+
+* **PageSingleFeature:** add option for accent eyebrow
+
+### Features
+
+* **PageSingleFeature:** add option for accent eyebrow ([aee6356](https://github.com/Codecademy/client-modules/commit/aee635692cf0d7de342e5e81797867a2ce7a5da2)), closes [#1557](https://github.com/Codecademy/client-modules/issues/1557)
+
+
+
+### [24.4.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@24.4.4...@codecademy/gamut-labs@24.4.5) (2021-10-07)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [24.4.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@24.4.3...@codecademy/gamut-labs@24.4.4) (2021-10-06)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
 ### [24.4.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@24.4.2...@codecademy/gamut-labs@24.4.3) (2021-10-06)
 
 **Note:** Version bump only for package @codecademy/gamut-labs
