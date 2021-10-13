@@ -15,6 +15,14 @@ type FooterResourceList = {
 
 export const resourcesList: ResourcesList[] = [
   {
+    id: 'challenges',
+    href: '/code-challenges',
+    footerTrackingTarget: 'challenges',
+    headerTrackingTarget: 'topnav_resources_challenges',
+    text: 'Challenges',
+    type: 'link',
+  },
+  {
     id: 'docs',
     href: '/resources/docs',
     footerTrackingTarget: 'docs',
@@ -44,14 +52,6 @@ export const resourcesList: ResourcesList[] = [
     footerTrackingTarget: 'articles',
     headerTrackingTarget: 'topnav_resources_articles',
     text: 'Articles',
-    type: 'link',
-  },
-  {
-    id: 'challenges',
-    href: '/challenges',
-    footerTrackingTarget: 'challenges',
-    headerTrackingTarget: 'topnav_resources_challenges',
-    text: 'Challenges',
     type: 'link',
   },
   {
