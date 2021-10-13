@@ -1,5 +1,12 @@
-import { Box, FlexBox, StrokeButton } from '@codecademy/gamut/src';
+import {
+  Anchor,
+  Box,
+  FillButton,
+  FlexBox,
+  StrokeButton,
+} from '@codecademy/gamut/src';
 import { Flyout } from '@codecademy/gamut-labs/src';
+import { Background } from '@codecademy/gamut-styles';
 import title from '@codecademy/macros/lib/title.macro';
 import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/blocks';
 import { useState } from 'react';
@@ -65,3 +72,78 @@ Our Flyouts are [controlled components](https://reactjs.org/docs/forms.html#cont
 </Canvas>
 
 <Props story="Flyout" />
+
+Flyouts work in light and dark `ColorModes`.
+
+<Canvas>
+  <Story name="Flyout in DarkMode">
+    {(args) => {
+      const [expanded, setExpanded] = useState(false);
+      return (
+        <Background bg="black">
+          <Box height="20rem" p={12}>
+            <Flyout
+              {...args}
+              expanded={expanded}
+              title="Traitor Legions, Renegade Space Marine Chapters"
+              onClose={() => setExpanded(false)}
+            >
+              <Box bg="background" textColor="text" m={16}>
+                <Text variant="p-small">
+                  However, several of the Renegades listed here are simply{' '}
+                  <Anchor
+                    href="https://warhammer40k.fandom.com/wiki/Space_Marines"
+                    target="_blank"
+                  >
+                    Space Marine
+                  </Anchor>{' '}
+                  Chapters that have turned on the Imperium of Man or been
+                  unfairly declared Excommunicate Traitoris for one reason or
+                  another, but still view themselves as loyal to the Emperor of
+                  Mankind and not to the corrupt edifice of the Imperium His
+                  servants have built over the last 10,000 years.These types of
+                  Renegade Chapters are certainly no friends of{' '}
+                  <Anchor
+                    href="https://warhammer40k.fandom.com/wiki/Chaos"
+                    target="_blank"
+                  >
+                    Chaos
+                  </Anchor>{' '}
+                  or the other enemies of Humanity, though their lack of allies
+                  can often lead even the best-intentioned Renegades down the
+                  ultimate path of corruption to the willing worship of the Dark
+                  Powers, if only to secure their own survival when they are
+                  beset on all sides by enemies.{'  '}
+                  {'  '}Through the passing of the centuries since the Horus Heresy,
+                  the forces of Chaos have been further swelled by those Space Marines
+                  who have turned from service to the Emperor of Mankind to pursue
+                  their own agendas. Freed from Imperial dogma and traditions of
+                  their Chapter, these so-called Renegade Space Marines fully indulge
+                  the needs of their superhuman bodies and their militant minds.They
+                  most often become corsairs, pirates and mercenaries, using their
+                  unparalleled combat skills to garner wealth and power for themselves,
+                  rising as tyrannical masters of pirate fleets and the masters of
+                  desolate frontier worlds. As they explore their new freedom from
+                  the discipline and strict purpose of the Adeptus Astartes, these
+                  Space Marines inevitably turn at some point to the Chaos Gods to
+                  gain more power to do as they will.
+                </Text>
+              </Box>
+            </Flyout>
+            <FillButton size="small" onClick={() => setExpanded(true)}>
+              Tell me more...
+            </FillButton>
+            <FlexBox mt={16}>
+              Renegade Chapters are generally made up of Chaos Space Marines
+              whose Chapters or companies turned to Chaos after the end of the
+              Horus Heresy, sometimes many millennia later. Some are not whole
+              Chapters but simply warbands composed of a few tens or hundreds of
+              Astartes drawn from the same original source and led by a
+              charismatic commander or Chaos Lord.
+            </FlexBox>
+          </Box>
+        </Background>
+      );
+    }}
+  </Story>
+</Canvas>
