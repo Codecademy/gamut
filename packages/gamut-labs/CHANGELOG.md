@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [25.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@25.1.0...@codecademy/gamut-labs@25.1.1) (2021-10-13)
+
+
+### Bug Fixes
+
+* changing logic of Business Account Management profile item to use `isBusinessAdmin` ([4a954e7](https://github.com/Codecademy/client-modules/commit/4a954e7f4ba9113ca0713e6d376ead23f5c7f314))
+
+
+
 ## [25.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@25.0.0...@codecademy/gamut-labs@25.1.0) (2021-10-12)
 
 
