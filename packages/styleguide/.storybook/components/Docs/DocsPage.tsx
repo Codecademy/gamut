@@ -122,12 +122,12 @@ export const DocsPage: React.FC = ({ children }) => {
             </GridBox>
           </Background>
         )}
+        {children}
         {design?.url && (
-          <GridBox mb={32}>
+          <GridBox mt={32}>
             <Figma height="56.25%" collapsable url={design?.url} />
           </GridBox>
         )}
-        {children}
       </ContentContainer>
     </Background>
   );
