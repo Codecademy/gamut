@@ -1,5 +1,6 @@
 import { MiniInfoOutlineIcon } from '@codecademy/gamut-icons';
 import { states, variant } from '@codecademy/gamut-styles';
+import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
 import React, { HTMLAttributes } from 'react';
 
@@ -15,18 +16,6 @@ const StyledToolTipContainer = styled.span`
 const StyledToolTip = styled(ToolTip)`
   z-index: 1;
 `;
-
-export type FormGroupLabelProps = HTMLAttributes<HTMLDivElement> &
-  HTMLAttributes<HTMLLabelElement> & {
-    disabled?: boolean;
-    /**
-     * [The for/id string of a label or labelable form-related element](https://developer.mozilla.org/en-US/docs/Web/API/HTMLLabelElement/htmlFor). The outer FormGroup or FormLabel should have an identical string as the inner FormElement for accessibility purposes.
-     */
-    htmlFor?: string;
-    tooltip?: ToolTipProps;
-    showRequired?: boolean;
-    size?: 'small' | 'large';
-  };
 
 const labelSizeVariants = variant({
   defaultVariant: 'small',
@@ -45,12 +34,29 @@ const labelSizeVariants = variant({
   },
 });
 
-const labelColorStates = states({
+const labelStates = states({
   disabled: formFieldTextDisabledStyles,
+  tooltipPadding: { mr: 16 },
 });
 
+interface LabelVariants
+  extends StyleProps<typeof labelSizeVariants>,
+    StyleProps<typeof labelStates> {}
+
+export type FormGroupLabelProps = HTMLAttributes<HTMLDivElement> &
+  HTMLAttributes<HTMLLabelElement> &
+  LabelVariants & {
+    /**
+     * [The for/id string of a label or labelable form-related element](https://developer.mozilla.org/en-US/docs/Web/API/HTMLLabelElement/htmlFor). The outer FormGroup or FormLabel should have an identical string as the inner FormElement for accessibility purposes.
+     */
+    htmlFor?: string;
+    tooltip?: ToolTipProps;
+    showRequired?: boolean;
+    size?: 'small' | 'large';
+  };
+
 const Label = styled
-  .label(labelSizeVariants, labelColorStates)
+  .label(labelSizeVariants, labelStates)
   .withComponent((props: FormGroupLabelProps) => {
     if (props.htmlFor) {
       // We know this is wrong because props.htmlFor exists...
@@ -76,6 +82,7 @@ export const FormGroupLabel: React.FC<FormGroupLabelProps> = ({
         {...rest}
         htmlFor={htmlFor}
         disabled={disabled}
+        tooltipPadding={Boolean(tooltip)}
         className={className}
         size={size}
       >
