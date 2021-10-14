@@ -40,7 +40,7 @@ const labelStates = states({
   tooltipPadding: { mr: 16 },
 });
 
-interface LabelVariants
+export interface LabelVariants
   extends StyleProps<typeof labelSizeVariants>,
     StyleProps<typeof labelStates> {}
 

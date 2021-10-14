@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [37.10.7](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@37.10.6...@codecademy/gamut@37.10.7) (2021-10-14)
+
+
+### Bug Fixes
+
+* **FormGroup:** export interface from FormGroup ([b4d5d20](https://github.com/Codecademy/client-modules/commit/b4d5d20f38811c71c7d37b78b4b137a445850fbc))
+
+
+
+### [37.10.6](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@37.10.5...@codecademy/gamut@37.10.6) (2021-10-14)
+
+
+### Bug Fixes
+
+* **SelectDropdown:** event props ([c5c21e7](https://github.com/Codecademy/client-modules/commit/c5c21e701d8e82d6daf3cabc38d0bb1bafee6133))
+
+
+
 ### [37.10.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@37.10.4...@codecademy/gamut@37.10.5) (2021-10-14)
 
 
