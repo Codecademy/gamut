@@ -1,4 +1,4 @@
-import { FillButton } from '@codecademy/gamut';
+import { FillButton, GridBox } from '@codecademy/gamut';
 import {
   PageAlert,
   PageAlerts,
@@ -7,7 +7,7 @@ import {
 } from '@codecademy/gamut-labs';
 import React, { useContext } from 'react';
 
-const buildSuccessAlert: () => PageAlert = () => {
+const buildAlert: () => PageAlert = () => {
   return {
     type: 'success',
     message: `Random message: ${Math.random()}`,
@@ -18,33 +18,48 @@ export const PageAlertsExample: React.FC = () => (
   <PageAlertsProvider>
     <Component />
     <PageAlerts
-      extra={[{ type: 'success', message: 'extra alert on page-load' }]}
+      extra={[{ type: 'success', message: '"extra" alert on page-load' }]}
     />
   </PageAlertsProvider>
 );
 
 const Component: React.FC = () => {
   const { addAlert } = useContext(PageAlertsContext);
-  const wait = (ms: number) =>
-    new Promise((resolve) => setTimeout(resolve, ms));
 
   const errorAlert: PageAlert = {
     type: 'error',
-    message: 'The thing did not happen!',
+    message: 'Error! The thing did not happen!',
   };
-
-  const handleThing = async () => {
-    try {
-      await wait(2000);
-      addAlert(buildSuccessAlert());
-    } catch (err) {
-      addAlert(errorAlert);
-    }
+  const generalAlert: PageAlert = {
+    type: 'general',
+    message: 'General alert!',
+  };
+  const noticeAlert: PageAlert = {
+    type: 'notice',
+    message: 'Notice!',
+  };
+  const featureAlert: PageAlert = {
+    type: 'feature',
+    message: 'Feature alert!',
   };
 
   return (
-    <>
-      <FillButton onClick={handleThing}>Do the thing</FillButton>
-    </>
+    <GridBox width={300} rowGap={16}>
+      <FillButton onClick={() => addAlert(buildAlert())}>
+        Trigger random success alert
+      </FillButton>
+      <FillButton onClick={() => addAlert(errorAlert)}>
+        Trigger error alert
+      </FillButton>
+      <FillButton onClick={() => addAlert(generalAlert)}>
+        Trigger general alert
+      </FillButton>
+      <FillButton onClick={() => addAlert(noticeAlert)}>
+        Trigger notice alert
+      </FillButton>
+      <FillButton onClick={() => addAlert(featureAlert)}>
+        Trigger feature alert
+      </FillButton>
+    </GridBox>
   );
 };

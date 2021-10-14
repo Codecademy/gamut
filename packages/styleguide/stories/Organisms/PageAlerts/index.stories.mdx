@@ -32,6 +32,7 @@ Use usePageAlertsContext from a component wrapped in PageAlertsProvider to acces
 
 ```tsx
 import {
+  PageAlert,
   PageAlertsProvider,
   PageAlerts,
   PageAlertsContext,
@@ -40,7 +41,9 @@ import {
 const App = () => (
   <PageAlertsProvider>
     <Component />
-    <PageAlerts />
+    <PageAlerts
+      extra={[{ type: 'success', message: '"extra" alert on page-load' }]}
+    />
   </PageAlertsProvider>
 );
 
@@ -57,7 +60,7 @@ const Component = () => {
     message: 'The thing did not happen!',
   };
 
-  const handleThing = async () => {
+  const handleClick = async () => {
     try {
       await doThing();
       addAlert(successAlert);
@@ -66,6 +69,6 @@ const Component = () => {
     }
   };
 
-  return <button onClick={handleThing}>Do the thing</button>;
+  return <button onClick={handleClick}>Trigger alert</button>;
 };
 ```
