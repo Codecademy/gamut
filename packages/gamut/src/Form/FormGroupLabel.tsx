@@ -6,6 +6,7 @@ import React, { HTMLAttributes } from 'react';
 
 import { FlexBox } from '..';
 import { ToolTip, ToolTipProps } from '../ToolTip';
+import { FormGroupProps } from '.';
 import { formBaseStyles, formFieldTextDisabledStyles } from './styles';
 
 const StyledToolTipContainer = styled.span`
@@ -39,7 +40,7 @@ const labelStates = states({
   tooltipPadding: { mr: 16 },
 });
 
-export interface LabelVariants
+interface LabelVariants
   extends StyleProps<typeof labelSizeVariants>,
     StyleProps<typeof labelStates> {}
 
@@ -55,16 +56,7 @@ export type FormGroupLabelProps = HTMLAttributes<HTMLDivElement> &
     size?: 'small' | 'large';
   };
 
-const Label = styled
-  .label(labelSizeVariants, labelStates)
-  .withComponent((props: FormGroupLabelProps) => {
-    if (props.htmlFor) {
-      // We know this is wrong because props.htmlFor exists...
-      // eslint-disable-next-line jsx-a11y/label-has-associated-control
-      return <label {...props} />;
-    }
-    return <div {...props} />;
-  });
+const Label = styled.label<FormGroupLabelProps>(labelSizeVariants, labelStates);
 
 export const FormGroupLabel: React.FC<FormGroupLabelProps> = ({
   children,
@@ -85,6 +77,7 @@ export const FormGroupLabel: React.FC<FormGroupLabelProps> = ({
         tooltipPadding={Boolean(tooltip)}
         className={className}
         size={size}
+        as={htmlFor ? 'label' : 'div'}
       >
         {children}
         {showRequired ? ' *' : ''}
