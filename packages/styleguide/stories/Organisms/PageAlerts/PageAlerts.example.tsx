@@ -7,10 +7,19 @@ import {
 } from '@codecademy/gamut-labs';
 import React, { useContext } from 'react';
 
+const buildSuccessAlert: () => PageAlert = () => {
+  return {
+    type: 'success',
+    message: `Random message: ${Math.random()}`,
+  };
+};
+
 export const PageAlertsExample: React.FC = () => (
   <PageAlertsProvider>
     <Component />
-    <PageAlerts />
+    <PageAlerts
+      extra={[{ type: 'success', message: 'extra alert on page-load' }]}
+    />
   </PageAlertsProvider>
 );
 
@@ -18,11 +27,6 @@ const Component: React.FC = () => {
   const { addAlert } = useContext(PageAlertsContext);
   const wait = (ms: number) =>
     new Promise((resolve) => setTimeout(resolve, ms));
-
-  const successAlert: PageAlert = {
-    type: 'success',
-    message: 'The thing happened!',
-  };
 
   const errorAlert: PageAlert = {
     type: 'error',
@@ -32,11 +36,15 @@ const Component: React.FC = () => {
   const handleThing = async () => {
     try {
       await wait(2000);
-      addAlert(successAlert);
+      addAlert(buildSuccessAlert());
     } catch (err) {
       addAlert(errorAlert);
     }
   };
 
-  return <FillButton onClick={handleThing}>Do the thing</FillButton>;
+  return (
+    <>
+      <FillButton onClick={handleThing}>Do the thing</FillButton>
+    </>
+  );
 };

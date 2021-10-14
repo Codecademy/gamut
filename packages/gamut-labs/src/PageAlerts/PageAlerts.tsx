@@ -1,7 +1,7 @@
 import { Alert, BodyPortal } from '@codecademy/gamut';
 import { breakpoints } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
-import React, { useContext, useEffect, useRef } from 'react';
+import React, { useCallback, useContext, useEffect, useState } from 'react';
 
 import {
   PageAlertsContext,
@@ -29,22 +29,38 @@ export const AlertArea = styled.div`
 `;
 
 export const PageAlerts: React.FC<PageAlertsProps> = ({ extra = [] }) => {
-  const { alerts, closeAlert } = useContext<PageAlertsContextValue>(
+  const { alerts, closeAlert, addAlert } = useContext<PageAlertsContextValue>(
     PageAlertsContext
   );
-  const allAlerts = [...alerts, ...extra];
-  const alertAreaRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    alertAreaRef.current?.querySelector('button')?.focus();
-  }, [alertAreaRef]);
+    extra.forEach(addAlert);
+  }, [extra, addAlert]);
 
-  if (!allAlerts?.length) return null;
+  const [alertArea, setAlertArea] = useState<HTMLDivElement>();
+  const refCallback = useCallback(
+    (alertArea: HTMLDivElement) => {
+      setAlertArea(alertArea);
+    },
+    [setAlertArea]
+  );
+
+  const focusAlertCloseButton = useCallback(() => {
+    const refButton = alertArea?.querySelector('button');
+    refButton?.focus();
+  }, [alertArea]);
+
+  // Focus when alertArea is first rendered, as well as when alerts change
+  useEffect(() => {
+    focusAlertCloseButton();
+  }, [alerts, focusAlertCloseButton, alertArea]);
+
+  if (!alerts?.length) return null;
 
   return (
     <BodyPortal>
-      <AlertArea role="alert" key="alerts" ref={alertAreaRef}>
-        {allAlerts.map((alert) => (
+      <AlertArea role="alert" key="alerts" ref={refCallback}>
+        {alerts.map((alert) => (
           <Alert
             cta={alert.cta}
             onClose={
