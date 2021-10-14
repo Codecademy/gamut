@@ -47,12 +47,22 @@ const App = () => (
 const Component = () => {
   const { addAlert } = useContext(PageAlertsContext);
 
+  const successAlert: PageAlert = {
+    type: 'success',
+    message: 'The thing happened!',
+  };
+
+  const errorAlert: PageAlert = {
+    type: 'error',
+    message: 'The thing did not happen!',
+  };
+
   const handleThing = async () => {
     try {
       await doThing();
-      addAlert({ type: 'success', message: 'The thing happened!' });
+      addAlert(successAlert);
     } catch (err) {
-      addAlert({ type: 'error', message: `The thing did not happen: ${err}` });
+      addAlert(errorAlert);
     }
   };
 
