@@ -37,7 +37,7 @@ export const PageAlerts: React.FC<PageAlertsProps> = ({ extra = [] }) => {
 
   useEffect(() => {
     alertAreaRef.current?.querySelector('button')?.focus();
-  });
+  }, [alertAreaRef]);
 
   if (!allAlerts?.length) return null;
 
