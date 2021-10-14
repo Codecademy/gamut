@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [37.10.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@37.10.4...@codecademy/gamut@37.10.5) (2021-10-14)
+
+
+### Bug Fixes
+
+* **GridForm/FormGroup:** error message spacing + tooltip overflow ([e3d8350](https://github.com/Codecademy/client-modules/commit/e3d8350143810146184c9e464646774386cfa36d))
+
+
+
 ### [37.10.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@37.10.3...@codecademy/gamut@37.10.4) (2021-10-14)
 
 
