@@ -110,6 +110,9 @@ interface useFieldProps extends SubmitContextProps {
 }
 
 export const useField = ({ name, disabled, loading }: useFieldProps) => {
+  // This is fixed in a later react-hook-form version:
+  // https://github.com/react-hook-form/react-hook-form/issues/2887
+  // eslint-disable-next-line @typescript-eslint/unbound-method
   // eslint-disable-next-line @typescript-eslint/unbound-method
   const {
     control,
