@@ -17,7 +17,6 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
     bodyText: 'Body text',
     headingText: 'Heading text',
     illustration: NumberBlocks,
-    children: <FillButton>Do Something</FillButton>,
   }}
 />
 
@@ -27,7 +26,11 @@ The `children` can be either a `Button` or a `DropdownButton`.
 
 <Canvas>
   <Story name="Illustration on the right">
-    {(args) => <EmptySection {...args} />}
+    {(args) => (
+      <EmptySection {...args}>
+        <FillButton>Do Something</FillButton>
+      </EmptySection>
+    )}
   </Story>
 </Canvas>
 
@@ -38,7 +41,11 @@ The `children` can be either a `Button` or a `DropdownButton`.
     name="Illustration on the left"
     args={{ illustrationPosition: 'left' }}
   >
-    {(args) => <EmptySection {...args} />}
+    {(args) => (
+      <EmptySection {...args}>
+        <FillButton>Do Something</FillButton>
+      </EmptySection>
+    )}
   </Story>
 </Canvas>
 
@@ -46,7 +53,11 @@ The `children` can be either a `Button` or a `DropdownButton`.
 
 <Canvas>
   <Story name="Dots stretch to the left">
-    {(args) => <EmptySection {...args} />}
+    {(args) => (
+      <EmptySection {...args}>
+        <FillButton>Do Something</FillButton>
+      </EmptySection>
+    )}
   </Story>
 </Canvas>
 
@@ -54,7 +65,11 @@ The `children` can be either a `Button` or a `DropdownButton`.
 
 <Canvas>
   <Story name="Dots stretch to the right" args={{ stretchDirection: 'right' }}>
-    {(args) => <EmptySection {...args} />}
+    {(args) => (
+      <EmptySection {...args}>
+        <FillButton>Do Something</FillButton>
+      </EmptySection>
+    )}
   </Story>
 </Canvas>
 
@@ -65,7 +80,10 @@ The `children` can be either a `Button` or a `DropdownButton`.
     name="Using a dropdown button"
     args={{
       stretchDirection: 'left',
-      children: (
+    }}
+  >
+    {(args) => (
+      <EmptySection {...args}>
         <DropdownButton
           dropdownItems={[
             { id: '1', text: 'Option 1' },
@@ -75,10 +93,8 @@ The `children` can be either a `Button` or a `DropdownButton`.
         >
           Click me!
         </DropdownButton>
-      ),
-    }}
-  >
-    {(args) => <EmptySection {...args} />}
+      </EmptySection>
+    )}
   </Story>
 </Canvas>
 
@@ -89,17 +105,6 @@ The `children` can be either a `Button` or a `DropdownButton`.
     name="Another section on the left"
     args={{
       stretchDirection: 'right',
-      children: (
-        <DropdownButton
-          dropdownItems={[
-            { id: '1', text: 'Option 1' },
-            { id: '2', text: 'Option 2' },
-            { id: '3', text: 'Option 3' },
-          ]}
-        >
-          Click me!
-        </DropdownButton>
-      ),
     }}
   >
     {(args) => (
@@ -108,7 +113,17 @@ The `children` can be either a `Button` or a `DropdownButton`.
           <Text>{`<other section>`}</Text>
         </Column>
         <Column size={{ _: 12, sm: 8, md: 9 }}>
-          <EmptySection {...args} />
+          <EmptySection {...args}>
+            <DropdownButton
+              dropdownItems={[
+                { id: '1', text: 'Option 1' },
+                { id: '2', text: 'Option 2' },
+                { id: '3', text: 'Option 3' },
+              ]}
+            >
+              Click me!
+            </DropdownButton>
+          </EmptySection>
         </Column>
       </LayoutGrid>
     )}
@@ -122,23 +137,22 @@ The `children` can be either a `Button` or a `DropdownButton`.
     name="Another section on the right"
     args={{
       stretchDirection: 'left',
-      children: (
-        <DropdownButton
-          dropdownItems={[
-            { id: '1', text: 'Option 1' },
-            { id: '2', text: 'Option 2' },
-            { id: '3', text: 'Option 3' },
-          ]}
-        >
-          Click me!
-        </DropdownButton>
-      ),
     }}
   >
     {(args) => (
       <LayoutGrid gap={16}>
         <Column size={{ _: 12, sm: 8, md: 9 }}>
-          <EmptySection {...args} />
+          <EmptySection {...args}>
+            <DropdownButton
+              dropdownItems={[
+                { id: '1', text: 'Option 1' },
+                { id: '2', text: 'Option 2' },
+                { id: '3', text: 'Option 3' },
+              ]}
+            >
+              Click me!
+            </DropdownButton>
+          </EmptySection>{' '}
         </Column>
         <Column size={{ _: 12, sm: 4, md: 3 }}>
           <Text>{`<other section>`}</Text>
@@ -153,7 +167,13 @@ The `children` can be either a `Button` or a `DropdownButton`.
 Edit attributes and see what’s possible to do with this component or get the exact output you want.
 
 <Canvas>
-  <Story name="Playground">{(args) => <EmptySection {...args} />}</Story>
+  <Story name="Playground">
+    {(args) => (
+      <EmptySection {...args}>
+        <FillButton>Do Something</FillButton>
+      </EmptySection>
+    )}
+  </Story>
 </Canvas>
 
 <PropsTable story="Playground" />
