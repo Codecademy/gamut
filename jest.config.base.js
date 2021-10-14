@@ -27,7 +27,6 @@ module.exports = (packageName) => ({
     '^@codecademy\\/gamut$': '<rootDir>/../gamut/src',
     '^@codecademy\\/gamut-labs$': '<rootDir>/../gamut-labs/src',
     '^@codecademy\\/gamut-styles$': '<rootDir>/../gamut-styles/src',
-    '^@codecademy\\/gamut-system$': '<rootDir>/../gamut-system/src',
     '^@codecademy\\/gamut-tests$': '<rootDir>/../gamut-tests/src',
     '^@codecademy\\/variance$': '<rootDir>/../variance/src',
     '^@codecademy\\/gamut-illustrations$':
