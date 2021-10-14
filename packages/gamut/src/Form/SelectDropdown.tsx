@@ -53,7 +53,16 @@ export type SelectDropdownOptions = SelectOptions | IconOption[];
 
 interface SelectDropdownProps
   extends SelectDropdownBaseProps,
-    Omit<NamedProps, 'formatOptionLabel' | 'isDisabled' | 'value' | 'options'>,
+    Omit<
+      NamedProps,
+      | 'formatOptionLabel'
+      | 'isDisabled'
+      | 'value'
+      | 'options'
+      | 'components'
+      | 'styles'
+      | 'theme'
+    >,
     Pick<
       SelectHTMLAttributes<HTMLSelectElement>,
       'value' | 'disabled' | 'onClick'
