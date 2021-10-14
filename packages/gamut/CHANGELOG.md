@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [37.10.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@37.10.3...@codecademy/gamut@37.10.4) (2021-10-14)
+
+
+### Bug Fixes
+
+* **Checkbox:** do not read checkbox label separately for a11y ([79305fb](https://github.com/Codecademy/client-modules/commit/79305fb7b073c1ee8781b3be40165caf08a35d9d))
+
+
+
 ### [37.10.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@37.10.2...@codecademy/gamut@37.10.3) (2021-10-07)
 
 
