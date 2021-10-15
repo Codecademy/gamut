@@ -78,7 +78,7 @@ export function ConnectedFormGroup<T extends ConnectedField>({
   );
 
   return (
-    <FormGroup spacing={spacing}>
+    <FormGroup spacing={hideLabel ? 'tight' : spacing}>
       {hideLabel ? <HiddenText>{renderedLabel}</HiddenText> : renderedLabel}
       <Component {...(rest as any)} name={name} disabled={disabled} />
       {children}
