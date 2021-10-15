@@ -59,7 +59,12 @@ export const PageAlerts: React.FC<PageAlertsProps> = ({ extra = [] }) => {
 
   return (
     <BodyPortal>
-      <AlertArea role="alert" key="alerts" ref={refCallback}>
+      <AlertArea
+        role="alert"
+        aria-live="assertive"
+        key="alerts"
+        ref={refCallback}
+      >
         {alerts.map((alert) => (
           <Alert
             cta={alert.cta}
