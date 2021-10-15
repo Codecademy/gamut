@@ -96,6 +96,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
           type="checkbox"
           checked={checked}
           disabled={disabled}
+          aria-label={`${label}`}
           {...rest}
           ref={ref}
         />
@@ -127,6 +128,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
             id={`text-${id || htmlFor}`}
             multiline={multiline}
             disabled={disabled}
+            aria-hidden="true"
           >
             {label}
           </CheckboxText>

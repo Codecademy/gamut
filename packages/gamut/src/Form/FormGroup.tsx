@@ -52,6 +52,7 @@ const FormGroupContainer = styled(Box)<StyleProps<typeof formGroupSpacing>>`
   ${formGroupSpacing}
   position: relative;
   width: 100%;
+  height: max-content;
 `;
 
 export const FormGroup: React.FC<FormGroupProps> = ({
