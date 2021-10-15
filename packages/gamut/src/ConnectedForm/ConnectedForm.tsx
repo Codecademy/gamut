@@ -55,7 +55,7 @@ export interface ConnectedFormProps<Values extends {}>
   /**
    * Function called with field values on submit, if all validations have passed.
    */
-  validationRules?: Partial<{ [Key in keyof Values]?: RegisterOptions }>;
+  validationRules?: Partial<Record<keyof Values, RegisterOptions>>;
 
   /**
    * Which react hook form mode we are going to use for validation.
@@ -134,3 +134,14 @@ export function ConnectedForm<Values extends FormValues<Values>>({
     </PropsProvider>
   );
 }
+
+const hey = () => (
+  <ConnectedForm
+    defaultValues={{ this: true, that: false }}
+    validationRules={{
+      this: { required: 'you need to check this, its important i SWEAR' },
+      hey: { required: 'you need to check this, its important i SWEAR' },
+    }}
+    onSubmit={() => {}}
+  />
+);
