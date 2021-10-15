@@ -55,16 +55,7 @@ export type FormGroupLabelProps = HTMLAttributes<HTMLDivElement> &
     size?: 'small' | 'large';
   };
 
-const Label = styled
-  .label(labelSizeVariants, labelStates)
-  .withComponent((props: FormGroupLabelProps) => {
-    if (props.htmlFor) {
-      // We know this is wrong because props.htmlFor exists...
-      // eslint-disable-next-line jsx-a11y/label-has-associated-control
-      return <label {...props} />;
-    }
-    return <div {...props} />;
-  });
+const Label = styled.label<FormGroupLabelProps>(labelSizeVariants, labelStates);
 
 export const FormGroupLabel: React.FC<FormGroupLabelProps> = ({
   children,
@@ -85,6 +76,7 @@ export const FormGroupLabel: React.FC<FormGroupLabelProps> = ({
         tooltipPadding={Boolean(tooltip)}
         className={className}
         size={size}
+        as={htmlFor ? 'label' : 'div'}
       >
         {children}
         {showRequired ? ' *' : ''}
