@@ -6,7 +6,6 @@ import React, { HTMLAttributes } from 'react';
 
 import { FlexBox } from '..';
 import { ToolTip, ToolTipProps } from '../ToolTip';
-import { FormGroupProps } from '.';
 import { formBaseStyles, formFieldTextDisabledStyles } from './styles';
 
 const StyledToolTipContainer = styled.span`
