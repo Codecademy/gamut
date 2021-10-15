@@ -28,7 +28,7 @@ export interface FormContextProps {
    */
   showRequired?: boolean;
   /**
-   * Function called with field values on submit, if all validations have passed.
+   * Validation rules form fields. Fields with validation rules must have a defaultValue listed in the defaultValue prop.
    */
   validationRules?: { string?: RegisterOptions };
   /**
@@ -53,9 +53,9 @@ export interface ConnectedFormProps<Values extends {}>
   defaultValues?: UseFormOptions<Values>['defaultValues'];
 
   /**
-   * Function called with field values on submit, if all validations have passed.
+   * Validation rules form fields. Fields with validation rules must have a defaultValue listed in the defaultValue prop.
    */
-  validationRules?: Partial<Record<keyof Values, RegisterOptions>>;
+  validationRules?: { [Key in keyof Values]?: RegisterOptions };
 
   /**
    * Which react hook form mode we are going to use for validation.
@@ -140,7 +140,6 @@ const hey = () => (
     defaultValues={{ this: true, that: false }}
     validationRules={{
       this: { required: 'you need to check this, its important i SWEAR' },
-      hey: { required: 'you need to check this, its important i SWEAR' },
     }}
     onSubmit={() => {}}
   />
