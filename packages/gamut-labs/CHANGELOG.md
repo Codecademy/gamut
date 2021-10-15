@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [25.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@25.1.8...@codecademy/gamut-labs@25.2.0) (2021-10-15)
+
+
+### Features
+
+* **CodeChallenges:** add challenges to list of resources in global nav ([3578e58](https://github.com/Codecademy/client-modules/commit/3578e58e574e589d7fff1f983ffe8fa6cd67f6f2))
+
+
+
 ### [25.1.8](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@25.1.7...@codecademy/gamut-labs@25.1.8) (2021-10-15)
 
 **Note:** Version bump only for package @codecademy/gamut-labs
