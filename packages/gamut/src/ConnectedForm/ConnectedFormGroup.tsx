@@ -82,7 +82,7 @@ export function ConnectedFormGroup<T extends ConnectedField>({
       {hideLabel ? <HiddenText>{renderedLabel}</HiddenText> : renderedLabel}
       <Component {...(rest as any)} name={name} disabled={disabled} />
       {children}
-      {(error || customError) && (
+      {(error || customError) && !hideLabel && (
         <FormError
           role={isFirstError ? 'alert' : 'status'}
           aria-live={isFirstError ? 'assertive' : 'off'}
