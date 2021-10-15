@@ -3,6 +3,90 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [25.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@25.1.8...@codecademy/gamut-labs@25.2.0) (2021-10-15)
+
+
+### Features
+
+* **CodeChallenges:** add challenges to list of resources in global nav ([3578e58](https://github.com/Codecademy/client-modules/commit/3578e58e574e589d7fff1f983ffe8fa6cd67f6f2))
+
+
+
+### [25.1.8](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@25.1.7...@codecademy/gamut-labs@25.1.8) (2021-10-15)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [25.1.7](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@25.1.6...@codecademy/gamut-labs@25.1.7) (2021-10-15)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [25.1.6](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@25.1.5...@codecademy/gamut-labs@25.1.6) (2021-10-14)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [25.1.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@25.1.4...@codecademy/gamut-labs@25.1.5) (2021-10-14)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [25.1.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@25.1.3...@codecademy/gamut-labs@25.1.4) (2021-10-14)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [25.1.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@25.1.2...@codecademy/gamut-labs@25.1.3) (2021-10-14)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [25.1.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@25.1.1...@codecademy/gamut-labs@25.1.2) (2021-10-14)
+
+
+### Bug Fixes
+
+* **Flyout:** title overflow ([2f27e50](https://github.com/Codecademy/client-modules/commit/2f27e500e4c5552afcd04131e81f623d9736ab46))
+
+
+
+### [25.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@25.1.0...@codecademy/gamut-labs@25.1.1) (2021-10-13)
+
+
+### Bug Fixes
+
+* changing logic of Business Account Management profile item to use `isBusinessAdmin` ([4a954e7](https://github.com/Codecademy/client-modules/commit/4a954e7f4ba9113ca0713e6d376ead23f5c7f314))
+
+
+
+## [25.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@25.0.0...@codecademy/gamut-labs@25.1.0) (2021-10-12)
+
+
+### Features
+
+* **Nav:** add career center link ([b16c488](https://github.com/Codecademy/client-modules/commit/b16c48814d492e1c4f4f4ad9bfb69a644664fccf))
+
+
+
 ## [25.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@24.4.5...@codecademy/gamut-labs@25.0.0) (2021-10-07)
 
 

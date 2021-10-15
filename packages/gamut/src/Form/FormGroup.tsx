@@ -26,6 +26,7 @@ export interface FormGroupProps
 const FormGroupContainer = styled(Box)`
   position: relative;
   width: 100%;
+  height: max-content;
 `;
 
 FormGroupContainer.defaultProps = {

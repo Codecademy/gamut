@@ -12,7 +12,7 @@ import {
 
 export const stubCheckboxField: GridFormCheckboxField = {
   description: 'Check me!',
-  label: 'Stub Checkbox',
+  label: 'Check me!',
   name: 'stub-checkbox',
   size: 6,
   type: 'checkbox',
@@ -104,7 +104,7 @@ export const stubFieldCases = [
     stubCheckboxField,
     'byRole',
     'checkbox',
-    { name: 'Stub Checkbox Check me!' },
+    { name: 'Check me!' },
     'another-dank-id',
   ],
   [
