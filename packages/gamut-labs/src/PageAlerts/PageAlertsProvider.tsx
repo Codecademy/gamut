@@ -31,10 +31,7 @@ export const PageAlertsProvider: React.FC = ({ children }) => {
 
   const closeAlert = useCallback((message: string) => {
     setAlerts((existingAlerts) => {
-      const filter = existingAlerts.filter(
-        (alert) => alert.message !== message
-      );
-      return filter;
+      return existingAlerts.filter((alert) => alert.message !== message);
     });
   }, []);
 
