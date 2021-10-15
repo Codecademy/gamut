@@ -4,7 +4,7 @@ import { Background } from '@codecademy/gamut-styles';
 import { action } from '@storybook/addon-actions';
 import React, { useState } from 'react';
 
-import { ColorModeExampleWrapper } from '../../Foundations/ColorMode/examples';
+import { ColorModeExampleWrapper } from '../Foundations/ColorMode/examples';
 
 const onSubmit = action('Submitted!');
 
