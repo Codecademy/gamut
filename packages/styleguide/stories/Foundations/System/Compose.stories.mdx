@@ -26,9 +26,9 @@ Using `variance.compose()` will take any number of system prop functions and mer
 
 ```tsx
 import { variance } from '@codecademy/variance';
-import { layout, grid } from '@codecademy/gamut-styles';
+import { system } from '@codecademy/gamut-styles';
 
-const Grid = styled.div(variance.compose(layout, grid));
+const Grid = styled.div(variance.compose(system.layout, system.grid));
 
 <Grid width="100%" gridTemplateColumns="1fr 1fr" />;
 ```
@@ -112,12 +112,12 @@ const Grid = styled.div(layout, grid);
 
 // manual inference
 type GridProps = StyleProps<typeof grid> & StyleProps<typeof layout>;
-const Grid = styled.div<GridProps>(layout, grid);
+const Grid = styled.div<GridProps>(system.layout, system.grid);
 
 <Grid width="100%" justifyContent="center" />; // works but we did it manually :(
 
 // composition inference
-const Grid = styled.div(variance.compose(layout, grid));
+const Grid = styled.div(variance.compose(system.layout, system.grid));
 
 <Grid width="100%" justifyContent="center" />; // works with no manual config :)
 ```
