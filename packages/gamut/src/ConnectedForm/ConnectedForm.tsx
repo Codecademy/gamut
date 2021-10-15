@@ -134,13 +134,3 @@ export function ConnectedForm<Values extends FormValues<Values>>({
     </PropsProvider>
   );
 }
-
-const hey = () => (
-  <ConnectedForm
-    defaultValues={{ this: true, that: false }}
-    validationRules={{
-      this: { required: 'you need to check this, its important i SWEAR' },
-    }}
-    onSubmit={() => {}}
-  />
-);
