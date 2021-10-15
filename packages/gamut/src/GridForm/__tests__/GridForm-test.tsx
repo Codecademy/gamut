@@ -80,7 +80,7 @@ const asyncRenderView = async (
 
 const getBaseCases = (view: RenderResult<typeof queries, HTMLElement>) => {
   const checkboxField = view.getByRole('checkbox', {
-    name: 'Stub Checkbox Check me!',
+    name: 'Check me!',
   }) as HTMLInputElement;
   const selectField = view.getByRole('combobox', {
     name: 'Stub Select',
