@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.19.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-illustrations@0.18.3...@codecademy/gamut-illustrations@0.19.0) (2021-10-15)
+
+
+### Features
+
+* **Illustrations:** Add Maze illustration to gamut-illustrations ([3709941](https://github.com/Codecademy/client-modules/commit/37099411d23600a6a407aa7f58706a3d0ddb8411))
+
+
+
 ### [0.18.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-illustrations@0.18.2...@codecademy/gamut-illustrations@0.18.3) (2021-09-30)
 
 **Note:** Version bump only for package @codecademy/gamut-illustrations
