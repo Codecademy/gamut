@@ -76,6 +76,7 @@ const CheckboxText = styled.span<CheckboxTextProps>(checkboxTextStates);
 export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
   (
     {
+      'aria-label': ariaLabel,
       className,
       label,
       htmlFor,
@@ -96,7 +97,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
           type="checkbox"
           checked={checked}
           disabled={disabled}
-          aria-label={`${label}`}
+          aria-label={ariaLabel ?? htmlfor}
           {...rest}
           ref={ref}
         />
