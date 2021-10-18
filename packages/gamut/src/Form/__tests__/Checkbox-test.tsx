@@ -38,7 +38,7 @@ describe('<Checkbox>', () => {
     expect(wrapper.find('img').length).toBe(1);
   });
 
-  it.only('accepts an aria-label', () => {
+  it('accepts an aria-label', () => {
     const { wrapper } = renderWrapper({
       'aria-label': 'i am a labeled checkbox',
     });
