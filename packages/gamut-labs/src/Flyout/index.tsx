@@ -56,7 +56,15 @@ export const Flyout: React.FC<FlyoutProps> = ({
         top={0}
         {...{ [openFrom]: 0 }}
       >
-        <Text as="h2" fontSize={22} mb={8} ml={16} mt={24}>
+        <Text
+          as="h2"
+          fontSize={22}
+          mb={8}
+          ml={16}
+          mt={24}
+          mr={40}
+          maxWidth="100%"
+        >
           {title}
         </Text>
         <IconButton
