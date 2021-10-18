@@ -104,7 +104,7 @@ export const stubFieldCases = [
     stubCheckboxField,
     'byRole',
     'checkbox',
-    { name: 'Check me!' },
+    { name: 'stub-checkbox' },
     'another-dank-id',
   ],
   [
