@@ -27,6 +27,10 @@ const searchTerms = [
   'Java',
 ];
 
+const StyledWrapper = styled(Box)`
+  background-color: ${({ theme }) => theme.colors.background};
+`;
+
 const Form = Box.withComponent('form');
 const Input = Box.withComponent('input');
 
@@ -110,8 +114,7 @@ export const SearchPane: React.FC<SearchPaneProps> = ({
         onEscapeKey={toggleSearch}
         allowPageInteraction
       >
-        <Box
-          bg={theme.colors.background}
+        <StyledWrapper
           borderColorBottom="text"
           borderColorTop="gray-100"
           borderStyle="solid"
@@ -186,7 +189,7 @@ export const SearchPane: React.FC<SearchPaneProps> = ({
               </TextButton>
             </FlexBox>
           </SuggestionContainer>
-        </Box>
+        </StyledWrapper>
       </FocusTrap>
     </>
   );
