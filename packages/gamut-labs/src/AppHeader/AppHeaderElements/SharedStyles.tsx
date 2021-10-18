@@ -4,7 +4,6 @@ import { css } from '@emotion/react';
 export const textButtonStyles = css`
   background-color: transparent;
   border: none;
-  color: ${colors.navy};
   cursor: pointer;
   display: flex;
   align-items: center;

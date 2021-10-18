@@ -1,11 +1,7 @@
-import { Box, FlexBox } from '@codecademy/gamut';
+import { Anchor, Box, FlexBox } from '@codecademy/gamut';
 import styled from '@emotion/styled';
 import React from 'react';
 
-import {
-  focusStyles,
-  hoverStyles,
-} from '../../AppHeader/AppHeaderElements/SharedStyles';
 import {
   AppHeaderClickHandler,
   AppHeaderLinkItem,
@@ -29,14 +25,6 @@ const SeparatorInner = styled(Box)<AppHeaderLinkButtonProps>`
   margin-top: ${({ topSeparator }) => (topSeparator ? '0.5rem' : '')};
 `;
 
-const AppHeaderLinkButtonOuter = styled.a`
-  text-decoration: none;
-  padding: 1rem 0;
-  color: ${({ theme }) => theme.colors.navy};
-  ${hoverStyles}
-  ${focusStyles}
-`;
-
 export const AppHeaderLinkMobile: React.FC<AppHeaderLinkMobileProps> = ({
   action,
   item,
@@ -47,11 +35,15 @@ export const AppHeaderLinkMobile: React.FC<AppHeaderLinkMobileProps> = ({
   return (
     <SeparatorOuter topSeparator={topSeparator}>
       <SeparatorInner topSeparator={topSeparator}>
-        <AppHeaderLinkButtonOuter
+        <Anchor
+          as="button"
           data-testid={item.dataTestId}
           href={item.href}
+          fontWeight="normal"
           onClick={(event) => action(event, item)}
           target={item.newTab ? 'blank' : ''}
+          variant="interface"
+          width="100%"
         >
           <FlexBox
             lineHeight="base"
@@ -68,7 +60,7 @@ export const AppHeaderLinkMobile: React.FC<AppHeaderLinkMobileProps> = ({
             )}
             {item.text}
           </FlexBox>
-        </AppHeaderLinkButtonOuter>
+        </Anchor>
       </SeparatorInner>
     </SeparatorOuter>
   );

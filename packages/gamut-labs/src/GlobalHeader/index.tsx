@@ -1,4 +1,5 @@
 import { Box } from '@codecademy/gamut';
+import { ColorMode, useCurrentMode } from '@codecademy/gamut-styles';
 import { useTheme } from '@emotion/react';
 import React, { useCallback } from 'react';
 
@@ -90,6 +91,7 @@ const getMobileAppHeaderItems = (
 export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
   const { action, onLinkAction } = props;
   const theme = useTheme();
+  const currentColorMode = useCurrentMode();
 
   const combinedAction = useCallback(
     (event: React.MouseEvent, item: AppHeaderItem) => {
@@ -100,33 +102,42 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
   );
 
   return (
-    <Box as="header" position="sticky" top={0} zIndex={theme.elements.headerZ}>
-      <AppHeader
-        action={combinedAction}
-        items={getAppHeaderItems(props)}
-        search={props.search}
-        {...(props.type === 'anon'
-          ? {
-              redirectParam: props.redirectParam,
-            }
-          : props.type === 'loading'
-          ? {}
-          : {
-              notifications: props.notifications,
-            })}
-      />
-      <AppHeaderMobile
-        action={combinedAction}
-        items={getMobileAppHeaderItems(props)}
-        {...(props.type === 'anon' || props.type === 'loading'
-          ? {}
-          : {
-              notifications: props.notifications,
-            })}
-        onSearch={props.search.onSearch}
-        redirectParam={props.type === 'anon' ? props.redirectParam : undefined}
-      />
-      {props.children}
-    </Box>
+    <ColorMode mode={currentColorMode}>
+      <Box
+        as="header"
+        position="sticky"
+        top={0}
+        zIndex={theme.elements.headerZ}
+      >
+        <AppHeader
+          action={combinedAction}
+          items={getAppHeaderItems(props)}
+          search={props.search}
+          {...(props.type === 'anon'
+            ? {
+                redirectParam: props.redirectParam,
+              }
+            : props.type === 'loading'
+            ? {}
+            : {
+                notifications: props.notifications,
+              })}
+        />
+        <AppHeaderMobile
+          action={combinedAction}
+          items={getMobileAppHeaderItems(props)}
+          {...(props.type === 'anon' || props.type === 'loading'
+            ? {}
+            : {
+                notifications: props.notifications,
+              })}
+          onSearch={props.search.onSearch}
+          redirectParam={
+            props.type === 'anon' ? props.redirectParam : undefined
+          }
+        />
+        {props.children}
+      </Box>
+    </ColorMode>
   );
 };

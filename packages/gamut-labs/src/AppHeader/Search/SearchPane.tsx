@@ -47,6 +47,7 @@ const SuggestionContainer = styled(ContentContainer)(
 );
 
 const StyledInput = styled(Input)`
+  color: ${({ theme }) => theme.colors.text};
   outline: none;
 `;
 
@@ -110,7 +111,7 @@ export const SearchPane: React.FC<SearchPaneProps> = ({
         allowPageInteraction
       >
         <Box
-          bg="white"
+          bg={theme.colors.background}
           borderColorBottom="text"
           borderColorTop="gray-100"
           borderStyle="solid"

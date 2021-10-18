@@ -16,7 +16,6 @@ import { useHeaderNotifications } from '../Notifications/useHeaderNotifications'
 import { AppHeaderDropdown } from './AppHeaderElements/AppHeaderDropdown';
 import { AppHeaderLink } from './AppHeaderElements/AppHeaderLink';
 import { AppHeaderLogo } from './AppHeaderElements/AppHeaderLogo';
-import { focusStyles } from './AppHeaderElements/SharedStyles';
 import {
   AppHeaderClickHandler,
   AppHeaderItem,
@@ -38,8 +37,8 @@ export const StyledAppBar = styled(AppBar)`
   width: 100%;
 `;
 
-export const AppHeaderTextButton = styled(TextButton)(focusStyles);
-export const AppHeaderFillButton = styled(FillButton)(focusStyles);
+export const AppHeaderTextButton = styled(TextButton);
+export const AppHeaderFillButton = styled(FillButton);
 
 export const mapItemToElement = (
   action: AppHeaderClickHandler,
@@ -59,7 +58,7 @@ export const mapItemToElement = (
       return item.renderElement();
     case 'text-button':
       return (
-        <AppHeaderTextButton
+        <TextButton
           size={mobile ? 'small' : 'normal'}
           onClick={(event: React.MouseEvent) => action(event, item)}
           data-testid={item.dataTestId}
@@ -70,11 +69,11 @@ export const mapItemToElement = (
           }
         >
           {item.text}
-        </AppHeaderTextButton>
+        </TextButton>
       );
     case 'fill-button':
       return (
-        <AppHeaderFillButton
+        <FillButton
           size={mobile ? 'small' : 'normal'}
           data-testid={item.dataTestId}
           href={
@@ -85,7 +84,7 @@ export const mapItemToElement = (
           onClick={(event: React.MouseEvent) => action(event, item)}
         >
           {item.text}
-        </AppHeaderFillButton>
+        </FillButton>
       );
   }
 };

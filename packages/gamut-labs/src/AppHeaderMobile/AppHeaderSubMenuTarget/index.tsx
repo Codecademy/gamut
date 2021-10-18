@@ -1,27 +1,15 @@
-import { Box, FlexBox } from '@codecademy/gamut';
+import { Anchor, Box, FlexBox } from '@codecademy/gamut';
 import { ArrowChevronRightIcon } from '@codecademy/gamut-icons';
 import styled from '@emotion/styled';
 import React from 'react';
 
 import { AppHeaderAvatar } from '../../AppHeader/AppHeaderElements/AppHeaderAvatar';
-import {
-  focusStyles,
-  hoverStyles,
-  textButtonStyles,
-} from '../../AppHeader/AppHeaderElements/SharedStyles';
 import { AppHeaderDropdownItem } from '../../AppHeader/AppHeaderElements/types';
 
 export type AppHeaderSubMenuTargetProps = {
   item: AppHeaderDropdownItem;
   openSubMenu: (event: React.MouseEvent, item: AppHeaderDropdownItem) => void;
 };
-
-const AppHeaderTextTargetButton = styled.button`
-  padding: 0;
-  ${textButtonStyles}
-  ${hoverStyles}
-  ${focusStyles}
-`;
 
 const AppHeaderLinkButtonInner = styled(Box)`
   display: flex;
@@ -48,10 +36,14 @@ export const AppHeaderSubMenuTarget: React.FC<AppHeaderSubMenuTargetProps> = ({
   };
 
   return (
-    <AppHeaderTextTargetButton
+    <Anchor
+      as="button"
+      display="flex"
       data-testid={item.dataTestId}
       onClick={(event: React.MouseEvent) => openSubMenu(event, item)}
       aria-label={`open ${item} submenu`}
+      variant="interface"
+      width="100%"
     >
       <AppHeaderLinkButtonInner
         lineHeight="base"
@@ -75,6 +67,6 @@ export const AppHeaderSubMenuTarget: React.FC<AppHeaderSubMenuTargetProps> = ({
           </Box>
         </FlexBox>
       </AppHeaderLinkButtonInner>
-    </AppHeaderTextTargetButton>
+    </Anchor>
   );
 };
