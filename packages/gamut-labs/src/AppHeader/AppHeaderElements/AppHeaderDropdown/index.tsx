@@ -10,15 +10,25 @@ import { Avatar } from '../../../Avatar';
 import { Popover } from '../../../Popover';
 import { AppHeaderLinkSections } from '../AppHeaderLinkSections';
 import { AppHeaderClickHandler, AppHeaderDropdownItem } from '../types';
-import styles from './styles.module.scss';
 
-const StyledAnchor = styled(Anchor)`
+const DropdownAnchor = styled(Anchor)`
   align-items: center;
   display: flex;
   height: 100%;
   font-weight: normal;
   padding: ${pxRem(8)} 0;
   white-space: nowrap;
+`;
+
+const DropdownIcon = styled(ArrowChevronDownFilledIcon)`
+  margin-left: ${pxRem(5)};
+  color: ${({ theme }) => theme.colors.navy};
+  transition: transform 0.35s ease-out;
+  transform-origin: center ${pxRem(5)};
+
+  &.open {
+    transform: rotate(-180deg);
+  }
 `;
 
 export type AppHeaderDropdownProps = {
@@ -38,9 +48,11 @@ export const AppHeaderDropdown: React.FC<AppHeaderDropdownProps> = ({
       action(event, item);
     }
   };
+
   const handleClose = () => {
     setIsOpen(false);
   };
+
   const clickTarget =
     item.type === 'profile-dropdown' ? (
       <IconButton ref={headerDropdownRef} onClick={toggleIsOpen}>
@@ -52,27 +64,26 @@ export const AppHeaderDropdown: React.FC<AppHeaderDropdownProps> = ({
         />
       </IconButton>
     ) : (
-      <StyledAnchor
+      <DropdownAnchor
         ref={headerDropdownRef}
         as="button"
-        className={cx(isOpen && styles.open)}
         onClick={(event) => toggleIsOpen(event)}
+        title={item.text}
         variant="interface"
       >
-        <span title={item.text} className={styles.copy}>
-          {item.text}
-        </span>
-        <ArrowChevronDownFilledIcon
-          size={12}
-          className={styles.icon}
+        {item.text}
+        <DropdownIcon
           aria-label="dropdown"
+          className={cx(isOpen && 'open')}
+          size={12}
         />
-      </StyledAnchor>
+      </DropdownAnchor>
     );
 
   const paddingY = 24;
   const linkHeight = 56;
   const separatorHeight = 16;
+
   const getPopoverHeight = () => {
     if (item.type === 'dropdown')
       return item.popover.length * linkHeight + paddingY;
