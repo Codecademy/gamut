@@ -36,6 +36,14 @@ export type BaseFormField<Value> = {
   rowspan?: ColumnProps['rowspan'];
 };
 
+export type GridFormBaseCheckboxField = BaseFormField<boolean> &
+  CheckboxPaddingProps & {
+    description: React.ReactNode;
+    multiline?: boolean;
+    validation?: RegisterOptions;
+    type: 'checkbox';
+  };
+
 export type GridFormCheckboxField = BaseFormField<boolean> &
   CheckboxPaddingProps & {
     description: React.ReactNode;
@@ -44,6 +52,22 @@ export type GridFormCheckboxField = BaseFormField<boolean> &
     validation?: RegisterOptions;
     type: 'checkbox';
   };
+
+export type CheckboxNodeLabelProps = GridFormBaseCheckboxField & {
+  /**
+   * If the label is a ReactNode, an aria-label must be added.
+   */
+  label: ReactNode;
+  'aria-label': string;
+};
+
+export type CheckboxStringLabelProps = GridFormBaseCheckboxField & {
+  label: string;
+};
+
+export type GridFormCheckboxField =
+  | CheckboxNodeLabelProps
+  | CheckboxStringLabelProps;
 
 export type GridFormCustomFieldProps = {
   className?: string;

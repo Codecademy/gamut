@@ -22,8 +22,13 @@ import {
 export type CheckboxTextProps = StyleProps<typeof checkboxTextStates>;
 export type CheckboxPaddingProps = StyleProps<typeof checkboxPadding>;
 
-export type CheckboxBaseProps = InputHTMLAttributes<HTMLInputElement> &
+export type CheckboxProps = InputHTMLAttributes<HTMLInputElement> &
   CheckboxPaddingProps & {
+    /**
+     * If the label is a ReactNode, an aria-label must be added.
+     */
+    label: ReactNode | string;
+    'aria-label'?: string;
     multiline?: boolean;
     className?: string;
     /**
@@ -35,20 +40,6 @@ export type CheckboxBaseProps = InputHTMLAttributes<HTMLInputElement> &
     value?: string;
     id?: string;
   };
-
-export type CheckboxNodeLabelProps = CheckboxBaseProps & {
-  /**
-   * If the label is a ReactNode, an aria-label must be added.
-   */
-  label: ReactNode;
-  'aria-label': string;
-};
-
-export type CheckboxStringLabelProps = CheckboxBaseProps & {
-  label: string;
-};
-
-export type CheckboxProps = CheckboxNodeLabelProps | CheckboxStringLabelProps;
 
 const CheckboxLabel = styled.label<Pick<CheckboxProps, 'disabled' | 'spacing'>>(
   noSelect,
