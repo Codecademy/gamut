@@ -30,7 +30,7 @@ export type CheckboxProps = InputHTMLAttributes<HTMLInputElement> &
      * [The for/id string of a label or labelable form-related element](https://developer.mozilla.org/en-US/docs/Web/API/HTMLLabelElement/htmlFor). The outer FormGroup or FormLabel should have an identical string as the inner FormElement for accessibility purposes.
      */
     htmlFor: string;
-    label: ReactNode;
+    label: ReactNode | string;
     name?: string;
     required?: boolean;
     value?: string;
@@ -97,7 +97,9 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
           type="checkbox"
           checked={checked}
           disabled={disabled}
-          aria-label={ariaLabel ?? htmlFor}
+          aria-label={
+            ariaLabel ?? typeof label === 'string' ? `${label}` : undefined
+          }
           {...rest}
           ref={ref}
         />
