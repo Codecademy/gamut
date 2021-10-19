@@ -22,7 +22,7 @@ import {
 export type CheckboxTextProps = StyleProps<typeof checkboxTextStates>;
 export type CheckboxPaddingProps = StyleProps<typeof checkboxPadding>;
 
-export type CheckboxProps = InputHTMLAttributes<HTMLInputElement> &
+export type CheckboxBaseProps = InputHTMLAttributes<HTMLInputElement> &
   CheckboxPaddingProps & {
     multiline?: boolean;
     className?: string;
@@ -30,12 +30,22 @@ export type CheckboxProps = InputHTMLAttributes<HTMLInputElement> &
      * [The for/id string of a label or labelable form-related element](https://developer.mozilla.org/en-US/docs/Web/API/HTMLLabelElement/htmlFor). The outer FormGroup or FormLabel should have an identical string as the inner FormElement for accessibility purposes.
      */
     htmlFor: string;
-    label: ReactNode | string;
     name?: string;
     required?: boolean;
     value?: string;
     id?: string;
   };
+
+export type CheckboxNodeLabelProps = CheckboxBaseProps & {
+  label: ReactNode;
+  'aria-label': string;
+};
+
+export type CheckboxStringLabelProps = CheckboxBaseProps & {
+  label: string;
+};
+
+export type CheckboxProps = CheckboxNodeLabelProps | CheckboxStringLabelProps;
 
 const CheckboxLabel = styled.label<Pick<CheckboxProps, 'disabled' | 'spacing'>>(
   noSelect,
@@ -140,3 +150,15 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
     );
   }
 );
+
+const hey = () => {
+  <Checkbox
+    checked
+    readOnly
+    spacing="tight"
+    label={<div>neat huh?</div>}
+    aria-label="neat huh?"
+    htmlFor="spacing-3"
+    name="spacing-3"
+  />;
+};
