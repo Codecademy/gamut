@@ -37,9 +37,6 @@ export const StyledAppBar = styled(AppBar)`
   width: 100%;
 `;
 
-export const AppHeaderTextButton = styled(TextButton);
-export const AppHeaderFillButton = styled(FillButton);
-
 export const mapItemToElement = (
   action: AppHeaderClickHandler,
   item: AppHeaderItem,

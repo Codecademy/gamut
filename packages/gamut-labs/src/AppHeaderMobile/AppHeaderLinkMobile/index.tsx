@@ -36,11 +36,11 @@ export const AppHeaderLinkMobile: React.FC<AppHeaderLinkMobileProps> = ({
     <SeparatorOuter topSeparator={topSeparator}>
       <SeparatorInner topSeparator={topSeparator}>
         <Anchor
-          as="button"
           data-testid={item.dataTestId}
           href={item.href}
           fontWeight="normal"
           onClick={(event) => action(event, item)}
+          role="link"
           target={item.newTab ? 'blank' : ''}
           variant="interface"
           width="100%"

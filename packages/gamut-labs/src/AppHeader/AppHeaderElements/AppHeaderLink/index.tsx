@@ -14,7 +14,6 @@ export const AppHeaderLink: React.FC<AppHeaderLinkProps> = ({
 }) => {
   return (
     <Anchor
-      as="button"
       data-testid={item.dataTestId}
       href={item.href}
       fontWeight="normal"
@@ -22,6 +21,7 @@ export const AppHeaderLink: React.FC<AppHeaderLinkProps> = ({
       minWidth="0"
       onClick={(event) => action(event, item)}
       py={8}
+      role="link"
       target={item.newTab ? 'blank' : ''}
       textAlign="left"
       variant="interface"

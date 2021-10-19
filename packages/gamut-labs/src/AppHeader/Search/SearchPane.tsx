@@ -27,10 +27,6 @@ const searchTerms = [
   'Java',
 ];
 
-const StyledWrapper = styled(Box)`
-  background-color: ${({ theme }) => theme.colors.background};
-`;
-
 const Form = Box.withComponent('form');
 const Input = Box.withComponent('input');
 
@@ -49,11 +45,6 @@ const SuggestionContainer = styled(ContentContainer)(
     pt: 16,
   })
 );
-
-const StyledInput = styled(Input)`
-  color: ${({ theme }) => theme.colors.text};
-  outline: none;
-`;
 
 export const SearchPane: React.FC<SearchPaneProps> = ({
   onSearch,
@@ -114,7 +105,8 @@ export const SearchPane: React.FC<SearchPaneProps> = ({
         onEscapeKey={toggleSearch}
         allowPageInteraction
       >
-        <StyledWrapper
+        <Box
+          bg="background"
           borderColorBottom="text"
           borderColorTop="gray-100"
           borderStyle="solid"
@@ -141,9 +133,10 @@ export const SearchPane: React.FC<SearchPaneProps> = ({
                   onSubmit={handleSubmit}
                   width="100%"
                 >
-                  <StyledInput
+                  <Input
                     background="none"
                     border="none"
+                    color="text"
                     fontSize={34}
                     fontWeight="bold"
                     id="header-search-bar"
@@ -189,7 +182,7 @@ export const SearchPane: React.FC<SearchPaneProps> = ({
               </TextButton>
             </FlexBox>
           </SuggestionContainer>
-        </StyledWrapper>
+        </Box>
       </FocusTrap>
     </>
   );
