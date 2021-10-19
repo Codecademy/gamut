@@ -23,7 +23,7 @@ const listVariants = variant({
       borderRadius: '2px',
     },
     table: {},
-    bar: {
+    card: {
       gap: 16,
     },
     plain: {},
@@ -80,7 +80,7 @@ const rowVariants = variant({
         bg: 'background-selected',
       },
     },
-    bar: {
+    card: {
       border: 1,
       borderRadius: '2px',
       bg: 'background',
@@ -112,7 +112,7 @@ const headerVariants = variant({
   prop: 'variant',
   variants: {
     base: {},
-    bar: {},
+    card: {},
     table: {
       borderBottom: 2,
     },

@@ -6,7 +6,7 @@ import { ColumnConfig, IdentifiableKeys } from './types';
 export interface DataList {
   <Row, IdKey extends IdentifiableKeys<Row>, Cols extends ColumnConfig<Row>[]>(
     props: Omit<DataGridProps<Row, IdKey, Cols>, 'variant'> & {
-      variant?: 'base' | 'bar';
+      variant?: 'base' | 'card';
     }
   ): ReactElement<any, any>;
 }

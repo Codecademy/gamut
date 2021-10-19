@@ -113,7 +113,7 @@ Lists have several style variants for different use cases:
 
 - `table`: Alternating backgrounds for visually separated rows of text.
 - `base`: Bordered rows for mixed content with no vertical gutter.
-- `bar`: Bordered rows with a vertical gutter.
+- `card`: Bordered rows with a vertical gutter.
 
 ```tsx
 <List variant="base" />
@@ -139,11 +139,11 @@ For displaying things with more abstract row contents (like buttons or custom re
 
 <br />
 
-### Bar
+### Card
 
-For content that doesn't need to be compared or visually adjacent to other items in a list (like current curriculum progress) use the `bar` variant.
+For content that doesn't need to be compared or visually adjacent to other items in a list (like current curriculum progress) use the `card` variant.
 
-<Story name="Bar" args={{ variant: 'bar', spacing: 'condensed' }}>
+<Story name="Card" args={{ variant: 'card', spacing: 'condensed' }}>
   {DemoTemplate.bind({})}
 </Story>
 
