@@ -150,15 +150,3 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
     );
   }
 );
-
-const hey = () => {
-  <Checkbox
-    checked
-    readOnly
-    spacing="tight"
-    label={<div>neat huh?</div>}
-    aria-label="neat huh?"
-    htmlFor="spacing-3"
-    name="spacing-3"
-  />;
-};
