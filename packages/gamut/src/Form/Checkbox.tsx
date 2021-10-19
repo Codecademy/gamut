@@ -24,13 +24,17 @@ export type CheckboxPaddingProps = StyleProps<typeof checkboxPadding>;
 
 export type CheckboxProps = InputHTMLAttributes<HTMLInputElement> &
   CheckboxPaddingProps & {
+    /**
+     * If the label is a ReactNode, an aria-label must be added.
+     */
+    label: ReactNode | string;
+    'aria-label'?: string;
     multiline?: boolean;
     className?: string;
     /**
      * [The for/id string of a label or labelable form-related element](https://developer.mozilla.org/en-US/docs/Web/API/HTMLLabelElement/htmlFor). The outer FormGroup or FormLabel should have an identical string as the inner FormElement for accessibility purposes.
      */
     htmlFor: string;
-    label: ReactNode;
     name?: string;
     required?: boolean;
     value?: string;
@@ -76,6 +80,7 @@ const CheckboxText = styled.span<CheckboxTextProps>(checkboxTextStates);
 export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
   (
     {
+      'aria-label': ariaLabel,
       className,
       label,
       htmlFor,
@@ -96,7 +101,13 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
           type="checkbox"
           checked={checked}
           disabled={disabled}
-          aria-label={`${label}`}
+          aria-label={
+            ariaLabel === undefined
+              ? typeof label === 'string'
+                ? label
+                : undefined
+              : ariaLabel
+          }
           {...rest}
           ref={ref}
         />
