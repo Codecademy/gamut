@@ -1,4 +1,5 @@
-import { Checkbox } from '@codecademy/gamut';
+import { Checkbox, FlexBox } from '@codecademy/gamut';
+import { MiniStarIcon } from '@codecademy/gamut-icons';
 import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
@@ -159,6 +160,32 @@ If you need to checkboxes to fit into a smaller space, you can use our `tight` s
       label="neat huh?"
       htmlFor="spacing-3"
       name="spacing-3"
+    />
+  </Story>
+</Canvas>
+
+### Labels as ReactNodes
+
+To ensure our `Checkboxes` are accessible, we require an `aria-label` be added if a `ReactNode` is set as the label.
+
+<Canvas>
+  <Story name="Labels as ReactNodes">
+    <Checkbox
+      checked
+      readOnly
+      label="a string"
+      htmlFor="accessible-1"
+      name="accessible-1"
+    />
+    <Checkbox
+      label={
+        <FlexBox alignItems="center">
+          <MiniStarIcon mr={4} />a node <MiniStarIcon ml={4} />
+        </FlexBox>
+      }
+      aria-label="a node"
+      htmlFor="accessible-2"
+      name="accessible-2"
     />
   </Story>
 </Canvas>

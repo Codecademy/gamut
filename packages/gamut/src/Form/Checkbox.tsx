@@ -37,6 +37,9 @@ export type CheckboxBaseProps = InputHTMLAttributes<HTMLInputElement> &
   };
 
 export type CheckboxNodeLabelProps = CheckboxBaseProps & {
+  /**
+   * If the label is a ReactNode, an aria-label must be added.
+   */
   label: ReactNode;
   'aria-label': string;
 };
