@@ -1,3 +1,4 @@
+import { isChromeOSPWA } from './device';
 import { SegmentAnalytics, UserIntegrationSummary } from './types';
 
 export type AnalyticsLoadOptions = {
@@ -23,12 +24,13 @@ export const conditionallyLoadAnalytics = ({
   analytics.page();
 
   if (user) {
-    analytics.identify(
-      user.id,
-      { email: user.email },
-      {
-        integrations: identifyPreferences,
-      }
-    );
+    let identifyParams = {
+      email: user.email,
+      source: isChromeOSPWA() ? 'pwa' : 'default',
+    };
+
+    analytics.identify(user.id, identifyParams, {
+      integrations: identifyPreferences,
+    });
   }
 };

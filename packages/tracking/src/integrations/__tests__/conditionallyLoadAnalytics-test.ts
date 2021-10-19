@@ -4,6 +4,14 @@ import {
 } from '../conditionallyLoadAnalytics';
 import { SegmentAnalytics } from '../types';
 
+const mockIsChromeOSPWA = jest.fn();
+
+jest.mock('../device', () => ({
+  get isChromeOSPWA() {
+    return mockIsChromeOSPWA;
+  },
+}));
+
 const createMockSegmentAnalytics = (overrides?: Partial<SegmentAnalytics>) => ({
   identify: jest.fn(),
   load: jest.fn(),
@@ -72,7 +80,26 @@ describe('conditionallyLoadAnalytics', () => {
 
     expect(options.analytics.identify).toHaveBeenCalledWith(
       user.id,
-      { email: user.email },
+      { email: user.email, source: 'default' },
+      {
+        integrations: options.identifyPreferences,
+      }
+    );
+  });
+
+  it('sets source to PWA on analytics.identify when source is a PWA', () => {
+    const user = {
+      email: 'test@test.com',
+      id: 'abc123',
+    };
+    const options = createMockOptions({ user });
+    mockIsChromeOSPWA.mockReturnValue(true);
+
+    conditionallyLoadAnalytics(options);
+
+    expect(options.analytics.identify).toHaveBeenCalledWith(
+      user.id,
+      { email: user.email, source: 'pwa' },
       {
         integrations: options.identifyPreferences,
       }

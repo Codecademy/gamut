@@ -34,6 +34,14 @@ Object.defineProperty(window.document, 'title', {
 
 afterEach(() => jest.resetAllMocks());
 
+const mockIsChromeOSPWA = jest.fn();
+
+jest.mock('../../integrations/device', () => ({
+  get isChromeOSPWA() {
+    return mockIsChromeOSPWA;
+  },
+}));
+
 describe('createTracker', () => {
   const describeEvent = (event: 'click' | 'impression' | 'visit') => {
     describe(event, () => {
@@ -80,6 +88,7 @@ describe('createTracker', () => {
           search: window.location.search,
           title: document.title,
           url: window.location.href,
+          source: 'default',
         });
 
         expect(fetch).not.toHaveBeenCalled();
