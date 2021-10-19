@@ -46,6 +46,10 @@ const SuggestionContainer = styled(ContentContainer)(
   })
 );
 
+const StyledInput = styled(Input)`
+  outline: none;
+`;
+
 export const SearchPane: React.FC<SearchPaneProps> = ({
   onSearch,
   onTrackingClick,
@@ -133,7 +137,7 @@ export const SearchPane: React.FC<SearchPaneProps> = ({
                   onSubmit={handleSubmit}
                   width="100%"
                 >
-                  <Input
+                  <StyledInput
                     background="none"
                     border="none"
                     color="text"
