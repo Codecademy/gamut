@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [37.10.10](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@37.10.9...@codecademy/gamut@37.10.10) (2021-10-19)
+
+
+### Bug Fixes
+
+* **Checkbox:** adds aria-label prop ([9d3a4d5](https://github.com/Codecademy/client-modules/commit/9d3a4d5c65d73a5d28e8297b0978b8690905a797))
+
+
+
 ### [37.10.9](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@37.10.8...@codecademy/gamut@37.10.9) (2021-10-15)
 
 **Note:** Version bump only for package @codecademy/gamut
