@@ -33,8 +33,6 @@ import {
   }}
 />
 
-This is a test.
-
 Lists are one of the main design tools for displaying information in a structured / repeated way which are visually distinct from cards and functionally distinct from tables.
 
 - Lists can function like tables, but aren't exclusively for displaying table data.
@@ -68,7 +66,7 @@ Be careful about placement and positioning
 ```tsx
 import { List, ListRow, ListCol } from '@codecademy/gamut';
 
-<List variant="slat" spacing="condensed">
+<List variant="base" spacing="condensed">
   <ListRow>
     <ListCol size="md">Worf</ListCol>
     <ListCol size="md">Lieutenant Commander</ListCol>
@@ -94,7 +92,7 @@ Lists come with 2 spacing variants `normal` and `condensed`.
 
 For mixed content use the normal size to ensure that there is enough space for components
 
-<Story name="Spacing - Normal" args={{ variant: 'slat', spacing: 'normal' }}>
+<Story name="Spacing - Normal" args={{ variant: 'base', spacing: 'normal' }}>
   {DemoTemplate.bind({})}
 </Story>
 
@@ -104,7 +102,7 @@ For a more compact list use the condensed spacing
 
 <Story
   name="Spacing - Condensed"
-  args={{ variant: 'slat', spacing: 'condensed' }}
+  args={{ variant: 'base', spacing: 'condensed' }}
 >
   {DemoTemplate.bind({})}
 </Story>
@@ -114,11 +112,11 @@ For a more compact list use the condensed spacing
 Lists have several style variants for different use cases:
 
 - `table`: Alternating backgrounds for visually separated rows of text.
-- `slat`: Bordered rows for mixed content with no vertical gutter.
+- `base`: Bordered rows for mixed content with no vertical gutter.
 - `bar`: Bordered rows with a vertical gutter.
 
 ```tsx
-<List variant="slat" />
+<List variant="base" />
 ```
 
 ### Table
@@ -131,11 +129,11 @@ For a table like view for content that has more metrics or actionable data use t
 
 <br />
 
-### Slat
+### Base
 
-For displaying things with more abstract row contents (like buttons or custom rendered components) use the `slat` variant. This structure denotes borders between rows and separates interactive elements with more clarity than tables.
+For displaying things with more abstract row contents (like buttons or custom rendered components) use the `base` variant. This structure denotes borders between rows and separates interactive elements with more clarity than tables.
 
-<Story name="Slat" args={{ variant: 'slat', spacing: 'condensed' }}>
+<Story name="Base" args={{ variant: 'base', spacing: 'condensed' }}>
   {DemoTemplate.bind({})}
 </Story>
 
@@ -200,7 +198,7 @@ If you have a list with many columns and would like to avoid collapsing any colu
 <Canvas>
   <Story
     name="Scrollable"
-    args={{ variant: 'slat', spacing: 'condensed', scrollable: true }}
+    args={{ variant: 'base', spacing: 'condensed', scrollable: true }}
   >
     {CondensedTemplate.bind({})}
   </Story>
@@ -265,7 +263,7 @@ List rows will switch to a mobile layout at screen widths less than smallest bre
 Here's some examples of Lists to use as guides.
 
 <Canvas>
-  <Story name="Normal - Example" args={{ variant: 'slat', spacing: 'normal' }}>
+  <Story name="Normal - Example" args={{ variant: 'base', spacing: 'normal' }}>
     {NormalTemplate.bind({})}
   </Story>
 </Canvas>
@@ -273,7 +271,7 @@ Here's some examples of Lists to use as guides.
 <Canvas>
   <Story
     name="Condensed - Example"
-    args={{ variant: 'slat', spacing: 'condensed' }}
+    args={{ variant: 'base', spacing: 'condensed' }}
   >
     {CondensedTemplate.bind({})}
   </Story>

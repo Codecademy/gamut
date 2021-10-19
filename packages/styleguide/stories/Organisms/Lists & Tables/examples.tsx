@@ -210,6 +210,6 @@ export const DataTableTemplate = createDemoTable(DataTable, {
 
 export const DataListTemplate = createDemoTable(DataList, {
   scrollable: false,
-  variant: 'slat',
+  variant: 'base',
   height: 'auto',
 });
