@@ -44,9 +44,7 @@ const AlertBanner = styled(Background)<Pick<AlertProps, 'type' | 'placement'>>(
 );
 
 AlertBanner.defaultProps = {
-  role: 'status',
   'aria-label': 'alert box',
-  'aria-live': 'polite',
 };
 
 const CollapsableContent = styled(motion.div)(
