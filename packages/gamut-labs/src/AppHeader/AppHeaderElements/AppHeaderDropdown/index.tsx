@@ -1,5 +1,6 @@
-import { Box } from '@codecademy/gamut';
+import { Anchor, Box } from '@codecademy/gamut';
 import { ArrowChevronDownFilledIcon } from '@codecademy/gamut-icons';
+import { pxRem } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import cx from 'classnames';
 import { AnimatePresence, motion } from 'framer-motion';
@@ -8,15 +9,9 @@ import React, { useRef, useState } from 'react';
 import { Popover } from '../../../Popover';
 import { AppHeaderAvatar } from '../AppHeaderAvatar';
 import { AppHeaderLinkSections } from '../AppHeaderLinkSections';
-import { focusStyles, hoverStyles, textButtonStyles } from '../SharedStyles';
+import { focusStyles, hoverStyles } from '../SharedStyles';
 import { AppHeaderClickHandler, AppHeaderDropdownItem } from '../types';
 import styles from './styles.module.scss';
-
-const AppHeaderTextTargetButton = styled.button`
-  ${textButtonStyles}
-  ${hoverStyles}
-  ${focusStyles}
-`;
 
 const AppHeaderAvatarTargetButton = styled.button`
   background-color: transparent;
@@ -25,6 +20,15 @@ const AppHeaderAvatarTargetButton = styled.button`
   padding: 2px 0;
   ${hoverStyles}
   ${focusStyles}
+`;
+
+const StyledAnchor = styled(Anchor)`
+  align-items: center;
+  display: flex;
+  height: 100%;
+  font-weight: normal;
+  padding: ${pxRem(8)} 0;
+  white-space: nowrap;
 `;
 
 export type AppHeaderDropdownProps = {
@@ -36,7 +40,7 @@ export const AppHeaderDropdown: React.FC<AppHeaderDropdownProps> = ({
   action,
   item,
 }) => {
-  const headerDropdownRef = useRef<HTMLDivElement>(null);
+  const headerDropdownRef = useRef<HTMLButtonElement>(null);
   const [isOpen, setIsOpen] = useState(false);
   const toggleIsOpen = (event: React.MouseEvent) => {
     setIsOpen(!isOpen);
@@ -49,13 +53,19 @@ export const AppHeaderDropdown: React.FC<AppHeaderDropdownProps> = ({
   };
   const clickTarget =
     item.type === 'profile-dropdown' ? (
-      <AppHeaderAvatarTargetButton onClick={(event) => toggleIsOpen(event)}>
+      <AppHeaderAvatarTargetButton
+        ref={headerDropdownRef}
+        onClick={(event) => toggleIsOpen(event)}
+      >
         <AppHeaderAvatar imageUrl={item.avatar} />
       </AppHeaderAvatarTargetButton>
     ) : (
-      <AppHeaderTextTargetButton
-        className={cx(styles.target, isOpen && styles.open)}
+      <StyledAnchor
+        ref={headerDropdownRef}
+        as="button"
+        className={cx(isOpen && styles.open)}
         onClick={(event) => toggleIsOpen(event)}
+        variant="interface"
       >
         <span title={item.text} className={styles.copy}>
           {item.text}
@@ -65,7 +75,7 @@ export const AppHeaderDropdown: React.FC<AppHeaderDropdownProps> = ({
           className={styles.icon}
           aria-label="dropdown"
         />
-      </AppHeaderTextTargetButton>
+      </StyledAnchor>
     );
 
   const paddingY = 24;
@@ -84,7 +94,7 @@ export const AppHeaderDropdown: React.FC<AppHeaderDropdownProps> = ({
 
   return (
     <>
-      <div ref={headerDropdownRef}>{clickTarget}</div>
+      {clickTarget}
       <AnimatePresence>
         {isOpen && (
           <Popover

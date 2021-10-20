@@ -3,6 +3,7 @@ import {
   Box,
   ContentContainer,
   FlexBox,
+  IconButton,
   Overlay,
 } from '@codecademy/gamut';
 import { CloseIcon, MenuIcon } from '@codecademy/gamut-icons';
@@ -11,10 +12,6 @@ import styled from '@emotion/styled';
 import React, { useState } from 'react';
 
 import { mapItemToElement, StyledAppBar } from '../AppHeader';
-import {
-  focusStyles,
-  hoverStyles,
-} from '../AppHeader/AppHeaderElements/SharedStyles';
 import {
   AppHeaderClickHandler,
   AppHeaderItem,
@@ -34,21 +31,12 @@ export type AppHeaderMobileProps = {
   onSearch: (query: string) => void;
 };
 
-const IconButton = styled.button`
-  background-color: transparent;
-  border: transparent;
-  color: ${({ theme }) => theme.colors.navy};
-  line-height: 0.5rem;
-  ${hoverStyles}
-  ${focusStyles}
-`;
-
 const StyledOverlay = styled(Overlay)`
   display: block;
   width: 100vw;
   height: 100vh;
   opacity: 1;
-  background-color: white;
+  background-color: ${({ theme }) => theme.colors.background};
   position: fixed;
   left: 0;
   top: 0;
@@ -125,9 +113,8 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
                   onClick={() => {
                     openMobileMenu();
                   }}
-                >
-                  <MenuIcon height={20} width={20} />
-                </IconButton>
+                  icon={MenuIcon}
+                />
               </FlexBox>
             </AppBarSection>
           </StyledAppBar>
@@ -151,9 +138,8 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
                     onClick={() => {
                       setMobileMenuOpen(false);
                     }}
-                  >
-                    <CloseIcon width={20} height={20} />
-                  </IconButton>
+                    icon={CloseIcon}
+                  />
                 </FlexBox>
               </AppBarSection>
             </StyledAppBar>
