@@ -14,22 +14,22 @@ const renderWrapper = setupEnzyme(List, {
 });
 
 describe('Menu', () => {
-  it('renders a base list by default', () => {
+  it('renders a default list by default', () => {
     const { wrapper } = renderWrapper();
 
-    expect(wrapper.find('ListEl').prop('variant')).toBe('base');
+    expect(wrapper.find('ListEl').prop('variant')).toBe('default');
     expect(wrapper.find('ListEl').prop('scrollable')).toBe(undefined);
   });
   it('configures rows with the correct variants', () => {
     const { wrapper } = renderWrapper();
     const wrappingRow = wrapper.find('RowEl').at(0);
-    expect(wrappingRow.prop('variant')).toBe('base');
+    expect(wrappingRow.prop('variant')).toBe('default');
     expect(wrappingRow.prop('spacing')).toBe('normal');
   });
   it('configures columns with the correct variants', () => {
     const { wrapper } = renderWrapper();
 
-    expect(wrapper.find('ColEl').prop('variant')).toBe('base');
+    expect(wrapper.find('ColEl').prop('variant')).toBe('default');
     expect(wrapper.find('ColEl').prop('spacing')).toBe('normal');
     expect(wrapper.find('ColEl').prop('sticky')).toBe(false);
   });
