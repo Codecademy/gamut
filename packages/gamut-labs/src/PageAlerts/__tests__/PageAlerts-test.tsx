@@ -96,19 +96,6 @@ describe('PageAlerts', () => {
     expect(view.queryByText('Close Alert')).toBeFalsy();
   });
 
-  it('removes the alert when the `PageAlertsContext.closeAlert` method is called', () => {
-    const { view } = renderView({
-      alerts: [{ type: 'error', message: 'This is an error alert' }],
-      alertMessageToClose: 'This is an error alert',
-    });
-    expandAllAlerts(view);
-
-    const closeButton = view.getByText('Close Alert Via Context');
-
-    userEvent.click(closeButton);
-    expect(view.queryByRole('alert')).toBeFalsy();
-  });
-
   it('should not render duplicate alerts with the same message', () => {
     const { view } = renderView({
       alerts: [
