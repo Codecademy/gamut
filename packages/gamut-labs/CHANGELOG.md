@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [25.2.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@25.2.1...@codecademy/gamut-labs@25.2.2) (2021-10-20)
+
+
+### Bug Fixes
+
+* **Drawer:** use minWidth instead of width in internal Box ([d19d483](https://github.com/Codecademy/client-modules/commit/d19d4836124f5e17b241813978dbb954f02d260d))
+
+
+
 ### [25.2.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@25.2.0...@codecademy/gamut-labs@25.2.1) (2021-10-19)
 
 **Note:** Version bump only for package @codecademy/gamut-labs
