@@ -112,7 +112,7 @@ export const SearchPane: React.FC<SearchPaneProps> = ({
         <Box
           bg="background"
           borderColorBottom="text"
-          borderColorTop="gray-100"
+          borderColorTop="shadow-solid"
           borderStyle="solid"
           borderWidth="2px 0 1px"
           data-testid="header-search-dropdown"
