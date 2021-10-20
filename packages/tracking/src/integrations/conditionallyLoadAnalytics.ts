@@ -1,4 +1,4 @@
-import { DeviceAttributes, isChromeOSPWA } from './device';
+import { getClientType } from './device';
 import { SegmentAnalytics, UserIntegrationSummary } from './types';
 
 export type AnalyticsLoadOptions = {
@@ -26,7 +26,7 @@ export const conditionallyLoadAnalytics = ({
   if (user) {
     const identifyParams = {
       email: user.email,
-      source: isChromeOSPWA() ? DeviceAttributes.PWA : DeviceAttributes.Default,
+      client: getClientType(),
     };
 
     analytics.identify(user.id, identifyParams, {

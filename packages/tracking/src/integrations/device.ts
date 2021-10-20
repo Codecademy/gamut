@@ -15,8 +15,10 @@ export const isChromeOS = () =>
   // https://stackoverflow.com/questions/29657165/detecting-chrome-os-with-javascript
   /\bCrOS\b/.test(navigator.userAgent);
 
-export const DeviceAttributes = {
-  ChromeOS: 'chrome',
+export const ClientTypes = {
   PWA: 'pwa',
   Default: 'default',
 };
+
+export const getClientType = () =>
+  isChromeOSPWA() ? ClientTypes.PWA : ClientTypes.Default;

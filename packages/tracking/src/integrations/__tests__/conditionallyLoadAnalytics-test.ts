@@ -2,14 +2,13 @@ import {
   AnalyticsLoadOptions,
   conditionallyLoadAnalytics,
 } from '../conditionallyLoadAnalytics';
-import { DeviceAttributes } from '../device';
 import { SegmentAnalytics } from '../types';
 
-const mockIsChromeOSPWA = jest.fn();
+const mockClientType = jest.fn();
 
-jest.mock('../device', () => ({
-  get isChromeOSPWA() {
-    return mockIsChromeOSPWA;
+jest.mock('../../integrations/device', () => ({
+  get getClientType() {
+    return mockClientType;
   },
 }));
 
@@ -76,12 +75,13 @@ describe('conditionallyLoadAnalytics', () => {
       id: 'abc123',
     };
     const options = createMockOptions({ user });
+    mockClientType.mockReturnValue('default');
 
     conditionallyLoadAnalytics(options);
 
     expect(options.analytics.identify).toHaveBeenCalledWith(
       user.id,
-      { email: user.email, source: DeviceAttributes.Default },
+      { email: user.email, client: 'default' },
       {
         integrations: options.identifyPreferences,
       }
@@ -94,13 +94,13 @@ describe('conditionallyLoadAnalytics', () => {
       id: 'abc123',
     };
     const options = createMockOptions({ user });
-    mockIsChromeOSPWA.mockReturnValue(true);
+    mockClientType.mockReturnValue('pwa');
 
     conditionallyLoadAnalytics(options);
 
     expect(options.analytics.identify).toHaveBeenCalledWith(
       user.id,
-      { email: user.email, source: DeviceAttributes.PWA },
+      { email: user.email, client: 'pwa' },
       {
         integrations: options.identifyPreferences,
       }

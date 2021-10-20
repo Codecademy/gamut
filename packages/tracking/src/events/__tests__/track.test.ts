@@ -34,11 +34,11 @@ Object.defineProperty(window.document, 'title', {
 
 afterEach(() => jest.resetAllMocks());
 
-const mockIsChromeOSPWA = jest.fn();
+const mockClientType = jest.fn();
 
 jest.mock('../../integrations/device', () => ({
-  get isChromeOSPWA() {
-    return mockIsChromeOSPWA;
+  get getClientType() {
+    return mockClientType;
   },
 }));
 
@@ -59,6 +59,7 @@ describe('createTracker', () => {
 
       it('calls only to beacon when it exists', () => {
         const mockBeacon = jest.fn().mockReturnValueOnce(true);
+        mockClientType.mockReturnValue('default');
 
         Object.defineProperty(navigator, 'sendBeacon', {
           writable: true,
@@ -88,7 +89,7 @@ describe('createTracker', () => {
           search: window.location.search,
           title: document.title,
           url: window.location.href,
-          source: 'default',
+          client: 'default',
         });
 
         expect(fetch).not.toHaveBeenCalled();

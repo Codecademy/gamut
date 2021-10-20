@@ -1,4 +1,4 @@
-import { DeviceAttributes, isChromeOSPWA } from '../integrations/device';
+import { getClientType } from '../integrations/device';
 /* eslint-disable no-console */
 import type {
   EventDataTypes,
@@ -56,9 +56,7 @@ export const createTracker = ({ apiBaseUrl, verbose }: TrackerOptions) => {
       title: window.document.title,
       url: window.location.href,
       referrer: window.document.referrer,
-      browser: isChromeOSPWA()
-        ? DeviceAttributes.PWA
-        : DeviceAttributes.Default,
+      client: getClientType(),
     };
 
     if (verbose) {
