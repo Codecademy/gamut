@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [25.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@25.3.0...@codecademy/gamut-labs@25.4.0) (2021-10-20)
+
+
+### Features
+
+* **GlobalHeader:** [GM-399] Adding dark mode to GlobalHeader and all child components ([1148a31](https://github.com/Codecademy/client-modules/commit/1148a31ffb4fb320f3a5d1c6a9669469a3084712))
+
+
+
 ## [25.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@25.2.2...@codecademy/gamut-labs@25.3.0) (2021-10-20)
 
 
