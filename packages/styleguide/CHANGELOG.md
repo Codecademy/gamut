@@ -3,6 +3,141 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [48.0.14](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@48.0.13...@codecademy/styleguide@48.0.14) (2021-10-19)
+
+
+### Bug Fixes
+
+* **Checkbox:** adds aria-label prop ([9d3a4d5](https://github.com/Codecademy/client-modules/commit/9d3a4d5c65d73a5d28e8297b0978b8690905a797))
+
+
+
+### [48.0.13](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@48.0.12...@codecademy/styleguide@48.0.13) (2021-10-15)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [48.0.12](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@48.0.11...@codecademy/styleguide@48.0.12) (2021-10-15)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [48.0.11](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@48.0.10...@codecademy/styleguide@48.0.11) (2021-10-15)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [48.0.10](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@48.0.9...@codecademy/styleguide@48.0.10) (2021-10-15)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [48.0.9](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@48.0.8...@codecademy/styleguide@48.0.9) (2021-10-14)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [48.0.8](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@48.0.7...@codecademy/styleguide@48.0.8) (2021-10-14)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [48.0.7](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@48.0.6...@codecademy/styleguide@48.0.7) (2021-10-14)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [48.0.6](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@48.0.5...@codecademy/styleguide@48.0.6) (2021-10-14)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [48.0.5](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@48.0.4...@codecademy/styleguide@48.0.5) (2021-10-14)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [48.0.4](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@48.0.3...@codecademy/styleguide@48.0.4) (2021-10-14)
+
+
+### Bug Fixes
+
+* **Flyout:** title overflow ([2f27e50](https://github.com/Codecademy/client-modules/commit/2f27e500e4c5552afcd04131e81f623d9736ab46))
+
+
+
+### [48.0.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@48.0.2...@codecademy/styleguide@48.0.3) (2021-10-13)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [48.0.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@48.0.1...@codecademy/styleguide@48.0.2) (2021-10-12)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [48.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@48.0.0...@codecademy/styleguide@48.0.1) (2021-10-08)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [48.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@47.5.3...@codecademy/styleguide@48.0.0) (2021-10-07)
+
+
+### ⚠ BREAKING CHANGES
+
+* **PageSingleFeature:** add option for accent eyebrow
+
+### Features
+
+* **PageSingleFeature:** add option for accent eyebrow ([aee6356](https://github.com/Codecademy/client-modules/commit/aee635692cf0d7de342e5e81797867a2ce7a5da2)), closes [#1557](https://github.com/Codecademy/client-modules/issues/1557)
+
+
+
+### [47.5.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@47.5.2...@codecademy/styleguide@47.5.3) (2021-10-07)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
 ### [47.5.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@47.5.1...@codecademy/styleguide@47.5.2) (2021-10-06)
 
 **Note:** Version bump only for package @codecademy/styleguide

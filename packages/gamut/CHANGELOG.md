@@ -3,6 +3,77 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [37.10.10](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@37.10.9...@codecademy/gamut@37.10.10) (2021-10-19)
+
+
+### Bug Fixes
+
+* **Checkbox:** adds aria-label prop ([9d3a4d5](https://github.com/Codecademy/client-modules/commit/9d3a4d5c65d73a5d28e8297b0978b8690905a797))
+
+
+
+### [37.10.9](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@37.10.8...@codecademy/gamut@37.10.9) (2021-10-15)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [37.10.8](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@37.10.7...@codecademy/gamut@37.10.8) (2021-10-15)
+
+
+### Bug Fixes
+
+* **FormGroupLabel:** fix(FormGroupLabel):  ([b093308](https://github.com/Codecademy/client-modules/commit/b093308f39de5962a61ef94063f103ae1dd539b0))
+
+
+
+### [37.10.7](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@37.10.6...@codecademy/gamut@37.10.7) (2021-10-14)
+
+
+### Bug Fixes
+
+* **FormGroup:** export interface from FormGroup ([b4d5d20](https://github.com/Codecademy/client-modules/commit/b4d5d20f38811c71c7d37b78b4b137a445850fbc))
+
+
+
+### [37.10.6](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@37.10.5...@codecademy/gamut@37.10.6) (2021-10-14)
+
+
+### Bug Fixes
+
+* **SelectDropdown:** event props ([c5c21e7](https://github.com/Codecademy/client-modules/commit/c5c21e701d8e82d6daf3cabc38d0bb1bafee6133))
+
+
+
+### [37.10.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@37.10.4...@codecademy/gamut@37.10.5) (2021-10-14)
+
+
+### Bug Fixes
+
+* **GridForm/FormGroup:** error message spacing + tooltip overflow ([e3d8350](https://github.com/Codecademy/client-modules/commit/e3d8350143810146184c9e464646774386cfa36d))
+
+
+
+### [37.10.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@37.10.3...@codecademy/gamut@37.10.4) (2021-10-14)
+
+
+### Bug Fixes
+
+* **Checkbox:** do not read checkbox label separately for a11y ([79305fb](https://github.com/Codecademy/client-modules/commit/79305fb7b073c1ee8781b3be40165caf08a35d9d))
+
+
+
+### [37.10.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@37.10.2...@codecademy/gamut@37.10.3) (2021-10-07)
+
+
+### Bug Fixes
+
+* **Markdown:** fix bulletpoint color ([f69cc65](https://github.com/Codecademy/client-modules/commit/f69cc65a154390be70b77c45fe3da767957d2f5c))
+
+
+
 ### [37.10.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@37.10.1...@codecademy/gamut@37.10.2) (2021-10-06)
 
 
