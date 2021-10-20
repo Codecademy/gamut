@@ -88,7 +88,7 @@ describe('conditionallyLoadAnalytics', () => {
     );
   });
 
-  it('sets source to PWA on analytics.identify when source is a PWA', () => {
+  it('sets client to PWA on analytics.identify when source is a PWA', () => {
     const user = {
       email: 'test@test.com',
       id: 'abc123',
