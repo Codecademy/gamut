@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [25.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@25.2.2...@codecademy/gamut-labs@25.3.0) (2021-10-20)
+
+
+### Features
+
+* **PageAlerts:** porting PageAlerts from Portal-App ([9ab0dc1](https://github.com/Codecademy/client-modules/commit/9ab0dc1d8d15e3534fb85267abcf7430e6528665))
+
+
+
 ### [25.2.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@25.2.1...@codecademy/gamut-labs@25.2.2) (2021-10-20)
 
 
