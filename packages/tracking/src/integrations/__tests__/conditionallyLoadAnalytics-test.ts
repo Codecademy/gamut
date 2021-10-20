@@ -69,7 +69,7 @@ describe('conditionallyLoadAnalytics', () => {
     expect(options.analytics.identify).not.toHaveBeenCalled();
   });
 
-  it('calls analytics.identify when there is a user', () => {
+  it('calls analytics.identify when there is a user with a default client', () => {
     const user = {
       email: 'test@test.com',
       id: 'abc123',
