@@ -34,6 +34,14 @@ Object.defineProperty(window.document, 'title', {
 
 afterEach(() => jest.resetAllMocks());
 
+const mockClientType = jest.fn();
+
+jest.mock('../../integrations/device', () => ({
+  get getClientType() {
+    return mockClientType;
+  },
+}));
+
 describe('createTracker', () => {
   const describeEvent = (event: 'click' | 'impression' | 'visit') => {
     describe(event, () => {
@@ -51,6 +59,7 @@ describe('createTracker', () => {
 
       it('calls only to beacon when it exists', () => {
         const mockBeacon = jest.fn().mockReturnValueOnce(true);
+        mockClientType.mockReturnValue('default');
 
         Object.defineProperty(navigator, 'sendBeacon', {
           writable: true,
@@ -80,6 +89,7 @@ describe('createTracker', () => {
           search: window.location.search,
           title: document.title,
           url: window.location.href,
+          client: 'default',
         });
 
         expect(fetch).not.toHaveBeenCalled();
