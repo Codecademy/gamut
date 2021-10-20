@@ -14,3 +14,9 @@ export const isChromeOS = () =>
   typeof navigator !== 'undefined' &&
   // https://stackoverflow.com/questions/29657165/detecting-chrome-os-with-javascript
   /\bCrOS\b/.test(navigator.userAgent);
+
+export const DeviceAttributes = {
+  ChromeOS: 'chrome',
+  PWA: 'pwa',
+  Default: 'default',
+};

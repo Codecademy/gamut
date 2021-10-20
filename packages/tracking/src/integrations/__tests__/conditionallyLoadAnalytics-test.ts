@@ -2,6 +2,7 @@ import {
   AnalyticsLoadOptions,
   conditionallyLoadAnalytics,
 } from '../conditionallyLoadAnalytics';
+import { DeviceAttributes } from '../device';
 import { SegmentAnalytics } from '../types';
 
 const mockIsChromeOSPWA = jest.fn();
@@ -80,7 +81,7 @@ describe('conditionallyLoadAnalytics', () => {
 
     expect(options.analytics.identify).toHaveBeenCalledWith(
       user.id,
-      { email: user.email, source: 'default' },
+      { email: user.email, source: DeviceAttributes.Default },
       {
         integrations: options.identifyPreferences,
       }
@@ -99,7 +100,7 @@ describe('conditionallyLoadAnalytics', () => {
 
     expect(options.analytics.identify).toHaveBeenCalledWith(
       user.id,
-      { email: user.email, source: 'pwa' },
+      { email: user.email, source: DeviceAttributes.PWA },
       {
         integrations: options.identifyPreferences,
       }
