@@ -1,3 +1,4 @@
+import { getClientType } from './device';
 import { SegmentAnalytics, UserIntegrationSummary } from './types';
 
 export type AnalyticsLoadOptions = {
@@ -23,12 +24,13 @@ export const conditionallyLoadAnalytics = ({
   analytics.page();
 
   if (user) {
-    analytics.identify(
-      user.id,
-      { email: user.email },
-      {
-        integrations: identifyPreferences,
-      }
-    );
+    const identifyParams = {
+      email: user.email,
+      client: getClientType(),
+    };
+
+    analytics.identify(user.id, identifyParams, {
+      integrations: identifyPreferences,
+    });
   }
 };
