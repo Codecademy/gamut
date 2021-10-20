@@ -24,7 +24,7 @@ export const conditionallyLoadAnalytics = ({
   analytics.page();
 
   if (user) {
-    let identifyParams = {
+    const identifyParams = {
       email: user.email,
       source: isChromeOSPWA() ? DeviceAttributes.PWA : DeviceAttributes.Default,
     };
