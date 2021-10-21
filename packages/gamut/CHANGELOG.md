@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [37.11.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@37.11.0...@codecademy/gamut@37.11.1) (2021-10-21)
+
+
+### Bug Fixes
+
+* **Alert:** re-add default props ([ef9f292](https://github.com/Codecademy/client-modules/commit/ef9f292a3a73b10917b86d0c0a02ce131300c040))
+
+
+
 ## [37.11.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@37.10.10...@codecademy/gamut@37.11.0) (2021-10-20)
 
 
