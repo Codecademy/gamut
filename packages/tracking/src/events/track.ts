@@ -1,3 +1,4 @@
+import { getClientType } from '../integrations/device';
 /* eslint-disable no-console */
 import type {
   EventDataTypes,
@@ -55,6 +56,7 @@ export const createTracker = ({ apiBaseUrl, verbose }: TrackerOptions) => {
       title: window.document.title,
       url: window.location.href,
       referrer: window.document.referrer,
+      client: getClientType(),
     };
 
     if (verbose) {

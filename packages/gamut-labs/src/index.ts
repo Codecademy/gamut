@@ -41,3 +41,4 @@ export * from './ListSection';
 export * from './EmptySection';
 export * from './SocialMediaSharing';
 export * from './TabsExperimental';
+export * from './PageAlerts';

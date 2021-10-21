@@ -3,6 +3,40 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [48.2.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@48.2.0...@codecademy/styleguide@48.2.1) (2021-10-21)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [48.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@48.1.0...@codecademy/styleguide@48.2.0) (2021-10-20)
+
+
+### Features
+
+* **GlobalHeader:** [GM-399] Adding dark mode to GlobalHeader and all child components ([1148a31](https://github.com/Codecademy/client-modules/commit/1148a31ffb4fb320f3a5d1c6a9669469a3084712))
+
+
+
+## [48.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@48.0.15...@codecademy/styleguide@48.1.0) (2021-10-20)
+
+
+### Features
+
+* **PageAlerts:** porting PageAlerts from Portal-App ([9ab0dc1](https://github.com/Codecademy/client-modules/commit/9ab0dc1d8d15e3534fb85267abcf7430e6528665))
+
+
+
+### [48.0.15](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@48.0.14...@codecademy/styleguide@48.0.15) (2021-10-20)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
 ### [48.0.14](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@48.0.13...@codecademy/styleguide@48.0.14) (2021-10-19)
 
 
