@@ -92,7 +92,7 @@ Lists come with 2 spacing variants `normal` and `condensed`.
 
 For mixed content use the normal size to ensure that there is enough space for components
 
-<Story name="Spacing - Normal" args={{ variant: 'default', spacing: 'normal' }}>
+<Story name="Spacing - Normal" args={{ spacing: 'normal' }}>
   {DemoTemplate.bind({})}
 </Story>
 
@@ -100,10 +100,7 @@ For mixed content use the normal size to ensure that there is enough space for c
 
 For a more compact list use the condensed spacing
 
-<Story
-  name="Spacing - Condensed"
-  args={{ variant: 'default', spacing: 'condensed' }}
->
+<Story name="Spacing - Condensed" args={{ spacing: 'condensed' }}>
   {DemoTemplate.bind({})}
 </Story>
 
@@ -133,7 +130,7 @@ For a table like view for content that has more metrics or actionable data use t
 
 For displaying things with more abstract row contents (like buttons or custom rendered components) use the `default` variant. This structure denotes borders between rows and separates interactive elements with more clarity than tables.
 
-<Story name="Default" args={{ variant: 'default', spacing: 'condensed' }}>
+<Story name="Default" args={{ spacing: 'condensed' }}>
   {DemoTemplate.bind({})}
 </Story>
 
@@ -196,10 +193,7 @@ If you have a list with many columns and would like to avoid collapsing any colu
 <GridBox maxWidth="800px">
 
 <Canvas>
-  <Story
-    name="Scrollable"
-    args={{ variant: 'default', spacing: 'condensed', scrollable: true }}
-  >
+  <Story name="Scrollable" args={{ spacing: 'condensed', scrollable: true }}>
     {CondensedTemplate.bind({})}
   </Story>
 </Canvas>
@@ -263,19 +257,13 @@ List rows will switch to a mobile layout at screen widths less than smallest bre
 Here's some examples of Lists to use as guides.
 
 <Canvas>
-  <Story
-    name="Normal - Example"
-    args={{ variant: 'default', spacing: 'normal' }}
-  >
+  <Story name="Normal - Example" args={{ spacing: 'normal' }}>
     {NormalTemplate.bind({})}
   </Story>
 </Canvas>
 
 <Canvas>
-  <Story
-    name="Condensed - Example"
-    args={{ variant: 'default', spacing: 'condensed' }}
-  >
+  <Story name="Condensed - Example" args={{ spacing: 'condensed' }}>
     {CondensedTemplate.bind({})}
   </Story>
 </Canvas>
