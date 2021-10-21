@@ -17,6 +17,7 @@ export const SelectControl: React.FC<{
       disabled={disabled}
       spacing="tight"
       label={<Text screenreader>{label}</Text>}
+      aria-label={label}
       htmlFor={name}
       name={name}
       checked={selected}

@@ -2,6 +2,7 @@ import { DataTable } from '@codecademy/gamut';
 import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Meta, Story } from '@storybook/addon-docs/blocks';
+import LinkTo from '@storybook/addon-links/react';
 
 import { DataTableTemplate } from './examples.tsx';
 
@@ -131,7 +132,7 @@ const DataTown = () => {
 
 ### Loading
 
-Replaces content of current rows with
+Replaces content of current rows with <LinkTo kind="Atoms/Loaders/Shimmer">Shimmer</LinkTo>.
 
 <Story name="Loading Rows" args={{ loading: true }}>
   {(args) => <DataTable {...args} />}

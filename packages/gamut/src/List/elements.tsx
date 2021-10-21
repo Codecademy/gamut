@@ -10,7 +10,7 @@ import styled from '@emotion/styled';
 
 const listVariants = variant({
   prop: 'variant',
-  defaultVariant: 'slat',
+  defaultVariant: 'default',
   base: {
     listStyleType: 'none',
     p: 0,
@@ -19,11 +19,11 @@ const listVariants = variant({
     flexDirection: 'column',
   },
   variants: {
-    slat: {
+    default: {
       borderRadius: '2px',
     },
     table: {},
-    bar: {
+    card: {
       gap: 16,
     },
     plain: {},
@@ -66,7 +66,7 @@ const spacingVariants = variant({
 const rowVariants = variant({
   prop: 'variant',
   variants: {
-    slat: {
+    default: {
       bg: 'background',
       border: 1,
       borderTop: 'none',
@@ -80,7 +80,7 @@ const rowVariants = variant({
         bg: 'background-selected',
       },
     },
-    bar: {
+    card: {
       border: 1,
       borderRadius: '2px',
       bg: 'background',
@@ -111,8 +111,8 @@ export const RowEl = styled('li', styledOptions<'li'>())<RowProps>(
 const headerVariants = variant({
   prop: 'variant',
   variants: {
-    slat: {},
-    bar: {},
+    default: {},
+    card: {},
     table: {
       borderBottom: 2,
     },
