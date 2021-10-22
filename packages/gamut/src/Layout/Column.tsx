@@ -2,7 +2,7 @@ import { styledOptions, system, variant } from '@codecademy/gamut-styles';
 import { StyleProps, variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
 
-const rows = { 1: 1, 2: 2, 3: 3 };
+const rows = { 1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6 };
 
 const columns = {
   1: 1,
