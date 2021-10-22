@@ -19,7 +19,6 @@ export interface ConnectedFieldProps extends BaseConnectedFieldProps {
   name: string;
 }
 
-// to-do; DRY up Omit?
 export interface ConnectedCheckboxProps
   extends Omit<
       CheckboxProps,
