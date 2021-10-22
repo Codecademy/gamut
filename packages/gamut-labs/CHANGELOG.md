@@ -3,6 +3,146 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [25.4.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@25.4.0...@codecademy/gamut-labs@25.4.1) (2021-10-21)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+## [25.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@25.3.0...@codecademy/gamut-labs@25.4.0) (2021-10-20)
+
+
+### Features
+
+* **GlobalHeader:** [GM-399] Adding dark mode to GlobalHeader and all child components ([1148a31](https://github.com/Codecademy/client-modules/commit/1148a31ffb4fb320f3a5d1c6a9669469a3084712))
+
+
+
+## [25.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@25.2.2...@codecademy/gamut-labs@25.3.0) (2021-10-20)
+
+
+### Features
+
+* **PageAlerts:** porting PageAlerts from Portal-App ([9ab0dc1](https://github.com/Codecademy/client-modules/commit/9ab0dc1d8d15e3534fb85267abcf7430e6528665))
+
+
+
+### [25.2.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@25.2.1...@codecademy/gamut-labs@25.2.2) (2021-10-20)
+
+
+### Bug Fixes
+
+* **Drawer:** use minWidth instead of width in internal Box ([d19d483](https://github.com/Codecademy/client-modules/commit/d19d4836124f5e17b241813978dbb954f02d260d))
+
+
+
+### [25.2.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@25.2.0...@codecademy/gamut-labs@25.2.1) (2021-10-19)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+## [25.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@25.1.8...@codecademy/gamut-labs@25.2.0) (2021-10-15)
+
+
+### Features
+
+* **CodeChallenges:** add challenges to list of resources in global nav ([3578e58](https://github.com/Codecademy/client-modules/commit/3578e58e574e589d7fff1f983ffe8fa6cd67f6f2))
+
+
+
+### [25.1.8](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@25.1.7...@codecademy/gamut-labs@25.1.8) (2021-10-15)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [25.1.7](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@25.1.6...@codecademy/gamut-labs@25.1.7) (2021-10-15)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [25.1.6](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@25.1.5...@codecademy/gamut-labs@25.1.6) (2021-10-14)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [25.1.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@25.1.4...@codecademy/gamut-labs@25.1.5) (2021-10-14)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [25.1.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@25.1.3...@codecademy/gamut-labs@25.1.4) (2021-10-14)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [25.1.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@25.1.2...@codecademy/gamut-labs@25.1.3) (2021-10-14)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [25.1.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@25.1.1...@codecademy/gamut-labs@25.1.2) (2021-10-14)
+
+
+### Bug Fixes
+
+* **Flyout:** title overflow ([2f27e50](https://github.com/Codecademy/client-modules/commit/2f27e500e4c5552afcd04131e81f623d9736ab46))
+
+
+
+### [25.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@25.1.0...@codecademy/gamut-labs@25.1.1) (2021-10-13)
+
+
+### Bug Fixes
+
+* changing logic of Business Account Management profile item to use `isBusinessAdmin` ([4a954e7](https://github.com/Codecademy/client-modules/commit/4a954e7f4ba9113ca0713e6d376ead23f5c7f314))
+
+
+
+## [25.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@25.0.0...@codecademy/gamut-labs@25.1.0) (2021-10-12)
+
+
+### Features
+
+* **Nav:** add career center link ([b16c488](https://github.com/Codecademy/client-modules/commit/b16c48814d492e1c4f4f4ad9bfb69a644664fccf))
+
+
+
+## [25.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@24.4.5...@codecademy/gamut-labs@25.0.0) (2021-10-07)
+
+
+### ⚠ BREAKING CHANGES
+
+* **PageSingleFeature:** add option for accent eyebrow
+
+### Features
+
+* **PageSingleFeature:** add option for accent eyebrow ([aee6356](https://github.com/Codecademy/client-modules/commit/aee635692cf0d7de342e5e81797867a2ce7a5da2)), closes [#1557](https://github.com/Codecademy/client-modules/issues/1557)
+
+
+
 ### [24.4.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@24.4.4...@codecademy/gamut-labs@24.4.5) (2021-10-07)
 
 **Note:** Version bump only for package @codecademy/gamut-labs

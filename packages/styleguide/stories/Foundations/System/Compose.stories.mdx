@@ -25,10 +25,11 @@ Composing functions has several benefits:
 Using `variance.compose()` will take any number of system prop functions and merge them left to right (the last argument takes precedence if props conflict) and returns a new prop function with the intersection of these pieces.
 
 ```tsx
+import { system } from '@codecademy/gamut-styles';
 import { variance } from '@codecademy/variance';
-import { layout, grid } from '@codecademy/gamut-styles';
+import styled from '@emotion/styled';
 
-const Grid = styled.div(variance.compose(layout, grid));
+const Grid = styled.div(variance.compose(system.layout, system.grid));
 
 <Grid width="100%" gridTemplateColumns="1fr 1fr" />;
 ```
@@ -106,18 +107,22 @@ Composing style functions handles the type inference for you. This makes your st
 If you pass more than a single function to `styled`, Emotion is unable to infer the intersection of these functions on its own forcing you to pass the type manually.
 
 ```tsx
+import { system } from '@codecademy/gamut-styles';
+import { StyleProps, variance } from '@codecademy/variance';
+import styled from '@emotion/styled';
+
 // plain inference
 const Grid = styled.div(layout, grid);
 <Grid width="100%" justifyContent="center" />; // TypeError: justifyContent is not a prop
 
 // manual inference
 type GridProps = StyleProps<typeof grid> & StyleProps<typeof layout>;
-const Grid = styled.div<GridProps>(layout, grid);
+const Grid = styled.div<GridProps>(system.layout, system.grid);
 
 <Grid width="100%" justifyContent="center" />; // works but we did it manually :(
 
 // composition inference
-const Grid = styled.div(variance.compose(layout, grid));
+const Grid = styled.div(variance.compose(system.layout, system.grid));
 
 <Grid width="100%" justifyContent="center" />; // works with no manual config :)
 ```
