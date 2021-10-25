@@ -8,6 +8,7 @@ import {
   ColumnTemplate,
   CondensedTemplate,
   DemoTemplate,
+  ExpandedTemplate,
   JustifyTemplate,
   NormalTemplate,
   ResponsiveAnatomyTemplate,
@@ -283,6 +284,15 @@ Here's some examples of Lists to use as guides.
     args={{ variant: 'table', spacing: 'condensed', mode: 'dark' }}
   >
     {CondensedTemplate.bind({})}
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story
+    name="Expanded - Example"
+    args={{ spacing: 'condensed', mode: 'dark' }}
+  >
+    {ExpandedTemplate.bind({})}
   </Story>
 </Canvas>
 
