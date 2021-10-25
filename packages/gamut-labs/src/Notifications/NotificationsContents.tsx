@@ -3,9 +3,9 @@ import {
   FlexBox,
   Notification,
   NotificationList,
-  Pattern,
   Text,
 } from '@codecademy/gamut';
+import { CheckerDense } from '@codecademy/gamut-patterns';
 import { Background } from '@codecademy/gamut-styles';
 import React, { useEffect, useRef } from 'react';
 
@@ -71,7 +71,7 @@ export const NotificationsContents: React.FC<NotificationsContentsProps> = (
         {clearAllButton}
       </FlexBox>
       <Box px={32}>
-        <Pattern name="checkerDense" height="1px" display="flex" />
+        <CheckerDense height="1px" display="flex" />
       </Box>
       <Box maxHeight="520px" overflow="auto">
         <Box pb={16} tabIndex={0} ref={notificationListRef}>
