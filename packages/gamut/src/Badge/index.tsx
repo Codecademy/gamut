@@ -35,6 +35,10 @@ const badgeVariants = variant({
       bg: `hyper-500`,
       textColor: 'white',
     },
+    tst: {
+      bg: `background`,
+      textColor: 'white',
+    },
   },
 });
 
