@@ -8,6 +8,7 @@ const SearchForm = Box.withComponent('form');
 const StyledInput = styled.input`
   background: none;
   border: ${({ theme }) => `1px solid ${theme.colors['gray-800']}`};
+  color: ${({ theme }) => theme.colors.text};
   font-size: 1rem;
   outline: none;
   padding-right: 2.5rem;
@@ -24,6 +25,7 @@ const SearchButton = styled.button`
   top: 50%;
   transform: translate(0, -50%);
   right: 0.75rem;
+  color: ${({ theme }) => theme.colors.text};
   cursor: pointer;
   outline: 0;
   border: none;

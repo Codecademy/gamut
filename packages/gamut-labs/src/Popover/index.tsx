@@ -30,7 +30,7 @@ const RaisedDiv = styled.div<StyleProps>`
   border-radius: 2px;
   border: 1px ${({ outline }) => (outline ? 'solid' : 'none')}
     ${({ theme }) => theme.colors.secondary};
-  background-color: ${({ theme }) => theme.colors.white};
+  background-color: ${({ theme }) => theme.colors.background};
   ${({ outline }) =>
     !outline &&
     'box-shadow: 0 0 16px rgba(0, 0, 0, 0.1), 0 0 24px rgba(0, 0, 0, 0.15)'};
@@ -48,7 +48,7 @@ const Beak = styled.div<StyleProps>`
     1px
     ${({ outline }) => (outline ? 'solid' : 'none')}
     ${({ theme }) => theme.colors.secondary};
-  background-color: ${({ theme }) => theme.colors.white};
+  background-color: ${({ theme }) => theme.colors.background};
   position: absolute;
   left: ${({ beak }) => beak === 'left' && '25px'};
   right: ${({ beak }) => beak === 'right' && '25px'};
@@ -61,7 +61,7 @@ const PatternContainer = styled.div<StyleProps>`
   height: 100%;
   border-radius: 2px;
   overflow: hidden;
-  background-color: ${({ theme }) => theme.colors.white};
+  background-color: ${({ theme }) => theme.colors.background};
   position: absolute;
   top: ${({ position }) => (position === 'below' ? '8px' : '-8px')};
   left: ${({ align }) => (align === 'left' ? '8px' : '-8px')};

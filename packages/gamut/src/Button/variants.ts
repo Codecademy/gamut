@@ -31,11 +31,7 @@ export const textButtonVariants = templateVariants(
     borderColor: 'transparent',
     color: variant,
     [ButtonSelectors.OUTLINE]: { borderColor: variant },
-    [ButtonSelectors.HOVER]: {
-      bg: 'background-selected',
-    },
     [ButtonSelectors.ACTIVE]: {
-      bg: 'transparent',
       color: 'text',
     },
     [ButtonSelectors.DISABLED]: {
@@ -53,9 +49,6 @@ export const strokeButtonVariants = templateVariants(
     color: variant,
     [ButtonSelectors.OUTLINE]: {
       borderColor: variant,
-    },
-    [ButtonSelectors.HOVER]: {
-      bg: 'background-selected',
     },
     [ButtonSelectors.ACTIVE]: {
       bg: variant,

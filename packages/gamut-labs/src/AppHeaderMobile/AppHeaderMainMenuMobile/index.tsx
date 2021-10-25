@@ -1,7 +1,6 @@
-import { FlexBox } from '@codecademy/gamut';
+import { FillButton, FlexBox, TextButton } from '@codecademy/gamut';
 import React, { useState } from 'react';
 
-import { AppHeaderFillButton, AppHeaderTextButton } from '../..';
 import {
   AppHeaderClickHandler,
   AppHeaderDropdownItem,
@@ -58,25 +57,25 @@ export const AppHeaderMainMenuMobile: React.FC<AppHeaderMainMenuMobileProps> = (
       case 'fill-button':
         return (
           <FlexBox justifyContent="center" mt={32} key={item.id}>
-            <AppHeaderFillButton
+            <FillButton
               data-testid={item.dataTestId}
               href={item.href}
               onClick={(event: React.MouseEvent) => action(event, item)}
             >
               {item.text}
-            </AppHeaderFillButton>
+            </FillButton>
           </FlexBox>
         );
       case 'text-button':
         return (
           <FlexBox justifyContent="center" mt={16} key={item.id}>
-            <AppHeaderTextButton
+            <TextButton
               data-testid={item.dataTestId}
               href={item.href}
               onClick={(event: React.MouseEvent) => action(event, item)}
             >
               {item.text}
-            </AppHeaderTextButton>
+            </TextButton>
           </FlexBox>
         );
     }
