@@ -27,6 +27,8 @@ Array [
   "ContentContainer",
   "createPromise",
   "CTAButton",
+  "DataList",
+  "DataTable",
   "Dialog",
   "FillButton",
   "FlexBox",
@@ -55,6 +57,7 @@ Array [
   "LayoutGrid",
   "List",
   "ListCol",
+  "ListHeader",
   "ListRow",
   "Logo",
   "LogoDefault",
@@ -81,6 +84,7 @@ Array [
   "reactRecurlyFormFieldPaddingStyles",
   "Select",
   "SelectDropdown",
+  "Shimmer",
   "SkipToContent",
   "SkipToContentTarget",
   "Spinner",
@@ -99,6 +103,7 @@ Array [
   "Toggle",
   "ToolTip",
   "Truncate",
+  "useLocalQuery",
   "Video",
 ]
 `;
