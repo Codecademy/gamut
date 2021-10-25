@@ -310,10 +310,29 @@ export const ExpandableRow: React.FC<{
       key={key}
       expanded={isExpanded}
       renderExpanded={() => (
-        <FlexBox column m={16}>
-          <Text fontStyle="italic">
-            Oh, were you expecting to find more information about {name}, {role}{' '}
-            of the {ship}? Well, I'm sorry but that is highly classified
+        <FlexBox bg="background-selected" column m={16} p={16}>
+          <Text fontStyle="italic" smooth>
+            Oh, were you expecting to find out more about{' '}
+            <Text as="span" fontWeight="bold" color="text-accent">
+              {name}
+            </Text>
+            ,{' '}
+            <Text as="span" fontWeight="bold" color="text-accent">
+              {role}
+            </Text>{' '}
+            of the{' '}
+            <Text as="span" fontWeight="bold" color="text-accent">
+              {ship}
+            </Text>
+            ? I am very sorry but that is{' '}
+            <Text
+              as="span"
+              color="danger"
+              fontWeight="bold"
+              textDecoration="underline"
+            >
+              highly classified
+            </Text>{' '}
             information.
           </Text>
         </FlexBox>
@@ -363,7 +382,6 @@ export const ExpandableRow: React.FC<{
       </ListCol>
       <ListCol size="lg" type="control">
         <TextButton mr={16}>Hail</TextButton>
-        <Text ml={16}>Tell me more</Text>
         <ExpandControl
           id={name}
           expanded={isExpanded}
