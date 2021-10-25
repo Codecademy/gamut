@@ -1,5 +1,6 @@
 import {
   Box,
+  ExpandControl,
   FillButton,
   FlexBox,
   IconButton,
@@ -18,7 +19,7 @@ import {
   TrophyIcon,
 } from '@codecademy/gamut-icons';
 import { ColorMode } from '@codecademy/gamut-styles';
-import React from 'react';
+import React, { useState } from 'react';
 
 const rows = [
   { name: 'Jean Luc Picard', role: 'Captain', ship: 'USS Enterprise' },
@@ -285,6 +286,7 @@ export const ResponsiveTemplate: React.FC<ListProps> = (args) => {
           <Text variant="p-small" color="text-disabled" truncate="ellipsis">
             Content
           </Text>
+          f
         </ListCol>
         <ListCol type="control">
           <IconButton icon={MiniKebabMenuIcon} size="small" />
@@ -294,3 +296,92 @@ export const ResponsiveTemplate: React.FC<ListProps> = (args) => {
     </List>
   );
 };
+
+export const ExpandableRow: React.FC<{
+  name: string;
+  role: string;
+  ship: string;
+  key: string;
+}> = ({ name, role, ship, key }) => {
+  const [isExpanded, setExpanded] = useState(false);
+
+  return (
+    <ListRow
+      key={key}
+      expanded={isExpanded}
+      renderExpanded={() => (
+        <FlexBox column m={16}>
+          <Text fontStyle="italic">
+            Oh, were you expecting to find more information about {name}, {role}{' '}
+            of the {ship}? Well, I'm sorry but that is highly classified
+            information.
+          </Text>
+        </FlexBox>
+      )}
+    >
+      <ListCol size="lg" type="header">
+        <FlexBox column>
+          <Text
+            color="text-disabled"
+            textTransform="uppercase"
+            variant="p-small"
+          >
+            {ship}
+          </Text>
+          <Text variant="title-xs">{name}</Text>
+        </FlexBox>
+      </ListCol>
+      <ListCol size="md" fill>
+        <FlexBox column>
+          <Text
+            color="text-disabled"
+            textTransform="uppercase"
+            variant="p-small"
+          >
+            Rank
+          </Text>
+          <Text variant="title-xs">{role}</Text>
+        </FlexBox>
+      </ListCol>
+      <ListCol fill size="sm">
+        <Text variant="p-small" color="text-disabled" lineHeight="title" mt={4}>
+          <StreakIcon size={18} verticalAlign="middle" mr={8} mb={4} />
+          87%
+        </Text>
+      </ListCol>
+      <ListCol fill size="sm">
+        <Text variant="p-small" color="text-disabled" lineHeight="title" mt={4}>
+          <TrophyIcon size={18} verticalAlign="middle" mr={8} mb={4} />
+          48%
+        </Text>
+      </ListCol>
+      <ListCol fill size="sm">
+        <Text variant="p-small" color="text-disabled" lineHeight="title" mt={4}>
+          <StarIcon size={18} verticalAlign="middle" mr={8} mb={4} />
+          66%
+        </Text>
+      </ListCol>
+      <ListCol size="lg" type="control">
+        <TextButton mr={16}>Hail</TextButton>
+        <Text ml={16}>Tell me more</Text>
+        <ExpandControl
+          id={name}
+          expanded={isExpanded}
+          onExpand={() => setExpanded(!isExpanded)}
+        />
+      </ListCol>
+    </ListRow>
+  );
+};
+
+export const ExpandedTemplate: React.FC<
+  ListProps & { mode: 'light' | 'dark' }
+> = ({ mode, ...args }) => (
+  <ColorMode mode={mode}>
+    <List {...args}>
+      {rows.map(({ name, role, ship }, i, _, key = `example-row-${i}`) => (
+        <ExpandableRow name={name} role={role} ship={ship} key={key} />
+      ))}
+    </List>
+  </ColorMode>
+);
