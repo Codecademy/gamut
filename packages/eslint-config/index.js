@@ -43,6 +43,7 @@ module.exports = {
         '*.js',
         '*.spec.*',
         '*.test.*',
+        '*.stories.mdx',
         '**/__fixtures__/*',
         '**/__tests__/*',
       ],
