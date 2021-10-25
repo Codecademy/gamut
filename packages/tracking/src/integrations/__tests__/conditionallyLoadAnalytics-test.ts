@@ -4,6 +4,14 @@ import {
 } from '../conditionallyLoadAnalytics';
 import { SegmentAnalytics } from '../types';
 
+const mockClientType = jest.fn();
+
+jest.mock('../../integrations/device', () => ({
+  get getClientType() {
+    return mockClientType;
+  },
+}));
+
 const createMockSegmentAnalytics = (overrides?: Partial<SegmentAnalytics>) => ({
   identify: jest.fn(),
   load: jest.fn(),
@@ -61,18 +69,38 @@ describe('conditionallyLoadAnalytics', () => {
     expect(options.analytics.identify).not.toHaveBeenCalled();
   });
 
-  it('calls analytics.identify when there is a user', () => {
+  it('calls analytics.identify when there is a user with a default client', () => {
     const user = {
       email: 'test@test.com',
       id: 'abc123',
     };
     const options = createMockOptions({ user });
+    mockClientType.mockReturnValue('default');
 
     conditionallyLoadAnalytics(options);
 
     expect(options.analytics.identify).toHaveBeenCalledWith(
       user.id,
-      { email: user.email },
+      { email: user.email, client: 'default' },
+      {
+        integrations: options.identifyPreferences,
+      }
+    );
+  });
+
+  it('sets client to PWA on analytics.identify when source is a PWA', () => {
+    const user = {
+      email: 'test@test.com',
+      id: 'abc123',
+    };
+    const options = createMockOptions({ user });
+    mockClientType.mockReturnValue('pwa');
+
+    conditionallyLoadAnalytics(options);
+
+    expect(options.analytics.identify).toHaveBeenCalledWith(
+      user.id,
+      { email: user.email, client: 'pwa' },
       {
         integrations: options.identifyPreferences,
       }

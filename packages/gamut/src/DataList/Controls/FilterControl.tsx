@@ -108,6 +108,7 @@ export const FilterControl: React.FC<FilterProps> = ({
                         {isSelectAll && <Text screenreader> {dimension}</Text>}
                       </Text>
                     }
+                    aria-label={isSelectAll ? `${text} ${dimension}` : text}
                     spacing="tight"
                     checked={optionSelected}
                   />

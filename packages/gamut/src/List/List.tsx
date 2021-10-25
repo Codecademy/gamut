@@ -18,7 +18,7 @@ export interface ListProps extends AllListProps<ComponentProps<typeof ListEl>> {
 export const List = forwardRef<HTMLUListElement, ListProps>(
   (
     {
-      variant = 'slat',
+      variant = 'default',
       spacing = 'normal',
       scrollable = false,
       shadow = false,
