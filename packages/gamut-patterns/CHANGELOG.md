@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.7.0 (2021-10-26)
+
+
+### ⚠ BREAKING CHANGES
+
+* add new gamut-patterns package
+
+### Features
+
+* bump ESLint configs to latest ([4e3cf77](https://github.com/Codecademy/gamut/commit/4e3cf77928bdd69bce3eeca8a7f07439627b4f08))
+* **Patterns:** Add SVGR build process and SVGO settings ([e8433ce](https://github.com/Codecademy/gamut/commit/e8433ceace8b617fcaa45f13a11ce1367cff0e0b))
+* **props:** Support `color` and other HTML attributes as system props without type collision GM-247 ([ff93f0c](https://github.com/Codecademy/gamut/commit/ff93f0c9b7ca64ed9819586709f58436ca4502b9))
+* Migrate final gamut-system docs + functions to variance [WEB-1413]  ([f966933](https://github.com/Codecademy/gamut/commit/f966933ac814d228072e781ee2a3d75a33190a85))
+* **theme:** createTheme self containment ([87a203c](https://github.com/Codecademy/gamut/commit/87a203c56df8002406552208b8b5ffc55b228262)), closes [#666666](https://github.com/Codecademy/gamut/issues/666666) [#666666](https://github.com/Codecademy/gamut/issues/666666)
+* add new gamut-patterns package ([3b9785a](https://github.com/Codecademy/gamut/commit/3b9785a20e26767a9531b1f1ce8de5f504f2dd34))
+
+
+
 ### [0.6.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-patterns@0.6.1...@codecademy/gamut-patterns@0.6.2) (2021-09-30)
 
 **Note:** Version bump only for package @codecademy/gamut-patterns

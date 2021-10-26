@@ -3,6 +3,120 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 6.0.0 (2021-10-26)
+
+
+### ⚠ BREAKING CHANGES
+
+* release -kit-4.7
+* **Banner:** Banner new visual identity [GM-123]
+* **Icons:** Streamline Icon Set Full [GM-30] (#838)
+* Changes the path of all files in gamut from the root to a `dist` folder.
+
+This means all imports that formerly pointed to the root:
+
+```
+import Button from '@codecademy/gamut/Button'
+```
+
+now need to include the dist folder:
+
+```
+import Button from '@codecademy/gamut/dist/Button'
+```
+
+or, preferably, import the named export instead:
+
+```
+import { Button } from '@codecademy/gamut'
+```
+
+### Features
+
+* Lists & Tables GM-372 ([3c32f8a](https://github.com/Codecademy/gamut/commit/3c32f8ac4396e29182a0e6b72f754cfd835063e7))
+* **Banner:** Banner new visual identity [GM-123] ([374aff2](https://github.com/Codecademy/gamut/commit/374aff29426022856ecc488c12ece3aef0850055))
+* **Buttons:** Color + Structure Redux [GM-237] ([#1809](https://github.com/Codecademy/gamut/issues/1809)) ([698aa2a](https://github.com/Codecademy/gamut/commit/698aa2a184e59e32821c58686ac133cb043c8f65))
+* **Favorites:** allow global header to receive favorites section ([0e416a1](https://github.com/Codecademy/gamut/commit/0e416a10c13ea610ba5ad67802c1d00ff0583cec))
+* **icon:** hyper link 3 icon ([f247312](https://github.com/Codecademy/gamut/commit/f247312e396829d3b9f6b2fce5f1dec5f535c2fe))
+* **icon:** Megaphone Icon ([8d466d8](https://github.com/Codecademy/gamut/commit/8d466d81ae348cf71a38d202a833fcb0cc1cc2a7))
+* **icon:** StarCircleIcon ([9b2f855](https://github.com/Codecademy/gamut/commit/9b2f8552b70fadda17ba4fbac5b1a799b2dd25fc))
+* **Icon:** added two icons  ([#1157](https://github.com/Codecademy/gamut/issues/1157)) ([6f5f5c7](https://github.com/Codecademy/gamut/commit/6f5f5c767868d7550c74d3d3154bd10a6049d365))
+* **Icon:** arrow down icon  ([#1076](https://github.com/Codecademy/gamut/issues/1076)) ([35c9db3](https://github.com/Codecademy/gamut/commit/35c9db32075783e02e3c742fab7a899c108b57d6))
+* **icons:** add StudyBook and Radar icons ([3c347a7](https://github.com/Codecademy/gamut/commit/3c347a76a09b1c5de47485682d669d30d4027f8c))
+* **icons:** full suite of mini-arrows ([f0434b5](https://github.com/Codecademy/gamut/commit/f0434b5d9afaef798409dc86bdd00adb081f799f))
+* add cc docs homepage icons ([14fd90e](https://github.com/Codecademy/gamut/commit/14fd90e0110ffae6d7ccd55da488fe2251b7e4b7))
+* add lock and networkUser icons for shareable sandbox ([5470b97](https://github.com/Codecademy/gamut/commit/5470b972a11fac9988f81567e242aae3ce647eb5))
+* add social media icons and update target illustration ([8c0f195](https://github.com/Codecademy/gamut/commit/8c0f195bf515ee40b233c2e20a3c6f5050dd2a04))
+* bump ESLint configs to latest ([4e3cf77](https://github.com/Codecademy/gamut/commit/4e3cf77928bdd69bce3eeca8a7f07439627b4f08))
+* **gamut-icons:** remove learn icons (unused currently) ([fb3bdc3](https://github.com/Codecademy/gamut/commit/fb3bdc3e022329180ef8a96f758a49301ae71cb8))
+* **Icon:** Adds system props to all icons [GM-218] ([50f39d3](https://github.com/Codecademy/gamut/commit/50f39d3b940e7431bc4d8a63cdb543351f4d3da7))
+* **icons:** Adds LE trophy and certificate filled icons ([fdc5bfa](https://github.com/Codecademy/gamut/commit/fdc5bfab569e3d4e23e7a0ef43f594755f70c0a2))
+* **Icons:** add book and documentation icons ([#950](https://github.com/Codecademy/gamut/issues/950)) ([8f7a6ce](https://github.com/Codecademy/gamut/commit/8f7a6ce77d7bfd50533955923bd8657ee2820d0a))
+* **Icons:** Add checkout icons ([cb1d5dd](https://github.com/Codecademy/gamut/commit/cb1d5ddb37191205a410887379230d8bca6022c4))
+* **Icons:** Add GraphStatsAscendIcon ([1ee9a4a](https://github.com/Codecademy/gamut/commit/1ee9a4a499c5a3077d2e97de1b359e8254a9d89a))
+* **Icons:** Add house-entrance, book-flip-page, pie-line-graph, rating-star-give icons ([#906](https://github.com/Codecademy/gamut/issues/906)) ([64dc25c](https://github.com/Codecademy/gamut/commit/64dc25c38c4259cc625f89ca6be7fade9cb628cf))
+* **Icons:** Add initial streamline icons ([#702](https://github.com/Codecademy/gamut/issues/702)) ([6d7176d](https://github.com/Codecademy/gamut/commit/6d7176da15c97a7eea4b15c2e2cd626fee154d45))
+* **Icons:** Add MiniArrowRightIcon ([1028fb1](https://github.com/Codecademy/gamut/commit/1028fb15c7dab1fd063f35c16e536eb5188be1ac))
+* **Icons:** Add named export to gamut icons and update SVGR ([#697](https://github.com/Codecademy/gamut/issues/697)) ([426263c](https://github.com/Codecademy/gamut/commit/426263c71f24745dd1b3aad29d3ba4ae8bb3a930))
+* **Icons:** Add Rocket and Users icons ([6f3467a](https://github.com/Codecademy/gamut/commit/6f3467a934f1a42a154154f5c7575f048c1eef69))
+* **Icons:** Added svg icons ([#942](https://github.com/Codecademy/gamut/issues/942)) ([5f4d86f](https://github.com/Codecademy/gamut/commit/5f4d86f00091f246e904f19c4551db65d2eefaa5))
+* **Icons:** Custom root element and default aria-hidden ([8260d44](https://github.com/Codecademy/gamut/commit/8260d44040f109f5a3a49ccc3e0e1d5324b6d49f))
+* **Popover:** use theme.colors.secondary for outline color ([0fbec88](https://github.com/Codecademy/gamut/commit/0fbec88f491d9a3310380a300a0b8de8b79833d9))
+* **props:** Support `color` and other HTML attributes as system props without type collision GM-247 ([ff93f0c](https://github.com/Codecademy/gamut/commit/ff93f0c9b7ca64ed9819586709f58436ca4502b9))
+* add DeleteFilledIcon ([fed3cd4](https://github.com/Codecademy/gamut/commit/fed3cd404a065a0b6ef7395bef0c25e141b3b926))
+* Add file download icon ([#969](https://github.com/Codecademy/gamut/issues/969)) ([442da23](https://github.com/Codecademy/gamut/commit/442da23841a1fbe5ef411a6d37ea1b27cf3c90b7))
+* add new DropdownButton component and workspace icons ([37c4427](https://github.com/Codecademy/gamut/commit/37c4427b56043c3cede86490c7494d6f74ac566a))
+* add React icon ([#975](https://github.com/Codecademy/gamut/issues/975)) ([ef41c0a](https://github.com/Codecademy/gamut/commit/ef41c0a6834b510afe14cec635d9648b8dcd23c6))
+* added checklist and pin icons for curated content ([#976](https://github.com/Codecademy/gamut/issues/976)) ([3266976](https://github.com/Codecademy/gamut/commit/3266976be2416f30e145ad8c536db38f96bee76a))
+* added gamut-illustrations package ([8dbeebe](https://github.com/Codecademy/gamut/commit/8dbeebe32a6fb133f39d027451efccf35d262500))
+* added Pause icon ([#966](https://github.com/Codecademy/gamut/issues/966)) ([aca0a2f](https://github.com/Codecademy/gamut/commit/aca0a2f441cc932122466c49d088dae179954186))
+* added small-check-icon ([#1058](https://github.com/Codecademy/gamut/issues/1058)) ([f2a3f60](https://github.com/Codecademy/gamut/commit/f2a3f6079203b87ce3f91a7ade9b727fbf531c4f))
+* adding 3 new icons for business reporting ([c46f65d](https://github.com/Codecademy/gamut/commit/c46f65dc1119eddabed7095a84ee2bb24dee312e))
+* adding icons for Business repo ([af01f30](https://github.com/Codecademy/gamut/commit/af01f30ade85421c1b2088ee75cb0c61c5eda2b2))
+* release -kit-4.7 ([f574c83](https://github.com/Codecademy/gamut/commit/f574c8317c2e6128eaead047146a774acc257293))
+* **Icons:** Add video player movie icon ([886ae5f](https://github.com/Codecademy/gamut/commit/886ae5f1a2455b54d33bd396742e3f058d3b0bad))
+* **Icons:** Adds initial Mini Bold streamline icons ([22dd61a](https://github.com/Codecademy/gamut/commit/22dd61a5601a034c865145ae4695ddeb3d133836))
+* **Icons:** Streamline Icon Set Full [GM-30] ([#838](https://github.com/Codecademy/gamut/issues/838)) ([705424f](https://github.com/Codecademy/gamut/commit/705424fae13b0cde9efebe1b7ed979f0836e3852))
+* **Icons:** Update Delete & Check Icons and add contributing guide GM-63 GM-67 ([#912](https://github.com/Codecademy/gamut/issues/912)) ([d385119](https://github.com/Codecademy/gamut/commit/d3851190a75970d58675e91b08f6eb1273f107fb))
+* **SkipToContent:** SkipToContent + SkipToContent target visual identity + emotion [GM-158] [EGG-701]  ([b74e32c](https://github.com/Codecademy/gamut/commit/b74e32c09feea39ff2dc29a3d95cba6a7e603cad))
+* **theme:** createTheme self containment ([87a203c](https://github.com/Codecademy/gamut/commit/87a203c56df8002406552208b8b5ffc55b228262)), closes [#666666](https://github.com/Codecademy/gamut/issues/666666) [#666666](https://github.com/Codecademy/gamut/issues/666666)
+* new @codecademy/tsconfig package ([#1570](https://github.com/Codecademy/gamut/issues/1570)) ([14ae9da](https://github.com/Codecademy/gamut/commit/14ae9da71e1b2ec2284c396c4aea9b09030df14b))
+* **Icons:** Adds new icons for Form updates ([d59d758](https://github.com/Codecademy/gamut/commit/d59d758eef07c737d219c226a8a2dda73dc3d549))
+* LocationPinIcon ([adeb762](https://github.com/Codecademy/gamut/commit/adeb76219027c79490165f4e29d518fffe8b055c))
+* New Gamut Icons Package ([#402](https://github.com/Codecademy/gamut/issues/402)) ([67ed58d](https://github.com/Codecademy/gamut/commit/67ed58d9446a3c29adcc721562d4d79c19c84570))
+* various icon build updates([#584](https://github.com/Codecademy/gamut/issues/584)) ([3c3b355](https://github.com/Codecademy/gamut/commit/3c3b35563170595d4331879a3045fe0fa6f23ba6))
+
+
+### Bug Fixes
+
+* **Icons:** Fix icon sizing browser compat issue ([d592557](https://github.com/Codecademy/gamut/commit/d5925579b39f6996d4a8226fad19742ab221db18))
+* **MiniKebabIcon:** remove cruft ([9f8bb2e](https://github.com/Codecademy/gamut/commit/9f8bb2e850a37975057e0905030a8505021d5f60))
+* Automatically add display names to anonymous function components ([#878](https://github.com/Codecademy/gamut/issues/878)) ([14e0cca](https://github.com/Codecademy/gamut/commit/14e0ccae696b4c6e23784c4ac62d7bfa09abfe90))
+* Icon titleId and Size Defaults ([c6ff02e](https://github.com/Codecademy/gamut/commit/c6ff02efa51c65fa5cc2882a9266e00ba5fbbefc))
+* **Icons:** Fix default size 16 ([e1f2a54](https://github.com/Codecademy/gamut/commit/e1f2a5422c17b56a08dcda8a999fab5d1e2c178f))
+* Fix Storybook crashes caused by circular object references on uncalled Icon components ([7547b4e](https://github.com/Codecademy/gamut/commit/7547b4e57c52192b8776c5d1ba5ac1ab5dabc41f)), closes [/github.com/storybookjs/storybook/blob/next/addons/docs/src/frameworks/react/jsxDecorator.tsx#L117](https://github.com/Codecademy//github.com/storybookjs/storybook/blob/next/addons/docs/src/frameworks/react/jsxDecorator.tsx/issues/L117) [/github.com/algolia/react-element-to-jsx-string/blob/master/src/formatter/sortObject.js#L3](https://github.com/Codecademy//github.com/algolia/react-element-to-jsx-string/blob/master/src/formatter/sortObject.js/issues/L3)
+* **icons:** remove rectangle from filled caret icon ([ecbd862](https://github.com/Codecademy/gamut/commit/ecbd862808ab5fbd6a33b925f549be66fb6b0274))
+* add missing narrative icon ([#593](https://github.com/Codecademy/gamut/issues/593)) ([a781082](https://github.com/Codecademy/gamut/commit/a7810821d0f20153e83ab204f6af49363487cb57))
+* color defined by props in Favicon  ([c18c1bc](https://github.com/Codecademy/gamut/commit/c18c1bc400a4d132895cbdd5bb14e0b944340f37))
+* re-enable icon title props ([#594](https://github.com/Codecademy/gamut/issues/594)) ([2221262](https://github.com/Codecademy/gamut/commit/222126217c7f84e002a03d44dd3dc4842ccc37ba))
+* remove fill color from ArrowChevronDownFilledIcon ([#1125](https://github.com/Codecademy/gamut/issues/1125)) ([3e87481](https://github.com/Codecademy/gamut/commit/3e87481bc47f07a0889b9b825a9cd04a790688bb))
+* Set default size on icons, fix colors on some icons ([#577](https://github.com/Codecademy/gamut/issues/577)) ([55624ef](https://github.com/Codecademy/gamut/commit/55624efd31b1e79a0cc49bb7828c4f7049a6b556))
+* updated Select key to take in id ([#959](https://github.com/Codecademy/gamut/issues/959)) ([32e6503](https://github.com/Codecademy/gamut/commit/32e6503f313a084f360f125ed175c8a6942dc5fb))
+* **Build:** Update lockfile and config file to include new template ([#699](https://github.com/Codecademy/gamut/issues/699)) ([be3acde](https://github.com/Codecademy/gamut/commit/be3acde0ebc8c800687a4395531cad7db405ebf9))
+* **Icon:** Fixes type incongruence from compiled definitions  ([#720](https://github.com/Codecademy/gamut/issues/720)) ([daa1e15](https://github.com/Codecademy/gamut/commit/daa1e159ce4dac6599bd315eac78aa6d58052307))
+
+
+### Reverts
+
+* Revert "chore: set packages to have publishConfig: access: public (#970)" (#981) ([c7fed45](https://github.com/Codecademy/gamut/commit/c7fed4565437b1a4505e1b3dd37f5bc88ffc208c)), closes [#970](https://github.com/Codecademy/gamut/issues/970) [#981](https://github.com/Codecademy/gamut/issues/981)
+
+
+### Code Refactoring
+
+* move gamut out of root folder ([#494](https://github.com/Codecademy/gamut/issues/494)) ([ecb93a9](https://github.com/Codecademy/gamut/commit/ecb93a929b476a7b77e6c0cbec3127a8aef6a626))
+
+
+
 ## [5.13.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@5.12.1...@codecademy/gamut-icons@5.13.0) (2021-10-26)
 
 

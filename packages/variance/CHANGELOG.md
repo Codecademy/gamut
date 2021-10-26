@@ -3,6 +3,43 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.19.0 (2021-10-26)
+
+
+### Features
+
+* Add admin theme ([7090b30](https://github.com/Codecademy/gamut/commit/7090b303c5451113983e5345316a821ddfaaf1fc))
+* bump ESLint configs to latest ([4e3cf77](https://github.com/Codecademy/gamut/commit/4e3cf77928bdd69bce3eeca8a7f07439627b4f08))
+* **Anchor:** Variance Migration + ColorMode [GM-203] ([dd0058b](https://github.com/Codecademy/gamut/commit/dd0058b0ba96a2f8cca804884c2d2fcf66951ee4))
+* **Buttons:** ColorModes + Props + Refactor + Refs Oh My! [GM-211] [REACH-856] [GM-192] ([998c2cc](https://github.com/Codecademy/gamut/commit/998c2cc01945e8b675a01f60a38bc2a03250ac8e))
+* **ColorModes:** Base ColorMode support and serialization of color variables [GM-177] ([9f322b4](https://github.com/Codecademy/gamut/commit/9f322b4ed959e1245a18dbddb42f33be3e0d9356))
+* **LayoutGrid:** LayoutGrid conversion + Initial Variance Props [GM-81] ([14a753e](https://github.com/Codecademy/gamut/commit/14a753e2850bd381aa9f6819c5bac623b39e4036))
+* **Text:** Add more common utility variants / states as props GM-248 ([ae5d92b](https://github.com/Codecademy/gamut/commit/ae5d92b7091ba2786890eb1a5aecdf93123eb3b0))
+* **theme:** createTheme self containment ([87a203c](https://github.com/Codecademy/gamut/commit/87a203c56df8002406552208b8b5ffc55b228262)), closes [#666666](https://github.com/Codecademy/gamut/issues/666666) [#666666](https://github.com/Codecademy/gamut/issues/666666)
+* **variance:** Computed styles, and configurable CSSType narrowing [GM-233] ([ddb4091](https://github.com/Codecademy/gamut/commit/ddb40917fe41b0dc741d34f5c34ec6d0bf29dad1))
+* Navy scale + color alias changes GM-237 ([3c8a772](https://github.com/Codecademy/gamut/commit/3c8a772271492e0ecc8d724f296f0bfe5ef17112)), closes [#10162](https://github.com/Codecademy/gamut/issues/10162)
+* **ThemeBuilder:**  TypeSafe theme construction + variable serialization [WEB-1401] ([e0a4c16](https://github.com/Codecademy/gamut/commit/e0a4c163e39b64c7d7290a325c900f05ae5ce4e4))
+* **variance:** states boolean toggle styles GM-233 ([a4fa8cf](https://github.com/Codecademy/gamut/commit/a4fa8cf473a1b22648fa480025630a9d1827f84d))
+* **Variance:** `css` - Standard CSS Property Passthrough + Selector System Props [WEB-1117] ([7dbb56d](https://github.com/Codecademy/gamut/commit/7dbb56dbc5e4feaf572ded6a27c3f63403df3e65))
+* **Variance:** base => _ for un scoped style [WEB-1381] ([2f9e8ba](https://github.com/Codecademy/gamut/commit/2f9e8ba3c472251f6ce71aed8e15e8a669b3588a))
+* **Variance:** Experimental MVP for internal use ([0d4d545](https://github.com/Codecademy/gamut/commit/0d4d5450d2a37a12349b632865341857969c9462))
+* **Variance:** Initial Props and Refactor Tests [WEB-1390] ([9f29489](https://github.com/Codecademy/gamut/commit/9f294894b49915ea0504749ecdca7e62d46d475e))
+* **Variance:** Static CSS Methods `css` and `variant`  [WEB-1116] ([cbba228](https://github.com/Codecademy/gamut/commit/cbba228c89fce89026fb14e15a1ec157cf574082))
+* **Variance:** Use only the global emotion theme type (Stage 5: Acceptance) [WEB-1382] ([dff7044](https://github.com/Codecademy/gamut/commit/dff704492cd61a762ea315d86625ce78702347b9)), closes [/github.com/Codecademy/client-modules/blob/609bc7f3ab936d856225fb9885d0ae5afeac8b58/packages/variance/src/__tests__/localTheme.ts#L28-L29](https://github.com/Codecademy//github.com/Codecademy/client-modules/blob/609bc7f3ab936d856225fb9885d0ae5afeac8b58/packages/variance/src/__tests__/localTheme.ts/issues/L28-L29)
+
+
+### Bug Fixes
+
+* **variance:** Ensure array scales always qualify for transformation ([64ef813](https://github.com/Codecademy/gamut/commit/64ef813d8224525c34e03ed66020753ad487cb1b))
+* **variance:** Fix theme computations and add more tests for prop behavior ([078f9db](https://github.com/Codecademy/gamut/commit/078f9dba4f49803c374db6b93eeba878dc3dd2ac))
+* Safe deep merge typings ([a190205](https://github.com/Codecademy/gamut/commit/a190205fff6a77cbdc7f9a2989aa824b36fac706))
+* Theme extension merge logic ([de3cbf2](https://github.com/Codecademy/gamut/commit/de3cbf25995b6be7769cbb92bc51d13e5f6a6695))
+* **Text:** Fontweight for body text and none scalar typings ([fe31fb2](https://github.com/Codecademy/gamut/commit/fe31fb239b9e958022585275025e976c6b559ddd))
+* **variance:** Fix static css mutability for `css` [GM-235] ([ab5dd04](https://github.com/Codecademy/gamut/commit/ab5dd04724e120eca3069a44cb22cb92aebc714a))
+* **Variance:** Add better prop sorting tests ([ee97906](https://github.com/Codecademy/gamut/commit/ee97906a04246629e1c0ccfd44cdf9131f9e821c))
+
+
+
 ### [0.18.1](https://github.com/Codecademy/gamut/compare/@codecademy/variance@0.18.0...@codecademy/variance@0.18.1) (2021-09-13)
 
 **Note:** Version bump only for package @codecademy/variance

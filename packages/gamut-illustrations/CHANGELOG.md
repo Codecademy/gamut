@@ -3,6 +3,39 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.20.0 (2021-10-26)
+
+
+### Features
+
+* **Illustrations:** Add Maze illustration to gamut-illustrations ([347e544](https://github.com/Codecademy/gamut/commit/347e544203f2bf1891ae45ffce91deeeb5850f54))
+* add a illustration for business team ([8070351](https://github.com/Codecademy/gamut/commit/80703514d8d999b69d47b75b3e9451aac11ce596))
+* Add BrowserPuzzle and Python illustrations ([03c211c](https://github.com/Codecademy/gamut/commit/03c211cce746df09c13114db0af66c96157ea499))
+* add illustration for empty section ([763cf99](https://github.com/Codecademy/gamut/commit/763cf99cf6c48ca9f7c96b5b6b41192f0184416d))
+* add Keyhole illustration ([2d27a8c](https://github.com/Codecademy/gamut/commit/2d27a8cbbc402c2a7d3d05591d13949817fe4698))
+* add new BinaryBlocks illustration ([220c67c](https://github.com/Codecademy/gamut/commit/220c67c0a42e93d9236138f45905dc48ec276d29))
+* add social media icons and update target illustration ([8c0f195](https://github.com/Codecademy/gamut/commit/8c0f195bf515ee40b233c2e20a3c6f5050dd2a04))
+* added gamut-illustrations package ([8dbeebe](https://github.com/Codecademy/gamut/commit/8dbeebe32a6fb133f39d027451efccf35d262500))
+* added new Target illustration ([a9a58cd](https://github.com/Codecademy/gamut/commit/a9a58cd20d2a2dc5583e87d255038244388d9d98))
+* also export types from gamut-illustrations ([45039c7](https://github.com/Codecademy/gamut/commit/45039c7ee7619d47b480b40e2e9f40796a919dd2))
+* bump ESLint configs to latest ([4e3cf77](https://github.com/Codecademy/gamut/commit/4e3cf77928bdd69bce3eeca8a7f07439627b4f08))
+* Migrate final gamut-system docs + functions to variance [WEB-1413]  ([f966933](https://github.com/Codecademy/gamut/commit/f966933ac814d228072e781ee2a3d75a33190a85))
+* **Icons:** Add video player movie icon ([886ae5f](https://github.com/Codecademy/gamut/commit/886ae5f1a2455b54d33bd396742e3f058d3b0bad))
+* **New Notifications components:** notifications list & notification ([4f353e5](https://github.com/Codecademy/gamut/commit/4f353e5ace4359872bde7d6592b49d63df4845ac))
+* **NotificationItem:** add support for forum mentions ([6bf3c49](https://github.com/Codecademy/gamut/commit/6bf3c4953f9b0d57621c02625c91718292f5df54))
+* **NotificationItemNew:** add new forum notification icons ([4e3f7e9](https://github.com/Codecademy/gamut/commit/4e3f7e9319fe580ad4b8de5ee51fe91b48127c65))
+* **NotificationItemNew:** map notif type to icon if no image url provided ([9de9656](https://github.com/Codecademy/gamut/commit/9de96560624020aed19e93fd9ddffa93d63965fb))
+* **NotificationListNew:** add empty notification ([f3d614c](https://github.com/Codecademy/gamut/commit/f3d614c240407306d998627b2f5071f05d0f37ce))
+
+
+### Bug Fixes
+
+* **Illustrations:** add titles to illustrations ([46a4a18](https://github.com/Codecademy/gamut/commit/46a4a1854ced47a719c0b186f325488a250cb910))
+* added missing .npmignore to gamut-illustrations ([4cc9119](https://github.com/Codecademy/gamut/commit/4cc9119572c78f331cba8b1ab5297a8135a783fa))
+* corrected gamut-system dependency in gamut-illustrations ([45e391b](https://github.com/Codecademy/gamut/commit/45e391b3b405fffd92b3830b33597a557dbe544a))
+
+
+
 ## [0.19.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.18.3...@codecademy/gamut-illustrations@0.19.0) (2021-10-15)
 
 

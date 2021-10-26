@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 3.0.0 (2021-10-26)
+
+
+### ⚠ BREAKING CHANGES
+
+* bumped ESLint packages to latest and added recommended & Jest linting
+
+### Features
+
+* add notifications to GlobalHeader ([015e605](https://github.com/Codecademy/gamut/commit/015e60539dd2dd96d3eac69873555b4db390bd3e))
+* bump ESLint configs to latest ([4e3cf77](https://github.com/Codecademy/gamut/commit/4e3cf77928bdd69bce3eeca8a7f07439627b4f08))
+* **GamutProvider:** Adds single provider for Theme + Cache + Globals + Assets [WEB-1352] [GM-173] ([afa9c7f](https://github.com/Codecademy/gamut/commit/afa9c7f647c005f2d17517726bf3409cafdbb6fc))
+* **theme:** createTheme self containment ([87a203c](https://github.com/Codecademy/gamut/commit/87a203c56df8002406552208b8b5ffc55b228262)), closes [#666666](https://github.com/Codecademy/gamut/issues/666666) [#666666](https://github.com/Codecademy/gamut/issues/666666)
+* **ThemeProvider:**  Adds GamutThemeProvider component and initial Global styles ([697ee38](https://github.com/Codecademy/gamut/commit/697ee38dde8ab0de5cef0bb8f9167021922927c4))
+* add a illustration for business team ([8070351](https://github.com/Codecademy/gamut/commit/80703514d8d999b69d47b75b3e9451aac11ce596))
+* added gamut-tests package around component-test-setup ([#1285](https://github.com/Codecademy/gamut/issues/1285)) ([f163d48](https://github.com/Codecademy/gamut/commit/f163d4872966ca2269fdfa2382b2eb2d15d9fec0))
+* bumped ESLint packages to latest and added recommended & Jest linting ([0cecc5c](https://github.com/Codecademy/gamut/commit/0cecc5ca58883616a78c5429c1f6ec41fa03c4ba))
+
+
+### Bug Fixes
+
+* added component-test-setup to gamut-kit ([#1610](https://github.com/Codecademy/gamut/issues/1610)) ([3a723ce](https://github.com/Codecademy/gamut/commit/3a723ce78070ebef5360bf013b859eda695ab0c2))
+* added npmignore and module field for gamut-tests ([#1373](https://github.com/Codecademy/gamut/issues/1373)) ([1cc67ea](https://github.com/Codecademy/gamut/commit/1cc67eafa27a2c7fb54d09470f2a0fe3bb7e523a))
+
+
+
 ### [2.6.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-tests@2.6.1...@codecademy/gamut-tests@2.6.2) (2021-09-30)
 
 **Note:** Version bump only for package @codecademy/gamut-tests

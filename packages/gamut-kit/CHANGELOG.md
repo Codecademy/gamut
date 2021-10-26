@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.6.0 (2021-10-26)
+
+
+### ⚠ BREAKING CHANGES
+
+* Update dependencies to latest
+* Create Gamut-kit
+
+### Features
+
+* **Patterns:** Add SVGR build process and SVGO settings ([e8433ce](https://github.com/Codecademy/gamut/commit/e8433ceace8b617fcaa45f13a11ce1367cff0e0b))
+* Migrate final gamut-system docs + functions to variance [WEB-1413]  ([f966933](https://github.com/Codecademy/gamut/commit/f966933ac814d228072e781ee2a3d75a33190a85))
+* **Variance:** Initial Props and Refactor Tests [WEB-1390] ([9f29489](https://github.com/Codecademy/gamut/commit/9f294894b49915ea0504749ecdca7e62d46d475e))
+* Create Gamut-kit ([6e6fff4](https://github.com/Codecademy/gamut/commit/6e6fff4a52ee08939beaa24bd0be95f1f02589a6))
+
+
+### Bug Fixes
+
+* added component-test-setup to gamut-kit ([#1610](https://github.com/Codecademy/gamut/issues/1610)) ([3a723ce](https://github.com/Codecademy/gamut/commit/3a723ce78070ebef5360bf013b859eda695ab0c2))
+* Update dependencies to latest ([659ed94](https://github.com/Codecademy/gamut/commit/659ed94d7f905ccbc499b23f819cd87c7922a0f9))
+
+
+
 ### [0.5.125](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-kit@0.5.124...@codecademy/gamut-kit@0.5.125) (2021-10-26)
 
 **Note:** Version bump only for package @codecademy/gamut-kit

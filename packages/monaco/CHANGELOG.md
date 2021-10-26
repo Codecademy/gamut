@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.5.0 (2021-10-26)
+
+
+### Features
+
+* bump ESLint configs to latest ([4e3cf77](http://github.com///commit/4e3cf77928bdd69bce3eeca8a7f07439627b4f08))
+* **monaco:** add language service and delta decorations hook ([cfb3cde](http://github.com///commit/cfb3cde57a2ccab4d4b2d3ddcce1d3f27f89041e))
+* **monaco:** add monaco package ([a07df6c](http://github.com///commit/a07df6cee405b7f75e3e51b3f53f3259a686f6bf))
+* **SubmitButton:** The mission for submission GM-315 ([79b8bde](http://github.com///commit/79b8bdebd390e0d41fba59b3274a3eade39e310a))
+
+
+
 ### [0.4.30](http://github.com///compare/@codecademy/monaco@0.4.29...@codecademy/monaco@0.4.30) (2021-10-26)
 
 **Note:** Version bump only for package @codecademy/monaco
