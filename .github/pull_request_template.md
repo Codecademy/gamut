@@ -14,7 +14,7 @@
 <!--
 Merging your changes
 
-1. Follow the [PR Title Guide](https://github.com/Codecademy/client-modules#pr-title-guide), the title (which becomes the commit message) determines the version bump for the packages you changed.
+1. Follow the [PR Title Guide](https://github.com/Codecademy/gamut#pr-title-guide), the title (which becomes the commit message) determines the version bump for the packages you changed.
 
 2. Wrap the text describing your change in more detail in the "CHANGELOG-DESCRIPTION" comment tags above, this is what will show up in the changelog!
 

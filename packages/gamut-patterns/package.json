@@ -1,7 +1,7 @@
 {
   "author": "Codecademy Engineering <dev@codecademy.com>",
   "bugs": {
-    "url": "https://github.com/Codecademy/client-modules/issues"
+    "url": "https://github.com/Codecademy/gamut/issues"
   },
   "dependencies": {
     "@codecademy/gamut-styles": "^11.11.0",
@@ -9,7 +9,7 @@
     "classnames": "^2.2.5"
   },
   "description": "Pattern library for Codecademy",
-  "homepage": "https://github.com/Codecademy/client-modules#readme",
+  "homepage": "https://github.com/Codecademy/gamut#readme",
   "name": "@codecademy/gamut-patterns",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -31,7 +31,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/Codecademy/client-modules.git"
+    "url": "git+ssh://git@github.com/Codecademy/gamut.git"
   },
   "scripts": {
     "verify": "tsc --noEmit",

@@ -13,7 +13,7 @@
   "main": "./dist/index.js",
   "repository": {
     "type": "git",
-    "url": "git@github.com:Codecademy/client-modules.git"
+    "url": "git@github.com:Codecademy/gamut.git"
   },
   "peerDependencies": {
     "@emotion/react": "^11.4.0",
