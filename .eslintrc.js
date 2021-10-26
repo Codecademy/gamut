@@ -1,12 +1,7 @@
-/**
- * @remarks
- * This is the ESLint configuration used *internally* for client-modules.
- * See the eslint-config package for the shared config used in consuming repositories.
- */
 module.exports = {
   root: true,
 
-  extends: [require.resolve('./packages/eslint-config')],
+  extends: [require.resolve('@codecademy/eslint-config')],
 
   plugins: ['local-rules'],
 

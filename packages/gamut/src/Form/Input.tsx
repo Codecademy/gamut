@@ -48,7 +48,7 @@ export interface StyledInputProps extends InputProps {
 
 /*
  * @remarks We would love to properly type this with generics, but, alas, we cannot yet.
- * @see https://github.com/Codecademy/client-modules/pull/270#discussion_r270917147
+ * @see https://github.com/Codecademy/gamut/pull/270#discussion_r270917147
  * @see https://github.com/Microsoft/TypeScript/issues/21048
  */
 export interface InputWrapperProps extends InputProps {

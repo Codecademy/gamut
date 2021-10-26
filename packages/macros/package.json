@@ -3,7 +3,7 @@
   "description": "Babel Utility Macros",
   "version": "2.2.1",
   "author": "codecademy",
-  "homepage": "https://github.com/Codecademy/client-modules#readme",
+  "homepage": "https://github.com/Codecademy/gamut#readme",
   "license": "MIT",
   "main": "lib",
   "directories": {
@@ -18,13 +18,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Codecademy/client-modules.git"
+    "url": "git+https://github.com/Codecademy/gamut.git"
   },
   "scripts": {
     "test": "jest"
   },
   "bugs": {
-    "url": "https://github.com/Codecademy/client-modules/issues"
+    "url": "https://github.com/Codecademy/gamut/issues"
   },
   "dependencies": {
     "babel-plugin-macros": "^3.0.1"
