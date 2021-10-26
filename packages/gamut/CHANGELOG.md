@@ -3,6 +3,33 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [37.11.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@37.11.0...@codecademy/gamut@37.11.1) (2021-10-21)
+
+
+### Bug Fixes
+
+* **Alert:** re-add default props ([ef9f292](https://github.com/Codecademy/client-modules/commit/ef9f292a3a73b10917b86d0c0a02ce131300c040))
+
+
+
+## [37.11.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@37.10.10...@codecademy/gamut@37.11.0) (2021-10-20)
+
+
+### Features
+
+* **PageAlerts:** porting PageAlerts from Portal-App ([9ab0dc1](https://github.com/Codecademy/client-modules/commit/9ab0dc1d8d15e3534fb85267abcf7430e6528665))
+
+
+
+### [37.10.10](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@37.10.9...@codecademy/gamut@37.10.10) (2021-10-19)
+
+
+### Bug Fixes
+
+* **Checkbox:** adds aria-label prop ([9d3a4d5](https://github.com/Codecademy/client-modules/commit/9d3a4d5c65d73a5d28e8297b0978b8690905a797))
+
+
+
 ### [37.10.9](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@37.10.8...@codecademy/gamut@37.10.9) (2021-10-15)
 
 **Note:** Version bump only for package @codecademy/gamut

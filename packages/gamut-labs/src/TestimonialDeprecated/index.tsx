@@ -1,11 +1,5 @@
-import {
-  Anchor,
-  Box,
-  FlexBox,
-  GridBox,
-  Pattern,
-  VisualTheme,
-} from '@codecademy/gamut';
+import { Anchor, Box, FlexBox, GridBox, VisualTheme } from '@codecademy/gamut';
+import { CheckerDense } from '@codecademy/gamut-patterns';
 import { colors } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React from 'react';
@@ -28,7 +22,7 @@ const modes = {
   },
 };
 
-const Shadow = styled(Pattern)<{ mode: VisualTheme }>`
+const Shadow = styled(CheckerDense)<{ mode: VisualTheme }>`
   display: block;
   position: absolute;
   bottom: 0;

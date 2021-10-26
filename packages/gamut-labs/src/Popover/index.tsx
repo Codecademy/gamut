@@ -1,4 +1,5 @@
-import { BodyPortal, FocusTrap, Pattern, PatternName } from '@codecademy/gamut';
+import { BodyPortal, FocusTrap } from '@codecademy/gamut';
+import { PatternProps } from '@codecademy/gamut-patterns';
 import styled from '@emotion/styled';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useWindowScroll, useWindowSize } from 'react-use';
@@ -29,7 +30,7 @@ const RaisedDiv = styled.div<StyleProps>`
   border-radius: 2px;
   border: 1px ${({ outline }) => (outline ? 'solid' : 'none')}
     ${({ theme }) => theme.colors.secondary};
-  background-color: ${({ theme }) => theme.colors.white};
+  background-color: ${({ theme }) => theme.colors.background};
   ${({ outline }) =>
     !outline &&
     'box-shadow: 0 0 16px rgba(0, 0, 0, 0.1), 0 0 24px rgba(0, 0, 0, 0.15)'};
@@ -47,7 +48,7 @@ const Beak = styled.div<StyleProps>`
     1px
     ${({ outline }) => (outline ? 'solid' : 'none')}
     ${({ theme }) => theme.colors.secondary};
-  background-color: ${({ theme }) => theme.colors.white};
+  background-color: ${({ theme }) => theme.colors.background};
   position: absolute;
   left: ${({ beak }) => beak === 'left' && '25px'};
   right: ${({ beak }) => beak === 'right' && '25px'};
@@ -60,7 +61,7 @@ const PatternContainer = styled.div<StyleProps>`
   height: 100%;
   border-radius: 2px;
   overflow: hidden;
-  background-color: ${({ theme }) => theme.colors.white};
+  background-color: ${({ theme }) => theme.colors.background};
   position: absolute;
   top: ${({ position }) => (position === 'below' ? '8px' : '-8px')};
   left: ${({ align }) => (align === 'left' ? '8px' : '-8px')};
@@ -98,9 +99,9 @@ export type PopoverProps = {
    */
   isOpen: boolean;
   /**
-   * Whether to add a pattern background.
+   * Pattern component to use as a background.
    */
-  pattern?: PatternName;
+  pattern?: React.ComponentType<PatternProps>;
   /**
    * Called when the Popover requests to be closed,
    * this could be due to clicking outside of the popover, or by clicking the escape key.
@@ -126,7 +127,7 @@ export const Popover: React.FC<PopoverProps> = ({
   isOpen,
   onRequestClose,
   targetRef,
-  pattern,
+  pattern: Pattern,
 }) => {
   const [targetRect, setTargetRect] = useState<DOMRect>();
   const [isInViewport, setIsInViewport] = useState(true);
@@ -212,9 +213,9 @@ export const Popover: React.FC<PopoverProps> = ({
             )}
             {children}
           </RaisedDiv>
-          {pattern && (
+          {Pattern && (
             <PatternContainer position={position} align={align}>
-              <Pattern data-testid="popover-pattern" name={pattern} fit />
+              <Pattern data-testid="popover-pattern" />
             </PatternContainer>
           )}
         </PopoverContainer>

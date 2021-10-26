@@ -1,47 +1,52 @@
-import { css, states, variant } from '@codecademy/gamut-styles';
+import {
+  css,
+  states,
+  styledOptions,
+  system,
+  variant,
+} from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
 
 const listVariants = variant({
   prop: 'variant',
-  defaultVariant: 'slat',
+  defaultVariant: 'default',
   base: {
     listStyleType: 'none',
     p: 0,
-    display: 'grid',
-    gridAutoRows: '1fr',
-    gridTemplateColumns: 'minmax(0, 1fr)',
+    m: 0,
+    display: 'flex',
+    flexDirection: 'column',
   },
   variants: {
-    slat: {
-      border: 1,
+    default: {
       borderRadius: '2px',
-      overflow: 'hidden',
     },
     table: {},
-    bar: {
+    card: {
       gap: 16,
     },
-  },
-});
-
-const listStates = states({
-  scrollable: {
-    overflowX: 'auto',
-    maxWidth: 1,
+    plain: {},
   },
 });
 
 export interface ListProps
-  extends StyleProps<typeof listStates>,
-    StyleProps<typeof listVariants> {}
+  extends StyleProps<typeof listVariants>,
+    StyleProps<typeof spacingVariants> {}
 
-export const ListEl = styled.ul<ListProps>(listVariants, listStates);
+export const ListEl = styled(
+  'ul',
+  styledOptions<'ul'>()
+)<ListProps>(listVariants);
 
 const rowStates = states({
   scrollable: {
     minWidth: 'min-content',
     width: '100%',
+  },
+  expanded: {
+    display: 'flex',
+    flexDirection: { xs: 'column' },
   },
 });
 
@@ -49,54 +54,90 @@ const spacingVariants = variant({
   prop: 'spacing',
   variants: {
     normal: {
-      gap: { _: 8, xs: 16 },
+      gap: { _: 8, xs: 40 },
     },
     condensed: {
       fontSize: 14,
-      gap: 8,
+      gap: { _: 8, xs: 32 },
     },
   },
 });
 
 const rowVariants = variant({
   prop: 'variant',
-  base: {
-    py: { _: 8, xs: 0 },
-    display: { _: 'grid', xs: 'flex' },
-    gridAutoRows: 'minmax(1.5rem, max-content)',
-    gridTemplateColumns: 'minmax(0, 1fr) max-content',
-    flexDirection: { _: 'column', xs: 'row' },
-  },
   variants: {
-    slat: {
+    default: {
       bg: 'background',
-      borderBottom: 1,
-      '&:last-child': {
-        borderBottom: 'none',
+      border: 1,
+      borderTop: 'none',
+      '&:first-of-type': {
+        borderTop: 1,
       },
     },
     table: {
       bg: 'background',
-      '&:nth-child(2n)': {
+      '&:nth-of-type(2n)': {
         bg: 'background-selected',
       },
     },
-    bar: {
+    card: {
       border: 1,
       borderRadius: '2px',
       bg: 'background',
     },
+    plain: {},
   },
 });
 
 export interface RowProps
   extends StyleProps<typeof rowVariants>,
-    StyleProps<typeof spacingVariants> {}
+    StyleProps<typeof spacingVariants>,
+    StyleProps<typeof rowStates> {}
 
-export const RowEl = styled.li<RowProps>(
+export const RowEl = styled('li', styledOptions<'li'>())<RowProps>(
+  css({
+    py: { _: 8, xs: 0 },
+    display: { _: 'grid', xs: 'flex' },
+    gridAutoRows: 'minmax(1.5rem, max-content)',
+    gridTemplateColumns: 'minmax(0, 1fr) max-content',
+    flexDirection: { _: 'column', xs: 'row' },
+    bg: 'inherit',
+  }),
   rowVariants,
   spacingVariants,
   rowStates
+);
+
+const headerVariants = variant({
+  prop: 'variant',
+  variants: {
+    default: {},
+    card: {},
+    table: {
+      borderBottom: 2,
+    },
+    plain: {},
+  },
+});
+
+export interface HeaderProps
+  extends StyleProps<typeof spacingVariants>,
+    StyleProps<typeof rowStates>,
+    StyleProps<typeof listVariants> {}
+
+export const HeaderEl = styled('div', styledOptions)<HeaderProps>(
+  css({
+    display: { _: 'none', xs: 'flex' },
+    position: { _: 'initial', xs: 'sticky' },
+    flexDirection: ['column', 'row'],
+    top: 0,
+    bg: 'background-current',
+    zIndex: 2,
+    fontFamily: 'accent',
+  }),
+  spacingVariants,
+  rowStates,
+  headerVariants
 );
 
 const columnType = variant({
@@ -105,6 +146,7 @@ const columnType = variant({
   variants: {
     header: {
       gridColumn: 1,
+      fontWeight: 700,
     },
     content: {
       gridColumnEnd: 'span 2',
@@ -117,6 +159,9 @@ const columnType = variant({
       },
       gridColumn: 2,
       gridRow: 1,
+    },
+    expand: {
+      minWidth: 'min-content',
     },
   },
 });
@@ -168,6 +213,44 @@ const columnStates = states({
     left: 0,
     zIndex: 1,
     bg: 'inherit',
+    '&:not(:first-of-type)': {
+      left: { xs: 16 },
+      overflow: 'visible',
+    },
+    '&:not(:first-of-type):before': {
+      display: { _: 'none', xs: 'block' },
+      content: '""',
+      bg: 'inherit',
+      left: -16,
+      height: 1,
+      width: 16,
+      position: 'absolute',
+    },
+  },
+  delimiter: {
+    overflow: 'visible',
+    '&:after': {
+      display: { _: 'none', xs: 'block' },
+      content: '""',
+      bg: 'background-current',
+      right: -4,
+      top: 0,
+      bottom: -2,
+      width: 4,
+      position: 'absolute',
+    },
+  },
+  ghost: {
+    visibility: 'hidden',
+    pointerEvents: 'none',
+    opacity: 0,
+  },
+  columnHeader: {
+    fontWeight: 400,
+    overflow: 'visible',
+  },
+  wrap: {
+    whiteSpace: 'normal',
   },
 });
 
@@ -194,11 +277,25 @@ const columnSpacing = variant({
 
 export interface ColProps
   extends StyleProps<typeof columnSizes>,
+    StyleProps<typeof columnSpacing>,
     StyleProps<typeof columnType>,
     StyleProps<typeof columnStates>,
-    StyleProps<typeof columnJustify> {}
+    StyleProps<typeof columnJustify>,
+    StyleProps<typeof system['layout']> {}
 
-export const ColEl = styled.div<ColProps>(
+export const ColEl = styled(
+  'div',
+  styledOptions([
+    'fill',
+    'ghost',
+    'spacing',
+    'columnHeader',
+    'sticky',
+    'size',
+    'justify',
+    'type',
+  ])
+)<ColProps>(
   css({
     display: 'inline-flex',
     alignItems: 'center',
@@ -210,5 +307,6 @@ export const ColEl = styled.div<ColProps>(
   columnSizes,
   columnType,
   columnStates,
-  columnJustify
+  columnJustify,
+  system.layout
 );

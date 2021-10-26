@@ -16,6 +16,7 @@ export const ListCol = forwardRef<HTMLDivElement, ListColProps>(
       <ColEl
         {...activeVariants}
         {...rest}
+        delimiter={sticky && activeVariants.variant === 'table'}
         type={type}
         sticky={sticky}
         ref={ref}

@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.15.0](https://github.com/Codecademy/client-modules/compare/@codecademy/tracking@0.14.2...@codecademy/tracking@0.15.0) (2021-10-20)
+
+
+### Features
+
+* **tracking:** Add source tracking for PWA ([84a555f](https://github.com/Codecademy/client-modules/commit/84a555fcc8ce5f2b15c20fd7421757e18749514f))
+
+
+
 ### [0.14.2](https://github.com/Codecademy/client-modules/compare/@codecademy/tracking@0.14.1...@codecademy/tracking@0.14.2) (2021-09-13)
 
 **Note:** Version bump only for package @codecademy/tracking
