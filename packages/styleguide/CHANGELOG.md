@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [49.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@48.2.1...@codecademy/styleguide@49.0.0) (2021-10-26)
+
+
+### ⚠ BREAKING CHANGES
+
+* **Pattern:** remove name-based Pattern component
+
+### Features
+
+* Lists & Tables GM-372 ([88bb480](https://github.com/Codecademy/client-modules/commit/88bb480ef3e921585b766025d55c030d4eabf45c))
+
+
+### Miscellaneous Chores
+
+* **Pattern:** remove name-based Pattern component ([0096880](https://github.com/Codecademy/client-modules/commit/009688010e5026cb04a7aeb47b11dd90b53ec2c8))
+
+
+
 ### [48.2.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@48.2.0...@codecademy/styleguide@48.2.1) (2021-10-21)
 
 **Note:** Version bump only for package @codecademy/styleguide
