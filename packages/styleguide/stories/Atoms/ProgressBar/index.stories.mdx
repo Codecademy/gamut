@@ -5,6 +5,7 @@ import {
   ProgressBar,
   Text,
 } from '@codecademy/gamut/src';
+import { DiagonalADense, DiagonalARegular } from '@codecademy/gamut-patterns';
 import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
@@ -67,7 +68,8 @@ progress, even if the technical progress number is zero. You can use the
 
 ## Pattern background
 
-Using the new SVG Pattern component for the background. Here we are using the DiagonalStripesRegular Pattern in navy in the large ProgressBar and the diagonalStripesDense pattern in the smaller ProgressBar.
+Use components from `@codecademy/gamut-patterns` for a pattern background.
+Here we are using the `DiagonalARegular` pattern in navy in the large ProgressBar and the `DiagonalADense` pattern in the smaller ProgressBar.
 
 ### Stripes Regular
 
@@ -75,7 +77,7 @@ Using the new SVG Pattern component for the background. Here we are using the Di
   <Story
     name="Stripe - Regular"
     args={{
-      pattern: 'diagonalStripesRegular',
+      pattern: DiagonalARegular,
       size: 'large',
       percent: 50,
       variant: 'yellow',
@@ -92,7 +94,7 @@ Using the new SVG Pattern component for the background. Here we are using the Di
     name="Stripe - Dense"
     args={{
       size: 'medium',
-      pattern: 'diagonalStripesDense',
+      pattern: DiagonalADense,
       percent: 33,
       variant: 'blue',
     }}
@@ -154,7 +156,7 @@ This is a variant of the ProgressBar that has a transparent background and "bord
   <Story
     name="Bordered - Light - Large"
     args={{
-      pattern: 'diagonalStripesDense',
+      pattern: 'diagonalADense',
       percent: 71,
       variant: 'dark',
       size: 'large',

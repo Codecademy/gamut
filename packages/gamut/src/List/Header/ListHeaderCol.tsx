@@ -1,8 +1,8 @@
 import React, { ComponentProps, forwardRef } from 'react';
 
-import { ColEl } from './elements';
-import { useListContext } from './ListProvider';
-import { PublicListProps } from './types';
+import { ColEl } from '../elements';
+import { useListContext } from '../ListProvider';
+import { PublicListProps } from '../types';
 
 export interface ListColProps
   extends PublicListProps<ComponentProps<typeof ColEl>> {}
@@ -16,7 +16,6 @@ export const ListCol = forwardRef<HTMLDivElement, ListColProps>(
       <ColEl
         {...activeVariants}
         {...rest}
-        delimiter={sticky && activeVariants.variant === 'table'}
         type={type}
         sticky={sticky}
         ref={ref}
