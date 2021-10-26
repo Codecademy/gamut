@@ -100,11 +100,6 @@ references:
           circleci-agent step halt
         fi
 
-  add_github_ssh_key: &add_github_ssh_key
-    add_ssh_keys:
-      fingerprints:
-        - 'c9:c4:75:c4:3e:f9:1f:09:1e:bd:95:da:2d:79:2f:f7'
-
 jobs:
   checkout_code:
     <<: *default_env
@@ -173,7 +168,6 @@ jobs:
     resource_class: large
     steps:
       - *skip_on_automated_commit
-      - *add_github_ssh_key
       - *set_git_user
       - checkout
       - *restore_node_modules
@@ -188,7 +182,6 @@ jobs:
     resource_class: large
     steps:
       - *skip_on_automated_commit
-      - *add_github_ssh_key
       - *set_git_user
       - checkout
       - *restore_node_modules
@@ -208,7 +201,6 @@ jobs:
     steps:
       - *skip_if_not_pr
       - *skip_on_automated_commit
-      - *add_github_ssh_key
       - *set_git_user
       - checkout
       - *restore_node_modules
@@ -255,7 +247,6 @@ jobs:
     steps:
       - *skip_if_not_pr
       - *skip_on_automated_commit
-      - *add_github_ssh_key
       - *set_git_user
       - checkout
       - *restore_node_modules
