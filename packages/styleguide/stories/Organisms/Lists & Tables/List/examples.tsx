@@ -357,7 +357,7 @@ export const ExpandableRow: React.FC<{
             textTransform="uppercase"
             variant="p-small"
           >
-            Rank
+            Rankstorie
           </Text>
           <Text variant="title-xs">{role}</Text>
         </FlexBox>
@@ -381,7 +381,7 @@ export const ExpandableRow: React.FC<{
         </Text>
       </ListCol>
       <ListCol size="lg" type="control">
-        <TextButton mr={16}>Hail</TextButton>
+        <TextButton>Hail</TextButton>
         <ExpandControl
           id={name}
           expanded={isExpanded}
@@ -395,8 +395,8 @@ export const ExpandableRow: React.FC<{
 export const ExpandedTemplate: React.FC<
   ListProps & { mode: 'light' | 'dark' }
 > = ({ mode, ...args }) => (
-  <ColorMode mode={mode}>
-    <List {...args}>
+  <ColorMode bg="black" mode={mode}>
+    <List variant="card">
       {rows.map(({ name, role, ship }, i, _, key = `example-row-${i}`) => (
         <ExpandableRow name={name} role={role} ship={ship} key={key} />
       ))}

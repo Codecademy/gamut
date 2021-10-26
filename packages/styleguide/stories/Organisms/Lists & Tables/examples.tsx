@@ -1,4 +1,5 @@
 import {
+  Box,
   ColumnConfig,
   DataList,
   DataTable,
@@ -186,7 +187,7 @@ export const createDemoTable = (Component: any, overrides = {}) => () => {
 
   return (
     <Component
-      height={500}
+      height={400}
       id="example"
       idKey={idKey}
       rows={rows}
@@ -212,3 +213,12 @@ export const DataListTemplate = createDemoTable(DataList, {
   scrollable: false,
   height: 'auto',
 });
+
+const GamutContainer = () => (
+  <>
+    //bad
+    <Box bg="periwinkle" />
+    //good
+    <Box bg="background-selected" />
+  </>
+);
