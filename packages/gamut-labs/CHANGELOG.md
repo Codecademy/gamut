@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [26.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@25.4.1...@codecademy/gamut-labs@26.0.0) (2021-10-26)
+
+
+### ⚠ BREAKING CHANGES
+
+* **Pattern:** remove name-based Pattern component
+
+### Miscellaneous Chores
+
+* **Pattern:** remove name-based Pattern component ([0096880](https://github.com/Codecademy/client-modules/commit/009688010e5026cb04a7aeb47b11dd90b53ec2c8))
+
+
+
 ### [25.4.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@25.4.0...@codecademy/gamut-labs@25.4.1) (2021-10-21)
 
 **Note:** Version bump only for package @codecademy/gamut-labs
