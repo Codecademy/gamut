@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [38.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@38.0.0...@codecademy/gamut@38.0.1) (2021-10-26)
+
+
+### Bug Fixes
+
+* **Column:** allow rowspan of up to 6 ([b912d5b](https://github.com/Codecademy/client-modules/commit/b912d5bae35894ab5d97055de92a7f21b71af414))
+
+
+
 ## [38.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@37.11.1...@codecademy/gamut@38.0.0) (2021-10-26)
 
 
