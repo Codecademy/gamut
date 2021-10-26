@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:Codecademy/client-modules.git"
+    "url": "git@github.com:Codecademy/gamut.git"
   },
   "dependencies": {
     "@babel/cli": "^7.13.10",

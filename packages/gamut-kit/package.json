@@ -5,7 +5,7 @@
   "author": "Codecademy Engineering <dev@codecademy.com>",
   "repository": {
     "type": "git",
-    "url": "git@github.com:Codecademy/client-modules.git"
+    "url": "git@github.com:Codecademy/gamut.git"
   },
   "dependencies": {
     "@codecademy/gamut": "^38.0.1",

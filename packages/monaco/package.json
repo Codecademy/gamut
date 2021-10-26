@@ -7,7 +7,7 @@
   "module": "dist/index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Codecademy/client-modules/packages/monaco.git"
+    "url": "git+https://github.com/Codecademy/gamut/packages/monaco.git"
   },
   "peerDependencies": {
     "react": ">=16.8.1",
