@@ -7,12 +7,18 @@ import { Box } from '../Box';
 import { IconButton, TextButton } from '../Button';
 import { Markdown } from '../Markdown';
 
-export type BannerVariants = 'navy' | 'yellow';
+export type BannerVariant = typeof bannerVariants[number];
+const bannerVariants = ['navy', 'yellow'] as const;
+
+const isAllowedVariant = (
+  variant: string | undefined
+): variant is BannerVariant =>
+  bannerVariants.includes(variant as BannerVariant);
 
 export interface BannerProps extends Omit<BackgroundProps, 'bg'> {
   children: string;
   /** Visual variations for banners */
-  variant?: BannerVariants;
+  variant?: BannerVariant;
   /**  Callback called when the user closes the banner. */
   onClose: () => void;
   /** Call to action click callback */
@@ -53,7 +59,7 @@ const bindBannerAnchor = (onCtaClick?: BannerProps['onCtaClick']) => ({
 
 export const Banner: React.FC<BannerProps> = ({
   children,
-  variant = 'navy',
+  variant: rawVariant,
   onCtaClick,
   onClose,
   ...rest
@@ -64,6 +70,8 @@ export const Banner: React.FC<BannerProps> = ({
     }),
     [onCtaClick]
   );
+
+  const variant = isAllowedVariant(rawVariant) ? rawVariant : 'navy';
 
   return (
     <BannerContainer {...rest} bg={variant}>
