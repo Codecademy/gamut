@@ -11,14 +11,14 @@ export type BannerVariant = typeof bannerVariants[number];
 const bannerVariants = ['navy', 'yellow'] as const;
 
 const isAllowedVariant = (
-  variant: string | undefined
+  variant: string | undefined | null
 ): variant is BannerVariant =>
   bannerVariants.includes(variant as BannerVariant);
 
 export interface BannerProps extends Omit<BackgroundProps, 'bg'> {
   children: string;
-  /** Visual variations for banners */
-  variant?: BannerVariant;
+  /** Visual variation for banners, defaults to navy */
+  variant?: BannerVariant | null;
   /**  Callback called when the user closes the banner. */
   onClose: () => void;
   /** Call to action click callback */
@@ -71,6 +71,8 @@ export const Banner: React.FC<BannerProps> = ({
     [onCtaClick]
   );
 
+  // Contentful is unable to programmatically communicate what values it does/doesn't allow in these kinds of fields,
+  // which makes it difficult for us to ensure the Contentful configuration hasn't diverged from Gamut restrictions.
   const variant = isAllowedVariant(rawVariant) ? rawVariant : 'navy';
 
   return (
