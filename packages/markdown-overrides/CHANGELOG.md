@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.7.0 (2021-10-26)
+
+
+### ⚠ BREAKING CHANGES
+
+* bumped ESLint packages to latest and added recommended & Jest linting
+
+### Features
+
+* bump ESLint configs to latest ([4e3cf77](https://github.com/Codecademy/gamut/commit/4e3cf77928bdd69bce3eeca8a7f07439627b4f08))
+* bumped ESLint packages to latest and added recommended & Jest linting ([0cecc5c](https://github.com/Codecademy/gamut/commit/0cecc5ca58883616a78c5429c1f6ec41fa03c4ba))
+* onboarded eslint-plugin-simple-import-sort into ESLint plugin ([89520d0](https://github.com/Codecademy/gamut/commit/89520d0e50c85b325616c0963c22199eedbfb8b7))
+* **markdown-overrides:** Add MathBlock component ([#977](https://github.com/Codecademy/gamut/issues/977)) ([ce20518](https://github.com/Codecademy/gamut/commit/ce20518f274d2c1c467d5a19e11cdd9fae61c58c))
+* **markdown-overrides:** Add PseudoBlock and ErrorBlock ([#971](https://github.com/Codecademy/gamut/issues/971)) ([1ab5b8f](https://github.com/Codecademy/gamut/commit/1ab5b8f3d48ad0ad2ece246fda94f654ad05c883))
+* **markdown-overrides:** Initial markdown-overrides package setup ([#967](https://github.com/Codecademy/gamut/issues/967)) ([55019da](https://github.com/Codecademy/gamut/commit/55019da4e51b89fb54a3cd95fa893fdccf42169e))
+
+
+
 ### [0.6.2](https://github.com/Codecademy/gamut/compare/@codecademy/markdown-overrides@0.6.1...@codecademy/markdown-overrides@0.6.2) (2021-09-30)
 
 **Note:** Version bump only for package @codecademy/markdown-overrides

@@ -3,6 +3,116 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@1.2.4...@codecademy/gamut-styles@12.0.0) (2021-10-26)
+
+
+### ⚠ BREAKING CHANGES
+
+* release -kit-4.7
+* use a sticky Box for GlobalHeader
+* **ContentContainer:** update responsive padding
+* bumped ESLint packages to latest and added recommended & Jest linting
+* **gamut-styles:** deprecate legacy JS color variables  (#940)
+* Swapped default font family to Apercu (#935)
+* **Gamut:** Enable Emotion (#917)
+* **Gamut:** Removed deprecated color variables (#819)
+* **Gamut:** removed easily replaceable deprecated swatches- colors (#717)
+* `gamut-styles/variables` renamed to `gamut-styles/utils/variables`
+
+### Features
+
+* **Drawer:** extract Drawer from Flyout ([e2352f9](https://github.com/Codecademy/gamut/commit/e2352f98dec94c539bbbbd4e1b87069e40a88e3d))
+* bump ESLint configs to latest ([4e3cf77](https://github.com/Codecademy/gamut/commit/4e3cf77928bdd69bce3eeca8a7f07439627b4f08))
+* **Anchor:** Variance Migration + ColorMode [GM-203] ([dd0058b](https://github.com/Codecademy/gamut/commit/dd0058b0ba96a2f8cca804884c2d2fcf66951ee4))
+* **Testimonial:** Add new Testimonial Component ([64c83be](https://github.com/Codecademy/gamut/commit/64c83be3650207b339459cd92179f3e5c58712db))
+* Add 2.5rem interval to spacing GM-317 ([8c11d05](https://github.com/Codecademy/gamut/commit/8c11d0550b8af28f0b4280dd724408667c2bf1a1))
+* **Background:** Set current background color to local CSS variable GM-259 ([ea834ea](https://github.com/Codecademy/gamut/commit/ea834ea5654334b6b1bf5c26e8438038dcb0a8c5))
+* Add admin theme ([7090b30](https://github.com/Codecademy/gamut/commit/7090b303c5451113983e5345316a821ddfaaf1fc))
+* **Button:** Alternative (secondary) modes and consistent height [GM-126] ([11d3466](https://github.com/Codecademy/gamut/commit/11d3466a083e0abb8be57a1fcfb6d11f26624d19))
+* **Buttons:** Color + Structure Redux [GM-237] ([#1809](https://github.com/Codecademy/gamut/issues/1809)) ([698aa2a](https://github.com/Codecademy/gamut/commit/698aa2a184e59e32821c58686ac133cb043c8f65))
+* **Buttons:** ColorModes + Props + Refactor + Refs Oh My! [GM-211] [REACH-856] [GM-192] ([998c2cc](https://github.com/Codecademy/gamut/commit/998c2cc01945e8b675a01f60a38bc2a03250ac8e))
+* **ColorModes:** Base ColorMode support and serialization of color variables [GM-177] ([9f322b4](https://github.com/Codecademy/gamut/commit/9f322b4ed959e1245a18dbddb42f33be3e0d9356))
+* **ContentContainer:** update responsive padding ([4b6fb50](https://github.com/Codecademy/gamut/commit/4b6fb50171f412f2238c4f7519f227319cc686ff))
+* **Emotion:** Add Emotion Dependency to Next WEB-982 ([#888](https://github.com/Codecademy/gamut/issues/888)) ([7cfde27](https://github.com/Codecademy/gamut/commit/7cfde27834a71b119231b88f96e506167ef50311))
+* **Emotion:** Upgrade to Emotion 11 ([#944](https://github.com/Codecademy/gamut/issues/944)) ([f87f19c](https://github.com/Codecademy/gamut/commit/f87f19c2578fe047561e62b806a44af2238e17ef))
+* **focus-visible:** Add stylis plugin for focus-visible support WEB-1148 ([92c02e4](https://github.com/Codecademy/gamut/commit/92c02e4a3f3d1c1595755237503d87fb9aa849a0))
+* **Gamut:** Created separate bucket for "Platform" colors ([#778](https://github.com/Codecademy/gamut/issues/778)) ([446804b](https://github.com/Codecademy/gamut/commit/446804bd437d95f3d14bb25e8fa49d52413a6240))
+* **Gamut:** Enable Emotion ([#917](https://github.com/Codecademy/gamut/issues/917)) ([9b25901](https://github.com/Codecademy/gamut/commit/9b2590148018d07b889618b5dc2588a6a375bfd3))
+* **gamut-styles:** Added TypeScript .d.ts generation to gamut-styles ([#775](https://github.com/Codecademy/gamut/issues/775)) ([f0c1c4b](https://github.com/Codecademy/gamut/commit/f0c1c4ba2d27bd53249344d776f8eff6780325b5))
+* **gamut-styles:** formalized Editor colors in gamut-styles ([#726](https://github.com/Codecademy/gamut/issues/726)) ([2e0ba92](https://github.com/Codecademy/gamut/commit/2e0ba92b83e757dd41cc0153ed5aac5202e9c694))
+* **GamutProvider:** Adds single provider for Theme + Cache + Globals + Assets [WEB-1352] [GM-173] ([afa9c7f](https://github.com/Codecademy/gamut/commit/afa9c7f647c005f2d17517726bf3409cafdbb6fc))
+* **headertab:** move more header components into gamut ([#740](https://github.com/Codecademy/gamut/issues/740)) ([01a6949](https://github.com/Codecademy/gamut/commit/01a694989a1aeb4950485b71e9ea607c82f2f017))
+* **LayoutGrid:** LayoutGrid conversion + Initial Variance Props [GM-81] ([14a753e](https://github.com/Codecademy/gamut/commit/14a753e2850bd381aa9f6819c5bac623b39e4036))
+* **Overlay:** Add inline option for locking the offset parent only [GM-225] ([b19f83c](https://github.com/Codecademy/gamut/commit/b19f83c14db8804745d9651f9df3c40a93927dd2))
+* **PageWrapper:** Extend stacking context reset element for pages with a background color ([8a42aca](https://github.com/Codecademy/gamut/commit/8a42aca9b6e9bc833f5b4dcb63c18a962fb45762))
+* **props:** Adds custom shouldForwardProp to omit system props ([5a02ac4](https://github.com/Codecademy/gamut/commit/5a02ac41ecd7200b0ded8cfff4406c09d8c48cd5))
+* **props:** Support `color` and other HTML attributes as system props without type collision GM-247 ([ff93f0c](https://github.com/Codecademy/gamut/commit/ff93f0c9b7ca64ed9819586709f58436ca4502b9))
+* **ThemeProvider:**  Adds GamutThemeProvider component and initial Global styles ([697ee38](https://github.com/Codecademy/gamut/commit/697ee38dde8ab0de5cef0bb8f9167021922927c4))
+* **variance:** Computed styles, and configurable CSSType narrowing [GM-233] ([ddb4091](https://github.com/Codecademy/gamut/commit/ddb40917fe41b0dc741d34f5c34ec6d0bf29dad1))
+* Added Apercu and Suisse font families as opt-ins ([#933](https://github.com/Codecademy/gamut/issues/933)) ([fd4119b](https://github.com/Codecademy/gamut/commit/fd4119bec1b28dc04423c4e57c2bddca6a0ea398))
+* Align brand color aliases [WEB-215] ([#821](https://github.com/Codecademy/gamut/issues/821)) ([7c168ac](https://github.com/Codecademy/gamut/commit/7c168acfa0ed0dad05b47f4cc0a96853d9299d1d))
+* bumped ESLint packages to latest and added recommended & Jest linting ([0cecc5c](https://github.com/Codecademy/gamut/commit/0cecc5ca58883616a78c5429c1f6ec41fa03c4ba))
+* Migrate final gamut-system docs + functions to variance [WEB-1413]  ([f966933](https://github.com/Codecademy/gamut/commit/f966933ac814d228072e781ee2a3d75a33190a85))
+* Navy scale + color alias changes GM-237 ([3c8a772](https://github.com/Codecademy/gamut/commit/3c8a772271492e0ecc8d724f296f0bfe5ef17112)), closes [#10162](https://github.com/Codecademy/gamut/issues/10162)
+* **variance:** states boolean toggle styles GM-233 ([a4fa8cf](https://github.com/Codecademy/gamut/commit/a4fa8cf473a1b22648fa480025630a9d1827f84d))
+* release -kit-4.7 ([f574c83](https://github.com/Codecademy/gamut/commit/f574c8317c2e6128eaead047146a774acc257293))
+* **theme:** createTheme self containment ([87a203c](https://github.com/Codecademy/gamut/commit/87a203c56df8002406552208b8b5ffc55b228262)), closes [#666666](https://github.com/Codecademy/gamut/issues/666666) [#666666](https://github.com/Codecademy/gamut/issues/666666)
+* Merge standard & core variables ([#123](https://github.com/Codecademy/gamut/issues/123)) ([59f4ac4](https://github.com/Codecademy/gamut/commit/59f4ac47baed6c481e604fba583258bffd4db605))
+* use a sticky Box for GlobalHeader ([a4b6bdc](https://github.com/Codecademy/gamut/commit/a4b6bdc6edec9fe7f7674e20188e0b1a0646bab4))
+* **Styleguide:** Add specific theme and scale docs ([d1c93fd](https://github.com/Codecademy/gamut/commit/d1c93fdc1239ff98e39d88001e287f3bc6e39873))
+* **Styles:** Create system styles and gamut theme ([#1127](https://github.com/Codecademy/gamut/issues/1127)) ([57abf97](https://github.com/Codecademy/gamut/commit/57abf970d7f326a9cb59bdab4fd8f96d93f6a735))
+* **ThemeBuilder:**  TypeSafe theme construction + variable serialization [WEB-1401] ([e0a4c16](https://github.com/Codecademy/gamut/commit/e0a4c163e39b64c7d7290a325c900f05ae5ce4e4))
+* **Variance:** Initial Props and Refactor Tests [WEB-1390] ([9f29489](https://github.com/Codecademy/gamut/commit/9f294894b49915ea0504749ecdca7e62d46d475e))
+* add new Button ([#1119](https://github.com/Codecademy/gamut/issues/1119)) ([1e654ef](https://github.com/Codecademy/gamut/commit/1e654ef989e19109ea31854bb3beb5bf5d3facce))
+* Add shared config modules for eslint & prettier ([#224](https://github.com/Codecademy/gamut/issues/224)) ([8d9a6b8](https://github.com/Codecademy/gamut/commit/8d9a6b81179db6325ffb55a4ccbfe065ad72042e))
+* Adds mar 2019 colors, deprecates colors ([#211](https://github.com/Codecademy/gamut/issues/211)) ([057e0d9](https://github.com/Codecademy/gamut/commit/057e0d942df08047bf89c561280d37341d3412bd))
+* Create default main export for gamut-styles [WEB-895] ([#820](https://github.com/Codecademy/gamut/issues/820)) ([540e710](https://github.com/Codecademy/gamut/commit/540e710390245a725ef0bcf229dd0f733f4ead0e))
+* onboarded eslint-plugin-simple-import-sort into ESLint plugin ([89520d0](https://github.com/Codecademy/gamut/commit/89520d0e50c85b325616c0963c22199eedbfb8b7))
+* Swapped default font family to Apercu ([#935](https://github.com/Codecademy/gamut/issues/935)) ([2fee178](https://github.com/Codecademy/gamut/commit/2fee17808514a9d91dfcd541c4ceef6491f22547)), closes [#943](https://github.com/Codecademy/gamut/issues/943)
+* tweaked red and green theme colors per design updates ([#1066](https://github.com/Codecademy/gamut/issues/1066)) ([80d3fd9](https://github.com/Codecademy/gamut/commit/80d3fd9bb1a8c361401692aa16a6b52ec8be3231))
+
+
+### Bug Fixes
+
+* Add GamutProvider Tests and Remove .storybook from coverage ([c04fab8](https://github.com/Codecademy/gamut/commit/c04fab841e142dd09d92bcb55b95dbf81c1f09fe))
+* allow override of tooltip alignment ([92a9126](https://github.com/Codecademy/gamut/commit/92a912655facd66915d39057a6e0763978c64739))
+* cache constants missing ([d66c077](https://github.com/Codecademy/gamut/commit/d66c077dd1a57faa08c7d3b64b9a6d13df64f2f8))
+* Cards now correctly set color mode for their contents GM-308 ([ea2d8ac](https://github.com/Codecademy/gamut/commit/ea2d8ac97121558fe0a45065364f0b04d172588a))
+* Import path  ([eaf5c8b](https://github.com/Codecademy/gamut/commit/eaf5c8b63f6f7dd537530d77df21990bc1c4fa54))
+* **colors:** Red Swap for accessible errors GM-281 ([51ec3d4](https://github.com/Codecademy/gamut/commit/51ec3d4d2732563517619b991396264b09aab44a))
+* Hover + Shadow regression ([a2a3414](https://github.com/Codecademy/gamut/commit/a2a3414fe37c1280fcbd59efaa5764873c377d35))
+* Theme extension merge logic ([de3cbf2](https://github.com/Codecademy/gamut/commit/de3cbf25995b6be7769cbb92bc51d13e5f6a6695))
+* Use native focus-visible in addition to polyfill ([ccfd943](https://github.com/Codecademy/gamut/commit/ccfd943be6dd1a73aff2a4e021fbaf4e15d75c7a))
+* **ColorMode:** Ref Forarding for BG + ColorMode ([d42c991](https://github.com/Codecademy/gamut/commit/d42c991ed5acc747602d634be3a07a94e531660a))
+* **deps:** pin dependencies ([#231](https://github.com/Codecademy/gamut/issues/231)) ([a6525c3](https://github.com/Codecademy/gamut/commit/a6525c328f2796b12d38c3bc8e2e4dfd0e63847d))
+* **emotion:** Add emotion cache settings overrides and default speedy styles ([9d8ff8f](https://github.com/Codecademy/gamut/commit/9d8ff8ffed0159c0c8640a726ddc7d3e8efe66b0))
+* **emotion:** Cache changes ([c4e9074](https://github.com/Codecademy/gamut/commit/c4e907499152d5db7ed1afc59c6022d0b0d57171))
+* **emotion:** change emotion style prefix to gamut ([9432cda](https://github.com/Codecademy/gamut/commit/9432cda2bfd73e93d031cb1b9f9b0a0d5a191dd4))
+* **Emotion:** Add mode and variant to base `shouldForwardProp` filters and keep static list of all system props ([2946b43](https://github.com/Codecademy/gamut/commit/2946b4330a4f57cc46353455d622731713eb299e))
+* **FillButton:** corrected hover styles on FillButton in dark mode ([330fe9a](https://github.com/Codecademy/gamut/commit/330fe9add330949384358d169554bf736f4720db))
+* **Props:**  Adds alignment props to both grid and flex ([9b8abce](https://github.com/Codecademy/gamut/commit/9b8abce649785daac1e995eda632686240d41b65))
+* **Props/Dialog/Button:** Prop Fixes for Button / Dialog ([7f7d789](https://github.com/Codecademy/gamut/commit/7f7d789a07ad43a3731598e2b9c02d2507b48b8c))
+* **styles:** Default button focus styles to focus-visible ([8e26d02](https://github.com/Codecademy/gamut/commit/8e26d026e90145db3439515c0f3ee0340ae2e07a))
+* **styles:** Run emotion plugin ([2f5a995](https://github.com/Codecademy/gamut/commit/2f5a9959e1a6a6ccb2a6e0e16e6e33c2be7eb12a))
+* **System:** Typescript memory performance fixes ([#1145](https://github.com/Codecademy/gamut/issues/1145)) ([4c9a92b](https://github.com/Codecademy/gamut/commit/4c9a92b72975752254ef4edf59f29663576a9423))
+* **Text:** Make small text size 14px ([#1065](https://github.com/Codecademy/gamut/issues/1065)) ([02d1697](https://github.com/Codecademy/gamut/commit/02d16979efd1f316336d8dc649ca5052610fc95f))
+* export JS colors object, removes scss exports ([937759c](https://github.com/Codecademy/gamut/commit/937759c29fc900ef627a82290ef9044bcdaed529))
+* minor core stylesheet tweaks ([#159](https://github.com/Codecademy/gamut/issues/159)) ([3c7ba69](https://github.com/Codecademy/gamut/commit/3c7ba697e6017b7347c64129636307fdc659a9a8))
+
+
+### Reverts
+
+* Revert "chore: set packages to have publishConfig: access: public (#970)" (#981) ([c7fed45](https://github.com/Codecademy/gamut/commit/c7fed4565437b1a4505e1b3dd37f5bc88ffc208c)), closes [#970](https://github.com/Codecademy/gamut/issues/970) [#981](https://github.com/Codecademy/gamut/issues/981)
+
+
+### Miscellaneous Chores
+
+* **Gamut:** Removed deprecated color variables ([#819](https://github.com/Codecademy/gamut/issues/819)) ([0a0f894](https://github.com/Codecademy/gamut/commit/0a0f894b3d4cc716c86c90e25bd47ab299fb18e1))
+* **Gamut:** removed easily replaceable deprecated swatches- colors ([#717](https://github.com/Codecademy/gamut/issues/717)) ([4598854](https://github.com/Codecademy/gamut/commit/45988548474989dd77ac8a592f13856cde3a13d6))
+* **gamut-styles:** deprecate legacy JS color variables  ([#940](https://github.com/Codecademy/gamut/issues/940)) ([dd99a9c](https://github.com/Codecademy/gamut/commit/dd99a9ccda389cfa95de78aa9775f8100fcce811))
+
+
+
 ## [11.11.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@11.10.1...@codecademy/gamut-styles@11.11.0) (2021-09-30)
 
 
