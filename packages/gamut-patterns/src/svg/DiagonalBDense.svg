@@ -8,7 +8,7 @@
     patternUnits="userSpaceOnUse"
   >
     <g clipPath="url(#clipDiagonalBDense)">
-      <rect width="4" height="4" fill="white" />
+      <rect width="4" height="4" fill="transparent" />
       <rect y="3" width="1" height="1" fill="currentColor" />
       <rect x="1" y="2" width="1" height="1" fill="currentColor" />
       <rect x="2" y="1" width="1" height="1" fill="currentColor" />
@@ -16,7 +16,7 @@
     </g>
     <defs>
       <clipPath id="clipDiagonalBDense">
-        <rect width="4" height="4" fill="white" />
+        <rect width="4" height="4" fill="transparent" />
       </clipPath>
     </defs>
   </pattern>
