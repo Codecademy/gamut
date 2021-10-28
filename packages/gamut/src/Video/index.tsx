@@ -5,9 +5,13 @@ import ReactPlayer from 'react-player';
 
 import styles from './styles/index.module.scss';
 
-const OverlayPlayButton = () => {
+const OverlayPlayButton = ({ videoTitle }: { videoTitle?: string }) => {
   return (
-    <div className={styles.overlay}>
+    <div
+      className={styles.overlay}
+      role="button"
+      aria-label={`play video${videoTitle ? `: ${videoTitle}` : ''}`}
+    >
       <PlayIcon className={styles.hoverButton} />
     </div>
   );
@@ -58,7 +62,7 @@ export const Video: React.FC<VideoProps> = ({
         controls={controls === undefined ? true : controls}
         loop={loop}
         muted={muted}
-        playIcon={<OverlayPlayButton />}
+        playIcon={<OverlayPlayButton videoTitle={videoTitle} />}
         onReady={(player: ReactPlayerWithWrapper) => {
           onReady?.(player);
           setLoading(false);

@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [0.7.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-patterns@0.7.0...@codecademy/gamut-patterns@0.7.1) (2021-10-27)
+
+
+### Bug Fixes
+
+* **Pattern:** fix white bg on regular and dense diagonal patterns ([2f321c2](https://github.com/Codecademy/gamut/commit/2f321c2446cdc28e4338fa1dae94efa698e4c6ea))
+
+
+
 ## 0.7.0 (2021-10-26)
 
 
