@@ -78,6 +78,7 @@ export const useFormState = () => {
     register,
     setValue,
     watch,
+    reset,
   } = useFormContext();
 
   const {
@@ -103,6 +104,7 @@ export const useFormState = () => {
     showRequired,
     validationRules,
     watch,
+    reset,
   };
 };
 
