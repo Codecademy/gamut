@@ -1,7 +1,8 @@
+import { Background } from '@codecademy/gamut-styles';
 import { setupEnzyme } from '@codecademy/gamut-tests';
 
 import { IconButton, TextButton } from '../../Button';
-import { Banner } from '..';
+import { Banner, BannerVariant } from '..';
 
 const onClose = jest.fn();
 const onCtaClick = jest.fn();
@@ -36,11 +37,31 @@ describe('Banner', () => {
 
     expect(onCtaClick).toHaveBeenCalled();
   });
+
   it('calls the onClose callback when the close icon is clicked', () => {
     const { wrapper } = renderWrapper({});
 
     wrapper.find(IconButton).simulate('click');
 
     expect(onClose).toHaveBeenCalled();
+  });
+
+  test.each([
+    ['undefined', undefined],
+    ['null', null],
+    ['not a banner variant', ('test' as unknown) as BannerVariant],
+    ['navy', 'navy' as const],
+  ])('renders navy background when variant is %s', (_, bannerVariant) => {
+    const { wrapper } = renderWrapper({ variant: bannerVariant });
+
+    expect(wrapper.find(Background).props().bg).toEqual('navy');
+  });
+
+  it('renders yellow background when variant is yellow', () => {
+    const { wrapper } = renderWrapper({
+      variant: 'yellow',
+    });
+
+    expect(wrapper.find(Background).props().bg).toEqual('yellow');
   });
 });
