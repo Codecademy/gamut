@@ -49,7 +49,7 @@ export const DemoTemplate: React.FC = (args) => {
   );
 };
 
-export const CondensedTemplate: React.FC<ListProps> = ({ mode, ...args }) => (
+export const CondensedTemplate: React.FC<typeof List> = ({ mode, ...args }) => (
   <ColorMode mode={mode}>
     <List {...args}>
       {rows.map(({ name, role, ship }, i, _, key = `example-row-${i}`) => (
@@ -100,7 +100,7 @@ export const CondensedTemplate: React.FC<ListProps> = ({ mode, ...args }) => (
   </ColorMode>
 );
 
-export const NormalTemplate: React.FC<ListProps> = (args, { mode }) => (
+export const NormalTemplate: React.FC<typeof List> = (args, { mode }) => (
   <ColorMode mode={mode}>
     <List {...args}>
       {rows.map(({ name, role, ship }, i, _, key = `example-row-${i}`) => (
@@ -174,10 +174,10 @@ export const NormalTemplate: React.FC<ListProps> = (args, { mode }) => (
 
 const sizes = ['content', 'sm', 'md', 'lg', 'xl'];
 
-export const ColumnTemplate: React.FC<ListProps> = (args) => {
+export const ColumnTemplate: React.FC<typeof List> = (args) => {
   return (
     <List {...args}>
-      {sizes.map((size) => (
+      {sizes.map((size: 'content' | 'sm' | 'md' | 'lg' | 'xl') => (
         <ListRow>
           <ListCol size={size} fill={size === 'fill'}>
             <Box height={1} flex={1} p={8} bg="background-selected">
@@ -190,7 +190,7 @@ export const ColumnTemplate: React.FC<ListProps> = (args) => {
   );
 };
 
-export const ColumnModifierTemplate: React.FC<ListProps> = (args) => {
+export const ColumnModifierTemplate: React.FC<typeof List> = (args) => {
   return (
     <List {...args}>
       <ListRow>
@@ -224,7 +224,7 @@ export const ColumnModifierTemplate: React.FC<ListProps> = (args) => {
   );
 };
 
-export const JustifyTemplate: React.FC<ListProps> = (args) => {
+export const JustifyTemplate: React.FC<typeof List> = (args) => {
   return (
     <List {...args}>
       <ListRow>
@@ -239,7 +239,7 @@ export const JustifyTemplate: React.FC<ListProps> = (args) => {
   );
 };
 
-export const ResponsiveAnatomyTemplate: React.FC<ListProps> = (args) => {
+export const ResponsiveAnatomyTemplate: React.FC<typeof List> = (args) => {
   return (
     <List {...args}>
       <ListRow>
@@ -268,7 +268,7 @@ export const ResponsiveAnatomyTemplate: React.FC<ListProps> = (args) => {
   );
 };
 
-export const ResponsiveTemplate: React.FC<ListProps> = (args) => {
+export const ResponsiveTemplate: React.FC<typeof List> = (args) => {
   return (
     <List {...args}>
       <ListRow>
@@ -393,7 +393,7 @@ export const ExpandableRow: React.FC<{
 
 export const ExpandedTemplate: React.FC<
   ListProps & { mode: 'light' | 'dark' }
-> = ({ mode, ...args }) => (
+> = ({ mode }) => (
   <ColorMode bg="black" mode={mode}>
     <List variant="card">
       {rows.map(({ name, role, ship }, i, _, key = `example-row-${i}`) => (
