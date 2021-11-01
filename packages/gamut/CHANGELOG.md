@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [39.1.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@39.1.0...@codecademy/gamut@39.1.1) (2021-10-29)
+
+
+### Bug Fixes
+
+* **ProgressBar:** fix progress bar pattern ([60e02b2](https://github.com/Codecademy/gamut/commit/60e02b2b1c8bd757e6842826b8f02bdc51d648ce))
+
+
+
 ## [39.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@39.0.2...@codecademy/gamut@39.1.0) (2021-10-28)
 
 

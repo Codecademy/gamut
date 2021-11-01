@@ -42,6 +42,11 @@ export type ProgressBarProps = {
 const progressBarSizeVariants = variant({
   defaultVariant: 'small',
   prop: 'size',
+  base: {
+    display: 'flex',
+    overflow: 'hidden',
+    position: 'relative',
+  },
   variants: {
     small: {
       height: '6px',
@@ -144,8 +149,6 @@ type ProgressBarElementWrapperProps = ProgressBarElementProps & {
 };
 
 const ProgressBarWrapper = styled.div<ProgressBarElementWrapperProps>`
-  overflow: hidden;
-  position: relative;
   ${progressBarBackgroundVariants};
   ${progressBarSizeVariants};
   ${progressBarBorderVariants};
