@@ -37,4 +37,12 @@ describe('GlobalPage', () => {
   it('renders', () => {
     renderView();
   });
+
+  it('renders a banner when provided', () => {
+    const { view } = renderView({
+      banner: { children: 'banner text', onClose: () => null },
+    });
+
+    view.getByText('banner text');
+  });
 });

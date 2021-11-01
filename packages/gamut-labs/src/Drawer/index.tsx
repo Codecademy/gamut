@@ -4,7 +4,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import React from 'react';
 import { useMedia } from 'react-use';
 
-const DrawerBase = motion.custom(Box);
+const DrawerBase = motion(Box);
 
 export interface DrawerProps extends Omit<BoxProps, 'width'> {
   /**
