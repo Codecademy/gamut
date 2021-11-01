@@ -51,6 +51,10 @@ const rowStates = states({
   },
   clickable: {
     cursor: 'pointer',
+    '&:focus-visible': {
+      outline: 'none',
+      bg: 'background-selected',
+    },
   },
 });
 
@@ -106,11 +110,6 @@ export const RowEl = styled('li', styledOptions<'li'>())<RowProps>(
     gridTemplateColumns: 'minmax(0, 1fr) max-content',
     flexDirection: { _: 'column', xs: 'row' },
     bg: 'inherit',
-    '&:focus': {
-      outline: 'none',
-      borderColor: 'primary',
-      bg: 'background-selected',
-    },
   }),
   rowVariants,
   spacingVariants,

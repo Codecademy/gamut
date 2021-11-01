@@ -256,11 +256,11 @@ List rows will switch to a mobile layout at screen widths less than smallest bre
 
 <br />
 
-### Collapsible Content
+### Collapsible Row Content
 
 You can define collapsible content by passing an `expanded` prop and the `React.Node` to the `renderExpanded` prop of your `ListRow` components.
 
-#### Example Expandable Row
+#### Expand on Button Click
 
 ```tsx
 export const ExpandableRow: React.FC<{
@@ -304,16 +304,15 @@ export const ExpandableRow: React.FC<{
     <ListRow
       key={key}
       expanded={isExpanded}
+      onClick={() => setExpanded(!isExpanded)}
       renderExpanded={() => <Text>Surprise</Text>}
     >
       <ListCol type="header">{header}</ListCol>
       <ListCol type="content">{content}</ListCol>
       <ListCol type="control">
-        <ExpandControl
-          id={name}
-          expanded={isExpanded}
-          onExpand={() => setExpanded(!isExpanded)}
-        />
+        <Rotation rotated={isExpanded}>
+          <ArrowChevronDownIcon color="text-disabled" />
+        </Rotation>
       </ListCol>
     </ListRow>
   );
@@ -352,7 +351,7 @@ Here's some examples of Lists to use as guides.
 </Canvas>
 
 <Canvas>
-  <Story name="Expanded - Row" args={{ variant: 'card', mode: 'dark' }}>
+  <Story name="Expanded - Row" args={{ mode: 'dark' }}>
     {ExpandedTemplateRowClick.bind({})}
   </Story>
 </Canvas>

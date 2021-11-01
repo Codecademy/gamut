@@ -490,10 +490,10 @@ export const ExpandableButtonClickRow: React.FC<{
 
 export const ExpandedTemplateRowClick: React.FC<
   ListProps & { mode: 'light' | 'dark' }
-> = ({ mode }) => (
+> = ({ mode, variant }) => (
   <ColorMode bg="black" mode={mode}>
     <Box p={8}>
-      <List variant="card">
+      <List variant={variant}>
         {rows.map(({ name, role, ship }, i, _, key = `example-row-${i}`) => (
           <ExpandableRowClick name={name} role={role} ship={ship} key={key} />
         ))}
@@ -504,10 +504,10 @@ export const ExpandedTemplateRowClick: React.FC<
 
 export const ExpandedTemplateButtonClick: React.FC<
   ListProps & { mode: 'light' | 'dark' }
-> = ({ mode }) => (
+> = ({ mode, variant }) => (
   <ColorMode bg="black" mode={mode}>
     <Box p={8}>
-      <List variant="card">
+      <List variant={variant}>
         {rows.map(({ name, role, ship }, i, _, key = `example-row-${i}`) => (
           <ExpandableButtonClickRow
             name={name}
