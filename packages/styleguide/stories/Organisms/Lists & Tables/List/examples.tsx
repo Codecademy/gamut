@@ -1,6 +1,4 @@
-import { is } from '@babel/types';
 import {
-  Anchor,
   Box,
   ExpandControl,
   FillButton,

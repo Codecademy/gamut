@@ -3,6 +3,7 @@ import {
   states,
   styledOptions,
   system,
+  theme,
   variant,
 } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
@@ -102,6 +103,11 @@ export const RowEl = styled('li', styledOptions<'li'>())<RowProps>(
     gridTemplateColumns: 'minmax(0, 1fr) max-content',
     flexDirection: { _: 'column', xs: 'row' },
     bg: 'inherit',
+    '&:focus': {
+      outline: 'none',
+      borderColor: 'primary',
+      bg: 'background-selected',
+    },
   }),
   rowVariants,
   spacingVariants,
