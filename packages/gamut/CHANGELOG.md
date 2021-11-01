@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [40.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@39.1.1...@codecademy/gamut@40.0.0) (2021-11-01)
+
+
+### ⚠ BREAKING CHANGES
+
+* bumped framer-motion to v4
+
+### Miscellaneous Chores
+
+* bumped framer-motion to v4 ([7590c77](https://github.com/Codecademy/gamut/commit/7590c77ecc01381fcd4a19ec8b2c73b792c9d960))
+
+
+
 ### [39.1.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@39.1.0...@codecademy/gamut@39.1.1) (2021-10-29)
 
 

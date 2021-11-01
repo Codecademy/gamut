@@ -24,7 +24,7 @@ const motionVariants = {
   },
 };
 
-const BaseContainer = motion.custom(Box);
+const BaseContainer = motion(Box);
 
 export const FadeInSlideOut: React.FC = ({ children }) => (
   <BaseContainer
