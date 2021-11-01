@@ -213,12 +213,3 @@ export const DataListTemplate = createDemoTable(DataList, {
   scrollable: false,
   height: 'auto',
 });
-
-const GamutContainer = () => (
-  <>
-    //bad
-    <Box bg="periwinkle" />
-    //good
-    <Box bg="background-selected" />
-  </>
-);

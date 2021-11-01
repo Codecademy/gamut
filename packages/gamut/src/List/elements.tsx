@@ -49,6 +49,9 @@ const rowStates = states({
     display: 'flex',
     flexDirection: { xs: 'column' },
   },
+  clickable: {
+    cursor: 'pointer',
+  },
 });
 
 const spacingVariants = variant({

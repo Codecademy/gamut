@@ -8,7 +8,8 @@ import {
   ColumnTemplate,
   CondensedTemplate,
   DemoTemplate,
-  ExpandedTemplate,
+  ExpandedTemplateButtonClick,
+  ExpandedTemplateRowClick,
   JustifyTemplate,
   NormalTemplate,
   ResponsiveAnatomyTemplate,
@@ -345,8 +346,14 @@ Here's some examples of Lists to use as guides.
 </Canvas>
 
 <Canvas>
-  <Story name="Expanded - Example" args={{ variant: 'card', mode: 'dark' }}>
-    {ExpandedTemplate.bind({})}
+  <Story name="Expanded - Button" args={{ variant: 'card', mode: 'dark' }}>
+    {ExpandedTemplateButtonClick.bind({})}
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="Expanded - Row" args={{ variant: 'card', mode: 'dark' }}>
+    {ExpandedTemplateRowClick.bind({})}
   </Story>
 </Canvas>
 

@@ -8,10 +8,12 @@ import {
   ListCol,
   ListProps,
   ListRow,
+  Rotation,
   Text,
   TextButton,
 } from '@codecademy/gamut';
 import {
+  ArrowChevronDownIcon,
   MiniDeleteIcon,
   MiniKebabMenuIcon,
   StarIcon,
@@ -296,7 +298,7 @@ export const ResponsiveTemplate: React.FC<typeof List> = (args) => {
   );
 };
 
-export const ExpandableRow: React.FC<{
+export const ExpandableRowClick: React.FC<{
   name: string;
   role: string;
   ship: string;
@@ -306,9 +308,9 @@ export const ExpandableRow: React.FC<{
 
   return (
     <ListRow
-      key={key}
       expanded={isExpanded}
-      onListRowAction={() => setExpanded(!isExpanded)}
+      key={key}
+      onClick={() => setExpanded(!isExpanded)}
       renderExpanded={() => (
         <FlexBox bg="background-selected" column m={16} p={16}>
           <Text fontStyle="italic" smooth>
@@ -381,13 +383,17 @@ export const ExpandableRow: React.FC<{
         </Text>
       </ListCol>
       <ListCol size="lg" type="control">
-        <Text color="text"> X </Text>
+        <FlexBox mt={{ _: 8, xs: 0 }} pl={{ _: 0, xs: 16 }} width={1} center>
+          <Rotation rotated={isExpanded}>
+            <ArrowChevronDownIcon color="text-disabled" />
+          </Rotation>
+        </FlexBox>
       </ListCol>
     </ListRow>
   );
 };
 
-export const ExpandableRow2: React.FC<{
+export const ExpandableButtonClickRow: React.FC<{
   name: string;
   role: string;
   ship: string;
@@ -482,14 +488,33 @@ export const ExpandableRow2: React.FC<{
   );
 };
 
-export const ExpandedTemplate: React.FC<
+export const ExpandedTemplateRowClick: React.FC<
   ListProps & { mode: 'light' | 'dark' }
 > = ({ mode }) => (
   <ColorMode bg="black" mode={mode}>
     <Box p={8}>
       <List variant="card">
         {rows.map(({ name, role, ship }, i, _, key = `example-row-${i}`) => (
-          <ExpandableRow name={name} role={role} ship={ship} key={key} />
+          <ExpandableRowClick name={name} role={role} ship={ship} key={key} />
+        ))}
+      </List>
+    </Box>
+  </ColorMode>
+);
+
+export const ExpandedTemplateButtonClick: React.FC<
+  ListProps & { mode: 'light' | 'dark' }
+> = ({ mode }) => (
+  <ColorMode bg="black" mode={mode}>
+    <Box p={8}>
+      <List variant="card">
+        {rows.map(({ name, role, ship }, i, _, key = `example-row-${i}`) => (
+          <ExpandableButtonClickRow
+            name={name}
+            role={role}
+            ship={ship}
+            key={key}
+          />
         ))}
       </List>
     </Box>
