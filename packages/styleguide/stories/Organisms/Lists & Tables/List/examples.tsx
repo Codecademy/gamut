@@ -286,7 +286,6 @@ export const ResponsiveTemplate: React.FC<ListProps> = (args) => {
           <Text variant="p-small" color="text-disabled" truncate="ellipsis">
             Content
           </Text>
-          f
         </ListCol>
         <ListCol type="control">
           <IconButton icon={MiniKebabMenuIcon} size="small" />
