@@ -1,4 +1,6 @@
+import { is } from '@babel/types';
 import {
+  Anchor,
   Box,
   ExpandControl,
   FillButton,
@@ -308,6 +310,7 @@ export const ExpandableRow: React.FC<{
     <ListRow
       key={key}
       expanded={isExpanded}
+      onListRowAction={() => setExpanded(!isExpanded)}
       renderExpanded={() => (
         <FlexBox bg="background-selected" column m={16} p={16}>
           <Text fontStyle="italic" smooth>
@@ -356,7 +359,97 @@ export const ExpandableRow: React.FC<{
             textTransform="uppercase"
             variant="p-small"
           >
-            Rankstorie
+            Rank
+          </Text>
+          <Text variant="title-xs">{role}</Text>
+        </FlexBox>
+      </ListCol>
+      <ListCol fill size="sm">
+        <Text variant="p-small" color="text-disabled" lineHeight="title" mt={4}>
+          <StreakIcon size={18} verticalAlign="middle" mr={8} mb={4} />
+          87%
+        </Text>
+      </ListCol>
+      <ListCol fill size="sm">
+        <Text variant="p-small" color="text-disabled" lineHeight="title" mt={4}>
+          <TrophyIcon size={18} verticalAlign="middle" mr={8} mb={4} />
+          48%
+        </Text>
+      </ListCol>
+      <ListCol fill size="sm">
+        <Text variant="p-small" color="text-disabled" lineHeight="title" mt={4}>
+          <StarIcon size={18} verticalAlign="middle" mr={8} mb={4} />
+          66%
+        </Text>
+      </ListCol>
+      <ListCol size="lg" type="control">
+        <Text color="text"> X </Text>
+      </ListCol>
+    </ListRow>
+  );
+};
+
+export const ExpandableRow2: React.FC<{
+  name: string;
+  role: string;
+  ship: string;
+  key: string;
+}> = ({ name, role, ship, key }) => {
+  const [isExpanded, setExpanded] = useState(false);
+
+  return (
+    <ListRow
+      key={key}
+      expanded={isExpanded}
+      renderExpanded={() => (
+        <FlexBox bg="background-selected" column m={16} p={16}>
+          <Text fontStyle="italic" smooth>
+            Oh, were you expecting to find out more about{' '}
+            <Text as="span" fontWeight="bold" color="text-accent">
+              {name}
+            </Text>
+            ,{' '}
+            <Text as="span" fontWeight="bold" color="text-accent">
+              {role}
+            </Text>{' '}
+            of the{' '}
+            <Text as="span" fontWeight="bold" color="text-accent">
+              {ship}
+            </Text>
+            ? I am very sorry but that is{' '}
+            <Text
+              as="span"
+              color="danger"
+              fontWeight="bold"
+              textDecoration="underline"
+            >
+              highly classified
+            </Text>{' '}
+            information.
+          </Text>
+        </FlexBox>
+      )}
+    >
+      <ListCol size="lg" type="header">
+        <FlexBox column>
+          <Text
+            color="text-disabled"
+            textTransform="uppercase"
+            variant="p-small"
+          >
+            {ship}
+          </Text>
+          <Text variant="title-xs">{name}</Text>
+        </FlexBox>
+      </ListCol>
+      <ListCol size="md" fill>
+        <FlexBox column>
+          <Text
+            color="text-disabled"
+            textTransform="uppercase"
+            variant="p-small"
+          >
+            Rank
           </Text>
           <Text variant="title-xs">{role}</Text>
         </FlexBox>
@@ -395,10 +488,12 @@ export const ExpandedTemplate: React.FC<
   ListProps & { mode: 'light' | 'dark' }
 > = ({ mode }) => (
   <ColorMode bg="black" mode={mode}>
-    <List variant="card">
-      {rows.map(({ name, role, ship }, i, _, key = `example-row-${i}`) => (
-        <ExpandableRow name={name} role={role} ship={ship} key={key} />
-      ))}
-    </List>
+    <Box p={8}>
+      <List variant="card">
+        {rows.map(({ name, role, ship }, i, _, key = `example-row-${i}`) => (
+          <ExpandableRow name={name} role={role} ship={ship} key={key} />
+        ))}
+      </List>
+    </Box>
   </ColorMode>
 );

@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from 'framer-motion';
-import React, { ComponentProps, forwardRef } from 'react';
+import React, { ComponentProps, forwardRef, KeyboardEvent } from 'react';
 
 import { Box } from '..';
 import { RowEl } from './elements';
@@ -9,6 +9,7 @@ import { PublicListProps } from './types';
 export interface RowProps
   extends Partial<PublicListProps<ComponentProps<typeof RowEl>>> {
   header?: boolean;
+  onListRowAction?: () => void;
 }
 
 export interface ExpandableRowProps extends RowProps {
@@ -42,7 +43,7 @@ const ExpandInCollapseOut: React.FC = ({ children }) => {
 };
 
 export const ListRow = forwardRef<HTMLLIElement, ListRowProps>(
-  ({ children, expanded, renderExpanded, ...rest }, ref) => {
+  ({ children, expanded, renderExpanded, onListRowAction, ...rest }, ref) => {
     const { variant, scrollable, ...rowConfig } = useListContext();
     const wrapperProps = !renderExpanded ? rowConfig : {};
     let content = children;
@@ -55,11 +56,21 @@ export const ListRow = forwardRef<HTMLLIElement, ListRowProps>(
       );
     }
 
+    const handleKeyPress = (event: KeyboardEvent<HTMLLIElement>) => {
+      if (event.key === 'Enter' && onListRowAction) {
+        onListRowAction();
+      }
+    };
+
     return (
       <RowEl
         variant={variant}
         expanded={!!renderExpanded}
         scrollable={scrollable}
+        role={onListRowAction ? 'button' : rest?.role}
+        tabIndex={onListRowAction ? 0 : rest?.tabIndex}
+        onClick={onListRowAction ?? rest?.onClick}
+        onKeyDown={onListRowAction ? handleKeyPress : rest?.onKeyDown}
         {...wrapperProps}
       >
         {content}
