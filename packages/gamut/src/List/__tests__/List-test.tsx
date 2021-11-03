@@ -13,7 +13,7 @@ const renderWrapper = setupEnzyme(List, {
   ),
 });
 
-describe('Menu', () => {
+describe('List', () => {
   it('renders a default list by default', () => {
     const { wrapper } = renderWrapper();
 
@@ -74,8 +74,6 @@ describe('Menu', () => {
         </ListRow>
       ),
     });
-
-    expect(wrapper.find({ type: 'header', sticky: true }).length).toBe(1);
-    expect(wrapper.find({ type: 'content', sticky: true }).length).toBe(0);
+    expect(wrapper.find('#surprise').length).toBe(0);
   });
 });
