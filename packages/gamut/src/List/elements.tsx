@@ -27,6 +27,9 @@ const listVariants = variant({
     card: {
       gap: 16,
     },
+    block: {
+      gap: 16,
+    },
     plain: {},
   },
 });
@@ -77,9 +80,9 @@ const spacingVariants = variant({
 
 const rowVariants = variant({
   prop: 'variant',
+  base: { bg: 'background' },
   variants: {
     default: {
-      bg: 'background',
       border: 1,
       borderTop: 'none',
       '&:first-of-type': {
@@ -87,7 +90,6 @@ const rowVariants = variant({
       },
     },
     table: {
-      bg: 'background',
       '&:nth-of-type(2n)': {
         bg: 'background-selected',
       },
@@ -95,7 +97,10 @@ const rowVariants = variant({
     card: {
       border: 1,
       borderRadius: '2px',
-      bg: 'background',
+    },
+    block: {
+      border: 'none',
+      borderRadius: '2px',
     },
     plain: {},
   },
@@ -125,6 +130,7 @@ const headerVariants = variant({
   variants: {
     default: {},
     card: {},
+    block: {},
     table: {
       borderBottom: 2,
     },
