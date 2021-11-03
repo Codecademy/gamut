@@ -3,6 +3,61 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [28.0.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@28.0.0...@codecademy/gamut-labs@28.0.1) (2021-11-03)
+
+
+### Bug Fixes
+
+* **Drawer:** add missing max-width: 100% ([b12691b](https://github.com/Codecademy/gamut/commit/b12691b43c1646413e132c8f6b852bb6c8ad2a4f))
+
+
+
+## [28.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@27.1.1...@codecademy/gamut-labs@28.0.0) (2021-11-01)
+
+
+### ⚠ BREAKING CHANGES
+
+* bumped framer-motion to v4
+
+### Miscellaneous Chores
+
+* bumped framer-motion to v4 ([7590c77](https://github.com/Codecademy/gamut/commit/7590c77ecc01381fcd4a19ec8b2c73b792c9d960))
+
+
+
+### [27.1.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@27.1.0...@codecademy/gamut-labs@27.1.1) (2021-10-29)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+## [27.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@27.0.2...@codecademy/gamut-labs@27.1.0) (2021-10-28)
+
+
+### Features
+
+* **GlobalPage:** add banner to global page ([44724e8](https://github.com/Codecademy/gamut/commit/44724e80016be619ebc926b8f0ec507e76c7812e))
+
+
+
+### [27.0.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@27.0.1...@codecademy/gamut-labs@27.0.2) (2021-10-28)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [27.0.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@27.0.0...@codecademy/gamut-labs@27.0.1) (2021-10-27)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
 ## 27.0.0 (2021-10-26)
 
 

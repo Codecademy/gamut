@@ -3,6 +3,46 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [0.5.5](http://github.com///compare/@codecademy/monaco@0.5.4...@codecademy/monaco@0.5.5) (2021-11-01)
+
+**Note:** Version bump only for package @codecademy/monaco
+
+
+
+
+
+### [0.5.4](http://github.com///compare/@codecademy/monaco@0.5.3...@codecademy/monaco@0.5.4) (2021-10-29)
+
+**Note:** Version bump only for package @codecademy/monaco
+
+
+
+
+
+### [0.5.3](http://github.com///compare/@codecademy/monaco@0.5.2...@codecademy/monaco@0.5.3) (2021-10-28)
+
+**Note:** Version bump only for package @codecademy/monaco
+
+
+
+
+
+### [0.5.2](http://github.com///compare/@codecademy/monaco@0.5.1...@codecademy/monaco@0.5.2) (2021-10-28)
+
+**Note:** Version bump only for package @codecademy/monaco
+
+
+
+
+
+### [0.5.1](http://github.com///compare/@codecademy/monaco@0.5.0...@codecademy/monaco@0.5.1) (2021-10-27)
+
+**Note:** Version bump only for package @codecademy/monaco
+
+
+
+
+
 ## 0.5.0 (2021-10-26)
 
 

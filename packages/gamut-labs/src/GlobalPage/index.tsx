@@ -1,5 +1,7 @@
 import {
   AppWrapper,
+  Banner,
+  BannerProps,
   SkipToContent,
   SkipToContentTarget,
 } from '@codecademy/gamut';
@@ -21,6 +23,11 @@ export type GlobalPageBackgroundColor =
 
 export type GlobalPageProps = {
   backgroundColor?: GlobalPageBackgroundColor;
+
+  /**
+   * Props directly passed to the Banner.
+   */
+  banner?: BannerProps;
 
   /**
    * Element type to render around the children.
@@ -58,6 +65,7 @@ const GlobalPageWrapper = AppWrapper.withComponent(RestrictedBackground);
 
 export const GlobalPage: React.FC<GlobalPageProps> = ({
   backgroundColor = 'background',
+  banner,
   children,
   contentAs = 'div',
   footer,
@@ -67,6 +75,7 @@ export const GlobalPage: React.FC<GlobalPageProps> = ({
   return (
     <GlobalPageWrapper bg={backgroundColor} minHeight="100vh">
       <SkipToContent contentId={skipToContentId || defaultSkipToContentId} />
+      {banner && <Banner {...banner} />}
       <GlobalHeader {...header} />
       {!skipToContentId && <SkipToContentTarget id={defaultSkipToContentId} />}
       <AppWrapper as={contentAs}>{children}</AppWrapper>

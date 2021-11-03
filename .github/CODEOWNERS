@@ -1,5 +1,5 @@
 # Set web platform team as default reviewers for visibility
-* @codecademy/web-platform
+* @codecademy/gamut
 
 # -- Documentation changes
 packages/styleguide/* @songstephen

@@ -3,6 +3,54 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [40.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@39.1.1...@codecademy/gamut@40.0.0) (2021-11-01)
+
+
+### ⚠ BREAKING CHANGES
+
+* bumped framer-motion to v4
+
+### Miscellaneous Chores
+
+* bumped framer-motion to v4 ([7590c77](https://github.com/Codecademy/gamut/commit/7590c77ecc01381fcd4a19ec8b2c73b792c9d960))
+
+
+
+### [39.1.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@39.1.0...@codecademy/gamut@39.1.1) (2021-10-29)
+
+
+### Bug Fixes
+
+* **ProgressBar:** fix progress bar pattern ([60e02b2](https://github.com/Codecademy/gamut/commit/60e02b2b1c8bd757e6842826b8f02bdc51d648ce))
+
+
+
+## [39.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@39.0.2...@codecademy/gamut@39.1.0) (2021-10-28)
+
+
+### Features
+
+* **GlobalPage:** add banner to global page ([44724e8](https://github.com/Codecademy/gamut/commit/44724e80016be619ebc926b8f0ec507e76c7812e))
+
+
+
+### [39.0.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@39.0.1...@codecademy/gamut@39.0.2) (2021-10-28)
+
+
+### Bug Fixes
+
+* make video component more accessible ([ef3bd4b](https://github.com/Codecademy/gamut/commit/ef3bd4b565adb2b460fb5268cfa994db625d2d27))
+
+
+
+### [39.0.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@39.0.0...@codecademy/gamut@39.0.1) (2021-10-27)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
 ## [39.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@1.3.7...@codecademy/gamut@39.0.0) (2021-10-26)
 
 
