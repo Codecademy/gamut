@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [28.0.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@28.0.0...@codecademy/gamut-labs@28.0.1) (2021-11-03)
+
+
+### Bug Fixes
+
+* **Drawer:** add missing max-width: 100% ([b12691b](https://github.com/Codecademy/gamut/commit/b12691b43c1646413e132c8f6b852bb6c8ad2a4f))
+
+
+
 ## [28.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@27.1.1...@codecademy/gamut-labs@28.0.0) (2021-11-01)
 
 
