@@ -187,7 +187,7 @@ export const createDemoTable = (Component: any, overrides = {}) => () => {
 
   return (
     <Component
-      height={400}
+      height={500}
       id="example"
       idKey={idKey}
       rows={rows}
