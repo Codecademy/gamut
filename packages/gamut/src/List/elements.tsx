@@ -3,6 +3,7 @@ import {
   states,
   styledOptions,
   system,
+  theme,
   variant,
 } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
@@ -50,8 +51,12 @@ const rowStates = states({
   },
   clickable: {
     cursor: 'pointer',
+    '&:hover': {
+      bg: 'background-hover',
+    },
     '&:focus-visible': {
-      outline: 'none',
+      outline: `1px solid ${theme.colors.primary}`,
+      boxShadow: `0 0 0 1px ${theme.colors.primary} inset`,
       bg: 'background-selected',
     },
   },
