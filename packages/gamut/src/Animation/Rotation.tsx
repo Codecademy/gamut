@@ -43,6 +43,7 @@ export const Rotation: React.FC<RotationProps> = ({
       normal: { rotate: 0 },
     }}
     transition={{ duration: 0.2, ease: 'easeInOut' }}
+    {...rest}
   >
     {children}
   </motion.div>
