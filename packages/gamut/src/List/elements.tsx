@@ -3,7 +3,6 @@ import {
   states,
   styledOptions,
   system,
-  theme,
   variant,
 } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
