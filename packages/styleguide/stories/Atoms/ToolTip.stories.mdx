@@ -1,4 +1,4 @@
-import { Box, ToolTip } from '@codecademy/gamut/src';
+import { Box, FillButton, ToolTip } from '@codecademy/gamut/src';
 import { InfoCircleIcon } from '@codecademy/gamut-icons/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
@@ -146,6 +146,31 @@ Tooltips can be of a `dark` or `light` visual mode.
             <ToolTip {...args} mode="light" />
           </TooltipArea>
         </>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Tooltip with ariaHidden
+
+Including `ariaHidden` can be helpful in cases where the tooltip's target is already a focusable element. Here, we include all of the button and tooltip text in the `aria-label` of the button. This decreases the amount of focusable elements from 3 to 1.
+
+<Canvas>
+  <Story name="Tooltip with ariaHidden">
+    {(args) => {
+      return (
+        <TooltipArea tipAlignment={args.alignment}>
+          <ToolTip
+            ariaHidden
+            target={
+              <FillButton aria-label="run code (⌘ + return)">
+                Run Code
+              </FillButton>
+            }
+          >
+            ⌘ + return
+          </ToolTip>
+        </TooltipArea>
       );
     }}
   </Story>

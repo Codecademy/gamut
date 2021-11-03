@@ -222,9 +222,15 @@ export type ToolTipProps = ToolTipContainerProps & {
   id: string;
 
   target?: ReactNode;
+
+  /**
+   * Applying aria-hidden to the tooltip can be useful in certain contexts to reduce the number of focusable elements on a page.
+   */
+  ariaHidden?: boolean;
 };
 
 export const ToolTip: React.FC<ToolTipProps> = ({
+  ariaHidden = false,
   alignment = 'top-right',
   children,
   className,
@@ -253,6 +259,7 @@ export const ToolTip: React.FC<ToolTipProps> = ({
         {target}
       </TargetContainer>
       <ToolTipContainer
+        aria-hidden={ariaHidden}
         alignment={alignment}
         className={className}
         id={id}
