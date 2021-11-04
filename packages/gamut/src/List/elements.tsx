@@ -57,7 +57,7 @@ const spacingVariants = variant({
       gap: { _: 8, xs: 40 },
     },
     condensed: {
-      fontSize: 14,
+      fontSize: 16,
       gap: { _: 8, xs: 32 },
     },
   },
@@ -146,7 +146,6 @@ const columnType = variant({
   variants: {
     header: {
       gridColumn: 1,
-      fontWeight: 700,
     },
     content: {
       gridColumnEnd: 'span 2',
@@ -259,10 +258,10 @@ const columnSpacing = variant({
   base: {
     px: { _: 16, xs: 0 },
     '&:first-of-type': {
-      pl: 16,
+      pl: 8,
     },
     '&:last-of-type': {
-      pr: 16,
+      pr: 8,
     },
   },
   variants: {
