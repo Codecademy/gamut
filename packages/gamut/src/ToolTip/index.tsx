@@ -244,6 +244,7 @@ export const ToolTip: React.FC<ToolTipProps> = ({
   return (
     <TooltipWrapper className={containerClassName}>
       <TargetContainer
+        aria-hidden={ariaHidden}
         aria-labelledby={id}
         role={focusable ? 'button' : undefined}
         onKeyDown={(event) => {
