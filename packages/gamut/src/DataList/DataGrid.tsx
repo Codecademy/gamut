@@ -61,7 +61,7 @@ export function DataGrid<
     return expanded?.reduce((carry, next) => ({ ...carry, [next]: true }), {});
   }, [expanded]);
 
-  const loadingRows = useMemo(() => {
+  const loadingRows = useMemo<Row[]>(() => {
     const loadingRow = {} as Record<keyof Row, string>;
 
     columns.forEach((elem) => {
@@ -71,6 +71,8 @@ export function DataGrid<
 
     return Array(5).fill(loadingRow, 0);
   }, [columns]);
+
+  const renderedRows = loading && empty ? loadingRows : rows;
 
   return (
     <ListStateContext.Provider value={{ query }}>
@@ -94,35 +96,21 @@ export function DataGrid<
           }
           emptyMessage={<EmptyRows />}
         >
-          {loading && empty
-            ? loadingRows.map((row) => {
-                const rowId = row[idKey];
-                const key = listControls.prefixId(`${rowId}-row`);
-                return (
-                  <DataRow
-                    key={key}
-                    id={rowId}
-                    row={row}
-                    columns={columns}
-                    loading={loading}
-                  />
-                );
-              })
-            : rows.map((row) => {
-                const rowId = row[idKey];
-                const key = listControls.prefixId(`${rowId}-row`);
-                return (
-                  <DataRow
-                    key={key}
-                    id={rowId}
-                    row={row}
-                    columns={columns}
-                    selected={selectedRows?.[rowId]}
-                    expanded={expandedRows?.[rowId]}
-                    loading={loading}
-                  />
-                );
-              })}
+          {renderedRows.map((row) => {
+            const rowId = row[idKey];
+            const key = listControls.prefixId(`${rowId}-row`);
+            return (
+              <DataRow
+                key={key}
+                id={rowId}
+                row={row}
+                columns={columns}
+                selected={selectedRows?.[rowId]}
+                expanded={expandedRows?.[rowId]}
+                loading={loading}
+              />
+            );
+          })}
         </List>
       </ListControlContext.Provider>
     </ListStateContext.Provider>
