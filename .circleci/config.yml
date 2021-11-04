@@ -127,7 +127,9 @@ jobs:
       - *restore_node_modules
       - run:
           name: Verify ESLint
-          command: yarn lint
+          command: yarn lint --format junit --output-file /tmp/test-results/eslint.xml
+      - store_test_results:
+          path: /tmp/test-results
 
   verify_packages:
     <<: *default_env
