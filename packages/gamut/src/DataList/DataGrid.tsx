@@ -95,7 +95,7 @@ export function DataGrid<
           }
           emptyMessage={<EmptyRows />}
         >
-          {loading
+          {loading && empty
             ? loadingRows.map((row) => {
                 const rowId = row[idKey];
                 const key = listControls.prefixId(`${rowId}-row`);
