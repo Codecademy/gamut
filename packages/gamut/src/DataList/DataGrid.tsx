@@ -1,3 +1,4 @@
+import { elementDragControls } from 'framer-motion/types/gestures/drag/VisualElementDragControls';
 import React, { ComponentProps, useMemo } from 'react';
 
 import { List } from '../List';
@@ -66,10 +67,15 @@ export function DataGrid<
 
     columns.forEach((elem) => {
       const { key } = elem;
-      loadingRow[key] = 'loading';
+      loadingRow[key] = '';
     });
-    return Array(5).fill(loadingRow, 0) as Row[];
-  }, [columns]);
+
+    const placeholderRows = Array(5)
+      .fill(loadingRow, 0)
+      .map((elem, index) => ({ ...elem, [idKey]: `loading-${index}` }));
+
+    return placeholderRows;
+  }, [columns, idKey]);
 
   const renderedRows = loading && empty ? loadingRows : rows;
 
