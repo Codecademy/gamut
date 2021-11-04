@@ -1,6 +1,5 @@
 import React, { ComponentProps, useMemo } from 'react';
 
-import { Spinner } from '..';
 import { List } from '../List';
 import { DataListControls, IdentifiableKeys } from '.';
 import { EmptyRows } from './EmptyRows';
