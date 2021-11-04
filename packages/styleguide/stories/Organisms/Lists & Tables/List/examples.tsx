@@ -20,6 +20,7 @@ import {
   StreakIcon,
   TrophyIcon,
 } from '@codecademy/gamut-icons';
+import { Keyhole } from '@codecademy/gamut-illustrations';
 import { ColorMode } from '@codecademy/gamut-styles';
 import React, { useState } from 'react';
 
@@ -45,6 +46,26 @@ export const DemoTemplate: React.FC = (args) => {
         <ListRow>
           <ListCol size="md">{name}</ListCol>
           <ListCol fill>{ship}</ListCol>
+        </ListRow>
+      ))}
+    </List>
+  );
+};
+
+export const DemoCardTemplate: React.FC = (args) => {
+  return (
+    <List {...args}>
+      {rows.map(({ name, ship }) => (
+        <ListRow>
+          <ListCol size="lg" fill>
+            <Text variant="title-lg">{name}</Text>
+          </ListCol>
+          <ListCol>
+            <FlexBox flexDirection="column" height="5rem">
+              <Keyhole />
+              {ship}
+            </FlexBox>
+          </ListCol>
         </ListRow>
       ))}
     </List>

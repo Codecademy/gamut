@@ -7,6 +7,7 @@ import {
   ColumnModifierTemplate,
   ColumnTemplate,
   CondensedTemplate,
+  DemoCardTemplate,
   DemoTemplate,
   ExpandedTemplateButtonClick,
   ExpandedTemplateRowClick,
@@ -143,13 +144,13 @@ For displaying things with more abstract row contents (like buttons or custom re
 
 For content that doesn't need to be compared or visually adjacent to other items in a list (like current curriculum progress) use the `card` variant.
 
-<Story name="Card" args={{ variant: 'card', spacing: 'condensed' }}>
-  {DemoTemplate.bind({})}
+<Story name="Card" args={{ variant: 'card' }}>
+  {DemoCardTemplate.bind({})}
 </Story>
 
 ### Block
 
-For content that doesn't need to be compared or visually adjacent to other items in a list (like current curriculum progress) use the `block` variant.
+For making feature-forward designs (like our Dashboard), or to use as page sections + scaffolding (like our syllabus pages). `block` should always be used on a colored background.
 
 <Story name="block" args={{ variant: 'block', spacing: 'condensed' }}>
   {DemoTemplate.bind({})}
