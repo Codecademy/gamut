@@ -25,7 +25,7 @@ const listVariants = variant({
     },
     table: {},
     card: {
-      gap: 16,
+      gap: 24,
     },
     block: {
       gap: 16,
