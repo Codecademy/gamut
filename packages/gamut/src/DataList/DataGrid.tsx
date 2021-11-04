@@ -68,8 +68,7 @@ export function DataGrid<
       const { key } = elem;
       loadingRow[key] = 'loading';
     });
-
-    return Array(5).fill(loadingRow, 0);
+    return Array(5).fill(loadingRow, 0) as Row[];
   }, [columns]);
 
   const renderedRows = loading && empty ? loadingRows : rows;
@@ -81,7 +80,7 @@ export function DataGrid<
           {...rest}
           shadow={shadow}
           height={height}
-          scrollable={scrollable && !empty}
+          scrollable={scrollable && (!empty || (loading && empty))}
           variant={variant}
           spacing={spacing}
           minHeight={minHeight}
