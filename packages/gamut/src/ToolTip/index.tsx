@@ -238,7 +238,6 @@ export const ToolTip: React.FC<ToolTipProps> = ({
   return (
     <TooltipWrapper className={containerClassName}>
       <TargetContainer
-        aria-labelledby={id}
         role={focusable ? 'button' : undefined}
         onKeyDown={(event) => {
           if (event.key === 'Escape') {
