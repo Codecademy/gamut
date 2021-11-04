@@ -70,7 +70,7 @@ export function DataGrid<
       loadingRow[key] = 'loading';
     });
 
-    return Array(8).fill(loadingRow, 0);
+    return Array(5).fill(loadingRow, 0);
   }, [columns]);
 
   return (
