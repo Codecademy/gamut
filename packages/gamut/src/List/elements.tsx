@@ -250,6 +250,7 @@ const columnStates = states({
   },
   wrap: {
     whiteSpace: 'normal',
+    alignItems: 'flex-end',
   },
 });
 

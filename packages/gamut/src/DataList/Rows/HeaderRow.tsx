@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react';
 
-import { FlexBox } from '../..';
+import { FlexBox, Text } from '../..';
 import { ListCol, ListHeader } from '../../List';
 import {
   ExpandControl,
@@ -53,8 +53,8 @@ export const Header: HeaderComponent = ({
         const renderKey = prefixId(`header-col-${rowProperty}`);
         const columnText = header || key;
         return (
-          <ListCol key={renderKey} {...colProps} columnHeader>
-            <FlexBox gap={8} alignItems="center">
+          <ListCol key={renderKey} {...colProps} columnHeader wrap>
+            <FlexBox gap={8} alignItems="flex-end">
               {filters && (
                 <FilterControl
                   columnKey={rowProperty}

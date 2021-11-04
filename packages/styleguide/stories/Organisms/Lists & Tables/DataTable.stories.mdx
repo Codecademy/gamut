@@ -25,20 +25,24 @@ import { DataTableTemplate } from './examples.tsx';
     idKey: 'name',
     query: { sort: { name: 'desc', role: 'asc' } },
     rows: [
-      { name: 'Jean Luc Picard', role: 'Captain', ship: 'USS Enterprise' },
+      {
+        name: 'Jean Luc Picard',
+        'a very important role': 'Captain',
+        ship: 'USS Enterprise',
+      },
       {
         name: 'Wesley Crusher',
-        role: 'Deus Ex Machina',
+        'a very important role': 'Deus Ex Machina',
         ship: 'USS Enterprise',
       },
       {
         name: 'Geordie LaForge',
-        role: 'Chief Engineer / Rascal',
+        'a very important role': 'Chief Engineer / Rascal',
         ship: 'Borg Cube',
       },
       {
         name: 'Data',
-        role: 'Lt. Commander / Scamp',
+        'a very important role': 'Lt. Commander / Scamp',
         ship: 'He is a ship',
       },
     ],
@@ -50,7 +54,12 @@ import { DataTableTemplate } from './examples.tsx';
         type: 'header',
         sortable: true,
       },
-      { label: 'Rank', key: 'role', size: 'lg', sortable: true },
+      {
+        label: 'Rank',
+        key: 'a very important role',
+        size: 'lg',
+        sortable: true,
+      },
       { label: 'Ship', key: 'ship', size: 'lg', sortable: true, fill: true },
     ],
     spacing: 'condensed',
