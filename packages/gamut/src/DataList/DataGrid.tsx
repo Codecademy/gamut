@@ -61,6 +61,23 @@ export function DataGrid<
     return expanded?.reduce((carry, next) => ({ ...carry, [next]: true }), {});
   }, [expanded]);
 
+  const loadingRows = useMemo<Row[]>(() => {
+    const loadingRow = {} as Record<keyof Row, string>;
+
+    columns.forEach((elem) => {
+      const { key } = elem;
+      loadingRow[key] = '';
+    });
+
+    const placeholderRows = Array(5)
+      .fill(loadingRow, 0)
+      .map((elem, index) => ({ ...elem, [idKey]: `loading-${index}` }));
+
+    return placeholderRows;
+  }, [columns, idKey]);
+
+  const renderedRows = loading && empty ? loadingRows : rows;
+
   return (
     <ListStateContext.Provider value={{ query }}>
       <ListControlContext.Provider value={listControls}>
@@ -68,7 +85,7 @@ export function DataGrid<
           {...rest}
           shadow={shadow}
           height={height}
-          scrollable={scrollable && !empty}
+          scrollable={scrollable && (!empty || (loading && empty))}
           variant={variant}
           spacing={spacing}
           minHeight={minHeight}
@@ -83,7 +100,7 @@ export function DataGrid<
           }
           emptyMessage={<EmptyRows />}
         >
-          {rows.map((row) => {
+          {renderedRows.map((row) => {
             const rowId = row[idKey];
             const key = listControls.prefixId(`${rowId}-row`);
             return (

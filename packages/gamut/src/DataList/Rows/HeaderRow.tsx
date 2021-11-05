@@ -53,15 +53,8 @@ export const Header: HeaderComponent = ({
         const renderKey = prefixId(`header-col-${rowProperty}`);
         const columnText = header || key;
         return (
-          <ListCol key={renderKey} {...colProps} columnHeader>
-            <FlexBox gap={8} alignItems="center" width="100%">
-              {sortable ? (
-                <SortControl columnKey={rowProperty} onSort={onSort}>
-                  {columnText}
-                </SortControl>
-              ) : (
-                { columnText }
-              )}
+          <ListCol key={renderKey} {...colProps} columnHeader wrap>
+            <FlexBox gap={8} alignItems="flex-end" width="100%">
               {filters && (
                 <FilterControl
                   columnKey={rowProperty}
@@ -69,6 +62,13 @@ export const Header: HeaderComponent = ({
                   options={filters}
                   justify={colProps.justify}
                 />
+              )}
+              {sortable ? (
+                <SortControl columnKey={rowProperty} onSort={onSort}>
+                  {columnText}
+                </SortControl>
+              ) : (
+                { columnText }
               )}
             </FlexBox>
           </ListCol>
