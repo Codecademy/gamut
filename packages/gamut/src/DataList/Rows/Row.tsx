@@ -1,5 +1,6 @@
 import React, { ReactElement, useCallback } from 'react';
 
+import { Text } from '../..';
 import { ListCol, ListRow } from '../../List';
 import { Shimmer } from '../../Loading/Shimmer';
 import { IdentifiableKeys } from '..';
@@ -82,7 +83,9 @@ export const Row: DataRow = ({
         }
 
         return (
-          <ListCol {...colProps}>{render ? render(row) : row[key]}</ListCol>
+          <ListCol {...colProps}>
+            <Text truncate="ellipsis">{render ? render(row) : row[key]}</Text>
+          </ListCol>
         );
       })}
       {expandable && (
