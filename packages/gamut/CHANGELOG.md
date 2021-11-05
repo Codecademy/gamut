@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [40.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@40.0.0...@codecademy/gamut@40.1.0) (2021-11-05)
+
+
+### Features
+
+* **DataGrid:** default empty loading state ([7c6a1a8](https://github.com/Codecademy/gamut/commit/7c6a1a8b7fc0d4a40bd821b57d1bce1d4136e4a8))
+
+
+
 ## [40.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@39.1.1...@codecademy/gamut@40.0.0) (2021-11-01)
 
 
