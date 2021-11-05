@@ -68,7 +68,7 @@ export const Header: HeaderComponent = ({
                   {columnText}
                 </SortControl>
               ) : (
-                { columnText }
+                columnText
               )}
             </FlexBox>
           </ListCol>
