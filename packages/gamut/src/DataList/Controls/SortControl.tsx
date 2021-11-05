@@ -16,7 +16,7 @@ const SortAnchor = styled(Anchor)(
     '&:hover': {
       color: 'text',
     },
-    '&:first-child > div': {
+    '> div': {
       color: 'navy-300',
     },
     '&:hover div': {
