@@ -48,7 +48,7 @@ export const List = forwardRef<HTMLUListElement, ListProps>(
             maxWidth={1}
             minHeight={minHeight}
             maxHeight={height}
-            overflow="overlay"
+            overflow="auto"
           >
             {header}
             {isEmpty ? emptyMessage : listContent}
