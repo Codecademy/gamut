@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react';
 
-import { FlexBox, Text } from '../..';
+import { FlexBox } from '../..';
 import { ListCol, ListHeader } from '../../List';
 import {
   ExpandControl,
