@@ -34,6 +34,7 @@ const getNextSortDirection = (dir: SortDirection) => {
 };
 
 export const SortControl: React.FC<SortControlProps> = ({
+  children,
   columnKey,
   onSort,
 }) => {
@@ -51,6 +52,7 @@ export const SortControl: React.FC<SortControlProps> = ({
       display="inline-flex"
       aria-label={`sort by ${columnKey}`}
     >
+      {children}
       <FlexBox inline column width={16} center>
         <SortIcon
           asc
