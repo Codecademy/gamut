@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [40.1.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@40.1.0...@codecademy/gamut@40.1.1) (2021-11-05)
+
+
+### Bug Fixes
+
+* **DataGrid/Table:** DataGrid/Table fixes ([1a46168](https://github.com/Codecademy/gamut/commit/1a4616822939ddb20ce860300a13794914989da4))
+
+
+
 ## [40.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@40.0.0...@codecademy/gamut@40.1.0) (2021-11-05)
 
 
