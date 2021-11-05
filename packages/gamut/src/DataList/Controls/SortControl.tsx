@@ -10,6 +10,9 @@ import { useListState } from '../hooks/useListState';
 
 const SortAnchor = styled(Anchor)(
   css({
+    textAlign: 'left',
+    width: '100%',
+    alignItems: 'flex-end',
     '&:hover': {
       color: 'text',
     },
@@ -68,16 +71,16 @@ export const SortControl: React.FC<SortControlProps> = ({
       color="text"
     >
       {children}
-      <FlexBox inline column width={16} center>
+      <FlexBox column width={16} ml={8} mb={4}>
         <SortIcon
           asc
           active={direction === 'asc'}
-          size={10}
+          size={9}
           aria-label="ascending"
           color="currentColor"
         />
         <SortIcon
-          size={10}
+          size={9}
           active={direction === 'desc'}
           aria-label="descending"
           color="currentColor"
