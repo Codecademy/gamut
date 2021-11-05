@@ -54,7 +54,7 @@ export const Header: HeaderComponent = ({
         const columnText = header || key;
         return (
           <ListCol key={renderKey} {...colProps} columnHeader>
-            <FlexBox gap={8} alignItems="center">
+            <FlexBox gap={8} alignItems="center" width="100%">
               {sortable ? (
                 <SortControl columnKey={rowProperty} onSort={onSort}>
                   {columnText}

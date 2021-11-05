@@ -1,5 +1,5 @@
 import { ArrowChevronDownFilledIcon } from '@codecademy/gamut-icons';
-import { states } from '@codecademy/gamut-styles';
+import { css, states } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React from 'react';
 
@@ -8,13 +8,27 @@ import { FlexBox } from '../../Box';
 import { OnSort, SortDirection, SortOrder } from '..';
 import { useListState } from '../hooks/useListState';
 
+const SortAnchor = styled(Anchor)(
+  css({
+    '&:hover': {
+      color: 'text',
+    },
+    '&:first-child > div': {
+      color: 'navy-300',
+    },
+    '&:hover div': {
+      color: 'text-disabled',
+    },
+  })
+);
+
 const SortIcon = styled(ArrowChevronDownFilledIcon)(
   states({
     asc: {
       transform: 'rotate(180deg)',
     },
     active: {
-      color: 'primary',
+      color: 'text',
     },
   })
 );
@@ -41,7 +55,7 @@ export const SortControl: React.FC<SortControlProps> = ({
   const direction = useListState().query?.sort?.[columnKey] ?? 'none';
 
   return (
-    <Anchor
+    <SortAnchor
       variant="interface"
       onClick={() =>
         onSort?.({
@@ -51,23 +65,24 @@ export const SortControl: React.FC<SortControlProps> = ({
       }
       display="inline-flex"
       aria-label={`sort by ${columnKey}`}
+      color="text"
     >
       {children}
       <FlexBox inline column width={16} center>
         <SortIcon
           asc
-          color="text-disabled"
           active={direction === 'asc'}
           size={10}
           aria-label="ascending"
+          color="currentColor"
         />
         <SortIcon
           size={10}
-          color="text-disabled"
           active={direction === 'desc'}
           aria-label="descending"
+          color="currentColor"
         />
       </FlexBox>
-    </Anchor>
+    </SortAnchor>
   );
 };
