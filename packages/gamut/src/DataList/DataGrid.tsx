@@ -1,4 +1,3 @@
-import { elementDragControls } from 'framer-motion/types/gestures/drag/VisualElementDragControls';
 import React, { ComponentProps, useMemo } from 'react';
 
 import { List } from '../List';
