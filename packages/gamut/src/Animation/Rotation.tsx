@@ -1,12 +1,8 @@
 import { timing } from '@codecademy/gamut-styles';
 import { motion } from 'framer-motion';
-import React from 'react';
+import React, { ComponentProps } from 'react';
 
-export interface RotationProps
-  extends Omit<
-    typeof motion.div,
-    'animate' | 'style' | 'variants' | 'transition'
-  > {
+export interface RotationProps extends ComponentProps<typeof motion.div> {
   /**
    * Whether the container is rotated. Defaults to 180 (half a rotation)
    */
