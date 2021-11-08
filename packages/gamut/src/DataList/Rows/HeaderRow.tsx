@@ -53,7 +53,7 @@ export const Header: HeaderComponent = ({
         const renderKey = prefixId(`header-col-${rowProperty}`);
         const columnText = header || key;
         return (
-          <ListCol key={renderKey} {...colProps} columnHeader wrap>
+          <ListCol key={renderKey} {...colProps} columnHeader>
             <FlexBox gap={8} alignItems="flex-end" width="100%">
               {filters && (
                 <FilterControl

@@ -8,7 +8,7 @@ export interface ListColProps
   extends PublicListProps<ComponentProps<typeof ColEl>> {}
 
 export const ListCol = forwardRef<HTMLDivElement, ListColProps>(
-  ({ type, wrap, ...rest }, ref) => {
+  ({ type, ...rest }, ref) => {
     const { scrollable, ...activeVariants } = useListContext();
     const sticky = type === 'header' && scrollable;
 
@@ -20,7 +20,6 @@ export const ListCol = forwardRef<HTMLDivElement, ListColProps>(
         type={type}
         sticky={sticky}
         ref={ref}
-        wrap={wrap}
       />
     );
   }
