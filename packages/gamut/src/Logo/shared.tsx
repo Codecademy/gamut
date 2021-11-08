@@ -18,4 +18,4 @@ const logoStyles = variance.compose(
 
 export const LogoSvg = styled('svg', styledOptions<'svg'>())<
   Omit<LogoProps, 'variant'>
->(system.css({ textColor: 'text' }), logoStyles);
+>(system.css({ textColor: 'currentColor' }), logoStyles);
