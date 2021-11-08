@@ -31,7 +31,7 @@ describe('ButtonBase', () => {
   });
 
   describe('when the button is disabled', () => {
-    it('does not render the href attribute if disabled and renders a button', () => {
+    it('does not render the href attribute and renders a button', () => {
       const buttonText = 'Submit';
       const view = render(
         <ButtonBase disabled href="https://www.codecademy.com">
@@ -40,7 +40,7 @@ describe('ButtonBase', () => {
       );
 
       const el = view.getByText(buttonText);
-      expect(el.tagName).toEqual('button');
+      expect(el.tagName).toEqual('BUTTON');
       expect(el.getAttribute('href')).toBeNull();
     });
 
@@ -49,7 +49,6 @@ describe('ButtonBase', () => {
       const view = render(<ButtonBase disabled>{buttonText}</ButtonBase>);
 
       const el = view.getByText(buttonText);
-      expect(el.getAttribute('aria-disabled')).toBeNull();
       expect(el.getAttribute('disabled')).toBe('');
     });
   });
