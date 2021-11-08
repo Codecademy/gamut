@@ -73,7 +73,6 @@ export const ButtonBase = forwardRef<
           type={type}
           role={role}
           disabled={!!disabled}
-          aria-disabled={!!disabled}
         >
           {children}
         </ResetElement>
