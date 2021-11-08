@@ -41,7 +41,7 @@
     "babel-preset-codecademy": "^2.3.0",
     "focus-visible": "^5.2.0",
     "invariant": "2.2.4",
-    "jsdom": "16.4.0",
+    "jsdom": "18.0.1",
     "lodash": "4.17.20",
     "polished": "^4.1.2",
     "react": "16.13.1",
