@@ -64,7 +64,7 @@ export const ButtonBase = forwardRef<
     { href, disabled, children, role = 'button', type = 'button', ...rest },
     ref
   ) => {
-    if (href == null) {
+    if (href == null || disabled) {
       return (
         <ResetElement
           {...rest}
@@ -85,7 +85,6 @@ export const ButtonBase = forwardRef<
         ref={ref as MutableRefObject<HTMLAnchorElement>}
         as="a"
         href={href}
-        aria-disabled={!!disabled}
       >
         {children}
       </ResetElement>
