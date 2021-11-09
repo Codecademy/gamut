@@ -1,5 +1,9 @@
 import { useContext, useMemo } from 'react';
-import { RegisterOptions, useFormContext } from 'react-hook-form';
+import {
+  RegisterOptions,
+  useFieldArray,
+  useFormContext,
+} from 'react-hook-form';
 
 import {
   ConnectedForm,
@@ -105,6 +109,7 @@ export const useFormState = () => {
     validationRules,
     watch,
     reset,
+    useFieldArray,
   };
 };
 
