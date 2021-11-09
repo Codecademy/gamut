@@ -265,10 +265,11 @@ const columnStates = states({
   columnHeader: {
     fontWeight: 400,
     overflow: 'visible',
+    whiteSpace: 'normal',
+    alignItems: 'flex-end',
   },
   wrap: {
     whiteSpace: 'normal',
-    alignItems: 'flex-end',
   },
 });
 
