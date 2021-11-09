@@ -111,36 +111,6 @@ jobs:
       - *save_yarn_cache
       - *save_node_modules
 
-  verify_formatting:
-    <<: *default_env
-    steps:
-      - checkout
-      - *restore_node_modules
-      - run:
-          name: Verify Prettier
-          command: yarn format:verify
-
-  verify_linting:
-    <<: *default_env
-    steps:
-      - checkout
-      - *restore_node_modules
-      - run:
-          name: Verify ESLint
-          command: yarn lint --format junit --output-file /tmp/test-results/eslint.xml
-      - store_test_results:
-          path: /tmp/test-results
-
-  verify_packages:
-    <<: *default_env
-    steps:
-      - checkout
-      - *restore_node_modules
-      - *build_changed_packages
-      - run:
-          name: Verify Packages
-          command: yarn verify-changed
-
   tests:
     <<: *default_env
     parallelism: 7
@@ -288,15 +258,6 @@ workflows:
           requires:
             - queue/block_workflow
       - tests:
-          requires:
-            - checkout_code
-      - verify_linting:
-          requires:
-            - checkout_code
-      - verify_formatting:
-          requires:
-            - checkout_code
-      - verify_packages:
           requires:
             - checkout_code
       - publish:
