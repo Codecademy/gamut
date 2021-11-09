@@ -1,5 +1,4 @@
 import {
-  Box,
   ColumnConfig,
   DataList,
   DataTable,

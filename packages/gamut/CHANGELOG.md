@@ -3,6 +3,33 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [40.1.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@40.1.1...@codecademy/gamut@40.1.2) (2021-11-08)
+
+
+### Bug Fixes
+
+* **button base:** dont set href if disabled is true ([593a7e8](https://github.com/Codecademy/gamut/commit/593a7e8a84c40e779ee304ea98759d8daa65ad40))
+
+
+
+### [40.1.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@40.1.0...@codecademy/gamut@40.1.1) (2021-11-05)
+
+
+### Bug Fixes
+
+* **DataGrid/Table:** DataGrid/Table fixes ([1a46168](https://github.com/Codecademy/gamut/commit/1a4616822939ddb20ce860300a13794914989da4))
+
+
+
+## [40.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@40.0.0...@codecademy/gamut@40.1.0) (2021-11-05)
+
+
+### Features
+
+* **DataGrid:** default empty loading state ([7c6a1a8](https://github.com/Codecademy/gamut/commit/7c6a1a8b7fc0d4a40bd821b57d1bce1d4136e4a8))
+
+
+
 ## [40.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@39.1.1...@codecademy/gamut@40.0.0) (2021-11-01)
 
 
