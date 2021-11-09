@@ -77,10 +77,9 @@ const spacingVariants = variant({
 
 const rowVariants = variant({
   prop: 'variant',
-  defaultVariant: 'default',
+  base: { bg: 'background' },
   variants: {
     default: {
-      bg: 'background',
       border: 1,
       borderTop: 'none',
       '&:first-of-type': {
@@ -88,13 +87,11 @@ const rowVariants = variant({
       },
     },
     table: {
-      bg: 'background',
       '&:nth-of-type(2n)': {
         bg: 'background-selected',
       },
     },
     card: {
-      bg: 'background',
       border: 1,
       borderRadius: '2px',
     },
