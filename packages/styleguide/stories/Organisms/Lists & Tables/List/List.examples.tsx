@@ -11,9 +11,9 @@ import {
   Text,
   TextButton,
 } from '@codecademy/gamut';
-import { MiniChevronDownIcon } from '@codecademy/gamut-icons';
 import {
   ArrowChevronDownIcon,
+  MiniChevronDownIcon,
   MiniDeleteIcon,
   MiniKebabMenuIcon,
   StarIcon,
