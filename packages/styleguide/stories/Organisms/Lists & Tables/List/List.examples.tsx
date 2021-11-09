@@ -177,7 +177,6 @@ export const NormalTemplate: React.FC<typeof List> = (args, { mode }) => (
 const sizes = ['content', 'sm', 'md', 'lg', 'xl'];
 
 export const ColumnTemplate: React.FC<typeof List> = (args) => {
-  console.log(Box);
   return (
     <List {...args}>
       {sizes.map((size: 'content' | 'sm' | 'md' | 'lg' | 'xl') => (
