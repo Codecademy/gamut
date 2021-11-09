@@ -16,15 +16,23 @@ import { RotationExample } from './Animation.examples.tsx';
   }}
   args={{
     rotated: true,
+    degrees: 45,
     children: <MiniChevronDownIcon />,
   }}
 />
 
 <Canvas>
-  <Story name="Rotation">{(args) => <Rotation {...args} />}</Story>
+  <Story name="Rotation">
+    <Rotation rotated degrees={45}>
+      <MiniChevronDownIcon />
+    </Rotation>
+  </Story>
 </Canvas>
 
-<PropsTable story="Rotation" />
+<PropsTable
+  story="Rotation"
+  include={['rotated', 'degrees', 'height', 'width']}
+/>
 
 ## Rotation Example
 
