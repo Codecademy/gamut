@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [50.1.9](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@50.1.8...@codecademy/styleguide@50.1.9) (2021-11-09)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
 ### [50.1.8](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@50.1.7...@codecademy/styleguide@50.1.8) (2021-11-08)
 
 **Note:** Version bump only for package @codecademy/styleguide
