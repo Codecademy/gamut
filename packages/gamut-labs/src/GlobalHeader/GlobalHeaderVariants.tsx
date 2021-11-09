@@ -120,61 +120,73 @@ export const anonDefaultMobileHeaderItems = (
 };
 
 export const anonLandingHeaderItems = (
-  hidePricing?: boolean
+  hidePricing?: boolean,
+  renderGiftCardLink?: boolean
 ): FormattedAppHeaderItems => {
   return anonHeaderItems({
     renderLogin: true,
     renderSignUp: false,
+    renderGiftCardLink,
     hidePricing,
   });
 };
 
 export const anonLandingMobileHeaderItems = (
-  hidePricing?: boolean
+  hidePricing?: boolean,
+  renderGiftCardLink?: boolean
 ): FormattedMobileAppHeaderItems => {
   return anonMobileHeaderItems({
     renderLogin: true,
     renderSignUp: false,
+    renderGiftCardLink,
     hidePricing,
   });
 };
 
 export const anonLoginHeaderItems = (
-  hidePricing?: boolean
+  hidePricing?: boolean,
+  renderGiftCardLink?: boolean
 ): FormattedAppHeaderItems => {
   return anonHeaderItems({
     renderLogin: false,
     renderSignUp: true,
+    renderGiftCardLink,
     hidePricing,
   });
 };
 
 export const anonLoginMobileHeaderItems = (
-  hidePricing?: boolean
+  hidePricing?: boolean,
+  renderGiftCardLink?: boolean
 ): FormattedMobileAppHeaderItems => {
   return anonMobileHeaderItems({
     renderLogin: false,
     renderSignUp: true,
+    renderGiftCardLink,
     hidePricing,
   });
 };
 
 export const anonSignupHeaderItems = (
-  hidePricing?: boolean
+  hidePricing?: boolean,
+  renderGiftCardLink?: boolean
 ): FormattedAppHeaderItems => {
   return anonHeaderItems({
     renderLogin: true,
     renderSignUp: false,
+    renderGiftCardLink,
     hidePricing,
   });
 };
 
 export const anonSignupMobileHeaderItems = (
-  hidePricing?: boolean
+  hidePricing?: boolean,
+  renderGiftCardLink?: boolean
 ): FormattedMobileAppHeaderItems => {
   return anonMobileHeaderItems({
     renderLogin: true,
     renderSignUp: false,
+    renderGiftCardLink,
     hidePricing,
   });
 };

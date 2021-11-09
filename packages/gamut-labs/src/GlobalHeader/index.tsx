@@ -42,11 +42,20 @@ const getAppHeaderItems = (
     case 'anon':
       switch (props.variant) {
         case 'landing':
-          return anonLandingHeaderItems(props.hidePricing);
+          return anonLandingHeaderItems(
+            props.hidePricing,
+            props.renderGiftCardLink
+          );
         case 'login':
-          return anonLoginHeaderItems(props.hidePricing);
+          return anonLoginHeaderItems(
+            props.hidePricing,
+            props.renderGiftCardLink
+          );
         case 'signup':
-          return anonSignupHeaderItems(props.hidePricing);
+          return anonSignupHeaderItems(
+            props.hidePricing,
+            props.renderGiftCardLink
+          );
         default:
           return anonDefaultHeaderItems(
             props.hidePricing,
@@ -73,11 +82,20 @@ const getMobileAppHeaderItems = (
     case 'anon':
       switch (props.variant) {
         case 'landing':
-          return anonLandingMobileHeaderItems(props.hidePricing);
+          return anonLandingMobileHeaderItems(
+            props.hidePricing,
+            props.renderGiftCardLink
+          );
         case 'login':
-          return anonLoginMobileHeaderItems(props.hidePricing);
+          return anonLoginMobileHeaderItems(
+            props.hidePricing,
+            props.renderGiftCardLink
+          );
         case 'signup':
-          return anonSignupMobileHeaderItems(props.hidePricing);
+          return anonSignupMobileHeaderItems(
+            props.hidePricing,
+            props.renderGiftCardLink
+          );
         default:
           return anonDefaultMobileHeaderItems(
             props.hidePricing,
