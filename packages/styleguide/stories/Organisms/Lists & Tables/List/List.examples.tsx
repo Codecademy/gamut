@@ -11,9 +11,9 @@ import {
   Text,
   TextButton,
 } from '@codecademy/gamut';
-import { MiniChevronDownIcon } from '@codecademy/gamut-icons';
 import {
   ArrowChevronDownIcon,
+  MiniChevronDownIcon,
   MiniDeleteIcon,
   MiniKebabMenuIcon,
   StarIcon,
@@ -418,7 +418,7 @@ export const ExpandableRowClick: React.FC<ExpandableRowProps> = ({
       renderExpanded={() => <ExpandedRow name={name} role={role} ship={ship} />}
     >
       <ExpandedColumns name={name} role={role} ship={ship} />
-      <ListCol size="lg" type="control">
+      <ListCol size="xl" type="control">
         <FlexBox mt={{ _: 8, xs: 0 }} pl={{ _: 0, xs: 16 }} width={1} center>
           <Rotation rotated={isExpanded}>
             <ArrowChevronDownIcon color="text-disabled" />
