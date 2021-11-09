@@ -6,7 +6,7 @@ _The component library & design system for Codecademy._ ✨
 
 [![CircleCI](https://circleci.com/gh/Codecademy/gamut.svg?style=svg&circle-token=3d9adfca5a8b44e7297ceb18e032e89a11d223a2)](https://circleci.com/gh/Codecademy/gamut)
 
-This repository is a monorepo that we manage using [Lerna](https://lernajs.io/). That means that we publish several packages to npm from the same codebase, including:
+This repository is a monorepo that we manage using [Lerna](https://lerna.js.org/). That means that we publish several packages to npm from the same codebase, including:
 
 ## Gamut Kit
 
