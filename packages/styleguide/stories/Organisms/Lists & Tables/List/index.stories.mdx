@@ -289,11 +289,11 @@ export const ExpandableRow: React.FC<{
       <ListCol type="header">{header}</ListCol>
       <ListCol type="content">{content}</ListCol>
       <ListCol type="control">
-        <ExpandControl
-          id={name}
-          expanded={isExpanded}
-          onExpand={() => setExpanded(!isExpanded)}
-        />
+        <StrokeButton onClick={() => setExpanded(!isExpanded)}>
+          <Rotation rotated={isExpanded}>
+            <MiniChevronDownIcon />
+          </Rotation>
+        </StrokeButton>
       </ListCol>
     </ListRow>
   );

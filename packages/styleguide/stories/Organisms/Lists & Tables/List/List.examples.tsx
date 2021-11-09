@@ -1,6 +1,5 @@
 import {
   Box,
-  ExpandControl,
   FillButton,
   FlexBox,
   IconButton,
@@ -12,6 +11,7 @@ import {
   Text,
   TextButton,
 } from '@codecademy/gamut';
+import { MiniChevronDownIcon } from '@codecademy/gamut-icons';
 import {
   ArrowChevronDownIcon,
   MiniDeleteIcon,
@@ -446,11 +446,11 @@ export const ExpandableButtonClickRow: React.FC<{
       <ExpandedColumns name={name} role={role} ship={ship} />
       <ListCol size="lg" type="control">
         <TextButton>Hail</TextButton>
-        <ExpandControl
-          id={name}
-          expanded={isExpanded}
-          onExpand={() => setExpanded(!isExpanded)}
-        />
+        <IconButton onClick={() => setExpanded(!isExpanded)}>
+          <Rotation rotated={isExpanded}>
+            <MiniChevronDownIcon />
+          </Rotation>
+        </IconButton>
       </ListCol>
     </ListRow>
   );
