@@ -77,6 +77,7 @@ const spacingVariants = variant({
 
 const rowVariants = variant({
   prop: 'variant',
+  defaultVariant: 'default',
   variants: {
     default: {
       bg: 'background',
@@ -93,9 +94,9 @@ const rowVariants = variant({
       },
     },
     card: {
+      bg: 'background',
       border: 1,
       borderRadius: '2px',
-      bg: 'background',
     },
     plain: {},
   },
