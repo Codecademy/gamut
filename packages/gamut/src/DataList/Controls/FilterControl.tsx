@@ -128,7 +128,7 @@ export const FilterControl: React.FC<FilterProps> = ({
         aria-expanded={menuOpen}
         aria-label={`filter by ${columnKey}`}
       >
-        <FlexBox center dimensions={16} mb={4}>
+        <FlexBox center dimensions={16} mb={4} mr={4}>
           <FilterIcon
             size={14}
             color={filters.length > 0 ? 'primary' : 'text'}

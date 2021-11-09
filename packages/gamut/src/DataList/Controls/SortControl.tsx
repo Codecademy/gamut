@@ -1,5 +1,5 @@
 import { ArrowChevronDownFilledIcon } from '@codecademy/gamut-icons';
-import { states } from '@codecademy/gamut-styles';
+import { css, states } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React from 'react';
 
@@ -8,13 +8,30 @@ import { FlexBox } from '../../Box';
 import { OnSort, SortDirection, SortOrder } from '..';
 import { useListState } from '../hooks/useListState';
 
+const SortAnchor = styled(Anchor)(
+  css({
+    textAlign: 'left',
+    width: '100%',
+    alignItems: 'flex-end',
+    '&:hover': {
+      color: 'text',
+    },
+    '> div': {
+      color: 'navy-300',
+    },
+    '&:hover div': {
+      color: 'text-disabled',
+    },
+  })
+);
+
 const SortIcon = styled(ArrowChevronDownFilledIcon)(
   states({
     asc: {
       transform: 'rotate(180deg)',
     },
     active: {
-      color: 'primary',
+      color: 'text',
     },
   })
 );
@@ -34,13 +51,14 @@ const getNextSortDirection = (dir: SortDirection) => {
 };
 
 export const SortControl: React.FC<SortControlProps> = ({
+  children,
   columnKey,
   onSort,
 }) => {
   const direction = useListState().query?.sort?.[columnKey] ?? 'none';
 
   return (
-    <Anchor
+    <SortAnchor
       variant="interface"
       onClick={() =>
         onSort?.({
@@ -50,22 +68,24 @@ export const SortControl: React.FC<SortControlProps> = ({
       }
       display="inline-flex"
       aria-label={`sort by ${columnKey}`}
+      color="text"
     >
-      <FlexBox inline column width={16} center>
+      {children}
+      <FlexBox column width={16} ml={8} mb={4}>
         <SortIcon
           asc
-          color="text-disabled"
           active={direction === 'asc'}
-          size={10}
+          size={9}
           aria-label="ascending"
+          color="currentColor"
         />
         <SortIcon
-          size={10}
-          color="text-disabled"
+          size={9}
           active={direction === 'desc'}
           aria-label="descending"
+          color="currentColor"
         />
       </FlexBox>
-    </Anchor>
+    </SortAnchor>
   );
 };
