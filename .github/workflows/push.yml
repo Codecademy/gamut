@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: Codecademy/run-on-yarn@v1
-      - run: yarn build
+      - run: yarn build-all
       - run: yarn ${{ matrix.command }}
 
     strategy:
