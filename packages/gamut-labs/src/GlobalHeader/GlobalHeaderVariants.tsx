@@ -11,6 +11,7 @@ import {
   favorites,
   forBusiness,
   freeProfile,
+  getPricingDropdown,
   login,
   logo,
   myHome,
@@ -23,19 +24,23 @@ import {
   unpausePro,
   upgradeToPro,
 } from './GlobalHeaderItems';
-import { User } from './types';
+import { AnonHeaderItemsParams, User } from './types';
 
-const anonHeaderItems = (
-  renderLogin: boolean,
-  renderSignUp: boolean,
-  hidePricing?: boolean
-): FormattedAppHeaderItems => {
+const anonHeaderItems = ({
+  renderLogin,
+  renderSignUp,
+  renderGiftCardLink,
+  hidePricing,
+}: AnonHeaderItemsParams): FormattedAppHeaderItems => {
+  const pricingItems = hidePricing
+    ? []
+    : [getPricingDropdown(renderGiftCardLink)];
   const leftItems: AppHeaderItem[] = [
     logo,
     courseCatalog,
     resourcesDropdown,
     communityDropdown,
-    ...(hidePricing ? [] : [pricingDropdown]),
+    ...pricingItems,
     forBusiness,
   ];
 
@@ -53,11 +58,12 @@ const anonHeaderItems = (
   };
 };
 
-const anonMobileHeaderItems = (
-  renderLogin: boolean,
-  renderSignUp: boolean,
-  hidePricing?: boolean
-): FormattedMobileAppHeaderItems => {
+const anonMobileHeaderItems = ({
+  renderLogin,
+  renderSignUp,
+  renderGiftCardLink,
+  hidePricing,
+}: AnonHeaderItemsParams): FormattedMobileAppHeaderItems => {
   const leftItems: AppHeaderItem[] = [logo];
 
   const rightItems: AppHeaderItem[] = [];
@@ -68,11 +74,15 @@ const anonMobileHeaderItems = (
     rightItems.push(signUp);
   }
 
+  const pricingItems = hidePricing
+    ? []
+    : [getPricingDropdown(renderGiftCardLink)];
+
   const mainMenuItems: AppHeaderItem[] = [
     courseCatalog,
     resourcesDropdown,
     communityDropdown,
-    ...(hidePricing ? [] : [pricingDropdown]),
+    ...pricingItems,
     forBusiness,
     signUp,
     login,
@@ -86,51 +96,87 @@ const anonMobileHeaderItems = (
 };
 
 export const anonDefaultHeaderItems = (
-  hidePricing?: boolean
+  hidePricing?: boolean,
+  renderGiftCardLink?: boolean
 ): FormattedAppHeaderItems => {
-  return anonHeaderItems(true, true, hidePricing);
+  return anonHeaderItems({
+    renderLogin: true,
+    renderSignUp: true,
+    renderGiftCardLink,
+    hidePricing,
+  });
 };
 
 export const anonDefaultMobileHeaderItems = (
-  hidePricing?: boolean
+  hidePricing?: boolean,
+  renderGiftCardLink?: boolean
 ): FormattedMobileAppHeaderItems => {
-  return anonMobileHeaderItems(true, true, hidePricing);
+  return anonMobileHeaderItems({
+    renderLogin: true,
+    renderSignUp: true,
+    renderGiftCardLink,
+    hidePricing,
+  });
 };
 
 export const anonLandingHeaderItems = (
   hidePricing?: boolean
 ): FormattedAppHeaderItems => {
-  return anonHeaderItems(true, false, hidePricing);
+  return anonHeaderItems({
+    renderLogin: true,
+    renderSignUp: false,
+    hidePricing,
+  });
 };
 
 export const anonLandingMobileHeaderItems = (
   hidePricing?: boolean
 ): FormattedMobileAppHeaderItems => {
-  return anonMobileHeaderItems(true, false, hidePricing);
+  return anonMobileHeaderItems({
+    renderLogin: true,
+    renderSignUp: false,
+    hidePricing,
+  });
 };
 
 export const anonLoginHeaderItems = (
   hidePricing?: boolean
 ): FormattedAppHeaderItems => {
-  return anonHeaderItems(false, true, hidePricing);
+  return anonHeaderItems({
+    renderLogin: false,
+    renderSignUp: true,
+    hidePricing,
+  });
 };
 
 export const anonLoginMobileHeaderItems = (
   hidePricing?: boolean
 ): FormattedMobileAppHeaderItems => {
-  return anonMobileHeaderItems(false, true, hidePricing);
+  return anonMobileHeaderItems({
+    renderLogin: false,
+    renderSignUp: true,
+    hidePricing,
+  });
 };
 
 export const anonSignupHeaderItems = (
   hidePricing?: boolean
 ): FormattedAppHeaderItems => {
-  return anonHeaderItems(true, false, hidePricing);
+  return anonHeaderItems({
+    renderLogin: true,
+    renderSignUp: false,
+    hidePricing,
+  });
 };
 
 export const anonSignupMobileHeaderItems = (
   hidePricing?: boolean
 ): FormattedMobileAppHeaderItems => {
-  return anonMobileHeaderItems(true, false, hidePricing);
+  return anonMobileHeaderItems({
+    renderLogin: true,
+    renderSignUp: false,
+    hidePricing,
+  });
 };
 
 export const freeHeaderItems = (

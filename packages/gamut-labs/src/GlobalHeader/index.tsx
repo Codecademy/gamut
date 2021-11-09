@@ -48,7 +48,10 @@ const getAppHeaderItems = (
         case 'signup':
           return anonSignupHeaderItems(props.hidePricing);
         default:
-          return anonDefaultHeaderItems(props.hidePricing);
+          return anonDefaultHeaderItems(
+            props.hidePricing,
+            props.renderGiftCardLink
+          );
       }
     case 'free':
       return freeHeaderItems(
@@ -76,7 +79,10 @@ const getMobileAppHeaderItems = (
         case 'signup':
           return anonSignupMobileHeaderItems(props.hidePricing);
         default:
-          return anonDefaultMobileHeaderItems(props.hidePricing);
+          return anonDefaultMobileHeaderItems(
+            props.hidePricing,
+            props.renderGiftCardLink
+          );
       }
     case 'free':
       return freeMobileHeaderItems(props.user, props.hidePricing);

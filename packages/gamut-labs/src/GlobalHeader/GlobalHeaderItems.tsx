@@ -144,6 +144,25 @@ export const pricingDropdown: AppHeaderSimpleDropdownItem = {
   type: 'dropdown',
 };
 
+export const giftCardPopoverItem: AppHeaderLinkItem = {
+  id: 'gift-card',
+  href: 'https://codecademy-test.recurly.com/purchase/gift_card/testyearlygc', // update this with real link
+  trackingTarget: 'topnav_pricing_gift_card',
+  text: 'Gift of Code',
+  type: 'link',
+};
+
+export const getPricingDropdown = (
+  renderGiftCardLink?: boolean
+): AppHeaderSimpleDropdownItem => {
+  const giftCardItem = renderGiftCardLink ? [giftCardPopoverItem] : [];
+  const newDropdown = {
+    ...pricingDropdown,
+    popover: pricingDropdown.popover.concat(giftCardItem),
+  };
+  return newDropdown;
+};
+
 export const forBusiness: AppHeaderLinkItem = {
   icon: BriefcaseIcon,
   id: 'for-business',

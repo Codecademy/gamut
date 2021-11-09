@@ -49,6 +49,7 @@ export type AnonHeader = BaseHeader & {
   redirectParam?: string;
   type: 'anon';
   variant?: AnonHeaderVariant;
+  renderGiftCardLink?: boolean;
 };
 
 export type FreeHeader = LoggedInHeader & {
@@ -61,4 +62,11 @@ export type ProHeader = LoggedInHeader & {
 
 export type LoadingHeader = BaseHeader & {
   type: 'loading';
+};
+
+export type AnonHeaderItemsParams = {
+  renderLogin: boolean;
+  renderSignUp: boolean;
+  renderGiftCardLink?: boolean;
+  hidePricing?: boolean;
 };
