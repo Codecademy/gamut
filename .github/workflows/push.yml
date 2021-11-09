@@ -1,22 +1,26 @@
 name: Push
 
 jobs:
+  format:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: Codecademy/run-on-yarn@v1
+      - run: yarn format:verify
+
   lint:
     runs-on: ubuntu-latest
     steps:
       - uses: Codecademy/run-on-yarn@v1
+      - run: yarn build
       - run: yarn ${{ matrix.command }}
 
     strategy:
       fail-fast: false
       matrix:
-        command:
-          [
-            'format:verify',
-            'lint',
-            'verify-changed',
-          ]
+        command: ['lint', 'verify-changed']
 
 on:
   push:
+    branches:
+      - main
   pull_request:
