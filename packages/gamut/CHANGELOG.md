@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [40.2.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@40.1.2...@codecademy/gamut@40.2.0) (2021-11-08)
+
+
+### Features
+
+* **DataTable:** Sort header click target + hover styles ([1504608](https://github.com/Codecademy/gamut/commit/1504608bfbcda68580e99362b87229d0af98e006))
+
+
+
 ### [40.1.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@40.1.1...@codecademy/gamut@40.1.2) (2021-11-08)
 
 

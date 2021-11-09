@@ -1,4 +1,4 @@
-import { timing } from '@codecademy/gamut-styles';
+import { timingValues } from '@codecademy/gamut-styles';
 import { motion } from 'framer-motion';
 import React, { ComponentProps } from 'react';
 
@@ -43,7 +43,7 @@ export const Rotation: React.FC<RotationProps> = ({
       rotated: { rotate: degrees },
       normal: { rotate: 0 },
     }}
-    transition={{ duration: timing.medium, ease: 'easeInOut' }}
+    transition={{ duration: timingValues.medium / 1000, ease: 'easeInOut' }}
     {...rest}
   >
     {children}
