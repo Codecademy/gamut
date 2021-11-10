@@ -13,6 +13,7 @@ import {
 } from '@codecademy/gamut';
 import {
   ArrowChevronDownIcon,
+  HouseEntranceIcon,
   MiniChevronDownIcon,
   MiniDeleteIcon,
   MiniKebabMenuIcon,
@@ -20,6 +21,7 @@ import {
   StreakIcon,
   TrophyIcon,
 } from '@codecademy/gamut-icons';
+import { Keyhole } from '@codecademy/gamut-illustrations';
 import { ColorMode } from '@codecademy/gamut-styles';
 import React, { useState } from 'react';
 
@@ -45,6 +47,42 @@ export const DemoTemplate: React.FC = (args) => {
         <ListRow>
           <ListCol size="md">{name}</ListCol>
           <ListCol fill>{ship}</ListCol>
+        </ListRow>
+      ))}
+    </List>
+  );
+};
+
+export const DemoCardTemplate: React.FC = (args) => {
+  return (
+    <List {...args}>
+      {rows.map(({ name, ship, role }) => (
+        <ListRow>
+          <ListCol size="xl">
+            <Text variant="title-lg" truncate="ellipsis">
+              {name}
+            </Text>
+          </ListCol>
+          <ListCol>
+            <FlexBox flexDirection="column" p={4}>
+              <Keyhole height="6rem" />
+              {role}
+            </FlexBox>
+          </ListCol>
+          <ListCol size="xl" fill>
+            <FlexBox
+              flexDirection="column"
+              height="8rem"
+              bg="palePink"
+              borderRadius={100}
+              justifyContent="center"
+              alignItems="center"
+              p={8}
+            >
+              <HouseEntranceIcon size={40} />
+              {ship}
+            </FlexBox>
+          </ListCol>
         </ListRow>
       ))}
     </List>

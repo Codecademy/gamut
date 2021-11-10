@@ -7,6 +7,7 @@ import {
   ColumnModifierTemplate,
   ColumnTemplate,
   CondensedTemplate,
+  DemoCardTemplate,
   DemoTemplate,
   ExpandedTemplateButtonClick,
   ExpandedTemplateRowClick,
@@ -113,6 +114,7 @@ Lists have several style variants for different use cases:
 - `table`: Alternating backgrounds for visually separated rows of text.
 - `default`: Bordered rows for mixed content with no vertical gutter.
 - `card`: Bordered rows with a vertical gutter.
+- `block`: Unbordered rows for mixed content with a vertical gutter..
 
 ```tsx
 <List variant="default" />
@@ -143,6 +145,14 @@ For displaying things with more abstract row contents (like buttons or custom re
 For content that doesn't need to be compared or visually adjacent to other items in a list (like current curriculum progress) use the `card` variant.
 
 <Story name="Card" args={{ variant: 'card' }}>
+  {DemoCardTemplate.bind({})}
+</Story>
+
+### Block
+
+For making feature-forward designs (like our Dashboard), or to use as page sections + scaffolding (like our syllabus pages). The `block` variant should always be used on a colored background.
+
+<Story name="block" args={{ variant: 'block', spacing: 'condensed' }}>
   {DemoTemplate.bind({})}
 </Story>
 
@@ -351,7 +361,7 @@ Here's some examples of Lists to use as guides.
 </Canvas>
 
 <Canvas>
-  <Story name="Expanded - Row" args={{ mode: 'dark' }}>
+  <Story name="Expanded - Row" args={{ variant: 'block', mode: 'dark' }}>
     {ExpandedTemplateRowClick.bind({})}
   </Story>
 </Canvas>

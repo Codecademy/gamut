@@ -25,6 +25,9 @@ const listVariants = variant({
     },
     table: {},
     card: {
+      gap: 24,
+    },
+    block: {
       gap: 16,
     },
     plain: {},
@@ -95,6 +98,10 @@ const rowVariants = variant({
       border: 1,
       borderRadius: '2px',
     },
+    block: {
+      border: 'none',
+      borderRadius: '2px',
+    },
     plain: {},
   },
 });
@@ -123,6 +130,7 @@ const headerVariants = variant({
   variants: {
     default: {},
     card: {},
+    block: {},
     table: {
       borderBottom: 2,
     },
