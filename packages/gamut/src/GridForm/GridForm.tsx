@@ -8,7 +8,6 @@ import {
 
 import { ButtonProps } from '../Button/shared';
 import { ConnectedForm, FormContextProps } from '../ConnectedForm';
-import { FormContextProps, FormWrapper } from '../Form';
 import { FormValues } from '../Form/types';
 import { LayoutGrid, LayoutGridProps } from '../Layout';
 import { GridFormButtons, GridFormSubmitProps } from './GridFormButtons';
