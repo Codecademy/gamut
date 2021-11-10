@@ -4,6 +4,7 @@ import { IllustrationProps } from './types';
 
 export const Onboarding: React.FC<IllustrationProps> = (props) => (
   <svg
+    aria-hidden={props.ariaHidden}
     xmlns-x="ns_extend;"
     xmlns-i="ns_ai;"
     xmlns-graph="ns_graphs;"

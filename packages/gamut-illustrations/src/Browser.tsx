@@ -3,11 +3,13 @@ import React from 'react';
 import { IllustrationProps } from './types';
 
 export const Browser: React.FC<IllustrationProps> = ({
+  ariaHidden,
   className,
   height,
   width,
 }) => (
   <svg
+    aria-hidden={ariaHidden}
     className={className}
     width={width}
     height={height}

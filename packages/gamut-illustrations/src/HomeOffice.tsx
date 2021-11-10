@@ -3,11 +3,13 @@ import React from 'react';
 import { IllustrationProps } from './types';
 
 export const HomeOffice: React.FC<IllustrationProps> = ({
+  ariaHidden,
   className,
   height,
   width,
 }) => (
   <svg
+    aria-hidden={ariaHidden}
     width={width}
     height={height}
     className={className}

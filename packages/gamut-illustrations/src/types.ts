@@ -1,4 +1,6 @@
 export type IllustrationProps = {
+  ariaHidden?: boolean;
+
   className?: string;
 
   /**
