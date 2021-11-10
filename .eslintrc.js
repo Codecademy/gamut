@@ -25,6 +25,9 @@ module.exports = {
           },
         ],
         'local-rules/gamut-import-paths': 'error',
+
+        // TODO: Removing in client-modules...
+        'react/prop-types': 'off',
       },
     },
     {

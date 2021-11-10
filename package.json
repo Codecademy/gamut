@@ -10,6 +10,7 @@
     "yarn": "^1.21.1"
   },
   "scripts": {
+    "compile": "tsc",
     "test": "jest",
     "lint": "eslint --ignore-path .eslintignore \"./**/*.{mdx,js,ts,tsx,json}\" --max-warnings 0",
     "lint:fix": "yarn lint --fix",
@@ -61,7 +62,7 @@
     "@babel/cli": "7.13.10",
     "@babel/core": "7.13.10",
     "@babel/preset-typescript": "^7.13.0",
-    "@codecademy/eslint-config": "^5.4.0",
+    "@codecademy/eslint-config": "6.0.0-alpha.1be38b.0",
     "@codecademy/prettier-config": "^0.1.10",
     "@codecademy/tsconfig": "^0.2.0",
     "@emotion/babel-plugin": "^11.3.0",
@@ -81,8 +82,8 @@
     "@types/react": "^16.9",
     "@types/react-dom": "^16.9",
     "@types/stylis": "^4.0.0",
-    "@typescript-eslint/eslint-plugin": "^4.30.0",
-    "@typescript-eslint/parser": "^4.30.0",
+    "@typescript-eslint/eslint-plugin": "^5.3.0",
+    "@typescript-eslint/parser": "^5.3.0",
     "babel-jest": "26.6.3",
     "babel-plugin-macros": "3.0.1",
     "babel-preset-codecademy": "2.3.0",
@@ -91,17 +92,8 @@
     "enzyme": "3.11.0",
     "enzyme-adapter-react-16": "1.15.5",
     "enzyme-to-json": "3.3.5",
-    "eslint": "^7.19.0",
-    "eslint-plugin-import": "^2.24.2",
-    "eslint-plugin-jest": "^24.4.0",
-    "eslint-plugin-jest-react": "^0.0.2",
-    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint": "^8.2.0",
     "eslint-plugin-local-rules": "^1.1.0",
-    "eslint-plugin-no-only-tests": "^2.6.0",
-    "eslint-plugin-react": "^7.25.1",
-    "eslint-plugin-react-hooks": "^4.2.0",
-    "eslint-plugin-simple-import-sort": "^7.0.0",
-    "eslint-plugin-unused-imports": "^1.1.4",
     "husky": "4.2.5",
     "identity-obj-proxy": "3.0.0",
     "jest": "^26.6.3",
@@ -116,6 +108,9 @@
     "react-helmet": "6.1.0",
     "react-test-renderer": "16.13.1",
     "typescript": "4.4.2"
+  },
+  "resolutions": {
+    "@typescript-eslint/experimental-utils": "5.3.1"
   },
   "husky": {
     "skipCI": false,
