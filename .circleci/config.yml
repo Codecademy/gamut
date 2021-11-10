@@ -100,11 +100,6 @@ references:
           circleci-agent step halt
         fi
 
-  add_github_ssh_key: &add_github_ssh_key
-    add_ssh_keys:
-      fingerprints:
-        - 'c9:c4:75:c4:3e:f9:1f:09:1e:bd:95:da:2d:79:2f:f7'
-
 jobs:
   checkout_code:
     <<: *default_env
@@ -115,36 +110,6 @@ jobs:
       - run: yarn --production=false --frozen-lockfile
       - *save_yarn_cache
       - *save_node_modules
-
-  verify_formatting:
-    <<: *default_env
-    steps:
-      - checkout
-      - *restore_node_modules
-      - run:
-          name: Verify Prettier
-          command: yarn format:verify
-
-  verify_linting:
-    <<: *default_env
-    steps:
-      - checkout
-      - *restore_node_modules
-      - run:
-          name: Verify ESLint
-          command: yarn lint --format junit --output-file /tmp/test-results/eslint.xml
-      - store_test_results:
-          path: /tmp/test-results
-
-  verify_packages:
-    <<: *default_env
-    steps:
-      - checkout
-      - *restore_node_modules
-      - *build_changed_packages
-      - run:
-          name: Verify Packages
-          command: yarn verify-changed
 
   tests:
     <<: *default_env
@@ -173,7 +138,6 @@ jobs:
     resource_class: large
     steps:
       - *skip_on_automated_commit
-      - *add_github_ssh_key
       - *set_git_user
       - checkout
       - *restore_node_modules
@@ -188,7 +152,6 @@ jobs:
     resource_class: large
     steps:
       - *skip_on_automated_commit
-      - *add_github_ssh_key
       - *set_git_user
       - checkout
       - *restore_node_modules
@@ -208,7 +171,6 @@ jobs:
     steps:
       - *skip_if_not_pr
       - *skip_on_automated_commit
-      - *add_github_ssh_key
       - *set_git_user
       - checkout
       - *restore_node_modules
@@ -255,7 +217,6 @@ jobs:
     steps:
       - *skip_if_not_pr
       - *skip_on_automated_commit
-      - *add_github_ssh_key
       - *set_git_user
       - checkout
       - *restore_node_modules
@@ -297,15 +258,6 @@ workflows:
           requires:
             - queue/block_workflow
       - tests:
-          requires:
-            - checkout_code
-      - verify_linting:
-          requires:
-            - checkout_code
-      - verify_formatting:
-          requires:
-            - checkout_code
-      - verify_packages:
           requires:
             - checkout_code
       - publish:

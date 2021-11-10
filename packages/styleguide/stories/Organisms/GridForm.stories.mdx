@@ -15,7 +15,7 @@ import { useState } from '@storybook/addons';
 
 import { LinkTo } from '~styleguide/blocks';
 
-import { ColorModeExample, FormLoadingExample } from './GridForm.examples';
+import { ColorModeExample, FormLoadingExample } from './examples';
 
 <Meta
   title={title}
@@ -138,10 +138,7 @@ GridForm provides the following benefits:
             size: 4,
             type: 'radio-group',
             validation: {
-              pattern: {
-                value: /^(?:(?!nicki).)*$/,
-                message: 'not zero.',
-              },
+              required: 'You gotta pick one!',
             },
           },
           {

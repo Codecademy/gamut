@@ -1,3 +1,4 @@
+import { CheckerDense } from '@codecademy/gamut-patterns';
 import { theme } from '@codecademy/gamut-styles';
 import { ThemeProvider } from '@emotion/react';
 import { fireEvent, render, screen } from '@testing-library/react';
@@ -303,7 +304,7 @@ describe('Popover', () => {
   it('shows a pattern if the prop is provided', () => {
     renderPopover({
       isOpen: true,
-      pattern: 'checkerDense',
+      pattern: CheckerDense,
     });
 
     expect(screen.queryByTestId('popover-pattern')).toBeInTheDocument();

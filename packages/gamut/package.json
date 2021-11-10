@@ -1,7 +1,7 @@
 {
   "name": "@codecademy/gamut",
   "description": "Styleguide & Component library for Codecademy",
-  "version": "37.11.1",
+  "version": "40.2.0",
   "author": "Codecademy Engineering <dev@codecademy.com>",
   "sideEffects": [
     "**/*.css",
@@ -13,7 +13,7 @@
   "main": "./dist/index.js",
   "repository": {
     "type": "git",
-    "url": "git@github.com:Codecademy/client-modules.git"
+    "url": "git@github.com:Codecademy/gamut.git"
   },
   "peerDependencies": {
     "@emotion/react": "^11.4.0",
@@ -22,15 +22,15 @@
     "react-dom": ">=16.8.1"
   },
   "dependencies": {
-    "@codecademy/gamut-icons": "^5.12.1",
-    "@codecademy/gamut-illustrations": "^0.19.0",
-    "@codecademy/gamut-patterns": "^0.6.2",
-    "@codecademy/gamut-styles": "^11.11.0",
-    "@codecademy/variance": "^0.18.1",
+    "@codecademy/gamut-icons": "^6.0.0",
+    "@codecademy/gamut-illustrations": "^0.20.0",
+    "@codecademy/gamut-patterns": "^0.7.1",
+    "@codecademy/gamut-styles": "^12.0.0",
+    "@codecademy/variance": "^0.19.0",
     "@types/marked": "^1.1.0",
     "@types/react-select": "^4.0.13",
     "classnames": "^2.2.5",
-    "framer-motion": "^2.7.9",
+    "framer-motion": "^4.1.17",
     "html-to-react": "^1.4.2",
     "invariant": "^2.2.4",
     "lodash": "^4.17.5",
@@ -56,7 +56,7 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@codecademy/gamut-tests": "^2.6.2",
+    "@codecademy/gamut-tests": "^3.0.0",
     "@emotion/jest": "^11.3.0",
     "@testing-library/dom": "^7.31.2",
     "@testing-library/react": "^11.0.4",

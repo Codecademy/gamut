@@ -1,7 +1,7 @@
 {
   "author": "Codecademy Engineering <dev@codecademy.com>",
   "dependencies": {
-    "@codecademy/gamut-styles": "^11.11.0",
+    "@codecademy/gamut-styles": "^12.0.0",
     "component-test-setup": "*",
     "lodash": "^4.17.5"
   },
@@ -14,7 +14,7 @@
     "rtl"
   ],
   "name": "@codecademy/gamut-tests",
-  "version": "2.6.2",
+  "version": "3.0.0",
   "license": "MIT",
   "main": "./dist/index.js",
   "module": "dist/index.js",
@@ -26,7 +26,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Codecademy/client-modules.git"
+    "url": "git+https://github.com/Codecademy/gamut.git"
   },
   "scripts": {
     "verify": "tsc --noEmit",

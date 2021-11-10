@@ -1,12 +1,12 @@
-# CLIENT MODULES
+# Gamut
 
-_Shared node modules for codecademy.com & co_
+_The component library & design system for Codecademy._ ✨
 
 ---
 
-[![CircleCI](https://circleci.com/gh/Codecademy/client-modules.svg?style=svg&circle-token=3d9adfca5a8b44e7297ceb18e032e89a11d223a2)](https://circleci.com/gh/Codecademy/client-modules)
+[![CircleCI](https://circleci.com/gh/Codecademy/gamut.svg?style=svg&circle-token=3d9adfca5a8b44e7297ceb18e032e89a11d223a2)](https://circleci.com/gh/Codecademy/gamut)
 
-This repository is a monorepo that we manage using [Lerna](https://lernajs.io/). That means that we publish several packages to npm from the same codebase, including:
+This repository is a monorepo that we manage using [Lerna](https://lerna.js.org/). That means that we publish several packages to npm from the same codebase, including:
 
 ## Gamut Kit
 
@@ -40,11 +40,11 @@ We provide a single package to manage the versions of a few core dependencies: `
 
 - [![npm version](https://badge.fury.io/js/%40codecademy%2Fgamut.svg)](https://badge.fury.io/js/%40codecademy%2Fgamut)
 
-[`gamut-styles`: Utility styles for gamut components and codecademy apps](/packages/gamut-styles/README.md)
+[`gamut-styles`: Utility styles for Gamut components and codecademy apps](/packages/gamut-styles/README.md)
 
 - [![npm version](https://badge.fury.io/js/%40codecademy%2Fgamut-styles.svg)](https://badge.fury.io/js/%40codecademy%2Fgamut-styles)
 
-[`gamut-icons`: SVG Icons for gamut components and codecademy apps](/packages/gamut-icons/README.md)
+[`gamut-icons`: SVG Icons for Gamut components and codecademy apps](/packages/gamut-icons/README.md)
 
 - [![npm version](https://badge.fury.io/js/%40codecademy%2Fgamut-icons.svg)](https://badge.fury.io/js/%40codecademy%2Fgamut-icons)
 
@@ -73,7 +73,7 @@ We provide a single package to manage the versions of a few core dependencies: `
 
 1.  Make your changes in a feature branch, and get another engineer to review your code
 1.  After your code has been reviewed and tested, you can merge your branch into main.
-1.  Make sure to update your PR title and add a short description of your changes for the changelog (see the [PR Title Guide](https://github.com/Codecademy/client-modules#pr-title-guide))
+1.  Make sure to update your PR title and add a short description of your changes for the changelog (see the [PR Title Guide](https://github.com/Codecademy/gamut#pr-title-guide))
 1.  To merge your changes, add the `Ship It` label to your Pull Request.
 1.  Once your branch is merged into main, it will be published automatically by CircleCI.
 1.  You can find the new version number on npmjs.com/package/<package-name>, or find it in that package's `package.json` on the `main` branch
@@ -95,13 +95,13 @@ Every PR that changes files in a package publishes alpha releases that you can u
 **Initial Setup:**
 
 1. Ensure you have npm-link-better installed: `npm install -g npm-link-better`
-1. Ensure you've built the entire `client-modules` repo since you last synced: `yarn build-all`
+1. Ensure you've built the entire `gamut` repo since you last synced: `yarn build-all`
 
 **Instructions:**
 
-For each of your local `client-modules` packages (e.g. `gamut`), you'll need to do 2 things to get it working in your project:
+For each of your local `gamut` packages (e.g. `gamut`), you'll need to do 2 things to get it working in your project:
 
-1. Make sure your package changes have been built into the `client-modules/packages/[package]/dist` folder.
+1. Make sure your package changes have been built into the `gamut/packages/[package]/dist` folder.
 
    - `yarn build`<br/>or<br/>
      `yarn build:watch` (not all packages support this yet)
@@ -109,7 +109,7 @@ For each of your local `client-modules` packages (e.g. `gamut`), you'll need to 
 1. Copy that built `/dist` folder to your project's `node_modules/@codecademy/[package]` folder.
    ```bash
    cd myProjectRepo
-   npm-link-better --copy --watch path/to/client-modules/packages/[package]
+   npm-link-better --copy --watch path/to/gamut/packages/[package]
    ```
    > NOTE: The `--watch` flag will automatically copy your package into `node_modules` everytime it is built.
 
@@ -122,20 +122,20 @@ Let's also assume these two repos are sibling directories inside of a folder cal
 
 ```
 repos
-  |- client-modules
+  |- gamut
   |- my-app
 ```
 
 We would run the following commands in 3 separate shells
 
 ```bash
-# Shell 1: Auto-build gamut changes
-cd repos/client-modules/packages/gamut
+# Shell 1: Auto-build Gamut changes
+cd repos/gamut/packages/gamut
 yarn build:watch
 
-# Shell 2: Auto-copy built gamut changes to my-app.
+# Shell 2: Auto-copy built Gamut changes to my-app.
 cd repos/my-app
-npm-link-better --copy --watch ../client-modules/packages/gamut
+npm-link-better --copy --watch ../gamut/packages/gamut
 
 # Shell 3: Auto-update app when anything changes.
 cd repos/my-app
@@ -150,10 +150,10 @@ This would allow us to make a change in our `gamut` package, and see that change
   <summary>Troubleshooting</summary>
 
 - If you see compilation issues in your project's dev server after running `npm-link-better`, you may have to restart your app's dev server.
-- If you are seeing compilation issues in a `client-modules` package, you may need to rebuild the whole repository via
+- If you are seeing compilation issues in a `gamut` package, you may need to rebuild the whole repository via
 
   ```bash
-  cd client-modules
+  cd gamut
   yarn build-all
   ```
 
@@ -163,9 +163,9 @@ This would allow us to make a change in our `gamut` package, and see that change
   <summary>Instructions for using `yarn link` instead (not recommended)</summary>
 
 For quicker development cycles, it's possible to run a pre-published version of Gamut in another project. We do that using
-symlinks (the following instructions assume you have set up and built client-modules):
+symlinks (the following instructions assume you have set up and built Gamut):
 
-1. `cd /path/to/client-modules/packages/gamut`
+1. `cd /path/to/gamut/packages/gamut`
 1. `yarn link`
 1. `cd path/to/other/repo`
 1. `yarn link @codecademy/gamut`
@@ -176,7 +176,7 @@ If your other project uses React, you must link that copy of React in Gamut:
 1. `cd path/to/other/repo`
 1. `cd node_modules/react`
 1. `yarn link`
-1. `cd /path/to/client-modules/packages/gamut`
+1. `cd /path/to/gamut/packages/gamut`
 1. `yarn link react`
 1. `yarn build-all`
 
@@ -195,7 +195,7 @@ for more information for why you have to do this.
    - Example: a simple `tsconfig.json` with a `index.ts` exporting a single object
 1. Run `yarn lerna bootstrap` from the repository root
 1. Send a `feat` PR adding that package
-1. One merged, message out in our #frontend Slack channel to other client-modules developers to re-run `yarn lerna bootstrap` after they merge from `main`
+1. One merged, message out in our #frontend Slack channel to other Gamut developers to re-run `yarn lerna bootstrap` after they merge from `main`
 
 Notes:
 
@@ -280,13 +280,13 @@ This will indicate to package consumers that they need to refactor their usage o
 
 #### Breaking Changes Release Process
 
-Because client-modules is a separate repository from its consumers, it can be tricky to coordinate technically breaking changes.
+Because Gamut is a separate repository from its consumers, it can be tricky to coordinate technically breaking changes.
 If your changes will require changes in any downstream repositories:
 
-1. Create a PR in client-modules to create alpha package versions
+1. Create a PR in Gamut to create alpha package versions
 2. Create PRs in the repositories using those alpha package versions
-3. Update each downstream PR description to link to the client-modules PR, and vice versa
-4. Once all PRs have been approved, merge your client-modules PR first
+3. Update each downstream PR description to link to the Gamut PR, and vice versa
+4. Once all PRs have been approved, merge your Gamut PR first
 5. Update your repository PRs to use the new (non-alpha) package versions once published
 6. Merge your repository PRs
 
