@@ -7,12 +7,15 @@ import {
   ColumnModifierTemplate,
   ColumnTemplate,
   CondensedTemplate,
+  DemoCardTemplate,
   DemoTemplate,
+  ExpandedTemplateButtonClick,
+  ExpandedTemplateRowClick,
   JustifyTemplate,
   NormalTemplate,
   ResponsiveAnatomyTemplate,
   ResponsiveTemplate,
-} from './examples';
+} from './List.examples';
 
 <Meta
   title={title}
@@ -111,6 +114,7 @@ Lists have several style variants for different use cases:
 - `table`: Alternating backgrounds for visually separated rows of text.
 - `default`: Bordered rows for mixed content with no vertical gutter.
 - `card`: Bordered rows with a vertical gutter.
+- `block`: Unbordered rows for mixed content with a vertical gutter..
 
 ```tsx
 <List variant="default" />
@@ -140,7 +144,15 @@ For displaying things with more abstract row contents (like buttons or custom re
 
 For content that doesn't need to be compared or visually adjacent to other items in a list (like current curriculum progress) use the `card` variant.
 
-<Story name="Card" args={{ variant: 'card', spacing: 'condensed' }}>
+<Story name="Card" args={{ variant: 'card' }}>
+  {DemoCardTemplate.bind({})}
+</Story>
+
+### Block
+
+For making feature-forward designs (like our Dashboard), or to use as page sections + scaffolding (like our syllabus pages). The `block` variant should always be used on a colored background.
+
+<Story name="block" args={{ variant: 'block', spacing: 'condensed' }}>
   {DemoTemplate.bind({})}
 </Story>
 
@@ -173,7 +185,7 @@ You can specify a column to expand or collapse beyond its normal flex basis. The
 
 <br />
 
-### Justifcation
+### Justification
 
 You can align the content to the right of each column using the `justify` prop on `ListCol`.
 
@@ -252,6 +264,71 @@ List rows will switch to a mobile layout at screen widths less than smallest bre
 </List>
 ```
 
+<br />
+
+### Collapsible Row Content
+
+You can define collapsible content by passing an `expanded` prop and the `React.Node` to the `renderExpanded` prop of your `ListRow` components.
+
+#### Expand on Button Click
+
+```tsx
+export const ExpandableRow: React.FC<{
+  header: string;
+  content: string;
+  key: string;
+}> = ({ header, content, key }) => {
+  const [isExpanded, setExpanded] = useState(false);
+
+  return (
+    <ListRow
+      key={key}
+      expanded={isExpanded}
+      renderExpanded={() => <Text>Surprise</Text>}
+    >
+      <ListCol type="header">{header}</ListCol>
+      <ListCol type="content">{content}</ListCol>
+      <ListCol type="control">
+        <IconButton onClick={() => setExpanded(!isExpanded)}>
+          <Rotation rotated={isExpanded}>
+            <MiniChevronDownIcon />
+          </Rotation>
+        </IconButton>
+      </ListCol>
+    </ListRow>
+  );
+};
+```
+
+#### Expand on RowClick
+
+```tsx
+export const ExpandableRow: React.FC<{
+  header: string;
+  content: string;
+  key: string;
+}> = ({ header, content, key }) => {
+  const [isExpanded, setExpanded] = useState(false);
+
+  return (
+    <ListRow
+      key={key}
+      expanded={isExpanded}
+      onClick={() => setExpanded(!isExpanded)}
+      renderExpanded={() => <Text>Surprise</Text>}
+    >
+      <ListCol type="header">{header}</ListCol>
+      <ListCol type="content">{content}</ListCol>
+      <ListCol type="control">
+        <Rotation rotated={isExpanded}>
+          <ArrowChevronDownIcon color="text-disabled" />
+        </Rotation>
+      </ListCol>
+    </ListRow>
+  );
+};
+```
+
 ## Examples
 
 Here's some examples of Lists to use as guides.
@@ -274,6 +351,18 @@ Here's some examples of Lists to use as guides.
     args={{ variant: 'table', spacing: 'condensed', mode: 'dark' }}
   >
     {CondensedTemplate.bind({})}
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="Expanded - Button" args={{ mode: 'dark' }}>
+    {ExpandedTemplateButtonClick.bind({})}
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="Expanded - Row" args={{ variant: 'block', mode: 'dark' }}>
+    {ExpandedTemplateRowClick.bind({})}
   </Story>
 </Canvas>
 
