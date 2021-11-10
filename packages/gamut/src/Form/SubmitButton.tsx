@@ -6,6 +6,11 @@ import { ButtonProps, FillButton } from '../Button';
 import { useSubmitState } from '../GridForm/utils';
 import { Spinner } from '../Spinner';
 
+export interface SubmitContextProps {
+  loading?: FormStateCallback | boolean;
+  disabled?: FormStateCallback | boolean;
+}
+
 export type FormStateCallback<Values = {}> = (
   formState: FormState<Values>
 ) => boolean;

@@ -1,3 +1,5 @@
+import { variant } from '@codecademy/gamut-styles';
+import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
 import React, { ComponentProps } from 'react';
 
@@ -23,7 +25,31 @@ export interface FormGroupProps
   tooltip?: ToolTipProps;
 }
 
-const FormGroupContainer = styled(Box)`
+const formGroupSpacing = variant({
+  defaultVariant: 'loose',
+  prop: 'spacing',
+  variants: {
+    tight: {
+      px: 0,
+      py: 0,
+    },
+    fit: {
+      pb: 8,
+      mb: 8,
+    },
+    padded: {
+      pb: 8,
+      mb: 0,
+    },
+    loose: {
+      pb: 8,
+      mb: 24,
+    },
+  },
+});
+
+const FormGroupContainer = styled(Box)<StyleProps<typeof formGroupSpacing>>`
+  ${formGroupSpacing}
   position: relative;
   width: 100%;
   height: max-content;
