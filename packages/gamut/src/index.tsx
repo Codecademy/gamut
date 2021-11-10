@@ -3,6 +3,7 @@ export * from './Alert';
 export * from './Accordion';
 export * from './AccordionArea';
 export * from './AccordionButton';
+export * from './Animation';
 export * from './AppBar';
 export * from './AppBar/AppBarSection';
 export * from './AppWrapper';
