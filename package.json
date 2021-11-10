@@ -10,7 +10,6 @@
     "yarn": "^1.21.1"
   },
   "scripts": {
-    "compile": "tsc",
     "test": "jest",
     "lint": "eslint --ignore-path .eslintignore \"./**/*.{mdx,js,ts,tsx,json}\" --max-warnings 0",
     "lint:fix": "yarn lint --fix",
