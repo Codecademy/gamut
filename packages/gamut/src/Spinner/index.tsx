@@ -4,12 +4,8 @@ export type SpinnerProps = SVGProps<SVGSVGElement> & {
   size?: number | string;
 };
 
-const defaultProps: SpinnerProps = {
-  size: 24,
-};
-
 export const Spinner: FunctionComponent<SpinnerProps> = ({
-  size,
+  size = 24,
   ...props
 }) => {
   return (
@@ -151,5 +147,3 @@ export const Spinner: FunctionComponent<SpinnerProps> = ({
     </svg>
   );
 };
-
-Spinner.defaultProps = defaultProps;

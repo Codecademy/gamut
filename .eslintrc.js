@@ -28,6 +28,7 @@ module.exports = {
 
         // TODO: Removing in client-modules...
         'react/prop-types': 'off',
+        'react/default-props-match-prop-types': 'off',
       },
     },
     {
