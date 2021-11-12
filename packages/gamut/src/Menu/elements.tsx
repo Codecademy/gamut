@@ -94,8 +94,6 @@ const interactiveVariants = system.variant({
         position: 'absolute',
         display: 'inline-block',
         left: 0,
-        top: `calc(0% + 8px)`,
-        minHeight: 32,
         width: 6,
       },
       [Selectors.HOVER]: {
@@ -114,7 +112,7 @@ const activeStates = system.states({
   },
   'active-navlink': {
     fontWeight: 700,
-    pl: 32,
+    bg: 'background-selected',
     [Selectors.BEFORE]: {
       content: "''",
       bg: 'secondary',
@@ -125,8 +123,21 @@ const activeStates = system.states({
 const sizeVariants = system.variant({
   prop: 'spacing',
   variants: {
-    condensed: { minHeight: 40, py: 8, fontSize: 14 },
-    normal: { minHeight: 48 },
+    condensed: {
+      minHeight: 40,
+      py: 8,
+      fontSize: 14,
+      lineHeight: 'normal',
+      [Selectors.BEFORE]: {
+        minHeight: 40,
+      },
+    },
+    normal: {
+      minHeight: 48,
+      [Selectors.BEFORE]: {
+        minHeight: 48,
+      },
+    },
   },
 });
 

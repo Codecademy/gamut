@@ -1,4 +1,5 @@
 import {
+  Box,
   Column,
   LayoutGrid,
   Menu,
@@ -118,6 +119,22 @@ const MyMenu = () => (
 
 <Story name="Condensed" args={{ spacing: 'condensed' }}>
   {(args) => <Menu {...args} />}
+</Story>
+
+</Column>
+<Column size={4} variant={false}>
+
+### Condensed Nav
+
+<Story
+  name="Navigation Condensed"
+  args={{ variant: 'navigation', spacing: 'condensed' }}
+>
+  {(args) => (
+    <Box mt={8}>
+      <Menu {...args} />
+    </Box>
+  )}
 </Story>
 
 </Column>
