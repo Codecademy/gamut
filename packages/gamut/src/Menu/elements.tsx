@@ -40,6 +40,8 @@ export const List = styled('ul', styledOptions<'ul'>())<ListProps>(
     bg: 'inherit',
     display: 'inline-block',
     pl: 24,
+    WebkitFontSmoothing: 'antialiased',
+    MozOsxFontSmoothing: 'grayscale',
   }),
   system.states({
     root: {
@@ -127,12 +129,12 @@ const sizeVariants = system.variant({
       minHeight: 40,
       py: 8,
       fontSize: 14,
-      lineHeight: 'normal',
       [Selectors.BEFORE]: {
         minHeight: 40,
       },
     },
     normal: {
+      fontSize: 16,
       minHeight: 48,
       [Selectors.BEFORE]: {
         minHeight: 48,

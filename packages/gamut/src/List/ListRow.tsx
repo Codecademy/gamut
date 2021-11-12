@@ -49,7 +49,17 @@ export const ListRow = forwardRef<HTMLLIElement, ListRowProps>(
 
     if (renderExpanded) {
       content = (
-        <RowEl as="div" {...rowConfig} {...rest} ref={ref}>
+        <RowEl
+          as="div"
+          {...rowConfig}
+          aria-expanded={expanded}
+          clickable={!!rest?.onClick}
+          role={rest?.onClick ? 'button' : rest?.role}
+          tabIndex={rest?.onClick ? 0 : rest?.tabIndex}
+          onClick={rest?.onClick}
+          {...rest}
+          ref={ref}
+        >
           {children}
         </RowEl>
       );
@@ -60,6 +70,7 @@ export const ListRow = forwardRef<HTMLLIElement, ListRowProps>(
         variant={variant}
         expanded={!!renderExpanded}
         scrollable={scrollable}
+        onClick={rest?.onClick}
         {...wrapperProps}
       >
         {content}
