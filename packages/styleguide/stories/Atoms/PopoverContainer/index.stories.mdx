@@ -65,7 +65,7 @@ const MyComponent = () => {
 ## Guidelines
 
 - It is only responsible for positioning its content and does not include any styles for its content.
-- Use the `inline` prop to ensure that scrolling and resizing do not result in unnecessary rerenders / jumpy popovers. The popover renders with absolute position relative to the current stacking context.
+- Use the `g` prop to ensure that scrolling and resizing do not result in unnecessary rerenders / jumpy popovers. The popover renders with absolute position relative to the current stacking context.
 - Do not use `inline` when the current stacking context is too small or the container is wrapped with an element that specifies `overflow: hidden`.
 
 ## Positioning

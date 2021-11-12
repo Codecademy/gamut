@@ -10,6 +10,9 @@ import { Background } from '@codecademy/gamut-styles';
 import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import LinkTo from '@storybook/addon-links/react';
+
+import { PopoverMenuExample } from './Menu.examples.tsx';
 
 <Meta
   title={title}
@@ -189,6 +192,12 @@ const MyMenu = () => (
 
 </Column>
 </LayoutGrid>
+
+## Sub-Menus
+
+You can create sub-menus by utilizing our `inline` <LinkTo kind="Atoms/PopoverContainer">PopoverContainer</LinkTo>. Once you have your base positioning, you just need to adjust the `y` axis by `48` for the `normal` spacing or `32` for the `condensed` spacing for each of the `MenuItem`s.
+
+<PopoverMenuExample />
 
 ### Code Playground
 
