@@ -3,10 +3,10 @@ import React from 'react';
 import { IllustrationProps } from './types';
 
 export const HomeOffice: React.FC<IllustrationProps> = ({
-  ariaHidden,
   className,
   height,
   width,
+  'aria-hidden': ariaHidden,
 }) => (
   <svg
     aria-hidden={ariaHidden}

@@ -3,7 +3,7 @@ import React from 'react';
 import { IllustrationProps } from './types';
 
 export const Hills: React.FC<IllustrationProps> = ({
-  ariaHidden,
+  'aria-hidden': ariaHidden,
   className,
   height,
   width,
