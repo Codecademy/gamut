@@ -24,6 +24,12 @@ export const parameters = {
         'Molecules',
         'Organisms',
         'Brand',
+        'UX Writing',
+        [
+          'About',
+          'Writing Style Guide',
+          ['About', 'Voice', 'Style', 'Inclusion & Accessibility', 'Word List'],
+        ],
         'Meta',
         'Deprecated',
       ],
