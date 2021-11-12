@@ -1,5 +1,4 @@
 import {
-  Box,
   Column,
   LayoutGrid,
   Menu,
@@ -7,6 +6,7 @@ import {
   MenuSeparator,
 } from '@codecademy/gamut';
 import { MultipleUsersIcon } from '@codecademy/gamut-icons';
+import { Background } from '@codecademy/gamut-styles';
 import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
@@ -72,12 +72,21 @@ const MyMenu = () => (
 ## Variants
 
 <LayoutGrid gap={32} py={24}>
-<Column size={4} variant={false}>
+<Column size={4} variant={false} mx={8}>
 
 ### Select
 
 <Story name="Select" args={{ variant: 'select' }}>
-  {(args) => <Menu {...args} />}
+  {(args) => (
+    <>
+      <Background bg="paleGreen" p={8} mt={8}>
+        <Menu {...args} />
+      </Background>
+      <Background bg="black" p={8} mt={8}>
+        <Menu {...args} />
+      </Background>
+    </>
+  )}
 </Story>
 
 </Column>
@@ -86,7 +95,16 @@ const MyMenu = () => (
 ### Action
 
 <Story name="Action" args={{ variant: 'action' }}>
-  {(args) => <Menu {...args} />}
+  {(args) => (
+    <>
+      <Background bg="paleGreen" p={8} mt={8}>
+        <Menu {...args} />
+      </Background>
+      <Background bg="black" p={8} mt={8}>
+        <Menu {...args} />
+      </Background>
+    </>
+  )}
 </Story>
 
 </Column>
@@ -95,7 +113,16 @@ const MyMenu = () => (
 ### Navigation
 
 <Story name="Navigation" args={{ variant: 'navigation' }}>
-  {(args) => <Menu {...args} />}
+  {(args) => (
+    <>
+      <Background bg="paleGreen" p={8} mt={8}>
+        <Menu {...args} />
+      </Background>
+      <Background bg="black" p={8} mt={8}>
+        <Menu {...args} />
+      </Background>
+    </>
+  )}
 </Story>
 
 </Column>
@@ -109,7 +136,16 @@ const MyMenu = () => (
 ### Normal
 
 <Story name="Normal" args={{ spacing: 'normal' }}>
-  {(args) => <Menu {...args} />}
+  {(args) => (
+    <>
+      <Background bg="paleGreen" p={8} mt={8}>
+        <Menu {...args} />
+      </Background>
+      <Background bg="black" p={8} mt={8}>
+        <Menu {...args} />
+      </Background>
+    </>
+  )}
 </Story>
 
 </Column>
@@ -118,7 +154,16 @@ const MyMenu = () => (
 ### Condensed
 
 <Story name="Condensed" args={{ spacing: 'condensed' }}>
-  {(args) => <Menu {...args} />}
+  {(args) => (
+    <>
+      <Background bg="paleGreen" p={8} mt={8}>
+        <Menu {...args} />
+      </Background>
+      <Background bg="black" p={8} mt={8}>
+        <Menu {...args} />
+      </Background>
+    </>
+  )}
 </Story>
 
 </Column>
@@ -131,9 +176,14 @@ const MyMenu = () => (
   args={{ variant: 'navigation', spacing: 'condensed' }}
 >
   {(args) => (
-    <Box mt={8}>
-      <Menu {...args} />
-    </Box>
+    <>
+      <Background bg="paleGreen" p={8} mt={8}>
+        <Menu {...args} />
+      </Background>
+      <Background bg="black" p={8} mt={8}>
+        <Menu {...args} />
+      </Background>
+    </>
   )}
 </Story>
 
