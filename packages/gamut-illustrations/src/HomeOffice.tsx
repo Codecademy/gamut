@@ -6,8 +6,10 @@ export const HomeOffice: React.FC<IllustrationProps> = ({
   className,
   height,
   width,
+  'aria-hidden': ariaHidden,
 }) => (
   <svg
+    aria-hidden={ariaHidden}
     width={width}
     height={height}
     className={className}
