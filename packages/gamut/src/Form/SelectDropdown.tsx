@@ -118,7 +118,6 @@ const CustomContainer = ({ children, ...rest }: CustomContainerProps) => {
   const { inputProps, name } = rest.selectProps;
   const value = rest.hasValue ? rest.getValue()[0].value : '';
 
-  console.log('values', rest, rest.getValue());
   return (
     <SelectContainer {...rest}>
       {children}
@@ -156,12 +155,12 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
   error,
   disabled,
   onChange,
-  value = undefined,
+  value,
   name,
   placeholder = 'Select an option',
   inputProps,
-  isMulti = false,
-  isSearchable = false,
+  isMulti,
+  isSearchable,
   shownOptionsLimit = 6,
   ...rest
 }) => {
@@ -179,26 +178,20 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
       : selectOptions.find(findPredicate);
   }, [selectOptions, value, isMulti]);
 
-  const [multiValues, setMultiValues] = useState(
-    parsedValue ? [parsedValue] : []
-  );
+  const [multiValues, setMultiValues] = useState(parsedValue);
 
   const changeHandler = (optionEvent: OptionStrict | OptionStrict[]) => {
     onChange?.(optionEvent, {
       action: 'select-option',
       option: optionEvent,
     });
+
     setActivated(true);
 
-    console.log('on change', optionEvent);
-    if (isMulti) {
-      setMultiValues(optionEvent);
-    }
-    // if (isMulti)
+    if (isMulti) setMultiValues(optionEvent as OptionStrict[]);
   };
 
   const theme = useTheme();
-
   const memoizedStyles: StylesConfig<OptionTypeBase, false> = useMemo(() => {
     return {
       container: (provided, state) => ({
@@ -276,7 +269,6 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
     };
   }, [theme]);
 
-  console.log('parsedValue', parsedValue);
   return (
     <ReactSelect
       {...defaultProps}
