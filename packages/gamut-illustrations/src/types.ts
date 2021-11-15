@@ -1,4 +1,6 @@
 export type IllustrationProps = {
+  'aria-hidden'?: boolean;
+
   className?: string;
 
   /**
