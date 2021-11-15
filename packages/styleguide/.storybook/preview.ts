@@ -28,7 +28,7 @@ export const parameters = {
         [
           'About',
           'Writing Style Guide',
-          ['About', 'Voice', 'Style', 'Inclusion & Accessibility', 'Word List'],
+          ['About', 'Voice', 'Style', 'Word List'],
         ],
         'Meta',
         'Deprecated',
