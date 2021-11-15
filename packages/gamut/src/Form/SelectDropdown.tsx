@@ -35,11 +35,6 @@ import {
 } from './styles';
 import { parseOptions } from './utils';
 
-export interface OptionStrict {
-  label: string;
-  value: string;
-}
-
 export interface IconOption {
   label: string;
   value: string;
@@ -82,6 +77,11 @@ interface SelectDropdownProps
 }
 
 const { DropdownIndicator, SelectContainer } = SelectDropdownElements;
+
+export interface OptionStrict {
+  label: string;
+  value: string;
+}
 
 type CustomContainerProps = ContainerProps<OptionStrict, false> & {
   children?: ReactNode[];
