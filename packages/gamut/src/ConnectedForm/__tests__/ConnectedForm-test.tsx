@@ -4,15 +4,11 @@ import { act, RenderResult } from '@testing-library/react';
 import React from 'react';
 
 import { createPromise } from '../../utils';
+import { ConnectedForm } from '..';
 import {
-  ConnectedCheckbox,
-  ConnectedForm,
-  ConnectedFormGroup,
-  ConnectedInput,
-  ConnectedRadioGroupInput,
-  ConnectedSelect,
-  SubmitButton,
-} from '..';
+  PlainConnectedFields,
+  ValidatedConnectedFields,
+} from '../__fixtures__/helpers';
 
 const renderView = setupRtl(ConnectedForm, {
   defaultValues: {
@@ -21,48 +17,7 @@ const renderView = setupRtl(ConnectedForm, {
     input: 'state your name.',
     radiogroup: 'three',
   },
-  children: (
-    <>
-      <ConnectedFormGroup
-        name="checkbox"
-        label="cool-checkbox"
-        field={{
-          component: ConnectedCheckbox,
-          label: 'cool-checkbox',
-        }}
-      />
-      <SubmitButton variant="secondary" m={32}>
-        submit this form.
-      </SubmitButton>
-      <ConnectedFormGroup
-        name="select"
-        label="cool-select"
-        field={{
-          component: ConnectedSelect,
-          options: ['one', 'two', 'zero'],
-        }}
-      />
-      <ConnectedFormGroup
-        name="input"
-        label="cool-input"
-        field={{
-          component: ConnectedInput,
-        }}
-      />
-      <ConnectedFormGroup
-        name="radiogroup"
-        label="cool-radiogroup"
-        field={{
-          component: ConnectedRadioGroupInput,
-          options: [
-            { label: 'one', value: 'one' },
-            { label: 'two', value: 'two' },
-            { label: 'three', value: 'three' },
-          ],
-        }}
-      />
-    </>
-  ),
+  children: <PlainConnectedFields />,
   submit: { type: 'fill', contents: <>Submit</>, size: 6 },
 });
 
@@ -134,5 +89,25 @@ describe('ConnectedForm', () => {
     const result = await api.innerPromise;
 
     expect(result).toEqual(baseResults);
+  });
+
+  it('only sets aria-live prop on the first validation error in a form', async () => {
+    const api = createPromise<{}>();
+    const onSubmit = async (values: {}) => api.resolve(values);
+    const { view } = renderView({
+      children: <ValidatedConnectedFields />,
+      defaultValues: { checkbox: false, select: undefined },
+      onSubmit,
+    });
+
+    await act(async () => {
+      fireEvent.submit(view.getByRole('button'));
+
+      await api.innerPromise;
+    });
+
+    // there should only be a single "assertive" error from the form submission
+    expect(view.getAllByRole('alert').length).toBe(1);
+    expect(view.getAllByRole('status').length).toBe(1);
   });
 });
