@@ -7,6 +7,7 @@ import {
 } from '@codecademy/gamut-icons';
 import { setupEnzyme } from '@codecademy/gamut-tests';
 import { ReactWrapper } from 'enzyme';
+import ReactSelect from 'react-select';
 
 import { SelectDropdown } from '../SelectDropdown';
 
@@ -118,5 +119,20 @@ describe('SelectDropdown', () => {
     wrapper.find('Option').first().simulate('click');
 
     expect(onInputChange).toHaveBeenCalled();
+  });
+
+  it('renders selected & multiple items when passed isMulti: true', () => {
+    const { wrapper } = renderWrapper({ isMulti: true });
+
+    const numSelectedItems = 2;
+
+    [...Array(numSelectedItems)].forEach(() => {
+      openDropdown(wrapper);
+      wrapper.find('Option').first().simulate('click');
+    });
+
+    selectOptions
+      .slice(0, numSelectedItems)
+      .forEach((value) => expect(wrapper.text().includes(value)).toBe(true));
   });
 });

@@ -116,7 +116,12 @@ const ChevronDropdown = (props: SizedIndicatorProps) => {
 
 const CustomContainer = ({ children, ...rest }: CustomContainerProps) => {
   const { inputProps, name } = rest.selectProps;
-  const value = rest.hasValue ? rest.getValue()[0].value : '';
+  const value = rest.hasValue
+    ? rest
+        .getValue()
+        .map(({ value }) => value)
+        .join(', ')
+    : '';
 
   return (
     <SelectContainer {...rest}>
