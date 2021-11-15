@@ -7,6 +7,7 @@ import { useTheme } from '@emotion/react';
 import React, {
   ReactNode,
   SelectHTMLAttributes,
+  useCallback,
   useMemo,
   useState,
 } from 'react';
@@ -15,6 +16,7 @@ import ReactSelect, {
   ContainerProps,
   IndicatorProps,
   NamedProps,
+  OptionsType,
   OptionTypeBase,
   StylesConfig,
 } from 'react-select';
@@ -32,6 +34,11 @@ import {
   textColor,
 } from './styles';
 import { parseOptions } from './utils';
+
+export interface OptionStrict {
+  label: string;
+  value: string;
+}
 
 export interface IconOption {
   label: string;
@@ -75,11 +82,6 @@ interface SelectDropdownProps
 }
 
 const { DropdownIndicator, SelectContainer } = SelectDropdownElements;
-
-export interface OptionStrict {
-  label: string;
-  value: string;
-}
 
 type CustomContainerProps = ContainerProps<OptionStrict, false> & {
   children?: ReactNode[];
@@ -153,6 +155,8 @@ const defaultProps = {
   },
 };
 
+const onChangeAction = 'select-option';
+
 export const SelectDropdown: React.FC<SelectDropdownProps> = ({
   options,
   id,
@@ -175,26 +179,52 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
     return parseOptions({ options, id, size });
   }, [options, id, size]);
 
-  const parsedValue = useMemo(() => {
-    const findPredicate = (option: OptionTypeBase) => option.value === value;
+  const parsedValue = useMemo(
+    () => selectOptions.find((option) => option.value === value),
+    [selectOptions, value]
+  );
 
-    return isMulti
-      ? selectOptions.filter(findPredicate)
-      : selectOptions.find(findPredicate);
-  }, [selectOptions, value, isMulti]);
+  const changeHandler = useCallback(
+    (optionEvent: OptionStrict) => {
+      setActivated(true);
 
-  const [multiValues, setMultiValues] = useState(parsedValue);
+      onChange?.(optionEvent, {
+        action: onChangeAction,
+        option: optionEvent,
+      });
+    },
+    [onChange]
+  );
 
-  const changeHandler = (optionEvent: OptionStrict | OptionStrict[]) => {
-    onChange?.(optionEvent, {
-      action: 'select-option',
-      option: optionEvent,
-    });
+  const [multiValues, setMultiValues] = useState(
+    selectOptions.filter((option) => option.value === value)
+  );
 
-    setActivated(true);
+  const multiChangeHandler = useCallback(
+    (optionEvent: OptionsType<OptionStrict>) => {
+      setActivated(true);
 
-    if (isMulti) setMultiValues(optionEvent as OptionStrict[]);
-  };
+      const selectionEvent = optionEvent as OptionStrict[];
+
+      setMultiValues((multiValues) => {
+        multiValues
+          ?.filter((option) =>
+            selectionEvent.some(
+              (eventItem) => eventItem.value === option?.value
+            )
+          )
+          .forEach((newValue) =>
+            onChange?.(optionEvent, {
+              action: onChangeAction,
+              option: newValue,
+            })
+          );
+
+        return selectionEvent;
+      });
+    },
+    [onChange]
+  );
 
   const theme = useTheme();
   const memoizedStyles: StylesConfig<OptionTypeBase, false> = useMemo(() => {
@@ -283,7 +313,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
       activated={activated}
       error={Boolean(error)}
       formatOptionLabel={formatOptionLabel}
-      onChange={changeHandler}
+      onChange={isMulti ? multiChangeHandler : changeHandler}
       inputProps={{ ...inputProps, name }}
       placeholder={placeholder}
       styles={memoizedStyles}
