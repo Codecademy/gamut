@@ -54,7 +54,7 @@ export type SelectDropdownOptions = SelectOptions | IconOption[];
 interface SelectDropdownProps
   extends SelectDropdownBaseProps,
     Omit<
-      NamedProps<{ label: string; value: string }, boolean>,
+      NamedProps<OptionStrict, boolean>,
       | 'formatOptionLabel'
       | 'isDisabled'
       | 'value'
@@ -118,6 +118,7 @@ const CustomContainer = ({ children, ...rest }: CustomContainerProps) => {
   const { inputProps, name } = rest.selectProps;
   const value = rest.hasValue ? rest.getValue()[0].value : '';
 
+  console.log('values', rest, rest.getValue());
   return (
     <SelectContainer {...rest}>
       {children}
@@ -143,13 +144,16 @@ const defaultProps = {
     DropdownIndicator: ChevronDropdown,
     IndicatorSeparator: () => null,
     SelectContainer: CustomContainer,
+    MultiValue: SelectDropdownElements.MultiValue,
+    MultiValueLabel: SelectDropdownElements.MultiValueLabel,
   },
 };
 
 export const SelectDropdown: React.FC<SelectDropdownProps> = ({
   options,
-  error,
   id,
+  size,
+  error,
   disabled,
   onChange,
   value = undefined,
@@ -159,18 +163,38 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
   isMulti = false,
   isSearchable = false,
   shownOptionsLimit = 6,
-  size,
   ...rest
 }) => {
   const [activated, setActivated] = useState(false);
-  const baseInputProps = { name };
 
-  const changeHandler = (optionEvent: OptionStrict) => {
+  const selectOptions = useMemo(() => {
+    return parseOptions({ options, id, size });
+  }, [options, id, size]);
+
+  const parsedValue = useMemo(() => {
+    const findPredicate = (option: OptionTypeBase) => option.value === value;
+
+    return isMulti
+      ? selectOptions.filter(findPredicate)
+      : selectOptions.find(findPredicate);
+  }, [selectOptions, value, isMulti]);
+
+  const [multiValues, setMultiValues] = useState(
+    parsedValue ? [parsedValue] : []
+  );
+
+  const changeHandler = (optionEvent: OptionStrict | OptionStrict[]) => {
     onChange?.(optionEvent, {
       action: 'select-option',
       option: optionEvent,
     });
     setActivated(true);
+
+    console.log('on change', optionEvent);
+    if (isMulti) {
+      setMultiValues(optionEvent);
+    }
+    // if (isMulti)
   };
 
   const theme = useTheme();
@@ -252,29 +276,18 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
     };
   }, [theme]);
 
-  const selectOptions = useMemo(() => {
-    return parseOptions({ options, id, size });
-  }, [options, id, size]);
-
-  const parsedValue = useMemo(() => {
-    const findPredicate = (option: OptionTypeBase) => option.value === value;
-
-    return isMulti
-      ? selectOptions.filter(findPredicate)
-      : selectOptions.find(findPredicate);
-  }, [selectOptions, value, isMulti]);
-
+  console.log('parsedValue', parsedValue);
   return (
     <ReactSelect
       {...defaultProps}
       id={id || rest.htmlFor}
-      value={parsedValue}
+      options={selectOptions}
+      value={isMulti ? multiValues : parsedValue}
       activated={activated}
       error={Boolean(error)}
       formatOptionLabel={formatOptionLabel}
       onChange={changeHandler}
-      inputProps={{ ...inputProps, ...baseInputProps }}
-      options={selectOptions}
+      inputProps={{ ...inputProps, name }}
       placeholder={placeholder}
       styles={memoizedStyles}
       isMulti={isMulti}
