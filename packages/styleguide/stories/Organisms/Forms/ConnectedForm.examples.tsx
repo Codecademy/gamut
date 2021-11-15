@@ -1,66 +1,73 @@
-import { ConnectedForm, useFormState } from '@codecademy/gamut';
+import {
+  Box,
+  ConnectedCheckbox,
+  ConnectedInput,
+  ConnectedSelect,
+  SubmitButton,
+  Text,
+  useConnectedForm,
+} from '@codecademy/gamut';
+import { Background } from '@codecademy/gamut-styles';
 import React from 'react';
 
-const fakeData = {
-  layoutComponents: [
-    { url: 'www.whyisthishappening.com' },
-    { url: 'thisisntworking.com' },
-  ],
-};
-
-const FormBodyComponent = () => {
-  const { control, watch, register, useFieldArray } = useFormState();
-
-  const { fields, append } = useFieldArray({
-    control,
-    name: 'layoutComponents',
-  });
-
-  const watchFieldArray = watch('layoutComponents');
-
-  console.log('watch', watchFieldArray);
-
-  const controlledFields = fields.map((field, index) => {
-    return {
-      ...field,
-      ...watchFieldArray[index],
-    };
+export const VeryCoolForm = () => {
+  const {
+    ConnectedFormGroup,
+    ConnectedForm,
+    connectedFormProps,
+  } = useConnectedForm({
+    defaultValues: {
+      thisField: true,
+      thatField: 'zero',
+      anotherField: 'state your name.',
+    },
+    validationRules: {
+      thisField: { required: 'you need to check this.' },
+      thatField: {
+        pattern: {
+          value: /^(?:(?!zero).)*$/,
+          message: 'literally anything but zero',
+        },
+      },
+    },
   });
 
   return (
-    <div className="App">
-      {controlledFields.map((field, index) => {
-        return (
-          <input
-            {...register(`layoutComponents.${index}.url`)}
-            key={field.id}
-          />
-        );
-      })}
-
-      <button
-        type="button"
-        onClick={() =>
-          append({
-            url: 'bill',
-          })
-        }
+    <Background bg="black" p={48}>
+      <ConnectedForm
+        onSubmit={({ thisField }) => console.log(thisField)}
+        {...connectedFormProps}
       >
-        Append
-      </button>
-    </div>
+        <ConnectedFormGroup
+          name="thisField"
+          label="cool"
+          field={{
+            component: ConnectedCheckbox,
+            label: 'check it ouuut',
+          }}
+        />
+        <Box bg="secondary-hover" borderRadius="50px">
+          <Text>I have something important to tell you...</Text>
+          <SubmitButton variant="secondary" m={32}>
+            submit this form.
+          </SubmitButton>
+        </Box>
+        <ConnectedFormGroup
+          name="thatField"
+          label="cool"
+          field={{
+            component: ConnectedSelect,
+            options: ['one', 'two', 'zero'],
+          }}
+        />
+        <ConnectedFormGroup
+          name="anotherField"
+          label="cool"
+          field={{
+            component: ConnectedInput,
+          }}
+        />
+      </ConnectedForm>
+    </Background>
   );
 };
-
-const GamutHookFormComponent = () => {
-  return (
-    <ConnectedForm
-      defaultValues={fakeData}
-      onSubmit={() => console.log('Submitted')}
-    >
-      <FormBodyComponent />
-    </ConnectedForm>
-  );
-};
-
-export default GamutHookFormComponent;

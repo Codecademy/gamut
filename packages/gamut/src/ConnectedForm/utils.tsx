@@ -101,6 +101,7 @@ export const useFormState = () => {
   return {
     control,
     errors,
+    formState,
     isDisabled: (isSubmitting || isSubmitSuccessful) && disableFieldsOnSubmit,
     isDirty,
     register,
