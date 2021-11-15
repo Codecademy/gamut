@@ -54,7 +54,7 @@ export type SelectDropdownOptions = SelectOptions | IconOption[];
 interface SelectDropdownProps
   extends SelectDropdownBaseProps,
     Omit<
-      NamedProps,
+      NamedProps<{ label: string; value: string }, boolean>,
       | 'formatOptionLabel'
       | 'isDisabled'
       | 'value'
@@ -139,7 +139,6 @@ const formatOptionLabel = ({ label, icon: Icon, size }: any) => {
 
 const defaultProps = {
   name: undefined,
-  isMulti: false,
   components: {
     DropdownIndicator: ChevronDropdown,
     IndicatorSeparator: () => null,
@@ -157,6 +156,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
   name,
   placeholder = 'Select an option',
   inputProps,
+  isMulti = false,
   isSearchable = false,
   shownOptionsLimit = 6,
   size,
@@ -257,12 +257,12 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
   }, [options, id, size]);
 
   const parsedValue = useMemo(() => {
-    const currentValue = selectOptions.find(
-      ({ value: optionValue }) => optionValue === value
-    );
+    const findPredicate = (option: OptionTypeBase) => option.value === value;
 
-    return currentValue;
-  }, [selectOptions, value]);
+    return isMulti
+      ? selectOptions.filter(findPredicate)
+      : selectOptions.find(findPredicate);
+  }, [selectOptions, value, isMulti]);
 
   return (
     <ReactSelect
@@ -274,10 +274,11 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
       formatOptionLabel={formatOptionLabel}
       onChange={changeHandler}
       inputProps={{ ...inputProps, ...baseInputProps }}
-      isDisabled={disabled}
       options={selectOptions}
       placeholder={placeholder}
       styles={memoizedStyles}
+      isMulti={isMulti}
+      isDisabled={disabled}
       isSearchable={isSearchable}
       size={size}
       shownOptionsLimit={shownOptionsLimit}

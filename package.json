@@ -57,6 +57,16 @@
     "gh-pages": "^2.2.0",
     "lerna": "3.22.1"
   },
+  "peerDependencies": {
+    "@codecademy/gamut": "*",
+    "@codecademy/gamut-icons": "*",
+    "@codecademy/gamut-patterns": "*",
+    "@codecademy/gamut-illustrations": "*",
+    "@codecademy/gamut-labs": "*",
+    "@codecademy/gamut-styles": "*",
+    "@codecademy/gamut-tests": "*",
+    "@codecademy/variance": "*"
+  },
   "devDependencies": {
     "@babel/cli": "7.13.10",
     "@babel/core": "7.13.10",
