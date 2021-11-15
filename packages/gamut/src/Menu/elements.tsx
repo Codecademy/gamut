@@ -126,6 +126,7 @@ const sizeVariants = system.variant({
   prop: 'spacing',
   variants: {
     condensed: {
+      lineHeight: 'title',
       minHeight: 40,
       py: 8,
       fontSize: 14,
