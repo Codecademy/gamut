@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [40.3.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@40.3.1...@codecademy/gamut@40.3.2) (2021-11-15)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [40.3.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@40.3.0...@codecademy/gamut@40.3.1) (2021-11-10)
+
+
+### Bug Fixes
+
+* **List:** add block type to private list prop type ([d43e7ba](https://github.com/Codecademy/gamut/commit/d43e7ba02e774947ee1e7d3dd1dfcd04fd8b776c))
+
+
+
 ## [40.3.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@40.2.0...@codecademy/gamut@40.3.0) (2021-11-10)
 
 
