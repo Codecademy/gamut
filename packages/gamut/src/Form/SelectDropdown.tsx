@@ -53,7 +53,7 @@ type SelectDropdownBaseProps = Omit<
 
 export type SelectDropdownOptions = SelectOptions | IconOption[];
 
-interface SelectDropdownProps
+interface SelectDropdownCoreProps
   extends SelectDropdownBaseProps,
     Omit<
       NamedProps<OptionStrict, boolean>,
@@ -64,6 +64,8 @@ interface SelectDropdownProps
       | 'components'
       | 'styles'
       | 'theme'
+      | 'onChange'
+      | 'isMulti'
     >,
     Pick<
       SelectHTMLAttributes<HTMLSelectElement>,
@@ -74,6 +76,16 @@ interface SelectDropdownProps
   placeholder?: string;
   options?: SelectDropdownOptions;
   shownOptionsLimit?: 1 | 2 | 3 | 4 | 5 | 6;
+}
+
+interface SingleSelectDropdownProps extends SelectDropdownCoreProps {
+  isMulti?: false;
+  onChange: NamedProps<OptionStrict, false>['onChange'];
+}
+
+interface MultiSelectDropdownProps extends SelectDropdownCoreProps {
+  isMulti: true;
+  onChange: NamedProps<OptionStrict, true>['onChange'];
 }
 
 const { DropdownIndicator, SelectContainer } = SelectDropdownElements;
@@ -157,7 +169,9 @@ const defaultProps = {
 
 const onChangeAction = 'select-option';
 
-export const SelectDropdown: React.FC<SelectDropdownProps> = ({
+export const SelectDropdown: React.FC<
+  SingleSelectDropdownProps | MultiSelectDropdownProps
+> = ({
   options,
   id,
   size,
