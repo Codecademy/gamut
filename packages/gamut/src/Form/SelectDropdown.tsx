@@ -53,10 +53,10 @@ type SelectDropdownBaseProps = Omit<
 
 export type SelectDropdownOptions = SelectOptions | IconOption[];
 
-interface SelectDropdownCoreProps
+interface SelectDropdownrops
   extends SelectDropdownBaseProps,
     Omit<
-      NamedProps<OptionStrict, boolean>,
+      NamedProps<OptionStrict, false>,
       | 'formatOptionLabel'
       | 'isDisabled'
       | 'value'
@@ -64,8 +64,6 @@ interface SelectDropdownCoreProps
       | 'components'
       | 'styles'
       | 'theme'
-      | 'onChange'
-      | 'isMulti'
     >,
     Pick<
       SelectHTMLAttributes<HTMLSelectElement>,
@@ -76,16 +74,6 @@ interface SelectDropdownCoreProps
   placeholder?: string;
   options?: SelectDropdownOptions;
   shownOptionsLimit?: 1 | 2 | 3 | 4 | 5 | 6;
-}
-
-interface SingleSelectDropdownProps extends SelectDropdownCoreProps {
-  isMulti?: false;
-  onChange: NamedProps<OptionStrict, false>['onChange'];
-}
-
-interface MultiSelectDropdownProps extends SelectDropdownCoreProps {
-  isMulti: true;
-  onChange: NamedProps<OptionStrict, true>['onChange'];
 }
 
 const { DropdownIndicator, SelectContainer } = SelectDropdownElements;
@@ -169,9 +157,7 @@ const defaultProps = {
 
 const onChangeAction = 'select-option';
 
-export const SelectDropdown: React.FC<
-  SingleSelectDropdownProps | MultiSelectDropdownProps
-> = ({
+export const SelectDropdown: React.FC<SelectDropdownrops> = ({
   options,
   id,
   size,
@@ -228,7 +214,7 @@ export const SelectDropdown: React.FC<
             )
           )
           .forEach((newValue) =>
-            onChange?.(optionEvent, {
+            onChange?.(newValue, {
               action: onChangeAction,
               option: newValue,
             })
