@@ -7,7 +7,6 @@ import {
 } from '@codecademy/gamut-icons';
 import { setupEnzyme } from '@codecademy/gamut-tests';
 import { ReactWrapper } from 'enzyme';
-import ReactSelect from 'react-select';
 
 import { SelectDropdown } from '../SelectDropdown';
 
