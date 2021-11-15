@@ -39,6 +39,14 @@ export const resourcesList: ResourcesList[] = [
     type: 'link',
   },
   {
+    id: 'videos',
+    href: '/resources/videos',
+    footerTrackingTarget: 'videos_home',
+    headerTrackingTarget: 'topnav_resources_videos',
+    text: 'Videos',
+    type: 'link',
+  },
+  {
     id: 'projects',
     href: '/projects',
     footerTrackingTarget: 'projects',
