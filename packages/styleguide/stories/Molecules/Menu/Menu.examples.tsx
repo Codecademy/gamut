@@ -14,10 +14,14 @@ export const PopoverMenuExample: React.FC<PopoverContainerProps> = () => {
   const target = useRef<HTMLDivElement>(null);
   const [isOpen, setIsOpen] = useState(false);
   const [currentTarget, setCurrentTarget] = useState(0);
+  const [alignment, setAlignment] = useState<'top-right' | 'bottom-right'>(
+    'top-right'
+  );
   const [activeIndex, setActiveIndex] = useState(4);
 
   const clickHandler = (targetNumber: number, currentIndex: number) => {
     setCurrentTarget(targetNumber);
+    setAlignment(currentIndex === 3 ? 'bottom-right' : 'top-right');
     // eslint-disable-next-line no-unused-expressions
     isOpen && currentIndex === activeIndex ? setIsOpen(false) : setIsOpen(true);
     if (currentIndex !== activeIndex) setActiveIndex(currentIndex);
@@ -38,27 +42,27 @@ export const PopoverMenuExample: React.FC<PopoverContainerProps> = () => {
             <Menu border="none" variant="navigation">
               <MenuItem
                 active={activeIndex === 0}
-                onClick={() => clickHandler(-70, 0)}
+                onClick={() => clickHandler(-68, 0)}
               >
                 i have a side menu
               </MenuItem>
               <MenuItem
                 active={activeIndex === 1}
-                onClick={() => clickHandler(-118, 1)}
+                onClick={() => clickHandler(-115, 1)}
               >
                 Active Item
               </MenuItem>
               <MenuSeparator />
               <MenuItem
                 active={activeIndex === 2}
-                onClick={() => clickHandler(-166, 2)}
+                onClick={() => clickHandler(-164, 2)}
                 icon={MultipleUsersIcon}
               >
                 Icon Item
               </MenuItem>
               <MenuItem
                 active={activeIndex === 3}
-                onClick={() => clickHandler(-212, 3)}
+                onClick={() => clickHandler(-162, 3)}
               >
                 Menu Item
               </MenuItem>
@@ -67,7 +71,7 @@ export const PopoverMenuExample: React.FC<PopoverContainerProps> = () => {
           <PopoverContainer
             isOpen={isOpen}
             inline
-            alignment="top-right"
+            alignment={alignment}
             x={-21}
             y={currentTarget}
             targetRef={target}
