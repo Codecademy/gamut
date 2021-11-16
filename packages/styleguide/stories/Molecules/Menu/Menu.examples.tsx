@@ -62,7 +62,7 @@ export const PopoverMenuExample: React.FC<PopoverContainerProps> = () => {
               </MenuItem>
               <MenuItem
                 active={activeIndex === 3}
-                onClick={() => clickHandler(-162, 3)}
+                onClick={() => clickHandler(-166, 3)}
               >
                 Menu Item
               </MenuItem>
