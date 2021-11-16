@@ -25,7 +25,7 @@ export type ConnectedFormGroupBaseProps = Omit<
   FormGroupProps,
   'label' | 'disabled'
 > &
-  Pick<FormGroupLabelProps, 'size'> & {
+  Pick<FormGroupLabelProps, 'size' | 'spacing'> & {
     customError?: string;
     errorType?: 'initial' | 'absolute';
     hideLabel?: boolean;
