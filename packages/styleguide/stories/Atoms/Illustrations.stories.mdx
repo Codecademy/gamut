@@ -78,7 +78,7 @@ const MyComponent = () => <NumberBlocks />;
 <IconGallery>
   {Object.entries(illustrations).map(([illustrationName, Illustration]) => (
     <IconItem key={illustrationName} name={illustrationName}>
-      <Illustration width="128px" />
+      <Illustration aria-hidden width="128px" />
     </IconItem>
   ))}
 </IconGallery>
