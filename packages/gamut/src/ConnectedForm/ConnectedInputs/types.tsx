@@ -12,7 +12,6 @@ import {
 
 export interface BaseConnectedFieldProps {
   onUpdate?: (value: boolean) => void;
-  validation?: RegisterOptions;
 }
 
 export interface ConnectedFieldProps extends BaseConnectedFieldProps {
