@@ -1,5 +1,9 @@
 import React from 'react';
-import { coreTheme, GamutProvider } from '@codecademy/gamut-styles/src';
+import {
+  ColorMode,
+  coreTheme,
+  GamutProvider,
+} from '@codecademy/gamut-styles/src';
 
 /**
  * Story functions must be called as a regular function to avoid full-remounts
@@ -17,5 +21,9 @@ export const withEmotion = (Story: any, context: any) => {
   }
 
   // Wrap all stories in minimal provider
-  return <GamutProvider theme={coreTheme}>{Story()}</GamutProvider>;
+  return (
+    <GamutProvider theme={coreTheme}>
+      <ColorMode mode={context?.globals?.colorMode}>{Story()}</ColorMode>
+    </GamutProvider>
+  );
 };

@@ -3,8 +3,13 @@ import { withDesign } from 'storybook-addon-designs';
 
 import { withEmotion } from './decorators/theme';
 import { DocsPage, DocsContainer } from './components';
-import { breakpoints } from '@codecademy/gamut-styles/src';
+import { breakpoints, trueColors } from '@codecademy/gamut-styles/src';
 import { theme } from './theme';
+
+const colorEntries = Object.entries(trueColors).map(([name, value]) => ({
+  name,
+  value,
+}));
 
 export const parameters = {
   viewMode: 'docs',
@@ -45,6 +50,8 @@ export const parameters = {
     },
   },
   backgrounds: {
+    default: 'beige',
+    values: colorEntries,
     grid: {
       cellSize: 16,
       opacity: 0.5,
@@ -109,6 +116,24 @@ export const parameters = {
   actions: { argTypesRegex: '^on.*' },
   controls: { expanded: true },
   layout: 'fullscreen',
+};
+
+export const globalTypes = {
+  colorMode: {
+    name: ' ColorMode',
+    description: 'Global color mode for components',
+    defaultValue: 'light',
+    toolbar: {
+      icon: 'circlehollow',
+      // Array of plain string values or MenuItem shape (see below)
+      items: [
+        { value: 'light', icon: 'circlehollow', title: 'light' },
+        { value: 'dark', icon: 'circle', title: 'dark' },
+      ],
+      // Property that specifies if the name of the item will be displayed
+      showName: true,
+    },
+  },
 };
 
 export const decorators = [withEmotion, withDesign];
