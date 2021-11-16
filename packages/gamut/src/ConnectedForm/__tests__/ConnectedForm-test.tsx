@@ -5,10 +5,7 @@ import React from 'react';
 
 import { createPromise } from '../../utils';
 import { ConnectedForm } from '..';
-import {
-  PlainConnectedFields,
-  ValidatedConnectedFields,
-} from '../__fixtures__/helpers';
+import { PlainConnectedFields } from '../__fixtures__/helpers';
 
 const renderView = setupRtl(ConnectedForm, {
   defaultValues: {
@@ -68,12 +65,20 @@ const baseResults = {
   radiogroup: 'two',
 };
 
+const validationRules = {
+  input: { required: 'you must type something' },
+  radiogroup: { required: 'you must radio something' },
+  checkbox: { required: 'you must check it' },
+  select: { required: 'you must select something' },
+};
+
 describe('ConnectedForm', () => {
   it('submits the form when all inputs are filled out', async () => {
     const api = createPromise<{}>();
     const onSubmit = async (values: {}) => api.resolve(values);
 
     const { view } = renderView({ onSubmit });
+
     const { checkboxField, selectField, textField, radioOption } = getBaseCases(
       view
     );
@@ -95,19 +100,48 @@ describe('ConnectedForm', () => {
     const api = createPromise<{}>();
     const onSubmit = async (values: {}) => api.resolve(values);
     const { view } = renderView({
-      children: <ValidatedConnectedFields />,
-      defaultValues: { checkbox: false, select: undefined },
+      validationRules,
+      defaultValues: { checkbox: false, input: '', radiogroup: undefined },
       onSubmit,
     });
 
     await act(async () => {
       fireEvent.submit(view.getByRole('button'));
-
-      await api.innerPromise;
     });
 
     // there should only be a single "assertive" error from the form submission
     expect(view.getAllByRole('alert').length).toBe(1);
-    expect(view.getAllByRole('status').length).toBe(1);
+    expect(view.getAllByRole('status').length).toBe(3);
+  });
+
+  it.only('sets aria-required to true for the appropriate inputs', () => {
+    const api = createPromise<{}>();
+    const onSubmit = async (values: {}) => api.resolve(values);
+
+    const { view } = renderView({
+      validationRules,
+      onSubmit,
+    });
+
+    const { checkboxField, selectField, textField, radioOption } = getBaseCases(
+      view
+    );
+
+    expect(textField).toHaveAttribute('aria-required');
+  });
+
+  describe('when "onSubmit" validation is selected', () => {
+    it('never disables the submit button', () => {
+      const fields = [
+        { ...stubTextField, validation: { required: 'Please enter text' } },
+      ];
+      const api = createPromise<{}>();
+      const onSubmit = async (values: {}) => api.resolve(values);
+
+      const { view } = renderView({ fields, onSubmit });
+      const submitButton = view.getByRole('button');
+
+      expect(submitButton).not.toBeDisabled();
+    });
   });
 });

@@ -53,31 +53,3 @@ export const PlainConnectedFields = () => {
     </>
   );
 };
-
-export const ValidatedConnectedFields = () => {
-  return (
-    <>
-      <ConnectedFormGroup
-        name="checkbox"
-        label="cool-checkbox"
-        field={{
-          component: ConnectedCheckbox,
-          label: 'cool-checkbox',
-          validation: { required: 'you must click.' },
-        }}
-      />
-      <SubmitButton variant="secondary" m={32}>
-        submit this form.
-      </SubmitButton>
-      <ConnectedFormGroup
-        name="select"
-        label="cool-select"
-        field={{
-          component: ConnectedSelect,
-          options: ['one', 'two', 'zero'],
-          validation: { required: 'you must select.' },
-        }}
-      />
-    </>
-  );
-};
