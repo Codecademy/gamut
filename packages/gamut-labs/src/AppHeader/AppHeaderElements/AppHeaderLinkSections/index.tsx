@@ -40,7 +40,7 @@ export const AppHeaderLinkSections: React.FC<AppHeaderLinkSectionsProps> = ({
                   key={link.id}
                   topSeparator={sectionIndex !== 0 && linkIndex === 0}
                   badge={
-                    link.newBadge && (
+                    link.hasBadge ? (
                       <StyledBadge
                         round
                         variant="blue"
@@ -53,7 +53,7 @@ export const AppHeaderLinkSections: React.FC<AppHeaderLinkSectionsProps> = ({
                       >
                         New
                       </StyledBadge>
-                    )
+                    ) : undefined
                   }
                 />
               );
@@ -66,7 +66,7 @@ export const AppHeaderLinkSections: React.FC<AppHeaderLinkSectionsProps> = ({
                 item={link}
                 key={link.id}
                 badge={
-                  link.newBadge && (
+                  link.hasBadge ? (
                     <StyledBadge
                       round
                       variant="blue"
@@ -79,7 +79,7 @@ export const AppHeaderLinkSections: React.FC<AppHeaderLinkSectionsProps> = ({
                     >
                       New
                     </StyledBadge>
-                  )
+                  ) : undefined
                 }
               />
             );

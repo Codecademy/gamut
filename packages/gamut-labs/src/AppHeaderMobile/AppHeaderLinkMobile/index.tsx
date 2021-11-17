@@ -11,7 +11,7 @@ export type AppHeaderLinkMobileProps = {
   item: AppHeaderLinkItem;
   action: AppHeaderClickHandler;
   topSeparator?: boolean;
-  badge?: React.FunctionComponent<BadgeProps>;
+  badge?: React.ReactElement<BadgeProps>;
 };
 
 type AppHeaderLinkButtonProps = { topSeparator: boolean };

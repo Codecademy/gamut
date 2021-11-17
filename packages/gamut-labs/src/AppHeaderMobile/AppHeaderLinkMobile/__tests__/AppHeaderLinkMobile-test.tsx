@@ -1,3 +1,4 @@
+import { Badge } from '@codecademy/gamut';
 import { theme } from '@codecademy/gamut-styles';
 import { ThemeProvider } from '@emotion/react';
 import { render, screen } from '@testing-library/react';
@@ -39,9 +40,9 @@ describe('AppHeaderLinkMobile', () => {
   it('renders new badge when newBadge prop true', () => {
     const { getByText } = renderAppHeaderLinkMobile({
       ...defaultProps,
-      newBadge: true,
+      badge: <Badge>new</Badge>,
     });
-    getByText('New');
+    getByText('new');
   });
 
   it('does not render new badge when newBadge prop false', () => {
