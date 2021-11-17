@@ -1,4 +1,4 @@
-import { Anchor, Badge, Box, FlexBox } from '@codecademy/gamut';
+import { Anchor, BadgeProps, Box, FlexBox } from '@codecademy/gamut';
 import styled from '@emotion/styled';
 import React from 'react';
 
@@ -11,7 +11,7 @@ export type AppHeaderLinkMobileProps = {
   item: AppHeaderLinkItem;
   action: AppHeaderClickHandler;
   topSeparator?: boolean;
-  newBadge?: boolean;
+  badge?: React.FunctionComponent<BadgeProps>;
 };
 
 type AppHeaderLinkButtonProps = { topSeparator: boolean };
@@ -26,21 +26,11 @@ const SeparatorInner = styled(Box)<AppHeaderLinkButtonProps>`
   margin-top: ${({ topSeparator }) => (topSeparator ? '0.5rem' : '')};
 `;
 
-export const StyledBadge = styled(Badge)`
-  font-size: 10px;
-  padding-top: 1px;
-  padding-bottom: 10px;
-  padding-left: 8px;
-  padding-right: 8px;
-  width: 36px;
-  border-radius: 16px;
-`;
-
 export const AppHeaderLinkMobile: React.FC<AppHeaderLinkMobileProps> = ({
   action,
   item,
   topSeparator = false,
-  newBadge = false,
+  badge,
 }) => {
   const Icon = item.icon;
 
@@ -71,21 +61,7 @@ export const AppHeaderLinkMobile: React.FC<AppHeaderLinkMobileProps> = ({
                 <Icon size={24} aria-hidden />
               </FlexBox>
             )}
-            {item.text}{' '}
-            {newBadge && (
-              <StyledBadge
-                round
-                variant="blue"
-                fontFamily="accent"
-                ml={8}
-                pl={8}
-                pr={8}
-                height={16}
-                alignSelf="center"
-              >
-                New
-              </StyledBadge>
-            )}
+            {item.text} {badge}
           </FlexBox>
         </Anchor>
       </SeparatorInner>
