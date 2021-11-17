@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [50.2.3](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@50.2.2...@codecademy/styleguide@50.2.3) (2021-11-16)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [50.2.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@50.2.1...@codecademy/styleguide@50.2.2) (2021-11-15)
+
+
+### Bug Fixes
+
+* add aria-hidden prop to illustrations ([06cc1a2](https://github.com/Codecademy/gamut/commit/06cc1a2e01cae8df34584854b0e79b10bab5881b))
+
+
+
 ### [50.2.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@50.2.0...@codecademy/styleguide@50.2.1) (2021-11-10)
 
 **Note:** Version bump only for package @codecademy/styleguide
