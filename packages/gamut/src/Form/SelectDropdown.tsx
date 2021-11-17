@@ -92,7 +92,7 @@ type SelectDropdownProps = SingleSelectDropdownProps | MultiSelectDropdownProps;
 
 interface BaseOnChangeProps {
   isMulti?: boolean;
-  onChange:
+  onChange?:
     | SingleSelectDropdownProps['onChange']
     | MultiSelectDropdownProps['onChange'];
 }
