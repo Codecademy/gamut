@@ -58,7 +58,7 @@ export const AppHeaderLinkMobile: React.FC<AppHeaderLinkMobileProps> = ({
                 <Icon size={24} aria-hidden />
               </FlexBox>
             )}
-            {item.text}{' '}
+            {item.text}
           </FlexBox>
         </Anchor>
       </SeparatorInner>
