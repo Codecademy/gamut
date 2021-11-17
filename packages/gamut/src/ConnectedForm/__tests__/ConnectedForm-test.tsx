@@ -15,7 +15,6 @@ const renderView = setupRtl(ConnectedForm, {
     radiogroup: 'three',
   },
   children: <PlainConnectedFields />,
-  submit: { type: 'fill', contents: <>Submit</>, size: 6 },
 });
 
 const getBaseCases = (view: RenderResult<typeof queries, HTMLElement>) => {
@@ -28,8 +27,9 @@ const getBaseCases = (view: RenderResult<typeof queries, HTMLElement>) => {
   const textField = view.getByRole('textbox', {
     name: '',
   }) as HTMLInputElement;
+  const radioGroup = view.getByRole('radiogroup');
   const radioOption = view.getByLabelText('two');
-  return { checkboxField, selectField, textField, radioOption };
+  return { checkboxField, selectField, textField, radioGroup, radioOption };
 };
 
 const selectValue = 'two';
@@ -66,10 +66,17 @@ const baseResults = {
 };
 
 const validationRules = {
-  input: { required: 'you must type something' },
-  radiogroup: { required: 'you must radio something' },
   checkbox: { required: 'you must check it' },
   select: { required: 'you must select something' },
+  input: { required: 'you must type something' },
+  radiogroup: { required: 'you must radio something' },
+};
+
+const defaultValues = {
+  checkbox: false,
+  select: '',
+  input: '',
+  radiogroup: undefined,
 };
 
 describe('ConnectedForm', () => {
@@ -101,7 +108,7 @@ describe('ConnectedForm', () => {
     const onSubmit = async (values: {}) => api.resolve(values);
     const { view } = renderView({
       validationRules,
-      defaultValues: { checkbox: false, input: '', radiogroup: undefined },
+      defaultValues,
       onSubmit,
     });
 
@@ -114,7 +121,7 @@ describe('ConnectedForm', () => {
     expect(view.getAllByRole('status').length).toBe(3);
   });
 
-  it.only('sets aria-required to true for the appropriate inputs', () => {
+  it('sets aria-required to true for the appropriate inputs', () => {
     const api = createPromise<{}>();
     const onSubmit = async (values: {}) => api.resolve(values);
 
@@ -123,25 +130,214 @@ describe('ConnectedForm', () => {
       onSubmit,
     });
 
-    const { checkboxField, selectField, textField, radioOption } = getBaseCases(
+    const { checkboxField, selectField, textField, radioGroup } = getBaseCases(
       view
     );
 
+    expect(checkboxField).toHaveAttribute('aria-required');
+    expect(selectField).toHaveAttribute('aria-required');
     expect(textField).toHaveAttribute('aria-required');
+    expect(radioGroup).toHaveAttribute('aria-required');
   });
 
-  describe('when "onSubmit" validation is selected', () => {
-    it('never disables the submit button', () => {
-      const fields = [
-        { ...stubTextField, validation: { required: 'Please enter text' } },
-      ];
+  it('does not disable submit by default', () => {
+    const api = createPromise<{}>();
+    const onSubmit = async (values: {}) => api.resolve(values);
+
+    const { view } = renderView({ validationRules, defaultValues, onSubmit });
+
+    const submitButton = view.getByRole('button');
+
+    expect(submitButton).not.toBeDisabled();
+  });
+
+  describe('onChange validation', () => {
+    it('disables the submit button when required fields are incomplete', async () => {
       const api = createPromise<{}>();
       const onSubmit = async (values: {}) => api.resolve(values);
 
-      const { view } = renderView({ fields, onSubmit });
-      const submitButton = view.getByRole('button');
+      const { view } = renderView({
+        children: <PlainConnectedFields onChangeValidation />,
+        validation: 'onChange',
+        validationRules,
+        defaultValues,
+        onSubmit,
+      });
 
+      const { textField } = getBaseCases(view);
+
+      await act(async () => {
+        fireEvent.input(textField, {
+          target: {
+            value: '',
+          },
+        });
+      });
+
+      const submitButton = view.getByRole('button');
+      expect(submitButton).toBeDisabled();
+    });
+
+    it('enables the submit button after the required fields are completed', async () => {
+      const api = createPromise<{}>();
+      const onSubmit = async (values: {}) => api.resolve(values);
+
+      const { view } = renderView({
+        children: <PlainConnectedFields onChangeValidation />,
+        validation: 'onChange',
+        validationRules,
+        defaultValues,
+        onSubmit,
+      });
+
+      const {
+        checkboxField,
+        selectField,
+        textField,
+        radioOption,
+      } = getBaseCases(view);
+
+      doBaseFormActions(checkboxField, selectField, textField, radioOption);
+
+      const submitButton = view.getByRole('button');
       expect(submitButton).not.toBeDisabled();
+    });
+  });
+
+  describe('disableFieldsOnSubmit', () => {
+    it.only('disables fields when form is successfully submitted', async () => {
+      const api = createPromise<{}>();
+      const onSubmit = async (values: {}) => api.resolve(values);
+
+      const { view } = renderView({
+        disableFieldsOnSubmit: true,
+        defaultValues,
+        onSubmit,
+      });
+
+      const {
+        checkboxField,
+        selectField,
+        textField,
+        radioOption,
+      } = getBaseCases(view);
+
+      await act(async () => {
+        fireEvent.submit(view.getByRole('button'));
+        await api.innerPromise;
+      });
+
+      expect(checkboxField).toBeDisabled();
+      expect(selectField).toBeDisabled();
+      expect(textField).toBeDisabled();
+      expect(radioOption).toBeDisabled();
+    });
+
+    it('does not disable fields when form has a validation error', async () => {
+      const api = createPromise<{}>();
+      const onSubmit = async (values: {}) => api.resolve(values);
+
+      const { view } = renderView({
+        validationRules,
+        onSubmit,
+        disableFieldsOnSubmit: true,
+      });
+
+      const {
+        checkboxField,
+        selectField,
+        textField,
+        radioOption,
+      } = getBaseCases(view);
+      await act(async () => {
+        fireEvent.submit(view.getByRole('button'));
+      });
+
+      expect(checkboxField).not.toBeDisabled();
+      expect(selectField).not.toBeDisabled();
+      expect(textField).not.toBeDisabled();
+      expect(radioOption).not.toBeDisabled();
+    });
+
+    describe('resetOnSubmit', () => {
+      it.only('resets fields when form is successfully submitted', async () => {
+        let submitCount = 0;
+        const api = createPromise<{}>();
+        const api2 = createPromise<{}>();
+        const onSubmit = async (values: {}) => {
+          return submitCount < 1 ? api.resolve(values) : api2.resolve(values);
+        };
+
+        const { view } = renderView({
+          onSubmit,
+          defaultValues,
+          resetOnSubmit: true,
+        });
+
+        const {
+          checkboxField,
+          selectField,
+          textField,
+          radioOption,
+        } = getBaseCases(view);
+
+        doBaseFormActions(selectField, textField, checkboxField, radioOption);
+
+        await act(async () => {
+          fireEvent.submit(view.getByRole('button'));
+
+          await api.innerPromise;
+        });
+
+        const firstResult = await api.innerPromise;
+
+        await act(async () => {
+          submitCount += 1;
+          fireEvent.submit(view.getByRole('button'));
+          await api2.innerPromise;
+        });
+
+        const secondResult = await api2.innerPromise;
+
+        expect(firstResult).toEqual(baseResults);
+        expect(secondResult).toEqual({ ...defaultValues, radiogroup: null });
+      });
+
+      it('does not reset fields when form is has a validation error', async () => {
+        const api = createPromise<{}>();
+        const onSubmit = async (values: {}) => api.resolve(values);
+
+        const { view } = renderView({
+          validationRules,
+          defaultValues,
+          onSubmit,
+          resetOnSubmit: true,
+        });
+
+        const {
+          checkboxField,
+          selectField,
+          textField,
+          radioOption,
+        } = getBaseCases(view);
+
+        await act(async () => {
+          fireEvent.input(textField, {
+            target: {
+              value: 'an arbitrary value',
+            },
+          });
+          fireEvent.click(radioOption);
+        });
+
+        await act(async () => {
+          fireEvent.submit(view.getByRole('button'));
+        });
+
+        expect(checkboxField.checked).toEqual(defaultValues.checkbox);
+        expect(selectField.value).toEqual(defaultValues.select);
+        expect(textField.value).toEqual('an arbitrary value');
+      });
     });
   });
 });

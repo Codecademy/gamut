@@ -9,12 +9,14 @@ export const ConnectedRadioGroup: React.FC<ConnectedRadioGroupProps> = ({
   onChange,
   ...rest
 }) => {
-  const { setValue } = useField({ name });
+  const { setValue, isRequired } = useField({ name });
 
   return (
     <RadioGroup
       htmlForPrefix={name}
       name={name}
+      aria-required={isRequired}
+      role="radiogroup"
       onChange={(event) => {
         const { value } = event.target;
         setValue(name, value);

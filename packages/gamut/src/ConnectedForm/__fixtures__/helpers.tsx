@@ -9,7 +9,9 @@ import {
   SubmitButton,
 } from '..';
 
-export const PlainConnectedFields = () => {
+export const PlainConnectedFields: React.FC<{
+  onChangeValidation?: boolean;
+}> = ({ onChangeValidation }) => {
   return (
     <>
       <ConnectedFormGroup
@@ -20,7 +22,11 @@ export const PlainConnectedFields = () => {
           label: 'cool-checkbox',
         }}
       />
-      <SubmitButton variant="secondary" m={32}>
+      <SubmitButton
+        variant="secondary"
+        m={32}
+        disabled={onChangeValidation ? ({ isValid }) => !isValid : undefined}
+      >
         submit this form.
       </SubmitButton>
       <ConnectedFormGroup
@@ -28,7 +34,7 @@ export const PlainConnectedFields = () => {
         label="cool-select"
         field={{
           component: ConnectedSelect,
-          options: ['one', 'two', 'zero'],
+          options: ['', 'one', 'two', 'zero'],
         }}
       />
       <ConnectedFormGroup

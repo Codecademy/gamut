@@ -10,13 +10,12 @@ export const ConnectedCheckbox: React.FC<ConnectedCheckboxProps> = ({
   disabled,
   id,
   label,
-  required,
   multiline,
   name,
   onUpdate,
   spacing,
 }) => {
-  const { isDisabled, control, validation } = useField({
+  const { isDisabled, control, validation, isRequired } = useField({
     name,
     disabled,
   });
@@ -42,7 +41,7 @@ export const ConnectedCheckbox: React.FC<ConnectedCheckboxProps> = ({
           multiline={multiline}
           id={id}
           ref={ref}
-          aria-required={required}
+          aria-required={isRequired}
           spacing={spacing}
         />
       )}
