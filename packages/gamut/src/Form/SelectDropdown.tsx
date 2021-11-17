@@ -53,10 +53,10 @@ type SelectDropdownBaseProps = Omit<
 
 export type SelectDropdownOptions = SelectOptions | IconOption[];
 
-interface SelectDropdownrops
+interface SelectDropdownCoreProps
   extends SelectDropdownBaseProps,
     Omit<
-      NamedProps<OptionStrict, false>,
+      NamedProps<OptionStrict, boolean>,
       | 'formatOptionLabel'
       | 'isDisabled'
       | 'value'
@@ -64,6 +64,8 @@ interface SelectDropdownrops
       | 'components'
       | 'styles'
       | 'theme'
+      | 'onChange'
+      | 'isMulti'
     >,
     Pick<
       SelectHTMLAttributes<HTMLSelectElement>,
@@ -75,6 +77,33 @@ interface SelectDropdownrops
   options?: SelectDropdownOptions;
   shownOptionsLimit?: 1 | 2 | 3 | 4 | 5 | 6;
 }
+
+interface SingleSelectDropdownProps extends SelectDropdownCoreProps {
+  isMulti?: false;
+  onChange?: NamedProps<OptionStrict, false>['onChange'];
+}
+
+interface MultiSelectDropdownProps extends SelectDropdownCoreProps {
+  isMulti: true;
+  onChange?: NamedProps<OptionStrict, true>['onChange'];
+}
+
+type SelectDropdownProps = SingleSelectDropdownProps | MultiSelectDropdownProps;
+
+interface BaseOnChangeProps {
+  isMulti?: boolean;
+  onChange:
+    | SingleSelectDropdownProps['onChange']
+    | MultiSelectDropdownProps['onChange'];
+}
+
+const isMultiSelectProps = (
+  props: BaseOnChangeProps
+): props is MultiSelectDropdownProps => !!props.isMulti;
+
+const isSingleSelectProps = (
+  props: BaseOnChangeProps
+): props is SingleSelectDropdownProps => !props.isMulti;
 
 const { DropdownIndicator, SelectContainer } = SelectDropdownElements;
 
@@ -157,7 +186,7 @@ const defaultProps = {
 
 const onChangeAction = 'select-option';
 
-export const SelectDropdown: React.FC<SelectDropdownrops> = ({
+export const SelectDropdown: React.FC<SelectDropdownProps> = ({
   options,
   id,
   size,
@@ -184,46 +213,37 @@ export const SelectDropdown: React.FC<SelectDropdownrops> = ({
     [selectOptions, value]
   );
 
-  const changeHandler = useCallback(
-    (optionEvent: OptionStrict) => {
-      setActivated(true);
-
-      onChange?.(optionEvent, {
-        action: onChangeAction,
-        option: optionEvent,
-      });
-    },
-    [onChange]
-  );
-
   const [multiValues, setMultiValues] = useState(
     selectOptions.filter((option) => option.value === value)
   );
 
-  const multiChangeHandler = useCallback(
-    (optionEvent: OptionsType<OptionStrict>) => {
+  const changeHandler = useCallback(
+    (optionEvent: OptionStrict | OptionsType<OptionStrict>) => {
       setActivated(true);
 
-      const selectionEvent = optionEvent as OptionStrict[];
+      // We have to do this because the version of typescript we have doesn't have the transitivity of these type guards yet. But, we will soon!
+      // Should probably come with: https://codecademy.atlassian.net/browse/GM-354
+      const onChangeProps = { onChange, isMulti };
 
-      setMultiValues((multiValues) => {
-        multiValues
-          ?.filter((option) =>
-            selectionEvent.some(
-              (eventItem) => eventItem.value === option?.value
-            )
-          )
-          .forEach((newValue) =>
-            onChange?.(newValue, {
-              action: onChangeAction,
-              option: newValue,
-            })
-          );
+      if (isSingleSelectProps(onChangeProps)) {
+        const singleOptionEvent = optionEvent as OptionStrict;
 
-        return selectionEvent;
-      });
+        onChangeProps.onChange?.(singleOptionEvent, {
+          action: onChangeAction,
+          option: singleOptionEvent,
+        });
+      }
+
+      if (isMultiSelectProps(onChangeProps)) {
+        setMultiValues(optionEvent as OptionStrict[]);
+
+        onChangeProps.onChange?.(optionEvent as OptionsType<OptionStrict>, {
+          action: onChangeAction,
+          option: undefined, // At the moment this isn't used, but when multi select is built for real, boom (https://codecademy.atlassian.net/browse/GM-354)
+        });
+      }
     },
-    [onChange]
+    [onChange, isMulti]
   );
 
   const theme = useTheme();
@@ -313,7 +333,7 @@ export const SelectDropdown: React.FC<SelectDropdownrops> = ({
       activated={activated}
       error={Boolean(error)}
       formatOptionLabel={formatOptionLabel}
-      onChange={isMulti ? multiChangeHandler : changeHandler}
+      onChange={changeHandler}
       inputProps={{ ...inputProps, name }}
       placeholder={placeholder}
       styles={memoizedStyles}
