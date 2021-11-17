@@ -34,6 +34,7 @@ export type AppHeaderLinkItem = AppHeaderBaseHrefItem<'link'> & {
   newTab?: boolean;
   text: string;
   topSeparator?: boolean;
+  newBadge?: boolean;
 };
 
 export type AppHeaderTextButtonItem = AppHeaderBaseHrefItem<'text-button'> & {

@@ -27,13 +27,19 @@ export const AppHeaderLinkSections: React.FC<AppHeaderLinkSectionsProps> = ({
                   item={link}
                   key={link.id}
                   topSeparator={sectionIndex !== 0 && linkIndex === 0}
+                  newBadge={link.newBadge}
                 />
               );
             });
           })
         : item.popover.map((link: AppHeaderLinkItem) => {
             return (
-              <AppHeaderLinkMobile action={action} item={link} key={link.id} />
+              <AppHeaderLinkMobile
+                action={action}
+                item={link}
+                key={link.id}
+                newBadge={link.newBadge}
+              />
             );
           })}
     </>

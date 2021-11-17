@@ -8,7 +8,7 @@ import { AppHeaderLinkMobile, AppHeaderLinkMobileProps } from '..';
 const testText = 'Test Link';
 const action = jest.fn();
 
-const props: AppHeaderLinkMobileProps = {
+const defaultProps: AppHeaderLinkMobileProps = {
   action,
   item: {
     dataTestId: '',
@@ -21,7 +21,7 @@ const props: AppHeaderLinkMobileProps = {
   },
 };
 
-const renderAppHeaderLinkMobile = () => {
+const renderAppHeaderLinkMobile = (props: AppHeaderLinkMobileProps) => {
   return render(
     <ThemeProvider theme={theme}>
       <AppHeaderLinkMobile {...props} />
@@ -31,8 +31,22 @@ const renderAppHeaderLinkMobile = () => {
 
 describe('AppHeaderLinkMobile', () => {
   it('calls action() when clicked', () => {
-    renderAppHeaderLinkMobile();
+    renderAppHeaderLinkMobile(defaultProps);
     screen.getByRole('link').click();
     expect(action).toHaveBeenCalled();
+  });
+
+  it('renders new badge when newBadge prop true', () => {
+    const { getByText } = renderAppHeaderLinkMobile({
+      ...defaultProps,
+      newBadge: true,
+    });
+    getByText('New');
+  });
+
+  it('does not render new badge when newBadge prop false', () => {
+    const { queryByText } = renderAppHeaderLinkMobile(defaultProps);
+
+    expect(queryByText('New')).toBeFalsy();
   });
 });
