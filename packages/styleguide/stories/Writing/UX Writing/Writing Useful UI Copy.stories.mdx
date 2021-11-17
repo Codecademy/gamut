@@ -1,14 +1,16 @@
 import title from '@codecademy/macros/lib/title.macro';
-import { Meta, Story } from '@storybook/addon-docs/blocks';
+import { Meta } from '@storybook/addon-docs/blocks';
+
+import { LinkTo } from '~styleguide/blocks';
 
 <Meta
   title={title}
   parameters={{
-    subtitle: 'Follow these 8 steps to write clear, useful UI copy',
+    subtitle: 'Follow these steps to write clear, useful UI copy.',
   }}
 />
 
-Writing a user-facing string like an **[alert](https://gamut.codecademy.com/?path=/docs/molecules-alert--alert)**, **[error](https://gamut.codecademy.com/?path=/docs/molecules-alert--error)**, or **[confirmation dialog](https://gamut.codecademy.com/?path=/docs/molecules-modals-dialog--primary)**? Follow these steps to write clear, useful UI copy. Visit the **[UX writing best practices Notion page](https://www.notion.so/codecademy/UX-Writing-Best-Practices-f9d1e76981ad4b528733303f3cf97f04)** for more tips.
+For best practices for writing for specific components, like alerts, errors, or confirmation dialogs, check out our documentation on <LinkTo id="writing-ux-writing-writing-for-components-about--page">writing for components</LinkTo>.
 
 ---
 
