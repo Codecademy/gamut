@@ -21,7 +21,6 @@ export const resourcesList: ResourcesList[] = [
     headerTrackingTarget: 'topnav_resources_challenges',
     text: 'Challenges',
     type: 'link',
-    newBadge: false,
   },
   {
     id: 'docs',
@@ -30,7 +29,6 @@ export const resourcesList: ResourcesList[] = [
     headerTrackingTarget: 'topnav_resources_docs',
     text: 'Docs',
     type: 'link',
-    newBadge: false,
   },
   {
     id: 'cheatsheets',
@@ -39,7 +37,6 @@ export const resourcesList: ResourcesList[] = [
     headerTrackingTarget: 'topnav_resources_cheatsheets',
     text: 'Cheatsheets',
     type: 'link',
-    newBadge: false,
   },
   {
     id: 'articles',
@@ -48,7 +45,6 @@ export const resourcesList: ResourcesList[] = [
     headerTrackingTarget: 'topnav_resources_articles',
     text: 'Articles',
     type: 'link',
-    newBadge: false,
   },
   {
     id: 'videos',
@@ -57,7 +53,6 @@ export const resourcesList: ResourcesList[] = [
     headerTrackingTarget: 'topnav_resources_videos',
     text: 'Videos',
     type: 'link',
-    newBadge: true,
   },
   {
     id: 'blog',
@@ -67,7 +62,6 @@ export const resourcesList: ResourcesList[] = [
     text: 'Blog',
     newTab: true,
     type: 'link',
-    newBadge: false,
   },
   {
     id: 'projects',
@@ -76,7 +70,6 @@ export const resourcesList: ResourcesList[] = [
     headerTrackingTarget: 'topnav_resources_projects',
     text: 'Projects',
     type: 'link',
-    newBadge: false,
   },
   {
     id: 'career-center',
@@ -85,19 +78,17 @@ export const resourcesList: ResourcesList[] = [
     headerTrackingTarget: 'topnav_resources_career_center',
     text: 'Career Center',
     type: 'link',
-    newBadge: false,
   },
 ];
 
 export const headerResourcesList: AppHeaderLinkItem[] = resourcesList.map(
-  ({ id, href, headerTrackingTarget, text, type, newTab, newBadge }) => ({
+  ({ id, href, headerTrackingTarget, text, type, newTab }) => ({
     id,
     href,
     trackingTarget: headerTrackingTarget,
     text,
     type,
     newTab,
-    newBadge,
   })
 );
 
