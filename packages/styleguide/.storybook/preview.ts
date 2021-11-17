@@ -3,13 +3,8 @@ import { withDesign } from 'storybook-addon-designs';
 
 import { withEmotion } from './decorators/theme';
 import { DocsPage, DocsContainer } from './components';
-import { breakpoints, trueColors } from '@codecademy/gamut-styles/src';
+import { breakpoints } from '@codecademy/gamut-styles/src';
 import { theme } from './theme';
-
-const colorEntries = Object.entries(trueColors).map(([name, value]) => ({
-  name,
-  value,
-}));
 
 export const parameters = {
   viewMode: 'docs',
@@ -50,12 +45,9 @@ export const parameters = {
     },
   },
   backgrounds: {
-    default: 'beige',
-    values: colorEntries,
+    disable: true,
     grid: {
-      cellSize: 16,
-      opacity: 0.5,
-      cellAmount: 5,
+      disable: true,
     },
   },
   viewport: {
@@ -107,6 +99,7 @@ export const parameters = {
       },
     },
   },
+  previewTabs: { 'storybook/docs/panel': { index: -1 } },
   a11y: {
     element: '#root',
     config: {},
