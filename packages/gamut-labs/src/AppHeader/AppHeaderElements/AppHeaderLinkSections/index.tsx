@@ -24,6 +24,22 @@ export const StyledBadge = styled(Badge)`
   border-radius: 16px;
 `;
 
+const renderBadge = (shouldRender?: boolean) =>
+  shouldRender ? (
+    <StyledBadge
+      round
+      variant="blue"
+      fontFamily="accent"
+      ml={8}
+      pl={8}
+      pr={8}
+      height={16}
+      alignSelf="center"
+    >
+      New
+    </StyledBadge>
+  ) : undefined;
+
 export const AppHeaderLinkSections: React.FC<AppHeaderLinkSectionsProps> = ({
   action,
   item,
@@ -39,22 +55,7 @@ export const AppHeaderLinkSections: React.FC<AppHeaderLinkSectionsProps> = ({
                   item={link}
                   key={link.id}
                   topSeparator={sectionIndex !== 0 && linkIndex === 0}
-                  badge={
-                    link.hasBadge ? (
-                      <StyledBadge
-                        round
-                        variant="blue"
-                        fontFamily="accent"
-                        ml={8}
-                        pl={8}
-                        pr={8}
-                        height={16}
-                        alignSelf="center"
-                      >
-                        New
-                      </StyledBadge>
-                    ) : undefined
-                  }
+                  badge={renderBadge(link.hasBadge)}
                 />
               );
             });
@@ -65,22 +66,7 @@ export const AppHeaderLinkSections: React.FC<AppHeaderLinkSectionsProps> = ({
                 action={action}
                 item={link}
                 key={link.id}
-                badge={
-                  link.hasBadge ? (
-                    <StyledBadge
-                      round
-                      variant="blue"
-                      fontFamily="accent"
-                      ml={8}
-                      pl={8}
-                      pr={8}
-                      height={16}
-                      alignSelf="center"
-                    >
-                      New
-                    </StyledBadge>
-                  ) : undefined
-                }
+                badge={renderBadge(link.hasBadge)}
               />
             );
           })}
