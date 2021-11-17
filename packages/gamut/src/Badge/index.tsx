@@ -16,6 +16,7 @@ const badgeVariants = variant({
     display: 'inline-block',
     textAlign: 'center',
     width: 'min-content',
+    whiteSpace: 'nowrap',
   },
   defaultVariant: 'blue',
   variants: {
@@ -28,12 +29,22 @@ const badgeVariants = variant({
       textColor: 'navy',
     },
     grey: {
-      bg: `navy-500`,
+      bg: `text-disabled`,
       textColor: 'white',
     },
     hyper: {
       bg: `hyper-500`,
       textColor: 'white',
+    },
+    secondary: {
+      bg: `text`,
+      textColor: 'background',
+    },
+    stroke: {
+      border: 1,
+      borderColor: 'text-disabled',
+      color: 'text-disabled',
+      bg: 'transparent',
     },
   },
 });
@@ -41,6 +52,9 @@ const badgeVariants = variant({
 const badgeStates = states({
   round: {
     borderRadius: '40px',
+  },
+  accent: {
+    fontFamily: 'accent',
   },
 });
 

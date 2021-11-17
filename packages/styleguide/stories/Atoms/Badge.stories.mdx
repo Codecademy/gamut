@@ -1,4 +1,4 @@
-import { Anchor, Badge } from '@codecademy/gamut/src';
+import { Badge } from '@codecademy/gamut/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
@@ -15,26 +15,80 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
   args={{ children: 'badge' }}
 />
 
+Badges are generally used as a standard way to highlight a short piece of text, likely a single word. Badges are inline and generally found next to some interface element to be called out.
+
+export const BadgeTemplate = (args) => <Badge {...args}>{args.variant}</Badge>;
+
+### Variants
+
+Badge variants have different meanings between applications. While they are all specified on the `variant` prop not all of them can be used together. For user facing pages please use only status variants.
+
+#### Status
+
+These variants are for denoting the status of a piece of content without displaying a progress bar or content item icon.
+
+<Canvas>
+  <Story
+    name="status"
+    args={{ variant: 'secondary', stroke: true, round: true }}
+  >
+    {BadgeTemplate.bind({})}
+  </Story>
+</Canvas>
+
+#### Admin
+
+These badge variants for admin pages and should not be used on user facing views.
+
+<Canvas>
+  <Story name="grey" args={{ variant: 'grey' }}>
+    {BadgeTemplate.bind({})}
+  </Story>
+  <Story name="yellow" args={{ variant: 'yellow' }}>
+    {BadgeTemplate.bind({})}
+  </Story>
+  <Story name="hyper" args={{ variant: 'hyper' }}>
+    {BadgeTemplate.bind({})}
+  </Story>
+  <Story name="blue" args={{ variant: 'blue' }}>
+    {BadgeTemplate.bind({})}
+  </Story>
+</Canvas>
+
+### States
+
+You can make your badges display with rounded edges using the `round` boolean prop, with the accent font-family using the `accent` prop, or both.
+
+<Canvas>
+  <Story name="round" args={{ variant: 'yellow', round: true }}>
+    {BadgeTemplate.bind({})}
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="accent" args={{ variant: 'stroke', accent: true }}>
+    {BadgeTemplate.bind({})}
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="round accent">
+    <Badge variant="secondary" round accent>
+      New
+    </Badge>
+    <Badge variant="stroke" round accent>
+      Teams +
+    </Badge>
+    <Badge variant="yellow" round accent>
+      New
+    </Badge>
+  </Story>
+</Canvas>
+
+## Code Playground
+
 <Canvas>
   <Story name="Badge">{(args) => <Badge {...args} />}</Story>
 </Canvas>
 
 <PropsTable story="Badge" />
-
-Badges are generally used as a standard way to highlight a short piece of text, likely a single word.
-Badges are inline and generally found next to some interface element to be called out.
-
-For example, non-admin Pro users can see a badge calling out Referrals in their dropdown profile menu.
-
-<Canvas>
-  <Story name="Inline Badge">
-    {() => (
-      <>
-        <Anchor href="https://codecademy.com/referrals" variant="interface">
-          Referrals
-        </Anchor>
-        <Badge>new</Badge>
-      </>
-    )}
-  </Story>
-</Canvas>
