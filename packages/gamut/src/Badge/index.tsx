@@ -8,6 +8,7 @@ import { StyleProps, variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
 
 const colorVariants = variant({
+  defaultVariant: 'default',
   base: {
     borderRadius: '3px',
     py: 4,
@@ -19,9 +20,17 @@ const colorVariants = variant({
     whiteSpace: 'nowrap',
     lineHeight: 'title',
   },
-  defaultVariant: 'default',
   variants: {
     default: {
+      borderRadius: '3px',
+      py: 4,
+      px: 12,
+      fontWeight: 400,
+      display: 'inline-block',
+      textAlign: 'center',
+      width: 'min-content',
+      whiteSpace: 'nowrap',
+      lineHeight: 'title',
       bg: `text`,
       textColor: 'background',
     },
@@ -52,9 +61,9 @@ const colorVariants = variant({
 
 const sizeVariants = variant({
   prop: 'size',
-  defaultVariant: 'default',
+  defaultVariant: 'base',
   variants: {
-    default: {
+    base: {
       minHeight: '1.5rem',
       fontSize: 16,
     },
@@ -84,7 +93,7 @@ const badgeProps = variance.compose(
 export interface BadgeProps
   extends StyleProps<typeof badgeProps>,
     StyleProps<typeof colorVariants>,
-    StyleProps<typeof colorVariants>,
+    StyleProps<typeof sizeVariants>,
     StyleProps<typeof badgeStates> {}
 
 export const Badge = styled('div', styledOptions)<BadgeProps>(

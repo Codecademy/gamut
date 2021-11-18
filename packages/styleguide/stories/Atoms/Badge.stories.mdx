@@ -12,19 +12,20 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
     status: 'updating',
     source: 'gamut',
   }}
-  args={{ children: 'badge' }}
 />
 
 Badges are generally used as a standard way to highlight a short piece of text, likely a single word. Badges are inline and generally found next to some interface element to be called out.
 
-export const BadgeTemplate = (args) => <Badge {...args}>{args.variant}</Badge>;
+export const BadgeTemplate = (args) => (
+  <Badge {...args}>{args.children ? args.children : args.variant}</Badge>
+);
 
 ## Variants
 
 Badge variants have different meanings between applications. While they are all specified on the `variant` prop not all of them can be used together.
 
 <Canvas>
-  <Story name="default" args={{ variant: 'default' }}>
+  <Story name="default" args={{ children: 'default' }}>
     {BadgeTemplate.bind({})}
   </Story>
   <Story name="stroke" args={{ variant: 'stroke' }}>
@@ -44,7 +45,23 @@ Badge variants have different meanings between applications. While they are all 
   </Story>
 </Canvas>
 
-`default` and `stroke` both adapt to their ColorMode (TO-DO)
+`default` and `stroke` both adapt to their ColorMode, which you can check out by using the toolbar at the top of this page.
+
+## Size
+
+We have two `size` options, which should be used according to their context. Our `default` size should be used when the `Badge` is a standalone entitity, the `sm` size should be used when the `Badge` is inline with other components or `Text`.
+
+<Canvas>
+  <Story
+    name="default size"
+    args={{ variant: 'stroke', children: 'default size' }}
+  >
+    {BadgeTemplate.bind({})}
+  </Story>
+  <Story name="small" args={{ size: 'sm', children: 'sm size' }}>
+    {BadgeTemplate.bind({})}
+  </Story>
+</Canvas>
 
 ## States
 
@@ -53,20 +70,32 @@ You can make your badges display with rounded edges using the `round` boolean pr
 ### Round
 
 <Canvas>
-  <Story name="round" args={{ variant: 'yellow', round: true }}>
+  <Story
+    name="round"
+    args={{ variant: 'yellow', round: true, children: 'round' }}
+  >
     {BadgeTemplate.bind({})}
   </Story>
 </Canvas>
 
-### Stroke
+### Accent
 
 <Canvas>
-  <Story name="accent" args={{ variant: 'stroke', accent: true }}>
+  <Story
+    name="accent"
+    args={{ variant: 'stroke', accent: true, children: 'accent' }}
+  >
     {BadgeTemplate.bind({})}
   </Story>
   <Story
     name="round accent"
-    args={{ variant: 'hyper', accent: true, round: true }}
+    args={{
+      variant: 'hyper',
+      accent: true,
+      round: true,
+      size: 'sm',
+      children: 'round + accented + sm',
+    }}
   >
     {BadgeTemplate.bind({})}
   </Story>
@@ -75,7 +104,7 @@ You can make your badges display with rounded edges using the `round` boolean pr
 ## Code Playground
 
 <Canvas>
-  <Story name="Badge">{(args) => <Badge {...args} />}</Story>
+  <Story name="Badge">{(args) => <Badge {...args}>badge</Badge>}</Story>
 </Canvas>
 
 <PropsTable story="Badge" />
