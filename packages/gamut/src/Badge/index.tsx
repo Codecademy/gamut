@@ -17,9 +17,14 @@ const badgeVariants = variant({
     textAlign: 'center',
     width: 'min-content',
     whiteSpace: 'nowrap',
+    lineHeight: 'title',
   },
-  defaultVariant: 'blue',
+  defaultVariant: 'default',
   variants: {
+    default: {
+      bg: `text`,
+      textColor: 'background',
+    },
     blue: {
       bg: 'blue',
       textColor: 'white',
@@ -36,10 +41,7 @@ const badgeVariants = variant({
       bg: `hyper-500`,
       textColor: 'white',
     },
-    secondary: {
-      bg: `text`,
-      textColor: 'background',
-    },
+
     stroke: {
       border: 1,
       borderColor: 'text-disabled',
@@ -55,6 +57,8 @@ const badgeStates = states({
   },
   accent: {
     fontFamily: 'accent',
+    // don't do this - <3 web-plat
+    fontSize: 12 as any,
   },
 });
 
