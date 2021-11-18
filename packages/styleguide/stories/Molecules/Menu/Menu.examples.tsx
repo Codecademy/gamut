@@ -22,8 +22,8 @@ export const PopoverMenuExample: React.FC<PopoverContainerProps> = () => {
   const clickHandler = (targetNumber: number, currentIndex: number) => {
     setCurrentTarget(targetNumber);
     setAlignment(currentIndex === 3 ? 'bottom-right' : 'top-right');
-    // eslint-disable-next-line no-unused-expressions
-    isOpen && currentIndex === activeIndex ? setIsOpen(false) : setIsOpen(true);
+
+    if (isOpen && currentIndex === activeIndex) setIsOpen(false);
     if (currentIndex !== activeIndex) setActiveIndex(currentIndex);
   };
 
