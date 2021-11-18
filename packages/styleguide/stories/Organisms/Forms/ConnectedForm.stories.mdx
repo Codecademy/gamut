@@ -56,7 +56,9 @@ import {
 
 `ConnectedForm` is an organism designed to create less conventional forms with all of the reliability of `GridForm` without the strict grid structure.
 
-The primary access pattern of `ConnectedForm` is the `useConnectedForm` hook which composes a typesafe version of `ConnectedForm` + `ConnectedFormGroup` from the `defaultValues` passed to it -- catching errors before the development enviroment is even started.
+The primary access pattern of `ConnectedForm` is the `useConnectedForm` hook which composes a typesafe version of `ConnectedForm` + `ConnectedFormGroup` from the `defaultValues` passed to it - catching errors before the development enviroment is even started.
+
+Each of your fields' names must correspond with the appropriate `defaultValue` key. `validationRules` operates similarly - each key must correspond to a key in `defaultValue` and must follow [react-hook-form's](https://react-hook-form.com) [validation patterns](https://react-hook-form.com/v6/api#register).
 
 For instance:
 
@@ -104,7 +106,7 @@ export const BadForm = () => {
         }}
       />
       <ConnectedFormGroup
-        //another type error, we don't have name in our defaultValues :(
+        //another type error, we don't have that name in our defaultValues :(
         name="anotherRandomField"
         label="cool select dude"
         field={{
