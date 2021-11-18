@@ -3,6 +3,7 @@ import React, { ComponentProps, forwardRef } from 'react';
 
 import { Box, BoxProps } from '../Box';
 import { ListEl } from './elements';
+import useListShadow from './hooks/useListShadow';
 import { ListProvider, useList } from './ListProvider';
 import { AllListProps } from './types';
 
@@ -31,7 +32,8 @@ export const List = forwardRef<HTMLUListElement, ListProps>(
     ref
   ) => {
     const isEmpty = !children || (isArray(children) && children.length === 0);
-    const showShadow = shadow && scrollable && !isEmpty;
+    const { listRef, shadowActive, handleScroll } = useListShadow();
+    const showShadow = shadow && scrollable && shadowActive && !isEmpty;
     const value = useList({ variant, spacing, scrollable });
 
     const listContent = (
@@ -49,6 +51,8 @@ export const List = forwardRef<HTMLUListElement, ListProps>(
             minHeight={minHeight}
             maxHeight={height}
             overflow="auto"
+            ref={listRef}
+            onScroll={shadow ? handleScroll : undefined}
           >
             {header}
             {isEmpty ? emptyMessage : listContent}
