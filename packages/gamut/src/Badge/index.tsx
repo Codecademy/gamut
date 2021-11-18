@@ -22,15 +22,6 @@ const colorVariants = variant({
   },
   variants: {
     default: {
-      borderRadius: '3px',
-      py: 4,
-      px: 12,
-      fontWeight: 400,
-      display: 'inline-block',
-      textAlign: 'center',
-      width: 'min-content',
-      whiteSpace: 'nowrap',
-      lineHeight: 'title',
       bg: `text`,
       textColor: 'background',
     },
