@@ -97,7 +97,7 @@ interface BaseOnChangeProps {
     | MultiSelectDropdownProps['onChange'];
 }
 
-const multipleSelectProps = (
+const isMultipleSelectProps = (
   props: BaseOnChangeProps
 ): props is MultiSelectDropdownProps => !!props.multiple;
 
@@ -214,7 +214,10 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
   );
 
   const [multiValues, setMultiValues] = useState(
-    selectOptions.filter((option) => option.value === value)
+    selectOptions.filter(
+      (option) =>
+        option.value === value || (value as string[])?.includes(option.value)
+    )
   );
 
   const changeHandler = useCallback(
@@ -234,7 +237,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
         });
       }
 
-      if (multipleSelectProps(onChangeProps)) {
+      if (isMultipleSelectProps(onChangeProps)) {
         setMultiValues(optionEvent as OptionStrict[]);
 
         onChangeProps.onChange?.(optionEvent as OptionsType<OptionStrict>, {
