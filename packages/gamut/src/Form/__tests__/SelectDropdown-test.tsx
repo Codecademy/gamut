@@ -120,8 +120,8 @@ describe('SelectDropdown', () => {
     expect(onInputChange).toHaveBeenCalled();
   });
 
-  it('renders selected & multiple items when passed isMulti: true', () => {
-    const { wrapper } = renderWrapper({ isMulti: true });
+  it('renders selected & multiple items when passed multiple: true', () => {
+    const { wrapper } = renderWrapper({ multiple: true });
 
     const numSelectedItems = 2;
 

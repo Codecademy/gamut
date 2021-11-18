@@ -65,7 +65,7 @@ interface SelectDropdownCoreProps
       | 'styles'
       | 'theme'
       | 'onChange'
-      | 'isMulti'
+      | 'multiple'
     >,
     Pick<
       SelectHTMLAttributes<HTMLSelectElement>,
@@ -79,31 +79,31 @@ interface SelectDropdownCoreProps
 }
 
 interface SingleSelectDropdownProps extends SelectDropdownCoreProps {
-  isMulti?: false;
+  multiple?: false;
   onChange?: NamedProps<OptionStrict, false>['onChange'];
 }
 
 interface MultiSelectDropdownProps extends SelectDropdownCoreProps {
-  isMulti: true;
+  multiple: true;
   onChange?: NamedProps<OptionStrict, true>['onChange'];
 }
 
 type SelectDropdownProps = SingleSelectDropdownProps | MultiSelectDropdownProps;
 
 interface BaseOnChangeProps {
-  isMulti?: boolean;
+  multiple?: boolean;
   onChange?:
     | SingleSelectDropdownProps['onChange']
     | MultiSelectDropdownProps['onChange'];
 }
 
-const isMultiSelectProps = (
+const multipleSelectProps = (
   props: BaseOnChangeProps
-): props is MultiSelectDropdownProps => !!props.isMulti;
+): props is MultiSelectDropdownProps => !!props.multiple;
 
 const isSingleSelectProps = (
   props: BaseOnChangeProps
-): props is SingleSelectDropdownProps => !props.isMulti;
+): props is SingleSelectDropdownProps => !props.multiple;
 
 const { DropdownIndicator, SelectContainer } = SelectDropdownElements;
 
@@ -197,7 +197,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
   name,
   placeholder = 'Select an option',
   inputProps,
-  isMulti,
+  multiple,
   isSearchable,
   shownOptionsLimit = 6,
   ...rest
@@ -223,7 +223,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
 
       // We have to do this because the version of typescript we have doesn't have the transitivity of these type guards yet. But, we will soon!
       // Should probably come with: https://codecademy.atlassian.net/browse/GM-354
-      const onChangeProps = { onChange, isMulti };
+      const onChangeProps = { onChange, multiple };
 
       if (isSingleSelectProps(onChangeProps)) {
         const singleOptionEvent = optionEvent as OptionStrict;
@@ -234,7 +234,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
         });
       }
 
-      if (isMultiSelectProps(onChangeProps)) {
+      if (multipleSelectProps(onChangeProps)) {
         setMultiValues(optionEvent as OptionStrict[]);
 
         onChangeProps.onChange?.(optionEvent as OptionsType<OptionStrict>, {
@@ -243,7 +243,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
         });
       }
     },
-    [onChange, isMulti]
+    [onChange, multiple]
   );
 
   const theme = useTheme();
@@ -329,7 +329,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
       {...defaultProps}
       id={id || rest.htmlFor}
       options={selectOptions}
-      value={isMulti ? multiValues : parsedValue}
+      value={multiple ? multiValues : parsedValue}
       activated={activated}
       error={Boolean(error)}
       formatOptionLabel={formatOptionLabel}
@@ -337,7 +337,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
       inputProps={{ ...inputProps, name }}
       placeholder={placeholder}
       styles={memoizedStyles}
-      isMulti={isMulti}
+      multiple={multiple}
       isDisabled={disabled}
       isSearchable={isSearchable}
       size={size}
