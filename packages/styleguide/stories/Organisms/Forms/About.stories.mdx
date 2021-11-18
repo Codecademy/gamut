@@ -6,13 +6,19 @@ import { TableOfContents } from '~styleguide/blocks';
 <Meta
   title={title}
   parameters={{
-    subtitle: 'Forms are annoying, we all agree there.',
+    subtitle: 'Ya gotta submit data somehow!',
   }}
 />
 
-Our Connected- and GridForm organisms provide a easy way to implement forms. Both of our Form organisms provide the following benefits:
+Our Connected- and GridForm organisms provide a easy way to implement forms. While our `Form` atoms compose the structure of these forms, we strongly recommend only creating forms with using `GridForm` or `ConnectedForm`. You should only use the form element atoms as individual elements if your interface doesn’t need to support the technical functions of a form.
 
-1. **Accessibility**: All our forms handle accessibility styling and behaviors, passing tests out-of-the-box
+Both of our Form organisms provide the following benefits:
+
+1. **Accessibility**: All our forms handle accessibility styling and behaviors, passing tests out-of-the-box.
 2. **Functionality**: Validation and submission logic is handled by the [react-hook-form](https://react-hook-form.com) library
+
+We reccommend GridForm if you have a form that sticks to a 12x12 visual grid with consistent vertical rhythm and grid spacing.
+
+For everything else, we reccommend ConnectedForm.
 
 <TableOfContents />

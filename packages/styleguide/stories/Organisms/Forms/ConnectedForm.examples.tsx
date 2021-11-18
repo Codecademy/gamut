@@ -22,6 +22,69 @@ const INeedSomeSpace: React.FC = ({ children }) => {
   return <Box m={16}>{children}</Box>;
 };
 
+export const BadForm = () => {
+  const {
+    ConnectedFormGroup,
+    ConnectedForm,
+    connectedFormProps,
+  } = useConnectedForm({
+    defaultValues: {
+      thisField: true,
+      thatField: 'zero',
+      anotherField: 'state your name.',
+    },
+    validationRules: {
+      thisField: { required: 'you need to check this.' },
+      //you'll get a type error here because the name isn't found in your default values
+      randomField: {
+        pattern: {
+          value: /^(?:(?!zero).)*$/,
+          message: 'literally anything but zero',
+        },
+      },
+    },
+  });
+
+  return (
+    <ConnectedForm
+      //onSubmit is also properly typed!
+      onSubmit={({ thisField }) => console.log(thisField)}
+      resetOnSubmit
+      {...connectedFormProps}
+    >
+      <Text>I have something important to tell you...</Text>
+      <SubmitButton variant="secondary" m={8}>
+        submit this form.
+      </SubmitButton>
+      <ConnectedFormGroup
+        name="thisField"
+        label="cool checkbox bruh"
+        field={{
+          component: ConnectedCheckbox,
+          label: 'check it ouuut',
+        }}
+      />
+      <ConnectedFormGroup
+        //another type error, we don't have name in our defaultValues :(
+        name="anotherRandomField"
+        label="cool select dude"
+        field={{
+          component: ConnectedSelect,
+          options: ['one', 'two', 'zero'],
+        }}
+      />
+      <ConnectedFormGroup
+        name="anotherField"
+        label="cool input"
+        field={{
+          component: ConnectedInput,
+          icon: TerminalIcon,
+        }}
+      />
+    </ConnectedForm>
+  );
+};
+
 export const VeryCoolForm = () => {
   const {
     ConnectedFormGroup,
