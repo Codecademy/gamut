@@ -1,8 +1,12 @@
 import { ConnectedForm, FlexBox, Text } from '@codecademy/gamut';
 import title from '@codecademy/macros/lib/title.macro';
+import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Meta } from '@storybook/addon-docs/blocks';
 
-import { VeryCoolForm } from './ConnectedForm.examples';
+import {
+  FancyConnectedFormExample,
+  VeryCoolForm,
+} from './ConnectedForm.examples';
 
 <Meta
   title={title}
@@ -33,6 +37,21 @@ import { VeryCoolForm } from './ConnectedForm.examples';
   <Text variant="title-lg"> Docs-In-Progress</Text>
 </FlexBox>
 
+<VeryCoolForm />
+
+<PropsTable
+  of={ConnectedForm}
+  include={[
+    'onSubmit',
+    'defaultValues',
+    'validationRules',
+    'validation',
+    'disableFieldsOnSubmit',
+    'resetOnSubmit',
+    'wasSubmitSuccessful',
+  ]}
+/>
+
 ## Usage
 
 ```tsx
@@ -58,11 +77,16 @@ export const VeryCoolForm = () => {
     },
   });
   return (
-    <Background bg="black" p={48}>
+    <Background bg="background" p={48}>
       <ConnectedForm
         onSubmit={({ thisField }) => console.log(thisField)}
+        resetOnSubmit
         {...connectedFormProps}
       >
+        <Text>I have something important to tell you...</Text>
+        <SubmitButton variant="secondary" m={8}>
+          submit this form.
+        </SubmitButton>
         <ConnectedFormGroup
           name="thisField"
           label="cool"
@@ -71,12 +95,6 @@ export const VeryCoolForm = () => {
             label: 'check it ouuut',
           }}
         />
-        <Box>
-          <Text>I have something important to tell you...</Text>
-          <SubmitButton variant="secondary" m={32}>
-            submit this form.
-          </SubmitButton>
-        </Box>
         <ConnectedFormGroup
           name="thatField"
           label="cool"
@@ -99,8 +117,10 @@ export const VeryCoolForm = () => {
 };
 ```
 
-<VeryCoolForm />
-
 ## Disable until valid
 
 # CASS, CHECK THIS.
+
+## Example
+
+<FancyConnectedFormExample />
