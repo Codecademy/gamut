@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [40.3.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@40.3.2...@codecademy/gamut@40.3.3) (2021-11-17)
+
+
+### Bug Fixes
+
+* **ListRow:** add expandedRowAriaLabel prop to ListRow ([50d8dce](https://github.com/Codecademy/gamut/commit/50d8dce7bc5cc194d30427c44dd35d7d540a4458))
+
+
+
 ### [40.3.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@40.3.1...@codecademy/gamut@40.3.2) (2021-11-15)
 
 **Note:** Version bump only for package @codecademy/gamut
