@@ -1,57 +1,44 @@
-import cx from 'classnames';
-import React, { FunctionComponent, ReactElement, ReactNode } from 'react';
+import { system, variant } from '@codecademy/gamut-styles';
+import { StyleProps, variance } from '@codecademy/variance';
+import styled from '@emotion/styled';
+import {
+  TabList as ReachTabList,
+  TabListProps as ReachTabListProps,
+} from '@reach/tabs';
 
-import { Tab } from '../Tab';
-import styles from './styles.module.scss';
+export interface TabListProps
+  extends ReachTabListProps,
+    StyleProps<typeof tabListVariants>,
+    StyleProps<typeof tabListProps> {}
 
-export type TabListProps = {
-  activeTabIndex?: number;
-  center?: boolean;
-  children: ReactNode;
-  className?: string;
-  createBaseId?: (index: number) => string;
-  maxWidth?: string;
-  onChange?: () => void;
+const tabListVariants = variant({
+  base: {
+    display: 'flex',
+    position: 'relative',
+  },
+  variants: {
+    underlined: {
+      mb: 24,
+      '&:after': {
+        content: '""',
+        height: '1px',
+        bg: 'text',
+        position: 'absolute',
+        bottom: 0,
+        zIndex: 0,
+        width: '100%',
+      },
+    },
+  },
+});
+
+const tabListProps = variance.compose(system.layout, system.space);
+
+export const TabList = styled(ReachTabList)<TabListProps>(
+  tabListProps,
+  tabListVariants
+);
+
+TabList.defaultProps = {
+  variant: 'underlined',
 };
-
-const defaultProps = {
-  createBaseId: (i: number) => `${i}`,
-  activeTabIndex: 0,
-};
-
-/**
- * @deprecated
- * This component is deprecated and is no longer supported.
- *
- * Check the [Gamut Board](https://www.notion.so/codecademy/Gamut-Status-Timeline-dd3c135d3848464ea6eb1b48e68fbb1d) for component status
- */
-
-export const TabList: FunctionComponent<TabListProps> = ({
-  activeTabIndex,
-  center,
-  children,
-  className,
-  createBaseId,
-  maxWidth,
-  onChange,
-}) => {
-  const classes = cx(styles.tabList, className, { [styles.center]: center });
-  return (
-    <div className={classes} role="tablist" style={{ maxWidth }}>
-      {(React.Children.toArray(children) as any)
-        .filter((c: ReactElement) => c && c.type === Tab)
-        .map((tab: ReactElement, index: number) => {
-          const baseId = createBaseId ? createBaseId(index) : index;
-          return React.cloneElement(tab, {
-            active: activeTabIndex === index,
-            tabIndex: index,
-            onChange,
-            id: baseId,
-            key: baseId,
-          });
-        })}
-    </div>
-  );
-};
-
-TabList.defaultProps = defaultProps;

@@ -1,81 +1,77 @@
-import cx from 'classnames';
-import React, { FunctionComponent, ReactNode } from 'react';
+import { system, variant } from '@codecademy/gamut-styles';
+import { StyleProps, variance } from '@codecademy/variance';
+import styled from '@emotion/styled';
+import { Tab as ReachTab, TabProps as ReachTabProps } from '@reach/tabs';
 
-import { omitProps } from '../../utils/omitProps';
-import styles from './styles.module.scss';
+import { TabSelectors } from '../constants';
 
-export type TabProps = {
-  active?: boolean;
-  activeClassName?: string;
-  children?: ReactNode;
-  className?: string;
-  id?: string;
-  disabled?: boolean;
-  onChange?: (newTabIndex: number) => void;
-  tabIndex?: number;
-  defaultTheme?: boolean;
-};
+export interface TabProps
+  extends ReachTabProps,
+    StyleProps<typeof tabVariants>,
+    StyleProps<typeof tabProps> {}
 
-/**
- * @deprecated
- * This component is deprecated and is no longer supported.
- *
- * Check the [Gamut Board](https://www.notion.so/codecademy/Gamut-Status-Timeline-dd3c135d3848464ea6eb1b48e68fbb1d) for component status
- */
+const tabVariants = variant({
+  base: {
+    position: 'relative',
+    display: 'inline-flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    whiteSpace: 'nowrap',
+    background: 'none',
+    borderColor: 'transparent',
+    borderBottomStyle: 'solid',
+    borderBottomWidth: 4,
+    fontWeight: 400,
+    fontSize: 16,
+    px: 24,
+    py: 8,
+    textOverflow: 'ellipsis',
+    color: 'text',
+    font: 'inherit',
+    cursor: 'pointer',
+    zIndex: 1,
+    [TabSelectors.SELECTED]: {
+      fontWeight: 700,
+    },
+    [TabSelectors.DISABLED]: {
+      opacity: 0.25,
+      cursor: 'default',
+    },
+    // Allow proper spacing for badges & icons
+    // '> *': {
+    //   ml: 8,
+    // },
+    // '> *:first-child': {
+    //   ml: 0,
+    // },
+  },
+  variants: {
+    underlined: {
+      borderColor: 'transparent',
+      borderLeft: 'none',
+      borderRight: 'none',
+      borderTop: 'none',
+      borderBottomStyle: 'solid',
+      borderBottomWidth: 4,
+      fontWeight: 400,
+      fontSize: 16,
+      px: 24,
+      py: 8,
+      [TabSelectors.SELECTED]: {
+        borderColor: 'primary',
+      },
+    },
+  },
+});
 
-export const Tab: FunctionComponent<TabProps> = ({
-  active,
-  children,
-  activeClassName,
-  className,
-  disabled,
-  id,
-  defaultTheme = true,
-  onChange,
-  tabIndex = 0,
-  ...rest
-}: TabProps) => {
-  const tabClasses = cx(styles.tab, className, {
-    [styles.tab_default]: defaultTheme,
-    [styles.active]: active,
-    [styles.tab_default__active]: defaultTheme && active,
-    [activeClassName!]: active && activeClassName,
-    [styles.disabled]: disabled,
-  });
-  const dataPropsToTransfer = omitProps([], rest);
+const tabProps = variance.compose(
+  system.layout,
+  system.typography,
+  system.space
+);
 
-  return (
-    <button
-      id={id}
-      className={tabClasses}
-      aria-selected={active}
-      aria-controls={`${id}-panel`}
-      onClick={(e: React.MouseEvent) => {
-        e.preventDefault();
+export const Tab = styled(ReachTab)<TabProps>(tabVariants, tabProps);
 
-        if (disabled) {
-          return;
-        }
-
-        onChange?.(tabIndex);
-      }}
-      onKeyDown={(e: React.KeyboardEvent) => {
-        if (disabled) {
-          return;
-        }
-
-        // https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_link_role
-        if (e.key === ' ' || e.key === 'Enter') {
-          e.preventDefault();
-          onChange?.(tabIndex);
-        }
-      }}
-      role="tab"
-      tabIndex={disabled ? -1 : 0}
-      type="button"
-      {...dataPropsToTransfer}
-    >
-      {children}
-    </button>
-  );
+Tab.defaultProps = {
+  variant: 'underlined',
 };

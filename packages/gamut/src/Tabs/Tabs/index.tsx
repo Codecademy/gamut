@@ -1,112 +1,24 @@
-import { isNumber } from 'lodash';
-import React, { Component, ReactElement } from 'react';
+import { css, system } from '@codecademy/gamut-styles';
+import { StyleProps, variance } from '@codecademy/variance';
+import styled from '@emotion/styled';
+import { Tabs as ReachTabs, TabsProps as ReachTabsProps } from '@reach/tabs';
 
-import { TabList } from '../TabList';
-import { TabPanel } from '../TabPanel';
-
-export interface TabsProps {
-  /**
-   * Changes this to a controlled component by only forcing this index to be active.
-   */
-  activeTabIndex?: number;
-
-  children: ReactElement<any, any>[];
-
-  className?: string;
-
-  /**
-   * Index to start the active tab on, if not provided by `activeTabIndex`.
-   */
-  defaultActiveTabIndex?: number;
-
-  /**
-   * Callback for when a tab index is requested to be active.
-   *
-   * @param activeTabIndex  New active tab index.
-   */
-  onChange?: (activeTabIndex: number) => void;
-
-  renderAllPanels?: boolean;
+// Prevent dev-only errors due to excluding react-ui default styles
+if (process.env.NODE_ENV !== 'production' && document?.documentElement) {
+  document.documentElement.style.setProperty('--reach-tabs', '1');
 }
 
-export interface TabsState {
-  activeTabIndex: number;
-}
+export interface TabsProps
+  extends Omit<ReachTabsProps, 'orientation'>,
+    StyleProps<typeof tabsProps> {}
 
-/**
- * @deprecated
- * This component is deprecated and is no longer supported.
- *
- * Check the [Gamut Board](https://www.notion.so/codecademy/Gamut-Status-Timeline-dd3c135d3848464ea6eb1b48e68fbb1d) for component status
- */
-export class Tabs extends Component<TabsProps> {
-  state: TabsState = {
-    activeTabIndex: this.props.defaultActiveTabIndex || 0,
-  };
+const tabsProps = variance.compose(system.layout, system.space);
 
-  componentDidUpdate(prevProps: TabsProps, prevState: TabsState) {
-    const stateIndexChanged =
-      this.state.activeTabIndex !== prevState.activeTabIndex;
-    if (stateIndexChanged && this.props.onChange) {
-      this.props.onChange(this.state.activeTabIndex);
-    }
-  }
-
-  idPrefix = Math.random().toString().replace('.', '');
-
-  createBaseId = (index: number) => `${this.idPrefix}-${index}`;
-
-  isControlled = () => isNumber(this.props.activeTabIndex);
-
-  updateTabIndexState = (index: number) => {
-    this.setState({ activeTabIndex: index });
-  };
-
-  render() {
-    let activeTabIndex = this.isControlled()
-      ? this.props.activeTabIndex
-      : this.state.activeTabIndex;
-
-    const onChange = this.isControlled()
-      ? this.props.onChange
-      : this.updateTabIndexState;
-
-    if (!onChange) {
-      throw new Error(
-        'Tabs component is controlled but no tab change callback (onChange) was provided'
-      );
-    }
-
-    const childrenArray = React.Children.toArray(
-      this.props.children
-    ) as ReactElement[];
-    let clonedTabPanels = childrenArray.filter((c) => c.type === TabPanel);
-
-    if (activeTabIndex! >= clonedTabPanels.length) {
-      activeTabIndex = clonedTabPanels.length - 1;
-    }
-
-    const tabListChild = childrenArray.find((c) => c.type === TabList)!;
-    const clonedTabList = React.cloneElement(tabListChild, {
-      activeTabIndex,
-      onChange,
-      createBaseId: this.createBaseId,
-    });
-
-    clonedTabPanels = clonedTabPanels.map((panel, index) =>
-      React.cloneElement(panel, {
-        active: index === activeTabIndex,
-        renderAllPanels: this.props.renderAllPanels,
-        id: `${this.createBaseId(index)}-panel`,
-        key: this.createBaseId(index),
-      })
-    );
-
-    return (
-      <div className={this.props.className}>
-        {clonedTabList}
-        {clonedTabPanels}
-      </div>
-    );
-  }
-}
+export const Tabs = styled(ReachTabs)<TabsProps>(
+  tabsProps,
+  css({
+    // Reset stacking context for Tabs contents
+    position: 'relative',
+    zIndex: 0,
+  })
+);
