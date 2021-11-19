@@ -39,7 +39,9 @@ export const withEmotion = (Story: any, context: GlobalsContext) => {
   if (process.env.NODE_ENV === 'test') {
     return (
       <GamutProvider useCache={false} useGlobals={false} theme={coreTheme}>
-        {Story()}
+        <Background bg={themeBackground[colorMode]} ref={storyRef}>
+          {Story()}
+        </Background>
       </GamutProvider>
     );
   }
