@@ -49,15 +49,15 @@ export const TabsExample = (args: TabsProps) => {
         </TabList>
         <TabPanels>
           <TabPanel>
-            <Text>Welcome to Tab 1</Text>
+            <Text as="h2">Welcome to Tab 1</Text>
             <Text>Hi there! I&apos;m the contents inside Tab 1. Yippee!</Text>
           </TabPanel>
           <TabPanel>
-            <Text>Welcome to Tab 2</Text>
+            <Text as="h2">Welcome to Tab 2</Text>
             <Text>Hi there! I&apos;m the contents inside Tab 2. Yippee!</Text>
           </TabPanel>
           <TabPanel>
-            <Text>Welcome to Tab 3</Text>
+            <Text as="h2">Welcome to Tab 3</Text>
             <Text>Hi there! I&apos;m the contents inside Tab 3. Yippee!</Text>
           </TabPanel>
         </TabPanels>
@@ -79,15 +79,15 @@ export const TabsBadgeExample = (args: TabsProps) => {
         </TabList>
         <TabPanels>
           <TabPanel>
-            <Text>Welcome to Tab 1</Text>
+            <Text as="h2">Welcome to Tab 1</Text>
             <Text>Hi there! I&apos;m the contents inside Tab 1. Yippee!</Text>
           </TabPanel>
           <TabPanel>
-            <Text>Welcome to Tab 2</Text>
+            <Text as="h2">Welcome to Tab 2</Text>
             <Text>Hi there! I&apos;m the contents inside Tab 2. Yippee!</Text>
           </TabPanel>
           <TabPanel>
-            <Text>Welcome to Tab 3</Text>
+            <Text as="h2">Welcome to Tab 3</Text>
             <Text>Hi there! I&apos;m the contents inside Tab 3. Yippee!</Text>
           </TabPanel>
         </TabPanels>
