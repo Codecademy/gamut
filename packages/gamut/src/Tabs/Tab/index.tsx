@@ -37,13 +37,6 @@ const tabVariants = variant({
       opacity: 0.25,
       cursor: 'default',
     },
-    // Allow proper spacing for badges & icons
-    // '> *': {
-    //   ml: 8,
-    // },
-    // '> *:first-child': {
-    //   ml: 0,
-    // },
   },
   variants: {
     underlined: {
