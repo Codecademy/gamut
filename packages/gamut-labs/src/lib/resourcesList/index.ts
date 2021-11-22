@@ -39,19 +39,19 @@ export const resourcesList: ResourcesList[] = [
     type: 'link',
   },
   {
-    id: 'projects',
-    href: '/projects',
-    footerTrackingTarget: 'projects',
-    headerTrackingTarget: 'topnav_resources_projects',
-    text: 'Projects',
-    type: 'link',
-  },
-  {
     id: 'articles',
     href: '/articles',
     footerTrackingTarget: 'articles',
     headerTrackingTarget: 'topnav_resources_articles',
     text: 'Articles',
+    type: 'link',
+  },
+  {
+    id: 'videos',
+    href: '/resources/videos',
+    footerTrackingTarget: 'videos_homepage',
+    headerTrackingTarget: 'topnav_resources_videos',
+    text: 'Videos',
     type: 'link',
   },
   {
@@ -61,6 +61,14 @@ export const resourcesList: ResourcesList[] = [
     headerTrackingTarget: 'topnav_resources_blog',
     text: 'Blog',
     newTab: true,
+    type: 'link',
+  },
+  {
+    id: 'projects',
+    href: '/projects',
+    footerTrackingTarget: 'projects',
+    headerTrackingTarget: 'topnav_resources_projects',
+    text: 'Projects',
     type: 'link',
   },
   {
