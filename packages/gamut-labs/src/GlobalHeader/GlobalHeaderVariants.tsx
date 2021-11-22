@@ -1,6 +1,9 @@
 import { ReactNode } from 'react';
 
-import { AppHeaderItem } from '../AppHeader/AppHeaderElements/types';
+import {
+  AppHeaderExtraLinks,
+  AppHeaderItem,
+} from '../AppHeader/AppHeaderElements/types';
 import {
   FormattedAppHeaderItems,
   FormattedMobileAppHeaderItems,
@@ -29,12 +32,12 @@ import { AnonHeaderItemsParams, User } from './types';
 const anonHeaderItems = ({
   renderLogin,
   renderSignUp,
-  renderGiftCardLink,
+  extraLinks = {},
   hidePricing,
 }: AnonHeaderItemsParams): FormattedAppHeaderItems => {
   const pricingItems = hidePricing
     ? []
-    : [getPricingDropdown(renderGiftCardLink)];
+    : [getPricingDropdown(extraLinks.pricing)];
   const leftItems: AppHeaderItem[] = [
     logo,
     courseCatalog,
@@ -61,7 +64,7 @@ const anonHeaderItems = ({
 const anonMobileHeaderItems = ({
   renderLogin,
   renderSignUp,
-  renderGiftCardLink,
+  extraLinks = {},
   hidePricing,
 }: AnonHeaderItemsParams): FormattedMobileAppHeaderItems => {
   const leftItems: AppHeaderItem[] = [logo];
@@ -76,7 +79,7 @@ const anonMobileHeaderItems = ({
 
   const pricingItems = hidePricing
     ? []
-    : [getPricingDropdown(renderGiftCardLink)];
+    : [getPricingDropdown(extraLinks.pricing)];
 
   const mainMenuItems: AppHeaderItem[] = [
     courseCatalog,
@@ -97,96 +100,96 @@ const anonMobileHeaderItems = ({
 
 export const anonDefaultHeaderItems = (
   hidePricing?: boolean,
-  renderGiftCardLink?: boolean
+  extraLinks?: AppHeaderExtraLinks
 ): FormattedAppHeaderItems => {
   return anonHeaderItems({
     renderLogin: true,
     renderSignUp: true,
-    renderGiftCardLink,
+    extraLinks,
     hidePricing,
   });
 };
 
 export const anonDefaultMobileHeaderItems = (
   hidePricing?: boolean,
-  renderGiftCardLink?: boolean
+  extraLinks?: AppHeaderExtraLinks
 ): FormattedMobileAppHeaderItems => {
   return anonMobileHeaderItems({
     renderLogin: true,
     renderSignUp: true,
-    renderGiftCardLink,
+    extraLinks,
     hidePricing,
   });
 };
 
 export const anonLandingHeaderItems = (
   hidePricing?: boolean,
-  renderGiftCardLink?: boolean
+  extraLinks?: AppHeaderExtraLinks
 ): FormattedAppHeaderItems => {
   return anonHeaderItems({
     renderLogin: true,
     renderSignUp: false,
-    renderGiftCardLink,
+    extraLinks,
     hidePricing,
   });
 };
 
 export const anonLandingMobileHeaderItems = (
   hidePricing?: boolean,
-  renderGiftCardLink?: boolean
+  extraLinks?: AppHeaderExtraLinks
 ): FormattedMobileAppHeaderItems => {
   return anonMobileHeaderItems({
     renderLogin: true,
     renderSignUp: false,
-    renderGiftCardLink,
+    extraLinks,
     hidePricing,
   });
 };
 
 export const anonLoginHeaderItems = (
   hidePricing?: boolean,
-  renderGiftCardLink?: boolean
+  extraLinks?: AppHeaderExtraLinks
 ): FormattedAppHeaderItems => {
   return anonHeaderItems({
     renderLogin: false,
     renderSignUp: true,
-    renderGiftCardLink,
+    extraLinks,
     hidePricing,
   });
 };
 
 export const anonLoginMobileHeaderItems = (
   hidePricing?: boolean,
-  renderGiftCardLink?: boolean
+  extraLinks?: AppHeaderExtraLinks
 ): FormattedMobileAppHeaderItems => {
   return anonMobileHeaderItems({
     renderLogin: false,
     renderSignUp: true,
-    renderGiftCardLink,
+    extraLinks,
     hidePricing,
   });
 };
 
 export const anonSignupHeaderItems = (
   hidePricing?: boolean,
-  renderGiftCardLink?: boolean
+  extraLinks?: AppHeaderExtraLinks
 ): FormattedAppHeaderItems => {
   return anonHeaderItems({
     renderLogin: true,
     renderSignUp: false,
-    renderGiftCardLink,
+    extraLinks,
     hidePricing,
   });
 };
 
 export const anonSignupMobileHeaderItems = (
   hidePricing?: boolean,
-  renderGiftCardLink?: boolean
+  extraLinks?: AppHeaderExtraLinks
 ): FormattedMobileAppHeaderItems => {
   return anonMobileHeaderItems({
     renderLogin: true,
     renderSignUp: false,
-    renderGiftCardLink,
+    extraLinks,
     hidePricing,
   });
 };

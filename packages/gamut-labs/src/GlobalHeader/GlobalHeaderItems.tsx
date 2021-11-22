@@ -153,12 +153,11 @@ export const giftCardPopoverItem: AppHeaderLinkItem = {
 };
 
 export const getPricingDropdown = (
-  renderGiftCardLink?: boolean
+  moreLinks: AppHeaderLinkItem[] = []
 ): AppHeaderSimpleDropdownItem => {
-  const giftCardItem = renderGiftCardLink ? [giftCardPopoverItem] : [];
   const newDropdown = {
     ...pricingDropdown,
-    popover: pricingDropdown.popover.concat(giftCardItem),
+    popover: pricingDropdown.popover.concat(moreLinks),
   };
   return newDropdown;
 };

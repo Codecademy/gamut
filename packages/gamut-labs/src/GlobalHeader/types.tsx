@@ -2,6 +2,7 @@ import { ReactNode } from 'react';
 
 import {
   AppHeaderClickHandler,
+  AppHeaderExtraLinks,
   AppHeaderItemWithHref,
 } from '../AppHeader/AppHeaderElements/types';
 import { AppHeaderSearch } from '../AppHeader/Search/useHeaderSearch';
@@ -21,6 +22,7 @@ type BaseHeader = {
   className?: string;
   hidePricing?: boolean;
   search: AppHeaderSearch;
+  extraLinks?: AppHeaderExtraLinks;
 };
 
 export type User = {
@@ -49,7 +51,6 @@ export type AnonHeader = BaseHeader & {
   redirectParam?: string;
   type: 'anon';
   variant?: AnonHeaderVariant;
-  renderGiftCardLink?: boolean;
 };
 
 export type FreeHeader = LoggedInHeader & {
@@ -67,6 +68,6 @@ export type LoadingHeader = BaseHeader & {
 export type AnonHeaderItemsParams = {
   renderLogin: boolean;
   renderSignUp: boolean;
-  renderGiftCardLink?: boolean;
+  extraLinks?: AppHeaderExtraLinks;
   hidePricing?: boolean;
 };

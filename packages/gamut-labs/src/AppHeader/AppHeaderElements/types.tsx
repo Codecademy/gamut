@@ -36,6 +36,8 @@ export type AppHeaderLinkItem = AppHeaderBaseHrefItem<'link'> & {
   topSeparator?: boolean;
 };
 
+export type AppHeaderExtraLinks = { pricing?: AppHeaderLinkItem[] };
+
 export type AppHeaderTextButtonItem = AppHeaderBaseHrefItem<'text-button'> & {
   text: string;
 };
