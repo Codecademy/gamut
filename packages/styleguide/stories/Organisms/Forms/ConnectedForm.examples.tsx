@@ -36,7 +36,7 @@ export const BadForm = () => {
     validationRules: {
       thisField: { required: 'you need to check this.' },
       //you'll get a type error here because the name isn't found in your default values
-      randomField: {
+      thatField: {
         pattern: {
           value: /^(?:(?!zero).)*$/,
           message: 'literally anything but zero',

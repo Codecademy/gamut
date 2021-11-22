@@ -1,37 +1,21 @@
-import { ConnectedForm, FlexBox, Text } from '@codecademy/gamut';
+import { ConnectedForm } from '@codecademy/gamut';
 import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Meta } from '@storybook/addon-docs/blocks';
-import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 
-import {
-  FancyConnectedFormExample,
-  VeryCoolForm,
-} from './ConnectedForm.examples';
+import { FancyConnectedFormExample } from './ConnectedForm.examples';
 
 <Meta
   title={title}
   component={ConnectedForm}
   parameters={{
-    subtitle: 'ConnectedForm is a flexible way to build unconventional forms.`',
+    subtitle: 'ConnectedForm is a flexible way to build unconventional forms.',
     source: 'gamut',
     status: 'updating',
-    design: {
-      type: 'figma',
-      url:
-        'https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=1189%3A0',
-    },
   }}
 />
 
-<Canvas>
-  <Story
-    name="ConnectedForm"
-    args={{ validation: 'onSubmit', resetOnSubmit: true }}
-  >
-    {(args) => <VeryCoolForm />}
-  </Story>
-</Canvas>
+`ConnectedForm` is an organism designed to create less conventional forms with all of the reliability of `GridForm` without the strict grid structure.
 
 <PropsTable
   of={ConnectedForm}
@@ -47,8 +31,6 @@ import {
 />
 
 # useConnectedForm
-
-`ConnectedForm` is an organism designed to create less conventional forms with all of the reliability of `GridForm` without the strict grid structure.
 
 The primary access pattern of `ConnectedForm` is the `useConnectedForm` hook which composes a typesafe version of `ConnectedForm` + `ConnectedFormGroup` from the `defaultValues` passed to it - catching errors before the development enviroment is even started.
 
@@ -121,13 +103,9 @@ export const BadForm = () => {
 };
 ```
 
-### ConnectedForm
+## ConnectedFormGroup
 
-hi
-
-### ConnectedFormGroup
-
-hello
+`ConnectedFormGroup` ensure that every field has proper error handling and accessibility. It also has its own TypeScript magic -- it will type its `field` to the proper ConnectedForm input passed into `component`.
 
 ```tsx
 export const VeryCoolForm = () => {

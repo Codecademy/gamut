@@ -72,9 +72,6 @@ export const FormPropsContext = React.createContext<Partial<FormContextProps>>(
 );
 const PropsProvider = FormPropsContext.Provider;
 
-/**
- * This is an in progress API! please reach out to the web-plat team if you're interested in using it.
- */
 export function ConnectedForm<Values extends FormValues<Values>>({
   children,
   onSubmit,
