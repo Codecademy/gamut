@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [50.3.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@50.2.6...@codecademy/styleguide@50.3.0) (2021-11-22)
+
+
+### Features
+
+* **Menu:** tweak nav variant + add nav condensed example ([7eb8bfe](https://github.com/Codecademy/gamut/commit/7eb8bfea279e0ebdd2b84f215a08876ee6e596fc))
+
+
+
 ### [50.2.6](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@50.2.5...@codecademy/styleguide@50.2.6) (2021-11-19)
 
 **Note:** Version bump only for package @codecademy/styleguide
