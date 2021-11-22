@@ -1,9 +1,12 @@
 import { ConnectedForm } from '@codecademy/gamut';
 import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
-import { Meta } from '@storybook/addon-docs/blocks';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 
-import { FancyConnectedFormExample } from './ConnectedForm.examples';
+import {
+  FancyConnectedFormExample,
+  VeryCoolForm,
+} from './ConnectedForm.examples';
 
 <Meta
   title={title}
@@ -16,6 +19,15 @@ import { FancyConnectedFormExample } from './ConnectedForm.examples';
 />
 
 `ConnectedForm` is an organism designed to create less conventional forms with all of the reliability of `GridForm` without the strict grid structure.
+
+<Canvas>
+  <Story
+    name="ConnectedForm"
+    args={{ validation: 'onSubmit', resetOnSubmit: true }}
+  >
+    {(args) => <VeryCoolForm />}
+  </Story>
+</Canvas>
 
 <PropsTable
   of={ConnectedForm}
@@ -69,10 +81,7 @@ export const BadForm = () => {
       resetOnSubmit
       {...connectedFormProps}
     >
-      <Text>I have something important to tell you...</Text>
-      <SubmitButton variant="secondary" m={8}>
-        submit this form.
-      </SubmitButton>
+      <SubmitButton>submit this form.</SubmitButton>
       <ConnectedFormGroup
         name="thisField"
         label="cool checkbox bruh"
@@ -172,4 +181,12 @@ export const VeryCoolForm = () => {
 
 ## Example
 
-<FancyConnectedFormExample />
+<Canvas>
+  <Story
+    name="ConnectedForm Example"
+    args={{ validation: 'onSubmit', resetOnSubmit: true }}
+  >
+    {(args) => <FancyConnectedFormExample />}
+  </Story>
+</Canvas>
+5
