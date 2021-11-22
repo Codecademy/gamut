@@ -4,7 +4,11 @@ import styled from '@emotion/styled';
 import { Tabs as ReachTabs, TabsProps as ReachTabsProps } from '@reach/tabs';
 
 // Prevent dev-only errors due to excluding react-ui default styles
-if (process.env.NODE_ENV !== 'production' && document?.documentElement) {
+if (
+  process.env.NODE_ENV !== 'production' &&
+  typeof document !== 'undefined' &&
+  document?.documentElement
+) {
   document.documentElement.style.setProperty('--reach-tabs', '1');
 }
 
