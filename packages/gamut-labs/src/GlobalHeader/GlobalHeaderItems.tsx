@@ -120,7 +120,7 @@ export const communityDropdown: AppHeaderSimpleDropdownItem = {
   type: 'dropdown',
 };
 
-export const pricingDropdown: AppHeaderSimpleDropdownItem = {
+const pricingDropdown: AppHeaderSimpleDropdownItem = {
   icon: AccountingCoinsIcon,
   id: 'pricing',
   text: 'Pro Pricing',

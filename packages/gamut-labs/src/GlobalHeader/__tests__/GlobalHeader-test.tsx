@@ -5,9 +5,9 @@ import {
   communityDropdown,
   courseCatalog,
   forBusiness,
+  getPricingDropdown,
   login,
   myHome,
-  pricingDropdown,
   referrals,
   resourcesDropdown,
   signUp,
@@ -152,12 +152,12 @@ describe('GlobalHeader', () => {
 
     it('renders pricingDropdown when hidePricing is falsy', () => {
       const { view } = renderView(anonHeaderProps);
-      view.getAllByText(pricingDropdown.text);
+      view.getAllByText(getPricingDropdown().text);
     });
 
     it('does not render pricingDropdown when hidePricing is true', () => {
       const { view } = renderView({ ...anonHeaderProps, hidePricing: true });
-      expect(view.queryByText(pricingDropdown.text)).toBeFalsy();
+      expect(view.queryByText(getPricingDropdown().text)).toBeFalsy();
     });
 
     it('renders forEnterprise', () => {
@@ -268,12 +268,12 @@ describe('GlobalHeader', () => {
 
       it('renders pricingDropdown when hidePricing is falsy', () => {
         const { view } = renderView(freeHeaderProps);
-        view.getByText(pricingDropdown.text);
+        view.getByText(getPricingDropdown().text);
       });
 
       it('does not render pricingDropdown when hidePricing is true', () => {
         const { view } = renderView({ ...freeHeaderProps, hidePricing: true });
-        expect(view.queryByText(pricingDropdown.text)).toBeFalsy();
+        expect(view.queryByText(getPricingDropdown().text)).toBeFalsy();
       });
 
       it('renders forEnterprise', () => {
@@ -376,7 +376,7 @@ describe('GlobalHeader', () => {
 
     it('renders fires only action upon clicking an element', () => {
       const { view } = renderView({ ...anonHeaderProps, onLinkAction });
-      view.getByText(pricingDropdown.text).click();
+      view.getByText(getPricingDropdown().text).click();
 
       expect(action).toHaveBeenCalledTimes(1);
       expect(onLinkAction).not.toHaveBeenCalled();

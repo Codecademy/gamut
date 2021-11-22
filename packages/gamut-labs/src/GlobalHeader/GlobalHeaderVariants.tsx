@@ -18,7 +18,6 @@ import {
   login,
   logo,
   myHome,
-  pricingDropdown,
   proLogo,
   proProfile,
   resourcesDropdown,
@@ -205,7 +204,7 @@ export const freeHeaderItems = (
     courseCatalog,
     resourcesDropdown,
     communityDropdown,
-    ...(hidePricing ? [] : [pricingDropdown]),
+    ...(hidePricing ? [] : [getPricingDropdown()]),
     forBusiness,
   ];
 
@@ -237,7 +236,7 @@ export const freeMobileHeaderItems = (
     courseCatalog,
     resourcesDropdown,
     communityDropdown,
-    ...(hidePricing ? [] : [pricingDropdown]),
+    ...(hidePricing ? [] : [getPricingDropdown()]),
     forBusiness,
     freeProfile(user, true),
     user.showProUpgrade
