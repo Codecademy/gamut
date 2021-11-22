@@ -1,4 +1,5 @@
 import {
+  Box,
   Column,
   LayoutGrid,
   Menu,
@@ -105,19 +106,41 @@ const MyMenu = () => (
 <LayoutGrid gap={32} py={24}>
 <Column size={4} variant={false}>
 
-### Normal
+### Select Condensed
 
-<Story name="Normal" args={{ spacing: 'normal' }}>
+<Story
+  name="Select Condensed"
+  args={{ variant: 'select', spacing: 'condensed' }}
+>
   {(args) => <Menu {...args} />}
 </Story>
 
 </Column>
 <Column size={4} variant={false}>
 
-### Condensed
+### Action Condensed
 
-<Story name="Condensed" args={{ spacing: 'condensed' }}>
+<Story
+  name="Action Condensed"
+  args={{ variant: 'action', spacing: 'condensed' }}
+>
   {(args) => <Menu {...args} />}
+</Story>
+
+</Column>
+<Column size={4} variant={false}>
+
+### Condensed Nav
+
+<Story
+  name="Navigation Condensed"
+  args={{ variant: 'navigation', spacing: 'condensed' }}
+>
+  {(args) => (
+    <Box mt={8}>
+      <Menu {...args} />
+    </Box>
+  )}
 </Story>
 
 </Column>
