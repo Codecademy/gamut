@@ -1,5 +1,4 @@
 import {
-  Box,
   Column,
   LayoutGrid,
   Menu,
@@ -10,6 +9,9 @@ import { MultipleUsersIcon } from '@codecademy/gamut-icons';
 import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import LinkTo from '@storybook/addon-links/react';
+
+import { PopoverMenuExample } from './Menu.examples.tsx';
 
 <Meta
   title={title}
@@ -45,8 +47,6 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
   }}
 />
 
-<br />
-
 While most Menus are used as layout elements, Menus can also be used as popover elements within components like Selects.
 
 ## Components
@@ -72,7 +72,7 @@ const MyMenu = () => (
 ## Variants
 
 <LayoutGrid gap={32} py={24}>
-<Column size={4} variant={false}>
+<Column size={4} variant={false} mx={8}>
 
 ### Select
 
@@ -136,15 +136,19 @@ const MyMenu = () => (
   name="Navigation Condensed"
   args={{ variant: 'navigation', spacing: 'condensed' }}
 >
-  {(args) => (
-    <Box mt={8}>
-      <Menu {...args} />
-    </Box>
-  )}
+  {(args) => <Menu {...args} />}
 </Story>
 
 </Column>
 </LayoutGrid>
+
+## Popover Menus
+
+You can create popover menus by utilizing our <LinkTo kind="Atoms/PopoverContainer">PopoverContainer</LinkTo>. Once you have your base positioning, you just need to adjust the `y` axis by `48` for the `normal` spacing or `32` for the `condensed` spacing for each of the `MenuItem`s. You may also need to change the `alignment` of the `PopoverContainer` to ensure correct positioning.
+
+Click through each item to see how the `Menu`s appear (and disappear when the item is clicked again, or another item is selected.)
+
+<PopoverMenuExample />
 
 ### Code Playground
 
