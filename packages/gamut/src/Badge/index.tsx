@@ -18,7 +18,6 @@ const colorVariants = variant({
     textAlign: 'center',
     width: 'min-content',
     whiteSpace: 'nowrap',
-    lineHeight: 'title',
   },
   variants: {
     default: {
