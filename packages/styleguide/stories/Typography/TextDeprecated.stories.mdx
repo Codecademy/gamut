@@ -1,5 +1,4 @@
 import { TextDeprecated } from '@codecademy/gamut/src';
-import { brandColors } from '@codecademy/gamut-styles';
 import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
@@ -29,15 +28,3 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 ## Props
 
 <PropsTable story="TextDeprecated" />
-
-## Custom colors
-
-<Canvas>
-  <Story name="Custom Colors">
-    {() => (
-      <TextDeprecated fontSize="md" style={{ color: brandColors.purple }}>
-        Brand Purple
-      </TextDeprecated>
-    )}
-  </Story>
-</Canvas>
