@@ -32,7 +32,7 @@ export const List = forwardRef<HTMLUListElement, ListProps>(
     ref
   ) => {
     const isEmpty = !children || (isArray(children) && children.length === 0);
-    const { listRef, shadowActive, handleScroll } = useListShadow();
+    const { listRef, shadowActive, handleScroll } = useListShadow(shadow);
     const showShadow = shadow && scrollable && shadowActive && !isEmpty;
     const value = useList({ variant, spacing, scrollable });
 

@@ -1,22 +1,25 @@
 import { UIEvent, useEffect, useRef, useState } from 'react';
 
-export const useListShadow = () => {
+export const useListShadow = (shadow: boolean) => {
   const listRef = useRef<HTMLDivElement>(null);
   const [shadowActive, setShadowActive] = useState(false);
 
   useEffect(() => {
     const handleSetShadow = () => {
-      console.log('i am running');
       if (listRef.current) {
         if (listRef.current.scrollWidth > listRef.current.clientWidth) {
           setShadowActive(true);
+        } else {
+          setShadowActive(false);
         }
       }
     };
-    window.addEventListener('resize', handleSetShadow);
-    handleSetShadow();
-    return window.removeEventListener('resize', handleSetShadow);
-  }, [listRef]);
+    if (shadow) {
+      window.addEventListener('resize', handleSetShadow);
+      handleSetShadow();
+    }
+    return () => window.removeEventListener('resize', handleSetShadow);
+  }, [listRef, shadow]);
 
   const handleScroll = (e: UIEvent<HTMLDivElement>) => {
     const event = e.target as HTMLDivElement;
