@@ -88,7 +88,7 @@ const getMobileAppHeaderItems = (
 };
 
 export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
-  const { action, onLinkAction } = props;
+  const { action, onLinkAction, searchInitiallyOpen } = props;
   const theme = useTheme();
 
   const combinedAction = useCallback(
@@ -117,6 +117,7 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
       />
       <AppHeaderMobile
         action={combinedAction}
+        initiallyOpen={!!searchInitiallyOpen}
         items={getMobileAppHeaderItems(props)}
         {...(props.type === 'anon' || props.type === 'loading'
           ? {}
