@@ -23,7 +23,12 @@ export const PopoverMenuExample: React.FC<PopoverContainerProps> = () => {
     setCurrentTarget(targetNumber);
     setAlignment(currentIndex === 3 ? 'bottom-right' : 'top-right');
 
-    if (isOpen && currentIndex === activeIndex) setIsOpen(false);
+    if (isOpen && currentIndex === activeIndex) {
+      setIsOpen(false);
+    } else {
+      setIsOpen(true);
+    }
+
     if (currentIndex !== activeIndex) setActiveIndex(currentIndex);
   };
 
