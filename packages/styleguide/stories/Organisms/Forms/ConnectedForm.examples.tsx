@@ -12,7 +12,11 @@ import {
   Text,
   useConnectedForm,
 } from '@codecademy/gamut';
-import { TerminalIcon, ViewIcon } from '@codecademy/gamut-icons';
+import {
+  MiniArrowRightIcon,
+  TerminalIcon,
+  ViewIcon,
+} from '@codecademy/gamut-icons';
 import { Keyhole } from '@codecademy/gamut-illustrations';
 import { DotDense } from '@codecademy/gamut-patterns';
 import { Background } from '@codecademy/gamut-styles';
@@ -22,127 +26,161 @@ const INeedSomeSpace: React.FC = ({ children }) => {
   return <Box m={16}>{children}</Box>;
 };
 
-export const BadForm = () => {
+export const RadioGroupForm = () => {
   const {
     ConnectedFormGroup,
     ConnectedForm,
     connectedFormProps,
   } = useConnectedForm({
     defaultValues: {
-      thisField: true,
-      thatField: 'zero',
-      anotherField: 'state your name.',
+      radioGroup: undefined,
     },
     validationRules: {
-      thisField: { required: 'you need to check this.' },
-      //you'll get a type error here because the name isn't found in your default values
-      thatField: {
-        pattern: {
-          value: /^(?:(?!zero).)*$/,
-          message: 'literally anything but zero',
-        },
+      radioGroup: {
+        required: 'please fill this out.',
       },
     },
   });
 
   return (
-    <ConnectedForm
-      //onSubmit is also properly typed!
-      onSubmit={({ thisField }) => console.log(thisField)}
-      resetOnSubmit
-      {...connectedFormProps}
-    >
+    <ConnectedForm onSubmit={() => {}} resetOnSubmit {...connectedFormProps}>
       <Text>I have something important to tell you...</Text>
       <SubmitButton variant="secondary" m={8}>
         submit this form.
       </SubmitButton>
       <ConnectedFormGroup
-        name="thisField"
-        label="cool checkbox bruh"
+        name="radioGroup"
+        label="cool radiogroup bruh"
         field={{
-          component: ConnectedCheckbox,
-          label: 'check it ouuut',
-        }}
-      />
-      <ConnectedFormGroup
-        //another type error, we don't have name in our defaultValues :(
-        name="anotherRandomField"
-        label="cool select dude"
-        field={{
-          component: ConnectedSelect,
-          options: ['one', 'two', 'zero'],
-        }}
-      />
-      <ConnectedFormGroup
-        name="anotherField"
-        label="cool input"
-        field={{
-          component: ConnectedInput,
-          icon: TerminalIcon,
+          component: ConnectedRadioGroupInput,
+          options: [
+            { label: 'one', value: 'one' },
+            { label: 'two', value: 'two' },
+            { label: 'zero', value: 'zero' },
+          ],
         }}
       />
     </ConnectedForm>
   );
 };
 
-export const VeryCoolForm = () => {
+export const ConnectedFormExample = () => {
   const {
     ConnectedFormGroup,
     ConnectedForm,
     connectedFormProps,
   } = useConnectedForm({
     defaultValues: {
-      thisField: true,
-      thatField: 'zero',
-      anotherField: 'state your name.',
+      checkboxField: false,
+      selectField: 'zero',
+      inputField: '',
+      radioGroupField: undefined,
+      textAreaField: '',
     },
     validationRules: {
-      thisField: { required: 'you need to check this.' },
-      thatField: {
+      checkboxField: { required: 'you need to check this.' },
+      selectField: {
         pattern: {
           value: /^(?:(?!zero).)*$/,
           message: 'literally anything but zero',
         },
       },
+      inputField: { required: 'we need this info, bud' },
+      radioGroupField: { required: 'we need this info too, bud' },
+      textAreaField: {
+        required: 'you just have to fill out the whole thing, okay?',
+      },
     },
   });
   return (
-    <Background bg="background" p={48} m={8}>
-      <ConnectedForm
-        onSubmit={({ thisField }) => console.log(thisField)}
-        resetOnSubmit
-        {...connectedFormProps}
-      >
-        <Text>I have something important to tell you...</Text>
-        <SubmitButton variant="secondary" m={8}>
-          submit this form.
-        </SubmitButton>
-        <ConnectedFormGroup
-          name="thisField"
-          label="cool"
-          field={{
-            component: ConnectedCheckbox,
-            label: 'check it ouuut',
-          }}
-        />
-        <ConnectedFormGroup
-          name="thatField"
-          label="cool"
-          field={{
-            component: ConnectedSelect,
-            options: ['one', 'two', 'zero'],
-          }}
-        />
-        <ConnectedFormGroup
-          name="anotherField"
-          label="cool"
-          field={{
-            component: ConnectedInput,
-            icon: TerminalIcon,
-          }}
-        />
-      </ConnectedForm>
-    </Background>
+    <ConnectedForm
+      {...connectedFormProps}
+      onSubmit={(values) => console.log(values)}
+      resetOnSubmit
+      height="60rem"
+      display="flex"
+      flexDirection="column"
+      alignItems="center"
+      justifyContent="space-between"
+    >
+      <Text>I have something important to tell you...</Text>
+      <SubmitButton variant="secondary" m={8}>
+        submit this form.
+      </SubmitButton>
+      <ConnectedFormGroup
+        name="checkboxField"
+        label="checkbox field"
+        field={{
+          component: ConnectedCheckbox,
+          label: 'check it ouuut',
+        }}
+      />
+      <ConnectedFormGroup
+        name="selectField"
+        label="select field"
+        field={{
+          component: ConnectedSelect,
+          options: ['one', 'two', 'zero'],
+        }}
+      />
+      <ConnectedFormGroup
+        name="inputField"
+        label="input field"
+        field={{
+          component: ConnectedInput,
+          icon: TerminalIcon,
+        }}
+      />
+      <ConnectedFormGroup
+        name="radioGroupField"
+        label="radio group field"
+        field={{
+          component: ConnectedRadioGroupInput,
+          options: [
+            {
+              label: (
+                <>
+                  <MiniArrowRightIcon mr={4} /> a
+                </>
+              ),
+              value: 'a',
+            },
+            {
+              label: (
+                <>
+                  <MiniArrowRightIcon mr={4} /> b
+                </>
+              ),
+              value: 'b',
+            },
+            {
+              label: (
+                <>
+                  <MiniArrowRightIcon mr={4} /> c
+                </>
+              ),
+              value: 'c',
+            },
+            {
+              label: (
+                <>
+                  <MiniArrowRightIcon mr={4} />
+                  zilch
+                </>
+              ),
+              value: 'zilch',
+            },
+          ],
+        }}
+      />
+      <ConnectedFormGroup
+        name="textAreaField"
+        label="text area field"
+        field={{
+          component: ConnectedTextArea,
+        }}
+      />
+    </ConnectedForm>
   );
 };
 

@@ -2,11 +2,9 @@ import { ConnectedForm } from '@codecademy/gamut';
 import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import LinkTo from '@storybook/addon-links/react';
 
-import {
-  FancyConnectedFormExample,
-  VeryCoolForm,
-} from './ConnectedForm.examples';
+import { ConnectedFormExample } from './ConnectedForm.examples.tsx';
 
 <Meta
   title={title}
@@ -18,31 +16,9 @@ import {
   }}
 />
 
-`ConnectedForm` is an organism designed to create less conventional forms with all of the reliability of `GridForm` without the strict grid structure.
+`ConnectedForm` is an organism designed to create less conventional forms with all of the reliability of <LinkTo kind='Organisms/GridForm'>GridForm</LinkTo> without the strict grid structure.
 
-<Canvas>
-  <Story
-    name="ConnectedForm"
-    args={{ validation: 'onSubmit', resetOnSubmit: true }}
-  >
-    {(args) => <VeryCoolForm />}
-  </Story>
-</Canvas>
-
-<PropsTable
-  of={ConnectedForm}
-  include={[
-    'onSubmit',
-    'defaultValues',
-    'validationRules',
-    'validation',
-    'disableFieldsOnSubmit',
-    'resetOnSubmit',
-    'wasSubmitSuccessful',
-  ]}
-/>
-
-# useConnectedForm
+## useConnectedForm
 
 The primary access pattern of `ConnectedForm` is the `useConnectedForm` hook which composes a typesafe version of `ConnectedForm` + `ConnectedFormGroup` from the `defaultValues` passed to it - catching errors before the development enviroment is even started.
 
@@ -114,79 +90,48 @@ export const BadForm = () => {
 
 ## ConnectedFormGroup
 
-`ConnectedFormGroup` ensure that every field has proper error handling and accessibility. It also has its own TypeScript magic -- it will type its `field` to the proper ConnectedForm input passed into `component`.
+`ConnectedFormGroup` ensure that every field has proper error handling and accessibility. It also has its own TypeScript magic -- it will type its `field` to the proper ConnectedFormInput passed into `component`.
 
 ```tsx
-export const VeryCoolForm = () => {
-  const {
-    ConnectedFormGroup,
-    ConnectedForm,
-    connectedFormProps,
-  } = useConnectedForm({
-    defaultValues: {
-      thisField: true,
-      thatField: 'zero',
-      anotherField: 'state your name.',
-    },
-    validationRules: {
-      thisField: { required: 'you need to check this.' },
-      thatField: {
-        pattern: {
-          value: /^(?:(?!zero).)*$/,
-          message: 'literally anything but zero',
-        },
-      },
-    },
-  });
-  return (
-    <Background bg="background" p={48}>
-      <ConnectedForm
-        onSubmit={({ thisField }) => console.log(thisField)}
-        resetOnSubmit
-        {...connectedFormProps}
-      >
-        <Text>I have something important to tell you...</Text>
-        <SubmitButton variant="secondary" m={8}>
-          submit this form.
-        </SubmitButton>
-        <ConnectedFormGroup
-          name="thisField"
-          label="cool"
-          field={{
-            component: ConnectedCheckbox,
-            label: 'check it ouuut',
-          }}
-        />
-        <ConnectedFormGroup
-          name="thatField"
-          label="cool"
-          field={{
-            component: ConnectedSelect,
-            options: ['one', 'two', 'zero'],
-          }}
-        />
-        <ConnectedFormGroup
-          name="anotherField"
-          label="cool"
-          field={{
-            component: ConnectedInput,
-            icon: TerminalIcon,
-          }}
-        />
-      </ConnectedForm>
-    </Background>
-  );
-};
+<ConnectedFormGroup
+  name="badRadioGroup"
+  label="cool radio group dude"
+  field={{
+    component: ConnectedRadioGroupInput,
+    //type error, these options are not formatted correctly.
+    options: ['one', 'two', 'zero'],
+  }}
+/>
+
+<ConnectedFormGroup
+  name="goodRadioGroup"
+  label="cool radio group dude"
+  field={{
+    component: ConnectedRadioGroupInput,
+    // perfection 🙌
+    options: [
+            { label: 'one', value: 'one' },
+            { label: 'two', value: 'two' },
+            { label: 'zero', value: 'zero' },
+          ],
+  }}
+/>
 ```
 
-## Example
+`ConnectedFormGroup` can take custom components (as long as they take a `name` and `disabled`` prop), but success may vary. It is highly reccommended you use one of the ConnectedFormInput components instead.
+
+### ConnectedFormInputs
+
+We have a selection of ConnectedFormInput components (ConnectedInput, ConnectedSelect, ConnectedCheckbox, ConnectedRadioGroupInput, and ConnectedTextArea) that are visually identical to their un-connected <LinkTo kind='Atoms/FormInputs'>FormInput</LinkTo> counterparts. It is highly reccommended these are used with the ConnectedFormGroup component for best error-handling and accessibility.
+
+### Code Playground
+
+Edit attributes and see what’s possible to do with this component or get the exact output you want.
 
 <Canvas>
-  <Story
-    name="ConnectedForm Example"
-    args={{ validation: 'onSubmit', resetOnSubmit: true }}
-  >
-    {(args) => <FancyConnectedFormExample />}
+  <Story name="ConnectedForm">
+    {(args) => <ConnectedFormExample {...args} />}
   </Story>
 </Canvas>
-5
+
+<PropsTable story="ConnectedForm" />
