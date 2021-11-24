@@ -18,17 +18,31 @@ import { RadioWatchExample } from './ConnectedForm.examples.tsx';
 
 `ConnectedForm` is an organism designed to create flexible forms with all of the reliability of <LinkTo kind='Organisms/GridForm'>GridForm</LinkTo> but without the strict grid structure.
 
-## useConnectedForm
+## Components
+
+- `ConnectedForm`: A <LinkTo kind='Atoms/Form'>Form</LinkTo> that provides context to all `Connected` components.
+- `ConnectedFormGroup`: <LinkTo kind='Atoms/FormGroups'>FormGroups</LinkTo> that use the context provided by `ConnectedForm` for error and disabled states.
+- `ConnectedFormInputs`: <LinkTo kind='Atoms/FormInputs'>FormInputs</LinkTo> the use the context provided by `ConnectedForm` for field registration and validation as well as required and disabled states. Should be used through `ConnectedFormGroup`.
+- `SubmitButton`: A submit type <LinkTo kind='Atoms/Button'>Button</LinkTo> that uses the context provided by `ConnectedForm` for loading and disabled states.
+
+## Utilities
 
 The primary access pattern of `ConnectedForm` is the `useConnectedForm` hook which composes a typesafe version of `ConnectedForm` + `ConnectedFormGroup` from the `defaultValues` passed to it - catching errors before the development enviroment is even started.
 
 Each of your fields' names must correspond with the appropriate `defaultValue` key. `validationRules` operates similarly - each key must correspond to a key in `defaultValue` and must follow [react-hook-form's](https://react-hook-form.com) [validation patterns](https://react-hook-form.com/v6/api#register).
 
-If you need the values of your inputs before submission, for something like conditionally generating different inputs, you can also pass in a `watchedFields` object. This takes in an array of names of fields to watch and a `watchHandler ` function which will be run `onChange` of your watchedField. This function should take an object with keys that correspond to the names of your watched fields.
-
-For instance:
+## Usage
 
 ```tsx
+import {
+  ConnectedCheckbox,
+  ConnectedInput,
+  ConnectedSelect,
+  useConnectedForm,
+} from '@codecademy/gamut';
+
+import { TerminalIcon } from '@codecademy/gamut-icons';
+
 export const BadForm = () => {
   const {
     ConnectedFormGroup,
@@ -94,48 +108,22 @@ export const BadForm = () => {
 
 If you need the values of your inputs before submission, for something like conditionally generating different inputs, you can also pass in a `watchedFields` object. This takes in an array of names of fields to watch and a `watchHandler ` function which will be run `onChange` of your watchedField. This function should take an object with keys that correspond to the names of your watched fields.
 
-## ConnectedFormGroup
-
-`ConnectedFormGroup` ensure that every field has proper error handling and accessibility. It also has its own TypeScript magic -- it will type its `field` to the proper ConnectedFormInput passed into `component`.
-
-```tsx
-<ConnectedFormGroup
-  name="badRadioGroup"
-  label="cool radio group dude"
-  field={{
-    component: ConnectedRadioGroupInput,
-    //type error, these options are not formatted correctly.
-    options: ['one', 'two', 'zero'],
-  }}
-/>
-
-<ConnectedFormGroup
-  name="goodRadioGroup"
-  label="cool radio group dude"
-  field={{
-    component: ConnectedRadioGroupInput,
-    // perfection 🙌
-    options: [
-            { label: 'one', value: 'one' },
-            { label: 'two', value: 'two' },
-            { label: 'zero', value: 'zero' },
-          ],
-  }}
-/>
-```
-
-## watchedFields
-
-If you need to keep an eye on anything, you can do so with watchedFields.
+<Canvas>
+  <Story name="watchedFields">
+    {(args) => <RadioWatchExample {...args} />}
+  </Story>
+</Canvas>
 
 ```tsx
 export const RadioWatchExample = () => {
   const [showRadio, setShowRadio] = useState(false);
+  const [lastFormValues, setLastFormValues] = useState({
+    checkbox: 'not submitted',
+    radioGroup: 'not submitted',
+  });
 
-  const handleWatch = (currentFormValues: { checkbox: boolean }) => {
-    return currentFormValues.checkbox
-      ? setShowRadio(true)
-      : setShowRadio(false);
+  const handleWatch = ({ checkbox }: { checkbox?: undefined | boolean }) => {
+    return checkbox ? setShowRadio(true) : setShowRadio(false);
   };
 
   const {
@@ -159,17 +147,28 @@ export const RadioWatchExample = () => {
   });
 
   return (
-    <ConnectedForm onSubmit={() => {}} resetOnSubmit {...connectedFormProps}>
-      <Text>I have something important to tell you...</Text>
-      <SubmitButton variant="secondary" m={8}>
-        submit this form.
-      </SubmitButton>
+    <ConnectedForm
+      onSubmit={({ checkbox, radioGroup }) => {
+        setLastFormValues({
+          checkbox: `${checkbox}`,
+          radioGroup: `${radioGroup}`,
+        });
+      }}
+      resetOnSubmit
+      {...connectedFormProps}
+    >
+      <Text as="code" lineHeight="base" mb={24}>
+        your last answers were {lastFormValues.checkbox} and{' '}
+        {lastFormValues.radioGroup}!
+      </Text>
       <ConnectedFormGroup
         name="checkbox"
-        label="cool radiogroup bruh"
+        label="a special checkbox"
+        spacing="tight"
         field={{
           component: ConnectedCheckbox,
           label: 'check me to view the radio',
+          spacing: 'tight',
         }}
       />
       {showRadio && (
@@ -186,14 +185,17 @@ export const RadioWatchExample = () => {
           }}
         />
       )}
+      <SubmitButton m={8}>submit the form, please</SubmitButton>
     </ConnectedForm>
   );
 };
 ```
 
+Watched fields aren't usually great for performance, so only use these fields when you need to.
+
 ### ConnectedFormInputs
 
-We have a selection of ConnectedFormInput components (ConnectedInput, ConnectedSelect, ConnectedCheckbox, ConnectedRadioGroupInput, and ConnectedTextArea) that are visually identical to their un-connected <LinkTo kind='Atoms/FormInputs'>FormInput</LinkTo> counterparts. These should be used with the ConnectedFormGroup component for best error-handling and accessibility.
+We have a selection of `ConnectedFormInput` components (`ConnectedInput`, `ConnectedSelect`, `ConnectedCheckbox`, `ConnectedRadioGroupInput`, and `ConnectedTextArea`) that are visually identical to their un-connected <LinkTo kind='Atoms/FormInputs'>FormInput</LinkTo> counterparts. These should be used with the ConnectedFormGroup component for best error-handling and accessibility.
 
 ### Code Playground
 

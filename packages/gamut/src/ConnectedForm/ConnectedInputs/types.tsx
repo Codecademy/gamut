@@ -34,7 +34,8 @@ export interface ConnectedRadioProps
   extends FieldComponent<RadioProps>,
     ConnectedFieldProps {}
 
-export type ConnectedBaseRadioGroupProps = FieldComponent<RadioGroupProps>;
+export interface ConnectedBaseRadioGroupProps
+  extends FieldComponent<RadioGroupProps> {}
 
 export type ConnectedBaseRadioInputProps = Omit<
   RadioProps,

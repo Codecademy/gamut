@@ -1,0 +1,68 @@
+import { ConnectedFormGroup } from '@codecademy/gamut';
+import title from '@codecademy/macros/lib/title.macro';
+import { PropsTable } from '@codecademy/storybook-addon-variance';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import LinkTo from '@storybook/addon-links/react';
+
+import {
+  ConnectedFormPlayground,
+  FormGroupStates,
+} from './ConnectedForm.examples.tsx';
+
+<Meta
+  title={title}
+  component={ConnectedFormGroup}
+  parameters={{
+    subtitle: 'ConnectedFormGroup is cool',
+    source: 'gamut',
+    status: 'updating',
+  }}
+/>
+
+`ConnectedFormGroup` is a <LinkTo kind='Atoms/FormGroups'>FormGroups</LinkTo> that use the context provided by `ConnectedForm` for error and disabled states. This component ensures that every field has proper error handling and accessibility. It also will type its `field` to the proper ConnectedFormInput passed into `component`.
+
+ConnectedFormInputs should primarly be used with `ConnectedFormGroup` and the `useConnectedForm` hook.
+
+## Usage
+
+```tsx
+<ConnectedFormGroup
+  name="badRadioGroup"
+  label="cool radio group dude"
+  field={{
+    component: ConnectedRadioGroupInput,
+    //type error, these options are not formatted correctly.
+    options: ['one', 'two', 'zero'],
+  }}
+/>
+
+<ConnectedFormGroup
+  name="goodRadioGroup"
+  label="cool radio group dude"
+  field={{
+    component: ConnectedRadioGroupInput,
+    // perfection 🙌
+    options: [
+            { label: 'one', value: 'one' },
+            { label: 'two', value: 'two' },
+            { label: 'zero', value: 'zero' },
+          ],
+  }}
+/>
+```
+
+## States
+
+<FormGroupStates />
+
+### Code Playground
+
+Edit attributes and see what’s possible to do with this component or get the exact output you want.
+
+<Canvas>
+  <Story name="ConnectedFormGroup">
+    {(args) => <ConnectedFormPlayground connectedFormGroup={args} />}
+  </Story>
+</Canvas>
+
+<PropsTable story="ConnectedFormGroup" />

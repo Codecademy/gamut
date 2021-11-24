@@ -1,14 +1,8 @@
 import { css } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
-import React from 'react';
+import React, { useEffect } from 'react';
 
-import {
-  FormError,
-  FormGroup,
-  FormGroupLabel,
-  FormGroupLabelProps,
-  FormGroupProps,
-} from '..';
+import { FormError, FormGroup, FormGroupLabel, FormGroupProps } from '..';
 import { Anchor } from '../Anchor';
 import { HiddenText } from '../HiddenText';
 import { Markdown } from '../Markdown';
@@ -21,20 +15,17 @@ const ErrorAnchor = styled(Anchor)(
   })
 );
 
-export type ConnectedFormGroupBaseProps = Omit<
-  FormGroupProps,
-  'label' | 'disabled'
-> &
-  Pick<FormGroupLabelProps, 'size'> & {
-    customError?: string;
-    errorType?: 'initial' | 'absolute';
-    hideLabel?: boolean;
-    name: string;
-    label: React.ReactNode;
-    required?: boolean;
-    showRequired?: boolean;
-    tooltip?: any;
-  };
+export interface ConnectedFormGroupBaseProps
+  extends Omit<FormGroupProps, 'label' | 'disabled'> {
+  customError?: string;
+  errorType?: 'initial' | 'absolute';
+  hideLabel?: boolean;
+  name: string;
+  label: React.ReactNode;
+  required?: boolean;
+  showRequired?: boolean;
+  tooltip?: any;
+}
 
 export interface ConnectedFormGroupProps<T extends ConnectedField>
   extends SubmitContextProps,
@@ -52,7 +43,7 @@ export function ConnectedFormGroup<T extends ConnectedField>({
   id,
   label,
   name,
-  size,
+  labelSize,
   spacing = 'fit',
   tooltip,
 }: ConnectedFormGroupProps<T>) {
@@ -61,9 +52,19 @@ export function ConnectedFormGroup<T extends ConnectedField>({
     isFirstError,
     isDisabled,
     showRequired,
+    setError,
     validation,
   } = useField({ name, disabled });
   const { component: Component, ...rest } = field;
+
+  useEffect(() => {
+    if (customError) {
+      setError(name, {
+        type: 'manual',
+        message: customError,
+      });
+    }
+  }, [customError, name, setError]);
 
   const renderedLabel = (
     <FormGroupLabel
@@ -71,7 +72,7 @@ export function ConnectedFormGroup<T extends ConnectedField>({
       htmlFor={id || name}
       tooltip={tooltip}
       showRequired={showRequired && !!validation}
-      size={size}
+      size={labelSize}
     >
       {label}
     </FormGroupLabel>
