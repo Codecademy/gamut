@@ -65,11 +65,11 @@ export interface ConnectedFormProps<Values extends {}>
   validation?: Mode;
 
   /**
-   * An object that accepts an array of field names and a watchFunction that accepts a function, to be run onChange, that takes in an object of key/value pairs. The key is the field name and the value is the current value of the watched field.
+   * An object that accepts an array of field names and a watchHandler that accepts a function, to be run onChange, that takes in an object of key/value pairs. The key is the field name and the value is the current value of the watched field.
    */
   watchedFields?: {
     fields: (keyof Values)[];
-    watchFunction: (arg0: Partial<Values>) => void;
+    watchHandler: (arg0: Partial<Values>) => void;
   };
 }
 
@@ -108,7 +108,7 @@ export function ConnectedForm<Values extends FormValues<Values>>({
     if (watchedFields) {
       // we're pretty exhaustively type-checking the props as they're passed in, so its fine to cast here.
       const fields = watch(watchedFields.fields) as Partial<Values>;
-      watchedFields.watchFunction(fields);
+      watchedFields.watchHandler(fields);
     }
   }, [watchedFields, watch]);
 

@@ -10,19 +10,21 @@ import { RadioWatchExample } from './ConnectedForm.examples.tsx';
   title={title}
   component={ConnectedForm}
   parameters={{
-    subtitle: 'ConnectedForm is a flexible way to build unconventional forms.',
+    subtitle: 'ConnectedForm is a flexible way to build forms.',
     source: 'gamut',
     status: 'updating',
   }}
 />
 
-`ConnectedForm` is an organism designed to create less conventional forms with all of the reliability of <LinkTo kind='Organisms/GridForm'>GridForm</LinkTo> without the strict grid structure.
+`ConnectedForm` is an organism designed to create flexible forms with all of the reliability of <LinkTo kind='Organisms/GridForm'>GridForm</LinkTo> but without the strict grid structure.
 
 ## useConnectedForm
 
 The primary access pattern of `ConnectedForm` is the `useConnectedForm` hook which composes a typesafe version of `ConnectedForm` + `ConnectedFormGroup` from the `defaultValues` passed to it - catching errors before the development enviroment is even started.
 
 Each of your fields' names must correspond with the appropriate `defaultValue` key. `validationRules` operates similarly - each key must correspond to a key in `defaultValue` and must follow [react-hook-form's](https://react-hook-form.com) [validation patterns](https://react-hook-form.com/v6/api#register).
+
+If you need the values of your inputs before submission, for something like conditionally generating different inputs, you can also pass in a `watchedFields` object. This takes in an array of names of fields to watch and a `watchHandler ` function which will be run `onChange` of your watchedField. This function should take an object with keys that correspond to the names of your watched fields.
 
 For instance:
 
@@ -87,6 +89,10 @@ export const BadForm = () => {
   );
 };
 ```
+
+# watchedFields
+
+If you need the values of your inputs before submission, for something like conditionally generating different inputs, you can also pass in a `watchedFields` object. This takes in an array of names of fields to watch and a `watchHandler ` function which will be run `onChange` of your watchedField. This function should take an object with keys that correspond to the names of your watched fields.
 
 ## ConnectedFormGroup
 

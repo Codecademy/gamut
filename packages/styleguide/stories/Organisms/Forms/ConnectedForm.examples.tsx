@@ -20,6 +20,7 @@ import {
 import { Keyhole } from '@codecademy/gamut-illustrations';
 import { DotDense } from '@codecademy/gamut-patterns';
 import { Background } from '@codecademy/gamut-styles';
+import { action } from '@storybook/addon-actions';
 import React, { useState } from 'react';
 
 const INeedSomeSpace: React.FC = ({ children }) => {
@@ -43,7 +44,13 @@ export const RadioGroupForm = () => {
   });
 
   return (
-    <ConnectedForm onSubmit={() => {}} resetOnSubmit {...connectedFormProps}>
+    <ConnectedForm
+      onSubmit={(values) => {
+        action('Form Submitted')(values);
+      }}
+      resetOnSubmit
+      {...connectedFormProps}
+    >
       <Text>I have something important to tell you...</Text>
       <SubmitButton variant="secondary" m={8}>
         submit this form.
@@ -89,7 +96,7 @@ export const RadioWatchExample = () => {
     },
     watchedFields: {
       fields: ['checkbox'],
-      watchFunction: handleWatch,
+      watchHandler: handleWatch,
     },
   });
 
