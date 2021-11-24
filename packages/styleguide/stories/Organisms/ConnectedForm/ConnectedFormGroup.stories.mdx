@@ -21,11 +21,17 @@ import {
 
 <br />
 
-`ConnectedFormGroup` is a <LinkTo kind='Atoms/FormGroups'>FormGroup</LinkTo> that uses the context provided by `ConnectedForm` for error and disabled states. This component ensures that every field has proper error handling and accessibility. It also will type its `field` to the proper `ConnectedFormInput` passed into `component`.
+`ConnectedFormGroup` is a <LinkTo kind='Atoms/FormElements/FormGroup'>FormGroup</LinkTo> that uses the context provided by `ConnectedForm` for error and disabled states. This component ensures that every field has proper error handling and accessibility. It also will type its `field` to the proper `ConnectedFormInput` passed into `component`.
 
 `ConnectedFormGroup` should primarly be used with the `useConnectedForm` hook.
 
 <br />
+
+## States
+
+<Box bg="background" border={1} p={16} mb={48}>
+  <FormGroupStates />
+</Box>
 
 ## Usage
 
@@ -54,12 +60,6 @@ import {
   }}
 />
 ```
-
-## States
-
-<Box bg="background" border={1} p={16} mb={48}>
-  <FormGroupStates />
-</Box>
 
 ### Code Playground
 

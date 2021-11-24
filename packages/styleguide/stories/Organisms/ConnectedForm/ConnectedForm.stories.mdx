@@ -46,7 +46,7 @@ import {
 
 import { TerminalIcon } from '@codecademy/gamut-icons';
 
-export const BadForm = () => {
+export const GoodForm = () => {
   const {
     ConnectedFormGroup,
     ConnectedForm,
@@ -59,8 +59,7 @@ export const BadForm = () => {
     },
     validationRules: {
       thisField: { required: 'you need to check this.' },
-      //you'll get a type error here because the name isn't found in your default values
-      randomField: {
+      thatField: {
         pattern: {
           value: /^(?:(?!zero).)*$/,
           message: 'literally anything but zero',
@@ -71,7 +70,6 @@ export const BadForm = () => {
 
   return (
     <ConnectedForm
-      //onSubmit is also properly typed!
       onSubmit={({ thisField }) => console.log(thisField)}
       resetOnSubmit
       {...connectedFormProps}
@@ -86,8 +84,7 @@ export const BadForm = () => {
         }}
       />
       <ConnectedFormGroup
-        //another type error, we don't have that name in our defaultValues :(
-        name="anotherRandomField"
+        name="thatField"
         label="cool select dude"
         field={{
           component: ConnectedSelect,

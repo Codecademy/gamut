@@ -1,5 +1,11 @@
-import { Box, ConnectedFormInput, List } from '@codecademy/gamut';
+import {
+  Box,
+  ConnectedFormInput,
+  ConnectedRadioGroupInput,
+  List,
+} from '@codecademy/gamut';
 import title from '@codecademy/macros/lib/title.macro';
+import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Meta } from '@storybook/addon-docs/blocks';
 import LinkTo from '@storybook/addon-links/react';
 
@@ -19,7 +25,7 @@ import { ListRowRenderer } from './ConnectedForm.examples';
 
 We have a selection of `ConnectedFormInput` components that are visually identical to their un-connected <LinkTo kind='Atoms/FormInputs'>FormInput</LinkTo> counterparts. Please reference the links below for component-specific prop and styling configuration:
 
-<Box>
+<Box mx={36} mt={16} mb={42}>
   <List variant="table">
     <ListRowRenderer
       inputs={[
@@ -32,13 +38,21 @@ We have a selection of `ConnectedFormInput` components that are visually identic
   </List>
 </Box>
 
-`ConnectedRadioGroupInput` and its component parts, `ConnectedRadioGroup` + `ConnectedRadio`, are the exception to the rule. `ConnectedRadioGroupInput` takes all of the props of <LinkTo kind="Atoms/FormInputs/RadioGroup">RadioGroup</LinkTo>, with the exception of the `options` prop, which are an array of objects with `label` and `value` keys. `ConnectedRadioGroup` and `ConnectedRadio` should rarely, if ever, be used outside of `ConnectedRadioGroupInput`.
+### ConnectedRadioGroupInput
+
+`ConnectedRadioGroupInput` is the exception to the rule.
+
+<PropsTable of={ConnectedRadioGroupInput} />
+
+For further styling configurations, check out <LinkTo kind="Atoms/FormInputs/RadioGroup">RadioGroup</LinkTo>.
+
+`ConnectedRadioGroup` and `ConnectedRadio` should rarely, if ever, be used outside of `ConnectedRadioGroupInput`.
 
 <br />
 
 ## Usage
 
-The components are engineered to be passed into the component prop of <LinkTo kind="Atoms/FormInputs/ConnectedFormGroup">ConnectedFormGroup</LinkTo>, like so:
+The components are engineered to be passed into the component prop of <LinkTo kind="Organisms/ConnectedForm/ConnectedFormGroup">ConnectedFormGroup</LinkTo>, like so:
 
 ```tsx
 <ConnectedFormGroup

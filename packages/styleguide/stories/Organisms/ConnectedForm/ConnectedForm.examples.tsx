@@ -1,11 +1,13 @@
 import {
   ConnectedCheckbox,
+  ConnectedForm,
   ConnectedFormGroupProps,
   ConnectedFormProps,
   ConnectedInput,
   ConnectedRadioGroupInput,
   ConnectedSelect,
   ConnectedTextArea,
+  FlexBox,
   ListCol,
   ListRow,
   SubmitButton,
@@ -14,7 +16,7 @@ import {
 } from '@codecademy/gamut';
 import { MiniArrowRightIcon, TerminalIcon } from '@codecademy/gamut-icons';
 import { action } from '@storybook/addon-actions';
-import LinkTo from '@storybook/addon-links/react';
+import { LinkTo } from '@storybook/addon-links/react';
 import React, { useState } from 'react';
 
 export const FormGroupStates = () => {
@@ -220,11 +222,7 @@ export const ConnectedFormPlayground: React.FC<ConnectedFormPlayground> = ({
       {...connectedFormProps}
       {...connectedForm}
     >
-      <Text>
-        I have something important to tell you...
-        <SubmitButton m={8}>submit this</SubmitButton>
-      </Text>
-
+      <SubmitButton m={8}>submit this form</SubmitButton>
       <ConnectedFormGroup
         name="checkboxField"
         label="checkbox field"
@@ -334,5 +332,40 @@ export const ListRowRenderer: React.FC<ListRowRendererProps> = ({ inputs }) => {
         );
       })}
     </>
+  );
+};
+
+export const SubmitButtonStates = () => {
+  return (
+    <ConnectedForm
+      display="flex"
+      my={24}
+      onSubmit={(values) => {
+        action('Form Submitted')(values);
+      }}
+    >
+      <FlexBox flexDirection="column" alignItems="center" p={16}>
+        <Text variant="title-xs">default</Text>
+        <SubmitButton m={8}>submit the form, please</SubmitButton>
+      </FlexBox>
+      <FlexBox
+        borderLeft={1}
+        borderRight={1}
+        flexDirection="column"
+        alignItems="center"
+        p={16}
+      >
+        <Text variant="title-xs">loading</Text>
+        <SubmitButton loading m={8}>
+          submit the form, please
+        </SubmitButton>
+      </FlexBox>
+      <FlexBox flexDirection="column" alignItems="center" p={16}>
+        <Text variant="title-xs">disabled</Text>
+        <SubmitButton disabled m={8}>
+          submit the form, please
+        </SubmitButton>
+      </FlexBox>
+    </ConnectedForm>
   );
 };
