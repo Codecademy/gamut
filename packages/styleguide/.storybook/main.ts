@@ -1,5 +1,29 @@
+const { glob } = require('glob');
+
 const path = require('path');
 const { configs } = require('@codecademy/webpack-config');
+
+const MATCH_STORIES = process.env.MATCH_STORIES || '';
+
+const storiesPattern = path.join(
+  __dirname,
+  `../stories/**/*.stories.@(mdx|tsx)`
+);
+const matchStories = MATCH_STORIES?.split(',')
+  .map((s) => s.toLowerCase())
+  .join('|');
+
+const matchStoriesRegex = new RegExp(`/(${matchStories})/`);
+
+const stories = glob.sync(storiesPattern).filter((storyFile: string) => {
+  if (!MATCH_STORIES) return true;
+  return matchStoriesRegex.test(storyFile.toLowerCase());
+});
+
+if (MATCH_STORIES) {
+  console.log(`Only running stories that match: /(${matchStories})/`);
+  console.log(stories);
+}
 
 // https://github.com/storybookjs/storybook/issues/12262#issuecomment-681953346
 // make a shallow copy of an object, rejecting keys that match /emotion/
@@ -21,7 +45,7 @@ module.exports = {
     './addons/system/preset',
     'storybook-addon-designs',
   ],
-  stories: ['../stories/**/*.stories.@(mdx|tsx)'],
+  stories: [storiesPattern],
   typescript: {
     reactDocgen: 'react-docgen-typescript',
     reactDocgenTypescriptOptions: {
@@ -60,6 +84,7 @@ module.exports = {
           __dirname,
           '../../gamut-illustrations/src'
         ),
+        '@codecademy/variance$': path.resolve(__dirname, '../../variance/src'),
       },
     };
 
