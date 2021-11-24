@@ -1,6 +1,7 @@
-import React, { ComponentProps } from 'react';
+import React, { ComponentProps, useMemo } from 'react';
 import { PROP_GROUPS } from '../propMeta';
 import { ArgsTable } from '@storybook/addon-docs/blocks';
+import { isArray } from 'lodash';
 
 import {
   PropItem,
@@ -49,6 +50,7 @@ type PropsTableProps = ComponentProps<typeof ArgsTable> & {
 
 export const PropsTable: React.FC<PropsTableProps> = ({
   defaultGroups = [],
+  exclude = [],
   ...props
 }) => {
   const {
@@ -58,6 +60,10 @@ export const PropsTable: React.FC<PropsTableProps> = ({
     showAll: false,
     activeGroups: defaultGroups,
   });
+
+  const finalExcludedProps = useMemo(() => {
+    return isArray(exclude) ? [...exclude, ...excludedProps] : excludedProps;
+  }, [exclude, excludedProps]);
 
   return (
     <>
@@ -93,7 +99,7 @@ export const PropsTable: React.FC<PropsTableProps> = ({
           </FlexBox>
         </Box>
       )}
-      <ArgsTable {...props} exclude={excludedProps} />
+      <ArgsTable {...props} exclude={finalExcludedProps} />
     </>
   );
 };

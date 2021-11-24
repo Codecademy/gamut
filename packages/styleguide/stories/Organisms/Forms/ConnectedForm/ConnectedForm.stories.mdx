@@ -4,7 +4,10 @@ import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 import LinkTo from '@storybook/addon-links/react';
 
-import { RadioWatchExample } from './ConnectedForm.examples.tsx';
+import {
+  ConnectedFormPlayground,
+  RadioWatchExample,
+} from './ConnectedForm.examples.tsx';
 
 <Meta
   title={title}
@@ -203,8 +206,8 @@ Edit attributes and see what’s possible to do with this component or get the e
 
 <Canvas>
   <Story name="ConnectedForm">
-    {(args) => <RadioWatchExample {...args} />}
+    {(args) => <ConnectedFormPlayground connectedForm={args} />}
   </Story>
 </Canvas>
 
-<PropsTable story="ConnectedForm" />
+<PropsTable story="ConnectedForm" exclude={['fit', 'context', 'no-select']} />
