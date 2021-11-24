@@ -30,7 +30,7 @@ interface UseConnectedFormProps<
   validationRules: Partial<Rules>;
   watchedFields?: {
     fields: (keyof Values)[];
-    watchFunction: (arg0: Partial<Values>) => void;
+    watchHandler: (arg0: Partial<Values>) => void;
   };
 }
 
