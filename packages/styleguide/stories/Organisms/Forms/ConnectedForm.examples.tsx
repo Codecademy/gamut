@@ -88,7 +88,7 @@ export const RadioWatchExample = () => {
       },
     },
     watchedFields: {
-      fields: ['checkbox', 'radioGroup'],
+      fields: ['checkbox'],
       watchFunction: handleWatch,
     },
   });
