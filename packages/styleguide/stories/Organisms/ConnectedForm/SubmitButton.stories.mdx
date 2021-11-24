@@ -1,0 +1,16 @@
+import { SubmitButton } from '@codecademy/gamut';
+import title from '@codecademy/macros/lib/title.macro';
+import { Meta } from '@storybook/addon-docs/blocks';
+import LinkTo from '@storybook/addon-links/react';
+
+<Meta
+  title={title}
+  component={SubmitButton}
+  parameters={{
+    subtitle: 'where did connected form group go le sigh',
+    source: 'gamut',
+    status: 'updating',
+  }}
+/>
+
+- `SubmitButton`: A submit type <LinkTo kind='Atoms/Button'>Button</LinkTo> that uses the context provided by `ConnectedForm` for loading and disabled states.

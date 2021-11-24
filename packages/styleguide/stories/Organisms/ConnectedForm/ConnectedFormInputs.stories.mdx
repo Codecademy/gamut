@@ -1,0 +1,69 @@
+import { Box, ConnectedFormInput, List } from '@codecademy/gamut';
+import title from '@codecademy/macros/lib/title.macro';
+import { Meta } from '@storybook/addon-docs/blocks';
+import LinkTo from '@storybook/addon-links/react';
+
+import { ListRowRenderer } from './ConnectedForm.examples';
+
+<Meta
+  title={title}
+  component={ConnectedFormInput}
+  parameters={{
+    subtitle: 'ConnectedFormGroup is cool',
+    source: 'gamut',
+    status: 'updating',
+  }}
+/>
+
+<br />
+
+We have a selection of `ConnectedFormInput` components that are visually identical to their un-connected <LinkTo kind='Atoms/FormInputs'>FormInput</LinkTo> counterparts. Please reference the links below for component-specific prop and styling configuration:
+
+<Box>
+  <List variant="table">
+    <ListRowRenderer
+      inputs={[
+        { name: 'ConnectedInput', counterpart: 'Input' },
+        { name: 'ConnectedSelect', counterpart: 'Select' },
+        { name: 'ConnectedCheckbox', counterpart: 'Checkbox' },
+        { name: 'ConnectedTextArea', counterpart: 'TextArea' },
+      ]}
+    />
+  </List>
+</Box>
+
+`ConnectedRadioGroupInput` and its component parts, `ConnectedRadioGroup` + `ConnectedRadio`, are the exception to the rule. `ConnectedRadioGroupInput` takes all of the props of <LinkTo kind="Atoms/FormInputs/RadioGroup">RadioGroup</LinkTo>, with the exception of the `options` prop, which are an array of objects with `label` and `value` keys. `ConnectedRadioGroup` and `ConnectedRadio` should rarely, if ever, be used outside of `ConnectedRadioGroupInput`.
+
+<br />
+
+## Usage
+
+The components are engineered to be passed into the component prop of <LinkTo kind="Atoms/FormInputs/ConnectedFormGroup">ConnectedFormGroup</LinkTo>, like so:
+
+```tsx
+<ConnectedFormGroup
+  name="badRadioGroup"
+  label="cool radio group dude"
+  field={{
+    component: ConnectedRadioGroupInput,
+    //type error, these options are not formatted correctly.
+    options: ['one', 'two', 'zero'],
+  }}
+/>
+
+<ConnectedFormGroup
+  name="goodRadioGroup"
+  label="cool radio group dude"
+  field={{
+    component: ConnectedRadioGroupInput,
+    // perfection 🙌
+    options: [
+            { label: 'one', value: 'one' },
+            { label: 'two', value: 'two' },
+            { label: 'zero', value: 'zero' },
+          ],
+  }}
+/>
+```
+
+Use outside of `ConnectedFormGroup` removes much of the accessibility and type-safety built into these components.

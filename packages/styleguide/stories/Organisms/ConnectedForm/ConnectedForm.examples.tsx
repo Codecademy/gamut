@@ -6,12 +6,15 @@ import {
   ConnectedRadioGroupInput,
   ConnectedSelect,
   ConnectedTextArea,
+  ListCol,
+  ListRow,
   SubmitButton,
   Text,
   useConnectedForm,
 } from '@codecademy/gamut';
 import { MiniArrowRightIcon, TerminalIcon } from '@codecademy/gamut-icons';
 import { action } from '@storybook/addon-actions';
+import LinkTo from '@storybook/addon-links/react';
 import React, { useState } from 'react';
 
 export const FormGroupStates = () => {
@@ -213,6 +216,7 @@ export const ConnectedFormPlayground: React.FC<ConnectedFormPlayground> = ({
       flexDirection="column"
       alignItems="center"
       justifyContent="space-between"
+      minHeight="50rem"
       {...connectedFormProps}
       {...connectedForm}
     >
@@ -300,5 +304,35 @@ export const ConnectedFormPlayground: React.FC<ConnectedFormPlayground> = ({
         {...connectedFormGroup}
       />
     </ConnectedForm>
+  );
+};
+
+interface ListRowRendererProps {
+  inputs: { name: string; counterpart: string }[];
+}
+
+export const ListRowRenderer: React.FC<ListRowRendererProps> = ({ inputs }) => {
+  return (
+    <>
+      {inputs.map(({ name, counterpart }) => {
+        return (
+          <ListRow>
+            <ListCol size="lg" type="header">
+              <Text as="code" ml={8}>
+                {name}
+              </Text>
+            </ListCol>
+            <ListCol size="lg" fill>
+              <LinkTo
+                id={`Atoms/FormInputs/${counterpart}`}
+                kind={`Atoms/FormInputs/${counterpart}`}
+              >
+                {counterpart}
+              </LinkTo>
+            </ListCol>
+          </ListRow>
+        );
+      })}
+    </>
   );
 };
