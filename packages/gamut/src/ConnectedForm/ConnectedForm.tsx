@@ -63,6 +63,14 @@ export interface ConnectedFormProps<Values extends {}>
    * required fields are completed.
    */
   validation?: Mode;
+
+  /**
+   * An object that accepts an array of field names and a watchFunction that accepts a function, to be run onChange, that takes in an object of key/value pairs. The key is the field name and the value is the current value of the watched field.
+   */
+  watchedFields?: {
+    fields: (keyof Values)[];
+    watchFunction: (arg0: Partial<Values>) => void;
+  };
 }
 
 export type FormProviderCustomProps = FormProviderProps & FormContextProps;
@@ -82,9 +90,11 @@ export function ConnectedForm<Values extends FormValues<Values>>({
   showRequired = false,
   validationRules,
   wasSubmitSuccessful = undefined,
+  watchedFields,
   ...rest
 }: ConnectedFormProps<Values>) {
-  const { handleSubmit, formState, reset, ...methods } = useForm({
+  // eslint-disable-next-line @typescript-eslint/unbound-method
+  const { handleSubmit, formState, reset, watch, ...methods } = useForm({
     defaultValues,
     mode: validation,
   });
@@ -93,6 +103,14 @@ export function ConnectedForm<Values extends FormValues<Values>>({
     wasSubmitSuccessful,
     formState.isSubmitSuccessful
   );
+
+  useEffect(() => {
+    if (watchedFields) {
+      // we're pretty exhaustively type-checking the props as they're passed in, so its fine to cast here.
+      const fields = watch(watchedFields.fields) as Partial<Values>;
+      watchedFields.watchFunction(fields);
+    }
+  }, [watchedFields, watch]);
 
   useEffect(() => {
     if (isSubmitSuccessful && resetOnSubmit) {
@@ -122,6 +140,7 @@ export function ConnectedForm<Values extends FormValues<Values>>({
         handleSubmit={handleSubmit}
         formState={formState}
         reset={reset}
+        watch={watch}
         {...methods}
       >
         <Form onSubmit={handleSubmit(onSubmit)} {...rest}>

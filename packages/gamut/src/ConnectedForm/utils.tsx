@@ -28,6 +28,10 @@ interface UseConnectedFormProps<
 > {
   defaultValues: Values;
   validationRules: Partial<Rules>;
+  watchedFields?: {
+    fields: (keyof Values)[];
+    watchFunction: (arg0: Partial<Values>) => void;
+  };
 }
 
 interface ConnectedFormStrictProps<Values, Rules>
@@ -43,6 +47,7 @@ export const useConnectedForm = <
 >({
   defaultValues,
   validationRules,
+  watchedFields,
 }: UseConnectedFormProps<Values, ValidationRules>) => {
   return useMemo(
     () => ({
@@ -54,6 +59,7 @@ export const useConnectedForm = <
       connectedFormProps: {
         defaultValues,
         validationRules,
+        watchedFields,
       },
     }),
     // eslint-disable-next-line react-hooks/exhaustive-deps

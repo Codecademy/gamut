@@ -20,7 +20,7 @@ import {
 import { Keyhole } from '@codecademy/gamut-illustrations';
 import { DotDense } from '@codecademy/gamut-patterns';
 import { Background } from '@codecademy/gamut-styles';
-import React from 'react';
+import React, { useState } from 'react';
 
 const INeedSomeSpace: React.FC = ({ children }) => {
   return <Box m={16}>{children}</Box>;
@@ -60,6 +60,67 @@ export const RadioGroupForm = () => {
           ],
         }}
       />
+    </ConnectedForm>
+  );
+};
+
+export const RadioWatchExample = () => {
+  const [showRadio, setShowRadio] = useState(false);
+
+  const handleWatch = (currentFormValues: { checkbox: boolean }) => {
+    return currentFormValues.checkbox
+      ? setShowRadio(true)
+      : setShowRadio(false);
+  };
+
+  const {
+    ConnectedFormGroup,
+    ConnectedForm,
+    connectedFormProps,
+  } = useConnectedForm({
+    defaultValues: {
+      checkbox: false,
+      radioGroup: undefined,
+    },
+    validationRules: {
+      radioGroup: {
+        required: 'please fill this out.',
+      },
+    },
+    watchedFields: {
+      fields: ['checkbox', 'radioGroup'],
+      watchFunction: handleWatch,
+    },
+  });
+
+  return (
+    <ConnectedForm onSubmit={() => {}} resetOnSubmit {...connectedFormProps}>
+      <Text>I have something important to tell you...</Text>
+      <SubmitButton variant="secondary" m={8}>
+        submit this form.
+      </SubmitButton>
+      <ConnectedFormGroup
+        name="checkbox"
+        label="cool radiogroup bruh"
+        field={{
+          component: ConnectedCheckbox,
+          label: 'check me to view the radio',
+        }}
+      />
+      {showRadio && (
+        <ConnectedFormGroup
+          name="radioGroup"
+          label="cool radiogroup bruh"
+          field={{
+            component: ConnectedRadioGroupInput,
+            options: [
+              { label: 'one', value: 'one' },
+              { label: 'two', value: 'two' },
+              { label: 'zero', value: 'zero' },
+            ],
+          }}
+        />
+      )}
     </ConnectedForm>
   );
 };

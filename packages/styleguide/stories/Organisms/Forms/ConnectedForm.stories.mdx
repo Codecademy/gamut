@@ -4,7 +4,7 @@ import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 import LinkTo from '@storybook/addon-links/react';
 
-import { ConnectedFormExample } from './ConnectedForm.examples.tsx';
+import { RadioWatchExample } from './ConnectedForm.examples.tsx';
 
 <Meta
   title={title}
@@ -118,7 +118,72 @@ export const BadForm = () => {
 />
 ```
 
-`ConnectedFormGroup` can take custom components (as long as they take a `name` and `disabled`` prop), but success may vary. It is highly reccommended you use one of the ConnectedFormInput components instead.
+## watchedFields
+
+If you need to keep an eye on anything, you can do so with watchedFields.
+
+```tsx
+export const RadioWatchExample = () => {
+  const [showRadio, setShowRadio] = useState(false);
+
+  const handleWatch = (currentFormValues: { checkbox: boolean }) => {
+    return currentFormValues.checkbox
+      ? setShowRadio(true)
+      : setShowRadio(false);
+  };
+
+  const {
+    ConnectedFormGroup,
+    ConnectedForm,
+    connectedFormProps,
+  } = useConnectedForm({
+    defaultValues: {
+      checkbox: false,
+      radioGroup: undefined,
+    },
+    validationRules: {
+      radioGroup: {
+        required: 'please fill this out.',
+      },
+    },
+    watchedFields: {
+      fields: ['checkbox', 'radioGroup'],
+      watchFunction: handleWatch,
+    },
+  });
+
+  return (
+    <ConnectedForm onSubmit={() => {}} resetOnSubmit {...connectedFormProps}>
+      <Text>I have something important to tell you...</Text>
+      <SubmitButton variant="secondary" m={8}>
+        submit this form.
+      </SubmitButton>
+      <ConnectedFormGroup
+        name="checkbox"
+        label="cool radiogroup bruh"
+        field={{
+          component: ConnectedCheckbox,
+          label: 'check me to view the radio',
+        }}
+      />
+      {showRadio && (
+        <ConnectedFormGroup
+          name="radioGroup"
+          label="cool radiogroup bruh"
+          field={{
+            component: ConnectedRadioGroupInput,
+            options: [
+              { label: 'one', value: 'one' },
+              { label: 'two', value: 'two' },
+              { label: 'zero', value: 'zero' },
+            ],
+          }}
+        />
+      )}
+    </ConnectedForm>
+  );
+};
+```
 
 ### ConnectedFormInputs
 
@@ -130,7 +195,7 @@ Edit attributes and see what’s possible to do with this component or get the e
 
 <Canvas>
   <Story name="ConnectedForm">
-    {(args) => <ConnectedFormExample {...args} />}
+    {(args) => <RadioWatchExample {...args} />}
   </Story>
 </Canvas>
 
