@@ -1,9 +1,4 @@
-import {
-  brandColors,
-  deprecatedColors,
-  editorColors,
-  platformColors,
-} from '@codecademy/gamut-styles';
+import { editorColors, platformColors } from '@codecademy/gamut-styles';
 import { isString } from 'lodash';
 import React from 'react';
 
@@ -46,7 +41,5 @@ const createColorTable = (prefix: string, colors: Colors) => {
   };
 };
 
-export const brand = createColorTable('brand', brandColors);
 export const editor = createColorTable('color-editor', editorColors);
 export const platform = createColorTable('platform', platformColors);
-export const deprecated = createColorTable('color', deprecatedColors);

@@ -74,12 +74,6 @@ import { editorColors } from '@codecademy/gamut-styles';
 
 These are older colors that are not in our current visual identity, but may still exist in various parts of our application. They are not available on the `Theme` but can still be accessed in typescript.
 
-If you are using deprecated colors but require them in a typescript file you can import them directly:
-
-```js
-import { brandColors } from '@codecademy/styles';
-```
-
 For maintaining older `scss` code that we have not migrated yet, these color variables require you to add the import somewhere in your import tree. This will be necessary to import for all CSS Module style files.
 
 ```css
@@ -89,23 +83,3 @@ For maintaining older `scss` code that we have not migrated yet, these color var
   color: $color-blue;
 }
 ```
-
-### Brand Colors
-
-These are old brand colors and still exist in many places while we try to deprecate them.
-
-```js
-import { brandColors } from '@codecademy/styles';
-```
-
-<DataTable {...TABLES.brand} />
-
-### Deprecated Colors
-
-These are the oldest colors we currently use, and are severely out of date.
-
-```js
-import { deprecatedColors } from '@codecademy/styles';
-```
-
-<DataTable {...TABLES.deprecated} />
