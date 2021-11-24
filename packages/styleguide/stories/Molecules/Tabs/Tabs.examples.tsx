@@ -13,17 +13,15 @@ import { Background } from '@codecademy/gamut-styles';
 import React, { useCallback, useState } from 'react';
 
 export const TabsExample = (args: TabsProps) => {
-  const [controlledIndex, setControlledIndex] = useState(
-    args.index === undefined ? undefined : args.index
-  );
+  const [controlledIndex, setControlledIndex] = useState(args.index!);
 
   const isControlled = typeof controlledIndex !== 'undefined';
 
   const maxTabIndex = 2;
   const setIndex = useCallback(
     (val) => {
-      if (val > maxTabIndex) return setControlledIndex(maxTabIndex);
-      if (val < 0) return setControlledIndex(0);
+      if (val > maxTabIndex) return setControlledIndex(0);
+      if (val < 0) return setControlledIndex(maxTabIndex);
       setControlledIndex(val);
     },
     [setControlledIndex]
@@ -41,7 +39,7 @@ export const TabsExample = (args: TabsProps) => {
           />
         </Background>
       ) : null}
-      <Tabs index={controlledIndex}>
+      <Tabs index={controlledIndex} onChange={setIndex}>
         <TabList>
           <Tab>Tab 1</Tab>
           <Tab>Tab 2</Tab>

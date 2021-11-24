@@ -5,6 +5,7 @@ import {
   TabList as ReachTabList,
   TabListProps as ReachTabListProps,
 } from '@reach/tabs';
+import React from 'react';
 
 export interface TabListProps
   extends ReachTabListProps,
@@ -34,10 +35,11 @@ const tabListVariants = variant({
 
 const tabListProps = variance.compose(system.layout, system.space);
 
-export const TabList = styled(ReachTabList)<TabListProps>(
-  tabListProps,
-  tabListVariants
-);
+const TabListBase = styled('div')<TabListProps>(tabListProps, tabListVariants);
+
+export const TabList: React.FC<TabListProps> = (props) => {
+  return <ReachTabList as={TabListBase} {...props} />;
+};
 
 TabList.defaultProps = {
   variant: 'underlined',

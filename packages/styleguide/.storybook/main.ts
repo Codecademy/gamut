@@ -65,6 +65,7 @@ module.exports = {
           __dirname,
           '../../gamut-illustrations/src'
         ),
+        '@codecademy/variance$': path.resolve(__dirname, '../../variance/src'),
       },
     };
 

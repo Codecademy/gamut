@@ -3,7 +3,16 @@ import {
   TabPanels as ReachTabPanels,
   TabPanelsProps as ReachTabPanelsProps,
 } from '@reach/tabs';
+import React from 'react';
 
-export interface TabPanelsProps extends ReachTabPanelsProps {}
+import { tabElementBaseProps, TabElementStyleProps } from '../props';
 
-export const TabPanels = styled(ReachTabPanels)<TabPanelsProps>();
+export interface TabPanelsProps
+  extends ReachTabPanelsProps,
+    TabElementStyleProps {}
+
+const TabPanelsBase = styled('div')<TabElementStyleProps>(tabElementBaseProps);
+
+export const TabPanels: React.FC<TabPanelsProps> = (props) => {
+  return <ReachTabPanels as={TabPanelsBase} {...props} />;
+};
