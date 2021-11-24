@@ -117,7 +117,7 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
       />
       <AppHeaderMobile
         action={combinedAction}
-        initiallyOpen={!!searchInitiallyOpen}
+        searchInitiallyOpen={!!searchInitiallyOpen}
         items={getMobileAppHeaderItems(props)}
         {...(props.type === 'anon' || props.type === 'loading'
           ? {}
