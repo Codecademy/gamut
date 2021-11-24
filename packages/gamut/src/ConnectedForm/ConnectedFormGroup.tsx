@@ -16,7 +16,10 @@ const ErrorAnchor = styled(Anchor)(
 );
 
 export interface ConnectedFormGroupBaseProps
-  extends Omit<FormGroupProps, 'label' | 'disabled'> {
+  extends Omit<
+    FormGroupProps,
+    'label' | 'disabled' | 'description' | 'htmlFor'
+  > {
   customError?: string;
   errorType?: 'initial' | 'absolute';
   hideLabel?: boolean;
@@ -30,6 +33,9 @@ export interface ConnectedFormGroupBaseProps
 export interface ConnectedFormGroupProps<T extends ConnectedField>
   extends SubmitContextProps,
     ConnectedFormGroupBaseProps {
+  /**
+   * An object consisting of a `component` key to specify what ConnectedFormInput to render - the remaining key/value pairs are that components desired props.
+   */
   field: Omit<React.ComponentProps<T>, 'name' | 'disabled'> & FieldProps<T>;
 }
 
