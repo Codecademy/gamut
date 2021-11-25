@@ -16,8 +16,11 @@ import {
 } from '@codecademy/gamut';
 import { MiniArrowRightIcon, TerminalIcon } from '@codecademy/gamut-icons';
 import { action } from '@storybook/addon-actions';
-import { LinkTo } from '@storybook/addon-links/react';
+import LinkTo from '@storybook/addon-links/react';
 import React, { useState } from 'react';
+
+// reported open Storybook issue, see https://github.com/storybookjs/storybook/issues/14539
+const StorybookLink = LinkTo as any;
 
 export const FormGroupStates = () => {
   const {
@@ -321,12 +324,12 @@ export const ListRowRenderer: React.FC<ListRowRendererProps> = ({ inputs }) => {
               </Text>
             </ListCol>
             <ListCol size="lg" fill>
-              <LinkTo
+              <StorybookLink
                 id={`Atoms/FormInputs/${counterpart}`}
                 kind={`Atoms/FormInputs/${counterpart}`}
               >
                 {counterpart}
-              </LinkTo>
+              </StorybookLink>
             </ListCol>
           </ListRow>
         );
