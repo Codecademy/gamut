@@ -151,7 +151,7 @@ describe('ConnectedForm', () => {
     expect(submitButton).not.toBeDisabled();
   });
 
-  describe.only('onChange validation', () => {
+  describe('onChange validation', () => {
     it('disables the submit button when required fields are incomplete', async () => {
       const api = createPromise<{}>();
       const onSubmit = async (values: {}) => api.resolve(values);
