@@ -1,99 +1,20 @@
 import {
   ConnectedCheckbox,
-  ConnectedForm,
   ConnectedFormGroupProps,
   ConnectedFormProps,
   ConnectedInput,
   ConnectedRadioGroupInput,
   ConnectedSelect,
   ConnectedTextArea,
-  FlexBox,
-  ListCol,
-  ListRow,
   SubmitButton,
   Text,
   useConnectedForm,
 } from '@codecademy/gamut';
 import { MiniArrowRightIcon, TerminalIcon } from '@codecademy/gamut-icons';
 import { action } from '@storybook/addon-actions';
-import LinkTo from '@storybook/addon-links/react';
 import React, { useState } from 'react';
 
 // reported open Storybook issue, see https://github.com/storybookjs/storybook/issues/14539
-const StorybookLink = LinkTo as any;
-
-export const FormGroupStates = () => {
-  const {
-    ConnectedFormGroup,
-    ConnectedForm,
-    connectedFormProps,
-  } = useConnectedForm({
-    defaultValues: {
-      radioGroup: undefined,
-      radioGroupError: undefined,
-      radioGroupDisabled: undefined,
-    },
-    validationRules: {
-      radioGroup: {
-        required: 'please fill this out.',
-      },
-    },
-  });
-
-  return (
-    <ConnectedForm
-      display="flex"
-      mt={12}
-      onSubmit={(values) => {
-        action('Form Submitted')(values);
-      }}
-      resetOnSubmit
-      {...connectedFormProps}
-    >
-      <ConnectedFormGroup
-        name="radioGroup"
-        label="default state"
-        size="large"
-        field={{
-          component: ConnectedRadioGroupInput,
-          options: [
-            { label: 'one', value: 'one' },
-            { label: 'two', value: 'two' },
-            { label: 'zero', value: 'zero' },
-          ],
-        }}
-      />
-      <ConnectedFormGroup
-        name="radioGroupError"
-        label="error state"
-        customError="custom error"
-        size="large"
-        field={{
-          component: ConnectedRadioGroupInput,
-          options: [
-            { label: 'one', value: 'one' },
-            { label: 'two', value: 'two' },
-            { label: 'zero', value: 'zero' },
-          ],
-        }}
-      />
-      <ConnectedFormGroup
-        name="radioGroupDisabled"
-        label="disabled state"
-        size="large"
-        disabled
-        field={{
-          component: ConnectedRadioGroupInput,
-          options: [
-            { label: 'one', value: 'one' },
-            { label: 'two', value: 'two' },
-            { label: 'zero', value: 'zero' },
-          ],
-        }}
-      />
-    </ConnectedForm>
-  );
-};
 
 export const RadioWatchExample = () => {
   const [showRadio, setShowRadio] = useState(false);
@@ -304,71 +225,6 @@ export const ConnectedFormPlayground: React.FC<ConnectedFormPlayground> = ({
         }}
         {...connectedFormGroup}
       />
-    </ConnectedForm>
-  );
-};
-
-interface ListRowRendererProps {
-  inputs: { name: string; counterpart: string }[];
-}
-
-export const ListRowRenderer: React.FC<ListRowRendererProps> = ({ inputs }) => {
-  return (
-    <>
-      {inputs.map(({ name, counterpart }) => {
-        return (
-          <ListRow>
-            <ListCol size="lg" type="header">
-              <Text as="code" ml={8}>
-                {name}
-              </Text>
-            </ListCol>
-            <ListCol size="lg" fill>
-              <StorybookLink
-                id={`Atoms/FormInputs/${counterpart}`}
-                kind={`Atoms/FormInputs/${counterpart}`}
-              >
-                {counterpart}
-              </StorybookLink>
-            </ListCol>
-          </ListRow>
-        );
-      })}
-    </>
-  );
-};
-
-export const SubmitButtonStates = () => {
-  return (
-    <ConnectedForm
-      display="flex"
-      my={24}
-      onSubmit={(values) => {
-        action('Form Submitted')(values);
-      }}
-    >
-      <FlexBox flexDirection="column" alignItems="center" p={16}>
-        <Text variant="title-xs">default</Text>
-        <SubmitButton m={8}>submit the form, please</SubmitButton>
-      </FlexBox>
-      <FlexBox
-        borderLeft={1}
-        borderRight={1}
-        flexDirection="column"
-        alignItems="center"
-        p={16}
-      >
-        <Text variant="title-xs">loading</Text>
-        <SubmitButton loading m={8}>
-          submit the form, please
-        </SubmitButton>
-      </FlexBox>
-      <FlexBox flexDirection="column" alignItems="center" p={16}>
-        <Text variant="title-xs">disabled</Text>
-        <SubmitButton disabled m={8}>
-          submit the form, please
-        </SubmitButton>
-      </FlexBox>
     </ConnectedForm>
   );
 };

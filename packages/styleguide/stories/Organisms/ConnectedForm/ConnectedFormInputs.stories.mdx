@@ -9,7 +9,7 @@ import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Meta } from '@storybook/addon-docs/blocks';
 import LinkTo from '@storybook/addon-links/react';
 
-import { ListRowRenderer } from './ConnectedForm.examples';
+import { ListRowRenderer } from './utils';
 
 <Meta
   title={title}
@@ -40,7 +40,7 @@ We have a selection of `ConnectedFormInput` components that are visually identic
 
 ### ConnectedRadioGroupInput
 
-`ConnectedRadioGroupInput` is the exception to the rule.
+`ConnectedRadioGroupInput` is the exception to the rule, and has some props that differ, particularly `options`.
 
 <PropsTable of={ConnectedRadioGroupInput} />
 
