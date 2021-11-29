@@ -10,15 +10,14 @@ import styled from '@emotion/styled';
 const colorVariants = variant({
   defaultVariant: 'default',
   base: {
+    alignItems: 'center',
     borderRadius: '3px',
-    py: 4,
-    px: 12,
     fontWeight: 400,
-    display: 'inline-block',
-    textAlign: 'center',
+    display: 'flex',
+    justifyContent: 'center',
+    px: 8,
     width: 'min-content',
     whiteSpace: 'nowrap',
-    lineHeight: 'title',
   },
   variants: {
     default: {
@@ -34,7 +33,7 @@ const colorVariants = variant({
       textColor: 'navy',
     },
     grey: {
-      bg: `text-disabled`,
+      bg: `navy-500`,
       textColor: 'white',
     },
     hyper: {
@@ -55,11 +54,11 @@ const sizeVariants = variant({
   defaultVariant: 'base',
   variants: {
     base: {
-      minHeight: '1.5rem',
+      height: '1.5rem',
       fontSize: 16,
     },
     sm: {
-      minHeight: `1rem`,
+      height: `1rem`,
       // the powers that be told us this was okay. please don't do this - <3 web-plat
       fontSize: 12 as any,
     },
