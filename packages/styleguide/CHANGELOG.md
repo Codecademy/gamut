@@ -3,6 +3,131 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [50.4.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@50.3.1...@codecademy/styleguide@50.4.0) (2021-11-23)
+
+
+### Features
+
+* remove unused brandColors and deprecatedColors variables ([3fdeb84](https://github.com/Codecademy/gamut/commit/3fdeb84b96f7be9bc7a40d72b0ac8d1903a7bc22))
+
+
+
+### [50.3.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@50.3.0...@codecademy/styleguide@50.3.1) (2021-11-23)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [50.3.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@50.2.6...@codecademy/styleguide@50.3.0) (2021-11-22)
+
+
+### Features
+
+* **Menu:** tweak nav variant + add nav condensed example ([7eb8bfe](https://github.com/Codecademy/gamut/commit/7eb8bfea279e0ebdd2b84f215a08876ee6e596fc))
+
+
+
+### [50.2.6](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@50.2.5...@codecademy/styleguide@50.2.6) (2021-11-19)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [50.2.5](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@50.2.4...@codecademy/styleguide@50.2.5) (2021-11-17)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [50.2.4](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@50.2.3...@codecademy/styleguide@50.2.4) (2021-11-17)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [50.2.3](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@50.2.2...@codecademy/styleguide@50.2.3) (2021-11-16)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [50.2.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@50.2.1...@codecademy/styleguide@50.2.2) (2021-11-15)
+
+
+### Bug Fixes
+
+* add aria-hidden prop to illustrations ([06cc1a2](https://github.com/Codecademy/gamut/commit/06cc1a2e01cae8df34584854b0e79b10bab5881b))
+
+
+
+### [50.2.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@50.2.0...@codecademy/styleguide@50.2.1) (2021-11-10)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [50.2.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@50.1.9...@codecademy/styleguide@50.2.0) (2021-11-10)
+
+
+### Features
+
+* Expandable List Row,  Accessibility Tweaks, Rotation Animation ([213bf21](https://github.com/Codecademy/gamut/commit/213bf214f7e7ce8964f3e0c96c931ba045c01667))
+
+
+
+### [50.1.9](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@50.1.8...@codecademy/styleguide@50.1.9) (2021-11-09)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [50.1.8](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@50.1.7...@codecademy/styleguide@50.1.8) (2021-11-08)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [50.1.7](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@50.1.6...@codecademy/styleguide@50.1.7) (2021-11-08)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [50.1.6](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@50.1.5...@codecademy/styleguide@50.1.6) (2021-11-05)
+
+
+### Bug Fixes
+
+* **DataGrid/Table:** DataGrid/Table fixes ([1a46168](https://github.com/Codecademy/gamut/commit/1a4616822939ddb20ce860300a13794914989da4))
+
+
+
+### [50.1.5](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@50.1.4...@codecademy/styleguide@50.1.5) (2021-11-05)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
 ### [50.1.4](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@50.1.3...@codecademy/styleguide@50.1.4) (2021-11-03)
 
 **Note:** Version bump only for package @codecademy/styleguide

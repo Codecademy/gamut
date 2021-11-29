@@ -1,7 +1,7 @@
 import { MiniChevronDownIcon } from '@codecademy/gamut-icons';
-import { motion } from 'framer-motion';
 import React from 'react';
 
+import { Rotation } from '../../Animation';
 import { FlexBox } from '../../Box/FlexBox';
 import { TextButton } from '../../Button/TextButton';
 import { RowChange } from '..';
@@ -13,28 +13,6 @@ export interface ExpandColProps {
   disabled?: boolean;
   id?: any;
 }
-
-const HalfRotation: React.FC<{ rotated?: boolean }> = ({
-  rotated,
-  children,
-}) => (
-  <motion.div
-    animate={rotated ? 'rotated' : 'normal'}
-    style={{
-      transformOrigin: 'center',
-      alignSelf: 'center',
-      height: 16,
-      width: 16,
-    }}
-    variants={{
-      rotated: { rotate: 180 },
-      normal: { rotate: 0 },
-    }}
-    transition={{ duration: 0.2, ease: 'easeInOut' }}
-  >
-    {children}
-  </motion.div>
-);
 
 export const ExpandControl: React.FC<ExpandColProps> = ({
   id,
@@ -54,9 +32,9 @@ export const ExpandControl: React.FC<ExpandColProps> = ({
       aria-label={`Expand ${id} Row`}
       aria-expanded={expanded}
     >
-      <HalfRotation rotated={expanded}>
+      <Rotation rotated={expanded}>
         <MiniChevronDownIcon color="text-disabled" />
-      </HalfRotation>
+      </Rotation>
     </TextButton>
   </FlexBox>
 );
