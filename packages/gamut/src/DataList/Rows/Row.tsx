@@ -87,7 +87,9 @@ export const Row: DataRow = ({
             {render ? (
               render(row)
             ) : typeof row[key] === 'string' ? (
-              <Text truncate="ellipsis">{row[key]}</Text>
+              <Text truncate="ellipsis" textAlign="left">
+                {row[key]}
+              </Text>
             ) : (
               row[key]
             )}
