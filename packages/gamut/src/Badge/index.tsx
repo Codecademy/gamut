@@ -33,7 +33,7 @@ const colorVariants = variant({
       textColor: 'navy',
     },
     grey: {
-      bg: `text-disabled`,
+      bg: `navy-500`,
       textColor: 'white',
     },
     hyper: {
