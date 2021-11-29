@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [40.5.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@40.4.1...@codecademy/gamut@40.5.0) (2021-11-29)
+
+
+### Features
+
+* Add multi-select to select dropdown ([0ce809a](https://github.com/Codecademy/gamut/commit/0ce809a2363559c566de044943cff76be5b886e2))
+
+
+
 ### [40.4.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@40.4.0...@codecademy/gamut@40.4.1) (2021-11-23)
 
 **Note:** Version bump only for package @codecademy/gamut
