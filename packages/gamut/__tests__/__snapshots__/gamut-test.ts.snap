@@ -92,6 +92,7 @@ Array [
   "StrokeButton",
   "SubmitButton",
   "Tab",
+  "TabButton",
   "TabList",
   "TabPanel",
   "TabPanels",
