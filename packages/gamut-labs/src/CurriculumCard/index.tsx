@@ -89,8 +89,8 @@ export const CurriculumCard: React.FC<CurriculumCardProps> = ({
             showAltSubtitle={showAltSubtitle}
           />
         )}
-        <Text>blah blah blah blah blah</Text>
       </FlexBox>
+      <Text>blah blah blah blah blah</Text>
       <FlexBox center pb={16}>
         {isFullSize && image && (
           <Image image={image} progressState={progressState} />
