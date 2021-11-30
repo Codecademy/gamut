@@ -26,4 +26,8 @@ describe('CurriculumCard', () => {
     const { view } = renderView({ progressState: 'completed' });
     view.getByText('Completed');
   });
+  it('shows a description when value is present', () => {
+    const { view } = renderView({ description: 'hey now!' });
+    view.getByText('Completed');
+  });
 });

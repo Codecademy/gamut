@@ -34,6 +34,10 @@ export type CurriculumCardProps = SubtitleProps & {
    * Changes In Progress card footer text from "Enrolled..." to "In Progress..."
    */
   footerTextVariant?: FooterTextVariantType;
+  /**
+   * optional text to be displayed below card subtitle
+   */
+  description?: string;
 };
 
 export const CurriculumCard: React.FC<CurriculumCardProps> = ({
@@ -85,6 +89,7 @@ export const CurriculumCard: React.FC<CurriculumCardProps> = ({
             showAltSubtitle={showAltSubtitle}
           />
         )}
+        <Text>blah blah blah blah blah</Text>
       </FlexBox>
       <FlexBox center pb={16}>
         {isFullSize && image && (
