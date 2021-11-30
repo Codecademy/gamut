@@ -1172,10 +1172,10 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
-"@codecademy/eslint-config@6.0.0-alpha.1be38b.0":
-  version "6.0.0-alpha.1be38b.0"
-  resolved "https://registry.npmjs.org/@codecademy/eslint-config/-/eslint-config-6.0.0-alpha.1be38b.0.tgz#44d557b89214a27730862fab03e34f7f7eb11317"
-  integrity sha512-fyfHjXQ+ahjvsqiNIo7aH3prAuB0DUDoee2CAXphht5BQOHea0JDmx5SHAW3SU1ozEHYyoOd+wkmPrqjXB24yQ==
+"@codecademy/eslint-config@7.0.0":
+  version "7.0.0"
+  resolved "https://registry.npmjs.org/@codecademy/eslint-config/-/eslint-config-7.0.0.tgz#d28c0cbc4515b011d94305ef8a248c0362732c5f"
+  integrity sha512-C+T9ha5X2luTa7FsrLLuC54IsudRd2OVD7bUd+k2MzFelwSHBlcRIHPuSX6o0X07gwsvofKBBEBIeT6VnMflwA==
   dependencies:
     "@typescript-eslint/eslint-plugin" "^5.3.1"
     "@typescript-eslint/parser" "^5.3.1"
@@ -1184,7 +1184,7 @@
     eslint-mdx "^1.15.0"
     eslint-plugin-import "^2.25.2"
     eslint-plugin-jest "^25.2.4"
-    eslint-plugin-jest-react "^0.0.2"
+    eslint-plugin-jest-react "^0.1.0"
     eslint-plugin-jsx-a11y "^6.4.1"
     eslint-plugin-no-only-tests "^2.6.0"
     eslint-plugin-react "^7.26.1"
@@ -4240,7 +4240,7 @@
     semver "^7.3.5"
     tsutils "^3.21.0"
 
-"@typescript-eslint/experimental-utils@5.3.1", "@typescript-eslint/experimental-utils@^4.14.0", "@typescript-eslint/experimental-utils@^5.0.0":
+"@typescript-eslint/experimental-utils@5.3.1", "@typescript-eslint/experimental-utils@^5.0.0", "@typescript-eslint/experimental-utils@^5.3.1":
   version "5.3.1"
   resolved "https://registry.npmjs.org/@typescript-eslint/experimental-utils/-/experimental-utils-5.3.1.tgz#bbd8f9b67b4d5fdcb9d2f90297d8fcda22561e05"
   integrity sha512-RgFn5asjZ5daUhbK5Sp0peq0SSMytqcrkNfU4pnDma2D8P3ElZ6JbYjY8IMSFfZAJ0f3x3tnO3vXHweYg0g59w==
@@ -7952,12 +7952,12 @@ eslint-plugin-import@^2.25.2:
     resolve "^1.20.0"
     tsconfig-paths "^3.11.0"
 
-eslint-plugin-jest-react@^0.0.2:
-  version "0.0.2"
-  resolved "https://registry.npmjs.org/eslint-plugin-jest-react/-/eslint-plugin-jest-react-0.0.2.tgz#17026d6a9ed6003eb053fde8138721ee4519e673"
-  integrity sha512-fW+BEFUEjmnhwOJBEWIs5xE4r5oF3lGVZlJ664osL96hKojw0FrlTN72qX8DFYRcfH8uQPBIl/ZbAAX+fiQZPA==
+eslint-plugin-jest-react@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.npmjs.org/eslint-plugin-jest-react/-/eslint-plugin-jest-react-0.1.0.tgz#7f55678bfe42f1a158bd2b3bfb7e756d5ef7b120"
+  integrity sha512-7UIaNSiDNezSI7ueTdhKTOhdCiiO6kvp88pq/UrjQMMkol9ltmhB9C1uJDXgtT5HNeiy8ABu/JztQFGTXaI6wg==
   dependencies:
-    "@typescript-eslint/experimental-utils" "^4.14.0"
+    "@typescript-eslint/experimental-utils" "^5.3.1"
 
 eslint-plugin-jest@^25.2.4:
   version "25.2.4"
