@@ -1,4 +1,4 @@
-import { deprecatedColors as colors } from '@codecademy/gamut-styles';
+import { useTheme } from '@emotion/react';
 import cx from 'classnames';
 import React from 'react';
 
@@ -8,10 +8,11 @@ export type LoadingProps = {
   className?: string;
 };
 
-const color1 = colors.gray[400];
-const color2 = colors.blue[900];
-
 export const Loading: React.FC<LoadingProps> = ({ className }) => {
+  const { colors } = useTheme();
+  const color1 = colors['gray-300'];
+  const color2 = colors['blue-800'];
+
   const icon = (
     <svg
       className={cx(styles.loading, className)}

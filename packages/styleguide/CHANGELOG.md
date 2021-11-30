@@ -3,6 +3,56 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [50.4.3](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@50.4.2...@codecademy/styleguide@50.4.3) (2021-11-30)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [50.4.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@50.4.1...@codecademy/styleguide@50.4.2) (2021-11-30)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [50.4.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@50.4.0...@codecademy/styleguide@50.4.1) (2021-11-29)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [50.4.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@50.3.1...@codecademy/styleguide@50.4.0) (2021-11-23)
+
+
+### Features
+
+* remove unused brandColors and deprecatedColors variables ([3fdeb84](https://github.com/Codecademy/gamut/commit/3fdeb84b96f7be9bc7a40d72b0ac8d1903a7bc22))
+
+
+
+### [50.3.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@50.3.0...@codecademy/styleguide@50.3.1) (2021-11-23)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [50.3.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@50.2.6...@codecademy/styleguide@50.3.0) (2021-11-22)
+
+
+### Features
+
+* **Menu:** tweak nav variant + add nav condensed example ([7eb8bfe](https://github.com/Codecademy/gamut/commit/7eb8bfea279e0ebdd2b84f215a08876ee6e596fc))
+
+
+
 ### [50.2.6](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@50.2.5...@codecademy/styleguide@50.2.6) (2021-11-19)
 
 **Note:** Version bump only for package @codecademy/styleguide

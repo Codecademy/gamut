@@ -3,6 +3,47 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [28.1.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@28.1.2...@codecademy/gamut-labs@28.1.3) (2021-11-30)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [28.1.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@28.1.1...@codecademy/gamut-labs@28.1.2) (2021-11-30)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [28.1.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@28.1.0...@codecademy/gamut-labs@28.1.1) (2021-11-29)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+## [28.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@28.0.14...@codecademy/gamut-labs@28.1.0) (2021-11-23)
+
+
+### Features
+
+* remove unused brandColors and deprecatedColors variables ([3fdeb84](https://github.com/Codecademy/gamut/commit/3fdeb84b96f7be9bc7a40d72b0ac8d1903a7bc22))
+
+
+
+### [28.0.14](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@28.0.13...@codecademy/gamut-labs@28.0.14) (2021-11-22)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
 ### [28.0.13](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@28.0.12...@codecademy/gamut-labs@28.0.13) (2021-11-17)
 
 **Note:** Version bump only for package @codecademy/gamut-labs

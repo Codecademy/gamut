@@ -6,15 +6,11 @@ import {
   MiniChevronDownIcon,
 } from '@codecademy/gamut-icons';
 import { setupEnzyme } from '@codecademy/gamut-tests';
+import { ReactWrapper } from 'enzyme';
 
 import { SelectDropdown } from '../SelectDropdown';
 
 const selectOptions = ['red', 'yellow', 'green'];
-
-const defaultProps = {
-  options: selectOptions,
-  id: 'colors',
-};
 
 const selectOptionsObject = {
   red: 'red',
@@ -36,40 +32,32 @@ const renderWrapper = setupEnzyme(SelectDropdown, {
   id: 'colors',
 });
 
+const openDropdown = (wrapper: ReactWrapper) =>
+  wrapper.find('DropdownIndicator').simulate('mouseDown', {
+    button: 0,
+  });
+
 describe('SelectDropdown', () => {
   it('sets the id prop on the select tag', () => {
-    const { wrapper } = renderWrapper();
-    expect(wrapper.find('SelectDropdown').props().id).toBe(defaultProps.id);
+    const { wrapper, props } = renderWrapper();
+    expect(wrapper.find(SelectDropdown).props().id).toBe(props.id);
   });
 
   it('renders the same number of options as options', () => {
     const { wrapper } = renderWrapper();
 
-    wrapper.find('DropdownIndicator').simulate('mouseDown', {
-      button: 0,
-    });
+    openDropdown(wrapper);
 
-    expect(wrapper.find('Option').length).toEqual(3);
+    expect(wrapper.find('Option')).toHaveLength(3);
   });
 
-  it('renders options when options is an array', () => {
-    const { wrapper } = renderWrapper();
+  it.each([
+    ['array', selectOptions],
+    ['object', selectOptionsObject],
+  ])('renders options when options is an %s', (_, options) => {
+    const { wrapper } = renderWrapper({ options });
 
-    wrapper.find('DropdownIndicator').simulate('mouseDown', {
-      button: 0,
-    });
-
-    const getByLabel = wrapper.find(`[label="green"]`);
-
-    expect(getByLabel.exists()).toBe(true);
-  });
-
-  it('renders options when options is an object', () => {
-    const { wrapper } = renderWrapper({ options: selectOptionsObject });
-
-    wrapper.find('DropdownIndicator').simulate('mouseDown', {
-      button: 0,
-    });
+    openDropdown(wrapper);
 
     const getByLabel = wrapper.find(`[label="green"]`);
 
@@ -77,40 +65,24 @@ describe('SelectDropdown', () => {
   });
 
   it('renders a small dropdown when size is "small"', () => {
-    const { wrapper } = renderWrapper({
-      options: selectOptionsObject,
-      size: 'small',
-    });
-
-    expect(wrapper.find(MiniChevronDownIcon)).toBeDefined();
+    const { wrapper } = renderWrapper({ size: 'small' });
+    expect(wrapper.exists(MiniChevronDownIcon)).toBe(true);
   });
 
   it('renders a medium dropdown when size is "medium"', () => {
-    const { wrapper } = renderWrapper({
-      options: selectOptionsObject,
-      size: 'medium',
-    });
-
-    expect(wrapper.find(ArrowChevronDownIcon)).toBeDefined();
+    const { wrapper } = renderWrapper({ size: 'medium' });
+    expect(wrapper.exists(ArrowChevronDownIcon)).toBe(true);
   });
 
   it('renders a medium dropdown by default', () => {
-    const { wrapper } = renderWrapper({
-      options: selectOptionsObject,
-    });
-
-    expect(wrapper.find(ArrowChevronDownIcon)).toBeDefined();
+    const { wrapper } = renderWrapper();
+    expect(wrapper.exists(ArrowChevronDownIcon)).toBe(true);
   });
 
   it('renders a dropdown with the correct maxHeight when shownOptionsLimit is specified', () => {
-    const { wrapper } = renderWrapper({
-      options: selectOptionsObject,
-      shownOptionsLimit: 4,
-    });
+    const { wrapper } = renderWrapper({ shownOptionsLimit: 4 });
 
-    wrapper.find('DropdownIndicator').simulate('mouseDown', {
-      button: 0,
-    });
+    openDropdown(wrapper);
 
     const menuList = wrapper.find('MenuList');
     expect(menuList.getDOMNode()).toHaveStyle('max-height : 12rem');
@@ -118,48 +90,48 @@ describe('SelectDropdown', () => {
 
   it('renders a dropdown with the correct maxHeight when shownOptionsLimit is specified + size is "small"', () => {
     const { wrapper } = renderWrapper({
-      options: selectOptionsObject,
       shownOptionsLimit: 4,
       size: 'small',
     });
 
-    wrapper.find('DropdownIndicator').simulate('mouseDown', {
-      button: 0,
-    });
+    openDropdown(wrapper);
 
     const menuList = wrapper.find('MenuList');
     expect(menuList.getDOMNode()).toHaveStyle('max-height : 8rem');
   });
 
   it('renders a dropdown with icons', () => {
-    const { wrapper } = renderWrapper({
-      options: optionsIconsArray,
-      size: 'small',
-    });
+    const { wrapper } = renderWrapper({ options: optionsIconsArray });
 
-    wrapper.find('DropdownIndicator').simulate('mouseDown', {
-      button: 0,
-    });
+    openDropdown(wrapper);
 
-    expect(wrapper.find(DataTransferVerticalIcon)).toBeDefined();
-    expect(wrapper.find(CalendarIcon)).toBeDefined();
-    expect(wrapper.find(EarthIcon)).toBeDefined();
+    optionsIconsArray.forEach(({ icon }) =>
+      expect(wrapper.exists(icon)).toBe(true)
+    );
   });
 
   it('function passed to onInputChanges is called on input change', () => {
     const onInputChange = jest.fn();
+    const { wrapper } = renderWrapper({ onInputChange });
 
-    const { wrapper } = renderWrapper({
-      options: optionsIconsArray,
-      onInputChange,
-    });
-
-    wrapper.find('DropdownIndicator').simulate('mouseDown', {
-      button: 0,
-    });
-
+    openDropdown(wrapper);
     wrapper.find('Option').first().simulate('click');
 
     expect(onInputChange).toHaveBeenCalled();
+  });
+
+  it('renders selected & multiple items when passed multiple: true', () => {
+    const { wrapper } = renderWrapper({ multiple: true });
+
+    const numSelectedItems = 2;
+
+    [...Array(numSelectedItems)].forEach(() => {
+      openDropdown(wrapper);
+      wrapper.find('Option').first().simulate('click');
+    });
+
+    selectOptions
+      .slice(0, numSelectedItems)
+      .forEach((value) => expect(wrapper.text().includes(value)).toBe(true));
   });
 });
