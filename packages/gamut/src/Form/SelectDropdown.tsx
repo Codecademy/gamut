@@ -7,6 +7,7 @@ import { useTheme } from '@emotion/react';
 import React, {
   ReactNode,
   SelectHTMLAttributes,
+  useCallback,
   useMemo,
   useState,
 } from 'react';
@@ -15,6 +16,7 @@ import ReactSelect, {
   ContainerProps,
   IndicatorProps,
   NamedProps,
+  OptionsType,
   OptionTypeBase,
   StylesConfig,
 } from 'react-select';
@@ -51,10 +53,10 @@ type SelectDropdownBaseProps = Omit<
 
 export type SelectDropdownOptions = SelectOptions | IconOption[];
 
-interface SelectDropdownProps
+interface SelectDropdownCoreProps
   extends SelectDropdownBaseProps,
     Omit<
-      NamedProps,
+      NamedProps<OptionStrict, boolean>,
       | 'formatOptionLabel'
       | 'isDisabled'
       | 'value'
@@ -62,6 +64,8 @@ interface SelectDropdownProps
       | 'components'
       | 'styles'
       | 'theme'
+      | 'onChange'
+      | 'multiple'
     >,
     Pick<
       SelectHTMLAttributes<HTMLSelectElement>,
@@ -73,6 +77,33 @@ interface SelectDropdownProps
   options?: SelectDropdownOptions;
   shownOptionsLimit?: 1 | 2 | 3 | 4 | 5 | 6;
 }
+
+interface SingleSelectDropdownProps extends SelectDropdownCoreProps {
+  multiple?: false;
+  onChange?: NamedProps<OptionStrict, false>['onChange'];
+}
+
+interface MultiSelectDropdownProps extends SelectDropdownCoreProps {
+  multiple: true;
+  onChange?: NamedProps<OptionStrict, true>['onChange'];
+}
+
+type SelectDropdownProps = SingleSelectDropdownProps | MultiSelectDropdownProps;
+
+interface BaseOnChangeProps {
+  multiple?: boolean;
+  onChange?:
+    | SingleSelectDropdownProps['onChange']
+    | MultiSelectDropdownProps['onChange'];
+}
+
+const isMultipleSelectProps = (
+  props: BaseOnChangeProps
+): props is MultiSelectDropdownProps => !!props.multiple;
+
+const isSingleSelectProps = (
+  props: BaseOnChangeProps
+): props is SingleSelectDropdownProps => !props.multiple;
 
 const { DropdownIndicator, SelectContainer } = SelectDropdownElements;
 
@@ -116,7 +147,12 @@ const ChevronDropdown = (props: SizedIndicatorProps) => {
 
 const CustomContainer = ({ children, ...rest }: CustomContainerProps) => {
   const { inputProps, name } = rest.selectProps;
-  const value = rest.hasValue ? rest.getValue()[0].value : '';
+  const value = rest.hasValue
+    ? rest
+        .getValue()
+        .map(({ value }) => value)
+        .join(', ')
+    : '';
 
   return (
     <SelectContainer {...rest}>
@@ -139,42 +175,81 @@ const formatOptionLabel = ({ label, icon: Icon, size }: any) => {
 
 const defaultProps = {
   name: undefined,
-  isMulti: false,
   components: {
     DropdownIndicator: ChevronDropdown,
     IndicatorSeparator: () => null,
     SelectContainer: CustomContainer,
+    MultiValue: SelectDropdownElements.MultiValue,
+    MultiValueLabel: SelectDropdownElements.MultiValueLabel,
   },
 };
 
+const onChangeAction = 'select-option';
+
 export const SelectDropdown: React.FC<SelectDropdownProps> = ({
   options,
-  error,
   id,
+  size,
+  error,
   disabled,
   onChange,
-  value = undefined,
+  value,
   name,
   placeholder = 'Select an option',
   inputProps,
-  isSearchable = false,
+  multiple,
+  isSearchable,
   shownOptionsLimit = 6,
-  size,
   ...rest
 }) => {
   const [activated, setActivated] = useState(false);
-  const baseInputProps = { name };
 
-  const changeHandler = (optionEvent: OptionStrict) => {
-    onChange?.(optionEvent, {
-      action: 'select-option',
-      option: optionEvent,
-    });
-    setActivated(true);
-  };
+  const selectOptions = useMemo(() => {
+    return parseOptions({ options, id, size });
+  }, [options, id, size]);
+
+  const parsedValue = useMemo(
+    () => selectOptions.find((option) => option.value === value),
+    [selectOptions, value]
+  );
+
+  const [multiValues, setMultiValues] = useState(
+    selectOptions.filter(
+      (option) =>
+        option.value === value || (value as string[])?.includes(option.value)
+    )
+  );
+
+  const changeHandler = useCallback(
+    (optionEvent: OptionStrict | OptionsType<OptionStrict>) => {
+      setActivated(true);
+
+      // We have to do this because the version of typescript we have doesn't have the transitivity of these type guards yet. But, we will soon!
+      // Should probably come with: https://codecademy.atlassian.net/browse/GM-354
+      const onChangeProps = { onChange, multiple };
+
+      if (isSingleSelectProps(onChangeProps)) {
+        const singleOptionEvent = optionEvent as OptionStrict;
+
+        onChangeProps.onChange?.(singleOptionEvent, {
+          action: onChangeAction,
+          option: singleOptionEvent,
+        });
+      }
+
+      if (isMultipleSelectProps(onChangeProps)) {
+        setMultiValues(optionEvent as OptionStrict[]);
+
+        onChangeProps.onChange?.(optionEvent as OptionsType<OptionStrict>, {
+          action: onChangeAction,
+          option: undefined, // At the moment this isn't used, but when multi select is built for real, boom (https://codecademy.atlassian.net/browse/GM-354)
+        });
+      }
+    },
+    [onChange, multiple]
+  );
 
   const theme = useTheme();
-
   const memoizedStyles: StylesConfig<OptionTypeBase, false> = useMemo(() => {
     return {
       container: (provided, state) => ({
@@ -252,32 +327,21 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
     };
   }, [theme]);
 
-  const selectOptions = useMemo(() => {
-    return parseOptions({ options, id, size });
-  }, [options, id, size]);
-
-  const parsedValue = useMemo(() => {
-    const currentValue = selectOptions.find(
-      ({ value: optionValue }) => optionValue === value
-    );
-
-    return currentValue;
-  }, [selectOptions, value]);
-
   return (
     <ReactSelect
       {...defaultProps}
       id={id || rest.htmlFor}
-      value={parsedValue}
+      options={selectOptions}
+      value={multiple ? multiValues : parsedValue}
       activated={activated}
       error={Boolean(error)}
       formatOptionLabel={formatOptionLabel}
       onChange={changeHandler}
-      inputProps={{ ...inputProps, ...baseInputProps }}
-      isDisabled={disabled}
-      options={selectOptions}
+      inputProps={{ ...inputProps, name }}
       placeholder={placeholder}
       styles={memoizedStyles}
+      isMulti={multiple}
+      isDisabled={disabled}
       isSearchable={isSearchable}
       size={size}
       shownOptionsLimit={shownOptionsLimit}
