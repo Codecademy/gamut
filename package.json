@@ -47,8 +47,8 @@
     "nohoist": [
       "**/@storybook",
       "**/@storybook/**",
-      "**/storybook-addon-designs",
-      "**/storybook-addon-designs/**"
+      "**/storybook-*",
+      "**/storybook-*/**"
     ]
   },
   "dependencies": {

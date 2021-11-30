@@ -13,7 +13,7 @@ const renderWrapper = setupEnzyme(List, {
   ),
 });
 
-describe('Menu', () => {
+describe('List', () => {
   it('renders a default list by default', () => {
     const { wrapper } = renderWrapper();
 
@@ -46,5 +46,34 @@ describe('Menu', () => {
 
     expect(wrapper.find({ type: 'header', sticky: true }).length).toBe(1);
     expect(wrapper.find({ type: 'content', sticky: true }).length).toBe(0);
+  });
+  it('renders ListRow with expanded content when expanded is true', () => {
+    const { wrapper } = renderWrapper({
+      children: (
+        <ListRow
+          expanded
+          renderExpanded={() => <div id="surprise">Surprise!</div>}
+        >
+          <ListCol type="header">Hello</ListCol>
+          <ListCol>Content</ListCol>
+        </ListRow>
+      ),
+    });
+
+    expect(wrapper.find('#surprise').length).toBe(1);
+  });
+  it('does not render ListRow with expanded content when expanded is false', () => {
+    const { wrapper } = renderWrapper({
+      children: (
+        <ListRow
+          expanded={false}
+          renderExpanded={() => <div id="surprise">Surprise!</div>}
+        >
+          <ListCol type="header">Hello</ListCol>
+          <ListCol>Content</ListCol>
+        </ListRow>
+      ),
+    });
+    expect(wrapper.find('#surprise').length).toBe(0);
   });
 });

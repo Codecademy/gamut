@@ -14,11 +14,13 @@ export interface RowProps
 export interface ExpandableRowProps extends RowProps {
   expanded: boolean;
   renderExpanded: () => React.ReactNode;
+  expandedRowAriaLabel: string;
 }
 
 export interface SimpleRowProps extends RowProps {
   expanded?: never;
   renderExpanded?: never;
+  expandedRowAriaLabel?: never;
 }
 
 export type ListRowProps = ExpandableRowProps | SimpleRowProps;
@@ -42,14 +44,27 @@ const ExpandInCollapseOut: React.FC = ({ children }) => {
 };
 
 export const ListRow = forwardRef<HTMLLIElement, ListRowProps>(
-  ({ children, expanded, renderExpanded, ...rest }, ref) => {
+  (
+    { children, expanded, expandedRowAriaLabel, renderExpanded, ...rest },
+    ref
+  ) => {
     const { variant, scrollable, ...rowConfig } = useListContext();
     const wrapperProps = !renderExpanded ? rowConfig : {};
     let content = children;
 
     if (renderExpanded) {
       content = (
-        <RowEl as="div" {...rowConfig} {...rest} ref={ref}>
+        <RowEl
+          as="div"
+          {...rowConfig}
+          aria-expanded={expanded}
+          clickable={!!rest?.onClick}
+          role={rest?.onClick ? 'button' : rest?.role}
+          tabIndex={rest?.onClick ? 0 : rest?.tabIndex}
+          onClick={rest?.onClick}
+          {...rest}
+          ref={ref}
+        >
           {children}
         </RowEl>
       );
@@ -60,13 +75,16 @@ export const ListRow = forwardRef<HTMLLIElement, ListRowProps>(
         variant={variant}
         expanded={!!renderExpanded}
         scrollable={scrollable}
+        onClick={rest?.onClick}
         {...wrapperProps}
       >
         {content}
         <AnimatePresence>
           {expanded && (
             <ExpandInCollapseOut>
-              <Box role="region">{renderExpanded?.()}</Box>
+              <Box role="region" aria-label={expandedRowAriaLabel}>
+                {renderExpanded?.()}
+              </Box>
             </ExpandInCollapseOut>
           )}
         </AnimatePresence>

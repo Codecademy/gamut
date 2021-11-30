@@ -3,6 +3,7 @@ import {
   states,
   styledOptions,
   system,
+  theme,
   variant,
 } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
@@ -24,6 +25,9 @@ const listVariants = variant({
     },
     table: {},
     card: {
+      gap: 24,
+    },
+    block: {
       gap: 16,
     },
     plain: {},
@@ -48,6 +52,17 @@ const rowStates = states({
     display: 'flex',
     flexDirection: { xs: 'column' },
   },
+  clickable: {
+    cursor: 'pointer',
+    '&:hover': {
+      bg: 'background-hover',
+    },
+    '&:focus-visible': {
+      outline: `1px solid ${theme.colors.primary}`,
+      boxShadow: `0 0 0 1px ${theme.colors.primary} inset`,
+      bg: 'background-selected',
+    },
+  },
 });
 
 const spacingVariants = variant({
@@ -65,9 +80,9 @@ const spacingVariants = variant({
 
 const rowVariants = variant({
   prop: 'variant',
+  base: { bg: 'background' },
   variants: {
     default: {
-      bg: 'background',
       border: 1,
       borderTop: 'none',
       '&:first-of-type': {
@@ -75,7 +90,6 @@ const rowVariants = variant({
       },
     },
     table: {
-      bg: 'background',
       '&:nth-of-type(2n)': {
         bg: 'background-selected',
       },
@@ -83,7 +97,10 @@ const rowVariants = variant({
     card: {
       border: 1,
       borderRadius: '2px',
-      bg: 'background',
+    },
+    block: {
+      border: 'none',
+      borderRadius: '2px',
     },
     plain: {},
   },
@@ -113,6 +130,7 @@ const headerVariants = variant({
   variants: {
     default: {},
     card: {},
+    block: {},
     table: {
       borderBottom: 2,
     },
