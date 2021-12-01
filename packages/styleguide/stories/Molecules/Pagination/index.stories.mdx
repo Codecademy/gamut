@@ -1,0 +1,25 @@
+import { Pagination } from '@codecademy/';
+import title from '@codecademy/macros/lib/title.macro';
+import { PropsTable } from '@codecademy/storybook-addon-variance';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+
+<Meta
+  title={title}
+  component={Pagination}
+  parameters={{
+    subtitle: '',
+    source: '',
+    status: '',
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/file/',
+    },
+  }}
+  args={{}}
+/>
+
+<Canvas>
+  <Story name="Pagination">{(args) => <Pagination {...args} />}</Story>
+</Canvas>
+
+<PropsTable story="Pagination" />
