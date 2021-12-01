@@ -28,6 +28,6 @@ describe('CurriculumCard', () => {
   });
   it('shows a description when value is present', () => {
     const { view } = renderView({ description: 'hey now!' });
-    view.getByText('Completed');
+    view.getByText('hey now!');
   });
 });
