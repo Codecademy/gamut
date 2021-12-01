@@ -43,6 +43,7 @@ export type CurriculumCardProps = SubtitleProps & {
 export const CurriculumCard: React.FC<CurriculumCardProps> = ({
   beta,
   difficulty,
+  description,
   headingLevel = 'h3',
   image,
   isFullSize = false,
@@ -90,7 +91,7 @@ export const CurriculumCard: React.FC<CurriculumCardProps> = ({
           />
         )}
       </FlexBox>
-      <Text>blah blah blah blah blah</Text>
+      {description && <Text>{description}</Text>}
       <FlexBox center pb={16}>
         {isFullSize && image && (
           <Image image={image} progressState={progressState} />
