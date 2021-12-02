@@ -1172,10 +1172,10 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
-"@codecademy/eslint-config@7.0.1":
-  version "7.0.1"
-  resolved "https://registry.npmjs.org/@codecademy/eslint-config/-/eslint-config-7.0.1.tgz#f11967374ef9014c9d51e8fb52776983ea1ba2b2"
-  integrity sha512-1JMLiu1nNl5iKrslf5amZMZ6YgK6XFlei1g4Ti9WtNBfaJcU2Ze57AyhgLmIoLVXv8Rv7PbtC3slkHEBbFHUwg==
+"@codecademy/eslint-config@7.0.2":
+  version "7.0.2"
+  resolved "https://registry.npmjs.org/@codecademy/eslint-config/-/eslint-config-7.0.2.tgz#ba19849d136f698810eef94e616deea247fca672"
+  integrity sha512-gr8mV2lqeKqu70pQqmM/On8PzwigileoVsSohckgkcEYSg2ilFOLYGFmMh3EcLERsCawLSk6X5L4RY2gdXK6LQ==
   dependencies:
     "@typescript-eslint/eslint-plugin" "^5.3.1"
     "@typescript-eslint/parser" "^5.3.1"
@@ -1188,7 +1188,7 @@
     eslint-plugin-jsx-a11y "^6.4.1"
     eslint-plugin-no-only-tests "^2.6.0"
     eslint-plugin-react "^7.26.1"
-    eslint-plugin-react-hooks "^4.2.0"
+    eslint-plugin-react-hooks "^4.3.0"
     eslint-plugin-simple-import-sort "^7.0.0"
     eslint-plugin-unused-imports "^1.1.5"
     yargs "^17.1.1"
@@ -7993,10 +7993,10 @@ eslint-plugin-no-only-tests@^2.6.0:
   resolved "https://registry.npmjs.org/eslint-plugin-no-only-tests/-/eslint-plugin-no-only-tests-2.6.0.tgz#19f6c9620bda02b9b9221b436c5f070e42628d76"
   integrity sha512-T9SmE/g6UV1uZo1oHAqOvL86XWl7Pl2EpRpnLI8g/bkJu+h7XBCB+1LnubRZ2CUQXj805vh4/CYZdnqtVaEo2Q==
 
-eslint-plugin-react-hooks@^4.2.0:
-  version "4.2.0"
-  resolved "https://registry.npmjs.org/eslint-plugin-react-hooks/-/eslint-plugin-react-hooks-4.2.0.tgz#8c229c268d468956334c943bb45fc860280f5556"
-  integrity sha512-623WEiZJqxR7VdxFCKLI6d6LLpwJkGPYKODnkH3D7WpOG5KM8yWueBd8TLsNAetEJNF5iJmolaAKO3F8yzyVBQ==
+eslint-plugin-react-hooks@^4.3.0:
+  version "4.3.0"
+  resolved "https://registry.npmjs.org/eslint-plugin-react-hooks/-/eslint-plugin-react-hooks-4.3.0.tgz#318dbf312e06fab1c835a4abef00121751ac1172"
+  integrity sha512-XslZy0LnMn+84NEG9jSGR6eGqaZB3133L8xewQo3fQagbQuGt7a63gf+P1NGKZavEYEC3UXaWEAA/AqDkuN6xA==
 
 eslint-plugin-react@^7.26.1:
   version "7.27.0"
