@@ -35,12 +35,15 @@ const tabListVariants = variant({
 
 const tabListProps = variance.compose(system.layout, system.space);
 
-const TabListBase = styled('div')<TabListProps>(tabListProps, tabListVariants);
+export const TabListWrapper = styled('div')<TabListProps>(
+  tabListProps,
+  tabListVariants
+);
 
-export const TabList: React.FC<TabListProps> = (props) => {
-  return <ReachTabList as={TabListBase} {...props} />;
+TabListWrapper.defaultProps = {
+  variant: 'underlined',
 };
 
-TabList.defaultProps = {
-  variant: 'underlined',
+export const TabList: React.FC<TabListProps> = (props) => {
+  return <ReachTabList as={TabListWrapper} {...props} />;
 };

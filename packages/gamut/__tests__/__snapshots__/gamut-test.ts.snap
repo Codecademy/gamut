@@ -94,6 +94,7 @@ Array [
   "Tab",
   "TabButton",
   "TabList",
+  "TabListWrapper",
   "TabPanel",
   "TabPanels",
   "Tabs",

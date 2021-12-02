@@ -76,10 +76,10 @@ export const TabButton = styled(ButtonBase)<TabElementStyleProps>(
   tabElementBaseProps
 );
 
-export const Tab: React.FC<TabProps> = (props) => {
-  return <ReachTab as={TabButton} {...props} />;
+TabButton.defaultProps = {
+  variant: 'underlined',
 };
 
-Tab.defaultProps = {
-  variant: 'underlined',
+export const Tab: React.FC<TabProps> = (props) => {
+  return <ReachTab as={TabButton} {...props} />;
 };
