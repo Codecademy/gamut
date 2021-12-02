@@ -4,12 +4,12 @@ import styled from '@emotion/styled';
 import { Tab as ReachTab, TabProps as ReachTabProps } from '@reach/tabs';
 import React from 'react';
 
-import { ButtonBase } from '../../ButtonBase';
+import { ButtonBase } from '../ButtonBase';
 import {
   tabElementBaseProps,
   TabElementStyleProps,
   TabSelectors,
-} from '../props';
+} from './props';
 
 export interface TabProps
   extends ReachTabProps,

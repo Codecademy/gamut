@@ -5,7 +5,7 @@ import {
 } from '@reach/tabs';
 import React from 'react';
 
-import { tabElementBaseProps, TabElementStyleProps } from '../props';
+import { tabElementBaseProps, TabElementStyleProps } from './props';
 
 export interface TabPanelProps
   extends ReachTabPanelProps,

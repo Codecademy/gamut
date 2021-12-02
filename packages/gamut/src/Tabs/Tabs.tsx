@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import { Tabs as ReachTabs, TabsProps as ReachTabsProps } from '@reach/tabs';
 import React from 'react';
 
-import { tabElementBaseProps, TabElementStyleProps } from '../props';
+import { tabElementBaseProps, TabElementStyleProps } from './props';
 
 // Prevent dev-only errors due to excluding react-ui default styles
 if (process.env.NODE_ENV !== 'production' && document?.documentElement) {
