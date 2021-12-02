@@ -61,7 +61,7 @@
     "@babel/cli": "7.13.10",
     "@babel/core": "7.13.10",
     "@babel/preset-typescript": "^7.13.0",
-    "@codecademy/eslint-config": "7.0.1",
+    "@codecademy/eslint-config": "7.0.2",
     "@codecademy/prettier-config": "^0.1.10",
     "@codecademy/tsconfig": "^0.2.0",
     "@emotion/babel-plugin": "^11.3.0",
