@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [28.2.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@28.1.3...@codecademy/gamut-labs@28.2.0) (2021-12-02)
+
+
+### Features
+
+* **Header:** added configurable initial visibility for search ([a6164d4](https://github.com/Codecademy/gamut/commit/a6164d4a65af9aaf71761dd7d742aa30031881ec))
+
+
+
 ### [28.1.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@28.1.2...@codecademy/gamut-labs@28.1.3) (2021-11-30)
 
 **Note:** Version bump only for package @codecademy/gamut-labs
