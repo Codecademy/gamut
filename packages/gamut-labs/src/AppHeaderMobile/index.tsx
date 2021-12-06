@@ -29,6 +29,7 @@ export type AppHeaderMobileProps = {
   notifications?: AppHeaderNotifications;
   redirectParam?: string;
   onSearch: (query: string) => void;
+  searchInitiallyOpen?: boolean;
 };
 
 const StyledOverlay = styled(Overlay)`
@@ -53,8 +54,11 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
   notifications,
   onSearch,
   redirectParam,
+  searchInitiallyOpen,
 }) => {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(
+    !!searchInitiallyOpen
+  );
 
   const [notificationsBell, notificationsView] = useHeaderNotifications(
     notifications,
