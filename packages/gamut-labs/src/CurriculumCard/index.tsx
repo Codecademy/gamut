@@ -91,7 +91,7 @@ export const CurriculumCard: React.FC<CurriculumCardProps> = ({
           />
         )}
       </FlexBox>
-      {description && <Text>{description}</Text>}
+      {description && <Text fontSize={14}>{description}</Text>}
       <FlexBox center pb={16}>
         {isFullSize && image && (
           <Image image={image} progressState={progressState} />
