@@ -14,10 +14,7 @@ export type TabListProps = {
   onChange?: () => void;
 };
 
-const defaultProps = {
-  createBaseId: (i: number) => `${i}`,
-  activeTabIndex: 0,
-};
+const defaultCreateBaseId = (i: number) => `${i}`;
 
 /**
  * @deprecated
@@ -27,11 +24,11 @@ const defaultProps = {
  */
 
 export const TabList: FunctionComponent<TabListProps> = ({
-  activeTabIndex,
+  activeTabIndex = 0,
   center,
   children,
   className,
-  createBaseId,
+  createBaseId = defaultCreateBaseId,
   maxWidth,
   onChange,
 }) => {
@@ -53,5 +50,3 @@ export const TabList: FunctionComponent<TabListProps> = ({
     </div>
   );
 };
-
-TabList.defaultProps = defaultProps;

@@ -76,6 +76,15 @@ export const resourcesList: ResourcesList[] = [
     type: 'link',
   },
   {
+    id: 'videos',
+    href: '/resources/videos',
+    footerTrackingTarget: 'videos_homepage',
+    headerTrackingTarget: 'topnav_resources_videos',
+    text: 'Videos',
+    type: 'link',
+    badgeText: 'new',
+  },
+  {
     id: 'blog',
     href: 'https://codecademy.com/resources/blog',
     footerTrackingTarget: 'blog',
@@ -91,7 +100,6 @@ export const resourcesList: ResourcesList[] = [
     headerTrackingTarget: 'topnav_resources_projects',
     text: 'Projects',
     type: 'link',
-    badgeText: 'hello from the other side',
   },
   {
     id: 'career-center',
