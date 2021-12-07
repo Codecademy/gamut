@@ -1,8 +1,13 @@
+import { Badge } from '@codecademy/gamut';
+import styled from '@emotion/styled';
+import React from 'react';
+
 import { AppHeaderLinkItem } from '../../AppHeader/AppHeaderElements/types';
 
-type ResourcesList = Omit<AppHeaderLinkItem, 'trackingTarget'> & {
+type ResourcesList = Omit<AppHeaderLinkItem, 'trackingTarget' | 'badge'> & {
   headerTrackingTarget: string;
   footerTrackingTarget: string;
+  badgeText?: string;
 };
 
 type FooterResourceList = {
@@ -13,6 +18,30 @@ type FooterResourceList = {
   newTab?: boolean;
 };
 
+export const StyledBadge = styled(Badge)`
+  font-size: 10px;
+  padding-top: 1px;
+  padding-bottom: 10px;
+  padding-left: 8px;
+  padding-right: 8px;
+  border-radius: 16px;
+`;
+
+export const renderBadge = (text: string) => (
+  <StyledBadge
+    round
+    variant="blue"
+    fontFamily="accent"
+    ml={8}
+    pl={8}
+    pr={8}
+    height={16}
+    alignSelf="center"
+  >
+    {text}
+  </StyledBadge>
+);
+
 export const resourcesList: ResourcesList[] = [
   {
     id: 'challenges',
@@ -21,7 +50,6 @@ export const resourcesList: ResourcesList[] = [
     headerTrackingTarget: 'topnav_resources_challenges',
     text: 'Challenges',
     type: 'link',
-    hasBadge: false,
   },
   {
     id: 'docs',
@@ -30,7 +58,6 @@ export const resourcesList: ResourcesList[] = [
     headerTrackingTarget: 'topnav_resources_docs',
     text: 'Docs',
     type: 'link',
-    hasBadge: false,
   },
   {
     id: 'cheatsheets',
@@ -39,7 +66,6 @@ export const resourcesList: ResourcesList[] = [
     headerTrackingTarget: 'topnav_resources_cheatsheets',
     text: 'Cheatsheets',
     type: 'link',
-    hasBadge: false,
   },
   {
     id: 'articles',
@@ -48,7 +74,6 @@ export const resourcesList: ResourcesList[] = [
     headerTrackingTarget: 'topnav_resources_articles',
     text: 'Articles',
     type: 'link',
-    hasBadge: false,
   },
   {
     id: 'blog',
@@ -58,7 +83,6 @@ export const resourcesList: ResourcesList[] = [
     text: 'Blog',
     newTab: true,
     type: 'link',
-    hasBadge: false,
   },
   {
     id: 'projects',
@@ -67,7 +91,7 @@ export const resourcesList: ResourcesList[] = [
     headerTrackingTarget: 'topnav_resources_projects',
     text: 'Projects',
     type: 'link',
-    hasBadge: false,
+    badgeText: 'hello from the other side',
   },
   {
     id: 'career-center',
@@ -76,20 +100,21 @@ export const resourcesList: ResourcesList[] = [
     headerTrackingTarget: 'topnav_resources_career_center',
     text: 'Career Center',
     type: 'link',
-    hasBadge: false,
   },
 ];
 
 export const headerResourcesList: AppHeaderLinkItem[] = resourcesList.map(
-  ({ id, href, headerTrackingTarget, text, type, newTab, hasBadge }) => ({
-    id,
-    href,
-    trackingTarget: headerTrackingTarget,
-    text,
-    type,
-    newTab,
-    hasBadge,
-  })
+  ({ id, href, headerTrackingTarget, text, type, newTab, badgeText }) => {
+    return {
+      id,
+      href,
+      trackingTarget: headerTrackingTarget,
+      text,
+      type,
+      newTab,
+      badge: badgeText ? renderBadge(badgeText) : undefined,
+    };
+  }
 );
 
 export const footerResourcesList: FooterResourceList[] = resourcesList.map(

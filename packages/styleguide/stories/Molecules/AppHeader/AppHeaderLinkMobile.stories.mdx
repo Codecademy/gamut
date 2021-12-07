@@ -1,6 +1,6 @@
 import { InfoCircleIcon } from '@codecademy/gamut-icons/src';
 import { AppHeaderLinkMobile } from '@codecademy/gamut-labs/src';
-import { StyledBadge } from '@codecademy/gamut-labs/src/AppHeader/AppHeaderElements/AppHeaderLinkSections';
+import { renderBadge } from '@codecademy/gamut-labs/src/lib/resourcesList';
 import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
@@ -29,23 +29,7 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 <Canvas>
   <Story name="AppHeaderLinkMobile">
     {(args) => (
-      <AppHeaderLinkMobile
-        {...args}
-        badge={
-          <StyledBadge
-            round
-            variant="blue"
-            fontFamily="accent"
-            ml={8}
-            pl={8}
-            pr={8}
-            height={16}
-            alignSelf="center"
-          >
-            new
-          </StyledBadge>
-        }
-      />
+      <AppHeaderLinkMobile {...args} badge={renderBadge('yeeeerrrrrr')} />
     )}
   </Story>
 </Canvas>
