@@ -9,19 +9,20 @@ import LinkTo from '@storybook/addon-links/react';
   component={Badge}
   parameters={{
     subtitle:
-      'A small text box with a dark background for displaying tags or emphasised information in a condensed area.',
+      'Badges are generally used as a standard way to highlight a short piece of text, likely a single word.',
     status: 'updating',
     source: 'gamut',
   }}
 />
 
-Badges are generally used as a standard way to highlight a short piece of text, likely a single word. Badges are inline and generally found next to some interface element to be called out.
+Badges are generally found next to interface elements that need to be called out. They are small Atoms that can either be used inline, or inside larger Molecules and Organisms.
 
 ## Usage
 
-- To display statuses or other read-only information in your Badges
-- **Do not use this prop for elements that are meant to be percieved as clickable or interactive**
-- Use the component's default rectangular style when including Badges inside (or in tandem with) other dynamic elements
+- Use Badges to display read-only information like statuses, attributes, and other emphasized information.
+- Use the `variant` and `size` properties to ensure your badges have the right visibility and visual hierarchy on your page.
+- **Limit Badge text to 1–2 words if possible.** These elements are most effective when displaying short pieces of text.
+- **Do not use Badges for elements that are meant to be clickable or interactive**. Badges are fully rounded to distinguish themselves from elements such as <LinkTo kind='Atoms/Button'>Buttons</LinkTo>.
 
 export const BadgeTemplate = (args) => (
   <Badge {...args}>{args.children ? args.children : args.variant}</Badge>
@@ -29,17 +30,21 @@ export const BadgeTemplate = (args) => (
 
 ## Variants
 
-- The `default` and `stroke` variants both adapt to their <LinkTo kind='Foundations/ColorMode'>ColorMode</LinkTo> (which you can check out by using the toolbar at the top of this page!)
-- Badge variants such as `yellow`, `hyper`, and `blue` have different meanings between applications. While they are all specified on the `variant` prop, be mindful when using them along with other Badges with preexisting meanings.
+We support the following variants of Badges: `default`, `grey`, `stroke`, and `yellow`.
+
+- **Greyscale Badges** provide different levels of priority for the `default` (primary), `grey` (secondary), and `stroke` (tertiary) variants
+- **Accent colors** like `yellow` are meant to be used sparingly so they can stand out against other elements.
+
+Additional variants should designed with both <LinkTo kind='Foundations/ColorMode'>ColorModes</LinkTo> in mind. For example, the `yellow` and `grey` variants work against both light and dark backgrounds, while the `default` and `stroke` variants both adapt to their ColorMode (which you can check out by using the toolbar at the top of this page!)
 
 <Canvas>
   <Story name="default" args={{ children: 'default' }}>
     {BadgeTemplate.bind({})}
   </Story>
-  <Story name="stroke" args={{ variant: 'stroke' }}>
+  <Story name="grey" args={{ variant: 'grey' }}>
     {BadgeTemplate.bind({})}
   </Story>
-  <Story name="grey" args={{ variant: 'grey' }}>
+  <Story name="stroke" args={{ variant: 'stroke' }}>
     {BadgeTemplate.bind({})}
   </Story>
   <Story name="yellow" args={{ variant: 'yellow' }}>
@@ -51,8 +56,8 @@ export const BadgeTemplate = (args) => (
 
 We have two `size` options, which should be used according to their context:
 
-- Use `default` when the `Badge` is a standalone entitity
-- Use `sm` when the `Badge` is inline with other components or `Text`
+- `default` when the Badge is a standalone entitity (24px tall)
+- `sm` when the Badge is inline with other components or `Text` (16px tall)
 
 <Canvas>
   <Story
