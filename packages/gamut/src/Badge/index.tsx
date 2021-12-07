@@ -1,9 +1,4 @@
-import {
-  states,
-  styledOptions,
-  system,
-  variant,
-} from '@codecademy/gamut-styles';
+import { styledOptions, system, variant } from '@codecademy/gamut-styles';
 import { StyleProps, variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
 
@@ -11,7 +6,8 @@ const colorVariants = variant({
   defaultVariant: 'default',
   base: {
     alignItems: 'center',
-    borderRadius: '3px',
+    borderRadius: '40px',
+    fontFamily: 'accent',
     fontWeight: 400,
     display: 'flex',
     justifyContent: 'center',
@@ -24,20 +20,12 @@ const colorVariants = variant({
       bg: `text`,
       textColor: 'background',
     },
-    blue: {
-      bg: 'blue',
-      textColor: 'white',
-    },
     yellow: {
       bg: 'feedback-warning',
       textColor: 'navy',
     },
     grey: {
       bg: `navy-500`,
-      textColor: 'white',
-    },
-    hyper: {
-      bg: `hyper-500`,
       textColor: 'white',
     },
     stroke: {
@@ -55,22 +43,15 @@ const sizeVariants = variant({
   variants: {
     base: {
       height: '1.5rem',
-      fontSize: 16,
+      fontSize: 14,
+      lineHeight: 'title',
     },
     sm: {
       height: `1rem`,
       // the powers that be told us this was okay. please don't do this - <3 web-plat
-      fontSize: 12 as any,
+      fontSize: 10 as any,
+      lineHeight: 'base',
     },
-  },
-});
-
-const badgeStates = states({
-  round: {
-    borderRadius: '40px',
-  },
-  accent: {
-    fontFamily: 'accent',
   },
 });
 
@@ -83,12 +64,10 @@ const badgeProps = variance.compose(
 export interface BadgeProps
   extends StyleProps<typeof badgeProps>,
     StyleProps<typeof colorVariants>,
-    StyleProps<typeof sizeVariants>,
-    StyleProps<typeof badgeStates> {}
+    StyleProps<typeof sizeVariants> {}
 
 export const Badge = styled('div', styledOptions)<BadgeProps>(
   badgeProps,
   colorVariants,
-  sizeVariants,
-  badgeStates
+  sizeVariants
 );

@@ -38,12 +38,6 @@ Badge variants have different meanings between applications. While they are all 
   <Story name="yellow" args={{ variant: 'yellow' }}>
     {BadgeTemplate.bind({})}
   </Story>
-  <Story name="hyper" args={{ variant: 'hyper' }}>
-    {BadgeTemplate.bind({})}
-  </Story>
-  <Story name="blue" args={{ variant: 'blue' }}>
-    {BadgeTemplate.bind({})}
-  </Story>
 </Canvas>
 
 `default` and `stroke` both adapt to their <LinkTo kind='Foundations/ColorMode'>ColorMode</LinkTo> (which you can check out by using the toolbar at the top of this page!)
@@ -60,44 +54,6 @@ We have two `size` options, which should be used according to their context. Our
     {BadgeTemplate.bind({})}
   </Story>
   <Story name="small" args={{ size: 'sm', children: 'sm size' }}>
-    {BadgeTemplate.bind({})}
-  </Story>
-</Canvas>
-
-## States
-
-You can make your badges display with rounded edges using the `round` boolean prop, with the accent font-family using the `accent` prop, or both.
-
-### Round
-
-<Canvas>
-  <Story
-    name="round"
-    args={{ variant: 'yellow', round: true, children: 'round' }}
-  >
-    {BadgeTemplate.bind({})}
-  </Story>
-</Canvas>
-
-### Accent
-
-<Canvas>
-  <Story
-    name="accent"
-    args={{ variant: 'stroke', accent: true, children: 'accent' }}
-  >
-    {BadgeTemplate.bind({})}
-  </Story>
-  <Story
-    name="round accent"
-    args={{
-      variant: 'hyper',
-      accent: true,
-      round: true,
-      size: 'sm',
-      children: 'round + accented + sm',
-    }}
-  >
     {BadgeTemplate.bind({})}
   </Story>
 </Canvas>
