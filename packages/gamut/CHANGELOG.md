@@ -3,6 +3,168 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [40.5.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@40.5.1...@codecademy/gamut@40.5.2) (2021-11-30)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [40.5.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@40.5.0...@codecademy/gamut@40.5.1) (2021-11-30)
+
+
+### Bug Fixes
+
+* **DataGrid/DataTable:** text align bug ([89ae2ad](https://github.com/Codecademy/gamut/commit/89ae2ad92bd1a61047092e3a8322f908c45a8584))
+
+
+
+## [40.5.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@40.4.1...@codecademy/gamut@40.5.0) (2021-11-29)
+
+
+### Features
+
+* Add multi-select to select dropdown ([0ce809a](https://github.com/Codecademy/gamut/commit/0ce809a2363559c566de044943cff76be5b886e2))
+
+
+
+### [40.4.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@40.4.0...@codecademy/gamut@40.4.1) (2021-11-23)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [40.4.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@40.3.3...@codecademy/gamut@40.4.0) (2021-11-22)
+
+
+### Features
+
+* **Menu:** tweak nav variant + add nav condensed example ([7eb8bfe](https://github.com/Codecademy/gamut/commit/7eb8bfea279e0ebdd2b84f215a08876ee6e596fc))
+
+
+
+### [40.3.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@40.3.2...@codecademy/gamut@40.3.3) (2021-11-17)
+
+
+### Bug Fixes
+
+* **ListRow:** add expandedRowAriaLabel prop to ListRow ([50d8dce](https://github.com/Codecademy/gamut/commit/50d8dce7bc5cc194d30427c44dd35d7d540a4458))
+
+
+
+### [40.3.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@40.3.1...@codecademy/gamut@40.3.2) (2021-11-15)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [40.3.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@40.3.0...@codecademy/gamut@40.3.1) (2021-11-10)
+
+
+### Bug Fixes
+
+* **List:** add block type to private list prop type ([d43e7ba](https://github.com/Codecademy/gamut/commit/d43e7ba02e774947ee1e7d3dd1dfcd04fd8b776c))
+
+
+
+## [40.3.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@40.2.0...@codecademy/gamut@40.3.0) (2021-11-10)
+
+
+### Features
+
+* Expandable List Row,  Accessibility Tweaks, Rotation Animation ([213bf21](https://github.com/Codecademy/gamut/commit/213bf214f7e7ce8964f3e0c96c931ba045c01667))
+
+
+
+## [40.2.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@40.1.2...@codecademy/gamut@40.2.0) (2021-11-08)
+
+
+### Features
+
+* **DataTable:** Sort header click target + hover styles ([1504608](https://github.com/Codecademy/gamut/commit/1504608bfbcda68580e99362b87229d0af98e006))
+
+
+
+### [40.1.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@40.1.1...@codecademy/gamut@40.1.2) (2021-11-08)
+
+
+### Bug Fixes
+
+* **button base:** dont set href if disabled is true ([593a7e8](https://github.com/Codecademy/gamut/commit/593a7e8a84c40e779ee304ea98759d8daa65ad40))
+
+
+
+### [40.1.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@40.1.0...@codecademy/gamut@40.1.1) (2021-11-05)
+
+
+### Bug Fixes
+
+* **DataGrid/Table:** DataGrid/Table fixes ([1a46168](https://github.com/Codecademy/gamut/commit/1a4616822939ddb20ce860300a13794914989da4))
+
+
+
+## [40.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@40.0.0...@codecademy/gamut@40.1.0) (2021-11-05)
+
+
+### Features
+
+* **DataGrid:** default empty loading state ([7c6a1a8](https://github.com/Codecademy/gamut/commit/7c6a1a8b7fc0d4a40bd821b57d1bce1d4136e4a8))
+
+
+
+## [40.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@39.1.1...@codecademy/gamut@40.0.0) (2021-11-01)
+
+
+### ⚠ BREAKING CHANGES
+
+* bumped framer-motion to v4
+
+### Miscellaneous Chores
+
+* bumped framer-motion to v4 ([7590c77](https://github.com/Codecademy/gamut/commit/7590c77ecc01381fcd4a19ec8b2c73b792c9d960))
+
+
+
+### [39.1.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@39.1.0...@codecademy/gamut@39.1.1) (2021-10-29)
+
+
+### Bug Fixes
+
+* **ProgressBar:** fix progress bar pattern ([60e02b2](https://github.com/Codecademy/gamut/commit/60e02b2b1c8bd757e6842826b8f02bdc51d648ce))
+
+
+
+## [39.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@39.0.2...@codecademy/gamut@39.1.0) (2021-10-28)
+
+
+### Features
+
+* **GlobalPage:** add banner to global page ([44724e8](https://github.com/Codecademy/gamut/commit/44724e80016be619ebc926b8f0ec507e76c7812e))
+
+
+
+### [39.0.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@39.0.1...@codecademy/gamut@39.0.2) (2021-10-28)
+
+
+### Bug Fixes
+
+* make video component more accessible ([ef3bd4b](https://github.com/Codecademy/gamut/commit/ef3bd4b565adb2b460fb5268cfa994db625d2d27))
+
+
+
+### [39.0.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@39.0.0...@codecademy/gamut@39.0.1) (2021-10-27)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
 ## [39.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@1.3.7...@codecademy/gamut@39.0.0) (2021-10-26)
 
 

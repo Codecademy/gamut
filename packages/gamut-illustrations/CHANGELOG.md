@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [0.20.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.20.1...@codecademy/gamut-illustrations@0.20.2) (2021-11-23)
+
+**Note:** Version bump only for package @codecademy/gamut-illustrations
+
+
+
+
+
+### [0.20.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.20.0...@codecademy/gamut-illustrations@0.20.1) (2021-11-15)
+
+
+### Bug Fixes
+
+* add aria-hidden prop to illustrations ([06cc1a2](https://github.com/Codecademy/gamut/commit/06cc1a2e01cae8df34584854b0e79b10bab5881b))
+
+
+
 ## 0.20.0 (2021-10-26)
 
 

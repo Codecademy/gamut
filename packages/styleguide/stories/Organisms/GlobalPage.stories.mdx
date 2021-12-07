@@ -45,7 +45,7 @@ export const defaultArgs = {
     status: 'updating',
     docs: { inlineStories: false, iframeHeight: 500 },
     subtitle:
-      'Global page consisting of a SkipToContent control and children between a GlobalHeader and GlobalFooter, optionally with a background color.',
+      'Global page consisting of a SkipToContent control and children between a GlobalHeader and GlobalFooter, optionally with a background color and/or banner.',
   }}
 />
 
@@ -63,12 +63,35 @@ export const defaultArgs = {
   </Story>
 </Canvas>
 
-General-use container for a full page consisting of a header, <LinkTo kind="Atoms/SkipToContent">SkipToContent</LinkTo>, some page contents, and a footer.
+General-use container for a full page consisting of an optional banner, a header, <LinkTo kind="Atoms/SkipToContent">SkipToContent</LinkTo>, some page contents, and a footer.
 The optional background color will apply behind all of those elements.
 
 <PropsTable story="GlobalPage" />
 
 > Many pages use <LinkTo kind="Layouts/ContentContainer">ContentContainer</LinkTo> to contain children at the same responsive widths as the header and footer.
+
+<br />
+
+## Banner
+
+Optionally show a banner above the header by passing the `banner` prop.
+
+<Canvas>
+  <Story
+    name="Banner"
+    args={{ ...defaultArgs, banner: { children: "I'm a banner!" } }}
+  >
+    {(args) => (
+      <Box position="relative" zIndex={0}>
+        <GlobalPage {...args}>
+          <ContentContainer>
+            <Text as="h1">Page content goes here!</Text>
+          </ContentContainer>
+        </GlobalPage>
+      </Box>
+    )}
+  </Story>
+</Canvas>
 
 ## SkipToContent
 
