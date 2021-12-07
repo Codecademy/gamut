@@ -4,7 +4,7 @@
     "url": "https://github.com/Codecademy/gamut/issues"
   },
   "dependencies": {
-    "@codecademy/gamut-styles": "^12.1.0",
+    "@codecademy/gamut-styles": "^12.1.1",
     "@codecademy/variance": "^0.19.0",
     "classnames": "^2.2.5"
   },
@@ -43,5 +43,5 @@
     "lernaBuildTask": "yarn build"
   },
   "sideEffects": false,
-  "version": "0.7.2"
+  "version": "0.7.3"
 }

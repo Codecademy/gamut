@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [40.5.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@40.5.2...@codecademy/gamut@40.5.3) (2021-12-07)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
 ### [40.5.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@40.5.1...@codecademy/gamut@40.5.2) (2021-11-30)
 
 **Note:** Version bump only for package @codecademy/gamut
