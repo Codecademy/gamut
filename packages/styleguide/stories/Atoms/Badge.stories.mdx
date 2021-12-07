@@ -17,13 +17,20 @@ import LinkTo from '@storybook/addon-links/react';
 
 Badges are generally used as a standard way to highlight a short piece of text, likely a single word. Badges are inline and generally found next to some interface element to be called out.
 
+## Usage
+
+- To display statuses or other read-only information in your Badges
+- **Do not use this prop for elements that are meant to be percieved as clickable or interactive**
+- Use the component's default rectangular style when including Badges inside (or in tandem with) other dynamic elements
+
 export const BadgeTemplate = (args) => (
   <Badge {...args}>{args.children ? args.children : args.variant}</Badge>
 );
 
 ## Variants
 
-Badge variants have different meanings between applications. While they are all specified on the `variant` prop not all of them can be used together.
+- The `default` and `stroke` variants both adapt to their <LinkTo kind='Foundations/ColorMode'>ColorMode</LinkTo> (which you can check out by using the toolbar at the top of this page!)
+- Badge variants such as `yellow`, `hyper`, and `blue` have different meanings between applications. While they are all specified on the `variant` prop, be mindful when using them along with other Badges with preexisting meanings.
 
 <Canvas>
   <Story name="default" args={{ children: 'default' }}>
@@ -40,11 +47,12 @@ Badge variants have different meanings between applications. While they are all 
   </Story>
 </Canvas>
 
-`default` and `stroke` both adapt to their <LinkTo kind='Foundations/ColorMode'>ColorMode</LinkTo> (which you can check out by using the toolbar at the top of this page!)
-
 ## Size
 
-We have two `size` options, which should be used according to their context. Our `default` size should be used when the `Badge` is a standalone entitity, the `sm` size should be used when the `Badge` is inline with other components or `Text`.
+We have two `size` options, which should be used according to their context:
+
+- Use `default` when the `Badge` is a standalone entitity
+- Use `sm` when the `Badge` is inline with other components or `Text`
 
 <Canvas>
   <Story

@@ -46,6 +46,7 @@ module.exports = {
         // These rules could be useful, but we haven't gotten around to enabling them here
         // See WEB-2 for general tracking.
         '@typescript-eslint/no-explicit-any': 'off',
+        '@typescript-eslint/no-unsafe-argument': 'off',
         '@typescript-eslint/no-unsafe-call': 'off',
         '@typescript-eslint/no-non-null-assertion': 'off',
         '@typescript-eslint/no-unsafe-assignment': 'off',
