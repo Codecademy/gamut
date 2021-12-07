@@ -44,13 +44,12 @@ const sizeVariants = variant({
     base: {
       height: '1.5rem',
       fontSize: 14,
-      lineHeight: 'title',
+      lineHeight: 0,
     },
     sm: {
       height: `1rem`,
       // the powers that be told us this was okay. please don't do this - <3 web-plat
       fontSize: 10 as any,
-      lineHeight: 'base',
     },
   },
 });
