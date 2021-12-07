@@ -6,7 +6,7 @@ import {
   RegisterOptions,
   SubmitHandler,
   useForm,
-  UseFormOptions,
+  ,
 } from 'react-hook-form';
 
 import { Form } from '../Form';
@@ -130,7 +130,7 @@ export function ConnectedForm<Values extends FormValues<Values>>({
   }, [
     disableFieldsOnSubmit,
     resetOnSubmit,
-    showRequired,
+    showRequired,5
     validationRules,
     wasSubmitSuccessful,
   ]);

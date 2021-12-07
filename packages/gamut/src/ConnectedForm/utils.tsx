@@ -154,7 +154,7 @@ export const useField = ({ name, disabled, loading }: useFieldProps) => {
       validationRules[name as keyof typeof validationRules]) ??
     undefined;
 
-  const ref = register(validation);
+  const ref = { ...register(name, validation) };
   return {
     control,
     error,
@@ -168,7 +168,7 @@ export const useField = ({ name, disabled, loading }: useFieldProps) => {
     isRequired: !!validation?.required,
     register,
     validation,
-    ref,
+    registeredValidation,
     setValue,
     setError,
     showRequired,
