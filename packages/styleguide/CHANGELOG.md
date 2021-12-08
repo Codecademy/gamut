@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [51.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@50.5.0...@codecademy/styleguide@51.0.0) (2021-12-08)
+
+
+### ⚠ BREAKING CHANGES
+
+* **Badges:** color + size variants
+
+### Features
+
+* **Badges:** color + size variants ([1651e6c](https://github.com/Codecademy/gamut/commit/1651e6c0e46c8d57272df29138091af660be33ce))
+
+
+
 ## [50.5.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@50.4.5...@codecademy/styleguide@50.5.0) (2021-12-08)
 
 
