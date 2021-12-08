@@ -5,7 +5,11 @@ import React from 'react';
 import { tabElementBaseProps, TabElementStyleProps } from './props';
 
 // Prevent dev-only errors due to excluding react-ui default styles
-if (process.env.NODE_ENV !== 'production' && document?.documentElement) {
+if (
+  process.env.NODE_ENV !== 'production' &&
+  typeof document !== 'undefined' &&
+  document?.documentElement
+) {
   document.documentElement.style.setProperty('--reach-tabs', '1');
 }
 export interface TabsProps
