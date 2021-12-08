@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [28.3.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@28.2.1...@codecademy/gamut-labs@28.3.0) (2021-12-08)
+
+
+### Features
+
+* **CurriculumCard:** added optional description ([7b0aa1d](https://github.com/Codecademy/gamut/commit/7b0aa1df930da1315277580fcd441c7f1d9771ef))
+
+
+
 ### [28.2.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@28.2.0...@codecademy/gamut-labs@28.2.1) (2021-12-07)
 
 **Note:** Version bump only for package @codecademy/gamut-labs
