@@ -117,3 +117,24 @@ If `showAltSubtitle` is true, only the scope will render in the subtitle.
     {(args) => <CurriculumCard {...args} />}
   </Story>
 </Canvas>
+
+## Curriculum Card with Description
+
+If `description` prop is populated, the description will render underneath the subtitle.
+
+<Canvas>
+  <Story
+    name="Curriculum Card with Description"
+    args={{
+      scope: {
+        Lesson: 25,
+        Quiz: 30,
+        article: 100,
+      },
+      description:
+        'Some description text can give the user more information on the curriculum.',
+    }}
+  >
+    {(args) => <CurriculumCard {...args} />}
+  </Story>
+</Canvas>
