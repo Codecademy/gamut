@@ -13,7 +13,7 @@ type TruncateProps = {
   /** Callback indicating if truncation was necessary */
   onTruncate?: (truncated: boolean) => void;
   /** override the default character tokenization */
-  tokenize?: string;
+  tokenizeWords?: boolean;
 };
 
 export const Truncate: React.FC<TruncateProps> = ({
@@ -22,7 +22,7 @@ export const Truncate: React.FC<TruncateProps> = ({
   lines,
   expanded,
   onTruncate,
-  tokenize,
+  tokenizeWords,
 }) => {
   const [isTruncated, setIsTruncated] = useState(false);
 
@@ -37,7 +37,7 @@ export const Truncate: React.FC<TruncateProps> = ({
     </Box>
   ) : (
     <TruncateMarkup
-      tokenize={tokenize || 'characters'}
+      tokenize={tokenizeWords ? 'words' : 'characters'}
       ellipsis={<span>...</span>}
       lines={lines}
       onTruncate={setIsTruncated}
