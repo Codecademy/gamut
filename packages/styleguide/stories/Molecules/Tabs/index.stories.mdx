@@ -1,8 +1,9 @@
 import {
-  Anchor,
   Badge,
   Tab,
   TabList,
+  TabNav,
+  TabNavLink,
   TabPanel,
   TabPanels,
   Tabs,
@@ -17,7 +18,7 @@ import { TabsExample } from './Tabs.examples.tsx';
 <Meta
   title={title}
   component={Tabs}
-  subcomponents={{ TabList, Tab, TabPanel, TabPanels }}
+  subcomponents={{ TabList, Tab, TabPanel, TabPanels, TabNav, TabNavLink }}
   parameters={{
     subtitle: `Use a series of tabbed areas for when you have multiple potential sections
 to show, but only one should be visible at a time.`,
@@ -40,7 +41,6 @@ to show, but only one should be visible at a time.`,
       <Tabs {...args}>
         <TabList>
           <Tab>Tab 1</Tab>
-          <Anchor href="/">Not a Tab!</Anchor>
           <Tab>Tab 2</Tab>
           <Tab>Tab 3</Tab>
         </TabList>
@@ -67,10 +67,10 @@ to show, but only one should be visible at a time.`,
 
 ## Usage
 
-Here's an example usage of any uncontrolled TabList
+By default, the tabs component is uncontrolled, meaning it will maintain it's own state and switch between the different `TabPanel` components without passing any data to the component. This is good for basic use-cases where you don't need to do anything "extra" when switching tabs.
 
 <Canvas>
-  <Story name="Tabs Uncontrolled">{(args) => <TabsExample {...args} />}</Story>
+  <Story name="Uncontrolled">{(args) => <TabsExample {...args} />}</Story>
 </Canvas>
 
 ## Controlled
@@ -113,6 +113,26 @@ instead notify of a request to change using `onChange`.
           </TabPanel>
         </TabPanels>
       </Tabs>
+    )}
+  </Story>
+</Canvas>
+
+## Tab Navigation
+
+You can also use tabs as standard link-based navigation. To do this, you can use the `TabNav` and `TabNavLink` components.
+
+It is recommended to add a unique `aria-label` to the `TabNav` component, to differentiate it from other navigation elements on the page.
+
+<Canvas>
+  <Story name="Tab Navigation">
+    {() => (
+      <TabNav aria-label="Secondary Navigation">
+        <TabNavLink selected href="/">
+          Tab Link 1
+        </TabNavLink>
+        <TabNavLink href="/">Tab Link 2</TabNavLink>
+        <TabNavLink href="/">Tab Link 3</TabNavLink>
+      </TabNav>
     )}
   </Story>
 </Canvas>

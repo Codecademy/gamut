@@ -8,6 +8,14 @@ import {
   TabSelectors,
 } from './props';
 
+const tabSelectedStyles = {
+  fontWeight: 700,
+  pt: 8,
+  pb: 8,
+  borderBottomWidth: 4,
+  borderColor: 'primary',
+} as const;
+
 const tabStyles = system.css({
   position: 'relative',
   display: 'inline-flex',
@@ -39,27 +47,18 @@ const tabStyles = system.css({
     opacity: 0.25,
     cursor: 'default',
   },
-  // @TODO DRY this and the selected state up
   [TabSelectors.SELECTED]: {
-    fontWeight: 700,
-    pt: 8,
-    pb: 8,
-    borderBottomWidth: 4,
-    borderColor: 'primary',
+    ...tabSelectedStyles,
   },
 });
 
 const tabStates = states({
   selected: {
-    fontWeight: 700,
-    pt: 8,
-    pb: 8,
-    borderBottomWidth: 4,
-    borderColor: 'primary',
+    ...tabSelectedStyles,
   },
 });
 
-export const TabNavButton = styled(ButtonBase)<TabElementStyleProps>(
+export const TabButton = styled(ButtonBase)<TabElementStyleProps>(
   tabStyles,
   tabStates,
   tabElementBaseProps
