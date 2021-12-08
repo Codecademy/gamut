@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [50.5.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@50.4.5...@codecademy/styleguide@50.5.0) (2021-12-08)
+
+
+### Features
+
+* **CurriculumCard:** added optional description ([7b0aa1d](https://github.com/Codecademy/gamut/commit/7b0aa1df930da1315277580fcd441c7f1d9771ef))
+
+
+
 ### [50.4.5](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@50.4.4...@codecademy/styleguide@50.4.5) (2021-12-07)
 
 **Note:** Version bump only for package @codecademy/styleguide
