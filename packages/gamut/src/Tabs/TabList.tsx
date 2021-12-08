@@ -4,7 +4,7 @@ import {
 } from '@reach/tabs';
 import React from 'react';
 
-import { TabNav } from '../TabNav';
+import { TabNav } from './TabNav';
 
 export interface TabListProps extends ReachTabListProps {}
 

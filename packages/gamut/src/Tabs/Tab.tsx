@@ -1,16 +1,13 @@
-import { useTabsContext } from '@reach/tabs';
+import { Tab as ReachTab } from '@reach/tabs';
 import React from 'react';
 
-import { TabNavButton } from '../TabNav';
 import { TabElementStyleProps } from './props';
+import { TabNavButton } from './TabNavButton';
 
 export interface TabProps extends TabElementStyleProps {
   index: number;
 }
 
 export const Tab: React.FC<TabProps> = (props) => {
-  const { index } = props;
-  const { selectedIndex } = useTabsContext();
-  console.log(selectedIndex, index);
-  return <TabNavButton selected={index === selectedIndex} {...props} />;
+  return <ReachTab as={TabNavButton} {...props} />;
 };

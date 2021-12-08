@@ -6,7 +6,7 @@ import {
   tabElementBaseProps,
   TabElementStyleProps,
   TabSelectors,
-} from '../Tabs/props';
+} from './props';
 
 const tabStyles = system.css({
   position: 'relative',
@@ -38,6 +38,14 @@ const tabStyles = system.css({
   [TabSelectors.DISABLED]: {
     opacity: 0.25,
     cursor: 'default',
+  },
+  // @TODO DRY this and the selected state up
+  [TabSelectors.SELECTED]: {
+    fontWeight: 700,
+    pt: 8,
+    pb: 8,
+    borderBottomWidth: 4,
+    borderColor: 'primary',
   },
 });
 
