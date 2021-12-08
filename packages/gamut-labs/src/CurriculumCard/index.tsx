@@ -83,7 +83,7 @@ export const CurriculumCard: React.FC<CurriculumCardProps> = ({
         {title}
       </Text>
       {description && (
-        <Text pb={8} fontSize={14}>
+        <Text pt={8} pb={16} fontSize={14}>
           {description}
         </Text>
       )}
