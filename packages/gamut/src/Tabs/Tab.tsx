@@ -1,13 +1,12 @@
-import { Tab as ReachTab } from '@reach/tabs';
+import { Tab as ReachTab, TabProps as ReachTabProps } from '@reach/tabs';
 import React from 'react';
 
-import { TabElementStyleProps } from './props';
-import { TabNavButton } from './TabNavButton';
+import { TabButton } from './TabButton';
 
-export interface TabProps extends TabElementStyleProps {
-  index: number;
-}
+export interface TabProps
+  extends React.ComponentPropsWithRef<typeof TabButton>,
+    ReachTabProps {}
 
 export const Tab: React.FC<TabProps> = (props) => {
-  return <ReachTab as={TabNavButton} {...props} />;
+  return <ReachTab as={TabButton} {...props} />;
 };

@@ -62,7 +62,7 @@ export const PropsTable: React.FC<PropsTableProps> = ({
   return (
     <>
       {hasSystemProps && (
-        <Box>
+        <Box my={24}>
           <GridBox gridTemplateColumns="minmax(0, 1fr) max-content">
             <Text fontWeight="title" as="p">
               System Props -{' '}
