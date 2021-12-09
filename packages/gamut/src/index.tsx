@@ -38,6 +38,7 @@ export * from './NotificationList';
 export * from './NotificationList/NotificationItem';
 export * from './NotificationList/typings';
 export * from './Overlay';
+export * from './Pagination';
 export * from './ProgressBar';
 export * from './RadialProgress';
 export * from './SkipToContent';

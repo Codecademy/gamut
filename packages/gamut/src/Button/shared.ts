@@ -44,7 +44,6 @@ export const buttonVariants = ['primary', 'secondary', 'danger'] as const;
 
 export const buttonStyles = system.css({
   position: 'relative',
-  fontWeight: 'title',
   whiteSpace: 'nowrap',
   display: 'inline-flex',
   justifyContent: 'center',
