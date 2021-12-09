@@ -1,6 +1,5 @@
 {
   "eslint.options": {
-    "configFile": "./.eslintrc.js",
     "extensions": [".js", ".jsx", ".md", ".mdx", ".ts", ".tsx"]
   },
   "eslint.probe": [

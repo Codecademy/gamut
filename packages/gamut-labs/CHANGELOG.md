@@ -3,6 +3,56 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [28.3.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@28.3.0...@codecademy/gamut-labs@28.3.1) (2021-12-08)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+## [28.3.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@28.2.1...@codecademy/gamut-labs@28.3.0) (2021-12-08)
+
+
+### Features
+
+* **CurriculumCard:** added optional description ([7b0aa1d](https://github.com/Codecademy/gamut/commit/7b0aa1df930da1315277580fcd441c7f1d9771ef))
+
+
+
+### [28.2.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@28.2.0...@codecademy/gamut-labs@28.2.1) (2021-12-07)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+## [28.2.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@28.1.3...@codecademy/gamut-labs@28.2.0) (2021-12-02)
+
+
+### Features
+
+* **Header:** added configurable initial visibility for search ([a6164d4](https://github.com/Codecademy/gamut/commit/a6164d4a65af9aaf71761dd7d742aa30031881ec))
+
+
+
+### [28.1.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@28.1.2...@codecademy/gamut-labs@28.1.3) (2021-11-30)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [28.1.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@28.1.1...@codecademy/gamut-labs@28.1.2) (2021-11-30)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
 ### [28.1.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@28.1.0...@codecademy/gamut-labs@28.1.1) (2021-11-29)
 
 **Note:** Version bump only for package @codecademy/gamut-labs
