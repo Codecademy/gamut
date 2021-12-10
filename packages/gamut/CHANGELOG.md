@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [42.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@41.1.0...@codecademy/gamut@42.0.0) (2021-12-10)
+
+
+### ⚠ BREAKING CHANGES
+
+* New Tabs
+
+### Features
+
+* New Tabs ([0b10bde](https://github.com/Codecademy/gamut/commit/0b10bdee5ee4493df3857b5756c27049320f362a))
+
+
+
 ## [41.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@41.0.0...@codecademy/gamut@41.1.0) (2021-12-10)
 
 
