@@ -1,5 +1,4 @@
 import {
-  Badge,
   Tab,
   TabList,
   TabNav,
@@ -13,7 +12,12 @@ import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 
-import { TabsExample } from './Tabs.examples.tsx';
+import {
+  TabsBadgeExample,
+  TabsControlledExample,
+  TabsExample,
+  TabsNavExample,
+} from './Tabs.examples.tsx';
 
 <Meta
   title={title}
@@ -88,39 +92,15 @@ instead notify of a request to change using `onChange`.
 
 <Canvas>
   <Story name="Controlled" args={{ index: 0 }}>
-    {(args) => <TabsExample {...args} />}
+    {(args) => <TabsControlledExample {...args} />}
   </Story>
 </Canvas>
 
 ## Tabs With Badges
 
 <Canvas>
-  <Story name="Badges" args={{ index: 0 }}>
-    {(args) => (
-      <Tabs {...args}>
-        <TabList>
-          <Tab>
-            Tab 1 <Badge ml={8}>New!</Badge>
-          </Tab>
-          <Tab>Tab 2</Tab>
-          <Tab>Tab 3</Tab>
-        </TabList>
-        <TabPanels>
-          <TabPanel>
-            <Text>Welcome to Tab 1</Text>
-            <Text>Hi there! I&apos;m the contents inside Tab 1. Yippee!</Text>
-          </TabPanel>
-          <TabPanel>
-            <Text>Welcome to Tab 2</Text>
-            <Text>Hi there! I&apos;m the contents inside Tab 2. Yippee!</Text>
-          </TabPanel>
-          <TabPanel>
-            <Text>Welcome to Tab 3</Text>
-            <Text>Hi there! I&apos;m the contents inside Tab 3. Yippee!</Text>
-          </TabPanel>
-        </TabPanels>
-      </Tabs>
-    )}
+  <Story name="Tabs With Badges">
+    {(args) => <TabsBadgeExample {...args} />}
   </Story>
 </Canvas>
 
@@ -131,15 +111,5 @@ You can also use tabs as standard link-based navigation. To do this, you can use
 It is recommended to add a unique `aria-label` to the `TabNav` component, to differentiate it from other navigation elements on the page.
 
 <Canvas>
-  <Story name="Tab Navigation">
-    {() => (
-      <TabNav aria-label="Secondary Navigation">
-        <TabNavLink selected href="/">
-          Tab Link 1
-        </TabNavLink>
-        <TabNavLink href="/">Tab Link 2</TabNavLink>
-        <TabNavLink href="/">Tab Link 3</TabNavLink>
-      </TabNav>
-    )}
-  </Story>
+  <Story name="Tab Navigation">{(args) => <TabsNavExample {...args} />}</Story>
 </Canvas>

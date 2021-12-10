@@ -14,3 +14,12 @@ export const tabContainerStyles = system.css({
     width: '100%',
   },
 });
+
+export const tabContainerStates = system.states({
+  fill: {
+    display: 'grid',
+    gridAutoColumns: '1fr',
+    gridTemplateRows: 'auto',
+    gridAutoFlow: 'column',
+  },
+});

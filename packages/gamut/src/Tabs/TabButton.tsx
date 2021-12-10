@@ -9,7 +9,7 @@ import {
   TabSelectors,
 } from './props';
 
-export interface TabProps
+export interface TabButtonProps
   extends StyleProps<typeof tabStyles>,
     StyleProps<typeof tabStates>,
     TabElementStyleProps {}
@@ -64,7 +64,7 @@ const tabStates = states({
   },
 });
 
-export const TabButton = styled(ButtonBase)<TabProps>(
+export const TabButton = styled(ButtonBase)<TabButtonProps>(
   tabStyles,
   tabStates,
   tabElementBaseProps

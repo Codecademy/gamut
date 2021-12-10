@@ -1,9 +1,5 @@
-import React from 'react';
+import styled from '@emotion/styled';
 
-import { TabButton, TabProps } from './TabButton';
+import { TabButton } from './TabButton';
 
-export interface TabNavLinkProps extends TabProps {}
-
-export const TabNavLink: React.FC<TabNavLinkProps> = (props) => {
-  return <TabButton {...props} />;
-};
+export const TabNavLink = styled(TabButton)();

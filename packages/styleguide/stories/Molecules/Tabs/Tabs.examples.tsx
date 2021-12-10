@@ -3,6 +3,9 @@ import {
   InputStepper,
   Tab,
   TabList,
+  TabNav,
+  TabNavLink,
+  TabNavProps,
   TabPanel,
   TabPanels,
   Tabs,
@@ -13,9 +16,35 @@ import { Background } from '@codecademy/gamut-styles';
 import React, { useCallback, useState } from 'react';
 
 export const TabsExample = (args: TabsProps) => {
-  const [controlledIndex, setControlledIndex] = useState(args.index!);
+  return (
+    <>
+      <Tabs {...args}>
+        <TabList mx={24}>
+          <Tab>Tab 1</Tab>
+          <Tab>Tab 2</Tab>
+          <Tab>Tab 3</Tab>
+        </TabList>
+        <TabPanels my={24} className="lol">
+          <TabPanel>
+            <Text as="h2">Welcome to Tab 1</Text>
+            <Text>Hi there! I&apos;m the contents inside Tab 1. Yippee!</Text>
+          </TabPanel>
+          <TabPanel>
+            <Text as="h2">Welcome to Tab 2</Text>
+            <Text>Hi there! I&apos;m the contents inside Tab 2. Yippee!</Text>
+          </TabPanel>
+          <TabPanel>
+            <Text as="h2">Welcome to Tab 3</Text>
+            <Text>Hi there! I&apos;m the contents inside Tab 3. Yippee!</Text>
+          </TabPanel>
+        </TabPanels>
+      </Tabs>
+    </>
+  );
+};
 
-  const isControlled = typeof controlledIndex !== 'undefined';
+export const TabsControlledExample = (args: TabsProps) => {
+  const [controlledIndex, setControlledIndex] = useState(args.index!);
 
   const maxTabIndex = 2;
   const setIndex = useCallback(
@@ -29,23 +58,21 @@ export const TabsExample = (args: TabsProps) => {
 
   return (
     <>
-      {isControlled ? (
-        <Background bg="yellow" mb={24} p={12}>
-          <InputStepper
-            label="Tab Index"
-            ariaLabel="Tab Index"
-            value={controlledIndex}
-            onChange={setIndex}
-          />
-        </Background>
-      ) : null}
+      <Background bg="yellow" mb={24} p={12}>
+        <InputStepper
+          label="Tab Index"
+          ariaLabel="Tab Index"
+          value={controlledIndex}
+          onChange={setIndex}
+        />
+      </Background>
       <Tabs index={controlledIndex} onChange={setIndex}>
-        <TabList>
+        <TabList mx={24}>
           <Tab>Tab 1</Tab>
           <Tab>Tab 2</Tab>
           <Tab>Tab 3</Tab>
         </TabList>
-        <TabPanels>
+        <TabPanels my={24} className="lol">
           <TabPanel>
             <Text as="h2">Welcome to Tab 1</Text>
             <Text>Hi there! I&apos;m the contents inside Tab 1. Yippee!</Text>
@@ -70,7 +97,7 @@ export const TabsBadgeExample = (args: TabsProps) => {
       <Tabs {...args}>
         <TabList>
           <Tab>
-            Tab 1 <Badge>Hi</Badge>
+            Tab 1 <Badge ml={8}>New!</Badge>
           </Tab>
           <Tab>Tab 2</Tab>
           <Tab>Tab 3</Tab>
@@ -90,6 +117,20 @@ export const TabsBadgeExample = (args: TabsProps) => {
           </TabPanel>
         </TabPanels>
       </Tabs>
+    </>
+  );
+};
+
+export const TabsNavExample = (args: TabNavProps) => {
+  return (
+    <>
+      <TabNav {...args} fill aria-label="Secondary Navigation">
+        <TabNavLink selected href="/">
+          Tab Link 1
+        </TabNavLink>
+        <TabNavLink href="/">Tab Link 2</TabNavLink>
+        <TabNavLink href="/">Tab Link 3</TabNavLink>
+      </TabNav>
     </>
   );
 };

@@ -1,3 +1,4 @@
+import { styledOptions } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import {
   Tabs as ReachTabs,
@@ -9,24 +10,23 @@ import React from 'react';
 import { tabElementBaseProps, TabElementStyleProps } from './props';
 
 // Prevent dev-only errors due to excluding react-ui default styles
-if (
-  process.env.NODE_ENV !== 'production' &&
-  typeof document !== 'undefined' &&
-  document?.documentElement
-) {
+if (process.env.NODE_ENV !== 'production' && typeof document !== 'undefined') {
   document.documentElement.style.setProperty('--reach-tabs', '1');
 }
 
-export interface TabsProps
-  extends TabElementStyleProps,
-    Omit<ReachTabsProps, 'orientation' | 'keyboardActivation'> {}
+export interface TabsBaseProps extends TabElementStyleProps, ReachTabsProps {}
 
-const TabsBase = styled('div')<TabElementStyleProps>(tabElementBaseProps);
+export interface TabsProps
+  extends Omit<TabsBaseProps, 'orientation' | 'keyboardActivation'> {}
+
+const TabsBase = styled(
+  ReachTabs,
+  styledOptions
+)<TabsBaseProps>(tabElementBaseProps);
 
 export const Tabs: React.FC<TabsProps> = (props) => {
   return (
-    <ReachTabs
-      as={TabsBase}
+    <TabsBase
       position="relative"
       zIndex={0}
       keyboardActivation={TabsKeyboardActivation.Manual}
