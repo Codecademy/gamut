@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [51.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@51.0.0...@codecademy/styleguide@51.1.0) (2021-12-10)
+
+
+### Features
+
+* **ConnectedForm:** new ConnectedForm component + useConnectedForm hook ([902b82e](https://github.com/Codecademy/gamut/commit/902b82e94cff563e3dacdd759a24e26be8bb7eaa))
+
+
+
 ## [51.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@50.5.0...@codecademy/styleguide@51.0.0) (2021-12-08)
 
 

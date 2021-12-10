@@ -1,8 +1,8 @@
 import React from 'react';
 
+import { useField } from '../../ConnectedForm';
 import { GridFormInputGroup } from '../GridFormInputGroup';
 import { GridFormField } from '../types';
-import { useFieldContext } from '../utils';
 
 export type GridFormContentProps = {
   field: GridFormField;
@@ -13,13 +13,10 @@ export const GridFormContent: React.FC<GridFormContentProps> = ({
   field,
   showRequired,
 }) => {
-  const {
-    error,
-    isFirstError,
-    register,
-    setValue,
-    isDisabled,
-  } = useFieldContext(field);
+  const { error, isFirstError, register, setValue, isDisabled } = useField({
+    name: field.name,
+    disabled: field.disabled,
+  });
 
   const requiredBoolean = !!(
     field.type !== 'hidden' &&
@@ -28,18 +25,16 @@ export const GridFormContent: React.FC<GridFormContentProps> = ({
   );
 
   return (
-    <>
-      <GridFormInputGroup
-        error={error}
-        isFirstError={isFirstError}
-        isDisabled={isDisabled}
-        field={field}
-        key={field.name}
-        register={register}
-        setValue={setValue}
-        required={requiredBoolean}
-        showRequired={showRequired}
-      />
-    </>
+    <GridFormInputGroup
+      error={error}
+      isFirstError={isFirstError}
+      isDisabled={isDisabled}
+      field={field}
+      key={field.name}
+      register={register}
+      setValue={setValue}
+      required={requiredBoolean}
+      showRequired={showRequired}
+    />
   );
 };
