@@ -3,6 +3,44 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [41.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@40.5.3...@codecademy/gamut@41.0.0) (2021-12-08)
+
+
+### ⚠ BREAKING CHANGES
+
+* **Badges:** color + size variants
+
+### Features
+
+* **Badges:** color + size variants ([1651e6c](https://github.com/Codecademy/gamut/commit/1651e6c0e46c8d57272df29138091af660be33ce))
+
+
+
+### [40.5.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@40.5.2...@codecademy/gamut@40.5.3) (2021-12-07)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [40.5.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@40.5.1...@codecademy/gamut@40.5.2) (2021-11-30)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [40.5.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@40.5.0...@codecademy/gamut@40.5.1) (2021-11-30)
+
+
+### Bug Fixes
+
+* **DataGrid/DataTable:** text align bug ([89ae2ad](https://github.com/Codecademy/gamut/commit/89ae2ad92bd1a61047092e3a8322f908c45a8584))
+
+
+
 ## [40.5.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@40.4.1...@codecademy/gamut@40.5.0) (2021-11-29)
 
 
