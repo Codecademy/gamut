@@ -22,16 +22,27 @@ interface PaginationProps {
   onChange?: () => void;
 }
 
+/**
+ * @todo - port ••• + « to change on hover (via contents)
+ */
 export const Pagination: React.FC = () => {
   return (
     <FlexBox alignContent="center">
       <PaginationButton icon={MiniChevronLeftIcon} />
+      <PaginationButton selected>•••</PaginationButton>
+      <PaginationButton selected> « </PaginationButton>
       <PaginationButton selected>1</PaginationButton>
       <PaginationButton>2</PaginationButton> Pagination
       <PaginationButton variant="text" selected>
         1
       </PaginationButton>
       <PaginationButton variant="text">2</PaginationButton>
+      <PaginationButton variant="text" selected>
+        »
+      </PaginationButton>
+      <PaginationButton variant="text" selected>
+        •••
+      </PaginationButton>
       <PaginationButton variant="text" icon={MiniChevronRightIcon} />
     </FlexBox>
   );
