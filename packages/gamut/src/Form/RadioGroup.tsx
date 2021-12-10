@@ -5,7 +5,7 @@ import React, {
 } from 'react';
 
 export type RadioGroupProps = Omit<HTMLAttributes<HTMLDivElement>, 'onChange'> &
-  Pick<InputHTMLAttributes<HTMLInputElement>, 'onChange'> & {
+  Pick<InputHTMLAttributes<HTMLInputElement>, 'onChange' | 'disabled'> & {
     /**
      * @remarks This is meant to be `Radio`s.
      */
