@@ -1,6 +1,6 @@
 import { states, transitionConcat } from '@codecademy/gamut-styles';
 
-import { createButtonComponent, templateVariants } from '../Button/shared';
+import { templateVariants } from '../Button/shared';
 import { ButtonSelectors } from '../ButtonBase/ButtonBase';
 
 const paginationBaseStyles = {
@@ -18,7 +18,7 @@ const paginationBaseStyles = {
   },
 } as const;
 
-const paginationTextVariant = templateVariants(['secondary'], () => ({
+export const paginationTextVariant = templateVariants(['secondary'], () => ({
   ...paginationBaseStyles,
   borderColor: 'transparent',
   [ButtonSelectors.ACTIVE]: {
@@ -37,6 +37,14 @@ const paginationTextVariant = templateVariants(['secondary'], () => ({
     opacity: 1,
   },
 }));
+
+export const paginationTextButtonStates = states({
+  selected: {
+    fontWeight: 'title',
+    color: 'text',
+    bg: 'background-selected',
+  },
+});
 
 export const paginationStrokeVariant = templateVariants(['secondary'], () => ({
   ...paginationBaseStyles,
@@ -65,14 +73,6 @@ export const paginationStrokeVariant = templateVariants(['secondary'], () => ({
   },
 }));
 
-export const paginationTextButtonStates = states({
-  selected: {
-    fontWeight: 'title',
-    color: 'text',
-    bg: 'background-selected',
-  },
-});
-
 export const paginationStrokeButtonStates = states({
   selected: {
     fontWeight: 'title',
@@ -80,13 +80,3 @@ export const paginationStrokeButtonStates = states({
     borderColor: 'currentColor',
   },
 });
-
-export const PaginationTextButton = createButtonComponent(
-  paginationTextButtonStates,
-  paginationTextVariant
-);
-
-export const PaginationStrokeButton = createButtonComponent(
-  paginationStrokeButtonStates,
-  paginationStrokeVariant
-);

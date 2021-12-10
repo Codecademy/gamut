@@ -1,10 +1,8 @@
 import React from 'react';
 
 import { Box } from '../Box';
-import {
-  PaginationStrokeButton,
-  PaginationTextButton,
-} from './PaginationButtons';
+import { PaginationStrokeButton } from './PaginationStrokeButton';
+import { PaginationTextButton } from './PaginationTextButton';
 
 interface PaginationProps {
   /**
