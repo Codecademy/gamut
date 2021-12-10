@@ -1,8 +1,11 @@
+import {
+  MiniChevronLeftIcon,
+  MiniChevronRightIcon,
+} from '@codecademy/gamut-icons';
 import React from 'react';
 
-import { Box } from '../Box';
-import { PaginationStrokeButton } from './PaginationStrokeButton';
-import { PaginationTextButton } from './PaginationTextButton';
+import { FlexBox } from '../Box';
+import { PaginationButton } from './PaginationButton';
 
 interface PaginationProps {
   /**
@@ -21,11 +24,15 @@ interface PaginationProps {
 
 export const Pagination: React.FC = () => {
   return (
-    <Box>
-      <PaginationTextButton selected>1</PaginationTextButton>
-      <PaginationTextButton>2</PaginationTextButton> Pagination
-      <PaginationStrokeButton selected>1</PaginationStrokeButton>
-      <PaginationStrokeButton>2</PaginationStrokeButton> Pagination
-    </Box>
+    <FlexBox alignContent="center">
+      <PaginationButton icon={MiniChevronLeftIcon} />
+      <PaginationButton selected>1</PaginationButton>
+      <PaginationButton>2</PaginationButton> Pagination
+      <PaginationButton variant="text" selected>
+        1
+      </PaginationButton>
+      <PaginationButton variant="text">2</PaginationButton>
+      <PaginationButton variant="text" icon={MiniChevronRightIcon} />
+    </FlexBox>
   );
 };

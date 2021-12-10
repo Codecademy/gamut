@@ -1,5 +1,5 @@
 import { GamutIconProps } from '@codecademy/gamut-icons';
-import React, { forwardRef } from 'react';
+import React, { forwardRef, useMemo } from 'react';
 
 import { ButtonProps, createButtonComponent } from '../Button/shared';
 import { ButtonBaseElements } from '../ButtonBase/ButtonBase';
@@ -10,12 +10,12 @@ import {
   paginationTextVariant,
 } from './elements';
 
-export const PaginationTextButtonInner = createButtonComponent(
+const PaginationTextButtonInner = createButtonComponent(
   paginationTextButtonStates,
   paginationTextVariant
 );
 
-export const PaginationStrokeButtonInner = createButtonComponent(
+const PaginationStrokeButtonInner = createButtonComponent(
   paginationStrokeButtonStates,
   paginationStrokeVariant
 );
@@ -26,39 +26,21 @@ export interface PaginationButtonProps extends Omit<ButtonProps, 'variant'> {
   variant?: 'stroke' | 'text';
 }
 
-export const PaginationButtonWrapper: React.FC<PaginationButtonProps> = ({
-  children,
-  variant,
-  ...rest
-}) => {
-  if (variant === 'stroke') {
-    return (
-      <PaginationTextButtonInner {...rest}>
-        {children}
-      </PaginationTextButtonInner>
-    );
-  }
-  return (
-    <PaginationStrokeButtonInner {...rest}>
-      {children}
-    </PaginationStrokeButtonInner>
-  );
-};
-
 export const PaginationButton = forwardRef<
   ButtonBaseElements,
   PaginationButtonProps
->(({ children, icon: Icon, ...props }, ref) => {
+  // eslint-disable-next-line react/prop-types
+>(({ children, icon: Icon, variant = 'stroke', ...props }, ref) => {
+  const Wrapper = useMemo(() => {
+    return variant === 'stroke'
+      ? PaginationStrokeButtonInner
+      : PaginationTextButtonInner;
+  }, [variant]);
+
   return (
-    <PaginationTextButtonInner {...props} variant={variant} ref={ref}>
-      {Icon && (
-        <Icon
-          width="calc(100% - 14px)"
-          height="calc(100% - 14px)"
-          aria-hidden
-        />
-      )}
+    <Wrapper {...props} ref={ref}>
+      {Icon && <Icon width={14} height={14} aria-hidden />}
       {children}
-    </PaginationTextButtonInner>
+    </Wrapper>
   );
 });

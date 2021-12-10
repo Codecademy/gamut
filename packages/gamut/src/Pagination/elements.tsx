@@ -4,13 +4,10 @@ import { templateVariants } from '../Button/shared';
 import { ButtonSelectors } from '../ButtonBase/ButtonBase';
 
 const paginationBaseStyles = {
-  borderColor: 'transparent',
   color: 'text',
   fontSize: 16,
   height: 40,
   width: 40,
-  py: 4,
-  px: 16,
   [ButtonSelectors.OUTLINE]: { borderColor: 'text' },
   [ButtonSelectors.DISABLED]: {
     color: 'text-disabled',
@@ -29,12 +26,11 @@ export const paginationTextVariant = templateVariants(['secondary'], () => ({
   [ButtonSelectors.SHADOW]: {
     transition: transitionConcat(['opacity', 'font-weight'], 'fast', 'ease-in'),
   },
-  [ButtonSelectors.SHADOW_ACTIVE]: { bg: 'background-selected', opacity: 1 },
-  [ButtonSelectors.SHADOW_HOVER]: { bg: 'background-selected', opacity: 1 },
+  [ButtonSelectors.SHADOW_ACTIVE]: { opacity: 0 },
+  [ButtonSelectors.SHADOW_HOVER]: { opacity: 0 },
   [ButtonSelectors.HOVER]: {
     fontWeight: 'title',
-    bg: 'selected',
-    opacity: 1,
+    bg: 'background-selected',
   },
 }));
 
