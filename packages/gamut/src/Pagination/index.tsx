@@ -13,19 +13,31 @@ interface PaginationProps {
    */
   current?: number;
   /**
-   * Default initial page number
+   * Default initial page number, if none will default to one
    */
   defaultCurrent?: number;
   /**
    * Called when the page number or pageSize is changed, and it takes the resulting page number as its argument
    */
   onChange?: () => void;
+  /**
+   * totalpages
+   */
+  variant?: 'stroke' | 'text';
+  /**
+   * totalpages
+   */
+  totalPages: number;
 }
 
 /**
  * @todo - port ••• + « to change on hover (via contents)
  */
-export const Pagination: React.FC = () => {
+export const Pagination: React.FC<PaginationProps> = ({
+  totalPages,
+  variant = 'stroke',
+  ...rest
+}) => {
   return (
     <FlexBox alignContent="center">
       <PaginationButton icon={MiniChevronLeftIcon} />
@@ -33,16 +45,10 @@ export const Pagination: React.FC = () => {
       <PaginationButton selected> « </PaginationButton>
       <PaginationButton selected>1</PaginationButton>
       <PaginationButton>2</PaginationButton> Pagination
-      <PaginationButton variant="text" selected>
-        1
-      </PaginationButton>
+      <PaginationButton variant="text">1</PaginationButton>
       <PaginationButton variant="text">2</PaginationButton>
-      <PaginationButton variant="text" selected>
-        »
-      </PaginationButton>
-      <PaginationButton variant="text" selected>
-        •••
-      </PaginationButton>
+      <PaginationButton variant="text">»</PaginationButton>
+      <PaginationButton variant="text">•••</PaginationButton>
       <PaginationButton variant="text" icon={MiniChevronRightIcon} />
     </FlexBox>
   );

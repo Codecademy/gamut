@@ -7,6 +7,7 @@ const paginationBaseStyles = {
   color: 'text',
   fontSize: 16,
   height: 40,
+  mx: 4,
   width: 40,
   [ButtonSelectors.OUTLINE]: { borderColor: 'text' },
   [ButtonSelectors.DISABLED]: {
@@ -65,7 +66,6 @@ export const paginationStrokeVariant = templateVariants(['secondary'], () => ({
   [ButtonSelectors.HOVER]: {
     fontWeight: 'title',
     color: 'primary',
-    borderColor: 'currentColor',
   },
 }));
 
