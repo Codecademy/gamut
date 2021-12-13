@@ -21,7 +21,7 @@ import { ColorModeExample, FormLoadingExample } from './examples';
   title={title}
   component={GridForm}
   parameters={{
-    subtitle: `GridForm is the most efficient way to build and design forms at Codecademy.`,
+    subtitle: `GridForm an efficient way to build and design forms on a grid.`,
     source: 'gamut',
     status: 'updating',
     design: {
@@ -169,8 +169,6 @@ GridForm provides the following benefits:
 ## Modifying Elements
 
 `GridForms` are laid out with `LayoutGrid`, so you can override its `columnGap` and `rowGap` with the normal string or responsive layouts to style and align the GridForm to your designs. You can also configure the `GridFormButtons` to modify the submit buttons and optional cancel buttons.
-
-While `Form` atoms compose the structure of these forms, we strongly recommend only creating forms with using `GridForm`. You should only use the form element atoms as individual elements if your interface doesn’t need to support the technical functions of a form.
 
 **You should build something outside of GridForm if you need...**
 
@@ -1245,7 +1243,7 @@ If you need to checkboxes to fit into a smaller space, you can use our our `tigh
 
 ## Disabled Fields on Submit
 
-`disableFieldsOnSubmit` will disable all form fields once the form has been successfully submitted. If you have any server-side validation that needs to happen, we reccommend using the `wasSubmitSuccessful` prop, but submission will also fail if a promise is rejected within your `onSubmit` or if a field does not pass validation.
+`disableFieldsOnSubmit` will disable all form fields once the form has been successfully submitted. If you have any server-side validation that needs to happen, we recommend using the `wasSubmitSuccessful` prop, but submission will also fail if a promise is rejected within your `onSubmit` or if a field does not pass validation.
 
 <Canvas>
   <Story name="Disabled Fields on Submit">
@@ -1333,7 +1331,7 @@ If you need to checkboxes to fit into a smaller space, you can use our our `tigh
 
 ## Reset Form on Submit
 
-`resetOnSubmit` will reset the form once the GridForm has been successfully submitted. If you have any server validation that needs to happen, we reccommend using the `wasSubmitSuccessful` prop, but submission will also fail if a promise is rejected within your `onSubmit` or if a field does not pass validation.
+`resetOnSubmit` will reset the form once the GridForm has been successfully submitted. If you have any server validation that needs to happen, we recommend using the `wasSubmitSuccessful` prop, but submission will also fail if a promise is rejected within your `onSubmit` or if a field does not pass validation.
 
 <Canvas>
   <Story name="Reset Form on Submit">

@@ -3,6 +3,46 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [52.2.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@52.1.0...@codecademy/styleguide@52.2.0) (2021-12-13)
+
+
+### Features
+
+* **AppHeaderLinkMobile:** show 'new' badge in dropdown header links ([0b204dd](https://github.com/Codecademy/gamut/commit/0b204dd151b166485c3129aac330824a272ce7f3))
+
+
+
+## [52.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@52.0.0...@codecademy/styleguide@52.1.0) (2021-12-13)
+
+
+### Features
+
+* **NotificationItem:** add notification image for cohorts ([3632379](https://github.com/Codecademy/gamut/commit/36323793bc22a27d3a865f3fd2599dfeb66bf2eb))
+
+
+
+## [52.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@51.1.0...@codecademy/styleguide@52.0.0) (2021-12-10)
+
+
+### ⚠ BREAKING CHANGES
+
+* New Tabs
+
+### Features
+
+* New Tabs ([0b10bde](https://github.com/Codecademy/gamut/commit/0b10bdee5ee4493df3857b5756c27049320f362a))
+
+
+
+## [51.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@51.0.0...@codecademy/styleguide@51.1.0) (2021-12-10)
+
+
+### Features
+
+* **ConnectedForm:** new ConnectedForm component + useConnectedForm hook ([902b82e](https://github.com/Codecademy/gamut/commit/902b82e94cff563e3dacdd759a24e26be8bb7eaa))
+
+
+
 ## [51.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@50.5.0...@codecademy/styleguide@51.0.0) (2021-12-08)
 
 
