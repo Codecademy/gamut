@@ -3,6 +3,58 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [42.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@42.0.0...@codecademy/gamut@42.1.0) (2021-12-13)
+
+
+### Features
+
+* **NotificationItem:** add notification image for cohorts ([3632379](https://github.com/Codecademy/gamut/commit/36323793bc22a27d3a865f3fd2599dfeb66bf2eb))
+
+
+
+## [42.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@41.1.0...@codecademy/gamut@42.0.0) (2021-12-10)
+
+
+### ⚠ BREAKING CHANGES
+
+* New Tabs
+
+### Features
+
+* New Tabs ([0b10bde](https://github.com/Codecademy/gamut/commit/0b10bdee5ee4493df3857b5756c27049320f362a))
+
+
+
+## [41.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@41.0.0...@codecademy/gamut@41.1.0) (2021-12-10)
+
+
+### Features
+
+* **ConnectedForm:** new ConnectedForm component + useConnectedForm hook ([902b82e](https://github.com/Codecademy/gamut/commit/902b82e94cff563e3dacdd759a24e26be8bb7eaa))
+
+
+
+## [41.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@40.5.3...@codecademy/gamut@41.0.0) (2021-12-08)
+
+
+### ⚠ BREAKING CHANGES
+
+* **Badges:** color + size variants
+
+### Features
+
+* **Badges:** color + size variants ([1651e6c](https://github.com/Codecademy/gamut/commit/1651e6c0e46c8d57272df29138091af660be33ce))
+
+
+
+### [40.5.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@40.5.2...@codecademy/gamut@40.5.3) (2021-12-07)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
 ### [40.5.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@40.5.1...@codecademy/gamut@40.5.2) (2021-11-30)
 
 **Note:** Version bump only for package @codecademy/gamut
