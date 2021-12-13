@@ -63,7 +63,6 @@ export const resourcesList: ResourcesList[] = [
     headerTrackingTarget: 'topnav_resources_videos',
     text: 'Videos',
     type: 'link',
-    badgeText: 'new',
   },
   {
     id: 'blog',
