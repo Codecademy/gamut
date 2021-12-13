@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [42.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@42.0.0...@codecademy/gamut@42.1.0) (2021-12-13)
+
+
+### Features
+
+* **NotificationItem:** add notification image for cohorts ([3632379](https://github.com/Codecademy/gamut/commit/36323793bc22a27d3a865f3fd2599dfeb66bf2eb))
+
+
+
 ## [42.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@41.1.0...@codecademy/gamut@42.0.0) (2021-12-10)
 
 
