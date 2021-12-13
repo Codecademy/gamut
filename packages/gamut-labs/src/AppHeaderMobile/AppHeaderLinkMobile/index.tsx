@@ -1,4 +1,4 @@
-import { Anchor, Box, FlexBox } from '@codecademy/gamut';
+import { Anchor, BadgeProps, Box, FlexBox } from '@codecademy/gamut';
 import styled from '@emotion/styled';
 import React from 'react';
 
@@ -11,6 +11,7 @@ export type AppHeaderLinkMobileProps = {
   item: AppHeaderLinkItem;
   action: AppHeaderClickHandler;
   topSeparator?: boolean;
+  badge?: React.ReactElement<BadgeProps>;
 };
 
 type AppHeaderLinkButtonProps = { topSeparator: boolean };
@@ -29,6 +30,7 @@ export const AppHeaderLinkMobile: React.FC<AppHeaderLinkMobileProps> = ({
   action,
   item,
   topSeparator = false,
+  badge,
 }) => {
   const Icon = item.icon;
 
@@ -52,13 +54,14 @@ export const AppHeaderLinkMobile: React.FC<AppHeaderLinkMobileProps> = ({
             whiteSpace="nowrap"
             textAlign="left"
             display="flex"
+            alignContent="center"
           >
             {Icon && (
               <FlexBox alignContent="center" mr={16}>
                 <Icon size={24} aria-hidden />
               </FlexBox>
             )}
-            {item.text}
+            {item.text} {badge}
           </FlexBox>
         </Anchor>
       </SeparatorInner>
