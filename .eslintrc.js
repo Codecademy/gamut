@@ -23,6 +23,11 @@ module.exports = {
             selector:
               'ImportDeclaration[source.value=/^((?!module.scss).)*(.scss)$/]',
           },
+          {
+            message:
+              "Don't create anymore stylesheets, please see (insert url here) for current best practices`.",
+            selector: 'ImportDeclaration[source.value=/.*\\.scss/]',
+          },
         ],
         'local-rules/gamut-import-paths': 'error',
       },
