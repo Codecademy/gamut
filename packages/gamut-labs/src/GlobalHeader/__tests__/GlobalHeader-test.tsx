@@ -248,7 +248,7 @@ describe('GlobalHeader', () => {
 
       it('renders myHome', () => {
         const { view } = renderView(freeHeaderProps);
-        view.getByText(myHome.text);
+        view.getAllByText(myHome.text);
       });
 
       it('renders courseCatalog', () => {
@@ -326,7 +326,7 @@ describe('GlobalHeader', () => {
 
       it('renders myHome', () => {
         const { view } = renderView(proHeaderProps);
-        view.getByText(myHome.text);
+        view.getAllByText(myHome.text);
       });
 
       it('renders courseCatalog', () => {
