@@ -18,10 +18,10 @@
     "format": "yarn lint:fix && yarn prettier --write",
     "format:verify": "yarn prettier --check",
     "verify-all": "lerna run verify",
-    "verify-changed": "lerna run verify --since --include-dependencies",
+    "verify-changed": "nx affected --target=verify --base=main",
     "clear-modules": "lerna clean -y && rm -rf node_modules",
-    "build-all": "lerna run lernaBuildTask",
-    "build-changed": "lerna run lernaBuildTask --since --include-dependencies",
+    "build-all": "yarn nx run-many --target=build --all --parallel",
+    "build-changed": "nx affected --target=build --base=main",
     "start": "yarn && yarn start:storybook",
     "start:storybook": "cd ./packages/styleguide && yarn start",
     "build-storybook": "cd ./packages/styleguide && yarn build-storybook",
@@ -106,7 +106,11 @@
     "react-dom": "16.13.1",
     "react-helmet": "6.1.0",
     "react-test-renderer": "16.13.1",
-    "typescript": "4.4.2"
+    "typescript": "4.4.2",
+    "@nrwl/workspace": "13.3.2",
+    "@nrwl/cli": "13.3.3",
+    "@nrwl/tao": "13.3.2",
+    "@nrwl/nx-cloud": "13.0.0"
   },
   "resolutions": {
     "@typescript-eslint/experimental-utils": "5.3.1"
