@@ -43,8 +43,8 @@ export const TabsExample = (args: TabsProps) => {
   );
 };
 
-export const TabsControlledExample = (args: TabsProps) => {
-  const [controlledIndex, setControlledIndex] = useState(args.index!);
+export const TabsControlledExample = () => {
+  const [controlledIndex, setControlledIndex] = useState(0);
 
   const maxTabIndex = 2;
   const setIndex = useCallback(
