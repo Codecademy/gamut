@@ -62,3 +62,4 @@ export * from './Menu';
 export * from './List';
 export * from './DataList';
 export * from './Loading/Shimmer';
+export * from './InfoCard';
