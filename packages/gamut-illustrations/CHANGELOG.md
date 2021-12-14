@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.21.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.20.3...@codecademy/gamut-illustrations@0.21.0) (2021-12-14)
+
+
+### Features
+
+* **Illustration:** Add PortfolioProject and PracticeProject illustrations ([0d88277](https://github.com/Codecademy/gamut/commit/0d88277472beb0e008bb86467f40cf8184095ab4))
+
+
+
 ### [0.20.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.20.2...@codecademy/gamut-illustrations@0.20.3) (2021-12-07)
 
 **Note:** Version bump only for package @codecademy/gamut-illustrations
