@@ -37,9 +37,9 @@ describe('AppHeaderLink', () => {
         item: {
           ...defaultProps.item,
           badge: <Badge>New</Badge>,
-        }
-      }
-    }
+        },
+      },
+    };
     const { getByText } = renderAppHeaderLink(props);
     getByText('New');
   });

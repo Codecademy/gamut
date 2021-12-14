@@ -65,7 +65,7 @@ const LinkComponent: React.FC<LinkComponentProps> = ({
 export const AppHeaderLinkSections = React.forwardRef<
   HTMLUListElement,
   AppHeaderLinkSectionsProps
->(({ action, item,isMobile = false, onKeyDown, ...props }, ref) => (
+>(({ action, item, isMobile = false, onKeyDown, ...props }, ref) => (
   <StyledList ref={ref} {...props}>
     {item.type === 'profile-dropdown'
       ? item.popover.map((linkSection: AppHeaderLinkItem[], sectionIndex) =>

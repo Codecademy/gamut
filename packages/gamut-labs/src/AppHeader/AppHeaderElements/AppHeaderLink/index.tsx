@@ -43,13 +43,7 @@ export const AppHeaderLink: React.FC<AppHeaderLinkProps> = ({
         py={py}
         {...props}
       >
-        {isMobile && Icon && (
-          <Icon
-            mr={16}
-            size={24}
-            aria-hidden
-          />
-        )}
+        {isMobile && Icon && <Icon mr={16} size={24} aria-hidden />}
         {item.text}
         {item.badge}
       </Anchor>
