@@ -18,6 +18,7 @@ export interface ListProps extends AllListProps<ComponentProps<typeof ListEl>> {
 export const List = forwardRef<HTMLUListElement, ListProps>(
   (
     {
+      id,
       variant = 'default',
       spacing = 'normal',
       scrollable = false,
@@ -42,7 +43,7 @@ export const List = forwardRef<HTMLUListElement, ListProps>(
 
     return (
       <ListProvider value={value}>
-        <Box position="relative" overflow="hidden" width={1}>
+        <Box position="relative" overflow="hidden" width={1} id={id}>
           <Box
             position="relative"
             maxWidth={1}
