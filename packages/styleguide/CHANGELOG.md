@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [52.2.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@52.1.0...@codecademy/styleguide@52.2.0) (2021-12-13)
+
+
+### Features
+
+* **AppHeaderLinkMobile:** show 'new' badge in dropdown header links ([0b204dd](https://github.com/Codecademy/gamut/commit/0b204dd151b166485c3129aac330824a272ce7f3))
+
+
+
 ## [52.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@52.0.0...@codecademy/styleguide@52.1.0) (2021-12-13)
 
 
