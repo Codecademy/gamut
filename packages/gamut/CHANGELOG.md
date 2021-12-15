@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [42.1.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@42.1.1...@codecademy/gamut@42.1.2) (2021-12-15)
+
+
+### Bug Fixes
+
+* fix index prop forwarding for Tabs component ([371f062](https://github.com/Codecademy/gamut/commit/371f0629e50aed79758450ea7184e53c7454774b))
+
+
+
 ### [42.1.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@42.1.0...@codecademy/gamut@42.1.1) (2021-12-14)
 
 **Note:** Version bump only for package @codecademy/gamut
