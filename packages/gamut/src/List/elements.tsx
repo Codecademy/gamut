@@ -119,12 +119,6 @@ export const RowEl = styled('li', styledOptions<'li'>())<RowProps>(
     gridTemplateColumns: 'minmax(0, 1fr) max-content',
     flexDirection: { _: 'column', xs: 'row' },
     bg: 'inherit',
-    maxHeight: '300px',
-    transition: 'all 0.8s ease-in',
-    '&:hover': {
-      bg: 'hyper',
-      maxHeight: 'min-content',
-    },
   }),
   rowVariants,
   spacingVariants,
