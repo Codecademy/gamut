@@ -70,16 +70,10 @@ const spacingVariants = variant({
   variants: {
     normal: {
       gap: { _: 8, xs: 40 },
-      '@media print': {
-        gap: 40,
-      },
     },
     condensed: {
       fontSize: 16,
       gap: { _: 8, xs: 32 },
-      '@media print': {
-        gap: 32,
-      },
     },
   },
 });
@@ -125,9 +119,11 @@ export const RowEl = styled('li', styledOptions<'li'>())<RowProps>(
     gridTemplateColumns: 'minmax(0, 1fr) max-content',
     flexDirection: { _: 'column', xs: 'row' },
     bg: 'inherit',
-    '@media print': {
-      display: 'flex !important',
-      flexDirection: 'row',
+    maxHeight: '300px',
+    transition: 'all 0.8s ease-in',
+    '&:hover': {
+      bg: 'hyper',
+      maxHeight: 'min-content',
     },
   }),
   rowVariants,
@@ -162,11 +158,6 @@ export const HeaderEl = styled('div', styledOptions)<HeaderProps>(
     bg: 'background-current',
     zIndex: 2,
     fontFamily: 'accent',
-    '@media print': {
-      display: 'flex !important',
-      flexDirection: 'row',
-      position: 'sticky',
-    },
   }),
   spacingVariants,
   rowStates,
@@ -219,34 +210,18 @@ const columnSizes = variant({
     sm: {
       flexBasis: { xs: '6rem' },
       width: { xs: '6rem' },
-      '@media print': {
-        flexBasis: '6rem',
-        width: '6rem',
-      },
     },
     md: {
       flexBasis: { xs: '10rem' },
       width: { xs: '10rem' },
-      '@media print': {
-        flexBasis: '10rem',
-        width: '10rem',
-      },
     },
     lg: {
       flexBasis: { xs: '12rem' },
       width: { xs: '12rem' },
-      '@media print': {
-        flexBasis: '12rem',
-        width: '12rem',
-      },
     },
     xl: {
       flexBasis: { xs: '20rem' },
       width: { xs: '20rem' },
-      '@media print': {
-        flexBasis: '20rem',
-        width: '20rem',
-      },
     },
     content: {
       flexShrink: 0,

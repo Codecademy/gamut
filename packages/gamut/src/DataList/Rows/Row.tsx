@@ -1,3 +1,5 @@
+import { css, transitionConcat } from '@codecademy/gamut-styles';
+import styled from '@emotion/styled';
 import React, { ReactElement, useCallback } from 'react';
 
 import { Text } from '../..';
@@ -7,6 +9,19 @@ import { IdentifiableKeys } from '..';
 import { ExpandControl, SelectControl } from '../Controls';
 import { useControlContext } from '../hooks/useListControls';
 import { ColumnConfig } from '../types';
+
+const StyledText = styled(Text)(
+  css({
+    '&:hover': {
+      textOverflow: 'none',
+      whiteSpace: 'break-spaces',
+    },
+    '&:focus': {
+      textOverflow: 'none',
+      whiteSpace: 'break-spaces',
+    },
+  })
+);
 
 interface DataRow {
   <Row, IdKey extends IdentifiableKeys<Row>, RowIds extends Row[IdKey]>(props: {
@@ -87,9 +102,9 @@ export const Row: DataRow = ({
             {render ? (
               render(row)
             ) : typeof row[key] === 'string' ? (
-              <Text truncate="ellipsis" textAlign={justify ?? 'left'}>
+              <StyledText truncate="ellipsis" textAlign={justify ?? 'left'}>
                 {row[key]}
-              </Text>
+              </StyledText>
             ) : (
               row[key]
             )}
