@@ -23,6 +23,8 @@ type BaseHeader = {
   hidePricing?: boolean;
   search: AppHeaderSearch;
   extraLinks?: AppHeaderExtraLinks;
+  /** initializes Header with search menu expanded open */
+  searchInitiallyOpen?: boolean;
 };
 
 export type User = {

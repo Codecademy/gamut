@@ -1,3 +1,4 @@
+import { BadgeProps } from '@codecademy/gamut';
 import { GamutIconProps } from '@codecademy/gamut-icons';
 import { ReactNode } from 'react';
 
@@ -34,6 +35,7 @@ export type AppHeaderLinkItem = AppHeaderBaseHrefItem<'link'> & {
   newTab?: boolean;
   text: string;
   topSeparator?: boolean;
+  badge?: React.ReactElement<BadgeProps>;
 };
 
 export type AppHeaderExtraLinks = { pricing?: AppHeaderLinkItem[] };

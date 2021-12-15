@@ -57,33 +57,6 @@ One of the main uses of box is to create bordered containers with their own bord
   </Story>
 </Canvas>
 
-### Badges
-
-Another great example of how we can use `<Box />` as a swiss army knife is recreating badges. Since we can specificy any `display` property or HTML tag on the component we can create our own inline Badge / Tag elements through some simple configuration.
-
-<Canvas>
-  <Story name="Badges" args={{ elements: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] }}>
-    {(args) => (
-      <Box>
-        {args.elements.map((el) => (
-          <Box
-            key={el}
-            m={4}
-            py={4}
-            p={8}
-            display="inline-block"
-            bg="blue-500"
-            textColor="white"
-            borderRadius="4px"
-          >
-            Box #{el}
-          </Box>
-        ))}
-      </Box>
-    )}
-  </Story>
-</Canvas>
-
 ## Container Examples
 
 So far we've covered examples of using `<Box />` as a visual element on its own, but there are many times where we just need a container to provide a specific context for other design elements.

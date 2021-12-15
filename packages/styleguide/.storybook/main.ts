@@ -27,8 +27,13 @@ module.exports = {
     reactDocgenTypescriptOptions: {
       shouldExtractLiteralValuesFromEnum: true,
       shouldRemoveUndefinedFromOptional: true,
-      propFilter: (prop: any) =>
-        prop.parent ? !/node_modules/.test(prop.parent.fileName) : true,
+      propFilter: (prop: any) => {
+        // allow reach-ui types
+        if (prop.parent && /@reach/.test(prop.parent.fileName)) {
+          return true;
+        }
+        return prop.parent ? !/node_modules/.test(prop.parent.fileName) : true;
+      },
     },
   },
 
@@ -60,6 +65,7 @@ module.exports = {
           __dirname,
           '../../gamut-illustrations/src'
         ),
+        '@codecademy/variance$': path.resolve(__dirname, '../../variance/src'),
       },
     };
 

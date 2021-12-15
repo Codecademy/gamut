@@ -1,4 +1,8 @@
-import { MiniDeleteIcon } from '@codecademy/gamut-icons';
+import {
+  GamutIconProps,
+  MiniDeleteIcon,
+  MultipleUsersIcon,
+} from '@codecademy/gamut-icons';
 import {
   Bell,
   ChatBox,
@@ -83,7 +87,22 @@ export const NotificationItem: React.FC<NotificationItemProps> = ({
     </Box>
   );
 
-  const renderIcon = () => {
+  const renderIcon = (Icon: React.FC<GamutIconProps>) => (
+    <Box
+      display="inline-flex"
+      justifyContent="center"
+      alignItems="center"
+      borderRadius="50%"
+      border={1}
+      width={50}
+      height={50}
+      aria-hidden
+    >
+      <Icon height={22} width={22} />
+    </Box>
+  );
+
+  const renderImage = () => {
     if (imageUrl) return <StyledImg src={imageUrl} alt="" />;
 
     switch (type) {
@@ -91,6 +110,8 @@ export const NotificationItem: React.FC<NotificationItemProps> = ({
         return renderIllustration(Megaphone);
       case 'curriculum_blast':
         return renderIllustration(New);
+      case 'cohort_blast':
+        return renderIcon(MultipleUsersIcon);
       case 'forum_comment':
         return renderIllustration(ChatBox);
       case 'forum_message':
@@ -106,7 +127,7 @@ export const NotificationItem: React.FC<NotificationItemProps> = ({
 
   const notificationContent: ReactElement = (
     <FlexBox zIndex={1} position="relative" textColor="text">
-      {renderIcon()}
+      {renderImage()}
       <Box flex={1} pl={12}>
         <Text id={notificationItemId} variant="p-small">
           {text}
