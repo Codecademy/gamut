@@ -28,11 +28,11 @@ const TabsBase = styled(
 export const Tabs: React.FC<TabsProps> = (props) => {
   return (
     <ReachTabs
+      as={TabsBase}
       position="relative"
       zIndex={0}
       keyboardActivation={TabsKeyboardActivation.Manual}
       {...props}
-      as={TabsBase}
     />
   );
 };
