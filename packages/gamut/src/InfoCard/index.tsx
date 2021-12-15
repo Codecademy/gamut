@@ -7,7 +7,6 @@ import { Card } from '../Card';
 import { Truncate } from '../Truncate';
 import { Text } from '../Typography';
 
-const cardHeight = 285;
 const cardMinWidth = 250;
 
 export type InfoCardProps = {
@@ -16,10 +15,11 @@ export type InfoCardProps = {
   topText: string;
   title: string;
   subtitle: string;
-  body: string;
+  body?: string;
   bottomLeftText?: string;
   bottomRightTagText?: string;
   bottomRightTagColor?: TagColor;
+  cardHeight?: string | number;
 };
 
 export type TagColor = 'blue' | 'green' | 'pink';
@@ -39,6 +39,7 @@ export const InfoCard: React.FC<InfoCardProps> = ({
   bottomLeftText,
   bottomRightTagText,
   bottomRightTagColor = 'pink',
+  cardHeight = 285,
 }) => {
   const renderTopText = (text: string) => (
     <Text
@@ -110,7 +111,7 @@ export const InfoCard: React.FC<InfoCardProps> = ({
         {renderTopText(topText)}
         {renderTitle(title)}
         {renderSubtitle(subtitle)}
-        {renderBody(body)}
+        {body && renderBody(body)}
         {bottomLeftText && renderBottomLeftText(bottomLeftText)}
         {bottomRightTagText && renderBottomRightTag(bottomRightTagText)}
       </Card>
