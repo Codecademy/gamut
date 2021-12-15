@@ -62,12 +62,6 @@ references:
       name: Build Changed Packages
       command: yarn build-changed
 
-  build_required_packages: &build_required_packages
-    run:
-      name: Build Required Packages
-      command: |
-        yarn build-all --scope={@codecademy/variance,@codecademy/gamut-styles,@codecademy/gamut-icons,@codecademy/gamut-patterns}
-
   set_git_user: &set_git_user
     run:
       name: Set git user
@@ -118,7 +112,7 @@ jobs:
     steps:
       - checkout
       - *restore_node_modules
-      - *build_required_packages
+      - *build_all_packages
       - run:
           name: Run test suite
           command: |
