@@ -7,7 +7,7 @@ import {
   TextButton,
 } from '@codecademy/gamut';
 import { SearchIcon, SupportIcon } from '@codecademy/gamut-icons';
-import { system } from '@codecademy/gamut-styles';
+import { css } from '@codecademy/gamut-styles';
 import { useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
 import { camelCase } from 'lodash';
@@ -31,7 +31,7 @@ const Form = Box.withComponent('form');
 const Input = Box.withComponent('input');
 
 const QueryContainer = styled(ContentContainer)(
-  system.css({
+  css({
     display: 'flex',
     pb: 0,
     pt: 16,
@@ -40,15 +40,17 @@ const QueryContainer = styled(ContentContainer)(
 );
 
 const SuggestionContainer = styled(ContentContainer)(
-  system.css({
+  css({
     pb: 24,
     pt: 16,
   })
 );
 
-const StyledInput = styled(Input)`
-  outline: none;
-`;
+const StyledInput = styled(Input)(
+  css({
+    outline: `none`,
+  })
+);
 
 export const SearchPane: React.FC<SearchPaneProps> = ({
   onSearch,
