@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [52.3.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@52.2.3...@codecademy/styleguide@52.3.0) (2021-12-16)
+
+
+### Features
+
+* **GlobalHeader:** Accessible GlobalHeader! ([9467629](https://github.com/Codecademy/gamut/commit/946762989c41c9356d784fb5b14ddce6054bb51f))
+
+
+
 ### [52.2.3](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@52.2.2...@codecademy/styleguide@52.2.3) (2021-12-15)
 
 
