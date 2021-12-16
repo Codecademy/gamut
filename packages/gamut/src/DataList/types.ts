@@ -59,7 +59,7 @@ export interface OnQueryChange<T> {
 export type IdentifiableKeys<T> = Extract<
   keyof T,
   keyof {
-    [K in keyof T as T[K] extends string | number | ReactNode
+    [K in keyof T as T[K] extends string | number | ReactElement
       ? K
       : never]: T[K];
   }
