@@ -1,4 +1,4 @@
-import { ReactElement } from 'react';
+import { ReactElement, ReactNode } from 'react';
 
 import { ListColProps } from '..';
 
@@ -59,7 +59,9 @@ export interface OnQueryChange<T> {
 export type IdentifiableKeys<T> = Extract<
   keyof T,
   keyof {
-    [K in keyof T as T[K] extends string | number ? K : never]: T[K];
+    [K in keyof T as T[K] extends string | number | ReactNode
+      ? K
+      : never]: T[K];
   }
 >;
 
