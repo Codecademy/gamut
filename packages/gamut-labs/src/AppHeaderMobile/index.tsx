@@ -1,6 +1,6 @@
 import { ContentContainer, IconButton, Overlay } from '@codecademy/gamut';
 import { CloseIcon, MenuIcon } from '@codecademy/gamut-icons';
-import { breakpoints, css } from '@codecademy/gamut-styles';
+import { css } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React, { useState } from 'react';
 

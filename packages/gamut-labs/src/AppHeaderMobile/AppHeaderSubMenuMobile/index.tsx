@@ -1,6 +1,6 @@
 import { Anchor, Text } from '@codecademy/gamut';
 import { ArrowChevronLeftIcon } from '@codecademy/gamut-icons';
-import { css, pxRem } from '@codecademy/gamut-styles';
+import { css } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React from 'react';
 
@@ -16,7 +16,7 @@ const StyledAnchor = styled(Anchor)(
   css({
     alignItems: `center`,
     display: `flex`,
-    mb: pxRem(24),
+    mb: 24,
     padding: 0,
     width: `100%`,
   })
