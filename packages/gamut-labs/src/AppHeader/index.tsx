@@ -36,10 +36,13 @@ const StyledMenuBar = styled.ul`
   display: flex;
   padding: 0;
   list-style: none;
+  margin: 0;
   width: 100%;
 `;
 
 const KEY_CODES = Object.freeze({
+  UP: 'ArrowUp',
+  DOWN: 'ArrowDown',
   LEFT: 'ArrowLeft',
   RIGHT: 'ArrowRight',
   END: 'End',
@@ -57,7 +60,7 @@ export const mapItemToElement = (
     case 'logo':
       return <AppHeaderLogo action={action} item={item} />;
     case 'link':
-      return <AppHeaderLink tabIndex="-1" px={0} action={action} item={item} />;
+      return <AppHeaderLink tabIndex="-1" mx={0} action={action} item={item} />;
     case 'dropdown':
     case 'profile-dropdown':
       return (
@@ -124,10 +127,7 @@ export const AppHeader: React.FC<AppHeaderProps> = ({
     [searchButton, notificationsBell, items]
   );
 
-  const itemsCount = useMemo(() => [...items.left, ...right].length - 1, [
-    items,
-    right,
-  ]);
+  const itemsCount = [...items.left, ...right].length - 1;
 
   const [focusIndex, setFocusIndex] = useState(0);
   const [isFocused, setIsFocused] = useState(false);
@@ -170,6 +170,10 @@ export const AppHeader: React.FC<AppHeaderProps> = ({
         break;
       case KEY_CODES.LEFT:
         focusPreviousItem();
+        break;
+      case KEY_CODES.UP:
+      case KEY_CODES.DOWN:
+        event.preventDefault();
         break;
       default:
         break;

@@ -154,10 +154,12 @@ export const AppHeaderDropdown: React.FC<AppHeaderDropdownProps> = ({
         toggleIsOpen();
         break;
       case KEY_CODES.DOWN:
+        event.preventDefault();
         setIsOpen(true);
         focusFirstItem();
         break;
       case KEY_CODES.UP:
+        event.preventDefault();
         setIsOpen(true);
         focusLastItem();
         break;
@@ -177,9 +179,11 @@ export const AppHeaderDropdown: React.FC<AppHeaderDropdownProps> = ({
         focusLastItem();
         break;
       case KEY_CODES.UP:
+        event.preventDefault();
         focusPreviousItem();
         break;
       case KEY_CODES.DOWN:
+        event.preventDefault();
         focusNextItem();
         break;
       case KEY_CODES.TAB:
