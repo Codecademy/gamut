@@ -1,6 +1,6 @@
 import { Anchor, IconButton, Text } from '@codecademy/gamut';
 import { ArrowChevronDownFilledIcon } from '@codecademy/gamut-icons';
-import { pxRem } from '@codecademy/gamut-styles';
+import { css, pxRem } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import cx from 'classnames';
 import { motion } from 'framer-motion';
@@ -17,52 +17,62 @@ import { Avatar } from '../../../Avatar';
 import { AppHeaderLinkSections } from '../AppHeaderLinkSections';
 import { AppHeaderClickHandler, AppHeaderDropdownItem } from '../types';
 
-const DropdownAnchor = styled(Anchor)`
-  align-items: center;
-  display: flex;
-  height: 100%;
-  padding: 0.5rem 0;
-  text-align: center;
-  white-space: nowrap;
+const DropdownAnchor = styled(Anchor)(
+  css({
+    alignItems: `center`,
+    display: `flex`,
+    height: `100%`,
+    padding: `0.5rem 0`,
+    textAlign: `center`,
+    whiteSpace: `nowrap`,
 
-  &:focus::before {
-    opacity: 1;
-  }
-`;
+    '&:focus::before': {
+      opacity: 1,
+    },
+  })
+);
 
-const DropdownIcon = styled(ArrowChevronDownFilledIcon)`
-  margin-left: ${pxRem(5)};
-  transition: transform 0.35s ease-out;
-  transform-origin: center ${pxRem(5)};
+const DropdownIcon = styled(ArrowChevronDownFilledIcon)(
+  css({
+    marginLeft: pxRem(5),
+    transition: `transform 0.35s ease-out`,
+    transformOrigin: `center ${pxRem(5)}`,
 
-  &.open {
-    transform: rotate(-180deg);
-  }
-`;
+    '&.open': {
+      transform: `rotate(-180deg)`,
+    },
+  })
+);
 
-const StyledText = styled(Text)`
-  &::after {
-    display: block;
-    content: attr(title);
-    font-weight: bold;
-    height: 1px;
-    color: transparent;
-    overflow: hidden;
-    visibility: hidden;
-  }
-`;
+const StyledText = styled(Text)(
+  css({
+    '&::after': {
+      display: `block`,
+      content: `attr(title)`,
+      fontWeight: `bold`,
+      height: `1px`,
+      color: `transparent`,
+      overflow: `hidden`,
+      visibility: `hidden`,
+    },
+  })
+);
 
-const StyledDropdown = styled(motion.div)`
-  background: ${({ theme }) => theme.colors.background};
-  border: solid ${({ theme }) => theme.colors.secondary};
-  overflow: hidden;
-  position: absolute;
-`;
+const StyledDropdown = styled(motion.div)(
+  css({
+    bg: `background`,
+    borderColor: `secondary`,
+    overflow: `hidden`,
+    position: `absolute`,
+  })
+);
 
-const StyledLinkSection = styled(AppHeaderLinkSections)`
-  padding: 0.75rem 0;
-  position: absolute;
-`;
+const StyledLinkSection = styled(AppHeaderLinkSections)(
+  css({
+    padding: `0.75rem 0`,
+    position: `absolute`,
+  })
+);
 
 export type AppHeaderDropdownProps = {
   action: AppHeaderClickHandler;
@@ -70,7 +80,7 @@ export type AppHeaderDropdownProps = {
   onKeyDown?: (event: React.KeyboardEvent) => void;
 };
 
-const KEY_CODES = Object.freeze({
+const KEY_CODES = {
   UP: 'ArrowUp',
   DOWN: 'ArrowDown',
   LEFT: 'ArrowLeft',
@@ -81,7 +91,7 @@ const KEY_CODES = Object.freeze({
   HOME: 'Home',
   SPACE: ' ',
   TAB: 'Tab',
-});
+} as const;
 
 export const AppHeaderDropdown: React.FC<AppHeaderDropdownProps> = ({
   action,

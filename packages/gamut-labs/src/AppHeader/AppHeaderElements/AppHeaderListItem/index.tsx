@@ -1,21 +1,22 @@
 import { Box, BoxProps } from '@codecademy/gamut';
+import { css } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React from 'react';
 
-export const StyledListItem = styled(Box)`
-  display: flex;
-  flex-direction: column;
-  position: relative;
+export const StyledListItem = styled(Box)(
+  css({
+    display: `flex`,
+    flexDirection: `column`,
+    position: `relative`,
 
-  ${({ theme }) => theme.breakpoints.md} {
-    &:first-of-type {
-      margin-left: 0;
-    }
-    &:last-of-type {
-      margin-right: 0;
-    }
-  }
-`;
+    '&:first-of-type': {
+      ml: { md: 0 },
+    },
+    '&:last-of-type': {
+      mr: { md: 0 },
+    },
+  })
+);
 
 type AppHeaderListItemProps = {
   onBlur?: () => void;

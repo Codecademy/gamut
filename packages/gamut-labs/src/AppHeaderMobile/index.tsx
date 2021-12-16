@@ -1,6 +1,6 @@
 import { ContentContainer, IconButton, Overlay } from '@codecademy/gamut';
 import { CloseIcon, MenuIcon } from '@codecademy/gamut-icons';
-import { breakpoints } from '@codecademy/gamut-styles';
+import { breakpoints, css } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React, { useState } from 'react';
 
@@ -26,26 +26,26 @@ export type AppHeaderMobileProps = {
   searchInitiallyOpen?: boolean;
 };
 
-const StyledOverlay = styled(Overlay)`
-  display: block;
-  width: 100vw;
-  height: 100vh;
-  opacity: 1;
-  background-color: ${({ theme }) => theme.colors.background};
-  position: fixed;
-  left: 0;
-  top: 0;
-  overflow-x: hidden;
+const StyledOverlay = styled(Overlay)(
+  css({
+    display: { _: `block`, md: `none` },
+    width: `100vw`,
+    height: `100vh`,
+    opacity: 1,
+    bg: `background`,
+    position: `fixed`,
+    left: 0,
+    top: 0,
+    overflowX: `hidden`,
+  })
+);
 
-  @media only screen and (min-width: ${breakpoints.md}) {
-    display: none;
-  }
-`;
-
-const StyledContentContainer = styled(ContentContainer)`
-  display: flex;
-  flex-direction: column;
-`;
+const StyledContentContainer = styled(ContentContainer)(
+  css({
+    display: `flex`,
+    flexDirection: `column`,
+  })
+);
 
 export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
   action,

@@ -1,5 +1,6 @@
 import { Anchor, Text } from '@codecademy/gamut';
 import { ArrowChevronRightIcon } from '@codecademy/gamut-icons';
+import { css } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React from 'react';
 
@@ -11,12 +12,14 @@ export type AppHeaderSubMenuTargetProps = {
   openSubMenu: (event: React.MouseEvent, item: AppHeaderDropdownItem) => void;
 };
 
-const StyledText = styled(Text)`
-  margin-left: 1rem;
-  max-width: 70vw;
-  overflow: hidden;
-  text-overflow: ellipsis;
-`;
+const StyledText = styled(Text)(
+  css({
+    ml: 16,
+    maxWidth: `70vw`,
+    overflow: `hidden`,
+    textOverflow: `ellipsis`,
+  })
+);
 
 export const AppHeaderSubMenuTarget: React.FC<AppHeaderSubMenuTargetProps> = ({
   item,

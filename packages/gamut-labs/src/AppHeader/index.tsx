@@ -1,4 +1,5 @@
 import { AppBar, FillButton, TextButton } from '@codecademy/gamut';
+import { css } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React, { ReactNode, useEffect, useMemo, useRef, useState } from 'react';
 
@@ -26,28 +27,32 @@ export type AppHeaderProps = {
   search: AppHeaderSearch;
 };
 
-export const StyledAppBar = styled(AppBar)`
-  padding: 0.75rem 0;
-  box-shadow: none;
-  width: 100%;
-`;
+export const StyledAppBar = styled(AppBar)(
+  css({
+    padding: `0.75rem 0`,
+    boxShadow: `none`,
+    width: `100%`,
+  })
+);
 
-const StyledMenuBar = styled.ul`
-  display: flex;
-  padding: 0;
-  list-style: none;
-  margin: 0;
-  width: 100%;
-`;
+const StyledMenuBar = styled.ul(
+  css({
+    display: `flex`,
+    padding: 0,
+    listStyle: `none`,
+    margin: 0,
+    width: `100%`,
+  })
+);
 
-const KEY_CODES = Object.freeze({
+const KEY_CODES = {
   UP: 'ArrowUp',
   DOWN: 'ArrowDown',
   LEFT: 'ArrowLeft',
   RIGHT: 'ArrowRight',
   END: 'End',
   HOME: 'Home',
-});
+} as const;
 
 export const mapItemToElement = (
   action: AppHeaderClickHandler,

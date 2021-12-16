@@ -1,6 +1,6 @@
 import { Anchor, Text } from '@codecademy/gamut';
 import { ArrowChevronLeftIcon } from '@codecademy/gamut-icons';
-import { pxRem } from '@codecademy/gamut-styles';
+import { css, pxRem } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React from 'react';
 
@@ -12,13 +12,15 @@ export type AppHeaderSubMenuMobileProps = AppHeaderDropdownProps & {
   handleClose: () => void;
 };
 
-const StyledAnchor = styled(Anchor)`
-  align-items: center;
-  display: flex;
-  margin-bottom: ${pxRem(24)};
-  padding: 0;
-  width: 100%;
-`;
+const StyledAnchor = styled(Anchor)(
+  css({
+    alignItems: `center`,
+    display: `flex`,
+    mb: pxRem(24),
+    padding: 0,
+    width: `100%`,
+  })
+);
 
 export const AppHeaderSubMenuMobile: React.FC<AppHeaderSubMenuMobileProps> = ({
   action,

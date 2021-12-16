@@ -1,3 +1,4 @@
+import { css } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React from 'react';
 
@@ -29,18 +30,22 @@ type LinkComponentProps = {
   onKeyDown?: (event: React.KeyboardEvent) => void;
 };
 
-const StyledList = styled.ul`
-  list-style: none;
-  padding: 0;
-`;
+const StyledList = styled.ul(
+  css({
+    listStyle: `none`,
+    padding: 0,
+  })
+);
 
-const StyledLineBreak = styled.div`
-  display: block;
-  background-color: ${({ theme }) => theme.colors['gray-600']};
-  margin: 0.5rem 1.5rem;
-  width: calc(100% - 3rem);
-  height: 1px;
-`;
+const StyledLineBreak = styled.div(
+  css({
+    display: `block`,
+    backgroundColor: `gray-600`,
+    margin: `0.5rem 1.5rem`,
+    width: `calc(100% - 3rem)`,
+    height: `1px`,
+  })
+);
 
 const LinkComponent: React.FC<LinkComponentProps> = ({
   action,
