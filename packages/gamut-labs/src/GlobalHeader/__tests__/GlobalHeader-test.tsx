@@ -248,7 +248,7 @@ describe('GlobalHeader', () => {
 
       it('renders myHome', () => {
         const { view } = renderView(freeHeaderProps);
-        view.getByText(myHome.text);
+        view.getAllByText(myHome.text);
       });
 
       it('renders courseCatalog', () => {
@@ -283,7 +283,7 @@ describe('GlobalHeader', () => {
 
       it('renders profileDropdown', () => {
         const { view } = renderView(freeHeaderProps);
-        view.getByTestId('avatar');
+        view.getByTestId('avatar-container');
       });
 
       it('renders tryProForFree', () => {
@@ -326,7 +326,7 @@ describe('GlobalHeader', () => {
 
       it('renders myHome', () => {
         const { view } = renderView(proHeaderProps);
-        view.getByText(myHome.text);
+        view.getAllByText(myHome.text);
       });
 
       it('renders courseCatalog', () => {
@@ -346,12 +346,12 @@ describe('GlobalHeader', () => {
 
       it('renders profileDropdown', () => {
         const { view } = renderView(proHeaderProps);
-        view.getByTestId('avatar');
+        view.getByTestId('avatar-container');
       });
 
       it('renders referrals', () => {
         const { view } = renderView(proHeaderProps);
-        view.getByTestId('avatar').click();
+        view.getByTestId('avatar-container').click();
         view.getByText(referrals.text);
       });
     });
