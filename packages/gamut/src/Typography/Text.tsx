@@ -18,7 +18,7 @@ const truncateBaseStyles = {
   textOverflow: 'ellipsis',
 };
 
-const truncateStyles = variance.create({
+const truncateProps = variance.create({
   truncateLines: {
     scale: { 0: 0, 1: 1, 2: 2, 3: 3, 4: 4, 5: 5 },
     property: 'all',
@@ -66,20 +66,19 @@ const textProps = variance.compose(
   system.layout,
   system.typography,
   system.color,
-  system.space
+  system.space,
+  truncateProps
 );
 
 export interface TextProps
   extends StyleProps<typeof textProps>,
     StyleProps<typeof textStates>,
-    StyleProps<typeof truncateStyles>,
     StyleProps<typeof elementVariants>,
     StyleProps<typeof displayVariants> {}
 
 export const Text = styled('span', styledOptions<'span'>())<TextProps>(
   elementVariants,
   displayVariants,
-  truncateStyles,
   textStates,
   textProps
 );
