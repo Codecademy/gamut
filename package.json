@@ -9,7 +9,21 @@
     "node": "^14.7",
     "yarn": "^1.21.1"
   },
+  "turbo": {
+    "baseBranch": "origin/main",
+    "pipeline": {
+      "build": {
+        "dependsOn": [
+          "^build"
+        ]
+      },
+      "start": {
+        "cache": false
+      }
+    }
+  },
   "scripts": {
+    "turbo": "turbo",
     "test": "jest",
     "lint": "eslint --ignore-path .eslintignore \"./**/*.{mdx,js,ts,tsx,json}\" --max-warnings 0",
     "lint:fix": "yarn lint --fix",
@@ -20,7 +34,7 @@
     "verify-all": "yarn nx run-many --target=verify --all --parallel",
     "verify-changed": "nx affected --target=verify",
     "clear-modules": "lerna clean -y && rm -rf node_modules",
-    "build-all": "yarn nx run-many --target=build --all --parallel",
+    "build-all": "yarn turbo run build --api='http://127.0.0.1:8080' --token='cool-token'",
     "build-changed": "nx affected --target=build",
     "start": "yarn && yarn start:storybook",
     "start:storybook": "cd ./packages/styleguide && yarn start",
@@ -68,6 +82,10 @@
     "@emotion/jest": "^11.3.0",
     "@emotion/react": "^11.4.0",
     "@emotion/styled": "^11.3.0",
+    "@nrwl/cli": "13.3.6",
+    "@nrwl/nx-cloud": "13.0.0",
+    "@nrwl/tao": "13.3.6",
+    "@nrwl/workspace": "13.3.6",
     "@testing-library/dom": "^7.31.2",
     "@testing-library/jest-dom": "^5.7.0",
     "@testing-library/react": "^11.0.4",
@@ -106,11 +124,8 @@
     "react-dom": "16.13.1",
     "react-helmet": "6.1.0",
     "react-test-renderer": "16.13.1",
-    "typescript": "4.4.2",
-    "@nrwl/workspace": "13.3.6",
-    "@nrwl/cli": "13.3.6",
-    "@nrwl/tao": "13.3.6",
-    "@nrwl/nx-cloud": "13.0.0"
+    "turbo": "^1.0.13",
+    "typescript": "4.4.2"
   },
   "resolutions": {
     "@typescript-eslint/experimental-utils": "5.3.1"
