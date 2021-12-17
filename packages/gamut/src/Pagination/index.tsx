@@ -5,9 +5,14 @@ import {
 import React, { useMemo, useState } from 'react';
 
 import { FlexBox } from '../Box';
+import { EllipsisButton } from './EllipsisButton';
 import { PaginationButton } from './PaginationButton';
 
 interface PaginationProps {
+  /**
+   * chapter size
+   */
+  chapterSize?: number;
   /**
    * current page number
    */
@@ -23,6 +28,10 @@ interface PaginationProps {
   /**
    * totalpages
    */
+  type?: 'basic' | 'ellipsis';
+  /**
+   * totalpages
+   */
   variant?: 'stroke' | 'text';
   /**
    * totalpages
@@ -30,47 +39,73 @@ interface PaginationProps {
   totalPages: number;
 }
 
-// @to-do :
-/**
- * @todo - port ••• + « to change on hover (via contents)
- */
-/**
- * @todo - chapterSize
- */
 export const Pagination: React.FC<PaginationProps> = ({
+  chapterSize = 5,
   defaultCurrent = 1,
   totalPages,
+  type = 'basic',
   variant = 'stroke',
   ...rest
 }) => {
   const [currentPage, setCurrentPage] = useState(defaultCurrent);
+  const [shownPageArray, setShownPageArray] = useState([0]);
 
-  const pageCount = useMemo(
-    () => Array.from(Array(totalPages), (_, index) => index + 1),
-    [totalPages]
+  const changeShownPages =
+    currentPage < shownPageArray[0] ||
+    currentPage > shownPageArray[chapterSize - 1] ||
+    shownPageArray[0] === 0;
+
+  useMemo(
+    () => {
+      const firstPageChapter =
+        totalPages - currentPage < chapterSize
+          ? totalPages - (chapterSize - 1)
+          : currentPage;
+      setShownPageArray(
+        Array.from(Array(chapterSize), (_, index) => index + firstPageChapter)
+      );
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [changeShownPages]
   );
+
+  const backPageNumber =
+    shownPageArray[0] - chapterSize < 1 ? 1 : shownPageArray[0] - chapterSize;
+
+  const forwardPageNumber =
+    shownPageArray[chapterSize - 1] + chapterSize > totalPages
+      ? totalPages
+      : shownPageArray[chapterSize - 1] + chapterSize;
 
   return (
     <>
-      <FlexBox alignContent="center">
+      <FlexBox justifyContent="left" alignContent="center">
         <PaginationButton icon={MiniChevronLeftIcon} />
-        <PaginationButton showMore="forward" />
-        <PaginationButton selected>•••</PaginationButton>
-        <PaginationButton selected> « </PaginationButton>
-        <PaginationButton selected>1</PaginationButton>
+        <EllipsisButton direction="back">•••</EllipsisButton>
         <PaginationButton>2</PaginationButton> Pagination
         <PaginationButton variant="text">1</PaginationButton>
         <PaginationButton variant="text">2</PaginationButton>
-        <PaginationButton variant="text">»</PaginationButton>
-        <PaginationButton variant="text">•••</PaginationButton>
+        <EllipsisButton variant="text" direction="forward">
+          •••
+        </EllipsisButton>
         <PaginationButton variant="text" icon={MiniChevronRightIcon} />
       </FlexBox>
 
       <FlexBox alignContent="center">
         {currentPage !== 1 && (
-          <PaginationButton variant={variant} icon={MiniChevronLeftIcon} />
+          <PaginationButton
+            variant={variant}
+            icon={MiniChevronLeftIcon}
+            onClick={() => setCurrentPage(currentPage - 1)}
+          />
         )}
-        {pageCount.map((elem) => (
+        {shownPageArray[0] !== 1 && (
+          <EllipsisButton
+            direction="back"
+            onClick={() => setCurrentPage(backPageNumber)}
+          />
+        )}
+        {shownPageArray.map((elem) => (
           <PaginationButton
             variant={variant}
             selected={elem === currentPage}
@@ -79,8 +114,20 @@ export const Pagination: React.FC<PaginationProps> = ({
             {elem}
           </PaginationButton>
         ))}
+        {shownPageArray[chapterSize - 1] !== totalPages && (
+          <EllipsisButton
+            direction="forward"
+            onClick={() => {
+              setCurrentPage(forwardPageNumber);
+            }}
+          />
+        )}
         {currentPage !== totalPages && (
-          <PaginationButton variant={variant} icon={MiniChevronRightIcon} />
+          <PaginationButton
+            variant={variant}
+            icon={MiniChevronRightIcon}
+            onClick={() => setCurrentPage(currentPage + 1)}
+          />
         )}
       </FlexBox>
     </>
