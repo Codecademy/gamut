@@ -2,11 +2,16 @@ import {
   MiniChevronLeftIcon,
   MiniChevronRightIcon,
 } from '@codecademy/gamut-icons';
-import React, { useMemo, useState } from 'react';
+import React, { MouseEvent, useMemo, useState } from 'react';
 
 import { FlexBox } from '../Box';
 import { EllipsisButton } from './EllipsisButton';
 import { PaginationButton } from './PaginationButton';
+import {
+  getBackPageNumber,
+  getForwardPageNumber,
+  shouldPagesChange,
+} from './utils';
 
 interface PaginationProps {
   /**
@@ -22,9 +27,9 @@ interface PaginationProps {
    */
   defaultCurrent?: number;
   /**
-   * Called when the page number or pageSize is changed, and it takes the resulting page number as its argument
+   * Called when the page number is changed. Takes the resulting page number as its first argument
    */
-  onChange?: () => void;
+  onChange?: (arg0: number) => void;
   /**
    * totalpages
    */
@@ -50,10 +55,22 @@ export const Pagination: React.FC<PaginationProps> = ({
   const [currentPage, setCurrentPage] = useState(defaultCurrent);
   const [shownPageArray, setShownPageArray] = useState([0]);
 
-  const changeShownPages =
-    currentPage < shownPageArray[0] ||
-    currentPage > shownPageArray[chapterSize - 1] ||
-    shownPageArray[0] === 0;
+  const changeShownPages = shouldPagesChange({
+    chapterSize,
+    currentPage,
+    shownPageArray,
+  });
+
+  const backPageNumber = getBackPageNumber({
+    chapterSize,
+    shownPageArray,
+  });
+
+  const forwardPageNumber = getForwardPageNumber({
+    chapterSize,
+    shownPageArray,
+    totalPages,
+  });
 
   useMemo(
     () => {
@@ -69,67 +86,50 @@ export const Pagination: React.FC<PaginationProps> = ({
     [changeShownPages]
   );
 
-  const backPageNumber =
-    shownPageArray[0] - chapterSize < 1 ? 1 : shownPageArray[0] - chapterSize;
-
-  const forwardPageNumber =
-    shownPageArray[chapterSize - 1] + chapterSize > totalPages
-      ? totalPages
-      : shownPageArray[chapterSize - 1] + chapterSize;
+  const changeHandler = (pageChange: number) => {
+    setCurrentPage(pageChange);
+    return rest?.onChange && rest?.onChange(pageChange);
+  };
 
   return (
-    <>
-      <FlexBox justifyContent="left" alignContent="center">
-        <PaginationButton icon={MiniChevronLeftIcon} />
-        <EllipsisButton direction="back">•••</EllipsisButton>
-        <PaginationButton>2</PaginationButton> Pagination
-        <PaginationButton variant="text">1</PaginationButton>
-        <PaginationButton variant="text">2</PaginationButton>
-        <EllipsisButton variant="text" direction="forward">
-          •••
-        </EllipsisButton>
-        <PaginationButton variant="text" icon={MiniChevronRightIcon} />
-      </FlexBox>
-
-      <FlexBox alignContent="center">
-        {currentPage !== 1 && (
-          <PaginationButton
-            variant={variant}
-            icon={MiniChevronLeftIcon}
-            onClick={() => setCurrentPage(currentPage - 1)}
-          />
-        )}
-        {shownPageArray[0] !== 1 && (
-          <EllipsisButton
-            direction="back"
-            onClick={() => setCurrentPage(backPageNumber)}
-          />
-        )}
-        {shownPageArray.map((elem) => (
-          <PaginationButton
-            variant={variant}
-            selected={elem === currentPage}
-            onClick={() => setCurrentPage(elem)}
-          >
-            {elem}
-          </PaginationButton>
-        ))}
-        {shownPageArray[chapterSize - 1] !== totalPages && (
-          <EllipsisButton
-            direction="forward"
-            onClick={() => {
-              setCurrentPage(forwardPageNumber);
-            }}
-          />
-        )}
-        {currentPage !== totalPages && (
-          <PaginationButton
-            variant={variant}
-            icon={MiniChevronRightIcon}
-            onClick={() => setCurrentPage(currentPage + 1)}
-          />
-        )}
-      </FlexBox>
-    </>
+    <FlexBox alignContent="center">
+      {currentPage !== 1 && (
+        <PaginationButton
+          variant={variant}
+          icon={MiniChevronLeftIcon}
+          onClick={() => changeHandler(currentPage - 1)}
+        />
+      )}
+      {type === 'ellipsis' && shownPageArray[0] !== 1 && (
+        <EllipsisButton
+          direction="back"
+          onClick={() => changeHandler(backPageNumber)}
+        />
+      )}
+      {shownPageArray.map((elem) => (
+        <PaginationButton
+          variant={variant}
+          selected={elem === currentPage}
+          onClick={() => changeHandler(elem)}
+        >
+          {elem}
+        </PaginationButton>
+      ))}
+      {type === 'ellipsis' && shownPageArray[chapterSize - 1] !== totalPages && (
+        <EllipsisButton
+          direction="forward"
+          onClick={() => {
+            changeHandler(forwardPageNumber);
+          }}
+        />
+      )}
+      {currentPage !== totalPages && (
+        <PaginationButton
+          variant={variant}
+          icon={MiniChevronRightIcon}
+          onClick={() => changeHandler(currentPage + 1)}
+        />
+      )}
+    </FlexBox>
   );
 };

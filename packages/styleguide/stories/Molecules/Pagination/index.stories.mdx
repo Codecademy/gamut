@@ -15,7 +15,11 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
       url: 'https://www.figma.com/file/',
     },
   }}
-  args={{ chapterSize: 5, totalPages: 27 }}
+  args={{
+    chapterSize: 5,
+    totalPages: 27,
+    onChange: (num) => console.log('selected number', num),
+  }}
 />
 
 <Canvas>
