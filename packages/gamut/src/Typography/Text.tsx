@@ -13,32 +13,26 @@ const elementVariants = variant({
   variants: typographyElementVariants,
 });
 
-const truncateVariants = variant({
-  prop: 'truncate',
-  base: {
-    display: 'inline-block',
-    whiteSpace: 'nowrap',
-    overflow: 'hidden',
-    width: 1,
-    maxWidth: 1,
-  },
-  variants: {
-    ellipsis: {
-      textOverflow: 'ellipsis',
-    },
-    fade: {
-      position: 'relative',
-      textOverflow: 'clip',
-      '&:after': {
-        content: '""',
-        position: 'absolute',
-        textColor: 'background-current',
-        inset: 0,
-        left: 0.65,
-        background:
-          'linear-gradient(to right, rgba(0, 0, 0, 0), currentColor 75%)',
-      },
-    },
+const truncateBaseStyles = {
+  overflow: 'hidden',
+  textOverflow: 'ellipsis',
+};
+
+const truncateStyles = variance.create({
+  truncateLines: {
+    scale: { 0: 0, 1: 1, 2: 2, 3: 3, 4: 4, 5: 5 },
+    property: 'all',
+    transform: (truncateLines: number) =>
+      truncateLines === 0
+        ? {}
+        : truncateLines === 1
+        ? { ...truncateBaseStyles, whiteSpace: 'nowrap' }
+        : {
+            ...truncateBaseStyles,
+            display: '-webkit-box',
+            WebkitBoxOrient: 'vertical',
+            WebkitLineClamp: truncateLines,
+          },
   },
 });
 
@@ -78,14 +72,14 @@ const textProps = variance.compose(
 export interface TextProps
   extends StyleProps<typeof textProps>,
     StyleProps<typeof textStates>,
-    StyleProps<typeof truncateVariants>,
+    StyleProps<typeof truncateStyles>,
     StyleProps<typeof elementVariants>,
     StyleProps<typeof displayVariants> {}
 
 export const Text = styled('span', styledOptions<'span'>())<TextProps>(
   elementVariants,
   displayVariants,
-  truncateVariants,
+  truncateStyles,
   textStates,
   textProps
 );

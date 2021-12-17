@@ -117,22 +117,25 @@ import { Text } from '@codecademy/gamut';
 
 Text has some special props with common use cases to make your life easier.
 
-### Truncation
+### Line Truncation (default: 0 aka no truncation )
 
 <Canvas>
   <Story name="Truncation">
     <LayoutGrid gap={32}>
-      {typographyUtilities.truncation.map((variant) => (
-        <Fragment key={variant}>
+      {typographyUtilities.truncation.map((lines) => (
+        <Fragment key={lines}>
           <Column size={3} alignItems="center">
             <Text as="code" fontSize={14}>
-              truncate="{variant.toString()}"
+              truncateLines={lines}
             </Text>
           </Column>
           <Column size={9}>
-            <Text truncate={variant} width="400px">
+            <Text truncateLines={lines} width="400px">
               This is a very long text thingy that we want to truncate it's very
-              long indeed.
+              long indeed. This is a very long text thingy that we want to
+              truncate it's very long indeed. This is a very long text thingy
+              that we want to truncate it's very long indeed. This is a very
+              long text thingy that we want to truncate it's very long indeed.
             </Text>
           </Column>
         </Fragment>
