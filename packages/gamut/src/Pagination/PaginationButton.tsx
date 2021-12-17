@@ -1,5 +1,5 @@
 import { GamutIconProps } from '@codecademy/gamut-icons';
-import React, { forwardRef, useMemo } from 'react';
+import React, { forwardRef, useMemo, useState } from 'react';
 
 import { ButtonProps, createButtonComponent } from '../Button/shared';
 import { ButtonBaseElements } from '../ButtonBase/ButtonBase';
@@ -21,8 +21,12 @@ const PaginationStrokeButtonInner = createButtonComponent(
 );
 
 export interface PaginationButtonProps extends Omit<ButtonProps, 'variant'> {
-  'aria-label': string;
   icon: React.ComponentType<GamutIconProps>;
+  variant?: 'stroke' | 'text';
+}
+
+export interface EllipsisButtonProps extends PaginationButtonProps {
+  'aria-label': string;
   variant?: 'stroke' | 'text';
 }
 
@@ -42,5 +46,18 @@ export const PaginationButton = forwardRef<
       {Icon && <Icon width={14} height={14} aria-hidden />}
       {children}
     </Wrapper>
+  );
+});
+
+export const EllipsisButton = forwardRef<
+  ButtonBaseElements,
+  PaginationButtonProps
+  // eslint-disable-next-line react/prop-types
+>(({ ...props }, ref) => {
+  const [contents, setContents] = useState('•••');
+  return (
+    <PaginationButton {...props} ref={ref}>
+      {contents}
+    </PaginationButton>
   );
 });
