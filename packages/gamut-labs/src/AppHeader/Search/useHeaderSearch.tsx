@@ -8,14 +8,16 @@ export type AppHeaderSearch = {
   onEnable: () => void;
   onSearch: (query: string) => void;
   onTrackingClick: (target: string) => void;
+  initiallyVisible?: boolean;
 };
 
 export const useHeaderSearch = ({
   onEnable,
   onSearch,
   onTrackingClick,
+  initiallyVisible,
 }: AppHeaderSearch) => {
-  const [isSearchVisible, setIsSearchVisible] = useState(false);
+  const [isSearchVisible, setIsSearchVisible] = useState(!!initiallyVisible);
 
   const toggleSearch = () => {
     if (!isSearchVisible) {
@@ -33,6 +35,7 @@ export const useHeaderSearch = ({
         <HeaderIconButton
           aria-label="Search Codecademy Content"
           data-testid="header-search"
+          tabIndex="-1"
           onClick={toggleSearch}
           icon={SearchIcon}
         />

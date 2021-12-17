@@ -1,12 +1,13 @@
-import { FillButton, FlexBox, TextButton } from '@codecademy/gamut';
+import { FillButton, TextButton } from '@codecademy/gamut';
 import React, { useState } from 'react';
 
+import { AppHeaderLink } from '../../AppHeader/AppHeaderElements/AppHeaderLink';
+import { AppHeaderListItem } from '../../AppHeader/AppHeaderElements/AppHeaderListItem';
 import {
   AppHeaderClickHandler,
   AppHeaderDropdownItem,
   AppHeaderItem,
 } from '../../AppHeader/AppHeaderElements/types';
-import { AppHeaderLinkMobile } from '../AppHeaderLinkMobile';
 import { AppHeaderSubMenuMobile } from '../AppHeaderSubMenuMobile';
 import { AppHeaderSubMenuTarget } from '../AppHeaderSubMenuTarget';
 import { MobileSearchBar } from './MobileSearchBar';
@@ -42,9 +43,7 @@ export const AppHeaderMainMenuMobile: React.FC<AppHeaderMainMenuMobileProps> = (
   ) => {
     switch (item.type) {
       case 'link':
-        return (
-          <AppHeaderLinkMobile key={item.id} item={item} action={action} />
-        );
+        return <AppHeaderLink key={item.id} item={item} action={action} />;
       case 'dropdown':
       case 'profile-dropdown':
         return (
@@ -56,27 +55,29 @@ export const AppHeaderMainMenuMobile: React.FC<AppHeaderMainMenuMobileProps> = (
         );
       case 'fill-button':
         return (
-          <FlexBox justifyContent="center" mt={32} key={item.id}>
-            <FillButton
-              data-testid={item.dataTestId}
-              href={item.href}
-              onClick={(event: React.MouseEvent) => action(event, item)}
-            >
-              {item.text}
-            </FillButton>
-          </FlexBox>
+          <FillButton
+            data-testid={item.dataTestId}
+            href={item.href}
+            onClick={(event: React.MouseEvent) => action(event, item)}
+            mt={32}
+            mx="auto"
+            key={item.id}
+          >
+            {item.text}
+          </FillButton>
         );
       case 'text-button':
         return (
-          <FlexBox justifyContent="center" mt={16} key={item.id}>
-            <TextButton
-              data-testid={item.dataTestId}
-              href={item.href}
-              onClick={(event: React.MouseEvent) => action(event, item)}
-            >
-              {item.text}
-            </TextButton>
-          </FlexBox>
+          <TextButton
+            mt={16}
+            mx="auto"
+            key={item.id}
+            data-testid={item.dataTestId}
+            href={item.href}
+            onClick={(event: React.MouseEvent) => action(event, item)}
+          >
+            {item.text}
+          </TextButton>
         );
     }
   };
@@ -89,18 +90,12 @@ export const AppHeaderMainMenuMobile: React.FC<AppHeaderMainMenuMobileProps> = (
     />
   ) : (
     <>
-      {subMenuItem ? (
-        <AppHeaderSubMenuMobile
-          handleClose={closeSubMenu}
-          action={action}
-          item={subMenuItem}
-        />
-      ) : (
-        <>
-          <MobileSearchBar onSearch={onSearch} />
-          {items.map((item) => mapItemToElement(item, action))}
-        </>
-      )}
+      <AppHeaderListItem>
+        <MobileSearchBar onSearch={onSearch} />
+      </AppHeaderListItem>
+      {items.map((item) => (
+        <AppHeaderListItem>{mapItemToElement(item, action)}</AppHeaderListItem>
+      ))}
     </>
   );
 };

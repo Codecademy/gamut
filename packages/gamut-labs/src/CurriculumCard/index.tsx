@@ -34,11 +34,16 @@ export type CurriculumCardProps = SubtitleProps & {
    * Changes In Progress card footer text from "Enrolled..." to "In Progress..."
    */
   footerTextVariant?: FooterTextVariantType;
+  /**
+   * optional text to be displayed below card subtitle
+   */
+  description?: string;
 };
 
 export const CurriculumCard: React.FC<CurriculumCardProps> = ({
   beta,
   difficulty,
+  description,
   headingLevel = 'h3',
   image,
   isFullSize = false,
@@ -77,6 +82,11 @@ export const CurriculumCard: React.FC<CurriculumCardProps> = ({
       <Text as={headingLevel} mb={4} fontSize={20}>
         {title}
       </Text>
+      {description && (
+        <Text pt={8} pb={16} fontSize={14}>
+          {description}
+        </Text>
+      )}
       <FlexBox flexWrap="wrap">
         {!progressState && (
           <Subtitle
