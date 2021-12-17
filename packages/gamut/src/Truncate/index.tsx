@@ -14,6 +14,18 @@ type TruncateProps = {
   onTruncate?: (truncated: boolean) => void;
 };
 
+/**
+ * @deprecated
+ * This component is deprecated, prefer the `Text` component with `truncateLines` prop.
+ *
+ * See [Text](https://gamut.codecademy.com/?path=/docs/typography-text--truncation)
+ *
+ * @example
+ * import { Text } fom '@codecademy/gamut';
+ *
+ * <Text truncateLines={2} />
+ */
+
 export const Truncate: React.FC<TruncateProps> = ({
   className,
   children,
