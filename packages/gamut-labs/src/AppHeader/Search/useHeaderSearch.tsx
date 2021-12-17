@@ -35,6 +35,7 @@ export const useHeaderSearch = ({
         <HeaderIconButton
           aria-label="Search Codecademy Content"
           data-testid="header-search"
+          tabIndex="-1"
           onClick={toggleSearch}
           icon={SearchIcon}
         />

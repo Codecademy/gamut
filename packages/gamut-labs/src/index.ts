@@ -29,7 +29,6 @@ export * from './AppHeader/AppHeaderElements/AppHeaderLogo';
 export type { AppHeaderNotifications } from './Notifications/types';
 export type { AppHeaderSearch } from './AppHeader/Search/useHeaderSearch';
 export * from './AppHeaderMobile';
-export * from './AppHeaderMobile/AppHeaderLinkMobile';
 export * from './AppHeaderMobile/AppHeaderMainMenuMobile';
 export * from './AppHeaderMobile/AppHeaderSubMenuMobile';
 export * from './GlobalFooter';

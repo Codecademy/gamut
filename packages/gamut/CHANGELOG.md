@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [42.2.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@42.1.2...@codecademy/gamut@42.2.0) (2021-12-16)
+
+
+### Features
+
+* **GlobalHeader:** Accessible GlobalHeader! ([9467629](https://github.com/Codecademy/gamut/commit/946762989c41c9356d784fb5b14ddce6054bb51f))
+
+
+
 ### [42.1.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@42.1.1...@codecademy/gamut@42.1.2) (2021-12-15)
 
 

@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [28.5.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@28.4.3...@codecademy/gamut-labs@28.5.0) (2021-12-16)
+
+
+### Features
+
+* **GlobalHeader:** Accessible GlobalHeader! ([9467629](https://github.com/Codecademy/gamut/commit/946762989c41c9356d784fb5b14ddce6054bb51f))
+
+
+
 ### [28.4.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@28.4.2...@codecademy/gamut-labs@28.4.3) (2021-12-15)
 
 **Note:** Version bump only for package @codecademy/gamut-labs
