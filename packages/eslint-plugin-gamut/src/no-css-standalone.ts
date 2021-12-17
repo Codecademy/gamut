@@ -1,9 +1,11 @@
-module.exports.default = {
+import { createRule } from './createRule';
+
+export default createRule({
   create(context) {
     return {
       'ImportDeclaration[source.value=/.*\\.s?css/]': function (node) {
         context.report({
-          messageId: 'noStyleSheets',
+          messageId: 'noCssStandalone',
           node,
         });
       },
@@ -12,16 +14,16 @@ module.exports.default = {
   defaultOptions: [],
   meta: {
     docs: {
-      category: 'Best Practices',
       description: 'Ensure no standalone .css or .scss files.',
       recommended: 'error',
     },
-    fixable: true,
     messages: {
-      noStyleSheets:
+      noCssStandalone:
         "Don't create anymore stylesheets, please see (insert url here) for current best practices`.",
     },
+    type: 'suggestion',
     schema: [],
   },
   name: 'no-css-standalone',
-};
+
+})

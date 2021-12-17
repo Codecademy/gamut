@@ -1,0 +1,36 @@
+{
+  "author": "Codecademy Engineering <dev@codecademy.com>",
+  "description": "Shared eslint plugin for Gamut applications",
+  "keywords": [
+    "gamut",
+    "eslint",
+    "styles",
+    "gamut-styles"
+  ],
+  "name": "@codecademy/eslint-plugin-gamut",
+  "version": "3.0.2",
+  "license": "MIT",
+  "main": "./dist/index.js",
+  "module": "dist/index.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Codecademy/gamut.git"
+  },
+  "scripts": {
+    "verify": "tsc --noEmit",
+    "build:compile": "babel ./src --out-dir ./dist --copy-files --extensions \".ts,.tsx\"",
+    "build:clean": "rm -rf dist",
+    "build:types": "tsc --emitDeclarationOnly",
+    "build": "yarn build:clean && yarn build:compile && yarn build:types",
+    "lernaBuildTask": "yarn build"
+  },
+  "types": "./dist/index.d.ts",
+  "dependencies": {
+    "@types/eslint": "^8.2.1",
+    "@typescript-eslint/experimental-utils": "^5.7.0",
+    "eslint": "^8.4.1"
+  }
+}
