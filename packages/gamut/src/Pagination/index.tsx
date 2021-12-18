@@ -2,7 +2,7 @@ import {
   MiniChevronLeftIcon,
   MiniChevronRightIcon,
 } from '@codecademy/gamut-icons';
-import React, { MouseEvent, useMemo, useState } from 'react';
+import React, { useMemo, useState } from 'react';
 
 import { FlexBox } from '../Box';
 import { EllipsisButton } from './EllipsisButton';
@@ -13,7 +13,7 @@ import {
   shouldPagesChange,
 } from './utils';
 
-interface PaginationProps {
+interface PaginationBaseProps {
   /**
    * chapter size
    */
@@ -27,22 +27,43 @@ interface PaginationProps {
    */
   defaultCurrent?: number;
   /**
-   * Called when the page number is changed. Takes the resulting page number as its first argument
+   * Called when the page number is changed with the resulting page number as its first argument
    */
   onChange?: (arg0: number) => void;
   /**
-   * totalpages
+   * type
    */
   type?: 'basic' | 'ellipsis';
   /**
-   * totalpages
+   * total pages
    */
   variant?: 'stroke' | 'text';
   /**
-   * totalpages
+   * total pages
    */
   totalPages: number;
 }
+
+interface PaginationContent extends PaginationBaseProps {
+  /**
+   * Secondary nav component
+   */
+  navigation?: false;
+}
+
+interface PaginationNavigation extends PaginationBaseProps {
+  /**
+   * Secondary nav component
+   */
+  navigation: true;
+  /**
+   * @todo - restrict this to be called with a number and only return strings
+   * Creates links for navigation components. Takes the resulting page number as its first argument
+   */
+  linkCreator: () => void;
+}
+
+type PaginationProps = PaginationNavigation | PaginationContent;
 
 export const Pagination: React.FC<PaginationProps> = ({
   chapterSize = 5,

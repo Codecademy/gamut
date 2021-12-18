@@ -37,7 +37,7 @@ export const PaginationButton = forwardRef<
   }, [variant]);
 
   return (
-    <Wrapper {...props} ref={ref}>
+    <Wrapper {...props} ref={ref} as="button">
       {Icon && <Icon width={14} height={14} aria-hidden />}
       {children}
     </Wrapper>
