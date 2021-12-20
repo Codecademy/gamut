@@ -7,11 +7,11 @@ import { motion } from 'framer-motion';
 import React, {
   useCallback,
   useEffect,
-  useIsomorphicLayoutEffect,
   useMemo,
   useRef,
   useState,
 } from 'react';
+import { useIsomorphicLayoutEffect } from 'react-use';
 
 import { Avatar } from '../../../Avatar';
 import { AppHeaderLinkSections } from '../AppHeaderLinkSections';
