@@ -10,8 +10,8 @@
     "url": "git+https://github.com/Codecademy/gamut/packages/monaco.git"
   },
   "peerDependencies": {
-    "react": ">=16.8.1",
-    "react-dom": ">=16.8.1"
+    "react": ">=17.0.2",
+    "react-dom": ">=17.0.2"
   },
   "dependencies": {
     "@codecademy/gamut": "^42.2.1",
@@ -19,7 +19,7 @@
     "@emotion/react": "^11.4.0",
     "@emotion/styled": "^11.3.0",
     "monaco-editor": "0.20.0",
-    "react-monaco-editor": "0.34.0",
+    "react-monaco-editor": "0.46.0",
     "react-resize-detector": "5.2.0"
   },
   "devDependencies": {
