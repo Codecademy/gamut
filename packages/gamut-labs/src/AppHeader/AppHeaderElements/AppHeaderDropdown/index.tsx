@@ -310,7 +310,7 @@ export const AppHeaderDropdown: React.FC<AppHeaderDropdownProps> = ({
         }}
         transition={{ duration: 0.175 }}
         aria-hidden={!isOpen}
-        aria-controls="menu-container"
+        aria-controls={`menu-container${item.text}`}
         aria-label={item.text}
         role="menu"
         onKeyDown={menuHandleKeyEvents}
@@ -320,7 +320,7 @@ export const AppHeaderDropdown: React.FC<AppHeaderDropdownProps> = ({
           item={item}
           role="menu"
           ref={listRef}
-          id="menu-container"
+          id={`menu-container${item.text}`}
           onKeyDown={menuHandleKeyEvents}
         />
       </StyledDropdown>
