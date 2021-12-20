@@ -1,38 +1,44 @@
 import { Box } from '@codecademy/gamut';
 import { SearchIcon } from '@codecademy/gamut-icons';
+import { css } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React, { useState } from 'react';
 
 const SearchForm = Box.withComponent('form');
 
-const StyledInput = styled.input`
-  background: none;
-  border: ${({ theme }) => `1px solid ${theme.colors['gray-800']}`};
-  color: ${({ theme }) => theme.colors.text};
-  font-size: 1rem;
-  outline: none;
-  padding-right: 2.5rem;
-  padding: 0.75rem;
-  width: 100%;
+const StyledInput = styled.input(
+  css({
+    background: `none`,
+    borderWidth: `1px`,
+    borderColor: `gray-800`,
+    color: `text`,
+    fontSize: 16,
+    outline: `none`,
+    padding: `0.75rem`,
+    paddingRight: `2.5rem`,
+    width: `100%`,
 
-  &::placeholder {
-    color: ${({ theme }) => theme.colors['gray-800']};
-  }
-`;
+    '&::placeholder': {
+      color: 'text-disabled',
+    },
+  })
+);
 
-const SearchButton = styled.button`
-  position: absolute;
-  top: 50%;
-  transform: translate(0, -50%);
-  right: 0.75rem;
-  color: ${({ theme }) => theme.colors.text};
-  cursor: pointer;
-  outline: 0;
-  border: none;
-  background-color: transparent;
-  padding: 0;
-  line-height: 0;
-`;
+const SearchButton = styled.button(
+  css({
+    position: `absolute`,
+    top: `50%`,
+    transform: `translate(0, -50%)`,
+    right: `0.75rem`,
+    color: `text`,
+    cursor: `pointer`,
+    outline: 0,
+    border: `none`,
+    backgroundColor: `transparent`,
+    p: 0,
+    lineHeight: 0,
+  })
+);
 
 export type MobileSearchBarProps = {
   onSearch: (query: string) => void;

@@ -3,6 +3,118 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [52.3.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@52.3.0...@codecademy/styleguide@52.3.1) (2021-12-17)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [52.3.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@52.2.3...@codecademy/styleguide@52.3.0) (2021-12-16)
+
+
+### Features
+
+* **GlobalHeader:** Accessible GlobalHeader! ([9467629](https://github.com/Codecademy/gamut/commit/946762989c41c9356d784fb5b14ddce6054bb51f))
+
+
+
+### [52.2.3](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@52.2.2...@codecademy/styleguide@52.2.3) (2021-12-15)
+
+
+### Bug Fixes
+
+* fix index prop forwarding for Tabs component ([371f062](https://github.com/Codecademy/gamut/commit/371f0629e50aed79758450ea7184e53c7454774b))
+
+
+
+### [52.2.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@52.2.1...@codecademy/styleguide@52.2.2) (2021-12-14)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [52.2.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@52.2.0...@codecademy/styleguide@52.2.1) (2021-12-14)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [52.2.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@52.1.0...@codecademy/styleguide@52.2.0) (2021-12-13)
+
+
+### Features
+
+* **AppHeaderLinkMobile:** show 'new' badge in dropdown header links ([0b204dd](https://github.com/Codecademy/gamut/commit/0b204dd151b166485c3129aac330824a272ce7f3))
+
+
+
+## [52.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@52.0.0...@codecademy/styleguide@52.1.0) (2021-12-13)
+
+
+### Features
+
+* **NotificationItem:** add notification image for cohorts ([3632379](https://github.com/Codecademy/gamut/commit/36323793bc22a27d3a865f3fd2599dfeb66bf2eb))
+
+
+
+## [52.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@51.1.0...@codecademy/styleguide@52.0.0) (2021-12-10)
+
+
+### ⚠ BREAKING CHANGES
+
+* New Tabs
+
+### Features
+
+* New Tabs ([0b10bde](https://github.com/Codecademy/gamut/commit/0b10bdee5ee4493df3857b5756c27049320f362a))
+
+
+
+## [51.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@51.0.0...@codecademy/styleguide@51.1.0) (2021-12-10)
+
+
+### Features
+
+* **ConnectedForm:** new ConnectedForm component + useConnectedForm hook ([902b82e](https://github.com/Codecademy/gamut/commit/902b82e94cff563e3dacdd759a24e26be8bb7eaa))
+
+
+
+## [51.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@50.5.0...@codecademy/styleguide@51.0.0) (2021-12-08)
+
+
+### ⚠ BREAKING CHANGES
+
+* **Badges:** color + size variants
+
+### Features
+
+* **Badges:** color + size variants ([1651e6c](https://github.com/Codecademy/gamut/commit/1651e6c0e46c8d57272df29138091af660be33ce))
+
+
+
+## [50.5.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@50.4.5...@codecademy/styleguide@50.5.0) (2021-12-08)
+
+
+### Features
+
+* **CurriculumCard:** added optional description ([7b0aa1d](https://github.com/Codecademy/gamut/commit/7b0aa1df930da1315277580fcd441c7f1d9771ef))
+
+
+
+### [50.4.5](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@50.4.4...@codecademy/styleguide@50.4.5) (2021-12-07)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
 ### [50.4.4](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@50.4.3...@codecademy/styleguide@50.4.4) (2021-12-02)
 
 **Note:** Version bump only for package @codecademy/styleguide

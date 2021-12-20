@@ -1,27 +1,24 @@
-import {
-  states,
-  styledOptions,
-  system,
-  variant,
-} from '@codecademy/gamut-styles';
+import { styledOptions, system, variant } from '@codecademy/gamut-styles';
 import { StyleProps, variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
 
-const badgeVariants = variant({
+const colorVariants = variant({
+  defaultVariant: 'default',
   base: {
-    borderRadius: '3px',
-    py: 4,
-    px: 12,
+    alignItems: 'center',
+    borderRadius: '40px',
+    fontFamily: 'accent',
     fontWeight: 400,
-    display: 'inline-block',
-    textAlign: 'center',
+    display: 'flex',
+    justifyContent: 'center',
+    px: 8,
     width: 'min-content',
+    whiteSpace: 'nowrap',
   },
-  defaultVariant: 'blue',
   variants: {
-    blue: {
-      bg: 'blue',
-      textColor: 'white',
+    default: {
+      bg: `text`,
+      textColor: 'background',
     },
     yellow: {
       bg: 'feedback-warning',
@@ -31,16 +28,29 @@ const badgeVariants = variant({
       bg: `navy-500`,
       textColor: 'white',
     },
-    hyper: {
-      bg: `hyper-500`,
-      textColor: 'white',
+    stroke: {
+      border: 1,
+      borderColor: 'text-disabled',
+      color: 'text-disabled',
+      bg: 'transparent',
     },
   },
 });
 
-const badgeStates = states({
-  round: {
-    borderRadius: '40px',
+const sizeVariants = variant({
+  prop: 'size',
+  defaultVariant: 'base',
+  variants: {
+    base: {
+      height: '1.5rem',
+      fontSize: 14,
+      lineHeight: 0,
+    },
+    sm: {
+      height: `1rem`,
+      // the powers that be told us this was okay. please don't do this - <3 web-plat
+      fontSize: 10 as any,
+    },
   },
 });
 
@@ -52,11 +62,11 @@ const badgeProps = variance.compose(
 
 export interface BadgeProps
   extends StyleProps<typeof badgeProps>,
-    StyleProps<typeof badgeVariants>,
-    StyleProps<typeof badgeStates> {}
+    StyleProps<typeof colorVariants>,
+    StyleProps<typeof sizeVariants> {}
 
 export const Badge = styled('div', styledOptions)<BadgeProps>(
   badgeProps,
-  badgeVariants,
-  badgeStates
+  colorVariants,
+  sizeVariants
 );
