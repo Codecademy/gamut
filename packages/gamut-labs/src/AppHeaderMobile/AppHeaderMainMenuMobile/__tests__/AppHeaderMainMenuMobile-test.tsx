@@ -83,7 +83,7 @@ describe('AppHeaderMainMenuMobile', () => {
   it('renders links for the items with type link and type fill-button', () => {
     const { view } = renderView();
     const linkArray = view
-      .getAllByRole('link')
+      .getAllByRole('menuitem')
       .map((node) => node.getAttribute('href'));
     expect(linkArray).toStrictEqual([link1Href, link2Href, fillButtonHref]);
   });
