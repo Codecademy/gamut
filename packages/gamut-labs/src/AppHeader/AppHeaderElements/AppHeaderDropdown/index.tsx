@@ -7,7 +7,7 @@ import { motion } from 'framer-motion';
 import React, {
   useCallback,
   useEffect,
-  useLayoutEffect,
+  useIsomorphicLayoutEffect,
   useMemo,
   useRef,
   useState,
@@ -223,7 +223,7 @@ export const AppHeaderDropdown: React.FC<AppHeaderDropdownProps> = ({
     }
   }, [focusIndex, isOpen, itemsCount]);
 
-  useLayoutEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     if (listRef.current) {
       const { height, width } = listRef.current.getBoundingClientRect();
       setDimensions({ height, width });
