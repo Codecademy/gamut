@@ -85,6 +85,7 @@ export const ButtonBase = forwardRef<
         ref={ref as MutableRefObject<HTMLAnchorElement>}
         as="a"
         href={href}
+        role={role}
       >
         {children}
       </ResetElement>
