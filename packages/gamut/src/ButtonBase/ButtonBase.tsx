@@ -59,36 +59,31 @@ const ResetElement = styled('button', styledOptions<'button'>())(resetStyles);
 export const ButtonBase = forwardRef<
   HTMLButtonElement | HTMLAnchorElement,
   any
->(
-  (
-    { href, disabled, children, role = 'button', type = 'button', ...rest },
-    ref
-  ) => {
-    if (href == null || disabled) {
-      return (
-        <ResetElement
-          {...rest}
-          ref={ref as MutableRefObject<HTMLButtonElement>}
-          as="button"
-          type={type}
-          role={role}
-          disabled={!!disabled}
-        >
-          {children}
-        </ResetElement>
-      );
-    }
-
+>(({ href, disabled, children, role, type = 'button', ...rest }, ref) => {
+  if (href == null || disabled) {
     return (
       <ResetElement
         {...rest}
-        ref={ref as MutableRefObject<HTMLAnchorElement>}
-        as="a"
-        href={href}
-        role={role}
+        ref={ref as MutableRefObject<HTMLButtonElement>}
+        as="button"
+        type={type}
+        role={role ?? 'button'}
+        disabled={!!disabled}
       >
         {children}
       </ResetElement>
     );
   }
-);
+
+  return (
+    <ResetElement
+      {...rest}
+      ref={ref as MutableRefObject<HTMLAnchorElement>}
+      as="a"
+      href={href}
+      role={role}
+    >
+      {children}
+    </ResetElement>
+  );
+});
