@@ -1,8 +1,70 @@
 import { Anchor, Box, Card, Text, Truncate } from '@codecademy/gamut';
 import { pxRem } from '@codecademy/gamut-styles';
+import { Theme } from '@emotion/react';
 import React from 'react';
 
 const cardMinWidth = 250;
+
+export type TagColor = 'blue' | 'green' | 'pink';
+const tagColorMap: Record<TagColor, keyof Theme['colors']> = {
+  blue: 'paleBlue',
+  green: 'paleGreen',
+  pink: 'palePink',
+};
+
+type TextProps = {
+  text: string;
+};
+type BottomRightTagProps = {
+  text: string;
+  color: TagColor;
+};
+
+const TopText: React.FC<TextProps> = ({ text }) => (
+  <Text
+    display="flex"
+    fontSize={14}
+    mb={12}
+    fontFamily="accent"
+    textTransform="capitalize"
+  >
+    {text}
+  </Text>
+);
+
+const Title: React.FC<TextProps> = ({ text }) => (
+  <Text as="h3" mb={4} fontSize={20}>
+    <Truncate lines={2}>{text}</Truncate>
+  </Text>
+);
+
+const Subtitle: React.FC<TextProps> = ({ text }) => (
+  <Text variant="p-small" textColor="gray-900">
+    <Truncate lines={2}>{text}</Truncate>
+  </Text>
+);
+
+const Body: React.FC<TextProps> = ({ text }) => (
+  <Text pt={16} variant="p-small" textColor="gray-900">
+    <Truncate lines={3}>{text}</Truncate>
+  </Text>
+);
+
+const BottomLeftText: React.FC<TextProps> = ({ text }) => (
+  <Box position="absolute" bottom={0} left={0} maxWidth={text ? '50%' : '100%'}>
+    <Text pl={16} variant="p-small" textColor="gray-900">
+      {text}
+    </Text>
+  </Box>
+);
+
+const BottomRightTag: React.FC<BottomRightTagProps> = ({ text, color }) => (
+  <Box position="absolute" bottom={0} right={0} bg={tagColorMap[color]}>
+    <Text py={4} p={12} variant="title-xs" fontSize={14}>
+      {text}
+    </Text>
+  </Box>
+);
 
 export type InfoCardProps = {
   href: string;
@@ -17,13 +79,6 @@ export type InfoCardProps = {
   cardHeight?: string | number;
 };
 
-export type TagColor = 'blue' | 'green' | 'pink';
-const tagColorMap = {
-  blue: 'paleBlue',
-  green: 'paleGreen',
-  pink: 'palePink',
-} as const;
-
 export const InfoCard: React.FC<InfoCardProps> = ({
   href,
   onClick,
@@ -36,62 +91,6 @@ export const InfoCard: React.FC<InfoCardProps> = ({
   bottomRightTagColor = 'pink',
   cardHeight = 285,
 }) => {
-  const renderTopText = (text: string) => (
-    <Text
-      display="flex"
-      fontSize={14}
-      mb={12}
-      fontFamily="accent"
-      textTransform="capitalize"
-    >
-      {text}
-    </Text>
-  );
-
-  const renderTitle = (text: string) => (
-    <Text as="h3" mb={4} fontSize={20}>
-      <Truncate lines={2}>{text}</Truncate>
-    </Text>
-  );
-
-  const renderSubtitle = (text: string) => (
-    <Text variant="p-small" textColor="gray-900">
-      <Truncate lines={2}>{text}</Truncate>
-    </Text>
-  );
-
-  const renderBody = (text: string) => (
-    <Text pt={16} variant="p-small" textColor="gray-900">
-      <Truncate lines={3}>{text}</Truncate>
-    </Text>
-  );
-
-  const renderBottomLeftText = (text: string) => (
-    <Box
-      position="absolute"
-      bottom={0}
-      left={0}
-      maxWidth={bottomRightTagText ? '50%' : '100%'}
-    >
-      <Text pl={16} variant="p-small" textColor="gray-900">
-        {text}
-      </Text>
-    </Box>
-  );
-
-  const renderBottomRightTag = (text: string) => (
-    <Box
-      position="absolute"
-      bottom={0}
-      right={0}
-      bg={tagColorMap[bottomRightTagColor]}
-    >
-      <Text py={4} p={12} variant="title-xs" fontSize={14}>
-        {text}
-      </Text>
-    </Box>
-  );
-
   return (
     <Anchor variant="interface" href={href} onClick={() => onClick?.()}>
       <Card
@@ -103,12 +102,17 @@ export const InfoCard: React.FC<InfoCardProps> = ({
         shadow="medium"
         position="relative"
       >
-        {renderTopText(topText)}
-        {renderTitle(title)}
-        {renderSubtitle(subtitle)}
-        {body && renderBody(body)}
-        {bottomLeftText && renderBottomLeftText(bottomLeftText)}
-        {bottomRightTagText && renderBottomRightTag(bottomRightTagText)}
+        <TopText text={topText} />
+        <Title text={title} />
+        <Subtitle text={subtitle} />
+        {body && <Body text={body} />}
+        {bottomLeftText && <BottomLeftText text={bottomLeftText} />}
+        {bottomRightTagText && (
+          <BottomRightTag
+            text={bottomRightTagText}
+            color={bottomRightTagColor}
+          />
+        )}
       </Card>
     </Anchor>
   );

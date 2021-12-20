@@ -15,7 +15,7 @@ describe('InfoCard', () => {
   it('onClick function is called when InfoCard is clicked', () => {
     const { view } = renderView({ onClick: clickHandler });
     view.getByText(topText).click();
-    expect(clickHandler).toHaveBeenCalled();
+    expect(clickHandler).toHaveBeenCalledTimes(1);
   });
 
   it('renders with bottom tags when provided', () => {
