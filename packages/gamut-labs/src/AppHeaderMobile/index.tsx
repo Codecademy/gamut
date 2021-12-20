@@ -98,7 +98,11 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
 
   return (
     <>
-      <HeaderHeightArea display={{ _: 'block', md: 'none' }} as="nav">
+      <HeaderHeightArea
+        display={{ _: 'block', md: 'none' }}
+        as="nav"
+        title="Mobile Navigation"
+      >
         {!mobileMenuOpen && ( // need this bc AppBar has a hardcoded z-Index of 15
           <StyledAppBar>
             {mapItemsToElement(items.left, 'left')}
