@@ -7,11 +7,11 @@ import { motion } from 'framer-motion';
 import React, {
   useCallback,
   useEffect,
-  useLayoutEffect,
   useMemo,
   useRef,
   useState,
 } from 'react';
+import { useIsomorphicLayoutEffect } from 'react-use';
 
 import { Avatar } from '../../../Avatar';
 import { AppHeaderLinkSections } from '../AppHeaderLinkSections';
@@ -223,7 +223,7 @@ export const AppHeaderDropdown: React.FC<AppHeaderDropdownProps> = ({
     }
   }, [focusIndex, isOpen, itemsCount]);
 
-  useLayoutEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     if (listRef.current) {
       const { height, width } = listRef.current.getBoundingClientRect();
       setDimensions({ height, width });
