@@ -1,11 +1,6 @@
+import { Anchor, Box, Card, Text, Truncate } from '@codecademy/gamut';
 import { pxRem } from '@codecademy/gamut-styles';
 import React from 'react';
-
-import { Anchor } from '../Anchor';
-import { Box } from '../Box';
-import { Card } from '../Card';
-import { Truncate } from '../Truncate';
-import { Text } from '../Typography';
 
 const cardMinWidth = 250;
 
