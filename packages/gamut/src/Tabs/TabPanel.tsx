@@ -1,3 +1,4 @@
+import { styledOptions } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
 import {
@@ -12,4 +13,7 @@ export interface TabPanelProps
     StyleProps<typeof tabElementBaseProps>,
     TabElementStyleProps {}
 
-export const TabPanel = styled(ReachTabPanel)(tabElementBaseProps);
+export const TabPanel = styled(
+  ReachTabPanel,
+  styledOptions
+)(tabElementBaseProps);
