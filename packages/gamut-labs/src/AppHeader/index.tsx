@@ -226,7 +226,11 @@ export const AppHeader: React.FC<AppHeaderProps> = ({
   };
 
   return (
-    <HeaderHeightArea display={{ _: 'none', md: 'block' }} as="nav">
+    <HeaderHeightArea
+      display={{ _: 'none', md: 'block' }}
+      as="nav"
+      title="Main Navigation"
+    >
       <StyledAppBar>
         <StyledMenuBar
           role="menubar"
