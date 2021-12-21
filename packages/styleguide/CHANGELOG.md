@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [52.4.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@52.3.1...@codecademy/styleguide@52.4.0) (2021-12-20)
+
+
+### Features
+
+* Info Card ([dcfc1a3](https://github.com/Codecademy/gamut/commit/dcfc1a3a74b78a6a067f25e715598d374eb3d6d4))
+
+
+
 ### [52.3.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@52.3.0...@codecademy/styleguide@52.3.1) (2021-12-17)
 
 **Note:** Version bump only for package @codecademy/styleguide
