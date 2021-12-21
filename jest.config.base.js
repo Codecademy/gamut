@@ -24,6 +24,7 @@ module.exports = (packageName) => ({
       '<rootDir>/../styleguide/.storybook/components$1',
     '^@codecademy\\/storybook-addon-variance(.*)$':
       '<rootDir>/../styleguide/.storybook/addons/system/components$1',
+    '^@codecademy\\/eslint-plugin-gamut$': '<rootDir>/../src',
     '^@codecademy\\/gamut$': '<rootDir>/../gamut/src',
     '^@codecademy\\/gamut-labs$': '<rootDir>/../gamut-labs/src',
     '^@codecademy\\/gamut-styles$': '<rootDir>/../gamut-styles/src',

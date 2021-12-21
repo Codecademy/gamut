@@ -25,5 +25,4 @@ export default createRule({
     schema: [],
   },
   name: 'no-css-standalone',
-
-})
+});
