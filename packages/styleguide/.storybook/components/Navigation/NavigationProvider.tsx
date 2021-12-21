@@ -29,6 +29,7 @@ export const NavigationProvider: React.FC = ({ children }) => {
       taxonomy: { root, indexPage },
     },
   } = context;
+  console.log('docsContext', context);
   const { root: rootToC, hierarchy, components } = createTaxonomy(context);
 
   const getTableOfContents = (kind: string): TableOfContentsShape => {

@@ -49,7 +49,7 @@ const STATUS = {
 } as const;
 
 export const DocsPage: React.FC = ({ children }) => {
-  const { kind, storyStore } = useContext(DocsContext);
+  const { kind, storyStore, parameters } = useContext(DocsContext);
   const {
     toc: { type, title, subtitle, status: storyStatus },
   } = useNavigation();
@@ -58,9 +58,7 @@ export const DocsPage: React.FC = ({ children }) => {
     return <>{children}</>;
   }
 
-  const {
-    parameters: { design = {}, source, modes },
-  } = storyStore?._kinds[kind];
+  const { design = {}, source, modes } = parameters;
 
   const showMeta = type === 'element';
   const npmLink = `https://www.npmjs.com/package/@codecademy/${source}`;
