@@ -1,28 +1,28 @@
 const path = require('path');
 const { startCase } = require('lodash');
 
-function iconTemplate({ componentName, jsx }, { options, tpl }) {
-  const title = startCase(path.basename(options.state.filePath, '.svg'));
+function iconTemplate(api, opts, { jsx }) {
+  const template = api.template.smart({ plugins: ['jsx', 'typescript'] });
+  const { componentName, filePath } = opts.state;
+  const exportName = componentName.replace('Svg', '');
+  const title = startCase(path.basename(filePath, '.svg'));
 
-  return tpl`
+  return template.ast`
     import * as React from 'react';
     import { Svg, GamutIconProps } from '../../props';
 
-    export const ${componentName}: React.ForwardRefExoticComponent<
-      GamutIconProps & React.RefAttributes<SVGSVGElement>
-    > = React.forwardRef(({
-        title = "${title}",
-        titleId,
-        size = 16,
-        height = size,
-        width = size,
-        ...props
-      },
-        ref
-      ) => {
-        return ${jsx};
-      });
+    export const ${exportName} = React.forwardRef<SVGSVGElement, GamutIconProps>(({
+      title = "${title}",
+      titleId,
+      size = 16,
+      height = size,
+      width = size,
+      ...props
+    },
+      svgRef
+    ) => {
+      return ${jsx};
+    });
   `;
 }
-
 module.exports = iconTemplate;
