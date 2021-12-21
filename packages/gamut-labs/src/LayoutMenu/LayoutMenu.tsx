@@ -31,10 +31,6 @@ export type LayoutMenuProps = {
    */
   breakpoint?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
   /**
-   *  Title of contents for navigation.
-   */
-  title?: string;
-  /**
    * An array of section items, each of which become an additional link on top of the accordion section.
    */
   topLinkSections?: SectionItem[];
@@ -48,7 +44,6 @@ export const LayoutMenu: React.FC<LayoutMenuProps> = ({
   mobileButtonText,
   breakpoint = 'lg',
   children,
-  title,
   topLinkSections,
 }) => {
   const [expanded, setExpanded] = useState(false);
@@ -73,7 +68,7 @@ export const LayoutMenu: React.FC<LayoutMenuProps> = ({
   );
 
   return (
-    <nav title={title}>
+    <nav>
       <Box display={{ _: 'block', [breakpoint]: 'none' }}>
         <Flyout
           closeLabel={closeLabel}
