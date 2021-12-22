@@ -1,6 +1,6 @@
 import React, { ComponentProps } from 'react';
 import { PROP_GROUPS } from '../propMeta';
-import { ArgsTable } from '@storybook/addon-docs/blocks';
+import { ArgsTable } from '@storybook/addon-docs';
 
 import {
   PropItem,

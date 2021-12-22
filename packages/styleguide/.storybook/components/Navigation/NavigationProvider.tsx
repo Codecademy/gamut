@@ -1,4 +1,4 @@
-import { DocsContext } from '@storybook/addon-docs/blocks';
+import { DocsContext } from '@storybook/addon-docs';
 import { get, mapValues } from 'lodash';
 import React, { useContext, createContext, useMemo } from 'react';
 import {

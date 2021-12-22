@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Description } from '@storybook/addon-docs/blocks';
+import { Description } from '@storybook/addon-docs';
 import { Link, Reset } from '../Markdown/Elements';
 import { ContentItem, useNavigation } from '.';
 import { Box, Card, FlexBox, GridBox, Text } from '@codecademy/gamut/src';

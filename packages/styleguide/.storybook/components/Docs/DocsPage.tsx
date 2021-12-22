@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { DocsContext, Title } from '@storybook/addon-docs/blocks';
+import { DocsContext, Title } from '@storybook/addon-docs';
 import { Figma } from 'storybook-addon-designs/blocks';
 
 import { Parameters } from '@storybook/addons';

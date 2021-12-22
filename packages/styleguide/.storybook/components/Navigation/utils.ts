@@ -1,4 +1,4 @@
-import { DocsContextProps } from '@storybook/addon-docs/blocks';
+import { DocsContextProps } from '@storybook/addon-docs';
 import { set, head, keyBy, isEmpty, tail, update, assign } from 'lodash';
 import { merge } from 'lodash/fp';
 import {

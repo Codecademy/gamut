@@ -9,7 +9,7 @@ import {
   HeadersMdx,
   storyBlockIdFromId,
   anchorBlockIdFromId,
-} from '@storybook/addon-docs/blocks';
+} from '@storybook/addon-docs';
 import { AssetProvider } from '@codecademy/gamut-styles/src/AssetProvider';
 import {
   createEmotionCache,
