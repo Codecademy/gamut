@@ -4,7 +4,7 @@ import {
 } from '@codecademy/gamut-icons';
 import React, { useMemo, useState } from 'react';
 
-import { FlexBox } from '../Box';
+import { Box, FlexBox } from '../Box';
 import { EllipsisButton } from './EllipsisButton';
 import { PaginationButton } from './PaginationButton';
 import {
@@ -13,13 +13,13 @@ import {
   shouldPagesChange,
 } from './utils';
 
-interface PaginationBaseProps {
+interface PaginationProps {
   /**
    * chapter size
    */
   chapterSize?: number;
   /**
-   * current page number
+   * Current page number. Only supply for controlled pagination
    */
   current?: number;
   /**
@@ -27,15 +27,19 @@ interface PaginationBaseProps {
    */
   defaultCurrent?: number;
   /**
+   * Secondary nav component
+   */
+  navigation?: false;
+  /**
    * Called when the page number is changed with the resulting page number as its first argument
    */
   onChange?: (arg0: number) => void;
   /**
-   * type
+   *  Basic pagination vs ellipsis variant
    */
   type?: 'basic' | 'ellipsis';
   /**
-   * total pages
+   *  Stroke or text button style
    */
   variant?: 'stroke' | 'text';
   /**
@@ -44,36 +48,17 @@ interface PaginationBaseProps {
   totalPages: number;
 }
 
-interface PaginationContent extends PaginationBaseProps {
-  /**
-   * Secondary nav component
-   */
-  navigation?: false;
-}
-
-interface PaginationNavigation extends PaginationBaseProps {
-  /**
-   * Secondary nav component
-   */
-  navigation: true;
-  /**
-   * @todo - restrict this to be called with a number and only return strings
-   * Creates links for navigation components. Takes the resulting page number as its first argument
-   */
-  linkCreator: () => void;
-}
-
-type PaginationProps = PaginationNavigation | PaginationContent;
-
 export const Pagination: React.FC<PaginationProps> = ({
   chapterSize = 5,
   defaultCurrent = 1,
+  navigation,
   totalPages,
   type = 'basic',
   variant = 'stroke',
   ...rest
 }) => {
   const [currentPage, setCurrentPage] = useState(defaultCurrent);
+  const [liveText, setLiveText] = useState('');
   const [shownPageArray, setShownPageArray] = useState([0]);
 
   const changeShownPages = shouldPagesChange({
@@ -102,6 +87,10 @@ export const Pagination: React.FC<PaginationProps> = ({
       setShownPageArray(
         Array.from(Array(chapterSize), (_, index) => index + firstPageChapter)
       );
+      setLiveText(`Viewing navigation for pages ${shownPageArray[0]} through
+          ${
+            shownPageArray[shownPageArray.length - 1]
+          }, current page ${currentPage}`);
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [changeShownPages]
@@ -109,31 +98,50 @@ export const Pagination: React.FC<PaginationProps> = ({
 
   const changeHandler = (pageChange: number) => {
     setCurrentPage(pageChange);
+    setLiveText(`Current page ${pageChange}`);
+
     return rest?.onChange && rest?.onChange(pageChange);
   };
 
   return (
-    <FlexBox alignContent="center">
+    <FlexBox
+      alignContent="center"
+      as={navigation ? 'nav' : undefined}
+      aria-label={
+        navigation
+          ? `Browse Content By Page, total pages ${totalPages}`
+          : `Paginated Navigation, total pages ${totalPages}`
+      }
+    >
+      <Box aria-live="polite" display="none">
+        {liveText}
+      </Box>
       {currentPage !== 1 && (
         <PaginationButton
           variant={variant}
           icon={MiniChevronLeftIcon}
-          onClick={() => changeHandler(currentPage - 1)}
+          aria-label={`Navigate back to page ${currentPage - 1}`}
+          as={navigation ? 'a' : undefined}
         />
       )}
       {type === 'ellipsis' && shownPageArray[0] !== 1 && (
         <EllipsisButton
           direction="back"
           onClick={() => changeHandler(backPageNumber)}
+          aria-label={`Jump to page ${backPageNumber}`}
         />
       )}
-      {shownPageArray.map((elem) => (
+      {shownPageArray.map((page) => (
         <PaginationButton
+          aria-current={page === currentPage && 'page'}
+          aria-label={`${page === totalPages ? 'Last Page,' : ''} Page ${page}`}
+          key={page}
           variant={variant}
-          selected={elem === currentPage}
-          onClick={() => changeHandler(elem)}
+          selected={page === currentPage}
+          onClick={() => changeHandler(page)}
+          as={navigation ? 'a' : undefined}
         >
-          {elem}
+          {page}
         </PaginationButton>
       ))}
       {type === 'ellipsis' && shownPageArray[chapterSize - 1] !== totalPages && (
@@ -142,14 +150,19 @@ export const Pagination: React.FC<PaginationProps> = ({
           onClick={() => {
             changeHandler(forwardPageNumber);
           }}
+          aria-label={`Jump to page ${forwardPageNumber}`}
         />
       )}
       {currentPage !== totalPages && (
         <PaginationButton
           variant={variant}
           icon={MiniChevronRightIcon}
+          aria-label={`Navigate forward to page ${currentPage + 1}`}
+          as={navigation ? 'a' : undefined}
           onClick={() => changeHandler(currentPage + 1)}
-        />
+        >
+          <Box />
+        </PaginationButton>
       )}
     </FlexBox>
   );

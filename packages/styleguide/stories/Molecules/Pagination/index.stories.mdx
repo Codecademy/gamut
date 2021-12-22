@@ -17,14 +17,68 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
     },
   }}
   args={{
-    chapterSize: 20,
+    chapterSize: 5,
     totalPages: 27,
-    onChange: (num) => console.log('selected number', num),
+    onChange: () => {},
+    type: 'ellipsis',
   }}
 />
+
+Smart Stephen words
+
+## Usage
+
+- Smart
+- Stephen
+- Words
 
 <Canvas>
   <Story name="Pagination">{(args) => <Pagination {...args} />}</Story>
 </Canvas>
 
 <PropsTable story="Pagination" />
+
+## Basic vs. Ellipsis
+
+Most times we're basic, but somtimes we've got an ellipsis.
+
+<Canvas>
+  <Story
+    name="ellipsis"
+    args={{
+      chapterSize: 5,
+      totalPages: 27,
+      onChange: () => {},
+    }}
+  >
+    {Pagination.bind({})}
+  </Story>
+  <Story
+    name="stroke"
+    args={{
+      chapterSize: 5,
+      totalPages: 27,
+      onChange: () => {},
+      type: 'ellipsis',
+    }}
+  >
+    {Pagination.bind({})}
+  </Story>
+</Canvas>
+
+## Pagination Navigation
+
+To do -- links. What do we do about them, etc.
+
+<Canvas>
+  <Story
+    name="default size"
+    args={{
+      chapterSize: 5,
+      totalPages: 27,
+      type: 'ellipsis',
+    }}
+  >
+    {Pagination.bind({})}
+  </Story>
+</Canvas>
