@@ -38,13 +38,13 @@ Smart Stephen words
 
 <PropsTable story="Pagination" />
 
-## Basic vs. Ellipsis
+## Variant
 
 Most times we're basic, but somtimes we've got an ellipsis.
 
 <Canvas>
   <Story
-    name="ellipsis"
+    name="stroke"
     args={{
       chapterSize: 5,
       totalPages: 27,
@@ -54,7 +54,35 @@ Most times we're basic, but somtimes we've got an ellipsis.
     {Pagination.bind({})}
   </Story>
   <Story
-    name="stroke"
+    name="fill"
+    args={{
+      chapterSize: 5,
+      totalPages: 27,
+      onChange: () => {},
+      variant: 'text',
+    }}
+  >
+    {Pagination.bind({})}
+  </Story>
+</Canvas>
+
+## Basic vs. Ellipsis
+
+If you have many pages of content,
+
+<Canvas>
+  <Story
+    name="Basic"
+    args={{
+      chapterSize: 5,
+      totalPages: 27,
+      onChange: () => {},
+    }}
+  >
+    {Pagination.bind({})}
+  </Story>
+  <Story
+    name="Ellipsis"
     args={{
       chapterSize: 5,
       totalPages: 27,
@@ -68,7 +96,9 @@ Most times we're basic, but somtimes we've got an ellipsis.
 
 ## Pagination Navigation
 
-To do -- links. What do we do about them, etc.
+When using pagination as navigation, use the navigation prop.
+
+Your `onChange` function should include programmatic navigation. How exactly you should do this will depend on the application you are using the component in.
 
 <Canvas>
   <Story
@@ -77,6 +107,13 @@ To do -- links. What do we do about them, etc.
       chapterSize: 5,
       totalPages: 27,
       type: 'ellipsis',
+      navigation: true,
+      onChange: (pageNumber) => {
+        window.open(
+          `https://giphy.com/search/hamtaro-page-${pageNumber}`,
+          '_blank'
+        );
+      },
     }}
   >
     {Pagination.bind({})}

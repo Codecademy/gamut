@@ -33,7 +33,7 @@ interface PaginationProps {
   /**
    * Called when the page number is changed with the resulting page number as its first argument
    */
-  onChange?: (arg0: number) => void;
+  onChange: (arg0: number) => void;
   /**
    *  Basic pagination vs ellipsis variant
    */
@@ -52,6 +52,7 @@ export const Pagination: React.FC<PaginationProps> = ({
   chapterSize = 5,
   defaultCurrent = 1,
   navigation,
+  onChange,
   totalPages,
   type = 'basic',
   variant = 'stroke',
@@ -98,9 +99,8 @@ export const Pagination: React.FC<PaginationProps> = ({
 
   const changeHandler = (pageChange: number) => {
     setCurrentPage(pageChange);
+    onChange(pageChange);
     setLiveText(`Current page ${pageChange}`);
-
-    return rest?.onChange && rest?.onChange(pageChange);
   };
 
   return (
@@ -121,7 +121,7 @@ export const Pagination: React.FC<PaginationProps> = ({
           variant={variant}
           icon={MiniChevronLeftIcon}
           aria-label={`Navigate back to page ${currentPage - 1}`}
-          as={navigation ? 'a' : undefined}
+          href={navigation}
         />
       )}
       {type === 'ellipsis' && shownPageArray[0] !== 1 && (
@@ -129,6 +129,7 @@ export const Pagination: React.FC<PaginationProps> = ({
           direction="back"
           onClick={() => changeHandler(backPageNumber)}
           aria-label={`Jump to page ${backPageNumber}`}
+          href={navigation}
         />
       )}
       {shownPageArray.map((page) => (
@@ -139,7 +140,7 @@ export const Pagination: React.FC<PaginationProps> = ({
           variant={variant}
           selected={page === currentPage}
           onClick={() => changeHandler(page)}
-          as={navigation ? 'a' : undefined}
+          href={navigation}
         >
           {page}
         </PaginationButton>
@@ -151,6 +152,7 @@ export const Pagination: React.FC<PaginationProps> = ({
             changeHandler(forwardPageNumber);
           }}
           aria-label={`Jump to page ${forwardPageNumber}`}
+          href={navigation}
         />
       )}
       {currentPage !== totalPages && (
@@ -160,9 +162,8 @@ export const Pagination: React.FC<PaginationProps> = ({
           aria-label={`Navigate forward to page ${currentPage + 1}`}
           as={navigation ? 'a' : undefined}
           onClick={() => changeHandler(currentPage + 1)}
-        >
-          <Box />
-        </PaginationButton>
+          href={navigation}
+        />
       )}
     </FlexBox>
   );
