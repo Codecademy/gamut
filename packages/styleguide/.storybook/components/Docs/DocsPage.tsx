@@ -88,7 +88,7 @@ export const DocsPage: React.FC = ({ children }) => {
       py={48}
     >
       <ContentContainer>
-        <BreadCrumbs />
+        {/* <BreadCrumbs /> */}
         <Title>{title}</Title>
         <Text as="p" fontSize={20} mb={16}>
           <Markdown inline text={subtitle} />

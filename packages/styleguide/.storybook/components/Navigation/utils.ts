@@ -77,6 +77,8 @@ export const sortByStatus = (a: ContentItem, b: ContentItem) => {
 };
 
 export const createTaxonomy = (context: DocsContextProps): Taxonomy => {
+  console.log('params in tax', context.parameters);
+
   const {
     storyStore,
     parameters: {
@@ -84,9 +86,9 @@ export const createTaxonomy = (context: DocsContextProps): Taxonomy => {
     },
   } = context;
 
-  const kinds = storyStore._kinds;
-  const stories = storyStore._stories;
-  const allKinds = Object.keys(kinds);
+  const kinds = [];
+  const stories = [];
+  const allKinds = [];
   const taxonomy = {} as Taxonomy;
   const hierarchy = {} as Hierarchy;
   const componentRegistry = {} as ComponentRegistry;
