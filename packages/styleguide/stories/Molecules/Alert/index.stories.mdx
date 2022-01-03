@@ -5,6 +5,8 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 
 import { ALERTS } from './constants';
 
+import { LinkTo } from '~styleguide/blocks';
+
 <Meta
   title={title}
   component={Alert}
@@ -30,9 +32,7 @@ import { ALERTS } from './constants';
   }}
 />
 
-<br />
-
-<Story name="Alert">{(args) => <Alert {...args} />}</Story>
+<Story name="Usage guidelines">{(args) => <Alert {...args} />}</Story>
 
 <br />
 
@@ -45,7 +45,16 @@ import { ALERTS } from './constants';
 - Only use Feature alert for product/feature announcements that are specific to that page (e.g. Dashboard, Catalog, Profile, LE)
 - **For Inline use**: Only use the inline variant (non-stroked) and only use Success, Error or General type, other types are for top-level use only.
 
-<br />
+<Story name="Writing tips" />
+
+## Writing Tips
+
+Alert copy should make it clear **what the issue or information is** and **how to proceed**. Refer to the checklist below for guidance. For more tips and best practices, check out the full guide about <LinkTo id="writing-ux-writing-component-guidelines-alerts--examples">writing for alerts</LinkTo>.
+
+- [ ] Explain the information or issue clearly.
+- [ ] If relevant, explain what the user can do to resolve the alert (or what we are doing on our end to resolve it).
+- [ ] Front-load important information.
+- [ ] Ask someone unrelated to the project to read the message to see if it makes sense.
 
 ## Alert Types
 
