@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [12.1.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@12.1.0...@codecademy/gamut-styles@12.1.1) (2021-12-07)
+
+
+### Bug Fixes
+
+* **colors:** Lighten navy-700 to increase interaction contrast ([720213e](https://github.com/Codecademy/gamut/commit/720213e8936c5ec67af09493e4db463b19c355b6))
+
+
+
+## [12.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@12.0.0...@codecademy/gamut-styles@12.1.0) (2021-11-23)
+
+
+### Features
+
+* remove unused brandColors and deprecatedColors variables ([3fdeb84](https://github.com/Codecademy/gamut/commit/3fdeb84b96f7be9bc7a40d72b0ac8d1903a7bc22))
+
+
+
 ## [12.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@1.2.4...@codecademy/gamut-styles@12.0.0) (2021-10-26)
 
 

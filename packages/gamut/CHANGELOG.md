@@ -3,6 +3,153 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [42.2.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@42.2.0...@codecademy/gamut@42.2.1) (2021-12-17)
+
+
+### Bug Fixes
+
+* **List:** pass id to containing wrapper for List element ([9a4fc4b](https://github.com/Codecademy/gamut/commit/9a4fc4b990b002d16b25491a848cc4afb1cde083))
+
+
+
+## [42.2.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@42.1.2...@codecademy/gamut@42.2.0) (2021-12-16)
+
+
+### Features
+
+* **GlobalHeader:** Accessible GlobalHeader! ([9467629](https://github.com/Codecademy/gamut/commit/946762989c41c9356d784fb5b14ddce6054bb51f))
+
+
+
+### [42.1.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@42.1.1...@codecademy/gamut@42.1.2) (2021-12-15)
+
+
+### Bug Fixes
+
+* fix index prop forwarding for Tabs component ([371f062](https://github.com/Codecademy/gamut/commit/371f0629e50aed79758450ea7184e53c7454774b))
+
+
+
+### [42.1.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@42.1.0...@codecademy/gamut@42.1.1) (2021-12-14)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [42.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@42.0.0...@codecademy/gamut@42.1.0) (2021-12-13)
+
+
+### Features
+
+* **NotificationItem:** add notification image for cohorts ([3632379](https://github.com/Codecademy/gamut/commit/36323793bc22a27d3a865f3fd2599dfeb66bf2eb))
+
+
+
+## [42.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@41.1.0...@codecademy/gamut@42.0.0) (2021-12-10)
+
+
+### ⚠ BREAKING CHANGES
+
+* New Tabs
+
+### Features
+
+* New Tabs ([0b10bde](https://github.com/Codecademy/gamut/commit/0b10bdee5ee4493df3857b5756c27049320f362a))
+
+
+
+## [41.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@41.0.0...@codecademy/gamut@41.1.0) (2021-12-10)
+
+
+### Features
+
+* **ConnectedForm:** new ConnectedForm component + useConnectedForm hook ([902b82e](https://github.com/Codecademy/gamut/commit/902b82e94cff563e3dacdd759a24e26be8bb7eaa))
+
+
+
+## [41.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@40.5.3...@codecademy/gamut@41.0.0) (2021-12-08)
+
+
+### ⚠ BREAKING CHANGES
+
+* **Badges:** color + size variants
+
+### Features
+
+* **Badges:** color + size variants ([1651e6c](https://github.com/Codecademy/gamut/commit/1651e6c0e46c8d57272df29138091af660be33ce))
+
+
+
+### [40.5.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@40.5.2...@codecademy/gamut@40.5.3) (2021-12-07)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [40.5.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@40.5.1...@codecademy/gamut@40.5.2) (2021-11-30)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [40.5.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@40.5.0...@codecademy/gamut@40.5.1) (2021-11-30)
+
+
+### Bug Fixes
+
+* **DataGrid/DataTable:** text align bug ([89ae2ad](https://github.com/Codecademy/gamut/commit/89ae2ad92bd1a61047092e3a8322f908c45a8584))
+
+
+
+## [40.5.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@40.4.1...@codecademy/gamut@40.5.0) (2021-11-29)
+
+
+### Features
+
+* Add multi-select to select dropdown ([0ce809a](https://github.com/Codecademy/gamut/commit/0ce809a2363559c566de044943cff76be5b886e2))
+
+
+
+### [40.4.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@40.4.0...@codecademy/gamut@40.4.1) (2021-11-23)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [40.4.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@40.3.3...@codecademy/gamut@40.4.0) (2021-11-22)
+
+
+### Features
+
+* **Menu:** tweak nav variant + add nav condensed example ([7eb8bfe](https://github.com/Codecademy/gamut/commit/7eb8bfea279e0ebdd2b84f215a08876ee6e596fc))
+
+
+
+### [40.3.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@40.3.2...@codecademy/gamut@40.3.3) (2021-11-17)
+
+
+### Bug Fixes
+
+* **ListRow:** add expandedRowAriaLabel prop to ListRow ([50d8dce](https://github.com/Codecademy/gamut/commit/50d8dce7bc5cc194d30427c44dd35d7d540a4458))
+
+
+
+### [40.3.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@40.3.1...@codecademy/gamut@40.3.2) (2021-11-15)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
 ### [40.3.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@40.3.0...@codecademy/gamut@40.3.1) (2021-11-10)
 
 

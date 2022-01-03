@@ -5,8 +5,6 @@ import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 import LinkTo from '@storybook/addon-links/react';
 
-import { ColorModeExampleWrapper } from '../../stories/Foundations/ColorMode/examples';
-
 <Meta
   title={title}
   component={GlobalHeader}
@@ -16,9 +14,8 @@ import { ColorModeExampleWrapper } from '../../stories/Foundations/ColorMode/exa
     },
   ]}
   parameters={{
-    layout: 'padded',
     status: 'updating',
-    docs: { inlineStories: false, iframeHeight: 500 },
+    docs: { inlineStories: false, iframeHeight: 750 },
     subtitle:
       'Header for a unified Codecademy global navigation system, meant to be consumed by any entity which requires a standard Codecademy header.',
     design: {
@@ -48,11 +45,10 @@ import { ColorModeExampleWrapper } from '../../stories/Foundations/ColorMode/exa
     }}
   >
     {(args) => (
-      <ColorModeExampleWrapper>
-        <Box position="relative" zIndex={0}>
-          <GlobalHeader {...args} />
-        </Box>
-      </ColorModeExampleWrapper>
+      <Box position="relative" zIndex={0}>
+        <GlobalHeader {...args} />
+        <Box height="120vh" bg="background-primary" />
+      </Box>
     )}
   </Story>
 </Canvas>

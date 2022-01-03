@@ -1,16 +1,14 @@
 import { each, isObject } from 'lodash';
 import React from 'react';
-import { OptionTypeBase } from 'react-select';
 
+import { OptionStrict } from '.';
 import {
   IconOption,
   SelectDropdownOptions,
   SelectDropdownSizes,
 } from './SelectDropdown';
 
-export interface SelectOptionBase {
-  label: string;
-  value: string;
+export interface SelectOptionBase extends OptionStrict, SelectDropdownSizes {
   key?: string;
 }
 export interface ParseSelectOptionProps extends SelectDropdownSizes {
@@ -40,7 +38,7 @@ export const parseOptions = ({
   size,
   labelAsKey,
 }: ParseOptionProps) => {
-  const parsedOptions: OptionTypeBase[] = [];
+  const parsedOptions: SelectOptionBase[] = [];
   if (Array.isArray(options)) {
     options.forEach((value: string | IconOption) => {
       if (isObject(value)) {
@@ -54,7 +52,7 @@ export const parseOptions = ({
   } else if (isObject(options)) {
     each(options, (label, value) => {
       const key = id ? `${id}-${value}` : value;
-      parsedOptions.push({ label, value, key });
+      parsedOptions.push({ label: label.toString(), value, key });
     });
   }
   return [...parsedOptions];

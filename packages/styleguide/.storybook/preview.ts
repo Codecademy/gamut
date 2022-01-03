@@ -67,10 +67,9 @@ export const parameters = {
     },
   },
   backgrounds: {
+    disable: true,
     grid: {
-      cellSize: 16,
-      opacity: 0.5,
-      cellAmount: 5,
+      disable: true,
     },
   },
   viewport: {
@@ -122,6 +121,7 @@ export const parameters = {
       },
     },
   },
+  previewTabs: { 'storybook/docs/panel': { index: -1 } },
   a11y: {
     element: '#root',
     config: {},
@@ -131,6 +131,24 @@ export const parameters = {
   actions: { argTypesRegex: '^on.*' },
   controls: { expanded: true },
   layout: 'fullscreen',
+};
+
+export const globalTypes = {
+  colorMode: {
+    name: ' ColorMode',
+    description: 'Global color mode for components',
+    defaultValue: 'light',
+    toolbar: {
+      icon: 'circlehollow',
+      // Array of plain string values or MenuItem shape (see below)
+      items: [
+        { value: 'light', icon: 'circlehollow', title: 'light' },
+        { value: 'dark', icon: 'circle', title: 'dark' },
+      ],
+      // Property that specifies if the name of the item will be displayed
+      showName: true,
+    },
+  },
 };
 
 export const decorators = [withEmotion, withDesign];
