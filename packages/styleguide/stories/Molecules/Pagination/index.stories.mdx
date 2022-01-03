@@ -7,7 +7,7 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
   title={title}
   component={Pagination}
   parameters={{
-    subtitle: 'Pagination is a way to browse through paginated content.',
+    subtitle: 'Controls for navigating through paginated content',
     source: 'gamut',
     status: '',
     design: {
@@ -24,13 +24,9 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
   }}
 />
 
-Smart Stephen words
-
 ## Usage
 
-- Smart
-- Stephen
-- Words
+- Use this component to navigate between content that is split across multiple pages.
 
 <Canvas>
   <Story name="Pagination">{(args) => <Pagination {...args} />}</Story>
@@ -38,33 +34,7 @@ Smart Stephen words
 
 <PropsTable story="Pagination" />
 
-## Variants
-
-<Canvas>
-  <Story
-    name="stroke"
-    args={{
-      chapterSize: 5,
-      totalPages: 27,
-      onChange: () => {},
-    }}
-  >
-    {Pagination.bind({})}
-  </Story>
-  <Story
-    name="fill"
-    args={{
-      chapterSize: 5,
-      totalPages: 27,
-      onChange: () => {},
-      variant: 'text',
-    }}
-  >
-    {Pagination.bind({})}
-  </Story>
-</Canvas>
-
-## Basic vs. Ellipsis
+## Types
 
 We have two types of pagination - `basic` and `ellipsis`. The `basic` type has number as well as forward and back buttons. The `ellipsis` type has an ellipsis button bfeature which allows users to quickly jump through page numbers by `chapterSize`.
 
@@ -86,6 +56,34 @@ We have two types of pagination - `basic` and `ellipsis`. The `basic` type has n
       totalPages: 27,
       onChange: () => {},
       type: 'ellipsis',
+    }}
+  >
+    {Pagination.bind({})}
+  </Story>
+</Canvas>
+
+## Variants
+
+We have two variants of pagination - `stroke` and `fill`.
+
+<Canvas>
+  <Story
+    name="stroke"
+    args={{
+      chapterSize: 5,
+      totalPages: 27,
+      onChange: () => {},
+    }}
+  >
+    {Pagination.bind({})}
+  </Story>
+  <Story
+    name="fill"
+    args={{
+      chapterSize: 5,
+      totalPages: 27,
+      onChange: () => {},
+      variant: 'text',
     }}
   >
     {Pagination.bind({})}
