@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [42.2.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@42.2.0...@codecademy/gamut@42.2.1) (2021-12-17)
+
+
+### Bug Fixes
+
+* **List:** pass id to containing wrapper for List element ([9a4fc4b](https://github.com/Codecademy/gamut/commit/9a4fc4b990b002d16b25491a848cc4afb1cde083))
+
+
+
 ## [42.2.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@42.1.2...@codecademy/gamut@42.2.0) (2021-12-16)
 
 
