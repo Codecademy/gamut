@@ -1,18 +1,35 @@
-import { setupEnzyme } from '@codecademy/gamut-tests';
+import { setupRtl } from '@codecademy/gamut-tests';
+import userEvent from '@testing-library/user-event';
+import React from 'react';
 
+import { FormContext } from '../../__fixtures__/helpers';
 import {
   stubCheckboxField,
   stubFileField,
-  stubHiddenField,
   stubRadioGroupField,
   stubSelectField,
-  stubSweetContainerField,
   stubTextareaField,
   stubTextField,
 } from '../../__tests__/stubs';
-import { GridFormInputGroupTestComponent } from '../__fixtures__/renderers';
+import { GridFormInputGroup, GridFormInputGroupProps } from '..';
 
-const renderWrapper = setupEnzyme(GridFormInputGroupTestComponent, {
+type GridFormInputGroupTestComponentProps = GridFormInputGroupProps & {
+  mode?: 'onSubmit' | 'onChange';
+};
+
+const GridFormInputGroupTestComponent: React.FC<GridFormInputGroupTestComponentProps> = ({
+  field,
+  mode = 'onSubmit',
+  ...rest
+}) => {
+  return (
+    <FormContext mode={mode}>
+      <GridFormInputGroup field={field} {...rest} />
+    </FormContext>
+  );
+};
+
+const renderView = setupRtl(GridFormInputGroupTestComponent, {
   setValue: jest.fn(),
   register: jest.fn(),
 });
@@ -21,31 +38,31 @@ describe('GridFormInputGroup', () => {
   it('renders error text when an error exists', () => {
     const error = 'Oh no!';
 
-    const { wrapper } = renderWrapper({ field: stubCheckboxField, error });
+    const { view } = renderView({ field: stubCheckboxField, error });
 
-    expect(wrapper.text()).toContain(error);
+    expect(view.baseElement.textContent).toContain(error);
   });
   it('renders error text when an custom error exists', () => {
     const error = 'Oh no!';
 
-    const { wrapper } = renderWrapper({
+    const { view } = renderView({
       field: { ...stubCheckboxField, customError: error },
     });
 
-    expect(wrapper.text()).toContain(error);
+    expect(view.baseElement.textContent).toContain(error);
   });
 
   it('renders a checkbox input when the field type is checkbox', () => {
-    const { wrapper } = renderWrapper({
+    const { view } = renderView({
       field: { ...stubCheckboxField, id: 'mycoolid' },
     });
 
-    expect(wrapper.find('input[type="checkbox"]#mycoolid')).toHaveLength(1);
+    expect(view.getByRole('checkbox')).toHaveAttribute('id', 'mycoolid');
   });
 
   it('renders a custom input when the field type is custom', () => {
     const text = 'Hello, world!';
-    const { wrapper } = renderWrapper({
+    const { view } = renderView({
       field: {
         render: () => text,
         name: 'stub-custom',
@@ -54,150 +71,151 @@ describe('GridFormInputGroup', () => {
       },
     });
 
-    expect(wrapper.text()).toEqual(text);
+    expect(view.baseElement.textContent).toEqual(text);
   });
 
   it('renders a radio group when the field type is radio-group', () => {
-    const { wrapper } = renderWrapper({
+    const { view } = renderView({
       field: { ...stubRadioGroupField, id: 'mycoolid' },
     });
 
-    expect(wrapper.find('input[type="radio"]')).toHaveLength(2);
-    expect(wrapper.find('input#stub-radio-group-0-mycoolid')).toHaveLength(1);
+    expect(view.getAllByRole('radio')).toHaveLength(2);
+    expect(view.getAllByRole('radio')[0]).toHaveAttribute(
+      'id',
+      'stub-radio-group-0-mycoolid'
+    );
   });
 
   it('renders a select when the field type is select', () => {
-    const { wrapper } = renderWrapper({
+    const { view } = renderView({
       field: { ...stubSelectField, id: 'mycoolid' },
     });
 
-    expect(wrapper.find('select#mycoolid')).toHaveLength(1);
+    expect(view.getByRole('combobox')).toHaveAttribute('id', 'mycoolid');
   });
 
   it('renders a text input when the field type is text', () => {
-    const { wrapper } = renderWrapper({
+    const { view } = renderView({
       field: { ...stubTextField, id: 'mycoolid' },
     });
 
-    expect(wrapper.find('input[type="text"]#mycoolid')).toHaveLength(1);
+    expect(view.getByRole('textbox')).toHaveAttribute('id', 'mycoolid');
   });
 
   it('renders a file input when the field type is file', () => {
-    const { wrapper } = renderWrapper({
+    const { view } = renderView({
       field: { ...stubFileField, id: 'mycoolid' },
     });
 
-    expect(wrapper.find('input[type="file"]#mycoolid')).toHaveLength(1);
+    expect(view.container.querySelector('input[type=file]')).toHaveAttribute(
+      'id',
+      'mycoolid'
+    );
   });
 
   it('renders a textarea when the field type is textarea', () => {
-    const { wrapper } = renderWrapper({
+    const { view } = renderView({
       field: { ...stubTextareaField, id: 'mycoolid' },
     });
 
-    expect(wrapper.find('textarea#mycoolid')).toHaveLength(1);
+    expect(view.getByRole('textbox')).toHaveAttribute('id', 'mycoolid');
   });
 
   it('invokes onUpdate when the field type is text and it gets changed', () => {
-    const onUpdateSpy = jest.fn();
-    const newVal = 'foo';
+    const onUpdate = jest.fn();
+    const newValue = 'foo';
 
-    const { wrapper } = renderWrapper({
-      field: { ...stubTextField, onUpdate: onUpdateSpy },
+    const { view } = renderView({
+      field: { ...stubTextField, onUpdate },
     });
 
-    wrapper
-      .find('input[type="text"]')
-      .simulate('change', { target: { value: newVal } });
+    userEvent.type(view.getByRole('textbox'), newValue);
 
-    expect(onUpdateSpy).toHaveBeenCalledWith(newVal);
+    expect(onUpdate).toHaveBeenCalledWith(newValue);
   });
 
   it('invokes onUpdate when the field type is textarea and it gets changed', () => {
-    const onUpdateSpy = jest.fn();
-    const newVal = 'foo';
+    const onUpdate = jest.fn();
+    const newValue = 'foo';
 
-    const { wrapper } = renderWrapper({
-      field: { ...stubTextareaField, onUpdate: onUpdateSpy },
+    const { view } = renderView({
+      field: { ...stubTextareaField, onUpdate },
     });
 
-    wrapper.find('textarea').simulate('change', { target: { value: newVal } });
+    userEvent.type(view.getByRole('textbox'), newValue);
 
-    expect(onUpdateSpy).toHaveBeenCalledWith(newVal);
+    expect(onUpdate).toHaveBeenCalledWith(newValue);
   });
 
   it('invokes onUpdate when the field type is select and it gets changed', () => {
-    const onUpdateSpy = jest.fn();
-    const newVal = 'foo';
+    const onUpdate = jest.fn();
+    const newValue = 'bbb';
 
-    const { wrapper } = renderWrapper({
-      field: { ...stubSelectField, onUpdate: onUpdateSpy },
+    const { view } = renderView({
+      field: { ...stubSelectField, onUpdate },
     });
 
-    wrapper.find('select').simulate('change', { target: { value: newVal } });
+    userEvent.selectOptions(view.getByRole('combobox'), newValue);
 
-    expect(onUpdateSpy).toHaveBeenCalledWith(newVal);
+    expect(onUpdate).toHaveBeenCalledWith(newValue);
   });
 
   it('invokes onUpdate when the field type is checkbox and it gets changed', () => {
-    const onUpdateSpy = jest.fn();
-    const newVal = true;
+    const onUpdate = jest.fn();
+    const newValue = true;
 
-    const { wrapper } = renderWrapper({
-      field: { ...stubCheckboxField, onUpdate: onUpdateSpy },
+    const { view } = renderView({
+      field: { ...stubCheckboxField, onUpdate },
     });
 
-    wrapper
-      .find('input[type="checkbox"]')
-      .simulate('change', { target: { checked: newVal } });
+    userEvent.click(view.getByRole('checkbox'));
 
-    expect(onUpdateSpy).toHaveBeenCalledWith(newVal);
+    expect(onUpdate).toHaveBeenCalledWith(newValue);
   });
 
   it('invokes onUpdate when the field type is file and it gets changed', () => {
-    const onUpdateSpy = jest.fn();
-    const newVal = ['I swear this is a file'];
+    const onUpdate = jest.fn();
+    const newValue = new File([], 'filename.txt');
 
-    const { wrapper } = renderWrapper({
-      field: { ...stubFileField, onUpdate: onUpdateSpy },
+    const { view } = renderView({
+      field: { ...stubFileField, onUpdate },
     });
 
-    wrapper
-      .find('input[type="file"]')
-      .simulate('change', { target: { files: newVal } });
+    userEvent.upload(
+      view.container.querySelector('input[type=file]')!,
+      newValue
+    );
 
-    expect(onUpdateSpy).toHaveBeenCalledWith(newVal);
+    expect(onUpdate).toHaveBeenCalledWith(
+      expect.objectContaining({
+        0: expect.objectContaining(newValue),
+      })
+    );
   });
 
   it('sets aria-live to assertive if isFirstError flag is on', () => {
-    const { wrapper } = renderWrapper({
+    const { view } = renderView({
       field: { ...stubRadioGroupField, id: 'mycoolid', size: 6 },
       error: 'It broke',
       isFirstError: true,
     });
-    expect(wrapper.find('ErrorSpan').prop('aria-live')).toEqual('assertive');
+
+    expect(view.container.querySelector('[aria-live]')).toHaveAttribute(
+      'aria-live',
+      'assertive'
+    );
   });
 
   it('sets aria-live to off if isFirstError flag is off', () => {
-    const { wrapper } = renderWrapper({
+    const { view } = renderView({
       field: { ...stubRadioGroupField, id: 'mycoolid', size: 6 },
       error: 'It broke',
       isFirstError: false,
     });
-    expect(wrapper.find('ErrorSpan').prop('aria-live')).toEqual('off');
-  });
 
-  it('does not create a column for sweet container inputs', () => {
-    const { wrapper } = renderWrapper({
-      field: { ...stubSweetContainerField },
-    });
-    expect(wrapper.find('Column').exists()).toBeFalsy();
-  });
-
-  it('does not create a column for hidden inputs', () => {
-    const { wrapper } = renderWrapper({
-      field: { ...stubHiddenField },
-    });
-    expect(wrapper.find('Column').exists()).toBeFalsy();
+    expect(view.container.querySelector('[aria-live]')).toHaveAttribute(
+      'aria-live',
+      'off'
+    );
   });
 });

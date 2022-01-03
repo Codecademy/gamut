@@ -1,4 +1,4 @@
-import { setupEnzyme } from '@codecademy/gamut-tests';
+import { setupRtl } from '@codecademy/gamut-tests';
 
 import { TestimonialDeprecated } from '..';
 
@@ -11,12 +11,12 @@ const exampleTestmonial = {
 };
 
 describe('Testimonial', () => {
-  const renderWrapper = setupEnzyme(TestimonialDeprecated, {
+  const renderView = setupRtl(TestimonialDeprecated, {
     ...exampleTestmonial,
   });
 
   it('renders the Avatar component when an imageUrl prop is present', () => {
-    const { wrapper } = renderWrapper({
+    const { view } = renderView({
       imageUrl: 'someCoolUrl',
       mode: 'dark',
     });
@@ -25,7 +25,7 @@ describe('Testimonial', () => {
   });
 
   it('does _not_ render the Avatar component when an imageUrl prop is _not_ present', () => {
-    const { wrapper } = renderWrapper({
+    const { view } = renderView({
       mode: 'dark',
     });
 

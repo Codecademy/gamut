@@ -1,13 +1,13 @@
-import { setupEnzyme } from '@codecademy/gamut-tests';
+import { setupRtl } from '@codecademy/gamut-tests';
+import userEvent from '@testing-library/user-event';
 
-import { FillButton, IconButton } from '../../Button';
 import { Alert } from '../Alert';
 
 describe('Alert', () => {
   const onClose = jest.fn();
   const onClick = jest.fn();
 
-  const renderView = setupEnzyme(Alert, {
+  const renderView = setupRtl(Alert, {
     onClose,
     children: 'Hello',
     variant: 'notice',
@@ -17,66 +17,58 @@ describe('Alert', () => {
     jest.resetAllMocks();
   });
 
-  it('renders without exploding', () => {
-    const { wrapper } = renderView({});
-
-    expect(wrapper).toBeDefined();
-  });
-
   it('calls the onClose callback when the close button is clicked', () => {
-    const { wrapper } = renderView({});
+    const { view } = renderView();
 
-    const buttons = wrapper.find(IconButton);
+    const buttons = view.getAllByRole('button');
 
     expect(buttons.length).toBe(2);
 
-    buttons.at(1).simulate('click');
+    userEvent.click(buttons[1]);
 
     expect(onClose).toHaveBeenCalled();
   });
 
   it('renders a clickable CTA', () => {
-    const { wrapper } = renderView({ cta: { onClick, children: 'Click Me!' } });
+    const { view } = renderView({ cta: { onClick, children: 'Click Me!' } });
 
-    const cta = wrapper.find(FillButton);
+    const cta = view.getByText('Click Me!');
 
-    expect(cta.text()).toBe('Click Me!');
-
-    cta.simulate('click');
+    userEvent.click(cta);
 
     expect(onClick).toHaveBeenCalled();
   });
 
   it('renders the cta as a link if configured', () => {
-    const { wrapper } = renderView({
+    const { view } = renderView({
       cta: { children: 'Click Me', href: '/hello', onClick },
     });
 
-    const cta = wrapper.find('a').at(0);
-    cta.simulate('click');
+    const cta = view.getByRole('link');
 
-    expect(cta.prop('href')).toEqual('/hello');
+    userEvent.click(cta);
+
+    expect(cta).toHaveAttribute('href', '/hello');
     expect(onClick).toHaveBeenCalled();
   });
 
   it('renders a clickable button to expand the truncated section', () => {
-    const { wrapper } = renderView({});
+    const { view } = renderView();
 
-    const buttons = wrapper.find(IconButton);
+    const buttons = view.getAllByRole('button');
 
-    expect(buttons.length).toBe(2);
-    expect(wrapper.find('Truncate').prop('expanded')).toBe(false);
+    expect(buttons).toHaveLength(2);
 
-    buttons.at(0).simulate('click');
+    view.getByText('H');
+    view.getByText('...');
 
-    wrapper.update();
+    userEvent.click(buttons[0]);
 
-    expect(wrapper.find('Truncate').prop('expanded')).toBe(true);
+    view.getByText('Hello');
 
-    buttons.at(0).simulate('click');
+    userEvent.click(buttons[0]);
 
-    wrapper.update();
-
-    expect(wrapper.find('Truncate').prop('expanded')).toBe(false);
+    view.getByText('H');
+    view.getByText('...');
   });
 });

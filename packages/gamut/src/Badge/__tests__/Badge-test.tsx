@@ -1,13 +1,14 @@
-import { mount } from 'enzyme';
-import React from 'react';
+import { setupRtl } from '@codecademy/gamut-tests';
 
 import { Badge } from '..';
+
+const renderView = setupRtl(Badge);
 
 describe('Badge', () => {
   it('renders badge text', () => {
     const badgeText = 'I am a badge';
-    const wrapped = mount(<Badge>{badgeText}</Badge>);
+    const { view } = renderView({ children: badgeText });
 
-    expect(wrapped.text()).toEqual(badgeText);
+    expect(view.baseElement.textContent).toEqual(badgeText);
   });
 });

@@ -1,16 +1,16 @@
 import { DiagonalADense } from '@codecademy/gamut-patterns';
-import { setupEnzyme } from '@codecademy/gamut-tests';
+import { setupRtl } from '@codecademy/gamut-tests';
 
 import { ProgressBar } from '..';
 
-const renderWrapper = setupEnzyme(ProgressBar, {
+const renderView = setupRtl(ProgressBar, {
   percent: 50,
   variant: 'blue',
 });
 
 describe('ProgressBar', () => {
   it('uses percentage as width when no minimumPercent is provided', () => {
-    const { wrapper } = renderWrapper({ percent: 50 });
+    const { view } = renderView({ percent: 50 });
 
     expect(
       wrapper.find('[data-testid="progress-bar-bar"]').first().prop('style')
@@ -18,7 +18,7 @@ describe('ProgressBar', () => {
   });
 
   it('uses percentage as width when it is greater than minimumPercent', () => {
-    const { wrapper } = renderWrapper({ minimumPercent: 25, percent: 50 });
+    const { view } = renderView({ minimumPercent: 25, percent: 50 });
 
     expect(
       wrapper.find('[data-testid="progress-bar-bar"]').first().prop('style')
@@ -26,7 +26,7 @@ describe('ProgressBar', () => {
   });
 
   it('uses minimumPercentage as width when it is greater than percent', () => {
-    const { wrapper } = renderWrapper({ minimumPercent: 75, percent: 50 });
+    const { view } = renderView({ minimumPercent: 75, percent: 50 });
 
     expect(
       wrapper.find('[data-testid="progress-bar-bar"]').first().prop('style')
@@ -34,14 +34,14 @@ describe('ProgressBar', () => {
   });
 
   it('does not include percentage visually when size is small', () => {
-    const { wrapper } = renderWrapper({ size: 'small' });
+    const { view } = renderView({ size: 'small' });
     // Enzyme doesn't differentiate between visible and invisible
     // test so this tests that only the screen reader text renders
     expect(wrapper.text()).toEqual('Progress: 50%');
   });
 
   it('includes percentage visually when size is large', () => {
-    const { wrapper } = renderWrapper({ size: 'large' });
+    const { view } = renderView({ size: 'large' });
     // Enzyme doesn't differentiate between visible and invisible
     // test so this test accounts for both the visible '50%' and
     // the 'Progress: 50%' that is only visible to screenreaders
@@ -49,13 +49,13 @@ describe('ProgressBar', () => {
   });
 
   it('uses an svg when given a pattern', () => {
-    const { wrapper } = renderWrapper({ pattern: DiagonalADense });
+    const { view } = renderView({ pattern: DiagonalADense });
 
     expect(wrapper.find('svg').length).toBe(1);
   });
 
   it('does not use an svg when not given a pattern', () => {
-    const { wrapper } = renderWrapper();
+    const { view } = renderView();
 
     expect(wrapper.find('svg').length).toBe(0);
   });

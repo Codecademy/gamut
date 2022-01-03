@@ -1,4 +1,4 @@
-import { setupEnzyme } from '@codecademy/gamut-tests';
+import { setupRtl } from '@codecademy/gamut-tests';
 
 import { PageFeatures, PageFeaturesProps } from '..';
 import { CTA } from '../CTA';
@@ -13,7 +13,7 @@ import {
 } from '../Feature';
 import { Title } from '../Title';
 
-const renderWrapper = setupEnzyme(PageFeatures, {
+const renderView = setupRtl(PageFeatures, {
   features: [
     {
       imgSrc: 'https://content.codecademy.com/courses/free/boba.svg',
@@ -26,27 +26,27 @@ const renderWrapper = setupEnzyme(PageFeatures, {
 
 describe('PageFeatures', () => {
   it('renders a title when title prop is provided', () => {
-    const { wrapper } = renderWrapper({ title: 'Test Title' });
+    const { view } = renderView({ title: 'Test Title' });
     expect(wrapper.find(Title).text()).toEqual('Test Title');
   });
 
   it('does not render a title when title prop is not provided', () => {
-    const { wrapper } = renderWrapper();
+    const { view } = renderView();
     expect(wrapper.find(Title)).toHaveLength(0);
   });
 
   it('renders a description when desc prop is provided', () => {
-    const { wrapper } = renderWrapper({ desc: 'Test Description' });
+    const { view } = renderView({ desc: 'Test Description' });
     expect(wrapper.find(Description).prop('text')).toEqual('Test Description');
   });
 
   it('does not render a description when desc prop is not provided', () => {
-    const { wrapper } = renderWrapper();
+    const { view } = renderView();
     expect(wrapper.find(Description)).toHaveLength(0);
   });
 
   it('renders a cta button when cta prop is provided', () => {
-    const { wrapper } = renderWrapper({
+    const { view } = renderView({
       cta: {
         text: 'Click Me',
         href: '#',
@@ -56,12 +56,12 @@ describe('PageFeatures', () => {
   });
 
   it('does not render a cta button when cta prop is not provided', () => {
-    const { wrapper } = renderWrapper();
+    const { view } = renderView();
     expect(wrapper.find(CTA)).toHaveLength(0);
   });
 
   it('renders a PageFeature component for each element in the features array prop', () => {
-    const { wrapper } = renderWrapper({
+    const { view } = renderView({
       features: [
         {
           title: 'Software Engineer',
@@ -91,7 +91,7 @@ describe('PageFeatures', () => {
         : featuresMedia) as PageFeaturesProps['featuresMedia'];
       const f = fields as string[];
       const c = components as number[];
-      const { wrapper } = renderWrapper({
+      const { view } = renderView({
         featuresMedia: m,
         features: [
           {

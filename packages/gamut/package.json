@@ -61,8 +61,7 @@
     "@emotion/jest": "^11.3.0",
     "@testing-library/dom": "^7.31.2",
     "@testing-library/react": "^11.0.4",
-    "@types/enzyme": "3.10.7",
-    "enzyme": "3.11.0",
+    "@testing-library/user-event": "^13.1.9",
     "onchange": "^7.0.2"
   },
   "publishConfig": {

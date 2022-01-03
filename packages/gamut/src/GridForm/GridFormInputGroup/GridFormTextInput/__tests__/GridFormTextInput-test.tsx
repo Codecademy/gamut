@@ -1,22 +1,30 @@
-import { itHandlesAriaInvalid } from '../../__fixtures__/assertions';
-import { renderGridFormTextInput } from '../../__fixtures__/renderers';
+import { setupRtl } from '@codecademy/gamut-tests';
+
+import { stubTextField } from '../../../__tests__/stubs';
+import { GridFormTextInput } from '..';
+
+const renderView = setupRtl(GridFormTextInput, {
+  register: jest.fn(),
+});
 
 describe('GridFormTextInput', () => {
   describe('when an id is passed as a prop', () => {
     it('renders an input with the same id', () => {
-      const textInput = renderGridFormTextInput({ id: 'mycoolid' });
+      const { view } = renderView({
+        field: { ...stubTextField, id: 'mycoolid' },
+      });
 
-      expect(textInput.find('input#mycoolid').length).toBe(1);
+      expect(view.getByRole('textbox')).toHaveAttribute('id', 'mycoolid');
     });
   });
 
   describe('when no id is passed', () => {
     it('renders an input with the id equal to the field name', () => {
-      const textInput = renderGridFormTextInput({ name: 'name' });
+      const { view } = renderView({
+        field: { ...stubTextField, name: 'name' },
+      });
 
-      expect(textInput.find('input#name').length).toBe(1);
+      expect(view.getByRole('textbox')).toHaveAttribute('name', 'name');
     });
   });
-
-  itHandlesAriaInvalid('GridFormTextInput', 'input');
 });

@@ -1,41 +1,37 @@
-import { mount } from 'enzyme';
+import { setupRtl } from '@codecademy/gamut-tests';
 import React from 'react';
 
-import { ButtonDeprecated } from '../../ButtonDeprecated';
+import { FillButton } from '../../Button';
 import { Interstitial } from '..';
+
+const renderView = setupRtl(Interstitial, {
+  title: 'Hello, World!',
+});
 
 describe('Interstitial', () => {
   it('renders a decoration before the title when a decoration is provided', () => {
-    const title = 'Hello, World!';
+    const { props, view } = renderView({
+      decoration: (
+        <span role="img" aria-label="Heart eyes">
+          😍
+        </span>
+      ),
+    });
 
-    const wrapped = mount(
-      <Interstitial
-        decoration={
-          <span role="img" aria-label="Heart eyes">
-            😍
-          </span>
-        }
-        title={title}
-      />
-    );
-
-    expect(wrapped.text()).toEqual(`😍${title}`);
+    expect(view.baseElement.textContent).toBe(`😍${props.title}`);
   });
 
   it('renders buttons after children when buttons are provided', () => {
     const button = 'Click me';
-    const title = 'Hello, World!';
     const children = 'Hi!';
 
-    const wrapped = mount(
-      <Interstitial
-        buttons={[<ButtonDeprecated key="1">{button}</ButtonDeprecated>]}
-        title={title}
-      >
-        {children}
-      </Interstitial>
-    );
+    const { props, view } = renderView({
+      buttons: [<FillButton key="1">{button}</FillButton>],
+      children,
+    });
 
-    expect(wrapped.text()).toEqual(`${title}${children}${button}`);
+    expect(view.baseElement.textContent).toBe(
+      `${props.title}${props.children}${button}`
+    );
   });
 });

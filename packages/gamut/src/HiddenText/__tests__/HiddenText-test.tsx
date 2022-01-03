@@ -1,10 +1,13 @@
-import { mount } from 'enzyme';
-import React from 'react';
+import { setupRtl } from '@codecademy/gamut-tests';
 
 import { HiddenText } from '..';
 
+const renderView = setupRtl(HiddenText);
+
 describe('HiddenText', () => {
   it('renders', () => {
-    mount(<HiddenText>Surprise!</HiddenText>);
+    renderView({
+      children: 'Surprise!',
+    });
   });
 });

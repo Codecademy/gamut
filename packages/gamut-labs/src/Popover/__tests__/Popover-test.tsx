@@ -1,11 +1,10 @@
 import { CheckerDense } from '@codecademy/gamut-patterns';
-import { theme } from '@codecademy/gamut-styles';
-import { ThemeProvider } from '@emotion/react';
-import { fireEvent, render, screen } from '@testing-library/react';
-import { mount } from 'enzyme';
+import { setupRtl } from '@codecademy/gamut-tests';
+import { fireEvent, screen } from '@testing-library/react';
+import { pick } from 'lodash';
 import React from 'react';
 
-import { Popover, PopoverProps } from '..';
+import { Popover } from '..';
 
 const targetRefObj = {
   current: {
@@ -26,34 +25,25 @@ const targetRefObj = {
   },
 };
 
-const renderPopover = (props?: Partial<PopoverProps>) => {
-  return render(
-    <ThemeProvider theme={theme}>
-      <Popover isOpen targetRef={targetRefObj} {...props}>
-        <div data-testid="popover-content">
-          Howdy!
-          <button aria-label="Click me!" type="button" />
-        </div>
-      </Popover>
+const renderView = setupRtl(Popover, {
+  children: (
+    <div data-testid="popover-content">
+      Howdy!
+      <button aria-label="Click me!" type="button" />
+    </div>
+  ),
+  isOpen: true,
+  targetRef: targetRefObj,
+}).options({
+  wrapper: ({ children }) => (
+    <>
+      {children}
       <div>
         <h1 data-testid="outside-popover">hi</h1>
       </div>
-    </ThemeProvider>
-  );
-};
-
-const mountPopover = (props?: Partial<PopoverProps>) => {
-  return mount(
-    <ThemeProvider theme={theme}>
-      <Popover isOpen targetRef={targetRefObj} {...props}>
-        <div data-testid="popover-content">
-          Howdy!
-          <button aria-label="Click me!" type="button" />
-        </div>
-      </Popover>
-    </ThemeProvider>
-  );
-};
+    </>
+  ),
+});
 
 const popoverIsRendered = () => {
   return Boolean(screen.queryByTestId('popover-content'));
@@ -61,19 +51,19 @@ const popoverIsRendered = () => {
 
 describe('Popover', () => {
   it('renders null when isOpen is not true', () => {
-    renderPopover({ isOpen: false });
+    renderView({ isOpen: false });
 
     expect(popoverIsRendered()).toBeFalsy();
   });
 
   it('renders children when isOpen is true', () => {
-    renderPopover({ isOpen: true });
+    renderView({ isOpen: true });
     expect(popoverIsRendered()).toBeTruthy();
   });
 
   it('triggers onRequestClose callback when clicking outside', () => {
     const onRequestClose = jest.fn();
-    renderPopover({
+    renderView({
       isOpen: true,
       onRequestClose,
     });
@@ -83,7 +73,7 @@ describe('Popover', () => {
 
   it('does not trigger onRequestClose callback when clicking inside', () => {
     const onRequestClose = jest.fn();
-    renderPopover({
+    renderView({
       isOpen: true,
       onRequestClose,
     });
@@ -93,11 +83,11 @@ describe('Popover', () => {
 
   it('triggers onRequestClose callback when escape key is triggered', () => {
     const onRequestClose = jest.fn();
-    const { baseElement } = renderPopover({
+    const { view } = renderView({
       isOpen: true,
       onRequestClose,
     });
-    fireEvent.keyDown(baseElement, { key: 'escape', keyCode: 27 });
+    fireEvent.keyDown(view.baseElement, { key: 'escape', keyCode: 27 });
     expect(onRequestClose).toBeCalledTimes(1);
   });
 
@@ -124,7 +114,7 @@ describe('Popover', () => {
       },
     };
     const onRequestClose = jest.fn();
-    renderPopover({
+    renderView({
       targetRef: targetRefObj,
       isOpen: true,
       onRequestClose,
@@ -152,7 +142,7 @@ describe('Popover', () => {
       },
     };
     const onRequestClose = jest.fn();
-    renderPopover({
+    renderView({
       targetRef: targetRefObj,
       isOpen: true,
       onRequestClose,
@@ -161,7 +151,7 @@ describe('Popover', () => {
   });
 
   it('does not show a beak if the prop is not provided', () => {
-    renderPopover({
+    renderView({
       isOpen: true,
     });
 
@@ -169,7 +159,7 @@ describe('Popover', () => {
   });
 
   it('shows a beak if the prop is true', () => {
-    renderPopover({
+    renderView({
       isOpen: true,
       beak: 'right',
     });
@@ -181,20 +171,15 @@ describe('Popover', () => {
     Object.defineProperty(window, 'scrollY', { value: 1 });
     Object.defineProperty(window, 'scrollX', { value: 1 });
 
-    const wrapped = mountPopover({
+    const { view } = renderView({
       isOpen: true,
     });
 
     expect(
-      wrapped
-        .find('[data-testid="popover-content-container"]')
-        .hostNodes()
-        .props()
-    ).toMatchObject({
-      style: {
-        top: 318,
-        left: 58,
-      },
+      pick(view.getByTestId('popover-content-container').style, ['top', 'left'])
+    ).toEqual({
+      top: '318px',
+      left: '58px',
     });
   });
 
@@ -202,22 +187,17 @@ describe('Popover', () => {
     Object.defineProperty(window, 'scrollY', { value: 1 });
     Object.defineProperty(window, 'scrollX', { value: 1 });
 
-    const wrapped = mountPopover({
+    const { view } = renderView({
       isOpen: true,
       position: 'above',
       align: 'right',
     });
 
     expect(
-      wrapped
-        .find('[data-testid="popover-content-container"]')
-        .hostNodes()
-        .props()
-    ).toMatchObject({
-      style: {
-        top: 240,
-        left: 841,
-      },
+      pick(view.getByTestId('popover-content-container').style, ['top', 'left'])
+    ).toEqual({
+      top: '240px',
+      left: '841px',
     });
   });
 
@@ -225,7 +205,7 @@ describe('Popover', () => {
     Object.defineProperty(window, 'scrollY', { value: 1 });
     Object.defineProperty(window, 'scrollX', { value: 1 });
 
-    const wrapped = mountPopover({
+    const { view } = renderView({
       isOpen: true,
       position: 'above',
       align: 'right',
@@ -233,15 +213,10 @@ describe('Popover', () => {
     });
 
     expect(
-      wrapped
-        .find('[data-testid="popover-content-container"]')
-        .hostNodes()
-        .props()
-    ).toMatchObject({
-      style: {
-        top: 231,
-        left: 841,
-      },
+      pick(view.getByTestId('popover-content-container').style, ['top', 'left'])
+    ).toEqual({
+      top: '231px',
+      left: '841px',
     });
   });
 
@@ -249,7 +224,7 @@ describe('Popover', () => {
     Object.defineProperty(window, 'scrollY', { value: 1 });
     Object.defineProperty(window, 'scrollX', { value: 1 });
 
-    const wrapped = mountPopover({
+    const { view } = renderView({
       isOpen: true,
       position: 'above',
       align: 'right',
@@ -257,23 +232,18 @@ describe('Popover', () => {
     });
 
     expect(
-      wrapped
-        .find('[data-testid="popover-content-container"]')
-        .hostNodes()
-        .props()
-    ).toMatchObject({
-      style: {
-        top: 240,
-        left: 871,
-      },
+      pick(view.getByTestId('popover-content-container').style, ['top', 'left'])
+    ).toEqual({
+      top: '240px',
+      left: '871px',
     });
   });
 
-  it('positions round to whole number when ', () => {
+  it('rounds positions to whole number when provided fractionally', () => {
     Object.defineProperty(window, 'scrollY', { value: 1.5 });
     Object.defineProperty(window, 'scrollX', { value: 1.5 });
 
-    const wrapped = mountPopover({
+    const { view } = renderView({
       isOpen: true,
       position: 'above',
       align: 'right',
@@ -281,20 +251,15 @@ describe('Popover', () => {
     });
 
     expect(
-      wrapped
-        .find('[data-testid="popover-content-container"]')
-        .hostNodes()
-        .props()
-    ).toMatchObject({
-      style: {
-        top: 230,
-        left: 842,
-      },
+      pick(view.getByTestId('popover-content-container').style, ['top', 'left'])
+    ).toEqual({
+      top: '230px',
+      left: '842px',
     });
   });
 
   it('does not show a pattern if the prop is not provided', () => {
-    renderPopover({
+    renderView({
       isOpen: true,
     });
 
@@ -302,7 +267,7 @@ describe('Popover', () => {
   });
 
   it('shows a pattern if the prop is provided', () => {
-    renderPopover({
+    renderView({
       isOpen: true,
       pattern: CheckerDense,
     });

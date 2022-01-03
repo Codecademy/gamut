@@ -1,36 +1,28 @@
-import { mount } from 'enzyme';
-import React from 'react';
+import { setupRtl } from '@codecademy/gamut-tests';
 
 import { Truncate } from '..';
 
+const children = `Halo doesn't kill the Flood. It kills their food!`;
+
+const renderView = setupRtl(Truncate, { children });
+
 describe('Truncate', () => {
-  it('configured truncate markup if defined', () => {
-    const renderedTruncate = mount(<Truncate lines={2}>Hello</Truncate>);
+  it('renders truncated markup when not expanded', () => {
+    const { view } = renderView({ lines: 2 });
 
-    expect(renderedTruncate.find('TruncateMarkup')).toBeDefined();
+    view.getByText('H');
+    view.getByText('...');
   });
 
-  it('renders a span by default if expanded', () => {
-    const renderedTruncate = mount(
-      <Truncate expanded lines={2}>
-        Hello
-      </Truncate>
-    );
+  it('renders non-truncated when expanded', () => {
+    const { view } = renderView({ expanded: true, lines: 2 });
 
-    expect(renderedTruncate.find('TruncateMarkup').length).toBe(0);
-    expect(renderedTruncate.find('span').length).toBe(1);
+    view.getByText(children);
   });
 
-  it('takes a callback to be called when text is truncated', () => {
-    const onTruncate = jest.fn();
+  it('calls onTruncate with the truncated value', () => {
+    const { props } = renderView({ lines: 2, onTruncate: jest.fn() });
 
-    mount(
-      <Truncate lines={2} onTruncate={onTruncate}>
-        Hello
-      </Truncate>
-    );
-
-    expect(onTruncate).toHaveBeenCalled();
-    expect(onTruncate).toHaveBeenCalledWith(true);
+    expect(props.onTruncate).toHaveBeenCalledWith(true);
   });
 });

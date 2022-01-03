@@ -1,49 +1,46 @@
-import { mount } from 'enzyme';
-import React from 'react';
+import { setupRtl } from '@codecademy/gamut-tests';
 
 import { AddIcon } from '../dist/index';
 
-describe('Compiled gamut-icons:', () => {
-  it('Hides the icon from screen readers by default', () => {
-    const wrapper = mount(<AddIcon />);
+const renderView = setupRtl(AddIcon);
 
-    const svgEl = wrapper.find('svg');
-    expect(svgEl.props()['aria-hidden']).toEqual('true');
+describe('Compiled gamut-icons', () => {
+  it('hides the icon from screen readers by default', () => {
+    const { view } = renderView();
+
+    expect(view.getByRole('img', { hidden: true })).toHaveAttribute(
+      'aria-hidden',
+      'true'
+    );
   });
 
-  it('Sets a title and id automatically and uses the appropriate aria label', () => {
-    const wrapper = mount(<AddIcon size={1} />);
+  it('sets a title and id and uses the appropriate aria label', () => {
+    const { view } = renderView({
+      size: 1,
+      titleId: 'title-id',
+    });
 
-    const svgEl = wrapper.find('svg');
-    const titleEl = wrapper.find('title');
-    expect(svgEl.props()['aria-labelledby']).toEqual(titleEl.props().id);
-    expect(titleEl.text()).toEqual('Add Icon');
+    expect(view.getByRole('img', { hidden: true })).toHaveAttribute(
+      'aria-labelledby',
+      'title-id'
+    );
+    view.getByTitle('Add Icon');
   });
 
-  it('Allows passing a custom title', () => {
-    const wrapper = mount(<AddIcon title="Accessible" />);
+  it('allows passing a custom title', () => {
+    const { view } = renderView({
+      title: 'Accessible',
+    });
 
-    const titleEl = wrapper.find('title');
-    expect(titleEl.text()).toEqual('Accessible');
+    view.getByTitle('Accessible');
   });
 
-  it('Sets a default fill of currentColor', () => {
-    const wrapper = mount(<AddIcon />);
+  it('sets a default fill of currentColor', () => {
+    const { view } = renderView();
 
-    const svgEl = wrapper.find('svg');
-    expect(svgEl.props().fill).toEqual('currentColor');
-  });
-
-  it('Allows passing a ref', () => {
-    let ref: React.MutableRefObject<SVGSVGElement>;
-    const RefIcon: React.FC<any> = () => {
-      ref = React.useRef<SVGSVGElement>(null);
-
-      return <AddIcon ref={ref} />;
-    };
-
-    mount(<RefIcon color="red" />);
-
-    expect(ref.current).toBeTruthy();
+    expect(view.getByRole('img', { hidden: true })).toHaveAttribute(
+      'fill',
+      'currentColor'
+    );
   });
 });

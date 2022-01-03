@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/no-distracting-elements */
 
-import { setupEnzyme } from '@codecademy/gamut-tests';
+import { setupRtl } from '@codecademy/gamut-tests';
 import React from 'react';
 import { act } from 'react-dom/test-utils';
 
@@ -35,18 +35,18 @@ const youtubeMarkdown = `
 <iframe src="https://www.youtube.com/embed/KvgrQIK1yPY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 `;
 
-const renderWrapper = setupEnzyme(Markdown);
+const renderView = setupRtl(Markdown);
 
 describe('<Markdown />', () => {
   it('renders standard Markdown', () => {
-    const { wrapper } = renderWrapper({ text: basicMarkdown });
+    const { view } = renderView({ text: basicMarkdown });
     expect(wrapper.find('h1').length).toEqual(1);
     expect(wrapper.find('h3').length).toEqual(1);
     expect(wrapper.find('code').length).toEqual(1);
   });
 
   it('Renders html content in markdown', () => {
-    const { wrapper } = renderWrapper({ text: htmlMarkdown });
+    const { view } = renderView({ text: htmlMarkdown });
     expect(wrapper.find('h1').length).toEqual(1);
     expect(wrapper.find('h3').length).toEqual(1);
     expect(wrapper.find('iframe').length).toEqual(1);
@@ -60,7 +60,7 @@ describe('<Markdown />', () => {
 | col 2 is |    centered   |   $12 |
 | col 3 is | right-aligned |    $1 |
     `;
-    const { wrapper } = renderWrapper({ text: table });
+    const { view } = renderView({ text: table });
     expect(wrapper.find('div.tableWrapper table').length).toEqual(1);
   });
 
@@ -72,7 +72,7 @@ describe('<Markdown />', () => {
 | col 2 is |    centered   |   $12 |
 | col 3 is | right-aligned |    $1 |
     `;
-    const { wrapper } = renderWrapper({
+    const { view } = renderView({
       skipDefaultOverrides: { table: true },
       text: table,
     });
@@ -81,33 +81,33 @@ describe('<Markdown />', () => {
   });
 
   it('Wraps youtube iframes in a flexible container', () => {
-    const { wrapper } = renderWrapper({ text: youtubeMarkdown });
+    const { view } = renderView({ text: youtubeMarkdown });
     expect(wrapper.find('[data-testid="yt-iframe"]').length).toEqual(1);
   });
 
   it('Wraps the markdown in a div by default (block)', () => {
-    const { wrapper } = renderWrapper({ text: basicMarkdown });
+    const { view } = renderView({ text: basicMarkdown });
     expect(wrapper.find('div.spacing-tight').length).toEqual(1);
   });
 
   it('Wraps the markdown in a span when inline', () => {
-    const { wrapper } = renderWrapper({ text: basicMarkdown, inline: true });
+    const { view } = renderView({ text: basicMarkdown, inline: true });
     expect(wrapper.find('span.spacing-tight').length).toEqual(1);
   });
 
   it('does not crash on a value-less attribute', () => {
-    const { wrapper } = renderWrapper({ text: `<h1 class />` });
+    const { view } = renderView({ text: `<h1 class />` });
     expect(wrapper.find('h1').length).toEqual(1);
   });
 
   it('Does not render id attributes on headers by default', () => {
-    const { wrapper } = renderWrapper({ text: basicMarkdown });
+    const { view } = renderView({ text: basicMarkdown });
     expect(wrapper.find('h1').get(0).props.id).toBeUndefined();
     expect(wrapper.find('h3').get(0).props.id).toBeUndefined();
   });
 
   it('Renders id attributes on headers with the headerIds prop enabled', () => {
-    const { wrapper } = renderWrapper({ text: basicMarkdown, headerIds: true });
+    const { view } = renderView({ text: basicMarkdown, headerIds: true });
     expect(wrapper.find('h1').get(0).props.id).toEqual('heading-heading-1');
     expect(wrapper.find('h3').get(0).props.id).toEqual('heading-heading-3');
   });
@@ -132,7 +132,7 @@ var test = true;
         },
       };
 
-      const { wrapper } = renderWrapper({ text, overrides });
+      const { view } = renderView({ text, overrides });
       expect(wrapper.find(CodeBlock).length).toEqual(1);
       expect((wrapper.find(CodeBlock).props() as any).language).toEqual('js');
     });
@@ -163,7 +163,7 @@ var test = true;
         },
       };
 
-      const { wrapper } = renderWrapper({ text, overrides });
+      const { view } = renderView({ text, overrides });
 
       expect(wrapper.find(overrides.CodeBlock.component).length).toEqual(1);
       // There should only be one <code /> override because the codeblock override overwrote it
@@ -172,7 +172,7 @@ var test = true;
   });
 
   it('Renders data attributes on the markdown wrapper', () => {
-    const { wrapper } = renderWrapper({
+    const { view } = renderView({
       text: basicMarkdown,
       'data-testid': 'cool',
     } as any);
@@ -181,7 +181,7 @@ var test = true;
   });
 
   it('Prevents errors on malformed image tags', () => {
-    const { wrapper } = renderWrapper({
+    const { view } = renderView({
       text: `<img src="http://google.com/"></img>`,
     });
 
@@ -189,7 +189,7 @@ var test = true;
   });
 
   it('Allows passing in class names', () => {
-    const { wrapper } = renderWrapper({
+    const { view } = renderView({
       text: `<div class="narrative-table-container"> # Cool </div>`,
     });
 
@@ -201,12 +201,12 @@ var test = true;
       const text = '[link](/url)';
       const expectedText = `link`;
       expect(text).not.toEqual(expectedText);
-      const { wrapper } = renderWrapper({ text });
+      const { view } = renderView({ text });
       expect(wrapper.text().trim()).toEqual(expectedText);
     });
 
     it('Adds rel="noopener" to external links', () => {
-      const { wrapper } = renderWrapper({
+      const { view } = renderView({
         text: `<a href="http://google.com">google</a>`,
       });
 
@@ -216,7 +216,7 @@ var test = true;
     it('Allows onClicks callbacks', () => {
       const onClick = jest.fn();
 
-      const { wrapper } = renderWrapper({
+      const { view } = renderView({
         onAnchorClick: onClick,
         text: `<a data-testid="testLink" href="http://google.com">google</a>`,
       });
@@ -244,7 +244,7 @@ var test = true;
           component: TestComponent,
         },
       };
-      const { wrapper } = renderWrapper({ text, overrides });
+      const { view } = renderView({ text, overrides });
       expect(wrapper.find('strong').length).toEqual(1);
     });
 
@@ -265,7 +265,7 @@ var test = true;
             allowedAttributes: ['name', 'isCodeBlock', 'isWebBrowser'],
           },
         };
-        const { wrapper } = renderWrapper({ text, overrides });
+        const { view } = renderView({ text, overrides });
         markdown = wrapper;
       });
 
@@ -301,7 +301,7 @@ var test = true;
       const text = `This is some text with a &mdash; in the middle`;
       const expectedText = `This is some text with a \u2014 in the middle`;
       expect(text).not.toEqual(expectedText);
-      const { wrapper } = renderWrapper({ inline: true, text });
+      const { view } = renderView({ inline: true, text });
       expect(wrapper.text().trim()).toEqual(expectedText);
     });
 
@@ -310,7 +310,7 @@ var test = true;
         'This is `some code with a &mdash; in` the middle and this is a &mdash;';
       const expectedText = `This is some code with a &mdash; in the middle and this is a \u2014`;
       expect(text).not.toEqual(expectedText);
-      const { wrapper } = renderWrapper({ inline: true, text });
+      const { view } = renderView({ inline: true, text });
       expect(wrapper.text().trim()).toEqual(expectedText);
     });
   });

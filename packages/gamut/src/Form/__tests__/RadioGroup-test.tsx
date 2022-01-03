@@ -1,10 +1,10 @@
-import { setupEnzyme } from '@codecademy/gamut-tests';
+import { setupRtl } from '@codecademy/gamut-tests';
 import React from 'react';
 
 import { Radio } from '../Radio';
 import { RadioGroup } from '../RadioGroup';
 
-const renderWrapper = setupEnzyme(RadioGroup, {
+const renderView = setupRtl(RadioGroup, {
   htmlForPrefix: 'what-salad-maker-do-you-prefer',
   name: 'what-salad-maker-do-you-prefer',
   'data-testid': 'my-test-id',
@@ -17,7 +17,7 @@ const renderWrapper = setupEnzyme(RadioGroup, {
 describe('<RadioGroup>', () => {
   const createComponent = () => {
     const onChange = jest.fn();
-    const { wrapper } = renderWrapper({ onChange });
+    const { view } = renderView({ onChange });
 
     const firstInput = wrapper.find('input[type="radio"]').first();
 
@@ -43,7 +43,7 @@ describe('<RadioGroup>', () => {
   });
 
   it('sets any additional props on the outer div', () => {
-    const { wrapper } = createComponent();
+    const { view } = createComponent();
     const getByTestId = wrapper.find('div[data-testid="my-test-id"]');
 
     expect(getByTestId.exists()).toBe(true);

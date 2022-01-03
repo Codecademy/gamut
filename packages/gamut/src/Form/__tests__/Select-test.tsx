@@ -1,4 +1,4 @@
-import { setupEnzyme } from '@codecademy/gamut-tests';
+import { setupRtl } from '@codecademy/gamut-tests';
 
 import { Select } from '../Select';
 
@@ -14,59 +14,55 @@ const selectOptionsObject = {
   yellowKey: 'yellow',
 };
 
-const renderWrapper = setupEnzyme(Select, {
+const renderView = setupRtl(Select, {
   options: selectOptions,
   id: 'colors',
 });
 
 describe('Select', () => {
   it('sets the id prop on the select tag', () => {
-    const { wrapper } = renderWrapper();
-    expect(wrapper.find('SelectBase').props().id).toBe(defaultProps.id);
+    const { view } = renderView();
+
+    expect(view.getByRole('combobox')).toHaveAttribute('id', defaultProps.id);
   });
 
   it('renders the same number of options as options', () => {
-    const { wrapper } = renderWrapper();
+    const { view } = renderView();
 
-    expect(wrapper.find('SelectBase').props().children).toHaveLength(
+    expect(view.getByRole('combobox').children).toHaveLength(
       defaultProps.options.length
     );
   });
 
   it('sets the key of option tags using the form of `${id}-${value}` when the prop id is passed', () => {
-    const { wrapper } = renderWrapper();
+    const { view } = renderView();
 
     const keyWithId = `${defaultProps.id}-${selectOptions[0]}`;
 
-    const getByTestId = wrapper.find(`option[data-testid="${keyWithId}"]`);
-
-    expect(getByTestId.exists()).toBe(true);
+    view.getByTestId(keyWithId);
   });
 
   it('renders options when options is an object', () => {
-    const { wrapper } = renderWrapper({ options: selectOptionsObject });
+    const { view } = renderView({ options: selectOptionsObject });
 
-    expect(wrapper.find('SelectBase').props().children).toHaveLength(
+    expect(view.getByRole('combobox').children).toHaveLength(
       Object.keys(selectOptionsObject).length
     );
   });
 
   it('renders options as an object with the correct label + value', () => {
-    const { wrapper } = renderWrapper({ options: selectOptionsObject });
+    const { view } = renderView({ options: selectOptionsObject });
 
-    const getByValue = wrapper.find(`[value="yellowKey"]`);
-    const getFirstOption = wrapper.find('option').first();
-
-    expect(getByValue.exists()).toBe(true);
-    expect(getFirstOption.text()).toBe('red');
+    const option = view.getAllByRole('option')[0];
+    expect(option).toHaveAttribute('label', 'red');
+    expect(option).toHaveValue('redKey');
   });
 
   it('sets the key of option tags using the form of `${id}-${value}` when the prop id is passed and options is an object', () => {
-    const { wrapper } = renderWrapper({ options: selectOptionsObject });
+    const { view } = renderView({ options: selectOptionsObject });
 
     const keyWithId = `${defaultProps.id}-redKey`;
 
-    const getByTestId = wrapper.find(`[data-testid="${keyWithId}"]`);
-    expect(getByTestId.exists()).toBe(true);
+    view.getByTestId(keyWithId);
   });
 });

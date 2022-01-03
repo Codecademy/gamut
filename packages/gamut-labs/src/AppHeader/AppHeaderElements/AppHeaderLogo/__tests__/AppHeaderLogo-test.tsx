@@ -1,55 +1,57 @@
-import { theme } from '@codecademy/gamut-styles';
-import { ThemeProvider } from '@emotion/react';
-import { mount } from 'enzyme';
-import React from 'react';
+import { setupRtl } from '@codecademy/gamut-tests';
+import userEvent from '@testing-library/user-event';
 
 import { AppHeaderLogoItem } from '../../types';
-import { AppHeaderLogo, AppHeaderLogoProps } from '..';
+import { AppHeaderLogo } from '..';
 
 const testUrl = 'https://codecademy.com';
 const action = jest.fn();
 
-const renderAppHeaderLogo = (overrideProps?: Partial<AppHeaderLogoItem>) => {
-  const props: AppHeaderLogoProps = {
-    action,
-    item: {
-      id: '1dfa',
-      href: testUrl,
-      type: 'logo',
-      pro: false,
-      trackingTarget: 'tracking target',
-      ...overrideProps,
-    },
-  };
-  return mount(
-    <ThemeProvider theme={theme}>
-      <AppHeaderLogo {...props} />
-    </ThemeProvider>
-  );
-};
+const createItem = (
+  overrides?: Partial<AppHeaderLogoItem>
+): AppHeaderLogoItem => ({
+  id: '1dfa',
+  href: testUrl,
+  type: 'logo',
+  pro: false,
+  trackingTarget: 'tracking target',
+  ...overrides,
+});
+
+const renderView = setupRtl(AppHeaderLogo, {
+  action,
+});
 
 describe('AppHeaderLogo', () => {
   it('renders a logo', () => {
-    const wrapper = renderAppHeaderLogo();
-    const icon = wrapper.find('svg');
-    expect(icon.find('title').text()).toContain('Codecademy Logo');
+    const { view } = renderView({
+      item: createItem({ pro: false }),
+    });
+    view.getByTitle('Codecademy Logo');
   });
 
   it('shows the pro logo when user has pro subscription', () => {
-    const wrapper = renderAppHeaderLogo({ pro: true });
-    const icon = wrapper.find('svg');
-    expect(icon.find('title').text()).toEqual('Codecademy Pro Logo');
+    const { view } = renderView({
+      item: createItem({ pro: true }),
+    });
+    view.getByTitle('Codecademy Pro Logo');
   });
 
   it('links to the provided href', () => {
-    const wrapper = renderAppHeaderLogo();
-    const href = wrapper.find('a').prop('href');
-    expect(href).toEqual(testUrl);
+    const { view } = renderView({
+      item: createItem({ pro: false }),
+    });
+
+    expect(view.getByRole('link')).toHaveAttribute('href', testUrl);
   });
 
   it('calls action() when clicked', () => {
-    const wrapper = renderAppHeaderLogo();
-    wrapper.find('a').simulate('click');
+    const { view } = renderView({
+      item: createItem({ pro: false }),
+    });
+
+    userEvent.click(view.getByRole('link'));
+
     expect(action).toHaveBeenCalled();
   });
 });

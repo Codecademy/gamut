@@ -1,22 +1,30 @@
-import { itHandlesAriaInvalid } from '../../__fixtures__/assertions';
-import { renderGridFormTextArea } from '../../__fixtures__/renderers';
+import { setupRtl } from '@codecademy/gamut-tests';
+
+import { stubTextareaField } from '../../../__tests__/stubs';
+import { GridFormTextArea } from '..';
+
+const renderView = setupRtl(GridFormTextArea, {
+  register: jest.fn(),
+});
 
 describe('GridFormTextArea', () => {
   describe('when an id is passed as a prop', () => {
     it('renders an textarea with the same id', () => {
-      const textarea = renderGridFormTextArea({ id: 'mycoolid' });
+      const { view } = renderView({
+        field: { ...stubTextareaField, id: 'mycoolid' },
+      });
 
-      expect(textarea.find('textarea#mycoolid').length).toBe(1);
+      expect(view.getByRole('textbox')).toHaveAttribute('id', 'mycoolid');
     });
   });
 
   describe('when no id is passed', () => {
     it('renders a textarea with the id equal to the field name', () => {
-      const textarea = renderGridFormTextArea({ name: 'name' });
+      const { view } = renderView({
+        field: { ...stubTextareaField, name: 'name' },
+      });
 
-      expect(textarea.find('textarea#name').length).toBe(1);
+      expect(view.getByRole('textbox')).toHaveAttribute('name', 'name');
     });
   });
-
-  itHandlesAriaInvalid('GridFormTextArea', 'textarea');
 });

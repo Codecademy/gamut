@@ -1,14 +1,23 @@
-import { Background } from '@codecademy/gamut-styles';
-import { setupEnzyme } from '@codecademy/gamut-tests';
+import { BackgroundProps } from '@codecademy/gamut-styles';
+import { setupRtl } from '@codecademy/gamut-tests';
+import userEvent from '@testing-library/user-event';
+import React from 'react';
 
-import { IconButton, TextButton } from '../../Button';
+import { Box as MockBox } from '../../Box';
 import { Banner, BannerVariant } from '..';
+
+jest.mock('@codecademy/gamut-styles', () => ({
+  ...jest.requireActual<{}>('@codecademy/gamut-styles'),
+  Background: (props: BackgroundProps) => (
+    <MockBox {...props} data-bg={props.bg} data-testid="mock-background" />
+  ),
+}));
 
 const onClose = jest.fn();
 const onCtaClick = jest.fn();
 
 describe('Banner', () => {
-  const renderWrapper = setupEnzyme(Banner, {
+  const renderView = setupRtl(Banner, {
     onClose,
     children: 'Hello world',
   });
@@ -18,30 +27,28 @@ describe('Banner', () => {
   });
 
   it('renders children markdown children', () => {
-    const { wrapper } = renderWrapper({});
+    const { view } = renderView({});
 
-    expect(wrapper.find('p').text()).toEqual('Hello world');
+    view.getByText('Hello world');
   });
 
   it('renders a button when a cta is provided in markdown', () => {
-    const { wrapper } = renderWrapper({
+    const { view } = renderView({
       onCtaClick,
       children: '[Hello](/)',
     });
 
-    const CTA = wrapper.find(TextButton);
-    expect(CTA).toHaveLength(1);
+    const button = view.getByText('Hello');
 
-    expect(CTA.at(0).text()).toEqual('Hello');
-    CTA.at(0).simulate('click');
+    userEvent.click(button);
 
     expect(onCtaClick).toHaveBeenCalled();
   });
 
   it('calls the onClose callback when the close icon is clicked', () => {
-    const { wrapper } = renderWrapper({});
+    const { view } = renderView({});
 
-    wrapper.find(IconButton).simulate('click');
+    userEvent.click(view.getByRole('button'));
 
     expect(onClose).toHaveBeenCalled();
   });
@@ -51,17 +58,21 @@ describe('Banner', () => {
     ['null', null],
     ['not a banner variant', ('test' as unknown) as BannerVariant],
     ['navy', 'navy' as const],
-  ])('renders navy background when variant is %s', (_, bannerVariant) => {
-    const { wrapper } = renderWrapper({ variant: bannerVariant });
+  ])('renders navy background when variant is %s', (_, variant) => {
+    const { view } = renderView({ variant });
 
-    expect(wrapper.find(Background).props().bg).toEqual('navy');
+    expect(view.getByTestId('mock-background')).toHaveAttribute(
+      'data-bg',
+      'navy'
+    );
   });
 
   it('renders yellow background when variant is yellow', () => {
-    const { wrapper } = renderWrapper({
-      variant: 'yellow',
-    });
+    const { view } = renderView({ variant: 'yellow' });
 
-    expect(wrapper.find(Background).props().bg).toEqual('yellow');
+    expect(view.getByTestId('mock-background')).toHaveAttribute(
+      'data-bg',
+      'yellow'
+    );
   });
 });

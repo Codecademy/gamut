@@ -1,6 +1,6 @@
 import createCache from '@emotion/cache';
 import { Global, ThemeContext } from '@emotion/react';
-import { setupEnzyme } from 'component-test-setup';
+import { setupRtl } from 'component-test-setup';
 import React from 'react';
 
 import { createEmotionCache } from '../cache';
@@ -12,7 +12,7 @@ jest.mock('../cache', () => {
   return { createEmotionCache: cacheMock };
 });
 
-const renderWrapper = setupEnzyme(GamutProvider, { theme });
+const renderView = setupRtl(GamutProvider, { theme });
 
 describe(GamutProvider, () => {
   beforeEach(() => {
@@ -20,7 +20,7 @@ describe(GamutProvider, () => {
   });
 
   it('renders with a cache by default', () => {
-    const { wrapper } = renderWrapper();
+    const { view } = renderView();
 
     expect(wrapper).toBeDefined();
     expect(createEmotionCache).toHaveBeenCalled();
@@ -32,17 +32,17 @@ describe(GamutProvider, () => {
     expect(createEmotionCache).not.toHaveBeenCalled();
   });
   it('renders global styles', () => {
-    const { wrapper } = renderWrapper();
+    const { view } = renderView();
 
     expect(wrapper.find(Global).length).toBe(4);
   });
   it('does not render global styles when configured', () => {
-    const { wrapper } = renderWrapper({ useGlobals: false });
+    const { view } = renderView({ useGlobals: false });
 
     expect(wrapper.find(Global).length).toBe(0);
   });
   it('wraps all elements in a ThemeProvider', () => {
-    const { wrapper } = renderWrapper({
+    const { view } = renderView({
       children: (
         <ThemeContext.Consumer>
           {(value) => <div>{JSON.stringify(value)}</div>}
@@ -53,7 +53,7 @@ describe(GamutProvider, () => {
     expect(wrapper.find('div').text()).toBe(JSON.stringify(theme));
   });
   it('it can have another GamutProvider as a child with creating multiple caches or globals', () => {
-    const { wrapper } = renderWrapper({
+    const { view } = renderView({
       children: <GamutProvider theme={theme} />,
     });
 
@@ -66,7 +66,7 @@ describe(GamutProvider, () => {
     expect(createEmotionCache).toHaveBeenCalledTimes(0);
   });
   it('can render custom variables', () => {
-    const { wrapper } = renderWrapper({
+    const { view } = renderView({
       variables: { cool: { '--cool': 'blue' } },
     });
 

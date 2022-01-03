@@ -1,4 +1,4 @@
-import { setupEnzyme } from '@codecademy/gamut-tests';
+import { setupRtl } from '@codecademy/gamut-tests';
 import hookform, { FormState } from 'react-hook-form';
 
 import { CTAButton, FillButton } from '../../Button';
@@ -25,17 +25,17 @@ mockedHook.mockImplementation(() => ({
   formState: { isSubmitting: false, isValidating: false, isValid: false },
 }));
 
-const renderWrapper = setupEnzyme(SubmitButton, {});
+const renderView = setupRtl(SubmitButton, {});
 
 describe('SubmitButton', () => {
   it('renders as a FillButton by default', () => {
-    const { wrapper } = renderWrapper();
+    const { view } = renderView();
 
     expect(wrapper.find(FillButton).length).toBe(1);
   });
 
   it('renders as a CTAButton when configured', () => {
-    const { wrapper } = renderWrapper({ as: CTAButton });
+    const { view } = renderView({ as: CTAButton });
 
     expect(wrapper.find(CTAButton).length).toBe(1);
   });
@@ -46,7 +46,7 @@ describe('SubmitButton', () => {
     [{ isSubmitting: true }, true],
   ])('disabled states (%o)', (formState: FormState<{}>, expected: boolean) => {
     mockFormState(formState);
-    const { wrapper } = renderWrapper({
+    const { view } = renderView({
       disabled: ({ isValidating, isSubmitting, isValid }) =>
         isValidating || isSubmitting || !isValid,
     });
@@ -58,7 +58,7 @@ describe('SubmitButton', () => {
     [{ isSubmitting: true }, 1],
   ])('loading states (%o)', (formState: FormState<{}>, expected: number) => {
     mockFormState(formState);
-    const { wrapper } = renderWrapper({
+    const { view } = renderView({
       loading: ({ isValidating, isSubmitting }) => isValidating || isSubmitting,
     });
     expect(wrapper.find(Spinner).length).toBe(expected);

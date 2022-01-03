@@ -1,12 +1,11 @@
-import { mount } from 'enzyme';
-import React from 'react';
+import { setupRtl } from '@codecademy/gamut-tests';
 
 import { LogoProCutout } from '..';
 
-describe('LogoProCutout', () => {
-  it('renders the PRO logo', () => {
-    const wrapper = mount(<LogoProCutout />);
+const renderView = setupRtl(LogoProCutout);
 
-    expect(wrapper.exists()).toBe(true);
+describe('LogoProCutout', () => {
+  it('renders', () => {
+    renderView();
   });
 });

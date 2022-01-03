@@ -30,6 +30,9 @@ function withMockGamutProvider<Props>(
 
 // overArgs isn't fully typed yet for lack of curried generics, so we have to cast it...
 
+/**
+ * @deprecated We're switching to RTL. Enzyme has been on the brink of death for years. Switch! 🔪
+ */
 export const setupEnzyme = overArgs(
   setupEnzymeBase,
   withMockGamutProvider
@@ -39,3 +42,5 @@ export const setupRtl = overArgs(
   setupRtlBase,
   withMockGamutProvider
 ) as typeof setupRtlBase;
+
+export { RenderEnzyme, RenderRtl } from 'component-test-setup';
