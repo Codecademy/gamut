@@ -46,6 +46,7 @@ export const NavigationProvider: React.FC = ({ children }) => {
         };
       default:
         const toc = get(hierarchy, hierarchyOrder, hierarchy);
+        console.log('toc', toc);
         return {
           ...toc,
           children: getChildLinks(toc.children),
