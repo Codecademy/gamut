@@ -4,7 +4,8 @@ import {
 } from '@codecademy/gamut-icons';
 import React, { useMemo, useState } from 'react';
 
-import { Box, FlexBox } from '../Box';
+import { HiddenText } from '..';
+import { FlexBox } from '../Box';
 import { EllipsisButton } from './EllipsisButton';
 import { PaginationButton } from './PaginationButton';
 import {
@@ -108,9 +109,7 @@ export const Pagination: React.FC<PaginationProps> = ({
           : `Paginated Navigation, total pages ${totalPages}`
       }
     >
-      <Box aria-live="polite" display="none">
-        {liveText}
-      </Box>
+      <HiddenText aria-live="polite">{liveText}</HiddenText>
       {currentPage !== 1 && (
         <PaginationButton
           variant={variant}
