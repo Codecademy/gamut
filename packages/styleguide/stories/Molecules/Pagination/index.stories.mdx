@@ -7,7 +7,7 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
   title={title}
   component={Pagination}
   parameters={{
-    subtitle: 'Pagination is a way to iterate through pages or content.',
+    subtitle: 'Pagination is a way to browse through paginated content.',
     source: 'gamut',
     status: '',
     design: {
@@ -38,9 +38,7 @@ Smart Stephen words
 
 <PropsTable story="Pagination" />
 
-## Variant
-
-Most times we're basic, but somtimes we've got an ellipsis.
+## Variants
 
 <Canvas>
   <Story
@@ -68,7 +66,7 @@ Most times we're basic, but somtimes we've got an ellipsis.
 
 ## Basic vs. Ellipsis
 
-If you have many pages of content,
+We have two types of pagination - `basic` and `ellipsis`. The `basic` type has number as well as forward and back buttons. The `ellipsis` type has an ellipsis button bfeature which allows users to quickly jump through page numbers by `chapterSize`.
 
 <Canvas>
   <Story
@@ -96,9 +94,7 @@ If you have many pages of content,
 
 ## Pagination Navigation
 
-When using pagination as navigation, use the navigation prop.
-
-Your `onChange` function should include programmatic navigation. How exactly you should do this will depend on the application you are using the component in.
+When using pagination as navigation between linked pages, use the `navigation` prop. Your `onChange` function should include programmatic navigation.
 
 <Canvas>
   <Story

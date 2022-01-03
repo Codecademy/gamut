@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { createButtonComponent } from './shared';
 import { sizeVariants, strokeButtonVariants } from './variants';
 

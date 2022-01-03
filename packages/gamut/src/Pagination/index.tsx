@@ -19,10 +19,6 @@ interface PaginationProps {
    */
   chapterSize?: number;
   /**
-   * Current page number. Only supply for controlled pagination
-   */
-  current?: number;
-  /**
    * Default initial page number, if none will default to one
    */
   defaultCurrent?: number;
@@ -56,7 +52,6 @@ export const Pagination: React.FC<PaginationProps> = ({
   totalPages,
   type = 'basic',
   variant = 'stroke',
-  ...rest
 }) => {
   const [currentPage, setCurrentPage] = useState(defaultCurrent);
   const [liveText, setLiveText] = useState('');
