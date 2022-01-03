@@ -1,17 +1,24 @@
 import title from '@codecademy/macros/lib/title.macro';
 import { Meta } from '@storybook/addon-docs/blocks';
 
+import { LinkTo } from '~styleguide/blocks';
+
 <Meta
   title={title}
   parameters={{
     subtitle:
       'Above all else, error messages should explain and resolve. Inform learners of what went wrong and let them know how to proceed. Read on for more guidance.',
+    design: {
+      type: 'figma',
+      url:
+        'https://www.figma.com/file/P3dOOeVfZGjIfjupKdrZ7j/UX-Writing-Best-Practices?node-id=306%3A2426',
+    },
   }}
 />
 
 Error messages help learners get where they're going. If a learner hits a snag when trying to do something — whether it's because of something they did or a problem on our end — an error message informs them of **what went wrong** and **how to proceed.**
 
-Here at Codecademy, we primarily use two components for error messages. [Red text below a form](https://gamut.codecademy.com/storybook/?path=/docs/atoms-forminputs-input--error) to indicate that something in the form has been filled out incorrectly or an [error alert banner](https://gamut.codecademy.com/storybook/?path=/docs/molecules-alert--error). For some errors, we may also send learners to a generic [error page](https://gamut.codecademy.com/storybook/?path=/docs/molecules-errorcontents--error-contents).
+Here at Codecademy, we primarily use two components for error messages. <LinkTo id="atoms-forminputs-input--error">Red text below a form</LinkTo> to indicate that something in the form has been filled out incorrectly or an <LinkTo id="molecules-alert--error">error alert banner</LinkTo>. For some errors, we may also send learners to a generic <LinkTo id="molecules-errorcontents--error-contents">error page</LinkTo>.
 
 ## Best practices
 
