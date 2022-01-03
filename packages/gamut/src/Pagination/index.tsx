@@ -125,6 +125,7 @@ export const Pagination: React.FC<PaginationProps> = ({
           onClick={() => changeHandler(backPageNumber)}
           aria-label={`Jump to page ${backPageNumber}`}
           href={navigation}
+          variant={variant}
         />
       )}
       {shownPageArray.map((page) => (
@@ -148,6 +149,7 @@ export const Pagination: React.FC<PaginationProps> = ({
           }}
           aria-label={`Jump to page ${forwardPageNumber}`}
           href={navigation}
+          variant={variant}
         />
       )}
       {currentPage !== totalPages && (
