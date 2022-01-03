@@ -4,10 +4,10 @@ import rule from './no-css-standalone';
 
 const ruleTester = new ESLintUtils.RuleTester({
   parser: '@typescript-eslint/parser',
-  parserOptions: {
-    project: '../tsconfig.json',
-    tsconfigRootDir: __dirname,
-  },
+  // parserOptions: {
+  //   project: '../tsconfig.json',
+  //   tsconfigRootDir: __dirname,
+  // },
 });
 
 ruleTester.run('no-css-standalone', rule, {
