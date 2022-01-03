@@ -39,6 +39,7 @@ export const parameters = {
             [
               'About',
               'Alerts',
+              'Bell notification',
               'Buttons and links',
               'Confirmation dialogs',
               'Error messages',
