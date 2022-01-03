@@ -28,12 +28,6 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 
 - Use this component to navigate between content that is split across multiple pages.
 
-<Canvas>
-  <Story name="Pagination">{(args) => <Pagination {...args} />}</Story>
-</Canvas>
-
-<PropsTable story="Pagination" />
-
 ## Types
 
 We have two types of pagination - `basic` and `ellipsis`. The `basic` type has number as well as forward and back buttons. The `ellipsis` type has an ellipsis button bfeature which allows users to quickly jump through page numbers by `chapterSize`.
@@ -113,3 +107,11 @@ When using pagination as navigation between linked pages, use the `navigation` p
     {Pagination.bind({})}
   </Story>
 </Canvas>
+
+## Playground
+
+<Canvas>
+  <Story name="Pagination">{(args) => <Pagination {...args} />}</Story>
+</Canvas>
+
+<PropsTable story="Pagination" />
