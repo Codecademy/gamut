@@ -43,10 +43,12 @@ const truncateLinesProps = variance.create({
     property: 'all',
     transform: (truncateLines: number) =>
       truncateLines === 1
-        ? { overflow: 'hidden', whiteSpace: 'nowrap' }
+        ? {
+            overflow: 'hidden',
+            whiteSpace: 'nowrap',
+          }
         : {
             overflow: 'hidden',
-            whiteSpace: 'initial',
             display: '-webkit-box',
             WebkitBoxOrient: 'vertical',
             WebkitLineClamp: truncateLines,
@@ -98,9 +100,10 @@ export interface BaseTextProps
     StyleProps<typeof truncateVariants>,
     StyleProps<typeof displayVariants> {}
 
+// if you're going to truncate, you need to provide both of these props or neither
 export interface TextTruncateProps extends BaseTextProps {
-  truncateLines: BaseTextProps['truncateLines'];
-  truncate: 'ellipsis' | 'fade';
+  truncateLines: Exclude<BaseTextProps['truncateLines'], undefined>;
+  truncate: Exclude<BaseTextProps['truncate'], false | undefined>;
 }
 export interface TextNoTruncateProps extends BaseTextProps {
   truncateLines?: never;
