@@ -91,12 +91,23 @@ const textProps = variance.compose(
   truncateLinesProps
 );
 
-export interface TextProps
+export interface BaseTextProps
   extends StyleProps<typeof textProps>,
     StyleProps<typeof textStates>,
     StyleProps<typeof elementVariants>,
     StyleProps<typeof truncateVariants>,
     StyleProps<typeof displayVariants> {}
+
+export interface TextTruncateProps extends BaseTextProps {
+  truncateLines: BaseTextProps['truncateLines'];
+  truncate: 'ellipsis' | 'fade';
+}
+export interface TextNoTruncateProps extends BaseTextProps {
+  truncateLines?: never;
+  truncate?: never;
+}
+
+export type TextProps = TextTruncateProps | TextNoTruncateProps;
 
 export const Text = styled('span', styledOptions<'span'>())<TextProps>(
   elementVariants,

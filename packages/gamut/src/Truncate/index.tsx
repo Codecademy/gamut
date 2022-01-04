@@ -16,14 +16,14 @@ type TruncateProps = {
 
 /**
  * @deprecated
- * This component is deprecated, prefer the `Text` component with `truncateLines` prop.
+ * This component is deprecated, prefer the `Text` component with `truncate` and `truncateLines` props.
  *
  * See [Text](https://gamut.codecademy.com/?path=/docs/typography-text--truncation)
  *
  * @example
  * import { Text } fom '@codecademy/gamut';
  *
- * <Text truncateLines={2} />
+ * <Text truncate="ellipsis" truncateLines={2} />
  */
 
 export const Truncate: React.FC<TruncateProps> = ({

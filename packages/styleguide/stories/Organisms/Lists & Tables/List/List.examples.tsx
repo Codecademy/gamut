@@ -95,17 +95,27 @@ export const CondensedTemplate: React.FC<typeof List> = (args, { mode }) => (
       {rows.map(({ name, role, ship }, i, _, key = `example-row-${i}`) => (
         <ListRow key={key}>
           <ListCol size="lg" type="header">
-            <Text fontWeight={700} truncateLines={1}>
+            <Text fontWeight={700} truncate="ellipsis" truncateLines={1}>
               {name}
             </Text>
           </ListCol>
           <ListCol size="lg">
-            <Text variant="p-small" color="text-disabled" truncateLines={1}>
+            <Text
+              variant="p-small"
+              color="text-disabled"
+              truncate="ellipsis"
+              truncateLines={1}
+            >
               {role}
             </Text>
           </ListCol>
           <ListCol size="lg" fill>
-            <Text variant="p-small" color="text-disabled" truncateLines={1}>
+            <Text
+              variant="p-small"
+              color="text-disabled"
+              truncate="ellipsis"
+              truncateLines={1}
+            >
               {ship}
             </Text>
           </ListCol>
@@ -313,17 +323,27 @@ export const ResponsiveTemplate: React.FC<typeof List> = (args) => {
     <List {...args}>
       <ListRow>
         <ListCol size="lg" type="header">
-          <Text fontWeight={700} truncateLines={1}>
+          <Text fontWeight={700} truncate="ellipsis" truncateLines={1}>
             Header
           </Text>
         </ListCol>
         <ListCol size="lg">
-          <Text variant="p-small" color="text-disabled" truncateLines={1}>
+          <Text
+            variant="p-small"
+            color="text-disabled"
+            truncate="ellipsis"
+            truncateLines={1}
+          >
             Content
           </Text>
         </ListCol>
         <ListCol size="lg" fill>
-          <Text variant="p-small" color="text-disabled" truncateLines={1}>
+          <Text
+            variant="p-small"
+            color="text-disabled"
+            truncate="ellipsis"
+            truncateLines={1}
+          >
             Content
           </Text>
         </ListCol>
