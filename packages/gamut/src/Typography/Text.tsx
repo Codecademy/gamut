@@ -13,25 +13,46 @@ const elementVariants = variant({
   variants: typographyElementVariants,
 });
 
-const truncateBaseStyles = {
-  overflow: 'hidden',
-  textOverflow: 'ellipsis',
-};
+const truncateVariants = variant({
+  prop: 'truncate',
+  variants: {
+    ellipsis: {
+      textOverflow: 'ellipsis',
+    },
+    fade: {
+      position: 'relative',
+      textOverflow: 'clip',
+      '&:after': {
+        content: '""',
+        position: 'absolute',
+        textColor: 'background-current',
+        inset: 0,
+        left: 0.65,
+        background:
+          'linear-gradient(to right, rgba(0, 0, 0, 0), currentColor 75%)',
+      },
+    },
+  },
+});
 
-const truncateProps = variance.create({
+const truncateLinesScale = { 1: 1, 2: 2, 3: 3, 4: 4, 5: 5 };
+
+const truncateLinesProps = variance.create({
   truncateLines: {
-    scale: { 0: 0, 1: 1, 2: 2, 3: 3, 4: 4, 5: 5 },
+    scale: truncateLinesScale,
     property: 'all',
     transform: (truncateLines: number) =>
-      truncateLines === 0
-        ? {}
-        : truncateLines === 1
-        ? { ...truncateBaseStyles, whiteSpace: 'nowrap' }
+      truncateLines === 1
+        ? { overflow: 'hidden', whiteSpace: 'nowrap' }
         : {
-            ...truncateBaseStyles,
+            overflow: 'hidden',
+            whiteSpace: 'initial',
             display: '-webkit-box',
             WebkitBoxOrient: 'vertical',
             WebkitLineClamp: truncateLines,
+            '&:after': {
+              top: `${100 - 100 / truncateLines}%`,
+            },
           },
   },
 });
@@ -67,17 +88,19 @@ const textProps = variance.compose(
   system.typography,
   system.color,
   system.space,
-  truncateProps
+  truncateLinesProps
 );
 
 export interface TextProps
   extends StyleProps<typeof textProps>,
     StyleProps<typeof textStates>,
     StyleProps<typeof elementVariants>,
+    StyleProps<typeof truncateVariants>,
     StyleProps<typeof displayVariants> {}
 
 export const Text = styled('span', styledOptions<'span'>())<TextProps>(
   elementVariants,
+  truncateVariants,
   displayVariants,
   textStates,
   textProps
