@@ -98,6 +98,7 @@ export const createTaxonomy = (context: DocsContextProps): Taxonomy => {
 
   allKinds.forEach((kind) => {
     const {
+      emoji,
       status = 'static',
       subtitle,
       component,
@@ -110,6 +111,7 @@ export const createTaxonomy = (context: DocsContextProps): Taxonomy => {
       case 'root':
         set(taxonomy, kindMeta.hierarchyOrder, {
           ...kindMeta,
+          emoji,
           subtitle,
           status: 'static',
         });
@@ -120,6 +122,7 @@ export const createTaxonomy = (context: DocsContextProps): Taxonomy => {
           kindMeta.hierarchyOrder,
           merge({
             ...kindMeta,
+            emoji,
             subtitle,
             status,
           })
@@ -163,6 +166,7 @@ export const createTaxonomy = (context: DocsContextProps): Taxonomy => {
           merge({
             ...kindMeta,
             id: firstIndex.id,
+            emoji,
             subtitle,
             status,
             children: components,

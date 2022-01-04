@@ -20,6 +20,7 @@ export interface ComponentRegistry {
 }
 
 export interface ContentLink {
+  emoji?: string;
   title: string;
   subtitle: string;
   id: string;

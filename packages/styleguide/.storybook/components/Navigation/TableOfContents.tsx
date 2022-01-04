@@ -28,6 +28,7 @@ export const TableOfContents = () => {
 };
 
 export const Section: React.FC<ContentItem> = ({
+  emoji,
   title,
   subtitle,
   id,
@@ -35,17 +36,20 @@ export const Section: React.FC<ContentItem> = ({
   links,
 }) => {
   const renderSubsection = () =>
-    links.map(({ title, id }) => (
-      <Link
-        fontSize={14}
-        fontWeight="title"
-        variant="standard"
-        key={`section_${title}-${id}`}
-        id={id}
-      >
-        {title}
-      </Link>
-    ));
+    links
+      .filter((link) => link.title)
+      .sort((a, b) => a.title.localeCompare(b.title))
+      .map(({ title, id }) => (
+        <Link
+          fontSize={14}
+          fontWeight="title"
+          variant="standard"
+          key={`section_${title}-${id}`}
+          id={id}
+        >
+          {title}
+        </Link>
+      ));
 
   const hasSubsections = links.length > 1;
 
@@ -67,6 +71,7 @@ export const Section: React.FC<ContentItem> = ({
         <Link variant="area" id={id}>
           <Box position="relative">
             <Text as="h2" fontSize={22}>
+              {emoji && <Text mr={8}>{emoji}</Text>}
               {title}
               {status && <StatusTab status={status} />}
             </Text>
