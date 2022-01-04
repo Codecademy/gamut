@@ -67,6 +67,10 @@ export type FilterOption = string | { text: string; value: string };
 
 export interface ColumnConfig<T> {
   key: keyof T;
+  /**
+   * Whether this column's _data rows_ should also behave like a header.
+   * This will cause the column to be sticky and slightly offset from the rest of the data.
+   */
   header?: string;
   type?: ListColProps['type'];
   size?: ListColProps['size'];
@@ -74,16 +78,24 @@ export interface ColumnConfig<T> {
   sortable?: boolean;
   filters?: string[];
   options?: FilterOption[];
+  /**
+   * Working with the `size` prop, will indicate that this field should expand to fill extra space.
+   */
   fill?: boolean;
   justify?: 'left' | 'right';
 }
 
-export interface RowChange<Id> {
-  (payload: { rowId?: Id; toggle?: boolean }): void;
+interface RowChangePayload<Id> {
+  rowId?: Id;
+  toggle?: boolean;
 }
 
-export interface RowStateChange<Types, Ids> {
-  (change: { type: Types; payload: { rowId?: Ids; toggle?: boolean } }): void;
+export interface RowChange<Id> {
+  (payload: RowChangePayload<Id>): void;
+}
+
+export interface RowStateChange<Types, Id> {
+  (change: { type: Types; payload: RowChangePayload<Id> }): void;
 }
 
 export type SelectEvents = 'select' | 'select-all';
