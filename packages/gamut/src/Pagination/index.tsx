@@ -24,7 +24,7 @@ interface PaginationProps {
    */
   defaultCurrent?: number;
   /**
-   * Whether pagination should act as secondary navigation
+   * Whether pagination should act as navigation
    */
   navigation?: false;
   /**
