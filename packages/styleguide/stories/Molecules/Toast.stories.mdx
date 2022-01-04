@@ -4,7 +4,7 @@ import { Target } from '@codecademy/gamut-illustrations';
 import title from '@codecademy/macros/lib/title.macro';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 
-import { PropsTable } from '~styleguide/blocks';
+import { LinkTo, PropsTable } from '~styleguide/blocks';
 
 <Meta
   title={title}
@@ -26,7 +26,7 @@ import { PropsTable } from '~styleguide/blocks';
 
 <br />
 
-### Use cases
+## Usage Guidelines
 
 - Can be used when an immediate feedback is needed for learners upon completing a learning task. (E.g. unlocking an achievement during learning)
 - Should NOT repeat messages that are recieved in the notification bell.
@@ -38,7 +38,16 @@ import { PropsTable } from '~styleguide/blocks';
 - Only one should appear at the screen at a time.
 - Toasts shouldn’t distract from learning. Be hesitant to use them in the Learning Environment, especially for messages that can be communicated outside of the LE.
 
-### Style
+## Writing Tips
+
+When writing copy for a toast, Keep it brief, ensure the message is personal and relevant, and avoid distracting from the learning experience. Refer to the checklist below for guidance. To learn more, check out the full <LinkTo id="ux-writing-component-guidelines-toasts--page">writing guide about toasts</LinkTo>.
+
+- [ ] Explain the information or issue clearly.
+- [ ] If relevant, explain what the user can do to resolve the alert (or what we are doing on our end to resolve it).
+- [ ] Front-load important information.
+- [ ] Ask someone unrelated to the project to read the message to see if it makes sense.
+
+## Styling
 
 - Has a fixed width
 - Height changes depends on the body-text length.
