@@ -1,4 +1,3 @@
-import { Anchor } from '@codecademy/gamut';
 import React from 'react';
 
 export const ALERTS = {
