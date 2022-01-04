@@ -37,6 +37,7 @@ export const parameters = {
             'Buttons and links',
             'Confirmation dialogs',
             'Error messages',
+            'Toasts',
             'Tooltips',
           ],
         ],
