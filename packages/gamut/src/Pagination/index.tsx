@@ -16,7 +16,7 @@ import {
 
 interface PaginationProps {
   /**
-   * chapter size
+   * Number of page buttons to show at once
    */
   chapterSize?: number;
   /**
@@ -40,7 +40,7 @@ interface PaginationProps {
    */
   variant?: 'stroke' | 'text';
   /**
-   * total pages
+   * Total number of pages
    */
   totalPages: number;
 }
