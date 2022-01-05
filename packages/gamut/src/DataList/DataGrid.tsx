@@ -15,7 +15,9 @@ export interface DataGridProps<
   Cols extends ColumnConfig<Row>[]
 > extends DataListControls<Row, IdKey, Cols>,
     Omit<ComponentProps<typeof List>, 'header' | 'id'> {
+  /** Whether the data inside is loading and should be indicated to the user somehow */
   loading?: boolean;
+  /** Whether an additional header element should be added */
   header?: boolean;
 }
 
