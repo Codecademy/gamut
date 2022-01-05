@@ -25,6 +25,6 @@ export const getForwardPageNumber = ({
   totalPages,
   shownPageArray,
 }: Omit<PaginationUtils, 'currentPage'>) =>
-  shownPageArray[chapterSize - 1] + chapterSize > totalPages
+  shownPageArray[0] + chapterSize >= totalPages
     ? totalPages
-    : shownPageArray[chapterSize - 1] + chapterSize;
+    : shownPageArray[0] + chapterSize;

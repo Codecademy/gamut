@@ -119,18 +119,19 @@ export const Pagination: React.FC<PaginationProps> = ({
       <HiddenText aria-live="polite">{liveText}</HiddenText>
       {currentPage !== 1 && (
         <PaginationButton
-          variant={variant}
-          icon={MiniChevronLeftIcon}
           aria-label={`Navigate back to page ${currentPage - 1}`}
           href={navigation}
+          icon={MiniChevronLeftIcon}
+          onClick={() => changeHandler(currentPage - 1)}
+          variant={variant}
         />
       )}
       {type === 'ellipsis' && shownPageArray[0] !== 1 && (
         <EllipsisButton
-          direction="back"
-          onClick={() => changeHandler(backPageNumber)}
           aria-label={`Jump to page ${backPageNumber}`}
+          direction="back"
           href={navigation}
+          onClick={() => changeHandler(backPageNumber)}
           variant={variant}
         />
       )}
@@ -160,12 +161,12 @@ export const Pagination: React.FC<PaginationProps> = ({
       )}
       {currentPage !== totalPages && (
         <PaginationButton
-          variant={variant}
-          icon={MiniChevronRightIcon}
           aria-label={`Navigate forward to page ${currentPage + 1}`}
           as={navigation ? 'a' : undefined}
-          onClick={() => changeHandler(currentPage + 1)}
           href={navigation}
+          icon={MiniChevronRightIcon}
+          onClick={() => changeHandler(currentPage + 1)}
+          variant={variant}
         />
       )}
     </FlexBox>
