@@ -29,10 +29,12 @@ const HeaderHeightAreaBase = styled(Box)(
 );
 
 export type HeaderHeightAreaProps = {
+  as?: React.ElementType<any>;
   display: ResponsiveProp<'none' | 'block'>;
 };
 
 export const HeaderHeightArea: React.FC<HeaderHeightAreaProps> = ({
+  as,
   children,
   display,
 }) => {
@@ -41,6 +43,7 @@ export const HeaderHeightArea: React.FC<HeaderHeightAreaProps> = ({
 
   return (
     <HeaderHeightAreaBase
+      as={as}
       display={display}
       height={theme.elements.headerHeight}
       faded={isInHeaderRegion}

@@ -28,6 +28,7 @@ export const VENDOR_ICONS = pick(
     'MastercardIcon',
     'VisaIcon',
     'GithubOutlineIcon',
+    'JiraIcon',
     'LinkedinOutlineIcon',
     'TwitterOutlineIcon',
   ].sort()

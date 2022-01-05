@@ -1,27 +1,25 @@
-import { Anchor, Box, FlexBox } from '@codecademy/gamut';
+import { Anchor, Text } from '@codecademy/gamut';
 import { ArrowChevronRightIcon } from '@codecademy/gamut-icons';
+import { css } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React from 'react';
 
-import { AppHeaderAvatar } from '../../AppHeader/AppHeaderElements/AppHeaderAvatar';
 import { AppHeaderDropdownItem } from '../../AppHeader/AppHeaderElements/types';
+import { Avatar } from '../../Avatar';
 
 export type AppHeaderSubMenuTargetProps = {
   item: AppHeaderDropdownItem;
   openSubMenu: (event: React.MouseEvent, item: AppHeaderDropdownItem) => void;
 };
 
-const AppHeaderLinkButtonInner = styled(Box)`
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-`;
-
-const DisplayNameText = styled.div`
-  max-width: 70vw;
-  overflow: hidden;
-  text-overflow: ellipsis;
-`;
+const StyledText = styled(Text)(
+  css({
+    ml: 16,
+    maxWidth: `70vw`,
+    overflow: `hidden`,
+    textOverflow: `ellipsis`,
+  })
+);
 
 export const AppHeaderSubMenuTarget: React.FC<AppHeaderSubMenuTargetProps> = ({
   item,
@@ -32,41 +30,34 @@ export const AppHeaderSubMenuTarget: React.FC<AppHeaderSubMenuTargetProps> = ({
       const Icon = item.icon;
       return Icon && <Icon size={24} aria-hidden />;
     }
-    return <AppHeaderAvatar avatarSize={24} imageUrl={item.avatar} />;
+    return (
+      <Avatar
+        src={item.avatar}
+        alt="User profile avatar"
+        disableDropshadow
+        size={24}
+      />
+    );
   };
 
   return (
     <Anchor
       as="button"
-      display="flex"
       data-testid={item.dataTestId}
       onClick={(event: React.MouseEvent) => openSubMenu(event, item)}
-      aria-label={`open ${item} submenu`}
+      aria-label={`open ${item.text} submenu`}
       variant="interface"
+      alignItems="center"
+      display="flex"
+      justifyContent="space-between"
+      py={16}
       width="100%"
     >
-      <AppHeaderLinkButtonInner
-        lineHeight="base"
-        minWidth="0"
-        py={16}
-        textAlign="left"
-        display="flex"
-      >
-        <FlexBox alignItems="center">
-          <FlexBox mr={16}>{getIcon()}</FlexBox>
-
-          {item.type === 'profile-dropdown' ? (
-            <DisplayNameText>{item.userDisplayName}</DisplayNameText>
-          ) : (
-            item.text
-          )}
-        </FlexBox>
-        <FlexBox alignSelf="end">
-          <Box>
-            <ArrowChevronRightIcon size={12} aria-hidden />
-          </Box>
-        </FlexBox>
-      </AppHeaderLinkButtonInner>
+      {getIcon()}
+      <StyledText>
+        {item.type === 'profile-dropdown' ? item.userDisplayName : item.text}
+      </StyledText>
+      <ArrowChevronRightIcon ml="auto" my="auto" size={12} aria-hidden />
     </Anchor>
   );
 };
