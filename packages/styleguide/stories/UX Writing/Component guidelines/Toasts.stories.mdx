@@ -3,6 +3,8 @@ import { MegaphoneIcon } from '@codecademy/gamut-icons';
 import title from '@codecademy/macros/lib/title.macro';
 import { Canvas, Meta } from '@storybook/addon-docs/blocks';
 
+import { CustomCheckbox } from '../../Atoms/FormInputs/examples';
+
 <Meta
   title={title}
   parameters={{
@@ -41,5 +43,13 @@ Toasts may contain any or all of the following: a title, a description, and/or a
 
 ## Checklist
 
-- [ ] Is the toast copy a minimum of 3 lines (including the title)?
-- [ ] Is the toast message relevant to all learners that will see it?
+<CustomCheckbox
+  htmlFor="toasts-1"
+  label="Is the toast copy a minimum of 3 lines (including the title)?"
+  spacing="tight"
+/>
+<CustomCheckbox
+  htmlFor="toasts-2"
+  label="Is the toast message relevant to all learners that will see it?"
+  spacing="tight"
+/>

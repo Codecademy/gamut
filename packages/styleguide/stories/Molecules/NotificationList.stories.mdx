@@ -4,6 +4,8 @@ import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { action } from '@storybook/addon-actions';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 
+import { CustomCheckbox } from '../Atoms/FormInputs/examples';
+
 export const notifications = [
   {
     campaign: 'python-livestream',
@@ -128,9 +130,21 @@ Sometimes the teams sending a notification would like to choose a unique icon fo
 
 When writing copy for a notification, keep it brief, make it actionable, and ensure the messaging is in support of the learner’s journey. Refer to the checklist below for guidance.
 
-- [ ] Only use a notification when there is a relevant action for the learner to take.
-- [ ] Ensure that the action is clear.
-- [ ] Keep notifications to 86 characters or less (a maximum of 3 lines).
+<CustomCheckbox
+  htmlFor="notification-1"
+  label="Only use a notification when there is a relevant action for the learner to take."
+  spacing="tight"
+/>
+<CustomCheckbox
+  htmlFor="notification-2"
+  label="Ensure that the action is clear."
+  spacing="tight"
+/>
+<CustomCheckbox
+  htmlFor="notification-3"
+  label="Keep notifications to 86 characters or less (a maximum of 3 lines)."
+  spacing="tight"
+/>
 
 ## Empty Notification
 

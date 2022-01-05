@@ -6,6 +6,8 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 
 import { LinkTo, PropsTable } from '~styleguide/blocks';
 
+import { CustomCheckbox } from '../Atoms/FormInputs/examples';
+
 <Meta
   title={title}
   component={Toast}
@@ -42,8 +44,16 @@ import { LinkTo, PropsTable } from '~styleguide/blocks';
 
 When writing copy for a toast, Keep it brief, ensure the message is personal and relevant, and avoid distracting from the learning experience. Refer to the checklist below for guidance. To learn more, check out the full <LinkTo id="ux-writing-component-guidelines-toasts--page">writing guide about toasts</LinkTo>.
 
-- [ ] Keep toast copy to 3 lines (including the title).
-- [ ] Ensure the messaging is relevant to all learners that will see it.
+<CustomCheckbox
+  htmlFor="toast-1"
+  label="Keep toast copy to 3 lines (including the title)."
+  spacing="tight"
+/>
+<CustomCheckbox
+  htmlFor="toast-2"
+  label="Ensure the messaging is relevant to all learners that will see it."
+  spacing="tight"
+/>
 
 ## Styling
 

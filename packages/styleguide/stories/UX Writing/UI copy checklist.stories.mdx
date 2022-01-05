@@ -3,6 +3,8 @@ import { Meta } from '@storybook/addon-docs/blocks';
 
 import { LinkTo } from '~styleguide/blocks';
 
+import { CustomCheckbox } from '../Atoms/FormInputs/examples';
+
 <Meta
   title={title}
   parameters={{
@@ -63,13 +65,37 @@ When you're done, show the copy to someone else. It's best if it's someone that'
 
 **When you're done, your copy should:**
 
-- [ ] Meet both user needs and business objectives
-- [ ] Sound natural and conversational
-- [ ] Be concise
-- [ ] Use consistent language
-- [ ] Be accessible and inclusive
-- [ ] Be easy to read and understand
-- [ ] Be on-brand
-- [ ] Clearly get the intended message across
+<CustomCheckbox
+  htmlFor="checklist-1"
+  label="Meet both user needs and business objectives"
+  spacing="tight"
+/>
+<CustomCheckbox
+  htmlFor="checklist-2"
+  label="Sound natural and conversational"
+  spacing="tight"
+/>
+<CustomCheckbox htmlFor="checklist-3" label="Be concise" spacing="tight" />
+<CustomCheckbox
+  htmlFor="checklist-4"
+  label="Use consistent language"
+  spacing="tight"
+/>
+<CustomCheckbox
+  htmlFor="checklist-5"
+  label="Be accessible and inclusive"
+  spacing="tight"
+/>
+<CustomCheckbox
+  htmlFor="checklist-6"
+  label="Be easy to read and understand"
+  spacing="tight"
+/>
+<CustomCheckbox htmlFor="checklist-7" label="Be on-brand" spacing="tight" />
+<CustomCheckbox
+  htmlFor="checklist-8"
+  label="Clearly get the intended message across"
+  spacing="tight"
+/>
 
 Need help along the way? Reach out to Megan O. on Slack for quick questions or [create a task on the UX Writing Requests JIRA board](https://codecademy.atlassian.net/jira/software/projects/UXWR/boards/190) for larger projects.

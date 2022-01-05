@@ -3,6 +3,8 @@ import { Meta } from '@storybook/addon-docs/blocks';
 
 import { LinkTo } from '~styleguide/blocks';
 
+import { CustomCheckbox } from '../../Atoms/FormInputs/examples';
+
 <Meta
   title={title}
   parameters={{
@@ -34,8 +36,28 @@ Here at Codecademy, we primarily use two components for error messages. <LinkTo 
 
 ## Checklist
 
-- [ ] Does the error message explain what went wrong?
-- [ ] Does the error message explain the steps the learner can take to resolve the issue?
-- [ ] Does the error message help the learner move forward or make it clear that they can't?
-- [ ] Does your message avoid using the words "error" or "failure"?
-- [ ] Have you asked someone unrelated to the project to read the message and did they understand it?
+<CustomCheckbox
+  htmlFor="errors-1"
+  label="Does the error message explain what went wrong?"
+  spacing="tight"
+/>
+<CustomCheckbox
+  htmlFor="errors-2"
+  label="Does the error message explain the steps the learner can take to resolve the issue?"
+  spacing="tight"
+/>
+<CustomCheckbox
+  htmlFor="errors-3"
+  label="Does the error message help the learner move forward or make it clear that they can't?"
+  spacing="tight"
+/>
+<CustomCheckbox
+  htmlFor="errors-4"
+  label='Does your message avoid using the words "error" or "failure"?'
+  spacing="tight"
+/>
+<CustomCheckbox
+  htmlFor="errors-5"
+  label="Have you asked someone unrelated to the project to read the message and did they understand it?"
+  spacing="tight"
+/>

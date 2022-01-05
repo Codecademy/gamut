@@ -12,6 +12,7 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 
 import { LinkTo } from '~styleguide/blocks';
 
+import { CustomCheckbox } from '../../Atoms/FormInputs/examples';
 import { ButtonScale } from './examples';
 
 <Meta
@@ -70,10 +71,26 @@ All but CTA button support a size of either `normal` (default) or `small`.
 
 Writing words for a link or button? Above all else, make sure that the words alone make it clear where a button or link will take the user. Refer to the checklist below for guidance. For more tips and best practices, check out the full guide about <LinkTo id="writing-ux-writing-component-guidelines-buttons-and-links--page">writing for buttons and links</LinkTo>.
 
-- [ ] Make sure it’s clear where the link or button will take the user.
-- [ ] Use sentence case, capitalizing only proper nouns.
-- [ ] For buttons, start with an action-oriented verb (like “explore” or “view”).
-- [ ] For buttons, use 3 words or less (unless more words are necessary for clarity).
+<CustomCheckbox
+  htmlFor="buttons-1"
+  label="Make sure it’s clear where the link or button will take the user."
+  spacing="tight"
+/>
+<CustomCheckbox
+  htmlFor="buttons-2"
+  label="Use sentence case, capitalizing only proper nouns."
+  spacing="tight"
+/>
+<CustomCheckbox
+  htmlFor="buttons-3"
+  label="For buttons, start with an action-oriented verb (like “explore” or “view”)."
+  spacing="tight"
+/>
+<CustomCheckbox
+  htmlFor="buttons-4"
+  label="For buttons, use 3 words or less (unless more words are necessary for clarity)."
+  spacing="tight"
+/>
 
 <br />
 

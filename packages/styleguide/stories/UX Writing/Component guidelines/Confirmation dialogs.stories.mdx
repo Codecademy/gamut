@@ -3,6 +3,8 @@ import { Meta } from '@storybook/addon-docs/blocks';
 
 import { LinkTo } from '~styleguide/blocks';
 
+import { CustomCheckbox } from '../../Atoms/FormInputs/examples';
+
 <Meta
   title={title}
   parameters={{
@@ -43,12 +45,48 @@ They use the <LinkTo id="molecules-modals-dialog--dialog">Dialog component in Ga
 
 ## Checklist
 
-- [ ] Is the language consistent from the wording on the button that opened the confirmation box, to the headline, explanation, and button copy?
-- [ ] Does the headline make the action clear?
-- [ ] Is the headline framed as a question, if possible?
-- [ ] Does the explanation provide relevant details and consequences of the action?
-- [ ] Is the explanation 1-2 lines long?
-- [ ] Are the words on the buttons clear and distinct?
-- [ ] Do the buttons include context to reaffirm the action?
-- [ ] Is your copy at a reading level of grade 7 or below? (Test with [Hemingway App](https://hemingwayapp.com/))
-- [ ] Have you asked someone unrelated to the project to read the message and did they understand it?
+<CustomCheckbox
+  htmlFor="dialogs-1"
+  label="Is the language consistent from the wording on the button that opened the confirmation box, to the headline, explanation, and button copy?"
+  spacing="tight"
+/>
+<CustomCheckbox
+  htmlFor="dialogs-2"
+  label="Does the headline make the action clear?"
+  spacing="tight"
+/>
+<CustomCheckbox
+  htmlFor="dialogs-3"
+  label="Is the headline framed as a question, if possible?"
+  spacing="tight"
+/>
+<CustomCheckbox
+  htmlFor="dialogs-4"
+  label="Does the explanation provide relevant details and consequences of the action?"
+  spacing="tight"
+/>
+<CustomCheckbox
+  htmlFor="dialogs-5"
+  label="Is the explanation 1-2 lines long?"
+  spacing="tight"
+/>
+<CustomCheckbox
+  htmlFor="dialogs-6"
+  label="Are the words on the buttons clear and distinct?"
+  spacing="tight"
+/>
+<CustomCheckbox
+  htmlFor="dialogs-7"
+  label="Do the buttons include context to reaffirm the action?"
+  spacing="tight"
+/>
+<CustomCheckbox
+  htmlFor="dialogs-8"
+  label="Is your copy at a reading level of grade 7 or below? (Test with [Hemingway App](https://hemingwayapp.com/))"
+  spacing="tight"
+/>
+<CustomCheckbox
+  htmlFor="dialogs-9"
+  label="Have you asked someone unrelated to the project to read the message and did they understand it?"
+  spacing="tight"
+/>
