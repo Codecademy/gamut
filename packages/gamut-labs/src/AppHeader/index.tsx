@@ -80,6 +80,7 @@ export const mapItemToElement = (
           onClick={(event: React.MouseEvent) => action(event, item)}
           data-testid={item.dataTestId}
           tabIndex="-1"
+          role="menuitem"
           href={
             item.redirect
               ? formatUrlWithRedirect(item.href, redirectParam)
@@ -99,6 +100,7 @@ export const mapItemToElement = (
               ? formatUrlWithRedirect(item.href, redirectParam)
               : item.href
           }
+          role="menuitem"
           tabIndex="-1"
           onClick={(event: React.MouseEvent) => action(event, item)}
         >
