@@ -259,6 +259,7 @@ export const AppHeaderDropdown: React.FC<AppHeaderDropdownProps> = ({
       onClick={handleOnClick}
       onKeyDown={buttonHandleKeyEvents}
       tabIndex="-1"
+      data-testid="avatar-dropdown-button"
     >
       <Avatar
         src={item.avatar}
