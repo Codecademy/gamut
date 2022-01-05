@@ -77,12 +77,19 @@ export const Pagination: React.FC<PaginationProps> = ({
 
   useMemo(
     () => {
+      const currentChapterSize =
+        chapterSize > totalPages ? totalPages : chapterSize;
+
       const firstPageChapter =
-        totalPages - currentPage < chapterSize
-          ? totalPages - (chapterSize - 1)
+        totalPages - currentPage < currentChapterSize
+          ? totalPages - (currentChapterSize - 1)
           : currentPage;
+
       setShownPageArray(
-        Array.from(Array(chapterSize), (_, index) => index + firstPageChapter)
+        Array.from(
+          Array(currentChapterSize),
+          (_, index) => index + firstPageChapter
+        )
       );
       setLiveText(`Viewing navigation for pages ${shownPageArray[0]} through
           ${
@@ -130,7 +137,7 @@ export const Pagination: React.FC<PaginationProps> = ({
       {shownPageArray.map((page) => (
         <PaginationButton
           aria-current={page === currentPage && 'page'}
-          aria-label={`${page === totalPages ? 'Last Page,' : ''} Page ${page}`}
+          aria-label={`${page === totalPages ? 'Last Page, ' : ''}Page ${page}`}
           key={page}
           variant={variant}
           selected={page === currentPage}
