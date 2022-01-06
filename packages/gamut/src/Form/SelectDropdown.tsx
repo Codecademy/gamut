@@ -230,7 +230,9 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
 
   // If the caller changes the initial value, let's update our value to match.
   useEffect(() => {
-    setMultiValues(filterValueFromOptions(selectOptions, value));
+    const newMultiValues = filterValueFromOptions(selectOptions, value);
+    if (newMultiValues !== multiValues) setMultiValues(newMultiValues);
+
     // For now, only handle the "change the value" case.
     // Changing the options can be looked into when this component is fleshed out (GM-354)
     // eslint-disable-next-line react-hooks/exhaustive-deps
