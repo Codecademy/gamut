@@ -66,7 +66,7 @@ export const ButtonBase = forwardRef<
         {...rest}
         ref={ref as MutableRefObject<HTMLButtonElement>}
         as="button"
-        type={type ?? 'button'}
+        type={type}
         role={role ?? 'button'}
         disabled={!!disabled}
       >
