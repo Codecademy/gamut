@@ -283,6 +283,10 @@ workflows:
           name: 'agent2'
           requires:
             - checkout_code
+      - agent:
+          name: 'agent3'
+          requires:
+            - checkout_code
       - tests:
           requires:
             - checkout_code
@@ -330,6 +334,10 @@ workflows:
             - checkout_code
       - agent:
           name: 'agent2'
+          requires:
+            - checkout_code
+      - agent:
+          name: 'agent3'
           requires:
             - checkout_code
       - deploy:
