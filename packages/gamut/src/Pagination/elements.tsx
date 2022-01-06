@@ -1,4 +1,4 @@
-import { states, transitionConcat } from '@codecademy/gamut-styles';
+import { states, theme, transitionConcat } from '@codecademy/gamut-styles';
 
 import { templateVariants } from '../Button/shared';
 import { ButtonSelectors } from '../ButtonBase/ButtonBase';
@@ -59,9 +59,10 @@ export const paginationStrokeVariant = templateVariants(['secondary'], () => ({
       'ease-in'
     ),
   },
-  '&:hover > a': {
+  '&:hover': {
     fontWeight: 'title',
-    color: 'primary',
+    // some styles in Reboot.tsx override this for the navigation variant. tl;dr - don't do this <3 web-plat
+    color: `${theme.colors.primary} !important`,
   },
 }));
 
