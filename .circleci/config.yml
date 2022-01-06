@@ -1,6 +1,7 @@
 version: 2.1
 orbs:
   queue: eddiewebb/queue@1.5.0
+  nx: nrwl/nx@1.0.0
 
 references:
   default_env: &default_env
@@ -11,6 +12,7 @@ references:
       IGNORE_COMMIT_MESSAGE: 'chore(release): publish'
       NODE_OPTIONS: '--max_old_space_size=8196'
       CIRCLE_TEST_REPORTS: /tmp/test-results
+      NX_CLOUD_DISTRIBUTED_EXECUTION: 'true'
 
   yarn_cache_key_1: &yarn_cache_key_1 v2-yarn-{{ arch }}-{{ checksum "yarn.lock" }}
 
@@ -55,7 +57,7 @@ references:
   build_all_packages: &build_all_packages
     run:
       name: Build All Packages
-      command: yarn build-all
+      command: yarn build-all --base=$NX_BASE --max-parallel=3
 
   build_changed_packages: &build_changed_packages
     run:
@@ -104,6 +106,25 @@ jobs:
       - run: yarn --production=false --frozen-lockfile
       - *save_yarn_cache
       - *save_node_modules
+      - run:
+          command: npx nx-cloud start-agent
+          no_output_timeout: 60m
+  agent:
+    <<: *default_env
+    steps:
+      - checkout
+      - *restore_node_modules
+      - run:
+          command: npx nx-cloud start-agent
+          no_output_timeout: 60m
+
+  stop_agents:
+    <<: *default_env
+    steps:
+      - checkout
+      - *restore_node_modules
+      - run:
+          command: npx nx-cloud stop-all-agents
 
   tests:
     <<: *default_env
@@ -112,6 +133,7 @@ jobs:
     steps:
       - checkout
       - *restore_node_modules
+      - nx/set-shas
       - *build_all_packages
       - run:
           name: Run test suite
@@ -136,6 +158,7 @@ jobs:
       - checkout
       - *restore_node_modules
       - *set_npm_token
+      - nx/set-shas
       - *build_changed_packages
       - run:
           name: Lerna Publish
@@ -149,6 +172,7 @@ jobs:
       - *set_git_user
       - checkout
       - *restore_node_modules
+      - nx/set-shas
       - *build_all_packages
       - *restore_webpack_cache
       - run:
@@ -168,6 +192,7 @@ jobs:
       - *set_git_user
       - checkout
       - *restore_node_modules
+      - nx/set-shas
       - *build_all_packages
       - *restore_webpack_cache
       - run:
@@ -251,6 +276,14 @@ workflows:
       - checkout_code:
           requires:
             - queue/block_workflow
+      - agent:
+          name: 'agent1'
+          requires:
+            - checkout_code
+      - agent:
+          name: 'agent2'
+          requires:
+            - checkout_code
       - tests:
           requires:
             - checkout_code
@@ -268,6 +301,14 @@ workflows:
                 - gh-pages
           requires:
             - checkout_code
+      - stop_agents:
+          requires:
+            - publish
+            - tests
+      - stop_agents:
+          requires:
+            - publish_alpha
+            - tests
   deploy:
     jobs:
       - queue/block_workflow:
@@ -276,6 +317,14 @@ workflows:
       - checkout_code:
           requires:
             - queue/block_workflow
+      - agent:
+          name: 'agent1'
+          requires:
+            - checkout_code
+      - agent:
+          name: 'agent2'
+          requires:
+            - checkout_code
       - deploy:
           requires:
             - checkout_code
@@ -290,3 +339,9 @@ workflows:
                 - gh-pages
           requires:
             - checkout_code
+      - stop_agents:
+          requires:
+            - deploy
+      - stop_agents:
+          requires:
+            - deploy_alpha

@@ -34,7 +34,7 @@
     "verify-all": "yarn nx run-many --target=verify --all --parallel",
     "verify-changed": "nx affected --target=verify",
     "clear-modules": "lerna clean -y && rm -rf node_modules",
-    "build-all": "yarn turbo run build --api='http://127.0.0.1:8080' --token='cool-token'",
+    "build-all": "yarn nx run-many --target=build --all --parallel",
     "build-changed": "nx affected --target=build",
     "start": "yarn && yarn start:storybook",
     "start:storybook": "cd ./packages/styleguide && yarn start",
