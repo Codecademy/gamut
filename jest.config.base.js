@@ -1,6 +1,6 @@
 const path = require('path');
 
-module.exports = (packageName) => ({
+module.exports = (packageName, overrides) => ({
   clearMocks: true,
   verbose: true,
   setupFiles: ['<rootDir>/../../script/jest/base-setup.js'],
@@ -67,4 +67,5 @@ module.exports = (packageName) => ({
   coverageReporters: ['json', 'text', 'clover'],
   coverageDirectory: process.env.CI ? '/tmp/test-results/jest' : './coverage',
   collectCoverage: !!process.env.CI,
+  ...overrides,
 });

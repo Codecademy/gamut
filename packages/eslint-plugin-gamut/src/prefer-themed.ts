@@ -1,16 +1,13 @@
-import {
-  AST_NODE_TYPES,
-  TSESTree,
-} from '@typescript-eslint/experimental-utils';
+import { AST_NODE_TYPES } from '@typescript-eslint/experimental-utils';
 
 import { createRule } from './createRule';
 
 export default createRule({
+  // @to-do: create helper function to get node
+
   create(context) {
     return {
-      'VariableDeclarator TaggedTemplateExpression': function (
-        node: TSESTree.TaggedTemplateExpression
-      ) {
+      TaggedTemplateExpression: function (node) {
         if (node.tag.type === AST_NODE_TYPES.MemberExpression) {
           if (node.tag.object.type === 'Identifier') {
             const expressionVariable = node.tag.object.name;
@@ -32,6 +29,12 @@ export default createRule({
                     namedArgumentVariable === 'theme'
                   ) {
                     context.report({
+                      fix: (fixer) => {
+                        return fixer.replaceText(
+                          arrowFuncExpression,
+                          'themed(etc)'
+                        );
+                      },
                       messageId: 'preferThemed',
                       node,
                     });
@@ -50,6 +53,7 @@ export default createRule({
       description: 'Prefer themed style utility',
       recommended: 'error',
     },
+    fixable: 'code',
     messages: {
       preferThemed: 'Use the themed(url) style utility instead.',
     },

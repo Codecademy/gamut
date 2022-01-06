@@ -1,5 +1,6 @@
 module.exports = {
   projects: [
+    '<rootDir>/packages/eslint-plugin-gamut',
     '<rootDir>/packages/gamut',
     '<rootDir>/packages/gamut-icons',
     '<rootDir>/packages/gamut-illustrations',
