@@ -8,6 +8,7 @@ import React, {
   ReactNode,
   SelectHTMLAttributes,
   useCallback,
+  useEffect,
   useMemo,
   useState,
 } from 'react';
@@ -33,7 +34,7 @@ import {
   sizeVariants,
   textColor,
 } from './styles';
-import { parseOptions } from './utils';
+import { parseOptions, SelectOptionBase } from './utils';
 
 export interface IconOption {
   label: string;
@@ -186,6 +187,15 @@ const defaultProps = {
 
 const onChangeAction = 'select-option';
 
+const filterValueFromOptions = (
+  options: SelectOptionBase[],
+  value: SelectDropdownProps['value']
+) =>
+  options.filter(
+    (option) =>
+      option.value === value || (value as string[])?.includes(option.value)
+  );
+
 export const SelectDropdown: React.FC<SelectDropdownProps> = ({
   options,
   id,
@@ -214,11 +224,17 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
   );
 
   const [multiValues, setMultiValues] = useState(
-    selectOptions.filter(
-      (option) =>
-        option.value === value || (value as string[])?.includes(option.value)
-    )
+    multiple && // To keep this efficient for non-multiSelect
+      filterValueFromOptions(selectOptions, value)
   );
+
+  // If the caller changes the initial value, let's update our value to match.
+  useEffect(() => {
+    setMultiValues(filterValueFromOptions(selectOptions, value));
+    // For now, only handle the "change the value" case.
+    // Changing the options can be looked into when this component is fleshed out (GM-354)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [value]);
 
   const changeHandler = useCallback(
     (optionEvent: OptionStrict | OptionsType<OptionStrict>) => {
