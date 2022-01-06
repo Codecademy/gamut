@@ -9,11 +9,17 @@ const paginationBaseStyles = {
   height: 40,
   mx: 4,
   width: 40,
-  [ButtonSelectors.OUTLINE]: { borderColor: 'text' },
+  [ButtonSelectors.ACTIVE]: {
+    fontWeight: 'title',
+    color: 'text',
+  },
   [ButtonSelectors.DISABLED]: {
     color: 'text-disabled',
     bg: 'transparent',
   },
+  [ButtonSelectors.OUTLINE]: { borderColor: 'text' },
+  [ButtonSelectors.SHADOW_ACTIVE]: { opacity: 0 },
+  [ButtonSelectors.SHADOW_HOVER]: { opacity: 0 },
 } as const;
 
 export const paginationTextVariant = templateVariants(['secondary'], () => ({
@@ -27,8 +33,6 @@ export const paginationTextVariant = templateVariants(['secondary'], () => ({
   [ButtonSelectors.SHADOW]: {
     transition: transitionConcat(['opacity', 'font-weight'], 'fast', 'ease-in'),
   },
-  [ButtonSelectors.SHADOW_ACTIVE]: { opacity: 0 },
-  [ButtonSelectors.SHADOW_HOVER]: { opacity: 0 },
   [ButtonSelectors.HOVER]: {
     fontWeight: 'title',
     bg: 'background-selected',
@@ -46,8 +50,6 @@ export const paginationTextButtonStates = states({
 export const paginationStrokeVariant = templateVariants(['secondary'], () => ({
   ...paginationBaseStyles,
   [ButtonSelectors.ACTIVE]: {
-    fontWeight: 'title',
-    color: 'text',
     borderColor: 'currentColor',
   },
   [ButtonSelectors.SHADOW]: {
@@ -57,13 +59,7 @@ export const paginationStrokeVariant = templateVariants(['secondary'], () => ({
       'ease-in'
     ),
   },
-  [ButtonSelectors.SHADOW_HOVER]: {
-    opacity: 0,
-  },
-  [ButtonSelectors.SHADOW_ACTIVE]: {
-    opacity: 0,
-  },
-  [ButtonSelectors.HOVER]: {
+  '&&:hover': {
     fontWeight: 'title',
     color: 'primary',
   },
