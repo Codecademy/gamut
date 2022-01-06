@@ -59,7 +59,7 @@ export const paginationStrokeVariant = templateVariants(['secondary'], () => ({
       'ease-in'
     ),
   },
-  '&&:hover': {
+  '&:hover > a': {
     fontWeight: 'title',
     color: 'primary',
   },
