@@ -168,8 +168,6 @@ describe('Pagination', () => {
       const { view } = renderView({});
 
       expect(getJumpButtonCount({ view })).toBe(2);
-
-      expect(view.queryByRole('button', { name: 'Page 1' })).toBe(null);
     });
 
     it('does not render a jump forward button when on the last page', () => {
