@@ -7,11 +7,11 @@ import { motion } from 'framer-motion';
 import React, {
   useCallback,
   useEffect,
-  useLayoutEffect,
   useMemo,
   useRef,
   useState,
 } from 'react';
+import { useIsomorphicLayoutEffect } from 'react-use';
 
 import { Avatar } from '../../../Avatar';
 import { AppHeaderLinkSections } from '../AppHeaderLinkSections';
@@ -223,7 +223,7 @@ export const AppHeaderDropdown: React.FC<AppHeaderDropdownProps> = ({
     }
   }, [focusIndex, isOpen, itemsCount]);
 
-  useLayoutEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     if (listRef.current) {
       const { height, width } = listRef.current.getBoundingClientRect();
       setDimensions({ height, width });
@@ -259,6 +259,7 @@ export const AppHeaderDropdown: React.FC<AppHeaderDropdownProps> = ({
       onClick={handleOnClick}
       onKeyDown={buttonHandleKeyEvents}
       tabIndex="-1"
+      data-testid="avatar-dropdown-button"
     >
       <Avatar
         src={item.avatar}
@@ -310,9 +311,6 @@ export const AppHeaderDropdown: React.FC<AppHeaderDropdownProps> = ({
         }}
         transition={{ duration: 0.175 }}
         aria-hidden={!isOpen}
-        aria-controls="menu-container"
-        aria-label={item.text}
-        role="menu"
         onKeyDown={menuHandleKeyEvents}
       >
         <StyledLinkSection
@@ -320,8 +318,10 @@ export const AppHeaderDropdown: React.FC<AppHeaderDropdownProps> = ({
           item={item}
           role="menu"
           ref={listRef}
-          id="menu-container"
+          id={`menu-container${item.text}`}
           onKeyDown={menuHandleKeyEvents}
+          aria-controls={`menu-container${item.text}`}
+          aria-label={item.text}
         />
       </StyledDropdown>
     </>

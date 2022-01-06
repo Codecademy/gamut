@@ -26,7 +26,7 @@ const renderAppHeaderLink = (props: AppHeaderLinkProps) => {
 describe('AppHeaderLink', () => {
   it('calls action() when clicked', () => {
     renderAppHeaderLink(defaultProps);
-    screen.getByRole('link').click();
+    screen.getByRole('menuitem').click();
     expect(action).toHaveBeenCalled();
   });
 
