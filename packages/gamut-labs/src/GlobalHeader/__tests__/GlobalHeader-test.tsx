@@ -382,9 +382,9 @@ describe('GlobalHeader', () => {
       expect(onLinkAction).not.toHaveBeenCalled();
     });
 
-    it('renders fires action & onLinkAction upon clicking a link element', () => {
+    it('renders fires action & onLinkAction upon clicking a menuitem element', () => {
       const { view } = renderView({ ...anonHeaderProps, onLinkAction });
-      view.getAllByRole('link')[0].click();
+      view.getAllByRole('menuitem')[0].click();
 
       expect(action).toHaveBeenCalledTimes(1);
       expect(onLinkAction).toHaveBeenCalledTimes(1);

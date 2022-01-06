@@ -21,14 +21,12 @@ import { ColorModeExampleWrapper } from '../../Foundations/ColorMode/examples';
 
 type CustomCheckboxProps = Omit<CheckboxProps, 'checked'> & {
   defaultChecked?: boolean;
-  errorMessage?: string;
 };
 
 export const CustomCheckbox: React.FC<CustomCheckboxProps> = ({
   htmlFor,
   label,
   defaultChecked = false,
-  errorMessage,
   disabled,
   ...rest
 }) => {
@@ -39,16 +37,14 @@ export const CustomCheckbox: React.FC<CustomCheckboxProps> = ({
   };
 
   return (
-    <FormGroup htmlFor={htmlFor} error={errorMessage} disabled={disabled}>
-      <Checkbox
-        htmlFor={htmlFor}
-        onChange={changeHandler}
-        label={label}
-        disabled={disabled}
-        checked={currentChecked}
-        {...rest}
-      />
-    </FormGroup>
+    <Checkbox
+      htmlFor={htmlFor}
+      onChange={changeHandler}
+      label={label}
+      disabled={disabled}
+      checked={currentChecked}
+      {...rest}
+    />
   );
 };
 
