@@ -165,7 +165,7 @@ describe('Pagination', () => {
     });
 
     it('renders a jump forward and back button when on the middle pages', () => {
-      const { view } = renderView({});
+      const { view } = renderView({ type: 'ellipsis', defaultCurrent: 3 });
 
       expect(getJumpButtonCount({ view })).toBe(2);
     });
