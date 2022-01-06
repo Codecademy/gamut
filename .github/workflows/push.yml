@@ -19,7 +19,7 @@ jobs:
       - name: Derive appropriate SHAs for base and head for `nx affected` commands
         uses: nrwl/nx-set-shas@v2
       - run: npx nx-cloud start-ci-run
-      - run: yarn build-changed --base=$NX_BASE --max-parallel=3
+      - run: yarn nx affected --base=$NX_BASE --max-parallel=3 --target=build
       - run: yarn ${{ matrix.command }}
       - run: npx nx-cloud stop-all-agents
 
