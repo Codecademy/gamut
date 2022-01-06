@@ -1,4 +1,4 @@
-import { Anchor } from '@codecademy/gamut/src';
+import { Anchor, Text } from '@codecademy/gamut/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { Meta } from '@storybook/addon-docs/blocks';
 
@@ -43,7 +43,12 @@ Tooltips are short, helpful messages that appear when learners hover over inform
 />
 <CustomCheckbox
   htmlFor="tooltips-3"
-  label="Is all vital information learners need to complete a task visible _outside_ of the tooltip?"
+  label={
+    <>
+      Is all vital information learners need to complete a task visible{' '}
+      <Text fontStyle="italic">outside</Text> of the tooltip?
+    </>
+  }
   spacing="tight"
 />
 <CustomCheckbox
