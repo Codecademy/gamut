@@ -7,7 +7,6 @@ const BreadcrumbAnchor = styled(Anchor)`
   overflow: hidden;
   width: 100%;
   display: inline;
-  margin: 0 4px;
 `;
 
 const BreadcrumbPart = styled(Box)`
@@ -20,12 +19,6 @@ const BreadcrumbPart = styled(Box)`
   }
   &:first-of-type ${BreadcrumbAnchor} {
     margin: 0;
-  }
-  // need to append this '/' inside the child element of the breadcrumb (which contains the text) rather than breadcrumb itself
-  // otherwise, slash appears below and text above
-  &:not(:last-child) > :last-child::after {
-    content: '/';
-    margin: 0 4px;
   }
   &:last-child {
     flex: 1;
@@ -53,7 +46,7 @@ export type BreadcrumbsProps<T> = {
 export const Breadcrumbs = <T,>({ crumbs, onClick }: BreadcrumbsProps<T>) => (
   <nav aria-label="breadcrumbs">
     <FlexBox as="ol" m={0} p={0}>
-      {crumbs.map((crumb) => (
+      {crumbs.map((crumb, index) => (
         <BreadcrumbPart key={crumb.title} as="li">
           {isClickableCrumb(crumb) ? (
             <BreadcrumbAnchor
@@ -73,6 +66,11 @@ export const Breadcrumbs = <T,>({ crumbs, onClick }: BreadcrumbsProps<T>) => (
               aria-current="location"
             >
               {crumb.title}
+            </Text>
+          )}
+          {index !== crumbs.length - 1 && (
+            <Text aria-hidden mx={4}>
+              /
             </Text>
           )}
         </BreadcrumbPart>
