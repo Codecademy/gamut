@@ -240,6 +240,7 @@ jobs:
       - checkout
       - *restore_node_modules
       - *set_npm_token
+      - nx/set-shas
       - *build_changed_packages
       - run:
           name: lerna publish (alpha)
