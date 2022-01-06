@@ -1,3 +1,4 @@
+import { Anchor } from '@codecademy/gamut/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { Meta, Story } from '@storybook/addon-docs/blocks';
 
@@ -140,7 +141,18 @@ Meaningful alt text describes what's important about an image a user can't see. 
 
 <CustomCheckbox
   htmlFor="imagery-1"
-  label="Do all non-decorative images or icons contain alt text](https://www.notion.so/Alternate-alt-text-1f4937dc2d4648df97627510a32edaa1)?"
+  label={
+    <>
+      Do all non-decorative images or icons contain{' '}
+      <Anchor
+        href="https://www.notion.so/Alternate-alt-text-1f4937dc2d4648df97627510a32edaa1"
+        target="_blank"
+      >
+        alt text
+      </Anchor>
+      ?
+    </>
+  }
   spacing="tight"
 />
 <CustomCheckbox
@@ -163,7 +175,15 @@ Meaningful alt text describes what's important about an image a user can't see. 
 />
 <CustomCheckbox
   htmlFor="readability-2"
-  label="Is the reading level grade 7 or below? Use [Hemingway App](https://hemingwayapp.com/) to check."
+  label={
+    <>
+      Is your copy at a reading level of grade 7 or below? Test with{' '}
+      <Anchor href="https://hemingwayapp.com" target="_blank">
+        Hemingway App
+      </Anchor>
+      .
+    </>
+  }
   spacing="tight"
 />
 <CustomCheckbox

@@ -1,3 +1,4 @@
+import { Anchor } from '@codecademy/gamut/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { Meta } from '@storybook/addon-docs/blocks';
 
@@ -57,7 +58,15 @@ Tooltips are short, helpful messages that appear when learners hover over inform
 />
 <CustomCheckbox
   htmlFor="tooltips-6"
-  label="Is your copy at a reading level of grade 7 or below? (Test with [Hemingway App](https://hemingwayapp.com/))"
+  label={
+    <>
+      Is your copy at a reading level of grade 7 or below? Test with{' '}
+      <Anchor href="https://hemingwayapp.com" target="_blank">
+        Hemingway App
+      </Anchor>
+      .
+    </>
+  }
   spacing="tight"
 />
 <CustomCheckbox
