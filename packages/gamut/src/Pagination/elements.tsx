@@ -31,12 +31,12 @@ export const paginationTextVariant = templateVariants(['secondary'], () => ({
     bg: 'background-selected',
   },
   [ButtonSelectors.SHADOW]: {
-    transition: transitionConcat(['opacity', 'font-weight'], 'slow', 'ease-in'),
+    transition: transitionConcat(['opacity', 'font-weight'], 'fast', 'ease-in'),
   },
   [ButtonSelectors.HOVER]: {
     transition: transitionConcat(
       ['font-weight', 'background-color'],
-      'slow',
+      'fast',
       'ease-in'
     ),
 
@@ -45,7 +45,7 @@ export const paginationTextVariant = templateVariants(['secondary'], () => ({
   },
 }));
 
-export const paginationTextButtonStates = states({
+export const paginationTextBguttonStates = states({
   selected: {
     fontWeight: 'title',
     color: 'text',
@@ -61,12 +61,12 @@ export const paginationStrokeVariant = templateVariants(['secondary'], () => ({
   [ButtonSelectors.SHADOW]: {
     transition: transitionConcat(
       ['opacity', 'font-weight', 'border-color'],
-      'slow',
+      'fast',
       'ease-in'
     ),
   },
   '&:hover': {
-    transition: transitionConcat(['font-weight', 'color'], 'slow', 'ease-in'),
+    transition: transitionConcat(['font-weight', 'color'], 'fast', 'ease-in'),
     fontWeight: 'title',
     // some styles in Reboot.tsx override this for the navigation variant. tl;dr - don't do this <3 web-plat
     color: `${theme.colors.primary} !important`,
