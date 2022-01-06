@@ -106,9 +106,7 @@ jobs:
       - run: yarn --production=false --frozen-lockfile
       - *save_yarn_cache
       - *save_node_modules
-      - run:
-          command: npx nx-cloud start-agent
-          no_output_timeout: 60m
+
   agent:
     <<: *default_env
     steps:
@@ -306,10 +304,16 @@ workflows:
           requires:
             - publish
             - tests
+          branches:
+            only: main
       - stop_agents:
           requires:
             - publish_alpha
             - tests
+          branches:
+            ignore:
+              - main
+              - gh-pages
   deploy:
     jobs:
       - queue/block_workflow:
@@ -343,6 +347,14 @@ workflows:
       - stop_agents:
           requires:
             - deploy
+          filters:
+            branches:
+              only: main
       - stop_agents:
           requires:
             - deploy_alpha
+          filters:
+            branches:
+              ignore:
+                - main
+                - gh-pages
