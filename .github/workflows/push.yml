@@ -13,10 +13,9 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: Codecademy/run-on-yarn@v1.2.0
         with:
           fetch-depth: 0
-      - uses: Codecademy/run-on-yarn@v1
       - name: Derive appropriate SHAs for base and head for `nx affected` commands
         uses: nrwl/nx-set-shas@v2
       - run: npx nx-cloud start-ci-run
