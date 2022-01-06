@@ -96,7 +96,9 @@ export const AppHeaderMainMenuMobile: React.FC<AppHeaderMainMenuMobileProps> = (
         <MobileSearchBar onSearch={onSearch} />
       </AppHeaderListItem>
       {items.map((item) => (
-        <AppHeaderListItem>{mapItemToElement(item, action)}</AppHeaderListItem>
+        <AppHeaderListItem key={item.id}>
+          {mapItemToElement(item, action)}
+        </AppHeaderListItem>
       ))}
     </>
   );

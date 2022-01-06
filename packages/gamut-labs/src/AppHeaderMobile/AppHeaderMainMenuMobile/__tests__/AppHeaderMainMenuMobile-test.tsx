@@ -84,13 +84,14 @@ describe('AppHeaderMainMenuMobile', () => {
     const { view } = renderView();
     const linkArray = view
       .getAllByRole('menuitem')
-      .map((node) => node.getAttribute('href'));
+      .map((node) => node.getAttribute('href'))
+      .filter((node) => !!node);
     expect(linkArray).toStrictEqual([link1Href, link2Href, fillButtonHref]);
   });
 
   it('renders a target button for the items with type dropdown', () => {
     const { view } = renderView();
-    const targetButton = view.getAllByRole('button')[1];
+    const targetButton = view.getByLabelText('open resources target submenu');
     expect(targetButton).toHaveTextContent('resources target');
   });
 
