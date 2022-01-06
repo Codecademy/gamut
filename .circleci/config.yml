@@ -304,16 +304,18 @@ workflows:
           requires:
             - publish
             - tests
-          branches:
-            only: main
+          filters:
+            branches:
+              only: main
       - stop_agents:
           requires:
             - publish_alpha
             - tests
-          branches:
-            ignore:
-              - main
-              - gh-pages
+          filters:
+            branches:
+              ignore:
+                - main
+                - gh-pages
   deploy:
     jobs:
       - queue/block_workflow:
