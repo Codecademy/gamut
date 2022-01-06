@@ -35,7 +35,7 @@ export const StyledAppBar = styled(AppBar)(
   })
 );
 
-const StyledMenuBar = styled.ul(
+export const StyledMenuBar = styled.ul(
   css({
     display: `flex`,
     padding: 0,
