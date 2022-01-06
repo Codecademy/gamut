@@ -62,7 +62,7 @@ references:
   build_changed_packages: &build_changed_packages
     run:
       name: Build Changed Packages
-      command: yarn build-changed
+      command: yarn build-changed --base=$NX_BASE --max-parallel=3
 
   set_git_user: &set_git_user
     run:
