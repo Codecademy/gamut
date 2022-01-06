@@ -24,7 +24,7 @@ type CustomCheckboxProps = Omit<CheckboxProps, 'checked'> & {
   errorMessage?: string;
 };
 
-const CustomCheckbox: React.FC<CustomCheckboxProps> = ({
+export const CustomCheckbox: React.FC<CustomCheckboxProps> = ({
   htmlFor,
   label,
   defaultChecked = false,
