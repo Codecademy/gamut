@@ -42,15 +42,16 @@ export const AppHeaderSubMenuTarget: React.FC<AppHeaderSubMenuTargetProps> = ({
 
   return (
     <Anchor
+      alignItems="center"
+      aria-label={`open ${item.text} submenu`}
       as="button"
       data-testid={item.dataTestId}
-      onClick={(event: React.MouseEvent) => openSubMenu(event, item)}
-      aria-label={`open ${item.text} submenu`}
-      variant="interface"
-      alignItems="center"
       display="flex"
       justifyContent="space-between"
+      onClick={(event: React.MouseEvent) => openSubMenu(event, item)}
       py={16}
+      role="menuitem"
+      variant="interface"
       width="100%"
     >
       {getIcon()}

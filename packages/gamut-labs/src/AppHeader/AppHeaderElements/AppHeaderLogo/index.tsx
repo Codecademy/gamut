@@ -20,6 +20,7 @@ export const AppHeaderLogo: React.FC<AppHeaderLogoProps> = ({
       onClick={(event) => action(event, item)}
       href={item.href}
       tabIndex="0"
+      role="menuitem"
     >
       <Logo
         color="currentColor"

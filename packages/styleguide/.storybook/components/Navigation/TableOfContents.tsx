@@ -9,6 +9,7 @@ import { StatusTab } from '../Docs/StatusIndicator';
 
 export const TableOfContents = () => {
   const { toc } = useNavigation();
+
   return (
     <GridBox
       pt={16}
@@ -47,7 +48,7 @@ export const Section: React.FC<ContentItem> = ({
       </Link>
     ));
 
-  const hasSubsections = links.length > 1;
+  const hasSubsections = links.length >= 1;
 
   return (
     <Card
