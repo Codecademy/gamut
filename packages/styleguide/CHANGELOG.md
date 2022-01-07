@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [52.5.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@52.4.0...@codecademy/styleguide@52.5.0) (2022-01-07)
+
+
+### Features
+
+* **JiraIcon:** Adding it ([fee37ac](https://github.com/Codecademy/gamut/commit/fee37acd232d9363be768f68df1e1ab7889b2b3b))
+
+
+
 ## [52.4.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@52.3.1...@codecademy/styleguide@52.4.0) (2021-12-20)
 
 
