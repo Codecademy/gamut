@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [28.6.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@28.6.0...@codecademy/gamut-labs@28.6.1) (2022-01-07)
+
+
+### Bug Fixes
+
+* **GlobalHeader:** Accessibility & Tests Fix ([ba8e643](https://github.com/Codecademy/gamut/commit/ba8e643f2c50ae1bea1ca8036b1ef8bf8a2daa9b))
+
+
+
 ## [28.6.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@28.5.1...@codecademy/gamut-labs@28.6.0) (2021-12-20)
 
 
