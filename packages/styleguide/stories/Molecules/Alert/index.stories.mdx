@@ -3,6 +3,9 @@ import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 
+import { LinkTo } from '~styleguide/blocks';
+
+import { CustomCheckbox } from '../../Atoms/FormInputs/examples';
 import { ALERTS } from './constants';
 
 <Meta
@@ -30,9 +33,7 @@ import { ALERTS } from './constants';
   }}
 />
 
-<br />
-
-<Story name="Alert">{(args) => <Alert {...args} />}</Story>
+<Story name="Usage guidelines">{(args) => <Alert {...args} />}</Story>
 
 <br />
 
@@ -45,7 +46,34 @@ import { ALERTS } from './constants';
 - Only use Feature alert for product/feature announcements that are specific to that page (e.g. Dashboard, Catalog, Profile, LE)
 - **For Inline use**: Only use the inline variant (non-stroked) and only use Success, Error or General type, other types are for top-level use only.
 
-<br />
+<Story name="Writing tips" />
+
+## Writing Tips
+
+Alert copy should make it clear **what the issue or information is** and **how to proceed**. Refer to the checklist below for guidance. For more tips and best practices, check out the full guide about <LinkTo id="ux-writing-component-guidelines-alerts--examples">writing for alerts</LinkTo>.
+
+<CustomCheckbox
+  htmlFor="alert-1"
+  label="Explain the information or issue clearly."
+  spacing="tight"
+/>
+<CustomCheckbox
+  htmlFor="alert-2"
+  label="If relevant, explain what the user can do to resolve the alert (or what we are doing on our end to resolve it)."
+  spacing="tight"
+/>
+<CustomCheckbox
+  htmlFor="alert-3"
+  label="Front-load important information."
+  spacing="tight"
+/>
+<CustomCheckbox
+  htmlFor="alert-4"
+  label="Ask someone unrelated to the project to read the message to see if it makes sense."
+  spacing="tight"
+/>
+
+Writing an error message? Above all else, error messages should explain and resolve. Inform learners of what went wrong and let them know how to proceed. For more tips and best practices, check out the full guide about <LinkTo id="ux-writing-component-guidelines-error-messages--page">writing error messages</LinkTo>.
 
 ## Alert Types
 

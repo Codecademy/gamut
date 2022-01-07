@@ -4,7 +4,7 @@ import { css } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React, { useState } from 'react';
 
-import { mapItemToElement, StyledAppBar } from '../AppHeader';
+import { mapItemToElement, StyledAppBar, StyledMenuBar } from '../AppHeader';
 import { AppHeaderListItem } from '../AppHeader/AppHeaderElements/AppHeaderListItem';
 import {
   AppHeaderClickHandler,
@@ -98,21 +98,27 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
 
   return (
     <>
-      <HeaderHeightArea display={{ _: 'block', md: 'none' }} as="nav">
+      <HeaderHeightArea
+        display={{ _: 'block', md: 'none' }}
+        as="nav"
+        title="Mobile Navigation"
+      >
         {!mobileMenuOpen && ( // need this bc AppBar has a hardcoded z-Index of 15
           <StyledAppBar>
-            {mapItemsToElement(items.left, 'left')}
-            {mapItemsToElement(right, 'right', true)}
-            <AppHeaderListItem ml={right.length === 0 ? 'auto' : 0}>
-              <IconButton
-                data-testid="header-mobile-menu"
-                aria-label="open navigation menu"
-                onClick={() => {
-                  openMobileMenu();
-                }}
-                icon={MenuIcon}
-              />
-            </AppHeaderListItem>
+            <StyledMenuBar role="menubar">
+              {mapItemsToElement(items.left, 'left')}
+              {mapItemsToElement(right, 'right', true)}
+              <AppHeaderListItem ml={right.length === 0 ? 'auto' : 0}>
+                <IconButton
+                  data-testid="header-mobile-menu"
+                  aria-label="open navigation menu"
+                  onClick={() => {
+                    openMobileMenu();
+                  }}
+                  icon={MenuIcon}
+                />
+              </AppHeaderListItem>
+            </StyledMenuBar>
           </StyledAppBar>
         )}
         <StyledOverlay
@@ -123,16 +129,18 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
         >
           <nav data-testid="header-mobile-menu-dropdown">
             <StyledAppBar>
-              {mapItemsToElement(items.left, 'left')}
-              <AppHeaderListItem ml="auto">
-                <IconButton
-                  aria-label="close menu"
-                  onClick={() => {
-                    setMobileMenuOpen(false);
-                  }}
-                  icon={CloseIcon}
-                />
-              </AppHeaderListItem>
+              <StyledMenuBar role="menubar">
+                {mapItemsToElement(items.left, 'left')}
+                <AppHeaderListItem ml="auto">
+                  <IconButton
+                    aria-label="close menu"
+                    onClick={() => {
+                      setMobileMenuOpen(false);
+                    }}
+                    icon={CloseIcon}
+                  />
+                </AppHeaderListItem>
+              </StyledMenuBar>
             </StyledAppBar>
             <StyledContentContainer as="ul" role="menubar">
               <AppHeaderMainMenuMobile

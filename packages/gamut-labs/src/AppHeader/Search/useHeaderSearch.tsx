@@ -38,6 +38,7 @@ export const useHeaderSearch = ({
           tabIndex="-1"
           onClick={toggleSearch}
           icon={SearchIcon}
+          role="menuitem"
         />
       ),
     },
