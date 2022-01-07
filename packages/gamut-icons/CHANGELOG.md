@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@6.0.2...@codecademy/gamut-icons@6.1.0) (2022-01-07)
+
+
+### Features
+
+* **gamut-icons:** add HalloweenBroomIcon ([56ff641](https://github.com/Codecademy/gamut/commit/56ff641230e6bbfee5fb7c10c680816fc082ec6b))
+* **JiraIcon:** Adding it ([fee37ac](https://github.com/Codecademy/gamut/commit/fee37acd232d9363be768f68df1e1ab7889b2b3b))
+
+
+
 ### [6.0.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@6.0.1...@codecademy/gamut-icons@6.0.2) (2021-12-07)
 
 **Note:** Version bump only for package @codecademy/gamut-icons

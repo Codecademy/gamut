@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [42.3.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@42.2.1...@codecademy/gamut@42.3.0) (2022-01-07)
+
+
+### Features
+
+* **DataTable:** prop comments ([101e241](https://github.com/Codecademy/gamut/commit/101e241c181260a3b85e14cc9028fbc1e9d5f1dc))
+
+
+### Bug Fixes
+
+* **GlobalHeader:** Accessibility & Tests Fix ([ba8e643](https://github.com/Codecademy/gamut/commit/ba8e643f2c50ae1bea1ca8036b1ef8bf8a2daa9b))
+
+
+
 ### [42.2.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@42.2.0...@codecademy/gamut@42.2.1) (2021-12-17)
 
 
