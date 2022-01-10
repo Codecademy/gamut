@@ -247,12 +247,9 @@ const profileLogOut: AppHeaderLinkItem = {
   type: 'link',
 };
 
-export const freeProfile = (
-  user: User,
-  isMobile?: boolean
-): AppHeaderProfileDropdownItem => {
+export const freeProfile = (user: User): AppHeaderProfileDropdownItem => {
   const topSection = [profileMyProfile, profileAccount, profileMyHome];
-  if (!isMobile && user.isAccountManager) {
+  if (user.isAccountManager) {
     topSection.push(profileBusinessAccount);
   }
   topSection.push(profileHelpCenter);
@@ -272,12 +269,9 @@ export const freeProfile = (
   };
 };
 
-export const proProfile = (
-  user: User,
-  isMobile?: boolean
-): AppHeaderProfileDropdownItem => {
+export const proProfile = (user: User): AppHeaderProfileDropdownItem => {
   const topSection = [profileMyProfile, profileAccount, profileMyHome];
-  if (!isMobile && (user.isAccountManager || user.isBusinessAdmin)) {
+  if (user.isAccountManager || user.isBusinessAdmin) {
     topSection.push(profileBusinessAccount);
   }
   if (user.showReferrals) {

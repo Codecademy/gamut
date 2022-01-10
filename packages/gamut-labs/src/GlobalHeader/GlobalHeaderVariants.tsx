@@ -178,7 +178,7 @@ export const freeMobileHeaderItems = (
     communityDropdown,
     ...(hidePricing ? [] : [pricingDropdown]),
     forBusiness,
-    freeProfile(user, true),
+    freeProfile(user),
     user.showProUpgrade
       ? upgradeToPro(user.proCheckoutUrl)
       : tryProForFree(user.proCheckoutUrl),
@@ -229,7 +229,7 @@ export const proMobileHeaderItems = (
     courseCatalog,
     resourcesDropdown,
     communityDropdown,
-    proProfile(user, true),
+    proProfile(user),
   ];
 
   if (user.isPaused) {
