@@ -45,7 +45,7 @@ export const paginationTextVariant = templateVariants(['secondary'], () => ({
   },
 }));
 
-export const paginationTextBguttonStates = states({
+export const paginationTextButtonStates = states({
   selected: {
     fontWeight: 'title',
     color: 'text',
