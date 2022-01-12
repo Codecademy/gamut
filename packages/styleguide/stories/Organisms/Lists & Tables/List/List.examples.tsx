@@ -59,7 +59,7 @@ export const DemoCardTemplate: React.FC = (args) => {
       {rows.map(({ name, ship, role }) => (
         <ListRow>
           <ListCol size="xl">
-            <Text variant="title-lg" truncateLines={1}>
+            <Text variant="title-lg" truncate="ellipsis" truncateLines={1}>
               {name}
             </Text>
           </ListCol>
