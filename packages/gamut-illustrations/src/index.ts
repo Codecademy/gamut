@@ -18,6 +18,8 @@ export * from './New';
 export * from './NumberBlocks';
 export * from './Onboarding';
 export * from './Plant';
+export * from './PortfolioProject';
+export * from './PracticeProject';
 export * from './Python';
 export * from './Sun';
 export * from './Target';

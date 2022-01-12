@@ -1,6 +1,8 @@
 import { contentWidths, variant } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 
+import { Box } from '../Box';
+
 const contentContainerVariants = variant({
   prop: 'size',
   defaultVariant: 'medium',
@@ -21,4 +23,4 @@ const contentContainerVariants = variant({
   },
 });
 
-export const ContentContainer = styled.div(contentContainerVariants);
+export const ContentContainer = styled(Box)(contentContainerVariants);
