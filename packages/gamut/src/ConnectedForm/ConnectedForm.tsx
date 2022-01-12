@@ -6,7 +6,7 @@ import {
   RegisterOptions,
   SubmitHandler,
   useForm,
-  UseFormOptions,
+  UseFormProps,
 } from 'react-hook-form';
 
 import { Form } from '../Form';
@@ -50,7 +50,7 @@ export interface ConnectedFormProps<Values extends {}>
   /**
    * Default values are highly recommended for reliable form behavior, particularly resets.
    */
-  defaultValues?: UseFormOptions<Values>['defaultValues'];
+  defaultValues?: UseFormProps<Values>['defaultValues'];
 
   /**
    * Validation rules form fields. Fields with validation rules must have a defaultValue listed in the defaultValue prop.
@@ -108,8 +108,8 @@ export function ConnectedForm<Values extends FormValues<Values>>({
   useEffect(() => {
     if (watchedFields) {
       // we're pretty exhaustively type-checking the props as they're passed in, so its fine to cast here.
-      const fields = watch(watchedFields.fields) as Partial<Values>;
-      watchedFields.watchHandler(fields);
+      const fields = watch(watchedFields.fields as any);
+      watchedFields.watchHandler(fields as any);
     }
   }, [watchedFields, watch]);
 

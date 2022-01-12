@@ -25,24 +25,24 @@ export const ConnectedCheckbox: React.FC<ConnectedCheckboxProps> = ({
       name={name}
       control={control}
       defaultValue={false}
-      render={({ onChange, onBlur, name, value, ref }) => (
+      render={({ field }) => (
         <Checkbox
-          checked={value}
+          checked={field.value}
           className={className}
           disabled={isDisabled}
           htmlFor={name}
           name={name}
           onChange={(event) => {
             onUpdate?.(event.target.checked);
-            onChange?.(event.target.checked);
+            field.onChange?.(event.target.checked);
           }}
-          onBlur={onBlur}
+          onBlur={field.onBlur}
           label={label}
           multiline={multiline}
           id={id}
-          ref={ref}
           aria-required={isRequired}
           spacing={spacing}
+          {...field.ref}
         />
       )}
       rules={validation}
