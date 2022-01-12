@@ -133,6 +133,7 @@ export const ConnectedFormPlayground: React.FC<ConnectedFormPlayground> = ({
       },
     },
   });
+
   return (
     <ConnectedForm
       onSubmit={(values) => {

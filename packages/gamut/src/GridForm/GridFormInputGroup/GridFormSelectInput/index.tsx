@@ -1,12 +1,12 @@
 import React from 'react';
-import { UseFormMethods } from 'react-hook-form';
+import { UseFormReturn } from 'react-hook-form';
 
 import { Select } from '../../../Form';
 import { BaseFormInputProps, GridFormSelectField } from '../../types';
 
 export interface GridFormSelectInputProps extends BaseFormInputProps {
   field: Omit<GridFormSelectField, 'label'>;
-  register: UseFormMethods['register'];
+  register: UseFormReturn['register'];
 }
 
 export const GridFormSelectInput: React.FC<GridFormSelectInputProps> = ({
@@ -26,7 +26,7 @@ export const GridFormSelectInput: React.FC<GridFormSelectInputProps> = ({
       htmlFor={field.name}
       name={field.name}
       onChange={(event) => field.onUpdate?.(event.target.value)}
-      ref={register(field.validation)}
+      ref={...register(field.validation)}
       options={field.options}
       id={field.id}
       aria-invalid={error}

@@ -1,12 +1,12 @@
 import React from 'react';
-import { UseFormMethods } from 'react-hook-form';
+import { UseFormReturn } from 'react-hook-form';
 
 import { Input } from '../../../Form';
 import { BaseFormInputProps, GridFormFileField } from '../../types';
 
 export interface GridFormFileInputProps extends BaseFormInputProps {
   field: Omit<GridFormFileField, 'label'>;
-  register: UseFormMethods['register'];
+  register: UseFormReturn['register'];
 }
 
 export const GridFormFileInput: React.FC<GridFormFileInputProps> = ({
@@ -25,7 +25,7 @@ export const GridFormFileInput: React.FC<GridFormFileInputProps> = ({
       htmlFor={field.name}
       name={field.name}
       onChange={(event) => field.onUpdate?.(event.target.files!)}
-      ref={register(field.validation)}
+      ref={...register(field.validation)}
       type="file"
       id={field.id}
       aria-invalid={error}

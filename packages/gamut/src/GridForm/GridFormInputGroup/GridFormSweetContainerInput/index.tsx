@@ -1,5 +1,5 @@
 import React from 'react';
-import { UseFormMethods } from 'react-hook-form';
+import { UseFormReturn } from 'react-hook-form';
 
 import { Box } from '../../..';
 import { Input } from '../../../Form';
@@ -7,7 +7,7 @@ import { GridFormSweetContainerField } from '../../types';
 
 export type GridFormSweetContainerInputProps = {
   field: GridFormSweetContainerField;
-  register: UseFormMethods['register'];
+  register: UseFormReturn['register'];
   label: string;
 };
 

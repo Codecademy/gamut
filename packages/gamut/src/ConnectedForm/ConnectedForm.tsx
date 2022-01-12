@@ -84,7 +84,7 @@ export function ConnectedForm<Values extends FormValues<Values>>({
   children,
   onSubmit,
   defaultValues,
-  validation = 'onSubmit',
+  validation = 'onChange',
   disableFieldsOnSubmit = false,
   resetOnSubmit = false,
   showRequired = false,
@@ -95,6 +95,7 @@ export function ConnectedForm<Values extends FormValues<Values>>({
 }: ConnectedFormProps<Values>) {
   // the below is fixed in react-hook-form v7: GM-466
   // eslint-disable-next-line @typescript-eslint/unbound-method
+
   const { handleSubmit, formState, reset, watch, ...methods } = useForm({
     defaultValues,
     mode: validation,
