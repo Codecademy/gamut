@@ -39,10 +39,10 @@ export const GridFormRadioGroupInput: React.FC<GridFormRadioGroupInputProps> = (
     >
       {field.options.map(({ label, value }) => (
         <Radio
+          {...register(field.name, field.validation)}
           disabled={disabled}
           key={value}
           label={label}
-          ref={...register(field.validation)}
           value={value}
           id={field.id}
           error={error}

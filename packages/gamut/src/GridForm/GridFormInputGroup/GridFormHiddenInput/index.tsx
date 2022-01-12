@@ -13,5 +13,5 @@ export const GridFormHiddenInput: React.FC<GridFormHiddenInputProps> = ({
   field,
   register,
 }) => {
-  return <Input name={field.name} ref={register()} type={field.type} />;
+  return <Input {...register(field.name)} type={field.type} />;
 };

@@ -26,7 +26,7 @@ export const GridFormSweetContainerInput: React.FC<GridFormSweetContainerInputPr
       width="1px"
     >
       <label htmlFor={name}>{label}</label>
-      <Input name={name} ref={register()} type="checkbox" id={name} />
+      <Input {...register(name)} type="checkbox" id={name} />
     </Box>
   );
 };

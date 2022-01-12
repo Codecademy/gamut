@@ -26,7 +26,7 @@ export const GridFormTextInput: React.FC<GridFormTextInputProps> = ({
       onChange={(event) => field.onUpdate?.(event.target.value)}
       placeholder={field.placeholder}
       name={field.name}
-      ref={...register(field.validation)}
+      {...register(field.name, field.validation)}
       type={field.type}
       id={field.id}
       aria-invalid={error}
