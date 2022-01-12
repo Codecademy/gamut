@@ -1,8 +1,12 @@
+import { Badge } from '@codecademy/gamut';
+import React from 'react';
+
 import { AppHeaderLinkItem } from '../../AppHeader/AppHeaderElements/types';
 
-type ResourcesList = Omit<AppHeaderLinkItem, 'trackingTarget'> & {
+type ResourcesList = Omit<AppHeaderLinkItem, 'trackingTarget' | 'badge'> & {
   headerTrackingTarget: string;
   footerTrackingTarget: string;
+  badgeText?: string;
 };
 
 type FooterResourceList = {
@@ -12,6 +16,12 @@ type FooterResourceList = {
   text: string;
   newTab?: boolean;
 };
+
+export const renderBadge = (text: string) => (
+  <Badge size="sm" ml={8} alignSelf="center">
+    {text}
+  </Badge>
+);
 
 export const resourcesList: ResourcesList[] = [
   {
@@ -53,6 +63,7 @@ export const resourcesList: ResourcesList[] = [
     headerTrackingTarget: 'topnav_resources_videos',
     text: 'Videos',
     type: 'link',
+    badgeText: 'New',
   },
   {
     id: 'blog',
@@ -82,14 +93,17 @@ export const resourcesList: ResourcesList[] = [
 ];
 
 export const headerResourcesList: AppHeaderLinkItem[] = resourcesList.map(
-  ({ id, href, headerTrackingTarget, text, type, newTab }) => ({
-    id,
-    href,
-    trackingTarget: headerTrackingTarget,
-    text,
-    type,
-    newTab,
-  })
+  ({ id, href, headerTrackingTarget, text, type, newTab, badgeText }) => {
+    return {
+      id,
+      href,
+      trackingTarget: headerTrackingTarget,
+      text,
+      type,
+      newTab,
+      badge: badgeText ? renderBadge(badgeText) : undefined,
+    };
+  }
 );
 
 export const footerResourcesList: FooterResourceList[] = resourcesList.map(

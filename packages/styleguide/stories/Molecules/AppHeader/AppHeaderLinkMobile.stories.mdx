@@ -1,5 +1,6 @@
 import { InfoCircleIcon } from '@codecademy/gamut-icons/src';
 import { AppHeaderLinkMobile } from '@codecademy/gamut-labs/src';
+import { renderBadge } from '@codecademy/gamut-labs/src/lib/resourcesList';
 import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
@@ -11,7 +12,7 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
     layout: 'padded',
     status: 'updating',
     subtitle:
-      'A styled Anchor with an optional icon and top separator for use in AppHeaderLinkSections and the mobile menu.',
+      'A styled Anchor with an optional icon, badge and top separator for use in AppHeaderLinkSections and the mobile menu.',
   }}
   args={{
     item: {
@@ -27,7 +28,9 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 
 <Canvas>
   <Story name="AppHeaderLinkMobile">
-    {(args) => <AppHeaderLinkMobile {...args} />}
+    {(args) => (
+      <AppHeaderLinkMobile {...args} badge={renderBadge('yeeeerrrrrr')} />
+    )}
   </Story>
 </Canvas>
 

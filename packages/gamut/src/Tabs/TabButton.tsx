@@ -16,7 +16,7 @@ export interface TabButtonProps
 
 const tabSelectedStyles = {
   fontWeight: 700,
-  pt: 8,
+  pt: 12,
   pb: 8,
   borderBottomWidth: 4,
   borderColor: 'primary',
@@ -39,7 +39,7 @@ const tabStyles = system.css({
   fontWeight: 400,
   fontSize: 16,
   px: 24,
-  pt: 8,
+  pt: 12,
   pb: 11 as 12, // border + padding = 12px
   textOverflow: 'ellipsis',
   color: 'text',

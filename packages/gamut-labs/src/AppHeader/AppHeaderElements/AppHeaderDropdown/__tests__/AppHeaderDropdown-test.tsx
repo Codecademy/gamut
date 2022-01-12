@@ -52,7 +52,7 @@ describe('AppHeaderDropdown', () => {
     renderAppHeaderDropdown();
     screen.getByRole('button').click();
     expect(
-      screen.getAllByRole('link').map((node) => node.getAttribute('href'))
+      screen.getAllByRole('menuitem').map((node) => node.getAttribute('href'))
     ).toStrictEqual(testDropdownUrls);
   });
 });
