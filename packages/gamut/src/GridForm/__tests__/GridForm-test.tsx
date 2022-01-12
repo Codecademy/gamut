@@ -122,7 +122,7 @@ const baseResults = {
 };
 
 describe('GridForm', () => {
-  it('submits the form when all inputs are filled out', async () => {
+  it.only('submits the form when all inputs are filled out', async () => {
     const api = createPromise<{}>();
     const onSubmit = async (values: {}) => api.resolve(values);
 
