@@ -41,10 +41,15 @@ export const isClickableCrumb = <T,>(
 export type BreadcrumbsProps<T> = {
   crumbs: Breadcrumb<T>[];
   onClick?: (event: React.MouseEvent, crumb: ClickableCrumb<T>) => void;
+  className?: string;
 };
 
-export const Breadcrumbs = <T,>({ crumbs, onClick }: BreadcrumbsProps<T>) => (
-  <nav aria-label="breadcrumbs">
+export const Breadcrumbs = <T,>({
+  crumbs,
+  onClick,
+  className,
+}: BreadcrumbsProps<T>) => (
+  <nav aria-label="breadcrumbs" className={className}>
     <FlexBox as="ol" m={0} p={0}>
       {crumbs.map((crumb, index) => (
         <BreadcrumbPart key={crumb.title} as="li">
