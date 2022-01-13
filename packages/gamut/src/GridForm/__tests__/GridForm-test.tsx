@@ -16,6 +16,7 @@ import {
 } from './stubs';
 
 const fields = [stubCheckboxField, stubSelectField, stubTextField];
+
 const validationFields = [
   { ...stubCheckboxField, validation: { required: 'Please check' } },
   {
@@ -27,6 +28,29 @@ const validationFields = [
     validation: { required: 'Please enter text' },
   },
 ];
+
+export const getonUpdateAndFields = () => {
+  const onUpdateCheckbox = jest.fn();
+  const onUpdateSelect = jest.fn();
+  const onUpdateText = jest.fn();
+  const fields = [
+    { ...stubCheckboxField, onUpdate: onUpdateCheckbox },
+    {
+      ...stubSelectField,
+      onUpdate: onUpdateSelect,
+    },
+    {
+      ...stubTextField,
+      onUpdate: onUpdateText,
+    },
+  ];
+  return {
+    onUpdateCheckbox,
+    onUpdateSelect,
+    onUpdateText,
+    fields,
+  };
+};
 
 const renderView = setupRtl(GridForm, {
   fields,
@@ -453,7 +477,7 @@ describe('GridForm', () => {
   });
 
   describe('resetOnSubmit', () => {
-    it('resets fields when form is successfully submitted', async () => {
+    it.only('resets fields when form is successfully submitted', async () => {
       const api = createPromise<{}>();
       const onSubmit = async (values: {}) => api.resolve(values);
 
@@ -507,11 +531,24 @@ describe('GridForm', () => {
 
   describe('onUpdate', () => {
     it('calls onUpdate when field changes', async () => {
+      const {
+        onUpdateCheckbox,
+        onUpdateSelect,
+        onUpdateText,
+        fields,
+      } = getonUpdateAndFields();
+
       const { view } = renderView({
-        fields: validationFields,
+        fields,
         onSubmit: () => null,
-        resetOnSubmit: true,
       });
+
+      const { checkboxField, selectField, textField } = getBaseCases(view);
+
+      doBaseFormActions(selectField, textField, checkboxField);
+      expect(onUpdateCheckbox).toBeCalledTimes(0);
+      expect(onUpdateSelect).toBeCalledTimes(1);
+      expect(onUpdateText).toBeCalledTimes(1);
     });
   });
 });
