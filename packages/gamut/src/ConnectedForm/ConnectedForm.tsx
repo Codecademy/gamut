@@ -109,6 +109,8 @@ export function ConnectedForm<Values extends FormValues<Values>>({
   useEffect(() => {
     if (watchedFields) {
       // we're pretty exhaustively type-checking the props as they're passed in, so its fine to cast here.
+
+      // @to-do : fix!
       const fields = watch(watchedFields.fields as any);
       watchedFields.watchHandler(fields as any);
     }

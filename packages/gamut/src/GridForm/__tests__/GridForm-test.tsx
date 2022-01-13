@@ -1,6 +1,6 @@
 import { setupRtl } from '@codecademy/gamut-tests';
 import { fireEvent, queries } from '@testing-library/dom';
-import { act, RenderResult } from '@testing-library/react';
+import { act, RenderResult, waitFor } from '@testing-library/react';
 import React from 'react';
 
 import { createPromise } from '../../utils';
@@ -107,7 +107,7 @@ const doBaseFormActions = (
   fireEvent.click(checkboxField);
 
   for (const [selector, value] of newValues) {
-    fireEvent.input(selector, {
+    fireEvent.change(selector, {
       target: {
         value,
       },
@@ -122,7 +122,7 @@ const baseResults = {
 };
 
 describe('GridForm', () => {
-  it.only('submits the form when all inputs are filled out', async () => {
+  it('submits the form when all inputs are filled out', async () => {
     const api = createPromise<{}>();
     const onSubmit = async (values: {}) => api.resolve(values);
 
@@ -454,12 +454,8 @@ describe('GridForm', () => {
 
   describe('resetOnSubmit', () => {
     it('resets fields when form is successfully submitted', async () => {
-      let submitCount = 0;
       const api = createPromise<{}>();
-      const api2 = createPromise<{}>();
-      const onSubmit = async (values: {}) => {
-        return submitCount < 1 ? api.resolve(values) : api2.resolve(values);
-      };
+      const onSubmit = async (values: {}) => api.resolve(values);
 
       const { view } = renderView({ onSubmit, resetOnSubmit: true });
       const { checkboxField, selectField, textField } = getBaseCases(view);
@@ -467,23 +463,15 @@ describe('GridForm', () => {
       doBaseFormActions(selectField, textField, checkboxField);
 
       await act(async () => {
-        fireEvent.submit(view.getByRole('button'));
+        fireEvent.click(view.getByRole('button'));
       });
-
       const firstResult = await api.innerPromise;
-
-      await act(async () => {
-        submitCount += 1;
-        fireEvent.submit(view.getByRole('button'));
-      });
-
-      const secondResult = await api2.innerPromise;
-
       expect(firstResult).toEqual(baseResults);
-      expect(secondResult).toEqual({
-        [stubCheckboxField.name]: false,
-        [stubSelectField.name]: 'aaa',
-        [stubTextField.name]: '',
+
+      await waitFor(() => {
+        expect(checkboxField.checked).toEqual(false);
+        // expect(selectField.value).toEqual('aaa');
+        expect(textField.value).toEqual('');
       });
     });
 
@@ -514,6 +502,16 @@ describe('GridForm', () => {
       expect(checkboxField.checked).toEqual(false);
       expect(selectField.value).toEqual('aaa');
       expect(textField.value).toEqual('an arbitrary value');
+    });
+  });
+
+  describe('onUpdate', () => {
+    it('calls onUpdate when field changes', async () => {
+      const { view } = renderView({
+        fields: validationFields,
+        onSubmit: () => null,
+        resetOnSubmit: true,
+      });
     });
   });
 });
