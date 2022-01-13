@@ -6,7 +6,7 @@ import { AppHeaderClickHandler, AppHeaderLinkItem } from '../types';
 export type AppHeaderLinkProps = {
   action: AppHeaderClickHandler;
   item: AppHeaderLinkItem;
-  isMobile?: boolean;
+  showIcons?: boolean;
   tabIndex?: string;
   onKeyDown?: (event: React.KeyboardEvent) => void;
 } & AnchorProps;
@@ -14,7 +14,7 @@ export type AppHeaderLinkProps = {
 export const AppHeaderLink: React.FC<AppHeaderLinkProps> = ({
   action,
   item,
-  isMobile = false,
+  showIcons = false,
   mx = { _: 0, md: 24 },
   py = { _: 16, md: 8 },
   onKeyDown,
@@ -32,6 +32,7 @@ export const AppHeaderLink: React.FC<AppHeaderLinkProps> = ({
       target={item.newTab ? 'blank' : ''}
       variant="interface"
       alignContent="center"
+      alignItems="center"
       display="flex"
       fontWeight="normal"
       lineHeight="base"
@@ -42,7 +43,7 @@ export const AppHeaderLink: React.FC<AppHeaderLinkProps> = ({
       py={py}
       {...props}
     >
-      {isMobile && Icon && <Icon mr={16} size={24} aria-hidden />}
+      {showIcons && Icon && <Icon mr={16} size={24} aria-hidden />}
       {item.text}
       {item.badge}
     </Anchor>

@@ -1,13 +1,12 @@
 import {
   ButtonBaseElements,
   FlexBox,
+  IconButton,
   Notification,
   Text,
 } from '@codecademy/gamut';
 import { BellIcon } from '@codecademy/gamut-icons';
 import React, { useEffect } from 'react';
-
-import { HeaderIconButton } from '../AppHeader/shared';
 
 export type NotificationBellProps = {
   bellRef: React.RefObject<ButtonBaseElements>;
@@ -34,7 +33,7 @@ export const NotificationBell: React.FC<NotificationBellProps> = ({
   }, [unread]);
 
   return (
-    <HeaderIconButton
+    <IconButton
       aria-label={
         unread
           ? `Toggle Notification Menu, ${unread} unread notifications`
@@ -62,6 +61,6 @@ export const NotificationBell: React.FC<NotificationBellProps> = ({
           </Text>
         </FlexBox>
       ) : null}
-    </HeaderIconButton>
+    </IconButton>
   );
 };

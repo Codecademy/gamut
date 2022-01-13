@@ -116,6 +116,7 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
                     openMobileMenu();
                   }}
                   icon={MenuIcon}
+                  variant="interface"
                 />
               </AppHeaderListItem>
             </StyledMenuBar>
