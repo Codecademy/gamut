@@ -1,41 +1,34 @@
-import { Anchor } from '@codecademy/gamut';
 import React from 'react';
 
 export const ALERTS = {
   general: {
     type: 'general',
-    children: 'You have been logged out due to inactivity.',
-    cta: { children: 'Login' },
+    children:
+      'Please verify your email so we can make sure your account is secure. A link has been sent to name@email.com.',
+    cta: { children: 'Resend verification' },
   },
   success: {
     type: 'success',
-    cta: { children: 'Learn more' },
-    children: (
-      <>
-        Success notification with an icon, an <Anchor>inline link</Anchor>, a
-        call-to-action and an X
-      </>
-    ),
+    cta: { children: '' },
+    children: <>Success! Your content has been assigned.</>,
   },
   feature: {
     type: 'feature',
-    cta: { children: 'Learn more' },
+    cta: { children: 'Add your name' },
     children:
-      'You can now do this new thing with this new feature we just added!',
+      'Update your profile with your name to help your team with account management.',
   },
   notice: {
     type: 'notice',
     cta: { children: 'Learn more' },
     children: (
-      <>
-        Maintenance: Codecademy will be <Anchor>offline</Anchor> between 02:00
-        AM and 08:00 AM.
-      </>
+      <>Maintenance: Codecademy will be offline between 2AM and 4AM EST.</>
     ),
   },
   error: {
     type: 'error',
-    cta: { children: 'Learn more' },
-    children: 'Couldn’t save your account changes because there is connection.',
+    cta: { children: '' },
+    children:
+      'We were unable to add this team member. Please refresh the page and try again.',
   },
 };

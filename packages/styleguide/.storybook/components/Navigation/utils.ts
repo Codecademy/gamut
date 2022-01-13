@@ -44,8 +44,9 @@ export const getKind = (
     };
   }
   if (lowerCaseKind.includes(indexPage)) {
-    const indexPath = path.concat('--page');
+    const indexPath = path.replace(/\s/g, '-').concat('--page');
     const heirarchyPath = path.replace(`-${indexPage}`, '');
+    console.log(indexPath);
     return {
       type: 'index',
       id: indexPath,

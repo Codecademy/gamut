@@ -39,7 +39,7 @@ describe('AppHeaderSubMenuMobile', () => {
   it('creates sublinks with the provided hrefs', () => {
     renderAppHeaderSubMenuMobile();
     const linkArray = screen
-      .getAllByRole('link')
+      .getAllByRole('menuitem')
       .map((node) => node.getAttribute('href'));
     expect(linkArray).toStrictEqual([sublink1Href, sublink2Href]);
   });

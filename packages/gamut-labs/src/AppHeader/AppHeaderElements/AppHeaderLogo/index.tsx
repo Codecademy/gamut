@@ -19,8 +19,11 @@ export const AppHeaderLogo: React.FC<AppHeaderLogoProps> = ({
       py={4}
       onClick={(event) => action(event, item)}
       href={item.href}
+      tabIndex="0"
+      role="menuitem"
     >
       <Logo
+        color="currentColor"
         variant={item.pro ? 'pro' : 'default'}
         height={27}
         verticalAlign="text-bottom"
