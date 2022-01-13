@@ -81,8 +81,8 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
           key={item.id}
           ml={side === 'right' && index === 0 ? 'auto' : 0}
           display={{
-            _: isHidable ? 'none' : 'block',
-            xs: 'block',
+            _: isHidable ? 'none' : 'flex',
+            xs: 'flex',
           }}
         >
           {mapItemToElement(action, item, redirectParam, undefined, true)}

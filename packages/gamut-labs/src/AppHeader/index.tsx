@@ -29,9 +29,7 @@ export type AppHeaderProps = {
 
 export const StyledAppBar = styled(AppBar)(
   css({
-    padding: `0.75rem 0`,
     boxShadow: `none`,
-    width: `100%`,
   })
 );
 
