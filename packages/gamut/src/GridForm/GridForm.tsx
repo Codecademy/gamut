@@ -99,6 +99,7 @@ export function GridForm<Values extends FormValues<Values>>({
   rowGap = 16,
   submit,
   validation = 'onSubmit',
+  resetOnSubmit,
   showRequired = false,
   ...rest
 }: GridFormProps<Values>) {
@@ -113,7 +114,7 @@ export function GridForm<Values extends FormValues<Values>>({
     (defaultValues, field) => ({
       ...defaultValues,
       [field.name]:
-        field.defaultValue === undefined
+        resetOnSubmit && field.defaultValue === undefined
           ? assignDefaultValue(field)
           : field.defaultValue,
     }),

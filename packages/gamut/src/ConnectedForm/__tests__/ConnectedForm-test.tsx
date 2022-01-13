@@ -1,6 +1,6 @@
 import { setupRtl } from '@codecademy/gamut-tests';
 import { fireEvent, queries } from '@testing-library/dom';
-import { act, RenderResult } from '@testing-library/react';
+import { act, RenderResult, waitFor } from '@testing-library/react';
 import React from 'react';
 
 import { createPromise } from '../../utils';
@@ -50,7 +50,7 @@ const doBaseFormActions = (
   fireEvent.click(radioOption);
 
   for (const [selector, value] of newValues) {
-    fireEvent.input(selector, {
+    fireEvent.change(selector, {
       target: {
         value,
       },
@@ -152,7 +152,7 @@ describe('ConnectedForm', () => {
   });
 
   describe('onChange validation', () => {
-    it('disables the submit button when required fields are incomplete', async () => {
+    it.only('disables the submit button when required fields are incomplete', async () => {
       const api = createPromise<{}>();
       const onSubmit = async (values: {}) => api.resolve(values);
 
@@ -165,6 +165,7 @@ describe('ConnectedForm', () => {
       });
 
       const { textField } = getBaseCases(view);
+      const submitButton = view.getByRole('button');
 
       await act(async () => {
         fireEvent.input(textField, {
@@ -173,8 +174,9 @@ describe('ConnectedForm', () => {
           },
         });
       });
+      const result = await api.innerPromise;
 
-      const submitButton = view.getByRole('button');
+      console.log(result);
       expect(submitButton).toBeDisabled();
     });
 
@@ -200,7 +202,10 @@ describe('ConnectedForm', () => {
       doBaseFormActions(checkboxField, selectField, textField, radioOption);
 
       const submitButton = view.getByRole('button');
-      expect(submitButton).not.toBeDisabled();
+
+      await waitFor(() => {
+        expect(submitButton).not.toBeDisabled();
+      });
     });
   });
 

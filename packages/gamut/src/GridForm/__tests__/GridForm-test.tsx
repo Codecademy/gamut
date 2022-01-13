@@ -470,7 +470,7 @@ describe('GridForm', () => {
 
       await waitFor(() => {
         expect(checkboxField.checked).toEqual(false);
-        // expect(selectField.value).toEqual('aaa');
+        expect(selectField.value).toEqual('aaa');
         expect(textField.value).toEqual('');
       });
     });
