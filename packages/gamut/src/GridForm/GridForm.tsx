@@ -23,7 +23,6 @@ import {
   GridFormSectionBreakTypes,
   GridFormSectionProps,
 } from './types';
-import { assignDefaultValue } from './utils';
 
 export * from './types';
 
@@ -99,7 +98,6 @@ export function GridForm<Values extends FormValues<Values>>({
   rowGap = 16,
   submit,
   validation = 'onSubmit',
-  resetOnSubmit,
   showRequired = false,
   ...rest
 }: GridFormProps<Values>) {
@@ -110,12 +108,12 @@ export function GridForm<Values extends FormValues<Values>>({
   type Defaults = UnpackNestedValue<DeepPartial<Values>>;
 
   const defaultValues = flatFields.reduce<Defaults>(
-    // RHF 7 requires default values in order to reset correctly.
+    // since our checkbox is a controlled input, it needs to be provided with a default value in order to reset correctly.
     (defaultValues, field) => ({
       ...defaultValues,
       [field.name]:
-        resetOnSubmit && field.defaultValue === undefined
-          ? assignDefaultValue(field)
+        field.type === 'checkbox' && field.defaultValue === undefined
+          ? false
           : field.defaultValue,
     }),
     {} as Defaults
