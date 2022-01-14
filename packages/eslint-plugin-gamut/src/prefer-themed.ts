@@ -8,7 +8,6 @@ export default createRule({
   create(context) {
     return {
       TaggedTemplateExpression(node) {
-        const myNode = node.tag.type;
         if (node.tag.type === AST_NODE_TYPES.MemberExpression) {
           if (node.tag.object.type !== 'Identifier') return;
           const expressionVariable = node.tag.object.name;
