@@ -231,7 +231,7 @@ export const AppHeader: React.FC<AppHeaderProps> = ({
 
   return (
     <HeaderHeightArea
-      display={{ _: 'none', md: 'block' }}
+      display={{ _: 'none', lg: 'block' }}
       as="nav"
       title="Main Navigation"
     >

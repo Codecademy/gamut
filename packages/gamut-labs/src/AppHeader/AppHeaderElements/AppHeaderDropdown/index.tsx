@@ -140,16 +140,7 @@ export const AppHeaderDropdown: React.FC<AppHeaderDropdownProps> = ({
     }
   };
 
-  const toggleIsOpen = () => {
-    setIsOpen((prevState) => !prevState);
-  };
-
-  const handleOnClick = (event: React.MouseEvent) => {
-    toggleIsOpen();
-    if (!isOpen) {
-      action(event, item);
-    }
-  };
+  const toggleIsOpen = () => setIsOpen((prev) => !prev);
 
   const handleClose = useCallback(() => {
     setIsOpen(false);
@@ -161,7 +152,7 @@ export const AppHeaderDropdown: React.FC<AppHeaderDropdownProps> = ({
       case KEY_CODES.ENTER:
       case KEY_CODES.SPACE:
         event.preventDefault();
-        toggleIsOpen();
+        setIsOpen(true);
         break;
       case KEY_CODES.DOWN:
         event.preventDefault();
@@ -234,10 +225,14 @@ export const AppHeaderDropdown: React.FC<AppHeaderDropdownProps> = ({
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent | Event) {
+      const list = listRef?.current;
+      const button = buttonRef?.current;
       if (
         isOpen &&
-        listRef.current &&
-        !listRef.current.contains(event.target as Node)
+        list &&
+        !list.contains(event.target as Node) &&
+        button &&
+        !button.contains(event.target as Node)
       ) {
         handleClose();
       }
@@ -258,7 +253,7 @@ export const AppHeaderDropdown: React.FC<AppHeaderDropdownProps> = ({
       aria-expanded={isOpen}
       aria-haspopup
       ref={buttonRef}
-      onClick={handleOnClick}
+      onClick={toggleIsOpen}
       onKeyDown={buttonHandleKeyEvents}
       tabIndex="-1"
       data-testid="avatar-dropdown-button"
@@ -274,7 +269,7 @@ export const AppHeaderDropdown: React.FC<AppHeaderDropdownProps> = ({
   ) : (
     <DropdownAnchor
       ref={buttonRef}
-      onClick={handleOnClick}
+      onClick={toggleIsOpen}
       onKeyDown={buttonHandleKeyEvents}
       title={item.text}
       variant="interface"
@@ -302,14 +297,13 @@ export const AppHeaderDropdown: React.FC<AppHeaderDropdownProps> = ({
       {clickTarget}
       <StyledDropdown
         style={{
-          borderWidth: isOpen ? 1 : 0,
           right: isProfileDropdown ? '0.5rem' : '',
           top: isProfileDropdown ? '2.75rem' : '2.25rem',
           width: dimensions.width,
-          visibility: isOpen ? 'visible' : 'hidden',
         }}
-        initial={{ height: 0 }}
+        initial={{ borderWidth: 0, height: 0 }}
         animate={{
+          borderWidth: isOpen ? 1 : 0,
           height: isOpen ? dimensions.height : 0,
         }}
         transition={{ duration: 0.175 }}
@@ -326,6 +320,7 @@ export const AppHeaderDropdown: React.FC<AppHeaderDropdownProps> = ({
           onKeyDown={menuHandleKeyEvents}
           aria-controls={`menu-container${item.text}`}
           aria-label={item.text}
+          aria-hidden={!isOpen}
         />
       </StyledDropdown>
     </>

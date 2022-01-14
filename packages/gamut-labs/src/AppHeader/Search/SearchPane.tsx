@@ -68,10 +68,6 @@ export const SearchPane: React.FC<SearchPaneProps> = ({
       return;
     }
 
-    if (target.closest('header')) {
-      return;
-    }
-
     toggleSearch();
   };
 

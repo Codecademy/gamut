@@ -100,7 +100,7 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
     <>
       {!mobileMenuOpen && ( // need this bc AppBar has a hardcoded z-Index of 15
         <HeaderHeightArea
-          display={{ _: 'block', md: 'none' }}
+          display={{ _: 'block', lg: 'none' }}
           as="nav"
           title="Mobile Navigation"
         >
@@ -130,7 +130,7 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
         onRequestClose={() => setMobileMenuOpen(false)}
       >
         <HeaderHeightArea
-          display={{ _: 'block', md: 'none' }}
+          display={{ _: 'block', lg: 'none' }}
           as="nav"
           title="Mobile Navigation"
           data-testid="header-mobile-menu-dropdown"
