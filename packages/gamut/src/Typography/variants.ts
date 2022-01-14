@@ -80,7 +80,8 @@ export const typographyElementVariants = {
 } as const;
 
 export const typographyUtilities = {
-  truncation: ['ellipsis', 'fade', false],
+  truncateLines: [1, 2, 3, 4, 5],
+  truncation: ['ellipsis', 'fade'],
   smoothing: [true, false],
   screenreader: [true, false],
 } as const;
