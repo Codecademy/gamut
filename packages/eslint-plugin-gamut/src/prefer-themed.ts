@@ -7,41 +7,62 @@ export default createRule({
 
   create(context) {
     return {
-      TaggedTemplateExpression: function (node) {
+      TaggedTemplateExpression(node) {
+        const myNode = node.tag.type;
         if (node.tag.type === AST_NODE_TYPES.MemberExpression) {
-          if (node.tag.object.type === 'Identifier') {
-            const expressionVariable = node.tag.object.name;
-            const arrowFuncExpression = node.quasi.expressions[0];
+          if (node.tag.object.type !== 'Identifier') return;
+          const expressionVariable = node.tag.object.name;
+          const arrowFuncExpression = node.quasi.expressions[0];
 
+          if (
+            arrowFuncExpression.type !== AST_NODE_TYPES.ArrowFunctionExpression
+          )
+            return;
+          const argObject = arrowFuncExpression.params[0];
+
+          if (argObject.type !== AST_NODE_TYPES.ObjectPattern) return;
+          const argumentVariable = argObject.properties[0].value;
+
+          if (argumentVariable?.type !== AST_NODE_TYPES.Identifier) return;
+          const namedArgumentVariable = argumentVariable.name;
+
+          if (
+            expressionVariable === 'styled' &&
+            namedArgumentVariable === 'theme'
+          ) {
+            // TURN INTO UTILITY FUNCTION
             if (
-              arrowFuncExpression.type ===
-              AST_NODE_TYPES.ArrowFunctionExpression
-            ) {
-              const argObject = arrowFuncExpression.params[0];
+              arrowFuncExpression.body.type !== AST_NODE_TYPES.MemberExpression
+            )
+              return;
+            if (
+              arrowFuncExpression.body.object.type !==
+              AST_NODE_TYPES.MemberExpression
+            )
+              return;
+            if (
+              arrowFuncExpression.body.property.type !==
+              AST_NODE_TYPES.Identifier
+            )
+              return;
+            if (
+              arrowFuncExpression.body.object.property.type !==
+              AST_NODE_TYPES.Identifier
+            )
+              return;
+            const themeValueKey = arrowFuncExpression.body.property.name;
+            const themeCategory = arrowFuncExpression.body.object.property.name;
 
-              if (argObject.type === AST_NODE_TYPES.ObjectPattern) {
-                const argumentVariable = argObject.properties[0].value;
-
-                if (argumentVariable?.type === AST_NODE_TYPES.Identifier) {
-                  const namedArgumentVariable = argumentVariable.name;
-                  if (
-                    expressionVariable === 'styled' &&
-                    namedArgumentVariable === 'theme'
-                  ) {
-                    context.report({
-                      fix: (fixer) => {
-                        return fixer.replaceText(
-                          arrowFuncExpression,
-                          'themed(etc)'
-                        );
-                      },
-                      messageId: 'preferThemed',
-                      node,
-                    });
-                  }
-                }
-              }
-            }
+            context.report({
+              fix: (fixer) => {
+                return fixer.replaceText(
+                  arrowFuncExpression,
+                  `themed(${themeCategory}.${themeValueKey})`
+                );
+              },
+              messageId: 'preferThemed',
+              node,
+            });
           }
         }
       },

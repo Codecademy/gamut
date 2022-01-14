@@ -19,14 +19,16 @@ ruleTester.run('prefer-themed', rule, {
   invalid: [
     {
       code: `styled.div\`
-  color: \${({ theme }) => theme.colors.wat };
+  color: \${({ theme }) => theme.colors.wat};
 \``,
       errors: [
         {
           messageId: 'preferThemed',
         },
       ],
-      output: '${themed(etc)}',
+      output: `styled.div\`
+  color: \${themed(colors.wat)};
+\``,
     },
   ],
 });
