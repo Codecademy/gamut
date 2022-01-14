@@ -118,7 +118,6 @@ export function ConnectedForm<Values extends FormValues<Values>>({
 
   useEffect(() => {
     if (isSubmitSuccessful && resetOnSubmit) {
-      console.log('hi');
       reset(defaultValues);
     }
   }, [isSubmitSuccessful, resetOnSubmit, reset, defaultValues]);
