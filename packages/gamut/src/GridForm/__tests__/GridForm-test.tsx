@@ -477,6 +477,8 @@ describe('GridForm', () => {
   });
 
   describe('resetOnSubmit', () => {
+    // to-do: reset fields is working on the component but not here, fun.
+
     it.only('resets fields when form is successfully submitted', async () => {
       const api = createPromise<{}>();
       const onSubmit = async (values: {}) => api.resolve(values);
@@ -490,6 +492,7 @@ describe('GridForm', () => {
         fireEvent.click(view.getByRole('button'));
       });
       const firstResult = await api.innerPromise;
+      expect(firstResult).toEqual(baseResults);
       expect(firstResult).toEqual(baseResults);
 
       await waitFor(() => {
