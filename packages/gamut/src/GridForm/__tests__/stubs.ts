@@ -46,7 +46,6 @@ export const stubSelectField: GridFormSelectField = {
   name: 'stub-select',
   size: 6,
   type: 'select',
-  defaultValue: 'aaa',
 };
 
 export const stubTextField: GridFormTextField = {

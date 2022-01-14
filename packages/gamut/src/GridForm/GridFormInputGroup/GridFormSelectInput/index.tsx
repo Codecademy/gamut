@@ -17,20 +17,17 @@ export const GridFormSelectInput: React.FC<GridFormSelectInputProps> = ({
   register,
   required,
 }) => {
-  const { onChange, ...rest } = register(field.name, field.validation);
-
   return (
     <Select
-      {...rest}
+      {...register(field.name, {
+        ...field.validation,
+        onChange: (event) => field.onUpdate?.(event.target.value),
+      })}
       defaultValue={field.defaultValue}
       disabled={disabled}
       className={className}
       error={error}
       htmlFor={field.name}
-      onChange={async (event) => {
-        await onChange(event);
-        field.onUpdate?.(event.target.value);
-      }}
       options={field.options}
       id={field.id}
       aria-invalid={error}
