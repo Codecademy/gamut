@@ -4,7 +4,7 @@ import { act, RenderResult, waitFor } from '@testing-library/react';
 import React from 'react';
 
 import { createPromise } from '../../utils';
-import { ConnectedForm, SubmitButton } from '..';
+import { ConnectedForm } from '..';
 import { PlainConnectedFields } from '../__fixtures__/helpers';
 
 const renderView = setupRtl(ConnectedForm, {
