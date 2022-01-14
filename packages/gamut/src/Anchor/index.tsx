@@ -73,9 +73,6 @@ const anchorVariants = variant({
       [ButtonSelectors.HOVER]: {
         color: 'primary',
       },
-      [ButtonSelectors.FOCUS]: {
-        color: 'primary',
-      },
       [ButtonSelectors.FOCUS_VISIBLE]: {
         color: 'primary',
       },

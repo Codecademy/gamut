@@ -33,7 +33,7 @@ export const textButtonVariants = templateVariants(
     [ButtonSelectors.HOVER]: {
       color: variant,
     },
-    [ButtonSelectors.FOCUS]: {
+    [ButtonSelectors.FOCUS_VISIBLE]: {
       color: variant,
     },
     [ButtonSelectors.OUTLINE]: {

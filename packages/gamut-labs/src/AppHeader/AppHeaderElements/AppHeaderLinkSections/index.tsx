@@ -16,7 +16,7 @@ export type AppHeaderLinkSectionsProps = {
   role?: string;
   id?: string;
   style?: {};
-  showIcons?: boolean;
+  showIcon?: boolean;
   onKeyDown?: (event: React.KeyboardEvent) => void;
   onFocus?: () => void;
   onBlur?: () => void;
@@ -26,7 +26,7 @@ type LinkComponentProps = {
   action: AppHeaderClickHandler;
   link: AppHeaderLinkItem;
   showLineBreak?: boolean;
-  showIcons?: boolean;
+  showIcon?: boolean;
   onKeyDown?: (event: React.KeyboardEvent) => void;
 };
 
@@ -59,7 +59,7 @@ const StyledListItem = styled.li<StyledListItemProps>(
 const LinkComponent: React.FC<LinkComponentProps> = ({
   action,
   link,
-  showIcons = false,
+  showIcon = false,
   showLineBreak = false,
   onKeyDown,
 }) => (
@@ -69,7 +69,7 @@ const LinkComponent: React.FC<LinkComponentProps> = ({
       item={link}
       onKeyDown={onKeyDown}
       py={16}
-      showIcons={showIcons}
+      showIcon={showIcon}
       tabIndex="-1"
     />
   </StyledListItem>
@@ -78,7 +78,7 @@ const LinkComponent: React.FC<LinkComponentProps> = ({
 export const AppHeaderLinkSections = React.forwardRef<
   HTMLUListElement,
   AppHeaderLinkSectionsProps
->(({ action, item, showIcons = false, onKeyDown, ...props }, ref) => (
+>(({ action, item, showIcon = false, onKeyDown, ...props }, ref) => (
   <StyledList ref={ref} {...props}>
     {item.type === 'profile-dropdown'
       ? item.popover.map((linkSection: AppHeaderLinkItem[], sectionIndex) =>
@@ -89,7 +89,7 @@ export const AppHeaderLinkSections = React.forwardRef<
               action={action}
               link={link}
               showLineBreak={sectionIndex !== 0 && linkIndex === 0}
-              showIcons={showIcons}
+              showIcon={showIcon}
             />
           ))
         )
