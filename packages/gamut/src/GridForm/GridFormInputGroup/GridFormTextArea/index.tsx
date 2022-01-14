@@ -30,6 +30,7 @@ export const GridFormTextArea: React.FC<GridFormTextAreaProps> = ({
       error={error}
       htmlFor={field.name}
       id={field.id}
+      name={field.name}
       placeholder={field.placeholder}
     />
   );

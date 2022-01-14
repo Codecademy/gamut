@@ -24,6 +24,7 @@ export const GridFormTextInput: React.FC<GridFormTextInputProps> = ({
         onChange: (event) => field.onUpdate?.(event.target.value),
       })}
       className={className}
+      name={field.name}
       disabled={disabled}
       error={error}
       htmlFor={field.name}

@@ -30,6 +30,7 @@ export const GridFormFileInput: React.FC<GridFormFileInputProps> = ({
       error={error}
       htmlFor={field.name}
       id={field.id}
+      name={field.name}
       type="file"
     />
   );
