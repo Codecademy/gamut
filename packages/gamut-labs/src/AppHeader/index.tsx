@@ -233,7 +233,7 @@ export const AppHeader: React.FC<AppHeaderProps> = ({
     <HeaderHeightArea
       display={{ _: 'none', lg: 'block' }}
       as="nav"
-      title="Main Navigation"
+      aria-label="Main Navigation"
     >
       <StyledAppBar>
         <StyledMenuBar

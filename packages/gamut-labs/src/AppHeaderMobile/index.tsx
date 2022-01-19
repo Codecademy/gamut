@@ -102,7 +102,7 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
         <HeaderHeightArea
           display={{ _: 'block', lg: 'none' }}
           as="nav"
-          title="Mobile Navigation"
+          aria-label="Mobile Navigation"
         >
           <StyledAppBar>
             <StyledMenuBar role="menubar">
