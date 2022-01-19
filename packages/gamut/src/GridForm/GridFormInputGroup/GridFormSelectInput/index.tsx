@@ -23,15 +23,16 @@ export const GridFormSelectInput: React.FC<GridFormSelectInputProps> = ({
         ...field.validation,
         onChange: (event) => field.onUpdate?.(event.target.value),
       })}
-      defaultValue={field.defaultValue}
-      disabled={disabled}
-      className={className}
-      error={error}
-      htmlFor={field.name}
-      options={field.options}
-      id={field.id}
       aria-invalid={error}
       aria-required={required}
+      className={className}
+      defaultValue={field.defaultValue}
+      disabled={disabled}
+      error={error}
+      htmlFor={field.name}
+      id={field.id}
+      name={field.name}
+      options={field.options}
     />
   );
 };

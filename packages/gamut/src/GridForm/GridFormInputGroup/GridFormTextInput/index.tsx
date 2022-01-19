@@ -23,16 +23,16 @@ export const GridFormTextInput: React.FC<GridFormTextInputProps> = ({
         ...field.validation,
         onChange: (event) => field.onUpdate?.(event.target.value),
       })}
+      aria-invalid={error}
+      aria-required={required}
       className={className}
-      name={field.name}
       disabled={disabled}
       error={error}
       htmlFor={field.name}
+      id={field.id}
+      name={field.name}
       placeholder={field.placeholder}
       type={field.type}
-      id={field.id}
-      aria-invalid={error}
-      aria-required={required}
     />
   );
 };
