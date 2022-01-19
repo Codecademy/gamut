@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [28.6.4](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@28.6.3...@codecademy/gamut-labs@28.6.4) (2022-01-14)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [28.6.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@28.6.2...@codecademy/gamut-labs@28.6.3) (2022-01-13)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [28.6.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@28.6.1...@codecademy/gamut-labs@28.6.2) (2022-01-11)
+
+
+### Bug Fixes
+
+* **AppHeaderDropdown:** boder and tab fix ([4775c8c](https://github.com/Codecademy/gamut/commit/4775c8cf7202668336898a854e267af9e2108f72))
+
+
+
 ### [28.6.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@28.6.0...@codecademy/gamut-labs@28.6.1) (2022-01-07)
 
 
