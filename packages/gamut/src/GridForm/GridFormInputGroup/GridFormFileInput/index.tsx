@@ -17,12 +17,14 @@ export const GridFormFileInput: React.FC<GridFormFileInputProps> = ({
   register,
   required,
 }) => {
+  const { onChange, ...rest } = {
+    ...register(field.name, {
+      ...field.validation,
+    }),
+  };
   return (
     <Input
-      {...register(field.name, {
-        ...field.validation,
-        onChange: (event) => field.onUpdate?.(event.target.files!),
-      })}
+      {...rest}
       aria-invalid={error}
       aria-required={required}
       className={className}
@@ -31,6 +33,10 @@ export const GridFormFileInput: React.FC<GridFormFileInputProps> = ({
       htmlFor={field.name}
       id={field.id}
       name={field.name}
+      onChange={async (event) => {
+        field.onUpdate?.(event.target.files!);
+        await onChange(event);
+      }}
       type="file"
     />
   );

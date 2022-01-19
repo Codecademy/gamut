@@ -530,27 +530,4 @@ describe('GridForm', () => {
       expect(textField.value).toEqual('an arbitrary value');
     });
   });
-
-  describe('onUpdate', () => {
-    it('calls onUpdate when field changes', async () => {
-      const {
-        onUpdateCheckbox,
-        onUpdateSelect,
-        onUpdateText,
-        fields,
-      } = getonUpdateAndFields();
-
-      const { view } = renderView({
-        fields,
-        onSubmit: () => null,
-      });
-
-      const { checkboxField, selectField, textField } = getBaseCases(view);
-
-      doBaseFormActions(selectField, textField, checkboxField);
-      expect(onUpdateCheckbox).toBeCalledTimes(1);
-      expect(onUpdateSelect).toBeCalledTimes(1);
-      expect(onUpdateText).toBeCalledTimes(1);
-    });
-  });
 });

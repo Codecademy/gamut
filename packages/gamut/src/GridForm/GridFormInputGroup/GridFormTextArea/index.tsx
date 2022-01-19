@@ -17,12 +17,14 @@ export const GridFormTextArea: React.FC<GridFormTextAreaProps> = ({
   register,
   required,
 }) => {
+  const { onChange, ...rest } = {
+    ...register(field.name, {
+      ...field.validation,
+    }),
+  };
   return (
     <TextArea
-      {...register(field.name, {
-        ...field.validation,
-        onChange: (event) => field.onUpdate?.(event.target.value),
-      })}
+      {...rest}
       aria-invalid={error}
       aria-required={required}
       className={className}
@@ -31,6 +33,10 @@ export const GridFormTextArea: React.FC<GridFormTextAreaProps> = ({
       htmlFor={field.name}
       id={field.id}
       name={field.name}
+      onChange={async (event) => {
+        field?.onUpdate?.(event.target.value);
+        await onChange(event);
+      }}
       placeholder={field.placeholder}
     />
   );
