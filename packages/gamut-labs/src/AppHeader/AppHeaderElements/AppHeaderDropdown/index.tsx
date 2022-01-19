@@ -142,6 +142,13 @@ export const AppHeaderDropdown: React.FC<AppHeaderDropdownProps> = ({
 
   const toggleIsOpen = () => setIsOpen((prev) => !prev);
 
+  const handleOnClick = (event: React.MouseEvent) => {
+    toggleIsOpen();
+    if (!isOpen) {
+      action(event, item);
+    }
+  };
+
   const handleClose = useCallback(() => {
     setIsOpen(false);
     focusButton();
@@ -253,7 +260,7 @@ export const AppHeaderDropdown: React.FC<AppHeaderDropdownProps> = ({
       aria-expanded={isOpen}
       aria-haspopup
       ref={buttonRef}
-      onClick={toggleIsOpen}
+      onClick={handleOnClick}
       onKeyDown={buttonHandleKeyEvents}
       tabIndex="-1"
       data-testid="avatar-dropdown-button"
@@ -269,7 +276,7 @@ export const AppHeaderDropdown: React.FC<AppHeaderDropdownProps> = ({
   ) : (
     <DropdownAnchor
       ref={buttonRef}
-      onClick={toggleIsOpen}
+      onClick={handleOnClick}
       onKeyDown={buttonHandleKeyEvents}
       title={item.text}
       variant="interface"
