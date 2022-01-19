@@ -35,7 +35,7 @@ export const StyledAppBar = styled(AppBar)(
   })
 );
 
-const StyledMenuBar = styled.ul(
+export const StyledMenuBar = styled.ul(
   css({
     display: `flex`,
     padding: 0,
@@ -80,6 +80,7 @@ export const mapItemToElement = (
           onClick={(event: React.MouseEvent) => action(event, item)}
           data-testid={item.dataTestId}
           tabIndex="-1"
+          role="menuitem"
           href={
             item.redirect
               ? formatUrlWithRedirect(item.href, redirectParam)
@@ -99,6 +100,7 @@ export const mapItemToElement = (
               ? formatUrlWithRedirect(item.href, redirectParam)
               : item.href
           }
+          role="menuitem"
           tabIndex="-1"
           onClick={(event: React.MouseEvent) => action(event, item)}
         >
@@ -226,7 +228,11 @@ export const AppHeader: React.FC<AppHeaderProps> = ({
   };
 
   return (
-    <HeaderHeightArea display={{ _: 'none', md: 'block' }} as="nav">
+    <HeaderHeightArea
+      display={{ _: 'none', md: 'block' }}
+      as="nav"
+      title="Main Navigation"
+    >
       <StyledAppBar>
         <StyledMenuBar
           role="menubar"

@@ -3,6 +3,42 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [43.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@43.0.0...@codecademy/gamut@43.1.0) (2022-01-14)
+
+
+### Features
+
+* (SelectDropdown multi select) Allow value to override internal state ([44e0a43](https://github.com/Codecademy/gamut/commit/44e0a43345fb59156ed917074ea1f05ef23020ed))
+
+
+
+## [43.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@42.3.0...@codecademy/gamut@43.0.0) (2022-01-13)
+
+
+### ⚠ BREAKING CHANGES
+
+* **Text:** update truncation in Text component
+
+### Features
+
+* **Text:** update truncation in Text component ([43e948c](https://github.com/Codecademy/gamut/commit/43e948cd307bba56dd2d5db76c53a8e529d74e8c))
+
+
+
+## [42.3.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@42.2.1...@codecademy/gamut@42.3.0) (2022-01-07)
+
+
+### Features
+
+* **DataTable:** prop comments ([101e241](https://github.com/Codecademy/gamut/commit/101e241c181260a3b85e14cc9028fbc1e9d5f1dc))
+
+
+### Bug Fixes
+
+* **GlobalHeader:** Accessibility & Tests Fix ([ba8e643](https://github.com/Codecademy/gamut/commit/ba8e643f2c50ae1bea1ca8036b1ef8bf8a2daa9b))
+
+
+
 ### [42.2.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@42.2.0...@codecademy/gamut@42.2.1) (2021-12-17)
 
 

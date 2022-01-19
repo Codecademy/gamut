@@ -5,6 +5,8 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 
 import { LinkTo, PropsTable } from '~styleguide/blocks';
 
+import { CustomCheckbox } from '../../Atoms/FormInputs/examples';
+
 <Meta
   title={title}
   component={Dialog}
@@ -49,6 +51,51 @@ import { LinkTo, PropsTable } from '~styleguide/blocks';
 - Warning Dialogs should use the Danger action colors, and will always be paired with a Cancel button.
 - Dialogs should always be displayed over an <LinkTo id="molecules-modals-overlay--overlay">Overlay</LinkTo>. Use the Overlay components in Gamut (and Figma) to capture the appropriate background opacity.
   - The overlay in light mode should be white at 95% opacity, the overlay in dark mode should be black at 75% opacity.
+
+## Writing Tips
+
+Simplify the language, prioritize the message, and make sure the implication of what learners are saying “Yes” (or “No”) to is crystal clear. Refer to the checklist below for guidance. For more tips and best practices, check out the full guide about <LinkTo id="ux-writing-component-guidelines-confirmation-dialogs--page">writing for confirmation dialogs</LinkTo>.
+
+<CustomCheckbox
+  htmlFor="dialog-1"
+  label="Keep the language consistent between buttons, headlines, and explanations."
+  spacing="tight"
+/>
+<CustomCheckbox
+  htmlFor="dialog-2"
+  label="Make sure the action is clear from the headline."
+  spacing="tight"
+/>
+<CustomCheckbox
+  htmlFor="dialog-3"
+  label="Frame the headline as a question, if possible."
+  spacing="tight"
+/>
+<CustomCheckbox
+  htmlFor="dialog-4"
+  label="Provide all relevant details and consequences."
+  spacing="tight"
+/>
+<CustomCheckbox
+  htmlFor="dialog-5"
+  label="Keep explanation text to 1-2 lines, if possible."
+  spacing="tight"
+/>
+<CustomCheckbox
+  htmlFor="dialog-6"
+  label="Ensure that buttons are clear and distinct, with context to reaffirm the action."
+  spacing="tight"
+/>
+<CustomCheckbox
+  htmlFor="dialog-7"
+  label="Keep copy at a reading level of grade 7 or below. Test with [Hemingway App](https://hemingwayapp.com/)."
+  spacing="tight"
+/>
+<CustomCheckbox
+  htmlFor="dialog-8"
+  label="Ask someone unrelated to the project to read the message to see if it makes sense."
+  spacing="tight"
+/>
 
 ## Location
 

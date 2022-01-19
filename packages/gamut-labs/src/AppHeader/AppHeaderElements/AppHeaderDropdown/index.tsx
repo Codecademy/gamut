@@ -62,6 +62,7 @@ const StyledDropdown = styled(motion.div)(
   css({
     bg: `background`,
     borderColor: `secondary`,
+    borderStyle: `solid`,
     overflow: `hidden`,
     position: `absolute`,
   })
@@ -157,10 +158,10 @@ export const AppHeaderDropdown: React.FC<AppHeaderDropdownProps> = ({
   }, []);
 
   const buttonHandleKeyEvents = (event: React.KeyboardEvent) => {
-    event.preventDefault();
     switch (event.key) {
       case KEY_CODES.ENTER:
       case KEY_CODES.SPACE:
+        event.preventDefault();
         toggleIsOpen();
         break;
       case KEY_CODES.DOWN:
@@ -259,6 +260,7 @@ export const AppHeaderDropdown: React.FC<AppHeaderDropdownProps> = ({
       onClick={handleOnClick}
       onKeyDown={buttonHandleKeyEvents}
       tabIndex="-1"
+      data-testid="avatar-dropdown-button"
     >
       <Avatar
         src={item.avatar}
@@ -298,21 +300,18 @@ export const AppHeaderDropdown: React.FC<AppHeaderDropdownProps> = ({
       {clickTarget}
       <StyledDropdown
         style={{
+          borderWidth: isOpen ? 1 : 0,
           right: isProfileDropdown ? '0.5rem' : '',
           top: isProfileDropdown ? '2.75rem' : '2.25rem',
           width: dimensions.width,
           visibility: isOpen ? 'visible' : 'hidden',
         }}
-        initial={{ borderWidth: 0, height: 0 }}
+        initial={{ height: 0 }}
         animate={{
-          borderWidth: isOpen ? 1 : 0,
           height: isOpen ? dimensions.height : 0,
         }}
         transition={{ duration: 0.175 }}
         aria-hidden={!isOpen}
-        aria-controls="menu-container"
-        aria-label={item.text}
-        role="menu"
         onKeyDown={menuHandleKeyEvents}
       >
         <StyledLinkSection
@@ -320,8 +319,10 @@ export const AppHeaderDropdown: React.FC<AppHeaderDropdownProps> = ({
           item={item}
           role="menu"
           ref={listRef}
-          id="menu-container"
+          id={`menu-container${item.text}`}
           onKeyDown={menuHandleKeyEvents}
+          aria-controls={`menu-container${item.text}`}
+          aria-label={item.text}
         />
       </StyledDropdown>
     </>
