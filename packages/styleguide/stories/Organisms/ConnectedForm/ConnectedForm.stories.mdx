@@ -106,7 +106,7 @@ export const GoodForm = () => {
 
 # watchedFields
 
-If you need the values of your inputs before submission, for something like conditionally generating different inputs, you can also pass in a `watchedFields` object. This takes in an array of names of fields to watch and a `watchHandler ` function which will be run `onChange` of your watchedField. This function should take an array of the values of the inputs in the order the names are passed in to the fields props
+If you need the values of your inputs before submission, for something like conditionally generating different inputs, you can also pass in a `watchedFields` object. This takes in an array of names of fields to watch and a `watchHandler ` function which will be run `onChange` of your watchedField. This function should take an array of the return values of the inputs in the order the names are passed in to the `fields` props.
 
 <Canvas>
   <Story name="watchedFields">
