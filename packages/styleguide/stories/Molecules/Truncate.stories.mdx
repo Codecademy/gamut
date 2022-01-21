@@ -12,6 +12,7 @@ Truncates can be used to asynchronously display feedback or interactions
 with the user with various connotations.
 `,
     source: 'gamut',
+    status: 'deprecated',
   }}
   args={{
     children: ` Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
@@ -21,6 +22,8 @@ with the user with various connotations.
         velit esse cillum dolore eu fugiat nulla pariatur.`,
   }}
 />
+
+This component uses React based truncation which is not performant, prefer the `Text` component with `truncate` and `truncateLines` props whenever possible.
 
 <Canvas withSource="open">
   <Story name="Truncate">{(args) => <Truncate {...args} />}</Story>
