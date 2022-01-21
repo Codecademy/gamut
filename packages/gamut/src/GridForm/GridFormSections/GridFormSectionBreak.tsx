@@ -24,6 +24,7 @@ export const GridFormSectionBreak: React.FC<GridFormSectionBreakProps> = ({
         borderColorBottom="text"
         data-testid="form-section-break"
         width="100%"
+        role="separator"
       />
     </Column>
   );
