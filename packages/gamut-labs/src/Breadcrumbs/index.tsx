@@ -1,29 +1,35 @@
 import { Anchor, Box, FlexBox, Text } from '@codecademy/gamut';
+import { css } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React from 'react';
 
-const BreadcrumbAnchor = styled(Anchor)`
-  white-space: nowrap;
-  overflow: hidden;
-  width: 100%;
-  display: inline;
-`;
+const BreadcrumbAnchor = styled(Anchor)(
+  css({
+    whiteSpace: 'nowrap',
+    overflow: 'hidden',
+    width: '100%',
+    display: 'inline',
+  })
+);
 
-const BreadcrumbPart = styled(Box)`
-  list-style-type: none;
-  white-space: nowrap;
-  // skip overflow and ellipsis on first element so doesnt start truncating at same time as the others
-  &:not(*:first-of-type) {
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-  &:first-of-type ${BreadcrumbAnchor} {
-    margin: 0;
-  }
-  &:last-child {
-    flex: 1;
-  }
-`;
+const BreadcrumbPart = styled(Box)(
+  css({
+    listStyleType: 'none',
+    whiteSpace: 'nowrap',
+
+    // skip overflow and ellipsis on first element so doesnt start truncating at same time as the others
+    '&:not(*:first-of-type)': {
+      overflow: 'hidden',
+      textOverflow: 'ellipsis',
+    },
+    '&:first-of-type a': {
+      m: 0,
+    },
+    '&:last-child': {
+      flex: 1,
+    },
+  })
+);
 
 export type Crumb = { title: string };
 
