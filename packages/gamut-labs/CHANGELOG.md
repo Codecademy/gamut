@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [28.6.5](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@28.6.4...@codecademy/gamut-labs@28.6.5) (2022-01-21)
+
+
+### Bug Fixes
+
+* **SectionBreak, AvatarChooser:** accessibility improvements, use roles & aria-live ([34d612f](https://github.com/Codecademy/gamut/commit/34d612fcc997b70f59e99768597936ea54606b94))
+
+
+
 ### [28.6.4](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@28.6.3...@codecademy/gamut-labs@28.6.4) (2022-01-14)
 
 **Note:** Version bump only for package @codecademy/gamut-labs
