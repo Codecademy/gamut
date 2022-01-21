@@ -68,6 +68,7 @@ export const Breadcrumbs = <T,>({
               display="block"
               fontWeight="bold"
               truncate="ellipsis"
+              truncateLines={1}
               aria-current="location"
             >
               {crumb.title}
