@@ -1,4 +1,4 @@
-import { useContext, useMemo } from 'react';
+import React, { useContext, useMemo, useState } from 'react';
 import {
   RegisterOptions,
   useFieldArray,
@@ -6,11 +6,14 @@ import {
 } from 'react-hook-form';
 
 import {
+  ConnectedCheckbox,
   ConnectedForm,
   ConnectedFormGroup,
   ConnectedFormGroupProps,
   ConnectedFormProps,
+  ConnectedRadioGroupInput,
   FormPropsContext,
+  SubmitButton,
 } from '.';
 import { ConnectedField, SubmitContextProps } from './types';
 
@@ -30,7 +33,7 @@ interface UseConnectedFormProps<
   validationRules: Partial<Rules>;
   watchedFields?: {
     fields: (keyof Values)[];
-    watchHandler: (arg0: Partial<Values>) => void;
+    watchHandler: (arg0: (keyof Values)[]) => void;
   };
 }
 

@@ -9,6 +9,7 @@ import {
   SubmitButton,
   Text,
   useConnectedForm,
+  useFormState,
 } from '@codecademy/gamut';
 import { MiniArrowRightIcon, TerminalIcon } from '@codecademy/gamut-icons';
 import { action } from '@storybook/addon-actions';
@@ -23,8 +24,9 @@ export const RadioWatchExample = () => {
     radioGroup: 'not submitted',
   });
 
-  const handleWatch = (values) => {
-    return values[0] ? setShowRadio(true) : setShowRadio(false);
+  const handleWatch = (values: string[]) => {
+    const [checkbox] = values;
+    return checkbox ? setShowRadio(true) : setShowRadio(false);
   };
 
   const {
@@ -42,7 +44,7 @@ export const RadioWatchExample = () => {
       },
     },
     watchedFields: {
-      fields: ['radioGroup', 'checkbox'],
+      fields: ['checkbox', 'radioGroup'],
       watchHandler: handleWatch,
     },
   });
