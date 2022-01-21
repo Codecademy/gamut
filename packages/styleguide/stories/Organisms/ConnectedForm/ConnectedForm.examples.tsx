@@ -9,7 +9,6 @@ import {
   SubmitButton,
   Text,
   useConnectedForm,
-  useFormState,
 } from '@codecademy/gamut';
 import { MiniArrowRightIcon, TerminalIcon } from '@codecademy/gamut-icons';
 import { action } from '@storybook/addon-actions';

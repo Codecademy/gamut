@@ -3,6 +3,7 @@ import {
   FormProvider,
   FormProviderProps,
   Mode,
+  Path,
   RegisterOptions,
   SubmitHandler,
   useForm,
@@ -70,8 +71,8 @@ export interface ConnectedFormProps<Values extends {}>
    * An object that accepts an array of field names and a watchHandler that accepts a function, to be run onChange, that takes in an object of key/value pairs. The key is the field name and the value is the current value of the watched field.
    */
   watchedFields?: {
-    fields: (keyof Values)[];
-    watchHandler: (arg0: (keyof Values)[]) => void;
+    fields: Path<Values>[];
+    watchHandler: (arg0: Path<Values>[]) => void;
   };
 }
 
@@ -110,7 +111,7 @@ export function ConnectedForm<Values extends FormValues<Values>>({
 
   if (watchedFields) {
     // we're pretty exhaustively type-checking the props as they're passed in, so its fine to cast here.
-    const fields = watch(watchedFields.fields as any);
+    const fields = watch(watchedFields.fields);
     watchedFields.watchHandler(fields as any);
   }
 
