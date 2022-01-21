@@ -7,7 +7,7 @@
     "styles",
     "gamut-styles"
   ],
-  "name": "@codecademy/eslint-plugin-gamut",
+  "name": "eslint-plugin-gamut",
   "version": "3.0.2",
   "license": "MIT",
   "main": "./dist/index.js",
@@ -21,10 +21,9 @@
   },
   "scripts": {
     "verify": "tsc --noEmit",
-    "build:compile": "babel ./src --out-dir ./dist --copy-files --extensions \".ts,.tsx\"",
+    "build:compile": "tsc",
     "build:clean": "rm -rf dist",
-    "build:types": "tsc --emitDeclarationOnly",
-    "build": "yarn build:clean && yarn build:compile && yarn build:types",
+    "build": "yarn build:clean && yarn build:compile",
     "lernaBuildTask": "yarn build"
   },
   "types": "./dist/index.d.ts",

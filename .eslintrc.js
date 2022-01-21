@@ -3,6 +3,12 @@ module.exports = {
 
   extends: [require.resolve('@codecademy/eslint-config')],
 
+  plugins: ['eslint-plugin-gamut'],
+
+  rules: {
+    /* @codecademy/ prefix? */ 'eslint-plugin-gamut/prefer-themed': 'error',
+  },
+
   overrides: [
     {
       files: ['**/typings/*', '*.d.ts'],
