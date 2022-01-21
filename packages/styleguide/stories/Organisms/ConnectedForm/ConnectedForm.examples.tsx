@@ -23,8 +23,8 @@ export const RadioWatchExample = () => {
     radioGroup: 'not submitted',
   });
 
-  const handleWatch = ({ checkbox }: { checkbox?: undefined | boolean }) => {
-    return checkbox ? setShowRadio(true) : setShowRadio(false);
+  const handleWatch = (values) => {
+    return values[0] ? setShowRadio(true) : setShowRadio(false);
   };
 
   const {
@@ -42,7 +42,7 @@ export const RadioWatchExample = () => {
       },
     },
     watchedFields: {
-      fields: ['checkbox', 'radioGroup'],
+      fields: ['radioGroup', 'checkbox'],
       watchHandler: handleWatch,
     },
   });

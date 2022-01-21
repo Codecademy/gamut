@@ -48,7 +48,7 @@ export const useConnectedForm = <
   defaultValues,
   validationRules,
   watchedFields,
-}: UseConnectedFormProps<Values, ValidationRules>) => {
+}: UseConnectedFormProps<Values, Partial<ValidationRules>>) => {
   return useMemo(
     () => ({
       ConnectedFormGroup: ConnectedFormGroup as ConnectedGroupStrictProps<Values>,

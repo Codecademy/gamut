@@ -7,7 +7,9 @@ import {
   SubmitHandler,
   useForm,
   UseFormProps,
+  WatchObserver,
 } from 'react-hook-form';
+import { Subscription } from 'react-hook-form/dist/utils/createSubject';
 
 import { Form } from '../Form';
 import { FormProps } from '../Form/Form';
@@ -68,8 +70,8 @@ export interface ConnectedFormProps<Values extends {}>
    * An object that accepts an array of field names and a watchHandler that accepts a function, to be run onChange, that takes in an object of key/value pairs. The key is the field name and the value is the current value of the watched field.
    */
   watchedFields?: {
-    fields: (keyof Values)[];
-    watchHandler: (arg0: Partial<Values>) => void;
+    fields: WatchObserver<Values>;
+    watchHandler: (props: Subscription) => void;
   };
 }
 
@@ -106,15 +108,10 @@ export function ConnectedForm<Values extends FormValues<Values>>({
     formState.isSubmitSuccessful
   );
 
-  useEffect(() => {
-    if (watchedFields) {
-      // we're pretty exhaustively type-checking the props as they're passed in, so its fine to cast here.
-
-      // @to-do : fix!
-      const fields = watch(watchedFields.fields as any);
-      watchedFields.watchHandler(fields as any);
-    }
-  }, [watchedFields, watch]);
+  if (watchedFields) {
+    const fields = watch(watchedFields.fields);
+    watchedFields.watchHandler(fields);
+  }
 
   useEffect(() => {
     if (isSubmitSuccessful && resetOnSubmit) {
