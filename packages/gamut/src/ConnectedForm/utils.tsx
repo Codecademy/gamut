@@ -83,20 +83,20 @@ export const useFormState = () => {
   // eslint-disable-next-line @typescript-eslint/unbound-method
   const {
     control,
-
     formState,
+    getValues,
     register,
+    reset,
     setError,
     setValue,
     watch,
-    reset,
   } = useFormContext();
 
   const {
     disableFieldsOnSubmit,
     showRequired,
-    wasSubmitSuccessful,
     validationRules,
+    wasSubmitSuccessful,
   } = useContext(FormPropsContext);
 
   const { isSubmitting, isDirty, errors } = formState;
@@ -109,16 +109,17 @@ export const useFormState = () => {
     control,
     errors,
     formState,
-    isDisabled: (isSubmitting || isSubmitSuccessful) && disableFieldsOnSubmit,
+    getValues,
     isDirty,
+    isDisabled: (isSubmitting || isSubmitSuccessful) && disableFieldsOnSubmit,
     register,
+    reset,
     setError,
     setValue,
     showRequired,
+    useFieldArray,
     validationRules,
     watch,
-    reset,
-    useFieldArray,
   };
 };
 
