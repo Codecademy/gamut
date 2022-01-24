@@ -3,6 +3,7 @@ export * from './lib/breakpointHooks';
 export * from './Avatar';
 export * from './AvatarChooser';
 export * from './Byline';
+export * from './Breadcrumbs';
 export * from './CurriculumCard';
 export * from './Drawer';
 export * from './EditorialImage';
