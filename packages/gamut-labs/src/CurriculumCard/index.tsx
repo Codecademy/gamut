@@ -11,7 +11,11 @@ export type ProgressState = 'inProgress' | 'completed';
 
 export type FooterTextVariantType = 'enrolled' | 'inProgress';
 
-const cardHeight = 180;
+const cardSizes = {
+  small: 180,
+  medium: 285,
+  large: 392,
+} as const;
 
 const cardStyles = {
   inProgress: 'yellow',
@@ -24,9 +28,9 @@ export type CurriculumCardProps = SubtitleProps & {
   title: string;
   headingLevel?: HeadingTags;
   image?: string;
-  isFullSize?: boolean;
   progressState?: ProgressState;
   showProLogo?: boolean;
+  size?: 'small' | 'medium' | 'large';
   tag?: string;
   tagColor?: TagColor;
   showAltSubtitle?: boolean;
@@ -46,10 +50,10 @@ export const CurriculumCard: React.FC<CurriculumCardProps> = ({
   description,
   headingLevel = 'h3',
   image,
-  isFullSize = false,
   progressState,
   scope,
   showProLogo,
+  size = 'small',
   tag,
   tagColor,
   text,
@@ -64,7 +68,7 @@ export const CurriculumCard: React.FC<CurriculumCardProps> = ({
     <Card
       display="grid"
       gridTemplateRows="repeat(3, max-content) 1fr max-content"
-      minHeight={isFullSize ? pxRem(cardHeight * 2 + 32) : pxRem(cardHeight)}
+      minHeight={pxRem(cardSizes[size])}
       variant={boxVariant ?? 'white'}
       shadow="medium"
       position="relative"
@@ -97,7 +101,7 @@ export const CurriculumCard: React.FC<CurriculumCardProps> = ({
         )}
       </FlexBox>
       <FlexBox center pb={16}>
-        {isFullSize && image && (
+        {size === 'large' && image && (
           <Image image={image} progressState={progressState} />
         )}
       </FlexBox>
