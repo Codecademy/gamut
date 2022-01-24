@@ -12,7 +12,6 @@ export type ProgressState = 'inProgress' | 'completed';
 export type FooterTextVariantType = 'enrolled' | 'inProgress';
 
 const cardHeight = 180;
-
 const cardStyles = {
   inProgress: 'yellow',
   completed: 'navy',
