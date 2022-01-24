@@ -12,7 +12,6 @@ export type ProgressState = 'inProgress' | 'completed';
 export type FooterTextVariantType = 'enrolled' | 'inProgress';
 
 const cardHeight = 180;
-
 const cardStyles = {
   inProgress: 'yellow',
   completed: 'navy',
@@ -28,6 +27,7 @@ export type CurriculumCardProps = SubtitleProps & {
   isProjectCard?: boolean;
   progressState?: ProgressState;
   showProLogo?: boolean;
+  size?: 'small' | 'medium' | 'large';
   tag?: string;
   tagColor?: TagColor;
   showAltSubtitle?: boolean;
@@ -52,6 +52,7 @@ export const CurriculumCard: React.FC<CurriculumCardProps> = ({
   progressState,
   scope,
   showProLogo,
+  size = 'small',
   tag,
   tagColor,
   text,
@@ -105,7 +106,7 @@ export const CurriculumCard: React.FC<CurriculumCardProps> = ({
         )}
       </FlexBox>
       <FlexBox center pb={16}>
-        {isFullSize && image && (
+        {size === 'large' && image && (
           <Image image={image} progressState={progressState} />
         )}
       </FlexBox>
