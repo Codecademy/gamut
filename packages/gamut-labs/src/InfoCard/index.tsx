@@ -1,4 +1,4 @@
-import { Anchor, Box, Card, Text, Truncate } from '@codecademy/gamut';
+import { Anchor, Box, Card, HeadingTags, Text } from '@codecademy/gamut';
 import { pxRem } from '@codecademy/gamut-styles';
 import { Theme } from '@emotion/react';
 import React from 'react';
@@ -12,13 +12,19 @@ const tagColorMap: Record<TagColor, keyof Theme['colors']> = {
   pink: 'palePink',
 };
 
-type TextProps = {
+interface TextProps {
   text: string;
-};
-type BottomRightTagProps = {
+}
+
+interface TitleProps {
+  text: string;
+  headingLevel: HeadingTags;
+}
+
+interface BottomRightTagProps {
   text: string;
   color: TagColor;
-};
+}
 
 const TopText: React.FC<TextProps> = ({ text }) => (
   <Text
@@ -32,21 +38,27 @@ const TopText: React.FC<TextProps> = ({ text }) => (
   </Text>
 );
 
-const Title: React.FC<TextProps> = ({ text }) => (
-  <Text as="h3" mb={4} fontSize={20}>
-    <Truncate lines={2}>{text}</Truncate>
+const Title: React.FC<TitleProps> = ({ text, headingLevel }) => (
+  <Text as={headingLevel} mb={4} fontSize={20}>
+    <Text truncate="ellipsis" truncateLines={2}>
+      {text}
+    </Text>
   </Text>
 );
 
 const Subtitle: React.FC<TextProps> = ({ text }) => (
   <Text variant="p-small" textColor="gray-900">
-    <Truncate lines={2}>{text}</Truncate>
+    <Text truncate="ellipsis" truncateLines={2}>
+      {text}
+    </Text>
   </Text>
 );
 
 const Body: React.FC<TextProps> = ({ text }) => (
   <Text pt={16} variant="p-small" textColor="gray-900">
-    <Truncate lines={3}>{text}</Truncate>
+    <Text truncate="ellipsis" truncateLines={3}>
+      {text}
+    </Text>
   </Text>
 );
 
@@ -66,7 +78,7 @@ const BottomRightTag: React.FC<BottomRightTagProps> = ({ text, color }) => (
   </Box>
 );
 
-export type InfoCardProps = {
+export interface InfoCardProps {
   href: string;
   onClick?: () => void;
   topText: string;
@@ -77,7 +89,8 @@ export type InfoCardProps = {
   bottomRightTagText?: string;
   bottomRightTagColor?: TagColor;
   cardHeight?: string | number;
-};
+  titleHeadingLevel?: HeadingTags;
+}
 
 export const InfoCard: React.FC<InfoCardProps> = ({
   href,
@@ -90,6 +103,7 @@ export const InfoCard: React.FC<InfoCardProps> = ({
   bottomRightTagText,
   bottomRightTagColor = 'pink',
   cardHeight = 285,
+  titleHeadingLevel = 'h3',
 }) => {
   return (
     <Anchor variant="interface" href={href} onClick={() => onClick?.()}>
@@ -103,7 +117,7 @@ export const InfoCard: React.FC<InfoCardProps> = ({
         position="relative"
       >
         <TopText text={topText} />
-        <Title text={title} />
+        <Title text={title} headingLevel={titleHeadingLevel} />
         <Subtitle text={subtitle} />
         {body && <Body text={body} />}
         {bottomLeftText && <BottomLeftText text={bottomLeftText} />}

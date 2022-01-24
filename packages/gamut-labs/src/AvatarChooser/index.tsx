@@ -95,6 +95,7 @@ export const AvatarChooser: React.FC<AvatarChooserProps> = ({
       justifyContent="center"
       width="fit-content"
       maxWidth={pxRem(120)}
+      aria-live="polite"
     >
       <StyledAvatar src={imageSrc} disableDropshadow alt="Avatar Photo" />
       <ChoosePhotoLabel ref={choosePhotoLabelRef} htmlFor="avatar-chooser">
@@ -117,7 +118,7 @@ export const AvatarChooser: React.FC<AvatarChooserProps> = ({
         onChange={onChange}
         aria-invalid={Boolean(error)}
       />
-      {error && <StyledFormError>{error}</StyledFormError>}
+      {error && <StyledFormError role="alert">{error}</StyledFormError>}
     </FlexBox>
   );
 };
