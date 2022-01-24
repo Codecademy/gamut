@@ -28,6 +28,7 @@ export const Modal: React.FC<ModalProps> = ({
   scrollable = false,
   onRequestClose,
   hideCloseButton = false,
+  headingTitle = 'h2',
   ...rest
 }) => {
   return (
@@ -46,7 +47,12 @@ export const Modal: React.FC<ModalProps> = ({
         size={size}
       >
         {title && (
-          <Text as="h2" fontSize={20} lineHeight="base" gridArea="title">
+          <Text
+            as={headingTitle}
+            fontSize={20}
+            lineHeight="base"
+            gridArea="title"
+          >
             {title}
           </Text>
         )}
