@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [43.1.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@43.1.1...@codecademy/gamut@43.1.2) (2022-01-24)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [43.1.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@43.1.0...@codecademy/gamut@43.1.1) (2022-01-21)
+
+
+### Bug Fixes
+
+* **SectionBreak, AvatarChooser:** accessibility improvements, use roles & aria-live ([34d612f](https://github.com/Codecademy/gamut/commit/34d612fcc997b70f59e99768597936ea54606b94))
+
+
+
 ## [43.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@43.0.0...@codecademy/gamut@43.1.0) (2022-01-14)
 
 

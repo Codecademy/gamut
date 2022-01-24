@@ -3,6 +3,40 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [53.1.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@53.1.0...@codecademy/styleguide@53.1.1) (2022-01-24)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [53.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@53.0.3...@codecademy/styleguide@53.1.0) (2022-01-21)
+
+
+### Features
+
+* add Breadcrumbs component ([c98d16a](https://github.com/Codecademy/gamut/commit/c98d16a8e669059998a6a39da781aedb16f30a89))
+
+
+
+### [53.0.3](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@53.0.2...@codecademy/styleguide@53.0.3) (2022-01-21)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [53.0.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@53.0.1...@codecademy/styleguide@53.0.2) (2022-01-19)
+
+
+### Bug Fixes
+
+*  Docs: remove console.log from getKinds ([2946b2c](https://github.com/Codecademy/gamut/commit/2946b2ce752c8f63f6f9a305a100192723efe9f8))
+
+
+
 ### [53.0.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@53.0.0...@codecademy/styleguide@53.0.1) (2022-01-14)
 
 **Note:** Version bump only for package @codecademy/styleguide
