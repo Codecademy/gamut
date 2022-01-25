@@ -271,6 +271,9 @@ const columnStates = states({
   wrap: {
     whiteSpace: 'normal',
   },
+  showOverflow: {
+    overflow: 'visible',
+  },
 });
 
 const columnSpacing = variant({
@@ -319,7 +322,7 @@ export const ColEl = styled(
     display: 'inline-flex',
     alignItems: 'center',
     whiteSpace: 'nowrap',
-    overflow: 'visible',
+    overflow: 'hidden',
     position: 'relative',
   }),
   columnSpacing,
