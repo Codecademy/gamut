@@ -21,14 +21,15 @@ export interface ModalProps extends ModalBaseProps {
 }
 
 export const Modal: React.FC<ModalProps> = ({
+  'aria-label': ariaLabel,
   children,
-  title,
   className,
-  size = 'fluid',
-  scrollable = false,
-  onRequestClose,
+  headingLevel = 'h2',
   hideCloseButton = false,
-  headingTitle = 'h2',
+  onRequestClose,
+  scrollable = false,
+  size = 'fluid',
+  title,
   ...rest
 }) => {
   return (
@@ -40,6 +41,7 @@ export const Modal: React.FC<ModalProps> = ({
     >
       <ModalContainer
         className={className}
+        aria-label={ariaLabel}
         aria-hidden="false"
         aria-modal="true"
         role="dialog"
@@ -48,7 +50,7 @@ export const Modal: React.FC<ModalProps> = ({
       >
         {title && (
           <Text
-            as={headingTitle}
+            as={headingLevel}
             fontSize={20}
             lineHeight="base"
             gridArea="title"

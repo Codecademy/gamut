@@ -16,5 +16,5 @@ export interface ModalBaseProps
   /**
    * Heading titles for the Modal. They should almost always be the default `h2`, but should sometimes be `h1` if the Modal takes up the entire page
    */
-  headingTitle?: 'h1' | 'h2';
+  headingLevel?: 'h1' | 'h2';
 }
