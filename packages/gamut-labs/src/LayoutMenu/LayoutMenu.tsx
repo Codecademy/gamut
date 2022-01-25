@@ -1,4 +1,5 @@
 import { Box, Logo, StrokeButton } from '@codecademy/gamut';
+import styled from '@emotion/styled';
 import React, { useState } from 'react';
 
 import { Flyout } from '../Flyout';
@@ -36,6 +37,41 @@ export type LayoutMenuProps = {
   topLinkSections?: SectionItem[];
 };
 
+const StyledNav = styled.nav`
+  height: 500px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  /* scrollbar-width: thin; */
+  /* Foreground, Background */
+  /* scrollbar-color: #000 #fff; */
+
+  &::-webkit-scrollbar {
+    /* width: 11px; Mostly for vertical scrollbars */
+    /* height: 10px; Mostly for horizontal scrollbars */
+  }
+  &::-webkit-scrollbar-thumb {
+    /* Foreground */
+    background: #9e9e9e;
+  }
+  &::-webkit-scrollbar-track {
+    /* Background */
+    background: #fff;
+  }
+`;
+
+const StyledFade = styled(Box)`
+  border-bottom: 1px solid black;
+  width: 100%;
+  height: 54px;
+  position: sticky;
+  background: linear-gradient(
+    180deg,
+    rgba(245, 252, 255, 0.4) 0%,
+    rgba(245, 252, 255, 0.94) 72.02%
+  );
+  bottom: 0;
+`;
+
 export const LayoutMenu: React.FC<LayoutMenuProps> = ({
   closeLabel,
   sections,
@@ -68,7 +104,7 @@ export const LayoutMenu: React.FC<LayoutMenuProps> = ({
   );
 
   return (
-    <nav>
+    <StyledNav>
       <Box display={{ _: 'block', [breakpoint]: 'none' }}>
         <Flyout
           closeLabel={closeLabel}
@@ -95,6 +131,7 @@ export const LayoutMenu: React.FC<LayoutMenuProps> = ({
         {accordionMenuSections}
         {children}
       </Box>
-    </nav>
+      <StyledFade />
+    </StyledNav>
   );
 };
