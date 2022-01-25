@@ -1,7 +1,7 @@
 {
   "name": "@codecademy/gamut",
   "description": "Styleguide & Component library for Codecademy",
-  "version": "43.1.2",
+  "version": "44.0.0",
   "author": "Codecademy Engineering <dev@codecademy.com>",
   "sideEffects": [
     "**/*.css",
@@ -22,11 +22,11 @@
     "react-dom": ">=17.0.2"
   },
   "dependencies": {
-    "@codecademy/gamut-icons": "^6.2.0",
-    "@codecademy/gamut-illustrations": "^0.21.0",
-    "@codecademy/gamut-patterns": "^0.7.3",
-    "@codecademy/gamut-styles": "^12.1.1",
-    "@codecademy/variance": "^0.19.0",
+    "@codecademy/gamut-icons": "^7.0.0",
+    "@codecademy/gamut-illustrations": "^0.22.0",
+    "@codecademy/gamut-patterns": "^0.8.0",
+    "@codecademy/gamut-styles": "^13.0.0",
+    "@codecademy/variance": "^0.20.0",
     "@reach/tabs": "^0.16.4",
     "@types/marked": "^1.1.0",
     "@types/react-select": "^4.0.13",
@@ -57,7 +57,7 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@codecademy/gamut-tests": "^3.0.2",
+    "@codecademy/gamut-tests": "^4.0.0",
     "@emotion/jest": "^11.3.0",
     "@testing-library/dom": "^8.11.1",
     "@testing-library/react": "^12.1.2",
