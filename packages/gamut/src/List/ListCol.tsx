@@ -20,7 +20,6 @@ export const ListCol = forwardRef<HTMLDivElement, ListColProps>(
         type={type}
         sticky={sticky}
         ref={ref}
-        overflow="visible"
       />
     );
   }

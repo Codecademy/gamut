@@ -319,7 +319,7 @@ export const ColEl = styled(
     display: 'inline-flex',
     alignItems: 'center',
     whiteSpace: 'nowrap',
-    overflow: 'hidden',
+    overflow: 'visible',
     position: 'relative',
   }),
   columnSpacing,
