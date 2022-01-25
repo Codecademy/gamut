@@ -14,7 +14,7 @@ export interface RowProps
 export interface ExpandableRowProps extends RowProps {
   expanded: boolean;
   renderExpanded: () => React.ReactNode;
-  expandedRowAriaLabel: string;
+  expandedRowAriaLabel?: string;
 }
 
 export interface SimpleRowProps extends RowProps {
