@@ -3,6 +3,61 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [29.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@28.7.1...@codecademy/gamut-labs@29.0.0) (2022-01-25)
+
+
+### ⚠ BREAKING CHANGES
+
+* bumped React to 17
+
+### Features
+
+* bumped React to 17 ([c074ecb](https://github.com/Codecademy/gamut/commit/c074ecbfa026ed8e37cf41e874d345574a46e5e4))
+
+
+
+### [28.7.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@28.7.0...@codecademy/gamut-labs@28.7.1) (2022-01-24)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+## [28.7.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@28.6.5...@codecademy/gamut-labs@28.7.0) (2022-01-21)
+
+
+### Features
+
+* add Breadcrumbs component ([c98d16a](https://github.com/Codecademy/gamut/commit/c98d16a8e669059998a6a39da781aedb16f30a89))
+
+
+
+### [28.6.5](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@28.6.4...@codecademy/gamut-labs@28.6.5) (2022-01-21)
+
+
+### Bug Fixes
+
+* **SectionBreak, AvatarChooser:** accessibility improvements, use roles & aria-live ([34d612f](https://github.com/Codecademy/gamut/commit/34d612fcc997b70f59e99768597936ea54606b94))
+
+
+
+### [28.6.4](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@28.6.3...@codecademy/gamut-labs@28.6.4) (2022-01-14)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [28.6.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@28.6.2...@codecademy/gamut-labs@28.6.3) (2022-01-13)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
 ### [28.6.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@28.6.1...@codecademy/gamut-labs@28.6.2) (2022-01-11)
 
 

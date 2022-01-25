@@ -1,7 +1,7 @@
 {
   "name": "@codecademy/styleguide",
   "description": "Styleguide & Component library for codecademy.com",
-  "version": "52.5.1",
+  "version": "54.0.0",
   "author": "Codecademy Engineering",
   "scripts": {
     "start": "yarn storybook",
@@ -16,12 +16,12 @@
   "dependencies": {
     "@babel/cli": "^7.13.10",
     "@babel/core": "^7.13.10",
-    "@codecademy/gamut": "^42.3.0",
-    "@codecademy/gamut-icons": "^6.1.0",
-    "@codecademy/gamut-illustrations": "^0.21.0",
-    "@codecademy/gamut-labs": "^28.6.2",
-    "@codecademy/gamut-patterns": "^0.7.3",
-    "@codecademy/gamut-styles": "^12.1.1",
+    "@codecademy/gamut": "^44.0.0",
+    "@codecademy/gamut-icons": "^7.0.0",
+    "@codecademy/gamut-illustrations": "^0.22.0",
+    "@codecademy/gamut-labs": "^29.0.0",
+    "@codecademy/gamut-patterns": "^0.8.0",
+    "@codecademy/gamut-styles": "^13.0.0",
     "@codecademy/macros": "^3.0.0",
     "@codecademy/webpack-config": "^6.0.0",
     "@emotion/cache": "^11.4.0",
@@ -44,8 +44,8 @@
     "jsdom": "16.4.0",
     "lodash": "4.17.20",
     "polished": "^4.1.2",
-    "react": "16.13.1",
-    "react-dom": "16.13.1",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
     "storybook-addon-designs": "^6.0.1",
     "typescript": "*"
   },
@@ -54,7 +54,7 @@
     "access": "public"
   },
   "devDependencies": {
-    "@testing-library/react": "^11.0.4",
+    "@testing-library/react": "^12.1.2",
     "@types/mdx-js__react": "^1.5.3",
     "css-loader": "^3.5.2",
     "glob": "^7.1.6",
