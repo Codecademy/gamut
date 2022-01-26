@@ -4,12 +4,15 @@ import styled from '@emotion/styled';
 import React, {
   useCallback,
   useEffect,
-  useLayoutEffect,
   useMemo,
   useRef,
   useState,
 } from 'react';
-import { useWindowScroll, useWindowSize } from 'react-use';
+import {
+  useIsomorphicLayoutEffect,
+  useWindowScroll,
+  useWindowSize,
+} from 'react-use';
 
 import { BodyPortal } from '../BodyPortal';
 import { FocusTrap } from '../FocusTrap';
@@ -65,7 +68,7 @@ export const PopoverContainer: React.FC<PopoverContainerProps> = ({
     setContainers(getContainers(target, inline, { x: winX, y: winY }));
   }, [targetRef, inline, winW, winH, winX, winY]);
 
-  useLayoutEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     if (containers?.viewport && !isInView(containers?.viewport)) {
       onRequestClose?.();
     }

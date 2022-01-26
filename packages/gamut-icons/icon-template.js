@@ -22,7 +22,9 @@ function iconTemplate(api, opts, { jsx }) {
       svgRef
     ) => {
       return ${jsx};
-    });
+    }) as React.ForwardRefExoticComponent<
+    GamutIconProps & React.RefAttributes<SVGSVGElement>
+  >;
   `;
 }
 module.exports = iconTemplate;
