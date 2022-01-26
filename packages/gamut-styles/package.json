@@ -1,7 +1,7 @@
 {
   "name": "@codecademy/gamut-styles",
   "description": "Styleguide & Component library for codecademy.com",
-  "version": "12.1.1",
+  "version": "13.0.0",
   "author": "Jake Hiller <jake@codecademy.com>",
   "main": "dist/index.js",
   "module": "dist/index.js",
@@ -17,7 +17,7 @@
     "url": "git@github.com:Codecademy/gamut.git"
   },
   "dependencies": {
-    "@codecademy/variance": "^0.19.0",
+    "@codecademy/variance": "^0.20.0",
     "@emotion/is-prop-valid": "^1.1.0",
     "polished": "^4.1.2"
   },
@@ -26,7 +26,7 @@
     "@emotion/react": "^11.4.0",
     "@emotion/styled": "^11.3.0",
     "lodash": "^4.17.5",
-    "react": ">=16.8.1",
+    "react": ">=17.0.2",
     "react-helmet": "^6.1.0",
     "stylis": "^4.0.7"
   },
