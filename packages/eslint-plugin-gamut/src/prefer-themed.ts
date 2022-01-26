@@ -14,12 +14,12 @@ export default createRule({
           const arrowFuncExpression = node.quasi.expressions[0];
 
           if (
-            arrowFuncExpression.type !== AST_NODE_TYPES.ArrowFunctionExpression
+            arrowFuncExpression?.type !== AST_NODE_TYPES.ArrowFunctionExpression
           )
             return;
           const argObject = arrowFuncExpression.params[0];
 
-          if (argObject.type !== AST_NODE_TYPES.ObjectPattern) return;
+          if (argObject?.type !== AST_NODE_TYPES.ObjectPattern) return;
           const argumentVariable = argObject.properties[0].value;
 
           if (argumentVariable?.type !== AST_NODE_TYPES.Identifier) return;
@@ -56,7 +56,7 @@ export default createRule({
               fix: (fixer) => {
                 return fixer.replaceText(
                   arrowFuncExpression,
-                  `themed(${themeCategory}.${themeValueKey})`
+                  `themed('${themeCategory}.${themeValueKey}')`
                 );
               },
               messageId: 'preferThemed',

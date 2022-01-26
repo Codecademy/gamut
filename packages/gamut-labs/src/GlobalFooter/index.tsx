@@ -31,7 +31,7 @@ export type GlobalFooterProps = {
 };
 
 const FooterContainer = styled.footer`
-  border-top: 1px solid ${({ theme }) => theme.colors.navy};
+  border-top: 1px solid ${themed('colors.navy')};
 
   @media print {
     display: none;

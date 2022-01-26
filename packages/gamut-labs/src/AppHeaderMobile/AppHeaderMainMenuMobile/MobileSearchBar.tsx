@@ -25,7 +25,7 @@ const SearchButton = styled.button`
   top: 50%;
   transform: translate(0, -50%);
   right: 0.75rem;
-  color: ${({ theme }) => theme.colors.text};
+  color: ${themed('colors.text')};
   cursor: pointer;
   outline: 0;
   border: none;

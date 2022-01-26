@@ -61,7 +61,7 @@ const PatternContainer = styled.div<StyleProps>`
   height: 100%;
   border-radius: 2px;
   overflow: hidden;
-  background-color: ${({ theme }) => theme.colors.background};
+  background-color: ${themed('colors.background')};
   position: absolute;
   top: ${({ position }) => (position === 'below' ? '8px' : '-8px')};
   left: ${({ align }) => (align === 'left' ? '8px' : '-8px')};

@@ -15,6 +15,12 @@ ruleTester.run('prefer-themed', rule, {
     `styled(Box)\`
   color: \${themed('colors.wat')};
 \``,
+    `
+export const AppWrapper = styled.div\`
+  position: relative;
+  z-index: 1;
+\`;
+`,
   ],
   invalid: [
     {
@@ -27,7 +33,7 @@ ruleTester.run('prefer-themed', rule, {
         },
       ],
       output: `styled.div\`
-  color: \${themed(colors.wat)};
+  color: \${themed('colors.wat')};
 \``,
     },
   ],

@@ -67,7 +67,7 @@ export const reactRecurlyFormFieldFocusStyles = system.css(
 );
 
 const updog = styled.div`
-  color: ${({ theme }) => theme.colors.wat};
+  color: ${themed('colors.wat')};
 `;
 
 export const reactRecurlyFormFieldPaddingStyles = system.css(

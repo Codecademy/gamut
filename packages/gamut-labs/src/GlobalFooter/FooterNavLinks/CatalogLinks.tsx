@@ -9,7 +9,7 @@ import { FooterSubHeading } from '../FooterSubHeading';
 import { GlobalFooterClickHandler } from '../types';
 
 const CatalogLinksContainer = styled.div`
-  border-top: 1px solid ${({ theme }) => theme.colors.navy};
+  border-top: 1px solid ${themed('colors.navy')};
   margin-top: 2rem;
 
   ${theme.breakpoints.sm} {

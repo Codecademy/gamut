@@ -6,7 +6,7 @@ module.exports = {
   plugins: ['eslint-plugin-gamut'],
 
   rules: {
-    'eslint-plugin-gamut/prefer-themed': 'error',
+    'gamut/prefer-themed': 'error',
   },
 
   overrides: [

@@ -9,9 +9,4 @@ const rules = {
   'gamut-import-paths': gamutImportPaths,
 };
 
-const configuration = {
-  rules,
-  recommended,
-};
-
-export default configuration;
+export { rules, recommended };
