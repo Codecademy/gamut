@@ -4,12 +4,12 @@
     "url": "https://github.com/Codecademy/gamut/issues"
   },
   "dependencies": {
-    "@codecademy/gamut-styles": "^12.1.1",
+    "@codecademy/gamut-styles": "^13.0.0",
     "classnames": "^2.2.5"
   },
   "description": "Illustrations library for Codecademy",
   "devDependencies": {
-    "@testing-library/react": "^11.0.4"
+    "@testing-library/react": "^12.1.2"
   },
   "homepage": "https://github.com/Codecademy/gamut#readme",
   "name": "@codecademy/gamut-illustrations",
@@ -19,8 +19,8 @@
   "peerDependencies": {
     "@emotion/react": "^11.4.0",
     "@emotion/styled": "^11.3.0",
-    "react": ">=16.8.1",
-    "react-dom": ">=16.8.1"
+    "react": ">=17.0.2",
+    "react-dom": ">=17.0.2"
   },
   "publishConfig": {
     "access": "public"
@@ -41,5 +41,5 @@
     "dist/**/[A-Z]**/[A-Z]*.js",
     "dist/**/[A-Z]**/index.js"
   ],
-  "version": "0.21.0"
+  "version": "0.22.0"
 }

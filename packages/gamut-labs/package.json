@@ -1,7 +1,7 @@
 {
   "name": "@codecademy/gamut-labs",
   "description": "Brand and experimental component library for Codecademy",
-  "version": "28.7.0",
+  "version": "29.0.0",
   "author": "Codecademy Engineering <dev@codecademy.com>",
   "sideEffects": [
     "*.css",
@@ -18,16 +18,16 @@
   "peerDependencies": {
     "@emotion/react": "^11.4.0",
     "@emotion/styled": "^11.3.0",
-    "react": ">=16.8.1",
-    "react-dom": ">=16.8.1"
+    "react": ">=17.0.2",
+    "react-dom": ">=17.0.2"
   },
   "dependencies": {
-    "@codecademy/gamut": "^43.1.1",
-    "@codecademy/gamut-icons": "^6.1.0",
-    "@codecademy/gamut-illustrations": "^0.21.0",
-    "@codecademy/gamut-patterns": "^0.7.3",
-    "@codecademy/gamut-styles": "^12.1.1",
-    "@codecademy/variance": "^0.19.0",
+    "@codecademy/gamut": "^44.0.0",
+    "@codecademy/gamut-icons": "^7.0.0",
+    "@codecademy/gamut-illustrations": "^0.22.0",
+    "@codecademy/gamut-patterns": "^0.8.0",
+    "@codecademy/gamut-styles": "^13.0.0",
+    "@codecademy/variance": "^0.20.0",
     "classnames": "^2.2.5",
     "framer-motion": "^4.1.17",
     "lodash": "^4.17.5",
@@ -37,11 +37,11 @@
     "react-use": "15.3.8"
   },
   "devDependencies": {
-    "@codecademy/gamut-tests": "^3.0.2",
-    "@testing-library/dom": "^7.31.2",
-    "@testing-library/react": "^11.0.4",
-    "@testing-library/react-hooks": "^5.1.0",
-    "@testing-library/user-event": "^13.1.9",
+    "@codecademy/gamut-tests": "^4.0.0",
+    "@testing-library/dom": "^8.11.1",
+    "@testing-library/react": "^12.1.2",
+    "@testing-library/react-hooks": "^7.0.2",
+    "@testing-library/user-event": "^13.5.0",
     "@types/enzyme": "3.10.7",
     "enzyme": "3.11.0"
   },

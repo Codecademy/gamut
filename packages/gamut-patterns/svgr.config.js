@@ -1,5 +1,5 @@
 const emotionPlugin = require('./emotion-plugin');
-const template = require('./icon-template');
+const template = require('./pattern-template');
 const indexTemplate = require('./index-template');
 
 module.exports = {
