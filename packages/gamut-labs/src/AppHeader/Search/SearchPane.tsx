@@ -64,7 +64,10 @@ export const SearchPane: React.FC<SearchPaneProps> = ({
 
   const handleOutsideClick = (e: MouseEvent) => {
     const target = e.target as Element;
-    if (searchElementRef.current?.contains(target)) {
+    if (
+      searchElementRef.current?.contains(target) ||
+      document.querySelector('[data-testid="header-search"]')?.contains(target)
+    ) {
       return;
     }
 
