@@ -9,7 +9,6 @@ import { LayoutMenuSection } from './LayoutMenuSection';
 const StyledAccordionArea = styled(AccordionArea)`
   padding-bottom: ${({ theme }) => theme.spacing[32]};
   position: relative;
-  left: -4px;
 `;
 
 const ExpandChevron = styled(MiniChevronDownIcon)(
