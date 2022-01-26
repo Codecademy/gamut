@@ -1,4 +1,4 @@
-/* eslint-disable local-rules/gamut-import-paths */
+/* eslint-disable gamut/gamut-import-paths  */
 import {
   Box,
   Checkbox,

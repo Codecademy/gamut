@@ -7,6 +7,7 @@ module.exports = {
 
   rules: {
     'gamut/prefer-themed': 'error',
+    'gamut/import-paths': 'error',
   },
 
   overrides: [

@@ -1,4 +1,4 @@
-/* eslint-disable local-rules/gamut-import-paths */
+/* eslint-disable gamut/gamut-import-paths  */
 import { Anchor } from '@codecademy/gamut/src';
 import * as ALL_PROPS from '@codecademy/gamut-styles/src/variance/config';
 import { kebabCase } from 'lodash';
