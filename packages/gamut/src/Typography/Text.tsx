@@ -15,13 +15,6 @@ const elementVariants = variant({
 
 const truncateVariants = variant({
   prop: 'truncate',
-  base: {
-    display: 'inline-block',
-    whiteSpace: 'nowrap',
-    overflow: 'hidden',
-    width: 1,
-    maxWidth: 1,
-  },
   variants: {
     ellipsis: {
       textOverflow: 'ellipsis',
@@ -39,6 +32,30 @@ const truncateVariants = variant({
           'linear-gradient(to right, rgba(0, 0, 0, 0), currentColor 75%)',
       },
     },
+  },
+});
+
+const truncateLinesScale = { 1: 1, 2: 2, 3: 3, 4: 4, 5: 5 };
+
+const truncateLinesProps = variance.create({
+  truncateLines: {
+    scale: truncateLinesScale,
+    property: 'all',
+    transform: (truncateLines: number) =>
+      truncateLines === 1
+        ? {
+            overflow: 'hidden',
+            whiteSpace: 'nowrap',
+          }
+        : {
+            overflow: 'hidden',
+            display: '-webkit-box',
+            WebkitBoxOrient: 'vertical',
+            WebkitLineClamp: truncateLines,
+            '&:after': {
+              top: `${100 - 100 / truncateLines}%`,
+            },
+          },
   },
 });
 
@@ -72,20 +89,33 @@ const textProps = variance.compose(
   system.layout,
   system.typography,
   system.color,
-  system.space
+  system.space,
+  truncateLinesProps
 );
 
-export interface TextProps
+export interface BaseTextProps
   extends StyleProps<typeof textProps>,
     StyleProps<typeof textStates>,
-    StyleProps<typeof truncateVariants>,
     StyleProps<typeof elementVariants>,
+    StyleProps<typeof truncateVariants>,
     StyleProps<typeof displayVariants> {}
+
+// if you're going to truncate, you need to provide both of these props or neither
+export interface TextTruncateProps extends BaseTextProps {
+  truncateLines: Exclude<BaseTextProps['truncateLines'], undefined>;
+  truncate: Exclude<BaseTextProps['truncate'], false | undefined>;
+}
+export interface TextNoTruncateProps extends BaseTextProps {
+  truncateLines?: never;
+  truncate?: never;
+}
+
+export type TextProps = TextTruncateProps | TextNoTruncateProps;
 
 export const Text = styled('span', styledOptions<'span'>())<TextProps>(
   elementVariants,
-  displayVariants,
   truncateVariants,
+  displayVariants,
   textStates,
   textProps
 );
