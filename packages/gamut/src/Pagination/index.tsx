@@ -6,6 +6,7 @@ import React, { useMemo, useState } from 'react';
 
 import { HiddenText } from '..';
 import { FlexBox } from '../Box';
+import { ButtonAnimation } from './elements';
 import { EllipsisButton } from './EllipsisButton';
 import { PaginationButton } from './PaginationButton';
 import {
@@ -117,15 +118,14 @@ export const Pagination: React.FC<PaginationProps> = ({
       }
     >
       <HiddenText aria-live="polite">{liveText}</HiddenText>
-      {currentPage !== 1 && (
-        <PaginationButton
-          aria-label={`Navigate back to page ${currentPage - 1}`}
-          href={navigation}
-          icon={MiniChevronLeftIcon}
-          onClick={() => changeHandler(currentPage - 1)}
-          variant={variant}
-        />
-      )}
+      <PaginationButton
+        aria-label={`Navigate back to page ${currentPage - 1}`}
+        href={navigation}
+        icon={MiniChevronLeftIcon}
+        onClick={() => changeHandler(currentPage - 1)}
+        variant={variant}
+        showButton={currentPage === 1 ? 'hidden' : 'shown'}
+      />
       {type === 'ellipsis' && shownPageArray[0] !== 1 && (
         <EllipsisButton
           aria-label={`Jump to page ${backPageNumber}`}
@@ -167,6 +167,7 @@ export const Pagination: React.FC<PaginationProps> = ({
           icon={MiniChevronRightIcon}
           onClick={() => changeHandler(currentPage + 1)}
           variant={variant}
+          showButton={currentPage === totalPages ? 'hidden' : 'show'}
         />
       )}
     </FlexBox>

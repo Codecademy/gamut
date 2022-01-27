@@ -1,5 +1,8 @@
 import { states, theme, transitionConcat } from '@codecademy/gamut-styles';
+import { AnimatePresence, motion } from 'framer-motion';
+import React from 'react';
 
+import { Box } from '..';
 import { templateVariants } from '../Button/shared';
 import { ButtonSelectors } from '../ButtonBase/ButtonBase';
 
@@ -80,3 +83,26 @@ export const paginationStrokeButtonStates = states({
     borderColor: 'currentColor',
   },
 });
+
+interface ButtonAnimationProps {
+  isVisible?: boolean;
+}
+
+export const ButtonAnimation: React.FC<ButtonAnimationProps> = ({
+  children,
+  isVisible,
+}) => {
+  return (
+    <AnimatePresence>
+      {isVisible && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1, width: 'fit-content' }}
+          exit={{ opacity: 0, width: 0, overflow: 'hidden' }}
+        >
+          {children} ?
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
+};
