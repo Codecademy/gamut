@@ -2,21 +2,26 @@ import React, { ReactElement, useCallback } from 'react';
 
 import { Text } from '../..';
 import { ListCol, ListRow } from '../../List';
+import { ColProps } from '../../List/elements';
 import { Shimmer } from '../../Loading/Shimmer';
 import { IdentifiableKeys } from '..';
 import { ExpandControl, SelectControl } from '../Controls';
 import { useControlContext } from '../hooks/useListControls';
 import { ColumnConfig } from '../types';
 
+export type MarshaledColProps = Partial<Pick<ColProps, 'showOverflow'>>;
+
 interface DataRow {
-  <Row, IdKey extends IdentifiableKeys<Row>, RowIds extends Row[IdKey]>(props: {
-    id: RowIds;
-    row: Row;
-    columns: ColumnConfig<Row>[];
-    selected?: boolean;
-    expanded?: boolean;
-    loading?: boolean;
-  }): ReactElement<any, any>;
+  <Row, IdKey extends IdentifiableKeys<Row>, RowIds extends Row[IdKey]>(
+    props: {
+      id: RowIds;
+      row: Row;
+      columns: ColumnConfig<Row>[];
+      selected?: boolean;
+      expanded?: boolean;
+      loading?: boolean;
+    } & MarshaledColProps
+  ): ReactElement<any, any>;
 }
 
 export const Row: DataRow = ({
@@ -26,6 +31,7 @@ export const Row: DataRow = ({
   expanded = false,
   selected = false,
   loading = false,
+  showOverflow,
 }) => {
   const {
     expandable,
@@ -35,6 +41,8 @@ export const Row: DataRow = ({
     onSelect,
     prefixId,
   } = useControlContext();
+
+  const listColProps = { showOverflow };
 
   const renderExpandedContent = useCallback(() => {
     return expandedContent?.({
@@ -47,6 +55,7 @@ export const Row: DataRow = ({
     <ListRow expanded={expanded} renderExpanded={renderExpandedContent}>
       {selectable && (
         <ListCol
+          {...listColProps}
           display={{ _: 'flex', xs: 'flex' }}
           size="content"
           type="control"
@@ -63,6 +72,7 @@ export const Row: DataRow = ({
       )}
       {columns.map(({ key, render, size, justify, fill, type }) => {
         const colProps = {
+          ...listColProps,
           size,
           justify,
           fill,
@@ -87,7 +97,11 @@ export const Row: DataRow = ({
             {render ? (
               render(row)
             ) : typeof row[key] === 'string' ? (
-              <Text truncate="ellipsis" textAlign={justify ?? 'left'}>
+              <Text
+                truncate="ellipsis"
+                truncateLines={1}
+                textAlign={justify ?? 'left'}
+              >
                 {row[key]}
               </Text>
             ) : (
@@ -97,7 +111,7 @@ export const Row: DataRow = ({
         );
       })}
       {expandable && (
-        <ListCol size="content" order={[1000, 'initial']}>
+        <ListCol {...listColProps} size="content" order={[1000, 'initial']}>
           <ExpandControl
             id={id}
             expanded={expanded}

@@ -1,17 +1,11 @@
-import {
-  AppBarSection,
-  Box,
-  ContentContainer,
-  FlexBox,
-  IconButton,
-  Overlay,
-} from '@codecademy/gamut';
+import { ContentContainer, IconButton, Overlay } from '@codecademy/gamut';
 import { CloseIcon, MenuIcon } from '@codecademy/gamut-icons';
-import { breakpoints } from '@codecademy/gamut-styles';
+import { css } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React, { useState } from 'react';
 
-import { mapItemToElement, StyledAppBar } from '../AppHeader';
+import { mapItemToElement, StyledAppBar, StyledMenuBar } from '../AppHeader';
+import { AppHeaderListItem } from '../AppHeader/AppHeaderElements/AppHeaderListItem';
 import {
   AppHeaderClickHandler,
   AppHeaderItem,
@@ -32,21 +26,26 @@ export type AppHeaderMobileProps = {
   searchInitiallyOpen?: boolean;
 };
 
-const StyledOverlay = styled(Overlay)`
-  display: block;
-  width: 100vw;
-  height: 100vh;
-  opacity: 1;
-  background-color: ${({ theme }) => theme.colors.background};
-  position: fixed;
-  left: 0;
-  top: 0;
-  overflow-x: hidden;
+const StyledOverlay = styled(Overlay)(
+  css({
+    display: { _: `block`, md: `none` },
+    width: `100vw`,
+    height: `100vh`,
+    opacity: 1,
+    bg: `background`,
+    position: `fixed`,
+    left: 0,
+    top: 0,
+    overflowX: `hidden`,
+  })
+);
 
-  @media only screen and (min-width: ${breakpoints.md}) {
-    display: none;
-  }
-`;
+const StyledContentContainer = styled(ContentContainer)(
+  css({
+    display: `flex`,
+    flexDirection: `column`,
+  })
+);
 
 export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
   action,
@@ -70,48 +69,47 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
 
   const mapItemsToElement = <T extends AppHeaderItem[]>(
     items: T,
+    side: 'left' | 'right',
     hideExtraItems?: boolean
   ) => {
     const shouldHideItems = hideExtraItems === true && items.length > 1;
     return items.map((item, index) => {
-      const isFirstItem = index === 0;
       const isLastItem = index + 1 === items.length;
       const isHidable = !isLastItem && shouldHideItems;
       return (
-        <Box
+        <AppHeaderListItem
           key={item.id}
-          ml={isFirstItem ? 0 : 4}
-          mr={isLastItem ? 0 : 4}
+          ml={side === 'right' && index === 0 ? 'auto' : 0}
           display={{
             _: isHidable ? 'none' : 'block',
             xs: 'block',
           }}
         >
-          {mapItemToElement(action, item, redirectParam, true)}
-        </Box>
+          {mapItemToElement(action, item, redirectParam, undefined, true)}
+        </AppHeaderListItem>
       );
     });
   };
 
+  const right = [
+    ...(notificationsBell ? [notificationsBell] : []),
+    ...items.right,
+  ];
+
   return (
     <>
-      <HeaderHeightArea display={{ _: 'block', md: 'none' }}>
+      <HeaderHeightArea
+        display={{ _: 'block', md: 'none' }}
+        as="nav"
+        title="Mobile Navigation"
+      >
         {!mobileMenuOpen && ( // need this bc AppBar has a hardcoded z-Index of 15
           <StyledAppBar>
-            <AppBarSection position="left">
-              {mapItemsToElement(items.left)}
-            </AppBarSection>
-            <AppBarSection position="right">
-              {mapItemsToElement(
-                [
-                  ...(notificationsBell ? [notificationsBell] : []),
-                  ...items.right,
-                ],
-                true
-              )}
-              <FlexBox ml={24}>
+            <StyledMenuBar role="menubar">
+              {mapItemsToElement(items.left, 'left')}
+              {mapItemsToElement(right, 'right', true)}
+              <AppHeaderListItem ml={right.length === 0 ? 'auto' : 0}>
                 <IconButton
-                  type="button"
                   data-testid="header-mobile-menu"
                   aria-label="open navigation menu"
                   onClick={() => {
@@ -119,8 +117,8 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
                   }}
                   icon={MenuIcon}
                 />
-              </FlexBox>
-            </AppBarSection>
+              </AppHeaderListItem>
+            </StyledMenuBar>
           </StyledAppBar>
         )}
         <StyledOverlay
@@ -129,32 +127,29 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
           isOpen={mobileMenuOpen}
           onRequestClose={() => setMobileMenuOpen(false)}
         >
-          <div data-testid="header-mobile-menu-dropdown">
+          <nav data-testid="header-mobile-menu-dropdown">
             <StyledAppBar>
-              <AppBarSection position="left">
-                {mapItemsToElement(items.left)}
-              </AppBarSection>
-              <AppBarSection position="right">
-                <FlexBox>
+              <StyledMenuBar role="menubar">
+                {mapItemsToElement(items.left, 'left')}
+                <AppHeaderListItem ml="auto">
                   <IconButton
-                    type="button"
                     aria-label="close menu"
                     onClick={() => {
                       setMobileMenuOpen(false);
                     }}
                     icon={CloseIcon}
                   />
-                </FlexBox>
-              </AppBarSection>
+                </AppHeaderListItem>
+              </StyledMenuBar>
             </StyledAppBar>
-            <ContentContainer>
+            <StyledContentContainer as="ul" role="menubar">
               <AppHeaderMainMenuMobile
                 action={action}
                 items={items.mainMenu}
                 onSearch={onSearch}
               />
-            </ContentContainer>
-          </div>
+            </StyledContentContainer>
+          </nav>
         </StyledOverlay>
       </HeaderHeightArea>
       {notificationsView}

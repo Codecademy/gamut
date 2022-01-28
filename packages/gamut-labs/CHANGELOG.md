@@ -3,6 +3,163 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [29.2.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@29.1.1...@codecademy/gamut-labs@29.2.0) (2022-01-28)
+
+
+### Features
+
+* **GlobalHeader:** highlight projects in resources dropdown ([5ac07d9](https://github.com/Codecademy/gamut/commit/5ac07d95a902a27f6a32dd95d52c2e876d0b65b5))
+
+
+
+### [29.1.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@29.1.0...@codecademy/gamut-labs@29.1.1) (2022-01-27)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+## [29.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@29.0.1...@codecademy/gamut-labs@29.1.0) (2022-01-27)
+
+
+### Features
+
+* **CurriculumCard:** add isStaticSize prop for height ([b5c67d9](https://github.com/Codecademy/gamut/commit/b5c67d9f90fff4544cdb41a8af0de17b46893eca))
+
+
+
+### [29.0.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@29.0.0...@codecademy/gamut-labs@29.0.1) (2022-01-26)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+## [29.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@28.7.1...@codecademy/gamut-labs@29.0.0) (2022-01-25)
+
+
+### ⚠ BREAKING CHANGES
+
+* bumped React to 17
+
+### Features
+
+* bumped React to 17 ([c074ecb](https://github.com/Codecademy/gamut/commit/c074ecbfa026ed8e37cf41e874d345574a46e5e4))
+
+
+
+### [28.7.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@28.7.0...@codecademy/gamut-labs@28.7.1) (2022-01-24)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+## [28.7.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@28.6.5...@codecademy/gamut-labs@28.7.0) (2022-01-21)
+
+
+### Features
+
+* add Breadcrumbs component ([c98d16a](https://github.com/Codecademy/gamut/commit/c98d16a8e669059998a6a39da781aedb16f30a89))
+
+
+
+### [28.6.5](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@28.6.4...@codecademy/gamut-labs@28.6.5) (2022-01-21)
+
+
+### Bug Fixes
+
+* **SectionBreak, AvatarChooser:** accessibility improvements, use roles & aria-live ([34d612f](https://github.com/Codecademy/gamut/commit/34d612fcc997b70f59e99768597936ea54606b94))
+
+
+
+### [28.6.4](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@28.6.3...@codecademy/gamut-labs@28.6.4) (2022-01-14)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [28.6.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@28.6.2...@codecademy/gamut-labs@28.6.3) (2022-01-13)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [28.6.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@28.6.1...@codecademy/gamut-labs@28.6.2) (2022-01-11)
+
+
+### Bug Fixes
+
+* **AppHeaderDropdown:** boder and tab fix ([4775c8c](https://github.com/Codecademy/gamut/commit/4775c8cf7202668336898a854e267af9e2108f72))
+
+
+
+### [28.6.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@28.6.0...@codecademy/gamut-labs@28.6.1) (2022-01-07)
+
+
+### Bug Fixes
+
+* **GlobalHeader:** Accessibility & Tests Fix ([ba8e643](https://github.com/Codecademy/gamut/commit/ba8e643f2c50ae1bea1ca8036b1ef8bf8a2daa9b))
+
+
+
+## [28.6.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@28.5.1...@codecademy/gamut-labs@28.6.0) (2021-12-20)
+
+
+### Features
+
+* Info Card ([dcfc1a3](https://github.com/Codecademy/gamut/commit/dcfc1a3a74b78a6a067f25e715598d374eb3d6d4))
+
+
+
+### [28.5.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@28.5.0...@codecademy/gamut-labs@28.5.1) (2021-12-17)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+## [28.5.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@28.4.3...@codecademy/gamut-labs@28.5.0) (2021-12-16)
+
+
+### Features
+
+* **GlobalHeader:** Accessible GlobalHeader! ([9467629](https://github.com/Codecademy/gamut/commit/946762989c41c9356d784fb5b14ddce6054bb51f))
+
+
+
+### [28.4.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@28.4.2...@codecademy/gamut-labs@28.4.3) (2021-12-15)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [28.4.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@28.4.1...@codecademy/gamut-labs@28.4.2) (2021-12-14)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [28.4.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@28.4.0...@codecademy/gamut-labs@28.4.1) (2021-12-14)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
 ## [28.4.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@28.3.4...@codecademy/gamut-labs@28.4.0) (2021-12-13)
 
 
