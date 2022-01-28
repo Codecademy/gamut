@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [44.2.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@44.1.0...@codecademy/gamut@44.2.0) (2022-01-28)
+
+
+### Features
+
+* **Modal:** add optional headingLevel prop ([4972272](https://github.com/Codecademy/gamut/commit/497227203d3f82e8c59105b48a6d69a9ac88fa03))
+
+
+
 ## [44.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@44.0.1...@codecademy/gamut@44.1.0) (2022-01-27)
 
 
