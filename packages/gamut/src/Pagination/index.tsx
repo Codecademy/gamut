@@ -132,7 +132,7 @@ export const Pagination: React.FC<PaginationProps> = ({
           href={navigation}
           onClick={() => changeHandler(backPageNumber)}
           variant={variant}
-          showButton={shownPageArray[0] !== 1 ? 'shown' : 'hidden'}
+          showButton={shownPageArray[0] === 1 ? 'hidden' : 'shown'}
         />
       )}
       {shownPageArray.map((page) => (
@@ -148,7 +148,7 @@ export const Pagination: React.FC<PaginationProps> = ({
           {page}
         </PaginationButton>
       ))}
-      {type === 'ellipsis' && shownPageArray[chapterSize - 1] !== totalPages && (
+      {type === 'ellipsis' && (
         <EllipsisButton
           direction="forward"
           onClick={() => {
@@ -157,6 +157,9 @@ export const Pagination: React.FC<PaginationProps> = ({
           aria-label={`Jump to page ${forwardPageNumber}`}
           href={navigation}
           variant={variant}
+          showButton={
+            shownPageArray[chapterSize - 1] === totalPages ? 'hidden' : 'shown'
+          }
         />
       )}
       {currentPage !== totalPages && (

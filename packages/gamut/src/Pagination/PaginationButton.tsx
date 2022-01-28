@@ -22,7 +22,7 @@ const PaginationStrokeButtonInner = motion(
 export interface PaginationButtonProps extends Omit<ButtonProps, 'variant'> {
   icon: React.ComponentType<GamutIconProps>;
   variant?: 'stroke' | 'text';
-  showButton?: 'shown' | 'hidden' | 'none';
+  showButton?: 'shown' | 'hidden';
 }
 
 const variants = {
@@ -49,17 +49,22 @@ export const PaginationButton = forwardRef<
     },
     ref
   ) => {
-    const Wrapper = useMemo(() => {
+    const ButtonStyleWrapper = useMemo(() => {
       return variant === 'stroke'
         ? PaginationStrokeButtonInner
         : PaginationTextButtonInner;
     }, [variant]);
 
     return (
-      <Wrapper {...props} ref={ref} animate={showButton} variants={variants}>
+      <ButtonStyleWrapper
+        {...props}
+        ref={ref}
+        animate={showButton}
+        variants={variants}
+      >
         {Icon && <Icon width={14} height={14} aria-hidden />}
         {children}
-      </Wrapper>
+      </ButtonStyleWrapper>
     );
   }
 );
