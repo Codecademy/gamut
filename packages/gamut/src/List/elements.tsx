@@ -271,6 +271,13 @@ const columnStates = states({
   wrap: {
     whiteSpace: 'normal',
   },
+  /**
+   * Whether the column/cell should allow content to overflow out of it.
+   * Useful for tooltips and conditionally rendered content that wants to overflow.
+   */
+  showOverflow: {
+    overflow: 'visible',
+  },
 });
 
 const columnSpacing = variant({
