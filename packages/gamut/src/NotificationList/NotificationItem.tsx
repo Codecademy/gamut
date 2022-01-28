@@ -14,6 +14,7 @@ import {
   New,
 } from '@codecademy/gamut-illustrations';
 import { CheckerDense } from '@codecademy/gamut-patterns';
+import { themed } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React, { ReactElement } from 'react';
 
