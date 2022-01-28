@@ -1,5 +1,5 @@
 import { Anchor, Box } from '@codecademy/gamut';
-import { theme, variant } from '@codecademy/gamut-styles';
+import { theme, themed, variant } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React from 'react';
 

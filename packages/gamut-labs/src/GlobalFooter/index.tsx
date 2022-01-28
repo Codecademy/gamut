@@ -1,4 +1,5 @@
 import { ContentContainer } from '@codecademy/gamut';
+import { themed } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React from 'react';
 
