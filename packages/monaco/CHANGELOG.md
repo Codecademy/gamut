@@ -3,6 +3,43 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [0.6.2](http://github.com///compare/@codecademy/monaco@0.6.1...@codecademy/monaco@0.6.2) (2022-01-27)
+
+**Note:** Version bump only for package @codecademy/monaco
+
+
+
+
+
+### [0.6.1](http://github.com///compare/@codecademy/monaco@0.6.0...@codecademy/monaco@0.6.1) (2022-01-26)
+
+**Note:** Version bump only for package @codecademy/monaco
+
+
+
+
+
+## [0.6.0](http://github.com///compare/@codecademy/monaco@0.5.32...@codecademy/monaco@0.6.0) (2022-01-25)
+
+
+### ⚠ BREAKING CHANGES
+
+* bumped React to 17
+
+### Features
+
+* bumped React to 17 ([c074ecb](http://github.com///commit/c074ecbfa026ed8e37cf41e874d345574a46e5e4))
+
+
+
+### [0.5.32](http://github.com///compare/@codecademy/monaco@0.5.31...@codecademy/monaco@0.5.32) (2022-01-24)
+
+**Note:** Version bump only for package @codecademy/monaco
+
+
+
+
+
 ### [0.5.31](http://github.com///compare/@codecademy/monaco@0.5.30...@codecademy/monaco@0.5.31) (2022-01-21)
 
 **Note:** Version bump only for package @codecademy/monaco
