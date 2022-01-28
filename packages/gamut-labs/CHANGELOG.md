@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [29.1.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@29.1.0...@codecademy/gamut-labs@29.1.1) (2022-01-27)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+## [29.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@29.0.1...@codecademy/gamut-labs@29.1.0) (2022-01-27)
+
+
+### Features
+
+* **CurriculumCard:** add isStaticSize prop for height ([b5c67d9](https://github.com/Codecademy/gamut/commit/b5c67d9f90fff4544cdb41a8af0de17b46893eca))
+
+
+
 ### [29.0.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@29.0.0...@codecademy/gamut-labs@29.0.1) (2022-01-26)
 
 **Note:** Version bump only for package @codecademy/gamut-labs
