@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [29.2.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@29.1.1...@codecademy/gamut-labs@29.2.0) (2022-01-28)
+
+
+### Features
+
+* **GlobalHeader:** highlight projects in resources dropdown ([5ac07d9](https://github.com/Codecademy/gamut/commit/5ac07d95a902a27f6a32dd95d52c2e876d0b65b5))
+
+
+
 ### [29.1.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@29.1.0...@codecademy/gamut-labs@29.1.1) (2022-01-27)
 
 **Note:** Version bump only for package @codecademy/gamut-labs
