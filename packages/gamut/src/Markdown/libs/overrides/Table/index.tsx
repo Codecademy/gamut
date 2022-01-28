@@ -1,5 +1,6 @@
 import React, { HTMLAttributes } from 'react';
 
+// eslint-disable-next-line gamut/no-css-standalone
 import styles from './styles.module.scss';
 
 export const Table: React.FC<HTMLAttributes<HTMLTableElement>> = (props) => {

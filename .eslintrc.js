@@ -7,6 +7,7 @@ module.exports = {
 
   rules: {
     'gamut/prefer-themed': 'error',
+    'gamut/no-css-standalone': 'error',
     'gamut/import-paths': 'error',
   },
 
@@ -24,6 +25,12 @@ module.exports = {
           'error',
           { devDependencies: true },
         ],
+      },
+    },
+    {
+      files: ['*.mdx'],
+      rules: {
+        'gamut/import-paths': 'off',
       },
     },
     {

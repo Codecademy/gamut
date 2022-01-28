@@ -1,4 +1,4 @@
-/* eslint-disable gamut/gamut-import-paths  */
+// eslint-disable gamut/import-paths
 import {
   Box,
   Checkbox,
@@ -7,14 +7,16 @@ import {
   FormGroup,
   LayoutGrid,
   SelectDropdown,
-} from '@codecademy/gamut/src';
-import { RadarIcon, ResponsiveIcon, RocketIcon } from '@codecademy/gamut-icons';
+} from '@codecademy/gamut';
 import {
   LockIcon,
   NetworkUserIcon,
   PeopleIcon,
-} from '@codecademy/gamut-icons/src';
-import { Background, ColorMode } from '@codecademy/gamut-styles/src';
+  RadarIcon,
+  ResponsiveIcon,
+  RocketIcon,
+} from '@codecademy/gamut-icons';
+import { Background, ColorMode } from '@codecademy/gamut-styles';
 import React, { useState } from 'react';
 
 import { ColorModeExampleWrapper } from '../../Foundations/ColorMode/examples';

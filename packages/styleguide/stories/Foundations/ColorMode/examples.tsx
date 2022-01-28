@@ -1,4 +1,4 @@
-/* eslint-disable gamut/gamut-import-paths */
+/* eslint-disable gamut/import-paths */
 import {
   Anchor,
   Box,

@@ -1,3 +1,4 @@
+// eslint-disable-next-line gamut/import-paths
 import { Alert } from '@codecademy/gamut/src/Alert';
 import { ComponentProps } from 'react';
 

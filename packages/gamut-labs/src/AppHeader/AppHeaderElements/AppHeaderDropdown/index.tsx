@@ -11,6 +11,7 @@ import { AppHeaderAvatar } from '../AppHeaderAvatar';
 import { AppHeaderLinkSections } from '../AppHeaderLinkSections';
 import { focusStyles, hoverStyles } from '../SharedStyles';
 import { AppHeaderClickHandler, AppHeaderDropdownItem } from '../types';
+// eslint-disable-next-line gamut/no-css-standalone
 import styles from './styles.module.scss';
 
 const AppHeaderAvatarTargetButton = styled.button`

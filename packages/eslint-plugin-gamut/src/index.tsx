@@ -4,9 +4,9 @@ import preferThemed from './prefer-themed';
 import recommended from './recommended';
 
 const rules = {
+  'import-paths': gamutImportPaths,
   'no-css-standalone': noCssStandalone,
   'prefer-themed': preferThemed,
-  'gamut-import-paths': gamutImportPaths,
 };
 
 export { rules, recommended };

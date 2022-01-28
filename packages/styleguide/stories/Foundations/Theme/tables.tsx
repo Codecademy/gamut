@@ -1,11 +1,11 @@
-/* eslint-disable gamut/gamut-import-paths  */
-import { Box } from '@codecademy/gamut/src';
+// eslint-disable gamut/import-paths
+import { Box } from '@codecademy/gamut';
 import {
   coreSwatches,
   platformSwatches,
   theme,
   trueColors,
-} from '@codecademy/gamut-styles/src';
+} from '@codecademy/gamut-styles';
 import React from 'react';
 
 import { Code, ColorScale } from '~styleguide/blocks';
