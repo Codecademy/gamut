@@ -2,7 +2,6 @@ import { GamutIconProps } from '@codecademy/gamut-icons';
 import { motion } from 'framer-motion';
 import React, { forwardRef, useMemo } from 'react';
 
-import { Box } from '..';
 import { ButtonProps, createButtonComponent } from '../Button/shared';
 import { ButtonBaseElements } from '../ButtonBase/ButtonBase';
 import {
@@ -12,14 +11,12 @@ import {
   paginationTextVariant,
 } from './elements';
 
-const PaginationTextButtonInner = createButtonComponent(
-  paginationTextButtonStates,
-  paginationTextVariant
+const PaginationTextButtonInner = motion(
+  createButtonComponent(paginationTextButtonStates, paginationTextVariant)
 );
 
-const PaginationStrokeButtonInner = createButtonComponent(
-  paginationStrokeButtonStates,
-  paginationStrokeVariant
+const PaginationStrokeButtonInner = motion(
+  createButtonComponent(paginationStrokeButtonStates, paginationStrokeVariant)
 );
 
 export interface PaginationButtonProps extends Omit<ButtonProps, 'variant'> {
@@ -29,33 +26,40 @@ export interface PaginationButtonProps extends Omit<ButtonProps, 'variant'> {
 }
 
 const variants = {
-  shown: { opacity: 1, display: 'visible' },
+  shown: { opacity: 1, visibility: 'visible', cursor: 'pointer' },
   hidden: {
     opacity: 0,
-    display: 'none',
+    visibility: 'hidden',
+    cursor: 'default',
   },
-  none: { opacity: 0, x: '-1000%' },
 };
 
 export const PaginationButton = forwardRef<
   ButtonBaseElements,
   PaginationButtonProps
   // eslint-disable-next-line react/prop-types
->(({ children, icon: Icon, variant = 'stroke', showButton, ...props }, ref) => {
-  const Wrapper = useMemo(() => {
-    return variant === 'stroke'
-      ? PaginationStrokeButtonInner
-      : PaginationTextButtonInner;
-  }, [variant]);
+>(
+  (
+    {
+      children,
+      icon: Icon,
+      variant = 'stroke',
+      showButton = 'shown',
+      ...props
+    },
+    ref
+  ) => {
+    const Wrapper = useMemo(() => {
+      return variant === 'stroke'
+        ? PaginationStrokeButtonInner
+        : PaginationTextButtonInner;
+    }, [variant]);
 
-  return (
-    <Box minHeight="2.5rem" minWidth="3rem">
-      <motion.div animate={showButton} variants={variants}>
-        <Wrapper {...props} ref={ref}>
-          {Icon && <Icon width={14} height={14} aria-hidden />}
-          {children}
-        </Wrapper>
-      </motion.div>
-    </Box>
-  );
-});
+    return (
+      <Wrapper {...props} ref={ref} animate={showButton} variants={variants}>
+        {Icon && <Icon width={14} height={14} aria-hidden />}
+        {children}
+      </Wrapper>
+    );
+  }
+);
