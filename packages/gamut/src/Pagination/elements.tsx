@@ -85,22 +85,36 @@ export const paginationStrokeButtonStates = states({
 });
 
 interface ButtonAnimationProps {
-  isVisible?: boolean;
+  showButton?: 'shown' | 'hidden';
 }
 
-export const ButtonAnimation: React.FC<ButtonAnimationProps> = ({
+const animationVariants = {
+  shown: {
+    width: 'initial',
+    display: 'flex',
+    overflow: 'hidden',
+  },
+  hidden: {
+    width: 0,
+    overflow: 'hidden',
+  },
+};
+
+export const ButtonSlideAnimation: React.FC<ButtonAnimationProps> = ({
   children,
-  isVisible,
+  showButton,
 }) => {
   return (
     <AnimatePresence>
-      {isVisible && (
+      {showButton === 'shown' && (
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1, width: 'fit-content' }}
-          exit={{ opacity: 0, width: 0, overflow: 'hidden' }}
+          initial="hidden"
+          animate={showButton}
+          variants={animationVariants}
+          exit="hidden"
+          transition={{ duration: 0.8, ease: [0.04, 0.62, 0.23, 0.98] }}
         >
-          {children} ?
+          {children}
         </motion.div>
       )}
     </AnimatePresence>

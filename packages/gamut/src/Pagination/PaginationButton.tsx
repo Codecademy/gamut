@@ -61,6 +61,7 @@ export const PaginationButton = forwardRef<
         ref={ref}
         animate={showButton}
         variants={variants}
+        transition={{ duration: 0.8, ease: [0.04, 0.62, 0.23, 0.98] }}
       >
         {Icon && <Icon width={14} height={14} aria-hidden />}
         {children}
