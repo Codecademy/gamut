@@ -5,11 +5,11 @@
     "build": {
       "dependsOn": ["^build"]
     },
-    "gamut-icons#build": {
+    "@codecademy/gamut-icons#build": {
       "dependsOn": ["^build"],
       "outputs": ["src/icons/**", "dist/**"]
     },
-    "gamut-patterns#build": {
+    "@codecademy/gamut-patterns#build": {
       "dependsOn": ["^build"],
       "outputs": ["src/patterns/**", "dist/**"]
     },
