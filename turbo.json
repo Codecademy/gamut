@@ -3,13 +3,14 @@
   "baseBranch": "origin/main",
   "pipeline": {
     "build": {
-      "dependsOn": ["^build"],
-      "outputs": ["dist/**"]
+      "dependsOn": ["^build"]
     },
     "gamut-icons#build": {
+      "dependsOn": ["^build"],
       "outputs": ["src/icons/**", "dist/**"]
     },
     "gamut-patterns#build": {
+      "dependsOn": ["^build"],
       "outputs": ["src/patterns/**", "dist/**"]
     },
     "verify": {

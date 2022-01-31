@@ -21,6 +21,7 @@
     "verify-all": "yarn verify",
     "clear-modules": "lerna clean -y && rm -rf node_modules",
     "build": "turbo run build --concurrency=3",
+    "build:graph": "yarn build --graph=build-graph.html",
     "build-all": "yarn build",
     "start": "yarn && yarn start:storybook",
     "start:storybook": "cd ./packages/styleguide && yarn start",

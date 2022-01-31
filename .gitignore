@@ -53,3 +53,4 @@ report*.json
 
 # Turborepo
 .turbo
+build-graph.html
