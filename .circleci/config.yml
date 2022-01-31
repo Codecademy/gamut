@@ -57,7 +57,7 @@ references:
   build_all_packages: &build_all_packages
     run:
       name: Build All Packages
-      command: yarn nx run-many --base=$NX_BASE --target=build --all --parallel --max-parallel=3
+      command: yarn nx run-many --target=build --all --parallel --max-parallel=3
 
   build_changed_packages: &build_changed_packages
     run:
@@ -106,23 +106,6 @@ jobs:
       - run: yarn --production=false --frozen-lockfile
       - *save_yarn_cache
       - *save_node_modules
-
-  agent:
-    <<: *default_env
-    steps:
-      - checkout
-      - *restore_node_modules
-      - run:
-          command: npx nx-cloud start-agent
-          no_output_timeout: 60m
-
-  stop_agents:
-    <<: *default_env
-    steps:
-      - checkout
-      - *restore_node_modules
-      - run:
-          command: npx nx-cloud stop-all-agents
 
   tests:
     <<: *default_env
