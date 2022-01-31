@@ -166,16 +166,15 @@ jobs:
       - checkout
       - *restore_node_modules
       - *restore_turbo_cache
-      - *build_all_packages
-      - *save_turbo_cache
       - *restore_webpack_cache
       - run:
           name: build storybook
           command: yarn build-storybook
-      - *save_webpack_cache
       - run:
           name: deploy
           command: yarn deploy
+      - *save_turbo_cache
+      - *save_webpack_cache
 
   deploy_alpha:
     <<: *default_env
@@ -187,12 +186,11 @@ jobs:
       - checkout
       - *restore_node_modules
       - *restore_turbo_cache
-      - *build_all_packages
-      - *save_turbo_cache
       - *restore_webpack_cache
       - run:
           name: build storybook
           command: yarn build-storybook
+      - *save_turbo_cache
       - *save_webpack_cache
       - run:
           name: deploy

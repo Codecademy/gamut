@@ -17,6 +17,12 @@
       "dependsOn": ["^build"],
       "outputs": []
     },
+    "build-storybook": {
+      "dependsOn": ["^build"]
+    },
+    "copy-storybook": {
+      "cache": false
+    },
     "start": {
       "cache": false
     }
