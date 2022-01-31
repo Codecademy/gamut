@@ -3,7 +3,14 @@
   "baseBranch": "origin/main",
   "pipeline": {
     "build": {
-      "dependsOn": ["^build"]
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**"]
+    },
+    "gamut-icons#build": {
+      "outputs": ["src/icons/**", "dist/**"]
+    },
+    "gamut-patterns#build": {
+      "outputs": ["src/patterns/**", "dist/**"]
     },
     "verify": {
       "dependsOn": ["^build"],
@@ -13,5 +20,5 @@
       "cache": false
     }
   },
-  "globalDependencies": ["tsconfig.json", "lerna.json"]
+  "globalDependencies": ["tsconfig.json", "lerna.json", "turbo.json"]
 }

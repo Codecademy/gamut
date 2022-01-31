@@ -50,3 +50,6 @@ packages/gamut-styles/demo-styles
 
 # Automatic report....json files
 report*.json
+
+# Turborepo
+.turbo
