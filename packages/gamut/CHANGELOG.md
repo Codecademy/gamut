@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [44.2.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@44.1.0...@codecademy/gamut@44.2.0) (2022-01-28)
+
+
+### Features
+
+* **Modal:** add optional headingLevel prop ([4972272](https://github.com/Codecademy/gamut/commit/497227203d3f82e8c59105b48a6d69a9ac88fa03))
+
+
+
+## [44.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@44.0.1...@codecademy/gamut@44.1.0) (2022-01-27)
+
+
+### Features
+
+* Allowing overflow in DataTable ([86f00f1](https://github.com/Codecademy/gamut/commit/86f00f12b7b4f86d3e261e8c608f908129e7ea7c))
+
+
+
 ### [44.0.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@44.0.0...@codecademy/gamut@44.0.1) (2022-01-26)
 
 
