@@ -35,6 +35,11 @@ export type User = {
   isPaused?: boolean;
   proCheckoutUrl?: string;
   showProUpgrade?: boolean;
+  // this currently does nothing as we removed the code the code that consumed it
+  // but leaving here so that we can leave the logic in monolith
+  // in case we shift to a new referrals provider
+  // more context: https://codecademy.atlassian.net/browse/DISC-466
+  showReferrals?: boolean;
 };
 
 type LoggedInHeader = BaseHeader & {
