@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [44.2.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@44.2.0...@codecademy/gamut@44.2.1) (2022-01-31)
+
+
+### Bug Fixes
+
+* **GlobalHeader:** Regression fixes ([1667861](https://github.com/Codecademy/gamut/commit/1667861ffe6e50d70aa4a5fe5ac6da003d277d7f))
+
+
+
 ## [44.2.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@44.1.0...@codecademy/gamut@44.2.0) (2022-01-28)
 
 

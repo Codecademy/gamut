@@ -1,6 +1,3 @@
-import { IconButton } from '@codecademy/gamut';
-import { css } from '@codecademy/gamut-styles';
-import styled from '@emotion/styled';
 import { AnimatePresence, motion, Variants } from 'framer-motion';
 import React from 'react';
 
@@ -30,11 +27,3 @@ export const AnimatedHeaderZone: React.FC<AnimatedHeaderZoneProps> = ({
     </AnimatePresence>
   ) : null;
 };
-
-export const HeaderIconButton = styled(IconButton)(
-  css({
-    '&:hover': {
-      background: `none`,
-    },
-  })
-);

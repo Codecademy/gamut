@@ -74,7 +74,7 @@ const anchorVariants = variant({
         color: 'primary',
       },
       [ButtonSelectors.FOCUS_VISIBLE]: {
-        color: 'text',
+        color: 'primary',
       },
     },
   },

@@ -1,7 +1,8 @@
+import { IconButton } from '@codecademy/gamut';
 import { SearchIcon } from '@codecademy/gamut-icons';
 import React, { useState } from 'react';
 
-import { AnimatedHeaderZone, HeaderIconButton } from '../shared';
+import { AnimatedHeaderZone } from '../shared';
 import { SearchPane } from './SearchPane';
 
 export type AppHeaderSearch = {
@@ -32,13 +33,14 @@ export const useHeaderSearch = ({
       id: 'search',
       type: 'render-element',
       renderElement: () => (
-        <HeaderIconButton
+        <IconButton
           aria-label="Search Codecademy Content"
           data-testid="header-search"
           tabIndex="-1"
           onClick={toggleSearch}
           icon={SearchIcon}
           role="menuitem"
+          variant="interface"
         />
       ),
     },
