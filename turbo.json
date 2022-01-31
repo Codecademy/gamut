@@ -1,0 +1,17 @@
+{
+  "npmClient": "yarn",
+  "baseBranch": "origin/main",
+  "pipeline": {
+    "build": {
+      "dependsOn": ["^build"]
+    },
+    "verify": {
+      "dependsOn": ["^build"],
+      "outputs": []
+    },
+    "start": {
+      "cache": false
+    }
+  },
+  "globalDependencies": ["tsconfig.json", "lerna.json"]
+}
