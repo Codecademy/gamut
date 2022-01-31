@@ -29,26 +29,14 @@ export const EllipsisButton = forwardRef<
   const [contents, setContents] = useState(ellipsisButtonContents.ellipsis);
 
   return (
-    <AnimatePresence>
-      {showButton === 'shown' && (
-        <motion.div
-          initial={direction === 'forward' ? 'shown' : 'hidden'}
-          animate={showButton}
-          variants={animationVariants}
-          exit="hidden"
-          transition={{ duration: 0.8, ease: [0.04, 0.62, 0.23, 0.98] }}
-        >
-          <PaginationButton
-            onMouseEnter={() => setContents(ellipsisButtonContents[direction])}
-            onMouseLeave={() => setContents(ellipsisButtonContents.ellipsis)}
-            {...props}
-            ref={ref}
-            showButton={showButton}
-          >
-            {contents}
-          </PaginationButton>
-        </motion.div>
-      )}
-    </AnimatePresence>
+    <PaginationButton
+      onMouseEnter={() => setContents(ellipsisButtonContents[direction])}
+      onMouseLeave={() => setContents(ellipsisButtonContents.ellipsis)}
+      {...props}
+      ref={ref}
+      showButton={showButton}
+    >
+      {contents}
+    </PaginationButton>
   );
 });
