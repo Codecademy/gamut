@@ -35,7 +35,6 @@ export type User = {
   isPaused?: boolean;
   proCheckoutUrl?: string;
   showProUpgrade?: boolean;
-  showReferrals?: boolean;
 };
 
 type LoggedInHeader = BaseHeader & {
