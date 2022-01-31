@@ -12,7 +12,7 @@ references:
       IGNORE_COMMIT_MESSAGE: 'chore(release): publish'
       NODE_OPTIONS: '--max_old_space_size=8196'
       CIRCLE_TEST_REPORTS: /tmp/test-results
-      NX_CLOUD_DISTRIBUTED_EXECUTION: 'true'
+      NX_CLOUD_DISTRIBUTED_EXECUTION: 'false'
 
   yarn_cache_key_1: &yarn_cache_key_1 v2-yarn-{{ arch }}-{{ checksum "yarn.lock" }}
 
@@ -275,18 +275,6 @@ workflows:
       - checkout_code:
           requires:
             - queue/block_workflow
-      - agent:
-          name: 'agent1'
-          requires:
-            - checkout_code
-      - agent:
-          name: 'agent2'
-          requires:
-            - checkout_code
-      - agent:
-          name: 'agent3'
-          requires:
-            - checkout_code
       - tests:
           requires:
             - checkout_code
@@ -304,22 +292,7 @@ workflows:
                 - gh-pages
           requires:
             - checkout_code
-      - stop_agents:
-          requires:
-            - publish
-            - tests
-          filters:
-            branches:
-              only: main
-      - stop_agents:
-          requires:
-            - publish_alpha
-            - tests
-          filters:
-            branches:
-              ignore:
-                - main
-                - gh-pages
+
   deploy:
     jobs:
       - queue/block_workflow:
@@ -328,18 +301,6 @@ workflows:
       - checkout_code:
           requires:
             - queue/block_workflow
-      - agent:
-          name: 'agent1'
-          requires:
-            - checkout_code
-      - agent:
-          name: 'agent2'
-          requires:
-            - checkout_code
-      - agent:
-          name: 'agent3'
-          requires:
-            - checkout_code
       - deploy:
           requires:
             - checkout_code
@@ -354,17 +315,3 @@ workflows:
                 - gh-pages
           requires:
             - checkout_code
-      - stop_agents:
-          requires:
-            - deploy
-          filters:
-            branches:
-              only: main
-      - stop_agents:
-          requires:
-            - deploy_alpha
-          filters:
-            branches:
-              ignore:
-                - main
-                - gh-pages
