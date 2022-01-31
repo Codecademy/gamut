@@ -72,7 +72,7 @@ references:
   build_all_packages: &build_all_packages
     run:
       name: Build All Packages
-      command: yarn turbo run build --concurrency=3
+      command: yarn build
 
   set_git_user: &set_git_user
     run:

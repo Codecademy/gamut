@@ -9,19 +9,6 @@
     "node": "^14.7",
     "yarn": "^1.21.1"
   },
-  "turbo": {
-    "baseBranch": "origin/main",
-    "pipeline": {
-      "build": {
-        "dependsOn": [
-          "^build"
-        ]
-      },
-      "start": {
-        "cache": false
-      }
-    }
-  },
   "scripts": {
     "test": "jest",
     "lint": "eslint --ignore-path .eslintignore \"./**/*.{mdx,js,ts,tsx,json}\" --max-warnings 0",
@@ -30,11 +17,11 @@
     "prettier": "prettier --ignore-path .prettierignore \"./**/*.{mdx,js,ts,tsx,json,css,scss}\"",
     "format": "yarn lint:fix && yarn prettier --write",
     "format:verify": "yarn prettier --check",
-    "verify-all": "nx run-many --target=verify --all --parallel",
-    "verify-changed": "nx affected --target=verify",
+    "verify": "turbo run verify --concurrency=3",
+    "verify-all": "yarn verify",
     "clear-modules": "lerna clean -y && rm -rf node_modules",
-    "build-all": "nx run-many --target=build --all --parallel",
-    "build-changed": "nx affected --target=build",
+    "build": "turbo run build --concurrency=3",
+    "build-all": "yarn build",
     "start": "yarn && yarn start:storybook",
     "start:storybook": "cd ./packages/styleguide && yarn start",
     "build-storybook": "cd ./packages/styleguide && yarn build-storybook",
