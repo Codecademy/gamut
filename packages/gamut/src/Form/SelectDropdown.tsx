@@ -349,6 +349,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
     <ReactSelect
       {...defaultProps}
       id={id || rest.htmlFor}
+      inputId={id || rest.htmlFor || rest['aria-label']}
       options={selectOptions}
       value={multiple ? multiValues : parsedValue}
       activated={activated}
