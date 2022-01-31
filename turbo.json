@@ -27,5 +27,5 @@
       "cache": false
     }
   },
-  "globalDependencies": ["tsconfig.json", "lerna.json", "turbo.json"]
+  "globalDependencies": ["tsconfig.json", "lerna.json"]
 }
