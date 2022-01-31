@@ -8,7 +8,6 @@ import {
   NotebookIcon,
   PersonIcon,
   PieLineGraphIcon,
-  RatingStarGiveIcon,
   SupportIcon,
 } from '@codecademy/gamut-icons';
 import { ReactNode } from 'react';
