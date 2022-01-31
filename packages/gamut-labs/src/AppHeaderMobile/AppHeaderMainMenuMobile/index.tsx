@@ -43,7 +43,9 @@ export const AppHeaderMainMenuMobile: React.FC<AppHeaderMainMenuMobileProps> = (
   ) => {
     switch (item.type) {
       case 'link':
-        return <AppHeaderLink key={item.id} item={item} action={action} />;
+        return (
+          <AppHeaderLink key={item.id} item={item} action={action} showIcon />
+        );
       case 'dropdown':
       case 'profile-dropdown':
         return (
@@ -62,6 +64,7 @@ export const AppHeaderMainMenuMobile: React.FC<AppHeaderMainMenuMobileProps> = (
             mt={32}
             mx="auto"
             key={item.id}
+            role="menuitem"
           >
             {item.text}
           </FillButton>
@@ -75,6 +78,7 @@ export const AppHeaderMainMenuMobile: React.FC<AppHeaderMainMenuMobileProps> = (
             data-testid={item.dataTestId}
             href={item.href}
             onClick={(event: React.MouseEvent) => action(event, item)}
+            role="menuitem"
           >
             {item.text}
           </TextButton>
@@ -94,7 +98,9 @@ export const AppHeaderMainMenuMobile: React.FC<AppHeaderMainMenuMobileProps> = (
         <MobileSearchBar onSearch={onSearch} />
       </AppHeaderListItem>
       {items.map((item) => (
-        <AppHeaderListItem>{mapItemToElement(item, action)}</AppHeaderListItem>
+        <AppHeaderListItem key={item.id}>
+          {mapItemToElement(item, action)}
+        </AppHeaderListItem>
       ))}
     </>
   );

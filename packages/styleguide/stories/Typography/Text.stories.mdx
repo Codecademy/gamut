@@ -122,21 +122,29 @@ Text has some special props with common use cases to make your life easier.
 <Canvas>
   <Story name="Truncation">
     <LayoutGrid gap={32}>
-      {typographyUtilities.truncation.map((variant) => (
-        <Fragment key={variant}>
-          <Column size={3} alignItems="center">
-            <Text as="code" fontSize={14}>
-              truncate="{variant.toString()}"
-            </Text>
-          </Column>
-          <Column size={9}>
-            <Text truncate={variant} width="400px">
-              This is a very long text thingy that we want to truncate it's very
-              long indeed.
-            </Text>
-          </Column>
-        </Fragment>
-      ))}
+      {typographyUtilities.truncation.map((truncateType) =>
+        typographyUtilities.truncateLines.map((lines) => (
+          <Fragment key={lines}>
+            <Column size={3} alignItems="center">
+              <Text as="code" fontSize={14}>
+                truncate="{truncateType}"
+                <br />
+                truncateLines={lines}
+              </Text>
+            </Column>
+            <Column size={9}>
+              <Text truncateLines={lines} truncate={truncateType} width="400px">
+                This is a very long text thingy that we want to truncate it's
+                very long indeed. This is a very long text thingy that we want
+                to truncate it's very long indeed. This is a very long text
+                thingy that we want to truncate it's very long indeed. This is a
+                very long text thingy that we want to truncate it's very long
+                indeed.
+              </Text>
+            </Column>
+          </Fragment>
+        ))
+      )}
     </LayoutGrid>
   </Story>
 </Canvas>

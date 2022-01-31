@@ -4,7 +4,7 @@ import { css } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React, { useState } from 'react';
 
-import { mapItemToElement, StyledAppBar } from '../AppHeader';
+import { mapItemToElement, StyledAppBar, StyledMenuBar } from '../AppHeader';
 import { AppHeaderListItem } from '../AppHeader/AppHeaderElements/AppHeaderListItem';
 import {
   AppHeaderClickHandler,
@@ -81,8 +81,8 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
           key={item.id}
           ml={side === 'right' && index === 0 ? 'auto' : 0}
           display={{
-            _: isHidable ? 'none' : 'block',
-            xs: 'block',
+            _: isHidable ? 'none' : 'flex',
+            xs: 'flex',
           }}
         >
           {mapItemToElement(action, item, redirectParam, undefined, true)}
@@ -98,31 +98,45 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
 
   return (
     <>
-      <HeaderHeightArea display={{ _: 'block', md: 'none' }} as="nav">
-        {!mobileMenuOpen && ( // need this bc AppBar has a hardcoded z-Index of 15
-          <StyledAppBar>
-            {mapItemsToElement(items.left, 'left')}
-            {mapItemsToElement(right, 'right', true)}
-            <AppHeaderListItem ml={right.length === 0 ? 'auto' : 0}>
-              <IconButton
-                data-testid="header-mobile-menu"
-                aria-label="open navigation menu"
-                onClick={() => {
-                  openMobileMenu();
-                }}
-                icon={MenuIcon}
-              />
-            </AppHeaderListItem>
-          </StyledAppBar>
-        )}
-        <StyledOverlay
-          clickOutsideCloses
-          escapeCloses
-          isOpen={mobileMenuOpen}
-          onRequestClose={() => setMobileMenuOpen(false)}
+      {!mobileMenuOpen && ( // need this bc AppBar has a hardcoded z-Index of 15
+        <HeaderHeightArea
+          display={{ _: 'block', lg: 'none' }}
+          as="nav"
+          title="Mobile Navigation"
         >
-          <nav data-testid="header-mobile-menu-dropdown">
-            <StyledAppBar>
+          <StyledAppBar>
+            <StyledMenuBar role="menubar">
+              {mapItemsToElement(items.left, 'left')}
+              {mapItemsToElement(right, 'right', true)}
+              <AppHeaderListItem ml={right.length === 0 ? 'auto' : 0}>
+                <IconButton
+                  data-testid="header-mobile-menu"
+                  aria-label="open navigation menu"
+                  onClick={() => {
+                    openMobileMenu();
+                  }}
+                  icon={MenuIcon}
+                  variant="interface"
+                />
+              </AppHeaderListItem>
+            </StyledMenuBar>
+          </StyledAppBar>
+        </HeaderHeightArea>
+      )}
+      <StyledOverlay
+        clickOutsideCloses
+        escapeCloses
+        isOpen={mobileMenuOpen}
+        onRequestClose={() => setMobileMenuOpen(false)}
+      >
+        <HeaderHeightArea
+          display={{ _: 'block', lg: 'none' }}
+          as="nav"
+          title="Mobile Navigation"
+          data-testid="header-mobile-menu-dropdown"
+        >
+          <StyledAppBar>
+            <StyledMenuBar role="menubar">
               {mapItemsToElement(items.left, 'left')}
               <AppHeaderListItem ml="auto">
                 <IconButton
@@ -133,17 +147,17 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
                   icon={CloseIcon}
                 />
               </AppHeaderListItem>
-            </StyledAppBar>
-            <StyledContentContainer as="ul" role="menubar">
-              <AppHeaderMainMenuMobile
-                action={action}
-                items={items.mainMenu}
-                onSearch={onSearch}
-              />
-            </StyledContentContainer>
-          </nav>
-        </StyledOverlay>
-      </HeaderHeightArea>
+            </StyledMenuBar>
+          </StyledAppBar>
+          <StyledContentContainer as="ul" role="menubar">
+            <AppHeaderMainMenuMobile
+              action={action}
+              items={items.mainMenu}
+              onSearch={onSearch}
+            />
+          </StyledContentContainer>
+        </HeaderHeightArea>
+      </StyledOverlay>
       {notificationsView}
     </>
   );

@@ -4,8 +4,8 @@
     "url": "https://github.com/Codecademy/gamut/issues"
   },
   "dependencies": {
-    "@codecademy/gamut-styles": "^12.1.1",
-    "@codecademy/variance": "^0.19.0",
+    "@codecademy/gamut-styles": "^13.0.1",
+    "@codecademy/variance": "^0.20.0",
     "classnames": "^2.2.5"
   },
   "description": "Pattern library for Codecademy",
@@ -18,8 +18,8 @@
   "peerDependencies": {
     "@emotion/react": "^11.4.0",
     "@emotion/styled": "^11.3.0",
-    "react": ">=16.8.1",
-    "react-dom": ">=16.8.1"
+    "react": ">=17.0.2",
+    "react-dom": ">=17.0.2"
   },
   "devDependencies": {
     "@svgr/cli": "5.5.0",
@@ -43,5 +43,5 @@
     "lernaBuildTask": "yarn build"
   },
   "sideEffects": false,
-  "version": "0.7.3"
+  "version": "0.8.1"
 }

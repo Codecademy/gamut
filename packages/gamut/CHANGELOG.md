@@ -3,6 +3,108 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [44.2.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@44.2.0...@codecademy/gamut@44.2.1) (2022-01-31)
+
+
+### Bug Fixes
+
+* **GlobalHeader:** Regression fixes ([1667861](https://github.com/Codecademy/gamut/commit/1667861ffe6e50d70aa4a5fe5ac6da003d277d7f))
+
+
+
+## [44.2.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@44.1.0...@codecademy/gamut@44.2.0) (2022-01-28)
+
+
+### Features
+
+* **Modal:** add optional headingLevel prop ([4972272](https://github.com/Codecademy/gamut/commit/497227203d3f82e8c59105b48a6d69a9ac88fa03))
+
+
+
+## [44.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@44.0.1...@codecademy/gamut@44.1.0) (2022-01-27)
+
+
+### Features
+
+* Allowing overflow in DataTable ([86f00f1](https://github.com/Codecademy/gamut/commit/86f00f12b7b4f86d3e261e8c608f908129e7ea7c))
+
+
+
+### [44.0.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@44.0.0...@codecademy/gamut@44.0.1) (2022-01-26)
+
+
+### Bug Fixes
+
+* **Form:** remove noSelect from form radios ([a067d84](https://github.com/Codecademy/gamut/commit/a067d8453ff485adae7ba0bee689be39f0f1be6b))
+
+
+
+## [44.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@43.1.2...@codecademy/gamut@44.0.0) (2022-01-25)
+
+
+### ⚠ BREAKING CHANGES
+
+* bumped React to 17
+
+### Features
+
+* bumped React to 17 ([c074ecb](https://github.com/Codecademy/gamut/commit/c074ecbfa026ed8e37cf41e874d345574a46e5e4))
+
+
+
+### [43.1.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@43.1.1...@codecademy/gamut@43.1.2) (2022-01-24)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [43.1.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@43.1.0...@codecademy/gamut@43.1.1) (2022-01-21)
+
+
+### Bug Fixes
+
+* **SectionBreak, AvatarChooser:** accessibility improvements, use roles & aria-live ([34d612f](https://github.com/Codecademy/gamut/commit/34d612fcc997b70f59e99768597936ea54606b94))
+
+
+
+## [43.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@43.0.0...@codecademy/gamut@43.1.0) (2022-01-14)
+
+
+### Features
+
+* (SelectDropdown multi select) Allow value to override internal state ([44e0a43](https://github.com/Codecademy/gamut/commit/44e0a43345fb59156ed917074ea1f05ef23020ed))
+
+
+
+## [43.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@42.3.0...@codecademy/gamut@43.0.0) (2022-01-13)
+
+
+### ⚠ BREAKING CHANGES
+
+* **Text:** update truncation in Text component
+
+### Features
+
+* **Text:** update truncation in Text component ([43e948c](https://github.com/Codecademy/gamut/commit/43e948cd307bba56dd2d5db76c53a8e529d74e8c))
+
+
+
+## [42.3.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@42.2.1...@codecademy/gamut@42.3.0) (2022-01-07)
+
+
+### Features
+
+* **DataTable:** prop comments ([101e241](https://github.com/Codecademy/gamut/commit/101e241c181260a3b85e14cc9028fbc1e9d5f1dc))
+
+
+### Bug Fixes
+
+* **GlobalHeader:** Accessibility & Tests Fix ([ba8e643](https://github.com/Codecademy/gamut/commit/ba8e643f2c50ae1bea1ca8036b1ef8bf8a2daa9b))
+
+
+
 ### [42.2.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@42.2.0...@codecademy/gamut@42.2.1) (2021-12-17)
 
 

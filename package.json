@@ -9,19 +9,6 @@
     "node": "^14.7",
     "yarn": "^1.21.1"
   },
-  "turbo": {
-    "baseBranch": "origin/main",
-    "pipeline": {
-      "build": {
-        "dependsOn": [
-          "^build"
-        ]
-      },
-      "start": {
-        "cache": false
-      }
-    }
-  },
   "scripts": {
     "test": "jest",
     "lint": "eslint --ignore-path .eslintignore \"./**/*.{mdx,js,ts,tsx,json}\" --max-warnings 0",
@@ -81,32 +68,32 @@
     "@emotion/jest": "^11.3.0",
     "@emotion/react": "^11.4.0",
     "@emotion/styled": "^11.3.0",
-    "@nrwl/cli": "13.4.3",
-    "@nrwl/nx-cloud": "13.0.2",
-    "@nrwl/tao": "13.4.3",
-    "@nrwl/workspace": "13.4.3",
-    "@testing-library/dom": "^7.31.2",
-    "@testing-library/jest-dom": "^5.7.0",
-    "@testing-library/react": "^11.0.4",
-    "@testing-library/react-hooks": "^5.1.0",
-    "@testing-library/user-event": "^13.1.9",
+    "@nrwl/cli": "13.7.1",
+    "@nrwl/nx-cloud": "13.1.2",
+    "@nrwl/tao": "13.7.1",
+    "@nrwl/workspace": "13.7.1",
+    "@testing-library/dom": "^8.11.1",
+    "@testing-library/jest-dom": "^5.16.1",
+    "@testing-library/react": "^12.1.2",
+    "@testing-library/react-hooks": "^7.0.2",
+    "@testing-library/user-event": "^13.5.0",
     "@types/classnames": "2.2.10",
     "@types/enzyme": "3.10.7",
     "@types/invariant": "2.2.29",
     "@types/konami-code-js": "^0.8.0",
     "@types/lodash": "4.14.168",
-    "@types/react": "^16.9",
-    "@types/react-dom": "^16.9",
+    "@types/react": "^17",
+    "@types/react-dom": "^17",
     "@types/stylis": "^4.0.0",
     "@typescript-eslint/eslint-plugin": "^5.3.0",
     "@typescript-eslint/parser": "^5.3.0",
+    "@wojtekmaj/enzyme-adapter-react-17": "0.6.6",
     "babel-jest": "26.6.3",
     "babel-plugin-macros": "3.0.1",
     "babel-preset-codecademy": "2.3.0",
     "component-test-setup": "^0.3.1",
     "core-js": "3.7.0",
     "enzyme": "3.11.0",
-    "enzyme-adapter-react-16": "1.15.5",
     "enzyme-to-json": "3.3.5",
     "eslint": "^8.2.0",
     "eslint-plugin-local-rules": "^1.1.0",
@@ -119,10 +106,10 @@
     "lint-staged": "10.4.0",
     "mutationobserver-shim": "^0.3.3",
     "prettier": "2.2.1",
-    "react": "16.13.1",
-    "react-dom": "16.13.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
     "react-helmet": "6.1.0",
-    "react-test-renderer": "16.13.1",
+    "react-test-renderer": "^17.0.2",
     "typescript": "4.4.2"
   },
   "resolutions": {

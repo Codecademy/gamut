@@ -29,13 +29,11 @@ export type AppHeaderProps = {
 
 export const StyledAppBar = styled(AppBar)(
   css({
-    padding: `0.75rem 0`,
     boxShadow: `none`,
-    width: `100%`,
   })
 );
 
-const StyledMenuBar = styled.ul(
+export const StyledMenuBar = styled.ul(
   css({
     display: `flex`,
     padding: 0,
@@ -80,11 +78,13 @@ export const mapItemToElement = (
           onClick={(event: React.MouseEvent) => action(event, item)}
           data-testid={item.dataTestId}
           tabIndex="-1"
+          role="menuitem"
           href={
             item.redirect
               ? formatUrlWithRedirect(item.href, redirectParam)
               : item.href
           }
+          variant="interface"
         >
           {item.text}
         </TextButton>
@@ -99,8 +99,10 @@ export const mapItemToElement = (
               ? formatUrlWithRedirect(item.href, redirectParam)
               : item.href
           }
+          role="menuitem"
           tabIndex="-1"
           onClick={(event: React.MouseEvent) => action(event, item)}
+          variant="interface"
         >
           {item.text}
         </FillButton>
@@ -165,9 +167,11 @@ export const AppHeader: React.FC<AppHeaderProps> = ({
   const menuHandleKeyEvents = (event: React.KeyboardEvent) => {
     switch (event.key) {
       case KEY_CODES.HOME:
+        event.preventDefault();
         focusFirstItem();
         break;
       case KEY_CODES.END:
+        event.preventDefault();
         focusLastItem();
         break;
       case KEY_CODES.RIGHT:
@@ -226,7 +230,11 @@ export const AppHeader: React.FC<AppHeaderProps> = ({
   };
 
   return (
-    <HeaderHeightArea display={{ _: 'none', md: 'block' }} as="nav">
+    <HeaderHeightArea
+      display={{ _: 'none', lg: 'block' }}
+      as="nav"
+      title="Main Navigation"
+    >
       <StyledAppBar>
         <StyledMenuBar
           role="menubar"
