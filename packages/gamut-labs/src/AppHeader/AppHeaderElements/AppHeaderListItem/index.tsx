@@ -6,6 +6,7 @@ import React from 'react';
 export const StyledListItem = styled(Box)(
   css({
     display: `flex`,
+    justifyContent: `center`,
     flexDirection: `column`,
     position: `relative`,
 

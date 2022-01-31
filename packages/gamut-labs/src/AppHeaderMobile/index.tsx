@@ -81,8 +81,8 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
           key={item.id}
           ml={side === 'right' && index === 0 ? 'auto' : 0}
           display={{
-            _: isHidable ? 'none' : 'block',
-            xs: 'block',
+            _: isHidable ? 'none' : 'flex',
+            xs: 'flex',
           }}
         >
           {mapItemToElement(action, item, redirectParam, undefined, true)}
@@ -98,12 +98,12 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
 
   return (
     <>
-      <HeaderHeightArea
-        display={{ _: 'block', md: 'none' }}
-        as="nav"
-        title="Mobile Navigation"
-      >
-        {!mobileMenuOpen && ( // need this bc AppBar has a hardcoded z-Index of 15
+      {!mobileMenuOpen && ( // need this bc AppBar has a hardcoded z-Index of 15
+        <HeaderHeightArea
+          display={{ _: 'block', lg: 'none' }}
+          as="nav"
+          title="Mobile Navigation"
+        >
           <StyledAppBar>
             <StyledMenuBar role="menubar">
               {mapItemsToElement(items.left, 'left')}
@@ -116,42 +116,48 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
                     openMobileMenu();
                   }}
                   icon={MenuIcon}
+                  variant="interface"
                 />
               </AppHeaderListItem>
             </StyledMenuBar>
           </StyledAppBar>
-        )}
-        <StyledOverlay
-          clickOutsideCloses
-          escapeCloses
-          isOpen={mobileMenuOpen}
-          onRequestClose={() => setMobileMenuOpen(false)}
+        </HeaderHeightArea>
+      )}
+      <StyledOverlay
+        clickOutsideCloses
+        escapeCloses
+        isOpen={mobileMenuOpen}
+        onRequestClose={() => setMobileMenuOpen(false)}
+      >
+        <HeaderHeightArea
+          display={{ _: 'block', lg: 'none' }}
+          as="nav"
+          title="Mobile Navigation"
+          data-testid="header-mobile-menu-dropdown"
         >
-          <nav data-testid="header-mobile-menu-dropdown">
-            <StyledAppBar>
-              <StyledMenuBar role="menubar">
-                {mapItemsToElement(items.left, 'left')}
-                <AppHeaderListItem ml="auto">
-                  <IconButton
-                    aria-label="close menu"
-                    onClick={() => {
-                      setMobileMenuOpen(false);
-                    }}
-                    icon={CloseIcon}
-                  />
-                </AppHeaderListItem>
-              </StyledMenuBar>
-            </StyledAppBar>
-            <StyledContentContainer as="ul" role="menubar">
-              <AppHeaderMainMenuMobile
-                action={action}
-                items={items.mainMenu}
-                onSearch={onSearch}
-              />
-            </StyledContentContainer>
-          </nav>
-        </StyledOverlay>
-      </HeaderHeightArea>
+          <StyledAppBar>
+            <StyledMenuBar role="menubar">
+              {mapItemsToElement(items.left, 'left')}
+              <AppHeaderListItem ml="auto">
+                <IconButton
+                  aria-label="close menu"
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                  }}
+                  icon={CloseIcon}
+                />
+              </AppHeaderListItem>
+            </StyledMenuBar>
+          </StyledAppBar>
+          <StyledContentContainer as="ul" role="menubar">
+            <AppHeaderMainMenuMobile
+              action={action}
+              items={items.mainMenu}
+              onSearch={onSearch}
+            />
+          </StyledContentContainer>
+        </HeaderHeightArea>
+      </StyledOverlay>
       {notificationsView}
     </>
   );
