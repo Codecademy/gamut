@@ -100,7 +100,7 @@ const animationVariants = {
   },
 };
 
-export const ButtonSlideAnimation: React.FC<ButtonAnimationProps> = ({
+export const SlideAnimation: React.FC<ButtonAnimationProps> = ({
   children,
   showButton,
 }) => {
@@ -115,6 +115,38 @@ export const ButtonSlideAnimation: React.FC<ButtonAnimationProps> = ({
           transition={{ duration: 0.8, ease: [0.04, 0.62, 0.23, 0.98] }}
         >
           {children}
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
+};
+
+interface SlideAnimationProps {
+  direction?: 'back' | 'forward';
+  WrappedComponent: React.Component;
+  showButton?: 'hidden' | 'shown';
+}
+
+type WrappedComponentProps<
+  WrappedComponent
+> = React.ComponentProps<WrappedComponent>;
+
+const wrapWithSlideAnimation = ({
+  direction,
+  WrappedComponent,
+  showButton,
+}: SlideAnimationProps) => {
+  return (props: WrappedComponentProps<WrappedComponent>) => (
+    <AnimatePresence>
+      {showButton === 'shown' && (
+        <motion.div
+          initial={direction === 'forward' ? 'shown' : 'hidden'}
+          animate={showButton}
+          variants={animationVariants}
+          exit="hidden"
+          transition={{ duration: 0.8, ease: [0.04, 0.62, 0.23, 0.98] }}
+        >
+          <Component {...props} />
         </motion.div>
       )}
     </AnimatePresence>

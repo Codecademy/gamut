@@ -6,6 +6,7 @@ import React, { useMemo, useState } from 'react';
 
 import { HiddenText } from '..';
 import { FlexBox } from '../Box';
+import { SlideAnimation } from './elements';
 import { PaginationButton } from './PaginationButton';
 import { EllipsisButton } from './SkipToButtons';
 import {
@@ -24,9 +25,9 @@ interface PaginationProps {
    */
   defaultCurrent?: number;
   /**
-   * Whether pagination should act as navigation
+   * Whether pagination should act as standard link-based navigation.
    */
-  navigation?: boolean;
+  isNavigation?: boolean;
   /**
    * Called when the page number is changed with the resulting page number as its first argument
    */
@@ -46,7 +47,7 @@ interface PaginationProps {
 }
 
 interface ProviderType
-  extends Pick<PaginationProps, 'chapterSize' | 'navigation' | 'totalPages'> {
+  extends Pick<PaginationProps, 'chapterSize' | 'isNavigation' | 'totalPages'> {
   backPageNumber: number;
   forwardPageNumber: number;
   shownPageArray: number[];
@@ -66,7 +67,7 @@ const PaginationContext = React.createContext<ProviderType>({
 export const Pagination: React.FC<PaginationProps> = ({
   chapterSize = 5,
   defaultCurrent = 1,
-  navigation,
+  isNavigation: navigation,
   onChange,
   totalPages,
   type = 'basic',
@@ -130,7 +131,7 @@ export const Pagination: React.FC<PaginationProps> = ({
         backPageNumber,
         chapterSize,
         forwardPageNumber,
-        navigation,
+        isNavigation: navigation,
         shownPageArray,
         totalPages,
         changeHandler,
@@ -155,14 +156,18 @@ export const Pagination: React.FC<PaginationProps> = ({
           showButton={currentPage === 1 ? 'hidden' : 'shown'}
         />
         {type === 'ellipsis' && (
-          <EllipsisButton
-            aria-label={`Jump to page ${backPageNumber}`}
-            direction="back"
-            href={navigation}
-            onClick={() => changeHandler(backPageNumber)}
-            variant={variant}
+          <SlideAnimation
             showButton={shownPageArray[0] === 1 ? 'hidden' : 'shown'}
-          />
+          >
+            <EllipsisButton
+              aria-label={`Jump to page ${backPageNumber}`}
+              direction="back"
+              href={navigation}
+              onClick={() => changeHandler(backPageNumber)}
+              variant={variant}
+              showButton={shownPageArray[0] === 1 ? 'hidden' : 'shown'}
+            />
+          </SlideAnimation>
         )}
         {shownPageArray.map((page) => (
           <PaginationButton
