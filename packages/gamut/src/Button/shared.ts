@@ -40,7 +40,12 @@ export const templateVariants = <Variant extends string, Styles>(
   });
 };
 
-export const buttonVariants = ['primary', 'secondary', 'danger'] as const;
+export const buttonVariants = [
+  'primary',
+  'secondary',
+  'danger',
+  'interface',
+] as const;
 
 export const buttonStyles = system.css({
   position: 'relative',

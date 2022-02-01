@@ -3,6 +3,84 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [54.0.6](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@54.0.5...@codecademy/styleguide@54.0.6) (2022-01-31)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [54.0.5](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@54.0.4...@codecademy/styleguide@54.0.5) (2022-01-28)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [54.0.4](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@54.0.3...@codecademy/styleguide@54.0.4) (2022-01-28)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [54.0.3](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@54.0.2...@codecademy/styleguide@54.0.3) (2022-01-27)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [54.0.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@54.0.1...@codecademy/styleguide@54.0.2) (2022-01-27)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [54.0.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@54.0.0...@codecademy/styleguide@54.0.1) (2022-01-26)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [54.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@53.1.1...@codecademy/styleguide@54.0.0) (2022-01-25)
+
+
+### ⚠ BREAKING CHANGES
+
+* bumped React to 17
+
+### Features
+
+* bumped React to 17 ([c074ecb](https://github.com/Codecademy/gamut/commit/c074ecbfa026ed8e37cf41e874d345574a46e5e4))
+
+
+
+### [53.1.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@53.1.0...@codecademy/styleguide@53.1.1) (2022-01-24)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [53.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@53.0.3...@codecademy/styleguide@53.1.0) (2022-01-21)
+
+
+### Features
+
+* add Breadcrumbs component ([c98d16a](https://github.com/Codecademy/gamut/commit/c98d16a8e669059998a6a39da781aedb16f30a89))
+
+
+
 ### [53.0.3](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@53.0.2...@codecademy/styleguide@53.0.3) (2022-01-21)
 
 **Note:** Version bump only for package @codecademy/styleguide

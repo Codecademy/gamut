@@ -25,6 +25,7 @@ export type CurriculumCardProps = SubtitleProps & {
   headingLevel?: HeadingTags;
   image?: string;
   isFullSize?: boolean;
+  isStaticSize?: boolean;
   progressState?: ProgressState;
   showProLogo?: boolean;
   tag?: string;
@@ -47,6 +48,7 @@ export const CurriculumCard: React.FC<CurriculumCardProps> = ({
   headingLevel = 'h3',
   image,
   isFullSize = false,
+  isStaticSize = false,
   progressState,
   scope,
   showProLogo,
@@ -64,7 +66,13 @@ export const CurriculumCard: React.FC<CurriculumCardProps> = ({
     <Card
       display="grid"
       gridTemplateRows="repeat(3, max-content) 1fr max-content"
-      minHeight={isFullSize ? pxRem(cardHeight * 2 + 32) : pxRem(cardHeight)}
+      minHeight={
+        isStaticSize
+          ? pxRem(285)
+          : isFullSize
+          ? pxRem(cardHeight * 2 + 32)
+          : pxRem(cardHeight)
+      }
       variant={boxVariant ?? 'white'}
       shadow="medium"
       position="relative"
