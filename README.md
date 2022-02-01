@@ -61,7 +61,7 @@ We provide a single package to manage the versions of a few core dependencies: `
 ## Local development
 
 1.  Run `yarn` in the root directory
-1.  Run `yarn build-all` (certain packages like `gamut-icons` need to be built to function in storybook)
+1.  Run `yarn build` to build all of the packages (certain packages like `gamut-icons` need to be built to function in storybook).
 
 ### Running the storybook styleguide
 
@@ -95,7 +95,7 @@ Every PR that changes files in a package publishes alpha releases that you can u
 **Initial Setup:**
 
 1. Ensure you have npm-link-better installed: `npm install -g npm-link-better`
-1. Ensure you've built the entire `gamut` repo since you last synced: `yarn build-all`
+1. Ensure you've built the entire `gamut` repo since you last synced: `yarn build`
 
 **Instructions:**
 
@@ -153,8 +153,7 @@ This would allow us to make a change in our `gamut` package, and see that change
 - If you are seeing compilation issues in a `gamut` package, you may need to rebuild the whole repository via
 
   ```bash
-  cd gamut
-  yarn build-all
+  yarn build
   ```
 
 </details>
@@ -178,7 +177,7 @@ If your other project uses React, you must link that copy of React in Gamut:
 1. `yarn link`
 1. `cd /path/to/gamut/packages/gamut`
 1. `yarn link react`
-1. `yarn build-all`
+1. `yarn build`
 
 [See the docs](https://reactjs.org/warnings/invalid-hook-call-warning.html#duplicate-react)
 for more information for why you have to do this.
