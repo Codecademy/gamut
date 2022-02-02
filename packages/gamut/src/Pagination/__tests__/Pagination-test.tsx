@@ -13,6 +13,7 @@ const renderView = setupRtl(Pagination, {
 interface TestHelpersType {
   view: RenderResult<typeof queries, HTMLElement>;
   pageNumber?: number;
+  direction?: 'forward' | 'back';
 }
 
 const getPage = ({ view, pageNumber }: TestHelpersType) => {
@@ -27,16 +28,11 @@ const getForwardButton = ({ view }: TestHelpersType) => {
   return view.getByRole('button', { name: /(Navigate forward to page )\d+/ });
 };
 
-const getJumpButtonCount = ({ view }: TestHelpersType) => {
-  return view.getAllByRole('button', {
-    name: /(Jump to page )\d+/,
-  }).length;
-};
+const getJumpButtonCount = ({ view }: TestHelpersType) =>
+  view.getAllByLabelText(/(Jump )+/).length;
 
-const getJumpButton = ({ view, pageNumber }: TestHelpersType) => {
-  return view.getByRole('button', {
-    name: `Jump to page ${pageNumber}`,
-  });
+const getJumpButton = ({ view, pageNumber, direction }: TestHelpersType) => {
+  return view.getByLabelText(`Jump ${direction} to page ${pageNumber}`);
 };
 
 describe('Pagination', () => {
@@ -79,7 +75,7 @@ describe('Pagination', () => {
   });
 
   it('does not render a forward button when on the last page', () => {
-    const { view } = renderView({ defaultCurrent: 15 });
+    const { view } = renderView({ defaultCurrent: 10 });
 
     expect(getBackButton({ view }));
     expect(
@@ -160,13 +156,14 @@ describe('Pagination', () => {
     it('does not render a jump back button when on the first page', () => {
       const { view } = renderView({ totalPages: 15 });
 
-      expect(getJumpButtonCount({ view })).toBe(1);
+      expect(getJumpButtonCount({ view })).toBe(2);
+      expect(view.queryByLabelText(/(Jump back )+/)).toBe(null);
     });
 
     it('renders a jump forward and back button when on the middle pages', () => {
-      const { view } = renderView({ totalPages: 15, defaultCurrent: 3 });
+      const { view } = renderView({ totalPages: 15, defaultCurrent: 7 });
 
-      expect(getJumpButtonCount({ view })).toBe(2);
+      expect(getJumpButtonCount({ view })).toBe(4);
     });
 
     it('does not render a jump forward button when on the last page', () => {
@@ -181,7 +178,11 @@ describe('Pagination', () => {
       const page1 = getPage({ view, pageNumber: 1 });
       expect(page1).toHaveAttribute('aria-current', 'page');
 
-      const forwardButton = getJumpButton({ view, pageNumber: 6 });
+      const forwardButton = getJumpButton({
+        view,
+        pageNumber: 6,
+        direction: 'forward',
+      });
       fireEvent.click(forwardButton);
 
       const sixthPage = getPage({ view, pageNumber: 6 });
@@ -197,7 +198,11 @@ describe('Pagination', () => {
 
       expect(page15).toHaveAttribute('aria-current', 'page');
 
-      const backButton = getJumpButton({ view, pageNumber: 6 });
+      const backButton = getJumpButton({
+        view,
+        pageNumber: 6,
+        direction: 'back',
+      });
 
       fireEvent.click(backButton);
 
@@ -207,18 +212,26 @@ describe('Pagination', () => {
     });
 
     it('calls onChange with page number whenever jump buttons are clicked', () => {
-      const { view } = renderView({ defaultCurrent: 10, totalPages: 15 });
+      const { view } = renderView({ defaultCurrent: 8, totalPages: 15 });
 
-      const backButton = getJumpButton({ view, pageNumber: 5 });
+      const backButton = getJumpButton({
+        view,
+        pageNumber: 3,
+        direction: 'back',
+      });
 
       fireEvent.click(backButton);
-      expect(onChange).toHaveBeenCalledWith(5);
+      expect(onChange).toHaveBeenCalledWith(3);
 
-      const forwardButton = getJumpButton({ view, pageNumber: 10 });
+      const forwardButton = getJumpButton({
+        view,
+        pageNumber: 8,
+        direction: 'forward',
+      });
 
       fireEvent.click(forwardButton);
 
-      expect(onChange).toHaveBeenCalledWith(10);
+      expect(onChange).toHaveBeenCalledWith(8);
     });
   });
 });
