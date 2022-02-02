@@ -8,7 +8,7 @@ import {
   paginationStrokeVariant,
   paginationTextButtonStates,
   paginationTextVariant,
-} from './elements';
+} from './styles';
 
 const PaginationTextButtonInner = createButtonComponent(
   paginationTextButtonStates,
