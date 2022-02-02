@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [29.2.4](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@29.2.3...@codecademy/gamut-labs@29.2.4) (2022-02-02)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [29.2.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@29.2.2...@codecademy/gamut-labs@29.2.3) (2022-02-01)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [29.2.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@29.2.1...@codecademy/gamut-labs@29.2.2) (2022-01-31)
+
+
+### Bug Fixes
+
+* **GlobalHeader:** Regression fixes ([1667861](https://github.com/Codecademy/gamut/commit/1667861ffe6e50d70aa4a5fe5ac6da003d277d7f))
+
+
+
 ### [29.2.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@29.2.0...@codecademy/gamut-labs@29.2.1) (2022-01-28)
 
 **Note:** Version bump only for package @codecademy/gamut-labs
