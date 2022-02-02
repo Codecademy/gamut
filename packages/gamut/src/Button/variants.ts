@@ -101,6 +101,7 @@ export const ctaButtonVariants = templateVariants(['primary'], (variant) => ({
 export const sizeVariants = variant({
   prop: 'size',
   defaultVariant: 'normal',
+  base: { fontWeight: 'title' },
   variants: {
     normal: {
       fontSize: 16,
