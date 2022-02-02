@@ -2,6 +2,7 @@ import { Pagination } from '@codecademy/gamut';
 import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import LinkTo from '@storybook/addon-links/react';
 
 <Meta
   title={title}
@@ -17,7 +18,8 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
     },
   }}
   args={{
-    totalPages: 27,
+    chapterSize: 5,
+    totalPages: 12,
     onChange: () => {},
   }}
 />
@@ -30,31 +32,30 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 
 ## Types
 
-We have two types of pagination - `basic` and `ellipsis`. The `basic` type has number as well as forward and back buttons. The `ellipsis` type also features an ellipsis button which allows users to quickly jump through page numbers by `chapterSize`.
+We have two types of pagination - `basic` and `includeSkipToButtons`. The `basic` type has number as well as forward and back buttons. The `includeSkipToButtons` type also features an ellipsis button which allows users to quickly jump through page numbers by `chapterSize` as well as the first and last page buttons.
 
-For any pagination that is longer then 10 pages, you should use the `ellipsis` type.
+For any pagination that is longer then 10 pages, you should use the `includeSkipToButtons` type.
 
 <Canvas>
   <Story
     name="Basic"
     args={{
       chapterSize: 5,
-      totalPages: 27,
+      totalPages: 8,
       onChange: () => {},
     }}
   >
-    {Pagination.bind({})}
+    {(args) => <Pagination {...args} />}
   </Story>
   <Story
-    name="Ellipsis"
+    name="includeSkipToButtons"
     args={{
       chapterSize: 5,
-      totalPages: 27,
+      totalPages: 20,
       onChange: () => {},
-      type: 'ellipsis',
     }}
   >
-    {Pagination.bind({})}
+    {(args) => <Pagination {...args} />}
   </Story>
 </Canvas>
 
@@ -62,29 +63,29 @@ For any pagination that is longer then 10 pages, you should use the `ellipsis` t
 
 ## Variants
 
-We have two variants of pagination - `stroke` and `fill`.
+We have two variants of pagination - `stroke` and `text` - that roughly correspond to our <LinkTo kind="Atoms/Button">Buttons</LinkTo> with some Pagination-specific style overrides.
 
 <Canvas>
   <Story
-    name="stroke"
+    name="Stroke"
     args={{
       chapterSize: 5,
-      totalPages: 27,
+      totalPages: 18,
       onChange: () => {},
     }}
   >
-    {Pagination.bind({})}
+    {(args) => <Pagination {...args} />}
   </Story>
   <Story
-    name="fill"
+    name="Text"
     args={{
       chapterSize: 5,
-      totalPages: 27,
+      totalPages: 20,
       onChange: () => {},
       variant: 'text',
     }}
   >
-    {Pagination.bind({})}
+    {(args) => <Pagination {...args} />}
   </Story>
 </Canvas>
 
@@ -96,7 +97,7 @@ When using pagination as navigation between linked pages, use the `navigation` p
 
 <Canvas>
   <Story
-    name="default size"
+    name="As Navigation"
     args={{
       chapterSize: 5,
       totalPages: 27,
@@ -110,7 +111,7 @@ When using pagination as navigation between linked pages, use the `navigation` p
       },
     }}
   >
-    {Pagination.bind({})}
+    {(args) => <Pagination {...args} />}
   </Story>
 </Canvas>
 

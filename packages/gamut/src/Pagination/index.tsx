@@ -4,7 +4,7 @@ import {
 } from '@codecademy/gamut-icons';
 import React, { useMemo, useState } from 'react';
 
-import { HiddenText, StrokeButton } from '..';
+import { HiddenText } from '..';
 import { FlexBox } from '../Box';
 import {
   AnimatedFadeButton,
@@ -39,7 +39,7 @@ interface PaginationProps {
   /**
    *  Basic pagination vs ellipsis types, will default to basic if under 10 pages unless specified.
    */
-  type?: 'basic' | 'ellipsis';
+  type?: 'basic' | 'includeSkipToButtons';
   /**
    *  Stroke or text button style
    */
@@ -65,7 +65,7 @@ export const Pagination: React.FC<PaginationProps> = ({
 
   const showSkipToButtons = !!(
     (type === undefined && totalPages >= 10) ||
-    type === 'ellipsis'
+    type === 'includeSkipToButtons'
   );
 
   const changeShownPages = shouldPagesChange({
