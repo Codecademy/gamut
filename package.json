@@ -17,14 +17,15 @@
     "prettier": "prettier --ignore-path .prettierignore \"./**/*.{mdx,js,ts,tsx,json,css,scss}\"",
     "format": "yarn lint:fix && yarn prettier --write",
     "format:verify": "yarn prettier --check",
-    "verify-all": "lerna run verify",
-    "verify-changed": "lerna run verify --since --include-dependencies",
+    "verify": "turbo run verify --concurrency=3",
+    "verify-all": "yarn verify",
     "clear-modules": "lerna clean -y && rm -rf node_modules",
-    "build-all": "lerna run lernaBuildTask",
-    "build-changed": "lerna run lernaBuildTask --since --include-dependencies",
+    "build": "turbo run build --concurrency=3",
+    "build:graph": "yarn build --graph=build-graph.html",
+    "build-all": "yarn build",
     "start": "yarn && yarn start:storybook",
     "start:storybook": "cd ./packages/styleguide && yarn start",
-    "build-storybook": "cd ./packages/styleguide && yarn build-storybook",
+    "build-storybook": "turbo run build-storybook && turbo run copy-storybook",
     "deploy": "cp -r ./dist/static/* ./dist/docs && gh-pages -b gh-pages -d dist"
   },
   "lint-staged": {
@@ -106,6 +107,7 @@
     "react-dom": "^17.0.2",
     "react-helmet": "6.1.0",
     "react-test-renderer": "^17.0.2",
+    "turbo": "^1.1.2",
     "typescript": "4.4.2"
   },
   "resolutions": {
@@ -116,5 +118,6 @@
     "hooks": {
       "pre-commit": "lint-staged"
     }
-  }
+  },
+  "packageManager": "yarn@1.22.10"
 }
