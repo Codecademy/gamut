@@ -79,7 +79,7 @@ export const wrapWithSlideAnimation = (
             }
             variants={slideAnimationVariants}
             exit="hidden"
-            transition={{ duration: 0.8, ease: [0.04, 0.62, 0.23, 0.98] }}
+            transition={{ duration: 0.3 }}
           >
             <WrappedComponent {...props} />
           </motion.div>
@@ -107,6 +107,7 @@ export const createAnimatedFadeButton = (
   return (props: WrappedComponentProps<typeof WrappedComponent>) => (
     <AnimatedButton
       {...props}
+      aria-label={props.showButton === 'hidden' ? null : props['aria-label']}
       animate={props.showButton}
       initial={false}
       variants={fadeAnimationVariants}
