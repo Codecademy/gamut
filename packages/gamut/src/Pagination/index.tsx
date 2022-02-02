@@ -4,7 +4,7 @@ import {
 } from '@codecademy/gamut-icons';
 import React, { useMemo, useState } from 'react';
 
-import { HiddenText } from '..';
+import { HiddenText, StrokeButton } from '..';
 import { FlexBox } from '../Box';
 import {
   AnimatedFadeButton,
@@ -36,7 +36,7 @@ interface PaginationProps {
    */
   onChange: (arg0: number) => void;
   /**
-   *  Basic pagination vs ellipsis variant
+   *  Basic pagination vs ellipsis types, will default to basic if under 10 pages unless specified.
    */
   type?: 'basic' | 'ellipsis';
   /**
@@ -55,12 +55,17 @@ export const Pagination: React.FC<PaginationProps> = ({
   isNavigation: navigation,
   onChange,
   totalPages,
-  type = 'basic',
+  type,
   variant = 'stroke',
 }) => {
   const [currentPage, setCurrentPage] = useState(defaultCurrent);
   const [liveText, setLiveText] = useState('');
   const [shownPageArray, setShownPageArray] = useState([0]);
+
+  const showSkipToButtons = !!(
+    (type === undefined && totalPages >= 10) ||
+    type === 'ellipsis'
+  );
 
   const changeShownPages = shouldPagesChange({
     chapterSize,
@@ -112,7 +117,6 @@ export const Pagination: React.FC<PaginationProps> = ({
 
   return (
     <FlexBox
-      alignContent="center"
       as={navigation ? 'nav' : undefined}
       aria-label={
         navigation
@@ -130,7 +134,7 @@ export const Pagination: React.FC<PaginationProps> = ({
         variant={variant}
         showButton={currentPage === 1 ? 'hidden' : 'shown'}
       />
-      {type === 'ellipsis' && (
+      {showSkipToButtons && (
         <>
           <AnimatedSlideButton
             aria-label="Jump to page 1"
@@ -165,7 +169,7 @@ export const Pagination: React.FC<PaginationProps> = ({
           {page}
         </PaginationButton>
       ))}
-      {type === 'ellipsis' && (
+      {showSkipToButtons && (
         <>
           <EllipsisButton
             aria-label={`Jump to page ${forwardPageNumber}`}
