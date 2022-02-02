@@ -1,7 +1,7 @@
-import { AnimatePresence, motion } from 'framer-motion';
 import React, { forwardRef, useState } from 'react';
 
 import { ButtonBaseElements } from '../ButtonBase/ButtonBase';
+import { wrapWithSlideAnimation } from './animations';
 import { PaginationButton, PaginationButtonProps } from './PaginationButton';
 
 export interface EllipsisButtonProps extends PaginationButtonProps {
@@ -9,19 +9,9 @@ export interface EllipsisButtonProps extends PaginationButtonProps {
   direction: 'back' | 'forward';
 }
 
-const animationVariants = {
-  shown: {
-    width: '40px',
-  },
-  hidden: {
-    width: 0,
-    overflow: 'hidden',
-  },
-};
-
 const ellipsisButtonContents = { ellipsis: '•••', back: '«', forward: '»' };
 
-export const EllipsisButton = forwardRef<
+export const BaseEllipsisButton = forwardRef<
   ButtonBaseElements,
   EllipsisButtonProps
   // eslint-disable-next-line react/prop-types
@@ -30,6 +20,7 @@ export const EllipsisButton = forwardRef<
 
   return (
     <PaginationButton
+      ellipsis
       onMouseEnter={() => setContents(ellipsisButtonContents[direction])}
       onMouseLeave={() => setContents(ellipsisButtonContents.ellipsis)}
       {...props}
@@ -40,3 +31,5 @@ export const EllipsisButton = forwardRef<
     </PaginationButton>
   );
 });
+
+export const EllipsisButton = wrapWithSlideAnimation(BaseEllipsisButton);

@@ -6,9 +6,12 @@ import React, { useMemo, useState } from 'react';
 
 import { HiddenText } from '..';
 import { FlexBox } from '../Box';
-import { SlideAnimation } from './elements';
+import {
+  AnimatedFadeButton,
+  AnimatedSlideButton,
+} from './AnimatedPaginationButtons';
+import { EllipsisButton } from './EllipsisButton';
 import { PaginationButton } from './PaginationButton';
-import { EllipsisButton } from './SkipToButtons';
 import {
   getBackPageNumber,
   getForwardPageNumber,
@@ -45,24 +48,6 @@ interface PaginationProps {
    */
   totalPages: number;
 }
-
-interface ProviderType
-  extends Pick<PaginationProps, 'chapterSize' | 'isNavigation' | 'totalPages'> {
-  backPageNumber: number;
-  forwardPageNumber: number;
-  shownPageArray: number[];
-  changeHandler: (pageChange: number) => void;
-}
-
-const PaginationContext = React.createContext<ProviderType>({
-  backPageNumber: 0,
-  chapterSize: 0,
-  forwardPageNumber: 0,
-  shownPageArray: [0],
-  totalPages: 1,
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
-  changeHandler: () => {},
-});
 
 export const Pagination: React.FC<PaginationProps> = ({
   chapterSize = 5,
@@ -126,71 +111,68 @@ export const Pagination: React.FC<PaginationProps> = ({
   };
 
   return (
-    <PaginationContext.Provider
-      value={{
-        backPageNumber,
-        chapterSize,
-        forwardPageNumber,
-        isNavigation: navigation,
-        shownPageArray,
-        totalPages,
-        changeHandler,
-      }}
+    <FlexBox
+      alignContent="center"
+      as={navigation ? 'nav' : undefined}
+      aria-label={
+        navigation
+          ? `Browse Content By Page, total pages ${totalPages}`
+          : `Paginated Navigation, total pages ${totalPages}`
+      }
     >
-      <FlexBox
-        alignContent="center"
-        as={navigation ? 'nav' : undefined}
-        aria-label={
-          navigation
-            ? `Browse Content By Page, total pages ${totalPages}`
-            : `Paginated Navigation, total pages ${totalPages}`
-        }
-      >
-        <HiddenText aria-live="polite">{liveText}</HiddenText>
-        <PaginationButton
-          aria-label={`Navigate back to page ${currentPage - 1}`}
-          href={navigation}
-          icon={MiniChevronLeftIcon}
-          onClick={() => changeHandler(currentPage - 1)}
-          variant={variant}
-          showButton={currentPage === 1 ? 'hidden' : 'shown'}
-        />
-        {type === 'ellipsis' && (
-          <SlideAnimation
+      <HiddenText aria-live="polite">{liveText}</HiddenText>
+      <AnimatedFadeButton
+        aria-label={`Navigate back to page ${currentPage - 1}`}
+        direction="back"
+        href={navigation}
+        icon={MiniChevronLeftIcon}
+        onClick={() => changeHandler(currentPage - 1)}
+        variant={variant}
+        showButton={currentPage === 1 ? 'hidden' : 'shown'}
+      />
+      {type === 'ellipsis' && (
+        <>
+          <AnimatedSlideButton
+            aria-label="Jump to page 1"
+            direction="back"
+            variant={variant}
+            onClick={() => changeHandler(1)}
+            href={navigation}
             showButton={shownPageArray[0] === 1 ? 'hidden' : 'shown'}
           >
-            <EllipsisButton
-              aria-label={`Jump to page ${backPageNumber}`}
-              direction="back"
-              href={navigation}
-              onClick={() => changeHandler(backPageNumber)}
-              variant={variant}
-              showButton={shownPageArray[0] === 1 ? 'hidden' : 'shown'}
-            />
-          </SlideAnimation>
-        )}
-        {shownPageArray.map((page) => (
-          <PaginationButton
-            aria-current={page === currentPage && 'page'}
-            aria-label={`${
-              page === totalPages ? 'Last Page, ' : ''
-            }Page ${page}`}
-            key={page}
-            variant={variant}
-            selected={page === currentPage}
-            onClick={() => changeHandler(page)}
-            href={navigation}
-          >
-            {page}
-          </PaginationButton>
-        ))}
-        {type === 'ellipsis' && (
+            1
+          </AnimatedSlideButton>
           <EllipsisButton
+            aria-label={`Jump to page ${backPageNumber}`}
+            direction="back"
+            href={navigation}
+            onClick={() => changeHandler(backPageNumber)}
+            variant={variant}
+            showButton={shownPageArray[0] === 1 ? 'hidden' : 'shown'}
+          />
+        </>
+      )}
+      {shownPageArray.map((page) => (
+        <PaginationButton
+          aria-current={page === currentPage && 'page'}
+          aria-label={`${page === totalPages ? 'Last Page, ' : ''}Page ${page}`}
+          key={page}
+          variant={variant}
+          selected={page === currentPage}
+          onClick={() => changeHandler(page)}
+          href={navigation}
+        >
+          {page}
+        </PaginationButton>
+      ))}
+      {type === 'ellipsis' && (
+        <>
+          <EllipsisButton
+            aria-label={`Jump to page ${forwardPageNumber}`}
             direction="forward"
             onClick={() => {
               changeHandler(forwardPageNumber);
             }}
-            aria-label={`Jump to page ${forwardPageNumber}`}
             href={navigation}
             variant={variant}
             showButton={
@@ -199,19 +181,32 @@ export const Pagination: React.FC<PaginationProps> = ({
                 : 'shown'
             }
           />
-        )}
-        {currentPage !== totalPages && (
-          <PaginationButton
-            aria-label={`Navigate forward to page ${currentPage + 1}`}
-            as={navigation ? 'a' : undefined}
-            href={navigation}
-            icon={MiniChevronRightIcon}
-            onClick={() => changeHandler(currentPage + 1)}
+          <AnimatedSlideButton
+            aria-label={`Last page, ${totalPages}`}
+            direction="forward"
             variant={variant}
-            showButton={currentPage === totalPages ? 'hidden' : 'shown'}
-          />
-        )}
-      </FlexBox>
-    </PaginationContext.Provider>
+            onClick={() => changeHandler(totalPages)}
+            href={navigation}
+            showButton={
+              shownPageArray[chapterSize - 1] === totalPages
+                ? 'hidden'
+                : 'shown'
+            }
+          >
+            {totalPages}
+          </AnimatedSlideButton>
+        </>
+      )}
+      <AnimatedFadeButton
+        aria-label={`Navigate forward to page ${currentPage + 1}`}
+        as={navigation ? 'a' : undefined}
+        direction="forward"
+        href={navigation}
+        icon={MiniChevronRightIcon}
+        onClick={() => changeHandler(currentPage + 1)}
+        variant={variant}
+        showButton={currentPage === totalPages ? 'hidden' : 'shown'}
+      />
+    </FlexBox>
   );
 };
