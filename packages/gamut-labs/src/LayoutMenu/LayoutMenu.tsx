@@ -1,4 +1,6 @@
 import { Box, Logo, StrokeButton } from '@codecademy/gamut';
+import { system, variant } from '@codecademy/gamut-styles';
+import { variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
 import React, { useState } from 'react';
 
@@ -35,14 +37,37 @@ export type LayoutMenuProps = {
    * An array of section items, each of which become an additional link on top of the accordion section.
    */
   topLinkSections?: SectionItem[];
+  /**
+   * Boolean to add vertical overflow to menu
+   */
+  shouldOverflow?: boolean;
+  /**
+   * Set fixed height for menu
+   */
+  height?: 'sm' | 'md' | 'lg';
 };
 
-const StyledNav = styled.nav`
-  height: 1369px;
-  overflow-y: auto;
-  overflow-x: hidden;
-  border-bottom: 1px solid black;
-`;
+const navHeight = {
+  sm: '630px',
+  md: '1000px',
+  lg: '1370px',
+} as const;
+
+const Nav = styled.nav(variance.compose(system.layout));
+
+const StyledNav = styled(Nav)(
+  variant({
+    variants: {
+      overflow: {
+        overflowY: 'auto',
+        overflowX: 'hidden',
+        borderColor: 'black',
+        borderStyleBottom: 'solid',
+        borderWidthBottom: '1px',
+      },
+    },
+  })
+);
 
 export const LayoutMenu: React.FC<LayoutMenuProps> = ({
   closeLabel,
@@ -53,6 +78,8 @@ export const LayoutMenu: React.FC<LayoutMenuProps> = ({
   breakpoint = 'lg',
   children,
   topLinkSections,
+  shouldOverflow,
+  height,
 }) => {
   const [expanded, setExpanded] = useState(false);
 
@@ -76,7 +103,10 @@ export const LayoutMenu: React.FC<LayoutMenuProps> = ({
   );
 
   return (
-    <StyledNav>
+    <StyledNav
+      variant={shouldOverflow && 'overflow'}
+      height={height ? navHeight[height] : 'auto'}
+    >
       <Box display={{ _: 'block', [breakpoint]: 'none' }}>
         <Flyout
           closeLabel={closeLabel}
