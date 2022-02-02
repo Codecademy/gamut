@@ -1,8 +1,8 @@
 import React, { forwardRef, useState } from 'react';
 
 import { ButtonBaseElements } from '../ButtonBase/ButtonBase';
-import { wrapWithSlideAnimation } from './animations';
 import { PaginationButton, PaginationButtonProps } from './PaginationButton';
+import { wrapWithSlideAnimation } from './utils';
 
 export interface EllipsisButtonProps extends PaginationButtonProps {
   'aria-label': string;
