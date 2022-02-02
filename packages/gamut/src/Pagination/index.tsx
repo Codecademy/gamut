@@ -10,9 +10,9 @@ import {
   AnimatedFadeButton,
   AnimatedSlideButton,
 } from './AnimatedPaginationButtons';
-import { hideOnMobile } from './elements';
 import { EllipsisButton } from './EllipsisButton';
 import { PaginationButton } from './PaginationButton';
+import { hideOnMobile } from './styles';
 import {
   getBackPageNumber,
   getForwardPageNumber,
