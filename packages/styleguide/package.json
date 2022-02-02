@@ -1,13 +1,13 @@
 {
   "name": "@codecademy/styleguide",
   "description": "Styleguide & Component library for codecademy.com",
-  "version": "53.1.1",
+  "version": "54.0.7",
   "author": "Codecademy Engineering",
   "scripts": {
     "start": "yarn storybook",
     "storybook": "start-storybook -p 6006 -c .storybook --ci --quiet",
-    "build-storybook": "NODE_ENV=production build-storybook --quiet -c .storybook -o ../../dist/docs",
-    "build-storybook-alpha": "NODE_ENV=production build-storybook --quiet -c .storybook -o ../../dist/docs"
+    "build-storybook": "NODE_ENV=production build-storybook --quiet -c .storybook -o ./dist",
+    "copy-storybook": "rm -rf ../../dist/docs && cp -r ./dist ../../dist/docs"
   },
   "repository": {
     "type": "git",
@@ -16,13 +16,14 @@
   "dependencies": {
     "@babel/cli": "^7.13.10",
     "@babel/core": "^7.13.10",
-    "@codecademy/gamut": "^43.1.2",
-    "@codecademy/gamut-icons": "^6.2.0",
-    "@codecademy/gamut-illustrations": "^0.21.0",
-    "@codecademy/gamut-labs": "^28.7.1",
-    "@codecademy/gamut-patterns": "^0.7.3",
-    "@codecademy/gamut-styles": "^12.1.1",
+    "@codecademy/gamut": "^44.2.2",
+    "@codecademy/gamut-icons": "^7.0.1",
+    "@codecademy/gamut-illustrations": "^0.22.1",
+    "@codecademy/gamut-labs": "^29.2.3",
+    "@codecademy/gamut-patterns": "^0.8.2",
+    "@codecademy/gamut-styles": "^13.0.1",
     "@codecademy/macros": "^3.0.0",
+    "@codecademy/variance": "^0.20.0",
     "@codecademy/webpack-config": "^6.0.0",
     "@emotion/cache": "^11.4.0",
     "@emotion/react": "^11.4.0",
@@ -44,8 +45,8 @@
     "jsdom": "16.4.0",
     "lodash": "4.17.20",
     "polished": "^4.1.2",
-    "react": "16.13.1",
-    "react-dom": "16.13.1",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
     "storybook-addon-designs": "^6.0.1",
     "typescript": "*"
   },
@@ -54,7 +55,7 @@
     "access": "public"
   },
   "devDependencies": {
-    "@testing-library/react": "^11.0.4",
+    "@testing-library/react": "^12.1.2",
     "@types/mdx-js__react": "^1.5.3",
     "css-loader": "^3.5.2",
     "glob": "^7.1.6",

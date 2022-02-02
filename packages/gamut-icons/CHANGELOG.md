@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [7.0.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@7.0.0...@codecademy/gamut-icons@7.0.1) (2022-01-31)
+
+**Note:** Version bump only for package @codecademy/gamut-icons
+
+
+
+
+
+## [7.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@6.2.0...@codecademy/gamut-icons@7.0.0) (2022-01-25)
+
+
+### ⚠ BREAKING CHANGES
+
+* bumped React to 17
+
+### Features
+
+* bumped React to 17 ([c074ecb](https://github.com/Codecademy/gamut/commit/c074ecbfa026ed8e37cf41e874d345574a46e5e4))
+
+
+
 ## [6.2.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@6.1.0...@codecademy/gamut-icons@6.2.0) (2022-01-24)
 
 
