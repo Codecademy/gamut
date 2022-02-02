@@ -101,8 +101,7 @@ When using pagination as navigation between linked pages, use the `navigation` p
     args={{
       chapterSize: 5,
       totalPages: 27,
-      type: 'ellipsis',
-      navigation: true,
+      isNavigation: true,
       onChange: (pageNumber) => {
         window.open(
           `https://giphy.com/search/hamtaro-page-${pageNumber}`,
