@@ -158,25 +158,25 @@ describe('Pagination', () => {
 
   describe('when there are more then 10 pages', () => {
     it('does not render a jump back button when on the first page', () => {
-      const { view } = renderView({});
+      const { view } = renderView({ totalPages: 15 });
 
       expect(getJumpButtonCount({ view })).toBe(1);
     });
 
     it('renders a jump forward and back button when on the middle pages', () => {
-      const { view } = renderView({ defaultCurrent: 3 });
+      const { view } = renderView({ totalPages: 15, defaultCurrent: 3 });
 
       expect(getJumpButtonCount({ view })).toBe(2);
     });
 
     it('does not render a jump forward button when on the last page', () => {
-      const { view } = renderView({ defaultCurrent: 15 });
+      const { view } = renderView({ totalPages: 15, defaultCurrent: 15 });
 
       expect(view.queryByRole('button', { name: 'Page 1' })).toBe(null);
     });
 
     it('advances chapterSize forward on jump forward button click', () => {
-      const { view } = renderView({});
+      const { view } = renderView({ totalPages: 15 });
 
       const page1 = getPage({ view, pageNumber: 1 });
       expect(page1).toHaveAttribute('aria-current', 'page');
@@ -191,7 +191,7 @@ describe('Pagination', () => {
     });
 
     it('advances chapterSize back on jump back ellipsis button click', () => {
-      const { view } = renderView({ defaultCurrent: 15 });
+      const { view } = renderView({ defaultCurrent: 15, totalPages: 15 });
 
       const page15 = view.getByRole('button', { name: `Last Page, Page 15` });
 
@@ -207,7 +207,7 @@ describe('Pagination', () => {
     });
 
     it('calls onChange with page number whenever jump buttons are clicked', () => {
-      const { view } = renderView({ defaultCurrent: 10 });
+      const { view } = renderView({ defaultCurrent: 10, totalPages: 15 });
 
       const backButton = getJumpButton({ view, pageNumber: 5 });
 
