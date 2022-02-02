@@ -6,7 +6,7 @@ import { Pagination } from '..';
 const onChange = jest.fn();
 
 const renderView = setupRtl(Pagination, {
-  totalPages: 15,
+  totalPages: 10,
   onChange,
 });
 
@@ -156,9 +156,9 @@ describe('Pagination', () => {
     expect(onChange).toHaveBeenCalledTimes(3);
   });
 
-  describe('when "ellipsis" is the type', () => {
+  describe('when there are more then 10 pages', () => {
     it('does not render a jump back button when on the first page', () => {
-      const { view } = renderView({ type: 'ellipsis' });
+      const { view } = renderView({});
 
       expect(getJumpButtonCount({ view })).toBe(1);
     });
