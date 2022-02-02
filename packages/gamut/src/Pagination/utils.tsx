@@ -35,13 +35,20 @@ export const getForwardPageNumber = ({
     ? totalPages
     : shownPageArray[0] + chapterSize;
 
+export const getMinWidth = ({
+  chapterSize,
+}: Pick<PaginationUtils, 'chapterSize'>) => `${chapterSize * 3 + 18}rem`;
+
 const slideAnimationVariants = {
   shown: {
     width: 'initial',
+    overflow: 'hidden',
+    transitionEnd: { overflow: 'visible' },
   },
   hidden: {
     width: 0,
     overflow: 'hidden',
+    transitionEnd: { overflow: 'visible' },
   },
 };
 
@@ -56,7 +63,7 @@ export const wrapWithSlideAnimation = (
     const isFirstRender = useRef(true);
 
     useEffect(() => {
-      // stops the initial mount of the forwarf buttons from animating in
+      // stops the initial mount of the forward buttons from animating in
       isFirstRender.current = false;
     }, []);
 
@@ -66,7 +73,7 @@ export const wrapWithSlideAnimation = (
           <motion.div
             animate={props.showButton}
             initial={
-              props.direction === 'forward' && isFirstRender
+              props.direction === 'forward' && isFirstRender.current
                 ? 'shown'
                 : 'hidden'
             }

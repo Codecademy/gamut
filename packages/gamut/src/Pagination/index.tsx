@@ -15,6 +15,7 @@ import { PaginationButton } from './PaginationButton';
 import {
   getBackPageNumber,
   getForwardPageNumber,
+  getMinWidth,
   shouldPagesChange,
 } from './utils';
 
@@ -123,6 +124,8 @@ export const Pagination: React.FC<PaginationProps> = ({
           ? `Browse Content By Page, total pages ${totalPages}`
           : `Paginated Navigation, total pages ${totalPages}`
       }
+      justifyContent="center"
+      minWidth={showSkipToButtons && getMinWidth({ chapterSize })}
     >
       <HiddenText aria-live="polite">{liveText}</HiddenText>
       <AnimatedFadeButton
