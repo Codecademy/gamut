@@ -83,3 +83,8 @@ export const paginationStrokeButtonStates = states({
     fontWeight: 'title',
   },
 });
+
+export const hideOnMobile = {
+  _: 'none',
+  sm: 'inline-flex',
+};

@@ -10,6 +10,7 @@ import {
   AnimatedFadeButton,
   AnimatedSlideButton,
 } from './AnimatedPaginationButtons';
+import { hideOnMobile } from './elements';
 import { EllipsisButton } from './EllipsisButton';
 import { PaginationButton } from './PaginationButton';
 import {
@@ -125,7 +126,10 @@ export const Pagination: React.FC<PaginationProps> = ({
           : `Paginated Navigation, total pages ${totalPages}`
       }
       justifyContent="center"
-      minWidth={showSkipToButtons && getMinWidth({ chapterSize })}
+      minWidth={{
+        _: 'initial',
+        sm: `${showSkipToButtons ? getMinWidth({ chapterSize }) : 'initial'}`,
+      }}
     >
       <HiddenText aria-live="polite">{liveText}</HiddenText>
       <AnimatedFadeButton
@@ -134,24 +138,26 @@ export const Pagination: React.FC<PaginationProps> = ({
         href={navigation}
         icon={MiniChevronLeftIcon}
         onClick={() => changeHandler(currentPage - 1)}
-        variant={variant}
         showButton={currentPage === 1 ? 'hidden' : 'shown'}
+        variant={variant}
       />
       {showSkipToButtons && (
         <>
           <AnimatedSlideButton
             aria-label="Jump to page 1"
             direction="back"
-            variant={variant}
-            onClick={() => changeHandler(1)}
+            display={hideOnMobile}
             href={navigation}
+            onClick={() => changeHandler(1)}
             showButton={shownPageArray[0] === 1 ? 'hidden' : 'shown'}
+            variant={variant}
           >
             1
           </AnimatedSlideButton>
           <EllipsisButton
             aria-label={`Jump to page ${backPageNumber}`}
             direction="back"
+            display={hideOnMobile}
             href={navigation}
             onClick={() => changeHandler(backPageNumber)}
             variant={variant}
@@ -163,11 +169,11 @@ export const Pagination: React.FC<PaginationProps> = ({
         <PaginationButton
           aria-current={page === currentPage && 'page'}
           aria-label={`${page === totalPages ? 'Last Page, ' : ''}Page ${page}`}
-          key={page}
-          variant={variant}
-          selected={page === currentPage}
-          onClick={() => changeHandler(page)}
           href={navigation}
+          key={page}
+          onClick={() => changeHandler(page)}
+          selected={page === currentPage}
+          variant={variant}
         >
           {page}
         </PaginationButton>
@@ -176,29 +182,31 @@ export const Pagination: React.FC<PaginationProps> = ({
         <>
           <EllipsisButton
             aria-label={`Jump to page ${forwardPageNumber}`}
+            display={hideOnMobile}
             direction="forward"
             onClick={() => {
               changeHandler(forwardPageNumber);
             }}
             href={navigation}
-            variant={variant}
             showButton={
               shownPageArray[chapterSize - 1] === totalPages
                 ? 'hidden'
                 : 'shown'
             }
+            variant={variant}
           />
           <AnimatedSlideButton
             aria-label={`Last page, ${totalPages}`}
             direction="forward"
-            variant={variant}
-            onClick={() => changeHandler(totalPages)}
+            display={hideOnMobile}
             href={navigation}
+            onClick={() => changeHandler(totalPages)}
             showButton={
               shownPageArray[chapterSize - 1] === totalPages
                 ? 'hidden'
                 : 'shown'
             }
+            variant={variant}
           >
             {totalPages}
           </AnimatedSlideButton>
@@ -211,8 +219,8 @@ export const Pagination: React.FC<PaginationProps> = ({
         href={navigation}
         icon={MiniChevronRightIcon}
         onClick={() => changeHandler(currentPage + 1)}
-        variant={variant}
         showButton={currentPage === totalPages ? 'hidden' : 'shown'}
+        variant={variant}
       />
     </FlexBox>
   );
