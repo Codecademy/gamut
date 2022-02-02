@@ -1,5 +1,4 @@
 import { GamutIconProps } from '@codecademy/gamut-icons';
-import { motion } from 'framer-motion';
 import React, { forwardRef, useMemo } from 'react';
 
 import { ButtonProps, createButtonComponent } from '../Button/shared';
