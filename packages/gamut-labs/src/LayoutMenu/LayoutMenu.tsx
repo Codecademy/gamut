@@ -40,14 +40,15 @@ export type LayoutMenuProps = {
   /**
    * Boolean to add vertical overflow to menu
    */
-  shouldOverflow?: boolean;
+  shouldOverflowY?: boolean;
   /**
    * Set fixed height for menu
    */
-  height?: 'sm' | 'md' | 'lg';
+  height?: 'auto' | 'sm' | 'md' | 'lg';
 };
 
 const navHeight = {
+  auto: 'auto',
   sm: '630px',
   md: '1000px',
   lg: '1370px',
@@ -79,7 +80,7 @@ export const LayoutMenu: React.FC<LayoutMenuProps> = ({
   breakpoint = 'lg',
   children,
   topLinkSections,
-  shouldOverflow,
+  shouldOverflowY,
   height,
 }) => {
   const [expanded, setExpanded] = useState(false);
@@ -105,7 +106,7 @@ export const LayoutMenu: React.FC<LayoutMenuProps> = ({
 
   return (
     <StyledNav
-      variant={shouldOverflow && 'overflow'}
+      variant={shouldOverflowY && 'overflow'}
       height={height ? navHeight[height] : 'auto'}
     >
       <Box display={{ _: 'block', [breakpoint]: 'none' }}>
