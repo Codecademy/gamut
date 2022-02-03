@@ -59,6 +59,10 @@ export const coreTheme = createTheme({
         _: 'red-500',
         hover: 'red-600',
       },
+      interface: {
+        _: 'hyper-500',
+        hover: 'hyper-400',
+      },
     },
     dark: {
       text: { _: 'white', accent: 'beige', disabled: 'navy-200' },
@@ -90,6 +94,10 @@ export const coreTheme = createTheme({
       danger: {
         _: 'red-0',
         hover: 'red-100',
+      },
+      interface: {
+        _: 'yellow-500',
+        hover: 'yellow-400',
       },
     },
   })

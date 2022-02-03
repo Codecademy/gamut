@@ -29,8 +29,16 @@ export const textButtonVariants = templateVariants(
   buttonVariants,
   (variant) => ({
     borderColor: 'transparent',
-    color: variant,
-    [ButtonSelectors.OUTLINE]: { borderColor: variant },
+    color: variant === 'interface' ? 'text' : variant,
+    [ButtonSelectors.HOVER]: {
+      color: variant,
+    },
+    [ButtonSelectors.FOCUS_VISIBLE]: {
+      color: variant,
+    },
+    [ButtonSelectors.OUTLINE]: {
+      borderColor: variant,
+    },
     [ButtonSelectors.ACTIVE]: {
       color: 'text',
     },
