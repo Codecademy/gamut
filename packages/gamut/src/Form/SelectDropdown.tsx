@@ -218,7 +218,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
   inputProps,
   multiple,
   inputId,
-  isSearchable,
+  isSearchable = false,
   shownOptionsLimit = 6,
   ...rest
 }) => {

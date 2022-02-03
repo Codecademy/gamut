@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [44.3.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@44.2.3...@codecademy/gamut@44.3.0) (2022-02-02)
+
+
+### Features
+
+* **Pagination:** add pagination component ([5016301](https://github.com/Codecademy/gamut/commit/50163013e66f18769542a3aeef07781afae08f8b))
+
+
+
+### [44.2.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@44.2.2...@codecademy/gamut@44.2.3) (2022-02-02)
+
+
+### Bug Fixes
+
+* **SelectDropdown:** fixed isSearchable prop ([f4edba1](https://github.com/Codecademy/gamut/commit/f4edba1e145ef572357a6e54a56dfedd66e5a3fc))
+
+
+
+### [44.2.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@44.2.1...@codecademy/gamut@44.2.2) (2022-02-01)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
 ### [44.2.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@44.2.0...@codecademy/gamut@44.2.1) (2022-01-31)
 
 
