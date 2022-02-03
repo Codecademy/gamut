@@ -15,6 +15,7 @@ const tagColorMap: Record<TagColor, keyof Theme['colors']> = {
 type TextProps = {
   text: string;
 };
+
 type BottomRightTagProps = {
   text: string;
   color: TagColor;
@@ -50,8 +51,16 @@ const Body: React.FC<TextProps> = ({ text }) => (
   </Text>
 );
 
-const BottomLeftText: React.FC<TextProps> = ({ text }) => (
-  <Box position="absolute" bottom={0} left={0} maxWidth={text ? '50%' : '100%'}>
+const BottomLeftText: React.FC<TextProps & { hasBottomRightTag: boolean }> = ({
+  text,
+  hasBottomRightTag,
+}) => (
+  <Box
+    position="absolute"
+    bottom={0}
+    left={0}
+    maxWidth={hasBottomRightTag ? '57%' : '100%'}
+  >
     <Text pl={16} variant="p-small" textColor="gray-900">
       {text}
     </Text>
@@ -106,7 +115,12 @@ export const InfoCard: React.FC<InfoCardProps> = ({
         <Title text={title} />
         <Subtitle text={subtitle} />
         {body && <Body text={body} />}
-        {bottomLeftText && <BottomLeftText text={bottomLeftText} />}
+        {bottomLeftText && (
+          <BottomLeftText
+            text={bottomLeftText}
+            hasBottomRightTag={Boolean(bottomRightTagText)}
+          />
+        )}
         {bottomRightTagText && (
           <BottomRightTag
             text={bottomRightTagText}
