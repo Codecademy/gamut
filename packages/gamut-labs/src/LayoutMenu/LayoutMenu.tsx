@@ -64,6 +64,7 @@ const StyledNav = styled(Nav)(
         borderStyleBottom: 'solid',
         borderWidthBottom: '1px',
         overflowY: 'auto',
+        overflowX: 'hidden',
         paddingTop: '4px',
         paddingLeft: '4px',
       },
