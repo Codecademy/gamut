@@ -192,6 +192,9 @@ const columnJustify = variant({
     },
     right: {
       justifyContent: { xs: 'flex-end' },
+      '& div': {
+        width: { sm: 'fit-content' },
+      },
     },
   },
 });
