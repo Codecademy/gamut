@@ -59,11 +59,12 @@ const StyledNav = styled(Nav)(
   variant({
     variants: {
       overflow: {
-        overflowY: 'auto',
-        overflowX: 'hidden',
         borderColor: 'black',
         borderStyleBottom: 'solid',
         borderWidthBottom: '1px',
+        overflowY: 'auto',
+        paddingTop: '4px',
+        paddingLeft: '4px',
       },
     },
   })
