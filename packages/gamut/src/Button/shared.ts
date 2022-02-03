@@ -49,7 +49,6 @@ export const buttonVariants = [
 
 export const buttonStyles = system.css({
   position: 'relative',
-  fontWeight: 'title',
   whiteSpace: 'nowrap',
   display: 'inline-flex',
   justifyContent: 'center',
