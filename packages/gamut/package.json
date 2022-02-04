@@ -27,6 +27,7 @@
     "@codecademy/gamut-patterns": "^0.8.2",
     "@codecademy/gamut-styles": "^13.0.1",
     "@codecademy/variance": "^0.20.0",
+    "@reach/auto-id": "^0.16.0",
     "@reach/tabs": "^0.16.4",
     "@types/marked": "^1.1.0",
     "@types/react-select": "^4.0.13",

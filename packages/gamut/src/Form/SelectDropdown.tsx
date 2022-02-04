@@ -4,6 +4,7 @@ import {
   MiniChevronDownIcon,
 } from '@codecademy/gamut-icons';
 import { useTheme } from '@emotion/react';
+import { useId } from '@reach/auto-id';
 import React, {
   ReactNode,
   SelectHTMLAttributes,
@@ -77,15 +78,6 @@ interface SelectDropdownCoreProps
   placeholder?: string;
   options?: SelectDropdownOptions;
   shownOptionsLimit?: 1 | 2 | 3 | 4 | 5 | 6;
-  /**
-   * An ID for our underlying ReactSelect to use for its own inputID.
-   * If this isn't passed, React Select will generate its own ID for these elements
-   * with some kind of ID Generator, which is generally fine, though it creates
-   * an issue for SSR/CSR, wherein the IDs used by the client will be generated
-   * with a fresh ID Generator and therefor will not match, throwing a React Warning/Error.
-   * WEBREQ-38: Currently this is optional, though we probably should make this required.
-   */
-  inputId?: string;
 }
 
 interface SingleSelectDropdownProps extends SelectDropdownCoreProps {
@@ -217,11 +209,11 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
   placeholder = 'Select an option',
   inputProps,
   multiple,
-  inputId,
   isSearchable = false,
   shownOptionsLimit = 6,
   ...rest
 }) => {
+  const reactSelectInputId = useId();
   const [activated, setActivated] = useState(false);
 
   const selectOptions = useMemo(() => {
@@ -359,7 +351,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
     <ReactSelect
       {...defaultProps}
       id={id || rest.htmlFor}
-      inputId={inputId}
+      inputId={reactSelectInputId}
       options={selectOptions}
       value={multiple ? multiValues : parsedValue}
       activated={activated}
