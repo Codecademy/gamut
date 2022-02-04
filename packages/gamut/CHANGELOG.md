@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [44.3.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@44.3.1...@codecademy/gamut@44.3.2) (2022-02-04)
+
+
+### Bug Fixes
+
+* Passing id to react-select ([d95f092](https://github.com/Codecademy/gamut/commit/d95f092e84da221f6d473e4a614072da4028b22f))
+
+
+
 ### [44.3.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@44.3.0...@codecademy/gamut@44.3.1) (2022-02-03)
 
 
