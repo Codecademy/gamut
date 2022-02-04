@@ -20,7 +20,7 @@ import {
   shouldPagesChange,
 } from './utils';
 
-interface PaginationProps {
+export interface PaginationProps {
   /**
    * Number of page buttons to show at once
    */
@@ -28,7 +28,7 @@ interface PaginationProps {
   /**
    * Default initial page number, if none will default to one
    */
-  defaultCurrent?: number;
+  defaultPageNumber?: number;
   /**
    * Whether pagination should act as standard link-based navigation.
    */
@@ -38,6 +38,14 @@ interface PaginationProps {
    */
   onChange: (arg0: number) => void;
   /**
+   * Controlled page number
+   */
+  pageNumber?: number;
+  /**
+   * Total number of pages
+   */
+  totalPages: number;
+  /**
    *  Basic pagination vs ellipsis types, will default to basic if under 10 pages unless specified.
    */
   type?: 'basic' | 'includeSkipToButtons';
@@ -45,22 +53,21 @@ interface PaginationProps {
    *  Stroke or text button style
    */
   variant?: 'stroke' | 'text';
-  /**
-   * Total number of pages
-   */
-  totalPages: number;
 }
 
 export const Pagination: React.FC<PaginationProps> = ({
   chapterSize = 5,
-  defaultCurrent = 1,
+  defaultPageNumber = 1,
   isNavigation: navigation,
   onChange,
+  pageNumber,
   totalPages,
   type,
   variant = 'stroke',
 }) => {
-  const [currentPage, setCurrentPage] = useState(defaultCurrent);
+  const [currentPage, setCurrentPage] = useState(
+    pageNumber ?? defaultPageNumber
+  );
   const [liveText, setLiveText] = useState('');
   const [shownPageArray, setShownPageArray] = useState([0]);
 
@@ -116,6 +123,11 @@ export const Pagination: React.FC<PaginationProps> = ({
     onChange(pageChange);
     setLiveText(`Current page ${pageChange}`);
   };
+
+  useMemo(() => {
+    if (pageNumber) changeHandler(pageNumber);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pageNumber]);
 
   return (
     <FlexBox
