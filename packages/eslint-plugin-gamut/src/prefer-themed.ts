@@ -1,6 +1,10 @@
 import { AST_NODE_TYPES } from '@typescript-eslint/experimental-utils';
 
 import { createRule } from './createRule';
+import {
+  checkArrowFuncBodyTypesAndReturnThemeVars,
+  isNamedVariableTheme,
+} from './utils';
 
 export default createRule({
   // @to-do: create helper function to get node
@@ -17,40 +21,15 @@ export default createRule({
             arrowFuncExpression?.type !== AST_NODE_TYPES.ArrowFunctionExpression
           )
             return;
-          const argObject = arrowFuncExpression.params[0];
 
-          if (argObject?.type !== AST_NODE_TYPES.ObjectPattern) return;
-          const argumentVariable = argObject.properties[0].value;
+          if (!isNamedVariableTheme(arrowFuncExpression)) return;
 
-          if (argumentVariable?.type !== AST_NODE_TYPES.Identifier) return;
-          const namedArgumentVariable = argumentVariable.name;
+          if (expressionVariable === 'styled') {
+            const { themeValueKey, themeCategory } =
+              checkArrowFuncBodyTypesAndReturnThemeVars(arrowFuncExpression) ||
+              {};
 
-          if (
-            expressionVariable === 'styled' &&
-            namedArgumentVariable === 'theme'
-          ) {
-            // TURN INTO UTILITY FUNCTION
-            if (
-              arrowFuncExpression.body.type !== AST_NODE_TYPES.MemberExpression
-            )
-              return;
-            if (
-              arrowFuncExpression.body.object.type !==
-              AST_NODE_TYPES.MemberExpression
-            )
-              return;
-            if (
-              arrowFuncExpression.body.property.type !==
-              AST_NODE_TYPES.Identifier
-            )
-              return;
-            if (
-              arrowFuncExpression.body.object.property.type !==
-              AST_NODE_TYPES.Identifier
-            )
-              return;
-            const themeValueKey = arrowFuncExpression.body.property.name;
-            const themeCategory = arrowFuncExpression.body.object.property.name;
+            if (!themeValueKey) return;
 
             context.report({
               fix: (fixer) => {
@@ -75,7 +54,8 @@ export default createRule({
     },
     fixable: 'code',
     messages: {
-      preferThemed: 'Use the themed(url) style utility instead.',
+      preferThemed:
+        'Use the themed style utility instead from gamut-styles instead.',
     },
     type: 'suggestion',
     schema: [],
