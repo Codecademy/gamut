@@ -28,19 +28,23 @@ export interface PaginationProps {
   /**
    * Default initial page number, if none will default to one
    */
-  defaultCurrent?: number;
+  defaultPageNumber?: number;
   /**
    * Whether pagination should act as standard link-based navigation.
    */
   isNavigation?: boolean;
   /**
+   * Called when the page number is changed with the resulting page number as its first argument
+   */
+  onChange: (arg0: number) => void;
+  /**
    * Controlled page number
    */
   pageNumber?: number;
   /**
-   * Called when the page number is changed with the resulting page number as its first argument
+   * Total number of pages
    */
-  onChange: (arg0: number) => void;
+  totalPages: number;
   /**
    *  Basic pagination vs ellipsis types, will default to basic if under 10 pages unless specified.
    */
@@ -49,18 +53,14 @@ export interface PaginationProps {
    *  Stroke or text button style
    */
   variant?: 'stroke' | 'text';
-  /**
-   * Total number of pages
-   */
-  totalPages: number;
 }
 
 export const Pagination: React.FC<PaginationProps> = ({
   chapterSize = 5,
-  pageNumber,
-  defaultCurrent: defaultPageNumber = 1,
+  defaultPageNumber = 1,
   isNavigation: navigation,
   onChange,
+  pageNumber,
   totalPages,
   type,
   variant = 'stroke',
