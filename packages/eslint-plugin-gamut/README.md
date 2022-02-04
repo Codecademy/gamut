@@ -1,18 +1,21 @@
-# `gamut-tests`
+# `eslint-plugin-gamut`
 
-Shared component test setup for Gamut applications. ✨
-
-A wrapper around [`component-test-setup`](https://github.com/Codecademy/component-test-setup) that wraps the node with an `@emotion/react`+`gamut-styles` `<ThemeProvider theme={theme}>`.
-Use this instead of `component-test-setup` to test Gamut components in Gamut apps!
+Recommended eslint plugin for Gamut applications. ✨
 
 ## Usage
 
-The API is functionally the same `component-test-setup`:
-
 ```tsx
-import { setupRtl } from '@codecademy/gamut-tests';
+// eslintrc.js
 
-const renderView = setupRtl(MyComponent, { prop: true });
+module.exports = {
+  root: true,
 
-const { view } = renderView();
+  plugins: ['eslint-plugin-gamut'],
+
+  rules: {
+    'gamut/prefer-themed': 'error',
+    'gamut/no-css-standalone': 'error',
+    'gamut/import-paths': 'error',
+  },
+};
 ```
