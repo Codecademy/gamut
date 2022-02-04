@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [44.5.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@44.4.0...@codecademy/gamut@44.5.0) (2022-02-04)
+
+
+### Features
+
+* (MenuLink) Allows for link to open in new window ([901d1ef](https://github.com/Codecademy/gamut/commit/901d1ef3cdba69b8a7ee8fc237dd20c9994e65ed))
+
+
+
 ## [44.4.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@44.3.2...@codecademy/gamut@44.4.0) (2022-02-04)
 
 
