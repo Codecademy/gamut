@@ -1,7 +1,10 @@
-import { AST_NODE_TYPES } from '@typescript-eslint/experimental-utils';
+import {
+  AST_NODE_TYPES,
+  TSESTree,
+} from '@typescript-eslint/experimental-utils';
 
 export const isNamedVariableTheme = (
-  arrowExpression: AST_NODE_TYPES.ArrowFunctionExpression
+  arrowExpression: TSESTree.ArrowFunctionExpression
 ) => {
   const argObject = arrowExpression.params[0];
 
@@ -15,7 +18,7 @@ export const isNamedVariableTheme = (
 };
 
 export const checkArrowFuncBodyTypesAndReturnThemeVars = (
-  arrowFuncExpression: AST_NODE_TYPES.ArrowFunctionExpression
+  arrowFuncExpression: TSESTree.ArrowFunctionExpression
 ) => {
   if (
     arrowFuncExpression.body.type !== AST_NODE_TYPES.MemberExpression ||
