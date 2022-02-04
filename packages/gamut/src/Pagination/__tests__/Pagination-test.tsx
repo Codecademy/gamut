@@ -68,14 +68,14 @@ describe('Pagination', () => {
   });
 
   it('renders a back and forward button on middle pages', () => {
-    const { view } = renderView({ defaultCurrent: 2 });
+    const { view } = renderView({ defaultPageNumber: 2 });
 
     expect(getBackButton({ view }));
     expect(getForwardButton({ view }));
   });
 
   it('does not render a forward button when on the last page', () => {
-    const { view } = renderView({ defaultCurrent: 10 });
+    const { view } = renderView({ defaultPageNumber: 10 });
 
     expect(getBackButton({ view }));
     expect(
@@ -100,7 +100,7 @@ describe('Pagination', () => {
   });
 
   it('advances one page back on back button click', async () => {
-    const { view } = renderView({ defaultCurrent: 3 });
+    const { view } = renderView({ defaultPageNumber: 3 });
 
     const thirdPage = getPage({ view, pageNumber: 3 });
     expect(thirdPage).toHaveAttribute('aria-current', 'page');
@@ -123,7 +123,7 @@ describe('Pagination', () => {
   });
 
   it('changes shown page buttons according to chapterSize', () => {
-    const { view } = renderView({ chapterSize: 3, defaultCurrent: 6 });
+    const { view } = renderView({ chapterSize: 3, defaultPageNumber: 6 });
 
     expect(view.getAllByRole('button').length).toBe(5);
     expect(getPage({ view, pageNumber: 6 }));
@@ -161,13 +161,13 @@ describe('Pagination', () => {
     });
 
     it('renders a jump forward and back button when on the middle pages', () => {
-      const { view } = renderView({ totalPages: 15, defaultCurrent: 7 });
+      const { view } = renderView({ totalPages: 15, defaultPageNumber: 7 });
 
       expect(getJumpButtonCount({ view })).toBe(4);
     });
 
     it('does not render a jump forward button when on the last page', () => {
-      const { view } = renderView({ totalPages: 15, defaultCurrent: 15 });
+      const { view } = renderView({ totalPages: 15, defaultPageNumber: 15 });
 
       expect(view.queryByRole('button', { name: 'Page 1' })).toBe(null);
     });
@@ -192,7 +192,7 @@ describe('Pagination', () => {
     });
 
     it('advances chapterSize back on jump back ellipsis button click', () => {
-      const { view } = renderView({ defaultCurrent: 15, totalPages: 15 });
+      const { view } = renderView({ defaultPageNumber: 15, totalPages: 15 });
 
       const page15 = view.getByRole('button', { name: `Last Page, Page 15` });
 
@@ -212,7 +212,7 @@ describe('Pagination', () => {
     });
 
     it('calls onChange with page number whenever jump buttons are clicked', () => {
-      const { view } = renderView({ defaultCurrent: 8, totalPages: 15 });
+      const { view } = renderView({ defaultPageNumber: 8, totalPages: 15 });
 
       const backButton = getJumpButton({
         view,
@@ -232,6 +232,32 @@ describe('Pagination', () => {
       fireEvent.click(forwardButton);
 
       expect(onChange).toHaveBeenCalledWith(8);
+    });
+  });
+
+  describe('when there is a pageNumber prop provided', () => {
+    it('sets pageNumber to current page', () => {
+      const { view } = renderView({ pageNumber: 5 });
+
+      const page5 = getPage({ view, pageNumber: 5 });
+      expect(page5).toHaveAttribute('aria-current', 'page');
+    });
+
+    it('renders the correct pages', () => {
+      const { view } = renderView({ chapterSize: 3, pageNumber: 5 });
+
+      expect(view.getAllByRole('button').length).toBe(5);
+      expect(getPage({ view, pageNumber: 6 }));
+      expect(getPage({ view, pageNumber: 7 }));
+    });
+
+    it('calls onChange with the correct page', () => {
+      const { view } = renderView({ pageNumber: 5 });
+
+      const page5 = getPage({ view, pageNumber: 5 });
+
+      fireEvent.click(page5);
+      expect(onChange).toHaveBeenCalledWith(5);
     });
   });
 });
