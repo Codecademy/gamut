@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [44.4.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@44.3.2...@codecademy/gamut@44.4.0) (2022-02-04)
+
+
+### Features
+
+* **Pagination:** controlled pagination ([9601492](https://github.com/Codecademy/gamut/commit/960149259c14ce6dd02368025cb4ad0d8f7db990))
+
+
+
 ### [44.3.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@44.3.1...@codecademy/gamut@44.3.2) (2022-02-04)
 
 
