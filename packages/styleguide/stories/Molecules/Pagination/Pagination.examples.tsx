@@ -1,5 +1,9 @@
-import { InputStepper, Pagination, PaginationProps } from '@codecademy/gamut';
-import { Background } from '@codecademy/gamut-styles';
+import {
+  FlexBox,
+  InputStepper,
+  Pagination,
+  PaginationProps,
+} from '@codecademy/gamut';
 import React, { useCallback, useState } from 'react';
 
 export const PaginationControlledExample: React.FC<PaginationProps> = (
@@ -18,19 +22,15 @@ export const PaginationControlledExample: React.FC<PaginationProps> = (
 
   return (
     <>
-      <Background display="flex" bg="paleBlue" mb={24} p={12}>
+      <FlexBox justifyContent="center" mb={24} p={12}>
         <InputStepper
           label="Page"
           ariaLabel="Page"
           value={controlledPage}
           onChange={setIndex}
         />
-      </Background>
-      <Pagination
-        {...props}
-        controlledPage={controlledPage}
-        onChange={setIndex}
-      />
+      </FlexBox>
+      <Pagination {...props} pageNumber={controlledPage} onChange={setIndex} />
     </>
   );
 };

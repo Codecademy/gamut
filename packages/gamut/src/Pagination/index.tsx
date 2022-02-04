@@ -20,7 +20,7 @@ import {
   shouldPagesChange,
 } from './utils';
 
-interface PaginationProps {
+export interface PaginationProps {
   /**
    * Number of page buttons to show at once
    */
@@ -36,7 +36,7 @@ interface PaginationProps {
   /**
    * Controlled page number
    */
-  controlledPage?: number;
+  pageNumber?: number;
   /**
    * Called when the page number is changed with the resulting page number as its first argument
    */
@@ -57,7 +57,7 @@ interface PaginationProps {
 
 export const Pagination: React.FC<PaginationProps> = ({
   chapterSize = 5,
-  controlledPage,
+  pageNumber: controlledPage,
   defaultCurrent = 1,
   isNavigation: navigation,
   onChange,
