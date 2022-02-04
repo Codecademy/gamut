@@ -200,6 +200,14 @@ Notes:
 
 If your package will be used in other packages in the monorepo, you may need to set up aliases in jest and storybook so that they can be run without building your package first. You can find these aliases in [jest.config.js](/jest.config.js) and the [styleguide storybook config](/packages/styleguide/.storybook/main.ts).
 
+**Turborepo**
+
+This monorepo uses [Turborepo](https://turborepo.org/) to cache previous builds locally and in CI.
+
+The config for Turborepo is located at [/turbo.json](/turbo.json).
+
+To use Turborepo without extra configuration, if your package needs to be compiled, it should have a task called `build` that compiles it's files and puts them into a directory called `dist` inside the package folder. If you need a more complicated setup, you can read the docs and customize the configuration in `turbo.json`.
+
 ### PR Title Guide
 
 Your PR Title should follow the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) Format.

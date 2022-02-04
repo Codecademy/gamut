@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [44.3.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@44.3.0...@codecademy/gamut@44.3.1) (2022-02-03)
+
+
+### Bug Fixes
+
+* Right Align TableHeaders when Justify-Right ([cb27d7d](https://github.com/Codecademy/gamut/commit/cb27d7d2900300258e1ef21bd433c9a5d46eff23))
+
+
+
 ## [44.3.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@44.2.3...@codecademy/gamut@44.3.0) (2022-02-02)
 
 
