@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [54.2.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@54.1.2...@codecademy/styleguide@54.2.0) (2022-02-04)
+
+
+### Features
+
+* **Pagination:** controlled pagination ([9601492](https://github.com/Codecademy/gamut/commit/960149259c14ce6dd02368025cb4ad0d8f7db990))
+
+
+
+### [54.1.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@54.1.1...@codecademy/styleguide@54.1.2) (2022-02-04)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
 ### [54.1.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@54.1.0...@codecademy/styleguide@54.1.1) (2022-02-03)
 
 **Note:** Version bump only for package @codecademy/styleguide
