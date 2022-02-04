@@ -58,14 +58,16 @@ export interface PaginationProps {
 export const Pagination: React.FC<PaginationProps> = ({
   chapterSize = 5,
   pageNumber,
-  defaultCurrent = 1,
+  defaultCurrent: defaultPageNumber = 1,
   isNavigation: navigation,
   onChange,
   totalPages,
   type,
   variant = 'stroke',
 }) => {
-  const [currentPage, setCurrentPage] = useState(pageNumber ?? defaultCurrent);
+  const [currentPage, setCurrentPage] = useState(
+    pageNumber ?? defaultPageNumber
+  );
   const [liveText, setLiveText] = useState('');
   const [shownPageArray, setShownPageArray] = useState([0]);
 
