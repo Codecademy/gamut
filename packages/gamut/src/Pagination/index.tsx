@@ -2,7 +2,6 @@ import {
   MiniChevronLeftIcon,
   MiniChevronRightIcon,
 } from '@codecademy/gamut-icons';
-import { Background, BackgroundProps } from '@codecademy/gamut-styles';
 import React, { useMemo, useState } from 'react';
 
 import { HiddenText } from '..';
