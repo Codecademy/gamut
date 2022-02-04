@@ -30,7 +30,6 @@
   "dependencies": {
     "@types/eslint": "^8.2.1",
     "@typescript-eslint/experimental-utils": "^5.7.0",
-    "@typescript-eslint/types": "^5.7.0",
     "eslint": "^8.4.1"
   },
   "devDependencies": {
