@@ -2,6 +2,7 @@ import {
   MiniChevronLeftIcon,
   MiniChevronRightIcon,
 } from '@codecademy/gamut-icons';
+import { Background, BackgroundProps } from '@codecademy/gamut-styles';
 import React, { useMemo, useState } from 'react';
 
 import { HiddenText } from '..';
@@ -34,6 +35,10 @@ interface PaginationProps {
    */
   isNavigation?: boolean;
   /**
+   * Controlled page number
+   */
+  controlledPage?: number;
+  /**
    * Called when the page number is changed with the resulting page number as its first argument
    */
   onChange: (arg0: number) => void;
@@ -53,6 +58,7 @@ interface PaginationProps {
 
 export const Pagination: React.FC<PaginationProps> = ({
   chapterSize = 5,
+  controlledPage,
   defaultCurrent = 1,
   isNavigation: navigation,
   onChange,
@@ -60,7 +66,9 @@ export const Pagination: React.FC<PaginationProps> = ({
   type,
   variant = 'stroke',
 }) => {
-  const [currentPage, setCurrentPage] = useState(defaultCurrent);
+  const [currentPage, setCurrentPage] = useState(
+    controlledPage ?? defaultCurrent
+  );
   const [liveText, setLiveText] = useState('');
   const [shownPageArray, setShownPageArray] = useState([0]);
 
@@ -116,6 +124,11 @@ export const Pagination: React.FC<PaginationProps> = ({
     onChange(pageChange);
     setLiveText(`Current page ${pageChange}`);
   };
+
+  useMemo(() => {
+    if (controlledPage) changeHandler(controlledPage);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [controlledPage]);
 
   return (
     <FlexBox
