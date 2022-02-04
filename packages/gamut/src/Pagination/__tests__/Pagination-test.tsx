@@ -234,4 +234,30 @@ describe('Pagination', () => {
       expect(onChange).toHaveBeenCalledWith(8);
     });
   });
+
+  describe('when there is a pageNumber prop provided', () => {
+    it('sets pageNumber to current page', () => {
+      const { view } = renderView({ pageNumber: 5 });
+
+      const page5 = getPage({ view, pageNumber: 5 });
+      expect(page5).toHaveAttribute('aria-current', 'page');
+    });
+
+    it('renders the correct pages', () => {
+      const { view } = renderView({ chapterSize: 3, pageNumber: 5 });
+
+      expect(view.getAllByRole('button').length).toBe(5);
+      expect(getPage({ view, pageNumber: 6 }));
+      expect(getPage({ view, pageNumber: 7 }));
+    });
+
+    it('calls onChange with the correct page', () => {
+      const { view } = renderView({ pageNumber: 5 });
+
+      const page5 = getPage({ view, pageNumber: 5 });
+
+      fireEvent.click(page5);
+      expect(onChange).toHaveBeenCalledWith(5);
+    });
+  });
 });
