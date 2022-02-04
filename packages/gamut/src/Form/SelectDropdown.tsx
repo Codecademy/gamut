@@ -213,7 +213,14 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
   shownOptionsLimit = 6,
   ...rest
 }) => {
-  const reactSelectInputId = useId();
+  /**
+   * Currently the `id` prop isn't required, though in the future, it should be (or we should use
+   * React 18: https://github.com/reactwg/react-18/discussions/111), to help enforce the ReactSelect
+   * id requirement
+   */
+  const rawInputId = useId();
+  const inputId = `${id}-select-dropdown-${rawInputId}`;
+
   const [activated, setActivated] = useState(false);
 
   const selectOptions = useMemo(() => {
@@ -351,7 +358,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
     <ReactSelect
       {...defaultProps}
       id={id || rest.htmlFor}
-      inputId={reactSelectInputId}
+      inputId={inputId}
       options={selectOptions}
       value={multiple ? multiValues : parsedValue}
       activated={activated}
