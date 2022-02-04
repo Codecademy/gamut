@@ -3,6 +3,95 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [54.1.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@54.1.1...@codecademy/styleguide@54.1.2) (2022-02-04)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [54.1.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@54.1.0...@codecademy/styleguide@54.1.1) (2022-02-03)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [54.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@54.0.8...@codecademy/styleguide@54.1.0) (2022-02-02)
+
+
+### Features
+
+* **Pagination:** add pagination component ([5016301](https://github.com/Codecademy/gamut/commit/50163013e66f18769542a3aeef07781afae08f8b))
+
+
+
+### [54.0.8](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@54.0.7...@codecademy/styleguide@54.0.8) (2022-02-02)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [54.0.7](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@54.0.6...@codecademy/styleguide@54.0.7) (2022-02-01)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [54.0.6](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@54.0.5...@codecademy/styleguide@54.0.6) (2022-01-31)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [54.0.5](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@54.0.4...@codecademy/styleguide@54.0.5) (2022-01-28)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [54.0.4](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@54.0.3...@codecademy/styleguide@54.0.4) (2022-01-28)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [54.0.3](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@54.0.2...@codecademy/styleguide@54.0.3) (2022-01-27)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [54.0.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@54.0.1...@codecademy/styleguide@54.0.2) (2022-01-27)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [54.0.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@54.0.0...@codecademy/styleguide@54.0.1) (2022-01-26)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
 ## [54.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@53.1.1...@codecademy/styleguide@54.0.0) (2022-01-25)
 
 

@@ -3,6 +3,97 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [29.2.7](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@29.2.6...@codecademy/gamut-labs@29.2.7) (2022-02-04)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [29.2.6](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@29.2.5...@codecademy/gamut-labs@29.2.6) (2022-02-03)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [29.2.5](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@29.2.4...@codecademy/gamut-labs@29.2.5) (2022-02-02)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [29.2.4](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@29.2.3...@codecademy/gamut-labs@29.2.4) (2022-02-02)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [29.2.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@29.2.2...@codecademy/gamut-labs@29.2.3) (2022-02-01)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [29.2.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@29.2.1...@codecademy/gamut-labs@29.2.2) (2022-01-31)
+
+
+### Bug Fixes
+
+* **GlobalHeader:** Regression fixes ([1667861](https://github.com/Codecademy/gamut/commit/1667861ffe6e50d70aa4a5fe5ac6da003d277d7f))
+
+
+
+### [29.2.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@29.2.0...@codecademy/gamut-labs@29.2.1) (2022-01-28)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+## [29.2.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@29.1.1...@codecademy/gamut-labs@29.2.0) (2022-01-28)
+
+
+### Features
+
+* **GlobalHeader:** highlight projects in resources dropdown ([5ac07d9](https://github.com/Codecademy/gamut/commit/5ac07d95a902a27f6a32dd95d52c2e876d0b65b5))
+
+
+
+### [29.1.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@29.1.0...@codecademy/gamut-labs@29.1.1) (2022-01-27)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+## [29.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@29.0.1...@codecademy/gamut-labs@29.1.0) (2022-01-27)
+
+
+### Features
+
+* **CurriculumCard:** add isStaticSize prop for height ([b5c67d9](https://github.com/Codecademy/gamut/commit/b5c67d9f90fff4544cdb41a8af0de17b46893eca))
+
+
+
+### [29.0.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@29.0.0...@codecademy/gamut-labs@29.0.1) (2022-01-26)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
 ## [29.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@28.7.1...@codecademy/gamut-labs@29.0.0) (2022-01-25)
 
 

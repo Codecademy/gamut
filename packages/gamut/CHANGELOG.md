@@ -3,6 +3,86 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [44.3.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@44.3.1...@codecademy/gamut@44.3.2) (2022-02-04)
+
+
+### Bug Fixes
+
+* Passing id to react-select ([d95f092](https://github.com/Codecademy/gamut/commit/d95f092e84da221f6d473e4a614072da4028b22f))
+
+
+
+### [44.3.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@44.3.0...@codecademy/gamut@44.3.1) (2022-02-03)
+
+
+### Bug Fixes
+
+* Right Align TableHeaders when Justify-Right ([cb27d7d](https://github.com/Codecademy/gamut/commit/cb27d7d2900300258e1ef21bd433c9a5d46eff23))
+
+
+
+## [44.3.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@44.2.3...@codecademy/gamut@44.3.0) (2022-02-02)
+
+
+### Features
+
+* **Pagination:** add pagination component ([5016301](https://github.com/Codecademy/gamut/commit/50163013e66f18769542a3aeef07781afae08f8b))
+
+
+
+### [44.2.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@44.2.2...@codecademy/gamut@44.2.3) (2022-02-02)
+
+
+### Bug Fixes
+
+* **SelectDropdown:** fixed isSearchable prop ([f4edba1](https://github.com/Codecademy/gamut/commit/f4edba1e145ef572357a6e54a56dfedd66e5a3fc))
+
+
+
+### [44.2.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@44.2.1...@codecademy/gamut@44.2.2) (2022-02-01)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [44.2.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@44.2.0...@codecademy/gamut@44.2.1) (2022-01-31)
+
+
+### Bug Fixes
+
+* **GlobalHeader:** Regression fixes ([1667861](https://github.com/Codecademy/gamut/commit/1667861ffe6e50d70aa4a5fe5ac6da003d277d7f))
+
+
+
+## [44.2.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@44.1.0...@codecademy/gamut@44.2.0) (2022-01-28)
+
+
+### Features
+
+* **Modal:** add optional headingLevel prop ([4972272](https://github.com/Codecademy/gamut/commit/497227203d3f82e8c59105b48a6d69a9ac88fa03))
+
+
+
+## [44.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@44.0.1...@codecademy/gamut@44.1.0) (2022-01-27)
+
+
+### Features
+
+* Allowing overflow in DataTable ([86f00f1](https://github.com/Codecademy/gamut/commit/86f00f12b7b4f86d3e261e8c608f908129e7ea7c))
+
+
+
+### [44.0.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@44.0.0...@codecademy/gamut@44.0.1) (2022-01-26)
+
+
+### Bug Fixes
+
+* **Form:** remove noSelect from form radios ([a067d84](https://github.com/Codecademy/gamut/commit/a067d8453ff485adae7ba0bee689be39f0f1be6b))
+
+
+
 ## [44.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@43.1.2...@codecademy/gamut@44.0.0) (2022-01-25)
 
 
