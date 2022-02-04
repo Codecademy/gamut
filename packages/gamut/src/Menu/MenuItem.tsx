@@ -15,11 +15,11 @@ export const MenuItem = React.forwardRef<
   Omit<
     ComponentProps<typeof ListItem>,
     'variant' | 'selected' | 'active-navlink'
-  > & {
-    href?: string;
-    icon?: React.ComponentType<GamutIconProps>;
-  }
->(({ href, children, active, icon: Icon, ...props }, ref) => {
+  > &
+    Partial<Pick<HTMLAnchorElement, 'href' | 'target'>> & {
+      icon?: React.ComponentType<GamutIconProps>;
+    }
+>(({ href, target, children, active, icon: Icon, ...props }, ref) => {
   const { variant, ...rest } = useMenuContext();
   const activeProp = activePropnames[variant];
   const computed = {
@@ -48,7 +48,12 @@ export const MenuItem = React.forwardRef<
 
     return (
       <ListItem role="none">
-        <ListLink {...(computed as ListLinkProps)} href={href} ref={linkRef}>
+        <ListLink
+          {...(computed as ListLinkProps)}
+          href={href}
+          ref={linkRef}
+          target={target}
+        >
           {content}
         </ListLink>
       </ListItem>
