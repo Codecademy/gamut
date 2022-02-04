@@ -57,7 +57,7 @@ export interface PaginationProps {
 
 export const Pagination: React.FC<PaginationProps> = ({
   chapterSize = 5,
-  pageNumber: controlledPage,
+  pageNumber,
   defaultCurrent = 1,
   isNavigation: navigation,
   onChange,
@@ -65,9 +65,7 @@ export const Pagination: React.FC<PaginationProps> = ({
   type,
   variant = 'stroke',
 }) => {
-  const [currentPage, setCurrentPage] = useState(
-    controlledPage ?? defaultCurrent
-  );
+  const [currentPage, setCurrentPage] = useState(pageNumber ?? defaultCurrent);
   const [liveText, setLiveText] = useState('');
   const [shownPageArray, setShownPageArray] = useState([0]);
 
@@ -125,9 +123,9 @@ export const Pagination: React.FC<PaginationProps> = ({
   };
 
   useMemo(() => {
-    if (controlledPage) changeHandler(controlledPage);
+    if (pageNumber) changeHandler(pageNumber);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [controlledPage]);
+  }, [pageNumber]);
 
   return (
     <FlexBox
