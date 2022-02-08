@@ -28,7 +28,7 @@ export type AppHeaderMobileProps = {
 
 const StyledOverlay = styled(Overlay)(
   css({
-    display: { _: `block`, md: `none` },
+    display: { _: `block`, lg: `none` },
     width: `100vw`,
     height: `100vh`,
     opacity: 1,
