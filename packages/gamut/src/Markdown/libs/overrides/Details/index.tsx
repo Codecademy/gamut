@@ -4,8 +4,8 @@ import { HTMLToReactNode } from '..';
 // import styles from '../../../styles/_'
 export interface MarkdownDetailsProps
   extends HTMLAttributes<HTMLDetailsElement> {
-  open: boolean;
-  children: HTMLToReactNode[];
+  open?: boolean;
+  children?: HTMLToReactNode[];
 }
 
 /**
@@ -22,7 +22,7 @@ export const Details: React.FC<MarkdownDetailsProps> = ({
   }, [children]);
   const summary = isMissingSummary ? <summary>Details</summary> : null;
   return (
-    <details {...props}>
+    <details data-testid="gamut-md-details" {...props}>
       {summary}
       {children}
     </details>
