@@ -1,4 +1,4 @@
-import { css } from '@codecademy/gamut-styles';
+import { css, states } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React from 'react';
 
@@ -16,7 +16,7 @@ export type AppHeaderLinkSectionsProps = {
   role?: string;
   id?: string;
   style?: {};
-  isMobile?: boolean;
+  showIcon?: boolean;
   onKeyDown?: (event: React.KeyboardEvent) => void;
   onFocus?: () => void;
   onBlur?: () => void;
@@ -26,8 +26,12 @@ type LinkComponentProps = {
   action: AppHeaderClickHandler;
   link: AppHeaderLinkItem;
   showLineBreak?: boolean;
-  isMobile?: boolean;
+  showIcon?: boolean;
   onKeyDown?: (event: React.KeyboardEvent) => void;
+};
+
+type StyledListItemProps = {
+  showLineBreak?: boolean;
 };
 
 const StyledList = styled.ul(
@@ -37,40 +41,44 @@ const StyledList = styled.ul(
   })
 );
 
-const StyledLineBreak = styled.div(
-  css({
-    display: `block`,
-    backgroundColor: `gray-600`,
-    margin: `0.5rem 1.5rem`,
-    width: `calc(100% - 3rem)`,
-    height: `1px`,
+const StyledListItem = styled.li<StyledListItemProps>(
+  states({
+    showLineBreak: {
+      '&:before': {
+        bg: `gray-600`,
+        content: `''`,
+        display: `block`,
+        height: `1px`,
+        margin: `0.5rem 1.5rem`,
+        width: `calc(100% - 3rem)`,
+      },
+    },
   })
 );
 
 const LinkComponent: React.FC<LinkComponentProps> = ({
   action,
   link,
-  isMobile = false,
+  showIcon = false,
   showLineBreak = false,
   onKeyDown,
 }) => (
-  <li role="none">
-    {showLineBreak && <StyledLineBreak aria-hidden />}
+  <StyledListItem role="none" showLineBreak={showLineBreak}>
     <AppHeaderLink
       action={action}
       item={link}
       onKeyDown={onKeyDown}
       py={16}
-      isMobile={isMobile}
+      showIcon={showIcon}
       tabIndex="-1"
     />
-  </li>
+  </StyledListItem>
 );
 
 export const AppHeaderLinkSections = React.forwardRef<
   HTMLUListElement,
   AppHeaderLinkSectionsProps
->(({ action, item, isMobile = false, onKeyDown, ...props }, ref) => (
+>(({ action, item, showIcon = false, onKeyDown, ...props }, ref) => (
   <StyledList ref={ref} {...props}>
     {item.type === 'profile-dropdown'
       ? item.popover.map((linkSection: AppHeaderLinkItem[], sectionIndex) =>
@@ -81,7 +89,7 @@ export const AppHeaderLinkSections = React.forwardRef<
               action={action}
               link={link}
               showLineBreak={sectionIndex !== 0 && linkIndex === 0}
-              isMobile={isMobile}
+              showIcon={showIcon}
             />
           ))
         )

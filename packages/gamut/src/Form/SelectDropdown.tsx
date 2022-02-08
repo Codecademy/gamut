@@ -4,6 +4,7 @@ import {
   MiniChevronDownIcon,
 } from '@codecademy/gamut-icons';
 import { useTheme } from '@emotion/react';
+import { useId } from '@reach/auto-id';
 import React, {
   ReactNode,
   SelectHTMLAttributes,
@@ -208,10 +209,18 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
   placeholder = 'Select an option',
   inputProps,
   multiple,
-  isSearchable,
+  isSearchable = false,
   shownOptionsLimit = 6,
   ...rest
 }) => {
+  /**
+   * Currently the `id` prop isn't required, though in the future, it should be (or we should use
+   * React 18: https://github.com/reactwg/react-18/discussions/111), to help enforce the ReactSelect
+   * id requirement
+   */
+  const rawInputId = useId();
+  const inputId = `${id}-select-dropdown-${rawInputId}`;
+
   const [activated, setActivated] = useState(false);
 
   const selectOptions = useMemo(() => {
@@ -349,6 +358,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
     <ReactSelect
       {...defaultProps}
       id={id || rest.htmlFor}
+      inputId={inputId}
       options={selectOptions}
       value={multiple ? multiValues : parsedValue}
       activated={activated}
