@@ -45,6 +45,7 @@ export function DataGrid<
     minHeight = 0,
     header = true,
     showOverflow,
+    emptyMessage,
     ...rest
   } = props;
 
@@ -102,7 +103,7 @@ export function DataGrid<
               />
             ) : null
           }
-          emptyMessage={<EmptyRows />}
+          emptyMessage={emptyMessage ?? <EmptyRows />}
         >
           {renderedRows.map((row) => {
             const rowId = row[idKey];
