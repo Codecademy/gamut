@@ -15,8 +15,8 @@ export const AppHeaderLink: React.FC<AppHeaderLinkProps> = ({
   action,
   item,
   showIcon = false,
-  mx = { _: 0, md: 24 },
-  py = { _: 16, md: 8 },
+  mx = { _: 0, lg: 24 },
+  py = { _: 16, lg: 8 },
   onKeyDown,
   ...props
 }) => {
