@@ -141,4 +141,16 @@
       white-space: pre-wrap;
     }
   }
+
+  .details {
+    margin-bottom: $base-margin;
+    summary {
+      font-weight: bold;
+      cursor: pointer;
+    }
+  }
+
+  .details[open] summary {
+    margin-bottom: $base-margin;
+  }
 }
