@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@7.0.1...@codecademy/gamut-icons@7.1.0) (2022-02-08)
+
+
+### Features
+
+* **Icons:** add cloud icons to gamut icons ([bd81702](https://github.com/Codecademy/gamut/commit/bd8170217bc16d09ff02e1c7406876da9add22f2))
+
+
+
 ### [7.0.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@7.0.0...@codecademy/gamut-icons@7.0.1) (2022-01-31)
 
 **Note:** Version bump only for package @codecademy/gamut-icons

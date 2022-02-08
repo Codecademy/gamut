@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [44.5.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@44.5.0...@codecademy/gamut@44.5.1) (2022-02-08)
+
+
+### Bug Fixes
+
+* Markdown details element styles ([5aa71ad](https://github.com/Codecademy/gamut/commit/5aa71ad077bfaf17c3ee154d1a25bb130fdc66d5))
+
+
+
 ## [44.5.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@44.4.0...@codecademy/gamut@44.5.0) (2022-02-04)
 
 
