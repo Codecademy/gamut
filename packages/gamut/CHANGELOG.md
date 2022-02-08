@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [44.5.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@44.5.1...@codecademy/gamut@44.5.2) (2022-02-08)
+
+
+### Bug Fixes
+
+* DataGrid respects `emptyMessage` props now ([dc5e5a0](https://github.com/Codecademy/gamut/commit/dc5e5a0736ed0466666b96741fa775ce05d89825))
+
+
+
 ### [44.5.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@44.5.0...@codecademy/gamut@44.5.1) (2022-02-08)
 
 
