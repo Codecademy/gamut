@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [29.3.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@29.2.9...@codecademy/gamut-labs@29.3.0) (2022-02-08)
+
+
+### Features
+
+* **Loading:** add dark mode ([7f5c97d](https://github.com/Codecademy/gamut/commit/7f5c97d746f9b293700ff230beba199c7178a19f))
+
+
+
+### [29.2.9](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@29.2.8...@codecademy/gamut-labs@29.2.9) (2022-02-04)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
 ### [29.2.8](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@29.2.7...@codecademy/gamut-labs@29.2.8) (2022-02-04)
 
 **Note:** Version bump only for package @codecademy/gamut-labs
