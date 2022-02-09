@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [29.3.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@29.3.1...@codecademy/gamut-labs@29.3.2) (2022-02-09)
+
+
+### Bug Fixes
+
+* **GlobalHeader:** fix mobile menu for screen sizes btwn 1024-1200px ([1c86d8e](https://github.com/Codecademy/gamut/commit/1c86d8e2f34829db9e4f320741f9bb4f20341531))
+
+
+
 ### [29.3.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@29.3.0...@codecademy/gamut-labs@29.3.1) (2022-02-08)
 
 **Note:** Version bump only for package @codecademy/gamut-labs
