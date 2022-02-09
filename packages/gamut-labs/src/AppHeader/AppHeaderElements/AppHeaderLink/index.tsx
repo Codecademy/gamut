@@ -1,7 +1,7 @@
 import { Anchor, AnchorProps } from '@codecademy/gamut';
-import { appHeaderMobileBreakpoint } from '@codecademy/gamut-labs/src/AppHeader/shared';
 import React from 'react';
 
+import { appHeaderMobileBreakpoint } from '../../shared';
 import { AppHeaderClickHandler, AppHeaderLinkItem } from '../types';
 
 export type AppHeaderLinkProps = {

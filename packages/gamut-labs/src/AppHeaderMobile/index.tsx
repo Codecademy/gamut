@@ -1,6 +1,5 @@
 import { ContentContainer, IconButton, Overlay } from '@codecademy/gamut';
 import { CloseIcon, MenuIcon } from '@codecademy/gamut-icons';
-import { appHeaderMobileBreakpoint } from '@codecademy/gamut-labs/src/AppHeader/shared';
 import { css } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React, { useState } from 'react';
@@ -11,6 +10,7 @@ import {
   AppHeaderClickHandler,
   AppHeaderItem,
 } from '../AppHeader/AppHeaderElements/types';
+import { appHeaderMobileBreakpoint } from '../AppHeader/shared';
 import { FormattedMobileAppHeaderItems } from '../AppHeader/types';
 import { AppHeaderMainMenuMobile } from '../AppHeaderMobile/AppHeaderMainMenuMobile';
 import { HeaderHeightArea } from '../HeaderHeightArea';

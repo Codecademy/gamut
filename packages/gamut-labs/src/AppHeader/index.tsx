@@ -1,5 +1,4 @@
 import { AppBar, FillButton, TextButton } from '@codecademy/gamut';
-import { appHeaderMobileBreakpoint } from '@codecademy/gamut-labs/src/AppHeader/shared';
 import { css } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React, { ReactNode, useEffect, useMemo, useRef, useState } from 'react';
@@ -18,6 +17,7 @@ import {
   AppHeaderItem,
 } from './AppHeaderElements/types';
 import { AppHeaderSearch, useHeaderSearch } from './Search/useHeaderSearch';
+import { appHeaderMobileBreakpoint } from './shared';
 import { FormattedAppHeaderItems } from './types';
 
 export type AppHeaderProps = {
