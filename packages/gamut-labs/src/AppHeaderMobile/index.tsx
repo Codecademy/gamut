@@ -29,7 +29,7 @@ export type AppHeaderMobileProps = {
 
 const StyledOverlay = styled(Overlay)(
   css({
-    display: { _: `block`, lg: `none` },
+    display: { _: `block`, [appHeaderMobileBreakpoint]: `none` },
     width: `100vw`,
     height: `100vh`,
     opacity: 1,
