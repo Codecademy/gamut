@@ -1,4 +1,5 @@
 import { AppBar, FillButton, TextButton } from '@codecademy/gamut';
+import { appHeaderMobileBreakpoint } from '@codecademy/gamut-labs/src/AppHeader/shared';
 import { css } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React, { ReactNode, useEffect, useMemo, useRef, useState } from 'react';
@@ -231,7 +232,7 @@ export const AppHeader: React.FC<AppHeaderProps> = ({
 
   return (
     <HeaderHeightArea
-      display={{ _: 'none', lg: 'block' }}
+      display={{ _: 'none', [appHeaderMobileBreakpoint]: 'block' }}
       as="nav"
       title="Main Navigation"
     >

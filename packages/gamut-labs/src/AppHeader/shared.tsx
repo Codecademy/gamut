@@ -1,6 +1,8 @@
 import { AnimatePresence, motion, Variants } from 'framer-motion';
 import React from 'react';
 
+export const appHeaderMobileBreakpoint = 'lg' as const;
+
 export type AnimatedHeaderZoneProps = {
   visible?: boolean;
 };

@@ -302,7 +302,6 @@ export const AppHeaderDropdown: React.FC<AppHeaderDropdownProps> = ({
   return (
     <>
       {clickTarget}
-
       <StyledDropdown
         style={{
           right: isProfileDropdown ? '0.5rem' : '',

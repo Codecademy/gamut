@@ -1,5 +1,6 @@
 import { ContentContainer, IconButton, Overlay } from '@codecademy/gamut';
 import { CloseIcon, MenuIcon } from '@codecademy/gamut-icons';
+import { appHeaderMobileBreakpoint } from '@codecademy/gamut-labs/src/AppHeader/shared';
 import { css } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React, { useState } from 'react';
@@ -100,7 +101,7 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
     <>
       {!mobileMenuOpen && ( // need this bc AppBar has a hardcoded z-Index of 15
         <HeaderHeightArea
-          display={{ _: 'block', lg: 'none' }}
+          display={{ _: `block`, [appHeaderMobileBreakpoint]: `none` }}
           as="nav"
           title="Mobile Navigation"
         >
@@ -130,7 +131,7 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
         onRequestClose={() => setMobileMenuOpen(false)}
       >
         <HeaderHeightArea
-          display={{ _: 'block', lg: 'none' }}
+          display={{ _: `block`, [appHeaderMobileBreakpoint]: `none` }}
           as="nav"
           title="Mobile Navigation"
           data-testid="header-mobile-menu-dropdown"
