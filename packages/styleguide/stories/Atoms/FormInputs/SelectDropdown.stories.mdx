@@ -428,6 +428,26 @@ export const SelectDropdownIconExample: React.FC = () => (
 );
 ```
 
+### Multi-Select
+
+Sometimes your dropdown wants to allow for multiple items to be selected-for, and by passing the `isMulti` prop in, you can get that functionality.
+
+<Canvas>
+  <Story
+    name="MultiSelect"
+    args={{
+      options: ['Based', 'Regular Size', 'Normal'],
+      placeholder: 'all about that',
+    }}
+  >
+    {(args) => (
+      <Box width="20rem" height="15rem">
+        <SelectDropdown {...args} isMulti />
+      </Box>
+    )}
+  </Story>
+</Canvas>
+
 ### Custom inputProps
 
 Some of our forms require special props be passed directly onto the `<input/>` component. We can do that by passing an object, formatted `{propName: value}`, into our inputProps prop.

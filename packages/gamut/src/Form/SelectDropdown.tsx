@@ -287,19 +287,17 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
         minWidth: '7rem',
       }),
 
-      control: (provided, state) => {
-        return {
-          ...selectDropdownStyles({ theme }),
-          ...sizeVariants({ size: state.selectProps.size, theme }),
-          ...conditionalBorderStates({
-            isFocused: state.isFocused,
-            isDisabled: state.isDisabled,
-            error: state.selectProps.error,
-            activated: state.selectProps.activated,
-            theme,
-          }),
-        };
-      },
+      control: (provided, state) => ({
+        ...selectDropdownStyles({ theme }),
+        ...sizeVariants({ size: state.selectProps.size, theme }),
+        ...conditionalBorderStates({
+          isFocused: state.isFocused,
+          isDisabled: state.isDisabled,
+          error: state.selectProps.error,
+          activated: state.selectProps.activated,
+          theme,
+        }),
+      }),
 
       dropdownIndicator: () => ({
         color: 'currentColor',
@@ -345,6 +343,30 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
       singleValue: () => ({
         ...textColor({ theme }),
         display: 'flex',
+      }),
+
+      multiValue: (provided) => ({
+        ...provided,
+        cursor: 'pointer',
+        alignItems: 'center',
+        background: theme.colors['background-selected'],
+      }),
+
+      multiValueLabel: (provided) => ({
+        ...provided,
+        color: theme.colors.text,
+      }),
+
+      multiValueRemove: (provided) => ({
+        ...provided,
+        cursor: 'pointer',
+        paddingTop: '7px',
+        paddingBottom: '7px',
+        background: theme.colors['background-selected'],
+        ':hover': {
+          backgroundColor: theme.colors['background-hover'],
+          color: theme.colors['primary-hover'],
+        },
       }),
 
       valueContainer: (provided) => ({
