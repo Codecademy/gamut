@@ -1,6 +1,5 @@
 import { Box, Logo, StrokeButton } from '@codecademy/gamut';
-import { system, variant } from '@codecademy/gamut-styles';
-import { variance } from '@codecademy/variance';
+import { variant } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React, { useState } from 'react';
 
@@ -38,35 +37,32 @@ export type LayoutMenuProps = {
    */
   topLinkSections?: SectionItem[];
   /**
-   * Boolean to add vertical overflow to menu
+   * Set fixed height for menu with overflow
    */
-  shouldOverflowY?: boolean;
-  /**
-   * Set fixed height for menu
-   */
-  height?: 'auto' | 'sm' | 'md' | 'lg';
+  menuHeight?: 'sm' | 'md' | 'lg';
 };
 
-const navHeight = {
-  auto: 'auto',
-  sm: '630px',
-  md: '1000px',
-  lg: '1370px',
-} as const;
-
-const Nav = styled.nav(variance.compose(system.layout));
-
-const StyledNav = styled(Nav)(
+const Nav = styled.nav(
   variant({
+    prop: 'menuHeight',
+    base: {
+      borderColor: 'black',
+      borderStyleBottom: 'solid',
+      borderWidthBottom: '1px',
+      overflowY: 'auto',
+      overflowX: 'hidden',
+      paddingTop: '4px',
+      paddingLeft: '4px',
+    },
     variants: {
-      overflow: {
-        borderColor: 'black',
-        borderStyleBottom: 'solid',
-        borderWidthBottom: '1px',
-        overflowY: 'auto',
-        overflowX: 'hidden',
-        paddingTop: '4px',
-        paddingLeft: '4px',
+      sm: {
+        height: '630px',
+      },
+      md: {
+        height: '1000px',
+      },
+      lg: {
+        height: '1370px',
       },
     },
   })
@@ -81,8 +77,7 @@ export const LayoutMenu: React.FC<LayoutMenuProps> = ({
   breakpoint = 'lg',
   children,
   topLinkSections,
-  shouldOverflowY,
-  height,
+  menuHeight,
 }) => {
   const [expanded, setExpanded] = useState(false);
 
@@ -106,10 +101,7 @@ export const LayoutMenu: React.FC<LayoutMenuProps> = ({
   );
 
   return (
-    <StyledNav
-      variant={shouldOverflowY && 'overflow'}
-      height={height ? navHeight[height] : 'auto'}
-    >
+    <Nav menuHeight={menuHeight}>
       <Box display={{ _: 'block', [breakpoint]: 'none' }}>
         <Flyout
           closeLabel={closeLabel}
@@ -136,6 +128,6 @@ export const LayoutMenu: React.FC<LayoutMenuProps> = ({
         {accordionMenuSections}
         {children}
       </Box>
-    </StyledNav>
+    </Nav>
   );
 };
