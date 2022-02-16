@@ -101,7 +101,7 @@ export const LayoutMenu: React.FC<LayoutMenuProps> = ({
   );
 
   return (
-    <Nav menuHeight={menuHeight}>
+    <Nav menuHeight={menuHeight} data-testid="menu">
       <Box display={{ _: 'block', [breakpoint]: 'none' }}>
         <Flyout
           closeLabel={closeLabel}
