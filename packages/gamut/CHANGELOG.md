@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [44.6.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@44.5.2...@codecademy/gamut@44.6.0) (2022-02-16)
+
+
+### Features
+
+* Basic implementation of styling in multi-select SelectDropdown ([16c8d83](https://github.com/Codecademy/gamut/commit/16c8d83584b01244da065bc2e1e466391c5237a3))
+
+
+
 ### [44.5.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@44.5.1...@codecademy/gamut@44.5.2) (2022-02-08)
 
 
