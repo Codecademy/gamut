@@ -10,6 +10,7 @@ import {
   AppHeaderClickHandler,
   AppHeaderItem,
 } from '../AppHeader/AppHeaderElements/types';
+import { appHeaderMobileBreakpoint } from '../AppHeader/shared';
 import { FormattedMobileAppHeaderItems } from '../AppHeader/types';
 import { AppHeaderMainMenuMobile } from '../AppHeaderMobile/AppHeaderMainMenuMobile';
 import { HeaderHeightArea } from '../HeaderHeightArea';
@@ -28,7 +29,7 @@ export type AppHeaderMobileProps = {
 
 const StyledOverlay = styled(Overlay)(
   css({
-    display: { _: `block`, md: `none` },
+    display: { _: `block`, [appHeaderMobileBreakpoint]: `none` },
     width: `100vw`,
     height: `100vh`,
     opacity: 1,
@@ -100,7 +101,7 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
     <>
       {!mobileMenuOpen && ( // need this bc AppBar has a hardcoded z-Index of 15
         <HeaderHeightArea
-          display={{ _: 'block', lg: 'none' }}
+          display={{ _: `block`, [appHeaderMobileBreakpoint]: `none` }}
           as="nav"
           title="Mobile Navigation"
         >
@@ -130,7 +131,7 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
         onRequestClose={() => setMobileMenuOpen(false)}
       >
         <HeaderHeightArea
-          display={{ _: 'block', lg: 'none' }}
+          display={{ _: `block`, [appHeaderMobileBreakpoint]: `none` }}
           as="nav"
           title="Mobile Navigation"
           data-testid="header-mobile-menu-dropdown"

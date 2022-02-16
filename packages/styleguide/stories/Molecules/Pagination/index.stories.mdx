@@ -4,6 +4,8 @@ import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 import LinkTo from '@storybook/addon-links/react';
 
+import { PaginationControlledExample } from './Pagination.examples.tsx';
+
 <Meta
   title={title}
   component={Pagination}
@@ -111,6 +113,24 @@ When using pagination as navigation between linked pages, use the `isNavigation`
     }}
   >
     {(args) => <Pagination {...args} />}
+  </Story>
+</Canvas>
+
+<br />
+
+## Controlled Pagination
+
+When `pageNumber` is specified, the component switches to being a controlled component.
+
+<Canvas>
+  <Story
+    name="Controlled Navigation"
+    args={{
+      chapterSize: 5,
+      totalPages: 27,
+    }}
+  >
+    {(args) => <PaginationControlledExample {...args} />}
   </Story>
 </Canvas>
 
