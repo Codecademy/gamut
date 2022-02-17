@@ -1,7 +1,8 @@
+import { ThemeProps } from '@codecademy/variance';
 import { css, Global } from '@emotion/react';
 import React from 'react';
 
-import { coreTheme as theme } from '../themes';
+import { coreTheme } from '../themes';
 
 const rebootStyles = css`
   /**
@@ -52,20 +53,20 @@ const rebootStyles = css`
     display: block;
   }
   /** Body
-   1. Remove the margin in all browsers.
-   2. As a best practice, apply a default \`background-color\`.
-   3. Set an explicit initial text-align value so that we can later use the
+    1. Remove the margin in all browsers.
+    2. As a best practice, apply a default \`background-color\`.
+    3. Set an explicit initial text-align value so that we can later use the
       the \`inherit\` value on things like \`<th>\` elements.
    */
 
   body {
     margin: 0;
-    font-family: ${theme.fontFamily.base};
-    font-weight: ${theme.fontWeight.base};
-    line-height: ${theme.lineHeight.base};
-    color: ${theme.colors.text};
+    font-family: ${coreTheme.fontFamily.base};
+    font-weight: ${coreTheme.fontWeight.base};
+    line-height: ${coreTheme.lineHeight.base};
+    color: ${coreTheme.colors.text};
     text-align: left;
-    background-color: ${theme.colors.background};
+    background-color: ${coreTheme.colors.background};
   }
 
   /* Suppress the focus outline on elements that cannot be accessed via keyboard.
@@ -79,8 +80,8 @@ const rebootStyles = css`
 
   /*
   Content grouping
- 1. Add the correct box sizing in Firefox.
-  2. Show the overflow in Edge and IE.
+    1. Add the correct box sizing in Firefox.
+    2. Show the overflow in Edge and IE.
 */
 
   hr {
@@ -93,7 +94,7 @@ const rebootStyles = css`
   /* Typography */
   /*
   Remove top margins from headings
-   By default, \`<h1>\`-\`<h6>\` all receive top and bottom margins. We nuke the top
+  By default, \`<h1>\`-\`<h6>\` all receive top and bottom margins. We nuke the top
   margin for easier control within type scales as it avoids margin collapsing.
 */
 
@@ -114,7 +115,7 @@ const rebootStyles = css`
 
   p {
     margin-top: 0;
-    margin-bottom: ${theme.spacing[16]};
+    margin-bottom: ${coreTheme.spacing[16]};
   }
 
   /*
@@ -155,7 +156,7 @@ const rebootStyles = css`
   }
 
   dt {
-    font-weight: ${theme.fontWeight.title};
+    font-weight: ${coreTheme.fontWeight.title};
   }
 
   dd {
@@ -176,18 +177,18 @@ const rebootStyles = css`
   b,
   strong {
     /* Add the correct font weight in Chrome, Edge, and Safari */
-    font-weight: ${theme.fontWeight.title};
+    font-weight: ${coreTheme.fontWeight.title};
   }
 
   small {
     /* Add the correct font size in all browsers */
-    font-size: ${theme.fontSize[14]};
+    font-size: ${coreTheme.fontSize[14]};
   }
 
   /*
- Prevent \`sub\` and \`sup\` elements from affecting the line height in
-  all browsers.
-*/
+    Prevent \`sub\` and \`sup\` elements from affecting the line height in
+    all browsers.
+  */
   sub,
   sup {
     position: relative;
@@ -204,13 +205,13 @@ const rebootStyles = css`
   }
 
   /*
- Links
-  Remove the gray background on active links in IE 10.
-  Remove gaps in links underline in iOS 8+ and Safari 8+.
+  Links
+    Remove the gray background on active links in IE 10.
+    Remove gaps in links underline in iOS 8+ and Safari 8+.
 */
 
   a {
-    color: ${theme.colors.primary};
+    color: ${coreTheme.colors.primary};
     text-decoration: none;
 
     background-color: transparent;
@@ -295,9 +296,9 @@ Figures
   }
 
   caption {
-    padding-top: ${theme.spacing[16]};
-    padding-bottom: ${theme.spacing[16]};
-    color: ${theme.spacing[16]};
+    padding-top: ${coreTheme.spacing[16]};
+    padding-bottom: ${coreTheme.spacing[16]};
+    color: ${coreTheme.spacing[16]};
     text-align: left;
     caption-side: bottom;
   }

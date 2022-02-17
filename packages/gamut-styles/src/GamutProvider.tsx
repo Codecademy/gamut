@@ -8,7 +8,7 @@ import {
 import React, { useContext, useRef } from 'react';
 
 import { createEmotionCache } from './cache';
-import { Reboot, Typography } from './globals';
+import { Reboot, Scrollbars, Typography } from './globals';
 import { Variables } from './globals/Variables';
 import { coreTheme } from './themes/core';
 
@@ -58,6 +58,7 @@ export const GamutProvider: React.FC<GamutProviderProps> = ({
       <Reboot />
       <Variables variables={theme._variables} />
       {variables && <Variables variables={variables} />}
+      <Scrollbars />
     </>
   );
 
@@ -65,8 +66,10 @@ export const GamutProvider: React.FC<GamutProviderProps> = ({
     return (
       <GamutContext.Provider value={contextValue}>
         <CacheProvider value={activeCache.current}>
-          {globals}
-          <ThemeProvider theme={theme}>{children}</ThemeProvider>
+          <ThemeProvider theme={theme}>
+            {globals}
+            {children}
+          </ThemeProvider>
         </CacheProvider>
       </GamutContext.Provider>
     );

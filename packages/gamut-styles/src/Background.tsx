@@ -63,7 +63,7 @@ export const Background = forwardRef<HTMLDivElement, BackgroundProps>(
        * value.
        *
        * TODO: Add a tiebreaker.  This could possibly have other dimensions as
-       * it will likelyfail to return a mode outside of the lighest and
+       * it will likely fail to return a mode outside of the lightest and
        * darkest versions.
        */
       const [highestContrastMode] = possibleModes.reduce<[ColorModes, number]>(
