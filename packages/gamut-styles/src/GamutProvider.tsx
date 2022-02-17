@@ -58,7 +58,7 @@ export const GamutProvider: React.FC<GamutProviderProps> = ({
       <Reboot />
       <Variables variables={theme._variables} />
       {variables && <Variables variables={variables} />}
-      <Scrollbars />
+      {/* <Scrollbars /> */}
     </>
   );
 
@@ -78,7 +78,10 @@ export const GamutProvider: React.FC<GamutProviderProps> = ({
   return (
     <GamutContext.Provider value={contextValue}>
       {globals}
-      <ThemeProvider theme={theme}>{children}</ThemeProvider>
+      <ThemeProvider theme={theme}>
+        <Scrollbars />
+        {children}
+      </ThemeProvider>
     </GamutContext.Provider>
   );
 };

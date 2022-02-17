@@ -9,26 +9,29 @@ export const Scrollbars = () => {
   return (
     <Global
       styles={css`
-  * {
-    scrollbar-width: auto;
-    scrollbar-color: var(--color-text) var(--color-background);
-  }
+        * {
+          scrollbar-width: thin;
+          scrollbar-color: ${getColorValue(activeColors.scrollbar)}
+            ${getColorValue(activeColors['background-primary'])};
+          scrollbar-border: none;
+        }
 
-  /* Works on Chrome, Edge, and Safari */
-  *::-webkit-scrollbar {
-    width: 16px;
-  }
+        /* Works on Chrome, Edge, and Safari */
+        *::-webkit-scrollbar {
+          background: transparent;
+          width: 12px;
+        }
 
-  *::-webkit-scrollbar-track {
-    background: var(--color-background)};
-  }
+        *::-webkit-scrollbar-track {
+          background: ${getColorValue(activeColors['background-primary'])};
+        }
 
-  *::-webkit-scrollbar-thumb {
-    background-color: var(--color-background);
-    border-radius: 20px;
-    border: 3px solid var(--color-text);
-  }
-`}
+        *::-webkit-scrollbar-thumb {
+          background-color: ${getColorValue(activeColors.scrollbar)};
+          border-radius: 20px;
+          border: 3px solid ${getColorValue(activeColors['background-primary'])};
+        }
+      `}
     />
   );
 };

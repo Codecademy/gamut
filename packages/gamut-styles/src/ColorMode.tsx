@@ -9,6 +9,7 @@ import styled from '@emotion/styled';
 import { mapValues, pick } from 'lodash';
 import React, { ComponentProps, forwardRef, useMemo } from 'react';
 
+import { Scrollbars } from '.';
 import {
   background,
   border,
@@ -85,13 +86,13 @@ export const VariableProvider = styled(
 export const ColorMode = forwardRef<
   HTMLDivElement,
   Omit<ComponentProps<typeof VariableProvider>, 'bg'> & ColorModeProps
->(({ mode, alwaysSetVariables, bg, ...rest }, ref) => {
+>(({ mode, alwaysSetVariables, bg, children, ...rest }, ref) => {
   const theme = useTheme();
   const { modes, mode: active, colors } = theme;
   const contextBg = bg ? 'background-current' : undefined;
 
   /** Serialize color variables for the current mode
-   * 1. If all variables are requried add all mode variables to the current context
+   * 1. If all variables are required add all mode variables to the current context
    * 2. If the user has specified a background color - set that color to the current-bg
    * 3. If not
    */
@@ -114,7 +115,10 @@ export const ColorMode = forwardRef<
       : pick(variables, ['--color-background-current']);
 
     return (
-      <VariableProvider {...rest} variables={vars} bg={contextBg} ref={ref} />
+      <VariableProvider {...rest} variables={vars} bg={contextBg} ref={ref}>
+        <Scrollbars />
+        {children}
+      </VariableProvider>
     );
   }
 
@@ -125,7 +129,10 @@ export const ColorMode = forwardRef<
         variables={variables}
         bg={contextBg}
         ref={ref}
-      />
+      >
+        <Scrollbars />
+        {children}
+      </VariableProvider>
     </ThemeProvider>
   );
 });

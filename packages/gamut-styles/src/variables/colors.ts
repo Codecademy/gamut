@@ -23,6 +23,7 @@ const effects = {
 export const coreSwatches = {
   beige: {
     '100': '#FFF0E5',
+    '400': '#B2A8A0',
   },
   blue: {
     '0': '#F5FCFF',

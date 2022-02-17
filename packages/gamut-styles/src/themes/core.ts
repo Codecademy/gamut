@@ -63,6 +63,9 @@ export const coreTheme = createTheme({
         _: 'hyper-500',
         hover: 'hyper-400',
       },
+      scrollbar: {
+        _: 'beige-400',
+      },
     },
     dark: {
       text: { _: 'white', accent: 'beige', disabled: 'navy-200' },
@@ -98,6 +101,9 @@ export const coreTheme = createTheme({
       interface: {
         _: 'yellow-500',
         hover: 'yellow-400',
+      },
+      scrollbar: {
+        _: 'navy-600',
       },
     },
   })
