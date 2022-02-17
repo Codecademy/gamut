@@ -12,6 +12,7 @@ const DifficultySpan = styled(Box)`
   border-radius: 8px;
   display: inline-block;
   margin-right: 4px;
+  margin-bottom: 1px;
   vertical-align: middle;
   border: 1px solid ${({ theme }) => theme.colors.navy};
 `;
