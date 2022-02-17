@@ -178,7 +178,7 @@ export const freeMobileHeaderItems = (
     communityDropdown,
     ...(hidePricing ? [] : [pricingDropdown]),
     forBusiness,
-    freeProfile(user),
+    freeProfile(user, true),
     user.showProUpgrade
       ? upgradeToPro(user.proCheckoutUrl)
       : tryProForFree(user.proCheckoutUrl),

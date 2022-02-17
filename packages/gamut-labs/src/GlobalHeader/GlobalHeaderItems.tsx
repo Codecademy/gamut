@@ -247,9 +247,12 @@ const profileLogOut: AppHeaderLinkItem = {
   type: 'link',
 };
 
-export const freeProfile = (user: User): AppHeaderProfileDropdownItem => {
+export const freeProfile = (
+  user: User,
+  isMobile?: boolean
+): AppHeaderProfileDropdownItem => {
   const topSection = [profileMyProfile, profileAccount, profileMyHome];
-  if (user.isAccountManager) {
+  if (!isMobile && user.isAccountManager) {
     topSection.push(profileBusinessAccount);
   }
   topSection.push(profileHelpCenter);
