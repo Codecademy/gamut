@@ -11,13 +11,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: Codecademy/run-on-yarn@v1
-      - run: yarn build-changed
+      - run: yarn build
       - run: yarn ${{ matrix.command }}
 
     strategy:
       fail-fast: false
       matrix:
-        command: ['lint', 'verify-changed']
+        command: ['lint', 'verify']
 
 on:
   push:

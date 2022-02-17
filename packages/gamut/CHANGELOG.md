@@ -3,6 +3,95 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [44.6.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@44.5.2...@codecademy/gamut@44.6.0) (2022-02-16)
+
+
+### Features
+
+* Basic implementation of styling in multi-select SelectDropdown ([16c8d83](https://github.com/Codecademy/gamut/commit/16c8d83584b01244da065bc2e1e466391c5237a3))
+
+
+
+### [44.5.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@44.5.1...@codecademy/gamut@44.5.2) (2022-02-08)
+
+
+### Bug Fixes
+
+* DataGrid respects `emptyMessage` props now ([dc5e5a0](https://github.com/Codecademy/gamut/commit/dc5e5a0736ed0466666b96741fa775ce05d89825))
+
+
+
+### [44.5.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@44.5.0...@codecademy/gamut@44.5.1) (2022-02-08)
+
+
+### Bug Fixes
+
+* Markdown details element styles ([5aa71ad](https://github.com/Codecademy/gamut/commit/5aa71ad077bfaf17c3ee154d1a25bb130fdc66d5))
+
+
+
+## [44.5.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@44.4.0...@codecademy/gamut@44.5.0) (2022-02-04)
+
+
+### Features
+
+* (MenuLink) Allows for link to open in new window ([901d1ef](https://github.com/Codecademy/gamut/commit/901d1ef3cdba69b8a7ee8fc237dd20c9994e65ed))
+
+
+
+## [44.4.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@44.3.2...@codecademy/gamut@44.4.0) (2022-02-04)
+
+
+### Features
+
+* **Pagination:** controlled pagination ([9601492](https://github.com/Codecademy/gamut/commit/960149259c14ce6dd02368025cb4ad0d8f7db990))
+
+
+
+### [44.3.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@44.3.1...@codecademy/gamut@44.3.2) (2022-02-04)
+
+
+### Bug Fixes
+
+* Passing id to react-select ([d95f092](https://github.com/Codecademy/gamut/commit/d95f092e84da221f6d473e4a614072da4028b22f))
+
+
+
+### [44.3.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@44.3.0...@codecademy/gamut@44.3.1) (2022-02-03)
+
+
+### Bug Fixes
+
+* Right Align TableHeaders when Justify-Right ([cb27d7d](https://github.com/Codecademy/gamut/commit/cb27d7d2900300258e1ef21bd433c9a5d46eff23))
+
+
+
+## [44.3.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@44.2.3...@codecademy/gamut@44.3.0) (2022-02-02)
+
+
+### Features
+
+* **Pagination:** add pagination component ([5016301](https://github.com/Codecademy/gamut/commit/50163013e66f18769542a3aeef07781afae08f8b))
+
+
+
+### [44.2.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@44.2.2...@codecademy/gamut@44.2.3) (2022-02-02)
+
+
+### Bug Fixes
+
+* **SelectDropdown:** fixed isSearchable prop ([f4edba1](https://github.com/Codecademy/gamut/commit/f4edba1e145ef572357a6e54a56dfedd66e5a3fc))
+
+
+
+### [44.2.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@44.2.1...@codecademy/gamut@44.2.2) (2022-02-01)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
 ### [44.2.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@44.2.0...@codecademy/gamut@44.2.1) (2022-01-31)
 
 

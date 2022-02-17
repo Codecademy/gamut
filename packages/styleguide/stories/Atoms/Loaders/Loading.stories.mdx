@@ -1,4 +1,5 @@
 import { Loading } from '@codecademy/gamut-labs/src';
+import { Background } from '@codecademy/gamut-styles';
 import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
@@ -13,8 +14,28 @@ still coming.`,
   }}
 />
 
+### Light Mode
+
 <Canvas withSource="open">
-  <Story name="Loading">{() => <Loading />}</Story>
+  <Story name="Light">
+    {() => (
+      <Background bg="palePink" p={32}>
+        <Loading />
+      </Background>
+    )}
+  </Story>
+</Canvas>
+
+### Dark Mode
+
+<Canvas withSource="open">
+  <Story name="Dark">
+    {() => (
+      <Background bg="navy" p={32}>
+        <Loading />
+      </Background>
+    )}
+  </Story>
 </Canvas>
 
 <PropsTable story="Loading" />

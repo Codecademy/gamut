@@ -3,6 +3,96 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [29.3.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@29.3.2...@codecademy/gamut-labs@29.3.3) (2022-02-16)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [29.3.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@29.3.1...@codecademy/gamut-labs@29.3.2) (2022-02-09)
+
+
+### Bug Fixes
+
+* **GlobalHeader:** fix mobile menu for screen sizes btwn 1024-1200px ([1c86d8e](https://github.com/Codecademy/gamut/commit/1c86d8e2f34829db9e4f320741f9bb4f20341531))
+
+
+
+### [29.3.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@29.3.0...@codecademy/gamut-labs@29.3.1) (2022-02-08)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+## [29.3.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@29.2.9...@codecademy/gamut-labs@29.3.0) (2022-02-08)
+
+
+### Features
+
+* **Loading:** add dark mode ([7f5c97d](https://github.com/Codecademy/gamut/commit/7f5c97d746f9b293700ff230beba199c7178a19f))
+
+
+
+### [29.2.9](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@29.2.8...@codecademy/gamut-labs@29.2.9) (2022-02-04)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [29.2.8](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@29.2.7...@codecademy/gamut-labs@29.2.8) (2022-02-04)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [29.2.7](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@29.2.6...@codecademy/gamut-labs@29.2.7) (2022-02-04)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [29.2.6](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@29.2.5...@codecademy/gamut-labs@29.2.6) (2022-02-03)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [29.2.5](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@29.2.4...@codecademy/gamut-labs@29.2.5) (2022-02-02)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [29.2.4](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@29.2.3...@codecademy/gamut-labs@29.2.4) (2022-02-02)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [29.2.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@29.2.2...@codecademy/gamut-labs@29.2.3) (2022-02-01)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
 ### [29.2.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@29.2.1...@codecademy/gamut-labs@29.2.2) (2022-01-31)
 
 

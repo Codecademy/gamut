@@ -1,13 +1,13 @@
 {
   "name": "@codecademy/styleguide",
   "description": "Styleguide & Component library for codecademy.com",
-  "version": "54.0.6",
+  "version": "54.3.3",
   "author": "Codecademy Engineering",
   "scripts": {
     "start": "yarn storybook",
     "storybook": "start-storybook -p 6006 -c .storybook --ci --quiet",
-    "build-storybook": "NODE_ENV=production build-storybook --quiet -c .storybook -o ../../dist/docs",
-    "build-storybook-alpha": "NODE_ENV=production build-storybook --quiet -c .storybook -o ../../dist/docs"
+    "build-storybook": "NODE_ENV=production build-storybook --quiet -c .storybook -o ./dist",
+    "copy-storybook": "rm -rf ../../dist/docs && cp -r ./dist ../../dist/docs"
   },
   "repository": {
     "type": "git",
@@ -16,13 +16,14 @@
   "dependencies": {
     "@babel/cli": "^7.13.10",
     "@babel/core": "^7.13.10",
-    "@codecademy/gamut": "^44.2.1",
-    "@codecademy/gamut-icons": "^7.0.1",
+    "@codecademy/gamut": "^44.6.0",
+    "@codecademy/gamut-icons": "^7.1.0",
     "@codecademy/gamut-illustrations": "^0.22.1",
-    "@codecademy/gamut-labs": "^29.2.2",
-    "@codecademy/gamut-patterns": "^0.8.1",
+    "@codecademy/gamut-labs": "^29.3.3",
+    "@codecademy/gamut-patterns": "^0.8.2",
     "@codecademy/gamut-styles": "^13.0.1",
     "@codecademy/macros": "^3.0.0",
+    "@codecademy/variance": "^0.20.0",
     "@codecademy/webpack-config": "^6.0.0",
     "@emotion/cache": "^11.4.0",
     "@emotion/react": "^11.4.0",

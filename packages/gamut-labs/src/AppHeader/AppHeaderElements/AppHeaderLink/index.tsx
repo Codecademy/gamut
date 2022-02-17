@@ -1,6 +1,7 @@
 import { Anchor, AnchorProps } from '@codecademy/gamut';
 import React from 'react';
 
+import { appHeaderMobileBreakpoint } from '../../shared';
 import { AppHeaderClickHandler, AppHeaderLinkItem } from '../types';
 
 export type AppHeaderLinkProps = {
@@ -15,8 +16,8 @@ export const AppHeaderLink: React.FC<AppHeaderLinkProps> = ({
   action,
   item,
   showIcon = false,
-  mx = { _: 0, md: 24 },
-  py = { _: 16, md: 8 },
+  mx = { _: 0, [appHeaderMobileBreakpoint]: 24 },
+  py = { _: 16, [appHeaderMobileBreakpoint]: 8 },
   onKeyDown,
   ...props
 }) => {
