@@ -274,7 +274,7 @@ export const freeProfile = (
 
 export const proProfile = (user: User): AppHeaderProfileDropdownItem => {
   const topSection = [profileMyProfile, profileAccount, profileMyHome];
-  if (user.isAccountManager || user.isBusinessAdmin) {
+  if (user?.isAccountManager || user?.isBusinessAdmin) {
     topSection.push(profileBusinessAccount);
   }
   if (user.showReferrals) {
