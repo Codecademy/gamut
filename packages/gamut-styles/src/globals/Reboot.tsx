@@ -1,7 +1,7 @@
 import { css, Global } from '@emotion/react';
 import React from 'react';
 
-import { coreTheme } from '../themes';
+import { coreTheme as theme } from '../themes';
 
 const rebootStyles = css`
   /**
@@ -60,12 +60,12 @@ const rebootStyles = css`
 
   body {
     margin: 0;
-    font-family: ${coreTheme.fontFamily.base};
-    font-weight: ${coreTheme.fontWeight.base};
-    line-height: ${coreTheme.lineHeight.base};
-    color: ${coreTheme.colors.text};
+    font-family: ${theme.fontFamily.base};
+    font-weight: ${theme.fontWeight.base};
+    line-height: ${theme.lineHeight.base};
+    color: ${theme.colors.text};
     text-align: left;
-    background-color: ${coreTheme.colors.background};
+    background-color: ${theme.colors.background};
   }
 
   /* Suppress the focus outline on elements that cannot be accessed via keyboard.
@@ -114,7 +114,7 @@ const rebootStyles = css`
 
   p {
     margin-top: 0;
-    margin-bottom: ${coreTheme.spacing[16]};
+    margin-bottom: ${theme.spacing[16]};
   }
 
   /*
@@ -155,7 +155,7 @@ const rebootStyles = css`
   }
 
   dt {
-    font-weight: ${coreTheme.fontWeight.title};
+    font-weight: ${theme.fontWeight.title};
   }
 
   dd {
@@ -176,12 +176,12 @@ const rebootStyles = css`
   b,
   strong {
     /* Add the correct font weight in Chrome, Edge, and Safari */
-    font-weight: ${coreTheme.fontWeight.title};
+    font-weight: ${theme.fontWeight.title};
   }
 
   small {
     /* Add the correct font size in all browsers */
-    font-size: ${coreTheme.fontSize[14]};
+    font-size: ${theme.fontSize[14]};
   }
 
   /*
@@ -210,7 +210,7 @@ const rebootStyles = css`
 */
 
   a {
-    color: ${coreTheme.colors.primary};
+    color: ${theme.colors.primary};
     text-decoration: none;
 
     background-color: transparent;
@@ -295,9 +295,9 @@ Figures
   }
 
   caption {
-    padding-top: ${coreTheme.spacing[16]};
-    padding-bottom: ${coreTheme.spacing[16]};
-    color: ${coreTheme.spacing[16]};
+    padding-top: ${theme.spacing[16]};
+    padding-bottom: ${theme.spacing[16]};
+    color: ${theme.spacing[16]};
     text-align: left;
     caption-side: bottom;
   }
