@@ -65,10 +65,8 @@ export const GamutProvider: React.FC<GamutProviderProps> = ({
     return (
       <GamutContext.Provider value={contextValue}>
         <CacheProvider value={activeCache.current}>
-          <ThemeProvider theme={theme}>
-            {globals}
-            {children}
-          </ThemeProvider>
+          {globals}
+          <ThemeProvider theme={theme}>{children}</ThemeProvider>
         </CacheProvider>
       </GamutContext.Provider>
     );
