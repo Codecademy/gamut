@@ -10,10 +10,9 @@ export const Scrollbars = () => {
     <Global
       styles={css`
         * {
-          scrollbar-width: thin;
           scrollbar-color: ${getColorValue(activeColors.scrollbar)}
             ${getColorValue(activeColors['background-primary'])};
-          scrollbar-border: none;
+          scrollbar-width: thin;
         }
 
         /* Works on Chrome, Edge, and Safari */
