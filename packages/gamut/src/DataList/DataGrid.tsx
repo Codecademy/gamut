@@ -6,14 +6,15 @@ import { EmptyRows } from './EmptyRows';
 import { ListControlContext, useListControls } from './hooks/useListControls';
 import { ListStateContext } from './hooks/useListState';
 import { HeaderRow } from './Rows/HeaderRow';
-import { DataRow } from './Rows/Row';
+import { DataRow, MarshaledColProps } from './Rows/Row';
 import { ColumnConfig } from './types';
 
 export interface DataGridProps<
   Row,
   IdKey extends IdentifiableKeys<Row>,
   Cols extends ColumnConfig<Row>[]
-> extends DataListControls<Row, IdKey, Cols>,
+> extends MarshaledColProps,
+    DataListControls<Row, IdKey, Cols>,
     Omit<ComponentProps<typeof List>, 'header' | 'id'> {
   /** Whether the data inside is loading and should be indicated to the user somehow */
   loading?: boolean;
@@ -43,6 +44,8 @@ export function DataGrid<
     loading,
     minHeight = 0,
     header = true,
+    showOverflow,
+    emptyMessage,
     ...rest
   } = props;
 
@@ -100,7 +103,7 @@ export function DataGrid<
               />
             ) : null
           }
-          emptyMessage={<EmptyRows />}
+          emptyMessage={emptyMessage ?? <EmptyRows />}
         >
           {renderedRows.map((row) => {
             const rowId = row[idKey];
@@ -114,6 +117,7 @@ export function DataGrid<
                 selected={selectedRows?.[rowId]}
                 expanded={expandedRows?.[rowId]}
                 loading={loading}
+                showOverflow={showOverflow}
               />
             );
           })}

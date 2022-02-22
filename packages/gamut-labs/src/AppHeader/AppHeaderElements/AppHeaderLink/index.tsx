@@ -1,12 +1,13 @@
 import { Anchor, AnchorProps } from '@codecademy/gamut';
 import React from 'react';
 
+import { appHeaderMobileBreakpoint } from '../../shared';
 import { AppHeaderClickHandler, AppHeaderLinkItem } from '../types';
 
 export type AppHeaderLinkProps = {
   action: AppHeaderClickHandler;
   item: AppHeaderLinkItem;
-  isMobile?: boolean;
+  showIcon?: boolean;
   tabIndex?: string;
   onKeyDown?: (event: React.KeyboardEvent) => void;
 } & AnchorProps;
@@ -14,9 +15,9 @@ export type AppHeaderLinkProps = {
 export const AppHeaderLink: React.FC<AppHeaderLinkProps> = ({
   action,
   item,
-  isMobile = false,
-  mx = { _: 0, md: 24 },
-  py = { _: 16, md: 8 },
+  showIcon = false,
+  mx = { _: 0, [appHeaderMobileBreakpoint]: 24 },
+  py = { _: 16, [appHeaderMobileBreakpoint]: 8 },
   onKeyDown,
   ...props
 }) => {
@@ -32,6 +33,7 @@ export const AppHeaderLink: React.FC<AppHeaderLinkProps> = ({
       target={item.newTab ? 'blank' : ''}
       variant="interface"
       alignContent="center"
+      alignItems="center"
       display="flex"
       fontWeight="normal"
       lineHeight="base"
@@ -42,7 +44,7 @@ export const AppHeaderLink: React.FC<AppHeaderLinkProps> = ({
       py={py}
       {...props}
     >
-      {isMobile && Icon && <Icon mr={16} size={24} aria-hidden />}
+      {showIcon && Icon && <Icon mr={16} size={24} aria-hidden />}
       {item.text}
       {item.badge}
     </Anchor>

@@ -17,6 +17,7 @@ import {
   AppHeaderItem,
 } from './AppHeaderElements/types';
 import { AppHeaderSearch, useHeaderSearch } from './Search/useHeaderSearch';
+import { appHeaderMobileBreakpoint } from './shared';
 import { FormattedAppHeaderItems } from './types';
 
 export type AppHeaderProps = {
@@ -29,9 +30,7 @@ export type AppHeaderProps = {
 
 export const StyledAppBar = styled(AppBar)(
   css({
-    padding: `0.75rem 0`,
     boxShadow: `none`,
-    width: `100%`,
   })
 );
 
@@ -86,6 +85,7 @@ export const mapItemToElement = (
               ? formatUrlWithRedirect(item.href, redirectParam)
               : item.href
           }
+          variant="interface"
         >
           {item.text}
         </TextButton>
@@ -103,6 +103,7 @@ export const mapItemToElement = (
           role="menuitem"
           tabIndex="-1"
           onClick={(event: React.MouseEvent) => action(event, item)}
+          variant="interface"
         >
           {item.text}
         </FillButton>
@@ -167,9 +168,11 @@ export const AppHeader: React.FC<AppHeaderProps> = ({
   const menuHandleKeyEvents = (event: React.KeyboardEvent) => {
     switch (event.key) {
       case KEY_CODES.HOME:
+        event.preventDefault();
         focusFirstItem();
         break;
       case KEY_CODES.END:
+        event.preventDefault();
         focusLastItem();
         break;
       case KEY_CODES.RIGHT:
@@ -229,7 +232,7 @@ export const AppHeader: React.FC<AppHeaderProps> = ({
 
   return (
     <HeaderHeightArea
-      display={{ _: 'none', md: 'block' }}
+      display={{ _: 'none', [appHeaderMobileBreakpoint]: 'block' }}
       as="nav"
       title="Main Navigation"
     >

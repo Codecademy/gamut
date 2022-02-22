@@ -11,6 +11,7 @@ import {
   ManyOverrideSettings,
   standardOverrides,
 } from './libs/overrides';
+import { Details } from './libs/overrides/Details';
 import { Iframe } from './libs/overrides/Iframe';
 import {
   MarkdownAnchor,
@@ -33,6 +34,7 @@ export type SkipDefaultOverridesSettings = {
   a?: boolean;
   iframe?: boolean;
   table?: boolean;
+  details?: boolean;
 };
 
 export type MarkdownProps = {
@@ -105,6 +107,11 @@ export class Markdown extends PureComponent<MarkdownProps> {
         createTagOverride('table', {
           component: Table,
           allowedAttributes: ['style'],
+        }),
+      !skipDefaultOverrides.details &&
+        createTagOverride('details', {
+          component: Details,
+          allowedAttributes: ['style', 'open'],
         }),
       ...overrides,
       ...standardOverrides,

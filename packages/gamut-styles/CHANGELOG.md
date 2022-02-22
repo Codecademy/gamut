@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [13.0.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@13.0.1...@codecademy/gamut-styles@13.0.2) (2022-02-18)
+
+**Note:** Version bump only for package @codecademy/gamut-styles
+
+
+
+
+
+### [13.0.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@13.0.0...@codecademy/gamut-styles@13.0.1) (2022-01-31)
+
+
+### Bug Fixes
+
+* **GlobalHeader:** Regression fixes ([1667861](https://github.com/Codecademy/gamut/commit/1667861ffe6e50d70aa4a5fe5ac6da003d277d7f))
+
+
+
 ## [13.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@12.1.1...@codecademy/gamut-styles@13.0.0) (2022-01-25)
 
 

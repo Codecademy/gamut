@@ -25,6 +25,15 @@ export const renderBadge = (text: string) => (
 
 export const resourcesList: ResourcesList[] = [
   {
+    id: 'projects',
+    href: '/projects',
+    footerTrackingTarget: 'projects',
+    headerTrackingTarget: 'topnav_resources_projects',
+    text: 'Projects',
+    type: 'link',
+    badgeText: 'New',
+  },
+  {
     id: 'challenges',
     href: '/code-challenges',
     footerTrackingTarget: 'challenges',
@@ -63,7 +72,6 @@ export const resourcesList: ResourcesList[] = [
     headerTrackingTarget: 'topnav_resources_videos',
     text: 'Videos',
     type: 'link',
-    badgeText: 'New',
   },
   {
     id: 'blog',
@@ -72,14 +80,6 @@ export const resourcesList: ResourcesList[] = [
     headerTrackingTarget: 'topnav_resources_blog',
     text: 'Blog',
     newTab: true,
-    type: 'link',
-  },
-  {
-    id: 'projects',
-    href: '/projects',
-    footerTrackingTarget: 'projects',
-    headerTrackingTarget: 'topnav_resources_projects',
-    text: 'Projects',
     type: 'link',
   },
   {
