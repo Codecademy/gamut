@@ -1,4 +1,4 @@
-import React, { useContext, useMemo, useState } from 'react';
+import { useContext, useMemo } from 'react';
 import {
   RegisterOptions,
   useFieldArray,
@@ -6,14 +6,11 @@ import {
 } from 'react-hook-form';
 
 import {
-  ConnectedCheckbox,
   ConnectedForm,
   ConnectedFormGroup,
   ConnectedFormGroupProps,
   ConnectedFormProps,
-  ConnectedRadioGroupInput,
   FormPropsContext,
-  SubmitButton,
 } from '.';
 import { ConnectedField, SubmitContextProps } from './types';
 
