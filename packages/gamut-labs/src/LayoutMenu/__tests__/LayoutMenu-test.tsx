@@ -75,6 +75,9 @@ describe('LayoutMenu', () => {
       menuHeight: 'sm',
     });
 
-    expect(view.getByTestId('menu')).toHaveStyleRule('overflow-y', 'auto');
+    expect(view.getByTestId('desktop-menu')).toHaveStyleRule(
+      'overflow-y',
+      'auto'
+    );
   });
 });

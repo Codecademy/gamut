@@ -42,7 +42,7 @@ export type LayoutMenuProps = {
   menuHeight?: 'sm' | 'md' | 'lg';
 };
 
-const Nav = styled.nav(
+const StyleBox = styled(Box)(
   variant({
     prop: 'menuHeight',
     base: {
@@ -101,7 +101,7 @@ export const LayoutMenu: React.FC<LayoutMenuProps> = ({
   );
 
   return (
-    <Nav menuHeight={menuHeight} data-testid="menu">
+    <nav>
       <Box display={{ _: 'block', [breakpoint]: 'none' }}>
         <Flyout
           closeLabel={closeLabel}
@@ -123,11 +123,15 @@ export const LayoutMenu: React.FC<LayoutMenuProps> = ({
           {mobileButtonText}
         </StrokeButton>
       </Box>
-      <Box display={{ _: 'none', [breakpoint]: 'block' }}>
+      <StyleBox
+        menuHeight={menuHeight}
+        display={{ _: 'none', [breakpoint]: 'block' }}
+        data-testid="desktop-menu"
+      >
         {topLinkLayoutMenuSections}
         {accordionMenuSections}
         {children}
-      </Box>
-    </Nav>
+      </StyleBox>
+    </nav>
   );
 };
