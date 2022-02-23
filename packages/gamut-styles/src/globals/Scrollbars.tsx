@@ -11,7 +11,7 @@ export const Scrollbars = () => {
       styles={css`
         * {
           scrollbar-color: ${getColorValue(activeColors.scrollbar)}
-            ${getColorValue(activeColors['background-primary'])};
+            ${getColorValue(activeColors['background-current'])};
           scrollbar-width: thin;
         }
 
@@ -22,13 +22,13 @@ export const Scrollbars = () => {
         }
 
         *::-webkit-scrollbar-track {
-          background: ${getColorValue(activeColors['background-primary'])};
+          background: ${getColorValue(activeColors['background-current'])};
         }
 
         *::-webkit-scrollbar-thumb {
           background-color: ${getColorValue(activeColors.scrollbar)};
           border-radius: 20px;
-          border: 3px solid ${getColorValue(activeColors['background-primary'])};
+          border: 3px solid ${getColorValue(activeColors['background-current'])};
         }
       `}
     />
