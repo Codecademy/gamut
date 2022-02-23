@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [29.3.5](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@29.3.4...@codecademy/gamut-labs@29.3.5) (2022-02-23)
+
+
+### Bug Fixes
+
+* Icons in Curriculum Card not center aligning with Text ([423a8f6](https://github.com/Codecademy/gamut/commit/423a8f604b0397800f5a61b3e0be0c18a04c5189))
+
+
+
 ### [29.3.4](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@29.3.3...@codecademy/gamut-labs@29.3.4) (2022-02-18)
 
 **Note:** Version bump only for package @codecademy/gamut-labs
