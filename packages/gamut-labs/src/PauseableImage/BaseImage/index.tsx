@@ -6,14 +6,14 @@ import Freezeframe from 'react-freezeframe';
 
 import { Container, imageStyles, PlayingImage } from './styles';
 
-export interface ImageProps {
+export interface BaseImageProps {
   alt?: string;
   src: string;
 }
 
 const StyledFreezeframe = styled(Freezeframe)(imageStyles);
 
-export const BaseImage: React.FC<ImageProps> = (props) => {
+export const BaseImage: React.FC<BaseImageProps> = (props) => {
   const [paused, setPaused] = useState(false);
   const [buttonLabel, Icon, Image] = paused
     ? ['Play animated image', PlayIcon, StyledFreezeframe]
