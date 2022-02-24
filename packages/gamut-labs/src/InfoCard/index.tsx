@@ -21,6 +21,11 @@ interface TitleProps {
   headingLevel: HeadingTags;
 }
 
+interface BottomLeftTextProps {
+  fullWidth: boolean;
+  text: string;
+}
+
 interface BottomRightTagProps {
   text: string;
   color: TagColor;
@@ -62,8 +67,13 @@ const Body: React.FC<TextProps> = ({ text }) => (
   </Text>
 );
 
-const BottomLeftText: React.FC<TextProps> = ({ text }) => (
-  <Box position="absolute" bottom={0} left={0} maxWidth={text ? '50%' : '100%'}>
+const BottomLeftText: React.FC<BottomLeftTextProps> = ({ fullWidth, text }) => (
+  <Box
+    position="absolute"
+    bottom={0}
+    left={0}
+    maxWidth={`calc(${fullWidth ? '100%' : '50%'} - 16px)`}
+  >
     <Text pl={16} variant="p-small" textColor="gray-900">
       {text}
     </Text>
@@ -120,7 +130,12 @@ export const InfoCard: React.FC<InfoCardProps> = ({
         <Title text={title} headingLevel={titleHeadingLevel} />
         <Subtitle text={subtitle} />
         {body && <Body text={body} />}
-        {bottomLeftText && <BottomLeftText text={bottomLeftText} />}
+        {bottomLeftText && (
+          <BottomLeftText
+            fullWidth={!bottomRightTagText}
+            text={bottomLeftText}
+          />
+        )}
         {bottomRightTagText && (
           <BottomRightTag
             text={bottomRightTagText}
