@@ -28,10 +28,13 @@
     "@codecademy/gamut-patterns": "^0.8.3",
     "@codecademy/gamut-styles": "^13.0.2",
     "@codecademy/variance": "^0.20.0",
+    "@loadable/component": "^5.15.2",
     "classnames": "^2.2.5",
     "framer-motion": "^4.1.17",
+    "freezeframe": "^5.0.2",
     "lodash": "^4.17.5",
     "react-focus-on": "^3.5.1",
+    "react-freezeframe": "^5.0.2",
     "react-hook-form": "^6.15.5",
     "react-hotkeys-hook": "^2.3.1",
     "react-use": "15.3.8"
@@ -43,6 +46,7 @@
     "@testing-library/react-hooks": "^7.0.2",
     "@testing-library/user-event": "^13.5.0",
     "@types/enzyme": "3.10.7",
+    "@types/loadable__component": "^5.13.4",
     "enzyme": "3.11.0"
   },
   "scripts": {

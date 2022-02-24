@@ -1075,6 +1075,13 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
+"@babel/runtime@^7.7.7":
+  version "7.17.2"
+  resolved "https://registry.npmjs.org/@babel/runtime/-/runtime-7.17.2.tgz#66f68591605e59da47523c631416b18508779941"
+  integrity sha512-hzeyJyMA1YGdJTuWU0e/j4wKXrU4OMFvY2MSlaI9B7VQb0r5cxTE3EAIS2Q7Tn2RIcDkRvTA/v2JsAEhxe99uw==
+  dependencies:
+    regenerator-runtime "^0.13.4"
+
 "@babel/template@^7.12.13", "@babel/template@^7.12.7", "@babel/template@^7.14.5", "@babel/template@^7.3.3":
   version "7.14.5"
   resolved "https://registry.npmjs.org/@babel/template/-/template-7.14.5.tgz#a9bc9d8b33354ff6e55a9c60d1109200a68974f4"
@@ -2393,6 +2400,15 @@
   dependencies:
     npmlog "^4.1.2"
     write-file-atomic "^2.3.0"
+
+"@loadable/component@^5.15.2":
+  version "5.15.2"
+  resolved "https://registry.npmjs.org/@loadable/component/-/component-5.15.2.tgz#b6c418d592e0a64f16b1d614ca9d3b1443d3b498"
+  integrity sha512-ryFAZOX5P2vFkUdzaAtTG88IGnr9qxSdvLRvJySXcUA4B4xVWurUNADu3AnKPksxOZajljqTrDEDcYjeL4lvLw==
+  dependencies:
+    "@babel/runtime" "^7.7.7"
+    hoist-non-react-statics "^3.3.1"
+    react-is "^16.12.0"
 
 "@mdx-js/loader@^1.6.22":
   version "1.6.22"
@@ -3912,6 +3928,13 @@
   version "0.8.0"
   resolved "https://registry.npmjs.org/@types/konami-code-js/-/konami-code-js-0.8.0.tgz#dd7b3bd23266d0d1c6bfcad870232b1a3788a883"
   integrity sha512-7fhuggz5XuuQJxWhVL/5i3oQEQ80jjp3yvwaWlwNjFbM40BELnzV4qKeyPDLtjsHC9NG6E7XT22epH9eDZC3zg==
+
+"@types/loadable__component@^5.13.4":
+  version "5.13.4"
+  resolved "https://registry.npmjs.org/@types/loadable__component/-/loadable__component-5.13.4.tgz#a4646b2406b1283efac1a9d9485824a905b33d4a"
+  integrity sha512-YhoCCxyuvP2XeZNbHbi8Wb9EMaUJuA2VGHxJffcQYrJKIKSkymJrhbzsf9y4zpTmr5pExAAEh5hbF628PAZ8Dg==
+  dependencies:
+    "@types/react" "*"
 
 "@types/lodash@4.14.168":
   version "4.14.168"
@@ -8554,6 +8577,11 @@ framesync@5.3.0:
   integrity sha512-oc5m68HDO/tuK2blj7ZcdEBRx3p1PjrgHazL8GYEpvULhrtGIFbQArN6cQS2QhW8mitffaB+VYzMjDqBxxQeoA==
   dependencies:
     tslib "^2.1.0"
+
+freezeframe@^5.0.2:
+  version "5.0.2"
+  resolved "https://registry.npmjs.org/freezeframe/-/freezeframe-5.0.2.tgz#dca477f1836c3932053719a66244244d46b14348"
+  integrity sha512-Lp1ltC2vJGBqxdW5U4Hx+JMW+s9KfTPpxKhSTlpmQxYX5oK66y3GIZo56Jie4XtSOApSbfc8SBcsbZzeTNKfFg==
 
 fresh@0.5.2:
   version "0.5.2"
@@ -13982,6 +14010,11 @@ react-focus-on@^3.5.1:
     use-callback-ref "^1.2.3"
     use-sidecar "^1.0.1"
 
+react-freezeframe@^5.0.2:
+  version "5.0.2"
+  resolved "https://registry.npmjs.org/react-freezeframe/-/react-freezeframe-5.0.2.tgz#e1f00dcd1d89827f6de960318552a969feb867e6"
+  integrity sha512-UOabWMDpklR6Kx/nXw89NzD4IqUdM/wkrMUTOpP7otT/9qfvQOnWsIIqXj9QHt4LwJFYKGBRUJqNh+o/V6Yhow==
+
 react-helmet-async@^1.0.7:
   version "1.0.9"
   resolved "https://registry.npmjs.org/react-helmet-async/-/react-helmet-async-1.0.9.tgz#5b9ed2059de6b4aab47f769532f9fbcbce16c5ca"
@@ -14036,15 +14069,15 @@ react-inspector@^5.1.0:
     is-dom "^1.0.0"
     prop-types "^15.0.0"
 
+react-is@^16.12.0, react-is@^16.7.0, react-is@^16.8.1:
+  version "16.13.1"
+  resolved "https://registry.npmjs.org/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
+  integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
+
 "react-is@^16.12.0 || ^17.0.0", react-is@^17.0.0, react-is@^17.0.1, react-is@^17.0.2:
   version "17.0.2"
   resolved "https://registry.npmjs.org/react-is/-/react-is-17.0.2.tgz#e691d4a8e9c789365655539ab372762b0efb54f0"
   integrity sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==
-
-react-is@^16.7.0, react-is@^16.8.1:
-  version "16.13.1"
-  resolved "https://registry.npmjs.org/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
-  integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
 
 react-lifecycles-compat@^3.0.4:
   version "3.0.4"
