@@ -11,10 +11,21 @@ const BaseImage = loadable(() => import('./BaseImage'), {
   ssr: false,
 });
 
-export interface PauseableImageProps {
+const imageProps = variance.compose(
+  system.positioning,
+  system.space,
+  system.shadow,
+  system.border,
+  system.background,
+  system.typography
+);
+interface PauseableImageProps {
   src: string;
   alt?: string;
 }
+export interface PauseableImageStyleProps
+  extends StyleProps<typeof imageProps>,
+    PauseableImageProps {}
 
 const StaticImage = styled.img`
   ${imageStyles}
@@ -24,19 +35,6 @@ const StaticImage = styled.img`
     width: 100%;
   }
 `;
-
-const imageProps = variance.compose(
-  system.positioning,
-  system.space,
-  system.shadow,
-  system.border,
-  system.background,
-  system.typography
-);
-
-export interface PauseableImageStyleProps
-  extends StyleProps<typeof imageProps>,
-    PauseableImageProps {}
 
 export const PauseableImage: React.FC<PauseableImageStyleProps> = ({
   src,
