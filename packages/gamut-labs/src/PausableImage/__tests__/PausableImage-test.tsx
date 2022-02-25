@@ -1,17 +1,17 @@
 import { setupRtl } from '@codecademy/gamut-tests';
 
-import { PauseableImage } from '..';
+import { PausableImage } from '..';
 
 jest.mock('@loadable/component', () => () => () => 'pausable');
 
-const renderView = setupRtl(PauseableImage);
+const renderView = setupRtl(PausableImage);
 
 const createImg = (url: string) => ({
   alt: '',
   src: url,
 });
 
-describe('PauseableImage', () => {
+describe('PausableImage', () => {
   it('renders a pausable image when the URL ends with .gif', () => {
     const { view } = renderView({
       ...createImg('image.gif'),

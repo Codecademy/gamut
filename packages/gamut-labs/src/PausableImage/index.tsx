@@ -37,7 +37,7 @@ const StaticImage = styled.img`
   }
 `;
 
-export const PauseableImage: React.FC<PauseableImageStyleProps> = ({
+export const PausableImage: React.FC<PauseableImageStyleProps> = ({
   src,
   alt,
   ...rest
