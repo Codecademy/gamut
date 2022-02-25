@@ -45,11 +45,13 @@ export const PauseableImage: React.FC<PauseableImageStyleProps> = ({
 }) => {
   const staticImage = <StaticImage src={src} alt={alt} />;
 
-  const image = src?.endsWith('.gif') ? (
-    <BaseImage src={src} alt={alt} fallback={staticImage} />
-  ) : (
-    staticImage
+  return (
+    <Box {...rest}>
+      {src?.endsWith('.gif') ? (
+        <BaseImage src={src} alt={alt} fallback={staticImage} />
+      ) : (
+        staticImage
+      )}
+    </Box>
   );
-
-  return <Box {...rest}>{image}</Box>;
 };
