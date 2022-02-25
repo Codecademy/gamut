@@ -13,7 +13,7 @@ const renderView = setupRtl(BaseImage, {
   src: 'image.gif',
 });
 
-describe('PausableImage', () => {
+describe('BaseImage', () => {
   it('renders a playing image by default', () => {
     const { view } = renderView();
     expect(view.getAllByRole('img')[0]).toHaveAttribute('src', 'image.gif');
