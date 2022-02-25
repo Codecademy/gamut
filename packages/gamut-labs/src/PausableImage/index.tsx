@@ -1,5 +1,3 @@
-import { system } from '@codecademy/gamut-styles';
-import { StyleProps, variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
 import loadable from '@loadable/component';
 import React from 'react';
@@ -10,22 +8,10 @@ const BaseImage = loadable(() => import('./BaseImage'), {
   ssr: false,
 });
 
-const imageProps = variance.compose(
-  system.positioning,
-  system.space,
-  system.shadow,
-  system.border,
-  system.background,
-  system.typography,
-  system.layout
-);
 interface PauseableImageProps {
   src: string;
   alt?: string;
 }
-export interface PauseableImageStyleProps
-  extends StyleProps<typeof imageProps>,
-    PauseableImageProps {}
 
 const StaticImage = styled.img`
   ${imageStyles}
@@ -36,16 +22,13 @@ const StaticImage = styled.img`
   }
 `;
 
-export const PausableImage: React.FC<PauseableImageStyleProps> = ({
-  src,
-  alt,
-}) => {
-  const staticImage = <StaticImage src={src} alt={alt} />;
+export const PausableImage: React.FC<PauseableImageProps> = (props) => {
+  const staticImage = <StaticImage {...props} />;
 
   return (
     <>
-      {src?.endsWith('.gif') ? (
-        <BaseImage src={src} alt={alt} fallback={staticImage} />
+      {props.src?.endsWith('.gif') ? (
+        <BaseImage {...props} fallback={staticImage} />
       ) : (
         staticImage
       )}
