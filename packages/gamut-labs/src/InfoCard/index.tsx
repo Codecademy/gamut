@@ -1,4 +1,11 @@
-import { Anchor, Box, Card, HeadingTags, Text } from '@codecademy/gamut';
+import {
+  Anchor,
+  Box,
+  Card,
+  FlexBox,
+  HeadingTags,
+  Text,
+} from '@codecademy/gamut';
 import { pxRem } from '@codecademy/gamut-styles';
 import { Theme } from '@emotion/react';
 import React from 'react';
@@ -21,9 +28,10 @@ interface TitleProps {
   headingLevel: HeadingTags;
 }
 
-interface BottomLeftTextProps {
-  fullWidth: boolean;
-  text: string;
+interface FooterProps {
+  bottomLeftText?: string;
+  bottomRightTagText?: string;
+  bottomRightTagColor: TagColor;
 }
 
 interface BottomRightTagProps {
@@ -67,22 +75,35 @@ const Body: React.FC<TextProps> = ({ text }) => (
   </Text>
 );
 
-const BottomLeftText: React.FC<BottomLeftTextProps> = ({ fullWidth, text }) => (
-  <Box
-    position="absolute"
-    bottom={0}
-    left={0}
-    maxWidth={`calc(${fullWidth ? '100%' : '50%'} - 16px)`}
+const Footer: React.FC<FooterProps> = ({
+  bottomLeftText,
+  bottomRightTagText,
+  bottomRightTagColor,
+}) => (
+  <FlexBox alignItems="flex-end" justifyContent="space-between">
+    <Box>{bottomLeftText && <BottomLeftText text={bottomLeftText} />}</Box>
+    <Box>
+      {bottomRightTagText && (
+        <BottomRightTag text={bottomRightTagText} color={bottomRightTagColor} />
+      )}
+    </Box>
+  </FlexBox>
+);
+
+const BottomLeftText: React.FC<TextProps> = ({ text }) => (
+  <Text
+    maxWidth="calc(100%-16px)"
+    px={16}
+    variant="p-small"
+    textColor="gray-900"
   >
-    <Text pl={16} variant="p-small" textColor="gray-900">
-      {text}
-    </Text>
-  </Box>
+    {text}
+  </Text>
 );
 
 const BottomRightTag: React.FC<BottomRightTagProps> = ({ text, color }) => (
-  <Box position="absolute" bottom={0} right={0} bg={tagColorMap[color]}>
-    <Text py={4} p={12} variant="title-xs" fontSize={14}>
+  <Box bg={tagColorMap[color]}>
+    <Text py={4} p={12} variant="title-xs" fontSize={14} whiteSpace="nowrap">
       {text}
     </Text>
   </Box>
@@ -115,31 +136,32 @@ export const InfoCard: React.FC<InfoCardProps> = ({
   cardHeight = 285,
   titleHeadingLevel = 'h3',
 }) => {
+  const displayFooter = bottomLeftText || bottomRightTagText;
+
   return (
     <Anchor variant="interface" href={href} onClick={() => onClick?.()}>
       <Card
-        display="grid"
-        gridTemplateRows="repeat(3, max-content) 1fr max-content"
+        display="flex"
+        flexDirection="column"
         height={pxRem(cardHeight)}
+        justifyContent="space-between"
         minWidth={pxRem(cardMinWidth)}
         variant="white"
         shadow="medium"
+        p={0}
         position="relative"
       >
-        <TopText text={topText} />
-        <Title text={title} headingLevel={titleHeadingLevel} />
-        <Subtitle text={subtitle} />
-        {body && <Body text={body} />}
-        {bottomLeftText && (
-          <BottomLeftText
-            fullWidth={!bottomRightTagText}
-            text={bottomLeftText}
-          />
-        )}
-        {bottomRightTagText && (
-          <BottomRightTag
-            text={bottomRightTagText}
-            color={bottomRightTagColor}
+        <Box p={16}>
+          <TopText text={topText} />
+          <Title text={title} headingLevel={titleHeadingLevel} />
+          <Subtitle text={subtitle} />
+          {body && <Body text={body} />}
+        </Box>
+        {displayFooter && (
+          <Footer
+            bottomLeftText={bottomLeftText}
+            bottomRightTagText={bottomRightTagText}
+            bottomRightTagColor={bottomRightTagColor}
           />
         )}
       </Card>
