@@ -20,6 +20,7 @@ export const Container = styled.div`
   > .react-freezeframe,
   > .react-freezeframe img {
     max-width: 100%;
+    width: inherit;
   }
   .ff-container .ff-canvas {
     transition: none;
