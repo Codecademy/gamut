@@ -228,7 +228,7 @@ export const AppHeaderDropdown: React.FC<AppHeaderDropdownProps> = ({
       const { height, width } = listRef.current.getBoundingClientRect();
       setDimensions({ height, width });
     }
-  }, [listRef]);
+  }, [listRef, isOpen]);
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent | Event) {

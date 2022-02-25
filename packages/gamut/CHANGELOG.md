@@ -3,6 +3,50 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [44.7.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@44.6.1...@codecademy/gamut@44.7.0) (2022-02-25)
+
+
+### Features
+
+* **List:** allow access to `plain` variant + extend focus styles to focus-within ([b1751c6](https://github.com/Codecademy/gamut/commit/b1751c6104f90bdb2ff7213a8b10fb2e42261f4d))
+
+
+
+### [44.6.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@44.6.0...@codecademy/gamut@44.6.1) (2022-02-18)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [44.6.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@44.5.2...@codecademy/gamut@44.6.0) (2022-02-16)
+
+
+### Features
+
+* Basic implementation of styling in multi-select SelectDropdown ([16c8d83](https://github.com/Codecademy/gamut/commit/16c8d83584b01244da065bc2e1e466391c5237a3))
+
+
+
+### [44.5.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@44.5.1...@codecademy/gamut@44.5.2) (2022-02-08)
+
+
+### Bug Fixes
+
+* DataGrid respects `emptyMessage` props now ([dc5e5a0](https://github.com/Codecademy/gamut/commit/dc5e5a0736ed0466666b96741fa775ce05d89825))
+
+
+
+### [44.5.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@44.5.0...@codecademy/gamut@44.5.1) (2022-02-08)
+
+
+### Bug Fixes
+
+* Markdown details element styles ([5aa71ad](https://github.com/Codecademy/gamut/commit/5aa71ad077bfaf17c3ee154d1a25bb130fdc66d5))
+
+
+
 ## [44.5.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@44.4.0...@codecademy/gamut@44.5.0) (2022-02-04)
 
 

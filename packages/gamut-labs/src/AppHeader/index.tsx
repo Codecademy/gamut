@@ -17,6 +17,7 @@ import {
   AppHeaderItem,
 } from './AppHeaderElements/types';
 import { AppHeaderSearch, useHeaderSearch } from './Search/useHeaderSearch';
+import { appHeaderMobileBreakpoint } from './shared';
 import { FormattedAppHeaderItems } from './types';
 
 export type AppHeaderProps = {
@@ -231,7 +232,7 @@ export const AppHeader: React.FC<AppHeaderProps> = ({
 
   return (
     <HeaderHeightArea
-      display={{ _: 'none', lg: 'block' }}
+      display={{ _: 'none', [appHeaderMobileBreakpoint]: 'block' }}
       as="nav"
       title="Main Navigation"
     >

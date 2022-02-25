@@ -57,7 +57,7 @@ const rowStates = states({
     '&:hover': {
       bg: 'background-hover',
     },
-    '&:focus-visible': {
+    '&:focus-visible, &:focus-within': {
       outline: `1px solid ${theme.colors.primary}`,
       boxShadow: `0 0 0 1px ${theme.colors.primary} inset`,
       bg: 'background-selected',

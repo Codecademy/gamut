@@ -95,7 +95,7 @@ export const CurriculumCard: React.FC<CurriculumCardProps> = ({
           {description}
         </Text>
       )}
-      <FlexBox flexWrap="wrap">
+      <FlexBox flexWrap="wrap" alignItems="center">
         {!progressState && (
           <Subtitle
             scope={scope}
