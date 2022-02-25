@@ -1,15 +1,20 @@
-import { pxRem } from '@codecademy/gamut-styles';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 
 export const imageStyles = css`
+  height: auto;
+  max-height: 100%;
   max-width: 100%;
 `;
 
 export const Container = styled.div`
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  display: flex;
   position: relative;
   width: 100%;
-  max-height: ${pxRem(608)};
+
   > img,
   > .react-freezeframe,
   > .react-freezeframe img {
