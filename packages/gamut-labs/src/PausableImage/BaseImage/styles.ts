@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 
 export const imageStyles = css`
   height: auto;
-  width: inherit
+  width: inherit;
   max-height: 100%;
   max-width: 100%;
 `;
