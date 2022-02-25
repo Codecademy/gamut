@@ -17,7 +17,8 @@ const imageProps = variance.compose(
   system.shadow,
   system.border,
   system.background,
-  system.typography
+  system.typography,
+  system.layout
 );
 interface PauseableImageProps {
   src: string;
