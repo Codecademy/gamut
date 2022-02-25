@@ -38,3 +38,5 @@ export const BaseImage: React.FC<BaseImageProps> = (props) => {
     </Container>
   );
 };
+
+export default BaseImage;
