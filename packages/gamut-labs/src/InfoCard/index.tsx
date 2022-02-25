@@ -151,7 +151,7 @@ export const InfoCard: React.FC<InfoCardProps> = ({
         p={0}
         position="relative"
       >
-        <Box p={16}>
+        <Box pt={16} px={16}>
           <TopText text={topText} />
           <Title text={title} headingLevel={titleHeadingLevel} />
           <Subtitle text={subtitle} />
