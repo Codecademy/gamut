@@ -1,4 +1,4 @@
-import { Box, Text } from '@codecademy/gamut';
+import { Box, FlexBox } from '@codecademy/gamut';
 import styled from '@emotion/styled';
 import React from 'react';
 
@@ -12,14 +12,15 @@ const DifficultySpan = styled(Box)`
   border-radius: 8px;
   display: inline-block;
   margin-right: 4px;
+  margin-bottom: 1px;
   vertical-align: middle;
   border: 1px solid ${({ theme }) => theme.colors.navy};
 `;
 
 export const Difficulty: React.FC<DifficultyProps> = ({ difficulty }) => (
-  <Text fontSize={14}>
+  <FlexBox fontSize={14} alignItems="center">
     <DifficultySpan bg={difficulty >= 0 ? 'navy' : 'white'} />
     <DifficultySpan bg={difficulty >= 1 ? 'navy' : 'white'} />
     {difficulty === 0 ? 'Beginner friendly' : 'Intermediate'}
-  </Text>
+  </FlexBox>
 );
