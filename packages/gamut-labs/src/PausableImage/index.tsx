@@ -1,4 +1,3 @@
-import { Box } from '@codecademy/gamut';
 import { system } from '@codecademy/gamut-styles';
 import { StyleProps, variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
@@ -40,17 +39,16 @@ const StaticImage = styled.img`
 export const PausableImage: React.FC<PauseableImageStyleProps> = ({
   src,
   alt,
-  ...rest
 }) => {
   const staticImage = <StaticImage src={src} alt={alt} />;
 
   return (
-    <Box {...rest}>
+    <>
       {src?.endsWith('.gif') ? (
         <BaseImage src={src} alt={alt} fallback={staticImage} />
       ) : (
         staticImage
       )}
-    </Box>
+    </>
   );
 };
