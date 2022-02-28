@@ -3,7 +3,6 @@ import styled from '@emotion/styled';
 
 export const imageStyles = css`
   height: auto;
-  width: inherit;
   max-height: 100%;
   max-width: 100%;
 `;
@@ -20,7 +19,6 @@ export const Container = styled.div`
   > .react-freezeframe,
   > .react-freezeframe img {
     max-width: 100%;
-    width: inherit;
   }
   .ff-container .ff-canvas {
     transition: none;
