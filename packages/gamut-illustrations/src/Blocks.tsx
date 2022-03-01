@@ -17,6 +17,7 @@ export const Blocks: React.FC<IllustrationProps> = ({
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
   >
+    <title>Blocks Illustration</title>
     <path
       d="M0.264191 42.5071V35.5204L20.3437 30.9702L53.8095 43.0942V50.1397L33.5832 61.794L0.264191 42.5071Z"
       fill="#FFF0E5"
