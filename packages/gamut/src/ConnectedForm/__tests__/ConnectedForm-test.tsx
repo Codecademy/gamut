@@ -168,7 +168,7 @@ describe('ConnectedForm', () => {
       const { textField } = getBaseCases(view);
       const submitButton = view.getByRole('button');
 
-      await act(async () => {
+      act(() => {
         fireEvent.input(textField, {
           target: {
             value: '',
@@ -200,13 +200,11 @@ describe('ConnectedForm', () => {
 
       doBaseFormActions(selectField, textField, checkboxField, radioOption);
 
-      await waitFor(() => {
-        expect(checkboxField.checked).toEqual(true);
-        expect(selectField.value).toEqual(selectValue);
-        expect(textField.value).toEqual(textValue);
-        expect(radioOption.value).toEqual(radioValue);
-        expect(view.getByRole('button')).not.toBeDisabled();
-      });
+      expect(checkboxField.checked).toEqual(true);
+      expect(selectField.value).toEqual(selectValue);
+      expect(textField.value).toEqual(textValue);
+      expect(radioOption.value).toEqual(radioValue);
+      await waitFor(() => expect(view.getByRole('button')).not.toBeDisabled());
     });
   });
 
@@ -321,7 +319,7 @@ describe('ConnectedForm', () => {
 
         const { textField, radioOption } = getBaseCases(view);
 
-        await act(async () => {
+        act(() => {
           fireEvent.click(radioOption);
 
           fireEvent.input(textField, {
