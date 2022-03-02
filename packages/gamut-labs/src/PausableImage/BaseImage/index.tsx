@@ -25,7 +25,6 @@ export const BaseImage: React.FC<BaseImageProps> = (props) => {
       <FillButton
         bottom={0}
         m={8}
-        mode="light"
         onClick={() => setPaused(!paused)}
         position="absolute"
         right={0}

@@ -1,11 +1,13 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 
-export const imageStyles = css`
-  height: auto;
-  max-height: 100%;
-  max-width: 100%;
-`;
+export const imageStyles = styled.img(
+  css({
+    height: 'auto',
+    maxHeight: '100%',
+    maxWidth: '100%',
+  })
+);
 
 export const Container = styled.div`
   align-items: center;
@@ -28,4 +30,4 @@ export const Container = styled.div`
   }
 `;
 
-export const PlayingImage = styled.img(imageStyles);
+export const PlayingImage = imageStyles;

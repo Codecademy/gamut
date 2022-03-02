@@ -5,5 +5,5 @@ declare module 'react-freezeframe' {
     src: string;
   }
 
-  export default class Freezframe extends React.Component<FreezeframeProps> {}
+  export default class Freezeframe extends React.Component<FreezeframeProps> {}
 }
