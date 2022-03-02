@@ -18,18 +18,18 @@ export const GridFormCheckboxInput: React.FC<GridFormCheckboxInputProps> = ({
     <Controller
       defaultValue={Boolean(field.defaultValue)}
       name={field.name}
-      render={({ field: renderField }) => (
+      render={({ field: { value, onBlur, onChange, name } }) => (
         <Checkbox
-          checked={renderField.value}
+          checked={value}
           className={className}
           disabled={disabled}
-          htmlFor={renderField.name}
-          name={renderField.name}
+          htmlFor={name}
+          name={name}
           onChange={(event) => {
             field.onUpdate?.(event.target.checked);
-            renderField?.onChange?.(event.target.checked);
+            onChange?.(event.target.checked);
           }}
-          onBlur={renderField.onBlur}
+          onBlur={onBlur}
           label={field.description}
           multiline={field.multiline}
           id={field.id}
