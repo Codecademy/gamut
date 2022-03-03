@@ -1,13 +1,13 @@
 import { isString } from 'lodash';
 import React from 'react';
-import { UseFormMethods } from 'react-hook-form';
+import { UseFormReturn } from 'react-hook-form';
 
 import { Radio, RadioGroup } from '../../../Form';
 import { BaseFormInputProps, GridFormRadioGroupField } from '../../types';
 
 export interface GridFormRadioGroupInputProps extends BaseFormInputProps {
   field: GridFormRadioGroupField;
-  register: UseFormMethods['register'];
+  register: UseFormReturn['register'];
   setValue: (name: string, value: string) => void;
 }
 
@@ -39,10 +39,10 @@ export const GridFormRadioGroupInput: React.FC<GridFormRadioGroupInputProps> = (
     >
       {field.options.map(({ label, value }) => (
         <Radio
+          {...register(field.name, field.validation)}
           disabled={disabled}
           key={value}
           label={label}
-          ref={register(field.validation)}
           value={value}
           id={field.id}
           error={error}

@@ -1,5 +1,5 @@
 import React from 'react';
-import { UseFormMethods } from 'react-hook-form';
+import { UseFormReturn } from 'react-hook-form';
 
 import { GridFormCustomField, GridFormCustomGroupField } from '../../types';
 
@@ -7,8 +7,8 @@ export type GridFormCustomInputProps = {
   className?: string;
   error?: string;
   field: GridFormCustomField | GridFormCustomGroupField;
-  register: UseFormMethods['register'];
-  setValue: UseFormMethods['setValue'];
+  register: UseFormReturn['register'];
+  setValue: UseFormReturn['setValue'];
 };
 
 export const GridFormCustomInput: React.FC<GridFormCustomInputProps> = ({

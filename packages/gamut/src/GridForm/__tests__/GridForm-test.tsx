@@ -1,6 +1,6 @@
 import { setupRtl } from '@codecademy/gamut-tests';
 import { fireEvent, queries } from '@testing-library/dom';
-import { act, RenderResult } from '@testing-library/react';
+import { act, RenderResult, waitFor } from '@testing-library/react';
 import React from 'react';
 
 import { createPromise } from '../../utils';
@@ -16,6 +16,7 @@ import {
 } from './stubs';
 
 const fields = [stubCheckboxField, stubSelectField, stubTextField];
+
 const validationFields = [
   { ...stubCheckboxField, validation: { required: 'Please check' } },
   {
@@ -27,6 +28,29 @@ const validationFields = [
     validation: { required: 'Please enter text' },
   },
 ];
+
+export const getonUpdateAndFields = () => {
+  const onUpdateCheckbox = jest.fn();
+  const onUpdateSelect = jest.fn();
+  const onUpdateText = jest.fn();
+  const fields = [
+    { ...stubCheckboxField, onUpdate: onUpdateCheckbox },
+    {
+      ...stubSelectField,
+      onUpdate: onUpdateSelect,
+    },
+    {
+      ...stubTextField,
+      onUpdate: onUpdateText,
+    },
+  ];
+  return {
+    onUpdateCheckbox,
+    onUpdateSelect,
+    onUpdateText,
+    fields,
+  };
+};
 
 const renderView = setupRtl(GridForm, {
   fields,
@@ -107,7 +131,7 @@ const doBaseFormActions = (
   fireEvent.click(checkboxField);
 
   for (const [selector, value] of newValues) {
-    fireEvent.input(selector, {
+    fireEvent.change(selector, {
       target: {
         value,
       },
@@ -453,13 +477,11 @@ describe('GridForm', () => {
   });
 
   describe('resetOnSubmit', () => {
+    // to-do: reset fields is working on the component but not here, fun.
+
     it('resets fields when form is successfully submitted', async () => {
-      let submitCount = 0;
       const api = createPromise<{}>();
-      const api2 = createPromise<{}>();
-      const onSubmit = async (values: {}) => {
-        return submitCount < 1 ? api.resolve(values) : api2.resolve(values);
-      };
+      const onSubmit = async (values: {}) => api.resolve(values);
 
       const { view } = renderView({ onSubmit, resetOnSubmit: true });
       const { checkboxField, selectField, textField } = getBaseCases(view);
@@ -467,23 +489,15 @@ describe('GridForm', () => {
       doBaseFormActions(selectField, textField, checkboxField);
 
       await act(async () => {
-        fireEvent.submit(view.getByRole('button'));
+        fireEvent.click(view.getByRole('button'));
       });
-
       const firstResult = await api.innerPromise;
-
-      await act(async () => {
-        submitCount += 1;
-        fireEvent.submit(view.getByRole('button'));
-      });
-
-      const secondResult = await api2.innerPromise;
-
       expect(firstResult).toEqual(baseResults);
-      expect(secondResult).toEqual({
-        [stubCheckboxField.name]: false,
-        [stubSelectField.name]: 'aaa',
-        [stubTextField.name]: '',
+
+      await waitFor(() => {
+        expect(checkboxField.checked).toEqual(false);
+        expect(selectField.value).toEqual('aaa');
+        expect(textField.value).toEqual('');
       });
     });
 
