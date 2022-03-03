@@ -32,7 +32,7 @@ export const BaseImage: React.FC<BaseImageProps> = (props) => {
         zIndex={1}
         aria-label={buttonLabel}
       >
-        <Icon color="white" />
+        <Icon color="currentColor" />
       </FillButton>
     </Container>
   );

@@ -1,6 +1,7 @@
 import { PausableImage } from '@codecademy/gamut-labs';
+import { ColorMode } from '@codecademy/gamut-styles';
 import title from '@codecademy/macros/lib/title.macro';
-import { PropsTable } from '@codecademy/storybook-addon-variance';
+import { LinkTo, PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 
 <Meta
@@ -37,3 +38,37 @@ import { PausableImage } from '@codecademy/gamut-labs';
 
 <PausableImage src="" alt="" />;
 ```
+
+## Color Modes
+
+PausableImage components respond to the current <LinkTo id="foundations-color-mode--page">Color Mode</LinkTo> they are used in. The button and icon color will correctly display for the current color mode without any extra configuration.
+
+### Light
+
+<Canvas>
+  <Story name="Light" height="500px" args={{ mode: 'light' }}>
+    {(args) => (
+      <ColorMode {...args}>
+        <PausableImage
+          src="https://images.ctfassets.net/go6kr6r0ykrq/5lDaKNHGfDwIC0MNBvN3vJ/e960115eaa02d98614c4e11a042b06c8/contentcuration.gif"
+          alt=""
+        />
+      </ColorMode>
+    )}
+  </Story>
+</Canvas>
+
+### Dark
+
+<Canvas>
+  <Story name="Dark" height="500px" args={{ mode: 'dark' }}>
+    {(args) => (
+      <ColorMode {...args}>
+        <PausableImage
+          src="https://images.ctfassets.net/go6kr6r0ykrq/5lDaKNHGfDwIC0MNBvN3vJ/e960115eaa02d98614c4e11a042b06c8/contentcuration.gif"
+          alt=""
+        />
+      </ColorMode>
+    )}
+  </Story>
+</Canvas>
