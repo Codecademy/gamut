@@ -23,7 +23,8 @@ export const RadioWatchExample = () => {
     radioGroup: 'not submitted',
   });
 
-  const handleWatch = ({ checkbox }: { checkbox?: undefined | boolean }) => {
+  const handleWatch = (values: string[]) => {
+    const [checkbox] = values;
     return checkbox ? setShowRadio(true) : setShowRadio(false);
   };
 
@@ -133,6 +134,7 @@ export const ConnectedFormPlayground: React.FC<ConnectedFormPlayground> = ({
       },
     },
   });
+
   return (
     <ConnectedForm
       onSubmit={(values) => {

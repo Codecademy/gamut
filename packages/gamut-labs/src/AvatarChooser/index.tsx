@@ -2,16 +2,16 @@ import { FlexBox, FormError, Input } from '@codecademy/gamut';
 import { pxRem, theme } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React, { useCallback, useRef, useState } from 'react';
-import { UseFormMethods, Validate } from 'react-hook-form';
+import { UseFormReturn, Validate } from 'react-hook-form';
 
 import { Avatar } from '..';
 
 type AvatarChooserProps = {
   src: string;
   name?: string;
-  register?: UseFormMethods['register'];
+  register?: UseFormReturn['register'];
   onImageChanged?: (imageFileList: FileList) => void;
-  validate?: Validate | Record<string, Validate>;
+  validate?: Validate<FileList> | Record<string, Validate<FileList>>;
   error?: string;
 };
 
@@ -108,14 +108,14 @@ export const AvatarChooser: React.FC<AvatarChooserProps> = ({
         </ChoosePhotoSpan>
       </ChoosePhotoLabel>
       <HiddenInput
+        {...register?.(name, {
+          validate,
+          required: false,
+        })}
         type="file"
         htmlFor="avatar-chooser"
         name={name}
         onChange={onChange}
-        ref={register?.({
-          validate,
-          required: false,
-        })}
         aria-invalid={Boolean(error)}
       />
       {error && <StyledFormError role="alert">{error}</StyledFormError>}
