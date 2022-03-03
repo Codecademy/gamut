@@ -4,12 +4,35 @@ import styled from '@emotion/styled';
 import React, { useState } from 'react';
 import Freezeframe from 'react-freezeframe';
 
-import { Container, imageStyles, PlayingImage } from './styles';
+import { imageStyles } from '..';
 
 export interface BaseImageProps {
   alt?: string;
   src: string;
 }
+
+export const Container = styled.div`
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  display: flex;
+  position: relative;
+  width: 100%;
+
+  > img,
+  > .react-freezeframe,
+  > .react-freezeframe img {
+    max-width: 100%;
+  }
+  .ff-container .ff-canvas {
+    transition: none;
+  }
+  .ff-loading-icon::before {
+    display: none;
+  }
+`;
+
+export const PlayingImage = imageStyles;
 
 const StyledFreezeframe = styled(Freezeframe)(imageStyles);
 
