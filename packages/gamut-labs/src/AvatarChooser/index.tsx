@@ -110,10 +110,9 @@ export const AvatarChooser: React.FC<AvatarChooserProps> = ({
       <HiddenInput
         type="file"
         htmlFor="avatar-chooser"
-        name={name}
-        onChange={onChange}
         aria-invalid={Boolean(error)}
         {...register?.(name, {
+          onChange,
           validate,
           required: false,
         })}
