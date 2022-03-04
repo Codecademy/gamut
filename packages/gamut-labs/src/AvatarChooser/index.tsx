@@ -88,6 +88,16 @@ export const AvatarChooser: React.FC<AvatarChooserProps> = ({
     [choosePhotoLabelRef]
   );
 
+  const hiddenInputProps = register
+    ? {
+        ...register(name, {
+          onChange,
+          validate,
+          required: false,
+        }),
+      }
+    : { name, onChange };
+
   return (
     <FlexBox
       alignItems="center"
@@ -110,13 +120,8 @@ export const AvatarChooser: React.FC<AvatarChooserProps> = ({
       <HiddenInput
         type="file"
         htmlFor="avatar-chooser"
-        onChange={onChange}
         aria-invalid={Boolean(error)}
-        {...register?.(name, {
-          onChange,
-          validate,
-          required: false,
-        })}
+        {...hiddenInputProps}
       />
       {error && <StyledFormError role="alert">{error}</StyledFormError>}
     </FlexBox>
