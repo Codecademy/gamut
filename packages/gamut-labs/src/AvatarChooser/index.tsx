@@ -66,17 +66,14 @@ export const AvatarChooser: React.FC<AvatarChooserProps> = ({
 
   const choosePhotoLabelRef = useRef<HTMLLabelElement>(null);
 
-  const onChange = useCallback(
-    (event: React.FormEvent<HTMLInputElement>) => {
-      const target = event?.target as HTMLInputElement;
-      const imageFilelist = target?.files;
-      const imageFile = imageFilelist?.[0];
+  const onChange = (event: React.FormEvent<HTMLInputElement>) => {
+    const target = event?.target as HTMLInputElement;
+    const imageFilelist = target?.files;
+    const imageFile = imageFilelist?.[0];
 
-      onImageChanged?.(imageFilelist!);
-      if (imageFile) setImageSrc(URL.createObjectURL(imageFile));
-    },
-    [setImageSrc, onImageChanged]
-  );
+    onImageChanged?.(imageFilelist!);
+    if (imageFile) setImageSrc(URL.createObjectURL(imageFile));
+  };
 
   // Need to simulate Enter and Space keyboard presses to activate the
   // file uploader here since it's not a real button.
@@ -111,6 +108,7 @@ export const AvatarChooser: React.FC<AvatarChooserProps> = ({
         type="file"
         htmlFor="avatar-chooser"
         aria-invalid={Boolean(error)}
+        onChange={onChange}
         {...register?.(name, {
           onChange,
           validate,
