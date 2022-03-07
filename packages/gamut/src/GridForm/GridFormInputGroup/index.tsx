@@ -1,7 +1,7 @@
 import { css } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React from 'react';
-import { UseFormMethods } from 'react-hook-form';
+import { UseFormReturn } from 'react-hook-form';
 
 import { Anchor } from '../../Anchor';
 import { FormError, FormGroup, FormGroupLabel } from '../../Form';
@@ -34,8 +34,8 @@ export type GridFormInputGroupProps = {
   isFirstError?: boolean;
   isDisabled?: boolean;
   field: GridFormField;
-  register: UseFormMethods['register'];
-  setValue: UseFormMethods['setValue'];
+  register: UseFormReturn['register'];
+  setValue: UseFormReturn['setValue'];
   required?: boolean;
   showRequired?: boolean;
 };

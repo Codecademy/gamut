@@ -3,10 +3,11 @@ import {
   FormProvider,
   FormProviderProps,
   Mode,
+  Path,
   RegisterOptions,
   SubmitHandler,
   useForm,
-  UseFormOptions,
+  UseFormProps,
 } from 'react-hook-form';
 
 import { Form } from '../Form';
@@ -50,7 +51,7 @@ export interface ConnectedFormProps<Values extends {}>
   /**
    * Default values are highly recommended for reliable form behavior, particularly resets.
    */
-  defaultValues?: UseFormOptions<Values>['defaultValues'];
+  defaultValues?: UseFormProps<Values>['defaultValues'];
 
   /**
    * Validation rules form fields. Fields with validation rules must have a defaultValue listed in the defaultValue prop.
@@ -68,8 +69,8 @@ export interface ConnectedFormProps<Values extends {}>
    * An object that accepts an array of field names and a watchHandler that accepts a function, to be run onChange, that takes in an object of key/value pairs. The key is the field name and the value is the current value of the watched field.
    */
   watchedFields?: {
-    fields: (keyof Values)[];
-    watchHandler: (arg0: Partial<Values>) => void;
+    fields: Path<Values>[];
+    watchHandler: (arg0: Path<Values>[]) => void;
   };
 }
 
@@ -84,7 +85,7 @@ export function ConnectedForm<Values extends FormValues<Values>>({
   children,
   onSubmit,
   defaultValues,
-  validation = 'onSubmit',
+  validation = 'onChange',
   disableFieldsOnSubmit = false,
   resetOnSubmit = false,
   showRequired = false,
@@ -95,6 +96,7 @@ export function ConnectedForm<Values extends FormValues<Values>>({
 }: ConnectedFormProps<Values>) {
   // the below is fixed in react-hook-form v7: GM-466
   // eslint-disable-next-line @typescript-eslint/unbound-method
+
   const { handleSubmit, formState, reset, watch, ...methods } = useForm({
     defaultValues,
     mode: validation,
@@ -105,13 +107,11 @@ export function ConnectedForm<Values extends FormValues<Values>>({
     formState.isSubmitSuccessful
   );
 
-  useEffect(() => {
-    if (watchedFields) {
-      // we're pretty exhaustively type-checking the props as they're passed in, so its fine to cast here.
-      const fields = watch(watchedFields.fields) as Partial<Values>;
-      watchedFields.watchHandler(fields);
-    }
-  }, [watchedFields, watch]);
+  if (watchedFields) {
+    // we're pretty exhaustively type-checking the props as they're passed in, so its fine to cast here.
+    const fields = watch(watchedFields.fields);
+    watchedFields.watchHandler(fields as any);
+  }
 
   useEffect(() => {
     if (isSubmitSuccessful && resetOnSubmit) {
