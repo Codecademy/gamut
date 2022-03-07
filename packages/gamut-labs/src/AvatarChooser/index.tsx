@@ -88,16 +88,6 @@ export const AvatarChooser: React.FC<AvatarChooserProps> = ({
     [choosePhotoLabelRef]
   );
 
-  const hiddenInputProps = register
-    ? {
-        ...register(name, {
-          onChange,
-          validate,
-          required: false,
-        }),
-      }
-    : { name, onChange };
-
   return (
     <FlexBox
       alignItems="center"
