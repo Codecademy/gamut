@@ -121,7 +121,13 @@ export const AvatarChooser: React.FC<AvatarChooserProps> = ({
         type="file"
         htmlFor="avatar-chooser"
         aria-invalid={Boolean(error)}
-        {...hiddenInputProps}
+        name={name}
+        onChange={onChange}
+        {...register?.(name, {
+          onChange,
+          validate,
+          required: false,
+        })}
       />
       {error && <StyledFormError role="alert">{error}</StyledFormError>}
     </FlexBox>
