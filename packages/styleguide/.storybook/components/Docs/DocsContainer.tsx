@@ -109,13 +109,11 @@ export const DocsContainer: React.FC<{ context: DocsContextProps }> = ({
         theme={coreTheme}
       >
         <AssetProvider />
-        <NavigationProvider>
-          <SourceContainer>
-            <ThemeProvider theme={overrides}>
-              <MDXProvider components={allComponents}>{children}</MDXProvider>
-            </ThemeProvider>
-          </SourceContainer>
-        </NavigationProvider>
+        <SourceContainer>
+          <ThemeProvider theme={overrides}>
+            <MDXProvider components={allComponents}>{children}</MDXProvider>
+          </ThemeProvider>
+        </SourceContainer>
       </GamutProvider>
     </DocsContext.Provider>
   );

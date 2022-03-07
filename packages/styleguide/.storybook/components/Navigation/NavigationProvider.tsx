@@ -24,6 +24,7 @@ export const NavigationContext = createContext<NavigationContextShape>(
 
 export const NavigationProvider: React.FC = ({ children }) => {
   const context = useContext(DocsContext);
+  debugger;
   const {
     parameters: {
       taxonomy: { root, indexPage },

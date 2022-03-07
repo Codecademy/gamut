@@ -50,9 +50,9 @@ const STATUS = {
 
 export const DocsPage: React.FC = ({ children }) => {
   const { kind, storyStore } = useContext(DocsContext);
-  const {
-    toc: { type, title, subtitle, status: storyStatus },
-  } = useNavigation();
+  // const {
+  //   toc: { type, title, subtitle, status: storyStatus },
+  // } = useNavigation();
 
   if (!kind) {
     return <>{children}</>;
