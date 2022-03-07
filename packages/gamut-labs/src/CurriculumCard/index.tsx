@@ -1,5 +1,13 @@
-import { Card, FlexBox, HeadingTags, ProLabel, Text } from '@codecademy/gamut';
+import {
+  Box,
+  Card,
+  FlexBox,
+  HeadingTags,
+  ProLabel,
+  Text,
+} from '@codecademy/gamut';
 import { pxRem } from '@codecademy/gamut-styles';
+import styled from '@emotion/styled';
 import React from 'react';
 
 import { TagColor } from './BottomTag/index';
@@ -20,6 +28,9 @@ const cardStyles = {
 
 export type CurriculumCardProps = SubtitleProps & {
   beta?: boolean;
+  /**
+   * Displays the curriculum type above the title
+   */
   text: string;
   title: string;
   headingLevel?: HeadingTags;
@@ -39,7 +50,15 @@ export type CurriculumCardProps = SubtitleProps & {
    * optional text to be displayed below card subtitle
    */
   description?: string;
+  /**
+   * career path cards are displayed with a variant style / decorative element
+   */
+  showCareerPathVariant?: boolean;
 };
+
+const LineDecoration = styled(Box)`
+  border-top: 1px solid #dbdce0;
+`;
 
 export const CurriculumCard: React.FC<CurriculumCardProps> = ({
   beta,
@@ -56,16 +75,20 @@ export const CurriculumCard: React.FC<CurriculumCardProps> = ({
   tagColor,
   text,
   title,
+  showCareerPathVariant,
   showAltSubtitle = false,
   footerTextVariant = 'enrolled',
 }) => {
   const boxVariant = progressState && cardStyles[progressState];
   const mode = progressState === 'completed' ? 'dark' : 'light';
 
+  const isCareerPathVariant =
+    text === 'Career Path' && showCareerPathVariant && !progressState;
+
   return (
     <Card
-      display="grid"
-      gridTemplateRows="repeat(3, max-content) 1fr max-content"
+      display="flex"
+      flexDirection="column"
       minHeight={
         isStaticSize
           ? pxRem(285)
@@ -90,11 +113,6 @@ export const CurriculumCard: React.FC<CurriculumCardProps> = ({
       <Text as={headingLevel} mb={4} fontSize={20}>
         {title}
       </Text>
-      {description && (
-        <Text pt={8} pb={16} fontSize={14}>
-          {description}
-        </Text>
-      )}
       <FlexBox flexWrap="wrap" alignItems="center">
         {!progressState && (
           <Subtitle
@@ -104,9 +122,19 @@ export const CurriculumCard: React.FC<CurriculumCardProps> = ({
           />
         )}
       </FlexBox>
-      <FlexBox center pb={16}>
+      {!progressState && isCareerPathVariant && <LineDecoration my={8} />}
+      {description && (
+        <Text pt={8} pb={16} fontSize={14}>
+          {description}
+        </Text>
+      )}
+      <FlexBox m="auto" center pt={16} pb={isCareerPathVariant ? 32 : 0}>
         {isFullSize && image && (
-          <Image image={image} progressState={progressState} />
+          <Image
+            small={isCareerPathVariant}
+            image={image}
+            progressState={progressState}
+          />
         )}
       </FlexBox>
       <Footer

@@ -8,7 +8,8 @@ import { BASE_STATIC_ASSET_PATH } from '../../remoteAssets/components';
 const StyledImg = styled.img`
   display: block;
   margin: 0 auto;
-  width: ${pxRem(160)};
+  width: ${({ small }: { small?: boolean }) =>
+    small ? pxRem(142) : pxRem(160)};
 `;
 
 type ProgressState = 'inProgress' | 'completed';
@@ -21,9 +22,14 @@ const getPlaceholderAssetPath = (pathProgressState?: ProgressState) => {
 export type ImageProps = {
   image: string;
   progressState?: ProgressState;
+  small?: boolean;
 };
 
-export const Image: React.FC<ImageProps> = ({ image, progressState }) => {
+export const Image: React.FC<ImageProps> = ({
+  image,
+  progressState,
+  small,
+}) => {
   const [ready, setReady] = useState(false);
   const [error, setError] = useState(false);
 
@@ -44,5 +50,12 @@ export const Image: React.FC<ImageProps> = ({ image, progressState }) => {
     }
   };
 
-  return <StyledImg src={image} alt="" onError={addDefaultImageSource} />;
+  return (
+    <StyledImg
+      small={small}
+      src={image}
+      alt=""
+      onError={addDefaultImageSource}
+    />
+  );
 };

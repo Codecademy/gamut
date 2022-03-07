@@ -138,3 +138,29 @@ If `description` prop is populated, the description will render underneath the s
     {(args) => <CurriculumCard {...args} />}
   </Story>
 </Canvas>
+
+## MDX sucks
+
+whatever
+
+<Canvas withSource="closed">
+  <Story
+    name="Career Path Variant"
+    args={{
+      text: 'Career Path',
+      title: 'Front-End Engineer',
+      description:
+        'Front-end engineers work with closely with Designers to make websites beautiful, functional, and fast.',
+      image:
+        'https://static-assets.codecademy.com/components/curriculum/path/front-end-engineer-career-path/curriculum-card.svg',
+      isFullSize: true,
+      scope: { Lesson: 94 },
+      color: 'pink',
+      tag: 'Job Essentials',
+      showProLogo: true,
+      showCareerPathVariant: true,
+    }}
+  >
+    {(args) => <CurriculumCard {...args} />}
+  </Story>
+</Canvas>
