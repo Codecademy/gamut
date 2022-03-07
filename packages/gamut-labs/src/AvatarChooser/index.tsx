@@ -108,15 +108,16 @@ export const AvatarChooser: React.FC<AvatarChooserProps> = ({
         </ChoosePhotoSpan>
       </ChoosePhotoLabel>
       <HiddenInput
+        type="file"
+        htmlFor="avatar-chooser"
+        aria-invalid={Boolean(error)}
+        name={name}
+        onChange={onChange}
         {...register?.(name, {
+          onChange,
           validate,
           required: false,
         })}
-        type="file"
-        htmlFor="avatar-chooser"
-        name={name}
-        onChange={onChange}
-        aria-invalid={Boolean(error)}
       />
       {error && <StyledFormError role="alert">{error}</StyledFormError>}
     </FlexBox>
