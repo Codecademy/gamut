@@ -1,17 +1,17 @@
 import React from 'react';
-import { UseFormMethods } from 'react-hook-form';
+import { UseFormReturn } from 'react-hook-form';
 
 import { Input } from '../../../Form';
 import { GridFormHiddenField } from '../../types';
 
 export type GridFormHiddenInputProps = {
   field: GridFormHiddenField;
-  register: UseFormMethods['register'];
+  register: UseFormReturn['register'];
 };
 
 export const GridFormHiddenInput: React.FC<GridFormHiddenInputProps> = ({
   field,
   register,
 }) => {
-  return <Input name={field.name} ref={register()} type={field.type} />;
+  return <Input {...register(field.name)} type={field.type} />;
 };

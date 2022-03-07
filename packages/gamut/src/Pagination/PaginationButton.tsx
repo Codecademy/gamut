@@ -48,7 +48,12 @@ export const PaginationButton = forwardRef<
     }, [variant]);
 
     return (
-      <ButtonStyleWrapper showButton={showButton} {...props} ref={ref}>
+      <ButtonStyleWrapper
+        aria-hidden={showButton === 'hidden'}
+        showButton={showButton}
+        {...props}
+        ref={ref}
+      >
         {Icon && <Icon width={14} height={14} aria-hidden />}
         {children}
       </ButtonStyleWrapper>

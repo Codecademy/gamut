@@ -3,6 +3,44 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [30.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@29.3.8...@codecademy/gamut-labs@30.0.0) (2022-03-03)
+
+
+### ⚠ BREAKING CHANGES
+
+* **ConnectedForm:** update react-hook-form to v7
+
+### Features
+
+* **ConnectedForm:** update react-hook-form to v7 ([b7671a6](https://github.com/Codecademy/gamut/commit/b7671a6c4fbf295c58e50c95179574b5ef1c9f6c))
+
+
+
+### [29.3.8](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@29.3.7...@codecademy/gamut-labs@29.3.8) (2022-02-28)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [29.3.7](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@29.3.6...@codecademy/gamut-labs@29.3.7) (2022-02-28)
+
+
+### Bug Fixes
+
+* **InfoCard:** Fix placement of footer items ([#2268](https://github.com/Codecademy/gamut/issues/2268)) ([49247b3](https://github.com/Codecademy/gamut/commit/49247b305ddc6a3b7f3f39804d52e163aee1bea8))
+
+
+
+### [29.3.6](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@29.3.5...@codecademy/gamut-labs@29.3.6) (2022-02-25)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
 ### [29.3.5](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@29.3.4...@codecademy/gamut-labs@29.3.5) (2022-02-23)
 
 

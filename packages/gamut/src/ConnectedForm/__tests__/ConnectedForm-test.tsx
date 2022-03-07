@@ -1,6 +1,6 @@
 import { setupRtl } from '@codecademy/gamut-tests';
 import { fireEvent, queries } from '@testing-library/dom';
-import { act, RenderResult } from '@testing-library/react';
+import { act, RenderResult, waitFor } from '@testing-library/react';
 import React from 'react';
 
 import { createPromise } from '../../utils';
@@ -34,6 +34,7 @@ const getBaseCases = (view: RenderResult<typeof queries, HTMLElement>) => {
 
 const selectValue = 'two';
 const textValue = 'Hooray!';
+const radioValue = 'two';
 
 const doBaseFormActions = (
   selectField: HTMLInputElement,
@@ -50,7 +51,7 @@ const doBaseFormActions = (
   fireEvent.click(radioOption);
 
   for (const [selector, value] of newValues) {
-    fireEvent.input(selector, {
+    fireEvent.change(selector, {
       target: {
         value,
       },
@@ -62,7 +63,7 @@ const baseResults = {
   checkbox: true,
   select: selectValue,
   input: textValue,
-  radiogroup: 'two',
+  radiogroup: radioValue,
 };
 
 const validationRules = {
@@ -165,8 +166,9 @@ describe('ConnectedForm', () => {
       });
 
       const { textField } = getBaseCases(view);
+      const submitButton = view.getByRole('button');
 
-      await act(async () => {
+      act(() => {
         fireEvent.input(textField, {
           target: {
             value: '',
@@ -174,7 +176,6 @@ describe('ConnectedForm', () => {
         });
       });
 
-      const submitButton = view.getByRole('button');
       expect(submitButton).toBeDisabled();
     });
 
@@ -197,14 +198,17 @@ describe('ConnectedForm', () => {
         radioOption,
       } = getBaseCases(view);
 
-      doBaseFormActions(checkboxField, selectField, textField, radioOption);
+      doBaseFormActions(selectField, textField, checkboxField, radioOption);
 
-      const submitButton = view.getByRole('button');
-      expect(submitButton).not.toBeDisabled();
+      expect(checkboxField.checked).toEqual(true);
+      expect(selectField.value).toEqual(selectValue);
+      expect(textField.value).toEqual(textValue);
+      expect(radioOption.value).toEqual(radioValue);
+      await waitFor(() => expect(view.getByRole('button')).not.toBeDisabled());
     });
   });
 
-  describe.skip('disableFieldsOnSubmit', () => {
+  describe('disableFieldsOnSubmit', () => {
     it('disables fields when form is successfully submitted', async () => {
       const api = createPromise<{}>();
       const onSubmit = async (values: {}) => api.resolve(values);
@@ -259,7 +263,7 @@ describe('ConnectedForm', () => {
       expect(radioOption).not.toBeDisabled();
     });
 
-    describe.skip('resetOnSubmit', () => {
+    describe('resetOnSubmit', () => {
       it('resets fields when form is successfully submitted', async () => {
         let submitCount = 0;
         const api = createPromise<{}>();
@@ -315,7 +319,7 @@ describe('ConnectedForm', () => {
 
         const { textField, radioOption } = getBaseCases(view);
 
-        await act(async () => {
+        act(() => {
           fireEvent.click(radioOption);
 
           fireEvent.input(textField, {

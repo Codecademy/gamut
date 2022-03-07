@@ -14,13 +14,5 @@ export const ConnectedRadio: React.FC<ConnectedRadioProps> = ({
     disabled,
   });
 
-  return (
-    <Radio
-      disabled={isDisabled}
-      error={error}
-      name={name}
-      ref={ref}
-      {...rest}
-    />
-  );
+  return <Radio disabled={isDisabled} error={error} {...ref} {...rest} />;
 };
