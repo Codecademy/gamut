@@ -3,6 +3,36 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [45.0.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@45.0.0...@codecademy/gamut@45.0.1) (2022-03-08)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [45.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@44.7.1...@codecademy/gamut@45.0.0) (2022-03-03)
+
+
+### ⚠ BREAKING CHANGES
+
+* **ConnectedForm:** update react-hook-form to v7
+
+### Features
+
+* **ConnectedForm:** update react-hook-form to v7 ([b7671a6](https://github.com/Codecademy/gamut/commit/b7671a6c4fbf295c58e50c95179574b5ef1c9f6c))
+
+
+
+### [44.7.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@44.7.0...@codecademy/gamut@44.7.1) (2022-02-28)
+
+
+### Bug Fixes
+
+* **Pagination:** aria-hidden added for hidden buttons ([61746ab](https://github.com/Codecademy/gamut/commit/61746ab22d33a4f723944e9a4e8efbd471b12478))
+
+
+
 ## [44.7.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@44.6.1...@codecademy/gamut@44.7.0) (2022-02-25)
 
 
