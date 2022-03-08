@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [30.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@30.0.2...@codecademy/gamut-labs@30.1.0) (2022-03-08)
+
+
+### Features
+
+* **ErrorContents:** update copy ([f7a286c](https://github.com/Codecademy/gamut/commit/f7a286c6b0805cc1106fb271047aabeb1a35b336))
+
+
+
 ### [30.0.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@30.0.1...@codecademy/gamut-labs@30.0.2) (2022-03-08)
 
 **Note:** Version bump only for package @codecademy/gamut-labs
