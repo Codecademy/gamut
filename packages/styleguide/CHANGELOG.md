@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [55.0.5](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@55.0.4...@codecademy/styleguide@55.0.5) (2022-03-08)
+
+
+### Bug Fixes
+
+* **LayoutMenu:** overflow ([1ab3650](https://github.com/Codecademy/gamut/commit/1ab3650442c233360cb30e9b71becb1b2541e90e))
+
+
+
 ### [55.0.4](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@55.0.3...@codecademy/styleguide@55.0.4) (2022-03-08)
 
 **Note:** Version bump only for package @codecademy/styleguide
