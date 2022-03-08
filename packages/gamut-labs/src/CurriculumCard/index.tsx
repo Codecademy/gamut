@@ -113,30 +113,30 @@ export const CurriculumCard: React.FC<CurriculumCardProps> = ({
       <Text as={headingLevel} mb={4} fontSize={20}>
         {title}
       </Text>
-      <FlexBox flexWrap="wrap" alignItems="center">
-        {!progressState && (
+      {!progressState && (
+        <FlexBox flexWrap="wrap" alignItems="center">
           <Subtitle
             scope={scope}
             difficulty={difficulty}
             showAltSubtitle={showAltSubtitle}
           />
-        )}
-      </FlexBox>
+        </FlexBox>
+      )}
       {!progressState && isCareerPathVariant && <LineDecoration my={8} />}
       {description && (
         <Text pt={8} pb={16} fontSize={14}>
           {description}
         </Text>
       )}
-      <FlexBox m="auto" center pt={16} pb={isCareerPathVariant ? 32 : 0}>
-        {isFullSize && image && (
+      {isFullSize && image && (
+        <FlexBox m="auto" center pt={16} pb={isCareerPathVariant ? 32 : 0}>
           <Image
             small={isCareerPathVariant}
             image={image}
             progressState={progressState}
           />
-        )}
-      </FlexBox>
+        </FlexBox>
+      )}
       <Footer
         beta={beta}
         progressState={progressState}
