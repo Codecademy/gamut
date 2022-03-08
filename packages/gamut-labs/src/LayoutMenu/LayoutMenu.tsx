@@ -1,4 +1,6 @@
 import { Box, Logo, StrokeButton } from '@codecademy/gamut';
+import { variant } from '@codecademy/gamut-styles';
+import styled from '@emotion/styled';
 import React, { useState } from 'react';
 
 import { Flyout } from '../Flyout';
@@ -34,7 +36,37 @@ export type LayoutMenuProps = {
    * An array of section items, each of which become an additional link on top of the accordion section.
    */
   topLinkSections?: SectionItem[];
+  /**
+   * Set fixed height for menu with overflow
+   */
+  menuHeight?: 'sm' | 'md' | 'lg';
 };
+
+const StyleBox = styled(Box)(
+  variant({
+    prop: 'menuHeight',
+    base: {
+      borderColor: 'black',
+      borderStyleBottom: 'solid',
+      borderWidthBottom: '1px',
+      overflowY: 'auto',
+      overflowX: 'hidden',
+      paddingTop: '4px',
+      paddingLeft: '4px',
+    },
+    variants: {
+      sm: {
+        height: '630px',
+      },
+      md: {
+        height: '1000px',
+      },
+      lg: {
+        height: '1370px',
+      },
+    },
+  })
+);
 
 export const LayoutMenu: React.FC<LayoutMenuProps> = ({
   closeLabel,
@@ -45,6 +77,7 @@ export const LayoutMenu: React.FC<LayoutMenuProps> = ({
   breakpoint = 'lg',
   children,
   topLinkSections,
+  menuHeight,
 }) => {
   const [expanded, setExpanded] = useState(false);
 
@@ -90,11 +123,15 @@ export const LayoutMenu: React.FC<LayoutMenuProps> = ({
           {mobileButtonText}
         </StrokeButton>
       </Box>
-      <Box display={{ _: 'none', [breakpoint]: 'block' }}>
+      <StyleBox
+        menuHeight={menuHeight}
+        display={{ _: 'none', [breakpoint]: 'block' }}
+        data-testid="desktop-menu"
+      >
         {topLinkLayoutMenuSections}
         {accordionMenuSections}
         {children}
-      </Box>
+      </StyleBox>
     </nav>
   );
 };
