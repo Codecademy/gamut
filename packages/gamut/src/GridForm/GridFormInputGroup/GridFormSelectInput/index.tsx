@@ -1,12 +1,12 @@
 import React from 'react';
-import { UseFormMethods } from 'react-hook-form';
+import { UseFormReturn } from 'react-hook-form';
 
 import { Select } from '../../../Form';
 import { BaseFormInputProps, GridFormSelectField } from '../../types';
 
 export interface GridFormSelectInputProps extends BaseFormInputProps {
   field: Omit<GridFormSelectField, 'label'>;
-  register: UseFormMethods['register'];
+  register: UseFormReturn['register'];
 }
 
 export const GridFormSelectInput: React.FC<GridFormSelectInputProps> = ({
@@ -17,20 +17,28 @@ export const GridFormSelectInput: React.FC<GridFormSelectInputProps> = ({
   register,
   required,
 }) => {
+  const { onChange, ...rest } = {
+    ...register(field.name, {
+      ...field.validation,
+    }),
+  };
   return (
     <Select
-      defaultValue={field.defaultValue}
-      disabled={disabled}
-      className={className}
-      error={error}
-      htmlFor={field.name}
-      name={field.name}
-      onChange={(event) => field.onUpdate?.(event.target.value)}
-      ref={register(field.validation)}
-      options={field.options}
-      id={field.id}
+      {...rest}
       aria-invalid={error}
       aria-required={required}
+      className={className}
+      defaultValue={field.defaultValue}
+      disabled={disabled}
+      error={error}
+      htmlFor={field.name}
+      id={field.id}
+      name={field.name}
+      onChange={async (event) => {
+        field?.onUpdate?.(event.target.value);
+        await onChange(event);
+      }}
+      options={field.options}
     />
   );
 };
