@@ -1,6 +1,7 @@
 export * from './Bee';
 export * from './Bell';
 export * from './BinaryBlocks';
+export * from './Blueprint';
 export * from './Browser';
 export * from './BrowserLock';
 export * from './BrowserPuzzle';
@@ -20,6 +21,7 @@ export * from './Onboarding';
 export * from './Plant';
 export * from './PortfolioProject';
 export * from './PracticeProject';
+export * from './Puzzle';
 export * from './Python';
 export * from './Sun';
 export * from './Target';
