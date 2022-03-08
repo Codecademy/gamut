@@ -3,6 +3,43 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [55.0.3](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@55.0.2...@codecademy/styleguide@55.0.3) (2022-03-08)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [55.0.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@55.0.1...@codecademy/styleguide@55.0.2) (2022-03-08)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [55.0.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@55.0.0...@codecademy/styleguide@55.0.1) (2022-03-07)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [55.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@54.3.8...@codecademy/styleguide@55.0.0) (2022-03-03)
+
+
+### ⚠ BREAKING CHANGES
+
+* **ConnectedForm:** update react-hook-form to v7
+
+### Features
+
+* **ConnectedForm:** update react-hook-form to v7 ([b7671a6](https://github.com/Codecademy/gamut/commit/b7671a6c4fbf295c58e50c95179574b5ef1c9f6c))
+
+
+
 ### [54.3.8](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@54.3.7...@codecademy/styleguide@54.3.8) (2022-02-28)
 
 **Note:** Version bump only for package @codecademy/styleguide

@@ -1,12 +1,12 @@
 import React from 'react';
-import { UseFormMethods } from 'react-hook-form';
+import { UseFormReturn } from 'react-hook-form';
 
 import { Input } from '../../../Form';
 import { BaseFormInputProps, GridFormTextField } from '../../types';
 
 export interface GridFormTextInputProps extends BaseFormInputProps {
   field: Omit<GridFormTextField, 'label'>;
-  register: UseFormMethods['register'];
+  register: UseFormReturn['register'];
 }
 
 export const GridFormTextInput: React.FC<GridFormTextInputProps> = ({
@@ -17,20 +17,28 @@ export const GridFormTextInput: React.FC<GridFormTextInputProps> = ({
   required,
   disabled,
 }) => {
+  const { onChange, ...rest } = {
+    ...register(field.name, {
+      ...field.validation,
+    }),
+  };
   return (
     <Input
+      {...rest}
+      aria-invalid={error}
+      aria-required={required}
       className={className}
       disabled={disabled}
       error={error}
       htmlFor={field.name}
-      onChange={(event) => field.onUpdate?.(event.target.value)}
-      placeholder={field.placeholder}
-      name={field.name}
-      ref={register(field.validation)}
-      type={field.type}
       id={field.id}
-      aria-invalid={error}
-      aria-required={required}
+      name={field.name}
+      onChange={async (event) => {
+        field?.onUpdate?.(event.target.value);
+        await onChange(event);
+      }}
+      placeholder={field.placeholder}
+      type={field.type}
     />
   );
 };

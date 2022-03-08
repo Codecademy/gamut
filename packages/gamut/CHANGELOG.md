@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [45.0.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@45.0.0...@codecademy/gamut@45.0.1) (2022-03-08)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [45.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@44.7.1...@codecademy/gamut@45.0.0) (2022-03-03)
+
+
+### ⚠ BREAKING CHANGES
+
+* **ConnectedForm:** update react-hook-form to v7
+
+### Features
+
+* **ConnectedForm:** update react-hook-form to v7 ([b7671a6](https://github.com/Codecademy/gamut/commit/b7671a6c4fbf295c58e50c95179574b5ef1c9f6c))
+
+
+
 ### [44.7.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@44.7.0...@codecademy/gamut@44.7.1) (2022-02-28)
 
 

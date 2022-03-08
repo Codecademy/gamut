@@ -23,6 +23,7 @@ import {
   GridFormSectionBreakTypes,
   GridFormSectionProps,
 } from './types';
+import { assignDefaultValue } from './utils';
 
 export * from './types';
 
@@ -112,8 +113,8 @@ export function GridForm<Values extends FormValues<Values>>({
     (defaultValues, field) => ({
       ...defaultValues,
       [field.name]:
-        field.type === 'checkbox' && field.defaultValue === undefined
-          ? false
+        field.defaultValue === undefined
+          ? assignDefaultValue(field)
           : field.defaultValue,
     }),
     {} as Defaults
