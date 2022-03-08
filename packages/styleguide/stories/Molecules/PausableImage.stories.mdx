@@ -1,9 +1,9 @@
 import { PausableImage } from '@codecademy/gamut-labs';
-import { ColorMode } from '@codecademy/gamut-styles';
 import title from '@codecademy/macros/lib/title.macro';
+import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 
-import { LinkTo, PropsTable } from '~styleguide/blocks';
+import { LinkTo } from '~styleguide/blocks';
 
 <Meta
   title={title}
@@ -13,7 +13,6 @@ import { LinkTo, PropsTable } from '~styleguide/blocks';
       'Image component that allows for gifs to be pausable for better accesbility.',
     source: 'gamut-labs',
     status: 'current',
-    docs: { inlineStories: false, iframeHeight: 580 },
   }}
 />
 
@@ -22,7 +21,7 @@ import { LinkTo, PropsTable } from '~styleguide/blocks';
     name="PausableImage"
     args={{
       src:
-        'https://images.ctfassets.net/go6kr6r0ykrq/5lDaKNHGfDwIC0MNBvN3vJ/e960115eaa02d98614c4e11a042b06c8/contentcuration.gif',
+        '//images.ctfassets.net/go6kr6r0ykrq/2vjTCK9DmJ6BOd5NtFxNIG/e5ced4209aef5241cd581841fa6e2511/learn-css_box-model_06.16.gif',
       alt: '',
     }}
   >
@@ -44,32 +43,4 @@ import { PausableImage } from '@codecademy/gamut-labs';
 
 PausableImage components respond to the current <LinkTo id="foundations-color-mode--page">Color Mode</LinkTo> they are used in. The button and icon color will correctly display for the current color mode without any extra configuration.
 
-### Light mode
-
-<Canvas>
-  <Story name="Light mode" height="500px" args={{ mode: 'light' }}>
-    {(args) => (
-      <ColorMode {...args}>
-        <PausableImage
-          src="https://images.ctfassets.net/go6kr6r0ykrq/5lDaKNHGfDwIC0MNBvN3vJ/e960115eaa02d98614c4e11a042b06c8/contentcuration.gif"
-          alt=""
-        />
-      </ColorMode>
-    )}
-  </Story>
-</Canvas>
-
-### Dark mode
-
-<Canvas>
-  <Story name="Dark mode" height="500px" args={{ mode: 'dark' }}>
-    {(args) => (
-      <ColorMode {...args}>
-        <PausableImage
-          src="//images.ctfassets.net/go6kr6r0ykrq/2vjTCK9DmJ6BOd5NtFxNIG/e5ced4209aef5241cd581841fa6e2511/learn-css_box-model_06.16.gif"
-          alt=""
-        />
-      </ColorMode>
-    )}
-  </Story>
-</Canvas>
+- Use the colormode changer of the top of the page to see the change
