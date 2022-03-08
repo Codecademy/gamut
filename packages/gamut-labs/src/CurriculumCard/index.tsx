@@ -6,7 +6,7 @@ import {
   ProLabel,
   Text,
 } from '@codecademy/gamut';
-import { pxRem } from '@codecademy/gamut-styles';
+import { pxRem, theme } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React from 'react';
 
@@ -57,7 +57,7 @@ export type CurriculumCardProps = SubtitleProps & {
 };
 
 const LineDecoration = styled(Box)`
-  border-top: 1px solid #dbdce0;
+  border-top: 1px solid ${theme.colors['navy-200']};
 `;
 
 export const CurriculumCard: React.FC<CurriculumCardProps> = ({
