@@ -1,16 +1,26 @@
-import { pxRem } from '@codecademy/gamut-styles';
+import { variant } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React, { useState } from 'react';
 import { useIsomorphicLayoutEffect } from 'react-use';
 
 import { BASE_STATIC_ASSET_PATH } from '../../remoteAssets/components';
 
-const StyledImg = styled.img`
-  display: block;
-  margin: 0 auto;
-  width: ${({ small }: { small?: boolean }) =>
-    small ? pxRem(142) : pxRem(160)};
-`;
+const variants = variant({
+  base: {
+    display: 'block',
+    margin: '0 auto',
+  },
+  variants: {
+    default: {
+      width: 160,
+    },
+    small: {
+      width: 142,
+    },
+  },
+});
+
+const StyledImg = styled.img(variants);
 
 type ProgressState = 'inProgress' | 'completed';
 
@@ -52,7 +62,7 @@ export const Image: React.FC<ImageProps> = ({
 
   return (
     <StyledImg
-      small={small}
+      variant={small ? 'small' : 'default'}
       src={image}
       alt=""
       onError={addDefaultImageSource}
