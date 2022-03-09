@@ -213,6 +213,14 @@ var test = true;
       expect(wrapper.find('a[rel="noopener"]').length).toEqual(1);
     });
 
+    it('Excludes target="_blank" from in-page links', () => {
+      const { wrapper } = renderWrapper({
+        text: `<a href="#heading-one">heading</a>`,
+      });
+      expect(wrapper.find('a').length).toEqual(1);
+      expect(wrapper.find('a[target="_blank"]').length).toEqual(0);
+    });
+
     it('Allows onClicks callbacks', () => {
       const onClick = jest.fn();
 
