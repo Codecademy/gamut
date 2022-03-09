@@ -100,14 +100,17 @@ describe('<Markdown />', () => {
     expect(wrapper.find('h1').length).toEqual(1);
   });
 
-  it('Does not render id attributes on headers by default', () => {
-    const { wrapper } = renderWrapper({ text: basicMarkdown });
+  it('does not render id attributes on headers with the headerIds prop disabled', () => {
+    const { wrapper } = renderWrapper({
+      text: basicMarkdown,
+      headerIds: false,
+    });
     expect(wrapper.find('h1').get(0).props.id).toBeUndefined();
     expect(wrapper.find('h3').get(0).props.id).toBeUndefined();
   });
 
-  it('Renders id attributes on headers with the headerIds prop enabled', () => {
-    const { wrapper } = renderWrapper({ text: basicMarkdown, headerIds: true });
+  it('renders id attributes on headers by default', () => {
+    const { wrapper } = renderWrapper({ text: basicMarkdown });
     expect(wrapper.find('h1').get(0).props.id).toEqual('heading-heading-1');
     expect(wrapper.find('h3').get(0).props.id).toEqual('heading-heading-3');
   });
