@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [30.2.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@30.1.2...@codecademy/gamut-labs@30.2.0) (2022-03-09)
+
+
+### Features
+
+* **PauseableImage:** :sparkles: Creating new pausable image component ([00c233d](https://github.com/Codecademy/gamut/commit/00c233d56498b819546b41c4dfba872618283044))
+
+
+
 ### [30.1.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@30.1.1...@codecademy/gamut-labs@30.1.2) (2022-03-08)
 
 
