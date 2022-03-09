@@ -3,6 +3,48 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [55.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@55.0.5...@codecademy/styleguide@55.1.0) (2022-03-09)
+
+
+### Features
+
+* **PauseableImage:** :sparkles: Creating new pausable image component ([00c233d](https://github.com/Codecademy/gamut/commit/00c233d56498b819546b41c4dfba872618283044))
+
+
+
+### [55.0.5](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@55.0.4...@codecademy/styleguide@55.0.5) (2022-03-08)
+
+
+### Bug Fixes
+
+* **LayoutMenu:** overflow ([1ab3650](https://github.com/Codecademy/gamut/commit/1ab3650442c233360cb30e9b71becb1b2541e90e))
+
+
+
+### [55.0.4](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@55.0.3...@codecademy/styleguide@55.0.4) (2022-03-08)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [55.0.3](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@55.0.2...@codecademy/styleguide@55.0.3) (2022-03-08)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [55.0.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@55.0.1...@codecademy/styleguide@55.0.2) (2022-03-08)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
 ### [55.0.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@55.0.0...@codecademy/styleguide@55.0.1) (2022-03-07)
 
 **Note:** Version bump only for package @codecademy/styleguide
