@@ -4,13 +4,14 @@ import React, { ComponentProps } from 'react';
 import { Anchor } from '../../../../Anchor';
 
 export interface MarkdownAnchorProps extends ComponentProps<typeof Anchor> {
-  href: string;
+  href?: string;
 }
 
 const absoluteURLPattern = new RegExp('^(?:[a-z]+:)?//', 'i');
 
-const matchesOrigin = (href: string) => {
-  if (typeof window === 'undefined' || typeof URL === 'undefined') return false;
+const matchesOrigin = (href?: string) => {
+  if (!href || typeof window === 'undefined' || typeof URL === 'undefined')
+    return false;
 
   try {
     const url = new window.URL(href);
@@ -28,15 +29,28 @@ export const MarkdownAnchor: React.FC<MarkdownAnchorProps> = ({
   children,
   ...props
 }) => {
-  const anchorProps = {
-    ...props,
+  const anchorProps: MarkdownAnchorProps & {
+    rel?: string;
+    target?: string;
+    href: string;
+  } = {
     target: '_blank',
+    href: '',
+    ...props,
     rel: 'noopener',
-  } as MarkdownAnchorProps & { rel?: string; target?: string };
+  };
 
   // remove noopener/noreferrer on relative & same origin urls
-  if (matchesOrigin(props.href) || !absoluteURLPattern.test(props.href)) {
+  if (
+    matchesOrigin(anchorProps.href) ||
+    !absoluteURLPattern.test(anchorProps.href)
+  ) {
     delete anchorProps.rel;
+  }
+
+  // in-page links
+  if (anchorProps.href.startsWith('#')) {
+    delete anchorProps.target;
   }
 
   return <Anchor {...anchorProps}>{children}</Anchor>;
