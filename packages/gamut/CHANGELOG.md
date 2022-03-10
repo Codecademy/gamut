@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [45.1.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@45.1.0...@codecademy/gamut@45.1.1) (2022-03-10)
+
+
+### Bug Fixes
+
+* Markdown Updates ([02e79f9](https://github.com/Codecademy/gamut/commit/02e79f9961535d3a1c40e440b8580c132dee9ef1))
+
+
+
 ## [45.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@45.0.2...@codecademy/gamut@45.1.0) (2022-03-10)
 
 
