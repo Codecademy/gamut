@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [45.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@45.0.2...@codecademy/gamut@45.1.0) (2022-03-10)
+
+
+### Features
+
+* **MenuItem:** add rel to MenuItem anchor type ([6d32743](https://github.com/Codecademy/gamut/commit/6d3274311c7e09c2f6f331fc5b731a32eb14bf35))
+
+
+
 ### [45.0.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@45.0.1...@codecademy/gamut@45.0.2) (2022-03-08)
 
 **Note:** Version bump only for package @codecademy/gamut
