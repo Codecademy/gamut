@@ -100,14 +100,17 @@ describe('<Markdown />', () => {
     expect(wrapper.find('h1').length).toEqual(1);
   });
 
-  it('Does not render id attributes on headers by default', () => {
-    const { wrapper } = renderWrapper({ text: basicMarkdown });
+  it('does not render id attributes on headers with the headerIds prop disabled', () => {
+    const { wrapper } = renderWrapper({
+      text: basicMarkdown,
+      headerIds: false,
+    });
     expect(wrapper.find('h1').get(0).props.id).toBeUndefined();
     expect(wrapper.find('h3').get(0).props.id).toBeUndefined();
   });
 
-  it('Renders id attributes on headers with the headerIds prop enabled', () => {
-    const { wrapper } = renderWrapper({ text: basicMarkdown, headerIds: true });
+  it('renders id attributes on headers by default', () => {
+    const { wrapper } = renderWrapper({ text: basicMarkdown });
     expect(wrapper.find('h1').get(0).props.id).toEqual('heading-heading-1');
     expect(wrapper.find('h3').get(0).props.id).toEqual('heading-heading-3');
   });
@@ -211,6 +214,14 @@ var test = true;
       });
 
       expect(wrapper.find('a[rel="noopener"]').length).toEqual(1);
+    });
+
+    it('Excludes target="_blank" from in-page links', () => {
+      const { wrapper } = renderWrapper({
+        text: `<a href="#heading-one">heading</a>`,
+      });
+      expect(wrapper.find('a').length).toEqual(1);
+      expect(wrapper.find('a[target="_blank"]').length).toEqual(0);
     });
 
     it('Allows onClicks callbacks', () => {
