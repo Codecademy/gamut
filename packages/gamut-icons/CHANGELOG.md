@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.2.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@7.1.1...@codecademy/gamut-icons@7.2.0) (2022-03-10)
+
+
+### Features
+
+* **Icon:** add Track icon ([608efa0](https://github.com/Codecademy/gamut/commit/608efa0581b6cb15169b1379046c2ca7eff4807d))
+
+
+
 ### [7.1.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@7.1.0...@codecademy/gamut-icons@7.1.1) (2022-02-18)
 
 **Note:** Version bump only for package @codecademy/gamut-icons

@@ -32,24 +32,20 @@ export const MarkdownAnchor: React.FC<MarkdownAnchorProps> = ({
   const anchorProps: MarkdownAnchorProps & {
     rel?: string;
     target?: string;
-    href: string;
   } = {
     target: '_blank',
-    href: '',
     ...props,
     rel: 'noopener',
   };
 
+  const href = typeof anchorProps.href === 'string' ? anchorProps.href : '';
+
   // remove noopener/noreferrer on relative & same origin urls
-  if (
-    matchesOrigin(anchorProps.href) ||
-    !absoluteURLPattern.test(anchorProps.href)
-  ) {
+  if (matchesOrigin(href) || !absoluteURLPattern.test(href || '')) {
     delete anchorProps.rel;
   }
-
   // in-page links
-  if (anchorProps.href.startsWith('#')) {
+  if (href.startsWith('#')) {
     delete anchorProps.target;
   }
 
