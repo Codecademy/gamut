@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [45.1.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@45.1.2...@codecademy/gamut@45.1.3) (2022-03-11)
+
+
+### Bug Fixes
+
+* Allow links with no href in Markdown ([ea48d36](https://github.com/Codecademy/gamut/commit/ea48d369058eb9d52fae15deb3e619196019d786))
+
+
+
 ### [45.1.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@45.1.1...@codecademy/gamut@45.1.2) (2022-03-10)
 
 **Note:** Version bump only for package @codecademy/gamut
