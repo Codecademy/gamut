@@ -18,6 +18,7 @@ export const imageStyles = styled.img(
     maxWidth: '100%',
     '&[src$=".svg"]': {
       width: '100%',
+      heigh: '100%',
     },
   })
 );
