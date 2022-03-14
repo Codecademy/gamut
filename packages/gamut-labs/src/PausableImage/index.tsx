@@ -13,7 +13,7 @@ interface PauseableImageProps {
 }
 export const imageStyles = styled.img(
   css({
-    height: 'auto',
+    height: '100%',
     maxHeight: '100%',
     maxWidth: '100%',
     '&[src$=".svg"]': {
