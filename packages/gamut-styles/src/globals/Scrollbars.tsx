@@ -6,24 +6,33 @@ export const scrollbarStyles = (theme: Theme) => {
   const getColor = theme._getColorValue;
 
   return css({
-    scrollbarColor: `${getColor(colors.scrollbar)} ${getColor(
+    scrollbarColor: `var(--color-${colors.scrollbar}, ${getColor(
+      colors.scrollbar
+    )}) var(--color-${colors['background-current']}, ${getColor(
       colors['background-current']
-    )}`,
+    )})`,
     scrollbarWidth: `thin`,
 
     '&::-webkit-scrollbar': {
-      background: `transparent`,
+      backgroundColor: `transparent`,
       width: `.75em`,
     },
 
     '&::-webkit-scrollbar-track': {
-      background: `${getColor(colors['background-current'])}`,
+      backgroundColor: `
+      var(--color-${colors['background-current']},
+      ${getColor(colors['background-current'])}
+      )`,
     },
 
     '&::-webkit-scrollbar-thumb': {
-      backgroundColor: `${getColor(colors.scrollbar)}`,
+      backgroundColor: `var(--color-${colors.scrollbar}, ${getColor(
+        colors.scrollbar
+      )})`,
       borderRadius: `20px`,
-      border: `3px solid ${getColor(colors['background-current'])}`,
+      border: `3px solid var(--color-${
+        colors['background-current']
+      }, ${getColor(colors['background-current'])})`,
     },
   });
 };
@@ -34,7 +43,7 @@ export const Scrollbars = () => {
   return (
     <Global
       styles={{
-        [`*`]: scrollbarStyles(theme),
+        [`html, body`]: scrollbarStyles(theme),
       }}
     />
   );
