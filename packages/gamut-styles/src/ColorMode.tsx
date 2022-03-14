@@ -4,12 +4,18 @@ import {
   ThemeProps,
   variance,
 } from '@codecademy/variance';
-import { CSSObject, Theme, ThemeProvider, useTheme } from '@emotion/react';
+import {
+  CSSObject,
+  SerializedStyles,
+  Theme,
+  ThemeProvider,
+  useTheme,
+} from '@emotion/react';
 import styled from '@emotion/styled';
 import { mapValues, pick } from 'lodash';
 import React, { ComponentProps, forwardRef, useMemo } from 'react';
 
-import { Scrollbars } from '.';
+import { Scrollbars, scrollbarStyles } from '.';
 import {
   background,
   border,
@@ -75,13 +81,22 @@ export function useCurrentMode(mode?: ColorModes) {
 
 export const VariableProvider = styled(
   'div',
-  styledOptions(['variables', 'alwaysSetVariables'])
+  styledOptions(['styles', 'theme', 'variables', 'alwaysSetVariables'])
 )<
   StyleProps<typeof providerProps> & {
+    styles: (theme: Theme) => SerializedStyles;
+    theme?: Theme;
     variables?: CSSObject;
     alwaysSetVariables?: boolean;
   }
->(({ variables }) => variables, css({ textColor: 'text' }), providerProps);
+>(
+  ({ styles, theme, variables }) => [
+    variables,
+    styles(theme),
+    css({ textColor: 'text' }),
+  ],
+  providerProps
+);
 
 export const ColorMode = forwardRef<
   HTMLDivElement,
@@ -115,7 +130,13 @@ export const ColorMode = forwardRef<
       : pick(variables, ['--color-background-current']);
 
     return (
-      <VariableProvider {...rest} variables={vars} bg={contextBg} ref={ref}>
+      <VariableProvider
+        {...rest}
+        variables={vars}
+        bg={contextBg}
+        styles={scrollbarStyles}
+        ref={ref}
+      >
         <Scrollbars />
         {children}
       </VariableProvider>
@@ -129,6 +150,7 @@ export const ColorMode = forwardRef<
         variables={variables}
         bg={contextBg}
         ref={ref}
+        styles={scrollbarStyles}
       >
         <Scrollbars />
         {children}

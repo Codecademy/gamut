@@ -1,36 +1,41 @@
-import { css, Global } from '@emotion/react';
+import { css, Global, Theme, useTheme } from '@emotion/react';
 import React from 'react';
 
-import { useColorModes } from '../ColorMode';
+export const scrollbarStyles = (theme: Theme) => {
+  const colors = theme.modes[theme.mode];
+  const getColor = theme._getColorValue;
+
+  return css({
+    scrollbarColor: `${getColor(colors.scrollbar)} ${getColor(
+      colors['background-current']
+    )}`,
+    scrollbarWidth: `thin`,
+
+    '&::-webkit-scrollbar': {
+      background: `transparent`,
+      width: `.75em`,
+    },
+
+    '&::-webkit-scrollbar-track': {
+      background: `${getColor(colors['background-current'])}`,
+    },
+
+    '&::-webkit-scrollbar-thumb': {
+      backgroundColor: `${getColor(colors.scrollbar)}`,
+      borderRadius: `20px`,
+      border: `3px solid ${getColor(colors['background-current'])}`,
+    },
+  });
+};
 
 export const Scrollbars = () => {
-  const [, activeColors, , getColorValue] = useColorModes();
+  const theme = useTheme();
 
   return (
     <Global
-      styles={css`
-        * {
-          scrollbar-color: ${getColorValue(activeColors.scrollbar)}
-            ${getColorValue(activeColors['background-current'])};
-          scrollbar-width: thin;
-        }
-
-        /* Works on Chrome, Edge, and Safari */
-        *::-webkit-scrollbar {
-          background: transparent;
-          width: 12px;
-        }
-
-        *::-webkit-scrollbar-track {
-          background: ${getColorValue(activeColors['background-current'])};
-        }
-
-        *::-webkit-scrollbar-thumb {
-          background-color: ${getColorValue(activeColors.scrollbar)};
-          border-radius: 20px;
-          border: 3px solid ${getColorValue(activeColors['background-current'])};
-        }
-      `}
+      styles={{
+        [`*`]: scrollbarStyles(theme),
+      }}
     />
   );
 };
