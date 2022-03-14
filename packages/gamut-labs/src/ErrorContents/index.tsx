@@ -16,8 +16,8 @@ export const ErrorContents: React.FC<ErrorContentsProps> = ({
       Something has gone wrong
     </Text>
     <Text as="p" my={16}>
-      We&apos;re sorry, and we are working our best to fix this. In the
-      meantime, have you tried the following?
+      We&apos;re sorry, and our best are working to fix this. In the meantime,
+      have you tried the following?
     </Text>
     <Box as="ul">
       <li>Refreshing this page.</li>

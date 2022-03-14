@@ -16,7 +16,7 @@ export const MenuItem = React.forwardRef<
     ComponentProps<typeof ListItem>,
     'variant' | 'selected' | 'active-navlink'
   > &
-    Partial<Pick<HTMLAnchorElement, 'href' | 'target'>> & {
+    Partial<Pick<HTMLAnchorElement, 'href' | 'target' | 'rel'>> & {
       icon?: React.ComponentType<GamutIconProps>;
     }
 >(({ href, target, children, active, icon: Icon, ...props }, ref) => {
