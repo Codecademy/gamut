@@ -208,6 +208,13 @@ var test = true;
       expect(wrapper.text().trim()).toEqual(expectedText);
     });
 
+    it('doesnt error on empty links', () => {
+      const text = '[link]()';
+      const expectedText = `link`;
+      const { wrapper } = renderWrapper({ text });
+      expect(wrapper.text().trim()).toEqual(expectedText);
+    });
+
     it('Adds rel="noopener" to external links', () => {
       const { wrapper } = renderWrapper({
         text: `<a href="http://google.com">google</a>`,
