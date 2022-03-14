@@ -51,13 +51,19 @@ export type CurriculumCardProps = SubtitleProps & {
    */
   description?: string;
   /**
+   * allows description to be shown in card body.
+   */
+  showDescription?: boolean;
+  /**
    * career path cards are displayed with a variant style / decorative element
    */
   showCareerPathVariant?: boolean;
 };
 
 const LineDecoration = styled(Box)`
-  border-top: 1px solid ${theme.colors['navy-200']};
+  border-top: 1px solid
+    ${({ inProgress }: { inProgress?: boolean }) =>
+      inProgress ? theme.colors.navy : theme.colors['navy-200']};
 `;
 
 export const CurriculumCard: React.FC<CurriculumCardProps> = ({
@@ -78,12 +84,12 @@ export const CurriculumCard: React.FC<CurriculumCardProps> = ({
   showCareerPathVariant,
   showAltSubtitle = false,
   footerTextVariant = 'enrolled',
+  showDescription,
 }) => {
   const boxVariant = progressState && cardStyles[progressState];
   const mode = progressState === 'completed' ? 'dark' : 'light';
 
-  const isCareerPathVariant =
-    text === 'Career Path' && showCareerPathVariant && !progressState;
+  const isCareerPathVariant = text === 'Career Path' && showCareerPathVariant;
 
   return (
     <Card
@@ -122,8 +128,10 @@ export const CurriculumCard: React.FC<CurriculumCardProps> = ({
           />
         </FlexBox>
       )}
-      {!progressState && isCareerPathVariant && <LineDecoration my={8} />}
-      {description && (
+      {isCareerPathVariant && (
+        <LineDecoration inProgress={progressState === 'inProgress'} my={8} />
+      )}
+      {(isCareerPathVariant || showDescription) && (
         <Text pt={8} pb={16} fontSize={14}>
           {description}
         </Text>

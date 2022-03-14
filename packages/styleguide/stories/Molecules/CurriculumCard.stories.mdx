@@ -1,3 +1,4 @@
+import { Column, LayoutGrid } from '@codecademy/gamut/src';
 import { CurriculumCard } from '@codecademy/gamut-labs/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/blocks';
@@ -120,7 +121,7 @@ If `showAltSubtitle` is true, only the scope will render in the subtitle.
 
 ## Curriculum Card with Description
 
-If `description` prop is populated, the description will render underneath the subtitle.
+If `showDescription` prop is `true`, the description will render underneath the subtitle.
 
 <Canvas>
   <Story
@@ -133,6 +134,7 @@ If `description` prop is populated, the description will render underneath the s
       },
       description:
         'Some description text can give the user more information on the curriculum.',
+      showDescription: true,
     }}
   >
     {(args) => <CurriculumCard {...args} />}
@@ -161,6 +163,26 @@ Displays a different style of career card when the `showCareerPathVariant` prop 
       showCareerPathVariant: true,
     }}
   >
-    {(args) => <CurriculumCard {...args} />}
+    {(args) => (
+      <LayoutGrid columnGap={24}>
+        <Column size={4}>
+          <CurriculumCard {...args} />
+        </Column>
+        <Column size={4}>
+          <CurriculumCard
+            {...args}
+            progressState="inProgress"
+            image="https://static-assets.codecademy.com/components/curriculum/path/front-end-engineer-career-path/curriculum-card-inProgress.svg"
+          />
+        </Column>
+        <Column size={4}>
+          <CurriculumCard
+            {...args}
+            progressState="completed"
+            image="https://static-assets.codecademy.com/components/curriculum/path/front-end-engineer-career-path/curriculum-card-complete.svg"
+          />
+        </Column>
+      </LayoutGrid>
+    )}
   </Story>
 </Canvas>
