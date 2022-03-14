@@ -81,10 +81,10 @@ export function useCurrentMode(mode?: ColorModes) {
 
 export const VariableProvider = styled(
   'div',
-  styledOptions(['styles', 'theme', 'variables', 'alwaysSetVariables'])
+  styledOptions(['variables', 'alwaysSetVariables'])
 )<
   StyleProps<typeof providerProps> & {
-    styles: (theme: Theme) => SerializedStyles;
+    styles?: (theme: Theme) => SerializedStyles;
     theme?: Theme;
     variables?: CSSObject;
     alwaysSetVariables?: boolean;
@@ -92,7 +92,7 @@ export const VariableProvider = styled(
 >(
   ({ styles, theme, variables }) => [
     variables,
-    styles(theme),
+    styles ? styles(theme) : undefined,
     css({ textColor: 'text' }),
   ],
   providerProps
