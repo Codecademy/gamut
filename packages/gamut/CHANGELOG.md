@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [45.2.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@45.1.3...@codecademy/gamut@45.2.0) (2022-03-15)
+
+
+### Features
+
+* **FormValues:** adding form type  ([46dc9d9](https://github.com/Codecademy/gamut/commit/46dc9d9ebbc8525d8946a2106c8e66e5efeaa4a4))
+
+
+
 ### [45.1.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@45.1.2...@codecademy/gamut@45.1.3) (2022-03-11)
 
 
