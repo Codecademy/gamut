@@ -3,6 +3,57 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [45.1.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@45.1.2...@codecademy/gamut@45.1.3) (2022-03-11)
+
+
+### Bug Fixes
+
+* Allow links with no href in Markdown ([ea48d36](https://github.com/Codecademy/gamut/commit/ea48d369058eb9d52fae15deb3e619196019d786))
+
+
+
+### [45.1.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@45.1.1...@codecademy/gamut@45.1.2) (2022-03-10)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [45.1.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@45.1.0...@codecademy/gamut@45.1.1) (2022-03-10)
+
+
+### Bug Fixes
+
+* Markdown Updates ([02e79f9](https://github.com/Codecademy/gamut/commit/02e79f9961535d3a1c40e440b8580c132dee9ef1))
+
+
+
+## [45.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@45.0.2...@codecademy/gamut@45.1.0) (2022-03-10)
+
+
+### Features
+
+* **MenuItem:** add rel to MenuItem anchor type ([6d32743](https://github.com/Codecademy/gamut/commit/6d3274311c7e09c2f6f331fc5b731a32eb14bf35))
+
+
+
+### [45.0.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@45.0.1...@codecademy/gamut@45.0.2) (2022-03-08)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [45.0.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@45.0.0...@codecademy/gamut@45.0.1) (2022-03-08)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
 ## [45.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@44.7.1...@codecademy/gamut@45.0.0) (2022-03-03)
 
 
