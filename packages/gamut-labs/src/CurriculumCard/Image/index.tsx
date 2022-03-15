@@ -32,13 +32,13 @@ const getPlaceholderAssetPath = (pathProgressState?: ProgressState) => {
 export type ImageProps = {
   image: string;
   progressState?: ProgressState;
-  small?: boolean;
+  isSmall?: boolean;
 };
 
 export const Image: React.FC<ImageProps> = ({
   image,
   progressState,
-  small,
+  isSmall,
 }) => {
   const [ready, setReady] = useState(false);
   const [error, setError] = useState(false);
@@ -62,7 +62,7 @@ export const Image: React.FC<ImageProps> = ({
 
   return (
     <StyledImg
-      variant={small ? 'small' : 'default'}
+      variant={isSmall ? 'small' : 'default'}
       src={image}
       alt=""
       onError={addDefaultImageSource}

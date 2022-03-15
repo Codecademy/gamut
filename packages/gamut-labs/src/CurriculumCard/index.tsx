@@ -139,7 +139,7 @@ export const CurriculumCard: React.FC<CurriculumCardProps> = ({
       {isFullSize && image && (
         <FlexBox m="auto" center pt={16} pb={isCareerPathVariant ? 32 : 0}>
           <Image
-            small={isCareerPathVariant}
+            isSmall={isCareerPathVariant}
             image={image}
             progressState={progressState}
           />
