@@ -16,6 +16,7 @@ export interface BackgroundProps
     'mode' | 'alwaysSetVariables' | 'bg'
   > {
   bg: Colors;
+  isGlobal?: boolean;
 }
 
 const isColorAlias = (
@@ -26,7 +27,7 @@ const isColorAlias = (
 };
 
 export const Background = forwardRef<HTMLDivElement, BackgroundProps>(
-  ({ bg, ...rest }, ref) => {
+  ({ bg, isGlobal = false, ...rest }, ref) => {
     const [active, activeColors, modes, getColorValue] = useColorModes();
 
     /** If a color alias was used then look up the true color key from the active mode */
@@ -83,6 +84,14 @@ export const Background = forwardRef<HTMLDivElement, BackgroundProps>(
       return highestContrastMode;
     }, [modes, active, getTextContrast]);
 
-    return <ColorMode {...rest} mode={accessibleMode} bg={bg} ref={ref} />;
+    return (
+      <ColorMode
+        {...rest}
+        mode={accessibleMode}
+        bg={bg}
+        ref={ref}
+        isGlobal={isGlobal}
+      />
+    );
   }
 );

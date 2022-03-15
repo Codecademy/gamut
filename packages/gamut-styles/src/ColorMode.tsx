@@ -38,6 +38,7 @@ export type ColorAlias = keyof ColorModeShape;
 export type ColorModeProps = {
   mode: ColorModes;
   bg?: Colors;
+  isGlobal?: boolean;
 };
 
 export const providerProps = variance.compose(
@@ -101,7 +102,7 @@ export const VariableProvider = styled(
 export const ColorMode = forwardRef<
   HTMLDivElement,
   Omit<ComponentProps<typeof VariableProvider>, 'bg'> & ColorModeProps
->(({ mode, alwaysSetVariables, bg, children, ...rest }, ref) => {
+>(({ mode, alwaysSetVariables, bg, isGlobal, children, ...rest }, ref) => {
   const theme = useTheme();
   const { modes, mode: active, colors } = theme;
   const contextBg = bg ? 'background-current' : undefined;
@@ -137,7 +138,7 @@ export const ColorMode = forwardRef<
         styles={scrollbarStyles}
         ref={ref}
       >
-        <Scrollbars />
+        {isGlobal && <Scrollbars />}
         {children}
       </VariableProvider>
     );
@@ -152,7 +153,7 @@ export const ColorMode = forwardRef<
         ref={ref}
         styles={scrollbarStyles}
       >
-        <Scrollbars />
+        {isGlobal && <Scrollbars />}
         {children}
       </VariableProvider>
     </ThemeProvider>
