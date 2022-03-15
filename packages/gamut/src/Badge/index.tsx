@@ -21,7 +21,7 @@ const colorVariants = variant({
       textColor: 'background',
     },
     yellow: {
-      bg: 'feedback-warning',
+      bg: 'yellow',
       textColor: 'navy',
     },
     grey: {
