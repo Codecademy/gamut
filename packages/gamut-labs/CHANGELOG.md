@@ -3,6 +3,106 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [30.2.6](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@30.2.5...@codecademy/gamut-labs@30.2.6) (2022-03-15)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [30.2.5](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@30.2.4...@codecademy/gamut-labs@30.2.5) (2022-03-15)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [30.2.4](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@30.2.3...@codecademy/gamut-labs@30.2.4) (2022-03-11)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [30.2.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@30.2.2...@codecademy/gamut-labs@30.2.3) (2022-03-10)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [30.2.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@30.2.1...@codecademy/gamut-labs@30.2.2) (2022-03-10)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [30.2.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@30.2.0...@codecademy/gamut-labs@30.2.1) (2022-03-10)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+## [30.2.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@30.1.2...@codecademy/gamut-labs@30.2.0) (2022-03-09)
+
+
+### Features
+
+* **PauseableImage:** :sparkles: Creating new pausable image component ([00c233d](https://github.com/Codecademy/gamut/commit/00c233d56498b819546b41c4dfba872618283044))
+
+
+
+### [30.1.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@30.1.1...@codecademy/gamut-labs@30.1.2) (2022-03-08)
+
+
+### Bug Fixes
+
+* **LayoutMenu:** overflow ([1ab3650](https://github.com/Codecademy/gamut/commit/1ab3650442c233360cb30e9b71becb1b2541e90e))
+
+
+
+### [30.1.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@30.1.0...@codecademy/gamut-labs@30.1.1) (2022-03-08)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+## [30.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@30.0.2...@codecademy/gamut-labs@30.1.0) (2022-03-08)
+
+
+### Features
+
+* **ErrorContents:** update copy ([f7a286c](https://github.com/Codecademy/gamut/commit/f7a286c6b0805cc1106fb271047aabeb1a35b336))
+
+
+
+### [30.0.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@30.0.1...@codecademy/gamut-labs@30.0.2) (2022-03-08)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [30.0.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@30.0.0...@codecademy/gamut-labs@30.0.1) (2022-03-07)
+
+
+### Bug Fixes
+
+* **AvatarChooser:** update to proper rhf v7 syntax ([c8d3f9a](https://github.com/Codecademy/gamut/commit/c8d3f9a1094d5848e0b3c92c15067dd7b9615336))
+
+
+
 ## [30.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@29.3.8...@codecademy/gamut-labs@30.0.0) (2022-03-03)
 
 

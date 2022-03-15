@@ -43,3 +43,4 @@ export * from './SocialMediaSharing';
 export * from './TabsExperimental';
 export * from './PageAlerts';
 export * from './InfoCard';
+export * from './PausableImage';
