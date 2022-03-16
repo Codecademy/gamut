@@ -1,5 +1,6 @@
 import { Box } from '@codecademy/gamut/src';
 import { GlobalHeader } from '@codecademy/gamut-labs/src';
+import { Background } from '@codecademy/gamut-styles/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
@@ -47,7 +48,8 @@ import LinkTo from '@storybook/addon-links/react';
     {(args) => (
       <Box position="relative" zIndex={0}>
         <GlobalHeader {...args} />
-        <Box height="120vh" bg="background-current" />
+        <Background bg="background-current" isGlobal />
+        <Box height="120vh" />
       </Box>
     )}
   </Story>
