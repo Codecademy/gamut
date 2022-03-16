@@ -1,6 +1,6 @@
 import { Box, FlexBox } from '@codecademy/gamut';
 import styled from '@emotion/styled';
-import { uniqueId } from 'lodash';
+import { times, uniqueId } from 'lodash';
 import React from 'react';
 
 export type DifficultyProps = {
@@ -29,7 +29,7 @@ export const Difficulty: React.FC<DifficultyProps> = ({ difficulty }) => {
 
   return (
     <FlexBox fontSize={14} alignItems="center">
-      {[...Array(Number(currentDifficulty) + 1)].map(() => (
+      {times(Number(currentDifficulty) + 1).map(() => (
         <DifficultySpan key={uniqueId()} bg="navy" />
       ))}
       {DifficultyString[currentDifficulty]}
