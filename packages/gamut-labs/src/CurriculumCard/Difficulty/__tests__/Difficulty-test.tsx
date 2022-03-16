@@ -11,4 +11,8 @@ describe('CurriculumCard Difficulty', () => {
     const { view } = setupRtl(Difficulty, { difficulty: 1 })();
     view.getByText('Intermediate');
   });
+  it('displays advance difficulty', () => {
+    const { view } = setupRtl(Difficulty, { difficulty: 2 })();
+    view.getByText('Advanced');
+  });
 });
