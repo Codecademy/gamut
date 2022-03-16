@@ -1,9 +1,10 @@
 import { Box, FlexBox } from '@codecademy/gamut';
 import styled from '@emotion/styled';
+import { uniqueId } from 'lodash';
 import React from 'react';
 
 export type DifficultyProps = {
-  difficulty: 0 | 1;
+  difficulty: 0 | 1 | 2;
 };
 
 const DifficultySpan = styled(Box)`
@@ -17,10 +18,21 @@ const DifficultySpan = styled(Box)`
   border: 1px solid ${({ theme }) => theme.colors.navy};
 `;
 
-export const Difficulty: React.FC<DifficultyProps> = ({ difficulty }) => (
-  <FlexBox fontSize={14} alignItems="center">
-    <DifficultySpan bg={difficulty >= 0 ? 'navy' : 'white'} />
-    <DifficultySpan bg={difficulty >= 1 ? 'navy' : 'white'} />
-    {difficulty === 0 ? 'Beginner friendly' : 'Intermediate'}
-  </FlexBox>
-);
+enum DifficultyString {
+  'Beginner friendly',
+  'Intermediate',
+  'Advanced',
+}
+
+export const Difficulty: React.FC<DifficultyProps> = ({ difficulty }) => {
+  const currentDifficulty = difficulty || 0;
+
+  return (
+    <FlexBox fontSize={14} alignItems="center">
+      {[...Array(Number(currentDifficulty) + 1)].map(() => (
+        <DifficultySpan key={uniqueId()} bg="navy" />
+      ))}
+      {DifficultyString[currentDifficulty]}
+    </FlexBox>
+  );
+};
