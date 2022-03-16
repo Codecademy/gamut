@@ -24,15 +24,11 @@ enum DifficultyString {
   'Advanced',
 }
 
-export const Difficulty: React.FC<DifficultyProps> = ({ difficulty }) => {
-  const currentDifficulty = difficulty || 0;
-
-  return (
-    <FlexBox fontSize={14} alignItems="center">
-      {times(Number(currentDifficulty) + 1).map(() => (
-        <DifficultySpan key={uniqueId()} bg="navy" />
-      ))}
-      {DifficultyString[currentDifficulty]}
-    </FlexBox>
-  );
-};
+export const Difficulty: React.FC<DifficultyProps> = ({ difficulty }) => (
+  <FlexBox fontSize={14} alignItems="center">
+    {times(difficulty + 1).map(() => (
+      <DifficultySpan key={uniqueId()} bg="navy" />
+    ))}
+    {DifficultyString[difficulty]}
+  </FlexBox>
+);

@@ -1,7 +1,7 @@
 import { Column, LayoutGrid } from '@codecademy/gamut/src';
 import { CurriculumCard } from '@codecademy/gamut-labs/src';
 import title from '@codecademy/macros/lib/title.macro';
-import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/blocks';
+import { Canvas, Meta, Props, Story } from '@storybook/addon-docs';
 
 <Meta
   title={title}
@@ -13,6 +13,15 @@ import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/blocks';
     tagColor: 'blue',
     scope: { Lesson: 24 },
     text: 'Course',
+  }}
+  argTypes={{
+    difficulty: {
+      type: 'number',
+      control: {
+        type: 'radio',
+        options: [0, 1, 2],
+      },
+    },
   }}
   parameters={{
     subtitle: `Curriculum cards for paths and courses.`,
