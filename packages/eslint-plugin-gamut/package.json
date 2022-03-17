@@ -8,7 +8,7 @@
     "gamut-styles"
   ],
   "name": "eslint-plugin-gamut",
-  "version": "3.0.2",
+  "version": "0.0.1",
   "license": "MIT",
   "main": "./dist/index.js",
   "module": "dist/index.js",
