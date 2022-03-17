@@ -10,7 +10,7 @@ import { MadeIn } from './MadeIn';
 const LegalLocalContainer = styled.div`
   border-top: 1px solid ${themed('colors.navy')};
   font-size: 0.875rem;
-  padding: 1rem 0 0.5rem;d
+  padding: 1rem 0 0.5rem;
   margin: 0;
 
   ${theme.breakpoints.md} {
