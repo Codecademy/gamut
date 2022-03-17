@@ -28,8 +28,7 @@
   },
   "types": "./dist/index.d.ts",
   "dependencies": {
-    "@typescript-eslint/utils": "^5.15.0",
-    "eslint": "^8.4.1"
+    "@typescript-eslint/utils": "^5.15.0"
   },
   "devDependencies": {
     "@types/eslint": "^8.2.1"
