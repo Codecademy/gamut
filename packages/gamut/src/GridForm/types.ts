@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { RegisterOptions, UseFormMethods } from 'react-hook-form';
+import { RegisterOptions, UseFormReturn } from 'react-hook-form';
 
 import { CheckboxPaddingProps } from '../Form/types';
 import { ColumnProps } from '../Layout';
@@ -49,7 +49,7 @@ export type GridFormCustomFieldProps = {
   className?: string;
   error?: string;
   field: GridFormCustomField | GridFormCustomGroupField;
-  register: UseFormMethods['register'];
+  register: UseFormReturn['register'];
   setValue: (value: any) => void;
 };
 

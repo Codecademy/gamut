@@ -1,3 +1,4 @@
+import { useCurrentMode } from '@codecademy/gamut-styles';
 import { useTheme } from '@emotion/react';
 import cx from 'classnames';
 import React from 'react';
@@ -11,8 +12,9 @@ export type LoadingProps = {
 
 export const Loading: React.FC<LoadingProps> = ({ className }) => {
   const { colors } = useTheme();
-  const color1 = colors['gray-300'];
-  const color2 = colors['blue-800'];
+  const mode = useCurrentMode();
+  const color1 = mode === 'light' ? colors['gray-300'] : colors['navy-600'];
+  const color2 = mode === 'light' ? colors['blue-800'] : colors['navy-200'];
 
   const icon = (
     <svg

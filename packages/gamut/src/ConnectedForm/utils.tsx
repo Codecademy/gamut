@@ -30,7 +30,7 @@ interface UseConnectedFormProps<
   validationRules: Partial<Rules>;
   watchedFields?: {
     fields: (keyof Values)[];
-    watchHandler: (arg0: Partial<Values>) => void;
+    watchHandler: (arg0: (keyof Values)[]) => void;
   };
 }
 
@@ -48,7 +48,7 @@ export const useConnectedForm = <
   defaultValues,
   validationRules,
   watchedFields,
-}: UseConnectedFormProps<Values, ValidationRules>) => {
+}: UseConnectedFormProps<Values, Partial<ValidationRules>>) => {
   return useMemo(
     () => ({
       ConnectedFormGroup: ConnectedFormGroup as ConnectedGroupStrictProps<Values>,
@@ -83,23 +83,23 @@ export const useFormState = () => {
   // eslint-disable-next-line @typescript-eslint/unbound-method
   const {
     control,
-    errors,
     formState,
+    getValues,
     register,
+    reset,
     setError,
     setValue,
     watch,
-    reset,
   } = useFormContext();
 
   const {
     disableFieldsOnSubmit,
     showRequired,
-    wasSubmitSuccessful,
     validationRules,
+    wasSubmitSuccessful,
   } = useContext(FormPropsContext);
 
-  const { isSubmitting, isDirty } = formState;
+  const { isSubmitting, isDirty, errors } = formState;
   const isSubmitSuccessful = submitSuccessStatus(
     wasSubmitSuccessful,
     formState.isSubmitSuccessful
@@ -109,16 +109,17 @@ export const useFormState = () => {
     control,
     errors,
     formState,
-    isDisabled: (isSubmitting || isSubmitSuccessful) && disableFieldsOnSubmit,
+    getValues,
     isDirty,
+    isDisabled: (isSubmitting || isSubmitSuccessful) && disableFieldsOnSubmit,
     register,
+    reset,
     setError,
     setValue,
     showRequired,
+    useFieldArray,
     validationRules,
     watch,
-    reset,
-    useFieldArray,
   };
 };
 
@@ -154,7 +155,8 @@ export const useField = ({ name, disabled, loading }: useFieldProps) => {
       validationRules[name as keyof typeof validationRules]) ??
     undefined;
 
-  const ref = register(validation);
+  const ref = register(name, validation);
+
   return {
     control,
     error,
@@ -182,7 +184,11 @@ export const useSubmitState = ({ loading, disabled }: SubmitContextProps) => {
     typeof loading === 'function' ? loading(formState) : loading;
 
   const isDisabled =
-    typeof disabled === 'function' ? disabled(formState) : disabled;
+    typeof disabled === 'function'
+      ? disabled(formState)
+      : disabled === undefined
+      ? formState.isValid
+      : disabled;
 
   return { isLoading, isDisabled };
 };

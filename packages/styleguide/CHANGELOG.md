@@ -3,6 +3,181 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [55.1.4](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@55.1.3...@codecademy/styleguide@55.1.4) (2022-03-11)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [55.1.3](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@55.1.2...@codecademy/styleguide@55.1.3) (2022-03-10)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [55.1.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@55.1.1...@codecademy/styleguide@55.1.2) (2022-03-10)
+
+
+### Bug Fixes
+
+* Markdown Updates ([02e79f9](https://github.com/Codecademy/gamut/commit/02e79f9961535d3a1c40e440b8580c132dee9ef1))
+
+
+
+### [55.1.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@55.1.0...@codecademy/styleguide@55.1.1) (2022-03-10)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [55.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@55.0.5...@codecademy/styleguide@55.1.0) (2022-03-09)
+
+
+### Features
+
+* **PauseableImage:** :sparkles: Creating new pausable image component ([00c233d](https://github.com/Codecademy/gamut/commit/00c233d56498b819546b41c4dfba872618283044))
+
+
+
+### [55.0.5](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@55.0.4...@codecademy/styleguide@55.0.5) (2022-03-08)
+
+
+### Bug Fixes
+
+* **LayoutMenu:** overflow ([1ab3650](https://github.com/Codecademy/gamut/commit/1ab3650442c233360cb30e9b71becb1b2541e90e))
+
+
+
+### [55.0.4](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@55.0.3...@codecademy/styleguide@55.0.4) (2022-03-08)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [55.0.3](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@55.0.2...@codecademy/styleguide@55.0.3) (2022-03-08)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [55.0.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@55.0.1...@codecademy/styleguide@55.0.2) (2022-03-08)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [55.0.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@55.0.0...@codecademy/styleguide@55.0.1) (2022-03-07)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [55.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@54.3.8...@codecademy/styleguide@55.0.0) (2022-03-03)
+
+
+### ⚠ BREAKING CHANGES
+
+* **ConnectedForm:** update react-hook-form to v7
+
+### Features
+
+* **ConnectedForm:** update react-hook-form to v7 ([b7671a6](https://github.com/Codecademy/gamut/commit/b7671a6c4fbf295c58e50c95179574b5ef1c9f6c))
+
+
+
+### [54.3.8](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@54.3.7...@codecademy/styleguide@54.3.8) (2022-02-28)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [54.3.7](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@54.3.6...@codecademy/styleguide@54.3.7) (2022-02-28)
+
+
+### Bug Fixes
+
+* **InfoCard:** Fix placement of footer items ([#2268](https://github.com/Codecademy/gamut/issues/2268)) ([49247b3](https://github.com/Codecademy/gamut/commit/49247b305ddc6a3b7f3f39804d52e163aee1bea8))
+
+
+
+### [54.3.6](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@54.3.5...@codecademy/styleguide@54.3.6) (2022-02-25)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [54.3.5](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@54.3.4...@codecademy/styleguide@54.3.5) (2022-02-23)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [54.3.4](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@54.3.3...@codecademy/styleguide@54.3.4) (2022-02-18)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [54.3.3](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@54.3.2...@codecademy/styleguide@54.3.3) (2022-02-16)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [54.3.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@54.3.1...@codecademy/styleguide@54.3.2) (2022-02-09)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [54.3.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@54.3.0...@codecademy/styleguide@54.3.1) (2022-02-08)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [54.3.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@54.2.1...@codecademy/styleguide@54.3.0) (2022-02-08)
+
+
+### Features
+
+* **Loading:** add dark mode ([7f5c97d](https://github.com/Codecademy/gamut/commit/7f5c97d746f9b293700ff230beba199c7178a19f))
+
+
+### Bug Fixes
+
+* Markdown details element styles ([5aa71ad](https://github.com/Codecademy/gamut/commit/5aa71ad077bfaf17c3ee154d1a25bb130fdc66d5))
+
+
+
 ### [54.2.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@54.2.0...@codecademy/styleguide@54.2.1) (2022-02-04)
 
 **Note:** Version bump only for package @codecademy/styleguide

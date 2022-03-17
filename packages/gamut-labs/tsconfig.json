@@ -4,7 +4,8 @@
     "../../typings/*.d.ts",
     "./src/**/*.ts",
     "./src/**/*.tsx",
-    "../../packages/gamut-styles/dist/typings/theme.d.ts"
+    "../../packages/gamut-styles/dist/typings/theme.d.ts",
+    "typings/react-freezeframe.d.ts"
   ],
   "compilerOptions": {
     "outDir": "./dist"
