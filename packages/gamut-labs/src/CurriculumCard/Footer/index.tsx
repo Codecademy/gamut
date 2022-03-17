@@ -20,7 +20,7 @@ export const Footer: React.FC<FooterProps> = ({
 }) => {
   if (progressState) {
     return (
-      <div>
+      <Box mt="auto">
         {progressState === 'completed' && (
           <Text fontSize={16} fontFamily="accent" textColor="yellow">
             Completed
@@ -41,7 +41,7 @@ export const Footer: React.FC<FooterProps> = ({
             <Text textColor="hyper">Keep Going</Text>
           </FlexBox>
         )}
-      </div>
+      </Box>
     );
   }
   if (beta) {
