@@ -1,20 +1,21 @@
-import { Box, FlexBox } from '@codecademy/gamut';
+import { Box, BoxProps } from '@codecademy/gamut';
 import { pxRem } from '@codecademy/gamut-styles';
 import { times, uniqueId } from 'lodash';
 import React from 'react';
 
-export type DifficultyProps = {
-  difficulty: 0 | 1 | 2;
-};
+export type DifficultyProps = BoxProps & { difficulty: 0 | 1 | 2 };
 
-enum DifficultyString {
+export enum DifficultyString {
   'Beginner friendly',
   'Intermediate',
   'Advanced',
 }
 
-export const Difficulty: React.FC<DifficultyProps> = ({ difficulty }) => (
-  <FlexBox fontSize={14} alignItems="center">
+export const Difficulty: React.FC<DifficultyProps> = ({
+  difficulty,
+  ...overrides
+}) => (
+  <>
     {times(difficulty + 1, () => (
       <Box
         width={pxRem(8)}
@@ -26,8 +27,9 @@ export const Difficulty: React.FC<DifficultyProps> = ({ difficulty }) => (
         border={1}
         key={uniqueId()}
         bg="navy"
+        {...overrides}
       />
     ))}
     {DifficultyString[difficulty]}
-  </FlexBox>
+  </>
 );

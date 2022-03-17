@@ -1,5 +1,6 @@
 import { Column, LayoutGrid } from '@codecademy/gamut/src';
 import { CurriculumCard } from '@codecademy/gamut-labs/src';
+import { Difficulty } from '@codecademy/gamut-labs/src/CurriculumCard/Difficulty';
 import title from '@codecademy/macros/lib/title.macro';
 import { Canvas, Meta, Props, Story } from '@storybook/addon-docs';
 
@@ -190,6 +191,35 @@ Displays a different style of career card when the `showCareerPathVariant` prop 
             progressState="completed"
             image="https://static-assets.codecademy.com/components/curriculum/path/front-end-engineer-career-path/curriculum-card-complete.svg"
           />
+        </Column>
+      </LayoutGrid>
+    )}
+  </Story>
+</Canvas>
+
+## Difficulty scale
+
+Displays the level of defiiculty of content based on a scale of `{0: Beginner, 1: Intermediate, 2: Advanced}`
+
+<Canvas withSource="closed">
+  <Story
+    name="Difficulty scale"
+    args={{
+      width: 10,
+      height: 10,
+      borderRadious: 10,
+    }}
+  >
+    {(args) => (
+      <LayoutGrid columnGap={24}>
+        <Column size={4} display="flex" alignItems="center" fontSize={14}>
+          <Difficulty {...args} />
+        </Column>
+        <Column size={4} display="flex" alignItems="center" fontSize={14}>
+          <Difficulty {...args} difficulty={1} />
+        </Column>
+        <Column size={4} display="flex" alignItems="center" fontSize={14}>
+          <Difficulty {...args} difficulty={2} />
         </Column>
       </LayoutGrid>
     )}
