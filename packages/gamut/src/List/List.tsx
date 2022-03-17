@@ -13,6 +13,7 @@ export interface ListProps extends AllListProps<ComponentProps<typeof ListEl>> {
   minHeight?: BoxProps['minHeight'];
   shadow?: boolean;
   emptyMessage?: React.ReactNode;
+  overflowHidden?: boolean;
 }
 
 export const List = forwardRef<HTMLUListElement, ListProps>(
@@ -28,6 +29,7 @@ export const List = forwardRef<HTMLUListElement, ListProps>(
       children,
       header,
       emptyMessage,
+      overflowHidden = false,
     },
     ref
   ) => {
@@ -49,7 +51,7 @@ export const List = forwardRef<HTMLUListElement, ListProps>(
             maxWidth={1}
             minHeight={minHeight}
             maxHeight={height}
-            overflow="auto"
+            overflow={overflowHidden ? 'hidden' : 'auto'}
           >
             {header}
             {isEmpty ? emptyMessage : listContent}
