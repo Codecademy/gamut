@@ -15,7 +15,7 @@ enum DifficultyString {
 
 export const Difficulty: React.FC<DifficultyProps> = ({ difficulty }) => (
   <FlexBox fontSize={14} alignItems="center">
-    {times(difficulty + 1).map(() => (
+    {times(difficulty + 1, () => (
       <Box
         width={pxRem(8)}
         height={pxRem(8)}
