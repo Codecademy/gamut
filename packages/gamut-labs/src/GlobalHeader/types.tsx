@@ -36,6 +36,7 @@ export type User = {
   proCheckoutUrl?: string;
   showProUpgrade?: boolean;
   showReferrals?: boolean;
+  useNewCatalogDropdown?: boolean;
 };
 
 type LoggedInHeader = BaseHeader & {
@@ -51,6 +52,7 @@ export type AnonHeader = BaseHeader & {
   redirectParam?: string;
   type: 'anon';
   variant?: AnonHeaderVariant;
+  user?: User;
 };
 
 export type FreeHeader = LoggedInHeader & {
@@ -63,4 +65,5 @@ export type ProHeader = LoggedInHeader & {
 
 export type LoadingHeader = BaseHeader & {
   type: 'loading';
+  user?: User;
 };
