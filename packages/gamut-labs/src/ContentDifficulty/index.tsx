@@ -3,7 +3,7 @@ import { pxRem } from '@codecademy/gamut-styles';
 import { times, uniqueId } from 'lodash';
 import React from 'react';
 
-export type DifficultyProps = BoxProps & { difficulty: 0 | 1 | 2 };
+export type ContentDifficultyProps = BoxProps & { difficulty: 0 | 1 | 2 };
 
 export enum DifficultyString {
   'Beginner friendly',
@@ -11,9 +11,9 @@ export enum DifficultyString {
   'Advanced',
 }
 
-export const Difficulty: React.FC<DifficultyProps> = ({
+export const ContentDifficulty: React.FC<ContentDifficultyProps> = ({
   difficulty,
-  ...overrides
+  ...overrides // styling overrides to change the appearance of the difficulty indicators
 }) => (
   <>
     {times(difficulty + 1, () => (

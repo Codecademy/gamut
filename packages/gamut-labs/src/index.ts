@@ -4,6 +4,7 @@ export * from './Avatar';
 export * from './AvatarChooser';
 export * from './Byline';
 export * from './Breadcrumbs';
+export * from './ContentDifficulty';
 export * from './CurriculumCard';
 export * from './Drawer';
 export * from './EditorialImage';

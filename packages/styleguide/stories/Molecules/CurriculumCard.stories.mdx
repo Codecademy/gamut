@@ -1,6 +1,5 @@
 import { Column, LayoutGrid } from '@codecademy/gamut/src';
-import { CurriculumCard } from '@codecademy/gamut-labs/src';
-import { Difficulty } from '@codecademy/gamut-labs/src/CurriculumCard/Difficulty';
+import { ContentDifficulty, CurriculumCard } from '@codecademy/gamut-labs/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { Canvas, Meta, Props, Story } from '@storybook/addon-docs';
 
@@ -213,13 +212,13 @@ Displays the level of defiiculty of content based on a scale of `{0: Beginner, 1
     {(args) => (
       <LayoutGrid columnGap={24}>
         <Column size={4} display="flex" alignItems="center" fontSize={14}>
-          <Difficulty {...args} />
+          <ContentDifficulty {...args} />
         </Column>
         <Column size={4} display="flex" alignItems="center" fontSize={14}>
-          <Difficulty {...args} difficulty={1} />
+          <ContentDifficulty {...args} difficulty={1} />
         </Column>
         <Column size={4} display="flex" alignItems="center" fontSize={14}>
-          <Difficulty {...args} difficulty={2} />
+          <ContentDifficulty {...args} difficulty={2} />
         </Column>
       </LayoutGrid>
     )}
