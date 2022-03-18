@@ -2,8 +2,8 @@ import { FlexBox, Text } from '@codecademy/gamut';
 import { capitalize } from 'lodash';
 import React from 'react';
 
-import { ContentDifficulty } from '../../Difficulty';
-import { ContentDifficultyProps } from '../../Difficulty/types';
+import { ContentDifficulty } from '../../ContentDifficulty';
+import { ContentDifficultyProps } from '../../ContentDifficulty/types';
 import { pluralizeWithS } from './helpers';
 
 export type SubtitleProps = Pick<ContentDifficultyProps, 'difficulty'> & {
