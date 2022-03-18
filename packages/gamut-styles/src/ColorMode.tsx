@@ -138,7 +138,6 @@ export const ColorMode = forwardRef<
         styles={scrollbarStyles}
         ref={ref}
       >
-        {isGlobal && <Scrollbars />}
         {children}
       </VariableProvider>
     );
@@ -153,7 +152,7 @@ export const ColorMode = forwardRef<
         ref={ref}
         styles={scrollbarStyles}
       >
-        {isGlobal && <Scrollbars />}
+        <Scrollbars />
         {children}
       </VariableProvider>
     </ThemeProvider>

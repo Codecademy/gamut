@@ -72,17 +72,17 @@ const Page = ({ children }) => (
 );
 ```
 
-## `useCurrentMode` | `useColorMode`
+## `useCurrentMode` | `useColorModes`
 
 For situations where you need to access the current mode in JS, the value of always present on the emotion theme context. If you need the full theme you may use the built in `useTheme` hook from `@emotion/react`. However for cases that are specific to modes only we expose 2 hooks to help.
 
-- `useColorMode()`: If you need access to all modes and their variables this hook will return a tuple of `[mode, modeColors, modes]`.
+- `useColorModes()`: If you need access to all modes and their variables this hook will return a tuple of `[mode, modeColors, modes]`.
 - `useCurrentMode()`: For simpler usages where you want to get the default mode, this hook returns the key of the active mode.
 
 ```tsx
-import { useColorMode, useCurrentMode } from '@codecademy/gamut-styles';
+import { useColorModes, useCurrentMode } from '@codecademy/gamut-styles';
 
-const [current, currentColors, modes] = useColorMode();
+const [current, currentColors, modes] = useColorModes();
 
 const current = useCurrentMode();
 ```

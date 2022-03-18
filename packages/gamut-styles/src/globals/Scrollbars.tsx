@@ -3,14 +3,9 @@ import React from 'react';
 
 export const scrollbarStyles = (theme: Theme) => {
   const colors = theme.modes[theme.mode];
-  const getColor = theme._getColorValue;
 
   return css({
-    scrollbarColor: `var(--color-${colors.scrollbar}, ${getColor(
-      colors.scrollbar
-    )}) var(--color-${colors['background-current']}, ${getColor(
-      colors['background-current']
-    )})`,
+    scrollbarColor: `var(--color-${colors.scrollbar}) var(--color-${colors['background-current']})`,
     scrollbarWidth: `thin`,
 
     '&::-webkit-scrollbar': {
@@ -19,26 +14,26 @@ export const scrollbarStyles = (theme: Theme) => {
     },
 
     '&::-webkit-scrollbar-track': {
-      backgroundColor: `
-      var(--color-${colors['background-current']},
-      ${getColor(colors['background-current'])}
-      )`,
+      backgroundColor: `var(--color-${colors['background-current']})`,
     },
 
     '&::-webkit-scrollbar-thumb': {
-      backgroundColor: `var(--color-${colors.scrollbar}, ${getColor(
-        colors.scrollbar
-      )})`,
+      backgroundColor: `var(--color-${colors.scrollbar})`,
       borderRadius: `20px`,
-      border: `3px solid var(--color-${
-        colors['background-current']
-      }, ${getColor(colors['background-current'])})`,
+      border: `3px solid var(--color-${colors['background-current']})`,
     },
   });
 };
 
 export const Scrollbars = () => {
   const theme = useTheme();
+  const hasGlobalBg = document.documentElement.style.getPropertyValue(
+    '--has-global-background'
+  );
+
+  if (hasGlobalBg) return null;
+
+  document.documentElement.style.setProperty('--has-global-background', 'true');
 
   return (
     <Global
