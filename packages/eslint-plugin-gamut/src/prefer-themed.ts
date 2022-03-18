@@ -7,8 +7,6 @@ import {
 } from './utils';
 
 export default createRule({
-  // @to-do: create helper function to get node
-
   create(context) {
     return {
       TaggedTemplateExpression(node) {
