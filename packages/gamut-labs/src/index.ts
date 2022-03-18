@@ -5,6 +5,8 @@ export * from './AvatarChooser';
 export * from './Byline';
 export * from './Breadcrumbs';
 export * from './ContentDifficulty';
+export * from './ContentDifficulty/types';
+export * from './ContentDifficulty/difficultyNumber';
 export * from './CurriculumCard';
 export * from './Drawer';
 export * from './EditorialImage';
