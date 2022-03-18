@@ -1,4 +1,4 @@
-import { ESLintUtils } from '@typescript-eslint/utils';
+import { ESLintUtils } from '@typescript-eslint/experimental-utils';
 
 import rule from './no-css-standalone';
 

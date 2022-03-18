@@ -8,7 +8,7 @@
     "gamut-styles"
   ],
   "name": "eslint-plugin-gamut",
-  "version": "0.0.1",
+  "version": "3.0.2",
   "license": "MIT",
   "main": "./dist/index.js",
   "module": "dist/index.js",
@@ -28,12 +28,10 @@
   },
   "types": "./dist/index.d.ts",
   "dependencies": {
-    "@typescript-eslint/utils": "^5.7.0"
+    "@typescript-eslint/experimental-utils": "^5.7.0",
+    "eslint": "^8.4.1"
   },
   "devDependencies": {
     "@types/eslint": "^8.2.1"
-  },
-  "peerDependencies": {
-    "eslint": "^8.4.1"
   }
 }

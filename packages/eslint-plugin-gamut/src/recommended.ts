@@ -1,7 +1,7 @@
 export = {
   rules: {
-    'gamut/no-css-standalone': 'error',
-    'gamut/prefer-themed': 'off',
-    'gamut/gamut-import-paths': 'error',
+    'eslint-plugin-gamut/no-css-standalone': 'off',
+    'eslint-plugin-gamut/prefer-themed': 'off',
+    'eslint-plugin-gamut/gamut-import-paths': 'error',
   },
 };
