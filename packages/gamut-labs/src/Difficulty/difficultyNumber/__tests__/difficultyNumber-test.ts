@@ -1,4 +1,5 @@
-import { ContainerDifficulty, difficultyNumber } from '..';
+import { ContainerDifficulty } from '../../types';
+import { difficultyNumber } from '..';
 
 describe('difficultyNumber', () => {
   it('returns beginner friendly difficulty', () => {

@@ -1,15 +1,9 @@
-import { Box, BoxProps } from '@codecademy/gamut';
+import { Box } from '@codecademy/gamut';
 import { pxRem } from '@codecademy/gamut-styles';
 import { times, uniqueId } from 'lodash';
 import React from 'react';
 
-export type ContentDifficultyProps = BoxProps & { difficulty: 0 | 1 | 2 };
-
-export enum DifficultyString {
-  'Beginner friendly',
-  'Intermediate',
-  'Advanced',
-}
+import { ContentDifficultyProps, DifficultyString } from './types';
 
 export const ContentDifficulty: React.FC<ContentDifficultyProps> = ({
   difficulty,
