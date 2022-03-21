@@ -20,6 +20,7 @@ Each color mode consists of a set of aliased color tokens. Each alias has semant
 - `background`: The base background color.
 - `primary`: The color used for interactive elements with a primary action.
 - `secondary`: The color used for interactive elements with a secondary action.
+- `scrollbar`: The color used for the scrollbar thumb at the current level.
 
 **Note**: This set is not final and is likely to expand as our needs grow.
 
@@ -61,6 +62,10 @@ There are many cases where you may need a specific background color for a sectio
 ### Current Background
 
 When you use `Background` the selected background color is set to a theme variable `background-current`. This is useful to reference when you need access to an ancestors background color (e.g. simulating transparency + masking content).
+
+### Scrollbar
+
+When you use `Background` the scrollbar track will change color to match whatever color is set as `background-current`. Nested `ColorModes` and containers with `Background` will use the closest `background-current` variable available. Scrollbar thumb colors are controlled in individual `Theme` objects.
 
 ### Usage
 
