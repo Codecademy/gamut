@@ -1,4 +1,5 @@
-import { css, screenReaderOnly } from '@codecademy/gamut-styles';
+import { css, screenReaderOnly, states } from '@codecademy/gamut-styles';
+import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
 import React from 'react';
 
@@ -6,11 +7,9 @@ import { Box } from '../Box';
 import { HiddenText } from '../HiddenText';
 
 export type ToggleSizes = keyof typeof sizes;
-export type ToggleVariants = typeof colors[number];
 
 export type LabelProps = {
   disabled?: boolean;
-  variant?: ToggleVariants;
 };
 
 export type ToggleProps = {
@@ -66,23 +65,18 @@ const Circle = styled(Box)(
 
 const ToggleInput = styled.input(screenReaderOnly);
 
-const ToggleLabel = styled.label<LabelProps>`
-  display: inline-block;
-  cursor: pointer;
-  border: 0;
-  padding: 0;
+const ToggleDisabledState = states({
+  disabled: { cursor: 'not-allowed', opacity: 0.5 },
+});
 
-  &[disabled] {
-    cursor: not-allowed;
-    opacity: 0.75;
-  }
-
-  ${ToggleInput}:focus-visible + ${ToggleTrack} {
-    &:after {
-      opacity: 1;
-    }
-  }
-`;
+const ToggleLabel = styled.label<StyleProps<typeof ToggleDisabledState>>(
+  css({
+    cursor: 'pointer',
+    border: 'none',
+    padding: 0,
+  }),
+  ToggleDisabledState
+);
 
 export const Toggle: React.FC<ToggleProps> = ({
   checked,
@@ -92,7 +86,7 @@ export const Toggle: React.FC<ToggleProps> = ({
   disabled,
   size = 'medium',
 }) => {
-  const checkedColor = checked ? 'primary' : 'gray-600';
+  const checkedColor = checked ? 'primary' : 'navy-600';
   const sizeStyles = sizes[size];
 
   return (

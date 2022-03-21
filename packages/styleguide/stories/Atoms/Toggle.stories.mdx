@@ -2,7 +2,6 @@ import { Toggle } from '@codecademy/gamut/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
-import { useState } from '@storybook/addons';
 
 import { InteractiveToggle } from './Toggle.examples.tsx';
 
@@ -10,27 +9,33 @@ import { InteractiveToggle } from './Toggle.examples.tsx';
   title={title}
   component={Toggle}
   parameters={{
-    subtitle: 'A completely controlled boolean Toggle component (checkbox)',
+    subtitle: 'A completely controlled boolean Toggle component',
     source: 'gamut',
     status: 'current',
+    design: {
+      type: 'figma',
+      url:
+        'https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=60%3A3',
+    },
   }}
 />
 
-Controlled atom component indicating a user-selectable boolean value.
-Receives its `checked` prop from its parent. This is the default theme and size.
+## Usage Guidelines
+
+- Toggles are functionally similar to Checkboxes, as they both display whether they are checked or not.
+- Also like our Checkboxes, our Toggles are [controlled components](https://reactjs.org/docs/forms.html#controlled-components), so their checked value must be controlled by an external state and onChange.
+- Like other Form Elements, make sure to include a label with your Toggle.
+- Labels can be on either side of the Toggle — choose the direction that aligns best with the other elements on the page.
+- Toggles are most effective when they trigger an immediate action with related components (like changing copy or showing a section when toggled)
 
 <Canvas>
-  <Story name="Toggle">
-    {(args) => (
-      <>
-        <InteractiveToggle />
-        <Toggle {...args} />{' '}
-      </>
-    )}
+  <Story name="right" args={{ size: 'medium' }}>
+    {(args) => <Toggle {...args} />}
+  </Story>
+  <Story name="left" args={{ size: 'small' }}>
+    {(args) => <Toggle {...args} />}
   </Story>
 </Canvas>
-
-<PropsTable story="Toggle" />
 
 ## Size
 
@@ -64,16 +69,9 @@ Disabling the input will change the opacity and cursor but still denote the curr
 ## Interactive Example
 
 <Canvas>
-  <Story name="interactive" args={{ label: 'interactive' }}>
-    {(args) => {
-      const [checked, setChecked] = useState(args.checked);
-      return (
-        <Toggle
-          {...args}
-          checked={checked}
-          onChange={() => setChecked(!checked)}
-        />
-      );
-    }}
+  <Story name="Toggle" args={{ label: 'interactive' }}>
+    {(args) => <InteractiveToggle {...args} />}
   </Story>
 </Canvas>
+
+<PropsTable story="Interactive" />

@@ -1,7 +1,16 @@
-import { Toggle } from '@codecademy/gamut';
+import { Toggle, ToggleProps } from '@codecademy/gamut';
 import React, { useState } from 'react';
 
-export const InteractiveToggle = () => {
-  const [checked, setChecked] = useState(false);
-  return <Toggle checked={checked} onChange={() => setChecked(!checked)} />;
+export const InteractiveToggle: React.FC<ToggleProps> = ({
+  checked: startingCheckedState,
+  onChange,
+  ...rest
+}) => {
+  const [checked, setChecked] = useState(startingCheckedState);
+  const changeHandler = () => {
+    setChecked(!checked);
+    onChange();
+  };
+
+  return <Toggle checked={checked} onChange={changeHandler} {...rest} />;
 };
