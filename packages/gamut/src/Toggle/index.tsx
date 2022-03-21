@@ -1,4 +1,4 @@
-import { screenReaderOnly } from '@codecademy/gamut-styles';
+import { css, screenReaderOnly } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React from 'react';
 
@@ -18,10 +18,8 @@ export type ToggleProps = {
   checked: boolean;
   /** Called when the input value has changed */
   onChange: (event?: React.FormEvent<HTMLInputElement>) => void;
-  /** A hidden label used for accessibility and control, unique to the page */
+  /** An aria-label used for accessibility and control, unique to the page */
   label?: string;
-  /** Color variations for background styles */
-  variant?: ToggleVariants;
   /** Changes the dimensions of the element for using the component outside of a form context */
   size?: ToggleSizes;
   disabled?: boolean;
@@ -39,30 +37,32 @@ const sizes = {
   },
 };
 
-const colors = ['blue', 'hyper'] as const;
+const ToggleTrack = styled(Box)(
+  css({
+    transition: 'background-color 0.2s ease',
 
-const ToggleTrack = styled(Box)`
-  transition: background-color 0.2s ease;
+    '&:after': {
+      content: '""',
+      transition: 'opacity 0.2s ease',
+      opacity: 0,
+      borderRadius: 'inherit',
+      position: 'absolute',
+      width: 'calc(100% + 8px)',
+      height: 'calc(100% + 8px)',
+      top: '-4px',
+      left: '-4px',
+      borderColor: 'inherit',
+      borderStyle: 'solid',
+      borderWidth: 2,
+    },
+  })
+);
 
-  &:after {
-    content: '';
-    transition: opacity 0.2s ease;
-    opacity: 0;
-    border-radius: inherit;
-    position: absolute;
-    width: calc(100% + 8px);
-    height: calc(100% + 8px);
-    top: -4px;
-    left: -4px;
-    border-color: inherit;
-    border-style: solid;
-    border-width: 2px;
-  }
-
-  ${Box} {
-    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-  }
-`;
+const Circle = styled(Box)(
+  css({
+    transition: 'all 0.5s cubic-bezier(0.23, 1, 0.32, 1)',
+  })
+);
 
 const ToggleInput = styled.input(screenReaderOnly);
 
@@ -90,20 +90,13 @@ export const Toggle: React.FC<ToggleProps> = ({
   onChange,
   label,
   disabled,
-  variant = 'blue',
   size = 'medium',
 }) => {
-  const activeColor = variant;
-  const checkedColor = checked ? variant : 'gray-600';
+  const checkedColor = checked ? 'primary' : 'gray-600';
   const sizeStyles = sizes[size];
 
   return (
-    <ToggleLabel
-      className={className}
-      htmlFor={label}
-      variant={variant}
-      disabled={disabled}
-    >
+    <ToggleLabel className={className} htmlFor={label} disabled={disabled}>
       <HiddenText>{label}</HiddenText>
       <ToggleInput
         type="checkbox"
@@ -114,12 +107,12 @@ export const Toggle: React.FC<ToggleProps> = ({
       />
       <ToggleTrack
         {...sizeStyles}
-        borderColor={activeColor}
+        borderColor="primary"
         bg={checkedColor}
         borderRadius="99rem"
         position="relative"
       >
-        <Box
+        <Circle
           width="40%"
           borderRadius="50%"
           bg="white"
