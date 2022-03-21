@@ -85,6 +85,7 @@ export const CurriculumCard: React.FC<CurriculumCardProps> = ({
   showAltSubtitle = false,
   footerTextVariant = 'enrolled',
   showDescription,
+  difficultyVariant = 'small',
 }) => {
   const boxVariant = progressState && cardStyles[progressState];
   const mode = progressState === 'completed' ? 'dark' : 'light';
@@ -125,6 +126,7 @@ export const CurriculumCard: React.FC<CurriculumCardProps> = ({
             scope={scope}
             difficulty={difficulty}
             showAltSubtitle={showAltSubtitle}
+            difficultyVariant={difficultyVariant}
           />
         </FlexBox>
       )}

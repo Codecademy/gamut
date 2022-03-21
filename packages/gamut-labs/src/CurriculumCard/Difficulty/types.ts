@@ -1,5 +1,3 @@
-import { BoxProps } from '@codecademy/gamut';
-
 export enum ContainerDifficulty {
   Beginner = 'Beginner',
   Intermediate = 'Intermediate',
@@ -11,7 +9,10 @@ export enum ContainerDifficulty {
  */
 export type ContainerDifficultyUnion = `${ContainerDifficulty}`;
 
-export type ContentDifficultyProps = BoxProps & { difficulty: 0 | 1 | 2 };
+export type ContentDifficultyProps = {
+  difficulty: 0 | 1 | 2;
+  difficultyVariant?: 'small' | 'medium';
+};
 
 export enum DifficultyString {
   'Beginner friendly',

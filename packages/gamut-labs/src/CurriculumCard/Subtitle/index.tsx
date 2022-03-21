@@ -6,10 +6,14 @@ import { Difficulty } from '../Difficulty';
 import {
   ContainerDifficulty,
   ContainerDifficultyUnion,
+  ContentDifficultyProps,
 } from '../Difficulty/types';
 import { getDifficultyNumber, pluralizeWithS } from './helpers';
 
-export type SubtitleProps = {
+export type SubtitleProps = Pick<
+  ContentDifficultyProps,
+  'difficultyVariant'
+> & {
   scope: Record<string, number>;
   showAltSubtitle?: boolean;
   difficulty: ContainerDifficulty | ContainerDifficultyUnion;
@@ -19,6 +23,7 @@ export const Subtitle: React.FC<SubtitleProps> = ({
   difficulty,
   scope,
   showAltSubtitle = false,
+  difficultyVariant,
 }) => {
   const scopeToMap = Object.keys(scope).filter((val) => scope[val] > 0);
 
@@ -29,7 +34,10 @@ export const Subtitle: React.FC<SubtitleProps> = ({
       {!showAltSubtitle && (
         <>
           <FlexBox fontSize={14} alignItems="center">
-            <Difficulty difficulty={getDifficultyNumber(difficulty)} />
+            <Difficulty
+              difficultyVariant={difficultyVariant}
+              difficulty={getDifficultyNumber(difficulty)}
+            />
           </FlexBox>
           {scopeToMap.length ? separatingChar : null}
         </>
