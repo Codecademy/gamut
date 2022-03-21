@@ -1475,10 +1475,10 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
-"@codecademy/eslint-config@7.0.3-alpha.198b4a.0":
-  version "7.0.3-alpha.198b4a.0"
-  resolved "https://registry.npmjs.org/@codecademy/eslint-config/-/eslint-config-7.0.3-alpha.198b4a.0.tgz#57bbff0dabc30abdfe8613509976a93ecff534db"
-  integrity sha512-IcmEveHduyfMYegLgGQ4qI/BA9FExaSoumNNxBvKdKiUSI1tf83J6VqzKbBkvELRPBRwIdA3jrQyq9YNVT7ipQ==
+"@codecademy/eslint-config@7.0.3-alpha.448c74.0":
+  version "7.0.3-alpha.448c74.0"
+  resolved "https://registry.npmjs.org/@codecademy/eslint-config/-/eslint-config-7.0.3-alpha.448c74.0.tgz#053d38b48108a85a98bb1c6e518bf927c405d5f7"
+  integrity sha512-g0aAuTIhaZSnPdgThaQmT+1QSEoXNfJlEqMcjlLs1VtstrxXqWkY0fVejB0OweVj8/ms0XOayxOLBcU7MJLPIQ==
   dependencies:
     "@typescript-eslint/eslint-plugin" "^5.15.0"
     "@typescript-eslint/parser" "^5.15.0"
