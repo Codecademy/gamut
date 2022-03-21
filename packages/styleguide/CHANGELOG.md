@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [55.2.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@55.2.0...@codecademy/styleguide@55.2.1) (2022-03-21)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [55.2.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@55.1.6...@codecademy/styleguide@55.2.0) (2022-03-17)
+
+
+### Features
+
+* **CurriculumCard:** added new career path card styles ([3efd3ac](https://github.com/Codecademy/gamut/commit/3efd3acd75f4305dce9bd275ee7d9a7d50fa5e9e))
+
+
+
 ### [55.1.6](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@55.1.5...@codecademy/styleguide@55.1.6) (2022-03-15)
 
 **Note:** Version bump only for package @codecademy/styleguide
