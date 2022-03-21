@@ -1,5 +1,13 @@
-import { Card, FlexBox, HeadingTags, ProLabel, Text } from '@codecademy/gamut';
-import { pxRem } from '@codecademy/gamut-styles';
+import {
+  Box,
+  Card,
+  FlexBox,
+  HeadingTags,
+  ProLabel,
+  Text,
+} from '@codecademy/gamut';
+import { pxRem, theme } from '@codecademy/gamut-styles';
+import styled from '@emotion/styled';
 import React from 'react';
 
 import { TagColor } from './BottomTag/index';
@@ -20,6 +28,9 @@ const cardStyles = {
 
 export type CurriculumCardProps = SubtitleProps & {
   beta?: boolean;
+  /**
+   * Displays the curriculum type above the title
+   */
   text: string;
   title: string;
   headingLevel?: HeadingTags;
@@ -39,7 +50,21 @@ export type CurriculumCardProps = SubtitleProps & {
    * optional text to be displayed below card subtitle
    */
   description?: string;
+  /**
+   * allows description to be shown in card body.
+   */
+  showDescription?: boolean;
+  /**
+   * career path cards are displayed with a variant style / decorative element
+   */
+  showCareerPathVariant?: boolean;
 };
+
+const LineDecoration = styled(Box)`
+  border-top: 1px solid
+    ${({ inProgress }: { inProgress?: boolean }) =>
+      inProgress ? theme.colors.navy : theme.colors['navy-200']};
+`;
 
 export const CurriculumCard: React.FC<CurriculumCardProps> = ({
   beta,
@@ -56,16 +81,21 @@ export const CurriculumCard: React.FC<CurriculumCardProps> = ({
   tagColor,
   text,
   title,
+  showCareerPathVariant,
   showAltSubtitle = false,
   footerTextVariant = 'enrolled',
+  showDescription,
 }) => {
   const boxVariant = progressState && cardStyles[progressState];
   const mode = progressState === 'completed' ? 'dark' : 'light';
 
+  const isCareerPathVariant =
+    text.toLowerCase() === 'career path' && showCareerPathVariant;
+
   return (
     <Card
-      display="grid"
-      gridTemplateRows="repeat(3, max-content) 1fr max-content"
+      display="flex"
+      flexDirection="column"
       minHeight={
         isStaticSize
           ? pxRem(285)
@@ -90,25 +120,32 @@ export const CurriculumCard: React.FC<CurriculumCardProps> = ({
       <Text as={headingLevel} mb={4} fontSize={20}>
         {title}
       </Text>
-      {description && (
-        <Text pt={8} pb={16} fontSize={14}>
-          {description}
-        </Text>
-      )}
-      <FlexBox flexWrap="wrap" alignItems="center">
-        {!progressState && (
+      {!progressState && (
+        <FlexBox flexWrap="wrap" alignItems="center">
           <Subtitle
             scope={scope}
             difficulty={difficulty}
             showAltSubtitle={showAltSubtitle}
           />
-        )}
-      </FlexBox>
-      <FlexBox center pb={16}>
-        {isFullSize && image && (
-          <Image image={image} progressState={progressState} />
-        )}
-      </FlexBox>
+        </FlexBox>
+      )}
+      {isCareerPathVariant && (
+        <LineDecoration inProgress={progressState === 'inProgress'} my={8} />
+      )}
+      {(isCareerPathVariant || showDescription) && (
+        <Text pt={8} pb={16} fontSize={14}>
+          {description}
+        </Text>
+      )}
+      {isFullSize && image && (
+        <FlexBox m="auto" center pt={16} pb={isCareerPathVariant ? 32 : 0}>
+          <Image
+            isSmall={isCareerPathVariant}
+            image={image}
+            progressState={progressState}
+          />
+        </FlexBox>
+      )}
       <Footer
         beta={beta}
         progressState={progressState}
