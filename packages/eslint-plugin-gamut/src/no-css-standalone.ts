@@ -19,7 +19,7 @@ export default createRule({
     },
     messages: {
       noCssStandalone:
-        "Don't create anymore stylesheets, please see (insert url here) for current best practices`.",
+        "Do not create anymore stylesheets, please see Gamut's Notion page for current best practices`.",
     },
     type: 'suggestion',
     schema: [],
