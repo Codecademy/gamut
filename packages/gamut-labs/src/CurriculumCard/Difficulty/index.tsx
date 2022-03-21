@@ -5,7 +5,7 @@ import React from 'react';
 
 import { ContentDifficultyProps, DifficultyString } from './types';
 
-export const ContentDifficulty: React.FC<ContentDifficultyProps> = ({
+export const Difficulty: React.FC<ContentDifficultyProps> = ({
   difficulty,
   ...overrides // styling overrides to change the appearance of the difficulty indicators
 }) => (

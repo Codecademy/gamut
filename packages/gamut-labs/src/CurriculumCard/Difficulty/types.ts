@@ -8,7 +8,6 @@ export enum ContainerDifficulty {
 
 /**
  * converting ContainerDifficulty enum into union type
- * type ContainerDifficultyUnion = "Beginner" | "Intermediate" | "Advanced"
  */
 export type ContainerDifficultyUnion = `${ContainerDifficulty}`;
 

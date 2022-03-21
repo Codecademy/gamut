@@ -1,5 +1,5 @@
 import { Column, LayoutGrid } from '@codecademy/gamut/src';
-import { ContentDifficulty, CurriculumCard } from '@codecademy/gamut-labs/src';
+import { CurriculumCard, Difficulty } from '@codecademy/gamut-labs/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { Canvas, Meta, Props, Story } from '@storybook/addon-docs';
 
@@ -8,20 +8,11 @@ import { Canvas, Meta, Props, Story } from '@storybook/addon-docs';
   component={CurriculumCard}
   args={{
     title: 'Learn JavaScript',
-    difficulty: 0,
+    difficulty: 'Beginner',
     tag: 'Language Fluency',
     tagColor: 'blue',
     scope: { Lesson: 24 },
     text: 'Course',
-  }}
-  argTypes={{
-    difficulty: {
-      type: 'number',
-      control: {
-        type: 'radio',
-        options: [0, 1, 2],
-      },
-    },
   }}
   parameters={{
     subtitle: `Curriculum cards for paths and courses.`,
@@ -198,7 +189,7 @@ Displays a different style of career card when the `showCareerPathVariant` prop 
 
 ## Difficulty scale
 
-Displays the level of defiiculty of content based on a scale of `{0: Beginner, 1: Intermediate, 2: Advanced}`
+Displays the level of defficulty of content based on a scale of `{0: Beginner, 1: Intermediate, 2: Advanced}`
 
 <Canvas withSource="closed">
   <Story
@@ -206,19 +197,19 @@ Displays the level of defiiculty of content based on a scale of `{0: Beginner, 1
     args={{
       width: 10,
       height: 10,
-      borderRadious: 10,
+      borderRadius: 10,
     }}
   >
     {(args) => (
       <LayoutGrid columnGap={24}>
         <Column size={4} display="flex" alignItems="center" fontSize={14}>
-          <ContentDifficulty {...args} />
+          <Difficulty {...args} difficulty={0} />
         </Column>
         <Column size={4} display="flex" alignItems="center" fontSize={14}>
-          <ContentDifficulty {...args} difficulty={1} />
+          <Difficulty {...args} difficulty={1} />
         </Column>
         <Column size={4} display="flex" alignItems="center" fontSize={14}>
-          <ContentDifficulty {...args} difficulty={2} />
+          <Difficulty {...args} difficulty={2} />
         </Column>
       </LayoutGrid>
     )}

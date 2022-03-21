@@ -2,7 +2,7 @@ import { FlexBox, Text } from '@codecademy/gamut';
 import { capitalize } from 'lodash';
 import React from 'react';
 
-import { ContentDifficulty } from '../Difficulty';
+import { Difficulty } from '../Difficulty';
 import {
   ContainerDifficulty,
   ContainerDifficultyUnion,
@@ -29,7 +29,7 @@ export const Subtitle: React.FC<SubtitleProps> = ({
       {!showAltSubtitle && (
         <>
           <FlexBox fontSize={14} alignItems="center">
-            <ContentDifficulty difficulty={getDifficultyNumber(difficulty)} />
+            <Difficulty difficulty={getDifficultyNumber(difficulty)} />
           </FlexBox>
           {scopeToMap.length ? separatingChar : null}
         </>
