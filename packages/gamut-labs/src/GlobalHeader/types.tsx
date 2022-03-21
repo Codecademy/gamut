@@ -67,6 +67,4 @@ export type ProHeader = LoggedInHeader & {
 
 export type LoadingHeader = BaseHeader & {
   type: 'loading';
-  // TODO: DISC-547 - remove after feature flag test for catalog is complete
-  user?: User;
 };
