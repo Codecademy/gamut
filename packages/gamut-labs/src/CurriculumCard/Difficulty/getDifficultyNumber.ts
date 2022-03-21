@@ -6,7 +6,7 @@ import { ContainerDifficulty, ContainerDifficultyUnion } from './types';
  * @param difficulty level of of difficulty for a particular content
  * @returns 0 indicating beginner, 1 intermediate and 2 for advanced content.
  */
-export const difficultyNumber = <
+export const getDifficultyNumber = <
   Type extends ContainerDifficultyUnion | ContainerDifficulty
 >(
   difficulty: Type
