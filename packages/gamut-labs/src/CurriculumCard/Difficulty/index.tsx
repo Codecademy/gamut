@@ -4,6 +4,7 @@ import styled from '@emotion/styled';
 import { times, uniqueId } from 'lodash';
 import React from 'react';
 
+import { getDifficultyNumber } from './helpers';
 import { ContentDifficultyProps, DifficultyString } from './types';
 
 const DifficultySpan = styled(Box)(
@@ -34,11 +35,15 @@ const DifficultySpan = styled(Box)(
 export const Difficulty: React.FC<ContentDifficultyProps> = ({
   difficulty,
   difficultyVariant,
-}) => (
-  <>
-    {times(difficulty + 1, () => (
-      <DifficultySpan key={uniqueId()} variant={difficultyVariant} />
-    ))}
-    {DifficultyString[difficulty]}
-  </>
-);
+}) => {
+  const difficultyNumber = getDifficultyNumber(difficulty);
+
+  return (
+    <>
+      {times(difficultyNumber + 1, () => (
+        <DifficultySpan key={uniqueId()} variant={difficultyVariant} />
+      ))}
+      {DifficultyString[difficultyNumber]}
+    </>
+  );
+};

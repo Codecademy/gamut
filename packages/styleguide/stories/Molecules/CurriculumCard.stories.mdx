@@ -201,13 +201,13 @@ Displays the level of defficulty of content based on a scale of `{0: Beginner, 1
     {(args) => (
       <LayoutGrid columnGap={24}>
         <Column size={4} display="flex" alignItems="center" fontSize={14}>
-          <Difficulty {...args} difficulty={0} />
+          <Difficulty {...args} />
         </Column>
         <Column size={4} display="flex" alignItems="center" fontSize={14}>
-          <Difficulty {...args} difficulty={1} />
+          <Difficulty {...args} difficulty="Intermediate" />
         </Column>
         <Column size={4} display="flex" alignItems="center" fontSize={14}>
-          <Difficulty {...args} difficulty={2} />
+          <Difficulty {...args} difficulty="Advanced" />
         </Column>
       </LayoutGrid>
     )}

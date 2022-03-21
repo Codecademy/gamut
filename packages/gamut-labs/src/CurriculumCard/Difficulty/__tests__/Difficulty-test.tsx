@@ -4,15 +4,15 @@ import { Difficulty } from '../index';
 
 describe('CurriculumCard Difficulty', () => {
   it('displays beginner friendly difficulty', () => {
-    const { view } = setupRtl(Difficulty, { difficulty: 0 })();
+    const { view } = setupRtl(Difficulty, { difficulty: 'Beginner' })();
     view.getByText('Beginner friendly');
   });
   it('displays intermediate difficulty', () => {
-    const { view } = setupRtl(Difficulty, { difficulty: 1 })();
+    const { view } = setupRtl(Difficulty, { difficulty: 'Intermediate' })();
     view.getByText('Intermediate');
   });
   it('displays advance difficulty', () => {
-    const { view } = setupRtl(Difficulty, { difficulty: 2 })();
+    const { view } = setupRtl(Difficulty, { difficulty: 'Advanced' })();
     view.getByText('Advanced');
   });
 });
