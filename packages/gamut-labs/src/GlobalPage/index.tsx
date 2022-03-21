@@ -5,7 +5,8 @@ import {
   SkipToContent,
   SkipToContentTarget,
 } from '@codecademy/gamut';
-import { Background } from '@codecademy/gamut-styles';
+import { Background, css } from '@codecademy/gamut-styles';
+import styled from '@emotion/styled';
 import React, { ComponentProps, forwardRef } from 'react';
 
 import { GlobalFooter, GlobalFooterProps } from '../GlobalFooter';
@@ -61,7 +62,14 @@ const RestrictedBackground = forwardRef<
   </Background>
 ));
 
-const GlobalPageWrapper = AppWrapper.withComponent(RestrictedBackground);
+const GlobalPageWrapper = styled(
+  AppWrapper.withComponent(RestrictedBackground)
+)(
+  css({
+    overflow: `auto`,
+    height: `100vh`,
+  })
+);
 
 export const GlobalPage: React.FC<GlobalPageProps> = ({
   backgroundColor = 'background',
@@ -73,7 +81,7 @@ export const GlobalPage: React.FC<GlobalPageProps> = ({
   skipToContentId,
 }) => {
   return (
-    <GlobalPageWrapper bg={backgroundColor} minHeight="100vh">
+    <GlobalPageWrapper bg={backgroundColor}>
       <SkipToContent contentId={skipToContentId || defaultSkipToContentId} />
       {banner && <Banner {...banner} />}
       <GlobalHeader {...header} />

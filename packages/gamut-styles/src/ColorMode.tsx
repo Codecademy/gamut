@@ -15,7 +15,7 @@ import styled from '@emotion/styled';
 import { mapValues, pick } from 'lodash';
 import React, { ComponentProps, forwardRef, useMemo } from 'react';
 
-import { Scrollbars, scrollbarStyles } from '.';
+import { scrollbarStyles } from '.';
 import {
   background,
   border,
@@ -151,7 +151,6 @@ export const ColorMode = forwardRef<
         ref={ref}
         styles={scrollbarStyles}
       >
-        <Scrollbars />
         {children}
       </VariableProvider>
     </ThemeProvider>
