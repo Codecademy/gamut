@@ -38,7 +38,6 @@ export type ColorAlias = keyof ColorModeShape;
 export type ColorModeProps = {
   mode: ColorModes;
   bg?: Colors;
-  isGlobal?: boolean;
 };
 
 export const providerProps = variance.compose(
@@ -102,7 +101,7 @@ export const VariableProvider = styled(
 export const ColorMode = forwardRef<
   HTMLDivElement,
   Omit<ComponentProps<typeof VariableProvider>, 'bg'> & ColorModeProps
->(({ mode, alwaysSetVariables, bg, isGlobal, children, ...rest }, ref) => {
+>(({ mode, alwaysSetVariables, bg, children, ...rest }, ref) => {
   const theme = useTheme();
   const { modes, mode: active, colors } = theme;
   const contextBg = bg ? 'background-current' : undefined;
