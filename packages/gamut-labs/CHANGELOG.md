@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [30.3.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@30.3.0...@codecademy/gamut-labs@30.3.1) (2022-03-21)
+
+
+### Bug Fixes
+
+* **CurriculumCard:** made career goal checking less brittle ([d57136c](https://github.com/Codecademy/gamut/commit/d57136c927ba7d6bc78e23288bc55fd60f59b9b0))
+
+
+
 ## [30.3.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@30.2.6...@codecademy/gamut-labs@30.3.0) (2022-03-17)
 
 
