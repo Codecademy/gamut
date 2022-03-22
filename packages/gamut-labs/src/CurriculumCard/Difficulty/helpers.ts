@@ -1,9 +1,9 @@
 import { ContainerDifficulty, ContainerDifficultyUnion } from './types';
 
 /**
- * calculate number associated with a difficulty level for a particular content
+ * calculate the number associated with the difficulty level for a particular content
  *
- * @param difficulty level of of difficulty for a particular content
+ * @param difficulty level of difficulty for a particular content
  * @returns 0 indicating beginner, 1 intermediate and 2 for advanced content.
  */
 export const getDifficultyNumber = <
