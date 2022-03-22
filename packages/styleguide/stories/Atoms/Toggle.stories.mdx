@@ -25,14 +25,33 @@ import { InteractiveToggle } from './Toggle.examples.tsx';
 - Toggles are functionally similar to Checkboxes, as they both display whether they are checked or not.
 - Also like our Checkboxes, our Toggles are [controlled components](https://reactjs.org/docs/forms.html#controlled-components), so their checked value must be controlled by an external state and onChange.
 - Like other Form Elements, make sure to include a label with your Toggle.
-- Labels can be on either side of the Toggle — choose the direction that aligns best with the other elements on the page.
+  - Labels can be on either side of the Toggle — choose the direction that aligns best with the other elements on the page.
 - Toggles are most effective when they trigger an immediate action with related components (like changing copy or showing a section when toggled)
 
-<Canvas>
-  <Story name="right" args={{ size: 'medium' }}>
+<Canvas disl>
+  <Story
+    name="right"
+    args={{ label: 'My label is to the right', labelSide: 'right' }}
+  >
     {(args) => <Toggle {...args} />}
   </Story>
-  <Story name="left" args={{ size: 'small' }}>
+  <Story
+    name="left"
+    args={{ label: 'My label is to the left', labelSide: 'left' }}
+  >
+    {(args) => <Toggle {...args} />}
+  </Story>
+</Canvas>
+
+## Color Variants
+
+Toggles adapt to the appropriate color mode, taking on `hyper` in light mode and `yellow` in dark mode. Toggle the mode in Storybook to see them change!
+
+<Canvas>
+  <Story name="checked" args={{ checked: true, label: 'I am checked' }}>
+    {(args) => <Toggle {...args} />}
+  </Story>
+  <Story name="unchecked" args={{ label: 'I am not checked' }}>
     {(args) => <Toggle {...args} />}
   </Story>
 </Canvas>
@@ -69,7 +88,7 @@ Disabling the input will change the opacity and cursor but still denote the curr
 ## Interactive Example
 
 <Canvas>
-  <Story name="Toggle" args={{ label: 'interactive' }}>
+  <Story name="Toggle" args={{ label: 'interactive example' }}>
     {(args) => <InteractiveToggle {...args} />}
   </Story>
 </Canvas>

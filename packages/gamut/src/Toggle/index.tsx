@@ -4,7 +4,7 @@ import styled from '@emotion/styled';
 import React from 'react';
 
 import { Box } from '../Box';
-import { HiddenText } from '../HiddenText';
+import { Text } from '../Typography/Text';
 
 export type ToggleSizes = keyof typeof sizes;
 
@@ -17,8 +17,10 @@ export type ToggleProps = {
   checked: boolean;
   /** Called when the input value has changed */
   onChange: (event?: React.FormEvent<HTMLInputElement>) => void;
-  /** An aria-label used for accessibility and control, unique to the page */
+  /** A label used for accessibility and control, unique to the page */
   label?: string;
+  /** A label used for accessibility and control, unique to the page */
+  labelSide?: 'left' | 'right';
   /** Changes the dimensions of the element for using the component outside of a form context */
   size?: ToggleSizes;
   disabled?: boolean;
@@ -67,13 +69,17 @@ const ToggleInput = styled.input(screenReaderOnly);
 
 const ToggleDisabledState = states({
   disabled: { cursor: 'not-allowed', opacity: 0.5 },
+  labelRight: { flexDirection: 'row-reverse' },
 });
 
 const ToggleLabel = styled.label<StyleProps<typeof ToggleDisabledState>>(
   css({
-    cursor: 'pointer',
+    alignItems: 'center',
     border: 'none',
+    cursor: 'pointer',
+    display: 'flex',
     padding: 0,
+    width: 'fit-content',
   }),
   ToggleDisabledState
 );
@@ -83,6 +89,7 @@ export const Toggle: React.FC<ToggleProps> = ({
   className,
   onChange,
   label,
+  labelSide = 'right',
   disabled,
   size = 'medium',
 }) => {
@@ -90,8 +97,20 @@ export const Toggle: React.FC<ToggleProps> = ({
   const sizeStyles = sizes[size];
 
   return (
-    <ToggleLabel className={className} htmlFor={label} disabled={disabled}>
-      <HiddenText>{label}</HiddenText>
+    <ToggleLabel
+      className={className}
+      htmlFor={label}
+      disabled={disabled}
+      labelRight={labelSide === 'right'}
+    >
+      {label && (
+        <Text
+          ml={labelSide === 'left' ? 0 : 16}
+          mr={labelSide === 'right' ? 0 : 16}
+        >
+          {label}
+        </Text>
+      )}
       <ToggleInput
         type="checkbox"
         checked={checked}
