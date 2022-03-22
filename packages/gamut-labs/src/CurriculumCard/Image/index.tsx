@@ -1,15 +1,26 @@
-import { pxRem } from '@codecademy/gamut-styles';
+import { variant } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React, { useState } from 'react';
 import { useIsomorphicLayoutEffect } from 'react-use';
 
 import { BASE_STATIC_ASSET_PATH } from '../../remoteAssets/components';
 
-const StyledImg = styled.img`
-  display: block;
-  margin: 0 auto;
-  width: ${pxRem(160)};
-`;
+const variants = variant({
+  base: {
+    display: 'block',
+    margin: '0 auto',
+  },
+  variants: {
+    default: {
+      width: 160,
+    },
+    small: {
+      width: 142,
+    },
+  },
+});
+
+const StyledImg = styled.img(variants);
 
 type ProgressState = 'inProgress' | 'completed';
 
@@ -21,9 +32,14 @@ const getPlaceholderAssetPath = (pathProgressState?: ProgressState) => {
 export type ImageProps = {
   image: string;
   progressState?: ProgressState;
+  isSmall?: boolean;
 };
 
-export const Image: React.FC<ImageProps> = ({ image, progressState }) => {
+export const Image: React.FC<ImageProps> = ({
+  image,
+  progressState,
+  isSmall,
+}) => {
   const [ready, setReady] = useState(false);
   const [error, setError] = useState(false);
 
@@ -44,5 +60,12 @@ export const Image: React.FC<ImageProps> = ({ image, progressState }) => {
     }
   };
 
-  return <StyledImg src={image} alt="" onError={addDefaultImageSource} />;
+  return (
+    <StyledImg
+      variant={isSmall ? 'small' : 'default'}
+      src={image}
+      alt=""
+      onError={addDefaultImageSource}
+    />
+  );
 };
