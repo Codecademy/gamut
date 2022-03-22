@@ -90,7 +90,8 @@ export const CurriculumCard: React.FC<CurriculumCardProps> = ({
   const boxVariant = progressState && cardStyles[progressState];
   const mode = progressState === 'completed' ? 'dark' : 'light';
 
-  const isCareerPathVariant = text === 'Career Path' && showCareerPathVariant;
+  const isCareerPathVariant =
+    text.toLowerCase() === 'career path' && showCareerPathVariant;
 
   return (
     <Card
