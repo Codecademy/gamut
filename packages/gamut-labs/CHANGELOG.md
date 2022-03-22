@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [30.4.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@30.3.1...@codecademy/gamut-labs@30.4.0) (2022-03-22)
+
+
+### Features
+
+* **GlobalHeader:** Added prop for upcoming feature flag test for Catalog ([c9fdd0e](https://github.com/Codecademy/gamut/commit/c9fdd0ea6fc00ccc19e97d887f7080f4f1b0dca6)), closes [/github.com/Codecademy/gamut/blob/main/packages/gamut-labs/src/GlobalHeader/types.tsx#L28-L39](https://github.com/Codecademy//github.com/Codecademy/gamut/blob/main/packages/gamut-labs/src/GlobalHeader/types.tsx/issues/L28-L39)
+
+
+
+### [30.3.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@30.3.0...@codecademy/gamut-labs@30.3.1) (2022-03-21)
+
+
+### Bug Fixes
+
+* **CurriculumCard:** made career goal checking less brittle ([d57136c](https://github.com/Codecademy/gamut/commit/d57136c927ba7d6bc78e23288bc55fd60f59b9b0))
+
+
+
 ## [30.3.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@30.2.6...@codecademy/gamut-labs@30.3.0) (2022-03-17)
 
 
