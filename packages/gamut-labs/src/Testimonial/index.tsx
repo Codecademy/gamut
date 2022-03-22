@@ -58,12 +58,12 @@ const TestimonialContent = styled(Box)(
 export type TestimonialProps = ComponentProps<typeof TestimonialCard> &
   ComponentProps<typeof TestimonialContent> & {
     firstName: string;
-    lastName: string;
+    lastName?: string;
     quote: string;
     /**
      * City location
      */
-    location: string;
+    location?: string;
     /**
      * associated occupation of the person.
      */
@@ -129,7 +129,7 @@ export const Testimonial: React.FC<TestimonialProps> = ({
           gridArea={!hidePhoto ? 'byline' : 'avatar'}
         >
           <Text variant="p-small" as="p" fontFamily="accent">
-            {`${firstName} ${lastName[0]}.`}
+            {lastName ? `${firstName} ${lastName[0]}.` : `${firstName}`}
           </Text>
           <Text variant="p-small" as="p" fontFamily="accent">
             {occupation}
