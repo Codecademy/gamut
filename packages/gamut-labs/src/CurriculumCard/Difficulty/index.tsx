@@ -17,6 +17,7 @@ const DifficultySpan = styled(Box)(
       background: theme.colors.navy,
       marginBottom: pxRem(1),
     },
+    defaultVariant: 'small',
     variants: {
       small: {
         width: pxRem(8),
@@ -34,14 +35,14 @@ const DifficultySpan = styled(Box)(
 
 export const Difficulty: React.FC<ContentDifficultyProps> = ({
   difficulty,
-  difficultyVariant,
+  variant,
 }) => {
   const difficultyNumber = getDifficultyNumber(difficulty);
 
   return (
     <>
       {times(difficultyNumber + 1, () => (
-        <DifficultySpan key={uniqueId()} variant={difficultyVariant} />
+        <DifficultySpan key={uniqueId()} variant={variant} />
       ))}
       {DifficultyString[difficultyNumber]}
     </>

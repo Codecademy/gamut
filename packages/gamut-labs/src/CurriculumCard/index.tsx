@@ -85,7 +85,7 @@ export const CurriculumCard: React.FC<CurriculumCardProps> = ({
   showAltSubtitle = false,
   footerTextVariant = 'enrolled',
   showDescription,
-  difficultyVariant = 'small',
+  difficultyVariant,
 }) => {
   const boxVariant = progressState && cardStyles[progressState];
   const mode = progressState === 'completed' ? 'dark' : 'light';

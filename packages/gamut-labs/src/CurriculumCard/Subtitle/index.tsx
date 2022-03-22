@@ -3,12 +3,13 @@ import { capitalize } from 'lodash';
 import React from 'react';
 
 import { Difficulty } from '../Difficulty';
-import { ContentDifficultyProps } from '../Difficulty/types';
+import { ContentDifficultyProps, DifficultyVariant } from '../Difficulty/types';
 import { pluralizeWithS } from './helpers';
 
-export type SubtitleProps = ContentDifficultyProps & {
+export type SubtitleProps = Pick<ContentDifficultyProps, 'difficulty'> & {
   scope: Record<string, number>;
   showAltSubtitle?: boolean;
+  difficultyVariant?: DifficultyVariant;
 };
 
 export const Subtitle: React.FC<SubtitleProps> = ({
@@ -26,10 +27,7 @@ export const Subtitle: React.FC<SubtitleProps> = ({
       {!showAltSubtitle && (
         <>
           <FlexBox fontSize={14} alignItems="center">
-            <Difficulty
-              difficultyVariant={difficultyVariant}
-              difficulty={difficulty}
-            />
+            <Difficulty variant={difficultyVariant} difficulty={difficulty} />
           </FlexBox>
           {scopeToMap.length ? separatingChar : null}
         </>
