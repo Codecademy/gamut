@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [55.4.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@55.3.0...@codecademy/styleguide@55.4.0) (2022-03-23)
+
+
+### Features
+
+* **CurriculumCard:** Allowing dynamic difficulty spans ([3c5c9b3](https://github.com/Codecademy/gamut/commit/3c5c9b32b79683406e51f4a4f563643b13172368))
+
+
+
 ## [55.3.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@55.2.2...@codecademy/styleguide@55.3.0) (2022-03-22)
 
 
