@@ -1,0 +1,15 @@
+import { Box, HorizontalScrollBar } from '@codecademy/gamut';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+
+<Meta title="i don't know" component={HorizontalScrollBar} />
+
+<Canvas>
+  <Story name="the stuff">
+    {() => (
+      <HorizontalScrollBar>
+        <Box height={90} bg="blue" width={100} />
+        <Box height={90} bg="red" width={100} />
+      </HorizontalScrollBar>
+    )}
+  </Story>
+</Canvas>
