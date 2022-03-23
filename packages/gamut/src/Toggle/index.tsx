@@ -16,7 +16,7 @@ export type ToggleProps = {
   /** The state of the checkbox input (this can be out of sync with the input's value if not passed) */
   checked: boolean;
   /** Called when the input value has changed */
-  onChange: (event?: React.FormEvent<HTMLInputElement>) => void;
+  onChange?: (event?: React.FormEvent<HTMLInputElement>) => void;
   /** A label used for accessibility and control, unique to the page */
   label?: string;
   /** A label used for accessibility and control, unique to the page */
