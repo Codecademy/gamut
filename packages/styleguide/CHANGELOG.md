@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [55.3.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@55.2.2...@codecademy/styleguide@55.3.0) (2022-03-22)
+
+
+### Features
+
+* **Alert:**  Add Notice + Feature variants to inline Alert ([972b890](https://github.com/Codecademy/gamut/commit/972b8900bf6f8e2f325bce47c536723cad65c489))
+
+
+
 ### [55.2.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@55.2.1...@codecademy/styleguide@55.2.2) (2022-03-22)
 
 **Note:** Version bump only for package @codecademy/styleguide
