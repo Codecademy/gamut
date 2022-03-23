@@ -1,13 +1,20 @@
-import React from 'react';
+import React, { Children, useEffect, useRef } from 'react';
 
 import { FlexBox } from '../Box';
 
 export const HorizontalScrollBar: React.FC = ({ children }) => {
   // HOW to get all elements into a single observer
 
-  // const elementsRef = useRef<HTMLBaseElement[] | null>([])
+  const elementsRef = useRef<HTMLBaseElement[]>([]);
 
-  // if(!ref.current) return null
+  useEffect(() => {
+    if (!elementsRef.current.length) {
+      Children.map(
+        children,
+        (child, index) => (elementsRef.current[index] = child)
+      );
+    }
+  }, [elementsRef]);
 
   return <FlexBox>{children}</FlexBox>;
 };
