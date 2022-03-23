@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [30.5.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@30.4.1...@codecademy/gamut-labs@30.5.0) (2022-03-23)
+
+
+### Features
+
+* **CurriculumCard:** Allowing dynamic difficulty spans ([3c5c9b3](https://github.com/Codecademy/gamut/commit/3c5c9b32b79683406e51f4a4f563643b13172368))
+
+
+
+### [30.4.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@30.4.0...@codecademy/gamut-labs@30.4.1) (2022-03-22)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+## [30.4.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@30.3.1...@codecademy/gamut-labs@30.4.0) (2022-03-22)
+
+
+### Features
+
+* **GlobalHeader:** Added prop for upcoming feature flag test for Catalog ([c9fdd0e](https://github.com/Codecademy/gamut/commit/c9fdd0ea6fc00ccc19e97d887f7080f4f1b0dca6)), closes [/github.com/Codecademy/gamut/blob/main/packages/gamut-labs/src/GlobalHeader/types.tsx#L28-L39](https://github.com/Codecademy//github.com/Codecademy/gamut/blob/main/packages/gamut-labs/src/GlobalHeader/types.tsx/issues/L28-L39)
+
+
+
 ### [30.3.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@30.3.0...@codecademy/gamut-labs@30.3.1) (2022-03-21)
 
 
