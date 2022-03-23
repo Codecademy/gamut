@@ -35,6 +35,11 @@ describe('ListSection', () => {
     view.getByTestId('dropdown-kebab-button');
   });
 
+  it('renders a horizontal kebab icon button when buttonType is horizontalKebab', () => {
+    const { view } = renderDropdownButton({ buttonType: 'kebab' });
+    view.getByTestId('dropdown-horizontal-kebab-button');
+  });
+
   it('renders a fill button when buttonType is not provided', () => {
     const { view } = renderDropdownButton();
     view.getByTestId('dropdown-fill-button');
