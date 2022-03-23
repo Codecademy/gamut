@@ -3,7 +3,7 @@ import { setupRtl } from '@codecademy/gamut-tests';
 import { Subtitle } from '../index';
 
 const renderView = setupRtl(Subtitle, {
-  difficulty: 1,
+  difficulty: 'Intermediate',
   scope: { lesson: 10 },
   showAltSubtitle: false,
 });
