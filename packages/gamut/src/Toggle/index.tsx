@@ -12,20 +12,34 @@ import {
 
 export type ToggleSizes = keyof typeof sizes;
 
-export interface ToggleProps extends ToggleStyleProps {
+export interface ToggleBaseProps extends ToggleStyleProps {
   /** The state of the checkbox input (this can be out of sync with the input's value if not passed) */
   checked: boolean;
+  /** An aria-label if needed. If you do not label your toggle. you must provide an aria-label. */
+  ariaLabel?: string;
   /** If the Toggle is disabled */
   disabled?: boolean;
   /** Called when the input value has changed */
   onChange?: (event?: React.FormEvent<HTMLInputElement>) => void;
-  /** A label used for accessibility and control, unique to the page */
-  label: string;
-  /** A label used for accessibility and control, unique to the page */
+  /** A visible label for your Toggle - we reccommend this */
+  label?: string;
+  /** Which side of the toggle the label should render */
   labelSide?: 'left' | 'right';
   /** Changes the dimensions of the element for using the component outside of a form context */
   size?: ToggleSizes;
 }
+
+export type AriaLabeledToggle = ToggleBaseProps & {
+  ariaLabel: string;
+  label?: never;
+};
+
+export type LabeledToggle = ToggleBaseProps & {
+  ariaLabel?: string;
+  label: string;
+};
+
+export type ToggleProps = AriaLabeledToggle | LabeledToggle;
 
 export const Toggle: React.FC<ToggleProps> = ({
   checked,
