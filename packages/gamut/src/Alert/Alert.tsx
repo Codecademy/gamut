@@ -13,7 +13,7 @@ export type AlertType = keyof typeof alertVariants;
 export type InlineAlertType = Exclude<AlertType, 'notice' | 'feature'>;
 export type AlertPlacements = 'inline' | 'floating';
 
-export type AlertBase = {
+export interface AlertProps {
   type?: AlertType;
   placement?: AlertPlacements;
   hidden?: boolean;
@@ -25,19 +25,7 @@ export type AlertBase = {
     React.ComponentProps<typeof FillButton>,
     'variant' | 'mode' | 'size'
   > & { text?: string };
-};
-
-export type FloatingAlert = AlertBase & {
-  type?: AlertType;
-  placement?: 'floating';
-};
-
-export type InlineAlert = AlertBase & {
-  type?: InlineAlertType;
-  placement?: 'inline';
-};
-
-export type AlertProps = FloatingAlert | InlineAlert;
+}
 
 const AlertBanner = styled(Background)<Pick<AlertProps, 'type' | 'placement'>>(
   placementVariants
