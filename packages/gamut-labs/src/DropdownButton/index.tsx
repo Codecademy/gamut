@@ -3,7 +3,7 @@ import {
   ArrowChevronDownFilledIcon,
   MiniKebabMenuIcon,
 } from '@codecademy/gamut-icons';
-import { pxRem, styledOptions } from '@codecademy/gamut-styles';
+import { css, pxRem, styledOptions } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React, { useRef, useState } from 'react';
 
@@ -18,9 +18,11 @@ const DownArrow = styled(ArrowChevronDownFilledIcon, styledOptions)<{
   ${({ isOpen }) => isOpen && 'transform: rotate(-180deg)'};
 `;
 
-const HorizontalKebabIcon = styled(MiniKebabMenuIcon)`
-  transform: rotate(90deg);
-`;
+const HorizontalKebabIcon = styled(MiniKebabMenuIcon)(
+  css({
+    transform: 'rotate(90deg)',
+  })
+);
 
 export type DropdownButtonProps = {
   buttonType?: 'fill' | 'stroke' | 'kebab' | 'horizontalKebab';
