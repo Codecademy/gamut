@@ -3,6 +3,7 @@ import React, {
   cloneElement,
   ReactElement,
   ReactNode,
+  useEffect,
   useRef,
   useState,
 } from 'react';
@@ -13,6 +14,19 @@ export const HorizontalScrollBar: React.FC = ({ children }) => {
   // HOW to get all elements into a single observer
 
   const elementsRef = useRef<ReactNode[]>([]);
+  const intersectionObserver = new IntersectionObserver(
+    (entries: IntersectionObserverEntry[]) => {
+      entries.forEach((entry) => console.log(entry));
+    }
+  );
+
+  useEffect(() => {
+    if (elementsRef.current.length) {
+      elementsRef.current.forEach((entry) =>
+        intersectionObserver.observe(entry)
+      );
+    }
+  }, [elementsRef, intersectionObserver]);
 
   const [visibilityStates, setVisibilityStates] = useState([]);
 
@@ -24,6 +38,7 @@ export const HorizontalScrollBar: React.FC = ({ children }) => {
 
         // console.log(elementsRef.current[index])
         return cloneElement(child, {
+          'aria-hidden': false,
           ref: (element: ReactNode) => (elementsRef.current[index] = element),
         });
       })}
