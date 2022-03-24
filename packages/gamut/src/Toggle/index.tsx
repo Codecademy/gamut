@@ -18,7 +18,7 @@ export type ToggleProps = {
   /** Called when the input value has changed */
   onChange?: (event?: React.FormEvent<HTMLInputElement>) => void;
   /** A label used for accessibility and control, unique to the page */
-  label?: string;
+  label: string;
   /** A label used for accessibility and control, unique to the page */
   labelSide?: 'left' | 'right';
   /** Changes the dimensions of the element for using the component outside of a form context */
