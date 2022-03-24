@@ -4,7 +4,6 @@ import styled from '@emotion/styled';
 import React from 'react';
 
 import { Box } from '../Box';
-import { InputSelectors } from '../Form/styles';
 import { Text } from '../Typography/Text';
 
 export type ToggleSizes = keyof typeof sizes;
