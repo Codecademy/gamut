@@ -1,9 +1,10 @@
-import { css, screenReaderOnly, states } from '@codecademy/gamut-styles';
+import { css, screenReaderOnly, states, theme } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
 import React from 'react';
 
 import { Box } from '../Box';
+import { InputSelectors } from '../Form/styles';
 import { Text } from '../Typography/Text';
 
 export type ToggleSizes = keyof typeof sizes;
@@ -55,6 +56,10 @@ const ToggleTrack = styled(Box)(
       borderColor: 'inherit',
       borderStyle: 'solid',
       borderWidth: 2,
+    },
+    '&:focus-within': {
+      outline: `3px solid ${theme.colors.primary}`,
+      outlineOffset: '2px',
     },
   })
 );
@@ -111,13 +116,6 @@ export const Toggle: React.FC<ToggleProps> = ({
           {label}
         </Text>
       )}
-      <ToggleInput
-        type="checkbox"
-        checked={checked}
-        id={label}
-        disabled={disabled}
-        onChange={onChange}
-      />
       <ToggleTrack
         {...sizeStyles}
         borderColor="primary"
@@ -125,6 +123,13 @@ export const Toggle: React.FC<ToggleProps> = ({
         borderRadius="99rem"
         position="relative"
       >
+        <ToggleInput
+          type="checkbox"
+          checked={checked}
+          id={label}
+          disabled={disabled}
+          onChange={onChange}
+        />
         <Circle
           width="40%"
           borderRadius="50%"
