@@ -1,6 +1,7 @@
 import React, {
   Children,
   cloneElement,
+  forwardRef,
   ReactElement,
   ReactNode,
   useEffect,
@@ -12,16 +13,23 @@ import React, {
 import { FlexBox } from '../Box';
 
 type VisibilityControllerProps = {
-  visible: boolean;
+  visible?: boolean;
 };
 
-export const VisibilityController: React.FC<VisibilityControllerProps> = ({
-  visible,
-  children,
-}) => {
-  console.log(visible);
-  return <>{children}</>;
-};
+// export const VisibilityController: React.FC<VisibilityControllerProps> = ({
+//   visible,
+//   children,
+// }) => {
+//   const child = Children.toArray(children)[0];
+//   return <>{cloneElement(child, { 'aria-hidden': !visible })}</>;
+// };
+
+const VisibilityController = forwardRef<HTMLElement, VisibilityControllerProps>(
+  ({ visible, children }, ref) => {
+    const child = Children.toArray(children)[0];
+    return <>{cloneElement(child, { 'aria-hidden': visible })}</>;
+  }
+);
 
 export const HorizontalScrollBar: React.FC = ({ children }) => {
   // HOW to get all elements into a single observer
@@ -52,23 +60,19 @@ export const HorizontalScrollBar: React.FC = ({ children }) => {
     }
   }, [elementsRef, intersectionObserver]);
 
-  const stuff = Children.map<ReactNode, ReactElement>(
+  const scrollBarElements = Children.map<ReactNode, ReactElement>(
     children,
     (child, index) => {
-      // elementsRef.current[index] = child
-
-      // console.log(elementsRef.current[index])
       return (
-        <VisibilityController visible={visibilityStates[index]}>
-          {cloneElement(child, {
-            ref: (element: ReactNode) => (elementsRef.current[index] = element),
-          })}
+        <VisibilityController
+          ref={(element: HTMLElement) => (elementsRef.current[index] = element)}
+          visible={!!visibilityStates[index]}
+        >
+          {child}
         </VisibilityController>
       );
     }
   );
 
-  console.log(stuff);
-
-  return <FlexBox>{stuff}</FlexBox>;
+  return <FlexBox>{scrollBarElements}</FlexBox>;
 };
