@@ -1,19 +1,22 @@
-import { Text } from '@codecademy/gamut';
+import { FlexBox, Text } from '@codecademy/gamut';
 import { capitalize } from 'lodash';
 import React from 'react';
 
-import { Difficulty, DifficultyProps } from '../Difficulty';
+import { Difficulty } from '../Difficulty';
+import { ContentDifficultyProps, DifficultyVariant } from '../Difficulty/types';
 import { pluralizeWithS } from './helpers';
 
-export type SubtitleProps = DifficultyProps & {
+export type SubtitleProps = Pick<ContentDifficultyProps, 'difficulty'> & {
   scope: Record<string, number>;
   showAltSubtitle?: boolean;
+  difficultyVariant?: DifficultyVariant;
 };
 
 export const Subtitle: React.FC<SubtitleProps> = ({
   difficulty,
   scope,
   showAltSubtitle = false,
+  difficultyVariant,
 }) => {
   const scopeToMap = Object.keys(scope).filter((val) => scope[val] > 0);
 
@@ -23,7 +26,9 @@ export const Subtitle: React.FC<SubtitleProps> = ({
     <>
       {!showAltSubtitle && (
         <>
-          <Difficulty difficulty={difficulty} />
+          <FlexBox fontSize={14} alignItems="center">
+            <Difficulty variant={difficultyVariant} difficulty={difficulty} />
+          </FlexBox>
           {scopeToMap.length ? separatingChar : null}
         </>
       )}
