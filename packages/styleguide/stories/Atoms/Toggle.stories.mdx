@@ -28,7 +28,7 @@ import { InteractiveToggle } from './Toggle.examples.tsx';
   - Labels can be on either side of the Toggle — choose the direction that aligns best with the other elements on the page.
 - Toggles are most effective when they trigger an immediate action with related components (like changing copy or showing a section when toggled)
 
-<Canvas disl>
+<Canvas>
   <Story
     name="right"
     args={{ label: 'My label is to the right', labelSide: 'right' }}
@@ -88,9 +88,17 @@ Disabling the input will change the opacity and cursor but still denote the curr
 ## Interactive Example
 
 <Canvas>
-  <Story name="Toggle" args={{ label: 'interactive example' }}>
+  <Story name="Interactive" args={{ label: 'interactive example' }}>
     {(args) => <InteractiveToggle {...args} />}
   </Story>
 </Canvas>
 
-<PropsTable story="Interactive" />
+## Playground Example
+
+<Canvas>
+  <Story name="Toggle" args={{ label: 'example' }}>
+    {(args) => <Toggle {...args} />}
+  </Story>
+</Canvas>
+
+<PropsTable story="Toggle" defaultGroups={['space']} />
