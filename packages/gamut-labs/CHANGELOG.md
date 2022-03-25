@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [30.6.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@30.6.0...@codecademy/gamut-labs@30.6.1) (2022-03-24)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+## [30.6.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@30.5.0...@codecademy/gamut-labs@30.6.0) (2022-03-24)
+
+
+### Features
+
+* **DropdownButton:** add horizontal kebab ([7ea2157](https://github.com/Codecademy/gamut/commit/7ea21570169a30e4c438b3d72b59d9c131ff382f))
+
+
+
 ## [30.5.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@30.4.1...@codecademy/gamut-labs@30.5.0) (2022-03-23)
 
 
