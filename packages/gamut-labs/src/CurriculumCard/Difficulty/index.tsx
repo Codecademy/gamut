@@ -14,7 +14,7 @@ export enum ContainerDifficulty {
 
 export type DifficultyVariant = 'small' | 'medium';
 
-export type ContentDifficultyProps = {
+export type DifficultyProps = {
   difficulty: ContainerDifficulty;
   variant?: DifficultyVariant;
 };
@@ -51,7 +51,7 @@ const DifficultySpan = styled(Box)(
   })
 );
 
-export const Difficulty: React.FC<ContentDifficultyProps> = ({
+export const Difficulty: React.FC<DifficultyProps> = ({
   difficulty,
   variant,
 }) => {

@@ -2,14 +2,10 @@ import { FlexBox, Text } from '@codecademy/gamut';
 import { capitalize } from 'lodash';
 import React from 'react';
 
-import {
-  ContentDifficultyProps,
-  Difficulty,
-  DifficultyVariant,
-} from '../Difficulty';
+import { DifficultyProps, Difficulty, DifficultyVariant } from '../Difficulty';
 import { pluralizeWithS } from './helpers';
 
-export type SubtitleProps = Pick<ContentDifficultyProps, 'difficulty'> & {
+export type SubtitleProps = Pick<DifficultyProps, 'difficulty'> & {
   scope: Record<string, number>;
   showAltSubtitle?: boolean;
   difficultyVariant?: DifficultyVariant;
