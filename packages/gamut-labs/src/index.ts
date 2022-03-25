@@ -6,7 +6,6 @@ export * from './Byline';
 export * from './Breadcrumbs';
 export * from './CurriculumCard';
 export * from './CurriculumCard/Difficulty';
-export { ContainerDifficulty } from './CurriculumCard/Difficulty/types';
 export * from './Drawer';
 export * from './EditorialImage';
 export * from './ErrorContents';
