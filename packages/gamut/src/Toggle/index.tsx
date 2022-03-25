@@ -22,7 +22,9 @@ export interface ToggleBaseProps extends ToggleStyleProps {
   ariaLabel?: string;
   /** If the Toggle is disabled */
   disabled?: boolean;
-  /** Called when the input value has changed */
+  /** Called on click. Only to be used when the Toggle is a button */
+  onClick?: (event?: React.MouseEvent<MouseEvent>) => void;
+  /** Called when the input value has changed. Only to be used when the Toggle is an input */
   onChange?: (event?: React.FormEvent<HTMLInputElement>) => void;
   /** A visible label for your Toggle - we reccommend this */
   label?: string;
@@ -47,21 +49,22 @@ export type ToggleProps = AriaLabeledToggle | LabeledToggle;
 export const Toggle: React.FC<ToggleProps> = ({
   as = 'input',
   checked,
-  onChange,
+  disabled,
   label,
   labelSide = 'right',
-  disabled,
+  onChange,
+  onClick,
   size = 'medium',
   ...rest
 }) => {
   const checkedColor = checked ? 'primary' : 'navy-600';
-  const toggleProps = getToggleElementProps({
-    as,
-    checked,
-    disabled,
-    eventHandler: onChange,
-    label,
-  });
+  // const toggleProps = getToggleElementProps({
+  //   as,
+  //   checked,
+  //   disabled,
+  //   eventHandler: onChange,
+  //   label,
+  // });
 
   return (
     <ToggleLabel
@@ -78,25 +81,30 @@ export const Toggle: React.FC<ToggleProps> = ({
           {label}
         </Text>
       )}
-      <ToggleElement {...toggleProps}>
-        <ToggleTrack
-          bg={checkedColor}
-          borderColor="primary"
-          borderRadius="99rem"
-          position="relative"
-          size={size}
-        >
-          <Circle
-            width="40%"
-            borderRadius="50%"
-            bg="white"
-            position="absolute"
-            top="10%"
-            bottom="10%"
-            left={checked ? '55%' : '5%'}
-          />
-        </ToggleTrack>
-      </ToggleElement>
+      <ToggleTrack
+        bg={checkedColor}
+        borderColor="primary"
+        borderRadius="99rem"
+        position="relative"
+        size={size}
+      >
+        <ToggleElement
+          type="checkbox"
+          checked={checked}
+          id={label}
+          disabled={disabled}
+          onChange={onChange}
+        />
+        <Circle
+          width="40%"
+          borderRadius="50%"
+          bg="white"
+          position="absolute"
+          top="10%"
+          bottom="10%"
+          left={checked ? '55%' : '5%'}
+        />
+      </ToggleTrack>
     </ToggleLabel>
   );
 };
