@@ -3,6 +3,7 @@ import cx from 'classnames';
 import React, { useState } from 'react';
 import ReactPlayer from 'react-player';
 
+// eslint-disable-next-line gamut/no-css-standalone
 import styles from './styles/index.module.scss';
 
 const OverlayPlayButton = ({ videoTitle }: { videoTitle?: string }) => {
