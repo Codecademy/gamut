@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [45.4.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@45.3.0...@codecademy/gamut@45.4.0) (2022-03-24)
+
+
+### Features
+
+* **List:** add overflowHidden prop to List ([c798c41](https://github.com/Codecademy/gamut/commit/c798c4180a152e784d9df0f0f1df20ca33787a7b))
+
+
+
+## [45.3.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@45.2.1...@codecademy/gamut@45.3.0) (2022-03-22)
+
+
+### Features
+
+* **Alert:**  Add Notice + Feature variants to inline Alert ([972b890](https://github.com/Codecademy/gamut/commit/972b8900bf6f8e2f325bce47c536723cad65c489))
+
+
+
 ### [45.2.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@45.2.0...@codecademy/gamut@45.2.1) (2022-03-15)
 
 **Note:** Version bump only for package @codecademy/gamut
