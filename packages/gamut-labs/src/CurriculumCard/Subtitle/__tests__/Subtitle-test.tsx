@@ -1,9 +1,10 @@
 import { setupRtl } from '@codecademy/gamut-tests';
 
+import { ContainerDifficulty } from '../../Difficulty/types';
 import { Subtitle } from '../index';
 
 const renderView = setupRtl(Subtitle, {
-  difficulty: 'Intermediate',
+  difficulty: ContainerDifficulty.Intermediate,
   scope: { lesson: 10 },
   showAltSubtitle: false,
 });
@@ -31,6 +32,6 @@ describe('CurriculumCard > Subtitle', () => {
     const { view } = renderView({ showAltSubtitle: true });
 
     expect(view.queryByText('Beginner friendly')).toBeFalsy();
-    expect(view.queryByText('Intermediate')).toBeFalsy();
+    expect(view.queryByText(ContainerDifficulty.Intermediate)).toBeFalsy();
   });
 });
