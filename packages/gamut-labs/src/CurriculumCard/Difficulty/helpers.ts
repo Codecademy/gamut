@@ -1,4 +1,4 @@
-import { ContainerDifficulty, ContainerDifficultyUnion } from './types';
+import { ContainerDifficulty } from './types';
 
 /**
  * calculate the number associated with the difficulty level for a particular content
@@ -6,10 +6,8 @@ import { ContainerDifficulty, ContainerDifficultyUnion } from './types';
  * @param difficulty level of difficulty for a particular content
  * @returns 0 indicating beginner, 1 intermediate and 2 for advanced content.
  */
-export const getDifficultyNumber = <
-  Type extends ContainerDifficultyUnion | ContainerDifficulty
->(
-  difficulty: Type
+export const getDifficultyNumber = (
+  difficulty: ContainerDifficulty
 ): 0 | 1 | 2 => {
   if (difficulty === ContainerDifficulty.Beginner) return 0;
   if (difficulty === ContainerDifficulty.Intermediate) return 1;

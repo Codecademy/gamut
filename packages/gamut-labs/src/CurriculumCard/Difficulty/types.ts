@@ -4,15 +4,10 @@ export enum ContainerDifficulty {
   Advanced = 'Advanced',
 }
 
-/**
- * converting ContainerDifficulty enum into union type
- */
-export type ContainerDifficultyUnion = `${ContainerDifficulty}`;
-
 export type DifficultyVariant = 'small' | 'medium';
 
 export type ContentDifficultyProps = {
-  difficulty: ContainerDifficulty | ContainerDifficultyUnion;
+  difficulty: ContainerDifficulty;
   variant?: DifficultyVariant;
 };
 
