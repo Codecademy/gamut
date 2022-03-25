@@ -1,4 +1,4 @@
-import { ContainerDifficulty } from '../..';
+import { ContainerDifficulty } from './types';
 
 /**
  * calculate the number associated with the difficulty level for a particular content
