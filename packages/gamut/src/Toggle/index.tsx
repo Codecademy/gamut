@@ -4,15 +4,18 @@ import { Text } from '../Typography/Text';
 import {
   Circle,
   sizes,
-  ToggleInput,
+  ToggleInput as ToggleElement,
   ToggleLabel,
   ToggleStyleProps,
   ToggleTrack,
 } from './elements';
+import { getToggleElementProps } from './utils';
 
 export type ToggleSizes = keyof typeof sizes;
 
 export interface ToggleBaseProps extends ToggleStyleProps {
+  /** If the Toggle element should be a button or an input. Buttons should be used if the toggle immediately kicks off an action, input should be used if the button exists within a form of if a seperate user interaction submits the data of the toggle */
+  as?: 'button' | 'input';
   /** The state of the checkbox input (this can be out of sync with the input's value if not passed) */
   checked: boolean;
   /** An aria-label if needed. If you do not label your toggle. you must provide an aria-label. */
@@ -42,6 +45,7 @@ export type LabeledToggle = ToggleBaseProps & {
 export type ToggleProps = AriaLabeledToggle | LabeledToggle;
 
 export const Toggle: React.FC<ToggleProps> = ({
+  as = 'input',
   checked,
   onChange,
   label,
@@ -51,6 +55,13 @@ export const Toggle: React.FC<ToggleProps> = ({
   ...rest
 }) => {
   const checkedColor = checked ? 'primary' : 'navy-600';
+  const toggleProps = getToggleElementProps({
+    as,
+    checked,
+    disabled,
+    eventHandler: onChange,
+    label,
+  });
 
   return (
     <ToggleLabel
@@ -67,30 +78,25 @@ export const Toggle: React.FC<ToggleProps> = ({
           {label}
         </Text>
       )}
-      <ToggleTrack
-        bg={checkedColor}
-        borderColor="primary"
-        borderRadius="99rem"
-        position="relative"
-        size={size}
-      >
-        <ToggleInput
-          type="checkbox"
-          checked={checked}
-          id={label}
-          disabled={disabled}
-          onChange={onChange}
-        />
-        <Circle
-          width="40%"
-          borderRadius="50%"
-          bg="white"
-          position="absolute"
-          top="10%"
-          bottom="10%"
-          left={checked ? '55%' : '5%'}
-        />
-      </ToggleTrack>
+      <ToggleElement {...toggleProps}>
+        <ToggleTrack
+          bg={checkedColor}
+          borderColor="primary"
+          borderRadius="99rem"
+          position="relative"
+          size={size}
+        >
+          <Circle
+            width="40%"
+            borderRadius="50%"
+            bg="white"
+            position="absolute"
+            top="10%"
+            bottom="10%"
+            left={checked ? '55%' : '5%'}
+          />
+        </ToggleTrack>
+      </ToggleElement>
     </ToggleLabel>
   );
 };
