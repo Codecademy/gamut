@@ -14,7 +14,7 @@ export const getToggleElementProps = ({
   eventHandler,
   label,
 }: ToggleElementProps) =>
-  as === 'button'
+  as === 'input'
     ? {
         as,
         type: 'checkbox',

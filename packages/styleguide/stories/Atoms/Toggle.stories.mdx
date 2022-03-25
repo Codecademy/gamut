@@ -3,7 +3,10 @@ import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 
-import { InteractiveToggle } from './Toggle.examples.tsx';
+import {
+  InteractiveButtonToggle,
+  InteractiveInputToggle,
+} from './Toggle.examples.tsx';
 
 <Meta
   title={title}
@@ -85,13 +88,22 @@ Disabling the input will change the opacity and cursor but still denote the curr
   </Story>
 </Canvas>
 
-<!-- ## Interactive Example
+## Interactive Example
 
 <Canvas>
-  <Story name="Interactive" args={{ label: 'interactive example' }}>
-    {(args) => <InteractiveToggle {...args} />}
+  <Story
+    name="Interactive Input Toggle"
+    args={{ label: 'interactive example' }}
+  >
+    {(args) => <InteractiveInputToggle {...args} />}
   </Story>
-</Canvas> -->
+  <Story
+    name="Interactive Button Toggle"
+    args={{ label: 'interactive button example' }}
+  >
+    {(args) => <InteractiveButtonToggle {...args} />}
+  </Story>
+</Canvas>
 
 ## Playground Example
 

@@ -26,7 +26,7 @@ export const ToggleTrack = styled(Box)(
   variant({
     base: {
       transition: 'background-color 0.2s ease',
-
+      border: 'none',
       '&:after': {
         content: '""',
         transition: 'opacity 0.2s ease',
@@ -41,7 +41,7 @@ export const ToggleTrack = styled(Box)(
         borderStyle: 'solid',
         borderWidth: 2,
       },
-      '&:focus-within': {
+      '&:focus, &:focus-within': {
         outline: `3px solid ${theme.colors.primary}`,
         outlineOffset: '2px',
       },
@@ -59,6 +59,7 @@ export const Circle = styled(Box)(
 );
 
 export const ToggleInput = styled.input(screenReaderOnly);
+export const ToggleButton = styled.button();
 
 const ToggleLabelStates = states({
   disabled: { cursor: 'not-allowed', opacity: 0.5 },
