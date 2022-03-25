@@ -1,6 +1,6 @@
 import { setupRtl } from '@codecademy/gamut-tests';
-import { ContainerDifficulty } from '../Difficulty';
 
+import { ContainerDifficulty } from '../..';
 import { CurriculumCard } from '../index';
 
 const renderView = setupRtl(CurriculumCard, {

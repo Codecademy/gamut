@@ -1,6 +1,6 @@
 import { setupRtl } from '@codecademy/gamut-tests';
-import { ContainerDifficulty } from '../../Difficulty';
 
+import { ContainerDifficulty } from '../../Difficulty/types';
 import { Subtitle } from '../index';
 
 const renderView = setupRtl(Subtitle, {

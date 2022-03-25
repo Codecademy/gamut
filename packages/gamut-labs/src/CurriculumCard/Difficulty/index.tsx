@@ -4,39 +4,8 @@ import styled from '@emotion/styled';
 import { times, uniqueId } from 'lodash';
 import React from 'react';
 
-export enum ContainerDifficulty {
-  Beginner = 'Beginner',
-  Intermediate = 'Intermediate',
-  Advanced = 'Advanced',
-}
-
-export type DifficultyVariant = 'small' | 'medium';
-
-export type DifficultyProps = {
-  difficulty: ContainerDifficulty;
-  variant?: DifficultyVariant;
-};
-
-export enum DifficultyString {
-  'Beginner friendly',
-  'Intermediate',
-  'Advanced',
-}
-
-/**
- * calculate the number associated with the difficulty level for a particular content
- *
- * @param difficulty level of difficulty for a particular content
- * @returns 0 indicating beginner, 1 intermediate and 2 for advanced content.
- */
-export const getDifficultyNumber = (
-  difficulty: ContainerDifficulty
-): 0 | 1 | 2 => {
-  if (difficulty === ContainerDifficulty.Beginner) return 0;
-  if (difficulty === ContainerDifficulty.Intermediate) return 1;
-
-  return 2;
-};
+import { getDifficultyNumber } from './helpers';
+import { DifficultyProps, DifficultyString } from './types';
 
 const DifficultySpan = styled(Box)(
   system.variant({
