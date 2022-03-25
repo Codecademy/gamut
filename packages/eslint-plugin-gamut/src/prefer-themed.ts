@@ -53,7 +53,7 @@ export default createRule({
     fixable: 'code',
     messages: {
       preferThemed:
-        'Use the themed style utility instead from gamut-styles instead.',
+        'Use the our variants API or themed style utility from gamut-styles instead.',
     },
     type: 'suggestion',
     schema: [],
