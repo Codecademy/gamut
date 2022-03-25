@@ -2,6 +2,7 @@ import cx from 'classnames';
 import React from 'react';
 
 import { ContentContainer } from '../ContentContainer';
+// eslint-disable-next-line gamut/no-css-standalone
 import styles from './styles/index.module.scss';
 
 export type AppBarProps = {

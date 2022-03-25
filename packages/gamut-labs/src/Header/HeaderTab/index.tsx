@@ -1,6 +1,7 @@
 import cx from 'classnames';
 import React, { HTMLAttributes } from 'react';
 
+// eslint-disable-next-line gamut/no-css-standalone
 import styles from './styles.module.scss';
 
 export type HeaderTabProps = HTMLAttributes<HTMLElement> & {

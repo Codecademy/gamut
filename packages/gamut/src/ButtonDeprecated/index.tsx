@@ -8,6 +8,7 @@ import {
   ButtonDeprecatedBaseProps,
 } from '../ButtonDeprecatedBase';
 import { omitProps } from '../utils/omitProps';
+// eslint-disable-next-line gamut/no-css-standalone
 import styles from './styles/index.module.scss';
 
 // themes can be an alias to a color
