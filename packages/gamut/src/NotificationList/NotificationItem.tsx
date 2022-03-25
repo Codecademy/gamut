@@ -14,6 +14,7 @@ import {
   New,
 } from '@codecademy/gamut-illustrations';
 import { CheckerDense } from '@codecademy/gamut-patterns';
+import { themed } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React, { ReactElement } from 'react';
 
@@ -42,7 +43,7 @@ const StyledLink = styled.a`
   &:focus-visible {
     &:after {
       border-radius: 4px;
-      border: 2px solid ${({ theme }) => theme.colors.navy};
+      border: 2px solid ${themed('colors.navy')};
     }
   }
   &:hover {
@@ -55,7 +56,7 @@ const StyledLink = styled.a`
 
 const StyledImg = styled.img`
   border-radius: 50%;
-  border: 1px solid ${({ theme }) => theme.colors.navy};
+  border: 1px solid ${themed('colors.navy')};
   height: 3rem;
   width: 3rem;
 `;

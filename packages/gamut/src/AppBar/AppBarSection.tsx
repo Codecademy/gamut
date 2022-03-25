@@ -1,6 +1,7 @@
 import cx from 'classnames';
 import React from 'react';
 
+// eslint-disable-next-line gamut/no-css-standalone
 import styles from './styles/index.module.scss';
 
 export type AppBarSectionProps = {
