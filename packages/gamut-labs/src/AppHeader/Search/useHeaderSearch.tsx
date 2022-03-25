@@ -9,16 +9,14 @@ export type AppHeaderSearch = {
   onEnable: () => void;
   onSearch: (query: string) => void;
   onTrackingClick: (target: string) => void;
-  initiallyVisible?: boolean;
 };
 
 export const useHeaderSearch = ({
   onEnable,
   onSearch,
   onTrackingClick,
-  initiallyVisible,
 }: AppHeaderSearch) => {
-  const [isSearchVisible, setIsSearchVisible] = useState(!!initiallyVisible);
+  const [isSearchVisible, setIsSearchVisible] = useState(false);
 
   const toggleSearch = () => {
     if (!isSearchVisible) {
