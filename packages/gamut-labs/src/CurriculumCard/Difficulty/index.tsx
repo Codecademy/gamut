@@ -5,7 +5,25 @@ import { times, uniqueId } from 'lodash';
 import React from 'react';
 
 import { getDifficultyNumber } from './helpers';
-import { ContentDifficultyProps, DifficultyString } from './types';
+
+export enum ContainerDifficulty {
+  Beginner = 'Beginner',
+  Intermediate = 'Intermediate',
+  Advanced = 'Advanced',
+}
+
+export type DifficultyVariant = 'small' | 'medium';
+
+export type ContentDifficultyProps = {
+  difficulty: ContainerDifficulty;
+  variant?: DifficultyVariant;
+};
+
+export enum DifficultyString {
+  'Beginner friendly',
+  'Intermediate',
+  'Advanced',
+}
 
 const DifficultySpan = styled(Box)(
   system.variant({

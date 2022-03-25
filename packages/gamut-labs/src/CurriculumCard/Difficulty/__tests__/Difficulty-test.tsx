@@ -1,7 +1,6 @@
 import { setupRtl } from '@codecademy/gamut-tests';
 
-import { Difficulty } from '../index';
-import { ContainerDifficulty } from '../types';
+import { ContainerDifficulty, Difficulty } from '../index';
 
 describe('CurriculumCard Difficulty', () => {
   it('displays beginner friendly difficulty', () => {
