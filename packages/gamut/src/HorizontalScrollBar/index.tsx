@@ -5,6 +5,7 @@ import React, {
   JSXElementConstructor,
   ReactElement,
   ReactNode,
+  RefObject,
   useEffect,
   useMemo,
   useRef,
@@ -21,8 +22,17 @@ const Container = styled.div`
   padding-top: 16px;
 `;
 
+const isHorizontallyIntersecting = (
+  xPosition: number,
+  elementWidth: number,
+  parentWidth: number
+) => {
+  return xPosition >= 0 - elementWidth && xPosition <= parentWidth;
+};
+
 export const HorizontalScrollBar: React.FC = ({ children }) => {
   const elementsRef = useRef<ReactNode[]>([]);
+  const parentContainerRef = useRef<ReactNode | null>(null);
 
   const [showLeftButton, setShowLeftButton] = useState<boolean>(false);
   const [showRightButton, setShowRightButton] = useState<boolean>(true);
@@ -31,17 +41,30 @@ export const HorizontalScrollBar: React.FC = ({ children }) => {
     () =>
       new IntersectionObserver((entries: IntersectionObserverEntry[]) => {
         entries.forEach((entry, index) => {
+          const containerWidth = parentContainerRef.current
+            ? parentContainerRef.current.clientWidth
+            : 0;
+
+          const { x, width } = entry.boundingClientRect;
+          const elementIsHorizontallyIntersecting = isHorizontallyIntersecting(
+            x,
+            width,
+            containerWidth
+          );
+
           const shouldToggleOnShowLeftButton =
-            index === 0 && !entry.isIntersecting && !showLeftButton;
+            index === 0 &&
+            !elementIsHorizontallyIntersecting &&
+            !showLeftButton;
           const shouldToggleOffShowLeftButton =
-            index === 0 && entry.isIntersecting && showLeftButton;
+            index === 0 && elementIsHorizontallyIntersecting && showLeftButton;
           const shouldToggleOnShowRightButton =
             index === entries.length - 1 &&
-            !entry.isIntersecting &&
+            !elementIsHorizontallyIntersecting &&
             !showRightButton;
           const shouldToggleOffShowRightButton =
             index === entries.length - 1 &&
-            entry.isIntersecting &&
+            elementIsHorizontallyIntersecting &&
             showRightButton;
 
           if (shouldToggleOnShowLeftButton) {
@@ -75,7 +98,8 @@ export const HorizontalScrollBar: React.FC = ({ children }) => {
     <>
       <Text display={showLeftButton ? 'block ' : 'none'}>Left Button</Text>
       <Text display={showRightButton ? 'block' : 'none'}>Right Button</Text>
-      <Container>
+      {/* TODO figure out this shit  */}
+      <Container ref={parentContainerRef as RefObject<HTMLDivElement>}>
         {Children.map(
           children,
           (
