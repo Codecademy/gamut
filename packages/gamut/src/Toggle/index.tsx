@@ -65,12 +65,3 @@ export const Toggle: React.FC<ToggleProps> = ({
     </ToggleLabel>
   );
 };
-
-const hey = () => (
-  <Toggle
-    ariaLabel="my label"
-    as="input"
-    checked={false}
-    onChange={() => 'updog'}
-  />
-);

@@ -16,5 +16,7 @@ export const InteractiveButtonToggle: React.FC = () => {
     setChecked(!checked);
   };
 
-  return <Toggle as="button" checked={checked} onClick={changeHandler} />;
+  return (
+    <Toggle as="button" checked={checked} onClick={changeHandler} label="hi2" />
+  );
 };
