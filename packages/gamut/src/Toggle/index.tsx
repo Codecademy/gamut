@@ -1,6 +1,5 @@
 import React from 'react';
 
-import { Text } from '../Typography/Text';
 import { Circle, ToggleInput, ToggleLabel, ToggleTrack } from './elements';
 import { ToggleProps } from './types';
 import { getToggleElementProps } from './utils';
@@ -33,13 +32,11 @@ export const Toggle: React.FC<ToggleProps> = ({
       labelRight={labelSide === 'right'}
       {...rest}
     >
-      {label && (
-        <Text
-          ml={labelSide === 'left' ? 0 : 16}
-          mr={labelSide === 'right' ? 0 : 16}
-        >
-          {label}
-        </Text>
+      {label && ( // <Text
+        //   ml={labelSide === 'left' ? 0 : 16}
+        //   mr={labelSide === 'right' ? 0 : 16}
+        // >
+        <>{label}</>
       )}
       <ToggleTrack
         bg={checkedColor}
@@ -47,6 +44,8 @@ export const Toggle: React.FC<ToggleProps> = ({
         borderRadius="99rem"
         position="relative"
         size={size}
+        mr={labelSide === 'left' ? 0 : 16}
+        ml={labelSide === 'right' ? 0 : 16}
         {...(isButton && toggleProps)}
       >
         {!isButton && <ToggleInput {...toggleProps} />}
