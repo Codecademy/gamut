@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [31.0.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@31.0.1...@codecademy/gamut-labs@31.0.2) (2022-03-28)
+
+
+### Bug Fixes
+
+* **AppHeader:** clean up search bar from experiment ([74cea44](https://github.com/Codecademy/gamut/commit/74cea443c0eb08a65f73809d0f42cdddca10f9a2))
+
+
+
 ### [31.0.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@31.0.0...@codecademy/gamut-labs@31.0.1) (2022-03-25)
 
 **Note:** Version bump only for package @codecademy/gamut-labs
