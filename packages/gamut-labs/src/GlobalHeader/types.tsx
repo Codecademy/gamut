@@ -21,8 +21,6 @@ type BaseHeader = {
   className?: string;
   hidePricing?: boolean;
   search: AppHeaderSearch;
-  /** initializes Header with search menu expanded open */
-  searchInitiallyOpen?: boolean;
 };
 
 export type User = {
