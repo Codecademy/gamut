@@ -1,33 +1,35 @@
 import { ToggleProps } from './types';
 
 export interface ToggleElementProps
-  extends Pick<ToggleProps, 'as' | 'checked' | 'disabled' | 'label'> {
+  extends Pick<
+    ToggleProps,
+    'ariaLabel' | 'as' | 'checked' | 'disabled' | 'label'
+  > {
   // we're pretty exhaustively checking this before it gets to this point
   eventHandler?: any;
 }
 
 export const getToggleElementProps = ({
+  ariaLabel,
   as,
   checked,
   disabled,
   eventHandler,
   label,
-}: ToggleElementProps) =>
-  as === 'input'
-    ? {
-        as,
-        type: 'checkbox',
-        checked,
-        id: label,
-        disabled,
-        onChange: eventHandler,
-      }
+}: ToggleElementProps) => {
+  const sharedProps = {
+    'aria-label': ariaLabel,
+    as,
+    checked,
+    id: label || ariaLabel,
+    disabled,
+  };
+  return as === 'input'
+    ? { ...sharedProps, type: 'checkbox', onChange: eventHandler }
     : {
-        as,
-        checked,
+        ...sharedProps,
         role: 'switch',
         'aria-checked': checked,
-        id: label,
-        disabled,
         onClick: eventHandler,
       };
+};

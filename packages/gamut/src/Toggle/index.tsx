@@ -5,6 +5,7 @@ import { ToggleProps } from './types';
 import { getToggleElementProps } from './utils';
 
 export const Toggle: React.FC<ToggleProps> = ({
+  ariaLabel,
   as = 'input',
   checked,
   disabled,
@@ -18,6 +19,7 @@ export const Toggle: React.FC<ToggleProps> = ({
   const checkedColor = checked ? 'primary' : 'navy-600';
   const isButton = as === 'button';
   const toggleProps = getToggleElementProps({
+    ariaLabel,
     as,
     checked,
     disabled,
@@ -32,12 +34,7 @@ export const Toggle: React.FC<ToggleProps> = ({
       labelRight={labelSide === 'right'}
       {...rest}
     >
-      {label && ( // <Text
-        //   ml={labelSide === 'left' ? 0 : 16}
-        //   mr={labelSide === 'right' ? 0 : 16}
-        // >
-        <>{label}</>
-      )}
+      {label && <>{label}</>}
       <ToggleTrack
         bg={checkedColor}
         borderColor="primary"

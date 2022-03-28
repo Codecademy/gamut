@@ -11,11 +11,62 @@ const renderView = setupRtl(Toggle, {
 });
 
 describe('Toggle', () => {
-  it('calls onChange', () => {
-    const { view } = renderView();
+  describe('when the toggle is an input', () => {
+    it('defaults to a checkbox input', () => {
+      const { view } = renderView();
 
-    view.getByLabelText('Toggle Text').click();
+      view.getByRole('checkbox');
+    });
 
-    expect(action).toHaveBeenCalled();
+    it('calls onChange when clicked', () => {
+      const { view } = renderView();
+
+      view.getByLabelText('Toggle Text').click();
+
+      expect(action).toHaveBeenCalled();
+    });
+
+    it('applies an aria-label appropriately when provided with no label', () => {
+      const { view } = renderView({
+        label: undefined,
+        ariaLabel: 'Toggle Text',
+      });
+
+      view.getByLabelText('Toggle Text');
+    });
+  });
+
+  describe('when the toggle is a button', () => {
+    it('defaults to a switch button', () => {
+      const { view } = renderView({
+        as: 'button',
+        onChange: undefined,
+        onClick: action,
+      });
+
+      view.getByRole('switch');
+    });
+
+    it('calls onClick when clicked', () => {
+      const { view } = renderView({
+        as: 'button',
+        onChange: undefined,
+        onClick: action,
+      });
+
+      view.getByLabelText('Toggle Text').click();
+
+      expect(action).toHaveBeenCalled();
+    });
+
+    it('applies an aria-label appropriately when provided with no label', () => {
+      const { view } = renderView({
+        as: 'button',
+        label: undefined,
+        ariaLabel: 'Toggle Text',
+      });
+
+      view.getByLabelText('Toggle Text');
+    });
   });
 });
