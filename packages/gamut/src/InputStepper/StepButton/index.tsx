@@ -5,6 +5,7 @@ import {
 import React from 'react';
 
 import { ButtonDeprecated } from '../../ButtonDeprecated';
+// eslint-disable-next-line gamut/no-css-standalone
 import styles from './styles.module.scss';
 
 export interface StepButtonProps {

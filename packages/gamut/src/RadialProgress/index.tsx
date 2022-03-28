@@ -2,6 +2,7 @@ import cx from 'classnames';
 import React, { SVGProps } from 'react';
 
 import { Text } from '../Typography';
+// eslint-disable-next-line gamut/no-css-standalone
 import styles from './styles.module.scss';
 
 export interface RadialProgressProps extends SVGProps<SVGSVGElement> {
