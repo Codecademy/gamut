@@ -21,6 +21,7 @@ import {
         'https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=60%3A3',
     },
   }}
+  args={{ onChange: () => null }}
 />
 
 ## Usage Guidelines
@@ -88,7 +89,34 @@ Disabling the input will change the opacity and cursor but still denote the curr
   </Story>
 </Canvas>
 
-## Interactive Example
+## HTML Element
+
+Our Toggles default to being `input` elements, but can also be the `button` element.
+
+- An `input` toggle should be provided an `onChange` and should have a secondary action (such as a submit button) that does something with its value. It is also usually wrapped in a form.
+- A `button` toggle should be provided an `onClick` and have an action that happens immediately (i.e, without a secondary input.) The toggle also gets the `role` of `switch`.
+
+If you use voiceover on either of the below, you will hear the difference this makes for accessibility.
+
+<Canvas>
+  <Story name="Input Toggle" args={{ label: 'input toggle' }}>
+    {(args) => <Toggle {...args} />}
+  </Story>
+  <Story
+    name="Button Toggle"
+    args={{
+      as: 'button',
+      checked: true,
+      label: 'button toggle',
+      onChange: undefined,
+      onClick: () => null,
+    }}
+  >
+    {(args) => <Toggle {...args} />}
+  </Story>
+</Canvas>
+
+## Interactive Examples
 
 <Canvas>
   <Story

@@ -7,7 +7,13 @@ export const InteractiveInputToggle: React.FC = () => {
     setChecked(!checked);
   };
 
-  return <Toggle checked={checked} onChange={changeHandler} label="hi" />;
+  return (
+    <Toggle
+      checked={checked}
+      onChange={changeHandler}
+      label="interactive input toggle"
+    />
+  );
 };
 
 export const InteractiveButtonToggle: React.FC = () => {
@@ -17,6 +23,11 @@ export const InteractiveButtonToggle: React.FC = () => {
   };
 
   return (
-    <Toggle as="button" checked={checked} onClick={changeHandler} label="hi2" />
+    <Toggle
+      as="button"
+      checked={checked}
+      onClick={changeHandler}
+      label="interactive button toggle"
+    />
   );
 };
