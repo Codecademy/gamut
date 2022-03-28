@@ -1,10 +1,8 @@
-// TODO - Pick from ToggleProps
-export interface ToggleElementProps {
-  as: 'button' | 'input';
-  checked: boolean;
-  label?: string;
-  disabled?: boolean;
-  eventHandler: any;
+import { ToggleProps } from './types';
+
+export interface ToggleElementProps
+  extends Pick<ToggleProps, 'as' | 'checked' | 'disabled' | 'label'> {
+  eventHandler?: ToggleProps['onClick'] | ToggleProps['onChange'];
 }
 
 export const getToggleElementProps = ({
