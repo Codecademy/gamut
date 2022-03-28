@@ -2,7 +2,8 @@ import { ToggleProps } from './types';
 
 export interface ToggleElementProps
   extends Pick<ToggleProps, 'as' | 'checked' | 'disabled' | 'label'> {
-  eventHandler?: ToggleProps['onClick'] | ToggleProps['onChange'];
+  // we're pretty exhaustively checking this before it gets to this point
+  eventHandler?: any;
 }
 
 export const getToggleElementProps = ({
@@ -23,6 +24,7 @@ export const getToggleElementProps = ({
       }
     : {
         as,
+        checked,
         role: 'switch',
         'aria-checked': checked,
         id: label,

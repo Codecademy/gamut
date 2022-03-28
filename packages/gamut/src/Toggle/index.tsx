@@ -49,9 +49,7 @@ export const Toggle: React.FC<ToggleProps> = ({
         size={size}
         {...(isButton && toggleProps)}
       >
-        {!isButton && (
-          <ToggleInput type="checkbox" checked={checked} {...toggleProps} />
-        )}
+        {!isButton && <ToggleInput {...toggleProps} />}
         <Circle
           width="40%"
           borderRadius="50%"
