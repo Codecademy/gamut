@@ -32,6 +32,7 @@ export const resourcesList: ResourcesList[] = [
     text: 'Projects',
     type: 'link',
     badgeText: 'New',
+    hideWithNewCatalogDropdown: true,
   },
   {
     id: 'challenges',
@@ -40,6 +41,7 @@ export const resourcesList: ResourcesList[] = [
     headerTrackingTarget: 'topnav_resources_challenges',
     text: 'Challenges',
     type: 'link',
+    hideWithNewCatalogDropdown: true,
   },
   {
     id: 'docs',
@@ -92,19 +94,25 @@ export const resourcesList: ResourcesList[] = [
   },
 ];
 
-export const headerResourcesList: AppHeaderLinkItem[] = resourcesList.map(
-  ({ id, href, headerTrackingTarget, text, type, newTab, badgeText }) => {
-    return {
-      id,
-      href,
-      trackingTarget: headerTrackingTarget,
-      text,
-      type,
-      newTab,
-      badge: badgeText ? renderBadge(badgeText) : undefined,
-    };
-  }
-);
+export const headerResourcesList = (
+  useNewCatalogDropdown?: boolean
+): AppHeaderLinkItem[] => {
+  const resources = resourcesList.map(
+    ({ id, href, headerTrackingTarget, text, type, newTab, badgeText }) => {
+      return {
+        id,
+        href,
+        trackingTarget: headerTrackingTarget,
+        text,
+        type,
+        newTab,
+        badge: badgeText ? renderBadge(badgeText) : undefined,
+      };
+    }
+  );
+  if (!useNewCatalogDropdown) return resources;
+  return resources.filter((resource) => !resource.hideWithNewCatalogDropdown);
+};
 
 export const footerResourcesList: FooterResourceList[] = resourcesList.map(
   ({ id, href, footerTrackingTarget, text, newTab }) => ({
