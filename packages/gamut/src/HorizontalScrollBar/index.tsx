@@ -130,6 +130,7 @@ export const HorizontalScrollBar: React.FC<HorizontalScrollBarProps> = ({
             elementsRef.current.length
           );
         }
+
         entry.target.ariaHidden = elementIsHorizontallyIntersecting
           ? 'false'
           : 'true';
@@ -146,19 +147,6 @@ export const HorizontalScrollBar: React.FC<HorizontalScrollBarProps> = ({
     }
   }, [elementsRef, intersectionObserver, children]);
 
-  //   <StrokeButton
-  //   onClick={() => handleScroll()}
-  //   zIndex={2}
-  //   left={-16}
-  //   top="1rem"
-  //   height="calc(100% - 2rem)"
-  //   px={4}
-  //   position="absolute"
-  //   variant="secondary"
-  //   tabIndex={0}
-  //   aria-label="See previous content"
-  // >
-
   return (
     <>
       <Box position="relative" display="inline-block">
@@ -173,17 +161,6 @@ export const HorizontalScrollBar: React.FC<HorizontalScrollBarProps> = ({
           >
             <MiniChevronLeftIcon size={24} />
           </StrokeButton>
-          {/* to do figure out how to float this to the right of the parent container */}
-          <StrokeButton
-            variant="secondary"
-            right={0}
-            height="100%"
-            position="absolute"
-            display={showRightButton ? 'block' : 'none'}
-            onClick={() => handleScroll(true)}
-          >
-            <MiniChevronRightIcon size={24} />
-          </StrokeButton>
           {Children.map(
             children,
             (
@@ -196,9 +173,20 @@ export const HorizontalScrollBar: React.FC<HorizontalScrollBarProps> = ({
               cloneElement(child, {
                 ref: (element: HTMLElement) =>
                   (elementsRef.current[index] = element),
-                'data-observerindex': index,
+                ...{ 'data-observerindex': index },
               })
           )}
+          <StrokeButton
+            variant="secondary"
+            right={0}
+            height="100%"
+            position="absolute"
+            display={showRightButton ? 'block' : 'none'}
+            onClick={() => handleScroll(true)}
+            aria-label="show more content"
+          >
+            <MiniChevronRightIcon size={24} />
+          </StrokeButton>
         </Container>
       </Box>
     </>
