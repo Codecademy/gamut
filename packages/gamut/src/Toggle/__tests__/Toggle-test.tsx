@@ -34,6 +34,16 @@ describe('Toggle', () => {
 
       view.getByLabelText('Toggle Text');
     });
+
+    // TO-DO
+    it('is disabled when disabled is true', () => {
+      const { view } = renderView({
+        label: undefined,
+        ariaLabel: 'Toggle Text',
+      });
+
+      view.getByLabelText('Toggle Text');
+    });
   });
 
   describe('when the toggle is a button', () => {
@@ -62,6 +72,15 @@ describe('Toggle', () => {
     it('applies an aria-label appropriately when provided with no label', () => {
       const { view } = renderView({
         as: 'button',
+        label: undefined,
+        ariaLabel: 'Toggle Text',
+      });
+
+      view.getByLabelText('Toggle Text');
+    });
+    // TO-DO
+    it('is disabled when disabled is true', () => {
+      const { view } = renderView({
         label: undefined,
         ariaLabel: 'Toggle Text',
       });
