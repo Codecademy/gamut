@@ -16,10 +16,10 @@ import React, {
 import ReactSelect, {
   components as SelectDropdownElements,
   ContainerProps,
-  IndicatorProps,
-  NamedProps,
-  OptionsType,
-  OptionTypeBase,
+  DropdownIndicatorProps,
+  GroupBase,
+  Options as OptionsType,
+  Props as NamedProps,
   StylesConfig,
 } from 'react-select';
 
@@ -109,14 +109,24 @@ const isSingleSelectProps = (
 
 const { DropdownIndicator, SelectContainer } = SelectDropdownElements;
 
+type InputProps = {
+  inputProps: any;
+};
+
+type HiProps = InputProps & SelectDropdownSizes;
+
+type SelectProps = {
+  selectProps: HiProps;
+};
+
 export interface OptionStrict {
   label: string;
   value: string;
 }
 
-type CustomContainerProps = ContainerProps<OptionStrict, false> & {
+type CustomContainerProps = ContainerProps<unknown, false> & {
   children?: ReactNode[];
-};
+} & SelectProps;
 
 const indicatorSizes = {
   small: {
@@ -129,9 +139,13 @@ const indicatorSizes = {
   },
 };
 
-interface SizedIndicatorProps extends IndicatorProps<OptionTypeBase, false> {
-  selectProps: SelectDropdownSizes;
-}
+type SizedIndicatorProps = DropdownIndicatorProps<
+  unknown,
+  false,
+  GroupBase<OptionStrict>
+> &
+  SelectProps &
+  InputProps;
 
 const ChevronDropdown = (props: SizedIndicatorProps) => {
   const { size } = props.selectProps;
@@ -277,7 +291,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
   );
 
   const theme = useTheme();
-  const memoizedStyles: StylesConfig<OptionTypeBase, false> = useMemo(() => {
+  const memoizedStyles: StylesConfig<any, false> = useMemo(() => {
     return {
       container: (provided, state) => ({
         ...provided,
