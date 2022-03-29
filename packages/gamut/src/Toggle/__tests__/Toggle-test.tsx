@@ -35,14 +35,14 @@ describe('Toggle', () => {
       view.getByLabelText('Toggle Text');
     });
 
-    // TO-DO
     it('is disabled when disabled is true', () => {
       const { view } = renderView({
-        label: undefined,
-        ariaLabel: 'Toggle Text',
+        disabled: true,
       });
 
-      view.getByLabelText('Toggle Text');
+      view.getByLabelText('Toggle Text').click();
+
+      expect(action).not.toHaveBeenCalled();
     });
   });
 
@@ -74,18 +74,24 @@ describe('Toggle', () => {
         as: 'button',
         label: undefined,
         ariaLabel: 'Toggle Text',
+        onChange: undefined,
+        onClick: action,
       });
 
       view.getByLabelText('Toggle Text');
     });
-    // TO-DO
+
     it('is disabled when disabled is true', () => {
       const { view } = renderView({
-        label: undefined,
-        ariaLabel: 'Toggle Text',
+        as: 'button',
+        disabled: true,
+        onChange: undefined,
+        onClick: action,
       });
 
-      view.getByLabelText('Toggle Text');
+      view.getByLabelText('Toggle Text').click();
+
+      expect(action).not.toHaveBeenCalled();
     });
   });
 });
