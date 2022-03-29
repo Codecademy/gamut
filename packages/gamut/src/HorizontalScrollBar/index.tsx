@@ -1,3 +1,7 @@
+import {
+  MiniChevronLeftIcon,
+  MiniChevronRightIcon,
+} from '@codecademy/gamut-icons';
 import styled from '@emotion/styled';
 import React, {
   Children,
@@ -13,11 +17,9 @@ import React, {
   useState,
 } from 'react';
 
-import { Box, FillButton } from '..';
-import { Text } from '../Typography';
+import { Box, StrokeButton } from '..';
 
 const Container = styled.div`
-  height: 500px;
   width: 700px;
   overflow-x: scroll;
   display: flex;
@@ -32,12 +34,34 @@ const isHorizontallyIntersecting = (
   return xPosition >= 0 - elementWidth && xPosition <= parentWidth;
 };
 
-export const HorizontalScrollBar: React.FC = ({ children }) => {
-  const elementsRef = useRef<ReactNode[]>([]);
-  const parentContainerRef = useRef<ReactNode | null>(null);
+export interface HorizontalScrollBarProps {
+  scrollInterval: number;
+}
 
-  const [showLeftButton, setShowLeftButton] = useState<boolean>(false);
-  const [showRightButton, setShowRightButton] = useState<boolean>(true);
+export const HorizontalScrollBar: React.FC<HorizontalScrollBarProps> = ({
+  children,
+  scrollInterval,
+}) => {
+  const elementsRef = useRef<ReactNode[]>([]);
+  const parentContainerRef = useRef<HTMLElement | null>(null);
+
+  const [showLeftButton, setShowLeftButton] = useState(false);
+  const [showRightButton, setShowRightButton] = useState(true);
+
+  // tests?
+  // snap scroll styles.
+  // documentation
+  // TODO figure out setting attributes so TS doesn't complain on clone element
+  // TODO figure out ssr crash shit
+
+  const handleScroll = (forward?: boolean) => {
+    if (parentContainerRef.current) {
+      const interval = forward ? scrollInterval : -scrollInterval;
+      parentContainerRef.current.scrollTo({
+        left: parentContainerRef.current.scrollLeft + interval,
+      });
+    }
+  };
 
   const toggleButtonStates = useCallback(
     (
@@ -45,6 +69,7 @@ export const HorizontalScrollBar: React.FC = ({ children }) => {
       elementIsHorizontallyIntersecting: boolean,
       numberOfChildElements: number
     ) => {
+      // TODO this can be probably be simplified
       const shouldToggleOnShowLeftButton =
         index === 0 && !elementIsHorizontallyIntersecting && !showLeftButton;
       const shouldToggleOffShowLeftButton =
@@ -75,6 +100,7 @@ export const HorizontalScrollBar: React.FC = ({ children }) => {
   );
 
   const intersectionObserver = useMemo(() => {
+    if (!window) return null;
     return new IntersectionObserver((entries: IntersectionObserverEntry[]) => {
       entries.forEach((entry) => {
         const containerWidth = parentContainerRef.current
@@ -83,9 +109,6 @@ export const HorizontalScrollBar: React.FC = ({ children }) => {
 
         const { x, width } = entry.boundingClientRect;
 
-        // console.log(
-        //   `index: ${index} xposition:${x},  width:${width} entriesLength: ${entries.length}`
-        // );
         const elementIsHorizontallyIntersecting = isHorizontallyIntersecting(
           x,
           width,
@@ -118,28 +141,49 @@ export const HorizontalScrollBar: React.FC = ({ children }) => {
     const numberOfChildElements = Children.toArray(children).length;
     if (elementsRef.current.length === numberOfChildElements) {
       elementsRef.current.forEach((entry: HTMLElement) =>
-        intersectionObserver.observe(entry)
+        intersectionObserver?.observe(entry)
       );
     }
   }, [elementsRef, intersectionObserver, children]);
 
+  //   <StrokeButton
+  //   onClick={() => handleScroll()}
+  //   zIndex={2}
+  //   left={-16}
+  //   top="1rem"
+  //   height="calc(100% - 2rem)"
+  //   px={4}
+  //   position="absolute"
+  //   variant="secondary"
+  //   tabIndex={0}
+  //   aria-label="See previous content"
+  // >
+
   return (
     <>
-      <Box position="relative">
+      <Box position="relative" display="inline-block">
         <Container ref={parentContainerRef as RefObject<HTMLDivElement>}>
-          <FillButton
+          <StrokeButton
             position="absolute"
+            variant="secondary"
             display={showLeftButton ? 'block ' : 'none'}
+            height="100%"
+            onClick={() => handleScroll()}
+            aria-label="show previous content"
           >
-            Left Button
-          </FillButton>
-          <FillButton
+            <MiniChevronLeftIcon size={24} />
+          </StrokeButton>
+          {/* to do figure out how to float this to the right of the parent container */}
+          <StrokeButton
+            variant="secondary"
             right={0}
+            height="100%"
             position="absolute"
             display={showRightButton ? 'block' : 'none'}
+            onClick={() => handleScroll(true)}
           >
-            Right Button
-          </FillButton>
+            <MiniChevronRightIcon size={24} />
+          </StrokeButton>
           {Children.map(
             children,
             (
@@ -152,7 +196,7 @@ export const HorizontalScrollBar: React.FC = ({ children }) => {
               cloneElement(child, {
                 ref: (element: HTMLElement) =>
                   (elementsRef.current[index] = element),
-                'data-observerIndex': index,
+                'data-observerindex': index,
               })
           )}
         </Container>
