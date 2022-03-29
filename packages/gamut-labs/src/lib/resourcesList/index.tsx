@@ -97,7 +97,10 @@ export const resourcesList: ResourcesList[] = [
 export const headerResourcesList = (
   useNewCatalogDropdown?: boolean
 ): AppHeaderLinkItem[] => {
-  const resources = resourcesList.map(
+  const filteredResources = useNewCatalogDropdown
+    ? resourcesList.filter((resource) => !resource.hideWithNewCatalogDropdown)
+    : resourcesList;
+  return filteredResources.map(
     ({ id, href, headerTrackingTarget, text, type, newTab, badgeText }) => {
       return {
         id,
@@ -110,8 +113,6 @@ export const headerResourcesList = (
       };
     }
   );
-  if (!useNewCatalogDropdown) return resources;
-  return resources.filter((resource) => !resource.hideWithNewCatalogDropdown);
 };
 
 export const footerResourcesList: FooterResourceList[] = resourcesList.map(

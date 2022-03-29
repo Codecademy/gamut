@@ -86,7 +86,7 @@ Check the [Navigation How-To Guide](https://docs.google.com/presentation/d/1YHG6
 
 The following are available variations for the GlobalHeader component.
 
-### Free User
+<!-- ### Free User
 
 #### Free User - Default
 
@@ -667,6 +667,33 @@ A version of the header with just the logo, for use when data has not been fetch
         }}
         type="loading"
       />
+    )}
+  </Story>
+</Canvas> -->
+
+#### Free User - in catalog dropdown variant
+
+<Canvas>
+  <Story name="Free User - in catalog dropdown variant">
+    {() => (
+      <Box position="relative" zIndex={0}>
+        <GlobalHeader
+          action={() => {}}
+          search={{
+            onEnable: () => {},
+            onSearch: () => {},
+            onTrackingClick: () => {},
+          }}
+          type="free"
+          user={{
+            avatar:
+              'https://www.gravatar.com/avatar/1c959a9a1e2f9f9f1ac06b05cccc1d60?s=150&d=retro',
+            displayName: 'Codey',
+            useNewCatalogDropdown: true,
+          }}
+        />
+        <Box>Page content would go here</Box>
+      </Box>
     )}
   </Story>
 </Canvas>
