@@ -16,10 +16,10 @@ import React, {
 import ReactSelect, {
   components as SelectDropdownElements,
   ContainerProps,
-  IndicatorProps,
-  NamedProps,
-  OptionsType,
-  OptionTypeBase,
+  DropdownIndicatorProps,
+  GroupBase,
+  Options as OptionsType,
+  Props as NamedProps,
   StylesConfig,
 } from 'react-select';
 
@@ -109,14 +109,24 @@ const isSingleSelectProps = (
 
 const { DropdownIndicator, SelectContainer } = SelectDropdownElements;
 
+type InputProps = {
+  inputProps: any;
+};
+
+type HiProps = InputProps & SelectDropdownSizes;
+
+type SelectProps = {
+  selectProps: HiProps;
+};
+
 export interface OptionStrict {
   label: string;
   value: string;
 }
 
-type CustomContainerProps = ContainerProps<OptionStrict, false> & {
+type CustomContainerProps = ContainerProps<unknown, false> & {
   children?: ReactNode[];
-};
+} & SelectProps;
 
 const indicatorSizes = {
   small: {
@@ -129,9 +139,13 @@ const indicatorSizes = {
   },
 };
 
-interface SizedIndicatorProps extends IndicatorProps<OptionTypeBase, false> {
-  selectProps: SelectDropdownSizes;
-}
+type SizedIndicatorProps = DropdownIndicatorProps<
+  unknown,
+  false,
+  GroupBase<OptionStrict>
+> &
+  SelectProps &
+  InputProps;
 
 const ChevronDropdown = (props: SizedIndicatorProps) => {
   const { size } = props.selectProps;
@@ -277,9 +291,9 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
   );
 
   const theme = useTheme();
-  const memoizedStyles: StylesConfig<OptionTypeBase, false> = useMemo(() => {
+  const memoizedStyles: StylesConfig<any, false> = useMemo(() => {
     return {
-      container: (provided, state) => ({
+      container: (provided, state: any) => ({
         ...provided,
         pointerEvents: 'visible',
         cursor: state.selectProps.isSearchable ? 'text' : 'pointer',
@@ -287,7 +301,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
         minWidth: '7rem',
       }),
 
-      control: (provided, state) => ({
+      control: (provided, state: any) => ({
         ...selectDropdownStyles({ theme }),
         ...sizeVariants({ size: state.selectProps.size, theme }),
         ...conditionalBorderStates({
@@ -312,13 +326,13 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
         margin: '0',
       }),
 
-      menu: (provided, state) => ({
+      menu: (provided, state: any) => ({
         ...provided,
         ...dropdownBorderStyles({ theme }),
         ...dropdownBorderStates({ error: state.selectProps.error, theme }),
       }),
 
-      menuList: (provided, state) => {
+      menuList: (provided, state: any) => {
         const sizeInteger = state.selectProps.size === 'small' ? 2 : 3;
         const maxHeight = `${
           state.selectProps.shownOptionsLimit * sizeInteger
@@ -334,7 +348,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
         ...placeholderColor({ theme }),
       }),
 
-      option: (provided, state) => ({
+      option: (provided, state: any) => ({
         padding: state.selectProps.size === 'small' ? '3px 14px' : '11px 14px',
         cursor: 'pointer',
         ...optionBackground(state.isSelected, state.isFocused)({ theme }),
