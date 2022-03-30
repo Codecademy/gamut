@@ -161,7 +161,7 @@ export const CustomDropdown: React.FC = ({
 
 ### Form Group + Select
 
-`SelectDropdown` formats nicely in FormGroups and reflects error states.
+`SelectDropdown` formats nicely in FormGroups and reflects error states. Make sure you provide an htmlFor to the `FormGroup` and a `name` to the `SelectDropdown` for maximum accessibility.
 
 <Canvas>
   <Story
@@ -169,16 +169,12 @@ export const CustomDropdown: React.FC = ({
     args={{
       options: ['hello', 'hi', 'howdy'],
       value: 'oh no',
-      id: 'simple-text',
+      name: 'big-label',
     }}
   >
     {(args) => (
       <Box width="25rem" height="15rem">
-        <FormGroup
-          label="i am big label"
-          labelSize="large"
-          htmlFor="simple-text"
-        >
+        <FormGroup label="i am big label" labelSize="large" htmlFor="big-label">
           <SelectDropdown {...args} />
         </FormGroup>
       </Box>
@@ -189,6 +185,7 @@ export const CustomDropdown: React.FC = ({
     args={{
       options: ['Error', 'oh no', ':('],
       placeholder: 'cry cry cry',
+      name: 'error',
     }}
   >
     {(args) => (
@@ -196,6 +193,7 @@ export const CustomDropdown: React.FC = ({
         <FormGroup
           label="i am ~styled... but something is wrong"
           error="error message!! no :'("
+          htmlFor="error"
         >
           <SelectDropdown error {...args} />
         </FormGroup>
@@ -210,7 +208,7 @@ We have a smaller SelectDropdown for more compact spaces.
 
 <Canvas>
   <Story
-    name="size-search"
+    name="Size Searchable"
     args={{
       options: [
         'i am smol',
@@ -234,14 +232,14 @@ We have a smaller SelectDropdown for more compact spaces.
   >
     {(args) => (
       <Box width="180px" height="15rem">
-        <FormGroup label="search!" htmlFor="typeSeach">
-          <SelectDropdown aria-label="typeSeach" {...args} />
+        <FormGroup label="search!" htmlFor="size-search">
+          <SelectDropdown {...args} />
         </FormGroup>
       </Box>
     )}
   </Story>
   <Story
-    name="size-no-search"
+    name="Size Not Searchable"
     args={{
       options: [
         'i am also small',
@@ -263,8 +261,8 @@ We have a smaller SelectDropdown for more compact spaces.
   >
     {(args) => (
       <Box width="25rem" height="15rem">
-        <FormGroup label="click!" htmlFor="clickSearch">
-          <SelectDropdown aria-label="clickSearch" {...args} />
+        <FormGroup label="click!" htmlFor="size-no-search">
+          <SelectDropdown {...args} />
         </FormGroup>
       </Box>
     )}
@@ -301,9 +299,9 @@ You can chose how options will be shown in the dropdown. 6 is the default limit 
       <Box width="20rem" height="22rem">
         <FormGroup
           label="i have the default shownOptionsLimit"
-          htmlFor="shownOptions01"
+          htmlFor="shownOptionsLimit01"
         >
-          <SelectDropdown aria-label="shownOptions01" {...args} />
+          <SelectDropdown {...args} />
         </FormGroup>
       </Box>
     )}
@@ -333,7 +331,7 @@ You can chose how options will be shown in the dropdown. 6 is the default limit 
     {(args) => (
       <Box width="20rem" height="10rem">
         <FormGroup label="i have three" htmlFor="shownOptions02">
-          <SelectDropdown aria-label="shownOptions02" {...args} />
+          <SelectDropdown {...args} />
         </FormGroup>
       </Box>
     )}
@@ -363,8 +361,8 @@ You can chose how options will be shown in the dropdown. 6 is the default limit 
   >
     {(args) => (
       <Box width="20rem" height="10rem">
-        <FormGroup label="i have two shownOptions" htmlFor="shownOptions03">
-          <SelectDropdown aria-label="shownOptions03" {...args} />
+        <FormGroup label="i have three shownOptions" htmlFor="shownOptions03">
+          <SelectDropdown name="shownOptions03" {...args} />
         </FormGroup>
       </Box>
     )}
@@ -384,8 +382,9 @@ import React from 'react';
 
 export const SelectDropdownIconExample: React.FC = () => (
   <Box p={16} width="100%" height="12rem" border={1} bg="palePink">
-    <FormGroup label="i have pizzazz">
+    <FormGroup label="i have pizzazz" htmlFor="pizzaz-dropdown">
       <SelectDropdown
+        name="pizzaz-dropdown"
         options={[
           {
             label: 'ohai',
@@ -406,8 +405,9 @@ export const SelectDropdownIconExample: React.FC = () => (
       />
     </FormGroup>
     <Background p={16} bg="navy">
-      <FormGroup label="i am fancy">
+      <FormGroup label="i am fancy" htmlFor="fancy-dropdown">
         <SelectDropdown
+          name="fancy-dropdown"
           size="small"
           options={[
             {
@@ -449,8 +449,8 @@ Some of our forms require special props be passed directly onto the `<input/>` c
   >
     {(args) => (
       <Box width="25rem" height="12rem">
-        <FormGroup label="i am ~styled" htmlFor="updog">
-          <SelectDropdown aria-label="updog" {...args} />
+        <FormGroup label="i am ~styled" htmlFor="what">
+          <SelectDropdown {...args} />
         </FormGroup>
       </Box>
     )}

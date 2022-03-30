@@ -86,8 +86,9 @@ export const CheckboxExample: React.FC = () => {
 
 export const SelectDropdownIconExample: React.FC = () => (
   <Box p={16} width="100%" height="20rem" border={1} bg="palePink">
-    <FormGroup label="i have pizzazz">
+    <FormGroup label="i have pizzazz" htmlFor="pizzaz-dropdown">
       <SelectDropdown
+        name="pizzaz-dropdown"
         options={[
           {
             label: 'ohai',
@@ -108,8 +109,9 @@ export const SelectDropdownIconExample: React.FC = () => (
       />
     </FormGroup>
     <Background p={16} bg="navy">
-      <FormGroup label="i am fancy">
+      <FormGroup label="i am fancy" htmlFor="fancy-dropdown">
         <SelectDropdown
+          name="fancy-dropdown"
           size="small"
           options={[
             {
