@@ -3,56 +3,38 @@ import {
   MiniChevronRightIcon,
 } from '@codecademy/gamut-icons';
 import styled from '@emotion/styled';
-import React, {
-  Children,
-  cloneElement,
-  JSXElementConstructor,
-  ReactElement,
-  ReactNode,
-  RefObject,
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from 'react';
+import React, { Children, useEffect, useMemo, useRef, useState } from 'react';
 
 import { Box, StrokeButton } from '..';
 
 const Container = styled.div`
-  width: 700px;
   overflow-x: scroll;
   display: flex;
-  padding-top: 16px;
+  scroll-snap-type: x mandatory;
+  ::-webkit-scrollbar {
+    display: none;
+  }
 `;
-
-const isHorizontallyIntersecting = (
-  xPosition: number,
-  elementWidth: number,
-  parentWidth: number
-) => {
-  return xPosition >= 0 - elementWidth && xPosition <= parentWidth;
-};
 
 export interface HorizontalScrollBarProps {
   scrollInterval: number;
+  className?: string;
+  slideContent: HTMLElement[];
 }
 
 export const HorizontalScrollBar: React.FC<HorizontalScrollBarProps> = ({
   children,
   scrollInterval,
+  className,
 }) => {
-  const elementsRef = useRef<ReactNode[]>([]);
-  const parentContainerRef = useRef<HTMLElement | null>(null);
+  const elementsRef = useRef<HTMLElement[]>([]);
+  const parentContainerRef = useRef<HTMLDivElement | null>(null);
 
   const [showLeftButton, setShowLeftButton] = useState(false);
   const [showRightButton, setShowRightButton] = useState(true);
 
   // tests?
-  // snap scroll styles.
   // documentation
-  // TODO figure out setting attributes so TS doesn't complain on clone element
-  // TODO figure out ssr crash shit
 
   const handleScroll = (forward?: boolean) => {
     if (parentContainerRef.current) {
@@ -63,80 +45,40 @@ export const HorizontalScrollBar: React.FC<HorizontalScrollBarProps> = ({
     }
   };
 
-  const toggleButtonStates = useCallback(
-    (
-      index: number,
-      elementIsHorizontallyIntersecting: boolean,
-      numberOfChildElements: number
-    ) => {
-      // TODO this can be probably be simplified
-      const shouldToggleOnShowLeftButton =
-        index === 0 && !elementIsHorizontallyIntersecting && !showLeftButton;
-      const shouldToggleOffShowLeftButton =
-        index === 0 && elementIsHorizontallyIntersecting && showLeftButton;
-      const shouldToggleOnShowRightButton =
-        index === numberOfChildElements - 1 &&
-        !elementIsHorizontallyIntersecting &&
-        !showRightButton;
-      const shouldToggleOffShowRightButton =
-        index === numberOfChildElements - 1 &&
-        elementIsHorizontallyIntersecting &&
-        showRightButton;
-
-      if (shouldToggleOnShowLeftButton) {
-        setShowLeftButton(true);
-      }
-      if (shouldToggleOffShowLeftButton) {
-        setShowLeftButton(false);
-      }
-      if (shouldToggleOnShowRightButton) {
-        setShowRightButton(true);
-      }
-      if (shouldToggleOffShowRightButton) {
-        setShowRightButton(false);
-      }
-    },
-    [showLeftButton, showRightButton]
-  );
+  const toggleButton = (
+    setButtonValueCallback: CallableFunction,
+    buttonShouldBeVisible: boolean
+  ) => {
+    setButtonValueCallback(buttonShouldBeVisible);
+  };
 
   const intersectionObserver = useMemo(() => {
-    if (!window) return null;
-    return new IntersectionObserver((entries: IntersectionObserverEntry[]) => {
-      entries.forEach((entry) => {
-        const containerWidth = parentContainerRef.current
-          ? parentContainerRef.current.clientWidth
-          : 711;
-
-        const { x, width } = entry.boundingClientRect;
-
-        const elementIsHorizontallyIntersecting = isHorizontallyIntersecting(
-          x,
-          width,
-          containerWidth
-        );
-
-        const elementIndex = parseInt(
-          entry.target.getAttribute('data-observerindex') || '',
-          10
-        );
-
-        const elementIsFirstIndex = elementIndex === 0;
-        const elementIsLastIndex =
-          elementIndex === elementsRef.current.length - 1;
-        if (elementIsFirstIndex || elementIsLastIndex) {
-          toggleButtonStates(
-            elementIndex,
-            elementIsHorizontallyIntersecting,
-            elementsRef.current.length
+    if (typeof window === 'undefined') return null;
+    return new IntersectionObserver(
+      (entries: IntersectionObserverEntry[]) => {
+        entries.forEach((entry) => {
+          const elementIndex = parseInt(
+            entry.target.getAttribute('data-observerindex') || '',
+            10
           );
-        }
+          const elementIsFirstIndex = elementIndex === 0;
+          const elementIsLastIndex =
+            elementIndex === elementsRef.current.length - 1;
 
-        entry.target.ariaHidden = elementIsHorizontallyIntersecting
-          ? 'false'
-          : 'true';
-      });
-    });
-  }, [parentContainerRef, toggleButtonStates]);
+          if (elementIsFirstIndex)
+            toggleButton(setShowLeftButton, entry.isIntersecting);
+          if (elementIsLastIndex)
+            toggleButton(setShowRightButton, entry.isIntersecting);
+
+          entry.target.ariaHidden = entry.isIntersecting ? 'false' : 'true';
+        });
+      },
+      {
+        root: document.querySelector('[data-observerroot=true]'),
+        rootMargin: '100% 0% 100% 0%',
+      }
+    );
+  }, []);
 
   useEffect(() => {
     const numberOfChildElements = Children.toArray(children).length;
@@ -145,12 +87,19 @@ export const HorizontalScrollBar: React.FC<HorizontalScrollBarProps> = ({
         intersectionObserver?.observe(entry)
       );
     }
-  }, [elementsRef, intersectionObserver, children]);
+    return () => {
+      intersectionObserver?.disconnect();
+    };
+  }, [elementsRef, intersectionObserver, children, parentContainerRef]);
 
   return (
     <>
-      <Box position="relative" display="inline-block">
-        <Container ref={parentContainerRef as RefObject<HTMLDivElement>}>
+      <Box position="relative">
+        <Container
+          data-observerroot="true"
+          ref={parentContainerRef}
+          className={className}
+        >
           <StrokeButton
             position="absolute"
             variant="secondary"
@@ -161,21 +110,18 @@ export const HorizontalScrollBar: React.FC<HorizontalScrollBarProps> = ({
           >
             <MiniChevronLeftIcon size={24} />
           </StrokeButton>
-          {Children.map(
-            children,
-            (
-              child: ReactElement<
-                { ref: (element: HTMLElement) => HTMLElement },
-                string | JSXElementConstructor<any>
-              >,
-              index
-            ) =>
-              cloneElement(child, {
-                ref: (element: HTMLElement) =>
-                  (elementsRef.current[index] = element),
-                ...{ 'data-observerindex': index },
-              })
-          )}
+          {Children.map(children, (child, index) => (
+            <Box
+              ref={(element) => {
+                if (element) {
+                  elementsRef.current[index] = element;
+                }
+              }}
+              data-observerindex={index}
+            >
+              {child}
+            </Box>
+          ))}
           <StrokeButton
             variant="secondary"
             right={0}
