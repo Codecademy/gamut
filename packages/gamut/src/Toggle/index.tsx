@@ -41,8 +41,8 @@ export const Toggle: React.FC<ToggleProps> = ({
         borderRadius="99rem"
         position="relative"
         size={size}
-        mr={labelSide === 'left' ? 0 : 16}
-        ml={labelSide === 'right' ? 0 : 16}
+        mr={label && labelSide === 'left' ? 0 : 16}
+        ml={label && labelSide === 'right' ? 0 : 16}
         {...(isButton && toggleProps)}
       >
         {!isButton && <ToggleInput {...toggleProps} />}
