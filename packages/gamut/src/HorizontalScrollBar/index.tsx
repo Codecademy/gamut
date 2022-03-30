@@ -33,9 +33,6 @@ export const HorizontalScrollBar: React.FC<HorizontalScrollBarProps> = ({
   const [showLeftButton, setShowLeftButton] = useState(false);
   const [showRightButton, setShowRightButton] = useState(true);
 
-  // tests?
-  // documentation
-
   const handleScroll = (forward?: boolean) => {
     if (parentContainerRef.current) {
       const interval = forward ? scrollInterval : -scrollInterval;
