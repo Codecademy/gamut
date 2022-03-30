@@ -1,6 +1,7 @@
 export * from './Bee';
 export * from './Bell';
 export * from './BinaryBlocks';
+export * from './BinaryStairs';
 export * from './Blocks';
 export * from './Blueprint';
 export * from './Browser';
