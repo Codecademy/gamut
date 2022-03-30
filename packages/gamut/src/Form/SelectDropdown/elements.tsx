@@ -47,7 +47,8 @@ export const CustomContainer = ({
   children,
   ...rest
 }: CustomContainerProps) => {
-  const { inputProps, name } = rest.selectProps;
+  // in the react-select documentation, this line is ts-ignore'd so its safe to say there's no nice way to do this.
+  const { inputProps, name } = rest.selectProps as any;
   const value = rest.hasValue
     ? rest
         .getValue()

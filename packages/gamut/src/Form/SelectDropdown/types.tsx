@@ -1,4 +1,5 @@
 import { GamutIconProps } from '@codecademy/gamut-icons';
+import { StyleProps } from '@codecademy/variance';
 import React, { ReactNode, SelectHTMLAttributes } from 'react';
 import {
   ContainerProps,
@@ -8,15 +9,31 @@ import {
 } from 'react-select';
 
 import { SelectComponentProps, SelectOptions } from '../Select';
+import { conditionalBorderStates } from './styles';
 
+export interface SharedProps {
+  inputProps?: Record<string, string | number | boolean>;
+  shownOptionsLimit?: 1 | 2 | 3 | 4 | 5 | 6;
+}
+
+export interface WrapperStyleProps
+  extends Pick<
+    StyleProps<typeof conditionalBorderStates>,
+    'activated' | 'error'
+  > {}
+
+export interface SelectDropdownSizes {
+  size?: 'small' | 'medium';
+}
+
+export interface ReactSelectAdditionalProps
+  extends WrapperStyleProps,
+    SharedProps,
+    SelectDropdownSizes {}
 export interface IconOption {
   label: string;
   value: string;
   icon?: React.ComponentType<GamutIconProps>;
-}
-
-export interface SelectDropdownSizes {
-  size?: 'small' | 'medium';
 }
 
 export type SelectDropdownBaseProps = Omit<
@@ -44,12 +61,11 @@ export interface SelectDropdownCoreProps
     Pick<
       SelectHTMLAttributes<HTMLSelectElement>,
       'value' | 'disabled' | 'onClick'
-    > {
-  inputProps?: Record<string, string | number | boolean>;
+    >,
+    SharedProps {
   name: string;
   placeholder?: string;
   options?: SelectDropdownOptions;
-  shownOptionsLimit?: 1 | 2 | 3 | 4 | 5 | 6;
 }
 
 export interface SingleSelectDropdownProps extends SelectDropdownCoreProps {
@@ -73,14 +89,8 @@ export interface BaseOnChangeProps {
     | MultiSelectDropdownProps['onChange'];
 }
 
-export type InputProps = {
-  inputProps: any;
-};
-
-export type HiProps = InputProps & SelectDropdownSizes;
-
 export type SelectProps = {
-  selectProps: HiProps;
+  selectProps: Pick<SharedProps, 'inputProps'> & SelectDropdownSizes;
 };
 
 export interface OptionStrict {
@@ -88,22 +98,13 @@ export interface OptionStrict {
   value: string;
 }
 
-export type CustomContainerProps = ContainerProps<unknown, false> & {
-  children?: ReactNode[];
-} & SelectProps;
+export interface CustomContainerProps extends ContainerProps<unknown, false> {
+  children: ReactNode[];
+}
 
 export type SizedIndicatorProps = DropdownIndicatorProps<
   unknown,
   false,
   GroupBase<OptionStrict>
 > &
-  SelectProps &
-  InputProps;
-
-export interface ReactSelectAdditionalProps {
-  activated?: boolean;
-  error?: boolean;
-  size?: any;
-  inputProps?: any;
-  shownOptionsLimit?: any;
-}
+  SelectProps;

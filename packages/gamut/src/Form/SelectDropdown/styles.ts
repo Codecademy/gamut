@@ -1,4 +1,9 @@
-import { css, states, Theme, variant } from '@codecademy/gamut-styles';
+import {
+  css,
+  states,
+  theme as GamutTheme,
+  variant,
+} from '@codecademy/gamut-styles';
 import { StylesConfig } from 'react-select';
 
 import {
@@ -21,7 +26,7 @@ export const selectFocusStyles = {
   boxShadow: `inset 0 0 0 1px currentColor`,
 } as const;
 
-const conditionalBorderStates = states({
+export const conditionalBorderStates = states({
   isFocused: selectFocusStyles,
   activated: { borderColor: 'currentColor' },
   error: {
@@ -76,7 +81,9 @@ const placeholderColor = css({
   color: 'text-disabled',
 });
 
-export const getMemoizedStyles = (theme: Theme): StylesConfig<any, false> => {
+export const getMemoizedStyles = (
+  theme: typeof GamutTheme
+): StylesConfig<any, false> => {
   return {
     container: (provided, state: any) => ({
       ...provided,
