@@ -3,7 +3,6 @@ import { StyleProps } from '@codecademy/variance';
 import React, { ReactNode, SelectHTMLAttributes } from 'react';
 import {
   ContainerProps,
-  ControlProps,
   DropdownIndicatorProps,
   GroupBase,
   Props as NamedProps,
@@ -31,10 +30,6 @@ export interface ReactSelectAdditionalProps
   extends WrapperStyleProps,
     SharedProps,
     SelectDropdownSizes {}
-
-export type StyleState = ControlProps<any, false, GroupBase<any>> & {
-  selectProps: WrapperStyleProps & SelectDropdownSizes;
-};
 export interface IconOption {
   label: string;
   value: string;
