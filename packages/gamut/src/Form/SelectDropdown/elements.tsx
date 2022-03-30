@@ -2,16 +2,17 @@ import {
   ArrowChevronDownIcon,
   MiniChevronDownIcon,
 } from '@codecademy/gamut-icons';
-import styled from '@emotion/styled';
 import React from 'react';
 import ReactSelect, {
   components as SelectDropdownElements,
+  GroupBase,
+  Props,
 } from 'react-select';
 
 import { Box } from '../../Box';
 import {
   CustomContainerProps,
-  ReactSelectProps,
+  ReactSelectAdditionalProps,
   SizedIndicatorProps,
 } from './types';
 
@@ -73,4 +74,12 @@ export const formatOptionLabel = ({ label, icon: Icon, size }: any) => {
   );
 };
 
-export const TypedReactSelect = styled(ReactSelect)<ReactSelectProps>();
+export function TypedReactSelect<
+  OptionType,
+  IsMulti extends boolean = false,
+  GroupType extends GroupBase<OptionType> = GroupBase<OptionType>
+>({
+  ...props
+}: Props<OptionType, IsMulti, GroupType> & ReactSelectAdditionalProps) {
+  return <ReactSelect {...props} />;
+}

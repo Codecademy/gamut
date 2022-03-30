@@ -21,7 +21,7 @@ export const selectFocusStyles = {
   boxShadow: `inset 0 0 0 1px currentColor`,
 } as const;
 
-export const conditionalBorderStates = states({
+const conditionalBorderStates = states({
   isFocused: selectFocusStyles,
   activated: { borderColor: 'currentColor' },
   error: {
@@ -34,7 +34,7 @@ export const conditionalBorderStates = states({
   isDisabled: formFieldDisabledStyles,
 });
 
-export const sizeVariants = variant({
+const sizeVariants = variant({
   prop: 'size',
   defaultVariant: 'medium',
   variants: {
@@ -43,11 +43,11 @@ export const sizeVariants = variant({
   },
 });
 
-export const dropdownBorderStates = states({
+const dropdownBorderStates = states({
   error: { borderColorTop: 'feedback-error' },
 });
 
-export const dropdownBorderStyles = css({
+const dropdownBorderStyles = css({
   ...formBaseComponentStyles,
   border: 1,
   borderColor: 'currentColor',
@@ -57,7 +57,7 @@ export const dropdownBorderStyles = css({
   zIndex: 2,
 });
 
-export const optionBackground = (isSelected: boolean, isFocused: boolean) => {
+const optionBackground = (isSelected: boolean, isFocused: boolean) => {
   const backgroundColor = isFocused
     ? 'background-hover'
     : isSelected
@@ -68,11 +68,11 @@ export const optionBackground = (isSelected: boolean, isFocused: boolean) => {
   });
 };
 
-export const textColor = css({
+const textColor = css({
   color: 'text',
 });
 
-export const placeholderColor = css({
+const placeholderColor = css({
   color: 'text-disabled',
 });
 

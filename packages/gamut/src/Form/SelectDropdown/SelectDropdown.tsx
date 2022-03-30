@@ -75,7 +75,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
    * id requirement
    */
   const rawInputId = useId();
-  const inputId = `${id}-select-dropdown-${rawInputId}`;
+  const inputId = name ?? `${id}-select-dropdown-${rawInputId}`;
 
   const [activated, setActivated] = useState(false);
 
@@ -142,6 +142,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
       {...defaultProps}
       id={id || rest.htmlFor}
       inputId={inputId}
+      name={name}
       options={selectOptions}
       value={multiple ? multiValues : parsedValue}
       activated={activated}

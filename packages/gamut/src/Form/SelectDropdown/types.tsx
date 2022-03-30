@@ -46,7 +46,7 @@ export interface SelectDropdownCoreProps
       'value' | 'disabled' | 'onClick'
     > {
   inputProps?: Record<string, string | number | boolean>;
-  name?: string;
+  name: string;
   placeholder?: string;
   options?: SelectDropdownOptions;
   shownOptionsLimit?: 1 | 2 | 3 | 4 | 5 | 6;
@@ -100,8 +100,10 @@ export type SizedIndicatorProps = DropdownIndicatorProps<
   SelectProps &
   InputProps;
 
-export type ReactSelectProps = NamedProps & {
+export interface ReactSelectAdditionalProps {
   activated?: boolean;
   error?: boolean;
-  size?: SelectDropdownSizes;
-};
+  size?: any;
+  inputProps?: any;
+  shownOptionsLimit?: any;
+}

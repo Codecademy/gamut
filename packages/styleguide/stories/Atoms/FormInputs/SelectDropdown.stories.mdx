@@ -169,11 +169,16 @@ export const CustomDropdown: React.FC = ({
     args={{
       options: ['hello', 'hi', 'howdy'],
       value: 'oh no',
+      id: 'simple-text',
     }}
   >
     {(args) => (
       <Box width="25rem" height="15rem">
-        <FormGroup label="i am big label" labelSize="large">
+        <FormGroup
+          label="i am big label"
+          labelSize="large"
+          htmlFor="simple-text"
+        >
           <SelectDropdown {...args} />
         </FormGroup>
       </Box>
