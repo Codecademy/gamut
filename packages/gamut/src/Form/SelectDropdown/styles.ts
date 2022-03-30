@@ -14,13 +14,13 @@ import {
   InputSelectors,
 } from '../styles';
 
-export const selectDropdownStyles = css({
+const selectDropdownStyles = css({
   ...formBaseFieldStylesObject,
   display: 'flex',
   zIndex: 3,
 });
 
-export const selectFocusStyles = {
+const selectFocusStyles = {
   color: 'primary',
   borderColor: 'currentColor',
   boxShadow: `inset 0 0 0 1px currentColor`,
@@ -85,7 +85,7 @@ export const getMemoizedStyles = (
   theme: typeof GamutTheme
 ): StylesConfig<any, false> => {
   return {
-    container: (provided, state: any) => ({
+    container: (provided, state) => ({
       ...provided,
       pointerEvents: 'visible',
       cursor: state.selectProps.isSearchable ? 'text' : 'pointer',

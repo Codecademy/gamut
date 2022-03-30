@@ -154,7 +154,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
       styles={memoizedStyles}
       isMulti={multiple}
       isDisabled={disabled}
-      isSearchable={isSearchable}
+      isSearchable
       size={size}
       shownOptionsLimit={shownOptionsLimit}
       {...rest}
