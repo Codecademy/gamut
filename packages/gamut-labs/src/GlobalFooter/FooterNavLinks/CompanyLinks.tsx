@@ -2,6 +2,7 @@ import { Anchor, Box, BoxProps, GridBox } from '@codecademy/gamut';
 import styled from '@emotion/styled';
 import React from 'react';
 
+import { LogoFromSkillsoft } from '../..';
 import { footerResourcesList } from '../../lib/resourcesList';
 import { FooterFFContext } from '..';
 import { FooterHeading } from '../FooterHeading';
@@ -13,7 +14,6 @@ import {
 import { GlobalFooterClickHandler } from '../types';
 import downloadOnTheAppStore from './assets/download-on-the-app-store.svg';
 import getItOnGooglePlay from './assets/get-it-on-google-play.png';
-import { NewLogo } from './NewLogo';
 import { SocialMediaLinks } from './SocialMediaLinks';
 
 export type CompanyLinksProps = {
@@ -99,7 +99,7 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
           {({ showNewFooter }) =>
             showNewFooter ? (
               <Box>
-                <NewLogo height={40} />
+                <LogoFromSkillsoft height={40} />
               </Box>
             ) : (
               'Company'
