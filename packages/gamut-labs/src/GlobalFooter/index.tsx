@@ -1,7 +1,7 @@
 import { ContentContainer } from '@codecademy/gamut';
 import { themed } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
-import React from 'react';
+import React, { useState } from 'react';
 
 import { FooterLegal } from './FooterLegal';
 import { FooterNavLinks } from './FooterNavLinks';
@@ -36,8 +36,8 @@ export type GlobalFooterProps = {
   userGeo: string;
 };
 
-// To be deleted after footer launches
-const FooterFFContext = React.createContext({ showNewFooter: false });
+// To be deleted after footer launches - using React.Context here will be the easiest cleanup.
+export const FooterFFContext = React.createContext({ showNewFooter: false });
 
 const FooterContainer = styled.footer`
   border-top: 1px solid ${themed('colors.navy')};
@@ -55,8 +55,10 @@ export const GlobalFooter: React.FC<GlobalFooterProps> = ({
   showNewFooter,
   userGeo,
 }) => {
+  const [showNewFooterState] = useState(showNewFooter);
+
   return (
-    <FooterFFContext.Provider value={showNewFooter}>
+    <FooterFFContext.Provider value={{ showNewFooter: showNewFooterState }}>
       <FooterContainer className={className} role="contentinfo">
         <ContentContainer>
           <FooterNavLinks

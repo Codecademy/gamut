@@ -139,7 +139,11 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
         <FooterLinkItem>
           <FooterFFContext.Consumer>
             {(showNewFooter) =>
-              showNewFooter && <Box bg="navy-600">this is a test</Box>
+              showNewFooter && (
+                <Box as="code" bg="navy-600">
+                  this is a test
+                </Box>
+              )
             }
           </FooterFFContext.Consumer>
         </FooterLinkItem>
