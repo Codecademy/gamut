@@ -1,0 +1,15 @@
+import { HorizontalScrollBar } from '@codecademy/gamut';
+import title from '@codecademy/macros/lib/title.macro';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+
+import { HorizontalScrollBarExample } from './HorizontalScrollBar.examples.tsx';
+
+<Meta title={title} component={HorizontalScrollBar} />
+
+The `HorizontalScrollBar` can be used to have content scroll across the x-axis. Through use of the `IntersectionObserver` web api, this component will automatically set `aria-hidden` labels to `true` when content moves off the x-axis. This component also has controls that appear on `focus` events to assist users with navigating content through the keyboard.
+
+<Canvas>
+  <Story name="Horizontal ScrollBar">
+    {() => <HorizontalScrollBarExample />}
+  </Story>
+</Canvas>

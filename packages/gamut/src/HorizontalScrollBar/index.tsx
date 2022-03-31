@@ -25,7 +25,6 @@ const ScrollButton = styled(FillButton)`
 export interface HorizontalScrollBarProps {
   scrollInterval: number;
   className?: string;
-  slideContent: HTMLElement[];
 }
 
 export const HorizontalScrollBar: React.FC<HorizontalScrollBarProps> = ({
