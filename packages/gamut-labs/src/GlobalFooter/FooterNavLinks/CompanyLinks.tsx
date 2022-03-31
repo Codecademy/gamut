@@ -1,6 +1,7 @@
 import { Anchor, Box, BoxProps, GridBox } from '@codecademy/gamut';
 import { StreakIcon } from '@codecademy/gamut-icons';
-import { Background } from '@codecademy/gamut-styles';
+import { New } from '@codecademy/gamut-illustrations';
+import { Background, css } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React from 'react';
 
@@ -15,6 +16,7 @@ import {
 import { GlobalFooterClickHandler } from '../types';
 import downloadOnTheAppStore from './assets/download-on-the-app-store.svg';
 import getItOnGooglePlay from './assets/get-it-on-google-play.png';
+import { NewLogo } from './NewLogo';
 import { SocialMediaLinks } from './SocialMediaLinks';
 
 export type CompanyLinksProps = {
@@ -36,6 +38,10 @@ MobileImageItem.defaultProps = {
 };
 
 const MobileImageLink = styled(Anchor)();
+
+const StyledLogo = styled(NewLogo)(
+  css({ maxHeight: '100%', maxWidth: '100%' })
+);
 
 MobileImageLink.defaultProps = {
   display: 'inline-block',
@@ -95,7 +101,17 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
 
   const company = (
     <Box>
-      <FooterHeading>Company</FooterHeading>
+      <FooterHeading>
+        <FooterFFContext.Consumer>
+          {(showNewFooter) =>
+            showNewFooter && (
+              <Box>
+                <NewLogo height={40} />
+              </Box>
+            )
+          }
+        </FooterFFContext.Consumer>
+      </FooterHeading>
       <FooterLinkItems>
         <FooterLinkItem>
           <Anchor
@@ -137,17 +153,6 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
         )}
         <FooterLinkItem>
           <SocialMediaLinks />
-        </FooterLinkItem>
-        <FooterLinkItem>
-          <FooterFFContext.Consumer>
-            {(showNewFooter) =>
-              showNewFooter && (
-                <Background as="code" bg="navy-600">
-                  <StreakIcon /> this is a test <StreakIcon />
-                </Background>
-              )
-            }
-          </FooterFFContext.Consumer>
         </FooterLinkItem>
       </FooterLinkItems>
     </Box>

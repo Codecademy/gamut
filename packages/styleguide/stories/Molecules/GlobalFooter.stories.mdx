@@ -18,7 +18,9 @@ import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/blocks';
 />
 
 <Canvas>
-  <Story name="GlobalFooter">{(args) => <GlobalFooter {...args} />}</Story>
+  <Story name="GlobalFooter">
+    {(args) => <GlobalFooter showNewFooter {...args} />}
+  </Story>
 </Canvas>
 
 <Props story="GlobalFooter" />
@@ -33,7 +35,7 @@ Most geographies of usesrs, including `'US'`, will see all links in the footer: 
 
 <Canvas>
   <Story name="Common Geo Usage">
-    {(args) => <GlobalFooter {...args} userGeo="US" />}
+    {(args) => <GlobalFooter {...args} userGeo="US" showNewFooter={false} />}
   </Story>
 </Canvas>
 
@@ -44,6 +46,6 @@ This is to comply with country regulations around our nascent Indian office.
 
 <Canvas>
   <Story name="Indian Geo Usage">
-    {(args) => <GlobalFooter {...args} userGeo="IN" />}
+    {(args) => <GlobalFooter {...args} userGeo="IN" showNewFooter={false} />}
   </Story>
 </Canvas>
