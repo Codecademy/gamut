@@ -143,7 +143,7 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
             {(showNewFooter) =>
               showNewFooter && (
                 <Background as="code" bg="navy-600">
-                  <StreakIcon /> this is a <StreakIcon />
+                  <StreakIcon /> this is a test <StreakIcon />
                 </Background>
               )
             }

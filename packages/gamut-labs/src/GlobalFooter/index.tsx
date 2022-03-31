@@ -1,7 +1,7 @@
 import { ContentContainer } from '@codecademy/gamut';
 import { themed } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
-import React, { useState } from 'react';
+import React, { useMemo } from 'react';
 
 import { FooterLegal } from './FooterLegal';
 import { FooterNavLinks } from './FooterNavLinks';
@@ -55,10 +55,12 @@ export const GlobalFooter: React.FC<GlobalFooterProps> = ({
   showNewFooter,
   userGeo,
 }) => {
-  const [showNewFooterState] = useState(showNewFooter);
+  const showNewFooterState = useMemo(() => showNewFooter, [showNewFooter]);
 
   return (
-    <FooterFFContext.Provider value={{ showNewFooter: showNewFooterState }}>
+    <FooterFFContext.Provider
+      value={{ showNewFooter: showNewFooterState ?? false }}
+    >
       <FooterContainer className={className} role="contentinfo">
         <ContentContainer>
           <FooterNavLinks
