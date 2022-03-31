@@ -89,7 +89,7 @@ export interface BaseOnChangeProps {
     | MultiSelectDropdownProps['onChange'];
 }
 
-export type SelectProps = {
+export type InternalSelectProps = {
   selectProps: Pick<SharedProps, 'inputProps'> & SelectDropdownSizes;
 };
 
@@ -107,4 +107,4 @@ export type SizedIndicatorProps = DropdownIndicatorProps<
   false,
   GroupBase<OptionStrict>
 > &
-  SelectProps;
+  InternalSelectProps;
