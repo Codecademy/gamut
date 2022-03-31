@@ -2,7 +2,7 @@ import { IllustrationProps } from '@codecademy/gamut-illustrations';
 import React from 'react';
 
 export const LogoFromSkillsoft: React.FC<IllustrationProps> = ({
-  ariaHidden,
+  'aria-hidden': ariaHidden,
   height,
   width,
 }) => {
