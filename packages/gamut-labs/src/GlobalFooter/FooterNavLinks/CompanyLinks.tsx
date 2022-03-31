@@ -1,7 +1,5 @@
 import { Anchor, Box, BoxProps, GridBox } from '@codecademy/gamut';
-import { StreakIcon } from '@codecademy/gamut-icons';
-import { New } from '@codecademy/gamut-illustrations';
-import { Background, css } from '@codecademy/gamut-styles';
+import { css } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React from 'react';
 
@@ -38,10 +36,6 @@ MobileImageItem.defaultProps = {
 };
 
 const MobileImageLink = styled(Anchor)();
-
-const StyledLogo = styled(NewLogo)(
-  css({ maxHeight: '100%', maxWidth: '100%' })
-);
 
 MobileImageLink.defaultProps = {
   display: 'inline-block',
@@ -106,7 +100,7 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
           {(showNewFooter) =>
             showNewFooter && (
               <Box>
-                <NewLogo height={40} />
+                <NewLogo aria-label="Codecademy from Skillsoft" height={40} />
               </Box>
             )
           }
