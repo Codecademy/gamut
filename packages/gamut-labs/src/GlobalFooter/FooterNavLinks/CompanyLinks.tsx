@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 import React from 'react';
 
 import { footerResourcesList } from '../../lib/resourcesList';
+import { FooterFFContext } from '..';
 import { FooterHeading } from '../FooterHeading';
 import {
   FooterLinkItem,
@@ -134,6 +135,13 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
         )}
         <FooterLinkItem>
           <SocialMediaLinks />
+        </FooterLinkItem>
+        <FooterLinkItem>
+          <FooterFFContext.Consumer>
+            {(showNewFooter) =>
+              showNewFooter && <Box bg="navy-600">this is a test</Box>
+            }
+          </FooterFFContext.Consumer>
         </FooterLinkItem>
       </FooterLinkItems>
     </Box>
