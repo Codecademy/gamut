@@ -61,11 +61,10 @@ export const HorizontalScrollBar: React.FC<HorizontalScrollBarProps> = ({
           const elementIsFirstIndex = elementIndex === 0;
           const elementIsLastIndex =
             elementIndex === elementsRef.current.length - 1;
-
           if (elementIsFirstIndex)
-            toggleButton(setShowLeftButton, entry.isIntersecting);
+            toggleButton(setShowLeftButton, !entry.isIntersecting);
           if (elementIsLastIndex)
-            toggleButton(setShowRightButton, entry.isIntersecting);
+            toggleButton(setShowRightButton, !entry.isIntersecting);
 
           entry.target.ariaHidden = entry.isIntersecting ? 'false' : 'true';
         });
@@ -79,6 +78,7 @@ export const HorizontalScrollBar: React.FC<HorizontalScrollBarProps> = ({
 
   useEffect(() => {
     const numberOfChildElements = Children.toArray(children).length;
+
     if (elementsRef.current.length === numberOfChildElements) {
       elementsRef.current.forEach((entry: HTMLElement) =>
         intersectionObserver?.observe(entry)
@@ -87,7 +87,7 @@ export const HorizontalScrollBar: React.FC<HorizontalScrollBarProps> = ({
     return () => {
       intersectionObserver?.disconnect();
     };
-  }, [elementsRef, intersectionObserver, children, parentContainerRef]);
+  }, [elementsRef, intersectionObserver, children]);
 
   return (
     <>
