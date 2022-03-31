@@ -28,7 +28,7 @@ export type GlobalFooterProps = {
   /**
    * If new footer should be shown
    */
-  showNewFooter: boolean;
+  showNewFooter?: boolean;
 
   /**
    * Geographic region of the user viewing the footer, such as "IN" or "US".
