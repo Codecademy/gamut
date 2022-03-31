@@ -18,9 +18,7 @@ import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/blocks';
 />
 
 <Canvas>
-  <Story name="GlobalFooter">
-    {(args) => <GlobalFooter showNewFooter {...args} />}
-  </Story>
+  <Story name="GlobalFooter">{(args) => <GlobalFooter {...args} />}</Story>
 </Canvas>
 
 <Props story="GlobalFooter" />
@@ -47,5 +45,25 @@ This is to comply with country regulations around our nascent Indian office.
 <Canvas>
   <Story name="Indian Geo Usage">
     {(args) => <GlobalFooter {...args} userGeo="IN" showNewFooter={false} />}
+  </Story>
+</Canvas>
+
+## showNewFooter
+
+TO BE REMOVED BEFORE SHIPPING - test show new footer
+
+<Canvas>
+  <Story name="Indian Geo Usage">
+    {(args) => <GlobalFooter {...args} userGeo="US" showNewFooter />}
+  </Story>
+</Canvas>
+
+## showNewFooter@
+
+TO BE REMOVED BEFORE SHIPPING - test show new footer
+
+<Canvas>
+  <Story name="Indian Geo Usage">
+    {(args) => <GlobalFooter {...args} userGeo="IN" showNewFooter />}
   </Story>
 </Canvas>
