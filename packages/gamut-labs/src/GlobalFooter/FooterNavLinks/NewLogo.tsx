@@ -13,6 +13,7 @@ export const NewLogo: React.FC<LogoProps> = ({ width, height }) => {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
+      <title>Codecademy from Skillsoft</title>
       <path
         fillRule="evenodd"
         clipRule="evenodd"

@@ -99,7 +99,7 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
           {({ showNewFooter }) =>
             showNewFooter ? (
               <Box>
-                <NewLogo aria-label="Codecademy from Skillsoft" height={40} />
+                <NewLogo height={40} />
               </Box>
             ) : (
               'Company'
