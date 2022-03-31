@@ -5,14 +5,20 @@ import {
 import styled from '@emotion/styled';
 import React, { Children, useEffect, useMemo, useRef, useState } from 'react';
 
-import { Box, StrokeButton } from '..';
+import { Box, FillButton, FlexBox } from '..';
 
-const Container = styled.div`
+const ScrollContainer = styled(FlexBox)`
   overflow-x: scroll;
-  display: flex;
   scroll-snap-type: x mandatory;
   ::-webkit-scrollbar {
     display: none;
+  }
+`;
+
+const ScrollButton = styled(FillButton)`
+  opacity: 0;
+  :focus {
+    opacity: 1;
   }
 `;
 
@@ -72,6 +78,7 @@ export const HorizontalScrollBar: React.FC<HorizontalScrollBarProps> = ({
       {
         root: document.querySelector('[data-observerroot=true]'),
         rootMargin: '100% 0% 100% 0%',
+        threshold: 0.2,
       }
     );
   }, []);
@@ -92,12 +99,14 @@ export const HorizontalScrollBar: React.FC<HorizontalScrollBarProps> = ({
   return (
     <>
       <Box position="relative">
-        <Container
+        <ScrollContainer
           data-observerroot="true"
           ref={parentContainerRef}
           className={className}
+          pr={16}
         >
-          <StrokeButton
+          <ScrollButton
+            zIndex={2}
             position="absolute"
             variant="secondary"
             display={showLeftButton ? 'block ' : 'none'}
@@ -106,7 +115,7 @@ export const HorizontalScrollBar: React.FC<HorizontalScrollBarProps> = ({
             aria-label="show previous content"
           >
             <MiniChevronLeftIcon size={24} />
-          </StrokeButton>
+          </ScrollButton>
           {Children.map(children, (child, index) => (
             <Box
               ref={(element) => {
@@ -119,7 +128,7 @@ export const HorizontalScrollBar: React.FC<HorizontalScrollBarProps> = ({
               {child}
             </Box>
           ))}
-          <StrokeButton
+          <ScrollButton
             variant="secondary"
             right={0}
             height="100%"
@@ -129,8 +138,8 @@ export const HorizontalScrollBar: React.FC<HorizontalScrollBarProps> = ({
             aria-label="show more content"
           >
             <MiniChevronRightIcon size={24} />
-          </StrokeButton>
-        </Container>
+          </ScrollButton>
+        </ScrollContainer>
       </Box>
     </>
   );
