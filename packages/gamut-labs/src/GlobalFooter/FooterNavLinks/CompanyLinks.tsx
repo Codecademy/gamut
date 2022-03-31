@@ -1,4 +1,6 @@
 import { Anchor, Box, BoxProps, GridBox } from '@codecademy/gamut';
+import { StreakIcon } from '@codecademy/gamut-icons';
+import { Background } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React from 'react';
 
@@ -140,9 +142,9 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
           <FooterFFContext.Consumer>
             {(showNewFooter) =>
               showNewFooter && (
-                <Box as="code" bg="navy-600">
-                  this is a test
-                </Box>
+                <Background as="code" bg="navy-600">
+                  <StreakIcon /> this is a <StreakIcon />
+                </Background>
               )
             }
           </FooterFFContext.Consumer>
