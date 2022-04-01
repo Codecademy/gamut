@@ -11,7 +11,7 @@ export type GlobalFooterProps = {
   className?: string;
 
   /**
-   * Hide pricing details, such as for rendering in an app store app.
+   * Hide pricing details, such as fgor rendering in an app store app.
    */
   hidePricing?: boolean;
 
@@ -28,7 +28,7 @@ export type GlobalFooterProps = {
   /**
    * If new footer should be shown
    */
-  showNewFooter?: boolean;
+  showNewFooter: boolean;
 
   /**
    * Geographic region of the user viewing the footer, such as "IN" or "US".
@@ -56,7 +56,7 @@ export const GlobalFooter: React.FC<GlobalFooterProps> = ({
   userGeo,
 }) => {
   return (
-    <FooterFFContext.Provider value={{ showNewFooter: showNewFooter ?? false }}>
+    <FooterFFContext.Provider value={{ showNewFooter }}>
       <FooterContainer className={className} role="contentinfo">
         <ContentContainer>
           <FooterNavLinks
