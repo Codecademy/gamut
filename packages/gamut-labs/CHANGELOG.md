@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [31.2.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@31.1.0...@codecademy/gamut-labs@31.2.0) (2022-04-01)
+
+
+### Features
+
+* **FromLogo:** add logo ([c48a054](https://github.com/Codecademy/gamut/commit/c48a054d2fe87f67542db1365caaf79d9a6cbc2c))
+
+
+
 ## [31.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@31.0.3...@codecademy/gamut-labs@31.1.0) (2022-03-31)
 
 
