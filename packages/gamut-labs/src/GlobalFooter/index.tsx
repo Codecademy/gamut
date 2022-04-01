@@ -1,7 +1,7 @@
 import { ContentContainer } from '@codecademy/gamut';
 import { themed } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
-import React, { useMemo } from 'react';
+import React from 'react';
 
 import { FooterLegal } from './FooterLegal';
 import { FooterNavLinks } from './FooterNavLinks';
