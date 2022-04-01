@@ -142,7 +142,7 @@ describe('GlobalHeader', () => {
 
     it('renders resourcesDropdown', () => {
       const { view } = renderView(anonHeaderProps);
-      view.getAllByText(resourcesDropdown.text);
+      view.getAllByText(resourcesDropdown().text);
     });
 
     it('renders communityDropdown', () => {
@@ -258,7 +258,7 @@ describe('GlobalHeader', () => {
 
       it('renders resourcesDropdown', () => {
         const { view } = renderView(freeHeaderProps);
-        view.getByText(resourcesDropdown.text);
+        view.getByText(resourcesDropdown().text);
       });
 
       it('renders communityDropdown', () => {
@@ -336,7 +336,7 @@ describe('GlobalHeader', () => {
 
       it('renders resourcesDropdown', () => {
         const { view } = renderView(proHeaderProps);
-        view.getByText(resourcesDropdown.text);
+        view.getByText(resourcesDropdown().text);
       });
 
       it('renders communityDropdown', () => {
@@ -388,6 +388,26 @@ describe('GlobalHeader', () => {
 
       expect(action).toHaveBeenCalledTimes(1);
       expect(onLinkAction).toHaveBeenCalledTimes(1);
+    });
+  });
+
+  describe('user in catalog dropdown experiment', () => {
+    it('does not render projects and challenges in resourcesDropdown', () => {
+      const props = {
+        ...proHeaderProps,
+        ...{ user: { ...user, useNewCatalogDropdown: true } },
+      };
+      const { view } = renderView(props);
+      expect(view.queryByText('Projects')).toBeFalsy();
+      expect(view.queryByText('Challenges')).toBeFalsy();
+    });
+  });
+
+  describe('user who is not in catalog dropdown experiment', () => {
+    it('renders projects and challenges in resourcesDropdown', () => {
+      const { view } = renderView(proHeaderProps);
+      view.getByText('Projects');
+      view.getByText('Challenges');
     });
   });
 });
