@@ -4,24 +4,28 @@ import React from 'react';
 
 const courseData = [
   {
+    id: 'a',
     title: 'JavaScript',
     difficulty: 1 as CurriculumCardProps['difficulty'],
     scope: { Lesson: 24 },
     text: 'course',
   },
   {
+    id: 'b',
     title: 'Python',
     difficulty: 0 as CurriculumCardProps['difficulty'],
     scope: { Lesson: 32 },
     text: 'course',
   },
   {
+    id: 'c',
     title: 'Go',
     difficulty: 1 as CurriculumCardProps['difficulty'],
     scope: { Lesson: 5 },
     text: 'course',
   },
   {
+    id: 'd',
     title: 'React',
     difficulty: 1 as CurriculumCardProps['difficulty'],
     scope: { Lesson: 18 },
@@ -34,13 +38,7 @@ export const HorizontalScrollBarExample = () => {
     <ContentContainer py={32}>
       <HorizontalScrollBar scrollInterval={400}>
         {courseData.map((props, index) => (
-          // eslint-disable-next-line react/no-array-index-key
-          <Box
-            key={`${props.title}-${index}`}
-            minWidth={400}
-            maxWidth={400}
-            mx={16}
-          >
+          <Box key={props.id} minWidth={400} maxWidth={400} mx={16}>
             <CurriculumCard {...props} />
           </Box>
         ))}
