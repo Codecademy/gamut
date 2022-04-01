@@ -39,10 +39,28 @@ export const HorizontalScrollBar: React.FC<HorizontalScrollBarProps> = ({
   const [showRightButton, setShowRightButton] = useState(true);
 
   const handleScroll = (forward?: boolean) => {
-    if (parentContainerRef.current) {
+    if (parentContainerRef.current && elementsRef.current) {
       const interval = forward ? scrollInterval : -scrollInterval;
+
+      const nextScrollPosition =
+        parentContainerRef.current.scrollLeft + interval;
+
+      const lastElementWidth =
+        elementsRef.current[elementsRef.current.length - 1].clientWidth;
+      const maxScrollPosition =
+        parentContainerRef.current.scrollWidth -
+        parentContainerRef.current.clientWidth;
+      const shouldScrollToEnd =
+        nextScrollPosition > maxScrollPosition - lastElementWidth && forward;
+
+      const calculatedScrollPosition = shouldScrollToEnd
+        ? maxScrollPosition
+        : nextScrollPosition < 0
+        ? 0
+        : nextScrollPosition;
+
       parentContainerRef.current.scrollTo({
-        left: parentContainerRef.current.scrollLeft + interval,
+        left: calculatedScrollPosition,
       });
     }
   };
