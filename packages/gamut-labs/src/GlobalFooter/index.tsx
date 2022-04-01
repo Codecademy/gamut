@@ -11,7 +11,7 @@ export type GlobalFooterProps = {
   className?: string;
 
   /**
-   * Hide pricing details, such as fgor rendering in an app store app.
+   * Hide pricing details, such as for rendering in an app store app.
    */
   hidePricing?: boolean;
 
