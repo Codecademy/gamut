@@ -1,25 +1,29 @@
-import { IllustrationProps } from '@codecademy/gamut-illustrations';
-import { system } from '@codecademy/gamut-styles';
+import { styledOptions, system } from '@codecademy/gamut-styles';
 import { StyleProps, variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
 import React from 'react';
 
 const fromLogoStyles = variance.compose(
+  system.layout,
   system.color,
   system.space,
   system.positioning
 );
 
-const StyledSVGWrapper = styled.svg(fromLogoStyles);
+export interface FromLogoIconStyleProps
+  extends StyleProps<typeof fromLogoStyles> {}
 
-export type LogoFromSkillsoftProps = StyleProps<typeof fromLogoStyles> &
-  IllustrationProps;
+export interface FromLogoIconProps
+  extends Omit<React.SVGProps<SVGSVGElement>, keyof FromLogoIconStyleProps>,
+    FromLogoIconStyleProps {}
 
-export const LogoFromSkillsoft: React.FC<LogoFromSkillsoftProps> = ({
+const StyledSVGWrapper = styled('svg', styledOptions<'svg'>())(fromLogoStyles);
+
+export const LogoFromSkillsoft: React.FC<FromLogoIconProps> = ({
   'aria-hidden': ariaHidden,
+  color = 'text',
   height,
   width,
-  color = 'text',
   ...rest
 }) => {
   return (
