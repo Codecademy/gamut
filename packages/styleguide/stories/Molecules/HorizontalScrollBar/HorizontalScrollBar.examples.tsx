@@ -37,7 +37,7 @@ export const HorizontalScrollBarExample = () => {
   return (
     <ContentContainer py={32}>
       <HorizontalScrollBar scrollInterval={400}>
-        {courseData.map((props, index) => (
+        {courseData.map((props) => (
           <Box key={props.id} minWidth={400} maxWidth={400} mx={16}>
             <CurriculumCard {...props} />
           </Box>
