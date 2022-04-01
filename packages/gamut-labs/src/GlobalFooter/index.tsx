@@ -55,12 +55,8 @@ export const GlobalFooter: React.FC<GlobalFooterProps> = ({
   showNewFooter,
   userGeo,
 }) => {
-  const showNewFooterState = useMemo(() => showNewFooter, [showNewFooter]);
-
   return (
-    <FooterFFContext.Provider
-      value={{ showNewFooter: showNewFooterState ?? false }}
-    >
+    <FooterFFContext.Provider value={{ showNewFooter: showNewFooter ?? false }}>
       <FooterContainer className={className} role="contentinfo">
         <ContentContainer>
           <FooterNavLinks
