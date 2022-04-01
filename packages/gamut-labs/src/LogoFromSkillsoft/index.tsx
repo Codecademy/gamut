@@ -37,6 +37,7 @@ export const LogoFromSkillsoft: React.FC<FromLogoIconProps> = ({
       xmlns="http://www.w3.org/2000/svg"
       {...rest}
     >
+      <title>Codecademy from Skillsoft</title>
       <path
         fillRule="evenodd"
         clipRule="evenodd"
