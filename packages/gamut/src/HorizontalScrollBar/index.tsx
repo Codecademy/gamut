@@ -47,15 +47,18 @@ export const HorizontalScrollBar: React.FC<HorizontalScrollBarProps> = ({
 
       const lastElementWidth =
         elementsRef.current[elementsRef.current.length - 1].clientWidth;
+      const firstElementWidth = elementsRef.current[0].clientWidth;
       const maxScrollPosition =
         parentContainerRef.current.scrollWidth -
         parentContainerRef.current.clientWidth;
+
+      const shouldScrollToBeginning = nextScrollPosition < firstElementWidth;
       const shouldScrollToEnd =
         nextScrollPosition > maxScrollPosition - lastElementWidth && forward;
 
       const calculatedScrollPosition = shouldScrollToEnd
         ? maxScrollPosition
-        : nextScrollPosition < 0
+        : shouldScrollToBeginning
         ? 0
         : nextScrollPosition;
 
