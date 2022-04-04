@@ -115,6 +115,20 @@ export const headerResourcesList = (
   );
 };
 
+// TODO: add multi column items and data
+export const headerCatalogDropdownList = () => [
+  {
+    id: 'projects',
+    href: '/projects',
+    footerTrackingTarget: 'projects',
+    headerTrackingTarget: 'topnav_resources_projects',
+    text: 'Projects',
+    type: 'link',
+    badgeText: 'New',
+    hideWithNewCatalogDropdown: true,
+  },
+];
+
 export const footerResourcesList: FooterResourceList[] = resourcesList.map(
   ({ id, href, footerTrackingTarget, text, newTab }) => ({
     id,

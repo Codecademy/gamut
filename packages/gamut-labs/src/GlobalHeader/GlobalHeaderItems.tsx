@@ -22,7 +22,10 @@ import {
   AppHeaderSimpleDropdownItem,
   AppHeaderTextButtonItem,
 } from '../AppHeader/AppHeaderElements/types';
-import { headerResourcesList } from '../lib/resourcesList';
+import {
+  headerCatalogDropdownList,
+  headerResourcesList,
+} from '../lib/resourcesList';
 import { User } from './types';
 
 export const logo: AppHeaderLogoItem = {
@@ -63,10 +66,11 @@ export const courseCatalog: AppHeaderLinkItem = {
   type: 'link',
 };
 
-export const catalogDropdown: any = {
+export const catalogDropdown: AppHeaderSimpleDropdownItem = {
   icon: BookFlipPageIcon,
   id: 'catalog-dropdown',
-  text: 'Catalog',
+  text: 'Catalog DD!',
+  popover: headerCatalogDropdownList(),
   trackingTarget: 'topnav_catalog_dropdown',
   type: 'catalog-dropdown',
 };

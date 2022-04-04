@@ -67,6 +67,7 @@ export const mapItemToElement = (
       return <AppHeaderLink tabIndex="-1" mx={0} action={action} item={item} />;
     case 'dropdown':
     case 'profile-dropdown':
+    case 'catalog-dropdown':
       return (
         <AppHeaderDropdown onKeyDown={onKeyDown} action={action} item={item} />
       );
@@ -108,8 +109,6 @@ export const mapItemToElement = (
           {item.text}
         </FillButton>
       );
-    case 'catalog-dropdown':
-      return <Box>Catalog Dropdown</Box>;
   }
 };
 

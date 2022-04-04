@@ -52,7 +52,9 @@ export type AppHeaderDropdownItem =
   | AppHeaderSimpleDropdownItem
   | AppHeaderProfileDropdownItem;
 
-export type AppHeaderSimpleDropdownItem = AppHeaderBaseItem<'dropdown'> & {
+export type AppHeaderSimpleDropdownItem = AppHeaderBaseItem<
+  'dropdown' | 'catalog-dropdown'
+> & {
   icon?: React.ComponentType<GamutIconProps>;
   popover: AppHeaderLinkItem[];
   text: string;
