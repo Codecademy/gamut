@@ -44,6 +44,7 @@ export const NotificationBell: React.FC<NotificationBellProps> = ({
       ref={bellRef}
       variant="interface"
       role="menuitem"
+      tabIndex="-1"
     >
       {unread ? (
         <FlexBox
