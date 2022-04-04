@@ -56,14 +56,14 @@ export const HorizontalScrollBar: React.FC<HorizontalScrollBarProps> = ({
       const shouldScrollToEnd =
         nextScrollPosition > maxScrollPosition - lastElementWidth && forward;
 
-      const calculatedScrollPosition = shouldScrollToEnd
-        ? maxScrollPosition
-        : shouldScrollToBeginning
-        ? 0
-        : nextScrollPosition;
+      const calculateScrollPosition = () => {
+        if (shouldScrollToEnd) return maxScrollPosition;
+        if (shouldScrollToBeginning) return 0;
+        return nextScrollPosition;
+      };
 
       parentContainerRef.current.scrollTo({
-        left: calculatedScrollPosition,
+        left: calculateScrollPosition(),
       });
     }
   };
@@ -117,50 +117,48 @@ export const HorizontalScrollBar: React.FC<HorizontalScrollBarProps> = ({
   }, [elementsRef, intersectionObserver, children]);
 
   return (
-    <>
-      <Box position="relative">
-        <ScrollContainer
-          data-observerroot="true"
-          ref={parentContainerRef}
-          className={className}
-          pr={16}
+    <Box position="relative">
+      <ScrollContainer
+        data-observerroot="true"
+        ref={parentContainerRef}
+        className={className}
+        pr={16}
+      >
+        <ScrollButton
+          zIndex={2}
+          position="absolute"
+          variant="secondary"
+          display={showLeftButton ? 'block ' : 'none'}
+          height="100%"
+          onClick={() => handleScroll()}
+          aria-label="show previous content"
         >
-          <ScrollButton
-            zIndex={2}
-            position="absolute"
-            variant="secondary"
-            display={showLeftButton ? 'block ' : 'none'}
-            height="100%"
-            onClick={() => handleScroll()}
-            aria-label="show previous content"
+          <MiniChevronLeftIcon size={24} />
+        </ScrollButton>
+        {Children.map(children, (child, index) => (
+          <Box
+            ref={(element) => {
+              if (element) {
+                elementsRef.current[index] = element;
+              }
+            }}
+            data-observerindex={index}
           >
-            <MiniChevronLeftIcon size={24} />
-          </ScrollButton>
-          {Children.map(children, (child, index) => (
-            <Box
-              ref={(element) => {
-                if (element) {
-                  elementsRef.current[index] = element;
-                }
-              }}
-              data-observerindex={index}
-            >
-              {child}
-            </Box>
-          ))}
-          <ScrollButton
-            variant="secondary"
-            right={0}
-            height="100%"
-            position="absolute"
-            display={showRightButton ? 'block' : 'none'}
-            onClick={() => handleScroll(true)}
-            aria-label="show more content"
-          >
-            <MiniChevronRightIcon size={24} />
-          </ScrollButton>
-        </ScrollContainer>
-      </Box>
-    </>
+            {child}
+          </Box>
+        ))}
+        <ScrollButton
+          variant="secondary"
+          right={0}
+          height="100%"
+          position="absolute"
+          display={showRightButton ? 'block' : 'none'}
+          onClick={() => handleScroll(true)}
+          aria-label="show more content"
+        >
+          <MiniChevronRightIcon size={24} />
+        </ScrollButton>
+      </ScrollContainer>
+    </Box>
   );
 };
