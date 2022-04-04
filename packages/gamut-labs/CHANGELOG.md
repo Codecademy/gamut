@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [31.2.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@31.2.0...@codecademy/gamut-labs@31.2.1) (2022-04-04)
+
+
+### Reverts
+
+* Revert "feat(FromLogo): add logo" (#2306) ([6d16bdc](https://github.com/Codecademy/gamut/commit/6d16bdcb42b59de553398359393875d2c50b1f22)), closes [#2306](https://github.com/Codecademy/gamut/issues/2306)
+
+
+
 ## [31.2.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@31.1.0...@codecademy/gamut-labs@31.2.0) (2022-04-01)
 
 
