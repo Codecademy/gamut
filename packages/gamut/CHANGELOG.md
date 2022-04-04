@@ -7149,7 +7149,7 @@ import { Button } from '@codecademy/gamut'
 ### Other Changes
 
 * Add loading button examples; flesh out button story ([382c5a9](https://github.com/Codecademy/gamut/commit/382c5a97bb916732df98ac6c4b9b11be9c0de65c))
-* Merge branch 'ajh-loading-button' of https://github.com/RyzacInc/gamut into ajh-loading-button ([8078665](https://github.com/Codecademy/gamut/commit/80786657b23fc91a81c26da47d3440e99838b45d))
+* Merge branch 'ajh-loading-button' of https://github.com/Codecademy/gamut into ajh-loading-button ([8078665](https://github.com/Codecademy/gamut/commit/80786657b23fc91a81c26da47d3440e99838b45d))
 * Merge branch 'master' into ajh-loading-button ([8c39e4f](https://github.com/Codecademy/gamut/commit/8c39e4fa6b83f5ec78abaaa7a2ba6888afcff289))
 * Publish ([b9d0015](https://github.com/Codecademy/gamut/commit/b9d0015ed01aa369cfef9f6dada20ae81718166f))
 * Publish ([c64bd0a](https://github.com/Codecademy/gamut/commit/c64bd0a03db1688216895ad3a54ba328557d7f41))
@@ -7175,7 +7175,7 @@ import { Button } from '@codecademy/gamut'
 * add new chevron svgs ([68a68fb](https://github.com/Codecademy/gamut/commit/68a68fb9d2a5427123b947817d4f91af8bbc7ae4))
 * alphabetize ([afba06a](https://github.com/Codecademy/gamut/commit/afba06a104d0cc632938c13833d8afa819afaca1))
 * incorporate feedback from review ([9568fc8](https://github.com/Codecademy/gamut/commit/9568fc893b5606f21c213ca1e44c10d662e00aee))
-* Merge branch 'master' of github.com:RyzacInc/gamut into bm-add-chevron-icons-LX-934 ([d25387e](https://github.com/Codecademy/gamut/commit/d25387e1c761aef12cd8714e44d6d1ce4d66fe81))
+* Merge branch 'master' of github.com:Codecademy/gamut into bm-add-chevron-icons-LX-934 ([d25387e](https://github.com/Codecademy/gamut/commit/d25387e1c761aef12cd8714e44d6d1ce4d66fe81))
 * pass in height width as props ([50cbba8](https://github.com/Codecademy/gamut/commit/50cbba82fefa1200fbd8b088ce13c701a053aff2))
 * Publish ([8f01e2e](https://github.com/Codecademy/gamut/commit/8f01e2e1faa39da868105f9e39cffecb66063069))
 * Publish ([278eb60](https://github.com/Codecademy/gamut/commit/278eb60cbf320e7f132d1ead5f7f9d59411319fe))
@@ -7192,7 +7192,7 @@ import { Button } from '@codecademy/gamut'
 * Clean up code a bit ([f8d07f4](https://github.com/Codecademy/gamut/commit/f8d07f407e5471332f5e54cb93573f5b9af58a08))
 * Clean up spinner code ([fc37883](https://github.com/Codecademy/gamut/commit/fc378832046ce7a6bc2ed73cb0831ac0c4ab9bee))
 * Freshen up button story ([62a7b47](https://github.com/Codecademy/gamut/commit/62a7b47a8068f79a097bd9149fcf582d5f94382d))
-* Merge branch 'ajh-loading-spinner' of https://github.com/RyzacInc/gamut into ajh-loading-spinner ([9ae966b](https://github.com/Codecademy/gamut/commit/9ae966befef255f0cf254da48520dce58dbba736))
+* Merge branch 'ajh-loading-spinner' of https://github.com/Codecademy/gamut into ajh-loading-spinner ([9ae966b](https://github.com/Codecademy/gamut/commit/9ae966befef255f0cf254da48520dce58dbba736))
 * Merge branch 'master' into ajh-loading-spinner ([8628ea2](https://github.com/Codecademy/gamut/commit/8628ea2efbdcf90ef4ff06d140dc84aa10a224d6))
 * Merge branch 'master' into ajh-loading-spinner ([7a9996a](https://github.com/Codecademy/gamut/commit/7a9996a676531b2f391725743a68ed7de7d3a28f))
 * More playing around ([de073a0](https://github.com/Codecademy/gamut/commit/de073a0dd54d92320dc44db96e9072de876a805e))
@@ -7269,7 +7269,7 @@ import { Button } from '@codecademy/gamut'
 * Fix naming conventions ([e873a94](https://github.com/Codecademy/gamut/commit/e873a94c9067a13373c01d9ca1e0b054a9f59d3f))
 * Fix naming of SciPyIcon ([b2fba15](https://github.com/Codecademy/gamut/commit/b2fba157003cf86e1aea9420bcd1b645582d28be))
 * Isolate iconMap; clean up stories ([457f1de](https://github.com/Codecademy/gamut/commit/457f1ded81959b41263be66132b76b39693443ad))
-* Merge branch 'ajh-course-icons' of https://github.com/RyzacInc/gamut into ajh-course-icons ([c3688b4](https://github.com/Codecademy/gamut/commit/c3688b4baa5fdc1f9166e8bc290fb8ee614c4b49))
+* Merge branch 'ajh-course-icons' of https://github.com/Codecademy/gamut into ajh-course-icons ([c3688b4](https://github.com/Codecademy/gamut/commit/c3688b4baa5fdc1f9166e8bc290fb8ee614c4b49))
 * Merge branch 'master' into ajh-course-icons ([e74fd69](https://github.com/Codecademy/gamut/commit/e74fd69f67ab230c45bfed7ad8eb855b2c46bf30))
 * Publish ([8950889](https://github.com/Codecademy/gamut/commit/895088912309d9aab71000bf254ff165d0276531))
 * Push fill definition into parent icon ([aa5a9b0](https://github.com/Codecademy/gamut/commit/aa5a9b0e6fe8418a5db56fa6ec12636f4f44d6b9))
@@ -7417,7 +7417,7 @@ import { Button } from '@codecademy/gamut'
 * fix gamut button border radius in chrome ([d92df5c](https://github.com/Codecademy/gamut/commit/d92df5c9f1a94eb4c4edbcb4a170a9734eeb1e40))
 * grid fixes ([eaf639d](https://github.com/Codecademy/gamut/commit/eaf639d3bd8506700bae99ccc3fbeff0dd03f53f))
 * make error input have a red focus style ([2806e08](https://github.com/Codecademy/gamut/commit/2806e0857c09707c1fb711557aea5e78e8b91f6a))
-* Merge pull request [#30](https://github.com/Codecademy/gamut/issues/30) from RyzacInc/jh-component-guidelines ([1d85012](https://github.com/Codecademy/gamut/commit/1d850120255f7fb6ef539caaf57c40b45bdd0dee))
+* Merge pull request [#30](https://github.com/Codecademy/gamut/issues/30) from Codecademy/jh-component-guidelines ([1d85012](https://github.com/Codecademy/gamut/commit/1d850120255f7fb6ef539caaf57c40b45bdd0dee))
 * move tab story for now ([7cf9daa](https://github.com/Codecademy/gamut/commit/7cf9daa1ffa15af0ea4fe84f3b7c96e588784687))
 * pass id through gamut button ([9457b75](https://github.com/Codecademy/gamut/commit/9457b75fbbb67d2c452cb3b6f8bc0768d05f2786))
 * Publish ([07fee8c](https://github.com/Codecademy/gamut/commit/07fee8c5a37665027ddf7a1d14de1b3d993c7810))
@@ -7471,7 +7471,7 @@ import { Button } from '@codecademy/gamut'
 ### Other Changes
 
 * fix RadioGroup, add .DS_Store to Gitignore ([820f2b8](https://github.com/Codecademy/gamut/commit/820f2b8f6364e26b9f7be148eda6a221e92a7efd))
-* Merge pull request [#23](https://github.com/Codecademy/gamut/issues/23) from RyzacInc/al-fix-radiogroup-key-issue ([f8a1b5a](https://github.com/Codecademy/gamut/commit/f8a1b5abb2fd5ad459b48f2fb92c96b51cac2502))
+* Merge pull request [#23](https://github.com/Codecademy/gamut/issues/23) from Codecademy/al-fix-radiogroup-key-issue ([f8a1b5a](https://github.com/Codecademy/gamut/commit/f8a1b5abb2fd5ad459b48f2fb92c96b51cac2502))
 * Publish ([d62b6ca](https://github.com/Codecademy/gamut/commit/d62b6ca1b960d0a382bcdba677d99bdbb10d12cc))
 * use yarn ([c58f92d](https://github.com/Codecademy/gamut/commit/c58f92d1e787bf0df1c5c26556e4e7eba74011b3))
 
@@ -7494,7 +7494,7 @@ import { Button } from '@codecademy/gamut'
 
 * Define required dependency prop-types ([de96ee9](https://github.com/Codecademy/gamut/commit/de96ee96ae776d528a7f57694395e9c45d6aa131))
 * Introduce onChange, value and checked props for <Radio> and <Checkbox> ([de31fe3](https://github.com/Codecademy/gamut/commit/de31fe3a613f191ff7401865b28b64e5a6d37a30))
-* Merge pull request [#14](https://github.com/Codecademy/gamut/issues/14) from RyzacInc/el-fix-deps ([778f8fa](https://github.com/Codecademy/gamut/commit/778f8fa7ad0c0e7b6beaad0bd40099ebf7f9b2b2))
+* Merge pull request [#14](https://github.com/Codecademy/gamut/issues/14) from Codecademy/el-fix-deps ([778f8fa](https://github.com/Codecademy/gamut/commit/778f8fa7ad0c0e7b6beaad0bd40099ebf7f9b2b2))
 * Publish ([1878190](https://github.com/Codecademy/gamut/commit/1878190ab1d519f530d1ba81636ee586f61b0d92))
 * Use shared props between two test component instances ([1ffc707](https://github.com/Codecademy/gamut/commit/1ffc70795def3c0bfa05cf7946bab897ccb292bc))
 
@@ -7521,7 +7521,7 @@ import { Button } from '@codecademy/gamut'
 * gets rid of useless attrs ([c044ce8](https://github.com/Codecademy/gamut/commit/c044ce8ca74da6e800f927b9a737b20feaabd01b))
 * introduce FormGroup for spacing ([bc2ef7e](https://github.com/Codecademy/gamut/commit/bc2ef7e0b4a29d4f4e391d7b68b5882539caadd2))
 * Make label line heights consistent ([1651848](https://github.com/Codecademy/gamut/commit/16518485fafd966720eb087bed632701526edd62))
-* Merge branch 'js-lerna-components' of https://github.com/RyzacInc/gamut into js-lerna-components ([61378e0](https://github.com/Codecademy/gamut/commit/61378e072caa767ccb08258ec08fbfe5044a2798))
+* Merge branch 'js-lerna-components' of https://github.com/Codecademy/gamut into js-lerna-components ([61378e0](https://github.com/Codecademy/gamut/commit/61378e072caa767ccb08258ec08fbfe5044a2798))
 * Merge remote-tracking branch 'origin/master' into jh-button-cleanup ([02f15e9](https://github.com/Codecademy/gamut/commit/02f15e9ff62cd021354a1983cc5322dfab0fc9cf))
 * move Button to a functional component, don't pass all props down ([35689d1](https://github.com/Codecademy/gamut/commit/35689d1c0cac793814db33c84b036dd735cecb68))
 * one more prop ([ba4bb20](https://github.com/Codecademy/gamut/commit/ba4bb20af1621907884037ac09a8ad7c94749d66))

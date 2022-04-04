@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [31.2.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@31.1.0...@codecademy/gamut-labs@31.2.0) (2022-04-01)
+
+
+### Features
+
+* **FromLogo:** add logo ([c48a054](https://github.com/Codecademy/gamut/commit/c48a054d2fe87f67542db1365caaf79d9a6cbc2c))
+
+
+
+## [31.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@31.0.3...@codecademy/gamut-labs@31.1.0) (2022-03-31)
+
+
+### Features
+
+* **AppHeader:** hide projects and challenges in nav variant ([b1427ec](https://github.com/Codecademy/gamut/commit/b1427ec199e86cf751a8743bfc3441e0a1b670b7))
+
+
+
 ### [31.0.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@31.0.2...@codecademy/gamut-labs@31.0.3) (2022-03-29)
 
 **Note:** Version bump only for package @codecademy/gamut-labs
