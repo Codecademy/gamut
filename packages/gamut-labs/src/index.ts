@@ -16,6 +16,7 @@ export * from './Header/HeaderTab';
 export * from './LayoutMenu';
 export * from './Loading';
 export * from './Logo';
+export * from './LogoFromSkillsoft';
 export * from './ProLogo';
 export * from './ProLogoAlt';
 export * from './TestimonialDeprecated';
