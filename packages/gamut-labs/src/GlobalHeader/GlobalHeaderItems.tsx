@@ -63,6 +63,14 @@ export const courseCatalog: AppHeaderLinkItem = {
   type: 'link',
 };
 
+export const catalogDropdown: any = {
+  icon: BookFlipPageIcon,
+  id: 'catalog-dropdown',
+  text: 'Catalog',
+  trackingTarget: 'topnav_catalog_dropdown',
+  type: 'catalog-dropdown',
+};
+
 export const resourcesDropdown = (
   useNewCatalogDropdown?: boolean
 ): AppHeaderSimpleDropdownItem => ({
