@@ -115,7 +115,6 @@ export const headerResourcesList = (
   );
 };
 
-// TODO: add multi column items and data
 export const headerCatalogDropdownList = () => [
   {
     id: 'projects',
@@ -126,6 +125,145 @@ export const headerCatalogDropdownList = () => [
     type: 'link',
     badgeText: 'New',
     hideWithNewCatalogDropdown: true,
+  },
+];
+
+// TODO: add tracking
+const headerCatalogDropdownData = [
+  {
+    title: 'Career paths',
+    description: 'Land an entry-level role in tech with step-by-step guidance.',
+    data: {
+      linkHeaders: null,
+      links: [
+        [
+          {
+            id: 'full-stack-engineer-career-path',
+            href: '/learn/paths/full-stack-engineer-career-path',
+            headerTrackingTarget: 'topnav_resources_videos',
+            text: 'Full-stack engineer',
+            type: 'link',
+          },
+          {
+            id: 'front-end-engineer-career-path',
+            href: '/learn/paths/front-end-engineer-career-path',
+            headerTrackingTarget: 'topnav_resources_videos',
+            text: 'Front-end engineer',
+            type: 'link',
+          },
+          {
+            id: 'data-science',
+            href: '/learn/paths/data-science',
+            headerTrackingTarget: 'topnav_resources_videos',
+            text: 'Data Scientist',
+            type: 'link',
+          },
+        ],
+        [
+          {
+            id: 'fdata-analyst',
+            href: '/learn/paths/data-analyst',
+            headerTrackingTarget: 'topnav_resources_videos',
+            text: 'Data Analyst',
+            type: 'link',
+          },
+          {
+            id: 'computer-science',
+            href: '/learn/paths/computer-science',
+            headerTrackingTarget: 'topnav_resources_videos',
+            text: 'Computer Science',
+            type: 'link',
+          },
+          {
+            id: 'ios-developer',
+            href: '/learn/paths/ios-developer',
+            headerTrackingTarget: 'topnav_resources_videos',
+            text: 'iOS Developer',
+            type: 'link',
+          },
+        ],
+      ],
+    },
+  },
+  {
+    title: 'Popular topics',
+    description: 'Find courses in languages or subjects that interest you.',
+    data: {
+      linkHeaders: ['Top Languages', 'Top Subjects'],
+      links: [
+        [
+          {
+            id: 'python',
+            href: '/catalog/language/python',
+            headerTrackingTarget: 'topnav_resources_videos',
+            text: 'Python',
+            type: 'link',
+          },
+          {
+            id: 'javascript',
+            href: '/catalog/language/javascript',
+            headerTrackingTarget: 'topnav_resources_videos',
+            text: 'Javascript',
+            type: 'link',
+          },
+          {
+            id: 'html-css',
+            href: '/catalog/language/html-css',
+            headerTrackingTarget: 'topnav_resources_videos',
+            text: 'HTML & CSS',
+            type: 'link',
+          },
+        ],
+        [
+          {
+            id: 'web-development',
+            href: '/catalog/subject/web-development',
+            headerTrackingTarget: 'topnav_resources_videos',
+            text: 'Web Development',
+            type: 'link',
+          },
+          {
+            id: 'data-science',
+            href: '/catalog/subject/data-science',
+            headerTrackingTarget: 'topnav_resources_videos',
+            text: 'Data Science',
+            type: 'link',
+          },
+          {
+            id: 'computer-science',
+            href: '/catalog/subject/computer-science',
+            headerTrackingTarget: 'topnav_resources_videos',
+            text: 'Computer Science',
+            type: 'link',
+          },
+        ],
+      ],
+    },
+  },
+  {
+    title: 'Practice tools',
+    description: 'Get real-world practice and apply what you&apos;re learning.',
+    data: {
+      linkHeaders: null,
+      links: [
+        [
+          {
+            id: 'projects',
+            href: '/projects',
+            headerTrackingTarget: 'topnav_resources_videos',
+            text: 'Projects',
+            type: 'link',
+          },
+          {
+            id: 'code-challenges',
+            href: '/code-challenges',
+            headerTrackingTarget: 'topnav_resources_videos',
+            text: 'Code Challenges',
+            type: 'link',
+          },
+        ],
+      ],
+    },
   },
 ];
 
