@@ -1,4 +1,4 @@
-import { Box, Column, LayoutGrid } from '@codecademy/gamut';
+import { Box, Column, FlexBox, LayoutGrid, Text } from '@codecademy/gamut';
 import { pxRem, theme } from '@codecademy/gamut-styles';
 import cx from 'classnames';
 import React, { useRef, useState } from 'react';
@@ -42,8 +42,6 @@ export const AppHeaderCatalogDropdown: React.FC<AppHeaderCatalogDropdownProps> =
     }
   };
 
-  console.log('item: ', item.popover);
-
   return (
     <>
       <DropdownAnchor
@@ -82,21 +80,33 @@ export const AppHeaderCatalogDropdown: React.FC<AppHeaderCatalogDropdownProps> =
         aria-hidden={!isOpen}
       >
         <LayoutGrid ref={containerRef}>
-          {item.popover.map((rowData) => (
+          {item.popover.map((section) => (
             <Column size={12}>
               <LayoutGrid>
                 <Column size={4}>
-                  <Box background={theme.colors['gray-100']}>
-                    <Box>{rowData.title}</Box>
-                    <Box>{rowData.description}</Box>
+                  <Box background={theme.colors['gray-100']} p={24}>
+                    <Text fontWeight="bold">{section.title}</Text>
+                    <Text>{section.description}</Text>
                   </Box>
                 </Column>
-                <Column size={8}>links will go here</Column>
+                <Column size={8} p={24}>
+                  {/* TODO: special logic for links w headers */}
+
+                  <FlexBox
+                    maxHeight="5rem"
+                    flexDirection="column"
+                    flexWrap="wrap"
+                  >
+                    {section.links.map((link, index) => (
+                      <Box>{link.text}</Box>
+                    ))}
+                  </FlexBox>
+                </Column>
               </LayoutGrid>
             </Column>
           ))}
 
-          <Column size={12}>Button</Column>
+          <Column size={12}>Explore full catalog</Column>
         </LayoutGrid>
       </StyledDropdown>
     </>

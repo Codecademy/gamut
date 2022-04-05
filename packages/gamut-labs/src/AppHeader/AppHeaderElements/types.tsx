@@ -81,10 +81,7 @@ export type AppHeaderCatalogDropdownItem = AppHeaderBaseItem<'catalog-dropdown'>
 export type AppHeaderCatalogDataItem = {
   title: string;
   description: string;
-  data: {
-    linkHeaders?: string[];
-    links: AppHeaderLinkItem[][];
-  };
+  links: AppHeaderLinkItem[];
 };
 
 export type AppHeaderClickHandler<ItemType = AppHeaderItem> = (
