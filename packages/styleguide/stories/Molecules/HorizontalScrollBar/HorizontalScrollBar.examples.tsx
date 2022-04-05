@@ -31,6 +31,20 @@ const courseData = [
     scope: { Lesson: 18 },
     text: 'course',
   },
+  {
+    id: 'e',
+    title: 'Intro to Django',
+    difficulty: 1 as CurriculumCardProps['difficulty'],
+    scope: { Lesson: 29 },
+    text: 'course',
+  },
+  {
+    id: 'f',
+    title: 'PHP',
+    difficulty: 1 as CurriculumCardProps['difficulty'],
+    scope: { Lesson: 52 },
+    text: 'course',
+  },
 ];
 
 export const HorizontalScrollBarExample = () => {
