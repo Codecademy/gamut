@@ -4,7 +4,6 @@ import { GlobalFooter } from '..';
 
 const renderView = setupRtl(GlobalFooter, {
   onClick: jest.fn(),
-  showNewFooter: false,
   userGeo: 'US',
 });
 
