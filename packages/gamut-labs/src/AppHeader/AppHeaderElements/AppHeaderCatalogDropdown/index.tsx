@@ -1,5 +1,13 @@
-import { Box, Column, FlexBox, LayoutGrid, Text } from '@codecademy/gamut';
+import {
+  Anchor,
+  Box,
+  Column,
+  FlexBox,
+  LayoutGrid,
+  Text,
+} from '@codecademy/gamut';
 import { pxRem, theme } from '@codecademy/gamut-styles';
+import styled from '@emotion/styled';
 import cx from 'classnames';
 import React, { useRef, useState } from 'react';
 import { useIsomorphicLayoutEffect } from 'react-use';
@@ -16,6 +24,25 @@ type AppHeaderCatalogDropdownProps = {
   action: AppHeaderClickHandler;
   item: AppHeaderCatalogDropdownItem;
 };
+
+const StyledTitle = styled(Text)`
+  font-size: ${pxRem(12)};
+  font-family: ${theme.fontFamily.accent};
+  font-weight: ${theme.fontWeight.title};
+  margin-bottom: ${pxRem(6)};
+`;
+
+const StyledDescription = styled(Text)`
+  font-size: ${pxRem(11)};
+  font-family: ${theme.fontFamily.base};
+  line-height: ${pxRem(19)};
+`;
+
+const StyledAnchor = styled(Anchor)`
+  font-size: ${pxRem(14)};
+  font-family: ${theme.fontFamily.base};
+  line-height: ${pxRem(32)};
+`;
 
 export const AppHeaderCatalogDropdown: React.FC<AppHeaderCatalogDropdownProps> = ({
   action,
@@ -84,21 +111,25 @@ export const AppHeaderCatalogDropdown: React.FC<AppHeaderCatalogDropdownProps> =
             <Column size={12}>
               <LayoutGrid>
                 <Column size={4}>
-                  <Box background={theme.colors['gray-100']} p={24}>
-                    <Text fontWeight="bold">{section.title}</Text>
-                    <Text>{section.description}</Text>
+                  <Box background={theme.colors['gray-100']} p={16}>
+                    <StyledTitle>{section.title}</StyledTitle>
+                    <StyledDescription>{section.description}</StyledDescription>
                   </Box>
                 </Column>
-                <Column size={8} p={24}>
-                  {/* TODO: special logic for links w headers */}
-
+                <Column size={8} p={16}>
+                  {/* TODO: add link headers for popular topics */}
                   <FlexBox
-                    maxHeight="5rem"
+                    maxHeight="6rem"
                     flexDirection="column"
                     flexWrap="wrap"
                   >
-                    {section.links.map((link, index) => (
-                      <Box>{link.text}</Box>
+                    {section.links.map((link) => (
+                      <Box minWidth="200px">
+                        {/* TODO: add tracking */}
+                        <StyledAnchor variant="interface" href={link.href}>
+                          {link.text}
+                        </StyledAnchor>
+                      </Box>
                     ))}
                   </FlexBox>
                 </Column>
@@ -106,7 +137,12 @@ export const AppHeaderCatalogDropdown: React.FC<AppHeaderCatalogDropdownProps> =
             </Column>
           ))}
 
-          <Column size={12}>Explore full catalog</Column>
+          <Column size={12} p={16}>
+            {/* TODO: add tracking */}
+            <Anchor fontWeight="title" variant="standard" href="/catalog">
+              Explore full catalog
+            </Anchor>
+          </Column>
         </LayoutGrid>
       </StyledDropdown>
     </>
