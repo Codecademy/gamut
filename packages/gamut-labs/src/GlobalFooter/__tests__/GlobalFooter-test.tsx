@@ -14,18 +14,4 @@ describe('GlobalFooter', () => {
 
     view.getByRole('contentinfo');
   });
-
-  it('shows new footer when showNewFooter is true', () => {
-    const { view } = renderView({ showNewFooter: true });
-
-    view.getByTitle('Codecademy from Skillsoft');
-    expect(view.queryByText('Company')).toBeNull();
-  });
-
-  it('does not show new footer when showNewFooter is false', () => {
-    const { view } = renderView();
-
-    view.getByText('Company');
-    expect(view.queryByTitle('Codecademy from Skillsoft')).toBeNull();
-  });
 });
