@@ -17,7 +17,7 @@ import { Avatar } from '../../../Avatar';
 import { AppHeaderLinkSections } from '../AppHeaderLinkSections';
 import { AppHeaderClickHandler, AppHeaderDropdownItem } from '../types';
 
-const DropdownAnchor = styled(Anchor)(
+export const DropdownAnchor = styled(Anchor)(
   css({
     alignItems: `center`,
     display: `flex`,
@@ -31,7 +31,7 @@ const DropdownAnchor = styled(Anchor)(
   })
 );
 
-const DropdownIcon = styled(ArrowChevronDownFilledIcon)(
+export const DropdownIcon = styled(ArrowChevronDownFilledIcon)(
   css({
     marginLeft: pxRem(5),
     transition: `transform 0.35s ease-out`,
@@ -43,7 +43,7 @@ const DropdownIcon = styled(ArrowChevronDownFilledIcon)(
   })
 );
 
-const StyledText = styled(Text)(
+export const StyledText = styled(Text)(
   css({
     '&::after': {
       display: `block`,
@@ -57,7 +57,7 @@ const StyledText = styled(Text)(
   })
 );
 
-const StyledDropdown = styled(motion.div)(
+export const StyledDropdown = styled(motion.div)(
   css({
     bg: `background`,
     borderColor: `secondary`,
@@ -80,7 +80,7 @@ export type AppHeaderDropdownProps = {
   onKeyDown?: (event: React.KeyboardEvent) => void;
 };
 
-const KEY_CODES = {
+export const KEY_CODES = {
   UP: 'ArrowUp',
   DOWN: 'ArrowDown',
   LEFT: 'ArrowLeft',

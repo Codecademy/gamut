@@ -52,9 +52,7 @@ export type AppHeaderDropdownItem =
   | AppHeaderSimpleDropdownItem
   | AppHeaderProfileDropdownItem;
 
-export type AppHeaderSimpleDropdownItem = AppHeaderBaseItem<
-  'dropdown' | 'catalog-dropdown'
-> & {
+export type AppHeaderSimpleDropdownItem = AppHeaderBaseItem<'dropdown'> & {
   icon?: React.ComponentType<GamutIconProps>;
   popover: AppHeaderLinkItem[];
   text: string;
@@ -75,9 +73,18 @@ export type AppHeaderRenderElementItem = AppHeaderBaseItem<'render-element'> & {
 
 export type AppHeaderCatalogDropdownItem = AppHeaderBaseItem<'catalog-dropdown'> & {
   icon?: React.ComponentType<GamutIconProps>;
-  popover: AppHeaderLinkItem[];
+  popover: AppHeaderCatalogDataItem[];
   text: string;
   trackingTarget: string;
+};
+
+export type AppHeaderCatalogDataItem = {
+  title: string;
+  description: string;
+  data: {
+    linkHeaders?: string[];
+    links: AppHeaderLinkItem[][];
+  };
 };
 
 export type AppHeaderClickHandler<ItemType = AppHeaderItem> = (

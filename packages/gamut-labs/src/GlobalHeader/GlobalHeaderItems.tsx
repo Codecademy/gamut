@@ -14,6 +14,7 @@ import {
 import { ReactNode } from 'react';
 
 import {
+  AppHeaderCatalogDropdownItem,
   AppHeaderFillButtonItem,
   AppHeaderLinkItem,
   AppHeaderLogoItem,
@@ -66,11 +67,11 @@ export const courseCatalog: AppHeaderLinkItem = {
   type: 'link',
 };
 
-export const catalogDropdown: AppHeaderSimpleDropdownItem = {
+export const catalogDropdown: AppHeaderCatalogDropdownItem = {
   icon: BookFlipPageIcon,
   id: 'catalog-dropdown',
   text: 'Catalog DD!',
-  popover: headerCatalogDropdownList(),
+  popover: headerCatalogDropdownList,
   trackingTarget: 'topnav_catalog_dropdown',
   type: 'catalog-dropdown',
 };
