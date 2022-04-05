@@ -8,7 +8,6 @@ import React, { Children, useEffect, useMemo, useRef, useState } from 'react';
 import { Box, FillButton, FlexBox } from '..';
 
 const ScrollContainer = styled(FlexBox)`
-  overflow-x: scroll;
   scroll-snap-type: x mandatory;
   ::-webkit-scrollbar {
     display: none;
@@ -123,6 +122,7 @@ export const HorizontalScrollBar: React.FC<HorizontalScrollBarProps> = ({
         ref={parentContainerRef}
         className={className}
         pr={16}
+        overflowX="scroll"
       >
         <ScrollButton
           zIndex={2}
