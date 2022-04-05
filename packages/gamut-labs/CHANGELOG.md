@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [31.3.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@31.3.0...@codecademy/gamut-labs@31.3.1) (2022-04-05)
+
+
+### Bug Fixes
+
+* **GlobalHeader:** fixing tab issue with GlobalHeader ([#2308](https://github.com/Codecademy/gamut/issues/2308)) ([43b66fd](https://github.com/Codecademy/gamut/commit/43b66fd7866ff619a11c05608d4ebb81e0edd53c))
+
+
+
 ## [31.3.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@31.2.1...@codecademy/gamut-labs@31.3.0) (2022-04-05)
 
 
