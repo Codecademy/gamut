@@ -63,14 +63,16 @@ export const courseCatalog: AppHeaderLinkItem = {
   type: 'link',
 };
 
-export const resourcesDropdown: AppHeaderSimpleDropdownItem = {
+export const resourcesDropdown = (
+  useNewCatalogDropdown?: boolean
+): AppHeaderSimpleDropdownItem => ({
   icon: NotebookIcon,
   id: 'resources',
   text: 'Resources',
-  popover: headerResourcesList,
+  popover: headerResourcesList(useNewCatalogDropdown),
   trackingTarget: 'topnav_resources',
   type: 'dropdown',
-};
+});
 
 export const communityDropdown: AppHeaderSimpleDropdownItem = {
   icon: CommunityIcon,

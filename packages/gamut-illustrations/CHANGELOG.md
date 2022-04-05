@@ -3,6 +3,50 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.26.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.25.0...@codecademy/gamut-illustrations@0.26.0) (2022-03-29)
+
+
+### Features
+
+* **BinaryStairs:** add BinaryStairs illustration for cumulative assessments ([83a7ac7](https://github.com/Codecademy/gamut/commit/83a7ac7e4d41571004b8b1a17e0675380d2fbcee))
+
+
+
+## [0.25.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.24.0...@codecademy/gamut-illustrations@0.25.0) (2022-03-25)
+
+
+### Features
+
+* **MobilePhone:** add mobile phone illustration~ ([146c0fa](https://github.com/Codecademy/gamut/commit/146c0fa98b30a939da7e1cab43e4211671a277fc))
+
+
+
+## [0.24.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.23.0...@codecademy/gamut-illustrations@0.24.0) (2022-03-08)
+
+
+### Features
+
+* **Illustration:** add block illustration ([0a00cfb](https://github.com/Codecademy/gamut/commit/0a00cfbba5526fd910749a25b75c3aaf649fd7a8))
+
+
+
+## [0.23.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.22.2...@codecademy/gamut-illustrations@0.23.0) (2022-03-08)
+
+
+### Features
+
+* **Illustrations:** add Blueprint & Puzzle ([de61f03](https://github.com/Codecademy/gamut/commit/de61f03d0375fe638558fe2743894bd41d970246))
+
+
+
+### [0.22.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.22.1...@codecademy/gamut-illustrations@0.22.2) (2022-02-18)
+
+**Note:** Version bump only for package @codecademy/gamut-illustrations
+
+
+
+
+
 ### [0.22.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.22.0...@codecademy/gamut-illustrations@0.22.1) (2022-01-31)
 
 **Note:** Version bump only for package @codecademy/gamut-illustrations

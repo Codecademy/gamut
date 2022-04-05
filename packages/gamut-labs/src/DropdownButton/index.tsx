@@ -3,7 +3,7 @@ import {
   ArrowChevronDownFilledIcon,
   MiniKebabMenuIcon,
 } from '@codecademy/gamut-icons';
-import { pxRem, styledOptions } from '@codecademy/gamut-styles';
+import { css, pxRem, styledOptions } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React, { useRef, useState } from 'react';
 
@@ -18,8 +18,14 @@ const DownArrow = styled(ArrowChevronDownFilledIcon, styledOptions)<{
   ${({ isOpen }) => isOpen && 'transform: rotate(-180deg)'};
 `;
 
+const HorizontalKebabIcon = styled(MiniKebabMenuIcon)(
+  css({
+    transform: 'rotate(90deg)',
+  })
+);
+
 export type DropdownButtonProps = {
-  buttonType?: 'fill' | 'stroke' | 'kebab';
+  buttonType?: 'fill' | 'stroke' | 'kebab' | 'horizontalKebab';
   dropdownItems: DropdownItem[];
   align?: 'left' | 'right';
   onClick?: (event: React.MouseEvent) => void;
@@ -81,6 +87,17 @@ export const DropdownButton: React.FC<DropdownButtonProps> = ({
         />
       );
       break;
+    case 'horizontalKebab':
+      clickTarget = (
+        <IconButton
+          aria-label="More options"
+          icon={HorizontalKebabIcon}
+          size="small"
+          variant="secondary"
+          onClick={handleClick}
+          data-testid="dropdown-horizontal-kebab-button"
+        />
+      );
   }
 
   return (

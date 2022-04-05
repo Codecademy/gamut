@@ -1,3 +1,4 @@
+/* eslint-disable gamut/no-css-standalone */
 import 'katex/dist/katex.css';
 
 import cx from 'classnames';

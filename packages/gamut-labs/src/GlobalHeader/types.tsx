@@ -21,8 +21,6 @@ type BaseHeader = {
   className?: string;
   hidePricing?: boolean;
   search: AppHeaderSearch;
-  /** initializes Header with search menu expanded open */
-  searchInitiallyOpen?: boolean;
 };
 
 export type User = {
@@ -36,6 +34,8 @@ export type User = {
   proCheckoutUrl?: string;
   showProUpgrade?: boolean;
   showReferrals?: boolean;
+  // TODO: DISC-547 - remove after feature flag test for catalog is complete
+  useNewCatalogDropdown?: boolean;
 };
 
 type LoggedInHeader = BaseHeader & {
@@ -51,6 +51,8 @@ export type AnonHeader = BaseHeader & {
   redirectParam?: string;
   type: 'anon';
   variant?: AnonHeaderVariant;
+  // TODO: DISC-547 - remove after feature flag test for catalog is complete
+  user?: User;
 };
 
 export type FreeHeader = LoggedInHeader & {

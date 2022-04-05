@@ -20,6 +20,7 @@ import {
 import { Table } from './libs/overrides/Table';
 import { createPreprocessingInstructions } from './libs/preprocessing';
 import { defaultSanitizationConfig } from './libs/sanitizationConfig';
+// eslint-disable-next-line gamut/no-css-standalone
 import styles from './styles/index.module.scss';
 
 const htmlToReactParser = new HtmlToReact.Parser({
@@ -64,7 +65,7 @@ export class Markdown extends PureComponent<MarkdownProps> {
       overrides: userOverrides = {},
       skipDefaultOverrides = {},
       inline = false,
-      headerIds,
+      headerIds = true,
       onAnchorClick,
     } = this.props;
 

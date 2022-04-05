@@ -6,6 +6,7 @@ const renderView = setupRtl(GlobalPage, {
   footer: {
     onClick: jest.fn(),
     userGeo: 'US',
+    showNewFooter: false,
   },
   header: {
     action: jest.fn(),

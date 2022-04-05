@@ -36,6 +36,7 @@ export type AppHeaderLinkItem = AppHeaderBaseHrefItem<'link'> & {
   text: string;
   topSeparator?: boolean;
   badge?: React.ReactElement<BadgeProps>;
+  hideWithNewCatalogDropdown?: boolean;
 };
 
 export type AppHeaderTextButtonItem = AppHeaderBaseHrefItem<'text-button'> & {

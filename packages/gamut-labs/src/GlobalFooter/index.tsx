@@ -1,4 +1,5 @@
 import { ContentContainer } from '@codecademy/gamut';
+import { themed } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React from 'react';
 
@@ -25,13 +26,21 @@ export type GlobalFooterProps = {
   onMadeInClick?: (text: string) => void;
 
   /**
+   * If new footer should be shown
+   */
+  showNewFooter: boolean;
+
+  /**
    * Geographic region of the user viewing the footer, such as "IN" or "US".
    */
   userGeo: string;
 };
 
+// To be deleted after footer launches - using React.Context here will be the easiest cleanup.
+export const FooterFFContext = React.createContext({ showNewFooter: false });
+
 const FooterContainer = styled.footer`
-  border-top: 1px solid ${({ theme }) => theme.colors.navy};
+  border-top: 1px solid ${themed('colors.navy')};
 
   @media print {
     display: none;
@@ -43,18 +52,21 @@ export const GlobalFooter: React.FC<GlobalFooterProps> = ({
   hidePricing,
   onClick,
   onMadeInClick,
+  showNewFooter,
   userGeo,
 }) => {
   return (
-    <FooterContainer className={className} role="contentinfo">
-      <ContentContainer>
-        <FooterNavLinks
-          hidePricing={hidePricing}
-          onClick={onClick}
-          userGeo={userGeo}
-        />
-      </ContentContainer>
-      <FooterLegal onClick={onClick} onMadeInClick={onMadeInClick} />
-    </FooterContainer>
+    <FooterFFContext.Provider value={{ showNewFooter }}>
+      <FooterContainer className={className} role="contentinfo">
+        <ContentContainer>
+          <FooterNavLinks
+            hidePricing={hidePricing}
+            onClick={onClick}
+            userGeo={userGeo}
+          />
+        </ContentContainer>
+        <FooterLegal onClick={onClick} onMadeInClick={onMadeInClick} />
+      </FooterContainer>
+    </FooterFFContext.Provider>
   );
 };

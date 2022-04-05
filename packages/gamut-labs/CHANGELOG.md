@@ -3,6 +3,296 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [31.3.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@31.2.1...@codecademy/gamut-labs@31.3.0) (2022-04-05)
+
+
+### Features
+
+* **Footer:** new footer ([#2302](https://github.com/Codecademy/gamut/issues/2302)) ([6702a51](https://github.com/Codecademy/gamut/commit/6702a511708c5f21ca65e6d1febc5eb1bd2364a2))
+
+
+
+### [31.2.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@31.2.0...@codecademy/gamut-labs@31.2.1) (2022-04-04)
+
+
+### Reverts
+
+* Revert "feat(FromLogo): add logo" (#2306) ([6d16bdc](https://github.com/Codecademy/gamut/commit/6d16bdcb42b59de553398359393875d2c50b1f22)), closes [#2306](https://github.com/Codecademy/gamut/issues/2306)
+
+
+
+## [31.2.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@31.1.0...@codecademy/gamut-labs@31.2.0) (2022-04-01)
+
+
+### Features
+
+* **FromLogo:** add logo ([c48a054](https://github.com/Codecademy/gamut/commit/c48a054d2fe87f67542db1365caaf79d9a6cbc2c))
+
+
+
+## [31.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@31.0.3...@codecademy/gamut-labs@31.1.0) (2022-03-31)
+
+
+### Features
+
+* **AppHeader:** hide projects and challenges in nav variant ([b1427ec](https://github.com/Codecademy/gamut/commit/b1427ec199e86cf751a8743bfc3441e0a1b670b7))
+
+
+
+### [31.0.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@31.0.2...@codecademy/gamut-labs@31.0.3) (2022-03-29)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [31.0.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@31.0.1...@codecademy/gamut-labs@31.0.2) (2022-03-28)
+
+
+### Bug Fixes
+
+* **AppHeader:** clean up search bar from experiment ([74cea44](https://github.com/Codecademy/gamut/commit/74cea443c0eb08a65f73809d0f42cdddca10f9a2))
+
+
+
+### [31.0.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@31.0.0...@codecademy/gamut-labs@31.0.1) (2022-03-25)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+## [31.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@30.6.1...@codecademy/gamut-labs@31.0.0) (2022-03-25)
+
+
+### ⚠ BREAKING CHANGES
+
+* **eslint-plugin-gamut:** gamut eslint-pkg + add no .scss / themed rules
+
+### Features
+
+* **eslint-plugin-gamut:** gamut eslint-pkg + add no .scss / themed rules ([4be6d9d](https://github.com/Codecademy/gamut/commit/4be6d9ddfbebb8b588f671c5f665d94a5e429384))
+
+
+
+### [30.6.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@30.6.0...@codecademy/gamut-labs@30.6.1) (2022-03-24)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+## [30.6.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@30.5.0...@codecademy/gamut-labs@30.6.0) (2022-03-24)
+
+
+### Features
+
+* **DropdownButton:** add horizontal kebab ([7ea2157](https://github.com/Codecademy/gamut/commit/7ea21570169a30e4c438b3d72b59d9c131ff382f))
+
+
+
+## [30.5.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@30.4.1...@codecademy/gamut-labs@30.5.0) (2022-03-23)
+
+
+### Features
+
+* **CurriculumCard:** Allowing dynamic difficulty spans ([3c5c9b3](https://github.com/Codecademy/gamut/commit/3c5c9b32b79683406e51f4a4f563643b13172368))
+
+
+
+### [30.4.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@30.4.0...@codecademy/gamut-labs@30.4.1) (2022-03-22)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+## [30.4.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@30.3.1...@codecademy/gamut-labs@30.4.0) (2022-03-22)
+
+
+### Features
+
+* **GlobalHeader:** Added prop for upcoming feature flag test for Catalog ([c9fdd0e](https://github.com/Codecademy/gamut/commit/c9fdd0ea6fc00ccc19e97d887f7080f4f1b0dca6)), closes [/github.com/Codecademy/gamut/blob/main/packages/gamut-labs/src/GlobalHeader/types.tsx#L28-L39](https://github.com/Codecademy//github.com/Codecademy/gamut/blob/main/packages/gamut-labs/src/GlobalHeader/types.tsx/issues/L28-L39)
+
+
+
+### [30.3.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@30.3.0...@codecademy/gamut-labs@30.3.1) (2022-03-21)
+
+
+### Bug Fixes
+
+* **CurriculumCard:** made career goal checking less brittle ([d57136c](https://github.com/Codecademy/gamut/commit/d57136c927ba7d6bc78e23288bc55fd60f59b9b0))
+
+
+
+## [30.3.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@30.2.6...@codecademy/gamut-labs@30.3.0) (2022-03-17)
+
+
+### Features
+
+* **CurriculumCard:** added new career path card styles ([3efd3ac](https://github.com/Codecademy/gamut/commit/3efd3acd75f4305dce9bd275ee7d9a7d50fa5e9e))
+
+
+
+### [30.2.6](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@30.2.5...@codecademy/gamut-labs@30.2.6) (2022-03-15)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [30.2.5](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@30.2.4...@codecademy/gamut-labs@30.2.5) (2022-03-15)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [30.2.4](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@30.2.3...@codecademy/gamut-labs@30.2.4) (2022-03-11)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [30.2.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@30.2.2...@codecademy/gamut-labs@30.2.3) (2022-03-10)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [30.2.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@30.2.1...@codecademy/gamut-labs@30.2.2) (2022-03-10)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [30.2.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@30.2.0...@codecademy/gamut-labs@30.2.1) (2022-03-10)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+## [30.2.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@30.1.2...@codecademy/gamut-labs@30.2.0) (2022-03-09)
+
+
+### Features
+
+* **PauseableImage:** :sparkles: Creating new pausable image component ([00c233d](https://github.com/Codecademy/gamut/commit/00c233d56498b819546b41c4dfba872618283044))
+
+
+
+### [30.1.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@30.1.1...@codecademy/gamut-labs@30.1.2) (2022-03-08)
+
+
+### Bug Fixes
+
+* **LayoutMenu:** overflow ([1ab3650](https://github.com/Codecademy/gamut/commit/1ab3650442c233360cb30e9b71becb1b2541e90e))
+
+
+
+### [30.1.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@30.1.0...@codecademy/gamut-labs@30.1.1) (2022-03-08)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+## [30.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@30.0.2...@codecademy/gamut-labs@30.1.0) (2022-03-08)
+
+
+### Features
+
+* **ErrorContents:** update copy ([f7a286c](https://github.com/Codecademy/gamut/commit/f7a286c6b0805cc1106fb271047aabeb1a35b336))
+
+
+
+### [30.0.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@30.0.1...@codecademy/gamut-labs@30.0.2) (2022-03-08)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [30.0.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@30.0.0...@codecademy/gamut-labs@30.0.1) (2022-03-07)
+
+
+### Bug Fixes
+
+* **AvatarChooser:** update to proper rhf v7 syntax ([c8d3f9a](https://github.com/Codecademy/gamut/commit/c8d3f9a1094d5848e0b3c92c15067dd7b9615336))
+
+
+
+## [30.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@29.3.8...@codecademy/gamut-labs@30.0.0) (2022-03-03)
+
+
+### ⚠ BREAKING CHANGES
+
+* **ConnectedForm:** update react-hook-form to v7
+
+### Features
+
+* **ConnectedForm:** update react-hook-form to v7 ([b7671a6](https://github.com/Codecademy/gamut/commit/b7671a6c4fbf295c58e50c95179574b5ef1c9f6c))
+
+
+
+### [29.3.8](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@29.3.7...@codecademy/gamut-labs@29.3.8) (2022-02-28)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [29.3.7](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@29.3.6...@codecademy/gamut-labs@29.3.7) (2022-02-28)
+
+
+### Bug Fixes
+
+* **InfoCard:** Fix placement of footer items ([#2268](https://github.com/Codecademy/gamut/issues/2268)) ([49247b3](https://github.com/Codecademy/gamut/commit/49247b305ddc6a3b7f3f39804d52e163aee1bea8))
+
+
+
+### [29.3.6](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@29.3.5...@codecademy/gamut-labs@29.3.6) (2022-02-25)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [29.3.5](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@29.3.4...@codecademy/gamut-labs@29.3.5) (2022-02-23)
+
+
+### Bug Fixes
+
+* Icons in Curriculum Card not center aligning with Text ([423a8f6](https://github.com/Codecademy/gamut/commit/423a8f604b0397800f5a61b3e0be0c18a04c5189))
+
+
+
+### [29.3.4](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@29.3.3...@codecademy/gamut-labs@29.3.4) (2022-02-18)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
 ### [29.3.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@29.3.2...@codecademy/gamut-labs@29.3.3) (2022-02-16)
 
 **Note:** Version bump only for package @codecademy/gamut-labs
