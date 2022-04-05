@@ -231,7 +231,7 @@ export const headerCatalogDropdownList: AppHeaderCatalogDataItem[] = [
   },
   {
     title: 'Practice tools',
-    description: 'Get real-world practice and apply what you&apos;re learning.',
+    description: `Get real-world practice and apply what you're learning.`,
     data: {
       links: [
         [

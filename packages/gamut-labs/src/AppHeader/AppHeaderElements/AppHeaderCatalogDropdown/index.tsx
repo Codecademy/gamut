@@ -1,6 +1,8 @@
-import { Box, FlexBox } from '@codecademy/gamut';
+import { Box, Column, FlexBox, LayoutGrid } from '@codecademy/gamut';
+import { pxRem } from '@codecademy/gamut-styles';
 import cx from 'classnames';
 import React, { useRef, useState } from 'react';
+import { useIsomorphicLayoutEffect } from 'react-use';
 
 import {
   DropdownAnchor,
@@ -19,10 +21,17 @@ export const AppHeaderCatalogDropdown: React.FC<AppHeaderCatalogDropdownProps> =
   action,
   item,
 }) => {
-  const boxRef = useRef<HTMLElement>(null);
+  const containerRef = useRef<HTMLDivElement | null>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
-  const [dimensions, setDimensions] = useState({ height: 0, width: 0 });
+  const [height, setHeight] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
+
+  useIsomorphicLayoutEffect(() => {
+    if (containerRef.current) {
+      const { height } = containerRef.current.getBoundingClientRect();
+      setHeight(height);
+    }
+  }, [containerRef, isOpen]);
 
   const toggleIsOpen = () => setIsOpen((prev) => !prev);
 
@@ -32,6 +41,8 @@ export const AppHeaderCatalogDropdown: React.FC<AppHeaderCatalogDropdownProps> =
       action(event, item);
     }
   };
+
+  console.log('item: ', item.popover);
 
   return (
     <>
@@ -60,21 +71,31 @@ export const AppHeaderCatalogDropdown: React.FC<AppHeaderCatalogDropdownProps> =
       <StyledDropdown
         style={{
           top: '2.25rem',
-          width: '36.75',
+          width: pxRem(586),
         }}
         initial={{ borderWidth: 0, height: 0 }}
         animate={{
           borderWidth: isOpen ? 1 : 0,
-          height: isOpen ? dimensions.height : 0,
+          height: isOpen ? height : 0,
         }}
         transition={{ duration: 0.175 }}
         aria-hidden={!isOpen}
       >
-        <FlexBox ref={boxRef} flexDirection="column">
-          <Box>Box 1</Box>
-          <Box>Box 2</Box>
-          <Box>Box 3</Box>
-          <Box>Box 4</Box>
+        <FlexBox ref={containerRef} flexDirection="column">
+          <Box>
+            <LayoutGrid columnGap={8}>
+              {item.popover.map((rowData) => (
+                <Box>
+                  <Column size={4}>
+                    <Box>{rowData.title}</Box>
+                    <Box>{rowData.description}</Box>
+                  </Column>
+                  <Column size={8}>links will go here</Column>
+                </Box>
+              ))}
+            </LayoutGrid>
+          </Box>
+          <Box>Button</Box>
         </FlexBox>
       </StyledDropdown>
     </>
