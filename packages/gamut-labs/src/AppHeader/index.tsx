@@ -72,13 +72,7 @@ export const mapItemToElement = (
         <AppHeaderDropdown onKeyDown={onKeyDown} action={action} item={item} />
       );
     case 'catalog-dropdown':
-      return (
-        <AppHeaderCatalogDropdown
-          onKeyDown={onKeyDown}
-          action={action}
-          item={item}
-        />
-      );
+      return <AppHeaderCatalogDropdown action={action} item={item} />;
     case 'render-element':
       return item.renderElement();
     case 'text-button':
