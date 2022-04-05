@@ -70,7 +70,7 @@ export const courseCatalog: AppHeaderLinkItem = {
 export const catalogDropdown: AppHeaderCatalogDropdownItem = {
   icon: BookFlipPageIcon,
   id: 'catalog-dropdown',
-  text: 'Catalog DD!',
+  text: 'Catalog',
   popover: headerCatalogDropdownList,
   trackingTarget: 'topnav_catalog_dropdown',
   type: 'catalog-dropdown',

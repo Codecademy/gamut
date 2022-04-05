@@ -5,6 +5,7 @@ import {
   FlexBox,
   LayoutGrid,
   Text,
+  TextButton,
 } from '@codecademy/gamut';
 import { pxRem, theme } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
@@ -44,6 +45,9 @@ const StyledAnchor = styled(Anchor)`
   line-height: ${pxRem(32)};
 `;
 
+const StyledColumn = styled(Column)`
+  border-bottom: ${theme.borders[1]};
+`;
 export const AppHeaderCatalogDropdown: React.FC<AppHeaderCatalogDropdownProps> = ({
   action,
   item,
@@ -95,7 +99,7 @@ export const AppHeaderCatalogDropdown: React.FC<AppHeaderCatalogDropdownProps> =
       </DropdownAnchor>
       <StyledDropdown
         style={{
-          top: '2.25rem',
+          top: '2.50rem',
           width: pxRem(586),
         }}
         initial={{ borderWidth: 0, height: 0 }}
@@ -108,7 +112,7 @@ export const AppHeaderCatalogDropdown: React.FC<AppHeaderCatalogDropdownProps> =
       >
         <LayoutGrid ref={containerRef}>
           {item.popover.map((section) => (
-            <Column size={12}>
+            <StyledColumn size={12}>
               <LayoutGrid>
                 <Column size={4}>
                   <Box background={theme.colors['gray-100']} p={16}>
@@ -134,14 +138,14 @@ export const AppHeaderCatalogDropdown: React.FC<AppHeaderCatalogDropdownProps> =
                   </FlexBox>
                 </Column>
               </LayoutGrid>
-            </Column>
+            </StyledColumn>
           ))}
 
-          <Column size={12} p={16}>
+          <Column size={12} py={12}>
             {/* TODO: add tracking */}
-            <Anchor fontWeight="title" variant="standard" href="/catalog">
+            <TextButton href="/catalog" width="min-content">
               Explore full catalog
-            </Anchor>
+            </TextButton>
           </Column>
         </LayoutGrid>
       </StyledDropdown>
