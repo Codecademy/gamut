@@ -1,5 +1,5 @@
-import { Box, Column, FlexBox, LayoutGrid } from '@codecademy/gamut';
-import { pxRem } from '@codecademy/gamut-styles';
+import { Box, Column, LayoutGrid } from '@codecademy/gamut';
+import { pxRem, theme } from '@codecademy/gamut-styles';
 import cx from 'classnames';
 import React, { useRef, useState } from 'react';
 import { useIsomorphicLayoutEffect } from 'react-use';
@@ -81,22 +81,23 @@ export const AppHeaderCatalogDropdown: React.FC<AppHeaderCatalogDropdownProps> =
         transition={{ duration: 0.175 }}
         aria-hidden={!isOpen}
       >
-        <FlexBox ref={containerRef} flexDirection="column">
-          <Box>
-            <LayoutGrid columnGap={8}>
-              {item.popover.map((rowData) => (
-                <Box>
-                  <Column size={4}>
+        <LayoutGrid ref={containerRef}>
+          {item.popover.map((rowData) => (
+            <Column size={12}>
+              <LayoutGrid>
+                <Column size={4}>
+                  <Box background={theme.colors['gray-100']}>
                     <Box>{rowData.title}</Box>
                     <Box>{rowData.description}</Box>
-                  </Column>
-                  <Column size={8}>links will go here</Column>
-                </Box>
-              ))}
-            </LayoutGrid>
-          </Box>
-          <Box>Button</Box>
-        </FlexBox>
+                  </Box>
+                </Column>
+                <Column size={8}>links will go here</Column>
+              </LayoutGrid>
+            </Column>
+          ))}
+
+          <Column size={12}>Button</Column>
+        </LayoutGrid>
       </StyledDropdown>
     </>
   );
