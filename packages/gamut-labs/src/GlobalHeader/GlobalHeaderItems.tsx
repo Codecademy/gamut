@@ -67,14 +67,16 @@ export const courseCatalog: AppHeaderLinkItem = {
   type: 'link',
 };
 
-export const catalogDropdown: AppHeaderCatalogDropdownItem = {
+export const catalogDropdown = (
+  hideCareerPaths?: boolean
+): AppHeaderCatalogDropdownItem => ({
   icon: BookFlipPageIcon,
   id: 'catalog-dropdown',
   text: 'Catalog',
-  popover: headerCatalogDropdownList,
+  popover: headerCatalogDropdownList(hideCareerPaths),
   trackingTarget: 'topnav_catalog_dropdown',
   type: 'catalog-dropdown',
-};
+});
 
 export const resourcesDropdown = (
   useNewCatalogDropdown?: boolean

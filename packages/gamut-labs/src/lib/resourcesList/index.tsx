@@ -119,10 +119,11 @@ export const headerResourcesList = (
 };
 
 // TODO: add tracking
-export const headerCatalogDropdownList: AppHeaderCatalogDataItem[] = [
+const çatalogDropdownList: AppHeaderCatalogDataItem[] = [
   {
     title: 'Top career paths',
     description: 'Land an entry-level role in tech with step-by-step guidance.',
+    requiresCareerAccess: true,
     links: [
       {
         id: 'full-stack-engineer-career-path',
@@ -248,6 +249,14 @@ export const headerCatalogDropdownList: AppHeaderCatalogDataItem[] = [
     ],
   },
 ];
+
+export const headerCatalogDropdownList = (
+  hideCareerPaths?: boolean
+): AppHeaderCatalogDataItem[] => {
+  return hideCareerPaths
+    ? çatalogDropdownList.filter((item) => !item.requiresCareerAccess)
+    : çatalogDropdownList;
+};
 
 export const footerResourcesList: FooterResourceList[] = resourcesList.map(
   ({ id, href, footerTrackingTarget, text, newTab }) => ({

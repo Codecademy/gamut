@@ -82,6 +82,7 @@ export type AppHeaderCatalogDataItem = {
   title: string;
   description: string;
   links: AppHeaderLinkItem[];
+  requiresCareerAccess?: boolean;
 };
 
 export type AppHeaderClickHandler<ItemType = AppHeaderItem> = (
