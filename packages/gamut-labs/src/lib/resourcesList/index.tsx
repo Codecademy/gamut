@@ -118,7 +118,6 @@ export const headerResourcesList = (
   );
 };
 
-// TODO: add tracking
 export const headerCatalogDropdownList: AppHeaderCatalogDataItem[] = [
   {
     title: 'Top career paths',

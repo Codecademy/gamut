@@ -10,7 +10,7 @@ import {
 import { pxRem, theme } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import cx from 'classnames';
-import React, { useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useIsomorphicLayoutEffect } from 'react-use';
 
 import {
@@ -66,12 +66,9 @@ export const AppHeaderCatalogDropdown: React.FC<AppHeaderCatalogDropdownProps> =
   const [height, setHeight] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
 
-  useIsomorphicLayoutEffect(() => {
-    if (containerRef.current) {
-      const { height } = containerRef.current.getBoundingClientRect();
-      setHeight(height);
-    }
-  }, [containerRef, isOpen]);
+  const focusButton = () => {
+    buttonRef?.current?.focus();
+  };
 
   const toggleIsOpen = () => setIsOpen((prev) => !prev);
 
@@ -81,6 +78,41 @@ export const AppHeaderCatalogDropdown: React.FC<AppHeaderCatalogDropdownProps> =
       action(event, item);
     }
   };
+
+  const handleClose = useCallback(() => {
+    setIsOpen(false);
+    focusButton();
+  }, []);
+
+  useIsomorphicLayoutEffect(() => {
+    if (containerRef.current) {
+      const { height } = containerRef.current.getBoundingClientRect();
+      setHeight(height);
+    }
+  }, [containerRef, isOpen]);
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent | Event) {
+      const container = containerRef?.current;
+      const button = buttonRef?.current;
+      if (
+        isOpen &&
+        container &&
+        !container.contains(event.target as Node) &&
+        button &&
+        !button.contains(event.target as Node)
+      ) {
+        handleClose();
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener('blur', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('blur', handleClickOutside);
+    };
+  }, [containerRef, handleClose, isOpen]);
 
   return (
     <>

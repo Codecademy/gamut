@@ -34,7 +34,7 @@ export type AppHeaderDropdownProps = {
   onKeyDown?: (event: React.KeyboardEvent) => void;
 };
 
-export const KEY_CODES = {
+const KEY_CODES = {
   UP: 'ArrowUp',
   DOWN: 'ArrowDown',
   LEFT: 'ArrowLeft',
