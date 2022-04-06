@@ -35,7 +35,7 @@ const anonHeaderItems = (
   const leftItems: AppHeaderItem[] = [
     logo,
     ...(user?.useNewCatalogDropdown
-      ? [catalogDropdown(user.hideCareerPaths)]
+      ? [catalogDropdown(user?.hideCareerPaths)]
       : [courseCatalog]),
     resourcesDropdown(user?.useNewCatalogDropdown),
     communityDropdown,
@@ -75,7 +75,7 @@ const anonMobileHeaderItems = (
 
   const mainMenuItems: AppHeaderItem[] = [
     ...(user?.useNewCatalogDropdown
-      ? [catalogDropdown(user.hideCareerPaths)]
+      ? [catalogDropdown(user?.hideCareerPaths)]
       : [courseCatalog]),
     resourcesDropdown(user?.useNewCatalogDropdown),
     communityDropdown,
@@ -154,7 +154,7 @@ export const freeHeaderItems = (
   const leftItems: AppHeaderItem[] = [
     logo,
     myHome,
-    ...(user?.useNewCatalogDropdown
+    ...(user.useNewCatalogDropdown
       ? [catalogDropdown(user.hideCareerPaths)]
       : [courseCatalog]),
     resourcesDropdown(user.useNewCatalogDropdown),
@@ -188,7 +188,7 @@ export const freeMobileHeaderItems = (
   const leftItems: AppHeaderItem[] = [logo];
   const mainMenuItems: AppHeaderItem[] = [
     myHome,
-    ...(user?.useNewCatalogDropdown
+    ...(user.useNewCatalogDropdown
       ? [catalogDropdown(user.hideCareerPaths)]
       : [courseCatalog]),
     resourcesDropdown(user.useNewCatalogDropdown),
@@ -215,7 +215,7 @@ export const proHeaderItems = (
   const leftItems: AppHeaderItem[] = [
     proLogo,
     myHome,
-    ...(user?.useNewCatalogDropdown
+    ...(user.useNewCatalogDropdown
       ? [catalogDropdown(user.hideCareerPaths)]
       : [courseCatalog]),
     resourcesDropdown(user.useNewCatalogDropdown),
@@ -245,7 +245,7 @@ export const proMobileHeaderItems = (
 
   const mainMenuItems: AppHeaderItem[] = [
     myHome,
-    ...(user?.useNewCatalogDropdown
+    ...(user.useNewCatalogDropdown
       ? [catalogDropdown(user.hideCareerPaths)]
       : [courseCatalog]),
     resourcesDropdown(user.useNewCatalogDropdown),
