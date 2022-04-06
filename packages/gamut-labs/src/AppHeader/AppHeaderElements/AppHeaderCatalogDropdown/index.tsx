@@ -130,7 +130,10 @@ export const AppHeaderCatalogDropdown: React.FC<AppHeaderCatalogDropdownProps> =
                 </Column>
                 <Column size={8} p={16}>
                   <FlexBox
-                    maxHeight="8rem"
+                    maxHeight={
+                      // This is so columns without subheaders stay grouped in threes
+                      section.title !== 'Popular courses' ? '7rem' : '8rem'
+                    }
                     flexDirection="column"
                     flexWrap="wrap"
                   >
