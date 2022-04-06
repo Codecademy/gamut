@@ -39,7 +39,7 @@ function addMoreCourses(newCourses = []) {
   for (const c of courseData) {
     newCourses.push({
       id: uniqueId(c.id),
-      ...courseData
+      ...c
     });
   }
   if (newCourses.length > 1000) {
