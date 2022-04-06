@@ -4,18 +4,12 @@ import { css } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React from 'react';
 
-import {
-  AppHeaderCatalogDropdownItem,
-  AppHeaderDropdownItem,
-} from '../../AppHeader/AppHeaderElements/types';
+import { AppHeaderDropdownItem } from '../../AppHeader/AppHeaderElements/types';
 import { Avatar } from '../../Avatar';
 
 export type AppHeaderSubMenuTargetProps = {
-  item: AppHeaderDropdownItem | AppHeaderCatalogDropdownItem;
-  openSubMenu: (
-    event: React.MouseEvent,
-    item: AppHeaderDropdownItem | AppHeaderCatalogDropdownItem
-  ) => void;
+  item: AppHeaderDropdownItem;
+  openSubMenu: (event: React.MouseEvent, item: AppHeaderDropdownItem) => void;
 };
 
 const StyledText = styled(Text)(

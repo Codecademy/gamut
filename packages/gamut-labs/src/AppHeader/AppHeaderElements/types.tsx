@@ -50,7 +50,8 @@ export type AppHeaderFillButtonItem = AppHeaderBaseHrefItem<'fill-button'> & {
 
 export type AppHeaderDropdownItem =
   | AppHeaderSimpleDropdownItem
-  | AppHeaderProfileDropdownItem;
+  | AppHeaderProfileDropdownItem
+  | AppHeaderCatalogDropdownItem;
 
 export type AppHeaderSimpleDropdownItem = AppHeaderBaseItem<'dropdown'> & {
   icon?: React.ComponentType<GamutIconProps>;
