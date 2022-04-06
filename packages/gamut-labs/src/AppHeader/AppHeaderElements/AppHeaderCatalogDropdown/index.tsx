@@ -18,7 +18,7 @@ import {
   DropdownIcon,
   StyledDropdown,
   StyledText,
-} from '../AppHeaderDropdown';
+} from '../../shared';
 import { AppHeaderCatalogDropdownItem, AppHeaderClickHandler } from '../types';
 
 type AppHeaderCatalogDropdownProps = {
@@ -45,6 +45,7 @@ const StyledSubheader = styled(Text)`
   font-weight: ${theme.fontWeight.title};
   color: ${theme.colors['navy-500']};
   line-height: ${pxRem(24)};
+  margin-bottom: ${pxRem(2)};
 `;
 
 const StyledAnchor = styled(Anchor)`
