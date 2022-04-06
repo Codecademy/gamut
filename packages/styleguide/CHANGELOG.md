@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [56.2.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@56.2.0...@codecademy/styleguide@56.2.1) (2022-04-05)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [56.2.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@56.1.2...@codecademy/styleguide@56.2.0) (2022-04-05)
+
+
+### Features
+
+* **Footer:** new footer ([#2302](https://github.com/Codecademy/gamut/issues/2302)) ([6702a51](https://github.com/Codecademy/gamut/commit/6702a511708c5f21ca65e6d1febc5eb1bd2364a2))
+
+
+
+### [56.1.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@56.1.1...@codecademy/styleguide@56.1.2) (2022-04-04)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
 ### [56.1.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@56.1.0...@codecademy/styleguide@56.1.1) (2022-04-01)
 
 **Note:** Version bump only for package @codecademy/styleguide

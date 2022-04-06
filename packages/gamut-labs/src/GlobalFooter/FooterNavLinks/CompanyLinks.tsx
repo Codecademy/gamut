@@ -2,7 +2,9 @@ import { Anchor, Box, BoxProps, GridBox } from '@codecademy/gamut';
 import styled from '@emotion/styled';
 import React from 'react';
 
+import { LogoFromSkillsoft } from '../..';
 import { footerResourcesList } from '../../lib/resourcesList';
+import { FooterFFContext } from '..';
 import { FooterHeading } from '../FooterHeading';
 import {
   FooterLinkItem,
@@ -92,7 +94,19 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
 
   const company = (
     <Box>
-      <FooterHeading>Company</FooterHeading>
+      <FooterHeading>
+        <FooterFFContext.Consumer>
+          {({ showNewFooter }) =>
+            showNewFooter ? (
+              <Box>
+                <LogoFromSkillsoft height={40} />
+              </Box>
+            ) : (
+              'Company'
+            )
+          }
+        </FooterFFContext.Consumer>
+      </FooterHeading>
       <FooterLinkItems>
         <FooterLinkItem>
           <Anchor
