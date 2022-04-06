@@ -35,7 +35,7 @@ const courseData = [
   },
 ];
 
-function addMoreCourses = (newCourses = []) => {
+function addMoreCourses(newCourses = []) {
   for (const c of courseData) {
     newCourses.push({
       id: uniqueId(c.id),
