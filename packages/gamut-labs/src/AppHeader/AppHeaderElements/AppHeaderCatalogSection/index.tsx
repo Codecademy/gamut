@@ -58,7 +58,7 @@ export const AppHeaderCatalogSection = React.forwardRef<
 >(({ action, item }, ref) => (
   <LayoutGrid ref={ref}>
     {item.popover.map((section) => (
-      <StyledColumn size={12}>
+      <StyledColumn size={12} key={item.id}>
         <LayoutGrid>
           <Column size={4}>
             <Box background={theme.colors['gray-100']} p={16}>
@@ -79,7 +79,7 @@ export const AppHeaderCatalogSection = React.forwardRef<
                 link.type === 'subheader' ? (
                   <StyledSubheader>{link.text}</StyledSubheader>
                 ) : (
-                  <Box minWidth="200px">
+                  <Box minWidth="200px" key={item.id}>
                     <StyledLinkAnchor
                       variant="interface"
                       href={link.href}
