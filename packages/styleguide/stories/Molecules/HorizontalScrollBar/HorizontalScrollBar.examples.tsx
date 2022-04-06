@@ -1,5 +1,7 @@
 import { Box, ContentContainer, HorizontalScrollBar } from '@codecademy/gamut';
 import { CurriculumCard, CurriculumCardProps } from '@codecademy/gamut-labs';
+
+import { uniqueId } from 'lodash';
 import React from 'react';
 
 const courseData = [
@@ -32,6 +34,22 @@ const courseData = [
     text: 'course',
   },
 ];
+
+function addMoreCourses = (newCourses = []) => {
+  for (const c of courseData) {
+    newCourses.push({
+      id: uniqueId(c.id),
+      ...courseData
+    });
+  }
+  if (newCourses.length > 1000) {
+    courseData = [...courseData, ...newCourses];
+    return;
+  }
+  addMoreCourses(newCourses);
+}
+
+addMoreCourses();
 
 export const HorizontalScrollBarExample = () => {
   return (
