@@ -1,4 +1,4 @@
-import { AppBar, Box, FillButton, TextButton } from '@codecademy/gamut';
+import { AppBar, FillButton, TextButton } from '@codecademy/gamut';
 import { css } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React, { ReactNode, useEffect, useMemo, useRef, useState } from 'react';
