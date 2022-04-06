@@ -23,10 +23,8 @@ import {
   AppHeaderSimpleDropdownItem,
   AppHeaderTextButtonItem,
 } from '../AppHeader/AppHeaderElements/types';
-import {
-  headerCatalogDropdownList,
-  headerResourcesList,
-} from '../lib/resourcesList';
+import { catalogList } from '../lib/catalogList';
+import { headerResourcesList } from '../lib/resourcesList';
 import { User } from './types';
 
 export const logo: AppHeaderLogoItem = {
@@ -71,7 +69,7 @@ export const catalogDropdown: AppHeaderCatalogDropdownItem = {
   icon: BookFlipPageIcon,
   id: 'catalog-dropdown',
   text: 'Catalog',
-  popover: headerCatalogDropdownList,
+  popover: catalogList,
   trackingTarget: 'topnav_catalog_dropdown',
   type: 'catalog-dropdown',
 };
