@@ -47,7 +47,7 @@ const courseData = [
   },
 ];
 
-export const HorizontalScrollBarExample = () => {
+export const HorizontalScrollMenuExample = () => {
   return (
     <ContentContainer py={32}>
       <HorizontalScrollBar scrollInterval={400}>

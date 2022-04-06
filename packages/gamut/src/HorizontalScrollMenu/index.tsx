@@ -21,12 +21,12 @@ const ScrollButton = styled(FillButton)`
   }
 `;
 
-export interface HorizontalScrollBarProps {
+export interface HorizontalScrollMenuProps {
   scrollInterval: number;
   className?: string;
 }
 
-export const HorizontalScrollBar: React.FC<HorizontalScrollBarProps> = ({
+export const HorizontalScrollMenu: React.FC<HorizontalScrollMenuProps> = ({
   children,
   scrollInterval,
   className,
