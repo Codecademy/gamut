@@ -172,8 +172,12 @@ export const headerCatalogDropdownList: AppHeaderCatalogDataItem[] = [
   {
     title: 'Popular courses',
     description: 'Find courses in languages or subjects that interest you.',
-
     links: [
+      {
+        id: 'top-languages',
+        text: 'Top languages',
+        type: 'subheader',
+      },
       {
         id: 'python',
         href: '/catalog/language/python',
@@ -195,7 +199,11 @@ export const headerCatalogDropdownList: AppHeaderCatalogDataItem[] = [
         text: 'HTML & CSS',
         type: 'link',
       },
-
+      {
+        id: 'top-subjects',
+        text: 'Top subjects',
+        type: 'subheader',
+      },
       {
         id: 'web-development',
         href: '/catalog/subject/web-development',
@@ -222,7 +230,6 @@ export const headerCatalogDropdownList: AppHeaderCatalogDataItem[] = [
   {
     title: 'Practice tools',
     description: `Get real-world practice and apply what you're learning.`,
-
     links: [
       {
         id: 'projects',

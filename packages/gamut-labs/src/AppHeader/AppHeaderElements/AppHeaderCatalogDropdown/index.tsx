@@ -39,6 +39,14 @@ const StyledDescription = styled(Text)`
   line-height: ${pxRem(19)};
 `;
 
+const StyledSubheader = styled(Text)`
+  font-size: ${pxRem(12)};
+  font-family: ${theme.fontFamily.base};
+  font-weight: ${theme.fontWeight.title};
+  color: ${theme.colors['navy-500']};
+  line-height: ${pxRem(24)};
+`;
+
 const StyledAnchor = styled(Anchor)`
   font-size: ${pxRem(14)};
   font-family: ${theme.fontFamily.base};
@@ -121,20 +129,22 @@ export const AppHeaderCatalogDropdown: React.FC<AppHeaderCatalogDropdownProps> =
                   </Box>
                 </Column>
                 <Column size={8} p={16}>
-                  {/* TODO: add link headers for popular topics */}
                   <FlexBox
-                    maxHeight="6rem"
+                    maxHeight="8rem"
                     flexDirection="column"
                     flexWrap="wrap"
                   >
-                    {section.links.map((link) => (
-                      <Box minWidth="200px">
-                        {/* TODO: add tracking */}
-                        <StyledAnchor variant="interface" href={link.href}>
-                          {link.text}
-                        </StyledAnchor>
-                      </Box>
-                    ))}
+                    {section.links.map((link) =>
+                      link.type === 'subheader' ? (
+                        <StyledSubheader>{link.text}</StyledSubheader>
+                      ) : (
+                        <Box minWidth="200px">
+                          <StyledAnchor variant="interface" href={link.href}>
+                            {link.text}
+                          </StyledAnchor>
+                        </Box>
+                      )
+                    )}
                   </FlexBox>
                 </Column>
               </LayoutGrid>
@@ -142,7 +152,6 @@ export const AppHeaderCatalogDropdown: React.FC<AppHeaderCatalogDropdownProps> =
           ))}
 
           <Column size={12} py={12}>
-            {/* TODO: add tracking */}
             <TextButton href="/catalog" width="min-content">
               Explore full catalog
             </TextButton>
