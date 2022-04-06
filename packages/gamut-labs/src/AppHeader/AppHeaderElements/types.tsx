@@ -78,11 +78,15 @@ export type AppHeaderCatalogDropdownItem = AppHeaderBaseItem<'catalog-dropdown'>
   trackingTarget: string;
 };
 
+export type AppHeaderSubheaderItem = AppHeaderBaseItem<'subheader'> & {
+  text: string;
+};
+
 export type AppHeaderCatalogDataItem = {
   title: string;
   description: string;
-  links: AppHeaderLinkItem[];
   requiresCareerAccess?: boolean;
+  links: (AppHeaderLinkItem | AppHeaderSubheaderItem)[];
 };
 
 export type AppHeaderClickHandler<ItemType = AppHeaderItem> = (

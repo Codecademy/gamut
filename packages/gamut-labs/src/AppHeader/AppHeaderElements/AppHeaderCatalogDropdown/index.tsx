@@ -18,7 +18,7 @@ import {
   DropdownIcon,
   StyledDropdown,
   StyledText,
-} from '../AppHeaderDropdown';
+} from '../../shared';
 import { AppHeaderCatalogDropdownItem, AppHeaderClickHandler } from '../types';
 
 type AppHeaderCatalogDropdownProps = {
@@ -37,6 +37,15 @@ const StyledDescription = styled(Text)`
   font-size: ${pxRem(11)};
   font-family: ${theme.fontFamily.base};
   line-height: ${pxRem(19)};
+`;
+
+const StyledSubheader = styled(Text)`
+  font-size: ${pxRem(12)};
+  font-family: ${theme.fontFamily.base};
+  font-weight: ${theme.fontWeight.title};
+  color: ${theme.colors['navy-500']};
+  line-height: ${pxRem(24)};
+  margin-bottom: ${pxRem(2)};
 `;
 
 const StyledAnchor = styled(Anchor)`
@@ -121,20 +130,25 @@ export const AppHeaderCatalogDropdown: React.FC<AppHeaderCatalogDropdownProps> =
                   </Box>
                 </Column>
                 <Column size={8} p={16}>
-                  {/* TODO: add link headers for popular topics */}
                   <FlexBox
-                    maxHeight="6rem"
+                    maxHeight={
+                      // This is so columns without subheaders stay grouped in threes
+                      section.title !== 'Popular courses' ? '7rem' : '8rem'
+                    }
                     flexDirection="column"
                     flexWrap="wrap"
                   >
-                    {section.links.map((link) => (
-                      <Box minWidth="200px">
-                        {/* TODO: add tracking */}
-                        <StyledAnchor variant="interface" href={link.href}>
-                          {link.text}
-                        </StyledAnchor>
-                      </Box>
-                    ))}
+                    {section.links.map((link) =>
+                      link.type === 'subheader' ? (
+                        <StyledSubheader>{link.text}</StyledSubheader>
+                      ) : (
+                        <Box minWidth="200px">
+                          <StyledAnchor variant="interface" href={link.href}>
+                            {link.text}
+                          </StyledAnchor>
+                        </Box>
+                      )
+                    )}
                   </FlexBox>
                 </Column>
               </LayoutGrid>
@@ -142,7 +156,6 @@ export const AppHeaderCatalogDropdown: React.FC<AppHeaderCatalogDropdownProps> =
           ))}
 
           <Column size={12} py={12}>
-            {/* TODO: add tracking */}
             <TextButton href="/catalog" width="min-content">
               Explore full catalog
             </TextButton>
