@@ -89,9 +89,10 @@ const anonMobileHeaderItems = (
 };
 
 export const anonDefaultHeaderItems = (
-  hidePricing?: boolean
+  hidePricing?: boolean,
+  user?: User
 ): FormattedAppHeaderItems => {
-  return anonHeaderItems(true, true, hidePricing);
+  return anonHeaderItems(true, true, hidePricing, user);
 };
 
 export const anonDefaultMobileHeaderItems = (
@@ -130,9 +131,10 @@ export const anonLoginMobileHeaderItems = (
 };
 
 export const anonSignupHeaderItems = (
-  hidePricing?: boolean
+  hidePricing?: boolean,
+  user?: User
 ): FormattedAppHeaderItems => {
-  return anonHeaderItems(true, false, hidePricing);
+  return anonHeaderItems(true, false, hidePricing, user);
 };
 
 export const anonSignupMobileHeaderItems = (
