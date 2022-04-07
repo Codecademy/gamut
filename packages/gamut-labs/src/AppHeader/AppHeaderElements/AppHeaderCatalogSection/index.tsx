@@ -10,7 +10,11 @@ import { pxRem, theme } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React from 'react';
 
-import { AppHeaderCatalogDropdownItem, AppHeaderClickHandler } from '../types';
+import {
+  AppHeaderCatalogDropdownItem,
+  AppHeaderClickHandler,
+  AppHeaderItem,
+} from '../types';
 
 export type AppHeaderCatalogSectionProps = {
   action: AppHeaderClickHandler;
@@ -52,6 +56,14 @@ const StyledColumn = styled(Column)`
   border-bottom: ${theme.borders[1]};
 `;
 
+const catalogButtonData: AppHeaderItem = {
+  text: 'Explore full catalog',
+  id: 'catalog',
+  type: 'text-button',
+  href: '/catalog',
+  trackingTarget: 'topnav_catalog_explore_full',
+};
+
 export const AppHeaderCatalogSection = React.forwardRef<
   HTMLDivElement,
   AppHeaderCatalogSectionProps
@@ -77,7 +89,7 @@ export const AppHeaderCatalogSection = React.forwardRef<
             >
               {section.links.map((link) =>
                 link.type === 'subheader' ? (
-                  <StyledSubheader>{link.text}</StyledSubheader>
+                  <StyledSubheader key={item.id}>{link.text}</StyledSubheader>
                 ) : (
                   <Box minWidth="200px" key={item.id}>
                     <StyledLinkAnchor
@@ -96,15 +108,15 @@ export const AppHeaderCatalogSection = React.forwardRef<
       </StyledColumn>
     ))}
 
-    {/* TODO: add onClick event for this */}
     <Column size={12} p={16}>
       <Anchor
         variant="standard"
-        href="/catalog"
+        href={catalogButtonData.href}
         fontSize={16}
         fontWeight="bold"
+        onClick={(event) => action(event, catalogButtonData)}
       >
-        Explore full catalog
+        {catalogButtonData.text}
       </Anchor>
     </Column>
   </LayoutGrid>
