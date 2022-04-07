@@ -12,8 +12,10 @@ import React from 'react';
 
 import {
   AppHeaderCatalogDropdownItem,
+  AppHeaderCatalogSubheaderItem,
   AppHeaderClickHandler,
   AppHeaderItem,
+  AppHeaderLinkItem,
 } from '../types';
 
 export type AppHeaderCatalogSectionProps = {
@@ -64,6 +66,12 @@ const catalogAnchorData: AppHeaderItem = {
   trackingTarget: 'topnav_catalog_explore_full',
 };
 
+const containsSubheaders = (
+  data: (AppHeaderLinkItem | AppHeaderCatalogSubheaderItem)[]
+): boolean => {
+  return data.some((item) => item.type === 'subheader');
+};
+
 export const AppHeaderCatalogSection = React.forwardRef<
   HTMLDivElement,
   AppHeaderCatalogSectionProps
@@ -80,10 +88,7 @@ export const AppHeaderCatalogSection = React.forwardRef<
           </Column>
           <Column size={8} p={16}>
             <FlexBox
-              maxHeight={
-                // This is so columns without subheaders stay grouped in threes on desktop
-                section.title !== 'Popular courses' ? '7rem' : '8rem'
-              }
+              maxHeight={containsSubheaders(section.data) ? '8rem' : '7rem'}
               flexDirection="column"
               flexWrap="wrap"
             >
