@@ -85,7 +85,7 @@ type AppHeaderCatalogSubheaderItem = AppHeaderBaseItem<'subheader'> & {
 export type AppHeaderCatalogDataItem = {
   title: string;
   description: string;
-  links: (AppHeaderLinkItem | AppHeaderCatalogSubheaderItem)[];
+  data: (AppHeaderLinkItem | AppHeaderCatalogSubheaderItem)[];
 };
 
 export type AppHeaderClickHandler<ItemType = AppHeaderItem> = (

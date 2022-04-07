@@ -56,7 +56,7 @@ const StyledColumn = styled(Column)`
   border-bottom: ${theme.borders[1]};
 `;
 
-const catalogButtonData: AppHeaderItem = {
+const catalogAnchorData: AppHeaderItem = {
   text: 'Explore full catalog',
   id: 'catalog',
   type: 'text-button',
@@ -87,17 +87,17 @@ export const AppHeaderCatalogSection = React.forwardRef<
               flexDirection="column"
               flexWrap="wrap"
             >
-              {section.links.map((link) =>
-                link.type === 'subheader' ? (
-                  <StyledSubheader key={item.id}>{link.text}</StyledSubheader>
+              {section.data.map((item) =>
+                item.type === 'subheader' ? (
+                  <StyledSubheader key={item.id}>{item.text}</StyledSubheader>
                 ) : (
                   <Box minWidth="200px" key={item.id}>
                     <StyledLinkAnchor
                       variant="interface"
-                      href={link.href}
+                      href={item.href}
                       onClick={(event) => action(event, item)}
                     >
-                      {link.text}
+                      {item.text}
                     </StyledLinkAnchor>
                   </Box>
                 )
@@ -111,12 +111,12 @@ export const AppHeaderCatalogSection = React.forwardRef<
     <Column size={12} p={16}>
       <Anchor
         variant="standard"
-        href={catalogButtonData.href}
+        href={catalogAnchorData.href}
         fontSize={16}
         fontWeight="bold"
-        onClick={(event) => action(event, catalogButtonData)}
+        onClick={(event) => action(event, catalogAnchorData)}
       >
-        {catalogButtonData.text}
+        {catalogAnchorData.text}
       </Anchor>
     </Column>
   </LayoutGrid>

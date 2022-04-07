@@ -4,7 +4,7 @@ export const catalogList: AppHeaderCatalogDataItem[] = [
   {
     title: 'Top career paths',
     description: 'Land an entry-level role in tech with step-by-step guidance.',
-    links: [
+    data: [
       {
         id: 'full-stack-engineer-career-path',
         href: '/learn/paths/full-stack-engineer-career-path',
@@ -52,7 +52,7 @@ export const catalogList: AppHeaderCatalogDataItem[] = [
   {
     title: 'Popular courses',
     description: 'Find courses in languages or subjects that interest you.',
-    links: [
+    data: [
       {
         id: 'top-languages',
         text: 'Top languages',
@@ -110,7 +110,7 @@ export const catalogList: AppHeaderCatalogDataItem[] = [
   {
     title: 'Practice tools',
     description: `Get real-world practice and apply what you're learning.`,
-    links: [
+    data: [
       {
         id: 'projects',
         href: '/projects',
