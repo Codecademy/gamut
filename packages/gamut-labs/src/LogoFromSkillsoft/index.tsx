@@ -45,7 +45,6 @@ export const LogoFromSkillsoft: React.FC<FromLogoIconProps> = ({
         fill="currentColor"
       />
       <mask
-        id="a"
         style={{ maskType: 'alpha' }}
         maskUnits="userSpaceOnUse"
         x="0"
