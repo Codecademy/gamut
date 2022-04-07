@@ -391,18 +391,6 @@ describe('GlobalHeader', () => {
     });
   });
 
-  describe('user in catalog dropdown experiment', () => {
-    it('does not render projects and challenges in resourcesDropdown', () => {
-      const props = {
-        ...proHeaderProps,
-        ...{ user: { ...user, useNewCatalogDropdown: true } },
-      };
-      const { view } = renderView(props);
-      expect(view.queryByText('Projects')).toBeFalsy();
-      expect(view.queryByText('Challenges')).toBeFalsy();
-    });
-  });
-
   describe('user who is not in catalog dropdown experiment', () => {
     it('renders projects and challenges in resourcesDropdown', () => {
       const { view } = renderView(proHeaderProps);

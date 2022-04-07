@@ -23,10 +23,8 @@ import {
   AppHeaderSimpleDropdownItem,
   AppHeaderTextButtonItem,
 } from '../AppHeader/AppHeaderElements/types';
-import {
-  headerCatalogDropdownList,
-  headerResourcesList,
-} from '../lib/resourcesList';
+import { headerCatalogDropdownList } from '../lib/catalogList';
+import { headerResourcesList } from '../lib/resourcesList';
 import { User } from './types';
 
 export const logo: AppHeaderLogoItem = {
