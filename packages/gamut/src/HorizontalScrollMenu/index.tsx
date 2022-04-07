@@ -1,11 +1,7 @@
-import {
-  MiniChevronLeftIcon,
-  MiniChevronRightIcon,
-} from '@codecademy/gamut-icons';
 import styled from '@emotion/styled';
-import React, { Children, useEffect, useMemo, useRef, useState } from 'react';
+import React, { Children, useEffect, useMemo, useRef } from 'react';
 
-import { Box, FillButton, FlexBox } from '..';
+import { Box, FlexBox } from '..';
 
 const ScrollContainer = styled(FlexBox)`
   scroll-snap-type: x mandatory;
@@ -14,83 +10,22 @@ const ScrollContainer = styled(FlexBox)`
   }
 `;
 
-const ScrollButton = styled(FillButton)`
-  opacity: 0;
-  :focus {
-    opacity: 1;
-  }
-`;
-
 export interface HorizontalScrollMenuProps {
-  scrollInterval: number;
   className?: string;
 }
 
 export const HorizontalScrollMenu: React.FC<HorizontalScrollMenuProps> = ({
   children,
-  scrollInterval,
   className,
 }) => {
   const elementsRef = useRef<HTMLElement[]>([]);
   const parentContainerRef = useRef<HTMLDivElement | null>(null);
-
-  const [showLeftButton, setShowLeftButton] = useState(false);
-  const [showRightButton, setShowRightButton] = useState(true);
-
-  const handleScroll = (forward?: boolean) => {
-    if (parentContainerRef.current && elementsRef.current) {
-      const interval = forward ? scrollInterval : -scrollInterval;
-
-      const nextScrollPosition =
-        parentContainerRef.current.scrollLeft + interval;
-
-      const lastElementWidth =
-        elementsRef.current[elementsRef.current.length - 1].clientWidth;
-      const firstElementWidth = elementsRef.current[0].clientWidth;
-      const maxScrollPosition =
-        parentContainerRef.current.scrollWidth -
-        parentContainerRef.current.clientWidth;
-
-      const shouldScrollToBeginning = nextScrollPosition < firstElementWidth;
-      const shouldScrollToEnd =
-        nextScrollPosition > maxScrollPosition - lastElementWidth && forward;
-
-      const calculateScrollPosition = () => {
-        if (shouldScrollToEnd) return maxScrollPosition;
-        if (shouldScrollToBeginning) return 0;
-        return nextScrollPosition;
-      };
-
-      parentContainerRef.current.scrollTo({
-        left: calculateScrollPosition(),
-      });
-    }
-  };
-
-  const toggleButton = (
-    setButtonValueCallback: CallableFunction,
-    buttonShouldBeVisible: boolean
-  ) => {
-    setButtonValueCallback(buttonShouldBeVisible);
-  };
 
   const intersectionObserver = useMemo(() => {
     if (typeof window === 'undefined') return null;
     return new IntersectionObserver(
       (entries: IntersectionObserverEntry[]) => {
         entries.forEach((entry) => {
-          const elementIndex = parseInt(
-            entry.target.getAttribute('data-observerindex') || '',
-            10
-          );
-          const elementIsFirstIndex = elementIndex === 0;
-          const elementIsLastIndex =
-            elementIndex === elementsRef.current.length - 1;
-          if (elementIsFirstIndex)
-            toggleButton(setShowLeftButton, !entry.isIntersecting);
-          if (elementIsLastIndex)
-            toggleButton(setShowRightButton, !entry.isIntersecting);
-
           entry.target.ariaHidden = entry.isIntersecting ? 'false' : 'true';
         });
       },
@@ -124,17 +59,6 @@ export const HorizontalScrollMenu: React.FC<HorizontalScrollMenuProps> = ({
         pr={16}
         overflowX="scroll"
       >
-        <ScrollButton
-          zIndex={2}
-          position="absolute"
-          variant="secondary"
-          display={showLeftButton ? 'block ' : 'none'}
-          height="100%"
-          onClick={() => handleScroll()}
-          aria-label="show previous content"
-        >
-          <MiniChevronLeftIcon size={24} />
-        </ScrollButton>
         {Children.map(children, (child, index) => (
           <Box
             ref={(element) => {
@@ -142,22 +66,10 @@ export const HorizontalScrollMenu: React.FC<HorizontalScrollMenuProps> = ({
                 elementsRef.current[index] = element;
               }
             }}
-            data-observerindex={index}
           >
             {child}
           </Box>
         ))}
-        <ScrollButton
-          variant="secondary"
-          right={0}
-          height="100%"
-          position="absolute"
-          display={showRightButton ? 'block' : 'none'}
-          onClick={() => handleScroll(true)}
-          aria-label="show more content"
-        >
-          <MiniChevronRightIcon size={24} />
-        </ScrollButton>
       </ScrollContainer>
     </Box>
   );
