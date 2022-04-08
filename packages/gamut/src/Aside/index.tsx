@@ -1,9 +1,4 @@
-import {
-  BookFlipPageIcon,
-  GamutIconProps,
-  StreakIcon,
-} from '@codecademy/gamut-icons';
-import { Background } from '@codecademy/gamut-styles';
+import { GamutIconProps } from '@codecademy/gamut-icons';
 import React, { ComponentProps } from 'react';
 
 import { FillButton, StrokeButton } from '../Button';
@@ -60,7 +55,7 @@ export const Aside: React.FC<AsideProps> = ({
       <Text gridArea="subtitle" mb={48}>
         {subtitle}
       </Text>
-      <List spacing="condensed" variant="plain">
+      <List variant="plain">
         {listItems.map(({ icon: Icon, numberOfItems, id }) => (
           <ListRow key={id}>
             <ListCol>
