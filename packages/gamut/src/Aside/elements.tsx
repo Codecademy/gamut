@@ -24,7 +24,6 @@ const AsideVariants = variant({
 
 const AsideState = states({
   attentionPlease: {
-    borderStyle: 'ridge',
     borderWidth: '5px',
   },
 });
