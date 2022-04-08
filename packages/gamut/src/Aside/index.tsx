@@ -3,19 +3,14 @@ import {
   GamutIconProps,
   StreakIcon,
 } from '@codecademy/gamut-icons';
+import { Background } from '@codecademy/gamut-styles';
 import React, { ComponentProps } from 'react';
 
-import { Box } from '../Box';
 import { FillButton, StrokeButton } from '../Button';
 import { FloatingCardProps } from '../FloatingCard/FloatingCard';
 import { List, ListCol, ListRow } from '../List';
 import { Text } from '../Typography';
-import {
-  AsideContainer,
-  AsideList,
-  AsideRow,
-  AsideVariantType,
-} from './elements';
+import { AsideContainer, AsideVariantType } from './elements';
 
 interface AsideListItemProps {
   icon: React.ComponentType<GamutIconProps>;
@@ -59,45 +54,37 @@ export const Aside: React.FC<AsideProps> = ({
       p={32}
       {...rest}
     >
-      <Box color="text">
-        <Text color="text" as={headerLevel} gridArea="header">
-          {header}
-        </Text>
-        <Text gridArea="subtitle" mb={48}>
-          {subtitle}
-        </Text>
-        <List spacing="condensed" variant="plain">
-          {listItems.map(({ icon: Icon, numberOfItems, id }) => (
-            <ListRow key={id}>
-              <ListCol>
-                <Icon size={24} />
-              </ListCol>
-              <ListCol size="lg" fill>
-                {numberOfItems} items
-              </ListCol>
-            </ListRow>
-          ))}
-        </List>
-        <FillButton
-          gridArea="primaryButton"
-          mt={48}
-          mr={16}
-          {...primaryButton}
-        />
-        <StrokeButton gridArea="secondaryButton" ml={4} {...secondaryButton} />
-      </Box>
+      <Text as={headerLevel} gridArea="header">
+        {header}
+      </Text>
+      <Text gridArea="subtitle" mb={48}>
+        {subtitle}
+      </Text>
+      <List spacing="condensed" variant="plain">
+        {listItems.map(({ icon: Icon, numberOfItems, id }) => (
+          <ListRow key={id}>
+            <ListCol>
+              <Icon size={24} />
+            </ListCol>
+            <ListCol size="lg" fill>
+              {numberOfItems} items
+            </ListCol>
+          </ListRow>
+        ))}
+      </List>
+      <FillButton
+        mode={variant === 'yellow' ? 'light' : undefined}
+        gridArea="primaryButton"
+        mt={48}
+        mr={16}
+        {...primaryButton}
+      />
+      <StrokeButton
+        mode={variant === 'yellow' ? 'light' : undefined}
+        gridArea="secondaryButton"
+        ml={4}
+        {...secondaryButton}
+      />
     </AsideContainer>
   );
 };
-
-<Aside
-  header="hey"
-  headerLevel="h2"
-  subtitle="hey"
-  listItems={[
-    { icon: StreakIcon, numberOfItems: 42, id: 'Blue' },
-    { icon: BookFlipPageIcon, numberOfItems: 74, id: 'Red' },
-  ]}
-  primaryButton={{ children: 'Primary', onClick: () => {} }}
-  secondaryButton={{ children: 'Secondary', onClick: () => {} }}
-/>;

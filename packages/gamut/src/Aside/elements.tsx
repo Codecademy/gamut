@@ -18,7 +18,7 @@ const AsideVariants = variant({
   defaultVariant: 'default',
   variants: {
     default: {},
-    yellow: { bg: 'yellow-0', borderColor: 'yellow', color: 'yellow' },
+    yellow: { bg: 'yellow-0', borderColor: 'yellow', color: 'navy' },
   },
 });
 
