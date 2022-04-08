@@ -1,5 +1,5 @@
 // eslint-disable gamut/import-paths
-import { Box, FormGroup, GridForm, Input, Markdown } from '@codecademy/gamut';
+import { Box, GridForm, Markdown } from '@codecademy/gamut';
 import { Background } from '@codecademy/gamut-styles';
 import { action } from '@storybook/addon-actions';
 import React, { useState } from 'react';
@@ -314,7 +314,6 @@ export const ColorModeExample = () => {
 
 export const FormLoadingExample = () => {
   const [loading, setLoading] = useState(false);
-  const [text, setText] = useState('');
 
   const wait = (ms: number) =>
     new Promise((resolve) => setTimeout(resolve, ms));
@@ -332,55 +331,19 @@ export const FormLoadingExample = () => {
         resetOnSubmit
         fields={[
           {
-            render: ({ error, setValue, onUpdate }) => (
-              <>
-                <Input
-                  error={!!error}
-                  id="custom-text-input"
-                  type="text"
-                  onChange={(event) =>
-                    setValue('custom-input-group', 'value', {
-                      shouldValidate: true,
-                    })
-                  }
-                />
-                🕺
-              </>
-            ),
-            label: 'Gimme two more swags',
-            name: 'custom-input',
+            label: 'Email',
+            placeholder:
+              'i will disable form fields on loading and reset on correct submission!',
+            name: 'im-new',
+            type: 'email',
             validation: {
-              required: true,
+              required: 'pls fill this out',
               pattern: {
-                value: /swag(.*)swag/,
-                message: 'Still not enough swag, what are you doing... 💢',
+                value: /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,})+$/,
+                message: 'that is not an email 😔',
               },
             },
-            onUpdate: setText,
-            type: 'custom',
-          },
-          {
-            render: ({ error, setValue }) => (
-              <FormGroup label="updog" width="100%">
-                <Input
-                  error={!!error}
-                  id="custom-text-group-input"
-                  type="text"
-                  onChange={(event) => setValue(event.target.value)}
-                />
-              </FormGroup>
-            ),
-            label: 'Gimme two more swags',
-            name: 'custom-input-group',
-            validation: {
-              required: true,
-              pattern: {
-                value: /swag(.*)swag/,
-                message: 'Still not enough swag, what are you doing... 💢',
-              },
-            },
-            type: 'custom-group',
-            size: 4,
+            size: 12,
           },
         ]}
         onSubmit={onSubmit}
