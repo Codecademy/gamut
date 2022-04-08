@@ -5,11 +5,17 @@ import {
 } from '@codecademy/gamut-icons';
 import React, { ComponentProps } from 'react';
 
+import { Box } from '../Box';
 import { FillButton, StrokeButton } from '../Button';
 import { FloatingCardProps } from '../FloatingCard/FloatingCard';
 import { List, ListCol, ListRow } from '../List';
 import { Text } from '../Typography';
-import { AsideContainer, AsideVariantType } from './elements';
+import {
+  AsideContainer,
+  AsideList,
+  AsideRow,
+  AsideVariantType,
+} from './elements';
 
 interface AsideListItemProps {
   icon: React.ComponentType<GamutIconProps>;
@@ -53,26 +59,33 @@ export const Aside: React.FC<AsideProps> = ({
       p={32}
       {...rest}
     >
-      <Text as={headerLevel} gridArea="header">
-        {header}
-      </Text>
-      <Text gridArea="subtitle" mb={48}>
-        {subtitle}
-      </Text>
-      <List variant="plain">
-        {listItems.map(({ icon: Icon, numberOfItems, id }) => (
-          <ListRow key={id}>
-            <ListCol>
-              <Icon size={24} />
-            </ListCol>
-            <ListCol size="lg" fill>
-              {numberOfItems} items
-            </ListCol>
-          </ListRow>
-        ))}
-      </List>
-      <FillButton gridArea="primaryButton" mt={48} mr={16} {...primaryButton} />
-      <StrokeButton gridArea="secondaryButton" ml={4} {...secondaryButton} />
+      <Box color="text">
+        <Text color="text" as={headerLevel} gridArea="header">
+          {header}
+        </Text>
+        <Text gridArea="subtitle" mb={48}>
+          {subtitle}
+        </Text>
+        <List spacing="condensed" variant="plain">
+          {listItems.map(({ icon: Icon, numberOfItems, id }) => (
+            <ListRow key={id}>
+              <ListCol>
+                <Icon size={24} />
+              </ListCol>
+              <ListCol size="lg" fill>
+                {numberOfItems} items
+              </ListCol>
+            </ListRow>
+          ))}
+        </List>
+        <FillButton
+          gridArea="primaryButton"
+          mt={48}
+          mr={16}
+          {...primaryButton}
+        />
+        <StrokeButton gridArea="secondaryButton" ml={4} {...secondaryButton} />
+      </Box>
     </AsideContainer>
   );
 };

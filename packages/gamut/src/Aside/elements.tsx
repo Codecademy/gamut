@@ -1,9 +1,8 @@
-import { css, system, variant } from '@codecademy/gamut-styles';
+import { states, system, variant } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
 
 import { FloatingCard } from '../FloatingCard/FloatingCard';
-import { ListRow } from '../List';
 
 const AsideVariants = variant({
   base: {
@@ -12,16 +11,27 @@ const AsideVariants = variant({
       'content content content'
       'none none none'
       'primaryButton secondaryButton content'`,
+    '&:hover': {
+      outline: '5px double currentColor',
+    },
   },
   defaultVariant: 'default',
   variants: {
     default: {},
-    yellow: { bg: 'yellow-0', borderColor: 'yellow' },
+    yellow: { bg: 'yellow-0', borderColor: 'yellow', color: 'yellow' },
   },
 });
 
-export const AsideList = styled(List)(css({ bg: 'transparent' }));
+const AsideState = states({
+  attentionPlease: {
+    borderStyle: 'ridge',
+    borderWidth: '5px',
+  },
+});
 
-export type AsideVariantType = StyleProps<typeof AsideVariants> &
-  StyleProps<typeof system.layout>;
-export const AsideContainer = styled(FloatingCard)(AsideVariants);
+export interface AsideVariantType
+  extends StyleProps<typeof AsideVariants>,
+    StyleProps<typeof AsideState>,
+    StyleProps<typeof system.layout> {}
+
+export const AsideContainer = styled(FloatingCard)(AsideVariants, AsideState);

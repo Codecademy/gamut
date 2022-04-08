@@ -49,3 +49,19 @@ My variants
     {(args) => <Aside {...args} />}
   </Story>
 </Canvas>
+
+## States
+
+My states
+
+<Canvas>
+  <Story args={{ attentionPlease: true }} name="Attention Please Primary">
+    {(args) => <Aside {...args} />}
+  </Story>
+  <Story
+    args={{ attentionPlease: true, variant: 'yellow' }}
+    name="Attention Please Secondary"
+  >
+    {(args) => <Aside {...args} />}
+  </Story>
+</Canvas>
