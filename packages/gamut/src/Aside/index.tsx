@@ -12,7 +12,9 @@ import { Text } from '../Typography';
 import { AsideContainer } from './elements';
 
 interface AsideListItemProps {
+  /** Gamut icon component */
   icon: React.ComponentType<GamutIconProps>;
+  /** Number of items for list item */
   numberOfItems: number;
   /** Each item needs to have a unique ID */
   id: string;

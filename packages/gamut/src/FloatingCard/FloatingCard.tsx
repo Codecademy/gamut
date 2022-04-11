@@ -4,7 +4,10 @@ import { StyleProps, variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
 import React, { ComponentProps, forwardRef } from 'react';
 
-const cardProps = variance.compose(system.layout, system.padding);
+export const floatingCardSystemProps = variance.compose(
+  system.layout,
+  system.padding
+);
 
 const beakVariants = system.variant({
   prop: 'beak',
@@ -66,7 +69,7 @@ const CardWrapper = styled.div(
 );
 
 const CardBody = styled('div', styledOptions)<
-  StyleProps<typeof beakVariants> & StyleProps<typeof cardProps>
+  StyleProps<typeof beakVariants> & StyleProps<typeof floatingCardSystemProps>
 >(
   system.css({
     p: 12,
@@ -78,7 +81,7 @@ const CardBody = styled('div', styledOptions)<
     maxWidth: 1,
   }),
   beakVariants,
-  cardProps
+  floatingCardSystemProps
 );
 
 export type FloatingCardProps = {
