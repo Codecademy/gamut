@@ -1,4 +1,4 @@
-import { states, system, variant } from '@codecademy/gamut-styles';
+import { states, variant } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
 
@@ -9,6 +9,7 @@ import {
 
 const AsideVariants = variant({
   base: {
+    p: 24,
     gridTemplateAreas: `'header header none'
       'subtitle subtitle none'
       'content content content'
