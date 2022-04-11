@@ -20,7 +20,7 @@ interface AsideButtonProps {
 }
 export interface AsideProps extends Pick<FloatingCardProps, 'pattern'> {
   header: string;
-  headerLevel: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+  headerLevel: 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
   subtitle: string;
   listItems: AsideListItemProps[];
   primaryButton: AsideButtonProps; // FillButton
