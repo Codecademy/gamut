@@ -34,7 +34,7 @@ const StyledTitle = styled(Text)`
 `;
 
 const StyledDescription = styled(Text)`
-  font-size: ${pxRem(11)};
+  font-size: ${pxRem(12)};
   font-family: ${theme.fontFamily.base};
   line-height: ${pxRem(19)};
 `;
