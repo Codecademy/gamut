@@ -5,6 +5,7 @@ import { FloatingCard } from '../FloatingCard/FloatingCard';
 
 export const AsideContainer = styled(FloatingCard)(
   css({
+    p: 24,
     gridTemplateAreas: `'header header none'
       'subtitle subtitle none'
       'content content content'

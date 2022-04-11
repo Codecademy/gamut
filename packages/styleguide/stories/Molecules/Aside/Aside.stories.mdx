@@ -1,5 +1,9 @@
 import { Aside } from '@codecademy/gamut';
-import { BookFlipPageIcon, StreakIcon } from '@codecademy/gamut-icons';
+import {
+  BookFlipPageIcon,
+  StarIcon,
+  StreakIcon,
+} from '@codecademy/gamut-icons';
 import { DiagonalBDense } from '@codecademy/gamut-patterns';
 import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
@@ -22,8 +26,9 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
     headerLevel: 'h2',
     subtitle: 'My subtitle',
     listItems: [
-      { icon: StreakIcon, numberOfItems: 42, id: 'Blue' },
-      { icon: BookFlipPageIcon, numberOfItems: 74, id: 'Red' },
+      { icon: StreakIcon, itemText: 'Intro to Javascript', id: 'Blue' },
+      { icon: BookFlipPageIcon, itemText: '74 exercises', id: 'Red' },
+      { icon: StarIcon, itemText: 'Follow your dreams', id: 'dream' },
     ],
     primaryButton: { children: 'Primary', onClick: () => {} },
     secondaryButton: { children: 'Secondary', onClick: () => {} },

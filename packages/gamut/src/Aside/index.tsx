@@ -15,7 +15,7 @@ interface AsideListItemProps {
   /** Gamut icon component */
   icon: React.ComponentType<GamutIconProps>;
   /** Number of items for list item */
-  numberOfItems: number;
+  itemText: string;
   /** Each item needs to have a unique ID */
   id: string;
 }
@@ -45,21 +45,21 @@ export const Aside: React.FC<AsideProps> = ({
   ...rest
 }) => {
   return (
-    <AsideContainer as="aside" pattern={pattern} p={32} {...rest}>
+    <AsideContainer as="aside" pattern={pattern} {...rest}>
       <Text as={headerLevel} gridArea="header">
         {header}
       </Text>
-      <Text gridArea="subtitle" mb={48}>
+      <Text gridArea="subtitle" mt={8} mb={48}>
         {subtitle}
       </Text>
       <List variant="plain">
-        {listItems.map(({ icon: Icon, numberOfItems, id }) => (
+        {listItems.map(({ icon: Icon, itemText, id }) => (
           <ListRow key={id}>
             <ListCol>
               <Icon size={24} />
             </ListCol>
             <ListCol size="lg" fill>
-              {numberOfItems} items
+              {itemText} items
             </ListCol>
           </ListRow>
         ))}
