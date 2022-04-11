@@ -40,13 +40,7 @@ export const Aside: React.FC<AsideProps> = ({
   ...rest
 }) => {
   return (
-    <AsideContainer
-      as="aside"
-      pattern={pattern}
-      variant={variant}
-      p={32}
-      {...rest}
-    >
+    <AsideContainer as="aside" pattern={pattern} variant={variant} {...rest}>
       <Text as={headerLevel} gridArea="header">
         {header}
       </Text>
