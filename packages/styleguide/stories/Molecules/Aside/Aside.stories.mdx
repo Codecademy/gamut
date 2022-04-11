@@ -1,4 +1,6 @@
 import { Aside } from '@codecademy/gamut';
+import { BookFlipPageIcon, StreakIcon } from '@codecademy/gamut-icons';
+import { DiagonalBDense } from '@codecademy/gamut-patterns';
 import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
@@ -15,7 +17,18 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
       url: 'https://www.figma.com/file/',
     },
   }}
-  args={{}}
+  args={{
+    header: 'My Header Text',
+    headerLevel: 'h2',
+    subtitle: 'My subtitle',
+    listItems: [
+      { icon: StreakIcon, numberOfItems: 42, id: 'Blue' },
+      { icon: BookFlipPageIcon, numberOfItems: 74, id: 'Red' },
+    ],
+    primaryButton: { children: 'Primary', onClick: () => {} },
+    secondaryButton: { children: 'Secondary', onClick: () => {} },
+    pattern: DiagonalBDense,
+  }}
 />
 
 `Aside` component summary goes here
