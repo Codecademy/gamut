@@ -6,7 +6,7 @@ import {
   LayoutGrid,
   Text,
 } from '@codecademy/gamut';
-import { pxRem, theme } from '@codecademy/gamut-styles';
+import { css } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React from 'react';
 
@@ -26,37 +26,40 @@ export type AppHeaderCatalogSectionProps = {
   id?: string;
 };
 
-const StyledTitle = styled(Text)`
-  font-size: ${pxRem(12)};
-  font-family: ${theme.fontFamily.accent};
-  font-weight: ${theme.fontWeight.title};
-  margin-bottom: ${pxRem(6)};
-`;
+const StyledTitle = styled(Text)(
+  css({
+    // fontSize approved by design
+    fontSize: 12 as any,
+    fontFamily: `accent`,
+    fontWeight: `title`,
+    mb: 8,
+  })
+);
 
-const StyledDescription = styled(Text)`
-  font-size: ${pxRem(12)};
-  font-family: ${theme.fontFamily.base};
-  line-height: ${pxRem(19)};
-`;
+const StyledDescription = styled(Text)(
+  css({
+    // fontSize approved by design
+    fontSize: 12 as any,
+    lineHeight: `base`,
+  })
+);
 
-const StyledSubheader = styled(Text)`
-  font-size: ${pxRem(12)};
-  font-family: ${theme.fontFamily.base};
-  font-weight: ${theme.fontWeight.title};
-  color: ${theme.colors['navy-500']};
-  line-height: ${pxRem(24)};
-  margin-bottom: ${pxRem(2)};
-`;
+const StyledSubheader = styled(Text)(
+  css({
+    // fontSize approved by design
+    fontSize: 12 as any,
+    fontWeight: `title`,
+    lineHeight: `base`,
+    mb: 8,
+    color: `text-disabled`,
+  })
+);
 
-const StyledLinkAnchor = styled(Anchor)`
-  font-size: ${pxRem(14)};
-  font-family: ${theme.fontFamily.base};
-  line-height: ${pxRem(32)};
-`;
-
-const StyledColumn = styled(Column)`
-  border-bottom: ${theme.borders[1]};
-`;
+const StyledColumn = styled(Column)(
+  css({
+    borderBottom: 1,
+  })
+);
 
 const catalogAnchorData: AppHeaderItem = {
   text: 'Explore full catalog',
@@ -81,7 +84,7 @@ export const AppHeaderCatalogSection = React.forwardRef<
       <StyledColumn size={12} key={item.id}>
         <LayoutGrid>
           <Column size={4}>
-            <Box background={theme.colors['gray-100']} p={16}>
+            <Box bg="background-selected" p={16}>
               <StyledTitle>{section.title}</StyledTitle>
               <StyledDescription>{section.description}</StyledDescription>
             </Box>
@@ -97,13 +100,15 @@ export const AppHeaderCatalogSection = React.forwardRef<
                   <StyledSubheader key={item.id}>{item.text}</StyledSubheader>
                 ) : (
                   <Box minWidth="200px" key={item.id}>
-                    <StyledLinkAnchor
+                    <Anchor
                       variant="interface"
+                      fontSize={14}
+                      pb={8}
                       href={item.href}
                       onClick={(event) => action(event, item)}
                     >
                       {item.text}
-                    </StyledLinkAnchor>
+                    </Anchor>
                   </Box>
                 )
               )}
@@ -116,9 +121,9 @@ export const AppHeaderCatalogSection = React.forwardRef<
     <Column size={12} p={16}>
       <Anchor
         variant="standard"
-        href={catalogAnchorData.href}
         fontSize={16}
-        fontWeight="bold"
+        fontWeight="title"
+        href={catalogAnchorData.href}
         onClick={(event) => action(event, catalogAnchorData)}
       >
         {catalogAnchorData.text}

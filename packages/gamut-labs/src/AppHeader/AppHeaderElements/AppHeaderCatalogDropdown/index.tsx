@@ -1,4 +1,3 @@
-import cx from 'classnames';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 
 import {
@@ -82,11 +81,7 @@ export const AppHeaderCatalogDropdown: React.FC<AppHeaderCatalogDropdownProps> =
         >
           {item.text}
         </StyledText>
-        <DropdownIcon
-          aria-label="dropdown"
-          className={cx(isOpen && 'open')}
-          size={12}
-        />
+        <DropdownIcon aria-label="dropdown" open={isOpen} size={12} />
       </DropdownAnchor>
       <StyledDropdown
         style={{

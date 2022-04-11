@@ -1,6 +1,6 @@
 import { Anchor, Text } from '@codecademy/gamut';
 import { ArrowChevronDownFilledIcon } from '@codecademy/gamut-icons';
-import { css, pxRem } from '@codecademy/gamut-styles';
+import { css, pxRem, states } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import { AnimatePresence, motion, Variants } from 'framer-motion';
 import React from 'react';
@@ -53,8 +53,9 @@ export const DropdownIcon = styled(ArrowChevronDownFilledIcon)(
     marginLeft: pxRem(5),
     transition: `transform 0.35s ease-out`,
     transformOrigin: `center ${pxRem(5)}`,
-
-    '&.open': {
+  }),
+  states({
+    open: {
       transform: `rotate(-180deg)`,
     },
   })
