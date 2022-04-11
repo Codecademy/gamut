@@ -1,11 +1,10 @@
-import { states, system, variant } from '@codecademy/gamut-styles';
-import { StyleProps } from '@codecademy/variance';
+import { css } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 
 import { FloatingCard } from '../FloatingCard/FloatingCard';
 
-const AsideVariants = variant({
-  base: {
+export const AsideContainer = styled(FloatingCard)(
+  css({
     gridTemplateAreas: `'header header none'
       'subtitle subtitle none'
       'content content content'
@@ -14,24 +13,5 @@ const AsideVariants = variant({
     '&:hover': {
       outline: '5px double currentColor',
     },
-  },
-  defaultVariant: 'default',
-  variants: {
-    default: {},
-    yellow: { bg: 'yellow-0', borderColor: 'yellow', color: 'navy' },
-  },
-});
-
-const AsideState = states({
-  attentionPlease: {
-    borderStyle: 'ridge',
-    borderWidth: '5px',
-  },
-});
-
-export interface AsideVariantType
-  extends StyleProps<typeof AsideVariants>,
-    StyleProps<typeof AsideState>,
-    StyleProps<typeof system.layout> {}
-
-export const AsideContainer = styled(FloatingCard)(AsideVariants, AsideState);
+  })
+);

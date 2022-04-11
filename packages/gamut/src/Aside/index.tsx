@@ -5,7 +5,7 @@ import { FillButton, StrokeButton } from '../Button';
 import { FloatingCardProps } from '../FloatingCard/FloatingCard';
 import { List, ListCol, ListRow } from '../List';
 import { Text } from '../Typography';
-import { AsideContainer, AsideVariantType } from './elements';
+import { AsideContainer } from './elements';
 
 interface AsideListItemProps {
   icon: React.ComponentType<GamutIconProps>;
@@ -18,9 +18,7 @@ interface AsideButtonProps {
   href?: string;
   onClick?: ComponentProps<typeof FillButton>['onClick'];
 }
-export interface AsideProps
-  extends Pick<FloatingCardProps, 'pattern'>,
-    AsideVariantType {
+export interface AsideProps extends Pick<FloatingCardProps, 'pattern'> {
   header: string;
   headerLevel: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
   subtitle: string;
@@ -38,17 +36,10 @@ export const Aside: React.FC<AsideProps> = ({
   primaryButton,
   secondaryButton,
   subtitle,
-  variant,
   ...rest
 }) => {
   return (
-    <AsideContainer
-      as="aside"
-      pattern={pattern}
-      variant={variant}
-      p={32}
-      {...rest}
-    >
+    <AsideContainer as="aside" pattern={pattern} p={32} {...rest}>
       <Text as={headerLevel} gridArea="header">
         {header}
       </Text>
@@ -67,19 +58,8 @@ export const Aside: React.FC<AsideProps> = ({
           </ListRow>
         ))}
       </List>
-      <FillButton
-        mode={variant === 'yellow' ? 'light' : undefined}
-        gridArea="primaryButton"
-        mt={48}
-        mr={16}
-        {...primaryButton}
-      />
-      <StrokeButton
-        mode={variant === 'yellow' ? 'light' : undefined}
-        gridArea="secondaryButton"
-        ml={4}
-        {...secondaryButton}
-      />
+      <FillButton gridArea="primaryButton" mt={48} mr={16} {...primaryButton} />
+      <StrokeButton gridArea="secondaryButton" ml={4} {...secondaryButton} />
     </AsideContainer>
   );
 };
