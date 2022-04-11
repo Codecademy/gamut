@@ -1,7 +1,7 @@
 import { GamutIconProps } from '@codecademy/gamut-icons';
-import React, { ComponentProps } from 'react';
+import React from 'react';
 
-import { FillButton, StrokeButton } from '../Button';
+import { ButtonProps, FillButton, StrokeButton } from '../Button';
 import { FloatingCardProps } from '../FloatingCard/FloatingCard';
 import { List, ListCol, ListRow } from '../List';
 import { Text } from '../Typography';
@@ -13,10 +13,8 @@ interface AsideListItemProps {
   /** Each item needs to have a unique ID */
   id: string;
 }
-interface AsideButtonProps {
+interface AsideButtonProps extends Pick<ButtonProps, 'href' | 'onClick'> {
   children: React.ReactNode;
-  href?: string;
-  onClick?: ComponentProps<typeof FillButton>['onClick'];
 }
 export interface AsideProps
   extends Pick<FloatingCardProps, 'pattern'>,
