@@ -1,6 +1,4 @@
 import { Aside } from '@codecademy/gamut';
-import { BookFlipPageIcon, StreakIcon } from '@codecademy/gamut-icons';
-import { DiagonalBDense } from '@codecademy/gamut-patterns';
 import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
@@ -9,38 +7,31 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
   title={title}
   component={Aside}
   parameters={{
-    subtitle: 'An aside component with a list and some buttons',
+    subtitle: 'An aside component',
     source: 'gamut',
-    status: 'updating',
+    status: 'current',
     design: {
       type: 'figma',
-      url:
-        'https://www.figma.com/file/2Hh7PYIPWLf4ZmWW4yKTfu/Gamut-Example---Aside-Component?node-id=2%3A2',
+      url: 'https://www.figma.com/file/',
     },
   }}
-  args={{
-    header: 'My Header Text',
-    headerLevel: 'h2',
-    subtitle: 'My subtitle',
-    listItems: [
-      { icon: StreakIcon, numberOfItems: 42, id: 'Blue' },
-      { icon: BookFlipPageIcon, numberOfItems: 74, id: 'Red' },
-    ],
-    primaryButton: { children: 'Primary', onClick: () => {} },
-    secondaryButton: { children: 'Secondary', onClick: () => {} },
-  }}
+  args={{}}
 />
+
+`Aside` component summary goes here
+
+## Design Principles
+
+Design Principles summary
+
+## Usage Guidelines
+
+Usage summary
+
+## Code Playground
 
 <Canvas>
   <Story name="Aside">{(args) => <Aside {...args} />}</Story>
 </Canvas>
 
 <PropsTable story="Aside" />
-
-## Patterns
-
-<Canvas>
-  <Story args={{ pattern: DiagonalBDense }} name="Aside Patterns">
-    {(args) => <Aside {...args} />}
-  </Story>
-</Canvas>
