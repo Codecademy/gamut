@@ -5,12 +5,12 @@ import { FloatingCard } from '../FloatingCard/FloatingCard';
 
 export const AsideContainer = styled(FloatingCard)(
   css({
-    p: 24,
     gridTemplateAreas: `'header header none'
       'subtitle subtitle none'
       'content content content'
       'none none none'
       'primaryButton secondaryButton content'`,
+    p: 24,
     '&:hover': {
       outline: '5px double currentColor',
     },

@@ -14,7 +14,7 @@ import { AsideContainer } from './elements';
 interface AsideListItemProps {
   /** Gamut icon component */
   icon: React.ComponentType<GamutIconProps>;
-  /** Number of items for list item */
+  /** Text for list item */
   itemText: string;
   /** Each item needs to have a unique ID */
   id: string;
@@ -59,7 +59,7 @@ export const Aside: React.FC<AsideProps> = ({
               <Icon size={24} />
             </ListCol>
             <ListCol size="lg" fill>
-              {itemText} items
+              {itemText}
             </ListCol>
           </ListRow>
         ))}
