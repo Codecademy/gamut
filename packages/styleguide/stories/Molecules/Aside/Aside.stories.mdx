@@ -1,5 +1,6 @@
 import { Aside } from '@codecademy/gamut';
 import { BookFlipPageIcon, StreakIcon } from '@codecademy/gamut-icons';
+import { DiagonalBDense } from '@codecademy/gamut-patterns';
 import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
@@ -38,30 +39,8 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 
 ## Patterns
 
-some Patterns
-
-## Variants
-
-My variants
-
 <Canvas>
-  <Story args={{ variant: 'yellow' }} name="Aside Secondary">
-    {(args) => <Aside {...args} />}
-  </Story>
-</Canvas>
-
-## States
-
-My states
-
-<Canvas>
-  <Story args={{ attentionPlease: true }} name="Attention Please Primary">
-    {(args) => <Aside {...args} />}
-  </Story>
-  <Story
-    args={{ attentionPlease: true, variant: 'yellow' }}
-    name="Attention Please Secondary"
-  >
+  <Story args={{ pattern: DiagonalBDense }} name="Aside Patterns">
     {(args) => <Aside {...args} />}
   </Story>
 </Canvas>
