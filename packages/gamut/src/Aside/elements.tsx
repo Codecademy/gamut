@@ -2,7 +2,10 @@ import { states, system, variant } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
 
-import { FloatingCard } from '../FloatingCard/FloatingCard';
+import {
+  FloatingCard,
+  floatingCardSystemProps,
+} from '../FloatingCard/FloatingCard';
 
 const AsideVariants = variant({
   base: {
@@ -31,6 +34,6 @@ const AsideState = states({
 export interface AsideVariantType
   extends StyleProps<typeof AsideVariants>,
     StyleProps<typeof AsideState>,
-    StyleProps<typeof system.layout> {}
+    StyleProps<typeof floatingCardSystemProps> {}
 
 export const AsideContainer = styled(FloatingCard)(AsideVariants, AsideState);
