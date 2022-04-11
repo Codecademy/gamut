@@ -3,6 +3,135 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [56.2.3](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@56.2.2...@codecademy/styleguide@56.2.3) (2022-04-06)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [56.2.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@56.2.1...@codecademy/styleguide@56.2.2) (2022-04-06)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [56.2.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@56.2.0...@codecademy/styleguide@56.2.1) (2022-04-05)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [56.2.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@56.1.2...@codecademy/styleguide@56.2.0) (2022-04-05)
+
+
+### Features
+
+* **Footer:** new footer ([#2302](https://github.com/Codecademy/gamut/issues/2302)) ([6702a51](https://github.com/Codecademy/gamut/commit/6702a511708c5f21ca65e6d1febc5eb1bd2364a2))
+
+
+
+### [56.1.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@56.1.1...@codecademy/styleguide@56.1.2) (2022-04-04)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [56.1.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@56.1.0...@codecademy/styleguide@56.1.1) (2022-04-01)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [56.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@56.0.3...@codecademy/styleguide@56.1.0) (2022-03-31)
+
+
+### Features
+
+* **AppHeader:** hide projects and challenges in nav variant ([b1427ec](https://github.com/Codecademy/gamut/commit/b1427ec199e86cf751a8743bfc3441e0a1b670b7))
+
+
+
+### [56.0.3](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@56.0.2...@codecademy/styleguide@56.0.3) (2022-03-29)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [56.0.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@56.0.1...@codecademy/styleguide@56.0.2) (2022-03-28)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [56.0.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@56.0.0...@codecademy/styleguide@56.0.1) (2022-03-25)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [56.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@55.4.2...@codecademy/styleguide@56.0.0) (2022-03-25)
+
+
+### ⚠ BREAKING CHANGES
+
+* **eslint-plugin-gamut:** gamut eslint-pkg + add no .scss / themed rules
+
+### Features
+
+* **eslint-plugin-gamut:** gamut eslint-pkg + add no .scss / themed rules ([4be6d9d](https://github.com/Codecademy/gamut/commit/4be6d9ddfbebb8b588f671c5f665d94a5e429384))
+
+
+
+### [55.4.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@55.4.1...@codecademy/styleguide@55.4.2) (2022-03-24)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [55.4.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@55.4.0...@codecademy/styleguide@55.4.1) (2022-03-24)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [55.4.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@55.3.0...@codecademy/styleguide@55.4.0) (2022-03-23)
+
+
+### Features
+
+* **CurriculumCard:** Allowing dynamic difficulty spans ([3c5c9b3](https://github.com/Codecademy/gamut/commit/3c5c9b32b79683406e51f4a4f563643b13172368))
+
+
+
+## [55.3.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@55.2.2...@codecademy/styleguide@55.3.0) (2022-03-22)
+
+
+### Features
+
+* **Alert:**  Add Notice + Feature variants to inline Alert ([972b890](https://github.com/Codecademy/gamut/commit/972b8900bf6f8e2f325bce47c536723cad65c489))
+
+
+
 ### [55.2.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@55.2.1...@codecademy/styleguide@55.2.2) (2022-03-22)
 
 **Note:** Version bump only for package @codecademy/styleguide

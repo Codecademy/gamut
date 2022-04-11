@@ -5,6 +5,7 @@ import React from 'react';
 import { ButtonDeprecated } from '../ButtonDeprecated';
 import { CardShell } from '../DeprecatedCard';
 import { Overlay, OverlayProps } from '../Overlay';
+// eslint-disable-next-line gamut/no-css-standalone
 import styles from './styles.module.scss';
 
 export type ModalDeprecatedOverlayProps = Partial<

@@ -1,9 +1,10 @@
 import { setupRtl } from '@codecademy/gamut-tests';
 
+import { ContainerDifficulty } from '../Difficulty/types';
 import { CurriculumCard } from '../index';
 
 const renderView = setupRtl(CurriculumCard, {
-  difficulty: 0,
+  difficulty: ContainerDifficulty.Beginner,
   scope: { lesson: 12 },
   text: 'Course',
   title: 'I am a card',

@@ -3,6 +3,7 @@ import React, { HTMLProps, ReactNode } from 'react';
 
 import { ChildComponentDescriptor } from '../typings/react';
 import { omitProps } from '../utils/omitProps';
+// eslint-disable-next-line gamut/no-css-standalone
 import styles from './styles.module.scss';
 
 const propKeys = [

@@ -90,6 +90,7 @@ export const useFormState = () => {
     setError,
     setValue,
     watch,
+    clearErrors,
   } = useFormContext();
 
   const {
@@ -120,6 +121,7 @@ export const useFormState = () => {
     useFieldArray,
     validationRules,
     watch,
+    clearErrors,
   };
 };
 

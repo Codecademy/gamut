@@ -1,6 +1,7 @@
 export * from './Bee';
 export * from './Bell';
 export * from './BinaryBlocks';
+export * from './BinaryStairs';
 export * from './Blocks';
 export * from './Blueprint';
 export * from './Browser';
@@ -16,6 +17,7 @@ export * from './HomeOffice';
 export * from './Keyhole';
 export * from './Maze';
 export * from './Megaphone';
+export * from './MobilePhone';
 export * from './New';
 export * from './NumberBlocks';
 export * from './Onboarding';

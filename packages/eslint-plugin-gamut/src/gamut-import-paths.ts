@@ -1,8 +1,12 @@
-module.exports.default = {
+import { TSESTree } from '@typescript-eslint/utils';
+
+import { createRule } from './createRule';
+
+export default createRule({
   create(context) {
     return {
       'ImportDeclaration[source.value=/(^@)codecademy(\\u002F)gamut/]': function (
-        node
+        node: TSESTree.ImportDeclaration
       ) {
         const filename = context.getFilename();
         const importPath = node.source.value;
@@ -19,29 +23,26 @@ module.exports.default = {
         }
 
         if (importPath.includes('/src')) {
+          const indexOfSrc = node.source.range[0] + importPath.search('/src');
           context.report({
-            fix: (fixer) => {
-              const indexOfSrc =
-                node.source.range[0] + importPath.search('/src');
-              if (importPath.endsWith('/src')) {
+            ...(importPath.endsWith('/src') && {
+              fix: (fixer) => {
                 return fixer.removeRange([indexOfSrc + 1, node.range[1] - 2]);
-              }
-            },
+              },
+            }),
             messageId: 'removeSrc',
             node,
           });
           return;
         }
-
         if (importPath.includes('/dist')) {
+          const indexOfDist = node.source.range[0] + importPath.search('/dist');
           context.report({
-            fix: (fixer) => {
-              const indexOfDist =
-                node.source.range[0] + importPath.search('/dist');
-              if (importPath.endsWith('/dist')) {
+            ...(importPath.endsWith('/dist') && {
+              fix: (fixer) => {
                 return fixer.removeRange([indexOfDist + 1, node.range[1] - 2]);
-              }
-            },
+              },
+            }),
             messageId: 'removeDist',
             node,
           });
@@ -52,11 +53,10 @@ module.exports.default = {
   defaultOptions: [],
   meta: {
     docs: {
-      category: 'Possible Errors',
       description: 'Ensure Gamut import statements have proper module paths.',
       recommended: 'error',
     },
-    fixable: true,
+    fixable: 'code',
     messages: {
       removeDist:
         'There is no need to append /dist to the end of this module path.',
@@ -68,4 +68,4 @@ module.exports.default = {
     schema: [],
   },
   name: 'gamut-import-paths',
-};
+});

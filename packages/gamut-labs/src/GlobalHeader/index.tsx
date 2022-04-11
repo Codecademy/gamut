@@ -42,13 +42,13 @@ const getAppHeaderItems = (
     case 'anon':
       switch (props.variant) {
         case 'landing':
-          return anonLandingHeaderItems(props.hidePricing);
+          return anonLandingHeaderItems(props.hidePricing, props.user);
         case 'login':
-          return anonLoginHeaderItems(props.hidePricing);
+          return anonLoginHeaderItems(props.hidePricing, props.user);
         case 'signup':
-          return anonSignupHeaderItems(props.hidePricing);
+          return anonSignupHeaderItems(props.hidePricing, props.user);
         default:
-          return anonDefaultHeaderItems(props.hidePricing);
+          return anonDefaultHeaderItems(props.hidePricing, props.user);
       }
     case 'free':
       return freeHeaderItems(
@@ -88,7 +88,7 @@ const getMobileAppHeaderItems = (
 };
 
 export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
-  const { action, onLinkAction, searchInitiallyOpen } = props;
+  const { action, onLinkAction } = props;
   const theme = useTheme();
 
   const combinedAction = useCallback(
@@ -117,7 +117,6 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
       />
       <AppHeaderMobile
         action={combinedAction}
-        searchInitiallyOpen={!!searchInitiallyOpen}
         items={getMobileAppHeaderItems(props)}
         {...(props.type === 'anon' || props.type === 'loading'
           ? {}
