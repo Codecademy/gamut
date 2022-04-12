@@ -83,15 +83,18 @@ export const AppHeaderCatalogSection = React.forwardRef<
     {item.popover.map((section) => (
       <StyledColumn size={12} key={item.id}>
         <LayoutGrid>
-          <Column size={4}>
+          <Column size={{ _: 12, md: 4 }}>
             <Box bg="background-selected" p={16}>
               <StyledTitle>{section.title}</StyledTitle>
               <StyledDescription>{section.description}</StyledDescription>
             </Box>
           </Column>
-          <Column size={8} p={16}>
+          <Column size={{ _: 12, md: 8 }} p={16}>
             <FlexBox
-              maxHeight={containsSubheaders(section.data) ? '8rem' : '7rem'}
+              maxHeight={{
+                _: 'none',
+                md: containsSubheaders(section.data) ? '8rem' : '7rem',
+              }}
               flexDirection="column"
               flexWrap="wrap"
             >
@@ -102,6 +105,7 @@ export const AppHeaderCatalogSection = React.forwardRef<
                   <Box minWidth="200px" key={item.id}>
                     <Anchor
                       variant="interface"
+                      fontFamily="base"
                       fontSize={14}
                       pb={8}
                       href={item.href}
