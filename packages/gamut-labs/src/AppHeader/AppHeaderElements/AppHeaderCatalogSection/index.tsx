@@ -136,6 +136,7 @@ export const AppHeaderCatalogSection = React.forwardRef<
         variant="standard"
         fontSize={16}
         fontWeight="title"
+        textAlign={{ _: 'center', md: 'left' }}
         href={catalogAnchorData.href}
         onClick={(event) => action(event, catalogAnchorData)}
       >
