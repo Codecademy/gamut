@@ -50,7 +50,7 @@ const StyledSubheader = styled(Text)(
     fontSize: 12 as any,
     fontWeight: `title`,
     lineHeight: `base`,
-    mb: 8,
+    mb: 12,
     color: `text-disabled`,
   })
 );
@@ -58,6 +58,16 @@ const StyledSubheader = styled(Text)(
 const StyledColumn = styled(Column)(
   css({
     borderBottom: 1,
+  })
+);
+
+const StyledAnchorBox = styled(Box)(
+  css({
+    pb: { _: 16, md: 8 },
+    '&:last-child': {
+      pb: 0,
+    },
+    minWidth: 12,
   })
 );
 
@@ -102,18 +112,17 @@ export const AppHeaderCatalogSection = React.forwardRef<
                 item.type === 'subheader' ? (
                   <StyledSubheader key={item.id}>{item.text}</StyledSubheader>
                 ) : (
-                  <Box minWidth="200px" key={item.id}>
+                  <StyledAnchorBox key={item.id}>
                     <Anchor
                       variant="interface"
                       fontFamily="base"
                       fontSize={14}
-                      pb={8}
                       href={item.href}
                       onClick={(event) => action(event, item)}
                     >
                       {item.text}
                     </Anchor>
-                  </Box>
+                  </StyledAnchorBox>
                 )
               )}
             </FlexBox>
