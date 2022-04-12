@@ -1,7 +1,6 @@
+import { Box, FlexBox } from '@codecademy/gamut/src';
 import styled from '@emotion/styled';
 import React, { Children, useEffect, useMemo, useRef } from 'react';
-
-import { Box, FlexBox } from '..';
 
 const ScrollContainer = styled(FlexBox)`
   scroll-snap-type: x mandatory;
