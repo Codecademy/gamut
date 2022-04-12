@@ -1,47 +1,51 @@
-import { Box, ContentContainer, HorizontalScrollBar } from '@codecademy/gamut';
-import { CurriculumCard, CurriculumCardProps } from '@codecademy/gamut-labs';
+import { Box, ContentContainer } from '@codecademy/gamut';
+import {
+  ContainerDifficulty,
+  CurriculumCard,
+  HorizontalScrollMenu,
+} from '@codecademy/gamut-labs';
 import React from 'react';
 
 const courseData = [
   {
     id: 'a',
     title: 'JavaScript',
-    difficulty: 1 as CurriculumCardProps['difficulty'],
+    difficulty: ContainerDifficulty.Beginner,
     scope: { Lesson: 24 },
     text: 'course',
   },
   {
     id: 'b',
     title: 'Python',
-    difficulty: 0 as CurriculumCardProps['difficulty'],
+    difficulty: ContainerDifficulty.Beginner,
     scope: { Lesson: 32 },
     text: 'course',
   },
   {
     id: 'c',
     title: 'Go',
-    difficulty: 1 as CurriculumCardProps['difficulty'],
+    difficulty: ContainerDifficulty.Beginner,
     scope: { Lesson: 5 },
     text: 'course',
   },
   {
     id: 'd',
     title: 'React',
-    difficulty: 1 as CurriculumCardProps['difficulty'],
+    difficulty: ContainerDifficulty.Beginner,
     scope: { Lesson: 18 },
     text: 'course',
   },
   {
     id: 'e',
     title: 'Intro to Django',
-    difficulty: 1 as CurriculumCardProps['difficulty'],
+    difficulty: ContainerDifficulty.Beginner,
     scope: { Lesson: 29 },
     text: 'course',
   },
   {
     id: 'f',
     title: 'PHP',
-    difficulty: 1 as CurriculumCardProps['difficulty'],
+    difficulty: ContainerDifficulty.Beginner,
     scope: { Lesson: 52 },
     text: 'course',
   },
@@ -50,13 +54,13 @@ const courseData = [
 export const HorizontalScrollMenuExample = () => {
   return (
     <ContentContainer py={32}>
-      <HorizontalScrollBar scrollInterval={400}>
+      <HorizontalScrollMenu>
         {courseData.map((props) => (
           <Box key={props.id} minWidth={400} maxWidth={400} mx={16}>
             <CurriculumCard {...props} />
           </Box>
         ))}
-      </HorizontalScrollBar>
+      </HorizontalScrollMenu>
     </ContentContainer>
   );
 };
