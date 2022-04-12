@@ -253,7 +253,14 @@ export const freeProfile = (
   user: User,
   isMobile?: boolean
 ): AppHeaderProfileDropdownItem => {
-  const topSection = [profileMyProfile, profileAccount, profileMyHome];
+  const topSection = [profileMyProfile];
+
+  if (!user.isBusinessSsoUser) {
+    topSection.push(profileAccount);
+  }
+
+  topSection.push(profileMyHome);
+
   if (!isMobile && user.isAccountManager) {
     topSection.push(profileBusinessAccount);
   }
