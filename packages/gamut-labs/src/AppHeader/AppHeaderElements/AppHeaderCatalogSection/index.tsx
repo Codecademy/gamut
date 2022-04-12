@@ -94,10 +94,10 @@ export const AppHeaderCatalogSection = React.forwardRef<
       <StyledColumn size={12} key={item.id}>
         <LayoutGrid>
           <Column size={{ _: 12, md: 4 }}>
-            <Box bg="background-selected" p={16}>
+            <FlexBox bg="background-selected" flexDirection="column" p={16}>
               <StyledTitle>{section.title}</StyledTitle>
               <StyledDescription>{section.description}</StyledDescription>
-            </Box>
+            </FlexBox>
           </Column>
           <Column size={{ _: 12, md: 8 }} p={16}>
             <FlexBox
