@@ -1,7 +1,11 @@
 import title from '@codecademy/macros/lib/title.macro';
 import { Meta, Story } from '@storybook/addon-docs/blocks';
 
-import { BackgroundExample, ColorModeExample } from './examples';
+import {
+  BackgroundExample,
+  ColorModeExample,
+  PrefersDarkModeExample,
+} from './examples';
 
 <Meta
   title={title}
@@ -100,3 +104,9 @@ In some cases you may want to use multiple areas with different backgrounds. `<B
 <BackgroundExample bg="black">
   <BackgroundExample bg="paleGreen" />
 </BackgroundExample>
+
+## `usePrefersDarkMode`
+
+If you want to check which color mode the user prefers, you can use `usePrefersDarkMode` and it will return a boolean value using `window.matchMedia('(prefers-color-scheme: dark)')` [media query](https://developer.mozilla.org/en-US/docs/Web/API/Window/matchMedia).
+
+<PrefersDarkModeExample />
