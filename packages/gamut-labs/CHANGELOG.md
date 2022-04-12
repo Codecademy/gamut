@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [31.4.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@31.3.3...@codecademy/gamut-labs@31.4.0) (2022-04-12)
+
+
+### Features
+
+* **AppHeaderCatalogDropdown:** added AppHeaderCatalogDropdown component ([e6920eb](https://github.com/Codecademy/gamut/commit/e6920eb7fd75fee00ea89f4e4a6091208d39feff)), closes [/www.notion.so/codecademy/Catalog-navigation-dropdown-3c192fe69b9d4bd392897f79ce188bef#429773b40b664620a0f3215dbd8cad58](https://github.com/Codecademy//www.notion.so/codecademy/Catalog-navigation-dropdown-3c192fe69b9d4bd392897f79ce188bef/issues/429773b40b664620a0f3215dbd8cad58) [/www.notion.so/codecademy/Navigation-catalog-dropdown-3c192fe69b9d4bd392897f79ce188bef#f9a5a439fe4444299fded4e28c6eca27](https://github.com/Codecademy//www.notion.so/codecademy/Navigation-catalog-dropdown-3c192fe69b9d4bd392897f79ce188bef/issues/f9a5a439fe4444299fded4e28c6eca27)
+
+
+
 ### [31.3.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@31.3.2...@codecademy/gamut-labs@31.3.3) (2022-04-06)
 
 **Note:** Version bump only for package @codecademy/gamut-labs
