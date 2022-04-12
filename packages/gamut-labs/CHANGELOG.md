@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [31.5.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@31.4.0...@codecademy/gamut-labs@31.5.0) (2022-04-12)
+
+
+### Features
+
+* **HorizontalScrollBar:** added Horizontal Scrollbar component ([f3feaeb](https://github.com/Codecademy/gamut/commit/f3feaeba7fc1342c18db26bcd458009d38da467d))
+
+
+
 ## [31.4.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@31.3.3...@codecademy/gamut-labs@31.4.0) (2022-04-12)
 
 

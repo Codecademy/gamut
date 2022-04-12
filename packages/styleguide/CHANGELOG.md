@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [56.3.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@56.2.4...@codecademy/styleguide@56.3.0) (2022-04-12)
+
+
+### Features
+
+* **HorizontalScrollBar:** added Horizontal Scrollbar component ([f3feaeb](https://github.com/Codecademy/gamut/commit/f3feaeba7fc1342c18db26bcd458009d38da467d))
+
+
+
 ### [56.2.4](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@56.2.3...@codecademy/styleguide@56.2.4) (2022-04-12)
 
 **Note:** Version bump only for package @codecademy/styleguide
