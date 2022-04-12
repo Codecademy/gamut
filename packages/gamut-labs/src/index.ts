@@ -47,3 +47,4 @@ export * from './TabsExperimental';
 export * from './PageAlerts';
 export * from './InfoCard';
 export * from './PausableImage';
+export * from './HorizontalScrollMenu';
