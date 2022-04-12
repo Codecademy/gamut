@@ -9,6 +9,10 @@ const ScrollContainer = styled(FlexBox)`
   }
 `;
 
+const ScrollItemWrapper = styled(Box)`
+  scroll-snap-align: start;
+`;
+
 export interface HorizontalScrollMenuProps {
   className?: string;
 }
@@ -59,7 +63,7 @@ export const HorizontalScrollMenu: React.FC<HorizontalScrollMenuProps> = ({
         overflowX="scroll"
       >
         {Children.map(children, (child, index) => (
-          <Box
+          <ScrollItemWrapper
             ref={(element) => {
               if (element) {
                 elementsRef.current[index] = element;
@@ -67,7 +71,7 @@ export const HorizontalScrollMenu: React.FC<HorizontalScrollMenuProps> = ({
             }}
           >
             {child}
-          </Box>
+          </ScrollItemWrapper>
         ))}
       </ScrollContainer>
     </Box>
