@@ -1,0 +1,54 @@
+import { Aside } from '@codecademy/gamut';
+import {
+  BookFlipPageIcon,
+  StarIcon,
+  StreakIcon,
+} from '@codecademy/gamut-icons';
+import title from '@codecademy/macros/lib/title.macro';
+import { PropsTable } from '@codecademy/storybook-addon-variance';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+
+<Meta
+  title={title}
+  component={Aside}
+  parameters={{
+    subtitle: 'An aside component',
+    source: 'gamut',
+    status: 'current',
+    design: {
+      type: 'figma',
+      url:
+        'https://www.figma.com/file/2Hh7PYIPWLf4ZmWW4yKTfu/Gamut-Example---Aside-Component?node-id=2%3A2',
+    },
+  }}
+  args={{
+    header: 'Aside Header',
+    headerLevel: 'h2',
+    subtitle: 'A long and good subtitle',
+    listItems: [
+      { icon: StreakIcon, itemText: 'Intro to Javascript', id: 'Javascript' },
+      { icon: BookFlipPageIcon, itemText: '74 exercises', id: 'exercises' },
+      { icon: StarIcon, itemText: 'Follow your dreams', id: 'dream' },
+    ],
+    primaryButton: { children: 'Primary', onClick: () => {} },
+    secondaryButton: { children: 'Secondary', onClick: () => {} },
+  }}
+/>
+
+`Aside` component summary goes here
+
+## Design Principles
+
+Design Principles summary
+
+## Usage Guidelines
+
+Usage summary
+
+## Code Playground
+
+<Canvas>
+  <Story name="Aside">{(args) => <Aside {...args} />}</Story>
+</Canvas>
+
+<PropsTable story="Aside" />
