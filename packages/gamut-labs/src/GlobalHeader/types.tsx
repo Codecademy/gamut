@@ -28,6 +28,7 @@ export type User = {
   displayName: string;
   isAdmin?: boolean;
   isBusinessAdmin?: boolean;
+  isBusinessSsoUser?: boolean;
   isCustomerSupport?: boolean;
   isAccountManager?: boolean;
   isPaused?: boolean;
