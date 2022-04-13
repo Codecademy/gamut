@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [13.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@13.0.2...@codecademy/gamut-styles@13.1.0) (2022-04-13)
+
+
+### Features
+
+* **SocialMediaSharing:** making SocialMediaSharing responsive to colormode ([591414e](https://github.com/Codecademy/gamut/commit/591414e523b8c4a8fba73e1ee0c380806fe5ff1e))
+
+
+
 ### [13.0.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@13.0.1...@codecademy/gamut-styles@13.0.2) (2022-02-18)
 
 **Note:** Version bump only for package @codecademy/gamut-styles
