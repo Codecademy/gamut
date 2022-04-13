@@ -104,7 +104,7 @@ export const AppHeaderCatalogDropdown: React.FC<AppHeaderCatalogDropdownProps> =
           ref={containerRef}
           id={`menu-container${item.text}`}
           aria-hidden={!isOpen}
-          tabIndex={!isOpen ? -1 : undefined}
+          tab-index="inherit"
         />
       </StyledDropdown>
     </>
