@@ -83,43 +83,43 @@ export const SocialMediaSharing: React.FC<SocialMediaSharingProps> = ({
   label,
   sectionId,
   size = 'normal',
-  variant = 'black',
   iconStyles,
-}) => (
-  <Box display="inline-flex" flexDirection="column" alignItems="center">
-    {label && (
-      <Text
-        fontSize={size === 'small' ? 14 : 16}
-        textColor="gray-900"
-        mb={16}
-        data-testid="social-sharing-label"
+}) => {
+  return (
+    <Box display="inline-flex" flexDirection="column" alignItems="center">
+      {label && (
+        <Text
+          fontSize={size === 'small' ? 14 : 16}
+          textColor="text"
+          mb={16}
+          data-testid="social-sharing-label"
+        >
+          {label}
+        </Text>
+      )}
+      <GridBox
+        gridAutoColumns="max-content"
+        gridAutoFlow="column"
+        gap={16}
+        className={iconStyles}
       >
-        {label}
-      </Text>
-    )}
-    <GridBox
-      gridAutoColumns="max-content"
-      gridAutoFlow="column"
-      gap={16}
-      className={iconStyles}
-    >
-      {SOCIAL_SHARING_PLATFORMS.map(({ id, icon, formatShare, baseUrl }) => (
-        <SocialShareIconLink
-          key={id}
-          id={id}
-          sectionId={sectionId}
-          href={createShareLink(formatShare, baseUrl, {
-            url,
-            message,
-            hashtags,
-            mention,
-          })}
-          icon={icon}
-          size={size}
-          onClick={(e) => action?.(e, `${id}_share`)}
-          variant={variant}
-        />
-      ))}
-    </GridBox>
-  </Box>
-);
+        {SOCIAL_SHARING_PLATFORMS.map(({ id, icon, formatShare, baseUrl }) => (
+          <SocialShareIconLink
+            key={id}
+            id={id}
+            sectionId={sectionId}
+            href={createShareLink(formatShare, baseUrl, {
+              url,
+              message,
+              hashtags,
+              mention,
+            })}
+            icon={icon}
+            size={size}
+            onClick={(e) => action?.(e, `${id}_share`)}
+          />
+        ))}
+      </GridBox>
+    </Box>
+  );
+};

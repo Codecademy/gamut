@@ -3,6 +3,50 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [31.6.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@31.5.0...@codecademy/gamut-labs@31.6.0) (2022-04-13)
+
+
+### Features
+
+* **SocialMediaSharing:** making SocialMediaSharing responsive to colormode ([591414e](https://github.com/Codecademy/gamut/commit/591414e523b8c4a8fba73e1ee0c380806fe5ff1e))
+
+
+
+## [31.5.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@31.4.0...@codecademy/gamut-labs@31.5.0) (2022-04-12)
+
+
+### Features
+
+* **HorizontalScrollBar:** added Horizontal Scrollbar component ([f3feaeb](https://github.com/Codecademy/gamut/commit/f3feaeba7fc1342c18db26bcd458009d38da467d))
+
+
+
+## [31.4.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@31.3.3...@codecademy/gamut-labs@31.4.0) (2022-04-12)
+
+
+### Features
+
+* **AppHeaderCatalogDropdown:** added AppHeaderCatalogDropdown component ([e6920eb](https://github.com/Codecademy/gamut/commit/e6920eb7fd75fee00ea89f4e4a6091208d39feff)), closes [/www.notion.so/codecademy/Catalog-navigation-dropdown-3c192fe69b9d4bd392897f79ce188bef#429773b40b664620a0f3215dbd8cad58](https://github.com/Codecademy//www.notion.so/codecademy/Catalog-navigation-dropdown-3c192fe69b9d4bd392897f79ce188bef/issues/429773b40b664620a0f3215dbd8cad58) [/www.notion.so/codecademy/Navigation-catalog-dropdown-3c192fe69b9d4bd392897f79ce188bef#f9a5a439fe4444299fded4e28c6eca27](https://github.com/Codecademy//www.notion.so/codecademy/Navigation-catalog-dropdown-3c192fe69b9d4bd392897f79ce188bef/issues/f9a5a439fe4444299fded4e28c6eca27)
+
+
+
+### [31.3.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@31.3.2...@codecademy/gamut-labs@31.3.3) (2022-04-06)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [31.3.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@31.3.1...@codecademy/gamut-labs@31.3.2) (2022-04-06)
+
+
+### Bug Fixes
+
+* **GlobalHeader:** Pass user to all anon header items ([d21ebab](https://github.com/Codecademy/gamut/commit/d21ebabb019437ffcbcceac687e524477fd5a743))
+
+
+
 ### [31.3.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@31.3.0...@codecademy/gamut-labs@31.3.1) (2022-04-05)
 
 

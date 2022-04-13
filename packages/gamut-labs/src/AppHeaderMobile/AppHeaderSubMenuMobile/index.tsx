@@ -4,11 +4,16 @@ import { css } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React from 'react';
 
+import { AppHeaderCatalogDropdownProps } from '../../AppHeader/AppHeaderElements/AppHeaderCatalogDropdown';
+import { AppHeaderCatalogSection } from '../../AppHeader/AppHeaderElements/AppHeaderCatalogSection';
 import { AppHeaderDropdownProps } from '../../AppHeader/AppHeaderElements/AppHeaderDropdown';
 import { AppHeaderLinkSections } from '../../AppHeader/AppHeaderElements/AppHeaderLinkSections';
 import { AppHeaderListItem } from '../../AppHeader/AppHeaderElements/AppHeaderListItem';
 
-export type AppHeaderSubMenuMobileProps = AppHeaderDropdownProps & {
+export type AppHeaderSubMenuMobileProps = (
+  | AppHeaderDropdownProps
+  | AppHeaderCatalogDropdownProps
+) & {
   handleClose: () => void;
 };
 
@@ -38,7 +43,11 @@ export const AppHeaderSubMenuMobile: React.FC<AppHeaderSubMenuMobileProps> = ({
       <Text as="h1" fontSize={22} mb={16}>
         {item.type === 'profile-dropdown' ? item.userDisplayName : item.text}
       </Text>
-      <AppHeaderLinkSections action={action} item={item} showIcon />
+      {item.type === 'catalog-dropdown' ? (
+        <AppHeaderCatalogSection action={action} item={item} />
+      ) : (
+        <AppHeaderLinkSections action={action} item={item} showIcon />
+      )}
     </AppHeaderListItem>
   );
 };
