@@ -68,6 +68,7 @@ export const courseCatalog: AppHeaderLinkItem = {
 export const catalogDropdown = (
   hideCareerPaths?: boolean
 ): AppHeaderCatalogDropdownItem => ({
+  dataTestId: 'header-catalog',
   icon: BookFlipPageIcon,
   id: 'catalog-dropdown',
   text: 'Catalog',
