@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [31.6.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@31.5.0...@codecademy/gamut-labs@31.6.0) (2022-04-13)
+
+
+### Features
+
+* **SocialMediaSharing:** making SocialMediaSharing responsive to colormode ([591414e](https://github.com/Codecademy/gamut/commit/591414e523b8c4a8fba73e1ee0c380806fe5ff1e))
+
+
+
 ## [31.5.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@31.4.0...@codecademy/gamut-labs@31.5.0) (2022-04-12)
 
 
