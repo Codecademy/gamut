@@ -390,12 +390,4 @@ describe('GlobalHeader', () => {
       expect(onLinkAction).toHaveBeenCalledTimes(1);
     });
   });
-
-  describe('user who is not in catalog dropdown experiment', () => {
-    it('renders projects and challenges in resourcesDropdown', () => {
-      const { view } = renderView(proHeaderProps);
-      view.getByText('Projects');
-      view.getByText('Challenges');
-    });
-  });
 });

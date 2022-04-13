@@ -1,6 +1,6 @@
 import { AppHeaderCatalogDataItem } from '../../AppHeader/AppHeaderElements/types';
 
-const catalogList: AppHeaderCatalogDataItem[] = [
+export const catalogList: AppHeaderCatalogDataItem[] = [
   {
     title: 'Top career paths',
     description: 'Land an entry-level role in tech with step-by-step guidance.',

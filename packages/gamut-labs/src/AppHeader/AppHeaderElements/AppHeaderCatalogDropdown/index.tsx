@@ -1,6 +1,4 @@
-import cx from 'classnames';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import { useIsomorphicLayoutEffect } from 'react-use';
 
 import {
   DropdownAnchor,
@@ -22,7 +20,6 @@ export const AppHeaderCatalogDropdown: React.FC<AppHeaderCatalogDropdownProps> =
 }) => {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
-  const [height, setHeight] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
 
   const focusButton = () => {
@@ -42,13 +39,6 @@ export const AppHeaderCatalogDropdown: React.FC<AppHeaderCatalogDropdownProps> =
     setIsOpen(false);
     focusButton();
   }, []);
-
-  useIsomorphicLayoutEffect(() => {
-    if (containerRef.current) {
-      const { height } = containerRef.current.getBoundingClientRect();
-      setHeight(height);
-    }
-  }, [containerRef, isOpen]);
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent | Event) {
@@ -91,11 +81,7 @@ export const AppHeaderCatalogDropdown: React.FC<AppHeaderCatalogDropdownProps> =
         >
           {item.text}
         </StyledText>
-        <DropdownIcon
-          aria-label="dropdown"
-          className={cx(isOpen && 'open')}
-          size={12}
-        />
+        <DropdownIcon aria-label="dropdown" open={isOpen} size={12} />
       </DropdownAnchor>
       <StyledDropdown
         style={{
@@ -105,7 +91,7 @@ export const AppHeaderCatalogDropdown: React.FC<AppHeaderCatalogDropdownProps> =
         initial={{ borderWidth: 0, height: 0 }}
         animate={{
           borderWidth: isOpen ? 1 : 0,
-          height: isOpen ? height : 0,
+          height: isOpen ? 'fit-content' : 0,
         }}
         transition={{ duration: 0.175 }}
         aria-hidden={!isOpen}

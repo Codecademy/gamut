@@ -78,7 +78,7 @@ export type AppHeaderCatalogDropdownItem = AppHeaderBaseItem<'catalog-dropdown'>
   trackingTarget: string;
 };
 
-type AppHeaderCatalogSubheaderItem = AppHeaderBaseItem<'subheader'> & {
+export type AppHeaderCatalogSubheaderItem = AppHeaderBaseItem<'subheader'> & {
   text: string;
 };
 

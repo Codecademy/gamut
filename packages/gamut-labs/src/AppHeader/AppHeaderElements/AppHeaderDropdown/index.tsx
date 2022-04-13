@@ -1,7 +1,6 @@
 import { IconButton } from '@codecademy/gamut';
 import { css } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
-import cx from 'classnames';
 import React, {
   useCallback,
   useEffect,
@@ -245,11 +244,7 @@ export const AppHeaderDropdown: React.FC<AppHeaderDropdownProps> = ({
       >
         {item.text}
       </StyledText>
-      <DropdownIcon
-        aria-label="dropdown"
-        className={cx(isOpen && 'open')}
-        size={12}
-      />
+      <DropdownIcon aria-label="dropdown" open={isOpen} size={12} />
     </DropdownAnchor>
   );
 
