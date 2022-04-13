@@ -146,6 +146,7 @@ export const getMemoizedStyles = (
       ...textColor({ theme }),
       display: 'flex',
       alignItems: 'center',
+      marginLeft: 0,
     }),
     multiValue: (provided) => ({
       ...provided,
