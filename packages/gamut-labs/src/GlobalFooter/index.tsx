@@ -32,7 +32,7 @@ export type GlobalFooterProps = {
 };
 
 const FooterContainer = styled.footer`
-  border-top: 1px solid ${themed('colors.navy')};
+  border-top: 1px solid ${themed('colors.secondary')};
 
   @media print {
     display: none;

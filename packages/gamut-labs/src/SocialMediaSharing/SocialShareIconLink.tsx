@@ -8,7 +8,6 @@ const IconLink = styled(Box)``.withComponent(Anchor);
 export type BaseSocialShareProps = {
   sectionId?: string;
   size?: 'small' | 'normal';
-  variant?: 'black' | 'white';
 };
 
 export type SocialShareIconLinkProps = BaseSocialShareProps & {
@@ -25,7 +24,6 @@ export const SocialShareIconLink: React.FC<SocialShareIconLinkProps> = ({
   onClick,
   size,
   sectionId,
-  variant,
 }) => {
   const onIconClick = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -48,14 +46,14 @@ export const SocialShareIconLink: React.FC<SocialShareIconLinkProps> = ({
       lineHeight={0}
       borderStyle="solid"
       borderWidth={size === 'small' ? 1 : 2}
-      borderColor={variant}
+      borderColor="text"
       borderRadius="50%"
     >
       <IconComponent
         title={id}
         titleId={`${sectionId}-${id}`}
         size={size === 'small' ? 16 : 24}
-        color={variant}
+        color="text"
       />
     </IconLink>
   );

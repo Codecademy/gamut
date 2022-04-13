@@ -6,7 +6,8 @@ export type AppHeaderItem =
   | AppHeaderItemWithHref
   | AppHeaderSimpleDropdownItem
   | AppHeaderProfileDropdownItem
-  | AppHeaderRenderElementItem;
+  | AppHeaderRenderElementItem
+  | AppHeaderCatalogDropdownItem;
 
 export type AppHeaderItemWithHref =
   | AppHeaderLogoItem
@@ -68,6 +69,23 @@ export type AppHeaderProfileDropdownItem = AppHeaderBaseItem<'profile-dropdown'>
 
 export type AppHeaderRenderElementItem = AppHeaderBaseItem<'render-element'> & {
   renderElement: () => ReactNode;
+};
+
+export type AppHeaderCatalogDropdownItem = AppHeaderBaseItem<'catalog-dropdown'> & {
+  icon?: React.ComponentType<GamutIconProps>;
+  popover: AppHeaderCatalogDataItem[];
+  text: string;
+  trackingTarget: string;
+};
+
+export type AppHeaderCatalogSubheaderItem = AppHeaderBaseItem<'subheader'> & {
+  text: string;
+};
+
+export type AppHeaderCatalogDataItem = {
+  title: string;
+  description: string;
+  data: (AppHeaderLinkItem | AppHeaderCatalogSubheaderItem)[];
 };
 
 export type AppHeaderClickHandler<ItemType = AppHeaderItem> = (
