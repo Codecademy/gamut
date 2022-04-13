@@ -42,7 +42,7 @@ export const FocusTrap: React.FC<FocusTrapProps> = ({
   onClickOutside,
   onEscapeKey,
   active = true,
-  allowPageInteraction = true,
+  allowPageInteraction = false,
   focusOnProps,
 }) => {
   return (

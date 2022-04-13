@@ -125,6 +125,7 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
         escapeCloses
         isOpen={mobileMenuOpen}
         onRequestClose={() => setMobileMenuOpen(false)}
+        allowScroll
       >
         <HeaderHeightArea
           display={{ _: `block`, [appHeaderMobileBreakpoint]: `none` }}
