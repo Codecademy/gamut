@@ -70,13 +70,13 @@ const getMobileAppHeaderItems = (
     case 'anon':
       switch (props.variant) {
         case 'landing':
-          return anonLandingMobileHeaderItems(props.hidePricing);
+          return anonLandingMobileHeaderItems(props.hidePricing, props.user);
         case 'login':
-          return anonLoginMobileHeaderItems(props.hidePricing);
+          return anonLoginMobileHeaderItems(props.hidePricing, props.user);
         case 'signup':
-          return anonSignupMobileHeaderItems(props.hidePricing);
+          return anonSignupMobileHeaderItems(props.hidePricing, props.user);
         default:
-          return anonDefaultMobileHeaderItems(props.hidePricing);
+          return anonDefaultMobileHeaderItems(props.hidePricing, props.user);
       }
     case 'free':
       return freeMobileHeaderItems(props.user, props.hidePricing);

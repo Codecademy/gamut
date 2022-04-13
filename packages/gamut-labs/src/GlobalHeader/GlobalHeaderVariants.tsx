@@ -6,6 +6,7 @@ import {
   FormattedMobileAppHeaderItems,
 } from '../AppHeader/types';
 import {
+  catalogDropdown,
   communityDropdown,
   courseCatalog,
   favorites,
@@ -33,7 +34,7 @@ const anonHeaderItems = (
 ): FormattedAppHeaderItems => {
   const leftItems: AppHeaderItem[] = [
     logo,
-    courseCatalog,
+    ...(user?.useNewCatalogDropdown ? [catalogDropdown] : [courseCatalog]),
     resourcesDropdown(user?.useNewCatalogDropdown),
     communityDropdown,
     ...(hidePricing ? [] : [pricingDropdown]),
@@ -71,7 +72,7 @@ const anonMobileHeaderItems = (
   }
 
   const mainMenuItems: AppHeaderItem[] = [
-    courseCatalog,
+    ...(user?.useNewCatalogDropdown ? [catalogDropdown] : [courseCatalog]),
     resourcesDropdown(user?.useNewCatalogDropdown),
     communityDropdown,
     ...(hidePricing ? [] : [pricingDropdown]),
@@ -151,7 +152,7 @@ export const freeHeaderItems = (
   const leftItems: AppHeaderItem[] = [
     logo,
     myHome,
-    courseCatalog,
+    ...(user?.useNewCatalogDropdown ? [catalogDropdown] : [courseCatalog]),
     resourcesDropdown(user.useNewCatalogDropdown),
     communityDropdown,
     ...(hidePricing ? [] : [pricingDropdown]),
@@ -183,7 +184,7 @@ export const freeMobileHeaderItems = (
   const leftItems: AppHeaderItem[] = [logo];
   const mainMenuItems: AppHeaderItem[] = [
     myHome,
-    courseCatalog,
+    ...(user?.useNewCatalogDropdown ? [catalogDropdown] : [courseCatalog]),
     resourcesDropdown(user.useNewCatalogDropdown),
     communityDropdown,
     ...(hidePricing ? [] : [pricingDropdown]),
@@ -208,7 +209,7 @@ export const proHeaderItems = (
   const leftItems: AppHeaderItem[] = [
     proLogo,
     myHome,
-    courseCatalog,
+    ...(user?.useNewCatalogDropdown ? [catalogDropdown] : [courseCatalog]),
     resourcesDropdown(user.useNewCatalogDropdown),
     communityDropdown,
   ];
@@ -236,7 +237,7 @@ export const proMobileHeaderItems = (
 
   const mainMenuItems: AppHeaderItem[] = [
     myHome,
-    courseCatalog,
+    ...(user?.useNewCatalogDropdown ? [catalogDropdown] : [courseCatalog]),
     resourcesDropdown(user.useNewCatalogDropdown),
     communityDropdown,
     proProfile(user, true),
