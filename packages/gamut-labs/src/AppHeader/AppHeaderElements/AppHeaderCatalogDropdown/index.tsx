@@ -95,6 +95,7 @@ export const AppHeaderCatalogDropdown: React.FC<AppHeaderCatalogDropdownProps> =
         }}
         transition={{ duration: 0.175 }}
         aria-hidden={!isOpen}
+        tabIndex={!isOpen ? -1 : undefined}
       >
         <AppHeaderCatalogSection
           action={action}
