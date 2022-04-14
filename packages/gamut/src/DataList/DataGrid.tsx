@@ -20,8 +20,8 @@ export interface DataGridProps<
   loading?: boolean;
   /** Whether an additional header element should be added */
   header?: boolean;
-  /** Whether Select All checkmark should be shown in the header. Defaults to true */
-  showSelectAll?: boolean;
+  /** Whether Select All checkmark should be hidden in the header. Defaults to false */
+  hideSelectAll?: boolean;
 }
 
 export function DataGrid<
@@ -48,7 +48,7 @@ export function DataGrid<
     header = true,
     showOverflow,
     emptyMessage,
-    showSelectAll = true,
+    hideSelectAll = false,
     ...rest
   } = props;
 
@@ -103,7 +103,7 @@ export function DataGrid<
                 columns={columns}
                 selected={allSelected}
                 empty={empty}
-                showSelectAll={showSelectAll}
+                hideSelectAll={hideSelectAll}
               />
             ) : null
           }

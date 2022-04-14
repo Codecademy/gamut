@@ -13,7 +13,7 @@ export interface DataTable {
       | 'onRowSelect'
       | 'expanded'
       | 'selected'
-      | 'showSelectAll'
+      | 'hideSelectAll'
     >
   ): ReactElement<any, any>;
 }
