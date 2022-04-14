@@ -44,6 +44,7 @@ const StyledContentContainer = styled(ContentContainer)(
   css({
     display: `flex`,
     flexDirection: `column`,
+    p: 0,
   })
 );
 
@@ -147,7 +148,7 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
               </AppHeaderListItem>
             </StyledMenuBar>
           </StyledAppBar>
-          <StyledContentContainer as="ul" role="menubar">
+          <StyledContentContainer role="menubar" size="small">
             <AppHeaderMainMenuMobile
               action={action}
               items={items.mainMenu}
