@@ -95,7 +95,6 @@ export const AppHeaderCatalogDropdown: React.FC<AppHeaderCatalogDropdownProps> =
         }}
         transition={{ duration: 0.175 }}
         aria-hidden={!isOpen}
-        tabIndex={!isOpen ? -1 : undefined}
       >
         <AppHeaderCatalogSection
           action={action}
@@ -103,8 +102,7 @@ export const AppHeaderCatalogDropdown: React.FC<AppHeaderCatalogDropdownProps> =
           role="menu"
           ref={containerRef}
           id={`menu-container${item.text}`}
-          aria-hidden={!isOpen}
-          tab-index="inherit"
+          isOpen={isOpen}
         />
       </StyledDropdown>
     </>
