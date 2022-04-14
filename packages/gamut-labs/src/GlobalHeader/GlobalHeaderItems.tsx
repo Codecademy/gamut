@@ -255,7 +255,7 @@ export const freeProfile = (
 ): AppHeaderProfileDropdownItem => {
   const topSection = [profileMyProfile];
 
-  if (!user.isBusinessSsoUser) {
+  if (user.isBusinessAdmin || !user.isBusinessSsoUser) {
     topSection.push(profileAccount);
   }
 
@@ -287,7 +287,7 @@ export const proProfile = (
 ): AppHeaderProfileDropdownItem => {
   const topSection = [profileMyProfile];
 
-  if (!user.isBusinessSsoUser) {
+  if (user.isBusinessAdmin || !user.isBusinessSsoUser) {
     topSection.push(profileAccount);
   }
 
