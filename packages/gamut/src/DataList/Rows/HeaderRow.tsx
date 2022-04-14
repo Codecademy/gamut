@@ -17,6 +17,7 @@ interface HeaderComponent {
     query?: Query<Row>;
     selected?: boolean;
     empty?: boolean;
+    showSelectAll?: boolean;
   }): ReactElement<any, any>;
 }
 
@@ -24,6 +25,7 @@ export const Header: HeaderComponent = ({
   columns,
   selected = false,
   empty = false,
+  showSelectAll,
 }) => {
   const {
     expandable,
@@ -37,15 +39,17 @@ export const Header: HeaderComponent = ({
   return (
     <ListHeader>
       {selectable && (
-        <ListCol size="content">
-          <SelectControl
-            disabled={empty}
-            rowId="header"
-            name={prefixId('all')}
-            label="Select All"
-            onSelect={onSelect}
-            selected={selected}
-          />
+        <ListCol size="content" minWidth={46}>
+          {showSelectAll && (
+            <SelectControl
+              disabled={empty}
+              rowId="header"
+              name={prefixId('all')}
+              label="Select All"
+              onSelect={onSelect}
+              selected={selected}
+            />
+          )}
         </ListCol>
       )}
       {columns.map(({ key, header, sortable, filters, ...colProps }) => {
