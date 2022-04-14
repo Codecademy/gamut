@@ -1,3 +1,4 @@
+import { ContentContainer } from '@codecademy/gamut';
 import { css, states } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React from 'react';
@@ -79,27 +80,29 @@ export const AppHeaderLinkSections = React.forwardRef<
   HTMLUListElement,
   AppHeaderLinkSectionsProps
 >(({ action, item, showIcon = false, onKeyDown, ...props }, ref) => (
-  <StyledList ref={ref} {...props}>
-    {item.type === 'profile-dropdown'
-      ? item.popover.map((linkSection: AppHeaderLinkItem[], sectionIndex) =>
-          linkSection.map((link: AppHeaderLinkItem, linkIndex) => (
+  <ContentContainer>
+    <StyledList ref={ref} {...props}>
+      {item.type === 'profile-dropdown'
+        ? item.popover.map((linkSection: AppHeaderLinkItem[], sectionIndex) =>
+            linkSection.map((link: AppHeaderLinkItem, linkIndex) => (
+              <LinkComponent
+                onKeyDown={onKeyDown}
+                key={link.id}
+                action={action}
+                link={link}
+                showLineBreak={sectionIndex !== 0 && linkIndex === 0}
+                showIcon={showIcon}
+              />
+            ))
+          )
+        : item.popover.map((link: AppHeaderLinkItem) => (
             <LinkComponent
               onKeyDown={onKeyDown}
               key={link.id}
               action={action}
               link={link}
-              showLineBreak={sectionIndex !== 0 && linkIndex === 0}
-              showIcon={showIcon}
             />
-          ))
-        )
-      : item.popover.map((link: AppHeaderLinkItem) => (
-          <LinkComponent
-            onKeyDown={onKeyDown}
-            key={link.id}
-            action={action}
-            link={link}
-          />
-        ))}
-  </StyledList>
+          ))}
+    </StyledList>
+  </ContentContainer>
 ));

@@ -1,4 +1,4 @@
-import { FillButton, TextButton } from '@codecademy/gamut';
+import { ContentContainer, FillButton, TextButton } from '@codecademy/gamut';
 import React, { useState } from 'react';
 
 import { AppHeaderLink } from '../../AppHeader/AppHeaderElements/AppHeaderLink';
@@ -99,9 +99,11 @@ export const AppHeaderMainMenuMobile: React.FC<AppHeaderMainMenuMobileProps> = (
         <MobileSearchBar onSearch={onSearch} />
       </AppHeaderListItem>
       {items.map((item) => (
-        <AppHeaderListItem key={item.id}>
-          {mapItemToElement(item, action)}
-        </AppHeaderListItem>
+        <ContentContainer>
+          <AppHeaderListItem key={item.id}>
+            {mapItemToElement(item, action)}
+          </AppHeaderListItem>
+        </ContentContainer>
       ))}
     </>
   );
