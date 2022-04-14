@@ -1,4 +1,3 @@
-// eslint-disable gamut/import-paths
 import {
   Box,
   Checkbox,
@@ -8,18 +7,9 @@ import {
   LayoutGrid,
   SelectDropdown,
 } from '@codecademy/gamut';
-import {
-  LockIcon,
-  NetworkUserIcon,
-  PeopleIcon,
-  RadarIcon,
-  ResponsiveIcon,
-  RocketIcon,
-} from '@codecademy/gamut-icons';
+import { RadarIcon, ResponsiveIcon, RocketIcon } from '@codecademy/gamut-icons';
 import { Background, ColorMode } from '@codecademy/gamut-styles';
 import React, { useState } from 'react';
-
-import { ColorModeExampleWrapper } from '../../Foundations/ColorMode/examples';
 
 type CustomCheckboxProps = Omit<CheckboxProps, 'checked'> & {
   defaultChecked?: boolean;
