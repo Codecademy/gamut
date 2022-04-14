@@ -51,7 +51,7 @@ const StyledSubheader = styled(Text)(
     fontWeight: `title`,
     lineHeight: `base`,
     mb: 8,
-    color: `text-disabled`,
+    color: `text-accent`,
   })
 );
 
