@@ -80,9 +80,9 @@ export const AppHeaderCatalogSection = React.forwardRef<
   HTMLDivElement,
   AppHeaderCatalogSectionProps
 >(({ action, item, isOpen }, ref) => {
-  const tabIndex = isOpen ? undefined : -1;
+  const tabIndex = isOpen === false ? -1 : 0;
   return (
-    <LayoutGrid ref={ref} aria-hidden={isOpen}>
+    <LayoutGrid ref={ref}>
       {item.popover.map((section) => (
         <StyledColumn size={12} key={item.id}>
           <LayoutGrid>
