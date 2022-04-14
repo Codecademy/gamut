@@ -1,4 +1,4 @@
-import { Box, ContentContainer } from '@codecademy/gamut';
+import { Box } from '@codecademy/gamut';
 import { SearchIcon } from '@codecademy/gamut-icons';
 import { css } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
@@ -59,28 +59,26 @@ export const MobileSearchBar: React.FC<MobileSearchBarProps> = ({
   };
 
   return (
-    <ContentContainer>
-      <SearchForm
-        action="/search"
-        display="flex"
-        id="search-form"
-        onSubmit={handleSubmit}
-        position="relative"
-        py={16}
-        width="100%"
-      >
-        <StyledInput
-          name="query"
-          type="search"
-          placeholder="Search our catalog"
-          aria-label="search"
-          value={searchValue}
-          onChange={handleChange}
-        />
-        <SearchButton aria-label="Enter search">
-          <SearchIcon />
-        </SearchButton>
-      </SearchForm>
-    </ContentContainer>
+    <SearchForm
+      action="/search"
+      display="flex"
+      id="search-form"
+      onSubmit={handleSubmit}
+      position="relative"
+      py={16}
+      width="100%"
+    >
+      <StyledInput
+        name="query"
+        type="search"
+        placeholder="Search our catalog"
+        aria-label="search"
+        value={searchValue}
+        onChange={handleChange}
+      />
+      <SearchButton aria-label="Enter search">
+        <SearchIcon />
+      </SearchButton>
+    </SearchForm>
   );
 };
