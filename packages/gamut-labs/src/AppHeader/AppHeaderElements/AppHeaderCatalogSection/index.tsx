@@ -106,6 +106,7 @@ export const AppHeaderCatalogSection = React.forwardRef<
                       pb={8}
                       href={item.href}
                       onClick={(event) => action(event, item)}
+                      tabIndex={-1}
                     >
                       {item.text}
                     </Anchor>
@@ -125,6 +126,7 @@ export const AppHeaderCatalogSection = React.forwardRef<
         fontWeight="title"
         href={catalogAnchorData.href}
         onClick={(event) => action(event, catalogAnchorData)}
+        tabIndex={-1}
       >
         {catalogAnchorData.text}
       </Anchor>
