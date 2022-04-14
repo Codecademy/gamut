@@ -1,9 +1,6 @@
-import { Anchor, IconButton, Text } from '@codecademy/gamut';
-import { ArrowChevronDownFilledIcon } from '@codecademy/gamut-icons';
-import { css, pxRem } from '@codecademy/gamut-styles';
+import { IconButton } from '@codecademy/gamut';
+import { css } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
-import cx from 'classnames';
-import { motion } from 'framer-motion';
 import React, {
   useCallback,
   useEffect,
@@ -14,58 +11,14 @@ import React, {
 import { useIsomorphicLayoutEffect } from 'react-use';
 
 import { Avatar } from '../../../Avatar';
+import {
+  DropdownAnchor,
+  DropdownIcon,
+  StyledDropdown,
+  StyledText,
+} from '../../shared';
 import { AppHeaderLinkSections } from '../AppHeaderLinkSections';
 import { AppHeaderClickHandler, AppHeaderDropdownItem } from '../types';
-
-const DropdownAnchor = styled(Anchor)(
-  css({
-    alignItems: `center`,
-    display: `flex`,
-    padding: `0.5rem 0`,
-    textAlign: `center`,
-    whiteSpace: `nowrap`,
-
-    '&:focus::before': {
-      opacity: 1,
-    },
-  })
-);
-
-const DropdownIcon = styled(ArrowChevronDownFilledIcon)(
-  css({
-    marginLeft: pxRem(5),
-    transition: `transform 0.35s ease-out`,
-    transformOrigin: `center ${pxRem(5)}`,
-
-    '&.open': {
-      transform: `rotate(-180deg)`,
-    },
-  })
-);
-
-const StyledText = styled(Text)(
-  css({
-    '&::after': {
-      display: `block`,
-      content: `attr(title)`,
-      fontWeight: `bold`,
-      height: `1px`,
-      color: `transparent`,
-      overflow: `hidden`,
-      visibility: `hidden`,
-    },
-  })
-);
-
-const StyledDropdown = styled(motion.div)(
-  css({
-    bg: `background`,
-    borderColor: `secondary`,
-    borderStyle: `solid`,
-    overflow: `hidden`,
-    position: `absolute`,
-  })
-);
 
 const StyledLinkSection = styled(AppHeaderLinkSections)(
   css({
@@ -291,11 +244,7 @@ export const AppHeaderDropdown: React.FC<AppHeaderDropdownProps> = ({
       >
         {item.text}
       </StyledText>
-      <DropdownIcon
-        aria-label="dropdown"
-        className={cx(isOpen && 'open')}
-        size={12}
-      />
+      <DropdownIcon aria-label="dropdown" open={isOpen} size={12} />
     </DropdownAnchor>
   );
 

@@ -3,6 +3,90 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [56.4.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@56.3.0...@codecademy/styleguide@56.4.0) (2022-04-13)
+
+
+### Features
+
+* **SocialMediaSharing:** making SocialMediaSharing responsive to colormode ([591414e](https://github.com/Codecademy/gamut/commit/591414e523b8c4a8fba73e1ee0c380806fe5ff1e))
+
+
+
+## [56.3.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@56.2.4...@codecademy/styleguide@56.3.0) (2022-04-12)
+
+
+### Features
+
+* **HorizontalScrollBar:** added Horizontal Scrollbar component ([f3feaeb](https://github.com/Codecademy/gamut/commit/f3feaeba7fc1342c18db26bcd458009d38da467d))
+
+
+
+### [56.2.4](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@56.2.3...@codecademy/styleguide@56.2.4) (2022-04-12)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [56.2.3](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@56.2.2...@codecademy/styleguide@56.2.3) (2022-04-06)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [56.2.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@56.2.1...@codecademy/styleguide@56.2.2) (2022-04-06)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [56.2.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@56.2.0...@codecademy/styleguide@56.2.1) (2022-04-05)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [56.2.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@56.1.2...@codecademy/styleguide@56.2.0) (2022-04-05)
+
+
+### Features
+
+* **Footer:** new footer ([#2302](https://github.com/Codecademy/gamut/issues/2302)) ([6702a51](https://github.com/Codecademy/gamut/commit/6702a511708c5f21ca65e6d1febc5eb1bd2364a2))
+
+
+
+### [56.1.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@56.1.1...@codecademy/styleguide@56.1.2) (2022-04-04)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [56.1.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@56.1.0...@codecademy/styleguide@56.1.1) (2022-04-01)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [56.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@56.0.3...@codecademy/styleguide@56.1.0) (2022-03-31)
+
+
+### Features
+
+* **AppHeader:** hide projects and challenges in nav variant ([b1427ec](https://github.com/Codecademy/gamut/commit/b1427ec199e86cf751a8743bfc3441e0a1b670b7))
+
+
+
 ### [56.0.3](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@56.0.2...@codecademy/styleguide@56.0.3) (2022-03-29)
 
 **Note:** Version bump only for package @codecademy/styleguide

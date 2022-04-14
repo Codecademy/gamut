@@ -6,6 +6,7 @@ import {
   FormattedMobileAppHeaderItems,
 } from '../AppHeader/types';
 import {
+  catalogDropdown,
   communityDropdown,
   courseCatalog,
   favorites,
@@ -28,12 +29,13 @@ import { User } from './types';
 const anonHeaderItems = (
   renderLogin: boolean,
   renderSignUp: boolean,
-  hidePricing?: boolean
+  hidePricing?: boolean,
+  user?: User
 ): FormattedAppHeaderItems => {
   const leftItems: AppHeaderItem[] = [
     logo,
-    courseCatalog,
-    resourcesDropdown,
+    ...(user?.useNewCatalogDropdown ? [catalogDropdown] : [courseCatalog]),
+    resourcesDropdown(user?.useNewCatalogDropdown),
     communityDropdown,
     ...(hidePricing ? [] : [pricingDropdown]),
     forBusiness,
@@ -56,7 +58,8 @@ const anonHeaderItems = (
 const anonMobileHeaderItems = (
   renderLogin: boolean,
   renderSignUp: boolean,
-  hidePricing?: boolean
+  hidePricing?: boolean,
+  user?: User
 ): FormattedMobileAppHeaderItems => {
   const leftItems: AppHeaderItem[] = [logo];
 
@@ -69,8 +72,8 @@ const anonMobileHeaderItems = (
   }
 
   const mainMenuItems: AppHeaderItem[] = [
-    courseCatalog,
-    resourcesDropdown,
+    ...(user?.useNewCatalogDropdown ? [catalogDropdown] : [courseCatalog]),
+    resourcesDropdown(user?.useNewCatalogDropdown),
     communityDropdown,
     ...(hidePricing ? [] : [pricingDropdown]),
     forBusiness,
@@ -86,51 +89,59 @@ const anonMobileHeaderItems = (
 };
 
 export const anonDefaultHeaderItems = (
-  hidePricing?: boolean
+  hidePricing?: boolean,
+  user?: User
 ): FormattedAppHeaderItems => {
-  return anonHeaderItems(true, true, hidePricing);
+  return anonHeaderItems(true, true, hidePricing, user);
 };
 
 export const anonDefaultMobileHeaderItems = (
-  hidePricing?: boolean
+  hidePricing?: boolean,
+  user?: User
 ): FormattedMobileAppHeaderItems => {
-  return anonMobileHeaderItems(true, true, hidePricing);
+  return anonMobileHeaderItems(true, true, hidePricing, user);
 };
 
 export const anonLandingHeaderItems = (
-  hidePricing?: boolean
+  hidePricing?: boolean,
+  user?: User
 ): FormattedAppHeaderItems => {
-  return anonHeaderItems(true, false, hidePricing);
+  return anonHeaderItems(true, false, hidePricing, user);
 };
 
 export const anonLandingMobileHeaderItems = (
-  hidePricing?: boolean
+  hidePricing?: boolean,
+  user?: User
 ): FormattedMobileAppHeaderItems => {
-  return anonMobileHeaderItems(true, false, hidePricing);
+  return anonMobileHeaderItems(true, false, hidePricing, user);
 };
 
 export const anonLoginHeaderItems = (
-  hidePricing?: boolean
+  hidePricing?: boolean,
+  user?: User
 ): FormattedAppHeaderItems => {
-  return anonHeaderItems(false, true, hidePricing);
+  return anonHeaderItems(false, true, hidePricing, user);
 };
 
 export const anonLoginMobileHeaderItems = (
-  hidePricing?: boolean
+  hidePricing?: boolean,
+  user?: User
 ): FormattedMobileAppHeaderItems => {
-  return anonMobileHeaderItems(false, true, hidePricing);
+  return anonMobileHeaderItems(false, true, hidePricing, user);
 };
 
 export const anonSignupHeaderItems = (
-  hidePricing?: boolean
+  hidePricing?: boolean,
+  user?: User
 ): FormattedAppHeaderItems => {
-  return anonHeaderItems(true, false, hidePricing);
+  return anonHeaderItems(true, false, hidePricing, user);
 };
 
 export const anonSignupMobileHeaderItems = (
-  hidePricing?: boolean
+  hidePricing?: boolean,
+  user?: User
 ): FormattedMobileAppHeaderItems => {
-  return anonMobileHeaderItems(true, false, hidePricing);
+  return anonMobileHeaderItems(true, false, hidePricing, user);
 };
 
 export const freeHeaderItems = (
@@ -141,8 +152,8 @@ export const freeHeaderItems = (
   const leftItems: AppHeaderItem[] = [
     logo,
     myHome,
-    courseCatalog,
-    resourcesDropdown,
+    ...(user?.useNewCatalogDropdown ? [catalogDropdown] : [courseCatalog]),
+    resourcesDropdown(user.useNewCatalogDropdown),
     communityDropdown,
     ...(hidePricing ? [] : [pricingDropdown]),
     forBusiness,
@@ -173,8 +184,8 @@ export const freeMobileHeaderItems = (
   const leftItems: AppHeaderItem[] = [logo];
   const mainMenuItems: AppHeaderItem[] = [
     myHome,
-    courseCatalog,
-    resourcesDropdown,
+    ...(user?.useNewCatalogDropdown ? [catalogDropdown] : [courseCatalog]),
+    resourcesDropdown(user.useNewCatalogDropdown),
     communityDropdown,
     ...(hidePricing ? [] : [pricingDropdown]),
     forBusiness,
@@ -198,8 +209,8 @@ export const proHeaderItems = (
   const leftItems: AppHeaderItem[] = [
     proLogo,
     myHome,
-    courseCatalog,
-    resourcesDropdown,
+    ...(user?.useNewCatalogDropdown ? [catalogDropdown] : [courseCatalog]),
+    resourcesDropdown(user.useNewCatalogDropdown),
     communityDropdown,
   ];
 
@@ -226,8 +237,8 @@ export const proMobileHeaderItems = (
 
   const mainMenuItems: AppHeaderItem[] = [
     myHome,
-    courseCatalog,
-    resourcesDropdown,
+    ...(user?.useNewCatalogDropdown ? [catalogDropdown] : [courseCatalog]),
+    resourcesDropdown(user.useNewCatalogDropdown),
     communityDropdown,
     proProfile(user, true),
   ];

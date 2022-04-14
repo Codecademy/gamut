@@ -26,7 +26,11 @@ import {
   SearchIcon,
   StreakIcon,
 } from '@codecademy/gamut-icons';
-import { Background, ColorMode } from '@codecademy/gamut-styles/src';
+import {
+  Background,
+  ColorMode,
+  usePrefersDarkMode,
+} from '@codecademy/gamut-styles/src';
 import React, { ComponentProps, useState } from 'react';
 
 const renderButtons = (
@@ -222,5 +226,30 @@ export const BackgroundExample: React.FC<ComponentProps<typeof Background>> = ({
       </Text>
       {children}
     </Background>
+  );
+};
+
+export const PrefersDarkModeExample = () => {
+  const prefersDarkMode = usePrefersDarkMode();
+  const mode = prefersDarkMode ? 'dark' : 'light';
+  const bg = prefersDarkMode ? 'navy' : 'paleBlue';
+
+  return (
+    <ColorMode mode={mode}>
+      <Background bg={bg} p={24}>
+        <Text variant="title-md" mb={16}>
+          user prefers dark mode:{' '}
+          <Text color="primary" fontFamily="monospace" ml={8}>
+            {prefersDarkMode.toString()}
+          </Text>
+        </Text>
+        <Text as="p" mb={16}>
+          Lorem ipsum dolor sit amet, sed do eiusmod tempor incididunt ut labore
+          et dolore <Anchor>magna aliqua</Anchor>. Ut <a href="#cool">enim</a>{' '}
+          ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat.
+        </Text>
+      </Background>
+    </ColorMode>
   );
 };

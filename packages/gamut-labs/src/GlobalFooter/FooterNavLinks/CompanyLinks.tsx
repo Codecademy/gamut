@@ -2,6 +2,7 @@ import { Anchor, Box, BoxProps, GridBox } from '@codecademy/gamut';
 import styled from '@emotion/styled';
 import React from 'react';
 
+import { LogoFromSkillsoft } from '../..';
 import { footerResourcesList } from '../../lib/resourcesList';
 import { FooterHeading } from '../FooterHeading';
 import {
@@ -92,7 +93,9 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
 
   const company = (
     <Box>
-      <FooterHeading>Company</FooterHeading>
+      <FooterHeading>
+        <LogoFromSkillsoft height={40} />
+      </FooterHeading>
       <FooterLinkItems>
         <FooterLinkItem>
           <Anchor

@@ -62,7 +62,7 @@ describe('useHeaderNotifications', () => {
     );
 
     act(() => {
-      userEvent.click(buttonView.getByRole('button'));
+      userEvent.click(buttonView.getByRole('menuitem'));
     });
 
     const paneView = render(

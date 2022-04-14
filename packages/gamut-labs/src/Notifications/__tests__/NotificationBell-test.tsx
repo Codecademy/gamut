@@ -42,7 +42,7 @@ describe('NotificationBell', () => {
       notifications: [createStubNotification()],
     });
 
-    userEvent.click(view.getByRole('button'));
+    userEvent.click(view.getByRole('menuitem'));
 
     expect(props.onClick).toHaveBeenCalled();
   });

@@ -8,6 +8,7 @@ import { HeaderHeightArea } from '../HeaderHeightArea';
 import { NotificationsPopover } from '../Notifications/NotificationsPopover';
 import { AppHeaderNotifications } from '../Notifications/types';
 import { useHeaderNotifications } from '../Notifications/useHeaderNotifications';
+import { AppHeaderCatalogDropdown } from './AppHeaderElements/AppHeaderCatalogDropdown';
 import { AppHeaderDropdown } from './AppHeaderElements/AppHeaderDropdown';
 import { AppHeaderLink } from './AppHeaderElements/AppHeaderLink';
 import { AppHeaderListItem } from './AppHeaderElements/AppHeaderListItem';
@@ -70,6 +71,8 @@ export const mapItemToElement = (
       return (
         <AppHeaderDropdown onKeyDown={onKeyDown} action={action} item={item} />
       );
+    case 'catalog-dropdown':
+      return <AppHeaderCatalogDropdown action={action} item={item} />;
     case 'render-element':
       return item.renderElement();
     case 'text-button':
