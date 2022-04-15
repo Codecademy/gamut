@@ -1,5 +1,5 @@
 import { isArray } from 'lodash';
-import React, { ComponentProps, forwardRef } from 'react';
+import React, { ComponentProps, forwardRef, useEffect, useRef } from 'react';
 
 import { Box, BoxProps } from '../Box';
 import { ListEl } from './elements';
@@ -8,6 +8,7 @@ import { AllListProps } from './types';
 
 export interface ListProps extends AllListProps<ComponentProps<typeof ListEl>> {
   scrollable?: boolean;
+  scrollToTopOnUpdate?: boolean;
   header?: React.ReactNode;
   height?: BoxProps['height'];
   minHeight?: BoxProps['minHeight'];
@@ -30,12 +31,21 @@ export const List = forwardRef<HTMLUListElement, ListProps>(
       header,
       emptyMessage,
       overflowHidden = false,
+      scrollToTopOnUpdate = false,
     },
     ref
   ) => {
     const isEmpty = !children || (isArray(children) && children.length === 0);
     const showShadow = shadow && scrollable && !isEmpty;
     const value = useList({ variant, spacing, scrollable });
+
+    const topOfTable = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+      if (scrollToTopOnUpdate && topOfTable.current !== null) {
+        topOfTable.current.scrollTo({ top: 0 });
+      }
+    });
 
     const listContent = (
       <ListEl ref={ref} variant={value.variant}>
@@ -52,6 +62,7 @@ export const List = forwardRef<HTMLUListElement, ListProps>(
             minHeight={minHeight}
             maxHeight={height}
             overflow={overflowHidden ? 'hidden' : 'auto'}
+            ref={topOfTable}
           >
             {header}
             {isEmpty ? emptyMessage : listContent}

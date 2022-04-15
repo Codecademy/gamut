@@ -49,6 +49,7 @@ export function DataGrid<
     showOverflow,
     emptyMessage,
     hideSelectAll = false,
+    scrollToTopOnUpdate = false,
     ...rest
   } = props;
 
@@ -91,12 +92,7 @@ export function DataGrid<
       <ListControlContext.Provider value={listControls}>
         <List
           {...rest}
-          shadow={shadow}
-          height={height}
-          scrollable={scrollable && (!empty || (loading && empty))}
-          variant={variant}
-          spacing={spacing}
-          minHeight={minHeight}
+          emptyMessage={emptyMessage ?? <EmptyRows />}
           header={
             header ? (
               <HeaderRow
@@ -107,7 +103,13 @@ export function DataGrid<
               />
             ) : null
           }
-          emptyMessage={emptyMessage ?? <EmptyRows />}
+          height={height}
+          minHeight={minHeight}
+          scrollable={scrollable && (!empty || (loading && empty))}
+          scrollToTopOnUpdate={scrollToTopOnUpdate}
+          shadow={shadow}
+          spacing={spacing}
+          variant={variant}
         >
           {renderedRows.map((row) => {
             const rowId = row[idKey];
