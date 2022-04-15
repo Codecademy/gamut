@@ -3,6 +3,104 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [31.6.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@31.6.0...@codecademy/gamut-labs@31.6.1) (2022-04-15)
+
+
+### Bug Fixes
+
+* **AppHeaderCatalogSection:** hot fix for CI failures ([ae0434a](https://github.com/Codecademy/gamut/commit/ae0434aec33eb49d62225f321ea34edc6ec4028b))
+
+
+
+## [31.6.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@31.5.0...@codecademy/gamut-labs@31.6.0) (2022-04-13)
+
+
+### Features
+
+* **SocialMediaSharing:** making SocialMediaSharing responsive to colormode ([591414e](https://github.com/Codecademy/gamut/commit/591414e523b8c4a8fba73e1ee0c380806fe5ff1e))
+
+
+
+## [31.5.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@31.4.0...@codecademy/gamut-labs@31.5.0) (2022-04-12)
+
+
+### Features
+
+* **HorizontalScrollBar:** added Horizontal Scrollbar component ([f3feaeb](https://github.com/Codecademy/gamut/commit/f3feaeba7fc1342c18db26bcd458009d38da467d))
+
+
+
+## [31.4.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@31.3.3...@codecademy/gamut-labs@31.4.0) (2022-04-12)
+
+
+### Features
+
+* **AppHeaderCatalogDropdown:** added AppHeaderCatalogDropdown component ([e6920eb](https://github.com/Codecademy/gamut/commit/e6920eb7fd75fee00ea89f4e4a6091208d39feff)), closes [/www.notion.so/codecademy/Catalog-navigation-dropdown-3c192fe69b9d4bd392897f79ce188bef#429773b40b664620a0f3215dbd8cad58](https://github.com/Codecademy//www.notion.so/codecademy/Catalog-navigation-dropdown-3c192fe69b9d4bd392897f79ce188bef/issues/429773b40b664620a0f3215dbd8cad58) [/www.notion.so/codecademy/Navigation-catalog-dropdown-3c192fe69b9d4bd392897f79ce188bef#f9a5a439fe4444299fded4e28c6eca27](https://github.com/Codecademy//www.notion.so/codecademy/Navigation-catalog-dropdown-3c192fe69b9d4bd392897f79ce188bef/issues/f9a5a439fe4444299fded4e28c6eca27)
+
+
+
+### [31.3.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@31.3.2...@codecademy/gamut-labs@31.3.3) (2022-04-06)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [31.3.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@31.3.1...@codecademy/gamut-labs@31.3.2) (2022-04-06)
+
+
+### Bug Fixes
+
+* **GlobalHeader:** Pass user to all anon header items ([d21ebab](https://github.com/Codecademy/gamut/commit/d21ebabb019437ffcbcceac687e524477fd5a743))
+
+
+
+### [31.3.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@31.3.0...@codecademy/gamut-labs@31.3.1) (2022-04-05)
+
+
+### Bug Fixes
+
+* **GlobalHeader:** fixing tab issue with GlobalHeader ([#2308](https://github.com/Codecademy/gamut/issues/2308)) ([43b66fd](https://github.com/Codecademy/gamut/commit/43b66fd7866ff619a11c05608d4ebb81e0edd53c))
+
+
+
+## [31.3.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@31.2.1...@codecademy/gamut-labs@31.3.0) (2022-04-05)
+
+
+### Features
+
+* **Footer:** new footer ([#2302](https://github.com/Codecademy/gamut/issues/2302)) ([6702a51](https://github.com/Codecademy/gamut/commit/6702a511708c5f21ca65e6d1febc5eb1bd2364a2))
+
+
+
+### [31.2.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@31.2.0...@codecademy/gamut-labs@31.2.1) (2022-04-04)
+
+
+### Reverts
+
+* Revert "feat(FromLogo): add logo" (#2306) ([6d16bdc](https://github.com/Codecademy/gamut/commit/6d16bdcb42b59de553398359393875d2c50b1f22)), closes [#2306](https://github.com/Codecademy/gamut/issues/2306)
+
+
+
+## [31.2.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@31.1.0...@codecademy/gamut-labs@31.2.0) (2022-04-01)
+
+
+### Features
+
+* **FromLogo:** add logo ([c48a054](https://github.com/Codecademy/gamut/commit/c48a054d2fe87f67542db1365caaf79d9a6cbc2c))
+
+
+
+## [31.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@31.0.3...@codecademy/gamut-labs@31.1.0) (2022-03-31)
+
+
+### Features
+
+* **AppHeader:** hide projects and challenges in nav variant ([b1427ec](https://github.com/Codecademy/gamut/commit/b1427ec199e86cf751a8743bfc3441e0a1b670b7))
+
+
+
 ### [31.0.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@31.0.2...@codecademy/gamut-labs@31.0.3) (2022-03-29)
 
 **Note:** Version bump only for package @codecademy/gamut-labs

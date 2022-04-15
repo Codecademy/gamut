@@ -14,6 +14,7 @@ import {
 import { ReactNode } from 'react';
 
 import {
+  AppHeaderCatalogDropdownItem,
   AppHeaderFillButtonItem,
   AppHeaderLinkItem,
   AppHeaderLogoItem,
@@ -22,6 +23,7 @@ import {
   AppHeaderSimpleDropdownItem,
   AppHeaderTextButtonItem,
 } from '../AppHeader/AppHeaderElements/types';
+import { catalogList } from '../lib/catalogList';
 import { headerResourcesList } from '../lib/resourcesList';
 import { User } from './types';
 
@@ -63,14 +65,25 @@ export const courseCatalog: AppHeaderLinkItem = {
   type: 'link',
 };
 
-export const resourcesDropdown: AppHeaderSimpleDropdownItem = {
+export const catalogDropdown: AppHeaderCatalogDropdownItem = {
+  icon: BookFlipPageIcon,
+  id: 'catalog-dropdown',
+  text: 'Catalog',
+  popover: catalogList,
+  trackingTarget: 'topnav_catalog_dropdown',
+  type: 'catalog-dropdown',
+};
+
+export const resourcesDropdown = (
+  useNewCatalogDropdown?: boolean
+): AppHeaderSimpleDropdownItem => ({
   icon: NotebookIcon,
   id: 'resources',
   text: 'Resources',
-  popover: headerResourcesList,
+  popover: headerResourcesList(useNewCatalogDropdown),
   trackingTarget: 'topnav_resources',
   type: 'dropdown',
-};
+});
 
 export const communityDropdown: AppHeaderSimpleDropdownItem = {
   icon: CommunityIcon,
