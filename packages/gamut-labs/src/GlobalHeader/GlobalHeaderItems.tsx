@@ -264,7 +264,14 @@ export const freeProfile = (
   user: User,
   isMobile?: boolean
 ): AppHeaderProfileDropdownItem => {
-  const topSection = [profileMyProfile, profileAccount, profileMyHome];
+  const topSection = [profileMyProfile];
+
+  if (user.isBusinessAdmin || !user.isBusinessSsoUser) {
+    topSection.push(profileAccount);
+  }
+
+  topSection.push(profileMyHome);
+
   if (!isMobile && user.isAccountManager) {
     topSection.push(profileBusinessAccount);
   }
@@ -289,7 +296,14 @@ export const proProfile = (
   user: User,
   isMobile?: boolean
 ): AppHeaderProfileDropdownItem => {
-  const topSection = [profileMyProfile, profileAccount, profileMyHome];
+  const topSection = [profileMyProfile];
+
+  if (user.isBusinessAdmin || !user.isBusinessSsoUser) {
+    topSection.push(profileAccount);
+  }
+
+  topSection.push(profileMyHome);
+
   if (!isMobile && (user.isAccountManager || user.isBusinessAdmin)) {
     topSection.push(profileBusinessAccount);
   }
