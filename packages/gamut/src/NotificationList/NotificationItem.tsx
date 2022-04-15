@@ -127,13 +127,13 @@ export const NotificationItem: React.FC<NotificationItemProps> = ({
   };
 
   const notificationContent: ReactElement = (
-    <FlexBox zIndex={1} position="relative" textColor="text">
+    <FlexBox zIndex={1} position="relative" color="text">
       {renderImage()}
       <Box flex={1} pl={12}>
         <Text id={notificationItemId} variant="p-small">
           {text}
         </Text>
-        <Text variant="p-small" textColor="gray-600" ml={4}>
+        <Text variant="p-small" color="gray-600" ml={4}>
           {date}
         </Text>
       </Box>

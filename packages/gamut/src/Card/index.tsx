@@ -5,8 +5,8 @@ import React, { ComponentProps } from 'react';
 
 import { Box } from '../Box';
 
-const DynamicCardWrapper = styled(Box)<CardWrapperProps>(
-  variant({
+const DynamicCardWrapper = Box.extend()
+  .variant({
     prop: 'shadow',
     base: {
       position: 'relative',
@@ -28,7 +28,7 @@ const DynamicCardWrapper = styled(Box)<CardWrapperProps>(
       },
     },
   })
-);
+  .asElement('div');
 
 const shadowVariants = variant({
   prop: 'shadow',
@@ -54,7 +54,7 @@ const shadowVariants = variant({
 });
 
 export interface CardProps
-  extends Omit<ComponentProps<typeof CardWrapper>, 'outline' | 'bg'> {
+  extends Omit<ComponentProps<typeof CardWrapper>, 'outline' | 'bg' | 'color'> {
   variant?: 'navy' | 'white' | 'hyper' | 'yellow';
 }
 
@@ -73,7 +73,7 @@ const CardWrapper = styled(Background)<CardWrapperProps>(
   })
 );
 
-export const Card: React.FC<CardProps> = ({ variant, ...rest }) => {
+export const Card: React.FC<CardProps> = ({ variant, shadow, ...rest }) => {
   if (!variant) {
     return (
       <DynamicCardWrapper
@@ -93,6 +93,7 @@ export const Card: React.FC<CardProps> = ({ variant, ...rest }) => {
       border={1}
       borderColor="navy"
       p={16}
+      shadow={shadow}
       outline={variant === 'navy'}
       {...rest}
     />

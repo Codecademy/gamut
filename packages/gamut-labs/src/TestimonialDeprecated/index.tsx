@@ -122,12 +122,12 @@ export const TestimonialDeprecated: React.FC<TestimonialDeprecatedProps> = ({
       >
         <TestimonialCard>
           <FlexBox
-            px={{ _: 24 }}
-            pt={{ _: 32 }}
-            pb={{ _: 48 }}
-            flexWrap="wrap"
+            px={24}
+            pt={32}
+            pb={48}
+            wrap
             alignItems="start"
-            textColor={mode === 'dark' ? 'beige' : 'navy'}
+            color={mode === 'dark' ? 'beige' : 'navy'}
           >
             <FlexBox flexDirection="column">
               {imageUrl && (

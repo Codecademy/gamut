@@ -29,7 +29,7 @@ export const ErrorContents: React.FC<ErrorContentsProps> = ({
     </Text>
 
     {supportInformation && (
-      <Box as="details" fontSize={16} textColor="gray-900">
+      <Box as="details" fontSize={16} color="gray-900">
         <Box as="summary" mt={48} mb={8}>
           Support information
         </Box>

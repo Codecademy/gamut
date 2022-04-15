@@ -6,7 +6,10 @@ import { useMedia } from 'react-use';
 
 const DrawerBase = motion(Box);
 
-export interface DrawerProps extends Omit<BoxProps, 'width'> {
+type OmitEventHandlers<T> = T extends `on${string}` ? T : never;
+
+export interface DrawerProps
+  extends Omit<BoxProps, OmitEventHandlers<keyof BoxProps> | 'ref'> {
   /**
    * Whether the drawer should be open.
    */

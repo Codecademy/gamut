@@ -1,7 +1,6 @@
 import React from 'react';
 
-import { Box, FlexBox } from '../Box';
-import { FlexBoxProps } from '../Box/props';
+import { Box, FlexBox, FlexBoxProps } from '../Box';
 import { useMenuContext } from './MenuContext';
 
 interface MenuSeperatorProps extends FlexBoxProps {

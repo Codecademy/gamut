@@ -6,8 +6,22 @@ import {
 import { StyleProps, variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
 
-import { sharedStates } from '../Box/props';
 import { resetStyles, Selectors } from '../ButtonBase/ButtonBase';
+
+const sharedStates = system.states({
+  fit: {
+    width: 1,
+    height: 1,
+  },
+  context: {
+    position: 'relative',
+    zIndex: 1,
+  },
+  'no-select': {
+    WebkitTouchCallout: 'none',
+    userSelect: 'none',
+  },
+});
 
 type ListStyleProps = StyleProps<typeof listProps>;
 
