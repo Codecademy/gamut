@@ -1,9 +1,9 @@
-import { sizes, ToggleStyleProps } from './elements';
+import { sizes, ToggleInput, ToggleStyleProps } from './elements';
 
 export type ToggleSizes = keyof typeof sizes;
 
 export interface ToggleBaseProps extends ToggleStyleProps {
-  /** If the Toggle element should be a button or an input. Buttons should be used if the toggle immediately kicks off an action, input should be used if the button exists within a form of if a seperate user interaction submits the data of the toggle */
+  /** If the Toggle element should be a button or an input. Buttons should be used if the toggle immediately kicks off an action, input should be used if the button exists within a form or if a seperate user interaction submits the data of the toggle */
   as?: 'button' | 'input';
   /** The state of the checkbox input (this can be out of sync with the input's value if not passed) */
   checked: boolean;
@@ -23,6 +23,8 @@ export interface ToggleBaseProps extends ToggleStyleProps {
   size?: ToggleSizes;
 }
 
+export type ToggleInputStyledProps = React.ComponentProps<typeof ToggleInput>;
+
 export type AriaLabeledToggle = ToggleBaseProps & {
   ariaLabel: string;
   label?: never;
@@ -37,7 +39,7 @@ export type ToggleLabelProps = AriaLabeledToggle | LabeledToggle;
 
 export type ToggleButtonProps = ToggleLabelProps & {
   as: 'button';
-  onClick?: (event?: React.MouseEvent<MouseEvent>) => void;
+  onClick?: (event?: React.MouseEvent<HTMLElement>) => void;
   onChange?: never;
 };
 

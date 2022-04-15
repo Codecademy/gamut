@@ -1,22 +1,17 @@
-import { ToggleProps } from './types';
+import { ToggleInputStyledProps, ToggleProps } from './types';
 
-export interface ToggleElementProps
-  extends Pick<
-    ToggleProps,
-    'ariaLabel' | 'as' | 'checked' | 'disabled' | 'label'
-  > {
-  // we're pretty exhaustively checking this before it gets to this point
-  eventHandler?: any;
-}
-
-export const getToggleElementProps = ({
+export const getToggleElementProps = <Props extends ToggleProps>({
   ariaLabel,
   as,
   checked,
   disabled,
-  eventHandler,
   label,
-}: ToggleElementProps) => {
+  onChange,
+  onClick,
+}: Pick<
+  Props,
+  'ariaLabel' | 'as' | 'checked' | 'disabled' | 'label' | 'onChange' | 'onClick'
+>): ToggleInputStyledProps => {
   const sharedProps = {
     'aria-label': ariaLabel,
     as,
@@ -25,11 +20,15 @@ export const getToggleElementProps = ({
     disabled,
   };
   return as === 'input'
-    ? { ...sharedProps, type: 'checkbox', onChange: eventHandler }
+    ? {
+        ...sharedProps,
+        type: 'checkbox',
+        onChange,
+      }
     : {
         ...sharedProps,
         role: 'switch',
         'aria-checked': checked,
-        onClick: eventHandler,
+        onClick,
       };
 };

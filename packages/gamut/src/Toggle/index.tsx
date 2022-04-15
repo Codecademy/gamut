@@ -4,7 +4,7 @@ import { Circle, ToggleInput, ToggleLabel, ToggleTrack } from './elements';
 import { ToggleProps } from './types';
 import { getToggleElementProps } from './utils';
 
-export const Toggle: React.FC<ToggleProps> = ({
+export const Toggle = <Props extends ToggleProps>({
   ariaLabel,
   as = 'input',
   checked,
@@ -15,16 +15,17 @@ export const Toggle: React.FC<ToggleProps> = ({
   onClick,
   size = 'medium',
   ...rest
-}) => {
+}: Props) => {
   const checkedColor = checked ? 'primary' : 'navy-600';
   const isButton = as === 'button';
-  const toggleProps = getToggleElementProps({
+  const toggleProps = getToggleElementProps<Props>({
     ariaLabel,
     as,
     checked,
     disabled,
-    eventHandler: onChange || onClick,
     label,
+    onChange,
+    onClick,
   });
 
   return (
