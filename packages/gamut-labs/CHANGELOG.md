@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [31.6.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@31.6.0...@codecademy/gamut-labs@31.6.1) (2022-04-15)
+
+
+### Bug Fixes
+
+* **AppHeaderCatalogSection:** hot fix for CI failures ([ae0434a](https://github.com/Codecademy/gamut/commit/ae0434aec33eb49d62225f321ea34edc6ec4028b))
+
+
+
 ## [31.6.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@31.5.0...@codecademy/gamut-labs@31.6.0) (2022-04-13)
 
 
