@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [31.8.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@31.7.0...@codecademy/gamut-labs@31.8.0) (2022-04-15)
+
+
+### Features
+
+* **AppHeaderCatalogDropdown:** Hide careers section if user cant access career paths ([2cf41b8](https://github.com/Codecademy/gamut/commit/2cf41b8aed825c6693fcec8bfca819d78f281f05))
+
+
+
 ## [31.7.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@31.6.1...@codecademy/gamut-labs@31.7.0) (2022-04-15)
 
 
