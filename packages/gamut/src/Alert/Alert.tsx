@@ -10,7 +10,6 @@ import { Truncate } from '../Truncate';
 import { alertVariants, placementVariants } from './variants';
 
 export type AlertType = keyof typeof alertVariants;
-export type InlineAlertType = Exclude<AlertType, 'notice' | 'feature'>;
 export type AlertPlacements = 'inline' | 'floating';
 
 export interface AlertProps {
