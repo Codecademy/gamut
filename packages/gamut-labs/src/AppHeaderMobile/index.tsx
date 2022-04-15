@@ -56,6 +56,7 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
   redirectParam,
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
+  const [allowScroll, setAllowScroll] = useState<boolean>(false);
 
   const [notificationsBell, notificationsView] = useHeaderNotifications(
     notifications,
@@ -94,6 +95,12 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
     ...items.right,
   ];
 
+  const onItemType = (type: string) => {
+    if (type === 'catalog-dropdown') {
+      setAllowScroll(true);
+    }
+  };
+
   return (
     <>
       {!mobileMenuOpen && ( // need this bc AppBar has a hardcoded z-Index of 15
@@ -126,7 +133,7 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
         escapeCloses
         isOpen={mobileMenuOpen}
         onRequestClose={() => setMobileMenuOpen(false)}
-        allowScroll
+        allowScroll={allowScroll}
       >
         <HeaderHeightArea
           display={{ _: `block`, [appHeaderMobileBreakpoint]: `none` }}
@@ -153,6 +160,7 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
               action={action}
               items={items.mainMenu}
               onSearch={onSearch}
+              getItemType={onItemType}
             />
           </StyledContentContainer>
         </HeaderHeightArea>

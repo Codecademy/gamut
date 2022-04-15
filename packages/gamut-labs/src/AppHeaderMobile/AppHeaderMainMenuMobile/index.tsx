@@ -16,12 +16,14 @@ export type AppHeaderMainMenuMobileProps = {
   action: AppHeaderClickHandler;
   items: AppHeaderItem[];
   onSearch: (query: string) => void;
+  getItemType: (type: string) => void;
 };
 
 export const AppHeaderMainMenuMobile: React.FC<AppHeaderMainMenuMobileProps> = ({
   action,
   items,
   onSearch,
+  getItemType,
 }) => {
   const [subMenuItem, setSubMenuItem] = useState<AppHeaderDropdownItem>();
 
@@ -31,6 +33,7 @@ export const AppHeaderMainMenuMobile: React.FC<AppHeaderMainMenuMobileProps> = (
   ) => {
     action(event, item);
     setSubMenuItem(item);
+    getItemType(item.type);
   };
 
   const closeSubMenu = () => {
