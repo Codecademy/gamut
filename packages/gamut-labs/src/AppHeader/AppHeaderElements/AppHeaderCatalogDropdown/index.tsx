@@ -103,7 +103,8 @@ export const AppHeaderCatalogDropdown: React.FC<AppHeaderCatalogDropdownProps> =
           item={item}
           role="menu"
           ref={containerRef}
-          id={`menu-container${text}`}
+          id={`menu-container${item.text}`}
+          isOpen={isOpen}
         />
       </StyledDropdown>
     </>
