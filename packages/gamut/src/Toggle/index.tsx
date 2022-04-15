@@ -38,9 +38,6 @@ export const Toggle = <Props extends ToggleProps>({
       {label && <>{label}</>}
       <ToggleTrack
         bg={checkedColor}
-        borderColor="primary"
-        borderRadius="99rem"
-        position="relative"
         size={size}
         mr={label && labelSide === 'left' ? 0 : 16}
         ml={label && labelSide === 'right' ? 0 : 16}

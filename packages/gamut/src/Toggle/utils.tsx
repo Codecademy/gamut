@@ -11,7 +11,7 @@ export const getToggleElementProps = <Props extends ToggleProps>({
 }: Pick<
   Props,
   'ariaLabel' | 'as' | 'checked' | 'disabled' | 'label' | 'onChange' | 'onClick'
->): ToggleInputStyledProps => {
+>): Omit<ToggleInputStyledProps, 'size' | 'color'> => {
   const sharedProps = {
     'aria-label': ariaLabel,
     as,

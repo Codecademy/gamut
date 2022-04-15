@@ -5,7 +5,7 @@ import {
   theme,
   variant,
 } from '@codecademy/gamut-styles';
-import { StyleProps } from '@codecademy/variance';
+import { StyleProps, variance } from '@codecademy/variance';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 
@@ -22,36 +22,44 @@ export const sizes = {
   },
 } as const;
 
-export const ToggleTrack = styled(Box)(
-  variant({
-    base: {
-      border: 'none',
-      cursor: 'inherit',
-      transition: 'background-color 0.2s ease',
-      '&:after': {
-        content: '""',
-        transition: 'opacity 0.2s ease',
-        opacity: 0,
-        borderRadius: 'inherit',
-        position: 'absolute',
-        width: 'calc(100% + 8px)',
-        height: 'calc(100% + 8px)',
-        top: '-4px',
-        left: '-4px',
-        borderColor: 'inherit',
-        borderStyle: 'solid',
-        borderWidth: 2,
-      },
-      '&:focus, &:focus-within': {
-        outline: `3px solid ${theme.colors.primary}`,
-        outlineOffset: '2px',
-      },
+const ToggleTrackVariants = variant({
+  base: {
+    border: 'none',
+    cursor: 'inherit',
+    transition: 'background-color 0.2s ease',
+    borderColor: 'primary',
+    borderRadius: '99rem',
+    position: 'relative',
+    '&:after': {
+      content: '""',
+      transition: 'opacity 0.2s ease',
+      opacity: 0,
+      borderRadius: 'inherit',
+      position: 'absolute',
+      width: 'calc(100% + 8px)',
+      height: 'calc(100% + 8px)',
+      top: '-4px',
+      left: '-4px',
+      borderColor: 'inherit',
+      borderStyle: 'solid',
+      borderWidth: 2,
     },
-    prop: 'size',
-    defaultVariant: 'medium',
-    variants: sizes,
-  })
-);
+    '&:focus, &:focus-within': {
+      outline: `3px solid ${theme.colors.primary}`,
+      outlineOffset: '2px',
+    },
+  },
+  prop: 'size',
+  defaultVariant: 'medium',
+  variants: sizes,
+});
+
+const ToggleTrackSystemProps = variance.compose(system.space, system.color);
+
+export const ToggleTrack = styled.div<
+  StyleProps<typeof ToggleTrackVariants> &
+    StyleProps<typeof ToggleTrackSystemProps>
+>(ToggleTrackVariants, ToggleTrackSystemProps);
 
 export const Circle = styled(Box)(
   css({
