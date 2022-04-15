@@ -1,3 +1,5 @@
+import { Arg } from '@animus-ui/core';
+
 import { Box } from './Box';
 
 export const GridBox = Box.extend()
@@ -14,3 +16,5 @@ export const GridBox = Box.extend()
     },
   })
   .asElement('div');
+
+export type GridBoxProps = Arg<typeof GridBox>;

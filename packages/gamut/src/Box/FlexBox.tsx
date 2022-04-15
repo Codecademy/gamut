@@ -1,3 +1,5 @@
+import { Arg } from '@animus-ui/core';
+
 import { Box } from './Box';
 
 export const FlexBox = Box.extend()
@@ -23,3 +25,5 @@ export const FlexBox = Box.extend()
     },
   })
   .asElement('div');
+
+export type FlexBoxProps = Arg<typeof FlexBox>;

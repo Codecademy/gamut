@@ -1,4 +1,4 @@
-import { animus } from '@animus-ui/core';
+import { animus, Arg } from '@animus-ui/core';
 
 export const Box = animus
   .states({
@@ -28,3 +28,5 @@ export const Box = animus
     grid: true,
   })
   .asElement('div');
+
+export type BoxProps = Arg<typeof Box>;
