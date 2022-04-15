@@ -23,7 +23,7 @@ import {
   AppHeaderSimpleDropdownItem,
   AppHeaderTextButtonItem,
 } from '../AppHeader/AppHeaderElements/types';
-import { catalogList } from '../lib/catalogList';
+import { headerCatalogDropdownList } from '../lib/catalogList';
 import { headerResourcesList } from '../lib/resourcesList';
 import { User } from './types';
 
@@ -65,14 +65,17 @@ export const courseCatalog: AppHeaderLinkItem = {
   type: 'link',
 };
 
-export const catalogDropdown: AppHeaderCatalogDropdownItem = {
+export const catalogDropdown = (
+  hideCareerPaths?: boolean
+): AppHeaderCatalogDropdownItem => ({
+  dataTestId: 'header-catalog',
   icon: BookFlipPageIcon,
   id: 'catalog-dropdown',
   text: 'Catalog',
-  popover: catalogList,
+  popover: headerCatalogDropdownList(hideCareerPaths),
   trackingTarget: 'topnav_catalog_dropdown',
   type: 'catalog-dropdown',
-};
+});
 
 export const resourcesDropdown = (
   useNewCatalogDropdown?: boolean

@@ -35,6 +35,7 @@ export type User = {
   proCheckoutUrl?: string;
   showProUpgrade?: boolean;
   showReferrals?: boolean;
+  hideCareerPaths?: boolean;
   // TODO: DISC-547 - remove after feature flag test for catalog is complete
   useNewCatalogDropdown?: boolean;
 };
