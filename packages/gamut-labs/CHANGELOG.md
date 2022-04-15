@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [31.7.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@31.6.1...@codecademy/gamut-labs@31.7.0) (2022-04-15)
+
+
+### Features
+
+* **GlobalHeaderItems:** Business Sso check for profile ([ab21067](https://github.com/Codecademy/gamut/commit/ab21067bc71ee001832d465df8bdc18c1b8c949e))
+
+
+
 ### [31.6.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@31.6.0...@codecademy/gamut-labs@31.6.1) (2022-04-15)
 
 
