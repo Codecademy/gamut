@@ -1,14 +1,25 @@
-import { styledOptions, system } from '@codecademy/gamut-styles';
-import styled from '@emotion/styled';
+import { Box } from './Box';
 
-import { boxProps, FlexBoxProps, flexStates, sharedStates } from './props';
-
-export const FlexBox = styled(
-  'div',
-  styledOptions(['fit', 'wrap', 'center', 'column', 'row', 'inline'])
-)<FlexBoxProps>(
-  system.css({ display: 'flex' }),
-  sharedStates,
-  flexStates,
-  boxProps
-);
+export const FlexBox = Box.extend()
+  .styles({
+    display: 'flex',
+  })
+  .states({
+    inline: {
+      display: 'inline-flex',
+    },
+    wrap: {
+      flexWrap: 'wrap',
+    },
+    center: {
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+    row: {
+      flexDirection: 'row',
+    },
+    column: {
+      flexDirection: 'column',
+    },
+  })
+  .asElement('div');

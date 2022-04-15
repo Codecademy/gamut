@@ -2,6 +2,14 @@
 # yarn lockfile v1
 
 
+"@animus-ui/core@^0.1.1-beta.21":
+  version "0.1.1-beta.21"
+  resolved "https://registry.npmjs.org/@animus-ui/core/-/core-0.1.1-beta.21.tgz#77958ade4c908d89cd3091dfc72cf0d769e2243e"
+  integrity sha512-+fOSY5zkV/Bj87mwhCviE82PB3vjGHACrImhiJhfyEzGfvZDGe9fZhXb4UYa82Pj/LjDOH4QHjtJhfoXXAHKUg==
+  dependencies:
+    "@emotion/is-prop-valid" "^1.1.1"
+    csstype "^3.0.7"
+
 "@babel/cli@7.13.10", "@babel/cli@^7.13.10":
   version "7.13.10"
   resolved "https://registry.npmjs.org/@babel/cli/-/cli-7.13.10.tgz#3a9254cbe806639c8ca4ebd49ebe54b4267b88c9"
@@ -1610,6 +1618,13 @@
   version "1.1.0"
   resolved "https://registry.npmjs.org/@emotion/is-prop-valid/-/is-prop-valid-1.1.0.tgz#29ef6be1e946fb4739f9707def860f316f668cde"
   integrity sha512-9RkilvXAufQHsSsjQ3PIzSns+pxuX4EW8EbGeSPjZMHuMx6z/MOzb9LpqNieQX4F3mre3NWS2+X3JNRHTQztUQ==
+  dependencies:
+    "@emotion/memoize" "^0.7.4"
+
+"@emotion/is-prop-valid@^1.1.1":
+  version "1.1.2"
+  resolved "https://registry.npmjs.org/@emotion/is-prop-valid/-/is-prop-valid-1.1.2.tgz#34ad6e98e871aa6f7a20469b602911b8b11b3a95"
+  integrity sha512-3QnhqeL+WW88YjYbQL5gUIkthuMw7a0NGbZ7wfFVk2kg/CK5w8w5FFa0RzWjyY1+sujN0NWbtSHH6OJmWHtJpQ==
   dependencies:
     "@emotion/memoize" "^0.7.4"
 

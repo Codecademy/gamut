@@ -1,11 +1,30 @@
-import { styledOptions } from '@codecademy/gamut-styles';
-import styled from '@emotion/styled';
+import { animus } from '@animus-ui/core';
 
-import { BoxProps, boxProps, sharedStates } from './props';
-
-export const Box = styled('div', styledOptions(['fit']))<BoxProps>(
-  sharedStates,
-  boxProps
-);
-
-export type { BoxProps } from './props';
+export const Box = animus
+  .states({
+    fit: {
+      width: 1,
+      height: 1,
+    },
+    context: {
+      position: 'relative',
+      zIndex: 1,
+    },
+    'no-select': {
+      WebkitTouchCallout: 'none',
+      userSelect: 'none',
+    },
+  })
+  .groups({
+    space: true,
+    borders: true,
+    layout: true,
+    color: true,
+    shadows: true,
+    positioning: true,
+    background: true,
+    typography: true,
+    flex: true,
+    grid: true,
+  })
+  .asElement('div');
