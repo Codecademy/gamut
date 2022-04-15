@@ -4,12 +4,18 @@ import { css } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React from 'react';
 
-import { AppHeaderDropdownItem } from '../../AppHeader/AppHeaderElements/types';
+import {
+  AppHeaderCatalogDropdownItem,
+  AppHeaderDropdownItem,
+} from '../../AppHeader/AppHeaderElements/types';
 import { Avatar } from '../../Avatar';
 
 export type AppHeaderSubMenuTargetProps = {
-  item: AppHeaderDropdownItem;
-  openSubMenu: (event: React.MouseEvent, item: AppHeaderDropdownItem) => void;
+  item: AppHeaderDropdownItem | AppHeaderCatalogDropdownItem;
+  openSubMenu: (
+    event: React.MouseEvent,
+    item: AppHeaderDropdownItem | AppHeaderCatalogDropdownItem
+  ) => void;
 };
 
 const StyledText = styled(Text)(
@@ -26,7 +32,7 @@ export const AppHeaderSubMenuTarget: React.FC<AppHeaderSubMenuTargetProps> = ({
   openSubMenu,
 }) => {
   const getIcon = () => {
-    if (item.type === 'dropdown') {
+    if (item.type === 'dropdown' || item.type === 'catalog-dropdown') {
       const Icon = item.icon;
       return Icon && <Icon size={24} aria-hidden />;
     }

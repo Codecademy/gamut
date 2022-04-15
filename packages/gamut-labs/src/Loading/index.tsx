@@ -3,6 +3,7 @@ import { useTheme } from '@emotion/react';
 import cx from 'classnames';
 import React from 'react';
 
+// eslint-disable-next-line gamut/no-css-standalone
 import styles from './styles.module.scss';
 
 export type LoadingProps = {

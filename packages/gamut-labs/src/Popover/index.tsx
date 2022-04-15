@@ -1,5 +1,6 @@
 import { BodyPortal, FocusTrap } from '@codecademy/gamut';
 import { PatternProps } from '@codecademy/gamut-patterns';
+import { themed } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useWindowScroll, useWindowSize } from 'react-use';
@@ -61,7 +62,7 @@ const PatternContainer = styled.div<StyleProps>`
   height: 100%;
   border-radius: 2px;
   overflow: hidden;
-  background-color: ${({ theme }) => theme.colors.background};
+  background-color: ${themed('colors.background')};
   position: absolute;
   top: ${({ position }) => (position === 'below' ? '8px' : '-8px')};
   left: ${({ align }) => (align === 'left' ? '8px' : '-8px')};

@@ -1,4 +1,5 @@
 import { ContentContainer } from '@codecademy/gamut';
+import { themed } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React from 'react';
 
@@ -31,7 +32,7 @@ export type GlobalFooterProps = {
 };
 
 const FooterContainer = styled.footer`
-  border-top: 1px solid ${({ theme }) => theme.colors.navy};
+  border-top: 1px solid ${themed('colors.secondary')};
 
   @media print {
     display: none;

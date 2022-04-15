@@ -8,6 +8,10 @@ describe('Resources List', () => {
   });
 
   it('returns all the header items', () => {
-    expect(headerResourcesList.length).toBe(resourcesCount);
+    expect(headerResourcesList().length).toBe(resourcesCount);
+  });
+
+  it('does not return projects and challenges in header if user is in experiment', () => {
+    expect(headerResourcesList(true).length).toBe(resourcesCount - 2);
   });
 });
