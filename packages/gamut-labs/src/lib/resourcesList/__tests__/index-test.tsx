@@ -26,7 +26,7 @@ describe('Resources List', () => {
     expect(headerResourcesList()).toEqual(
       expect.arrayContaining([expect.objectContaining({ text: 'Projects' })])
     );
-    expect(headerResourcesList(true)).not.toEqual(
+    expect(headerResourcesList()).toEqual(
       expect.arrayContaining([expect.objectContaining({ text: 'Challenges' })])
     );
   });

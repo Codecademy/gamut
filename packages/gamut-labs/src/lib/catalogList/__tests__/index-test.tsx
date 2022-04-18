@@ -8,17 +8,17 @@ describe('Catalog List', () => {
   });
 
   it('does return career path, popular courses, and practice tools sections if user has career access', () => {
-    expect(headerCatalogDropdownList(false)).toEqual(
+    expect(headerCatalogDropdownList()).toEqual(
       expect.arrayContaining([
         expect.objectContaining({ title: 'Top career paths' }),
       ])
     );
-    expect(headerCatalogDropdownList(false)).toEqual(
+    expect(headerCatalogDropdownList()).toEqual(
       expect.arrayContaining([
         expect.objectContaining({ title: 'Popular courses' }),
       ])
     );
-    expect(headerCatalogDropdownList(false)).toEqual(
+    expect(headerCatalogDropdownList()).toEqual(
       expect.arrayContaining([
         expect.objectContaining({ title: 'Practice tools' }),
       ])
