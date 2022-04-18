@@ -1,4 +1,10 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
 
 import {
   DropdownAnchor,
@@ -40,13 +46,12 @@ export const AppHeaderCatalogDropdown: React.FC<AppHeaderCatalogDropdownProps> =
   const focusFirstItem = () => setFocusIndex(0);
   const focusLastItem = () => setFocusIndex(itemsCount);
 
-  const countLinks = () => {
+  const itemsCount = useMemo(() => {
     return item.popover
       .map((section) => section.data)
       .flat()
       .filter((catalogListItem) => catalogListItem.type === 'link').length;
-  };
-  const itemsCount = countLinks();
+  }, [item]);
 
   const focusNextItem = () => {
     if (focusIndex === itemsCount) {
