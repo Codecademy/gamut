@@ -48,7 +48,7 @@ export const AppHeaderSubMenuMobile: React.FC<AppHeaderSubMenuMobileProps> = ({
       {item.type === 'catalog-dropdown' ? (
         <AppHeaderCatalogSection action={action} item={item} />
       ) : (
-        <AppHeaderLinkSections action={action} item={item} showIcon />
+        <AppHeaderLinkSections action={action} item={item} showIcon mobile />
       )}
     </AppHeaderListItem>
   );
