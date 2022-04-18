@@ -24,6 +24,7 @@ export type AppHeaderCatalogSectionProps = {
   ref?: React.RefObject<HTMLUListElement>;
   role?: string;
   id?: string;
+  keyDownEvents: (event: React.KeyboardEvent) => void;
 };
 
 const StyledTitle = styled(Text)(
@@ -78,8 +79,8 @@ const containsSubheaders = (
 export const AppHeaderCatalogSection = React.forwardRef<
   HTMLDivElement,
   AppHeaderCatalogSectionProps
->(({ action, item }, ref) => (
-  <LayoutGrid ref={ref}>
+>(({ action, item, keyDownEvents }, ref) => (
+  <LayoutGrid onKeyDown={keyDownEvents} ref={ref}>
     {item.popover.map((section) => (
       <StyledColumn size={12} key={item.id}>
         <LayoutGrid>
