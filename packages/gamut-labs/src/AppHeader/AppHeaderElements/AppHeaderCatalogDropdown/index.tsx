@@ -44,7 +44,7 @@ export const AppHeaderCatalogDropdown: React.FC<AppHeaderCatalogDropdownProps> =
     return item.popover
       .map((section) => section.data)
       .flat()
-      .filter((thing) => thing.type === 'link').length;
+      .filter((catalogListItem) => catalogListItem.type === 'link').length;
   };
   const itemsCount = countLinks();
 
