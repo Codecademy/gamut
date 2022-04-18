@@ -21,7 +21,7 @@ const StyledAnchor = styled(Anchor)(
   css({
     alignItems: `center`,
     display: `flex`,
-    mb: 24,
+    my: 24,
     padding: 0,
     width: `100%`,
   })
