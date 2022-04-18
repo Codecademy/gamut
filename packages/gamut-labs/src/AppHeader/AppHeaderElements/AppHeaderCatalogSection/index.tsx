@@ -68,7 +68,6 @@ const StyledAnchorBox = styled(Box)(
     '&:last-child': {
       pb: 0,
     },
-    minWidth: 12,
   })
 );
 
@@ -96,26 +95,35 @@ export const AppHeaderCatalogSection = React.forwardRef<
       {item.popover.map((section) => (
         <StyledColumn size={12} key={item.id}>
           <LayoutGrid>
-            <Column size={{ _: 12, md: 4 }}>
-              <FlexBox bg="background-selected" flexDirection="column" p={16}>
+            <Column size={{ xs: 12, md: 4 }}>
+              <FlexBox
+                bg="background-selected"
+                flexDirection="column"
+                py={16}
+                pl={{ _: 16, sm: 64, md: 16 }}
+              >
                 <StyledTitle>{section.title}</StyledTitle>
                 <StyledDescription>{section.description}</StyledDescription>
               </FlexBox>
             </Column>
-            <Column size={{ _: 12, md: 8 }} p={16}>
+            <Column size={{ xs: 12, md: 8 }}>
               <FlexBox
                 maxHeight={{
                   _: 'none',
-                  md: containsSubheaders(section.data) ? '8rem' : '7rem',
+                  md: containsSubheaders(section.data) ? '10rem' : '8rem',
                 }}
                 flexDirection="column"
                 flexWrap="wrap"
+                py={16}
+                pl={{ _: 16, sm: 64, md: 16 }}
               >
                 {section.data.map((item) =>
                   item.type === 'subheader' ? (
-                    <StyledSubheader key={item.id}>{item.text}</StyledSubheader>
+                    <StyledSubheader key={item.id} minWidth="12rem">
+                      {item.text}
+                    </StyledSubheader>
                   ) : (
-                    <StyledAnchorBox key={item.id}>
+                    <StyledAnchorBox key={item.id} minWidth="12rem">
                       <Anchor
                         variant="interface"
                         fontFamily="base"
