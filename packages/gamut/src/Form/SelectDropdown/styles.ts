@@ -62,16 +62,14 @@ const dropdownBorderStyles = css({
   zIndex: 2,
 });
 
-const optionBackground = (isSelected: boolean, isFocused: boolean) => {
-  const backgroundColor = isFocused
-    ? 'background-hover'
-    : isSelected
-    ? 'background-selected'
-    : 'transparent';
-  return css({
-    bg: backgroundColor,
+const getOptionBackground = (isSelected: boolean, isFocused: boolean) =>
+  css({
+    bg: isFocused
+      ? 'background-hover'
+      : isSelected
+      ? 'background-selected'
+      : 'transparent',
   });
-};
 
 const textColor = css({
   color: 'text',
@@ -137,7 +135,7 @@ export const getMemoizedStyles = (
     option: (provided, state: any) => ({
       padding: state.selectProps.size === 'small' ? '3px 14px' : '11px 14px',
       cursor: 'pointer',
-      ...optionBackground(state.isSelected, state.isFocused)({ theme }),
+      ...getOptionBackground(state.isSelected, state.isFocused)({ theme }),
       display: 'flex',
       alignItems: 'center',
     }),
