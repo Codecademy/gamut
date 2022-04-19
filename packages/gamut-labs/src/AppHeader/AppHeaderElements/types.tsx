@@ -85,6 +85,7 @@ export type AppHeaderCatalogSubheaderItem = AppHeaderBaseItem<'subheader'> & {
 export type AppHeaderCatalogDataItem = {
   title: string;
   description: string;
+  requiresCareerAccess?: boolean;
   data: (AppHeaderLinkItem | AppHeaderCatalogSubheaderItem)[];
 };
 

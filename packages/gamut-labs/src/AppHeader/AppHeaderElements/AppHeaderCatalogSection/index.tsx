@@ -24,6 +24,7 @@ export type AppHeaderCatalogSectionProps = {
   ref?: React.RefObject<HTMLUListElement>;
   role?: string;
   id?: string;
+  isOpen?: boolean;
 };
 
 const StyledTitle = styled(Text)(
@@ -51,7 +52,7 @@ const StyledSubheader = styled(Text)(
     fontWeight: `title`,
     lineHeight: `base`,
     mb: 8,
-    color: `text-disabled`,
+    color: `text-accent`,
   })
 );
 
@@ -78,56 +79,61 @@ const containsSubheaders = (
 export const AppHeaderCatalogSection = React.forwardRef<
   HTMLDivElement,
   AppHeaderCatalogSectionProps
->(({ action, item }, ref) => (
-  <LayoutGrid ref={ref}>
-    {item.popover.map((section) => (
-      <StyledColumn size={12} key={item.id}>
-        <LayoutGrid>
-          <Column size={4}>
-            <Box bg="background-selected" p={16}>
-              <StyledTitle>{section.title}</StyledTitle>
-              <StyledDescription>{section.description}</StyledDescription>
-            </Box>
-          </Column>
-          <Column size={8} p={16}>
-            <FlexBox
-              maxHeight={containsSubheaders(section.data) ? '8rem' : '7rem'}
-              flexDirection="column"
-              flexWrap="wrap"
-            >
-              {section.data.map((item) =>
-                item.type === 'subheader' ? (
-                  <StyledSubheader key={item.id}>{item.text}</StyledSubheader>
-                ) : (
-                  <Box minWidth="200px" key={item.id}>
-                    <Anchor
-                      variant="interface"
-                      fontSize={14}
-                      pb={8}
-                      href={item.href}
-                      onClick={(event) => action(event, item)}
-                    >
-                      {item.text}
-                    </Anchor>
-                  </Box>
-                )
-              )}
-            </FlexBox>
-          </Column>
-        </LayoutGrid>
-      </StyledColumn>
-    ))}
+>(({ action, item, isOpen }, ref) => {
+  const tabIndex = isOpen === false ? -1 : 0;
+  return (
+    <LayoutGrid ref={ref}>
+      {item.popover.map((section) => (
+        <StyledColumn size={12} key={item.id}>
+          <LayoutGrid>
+            <Column size={4}>
+              <Box bg="background-selected" p={16}>
+                <StyledTitle>{section.title}</StyledTitle>
+                <StyledDescription>{section.description}</StyledDescription>
+              </Box>
+            </Column>
+            <Column size={8} p={16}>
+              <FlexBox
+                maxHeight={containsSubheaders(section.data) ? '8rem' : '7rem'}
+                flexDirection="column"
+                flexWrap="wrap"
+              >
+                {section.data.map((item) =>
+                  item.type === 'subheader' ? (
+                    <StyledSubheader key={item.id}>{item.text}</StyledSubheader>
+                  ) : (
+                    <Box minWidth="200px" key={item.id}>
+                      <Anchor
+                        variant="interface"
+                        fontSize={14}
+                        pb={8}
+                        href={item.href}
+                        onClick={(event) => action(event, item)}
+                        tabIndex={tabIndex}
+                      >
+                        {item.text}
+                      </Anchor>
+                    </Box>
+                  )
+                )}
+              </FlexBox>
+            </Column>
+          </LayoutGrid>
+        </StyledColumn>
+      ))}
 
-    <Column size={12} p={16}>
-      <Anchor
-        variant="standard"
-        fontSize={16}
-        fontWeight="title"
-        href={catalogAnchorData.href}
-        onClick={(event) => action(event, catalogAnchorData)}
-      >
-        {catalogAnchorData.text}
-      </Anchor>
-    </Column>
-  </LayoutGrid>
-));
+      <Column size={12} p={16}>
+        <Anchor
+          variant="standard"
+          fontSize={16}
+          fontWeight="title"
+          href={catalogAnchorData.href}
+          onClick={(event) => action(event, catalogAnchorData)}
+          tabIndex={tabIndex}
+        >
+          {catalogAnchorData.text}
+        </Anchor>
+      </Column>
+    </LayoutGrid>
+  );
+});
