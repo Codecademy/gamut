@@ -11,15 +11,7 @@ describe('Catalog List', () => {
     expect(headerCatalogDropdownList()).toEqual(
       expect.arrayContaining([
         expect.objectContaining({ title: 'Top career paths' }),
-      ])
-    );
-    expect(headerCatalogDropdownList()).toEqual(
-      expect.arrayContaining([
         expect.objectContaining({ title: 'Popular courses' }),
-      ])
-    );
-    expect(headerCatalogDropdownList()).toEqual(
-      expect.arrayContaining([
         expect.objectContaining({ title: 'Practice tools' }),
       ])
     );
@@ -38,10 +30,6 @@ describe('Catalog List', () => {
     expect(headerCatalogDropdownList(true)).toEqual(
       expect.arrayContaining([
         expect.objectContaining({ title: 'Popular courses' }),
-      ])
-    );
-    expect(headerCatalogDropdownList(true)).toEqual(
-      expect.arrayContaining([
         expect.objectContaining({ title: 'Practice tools' }),
       ])
     );
