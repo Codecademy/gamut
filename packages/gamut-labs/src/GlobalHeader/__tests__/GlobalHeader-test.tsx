@@ -146,7 +146,10 @@ describe('GlobalHeader', () => {
 
     it('renders courseCatalog link when user is not in experiment', () => {
       const { view } = renderView(anonHeaderProps);
-      view.getAllByText(courseCatalog.text);
+      expect(view.getByText(courseCatalog.text).closest('a')).toHaveAttribute(
+        'href',
+        courseCatalog.href
+      );
     });
 
     it('renders catalogDropdown when user is in experiment', () => {
@@ -269,9 +272,12 @@ describe('GlobalHeader', () => {
         view.getAllByText(myHome.text);
       });
 
-      it('renders courseCatalog when user is not in experiment', () => {
+      it('renders courseCatalog link when user is not in experiment', () => {
         const { view } = renderView(freeHeaderProps);
-        view.getByText(courseCatalog.text);
+        expect(view.getByText(courseCatalog.text).closest('a')).toHaveAttribute(
+          'href',
+          courseCatalog.href
+        );
       });
 
       it('renders catalogDropdown when user is in experiment', () => {
@@ -356,9 +362,12 @@ describe('GlobalHeader', () => {
         view.getAllByText(myHome.text);
       });
 
-      it('renders courseCatalog when user is not in experiment', () => {
+      it('renders courseCatalog link when user is not in experiment', () => {
         const { view } = renderView(proHeaderProps);
-        view.getByText(courseCatalog.text);
+        expect(view.getByText(courseCatalog.text).closest('a')).toHaveAttribute(
+          'href',
+          courseCatalog.href
+        );
       });
 
       it('renders catalogDropdown when user is in experiment', () => {
