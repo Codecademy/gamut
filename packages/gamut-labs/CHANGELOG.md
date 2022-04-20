@@ -3,6 +3,41 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [31.8.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@31.8.0...@codecademy/gamut-labs@31.8.1) (2022-04-15)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+## [31.8.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@31.7.0...@codecademy/gamut-labs@31.8.0) (2022-04-15)
+
+
+### Features
+
+* **AppHeaderCatalogDropdown:** Hide careers section if user cant access career paths ([2cf41b8](https://github.com/Codecademy/gamut/commit/2cf41b8aed825c6693fcec8bfca819d78f281f05))
+
+
+
+## [31.7.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@31.6.1...@codecademy/gamut-labs@31.7.0) (2022-04-15)
+
+
+### Features
+
+* **GlobalHeaderItems:** Business Sso check for profile ([ab21067](https://github.com/Codecademy/gamut/commit/ab21067bc71ee001832d465df8bdc18c1b8c949e))
+
+
+
+### [31.6.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@31.6.0...@codecademy/gamut-labs@31.6.1) (2022-04-15)
+
+
+### Bug Fixes
+
+* **AppHeaderCatalogSection:** hot fix for CI failures ([ae0434a](https://github.com/Codecademy/gamut/commit/ae0434aec33eb49d62225f321ea34edc6ec4028b))
+
+
+
 ## [31.6.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@31.5.0...@codecademy/gamut-labs@31.6.0) (2022-04-13)
 
 
