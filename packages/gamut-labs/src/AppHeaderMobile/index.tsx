@@ -146,7 +146,7 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
               </AppHeaderListItem>
             </StyledMenuBar>
           </StyledAppBar>
-          <StyledContentContainer as="ul" role="menubar" m={0}>
+          <StyledContentContainer as="ul" role="menubar">
             <AppHeaderMainMenuMobile
               action={action}
               items={items.mainMenu}
