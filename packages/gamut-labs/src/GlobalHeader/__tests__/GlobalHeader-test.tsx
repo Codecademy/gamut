@@ -144,7 +144,7 @@ describe('GlobalHeader', () => {
       expect(logoElements[1]).toBeVisible();
     });
 
-    it('renders courseCatalog when user is not in experiment', () => {
+    it('renders courseCatalog link when user is not in experiment', () => {
       const { view } = renderView(anonHeaderProps);
       view.getAllByText(courseCatalog.text);
     });
