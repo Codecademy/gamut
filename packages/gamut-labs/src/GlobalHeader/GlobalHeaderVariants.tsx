@@ -26,6 +26,11 @@ import {
 } from './GlobalHeaderItems';
 import { User } from './types';
 
+const catalogComponent = (user?: User) =>
+  user?.useNewCatalogDropdown
+    ? catalogDropdown(user?.hideCareerPaths)
+    : courseCatalog;
+
 const anonHeaderItems = (
   renderLogin: boolean,
   renderSignUp: boolean,
@@ -34,7 +39,7 @@ const anonHeaderItems = (
 ): FormattedAppHeaderItems => {
   const leftItems: AppHeaderItem[] = [
     logo,
-    ...(user?.useNewCatalogDropdown ? [catalogDropdown] : [courseCatalog]),
+    catalogComponent(user),
     resourcesDropdown(user?.useNewCatalogDropdown),
     communityDropdown,
     ...(hidePricing ? [] : [pricingDropdown]),
@@ -72,7 +77,7 @@ const anonMobileHeaderItems = (
   }
 
   const mainMenuItems: AppHeaderItem[] = [
-    ...(user?.useNewCatalogDropdown ? [catalogDropdown] : [courseCatalog]),
+    catalogComponent(user),
     resourcesDropdown(user?.useNewCatalogDropdown),
     communityDropdown,
     ...(hidePricing ? [] : [pricingDropdown]),
@@ -152,7 +157,7 @@ export const freeHeaderItems = (
   const leftItems: AppHeaderItem[] = [
     logo,
     myHome,
-    ...(user?.useNewCatalogDropdown ? [catalogDropdown] : [courseCatalog]),
+    catalogComponent(user),
     resourcesDropdown(user.useNewCatalogDropdown),
     communityDropdown,
     ...(hidePricing ? [] : [pricingDropdown]),
@@ -184,7 +189,7 @@ export const freeMobileHeaderItems = (
   const leftItems: AppHeaderItem[] = [logo];
   const mainMenuItems: AppHeaderItem[] = [
     myHome,
-    ...(user?.useNewCatalogDropdown ? [catalogDropdown] : [courseCatalog]),
+    catalogComponent(user),
     resourcesDropdown(user.useNewCatalogDropdown),
     communityDropdown,
     ...(hidePricing ? [] : [pricingDropdown]),
@@ -209,7 +214,7 @@ export const proHeaderItems = (
   const leftItems: AppHeaderItem[] = [
     proLogo,
     myHome,
-    ...(user?.useNewCatalogDropdown ? [catalogDropdown] : [courseCatalog]),
+    catalogComponent(user),
     resourcesDropdown(user.useNewCatalogDropdown),
     communityDropdown,
   ];
@@ -237,7 +242,7 @@ export const proMobileHeaderItems = (
 
   const mainMenuItems: AppHeaderItem[] = [
     myHome,
-    ...(user?.useNewCatalogDropdown ? [catalogDropdown] : [courseCatalog]),
+    catalogComponent(user),
     resourcesDropdown(user.useNewCatalogDropdown),
     communityDropdown,
     proProfile(user, true),
