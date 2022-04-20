@@ -1,5 +1,11 @@
 import { isArray } from 'lodash';
-import React, { ComponentProps, forwardRef, useEffect, useRef } from 'react';
+import React, {
+  ComponentProps,
+  forwardRef,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 
 import { Box, BoxProps } from '../Box';
 import { ListEl } from './elements';
@@ -36,13 +42,15 @@ export const List = forwardRef<HTMLUListElement, ListProps>(
     ref
   ) => {
     const isEmpty = !children || (isArray(children) && children.length === 0);
-    const showShadow = shadow && scrollable && !isEmpty;
+    const [isEnd, setIsEnd] = useState(false);
+    const showShadow = shadow && scrollable && !isEmpty && !isEnd;
     const value = useList({ variant, spacing, scrollable });
 
     const topOfTable = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
       if (scrollToTopOnUpdate && topOfTable.current !== null) {
+        topOfTable.current.scrollTo({ top: 0 });
         topOfTable.current.scrollTo({ top: 0 });
       }
     });
@@ -52,6 +60,12 @@ export const List = forwardRef<HTMLUListElement, ListProps>(
         {children}
       </ListEl>
     );
+
+    const scrollHandler = (event: React.UIEvent<HTMLDivElement>) => {
+      const { offsetWidth, scrollLeft, scrollWidth } = event.currentTarget;
+
+      setIsEnd(offsetWidth + scrollLeft >= scrollWidth);
+    };
 
     return (
       <ListProvider value={value}>
@@ -63,6 +77,7 @@ export const List = forwardRef<HTMLUListElement, ListProps>(
             maxHeight={height}
             overflow={overflowHidden ? 'hidden' : 'auto'}
             ref={topOfTable}
+            onScroll={scrollHandler}
           >
             {header}
             {isEmpty ? emptyMessage : listContent}

@@ -198,6 +198,7 @@ export const createDemoTable = (Component: any, overrides = {}) => () => {
       expandedContent={expandedContent}
       query={query}
       onQueryChange={onQueryChange}
+      shadow
       {...overrides}
     />
   );
