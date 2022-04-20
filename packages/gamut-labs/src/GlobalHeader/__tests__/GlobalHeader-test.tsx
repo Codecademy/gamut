@@ -2,6 +2,7 @@ import { setupRtl } from '@codecademy/gamut-tests';
 
 import { GlobalHeader, GlobalHeaderProps } from '..';
 import {
+  catalogDropdown,
   communityDropdown,
   courseCatalog,
   forBusiness,
@@ -23,6 +24,14 @@ const user: User = {
     'https://www.gravatar.com/avatar/1c959a9a1e2f9f9f1ac06b05cccc1d60?s=150&d=retro',
   displayName: 'Codey',
   showReferrals: true,
+};
+
+const userInExperiment: User = {
+  avatar:
+    'https://www.gravatar.com/avatar/1c959a9a1e2f9f9f1ac06b05cccc1d60?s=150&d=retro',
+  displayName: 'Codey',
+  showReferrals: true,
+  useNewCatalogDropdown: true,
 };
 
 const defaultProps = {
@@ -135,9 +144,18 @@ describe('GlobalHeader', () => {
       expect(logoElements[1]).toBeVisible();
     });
 
-    it('renders courseCatalog', () => {
+    it('renders courseCatalog when user is not in experiment', () => {
       const { view } = renderView(anonHeaderProps);
       view.getAllByText(courseCatalog.text);
+    });
+
+    it('renders catalogDropdown when user is in experiment', () => {
+      const { view } = renderView({
+        ...anonHeaderProps,
+        user: userInExperiment,
+      });
+      view.getByText(catalogDropdown().text).click();
+      view.getByText('Explore full catalog');
     });
 
     it('renders resourcesDropdown', () => {
@@ -251,9 +269,18 @@ describe('GlobalHeader', () => {
         view.getAllByText(myHome.text);
       });
 
-      it('renders courseCatalog', () => {
+      it('renders courseCatalog when user is not in experiment', () => {
         const { view } = renderView(freeHeaderProps);
         view.getByText(courseCatalog.text);
+      });
+
+      it('renders catalogDropdown when user is in experiment', () => {
+        const { view } = renderView({
+          ...anonHeaderProps,
+          user: userInExperiment,
+        });
+        view.getByText(catalogDropdown().text).click();
+        view.getByText('Explore full catalog');
       });
 
       it('renders resourcesDropdown', () => {
@@ -329,9 +356,18 @@ describe('GlobalHeader', () => {
         view.getAllByText(myHome.text);
       });
 
-      it('renders courseCatalog', () => {
+      it('renders courseCatalog when user is not in experiment', () => {
         const { view } = renderView(proHeaderProps);
         view.getByText(courseCatalog.text);
+      });
+
+      it('renders catalogDropdown when user is in experiment', () => {
+        const { view } = renderView({
+          ...anonHeaderProps,
+          user: userInExperiment,
+        });
+        view.getByText(catalogDropdown().text).click();
+        view.getByText('Explore full catalog');
       });
 
       it('renders resourcesDropdown', () => {
