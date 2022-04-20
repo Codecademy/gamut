@@ -276,7 +276,7 @@ describe('GlobalHeader', () => {
 
       it('renders catalogDropdown when user is in experiment', () => {
         const { view } = renderView({
-          ...anonHeaderProps,
+          ...freeHeaderProps,
           user: userInExperiment,
         });
         view.getByText(catalogDropdown().text).click();
@@ -363,7 +363,7 @@ describe('GlobalHeader', () => {
 
       it('renders catalogDropdown when user is in experiment', () => {
         const { view } = renderView({
-          ...anonHeaderProps,
+          ...proHeaderProps,
           user: userInExperiment,
         });
         view.getByText(catalogDropdown().text).click();
