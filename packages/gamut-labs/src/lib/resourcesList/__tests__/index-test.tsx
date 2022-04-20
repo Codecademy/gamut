@@ -15,19 +15,19 @@ describe('Resources List', () => {
     expect(headerResourcesList(true).length).toBe(resourcesCount - 2);
 
     expect(headerResourcesList(true)).not.toEqual(
-      expect.arrayContaining([expect.objectContaining({ text: 'Projects' })])
-    );
-    expect(headerResourcesList(true)).not.toEqual(
-      expect.arrayContaining([expect.objectContaining({ text: 'Challenges' })])
+      expect.arrayContaining([
+        expect.objectContaining({ text: 'Projects' }),
+        expect.objectContaining({ text: 'Challenges' }),
+      ])
     );
   });
 
   it('does return projects and challenges in header if user is not in experiment', () => {
     expect(headerResourcesList()).toEqual(
-      expect.arrayContaining([expect.objectContaining({ text: 'Projects' })])
-    );
-    expect(headerResourcesList()).toEqual(
-      expect.arrayContaining([expect.objectContaining({ text: 'Challenges' })])
+      expect.arrayContaining([
+        expect.objectContaining({ text: 'Projects' }),
+        expect.objectContaining({ text: 'Challenges' }),
+      ])
     );
   });
 });
