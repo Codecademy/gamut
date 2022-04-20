@@ -123,6 +123,13 @@ const loadingHeaderProps: GlobalHeaderProps = {
 
 const renderView = setupRtl(GlobalHeader);
 
+const catalogDropdownTest = (props: GlobalHeaderProps) => {
+  const { view } = renderView(props);
+
+  view.getByText(catalogDropdown().text).click();
+  view.getByText('Explore full catalog');
+};
+
 describe('GlobalHeader', () => {
   describe('anonymous users', () => {
     it('renders search', () => {
@@ -153,12 +160,11 @@ describe('GlobalHeader', () => {
     });
 
     it('renders catalogDropdown when user is in experiment', () => {
-      const { view } = renderView({
+      const props = {
         ...anonHeaderProps,
         user: userInExperiment,
-      });
-      view.getByText(catalogDropdown().text).click();
-      view.getByText('Explore full catalog');
+      };
+      catalogDropdownTest(props);
     });
 
     it('renders resourcesDropdown', () => {
@@ -281,12 +287,11 @@ describe('GlobalHeader', () => {
       });
 
       it('renders catalogDropdown when user is in experiment', () => {
-        const { view } = renderView({
+        const props = {
           ...freeHeaderProps,
           user: userInExperiment,
-        });
-        view.getByText(catalogDropdown().text).click();
-        view.getByText('Explore full catalog');
+        };
+        catalogDropdownTest(props);
       });
 
       it('renders resourcesDropdown', () => {
@@ -371,12 +376,11 @@ describe('GlobalHeader', () => {
       });
 
       it('renders catalogDropdown when user is in experiment', () => {
-        const { view } = renderView({
+        const props = {
           ...proHeaderProps,
           user: userInExperiment,
-        });
-        view.getByText(catalogDropdown().text).click();
-        view.getByText('Explore full catalog');
+        };
+        catalogDropdownTest(props);
       });
 
       it('renders resourcesDropdown', () => {
