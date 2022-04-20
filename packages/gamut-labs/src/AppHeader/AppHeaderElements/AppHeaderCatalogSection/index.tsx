@@ -24,7 +24,7 @@ export type AppHeaderCatalogSectionProps = {
   ref?: React.RefObject<HTMLUListElement>;
   role?: string;
   id?: string;
-  keyDownEvents: (event: React.KeyboardEvent) => void;
+  keyDownEvents?: (event: React.KeyboardEvent) => void;
   isOpen?: boolean;
 };
 
