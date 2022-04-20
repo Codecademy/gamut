@@ -46,7 +46,7 @@ describe('AppHeaderSubMenuMobile', () => {
 
   it('calls handleClose when the menu link is clicked', () => {
     renderAppHeaderSubMenuMobile();
-    screen.getByText('Menu').click();
+    screen.getByText('Full Menu').click();
     expect(handleClose).toHaveBeenCalled();
   });
 });

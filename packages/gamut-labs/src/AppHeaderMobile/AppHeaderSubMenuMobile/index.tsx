@@ -38,7 +38,7 @@ export const AppHeaderSubMenuMobile: React.FC<AppHeaderSubMenuMobileProps> = ({
         <StyledAnchor onClick={handleClose} variant="interface" as="button">
           <ArrowChevronLeftIcon size={12} aria-hidden />
           <Text fontSize={16} ml={8}>
-            Menu
+            Full Menu
           </Text>
         </StyledAnchor>
         <Text as="h1" fontSize={22} mb={16}>
