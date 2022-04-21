@@ -14,6 +14,7 @@ import {
 import { ReactNode } from 'react';
 
 import {
+  AppHeaderCatalogDropdownItem,
   AppHeaderFillButtonItem,
   AppHeaderLinkItem,
   AppHeaderLogoItem,
@@ -22,6 +23,7 @@ import {
   AppHeaderSimpleDropdownItem,
   AppHeaderTextButtonItem,
 } from '../AppHeader/AppHeaderElements/types';
+import { headerCatalogDropdownList } from '../lib/catalogList';
 import { headerResourcesList } from '../lib/resourcesList';
 import { User } from './types';
 
@@ -62,6 +64,18 @@ export const courseCatalog: AppHeaderLinkItem = {
   trackingTarget: 'topnav_catalog',
   type: 'link',
 };
+
+export const catalogDropdown = (
+  hideCareerPaths?: boolean
+): AppHeaderCatalogDropdownItem => ({
+  dataTestId: 'header-catalog',
+  icon: BookFlipPageIcon,
+  id: 'catalog-dropdown',
+  text: 'Catalog',
+  popover: headerCatalogDropdownList(hideCareerPaths),
+  trackingTarget: 'topnav_catalog_dropdown',
+  type: 'catalog-dropdown',
+});
 
 export const resourcesDropdown = (
   useNewCatalogDropdown?: boolean
@@ -253,7 +267,14 @@ export const freeProfile = (
   user: User,
   isMobile?: boolean
 ): AppHeaderProfileDropdownItem => {
-  const topSection = [profileMyProfile, profileAccount, profileMyHome];
+  const topSection = [profileMyProfile];
+
+  if (user.isBusinessAdmin || !user.isBusinessSsoUser) {
+    topSection.push(profileAccount);
+  }
+
+  topSection.push(profileMyHome);
+
   if (!isMobile && user.isAccountManager) {
     topSection.push(profileBusinessAccount);
   }
@@ -275,7 +296,14 @@ export const freeProfile = (
 };
 
 export const proProfile = (user: User): AppHeaderProfileDropdownItem => {
-  const topSection = [profileMyProfile, profileAccount, profileMyHome];
+  const topSection = [profileMyProfile];
+
+  if (user.isBusinessAdmin || !user.isBusinessSsoUser) {
+    topSection.push(profileAccount);
+  }
+
+  topSection.push(profileMyHome);
+
   if (user?.isAccountManager || user?.isBusinessAdmin) {
     topSection.push(profileBusinessAccount);
   }

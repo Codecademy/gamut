@@ -1,0 +1,112 @@
+import React, { useCallback, useEffect, useRef, useState } from 'react';
+
+import {
+  DropdownAnchor,
+  DropdownIcon,
+  StyledDropdown,
+  StyledText,
+} from '../../shared';
+import { AppHeaderCatalogSection } from '../AppHeaderCatalogSection';
+import { AppHeaderCatalogDropdownItem, AppHeaderClickHandler } from '../types';
+
+export type AppHeaderCatalogDropdownProps = {
+  action: AppHeaderClickHandler;
+  item: AppHeaderCatalogDropdownItem;
+};
+
+export const AppHeaderCatalogDropdown: React.FC<AppHeaderCatalogDropdownProps> = ({
+  action,
+  item,
+}) => {
+  const { text, dataTestId } = item;
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const buttonRef = useRef<HTMLButtonElement>(null);
+  const [isOpen, setIsOpen] = useState(false);
+
+  const focusButton = () => {
+    buttonRef?.current?.focus();
+  };
+
+  const toggleIsOpen = () => setIsOpen((prev) => !prev);
+
+  const handleOnClick = (event: React.MouseEvent) => {
+    toggleIsOpen();
+    if (!isOpen) {
+      action(event, item);
+    }
+  };
+
+  const handleClose = useCallback(() => {
+    setIsOpen(false);
+    focusButton();
+  }, []);
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent | Event) {
+      const container = containerRef?.current;
+      const button = buttonRef?.current;
+      if (
+        isOpen &&
+        container &&
+        !container.contains(event.target as Node) &&
+        button &&
+        !button.contains(event.target as Node)
+      ) {
+        handleClose();
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener('blur', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('blur', handleClickOutside);
+    };
+  }, [containerRef, handleClose, isOpen]);
+
+  return (
+    <>
+      <DropdownAnchor
+        ref={buttonRef}
+        onClick={handleOnClick}
+        title={text}
+        variant="interface"
+        tabIndex="-1"
+        aria-expanded={isOpen}
+        aria-haspopup
+        data-testid={dataTestId}
+      >
+        <StyledText
+          fontWeight={isOpen ? 'bold' : 'normal'}
+          textAlign="center"
+          title={text}
+        >
+          {text}
+        </StyledText>
+        <DropdownIcon aria-label="dropdown" open={isOpen} size={12} />
+      </DropdownAnchor>
+      <StyledDropdown
+        style={{
+          top: '2.50rem',
+          width: '38rem',
+        }}
+        initial={{ borderWidth: 0, height: 0 }}
+        animate={{
+          borderWidth: isOpen ? 1 : 0,
+          height: isOpen ? 'fit-content' : 0,
+        }}
+        transition={{ duration: 0.175 }}
+        aria-hidden={!isOpen}
+      >
+        <AppHeaderCatalogSection
+          action={action}
+          item={item}
+          role="menu"
+          ref={containerRef}
+          id={`menu-container${item.text}`}
+          isOpen={isOpen}
+        />
+      </StyledDropdown>
+    </>
+  );
+};

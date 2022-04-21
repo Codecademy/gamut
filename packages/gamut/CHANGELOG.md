@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [46.1.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@46.1.1...@codecademy/gamut@46.1.2) (2022-04-15)
+
+
+### Bug Fixes
+
+* **Alert:** Remove unused alert type ([3c3658f](https://github.com/Codecademy/gamut/commit/3c3658f166268a3eca7c2146463dd40209e4d6c1))
+
+
+
+### [46.1.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@46.1.0...@codecademy/gamut@46.1.1) (2022-04-13)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
 ## [46.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@46.0.2...@codecademy/gamut@46.1.0) (2022-04-05)
 
 

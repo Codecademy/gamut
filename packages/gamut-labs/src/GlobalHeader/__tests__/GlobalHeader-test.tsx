@@ -2,6 +2,7 @@ import { setupRtl } from '@codecademy/gamut-tests';
 
 import { GlobalHeader, GlobalHeaderProps } from '..';
 import {
+  catalogDropdown,
   communityDropdown,
   courseCatalog,
   forBusiness,
@@ -23,6 +24,14 @@ const user: User = {
     'https://www.gravatar.com/avatar/1c959a9a1e2f9f9f1ac06b05cccc1d60?s=150&d=retro',
   displayName: 'Codey',
   showReferrals: true,
+};
+
+const userInExperiment: User = {
+  avatar:
+    'https://www.gravatar.com/avatar/1c959a9a1e2f9f9f1ac06b05cccc1d60?s=150&d=retro',
+  displayName: 'Codey',
+  showReferrals: true,
+  useNewCatalogDropdown: true,
 };
 
 const defaultProps = {
@@ -114,6 +123,13 @@ const loadingHeaderProps: GlobalHeaderProps = {
 
 const renderView = setupRtl(GlobalHeader);
 
+const catalogDropdownTest = (props: GlobalHeaderProps) => {
+  const { view } = renderView(props);
+
+  view.getByText(catalogDropdown().text).click();
+  view.getByText('Explore full catalog');
+};
+
 describe('GlobalHeader', () => {
   describe('anonymous users', () => {
     it('renders search', () => {
@@ -135,9 +151,20 @@ describe('GlobalHeader', () => {
       expect(logoElements[1]).toBeVisible();
     });
 
-    it('renders courseCatalog', () => {
+    it('renders courseCatalog link when user is not in experiment', () => {
       const { view } = renderView(anonHeaderProps);
-      view.getAllByText(courseCatalog.text);
+      expect(view.getByText(courseCatalog.text).closest('a')).toHaveAttribute(
+        'href',
+        courseCatalog.href
+      );
+    });
+
+    it('renders catalogDropdown when user is in experiment', () => {
+      const props = {
+        ...anonHeaderProps,
+        user: userInExperiment,
+      };
+      catalogDropdownTest(props);
     });
 
     it('renders resourcesDropdown', () => {
@@ -251,9 +278,20 @@ describe('GlobalHeader', () => {
         view.getAllByText(myHome.text);
       });
 
-      it('renders courseCatalog', () => {
+      it('renders courseCatalog link when user is not in experiment', () => {
         const { view } = renderView(freeHeaderProps);
-        view.getByText(courseCatalog.text);
+        expect(view.getByText(courseCatalog.text).closest('a')).toHaveAttribute(
+          'href',
+          courseCatalog.href
+        );
+      });
+
+      it('renders catalogDropdown when user is in experiment', () => {
+        const props = {
+          ...freeHeaderProps,
+          user: userInExperiment,
+        };
+        catalogDropdownTest(props);
       });
 
       it('renders resourcesDropdown', () => {
@@ -329,9 +367,20 @@ describe('GlobalHeader', () => {
         view.getAllByText(myHome.text);
       });
 
-      it('renders courseCatalog', () => {
+      it('renders courseCatalog link when user is not in experiment', () => {
         const { view } = renderView(proHeaderProps);
-        view.getByText(courseCatalog.text);
+        expect(view.getByText(courseCatalog.text).closest('a')).toHaveAttribute(
+          'href',
+          courseCatalog.href
+        );
+      });
+
+      it('renders catalogDropdown when user is in experiment', () => {
+        const props = {
+          ...proHeaderProps,
+          user: userInExperiment,
+        };
+        catalogDropdownTest(props);
       });
 
       it('renders resourcesDropdown', () => {
@@ -388,26 +437,6 @@ describe('GlobalHeader', () => {
 
       expect(action).toHaveBeenCalledTimes(1);
       expect(onLinkAction).toHaveBeenCalledTimes(1);
-    });
-  });
-
-  describe('user in catalog dropdown experiment', () => {
-    it('does not render projects and challenges in resourcesDropdown', () => {
-      const props = {
-        ...proHeaderProps,
-        ...{ user: { ...user, useNewCatalogDropdown: true } },
-      };
-      const { view } = renderView(props);
-      expect(view.queryByText('Projects')).toBeFalsy();
-      expect(view.queryByText('Challenges')).toBeFalsy();
-    });
-  });
-
-  describe('user who is not in catalog dropdown experiment', () => {
-    it('renders projects and challenges in resourcesDropdown', () => {
-      const { view } = renderView(proHeaderProps);
-      view.getByText('Projects');
-      view.getByText('Challenges');
     });
   });
 });

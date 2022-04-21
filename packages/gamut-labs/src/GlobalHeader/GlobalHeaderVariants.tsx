@@ -6,6 +6,7 @@ import {
   FormattedMobileAppHeaderItems,
 } from '../AppHeader/types';
 import {
+  catalogDropdown,
   communityDropdown,
   courseCatalog,
   favorites,
@@ -25,6 +26,11 @@ import {
 } from './GlobalHeaderItems';
 import { User } from './types';
 
+const catalogComponent = (user?: User) =>
+  user?.useNewCatalogDropdown
+    ? catalogDropdown(user?.hideCareerPaths)
+    : courseCatalog;
+
 const anonHeaderItems = (
   renderLogin: boolean,
   renderSignUp: boolean,
@@ -33,7 +39,7 @@ const anonHeaderItems = (
 ): FormattedAppHeaderItems => {
   const leftItems: AppHeaderItem[] = [
     logo,
-    courseCatalog,
+    catalogComponent(user),
     resourcesDropdown(user?.useNewCatalogDropdown),
     communityDropdown,
     ...(hidePricing ? [] : [pricingDropdown]),
@@ -71,7 +77,7 @@ const anonMobileHeaderItems = (
   }
 
   const mainMenuItems: AppHeaderItem[] = [
-    courseCatalog,
+    catalogComponent(user),
     resourcesDropdown(user?.useNewCatalogDropdown),
     communityDropdown,
     ...(hidePricing ? [] : [pricingDropdown]),
@@ -88,9 +94,10 @@ const anonMobileHeaderItems = (
 };
 
 export const anonDefaultHeaderItems = (
-  hidePricing?: boolean
+  hidePricing?: boolean,
+  user?: User
 ): FormattedAppHeaderItems => {
-  return anonHeaderItems(true, true, hidePricing);
+  return anonHeaderItems(true, true, hidePricing, user);
 };
 
 export const anonDefaultMobileHeaderItems = (
@@ -129,9 +136,10 @@ export const anonLoginMobileHeaderItems = (
 };
 
 export const anonSignupHeaderItems = (
-  hidePricing?: boolean
+  hidePricing?: boolean,
+  user?: User
 ): FormattedAppHeaderItems => {
-  return anonHeaderItems(true, false, hidePricing);
+  return anonHeaderItems(true, false, hidePricing, user);
 };
 
 export const anonSignupMobileHeaderItems = (
@@ -149,7 +157,7 @@ export const freeHeaderItems = (
   const leftItems: AppHeaderItem[] = [
     logo,
     myHome,
-    courseCatalog,
+    catalogComponent(user),
     resourcesDropdown(user.useNewCatalogDropdown),
     communityDropdown,
     ...(hidePricing ? [] : [pricingDropdown]),
@@ -181,7 +189,7 @@ export const freeMobileHeaderItems = (
   const leftItems: AppHeaderItem[] = [logo];
   const mainMenuItems: AppHeaderItem[] = [
     myHome,
-    courseCatalog,
+    catalogComponent(user),
     resourcesDropdown(user.useNewCatalogDropdown),
     communityDropdown,
     ...(hidePricing ? [] : [pricingDropdown]),
@@ -206,7 +214,7 @@ export const proHeaderItems = (
   const leftItems: AppHeaderItem[] = [
     proLogo,
     myHome,
-    courseCatalog,
+    catalogComponent(user),
     resourcesDropdown(user.useNewCatalogDropdown),
     communityDropdown,
   ];
@@ -234,7 +242,7 @@ export const proMobileHeaderItems = (
 
   const mainMenuItems: AppHeaderItem[] = [
     myHome,
-    courseCatalog,
+    catalogComponent(user),
     resourcesDropdown(user.useNewCatalogDropdown),
     communityDropdown,
     proProfile(user),
