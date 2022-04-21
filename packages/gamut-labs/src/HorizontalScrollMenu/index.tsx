@@ -11,6 +11,9 @@ const ScrollContainer = styled(FlexBox)`
 
 const ScrollItemWrapper = styled(Box)`
   scroll-snap-align: start;
+  &[aria-hidden='true'] {
+    visibility: hidden;
+  }
 `;
 
 export interface HorizontalScrollMenuProps {
@@ -35,7 +38,6 @@ export const HorizontalScrollMenu: React.FC<HorizontalScrollMenuProps> = ({
       {
         root: document.querySelector('[data-observerroot=true]'),
         rootMargin: '100% 0% 100% 0%',
-        threshold: 0.2,
       }
     );
   }, []);
