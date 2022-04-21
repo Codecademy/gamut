@@ -4,6 +4,7 @@ export const catalogList: AppHeaderCatalogDataItem[] = [
   {
     title: 'Top career paths',
     description: 'Land an entry-level role in tech with step-by-step guidance.',
+    requiresCareerAccess: true,
     data: [
       {
         id: 'full-stack-engineer-career-path',
@@ -135,3 +136,11 @@ export const catalogList: AppHeaderCatalogDataItem[] = [
     ],
   },
 ];
+
+export const headerCatalogDropdownList = (
+  hideCareerPaths?: boolean
+): AppHeaderCatalogDataItem[] => {
+  return hideCareerPaths
+    ? catalogList.filter((item) => !item.requiresCareerAccess)
+    : catalogList;
+};

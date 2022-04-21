@@ -51,14 +51,23 @@ const StyledSubheader = styled(Text)(
     fontSize: 12 as any,
     fontWeight: `title`,
     lineHeight: `base`,
-    mb: 8,
-    color: `text-disabled`,
+    mb: 12,
+    color: `text-accent`,
   })
 );
 
 const StyledColumn = styled(Column)(
   css({
     borderBottom: 1,
+  })
+);
+
+const StyledAnchorBox = styled(Box)(
+  css({
+    pb: { _: 16, md: 8 },
+    '&:last-child': {
+      pb: 0,
+    },
   })
 );
 
@@ -84,36 +93,48 @@ export const AppHeaderCatalogSection = React.forwardRef<
   return (
     <LayoutGrid ref={ref}>
       {item.popover.map((section) => (
-        <StyledColumn size={12} key={item.id}>
+        <StyledColumn size={12} key={section.title}>
           <LayoutGrid>
-            <Column size={4}>
-              <Box bg="background-selected" p={16}>
+            <Column size={{ xs: 12, md: 4 }}>
+              <FlexBox
+                bg="background-selected"
+                flexDirection="column"
+                py={16}
+                pl={{ _: 16, sm: 64, md: 16 }}
+              >
                 <StyledTitle>{section.title}</StyledTitle>
                 <StyledDescription>{section.description}</StyledDescription>
-              </Box>
+              </FlexBox>
             </Column>
-            <Column size={8} p={16}>
+            <Column size={{ xs: 12, md: 8 }}>
               <FlexBox
-                maxHeight={containsSubheaders(section.data) ? '8rem' : '7rem'}
+                maxHeight={{
+                  _: 'none',
+                  md: containsSubheaders(section.data) ? '10rem' : '8rem',
+                }}
                 flexDirection="column"
                 flexWrap="wrap"
+                py={16}
+                pl={{ _: 16, sm: 64, md: 16 }}
               >
                 {section.data.map((item) =>
                   item.type === 'subheader' ? (
-                    <StyledSubheader key={item.id}>{item.text}</StyledSubheader>
+                    <StyledSubheader key={item.id} minWidth="12rem">
+                      {item.text}
+                    </StyledSubheader>
                   ) : (
-                    <Box minWidth="200px" key={item.id}>
+                    <StyledAnchorBox key={item.id} minWidth="12rem">
                       <Anchor
                         variant="interface"
+                        fontFamily="base"
                         fontSize={14}
-                        pb={8}
                         href={item.href}
                         onClick={(event) => action(event, item)}
                         tabIndex={tabIndex}
                       >
                         {item.text}
                       </Anchor>
-                    </Box>
+                    </StyledAnchorBox>
                   )
                 )}
               </FlexBox>
@@ -127,6 +148,7 @@ export const AppHeaderCatalogSection = React.forwardRef<
           variant="standard"
           fontSize={16}
           fontWeight="title"
+          textAlign={{ _: 'center', md: 'left' }}
           href={catalogAnchorData.href}
           onClick={(event) => action(event, catalogAnchorData)}
           tabIndex={tabIndex}
