@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [31.9.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@31.8.3...@codecademy/gamut-labs@31.9.0) (2022-04-21)
+
+
+### Features
+
+* **GlobalHeader:** allowing access to Business Account Management on mobile ([#2227](https://github.com/Codecademy/gamut/issues/2227)) ([034e56d](https://github.com/Codecademy/gamut/commit/034e56d151a73f129fa0e0a445246bcc4f2fecb7))
+
+
+
+### [31.8.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@31.8.2...@codecademy/gamut-labs@31.8.3) (2022-04-21)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [31.8.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@31.8.1...@codecademy/gamut-labs@31.8.2) (2022-04-20)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
 ### [31.8.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@31.8.0...@codecademy/gamut-labs@31.8.1) (2022-04-15)
 
 **Note:** Version bump only for package @codecademy/gamut-labs

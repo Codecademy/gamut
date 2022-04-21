@@ -13,6 +13,11 @@ const contentContainerVariants = variant({
     mx: 'auto',
   },
   variants: {
+    small: {
+      px: 0,
+      mx: 0,
+      maxWidth: contentWidths.max,
+    },
     medium: {
       px: [16, 32, 64, , 96],
       maxWidth: contentWidths.max,
