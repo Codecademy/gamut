@@ -93,7 +93,7 @@ export const AppHeaderCatalogSection = React.forwardRef<
   return (
     <LayoutGrid ref={ref}>
       {item.popover.map((section) => (
-        <StyledColumn size={12} key={item.id}>
+        <StyledColumn size={12} key={section.title}>
           <LayoutGrid>
             <Column size={{ xs: 12, md: 4 }}>
               <FlexBox
