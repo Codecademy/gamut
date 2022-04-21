@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [31.11.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@31.10.0...@codecademy/gamut-labs@31.11.0) (2022-04-21)
+
+
+### Features
+
+* **AppHeaderCatalogDropdown:** adding keyboard functionality ([15dcb9e](https://github.com/Codecademy/gamut/commit/15dcb9e842a4b12bc818dc580bc579219406634d))
+
+
+
 ## [31.10.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@31.9.1...@codecademy/gamut-labs@31.10.0) (2022-04-21)
 
 
