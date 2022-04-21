@@ -13,5 +13,21 @@ describe('Resources List', () => {
 
   it('does not return projects and challenges in header if user is in experiment', () => {
     expect(headerResourcesList(true).length).toBe(resourcesCount - 2);
+
+    expect(headerResourcesList(true)).not.toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({ text: 'Projects' }),
+        expect.objectContaining({ text: 'Challenges' }),
+      ])
+    );
+  });
+
+  it('does return projects and challenges in header if user is not in experiment', () => {
+    expect(headerResourcesList()).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({ text: 'Projects' }),
+        expect.objectContaining({ text: 'Challenges' }),
+      ])
+    );
   });
 });

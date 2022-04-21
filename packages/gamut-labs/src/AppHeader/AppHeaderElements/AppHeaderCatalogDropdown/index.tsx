@@ -18,6 +18,7 @@ export const AppHeaderCatalogDropdown: React.FC<AppHeaderCatalogDropdownProps> =
   action,
   item,
 }) => {
+  const { text, dataTestId } = item;
   const containerRef = useRef<HTMLDivElement | null>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
   const [isOpen, setIsOpen] = useState(false);
@@ -68,18 +69,19 @@ export const AppHeaderCatalogDropdown: React.FC<AppHeaderCatalogDropdownProps> =
       <DropdownAnchor
         ref={buttonRef}
         onClick={handleOnClick}
-        title={item.text}
+        title={text}
         variant="interface"
         tabIndex="-1"
         aria-expanded={isOpen}
         aria-haspopup
+        data-testid={dataTestId}
       >
         <StyledText
           fontWeight={isOpen ? 'bold' : 'normal'}
           textAlign="center"
-          title={item.text}
+          title={text}
         >
-          {item.text}
+          {text}
         </StyledText>
         <DropdownIcon aria-label="dropdown" open={isOpen} size={12} />
       </DropdownAnchor>
@@ -102,6 +104,7 @@ export const AppHeaderCatalogDropdown: React.FC<AppHeaderCatalogDropdownProps> =
           role="menu"
           ref={containerRef}
           id={`menu-container${item.text}`}
+          isOpen={isOpen}
         />
       </StyledDropdown>
     </>
