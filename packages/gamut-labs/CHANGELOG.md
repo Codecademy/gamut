@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [31.10.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@31.9.1...@codecademy/gamut-labs@31.10.0) (2022-04-21)
+
+
+### Features
+
+* **GlobalFooter:** Add Extole marketing anchor ([1e6adb1](https://github.com/Codecademy/gamut/commit/1e6adb16b4362840b60a910e8e1089cf18a729c0))
+
+
+
 ### [31.9.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@31.9.0...@codecademy/gamut-labs@31.9.1) (2022-04-21)
 
 
