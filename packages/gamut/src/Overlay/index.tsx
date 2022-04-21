@@ -30,6 +30,8 @@ export type OverlayProps = {
   inline?: boolean;
   /** Whether the overlay has a transparent or a shrouded opaque background */
   shroud?: boolean;
+  /** Whether the overlay allows scroll */
+  allowScroll?: boolean;
 };
 
 const OverlayContainer = styled(FlexBox)(
@@ -52,6 +54,7 @@ export const Overlay: React.FC<OverlayProps> = ({
   escapeCloses = true,
   onRequestClose,
   isOpen,
+  allowScroll = false,
 }) => {
   const handleOutsideClick = useCallback(() => {
     if (clickOutsideCloses) {
@@ -81,6 +84,7 @@ export const Overlay: React.FC<OverlayProps> = ({
         active={!inline}
         onClickOutside={handleOutsideClick}
         onEscapeKey={handleEscapeKey}
+        allowPageInteraction={allowScroll}
       >
         {children}
       </FocusTrap>

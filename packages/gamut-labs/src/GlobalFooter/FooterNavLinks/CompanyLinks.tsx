@@ -87,6 +87,8 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
             Learner Stories
           </Anchor>
         </FooterLinkItem>
+        {/* Refer a friend marketing anchor */}
+        <span id="extole_zone_global_footer" />
       </FooterLinkItems>
     </Box>
   );
