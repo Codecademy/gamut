@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [31.9.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@31.9.0...@codecademy/gamut-labs@31.9.1) (2022-04-21)
+
+
+### Bug Fixes
+
+* **HorizontalScrollMenu:** fixed axe issue with hidden elements receiving focus ([f66e633](https://github.com/Codecademy/gamut/commit/f66e633a54aa0cb9fa27086c6b5e3bfe001b39db))
+
+
+
 ## [31.9.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@31.8.3...@codecademy/gamut-labs@31.9.0) (2022-04-21)
 
 
