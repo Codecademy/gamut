@@ -51,7 +51,6 @@ export const List = forwardRef<HTMLUListElement, ListProps>(
     useEffect(() => {
       if (scrollToTopOnUpdate && topOfTable.current !== null) {
         topOfTable.current.scrollTo({ top: 0 });
-        topOfTable.current.scrollTo({ top: 0 });
       }
     });
 
@@ -63,7 +62,6 @@ export const List = forwardRef<HTMLUListElement, ListProps>(
 
     const scrollHandler = (event: React.UIEvent<HTMLDivElement>) => {
       const { offsetWidth, scrollLeft, scrollWidth } = event.currentTarget;
-
       setIsEnd(offsetWidth + scrollLeft >= scrollWidth);
     };
 
@@ -77,7 +75,7 @@ export const List = forwardRef<HTMLUListElement, ListProps>(
             maxHeight={height}
             overflow={overflowHidden ? 'hidden' : 'auto'}
             ref={topOfTable}
-            onScroll={scrollHandler}
+            onScroll={scrollable ? scrollHandler : undefined}
           >
             {header}
             {isEmpty ? emptyMessage : listContent}

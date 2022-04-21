@@ -161,6 +161,14 @@ describe('DataGrid', () => {
         payload: { toggle: true },
       });
     });
+
+    it('hides the select all checkmark when hideSelectAll is true', () => {
+      renderView({ hideSelectAll: true });
+
+      const checkbox = screen.queryByRole('checkbox', { name: 'test-all' });
+
+      expect(checkbox).toBeNull();
+    });
   });
 
   describe('Expanding Rows', () => {
