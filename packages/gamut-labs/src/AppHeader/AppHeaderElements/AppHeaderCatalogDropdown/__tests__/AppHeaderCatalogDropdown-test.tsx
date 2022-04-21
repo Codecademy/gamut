@@ -1,5 +1,5 @@
+import { setupRtl } from '@codecademy/gamut-tests';
 import { fireEvent } from '@testing-library/dom';
-import { setupRtl } from 'component-test-setup';
 
 import { AppHeaderCatalogDropdown, KEY_CODES } from '..';
 
