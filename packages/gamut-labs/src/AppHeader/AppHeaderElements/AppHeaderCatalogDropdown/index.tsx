@@ -20,7 +20,7 @@ export type AppHeaderCatalogDropdownProps = {
   item: AppHeaderCatalogDropdownItem;
 };
 
-const KEY_CODES = {
+export const KEY_CODES = {
   UP: 'ArrowUp',
   DOWN: 'ArrowDown',
   LEFT: 'ArrowLeft',
@@ -217,6 +217,7 @@ export const AppHeaderCatalogDropdown: React.FC<AppHeaderCatalogDropdownProps> =
         }}
         transition={{ duration: 0.175 }}
         aria-hidden={!isOpen}
+        data-testid="catalog-menu-dropdown"
       >
         <AppHeaderCatalogSection
           action={action}
