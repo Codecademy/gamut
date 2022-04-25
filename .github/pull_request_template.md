@@ -12,11 +12,13 @@
 - [ ] This PR includes unit tests for the code change
 - [ ] The alpha package of this PR is passing end-to-end tests in all relevant Codecademy repositories
 
-  | Repository   | PR Link                                                  | PR Env                                                   |
-  | ------------ | -------------------------------------------------------- | -------------------------------------------------------- |
-  | Monolith     | [Monolith PR](http://www.google.fr/ 'Named link title')  | [Monolith Env](http://www.google.fr/ 'Named link title') |
-  | Portal       | [Portal Link](http://www.google.fr/ 'Named link title')  | [Portal Env](http://www.google.fr/ 'Named link title')   |
-  | Another Repo | [Another Link](http://www.google.fr/ 'Named link title') | [Another Env](http://www.google.fr/ 'Named link title')  |
+#### PR Links and Envs
+
+| Repository   | PR Link                                                  | PR Env                                                   |
+| :----------- | :------------------------------------------------------- | :------------------------------------------------------- |
+| Monolith     | [Monolith PR](http://www.google.fr/ 'Named link title')  | [Monolith Env](http://www.google.fr/ 'Named link title') |
+| Portal       | [Portal Link](http://www.google.fr/ 'Named link title')  | [Portal Env](http://www.google.fr/ 'Named link title')   |
+| Another Repo | [Another Link](http://www.google.fr/ 'Named link title') | [Another Env](http://www.google.fr/ 'Named link title')  |
 
 <!--
 Merging your changes
