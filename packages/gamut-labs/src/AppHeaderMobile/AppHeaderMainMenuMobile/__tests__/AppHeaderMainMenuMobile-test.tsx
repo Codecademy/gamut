@@ -77,6 +77,7 @@ const renderView = setupRtl(AppHeaderMainMenuMobile, {
     },
   ],
   onSearch: jest.fn(),
+  getItemType: jest.fn(),
 });
 
 describe('AppHeaderMainMenuMobile', () => {
