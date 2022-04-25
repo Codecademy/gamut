@@ -24,6 +24,7 @@ export type AppHeaderCatalogSectionProps = {
   ref?: React.RefObject<HTMLUListElement>;
   role?: string;
   id?: string;
+  keyDownEvents?: (event: React.KeyboardEvent) => void;
   isOpen?: boolean;
 };
 
@@ -88,10 +89,10 @@ const containsSubheaders = (
 export const AppHeaderCatalogSection = React.forwardRef<
   HTMLDivElement,
   AppHeaderCatalogSectionProps
->(({ action, item, isOpen }, ref) => {
+>(({ action, item, isOpen, keyDownEvents }, ref) => {
   const tabIndex = isOpen === false ? -1 : 0;
   return (
-    <LayoutGrid ref={ref}>
+    <LayoutGrid onKeyDown={keyDownEvents} ref={ref}>
       {item.popover.map((section) => (
         <StyledColumn size={12} key={section.title}>
           <LayoutGrid>

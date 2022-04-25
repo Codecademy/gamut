@@ -1,4 +1,10 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
 
 import {
   DropdownAnchor,
@@ -14,6 +20,19 @@ export type AppHeaderCatalogDropdownProps = {
   item: AppHeaderCatalogDropdownItem;
 };
 
+export const KEY_CODES = {
+  UP: 'ArrowUp',
+  DOWN: 'ArrowDown',
+  LEFT: 'ArrowLeft',
+  RIGHT: 'ArrowRight',
+  END: 'End',
+  ENTER: 'Enter',
+  ESC: 'Escape',
+  HOME: 'Home',
+  SPACE: ' ',
+  TAB: 'Tab',
+} as const;
+
 export const AppHeaderCatalogDropdown: React.FC<AppHeaderCatalogDropdownProps> = ({
   action,
   item,
@@ -22,6 +41,94 @@ export const AppHeaderCatalogDropdown: React.FC<AppHeaderCatalogDropdownProps> =
   const containerRef = useRef<HTMLDivElement | null>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
   const [isOpen, setIsOpen] = useState(false);
+
+  const [focusIndex, setFocusIndex] = useState(0);
+
+  const focusFirstItem = () => setFocusIndex(0);
+  const focusLastItem = () => setFocusIndex(itemsCount);
+
+  const itemsCount = useMemo(() => {
+    return item.popover
+      .map((section) => section.data)
+      .flat()
+      .filter((catalogListItem) => catalogListItem.type === 'link').length;
+  }, [item]);
+
+  const focusNextItem = () => {
+    if (focusIndex === itemsCount) {
+      focusFirstItem();
+    } else {
+      setFocusIndex(focusIndex + 1);
+    }
+  };
+
+  const focusPreviousItem = () => {
+    if (focusIndex === 0) {
+      focusLastItem();
+    } else {
+      setFocusIndex(focusIndex - 1);
+    }
+  };
+
+  const getNode = (index: number) => {
+    return containerRef.current?.querySelectorAll('a')[index];
+  };
+
+  const buttonHandleKeyEvents = (event: React.KeyboardEvent) => {
+    switch (event.key) {
+      case KEY_CODES.ENTER:
+      case KEY_CODES.SPACE:
+        event.preventDefault();
+        setIsOpen(true);
+        break;
+      case KEY_CODES.DOWN:
+        event.preventDefault();
+        setIsOpen(true);
+        focusFirstItem();
+        break;
+      case KEY_CODES.UP:
+        event.preventDefault();
+        setIsOpen(true);
+        focusLastItem();
+        break;
+      default:
+        break;
+    }
+  };
+
+  const menuHandleKeyEvents = (event: React.KeyboardEvent) => {
+    switch (event.key) {
+      case KEY_CODES.HOME:
+        event.preventDefault();
+        event.stopPropagation();
+        focusFirstItem();
+        break;
+      case KEY_CODES.END:
+        event.preventDefault();
+        event.stopPropagation();
+        focusLastItem();
+        break;
+      case KEY_CODES.UP:
+        event.preventDefault();
+        focusPreviousItem();
+        break;
+      case KEY_CODES.DOWN:
+        event.preventDefault();
+        focusNextItem();
+        break;
+      case KEY_CODES.TAB:
+      case KEY_CODES.LEFT:
+      case KEY_CODES.RIGHT:
+        setIsOpen(false);
+        break;
+      case KEY_CODES.ESC:
+        event.stopPropagation();
+        handleClose();
+        break;
+      default:
+        break;
+    }
+  };
 
   const focusButton = () => {
     buttonRef?.current?.focus();
@@ -40,6 +147,18 @@ export const AppHeaderCatalogDropdown: React.FC<AppHeaderCatalogDropdownProps> =
     setIsOpen(false);
     focusButton();
   }, []);
+
+  useEffect(() => {
+    const firstNode = getNode(0);
+    const nextNode = getNode(focusIndex);
+    if (firstNode && nextNode) {
+      if (isOpen) {
+        if (focusIndex >= 0 && focusIndex <= itemsCount) {
+          nextNode.focus();
+        }
+      }
+    }
+  }, [focusIndex, isOpen, itemsCount]);
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent | Event) {
@@ -69,6 +188,7 @@ export const AppHeaderCatalogDropdown: React.FC<AppHeaderCatalogDropdownProps> =
       <DropdownAnchor
         ref={buttonRef}
         onClick={handleOnClick}
+        onKeyDown={buttonHandleKeyEvents}
         title={text}
         variant="interface"
         tabIndex="-1"
@@ -97,12 +217,14 @@ export const AppHeaderCatalogDropdown: React.FC<AppHeaderCatalogDropdownProps> =
         }}
         transition={{ duration: 0.175 }}
         aria-hidden={!isOpen}
+        data-testid="catalog-menu-dropdown"
       >
         <AppHeaderCatalogSection
           action={action}
           item={item}
           role="menu"
           ref={containerRef}
+          keyDownEvents={menuHandleKeyEvents}
           id={`menu-container${item.text}`}
           isOpen={isOpen}
         />
