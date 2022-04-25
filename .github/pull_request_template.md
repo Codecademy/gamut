@@ -10,6 +10,12 @@
 - [ ] Related to JIRA ticket: ABC-123
 - [ ] I have run this code to verify it works
 - [ ] This PR includes unit tests for the code change
+- [ ] The alpha-build of this PR is passing end-to-end tests in all relevent Codecademy repositories
+
+| Repository | PR Link                                                | PR Env                                                 |
+| ---------- | ------------------------------------------------------ | ------------------------------------------------------ |
+| Monolith   | [Named Link](http://www.google.fr/ 'Named link title') | [Named Link](http://www.google.fr/ 'Named link title') |
+| Portal     | [Named Link](http://www.google.fr/ 'Named link title') | [Named Link](http://www.google.fr/ 'Named link title') |
 
 <!--
 Merging your changes
