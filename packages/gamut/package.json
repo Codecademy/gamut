@@ -35,7 +35,7 @@
     "html-to-react": "^1.4.2",
     "invariant": "^2.2.4",
     "lodash": "^4.17.5",
-    "marked": "^0.7.0",
+    "marked": "^4.0.10",
     "polished": "^4.1.2",
     "react-aria-tabpanel": "^4.4.0",
     "react-focus-on": "^3.5.1",
