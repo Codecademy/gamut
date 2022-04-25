@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [31.11.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@31.11.0...@codecademy/gamut-labs@31.11.1) (2022-04-25)
+
+
+### Bug Fixes
+
+* **CompanyLinks:** Wrap extole zone in a footer item ([a69e2d3](https://github.com/Codecademy/gamut/commit/a69e2d32e8c3717ebb2f461af9906dffce43a5eb))
+
+
+
 ## [31.11.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@31.10.0...@codecademy/gamut-labs@31.11.0) (2022-04-21)
 
 
