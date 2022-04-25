@@ -1,0 +1,175 @@
+import {
+  css,
+  states,
+  theme as GamutTheme,
+  variant,
+} from '@codecademy/gamut-styles';
+import { StylesConfig } from 'react-select';
+
+import {
+  formBaseComponentStyles,
+  formBaseFieldStylesObject,
+  formFieldDisabledStyles,
+  formFieldPaddingStyles,
+  InputSelectors,
+} from '../styles';
+
+const selectDropdownStyles = css({
+  ...formBaseFieldStylesObject,
+  display: 'flex',
+  zIndex: 3,
+});
+
+const selectFocusStyles = {
+  color: 'primary',
+  borderColor: 'currentColor',
+  boxShadow: `inset 0 0 0 1px currentColor`,
+} as const;
+
+export const conditionalBorderStates = states({
+  isFocused: selectFocusStyles,
+  activated: { borderColor: 'currentColor' },
+  error: {
+    color: 'feedback-error',
+    borderColor: 'currentColor',
+    [InputSelectors.HOVER]: {
+      borderColor: 'currentColor',
+    },
+  },
+  isDisabled: formFieldDisabledStyles,
+});
+
+const sizeVariants = variant({
+  prop: 'size',
+  defaultVariant: 'medium',
+  variants: {
+    medium: formFieldPaddingStyles,
+    small: { height: '2rem', px: 8, py: 0 },
+  },
+});
+
+const dropdownBorderStates = states({
+  error: { borderColorTop: 'feedback-error' },
+});
+
+const dropdownBorderStyles = css({
+  ...formBaseComponentStyles,
+  border: 1,
+  borderColor: 'currentColor',
+  position: 'absolute',
+  marginTop: 0,
+  borderRadius: 0,
+  zIndex: 2,
+});
+
+const getOptionBackground = (isSelected: boolean, isFocused: boolean) =>
+  css({
+    bg: isFocused
+      ? 'background-hover'
+      : isSelected
+      ? 'background-selected'
+      : 'transparent',
+  });
+
+const textColor = css({
+  color: 'text',
+});
+
+const placeholderColor = css({
+  color: 'text-disabled',
+});
+
+export const getMemoizedStyles = (
+  theme: typeof GamutTheme
+): StylesConfig<any, false> => {
+  return {
+    container: (provided, state) => ({
+      ...provided,
+      pointerEvents: 'visible',
+      cursor: state.selectProps.isSearchable ? 'text' : 'pointer',
+      width: '100%',
+      minWidth: '7rem',
+    }),
+    control: (provided, state: any) => ({
+      ...selectDropdownStyles({ theme }),
+      ...sizeVariants({ size: state.selectProps.size, theme }),
+      ...conditionalBorderStates({
+        isFocused: state.isFocused,
+        isDisabled: state.isDisabled,
+        error: state.selectProps.error,
+        activated: state.selectProps.activated,
+        theme,
+      }),
+    }),
+    dropdownIndicator: () => ({
+      color: 'currentColor',
+      display: 'flex',
+      padding: '0',
+      pointerEvents: 'none',
+    }),
+    input: (provided) => ({
+      ...provided,
+      ...textColor({ theme }),
+      padding: '0',
+      margin: '0',
+    }),
+    menu: (provided, state: any) => ({
+      ...provided,
+      ...dropdownBorderStyles({ theme }),
+      ...dropdownBorderStates({ error: state.selectProps.error, theme }),
+    }),
+    menuList: (provided, state: any) => {
+      const sizeInteger = state.selectProps.size === 'small' ? 2 : 3;
+      const maxHeight = `${
+        state.selectProps.shownOptionsLimit * sizeInteger
+      }rem`;
+      return {
+        ...provided,
+        maxHeight,
+      };
+    },
+    placeholder: (provided) => ({
+      ...provided,
+      ...placeholderColor({ theme }),
+    }),
+    option: (provided, state: any) => ({
+      padding: state.selectProps.size === 'small' ? '3px 14px' : '11px 14px',
+      cursor: 'pointer',
+      ...getOptionBackground(state.isSelected, state.isFocused)({ theme }),
+      display: 'flex',
+      alignItems: 'center',
+    }),
+    singleValue: (provided) => ({
+      ...provided,
+      ...textColor({ theme }),
+      display: 'flex',
+      alignItems: 'center',
+      marginLeft: 0,
+    }),
+    multiValue: (provided) => ({
+      ...provided,
+      cursor: 'pointer',
+      alignItems: 'center',
+      background: theme.colors['background-selected'],
+    }),
+    multiValueLabel: (provided) => ({
+      ...provided,
+      color: theme.colors.text,
+    }),
+    multiValueRemove: (provided) => ({
+      ...provided,
+      cursor: 'pointer',
+      paddingTop: '7px',
+      paddingBottom: '7px',
+      background: theme.colors['background-selected'],
+      ':hover': {
+        backgroundColor: theme.colors['background-hover'],
+        color: theme.colors['primary-hover'],
+      },
+    }),
+    valueContainer: (provided) => ({
+      ...provided,
+      padding: 0,
+    }),
+  };
+};
