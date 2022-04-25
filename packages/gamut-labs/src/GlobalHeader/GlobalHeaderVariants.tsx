@@ -245,7 +245,7 @@ export const proMobileHeaderItems = (
     catalogComponent(user),
     resourcesDropdown(user.useNewCatalogDropdown),
     communityDropdown,
-    proProfile(user, true),
+    proProfile(user),
   ];
 
   if (user.isPaused) {

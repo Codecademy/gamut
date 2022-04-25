@@ -295,10 +295,7 @@ export const freeProfile = (
   };
 };
 
-export const proProfile = (
-  user: User,
-  isMobile?: boolean
-): AppHeaderProfileDropdownItem => {
+export const proProfile = (user: User): AppHeaderProfileDropdownItem => {
   const topSection = [profileMyProfile];
 
   if (user.isBusinessAdmin || !user.isBusinessSsoUser) {
@@ -307,7 +304,7 @@ export const proProfile = (
 
   topSection.push(profileMyHome);
 
-  if (!isMobile && (user.isAccountManager || user.isBusinessAdmin)) {
+  if (user?.isAccountManager || user?.isBusinessAdmin) {
     topSection.push(profileBusinessAccount);
   }
   if (user.showReferrals) {

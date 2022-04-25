@@ -1,4 +1,4 @@
-import { FillButton, TextButton } from '@codecademy/gamut';
+import { ContentContainer, FillButton, TextButton } from '@codecademy/gamut';
 import React, { useState } from 'react';
 
 import { AppHeaderLink } from '../../AppHeader/AppHeaderElements/AppHeaderLink';
@@ -16,12 +16,14 @@ export type AppHeaderMainMenuMobileProps = {
   action: AppHeaderClickHandler;
   items: AppHeaderItem[];
   onSearch: (query: string) => void;
+  getItemType: (type: string) => void;
 };
 
 export const AppHeaderMainMenuMobile: React.FC<AppHeaderMainMenuMobileProps> = ({
   action,
   items,
   onSearch,
+  getItemType,
 }) => {
   const [subMenuItem, setSubMenuItem] = useState<AppHeaderDropdownItem>();
 
@@ -31,6 +33,7 @@ export const AppHeaderMainMenuMobile: React.FC<AppHeaderMainMenuMobileProps> = (
   ) => {
     action(event, item);
     setSubMenuItem(item);
+    getItemType(item.type);
   };
 
   const closeSubMenu = () => {
@@ -94,7 +97,7 @@ export const AppHeaderMainMenuMobile: React.FC<AppHeaderMainMenuMobileProps> = (
       item={subMenuItem}
     />
   ) : (
-    <>
+    <ContentContainer>
       <AppHeaderListItem>
         <MobileSearchBar onSearch={onSearch} />
       </AppHeaderListItem>
@@ -103,6 +106,6 @@ export const AppHeaderMainMenuMobile: React.FC<AppHeaderMainMenuMobileProps> = (
           {mapItemToElement(item, action)}
         </AppHeaderListItem>
       ))}
-    </>
+    </ContentContainer>
   );
 };

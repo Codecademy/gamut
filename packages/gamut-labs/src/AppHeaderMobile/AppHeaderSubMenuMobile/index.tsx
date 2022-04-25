@@ -1,4 +1,4 @@
-import { Anchor, Text } from '@codecademy/gamut';
+import { Anchor, ContentContainer, Text } from '@codecademy/gamut';
 import { ArrowChevronLeftIcon } from '@codecademy/gamut-icons';
 import { css } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
@@ -21,7 +21,7 @@ const StyledAnchor = styled(Anchor)(
   css({
     alignItems: `center`,
     display: `flex`,
-    mb: 24,
+    my: 24,
     padding: 0,
     width: `100%`,
   })
@@ -34,19 +34,21 @@ export const AppHeaderSubMenuMobile: React.FC<AppHeaderSubMenuMobileProps> = ({
 }) => {
   return (
     <AppHeaderListItem aria-labelledby={`${item.text} menu`}>
-      <StyledAnchor onClick={handleClose} variant="interface" as="button">
-        <ArrowChevronLeftIcon size={12} aria-hidden />
-        <Text fontSize={16} ml={8}>
-          Full Menu
+      <ContentContainer>
+        <StyledAnchor onClick={handleClose} variant="interface" as="button">
+          <ArrowChevronLeftIcon size={12} aria-hidden />
+          <Text fontSize={16} ml={8}>
+            Full Menu
+          </Text>
+        </StyledAnchor>
+        <Text as="h1" fontSize={22} mb={16}>
+          {item.type === 'profile-dropdown' ? item.userDisplayName : item.text}
         </Text>
-      </StyledAnchor>
-      <Text as="h1" fontSize={22} mb={16}>
-        {item.type === 'profile-dropdown' ? item.userDisplayName : item.text}
-      </Text>
+      </ContentContainer>
       {item.type === 'catalog-dropdown' ? (
         <AppHeaderCatalogSection action={action} item={item} />
       ) : (
-        <AppHeaderLinkSections action={action} item={item} showIcon />
+        <AppHeaderLinkSections action={action} item={item} showIcon mobile />
       )}
     </AppHeaderListItem>
   );
