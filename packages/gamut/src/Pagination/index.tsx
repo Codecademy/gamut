@@ -115,7 +115,7 @@ export const Pagination: React.FC<PaginationProps> = ({
           }, current page ${currentPage}`);
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [changeShownPages]
+    [changeShownPages, totalPages]
   );
 
   const changeHandler = (pageChange: number) => {
