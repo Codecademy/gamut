@@ -8,6 +8,7 @@ on:
 jobs:
   announce-on-slack:
     runs-on: ubuntu-latest
+    if: ${{ !contains(github.event.release.body, 'Version bump only for package') }}
     steps:
       - name: Slackify the release body
         id: release_body
@@ -20,4 +21,4 @@ jobs:
           webhook_url: ${{ secrets.SLACK_RELEASE_BOT_WEBHOOK_URL }}
           title: ${{ github.event.release.name }}
           body: ${{ steps.release_body.outputs.text }}
-          context: Gamut
+          context: ${{ github.event.release.repo }}
