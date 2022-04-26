@@ -38,27 +38,3 @@ export const PaginationControlledExample: React.FC<PaginationProps> = (
     </>
   );
 };
-
-export const PaginationExample: React.FC<PaginationProps> = (props) => {
-  const [totalPages, setTotalPages] = useState(1);
-
-  const testSetTotalPage = (page) => {
-    setTotalPages(page);
-  };
-  return (
-    <>
-      <FlexBox justifyContent="center" mb={24} p={12}>
-        <InputStepper
-          label="Page"
-          ariaLabel="Page"
-          value={totalPages}
-          onChange={testSetTotalPage}
-        />
-      </FlexBox>
-      <Pagination
-        onChange={(page) => console.log(page)}
-        totalPages={totalPages}
-      />
-    </>
-  );
-};

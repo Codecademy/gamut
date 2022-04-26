@@ -4,7 +4,7 @@ import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 import LinkTo from '@storybook/addon-links/react';
 
-import { PaginationExample } from './Pagination.examples.tsx';
+import { PaginationControlledExample } from './Pagination.examples.tsx';
 
 <Meta
   title={title}
@@ -130,7 +130,7 @@ When `pageNumber` is specified, the component switches to being a controlled com
       totalPages: 27,
     }}
   >
-    {(args) => <PaginationExample {...args} />}
+    {(args) => <PaginationControlledExample {...args} />}
   </Story>
 </Canvas>
 
