@@ -8,7 +8,7 @@ on:
 jobs:
   announce-on-slack:
     runs-on: ubuntu-latest
-    if: ${{ !contains(github.event.release.body, 'Version bump only for package') }}
+    if: ${{ contains(github.event.release.body, '@codecademy/gamut-kit') || !contains(github.event.release.body, 'Version bump only for package') }}
     steps:
       - name: Slackify the release body
         id: release_body
