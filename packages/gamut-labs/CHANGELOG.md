@@ -3,6 +3,83 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [31.11.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@31.11.2...@codecademy/gamut-labs@31.11.3) (2022-04-26)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [31.11.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@31.11.1...@codecademy/gamut-labs@31.11.2) (2022-04-25)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [31.11.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@31.11.0...@codecademy/gamut-labs@31.11.1) (2022-04-25)
+
+
+### Bug Fixes
+
+* **CompanyLinks:** Wrap extole zone in a footer item ([a69e2d3](https://github.com/Codecademy/gamut/commit/a69e2d32e8c3717ebb2f461af9906dffce43a5eb))
+
+
+
+## [31.11.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@31.10.0...@codecademy/gamut-labs@31.11.0) (2022-04-21)
+
+
+### Features
+
+* **AppHeaderCatalogDropdown:** adding keyboard functionality ([15dcb9e](https://github.com/Codecademy/gamut/commit/15dcb9e842a4b12bc818dc580bc579219406634d))
+
+
+
+## [31.10.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@31.9.1...@codecademy/gamut-labs@31.10.0) (2022-04-21)
+
+
+### Features
+
+* **GlobalFooter:** Add Extole marketing anchor ([1e6adb1](https://github.com/Codecademy/gamut/commit/1e6adb16b4362840b60a910e8e1089cf18a729c0))
+
+
+
+### [31.9.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@31.9.0...@codecademy/gamut-labs@31.9.1) (2022-04-21)
+
+
+### Bug Fixes
+
+* **HorizontalScrollMenu:** fixed axe issue with hidden elements receiving focus ([f66e633](https://github.com/Codecademy/gamut/commit/f66e633a54aa0cb9fa27086c6b5e3bfe001b39db))
+
+
+
+## [31.9.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@31.8.3...@codecademy/gamut-labs@31.9.0) (2022-04-21)
+
+
+### Features
+
+* **GlobalHeader:** allowing access to Business Account Management on mobile ([#2227](https://github.com/Codecademy/gamut/issues/2227)) ([034e56d](https://github.com/Codecademy/gamut/commit/034e56d151a73f129fa0e0a445246bcc4f2fecb7))
+
+
+
+### [31.8.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@31.8.2...@codecademy/gamut-labs@31.8.3) (2022-04-21)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [31.8.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@31.8.1...@codecademy/gamut-labs@31.8.2) (2022-04-20)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
 ### [31.8.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@31.8.0...@codecademy/gamut-labs@31.8.1) (2022-04-15)
 
 **Note:** Version bump only for package @codecademy/gamut-labs
