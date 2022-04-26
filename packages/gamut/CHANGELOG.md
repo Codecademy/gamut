@@ -3,6 +3,35 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [47.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@46.1.4...@codecademy/gamut@47.0.0) (2022-04-26)
+
+
+### ⚠ BREAKING CHANGES
+
+* **Toggle:** colors,  labels, + elements
+
+### Features
+
+* **Toggle:** colors,  labels, + elements ([2fc160d](https://github.com/Codecademy/gamut/commit/2fc160dae06b718622c14041027a8517f89ac2c4))
+
+
+
+### [46.1.4](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@46.1.3...@codecademy/gamut@46.1.4) (2022-04-25)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [46.1.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@46.1.2...@codecademy/gamut@46.1.3) (2022-04-21)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
 ### [46.1.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@46.1.1...@codecademy/gamut@46.1.2) (2022-04-15)
 
 

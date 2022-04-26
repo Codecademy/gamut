@@ -8,18 +8,9 @@ import {
   LayoutGrid,
   SelectDropdown,
 } from '@codecademy/gamut';
-import {
-  LockIcon,
-  NetworkUserIcon,
-  PeopleIcon,
-  RadarIcon,
-  ResponsiveIcon,
-  RocketIcon,
-} from '@codecademy/gamut-icons';
+import { RadarIcon, ResponsiveIcon, RocketIcon } from '@codecademy/gamut-icons';
 import { Background, ColorMode } from '@codecademy/gamut-styles';
 import React, { useState } from 'react';
-
-import { ColorModeExampleWrapper } from '../../Foundations/ColorMode/examples';
 
 type CustomCheckboxProps = Omit<CheckboxProps, 'checked'> & {
   defaultChecked?: boolean;
@@ -86,8 +77,9 @@ export const CheckboxExample: React.FC = () => {
 
 export const SelectDropdownIconExample: React.FC = () => (
   <Box p={16} width="100%" height="20rem" border={1} bg="palePink">
-    <FormGroup label="i have pizzazz">
+    <FormGroup label="i have pizzazz" htmlFor="pizzaz-dropdown">
       <SelectDropdown
+        name="pizzaz-dropdown"
         options={[
           {
             label: 'ohai',
@@ -108,8 +100,9 @@ export const SelectDropdownIconExample: React.FC = () => (
       />
     </FormGroup>
     <Background p={16} bg="navy">
-      <FormGroup label="i am fancy">
+      <FormGroup label="i am fancy" htmlFor="fancy-dropdown">
         <SelectDropdown
+          name="fancy-dropdown"
           size="small"
           options={[
             {
@@ -133,74 +126,3 @@ export const SelectDropdownIconExample: React.FC = () => (
     </Background>
   </Box>
 );
-
-export const SelectDropdownExample: React.FC = () => {
-  return (
-    <ColorModeExampleWrapper>
-      <Box height="34rem">
-        <FormGroup label="i have a fancy colormode" htmlFor="colormode">
-          <SelectDropdown
-            aria-label="colormode"
-            options={['ooo fancy', 'yes I am!', ':)']}
-            name="colormode"
-            isSearchable
-          />
-        </FormGroup>
-        <FormGroup
-          label="i have an error"
-          htmlFor="colormode-error"
-          error="cry cry cry"
-        >
-          <SelectDropdown
-            aria-label="colormode-error"
-            options={['ooo fancy', 'yes I am!', ':)']}
-            name="colormode-error"
-            isSearchable
-            error
-          />
-        </FormGroup>
-        <FormGroup label="i am disabled" htmlFor="colormode-disabled">
-          <SelectDropdown
-            aria-label="colormode-disabled"
-            options={['ooo fancy', 'yes I am!', ':)']}
-            name="colormode-disabled"
-            isSearchable
-            disabled
-          />
-        </FormGroup>
-        <FormGroup label="i have icons" htmlFor="colormode-icons">
-          <SelectDropdown
-            aria-label="icon"
-            options={[
-              {
-                label: 'Private: Only you can prevent forest fires',
-                value: 'private',
-                icon: LockIcon,
-              },
-              {
-                label: 'Public: Wait what?',
-                value: 'public',
-                icon: NetworkUserIcon,
-              },
-              {
-                label: 'Monsters: Monsters are such interesting people',
-                value: 'monsters',
-                icon: PeopleIcon,
-              },
-            ]}
-            name="colormode-icons"
-          />
-        </FormGroup>
-        <FormGroup label="i am smol" htmlFor="colormode-small">
-          <SelectDropdown
-            aria-label="colormode-small"
-            options={['small', 'yes', 'very very']}
-            size="small"
-            name="colormode-small"
-            isSearchable
-          />
-        </FormGroup>
-      </Box>
-    </ColorModeExampleWrapper>
-  );
-};

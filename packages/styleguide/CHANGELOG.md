@@ -3,6 +3,83 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [57.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@56.4.12...@codecademy/styleguide@57.0.0) (2022-04-26)
+
+
+### ⚠ BREAKING CHANGES
+
+* **Toggle:** colors,  labels, + elements
+
+### Features
+
+* **Toggle:** colors,  labels, + elements ([2fc160d](https://github.com/Codecademy/gamut/commit/2fc160dae06b718622c14041027a8517f89ac2c4))
+
+
+
+### [56.4.12](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@56.4.11...@codecademy/styleguide@56.4.12) (2022-04-25)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [56.4.11](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@56.4.10...@codecademy/styleguide@56.4.11) (2022-04-25)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [56.4.10](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@56.4.9...@codecademy/styleguide@56.4.10) (2022-04-21)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [56.4.9](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@56.4.8...@codecademy/styleguide@56.4.9) (2022-04-21)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [56.4.8](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@56.4.7...@codecademy/styleguide@56.4.8) (2022-04-21)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [56.4.7](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@56.4.6...@codecademy/styleguide@56.4.7) (2022-04-21)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [56.4.6](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@56.4.5...@codecademy/styleguide@56.4.6) (2022-04-21)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [56.4.5](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@56.4.4...@codecademy/styleguide@56.4.5) (2022-04-20)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
 ### [56.4.4](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@56.4.3...@codecademy/styleguide@56.4.4) (2022-04-15)
 
 **Note:** Version bump only for package @codecademy/styleguide
