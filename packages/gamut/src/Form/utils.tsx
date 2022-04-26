@@ -1,9 +1,9 @@
 import { each, isObject } from 'lodash';
 import React from 'react';
 
-import { OptionStrict } from '.';
 import {
   IconOption,
+  OptionStrict,
   SelectDropdownOptions,
   SelectDropdownSizes,
 } from './SelectDropdown';

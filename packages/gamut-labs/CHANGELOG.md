@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [31.11.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@31.11.1...@codecademy/gamut-labs@31.11.2) (2022-04-25)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [31.11.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@31.11.0...@codecademy/gamut-labs@31.11.1) (2022-04-25)
+
+
+### Bug Fixes
+
+* **CompanyLinks:** Wrap extole zone in a footer item ([a69e2d3](https://github.com/Codecademy/gamut/commit/a69e2d32e8c3717ebb2f461af9906dffce43a5eb))
+
+
+
+## [31.11.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@31.10.0...@codecademy/gamut-labs@31.11.0) (2022-04-21)
+
+
+### Features
+
+* **AppHeaderCatalogDropdown:** adding keyboard functionality ([15dcb9e](https://github.com/Codecademy/gamut/commit/15dcb9e842a4b12bc818dc580bc579219406634d))
+
+
+
 ## [31.10.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@31.9.1...@codecademy/gamut-labs@31.10.0) (2022-04-21)
 
 
