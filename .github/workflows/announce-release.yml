@@ -21,4 +21,4 @@ jobs:
           webhook_url: ${{ secrets.SLACK_RELEASE_BOT_WEBHOOK_URL }}
           title: ${{ github.event.release.name }}
           body: ${{ steps.release_body.outputs.text }}
-          context: ${{ github.event.release.repo }}
+          context: Gamut
