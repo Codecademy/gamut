@@ -8,17 +8,27 @@ on:
 jobs:
   announce-on-slack:
     runs-on: ubuntu-latest
-    if: ${{ contains(github.event.release.body, '@codecademy/gamut-kit') || !contains(github.event.release.body, 'Version bump only for package') }}
+    if: ${{ !contains(github.event.release.body, 'Version bump only for package') || !contains(github.event.release.body, '@codecademy/gamut-kit') }}
     steps:
       - name: Slackify the release body
+        if: ${{ !contains(github.event.release.body, '@codecademy/gamut-kit') }}
         id: release_body
         uses: LoveToKnow/slackify-markdown-action@v1.0.0
         with:
           text: ${{ github.event.release.body }}
-      - name: Announce on Slack
+      - name: Announce on Changelog on Slack
+        if: ${{ !contains(github.event.release.body, '@codecademy/gamut-kit') }}
         uses: homeday-de/slack-release-bot-action@v0.0.1
         with:
           webhook_url: ${{ secrets.SLACK_RELEASE_BOT_WEBHOOK_URL }}
           title: ${{ github.event.release.name }}
           body: ${{ steps.release_body.outputs.text }}
           context: Gamut
+      - name: Announce on gamut-kit version on Slack
+        if: ${{ contains(github.event.release.body, '@codecademy/gamut-kit') }}
+        uses: homeday-de/slack-release-bot-action@v0.0.1
+        with:
+          webhook_url: ${{ secrets.SLACK_RELEASE_BOT_WEBHOOK_URL }}
+          title: ${{ github.event.release.name }}
+          body: 'Include this package in your application instead of the individual packages to simplify version management.'
+          context: gamut-kit
