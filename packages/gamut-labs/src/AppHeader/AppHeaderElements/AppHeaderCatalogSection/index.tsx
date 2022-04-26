@@ -99,6 +99,7 @@ export const AppHeaderCatalogSection = React.forwardRef<
           <LayoutGrid>
             <Column size={{ xs: 12, md: 4 }}>
               <FlexBox
+                data-focusablecatalog="true"
                 bg="background-selected"
                 flexDirection="column"
                 py={16}
@@ -121,11 +122,20 @@ export const AppHeaderCatalogSection = React.forwardRef<
               >
                 {section.data.map((item) =>
                   item.type === 'subheader' ? (
-                    <StyledSubheader as="h3" key={item.id} minWidth="12rem">
+                    <StyledSubheader
+                      data-focusablecatalog="true"
+                      as="h3"
+                      key={item.id}
+                      minWidth="12rem"
+                    >
                       {item.text}
                     </StyledSubheader>
                   ) : (
-                    <StyledAnchorBox key={item.id} minWidth="12rem">
+                    <StyledAnchorBox
+                      data-focusablecatalog="true"
+                      key={item.id}
+                      minWidth="12rem"
+                    >
                       <Anchor
                         variant="interface"
                         fontFamily="base"

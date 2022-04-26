@@ -71,7 +71,9 @@ export const AppHeaderCatalogDropdown: React.FC<AppHeaderCatalogDropdownProps> =
   };
 
   const getNode = (index: number) => {
-    return containerRef.current?.querySelectorAll('a')[index];
+    return containerRef.current?.querySelectorAll(
+      '[data-focusablecatalog=true]'
+    )[index];
   };
 
   const buttonHandleKeyEvents = (event: React.KeyboardEvent) => {
