@@ -13,13 +13,19 @@ import { ListProvider, useList } from './ListProvider';
 import { AllListProps } from './types';
 
 export interface ListProps extends AllListProps<ComponentProps<typeof ListEl>> {
+  /** Whether Select All checkmark should be hidden in the header. Defaults to false */
   scrollable?: boolean;
+  /** Whether the component should scroll to top after its rows update. */
   scrollToTopOnUpdate?: boolean;
+  /** A header node, rendered above the row content */
   header?: React.ReactNode;
   height?: BoxProps['height'];
   minHeight?: BoxProps['minHeight'];
+  /** If the list should render a right-side shadow when rows are scrollable to indicate more horizontal content */
   shadow?: boolean;
+  /** A custom message to override the default empty message  */
   emptyMessage?: React.ReactNode;
+  /** Whether the List container should have overflow hidden. */
   overflowHidden?: boolean;
 }
 

@@ -2,6 +2,7 @@ import React, { ReactElement } from 'react';
 
 import { FlexBox } from '../..';
 import { ListCol, ListHeader } from '../../List';
+import { Text } from '../../Typography';
 import {
   ExpandControl,
   FilterControl,
@@ -39,7 +40,7 @@ export const Header: HeaderComponent = ({
   return (
     <ListHeader>
       {selectable && (
-        <ListCol size="content" minWidth={46}>
+        <ListCol size="content" maxWidth={46}>
           {!hideSelectAll && (
             <SelectControl
               disabled={empty}
@@ -55,7 +56,11 @@ export const Header: HeaderComponent = ({
       {columns.map(({ key, header, sortable, filters, ...colProps }) => {
         const rowProperty = key as string;
         const renderKey = prefixId(`header-col-${rowProperty}`);
-        const columnText = header || key;
+        const columnText = (
+          <Text truncate="ellipsis" truncateLines={5}>
+            {header || key}
+          </Text>
+        );
         return (
           <ListCol key={renderKey} {...colProps} columnHeader>
             <FlexBox gap={8} alignItems="flex-end" width="100%">
