@@ -1,8 +1,4 @@
-import {
-  ColorMode,
-  styledOptions,
-  useCurrentMode,
-} from '@codecademy/gamut-styles';
+import { styledOptions, useCurrentMode } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
 import {
@@ -38,17 +34,13 @@ export const Tabs: React.FC<TabsProps> = (props) => {
   const currentMode = useCurrentMode();
   return (
     <TabProvider value={{ variant: props.variant || 'standard' }}>
-      <ColorMode
-        mode={props.variant === 'learningEnvironment' ? 'dark' : currentMode}
-      >
-        <ReachTabs
-          as={TabsBase}
-          position="relative"
-          zIndex={0}
-          keyboardActivation={TabsKeyboardActivation.Manual}
-          {...props}
-        />
-      </ColorMode>
+      <ReachTabs
+        as={TabsBase}
+        position="relative"
+        zIndex={0}
+        keyboardActivation={TabsKeyboardActivation.Manual}
+        {...props}
+      />
     </TabProvider>
   );
 };
