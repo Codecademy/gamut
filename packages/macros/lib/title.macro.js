@@ -4,6 +4,8 @@ const path = require('path');
 const { createMacro } = require('babel-plugin-macros');
 
 const getPathInformation = (f) => {
+  console.log(f);
+
   const absolute = path.resolve(f).split('/');
   const storyRoot = 'stories';
 

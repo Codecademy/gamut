@@ -26,7 +26,18 @@ module.exports = {
     storyStoreV7: true, //!global.navigator?.userAgent?.match?.('jsdom'),
     buildStoriesJson: true,
   },
-  stories: ['../stories/**/*.stories.@(mdx|tsx)'],
+  stories: [
+    {
+      directory: '../stories',
+      titlePrefix: 'Stories',
+      files: '*.stories.*',
+    },
+    {
+      directory: '../stories/Atoms',
+      titlePrefix: 'Atoms',
+      files: '*.stories.*',
+    },
+  ],
   typescript: {
     reactDocgen: 'react-docgen-typescript',
     reactDocgenTypescriptOptions: {
