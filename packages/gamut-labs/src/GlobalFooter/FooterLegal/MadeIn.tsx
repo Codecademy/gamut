@@ -1,14 +1,23 @@
 import { Anchor, Box } from '@codecademy/gamut';
+import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import React from 'react';
 
-const HeartContainer = styled(Anchor)`
+const heartStyles = css`
   display: inline-block;
   filter: saturate(0.7);
   margin-right: 0.25rem;
   min-width: 1.75em;
   text-align: center;
+`;
+
+const HeartAnchorContainer = styled(Anchor)`
+  ${heartStyles}
   cursor: pointer;
+`;
+
+const HeartContainer = styled.span`
+  ${heartStyles}
 `;
 
 export type MadeInProps = {
@@ -34,9 +43,9 @@ export const MadeIn: React.FC<MadeInProps> = ({ onClick }) => {
             Made
           </Anchor>{' '}
           with
-          <HeartContainer variant="interface" onClick={onHeartClick}>
+          <HeartAnchorContainer variant="interface" onClick={onHeartClick}>
             ️❤️
-          </HeartContainer>
+          </HeartAnchorContainer>
           in{' '}
           <Anchor variant="interface" onClick={onNYCClick}>
             NYC
@@ -47,7 +56,10 @@ export const MadeIn: React.FC<MadeInProps> = ({ onClick }) => {
           </Anchor>
         </>
       ) : (
-        <>{`Made with ❤️ in NYC © ${year} Codecademy`}</>
+        <>
+          Made with <HeartContainer aria-label="love">❤️</HeartContainer> in NYC
+          © {year} Codecademy
+        </>
       )}
     </Box>
   );
