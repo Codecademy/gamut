@@ -57,7 +57,7 @@ export const MadeIn: React.FC<MadeInProps> = ({ onClick }) => {
         </>
       ) : (
         <>
-          Made with <HeartContainer aria-label="love">❤️</HeartContainer> in NYC
+          Made with <HeartContainer aria-label="love">❤️</HeartContainer>in NYC
           © {year} Codecademy
         </>
       )}
