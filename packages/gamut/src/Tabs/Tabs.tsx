@@ -31,7 +31,6 @@ const TabsBase = styled('div', styledOptions)<TabsBaseProps>(
 );
 
 export const Tabs: React.FC<TabsProps> = (props) => {
-  const currentMode = useCurrentMode();
   return (
     <TabProvider value={{ variant: props.variant || 'standard' }}>
       <ReachTabs
