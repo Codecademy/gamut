@@ -1,4 +1,4 @@
-import { styledOptions, useCurrentMode } from '@codecademy/gamut-styles';
+import { styledOptions } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
 import {
