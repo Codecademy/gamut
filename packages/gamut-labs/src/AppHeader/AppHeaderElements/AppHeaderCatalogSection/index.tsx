@@ -86,7 +86,6 @@ const containsSubheaders = (
   return data.some((item) => item.type === 'subheader');
 };
 
-// TODO: add focus to StyledTitle via ref?
 export const AppHeaderCatalogSection = React.forwardRef<
   HTMLDivElement,
   AppHeaderCatalogSectionProps
