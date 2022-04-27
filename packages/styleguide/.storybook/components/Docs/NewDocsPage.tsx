@@ -48,8 +48,9 @@ const STATUS = {
   },
 } as const;
 
-export const DocsPage: React.FC = ({ children, ...props }) => {
+export const NewDocsPage: React.FC = ({ children, ...props }) => {
   const ctx = useContext(DocsContext);
+  console.log(ctx.storyById(ctx.id));
   debugger;
   const { kind } = useContext(DocsContext);
   // const {

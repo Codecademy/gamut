@@ -2,7 +2,7 @@ import 'focus-visible/dist/focus-visible.min.js';
 import { withDesign } from 'storybook-addon-designs';
 
 import { withEmotion } from './decorators/theme';
-import { DocsPage, DocsContainer } from './components';
+import { DocsContainer } from './components';
 import { breakpoints } from '@codecademy/gamut-styles/src';
 import { theme } from './theme';
 
@@ -11,6 +11,7 @@ export const parameters = {
   options: {
     showPanel: true,
     selectedPanel: 'addon-controls',
+    autoTitle: true,
     storySort: {
       order: [
         'Gamut',
@@ -57,9 +58,9 @@ export const parameters = {
   docs: {
     theme,
     container: DocsContainer,
-    components: {
-      wrapper: DocsPage,
-    },
+    // components: {
+    //   wrapper: NewDocsPage,
+    // },
   },
   backgrounds: {
     disable: true,

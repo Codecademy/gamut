@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Description } from '@storybook/addon-docs/blocks';
+import { Description } from '@storybook/addon-docs';
 import { Link, Reset } from '../Markdown/Elements';
 import { ContentItem, useNavigation } from '.';
 import { Box, Card, FlexBox, GridBox, Text } from '@codecademy/gamut/src';
@@ -35,6 +35,7 @@ export const Section: React.FC<ContentItem> = ({
   status,
   links,
 }) => {
+  return null;
   const renderSubsection = () =>
     links.map(({ title, id }) => (
       <Link

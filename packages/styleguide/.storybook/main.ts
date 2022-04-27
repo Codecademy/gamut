@@ -14,6 +14,7 @@ function emotionless<T extends Record<string, unknown>>(object: T) {
 }
 
 module.exports = {
+  framework: '@storybook/react',
   addons: [
     '@storybook/addon-essentials',
     '@storybook/addon-a11y',
@@ -21,6 +22,10 @@ module.exports = {
     './addons/system/preset',
     'storybook-addon-designs',
   ],
+  features: {
+    storyStoreV7: true, //!global.navigator?.userAgent?.match?.('jsdom'),
+    buildStoriesJson: true,
+  },
   stories: ['../stories/**/*.stories.@(mdx|tsx)'],
   typescript: {
     reactDocgen: 'react-docgen-typescript',

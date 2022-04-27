@@ -9,13 +9,13 @@ import {
   HeadersMdx,
   storyBlockIdFromId,
   anchorBlockIdFromId,
-} from '@storybook/addon-docs/blocks';
+} from '@storybook/addon-docs';
 import { AssetProvider } from '@codecademy/gamut-styles/src/AssetProvider';
 import {
   createEmotionCache,
   GamutProvider,
 } from '@codecademy/gamut-styles/src';
-import { NavigationProvider } from '../Navigation/NavigationProvider';
+// import { NavigationProvider } from '../Navigation/NavigationProvider';
 import React, { useEffect } from 'react';
 import { merge } from 'lodash';
 import { Link } from '../Markdown/Elements';

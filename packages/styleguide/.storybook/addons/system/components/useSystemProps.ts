@@ -1,6 +1,6 @@
 import { useReducer, useMemo, useContext } from 'react';
 import { intersection } from 'lodash';
-import { DocsContext } from '@storybook/addon-docs/blocks';
+import { DocsContext } from '@storybook/addon-docs';
 import { ALL_PROPS, PropGroups, PROP_GROUPS } from '../propMeta';
 
 interface PropsTableState {

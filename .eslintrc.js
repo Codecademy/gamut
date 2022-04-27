@@ -1,9 +1,12 @@
 module.exports = {
   root: true,
 
-  extends: [require.resolve('@codecademy/eslint-config')],
+  extends: [
+    require.resolve('@codecademy/eslint-config'),
+    'plugin:storybook/recommended',
+  ],
 
-  plugins: ['local-rules'],
+  plugins: ['local-rules', 'storybook'],
 
   overrides: [
     {
