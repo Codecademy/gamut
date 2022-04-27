@@ -21,26 +21,35 @@ export const MadeIn: React.FC<MadeInProps> = ({ onClick }) => {
   const onNYCClick = () => onClick?.('NYC');
   const onCodecademyClick = () => onClick?.('Codecademy');
 
+  const year = new Date().getFullYear();
+
   return (
     <Box
       display={{ md: 'inline-block' }}
       textAlign={{ _: 'center', md: 'right' }}
     >
-      <Anchor variant="interface" onClick={onMadeClick}>
-        Made
-      </Anchor>{' '}
-      with
-      <HeartContainer variant="interface" onClick={onHeartClick}>
-        ️❤️
-      </HeartContainer>
-      in{' '}
-      <Anchor variant="interface" onClick={onNYCClick}>
-        NYC
-      </Anchor>{' '}
-      ©{` ${new Date().getFullYear()} `}
-      <Anchor variant="interface" onClick={onCodecademyClick}>
-        Codecademy
-      </Anchor>
+      {onClick ? (
+        <>
+          {' '}
+          <Anchor variant="interface" onClick={onMadeClick}>
+            Made
+          </Anchor>{' '}
+          with
+          <HeartContainer variant="interface" onClick={onHeartClick}>
+            ️❤️
+          </HeartContainer>
+          in{' '}
+          <Anchor variant="interface" onClick={onNYCClick}>
+            NYC
+          </Anchor>{' '}
+          ©{` ${year} `}
+          <Anchor variant="interface" onClick={onCodecademyClick}>
+            Codecademy
+          </Anchor>
+        </>
+      ) : (
+        <>{`Made with ❤️ in NYC © ${year} Codecademy`}</>
+      )}
     </Box>
   );
 };
