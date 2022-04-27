@@ -1,125 +1,50 @@
-import { screenReaderOnly } from '@codecademy/gamut-styles';
-import styled from '@emotion/styled';
 import React from 'react';
 
-import { Box } from '../Box';
-import { HiddenText } from '../HiddenText';
+import { Circle, ToggleInput, ToggleLabel, ToggleTrack } from './elements';
+import { ToggleProps } from './types';
+import { getToggleElementProps } from './utils';
 
-export type ToggleSizes = keyof typeof sizes;
-export type ToggleVariants = typeof colors[number];
-
-export type LabelProps = {
-  disabled?: boolean;
-  variant?: ToggleVariants;
-};
-
-export type ToggleProps = {
-  /** The state of the checkbox input (this can be out of sync with the input's value if not passed) */
-  checked: boolean;
-  /** Called when the input value has changed */
-  onChange: (event?: React.FormEvent<HTMLInputElement>) => void;
-  /** A hidden label used for accessibility and control, unique to the page */
-  label?: string;
-  /** Color variations for background styles */
-  variant?: ToggleVariants;
-  /** Changes the dimensions of the element for using the component outside of a form context */
-  size?: ToggleSizes;
-  disabled?: boolean;
-  className?: string;
-};
-
-const sizes = {
-  medium: {
-    height: '30px',
-    width: '60px',
-  },
-  small: {
-    height: '18px',
-    width: '36px',
-  },
-};
-
-const colors = ['blue', 'hyper'] as const;
-
-const ToggleTrack = styled(Box)`
-  transition: background-color 0.2s ease;
-
-  &:after {
-    content: '';
-    transition: opacity 0.2s ease;
-    opacity: 0;
-    border-radius: inherit;
-    position: absolute;
-    width: calc(100% + 8px);
-    height: calc(100% + 8px);
-    top: -4px;
-    left: -4px;
-    border-color: inherit;
-    border-style: solid;
-    border-width: 2px;
-  }
-
-  ${Box} {
-    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-  }
-`;
-
-const ToggleInput = styled.input(screenReaderOnly);
-
-const ToggleLabel = styled.label<LabelProps>`
-  display: inline-block;
-  cursor: pointer;
-  border: 0;
-  padding: 0;
-
-  &[disabled] {
-    cursor: not-allowed;
-    opacity: 0.75;
-  }
-
-  ${ToggleInput}:focus-visible + ${ToggleTrack} {
-    &:after {
-      opacity: 1;
-    }
-  }
-`;
-
-export const Toggle: React.FC<ToggleProps> = ({
+export const Toggle = <Props extends ToggleProps>({
+  ariaLabel,
+  as = 'input',
   checked,
-  className,
-  onChange,
-  label,
   disabled,
-  variant = 'blue',
+  label,
+  labelSide = 'right',
+  onChange,
+  onClick,
   size = 'medium',
-}) => {
-  const activeColor = variant;
-  const checkedColor = checked ? variant : 'gray-600';
-  const sizeStyles = sizes[size];
+  ...rest
+}: Props) => {
+  const checkedColor = checked ? 'primary' : 'navy-600';
+  const isButton = as === 'button';
+  const toggleProps = getToggleElementProps<Props>({
+    ariaLabel,
+    as,
+    checked,
+    disabled,
+    label,
+    onChange,
+    onClick,
+  });
 
   return (
     <ToggleLabel
-      className={className}
       htmlFor={label}
-      variant={variant}
       disabled={disabled}
+      labelRight={labelSide === 'right'}
+      {...rest}
     >
-      <HiddenText>{label}</HiddenText>
-      <ToggleInput
-        type="checkbox"
-        checked={checked}
-        id={label}
-        disabled={disabled}
-        onChange={onChange}
-      />
+      {label && <>{label}</>}
       <ToggleTrack
-        {...sizeStyles}
-        borderColor={activeColor}
         bg={checkedColor}
-        borderRadius="99rem"
-        position="relative"
+        size={size}
+        mr={label && labelSide === 'left' ? 0 : 16}
+        ml={label && labelSide === 'right' ? 0 : 16}
+        {...(isButton && toggleProps)}
       >
-        <Box
+        {!isButton && <ToggleInput {...toggleProps} />}
+        <Circle
           width="40%"
           borderRadius="50%"
           bg="white"

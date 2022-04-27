@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [57.0.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@57.0.0...@codecademy/styleguide@57.0.1) (2022-04-26)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [57.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@56.4.12...@codecademy/styleguide@57.0.0) (2022-04-26)
+
+
+### ⚠ BREAKING CHANGES
+
+* **Toggle:** colors,  labels, + elements
+
+### Features
+
+* **Toggle:** colors,  labels, + elements ([2fc160d](https://github.com/Codecademy/gamut/commit/2fc160dae06b718622c14041027a8517f89ac2c4))
+
+
+
 ### [56.4.12](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@56.4.11...@codecademy/styleguide@56.4.12) (2022-04-25)
 
 **Note:** Version bump only for package @codecademy/styleguide
