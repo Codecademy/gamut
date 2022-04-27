@@ -15,7 +15,7 @@ jobs:
         uses: LoveToKnow/slackify-markdown-action@v1.0.0
         with:
           text: ${{ github.event.release.body }}
-      - name: Announce on Changelog on Slack
+      - name: Announce changelog on Slack
         uses: homeday-de/slack-release-bot-action@v0.0.1
         with:
           webhook_url: ${{ secrets.SLACK_RELEASE_BOT_WEBHOOK_URL }}
@@ -23,7 +23,7 @@ jobs:
           body: ${{ steps.release_body.outputs.text }}
           context: Gamut
 
-  announce-on-slack:
+  announce-kit-version-on-slack:
     runs-on: ubuntu-latest
     if: ${{ contains(github.event.release.body, '@codecademy/gamut-kit') }}
     steps:
