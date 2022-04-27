@@ -30,7 +30,6 @@ export const MadeIn: React.FC<MadeInProps> = ({ onClick }) => {
     >
       {onClick ? (
         <>
-          {' '}
           <Anchor variant="interface" onClick={onMadeClick}>
             Made
           </Anchor>{' '}
