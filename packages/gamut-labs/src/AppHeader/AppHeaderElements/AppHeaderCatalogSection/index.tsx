@@ -99,6 +99,7 @@ export const AppHeaderCatalogSection = React.forwardRef<
             <Column size={{ xs: 12, md: 4 }}>
               <FlexBox
                 data-focusablecatalog="true"
+                data-testid="title-description-section"
                 tabIndex={-1}
                 bg="background-selected"
                 flexDirection="column"
