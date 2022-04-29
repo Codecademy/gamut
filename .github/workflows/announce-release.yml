@@ -20,7 +20,7 @@ jobs:
         with:
           webhook_url: ${{ secrets.SLACK_RELEASE_BOT_WEBHOOK_URL }}
           title: ${{ github.event.release.name }}
-          body: ${{ steps.release_body.outputs.text }}
+          body: '${{ steps.release_body.outputs.text }}'
           context: Gamut
 
   announce-kit-version-on-slack:
