@@ -1,10 +1,7 @@
 // eslint-disable gamut/import-paths
 import { GridForm } from '@codecademy/gamut';
 import { Background } from '@codecademy/gamut-styles';
-import { action } from '@storybook/addon-actions';
 import React, { useState } from 'react';
-
-const onSubmit = action('Submitted!');
 
 export const FormLoadingExample = () => {
   const [loading, setLoading] = useState(false);
