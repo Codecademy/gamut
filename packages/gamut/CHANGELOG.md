@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [47.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@47.0.1...@codecademy/gamut@47.1.0) (2022-04-29)
+
+
+### Features
+
+* **Test:** isolate body output markdown ([ebbd62f](https://github.com/Codecademy/gamut/commit/ebbd62f780e7fcf833f9b6316f098fe3f042e865))
+
+
+
 ### [47.0.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@47.0.0...@codecademy/gamut@47.0.1) (2022-04-26)
 
 
