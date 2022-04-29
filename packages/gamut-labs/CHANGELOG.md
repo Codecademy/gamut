@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [31.11.5](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@31.11.4...@codecademy/gamut-labs@31.11.5) (2022-04-29)
+
+
+### Bug Fixes
+
+* **GlobalFooter:** don't display anchors if no click handler ([fc86f29](https://github.com/Codecademy/gamut/commit/fc86f2914957c0802769caba4f2f5586c341937e))
+
+
+
 ### [31.11.4](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@31.11.3...@codecademy/gamut-labs@31.11.4) (2022-04-26)
 
 **Note:** Version bump only for package @codecademy/gamut-labs
