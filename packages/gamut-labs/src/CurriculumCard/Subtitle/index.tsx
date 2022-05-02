@@ -1,4 +1,4 @@
-import { Box, FlexBox, Text } from '@codecademy/gamut';
+import { FlexBox, Text } from '@codecademy/gamut';
 import { capitalize } from 'lodash';
 import React from 'react';
 
@@ -25,12 +25,12 @@ export const Subtitle: React.FC<SubtitleProps> = ({
   return (
     <>
       {!showAltSubtitle && (
-        <Box>
+        <>
           <FlexBox fontSize={14} alignItems="center">
             <Difficulty variant={difficultyVariant} difficulty={difficulty} />
           </FlexBox>
-          {scopeToMap.length ? <Box as="span">separatingChar</Box> : null}
-        </Box>
+          {scopeToMap.length ? separatingChar : null}
+        </>
       )}
       {scopeToMap.map((scopeType, index) => (
         <Text

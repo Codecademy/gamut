@@ -12,7 +12,6 @@ import React from 'react';
 
 import { TagColor } from './BottomTag/index';
 import { Footer } from './Footer/index';
-import { Image } from './Image/index';
 import { Subtitle, SubtitleProps } from './Subtitle';
 
 export type ProgressState = 'inProgress' | 'completed';
@@ -60,11 +59,11 @@ export type CurriculumCardProps = SubtitleProps & {
   showCareerPathVariant?: boolean;
 };
 
-const LineDecoration = styled(Box)`
-  border-top: 1px solid
-    ${({ inProgress }: { inProgress?: boolean }) =>
-      inProgress ? theme.colors.navy : theme.colors['navy-200']};
-`;
+// const LineDecoration = styled(Box)`
+//   border-top: 1px solid
+//     ${({ inProgress }: { inProgress?: boolean }) =>
+//       inProgress ? theme.colors.navy : theme.colors['navy-200']};
+// `;
 
 export const CurriculumCard: React.FC<CurriculumCardProps> = ({
   beta,
@@ -88,10 +87,10 @@ export const CurriculumCard: React.FC<CurriculumCardProps> = ({
   difficultyVariant,
 }) => {
   const boxVariant = progressState && cardStyles[progressState];
-  const mode = progressState === 'completed' ? 'dark' : 'light';
+  // const mode = progressState === 'completed' ? 'dark' : 'light';
 
-  const isCareerPathVariant =
-    text.toLowerCase() === 'career path' && showCareerPathVariant;
+  // const isCareerPathVariant =
+  //   text.toLowerCase() === 'career path' && showCareerPathVariant;
 
   return (
     <Card
