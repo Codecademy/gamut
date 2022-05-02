@@ -2962,6 +2962,11 @@
     schema-utils "^2.6.5"
     source-map "^0.7.3"
 
+"@popperjs/core@^2.11.5":
+  version "2.11.5"
+  resolved "https://registry.npmjs.org/@popperjs/core/-/core-2.11.5.tgz#db5a11bf66bdab39569719555b0f76e138d7bd64"
+  integrity sha512-9X2obfABZuDVLCgPK9aX0a/x4jaOEweTTWE2+9sr0Qqqevj2Uv5XorvusThmc9XGYpS9yI+fhh8RTafBtGposw==
+
 "@popperjs/core@^2.5.4", "@popperjs/core@^2.6.0":
   version "2.9.2"
   resolved "https://registry.npmjs.org/@popperjs/core/-/core-2.9.2.tgz#adea7b6953cbb34651766b0548468e743c6a2353"
@@ -4371,6 +4376,13 @@
   version "5.0.3"
   resolved "https://registry.npmjs.org/@types/parse5/-/parse5-5.0.3.tgz#e7b5aebbac150f8b5fdd4a46e7f0bd8e65e19109"
   integrity sha512-kUNnecmtkunAoQ3CnjmMkzNU/gtxG8guhi+Fk2U/kOpIKjIMKnXGp4IJCgQJrXSgMsWYimYG4TGjz/UzbGEBTw==
+
+"@types/popper.js@^1.11.0":
+  version "1.11.0"
+  resolved "https://registry.npmjs.org/@types/popper.js/-/popper.js-1.11.0.tgz#217a9231953ded26b15a6264f9942e963a8f6e69"
+  integrity sha512-1SDEDA6VacGAqDOmwbMcJD39bg0sHbM8y6LHOV3CMxyDBRrwTodRyIIj5f4eR/nlgpeyPoG1fKXqbkRmg+5yRg==
+  dependencies:
+    popper.js "*"
 
 "@types/prettier@^2.0.0":
   version "2.4.3"
@@ -13688,6 +13700,11 @@ popmotion@9.3.6:
     style-value-types "4.1.4"
     tslib "^2.1.0"
 
+popper.js@*, popper.js@^1.16.1:
+  version "1.16.1"
+  resolved "https://registry.npmjs.org/popper.js/-/popper.js-1.16.1.tgz#2a223cb3dc7b6213d740e40372be40de43e65b1b"
+  integrity sha512-Wb4p1J4zyFTbM+u6WuO4XstYx4Ky9Cewe4DWrel7B0w6VVICvPwdOpotjzcf6eD8TsckVnIMNONQyPIUFOUbCQ==
+
 posix-character-classes@^0.1.0:
   version "0.1.1"
   resolved "https://registry.npmjs.org/posix-character-classes/-/posix-character-classes-0.1.1.tgz#01eac0fe3b5af71a2a6c02feabb8c1fef7e00eab"
@@ -14657,6 +14674,14 @@ react-popper@^2.2.4:
   version "2.2.4"
   resolved "https://registry.npmjs.org/react-popper/-/react-popper-2.2.4.tgz#d2ad3d2474ac9f1abf93df3099d408e5aa6a2e22"
   integrity sha512-NacOu4zWupdQjVXq02XpTD3yFPSfg5a7fex0wa3uGKVkFK7UN6LvVxgcb+xYr56UCuWiNPMH20tntdVdJRwYew==
+  dependencies:
+    react-fast-compare "^3.0.1"
+    warning "^4.0.2"
+
+react-popper@^2.2.5:
+  version "2.3.0"
+  resolved "https://registry.npmjs.org/react-popper/-/react-popper-2.3.0.tgz#17891c620e1320dce318bad9fede46a5f71c70ba"
+  integrity sha512-e1hj8lL3uM+sgSR4Lxzn5h1GxBlpa4CQz0XLF8kx4MDrDRWY0Ena4c97PUeSX9i5W3UAfDP0z0FXCTQkoXUl3Q==
   dependencies:
     react-fast-compare "^3.0.1"
     warning "^4.0.2"
