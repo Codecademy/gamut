@@ -116,7 +116,7 @@ export const CurriculumCard: React.FC<CurriculumCardProps> = ({
         textTransform="capitalize"
       >
         {showProLogo && <ProLabel alignSelf="center" mr={8} mode={mode} />}
-        {text}
+        <Box as="span">{text}</Box>
       </Text>
       <Text as={headingLevel} mb={4} fontSize={20}>
         {title}
