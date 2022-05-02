@@ -23,7 +23,7 @@ export const Subtitle: React.FC<SubtitleProps> = ({
   const separatingChar = <Box as="span">{showAltSubtitle ? '|' : ','}</Box>;
 
   return (
-    <>
+    <FlexBox flexWrap="wrap" alignItems="center">
       {!showAltSubtitle && (
         <FlexBox fontSize={14} alignItems="center">
           <Difficulty variant={difficultyVariant} difficulty={difficulty} />
@@ -43,6 +43,6 @@ export const Subtitle: React.FC<SubtitleProps> = ({
           {index < scopeToMap.length - 1 && separatingChar}{' '}
         </Text>
       ))}
-    </>
+    </FlexBox>
   );
 };

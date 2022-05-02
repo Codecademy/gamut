@@ -122,14 +122,12 @@ export const CurriculumCard: React.FC<CurriculumCardProps> = ({
         {title}
       </Text>
       {!progressState && (
-        <FlexBox flexWrap="wrap" alignItems="center">
-          <Subtitle
-            scope={scope}
-            difficulty={difficulty}
-            showAltSubtitle={showAltSubtitle}
-            difficultyVariant={difficultyVariant}
-          />
-        </FlexBox>
+        <Subtitle
+          scope={scope}
+          difficulty={difficulty}
+          showAltSubtitle={showAltSubtitle}
+          difficultyVariant={difficultyVariant}
+        />
       )}
       {isCareerPathVariant && (
         <LineDecoration inProgress={progressState === 'inProgress'} my={8} />
