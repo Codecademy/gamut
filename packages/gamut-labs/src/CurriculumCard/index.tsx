@@ -1,10 +1,10 @@
-import { Card, FlexBox, HeadingTags, Text } from '@codecademy/gamut';
+import { Card, HeadingTags, Text } from '@codecademy/gamut';
 import { pxRem } from '@codecademy/gamut-styles';
 import React from 'react';
 
 import { TagColor } from './BottomTag/index';
 import { Footer } from './Footer/index';
-import { Subtitle, SubtitleProps } from './Subtitle';
+import { SubtitleProps } from './Subtitle';
 
 export type ProgressState = 'inProgress' | 'completed';
 
@@ -111,16 +111,6 @@ export const CurriculumCard: React.FC<CurriculumCardProps> = ({
       <Text as={headingLevel} mb={4} fontSize={20}>
         {title}
       </Text>
-      {!progressState && (
-        <FlexBox flexWrap="wrap" alignItems="center">
-          <Subtitle
-            scope={scope}
-            difficulty={difficulty}
-            showAltSubtitle={showAltSubtitle}
-            difficultyVariant={difficultyVariant}
-          />
-        </FlexBox>
-      )}
       <Footer
         beta={beta}
         progressState={progressState}
