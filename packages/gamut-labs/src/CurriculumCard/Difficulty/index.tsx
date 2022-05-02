@@ -1,4 +1,4 @@
-import { Box, FlexBox } from '@codecademy/gamut';
+import { Box } from '@codecademy/gamut';
 import { pxRem, system, theme } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import { times, uniqueId } from 'lodash';
@@ -40,11 +40,11 @@ export const Difficulty: React.FC<ContentDifficultyProps> = ({
   const difficultyNumber = getDifficultyNumber(difficulty);
 
   return (
-    <FlexBox fontSize={14} alignItems="center">
+    <>
       {times(difficultyNumber + 1, () => (
         <DifficultySpan key={uniqueId()} variant={variant} />
       ))}
-      {DifficultyString[difficultyNumber]}
-    </FlexBox>
+      <Box as="span">{DifficultyString[difficultyNumber]}</Box>
+    </>
   );
 };
