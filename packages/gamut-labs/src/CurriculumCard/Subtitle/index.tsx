@@ -1,8 +1,7 @@
-import { Box, FlexBox, Text } from '@codecademy/gamut';
+import { FlexBox, Text } from '@codecademy/gamut';
 import { capitalize } from 'lodash';
 import React from 'react';
 
-import { Difficulty } from '../Difficulty';
 import { getDifficultyNumber } from '../Difficulty/helpers';
 import {
   ContentDifficultyProps,
