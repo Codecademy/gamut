@@ -44,7 +44,7 @@ export const Difficulty: React.FC<ContentDifficultyProps> = ({
       {times(difficultyNumber + 1, () => (
         <DifficultySpan key={uniqueId()} variant={variant} />
       ))}
-      {DifficultyString[difficultyNumber]}
+      <Box as="span">{DifficultyString[difficultyNumber]}</Box>
     </>
   );
 };
