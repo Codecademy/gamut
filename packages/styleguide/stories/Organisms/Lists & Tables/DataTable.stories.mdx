@@ -102,10 +102,10 @@ import { DataTableTemplate } from './examples.tsx';
 const DataTown = () => {
   const [selectedRows, setSelectedRows] = useState([]);
   const [expandedRows, setExpandedRows] = useState([]);
-  const columns =  [{
-      { key: 'name', sortable: true, size: 'sm'},
-      { key: 'ship', sortable: true, size: 'sm'}
-    }]
+  const columns = [
+    { key: 'name', sortable: true, size: 'sm' },
+    { key: 'ship', sortable: true, size: 'sm' },
+  ];
 
   const queryData = useLocalQuery({
     idKey: 'name',
