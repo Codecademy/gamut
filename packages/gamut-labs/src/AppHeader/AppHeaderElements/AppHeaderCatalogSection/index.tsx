@@ -92,18 +92,21 @@ export const AppHeaderCatalogSection = React.forwardRef<
 >(({ action, item, isOpen, keyDownEvents }, ref) => {
   const tabIndex = isOpen === false ? -1 : 0;
   return (
-    <LayoutGrid onKeyDown={keyDownEvents} ref={ref}>
+    <LayoutGrid onKeyDown={keyDownEvents} ref={ref} as="ul" p={0}>
       {item.popover.map((section) => (
-        <StyledColumn size={12} key={section.title}>
+        <StyledColumn size={12} key={section.title} as="li">
           <LayoutGrid>
             <Column size={{ xs: 12, md: 4 }}>
               <FlexBox
+                data-focusablecatalog="true"
+                data-testid="title-description-section"
+                tabIndex={-1}
                 bg="background-selected"
                 flexDirection="column"
                 py={16}
                 pl={{ _: 16, sm: 64, md: 16 }}
               >
-                <StyledTitle>{section.title}</StyledTitle>
+                <StyledTitle as="h2">{section.title}</StyledTitle>
                 <StyledDescription>{section.description}</StyledDescription>
               </FlexBox>
             </Column>
@@ -120,12 +123,19 @@ export const AppHeaderCatalogSection = React.forwardRef<
               >
                 {section.data.map((item) =>
                   item.type === 'subheader' ? (
-                    <StyledSubheader key={item.id} minWidth="12rem">
+                    <StyledSubheader
+                      data-focusablecatalog="true"
+                      as="h3"
+                      key={item.id}
+                      minWidth="12rem"
+                      tabIndex={-1}
+                    >
                       {item.text}
                     </StyledSubheader>
                   ) : (
                     <StyledAnchorBox key={item.id} minWidth="12rem">
                       <Anchor
+                        data-focusablecatalog="true"
                         variant="interface"
                         fontFamily="base"
                         fontSize={14}
@@ -151,6 +161,7 @@ export const AppHeaderCatalogSection = React.forwardRef<
           fontWeight="title"
           textAlign={{ _: 'center', md: 'left' }}
           href={catalogAnchorData.href}
+          data-focusablecatalog="true"
           onClick={(event) => action(event, catalogAnchorData)}
           tabIndex={tabIndex}
         >
