@@ -115,8 +115,7 @@ export const CurriculumCard: React.FC<CurriculumCardProps> = ({
         fontFamily="accent"
         textTransform="capitalize"
       >
-        {showProLogo && <ProLabel alignSelf="center" mr={8} mode={mode} />}
-        <Box as="span">{text}</Box>
+        {text}
       </Text>
       <Text as={headingLevel} mb={4} fontSize={20}>
         {title}
@@ -128,23 +127,6 @@ export const CurriculumCard: React.FC<CurriculumCardProps> = ({
             difficulty={difficulty}
             showAltSubtitle={showAltSubtitle}
             difficultyVariant={difficultyVariant}
-          />
-        </FlexBox>
-      )}
-      {isCareerPathVariant && (
-        <LineDecoration inProgress={progressState === 'inProgress'} my={8} />
-      )}
-      {(isCareerPathVariant || showDescription) && (
-        <Text pt={8} pb={16} fontSize={14}>
-          {description}
-        </Text>
-      )}
-      {isFullSize && image && (
-        <FlexBox m="auto" center pt={16} pb={isCareerPathVariant ? 32 : 0}>
-          <Image
-            isSmall={isCareerPathVariant}
-            image={image}
-            progressState={progressState}
           />
         </FlexBox>
       )}
