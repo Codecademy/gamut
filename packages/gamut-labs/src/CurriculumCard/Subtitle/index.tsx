@@ -25,12 +25,12 @@ export const Subtitle: React.FC<SubtitleProps> = ({
   return (
     <>
       {!showAltSubtitle && (
-        <>
+        <Box>
           <FlexBox fontSize={14} alignItems="center">
             <Difficulty variant={difficultyVariant} difficulty={difficulty} />
           </FlexBox>
           {scopeToMap.length ? <Box as="span">separatingChar</Box> : null}
-        </>
+        </Box>
       )}
       {scopeToMap.map((scopeType, index) => (
         <Text
