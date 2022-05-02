@@ -102,19 +102,21 @@ import { DataTableTemplate } from './examples.tsx';
 const DataTown = () => {
   const [selectedRows, setSelectedRows] = useState([]);
   const [expandedRows, setExpandedRows] = useState([]);
+  const columns =  [{
+      { key: 'name', sortable: true, size: 'sm'},
+      { key: 'ship', sortable: true, size: 'sm'}
+    }]
 
   const queryData = useLocalQuery({
     idKey: 'name',
     rows: crew,
-    columns: [{
-      { key: 'name', sortable: true, size: 'sm'},
-      { key: 'ship', sortable: true, size: 'sm'}
-    }],
+    columns,
   });
 
   return (
     <DataTable
       id="example"
+      columns={columns}
       selectedRows={selectedRows}
       onRowSelect={setSelectedRows}
       expandedRows={expandedRows}
@@ -129,6 +131,8 @@ const DataTown = () => {
 <br />
 
 ### Sorting and Filtering
+
+Each column takes a `sortable` and `filters` prop - this is will determine if the column should be sortable and which filters should appear in the dropdown menu of the column.
 
 <Story name="Full Example">
   <DataTableTemplate />
@@ -159,6 +163,13 @@ Replaces content of current rows with <LinkTo kind="Atoms/Loaders/Shimmer">Shimm
 <Story name="Scroll Shadow" args={{ shadow: true }}>
   {(args) => <DataTable {...args} />}
 </Story>
+
+<br />
+
+### Additional Column Configuration
+
+- `size` - enum which determines how much space the column should take up within the table
+- `fill` - boolean which, when set to true, takes up the remaining space in the table. Each `DataTable` should only have one `fill` column.
 
 <br />
 

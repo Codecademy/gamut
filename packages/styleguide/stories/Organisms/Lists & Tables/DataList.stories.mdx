@@ -108,10 +108,10 @@ const DataTown = () => {
   const queryData = useLocalQuery({
     idKey: 'name',
     rows: crew,
-    columns: [{
-      { key: 'name', sortable: true, size: 'sm'},
-      { key: 'ship', sortable: true, size: 'sm'}
-    }],
+    columns: [
+      { key: 'name', sortable: true, size: 'sm' },
+      { key: 'ship', sortable: true, size: 'sm' },
+    ],
   });
 
   return (
@@ -151,6 +151,11 @@ const DataTown = () => {
 </Story>
 
 <br />
+
+### Additional Column Configuration
+
+- `size` - enum which determines how much space the column should take up within the table
+- `fill` - boolean which, when set to true, takes up the remaining space in the table. Each `DataTable` should only have one `fill` column.
 
 ### Code Playground
 
