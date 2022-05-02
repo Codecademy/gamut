@@ -1,4 +1,4 @@
-import { FlexBox, Text } from '@codecademy/gamut';
+import { Text } from '@codecademy/gamut';
 import { capitalize } from 'lodash';
 import React from 'react';
 
