@@ -1,4 +1,4 @@
-import { Box } from '@codecademy/gamut';
+import { Box, Text } from '@codecademy/gamut';
 import { pxRem, system, theme } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import { times, uniqueId } from 'lodash';
@@ -44,7 +44,7 @@ export const Difficulty: React.FC<ContentDifficultyProps> = ({
       {times(difficultyNumber + 1, () => (
         <DifficultySpan key={uniqueId()} variant={variant} />
       ))}
-      <Box as="span">{DifficultyString[difficultyNumber]}</Box>
+      <Text>{DifficultyString[difficultyNumber]}</Text>
     </>
   );
 };
