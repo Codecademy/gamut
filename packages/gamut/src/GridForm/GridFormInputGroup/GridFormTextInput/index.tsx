@@ -7,6 +7,8 @@ import { BaseFormInputProps, GridFormTextField } from '../../types';
 export interface GridFormTextInputProps extends BaseFormInputProps {
   field: Omit<GridFormTextField, 'label'>;
   register: UseFormReturn['register'];
+  setOnBlurred: () => void;
+  setOnFocus: () => void;
 }
 
 export const GridFormTextInput: React.FC<GridFormTextInputProps> = ({
@@ -16,8 +18,10 @@ export const GridFormTextInput: React.FC<GridFormTextInputProps> = ({
   register,
   required,
   disabled,
+  setOnBlurred,
+  setOnFocus,
 }) => {
-  const { onChange, ...rest } = {
+  const { onChange, onBlur, ...rest } = {
     ...register(field.name, {
       ...field.validation,
     }),
@@ -25,6 +29,13 @@ export const GridFormTextInput: React.FC<GridFormTextInputProps> = ({
   return (
     <Input
       {...rest}
+      onFocus={() => {
+        setOnFocus();
+      }}
+      onBlur={async (e) => {
+        await onBlur(e);
+        setOnBlurred();
+      }}
       aria-invalid={error}
       aria-required={required}
       className={className}

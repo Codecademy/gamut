@@ -1,6 +1,6 @@
 import { css } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
-import React from 'react';
+import React, { useState } from 'react';
 import { UseFormReturn } from 'react-hook-form';
 
 import { Anchor } from '../../Anchor';
@@ -50,9 +50,15 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
 }) => {
   const disabled = isDisabled || field.disabled;
   const errorMessage = error || field.customError;
+
+  const [readOnBlurError, setOnBlurError] = useState('');
+
   const defaultProps = { disabled, ...rest };
   const isTightCheckbox =
     field.type === 'checkbox' && field?.spacing === 'tight';
+
+  const setOnBlurred = () => setOnBlurError('new ');
+  const setOnFocus = () => setOnBlurError('');
 
   const getInput = () => {
     switch (field.type) {
@@ -121,6 +127,8 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
           <GridFormTextInput
             error={!!errorMessage}
             field={field}
+            setOnBlurred={setOnBlurred}
+            setOnFocus={setOnFocus}
             {...defaultProps}
           />
         );
@@ -164,6 +172,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
           <FormError
             role={isFirstError ? 'alert' : 'status'}
             aria-live={isFirstError ? 'assertive' : 'off'}
+            aria-relevant="all"
             variant={isTightCheckbox ? 'initial' : 'absolute'}
           >
             <Markdown
@@ -182,6 +191,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
               text={errorMessage}
               spacing="none"
             />
+            {readOnBlurError}
           </FormError>
         )}
       </FormGroup>
