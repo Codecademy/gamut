@@ -18,40 +18,40 @@ export const MagnifyingGlass: React.FC<IllustrationProps> = ({
   >
     <title>Magnifying Glass Icon</title>
     <path
-      fill-rule="evenodd"
-      clip-rule="evenodd"
+      fillRule="evenodd"
+      clipRule="evenodd"
       d="m121 114.509-12.071 10.904-42.204-46.722 12.07-10.904L121 114.51Z"
       fill="#F5FCFF"
     />
     <path
-      clip-rule="evenodd"
+      clipRule="evenodd"
       d="m121 114.509-12.071 10.904-42.204-46.722 12.07-10.904L121 114.51Z"
       stroke="#10162F"
-      stroke-width="2"
+      strokeWidth="2"
     />
     <path
-      fill-rule="evenodd"
-      clip-rule="evenodd"
+      fillRule="evenodd"
+      clipRule="evenodd"
       d="M95.676 48.339c0 26.143-21.194 47.338-47.337 47.338C22.194 95.677 1 74.482 1 48.338 1 22.196 22.194 1 48.339 1c26.143 0 47.337 21.195 47.337 47.339Z"
       fill="#F5FCFF"
     />
     <path
-      clip-rule="evenodd"
+      clipRule="evenodd"
       d="M95.676 48.339c0 26.143-21.194 47.338-47.337 47.338C22.194 95.677 1 74.482 1 48.338 1 22.196 22.194 1 48.339 1c26.143 0 47.337 21.195 47.337 47.339Z"
       stroke="#10162F"
-      stroke-width="2"
+      strokeWidth="2"
     />
     <path
-      fill-rule="evenodd"
-      clip-rule="evenodd"
+      fillRule="evenodd"
+      clipRule="evenodd"
       d="M89.805 48.339c0 22.9-18.565 41.466-41.467 41.466-22.902 0-41.467-18.565-41.467-41.467 0-22.9 18.565-41.466 41.467-41.466 22.902 0 41.467 18.565 41.467 41.467Z"
       fill="#10162F"
     />
     <path
-      clip-rule="evenodd"
+      clipRule="evenodd"
       d="M89.805 48.339c0 22.9-18.565 41.466-41.467 41.466-22.902 0-41.467-18.565-41.467-41.467 0-22.9 18.565-41.466 41.467-41.466 22.902 0 41.467 18.565 41.467 41.467Z"
       stroke="#10162F"
-      stroke-width="2"
+      strokeWidth="2"
     />
     <mask id="a" maskUnits="userSpaceOnUse" x="8" y="3" width="119" height="91">
       <path
