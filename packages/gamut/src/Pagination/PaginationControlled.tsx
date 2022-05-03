@@ -4,7 +4,7 @@ import {
 } from '@codecademy/gamut-icons';
 import React, { useMemo, useState } from 'react';
 
-import { HiddenText } from '..';
+import { HiddenText, PaginationProps } from '..';
 import { FlexBox } from '../Box';
 import {
   AnimatedFadeButton,
@@ -20,66 +20,38 @@ import {
   shouldPagesChange,
 } from './utils';
 
-export interface PaginationProps {
-  /**
-   * Number of page buttons to show at once
-   */
-  chapterSize?: number;
-  /**
-   * Default initial page number, if none will default to one
-   */
-  defaultPageNumber?: number;
-  /**
-   * Whether pagination should act as standard link-based navigation.
-   */
-  isNavigation?: boolean;
-  /**
-   * Called when the page number is changed with the resulting page number as its first argument
-   */
-  onChange: (arg0: number) => void;
-  /**
-   * Controlled page number
-   */
-  pageNumber?: number;
-  /**
-   * Total number of pages
-   */
-  totalPages: number;
-  /**
-   *  Basic pagination vs ellipsis types, will default to basic if under 10 pages unless specified.
-   */
-  type?: 'basic' | 'includeSkipToButtons';
-  /**
-   *  Stroke or text button style
-   */
-  variant?: 'stroke' | 'text';
-}
-
-export const Pagination: React.FC<PaginationProps> = ({
+export const PaginationControlled: React.FC<PaginationProps> = ({
   chapterSize = 5,
-  defaultPageNumber = 1,
   isNavigation: navigation,
   onChange,
-  pageNumber,
+  pageNumber = 1,
   totalPages,
   type,
   variant = 'stroke',
 }) => {
-  const [currentPage, setCurrentPage] = useState(
-    pageNumber ?? defaultPageNumber
-  );
-  const [liveText, setLiveText] = useState('');
-  const [shownPageArray, setShownPageArray] = useState([0]);
-
   const showSkipToButtons = !!(
     (type === undefined && totalPages >= 10) ||
     type === 'includeSkipToButtons'
   );
 
+  const currentChapterSize =
+    chapterSize > totalPages ? totalPages : chapterSize;
+
+  const firstPageChapter =
+    totalPages - pageNumber < currentChapterSize
+      ? totalPages - (currentChapterSize - 1)
+      : pageNumber;
+
+  const shownPageArray = Array.from(
+    Array(currentChapterSize),
+    (_, index) => index + firstPageChapter
+  );
+
   const changeShownPages = shouldPagesChange({
     chapterSize,
-    currentPage,
+    currentPage: pageNumber,
     shownPageArray,
+    totalPages,
   });
 
   const backPageNumber = getBackPageNumber({
@@ -93,41 +65,11 @@ export const Pagination: React.FC<PaginationProps> = ({
     totalPages,
   });
 
-  useMemo(
-    () => {
-      const currentChapterSize =
-        chapterSize > totalPages ? totalPages : chapterSize;
-
-      const firstPageChapter =
-        totalPages - currentPage < currentChapterSize
-          ? totalPages - (currentChapterSize - 1)
-          : currentPage;
-
-      setShownPageArray(
-        Array.from(
-          Array(currentChapterSize),
-          (_, index) => index + firstPageChapter
-        )
-      );
-      setLiveText(`Viewing navigation for pages ${shownPageArray[0]} through
-          ${
-            shownPageArray[shownPageArray.length - 1]
-          }, current page ${currentPage}`);
-    },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [changeShownPages, totalPages]
-  );
-
   const changeHandler = (pageChange: number) => {
-    setCurrentPage(pageChange);
     onChange(pageChange);
-    setLiveText(`Current page ${pageChange}`);
   };
 
-  useMemo(() => {
-    if (pageNumber) changeHandler(pageNumber);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [pageNumber]);
+  const getLiveText = changeShownPages ? 'updog' : `Current page ${pageNumber}`;
 
   return (
     <FlexBox
@@ -143,14 +85,14 @@ export const Pagination: React.FC<PaginationProps> = ({
         sm: `${showSkipToButtons ? getMinWidth({ chapterSize }) : 'initial'}`,
       }}
     >
-      <HiddenText aria-live="polite">{liveText}</HiddenText>
+      <HiddenText aria-live="polite">{getLiveText}</HiddenText>
       <AnimatedFadeButton
-        aria-label={`Navigate back to page ${currentPage - 1}`}
+        aria-label={`Navigate back to page ${pageNumber - 1}`}
         direction="back"
         href={navigation}
         icon={MiniChevronLeftIcon}
-        onClick={() => changeHandler(currentPage - 1)}
-        showButton={currentPage === 1 ? 'hidden' : 'shown'}
+        onClick={() => changeHandler(pageNumber - 1)}
+        showButton={pageNumber === 1 ? 'hidden' : 'shown'}
         variant={variant}
       />
       {showSkipToButtons && (
@@ -179,12 +121,12 @@ export const Pagination: React.FC<PaginationProps> = ({
       )}
       {shownPageArray.map((page) => (
         <PaginationButton
-          aria-current={page === currentPage && 'page'}
+          aria-current={page === pageNumber && 'page'}
           aria-label={`${page === totalPages ? 'Last Page, ' : ''}Page ${page}`}
           href={navigation}
           key={page}
           onClick={() => changeHandler(page)}
-          selected={page === currentPage}
+          selected={page === pageNumber}
           variant={variant}
         >
           {page}
@@ -225,13 +167,13 @@ export const Pagination: React.FC<PaginationProps> = ({
         </>
       )}
       <AnimatedFadeButton
-        aria-label={`Navigate forward to page ${currentPage + 1}`}
+        aria-label={`Navigate forward to page ${pageNumber + 1}`}
         as={navigation ? 'a' : undefined}
         direction="forward"
         href={navigation}
         icon={MiniChevronRightIcon}
-        onClick={() => changeHandler(currentPage + 1)}
-        showButton={currentPage === totalPages ? 'hidden' : 'shown'}
+        onClick={() => changeHandler(pageNumber + 1)}
+        showButton={pageNumber === totalPages ? 'hidden' : 'shown'}
         variant={variant}
       />
     </FlexBox>

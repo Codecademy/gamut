@@ -40,6 +40,7 @@ export * from './NotificationList/NotificationItem';
 export * from './NotificationList/typings';
 export * from './Overlay';
 export * from './Pagination';
+export * from './Pagination/PaginationControlled';
 export * from './ProgressBar';
 export * from './RadialProgress';
 export * from './SkipToContent';

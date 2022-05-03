@@ -15,9 +15,10 @@ export const shouldPagesChange = ({
   chapterSize,
   currentPage,
   shownPageArray,
-}: Omit<PaginationUtils, 'totalPages'>) =>
+  totalPages,
+}: PaginationUtils) =>
   currentPage < shownPageArray[0] ||
-  currentPage > shownPageArray[chapterSize - 1] ||
+  (currentPage || totalPages) > shownPageArray[chapterSize - 1] ||
   shownPageArray[0] === 0;
 
 export const getBackPageNumber = ({

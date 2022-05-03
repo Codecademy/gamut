@@ -14,6 +14,7 @@ export const PaginationControlledExample: React.FC<PaginationProps> = (
 
   const setChangedPage = useCallback(
     (page) => {
+      console.log('changed');
       if (page > totalPages) return setPageNumber(1);
       if (page <= 0) return setPageNumber(totalPages);
       setPageNumber(page);
@@ -45,7 +46,7 @@ export const PaginationControlledExample: React.FC<PaginationProps> = (
         />
       </FlexBox>
       <Pagination
-        {...props}
+        // {...props}
         totalPages={totalPages}
         pageNumber={pageNumber}
         onChange={setChangedPage}
