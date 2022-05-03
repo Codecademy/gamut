@@ -80,6 +80,7 @@ export const Pagination: React.FC<PaginationProps> = ({
     chapterSize,
     currentPage,
     shownPageArray,
+    totalPages,
   });
 
   const backPageNumber = getBackPageNumber({
@@ -125,7 +126,10 @@ export const Pagination: React.FC<PaginationProps> = ({
   };
 
   useMemo(() => {
-    if (pageNumber) changeHandler(pageNumber);
+    if (pageNumber) {
+      setCurrentPage(pageNumber);
+      setLiveText(`Current page ${pageNumber}`);
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pageNumber]);
 
