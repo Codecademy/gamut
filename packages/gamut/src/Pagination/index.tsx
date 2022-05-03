@@ -93,8 +93,16 @@ export const Pagination: React.FC<PaginationProps> = ({
     totalPages,
   });
 
+  const changeHandler = (pageChange: number) => {
+    setCurrentPage(pageChange);
+    onChange(pageChange);
+    setLiveText(`Current page ${pageChange}`);
+  };
+
   useMemo(
     () => {
+      if (pageNumber) changeHandler(pageNumber);
+
       const currentChapterSize =
         chapterSize > totalPages ? totalPages : chapterSize;
 
@@ -115,19 +123,8 @@ export const Pagination: React.FC<PaginationProps> = ({
           }, current page ${currentPage}`);
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [changeShownPages, totalPages]
+    [pageNumber, changeShownPages, totalPages]
   );
-
-  const changeHandler = (pageChange: number) => {
-    setCurrentPage(pageChange);
-    onChange(pageChange);
-    setLiveText(`Current page ${pageChange}`);
-  };
-
-  useMemo(() => {
-    if (pageNumber) changeHandler(pageNumber);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [pageNumber]);
 
   return (
     <FlexBox

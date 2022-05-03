@@ -10,14 +10,22 @@ export const PaginationControlledExample: React.FC<PaginationProps> = (
   props
 ) => {
   const [pageNumber, setPageNumber] = useState(1);
+  const [totalPages, setTotalPages] = useState(3);
 
   const setChangedPage = useCallback(
     (page) => {
-      if (page > props.totalPages) return setPageNumber(1);
-      if (page <= 0) return setPageNumber(props.totalPages);
+      if (page > totalPages) return setPageNumber(1);
+      if (page <= 0) return setPageNumber(totalPages);
       setPageNumber(page);
     },
-    [props.totalPages, setPageNumber]
+    [totalPages, setPageNumber]
+  );
+
+  const setChangedTotalPages = useCallback(
+    (pages) => {
+      setTotalPages(pages);
+    },
+    [setTotalPages]
   );
 
   return (
@@ -29,9 +37,16 @@ export const PaginationControlledExample: React.FC<PaginationProps> = (
           value={pageNumber}
           onChange={setChangedPage}
         />
+        <InputStepper
+          label="Page"
+          ariaLabel="Page"
+          value={totalPages}
+          onChange={setChangedTotalPages}
+        />
       </FlexBox>
       <Pagination
         {...props}
+        totalPages={totalPages}
         pageNumber={pageNumber}
         onChange={setChangedPage}
       />
