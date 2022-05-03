@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [31.11.9](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@31.11.8...@codecademy/gamut-labs@31.11.9) (2022-05-03)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
 ### [31.11.8](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@31.11.7...@codecademy/gamut-labs@31.11.8) (2022-05-03)
 
 

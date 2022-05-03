@@ -80,6 +80,7 @@ export const Pagination: React.FC<PaginationProps> = ({
     chapterSize,
     currentPage,
     shownPageArray,
+    totalPages,
   });
 
   const backPageNumber = getBackPageNumber({
