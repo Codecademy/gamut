@@ -35,8 +35,6 @@ export const Section: React.FC<ContentItem> = ({
   status,
   links,
 }) => {
-  console.log(title, subtitle, id, status, links);
-
   const renderSubsection = () =>
     links.map(({ title, id }) => (
       <Link
