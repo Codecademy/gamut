@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [31.11.7](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@31.11.6...@codecademy/gamut-labs@31.11.7) (2022-05-02)
+
+
+### Bug Fixes
+
+* **AppHeaderCatalogDropdown:** axe fixes ([c1fae05](https://github.com/Codecademy/gamut/commit/c1fae05ff88d6b65e60c47fe88673d06a53985fd))
+
+
+
 ### [31.11.6](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@31.11.5...@codecademy/gamut-labs@31.11.6) (2022-04-29)
 
 **Note:** Version bump only for package @codecademy/gamut-labs
