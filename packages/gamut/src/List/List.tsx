@@ -71,15 +71,22 @@ export const List = forwardRef<HTMLUListElement, ListProps>(
       setIsEnd(offsetWidth + scrollLeft >= scrollWidth);
     };
 
+    const content = header ? (
+      <Box width="min-content">
+        {' '}
+        {header}
+        {isEmpty ? emptyMessage : listContent}
+      </Box>
+    ) : (
+      <>
+        {header}
+        {isEmpty ? emptyMessage : listContent}
+      </>
+    );
+
     return (
       <ListProvider value={value}>
-        <Box
-          position="relative"
-          overflow="hidden"
-          width={1}
-          id={id}
-          minWidth="min-content"
-        >
+        <Box position="relative" overflow="hidden" width={1} id={id}>
           <Box
             data-testid={`scrollable-${id}`}
             maxHeight={height}
@@ -90,8 +97,7 @@ export const List = forwardRef<HTMLUListElement, ListProps>(
             position="relative"
             ref={topOfTable}
           >
-            {header}
-            {isEmpty ? emptyMessage : listContent}
+            {content}
           </Box>
           {showShadow && (
             <Box
