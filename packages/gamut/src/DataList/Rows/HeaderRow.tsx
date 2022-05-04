@@ -2,7 +2,6 @@ import React, { ReactElement } from 'react';
 
 import { FlexBox } from '../..';
 import { ListCol, ListHeader } from '../../List';
-import { Text } from '../../Typography';
 import {
   ExpandControl,
   FilterControl,
