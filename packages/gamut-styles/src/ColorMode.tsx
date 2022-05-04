@@ -6,14 +6,9 @@ import {
 } from '@codecademy/variance';
 import { CSSObject, Theme, ThemeProvider, useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
-import { mapValues, pick } from 'lodash';
-import React, {
-  ComponentProps,
-  forwardRef,
-  useEffect,
-  useMemo,
-  useState,
-} from 'react';
+import { eq, mapValues, pick } from 'lodash';
+import React, { ComponentProps, forwardRef, useMemo, useState } from 'react';
+import { useIsomorphicLayoutEffect } from 'react-use';
 
 import {
   background,
@@ -81,7 +76,7 @@ export function useCurrentMode(mode?: ColorModes) {
 export function usePrefersDarkMode() {
   const [prefersDarkMode, setPrefersDarkMode] = useState(false);
 
-  useEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     const mq = window.matchMedia('(prefers-color-scheme: dark)');
     setPrefersDarkMode(mq.matches);
 
@@ -90,6 +85,7 @@ export function usePrefersDarkMode() {
     }
 
     mq.addEventListener('change', onChange);
+    return () => mq.removeEventListener('change', onChange);
   }, []);
 
   return prefersDarkMode;
