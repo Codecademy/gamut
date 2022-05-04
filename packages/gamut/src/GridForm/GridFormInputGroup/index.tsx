@@ -57,8 +57,11 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
   const isTightCheckbox =
     field.type === 'checkbox' && field?.spacing === 'tight';
 
-  const setOnBlurred = () => setOnBlurError('new ');
-  const setOnFocus = () => setOnBlurError('');
+  const setOnFocus = () => {
+    if (readOnBlurError !== '') setOnBlurError('');
+  };
+
+  const setOnBlurred = () => setOnBlurError('\u00a0');
 
   const getInput = () => {
     switch (field.type) {
