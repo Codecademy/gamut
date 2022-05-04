@@ -72,7 +72,7 @@ export const List = forwardRef<HTMLUListElement, ListProps>(
     };
 
     const content = header ? (
-      <Box width="min-content">
+      <Box minWidth="min-content" width="100%">
         {' '}
         {header}
         {isEmpty ? emptyMessage : listContent}
