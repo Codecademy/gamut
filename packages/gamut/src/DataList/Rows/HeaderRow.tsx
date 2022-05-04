@@ -40,7 +40,7 @@ export const Header: HeaderComponent = ({
   return (
     <ListHeader>
       {selectable && (
-        <ListCol size="content" maxWidth={46}>
+        <ListCol size="content">
           {!hideSelectAll && (
             <SelectControl
               disabled={empty}
@@ -56,11 +56,8 @@ export const Header: HeaderComponent = ({
       {columns.map(({ key, header, sortable, filters, ...colProps }) => {
         const rowProperty = key as string;
         const renderKey = prefixId(`header-col-${rowProperty}`);
-        const columnText = (
-          <Text truncate="ellipsis" truncateLines={5}>
-            {header || key}
-          </Text>
-        );
+        const columnText = header || key;
+
         return (
           <ListCol key={renderKey} {...colProps} columnHeader>
             <FlexBox gap={8} alignItems="flex-end" width="100%">

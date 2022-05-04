@@ -73,7 +73,13 @@ export const List = forwardRef<HTMLUListElement, ListProps>(
 
     return (
       <ListProvider value={value}>
-        <Box position="relative" overflow="hidden" width={1} id={id}>
+        <Box
+          position="relative"
+          overflow="hidden"
+          width={1}
+          id={id}
+          minWidth="min-content"
+        >
           <Box
             data-testid={`scrollable-${id}`}
             maxHeight={height}

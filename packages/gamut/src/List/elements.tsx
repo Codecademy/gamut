@@ -152,6 +152,7 @@ export const HeaderEl = styled('div', styledOptions)<HeaderProps>(
     bg: 'background-current',
     zIndex: 2,
     fontFamily: 'accent',
+    minWidth: 'fit-content',
   }),
   spacingVariants,
   rowStates,
