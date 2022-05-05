@@ -13,16 +13,15 @@ export const EmptyRows = () => {
     <>
       <FlexBox
         position="sticky"
-        // top="calc(50% - 92px)"
-        top={0}
-        left={0}
+        top="calc(50% - 92px)"
+        left="calc(50% - 160px)"
         zIndex={1}
         bg="background-current"
         column
         gap={16}
         center
         p={32}
-        width="50%"
+        width="320px"
       >
         <Text variant="title-sm">No Results Found</Text>
         <Text variant="p-base">Remove filters to view</Text>
