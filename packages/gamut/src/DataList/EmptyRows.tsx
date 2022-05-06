@@ -1,7 +1,8 @@
 import { DotLoose } from '@codecademy/gamut-patterns';
+import { isEmpty } from 'lodash';
 import React from 'react';
 
-import { FlexBox } from '../Box';
+import { Box, FlexBox } from '../Box';
 import { FillButton } from '../Button';
 import { Text } from '../Typography';
 import { useControlContext } from './hooks/useListControls';
@@ -12,16 +13,16 @@ export const EmptyRows = () => {
   return (
     <>
       <FlexBox
-        position="sticky"
-        top="calc(50% - 92px)"
-        left="calc(50% - 160px)"
-        zIndex={1}
         bg="background-current"
+        center
         column
         gap={16}
-        center
+        left="calc(50% - 160px)"
         p={32}
+        position="sticky"
+        top="calc(50% - 92px)"
         width="320px"
+        zIndex={1}
       >
         <Text variant="title-sm">No Results Found</Text>
         <Text variant="p-base">Remove filters to view</Text>

@@ -71,16 +71,14 @@ export const List = forwardRef<HTMLUListElement, ListProps>(
       setIsEnd(offsetWidth + scrollLeft >= scrollWidth);
     };
 
-    const content = header ? (
-      <Box minWidth="min-content" width="100%">
-        {' '}
-        {header}
-        {isEmpty ? emptyMessage : listContent}
+    const content = isEmpty ? (
+      <Box minWidth="min-content" width="100%" position="relative">
+        {header} {emptyMessage}
       </Box>
     ) : (
       <>
         {header}
-        {isEmpty ? emptyMessage : listContent}
+        {listContent}
       </>
     );
 
