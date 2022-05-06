@@ -49,7 +49,7 @@ export const List = forwardRef<HTMLUListElement, ListProps>(
   ) => {
     const isEmpty = !children || (isArray(children) && children.length === 0);
     const [isEnd, setIsEnd] = useState(false);
-    const showShadow = shadow && scrollable && !isEmpty && !isEnd;
+    const showShadow = shadow && scrollable && !isEnd;
     const value = useList({ variant, spacing, scrollable });
 
     const topOfTable = useRef<HTMLDivElement>(null);
@@ -72,7 +72,12 @@ export const List = forwardRef<HTMLUListElement, ListProps>(
     };
 
     const content = isEmpty ? (
-      <Box minWidth="min-content" width="100%" position="relative">
+      <Box
+        minWidth="min-content"
+        width="100%"
+        position="relative"
+        ref={topOfTable}
+      >
         {header} {emptyMessage}
       </Box>
     ) : (
@@ -93,7 +98,7 @@ export const List = forwardRef<HTMLUListElement, ListProps>(
             onScroll={scrollable ? scrollHandler : undefined}
             overflow={overflowHidden ? 'hidden' : 'auto'}
             position="relative"
-            ref={topOfTable}
+            ref={!isEmpty ? topOfTable : undefined}
           >
             {content}
           </Box>

@@ -142,8 +142,8 @@ Each column takes a `sortable` and `filters` prop - this is will determine if th
 
 ### Empty
 
-<Story name="Empty State" args={{ scrollable: true, rows: [] }}>
-  {(args) => <DataTable {...args} />}
+<Story name="Empty State" args={{ rows: [], shadow: true }}>
+  {(args) => <DataTable {...args} scrollable />}
 </Story>
 
 <br />
