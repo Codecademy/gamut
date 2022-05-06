@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [31.11.10](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@31.11.9...@codecademy/gamut-labs@31.11.10) (2022-05-04)
+
+
+### Bug Fixes
+
+* **CurriculumCard:** Wrap difficulty in span to avoid translation error ([dafb4ea](https://github.com/Codecademy/gamut/commit/dafb4eabeb7a4a12f541eaa4c740c4ee520137f3)), closes [/github.com/facebook/react/issues/11538#issuecomment-390386520](https://github.com/Codecademy//github.com/facebook/react/issues/11538/issues/issuecomment-390386520)
+
+
+
+### [31.11.9](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@31.11.8...@codecademy/gamut-labs@31.11.9) (2022-05-03)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [31.11.8](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@31.11.7...@codecademy/gamut-labs@31.11.8) (2022-05-03)
+
+
+### Bug Fixes
+
+* **HorizontalScrollMenu:** fixing multiple root observer query issue ([b18ff90](https://github.com/Codecademy/gamut/commit/b18ff90a23ce04beda5d263917eb2c0e2fdbe628))
+
+
+
 ### [31.11.7](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@31.11.6...@codecademy/gamut-labs@31.11.7) (2022-05-02)
 
 

@@ -36,7 +36,9 @@ export const HorizontalScrollMenu: React.FC<HorizontalScrollMenuProps> = ({
         });
       },
       {
-        root: document.querySelector('[data-observerroot=true]'),
+        root: parentContainerRef.current?.querySelector(
+          '[data-observerroot="true"]'
+        ),
         rootMargin: '100% 0% 100% 0%',
       }
     );

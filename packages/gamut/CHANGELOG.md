@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [47.1.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@47.1.0...@codecademy/gamut@47.1.1) (2022-05-03)
+
+
+### Bug Fixes
+
+* **Pagination:** fix bad setState call in controlled pagination ([51bdf6d](https://github.com/Codecademy/gamut/commit/51bdf6d22ce1633045ecadcc2f80adb5d24607cb))
+
+
+
 ## [47.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@47.0.1...@codecademy/gamut@47.1.0) (2022-04-29)
 
 
