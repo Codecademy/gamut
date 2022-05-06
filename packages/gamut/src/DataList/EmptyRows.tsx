@@ -1,8 +1,7 @@
 import { DotLoose } from '@codecademy/gamut-patterns';
-import { isEmpty } from 'lodash';
 import React from 'react';
 
-import { Box, FlexBox } from '../Box';
+import { FlexBox } from '../Box';
 import { FillButton } from '../Button';
 import { Text } from '../Typography';
 import { useControlContext } from './hooks/useListControls';
