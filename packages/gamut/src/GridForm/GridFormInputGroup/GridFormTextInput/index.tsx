@@ -1,14 +1,13 @@
 import React from 'react';
 import { UseFormReturn } from 'react-hook-form';
 
+import { useFormState } from '../../..';
 import { Input } from '../../../Form';
 import { BaseFormInputProps, GridFormTextField } from '../../types';
 
 export interface GridFormTextInputProps extends BaseFormInputProps {
   field: Omit<GridFormTextField, 'label'>;
   register: UseFormReturn['register'];
-  setOnBlur: () => void;
-  setOnFocus: () => void;
 }
 
 export const GridFormTextInput: React.FC<GridFormTextInputProps> = ({
@@ -18,25 +17,18 @@ export const GridFormTextInput: React.FC<GridFormTextInputProps> = ({
   register,
   required,
   disabled,
-  setOnBlur,
-  setOnFocus,
 }) => {
-  const { onChange, onBlur, ...rest } = {
+  const { onChange, ...rest } = {
     ...register(field.name, {
       ...field.validation,
     }),
   };
 
+  const { clearErrors } = useFormState();
+
   return (
     <Input
       {...rest}
-      onFocus={() => {
-        setOnFocus();
-      }}
-      onBlur={async (e) => {
-        await onBlur(e);
-        if (error) setOnBlur();
-      }}
       aria-invalid={error}
       aria-required={required}
       className={className}
@@ -46,8 +38,11 @@ export const GridFormTextInput: React.FC<GridFormTextInputProps> = ({
       id={field.id}
       name={field.name}
       onChange={async (event) => {
-        field?.onUpdate?.(event.target.value);
         await onChange(event);
+        field?.onUpdate?.(event.target.value);
+      }}
+      onInput={(event: React.ChangeEvent<HTMLInputElement>) => {
+        if (event.target.value.length <= 1) clearErrors(field.name);
       }}
       placeholder={field.placeholder}
       type={field.type}

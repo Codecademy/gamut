@@ -1,6 +1,7 @@
 import React from 'react';
 import { UseFormReturn } from 'react-hook-form';
 
+import { useFormState } from '../../..';
 import { TextArea } from '../../../Form';
 import { BaseFormInputProps, GridFormTextAreaField } from '../../types';
 
@@ -22,6 +23,9 @@ export const GridFormTextArea: React.FC<GridFormTextAreaProps> = ({
       ...field.validation,
     }),
   };
+
+  const { clearErrors } = useFormState();
+
   return (
     <TextArea
       {...rest}
@@ -36,6 +40,9 @@ export const GridFormTextArea: React.FC<GridFormTextAreaProps> = ({
       onChange={async (event) => {
         field?.onUpdate?.(event.target.value);
         await onChange(event);
+      }}
+      onInput={(event: React.ChangeEvent<HTMLTextAreaElement>) => {
+        if (event.target.value.length <= 1) clearErrors(field.name);
       }}
       placeholder={field.placeholder}
     />

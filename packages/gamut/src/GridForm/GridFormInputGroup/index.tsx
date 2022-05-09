@@ -130,8 +130,6 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
           <GridFormTextInput
             error={!!errorMessage}
             field={field}
-            setOnBlurred={setOnBlurred}
-            setOnFocus={setOnFocus}
             {...defaultProps}
           />
         );
