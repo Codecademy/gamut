@@ -13,6 +13,8 @@ import { ListProvider, useList } from './ListProvider';
 import { AllListProps } from './types';
 
 export interface ListProps extends AllListProps<ComponentProps<typeof ListEl>> {
+  /** Whether a placeholder width should be set when loading */
+  loading?: boolean;
   scrollable?: boolean;
   /** Whether the component should scroll to top after its rows update. */
   scrollToTopOnUpdate?: boolean;
