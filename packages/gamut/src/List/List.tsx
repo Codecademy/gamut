@@ -31,6 +31,7 @@ export interface ListProps extends AllListProps<ComponentProps<typeof ListEl>> {
 export const List = forwardRef<HTMLUListElement, ListProps>(
   (
     {
+      loading,
       id,
       variant = 'default',
       spacing = 'normal',
@@ -70,21 +71,25 @@ export const List = forwardRef<HTMLUListElement, ListProps>(
       setIsEnd(offsetWidth + scrollLeft >= scrollWidth);
     };
 
-    const content = isEmpty ? (
-      <Box
-        minWidth="min-content"
-        width="100%"
-        position="relative"
-        ref={topOfTable}
-      >
-        {header} {emptyMessage}
-      </Box>
-    ) : (
+    const listContents = (
       <>
-        {header}
-        {listContent}
+        {header} {isEmpty ? emptyMessage : listContent}
       </>
     );
+
+    const content =
+      isEmpty || loading ? (
+        <Box
+          minWidth="min-content"
+          width="100%"
+          position="relative"
+          ref={topOfTable}
+        >
+          {listContents}
+        </Box>
+      ) : (
+        listContents
+      );
 
     return (
       <ListProvider value={value}>

@@ -105,7 +105,7 @@ export function DataGrid<
           }
           height={height}
           minHeight={minHeight}
-          scrollable={scrollable && !loading}
+          scrollable={scrollable}
           scrollToTopOnUpdate={scrollToTopOnUpdate}
           shadow={shadow}
           spacing={spacing}
