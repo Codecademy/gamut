@@ -2,7 +2,6 @@ export interface PrivateListProps {
   scrollable?: boolean;
   spacing?: 'normal' | 'condensed';
   variant?: 'default' | 'table' | 'card' | 'block' | 'plain';
-  loading?: boolean;
 }
 
 export type PublicListProps<T> = Omit<T, keyof PrivateListProps>;
