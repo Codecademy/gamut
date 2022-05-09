@@ -1,6 +1,6 @@
 import { css } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
-import React, { useState } from 'react';
+import React from 'react';
 import { UseFormReturn } from 'react-hook-form';
 
 import { Anchor } from '../../Anchor';
@@ -51,17 +51,9 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
   const disabled = isDisabled || field.disabled;
   const errorMessage = error || field.customError;
 
-  const [readOnBlurError, setOnBlurError] = useState('');
-
   const defaultProps = { disabled, ...rest };
   const isTightCheckbox =
     field.type === 'checkbox' && field?.spacing === 'tight';
-
-  const setOnFocus = () => {
-    if (readOnBlurError !== '') setOnBlurError('');
-  };
-
-  const setOnBlurred = () => setOnBlurError('\u00a0');
 
   const getInput = () => {
     switch (field.type) {
