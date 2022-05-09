@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [57.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@57.0.10...@codecademy/styleguide@57.1.0) (2022-05-09)
+
+
+### Features
+
+* **DataTable + DataGrid:** hideSelectAll, scrollToTopOnUpdate, conditional horizontal scroll shadow, headers overlap fix, docs update ([eb23cbe](https://github.com/Codecademy/gamut/commit/eb23cbe0dd3d12c77aa73f718d27a09fc4e417c1))
+
+
+
 ### [57.0.10](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@57.0.9...@codecademy/styleguide@57.0.10) (2022-05-04)
 
 **Note:** Version bump only for package @codecademy/styleguide
