@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [57.0.8](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@57.0.7...@codecademy/styleguide@57.0.8) (2022-05-03)
+
+
+### Bug Fixes
+
+* **Pagination:** fix bad setState call in controlled pagination ([51bdf6d](https://github.com/Codecademy/gamut/commit/51bdf6d22ce1633045ecadcc2f80adb5d24607cb))
+
+
+
+### [57.0.7](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@57.0.6...@codecademy/styleguide@57.0.7) (2022-05-03)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
 ### [57.0.6](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@57.0.5...@codecademy/styleguide@57.0.6) (2022-05-02)
 
 **Note:** Version bump only for package @codecademy/styleguide
