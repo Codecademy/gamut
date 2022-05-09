@@ -6,7 +6,7 @@ import {
 } from '@codecademy/variance';
 import { CSSObject, Theme, ThemeProvider, useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
-import { eq, mapValues, pick } from 'lodash';
+import { mapValues, pick } from 'lodash';
 import React, { ComponentProps, forwardRef, useMemo, useState } from 'react';
 import { useIsomorphicLayoutEffect } from 'react-use';
 
