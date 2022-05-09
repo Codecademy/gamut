@@ -184,7 +184,6 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
               text={errorMessage}
               spacing="none"
             />
-            {readOnBlurError}
           </FormError>
         )}
       </FormGroup>
