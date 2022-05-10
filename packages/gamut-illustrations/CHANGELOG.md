@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.27.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.26.1...@codecademy/gamut-illustrations@0.27.0) (2022-05-10)
+
+
+### Features
+
+* Magnifying Glass Illustration ([4963bab](https://github.com/Codecademy/gamut/commit/4963bab0e369decf374821ea5f00028bc17b2100))
+
+
+
 ### [0.26.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.26.0...@codecademy/gamut-illustrations@0.26.1) (2022-04-13)
 
 **Note:** Version bump only for package @codecademy/gamut-illustrations
