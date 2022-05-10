@@ -3,6 +3,7 @@ import {
   BookFlipPageIcon,
   BriefcaseIcon,
   CommunityIcon,
+  EditIcon,
   GearIcon,
   HouseEntranceIcon,
   NotebookIcon,
@@ -228,6 +229,21 @@ const profileBusinessAccount: AppHeaderLinkItem = {
   type: 'link',
 };
 
+let authorUrl = `https://author.codecademy.com`;
+if (process.env.NODE_ENV === 'staging') {
+  authorUrl = `https://author.staging-eks.codecademy.com`;
+} else if (process.env.NODE_ENV === 'development') {
+  authorUrl = 'https://localhost:4000';
+}
+const profileAuthorAccount: AppHeaderLinkItem = {
+  id: 'author',
+  icon: EditIcon,
+  href: authorUrl,
+  trackingTarget: 'avatar_author',
+  text: 'Author',
+  type: 'link',
+};
+
 const profileHelpCenter: AppHeaderLinkItem = {
   id: 'help-center',
   icon: SupportIcon,
@@ -316,6 +332,11 @@ export const proProfile = (user: User): AppHeaderProfileDropdownItem => {
   if (user?.isAccountManager || user?.isBusinessAdmin) {
     topSection.push(profileBusinessAccount);
   }
+
+  if (user?.hasAuthorAccess) {
+    topSection.push(profileAuthorAccount);
+  }
+
   if (user.showReferrals) {
     topSection.push(referrals);
   }

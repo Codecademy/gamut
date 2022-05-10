@@ -29,6 +29,7 @@ export type User = {
   geo?: string;
   isAdmin?: boolean;
   isBusinessAdmin?: boolean;
+  hasAuthorAccess?: boolean;
   isBusinessSsoUser?: boolean;
   isCustomerSupport?: boolean;
   isAccountManager?: boolean;
