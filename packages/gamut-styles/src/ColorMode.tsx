@@ -7,8 +7,13 @@ import {
 import { CSSObject, Theme, ThemeProvider, useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
 import { mapValues, pick } from 'lodash';
-import React, { ComponentProps, forwardRef, useMemo, useState } from 'react';
-import { useIsomorphicLayoutEffect } from 'react-use';
+import React, {
+  ComponentProps,
+  forwardRef,
+  useEffect,
+  useMemo,
+  useState,
+} from 'react';
 
 import {
   background,
@@ -76,15 +81,18 @@ export function useCurrentMode(mode?: ColorModes) {
 export function usePrefersDarkMode() {
   const [prefersDarkMode, setPrefersDarkMode] = useState(false);
 
-  useIsomorphicLayoutEffect(() => {
+  useEffect(() => {
     const mq = window.matchMedia('(prefers-color-scheme: dark)');
-    setPrefersDarkMode(mq.matches);
 
     function onChange(event: MediaQueryListEvent) {
       setPrefersDarkMode(event.matches);
     }
 
-    mq.addEventListener('change', onChange);
+    if (mq && 'addEventListener' in mq) {
+      setPrefersDarkMode(mq.matches);
+      mq.addEventListener('change', onChange);
+    }
+
     return () => mq.removeEventListener('change', onChange);
   }, []);
 
