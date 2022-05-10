@@ -1,4 +1,10 @@
-import { Box, FillButton, IconButton, StrokeButton } from '@codecademy/gamut';
+import {
+  Box,
+  FillButton,
+  IconButton,
+  Popover,
+  StrokeButton,
+} from '@codecademy/gamut';
 import {
   ArrowChevronDownFilledIcon,
   MiniKebabMenuIcon,
@@ -7,7 +13,6 @@ import { css, pxRem, styledOptions } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React, { useRef, useState } from 'react';
 
-import { Popover } from '../Popover';
 import { DropdownItem, DropdownList } from './DropdownList';
 
 const DownArrow = styled(ArrowChevronDownFilledIcon, styledOptions)<{

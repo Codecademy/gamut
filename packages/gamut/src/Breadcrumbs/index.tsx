@@ -4,6 +4,7 @@ import React from 'react';
 
 import { Anchor } from '../Anchor';
 import { Box, FlexBox } from '../Box';
+import { Text } from '../Typography';
 
 const BreadcrumbAnchor = styled(Anchor)(
   css({
