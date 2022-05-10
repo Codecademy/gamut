@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [47.2.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@47.2.0...@codecademy/gamut@47.2.1) (2022-05-10)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [47.2.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@47.1.1...@codecademy/gamut@47.2.0) (2022-05-09)
+
+
+### Features
+
+* **DataTable + DataGrid:** hideSelectAll, scrollToTopOnUpdate, conditional horizontal scroll shadow, headers overlap fix, docs update ([eb23cbe](https://github.com/Codecademy/gamut/commit/eb23cbe0dd3d12c77aa73f718d27a09fc4e417c1))
+
+
+
 ### [47.1.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@47.1.0...@codecademy/gamut@47.1.1) (2022-05-03)
 
 

@@ -10,22 +10,26 @@ export const EmptyRows = () => {
   const { onResetQuery } = useControlContext();
 
   return (
-    <FlexBox position="relative" height={409} center px={96}>
-      <DotLoose position="absolute" inset={0} top={-2} />
+    <>
       <FlexBox
-        position="relative"
-        zIndex={1}
         bg="background-current"
-        width={1}
+        center
         column
         gap={16}
-        center
+        left="calc(50% - 160px)"
         p={32}
+        position="sticky"
+        top="calc(50% - 92px)"
+        width="320px"
+        zIndex={1}
       >
         <Text variant="title-sm">No Results Found</Text>
         <Text variant="p-base">Remove filters to view</Text>
         <FillButton onClick={onResetQuery}>Reset Filters</FillButton>
       </FlexBox>
-    </FlexBox>
+      <FlexBox height={409} center width={1}>
+        <DotLoose position="absolute" inset={0} top={-2} />
+      </FlexBox>
+    </>
   );
 };

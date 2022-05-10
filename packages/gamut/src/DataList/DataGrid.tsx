@@ -20,6 +20,8 @@ export interface DataGridProps<
   loading?: boolean;
   /** Whether an additional header element should be added */
   header?: boolean;
+  /** Whether Select All checkmark should be hidden in the header. Defaults to false */
+  hideSelectAll?: boolean;
 }
 
 export function DataGrid<
@@ -46,6 +48,8 @@ export function DataGrid<
     header = true,
     showOverflow,
     emptyMessage,
+    hideSelectAll = false,
+    scrollToTopOnUpdate = false,
     ...rest
   } = props;
 
@@ -88,22 +92,24 @@ export function DataGrid<
       <ListControlContext.Provider value={listControls}>
         <List
           {...rest}
-          shadow={shadow}
-          height={height}
-          scrollable={scrollable && (!empty || (loading && empty))}
-          variant={variant}
-          spacing={spacing}
-          minHeight={minHeight}
+          emptyMessage={emptyMessage ?? <EmptyRows />}
           header={
             header ? (
               <HeaderRow
                 columns={columns}
                 selected={allSelected}
                 empty={empty}
+                hideSelectAll={hideSelectAll}
               />
             ) : null
           }
-          emptyMessage={emptyMessage ?? <EmptyRows />}
+          height={height}
+          minHeight={minHeight}
+          scrollable={scrollable}
+          scrollToTopOnUpdate={scrollToTopOnUpdate}
+          shadow={shadow}
+          spacing={spacing}
+          variant={variant}
         >
           {renderedRows.map((row) => {
             const rowId = row[idKey];
