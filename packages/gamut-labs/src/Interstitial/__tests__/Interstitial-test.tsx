@@ -1,7 +1,7 @@
+import { ButtonDeprecated } from '@codecademy/gamut';
 import { mount } from 'enzyme';
 import React from 'react';
 
-import { ButtonDeprecated } from '../../ButtonDeprecated';
 import { Interstitial } from '..';
 
 describe('Interstitial', () => {
