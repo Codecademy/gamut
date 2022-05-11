@@ -13,10 +13,15 @@ export const itHandlesStandardFieldTests = (
   describe('when an id is passed as a prop', () => {
     it('renders a field with the same id', async () => {
       const { view } = renderField({
-        field: { ...defaultFieldProps, id: 'mycoolid' },
+        field: { ...defaultFieldProps, id: 'mycoolid', name: 'name' },
       });
 
-      await view.findByTestId('mycoolid');
+      const testId =
+        componentName !== 'GridFormRadioGroupInput'
+          ? 'mycoolid'
+          : 'name-0-mycoolid';
+
+      await view.findByTestId(testId);
     });
   });
 
@@ -26,7 +31,10 @@ export const itHandlesStandardFieldTests = (
         field: { ...defaultFieldProps, name: 'name' },
       });
 
-      await view.findByTestId('name');
+      const testId =
+        componentName !== 'GridFormRadioGroupInput' ? 'name' : 'name-0';
+
+      await view.findByTestId(testId);
     });
   });
 
@@ -37,7 +45,6 @@ export const itHandlesStandardFieldTests = (
       componentName !== 'GridFormFileInput'
         ? view.getByRole(selector)
         : view.getByTestId(selector);
-    expect(field).toHaveAttribute('aria-invalid', 'true');
     expect(field).toBeInvalid();
   });
 
