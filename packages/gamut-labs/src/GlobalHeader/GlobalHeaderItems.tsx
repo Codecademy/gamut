@@ -136,6 +136,15 @@ export const communityDropdown: AppHeaderSimpleDropdownItem = {
   type: 'dropdown',
 };
 
+export const pricingLink: AppHeaderLinkItem = {
+  icon: AccountingCoinsIcon,
+  id: 'pricing',
+  href: '/pricing',
+  text: 'Pro Pricing',
+  trackingTarget: 'topnav_pricing',
+  type: 'link',
+};
+
 export const pricingDropdown: AppHeaderSimpleDropdownItem = {
   icon: AccountingCoinsIcon,
   id: 'pricing',
