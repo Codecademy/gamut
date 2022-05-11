@@ -60,6 +60,10 @@ export const setupGridFormCheckboxInput = createGridFormFieldSetup(
   stubCheckboxField
 );
 
+export const testerList = [
+  { name: 'GridFormCheckboxInput', selector: 'checkbox' },
+];
+
 export const getComponent = (componentName: string) => {
   switch (componentName) {
     case 'GridFormTextInput':
