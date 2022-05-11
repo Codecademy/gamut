@@ -1,48 +1,40 @@
 import { configure } from '@testing-library/dom';
-
-import { getComponent } from './renderers';
+import React from 'react';
 
 configure({ testIdAttribute: 'id' });
 
-export const itHandlesStandardFieldTests = (
-  componentName: string,
-  selector: string
-): void => {
-  const { renderField, defaultFieldProps } = getComponent(componentName);
-
-  describe('when an id is passed as a prop', () => {
-    it('renders a field with the same id', async () => {
-      const { view } = renderField({
-        field: { ...defaultFieldProps, id: 'mycoolid', name: 'name' },
-      });
-
-      const testId =
-        componentName !== 'GridFormRadioGroupInput'
-          ? 'mycoolid'
-          : 'name-0-mycoolid';
-
-      await view.findByTestId(testId);
+export const itHandlesStandardFieldTests = ({
+  renderField,
+  defaultFieldProps,
+  component,
+  selector,
+}: any): void => {
+  it('renders a field with an id ', async () => {
+    const { view } = renderField({
+      field: { ...defaultFieldProps, id: 'mycoolid', name: 'name' },
     });
+
+    const testId =
+      component !== 'GridFormRadioGroupInput' ? 'mycoolid' : 'name-0-mycoolid';
+
+    await view.findByTestId(testId);
   });
 
-  describe('when no id is passed', () => {
-    it('renders a field with the id equal to the field name', async () => {
-      const { view } = renderField({
-        field: { ...defaultFieldProps, name: 'name' },
-      });
-
-      const testId =
-        componentName !== 'GridFormRadioGroupInput' ? 'name' : 'name-0';
-
-      await view.findByTestId(testId);
+  it('renders a field with the id equal to the field name when no id is passed', async () => {
+    const { view } = renderField({
+      field: { ...defaultFieldProps, name: 'name' },
     });
+
+    const testId = component !== 'GridFormRadioGroupInput' ? 'name' : 'name-0';
+
+    await view.findByTestId(testId);
   });
 
   it('has the property aria-invalid if error exists', async () => {
     const props = { ...defaultFieldProps, validation: { required: true } };
     const { view } = renderField({ field: { ...props }, error: true });
     const field =
-      componentName !== 'GridFormFileInput'
+      component !== 'GridFormFileInput'
         ? view.getByRole(selector)
         : view.getByTestId(selector);
     expect(field).toBeInvalid();
@@ -54,9 +46,62 @@ export const itHandlesStandardFieldTests = (
     const props = { ...defaultFieldProps, validation: { required: true } };
     const { view } = renderField({ field: { ...props } });
     const field =
-      componentName !== 'GridFormFileInput'
+      component !== 'GridFormFileInput'
         ? view.getByRole(selector)
         : view.getByTestId(selector);
     expect(field).not.toHaveAttribute('aria-invalid');
+  });
+};
+
+export const additionalRadioGroupTests = ({
+  renderField,
+  defaultFieldProps,
+}: any) => {
+  describe('Radio', () => {
+    it('accepts JSX for the label', () => {
+      const { view } = renderField({
+        field: {
+          ...defaultFieldProps,
+          id: 'id',
+          options: [{ label: <img alt="" src="" />, value: '' }],
+          name: 'name',
+        },
+      });
+
+      expect(view.getByRole('img'));
+    });
+
+    describe('aria-label', () => {
+      it('aria-label is set to the label by default', () => {
+        const { view } = renderField({
+          field: { ...defaultFieldProps, label: 'Test Label' },
+        });
+
+        expect(view.getByLabelText('Test Label'));
+      });
+
+      it('aria-label is overridden by the ariaLabel prop', () => {
+        const { view } = renderField({
+          field: {
+            ...defaultFieldProps,
+            label: 'Test Label',
+            ariaLabel: 'Overridden Test Label',
+          },
+        });
+
+        expect(view.getByLabelText('Overridden Test Label'));
+      });
+
+      it('aria-label is used when JSX is passed to the label', () => {
+        const { view } = renderField({
+          field: {
+            ...defaultFieldProps,
+            label: <img alt="" src="" />,
+            ariaLabel: 'Overridden Test Label',
+          },
+        });
+        expect(view.getByLabelText('Overridden Test Label'));
+      });
+    });
   });
 };
