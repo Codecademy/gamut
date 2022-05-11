@@ -30,54 +30,26 @@ const createGridFormFieldSetup = (component: any, defaultFieldProps: any) => {
   };
 };
 
-export const setupGridFormSelectInput = createGridFormFieldSetup(
-  GridFormSelectInput,
-  stubSelectField
-);
-
-export const setupGridFormTextInput = createGridFormFieldSetup(
-  GridFormTextInput,
-  stubTextField
-);
-
-export const setupGridFormTextArea = createGridFormFieldSetup(
-  GridFormTextArea,
-  stubTextareaField
-);
-
-export const setupGridFormRadioGroupInput = createGridFormFieldSetup(
-  GridFormRadioGroupInput,
-  stubRadioGroupField
-);
-
-export const setupGridFormFileInput = createGridFormFieldSetup(
-  GridFormFileInput,
-  stubFileField
-);
-
-export const setupGridFormCheckboxInput = createGridFormFieldSetup(
-  GridFormCheckboxInput,
-  stubCheckboxField
-);
-
-export const testerList = [
-  { name: 'GridFormCheckboxInput', selector: 'checkbox' },
-];
-
 export const getComponent = (componentName: string) => {
   switch (componentName) {
     case 'GridFormTextInput':
-      return setupGridFormTextInput();
+      return createGridFormFieldSetup(GridFormTextInput, stubTextField)();
     case 'GridFormSelectInput':
-      return setupGridFormSelectInput();
+      return createGridFormFieldSetup(GridFormSelectInput, stubSelectField)();
     case 'GridFormTextArea':
-      return setupGridFormTextArea();
+      return createGridFormFieldSetup(GridFormTextArea, stubTextareaField)();
     case 'GridFormRadioGroupInput':
-      return setupGridFormRadioGroupInput();
+      return createGridFormFieldSetup(
+        GridFormRadioGroupInput,
+        stubRadioGroupField
+      )();
     case 'GridFormFileInput':
-      return setupGridFormFileInput();
+      return createGridFormFieldSetup(GridFormFileInput, stubFileField)();
     case 'GridFormCheckboxInput':
-      return setupGridFormCheckboxInput();
+      return createGridFormFieldSetup(
+        GridFormCheckboxInput,
+        stubCheckboxField
+      )();
     default:
       throw new Error(`Unknown component name: ${componentName}`);
   }
