@@ -33,7 +33,10 @@ export const itHandlesStandardFieldTests = (
   it('has the property aria-invalid if error exists', async () => {
     const props = { ...defaultFieldProps, validation: { required: true } };
     const { view } = renderField({ field: { ...props }, error: true });
-    const field = view.getByRole(selector);
+    const field =
+      componentName !== 'GridFormFileInput'
+        ? view.getByRole(selector)
+        : view.getByTestId(selector);
     expect(field).toHaveAttribute('aria-invalid', 'true');
     expect(field).toBeInvalid();
   });
@@ -43,7 +46,10 @@ export const itHandlesStandardFieldTests = (
     // https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-invalid#example
     const props = { ...defaultFieldProps, validation: { required: true } };
     const { view } = renderField({ field: { ...props } });
-    const field = view.getByRole(selector);
+    const field =
+      componentName !== 'GridFormFileInput'
+        ? view.getByRole(selector)
+        : view.getByTestId(selector);
     expect(field).not.toHaveAttribute('aria-invalid');
   });
 };
