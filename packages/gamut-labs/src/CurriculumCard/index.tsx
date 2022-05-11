@@ -58,6 +58,10 @@ export type CurriculumCardProps = SubtitleProps & {
    * career path cards are displayed with a variant style / decorative element
    */
   showCareerPathVariant?: boolean;
+  /**
+   * displays inner content with a horizontal orientation
+   */
+  horizontalOrientation?: boolean;
 };
 
 const LineDecoration = styled(Box)`
@@ -86,6 +90,7 @@ export const CurriculumCard: React.FC<CurriculumCardProps> = ({
   footerTextVariant = 'enrolled',
   showDescription,
   difficultyVariant,
+  horizontalOrientation,
 }) => {
   const boxVariant = progressState && cardStyles[progressState];
   const mode = progressState === 'completed' ? 'dark' : 'light';
@@ -96,7 +101,7 @@ export const CurriculumCard: React.FC<CurriculumCardProps> = ({
   return (
     <Card
       display="flex"
-      flexDirection="column"
+      flexDirection={horizontalOrientation ? 'row' : 'column'}
       minHeight={
         isStaticSize
           ? pxRem(285)
@@ -108,37 +113,39 @@ export const CurriculumCard: React.FC<CurriculumCardProps> = ({
       shadow="medium"
       position="relative"
     >
-      <Text
-        display="flex"
-        fontSize={14}
-        mb={12}
-        fontFamily="accent"
-        textTransform="capitalize"
-      >
-        {showProLogo && <ProLabel alignSelf="center" mr={8} mode={mode} />}
-        {text}
-      </Text>
-      <Text as={headingLevel} mb={4} fontSize={20}>
-        {title}
-      </Text>
-      {!progressState && (
-        <FlexBox flexWrap="wrap" alignItems="center">
-          <Subtitle
-            scope={scope}
-            difficulty={difficulty}
-            showAltSubtitle={showAltSubtitle}
-            difficultyVariant={difficultyVariant}
-          />
-        </FlexBox>
-      )}
-      {isCareerPathVariant && (
-        <LineDecoration inProgress={progressState === 'inProgress'} my={8} />
-      )}
-      {(isCareerPathVariant || showDescription) && (
-        <Text pt={8} pb={16} fontSize={14}>
-          {description}
+      <Box>
+        <Text
+          display="flex"
+          fontSize={14}
+          mb={12}
+          fontFamily="accent"
+          textTransform="capitalize"
+        >
+          {showProLogo && <ProLabel alignSelf="center" mr={8} mode={mode} />}
+          {text}
         </Text>
-      )}
+        <Text as={headingLevel} mb={4} fontSize={20}>
+          {title}
+        </Text>
+        {!progressState && (
+          <FlexBox flexWrap="wrap" alignItems="center">
+            <Subtitle
+              scope={scope}
+              difficulty={difficulty}
+              showAltSubtitle={showAltSubtitle}
+              difficultyVariant={difficultyVariant}
+            />
+          </FlexBox>
+        )}
+        {isCareerPathVariant && (
+          <LineDecoration inProgress={progressState === 'inProgress'} my={8} />
+        )}
+        {(isCareerPathVariant || showDescription) && (
+          <Text pt={8} pb={16} fontSize={14}>
+            {description}
+          </Text>
+        )}
+      </Box>
       {isFullSize && image && (
         <FlexBox m="auto" center pt={16} pb={isCareerPathVariant ? 32 : 0}>
           <Image
