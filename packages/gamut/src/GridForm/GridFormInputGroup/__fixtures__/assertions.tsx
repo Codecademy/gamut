@@ -1,37 +1,49 @@
+import { configure } from '@testing-library/dom';
+
 import { getComponent } from './renderers';
 
-export const itHandlesAriaInvalid = (
+configure({ testIdAttribute: 'id' });
+
+export const itHandlesStandardFieldTests = (
   componentName: string,
   selector: string
 ): void => {
-  describe('fields', () => {
-    it('have the property aria-invalid', () => {
-      hasAriaInvalidProperty(componentName, selector);
-    });
-    it('marks a field as aria-invalid when a field has an error', () => {
-      isMarkedAriaInvalidIfErrorExists(componentName, selector);
+  const { renderField, defaultFieldProps } = getComponent(componentName);
+
+  describe('when an id is passed as a prop', () => {
+    it('renders a field with the same id', async () => {
+      const { view } = renderField({
+        field: { ...defaultFieldProps, id: 'mycoolid' },
+      });
+
+      await view.findByTestId('mycoolid');
     });
   });
-};
 
-const hasAriaInvalidProperty = (
-  componentName: string,
-  selector: string
-): void => {
-  const props = { validation: { required: true } };
-  const component = getComponent(componentName, props);
-  expect(component.find(selector).props()).toHaveProperty('aria-invalid');
-  expect(component.find(selector).props()['aria-invalid']).toBeUndefined();
-};
+  describe('when no id is passed', () => {
+    it('renders a field with the id equal to the field name', async () => {
+      const { view } = renderField({
+        field: { ...defaultFieldProps, name: 'name' },
+      });
 
-const isMarkedAriaInvalidIfErrorExists = (
-  componentName: string,
-  selector: string
-): void => {
-  const props = {
-    validation: { required: 'Required' },
-    error: true,
-  };
-  const component = getComponent(componentName, props);
-  expect(component.find(selector).props()['aria-invalid']).toBeTruthy();
+      await view.findByTestId('name');
+    });
+  });
+
+  it('has the property aria-invalid if error exists', async () => {
+    const props = { ...defaultFieldProps, validation: { required: true } };
+    const { view } = renderField({ field: { ...props }, error: true });
+    const field = view.getByRole(selector);
+    expect(field).toHaveAttribute('aria-invalid', 'true');
+    expect(field).toBeInvalid();
+  });
+
+  it('does not have the property aria-invalid if error does not exist', async () => {
+    // Note that since the default value for aria-invalid is false, it is not strictly necessary to add the attribute to input.
+    // https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-invalid#example
+    const props = { ...defaultFieldProps, validation: { required: true } };
+    const { view } = renderField({ field: { ...props } });
+    const field = view.getByRole(selector);
+    expect(field).not.toHaveAttribute('aria-invalid');
+  });
 };

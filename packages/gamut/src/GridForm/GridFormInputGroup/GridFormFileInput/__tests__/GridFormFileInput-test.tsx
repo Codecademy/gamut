@@ -1,4 +1,4 @@
-import { itHandlesAriaInvalid } from '../../__fixtures__/assertions';
+import { itHandlesStandardFieldTests } from '../../__fixtures__/assertions';
 import { renderGridFormFileInput } from '../../__fixtures__/renderers';
 
 describe('GridFormFileInput', () => {
@@ -18,5 +18,5 @@ describe('GridFormFileInput', () => {
     });
   });
 
-  itHandlesAriaInvalid('GridFormFileInput', 'input');
+  itHandlesStandardFieldTests('GridFormFileInput', 'input');
 });
