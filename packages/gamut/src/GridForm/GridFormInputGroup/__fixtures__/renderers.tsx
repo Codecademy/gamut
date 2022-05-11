@@ -1,5 +1,5 @@
 import { setupRtl } from '@codecademy/gamut-tests';
-import React from 'react';
+import React, { ReactNode } from 'react';
 
 import { FormContext } from '../../__fixtures__/helpers';
 import {
@@ -19,37 +19,32 @@ import { GridFormTextArea } from '../GridFormTextArea';
 import { GridFormTextInput } from '../GridFormTextInput';
 
 const createGridFormFieldSetup = (component: any, defaultFieldProps: any) => {
-  return () => {
-    return {
-      renderField: setupRtl(component, {
-        field: { ...defaultFieldProps },
-        register: jest.fn(),
-      }).options({ wrapper: FormContext }),
-      defaultFieldProps,
-    };
+  return {
+    renderField: setupRtl(component, {
+      field: { ...defaultFieldProps },
+      register: jest.fn(),
+    }).options({ wrapper: FormContext }),
+    defaultFieldProps,
   };
 };
 
 export const getComponent = (componentName: string) => {
   switch (componentName) {
     case 'GridFormTextInput':
-      return createGridFormFieldSetup(GridFormTextInput, stubTextField)();
+      return createGridFormFieldSetup(GridFormTextInput, stubTextField);
     case 'GridFormSelectInput':
-      return createGridFormFieldSetup(GridFormSelectInput, stubSelectField)();
+      return createGridFormFieldSetup(GridFormSelectInput, stubSelectField);
     case 'GridFormTextArea':
-      return createGridFormFieldSetup(GridFormTextArea, stubTextareaField)();
+      return createGridFormFieldSetup(GridFormTextArea, stubTextareaField);
     case 'GridFormRadioGroupInput':
       return createGridFormFieldSetup(
         GridFormRadioGroupInput,
         stubRadioGroupField
-      )();
+      );
     case 'GridFormFileInput':
-      return createGridFormFieldSetup(GridFormFileInput, stubFileField)();
+      return createGridFormFieldSetup(GridFormFileInput, stubFileField);
     case 'GridFormCheckboxInput':
-      return createGridFormFieldSetup(
-        GridFormCheckboxInput,
-        stubCheckboxField
-      )();
+      return createGridFormFieldSetup(GridFormCheckboxInput, stubCheckboxField);
     default:
       throw new Error(`Unknown component name: ${componentName}`);
   }
