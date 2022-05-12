@@ -113,7 +113,7 @@ export const CurriculumCard: React.FC<CurriculumCardProps> = ({
       shadow="medium"
       position="relative"
     >
-      <Box>
+      <Box pr={40}>
         <Text
           display="flex"
           fontSize={14}

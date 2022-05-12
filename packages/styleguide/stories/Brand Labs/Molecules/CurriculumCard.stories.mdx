@@ -187,6 +187,39 @@ Displays a different style of career card when the `showCareerPathVariant` prop 
   </Story>
 </Canvas>
 
+## Horizontal Card Orientation
+
+Displays the inner content of a curriculum card in a horizontal orientation when `horizontalOrientation` prop is `true`
+
+<Canvas withSource="closed">
+  <Story
+    name="Horizontal Curriculum Card"
+    args={{
+      text: 'Career Path',
+      title: 'Front-End Engineer',
+      description:
+        'Front-end engineers work with closely with Designers to make websites beautiful, functional, and fast.',
+      image:
+        'https://static-assets.codecademy.com/components/curriculum/path/front-end-engineer-career-path/curriculum-card.svg',
+      isFullSize: true,
+      scope: { Lesson: 94 },
+      color: 'pink',
+      tag: 'Job Essentials',
+      showProLogo: true,
+      showCareerPathVariant: true,
+      horizontalOrientation: true,
+    }}
+  >
+    {(args) => (
+      <LayoutGrid columnGap={24}>
+        <Column size={12}>
+          <CurriculumCard isStaticSize {...args} />
+        </Column>
+      </LayoutGrid>
+    )}
+  </Story>
+</Canvas>
+
 ## Difficulty scale
 
 Displays the level of difficulty of content based on a scale of `{0: Beginner, 1: Intermediate, 2: Advanced}`
