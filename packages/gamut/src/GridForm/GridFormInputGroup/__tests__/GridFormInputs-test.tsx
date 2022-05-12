@@ -19,6 +19,7 @@ describe('GridFormInputs', () => {
     { component: 'GridFormTextInput', selector: 'textbox' },
   ])('$component', ({ component, selector }) => {
     const { renderField, defaultFieldProps } = getComponent(component);
+
     itHandlesStandardFieldTests({
       renderField,
       defaultFieldProps,

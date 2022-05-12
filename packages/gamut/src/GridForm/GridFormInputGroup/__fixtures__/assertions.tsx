@@ -1,3 +1,4 @@
+import { setupRtl } from '@codecademy/gamut-tests';
 import { configure } from '@testing-library/dom';
 import React from 'react';
 
@@ -5,19 +6,19 @@ import { getComponent } from './renderers';
 
 configure({ testIdAttribute: 'id' });
 
-// interface standardFieldTests {
-//   renderField: ReturnType<typeof getComponent['renderField']>;
-//   defaultFieldProps: ReturnType<any>;
-//   component: string;
-//   selector: string;
-// }
+interface StandardFieldTestsProps
+  extends Pick<ReturnType<typeof getComponent>, 'defaultFieldProps'> {
+  renderField: ReturnType<typeof setupRtl>;
+  component: string;
+  selector: string;
+}
 
 export const itHandlesStandardFieldTests = ({
   renderField,
   defaultFieldProps,
   component,
   selector,
-}: any): void => {
+}: StandardFieldTestsProps): void => {
   it('renders a field with an id ', async () => {
     const { view } = renderField({
       field: { ...defaultFieldProps, id: 'mycoolid', name: 'name' },
