@@ -37,8 +37,8 @@ export const GridFormTextInput: React.FC<GridFormTextInputProps> = ({
       id={field.id}
       name={field.name}
       onChange={async (event) => {
-        await onChange(event);
         field?.onUpdate?.(event.target.value);
+        await onChange(event);
       }}
       onInput={(event: React.ChangeEvent<HTMLInputElement>) => {
         if (event.target.value.length <= 1) clearErrors(field.name);
