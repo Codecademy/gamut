@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [57.2.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@57.1.1...@codecademy/styleguide@57.2.0) (2022-05-12)
+
+
+### Features
+
+* **Tab:** add block variant ([e7fca17](https://github.com/Codecademy/gamut/commit/e7fca17b7a4abef1c1ecc0e51292c99ecb39ff43))
+
+
+
 ### [57.1.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@57.1.0...@codecademy/styleguide@57.1.1) (2022-05-10)
 
 **Note:** Version bump only for package @codecademy/styleguide
