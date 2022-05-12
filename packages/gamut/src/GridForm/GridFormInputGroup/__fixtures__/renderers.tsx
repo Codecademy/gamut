@@ -18,10 +18,26 @@ import { GridFormSelectInput } from '../GridFormSelectInput';
 import { GridFormTextArea } from '../GridFormTextArea';
 import { GridFormTextInput } from '../GridFormTextInput';
 
-const createGridFormFieldSetup = (component: any, defaultFieldProps: any) => {
+type GridFormFieldComponent =
+  | typeof GridFormCheckboxInput
+  | typeof GridFormFileInput
+  | typeof GridFormRadioGroupInput
+  | typeof GridFormSelectInput
+  | typeof GridFormTextArea
+  | typeof GridFormTextInput;
+
+interface CreateGridFormFieldSetupProps<T extends GridFormFieldComponent> {
+  component: T;
+  defaultFieldProps: React.ComponentProps<T>['field'];
+}
+
+const createGridFormFieldSetup = <T extends GridFormFieldComponent>({
+  component,
+  defaultFieldProps,
+}: CreateGridFormFieldSetupProps<T>) => {
   return {
-    renderField: setupRtl(component, {
-      field: { ...defaultFieldProps },
+    renderField: setupRtl<typeof component>(component, {
+      field: defaultFieldProps,
       register: jest.fn(),
     }).options({ wrapper: FormContext }),
     defaultFieldProps,
@@ -31,20 +47,35 @@ const createGridFormFieldSetup = (component: any, defaultFieldProps: any) => {
 export const getComponent = (componentName: string) => {
   switch (componentName) {
     case 'GridFormTextInput':
-      return createGridFormFieldSetup(GridFormTextInput, stubTextField);
+      return createGridFormFieldSetup({
+        component: GridFormTextInput,
+        defaultFieldProps: stubTextField,
+      });
     case 'GridFormSelectInput':
-      return createGridFormFieldSetup(GridFormSelectInput, stubSelectField);
+      return createGridFormFieldSetup({
+        component: GridFormSelectInput,
+        defaultFieldProps: stubSelectField,
+      });
     case 'GridFormTextArea':
-      return createGridFormFieldSetup(GridFormTextArea, stubTextareaField);
+      return createGridFormFieldSetup({
+        component: GridFormTextArea,
+        defaultFieldProps: stubTextareaField,
+      });
     case 'GridFormRadioGroupInput':
-      return createGridFormFieldSetup(
-        GridFormRadioGroupInput,
-        stubRadioGroupField
-      );
+      return createGridFormFieldSetup({
+        component: GridFormRadioGroupInput,
+        defaultFieldProps: stubRadioGroupField,
+      });
     case 'GridFormFileInput':
-      return createGridFormFieldSetup(GridFormFileInput, stubFileField);
+      return createGridFormFieldSetup({
+        component: GridFormFileInput,
+        defaultFieldProps: stubFileField,
+      });
     case 'GridFormCheckboxInput':
-      return createGridFormFieldSetup(GridFormCheckboxInput, stubCheckboxField);
+      return createGridFormFieldSetup({
+        component: GridFormCheckboxInput,
+        defaultFieldProps: stubCheckboxField,
+      });
     default:
       throw new Error(`Unknown component name: ${componentName}`);
   }

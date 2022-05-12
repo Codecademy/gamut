@@ -1,7 +1,16 @@
 import { configure } from '@testing-library/dom';
 import React from 'react';
 
+import { getComponent } from './renderers';
+
 configure({ testIdAttribute: 'id' });
+
+// interface standardFieldTests {
+//   renderField: ReturnType<typeof getComponent['renderField']>;
+//   defaultFieldProps: ReturnType<any>;
+//   component: string;
+//   selector: string;
+// }
 
 export const itHandlesStandardFieldTests = ({
   renderField,
