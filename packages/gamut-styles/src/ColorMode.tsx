@@ -91,9 +91,9 @@ export function usePrefersDarkMode() {
     if (mq && 'addEventListener' in mq) {
       setPrefersDarkMode(mq.matches);
       mq.addEventListener('change', onChange);
-    }
 
-    return () => mq.removeEventListener('change', onChange);
+      return () => mq.removeEventListener('change', onChange);
+    }
   }, []);
 
   return prefersDarkMode;
