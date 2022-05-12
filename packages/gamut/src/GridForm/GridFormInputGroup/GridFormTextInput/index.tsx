@@ -1,7 +1,6 @@
 import React from 'react';
-import { UseFormReturn } from 'react-hook-form';
+import { useFormContext, UseFormReturn } from 'react-hook-form';
 
-import { useFormState } from '../../..';
 import { Input } from '../../../Form';
 import { BaseFormInputProps, GridFormTextField } from '../../types';
 
@@ -24,7 +23,7 @@ export const GridFormTextInput: React.FC<GridFormTextInputProps> = ({
     }),
   };
 
-  const { clearErrors } = useFormState();
+  const { clearErrors } = useFormContext();
 
   return (
     <Input
