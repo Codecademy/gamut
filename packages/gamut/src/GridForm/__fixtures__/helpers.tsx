@@ -5,7 +5,7 @@ import { ConnectedForm } from '../..';
 type FormContextProps = { mode?: 'onChange' | 'onSubmit' };
 
 export const FormContext: React.FC<FormContextProps> = ({
-  mode = 'onChange',
+  mode = 'onSubmit',
   children,
 }) => {
   return (
