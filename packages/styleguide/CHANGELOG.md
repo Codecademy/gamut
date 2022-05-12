@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [57.2.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@57.1.1...@codecademy/styleguide@57.2.0) (2022-05-12)
+
+
+### Features
+
+* **Tab:** add block variant ([e7fca17](https://github.com/Codecademy/gamut/commit/e7fca17b7a4abef1c1ecc0e51292c99ecb39ff43))
+
+
+
+### [57.1.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@57.1.0...@codecademy/styleguide@57.1.1) (2022-05-10)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [57.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@57.0.10...@codecademy/styleguide@57.1.0) (2022-05-09)
+
+
+### Features
+
+* **DataTable + DataGrid:** hideSelectAll, scrollToTopOnUpdate, conditional horizontal scroll shadow, headers overlap fix, docs update ([eb23cbe](https://github.com/Codecademy/gamut/commit/eb23cbe0dd3d12c77aa73f718d27a09fc4e417c1))
+
+
+
 ### [57.0.10](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@57.0.9...@codecademy/styleguide@57.0.10) (2022-05-04)
 
 **Note:** Version bump only for package @codecademy/styleguide

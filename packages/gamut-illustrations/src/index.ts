@@ -15,6 +15,7 @@ export * from './Heart';
 export * from './Hills';
 export * from './HomeOffice';
 export * from './Keyhole';
+export * from './MagnifyingGlass';
 export * from './Maze';
 export * from './Megaphone';
 export * from './MobilePhone';
