@@ -1,4 +1,4 @@
-import { states, system } from '@codecademy/gamut-styles';
+import { states, variant } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
 
@@ -10,7 +10,7 @@ import {
 } from './props';
 
 export interface TabButtonProps
-  extends StyleProps<typeof tabStyles>,
+  extends StyleProps<typeof tabVariants>,
     StyleProps<typeof tabStates>,
     TabElementStyleProps {}
 
@@ -22,39 +22,55 @@ const tabSelectedStyles = {
   borderColor: 'primary',
 } as const;
 
-const tabStyles = system.css({
-  position: 'relative',
-  display: 'inline-flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-  whiteSpace: 'nowrap',
-  background: 'none',
-  borderColor: 'text',
-  borderLeft: 'none',
-  borderRight: 'none',
-  borderTop: 'none',
-  borderBottomStyle: 'solid',
-  borderBottomWidth: 1,
-  borderRadius: 0,
-  fontWeight: 400,
-  fontSize: 16,
-  px: 24,
-  pt: 12,
-  pb: 11 as 12, // border + padding = 12px
-  textOverflow: 'ellipsis',
-  color: 'text',
-  font: 'inherit',
-  cursor: 'pointer',
-  zIndex: 1,
-  [TabSelectors.HOVER]: {
-    bg: 'background-selected',
+const tabVariants = variant({
+  base: {
+    position: 'relative',
+    display: 'inline-flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    whiteSpace: 'nowrap',
+    borderRadius: 0,
+    px: 24,
+    textOverflow: 'ellipsis',
+    color: 'text',
+    font: 'inherit',
+    cursor: 'pointer',
+    zIndex: 1,
+    [TabSelectors.DISABLED]: {
+      opacity: 0.25,
+      cursor: 'default',
+    },
   },
-  [TabSelectors.DISABLED]: {
-    opacity: 0.25,
-    cursor: 'default',
-  },
-  [TabSelectors.SELECTED]: {
-    ...tabSelectedStyles,
+  variants: {
+    standard: {
+      background: 'none',
+      borderColor: 'text',
+      borderLeft: 'none',
+      borderRight: 'none',
+      borderTop: 'none',
+      borderBottomStyle: 'solid',
+      borderBottomWidth: 1,
+      fontSize: 16,
+      fontWeight: 400,
+      pt: 12,
+      pb: 11 as 12, // border + padding = 12px
+      [TabSelectors.HOVER]: {
+        bg: 'background-selected',
+      },
+      [TabSelectors.SELECTED]: {
+        ...tabSelectedStyles,
+        fontWeight: 'bold',
+      },
+    },
+    block: {
+      fontWeight: 'normal',
+      fontSize: 14,
+      py: 12,
+      [TabSelectors.SELECTED]: {
+        bg: 'background',
+        fontWeight: 'bold',
+      },
+    },
   },
 });
 
@@ -65,7 +81,7 @@ const tabStates = states({
 });
 
 export const TabButton = styled(ButtonBase)<TabButtonProps>(
-  tabStyles,
+  tabVariants,
   tabStates,
   tabElementBaseProps
 );

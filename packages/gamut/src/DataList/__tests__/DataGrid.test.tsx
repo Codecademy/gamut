@@ -161,6 +161,14 @@ describe('DataGrid', () => {
         payload: { toggle: true },
       });
     });
+
+    it('hides the select all checkmark when hideSelectAll is true', () => {
+      renderView({ hideSelectAll: true });
+
+      const checkbox = screen.queryByRole('checkbox', { name: 'test-all' });
+
+      expect(checkbox).toBeNull();
+    });
   });
 
   describe('Expanding Rows', () => {
@@ -317,6 +325,7 @@ describe('DataGrid', () => {
         });
       });
     });
+
     describe('Filtering', () => {
       it('opens a popup menu with selectable options', () => {
         renderView({
@@ -438,6 +447,72 @@ describe('DataGrid', () => {
           checked: false,
           hidden: true,
         });
+      });
+    });
+
+    describe('Scroll behavior', () => {
+      it('resets scroll when scollToTopOnUpdate is true', () => {
+        const scrollMock = jest.fn();
+        Element.prototype.scrollTo = scrollMock;
+
+        renderView({
+          columns: [
+            {
+              key: 'sin',
+              header: 'Some Filter',
+              filters: ['idk', 'dude'],
+            },
+          ],
+          query: {},
+          scrollable: true,
+          scrollToTopOnUpdate: true,
+          height: '50px',
+        });
+
+        const container = screen.getByTestId('scrollable-test');
+
+        fireEvent.scroll(container, {
+          target: { scrollTop: container.scrollHeight },
+        });
+
+        const button = screen.getByLabelText('filter by sin');
+
+        act(() => {
+          fireEvent.click(button);
+        });
+
+        expect(scrollMock).toHaveBeenCalled();
+      });
+
+      it('does not reset scroll by default', () => {
+        const scrollMock = jest.fn();
+        Element.prototype.scrollTo = scrollMock;
+
+        renderView({
+          columns: [
+            {
+              key: 'sin',
+              header: 'Some Filter',
+              filters: ['idk', 'dude'],
+            },
+          ],
+          query: {},
+          scrollable: true,
+        });
+
+        const container = screen.getByTestId('scrollable-test');
+
+        fireEvent.scroll(container, {
+          target: { scrollTop: container.scrollHeight },
+        });
+
+        const button = screen.getByLabelText('filter by sin');
+
+        act(() => {
+          fireEvent.click(button);
+        });
+
+        expect(scrollMock).not.toHaveBeenCalled();
       });
     });
   });
