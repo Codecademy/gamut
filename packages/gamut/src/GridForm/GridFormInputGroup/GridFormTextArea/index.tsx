@@ -40,8 +40,10 @@ export const GridFormTextArea: React.FC<GridFormTextAreaProps> = ({
         field?.onUpdate?.(event.target.value);
         await onChange(event);
       }}
-      onInput={(event: React.ChangeEvent<HTMLTextAreaElement>) => {
-        if (event.target.value.length <= 1) clearErrors(field.name);
+      onFocus={() => {
+        if (error) {
+          clearErrors(field.name);
+        }
       }}
       placeholder={field.placeholder}
     />
