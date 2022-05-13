@@ -51,8 +51,6 @@ export const itHandlesStandardFieldTests = ({
   });
 
   it('does not have the property aria-invalid if error does not exist', async () => {
-    // Note that since the default value for aria-invalid is false, it is not strictly necessary to add the attribute to input.
-    // https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-invalid#example
     const props = { ...defaultFieldProps, validation: { required: true } };
     const { view } = renderField({ field: { ...props } });
     const field =
@@ -66,7 +64,7 @@ export const itHandlesStandardFieldTests = ({
 export const additionalRadioGroupTests = ({
   renderField,
   defaultFieldProps,
-}: any) => {
+}: Pick<StandardFieldTestsProps, 'renderField' | 'defaultFieldProps'>) => {
   describe('Radio', () => {
     it('accepts JSX for the label', () => {
       const { view } = renderField({
