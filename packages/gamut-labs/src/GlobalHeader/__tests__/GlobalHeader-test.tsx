@@ -9,6 +9,7 @@ import {
   login,
   myHome,
   pricingDropdown,
+  pricingLink,
   referrals,
   resourcesDropdown,
   signUp,
@@ -312,6 +313,30 @@ describe('GlobalHeader', () => {
       it('does not render pricingDropdown when hidePricing is true', () => {
         const { view } = renderView({ ...freeHeaderProps, hidePricing: true });
         expect(view.queryByText(pricingDropdown.text)).toBeFalsy();
+      });
+
+      it('renders pricingLink when user is in India', () => {
+        const { view } = renderView({
+          ...freeHeaderProps,
+          user: {
+            ...freeHeaderProps.user,
+            geo: 'IN',
+          },
+        });
+        const el = view.getByText(pricingLink.text);
+        expect(el.getAttribute('href')).toEqual(pricingLink.href);
+      });
+
+      it('does not render pricingLink when user is not in India', () => {
+        const { view } = renderView({
+          ...freeHeaderProps,
+          user: {
+            ...freeHeaderProps.user,
+            geo: 'US',
+          },
+        });
+        const el = view.getByText(pricingDropdown.text);
+        expect(el.getAttribute('href')).not.toEqual(pricingLink.href);
       });
 
       it('renders forEnterprise', () => {
