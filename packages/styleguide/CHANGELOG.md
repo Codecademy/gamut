@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [57.3.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@57.2.0...@codecademy/styleguide@57.3.0) (2022-05-13)
+
+
+### Features
+
+* Add pricing link option to global header ([18b35ba](https://github.com/Codecademy/gamut/commit/18b35ba009ae1443afac4c56f55c0678169debb5))
+
+
+
 ## [57.2.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@57.1.1...@codecademy/styleguide@57.2.0) (2022-05-12)
 
 
