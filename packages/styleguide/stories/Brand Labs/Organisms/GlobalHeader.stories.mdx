@@ -697,3 +697,31 @@ A version of the header with just the logo, for use when data has not been fetch
     )}
   </Story>
 </Canvas>
+
+## International
+
+### India
+
+A version of the header for users in India
+
+<Canvas>
+  <Story name="India">
+    {() => (
+      <GlobalHeader
+        action={() => {}}
+        search={{
+          onEnable: () => {},
+          onSearch: () => {},
+          onTrackingClick: () => {},
+        }}
+        type="anon"
+        user={{
+          avatar:
+            'https://www.gravatar.com/avatar/1c959a9a1e2f9f9f1ac06b05cccc1d60?s=150&d=retro',
+          displayName: 'Codey',
+          geo: 'IN',
+        }}
+      />
+    )}
+  </Story>
+</Canvas>
