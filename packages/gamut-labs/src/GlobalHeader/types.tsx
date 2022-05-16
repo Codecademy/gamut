@@ -26,6 +26,7 @@ type BaseHeader = {
 export type User = {
   avatar: string;
   displayName: string;
+  geo?: string;
   isAdmin?: boolean;
   isBusinessAdmin?: boolean;
   isBusinessSsoUser?: boolean;
