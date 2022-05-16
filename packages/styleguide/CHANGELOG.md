@@ -3,6 +3,33 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [57.4.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@57.3.0...@codecademy/styleguide@57.4.0) (2022-05-16)
+
+
+### Features
+
+* **SlackIcon:** Added slack icon ([7475714](https://github.com/Codecademy/gamut/commit/747571447b6ad728a89717d3f8b48079ab2be1e3))
+
+
+
+## [57.3.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@57.2.0...@codecademy/styleguide@57.3.0) (2022-05-13)
+
+
+### Features
+
+* Add pricing link option to global header ([18b35ba](https://github.com/Codecademy/gamut/commit/18b35ba009ae1443afac4c56f55c0678169debb5))
+
+
+
+## [57.2.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@57.1.1...@codecademy/styleguide@57.2.0) (2022-05-12)
+
+
+### Features
+
+* **Tab:** add block variant ([e7fca17](https://github.com/Codecademy/gamut/commit/e7fca17b7a4abef1c1ecc0e51292c99ecb39ff43))
+
+
+
 ### [57.1.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@57.1.0...@codecademy/styleguide@57.1.1) (2022-05-10)
 
 **Note:** Version bump only for package @codecademy/styleguide
