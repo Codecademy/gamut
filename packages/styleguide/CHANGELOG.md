@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [57.4.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@57.3.0...@codecademy/styleguide@57.4.0) (2022-05-16)
+
+
+### Features
+
+* **SlackIcon:** Added slack icon ([7475714](https://github.com/Codecademy/gamut/commit/747571447b6ad728a89717d3f8b48079ab2be1e3))
+
+
+
 ## [57.3.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@57.2.0...@codecademy/styleguide@57.3.0) (2022-05-13)
 
 
