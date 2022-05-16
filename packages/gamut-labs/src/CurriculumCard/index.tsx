@@ -62,6 +62,15 @@ export type CurriculumCardProps = SubtitleProps & {
    * displays inner content with a horizontal orientation
    */
   horizontalOrientation?: boolean;
+
+  /**
+   * custom minimum height for curriculum card in pixels
+   */
+  minHeight?: number;
+  /**
+   * custom minimum width for curriculum card in pixels
+   */
+  minWidth?: number;
 };
 
 const LineDecoration = styled(Box)`
@@ -91,6 +100,8 @@ export const CurriculumCard: React.FC<CurriculumCardProps> = ({
   showDescription,
   difficultyVariant,
   horizontalOrientation,
+  minHeight,
+  minWidth,
 }) => {
   const boxVariant = progressState && cardStyles[progressState];
   const mode = progressState === 'completed' ? 'dark' : 'light';
@@ -98,17 +109,21 @@ export const CurriculumCard: React.FC<CurriculumCardProps> = ({
   const isCareerPathVariant =
     text.toLowerCase() === 'career path' && showCareerPathVariant;
 
+  const getMinimumHeight = (minHeight?: number) => {
+    if (minHeight) return pxRem(minHeight);
+    return isStaticSize
+      ? pxRem(285)
+      : isFullSize
+      ? pxRem(cardHeight * 2 + 32)
+      : pxRem(cardHeight);
+  };
+
   return (
     <Card
       display="flex"
       flexDirection={horizontalOrientation ? 'row' : 'column'}
-      minHeight={
-        isStaticSize
-          ? pxRem(285)
-          : isFullSize
-          ? pxRem(cardHeight * 2 + 32)
-          : pxRem(cardHeight)
-      }
+      minHeight={getMinimumHeight(minHeight)}
+      minWidth={minWidth ? pxRem(minWidth) : 'none'}
       variant={boxVariant ?? 'white'}
       shadow="medium"
       position="relative"
