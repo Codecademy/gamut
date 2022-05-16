@@ -1,8 +1,9 @@
-import { AppBar, FillButton, TextButton } from '@codecademy/gamut';
+import { FillButton, TextButton } from '@codecademy/gamut';
 import { css } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React, { ReactNode, useEffect, useMemo, useRef, useState } from 'react';
 
+import { AppBar } from '../AppBar';
 import { formatUrlWithRedirect } from '../GlobalHeader/urlHelpers';
 import { HeaderHeightArea } from '../HeaderHeightArea';
 import { NotificationsPopover } from '../Notifications/NotificationsPopover';

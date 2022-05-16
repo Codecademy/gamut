@@ -1,5 +1,5 @@
-export * from './AppBar'; //
-export * from './AppBar/AppBarSection'; //
+export * from './AppBar';
+export * from './AppBar/AppBarSection';
 export * from './AppHeader';
 export * from './AppHeader/AppHeaderElements/AppHeaderDropdown';
 export * from './AppHeader/AppHeaderElements/AppHeaderLink';
