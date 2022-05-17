@@ -1,6 +1,7 @@
 import {
   Box,
   Card,
+  CardProps,
   FlexBox,
   HeadingTags,
   ProLabel,
@@ -8,7 +9,7 @@ import {
 } from '@codecademy/gamut';
 import { pxRem, theme } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
-import React from 'react';
+import React, { useMemo } from 'react';
 
 import { TagColor } from './BottomTag/index';
 import { Footer } from './Footer/index';
@@ -66,11 +67,11 @@ export type CurriculumCardProps = SubtitleProps & {
   /**
    * custom minimum height for curriculum card in pixels
    */
-  minHeight?: number;
+  minHeight?: CardProps['minHeight'];
   /**
    * custom minimum width for curriculum card in pixels
    */
-  minWidth?: number;
+  minWidth?: CardProps['minWidth'];
 };
 
 const LineDecoration = styled(Box)`
@@ -109,21 +110,21 @@ export const CurriculumCard: React.FC<CurriculumCardProps> = ({
   const isCareerPathVariant =
     text.toLowerCase() === 'career path' && showCareerPathVariant;
 
-  const getMinimumHeight = (minHeight?: number) => {
-    if (minHeight) return pxRem(minHeight);
+  const minimumHeight = useMemo(() => {
+    if (minHeight) return minHeight;
     return isStaticSize
       ? pxRem(285)
       : isFullSize
       ? pxRem(cardHeight * 2 + 32)
       : pxRem(cardHeight);
-  };
+  }, [isFullSize, isStaticSize, minHeight]);
 
   return (
     <Card
       display="flex"
       flexDirection={horizontalOrientation ? 'row' : 'column'}
-      minHeight={getMinimumHeight(minHeight)}
-      minWidth={minWidth ? pxRem(minWidth) : 'none'}
+      minHeight={minimumHeight}
+      minWidth={minWidth}
       variant={boxVariant ?? 'white'}
       shadow="medium"
       position="relative"
