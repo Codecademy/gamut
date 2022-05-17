@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [13.1.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@13.1.0...@codecademy/gamut-styles@13.1.1) (2022-05-17)
+
+
+### Bug Fixes
+
+* **ColorMode:** Fixing bug with usePrefersDarkMode ([#2350](https://github.com/Codecademy/gamut/issues/2350)) ([aae0cba](https://github.com/Codecademy/gamut/commit/aae0cba8189b0810433bc079c64fee24fe48df0c))
+
+
+
 ## [13.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@13.0.2...@codecademy/gamut-styles@13.1.0) (2022-04-13)
 
 
