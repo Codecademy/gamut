@@ -121,6 +121,34 @@ export const TabsBadgeExample = (args: TabsProps) => {
   );
 };
 
+export const TabsBlockVariantExample = (args: TabNavProps) => {
+  return (
+    <>
+      <Tabs {...args} variant="block">
+        <TabList>
+          <Tab>Tab 1</Tab>
+          <Tab>Tab 2</Tab>
+          <Tab>Tab 3</Tab>
+        </TabList>
+        <TabPanels px={24}>
+          <TabPanel>
+            <Text as="h2">Welcome to Tab 1</Text>
+            <Text>Hi there! I&apos;m the contents inside Tab 1. Yippee!</Text>
+          </TabPanel>
+          <TabPanel>
+            <Text as="h2">Welcome to Tab 2</Text>
+            <Text>Hi there! I&apos;m the contents inside Tab 2. Yippee!</Text>
+          </TabPanel>
+          <TabPanel>
+            <Text as="h2">Welcome to Tab 3</Text>
+            <Text>Hi there! I&apos;m the contents inside Tab 3. Yippee!</Text>
+          </TabPanel>
+        </TabPanels>
+      </Tabs>
+    </>
+  );
+};
+
 export const TabsNavExample = (args: TabNavProps) => {
   return (
     <>

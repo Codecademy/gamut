@@ -14,6 +14,7 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 
 import {
   TabsBadgeExample,
+  TabsBlockVariantExample,
   TabsControlledExample,
   TabsExample,
   TabsNavExample,
@@ -101,6 +102,16 @@ instead notify of a request to change using `onChange`.
 <Canvas>
   <Story name="Tabs With Badges">
     {(args) => <TabsBadgeExample {...args} />}
+  </Story>
+</Canvas>
+
+## Block Variant
+
+If you pass in the variant 'block', you will get a slim, dark mode version of tabs.
+
+<Canvas>
+  <Story name="Block Variant">
+    {(args) => <TabsBlockVariantExample {...args} />}
   </Story>
 </Canvas>
 
