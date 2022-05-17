@@ -46,7 +46,6 @@ export * from './Pagination';
 export * from './Popover';
 export * from './PopoverContainer';
 export * from './ProgressBar';
-export * from './ProLabel';
 export * from './RadialProgress';
 export * from './SkipToContent';
 export * from './Spinner';
