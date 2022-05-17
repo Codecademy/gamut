@@ -1,15 +1,9 @@
-import {
-  Box,
-  Card,
-  FlexBox,
-  HeadingTags,
-  ProLabel,
-  Text,
-} from '@codecademy/gamut';
+import { Box, Card, FlexBox, HeadingTags, Text } from '@codecademy/gamut';
 import { pxRem, theme } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React from 'react';
 
+import { ProLabel } from '..';
 import { TagColor } from './BottomTag/index';
 import { Footer } from './Footer/index';
 import { Image } from './Image/index';
