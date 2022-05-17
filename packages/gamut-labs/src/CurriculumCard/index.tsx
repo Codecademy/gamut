@@ -122,7 +122,7 @@ export const CurriculumCard: React.FC<CurriculumCardProps> = ({
   return (
     <Card
       display="flex"
-      flexDirection={horizontalOrientation ? 'row' : 'column'}
+      flexDirection={{ _: 'row', md: horizontalOrientation ? 'row' : 'column' }}
       minHeight={minimumHeight}
       minWidth={minWidth}
       variant={boxVariant ?? 'white'}
