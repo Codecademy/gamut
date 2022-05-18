@@ -58,13 +58,14 @@ export const HorizontalScrollMenu: React.FC<HorizontalScrollMenuProps> = ({
   }, [elementsRef, intersectionObserver, children]);
 
   return (
-    <Box position="relative" tabIndex={0}>
+    <Box position="relative">
       <ScrollContainer
         data-observerroot="true"
         ref={parentContainerRef}
         className={className}
         pr={16}
         overflowX="scroll"
+        tabIndex={0}
       >
         {Children.map(children, (child, index) => (
           <ScrollItemWrapper
