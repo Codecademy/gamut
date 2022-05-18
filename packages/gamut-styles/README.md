@@ -4,8 +4,8 @@ Base SCSS and style utilities for Codecademy.
 
 ## Variables/
 
-This folder houses all shared SCSS style variables.
-It also contains a JavaScript file with color variables.
+This folder houses all of our system props configurations and shared SCSS style variables.
+It also contains a deprecated Typescript file with color variables.
 
 ## Core/
 
