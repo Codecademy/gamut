@@ -10,10 +10,17 @@ export type ToolTip2Props = {
 export const ToolTip2: React.FC<ToolTip2Props> = ({ children }) => {
   return (
     <Popover
-      render={() => <div>hey there 12345345 1352345</div>}
+      render={() => (
+        <div>
+          <div>123</div>
+          <div>12341234512341234</div>
+          <div>567</div>
+        </div>
+      )}
       width="auto"
       height="auto"
-      position={'bottom-end'}
+      position={'right-end'}
+      useBeak
     >
       {children}
     </Popover>

@@ -122,6 +122,7 @@ export const ControlledPopover: React.FC<
     position = PopoverPosition.Bottom,
     // boundary = PopoverBoundary.Viewport,
     //   isChromeless = false,
+    useBeak,
     isFlipDisabled,
     //   usePortals = false,
     //   useFlex = false,
@@ -271,7 +272,6 @@ export const ControlledPopover: React.FC<
       >
         <InnerDiv
           ref={ref} // For popperJS to store
-          //   className={popoverHolderClassName}
           style={{
             ...popperStyles,
             width,
@@ -280,16 +280,46 @@ export const ControlledPopover: React.FC<
             maxHeight,
           }}
         >
-          {/* TODO_MS: Escape hotkey to close? */}
+          {/* TODO_MS: Escape hotkey to close? Maybe for free if we use CSS? */}
           <div role="tooltip" style={{ background: 'orange', padding: 16 }}>
             {elementToClone}
-            <Beak placement={placement} />
+            {useBeak && <Beak placement={placement} />}
           </div>
         </InnerDiv>
       </div>
     );
   };
 
+  const getOffset = (placement: Placement): [number, number] => {
+    // TODO: Maybe we want to allow callers to pass other sorts of offsets via props?
+    // TODO_Definitely: Add the "default" offsets so we're not right up on the target
+
+    if (placementIsVertical(placement)) {
+      return [
+        placementIsStart(position)
+          ? -beakOffset
+          : placementIsEnd(position)
+          ? beakOffset
+          : 0,
+        placementIsTop(position)
+          ? beakHeight
+          : placementIsBottom(position)
+          ? beakHeight - beakHeight / 2
+          : 0,
+      ];
+    }
+
+    return [
+      placementIsStart(position)
+        ? -beakOffset
+        : placementIsEnd(position)
+        ? beakOffset - beakHeight / 2
+        : 0,
+      beakHeight,
+    ];
+
+    return [0, 0];
+  };
   const popperContent = (
     <Popper
       placement={position}
@@ -310,17 +340,8 @@ export const ControlledPopover: React.FC<
         {
           name: 'offset',
           options: {
-            offset: [
-              (position.includes('start')
-                ? -1
-                : position.includes('end')
-                ? 1
-                : 0) * beakHorizontalOffset,
-              0,
-            ],
+            offset: useBeak ? getOffset(position) : [0, 0],
           },
-          // requires: ['popperOffsets'],
-          // fn: getPopperOffsetFn({ useBeak: true }),
         },
         {
           name: 'flip',
@@ -375,60 +396,6 @@ export const ControlledPopover: React.FC<
   );
 };
 
-// Popper positions the popovers via absolute positioning, but sometimes we want to tweak those offset values.
-const getPopperOffsetFn = ({ useBeak }: Pick<PopoverProps, 'useBeak'>) => (
-  data: ModifierArguments<{}>
-): State | void => {
-  console.log('getPopperOffsetFn', data);
-
-  // return data
-  if (!useBeak) return;
-
-  const { state } = data;
-  const { placement } = state;
-
-  // const offsetModifierKey =
-  //   // Doing the index calc here so we minimize unnecessary operations in this needs-to-be-performant function.
-  //   // We use indexOf instead of strict equality to capture the `top`, `top-start`, `top-end` variants of position.
-  //   (data.placement.indexOf(PopoverPosition.Top) !== -1 &&
-  //     PopoverPosition.Top) ||
-  //   (data.placement.indexOf(PopoverPosition.Bottom) !== -1 &&
-  //     PopoverPosition.Bottom) ||
-  //   (data.placement.indexOf(PopoverPosition.Left) !== -1 &&
-  //     PopoverPosition.Left) ||
-  //   (data.placement.indexOf(PopoverPosition.Right) !== -1 &&
-  //     PopoverPosition.Right);
-
-  // const topModifier =
-  //   (offsetModifierKey &&
-  //     positionBasedOffsetModifiers?.[offsetModifierKey]?.top) ?? // Not || to allow 0
-  //   POPOVER_MARGIN; // With no offset modifier, give them the default
-
-  // const horizontalModifier: number = placement.includes('start') ?
-  //   (offsetModifierKey &&
-  //     positionBasedOffsetModifiers?.[offsetModifierKey]?.left) ??
-  //   0; // With no offset modifier, give them the default (horizontal is 0)
-
-  // We modify the offset value rather than replace it so we still leverage Popper's placement magic.
-  if (['start', 'end'].some((prefix) => placement.includes(prefix))) {
-    // state.modifiersData.offset = {
-    //   ...state.modifiersData.offset,
-    //   [placement]: {
-    //     x: 200,
-    //     y: 0,
-    //   },
-    // };
-    state.modifiersData.popperOffsets = {
-      x:
-        (state.modifiersData.popperOffsets?.x || 0) +
-        (state.placement.includes('start') ? -1 : 1) * beakHorizontalOffset,
-      y: state.modifiersData.popperOffsets?.y || 0,
-    };
-  }
-
-  return state;
-};
-
 const onClickTargetDomElementDenylist = ['div', 'span'];
 const isValidClickTarget = (children: ReactElement<unknown>): boolean =>
   !!children &&
@@ -442,7 +409,9 @@ const getPopoverErrorText = (elementType: string) =>
   }`;
 
 const beakHeight = 16;
-const beakHorizontalOffset = 24;
+const beakOffset = 24;
+const borderRadius = 4;
+
 const InnerDiv = styled.div`
   /* &::after {
     content: '';
@@ -485,36 +454,74 @@ const Beak = styled.div<Required<BeakProps>>`
     visibility: visible;
     content: '';
     transform: rotate(45deg);
+    /* border-radius: ${borderRadius}px; */
   }
 
   ${({ placement }) => {
-    if (placement.includes('top')) {
-      return { bottom: `calc(${beakHeight}px / -2)` };
+    if (placementIsTop(placement)) {
+      return `
+        bottom: calc(${beakHeight}px / -2);
+
+        &::before {
+          border-bottom-right-radius: ${borderRadius}px;
+        }
+      `;
     }
 
     if (placement.includes('bottom')) {
-      return { top: `calc(${beakHeight}px / -2)` };
+      return `
+        top: calc(${beakHeight}px / -2);
+
+        &::before {
+          border-top-left-radius: ${borderRadius}px;
+        }
+      `;
     }
 
     if (placement.includes('left')) {
-      return { right: `calc(${beakHeight}px / -2)` };
+      return { right: `${beakHeight / -2}px` };
     }
 
     if (placement.includes('right')) {
-      return { left: `calc(${beakHeight}px / -2)` };
+      return { left: `${beakHeight / -2}px` };
     }
 
     return {};
   }}
 
   // Also center
-  ${({ placement }) =>
-    placement.includes('start')
-      ? { left: `${beakHorizontalOffset}px` }
-      : placement.includes('end')
-      ? { right: `${beakHorizontalOffset}px` }
+  ${({ placement }) => {
+    if (placementIsVertical(placement)) {
+      return placementIsStart(placement)
+        ? { left: `${beakOffset}px` }
+        : placementIsEnd(placement)
+        ? { right: `${beakOffset}px` }
+        : {
+            // Center
+            left: `calc(50% - ${beakHeight / 2}px)`,
+          };
+    }
+
+    return placementIsStart(placement)
+      ? { top: `${beakOffset - beakHeight / 4}px` }
+      : placementIsEnd(placement)
+      ? { bottom: `${beakOffset - beakHeight / 4}px` }
       : {
           // Center
-          left: `calc(50% - ${Number(beakHeight / 2)}px)`,
-        }}
+          top: `calc(50% - ${beakHeight / 2}px)`,
+        };
+  }}
 `;
+
+const placementIsTop = (placement: Placement) => placement.includes('top');
+const placementIsBottom = (placement: Placement) =>
+  placement.includes('bottom');
+
+const placementIsLeft = (placement: Placement) => placement.includes('left');
+const placementIsRight = (placement: Placement) => placement.includes('right');
+
+const placementIsStart = (placement: Placement) => placement.includes('start');
+const placementIsEnd = (placement: Placement) => placement.includes('end');
+
+const placementIsVertical = (placement: Placement) =>
+  placementIsTop(placement) || placementIsBottom(placement);
