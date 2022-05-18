@@ -1,4 +1,4 @@
-import { Box, ToolTip } from '@codecademy/gamut/src';
+import { Box, ToolTip, ToolTip2 } from '@codecademy/gamut/src';
 import { InfoCircleIcon } from '@codecademy/gamut-icons/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
@@ -52,6 +52,21 @@ Great for surfacing additional information that may or may not be relevant _with
 </Canvas>
 
 <PropsTable exclude={['target']} story="ToolTip" />
+
+<Canvas>
+  <Story name="ToolTip2">
+    {(args) => (
+      <div style={{ padding: 200 }}>
+        Hello2! &nbsp;
+        <ToolTip2 {...args} component={args.children}>
+          {args.target}
+        </ToolTip2>
+      </div>
+    )}
+  </Story>
+</Canvas>
+
+<PropsTable exclude={['target']} story="ToolTip2" />
 
 ## Writing Tips
 

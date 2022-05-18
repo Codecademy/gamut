@@ -1,7 +1,8 @@
 import { variant } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
+import { ModifierArguments, State } from '@popperjs/core';
 import { isEqual } from 'lodash';
-import { Boundary, Data, Offset, Placement } from 'popper.js';
+import { Boundary, Offset, Placement } from 'popper.js';
 import React, {
   cloneElement,
   CSSProperties,
@@ -15,7 +16,7 @@ import React, {
 import { Manager, Popper, PopperChildrenProps, Reference } from 'react-popper';
 
 import { isOnServer } from './isOnServer';
-import { PopoverBoundary, PopoverPosition, PopoverType } from './types';
+import { PopoverPosition, PopoverType } from './types';
 import { usePreviousProps } from './usePreviousProps';
 
 export interface PopoverProps {
@@ -31,12 +32,16 @@ export interface PopoverProps {
   type?: PopoverType;
   onHoverEnterDelay?: number;
   onHoverExitDelay?: number;
-  children: React.ReactElement<unknown>;
+  children: ReactElement<unknown>; // JSX.Element | ReactNode;
   component?: React.ReactElement<unknown> | ReactNode;
   render?: () => ReactNode;
   focusable?: boolean;
-  // Position for brevity, but this is preferred position, as it'll reposition if it doesn't fit.
+  /** Position for brevity, but this is preferred position, as it'll reposition if it doesn't fit. */
   position?: Placement;
+
+  /** Whether the popover should use a beak element to point to the tooltip target */
+  useBeak?: boolean;
+
   // Sometimes we render a popover B inside a popover A, and don't want B to overflow A.
   // PopoverBoundary.ScrollParent fixes that. In most cases though, the default ViewPort is fine.
   boundary?: Boundary;
@@ -115,7 +120,7 @@ export const ControlledPopover: React.FC<
     // onHoverExitDelay = 250,
     focusable,
     position = PopoverPosition.Bottom,
-    boundary = PopoverBoundary.Viewport,
+    // boundary = PopoverBoundary.Viewport,
     //   isChromeless = false,
     isFlipDisabled,
     //   usePortals = false,
@@ -276,7 +281,7 @@ export const ControlledPopover: React.FC<
           }}
         >
           {/* TODO_MS: Escape hotkey to close? */}
-          <div role="tooltip">
+          <div role="tooltip" style={{ background: 'orange', padding: 16 }}>
             {elementToClone}
             <Beak placement={placement} />
           </div>
@@ -298,15 +303,24 @@ export const ControlledPopover: React.FC<
           name: 'preventOverflow',
           options: {
             padding: POPOVER_MARGIN * 2, // Minimum distance from boundary edge so it's not cheek-to-jowl with it before re-positioning
-            boundariesElement: boundary, // What element is attempting to contain this popover
-            priority: ['left', 'right', 'bottom', 'top'], // Which direction the popover should prefer to prevent overflow in most
+            // boundariesElement: boundary, // What element is attempting to contain this popover
+            // priority: ['left', 'right', 'bottom', 'top'], // Which direction the popover should prefer to prevent overflow in most
           },
         },
         {
           name: 'offset',
           options: {
-            offset: [0, 8],
+            offset: [
+              (position.includes('start')
+                ? -1
+                : position.includes('end')
+                ? 1
+                : 0) * beakHorizontalOffset,
+              0,
+            ],
           },
+          // requires: ['popperOffsets'],
+          // fn: getPopperOffsetFn({ useBeak: true }),
         },
         {
           name: 'flip',
@@ -361,6 +375,60 @@ export const ControlledPopover: React.FC<
   );
 };
 
+// Popper positions the popovers via absolute positioning, but sometimes we want to tweak those offset values.
+const getPopperOffsetFn = ({ useBeak }: Pick<PopoverProps, 'useBeak'>) => (
+  data: ModifierArguments<{}>
+): State | void => {
+  console.log('getPopperOffsetFn', data);
+
+  // return data
+  if (!useBeak) return;
+
+  const { state } = data;
+  const { placement } = state;
+
+  // const offsetModifierKey =
+  //   // Doing the index calc here so we minimize unnecessary operations in this needs-to-be-performant function.
+  //   // We use indexOf instead of strict equality to capture the `top`, `top-start`, `top-end` variants of position.
+  //   (data.placement.indexOf(PopoverPosition.Top) !== -1 &&
+  //     PopoverPosition.Top) ||
+  //   (data.placement.indexOf(PopoverPosition.Bottom) !== -1 &&
+  //     PopoverPosition.Bottom) ||
+  //   (data.placement.indexOf(PopoverPosition.Left) !== -1 &&
+  //     PopoverPosition.Left) ||
+  //   (data.placement.indexOf(PopoverPosition.Right) !== -1 &&
+  //     PopoverPosition.Right);
+
+  // const topModifier =
+  //   (offsetModifierKey &&
+  //     positionBasedOffsetModifiers?.[offsetModifierKey]?.top) ?? // Not || to allow 0
+  //   POPOVER_MARGIN; // With no offset modifier, give them the default
+
+  // const horizontalModifier: number = placement.includes('start') ?
+  //   (offsetModifierKey &&
+  //     positionBasedOffsetModifiers?.[offsetModifierKey]?.left) ??
+  //   0; // With no offset modifier, give them the default (horizontal is 0)
+
+  // We modify the offset value rather than replace it so we still leverage Popper's placement magic.
+  if (['start', 'end'].some((prefix) => placement.includes(prefix))) {
+    // state.modifiersData.offset = {
+    //   ...state.modifiersData.offset,
+    //   [placement]: {
+    //     x: 200,
+    //     y: 0,
+    //   },
+    // };
+    state.modifiersData.popperOffsets = {
+      x:
+        (state.modifiersData.popperOffsets?.x || 0) +
+        (state.placement.includes('start') ? -1 : 1) * beakHorizontalOffset,
+      y: state.modifiersData.popperOffsets?.y || 0,
+    };
+  }
+
+  return state;
+};
+
 const onClickTargetDomElementDenylist = ['div', 'span'];
 const isValidClickTarget = (children: ReactElement<unknown>): boolean =>
   !!children &&
@@ -373,7 +441,8 @@ const getPopoverErrorText = (elementType: string) =>
     elementType || 'a falsy value'
   }`;
 
-const beakHeight = `1rem`;
+const beakHeight = 16;
+const beakHorizontalOffset = 24;
 const InnerDiv = styled.div`
   /* &::after {
     content: '';
@@ -405,8 +474,8 @@ const Beak = styled.div<Required<BeakProps>>`
   &,
   &::before {
     position: absolute;
-    width: ${beakHeight};
-    height: ${beakHeight};
+    width: ${beakHeight}px;
+    height: ${beakHeight}px;
     background: green;
   }
 
@@ -420,21 +489,32 @@ const Beak = styled.div<Required<BeakProps>>`
 
   ${({ placement }) => {
     if (placement.includes('top')) {
-      return { bottom: `calc(${beakHeight} / -2)` };
+      return { bottom: `calc(${beakHeight}px / -2)` };
     }
 
     if (placement.includes('bottom')) {
-      return { top: `calc(${beakHeight} / -2)` };
+      return { top: `calc(${beakHeight}px / -2)` };
     }
 
     if (placement.includes('left')) {
-      return { right: `calc(${beakHeight} / -2)` };
+      return { right: `calc(${beakHeight}px / -2)` };
     }
 
     if (placement.includes('right')) {
-      return { left: `calc(${beakHeight} / -2)` };
+      return { left: `calc(${beakHeight}px / -2)` };
     }
 
     return {};
   }}
+
+  // Also center
+  ${({ placement }) =>
+    placement.includes('start')
+      ? { left: `${beakHorizontalOffset}px` }
+      : placement.includes('end')
+      ? { right: `${beakHorizontalOffset}px` }
+      : {
+          // Center
+          left: `calc(50% - ${Number(beakHeight / 2)}px)`,
+        }}
 `;

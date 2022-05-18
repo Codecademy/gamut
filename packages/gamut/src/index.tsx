@@ -48,6 +48,7 @@ export * from './theming/VisualTheme';
 export * from './Tabs';
 export * from './Toggle';
 export * from './ToolTip';
+export * from './ToolTip2';
 export * from './Truncate';
 export * from './utils';
 export * from './Video';
