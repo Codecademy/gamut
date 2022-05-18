@@ -13,6 +13,7 @@ on:
 jobs:
   pr-title:
     runs-on: ubuntu-latest
+    if: github.event.pull_request.user.login != 'dependabot[bot]'
     steps:
       - uses: aslafy-z/conventional-pr-title-action@v2.2.0
         with:

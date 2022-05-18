@@ -2,4 +2,7 @@
 * @codecademy/gamut
 
 # -- Documentation changes
-packages/styleguide/ @songstephen @codecademy/gamut
+packages/styleguide/ @songstephen @Codecademy/gamut
+
+package.json @Codecademy/dependencies
+yarn.lock @Codecademy/dependencies
