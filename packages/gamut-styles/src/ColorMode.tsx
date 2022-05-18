@@ -122,6 +122,7 @@ export const ColorMode = forwardRef<
    * 2. If the user has specified a background color - set that color to the current-bg
    * 3. If not
    */
+
   const { variables } = useMemo(() => {
     return serializeTokens(
       mapValues(modes[mode], (color, key) => {
