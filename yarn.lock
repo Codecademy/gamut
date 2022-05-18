@@ -1496,10 +1496,10 @@
     eslint-plugin-unused-imports "^1.1.5"
     yargs "^17.1.1"
 
-"@codecademy/prettier-config@^0.1.10":
-  version "0.1.10"
-  resolved "https://registry.npmjs.org/@codecademy/prettier-config/-/prettier-config-0.1.10.tgz#43827fab5ee7f171e03f7d9325d6261766068028"
-  integrity sha512-AI2I6lq6haRCVylPPvk+CkIE87mqVKQ4Hz43EeTEtdJtXFg8xnXswzkZrNOwH+jM+WuWCOM7YxgkPa7ZUyiIkA==
+"@codecademy/prettier-config@^0.2.0":
+  version "0.2.0"
+  resolved "https://registry.npmjs.org/@codecademy/prettier-config/-/prettier-config-0.2.0.tgz#15a13a04c08d21fac7c88c2983258c1bdaf8152f"
+  integrity sha512-WRaYl9urRIbT3D3UAehGXFi0lreG6VxwMQlJt39Ov/1amYjzQpM2V9Gm+FHQrHmIqff3H/fNxSNqy4ImrqFOjw==
 
 "@codecademy/tsconfig@^0.2.0":
   version "0.2.0"
