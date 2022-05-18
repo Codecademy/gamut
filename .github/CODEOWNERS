@@ -3,3 +3,5 @@
 
 # -- Documentation changes
 packages/styleguide/ @songstephen @codecademy/gamut
+
+package.json @Codecademy/dependencies
