@@ -132,7 +132,7 @@ export const CurriculumCard: React.FC<CurriculumCardProps> = ({
       shadow="medium"
       position="relative"
     >
-      <Box pr={40}>
+      <Box pr={{ _: 0, md: horizontalOrientation ? 40 : 0 }}>
         <Text
           display="flex"
           fontSize={14}
@@ -166,7 +166,13 @@ export const CurriculumCard: React.FC<CurriculumCardProps> = ({
         )}
       </Box>
       {isFullSize && image && (
-        <FlexBox m="auto" center pt={16} pb={isCareerPathVariant ? 32 : 0}>
+        <FlexBox
+          m="auto"
+          center
+          pt={16}
+          pb={isCareerPathVariant ? 32 : 0}
+          pr={{ _: 0, md: horizontalOrientation ? 24 : 0 }}
+        >
           <Image
             isSmall={isCareerPathVariant}
             image={image}
