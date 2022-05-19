@@ -60,6 +60,15 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
         </FooterLinkItem>
         <FooterLinkItem>
           <Anchor
+            href="https://discord.com/invite/codecademy"
+            onClick={(event) => onClick({ event, target: 'discord' })}
+            variant="interface"
+          >
+            Discord
+          </Anchor>
+        </FooterLinkItem>
+        <FooterLinkItem>
+          <Anchor
             href="https://community.codecademy.com/chapters"
             onClick={(event) => onClick({ event, target: 'chapters' })}
             variant="interface"
