@@ -291,6 +291,7 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
         _: 'repeat(2, minmax(0, 1fr))',
         sm: 'repeat(3, minmax(0, 1fr))',
       }}
+      rowGap={16}
     >
       {company}
       {resources}
