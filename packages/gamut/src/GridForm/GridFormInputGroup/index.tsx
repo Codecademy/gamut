@@ -100,7 +100,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
       case 'textarea':
         return (
           <GridFormTextArea
-            error={!!errorMessage}
+            error={errorMessage}
             field={field}
             {...defaultProps}
           />
@@ -120,7 +120,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
       default:
         return (
           <GridFormTextInput
-            error={!!errorMessage}
+            error={errorMessage}
             field={field}
             {...defaultProps}
           />

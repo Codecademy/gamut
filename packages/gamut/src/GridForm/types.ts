@@ -10,7 +10,7 @@ export interface BaseFormInputProps {
   className?: string;
   required?: boolean;
   disabled?: boolean;
-  error?: boolean;
+  error?: boolean | string;
 }
 
 export type BaseFormField<Value> = {

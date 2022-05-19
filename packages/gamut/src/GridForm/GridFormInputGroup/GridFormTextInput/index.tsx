@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useDeferredValue } from 'react';
 import { useFormContext, UseFormReturn } from 'react-hook-form';
 
 import { Input } from '../../../Form';
@@ -7,6 +7,7 @@ import { BaseFormInputProps, GridFormTextField } from '../../types';
 export interface GridFormTextInputProps extends BaseFormInputProps {
   field: Omit<GridFormTextField, 'label'>;
   register: UseFormReturn['register'];
+  error?: string;
 }
 
 export const GridFormTextInput: React.FC<GridFormTextInputProps> = ({
@@ -23,7 +24,7 @@ export const GridFormTextInput: React.FC<GridFormTextInputProps> = ({
     }),
   };
 
-  const { clearErrors } = useFormContext();
+  const { clearErrors, setError } = useFormContext();
 
   return (
     <Input
@@ -43,6 +44,14 @@ export const GridFormTextInput: React.FC<GridFormTextInputProps> = ({
       onFocus={() => {
         if (error) {
           clearErrors(field.name);
+          // TODO : possbily swap to useDeferredValue
+          // without this setTimeout, the error doesn't actually retrigger.
+          setTimeout(() => {
+            setError(field.name, {
+              type: 'custom',
+              message: `${error} `,
+            });
+          }, 1);
         }
       }}
       placeholder={field.placeholder}
