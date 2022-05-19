@@ -1,4 +1,11 @@
-import { ColorModes, Colors, theme, variant } from '@codecademy/gamut-styles';
+import {
+  ColorModes,
+  Colors,
+  theme,
+  timing,
+  timingValues,
+  variant,
+} from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import { useFocusWithin } from '@react-aria/interactions';
 import { isEqual } from 'lodash';
@@ -14,6 +21,14 @@ import React, {
   useRef,
 } from 'react';
 import { Manager, Popper, PopperChildrenProps, Reference } from 'react-popper';
+import Transition, {
+  ENTERED,
+  ENTERING,
+  EXITED,
+  EXITING,
+  TransitionStatus,
+  UNMOUNTED,
+} from 'react-transition-group/Transition';
 
 import { isOnServer } from './isOnServer';
 import { PopoverPosition, PopoverType } from './types';
@@ -43,34 +58,30 @@ export interface PopoverProps extends SharedInnerProps {
   // Sometimes we render a popover B inside a popover A, and don't want B to overflow A.
   // PopoverBoundary.ScrollParent fixes that. In most cases though, the default ViewPort is fine.
   boundary?: Boundary;
+
   // Allows you to opt out of the border and dropshadow if needed
   isChromeless?: boolean;
-  // Flipping is when we move the popover from one side to another to fit into the viewport.
-  // Sometimes you don't want that, so we give you a way in.
+  /** Flipping is when we move the popover from one side to another to fit into the viewport.
+   * Sometimes you don't want that, so we give you a way in. */
   isFlipDisabled?: boolean;
+
   maxWidth?: number | string;
   maxHeight?: number | string;
   showOverflowY?: boolean;
+
+  // Sometimes we want popovers to apply transitions when they're opened, without having to bubble up their isOpen
+  // state. So we let parents pass down configurations for their totally optional transitions.
+  transitionStyles?: ControlledPopoverTransitionStyle;
+
   // Simple boolean to completely avoid transitions of any kind. Useful for when we want popovers to
   // either be or not, without even dealing with 0ms timeouts for our renders.
   noTransitions?: boolean;
-  // Sometimes instead of width we need to use flex styling for the targetWrappers.
-  // Defaults to false.
-  useFlex?: boolean;
-  // Sometimes we want popovers to apply transitions when they're opened, without having to bubble up their isOpen
-  // state. So we let parents pass down configurations for their totally optional transitions.
-
-  // transitionStyles?: ControlledPopoverTransitionStyle; // TODO_MS Maybe cut out?
 
   // Sometimes we want to apply different offsets to the popover based on its position (top/bottom/left/right).
   // These modifiers will be used on-render to check the position and then tweak the popover's offset
   // by the value given.
-  positionBasedOffsetModifiers?: ControlledPopoverPositionOffsetModifiers;
-  // TODO [CW-4075]: This field makes it possible for search typeaheads disable the default "click to open"
-  // logic and implement their own based on focus, while still getting the "click body/esc to close", behavior.
-  // Ideally we'd have a PopoverType.Focus that would handle all of that, but it requires much more work
-  // because we'd have to ensure we keep the popover when the input loses focus and the results get focus, etc.
-  skipClickToOpen?: boolean;
+  // positionBasedOffsetModifiers?: ControlledPopoverPositionOffsetModifiers;
+
   // Use ReactDOM.createPortal(popover, glassContainerRef), helpful to avoid any overflow logic on containing elements.
   // Please note, that since portaled popovers render into glassContainerRef, this puts them above most things,
   // even if they're being used outside of traditional glass components.
@@ -83,6 +94,16 @@ interface SharedInnerProps {
 
   /** ColorMode override for the popover */
   mode?: ColorModes;
+}
+
+export interface ControlledPopoverTransitionStyle {
+  transitionDurationMS: number;
+  // TODO: Change these to the gamut magic styling rules
+  [ENTERING]: CSSProperties;
+  [ENTERED]?: CSSProperties;
+  [EXITING]: CSSProperties;
+  [EXITED]?: CSSProperties;
+  [UNMOUNTED]?: never;
 }
 
 export interface ControlledPopoverOnlyProps {
@@ -98,12 +119,12 @@ export interface ControlledPopoverOnlyProps {
 //    off just using the top-level width/height props.
 // NOTE Jr.: It is not needed to use `top` with Left/Right or `left` with Top/Bottom positioned popovers
 //    (you should probably be using the -start/-end suffixes, but if they're not cutting it, go nuts).
-export interface ControlledPopoverPositionOffsetModifiers {
-  [PopoverPosition.Top]?: Partial<Offset>;
-  [PopoverPosition.Bottom]?: Partial<Offset>;
-  [PopoverPosition.Left]?: Partial<Offset>;
-  [PopoverPosition.Right]?: Partial<Offset>;
-}
+// export interface ControlledPopoverPositionOffsetModifiers {
+//   [PopoverPosition.Top]?: Partial<Offset>;
+//   [PopoverPosition.Bottom]?: Partial<Offset>;
+//   [PopoverPosition.Left]?: Partial<Offset>;
+//   [PopoverPosition.Right]?: Partial<Offset>;
+// }
 
 /**
  * Let's keep this constant for as long as we can to ensure UI consistency.
@@ -127,17 +148,12 @@ export const ControlledPopover: React.FC<
     // onHoverExitDelay = 250,
     focusable,
     position = PopoverPosition.Bottom,
-    // boundary = PopoverBoundary.Viewport,
-    //   isChromeless = false,
+    boundary = 'viewport',
     useBeak,
+    noTransitions,
     isFlipDisabled,
     //   usePortals = false,
-    //   useFlex = false,
-    // transitionStyles: {
-    //   [ENTERING]: style.enter,
-    //   [EXITING]: style.exit,
-    //   transitionDurationMS: popoverTransitionTimeMs,
-    // }
+    transitionStyles = fadeStyles,
   } = props;
 
   const prevProps = usePreviousProps(props);
@@ -166,6 +182,11 @@ export const ControlledPopover: React.FC<
     []
   );
 
+  const onPopoverExited = useCallback(
+    () => updatePopperContentMutationObserver(null),
+    [updatePopperContentMutationObserver]
+  );
+
   const { focusWithinProps } = useFocusWithin({
     onFocusWithin: () => {
       console.log('INNER');
@@ -181,35 +202,35 @@ export const ControlledPopover: React.FC<
     if (isOpen && !isEqual(prevProps, props)) callPopperScheduleUpdate();
   });
 
-  const handleOutsideEvent = useCallback(
-    () => null,
-    []
-    // ({ target }: Event) =>
-    //  {
-    //   if (popoverRef.current && !popoverRef.current.contains(target as Node))
-    //     toggle?.();
-    // },
-    // [toggle]
-  );
+  // const handleOutsideEvent = useCallback(
+  //   () => null,
+  //   []
+  //   // ({ target }: Event) =>
+  //   //  {
+  //   //   if (popoverRef.current && !popoverRef.current.contains(target as Node))
+  //   //     toggle?.();
+  //   // },
+  //   // [toggle]
+  // );
 
   // Only allow opened, type:click popovers to have a listener.
   // And return the removal function for easy management of cleanup.
-  const setOutsideClickListener = useCallback(() => {
-    if (type !== PopoverType.Focus || !isOpen) return;
+  // const setOutsideClickListener = useCallback(() => {
+  //   if (type !== PopoverType.Focus || !isOpen) return;
 
-    const baseElement = getBaseElement();
+  //   const baseElement = getBaseElement();
 
-    baseElement?.addEventListener('click', handleOutsideEvent, false);
+  //   baseElement?.addEventListener('click', handleOutsideEvent, false);
 
-    return () =>
-      baseElement?.removeEventListener('click', handleOutsideEvent, false);
-  }, [isOpen, type, handleOutsideEvent]);
+  //   return () =>
+  //     baseElement?.removeEventListener('click', handleOutsideEvent, false);
+  // }, [isOpen, type, handleOutsideEvent]);
 
   // On mount/update, if the listener function changes (because of type/toggle/etc)
   // then clear the old listener and attempt to attach the new one.
-  useEffect(() => {
-    return setOutsideClickListener();
-  }, [setOutsideClickListener]);
+  // useEffect(() => {
+  //   return setOutsideClickListener();
+  // }, [setOutsideClickListener]);
 
   // For most of our popovers click actions are sufficient, so we both provide an onClick & allow them to be tabbed to.
   // const  getClickActions = (): TargetActionProps => ({
@@ -217,22 +238,27 @@ export const ControlledPopover: React.FC<
   //     onClick: this.props.toggle,
   //   });
 
-  // TODO_MS: this is only onClick rn
-  const target = children;
-  // ? cloneElement(children, {
-  //     // onClick: toggle,
-  //     tabIndex: focusable ? 0 : undefined,
-  //     style: {
-  //       cursor: 'pointer',
-  //     },
-  //   })
-  // : null;
+  const target = children
+    ? cloneElement(children, {
+        // onClick: toggle,
+        tabIndex: focusable ? 0 : undefined,
+        style: {
+          cursor: 'pointer',
+        },
+      })
+    : null;
 
-  const renderContentFromPopperAndTransitionChildrenProps = (
-    ref: Ref<HTMLDivElement>,
-    popperStyles: CSSProperties,
-    placement: Placement
-  ): ReactNode => {
+  const renderContentFromPopperAndTransitionChildrenProps = ({
+    ref,
+    popperStyles,
+    placement,
+    transitionStatus,
+  }: {
+    ref: Ref<HTMLDivElement>;
+    popperStyles: CSSProperties;
+    placement: Placement;
+    transitionStatus: TransitionStatus;
+  }): ReactNode => {
     const {
       render: renderProp,
       component: renderComponent,
@@ -246,6 +272,8 @@ export const ControlledPopover: React.FC<
     const elementToClone = renderComponent || renderProp?.();
     // const childComponent = elementToClone; // && cloneElement(elementToClone);
 
+    const transitionCSS = transitionStyles[transitionStatus];
+
     return (
       <div
         ref={(element) => updatePopperContentMutationObserver(element)}
@@ -257,6 +285,7 @@ export const ControlledPopover: React.FC<
           top: 0,
           left: 0,
           width: '100%',
+          ...transitionCSS,
         }}
       >
         <div
@@ -293,6 +322,7 @@ export const ControlledPopover: React.FC<
       //   eventsEnabled={isOpen}
       modifiers={[
         {
+          // TODO: This should be getting us our beak, but it isn't. Sad emoji
           name: 'arrow',
           enabled: true,
         },
@@ -300,7 +330,7 @@ export const ControlledPopover: React.FC<
           name: 'preventOverflow',
           options: {
             padding: POPOVER_MARGIN * 2, // Minimum distance from boundary edge so it's not cheek-to-jowl with it before re-positioning
-            // boundariesElement: boundary, // What element is attempting to contain this popover
+            boundary, // What element is attempting to contain this popover
             // priority: ['left', 'right', 'bottom', 'top'], // Which direction the popover should prefer to prevent overflow in most
           },
         },
@@ -324,14 +354,29 @@ export const ControlledPopover: React.FC<
       }: PopperChildrenProps) => {
         popperScheduleUpdateRef.current = forceUpdate;
 
-        return (
+        const curriedRenderContent = (transitionStatus: TransitionStatus) =>
+          renderContentFromPopperAndTransitionChildrenProps({
+            ref,
+            popperStyles,
+            placement,
+            transitionStatus,
+          });
+
+        return noTransitions ? (
+          // TODO_MS: actually render/not render based on isOpen
           <div style={{ visibility: isOpen ? 'visible' : 'hidden' }}>
-            {renderContentFromPopperAndTransitionChildrenProps(
-              ref,
-              popperStyles,
-              placement
-            )}
+            {curriedRenderContent(ENTERED)}
           </div>
+        ) : (
+          <Transition
+            in={isOpen}
+            timeout={transitionStyles.transitionDurationMS}
+            mountOnEnter
+            unmountOnExit
+            onExited={onPopoverExited} // To keep our mutationObservers performant
+          >
+            {curriedRenderContent}
+          </Transition>
         );
       }}
     </Popper>
@@ -348,6 +393,26 @@ export const ControlledPopover: React.FC<
       </Manager>
     </span>
   );
+};
+
+const baseFadeStyle = (transitionTime: number) => ({
+  transition: `opacity ${transitionTime}ms`,
+});
+
+const fadeStyles: ControlledPopoverTransitionStyle = {
+  transitionDurationMS: timingValues.fast,
+  [ENTERING]: {
+    ...baseFadeStyle(timingValues.fast),
+    opacity: 0,
+  },
+  [ENTERED]: {
+    ...baseFadeStyle(timingValues.fast),
+    opacity: 1,
+  },
+  [EXITING]: {
+    ...baseFadeStyle(timingValues.fast),
+    opacity: 0,
+  },
 };
 
 const getOffset = (placement: Placement): [number, number] => {
@@ -405,17 +470,6 @@ const popoverColors = {
     borderColor: theme.colors.white as Colors,
   },
 };
-
-const getToolTipVisibilityCSS = (visibility: boolean) =>
-  visibility
-    ? `
-  opacity: 1;
-  visibility: visible;
-`
-    : `
-  opacity: 0;
-  visibility: hidden;
-`;
 
 interface BeakProps extends SharedInnerProps {}
 

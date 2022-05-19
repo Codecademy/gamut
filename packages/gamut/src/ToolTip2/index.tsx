@@ -29,6 +29,7 @@ export const ToolTip2: React.FC<ToolTip2Props> = ({ children }) => {
         height="auto"
         position="bottom-end"
         useBeak
+        focusable
         // mode="dark"
       >
         {children}
