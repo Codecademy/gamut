@@ -229,9 +229,9 @@ const profileBusinessAccount: AppHeaderLinkItem = {
   type: 'link',
 };
 
-let authorUrl = `https://author.codecademy.com`;
-if (process.env.NODE_ENV === 'staging') {
-  authorUrl = `https://author.staging-eks.codecademy.com`;
+let authorUrl = `https://author.staging-eks.codecademy.com`;
+if (process.env.NODE_ENV === 'production') {
+  authorUrl = `https://author.codecademy.com`;
 } else if (process.env.NODE_ENV === 'development') {
   authorUrl = 'https://localhost:4000';
 }
