@@ -379,7 +379,11 @@ export const ControlledPopover: React.FC<
         ) : (
           <Transition
             in={isOpen}
-            timeout={transitionStyles.transitionDurationMS}
+            timeout={{
+              appear: 0,
+              enter: 0,
+              exit: transitionStyles.transitionDurationMS,
+            }}
             mountOnEnter
             unmountOnExit
             onExited={onPopoverExited} // To keep our mutationObservers performant
@@ -394,9 +398,25 @@ export const ControlledPopover: React.FC<
   return (
     <span ref={popoverRef} {...focusWithinProps}>
       <Manager>
-        <Reference>{({ ref }) => <span ref={ref}>{target}</span>}</Reference>
-        {/* {usePortals && glassContainerRef
-          ? createPortal(this.renderPopperContent(), glassContainerRef)
+        <Reference>
+          {({ ref }) => (
+            <span
+              ref={ref}
+              role={focusable ? 'button' : undefined}
+              onKeyDown={(event) => {
+                if (event.key === 'Escape') {
+                  (event.target as HTMLElement).blur();
+                }
+              }}
+            >
+              {target}
+            </span>
+          )}
+        </Reference>
+        {/* TODO: Portal behavior should "just work" if you portal something right onto the body after everything else
+        Since the popper library calculates placement etc for us */}
+        {/* {usePortals && bodyRef
+          ? createPortal(this.renderPopperContent(), bodyRef)
           : this.renderPopperContent()} */}
         {popperContent}
       </Manager>
