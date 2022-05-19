@@ -2,14 +2,13 @@ import {
   ColorModes,
   Colors,
   theme,
-  timing,
   timingValues,
   variant,
 } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import { useFocusWithin } from '@react-aria/interactions';
 import { isEqual } from 'lodash';
-import { Boundary, Offset, Placement } from 'popper.js';
+import { Boundary, Placement } from 'popper.js';
 import React, {
   cloneElement,
   CSSProperties,
@@ -188,11 +187,25 @@ export const ControlledPopover: React.FC<
   );
 
   const { focusWithinProps } = useFocusWithin({
-    onFocusWithin: () => {
-      console.log('INNER');
-      toggle?.(true);
-    },
-    onBlurWithin: () => toggle?.(false),
+    onFocusWithin: () => toggle?.(true),
+    // TODO: Ideally this would work, but due to some weirdness in the library, it's not
+    // registering that when you click/focus inside the tooltip itself that this is still a "focus within"
+    // state. So we rely on the janky click/keyboard behavior below.
+    // onBlurWithin: (event) => {
+    //   console.log(
+    //     'BLUR',
+    //     popoverRef.current,
+    //     event.target,
+    //     event.nativeEvent.target,
+    //     popoverRef.current &&
+    //       !popoverRef.current?.contains(event.nativeEvent.target as Node)
+    //   );
+    //   // if (
+    //   //   popoverRef.current &&
+    //   //   !popoverRef.current.contains(event.nativeEvent.target as Node)
+    //   // )
+    //   //   toggle?.(false);
+    // },
   });
 
   // If the content of the popover has changed, then we trigger an update to Popper, which repositions it.
@@ -202,45 +215,41 @@ export const ControlledPopover: React.FC<
     if (isOpen && !isEqual(prevProps, props)) callPopperScheduleUpdate();
   });
 
-  // const handleOutsideEvent = useCallback(
-  //   () => null,
-  //   []
-  //   // ({ target }: Event) =>
-  //   //  {
-  //   //   if (popoverRef.current && !popoverRef.current.contains(target as Node))
-  //   //     toggle?.();
-  //   // },
-  //   // [toggle]
-  // );
+  const handleOutsideEvent = useCallback(
+    ({ target }: Event) => {
+      if (
+        !target ||
+        (popoverRef.current && !popoverRef.current.contains(target as Node))
+      )
+        toggle?.(false);
+    },
+    [toggle]
+  );
 
   // Only allow opened, type:click popovers to have a listener.
   // And return the removal function for easy management of cleanup.
-  // const setOutsideClickListener = useCallback(() => {
-  //   if (type !== PopoverType.Focus || !isOpen) return;
+  const setOutsideClickListener = useCallback(() => {
+    if (type !== PopoverType.Focus || !isOpen) return;
 
-  //   const baseElement = getBaseElement();
+    const baseElement = getBaseElement();
 
-  //   baseElement?.addEventListener('click', handleOutsideEvent, false);
+    baseElement?.addEventListener('click', handleOutsideEvent, false);
+    baseElement?.addEventListener('keyup', handleOutsideEvent, false);
 
-  //   return () =>
-  //     baseElement?.removeEventListener('click', handleOutsideEvent, false);
-  // }, [isOpen, type, handleOutsideEvent]);
+    return () => {
+      baseElement?.removeEventListener('click', handleOutsideEvent, false);
+      baseElement?.removeEventListener('keyup', handleOutsideEvent, false);
+    };
+  }, [isOpen, type, handleOutsideEvent]);
 
   // On mount/update, if the listener function changes (because of type/toggle/etc)
   // then clear the old listener and attempt to attach the new one.
-  // useEffect(() => {
-  //   return setOutsideClickListener();
-  // }, [setOutsideClickListener]);
-
-  // For most of our popovers click actions are sufficient, so we both provide an onClick & allow them to be tabbed to.
-  // const  getClickActions = (): TargetActionProps => ({
-  //     tabIndex: this.props.tabIndex,
-  //     onClick: this.props.toggle,
-  //   });
+  useEffect(() => {
+    return setOutsideClickListener();
+  }, [setOutsideClickListener]);
 
   const target = children
     ? cloneElement(children, {
-        // onClick: toggle,
         tabIndex: focusable ? 0 : undefined,
         style: {
           cursor: 'pointer',
