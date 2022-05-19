@@ -1,5 +1,6 @@
 import { ColorModes, Colors, theme, variant } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
+import { useFocusWithin } from '@react-aria/interactions';
 import { isEqual } from 'lodash';
 import { Boundary, Offset, Placement } from 'popper.js';
 import React, {
@@ -88,7 +89,7 @@ export interface ControlledPopoverOnlyProps {
   // This null type was added to expressly communicate that this component may accept null. If so, you'd
   // better know what you're doing and better not need to get any info whatsoever on whether you should hide/show
   // this popover from this component. Its open state is in your hands now.
-  toggle: (() => void) | null;
+  toggle: ((override?: boolean) => void) | null;
   isOpen?: boolean;
 }
 
@@ -120,7 +121,7 @@ export const ControlledPopover: React.FC<
     children,
     isOpen,
     toggle,
-    type = PopoverType.Click,
+    type = PopoverType.Focus,
     mode = 'light', // TODO_MS: Default it to looking at what the theme is instead
     // onHoverEnterDelay = 250,
     // onHoverExitDelay = 250,
@@ -165,6 +166,14 @@ export const ControlledPopover: React.FC<
     []
   );
 
+  const { focusWithinProps } = useFocusWithin({
+    onFocusWithin: () => {
+      console.log('INNER');
+      toggle?.(true);
+    },
+    onBlurWithin: () => toggle?.(false),
+  });
+
   // If the content of the popover has changed, then we trigger an update to Popper, which repositions it.
   // Classic use-case: We're showing 5 elements in a popover, but then we're only showing 3. Without this
   // update, the popover will still be spaced to accommodate the now-missing 2 elements.
@@ -173,17 +182,20 @@ export const ControlledPopover: React.FC<
   });
 
   const handleOutsideEvent = useCallback(
-    ({ target }: Event) => {
-      if (popoverRef.current && !popoverRef.current.contains(target as Node))
-        toggle?.();
-    },
-    [toggle]
+    () => null,
+    []
+    // ({ target }: Event) =>
+    //  {
+    //   if (popoverRef.current && !popoverRef.current.contains(target as Node))
+    //     toggle?.();
+    // },
+    // [toggle]
   );
 
   // Only allow opened, type:click popovers to have a listener.
   // And return the removal function for easy management of cleanup.
   const setOutsideClickListener = useCallback(() => {
-    if (type !== PopoverType.Click || !isOpen) return;
+    if (type !== PopoverType.Focus || !isOpen) return;
 
     const baseElement = getBaseElement();
 
@@ -199,15 +211,6 @@ export const ControlledPopover: React.FC<
     return setOutsideClickListener();
   }, [setOutsideClickListener]);
 
-  /**
-   * To get keyboard open/close (aka hit enter to trigger onClick) for free, the target must a button or an anchor.
-   * There's currently no way to apply this restriction with TypeScript, so we do it runtime and revisit in CW-3490.
-   * Whitelisting would require us to enumerate all valid custom components, so instead we denylist common offenders.
-   */
-  if (type === PopoverType.Click && !isValidClickTarget(children)) {
-    throw new Error(getPopoverErrorText(children?.type.toString() ?? null));
-  }
-
   // For most of our popovers click actions are sufficient, so we both provide an onClick & allow them to be tabbed to.
   // const  getClickActions = (): TargetActionProps => ({
   //     tabIndex: this.props.tabIndex,
@@ -215,19 +218,15 @@ export const ControlledPopover: React.FC<
   //   });
 
   // TODO_MS: this is only onClick rn
-  const target = children
-    ? cloneElement(children, {
-        onClick: toggle,
-        tabIndex: focusable ? 0 : undefined,
-        style: {
-          cursor: 'pointer',
-        },
-      })
-    : null;
-
-  //   const targetWrapperClass = useFlex
-  //     ? style.targetWrapperFlex
-  //     : style.targetWrapper;
+  const target = children;
+  // ? cloneElement(children, {
+  //     // onClick: toggle,
+  //     tabIndex: focusable ? 0 : undefined,
+  //     style: {
+  //       cursor: 'pointer',
+  //     },
+  //   })
+  // : null;
 
   const renderContentFromPopperAndTransitionChildrenProps = (
     ref: Ref<HTMLDivElement>,
@@ -237,31 +236,15 @@ export const ControlledPopover: React.FC<
     const {
       render: renderProp,
       component: renderComponent,
-      //   isChromeless,
-      //   showOverflowY,
       width,
       height,
       maxWidth,
       maxHeight,
-      //   toggle,
       //   usePortals,
-      //   transitionStyles,
     } = props;
 
     const elementToClone = renderComponent || renderProp?.();
     // const childComponent = elementToClone; // && cloneElement(elementToClone);
-
-    // const popoverHolderClassName = combineClassNames({
-    //   [style.popoverChrome]: !isChromeless,
-    //   [style.showOverflowY]: showOverflowY,
-    // });
-
-    // const transitionStyle = transitionStyles[status];
-    // const baseContainerClassName = combineClassNames({
-    //   [style.baseContainer]: true,
-    //   [transitionStyle]: !!transitionStyle,
-    //   [style.isRenderedWithPortal]: usePortals,
-    // });
 
     return (
       <div
@@ -355,7 +338,7 @@ export const ControlledPopover: React.FC<
   );
 
   return (
-    <span ref={popoverRef}>
+    <span ref={popoverRef} {...focusWithinProps}>
       <Manager>
         <Reference>{({ ref }) => <span ref={ref}>{target}</span>}</Reference>
         {/* {usePortals && glassContainerRef
@@ -396,17 +379,17 @@ const getOffset = (placement: Placement): [number, number] => {
   ];
 };
 
-const onClickTargetDomElementDenylist = ['div', 'span'];
-const isValidClickTarget = (children: ReactElement<unknown>): boolean =>
-  !!children &&
-  // Allowing non-string child types whitelists all custom components:
-  (typeof children.type !== 'string' ||
-    onClickTargetDomElementDenylist.indexOf(children.type) === -1);
+// const onClickTargetDomElementDenylist = ['div', 'span'];
+// const isValidClickTarget = (children: ReactElement<unknown>): boolean =>
+//   !!children &&
+//   // Allowing non-string child types whitelists all custom components:
+//   (typeof children.type !== 'string' ||
+//     onClickTargetDomElementDenylist.indexOf(children.type) === -1);
 
-const getPopoverErrorText = (elementType: string) =>
-  `Popover targets for click-type popovers must be button or anchor for keyboard navigation to work, but is instead: ${
-    elementType || 'a falsy value'
-  }`;
+// const getPopoverErrorText = (elementType: string) =>
+//   `Popover targets for click-type popovers must be button or anchor for keyboard navigation to work, but is instead: ${
+//     elementType || 'a falsy value'
+//   }`;
 
 const beakHeight = 16;
 const beakOffset = 24;
@@ -456,6 +439,10 @@ const Beak = styled.div<Required<BeakProps>>`
     })}
   }
 
+  // TODO: These offsets are based on the prop, NOT the calculated placement from Popper
+  // Thus, when the popover gets near the edge of the screen, if it prepositions, the beak is misplaced.
+  // The documentation on this a bit spotty, but there should be a way to get this information.
+  // Might need to render the Beak inside the popover content, and then portal it up outside of it for css positions
   // Position the beak
   ${({ position }) => {
     if (placementIsVertical(position)) {

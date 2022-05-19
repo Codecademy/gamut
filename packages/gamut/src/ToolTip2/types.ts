@@ -53,6 +53,6 @@ export enum PopoverBoundary {
 }
 
 export enum PopoverType {
-  Click,
+  Focus,
   Hover,
 }

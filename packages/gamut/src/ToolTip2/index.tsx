@@ -1,3 +1,4 @@
+import { useFocusWithin } from '@react-aria/interactions';
 import React from 'react';
 
 import { PopoverProps } from './ControlledPopover';
@@ -8,23 +9,31 @@ export type ToolTip2Props = {
 } & Pick<PopoverProps, 'children'>;
 
 export const ToolTip2: React.FC<ToolTip2Props> = ({ children }) => {
+  const { focusWithinProps } = useFocusWithin({
+    onFocusWithin: () => {
+      console.log('OUTER');
+    },
+  });
+
   return (
-    <Popover
-      render={() => (
-        <div>
-          <div>123</div>
-          <div>12341234512341234</div>
-          <div>567</div>
-        </div>
-      )}
-      width="auto"
-      height="auto"
-      position={'bottom-end'}
-      useBeak
-      // mode="dark"
-    >
-      {children}
-    </Popover>
+    <div {...focusWithinProps}>
+      <Popover
+        render={() => (
+          <div>
+            <div>123</div>
+            <div>12341234512341234</div>
+            <div>567</div>
+          </div>
+        )}
+        width="auto"
+        height="auto"
+        position="bottom-end"
+        useBeak
+        // mode="dark"
+      >
+        {children}
+      </Popover>
+    </div>
   );
 };
 

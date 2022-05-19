@@ -30,6 +30,7 @@
     "@popperjs/core": "^2.11.5",
     "@reach/auto-id": "^0.16.0",
     "@reach/tabs": "^0.16.4",
+    "@react-aria/interactions": "^3.8.4",
     "@types/marked": "^1.1.0",
     "classnames": "^2.2.5",
     "framer-motion": "^4.1.17",
