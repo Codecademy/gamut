@@ -37,6 +37,7 @@ export interface PopoverProps extends SharedInnerProps {
   // Width and height strings are anything CSS-like (auto, 50vh)
   // We make width and height mandatory because we need them for positioning,
   // and to encourage a single-source of truth (i.e. avoid duplication in CSS)
+  // Maybe we don't actually need this?
   width: number | string;
   height: number | string;
 
@@ -46,9 +47,11 @@ export interface PopoverProps extends SharedInnerProps {
   type?: PopoverType;
   onHoverEnterDelay?: number;
   onHoverExitDelay?: number;
+
   children: ReactElement<unknown>; // JSX.Element | ReactNode;
   component?: React.ReactElement<unknown> | ReactNode;
   render?: () => ReactNode;
+
   focusable?: boolean;
 
   /** Whether the popover should use a beak element to point to the tooltip target */
@@ -58,8 +61,6 @@ export interface PopoverProps extends SharedInnerProps {
   // PopoverBoundary.ScrollParent fixes that. In most cases though, the default ViewPort is fine.
   boundary?: Boundary;
 
-  // Allows you to opt out of the border and dropshadow if needed
-  isChromeless?: boolean;
   /** Flipping is when we move the popover from one side to another to fit into the viewport.
    * Sometimes you don't want that, so we give you a way in. */
   isFlipDisabled?: boolean;
@@ -472,18 +473,6 @@ const getOffset = (placement: Placement): [number, number] => {
     beakHeight,
   ];
 };
-
-// const onClickTargetDomElementDenylist = ['div', 'span'];
-// const isValidClickTarget = (children: ReactElement<unknown>): boolean =>
-//   !!children &&
-//   // Allowing non-string child types whitelists all custom components:
-//   (typeof children.type !== 'string' ||
-//     onClickTargetDomElementDenylist.indexOf(children.type) === -1);
-
-// const getPopoverErrorText = (elementType: string) =>
-//   `Popover targets for click-type popovers must be button or anchor for keyboard navigation to work, but is instead: ${
-//     elementType || 'a falsy value'
-//   }`;
 
 const beakHeight = 16;
 const beakOffset = 24;
