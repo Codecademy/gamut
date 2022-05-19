@@ -124,7 +124,7 @@ export const CurriculumCard: React.FC<CurriculumCardProps> = ({
       display="flex"
       flexDirection={{
         _: 'column',
-        md: horizontalOrientation ? 'row' : 'column',
+        xs: horizontalOrientation ? 'row' : 'column',
       }}
       minHeight={minimumHeight}
       minWidth={minWidth}
@@ -132,7 +132,10 @@ export const CurriculumCard: React.FC<CurriculumCardProps> = ({
       shadow="medium"
       position="relative"
     >
-      <Box pr={{ _: 0, md: horizontalOrientation ? 40 : 0 }}>
+      <Box
+        maxWidth={horizontalOrientation ? 418 : 'none'}
+        pr={{ _: 0, xs: horizontalOrientation ? 40 : 0 }}
+      >
         <Text
           display="flex"
           fontSize={14}
@@ -167,11 +170,12 @@ export const CurriculumCard: React.FC<CurriculumCardProps> = ({
       </Box>
       {isFullSize && image && (
         <FlexBox
-          m="auto"
-          center
+          my="auto"
+          ml="auto"
+          mr={horizontalOrientation ? 0 : 'auto'}
           pt={16}
           pb={isCareerPathVariant ? 32 : 0}
-          pr={{ _: 0, md: horizontalOrientation ? 24 : 0 }}
+          pr={{ _: 0, xs: horizontalOrientation ? 24 : 0 }}
         >
           <Image
             isSmall={isCareerPathVariant}
