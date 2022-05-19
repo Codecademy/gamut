@@ -19,8 +19,9 @@ export const ToolTip2: React.FC<ToolTip2Props> = ({ children }) => {
       )}
       width="auto"
       height="auto"
-      position={'right-end'}
+      position={'bottom-end'}
       useBeak
+      // mode="dark"
     >
       {children}
     </Popover>

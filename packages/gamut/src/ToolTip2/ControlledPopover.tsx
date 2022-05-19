@@ -1,6 +1,5 @@
-import { variant } from '@codecademy/gamut-styles';
+import { ColorModes, Colors, theme, variant } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
-import { ModifierArguments, State } from '@popperjs/core';
 import { isEqual } from 'lodash';
 import { Boundary, Offset, Placement } from 'popper.js';
 import React, {
@@ -19,7 +18,7 @@ import { isOnServer } from './isOnServer';
 import { PopoverPosition, PopoverType } from './types';
 import { usePreviousProps } from './usePreviousProps';
 
-export interface PopoverProps {
+export interface PopoverProps extends SharedInnerProps {
   // Width and height strings are anything CSS-like (auto, 50vh)
   // We make width and height mandatory because we need them for positioning,
   // and to encourage a single-source of truth (i.e. avoid duplication in CSS)
@@ -36,8 +35,6 @@ export interface PopoverProps {
   component?: React.ReactElement<unknown> | ReactNode;
   render?: () => ReactNode;
   focusable?: boolean;
-  /** Position for brevity, but this is preferred position, as it'll reposition if it doesn't fit. */
-  position?: Placement;
 
   /** Whether the popover should use a beak element to point to the tooltip target */
   useBeak?: boolean;
@@ -79,6 +76,14 @@ export interface PopoverProps {
   usePortals?: boolean;
 }
 
+interface SharedInnerProps {
+  /** Position for brevity, but this is preferred position, as it'll reposition if it doesn't fit. */
+  position?: Placement;
+
+  /** ColorMode override for the popover */
+  mode?: ColorModes;
+}
+
 export interface ControlledPopoverOnlyProps {
   // This null type was added to expressly communicate that this component may accept null. If so, you'd
   // better know what you're doing and better not need to get any info whatsoever on whether you should hide/show
@@ -116,6 +121,7 @@ export const ControlledPopover: React.FC<
     isOpen,
     toggle,
     type = PopoverType.Click,
+    mode = 'light', // TODO_MS: Default it to looking at what the theme is instead
     // onHoverEnterDelay = 250,
     // onHoverExitDelay = 250,
     focusable,
@@ -270,7 +276,7 @@ export const ControlledPopover: React.FC<
           width: '100%',
         }}
       >
-        <InnerDiv
+        <div
           ref={ref} // For popperJS to store
           style={{
             ...popperStyles,
@@ -281,45 +287,23 @@ export const ControlledPopover: React.FC<
           }}
         >
           {/* TODO_MS: Escape hotkey to close? Maybe for free if we use CSS? */}
-          <div role="tooltip" style={{ background: 'orange', padding: 16 }}>
+          <div
+            style={{
+              ...popoverColors[mode],
+              padding: 16,
+              borderWidth: '1px',
+              borderStyle: 'solid',
+              borderRadius: '3px',
+            }}
+          >
             {elementToClone}
-            {useBeak && <Beak placement={placement} />}
+            {useBeak && <Beak position={placement} mode={mode} />}
           </div>
-        </InnerDiv>
+        </div>
       </div>
     );
   };
 
-  const getOffset = (placement: Placement): [number, number] => {
-    // TODO: Maybe we want to allow callers to pass other sorts of offsets via props?
-    // TODO_Definitely: Add the "default" offsets so we're not right up on the target
-
-    if (placementIsVertical(placement)) {
-      return [
-        placementIsStart(position)
-          ? -beakOffset
-          : placementIsEnd(position)
-          ? beakOffset
-          : 0,
-        placementIsTop(position)
-          ? beakHeight
-          : placementIsBottom(position)
-          ? beakHeight - beakHeight / 2
-          : 0,
-      ];
-    }
-
-    return [
-      placementIsStart(position)
-        ? -beakOffset
-        : placementIsEnd(position)
-        ? beakOffset - beakHeight / 2
-        : 0,
-      beakHeight,
-    ];
-
-    return [0, 0];
-  };
   const popperContent = (
     <Popper
       placement={position}
@@ -371,22 +355,9 @@ export const ControlledPopover: React.FC<
   );
 
   return (
-    <span
-      ref={popoverRef}
-      //   {...wrapperActionProps}
-      //   className={targetWrapperClass}
-      //   style={targetStyles}
-    >
+    <span ref={popoverRef}>
       <Manager>
-        <Reference>
-          {({ ref }) => (
-            <span
-              ref={ref} // className={targetWrapperClass}
-            >
-              {target}
-            </span>
-          )}
-        </Reference>
+        <Reference>{({ ref }) => <span ref={ref}>{target}</span>}</Reference>
         {/* {usePortals && glassContainerRef
           ? createPortal(this.renderPopperContent(), glassContainerRef)
           : this.renderPopperContent()} */}
@@ -394,6 +365,35 @@ export const ControlledPopover: React.FC<
       </Manager>
     </span>
   );
+};
+
+const getOffset = (placement: Placement): [number, number] => {
+  // TODO: Maybe we want to allow callers to pass other sorts of offsets via props?
+  // TODO_Definitely: Add the "default" offsets so we're not right up on the target
+
+  if (placementIsVertical(placement)) {
+    return [
+      placementIsStart(placement)
+        ? -beakOffset
+        : placementIsEnd(placement)
+        ? beakOffset
+        : 0,
+      placementIsTop(placement)
+        ? beakHeight
+        : placementIsBottom(placement)
+        ? beakHeight - beakHeight / 2
+        : 0,
+    ];
+  }
+
+  return [
+    placementIsStart(placement)
+      ? -beakOffset
+      : placementIsEnd(placement)
+      ? beakOffset - beakHeight / 2
+      : 0,
+    beakHeight,
+  ];
 };
 
 const onClickTargetDomElementDenylist = ['div', 'span'];
@@ -412,32 +412,29 @@ const beakHeight = 16;
 const beakOffset = 24;
 const borderRadius = 4;
 
-const InnerDiv = styled.div`
-  /* &::after {
-    content: '';
-    display: block;
-    height: ${beakHeight};
-    position: absolute;
-    transform: rotate(45deg);
-    width: ${beakHeight};
-  }
+const popoverColors = {
+  light: {
+    backgroundColor: theme.colors.white,
+    borderColor: theme.colors.black as Colors,
+  },
+  dark: {
+    backgroundColor: theme.colors.black,
+    borderColor: theme.colors.white as Colors,
+  },
+};
 
-  &::after {
-    border-style: solid;
-
-    ${variant({
-    prop: 'mode',
-    variants: {
-      dark: { backgroundColor: 'black', borderColor: 'white' },
-      light: { backgroundColor: 'white', borderColor: 'black' },
-    },
-  })}
-  } */
+const getToolTipVisibilityCSS = (visibility: boolean) =>
+  visibility
+    ? `
+  opacity: 1;
+  visibility: visible;
+`
+    : `
+  opacity: 0;
+  visibility: hidden;
 `;
 
-interface BeakProps {
-  placement: Placement;
-}
+interface BeakProps extends SharedInnerProps {}
 
 const Beak = styled.div<Required<BeakProps>>`
   &,
@@ -445,56 +442,26 @@ const Beak = styled.div<Required<BeakProps>>`
     position: absolute;
     width: ${beakHeight}px;
     height: ${beakHeight}px;
-    background: green;
+    background: transparent;
   }
-
-  visibility: hidden;
 
   &::before {
-    visibility: visible;
     content: '';
     transform: rotate(45deg);
-    /* border-radius: ${borderRadius}px; */
+    border-style: solid;
+
+    ${variant({
+      prop: 'mode',
+      variants: popoverColors,
+    })}
   }
 
-  ${({ placement }) => {
-    if (placementIsTop(placement)) {
-      return `
-        bottom: calc(${beakHeight}px / -2);
-
-        &::before {
-          border-bottom-right-radius: ${borderRadius}px;
-        }
-      `;
-    }
-
-    if (placement.includes('bottom')) {
-      return `
-        top: calc(${beakHeight}px / -2);
-
-        &::before {
-          border-top-left-radius: ${borderRadius}px;
-        }
-      `;
-    }
-
-    if (placement.includes('left')) {
-      return { right: `${beakHeight / -2}px` };
-    }
-
-    if (placement.includes('right')) {
-      return { left: `${beakHeight / -2}px` };
-    }
-
-    return {};
-  }}
-
-  // Also center
-  ${({ placement }) => {
-    if (placementIsVertical(placement)) {
-      return placementIsStart(placement)
+  // Position the beak
+  ${({ position }) => {
+    if (placementIsVertical(position)) {
+      return placementIsStart(position)
         ? { left: `${beakOffset}px` }
-        : placementIsEnd(placement)
+        : placementIsEnd(position)
         ? { right: `${beakOffset}px` }
         : {
             // Center
@@ -502,14 +469,48 @@ const Beak = styled.div<Required<BeakProps>>`
           };
     }
 
-    return placementIsStart(placement)
+    return placementIsStart(position)
       ? { top: `${beakOffset - beakHeight / 4}px` }
-      : placementIsEnd(placement)
+      : placementIsEnd(position)
       ? { bottom: `${beakOffset - beakHeight / 4}px` }
       : {
           // Center
           top: `calc(50% - ${beakHeight / 2}px)`,
         };
+  }}
+
+  // Position the beak relative to the edge of the popover
+  ${({ position }) => {
+    if (placementIsTop(position)) {
+      return `
+        bottom: ${beakHeight / 2}px;
+
+        &::before {
+          border-width: 0 1px 1px 0;
+          border-bottom-right-radius: ${borderRadius}px;
+        }
+      `;
+    }
+
+    if (placementIsBottom(position)) {
+      return `
+        top: ${beakHeight / -2}px;
+
+        &::before {
+          border-width: 1px 0 0 1px;
+          border-top-left-radius: ${borderRadius}px;
+        }
+      `;
+    }
+
+    // TODO: Other radiuses on the correct corners
+    if (placementIsLeft(position)) {
+      return { right: `${beakHeight / -2}px` };
+    }
+
+    if (placementIsRight(position)) {
+      return { left: `${beakHeight / -2}px` };
+    }
   }}
 `;
 

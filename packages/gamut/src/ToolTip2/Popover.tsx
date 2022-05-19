@@ -17,6 +17,8 @@ export const Popover: React.FC<PopoverProps> = (props) => {
 
   const toggle = useCallback(() => setIsOpen((prevIsOpen) => !prevIsOpen), []);
 
+  const [] = useFocus;
+
   return (
     <ControlledPopover isOpen={isOpen} toggle={toggle} {...props}>
       {props.children}
