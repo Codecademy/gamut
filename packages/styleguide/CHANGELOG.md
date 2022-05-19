@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [57.5.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@57.4.1...@codecademy/styleguide@57.5.0) (2022-05-19)
+
+
+### Features
+
+* **CurriculumCard:** added horizontal orientation ([3587be1](https://github.com/Codecademy/gamut/commit/3587be15ab09297474d4872e8c95c225a15003d5))
+
+
+
 ### [57.4.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@57.4.0...@codecademy/styleguide@57.4.1) (2022-05-17)
 
 **Note:** Version bump only for package @codecademy/styleguide
