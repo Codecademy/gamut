@@ -16,6 +16,10 @@ export const enterpriseTheme = createTheme(coreTheme)
         _: 'enterpriseNavy-400',
         hover: 'enterpriseNavy-100',
       },
+      interface: {
+        _: 'hotPink-100',
+        hover: 'hotPink-400',
+      },
       feedback: {
         error: 'enterpriseRed-0',
         success: 'enterpriseGreen-0',
