@@ -15,7 +15,7 @@ const variants = variant({
       width: 160,
     },
     small: {
-      width: 142,
+      width: 111,
     },
   },
 });

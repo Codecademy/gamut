@@ -8,6 +8,8 @@ updates:
     open-pull-requests-limit: 10
     labels:
       - dependencies
+    reviewers:
+      - '@Codecademy/dependencies'
     ignore:
       - dependency-name: marked
         versions:
