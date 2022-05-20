@@ -168,6 +168,6 @@ const trueEnterpriseColors = {
 } as const;
 
 export const enterprisePalette = {
-  ...flattenScale(platformSwatches),
+  ...flattenScale(enterpriseSwatches),
   ...trueEnterpriseColors,
 } as const;
