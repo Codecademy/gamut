@@ -22,7 +22,20 @@ export const enterpriseTheme = createTheme(coreTheme)
         warning: 'enterpriseYellow-0',
       },
     },
-    dark: {},
+    dark: {
+      background: {
+        _: 'enterpriseNavy-400',
+        current: 'navy-800',
+        primary: 'navy-900',
+        selected: 'navy-700',
+        disabled: 'navy-500',
+        hover: 'navy-600',
+      },
+      interface: {
+        _: 'hotPink-100',
+        hover: 'hotPink-400',
+      },
+    },
   })
   .build();
 
