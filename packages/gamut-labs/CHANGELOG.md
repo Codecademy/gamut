@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [31.13.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@31.13.0...@codecademy/gamut-labs@31.13.1) (2022-05-20)
+
+
+### Bug Fixes
+
+* HorizontalScrollMenu - Add tabIndex to scrollable element ([#2358](https://github.com/Codecademy/gamut/issues/2358)) ([2a7ad33](https://github.com/Codecademy/gamut/commit/2a7ad333b01bcd93e9698caf0d4ffc6d15bf083f))
+
+
+
 ## [31.13.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@31.12.2...@codecademy/gamut-labs@31.13.0) (2022-05-19)
 
 
