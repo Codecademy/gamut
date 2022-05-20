@@ -6,16 +6,16 @@ export const badgeVariants = variant({
   prop: 'status',
   variants: {
     static: {
-      textColor: 'green',
+      textColor: 'feedback-success',
     },
     current: {
-      textColor: 'green',
+      textColor: 'feedback-success',
     },
     updating: {
-      textColor: 'blue',
+      textColor: 'feedback-warning',
     },
     deprecated: {
-      textColor: 'orange',
+      textColor: 'feedback-error',
     },
   },
 });

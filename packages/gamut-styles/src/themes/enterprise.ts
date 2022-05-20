@@ -7,9 +7,19 @@ export const enterpriseTheme = createTheme(coreTheme)
   .addColors(enterprisePalette)
   .addColorModes('light', {
     light: {
+      text: 'enterpriseNavy-400',
       primary: {
-        _: 'hotPink-400',
-        hover: 'hotPink-100',
+        _: 'hotPink-100',
+        hover: 'hotPink-400',
+      },
+      secondary: {
+        _: 'enterpriseNavy-400',
+        hover: 'enterpriseNavy-100',
+      },
+      feedback: {
+        error: 'enterpriseRed-0',
+        success: 'enterpriseGreen-0',
+        warning: 'enterpriseYellow-0',
       },
     },
     dark: {},
