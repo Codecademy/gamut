@@ -1,0 +1,19 @@
+import { SkillsoftLogo } from '@codecademy/gamut-labs/src';
+import title from '@codecademy/macros/lib/title.macro';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+
+<Meta
+  args={{ height: 40 }}
+  title={title}
+  component={SkillsoftLogo}
+  parameters={{
+    subtitle: `Our 'Codecademy from Skillsoft' logo`,
+    source: 'gamut-labs',
+  }}
+/>
+
+<Canvas withSource="open">
+  <Story name="LogoFromSkillsoft">
+    {(args) => <SkillsoftLogo color="beige" {...args} />}
+  </Story>
+</Canvas>
