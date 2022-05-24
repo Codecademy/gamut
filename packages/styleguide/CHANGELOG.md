@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [57.6.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@57.5.1...@codecademy/styleguide@57.6.0) (2022-05-23)
+
+
+### Features
+
+* **GlobalHeader:** Rename Chat to Discord ([46d52e4](https://github.com/Codecademy/gamut/commit/46d52e47e473c8c468d116bdcb4d731ca2235e4f))
+
+
+
 ### [57.5.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@57.5.0...@codecademy/styleguide@57.5.1) (2022-05-20)
 
 **Note:** Version bump only for package @codecademy/styleguide
