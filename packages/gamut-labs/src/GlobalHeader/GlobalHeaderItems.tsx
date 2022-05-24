@@ -106,7 +106,7 @@ export const communityDropdown: AppHeaderSimpleDropdownItem = {
       href: 'https://discord.com/invite/codecademy',
       newTab: true,
       trackingTarget: 'topnav_chat',
-      text: 'Chat',
+      text: 'Discord',
       type: 'link',
     },
     {
