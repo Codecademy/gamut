@@ -35,6 +35,7 @@ export const fontSize = {
 
 export const lineHeight = {
   base: 1.5,
+  spacedTitle: 1.2,
   title: 1.1,
 } as const;
 
