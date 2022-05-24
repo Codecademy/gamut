@@ -60,6 +60,15 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
         </FooterLinkItem>
         <FooterLinkItem>
           <Anchor
+            href="https://discord.com/invite/codecademy"
+            onClick={(event) => onClick({ event, target: 'discord' })}
+            variant="interface"
+          >
+            Discord
+          </Anchor>
+        </FooterLinkItem>
+        <FooterLinkItem>
+          <Anchor
             href="https://community.codecademy.com/chapters"
             onClick={(event) => onClick({ event, target: 'chapters' })}
             variant="interface"
@@ -148,7 +157,7 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
 
   const enterprisePlans = (
     <Box>
-      <FooterHeading mt={hidePricing ? { sm: 16 } : {}}>
+      <FooterHeading mt={hidePricing ? { sm: 16 } : { _: 24, sm: 0 }}>
         Enterprise Plans
       </FooterHeading>
       <FooterLinkItems>
@@ -196,7 +205,7 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
       gridColumn="1 / 3"
       gridColumnEnd={{ sm: '1' }}
       gridRow={{ sm: '2 / 4' }}
-      pt={{ sm: 32 }}
+      pt={hidePricing ? { sm: 16 } : {}}
     >
       <FooterHeading mb={{ _: 8, sm: 16, lg: 0 }}>Mobile</FooterHeading>
       <FooterLinkItems
@@ -282,6 +291,7 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
         _: 'repeat(2, minmax(0, 1fr))',
         sm: 'repeat(3, minmax(0, 1fr))',
       }}
+      rowGap={16}
     >
       {company}
       {resources}
