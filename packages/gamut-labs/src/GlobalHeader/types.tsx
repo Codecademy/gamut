@@ -21,7 +21,6 @@ type BaseHeader = {
   className?: string;
   hidePricing?: boolean;
   search: AppHeaderSearch;
-  newSkuSubscription?: boolean;
 };
 
 export type User = {
@@ -40,6 +39,7 @@ export type User = {
   hideCareerPaths?: boolean;
   // TODO: DISC-547 - remove after feature flag test for catalog is complete
   useNewCatalogDropdown?: boolean;
+  newSkuSubscription?: boolean;
 };
 
 type LoggedInHeader = BaseHeader & {

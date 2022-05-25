@@ -57,11 +57,7 @@ const getAppHeaderItems = (
         props.renderFavorites?.desktop
       );
     case 'pro':
-      return proHeaderItems(
-        props.user,
-        props.renderFavorites?.desktop,
-        props.newSkuSubscription
-      );
+      return proHeaderItems(props.user, props.renderFavorites?.desktop);
     case 'loading':
       return loadingHeaderItems;
   }
@@ -85,7 +81,7 @@ const getMobileAppHeaderItems = (
     case 'free':
       return freeMobileHeaderItems(props.user, props.hidePricing);
     case 'pro':
-      return proMobileHeaderItems(props.user, props.newSkuSubscription);
+      return proMobileHeaderItems(props.user);
     case 'loading':
       return loadingMobileHeaderItems;
   }
