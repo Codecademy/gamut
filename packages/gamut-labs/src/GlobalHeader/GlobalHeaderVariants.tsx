@@ -214,10 +214,11 @@ export const freeMobileHeaderItems = (
 
 export const proHeaderItems = (
   user: User,
-  renderFavorites?: () => ReactNode
+  renderFavorites?: () => ReactNode,
+  newSkuSubscription?: boolean
 ): FormattedAppHeaderItems => {
   const leftItems: AppHeaderItem[] = [
-    proLogo,
+    newSkuSubscription ? logo : proLogo,
     myHome,
     catalogComponent(user),
     resourcesDropdown(user.useNewCatalogDropdown),
@@ -241,9 +242,10 @@ export const proHeaderItems = (
 };
 
 export const proMobileHeaderItems = (
-  user: User
+  user: User,
+  newSkuSubscription?: boolean
 ): FormattedMobileAppHeaderItems => {
-  const leftItems: AppHeaderItem[] = [proLogo];
+  const leftItems: AppHeaderItem[] = [newSkuSubscription ? logo : proLogo];
 
   const mainMenuItems: AppHeaderItem[] = [
     myHome,

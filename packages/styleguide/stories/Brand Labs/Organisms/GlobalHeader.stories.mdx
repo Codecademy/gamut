@@ -436,6 +436,53 @@ The Try Pro For Free button can take in an optional custom path.
   </Story>
 </Canvas>
 
+#### Pro User - Pro Lite Subscription
+
+<Canvas>
+  <Story name="Pro User - Pro Lite Subscription">
+    {() => (
+      <GlobalHeader
+        action={() => {}}
+        notifications={{
+          baseUrl: '',
+          notifications: [
+            {
+              campaign: 'existence_is_pain',
+              date: '5 hours',
+              id: '1',
+              link: 'https://codecademy.com',
+              text: "Look at me! I'm Mr. Notification!",
+              unread: true,
+            },
+          ],
+          onEnable: () => {},
+          actions: {
+            clear: () => {},
+            click: () => {},
+            dismiss: () => {},
+            read: () => {},
+            track: () => {},
+          },
+        }}
+        search={{
+          onEnable: () => {},
+          onSearch: () => {},
+          onTrackingClick: () => {},
+        }}
+        type="pro"
+        newSkuSubscription
+        user={{
+          avatar:
+            'https://www.gravatar.com/avatar/1c959a9a1e2f9f9f1ac06b05cccc1d60?s=150&d=retro',
+          displayName: 'Codey',
+          isAdmin: true,
+          isCustomerSupport: true,
+        }}
+      />
+    )}
+  </Story>
+</Canvas>
+
 #### Business Account Manager - Pro
 
 <Canvas>

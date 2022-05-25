@@ -21,6 +21,7 @@ type BaseHeader = {
   className?: string;
   hidePricing?: boolean;
   search: AppHeaderSearch;
+  newSkuSubscription?: boolean;
 };
 
 export type User = {
