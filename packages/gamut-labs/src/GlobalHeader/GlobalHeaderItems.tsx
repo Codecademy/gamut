@@ -176,7 +176,7 @@ export const pricingDropdown: AppHeaderSimpleDropdownItem = {
   type: 'dropdown',
 };
 
-export const forBusiness: AppHeaderLinkItem = {
+export const businessSolutions: AppHeaderLinkItem = {
   icon: BriefcaseIcon,
   id: 'business-solutions',
   trackingTarget: 'topnav_business',
