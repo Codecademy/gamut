@@ -165,10 +165,10 @@ export const pricingDropdown: AppHeaderSimpleDropdownItem = {
       type: 'link',
     },
     {
-      id: 'for-business',
+      id: 'for-teams',
       href: '/business#section-pricing-table',
       trackingTarget: 'topnav_pricing_business',
-      text: 'For Business',
+      text: 'For Teams',
       type: 'link',
     },
   ],
