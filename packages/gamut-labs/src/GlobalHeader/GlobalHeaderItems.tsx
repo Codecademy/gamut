@@ -180,7 +180,7 @@ export const forBusiness: AppHeaderLinkItem = {
   icon: BriefcaseIcon,
   id: 'for-business',
   trackingTarget: 'topnav_business',
-  text: 'For Business',
+  text: 'Business Solutions',
   href: '/business',
   type: 'link',
 };
