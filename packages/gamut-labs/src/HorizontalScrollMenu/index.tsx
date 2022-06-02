@@ -65,6 +65,7 @@ export const HorizontalScrollMenu: React.FC<HorizontalScrollMenuProps> = ({
         className={className}
         pr={16}
         overflowX="scroll"
+        tabIndex={0}
       >
         {Children.map(children, (child, index) => (
           <ScrollItemWrapper

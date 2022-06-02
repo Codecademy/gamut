@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [13.2.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@13.1.1...@codecademy/gamut-styles@13.2.0) (2022-05-24)
+
+
+### Features
+
+* **Typography:** new lineHeight system props ([0f3418e](https://github.com/Codecademy/gamut/commit/0f3418e2636124bf5ac76e52d9766e2d25e8477e))
+
+
+
 ### [13.1.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@13.1.0...@codecademy/gamut-styles@13.1.1) (2022-05-17)
 
 
