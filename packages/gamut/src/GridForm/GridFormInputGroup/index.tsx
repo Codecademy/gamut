@@ -50,7 +50,6 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
 }) => {
   const disabled = isDisabled || field.disabled;
   const errorMessage = error || field.customError;
-
   const defaultProps = { disabled, ...rest };
   const isTightCheckbox =
     field.type === 'checkbox' && field?.spacing === 'tight';
@@ -100,7 +99,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
       case 'textarea':
         return (
           <GridFormTextArea
-            error={errorMessage}
+            error={!!errorMessage}
             field={field}
             {...defaultProps}
           />
@@ -120,7 +119,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
       default:
         return (
           <GridFormTextInput
-            error={errorMessage}
+            error={!!errorMessage}
             field={field}
             {...defaultProps}
           />
