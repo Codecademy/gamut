@@ -95,9 +95,6 @@ export function ConnectedForm<Values extends FormValues<Values>>({
   watchedFields,
   ...rest
 }: ConnectedFormProps<Values>) {
-  // the below is fixed in react-hook-form v7: GM-466
-  // eslint-disable-next-line @typescript-eslint/unbound-method
-
   const {
     clearErrors,
     handleSubmit,
