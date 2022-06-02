@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo } from 'react';
 import {
+  FieldValues,
   FormProvider,
   FormProviderProps,
   Mode,
@@ -97,10 +98,23 @@ export function ConnectedForm<Values extends FormValues<Values>>({
   // the below is fixed in react-hook-form v7: GM-466
   // eslint-disable-next-line @typescript-eslint/unbound-method
 
-  const { handleSubmit, formState, reset, watch, ...methods } = useForm({
+  const {
+    clearErrors,
+    handleSubmit,
+    formState,
+    reset,
+    trigger,
+    watch,
+    ...methods
+  } = useForm<FieldValues>({
     defaultValues,
     mode: validation,
   });
+
+  const onError = async () => {
+    clearErrors();
+    await trigger();
+  };
 
   const isSubmitSuccessful = submitSuccessStatus(
     wasSubmitSuccessful,
@@ -138,13 +152,15 @@ export function ConnectedForm<Values extends FormValues<Values>>({
   return (
     <PropsProvider value={contextValues}>
       <FormProvider
+        clearErrors={clearErrors}
         handleSubmit={handleSubmit}
         formState={formState}
         reset={reset}
+        trigger={trigger}
         watch={watch}
         {...methods}
       >
-        <Form onSubmit={handleSubmit(onSubmit)} {...rest}>
+        <Form onSubmit={handleSubmit(onSubmit, onError)} {...rest}>
           {children}
         </Form>
       </FormProvider>
