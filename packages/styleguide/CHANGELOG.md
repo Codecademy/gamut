@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [57.7.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@57.7.1...@codecademy/styleguide@57.7.2) (2022-06-06)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [57.7.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@57.7.0...@codecademy/styleguide@57.7.1) (2022-06-02)
+
+
+### Bug Fixes
+
+* **GlobalHeader:** rename user.newSkuSubscription => user.hasNewSkuSu… ([aec3e05](https://github.com/Codecademy/gamut/commit/aec3e05051db6cc0feeb8f9d0ab2485f902e2632))
+
+
+
+## [57.7.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@57.6.1...@codecademy/styleguide@57.7.0) (2022-06-01)
+
+
+### Features
+
+* **GlobalHeader:** add newSkuSubscription prop to show regular logo … ([5f2b03f](https://github.com/Codecademy/gamut/commit/5f2b03fa05c4dc96670f70ebbe18a7aab00f5f31))
+
+
+
 ### [57.6.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@57.6.0...@codecademy/styleguide@57.6.1) (2022-05-24)
 
 **Note:** Version bump only for package @codecademy/styleguide
