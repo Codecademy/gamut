@@ -2,10 +2,10 @@ import { setupRtl } from '@codecademy/gamut-tests';
 
 import { GlobalHeader, GlobalHeaderProps } from '..';
 import {
+  businessSolutions,
   catalogDropdown,
   communityDropdown,
   courseCatalog,
-  forBusiness,
   login,
   myHome,
   pricingDropdown,
@@ -188,9 +188,9 @@ describe('GlobalHeader', () => {
       expect(view.queryByText(pricingDropdown.text)).toBeFalsy();
     });
 
-    it('renders forEnterprise', () => {
+    it('renders business solutions', () => {
       const { view } = renderView(anonHeaderProps);
-      view.getAllByText(forBusiness.text);
+      view.getAllByText(businessSolutions.text);
     });
 
     it('renders login', () => {
@@ -339,9 +339,9 @@ describe('GlobalHeader', () => {
         expect(el.getAttribute('href')).not.toEqual(pricingLink.href);
       });
 
-      it('renders forEnterprise', () => {
+      it('renders business solutions', () => {
         const { view } = renderView(freeHeaderProps);
-        view.getByText(forBusiness.text);
+        view.getByText(businessSolutions.text);
       });
 
       it('renders profileDropdown', () => {

@@ -167,7 +167,7 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
             onClick={(event) => onClick({ event, target: 'business_landing' })}
             variant="interface"
           >
-            For Business
+            Business Solutions
           </Anchor>
         </FooterLinkItem>
       </FooterLinkItems>

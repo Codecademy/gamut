@@ -6,11 +6,11 @@ import {
   FormattedMobileAppHeaderItems,
 } from '../AppHeader/types';
 import {
+  businessSolutions,
   catalogDropdown,
   communityDropdown,
   courseCatalog,
   favorites,
-  forBusiness,
   freeProfile,
   login,
   logo,
@@ -48,7 +48,7 @@ const anonHeaderItems = (
     resourcesDropdown(user?.useNewCatalogDropdown),
     communityDropdown,
     ...(hidePricing ? [] : [pricingComponent(user)]),
-    forBusiness,
+    businessSolutions,
   ];
 
   const rightItems: AppHeaderItem[] = [];
@@ -86,7 +86,7 @@ const anonMobileHeaderItems = (
     resourcesDropdown(user?.useNewCatalogDropdown),
     communityDropdown,
     ...(hidePricing ? [] : [pricingComponent(user)]),
-    forBusiness,
+    businessSolutions,
     signUp,
     login,
   ];
@@ -166,7 +166,7 @@ export const freeHeaderItems = (
     resourcesDropdown(user.useNewCatalogDropdown),
     communityDropdown,
     ...(hidePricing ? [] : [pricingComponent(user)]),
-    forBusiness,
+    businessSolutions,
   ];
 
   const rightItems: AppHeaderItem[] = [];
@@ -198,7 +198,7 @@ export const freeMobileHeaderItems = (
     resourcesDropdown(user.useNewCatalogDropdown),
     communityDropdown,
     ...(hidePricing ? [] : [pricingComponent(user)]),
-    forBusiness,
+    businessSolutions,
     freeProfile(user, true),
     user.showProUpgrade
       ? upgradeToPro(user.proCheckoutUrl)
