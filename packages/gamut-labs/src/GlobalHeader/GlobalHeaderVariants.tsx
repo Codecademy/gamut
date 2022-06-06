@@ -6,11 +6,11 @@ import {
   FormattedMobileAppHeaderItems,
 } from '../AppHeader/types';
 import {
+  businessSolutions,
   catalogDropdown,
   communityDropdown,
   courseCatalog,
   favorites,
-  forBusiness,
   freeProfile,
   login,
   logo,
@@ -48,7 +48,7 @@ const anonHeaderItems = (
     resourcesDropdown(user?.useNewCatalogDropdown),
     communityDropdown,
     ...(hidePricing ? [] : [pricingComponent(user)]),
-    forBusiness,
+    businessSolutions,
   ];
 
   const rightItems: AppHeaderItem[] = [];
@@ -86,7 +86,7 @@ const anonMobileHeaderItems = (
     resourcesDropdown(user?.useNewCatalogDropdown),
     communityDropdown,
     ...(hidePricing ? [] : [pricingComponent(user)]),
-    forBusiness,
+    businessSolutions,
     signUp,
     login,
   ];
@@ -166,7 +166,7 @@ export const freeHeaderItems = (
     resourcesDropdown(user.useNewCatalogDropdown),
     communityDropdown,
     ...(hidePricing ? [] : [pricingComponent(user)]),
-    forBusiness,
+    businessSolutions,
   ];
 
   const rightItems: AppHeaderItem[] = [];
@@ -198,7 +198,7 @@ export const freeMobileHeaderItems = (
     resourcesDropdown(user.useNewCatalogDropdown),
     communityDropdown,
     ...(hidePricing ? [] : [pricingComponent(user)]),
-    forBusiness,
+    businessSolutions,
     freeProfile(user, true),
     user.showProUpgrade
       ? upgradeToPro(user.proCheckoutUrl)
@@ -217,7 +217,7 @@ export const proHeaderItems = (
   renderFavorites?: () => ReactNode
 ): FormattedAppHeaderItems => {
   const leftItems: AppHeaderItem[] = [
-    user.newSkuSubscription ? logo : proLogo,
+    user.hasNewSkuSubscription ? logo : proLogo,
     myHome,
     catalogComponent(user),
     resourcesDropdown(user.useNewCatalogDropdown),
@@ -243,7 +243,9 @@ export const proHeaderItems = (
 export const proMobileHeaderItems = (
   user: User
 ): FormattedMobileAppHeaderItems => {
-  const leftItems: AppHeaderItem[] = [user.newSkuSubscription ? logo : proLogo];
+  const leftItems: AppHeaderItem[] = [
+    user.hasNewSkuSubscription ? logo : proLogo,
+  ];
 
   const mainMenuItems: AppHeaderItem[] = [
     myHome,
