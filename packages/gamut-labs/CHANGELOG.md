@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [31.15.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@31.15.1...@codecademy/gamut-labs@31.15.2) (2022-06-06)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [31.15.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@31.15.0...@codecademy/gamut-labs@31.15.1) (2022-06-02)
+
+
+### Bug Fixes
+
+* **GlobalHeader:** rename user.newSkuSubscription => user.hasNewSkuSu… ([aec3e05](https://github.com/Codecademy/gamut/commit/aec3e05051db6cc0feeb8f9d0ab2485f902e2632))
+
+
+
 ## [31.15.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@31.14.1...@codecademy/gamut-labs@31.15.0) (2022-06-01)
 
 
