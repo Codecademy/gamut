@@ -1,6 +1,7 @@
 const path = require('path');
 
 module.exports = (packageName, overrides) => ({
+  testEnvironment: 'jest-environment-jsdom',
   clearMocks: true,
   verbose: true,
   setupFiles: ['<rootDir>/../../script/jest/base-setup.js'],
