@@ -1,7 +1,7 @@
 {
   "name": "@codecademy/styleguide",
   "description": "Styleguide & Component library for codecademy.com",
-  "version": "57.7.0",
+  "version": "57.7.2",
   "author": "Codecademy Engineering",
   "scripts": {
     "start": "yarn storybook",
@@ -19,7 +19,7 @@
     "@codecademy/gamut": "^47.3.3",
     "@codecademy/gamut-icons": "^7.3.2",
     "@codecademy/gamut-illustrations": "^0.27.2",
-    "@codecademy/gamut-labs": "^31.15.0",
+    "@codecademy/gamut-labs": "^31.15.2",
     "@codecademy/gamut-patterns": "^0.8.6",
     "@codecademy/gamut-styles": "^13.2.0",
     "@codecademy/macros": "^3.0.0",

@@ -140,7 +140,7 @@ export const pricingLink: AppHeaderLinkItem = {
   icon: AccountingCoinsIcon,
   id: 'pricing',
   href: '/pricing',
-  text: 'Pro Pricing',
+  text: 'Pricing',
   trackingTarget: 'topnav_pricing',
   type: 'link',
 };
@@ -148,7 +148,7 @@ export const pricingLink: AppHeaderLinkItem = {
 export const pricingDropdown: AppHeaderSimpleDropdownItem = {
   icon: AccountingCoinsIcon,
   id: 'pricing',
-  text: 'Pro Pricing',
+  text: 'Pricing',
   popover: [
     {
       id: 'pro-membership',
@@ -164,16 +164,23 @@ export const pricingDropdown: AppHeaderSimpleDropdownItem = {
       text: 'For Students',
       type: 'link',
     },
+    {
+      id: 'for-teams',
+      href: '/business#section-pricing-table',
+      trackingTarget: 'topnav_pricing_business',
+      text: 'For Teams',
+      type: 'link',
+    },
   ],
   trackingTarget: 'topnav_pricing',
   type: 'dropdown',
 };
 
-export const forBusiness: AppHeaderLinkItem = {
+export const businessSolutions: AppHeaderLinkItem = {
   icon: BriefcaseIcon,
-  id: 'for-business',
+  id: 'business-solutions',
   trackingTarget: 'topnav_business',
-  text: 'For Business',
+  text: 'Business Solutions',
   href: '/business',
   type: 'link',
 };
