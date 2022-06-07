@@ -2,18 +2,11 @@ import { setupRtl } from '@codecademy/gamut-tests';
 import { fireEvent, queries } from '@testing-library/dom';
 import { act, RenderResult, waitFor } from '@testing-library/react';
 import React from 'react';
+import * as rhf from 'react-hook-form';
 
-// import * as rhf from 'react-hook-form';
 import { createPromise } from '../../utils';
 import { ConnectedForm } from '..';
 import { PlainConnectedFields } from '../__fixtures__/helpers';
-
-// jest.mock('react-hook-form', () => {
-//   const module = jest.requireActual('react-hook-form');
-//   return {
-//     ...module,
-//   };
-// });
 
 const renderView = setupRtl(ConnectedForm, {
   defaultValues: {
@@ -68,6 +61,7 @@ const doBaseFormActions = (
 };
 
 const baseResults = {
+  checkbox: true,
   select: selectValue,
   input: textValue,
   radiogroup: radioValue,
@@ -88,7 +82,7 @@ const defaultValues = {
 };
 
 describe('ConnectedForm', () => {
-  // beforeEach(() => jest.clearAllMocks());
+  beforeEach(() => jest.clearAllMocks());
 
   it('submits the form when all inputs are filled out', async () => {
     const api = createPromise<{}>();
@@ -131,32 +125,32 @@ describe('ConnectedForm', () => {
     expect(view.getAllByRole('status').length).toBe(3);
   });
 
-  // it('calls clearError onError so error text is re-read by screen reader', async () => {
-  //   const mockHandleSubmit = jest.fn();
+  it('calls clearError onError so error text is re-read by screen reader', async () => {
+    const mockHandleSubmit = jest.fn();
 
-  //   // the return type of useForm is optionally undefined, so we have to do some seemingly unnecessary nullish coalescing here for type safety
-  //   const mockedUseForm =
-  //     jest.spyOn(rhf, 'useForm').getMockImplementation() ?? mockHandleSubmit;
+    // the return type of useForm is optionally undefined, so we have to do some seemingly unnecessary nullish coalescing here for type safety
+    const mockedUseForm =
+      jest.spyOn(rhf, 'useForm').getMockImplementation() ?? mockHandleSubmit;
 
-  //   jest.spyOn(rhf, 'useForm').mockImplementation(() => {
-  //     const returnMock = mockedUseForm();
-  //     return { ...returnMock, clearErrors: mockHandleSubmit };
-  //   });
+    jest.spyOn(rhf, 'useForm').mockImplementation(() => {
+      const returnMock = mockedUseForm();
+      return { ...returnMock, clearErrors: mockHandleSubmit };
+    });
 
-  //   const api = createPromise<{}>();
-  //   const onSubmit = async (values: {}) => api.resolve(values);
-  //   const { view } = renderView({
-  //     validationRules,
-  //     defaultValues,
-  //     onSubmit,
-  //   });
+    const api = createPromise<{}>();
+    const onSubmit = async (values: {}) => api.resolve(values);
+    const { view } = renderView({
+      validationRules,
+      defaultValues,
+      onSubmit,
+    });
 
-  //   await act(async () => {
-  //     fireEvent.submit(view.getByRole('button'));
-  //   });
+    await act(async () => {
+      fireEvent.submit(view.getByRole('button'));
+    });
 
-  //   expect(mockHandleSubmit).toHaveBeenCalled();
-  // });
+    expect(mockHandleSubmit).toHaveBeenCalled();
+  });
 
   it('sets aria-required to true for the appropriate inputs', () => {
     const api = createPromise<{}>();
