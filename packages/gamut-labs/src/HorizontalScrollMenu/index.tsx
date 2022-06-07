@@ -51,18 +51,22 @@ export const HorizontalScrollMenu: React.FC<HorizontalScrollMenuProps> = ({
   }, []);
 
   useEffect(() => {
-    loadPolyfills().then(() => {
-      const numberOfChildElements = Children.toArray(children).length;
+    loadPolyfills()
+      .then(() => {
+        const numberOfChildElements = Children.toArray(children).length;
 
-      if (elementsRef.current.length === numberOfChildElements) {
-        elementsRef.current.forEach((entry: HTMLElement) =>
-          intersectionObserver?.observe(entry)
-        );
-      }
-      return () => {
-        intersectionObserver?.disconnect();
-      };
-    });
+        if (elementsRef.current.length === numberOfChildElements) {
+          elementsRef.current.forEach((entry: HTMLElement) =>
+            intersectionObserver?.observe(entry)
+          );
+        }
+        return () => {
+          intersectionObserver?.disconnect();
+        };
+      })
+      .catch(() => {
+        return;
+      });
   }, [elementsRef, intersectionObserver, children]);
 
   return (
