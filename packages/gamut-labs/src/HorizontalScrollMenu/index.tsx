@@ -33,9 +33,8 @@ export const HorizontalScrollMenu: React.FC<HorizontalScrollMenuProps> = ({
     }
   };
 
-  const intersectionObserver = useMemo(async () => {
+  const intersectionObserver = useMemo(() => {
     if (typeof window === 'undefined') return null;
-    await loadPolyfills();
     return new IntersectionObserver(
       (entries: IntersectionObserverEntry[]) => {
         entries.forEach((entry) => {
@@ -52,16 +51,18 @@ export const HorizontalScrollMenu: React.FC<HorizontalScrollMenuProps> = ({
   }, []);
 
   useEffect(() => {
-    const numberOfChildElements = Children.toArray(children).length;
+    loadPolyfills().then(() => {
+      const numberOfChildElements = Children.toArray(children).length;
 
-    if (elementsRef.current.length === numberOfChildElements) {
-      elementsRef.current.forEach((entry: HTMLElement) =>
-        intersectionObserver?.observe(entry)
-      );
-    }
-    return () => {
-      intersectionObserver?.disconnect();
-    };
+      if (elementsRef.current.length === numberOfChildElements) {
+        elementsRef.current.forEach((entry: HTMLElement) =>
+          intersectionObserver?.observe(entry)
+        );
+      }
+      return () => {
+        intersectionObserver?.disconnect();
+      };
+    });
   }, [elementsRef, intersectionObserver, children]);
 
   return (
