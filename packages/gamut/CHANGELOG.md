@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [47.4.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@47.3.4...@codecademy/gamut@47.4.0) (2022-06-07)
+
+
+### Features
+
+* **GridForm:** re-read errors on submit ([ff0d003](https://github.com/Codecademy/gamut/commit/ff0d003b0a8aae501eb0d336f06886a965f0468e))
+
+
+
 ### [47.3.4](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@47.3.3...@codecademy/gamut@47.3.4) (2022-06-06)
 
 **Note:** Version bump only for package @codecademy/gamut
