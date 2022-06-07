@@ -32,6 +32,7 @@
     "classnames": "^2.2.5",
     "framer-motion": "^4.1.17",
     "freezeframe": "^5.0.2",
+    "intersection-observer": "^0.12.0",
     "lodash": "^4.17.5",
     "react-focus-on": "^3.5.1",
     "react-freezeframe": "^5.0.2",

@@ -27,8 +27,15 @@ export const HorizontalScrollMenu: React.FC<HorizontalScrollMenuProps> = ({
   const elementsRef = useRef<HTMLElement[]>([]);
   const parentContainerRef = useRef<HTMLDivElement | null>(null);
 
-  const intersectionObserver = useMemo(() => {
+  const loadPolyfills = async () => {
+    if (typeof window.IntersectionObserver === 'undefined') {
+      await import('intersection-observer');
+    }
+  };
+
+  const intersectionObserver = useMemo(async () => {
     if (typeof window === 'undefined') return null;
+    await loadPolyfills();
     return new IntersectionObserver(
       (entries: IntersectionObserverEntry[]) => {
         entries.forEach((entry) => {
