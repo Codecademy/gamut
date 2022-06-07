@@ -1,4 +1,11 @@
-import { useContext, useMemo } from 'react';
+import {
+  ChangeEventHandler,
+  useContext,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
 import {
   RegisterOptions,
   useFieldArray,
@@ -194,3 +201,114 @@ export const useSubmitState = ({ loading, disabled }: SubmitContextProps) => {
 
   return { isLoading, isDisabled };
 };
+
+interface GetInitialFormValueProps {
+  keyName: string;
+  setValue: (value: string) => void;
+  valueFormatter?: (value: string) => string;
+  watchUpdateKeyName?: string;
+}
+
+export const useGetInitialFormValue = ({
+  keyName,
+  setValue,
+  valueFormatter,
+  watchUpdateKeyName,
+}: GetInitialFormValueProps) => {
+  const initializedRef = useRef(false);
+
+  const { getValues, watch } = useFormState();
+
+  /**
+   * This ensures that the initialValue here gets updated
+   * whenever the form is saved or updated in some way.
+   * Without this, the "initial" value can persist across updates
+   * meaning that after saving, the value of a user's field can revert back
+   * to the value it had BEFORE you made updates and saved
+   * i.e. from the FIRST initial load.
+   */
+  const updated = watchUpdateKeyName ? watch(watchUpdateKeyName) : undefined;
+
+  const initialValue: string | null = useMemo(() => getValues(keyName), [
+    keyName,
+    getValues,
+    updated,
+  ]);
+
+  useEffect(() => {
+    if (initialValue && !initializedRef.current) {
+      /**
+       * We only want this effect to run once, to set an initial value if one exists.
+       * If it continues to run, we run into issues with things like old, memoized values
+       * replacing user entered values on re-renders
+       */
+      initializedRef.current = true;
+      const formattedVal = valueFormatter
+        ? valueFormatter(initialValue)
+        : initialValue;
+      setValue(formattedVal);
+    }
+  }, [valueFormatter, initialValue, setValue]);
+};
+
+export const useMakeSetFormDirty = () => {
+  const hasDirtiedRef = useRef(false);
+
+  const { isDirty, setValue } = useFormState();
+
+  return () => {
+    if (!isDirty && !hasDirtiedRef.current) {
+      hasDirtiedRef.current = true;
+      setValue('', '', { shouldDirty: true });
+    }
+  };
+};
+
+interface SetupDebouncedFieldProps extends GetInitialFormValueProps {}
+
+const emptyValidations = {};
+export function useSetupDebouncedField<
+  T extends HTMLInputElement | HTMLTextAreaElement
+>({ keyName, valueFormatter, watchUpdateKeyName }: SetupDebouncedFieldProps) {
+  const [value, setValue] = useState('');
+
+  const formState = useFormState();
+  const {
+    errors,
+    register,
+    setValue: setFormValue,
+    validationRules,
+  } = formState;
+
+  useEffect(() => {
+    if (register) {
+      register(keyName);
+    }
+  }, [register, keyName]);
+
+  useGetInitialFormValue({
+    keyName,
+    setValue,
+    valueFormatter,
+    watchUpdateKeyName,
+  });
+  const setFormDirty = useMakeSetFormDirty();
+
+  const errorMessage = errors?.[keyName]?.message;
+  const validation = validationRules?.[keyName] || emptyValidations;
+
+  const onChange: ChangeEventHandler<T> = (e) => {
+    setValue(e.target.value);
+    setFormDirty();
+  };
+  const onBlur = () => setFormValue(keyName, value);
+
+  return {
+    onBlur,
+    onChange,
+    errorMessage,
+    value,
+    validation,
+    formState,
+  };
+}
