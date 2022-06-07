@@ -1,11 +1,16 @@
 import React from 'react';
-import { FormProvider, useForm } from 'react-hook-form';
 
-type FormContextProps = { mode: 'onChange' | 'onSubmit' };
+import { ConnectedForm } from '../..';
 
-export const FormContext: React.FC<FormContextProps> = ({ mode, children }) => {
-  const methods = useForm({
-    mode,
-  });
-  return <FormProvider {...methods}>{children}</FormProvider>;
+type FormContextProps = { mode?: 'onChange' | 'onSubmit' };
+
+export const FormContext: React.FC<FormContextProps> = ({
+  mode = 'onSubmit',
+  children,
+}) => {
+  return (
+    <ConnectedForm validation={mode} onSubmit={() => null}>
+      {children}
+    </ConnectedForm>
+  );
 };

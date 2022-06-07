@@ -25,17 +25,18 @@ export const GridFormRadioGroupInput: React.FC<GridFormRadioGroupInputProps> = (
 
   return (
     <RadioGroup
+      aria-invalid={error}
+      aria-label={ariaLabel}
+      aria-required={required}
       className={className}
       htmlForPrefix={field.name}
       name={field.name}
-      role="radiogroup"
-      aria-label={ariaLabel}
-      aria-required={required}
       onChange={(event) => {
         const { value } = event.target;
         setValue(field.name, value);
         field.onUpdate?.(value);
       }}
+      role="radiogroup"
     >
       {field.options.map(({ label, value }) => (
         <Radio

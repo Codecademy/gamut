@@ -2,6 +2,7 @@ import { setupRtl } from '@codecademy/gamut-tests';
 import { fireEvent, queries } from '@testing-library/dom';
 import { act, RenderResult, waitFor } from '@testing-library/react';
 import React from 'react';
+import * as rhf from 'react-hook-form';
 
 import { createPromise } from '../../utils';
 import { ConnectedForm } from '..';
@@ -120,6 +121,33 @@ describe('ConnectedForm', () => {
     // there should only be a single "assertive" error from the form submission
     expect(view.getAllByRole('alert').length).toBe(1);
     expect(view.getAllByRole('status').length).toBe(3);
+  });
+
+  it('calls clearError onError so error text is re-read by screen reader', async () => {
+    const mockHandleSubmit = jest.fn();
+
+    // the return type of useForm is optionally undefined, so we have to do some seemingly unnecessary nullish coalescing here for type safety
+    const mockedUseForm =
+      jest.spyOn(rhf, 'useForm').getMockImplementation() ?? mockHandleSubmit;
+
+    jest.spyOn(rhf, 'useForm').mockImplementationOnce(() => {
+      const returnMock = mockedUseForm();
+      return { ...returnMock, clearErrors: mockHandleSubmit };
+    });
+
+    const api = createPromise<{}>();
+    const onSubmit = async (values: {}) => api.resolve(values);
+    const { view } = renderView({
+      validationRules,
+      defaultValues,
+      onSubmit,
+    });
+
+    await act(async () => {
+      fireEvent.submit(view.getByRole('button'));
+    });
+
+    expect(mockHandleSubmit).toHaveBeenCalled();
   });
 
   it('sets aria-required to true for the appropriate inputs', () => {
