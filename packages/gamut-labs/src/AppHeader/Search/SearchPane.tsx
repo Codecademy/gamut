@@ -89,6 +89,8 @@ export const SearchPane: React.FC<SearchPaneProps> = ({
     navigateToSearch(value);
   };
 
+  const getLink = (searchTerm: string) => `search?query=${searchTerm}`;
+
   useEffect(() => {
     inputRef.current?.focus();
   }, []);
@@ -169,10 +171,10 @@ export const SearchPane: React.FC<SearchPaneProps> = ({
                   <Anchor
                     variant="standard"
                     fontWeight="title"
-                    mr={16}
+                    mr={48}
                     key={searchTerm}
+                    href={getLink(searchTerm)}
                     onClick={() => {
-                      navigateToSearch(searchTerm);
                       onTrackingClick(
                         `popular_search_term_${camelCase(searchTerm)}`
                       );
