@@ -1,4 +1,5 @@
 import {
+  Anchor,
   Box,
   ContentContainer,
   FlexBox,
@@ -165,7 +166,9 @@ export const SearchPane: React.FC<SearchPaneProps> = ({
             <FlexBox justifyContent="space-between">
               <div>
                 {searchTerms.map((searchTerm) => (
-                  <TextButton
+                  <Anchor
+                    variant="standard"
+                    fontWeight="title"
                     mr={16}
                     key={searchTerm}
                     onClick={() => {
@@ -176,7 +179,7 @@ export const SearchPane: React.FC<SearchPaneProps> = ({
                     }}
                   >
                     {searchTerm}
-                  </TextButton>
+                  </Anchor>
                 ))}
               </div>
               <TextButton
