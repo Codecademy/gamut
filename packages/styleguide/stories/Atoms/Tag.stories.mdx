@@ -1,0 +1,37 @@
+import { Tag } from '@codecademy/gamut';
+import title from '@codecademy/macros/lib/title.macro';
+import { PropsTable } from '@codecademy/storybook-addon-variance';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+
+<Meta
+  title={title}
+  component={Tag}
+  parameters={{
+    subtitle: 'Tag Text',
+    source: 'gamut',
+    status: 'current',
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/file/',
+    },
+  }}
+  args={{ children: 'Tag' }}
+/>
+
+`Tag` component summary goes here
+
+## Design Principles
+
+Design Principles summary
+
+## Usage Guidelines
+
+Usage summary
+
+## Code Playground
+
+<Canvas>
+  <Story name="Tag">{(args) => <Tag {...args} />}</Story>
+</Canvas>
+
+<PropsTable story="Tag" />
