@@ -82,8 +82,6 @@ const defaultValues = {
 };
 
 describe('ConnectedForm', () => {
-  beforeEach(() => jest.clearAllMocks());
-
   it('submits the form when all inputs are filled out', async () => {
     const api = createPromise<{}>();
     const onSubmit = async (values: {}) => api.resolve(values);
@@ -132,7 +130,7 @@ describe('ConnectedForm', () => {
     const mockedUseForm =
       jest.spyOn(rhf, 'useForm').getMockImplementation() ?? mockHandleSubmit;
 
-    jest.spyOn(rhf, 'useForm').mockImplementation(() => {
+    jest.spyOn(rhf, 'useForm').mockImplementationOnce(() => {
       const returnMock = mockedUseForm();
       return { ...returnMock, clearErrors: mockHandleSubmit };
     });
