@@ -1,6 +1,7 @@
 import { Box, FlexBox } from '@codecademy/gamut';
 import styled from '@emotion/styled';
 import React, { Children, useEffect, useMemo, useRef } from 'react';
+require('intersection-observer');
 
 const ScrollContainer = styled(FlexBox)`
   scroll-snap-type: x mandatory;
@@ -27,12 +28,6 @@ export const HorizontalScrollMenu: React.FC<HorizontalScrollMenuProps> = ({
   const elementsRef = useRef<HTMLElement[]>([]);
   const parentContainerRef = useRef<HTMLDivElement | null>(null);
 
-  const loadPolyfills = async () => {
-    if (typeof window.IntersectionObserver === 'undefined') {
-      await import('intersection-observer');
-    }
-  };
-
   const intersectionObserver = useMemo(() => {
     if (typeof window === 'undefined') return null;
     return new IntersectionObserver(
@@ -51,22 +46,16 @@ export const HorizontalScrollMenu: React.FC<HorizontalScrollMenuProps> = ({
   }, []);
 
   useEffect(() => {
-    loadPolyfills()
-      .then(() => {
-        const numberOfChildElements = Children.toArray(children).length;
+    const numberOfChildElements = Children.toArray(children).length;
 
-        if (elementsRef.current.length === numberOfChildElements) {
-          elementsRef.current.forEach((entry: HTMLElement) =>
-            intersectionObserver?.observe(entry)
-          );
-        }
-        return () => {
-          intersectionObserver?.disconnect();
-        };
-      })
-      .catch(() => {
-        return;
-      });
+    if (elementsRef.current.length === numberOfChildElements) {
+      elementsRef.current.forEach((entry: HTMLElement) =>
+        intersectionObserver?.observe(entry)
+      );
+    }
+    return () => {
+      intersectionObserver?.disconnect();
+    };
   }, [elementsRef, intersectionObserver, children]);
 
   return (
