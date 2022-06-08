@@ -1,5 +1,4 @@
 import {
-  Anchor,
   Box,
   ContentContainer,
   FlexBox,
@@ -89,8 +88,6 @@ export const SearchPane: React.FC<SearchPaneProps> = ({
     navigateToSearch(value);
   };
 
-  const getLink = (searchTerm: string) => `search?query=${searchTerm}`;
-
   useEffect(() => {
     inputRef.current?.focus();
   }, []);
@@ -168,20 +165,19 @@ export const SearchPane: React.FC<SearchPaneProps> = ({
             <FlexBox justifyContent="space-between">
               <div>
                 {searchTerms.map((searchTerm) => (
-                  <Anchor
-                    variant="standard"
-                    fontWeight="title"
-                    mr={48}
+                  <TextButton
+                    role="link"
+                    mr={16}
                     key={searchTerm}
-                    href={getLink(searchTerm)}
                     onClick={() => {
+                      navigateToSearch(searchTerm);
                       onTrackingClick(
                         `popular_search_term_${camelCase(searchTerm)}`
                       );
                     }}
                   >
                     {searchTerm}
-                  </Anchor>
+                  </TextButton>
                 ))}
               </div>
               <TextButton
