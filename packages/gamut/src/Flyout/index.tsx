@@ -1,4 +1,3 @@
-// import { IconButton, Overlay, Text } from '@codecademy/gamut';
 import { MiniDeleteIcon } from '@codecademy/gamut-icons';
 import React from 'react';
 
