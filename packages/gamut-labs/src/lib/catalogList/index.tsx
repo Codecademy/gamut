@@ -108,33 +108,6 @@ export const catalogList: AppHeaderCatalogDataItem[] = [
       },
     ],
   },
-  {
-    title: 'Practice tools',
-    description: `Get real-world practice and apply what you're learning.`,
-    data: [
-      {
-        id: 'projects',
-        href: '/projects',
-        trackingTarget: 'topnav_catalog_practice_projects',
-        text: 'Projects',
-        type: 'link',
-      },
-      {
-        id: 'code-challenges',
-        href: '/code-challenges',
-        trackingTarget: 'topnav_catalog_practice_code_challenges',
-        text: 'Code Challenges',
-        type: 'link',
-      },
-      {
-        id: 'workspaces',
-        href: '/pages/workspaces',
-        trackingTarget: 'topnav_catalog_practice_workspaces',
-        text: 'Workspaces',
-        type: 'link',
-      },
-    ],
-  },
 ];
 
 export const headerCatalogDropdownList = (
