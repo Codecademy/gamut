@@ -53,6 +53,7 @@ export const BaseImage: React.FC<BaseImageProps> = (props) => {
         right={0}
         variant="secondary"
         zIndex={1}
+        aria-live="polite"
         aria-label={buttonLabel}
       >
         <Icon color="currentColor" />
