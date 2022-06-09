@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [32.0.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@32.0.0...@codecademy/gamut-labs@32.0.1) (2022-06-09)
+
+
+### Bug Fixes
+
+* **AppHeader/SearchPane:**  Axe - Popular Searches link are identified as button ([7617155](https://github.com/Codecademy/gamut/commit/76171550f7df4fe76a12a03e58b6a198da7f6739))
+
+
+
 ## [32.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@31.15.4...@codecademy/gamut-labs@32.0.0) (2022-06-08)
 
 
