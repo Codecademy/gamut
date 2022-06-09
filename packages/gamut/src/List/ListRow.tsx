@@ -31,10 +31,9 @@ const ExpandInCollapseOut: React.FC = ({ children }) => {
       initial="collapsed"
       exit="collapsed"
       animate="expanded"
-      style={{ overflow: 'hidden' }}
       variants={{
-        expanded: { height: 'auto' },
-        collapsed: { height: 0 },
+        expanded: { height: 'auto', overflow: 'visible' },
+        collapsed: { height: 0, overflow: 'hidden' },
       }}
       transition={{ duration: 0.2, ease: 'easeInOut' }}
     >

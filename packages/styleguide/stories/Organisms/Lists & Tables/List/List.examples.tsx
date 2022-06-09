@@ -10,10 +10,12 @@ import {
   Rotation,
   Text,
   TextButton,
+  ToolTip,
 } from '@codecademy/gamut';
 import {
   ArrowChevronDownIcon,
   HouseEntranceIcon,
+  InfoCircleIcon,
   MiniChevronDownIcon,
   MiniDeleteIcon,
   MiniKebabMenuIcon,
@@ -390,6 +392,14 @@ const ExpandedRow: React.FC<Omit<ExpandableRowProps, 'key'>> = ({
         textDecoration="underline"
       >
         highly classified
+        <ToolTip
+          alignment="top-right"
+          focusable
+          id="tooltip"
+          target={<InfoCircleIcon size={20} />}
+        >
+          pity.
+        </ToolTip>
       </Text>{' '}
       information.
     </Text>
