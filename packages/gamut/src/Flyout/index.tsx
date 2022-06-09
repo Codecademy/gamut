@@ -1,8 +1,10 @@
-import { IconButton, Overlay, Text } from '@codecademy/gamut';
 import { MiniDeleteIcon } from '@codecademy/gamut-icons';
 import React from 'react';
 
+import { IconButton } from '../Button';
 import { Drawer } from '../Drawer';
+import { Overlay } from '../Overlay';
+import { Text } from '../Typography';
 
 export interface FlyoutProps {
   /**

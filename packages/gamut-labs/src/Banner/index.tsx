@@ -1,11 +1,8 @@
+import { Box, IconButton, Markdown, TextButton } from '@codecademy/gamut';
 import { MiniDeleteIcon } from '@codecademy/gamut-icons';
 import { Background, BackgroundProps, system } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React, { useMemo } from 'react';
-
-import { Box } from '../Box';
-import { IconButton, TextButton } from '../Button';
-import { Markdown } from '../Markdown';
 
 export type BannerVariant = typeof bannerVariants[number];
 const bannerVariants = ['navy', 'yellow'] as const;

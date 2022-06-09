@@ -1,7 +1,6 @@
-import { FlexBox } from '@codecademy/gamut';
+import { FlexBox, Popover } from '@codecademy/gamut';
 import React from 'react';
 
-import { Popover } from '../Popover';
 import { NotificationsContents } from './NotificationsContents';
 import { NotificationsRendererProps } from './types';
 

@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [58.0.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@58.0.0...@codecademy/styleguide@58.0.1) (2022-06-09)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [58.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@57.7.4...@codecademy/styleguide@58.0.0) (2022-06-08)
+
+
+### ⚠ BREAKING CHANGES
+
+* move components to proper repositories
+
+### Miscellaneous Chores
+
+* move components to proper repositories ([3f68e23](https://github.com/Codecademy/gamut/commit/3f68e234aeb0ce4fcdfe61ccf9c13302d314d01c))
+
+
+
 ### [57.7.4](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@57.7.3...@codecademy/styleguide@57.7.4) (2022-06-07)
 
 **Note:** Version bump only for package @codecademy/styleguide
