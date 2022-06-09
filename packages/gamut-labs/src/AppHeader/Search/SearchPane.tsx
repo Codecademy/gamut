@@ -166,6 +166,7 @@ export const SearchPane: React.FC<SearchPaneProps> = ({
               <div>
                 {searchTerms.map((searchTerm) => (
                   <TextButton
+                    role="link"
                     mr={16}
                     key={searchTerm}
                     onClick={() => {
