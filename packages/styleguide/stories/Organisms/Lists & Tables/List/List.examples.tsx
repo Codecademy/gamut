@@ -508,7 +508,7 @@ export const ExpandedTemplateRowClick: React.FC<
 > = ({ mode, variant }) => (
   <ColorMode bg="black" mode={mode}>
     <Box p={8}>
-      <List variant={variant} overflowHidden="visible">
+      <List variant={variant} overflowProp="visible">
         {rows.map(({ name, role, ship }, i, _, key = `example-row-${i}`) => (
           <ExpandableRowClick name={name} role={role} ship={ship} key={key} />
         ))}

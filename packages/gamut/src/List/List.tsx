@@ -27,7 +27,7 @@ export interface ListProps extends AllListProps<ComponentProps<typeof ListEl>> {
   /** A custom message to override the default empty message  */
   emptyMessage?: React.ReactNode;
   /** Overflow value of the List containers. Only `visible` will affect both containers and should only be used when content needs to escape the container (like for tooltips). */
-  overflow?: 'default' | 'visible' | 'hidden';
+  overflowProp?: 'default' | 'visible' | 'hidden';
 }
 
 export const List = forwardRef<HTMLUListElement, ListProps>(
@@ -44,7 +44,7 @@ export const List = forwardRef<HTMLUListElement, ListProps>(
       children,
       header,
       emptyMessage,
-      overflow = 'default',
+      overflowProp = 'default',
       scrollToTopOnUpdate = false,
     },
     ref
@@ -97,7 +97,7 @@ export const List = forwardRef<HTMLUListElement, ListProps>(
       <ListProvider value={value}>
         <Box
           position="relative"
-          overflow={overflow === 'visible' ? 'visible' : 'hidden'}
+          overflow={overflowProp === 'visible' ? 'visible' : 'hidden'}
           width={1}
           id={id}
         >
@@ -107,7 +107,7 @@ export const List = forwardRef<HTMLUListElement, ListProps>(
             maxWidth={1}
             minHeight={minHeight}
             onScroll={scrollable ? scrollHandler : undefined}
-            overflow={overflow === 'default' ? 'auto' : overflow}
+            overflow={overflowProp === 'default' ? 'auto' : overflowProp}
             position="relative"
             ref={!isEmpty ? topOfTable : undefined}
           >
