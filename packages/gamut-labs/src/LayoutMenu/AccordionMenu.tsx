@@ -1,4 +1,4 @@
-import { AccordionArea, Anchor, Text } from '@codecademy/gamut';
+import { AccordionArea, Anchor, FlexBox, Text } from '@codecademy/gamut';
 import { MiniChevronDownIcon } from '@codecademy/gamut-icons';
 import styled from '@emotion/styled';
 import React, { useState } from 'react';
@@ -56,7 +56,7 @@ export const AccordionMenu: React.FC<AccordionMenuProps> = ({
       top={
         <Anchor
           variant="interface"
-          width="max-content"
+          // width="max-content"
           py={12}
           px={4}
           onClick={() => {
@@ -64,8 +64,11 @@ export const AccordionMenu: React.FC<AccordionMenuProps> = ({
             setExpanded((prev) => !prev);
           }}
           aria-expanded={expanded}
+          display="flex"
         >
-          <Text variant="title-xs">TESTING {section.title}</Text>
+          <Text variant="title-xs" color="green" flexGrow={1}>
+            {section.title}
+          </Text>
           <ExpandChevron ml={12} size={14} expanded={expanded} />
         </Anchor>
       }
