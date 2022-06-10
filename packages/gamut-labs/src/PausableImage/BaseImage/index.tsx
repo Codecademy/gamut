@@ -1,4 +1,4 @@
-import { FillButton } from '@codecademy/gamut';
+import { FillButton, HiddenText } from '@codecademy/gamut';
 import { PauseIcon, PlayIcon } from '@codecademy/gamut-icons';
 import styled from '@emotion/styled';
 import React, { useState } from 'react';
@@ -7,7 +7,7 @@ import Freezeframe from 'react-freezeframe';
 import { imageStyles } from '..';
 
 export interface BaseImageProps {
-  alt?: string;
+  alt: string;
   src: string;
 }
 
@@ -36,15 +36,18 @@ export const PlayingImage = imageStyles;
 
 const StyledFreezeframe = styled(Freezeframe)(imageStyles);
 
-export const BaseImage: React.FC<BaseImageProps> = (props) => {
+export const BaseImage: React.FC<BaseImageProps> = ({ alt, ...rest }) => {
   const [paused, setPaused] = useState(false);
-  const [buttonLabel, Icon, Image] = paused
-    ? ['Play animated image', PlayIcon, StyledFreezeframe]
-    : ['Pause animated image', PauseIcon, PlayingImage];
+
+  const [liveText, buttonLabel, Icon, Image] = paused
+    ? [`${alt}, paused`, 'Play animated image', PlayIcon, StyledFreezeframe]
+    : [`${alt}, playing`, 'Pause animated image', PauseIcon, PlayingImage];
 
   return (
     <Container>
-      <Image {...props} />
+      <Image alt={alt} {...rest} />
+      {/* ensure proper fall back label if an empty string is given as alt */}
+      <HiddenText aria-live="polite">{alt ? liveText : buttonLabel}</HiddenText>
       <FillButton
         bottom={0}
         m={8}
@@ -53,7 +56,6 @@ export const BaseImage: React.FC<BaseImageProps> = (props) => {
         right={0}
         variant="secondary"
         zIndex={1}
-        aria-live="polite"
         aria-label={buttonLabel}
       >
         <Icon color="currentColor" />
