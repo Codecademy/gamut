@@ -37,11 +37,13 @@ const ExpandInCollapseOut: React.FC = ({ children }) => {
           overflow: 'hidden',
           transitionEnd: { overflow: 'visible' },
         },
-        collapsed: { height: 0, overflow: 'hidden' },
+        collapsed: {
+          height: 0,
+          overflow: 'hidden',
+          transitionEnd: { overflow: 'visible' },
+        },
       }}
       transition={{ duration: 0.2, ease: 'easeInOut' }}
-      overflow="hidden"
-      onTransitionEnd={{ overflow: 'visible' }}
     >
       {children}
     </motion.div>
