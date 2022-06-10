@@ -66,7 +66,7 @@ export const AccordionMenu: React.FC<AccordionMenuProps> = ({
           aria-expanded={expanded}
           display="flex"
         >
-          <Text variant="title-xs" style={{ flex: 1 }}>
+          <Text variant="title-xs" style={{ flex: 1 }} textAlign="left">
             {section.title}
           </Text>
           <ExpandChevron ml={12} size={14} expanded={expanded} />
