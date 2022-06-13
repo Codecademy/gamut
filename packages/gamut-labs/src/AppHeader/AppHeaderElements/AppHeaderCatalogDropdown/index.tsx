@@ -48,7 +48,7 @@ export const AppHeaderCatalogDropdown: React.FC<AppHeaderCatalogDropdownProps> =
   const focusLastItem = () => setFocusIndex(itemsCount);
 
   const itemsCount = useMemo(() => {
-    return item.popover.map((section) => section.data).flat().length;
+    return item.hideCareerPaths ? 1 : 2;
   }, [item]);
 
   const focusNextItem = () => {

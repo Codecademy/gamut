@@ -1,7 +1,4 @@
-import {
-  AppHeaderCatalogDataItem,
-  AppHeaderLinkItem,
-} from '../../AppHeader/AppHeaderElements/types';
+import { AppHeaderLinkItem } from '../../AppHeader/AppHeaderElements/types';
 
 export const careerPaths: AppHeaderLinkItem[] = [
   {
@@ -186,28 +183,3 @@ export const topSubjects: AppHeaderLinkItem[] = [
     type: 'link',
   },
 ];
-
-export const catalogList: AppHeaderCatalogDataItem[] = [
-  {
-    title: 'Top career paths',
-    description: 'Land an entry-level role in tech with step-by-step guidance.',
-    requiresCareerAccess: true,
-    data: careerPaths,
-  },
-  {
-    title: 'Popular languages and subjects',
-    description: 'Find courses in languages or subjects that interest you.',
-    data: {
-      'Top Languages': topLanguages,
-      'Top Subjects': topSubjects,
-    },
-  },
-];
-
-export const headerCatalogDropdownList = (
-  hideCareerPaths?: boolean
-): AppHeaderCatalogDataItem[] => {
-  return hideCareerPaths
-    ? catalogList.filter((item) => !item.requiresCareerAccess)
-    : catalogList;
-};

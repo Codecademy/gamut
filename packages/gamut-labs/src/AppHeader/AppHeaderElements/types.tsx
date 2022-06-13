@@ -72,7 +72,6 @@ export type AppHeaderRenderElementItem = AppHeaderBaseItem<'render-element'> & {
 
 export type AppHeaderCatalogDropdownItem = AppHeaderBaseItem<'catalog-dropdown'> & {
   icon?: React.ComponentType<GamutIconProps>;
-  popover: AppHeaderCatalogDataItem[];
   text: string;
   trackingTarget: string;
   hideCareerPaths?: boolean;

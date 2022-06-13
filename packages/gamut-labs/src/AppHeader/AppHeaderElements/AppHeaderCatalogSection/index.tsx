@@ -17,8 +17,6 @@ import {
 } from '../../../lib/catalogList';
 import {
   AppHeaderCatalogDropdownItem,
-  AppHeaderCatalogSectionData,
-  AppHeaderCatalogSubheaderItem,
   AppHeaderClickHandler,
   AppHeaderItem,
   AppHeaderLinkItem,
@@ -104,6 +102,21 @@ export const AppHeaderCatalogSection = React.forwardRef<
     </FlexBox>
   );
 
+  const Subheader: React.FunctionComponent<{ title: string }> = ({ title }) => (
+    <Text
+      data-focusablecatalog="true"
+      as="h3"
+      key={item.id}
+      width="12rem"
+      tabIndex={-1}
+      variant="p-small"
+      color="navy-500"
+      pb={8}
+    >
+      {title}
+    </Text>
+  );
+
   const CatalogLink: React.FunctionComponent<{ item: AppHeaderLinkItem }> = ({
     item,
   }) => (
@@ -177,18 +190,7 @@ export const AppHeaderCatalogSection = React.forwardRef<
                 pl={{ _: 16, sm: 64, md: 16 }}
                 width="28rem"
               >
-                <Text
-                  data-focusablecatalog="true"
-                  as="h3"
-                  key={item.id}
-                  width="12rem"
-                  tabIndex={-1}
-                  variant="p-small"
-                  color="navy-500"
-                  pb={8}
-                >
-                  Top Languages
-                </Text>
+                <Subheader title="Top Languages" />
                 {topLanguages.map((item) => (
                   <CatalogLink item={item} />
                 ))}
@@ -203,18 +205,7 @@ export const AppHeaderCatalogSection = React.forwardRef<
                 py={16}
                 pl={{ _: 16, sm: 64, md: 16 }}
               >
-                <Text
-                  data-focusablecatalog="true"
-                  as="h3"
-                  key={item.id}
-                  width="12rem"
-                  tabIndex={-1}
-                  variant="p-small"
-                  color="navy-500"
-                  pb={8}
-                >
-                  Top Subjects
-                </Text>
+                <Subheader title="Top Subjects" />
                 {topSubjects.map((item) => (
                   <CatalogLink item={item} />
                 ))}
