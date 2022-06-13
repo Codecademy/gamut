@@ -1,3 +1,6 @@
+/**
+ * enum sometimes export weird, this is a test of that
+ */
 export enum ContainerDifficulty {
   Beginner = 'Beginner',
   Intermediate = 'Intermediate',
