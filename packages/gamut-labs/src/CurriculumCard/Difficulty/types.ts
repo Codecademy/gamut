@@ -2,6 +2,7 @@ export enum ContainerDifficulty {
   Beginner = 'Beginner',
   Intermediate = 'Intermediate',
   Advanced = 'Advanced',
+  Test = 'Test',
 }
 
 /**
