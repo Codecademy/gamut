@@ -1,7 +1,13 @@
 import { PatternProps } from '@codecademy/gamut-patterns';
 import { themed } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, {
+  HTMLAttributes,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import { useWindowScroll, useWindowSize } from 'react-use';
 
 import { BodyPortal } from '../BodyPortal';
@@ -70,7 +76,8 @@ const PatternContainer = styled.div<StyleProps>`
   left: ${({ align }) => (align === 'left' ? '8px' : '-8px')};
 `;
 
-export type PopoverProps = {
+export interface PopoverProps
+  extends Pick<HTMLAttributes<HTMLDivElement>, 'role'> {
   children: React.ReactElement<any>;
   className?: string;
   /**
@@ -116,7 +123,7 @@ export type PopoverProps = {
   targetRef: React.RefObject<
     Pick<HTMLDivElement, 'getBoundingClientRect' | 'contains'>
   >;
-};
+}
 
 export const Popover: React.FC<PopoverProps> = ({
   children,
