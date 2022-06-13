@@ -1,4 +1,4 @@
-export enum ContainerDifficulty {
+export const enum ContainerDifficulty {
   Beginner = 'Beginner',
   Intermediate = 'Intermediate',
   Advanced = 'Advanced',
