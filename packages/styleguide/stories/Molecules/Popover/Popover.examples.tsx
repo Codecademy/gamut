@@ -5,8 +5,10 @@ import {
   FillButton,
   FlexBox,
   LayoutGrid,
+  Popover,
+  PopoverProps,
 } from '@codecademy/gamut';
-import { Popover, PopoverProps } from '@codecademy/gamut-labs';
+import {} from '@codecademy/gamut-labs';
 import {
   CheckerDense,
   CheckerLoose,
