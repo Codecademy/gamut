@@ -10,12 +10,10 @@ import {
   Rotation,
   Text,
   TextButton,
-  ToolTip,
 } from '@codecademy/gamut';
 import {
   ArrowChevronDownIcon,
   HouseEntranceIcon,
-  InfoCircleIcon,
   MiniChevronDownIcon,
   MiniDeleteIcon,
   MiniKebabMenuIcon,
@@ -392,14 +390,6 @@ const ExpandedRow: React.FC<Omit<ExpandableRowProps, 'key'>> = ({
         textDecoration="underline"
       >
         highly classified
-        <ToolTip
-          alignment="top-right"
-          focusable
-          id="tooltip"
-          target={<InfoCircleIcon size={20} />}
-        >
-          pity.
-        </ToolTip>
       </Text>{' '}
       information.
     </Text>
@@ -508,7 +498,7 @@ export const ExpandedTemplateRowClick: React.FC<
 > = ({ mode, variant }) => (
   <ColorMode bg="black" mode={mode}>
     <Box p={8}>
-      <List variant={variant} overflowProp="visible">
+      <List variant={variant}>
         {rows.map(({ name, role, ship }, i, _, key = `example-row-${i}`) => (
           <ExpandableRowClick name={name} role={role} ship={ship} key={key} />
         ))}
