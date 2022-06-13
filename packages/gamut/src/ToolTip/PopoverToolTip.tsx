@@ -20,6 +20,7 @@ export const PopoverToolTip: React.FC<ToolTipProps> = ({
 }) => {
   const ref = useRef<HTMLDivElement>(null);
   const [offset, setOffset] = useState(0);
+  const [isOpen, setIsOpen] = useState(false);
 
   useLayoutEffect(() => {
     if (ref?.current) {
@@ -41,21 +42,24 @@ export const PopoverToolTip: React.FC<ToolTipProps> = ({
         // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
         tabIndex={focusable ? 0 : undefined}
         ref={ref}
+        onMouseEnter={() => setIsOpen(true)}
+        onFocus={() => setIsOpen(true)}
+        onBlur={() => setIsOpen(false)}
         width="min-content"
         height="min-content"
       >
         {target}
       </Box>
       <Popover
-        beak="left"
-        isOpen
-        outline
-        targetRef={ref}
-        onRequestClose={() => null}
-        role="tooltip"
-        aria-live="polite"
         align="left"
+        aria-live="polite"
+        beak="left"
         horizontalOffset={offset}
+        isOpen={isOpen}
+        onRequestClose={() => setIsOpen(false)}
+        outline
+        role="tooltip"
+        targetRef={ref}
       >
         <FlexBox flexDirection="column" p={16} alignItems="flex-start">
           {children}
