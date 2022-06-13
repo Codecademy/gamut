@@ -34,14 +34,6 @@ export type AppHeaderCatalogSectionProps = {
   isOpen?: boolean;
 };
 
-const StyledDescription = styled(Text)(
-  css({
-    // fontSize approved by design
-    fontSize: 12 as any,
-    lineHeight: `base`,
-  })
-);
-
 const StyledColumn = styled(Column)(
   css({
     borderBottom: 1,
@@ -66,6 +58,48 @@ const catalogAnchorData: AppHeaderItem = {
   trackingTarget: 'topnav_catalog_explore_full',
 };
 
+const DescriptionSection: React.FunctionComponent<{
+  title: string;
+  subtitle: string;
+}> = ({ title, subtitle }) => (
+  <FlexBox
+    data-focusablecatalog="true"
+    data-testid="title-description-section"
+    tabIndex={-1}
+    bg="navy-800"
+    color="white"
+    flexDirection="column"
+    py={16}
+    pl={{ _: 16, sm: 64, md: 16 }}
+  >
+    <Text as="h2" variant="title-xs" mb={8} fontWeight={700}>
+      {title}
+    </Text>
+    <Text fontSize={14} font-weight={400}>
+      {subtitle}
+    </Text>
+  </FlexBox>
+);
+
+const CatalogLink: React.Function = ({ item }) => (
+  <StyledAnchorBox key={item.id} width="12rem">
+    <Anchor
+      data-focusablecatalog="true"
+      variant="interface"
+      fontFamily="base"
+      fontSize={16}
+      fontWeight={400}
+      href={item.href}
+      onClick={(event) => action(event, item as AppHeaderItem)}
+      tabIndex={tabIndex}
+      maxWidth="170px"
+      lineHeight="title"
+    >
+      {item.text}
+    </Anchor>
+  </StyledAnchorBox>
+);
+
 export const AppHeaderCatalogSection = React.forwardRef<
   HTMLDivElement,
   AppHeaderCatalogSectionProps
@@ -76,23 +110,10 @@ export const AppHeaderCatalogSection = React.forwardRef<
       <StyledColumn size={12} key="Top career paths" as="li">
         <LayoutGrid>
           <Column size={{ xs: 12, md: 4 }}>
-            <FlexBox
-              data-focusablecatalog="true"
-              data-testid="title-description-section"
-              tabIndex={-1}
-              bg="navy-800"
-              color="white"
-              flexDirection="column"
-              py={16}
-              pl={{ _: 16, sm: 64, md: 16 }}
-            >
-              <Text as="h2" variant="title-xs" mb={8} fontWeight={700}>
-                Top career Paths
-              </Text>
-              <Text fontSize={14} font-weight={400}>
-                Land an entry-level role in tech with step-by-step guidance.
-              </Text>
-            </FlexBox>
+            <DescriptionSection
+              title="Top career Paths"
+              subtitle="Land an entry-level role in tech with step-by-step guidance."
+            />
           </Column>
           <Column size={{ xs: 12, md: 8 }}>
             <FlexBox
@@ -106,7 +127,7 @@ export const AppHeaderCatalogSection = React.forwardRef<
               pl={{ _: 16, sm: 64, md: 16 }}
             >
               {careerPaths.map((item) => (
-                <StyledAnchorBox key={item.id} minWidth="12rem">
+                <StyledAnchorBox key={item.id} width="12rem">
                   <Anchor
                     data-focusablecatalog="true"
                     variant="interface"
@@ -130,39 +151,26 @@ export const AppHeaderCatalogSection = React.forwardRef<
       <StyledColumn size={12} key="Popular languages and subjects" as="li">
         <LayoutGrid>
           <Column size={{ xs: 12, md: 4 }}>
-            <FlexBox
-              data-focusablecatalog="true"
-              data-testid="title-description-section"
-              tabIndex={-1}
-              bg="navy-800"
-              color="white"
-              flexDirection="column"
-              py={16}
-              pl={{ _: 16, sm: 64, md: 16 }}
-            >
-              <Text as="h2" variant="title-xs" mb={8} fontWeight={700}>
-                Popular languages and subjects
-              </Text>
-              <Text fontSize={14} font-weight={400}>
-                Find courses in languages or subjects that interest you.
-              </Text>
-              <ColorMode mode="dark">
-                {' '}
-                <Anchor
-                  variant="standard"
-                  fontSize={14}
-                  fontWeight={700}
-                  textAlign={{ _: 'center', md: 'left' }}
-                  href={catalogAnchorData.href}
-                  data-focusablecatalog="true"
-                  onClick={(event) => action(event, catalogAnchorData)}
-                  tabIndex={tabIndex}
-                  mt={32}
-                >
-                  {catalogAnchorData.text}
-                </Anchor>{' '}
-              </ColorMode>
-            </FlexBox>
+            <DescriptionSection
+              title="Popular languages and subjects"
+              subtitle="Find courses in languages or subjects that interest you."
+            />
+
+            <ColorMode mode="dark">
+              <Anchor
+                variant="standard"
+                fontSize={14}
+                fontWeight={700}
+                textAlign={{ _: 'center', md: 'left' }}
+                href={catalogAnchorData.href}
+                data-focusablecatalog="true"
+                onClick={(event) => action(event, catalogAnchorData)}
+                tabIndex={tabIndex}
+                mt={64}
+              >
+                {catalogAnchorData.text}
+              </Anchor>
+            </ColorMode>
           </Column>
           <Column size={{ xs: 12, md: 8 }}>
             <FlexBox>
@@ -175,13 +183,13 @@ export const AppHeaderCatalogSection = React.forwardRef<
                 flexWrap="wrap"
                 py={16}
                 pl={{ _: 16, sm: 64, md: 16 }}
-                width="100%"
+                width="28rem"
               >
                 <Text
                   data-focusablecatalog="true"
                   as="h3"
                   key={item.id}
-                  minWidth="12rem"
+                  width="12rem"
                   tabIndex={-1}
                   variant="p-small"
                   color="navy-500"
@@ -189,7 +197,7 @@ export const AppHeaderCatalogSection = React.forwardRef<
                   Top Languages
                 </Text>
                 {topLanguages.map((item) => (
-                  <StyledAnchorBox key={item.id} minWidth="12rem">
+                  <StyledAnchorBox key={item.id} width="12rem">
                     <Anchor
                       data-focusablecatalog="true"
                       variant="interface"
@@ -221,7 +229,7 @@ export const AppHeaderCatalogSection = React.forwardRef<
                   data-focusablecatalog="true"
                   as="h3"
                   key={item.id}
-                  minWidth="12rem"
+                  width="12rem"
                   tabIndex={-1}
                   variant="p-small"
                   color="navy-500"
@@ -229,7 +237,7 @@ export const AppHeaderCatalogSection = React.forwardRef<
                   Top Subjects
                 </Text>
                 {topSubjects.map((item) => (
-                  <StyledAnchorBox key={item.id} minWidth="12rem">
+                  <StyledAnchorBox key={item.id} width="12rem">
                     <Anchor
                       data-focusablecatalog="true"
                       variant="interface"
@@ -239,7 +247,6 @@ export const AppHeaderCatalogSection = React.forwardRef<
                       href={item.href}
                       onClick={(event) => action(event, item as AppHeaderItem)}
                       tabIndex={tabIndex}
-                      maxWidth="170px"
                       lineHeight="title"
                     >
                       {item.text}
