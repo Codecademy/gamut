@@ -8,7 +8,6 @@ import {
   Popover,
   PopoverProps,
 } from '@codecademy/gamut';
-import {} from '@codecademy/gamut-labs';
 import {
   CheckerDense,
   CheckerLoose,
