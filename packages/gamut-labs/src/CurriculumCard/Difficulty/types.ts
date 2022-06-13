@@ -1,5 +1,5 @@
 /**
- * Eported enums sometimes come up undefined when mocked in Jest, so be careful when using this in testing.
+ * Exported enums sometimes come up undefined when used in Jest tests because of the way they are compiled. Be careful when using this in test mocks.
  */
 export enum ContainerDifficulty {
   Beginner = 'Beginner',
