@@ -1,4 +1,4 @@
-import { css, states, themed, variant } from '@codecademy/gamut-styles';
+import { css, states, variant } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
 
