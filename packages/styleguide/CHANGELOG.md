@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [58.0.3](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@58.0.2...@codecademy/styleguide@58.0.3) (2022-06-13)
+
+
+### Bug Fixes
+
+* update PasuableImage button to announce it's label change ([d233fb8](https://github.com/Codecademy/gamut/commit/d233fb858bb9b9eded1c019b2c04131c06e3e877))
+
+
+
 ### [58.0.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@58.0.1...@codecademy/styleguide@58.0.2) (2022-06-10)
 
 **Note:** Version bump only for package @codecademy/styleguide
