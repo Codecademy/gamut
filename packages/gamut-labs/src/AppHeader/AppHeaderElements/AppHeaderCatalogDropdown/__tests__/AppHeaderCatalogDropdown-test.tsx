@@ -10,28 +10,6 @@ describe('AppHeaderCatalogDropdown', () => {
       id: 'the-catalog',
       type: 'catalog-dropdown',
       trackingTarget: 'fine',
-      popover: [
-        {
-          title: 'sopranos',
-          description: 'ok',
-          data: [
-            {
-              id: 'a',
-              type: 'link',
-              text: 'junior',
-              trackingTarget: 'a',
-              href: 'dd',
-            },
-            {
-              id: 'b',
-              type: 'link',
-              text: 'christopher',
-              trackingTarget: 'b',
-              href: '/abc',
-            },
-          ],
-        },
-      ],
     },
   });
 
