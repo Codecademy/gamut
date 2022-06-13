@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [32.0.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@32.0.1...@codecademy/gamut-labs@32.0.2) (2022-06-10)
+
+
+### Bug Fixes
+
+* **HorizontalScrollMenu:** polyfill IntersectionObserver ([e329d62](https://github.com/Codecademy/gamut/commit/e329d62a0fcae966f9a37c0125934b3a0a094d3d))
+
+
+
 ### [32.0.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@32.0.0...@codecademy/gamut-labs@32.0.1) (2022-06-09)
 
 
