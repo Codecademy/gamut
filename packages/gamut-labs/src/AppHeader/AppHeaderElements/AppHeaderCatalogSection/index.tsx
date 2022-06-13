@@ -58,34 +58,51 @@ const catalogAnchorData: AppHeaderItem = {
   trackingTarget: 'topnav_catalog_explore_full',
 };
 
-const DescriptionSection: React.FunctionComponent<{
-  title: string;
-  subtitle: string;
-}> = ({ title, subtitle }) => (
-  <FlexBox
-    data-focusablecatalog="true"
-    data-testid="title-description-section"
-    tabIndex={-1}
-    bg="navy-800"
-    color="white"
-    flexDirection="column"
-    py={16}
-    pl={{ _: 16, sm: 64, md: 16 }}
-  >
-    <Text as="h2" variant="title-xs" mb={8} fontWeight={700}>
-      {title}
-    </Text>
-    <Text fontSize={14} font-weight={400}>
-      {subtitle}
-    </Text>
-  </FlexBox>
-);
-
 export const AppHeaderCatalogSection = React.forwardRef<
   HTMLDivElement,
   AppHeaderCatalogSectionProps
 >(({ action, item, isOpen, keyDownEvents }, ref) => {
   const tabIndex = isOpen === false ? -1 : 0;
+
+  const DescriptionSection: React.FunctionComponent<{
+    title: string;
+    subtitle: string;
+    showFullCatalog?: boolean;
+  }> = ({ title, subtitle, showFullCatalog }) => (
+    <FlexBox
+      data-focusablecatalog="true"
+      data-testid="title-description-section"
+      tabIndex={-1}
+      bg="navy-800"
+      color="blue-0"
+      flexDirection="column"
+      p={32}
+    >
+      <Text as="h2" variant="title-xs" mb={8} fontWeight={700}>
+        {title}
+      </Text>
+      <Text fontSize={14} font-weight={400}>
+        {subtitle}
+      </Text>
+      {showFullCatalog && (
+        <ColorMode mode="dark">
+          <Anchor
+            variant="standard"
+            fontSize={14}
+            fontWeight={700}
+            textAlign={{ _: 'center', md: 'left' }}
+            href={catalogAnchorData.href}
+            data-focusablecatalog="true"
+            onClick={(event) => action(event, catalogAnchorData)}
+            tabIndex={tabIndex}
+            mt={64}
+          >
+            {catalogAnchorData.text}
+          </Anchor>
+        </ColorMode>
+      )}
+    </FlexBox>
+  );
 
   const CatalogLink: React.FunctionComponent<{ item: AppHeaderLinkItem }> = ({
     item,
@@ -144,23 +161,8 @@ export const AppHeaderCatalogSection = React.forwardRef<
             <DescriptionSection
               title="Popular languages and subjects"
               subtitle="Find courses in languages or subjects that interest you."
+              showFullCatalog
             />
-
-            <ColorMode mode="dark">
-              <Anchor
-                variant="standard"
-                fontSize={14}
-                fontWeight={700}
-                textAlign={{ _: 'center', md: 'left' }}
-                href={catalogAnchorData.href}
-                data-focusablecatalog="true"
-                onClick={(event) => action(event, catalogAnchorData)}
-                tabIndex={tabIndex}
-                mt={64}
-              >
-                {catalogAnchorData.text}
-              </Anchor>
-            </ColorMode>
           </Column>
           <Column size={{ xs: 12, md: 8 }}>
             <FlexBox>
@@ -183,6 +185,7 @@ export const AppHeaderCatalogSection = React.forwardRef<
                   tabIndex={-1}
                   variant="p-small"
                   color="navy-500"
+                  pb={8}
                 >
                   Top Languages
                 </Text>
@@ -208,6 +211,7 @@ export const AppHeaderCatalogSection = React.forwardRef<
                   tabIndex={-1}
                   variant="p-small"
                   color="navy-500"
+                  pb={8}
                 >
                   Top Subjects
                 </Text>
