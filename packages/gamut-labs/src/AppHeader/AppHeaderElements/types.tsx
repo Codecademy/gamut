@@ -81,11 +81,20 @@ export type AppHeaderCatalogSubheaderItem = AppHeaderBaseItem<'subheader'> & {
   text: string;
 };
 
+export type AppHeaderCatalogSectionData =
+  | (AppHeaderLinkItem | AppHeaderCatalogSubheaderItem)[]
+  | {
+      [sectionTitle: string]: (
+        | AppHeaderLinkItem
+        | AppHeaderCatalogSubheaderItem
+      )[];
+    };
+
 export type AppHeaderCatalogDataItem = {
   title: string;
   description: string;
   requiresCareerAccess?: boolean;
-  data: (AppHeaderLinkItem | AppHeaderCatalogSubheaderItem)[];
+  data: AppHeaderCatalogSectionData;
 };
 
 export type AppHeaderClickHandler<ItemType = AppHeaderItem> = (
