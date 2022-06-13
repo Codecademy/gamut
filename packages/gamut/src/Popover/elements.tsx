@@ -72,7 +72,7 @@ const beakVariants = variant({
 
 export const Beak = styled.div<
   StyleProps<typeof outlineState> & StyleProps<typeof beakVariants>
->(beakVariants, outlineState);
+>(beakVariants);
 
 const patternBelow = {
   top: '8px',
