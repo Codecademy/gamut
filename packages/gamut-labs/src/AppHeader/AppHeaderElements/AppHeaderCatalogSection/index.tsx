@@ -110,32 +110,34 @@ export const AppHeaderCatalogSection = React.forwardRef<
 
   return (
     <LayoutGrid onKeyDown={keyDownEvents} ref={ref} as="ul" p={0}>
-      <StyledColumn size={12} key="Top career paths" as="li">
-        <LayoutGrid>
-          <Column size={{ xs: 12, md: 4 }}>
-            <DescriptionSection
-              title="Top career Paths"
-              subtitle="Land an entry-level role in tech with step-by-step guidance."
-            />
-          </Column>
-          <Column size={{ xs: 12, md: 8 }}>
-            <FlexBox
-              maxHeight={{
-                _: 'none',
-                md: '8rem',
-              }}
-              flexDirection="column"
-              flexWrap="wrap"
-              py={16}
-              pl={{ _: 16, sm: 64, md: 16 }}
-            >
-              {careerPaths.map((item) => (
-                <CatalogLink item={item} />
-              ))}
-            </FlexBox>
-          </Column>
-        </LayoutGrid>
-      </StyledColumn>
+      {!item.hideCareerPaths && (
+        <StyledColumn size={12} key="Top career paths" as="li">
+          <LayoutGrid>
+            <Column size={{ xs: 12, md: 4 }}>
+              <DescriptionSection
+                title="Top career Paths"
+                subtitle="Land an entry-level role in tech with step-by-step guidance."
+              />
+            </Column>
+            <Column size={{ xs: 12, md: 8 }}>
+              <FlexBox
+                maxHeight={{
+                  _: 'none',
+                  md: '8rem',
+                }}
+                flexDirection="column"
+                flexWrap="wrap"
+                py={16}
+                pl={{ _: 16, sm: 64, md: 16 }}
+              >
+                {careerPaths.map((item) => (
+                  <CatalogLink item={item} />
+                ))}
+              </FlexBox>
+            </Column>
+          </LayoutGrid>
+        </StyledColumn>
+      )}
       <StyledColumn size={12} key="Popular languages and subjects" as="li">
         <LayoutGrid>
           <Column size={{ xs: 12, md: 4 }}>

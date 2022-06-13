@@ -75,6 +75,7 @@ export type AppHeaderCatalogDropdownItem = AppHeaderBaseItem<'catalog-dropdown'>
   popover: AppHeaderCatalogDataItem[];
   text: string;
   trackingTarget: string;
+  hideCareerPaths?: boolean;
 };
 
 export type AppHeaderCatalogSubheaderItem = AppHeaderBaseItem<'subheader'> & {

@@ -75,6 +75,7 @@ export const catalogDropdown = (
   popover: headerCatalogDropdownList(hideCareerPaths),
   trackingTarget: 'topnav_catalog_dropdown',
   type: 'catalog-dropdown',
+  hideCareerPaths,
 });
 
 export const resourcesDropdown: AppHeaderSimpleDropdownItem = {
