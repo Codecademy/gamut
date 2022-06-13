@@ -1,4 +1,4 @@
-import { Box, ToolTip } from '@codecademy/gamut/src';
+import { FlexBox, ToolTip } from '@codecademy/gamut/src';
 import { InfoCircleIcon } from '@codecademy/gamut-icons/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
@@ -182,6 +182,22 @@ Tooltips can be of a `dark` or `light` visual mode.
             <ToolTip {...args} mode="light" />
           </TooltipArea>
         </>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## isPopover
+
+Tooltips sometimes need to be in scrollable content, and that's okay!
+
+<Canvas>
+  <Story name="isPopover">
+    {(args) => {
+      return (
+        <FlexBox center bg="paleBlue" height="10rem" width="10rem">
+          <ToolTip isPopover {...args} />
+        </FlexBox>
       );
     }}
   </Story>

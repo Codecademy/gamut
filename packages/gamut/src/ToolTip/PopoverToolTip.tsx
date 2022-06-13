@@ -1,6 +1,6 @@
-import React, { useRef } from 'react';
+import React, { useLayoutEffect, useRef, useState } from 'react';
 
-import { Box } from '../Box';
+import { Box, FlexBox } from '../Box';
 import { Popover } from '../Popover';
 import { ToolTipProps } from '.';
 
@@ -18,13 +18,20 @@ export const PopoverToolTip: React.FC<ToolTipProps> = ({
 
   target,
 }) => {
-  const activeElRef = useRef<HTMLDivElement>(null);
+  const ref = useRef<HTMLDivElement>(null);
+  const [offset, setOffset] = useState(0);
+
+  useLayoutEffect(() => {
+    if (ref?.current) {
+      setOffset(-ref.current.clientWidth / 2 + 35);
+    }
+  }, []);
 
   return (
     <>
       <Box
+        bg="palePink"
         aria-labelledby={id}
-        role={focusable ? 'button' : undefined}
         onKeyDown={(event) => {
           if (event.key === 'Escape') {
             (event.target as HTMLElement).blur();
@@ -34,22 +41,30 @@ export const PopoverToolTip: React.FC<ToolTipProps> = ({
         // This element still needs tab focus so we must use the `tabIndex=0` hack.
         // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
         tabIndex={focusable ? 0 : undefined}
-        ref={activeElRef}
+        ref={ref}
+        width="min-content"
+        height="min-content"
       >
-        {target}
+        <FlexBox center width="100px">
+          |
+        </FlexBox>
       </Box>
       <Popover
         beak="left"
         isOpen
         outline
-        targetRef={activeElRef}
+        targetRef={ref}
         onRequestClose={() => null}
         role="tooltip"
         aria-live="polite"
+        align="left"
+        horizontalOffset={offset}
       >
-        <Box fontSize={16} mb={8}>
-          Nothing clickable here but the container has fallback focus
-        </Box>
+        <FlexBox flexDirection="column" p={16} alignItems="flex-start">
+          <Box fontSize={16} mb={8}>
+            Nothing clickable here but the container has fallback focus
+          </Box>
+        </FlexBox>
       </Popover>
     </>
   );

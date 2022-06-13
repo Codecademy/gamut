@@ -1,6 +1,7 @@
 import { ColorModes } from '@codecademy/gamut-styles';
 import React, { ReactNode } from 'react';
 
+import { PopoverToolTip } from './PopoverToolTip';
 import { StaticToolTip } from './StaticToolTip';
 
 export type ToolTipAlignment =
@@ -46,11 +47,17 @@ export type ToolTipProps = ToolTipContainerProps & {
    */
   focusable?: boolean;
 
+  /**
+   * Whether if should be a popover tooltip (only should be used in certain overflow situations).
+   */
+  isPopover?: boolean;
+
   id: string;
 
   target?: ReactNode;
 };
 
-export const ToolTip: React.FC<ToolTipProps> = (props) => {
-  return <StaticToolTip {...props} />;
+export const ToolTip: React.FC<ToolTipProps> = ({ isPopover, ...rest }) => {
+  if (isPopover) return <PopoverToolTip {...rest} />;
+  return <StaticToolTip {...rest} />;
 };
