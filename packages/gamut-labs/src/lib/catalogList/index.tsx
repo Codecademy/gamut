@@ -1,6 +1,9 @@
-import { AppHeaderCatalogDataItem } from '../../AppHeader/AppHeaderElements/types';
+import {
+  AppHeaderCatalogDataItem,
+  AppHeaderLinkItem,
+} from '../../AppHeader/AppHeaderElements/types';
 
-export const careerPaths = [
+export const careerPaths: AppHeaderLinkItem[] = [
   {
     id: 'full-stack-engineer-career-path',
     href: '/learn/paths/full-stack-engineer-career-path',
@@ -52,7 +55,7 @@ export const careerPaths = [
   },
 ];
 
-export const topLanguages = [
+export const topLanguages: AppHeaderLinkItem[] = [
   {
     id: 'python',
     href: '/catalog/language/python',
@@ -139,7 +142,7 @@ export const topLanguages = [
   },
 ];
 
-export const topSubjects = [
+export const topSubjects: AppHeaderLinkItem[] = [
   {
     id: 'web-development',
     href: '/catalog/subject/web-development',

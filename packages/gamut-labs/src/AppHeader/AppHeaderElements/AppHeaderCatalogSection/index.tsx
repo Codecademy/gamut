@@ -81,30 +81,33 @@ const DescriptionSection: React.FunctionComponent<{
   </FlexBox>
 );
 
-const CatalogLink: React.Function = ({ item }) => (
-  <StyledAnchorBox key={item.id} width="12rem">
-    <Anchor
-      data-focusablecatalog="true"
-      variant="interface"
-      fontFamily="base"
-      fontSize={16}
-      fontWeight={400}
-      href={item.href}
-      onClick={(event) => action(event, item as AppHeaderItem)}
-      tabIndex={tabIndex}
-      maxWidth="170px"
-      lineHeight="title"
-    >
-      {item.text}
-    </Anchor>
-  </StyledAnchorBox>
-);
-
 export const AppHeaderCatalogSection = React.forwardRef<
   HTMLDivElement,
   AppHeaderCatalogSectionProps
 >(({ action, item, isOpen, keyDownEvents }, ref) => {
   const tabIndex = isOpen === false ? -1 : 0;
+
+  const CatalogLink: React.FunctionComponent<{ item: AppHeaderLinkItem }> = ({
+    item,
+  }) => (
+    <StyledAnchorBox key={item.id} width="12rem">
+      <Anchor
+        data-focusablecatalog="true"
+        variant="interface"
+        fontFamily="base"
+        fontSize={16}
+        fontWeight={400}
+        href={item.href}
+        onClick={(event) => action(event, item as AppHeaderItem)}
+        tabIndex={tabIndex}
+        maxWidth="170px"
+        lineHeight="title"
+      >
+        {item.text}
+      </Anchor>
+    </StyledAnchorBox>
+  );
+
   return (
     <LayoutGrid onKeyDown={keyDownEvents} ref={ref} as="ul" p={0}>
       <StyledColumn size={12} key="Top career paths" as="li">
@@ -127,22 +130,7 @@ export const AppHeaderCatalogSection = React.forwardRef<
               pl={{ _: 16, sm: 64, md: 16 }}
             >
               {careerPaths.map((item) => (
-                <StyledAnchorBox key={item.id} width="12rem">
-                  <Anchor
-                    data-focusablecatalog="true"
-                    variant="interface"
-                    fontFamily="base"
-                    fontSize={16}
-                    fontWeight={400}
-                    href={item.href}
-                    onClick={(event) => action(event, item as AppHeaderItem)}
-                    tabIndex={tabIndex}
-                    maxWidth="170px"
-                    lineHeight="title"
-                  >
-                    {item.text}
-                  </Anchor>
-                </StyledAnchorBox>
+                <CatalogLink item={item} />
               ))}
             </FlexBox>
           </Column>
@@ -197,22 +185,7 @@ export const AppHeaderCatalogSection = React.forwardRef<
                   Top Languages
                 </Text>
                 {topLanguages.map((item) => (
-                  <StyledAnchorBox key={item.id} width="12rem">
-                    <Anchor
-                      data-focusablecatalog="true"
-                      variant="interface"
-                      fontFamily="base"
-                      fontSize={16}
-                      fontWeight={400}
-                      href={item.href}
-                      onClick={(event) => action(event, item as AppHeaderItem)}
-                      tabIndex={tabIndex}
-                      maxWidth="170px"
-                      lineHeight="title"
-                    >
-                      {item.text}
-                    </Anchor>
-                  </StyledAnchorBox>
+                  <CatalogLink item={item} />
                 ))}
               </FlexBox>
               <FlexBox
@@ -237,21 +210,7 @@ export const AppHeaderCatalogSection = React.forwardRef<
                   Top Subjects
                 </Text>
                 {topSubjects.map((item) => (
-                  <StyledAnchorBox key={item.id} width="12rem">
-                    <Anchor
-                      data-focusablecatalog="true"
-                      variant="interface"
-                      fontFamily="base"
-                      fontSize={16}
-                      fontWeight={400}
-                      href={item.href}
-                      onClick={(event) => action(event, item as AppHeaderItem)}
-                      tabIndex={tabIndex}
-                      lineHeight="title"
-                    >
-                      {item.text}
-                    </Anchor>
-                  </StyledAnchorBox>
+                  <CatalogLink item={item} />
                 ))}
               </FlexBox>
             </FlexBox>
