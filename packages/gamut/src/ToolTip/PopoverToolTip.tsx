@@ -13,9 +13,9 @@ export type ToolTipAlignment =
   | 'top-right';
 
 export const PopoverToolTip: React.FC<ToolTipProps> = ({
+  children,
   focusable,
   id,
-
   target,
 }) => {
   const ref = useRef<HTMLDivElement>(null);
@@ -30,7 +30,6 @@ export const PopoverToolTip: React.FC<ToolTipProps> = ({
   return (
     <>
       <Box
-        bg="palePink"
         aria-labelledby={id}
         onKeyDown={(event) => {
           if (event.key === 'Escape') {
@@ -45,9 +44,7 @@ export const PopoverToolTip: React.FC<ToolTipProps> = ({
         width="min-content"
         height="min-content"
       >
-        <FlexBox center width="100px">
-          |
-        </FlexBox>
+        {target}
       </Box>
       <Popover
         beak="left"
@@ -61,9 +58,7 @@ export const PopoverToolTip: React.FC<ToolTipProps> = ({
         horizontalOffset={offset}
       >
         <FlexBox flexDirection="column" p={16} alignItems="flex-start">
-          <Box fontSize={16} mb={8}>
-            Nothing clickable here but the container has fallback focus
-          </Box>
+          {children}
         </FlexBox>
       </Popover>
     </>

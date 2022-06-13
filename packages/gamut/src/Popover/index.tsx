@@ -1,5 +1,4 @@
 import { PatternProps } from '@codecademy/gamut-patterns';
-import { themed } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React, {
   HTMLAttributes,
@@ -12,6 +11,7 @@ import { useWindowScroll, useWindowSize } from 'react-use';
 
 import { BodyPortal } from '../BodyPortal';
 import { FocusTrap } from '../FocusTrap';
+import { Beak, PatternContainer, RaisedDiv } from './elements';
 
 type StyleProps = {
   outline?: boolean;
@@ -32,48 +32,6 @@ const PopoverContainer = styled.div<StyleProps>`
   display: flex;
   transform: ${({ position, align }) =>
     position && align && `${transform[position]} ${transform[align]}`};
-`;
-
-const RaisedDiv = styled.div<StyleProps>`
-  z-index: 1;
-  border-radius: 2px;
-  border: 1px ${({ outline }) => (outline ? 'solid' : 'none')}
-    ${({ theme }) => theme.colors.secondary};
-  background-color: ${({ theme }) => theme.colors.background};
-  ${({ outline }) =>
-    !outline &&
-    'box-shadow: 0 0 16px rgba(0, 0, 0, 0.1), 0 0 24px rgba(0, 0, 0, 0.15)'};
-`;
-
-const Beak = styled.div<StyleProps>`
-  width: 20px;
-  height: 20px;
-  transform: rotate(45deg);
-  border-${({ position }) => (position === 'below' ? 'left' : 'right')}:
-    1px
-    ${({ outline }) => (outline ? 'solid' : 'none')}
-    ${({ theme }) => theme.colors.secondary};
-  border-${({ position }) => (position === 'below' ? 'top' : 'bottom')}:
-    1px
-    ${({ outline }) => (outline ? 'solid' : 'none')}
-    ${({ theme }) => theme.colors.secondary};
-  background-color: ${({ theme }) => theme.colors.background};
-  position: absolute;
-  left: ${({ beak }) => beak === 'left' && '25px'};
-  right: ${({ beak }) => beak === 'right' && '25px'};
-  top: ${({ position }) =>
-    position === 'below' ? '-10px' : 'calc(100% - 10px);'};
-`;
-
-const PatternContainer = styled.div<StyleProps>`
-  width: 100%;
-  height: 100%;
-  border-radius: 2px;
-  overflow: hidden;
-  background-color: ${themed('colors.background')};
-  position: absolute;
-  top: ${({ position }) => (position === 'below' ? '8px' : '-8px')};
-  left: ${({ align }) => (align === 'left' ? '8px' : '-8px')};
 `;
 
 export interface PopoverProps
@@ -193,7 +151,6 @@ export const Popover: React.FC<PopoverProps> = ({
   );
 
   const popoverRef = useRef<HTMLDivElement>(null);
-
   if (!isOpen || !targetRef) return null;
 
   return (
@@ -216,15 +173,14 @@ export const Popover: React.FC<PopoverProps> = ({
             {beak && (
               <Beak
                 outline={outline}
-                position={position}
-                beak={beak}
+                beak={`${position}-${beak}`}
                 data-testid="popover-beak"
               />
             )}
             {children}
           </RaisedDiv>
           {Pattern && (
-            <PatternContainer position={position} align={align}>
+            <PatternContainer variant={`${position}-${align}`}>
               <Pattern data-testid="popover-pattern" />
             </PatternContainer>
           )}
