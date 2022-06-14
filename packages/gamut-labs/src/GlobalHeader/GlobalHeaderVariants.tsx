@@ -45,7 +45,7 @@ const anonHeaderItems = (
   const leftItems: AppHeaderItem[] = [
     logo,
     catalogComponent(user),
-    resourcesDropdown(user?.useNewCatalogDropdown),
+    resourcesDropdown,
     communityDropdown,
     ...(hidePricing ? [] : [pricingComponent(user)]),
     businessSolutions,
@@ -83,7 +83,7 @@ const anonMobileHeaderItems = (
 
   const mainMenuItems: AppHeaderItem[] = [
     catalogComponent(user),
-    resourcesDropdown(user?.useNewCatalogDropdown),
+    resourcesDropdown,
     communityDropdown,
     ...(hidePricing ? [] : [pricingComponent(user)]),
     businessSolutions,
@@ -163,7 +163,7 @@ export const freeHeaderItems = (
     logo,
     myHome,
     catalogComponent(user),
-    resourcesDropdown(user.useNewCatalogDropdown),
+    resourcesDropdown,
     communityDropdown,
     ...(hidePricing ? [] : [pricingComponent(user)]),
     businessSolutions,
@@ -195,7 +195,7 @@ export const freeMobileHeaderItems = (
   const mainMenuItems: AppHeaderItem[] = [
     myHome,
     catalogComponent(user),
-    resourcesDropdown(user.useNewCatalogDropdown),
+    resourcesDropdown,
     communityDropdown,
     ...(hidePricing ? [] : [pricingComponent(user)]),
     businessSolutions,
@@ -220,7 +220,7 @@ export const proHeaderItems = (
     user.hasNewSkuSubscription ? logo : proLogo,
     myHome,
     catalogComponent(user),
-    resourcesDropdown(user.useNewCatalogDropdown),
+    resourcesDropdown,
     communityDropdown,
   ];
 
@@ -250,7 +250,7 @@ export const proMobileHeaderItems = (
   const mainMenuItems: AppHeaderItem[] = [
     myHome,
     catalogComponent(user),
-    resourcesDropdown(user.useNewCatalogDropdown),
+    resourcesDropdown,
     communityDropdown,
     proProfile(user),
   ];
