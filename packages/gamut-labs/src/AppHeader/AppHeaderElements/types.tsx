@@ -19,7 +19,7 @@ type AppHeaderBaseItem<Type extends string> = {
   dataTestId?: string;
   id: string;
   redirect?: boolean;
-  type: Type;
+  type?: Type;
 };
 
 type AppHeaderBaseHrefItem<Type extends string> = AppHeaderBaseItem<Type> & {
