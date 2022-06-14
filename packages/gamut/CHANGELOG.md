@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [48.0.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@48.0.0...@codecademy/gamut@48.0.1) (2022-06-13)
+
+
+### Bug Fixes
+
+* TabNavLink not semantically a tab ([ee91094](https://github.com/Codecademy/gamut/commit/ee9109463663143e9926c225dbbf1d170ac62c61))
+
+
+
 ## [48.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@47.4.0...@codecademy/gamut@48.0.0) (2022-06-08)
 
 
