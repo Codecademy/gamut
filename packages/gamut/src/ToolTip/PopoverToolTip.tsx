@@ -29,7 +29,11 @@ export const PopoverToolTip: React.FC<ToolTipProps> = ({
   }, []);
 
   return (
-    <>
+    <Box
+      position="relative"
+      display="inline-flex"
+      onMouseLeave={() => setIsOpen(false)}
+    >
       <Box
         aria-labelledby={id}
         onKeyDown={(event) => {
@@ -65,6 +69,6 @@ export const PopoverToolTip: React.FC<ToolTipProps> = ({
           {children}
         </FlexBox>
       </Popover>
-    </>
+    </Box>
   );
 };
