@@ -59,7 +59,7 @@
     "lerna": "3.22.1"
   },
   "devDependencies": {
-    "@babel/cli": "7.13.10",
+    "@babel/cli": "7.17.10",
     "@babel/core": "7.13.10",
     "@babel/preset-typescript": "^7.13.0",
     "@codecademy/eslint-config": "8.0.0",
