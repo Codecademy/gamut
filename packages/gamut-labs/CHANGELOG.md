@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [32.0.4](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@32.0.3...@codecademy/gamut-labs@32.0.4) (2022-06-14)
+
+
+### Bug Fixes
+
+* **Popover:** Fix Popover story ([5504e68](https://github.com/Codecademy/gamut/commit/5504e685e46cd579dae9559907e289101abc04b8))
+
+
+
 ### [32.0.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@32.0.2...@codecademy/gamut-labs@32.0.3) (2022-06-13)
 
 
