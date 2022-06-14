@@ -190,7 +190,7 @@ export const AppHeaderCatalogSection = React.forwardRef<
                 <FlexBox
                   maxHeight={{
                     _: 'none',
-                    md: '162rem',
+                    md: '12rem',
                   }}
                   flexDirection="column"
                   flexWrap="wrap"
