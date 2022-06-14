@@ -120,22 +120,20 @@ export const AppHeaderCatalogSection = React.forwardRef<
   const CatalogLink: React.FunctionComponent<{ item: AppHeaderLinkItem }> = ({
     item,
   }) => (
-    <StyledAnchorBox key={item.id} width="12rem">
-      <Anchor
-        data-focusablecatalog="true"
-        variant="interface"
-        fontFamily="base"
-        fontSize={16}
-        fontWeight={400}
-        href={item.href}
-        onClick={(event) => action(event, item as AppHeaderItem)}
-        tabIndex={tabIndex}
-        maxWidth="170px"
-        lineHeight="title"
-      >
-        {item.text}
-      </Anchor>
-    </StyledAnchorBox>
+    <Anchor
+      data-focusablecatalog="true"
+      variant="interface"
+      fontFamily="base"
+      fontSize={16}
+      fontWeight={400}
+      href={item.href}
+      onClick={(event) => action(event, item as AppHeaderItem)}
+      tabIndex={tabIndex}
+      maxWidth="170px"
+      lineHeight="title"
+    >
+      {item.text}
+    </Anchor>
   );
 
   return (
@@ -161,7 +159,9 @@ export const AppHeaderCatalogSection = React.forwardRef<
                 pl={{ _: 16, sm: 64, md: 16 }}
               >
                 {careerPaths.map((item) => (
-                  <CatalogLink item={item} />
+                  <StyledAnchorBox key={item.id} width="12rem">
+                    <CatalogLink item={item} />
+                  </StyledAnchorBox>
                 ))}
               </FlexBox>
             </Column>
@@ -192,7 +192,9 @@ export const AppHeaderCatalogSection = React.forwardRef<
               >
                 <Subheader title="Top Languages" />
                 {topLanguages.map((item) => (
-                  <CatalogLink item={item} />
+                  <StyledAnchorBox key={item.id} width="12rem">
+                    <CatalogLink item={item} />
+                  </StyledAnchorBox>
                 ))}
               </FlexBox>
               <FlexBox
@@ -207,7 +209,9 @@ export const AppHeaderCatalogSection = React.forwardRef<
               >
                 <Subheader title="Top Subjects" />
                 {topSubjects.map((item) => (
-                  <CatalogLink item={item} />
+                  <StyledAnchorBox key={item.id} width="12rem">
+                    <CatalogLink item={item} />
+                  </StyledAnchorBox>
                 ))}
               </FlexBox>
             </FlexBox>

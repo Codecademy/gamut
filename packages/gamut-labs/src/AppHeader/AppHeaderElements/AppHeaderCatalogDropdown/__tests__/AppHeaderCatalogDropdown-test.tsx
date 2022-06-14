@@ -18,11 +18,11 @@ describe('AppHeaderCatalogDropdown', () => {
       const { view } = renderView();
       const menuElement = view.getByText('catalog');
 
-      expect(view.getAllByRole('link', { hidden: true })).toHaveLength(3);
+      expect(view.getAllByRole('link', { hidden: true })).toHaveLength(26);
       menuElement.focus();
       fireEvent.keyDown(menuElement, { key: KEY_CODES.DOWN });
 
-      expect(view.getAllByRole('link')).toHaveLength(3);
+      expect(view.getAllByRole('link')).toHaveLength(26);
     });
     it('focuses on first title and description section', () => {
       const { view } = renderView();
