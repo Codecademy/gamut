@@ -54,18 +54,22 @@ const beakVariants = variant({
     'below-left': {
       ...popoverBelow,
       ...beakLeft,
+      // borderTopLeftRadius: '4px',
     },
     'below-right': {
       ...popoverBelow,
       ...beakRight,
+      // borderTopLeftRadius: '4px',
     },
     'above-left': {
       ...popoverAbove,
       ...beakLeft,
+      // borderBottomRightRadius: '4px',
     },
     'above-right': {
       ...popoverAbove,
       ...beakRight,
+      // borderBottomRightRadius: '4px',
     },
   },
 });

@@ -4,6 +4,7 @@ import {
   fontSmoothPixel,
   lineHeight,
   pxRem,
+  states,
   theme,
   timing,
   variant,
@@ -19,7 +20,7 @@ export type ToolTipAlignment =
   | 'top-right';
 
 const arrowHeight = `1rem`;
-const containerOffsetVertical = `0.75rem`;
+const containerOffsetVertical = 12;
 
 export const TooltipWrapper = styled.div(
   css({ position: 'relative', display: 'inline-flex' })
@@ -28,7 +29,7 @@ export const TooltipWrapper = styled.div(
 export const TargetContainer = styled.div(
   css({
     cursor: 'pointer',
-    border: 0,
+    border: 'none',
     background: 'none',
     padding: 0,
 
@@ -62,16 +63,128 @@ const getToolTipVisibilityCSS = (visibility: boolean) =>
   visibility: hidden;
 `;
 
-const ToolTipContainer = styled.div<Required<ToolTipContainerProps>>`
-  ${fontSmoothPixel}
-  display: flex;
-  transition: opacity ${timing.fast};
-  transition-delay: ${timing.fast};
-  position: absolute;
+const getToolTipVisibility = (boolean: boolean) =>
+  boolean
+    ? ({ opacity: 1, visibility: 'visible' } as const)
+    : ({ opacity: 0, visibility: 'hidden' } as const);
+
+const centerMaxWidth = { maxWidth: '8rem' } as const;
+const alignedMaxWidth = { maxWidth: '16rem' } as const;
+
+const topStyles = {
+  bottom: '100%',
+  pb: containerOffsetVertical,
+  '&::after': {
+    borderBottomRightRadius: '4px',
+    borderWidth: '0 1px 1px 0',
+    bottom: '0.25rem',
+  },
+} as const;
+
+const bottomStyles = {
+  top: '100%',
+  pt: containerOffsetVertical,
+  '&::after': {
+    borderTopightRadius: '4px',
+    borderWidth: '1px 0 0 1px',
+    top: '0.25rem',
+  },
+} as const;
+
+const centerStyles = {
+  left: 'calc(50% - 4rem)',
+  '&::after': {
+    left: 'calc(50% - 0.5rem)',
+  },
+} as const;
+
+const leftStyles = {
+  justifyContent: 'flex-end',
+  left: 'calc(50% - 14rem)',
+  '&::after': {
+    right: '1.5rem',
+  },
+} as const;
+
+const rightStyles = {
+  left: 'calc(50% - 2rem)',
+  '&::after': {
+    left: '1.5rem',
+  },
+} as const;
+
+const toolTipAlignmentVariants = variant({
+  prop: 'alignment',
+  variants: {
+    'bottom-center': {
+      centerMaxWidth,
+    },
+    'bottom-left': {
+      alignedMaxWidth,
+    },
+    'bottom-right': {
+      alignedMaxWidth,
+    },
+    'top-center': {
+      centerMaxWidth,
+      topStyles,
+    },
+    'top-left': {
+      alignedMaxWidth,
+      topStyles,
+    },
+    'top-right': {
+      alignedMaxWidth,
+      topStyles,
+    },
+  },
+});
+
+const toolTipContainerModeVariants = variant({
+  prop: 'mode',
+  variants: {
+    dark: { backgroundColor: 'black', borderColor: 'white' },
+    light: { backgroundColor: 'white', borderColor: 'black' },
+  },
+});
+
+const toolTipVisibilityStates = states({
+  visible: getToolTipVisibility(true),
+});
+
+const toolTipBaseCss = css({
+  fontSmoothPixel,
+  display: 'flex',
+  transition: `opacity ${timing.fast}`,
+  transitionDelay: `${timing.fast}`,
+  position: 'absolute',
+  width: '70vw',
+  zIndex: 1,
+  opacity: 1,
+  visibility: 'visible',
+  '&::after': {
+    content: '',
+    display: 'block',
+    height: `${arrowHeight}`,
+    position: 'absolute',
+    transform: 'rotate(45deg)',
+    width: `${arrowHeight}`,
+    borderStyle: 'solid',
+  },
+});
+
+export const ToolTipContainer = styled.div`
+  ${TargetContainer}:hover + &,
+  ${TargetContainer}:focus-within + &,
+  &:hover {
+    ${getToolTipVisibilityCSS(true)}
+  },
+  ${toolTipBaseCss},
+`;
+
+const ToolTipContainer_1 = styled.div<Required<ToolTipContainerProps>>`
   max-width: ${({ alignment }) =>
     alignment.includes('center') ? '8rem' : '16rem'};
-  width: 70vw;
-  z-index: 1;
 
   ${getToolTipVisibilityCSS(false)}
 

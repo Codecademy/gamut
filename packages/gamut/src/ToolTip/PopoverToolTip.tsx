@@ -56,10 +56,11 @@ export const PopoverToolTip: React.FC<ToolTipProps> = ({
       </Box>
       <Popover
         align="left"
+        position="above"
         aria-live="polite"
         beak="left"
         horizontalOffset={offset}
-        isOpen={isOpen}
+        isOpen
         onRequestClose={() => setIsOpen(false)}
         outline
         role="tooltip"
