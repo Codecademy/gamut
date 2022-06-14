@@ -56,7 +56,6 @@ export const AccordionMenu: React.FC<AccordionMenuProps> = ({
       top={
         <Anchor
           variant="interface"
-          width="auto"
           py={12}
           px={4}
           onClick={() => {
@@ -69,7 +68,12 @@ export const AccordionMenu: React.FC<AccordionMenuProps> = ({
           <Text variant="title-xs" style={{ flex: 1 }} textAlign="left">
             {section.title}
           </Text>
-          <ExpandChevron ml={12} size={14} expanded={expanded} />
+          <ExpandChevron
+            ml={12}
+            size={14}
+            expanded={expanded}
+            style={{ alignItems: 'center' }}
+          />
         </Anchor>
       }
     >
