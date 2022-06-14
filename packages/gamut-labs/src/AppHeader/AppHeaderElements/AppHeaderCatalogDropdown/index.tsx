@@ -206,7 +206,7 @@ export const AppHeaderCatalogDropdown: React.FC<AppHeaderCatalogDropdownProps> =
       </DropdownAnchor>
       <StyledDropdown
         style={{
-          top: '3rem',
+          top: '3.5rem',
           minWidth: '64rem',
           left: '-14rem',
         }}
