@@ -112,6 +112,7 @@ export const AppHeaderCatalogSection = React.forwardRef<
       variant="p-small"
       color="navy-500"
       pb={8}
+      fontFamily="accent"
     >
       {title}
     </Text>
