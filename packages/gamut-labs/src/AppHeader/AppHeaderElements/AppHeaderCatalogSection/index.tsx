@@ -149,7 +149,16 @@ export const AppHeaderCatalogSection = React.forwardRef<
               />
             </Column>
             <Column size={{ xs: 12, md: 8 }}>
-              <FlexBox
+              <LayoutGrid py={16} pl={{ _: 16, sm: 64, md: 16 }}>
+                {careerPaths.map((item) => (
+                  <Column key={item.id} size={{ _: 4 }}>
+                    <StyledAnchorBox width="12rem">
+                      <CatalogLink item={item} />
+                    </StyledAnchorBox>
+                  </Column>
+                ))}
+              </LayoutGrid>
+              {/* <FlexBox
                 maxHeight={{
                   _: 'none',
                   md: '9rem',
@@ -165,7 +174,7 @@ export const AppHeaderCatalogSection = React.forwardRef<
                     <CatalogLink item={item} />
                   </StyledAnchorBox>
                 ))}
-              </FlexBox>
+              </FlexBox> */}
             </Column>
           </LayoutGrid>
         </StyledColumn>
@@ -180,7 +189,27 @@ export const AppHeaderCatalogSection = React.forwardRef<
             />
           </Column>
           <Column size={{ xs: 12, md: 8 }}>
-            <FlexBox>
+            <LayoutGrid py={16} pl={{ _: 16, sm: 64, md: 16 }}>
+              <Column size={{ _: 4 }}>
+                <Subheader title="Top Languages" />
+              </Column>
+              {topLanguages.map((item) => (
+                <Column key={item.id} size={{ _: 4 }}>
+                  <StyledAnchorBox width="12rem">
+                    <CatalogLink item={item} />
+                  </StyledAnchorBox>
+                </Column>
+              ))}
+              <Subheader title="Top Subjects" />
+              {topSubjects.map((item) => (
+                <Column key={item.id} size={{ _: 4 }}>
+                  <StyledAnchorBox width="12rem">
+                    <CatalogLink item={item} />
+                  </StyledAnchorBox>
+                </Column>
+              ))}
+            </LayoutGrid>
+            {/* <FlexBox>
               <FlexBox
                 flexDirection="column"
                 py={16}
@@ -220,7 +249,7 @@ export const AppHeaderCatalogSection = React.forwardRef<
                   </StyledAnchorBox>
                 ))}
               </FlexBox>
-            </FlexBox>
+            </FlexBox> */}
           </Column>
         </LayoutGrid>
       </Column>
