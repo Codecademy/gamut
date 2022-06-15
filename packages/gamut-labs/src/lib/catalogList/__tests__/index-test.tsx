@@ -1,18 +1,17 @@
 import { headerCatalogDropdownList } from '../index';
 
-const catalogSectionCount = 3;
+const catalogSectionCount = 2;
 
 describe('Catalog List', () => {
   it('returns all the catalog sections', () => {
     expect(headerCatalogDropdownList(false).length).toBe(catalogSectionCount);
   });
 
-  it('does return career path, popular courses, and practice tools sections if user has career access', () => {
+  it('does return career path and popular languages and subjects sections if user has career access', () => {
     expect(headerCatalogDropdownList()).toEqual(
       expect.arrayContaining([
         expect.objectContaining({ title: 'Top career paths' }),
-        expect.objectContaining({ title: 'Popular courses' }),
-        expect.objectContaining({ title: 'Practice tools' }),
+        expect.objectContaining({ title: 'Popular languages and subjects' }),
       ])
     );
   });
@@ -29,8 +28,7 @@ describe('Catalog List', () => {
     );
     expect(headerCatalogDropdownList(true)).toEqual(
       expect.arrayContaining([
-        expect.objectContaining({ title: 'Popular courses' }),
-        expect.objectContaining({ title: 'Practice tools' }),
+        expect.objectContaining({ title: 'Popular languages and subjects' }),
       ])
     );
   });
