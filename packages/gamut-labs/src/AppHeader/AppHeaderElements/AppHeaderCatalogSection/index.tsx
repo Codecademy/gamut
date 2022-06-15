@@ -164,7 +164,7 @@ export const AppHeaderCatalogSection = React.forwardRef<
                     key={item.id}
                     size={{ _: 4 }}
                     my="auto"
-                    minHeight={16}
+                    minHeight={46}
                   >
                     <StyledAnchorBox width="12rem">
                       <CatalogLink item={item} />
@@ -200,7 +200,7 @@ export const AppHeaderCatalogSection = React.forwardRef<
                 gridTemplateColumns="1fr 1fr"
               >
                 {topLanguages.map((item) => (
-                  <StyledAnchorBox width="12rem" key={item.id}>
+                  <StyledAnchorBox width="12rem" key={item.id} minHeight={36}>
                     <CatalogLink item={item} />
                   </StyledAnchorBox>
                 ))}
@@ -208,9 +208,9 @@ export const AppHeaderCatalogSection = React.forwardRef<
               <Box gridArea="subjectHeader">
                 <Subheader title="Top Subjects" />
               </Box>
-              <Box gridArea="subject">
+              <Box gridArea="subject" display="grid" gridTemplateColumns="1fr">
                 {topSubjects.map((item) => (
-                  <StyledAnchorBox width="12rem" key={item.id}>
+                  <StyledAnchorBox width="12rem" key={item.id} minHeight={36}>
                     <CatalogLink item={item} />
                   </StyledAnchorBox>
                 ))}
