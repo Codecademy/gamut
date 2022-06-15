@@ -47,6 +47,7 @@ export const Modal: React.FC<ModalProps> = ({
         role="dialog"
         layout="standard"
         size={size}
+        aria-live="polite"
       >
         {title && (
           <Text
