@@ -3,6 +3,7 @@ import React, { useLayoutEffect, useRef, useState } from 'react';
 import { Box, FlexBox } from '../Box';
 import { Popover } from '../Popover';
 import { ToolTipProps } from '.';
+import { alignedMaxWidth, centerMaxWidth } from './elements';
 
 export type ToolTipAlignment =
   | 'bottom-center'
@@ -13,6 +14,7 @@ export type ToolTipAlignment =
   | 'top-right';
 
 export const PopoverToolTip: React.FC<ToolTipProps> = ({
+  alignment = 'above-left',
   children,
   focusable,
   id,
@@ -64,9 +66,15 @@ export const PopoverToolTip: React.FC<ToolTipProps> = ({
         onRequestClose={() => setIsOpen(false)}
         outline
         role="tooltip"
+        size="sml"
         targetRef={ref}
       >
-        <FlexBox flexDirection="column" p={16} alignItems="flex-start">
+        <FlexBox
+          flexDirection="column"
+          p={16}
+          alignItems="flex-start"
+          maxWidth="16rem"
+        >
           {children}
         </FlexBox>
       </Popover>

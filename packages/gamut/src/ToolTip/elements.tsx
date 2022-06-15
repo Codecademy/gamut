@@ -3,8 +3,6 @@ import {
   ColorModes,
   css,
   fontSmoothPixel,
-  lineHeight,
-  pxRem,
   states,
   theme,
   timing,
@@ -23,7 +21,7 @@ export type ToolTipAlignment =
   | 'top-left'
   | 'top-right';
 
-const arrowHeight = `1rem`;
+export const tooltipArrowHeight = `1rem`;
 const containerOffsetVertical = 12;
 
 export const TooltipWrapper = styled.div(
@@ -62,7 +60,7 @@ const topStyles = {
   pb: containerOffsetVertical,
 } as const;
 
-const topStylesAfter = {
+export const topStylesAfter = {
   borderColor: 'currentColor',
   borderBottomRightRadius: '4px',
   borderWidth: '0 1px 1px 0',
@@ -74,7 +72,7 @@ const bottomStyles = {
   pt: containerOffsetVertical,
 } as const;
 
-const bottomStylesAfter = {
+export const bottomStylesAfter = {
   borderColor: 'currentColor',
   borderTopLeftRadius: '4px',
   borderWidth: '1px 0 0 1px',
@@ -122,10 +120,10 @@ const toolTipAlignmentVariants = variant({
       bg: 'background-current',
       content: '""',
       display: 'block',
-      height: `${arrowHeight}`,
+      height: `${tooltipArrowHeight}`,
       position: 'absolute',
       transform: 'rotate(45deg)',
-      width: `${arrowHeight}`,
+      width: `${tooltipArrowHeight}`,
       borderStyle: 'solid',
     },
   },
@@ -173,10 +171,14 @@ export const ToolTipContainer = styled(Background)<ToolTipContainerProps>`
     opacity: 1;
     visibility: visible;
   }
-  ${toolTipAlignmentVariants}s
+  ${toolTipAlignmentVariants}
 `;
 
-const toolTipBodyAlignments = variant({
+export const ToolTipContainer2 = styled(Background)<ToolTipContainerProps>`
+  ${toolTipAlignmentVariants}
+`;
+
+export const toolTipBodyAlignments = variant({
   prop: 'alignment',
   variants: {
     centered: {
@@ -190,16 +192,21 @@ const toolTipBodyAlignments = variant({
   },
 });
 
+export const toolTipBodyCss = {
+  bg: 'background-current',
+  border: 1,
+  boxShadow: 'none',
+  borderRadius: '3px',
+  display: 'inline-block',
+  fontSize: 14,
+  lineHeight: 'base',
+} as const;
+
 export const ToolTipBody = styled(Box)<
   StyleProps<typeof toolTipBodyAlignments>
 >(
   css({
-    bg: 'background-current',
-    border: 1,
-    borderRadius: '3px',
-    display: 'inline-block',
-    fontSize: 14,
-    lineHeight: 'base',
+    ...toolTipBodyCss,
   }),
   toolTipBodyAlignments
 );

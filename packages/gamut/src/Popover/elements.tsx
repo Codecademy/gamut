@@ -1,6 +1,8 @@
-import { css, states, variant } from '@codecademy/gamut-styles';
+import { states, variant } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
+
+import { toolTipBodyAlignments, toolTipBodyCss } from '../ToolTip/elements';
 
 const outlineState = states({
   outline: {
@@ -10,16 +12,25 @@ const outlineState = states({
   },
 });
 
-export const RaisedDiv = styled.div<StyleProps<typeof outlineState>>(
-  css({
-    bg: 'background',
-    border: 'none',
-    borderRadius: '2px',
-    boxShadow: '0 0 16px rgba(0, 0, 0, 0.1), 0 0 24px rgba(0, 0, 0, 0.15)',
-    zIndex: 1,
-  }),
-  outlineState
-);
+const raisedDivVariants = variant({
+  prop: 'size',
+  variants: {
+    lrg: {
+      bg: 'background',
+      border: 'none',
+      borderRadius: '2px',
+      boxShadow: '0 0 16px rgba(0, 0, 0, 0.1), 0 0 24px rgba(0, 0, 0, 0.15)',
+      zIndex: 1,
+    },
+    sml: { ...toolTipBodyCss },
+  },
+});
+
+export const RaisedDiv = styled.div<
+  StyleProps<typeof outlineState> &
+    StyleProps<typeof toolTipBodyAlignments> &
+    StyleProps<typeof raisedDivVariants>
+>(outlineState, toolTipBodyAlignments, raisedDivVariants);
 
 const popoverAbove = {
   borderRight: 'inherit',
@@ -43,40 +54,50 @@ const beakLeft = {
 
 const beakVariants = variant({
   base: {
-    bg: 'background',
-    height: '20px',
+    bg: 'background-current',
     position: 'absolute',
     transform: 'rotate(45deg)',
-    width: '20px',
   },
   prop: 'beak',
   variants: {
     'below-left': {
       ...popoverBelow,
       ...beakLeft,
-      // borderTopLeftRadius: '4px',
     },
     'below-right': {
       ...popoverBelow,
       ...beakRight,
-      // borderTopLeftRadius: '4px',
     },
     'above-left': {
       ...popoverAbove,
       ...beakLeft,
-      // borderBottomRightRadius: '4px',
     },
     'above-right': {
       ...popoverAbove,
       ...beakRight,
-      // borderBottomRightRadius: '4px',
+    },
+  },
+});
+
+const beakSize = variant({
+  prop: 'size',
+  variants: {
+    sml: {
+      height: '1rem',
+      width: '1rem',
+    },
+    lrg: {
+      height: '20px',
+      width: '20px',
     },
   },
 });
 
 export const Beak = styled.div<
-  StyleProps<typeof outlineState> & StyleProps<typeof beakVariants>
->(beakVariants);
+  StyleProps<typeof outlineState> &
+    StyleProps<typeof beakVariants> &
+    StyleProps<typeof beakSize>
+>(beakVariants, beakSize);
 
 const patternBelow = {
   top: '8px',

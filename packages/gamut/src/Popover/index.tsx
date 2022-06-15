@@ -71,6 +71,10 @@ export interface PopoverProps
    */
   pattern?: React.ComponentType<PatternProps>;
   /**
+   * Large popver vs smaller tooltip-style Popovers
+   */
+  size?: 'sml' | 'lrg';
+  /**
    * Called when the Popover requests to be closed,
    * this could be due to clicking outside of the popover, or by clicking the escape key.
    */
@@ -94,6 +98,7 @@ export const Popover: React.FC<PopoverProps> = ({
   beak,
   isOpen,
   onRequestClose,
+  size = 'lrg',
   targetRef,
   pattern: Pattern,
 }) => {
@@ -169,12 +174,17 @@ export const Popover: React.FC<PopoverProps> = ({
           data-testid="popover-content-container"
           tabIndex={-1}
         >
-          <RaisedDiv outline={outline}>
+          <RaisedDiv
+            alignment={align.includes('center') ? 'centered' : 'aligned'}
+            size={size}
+            outline={outline}
+          >
             {beak && (
               <Beak
                 outline={outline}
                 beak={`${position}-${beak}`}
                 data-testid="popover-beak"
+                size={size}
               />
             )}
             {children}
