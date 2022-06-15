@@ -72,7 +72,6 @@ export const AccordionMenu: React.FC<AccordionMenuProps> = ({
             ml={12}
             size={14}
             expanded={expanded}
-            py={12}
             position="relative"
             top={4}
           />
