@@ -1,13 +1,3 @@
-import {
-  ColorModes,
-  fontSmoothPixel,
-  lineHeight,
-  pxRem,
-  theme,
-  timing,
-  variant,
-} from '@codecademy/gamut-styles';
-import styled from '@emotion/styled';
 import React from 'react';
 
 import { ToolTipProps } from '.';
@@ -56,7 +46,11 @@ export const StaticToolTip: React.FC<ToolTipProps> = ({
         role="tooltip"
         aria-live="polite"
       >
-        <ToolTipBody alignment={alignment} mode={mode} widthMode={widthMode}>
+        <ToolTipBody
+          alignment={alignment.includes('center') ? 'centered' : 'aligned'}
+          minWidth={widthMode === 'unlimited' ? 'initial' : '4rem'}
+          color="currentColor"
+        >
           {children}
         </ToolTipBody>
       </ToolTipContainer>

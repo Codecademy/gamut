@@ -13,6 +13,8 @@ import {
 import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
 
+import { Box } from '../Box';
+
 export type ToolTipAlignment =
   | 'bottom-center'
   | 'bottom-left'
@@ -74,7 +76,7 @@ const bottomStyles = {
 
 const bottomStylesAfter = {
   borderColor: 'currentColor',
-  borderTopRightRadius: '4px',
+  borderTopLeftRadius: '4px',
   borderWidth: '1px 0 0 1px',
   top: '0.25rem',
 } as const;
@@ -174,18 +176,23 @@ export const ToolTipContainer = styled(Background)<ToolTipContainerProps>`
   ${toolTipAlignmentVariants}s
 `;
 
-const toolTipBodyStates = states({
-  center: {
-    m: 'auto',
-    p: 8,
-    textAlign: 'center',
-  },
-  unlimitedWidth: {
-    minWidth: 'initial',
+const toolTipBodyAlignments = variant({
+  prop: 'alignment',
+  variants: {
+    centered: {
+      m: 'auto',
+      p: 8,
+      textAlign: 'center',
+    },
+    aligned: {
+      p: 16,
+    },
   },
 });
 
-export const ToolTipBody = styled.div(
+export const ToolTipBody = styled(Box)<
+  StyleProps<typeof toolTipBodyAlignments>
+>(
   css({
     bg: 'background-current',
     border: 1,
@@ -193,45 +200,6 @@ export const ToolTipBody = styled.div(
     display: 'inline-block',
     fontSize: 14,
     lineHeight: 'base',
-    p: 16,
-    minWidth: '4rem',
   }),
-  toolTipBodyStates
+  toolTipBodyAlignments
 );
-
-const ToolTipBody2 = styled.div<Required<ToolTipBodyProps>>`
-  border: 1px solid;
-  border-radius: 3px;
-  display: inline-block;
-  font-size: ${pxRem(14)};
-  line-height: ${lineHeight.base};
-
-  ${({ alignment }) =>
-    alignment.includes('center')
-      ? `
-      margin: auto;
-      padding: 0.5rem;
-      text-align: center;
-    `
-      : `
-      padding: 1rem;
-    `}
-
-  ${variant({
-    prop: 'mode',
-    variants: {
-      dark: {
-        bg: 'black',
-        borderColor: 'beige',
-        textColor: 'beige',
-      },
-      light: {
-        bg: 'white',
-        borderColor: 'black',
-        textColor: 'black',
-      },
-    },
-  })}
-
-  ${({ widthMode }) => (widthMode === 'unlimited' ? {} : { minWidth: '4rem' })}
-`;
