@@ -3,6 +3,7 @@ import {
   Box,
   Column,
   FlexBox,
+  GridBox,
   LayoutGrid,
   Text,
 } from '@codecademy/gamut';
@@ -56,6 +57,14 @@ const catalogAnchorData: AppHeaderItem = {
   trackingTarget: 'topnav_catalog_explore_full',
 };
 
+const gridTemplate = `'languageHeader gap subjectHeader'
+                    'language language subject'
+                    'language language subject'
+                    'language language subject'
+                    'language language subject'
+                    'language language subject'
+                    'language language subject'`;
+
 export const AppHeaderCatalogSection = React.forwardRef<
   HTMLDivElement,
   AppHeaderCatalogSectionProps
@@ -93,7 +102,7 @@ export const AppHeaderCatalogSection = React.forwardRef<
             data-focusablecatalog="true"
             onClick={(event) => action(event, catalogAnchorData)}
             tabIndex={tabIndex}
-            mt={64}
+            mt={96}
           >
             {catalogAnchorData.text}
           </Anchor>
@@ -149,32 +158,20 @@ export const AppHeaderCatalogSection = React.forwardRef<
               />
             </Column>
             <Column size={{ xs: 12, md: 8 }}>
-              <LayoutGrid py={16} pl={{ _: 16, sm: 64, md: 16 }}>
+              <LayoutGrid py={16} rowGap={8} pl={{ _: 16, sm: 64, md: 16 }}>
                 {careerPaths.map((item) => (
-                  <Column key={item.id} size={{ _: 4 }}>
+                  <Column
+                    key={item.id}
+                    size={{ _: 4 }}
+                    my="auto"
+                    minHeight={16}
+                  >
                     <StyledAnchorBox width="12rem">
                       <CatalogLink item={item} />
                     </StyledAnchorBox>
                   </Column>
                 ))}
               </LayoutGrid>
-              {/* <FlexBox
-                maxHeight={{
-                  _: 'none',
-                  md: '9rem',
-                }}
-                flexDirection="column"
-                flexWrap="wrap"
-                py={16}
-                pl={{ _: 16, sm: 64, md: 16 }}
-                my="auto"
-              >
-                {careerPaths.map((item) => (
-                  <StyledAnchorBox key={item.id} width="12rem">
-                    <CatalogLink item={item} />
-                  </StyledAnchorBox>
-                ))}
-              </FlexBox> */}
             </Column>
           </LayoutGrid>
         </StyledColumn>
@@ -189,67 +186,36 @@ export const AppHeaderCatalogSection = React.forwardRef<
             />
           </Column>
           <Column size={{ xs: 12, md: 8 }}>
-            <LayoutGrid py={16} pl={{ _: 16, sm: 64, md: 16 }}>
-              <Column size={{ _: 4 }}>
+            <GridBox
+              py={16}
+              pl={{ _: 16, sm: 64, md: 16 }}
+              gridTemplateAreas={gridTemplate}
+            >
+              <Box gridArea="languageHeader">
                 <Subheader title="Top Languages" />
-              </Column>
-              {topLanguages.map((item) => (
-                <Column key={item.id} size={{ _: 4 }}>
-                  <StyledAnchorBox width="12rem">
-                    <CatalogLink item={item} />
-                  </StyledAnchorBox>
-                </Column>
-              ))}
-              <Subheader title="Top Subjects" />
-              {topSubjects.map((item) => (
-                <Column key={item.id} size={{ _: 4 }}>
-                  <StyledAnchorBox width="12rem">
-                    <CatalogLink item={item} />
-                  </StyledAnchorBox>
-                </Column>
-              ))}
-            </LayoutGrid>
-            {/* <FlexBox>
-              <FlexBox
-                flexDirection="column"
-                py={16}
-                pl={{ _: 16, sm: 64, md: 16 }}
+              </Box>
+              <Box
+                gridArea="language"
+                display="grid"
+                gridTemplateColumns="1fr 1fr"
               >
-                <Subheader title="Top Languages" />
-                <FlexBox
-                  maxHeight={{
-                    _: 'none',
-                    md: '12rem',
-                  }}
-                  flexDirection="column"
-                  flexWrap="wrap"
-                  width="28rem"
-                >
-                  {topLanguages.map((item) => (
-                    <StyledAnchorBox key={item.id} width="12rem">
-                      <CatalogLink item={item} />
-                    </StyledAnchorBox>
-                  ))}
-                </FlexBox>
-              </FlexBox>
-              <FlexBox
-                maxHeight={{
-                  _: 'none',
-                  md: '16rem',
-                }}
-                flexDirection="column"
-                flexWrap="wrap"
-                py={16}
-                pl={{ _: 16, sm: 64, md: 16 }}
-              >
-                <Subheader title="Top Subjects" />
-                {topSubjects.map((item) => (
-                  <StyledAnchorBox key={item.id} width="12rem">
+                {topLanguages.map((item) => (
+                  <StyledAnchorBox width="12rem" key={item.id}>
                     <CatalogLink item={item} />
                   </StyledAnchorBox>
                 ))}
-              </FlexBox>
-            </FlexBox> */}
+              </Box>
+              <Box gridArea="subjectHeader">
+                <Subheader title="Top Subjects" />
+              </Box>
+              <Box gridArea="subject">
+                {topSubjects.map((item) => (
+                  <StyledAnchorBox width="12rem" key={item.id}>
+                    <CatalogLink item={item} />
+                  </StyledAnchorBox>
+                ))}
+              </Box>
+            </GridBox>
           </Column>
         </LayoutGrid>
       </Column>

@@ -9,31 +9,10 @@ export const careerPaths: AppHeaderLinkItem[] = [
     type: 'link',
   },
   {
-    id: 'front-end-engineer-career-path',
-    href: '/learn/paths/front-end-engineer-career-path',
-    trackingTarget: 'topnav_catalog_career_front-end-engineer',
-    text: 'Front-End Engineer',
-    type: 'link',
-  },
-  {
-    id: 'back-end-engineer-career-path',
-    href: '/learn/paths/back-end-engineer-career-path',
-    trackingTarget: 'topnav_catalog_career_back-end-engineer',
-    text: 'Back-End Engineer',
-    type: 'link',
-  },
-  {
     id: 'computer-science',
     href: '/learn/paths/computer-science',
     trackingTarget: 'topnav_catalog_career_computer-science',
     text: 'Computer Science',
-    type: 'link',
-  },
-  {
-    id: 'ios-developer',
-    href: '/learn/paths/ios-developer',
-    trackingTarget: 'topnav_catalog_career_ios-developer',
-    text: 'iOS Developer',
     type: 'link',
   },
   {
@@ -44,10 +23,31 @@ export const careerPaths: AppHeaderLinkItem[] = [
     type: 'link',
   },
   {
+    id: 'front-end-engineer-career-path',
+    href: '/learn/paths/front-end-engineer-career-path',
+    trackingTarget: 'topnav_catalog_career_front-end-engineer',
+    text: 'Front-End Engineer',
+    type: 'link',
+  },
+  {
+    id: 'ios-developer',
+    href: '/learn/paths/ios-developer',
+    trackingTarget: 'topnav_catalog_career_ios-developer',
+    text: 'iOS Developer',
+    type: 'link',
+  },
+  {
     id: 'data-analyst',
     href: '/learn/paths/data-analyst',
     trackingTarget: 'topnav_catalog_career_data_analyst',
     text: 'Data Scientist: Analytics Specialist',
+    type: 'link',
+  },
+  {
+    id: 'back-end-engineer-career-path',
+    href: '/learn/paths/back-end-engineer-career-path',
+    trackingTarget: 'topnav_catalog_career_back-end-engineer',
+    text: 'Back-End Engineer',
     type: 'link',
   },
 ];
