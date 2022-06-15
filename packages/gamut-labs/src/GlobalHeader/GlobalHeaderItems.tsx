@@ -77,16 +77,14 @@ export const catalogDropdown = (
   type: 'catalog-dropdown',
 });
 
-export const resourcesDropdown = (
-  useNewCatalogDropdown?: boolean
-): AppHeaderSimpleDropdownItem => ({
+export const resourcesDropdown: AppHeaderSimpleDropdownItem = {
   icon: NotebookIcon,
   id: 'resources',
   text: 'Resources',
-  popover: headerResourcesList(useNewCatalogDropdown),
+  popover: headerResourcesList,
   trackingTarget: 'topnav_resources',
   type: 'dropdown',
-});
+};
 
 export const communityDropdown: AppHeaderSimpleDropdownItem = {
   icon: CommunityIcon,

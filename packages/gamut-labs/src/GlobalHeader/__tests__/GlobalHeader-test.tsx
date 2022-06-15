@@ -170,7 +170,7 @@ describe('GlobalHeader', () => {
 
     it('renders resourcesDropdown', () => {
       const { view } = renderView(anonHeaderProps);
-      view.getAllByText(resourcesDropdown().text);
+      view.getAllByText(resourcesDropdown.text);
     });
 
     it('renders communityDropdown', () => {
@@ -297,7 +297,7 @@ describe('GlobalHeader', () => {
 
       it('renders resourcesDropdown', () => {
         const { view } = renderView(freeHeaderProps);
-        view.getByText(resourcesDropdown().text);
+        view.getByText(resourcesDropdown.text);
       });
 
       it('renders communityDropdown', () => {
@@ -410,7 +410,7 @@ describe('GlobalHeader', () => {
 
       it('renders resourcesDropdown', () => {
         const { view } = renderView(proHeaderProps);
-        view.getByText(resourcesDropdown().text);
+        view.getByText(resourcesDropdown.text);
       });
 
       it('renders communityDropdown', () => {

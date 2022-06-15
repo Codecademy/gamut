@@ -1,6 +1,7 @@
-import { BetaSticker, Box, FlexBox, Text } from '@codecademy/gamut';
+import { Box, FlexBox, Text } from '@codecademy/gamut';
 import React from 'react';
 
+import { BetaSticker } from '../../BetaSticker';
 import { BottomTag, TagColor } from '../BottomTag/index';
 
 export type FooterProps = {

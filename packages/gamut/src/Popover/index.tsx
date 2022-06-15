@@ -1,9 +1,11 @@
-import { BodyPortal, FocusTrap } from '@codecademy/gamut';
 import { PatternProps } from '@codecademy/gamut-patterns';
 import { themed } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useWindowScroll, useWindowSize } from 'react-use';
+
+import { BodyPortal } from '../BodyPortal';
+import { FocusTrap } from '../FocusTrap';
 
 type StyleProps = {
   outline?: boolean;
