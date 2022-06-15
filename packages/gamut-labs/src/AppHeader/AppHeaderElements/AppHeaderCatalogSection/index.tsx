@@ -158,7 +158,7 @@ export const AppHeaderCatalogSection = React.forwardRef<
               />
             </Column>
             <Column size={{ xs: 12, md: 8 }}>
-              <LayoutGrid py={16} rowGap={8} pl={{ _: 16, sm: 64, md: 42 }}>
+              <LayoutGrid py={16} rowGap={8} pl={{ _: 16, sm: 64, md: 48 }}>
                 {careerPaths.map((item) => (
                   <Column
                     key={item.id}
@@ -188,7 +188,7 @@ export const AppHeaderCatalogSection = React.forwardRef<
           <Column size={{ xs: 12, md: 8 }}>
             <GridBox
               py={16}
-              pl={{ _: 16, sm: 64, md: 42 }}
+              pl={{ _: 16, sm: 64, md: 48 }}
               gridTemplateAreas={gridTemplate}
             >
               <Box gridArea="languageHeader">
