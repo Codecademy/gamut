@@ -6,6 +6,8 @@ import React, { ComponentProps, forwardRef } from 'react';
 
 const cardProps = variance.compose(system.layout, system.padding);
 
+const cardWrapperProps = variance.compose(system.layout);
+
 const beakVariants = system.variant({
   prop: 'beak',
   base: {
@@ -55,7 +57,10 @@ const beakVariants = system.variant({
   },
 });
 
-const CardWrapper = styled.div(
+const CardWrapper = styled(
+  'div',
+  styledOptions
+)<StyleProps<typeof system.layout>>(
   system.css({
     maxWidth: '100%',
     position: 'relative',
@@ -85,6 +90,7 @@ export type FloatingCardProps = {
   className?: string;
   pattern?: React.ComponentType<PatternProps>;
   shadow?: 'bottomLeft' | 'bottomRight';
+  cardWrapperDisplay?: 'inline-block';
 } & ComponentProps<typeof CardBody>;
 
 export const FloatingCard = forwardRef<HTMLDivElement, FloatingCardProps>(
@@ -94,11 +100,12 @@ export const FloatingCard = forwardRef<HTMLDivElement, FloatingCardProps>(
       className,
       pattern: Pattern = CheckerDense,
       shadow = 'bottomLeft',
+      cardWrapperDisplay,
       ...rest
     },
     ref
   ) => (
-    <CardWrapper>
+    <CardWrapper display={cardWrapperDisplay}>
       <Pattern
         dimensions={1}
         position="absolute"
