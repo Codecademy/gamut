@@ -74,8 +74,8 @@ export const AppHeaderCatalogSection = React.forwardRef<
   const DescriptionSection: React.FunctionComponent<{
     title: string;
     subtitle: string;
-    showFullCatalog?: boolean;
-  }> = ({ title, subtitle, showFullCatalog }) => (
+    showFullCatalogButton?: boolean;
+  }> = ({ title, subtitle, showFullCatalogButton }) => (
     <FlexBox
       data-focusablecatalog="true"
       data-testid="title-description-section"
@@ -91,7 +91,7 @@ export const AppHeaderCatalogSection = React.forwardRef<
       <Text fontSize={14} font-weight={400}>
         {subtitle}
       </Text>
-      {showFullCatalog && (
+      {showFullCatalogButton && (
         <ColorMode mode="dark">
           <Anchor
             variant="standard"
@@ -182,7 +182,7 @@ export const AppHeaderCatalogSection = React.forwardRef<
             <DescriptionSection
               title="Popular languages and subjects"
               subtitle="Find courses in languages or subjects that interest you."
-              showFullCatalog
+              showFullCatalogButton
             />
           </Column>
           <Column size={{ xs: 12, md: 8 }}>

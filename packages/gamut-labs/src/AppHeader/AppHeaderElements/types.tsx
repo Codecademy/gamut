@@ -77,26 +77,6 @@ export type AppHeaderCatalogDropdownItem = AppHeaderBaseItem<'catalog-dropdown'>
   hideCareerPaths?: boolean;
 };
 
-export type AppHeaderCatalogSubheaderItem = AppHeaderBaseItem<'subheader'> & {
-  text: string;
-};
-
-export type AppHeaderCatalogSectionData =
-  | (AppHeaderLinkItem | AppHeaderCatalogSubheaderItem)[]
-  | {
-      [sectionTitle: string]: (
-        | AppHeaderLinkItem
-        | AppHeaderCatalogSubheaderItem
-      )[];
-    };
-
-export type AppHeaderCatalogDataItem = {
-  title: string;
-  description: string;
-  requiresCareerAccess?: boolean;
-  data: AppHeaderCatalogSectionData;
-};
-
 export type AppHeaderClickHandler<ItemType = AppHeaderItem> = (
   event: React.MouseEvent,
   item: ItemType
