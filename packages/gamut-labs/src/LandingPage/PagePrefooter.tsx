@@ -1,6 +1,7 @@
 import { Box, FlexBox } from '@codecademy/gamut';
 import React from 'react';
 
+import { useRouteWithCurrentParams } from '../utils';
 import { CTA } from './CTA';
 import { Description } from './Description';
 import { Title } from './Title';
@@ -13,6 +14,8 @@ export const PagePrefooter: React.FC<BaseProps> = ({
   onAnchorClick,
   testId,
 }) => {
+  const href = useRouteWithCurrentParams(cta?.href || '');
+
   const SectionTitle = title && <Title>{title}</Title>;
   const Desc = desc && (
     <Description text={desc} onAnchorClick={onAnchorClick} />
@@ -30,7 +33,7 @@ export const PagePrefooter: React.FC<BaseProps> = ({
         {Desc}
       </Box>
       <Box mt={{ _: 32, sm: 0 }} ml={{ sm: 32 }}>
-        <CTA href={cta.href} onClick={cta.onClick} buttonType={cta.buttonType}>
+        <CTA href={href} onClick={cta.onClick} buttonType={cta.buttonType}>
           {cta.text}
         </CTA>
       </Box>

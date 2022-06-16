@@ -9,6 +9,7 @@ import {
 } from '@codecademy/gamut';
 import React from 'react';
 
+import { useRouteWithCurrentParams } from '../utils';
 import { CTA } from './CTA';
 import { Description } from './Description';
 import { Title } from './Title';
@@ -72,6 +73,9 @@ export const PageSingleFeature: React.FC<PageSingleFeatureProps> = ({
   testId,
   title,
 }) => {
+  const href = useRouteWithCurrentParams(cta?.href || '');
+  // console.log('here', window.location);
+
   const primaryContent = (
     <>
       {title && (
@@ -93,11 +97,7 @@ export const PageSingleFeature: React.FC<PageSingleFeatureProps> = ({
       {desc && <Description text={desc} onAnchorClick={onAnchorClick} />}
       {cta && (
         <Box mt={32}>
-          <CTA
-            href={cta.href}
-            onClick={cta.onClick}
-            buttonType={cta.buttonType}
-          >
+          <CTA href={href} onClick={cta.onClick} buttonType={cta.buttonType}>
             {cta.text}
           </CTA>
         </Box>

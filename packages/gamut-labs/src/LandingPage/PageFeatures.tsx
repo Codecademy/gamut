@@ -7,6 +7,7 @@ import {
 } from '@codecademy/gamut';
 import React, { ReactNode } from 'react';
 
+import { useRouteWithCurrentParams } from '../utils';
 import { CTA } from './CTA';
 import { Description } from './Description';
 import {
@@ -93,49 +94,52 @@ export const PageFeatures: React.FC<PageFeaturesProps> = ({
   featuresMedia,
   testId,
   onAnchorClick,
-}) => (
-  <div data-testid={testId}>
-    <div>
-      {title && <Title isPageHeading={false}>{title}</Title>}
-      {desc && <Description text={desc} onAnchorClick={onAnchorClick} />}
-      {cta && (
-        <Box mt={32}>
-          <CTA
-            href={cta.href}
-            onClick={cta.onClick}
-            buttonType={cta.buttonType}
-          >
-            {cta.text}
-          </CTA>
-        </Box>
-      )}
+}) => {
+  const href = useRouteWithCurrentParams(cta?.href || '');
+
+  return (
+    <div data-testid={testId}>
+      <div>
+        {title && <Title isPageHeading={false}>{title}</Title>}
+        {desc && <Description text={desc} onAnchorClick={onAnchorClick} />}
+        {cta && (
+          <Box mt={32}>
+            <CTA href={href} onClick={cta.onClick} buttonType={cta.buttonType}>
+              {cta.text}
+            </CTA>
+          </Box>
+        )}
+      </div>
+      <Box mt={16}>
+        {renderEach(
+          maxCols,
+          features,
+          ({ testId, imgSrc, imgAlt, statText, title: featTitle, desc }) => (
+            <Feature testId={testId}>
+              {featuresMedia === 'image' && (
+                <FeaturedImage src={imgSrc!} alt={imgAlt!} />
+              )}
+              {featuresMedia === 'icon' && (
+                <FeaturedIcon src={imgSrc!} alt={imgAlt!} />
+              )}
+              {featuresMedia === 'stat' && (
+                <FeaturedStat>{statText}</FeaturedStat>
+              )}
+              {featTitle && (
+                <FeaturedTitle as={title ? 'h3' : 'h2'}>
+                  {featTitle}
+                </FeaturedTitle>
+              )}
+              {desc && (
+                <FeaturedDescription
+                  desc={desc}
+                  onAnchorClick={onAnchorClick}
+                />
+              )}
+            </Feature>
+          )
+        )}
+      </Box>
     </div>
-    <Box mt={16}>
-      {renderEach(
-        maxCols,
-        features,
-        ({ testId, imgSrc, imgAlt, statText, title: featTitle, desc }) => (
-          <Feature testId={testId}>
-            {featuresMedia === 'image' && (
-              <FeaturedImage src={imgSrc!} alt={imgAlt!} />
-            )}
-            {featuresMedia === 'icon' && (
-              <FeaturedIcon src={imgSrc!} alt={imgAlt!} />
-            )}
-            {featuresMedia === 'stat' && (
-              <FeaturedStat>{statText}</FeaturedStat>
-            )}
-            {featTitle && (
-              <FeaturedTitle as={title ? 'h3' : 'h2'}>
-                {featTitle}
-              </FeaturedTitle>
-            )}
-            {desc && (
-              <FeaturedDescription desc={desc} onAnchorClick={onAnchorClick} />
-            )}
-          </Feature>
-        )
-      )}
-    </Box>
-  </div>
-);
+  );
+};

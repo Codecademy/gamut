@@ -3,6 +3,7 @@ import { mediaQueries } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React from 'react';
 
+import { useRouteWithCurrentParams } from '../utils';
 import { CTA } from './CTA';
 import { Description } from './Description';
 import { Title } from './Title';
@@ -55,30 +56,34 @@ export const PageVideoGallery: React.FC<PageVideoGalleryProps> = ({
   onAnchorClick,
   cta,
   testId,
-}) => (
-  <div>
-    {(title || desc) && (
-      <Box mb={32}>
-        {title && <Title>{title}</Title>}
-        {desc && <Description text={desc} onAnchorClick={onAnchorClick} />}
-      </Box>
-    )}
-    <Grid data-testid={testId}>
-      {videos.map((video) => (
-        <GridVideo
-          key={video.url}
-          videoUrl={video.url}
-          videoTitle={video.title}
-          placeholderImage={video.placeholderImage || true}
-        />
-      ))}
-    </Grid>
-    {cta && (
-      <Box mt={32}>
-        <CTA href={cta.href} onClick={cta.onClick} buttonType={cta.buttonType}>
-          {cta.text}
-        </CTA>
-      </Box>
-    )}
-  </div>
-);
+}) => {
+  const href = useRouteWithCurrentParams(cta?.href || '');
+
+  return (
+    <div>
+      {(title || desc) && (
+        <Box mb={32}>
+          {title && <Title>{title}</Title>}
+          {desc && <Description text={desc} onAnchorClick={onAnchorClick} />}
+        </Box>
+      )}
+      <Grid data-testid={testId}>
+        {videos.map((video) => (
+          <GridVideo
+            key={video.url}
+            videoUrl={video.url}
+            videoTitle={video.title}
+            placeholderImage={video.placeholderImage || true}
+          />
+        ))}
+      </Grid>
+      {cta && (
+        <Box mt={32}>
+          <CTA href={href} onClick={cta.onClick} buttonType={cta.buttonType}>
+            {cta.text}
+          </CTA>
+        </Box>
+      )}
+    </div>
+  );
+};
