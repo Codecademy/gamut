@@ -88,7 +88,7 @@ export type FloatingCardProps = {
   className?: string;
   pattern?: React.ComponentType<PatternProps>;
   shadow?: 'bottomLeft' | 'bottomRight';
-  cardWrapperDisplay?: 'inline-block';
+  cardWrapperDisplay?: Pick<StyleProps<typeof system.layout>, 'display'>;
 } & ComponentProps<typeof CardBody>;
 
 export const FloatingCard = forwardRef<HTMLDivElement, FloatingCardProps>(
@@ -103,7 +103,7 @@ export const FloatingCard = forwardRef<HTMLDivElement, FloatingCardProps>(
     },
     ref
   ) => (
-    <CardWrapper display={cardWrapperDisplay}>
+    <CardWrapper {...cardWrapperDisplay}>
       <Pattern
         dimensions={1}
         position="absolute"
