@@ -6,8 +6,6 @@ import React, { ComponentProps, forwardRef } from 'react';
 
 const cardProps = variance.compose(system.layout, system.padding);
 
-const cardWrapperProps = variance.compose(system.layout);
-
 const beakVariants = system.variant({
   prop: 'beak',
   base: {
