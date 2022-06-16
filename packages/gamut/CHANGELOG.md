@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [48.0.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@48.0.1...@codecademy/gamut@48.0.2) (2022-06-16)
+
+
+### Bug Fixes
+
+* **ListRow:** remove double onClick call ([b48d16e](https://github.com/Codecademy/gamut/commit/b48d16efff2dd80468f9b8146d672d0d85dc6c14))
+
+
+
 ### [48.0.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@48.0.0...@codecademy/gamut@48.0.1) (2022-06-13)
 
 
