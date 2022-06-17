@@ -201,7 +201,6 @@ export const bookmarks = (
   renderBookmarks: () => ReactNode
 ): AppHeaderRenderElementItem => {
   return {
-    dataTestId: 'global-nav-bookmarks',
     id: 'bookmarks',
     renderElement: renderBookmarks,
     type: 'render-element',
