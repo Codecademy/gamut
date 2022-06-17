@@ -62,8 +62,7 @@ const CardWrapper = styled.div(
     display: 'inline-block',
     textColor: 'text',
     zIndex: 1,
-  }),
-  system.layout
+  })
 );
 
 const CardBody = styled('div', styledOptions)<
