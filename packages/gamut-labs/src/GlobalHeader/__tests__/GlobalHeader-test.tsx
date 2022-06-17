@@ -1,4 +1,5 @@
 import { setupRtl } from '@codecademy/gamut-tests';
+import React from 'react';
 
 import { GlobalHeader, GlobalHeaderProps } from '..';
 import {
@@ -133,6 +134,19 @@ const catalogDropdownTest = (props: GlobalHeaderProps) => {
 
 describe('GlobalHeader', () => {
   describe('anonymous users', () => {
+    // it('does NOT render bookmarks if NOT passed in props', () => {
+    //   const { view } = renderView(anonHeaderProps);
+    //   view.getByTestId('global-nav-bookmarks');
+    // });
+
+    it('renders bookmarks if passed in props', () => {
+      const { view } = renderView({
+        ...anonHeaderProps,
+        renderBookmarks: () => <></>,
+      });
+      view.getByTestId('global-nav-bookmarks');
+    });
+
     it('renders search', () => {
       const { view } = renderView(anonHeaderProps);
       view.getByTitle('Search Icon');
