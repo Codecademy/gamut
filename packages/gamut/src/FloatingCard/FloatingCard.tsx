@@ -55,17 +55,17 @@ const beakVariants = system.variant({
   },
 });
 
-const CardWrapper = styled(
-  'div',
-  styledOptions
-)<StyleProps<typeof system.layout>>(
+const CardWrapper = styled('div', styledOptions)<
+  Pick<StyleProps<typeof system.layout>, 'display'>
+>(
   system.css({
     maxWidth: '100%',
     position: 'relative',
     display: 'inline-block',
     textColor: 'text',
     zIndex: 1,
-  })
+  }),
+  system.layout
 );
 
 const CardBody = styled('div', styledOptions)<
@@ -88,7 +88,7 @@ export type FloatingCardProps = {
   className?: string;
   pattern?: React.ComponentType<PatternProps>;
   shadow?: 'bottomLeft' | 'bottomRight';
-  cardWrapperDisplay?: Pick<StyleProps<typeof system.layout>, 'display'>;
+  cardWrapperLayout?: StyleProps<typeof system.layout>;
 } & ComponentProps<typeof CardBody>;
 
 export const FloatingCard = forwardRef<HTMLDivElement, FloatingCardProps>(
@@ -98,12 +98,12 @@ export const FloatingCard = forwardRef<HTMLDivElement, FloatingCardProps>(
       className,
       pattern: Pattern = CheckerDense,
       shadow = 'bottomLeft',
-      cardWrapperDisplay,
+      cardWrapperLayout,
       ...rest
     },
     ref
   ) => (
-    <CardWrapper {...cardWrapperDisplay}>
+    <CardWrapper {...cardWrapperLayout}>
       <Pattern
         dimensions={1}
         position="absolute"
