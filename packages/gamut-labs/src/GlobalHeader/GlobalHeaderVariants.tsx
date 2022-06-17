@@ -1,4 +1,3 @@
-import { render } from 'enzyme';
 import { ReactNode } from 'react';
 
 import { AppHeaderItem } from '../AppHeader/AppHeaderElements/types';
