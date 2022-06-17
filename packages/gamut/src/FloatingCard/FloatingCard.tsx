@@ -55,9 +55,7 @@ const beakVariants = system.variant({
   },
 });
 
-const CardWrapper = styled('div', styledOptions)<
-  Pick<StyleProps<typeof system.layout>, 'display'>
->(
+const CardWrapper = styled.div(
   system.css({
     maxWidth: '100%',
     position: 'relative',
