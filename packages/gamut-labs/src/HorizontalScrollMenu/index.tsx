@@ -1,3 +1,5 @@
+import 'intersection-observer';
+
 import { Box, FlexBox } from '@codecademy/gamut';
 import styled from '@emotion/styled';
 import React, { Children, useEffect, useMemo, useRef } from 'react';

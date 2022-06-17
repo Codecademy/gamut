@@ -9,7 +9,7 @@ const BaseImage = loadable(() => import('./BaseImage'), {
 
 interface PauseableImageProps {
   src: string;
-  alt?: string;
+  alt: string;
 }
 export const imageStyles = styled.img(
   css({

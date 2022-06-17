@@ -3,6 +3,57 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [32.0.7](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@32.0.6...@codecademy/gamut-labs@32.0.7) (2022-06-16)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [32.0.6](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@32.0.5...@codecademy/gamut-labs@32.0.6) (2022-06-16)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [32.0.5](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@32.0.4...@codecademy/gamut-labs@32.0.5) (2022-06-14)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [32.0.4](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@32.0.3...@codecademy/gamut-labs@32.0.4) (2022-06-14)
+
+
+### Bug Fixes
+
+* **Popover:** Fix Popover story ([5504e68](https://github.com/Codecademy/gamut/commit/5504e685e46cd579dae9559907e289101abc04b8))
+
+
+
+### [32.0.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@32.0.2...@codecademy/gamut-labs@32.0.3) (2022-06-13)
+
+
+### Bug Fixes
+
+* update PasuableImage button to announce it's label change ([d233fb8](https://github.com/Codecademy/gamut/commit/d233fb858bb9b9eded1c019b2c04131c06e3e877))
+
+
+
+### [32.0.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@32.0.1...@codecademy/gamut-labs@32.0.2) (2022-06-10)
+
+
+### Bug Fixes
+
+* **HorizontalScrollMenu:** polyfill IntersectionObserver ([e329d62](https://github.com/Codecademy/gamut/commit/e329d62a0fcae966f9a37c0125934b3a0a094d3d))
+
+
+
 ### [32.0.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@32.0.0...@codecademy/gamut-labs@32.0.1) (2022-06-09)
 
 

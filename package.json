@@ -59,10 +59,10 @@
     "lerna": "3.22.1"
   },
   "devDependencies": {
-    "@babel/cli": "7.13.10",
+    "@babel/cli": "7.17.10",
     "@babel/core": "7.13.10",
     "@babel/preset-typescript": "^7.13.0",
-    "@codecademy/eslint-config": "7.0.3-alpha.448c74.0",
+    "@codecademy/eslint-config": "8.0.0",
     "@codecademy/prettier-config": "^0.2.0",
     "@codecademy/tsconfig": "^0.2.0",
     "@emotion/babel-plugin": "^11.3.0",
