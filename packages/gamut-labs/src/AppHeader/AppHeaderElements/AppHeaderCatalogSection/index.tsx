@@ -158,9 +158,9 @@ export const AppHeaderCatalogSection = React.forwardRef<
               />
             </Column>
             <Column size={{ xs: 12, md: 8 }}>
-              <LayoutGrid py={32} pl={{ _: 16, sm: 64, md: 48 }}>
+              <LayoutGrid pt={32} pb={48} pl={{ _: 16, sm: 64, md: 48 }}>
                 {careerPaths.map((item) => (
-                  <Column key={item.id} size={{ _: 4 }} my="auto">
+                  <Column key={item.id} size={{ _: 4 }}>
                     <StyledAnchorBox width="12rem">
                       <CatalogLink item={item} />
                     </StyledAnchorBox>
@@ -180,12 +180,12 @@ export const AppHeaderCatalogSection = React.forwardRef<
               showFullCatalogButton
             />
           </Column>
-          <Column size={{ xs: 12, md: 8 }}>
-            <GridBox
-              py={16}
-              pl={{ _: 16, sm: 64, md: 48 }}
-              gridTemplateAreas={gridTemplate}
-            >
+          <Column
+            size={{ xs: 12, md: 8 }}
+            py={32}
+            pl={{ _: 16, sm: 64, md: 48 }}
+          >
+            <GridBox gridTemplateAreas={gridTemplate}>
               <Box gridArea="languageHeader">
                 <Subheader title="Top Languages" />
               </Box>
