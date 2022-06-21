@@ -25,11 +25,6 @@ export type ToolTipStaticBodyProps = {
    * Whether if should be a popover tooltip (only should be used in certain overflow situations).
    */
   isPopover?: never;
-
-  /**
-   * If Tooltip content should have a restricted minimum width
-   */
-  widthMode?: 'standard' | 'unlimited';
 };
 
 type ToolTipBodyProps = {
@@ -42,10 +37,6 @@ type ToolTipBodyProps = {
    * Whether if should be a popover tooltip (only should be used in certain overflow situations).
    */
   isPopover: true;
-  /**
-   * If Tooltip content should have a restricted minimum width
-   */
-  widthMode?: never;
 };
 
 type ToolTipContainerProps = ToolTipBodyProps | ToolTipStaticBodyProps;
@@ -77,9 +68,35 @@ export type ToolTipProps = ToolTipContainerProps & {
   id: string;
 
   target?: ReactNode;
+
+  /**
+   * If Tooltip content should override width restrictions
+   */
+  widthMode?: 'standard' | 'unlimited';
 };
 
-export const ToolTip: React.FC<ToolTipProps> = ({ isPopover, ...rest }) => {
-  if (isPopover) return <PopoverToolTip {...rest} />;
-  return <StaticToolTip {...rest} />;
+export const ToolTip: React.FC<ToolTipProps> = ({
+  alignment = 'top-right',
+  mode = 'light',
+  widthMode = 'standard',
+  isPopover,
+  ...rest
+}) => {
+  if (isPopover)
+    return (
+      <PopoverToolTip
+        alignment={alignment}
+        mode={mode}
+        widthMode={widthMode}
+        {...rest}
+      />
+    );
+  return (
+    <StaticToolTip
+      alignment={alignment}
+      mode={mode}
+      widthMode={widthMode}
+      {...rest}
+    />
+  );
 };

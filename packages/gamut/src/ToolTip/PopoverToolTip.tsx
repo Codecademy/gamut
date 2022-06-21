@@ -6,11 +6,12 @@ import { ToolTipProps } from '.';
 import { getPopoverAlignment } from './utils';
 
 export const PopoverToolTip: React.FC<ToolTipProps> = ({
-  alignment = 'top-left',
+  alignment,
   children,
   focusable,
   id,
   target,
+  widthMode,
 }) => {
   const ref = useRef<HTMLDivElement>(null);
   const [offset, setOffset] = useState(0);
@@ -60,6 +61,7 @@ export const PopoverToolTip: React.FC<ToolTipProps> = ({
         role="tooltip"
         size="sml"
         targetRef={ref}
+        widthRestricted={widthMode === 'standard'}
       >
         <FlexBox alignItems="flex-start" flexDirection="column">
           {children}

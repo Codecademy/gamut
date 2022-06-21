@@ -9,14 +9,14 @@ import {
 } from './elements';
 
 export const StaticToolTip: React.FC<ToolTipProps> = ({
-  alignment = 'top-right',
+  alignment,
   children,
   className,
   containerClassName,
   focusable,
   id,
-  mode = 'light',
-  widthMode = 'standard',
+  mode,
+  widthMode,
   target,
 }) => {
   return (

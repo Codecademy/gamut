@@ -11,6 +11,10 @@ const outlineState = states({
     border: 1,
     boxShadow: 'none',
   },
+  widthRestricted: {
+    minWidth: '4rem',
+    maxWidth: '16rem',
+  },
 });
 
 const raisedDivVariants = variant({
@@ -23,7 +27,7 @@ const raisedDivVariants = variant({
       boxShadow: '0 0 16px rgba(0, 0, 0, 0.1), 0 0 24px rgba(0, 0, 0, 0.15)',
       zIndex: 1,
     },
-    sml: { ...toolTipBodyCss, minWidth: '4rem', maxWidth: '16rem' },
+    sml: { ...toolTipBodyCss },
   },
 });
 

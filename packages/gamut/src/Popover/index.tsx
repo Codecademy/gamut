@@ -18,6 +18,7 @@ type StyleProps = {
   position?: 'above' | 'below';
   beak?: 'right' | 'left';
   align?: 'right' | 'left';
+  widthRestricted?: boolean;
 };
 
 const transform = {
@@ -85,6 +86,11 @@ export interface PopoverProps
   targetRef: React.RefObject<
     Pick<HTMLDivElement, 'getBoundingClientRect' | 'contains'>
   >;
+
+  /**
+   * Whether to add width restrictions to Popover.
+   */
+  widthRestricted?: boolean;
 }
 
 export const Popover: React.FC<PopoverProps> = ({
@@ -101,6 +107,7 @@ export const Popover: React.FC<PopoverProps> = ({
   size = 'lrg',
   targetRef,
   verticalOffset = size === 'sml' ? 15 : 20,
+  widthRestricted,
 }) => {
   const [targetRect, setTargetRect] = useState<DOMRect>();
   const [isInViewport, setIsInViewport] = useState(true);
@@ -178,6 +185,7 @@ export const Popover: React.FC<PopoverProps> = ({
             alignment={align.includes('center') ? 'centered' : 'aligned'}
             size={size}
             outline={outline}
+            widthRestricted={widthRestricted}
           >
             {beak && (
               <Beak
