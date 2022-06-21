@@ -37,7 +37,6 @@ export type AppHeaderLinkItem = AppHeaderBaseHrefItem<'link'> & {
   text: string;
   topSeparator?: boolean;
   badge?: React.ReactElement<BadgeProps>;
-  hideWithNewCatalogDropdown?: boolean;
 };
 
 export type AppHeaderTextButtonItem = AppHeaderBaseHrefItem<'text-button'> & {
@@ -73,20 +72,9 @@ export type AppHeaderRenderElementItem = AppHeaderBaseItem<'render-element'> & {
 
 export type AppHeaderCatalogDropdownItem = AppHeaderBaseItem<'catalog-dropdown'> & {
   icon?: React.ComponentType<GamutIconProps>;
-  popover: AppHeaderCatalogDataItem[];
   text: string;
   trackingTarget: string;
-};
-
-export type AppHeaderCatalogSubheaderItem = AppHeaderBaseItem<'subheader'> & {
-  text: string;
-};
-
-export type AppHeaderCatalogDataItem = {
-  title: string;
-  description: string;
-  requiresCareerAccess?: boolean;
-  data: (AppHeaderLinkItem | AppHeaderCatalogSubheaderItem)[];
+  hideCareerPaths?: boolean;
 };
 
 export type AppHeaderClickHandler<ItemType = AppHeaderItem> = (
