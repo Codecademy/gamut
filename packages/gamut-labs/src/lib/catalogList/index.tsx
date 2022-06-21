@@ -38,7 +38,7 @@ export const careerPaths: AppHeaderLinkItem[] = [
   },
   {
     id: 'data-science',
-    href: '/catalog/subject/data-science',
+    href: '/pages/data-science-career-specializations',
     trackingTarget: 'topnav_catalog_career_data_science',
     text: 'Data Scientist',
     type: 'link',
