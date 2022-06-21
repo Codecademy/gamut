@@ -1,8 +1,9 @@
-import { Box, Flyout, Logo, StrokeButton } from '@codecademy/gamut';
+import { Box, Flyout, StrokeButton } from '@codecademy/gamut';
 import { variant } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React, { useState } from 'react';
 
+import { Logo } from '../Logo';
 import { AccordionMenu, Section, SectionItem } from './AccordionMenu';
 import { LayoutMenuSection } from './LayoutMenuSection';
 

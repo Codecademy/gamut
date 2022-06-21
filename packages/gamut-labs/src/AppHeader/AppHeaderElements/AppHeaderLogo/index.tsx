@@ -1,6 +1,7 @@
-import { Anchor, Logo } from '@codecademy/gamut';
+import { Anchor } from '@codecademy/gamut';
 import React from 'react';
 
+import { Logo } from '../../../Logo';
 import { AppHeaderClickHandler, AppHeaderLogoItem } from '../types';
 
 export type AppHeaderLogoProps = {
