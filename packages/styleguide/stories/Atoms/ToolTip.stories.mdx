@@ -26,7 +26,7 @@ import { TooltipArea } from './ToolTip.examples.tsx';
   }}
   args={{
     alignment: 'top-right',
-    children: `Like the term fortnight, a term for a two week period, antantwig refers to a three week period.`,
+    children: `hi`,
     focusable: true,
     id: 'tooltip',
     target: <InfoCircleIcon size={20} />,
@@ -197,8 +197,32 @@ Tooltips sometimes need to be in scrollable content, and that's okay!
   <Story name="isPopover">
     {(args) => {
       return (
-        <FlexBox center bg="paleBlue" height="10rem" width="10rem">
+        <FlexBox center bg="paleBlue" p={24}>
           Updog <ToolTip isPopover {...args} />
+          Updog <ToolTip isPopover id="42">
+            hi cassie{' '}
+          </ToolTip>
+          Updog{' '}
+          <ToolTip isPopover id="42" target={<InfoCircleIcon size={70} />}>
+            hi cassie{' '}
+          </ToolTip>
+          Updog <ToolTip
+            isPopover
+            id="42"
+            alignment="bottom-right"
+            target={<InfoCircleIcon size={10} />}
+          >
+            hi cassie{' '}
+          </ToolTip>
+          Updog{' '}
+          <ToolTip
+            isPopover
+            id="42"
+            alignment="bottom-left"
+            target={<InfoCircleIcon size={32} />}
+          >
+            hi cassie{' '}
+          </ToolTip>
         </FlexBox>
       );
     }}

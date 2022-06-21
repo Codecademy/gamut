@@ -23,7 +23,7 @@ const raisedDivVariants = variant({
       boxShadow: '0 0 16px rgba(0, 0, 0, 0.1), 0 0 24px rgba(0, 0, 0, 0.15)',
       zIndex: 1,
     },
-    sml: { ...toolTipBodyCss },
+    sml: { ...toolTipBodyCss, minWidth: '4rem', maxWidth: '16rem' },
   },
 });
 

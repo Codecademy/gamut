@@ -10,7 +10,6 @@ import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
 
 import { Box } from '../Box';
-import { ToolTipProps } from '.';
 
 export type ToolTipAlignment =
   | 'bottom-center'
@@ -196,13 +195,3 @@ export const ToolTipBody = styled(Box)<
   }),
   toolTipBodyAlignments
 );
-
-export const getContainerWidths = ({
-  alignment = 'top-left',
-  widthMode,
-}: Pick<ToolTipProps, 'alignment' | 'widthMode'>) => {
-  const widthContraints = { maxWidth: '16rem', minWidth: '4rem' };
-  if (alignment.includes('center')) widthContraints.maxWidth = '8rem';
-  if (widthMode === 'unlimited') widthContraints.minWidth = 'initial';
-  return widthContraints;
-};

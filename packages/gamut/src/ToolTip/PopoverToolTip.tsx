@@ -3,7 +3,11 @@ import React, { useLayoutEffect, useRef, useState } from 'react';
 import { Box, FlexBox } from '../Box';
 import { Popover } from '../Popover';
 import { ToolTipProps } from '.';
-import { getContainerWidths } from './elements';
+import {
+  getContainerWidths,
+  getPopoverAlignment,
+  getPopoverAlignments,
+} from './utils';
 
 export const PopoverToolTip: React.FC<ToolTipProps> = ({
   alignment = 'top-left',
@@ -23,7 +27,7 @@ export const PopoverToolTip: React.FC<ToolTipProps> = ({
     }
   }, []);
 
-  const widthContraints = getContainerWidths({ alignment, widthMode });
+  const popoverAlignments = getPopoverAlignment({ alignment });
 
   return (
     <Box
@@ -52,10 +56,8 @@ export const PopoverToolTip: React.FC<ToolTipProps> = ({
         {target}
       </Box>
       <Popover
-        align="left"
-        position="above"
+        {...popoverAlignments}
         aria-live="polite"
-        beak="left"
         horizontalOffset={offset}
         isOpen
         onRequestClose={() => setIsOpen(false)}
@@ -64,11 +66,7 @@ export const PopoverToolTip: React.FC<ToolTipProps> = ({
         size="sml"
         targetRef={ref}
       >
-        <FlexBox
-          {...widthContraints}
-          flexDirection="column"
-          alignItems="flex-start"
-        >
+        <FlexBox alignItems="flex-start" flexDirection="column">
           {children}
         </FlexBox>
       </Popover>

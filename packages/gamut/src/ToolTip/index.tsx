@@ -15,7 +15,7 @@ export type ToolTipStaticAlignment =
   | 'bottom-center'
   | 'top-center';
 
-type ToolTipStaticBodyProps = {
+export type ToolTipStaticBodyProps = {
   /**
    * How to align the tooltip relative to the target.
    */
