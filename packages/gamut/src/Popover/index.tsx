@@ -88,19 +88,19 @@ export interface PopoverProps
 }
 
 export const Popover: React.FC<PopoverProps> = ({
+  align = 'left',
+  beak,
   children,
   className,
-  align = 'left',
-  verticalOffset = 20,
   horizontalOffset = 0,
-  outline = false,
-  position = 'below',
-  beak,
   isOpen,
   onRequestClose,
+  outline = false,
+  pattern: Pattern,
+  position = 'below',
   size = 'lrg',
   targetRef,
-  pattern: Pattern,
+  verticalOffset = size === 'sml' ? 15 : 20,
 }) => {
   const [targetRect, setTargetRect] = useState<DOMRect>();
   const [isInViewport, setIsInViewport] = useState(true);
@@ -182,7 +182,7 @@ export const Popover: React.FC<PopoverProps> = ({
             {beak && (
               <Beak
                 outline={outline}
-                beak={`${position}-${beak}`}
+                beak={`${position}-${beak}${size === 'sml' ? '-sml' : ''}`}
                 data-testid="popover-beak"
                 size={size}
               />

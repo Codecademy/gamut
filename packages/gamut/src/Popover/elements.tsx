@@ -2,6 +2,7 @@ import { states, variant } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
 
+import { Box } from '../Box';
 import { toolTipBodyAlignments, toolTipBodyCss } from '../ToolTip/elements';
 
 const outlineState = states({
@@ -52,6 +53,26 @@ const beakLeft = {
   left: '25px',
 };
 
+const popoverAboveSml = {
+  borderRight: 'inherit',
+  borderBottom: 'inherit',
+  top: 'calc(100% - 8px)',
+} as const;
+
+const popoverBelowSml = {
+  borderLeft: 'inherit',
+  borderTop: 'inherit',
+  top: '-8px',
+} as const;
+
+const beakRightSml = {
+  right: '1.5rem',
+};
+
+const beakLeftSml = {
+  left: '1.5rem',
+};
+
 const beakVariants = variant({
   base: {
     bg: 'background-current',
@@ -68,6 +89,7 @@ const beakVariants = variant({
       ...popoverBelow,
       ...beakRight,
     },
+
     'above-left': {
       ...popoverAbove,
       ...beakLeft,
@@ -75,6 +97,22 @@ const beakVariants = variant({
     'above-right': {
       ...popoverAbove,
       ...beakRight,
+    },
+    'below-left-sml': {
+      ...popoverBelowSml,
+      ...beakLeftSml,
+    },
+    'below-right-sml': {
+      ...popoverBelowSml,
+      ...beakRightSml,
+    },
+    'above-left-sml': {
+      ...popoverAboveSml,
+      ...beakLeftSml,
+    },
+    'above-right-sml': {
+      ...popoverAboveSml,
+      ...beakRightSml,
     },
   },
 });
@@ -93,7 +131,9 @@ const beakSize = variant({
   },
 });
 
-export const Beak = styled.div<
+// TO-DO -- prob should use variance compose, only needs left
+
+export const Beak = styled(Box)<
   StyleProps<typeof outlineState> &
     StyleProps<typeof beakVariants> &
     StyleProps<typeof beakSize>

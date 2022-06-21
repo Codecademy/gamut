@@ -1,9 +1,7 @@
 import {
   Background,
-  ColorModes,
   css,
   fontSmoothPixel,
-  states,
   theme,
   timing,
   variant,
@@ -12,6 +10,7 @@ import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
 
 import { Box } from '../Box';
+import { ToolTipProps } from '.';
 
 export type ToolTipAlignment =
   | 'bottom-center'
@@ -41,40 +40,27 @@ export const TargetContainer = styled.div(
   })
 );
 
-type ToolTipBodyProps = {
-  /**
-   * How to align the tooltip relative to the target.
-   */
-  alignment?: ToolTipAlignment;
-
-  mode?: ColorModes;
-
-  widthMode?: 'standard' | 'unlimited';
-};
-
-const centerMaxWidth = { maxWidth: '8rem' } as const;
-const alignedMaxWidth = { maxWidth: '16rem' } as const;
+export const centerMaxWidth = { maxWidth: '8rem' } as const;
+export const alignedMaxWidth = { maxWidth: '16rem' } as const;
 
 const topStyles = {
-  bottom: '100%',
+  bottom: 'calc(100% + 4px)',
   pb: containerOffsetVertical,
 } as const;
 
 export const topStylesAfter = {
   borderColor: 'currentColor',
-  borderBottomRightRadius: '4px',
   borderWidth: '0 1px 1px 0',
   bottom: '0.25rem',
 } as const;
 
 const bottomStyles = {
-  top: '100%',
+  top: 'calc(100% + 4px)',
   pt: containerOffsetVertical,
 } as const;
 
 export const bottomStylesAfter = {
   borderColor: 'currentColor',
-  borderTopLeftRadius: '4px',
   borderWidth: '1px 0 0 1px',
   top: '0.25rem',
 } as const;
@@ -210,3 +196,13 @@ export const ToolTipBody = styled(Box)<
   }),
   toolTipBodyAlignments
 );
+
+export const getContainerWidths = ({
+  alignment = 'top-left',
+  widthMode,
+}: Pick<ToolTipProps, 'alignment' | 'widthMode'>) => {
+  const widthContraints = { maxWidth: '16rem', minWidth: '4rem' };
+  if (alignment.includes('center')) widthContraints.maxWidth = '8rem';
+  if (widthMode === 'unlimited') widthContraints.minWidth = 'initial';
+  return widthContraints;
+};

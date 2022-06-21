@@ -4,26 +4,45 @@ import React, { ReactNode } from 'react';
 import { PopoverToolTip } from './PopoverToolTip';
 import { StaticToolTip } from './StaticToolTip';
 
-export type ToolTipAlignment =
-  | 'bottom-center'
+export type ToolTipBaseAlignment =
   | 'bottom-left'
   | 'bottom-right'
-  | 'top-center'
   | 'top-left'
   | 'top-right';
+
+export type ToolTipStaticAlignment =
+  | ToolTipBaseAlignment
+  | 'bottom-center'
+  | 'top-center';
+
+type ToolTipStaticBodyProps = {
+  /**
+   * How to align the tooltip relative to the target.
+   */
+  alignment?: ToolTipStaticAlignment;
+
+  mode?: ColorModes;
+
+  widthMode?: 'standard' | 'unlimited';
+  /**
+   * Whether if should be a popover tooltip (only should be used in certain overflow situations).
+   */
+  isPopover?: never;
+};
 
 type ToolTipBodyProps = {
   /**
    * How to align the tooltip relative to the target.
    */
-  alignment?: ToolTipAlignment;
+  alignment?: ToolTipBaseAlignment;
 
-  mode?: ColorModes;
-
-  widthMode?: 'standard' | 'unlimited';
+  /**
+   * Whether if should be a popover tooltip (only should be used in certain overflow situations).
+   */
+  isPopover: true;
 };
 
-type ToolTipContainerProps = ToolTipBodyProps;
+type ToolTipContainerProps = ToolTipBodyProps | ToolTipStaticBodyProps;
 
 export type ToolTipProps = ToolTipContainerProps & {
   children?: ReactNode;
@@ -47,14 +66,16 @@ export type ToolTipProps = ToolTipContainerProps & {
    */
   focusable?: boolean;
 
-  /**
-   * Whether if should be a popover tooltip (only should be used in certain overflow situations).
-   */
-  isPopover?: boolean;
+  mode?: ColorModes;
 
   id: string;
 
   target?: ReactNode;
+
+  /**
+   * If Tooltip content should have a restricted width
+   */
+  widthMode?: 'standard' | 'unlimited';
 };
 
 export const ToolTip: React.FC<ToolTipProps> = ({ isPopover, ...rest }) => {

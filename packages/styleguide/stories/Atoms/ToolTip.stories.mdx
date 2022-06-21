@@ -1,4 +1,4 @@
-import { FlexBox, ToolTip } from '@codecademy/gamut/src';
+import { Box, FlexBox, ToolTip } from '@codecademy/gamut/src';
 import { InfoCircleIcon } from '@codecademy/gamut-icons/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
@@ -96,6 +96,8 @@ The caret tip will be centered horizontally on the target.
 ### Smaller Alignments
 
 Tooltips with _centered_ alignments -`bottom-center` or `top-center`- are smaller sized and meant for a single small number of words, like keyboard shortcuts.
+
+_Note:_ Because of the size of these ToolTips, they should never overflow their container so are not applicable to `isPopover` Tooltips.
 
 <Canvas>
   <Story name="Smaller Alignment">
