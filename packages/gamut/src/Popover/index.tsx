@@ -71,7 +71,7 @@ export interface PopoverProps
    */
   pattern?: React.ComponentType<PatternProps>;
   /**
-   * Large popver vs smaller tooltip-style Popovers
+   * Large popover vs smaller tooltip-style Popovers
    */
   size?: 'sml' | 'lrg';
   /**

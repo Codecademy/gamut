@@ -1,4 +1,3 @@
-import { InfoCircleIcon } from '@codecademy/gamut-icons';
 import { ColorModes } from '@codecademy/gamut-styles';
 import React, { ReactNode } from 'react';
 
