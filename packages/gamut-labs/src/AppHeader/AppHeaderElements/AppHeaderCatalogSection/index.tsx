@@ -103,6 +103,7 @@ export const AppHeaderCatalogSection = React.forwardRef<
             onClick={(event) => action(event, catalogAnchorData)}
             tabIndex={tabIndex}
             mt={96}
+            pt={24}
           >
             {catalogAnchorData.text}
           </Anchor>
