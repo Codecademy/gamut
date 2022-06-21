@@ -1,3 +1,4 @@
+import { InfoCircleIcon } from '@codecademy/gamut-icons';
 import { ColorModes } from '@codecademy/gamut-styles';
 import React, { ReactNode } from 'react';
 
@@ -21,13 +22,15 @@ export type ToolTipStaticBodyProps = {
    */
   alignment?: ToolTipStaticAlignment;
 
-  mode?: ColorModes;
-
-  widthMode?: 'standard' | 'unlimited';
   /**
    * Whether if should be a popover tooltip (only should be used in certain overflow situations).
    */
   isPopover?: never;
+
+  /**
+   * If Tooltip content should have a restricted minimum width
+   */
+  widthMode?: 'standard' | 'unlimited';
 };
 
 type ToolTipBodyProps = {
@@ -71,11 +74,6 @@ export type ToolTipProps = ToolTipContainerProps & {
   id: string;
 
   target?: ReactNode;
-
-  /**
-   * If Tooltip content should have a restricted width
-   */
-  widthMode?: 'standard' | 'unlimited';
 };
 
 export const ToolTip: React.FC<ToolTipProps> = ({ isPopover, ...rest }) => {
