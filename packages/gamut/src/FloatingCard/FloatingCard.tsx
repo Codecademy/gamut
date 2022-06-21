@@ -2,7 +2,10 @@ import { CheckerDense, PatternProps } from '@codecademy/gamut-patterns';
 import { styledOptions, system } from '@codecademy/gamut-styles';
 import { StyleProps, variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
+import { Properties } from 'csstype';
 import React, { ComponentProps, forwardRef } from 'react';
+
+import { Box } from '../Box';
 
 const cardProps = variance.compose(system.layout, system.padding);
 
@@ -55,16 +58,6 @@ const beakVariants = system.variant({
   },
 });
 
-const CardWrapper = styled.div(
-  system.css({
-    maxWidth: '100%',
-    position: 'relative',
-    display: 'inline-block',
-    textColor: 'text',
-    zIndex: 1,
-  })
-);
-
 const CardBody = styled('div', styledOptions)<
   StyleProps<typeof beakVariants> & StyleProps<typeof cardProps>
 >(
@@ -81,26 +74,36 @@ const CardBody = styled('div', styledOptions)<
   cardProps
 );
 
+type FloatingCardWrapper = {
+  containerDisplay?: Properties['display'];
+};
+
 export type FloatingCardProps = {
   className?: string;
   pattern?: React.ComponentType<PatternProps>;
   shadow?: 'bottomLeft' | 'bottomRight';
-  cardWrapperLayout?: StyleProps<typeof system.layout>;
 } & ComponentProps<typeof CardBody>;
 
-export const FloatingCard = forwardRef<HTMLDivElement, FloatingCardProps>(
+export type FloatingCardWithWrapper = FloatingCardProps & FloatingCardWrapper;
+
+export const FloatingCard = forwardRef<HTMLDivElement, FloatingCardWithWrapper>(
   (
     {
       children,
       className,
       pattern: Pattern = CheckerDense,
       shadow = 'bottomLeft',
-      cardWrapperLayout,
+      containerDisplay = 'inline-block',
       ...rest
     },
     ref
   ) => (
-    <CardWrapper {...cardWrapperLayout}>
+    <Box
+      display={containerDisplay}
+      position="relative"
+      zIndex={1}
+      maxWidth="100%"
+    >
       <Pattern
         dimensions={1}
         position="absolute"
@@ -111,6 +114,6 @@ export const FloatingCard = forwardRef<HTMLDivElement, FloatingCardProps>(
       <CardBody className={className} {...rest} ref={ref}>
         {children}
       </CardBody>
-    </CardWrapper>
+    </Box>
   )
 );
