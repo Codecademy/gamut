@@ -95,6 +95,7 @@ export const AppHeaderCatalogSection = React.forwardRef<
             onClick={(event) => action(event, catalogAnchorData)}
             tabIndex={tabIndex}
             mt={96}
+            pt={24}
           >
             {catalogAnchorData.text}
           </Anchor>
@@ -150,18 +151,9 @@ export const AppHeaderCatalogSection = React.forwardRef<
               />
             </Column>
             <Column size={{ xs: 12, md: 8 }}>
-              <LayoutGrid
-                py={32}
-                rowGap={{ _: 16, lg: 8 }}
-                pl={{ _: 16, sm: 64, md: 48 }}
-              >
+              <LayoutGrid pt={32} pb={48} pl={{ _: 16, sm: 64, md: 48 }}>
                 {careerPaths.map((item) => (
-                  <Column
-                    key={item.id}
-                    size={{ _: 12, lg: 4 }}
-                    my="auto"
-                    minHeight={{ _: 0, lg: 46 }}
-                  >
+                  <Column key={item.id} size={{ _: 12, lg: 4 }}>
                     <Box>
                       <CatalogLink item={item} />
                     </Box>
@@ -181,12 +173,12 @@ export const AppHeaderCatalogSection = React.forwardRef<
               showFullCatalogButton
             />
           </Column>
-          <Column size={{ xs: 12, md: 8 }}>
-            <GridBox
-              py={16}
-              pl={{ _: 16, sm: 64, md: 48 }}
-              gridTemplateAreas={gridTemplate}
-            >
+          <Column
+            size={{ xs: 12, md: 8 }}
+            py={32}
+            pl={{ _: 16, sm: 64, md: 48 }}
+          >
+            <GridBox gridTemplateAreas={gridTemplate}>
               <Box gridArea="languageHeader">
                 <Subheader title="Top Languages" />
               </Box>
