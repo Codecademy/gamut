@@ -42,6 +42,10 @@ type ToolTipBodyProps = {
    * Whether if should be a popover tooltip (only should be used in certain overflow situations).
    */
   isPopover: true;
+  /**
+   * If Tooltip content should have a restricted minimum width
+   */
+  widthMode?: never;
 };
 
 type ToolTipContainerProps = ToolTipBodyProps | ToolTipStaticBodyProps;
