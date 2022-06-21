@@ -2,8 +2,9 @@ import { ButtonDeprecated, ModalDeprecated } from '@codecademy/gamut/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
-import { LinkTo } from '@storybook/addon-links/react';
 import { useState } from 'react';
+
+import { LinkTo } from '~styleguide/blocks';
 
 <Meta
   title={title}
@@ -18,6 +19,8 @@ import { useState } from 'react';
     },
   }}
 />
+
+> THIS IS DEPRECATED. Use <LinkTo component="Modal">Modal</LinkTo> instead.
 
 <Canvas>
   <Story name="ModalDeprecated">
@@ -39,8 +42,6 @@ import { useState } from 'react';
     }}
   </Story>
 </Canvas>
-
-> Prefer <LinkTo component="Modal">Modal</LinkTo> instead.
 
 <PropsTable story="ModalDeprecated" />
 
