@@ -40,15 +40,6 @@ const StyledColumn = styled(Column)(
   })
 );
 
-const StyledAnchorBox = styled(Box)(
-  css({
-    pb: { _: 16, md: 8 },
-    '&:last-child': {
-      pb: 0,
-    },
-  })
-);
-
 const catalogAnchorData: AppHeaderItem = {
   text: 'Explore full catalog →',
   id: 'catalog',
@@ -83,7 +74,8 @@ export const AppHeaderCatalogSection = React.forwardRef<
       bg="navy-800"
       color="blue-0"
       flexDirection="column"
-      p={32}
+      px={{ _: 16, sm: 64, md: 48, lg: 32 }}
+      py={{ _: 16, sm: 32 }}
     >
       <Text as="h2" variant="title-xs" mb={8} fontWeight={700}>
         {title}
@@ -158,17 +150,21 @@ export const AppHeaderCatalogSection = React.forwardRef<
               />
             </Column>
             <Column size={{ xs: 12, md: 8 }}>
-              <LayoutGrid py={16} rowGap={8} pl={{ _: 16, sm: 64, md: 48 }}>
+              <LayoutGrid
+                py={32}
+                rowGap={{ _: 16, lg: 8 }}
+                pl={{ _: 16, sm: 64, md: 48 }}
+              >
                 {careerPaths.map((item) => (
                   <Column
                     key={item.id}
-                    size={{ _: 4 }}
+                    size={{ _: 12, lg: 4 }}
                     my="auto"
-                    minHeight={46}
+                    minHeight={{ _: 0, lg: 46 }}
                   >
-                    <StyledAnchorBox width="12rem">
+                    <Box>
                       <CatalogLink item={item} />
-                    </StyledAnchorBox>
+                    </Box>
                   </Column>
                 ))}
               </LayoutGrid>
@@ -200,9 +196,9 @@ export const AppHeaderCatalogSection = React.forwardRef<
                 gridTemplateColumns="1fr 1fr"
               >
                 {topLanguages.map((item) => (
-                  <StyledAnchorBox width="12rem" key={item.id} minHeight={36}>
+                  <Box width="12rem" key={item.id} minHeight={36}>
                     <CatalogLink item={item} />
-                  </StyledAnchorBox>
+                  </Box>
                 ))}
               </Box>
               <Box gridArea="subjectHeader">
@@ -210,9 +206,9 @@ export const AppHeaderCatalogSection = React.forwardRef<
               </Box>
               <Box gridArea="subject" display="grid" gridTemplateColumns="1fr">
                 {topSubjects.map((item) => (
-                  <StyledAnchorBox width="12rem" key={item.id} minHeight={36}>
+                  <Box width="12rem" key={item.id} minHeight={36}>
                     <CatalogLink item={item} />
-                  </StyledAnchorBox>
+                  </Box>
                 ))}
               </Box>
             </GridBox>
