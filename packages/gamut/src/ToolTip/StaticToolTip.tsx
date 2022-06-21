@@ -9,7 +9,7 @@ import {
 } from './elements';
 
 export const StaticToolTip: React.FC<ToolTipProps> = ({
-  alignment,
+  alignment = 'top-right',
   children,
   className,
   containerClassName,
