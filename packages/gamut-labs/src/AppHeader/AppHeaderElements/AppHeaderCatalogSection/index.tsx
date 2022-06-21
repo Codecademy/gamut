@@ -158,14 +158,9 @@ export const AppHeaderCatalogSection = React.forwardRef<
               />
             </Column>
             <Column size={{ xs: 12, md: 8 }}>
-              <LayoutGrid py={16} rowGap={8} pl={{ _: 16, sm: 64, md: 48 }}>
+              <LayoutGrid py={32} pl={{ _: 16, sm: 64, md: 48 }}>
                 {careerPaths.map((item) => (
-                  <Column
-                    key={item.id}
-                    size={{ _: 4 }}
-                    my="auto"
-                    minHeight={46}
-                  >
+                  <Column key={item.id} size={{ _: 4 }} my="auto">
                     <StyledAnchorBox width="12rem">
                       <CatalogLink item={item} />
                     </StyledAnchorBox>

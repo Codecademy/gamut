@@ -17,9 +17,9 @@ export const careerPaths: AppHeaderLinkItem[] = [
   },
   {
     id: 'data-science',
-    href: '/learn/paths/data-science',
+    href: '/catalog/subject/data-science',
     trackingTarget: 'topnav_catalog_career_data_science',
-    text: 'Data Scientist: Machine Learning Specialist',
+    text: 'Data Scientist',
     type: 'link',
   },
   {
@@ -34,13 +34,6 @@ export const careerPaths: AppHeaderLinkItem[] = [
     href: '/learn/paths/ios-developer',
     trackingTarget: 'topnav_catalog_career_ios-developer',
     text: 'iOS Developer',
-    type: 'link',
-  },
-  {
-    id: 'data-analyst',
-    href: '/learn/paths/data-analyst',
-    trackingTarget: 'topnav_catalog_career_data_analyst',
-    text: 'Data Scientist: Analytics Specialist',
     type: 'link',
   },
   {
