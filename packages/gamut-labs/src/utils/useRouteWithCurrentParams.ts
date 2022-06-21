@@ -10,8 +10,6 @@ export const useRouteWithCurrentParams = (
   newPath: string,
   additionalParams: ParsedUrlQuery = {}
 ) => {
-  if (typeof window === 'undefined') return newPath;
-
   const { search } = window.location;
 
   const query = Object.fromEntries(new URLSearchParams(search));
