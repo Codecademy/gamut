@@ -83,9 +83,9 @@ export const MyComponent: React.FC = () => {
 };
 ```
 
-## Card Wrapper Layout
+## Card Wrapper Display
 
-The wrapper may need to be modified, such as for the `display` to be set to `block` instead of the default `inline-block`
+The wrapper display may need to be changed from the default `inline-block`
 
 ```tsx
 import { FloatingCard } from '@codecademy/gamut';
@@ -93,7 +93,7 @@ import { DotDense } from '@codecademy/gamut-patterns';
 
 export const MyComponent: React.FC = () => {
   return (
-    <FloatingCard pattern={DotDense} cardWrapperLayout={{ display: 'block' }}>
+    <FloatingCard pattern={DotDense} cardDisplay="block">
       Take up all the space.
     </FloatingCard>
   );
