@@ -65,24 +65,36 @@ export const AppHeaderSubMenuMobile: React.FC<AppHeaderSubMenuMobileProps> = ({
 
   return (
     <AppHeaderListItem aria-labelledby={`${item.text} menu`}>
-      <ContentContainer>
-        <StyledAnchor onClick={handleClose} variant="interface" as="button">
-          <ArrowChevronLeftIcon size={12} aria-hidden />
-          <Text fontSize={16} ml={8}>
-            Menu
-          </Text>
-        </StyledAnchor>
-        <FlexBox alignItems="center" mb={16}>
-          <Box>{getIcon()}</Box>
-          <Box pb={4}>
-            <StyledText as="h1" fontSize={16} fontWeight="normal">
-              {item.type === 'profile-dropdown'
-                ? item.userDisplayName
-                : item.text}
-            </StyledText>
-          </Box>
-        </FlexBox>
-      </ContentContainer>
+      {/* <ContentContainer> */}
+      <StyledAnchor
+        onClick={handleClose}
+        variant="interface"
+        as="button"
+        ml={{ _: 16, sm: 64, md: 48 }}
+      >
+        <ArrowChevronLeftIcon size={12} aria-hidden />
+        <Text fontSize={16} pl={8}>
+          Menu
+        </Text>
+      </StyledAnchor>
+      <FlexBox
+        alignItems="center"
+        mb={16}
+        pt={16}
+        pl={{ _: 16, sm: 64, md: 48 }}
+        borderTop={1}
+        borderColor="navy-300"
+      >
+        <Box>{getIcon()}</Box>
+        <Box pb={4}>
+          <StyledText as="h1" fontSize={16} fontWeight="normal">
+            {item.type === 'profile-dropdown'
+              ? item.userDisplayName
+              : item.text}
+          </StyledText>
+        </Box>
+      </FlexBox>
+      {/* </ContentContainer> */}
       {item.type === 'catalog-dropdown' ? (
         <AppHeaderCatalogSection action={action} item={item} />
       ) : (

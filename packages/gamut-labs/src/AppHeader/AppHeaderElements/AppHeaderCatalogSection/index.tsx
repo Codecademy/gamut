@@ -39,6 +39,13 @@ const StyledColumn = styled(Column)(
   })
 );
 
+const StyledResponsiveColumn = styled(Column)(
+  css({
+    borderTop: 1,
+    borderColor: 'navy-300',
+  })
+);
+
 const StyledAnchorColumn = styled(Column)(
   css({
     pb: 16,
@@ -246,8 +253,12 @@ export const AppHeaderCatalogSection = React.forwardRef<
           </Column>
         </LayoutGrid>
       </Column>
-      <Column size={12} p={16} display={{ _: 'block', lg: 'none' }}>
-        <Box textAlign="center" pb={16}>
+      <StyledResponsiveColumn
+        size={12}
+        p={16}
+        display={{ _: 'block', lg: 'none' }}
+      >
+        <Box textAlign="center">
           <Anchor
             variant="standard"
             fontSize={16}
@@ -260,7 +271,7 @@ export const AppHeaderCatalogSection = React.forwardRef<
             {catalogAnchorData.text}
           </Anchor>
         </Box>
-      </Column>
+      </StyledResponsiveColumn>
     </LayoutGrid>
   );
 });
