@@ -20,7 +20,6 @@ import {
   AppHeaderCatalogDropdownItem,
   AppHeaderClickHandler,
   AppHeaderItem,
-  AppHeaderLinkItem,
 } from '../types';
 
 export type AppHeaderCatalogSectionProps = {
@@ -89,9 +88,7 @@ export const AppHeaderCatalogSection = React.forwardRef<
       <Text as="h2" variant="title-xs" mb={8} fontWeight={700}>
         {title}
       </Text>
-      <Text fontSize={14} font-weight={400}>
-        {subtitle}
-      </Text>
+      <Text fontSize={14}>{subtitle}</Text>
       {showFullCatalogButton && (
         <ColorMode mode="dark">
           <Anchor
@@ -129,25 +126,6 @@ export const AppHeaderCatalogSection = React.forwardRef<
     </Text>
   );
 
-  const CatalogLink: React.FunctionComponent<{ item: AppHeaderLinkItem }> = ({
-    item,
-  }) => (
-    <Anchor
-      data-focusablecatalog="true"
-      variant="interface"
-      fontFamily="base"
-      fontSize={16}
-      fontWeight={400}
-      href={item.href}
-      onClick={(event) => action(event, item as AppHeaderItem)}
-      tabIndex={tabIndex}
-      maxWidth="170px"
-      lineHeight="base"
-    >
-      {item.text}
-    </Anchor>
-  );
-
   return (
     <LayoutGrid onKeyDown={keyDownEvents} ref={ref} as="ul" p={0}>
       {!item.hideCareerPaths && (
@@ -167,7 +145,15 @@ export const AppHeaderCatalogSection = React.forwardRef<
               >
                 {careerPaths.map((item) => (
                   <StyledAnchorColumn key={item.id} size={{ _: 12, lg: 4 }}>
-                    <CatalogLink item={item} />
+                    <Anchor
+                      data-focusablecatalog="true"
+                      variant="interface"
+                      href={item.href}
+                      onClick={(event) => action(event, item as AppHeaderItem)}
+                      tabIndex={tabIndex}
+                    >
+                      {item.text}
+                    </Anchor>
                   </StyledAnchorColumn>
                 ))}
               </LayoutGrid>
@@ -200,7 +186,15 @@ export const AppHeaderCatalogSection = React.forwardRef<
               >
                 {topLanguages.map((item) => (
                   <Box width="12rem" key={item.id} minHeight={36}>
-                    <CatalogLink item={item} />
+                    <Anchor
+                      data-focusablecatalog="true"
+                      variant="interface"
+                      href={item.href}
+                      onClick={(event) => action(event, item as AppHeaderItem)}
+                      tabIndex={tabIndex}
+                    >
+                      {item.text}
+                    </Anchor>
                   </Box>
                 ))}
               </Box>
@@ -210,7 +204,15 @@ export const AppHeaderCatalogSection = React.forwardRef<
               <Box gridArea="subject" display="grid" gridTemplateColumns="1fr">
                 {topSubjects.map((item) => (
                   <Box width="12rem" key={item.id} minHeight={36}>
-                    <CatalogLink item={item} />
+                    <Anchor
+                      data-focusablecatalog="true"
+                      variant="interface"
+                      href={item.href}
+                      onClick={(event) => action(event, item as AppHeaderItem)}
+                      tabIndex={tabIndex}
+                    >
+                      {item.text}
+                    </Anchor>
                   </Box>
                 ))}
               </Box>
