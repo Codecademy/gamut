@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [58.0.9](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@58.0.8...@codecademy/styleguide@58.0.9) (2022-06-22)
+
+
+### Bug Fixes
+
+* allow FloatingCard wrapper to have layout modified ([bbb8c74](https://github.com/Codecademy/gamut/commit/bbb8c742c8a1e6e4bd512b816a1b6b5d0281c9f4))
+
+
+
 ### [58.0.8](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@58.0.7...@codecademy/styleguide@58.0.8) (2022-06-21)
 
 **Note:** Version bump only for package @codecademy/styleguide
