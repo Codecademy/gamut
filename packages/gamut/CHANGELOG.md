@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [48.0.4](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@48.0.3...@codecademy/gamut@48.0.4) (2022-06-22)
+
+
+### Bug Fixes
+
+* allow FloatingCard wrapper to have layout modified ([bbb8c74](https://github.com/Codecademy/gamut/commit/bbb8c742c8a1e6e4bd512b816a1b6b5d0281c9f4))
+
+
+
 ### [48.0.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@48.0.2...@codecademy/gamut@48.0.3) (2022-06-16)
 
 
