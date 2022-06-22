@@ -32,11 +32,9 @@ const catalogComponent = (user?: User) =>
   user?.useNewCatalogDropdown
     ? catalogDropdown(user?.hideCareerPaths)
     : courseCatalog;
-
 // Simplify pricing dropdown to a normal link for users in India
 const pricingComponent = (user?: User) =>
   user?.geo === 'IN' ? pricingLink : pricingDropdown;
-
 const anonHeaderItems = (
   renderLogin: boolean,
   renderSignUp: boolean,
@@ -52,7 +50,6 @@ const anonHeaderItems = (
     ...(hidePricing ? [] : [pricingComponent(user)]),
     businessSolutions,
   ];
-
   const rightItems: AppHeaderItem[] = [];
   if (renderBookmarks) {
     rightItems.push(bookmarks(renderBookmarks));
@@ -63,13 +60,11 @@ const anonHeaderItems = (
   if (renderSignUp) {
     rightItems.push(signUp);
   }
-
   return {
     left: leftItems,
     right: rightItems,
   };
 };
-
 const anonMobileHeaderItems = (
   renderLogin: boolean,
   renderSignUp: boolean,
@@ -78,7 +73,6 @@ const anonMobileHeaderItems = (
   renderBookmarks?: () => ReactNode
 ): FormattedMobileAppHeaderItems => {
   const leftItems: AppHeaderItem[] = [logo];
-
   const rightItems: AppHeaderItem[] = [];
   if (renderBookmarks) {
     rightItems.push(bookmarks(renderBookmarks));
@@ -89,7 +83,6 @@ const anonMobileHeaderItems = (
   if (renderSignUp) {
     rightItems.push(signUp);
   }
-
   const mainMenuItems: AppHeaderItem[] = [
     catalogComponent(user),
     resourcesDropdown,
@@ -99,14 +92,12 @@ const anonMobileHeaderItems = (
     signUp,
     login,
   ];
-
   return {
     left: leftItems,
     right: rightItems,
     mainMenu: mainMenuItems,
   };
 };
-
 export const anonDefaultHeaderItems = (
   hidePricing?: boolean,
   user?: User,
@@ -114,7 +105,6 @@ export const anonDefaultHeaderItems = (
 ): FormattedAppHeaderItems => {
   return anonHeaderItems(true, true, hidePricing, user, renderBookmarks);
 };
-
 export const anonDefaultMobileHeaderItems = (
   hidePricing?: boolean,
   user?: User,
@@ -122,7 +112,6 @@ export const anonDefaultMobileHeaderItems = (
 ): FormattedMobileAppHeaderItems => {
   return anonMobileHeaderItems(true, true, hidePricing, user, renderBookmarks);
 };
-
 export const anonLandingHeaderItems = (
   hidePricing?: boolean,
   user?: User,
@@ -130,7 +119,6 @@ export const anonLandingHeaderItems = (
 ): FormattedAppHeaderItems => {
   return anonHeaderItems(true, false, hidePricing, user, renderBookmarks);
 };
-
 export const anonLandingMobileHeaderItems = (
   hidePricing?: boolean,
   user?: User,
@@ -141,30 +129,34 @@ export const anonLandingMobileHeaderItems = (
 
 export const anonLoginHeaderItems = (
   hidePricing?: boolean,
-  user?: User
+  user?: User,
+  renderBookmarks?: () => ReactNode
 ): FormattedAppHeaderItems => {
-  return anonHeaderItems(false, true, hidePricing, user);
+  return anonHeaderItems(false, true, hidePricing, user, renderBookmarks);
 };
 
 export const anonLoginMobileHeaderItems = (
   hidePricing?: boolean,
-  user?: User
+  user?: User,
+  renderBookmarks?: () => ReactNode
 ): FormattedMobileAppHeaderItems => {
-  return anonMobileHeaderItems(false, true, hidePricing, user);
+  return anonMobileHeaderItems(false, true, hidePricing, user, renderBookmarks);
 };
 
 export const anonSignupHeaderItems = (
   hidePricing?: boolean,
-  user?: User
+  user?: User,
+  renderBookmarks?: () => ReactNode
 ): FormattedAppHeaderItems => {
-  return anonHeaderItems(true, false, hidePricing, user);
+  return anonHeaderItems(true, false, hidePricing, user, renderBookmarks);
 };
 
 export const anonSignupMobileHeaderItems = (
   hidePricing?: boolean,
-  user?: User
+  user?: User,
+  renderBookmarks?: () => ReactNode
 ): FormattedMobileAppHeaderItems => {
-  return anonMobileHeaderItems(true, false, hidePricing, user);
+  return anonMobileHeaderItems(true, false, hidePricing, user, renderBookmarks);
 };
 
 export const freeHeaderItems = (
@@ -182,7 +174,6 @@ export const freeHeaderItems = (
     ...(hidePricing ? [] : [pricingComponent(user)]),
     businessSolutions,
   ];
-
   const rightItems: AppHeaderItem[] = [];
   if (renderFavorites) {
     rightItems.push(favorites(renderFavorites));
@@ -190,20 +181,17 @@ export const freeHeaderItems = (
     // only allow bookmarks render if user wasn't also part of favs
     rightItems.push(bookmarks(renderBookmarks));
   }
-
   rightItems.push(freeProfile(user));
   rightItems.push(
     user.showProUpgrade
       ? upgradeToPro(user.proCheckoutUrl)
       : tryProForFree(user.proCheckoutUrl)
   );
-
   return {
     left: leftItems,
     right: rightItems,
   };
 };
-
 export const freeMobileHeaderItems = (
   user: User,
   hidePricing?: boolean,
@@ -223,18 +211,15 @@ export const freeMobileHeaderItems = (
       ? upgradeToPro(user.proCheckoutUrl)
       : tryProForFree(user.proCheckoutUrl),
   ];
-
   if (renderBookmarks) {
     rightItems.push(bookmarks(renderBookmarks));
   }
-
   return {
     left: leftItems,
     right: rightItems,
     mainMenu: mainMenuItems,
   };
 };
-
 export const proHeaderItems = (
   user: User,
   renderFavorites?: () => ReactNode,
@@ -247,7 +232,6 @@ export const proHeaderItems = (
     resourcesDropdown,
     communityDropdown,
   ];
-
   const rightItems: AppHeaderItem[] = [];
   if (renderFavorites) {
     rightItems.push(favorites(renderFavorites));
@@ -255,18 +239,15 @@ export const proHeaderItems = (
     // only allow bookmarks render if user wasn't also part of favs
     rightItems.push(bookmarks(renderBookmarks));
   }
-
   rightItems.push(proProfile(user));
   if (user.isPaused) {
     rightItems.push(unpausePro);
   }
-
   return {
     left: leftItems,
     right: rightItems,
   };
 };
-
 export const proMobileHeaderItems = (
   user: User,
   renderBookmarks?: () => ReactNode
@@ -275,7 +256,6 @@ export const proMobileHeaderItems = (
     user.hasNewSkuSubscription ? logo : proLogo,
   ];
   const rightItems: AppHeaderItem[] = [];
-
   const mainMenuItems: AppHeaderItem[] = [
     myHome,
     catalogComponent(user),
@@ -283,27 +263,22 @@ export const proMobileHeaderItems = (
     communityDropdown,
     proProfile(user),
   ];
-
   if (user.isPaused) {
     mainMenuItems.push(unpausePro);
   }
-
   if (renderBookmarks) {
     rightItems.push(bookmarks(renderBookmarks));
   }
-
   return {
     left: leftItems,
     right: rightItems,
     mainMenu: mainMenuItems,
   };
 };
-
 export const loadingHeaderItems: FormattedAppHeaderItems = {
   left: [logo],
   right: [],
 };
-
 export const loadingMobileHeaderItems: FormattedMobileAppHeaderItems = {
   left: [logo],
   right: [],
