@@ -40,6 +40,15 @@ const StyledColumn = styled(Column)(
   })
 );
 
+const StyledAnchorColumn = styled(Column)(
+  css({
+    pb: 16,
+    '&:last-child': {
+      pb: 0,
+    },
+  })
+);
+
 const catalogAnchorData: AppHeaderItem = {
   text: 'Explore full catalog →',
   id: 'catalog',
@@ -151,13 +160,15 @@ export const AppHeaderCatalogSection = React.forwardRef<
               />
             </Column>
             <Column size={{ xs: 12, md: 8 }}>
-              <LayoutGrid pt={32} pb={48} pl={{ _: 16, sm: 64, md: 48 }}>
+              <LayoutGrid
+                pt={32}
+                pb={{ _: 32, md: 48 }}
+                pl={{ _: 16, sm: 64, md: 48 }}
+              >
                 {careerPaths.map((item) => (
-                  <Column key={item.id} size={{ _: 12, lg: 4 }}>
-                    <Box>
-                      <CatalogLink item={item} />
-                    </Box>
-                  </Column>
+                  <StyledAnchorColumn key={item.id} size={{ _: 12, lg: 4 }}>
+                    <CatalogLink item={item} />
+                  </StyledAnchorColumn>
                 ))}
               </LayoutGrid>
             </Column>
