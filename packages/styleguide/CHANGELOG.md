@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [58.1.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@58.1.0...@codecademy/styleguide@58.1.1) (2022-06-22)
+
+
+### Bug Fixes
+
+* styleguide imports ([eb6ed15](https://github.com/Codecademy/gamut/commit/eb6ed15aaf9a6b5f886f8090162de13316a2b2b0))
+
+
+
 ## [58.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@58.0.9...@codecademy/styleguide@58.1.0) (2022-06-22)
 
 
