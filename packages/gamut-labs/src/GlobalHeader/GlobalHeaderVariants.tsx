@@ -141,34 +141,30 @@ export const anonLandingMobileHeaderItems = (
 
 export const anonLoginHeaderItems = (
   hidePricing?: boolean,
-  user?: User,
-  renderBookmarks?: () => ReactNode
+  user?: User
 ): FormattedAppHeaderItems => {
-  return anonHeaderItems(false, true, hidePricing, user, renderBookmarks);
+  return anonHeaderItems(false, true, hidePricing, user);
 };
 
 export const anonLoginMobileHeaderItems = (
   hidePricing?: boolean,
-  user?: User,
-  renderBookmarks?: () => ReactNode
+  user?: User
 ): FormattedMobileAppHeaderItems => {
-  return anonMobileHeaderItems(false, true, hidePricing, user, renderBookmarks);
+  return anonMobileHeaderItems(false, true, hidePricing, user);
 };
 
 export const anonSignupHeaderItems = (
   hidePricing?: boolean,
-  user?: User,
-  renderBookmarks?: () => ReactNode
+  user?: User
 ): FormattedAppHeaderItems => {
-  return anonHeaderItems(true, false, hidePricing, user, renderBookmarks);
+  return anonHeaderItems(true, false, hidePricing, user);
 };
 
 export const anonSignupMobileHeaderItems = (
   hidePricing?: boolean,
-  user?: User,
-  renderBookmarks?: () => ReactNode
+  user?: User
 ): FormattedMobileAppHeaderItems => {
-  return anonMobileHeaderItems(true, false, hidePricing, user, renderBookmarks);
+  return anonMobileHeaderItems(true, false, hidePricing, user);
 };
 
 export const freeHeaderItems = (

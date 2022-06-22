@@ -254,14 +254,6 @@ describe('GlobalHeader', () => {
         const { view } = renderView(anonLoginHeaderProps);
         view.getAllByText(signUp.text);
       });
-
-      it('renders bookmarks if passed in props', () => {
-        const { view } = renderView({
-          ...anonLoginHeaderProps,
-          renderBookmarks: () => <div data-testid="bookmarks" />,
-        });
-        view.getAllByTestId('bookmarks');
-      });
     });
 
     describe('sign up page', () => {
@@ -278,14 +270,6 @@ describe('GlobalHeader', () => {
       it('does not render sign up', () => {
         const { view } = renderView(anonSignUpHeaderProps);
         expect(view.queryByText(signUp.text)).toBeFalsy();
-      });
-
-      it('renders bookmarks if passed in props', () => {
-        const { view } = renderView({
-          ...anonSignUpHeaderProps,
-          renderBookmarks: () => <div data-testid="bookmarks" />,
-        });
-        view.getAllByTestId('bookmarks');
       });
     });
   });

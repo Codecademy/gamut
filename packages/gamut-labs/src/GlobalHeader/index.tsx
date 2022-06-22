@@ -48,17 +48,9 @@ const getAppHeaderItems = (
             props.renderBookmarks
           );
         case 'login':
-          return anonLoginHeaderItems(
-            props.hidePricing,
-            props.user,
-            props.renderBookmarks
-          );
+          return anonLoginHeaderItems(props.hidePricing, props.user);
         case 'signup':
-          return anonSignupHeaderItems(
-            props.hidePricing,
-            props.user,
-            props.renderBookmarks
-          );
+          return anonSignupHeaderItems(props.hidePricing, props.user);
         default:
           return anonDefaultHeaderItems(
             props.hidePricing,
