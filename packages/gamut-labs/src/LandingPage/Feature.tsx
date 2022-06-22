@@ -3,6 +3,7 @@ import { mediaQueries } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React from 'react';
 
+import { PausableImage } from '../PausableImage';
 import { BaseProps } from './types';
 
 const Image = Box.withComponent('img');
@@ -12,7 +13,9 @@ export type FeaturedImageProps = {
   alt: string;
 };
 export const FeaturedImage: React.FC<FeaturedImageProps> = ({ src, alt }) => (
-  <Image alt={alt} src={src} mb={32} width="100%" data-testid="feature-image" />
+  <Box width={1} mb={32}>
+    <PausableImage src={src} alt={alt} data-testid="feature-image" />
+  </Box>
 );
 
 export type FeaturedIconProps = {
