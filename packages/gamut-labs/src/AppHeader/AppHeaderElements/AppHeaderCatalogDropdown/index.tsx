@@ -7,6 +7,11 @@ import React, {
 } from 'react';
 
 import {
+  careerPaths,
+  topLanguages,
+  topSubjects,
+} from '../../../lib/catalogList';
+import {
   DropdownAnchor,
   DropdownIcon,
   StyledDropdown,
@@ -48,7 +53,11 @@ export const AppHeaderCatalogDropdown: React.FC<AppHeaderCatalogDropdownProps> =
   const focusLastItem = () => setFocusIndex(itemsCount);
 
   const itemsCount = useMemo(() => {
-    return item.popover.map((section) => section.data).flat().length;
+    const languageAndSubjectCount =
+      topLanguages.length + topSubjects.length + 2;
+    return item.hideCareerPaths
+      ? languageAndSubjectCount
+      : languageAndSubjectCount + careerPaths.length;
   }, [item]);
 
   const focusNextItem = () => {
@@ -206,8 +215,9 @@ export const AppHeaderCatalogDropdown: React.FC<AppHeaderCatalogDropdownProps> =
       </DropdownAnchor>
       <StyledDropdown
         style={{
-          top: '2.50rem',
-          width: '38rem',
+          top: '3.5rem',
+          minWidth: '64rem',
+          left: '-14rem',
         }}
         initial={{ borderWidth: 0, height: 0 }}
         animate={{
