@@ -34,6 +34,7 @@ export type GlobalHeaderProps =
   | FreeHeader
   | ProHeader
   | LoadingHeader;
+
 const getAppHeaderItems = (
   props: GlobalHeaderProps
 ): FormattedAppHeaderItems => {
@@ -61,7 +62,6 @@ const getAppHeaderItems = (
         default:
           return anonDefaultHeaderItems(
             props.hidePricing,
-
             props.user,
             props.renderBookmarks
           );
@@ -83,6 +83,7 @@ const getAppHeaderItems = (
       return loadingHeaderItems;
   }
 };
+
 const getMobileAppHeaderItems = (
   props: GlobalHeaderProps
 ): FormattedMobileAppHeaderItems => {
@@ -126,9 +127,11 @@ const getMobileAppHeaderItems = (
       return loadingMobileHeaderItems;
   }
 };
+
 export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
   const { action, onLinkAction } = props;
   const theme = useTheme();
+
   const combinedAction = useCallback(
     (event: React.MouseEvent, item: AppHeaderItem) => {
       action(event, item);
@@ -136,6 +139,7 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
     },
     [action, onLinkAction]
   );
+
   return (
     <Box as="header" position="sticky" top={0} zIndex={theme.elements.headerZ}>
       <AppHeader
