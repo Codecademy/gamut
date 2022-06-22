@@ -2,7 +2,7 @@ import React, { useLayoutEffect, useRef, useState } from 'react';
 
 import { Box, FlexBox } from '../Box';
 import { Popover } from '../Popover';
-import { ToolTipProps } from '.';
+import { ToolTipProps } from './types';
 import { getPopoverAlignment } from './utils';
 
 export const PopoverToolTip: React.FC<ToolTipProps> = ({

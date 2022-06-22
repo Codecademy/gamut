@@ -3,7 +3,7 @@ import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
 
 import { Box } from '../Box';
-import { toolTipBodyAlignments, toolTipBodyCss } from '../ToolTip/elements';
+import { toolTipBodyAlignments, toolTipBodyCss } from '../ToolTip/styles';
 
 const outlineState = states({
   outline: {

@@ -1,12 +1,12 @@
 import React from 'react';
 
-import { ToolTipProps } from '.';
 import {
   TargetContainer,
   ToolTipBody,
   ToolTipContainer,
   TooltipWrapper,
 } from './elements';
+import { ToolTipProps } from './types';
 
 export const StaticToolTip: React.FC<ToolTipProps> = ({
   alignment = 'top-right',
