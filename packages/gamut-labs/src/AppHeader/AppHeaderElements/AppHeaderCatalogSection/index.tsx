@@ -49,7 +49,7 @@ const StyledAnchorColumn = styled(Column)(
 );
 
 const catalogAnchorData: AppHeaderItem = {
-  text: 'Explore full catalog →',
+  text: 'Explore full catalog',
   id: 'catalog',
   type: 'text-button',
   href: '/catalog',
@@ -111,7 +111,7 @@ export const AppHeaderCatalogSection = React.forwardRef<
       </Text>
       <Text fontSize={14}>{subtitle}</Text>
       {showFullCatalogButton && (
-        <ColorMode mode="dark">
+        <ColorMode mode="dark" display={{ _: 'none', lg: 'block' }}>
           <Anchor
             variant="standard"
             fontSize={14}
@@ -124,7 +124,7 @@ export const AppHeaderCatalogSection = React.forwardRef<
             mt={96}
             pt={24}
           >
-            {catalogAnchorData.text}
+            {catalogAnchorData.text} →
           </Anchor>
         </ColorMode>
       )}
@@ -245,6 +245,21 @@ export const AppHeaderCatalogSection = React.forwardRef<
             </GridBox>
           </Column>
         </LayoutGrid>
+      </Column>
+      <Column size={12} p={16} display={{ _: 'block', lg: 'none' }}>
+        <Box textAlign="center" pb={16}>
+          <Anchor
+            variant="standard"
+            fontSize={16}
+            fontWeight="title"
+            href={catalogAnchorData.href}
+            data-focusablecatalog="true"
+            onClick={(event) => action(event, catalogAnchorData)}
+            tabIndex={tabIndex}
+          >
+            {catalogAnchorData.text}
+          </Anchor>
+        </Box>
       </Column>
     </LayoutGrid>
   );
