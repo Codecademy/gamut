@@ -22,8 +22,8 @@ const HeaderHeightAreaBase = styled(Box)(
   }),
   system.states({
     faded: {
-      bg: 'beige',
-      borderColor: 'beige',
+      bg: 'background-current',
+      borderColor: 'background-current',
     },
   })
 );

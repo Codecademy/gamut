@@ -140,7 +140,7 @@ export const AppHeaderCatalogSection = React.forwardRef<
       tabIndex={-1}
       variant="p-small"
       color="navy-500"
-      pb={8}
+      pb={{ _: 16, lg: 8 }}
       fontFamily="accent"
     >
       {title}
@@ -224,7 +224,7 @@ export const AppHeaderCatalogSection = React.forwardRef<
                   </Box>
                 ))}
               </Box>
-              <Box gridArea="subjectHeader">
+              <Box pt={{ _: 16, lg: 0 }} gridArea="subjectHeader">
                 <Subheader title="Top Subjects" />
               </Box>
               <Box gridArea="subject" display="grid" gridTemplateColumns="1fr">
