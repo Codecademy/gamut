@@ -20,7 +20,6 @@ import {
   AppHeaderCatalogDropdownItem,
   AppHeaderClickHandler,
   AppHeaderItem,
-  AppHeaderLinkItem,
 } from '../types';
 
 export type AppHeaderCatalogSectionProps = {
