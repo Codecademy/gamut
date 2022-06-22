@@ -83,6 +83,23 @@ export const MyComponent: React.FC = () => {
 };
 ```
 
+## Card Wrapper Display
+
+The wrapper display may need to be changed from the default `inline-block`
+
+```tsx
+import { FloatingCard } from '@codecademy/gamut';
+import { DotDense } from '@codecademy/gamut-patterns';
+
+export const MyComponent: React.FC = () => {
+  return (
+    <FloatingCard pattern={DotDense} cardDisplay="block">
+      Take up all the space.
+    </FloatingCard>
+  );
+};
+```
+
 ## Code Playground
 
 Edit attributes and see what’s possible to do with this component or get the exact output you want.
