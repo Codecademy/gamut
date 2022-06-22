@@ -64,6 +64,27 @@ const gridTemplate = `'languageHeader gap subjectHeader'
                     'language language subject'
                     'language language subject'`;
 
+const responsiveGridTemplate = `'languageHeader'
+                            'language'
+                            'language'
+                            'language'
+                            'language'
+                            'language'
+                            'language'
+                            'language'
+                            'language'
+                            'language'
+                            'language'
+                            'language'
+                            'language'
+                            'subjectHeader'
+                            'subject'
+                            'subject'
+                            'subject'
+                            'subject'
+                            'subject'
+                            'subject'`;
+
 export const AppHeaderCatalogSection = React.forwardRef<
   HTMLDivElement,
   AppHeaderCatalogSectionProps
@@ -175,14 +196,19 @@ export const AppHeaderCatalogSection = React.forwardRef<
             py={32}
             pl={{ _: 16, sm: 64, md: 48 }}
           >
-            <GridBox gridTemplateAreas={gridTemplate}>
+            <GridBox
+              gridTemplateAreas={{
+                _: responsiveGridTemplate,
+                lg: gridTemplate,
+              }}
+            >
               <Box gridArea="languageHeader">
                 <Subheader title="Top Languages" />
               </Box>
               <Box
                 gridArea="language"
                 display="grid"
-                gridTemplateColumns="1fr 1fr"
+                gridTemplateColumns={{ _: '1fr', lg: 'repeat(2, 1fr)' }}
               >
                 {topLanguages.map((item) => (
                   <Box width="12rem" key={item.id} minHeight={36}>
