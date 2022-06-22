@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [58.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@58.0.9...@codecademy/styleguide@58.1.0) (2022-06-22)
+
+
+### Features
+
+* ⏯️ Update landing page image components to be pausable ([d27bf15](https://github.com/Codecademy/gamut/commit/d27bf15f29991dcd73474d01718fa0afd28522c5))
+
+
+
 ### [58.0.9](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@58.0.8...@codecademy/styleguide@58.0.9) (2022-06-22)
 
 
