@@ -64,39 +64,17 @@ export const AppHeaderCatalogSection = React.forwardRef<
   const DescriptionSection: React.FunctionComponent<{
     title: string;
     subtitle: string;
-    showFullCatalogButton?: boolean;
-  }> = ({ title, subtitle, showFullCatalogButton }) => (
+  }> = ({ title, subtitle }) => (
     <FlexBox
       data-focusablecatalog="true"
       data-testid="title-description-section"
       tabIndex={-1}
-      bg="navy-800"
-      color="blue-0"
       flexDirection="column"
-      p={32}
     >
       <Text as="h2" variant="title-xs" mb={8} fontWeight={700}>
         {title}
       </Text>
       <Text fontSize={14}>{subtitle}</Text>
-      {showFullCatalogButton && (
-        <ColorMode mode="dark">
-          <Anchor
-            variant="standard"
-            fontSize={14}
-            fontWeight={700}
-            textAlign={{ _: 'center', md: 'left' }}
-            href={catalogAnchorData.href}
-            data-focusablecatalog="true"
-            onClick={(event) => action(event, catalogAnchorData)}
-            tabIndex={tabIndex}
-            mt={96}
-            pt={24}
-          >
-            {catalogAnchorData.text}
-          </Anchor>
-        </ColorMode>
-      )}
     </FlexBox>
   );
 
@@ -122,10 +100,12 @@ export const AppHeaderCatalogSection = React.forwardRef<
         <StyledColumn size={12} key="Top career paths" as="li">
           <LayoutGrid>
             <Column size={{ xs: 12, md: 3 }}>
-              <DescriptionSection
-                title="Top career Paths"
-                subtitle="Land an entry-level role in tech with step-by-step guidance."
-              />
+              <Box bg="navy-800" color="blue-0" p={32}>
+                <DescriptionSection
+                  title="Top career paths"
+                  subtitle="Land an entry-level role in tech with step-by-step guidance."
+                />
+              </Box>
             </Column>
             <Column size={{ xs: 12, md: 8 }}>
               <LayoutGrid pt={32} pb={48} pl={{ _: 16, sm: 64, md: 48 }}>
@@ -150,11 +130,28 @@ export const AppHeaderCatalogSection = React.forwardRef<
       <Column size={12} key="Popular languages and subjects" as="li">
         <LayoutGrid>
           <Column size={{ xs: 12, md: 3 }}>
-            <DescriptionSection
-              title="Popular languages and subjects"
-              subtitle="Find courses in languages or subjects that interest you."
-              showFullCatalogButton
-            />
+            <Box bg="navy-800" color="blue-0" p={32}>
+              <DescriptionSection
+                title="Popular languages and subjects"
+                subtitle="Find courses in languages or subjects that interest you."
+              />
+              <ColorMode mode="dark">
+                <Anchor
+                  variant="standard"
+                  fontSize={14}
+                  fontWeight={700}
+                  textAlign={{ _: 'center', md: 'left' }}
+                  href={catalogAnchorData.href}
+                  data-focusablecatalog="true"
+                  onClick={(event) => action(event, catalogAnchorData)}
+                  tabIndex={tabIndex}
+                  mt={96}
+                  pt={24}
+                >
+                  {catalogAnchorData.text}
+                </Anchor>
+              </ColorMode>
+            </Box>
           </Column>
           <Column
             size={{ xs: 12, md: 8 }}

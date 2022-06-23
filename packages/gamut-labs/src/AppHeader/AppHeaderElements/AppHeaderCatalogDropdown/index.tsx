@@ -54,7 +54,7 @@ export const AppHeaderCatalogDropdown: React.FC<AppHeaderCatalogDropdownProps> =
 
   const itemsCount = useMemo(() => {
     const languageAndSubjectCount =
-      topLanguages.length + topSubjects.length + 2;
+      topLanguages.length + topSubjects.length + 4; // extra two for hard coded headers
     return item.hideCareerPaths
       ? languageAndSubjectCount
       : languageAndSubjectCount + careerPaths.length;
