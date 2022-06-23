@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.28.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.27.2...@codecademy/gamut-illustrations@0.28.0) (2022-06-23)
+
+
+### Features
+
+* **Illustrations:** Add Code Celebration illustration to gamut-illustrations ([dd105ef](https://github.com/Codecademy/gamut/commit/dd105efbf2031c1f394434974804b278fd69ad6e))
+
+
+
 ### [0.27.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.27.1...@codecademy/gamut-illustrations@0.27.2) (2022-05-24)
 
 **Note:** Version bump only for package @codecademy/gamut-illustrations
