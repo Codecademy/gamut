@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [32.2.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@32.2.2...@codecademy/gamut-labs@32.2.3) (2022-06-23)
+
+
+### Bug Fixes
+
+* adds text wrap to long titles on accordion menu ([addead4](https://github.com/Codecademy/gamut/commit/addead46ab6517908b9600a4a74302473e17c4ce))
+
+
+
 ### [32.2.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@32.2.1...@codecademy/gamut-labs@32.2.2) (2022-06-23)
 
 
