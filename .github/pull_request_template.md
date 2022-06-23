@@ -12,6 +12,14 @@
 - [ ] This PR includes unit tests for the code change
 - [ ] The alpha package of this PR is passing end-to-end tests in all relevant Codecademy repositories
 
+#### Testing Instructions
+
+<!--
+Please fill this in with how to test your PR within Gamut and populate it with the appropriate PR preview links.
+-->
+
+[Don't make me tap the sign.](https://i.imgur.com/sy93D9I.png)
+
 #### PR Links and Envs
 
 | Repository   | PR Link                                                  | PR Env                                                   |
