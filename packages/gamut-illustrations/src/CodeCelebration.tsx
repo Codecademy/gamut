@@ -13,6 +13,7 @@ export const CodeCelebration: React.FC<IllustrationProps> = ({
     className={className}
     height={height}
     width={width}
+    viewBox="0 0 241 183"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
     xmlnsXlink="http://www.w3.org/1999/xlink"
