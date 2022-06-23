@@ -10,6 +10,7 @@
 - [ ] Related to JIRA ticket: ABC-123
 - [ ] I have run this code to verify it works
 - [ ] This PR includes unit tests for the code change
+- [ ] This PR includes testing instructions tests for the code change
 - [ ] The alpha package of this PR is passing end-to-end tests in all relevant Codecademy repositories
 
 #### Testing Instructions
