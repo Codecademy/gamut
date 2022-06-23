@@ -6,18 +6,18 @@ import {
   ToolTipContainer,
   TooltipWrapper,
 } from './elements';
-import { ToolTipProps } from './types';
+import { tooltipDefaultProps, ToolTipProps } from './types';
 
-export const StaticToolTip: React.FC<ToolTipProps> = ({
-  alignment = 'top-right',
+export const InlineToolTip: React.FC<ToolTipProps> = ({
+  alignment = tooltipDefaultProps.alignment,
   children,
   className,
   containerClassName,
   focusable,
   id,
-  mode,
-  widthMode,
+  mode = tooltipDefaultProps.mode,
   target,
+  widthMode = tooltipDefaultProps.widthMode,
 }) => {
   return (
     <TooltipWrapper className={containerClassName}>

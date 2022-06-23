@@ -18,7 +18,7 @@ export type ToolTipBaseAlignment = typeof toolTipBaseAlignmentArray[number];
 
 export type ToolTipStaticAlignment = typeof toolTipAlignmentArray[number];
 
-export type ToolTipStaticBodyProps = {
+export type ToolTipInlineBodyProps = {
   /**
    * How to align the tooltip relative to the target.
    */
@@ -30,7 +30,7 @@ export type ToolTipStaticBodyProps = {
   isPopover?: never;
 };
 
-type ToolTipBodyProps = {
+export type ToolTipPopoverBodyProps = {
   /**
    * How to align the tooltip relative to the target.
    */
@@ -42,7 +42,7 @@ type ToolTipBodyProps = {
   isPopover: true;
 };
 
-type ToolTipContainerProps = ToolTipBodyProps | ToolTipStaticBodyProps;
+type ToolTipContainerProps = ToolTipPopoverBodyProps | ToolTipInlineBodyProps;
 
 export type ToolTipProps = ToolTipContainerProps & {
   children?: ReactNode;
@@ -76,4 +76,12 @@ export type ToolTipProps = ToolTipContainerProps & {
    * If Tooltip content should override width restrictions
    */
   widthMode?: 'standard' | 'unlimited';
+};
+
+export const tooltipDefaultProps: Required<
+  Pick<ToolTipProps, 'alignment' | 'mode' | 'widthMode'>
+> = {
+  alignment: 'top-right',
+  mode: 'light',
+  widthMode: 'standard',
 };
