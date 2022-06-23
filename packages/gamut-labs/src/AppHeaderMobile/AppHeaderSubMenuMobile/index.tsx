@@ -1,10 +1,4 @@
-import {
-  Anchor,
-  Box,
-  ContentContainer,
-  FlexBox,
-  Text,
-} from '@codecademy/gamut';
+import { Anchor, Box, FlexBox, Text } from '@codecademy/gamut';
 import { ArrowChevronLeftIcon } from '@codecademy/gamut-icons';
 import { css } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
@@ -65,7 +59,6 @@ export const AppHeaderSubMenuMobile: React.FC<AppHeaderSubMenuMobileProps> = ({
 
   return (
     <AppHeaderListItem aria-labelledby={`${item.text} menu`}>
-      {/* <ContentContainer> */}
       <StyledAnchor
         onClick={handleClose}
         variant="interface"
@@ -94,7 +87,6 @@ export const AppHeaderSubMenuMobile: React.FC<AppHeaderSubMenuMobileProps> = ({
           </StyledText>
         </Box>
       </FlexBox>
-      {/* </ContentContainer> */}
       {item.type === 'catalog-dropdown' ? (
         <AppHeaderCatalogSection action={action} item={item} />
       ) : (

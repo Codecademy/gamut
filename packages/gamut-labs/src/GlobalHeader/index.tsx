@@ -125,6 +125,7 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
             })}
         onSearch={props.search.onSearch}
         redirectParam={props.type === 'anon' ? props.redirectParam : undefined}
+        isAnon={props.type === 'anon'}
       />
       {props.children}
     </Box>

@@ -1,4 +1,9 @@
-import { ContentContainer, FillButton, TextButton } from '@codecademy/gamut';
+import {
+  ContentContainer,
+  FillButton,
+  FlexBox,
+  TextButton,
+} from '@codecademy/gamut';
 import React, { useState } from 'react';
 
 import { AppHeaderLink } from '../../AppHeader/AppHeaderElements/AppHeaderLink';
@@ -8,6 +13,7 @@ import {
   AppHeaderDropdownItem,
   AppHeaderItem,
 } from '../../AppHeader/AppHeaderElements/types';
+import { login, signUp } from '../../GlobalHeader/GlobalHeaderItems';
 import { AppHeaderSubMenuMobile } from '../AppHeaderSubMenuMobile';
 import { AppHeaderSubMenuTarget } from '../AppHeaderSubMenuTarget';
 import { MobileSearchBar } from './MobileSearchBar';
@@ -17,6 +23,7 @@ export type AppHeaderMainMenuMobileProps = {
   items: AppHeaderItem[];
   onSearch: (query: string) => void;
   getItemType: (type: string) => void;
+  isAnon: boolean;
 };
 
 export const AppHeaderMainMenuMobile: React.FC<AppHeaderMainMenuMobileProps> = ({
@@ -24,6 +31,7 @@ export const AppHeaderMainMenuMobile: React.FC<AppHeaderMainMenuMobileProps> = (
   items,
   onSearch,
   getItemType,
+  isAnon,
 }) => {
   const [subMenuItem, setSubMenuItem] = useState<AppHeaderDropdownItem>();
 
@@ -106,6 +114,39 @@ export const AppHeaderMainMenuMobile: React.FC<AppHeaderMainMenuMobileProps> = (
           {mapItemToElement(item, action)}
         </AppHeaderListItem>
       ))}
+
+      {isAnon && (
+        <FlexBox
+          as="li"
+          alignItems="baseline"
+          justifyContent="center"
+          mt={16}
+          pt={16}
+          mx={{ _: -16, sm: -64, md: -48 }}
+          borderTop={1}
+          borderColor="navy-300"
+        >
+          <FillButton
+            data-testid={signUp.dataTestId}
+            href={signUp.href}
+            onClick={(event: React.MouseEvent) => action(event, signUp)}
+            key={signUp.id}
+            role="menuitem"
+          >
+            {signUp.text}
+          </FillButton>
+
+          <TextButton
+            key={login.id}
+            data-testid={login.dataTestId}
+            href={login.href}
+            onClick={(event: React.MouseEvent) => action(event, login)}
+            role="menuitem"
+          >
+            {login.text}
+          </TextButton>
+        </FlexBox>
+      )}
     </ContentContainer>
   );
 };
