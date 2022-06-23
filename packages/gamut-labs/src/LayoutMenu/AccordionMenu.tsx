@@ -56,7 +56,6 @@ export const AccordionMenu: React.FC<AccordionMenuProps> = ({
       top={
         <Anchor
           variant="interface"
-          width="max-content"
           py={12}
           px={4}
           onClick={() => {
@@ -64,9 +63,18 @@ export const AccordionMenu: React.FC<AccordionMenuProps> = ({
             setExpanded((prev) => !prev);
           }}
           aria-expanded={expanded}
+          display="flex"
         >
-          <Text variant="title-xs">{section.title}</Text>
-          <ExpandChevron ml={12} size={14} expanded={expanded} />
+          <Text variant="title-xs" style={{ flex: 1 }} textAlign="left">
+            {section.title}
+          </Text>
+          <ExpandChevron
+            ml={12}
+            size={14}
+            expanded={expanded}
+            position="relative"
+            top={4}
+          />
         </Anchor>
       }
     >

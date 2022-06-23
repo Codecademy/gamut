@@ -11,7 +11,13 @@ export const PageAlertsExample: React.FC = () => (
   <PageAlertsProvider>
     <Component />
     <PageAlerts
-      extra={[{ type: 'success', message: '"extra" alert on page-load' }]}
+      extra={[
+        {
+          type: 'success',
+          message:
+            '"extra" alert on page-load provided by the PageAlertProvider 😎',
+        },
+      ]}
     />
   </PageAlertsProvider>
 );
