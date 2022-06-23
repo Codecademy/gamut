@@ -107,8 +107,6 @@ export const AppHeaderCatalogSection = React.forwardRef<
       data-testid="title-description-section"
       tabIndex={-1}
       flexDirection="column"
-      px={{ _: 16, sm: 64, md: 48, lg: 40 }}
-      py={{ _: 16, sm: 32 }}
     >
       <Text as="h2" variant="title-xs" mb={8} fontWeight={700}>
         {title}
@@ -139,7 +137,12 @@ export const AppHeaderCatalogSection = React.forwardRef<
         <StyledColumn size={12} key="Top career paths" as="li">
           <LayoutGrid>
             <Column size={{ xs: 12, md: 3 }}>
-              <Box bg="navy-800" color="blue-0" p={32}>
+              <Box
+                bg="navy-800"
+                color="blue-0"
+                px={{ _: 16, sm: 64, md: 48, lg: 40 }}
+                py={{ _: 16, sm: 32 }}
+              >
                 <DescriptionSection
                   title="Top career paths"
                   subtitle="Land a role in tech with step-by-step guidance."
@@ -169,7 +172,12 @@ export const AppHeaderCatalogSection = React.forwardRef<
       <Column size={12} key="Popular languages and subjects" as="li">
         <LayoutGrid>
           <Column size={{ xs: 12, md: 3 }}>
-            <Box bg="navy-800" color="blue-0" p={32}>
+            <Box
+              bg="navy-800"
+              color="blue-0"
+              px={{ _: 16, sm: 64, md: 48, lg: 40 }}
+              py={{ _: 16, sm: 32 }}
+            >
               <DescriptionSection
                 title="Popular languages and subjects"
                 subtitle="Find courses in languages or subjects that interest you."
