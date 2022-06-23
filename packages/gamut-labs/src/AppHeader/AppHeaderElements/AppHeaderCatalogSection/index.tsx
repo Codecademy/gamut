@@ -110,7 +110,7 @@ export const AppHeaderCatalogSection = React.forwardRef<
       bg="navy-800"
       color="blue-0"
       flexDirection="column"
-      px={{ _: 16, sm: 64, md: 48, lg: 32 }}
+      px={{ _: 16, sm: 64, md: 48, lg: 40 }}
       py={{ _: 16, sm: 32 }}
     >
       <Text as="h2" variant="title-xs" mb={8} fontWeight={700}>
@@ -162,15 +162,11 @@ export const AppHeaderCatalogSection = React.forwardRef<
             <Column size={{ xs: 12, md: 3 }}>
               <DescriptionSection
                 title="Top career Paths"
-                subtitle="Land an entry-level role in tech with step-by-step guidance."
+                subtitle="Land a role in tech with step-by-step guidance."
               />
             </Column>
             <Column size={{ xs: 12, md: 8 }}>
-              <LayoutGrid
-                pt={32}
-                pb={{ _: 32, md: 48 }}
-                pl={{ _: 16, sm: 64, md: 48 }}
-              >
+              <LayoutGrid py={32} pl={{ _: 16, sm: 64, md: 48 }}>
                 {careerPaths.map((item) => (
                   <StyledAnchorColumn key={item.id} size={{ _: 12, lg: 4 }}>
                     <Anchor
