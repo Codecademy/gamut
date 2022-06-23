@@ -79,9 +79,10 @@ export type ToolTipProps = ToolTipContainerProps & {
 };
 
 export const tooltipDefaultProps: Required<
-  Pick<ToolTipProps, 'alignment' | 'mode' | 'widthMode'>
+  Pick<ToolTipProps, 'alignment' | 'focusable' | 'mode' | 'widthMode'>
 > = {
   alignment: 'top-right',
+  focusable: true,
   mode: 'light',
   widthMode: 'standard',
 };
