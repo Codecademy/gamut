@@ -244,7 +244,7 @@ export const resourcesDropdown: AppHeaderResourcesDataItem[] = [
       },
       {
         id: 'cheatsheets',
-        href: 'resources/cheatsheets/all',
+        href: '/resources/cheatsheets/all',
         header: 'Cheatsheets',
         description: 'Review concepts from your courses.',
         trackingTarget: 'topnav_resources_learning_cheatsheets',
@@ -284,6 +284,7 @@ export const resourcesDropdown: AppHeaderResourcesDataItem[] = [
       id: 'view-all-inspiration',
       trackingTarget: 'topnav_resources_inspiration_all',
       type: 'link',
+      newTab: true,
     },
     data: [
       {
@@ -293,6 +294,7 @@ export const resourcesDropdown: AppHeaderResourcesDataItem[] = [
         description: 'Get answers to questions about coding careers.',
         trackingTarget: 'topnav_resources_inspiration_career_advice',
         type: 'link',
+        newTab: true,
       },
       {
         id: 'learning-tips',
@@ -301,6 +303,7 @@ export const resourcesDropdown: AppHeaderResourcesDataItem[] = [
         description: 'Learn where to start and how to stay motivated.',
         trackingTarget: 'topnav_resources_inspiration_learning_tips',
         type: 'link',
+        newTab: true,
       },
     ],
   },
