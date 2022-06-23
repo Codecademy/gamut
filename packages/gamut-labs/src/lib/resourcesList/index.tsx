@@ -1,7 +1,10 @@
 import { Badge } from '@codecademy/gamut';
 import React from 'react';
 
-import { AppHeaderLinkItem } from '../../AppHeader/AppHeaderElements/types';
+import {
+  AppHeaderLinkItem,
+  AppHeaderResourcesDataItem,
+} from '../../AppHeader/AppHeaderElements/types';
 
 type ResourcesList = Omit<AppHeaderLinkItem, 'trackingTarget' | 'badge'> & {
   headerTrackingTarget: string;
@@ -17,8 +20,11 @@ type FooterResourceList = {
   newTab?: boolean;
 };
 
-export const renderBadge = (text: string) => (
-  <Badge size="sm" ml={8} alignSelf="center">
+export const renderBadge = (
+  text: string,
+  variant?: false | 'default' | 'stroke' | 'grey' | 'yellow'
+) => (
+  <Badge size="sm" ml={8} alignSelf="center" variant={variant}>
     {text}
   </Badge>
 );
@@ -115,3 +121,187 @@ export const footerResourcesList: FooterResourceList[] = resourcesList.map(
     newTab,
   })
 );
+
+// Refreshed Resources Nav Dropdown
+export const resourcesDropdown: AppHeaderResourcesDataItem[] = [
+  {
+    title: 'Docs',
+    description:
+      'Find quick answers to coding questions with community-driven code documentation.',
+    link: {
+      text: 'View all docs →',
+      href: '/resources/docs',
+      id: 'view-all-docs',
+      trackingTarget: 'topnav_resources_docs_all',
+      type: 'link',
+    },
+    data: [
+      {
+        id: 'c',
+        href: '/resources/docs/c',
+        trackingTarget: 'topnav_resources_docs_c',
+        text: 'C',
+        type: 'link',
+      },
+      {
+        id: 'cpp',
+        href: '/resources/docs/cpp',
+        trackingTarget: 'topnav_resources_docs_cpp',
+        text: 'C++',
+        type: 'link',
+      },
+      {
+        id: 'css',
+        href: '/resources/docs/css',
+        trackingTarget: 'topnav_resources_docs_css',
+        text: 'CSS',
+        type: 'link',
+      },
+      {
+        id: 'git',
+        href: '/resources/docs/git',
+        trackingTarget: 'topnav_resources_docs_git',
+        text: 'Git',
+        type: 'link',
+      },
+      {
+        id: 'html',
+        href: '/resources/docs/html',
+        trackingTarget: 'topnav_resources_docs_html',
+        text: 'HTML',
+        type: 'link',
+      },
+      {
+        id: 'java',
+        href: '/resources/docs/java',
+        trackingTarget: 'topnav_resources_docs_java',
+        text: 'Java',
+        type: 'link',
+      },
+      {
+        id: 'javascript',
+        href: '/resources/docs/javascript',
+        trackingTarget: 'topnav_resources_docs_javascript',
+        text: 'JavaScript',
+        type: 'link',
+      },
+      {
+        id: 'php',
+        href: '/resources/docs/php',
+        trackingTarget: 'topnav_resources_docs_php',
+        text: 'PHP',
+        type: 'link',
+      },
+      {
+        id: 'python',
+        href: '/resources/docs/python',
+        trackingTarget: 'topnav_resources_docs_python',
+        text: 'Python',
+        type: 'link',
+      },
+      {
+        id: 'react',
+        href: '/resources/docs/react',
+        trackingTarget: 'topnav_resources_docs_react',
+        text: 'React',
+        type: 'link',
+      },
+      {
+        id: 'sql',
+        href: '/resources/docs/sql',
+        trackingTarget: 'topnav_resources_docs_sql',
+        text: 'SQL',
+        type: 'link',
+      },
+      {
+        id: 'uiux',
+        href: '/resources/docs/uiux',
+        trackingTarget: 'topnav_resources_docs_uiux',
+        text: 'UI/UX',
+        type: 'link',
+      },
+    ],
+  },
+  {
+    title: 'Learning & Practice tools',
+    data: [
+      {
+        id: 'articles',
+        href: '/articles',
+        header: 'Articles',
+        description: 'Learn about technical concepts.',
+        trackingTarget: 'topnav_resources_learning_articles',
+        type: 'link',
+      },
+      {
+        id: 'projects',
+        href: '/projects',
+        header: 'Projects',
+        description: 'Practice and build your portfolio.',
+        trackingTarget: 'topnav_resources_learning_projects',
+        type: 'link',
+        badge: renderBadge('New', 'yellow'),
+      },
+      {
+        id: 'cheatsheets',
+        href: 'resources/cheatsheets/all',
+        header: 'Cheatsheets',
+        description: 'Review concepts from your courses.',
+        trackingTarget: 'topnav_resources_learning_cheatsheets',
+        type: 'link',
+      },
+      {
+        id: 'videos',
+        href: '/resources/videos',
+        header: 'Videos',
+        description: 'Watch tutorials, project walkthroughs, and more.',
+        trackingTarget: 'topnav_resources_learning_videos',
+        type: 'link',
+      },
+      {
+        id: 'code-challenges',
+        href: '/code-challenges',
+        header: 'Code challenges',
+        description: 'Test your knowledge and prep for interviews.',
+        trackingTarget: 'topnav_resources_learning_code_challenges',
+        type: 'link',
+      },
+      {
+        id: 'workspaces',
+        href: '/pages/workspaces',
+        header: 'Workspaces',
+        description: 'Build and share projects in your browser.',
+        trackingTarget: 'topnav_resources_learning_workspaces',
+        type: 'link',
+      },
+    ],
+  },
+  {
+    title: 'Inspiration',
+    link: {
+      text: 'View all topics →',
+      href: '/resources/blog',
+      id: 'view-all-inspiration',
+      trackingTarget: 'topnav_resources_inspiration_all',
+      type: 'link',
+    },
+    data: [
+      {
+        id: 'career-advice',
+        href: '/resources/blog/tag/career/',
+        header: 'Career advice',
+        description: 'Get answers to questions about coding careers.',
+        trackingTarget: 'topnav_resources_inspiration_career_advice',
+        type: 'link',
+      },
+      {
+        id: 'learning-tips',
+        href: '/resources/blog/tag/career/',
+        header: 'Learning tips',
+        description: 'Learn where to start and how to stay motivated.',
+        trackingTarget: 'topnav_resources_inspiration_learning_tips',
+        type: 'link',
+      },
+    ],
+  },
+];

@@ -96,3 +96,15 @@ export type AppHeaderClickHandler<ItemType = AppHeaderItem> = (
 export const isAppHeaderItemWithHref = (
   item: AppHeaderItem
 ): item is AppHeaderItemWithHref => !!(item as AppHeaderItemWithHref).href;
+
+export type AppHeaderDescriptiveLinkItem = Omit<AppHeaderLinkItem, 'text'> & {
+  header: string;
+  description: string;
+};
+
+export type AppHeaderResourcesDataItem = {
+  title: string;
+  description?: string;
+  link?: AppHeaderLinkItem;
+  data: (AppHeaderLinkItem | AppHeaderDescriptiveLinkItem)[];
+};
