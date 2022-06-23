@@ -1,4 +1,5 @@
 import {
+  Box,
   ContentContainer,
   FillButton,
   FlexBox,
@@ -105,24 +106,24 @@ export const AppHeaderMainMenuMobile: React.FC<AppHeaderMainMenuMobileProps> = (
       item={subMenuItem}
     />
   ) : (
-    <ContentContainer>
-      <AppHeaderListItem>
-        <MobileSearchBar onSearch={onSearch} />
-      </AppHeaderListItem>
-      {items.map((item) => (
-        <AppHeaderListItem key={item.id}>
-          {mapItemToElement(item, action)}
+    <Box>
+      <ContentContainer>
+        <AppHeaderListItem>
+          <MobileSearchBar onSearch={onSearch} />
         </AppHeaderListItem>
-      ))}
+        {items.map((item) => (
+          <AppHeaderListItem key={item.id}>
+            {mapItemToElement(item, action)}
+          </AppHeaderListItem>
+        ))}
+      </ContentContainer>
 
       {isAnon && (
         <FlexBox
           as="li"
           alignItems="baseline"
           justifyContent="center"
-          mt={16}
           pt={16}
-          mx={{ _: -16, sm: -64, md: -48 }}
           borderTop={1}
           borderColor="navy-300"
         >
@@ -147,6 +148,6 @@ export const AppHeaderMainMenuMobile: React.FC<AppHeaderMainMenuMobileProps> = (
           </TextButton>
         </FlexBox>
       )}
-    </ContentContainer>
+    </Box>
   );
 };
