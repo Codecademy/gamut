@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [32.2.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@32.1.1...@codecademy/gamut-labs@32.2.0) (2022-06-22)
+
+
+### Features
+
+* ⏯️ Update landing page image components to be pausable ([d27bf15](https://github.com/Codecademy/gamut/commit/d27bf15f29991dcd73474d01718fa0afd28522c5))
+
+
+
+### [32.1.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@32.1.0...@codecademy/gamut-labs@32.1.1) (2022-06-22)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+## [32.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@32.0.7...@codecademy/gamut-labs@32.1.0) (2022-06-21)
+
+
+### Features
+
+* **GlobalHeader:** v2 desktop styles for catalog dropdown ([d66187b](https://github.com/Codecademy/gamut/commit/d66187b2373d652d374487dc06622ff98b50cf9d))
+
+
+
 ### [32.0.7](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@32.0.6...@codecademy/gamut-labs@32.0.7) (2022-06-16)
 
 **Note:** Version bump only for package @codecademy/gamut-labs
