@@ -37,6 +37,7 @@ export const coreTheme = createTheme({
       },
       background: {
         _: 'white',
+        contrast: 'white',
         current: 'white',
         primary: 'beige',
         selected: 'navy-100',
@@ -73,6 +74,7 @@ export const coreTheme = createTheme({
       },
       background: {
         _: 'navy-800',
+        contrast: 'black',
         current: 'navy-800',
         primary: 'navy-900',
         selected: 'navy-700',

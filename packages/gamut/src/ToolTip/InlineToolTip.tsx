@@ -11,16 +11,13 @@ import { tooltipDefaultProps, ToolTipProps } from './types';
 export const InlineToolTip: React.FC<ToolTipProps> = ({
   alignment = tooltipDefaultProps.alignment,
   children,
-  className,
-  containerClassName,
   focusable,
   id,
-  mode = tooltipDefaultProps.mode,
   target,
   widthMode = tooltipDefaultProps.widthMode,
 }) => {
   return (
-    <TooltipWrapper className={containerClassName}>
+    <TooltipWrapper>
       <TargetContainer
         aria-labelledby={id}
         role={focusable ? 'button' : undefined}
@@ -38,10 +35,7 @@ export const InlineToolTip: React.FC<ToolTipProps> = ({
       </TargetContainer>
       <ToolTipContainer
         as="div"
-        bg={mode === 'light' ? 'white' : 'black'}
-        color={mode === 'light' ? 'text' : 'secondary'}
         alignment={alignment}
-        className={className}
         id={id}
         role="tooltip"
         aria-live="polite"

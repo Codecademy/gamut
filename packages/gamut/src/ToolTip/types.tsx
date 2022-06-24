@@ -1,4 +1,3 @@
-import { ColorModes } from '@codecademy/gamut-styles';
 import { ReactNode } from 'react';
 
 export const toolTipBaseAlignmentArray = [
@@ -18,7 +17,7 @@ export type ToolTipBaseAlignment = typeof toolTipBaseAlignmentArray[number];
 
 export type ToolTipStaticAlignment = typeof toolTipAlignmentArray[number];
 
-export type ToolTipInlineBodyProps = {
+export type ToolTipInlineProps = {
   /**
    * How to align the tooltip relative to the target.
    */
@@ -30,7 +29,7 @@ export type ToolTipInlineBodyProps = {
   isPopover?: never;
 };
 
-export type ToolTipPopoverBodyProps = {
+export type ToolTipPopoverProps = {
   /**
    * How to align the tooltip relative to the target.
    */
@@ -42,31 +41,15 @@ export type ToolTipPopoverBodyProps = {
   isPopover: true;
 };
 
-type ToolTipContainerProps = ToolTipPopoverBodyProps | ToolTipInlineBodyProps;
+type ToolTipContainerProps = ToolTipPopoverProps | ToolTipInlineProps;
 
 export type ToolTipProps = ToolTipContainerProps & {
   children?: ReactNode;
 
   /**
-   * Class name for the hidden-by-default contents.
-   *
-   * @remarks
-   * This is an inner element, not the outermost positioning element.
-   * That element is styled with `containerClassName`.
-   */
-  className?: string;
-
-  /**
-   * Class name for the outermost positioning element.
-   */
-  containerClassName?: string;
-
-  /**
    * Whether to manually add a tabIndex of 0 to the target container, for tooltips without focusable children.
    */
   focusable?: boolean;
-
-  mode?: ColorModes;
 
   id: string;
 
@@ -79,10 +62,9 @@ export type ToolTipProps = ToolTipContainerProps & {
 };
 
 export const tooltipDefaultProps: Required<
-  Pick<ToolTipProps, 'alignment' | 'focusable' | 'mode' | 'widthMode'>
+  Pick<ToolTipProps, 'alignment' | 'focusable' | 'widthMode'>
 > = {
   alignment: 'top-right',
   focusable: true,
-  mode: 'light',
   widthMode: 'standard',
 };

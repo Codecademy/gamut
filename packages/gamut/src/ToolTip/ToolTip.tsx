@@ -6,26 +6,15 @@ import { tooltipDefaultProps, ToolTipProps } from './types';
 
 export const ToolTip: React.FC<ToolTipProps> = ({
   alignment = tooltipDefaultProps.alignment,
-  mode = tooltipDefaultProps.mode,
   widthMode = tooltipDefaultProps.widthMode,
   isPopover,
   ...rest
 }) => {
   if (isPopover)
     return (
-      <PopoverToolTip
-        alignment={alignment}
-        mode={mode}
-        widthMode={widthMode}
-        {...rest}
-      />
+      <PopoverToolTip alignment={alignment} widthMode={widthMode} {...rest} />
     );
   return (
-    <InlineToolTip
-      alignment={alignment}
-      mode={mode}
-      widthMode={widthMode}
-      {...rest}
-    />
+    <InlineToolTip alignment={alignment} widthMode={widthMode} {...rest} />
   );
 };

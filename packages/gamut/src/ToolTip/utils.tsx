@@ -11,11 +11,11 @@ import {
   topStyles,
   topStylesAfter,
 } from './styles';
-import { ToolTipInlineBodyProps } from './types';
+import { ToolTipInlineProps } from './types';
 
 export const getPopoverAlignment = ({
   alignment = 'top-left',
-}: Pick<ToolTipInlineBodyProps, 'alignment'>) => {
+}: Pick<ToolTipInlineProps, 'alignment'>) => {
   const popoverAlignment: Pick<PopoverProps, 'align' | 'beak' | 'position'> = {
     align: 'right',
     beak: 'right',

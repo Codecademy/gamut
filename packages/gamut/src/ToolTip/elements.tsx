@@ -1,4 +1,4 @@
-import { Background, css, theme } from '@codecademy/gamut-styles';
+import { css, theme } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
 
@@ -29,7 +29,7 @@ export const TargetContainer = styled.div(
 export interface ToolTipContainerProps
   extends StyleProps<typeof toolTipAlignmentVariants> {}
 
-export const ToolTipContainer = styled(Background)<ToolTipContainerProps>`
+export const ToolTipContainer = styled(Box)<ToolTipContainerProps>`
   ${TargetContainer}:hover + &,
   ${TargetContainer}:focus-within + &,
   &:hover {
@@ -41,9 +41,4 @@ export const ToolTipContainer = styled(Background)<ToolTipContainerProps>`
 
 export const ToolTipBody = styled(Box)<
   StyleProps<typeof toolTipBodyAlignments>
->(
-  css({
-    ...toolTipBodyCss,
-  }),
-  toolTipBodyAlignments
-);
+>(css({ ...toolTipBodyCss }), toolTipBodyAlignments);

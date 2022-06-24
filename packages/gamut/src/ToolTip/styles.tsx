@@ -73,7 +73,7 @@ export const toolTipAlignmentVariants = variant({
     opacity: 0,
     visibility: 'hidden',
     '&::after': {
-      bg: 'background-current',
+      bg: 'background-contrast',
       content: '""',
       display: 'block',
       height: `${tooltipArrowHeight}`,
@@ -101,7 +101,8 @@ export const toolTipBodyAlignments = variant({
 });
 
 export const toolTipBodyCss = {
-  bg: 'background-current',
+  bg: 'background-contrast',
+  color: 'text-accent',
   border: 1,
   boxShadow: 'none',
   borderRadius: '3px',
