@@ -6,11 +6,11 @@ import { tooltipDefaultProps, ToolTipProps } from './types';
 
 export const ToolTip: React.FC<ToolTipProps> = ({
   alignment = tooltipDefaultProps.alignment,
+  placement = tooltipDefaultProps.placement,
   widthMode = tooltipDefaultProps.widthMode,
-  isPopover,
   ...rest
 }) => {
-  if (isPopover)
+  if (placement === 'floating')
     return (
       <PopoverToolTip alignment={alignment} widthMode={widthMode} {...rest} />
     );

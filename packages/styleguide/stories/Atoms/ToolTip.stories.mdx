@@ -201,8 +201,8 @@ Tooltips sometimes need to be in scrollable content, and that's okay!
   <Story name="isPopover">
     {(args) => {
       return (
-        <FlexBox center bg="paleBlue" p={24}>
-          Updog <ToolTip isPopover {...args} />
+        <FlexBox center p={24}>
+          Updog <ToolTip placement="floating" {...args} />
         </FlexBox>
       );
     }}

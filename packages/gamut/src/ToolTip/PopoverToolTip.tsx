@@ -3,10 +3,10 @@ import React, { useLayoutEffect, useRef, useState } from 'react';
 import { Box, FlexBox } from '../Box';
 import { Popover } from '../Popover';
 import { TargetContainer } from './elements';
-import { tooltipDefaultProps, ToolTipProps } from './types';
+import { tooltipDefaultProps, ToolTipPlacementComponentProps } from './types';
 import { getPopoverAlignment } from './utils';
 
-export const PopoverToolTip: React.FC<ToolTipProps> = ({
+export const PopoverToolTip: React.FC<ToolTipPlacementComponentProps> = ({
   alignment = tooltipDefaultProps.alignment,
   children,
   focusable,
@@ -95,9 +95,6 @@ export const PopoverToolTip: React.FC<ToolTipProps> = ({
         size="sml"
         targetRef={ref}
         widthRestricted={widthMode === 'standard'}
-        // TO-DO: mode
-        // bg={mode === 'light' ? 'white' : 'black'}
-        // color={mode === 'light' ? 'text' : 'secondary'}
       >
         <FlexBox alignItems="flex-start" flexDirection="column">
           {children}

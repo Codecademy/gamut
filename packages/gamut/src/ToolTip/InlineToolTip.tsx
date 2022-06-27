@@ -6,9 +6,9 @@ import {
   ToolTipContainer,
   TooltipWrapper,
 } from './elements';
-import { tooltipDefaultProps, ToolTipProps } from './types';
+import { tooltipDefaultProps, ToolTipPlacementComponentProps } from './types';
 
-export const InlineToolTip: React.FC<ToolTipProps> = ({
+export const InlineToolTip: React.FC<ToolTipPlacementComponentProps> = ({
   alignment = tooltipDefaultProps.alignment,
   children,
   focusable,

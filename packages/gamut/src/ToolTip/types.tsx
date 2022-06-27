@@ -1,4 +1,6 @@
-import { ReactNode } from 'react';
+import React, { ReactNode } from 'react';
+
+import { ToolTip } from './ToolTip';
 
 export const toolTipBaseAlignmentArray = [
   'bottom-left',
@@ -13,6 +15,8 @@ export const toolTipAlignmentArray = [
   'top-center',
 ] as const;
 
+export type ToolTipPlacements = 'inline' | 'floating';
+
 export type ToolTipBaseAlignment = typeof toolTipBaseAlignmentArray[number];
 
 export type ToolTipStaticAlignment = typeof toolTipAlignmentArray[number];
@@ -24,9 +28,9 @@ export type ToolTipInlineProps = {
   alignment?: ToolTipStaticAlignment;
 
   /**
-   * Whether if should be a popover tooltip (only should be used in certain overflow situations).
+   * Whether Tooltip should be inline or floating (should only be used in certain overflow situations).
    */
-  isPopover?: never;
+  placement?: 'inline';
 };
 
 export type ToolTipPopoverProps = {
@@ -36,9 +40,9 @@ export type ToolTipPopoverProps = {
   alignment?: ToolTipBaseAlignment;
 
   /**
-   * Whether if should be a popover tooltip (only should be used in certain overflow situations).
+   * Whether Tooltip should be inline or floating (should only be used in certain overflow situations).
    */
-  isPopover: true;
+  placement: 'floating';
 };
 
 type ToolTipContainerProps = ToolTipPopoverProps | ToolTipInlineProps;
@@ -62,9 +66,12 @@ export type ToolTipProps = ToolTipContainerProps & {
 };
 
 export const tooltipDefaultProps: Required<
-  Pick<ToolTipProps, 'alignment' | 'focusable' | 'widthMode'>
+  Pick<ToolTipProps, 'alignment' | 'focusable' | 'placement' | 'widthMode'>
 > = {
   alignment: 'top-right',
   focusable: true,
+  placement: 'inline',
   widthMode: 'standard',
 };
+
+export type ToolTipPlacementComponentProps = Omit<ToolTipProps, 'placement'>;
