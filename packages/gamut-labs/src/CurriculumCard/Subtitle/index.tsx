@@ -35,7 +35,7 @@ export const Subtitle: React.FC<SubtitleProps> = ({
           ml={showAltSubtitle && index === 0 ? 0 : 4}
           variant="p-small"
           key={`${scopeType}-count`}
-          aria-label={scope[scopeType]}
+          aria-label={`${scope[scopeType]}`}
         >
           <b>{scope[scopeType]}</b>{' '}
           <Text textColor="gray-900">
