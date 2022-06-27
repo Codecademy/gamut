@@ -14,6 +14,7 @@ import { AppHeaderDropdown } from './AppHeaderElements/AppHeaderDropdown';
 import { AppHeaderLink } from './AppHeaderElements/AppHeaderLink';
 import { AppHeaderListItem } from './AppHeaderElements/AppHeaderListItem';
 import { AppHeaderLogo } from './AppHeaderElements/AppHeaderLogo';
+import { AppHeaderResourcesDropdown } from './AppHeaderElements/AppHeaderResourcesDropdown';
 import {
   AppHeaderClickHandler,
   AppHeaderItem,
@@ -62,6 +63,7 @@ export const mapItemToElement = (
   onKeyDown?: (event: React.KeyboardEvent) => void,
   mobile = false
 ): ReactNode => {
+  console.log(item.type, 'type');
   switch (item.type) {
     case 'logo':
       return <AppHeaderLogo action={action} item={item} />;
@@ -74,6 +76,8 @@ export const mapItemToElement = (
       );
     case 'catalog-dropdown':
       return <AppHeaderCatalogDropdown action={action} item={item} />;
+    case 'new-resources-dropdown':
+      return <AppHeaderResourcesDropdown action={action} item={item} />;
     case 'render-element':
       return item.renderElement();
     case 'text-button':

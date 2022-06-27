@@ -7,7 +7,8 @@ export type AppHeaderItem =
   | AppHeaderSimpleDropdownItem
   | AppHeaderProfileDropdownItem
   | AppHeaderRenderElementItem
-  | AppHeaderCatalogDropdownItem;
+  | AppHeaderCatalogDropdownItem
+  | AppHeaderResourcesDropdownItem;
 
 export type AppHeaderItemWithHref =
   | AppHeaderLogoItem
@@ -71,6 +72,13 @@ export type AppHeaderRenderElementItem = AppHeaderBaseItem<'render-element'> & {
 };
 
 export type AppHeaderCatalogDropdownItem = AppHeaderBaseItem<'catalog-dropdown'> & {
+  icon?: React.ComponentType<GamutIconProps>;
+  text: string;
+  trackingTarget: string;
+  hideCareerPaths?: boolean;
+};
+
+export type AppHeaderResourcesDropdownItem = AppHeaderBaseItem<'new-resources-dropdown'> & {
   icon?: React.ComponentType<GamutIconProps>;
   text: string;
   trackingTarget: string;

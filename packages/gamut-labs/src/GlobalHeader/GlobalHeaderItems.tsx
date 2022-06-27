@@ -20,6 +20,7 @@ import {
   AppHeaderLogoItem,
   AppHeaderProfileDropdownItem,
   AppHeaderRenderElementItem,
+  AppHeaderResourcesDropdownItem,
   AppHeaderSimpleDropdownItem,
   AppHeaderTextButtonItem,
 } from '../AppHeader/AppHeaderElements/types';
@@ -83,6 +84,15 @@ export const resourcesDropdown: AppHeaderSimpleDropdownItem = {
   popover: headerResourcesList,
   trackingTarget: 'topnav_resources',
   type: 'dropdown',
+};
+
+export const refreshedResourcesDropdown: AppHeaderResourcesDropdownItem = {
+  dataTestId: 'header-resources',
+  icon: BookFlipPageIcon,
+  id: 'new-resources-dropdown',
+  text: 'Resources',
+  trackingTarget: 'topnav_resources',
+  type: 'new-resources-dropdown',
 };
 
 export const communityDropdown: AppHeaderSimpleDropdownItem = {

@@ -122,8 +122,7 @@ export const footerResourcesList: FooterResourceList[] = resourcesList.map(
   })
 );
 
-// Refreshed Resources Nav Dropdown
-export const resourcesDropdown: AppHeaderResourcesDataItem[] = [
+export const newHeaderResourcesList: AppHeaderResourcesDataItem[] = [
   {
     title: 'Docs',
     description:
@@ -223,7 +222,7 @@ export const resourcesDropdown: AppHeaderResourcesDataItem[] = [
     ],
   },
   {
-    title: 'Learning & Practice tools',
+    title: 'Learning & practice tools',
     data: [
       {
         id: 'articles',
