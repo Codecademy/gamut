@@ -140,7 +140,7 @@ export const AppHeaderCatalogSection = React.forwardRef<
               <Box
                 bg="navy-800"
                 color="blue-0"
-                px={{ _: 16, sm: 64, md: 48, lg: 40 }}
+                px={{ _: 16, xs: 32, sm: 64, md: 48, lg: 40 }}
                 py={{ _: 16, sm: 32 }}
               >
                 <DescriptionSection
@@ -150,7 +150,7 @@ export const AppHeaderCatalogSection = React.forwardRef<
               </Box>
             </Column>
             <Column size={{ xs: 12, md: 8 }}>
-              <LayoutGrid py={32} pl={{ _: 16, sm: 64, md: 48 }}>
+              <LayoutGrid py={32} pl={{ _: 16, xs: 32, sm: 64, md: 48 }}>
                 {careerPaths.map((item) => (
                   <StyledAnchorColumn key={item.id} size={{ _: 12, lg: 4 }}>
                     <Anchor
@@ -175,7 +175,7 @@ export const AppHeaderCatalogSection = React.forwardRef<
             <Box
               bg="navy-800"
               color="blue-0"
-              px={{ _: 16, sm: 64, md: 48, lg: 40 }}
+              px={{ _: 16, xs: 32, sm: 64, md: 48, lg: 40 }}
               py={{ _: 16, sm: 32 }}
             >
               <DescriptionSection
@@ -203,7 +203,7 @@ export const AppHeaderCatalogSection = React.forwardRef<
           <Column
             size={{ xs: 12, md: 8 }}
             py={32}
-            pl={{ _: 16, sm: 64, md: 48 }}
+            pl={{ _: 16, xs: 32, sm: 64, md: 48 }}
           >
             <GridBox
               gridTemplateAreas={{
