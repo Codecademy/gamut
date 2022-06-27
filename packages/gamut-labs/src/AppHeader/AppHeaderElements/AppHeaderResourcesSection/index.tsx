@@ -114,7 +114,7 @@ export const AppHeaderResourcesSection = React.forwardRef<
               </Box>
             </Column>
             <Column size={{ xs: 12, md: 8 }}>
-              <LayoutGrid pt={32} pb={48} pl={{ _: 16, sm: 64, md: 48 }}>
+              <LayoutGrid pt={32} pb={32} pl={{ _: 16, sm: 64, md: 48 }}>
                 {section.data.map((item) => (
                   <Column key={item.id} size={{ _: 4 }}>
                     <Anchor
@@ -123,6 +123,7 @@ export const AppHeaderResourcesSection = React.forwardRef<
                       href={item.href}
                       onClick={(event) => action(event, item as AppHeaderItem)}
                       tabIndex={tabIndex}
+                      pb={0}
                     >
                       {'text' in item ? (
                         <Text fontSize={16} pb={8}>
