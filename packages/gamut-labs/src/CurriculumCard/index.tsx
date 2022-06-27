@@ -163,7 +163,7 @@ export const CurriculumCard: React.FC<CurriculumCardProps> = ({
           <LineDecoration inProgress={progressState === 'inProgress'} my={8} />
         )}
         {(isCareerPathVariant || showDescription) && (
-          <Text pt={8} pb={16} fontSize={14}>
+          <Text pt={8} pb={16} fontSize={14} aria-label={description}>
             {description}
           </Text>
         )}
