@@ -105,10 +105,9 @@ export const AppHeaderResourcesSection = React.forwardRef<
                       data-focusablecatalog="true"
                       // onClick={(event) => action(event, section.link)}
                       tabIndex={tabIndex}
-                      mt={96}
-                      pt={24}
+                      mt={section.description ? 32 : 48}
                     >
-                      {section.link.text}
+                      {(section.link.text, 'HELLO')}
                     </Anchor>
                   </ColorMode>
                 )}
@@ -129,8 +128,12 @@ export const AppHeaderResourcesSection = React.forwardRef<
                         item.text
                       ) : (
                         <>
-                          <Text>{item.header}</Text>
-                          <Text>{item.description}</Text>
+                          <Text fontSize={16} fontWeight="bold" as="h3">
+                            {item.header} {item.badge && item.badge}
+                          </Text>
+                          <Text fontSize={14} pb={24} pr={16}>
+                            {item.description}
+                          </Text>
                         </>
                       )}
                     </Anchor>
