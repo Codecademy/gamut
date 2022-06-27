@@ -44,7 +44,9 @@ export const Difficulty: React.FC<ContentDifficultyProps> = ({
       {times(difficultyNumber + 1, () => (
         <DifficultySpan key={uniqueId()} variant={variant} />
       ))}
-      <Text>{DifficultyString[difficultyNumber]}</Text>
+      <Text aria-label={DifficultyString[difficultyNumber]}>
+        {DifficultyString[difficultyNumber]}
+      </Text>
     </>
   );
 };

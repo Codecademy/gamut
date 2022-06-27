@@ -53,7 +53,7 @@ export const Footer: React.FC<FooterProps> = ({
     );
   }
   if (tag && tagColor) {
-    return <BottomTag text={tag} color={tagColor} />;
+    return <BottomTag text={tag} color={tagColor} aria-label={tag} />;
   }
   return null;
 };
