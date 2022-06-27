@@ -20,11 +20,14 @@ type FooterResourceList = {
   newTab?: boolean;
 };
 
-export const renderBadge = (
-  text: string,
-  variant?: false | 'default' | 'stroke' | 'grey' | 'yellow'
-) => (
-  <Badge size="sm" ml={8} alignSelf="center" variant={variant}>
+export const renderBadge = (text: string) => (
+  <Badge size="sm" ml={8} alignSelf="center">
+    {text}
+  </Badge>
+);
+
+const newRenderBadge = (text: string) => (
+  <Badge size="sm" ml={8} alignSelf="start" variant="yellow">
     {text}
   </Badge>
 );
@@ -239,7 +242,7 @@ export const newHeaderResourcesList: AppHeaderResourcesDataItem[] = [
         description: 'Practice and build your portfolio.',
         trackingTarget: 'topnav_resources_learning_projects',
         type: 'link',
-        badge: renderBadge('New', 'yellow'),
+        badge: newRenderBadge('New'),
       },
       {
         id: 'cheatsheets',
