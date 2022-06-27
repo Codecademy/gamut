@@ -107,7 +107,7 @@ export const AppHeaderResourcesSection = React.forwardRef<
                       tabIndex={tabIndex}
                       mt={section.description ? 32 : 48}
                     >
-                      {(section.link.text, 'HELLO')}
+                      {section.link.text}
                     </Anchor>
                   </ColorMode>
                 )}
@@ -128,9 +128,17 @@ export const AppHeaderResourcesSection = React.forwardRef<
                         item.text
                       ) : (
                         <>
-                          <Text fontSize={16} fontWeight="bold" as="h3">
-                            {item.header} {item.badge && item.badge}
-                          </Text>
+                          <FlexBox>
+                            <Text
+                              fontSize={16}
+                              fontWeight="bold"
+                              as="h3"
+                              pb={8}
+                            >
+                              {item.header}
+                            </Text>
+                            {item.badge!}
+                          </FlexBox>
                           <Text fontSize={14} pb={24} pr={16}>
                             {item.description}
                           </Text>
