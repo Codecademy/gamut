@@ -125,7 +125,9 @@ export const AppHeaderResourcesSection = React.forwardRef<
                       tabIndex={tabIndex}
                     >
                       {'text' in item ? (
-                        item.text
+                        <Text fontSize={16} pb={8}>
+                          {item.text}
+                        </Text>
                       ) : (
                         <>
                           <FlexBox>
