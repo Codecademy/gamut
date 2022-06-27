@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [32.3.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@32.2.3...@codecademy/gamut-labs@32.3.0) (2022-06-27)
+
+
+### Features
+
+* **Bookmarks:** Adds ability to pass a bookmarks component to GlobalHeader ([323485a](https://github.com/Codecademy/gamut/commit/323485a5ca14e8632ba91b1a609b202f2bd41779))
+
+
+
 ### [32.2.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@32.2.2...@codecademy/gamut-labs@32.2.3) (2022-06-23)
 
 
