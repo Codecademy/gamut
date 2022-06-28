@@ -3,7 +3,7 @@ import { fontSmoothPixel, timing, variant } from '@codecademy/gamut-styles';
 import { toolTipAlignmentArray } from './types';
 import { createVariantsFromAlignments } from './utils';
 
-const tooltipArrowHeight = `1rem`;
+export const tooltipArrowHeight = `1rem`;
 const containerOffsetVertical = 12;
 
 export const centerMaxWidth = { maxWidth: '8rem' } as const;

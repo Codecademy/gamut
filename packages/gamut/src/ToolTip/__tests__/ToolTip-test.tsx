@@ -39,4 +39,12 @@ describe('ToolTip', () => {
 
     expect(container).toBeDefined();
   });
+
+  it.only('renders a floating Tooltip when placement is floating', () => {
+    const { view } = renderView({ children, id: 'test-id' });
+
+    const container = view.getByRole('button');
+
+    expect(container).toBeDefined();
+  });
 });

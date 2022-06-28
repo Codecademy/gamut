@@ -1,7 +1,7 @@
 import React from 'react';
 
+import { FloatingToolTip } from './FloatingToolTip';
 import { InlineToolTip } from './InlineToolTip';
-import { PopoverToolTip } from './PopoverToolTip';
 import { tooltipDefaultProps, ToolTipProps } from './types';
 
 export const ToolTip: React.FC<ToolTipProps> = ({
@@ -12,7 +12,7 @@ export const ToolTip: React.FC<ToolTipProps> = ({
 }) => {
   if (placement === 'floating')
     return (
-      <PopoverToolTip alignment={alignment} widthMode={widthMode} {...rest} />
+      <FloatingToolTip alignment={alignment} widthMode={widthMode} {...rest} />
     );
   return (
     <InlineToolTip alignment={alignment} widthMode={widthMode} {...rest} />

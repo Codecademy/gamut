@@ -3,7 +3,11 @@ import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
 
 import { Box } from '../Box';
-import { toolTipBodyAlignments, toolTipBodyCss } from '../ToolTip/styles';
+import {
+  tooltipArrowHeight,
+  toolTipBodyAlignments,
+  toolTipBodyCss,
+} from '../ToolTip/styles';
 
 const outlineState = states({
   outline: {
@@ -27,7 +31,7 @@ const raisedDivVariants = variant({
       boxShadow: '0 0 16px rgba(0, 0, 0, 0.1), 0 0 24px rgba(0, 0, 0, 0.15)',
       zIndex: 1,
     },
-    sml: { ...toolTipBodyCss },
+    sml: { ...toolTipBodyCss, zIndex: 1 },
   },
 });
 
@@ -125,8 +129,8 @@ const beakSize = variant({
   prop: 'size',
   variants: {
     sml: {
-      height: '1rem',
-      width: '1rem',
+      height: tooltipArrowHeight,
+      width: tooltipArrowHeight,
     },
     lrg: {
       height: '20px',

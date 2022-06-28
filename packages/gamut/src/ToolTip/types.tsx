@@ -1,6 +1,4 @@
-import React, { ReactNode } from 'react';
-
-import { ToolTip } from './ToolTip';
+import { ReactNode } from 'react';
 
 export const toolTipBaseAlignmentArray = [
   'bottom-left',

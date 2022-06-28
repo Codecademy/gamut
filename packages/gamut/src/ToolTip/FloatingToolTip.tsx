@@ -6,7 +6,7 @@ import { TargetContainer } from './elements';
 import { tooltipDefaultProps, ToolTipPlacementComponentProps } from './types';
 import { getPopoverAlignment } from './utils';
 
-export const PopoverToolTip: React.FC<ToolTipPlacementComponentProps> = ({
+export const FloatingToolTip: React.FC<ToolTipPlacementComponentProps> = ({
   alignment = tooltipDefaultProps.alignment,
   children,
   focusable,
