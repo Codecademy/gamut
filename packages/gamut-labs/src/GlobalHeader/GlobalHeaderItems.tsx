@@ -206,6 +206,16 @@ export const favorites = (
   };
 };
 
+export const bookmarks = (
+  renderBookmarks: () => ReactNode
+): AppHeaderRenderElementItem => {
+  return {
+    id: 'bookmarks',
+    renderElement: renderBookmarks,
+    type: 'render-element',
+  };
+};
+
 const profileMyProfile: AppHeaderLinkItem = {
   id: 'my-profile',
   icon: PersonIcon,

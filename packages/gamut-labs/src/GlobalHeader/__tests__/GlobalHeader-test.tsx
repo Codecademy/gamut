@@ -1,4 +1,5 @@
 import { setupRtl } from '@codecademy/gamut-tests';
+import React from 'react';
 
 import { GlobalHeader, GlobalHeaderProps } from '..';
 import {
@@ -202,6 +203,14 @@ describe('GlobalHeader', () => {
       const { view } = renderView(anonHeaderProps);
       view.getAllByText(signUp.text);
     });
+
+    it('renders bookmarks if passed in props', () => {
+      const { view } = renderView({
+        ...anonHeaderProps,
+        renderBookmarks: () => <div data-testid="bookmarks" />,
+      });
+      view.getAllByTestId('bookmarks');
+    });
   });
 
   describe('anonymous users (variants)', () => {
@@ -220,6 +229,14 @@ describe('GlobalHeader', () => {
         const { view } = renderView(anonLandingHeaderProps);
         expect(view.queryByText(signUp.text)).toBeFalsy();
       });
+
+      it('renders bookmarks if passed in props', () => {
+        const { view } = renderView({
+          ...anonLandingHeaderProps,
+          renderBookmarks: () => <div data-testid="bookmarks" />,
+        });
+        view.getAllByTestId('bookmarks');
+      });
     });
 
     describe('login page', () => {
@@ -236,6 +253,14 @@ describe('GlobalHeader', () => {
       it('renders signup', () => {
         const { view } = renderView(anonLoginHeaderProps);
         view.getAllByText(signUp.text);
+      });
+
+      it('renders bookmarks if passed in props', () => {
+        const { view } = renderView({
+          ...anonLoginHeaderProps,
+          renderBookmarks: () => <div data-testid="bookmarks" />,
+        });
+        view.getAllByTestId('bookmarks');
       });
     });
 
@@ -254,6 +279,14 @@ describe('GlobalHeader', () => {
         const { view } = renderView(anonSignUpHeaderProps);
         expect(view.queryByText(signUp.text)).toBeFalsy();
       });
+
+      it('renders bookmarks if passed in props', () => {
+        const { view } = renderView({
+          ...anonSignUpHeaderProps,
+          renderBookmarks: () => <div data-testid="bookmarks" />,
+        });
+        view.getAllByTestId('bookmarks');
+      });
     });
   });
 
@@ -266,6 +299,14 @@ describe('GlobalHeader', () => {
     it('renders notifications', () => {
       const { view } = renderView(freeHeaderProps);
       view.getAllByTitle('Bell Icon');
+    });
+
+    it('renders bookmarks if passed in props', () => {
+      const { view } = renderView({
+        ...freeHeaderProps,
+        renderBookmarks: () => <div data-testid="bookmarks" />,
+      });
+      view.getAllByTestId('bookmarks');
     });
 
     describe('default', () => {
@@ -379,6 +420,14 @@ describe('GlobalHeader', () => {
     it('renders notifications', () => {
       const { view } = renderView(proHeaderProps);
       view.getAllByTitle('Bell Icon');
+    });
+
+    it('renders bookmarks if passed in props', () => {
+      const { view } = renderView({
+        ...proHeaderProps,
+        renderBookmarks: () => <div data-testid="bookmarks" />,
+      });
+      view.getAllByTestId('bookmarks');
     });
 
     describe('default', () => {
