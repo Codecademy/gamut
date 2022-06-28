@@ -8,6 +8,7 @@ export * from './Browser';
 export * from './BrowserLock';
 export * from './BrowserPuzzle';
 export * from './ChatBox';
+export * from './CodeCelebration';
 export * from './Confetti';
 export * from './EmailAt';
 export * from './Envelope';
