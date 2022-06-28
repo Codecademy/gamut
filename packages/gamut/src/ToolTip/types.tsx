@@ -31,7 +31,7 @@ export type ToolTipInlineProps = {
   placement?: 'inline';
 };
 
-export type ToolTipPopoverProps = {
+export type ToolTipFloatingProps = {
   /**
    * How to align the tooltip relative to the target.
    */
@@ -43,7 +43,7 @@ export type ToolTipPopoverProps = {
   placement: 'floating';
 };
 
-type ToolTipContainerProps = ToolTipPopoverProps | ToolTipInlineProps;
+export type ToolTipContainerProps = ToolTipFloatingProps | ToolTipInlineProps;
 
 export type ToolTipProps = ToolTipContainerProps & {
   children?: ReactNode;
