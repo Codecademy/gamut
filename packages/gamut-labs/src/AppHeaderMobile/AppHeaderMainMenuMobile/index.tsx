@@ -52,7 +52,6 @@ export const AppHeaderMainMenuMobile: React.FC<AppHeaderMainMenuMobileProps> = (
       case 'dropdown':
       case 'profile-dropdown':
       case 'catalog-dropdown':
-      case 'new-resources-dropdown':
         return (
           <AppHeaderSubMenuTarget
             key={item.id}
