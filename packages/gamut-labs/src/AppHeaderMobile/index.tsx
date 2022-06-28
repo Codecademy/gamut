@@ -86,7 +86,14 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
             xs: 'flex',
           }}
         >
-          {mapItemToElement(action, item, redirectParam, undefined, true)}
+          {mapItemToElement(
+            action,
+            item,
+            isAnon,
+            redirectParam,
+            undefined,
+            true
+          )}
         </AppHeaderListItem>
       );
     });
