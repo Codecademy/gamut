@@ -14,26 +14,26 @@ const renderView = setupRtl(ToolTip, {
 describe('ToolTip', () => {
   describe('inline placement', () => {
     it('does not give its container a tabIndex when it is not focusable', () => {
-      const { view } = renderView({});
+      const { view } = renderView({ focusable: false });
 
       expect(view.getByLabelText(children)).not.toHaveAttribute('tabIndex');
     });
 
-    it('gives the container a tabIndex when it is focusable', () => {
+    it('gives the container a tabIndex when it is focusable and is focusable by default', () => {
       const children = 'Hello';
-      const { view } = renderView({ focusable: true });
+      const { view } = renderView({});
 
       expect(view.getByLabelText(children)).toHaveAttribute('tabIndex', '0');
     });
 
     it('does not give its container a role=button when it is not focusable', () => {
-      const { view } = renderView({});
+      const { view } = renderView({ focusable: false });
 
       expect(view.getByLabelText(children)).not.toHaveAttribute('role');
     });
 
     it('does give its container a role=button when it is focusable', () => {
-      const { view } = renderView({ focusable: true });
+      const { view } = renderView({});
 
       expect(view.getByRole('button'));
     });
@@ -63,6 +63,7 @@ describe('ToolTip', () => {
 
     it('does not give its container a tabIndex when it is not focusable', () => {
       const { view } = renderView({
+        focusable: false,
         placement: 'floating',
       });
 
@@ -80,6 +81,7 @@ describe('ToolTip', () => {
 
     it('does not give its container a role=button when it is not focusable', () => {
       const { view } = renderView({
+        focusable: false,
         placement: 'floating',
       });
 
@@ -88,7 +90,6 @@ describe('ToolTip', () => {
 
     it('does give its container a role=button when it is focusable', () => {
       const { view } = renderView({
-        focusable: true,
         placement: 'floating',
       });
 
