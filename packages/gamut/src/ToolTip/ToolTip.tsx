@@ -7,25 +7,14 @@ import { tooltipDefaultProps, ToolTipProps } from './types';
 export const ToolTip: React.FC<ToolTipProps> = ({
   alignment = tooltipDefaultProps.alignment,
   placement = tooltipDefaultProps.placement,
-  focusable = tooltipDefaultProps.focusable,
   widthMode = tooltipDefaultProps.widthMode,
   ...rest
 }) => {
   if (placement === 'floating')
     return (
-      <FloatingToolTip
-        alignment={alignment}
-        focusable={focusable}
-        widthMode={widthMode}
-        {...rest}
-      />
+      <FloatingToolTip alignment={alignment} widthMode={widthMode} {...rest} />
     );
   return (
-    <InlineToolTip
-      alignment={alignment}
-      focusable={focusable}
-      widthMode={widthMode}
-      {...rest}
-    />
+    <InlineToolTip alignment={alignment} widthMode={widthMode} {...rest} />
   );
 };
