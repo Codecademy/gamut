@@ -250,6 +250,7 @@ export const proHeaderItems = (
     catalogComponent(user),
     resourcesDropdown,
     communityDropdown,
+    businessSolutions,
   ];
 
   const rightItems: AppHeaderItem[] = [];
