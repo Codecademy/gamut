@@ -6,6 +6,7 @@ import {
   FormattedMobileAppHeaderItems,
 } from '../AppHeader/types';
 import {
+  bookmarks,
   businessSolutions,
   catalogDropdown,
   communityDropdown,
@@ -40,7 +41,8 @@ const anonHeaderItems = (
   renderLogin: boolean,
   renderSignUp: boolean,
   hidePricing?: boolean,
-  user?: User
+  user?: User,
+  renderBookmarks?: () => ReactNode
 ): FormattedAppHeaderItems => {
   const leftItems: AppHeaderItem[] = [
     logo,
@@ -52,6 +54,9 @@ const anonHeaderItems = (
   ];
 
   const rightItems: AppHeaderItem[] = [];
+  if (renderBookmarks) {
+    rightItems.push(bookmarks(renderBookmarks));
+  }
   if (renderLogin) {
     rightItems.push(login);
   }
@@ -69,11 +74,15 @@ const anonMobileHeaderItems = (
   renderLogin: boolean,
   renderSignUp: boolean,
   hidePricing?: boolean,
-  user?: User
+  user?: User,
+  renderBookmarks?: () => ReactNode
 ): FormattedMobileAppHeaderItems => {
   const leftItems: AppHeaderItem[] = [logo];
 
   const rightItems: AppHeaderItem[] = [];
+  if (renderBookmarks) {
+    rightItems.push(bookmarks(renderBookmarks));
+  }
   if (renderLogin) {
     rightItems.push(login);
   }
@@ -100,64 +109,73 @@ const anonMobileHeaderItems = (
 
 export const anonDefaultHeaderItems = (
   hidePricing?: boolean,
-  user?: User
+  user?: User,
+  renderBookmarks?: () => ReactNode
 ): FormattedAppHeaderItems => {
-  return anonHeaderItems(true, true, hidePricing, user);
+  return anonHeaderItems(true, true, hidePricing, user, renderBookmarks);
 };
 
 export const anonDefaultMobileHeaderItems = (
   hidePricing?: boolean,
-  user?: User
+  user?: User,
+  renderBookmarks?: () => ReactNode
 ): FormattedMobileAppHeaderItems => {
-  return anonMobileHeaderItems(true, true, hidePricing, user);
+  return anonMobileHeaderItems(true, true, hidePricing, user, renderBookmarks);
 };
 
 export const anonLandingHeaderItems = (
   hidePricing?: boolean,
-  user?: User
+  user?: User,
+  renderBookmarks?: () => ReactNode
 ): FormattedAppHeaderItems => {
-  return anonHeaderItems(true, false, hidePricing, user);
+  return anonHeaderItems(true, false, hidePricing, user, renderBookmarks);
 };
 
 export const anonLandingMobileHeaderItems = (
   hidePricing?: boolean,
-  user?: User
+  user?: User,
+  renderBookmarks?: () => ReactNode
 ): FormattedMobileAppHeaderItems => {
-  return anonMobileHeaderItems(true, false, hidePricing, user);
+  return anonMobileHeaderItems(true, false, hidePricing, user, renderBookmarks);
 };
 
 export const anonLoginHeaderItems = (
   hidePricing?: boolean,
-  user?: User
+  user?: User,
+  renderBookmarks?: () => ReactNode
 ): FormattedAppHeaderItems => {
-  return anonHeaderItems(false, true, hidePricing, user);
+  return anonHeaderItems(false, true, hidePricing, user, renderBookmarks);
 };
 
 export const anonLoginMobileHeaderItems = (
   hidePricing?: boolean,
-  user?: User
+  user?: User,
+  renderBookmarks?: () => ReactNode
 ): FormattedMobileAppHeaderItems => {
-  return anonMobileHeaderItems(false, true, hidePricing, user);
+  return anonMobileHeaderItems(false, true, hidePricing, user, renderBookmarks);
 };
 
 export const anonSignupHeaderItems = (
   hidePricing?: boolean,
-  user?: User
+  user?: User,
+  renderBookmarks?: () => ReactNode
 ): FormattedAppHeaderItems => {
-  return anonHeaderItems(true, false, hidePricing, user);
+  return anonHeaderItems(true, false, hidePricing, user, renderBookmarks);
 };
 
 export const anonSignupMobileHeaderItems = (
   hidePricing?: boolean,
-  user?: User
+  user?: User,
+  renderBookmarks?: () => ReactNode
 ): FormattedMobileAppHeaderItems => {
-  return anonMobileHeaderItems(true, false, hidePricing, user);
+  return anonMobileHeaderItems(true, false, hidePricing, user, renderBookmarks);
 };
 
 export const freeHeaderItems = (
   user: User,
   hidePricing?: boolean,
-  renderFavorites?: () => ReactNode
+  renderFavorites?: () => ReactNode,
+  renderBookmarks?: () => ReactNode
 ): FormattedAppHeaderItems => {
   const leftItems: AppHeaderItem[] = [
     logo,
@@ -172,6 +190,9 @@ export const freeHeaderItems = (
   const rightItems: AppHeaderItem[] = [];
   if (renderFavorites) {
     rightItems.push(favorites(renderFavorites));
+  } else if (renderBookmarks) {
+    // only allow bookmarks render if user wasn't also part of favs
+    rightItems.push(bookmarks(renderBookmarks));
   }
 
   rightItems.push(freeProfile(user));
@@ -189,9 +210,11 @@ export const freeHeaderItems = (
 
 export const freeMobileHeaderItems = (
   user: User,
-  hidePricing?: boolean
+  hidePricing?: boolean,
+  renderBookmarks?: () => ReactNode
 ): FormattedMobileAppHeaderItems => {
   const leftItems: AppHeaderItem[] = [logo];
+  const rightItems: AppHeaderItem[] = [];
   const mainMenuItems: AppHeaderItem[] = [
     myHome,
     catalogComponent(user),
@@ -205,16 +228,21 @@ export const freeMobileHeaderItems = (
       : tryProForFree(user.proCheckoutUrl),
   ];
 
+  if (renderBookmarks) {
+    rightItems.push(bookmarks(renderBookmarks));
+  }
+
   return {
     left: leftItems,
-    right: [],
+    right: rightItems,
     mainMenu: mainMenuItems,
   };
 };
 
 export const proHeaderItems = (
   user: User,
-  renderFavorites?: () => ReactNode
+  renderFavorites?: () => ReactNode,
+  renderBookmarks?: () => ReactNode
 ): FormattedAppHeaderItems => {
   const leftItems: AppHeaderItem[] = [
     user.hasNewSkuSubscription ? logo : proLogo,
@@ -227,6 +255,9 @@ export const proHeaderItems = (
   const rightItems: AppHeaderItem[] = [];
   if (renderFavorites) {
     rightItems.push(favorites(renderFavorites));
+  } else if (renderBookmarks) {
+    // only allow bookmarks render if user wasn't also part of favs
+    rightItems.push(bookmarks(renderBookmarks));
   }
 
   rightItems.push(proProfile(user));
@@ -241,11 +272,13 @@ export const proHeaderItems = (
 };
 
 export const proMobileHeaderItems = (
-  user: User
+  user: User,
+  renderBookmarks?: () => ReactNode
 ): FormattedMobileAppHeaderItems => {
   const leftItems: AppHeaderItem[] = [
     user.hasNewSkuSubscription ? logo : proLogo,
   ];
+  const rightItems: AppHeaderItem[] = [];
 
   const mainMenuItems: AppHeaderItem[] = [
     myHome,
@@ -259,9 +292,13 @@ export const proMobileHeaderItems = (
     mainMenuItems.push(unpausePro);
   }
 
+  if (renderBookmarks) {
+    rightItems.push(bookmarks(renderBookmarks));
+  }
+
   return {
     left: leftItems,
-    right: [],
+    right: rightItems,
     mainMenu: mainMenuItems,
   };
 };
