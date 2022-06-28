@@ -11,6 +11,8 @@ type RenderFavorites = {
   desktop: () => ReactNode;
 };
 
+type RenderBookmarks = () => ReactNode;
+
 type RenderProfile = { desktop: () => ReactNode; mobile: () => ReactNode };
 
 type BaseHeader = {
@@ -21,6 +23,7 @@ type BaseHeader = {
   className?: string;
   hidePricing?: boolean;
   search: AppHeaderSearch;
+  renderBookmarks?: RenderBookmarks;
 };
 
 export type User = {
