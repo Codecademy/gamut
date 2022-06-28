@@ -114,6 +114,7 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
           : {
               notifications: props.notifications,
             })}
+        isAnon={props.type === 'anon'}
       />
       <AppHeaderMobile
         action={combinedAction}
