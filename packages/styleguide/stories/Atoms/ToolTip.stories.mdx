@@ -1,4 +1,4 @@
-import { Box, FlexBox, ToolTip } from '@codecademy/gamut/src';
+import { Box, FillButton, FlexBox, ToolTip } from '@codecademy/gamut/src';
 import { InfoCircleIcon } from '@codecademy/gamut-icons/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
@@ -201,8 +201,22 @@ Tooltips sometimes need to be in scrollable content, and that's okay!
   <Story name="isPopover">
     {(args) => {
       return (
-        <FlexBox center p={24}>
-          Updog <ToolTip placement="floating" {...args} />
+        <FlexBox alignItems="center" justifyContent="space-around" p={24}>
+          <ToolTip
+            id="button"
+            placement="floating"
+            target={<FillButton> Hey! </FillButton>}
+            focusable={false}
+          >
+            I am a floating Tooltip who has a focusable target
+          </ToolTip>
+          <ToolTip
+            id="button"
+            placement="floating"
+            target={<InfoCircleIcon size={20} />}
+          >
+            I am a floating Tooltip who does not have a focusable target
+          </ToolTip>
         </FlexBox>
       );
     }}

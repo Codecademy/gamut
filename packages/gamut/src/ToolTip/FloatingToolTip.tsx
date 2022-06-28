@@ -30,28 +30,23 @@ export const FloatingToolTip: React.FC<ToolTipPlacementComponentProps> = ({
   const handleShowHideAction = (
     e:
       | React.FocusEvent<HTMLDivElement, Element>
-      | React.MouseEvent<HTMLDivElement, MouseEvent>,
-
-    action: 'open' | 'close',
-    actionType: 'mouse' | 'keyboard'
+      | React.MouseEvent<HTMLDivElement, MouseEvent>
   ) => {
-    const { target, currentTarget } = e;
-    if (actionType === 'keyboard' && currentTarget === target) {
-      if (action === 'open' && !isOpen) {
-        setIsOpen(true);
-        setIsFocused(true);
-      }
-      if (action === 'close' && isOpen) {
-        setIsOpen(false);
-        setIsFocused(false);
-      }
-    } else if (actionType === 'mouse') {
-      if (action === 'open' && !isOpen) {
-        setIsOpen(true);
-      }
-      if (action === 'close' && isOpen && !isFocused) {
-        setIsOpen(false);
-      }
+    const { type } = e;
+
+    if (type === 'focus' && !isOpen) {
+      setIsOpen(true);
+      setIsFocused(true);
+    }
+    if (type === 'blur' && isOpen) {
+      setIsOpen(false);
+      setIsFocused(false);
+    }
+    if (type === 'mouseenter' && !isOpen) {
+      setIsOpen(true);
+    }
+    if (type === 'mouseleave' && isOpen && !isFocused) {
+      setIsOpen(false);
     }
   };
 
@@ -59,7 +54,7 @@ export const FloatingToolTip: React.FC<ToolTipPlacementComponentProps> = ({
     <Box
       position="relative"
       display="inline-flex"
-      onMouseLeave={(e) => handleShowHideAction(e, 'close', 'mouse')}
+      onMouseLeave={(e) => handleShowHideAction(e)}
     >
       <TargetContainer
         aria-labelledby={id}
@@ -69,12 +64,12 @@ export const FloatingToolTip: React.FC<ToolTipPlacementComponentProps> = ({
           }
         }}
         onFocus={(e) => {
-          handleShowHideAction(e, 'open', 'keyboard');
+          handleShowHideAction(e);
         }}
         onBlur={(e) => {
-          handleShowHideAction(e, 'close', 'keyboard');
+          handleShowHideAction(e);
         }}
-        onMouseEnter={(e) => handleShowHideAction(e, 'open', 'mouse')}
+        onMouseEnter={(e) => handleShowHideAction(e)}
         ref={ref}
         role={focusable ? 'button' : undefined}
         // ToolTips sometimes contain actual <button>s, which cannot be a child of a button.
