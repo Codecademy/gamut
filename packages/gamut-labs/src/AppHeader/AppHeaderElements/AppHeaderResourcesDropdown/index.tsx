@@ -17,7 +17,6 @@ import {
   StyledDropdown,
   StyledText,
 } from '../../shared';
-// import { AppHeaderCatalogSection } from '../AppHeaderCatalogSection';
 import { AppHeaderResourcesSection } from '../AppHeaderResourcesSection';
 import {
   AppHeaderClickHandler,
@@ -82,7 +81,7 @@ export const AppHeaderResourcesDropdown: React.FC<AppHeaderResourceDropdownProps
 
   const getNode = (index: number) => {
     return containerRef.current?.querySelectorAll<HTMLElement>(
-      '[data-focusablecatalog=true]'
+      '[data-focusableresource=true]'
     )[index];
   };
 
@@ -234,7 +233,6 @@ export const AppHeaderResourcesDropdown: React.FC<AppHeaderResourceDropdownProps
       >
         <AppHeaderResourcesSection
           action={action}
-          item={item}
           role="menu"
           ref={containerRef}
           keyDownEvents={menuHandleKeyEvents}

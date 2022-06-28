@@ -8,6 +8,7 @@ export type AppHeaderItem =
   | AppHeaderProfileDropdownItem
   | AppHeaderRenderElementItem
   | AppHeaderCatalogDropdownItem
+  | AppHeaderDescriptiveLinkItem
   | AppHeaderResourcesDropdownItem;
 
 export type AppHeaderItemWithHref =

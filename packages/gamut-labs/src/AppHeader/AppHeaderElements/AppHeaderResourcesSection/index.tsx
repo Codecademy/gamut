@@ -3,7 +3,6 @@ import {
   Box,
   Column,
   FlexBox,
-  // GridBox,
   LayoutGrid,
   Text,
 } from '@codecademy/gamut';
@@ -12,16 +11,10 @@ import styled from '@emotion/styled';
 import React from 'react';
 
 import { newHeaderResourcesList } from '../../../lib/resourcesList';
-import {
-  // AppHeaderCatalogDropdownItem,
-  AppHeaderClickHandler,
-  AppHeaderItem,
-  AppHeaderResourcesDropdownItem,
-} from '../types';
+import { AppHeaderClickHandler } from '../types';
 
 export type AppHeaderResourcesSectionProps = {
   action: AppHeaderClickHandler;
-  item: AppHeaderResourcesDropdownItem;
   ref?: React.RefObject<HTMLUListElement>;
   role?: string;
   id?: string;
@@ -36,52 +29,23 @@ const StyledColumn = styled(Column)(
   })
 );
 
-// const gridTemplate = `'languageHeader gap subjectHeader'
-//                     'language language subject'
-//                     'language language subject'
-//                     'language language subject'
-//                     'language language subject'
-//                     'language language subject'
-//                     'language language subject'`;
-
 export const AppHeaderResourcesSection = React.forwardRef<
   HTMLDivElement,
   AppHeaderResourcesSectionProps
->(({ action, item, isOpen, keyDownEvents }, ref) => {
+>(({ action, isOpen, keyDownEvents }, ref) => {
   const tabIndex = isOpen === false ? -1 : 0;
 
   const DescriptionSection: React.FunctionComponent<{
     title: string;
     subtitle?: string;
   }> = ({ title, subtitle }) => (
-    <FlexBox
-      data-focusablecatalog="true"
-      data-testid="title-description-section"
-      tabIndex={-1}
-      flexDirection="column"
-    >
+    <FlexBox data-focusableresource="true" tabIndex={-1} flexDirection="column">
       <Text as="h2" variant="title-xs" mb={8} fontWeight={700}>
         {title}
       </Text>
       {subtitle && <Text fontSize={14}>{subtitle}</Text>}
     </FlexBox>
   );
-
-  // const Subheader: React.FunctionComponent<{ title: string }> = ({ title }) => (
-  //   <Text
-  //     data-focusablecatalog="true"
-  //     as="h3"
-  //     key={item.id}
-  //     width="12rem"
-  //     tabIndex={-1}
-  //     variant="p-small"
-  //     color="navy-500"
-  //     pb={8}
-  //     fontFamily="accent"
-  //   >
-  //     {title}
-  //   </Text>
-  // );
 
   return (
     <LayoutGrid onKeyDown={keyDownEvents} ref={ref} as="ul" p={0}>
@@ -101,11 +65,12 @@ export const AppHeaderResourcesSection = React.forwardRef<
                       fontSize={14}
                       fontWeight={700}
                       textAlign={{ _: 'center', md: 'left' }}
-                      href={section.link}
-                      data-focusablecatalog="true"
-                      // onClick={(event) => action(event, section.link)}
+                      href={section.link.href}
+                      data-focusableresource="true"
+                      onClick={(event) => action(event, section.link!)}
                       tabIndex={tabIndex}
-                      mt={section.description ? 16 : 48}
+                      mt={section.description ? 24 : 48}
+                      target={section.link.newTab ? '_blank' : '_self'}
                     >
                       {section.link.text}
                     </Anchor>
@@ -114,16 +79,17 @@ export const AppHeaderResourcesSection = React.forwardRef<
               </Box>
             </Column>
             <Column size={{ xs: 12, md: 8 }}>
-              <LayoutGrid pt={32} pb={32} pl={{ _: 16, sm: 64, md: 48 }}>
+              <LayoutGrid pt={32} pb={24} pl={{ _: 16, sm: 64, md: 48 }}>
                 {section.data.map((item) => (
                   <Column key={item.id} size={{ _: 4 }}>
                     <Anchor
-                      data-focusablecatalog="true"
+                      data-focusableresource="true"
                       variant="interface"
                       href={item.href}
-                      onClick={(event) => action(event, item as AppHeaderItem)}
+                      onClick={(event) => action(event, item)}
                       tabIndex={tabIndex}
                       pb={0}
+                      target={item.newTab ? '_blank' : '_self'}
                     >
                       {'text' in item ? (
                         <Text fontSize={16} pb={8}>
@@ -142,7 +108,7 @@ export const AppHeaderResourcesSection = React.forwardRef<
                             </Text>
                             {item.badge!}
                           </FlexBox>
-                          <Text fontSize={14} pb={24} pr={32}>
+                          <Text fontSize={14} pb={24} pr={40}>
                             {item.description}
                           </Text>
                         </>
@@ -155,83 +121,6 @@ export const AppHeaderResourcesSection = React.forwardRef<
           </LayoutGrid>
         </StyledColumn>
       ))}
-      {/*
-      <Column size={12} key="Popular languages and subjects" as="li">
-        <LayoutGrid>
-          <Column size={{ xs: 12, md: 3 }}>
-            <Box bg="navy-800" color="blue-0" p={32}>
-              <DescriptionSection
-                title="Popular languages and subjects"
-                subtitle="Find courses in languages or subjects that interest you."
-              />
-              <ColorMode mode="dark">
-                <Anchor
-                  variant="standard"
-                  fontSize={14}
-                  fontWeight={700}
-                  textAlign={{ _: 'center', md: 'left' }}
-                  href={catalogAnchorData.href}
-                  data-focusablecatalog="true"
-                  onClick={(event) => action(event, catalogAnchorData)}
-                  tabIndex={tabIndex}
-                  mt={96}
-                  pt={24}
-                >
-                  {catalogAnchorData.text}
-                </Anchor>
-              </ColorMode>
-            </Box>
-          </Column>
-          <Column
-            size={{ xs: 12, md: 8 }}
-            py={32}
-            pl={{ _: 16, sm: 64, md: 48 }}
-          >
-            <GridBox gridTemplateAreas={gridTemplate}>
-              <Box gridArea="languageHeader">
-                <Subheader title="Top Languages" />
-              </Box>
-              <Box
-                gridArea="language"
-                display="grid"
-                gridTemplateColumns="1fr 1fr"
-              >
-                {topLanguages.map((item) => (
-                  <Box width="12rem" key={item.id} minHeight={36}>
-                    <Anchor
-                      data-focusablecatalog="true"
-                      variant="interface"
-                      href={item.href}
-                      onClick={(event) => action(event, item as AppHeaderItem)}
-                      tabIndex={tabIndex}
-                    >
-                      {item.text}
-                    </Anchor>
-                  </Box>
-                ))}
-              </Box>
-              <Box gridArea="subjectHeader">
-                <Subheader title="Top Subjects" />
-              </Box>
-              <Box gridArea="subject" display="grid" gridTemplateColumns="1fr">
-                {topSubjects.map((item) => (
-                  <Box width="12rem" key={item.id} minHeight={36}>
-                    <Anchor
-                      data-focusablecatalog="true"
-                      variant="interface"
-                      href={item.href}
-                      onClick={(event) => action(event, item as AppHeaderItem)}
-                      tabIndex={tabIndex}
-                    >
-                      {item.text}
-                    </Anchor>
-                  </Box>
-                ))}
-              </Box>
-            </GridBox>
-          </Column>
-        </LayoutGrid>
-      </Column> */}
     </LayoutGrid>
   );
 });
