@@ -63,7 +63,6 @@ export const mapItemToElement = (
   onKeyDown?: (event: React.KeyboardEvent) => void,
   mobile = false
 ): ReactNode => {
-  console.log(item.type, 'type');
   switch (item.type) {
     case 'logo':
       return <AppHeaderLogo action={action} item={item} />;

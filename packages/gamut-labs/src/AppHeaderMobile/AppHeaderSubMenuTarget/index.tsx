@@ -7,21 +7,14 @@ import React from 'react';
 import {
   AppHeaderCatalogDropdownItem,
   AppHeaderDropdownItem,
-  AppHeaderResourcesDropdownItem,
 } from '../../AppHeader/AppHeaderElements/types';
 import { Avatar } from '../../Avatar';
 
 export type AppHeaderSubMenuTargetProps = {
-  item:
-    | AppHeaderDropdownItem
-    | AppHeaderCatalogDropdownItem
-    | AppHeaderResourcesDropdownItem;
+  item: AppHeaderDropdownItem | AppHeaderCatalogDropdownItem;
   openSubMenu: (
     event: React.MouseEvent,
-    item:
-      | AppHeaderDropdownItem
-      | AppHeaderCatalogDropdownItem
-      | AppHeaderResourcesDropdownItem
+    item: AppHeaderDropdownItem | AppHeaderCatalogDropdownItem
   ) => void;
 };
 
@@ -39,11 +32,7 @@ export const AppHeaderSubMenuTarget: React.FC<AppHeaderSubMenuTargetProps> = ({
   openSubMenu,
 }) => {
   const getIcon = () => {
-    if (
-      item.type === 'dropdown' ||
-      item.type === 'catalog-dropdown' ||
-      item.type === 'new-resources-dropdown'
-    ) {
+    if (item.type === 'dropdown' || item.type === 'catalog-dropdown') {
       const Icon = item.icon;
       return Icon && <Icon size={24} aria-hidden />;
     }

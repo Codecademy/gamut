@@ -1,16 +1,6 @@
-import React, {
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 
-import {
-  careerPaths,
-  topLanguages,
-  topSubjects,
-} from '../../../lib/catalogList';
+import { newHeaderResourcesList } from '../../../lib/resourcesList';
 import {
   DropdownAnchor,
   DropdownIcon,
@@ -52,16 +42,10 @@ export const AppHeaderResourcesDropdown: React.FC<AppHeaderResourceDropdownProps
 
   const [focusIndex, setFocusIndex] = useState(0);
 
+  const items = newHeaderResourcesList.map((item) => item.data);
+  const itemsCount = items.length;
   const focusFirstItem = () => setFocusIndex(0);
   const focusLastItem = () => setFocusIndex(itemsCount);
-
-  const itemsCount = useMemo(() => {
-    const languageAndSubjectCount =
-      topLanguages.length + topSubjects.length + 4; // extra two for hard coded headers
-    return item.hideCareerPaths
-      ? languageAndSubjectCount
-      : languageAndSubjectCount + careerPaths.length;
-  }, [item]);
 
   const focusNextItem = () => {
     if (focusIndex === itemsCount) {

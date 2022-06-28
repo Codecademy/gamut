@@ -230,7 +230,7 @@ export const newHeaderResourcesList: AppHeaderResourcesDataItem[] = [
       {
         id: 'articles',
         href: '/articles',
-        header: 'Articles',
+        text: 'Articles',
         description: 'Learn about technical concepts.',
         trackingTarget: 'topnav_resources_learning_articles',
         type: 'link',
@@ -238,7 +238,7 @@ export const newHeaderResourcesList: AppHeaderResourcesDataItem[] = [
       {
         id: 'cheatsheets',
         href: '/resources/cheatsheets/all',
-        header: 'Cheatsheets',
+        text: 'Cheatsheets',
         description: 'Review concepts from your courses.',
         trackingTarget: 'topnav_resources_learning_cheatsheets',
         type: 'link',
@@ -246,7 +246,7 @@ export const newHeaderResourcesList: AppHeaderResourcesDataItem[] = [
       {
         id: 'code-challenges',
         href: '/code-challenges',
-        header: 'Code challenges',
+        text: 'Code challenges',
         description: 'Test your knowledge and prep for interviews.',
         trackingTarget: 'topnav_resources_learning_code_challenges',
         type: 'link',
@@ -254,7 +254,7 @@ export const newHeaderResourcesList: AppHeaderResourcesDataItem[] = [
       {
         id: 'projects',
         href: '/projects',
-        header: 'Projects',
+        text: 'Projects',
         description: 'Practice and build your portfolio.',
         trackingTarget: 'topnav_resources_learning_projects',
         type: 'link',
@@ -264,7 +264,7 @@ export const newHeaderResourcesList: AppHeaderResourcesDataItem[] = [
       {
         id: 'videos',
         href: '/resources/videos',
-        header: 'Videos',
+        text: 'Videos',
         description: 'Watch tutorials, project walkthroughs, and more.',
         trackingTarget: 'topnav_resources_learning_videos',
         type: 'link',
@@ -272,7 +272,7 @@ export const newHeaderResourcesList: AppHeaderResourcesDataItem[] = [
       {
         id: 'workspaces',
         href: '/pages/workspaces',
-        header: 'Workspaces',
+        text: 'Workspaces',
         description: 'Build and share projects in your browser.',
         trackingTarget: 'topnav_resources_learning_workspaces',
         type: 'link',
@@ -293,7 +293,7 @@ export const newHeaderResourcesList: AppHeaderResourcesDataItem[] = [
       {
         id: 'career-advice',
         href: '/resources/blog/tag/career/',
-        header: 'Career advice',
+        text: 'Career advice',
         description: 'Get answers to questions about coding careers.',
         trackingTarget: 'topnav_resources_inspiration_career_advice',
         type: 'link',
@@ -302,7 +302,7 @@ export const newHeaderResourcesList: AppHeaderResourcesDataItem[] = [
       {
         id: 'learning-tips',
         href: '/resources/blog/tag/learning/',
-        header: 'Learning tips',
+        text: 'Learning tips',
         description: 'Learn where to start and how to stay motivated.',
         trackingTarget: 'topnav_resources_inspiration_learning_tips',
         type: 'link',

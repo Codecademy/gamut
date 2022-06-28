@@ -91,11 +91,7 @@ export const AppHeaderResourcesSection = React.forwardRef<
                       pb={0}
                       target={item.newTab ? '_blank' : '_self'}
                     >
-                      {'text' in item ? (
-                        <Text fontSize={16} pb={8}>
-                          {item.text}
-                        </Text>
-                      ) : (
+                      {'description' in item ? (
                         <>
                           <FlexBox>
                             <Text
@@ -104,7 +100,7 @@ export const AppHeaderResourcesSection = React.forwardRef<
                               as="h3"
                               pb={8}
                             >
-                              {item.header}
+                              {item.text}
                             </Text>
                             {item.badge!}
                           </FlexBox>
@@ -112,6 +108,10 @@ export const AppHeaderResourcesSection = React.forwardRef<
                             {item.description}
                           </Text>
                         </>
+                      ) : (
+                        <Text fontSize={16} pb={8}>
+                          {item.text}
+                        </Text>
                       )}
                     </Anchor>
                   </Column>

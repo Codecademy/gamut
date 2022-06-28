@@ -95,8 +95,7 @@ export const isAppHeaderItemWithHref = (
   item: AppHeaderItem
 ): item is AppHeaderItemWithHref => !!(item as AppHeaderItemWithHref).href;
 
-export type AppHeaderDescriptiveLinkItem = Omit<AppHeaderLinkItem, 'text'> & {
-  header: string;
+export type AppHeaderDescriptiveLinkItem = AppHeaderLinkItem & {
   description: string;
 };
 
