@@ -123,7 +123,7 @@ export const AppHeaderCatalogSection = React.forwardRef<
       width="12rem"
       tabIndex={-1}
       variant="p-small"
-      color="navy-600"
+      color="navy-700"
       pb={{ _: 16, lg: 8 }}
       fontFamily="accent"
     >
