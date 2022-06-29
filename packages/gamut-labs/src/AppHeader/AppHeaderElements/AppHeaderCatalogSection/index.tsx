@@ -7,7 +7,7 @@ import {
   LayoutGrid,
   Text,
 } from '@codecademy/gamut';
-import { ColorMode, css } from '@codecademy/gamut-styles';
+import { Background, css } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React from 'react';
 
@@ -123,7 +123,7 @@ export const AppHeaderCatalogSection = React.forwardRef<
       width="12rem"
       tabIndex={-1}
       variant="p-small"
-      color="navy-500"
+      color="navy-600"
       pb={{ _: 16, lg: 8 }}
       fontFamily="accent"
     >
@@ -137,7 +137,7 @@ export const AppHeaderCatalogSection = React.forwardRef<
         <StyledColumn size={12} key="Top career paths" as="li">
           <LayoutGrid>
             <Column size={{ xs: 12, md: 3 }}>
-              <Box
+              <Background
                 bg="navy-800"
                 color="blue-0"
                 px={{ _: 16, xs: 32, sm: 64, md: 48, lg: 40 }}
@@ -147,7 +147,7 @@ export const AppHeaderCatalogSection = React.forwardRef<
                   title="Top career paths"
                   subtitle="Land a role in tech with step-by-step guidance."
                 />
-              </Box>
+              </Background>
             </Column>
             <Column size={{ xs: 12, md: 8 }}>
               <LayoutGrid py={32} pl={{ _: 16, xs: 32, sm: 64, md: 48 }}>
@@ -172,7 +172,7 @@ export const AppHeaderCatalogSection = React.forwardRef<
       <Column size={12} key="Popular languages and subjects" as="li">
         <LayoutGrid>
           <Column size={{ xs: 12, md: 3 }}>
-            <Box
+            <Background
               bg="navy-800"
               color="blue-0"
               px={{ _: 16, xs: 32, sm: 64, md: 48, lg: 40 }}
@@ -182,23 +182,22 @@ export const AppHeaderCatalogSection = React.forwardRef<
                 title="Popular languages and subjects"
                 subtitle="Find courses in languages or subjects that interest you."
               />
-              <ColorMode mode="dark" display={{ _: 'none', lg: 'block' }}>
-                <Anchor
-                  variant="standard"
-                  fontSize={14}
-                  fontWeight={700}
-                  textAlign={{ _: 'center', md: 'left' }}
-                  href={catalogAnchorData.href}
-                  data-focusablecatalog="true"
-                  onClick={(event) => action(event, catalogAnchorData)}
-                  tabIndex={tabIndex}
-                  mt={96}
-                  pt={24}
-                >
-                  {catalogAnchorData.text} →
-                </Anchor>
-              </ColorMode>
-            </Box>
+              <Anchor
+                display={{ _: 'none', lg: 'block' }}
+                variant="standard"
+                fontSize={14}
+                fontWeight={700}
+                textAlign={{ _: 'center', md: 'left' }}
+                href={catalogAnchorData.href}
+                data-focusablecatalog="true"
+                onClick={(event) => action(event, catalogAnchorData)}
+                tabIndex={tabIndex}
+                mt={96}
+                pt={24}
+              >
+                {catalogAnchorData.text} →
+              </Anchor>
+            </Background>
           </Column>
           <Column
             size={{ xs: 12, md: 8 }}
