@@ -136,7 +136,7 @@ export const AppHeaderCatalogSection = React.forwardRef<
       {!item.hideCareerPaths && (
         <StyledColumn size={12} key="Top career paths" as="li">
           <LayoutGrid>
-            <Column size={{ xs: 12, md: 3 }}>
+            <Column size={{ xs: 12, lg: 3 }}>
               <Background
                 bg="navy-800"
                 color="blue-0"
@@ -149,7 +149,7 @@ export const AppHeaderCatalogSection = React.forwardRef<
                 />
               </Background>
             </Column>
-            <Column size={{ xs: 12, md: 8 }}>
+            <Column size={{ xs: 12, lg: 8 }}>
               <LayoutGrid py={32} pl={{ _: 16, xs: 32, sm: 64, md: 48 }}>
                 {careerPaths.map((item) => (
                   <StyledAnchorColumn key={item.id} size={{ _: 12, lg: 4 }}>
@@ -171,7 +171,7 @@ export const AppHeaderCatalogSection = React.forwardRef<
       )}
       <Column size={12} key="Popular languages and subjects" as="li">
         <LayoutGrid>
-          <Column size={{ xs: 12, md: 3 }}>
+          <Column size={{ xs: 12, lg: 3 }}>
             <Background
               bg="navy-800"
               color="blue-0"
@@ -200,7 +200,7 @@ export const AppHeaderCatalogSection = React.forwardRef<
             </Background>
           </Column>
           <Column
-            size={{ xs: 12, md: 8 }}
+            size={{ xs: 12, lg: 8 }}
             py={32}
             pl={{ _: 16, xs: 32, sm: 64, md: 48 }}
           >
