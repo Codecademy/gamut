@@ -1,4 +1,4 @@
-import { Box, Markdown, Text } from '@codecademy/gamut';
+import { Anchor, Box, Markdown, Text } from '@codecademy/gamut';
 import { mediaQueries } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React from 'react';
@@ -11,11 +11,18 @@ const Image = Box.withComponent('img');
 export type FeaturedImageProps = {
   src: string;
   alt: string;
+  linkable?: string;
+  linkUrl?: string;
 };
-export const FeaturedImage: React.FC<FeaturedImageProps> = ({ src, alt }) => (
-  <Box width={1} mb={32}>
+export const FeaturedImage: React.FC<FeaturedImageProps> = ({
+  src,
+  alt,
+  linkable,
+  linkUrl,
+}) => (
+  <Anchor as={linkable ? 'a' : 'div'} href={linkUrl || ''} width={1} mb={32}>
     <PausableImage src={src} alt={alt} data-testid="feature-image" />
-  </Box>
+  </Anchor>
 );
 
 export type FeaturedIconProps = {
