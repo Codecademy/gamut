@@ -4,7 +4,11 @@ import { Box, FlexBox } from '../Box';
 import { Popover } from '../Popover';
 import { TargetContainer } from './elements';
 import { tooltipDefaultProps, ToolTipPlacementComponentProps } from './types';
-import { getPopoverAlignment } from './utils';
+import {
+  escapeKeyPressHandler,
+  getAccessibilityProps,
+  getPopoverAlignment,
+} from './utils';
 
 export const FloatingToolTip: React.FC<ToolTipPlacementComponentProps> = ({
   alignment = tooltipDefaultProps.alignment,
@@ -25,6 +29,7 @@ export const FloatingToolTip: React.FC<ToolTipPlacementComponentProps> = ({
     }
   }, []);
 
+  const accessibilityProps = getAccessibilityProps(focusable);
   const popoverAlignments = getPopoverAlignment({ alignment });
 
   const handleShowHideAction = (
@@ -58,11 +63,7 @@ export const FloatingToolTip: React.FC<ToolTipPlacementComponentProps> = ({
     >
       <TargetContainer
         aria-labelledby={id}
-        onKeyDown={(event) => {
-          if (event.key === 'Escape') {
-            (event.target as HTMLElement).blur();
-          }
-        }}
+        onKeyDown={(e) => escapeKeyPressHandler(e)}
         onFocus={(e) => {
           handleShowHideAction(e);
         }}
@@ -71,11 +72,7 @@ export const FloatingToolTip: React.FC<ToolTipPlacementComponentProps> = ({
         }}
         onMouseEnter={(e) => handleShowHideAction(e)}
         ref={ref}
-        role={focusable ? 'button' : undefined}
-        // ToolTips sometimes contain actual <button>s, which cannot be a child of a button.
-        // This element still needs tab focus so we must use the `tabIndex=0` hack.
-        // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
-        tabIndex={focusable ? 0 : undefined}
+        {...accessibilityProps}
       >
         {target}
       </TargetContainer>

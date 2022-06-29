@@ -3,6 +3,7 @@ import { fontSmoothPixel, timing, variant } from '@codecademy/gamut-styles';
 import { toolTipAlignmentArray } from './types';
 import { createVariantsFromAlignments } from './utils';
 
+export const tooltipBackgroundColor = `background-contrast`;
 export const tooltipArrowHeight = `1rem`;
 const containerOffsetVertical = 12;
 
@@ -73,7 +74,7 @@ export const toolTipAlignmentVariants = variant({
     opacity: 0,
     visibility: 'hidden',
     '&::after': {
-      bg: 'background-contrast',
+      bg: tooltipBackgroundColor,
       content: '""',
       display: 'block',
       height: `${tooltipArrowHeight}`,
@@ -101,7 +102,7 @@ export const toolTipBodyAlignments = variant({
 });
 
 export const toolTipBodyCss = {
-  bg: 'background-contrast',
+  bg: tooltipBackgroundColor,
   color: 'text-accent',
   border: 1,
   boxShadow: 'none',

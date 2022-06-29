@@ -5,6 +5,7 @@ import styled from '@emotion/styled';
 import { Box } from '../Box';
 import {
   tooltipArrowHeight,
+  tooltipBackgroundColor,
   toolTipBodyAlignments,
   toolTipBodyCss,
 } from '../ToolTip/styles';
@@ -83,7 +84,7 @@ const beakLeftSml = {
 
 const beakVariants = variant({
   base: {
-    bg: 'background-current',
+    bg: tooltipBackgroundColor,
     position: 'absolute',
     transform: 'rotate(45deg)',
   },
@@ -127,6 +128,8 @@ const beakVariants = variant({
 
 const beakSize = variant({
   prop: 'size',
+  defaultVariant: 'lrg',
+  base: { bg: 'background-contrast' },
   variants: {
     sml: {
       height: tooltipArrowHeight,

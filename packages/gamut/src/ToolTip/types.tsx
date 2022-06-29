@@ -49,7 +49,7 @@ export type ToolTipProps = ToolTipContainerProps & {
   children?: ReactNode;
 
   /**
-   * Whether to manually add a tabIndex of 0 to the target container, for tooltips without focusable children.
+   * Whether to  add a tabIndex of 0 to the target container, for tooltips without focusable children.
    */
   focusable?: boolean;
 

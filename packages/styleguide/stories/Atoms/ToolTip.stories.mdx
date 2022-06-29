@@ -1,4 +1,11 @@
-import { Box, FillButton, FlexBox, ToolTip } from '@codecademy/gamut/src';
+import {
+  Box,
+  FillButton,
+  FlexBox,
+  GridBox,
+  Text,
+  ToolTip,
+} from '@codecademy/gamut/src';
 import { InfoCircleIcon } from '@codecademy/gamut-icons/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
@@ -8,7 +15,6 @@ import { upperFirst } from 'lodash';
 import { LinkTo } from '~styleguide/blocks';
 
 import { CustomCheckbox } from '../Atoms/FormInputs/examples';
-import { TooltipArea } from './ToolTip.examples.tsx';
 
 <Meta
   title={title}
@@ -25,15 +31,9 @@ import { TooltipArea } from './ToolTip.examples.tsx';
     status: 'current',
   }}
   args={{
-    alignment: 'top-right',
-    children: `elated to designs:
- Related to JIRA ticket: ABC-123
- I have run this code to verify it works
- This PR includes unit tests for the code change
- The alpha package of this PR is passing end-to-end tests in all relevant Codecademy repositories`,
-    focusable: true,
-    id: 'tooltip',
-    target: <InfoCircleIcon size={20} />,
+    children: `I am helpful text related to this target`,
+    id: 'unique-tooltip-id',
+    target: <FillButton>Tooltip Target</FillButton>,
   }}
 />
 
@@ -47,10 +47,10 @@ Great for surfacing additional information that may or may not be relevant _with
 <Canvas>
   <Story name="ToolTip">
     {(args) => (
-      <TooltipArea tipAlignment={args.alignment}>
-        Hello! &nbsp;
-        <ToolTip {...args} />
-      </TooltipArea>
+      <Box py={64}>
+        <Text aria-describedby={args.id}> Hello! &nbsp;</Text>
+        <ToolTip {...args} target={<InfoCircleIcon size={16} />} />
+      </Box>
     )}
   </Story>
 </Canvas>
@@ -101,28 +101,27 @@ The caret tip will be centered horizontally on the target.
 
 Tooltips with _centered_ alignments -`bottom-center` or `top-center`- are smaller sized and meant for a single small number of words, like keyboard shortcuts.
 
-_Note:_ Because of the size of these ToolTips, they should never overflow their container so are not applicable to `isPopover` Tooltips.
+_Note:_ Because of the size of these ToolTips, they should never overflow their container so are not applicable to Tooltips with the 'floating' `placement`.
 
 <Canvas>
   <Story name="Smaller Alignment">
     {(args) => {
-      return ['bottom-center', 'top-center'].map((alignment) => {
-        return (
-          <TooltipArea key={alignment} tipAlignment={alignment}>
-            {alignment.split('-').map(upperFirst).join(' ')}: &nbsp;
-            <ToolTip {...args} alignment={alignment}>
-              Shift + Return
-            </ToolTip>
-            <ToolTip
-              {...args}
-              alignment={alignment}
-              target={<Box marginLeft={32}>Hi: {args.target}</Box>}
-            >
-              Hi!
-            </ToolTip>
-          </TooltipArea>
-        );
-      });
+      return (
+        <FlexBox py={48} justifyContent="space-around">
+          {['bottom-center', 'top-center'].map((alignment) => {
+            return (
+              <Box key={alignment}>
+                <Text p={4}>
+                  {alignment.split('-').map(upperFirst).join(' ')}: &nbsp;
+                </Text>
+                <ToolTip {...args} alignment={alignment}>
+                  Hi!
+                </ToolTip>
+              </Box>
+            );
+          })}
+        </FlexBox>
+      );
     }}
   </Story>
 </Canvas>
@@ -134,20 +133,19 @@ Tooltips with _corner_ alignments -`*-left` or `*-right`- are larger sized and m
 <Canvas>
   <Story name="Larger Alignment">
     {(args) => {
-      return ['bottom-left', 'bottom-right', 'top-left', 'top-right'].map(
-        (alignment) => {
-          return (
-            <TooltipArea key={alignment} tipAlignment={alignment}>
-              {alignment.split('-').map(upperFirst).join(' ')}: &nbsp;
-              <ToolTip {...args} alignment={alignment} />
-              <ToolTip
-                {...args}
-                alignment={alignment}
-                target={<Box ml={32}>Hi: {args.target}</Box>}
-              />
-            </TooltipArea>
-          );
-        }
+      return (
+        <GridBox gap={24} p={48} ml={24}>
+          {['bottom-left', 'bottom-right', 'top-left', 'top-right'].map(
+            (alignment) => {
+              return (
+                <Box key={alignment}>
+                  {alignment.split('-').map(upperFirst).join(' ')}: &nbsp;
+                  <ToolTip {...args} alignment={alignment} />
+                </Box>
+              );
+            }
+          )}
+        </GridBox>
       );
     }}
   </Story>
@@ -156,52 +154,30 @@ Tooltips with _corner_ alignments -`*-left` or `*-right`- are larger sized and m
 ## Focusable
 
 ToolTip targets are often buttons or other natively focusable elements.
+
 If the target is not focusable, such as for plain text or icons, use the `focusable` prop so keyboard users can still trigger the ToolTip.
 
 <Canvas>
   <Story name="Focusable">
     {(args) => {
       return (
-        <TooltipArea tipAlignment={args.alignment}>
-          <ToolTip {...args} target="Information!" />
-        </TooltipArea>
+        <Box pt={64} pl={12}>
+          <ToolTip {...args} focusable target="Information!" />
+        </Box>
       );
     }}
   </Story>
 </Canvas>
 
-## Mode
+## Placement
 
-Tooltips can be of a `dark` or `light` visual mode.
-
-<Canvas>
-  <Story name="Mode">
-    {(args) => {
-      return (
-        <>
-          <TooltipArea tipAlignment={args.alignment}>
-            Dark: &nbsp;
-            <ToolTip {...args} mode="dark" />
-          </TooltipArea>
-          <TooltipArea tipAlignment={args.alignment}>
-            Light: &nbsp;
-            <ToolTip {...args} mode="light" />
-          </TooltipArea>
-        </>
-      );
-    }}
-  </Story>
-</Canvas>
-
-## isPopover
-
-Tooltips sometimes need to be in scrollable content, and that's okay!
+Tooltips sometimes need to be in used in a way that they need to escape the confines of their parents container. The `floating` variant of the `placement` prop allows ToolTips to do just this. (Notice how this section doesn't need as much padding because the ToolTips are able to escape their context!)
 
 <Canvas>
-  <Story name="isPopover">
-    {(args) => {
+  <Story name="Placement">
+    {() => {
       return (
-        <FlexBox alignItems="center" justifyContent="space-around" p={24}>
+        <FlexBox alignItems="center" justifyContent="space-around" p={4}>
           <ToolTip
             id="button"
             placement="floating"
@@ -209,16 +185,23 @@ Tooltips sometimes need to be in scrollable content, and that's okay!
           >
             I am a floating Tooltip who has a focusable target
           </ToolTip>
-          <ToolTip
-            id="button"
-            focusable
-            placement="floating"
-            target={<InfoCircleIcon size={20} />}
-          >
-            I am a floating Tooltip who does not have a focusable target
-          </ToolTip>
+          <Box>
+            Some cool info
+            <ToolTip
+              id="button"
+              focusable
+              placement="floating"
+              target={<InfoCircleIcon size={20} />}
+            >
+              I am a floating Tooltip who does not have a focusable target
+            </ToolTip>
+          </Box>
         </FlexBox>
       );
     }}
   </Story>
 </Canvas>
+
+## Mode
+
+Tooltips can be of a `dark` or `light` visual mode. Swap the ColorMode in our toolbar at the top of the page to see them in action!

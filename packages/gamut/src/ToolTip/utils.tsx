@@ -11,7 +11,7 @@ import {
   topStyles,
   topStylesAfter,
 } from './styles';
-import { ToolTipInlineProps } from './types';
+import { ToolTipInlineProps, ToolTipProps } from './types';
 
 export const getPopoverAlignment = ({
   alignment = 'top-left',
@@ -65,4 +65,21 @@ export const createVariantsFromAlignments = (array: readonly string[]) => {
     })
   );
   return variantsObject;
+};
+
+export const escapeKeyPressHandler = (
+  event: React.KeyboardEvent<HTMLDivElement>
+) => {
+  if (event.key === 'Escape') {
+    (event.target as HTMLElement).blur();
+  }
+};
+
+export const getAccessibilityProps = (focusable: ToolTipProps['focusable']) => {
+  // ToolTips sometimes contain actual <button>s, which cannot be a child of a button.
+  // This element still needs tab focus so we must use the `tabIndex=0` hack.
+  return {
+    role: focusable ? 'button' : undefined,
+    tabIndex: focusable ? 0 : undefined,
+  };
 };
