@@ -11,6 +11,7 @@ import styled from '@emotion/styled';
 import React from 'react';
 
 import { newHeaderResourcesList } from '../../../lib/resourcesList';
+import { LayoutGridAntiAliased } from '../../shared';
 import { AppHeaderClickHandler } from '../types';
 
 export type AppHeaderResourcesSectionProps = {
@@ -48,7 +49,7 @@ export const AppHeaderResourcesSection = React.forwardRef<
   );
 
   return (
-    <LayoutGrid onKeyDown={keyDownEvents} ref={ref} as="ul" p={0}>
+    <LayoutGridAntiAliased onKeyDown={keyDownEvents} ref={ref} as="ul" p={0}>
       {newHeaderResourcesList.map((section) => (
         <StyledColumn size={12} key={section.title} as="li">
           <LayoutGrid>
@@ -124,6 +125,6 @@ export const AppHeaderResourcesSection = React.forwardRef<
           </LayoutGrid>
         </StyledColumn>
       ))}
-    </LayoutGrid>
+    </LayoutGridAntiAliased>
   );
 });

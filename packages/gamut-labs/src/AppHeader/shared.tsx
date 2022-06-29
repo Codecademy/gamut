@@ -1,4 +1,4 @@
-import { Anchor, Text } from '@codecademy/gamut';
+import { Anchor, LayoutGrid, Text } from '@codecademy/gamut';
 import { ArrowChevronDownFilledIcon } from '@codecademy/gamut-icons';
 import { css, pxRem, states } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
@@ -84,3 +84,7 @@ export const StyledDropdown = styled(motion.div)(
     position: `absolute`,
   })
 );
+
+export const LayoutGridAntiAliased = styled(LayoutGrid)`
+  -webkit-font-smoothing: antialiased;
+`;
