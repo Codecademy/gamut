@@ -40,7 +40,7 @@ export const AppHeaderResourcesSection = React.forwardRef<
     subtitle?: string;
   }> = ({ title, subtitle }) => (
     <FlexBox data-focusableresource="true" tabIndex={-1} flexDirection="column">
-      <Text as="h2" variant="title-xs" mb={8} fontWeight={700}>
+      <Text as="h2" variant="title-xs" mb={8} fontWeight={700} pr={16}>
         {title}
       </Text>
       {subtitle && <Text fontSize={14}>{subtitle}</Text>}
@@ -80,42 +80,45 @@ export const AppHeaderResourcesSection = React.forwardRef<
             </Column>
             <Column size={{ xs: 12, md: 8 }}>
               <LayoutGrid pt={32} pb={24} pl={{ _: 16, sm: 64, md: 48 }}>
-                {section.data.map((item) => (
-                  <Column key={item.id} size={{ _: 4 }}>
-                    <Anchor
-                      data-focusableresource="true"
-                      variant="interface"
-                      href={item.href}
-                      onClick={(event) => action(event, item)}
-                      tabIndex={tabIndex}
-                      pb={0}
-                      target={item.newTab ? '_blank' : '_self'}
-                    >
-                      {'description' in item ? (
-                        <>
-                          <FlexBox>
-                            <Text
-                              fontSize={16}
-                              fontWeight="bold"
-                              as="h3"
-                              pb={8}
-                            >
-                              {item.text}
+                {section.data.map((item) => {
+                  const { id, href, text, badge, newTab } = item;
+                  return (
+                    <Column key={id} size={{ _: 4 }}>
+                      <Anchor
+                        data-focusableresource="true"
+                        variant="interface"
+                        href={href}
+                        onClick={(event) => action(event, item)}
+                        tabIndex={tabIndex}
+                        pb={0}
+                        target={newTab ? '_blank' : '_self'}
+                      >
+                        {'description' in item ? (
+                          <>
+                            <FlexBox>
+                              <Text
+                                fontSize={16}
+                                fontWeight="bold"
+                                as="h3"
+                                pb={4}
+                              >
+                                {text}
+                              </Text>
+                              {badge}
+                            </FlexBox>
+                            <Text fontSize={14} pb={24} pr={40}>
+                              {item.description}
                             </Text>
-                            {item.badge!}
-                          </FlexBox>
-                          <Text fontSize={14} pb={24} pr={40}>
-                            {item.description}
+                          </>
+                        ) : (
+                          <Text fontSize={16} pb={8}>
+                            {text}
                           </Text>
-                        </>
-                      ) : (
-                        <Text fontSize={16} pb={8}>
-                          {item.text}
-                        </Text>
-                      )}
-                    </Anchor>
-                  </Column>
-                ))}
+                        )}
+                      </Anchor>
+                    </Column>
+                  );
+                })}
               </LayoutGrid>
             </Column>
           </LayoutGrid>

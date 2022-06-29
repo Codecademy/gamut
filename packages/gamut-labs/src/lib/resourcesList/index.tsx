@@ -26,7 +26,7 @@ export const renderBadge = (text: string) => (
   </Badge>
 );
 
-const newRenderBadge = (text: string) => (
+const renderNewBadge = (text: string) => (
   <Badge size="sm" ml={8} alignSelf="start" variant="yellow">
     {text}
   </Badge>
@@ -258,7 +258,7 @@ export const newHeaderResourcesList: AppHeaderResourcesDataItem[] = [
         description: 'Practice and build your portfolio.',
         trackingTarget: 'topnav_resources_learning_projects',
         type: 'link',
-        badge: newRenderBadge('New'),
+        badge: renderNewBadge('New'),
       },
 
       {

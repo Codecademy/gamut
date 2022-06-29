@@ -42,8 +42,10 @@ export const AppHeaderResourcesDropdown: React.FC<AppHeaderResourceDropdownProps
 
   const [focusIndex, setFocusIndex] = useState(0);
 
-  const items = newHeaderResourcesList.map((item) => item.data);
-  const itemsCount = items.length;
+  const items = newHeaderResourcesList.map((item) => item.data.length);
+  const itemsCount = items.reduce(
+    (prevLength, currLength) => prevLength + currLength
+  );
   const focusFirstItem = () => setFocusIndex(0);
   const focusLastItem = () => setFocusIndex(itemsCount);
 
@@ -204,7 +206,7 @@ export const AppHeaderResourcesDropdown: React.FC<AppHeaderResourceDropdownProps
         style={{
           top: '3.5rem',
           minWidth: '64rem',
-          left: '-14rem',
+          left: '-19.5rem',
         }}
         initial={{ borderWidth: 0, height: 0 }}
         animate={{

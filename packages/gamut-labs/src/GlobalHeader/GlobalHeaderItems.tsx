@@ -88,7 +88,7 @@ export const resourcesDropdown: AppHeaderSimpleDropdownItem = {
 
 export const refreshedResourcesDropdown: AppHeaderResourcesDropdownItem = {
   dataTestId: 'header-resources',
-  icon: BookFlipPageIcon,
+  icon: NotebookIcon,
   id: 'new-resources-dropdown',
   text: 'Resources',
   trackingTarget: 'topnav_resources',
