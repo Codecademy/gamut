@@ -229,6 +229,14 @@ export const BackgroundExample: React.FC<ComponentProps<typeof Background>> = ({
   );
 };
 
+export const SystemColorModeExample = () => {
+  return (
+    <ColorMode mode="system">
+      <ColorModeExampleContents />
+    </ColorMode>
+  );
+};
+
 export const PrefersDarkModeExample = () => {
   const prefersDarkMode = usePrefersDarkMode();
   const mode = prefersDarkMode ? 'dark' : 'light';
