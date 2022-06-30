@@ -12,8 +12,10 @@ import { AppHeaderListItem } from '../../AppHeader/AppHeaderElements/AppHeaderLi
 import { AppHeaderResourceDropdownProps } from '../../AppHeader/AppHeaderElements/AppHeaderResourcesDropdown';
 import { AppHeaderResourcesSection } from '../../AppHeader/AppHeaderElements/AppHeaderResourcesSection';
 import {
+  AppHeaderCatalogDropdownItem,
   AppHeaderClickHandler,
-  AppHeaderItem,
+  AppHeaderDropdownItem,
+  AppHeaderResourcesDropdownItem,
 } from '../../AppHeader/AppHeaderElements/types';
 
 export type AppHeaderSubMenuMobileProps = (
@@ -23,6 +25,11 @@ export type AppHeaderSubMenuMobileProps = (
 ) & {
   handleClose: () => void;
 };
+
+type AppHeaderSectionItem =
+  | AppHeaderDropdownItem
+  | AppHeaderCatalogDropdownItem
+  | AppHeaderResourcesDropdownItem;
 
 const StyledAnchor = styled(Anchor)(
   css({
@@ -34,7 +41,10 @@ const StyledAnchor = styled(Anchor)(
   })
 );
 
-const renderSection = (item: AppHeaderItem, action: AppHeaderClickHandler) => {
+const renderSection = (
+  item: AppHeaderSectionItem,
+  action: AppHeaderClickHandler
+) => {
   switch (item.type) {
     case 'catalog-dropdown':
       return <AppHeaderCatalogSection action={action} item={item} />;

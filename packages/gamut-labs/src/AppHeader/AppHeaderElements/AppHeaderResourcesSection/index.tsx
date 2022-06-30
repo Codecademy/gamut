@@ -54,7 +54,12 @@ export const AppHeaderResourcesSection = React.forwardRef<
         <StyledColumn size={12} key={section.title} as="li">
           <LayoutGrid>
             <Column size={{ xs: 12, md: 3 }}>
-              <Box bg="navy-800" color="blue-0" p={32}>
+              <Box
+                bg="navy-800"
+                color="blue-0"
+                px={{ _: 16, xs: 32, sm: 64, md: 48, lg: 40 }}
+                py={{ _: 16, sm: 32 }}
+              >
                 <DescriptionSection
                   title={section.title}
                   subtitle={section.description}
@@ -80,11 +85,15 @@ export const AppHeaderResourcesSection = React.forwardRef<
               </Box>
             </Column>
             <Column size={{ xs: 12, md: 8 }}>
-              <LayoutGrid pt={32} pb={24} pl={{ _: 16, sm: 64, md: 48 }}>
+              <LayoutGrid
+                pt={32}
+                pb={24}
+                pl={{ _: 16, xs: 32, sm: 64, md: 48 }}
+              >
                 {section.data.map((item) => {
                   const { id, href, text, badge, newTab } = item;
                   return (
-                    <Column key={id} size={{ _: 4 }}>
+                    <Column key={id} size={{ _: 12, lg: 4 }}>
                       <Anchor
                         data-focusableresource="true"
                         variant="interface"
