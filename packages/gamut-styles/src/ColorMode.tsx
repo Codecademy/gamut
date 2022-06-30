@@ -35,7 +35,7 @@ export type ColorModeShape = ColorModeConfig[ColorModes];
 export type ColorAlias = keyof ColorModeShape;
 
 export type ColorModeProps = {
-  mode: ColorModes;
+  mode: ColorModes | 'system';
   bg?: Colors;
 };
 
@@ -112,13 +112,19 @@ export const VariableProvider = styled(
 export const ColorMode = forwardRef<
   HTMLDivElement,
   Omit<ComponentProps<typeof VariableProvider>, 'bg'> & ColorModeProps
->(({ mode, alwaysSetVariables, bg, ...rest }, ref) => {
+>(({ mode: preference, alwaysSetVariables, bg, ...rest }, ref) => {
+  // checks if the user has set 'system' as their color mode preference
+  // then sets the color mode
+  const prefersDarkMode = usePrefersDarkMode();
+  const mode =
+    preference === 'system' ? (prefersDarkMode ? 'light' : 'dark') : preference;
+
   const theme = useTheme();
   const { modes, mode: active, colors } = theme;
   const contextBg = bg ? 'background-current' : undefined;
 
   /** Serialize color variables for the current mode
-   * 1. If all variables are requried add all mode variables to the current context
+   * 1. If all variables are required add all mode variables to the current context
    * 2. If the user has specified a background color - set that color to the current-bg
    * 3. If not
    */
