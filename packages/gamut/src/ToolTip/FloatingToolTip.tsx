@@ -55,7 +55,6 @@ export const FloatingToolTip: React.FC<ToolTipPlacementComponentProps> = ({
     }
   };
 
-  console.log(accessibilityProps);
   return (
     <Box
       position="relative"
@@ -63,7 +62,6 @@ export const FloatingToolTip: React.FC<ToolTipPlacementComponentProps> = ({
       onMouseLeave={(e) => handleShowHideAction(e)}
     >
       <TargetContainer
-        {...accessibilityProps}
         onKeyDown={(e) => escapeKeyPressHandler(e)}
         onFocus={(e) => {
           handleShowHideAction(e);
@@ -73,6 +71,7 @@ export const FloatingToolTip: React.FC<ToolTipPlacementComponentProps> = ({
         }}
         onMouseEnter={(e) => handleShowHideAction(e)}
         ref={ref}
+        {...accessibilityProps}
       >
         {target}
       </TargetContainer>

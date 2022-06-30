@@ -22,22 +22,22 @@ export const InlineToolTip: React.FC<ToolTipPlacementComponentProps> = ({
   return (
     <TooltipWrapper>
       <TargetContainer
-        {...accessibilityProps}
         onKeyDown={(e) => escapeKeyPressHandler(e)}
+        {...accessibilityProps}
       >
         {target}
       </TargetContainer>
       <ToolTipContainer
-        as="div"
         alignment={alignment}
+        aria-live="polite"
+        as="div"
         id={id}
         role="tooltip"
-        aria-live="polite"
       >
         <ToolTipBody
           alignment={alignment.includes('center') ? 'centered' : 'aligned'}
-          minWidth={widthMode === 'unlimited' ? 'initial' : '4rem'}
           color="currentColor"
+          minWidth={widthMode === 'unlimited' ? 'initial' : '4rem'}
         >
           {children}
         </ToolTipBody>
