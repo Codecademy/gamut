@@ -29,7 +29,7 @@ export const FloatingToolTip: React.FC<ToolTipPlacementComponentProps> = ({
     }
   }, []);
 
-  const accessibilityProps = getAccessibilityProps(focusable);
+  const accessibilityProps = getAccessibilityProps({ focusable, id });
   const popoverAlignments = getPopoverAlignment({ alignment });
 
   const handleShowHideAction = (
@@ -55,6 +55,7 @@ export const FloatingToolTip: React.FC<ToolTipPlacementComponentProps> = ({
     }
   };
 
+  console.log(accessibilityProps);
   return (
     <Box
       position="relative"
@@ -62,7 +63,7 @@ export const FloatingToolTip: React.FC<ToolTipPlacementComponentProps> = ({
       onMouseLeave={(e) => handleShowHideAction(e)}
     >
       <TargetContainer
-        aria-labelledby={id}
+        {...accessibilityProps}
         onKeyDown={(e) => escapeKeyPressHandler(e)}
         onFocus={(e) => {
           handleShowHideAction(e);
@@ -72,7 +73,6 @@ export const FloatingToolTip: React.FC<ToolTipPlacementComponentProps> = ({
         }}
         onMouseEnter={(e) => handleShowHideAction(e)}
         ref={ref}
-        {...accessibilityProps}
       >
         {target}
       </TargetContainer>
@@ -81,7 +81,7 @@ export const FloatingToolTip: React.FC<ToolTipPlacementComponentProps> = ({
         animation="fade"
         aria-live="polite"
         horizontalOffset={offset}
-        isOpen
+        isOpen={isOpen}
         outline
         role="tooltip"
         size="sml"

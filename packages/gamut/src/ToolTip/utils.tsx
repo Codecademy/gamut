@@ -82,7 +82,7 @@ export const getAccessibilityProps = ({
   // ToolTips sometimes contain actual <button>s, which cannot be a child of a button.
   // This element still needs tab focus so we must use the `tabIndex=0` hack.
   return {
-    'aria-describedby': id,
+    'aria-labelledby': id,
     role: focusable ? 'button' : undefined,
     tabIndex: focusable ? 0 : undefined,
   };

@@ -22,8 +22,8 @@ export const InlineToolTip: React.FC<ToolTipPlacementComponentProps> = ({
   return (
     <TooltipWrapper>
       <TargetContainer
-        onKeyDown={(e) => escapeKeyPressHandler(e)}
         {...accessibilityProps}
+        onKeyDown={(e) => escapeKeyPressHandler(e)}
       >
         {target}
       </TargetContainer>
