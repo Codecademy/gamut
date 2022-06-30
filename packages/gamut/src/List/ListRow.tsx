@@ -75,7 +75,6 @@ export const ListRow = forwardRef<HTMLLIElement, ListRowProps>(
         variant={variant}
         expanded={!!renderExpanded}
         scrollable={scrollable}
-        onClick={rest?.onClick}
         {...wrapperProps}
       >
         {content}

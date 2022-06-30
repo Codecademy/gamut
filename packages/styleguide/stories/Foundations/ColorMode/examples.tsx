@@ -11,7 +11,6 @@ import {
   IconButton,
   Input,
   Logo,
-  ProLabel,
   Radio,
   RadioGroup,
   StrokeButton,
@@ -26,6 +25,7 @@ import {
   SearchIcon,
   StreakIcon,
 } from '@codecademy/gamut-icons';
+import { ProLabel } from '@codecademy/gamut-labs/src';
 import {
   Background,
   ColorMode,
