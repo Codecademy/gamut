@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { AnimatePresence } from 'framer-motion';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useWindowScroll, useWindowSize } from 'react-use';
 
@@ -137,18 +138,22 @@ export const Popover: React.FC<PopoverProps> = ({
   );
 
   return (
-    <BodyPortal>
-      {skipFocusTrap ? (
-        <>{contents}</>
-      ) : (
-        <FocusTrap
-          allowPageInteraction
-          onClickOutside={handleClickOutside}
-          onEscapeKey={onRequestClose}
-        >
-          {contents}
-        </FocusTrap>
+    <AnimatePresence>
+      {isOpen && targetRef && (
+        <BodyPortal key="popover-portal">
+          {skipFocusTrap ? (
+            <>{contents}</>
+          ) : (
+            <FocusTrap
+              allowPageInteraction
+              onClickOutside={handleClickOutside}
+              onEscapeKey={onRequestClose}
+            >
+              {contents}
+            </FocusTrap>
+          )}
+        </BodyPortal>
       )}
-    </BodyPortal>
+    </AnimatePresence>
   );
 };
