@@ -49,6 +49,18 @@ Here's an example using components in context. By toggling dark mode you can see
 
 <ColorModeExample />
 
+### Usage
+
+```tsx
+import { ColorMode } from '@codecademy/gamut-styles';
+
+const Page = ({ children }) => (
+  <ColorMode mode="light">{children}</ColorMode>;
+);
+```
+
+### `system` Color Mode
+
 You can also provide `ColorMode` with `mode="system"` and it will automatically set the color mode based on the users preference.
 
 <SystemColorModeExample />
@@ -59,7 +71,7 @@ You can also provide `ColorMode` with `mode="system"` and it will automatically 
 import { ColorMode } from '@codecademy/gamut-styles';
 
 const Page = ({ children }) => (
-  <ColorMode mode="light">{children}</ColorMode>;
+  <ColorMode mode="system">{children}</ColorMode>;
 );
 ```
 
