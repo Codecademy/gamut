@@ -1,6 +1,8 @@
 import { PatternProps } from '@codecademy/gamut-patterns';
 import { HTMLAttributes } from 'react';
 
+import { PopoverVariants } from './elements';
+
 export type FocusTrapPopoverProps = {
   /**
    * Called when the Popover requests to be closed,
@@ -30,6 +32,7 @@ export type PopoverBaseProps =
   | SkippedFocusTrapPopoverProps;
 
 export type PopoverProps = PopoverBaseProps &
+  PopoverVariants &
   Pick<HTMLAttributes<HTMLDivElement>, 'role'> & {
     /**
      * Choice of animation - none by default.
@@ -69,10 +72,6 @@ export type PopoverProps = PopoverBaseProps &
      * Pattern component to use as a background.
      */
     pattern?: React.ComponentType<PatternProps>;
-    /**
-     * Large popover vs smaller tooltip-style Popovers
-     */
-    size?: 'sml' | 'lrg';
 
     /**
      * The target element around which the popover will be positioned.

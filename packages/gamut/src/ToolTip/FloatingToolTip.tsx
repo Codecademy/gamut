@@ -83,7 +83,7 @@ export const FloatingToolTip: React.FC<ToolTipPlacementComponentProps> = ({
         isOpen={isOpen}
         outline
         role="tooltip"
-        size="sml"
+        variant="secondary"
         skipFocusTrap
         targetRef={ref}
         widthRestricted={widthMode === 'standard'}

@@ -1,33 +1,9 @@
-import styled from '@emotion/styled';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useWindowScroll, useWindowSize } from 'react-use';
 
 import { FocusTrap } from '../FocusTrap';
 import { Beak, PatternContainer, PopoverPortal, RaisedDiv } from './elements';
 import { PopoverProps } from './types';
-
-// TO - oick from types.tsx
-type StyleProps = {
-  outline?: boolean;
-  position?: 'above' | 'below';
-  beak?: 'right' | 'left';
-  align?: 'right' | 'left';
-  widthRestricted?: boolean;
-};
-
-const transform = {
-  right: 'translateX(-100%)',
-  left: 'translateX(0%)',
-  above: 'translateY(-100%)',
-  below: 'translateY(0%)',
-};
-
-const PopoverContainer = styled.div<StyleProps>`
-  position: fixed;
-  display: flex;
-  transform: ${({ position, align }) =>
-    position && align && `${transform[position]} ${transform[align]}`};
-`;
 
 export const Popover: React.FC<PopoverProps> = ({
   animation,
@@ -43,9 +19,9 @@ export const Popover: React.FC<PopoverProps> = ({
   pattern: Pattern,
   position = 'below',
   role,
-  size = 'lrg',
+  variant,
   targetRef,
-  verticalOffset = size === 'sml' ? 15 : 20,
+  verticalOffset = variant === 'secondary' ? 15 : 20,
   widthRestricted,
 }) => {
   const [targetRect, setTargetRect] = useState<DOMRect>();
@@ -116,17 +92,17 @@ export const Popover: React.FC<PopoverProps> = ({
       tabIndex={-1}
     >
       <RaisedDiv
-        alignment={align.includes('center') ? 'centered' : 'aligned'}
-        size={size}
-        outline={outline}
+        alignment="aligned"
+        outline={outline ? 'outline' : 'boxShadow'}
+        variant={variant}
         widthRestricted={widthRestricted}
       >
         {beak && (
           <Beak
-            outline={outline}
-            beak={`${position}-${beak}${size === 'sml' ? '-sml' : ''}`}
+            outline={outline ? 'outline' : 'boxShadow'}
+            beak={`${position}-${beak}${variant === 'secondary' ? '-sml' : ''}`}
             data-testid="popover-beak"
-            size={size}
+            size={variant === 'secondary' ? 'sml' : 'lrg'}
           />
         )}
         {children}

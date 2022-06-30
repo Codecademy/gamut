@@ -31,7 +31,7 @@ export const getPopoverAlignment = ({
   return popoverAlignment;
 };
 
-export const createStyleFromAlignment = (alignment: string) => {
+export const createToolTipVariantFromAlignment = (alignment: string) => {
   let styleObject = {};
   let styleObjectAfter = {};
 
@@ -57,10 +57,13 @@ export const createStyleFromAlignment = (alignment: string) => {
   return { ...styleObject, '&::after': styleObjectAfter };
 };
 
-export const createVariantsFromAlignments = (array: readonly string[]) => {
+export const createVariantsFromAlignments = (
+  array: readonly string[],
+  composeStyleObjectFunc: (alignment: string) => {}
+) => {
   const variantsObject = Object.fromEntries(
     array.map((alignment) => {
-      const alignmentStyles = createStyleFromAlignment(alignment);
+      const alignmentStyles = composeStyleObjectFunc(alignment);
       return [alignment, alignmentStyles];
     })
   );
