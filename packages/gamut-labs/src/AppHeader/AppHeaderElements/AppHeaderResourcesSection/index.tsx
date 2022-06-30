@@ -53,11 +53,11 @@ export const AppHeaderResourcesSection = React.forwardRef<
       {newHeaderResourcesList.map((section) => (
         <StyledColumn size={12} key={section.title} as="li">
           <LayoutGrid>
-            <Column size={{ xs: 12, md: 3 }}>
+            <Column size={{ xs: 12, lg: 3 }}>
               <Box
                 bg="navy-800"
                 color="blue-0"
-                px={{ _: 16, xs: 32, sm: 64, md: 48, lg: 40 }}
+                px={{ _: 16, xs: 32, sm: 64, lg: 32 }}
                 py={{ _: 16, sm: 32 }}
               >
                 <DescriptionSection
@@ -84,11 +84,11 @@ export const AppHeaderResourcesSection = React.forwardRef<
                 )}
               </Box>
             </Column>
-            <Column size={{ xs: 12, md: 8 }}>
+            <Column size={{ xs: 12, lg: 8 }}>
               <LayoutGrid
                 pt={32}
                 pb={24}
-                pl={{ _: 16, xs: 32, sm: 64, md: 48 }}
+                px={{ _: 16, xs: 32, sm: 64, lg: 32 }}
               >
                 {section.data.map((item) => {
                   const { id, href, text, badge, newTab } = item;
