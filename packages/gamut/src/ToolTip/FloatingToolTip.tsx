@@ -78,17 +78,18 @@ export const FloatingToolTip: React.FC<ToolTipPlacementComponentProps> = ({
       </TargetContainer>
       <Popover
         {...popoverAlignments}
+        animation="fade"
         aria-live="polite"
         horizontalOffset={offset}
-        isOpen={isOpen}
-        skipFocusTrap
+        isOpen
         outline
         role="tooltip"
         size="sml"
+        skipFocusTrap
         targetRef={ref}
         widthRestricted={widthMode === 'standard'}
       >
-        <FlexBox alignItems="flex-start" flexDirection="column">
+        <FlexBox id={id} alignItems="flex-start" flexDirection="column">
           {children}
         </FlexBox>
       </Popover>

@@ -8,7 +8,7 @@ export type FocusTrapPopoverProps = {
    */
   onRequestClose?: () => void;
   /**
-   * Whether to include the focus trap - should only be skipped if parent of Popover is handling focus managment and accessibility (as is the case with PopoverToolTips). This also disables you from being to specify FocusTrap specific event handlers.
+   * Whether to include the focus trap - should only be skipped if parent of Popover is handling focus managment and accessibility (as is the case with FloatingToolTip). This also disables you from being to specify FocusTrap specific event handlers.
    */
   skipFocusTrap?: never;
 };
@@ -20,7 +20,7 @@ export type SkippedFocusTrapPopoverProps = {
    */
   onRequestClose?: never;
   /**
-   * Whether to include the focus trap - should only be skipped if parent of Popover is handling focus managment and accessibility (as is the case with PopoverToolTips). This also disables you from being to specify FocusTrap specific event handlers.
+   * Whether to include the focus trap - should only be skipped if parent of Popover is handling focus managment and accessibility (as is the case with FloatingToolTip). This also disables you from being to specify FocusTrap specific event handlers. tl;dr: use with caution
    */
   skipFocusTrap: true;
 };
@@ -31,6 +31,10 @@ export type PopoverBaseProps =
 
 export type PopoverProps = PopoverBaseProps &
   Pick<HTMLAttributes<HTMLDivElement>, 'role'> & {
+    /**
+     * Choice of animation - none by default.
+     */
+    animation?: 'fade';
     children: React.ReactElement<any>;
     className?: string;
     /**

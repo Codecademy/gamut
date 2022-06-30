@@ -17,12 +17,11 @@ export const InlineToolTip: React.FC<ToolTipPlacementComponentProps> = ({
   target,
   widthMode = tooltipDefaultProps.widthMode,
 }) => {
-  const accessibilityProps = getAccessibilityProps(focusable);
+  const accessibilityProps = getAccessibilityProps({ focusable, id });
 
   return (
     <TooltipWrapper>
       <TargetContainer
-        aria-labelledby={id}
         onKeyDown={(e) => escapeKeyPressHandler(e)}
         {...accessibilityProps}
       >

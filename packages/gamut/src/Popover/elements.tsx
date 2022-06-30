@@ -1,7 +1,15 @@
-import { states, variant } from '@codecademy/gamut-styles';
+import {
+  states,
+  timing,
+  timingValues,
+  variant,
+} from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
+import { AnimatePresence, motion } from 'framer-motion';
+import React from 'react';
 
+import { BodyPortal } from '../BodyPortal';
 import { Box } from '../Box';
 import {
   tooltipArrowHeight,
@@ -9,6 +17,7 @@ import {
   toolTipBodyAlignments,
   toolTipBodyCss,
 } from '../ToolTip/styles';
+import { PopoverProps } from './types';
 
 const outlineState = states({
   outline: {
@@ -196,3 +205,27 @@ export const PatternContainer = styled.div(
     },
   })
 );
+
+export const PopoverPortal: React.FC<
+  Pick<PopoverProps, 'animation' | 'isOpen'>
+> = ({ animation, isOpen, ...rest }) =>
+  animation ? (
+    <AnimatePresence>
+      {isOpen && (
+        <BodyPortal>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{
+              delay: timingValues.fast / 1000,
+              duration: timingValues.fast / 1000,
+            }}
+            {...rest}
+          />
+        </BodyPortal>
+      )}
+    </AnimatePresence>
+  ) : (
+    <BodyPortal {...rest} />
+  );

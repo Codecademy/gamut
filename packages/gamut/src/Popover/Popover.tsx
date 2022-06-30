@@ -1,13 +1,12 @@
 import styled from '@emotion/styled';
-import { AnimatePresence } from 'framer-motion';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useWindowScroll, useWindowSize } from 'react-use';
 
-import { BodyPortal } from '../BodyPortal';
 import { FocusTrap } from '../FocusTrap';
-import { Beak, PatternContainer, RaisedDiv } from './elements';
+import { Beak, PatternContainer, PopoverPortal, RaisedDiv } from './elements';
 import { PopoverProps } from './types';
 
+// TO - oick from types.tsx
 type StyleProps = {
   outline?: boolean;
   position?: 'above' | 'below';
@@ -31,6 +30,7 @@ const PopoverContainer = styled.div<StyleProps>`
 `;
 
 export const Popover: React.FC<PopoverProps> = ({
+  animation,
   align = 'left',
   beak,
   children,
@@ -42,6 +42,7 @@ export const Popover: React.FC<PopoverProps> = ({
   skipFocusTrap,
   pattern: Pattern,
   position = 'below',
+  role,
   size = 'lrg',
   targetRef,
   verticalOffset = size === 'sml' ? 15 : 20,
@@ -101,16 +102,17 @@ export const Popover: React.FC<PopoverProps> = ({
   );
 
   const popoverRef = useRef<HTMLDivElement>(null);
-  if (!isOpen || !targetRef) return null;
+  if ((!isOpen || !targetRef) && !animation) return null;
 
   const contents = (
     <PopoverContainer
-      position={position}
       align={align}
-      ref={popoverRef}
       className={className}
-      style={getPopoverPosition()}
       data-testid="popover-content-container"
+      position={position}
+      ref={popoverRef}
+      role={role}
+      style={getPopoverPosition()}
       tabIndex={-1}
     >
       <RaisedDiv
@@ -138,22 +140,18 @@ export const Popover: React.FC<PopoverProps> = ({
   );
 
   return (
-    <AnimatePresence>
-      {isOpen && targetRef && (
-        <BodyPortal key="popover-portal">
-          {skipFocusTrap ? (
-            <>{contents}</>
-          ) : (
-            <FocusTrap
-              allowPageInteraction
-              onClickOutside={handleClickOutside}
-              onEscapeKey={onRequestClose}
-            >
-              {contents}
-            </FocusTrap>
-          )}
-        </BodyPortal>
+    <PopoverPortal animation={animation} isOpen={Boolean(isOpen && targetRef)}>
+      {skipFocusTrap ? (
+        <>{contents}</>
+      ) : (
+        <FocusTrap
+          allowPageInteraction
+          onClickOutside={handleClickOutside}
+          onEscapeKey={onRequestClose}
+        >
+          {contents}
+        </FocusTrap>
       )}
-    </AnimatePresence>
+    </PopoverPortal>
   );
 };
