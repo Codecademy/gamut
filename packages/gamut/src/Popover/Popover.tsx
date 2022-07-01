@@ -2,7 +2,13 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useWindowScroll, useWindowSize } from 'react-use';
 
 import { FocusTrap } from '../FocusTrap';
-import { Beak, PatternContainer, PopoverPortal, RaisedDiv } from './elements';
+import {
+  Beak,
+  PatternContainer,
+  PopoverContainer,
+  PopoverPortal,
+  RaisedDiv,
+} from './elements';
 import { PopoverProps } from './types';
 
 export const Popover: React.FC<PopoverProps> = ({
