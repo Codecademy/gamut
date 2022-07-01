@@ -41,7 +41,14 @@ export const AppHeaderResourcesSection = React.forwardRef<
     subtitle?: string;
   }> = ({ title, subtitle }) => (
     <FlexBox data-focusableresource="true" tabIndex={-1} flexDirection="column">
-      <Text as="h2" variant="title-xs" mb={8} fontWeight={700} pr={16}>
+      <Text
+        as="h2"
+        variant="title-xs"
+        mb={subtitle ? 8 : 0}
+        fontWeight={700}
+        pr={{ _: 96, md: 16 }}
+        mr={{ _: 96, md: 0 }}
+      >
         {title}
       </Text>
       {subtitle && <Text fontSize={14}>{subtitle}</Text>}
@@ -75,7 +82,7 @@ export const AppHeaderResourcesSection = React.forwardRef<
                       data-focusableresource="true"
                       onClick={(event) => action(event, section.link!)}
                       tabIndex={tabIndex}
-                      mt={section.description ? 24 : 48}
+                      mt={{ _: 8, lg: section.description ? 24 : 48 }}
                       target={section.link.newTab ? '_blank' : '_self'}
                     >
                       {section.link.text}
@@ -86,9 +93,9 @@ export const AppHeaderResourcesSection = React.forwardRef<
             </Column>
             <Column size={{ xs: 12, lg: 8 }}>
               <LayoutGrid
-                pt={32}
-                pb={24}
-                px={{ _: 16, xs: 32, sm: 64, lg: 32 }}
+                pt={{ _: 16, lg: 32 }}
+                pb={{ _: 8, lg: 24 }}
+                pl={{ _: 16, xs: 32, sm: 64, lg: 48 }}
               >
                 {section.data.map((item) => {
                   const { id, href, text, badge, newTab } = item;
