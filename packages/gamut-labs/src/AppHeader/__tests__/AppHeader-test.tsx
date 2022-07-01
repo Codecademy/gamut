@@ -16,6 +16,7 @@ const defaultProps = {
     onSearch: jest.fn(),
     onTrackingClick: jest.fn(),
   },
+  isAnon: true,
 };
 
 const logoProps: AppHeaderProps = {

@@ -23,6 +23,7 @@ import { AppHeaderCatalogDropdownItem, AppHeaderClickHandler } from '../types';
 export type AppHeaderCatalogDropdownProps = {
   action: AppHeaderClickHandler;
   item: AppHeaderCatalogDropdownItem;
+  isAnon: boolean;
 };
 
 export const KEY_CODES = {
@@ -41,6 +42,7 @@ export const KEY_CODES = {
 export const AppHeaderCatalogDropdown: React.FC<AppHeaderCatalogDropdownProps> = ({
   action,
   item,
+  isAnon,
 }) => {
   const { text, dataTestId } = item;
   const containerRef = useRef<HTMLDivElement | null>(null);
@@ -217,7 +219,7 @@ export const AppHeaderCatalogDropdown: React.FC<AppHeaderCatalogDropdownProps> =
         style={{
           top: '3.5rem',
           minWidth: '64rem',
-          left: '-14rem',
+          left: isAnon ? '-9rem' : '-14rem',
         }}
         initial={{ borderWidth: 0, height: 0 }}
         animate={{
