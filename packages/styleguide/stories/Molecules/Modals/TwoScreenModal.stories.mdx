@@ -1,0 +1,38 @@
+import { TwoScreenModal } from '@codecademy/gamut/src';
+import title from '@codecademy/macros/lib/title.macro';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+
+<Meta
+  title={title}
+  component={TwoScreenModal}
+  parameters={{
+    subtitle: `Modal with a continue button and a confirm screen`,
+    status: 'current',
+    source: 'gamut',
+  }}
+  args={{
+    inline: true,
+    isOpen: true,
+    title: 'Hey there',
+    children: 'This is the first screen',
+    secondScreen: 'This is the second screen',
+    secondTitle: 'Second Title',
+    nextCta: { children: 'Next' },
+    confirmCta: { children: 'Finish' },
+    cancelCta: { children: 'Close' },
+  }}
+/>
+
+## Use cases
+
+- Use when a modal has two screens: an initial one and a confirmation one.
+
+### Primary
+
+<Canvas>
+  <Story name="Primary" height="500px">
+    {(args) => {
+      return <TwoScreenModal {...args} />;
+    }}
+  </Story>
+</Canvas>
