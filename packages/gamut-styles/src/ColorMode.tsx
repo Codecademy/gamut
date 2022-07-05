@@ -82,17 +82,19 @@ export function usePrefersDarkMode() {
   const [prefersDarkMode, setPrefersDarkMode] = useState(false);
 
   useEffect(() => {
-    const mq = window.matchMedia('(prefers-color-scheme: dark)');
-
     function onChange(event: MediaQueryListEvent) {
       setPrefersDarkMode(event.matches);
     }
 
-    if (mq && 'addEventListener' in mq) {
-      setPrefersDarkMode(mq.matches);
-      mq.addEventListener('change', onChange);
+    if (window) {
+      const mq = window.matchMedia('(prefers-color-scheme: dark)');
 
-      return () => mq.removeEventListener('change', onChange);
+      if (mq && 'addEventListener' in mq) {
+        setPrefersDarkMode(mq.matches);
+        mq.addEventListener('change', onChange);
+
+        return () => mq.removeEventListener('change', onChange);
+      }
     }
   }, []);
 
