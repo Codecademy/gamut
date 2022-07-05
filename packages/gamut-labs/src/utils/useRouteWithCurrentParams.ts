@@ -1,4 +1,5 @@
 import { ParsedUrlQuery } from 'querystring';
+import { useEffect, useState } from 'react';
 
 import { getUrl } from './url';
 
@@ -10,9 +11,18 @@ export const useRouteWithCurrentParams = (
   newPath: string,
   additionalParams: ParsedUrlQuery = {}
 ) => {
-  const { search } = window.location;
+  const [currentPageUrl, setCurrentPageUrl] = useState('');
 
-  const query = Object.fromEntries(new URLSearchParams(search));
+  useEffect(() => {
+    if (window) {
+      const url = getUrl(newPath, {
+        ...Object.fromEntries(new URLSearchParams(window.location.search)),
+        ...additionalParams,
+      });
 
-  return newPath && getUrl(newPath, { ...query, ...additionalParams });
+      setCurrentPageUrl(url);
+    }
+  }, [additionalParams, newPath]);
+
+  return newPath && currentPageUrl;
 };
