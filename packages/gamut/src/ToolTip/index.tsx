@@ -1,2 +1,2 @@
 export * from './ToolTip';
-export * from './types';
+export { ToolTipProps } from './types';
