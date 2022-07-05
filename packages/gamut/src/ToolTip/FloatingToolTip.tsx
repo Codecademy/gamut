@@ -32,13 +32,11 @@ export const FloatingToolTip: React.FC<ToolTipPlacementComponentProps> = ({
   const accessibilityProps = getAccessibilityProps({ focusable, id });
   const popoverAlignments = getPopoverAlignment({ alignment });
 
-  const handleShowHideAction = (
-    e:
-      | React.FocusEvent<HTMLDivElement, Element>
-      | React.MouseEvent<HTMLDivElement, MouseEvent>
-  ) => {
-    const { type } = e;
-
+  const handleShowHideAction = ({
+    type,
+  }:
+    | React.FocusEvent<HTMLDivElement, Element>
+    | React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     if (type === 'focus' && !isOpen) {
       setIsOpen(true);
       setIsFocused(true);

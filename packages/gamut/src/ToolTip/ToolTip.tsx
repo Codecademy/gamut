@@ -9,12 +9,9 @@ export const ToolTip: React.FC<ToolTipProps> = ({
   placement = tooltipDefaultProps.placement,
   widthMode = tooltipDefaultProps.widthMode,
   ...rest
-}) => {
-  if (placement === 'floating')
-    return (
-      <FloatingToolTip alignment={alignment} widthMode={widthMode} {...rest} />
-    );
-  return (
+}) =>
+  placement === 'floating' ? (
+    <FloatingToolTip alignment={alignment} widthMode={widthMode} {...rest} />
+  ) : (
     <InlineToolTip alignment={alignment} widthMode={widthMode} {...rest} />
   );
-};

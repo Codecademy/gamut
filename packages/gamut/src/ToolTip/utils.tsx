@@ -23,6 +23,7 @@ export const getPopoverAlignment = ({
   };
 
   if (alignment.includes('bottom')) popoverAlignment.position = 'below';
+
   if (alignment.includes('right')) {
     popoverAlignment.align = 'left';
     popoverAlignment.beak = 'left';

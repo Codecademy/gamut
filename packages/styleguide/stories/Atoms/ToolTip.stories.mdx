@@ -47,10 +47,10 @@ Great for surfacing additional information that may or may not be relevant _with
 <Canvas>
   <Story name="ToolTip">
     {(args) => (
-      <Box py={64}>
+      <FlexBox center py={64} m={24}>
         <Text aria-describedby={args.id}> Hello! &nbsp;</Text>
         <ToolTip {...args} target={<InfoCircleIcon size={16} />} />
-      </Box>
+      </FlexBox>
     )}
   </Story>
 </Canvas>
