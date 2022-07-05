@@ -98,7 +98,7 @@ export const Popover: React.FC<PopoverProps> = ({
       tabIndex={-1}
     >
       <RaisedDiv
-        alignment="aligned"
+        alignment={variant === 'primary' || beak ? 'aligned' : undefined}
         outline={outline ? 'outline' : 'boxShadow'}
         variant={variant}
         widthRestricted={widthRestricted}
