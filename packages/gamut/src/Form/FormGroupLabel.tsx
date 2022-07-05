@@ -82,16 +82,14 @@ export const FormGroupLabel: React.FC<FormGroupLabelProps> = ({
         {showRequired ? ' *' : ''}
       </Label>
       {tooltip && (
-        <StyledToolTipContainer>
-          <StyledToolTip
-            alignment="bottom-right"
-            focusable
-            target={
-              <MiniInfoOutlineIcon size="0.8rem" aria-hidden="false" mb={4} />
-            }
-            {...tooltip}
-          />
-        </StyledToolTipContainer>
+        <StyledToolTip
+          alignment="bottom-right"
+          focusable
+          target={
+            <MiniInfoOutlineIcon size="0.8rem" aria-hidden="false" mb={4} />
+          }
+          {...tooltip}
+        />
       )}
     </FlexBox>
   );
