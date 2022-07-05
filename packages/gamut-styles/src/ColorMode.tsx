@@ -86,7 +86,7 @@ export function usePrefersDarkMode() {
       setPrefersDarkMode(event.matches);
     }
 
-    if (window) {
+    if (window && 'matchMedia' in window) {
       const mq = window.matchMedia('(prefers-color-scheme: dark)');
 
       if (mq && 'addEventListener' in mq) {
