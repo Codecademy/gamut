@@ -1,12 +1,5 @@
-import {
-  Anchor,
-  Box,
-  Column,
-  FlexBox,
-  LayoutGrid,
-  Text,
-} from '@codecademy/gamut';
-import { ColorMode, css } from '@codecademy/gamut-styles';
+import { Anchor, Column, FlexBox, LayoutGrid, Text } from '@codecademy/gamut';
+import { Background, css } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React from 'react';
 
@@ -60,8 +53,8 @@ export const AppHeaderResourcesSection = React.forwardRef<
       {newHeaderResourcesList.map((section) => (
         <StyledColumn size={12} key={section.title} as="li">
           <LayoutGrid>
-            <Column size={{ xs: 12, lg: 3 }}>
-              <Box
+            <Column size={{ xs: 12, md: 3 }}>
+              <Background
                 bg="navy-800"
                 color="blue-0"
                 px={{ _: 16, xs: 32, sm: 64, lg: 32 }}
@@ -72,35 +65,29 @@ export const AppHeaderResourcesSection = React.forwardRef<
                   subtitle={section.description}
                 />
                 {section.link && (
-                  <ColorMode mode="dark">
-                    <Anchor
-                      variant="standard"
-                      fontSize={14}
-                      fontWeight={700}
-                      textAlign={{ _: 'center', md: 'left' }}
-                      href={section.link.href}
-                      data-focusableresource="true"
-                      onClick={(event) => action(event, section.link!)}
-                      tabIndex={tabIndex}
-                      mt={{ _: 8, lg: section.description ? 24 : 48 }}
-                      target={section.link.newTab ? '_blank' : '_self'}
-                    >
-                      {section.link.text}
-                    </Anchor>
-                  </ColorMode>
+                  <Anchor
+                    variant="standard"
+                    fontSize={14}
+                    fontWeight={700}
+                    textAlign={{ _: 'center', md: 'left' }}
+                    href={section.link.href}
+                    data-focusableresource="true"
+                    onClick={(event) => action(event, section.link!)}
+                    tabIndex={tabIndex}
+                    mt={section.description ? 24 : 48}
+                    target={section.link.newTab ? '_blank' : '_self'}
+                  >
+                    {section.link.text}
+                  </Anchor>
                 )}
-              </Box>
+              </Background>
             </Column>
-            <Column size={{ xs: 12, lg: 8 }}>
-              <LayoutGrid
-                pt={{ _: 16, lg: 32 }}
-                pb={{ _: 8, lg: 24 }}
-                pl={{ _: 16, xs: 32, sm: 64, lg: 48 }}
-              >
+            <Column size={{ xs: 12, md: 8 }}>
+              <LayoutGrid pt={32} pb={24} pl={{ _: 16, sm: 64, md: 48 }}>
                 {section.data.map((item) => {
                   const { id, href, text, badge, newTab } = item;
                   return (
-                    <Column key={id} size={{ _: 12, lg: 4 }}>
+                    <Column key={id} size={{ _: 4 }}>
                       <Anchor
                         data-focusableresource="true"
                         variant="interface"

@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [32.5.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@32.4.0...@codecademy/gamut-labs@32.5.0) (2022-07-06)
+
+
+### Features
+
+* **GlobalHeader:** refreshed Resources dropdown for desktop ([0464d98](https://github.com/Codecademy/gamut/commit/0464d98d30878ccb95ab738b586ca8bb3be94310))
+
+
+
 ## [32.4.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@32.3.0...@codecademy/gamut-labs@32.4.0) (2022-06-30)
 
 
