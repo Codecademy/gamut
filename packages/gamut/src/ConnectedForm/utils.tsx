@@ -264,7 +264,7 @@ export const useMakeSetFormDirty = () => {
   };
 };
 
-interface debouncedFieldProps
+interface DebouncedFieldProps
   extends GetInitialFormValueProps,
     Pick<useFieldProps, 'loading' | 'disabled' | 'name'> {}
 
@@ -276,7 +276,7 @@ export function useDebouncedField<
   watchUpdateKeyName,
   disabled,
   loading,
-}: debouncedFieldProps) {
+}: DebouncedFieldProps) {
   // TODO: Ask Cass why we re-export some methods from formState
   // that seem like they should not be exported (i.e. register, since we
   // call it ourselves in the fn body)
