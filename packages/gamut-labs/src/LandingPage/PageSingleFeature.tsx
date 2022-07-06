@@ -27,7 +27,6 @@ type ImageProps = {
 type MediaProps =
   | ({
       type: 'image';
-      linkable?: boolean;
       linkUrl?: string;
     } & ImageProps)
   | ({
@@ -40,18 +39,16 @@ type Eyebrow = {
 };
 
 type FeaturedImageProps = ImageProps & {
-  linkable?: boolean;
   linkUrl?: string;
   hideImageOnMobile?: boolean;
 };
 const FeaturedImage: React.FC<FeaturedImageProps> = ({
   src,
   alt,
-  linkable,
   linkUrl,
   hideImageOnMobile,
 }) => {
-  const Container = linkable ? Anchor : Box;
+  const Container = linkUrl ? Anchor : Box;
 
   return (
     <Container
