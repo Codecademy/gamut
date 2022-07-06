@@ -11,6 +11,8 @@ type RenderFavorites = {
   desktop: () => ReactNode;
 };
 
+type RenderBookmarks = () => ReactNode;
+
 type RenderProfile = { desktop: () => ReactNode; mobile: () => ReactNode };
 
 type BaseHeader = {
@@ -21,21 +23,26 @@ type BaseHeader = {
   className?: string;
   hidePricing?: boolean;
   search: AppHeaderSearch;
-  /** initializes Header with search menu expanded open */
-  searchInitiallyOpen?: boolean;
+  renderBookmarks?: RenderBookmarks;
 };
 
 export type User = {
   avatar: string;
   displayName: string;
+  geo?: string;
   isAdmin?: boolean;
   isBusinessAdmin?: boolean;
+  isBusinessSsoUser?: boolean;
   isCustomerSupport?: boolean;
   isAccountManager?: boolean;
   isPaused?: boolean;
   proCheckoutUrl?: string;
   showProUpgrade?: boolean;
   showReferrals?: boolean;
+  hideCareerPaths?: boolean;
+  // TODO: DISC-547 - remove after feature flag test for catalog is complete
+  useNewCatalogDropdown?: boolean;
+  hasNewSkuSubscription?: boolean;
 };
 
 type LoggedInHeader = BaseHeader & {
@@ -51,6 +58,8 @@ export type AnonHeader = BaseHeader & {
   redirectParam?: string;
   type: 'anon';
   variant?: AnonHeaderVariant;
+  // TODO: DISC-547 - remove after feature flag test for catalog is complete
+  user?: User;
 };
 
 export type FreeHeader = LoggedInHeader & {

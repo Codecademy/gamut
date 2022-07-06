@@ -1,4 +1,10 @@
-import { FillButton, TextButton } from '@codecademy/gamut';
+import {
+  Box,
+  ContentContainer,
+  FillButton,
+  FlexBox,
+  TextButton,
+} from '@codecademy/gamut';
 import React, { useState } from 'react';
 
 import { AppHeaderLink } from '../../AppHeader/AppHeaderElements/AppHeaderLink';
@@ -8,6 +14,7 @@ import {
   AppHeaderDropdownItem,
   AppHeaderItem,
 } from '../../AppHeader/AppHeaderElements/types';
+import { login, signUp } from '../../GlobalHeader/GlobalHeaderItems';
 import { AppHeaderSubMenuMobile } from '../AppHeaderSubMenuMobile';
 import { AppHeaderSubMenuTarget } from '../AppHeaderSubMenuTarget';
 import { MobileSearchBar } from './MobileSearchBar';
@@ -16,12 +23,16 @@ export type AppHeaderMainMenuMobileProps = {
   action: AppHeaderClickHandler;
   items: AppHeaderItem[];
   onSearch: (query: string) => void;
+  getItemType: (type: string) => void;
+  isAnon: boolean;
 };
 
 export const AppHeaderMainMenuMobile: React.FC<AppHeaderMainMenuMobileProps> = ({
   action,
   items,
   onSearch,
+  getItemType,
+  isAnon,
 }) => {
   const [subMenuItem, setSubMenuItem] = useState<AppHeaderDropdownItem>();
 
@@ -31,6 +42,7 @@ export const AppHeaderMainMenuMobile: React.FC<AppHeaderMainMenuMobileProps> = (
   ) => {
     action(event, item);
     setSubMenuItem(item);
+    getItemType(item.type);
   };
 
   const closeSubMenu = () => {
@@ -48,6 +60,7 @@ export const AppHeaderMainMenuMobile: React.FC<AppHeaderMainMenuMobileProps> = (
         );
       case 'dropdown':
       case 'profile-dropdown':
+      case 'catalog-dropdown':
         return (
           <AppHeaderSubMenuTarget
             key={item.id}
@@ -93,15 +106,48 @@ export const AppHeaderMainMenuMobile: React.FC<AppHeaderMainMenuMobileProps> = (
       item={subMenuItem}
     />
   ) : (
-    <>
-      <AppHeaderListItem>
-        <MobileSearchBar onSearch={onSearch} />
-      </AppHeaderListItem>
-      {items.map((item) => (
-        <AppHeaderListItem key={item.id}>
-          {mapItemToElement(item, action)}
+    <Box>
+      <ContentContainer>
+        <AppHeaderListItem>
+          <MobileSearchBar onSearch={onSearch} />
         </AppHeaderListItem>
-      ))}
-    </>
+        {items.map((item) => (
+          <AppHeaderListItem key={item.id}>
+            {mapItemToElement(item, action)}
+          </AppHeaderListItem>
+        ))}
+      </ContentContainer>
+
+      {isAnon && (
+        <FlexBox
+          as="li"
+          alignItems="baseline"
+          justifyContent="center"
+          pt={16}
+          borderTop={1}
+          borderColor="navy-300"
+        >
+          <FillButton
+            data-testid={signUp.dataTestId}
+            href={signUp.href}
+            onClick={(event: React.MouseEvent) => action(event, signUp)}
+            key={signUp.id}
+            role="menuitem"
+          >
+            {signUp.text}
+          </FillButton>
+
+          <TextButton
+            key={login.id}
+            data-testid={login.dataTestId}
+            href={login.href}
+            onClick={(event: React.MouseEvent) => action(event, login)}
+            role="menuitem"
+          >
+            {login.text}
+          </TextButton>
+        </FlexBox>
+      )}
+    </Box>
   );
 };

@@ -1,14 +1,23 @@
 import { Anchor, Box } from '@codecademy/gamut';
+import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import React from 'react';
 
-const HeartContainer = styled(Anchor)`
+const heartStyles = css`
   display: inline-block;
   filter: saturate(0.7);
   margin-right: 0.25rem;
   min-width: 1.75em;
   text-align: center;
+`;
+
+const HeartAnchorContainer = styled(Anchor)`
+  ${heartStyles}
   cursor: pointer;
+`;
+
+const HeartContainer = styled.span`
+  ${heartStyles}
 `;
 
 export type MadeInProps = {
@@ -21,26 +30,37 @@ export const MadeIn: React.FC<MadeInProps> = ({ onClick }) => {
   const onNYCClick = () => onClick?.('NYC');
   const onCodecademyClick = () => onClick?.('Codecademy');
 
+  const year = new Date().getFullYear();
+
   return (
     <Box
       display={{ md: 'inline-block' }}
       textAlign={{ _: 'center', md: 'right' }}
     >
-      <Anchor variant="interface" onClick={onMadeClick}>
-        Made
-      </Anchor>{' '}
-      with
-      <HeartContainer variant="interface" onClick={onHeartClick}>
-        ️❤️
-      </HeartContainer>
-      in{' '}
-      <Anchor variant="interface" onClick={onNYCClick}>
-        NYC
-      </Anchor>{' '}
-      ©{` ${new Date().getFullYear()} `}
-      <Anchor variant="interface" onClick={onCodecademyClick}>
-        Codecademy
-      </Anchor>
+      {onClick ? (
+        <>
+          <Anchor variant="interface" onClick={onMadeClick}>
+            Made
+          </Anchor>{' '}
+          with
+          <HeartAnchorContainer variant="interface" onClick={onHeartClick}>
+            ️❤️
+          </HeartAnchorContainer>
+          in{' '}
+          <Anchor variant="interface" onClick={onNYCClick}>
+            NYC
+          </Anchor>{' '}
+          ©{` ${year} `}
+          <Anchor variant="interface" onClick={onCodecademyClick}>
+            Codecademy
+          </Anchor>
+        </>
+      ) : (
+        <>
+          Made with <HeartContainer aria-label="love">❤️</HeartContainer>in NYC
+          © {year} Codecademy
+        </>
+      )}
     </Box>
   );
 };

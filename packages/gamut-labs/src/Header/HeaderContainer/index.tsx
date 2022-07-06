@@ -1,7 +1,9 @@
-import { AppBar, AppBarSection } from '@codecademy/gamut';
 import cx from 'classnames';
 import React from 'react';
 
+import { AppBar } from '../../AppBar';
+import { AppBarSection } from '../../AppBar/AppBarSection';
+// eslint-disable-next-line gamut/no-css-standalone
 import styles from './styles.module.scss';
 
 export type HeaderContainerProps = {

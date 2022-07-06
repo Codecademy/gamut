@@ -2,6 +2,7 @@ import cx from 'classnames';
 import { isNumber, omit } from 'lodash';
 import React, { HTMLAttributes, ReactNode } from 'react';
 
+// eslint-disable-next-line gamut/no-css-standalone
 import styles from './styles/index.module.scss';
 
 const internalProps = [

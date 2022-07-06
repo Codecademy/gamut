@@ -23,6 +23,7 @@ const logoProps: AppHeaderMobileProps = {
     mainMenu: [],
   },
   onSearch: jest.fn(),
+  isAnon: true,
 };
 
 const linkProps: AppHeaderMobileProps = {
@@ -41,6 +42,7 @@ const linkProps: AppHeaderMobileProps = {
     mainMenu: [],
   },
   onSearch: jest.fn(),
+  isAnon: true,
 };
 
 const mainMenuProps: AppHeaderMobileProps = {
@@ -66,6 +68,7 @@ const mainMenuProps: AppHeaderMobileProps = {
     ],
   },
   onSearch: jest.fn(),
+  isAnon: true,
 };
 
 const renderAppHeader = (props: AppHeaderMobileProps) => {

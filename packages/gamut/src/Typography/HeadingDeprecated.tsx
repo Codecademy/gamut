@@ -3,6 +3,7 @@ import React from 'react';
 
 import { ResponsiveProperty } from '../typings/responsive-properties';
 import { generateResponsiveClassnames } from '../utils/generateResponsiveClassnames';
+// eslint-disable-next-line gamut/no-css-standalone
 import styles from './styles/Heading.module.scss';
 import { AllowedStyles } from './types';
 

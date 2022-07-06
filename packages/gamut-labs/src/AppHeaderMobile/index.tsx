@@ -24,7 +24,7 @@ export type AppHeaderMobileProps = {
   notifications?: AppHeaderNotifications;
   redirectParam?: string;
   onSearch: (query: string) => void;
-  searchInitiallyOpen?: boolean;
+  isAnon: boolean;
 };
 
 const StyledOverlay = styled(Overlay)(
@@ -45,6 +45,7 @@ const StyledContentContainer = styled(ContentContainer)(
   css({
     display: `flex`,
     flexDirection: `column`,
+    p: 0,
   })
 );
 
@@ -54,11 +55,10 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
   notifications,
   onSearch,
   redirectParam,
-  searchInitiallyOpen,
+  isAnon,
 }) => {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(
-    !!searchInitiallyOpen
-  );
+  const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
+  const [allowScroll, setAllowScroll] = useState<boolean>(false);
 
   const [notificationsBell, notificationsView] = useHeaderNotifications(
     notifications,
@@ -86,7 +86,14 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
             xs: 'flex',
           }}
         >
-          {mapItemToElement(action, item, redirectParam, undefined, true)}
+          {mapItemToElement(
+            action,
+            item,
+            isAnon,
+            redirectParam,
+            undefined,
+            true
+          )}
         </AppHeaderListItem>
       );
     });
@@ -96,6 +103,14 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
     ...(notificationsBell ? [notificationsBell] : []),
     ...items.right,
   ];
+
+  const onItemType = (type: string) => {
+    if (type === 'catalog-dropdown') {
+      setAllowScroll(true);
+    } else {
+      setAllowScroll(false);
+    }
+  };
 
   return (
     <>
@@ -129,6 +144,7 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
         escapeCloses
         isOpen={mobileMenuOpen}
         onRequestClose={() => setMobileMenuOpen(false)}
+        allowScroll={allowScroll}
       >
         <HeaderHeightArea
           display={{ _: `block`, [appHeaderMobileBreakpoint]: `none` }}
@@ -150,11 +166,13 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
               </AppHeaderListItem>
             </StyledMenuBar>
           </StyledAppBar>
-          <StyledContentContainer as="ul" role="menubar">
+          <StyledContentContainer as="ul" role="menubar" size="small">
             <AppHeaderMainMenuMobile
               action={action}
               items={items.mainMenu}
               onSearch={onSearch}
+              getItemType={onItemType}
+              isAnon={isAnon}
             />
           </StyledContentContainer>
         </HeaderHeightArea>

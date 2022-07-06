@@ -1,13 +1,16 @@
 import { setupRtl } from '@codecademy/gamut-tests';
+import React from 'react';
 
 import { GlobalHeader, GlobalHeaderProps } from '..';
 import {
+  businessSolutions,
+  catalogDropdown,
   communityDropdown,
   courseCatalog,
-  forBusiness,
   login,
   myHome,
   pricingDropdown,
+  pricingLink,
   referrals,
   resourcesDropdown,
   signUp,
@@ -23,6 +26,14 @@ const user: User = {
     'https://www.gravatar.com/avatar/1c959a9a1e2f9f9f1ac06b05cccc1d60?s=150&d=retro',
   displayName: 'Codey',
   showReferrals: true,
+};
+
+const userInExperiment: User = {
+  avatar:
+    'https://www.gravatar.com/avatar/1c959a9a1e2f9f9f1ac06b05cccc1d60?s=150&d=retro',
+  displayName: 'Codey',
+  showReferrals: true,
+  useNewCatalogDropdown: true,
 };
 
 const defaultProps = {
@@ -114,6 +125,13 @@ const loadingHeaderProps: GlobalHeaderProps = {
 
 const renderView = setupRtl(GlobalHeader);
 
+const catalogDropdownTest = (props: GlobalHeaderProps) => {
+  const { view } = renderView(props);
+
+  view.getByText(catalogDropdown().text).click();
+  view.getByText('Explore full catalog →');
+};
+
 describe('GlobalHeader', () => {
   describe('anonymous users', () => {
     it('renders search', () => {
@@ -135,9 +153,20 @@ describe('GlobalHeader', () => {
       expect(logoElements[1]).toBeVisible();
     });
 
-    it('renders courseCatalog', () => {
+    it('renders courseCatalog link when user is not in experiment', () => {
       const { view } = renderView(anonHeaderProps);
-      view.getAllByText(courseCatalog.text);
+      expect(view.getByText(courseCatalog.text).closest('a')).toHaveAttribute(
+        'href',
+        courseCatalog.href
+      );
+    });
+
+    it('renders catalogDropdown when user is in experiment', () => {
+      const props = {
+        ...anonHeaderProps,
+        user: userInExperiment,
+      };
+      catalogDropdownTest(props);
     });
 
     it('renders resourcesDropdown', () => {
@@ -160,9 +189,9 @@ describe('GlobalHeader', () => {
       expect(view.queryByText(pricingDropdown.text)).toBeFalsy();
     });
 
-    it('renders forEnterprise', () => {
+    it('renders business solutions', () => {
       const { view } = renderView(anonHeaderProps);
-      view.getAllByText(forBusiness.text);
+      view.getAllByText(businessSolutions.text);
     });
 
     it('renders login', () => {
@@ -173,6 +202,14 @@ describe('GlobalHeader', () => {
     it('renders signup', () => {
       const { view } = renderView(anonHeaderProps);
       view.getAllByText(signUp.text);
+    });
+
+    it('renders bookmarks if passed in props', () => {
+      const { view } = renderView({
+        ...anonHeaderProps,
+        renderBookmarks: () => <div data-testid="bookmarks" />,
+      });
+      view.getAllByTestId('bookmarks');
     });
   });
 
@@ -192,6 +229,14 @@ describe('GlobalHeader', () => {
         const { view } = renderView(anonLandingHeaderProps);
         expect(view.queryByText(signUp.text)).toBeFalsy();
       });
+
+      it('renders bookmarks if passed in props', () => {
+        const { view } = renderView({
+          ...anonLandingHeaderProps,
+          renderBookmarks: () => <div data-testid="bookmarks" />,
+        });
+        view.getAllByTestId('bookmarks');
+      });
     });
 
     describe('login page', () => {
@@ -208,6 +253,14 @@ describe('GlobalHeader', () => {
       it('renders signup', () => {
         const { view } = renderView(anonLoginHeaderProps);
         view.getAllByText(signUp.text);
+      });
+
+      it('renders bookmarks if passed in props', () => {
+        const { view } = renderView({
+          ...anonLoginHeaderProps,
+          renderBookmarks: () => <div data-testid="bookmarks" />,
+        });
+        view.getAllByTestId('bookmarks');
       });
     });
 
@@ -226,6 +279,14 @@ describe('GlobalHeader', () => {
         const { view } = renderView(anonSignUpHeaderProps);
         expect(view.queryByText(signUp.text)).toBeFalsy();
       });
+
+      it('renders bookmarks if passed in props', () => {
+        const { view } = renderView({
+          ...anonSignUpHeaderProps,
+          renderBookmarks: () => <div data-testid="bookmarks" />,
+        });
+        view.getAllByTestId('bookmarks');
+      });
     });
   });
 
@@ -240,6 +301,14 @@ describe('GlobalHeader', () => {
       view.getAllByTitle('Bell Icon');
     });
 
+    it('renders bookmarks if passed in props', () => {
+      const { view } = renderView({
+        ...freeHeaderProps,
+        renderBookmarks: () => <div data-testid="bookmarks" />,
+      });
+      view.getAllByTestId('bookmarks');
+    });
+
     describe('default', () => {
       it('renders logo', () => {
         const { view } = renderView(freeHeaderProps);
@@ -251,9 +320,20 @@ describe('GlobalHeader', () => {
         view.getAllByText(myHome.text);
       });
 
-      it('renders courseCatalog', () => {
+      it('renders courseCatalog link when user is not in experiment', () => {
         const { view } = renderView(freeHeaderProps);
-        view.getByText(courseCatalog.text);
+        expect(view.getByText(courseCatalog.text).closest('a')).toHaveAttribute(
+          'href',
+          courseCatalog.href
+        );
+      });
+
+      it('renders catalogDropdown when user is in experiment', () => {
+        const props = {
+          ...freeHeaderProps,
+          user: userInExperiment,
+        };
+        catalogDropdownTest(props);
       });
 
       it('renders resourcesDropdown', () => {
@@ -276,9 +356,33 @@ describe('GlobalHeader', () => {
         expect(view.queryByText(pricingDropdown.text)).toBeFalsy();
       });
 
-      it('renders forEnterprise', () => {
+      it('renders pricingLink when user is in India', () => {
+        const { view } = renderView({
+          ...freeHeaderProps,
+          user: {
+            ...freeHeaderProps.user,
+            geo: 'IN',
+          },
+        });
+        const el = view.getByText(pricingLink.text);
+        expect(el.getAttribute('href')).toEqual(pricingLink.href);
+      });
+
+      it('does not render pricingLink when user is not in India', () => {
+        const { view } = renderView({
+          ...freeHeaderProps,
+          user: {
+            ...freeHeaderProps.user,
+            geo: 'US',
+          },
+        });
+        const el = view.getByText(pricingDropdown.text);
+        expect(el.getAttribute('href')).not.toEqual(pricingLink.href);
+      });
+
+      it('renders business solutions', () => {
         const { view } = renderView(freeHeaderProps);
-        view.getByText(forBusiness.text);
+        view.getByText(businessSolutions.text);
       });
 
       it('renders profileDropdown', () => {
@@ -318,6 +422,14 @@ describe('GlobalHeader', () => {
       view.getAllByTitle('Bell Icon');
     });
 
+    it('renders bookmarks if passed in props', () => {
+      const { view } = renderView({
+        ...proHeaderProps,
+        renderBookmarks: () => <div data-testid="bookmarks" />,
+      });
+      view.getAllByTestId('bookmarks');
+    });
+
     describe('default', () => {
       it('renders proLogo', () => {
         const { view } = renderView(proHeaderProps);
@@ -329,9 +441,20 @@ describe('GlobalHeader', () => {
         view.getAllByText(myHome.text);
       });
 
-      it('renders courseCatalog', () => {
+      it('renders courseCatalog link when user is not in experiment', () => {
         const { view } = renderView(proHeaderProps);
-        view.getByText(courseCatalog.text);
+        expect(view.getByText(courseCatalog.text).closest('a')).toHaveAttribute(
+          'href',
+          courseCatalog.href
+        );
+      });
+
+      it('renders catalogDropdown when user is in experiment', () => {
+        const props = {
+          ...proHeaderProps,
+          user: userInExperiment,
+        };
+        catalogDropdownTest(props);
       });
 
       it('renders resourcesDropdown', () => {

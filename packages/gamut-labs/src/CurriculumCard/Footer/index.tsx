@@ -1,6 +1,7 @@
-import { BetaSticker, Box, FlexBox, Text } from '@codecademy/gamut';
+import { Box, FlexBox, Text } from '@codecademy/gamut';
 import React from 'react';
 
+import { BetaSticker } from '../../BetaSticker';
 import { BottomTag, TagColor } from '../BottomTag/index';
 
 export type FooterProps = {
@@ -20,7 +21,7 @@ export const Footer: React.FC<FooterProps> = ({
 }) => {
   if (progressState) {
     return (
-      <div>
+      <Box mt="auto">
         {progressState === 'completed' && (
           <Text fontSize={16} fontFamily="accent" textColor="yellow">
             Completed
@@ -41,7 +42,7 @@ export const Footer: React.FC<FooterProps> = ({
             <Text textColor="hyper">Keep Going</Text>
           </FlexBox>
         )}
-      </div>
+      </Box>
     );
   }
   if (beta) {

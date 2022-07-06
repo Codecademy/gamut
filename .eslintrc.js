@@ -3,7 +3,13 @@ module.exports = {
 
   extends: [require.resolve('@codecademy/eslint-config')],
 
-  plugins: ['local-rules'],
+  plugins: ['eslint-plugin-gamut'],
+
+  rules: {
+    'gamut/prefer-themed': 'error',
+    'gamut/no-css-standalone': 'error',
+    'gamut/import-paths': 'error',
+  },
 
   overrides: [
     {
@@ -13,27 +19,18 @@ module.exports = {
       },
     },
     {
-      files: ['*.tsx'],
-      rules: {
-        'no-restricted-syntax': [
-          'error',
-          {
-            message:
-              "Don't import stylesheets that don't end with `module.scss`, rename them to end with `module.scss` like `style.module.scss`.",
-            selector:
-              'ImportDeclaration[source.value=/^((?!module.scss).)*(.scss)$/]',
-          },
-        ],
-        'local-rules/gamut-import-paths': 'error',
-      },
-    },
-    {
       files: ['**/jest/*'],
       rules: {
         'import/no-extraneous-dependencies': [
           'error',
           { devDependencies: true },
         ],
+      },
+    },
+    {
+      files: ['*.mdx'],
+      rules: {
+        'gamut/import-paths': 'off',
       },
     },
     {

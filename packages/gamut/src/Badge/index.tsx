@@ -21,7 +21,7 @@ const colorVariants = variant({
       textColor: 'background',
     },
     yellow: {
-      bg: 'feedback-warning',
+      bg: 'yellow',
       textColor: 'navy',
     },
     grey: {
@@ -48,7 +48,7 @@ const sizeVariants = variant({
     },
     sm: {
       height: `1rem`,
-      // the powers that be told us this was okay. please don't do this - <3 web-plat
+      // the powers that be told us this was okay. please don't do this. seriously. - <3 web-plat
       fontSize: 10 as any,
     },
   },

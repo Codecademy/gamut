@@ -1,6 +1,7 @@
 const path = require('path');
 
-module.exports = (packageName) => ({
+module.exports = (packageName, overrides) => ({
+  testEnvironment: 'jest-environment-jsdom',
   clearMocks: true,
   verbose: true,
   setupFiles: ['<rootDir>/../../script/jest/base-setup.js'],
@@ -24,6 +25,7 @@ module.exports = (packageName) => ({
       '<rootDir>/../styleguide/.storybook/components$1',
     '^@codecademy\\/storybook-addon-variance(.*)$':
       '<rootDir>/../styleguide/.storybook/addons/system/components$1',
+    '^@codecademy\\/eslint-plugin-gamut$': '<rootDir>/../src',
     '^@codecademy\\/gamut$': '<rootDir>/../gamut/src',
     '^@codecademy\\/gamut-labs$': '<rootDir>/../gamut-labs/src',
     '^@codecademy\\/gamut-styles$': '<rootDir>/../gamut-styles/src',
@@ -66,4 +68,5 @@ module.exports = (packageName) => ({
   coverageReporters: ['json', 'text', 'clover'],
   coverageDirectory: process.env.CI ? '/tmp/test-results/jest' : './coverage',
   collectCoverage: !!process.env.CI,
+  ...overrides,
 });

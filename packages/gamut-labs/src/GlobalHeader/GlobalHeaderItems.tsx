@@ -14,6 +14,7 @@ import {
 import { ReactNode } from 'react';
 
 import {
+  AppHeaderCatalogDropdownItem,
   AppHeaderFillButtonItem,
   AppHeaderLinkItem,
   AppHeaderLogoItem,
@@ -63,6 +64,18 @@ export const courseCatalog: AppHeaderLinkItem = {
   type: 'link',
 };
 
+export const catalogDropdown = (
+  hideCareerPaths?: boolean
+): AppHeaderCatalogDropdownItem => ({
+  dataTestId: 'header-catalog',
+  icon: BookFlipPageIcon,
+  id: 'catalog-dropdown',
+  text: 'Catalog',
+  trackingTarget: 'topnav_catalog_dropdown',
+  type: 'catalog-dropdown',
+  hideCareerPaths,
+});
+
 export const resourcesDropdown: AppHeaderSimpleDropdownItem = {
   icon: NotebookIcon,
   id: 'resources',
@@ -90,7 +103,7 @@ export const communityDropdown: AppHeaderSimpleDropdownItem = {
       href: 'https://discord.com/invite/codecademy',
       newTab: true,
       trackingTarget: 'topnav_chat',
-      text: 'Chat',
+      text: 'Discord',
       type: 'link',
     },
     {
@@ -120,10 +133,19 @@ export const communityDropdown: AppHeaderSimpleDropdownItem = {
   type: 'dropdown',
 };
 
+export const pricingLink: AppHeaderLinkItem = {
+  icon: AccountingCoinsIcon,
+  id: 'pricing',
+  href: '/pricing',
+  text: 'Pricing',
+  trackingTarget: 'topnav_pricing',
+  type: 'link',
+};
+
 export const pricingDropdown: AppHeaderSimpleDropdownItem = {
   icon: AccountingCoinsIcon,
   id: 'pricing',
-  text: 'Pro Pricing',
+  text: 'Pricing',
   popover: [
     {
       id: 'pro-membership',
@@ -139,16 +161,23 @@ export const pricingDropdown: AppHeaderSimpleDropdownItem = {
       text: 'For Students',
       type: 'link',
     },
+    {
+      id: 'for-teams',
+      href: '/business#section-pricing-table',
+      trackingTarget: 'topnav_pricing_business',
+      text: 'For Teams',
+      type: 'link',
+    },
   ],
   trackingTarget: 'topnav_pricing',
   type: 'dropdown',
 };
 
-export const forBusiness: AppHeaderLinkItem = {
+export const businessSolutions: AppHeaderLinkItem = {
   icon: BriefcaseIcon,
-  id: 'for-business',
+  id: 'business-solutions',
   trackingTarget: 'topnav_business',
-  text: 'For Business',
+  text: 'Business Solutions',
   href: '/business',
   type: 'link',
 };
@@ -163,6 +192,16 @@ export const favorites = (
   return {
     id: 'favorites',
     renderElement: renderFavorites,
+    type: 'render-element',
+  };
+};
+
+export const bookmarks = (
+  renderBookmarks: () => ReactNode
+): AppHeaderRenderElementItem => {
+  return {
+    id: 'bookmarks',
+    renderElement: renderBookmarks,
     type: 'render-element',
   };
 };
@@ -251,7 +290,14 @@ export const freeProfile = (
   user: User,
   isMobile?: boolean
 ): AppHeaderProfileDropdownItem => {
-  const topSection = [profileMyProfile, profileAccount, profileMyHome];
+  const topSection = [profileMyProfile];
+
+  if (user.isBusinessAdmin || !user.isBusinessSsoUser) {
+    topSection.push(profileAccount);
+  }
+
+  topSection.push(profileMyHome);
+
   if (!isMobile && user.isAccountManager) {
     topSection.push(profileBusinessAccount);
   }
@@ -272,12 +318,16 @@ export const freeProfile = (
   };
 };
 
-export const proProfile = (
-  user: User,
-  isMobile?: boolean
-): AppHeaderProfileDropdownItem => {
-  const topSection = [profileMyProfile, profileAccount, profileMyHome];
-  if (!isMobile && (user.isAccountManager || user.isBusinessAdmin)) {
+export const proProfile = (user: User): AppHeaderProfileDropdownItem => {
+  const topSection = [profileMyProfile];
+
+  if (user.isBusinessAdmin || !user.isBusinessSsoUser) {
+    topSection.push(profileAccount);
+  }
+
+  topSection.push(profileMyHome);
+
+  if (user?.isAccountManager || user?.isBusinessAdmin) {
     topSection.push(profileBusinessAccount);
   }
   if (user.showReferrals) {

@@ -29,7 +29,7 @@ const optionsIconsArray = [
 
 const renderWrapper = setupEnzyme(SelectDropdown, {
   options: selectOptions,
-  id: 'colors',
+  name: 'colors',
 });
 
 const openDropdown = (wrapper: ReactWrapper) =>

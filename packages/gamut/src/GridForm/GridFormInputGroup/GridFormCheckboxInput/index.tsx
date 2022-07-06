@@ -13,6 +13,7 @@ export const GridFormCheckboxInput: React.FC<GridFormCheckboxInputProps> = ({
   field,
   required,
   disabled,
+  error,
 }) => {
   return (
     <Controller
@@ -20,20 +21,21 @@ export const GridFormCheckboxInput: React.FC<GridFormCheckboxInputProps> = ({
       name={field.name}
       render={({ field: { value, onBlur, onChange, name } }) => (
         <Checkbox
+          aria-invalid={error}
+          aria-required={required}
           checked={value}
           className={className}
           disabled={disabled}
           htmlFor={name}
+          id={field.id}
+          label={field.description}
+          multiline={field.multiline}
           name={name}
+          onBlur={onBlur}
           onChange={(event) => {
             field.onUpdate?.(event.target.checked);
             onChange?.(event.target.checked);
           }}
-          onBlur={onBlur}
-          label={field.description}
-          multiline={field.multiline}
-          id={field.id}
-          aria-required={required}
           spacing={field?.spacing}
         />
       )}

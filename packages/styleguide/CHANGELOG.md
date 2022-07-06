@@ -3,6 +3,675 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [58.1.7](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@58.1.6...@codecademy/styleguide@58.1.7) (2022-06-30)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [58.1.6](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@58.1.5...@codecademy/styleguide@58.1.6) (2022-06-28)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [58.1.5](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@58.1.4...@codecademy/styleguide@58.1.5) (2022-06-27)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [58.1.4](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@58.1.3...@codecademy/styleguide@58.1.4) (2022-06-23)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [58.1.3](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@58.1.2...@codecademy/styleguide@58.1.3) (2022-06-23)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [58.1.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@58.1.1...@codecademy/styleguide@58.1.2) (2022-06-23)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [58.1.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@58.1.0...@codecademy/styleguide@58.1.1) (2022-06-22)
+
+
+### Bug Fixes
+
+* styleguide imports ([eb6ed15](https://github.com/Codecademy/gamut/commit/eb6ed15aaf9a6b5f886f8090162de13316a2b2b0))
+
+
+
+## [58.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@58.0.9...@codecademy/styleguide@58.1.0) (2022-06-22)
+
+
+### Features
+
+* ⏯️ Update landing page image components to be pausable ([d27bf15](https://github.com/Codecademy/gamut/commit/d27bf15f29991dcd73474d01718fa0afd28522c5))
+
+
+
+### [58.0.9](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@58.0.8...@codecademy/styleguide@58.0.9) (2022-06-22)
+
+
+### Bug Fixes
+
+* allow FloatingCard wrapper to have layout modified ([bbb8c74](https://github.com/Codecademy/gamut/commit/bbb8c742c8a1e6e4bd512b816a1b6b5d0281c9f4))
+
+
+
+### [58.0.8](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@58.0.7...@codecademy/styleguide@58.0.8) (2022-06-21)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [58.0.7](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@58.0.6...@codecademy/styleguide@58.0.7) (2022-06-16)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [58.0.6](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@58.0.5...@codecademy/styleguide@58.0.6) (2022-06-16)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [58.0.5](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@58.0.4...@codecademy/styleguide@58.0.5) (2022-06-14)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [58.0.4](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@58.0.3...@codecademy/styleguide@58.0.4) (2022-06-14)
+
+
+### Bug Fixes
+
+* **Popover:** Fix Popover story ([5504e68](https://github.com/Codecademy/gamut/commit/5504e685e46cd579dae9559907e289101abc04b8))
+
+
+
+### [58.0.3](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@58.0.2...@codecademy/styleguide@58.0.3) (2022-06-13)
+
+
+### Bug Fixes
+
+* update PasuableImage button to announce it's label change ([d233fb8](https://github.com/Codecademy/gamut/commit/d233fb858bb9b9eded1c019b2c04131c06e3e877))
+
+
+
+### [58.0.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@58.0.1...@codecademy/styleguide@58.0.2) (2022-06-10)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [58.0.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@58.0.0...@codecademy/styleguide@58.0.1) (2022-06-09)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [58.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@57.7.4...@codecademy/styleguide@58.0.0) (2022-06-08)
+
+
+### ⚠ BREAKING CHANGES
+
+* move components to proper repositories
+
+### Miscellaneous Chores
+
+* move components to proper repositories ([3f68e23](https://github.com/Codecademy/gamut/commit/3f68e234aeb0ce4fcdfe61ccf9c13302d314d01c))
+
+
+
+### [57.7.4](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@57.7.3...@codecademy/styleguide@57.7.4) (2022-06-07)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [57.7.3](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@57.7.2...@codecademy/styleguide@57.7.3) (2022-06-06)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [57.7.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@57.7.1...@codecademy/styleguide@57.7.2) (2022-06-06)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [57.7.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@57.7.0...@codecademy/styleguide@57.7.1) (2022-06-02)
+
+
+### Bug Fixes
+
+* **GlobalHeader:** rename user.newSkuSubscription => user.hasNewSkuSu… ([aec3e05](https://github.com/Codecademy/gamut/commit/aec3e05051db6cc0feeb8f9d0ab2485f902e2632))
+
+
+
+## [57.7.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@57.6.1...@codecademy/styleguide@57.7.0) (2022-06-01)
+
+
+### Features
+
+* **GlobalHeader:** add newSkuSubscription prop to show regular logo … ([5f2b03f](https://github.com/Codecademy/gamut/commit/5f2b03fa05c4dc96670f70ebbe18a7aab00f5f31))
+
+
+
+### [57.6.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@57.6.0...@codecademy/styleguide@57.6.1) (2022-05-24)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [57.6.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@57.5.1...@codecademy/styleguide@57.6.0) (2022-05-23)
+
+
+### Features
+
+* **GlobalHeader:** Rename Chat to Discord ([46d52e4](https://github.com/Codecademy/gamut/commit/46d52e47e473c8c468d116bdcb4d731ca2235e4f))
+
+
+
+### [57.5.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@57.5.0...@codecademy/styleguide@57.5.1) (2022-05-20)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [57.5.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@57.4.1...@codecademy/styleguide@57.5.0) (2022-05-19)
+
+
+### Features
+
+* **CurriculumCard:** added horizontal orientation ([3587be1](https://github.com/Codecademy/gamut/commit/3587be15ab09297474d4872e8c95c225a15003d5))
+
+
+
+### [57.4.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@57.4.0...@codecademy/styleguide@57.4.1) (2022-05-17)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [57.4.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@57.3.0...@codecademy/styleguide@57.4.0) (2022-05-16)
+
+
+### Features
+
+* **SlackIcon:** Added slack icon ([7475714](https://github.com/Codecademy/gamut/commit/747571447b6ad728a89717d3f8b48079ab2be1e3))
+
+
+
+## [57.3.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@57.2.0...@codecademy/styleguide@57.3.0) (2022-05-13)
+
+
+### Features
+
+* Add pricing link option to global header ([18b35ba](https://github.com/Codecademy/gamut/commit/18b35ba009ae1443afac4c56f55c0678169debb5))
+
+
+
+## [57.2.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@57.1.1...@codecademy/styleguide@57.2.0) (2022-05-12)
+
+
+### Features
+
+* **Tab:** add block variant ([e7fca17](https://github.com/Codecademy/gamut/commit/e7fca17b7a4abef1c1ecc0e51292c99ecb39ff43))
+
+
+
+### [57.1.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@57.1.0...@codecademy/styleguide@57.1.1) (2022-05-10)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [57.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@57.0.10...@codecademy/styleguide@57.1.0) (2022-05-09)
+
+
+### Features
+
+* **DataTable + DataGrid:** hideSelectAll, scrollToTopOnUpdate, conditional horizontal scroll shadow, headers overlap fix, docs update ([eb23cbe](https://github.com/Codecademy/gamut/commit/eb23cbe0dd3d12c77aa73f718d27a09fc4e417c1))
+
+
+
+### [57.0.10](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@57.0.9...@codecademy/styleguide@57.0.10) (2022-05-04)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [57.0.9](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@57.0.8...@codecademy/styleguide@57.0.9) (2022-05-04)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [57.0.8](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@57.0.7...@codecademy/styleguide@57.0.8) (2022-05-03)
+
+
+### Bug Fixes
+
+* **Pagination:** fix bad setState call in controlled pagination ([51bdf6d](https://github.com/Codecademy/gamut/commit/51bdf6d22ce1633045ecadcc2f80adb5d24607cb))
+
+
+
+### [57.0.7](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@57.0.6...@codecademy/styleguide@57.0.7) (2022-05-03)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [57.0.6](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@57.0.5...@codecademy/styleguide@57.0.6) (2022-05-02)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [57.0.5](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@57.0.4...@codecademy/styleguide@57.0.5) (2022-04-29)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [57.0.4](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@57.0.3...@codecademy/styleguide@57.0.4) (2022-04-29)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [57.0.3](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@57.0.2...@codecademy/styleguide@57.0.3) (2022-04-29)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [57.0.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@57.0.1...@codecademy/styleguide@57.0.2) (2022-04-29)
+
+
+### Bug Fixes
+
+* **GlobalFooter:** don't display anchors if no click handler ([fc86f29](https://github.com/Codecademy/gamut/commit/fc86f2914957c0802769caba4f2f5586c341937e))
+
+
+
+### [57.0.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@57.0.0...@codecademy/styleguide@57.0.1) (2022-04-26)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [57.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@56.4.12...@codecademy/styleguide@57.0.0) (2022-04-26)
+
+
+### ⚠ BREAKING CHANGES
+
+* **Toggle:** colors,  labels, + elements
+
+### Features
+
+* **Toggle:** colors,  labels, + elements ([2fc160d](https://github.com/Codecademy/gamut/commit/2fc160dae06b718622c14041027a8517f89ac2c4))
+
+
+
+### [56.4.12](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@56.4.11...@codecademy/styleguide@56.4.12) (2022-04-25)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [56.4.11](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@56.4.10...@codecademy/styleguide@56.4.11) (2022-04-25)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [56.4.10](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@56.4.9...@codecademy/styleguide@56.4.10) (2022-04-21)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [56.4.9](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@56.4.8...@codecademy/styleguide@56.4.9) (2022-04-21)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [56.4.8](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@56.4.7...@codecademy/styleguide@56.4.8) (2022-04-21)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [56.4.7](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@56.4.6...@codecademy/styleguide@56.4.7) (2022-04-21)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [56.4.6](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@56.4.5...@codecademy/styleguide@56.4.6) (2022-04-21)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [56.4.5](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@56.4.4...@codecademy/styleguide@56.4.5) (2022-04-20)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [56.4.4](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@56.4.3...@codecademy/styleguide@56.4.4) (2022-04-15)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [56.4.3](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@56.4.2...@codecademy/styleguide@56.4.3) (2022-04-15)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [56.4.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@56.4.1...@codecademy/styleguide@56.4.2) (2022-04-15)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [56.4.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@56.4.0...@codecademy/styleguide@56.4.1) (2022-04-15)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [56.4.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@56.3.0...@codecademy/styleguide@56.4.0) (2022-04-13)
+
+
+### Features
+
+* **SocialMediaSharing:** making SocialMediaSharing responsive to colormode ([591414e](https://github.com/Codecademy/gamut/commit/591414e523b8c4a8fba73e1ee0c380806fe5ff1e))
+
+
+
+## [56.3.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@56.2.4...@codecademy/styleguide@56.3.0) (2022-04-12)
+
+
+### Features
+
+* **HorizontalScrollBar:** added Horizontal Scrollbar component ([f3feaeb](https://github.com/Codecademy/gamut/commit/f3feaeba7fc1342c18db26bcd458009d38da467d))
+
+
+
+### [56.2.4](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@56.2.3...@codecademy/styleguide@56.2.4) (2022-04-12)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [56.2.3](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@56.2.2...@codecademy/styleguide@56.2.3) (2022-04-06)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [56.2.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@56.2.1...@codecademy/styleguide@56.2.2) (2022-04-06)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [56.2.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@56.2.0...@codecademy/styleguide@56.2.1) (2022-04-05)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [56.2.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@56.1.2...@codecademy/styleguide@56.2.0) (2022-04-05)
+
+
+### Features
+
+* **Footer:** new footer ([#2302](https://github.com/Codecademy/gamut/issues/2302)) ([6702a51](https://github.com/Codecademy/gamut/commit/6702a511708c5f21ca65e6d1febc5eb1bd2364a2))
+
+
+
+### [56.1.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@56.1.1...@codecademy/styleguide@56.1.2) (2022-04-04)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [56.1.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@56.1.0...@codecademy/styleguide@56.1.1) (2022-04-01)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [56.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@56.0.3...@codecademy/styleguide@56.1.0) (2022-03-31)
+
+
+### Features
+
+* **AppHeader:** hide projects and challenges in nav variant ([b1427ec](https://github.com/Codecademy/gamut/commit/b1427ec199e86cf751a8743bfc3441e0a1b670b7))
+
+
+
+### [56.0.3](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@56.0.2...@codecademy/styleguide@56.0.3) (2022-03-29)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [56.0.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@56.0.1...@codecademy/styleguide@56.0.2) (2022-03-28)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [56.0.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@56.0.0...@codecademy/styleguide@56.0.1) (2022-03-25)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [56.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@55.4.2...@codecademy/styleguide@56.0.0) (2022-03-25)
+
+
+### ⚠ BREAKING CHANGES
+
+* **eslint-plugin-gamut:** gamut eslint-pkg + add no .scss / themed rules
+
+### Features
+
+* **eslint-plugin-gamut:** gamut eslint-pkg + add no .scss / themed rules ([4be6d9d](https://github.com/Codecademy/gamut/commit/4be6d9ddfbebb8b588f671c5f665d94a5e429384))
+
+
+
+### [55.4.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@55.4.1...@codecademy/styleguide@55.4.2) (2022-03-24)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [55.4.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@55.4.0...@codecademy/styleguide@55.4.1) (2022-03-24)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [55.4.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@55.3.0...@codecademy/styleguide@55.4.0) (2022-03-23)
+
+
+### Features
+
+* **CurriculumCard:** Allowing dynamic difficulty spans ([3c5c9b3](https://github.com/Codecademy/gamut/commit/3c5c9b32b79683406e51f4a4f563643b13172368))
+
+
+
+## [55.3.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@55.2.2...@codecademy/styleguide@55.3.0) (2022-03-22)
+
+
+### Features
+
+* **Alert:**  Add Notice + Feature variants to inline Alert ([972b890](https://github.com/Codecademy/gamut/commit/972b8900bf6f8e2f325bce47c536723cad65c489))
+
+
+
+### [55.2.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@55.2.1...@codecademy/styleguide@55.2.2) (2022-03-22)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [55.2.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@55.2.0...@codecademy/styleguide@55.2.1) (2022-03-21)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [55.2.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@55.1.6...@codecademy/styleguide@55.2.0) (2022-03-17)
+
+
+### Features
+
+* **CurriculumCard:** added new career path card styles ([3efd3ac](https://github.com/Codecademy/gamut/commit/3efd3acd75f4305dce9bd275ee7d9a7d50fa5e9e))
+
+
+
+### [55.1.6](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@55.1.5...@codecademy/styleguide@55.1.6) (2022-03-15)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [55.1.5](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@55.1.4...@codecademy/styleguide@55.1.5) (2022-03-15)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
 ### [55.1.4](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@55.1.3...@codecademy/styleguide@55.1.4) (2022-03-11)
 
 **Note:** Version bump only for package @codecademy/styleguide
