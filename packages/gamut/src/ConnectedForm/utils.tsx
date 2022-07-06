@@ -218,12 +218,17 @@ export const useGetInitialFormValue = ({
   const { getValues, watch } = useFormState();
 
   /**
-   * This ensures that the initialValue here gets updated
-   * whenever the form is saved or updated in some way.
-   * Without this, the "initial" value can persist across updates
-   * meaning that after saving, the value of a user's field can revert back
-   * to the value it had BEFORE you made updates and saved
-   * i.e. from the FIRST initial load.
+   * This ensures that the initialValue can be updated on subsequent re-renders
+   * if necessary according to some larger update.
+   *
+   * For example, imagine a form that gets submitted, but stays on the form page
+   * and should display with the "new" data that the user just saved. The form will
+   * re-render because we re-populate it with the response data from our successful POST
+   * but the original memoized value would appear instead of the "new" initial value.
+   *
+   * This key allows us to watch something like "updatedAt"
+   * so that the initialValue will be re-synced when some larger context
+   * about our form changes.
    */
   const updated = watchUpdateKeyName ? watch(watchUpdateKeyName) : undefined;
 
@@ -266,10 +271,6 @@ interface DebouncedFieldProps
 export function useDebouncedField<
   T extends HTMLInputElement | HTMLTextAreaElement
 >({ name, watchUpdateKeyName, disabled, loading }: DebouncedFieldProps) {
-  // TODO: Ask Cass why we re-export some methods from formState
-  // that seem like they should not be exported (i.e. register, since we
-  // call it ourselves in the fn body)
-  // Should we just re-export all of form state and/or spread it in the return?
   const useFieldPayload = useField({ name, disabled, loading });
 
   // START - Specific to useDebouncedField - START
