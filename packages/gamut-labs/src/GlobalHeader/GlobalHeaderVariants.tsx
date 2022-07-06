@@ -286,6 +286,7 @@ export const proMobileHeaderItems = (
     catalogComponent(user),
     resourcesDropdown,
     communityDropdown,
+    businessSolutions,
     proProfile(user),
   ];
 
