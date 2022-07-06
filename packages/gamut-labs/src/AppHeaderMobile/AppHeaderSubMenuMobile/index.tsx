@@ -75,6 +75,14 @@ export const AppHeaderSubMenuMobile: React.FC<AppHeaderSubMenuMobileProps> = ({
           Menu
         </Text>
       </StyledAnchor>
+      <Text
+        as="h1"
+        fontSize={22}
+        mb={16}
+        ml={{ _: 16, xs: 32, sm: 64, md: 48 }}
+      >
+        {item.type === 'profile-dropdown' ? item.userDisplayName : item.text}
+      </Text>
       {renderSection(item, action)}
     </AppHeaderListItem>
   );
