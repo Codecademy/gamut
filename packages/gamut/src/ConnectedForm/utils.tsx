@@ -283,7 +283,7 @@ export function useSetupDebouncedField<
   // Should we just re-export all of form state and/or spread it in the return?
   const useFieldPayload = useField({ name, disabled, loading });
 
-  // START - Specific to useDebounced - START
+  // START - Specific to useSetupDebounced - START
   const [value, setValue] = useState('');
 
   useGetInitialFormValue({
@@ -299,7 +299,7 @@ export function useSetupDebouncedField<
     setFormDirty();
   };
   const onBlur = () => useFieldPayload.setValue(name, value);
-  // END - Specific to useDebounced - END
+  // END - Specific to useSetupDebounced - END
 
   return {
     ...useFieldPayload,
