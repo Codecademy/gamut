@@ -47,7 +47,7 @@ export const resourcesList: ResourcesList[] = [
     href: '/code-challenges',
     footerTrackingTarget: 'challenges',
     headerTrackingTarget: 'topnav_resources_challenges',
-    text: 'Challenges',
+    text: 'Interview Challenges',
     type: 'link',
   },
   {
