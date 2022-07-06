@@ -23,7 +23,6 @@ import {
   AppHeaderSimpleDropdownItem,
   AppHeaderTextButtonItem,
 } from '../AppHeader/AppHeaderElements/types';
-import { headerCatalogDropdownList } from '../lib/catalogList';
 import { headerResourcesList } from '../lib/resourcesList';
 import { User } from './types';
 
@@ -72,21 +71,19 @@ export const catalogDropdown = (
   icon: BookFlipPageIcon,
   id: 'catalog-dropdown',
   text: 'Catalog',
-  popover: headerCatalogDropdownList(hideCareerPaths),
   trackingTarget: 'topnav_catalog_dropdown',
   type: 'catalog-dropdown',
+  hideCareerPaths,
 });
 
-export const resourcesDropdown = (
-  useNewCatalogDropdown?: boolean
-): AppHeaderSimpleDropdownItem => ({
+export const resourcesDropdown: AppHeaderSimpleDropdownItem = {
   icon: NotebookIcon,
   id: 'resources',
   text: 'Resources',
-  popover: headerResourcesList(useNewCatalogDropdown),
+  popover: headerResourcesList,
   trackingTarget: 'topnav_resources',
   type: 'dropdown',
-});
+};
 
 export const communityDropdown: AppHeaderSimpleDropdownItem = {
   icon: CommunityIcon,
@@ -195,6 +192,16 @@ export const favorites = (
   return {
     id: 'favorites',
     renderElement: renderFavorites,
+    type: 'render-element',
+  };
+};
+
+export const bookmarks = (
+  renderBookmarks: () => ReactNode
+): AppHeaderRenderElementItem => {
+  return {
+    id: 'bookmarks',
+    renderElement: renderBookmarks,
     type: 'render-element',
   };
 };

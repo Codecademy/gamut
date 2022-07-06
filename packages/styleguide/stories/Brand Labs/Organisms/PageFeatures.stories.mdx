@@ -193,3 +193,52 @@ Automatically adjusts to the current Color Mode. No configuration is needed to m
     )}
   </Story>
 </Canvas>
+
+## PausableImage
+
+Automatically adjusts to the current Color Mode. No configuration is needed to meet contrast and design guidelines.
+
+<Canvas>
+  <Story
+    name="PausableImage"
+    args={{
+      featuresMedia: 'image',
+      features: [
+        {
+          imgSrc:
+            '//images.ctfassets.net/go6kr6r0ykrq/2vjTCK9DmJ6BOd5NtFxNIG/e5ced4209aef5241cd581841fa6e2511/learn-css_box-model_06.16.gif',
+          imgAlt: 'learning envuironment demonstration',
+          statText: '45 mil.',
+          title: 'Software Engineer',
+          desc: '**Software Engineer**. Example link [here](#).',
+        },
+        {
+          imgSrc:
+            '//images.ctfassets.net/go6kr6r0ykrq/2vjTCK9DmJ6BOd5NtFxNIG/e5ced4209aef5241cd581841fa6e2511/learn-css_box-model_06.16.gif',
+          imgAlt: 'learning envuironment demonstration',
+          statText: '170',
+          title: 'Data Scientist',
+          desc: '**Data Scientist**. Example link [here](#).',
+        },
+        {
+          imgSrc:
+            '//images.ctfassets.net/go6kr6r0ykrq/2vjTCK9DmJ6BOd5NtFxNIG/e5ced4209aef5241cd581841fa6e2511/learn-css_box-model_06.16.gif',
+          imgAlt: 'learning envuironment demonstration',
+          statText: '200+',
+          title: 'Product Manager',
+          desc: '**Product Manager**. Example link [here](#).',
+        },
+        {
+          imgSrc:
+            '//images.ctfassets.net/go6kr6r0ykrq/2vjTCK9DmJ6BOd5NtFxNIG/e5ced4209aef5241cd581841fa6e2511/learn-css_box-model_06.16.gif',
+          imgAlt: 'learning envuironment demonstration',
+          statText: '100%',
+          title: 'Product Designer',
+          desc: '**Product Designer**. Example link [here](#).',
+        },
+      ],
+    }}
+  >
+    {(args) => <PageFeatures {...args} />}
+  </Story>
+</Canvas>

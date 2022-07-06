@@ -1,7 +1,7 @@
+import { IconButton, TextButton } from '@codecademy/gamut';
 import { Background } from '@codecademy/gamut-styles';
 import { setupEnzyme } from '@codecademy/gamut-tests';
 
-import { IconButton, TextButton } from '../../Button';
 import { Banner, BannerVariant } from '..';
 
 const onClose = jest.fn();

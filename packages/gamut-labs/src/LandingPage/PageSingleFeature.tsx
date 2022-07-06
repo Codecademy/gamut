@@ -9,12 +9,11 @@ import {
 } from '@codecademy/gamut';
 import React from 'react';
 
+import { PausableImage } from '../PausableImage';
 import { CTA } from './CTA';
 import { Description } from './Description';
 import { Title } from './Title';
 import { BaseProps } from './types';
-
-const Image = Box.withComponent('img');
 
 type ColumnSize = Extract<ColumnProps['size'], number>;
 export type MediaColumnsSize = Extract<ColumnSize, 3 | 4 | 5 | 6>;
@@ -122,14 +121,15 @@ export const PageSingleFeature: React.FC<PageSingleFeatureProps> = ({
         alignContent="flex-start"
       >
         {media.type === 'image' && (
-          <Image
-            {...media}
+          <Box
             width={1}
             display={{
               _: hideImageOnMobile ? 'none' : 'initial',
               sm: 'initial',
             }}
-          />
+          >
+            <PausableImage {...media} />
+          </Box>
         )}
         {media.type === 'video' && <Video {...media} />}
       </Column>

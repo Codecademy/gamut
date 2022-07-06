@@ -3,6 +3,71 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [48.0.6](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@48.0.5...@codecademy/gamut@48.0.6) (2022-06-27)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [48.0.5](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@48.0.4...@codecademy/gamut@48.0.5) (2022-06-23)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [48.0.4](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@48.0.3...@codecademy/gamut@48.0.4) (2022-06-22)
+
+
+### Bug Fixes
+
+* allow FloatingCard wrapper to have layout modified ([bbb8c74](https://github.com/Codecademy/gamut/commit/bbb8c742c8a1e6e4bd512b816a1b6b5d0281c9f4))
+
+
+
+### [48.0.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@48.0.2...@codecademy/gamut@48.0.3) (2022-06-16)
+
+
+### Bug Fixes
+
+* **Modal:** add aria-live polite ([bbbd6b8](https://github.com/Codecademy/gamut/commit/bbbd6b872d3f195774ad0ab4564f54ee4a41a870))
+
+
+
+### [48.0.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@48.0.1...@codecademy/gamut@48.0.2) (2022-06-16)
+
+
+### Bug Fixes
+
+* **ListRow:** remove double onClick call ([b48d16e](https://github.com/Codecademy/gamut/commit/b48d16efff2dd80468f9b8146d672d0d85dc6c14))
+
+
+
+### [48.0.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@48.0.0...@codecademy/gamut@48.0.1) (2022-06-13)
+
+
+### Bug Fixes
+
+* TabNavLink not semantically a tab ([ee91094](https://github.com/Codecademy/gamut/commit/ee9109463663143e9926c225dbbf1d170ac62c61))
+
+
+
+## [48.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@47.4.0...@codecademy/gamut@48.0.0) (2022-06-08)
+
+
+### ⚠ BREAKING CHANGES
+
+* move components to proper repositories
+
+### Miscellaneous Chores
+
+* move components to proper repositories ([3f68e23](https://github.com/Codecademy/gamut/commit/3f68e234aeb0ce4fcdfe61ccf9c13302d314d01c))
+
+
+
 ## [47.4.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@47.3.4...@codecademy/gamut@47.4.0) (2022-06-07)
 
 

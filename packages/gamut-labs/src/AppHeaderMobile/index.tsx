@@ -24,6 +24,7 @@ export type AppHeaderMobileProps = {
   notifications?: AppHeaderNotifications;
   redirectParam?: string;
   onSearch: (query: string) => void;
+  isAnon: boolean;
 };
 
 const StyledOverlay = styled(Overlay)(
@@ -54,6 +55,7 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
   notifications,
   onSearch,
   redirectParam,
+  isAnon,
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
   const [allowScroll, setAllowScroll] = useState<boolean>(false);
@@ -84,7 +86,14 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
             xs: 'flex',
           }}
         >
-          {mapItemToElement(action, item, redirectParam, undefined, true)}
+          {mapItemToElement(
+            action,
+            item,
+            isAnon,
+            redirectParam,
+            undefined,
+            true
+          )}
         </AppHeaderListItem>
       );
     });
@@ -163,6 +172,7 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
               items={items.mainMenu}
               onSearch={onSearch}
               getItemType={onItemType}
+              isAnon={isAnon}
             />
           </StyledContentContainer>
         </HeaderHeightArea>

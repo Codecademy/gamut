@@ -172,3 +172,24 @@ Automatically adjusts to the current Color Mode. No configuration is needed to m
     )}
   </Story>
 </Canvas>
+
+## PausableImage
+
+When provided a gif a CTA to allow users to play/pause the gif will be displayed for for better accesbility.
+
+<Canvas>
+  <Story name="PausableImage">
+    {(args) => (
+      <PageSingleFeature
+        {...args}
+        media={{
+          type: 'image',
+          src:
+            '//images.ctfassets.net/go6kr6r0ykrq/2vjTCK9DmJ6BOd5NtFxNIG/e5ced4209aef5241cd581841fa6e2511/learn-css_box-model_06.16.gif',
+          alt: 'learning envuironment demonstration',
+        }}
+        eyebrow="Codecademy"
+      />
+    )}
+  </Story>
+</Canvas>

@@ -6,4 +6,5 @@ export const TabNavLink = styled(TabButton)();
 
 TabNavLink.defaultProps = {
   variant: 'standard',
+  role: 'tab',
 };
