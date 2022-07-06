@@ -35,6 +35,10 @@ export interface ModalProps extends ModalBaseProps {
    * Optional array of multiple screens
    */
   views?: ModalView[];
+  /**
+   * Whether to disable X button at top right of modal
+   */
+  closeDisabled?: boolean;
 }
 
 export const Modal: React.FC<ModalProps> = ({
@@ -48,6 +52,7 @@ export const Modal: React.FC<ModalProps> = ({
   size = 'fluid',
   title,
   views,
+  closeDisabled,
   ...rest
 }) => {
   const buttonRef = useRef<HTMLButtonElement | null>(null);
@@ -88,6 +93,7 @@ export const Modal: React.FC<ModalProps> = ({
             icon={MiniDeleteIcon}
             onClick={onRequestClose}
             gridArea="close"
+            disabled={closeDisabled}
             ref={buttonRef}
           />
         )}
