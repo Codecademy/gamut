@@ -41,7 +41,7 @@ const StyledAnchor = styled(Anchor)(
   })
 );
 
-const renderSection = (
+const renderHeaderSection = (
   item: AppHeaderSectionItem,
   action: AppHeaderClickHandler
 ) => {
@@ -83,7 +83,7 @@ export const AppHeaderSubMenuMobile: React.FC<AppHeaderSubMenuMobileProps> = ({
       >
         {item.type === 'profile-dropdown' ? item.userDisplayName : item.text}
       </Text>
-      {renderSection(item, action)}
+      {renderHeaderSection(item, action)}
     </AppHeaderListItem>
   );
 };

@@ -38,7 +38,6 @@ export const AppHeaderResourcesSection = React.forwardRef<
         as="h2"
         variant="title-xs"
         mb={subtitle ? 8 : 0}
-        fontWeight={700}
         pr={{ _: 96, md: 16 }}
         mr={{ _: 96, md: 0 }}
       >
@@ -87,7 +86,7 @@ export const AppHeaderResourcesSection = React.forwardRef<
                 {section.data.map((item) => {
                   const { id, href, text, badge, newTab } = item;
                   return (
-                    <Column key={id} size={{ _: 4 }}>
+                    <Column key={id} size={{ _: 12, lg: 4 }}>
                       <Anchor
                         data-focusableresource="true"
                         variant="interface"
