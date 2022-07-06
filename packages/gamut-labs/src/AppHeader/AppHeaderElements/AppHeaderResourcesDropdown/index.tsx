@@ -16,6 +16,7 @@ import {
 export type AppHeaderResourceDropdownProps = {
   action: AppHeaderClickHandler;
   item: AppHeaderResourcesDropdownItem;
+  isAnon: Boolean;
 };
 
 export const KEY_CODES = {
@@ -34,6 +35,7 @@ export const KEY_CODES = {
 export const AppHeaderResourcesDropdown: React.FC<AppHeaderResourceDropdownProps> = ({
   action,
   item,
+  isAnon,
 }) => {
   const { text, dataTestId } = item;
   const containerRef = useRef<HTMLDivElement | null>(null);
@@ -206,7 +208,7 @@ export const AppHeaderResourcesDropdown: React.FC<AppHeaderResourceDropdownProps
         style={{
           top: '3.5rem',
           minWidth: '64rem',
-          left: '-19.5rem',
+          left: isAnon ? '-14.5rem' : '-19.5rem',
         }}
         initial={{ borderWidth: 0, height: 0 }}
         animate={{
