@@ -264,11 +264,11 @@ export const useMakeSetFormDirty = () => {
   };
 };
 
-interface SetupDebouncedFieldProps
+interface debouncedFieldProps
   extends GetInitialFormValueProps,
     Pick<useFieldProps, 'loading' | 'disabled' | 'name'> {}
 
-export function useSetupDebouncedField<
+export function useDebouncedField<
   T extends HTMLInputElement | HTMLTextAreaElement
 >({
   name,
@@ -276,14 +276,14 @@ export function useSetupDebouncedField<
   watchUpdateKeyName,
   disabled,
   loading,
-}: SetupDebouncedFieldProps) {
+}: debouncedFieldProps) {
   // TODO: Ask Cass why we re-export some methods from formState
   // that seem like they should not be exported (i.e. register, since we
   // call it ourselves in the fn body)
   // Should we just re-export all of form state and/or spread it in the return?
   const useFieldPayload = useField({ name, disabled, loading });
 
-  // START - Specific to useSetupDebounced - START
+  // START - Specific to useDebouncedField - START
   const [value, setValue] = useState('');
 
   useGetInitialFormValue({
@@ -299,7 +299,7 @@ export function useSetupDebouncedField<
     setFormDirty();
   };
   const onBlur = () => useFieldPayload.setValue(name, value);
-  // END - Specific to useSetupDebounced - END
+  // END - Specific to useDebouncedField - END
 
   return {
     ...useFieldPayload,
