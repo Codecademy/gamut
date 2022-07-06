@@ -78,7 +78,7 @@ export const StyledText = styled(Text)(
 export const StyledDropdown = styled(motion.div)(
   css({
     bg: `background`,
-    borderColor: `secondary`,
+    borderColor: `navy-300`,
     borderStyle: `solid`,
     overflow: `hidden`,
     position: `absolute`,
