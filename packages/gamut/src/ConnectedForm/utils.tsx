@@ -203,14 +203,14 @@ export const useSubmitState = ({ loading, disabled }: SubmitContextProps) => {
 };
 
 interface GetInitialFormValueProps {
-  keyName: string;
+  name: string;
   setValue: (value: string) => void;
   valueFormatter?: (value: string) => string;
   watchUpdateKeyName?: string;
 }
 
 export const useGetInitialFormValue = ({
-  keyName,
+  name,
   setValue,
   valueFormatter,
   watchUpdateKeyName,
@@ -229,8 +229,8 @@ export const useGetInitialFormValue = ({
    */
   const updated = watchUpdateKeyName ? watch(watchUpdateKeyName) : undefined;
 
-  const initialValue: string | null = useMemo(() => getValues(keyName), [
-    keyName,
+  const initialValue: string | null = useMemo(() => getValues(name), [
+    name,
     getValues,
     updated,
   ]);
@@ -264,51 +264,47 @@ export const useMakeSetFormDirty = () => {
   };
 };
 
-interface SetupDebouncedFieldProps extends GetInitialFormValueProps {}
+interface SetupDebouncedFieldProps
+  extends GetInitialFormValueProps,
+    Pick<useFieldProps, 'loading' | 'disabled' | 'name'> {}
 
-const emptyValidations = {};
 export function useSetupDebouncedField<
   T extends HTMLInputElement | HTMLTextAreaElement
->({ keyName, valueFormatter, watchUpdateKeyName }: SetupDebouncedFieldProps) {
+>({
+  name,
+  valueFormatter,
+  watchUpdateKeyName,
+  disabled,
+  loading,
+}: SetupDebouncedFieldProps) {
+  // TODO: Ask Cass why we re-export some methods from formState
+  // that seem like they should not be exported (i.e. register, since we
+  // call it ourselves in the fn body)
+  // Should we just re-export all of form state and/or spread it in the return?
+  const useFieldPayload = useField({ name, disabled, loading });
+
+  // START - Specific to useDebounced - START
   const [value, setValue] = useState('');
 
-  const formState = useFormState();
-  const {
-    errors,
-    register,
-    setValue: setFormValue,
-    validationRules,
-  } = formState;
-
-  useEffect(() => {
-    if (register) {
-      register(keyName);
-    }
-  }, [register, keyName]);
-
   useGetInitialFormValue({
-    keyName,
+    name,
     setValue,
     valueFormatter,
     watchUpdateKeyName,
   });
   const setFormDirty = useMakeSetFormDirty();
 
-  const errorMessage = errors?.[keyName]?.message;
-  const validation = validationRules?.[keyName] || emptyValidations;
-
   const onChange: ChangeEventHandler<T> = (e) => {
     setValue(e.target.value);
     setFormDirty();
   };
-  const onBlur = () => setFormValue(keyName, value);
+  const onBlur = () => useFieldPayload.setValue(name, value);
+  // END - Specific to useDebounced - END
 
   return {
+    ...useFieldPayload,
     onBlur,
     onChange,
-    errorMessage,
     value,
-    validation,
-    formState,
   };
 }
