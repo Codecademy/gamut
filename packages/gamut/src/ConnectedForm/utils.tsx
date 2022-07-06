@@ -204,15 +204,13 @@ export const useSubmitState = ({ loading, disabled }: SubmitContextProps) => {
 
 interface GetInitialFormValueProps {
   name: string;
-  setValue: (value: string) => void;
-  valueFormatter?: (value: string) => string;
+  setLocalValue: (value: string) => void;
   watchUpdateKeyName?: string;
 }
 
 export const useGetInitialFormValue = ({
   name,
-  setValue,
-  valueFormatter,
+  setLocalValue,
   watchUpdateKeyName,
 }: GetInitialFormValueProps) => {
   const initializedRef = useRef(false);
@@ -243,12 +241,9 @@ export const useGetInitialFormValue = ({
        * replacing user entered values on re-renders
        */
       initializedRef.current = true;
-      const formattedVal = valueFormatter
-        ? valueFormatter(initialValue)
-        : initialValue;
-      setValue(formattedVal);
+      setLocalValue(initialValue);
     }
-  }, [valueFormatter, initialValue, setValue]);
+  }, [initialValue, setLocalValue]);
 };
 
 export const useMakeSetFormDirty = () => {
@@ -270,13 +265,7 @@ interface DebouncedFieldProps
 
 export function useDebouncedField<
   T extends HTMLInputElement | HTMLTextAreaElement
->({
-  name,
-  valueFormatter,
-  watchUpdateKeyName,
-  disabled,
-  loading,
-}: DebouncedFieldProps) {
+>({ name, watchUpdateKeyName, disabled, loading }: DebouncedFieldProps) {
   // TODO: Ask Cass why we re-export some methods from formState
   // that seem like they should not be exported (i.e. register, since we
   // call it ourselves in the fn body)
@@ -284,27 +273,28 @@ export function useDebouncedField<
   const useFieldPayload = useField({ name, disabled, loading });
 
   // START - Specific to useDebouncedField - START
-  const [value, setValue] = useState('');
+  const [localValue, setLocalValue] = useState('');
 
   useGetInitialFormValue({
     name,
-    setValue,
-    valueFormatter,
+    setLocalValue,
     watchUpdateKeyName,
   });
+
   const setFormDirty = useMakeSetFormDirty();
 
   const onChange: ChangeEventHandler<T> = (e) => {
-    setValue(e.target.value);
+    setLocalValue(e.target.value);
     setFormDirty();
   };
-  const onBlur = () => useFieldPayload.setValue(name, value);
+  const onBlur = () => useFieldPayload.setValue(name, localValue);
   // END - Specific to useDebouncedField - END
 
+  // Fields we might want to not include: register, setValue (from form)
   return {
     ...useFieldPayload,
     onBlur,
     onChange,
-    value,
+    value: localValue,
   };
 }
