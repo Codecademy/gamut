@@ -1,12 +1,5 @@
-import {
-  Anchor,
-  Box,
-  Column,
-  FlexBox,
-  LayoutGrid,
-  Text,
-} from '@codecademy/gamut';
-import { ColorMode, css } from '@codecademy/gamut-styles';
+import { Anchor, Column, FlexBox, LayoutGrid, Text } from '@codecademy/gamut';
+import { Background, css } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React from 'react';
 
@@ -54,30 +47,28 @@ export const AppHeaderResourcesSection = React.forwardRef<
         <StyledColumn size={12} key={section.title} as="li">
           <LayoutGrid>
             <Column size={{ xs: 12, md: 3 }}>
-              <Box bg="navy-800" color="blue-0" p={32}>
+              <Background bg="navy-800" color="blue-0" p={32}>
                 <DescriptionSection
                   title={section.title}
                   subtitle={section.description}
                 />
                 {section.link && (
-                  <ColorMode mode="dark">
-                    <Anchor
-                      variant="standard"
-                      fontSize={14}
-                      fontWeight={700}
-                      textAlign={{ _: 'center', md: 'left' }}
-                      href={section.link.href}
-                      data-focusableresource="true"
-                      onClick={(event) => action(event, section.link!)}
-                      tabIndex={tabIndex}
-                      mt={section.description ? 24 : 48}
-                      target={section.link.newTab ? '_blank' : '_self'}
-                    >
-                      {section.link.text}
-                    </Anchor>
-                  </ColorMode>
+                  <Anchor
+                    variant="standard"
+                    fontSize={14}
+                    fontWeight={700}
+                    textAlign={{ _: 'center', md: 'left' }}
+                    href={section.link.href}
+                    data-focusableresource="true"
+                    onClick={(event) => action(event, section.link!)}
+                    tabIndex={tabIndex}
+                    mt={section.description ? 24 : 48}
+                    target={section.link.newTab ? '_blank' : '_self'}
+                  >
+                    {section.link.text}
+                  </Anchor>
                 )}
-              </Box>
+              </Background>
             </Column>
             <Column size={{ xs: 12, md: 8 }}>
               <LayoutGrid pt={32} pb={24} pl={{ _: 16, sm: 64, md: 48 }}>
