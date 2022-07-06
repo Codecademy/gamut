@@ -58,7 +58,7 @@ const FeaturedImage: React.FC<FeaturedImageProps> = ({
       }}
       href={linkUrl}
       width={1}
-      tabIndex={0}
+      tabIndex={linkUrl ? 0 : undefined}
     >
       <PausableImage src={src} alt={alt} data-testid="feature-image" />
     </Container>
