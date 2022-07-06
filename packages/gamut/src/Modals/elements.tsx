@@ -39,11 +39,6 @@ const layoutVariant = variant({
       'content content content'
       'cancel confirm confirm'`,
     },
-    twoScreenModal: {
-      gridTemplateAreas: `'title title close'
-      'content content content'
-      'cancel confirm confirm'`,
-    },
   },
 });
 export interface ModalContainerProps
