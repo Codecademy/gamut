@@ -14,6 +14,7 @@ import { AppHeaderDropdown } from './AppHeaderElements/AppHeaderDropdown';
 import { AppHeaderLink } from './AppHeaderElements/AppHeaderLink';
 import { AppHeaderListItem } from './AppHeaderElements/AppHeaderListItem';
 import { AppHeaderLogo } from './AppHeaderElements/AppHeaderLogo';
+import { AppHeaderResourcesDropdown } from './AppHeaderElements/AppHeaderResourcesDropdown';
 import {
   AppHeaderClickHandler,
   AppHeaderItem,
@@ -77,6 +78,14 @@ export const mapItemToElement = (
     case 'catalog-dropdown':
       return (
         <AppHeaderCatalogDropdown action={action} item={item} isAnon={isAnon} />
+      );
+    case 'new-resources-dropdown':
+      return (
+        <AppHeaderResourcesDropdown
+          action={action}
+          item={item}
+          isAnon={isAnon}
+        />
       );
     case 'render-element':
       return item.renderElement();
