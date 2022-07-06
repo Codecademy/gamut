@@ -16,6 +16,7 @@ import {
   topLanguages,
   topSubjects,
 } from '../../../lib/catalogList';
+import { LayoutGridAntiAliased } from '../../shared';
 import {
   AppHeaderCatalogDropdownItem,
   AppHeaderClickHandler,
@@ -132,7 +133,7 @@ export const AppHeaderCatalogSection = React.forwardRef<
   );
 
   return (
-    <LayoutGrid onKeyDown={keyDownEvents} ref={ref} as="ul" p={0}>
+    <LayoutGridAntiAliased onKeyDown={keyDownEvents} ref={ref} as="ul" p={0}>
       {!item.hideCareerPaths && (
         <StyledColumn size={12} key="Top career paths" as="li">
           <LayoutGrid>
@@ -273,6 +274,6 @@ export const AppHeaderCatalogSection = React.forwardRef<
           </Anchor>
         </Box>
       </StyledResponsiveColumn>
-    </LayoutGrid>
+    </LayoutGridAntiAliased>
   );
 });
