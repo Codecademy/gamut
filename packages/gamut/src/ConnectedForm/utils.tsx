@@ -251,6 +251,20 @@ export const useGetInitialFormValue = ({
   }, [initialValue, setLocalValue]);
 };
 
+/**
+ * @remarks
+ * This fn is used to solve a purely UX issue rather than a functional one:
+ * Imagine a user who begins typing in an input but notices that the
+ * dirty state on the form hasn't changed (maybe a "Save" button doesn't light up).
+ * Because we're actually only updating our form onBlur, the dirty state of the form
+ * won't change until onBlur occurs as well, but that's counter-intuitive to users.
+ *
+ * This fn dirties the form as soon as they begin typing
+ * (by being called as part of the onChange fn of the input) by
+ * setting the value to some non-key ('') to a non-undefined / non-null state.
+ *
+ * This is very hacky, but in our testing we couldn't find any problems with it.
+ */
 export const useMakeSetFormDirty = () => {
   const hasDirtiedRef = useRef(false);
 
