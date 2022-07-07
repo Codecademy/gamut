@@ -232,6 +232,9 @@ export const useGetInitialFormValue = ({
    */
   const updated = watchUpdateKeyName ? watch(watchUpdateKeyName) : undefined;
 
+  // For some reason including `updated` trips a lint error about unnecessary deps
+  // but it doesn't throw anything in the editor :shrug:
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const initialValue: string | null = useMemo(() => getValues(name), [
     name,
     getValues,
