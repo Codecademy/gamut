@@ -4,7 +4,7 @@ import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
 import React, { HTMLAttributes } from 'react';
 
-import { FlexBox } from '..';
+import { Box, FlexBox } from '..';
 import { ToolTip, ToolTipProps } from '../ToolTip';
 import { formBaseStyles, formFieldTextDisabledStyles } from './styles';
 
@@ -73,14 +73,16 @@ export const FormGroupLabel: React.FC<FormGroupLabelProps> = ({
         {showRequired ? ' *' : ''}
       </Label>
       {tooltip && (
-        <ToolTip
-          alignment="bottom-right"
-          focusable
-          target={
-            <MiniInfoOutlineIcon size="0.8rem" aria-hidden="false" mb={4} />
-          }
-          {...tooltip}
-        />
+        <Box as="span" position="absolute" left="calc(100% - 1.1rem)">
+          <ToolTip
+            alignment="bottom-right"
+            focusable
+            target={
+              <MiniInfoOutlineIcon size="0.8rem" aria-hidden="false" mb={4} />
+            }
+            {...tooltip}
+          />
+        </Box>
       )}
     </FlexBox>
   );
