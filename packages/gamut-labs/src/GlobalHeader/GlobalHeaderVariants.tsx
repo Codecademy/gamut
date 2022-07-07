@@ -20,6 +20,7 @@ import {
   pricingLink,
   proLogo,
   proProfile,
+  refreshedResourcesDropdown,
   resourcesDropdown,
   signUp,
   tryProForFree,
@@ -32,6 +33,9 @@ const catalogComponent = (user?: User) =>
   user?.useNewCatalogDropdown
     ? catalogDropdown(user?.hideCareerPaths)
     : courseCatalog;
+
+const resourcesComponent = (user?: User) =>
+  user?.useNewCatalogDropdown ? refreshedResourcesDropdown : resourcesDropdown;
 
 // Simplify pricing dropdown to a normal link for users in India
 const pricingComponent = (user?: User) =>
@@ -47,7 +51,7 @@ const anonHeaderItems = (
   const leftItems: AppHeaderItem[] = [
     logo,
     catalogComponent(user),
-    resourcesDropdown,
+    resourcesComponent(user),
     communityDropdown,
     ...(hidePricing ? [] : [pricingComponent(user)]),
     businessSolutions,
@@ -92,7 +96,7 @@ const anonMobileHeaderItems = (
 
   const mainMenuItems: AppHeaderItem[] = [
     catalogComponent(user),
-    resourcesDropdown,
+    resourcesComponent(user),
     communityDropdown,
     ...(hidePricing ? [] : [pricingComponent(user)]),
     businessSolutions,
@@ -179,7 +183,7 @@ export const freeHeaderItems = (
     logo,
     myHome,
     catalogComponent(user),
-    resourcesDropdown,
+    resourcesComponent(user),
     communityDropdown,
     ...(hidePricing ? [] : [pricingComponent(user)]),
     businessSolutions,
@@ -216,7 +220,7 @@ export const freeMobileHeaderItems = (
   const mainMenuItems: AppHeaderItem[] = [
     myHome,
     catalogComponent(user),
-    resourcesDropdown,
+    resourcesComponent(user),
     communityDropdown,
     ...(hidePricing ? [] : [pricingComponent(user)]),
     businessSolutions,
@@ -246,7 +250,7 @@ export const proHeaderItems = (
     user.hasNewSkuSubscription ? logo : proLogo,
     myHome,
     catalogComponent(user),
-    resourcesDropdown,
+    resourcesComponent(user),
     communityDropdown,
   ];
 
@@ -281,7 +285,7 @@ export const proMobileHeaderItems = (
   const mainMenuItems: AppHeaderItem[] = [
     myHome,
     catalogComponent(user),
-    resourcesDropdown,
+    resourcesComponent(user),
     communityDropdown,
     proProfile(user),
   ];
