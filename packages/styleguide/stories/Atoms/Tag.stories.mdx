@@ -1,13 +1,16 @@
-import { Tag } from '@codecademy/gamut';
+import { FlexBox, Tag } from '@codecademy/gamut';
 import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+
+import { TagExample } from './Tag.examples.tsx';
 
 <Meta
   title={title}
   component={Tag}
   parameters={{
-    subtitle: 'Tag Text',
+    subtitle:
+      'Compact, dynamic elements that support user inputs, selections, and actions.',
     source: 'gamut',
     status: 'current',
     design: {
@@ -18,15 +21,31 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
   args={{ children: 'Tag' }}
 />
 
-`Tag` component summary goes here
-
-## Design Principles
-
-Design Principles summary
-
 ## Usage Guidelines
 
-Usage summary
+Tags are compact, dynamic elements that support user inputs, selections, and actions. Tags can either be dismissable individually, or read-only when paired with other controls. Use Tags in designs like Filters.
+
+## Variants
+
+Tags have a ColorModed `default` variant and a `grey` variant as well as a `readonly` variant
+
+<Canvas>
+  <Story name="Tag Variants">
+    {(args) => (
+      <FlexBox center justifyContent="space-around">
+        <Tag {...args} onDismiss={() => null} />
+        <Tag {...args} onDismiss={() => null} variant="grey" />
+        <Tag {...args} readonly /> <Tag {...args} readonly variant="grey" />
+      </FlexBox>
+    )}
+  </Story>
+</Canvas>
+
+## Dissmissable Tags Example
+
+<Canvas>
+  <Story name="Working Example">{() => <TagExample />}</Story>
+</Canvas>
 
 ## Code Playground
 
