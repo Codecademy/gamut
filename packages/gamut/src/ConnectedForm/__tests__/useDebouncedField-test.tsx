@@ -79,15 +79,20 @@ describe('ConnectedForm - useDebouncedField', () => {
     const input = view.getByRole('textbox') as HTMLInputElement;
 
     input.focus();
-    await act(async () => {
-      fireEvent.change(input, { target: { value: 'd' } });
-      fireEvent.change(input, { target: { value: 'do' } });
-      fireEvent.change(input, { target: { value: 'dog' } });
-    });
     expect(mockedSetValue).toHaveBeenCalledTimes(0);
-    input.blur();
+    await act(async () => {
+      fireEvent.change(input, { target: { value: 't' } });
+      fireEvent.change(input, { target: { value: 'ti' } });
+      fireEvent.change(input, { target: { value: 'tif' } });
+      fireEvent.change(input, { target: { value: 'tifa' } });
+    });
+    // Form has been dirtied by changing input
+    expect(mockedSetValue).toHaveBeenCalledTimes(1);
+    expect(mockedSetValue).lastCalledWith('', '', { shouldDirty: true });
 
-    console.log(mockedSetValue.mock.calls);
-    expect(mockedSetValue).toHaveBeenCalledWith('');
+    input.blur();
+    // Now it has finally been called to update the data
+    expect(mockedSetValue).toHaveBeenCalledTimes(2);
+    expect(mockedSetValue).lastCalledWith(mockInputKey, 'tifa');
   });
 });
