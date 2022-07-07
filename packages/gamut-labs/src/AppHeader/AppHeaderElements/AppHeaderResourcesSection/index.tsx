@@ -73,7 +73,7 @@ export const AppHeaderResourcesSection = React.forwardRef<
                     data-focusableresource="true"
                     onClick={(event) => action(event, section.link!)}
                     tabIndex={tabIndex}
-                    mt={section.description ? 24 : 48}
+                    mt={{ _: 24, lg: section.description ? 24 : 48 }}
                     target={section.link.newTab ? '_blank' : '_self'}
                   >
                     {section.link.text}

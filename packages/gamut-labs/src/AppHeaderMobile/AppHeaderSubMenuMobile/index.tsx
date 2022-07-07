@@ -48,7 +48,7 @@ const renderHeaderSection = (
   switch (item.type) {
     case 'catalog-dropdown':
       return <AppHeaderCatalogSection action={action} item={item} />;
-    case 'new-resources-dropdown':
+    case 'experimental-resources-dropdown':
       return <AppHeaderResourcesSection action={action} />;
     default:
       return (
