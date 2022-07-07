@@ -282,7 +282,7 @@ export const useMakeSetFormDirty = () => {
 };
 
 interface DebouncedFieldProps
-  extends GetInitialFormValueProps,
+  extends Omit<GetInitialFormValueProps, 'setLocalValue'>,
     Pick<useFieldProps, 'loading' | 'disabled' | 'name'> {}
 
 export function useDebouncedField<
