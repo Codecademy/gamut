@@ -69,7 +69,7 @@ export interface DismissableTagProps extends BaseTagProps {
 
 export type TagProps = ReadOnlyTagProps | DismissableTagProps;
 
-export const DeleteButton = styled(ButtonBase)(
+const DeleteButton = styled(ButtonBase)(
   variant({
     defaultVariant: 'default',
     base: {
