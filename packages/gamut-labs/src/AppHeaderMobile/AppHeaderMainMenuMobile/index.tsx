@@ -23,7 +23,7 @@ export type AppHeaderMainMenuMobileProps = {
   action: AppHeaderClickHandler;
   items: AppHeaderItem[];
   onSearch: (query: string) => void;
-  getItemType: (type: string) => void;
+  getItemType: (type: string | undefined) => void;
   isAnon: boolean;
 };
 
@@ -47,6 +47,7 @@ export const AppHeaderMainMenuMobile: React.FC<AppHeaderMainMenuMobileProps> = (
 
   const closeSubMenu = () => {
     setSubMenuItem(undefined);
+    getItemType(undefined);
   };
 
   const mapItemToElement = (
