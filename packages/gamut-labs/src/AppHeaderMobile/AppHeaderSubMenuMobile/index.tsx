@@ -9,13 +9,27 @@ import { AppHeaderCatalogSection } from '../../AppHeader/AppHeaderElements/AppHe
 import { AppHeaderDropdownProps } from '../../AppHeader/AppHeaderElements/AppHeaderDropdown';
 import { AppHeaderLinkSections } from '../../AppHeader/AppHeaderElements/AppHeaderLinkSections';
 import { AppHeaderListItem } from '../../AppHeader/AppHeaderElements/AppHeaderListItem';
+import { AppHeaderResourceDropdownProps } from '../../AppHeader/AppHeaderElements/AppHeaderResourcesDropdown';
+import { AppHeaderResourcesSection } from '../../AppHeader/AppHeaderElements/AppHeaderResourcesSection';
+import {
+  AppHeaderCatalogDropdownItem,
+  AppHeaderClickHandler,
+  AppHeaderDropdownItem,
+  AppHeaderResourcesDropdownItem,
+} from '../../AppHeader/AppHeaderElements/types';
 
 export type AppHeaderSubMenuMobileProps = (
   | AppHeaderDropdownProps
   | AppHeaderCatalogDropdownProps
+  | AppHeaderResourceDropdownProps
 ) & {
   handleClose: () => void;
 };
+
+type AppHeaderSectionItem =
+  | AppHeaderDropdownItem
+  | AppHeaderCatalogDropdownItem
+  | AppHeaderResourcesDropdownItem;
 
 const StyledAnchor = styled(Anchor)(
   css({
@@ -26,6 +40,22 @@ const StyledAnchor = styled(Anchor)(
     width: `100%`,
   })
 );
+
+const renderHeaderSection = (
+  item: AppHeaderSectionItem,
+  action: AppHeaderClickHandler
+) => {
+  switch (item.type) {
+    case 'catalog-dropdown':
+      return <AppHeaderCatalogSection action={action} item={item} />;
+    case 'experimental-resources-dropdown':
+      return <AppHeaderResourcesSection action={action} />;
+    default:
+      return (
+        <AppHeaderLinkSections action={action} item={item} showIcon mobile />
+      );
+  }
+};
 
 export const AppHeaderSubMenuMobile: React.FC<AppHeaderSubMenuMobileProps> = ({
   action,
@@ -53,11 +83,7 @@ export const AppHeaderSubMenuMobile: React.FC<AppHeaderSubMenuMobileProps> = ({
       >
         {item.type === 'profile-dropdown' ? item.userDisplayName : item.text}
       </Text>
-      {item.type === 'catalog-dropdown' ? (
-        <AppHeaderCatalogSection action={action} item={item} />
-      ) : (
-        <AppHeaderLinkSections action={action} item={item} showIcon mobile />
-      )}
+      {renderHeaderSection(item, action)}
     </AppHeaderListItem>
   );
 };
