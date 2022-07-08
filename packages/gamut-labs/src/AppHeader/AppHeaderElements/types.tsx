@@ -79,7 +79,7 @@ export type AppHeaderCatalogDropdownItem = AppHeaderBaseItem<'catalog-dropdown'>
   hideCareerPaths?: boolean;
 };
 
-export type AppHeaderResourcesDropdownItem = AppHeaderBaseItem<'new-resources-dropdown'> & {
+export type AppHeaderResourcesDropdownItem = AppHeaderBaseItem<'experimental-resources-dropdown'> & {
   icon?: React.ComponentType<GamutIconProps>;
   text: string;
   trackingTarget: string;
