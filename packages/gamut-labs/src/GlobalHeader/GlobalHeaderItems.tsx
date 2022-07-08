@@ -72,7 +72,7 @@ export const catalogDropdown = (
   icon: BookFlipPageIcon,
   id: 'catalog-dropdown',
   text: 'Catalog',
-  trackingTarget: 'topnav_catalog_dropdown',
+  trackingTarget: 'topnav_catalog',
   type: 'catalog-dropdown',
   hideCareerPaths,
 });
