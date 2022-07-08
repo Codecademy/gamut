@@ -14,6 +14,7 @@ import { AppHeaderDropdown } from './AppHeaderElements/AppHeaderDropdown';
 import { AppHeaderLink } from './AppHeaderElements/AppHeaderLink';
 import { AppHeaderListItem } from './AppHeaderElements/AppHeaderListItem';
 import { AppHeaderLogo } from './AppHeaderElements/AppHeaderLogo';
+import { AppHeaderResourcesDropdown } from './AppHeaderElements/AppHeaderResourcesDropdown';
 import {
   AppHeaderClickHandler,
   AppHeaderItem,
@@ -28,6 +29,7 @@ export type AppHeaderProps = {
   notifications?: AppHeaderNotifications;
   redirectParam?: string;
   search: AppHeaderSearch;
+  isAnon: boolean;
 };
 
 export const StyledAppBar = styled(AppBar)(
@@ -58,6 +60,7 @@ const KEY_CODES = {
 export const mapItemToElement = (
   action: AppHeaderClickHandler,
   item: AppHeaderItem,
+  isAnon: boolean,
   redirectParam?: string,
   onKeyDown?: (event: React.KeyboardEvent) => void,
   mobile = false
@@ -73,7 +76,17 @@ export const mapItemToElement = (
         <AppHeaderDropdown onKeyDown={onKeyDown} action={action} item={item} />
       );
     case 'catalog-dropdown':
-      return <AppHeaderCatalogDropdown action={action} item={item} />;
+      return (
+        <AppHeaderCatalogDropdown action={action} item={item} isAnon={isAnon} />
+      );
+    case 'experimental-resources-dropdown':
+      return (
+        <AppHeaderResourcesDropdown
+          action={action}
+          item={item}
+          isAnon={isAnon}
+        />
+      );
     case 'render-element':
       return item.renderElement();
     case 'text-button':
@@ -121,6 +134,7 @@ export const AppHeader: React.FC<AppHeaderProps> = ({
   notifications,
   redirectParam,
   search,
+  isAnon,
 }) => {
   const menuContainerRef = useRef<HTMLUListElement>(null);
 
@@ -229,7 +243,7 @@ export const AppHeader: React.FC<AppHeaderProps> = ({
         onFocus={() => setIsFocused(true)}
         onBlur={() => setIsFocused(false)}
       >
-        {mapItemToElement(action, item, redirectParam)}
+        {mapItemToElement(action, item, isAnon, redirectParam)}
       </AppHeaderListItem>
     ));
   };

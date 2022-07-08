@@ -7,7 +7,9 @@ export type AppHeaderItem =
   | AppHeaderSimpleDropdownItem
   | AppHeaderProfileDropdownItem
   | AppHeaderRenderElementItem
-  | AppHeaderCatalogDropdownItem;
+  | AppHeaderCatalogDropdownItem
+  | AppHeaderDescriptiveLinkItem
+  | AppHeaderResourcesDropdownItem;
 
 export type AppHeaderItemWithHref =
   | AppHeaderLogoItem
@@ -77,6 +79,13 @@ export type AppHeaderCatalogDropdownItem = AppHeaderBaseItem<'catalog-dropdown'>
   hideCareerPaths?: boolean;
 };
 
+export type AppHeaderResourcesDropdownItem = AppHeaderBaseItem<'experimental-resources-dropdown'> & {
+  icon?: React.ComponentType<GamutIconProps>;
+  text: string;
+  trackingTarget: string;
+  hideCareerPaths?: boolean;
+};
+
 export type AppHeaderClickHandler<ItemType = AppHeaderItem> = (
   event: React.MouseEvent,
   item: ItemType
@@ -85,3 +94,14 @@ export type AppHeaderClickHandler<ItemType = AppHeaderItem> = (
 export const isAppHeaderItemWithHref = (
   item: AppHeaderItem
 ): item is AppHeaderItemWithHref => !!(item as AppHeaderItemWithHref).href;
+
+export type AppHeaderDescriptiveLinkItem = AppHeaderLinkItem & {
+  description: string;
+};
+
+export type AppHeaderResourcesDataItem = {
+  title: string;
+  description?: string;
+  link?: AppHeaderLinkItem;
+  data: (AppHeaderLinkItem | AppHeaderDescriptiveLinkItem)[];
+};

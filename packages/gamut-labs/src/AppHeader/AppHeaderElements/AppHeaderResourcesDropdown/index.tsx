@@ -1,29 +1,22 @@
-import React, {
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 
-import {
-  careerPaths,
-  topLanguages,
-  topSubjects,
-} from '../../../lib/catalogList';
+import { newHeaderResourcesList } from '../../../lib/resourcesList';
 import {
   DropdownAnchor,
   DropdownIcon,
   StyledDropdown,
   StyledText,
 } from '../../shared';
-import { AppHeaderCatalogSection } from '../AppHeaderCatalogSection';
-import { AppHeaderCatalogDropdownItem, AppHeaderClickHandler } from '../types';
+import { AppHeaderResourcesSection } from '../AppHeaderResourcesSection';
+import {
+  AppHeaderClickHandler,
+  AppHeaderResourcesDropdownItem,
+} from '../types';
 
-export type AppHeaderCatalogDropdownProps = {
+export type AppHeaderResourceDropdownProps = {
   action: AppHeaderClickHandler;
-  item: AppHeaderCatalogDropdownItem;
-  isAnon: boolean;
+  item: AppHeaderResourcesDropdownItem;
+  isAnon: Boolean;
 };
 
 export const KEY_CODES = {
@@ -39,7 +32,7 @@ export const KEY_CODES = {
   TAB: 'Tab',
 } as const;
 
-export const AppHeaderCatalogDropdown: React.FC<AppHeaderCatalogDropdownProps> = ({
+export const AppHeaderResourcesDropdown: React.FC<AppHeaderResourceDropdownProps> = ({
   action,
   item,
   isAnon,
@@ -51,16 +44,12 @@ export const AppHeaderCatalogDropdown: React.FC<AppHeaderCatalogDropdownProps> =
 
   const [focusIndex, setFocusIndex] = useState(0);
 
+  const items = newHeaderResourcesList.map((item) => item.data.length);
+  const itemsCount = items.reduce(
+    (prevLength, currLength) => prevLength + currLength
+  );
   const focusFirstItem = () => setFocusIndex(0);
   const focusLastItem = () => setFocusIndex(itemsCount);
-
-  const itemsCount = useMemo(() => {
-    const languageAndSubjectCount =
-      topLanguages.length + topSubjects.length + 4; // extra two for hard coded headers
-    return item.hideCareerPaths
-      ? languageAndSubjectCount
-      : languageAndSubjectCount + careerPaths.length;
-  }, [item]);
 
   const focusNextItem = () => {
     if (focusIndex === itemsCount) {
@@ -80,7 +69,7 @@ export const AppHeaderCatalogDropdown: React.FC<AppHeaderCatalogDropdownProps> =
 
   const getNode = (index: number) => {
     return containerRef.current?.querySelectorAll<HTMLElement>(
-      '[data-focusablecatalog=true]'
+      '[data-focusableresource=true]'
     )[index];
   };
 
@@ -219,7 +208,7 @@ export const AppHeaderCatalogDropdown: React.FC<AppHeaderCatalogDropdownProps> =
         style={{
           top: '3.5rem',
           minWidth: '64rem',
-          left: isAnon ? '-9rem' : '-14rem',
+          left: isAnon ? '-14.5rem' : '-19.5rem',
         }}
         initial={{ borderWidth: 0, height: 0 }}
         animate={{
@@ -228,11 +217,10 @@ export const AppHeaderCatalogDropdown: React.FC<AppHeaderCatalogDropdownProps> =
         }}
         transition={{ duration: 0.175 }}
         aria-hidden={!isOpen}
-        data-testid="catalog-menu-dropdown"
+        data-testid="resources-menu-dropdown"
       >
-        <AppHeaderCatalogSection
+        <AppHeaderResourcesSection
           action={action}
-          item={item}
           role="menu"
           ref={containerRef}
           keyDownEvents={menuHandleKeyEvents}

@@ -3,6 +3,41 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [32.6.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@32.5.1...@codecademy/gamut-labs@32.6.0) (2022-07-08)
+
+
+### Features
+
+* **GlobalHeader:** Mobile Resources menu ([b48c681](https://github.com/Codecademy/gamut/commit/b48c68179bc06913756f549b74080b8cd7959de5))
+
+
+
+### [32.5.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@32.5.0...@codecademy/gamut-labs@32.5.1) (2022-07-06)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+## [32.5.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@32.4.0...@codecademy/gamut-labs@32.5.0) (2022-07-06)
+
+
+### Features
+
+* **GlobalHeader:** refreshed Resources dropdown for desktop ([0464d98](https://github.com/Codecademy/gamut/commit/0464d98d30878ccb95ab738b586ca8bb3be94310))
+
+
+
+## [32.4.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@32.3.0...@codecademy/gamut-labs@32.4.0) (2022-06-30)
+
+
+### Features
+
+* **GlobalHeader:** Update mobile styling for Catalog dropdown v2 ([685163d](https://github.com/Codecademy/gamut/commit/685163d1a3394c627e9d53ac328b529619dbe87c))
+
+
+
 ## [32.3.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@32.2.3...@codecademy/gamut-labs@32.3.0) (2022-06-27)
 
 
