@@ -3,9 +3,7 @@ import { fireEvent } from '@testing-library/dom';
 import React from 'react';
 import { act } from 'react-dom/test-utils';
 
-// import { useFormContext } from 'react-hook-form';
 import { ConnectedForm, Input, useDebouncedField, useFormState } from '../..';
-import { createPromise } from '../../utils';
 
 const mockedSetValue = jest.fn();
 
@@ -23,8 +21,6 @@ jest.mock('react-hook-form', () => {
   };
 });
 
-const api = createPromise<Record<string, string>>();
-const onSubmit = async (values: {}) => api.resolve(values);
 const mockInputKey = 'final-fantasy-vii';
 const mockDefaultValue = 'is your tv screen big enough?';
 const mockChangeValue =
@@ -33,7 +29,7 @@ const mockChangeKey = 'remake intergrade';
 
 const FormWrapper: React.FC = ({ children }) => (
   <ConnectedForm
-    onSubmit={onSubmit}
+    onSubmit={() => null}
     defaultValues={{
       [mockInputKey]: mockDefaultValue,
       [mockChangeKey]:
