@@ -213,8 +213,6 @@ export const useGetInitialFormValue = ({
   setLocalValue,
   watchUpdateKeyName,
 }: GetInitialFormValueProps) => {
-  const initializedRef = useRef(false);
-
   const { getValues, watch } = useFormState();
 
   /**
@@ -242,13 +240,7 @@ export const useGetInitialFormValue = ({
   ]);
 
   useEffect(() => {
-    if (initialValue && !initializedRef.current) {
-      /**
-       * We only want this effect to run once, to set an initial value if one exists.
-       * If it continues to run, we run into issues with things like old, memoized values
-       * replacing user entered values on re-renders
-       */
-      initializedRef.current = true;
+    if (initialValue) {
       setLocalValue(initialValue);
     }
   }, [initialValue, setLocalValue]);

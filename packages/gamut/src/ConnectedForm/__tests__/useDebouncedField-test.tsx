@@ -4,7 +4,7 @@ import React from 'react';
 import { act } from 'react-dom/test-utils';
 
 // import { useFormContext } from 'react-hook-form';
-import { ConnectedForm, Input, SubmitButton, useDebouncedField } from '../..';
+import { ConnectedForm, Input, useDebouncedField, useFormState } from '../..';
 import { createPromise } from '../../utils';
 
 const mockedSetValue = jest.fn();
@@ -29,18 +29,35 @@ const mockInputKey = 'final-fantasy-vii';
 const mockDefaultValue = 'is your tv screen big enough?';
 const mockChangeValue =
   'A story of war and friendship. A story of love that can never be.';
+const mockChangeKey = 'remake intergrade';
 
 const FormWrapper: React.FC = ({ children }) => (
   <ConnectedForm
     onSubmit={onSubmit}
-    defaultValues={{ [mockInputKey]: mockDefaultValue }}
+    defaultValues={{
+      [mockInputKey]: mockDefaultValue,
+      [mockChangeKey]:
+        'Final Fantasy VII Remake is a 2020 action role-playing game developed and published by Square Enix.',
+    }}
   >
     {children}
   </ConnectedForm>
 );
 
 const TestInput = () => {
-  const { onBlur, onChange, value } = useDebouncedField({ name: mockInputKey });
+  const { onBlur, onChange, value } = useDebouncedField({
+    name: mockInputKey,
+    watchUpdateKeyName: mockChangeKey,
+  });
+  const { reset } = useFormState();
+
+  const contrivedOnClick = () => {
+    reset({
+      [mockChangeKey]:
+        'It is the first in a planned trilogy of games remaking the 1997 PlayStation game Final Fantasy VII. Set in the dystopian cyberpunk metropolis of Midgar, players control mercenary Cloud Strife.',
+      [mockInputKey]: mockChangeValue,
+    });
+  };
 
   return (
     <>
@@ -52,7 +69,9 @@ const TestInput = () => {
         value={value}
         htmlFor={mockInputKey}
       />
-      <SubmitButton />
+      <button type="button" onClick={contrivedOnClick}>
+        Click Me
+      </button>
     </>
   );
 };
@@ -73,7 +92,7 @@ describe('ConnectedForm - useDebouncedField', () => {
 
     expect(input.value).toEqual(mockChangeValue);
   });
-  it('should ONLY update the form on blur of input', async () => {
+  it("should ONLY update the input's value on the form on blur of input", async () => {
     const { view } = renderView();
 
     const input = view.getByRole('textbox') as HTMLInputElement;
@@ -94,5 +113,18 @@ describe('ConnectedForm - useDebouncedField', () => {
     // Now it has finally been called to update the data
     expect(mockedSetValue).toHaveBeenCalledTimes(2);
     expect(mockedSetValue).lastCalledWith(mockInputKey, 'tifa');
+  });
+  it('should update the "initial" value of the input based on a change to the `watchUpdateKeyName` value', async () => {
+    const { view } = renderView();
+    const input = view.getByRole('textbox') as HTMLInputElement;
+    const changeButton = view.getByRole('button');
+
+    expect(input.value).toEqual(mockDefaultValue);
+
+    await act(async () => {
+      fireEvent.click(changeButton);
+    });
+
+    expect(input.value).toEqual(mockChangeValue);
   });
 });
