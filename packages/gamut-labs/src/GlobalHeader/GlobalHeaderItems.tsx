@@ -36,15 +36,6 @@ export const logo: AppHeaderLogoItem = {
   type: 'logo',
 };
 
-export const proLogo: AppHeaderLogoItem = {
-  dataTestId: 'header-pro-logo',
-  href: '/',
-  id: 'pro-logo',
-  pro: true,
-  trackingTarget: 'topnav_logo',
-  type: 'logo',
-};
-
 export const myHome: AppHeaderLinkItem = {
   dataTestId: 'header-home',
   icon: HouseEntranceIcon,
