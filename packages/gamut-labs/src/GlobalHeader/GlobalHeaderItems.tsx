@@ -89,10 +89,10 @@ export const resourcesDropdown: AppHeaderSimpleDropdownItem = {
 export const refreshedResourcesDropdown: AppHeaderResourcesDropdownItem = {
   dataTestId: 'header-resources',
   icon: NotebookIcon,
-  id: 'new-resources-dropdown',
+  id: 'experimental-resources-dropdown',
   text: 'Resources',
   trackingTarget: 'topnav_resources',
-  type: 'new-resources-dropdown',
+  type: 'experimental-resources-dropdown',
 };
 
 export const communityDropdown: AppHeaderSimpleDropdownItem = {
