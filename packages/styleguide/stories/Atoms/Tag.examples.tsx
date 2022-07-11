@@ -1,8 +1,8 @@
 import {
   Box,
   FillButton,
+  FlexBox,
   FormGroup,
-  GridBox,
   Input,
   Tag,
   Text,
@@ -60,23 +60,19 @@ export const TagExample: React.FC = () => {
           {' '}
           A lovely list of tags
         </Text>
-        <GridBox
-          display="grid"
-          gap={16}
-          gridTemplateColumns="1fr 1fr 1fr 1fr 1fr"
-          maxWidth="100%"
-        >
+        <FlexBox flexWrap="wrap" maxWidth="100%">
           {tagArray.map((tag) => (
             <Tag
               key={`${tag}`}
               onDismiss={() => {
                 removeItemHandler(tagArray, tag);
               }}
+              m={8}
             >
               {tag}
             </Tag>
           ))}
-        </GridBox>
+        </FlexBox>
       </Background>
     </>
   );

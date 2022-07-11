@@ -1,7 +1,9 @@
 import { MiniDeleteIcon } from '@codecademy/gamut-icons';
 import {
   Background,
+  css,
   system,
+  theme,
   useCurrentMode,
   variant,
 } from '@codecademy/gamut-styles';
@@ -13,6 +15,22 @@ import { Box } from '../Box';
 import { ButtonProps } from '../Button';
 import { ButtonBase } from '../ButtonBase';
 import { Selectors } from '../ButtonBase/ButtonBase';
+
+const Outline = styled(Box)(
+  css({
+    // this is a bit of a hack as we don't have access to focus-visible from this component.  if you are not properly dismissing your tags you may see this primary colored outline after clicking X, but otherwise you should never hit this behavior.
+
+    borderRadius: '4px',
+    width: 'fit-content',
+    '&:focus-within': {
+      outline: `2px solid ${theme.colors.primary}`,
+      outlineOffset: '2px',
+    },
+    '&:active': {
+      outlineColor: `transparent`,
+    },
+  })
+);
 
 const colorVariants = variant({
   defaultVariant: 'default',
@@ -90,7 +108,6 @@ const DeleteButton = styled(ButtonBase)(
         },
         [Selectors.FOCUS]: {
           bg: 'background-selected',
-          // borderColor: 'feedback-warning',
         },
       },
       grey: {
@@ -99,7 +116,6 @@ const DeleteButton = styled(ButtonBase)(
         },
         [Selectors.FOCUS]: {
           bg: 'navy-700',
-          // borderColor: 'feedback-warning',
         },
       },
     },
@@ -121,24 +137,25 @@ export const Tag: React.FC<TagProps> = ({
   const mode = useCurrentMode();
 
   return (
-    <TagWrapper
-      bg={
-        variant === 'grey'
-          ? 'navy-500'
-          : mode === 'light'
-          ? 'navy-900'
-          : 'white'
-      }
-      {...rest}
-    >
-      <Box as="span" fontSize={14} px={8}>
-        {children}
-      </Box>
-      {!readonly && (
-        <DeleteButton onClick={onDismiss || undefined}>
-          <MiniDeleteIcon size={12} />
-        </DeleteButton>
-      )}
-    </TagWrapper>
+    <Outline {...rest}>
+      <TagWrapper
+        bg={
+          variant === 'grey'
+            ? 'navy-500'
+            : mode === 'light'
+            ? 'navy-900'
+            : 'white'
+        }
+      >
+        <Box as="span" fontSize={14} px={8}>
+          {children}
+        </Box>
+        {!readonly && (
+          <DeleteButton onClick={onDismiss || undefined}>
+            <MiniDeleteIcon size={12} />
+          </DeleteButton>
+        )}
+      </TagWrapper>
+    </Outline>
   );
 };
