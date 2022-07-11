@@ -1,4 +1,4 @@
-import { FlexBox, Tag } from '@codecademy/gamut';
+import { Box, FlexBox, Tag } from '@codecademy/gamut';
 import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
@@ -50,7 +50,13 @@ Tags have a ColorModed `default` variant and a `grey` variant as well as a `read
 ## Code Playground
 
 <Canvas>
-  <Story name="Tag">{(args) => <Tag {...args} />}</Story>
+  <Story name="Tag">
+    {(args) => (
+      <Box width="12rem">
+        <Tag>I am long tag yes I very much am a very long tag</Tag>
+      </Box>
+    )}
+  </Story>
 </Canvas>
 
 <PropsTable story="Tag" />

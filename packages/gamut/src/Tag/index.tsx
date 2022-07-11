@@ -15,6 +15,7 @@ import { Box } from '../Box';
 import { ButtonProps } from '../Button';
 import { ButtonBase } from '../ButtonBase';
 import { Selectors } from '../ButtonBase/ButtonBase';
+import { Text } from '../Typography';
 
 const Outline = styled(Box)(
   css({
@@ -22,6 +23,7 @@ const Outline = styled(Box)(
 
     borderRadius: '4px',
     width: 'fit-content',
+    maxWidth: '100%',
     '&:focus-within': {
       outline: `2px solid ${theme.colors.primary}`,
       outlineOffset: '2px',
@@ -40,8 +42,8 @@ const colorVariants = variant({
     display: 'flex',
     height: '24px',
     justifyContent: 'center',
-    minWidth: 'fit-content',
     width: 'fit-content',
+    maxWidth: '100%',
   },
   variants: {
     default: {
@@ -99,7 +101,7 @@ const DeleteButton = styled(ButtonBase)(
       display: 'flex',
       height: '100%',
       justifyContent: 'center',
-      width: '24px',
+      minWidth: '24px',
     },
     variants: {
       default: {
@@ -144,11 +146,21 @@ export const Tag: React.FC<TagProps> = ({
             : 'white'
         }
       >
-        <Box as="span" fontSize={14} px={8}>
+        <Text
+          as="span"
+          fontSize={14}
+          lineHeight={1 as any}
+          px={8}
+          truncate="ellipsis"
+          truncateLines={1}
+        >
           {children}
-        </Box>
+        </Text>
         {!readonly && (
-          <DeleteButton onClick={onDismiss || undefined}>
+          <DeleteButton
+            aria-label={`Delete ${children} Tag`}
+            onClick={onDismiss || undefined}
+          >
             <MiniDeleteIcon size={12} />
           </DeleteButton>
         )}
