@@ -61,6 +61,13 @@ describe('PageSingleFeature', () => {
     wrapper.getByAltText('alt');
   });
 
+  it('should render a clickable img when media prop with linkUrl is provided', () => {
+    const { view: wrapper } = renderView({
+      media: { type: 'image', src: 'test', alt: 'alt', linkUrl: '/test' },
+    });
+    wrapper.getByRole('link');
+  });
+
   it('should not render an image when media prop is not provided', () => {
     const { view: wrapper } = renderView();
     expect(wrapper.queryByAltText('alt')).not.toBeInTheDocument();
