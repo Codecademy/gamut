@@ -23,7 +23,7 @@ export type AppHeaderMainMenuMobileProps = {
   action: AppHeaderClickHandler;
   items: AppHeaderItem[];
   onSearch: (query: string) => void;
-  getItemType: (type: string) => void;
+  getItemType: (type: string | undefined) => void;
   isAnon: boolean;
 };
 
@@ -47,6 +47,7 @@ export const AppHeaderMainMenuMobile: React.FC<AppHeaderMainMenuMobileProps> = (
 
   const closeSubMenu = () => {
     setSubMenuItem(undefined);
+    getItemType(undefined);
   };
 
   const mapItemToElement = (
@@ -61,6 +62,7 @@ export const AppHeaderMainMenuMobile: React.FC<AppHeaderMainMenuMobileProps> = (
       case 'dropdown':
       case 'profile-dropdown':
       case 'catalog-dropdown':
+      case 'experimental-resources-dropdown':
         return (
           <AppHeaderSubMenuTarget
             key={item.id}

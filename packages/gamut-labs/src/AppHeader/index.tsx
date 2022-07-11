@@ -79,7 +79,7 @@ export const mapItemToElement = (
       return (
         <AppHeaderCatalogDropdown action={action} item={item} isAnon={isAnon} />
       );
-    case 'new-resources-dropdown':
+    case 'experimental-resources-dropdown':
       return (
         <AppHeaderResourcesDropdown
           action={action}

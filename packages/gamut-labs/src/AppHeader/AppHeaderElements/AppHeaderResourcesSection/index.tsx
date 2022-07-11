@@ -34,7 +34,13 @@ export const AppHeaderResourcesSection = React.forwardRef<
     subtitle?: string;
   }> = ({ title, subtitle }) => (
     <FlexBox data-focusableresource="true" tabIndex={-1} flexDirection="column">
-      <Text as="h2" variant="title-xs" mb={8} fontWeight={700} pr={16}>
+      <Text
+        as="h2"
+        variant="title-xs"
+        mb={subtitle ? 8 : 0}
+        pr={{ _: 96, md: 16 }}
+        mr={{ _: 96, md: 0 }}
+      >
         {title}
       </Text>
       {subtitle && <Text fontSize={14}>{subtitle}</Text>}
@@ -47,7 +53,12 @@ export const AppHeaderResourcesSection = React.forwardRef<
         <StyledColumn size={12} key={section.title} as="li">
           <LayoutGrid>
             <Column size={{ xs: 12, md: 3 }}>
-              <Background bg="navy-800" color="blue-0" p={32}>
+              <Background
+                bg="navy-800"
+                color="blue-0"
+                px={{ _: 16, xs: 32, sm: 64, lg: 32 }}
+                py={{ _: 16, sm: 32 }}
+              >
                 <DescriptionSection
                   title={section.title}
                   subtitle={section.description}
@@ -62,7 +73,7 @@ export const AppHeaderResourcesSection = React.forwardRef<
                     data-focusableresource="true"
                     onClick={(event) => action(event, section.link!)}
                     tabIndex={tabIndex}
-                    mt={section.description ? 24 : 48}
+                    mt={{ _: 24, lg: section.description ? 24 : 48 }}
                     target={section.link.newTab ? '_blank' : '_self'}
                   >
                     {section.link.text}
@@ -75,7 +86,7 @@ export const AppHeaderResourcesSection = React.forwardRef<
                 {section.data.map((item) => {
                   const { id, href, text, badge, newTab } = item;
                   return (
-                    <Column key={id} size={{ _: 4 }}>
+                    <Column key={id} size={{ _: 12, lg: 4 }}>
                       <Anchor
                         data-focusableresource="true"
                         variant="interface"

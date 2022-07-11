@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [32.6.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@32.5.1...@codecademy/gamut-labs@32.6.0) (2022-07-08)
+
+
+### Features
+
+* **GlobalHeader:** Mobile Resources menu ([b48c681](https://github.com/Codecademy/gamut/commit/b48c68179bc06913756f549b74080b8cd7959de5))
+
+
+
 ### [32.5.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@32.5.0...@codecademy/gamut-labs@32.5.1) (2022-07-06)
 
 **Note:** Version bump only for package @codecademy/gamut-labs
