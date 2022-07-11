@@ -57,7 +57,6 @@ export const TagExample: React.FC = () => {
           textDecoration="underline"
           width="100%"
         >
-          {' '}
           A lovely list of tags
         </Text>
         <FlexBox flexWrap="wrap" maxWidth="100%">

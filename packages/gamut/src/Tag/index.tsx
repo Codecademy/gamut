@@ -122,10 +122,7 @@ const DeleteButton = styled(ButtonBase)(
   })
 );
 
-export const TagWrapper = styled(Background)<BaseTagProps>(
-  tagProps,
-  colorVariants
-);
+const TagWrapper = styled(Background)<BaseTagProps>(tagProps, colorVariants);
 
 export const Tag: React.FC<TagProps> = ({
   children,
