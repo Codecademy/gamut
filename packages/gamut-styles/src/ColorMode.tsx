@@ -119,7 +119,7 @@ export const ColorMode = forwardRef<
   // then sets the color mode
   const prefersDarkMode = usePrefersDarkMode();
   const mode =
-    preference === 'system' ? (prefersDarkMode ? 'light' : 'dark') : preference;
+    preference === 'system' ? (prefersDarkMode ? 'dark' : 'light') : preference;
 
   const theme = useTheme();
   const { modes, mode: active, colors } = theme;
