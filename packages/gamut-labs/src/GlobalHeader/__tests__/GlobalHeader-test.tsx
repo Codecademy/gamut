@@ -12,6 +12,7 @@ import {
   pricingDropdown,
   pricingLink,
   referrals,
+  refreshedResourcesDropdown,
   resourcesDropdown,
   signUp,
   tryProForFree,
@@ -132,6 +133,13 @@ const catalogDropdownTest = (props: GlobalHeaderProps) => {
   view.getByText('Explore full catalog →');
 };
 
+const refreshedResourcesDropdownTest = (props: GlobalHeaderProps) => {
+  const { view } = renderView(props);
+
+  view.getByText(refreshedResourcesDropdown.text).click();
+  view.getByText('View all topics →');
+};
+
 describe('GlobalHeader', () => {
   describe('anonymous users', () => {
     it('renders search', () => {
@@ -167,6 +175,14 @@ describe('GlobalHeader', () => {
         user: userInExperiment,
       };
       catalogDropdownTest(props);
+    });
+
+    it('renders catalogDropdown when user is in experiment', () => {
+      const props = {
+        ...anonHeaderProps,
+        user: userInExperiment,
+      };
+      refreshedResourcesDropdownTest(props);
     });
 
     it('renders resourcesDropdown', () => {

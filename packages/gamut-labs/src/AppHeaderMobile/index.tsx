@@ -104,8 +104,12 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
     ...items.right,
   ];
 
-  const onItemType = (type: string) => {
-    if (type === 'catalog-dropdown') {
+  const onItemType = (type: string | undefined) => {
+    if (
+      type &&
+      (type === 'catalog-dropdown' ||
+        type === 'experimental-resources-dropdown')
+    ) {
       setAllowScroll(true);
     } else {
       setAllowScroll(false);
