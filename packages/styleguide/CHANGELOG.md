@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [58.1.11](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@58.1.10...@codecademy/styleguide@58.1.11) (2022-07-13)
+
+
+### Bug Fixes
+
+* **GlobalHeader:** Catalog and Resources dropdown fast follows  ([2a264ea](https://github.com/Codecademy/gamut/commit/2a264ea9d6795828658544129c8fcc2f1e2d9734))
+
+
+
 ### [58.1.10](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@58.1.9...@codecademy/styleguide@58.1.10) (2022-07-08)
 
 **Note:** Version bump only for package @codecademy/styleguide
