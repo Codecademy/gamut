@@ -447,11 +447,6 @@ describe('GlobalHeader', () => {
     });
 
     describe('default', () => {
-      it('renders proLogo', () => {
-        const { view } = renderView(proHeaderProps);
-        view.getAllByTestId('header-pro-logo');
-      });
-
       it('renders myHome', () => {
         const { view } = renderView(proHeaderProps);
         view.getAllByText(myHome.text);
