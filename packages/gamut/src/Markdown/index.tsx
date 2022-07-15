@@ -11,6 +11,7 @@ import {
   ManyOverrideSettings,
   standardOverrides,
 } from './libs/overrides';
+import { MarkdownCheckbox } from './libs/overrides/Checkbox';
 import { Details } from './libs/overrides/Details';
 import { Iframe } from './libs/overrides/Iframe';
 import {
@@ -33,9 +34,10 @@ const isValidNode = () => true;
 
 export type SkipDefaultOverridesSettings = {
   a?: boolean;
+  checkbox?: boolean;
+  details?: boolean;
   iframe?: boolean;
   table?: boolean;
-  details?: boolean;
 };
 
 export type MarkdownProps = {
@@ -114,6 +116,13 @@ export class Markdown extends PureComponent<MarkdownProps> {
           component: Details,
           allowedAttributes: ['style', 'open'],
         }),
+      !skipDefaultOverrides.checkbox &&
+        createTagOverride('input', {
+          component: MarkdownCheckbox,
+          processNode: (node, props) => {
+            console.log(node);
+          },
+        }),
       ...overrides,
       ...standardOverrides,
     ].filter(Boolean);
@@ -157,6 +166,8 @@ export class Markdown extends PureComponent<MarkdownProps> {
       processingInstructions,
       preprocessingInstructions
     );
+
+    console.log('RAW:', rawHtml, 'COOKED', html);
 
     return (
       <Wrapper

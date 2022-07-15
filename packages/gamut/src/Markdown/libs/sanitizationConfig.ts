@@ -14,6 +14,7 @@ export const defaultSanitizationConfig = {
     pre: ['class'],
     source: ['src', 'type'],
     img: ['src', 'alt', 'height', 'width', 'title', 'aria-label', 'style'],
+    input: ['type'],
     video: ['width', 'height', 'align', 'style', 'controls'],
     iframe: [
       'src',
@@ -39,5 +40,6 @@ export const defaultSanitizationConfig = {
     'br',
     'iframe',
     'codeblock',
+    'input',
   ],
 };
