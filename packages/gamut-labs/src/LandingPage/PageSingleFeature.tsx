@@ -1,4 +1,5 @@
 import {
+  Anchor,
   Box,
   Column,
   ColumnProps,
@@ -26,6 +27,7 @@ type ImageProps = {
 type MediaProps =
   | ({
       type: 'image';
+      linkUrl?: string;
     } & ImageProps)
   | ({
       type: 'video';
@@ -34,6 +36,33 @@ type MediaProps =
 type Eyebrow = {
   accent?: boolean;
   text: string;
+};
+
+type FeaturedImageProps = ImageProps & {
+  linkUrl?: string;
+  hideImageOnMobile?: boolean;
+};
+const FeaturedImage: React.FC<FeaturedImageProps> = ({
+  src,
+  alt,
+  linkUrl,
+  hideImageOnMobile,
+}) => {
+  const Container = linkUrl ? Anchor : Box;
+
+  return (
+    <Container
+      display={{
+        _: hideImageOnMobile ? 'none' : 'initial',
+        sm: 'initial',
+      }}
+      href={linkUrl}
+      width={1}
+      tabIndex={linkUrl ? 0 : undefined}
+    >
+      <PausableImage src={src} alt={alt} data-testid="feature-image" />
+    </Container>
+  );
 };
 
 export type PageSingleFeatureProps = BaseProps & {
@@ -121,15 +150,7 @@ export const PageSingleFeature: React.FC<PageSingleFeatureProps> = ({
         alignContent="flex-start"
       >
         {media.type === 'image' && (
-          <Box
-            width={1}
-            display={{
-              _: hideImageOnMobile ? 'none' : 'initial',
-              sm: 'initial',
-            }}
-          >
-            <PausableImage {...media} />
-          </Box>
+          <FeaturedImage {...media} hideImageOnMobile={hideImageOnMobile} />
         )}
         {media.type === 'video' && <Video {...media} />}
       </Column>

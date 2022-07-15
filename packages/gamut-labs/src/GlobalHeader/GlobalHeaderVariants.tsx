@@ -251,6 +251,7 @@ export const proHeaderItems = (
     catalogComponent(user),
     resourcesComponent(user),
     communityDropdown,
+    businessSolutions,
   ];
 
   const rightItems: AppHeaderItem[] = [];
@@ -284,6 +285,7 @@ export const proMobileHeaderItems = (
     catalogComponent(user),
     resourcesComponent(user),
     communityDropdown,
+    businessSolutions,
     proProfile(user),
   ];
 

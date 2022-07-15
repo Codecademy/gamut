@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [58.2.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@58.2.0...@codecademy/styleguide@58.2.1) (2022-07-14)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [58.2.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@58.1.11...@codecademy/styleguide@58.2.0) (2022-07-14)
+
+
+### Features
+
+* **PageSingleFeature:** Allow image to act as a link ([ef3547f](https://github.com/Codecademy/gamut/commit/ef3547fd909c7b556bbba5c6e9a9e873991f5b1c))
+
+
+
 ### [58.1.11](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@58.1.10...@codecademy/styleguide@58.1.11) (2022-07-13)
 
 

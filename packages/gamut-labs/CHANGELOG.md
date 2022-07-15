@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [32.7.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@32.7.0...@codecademy/gamut-labs@32.7.1) (2022-07-14)
+
+
+### Bug Fixes
+
+* **GlobalHeader:** add `business solutions` for Trial / Pro learners ([0b578e2](https://github.com/Codecademy/gamut/commit/0b578e2a5ee42af3bbef95a4f718ff99c6cb3ee9))
+
+
+
+## [32.7.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@32.6.1...@codecademy/gamut-labs@32.7.0) (2022-07-14)
+
+
+### Features
+
+* **PageSingleFeature:** Allow image to act as a link ([ef3547f](https://github.com/Codecademy/gamut/commit/ef3547fd909c7b556bbba5c6e9a9e873991f5b1c))
+
+
+
 ### [32.6.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@32.6.0...@codecademy/gamut-labs@32.6.1) (2022-07-13)
 
 
