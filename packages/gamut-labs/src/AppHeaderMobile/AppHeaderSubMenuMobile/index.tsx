@@ -43,11 +43,18 @@ const StyledAnchor = styled(Anchor)(
 
 const renderHeaderSection = (
   item: AppHeaderSectionItem,
-  action: AppHeaderClickHandler
+  action: AppHeaderClickHandler,
+  handleClose: () => void
 ) => {
   switch (item.type) {
     case 'catalog-dropdown':
-      return <AppHeaderCatalogSection action={action} item={item} />;
+      return (
+        <AppHeaderCatalogSection
+          action={action}
+          item={item}
+          handleClose={handleClose}
+        />
+      );
     case 'experimental-resources-dropdown':
       return <AppHeaderResourcesSection action={action} />;
     default:
@@ -83,7 +90,7 @@ export const AppHeaderSubMenuMobile: React.FC<AppHeaderSubMenuMobileProps> = ({
       >
         {item.type === 'profile-dropdown' ? item.userDisplayName : item.text}
       </Text>
-      {renderHeaderSection(item, action)}
+      {renderHeaderSection(item, action, handleClose)}
     </AppHeaderListItem>
   );
 };
