@@ -225,7 +225,7 @@ export const AppHeaderResourcesDropdown: React.FC<AppHeaderResourceDropdownProps
           keyDownEvents={menuHandleKeyEvents}
           id={`menu-container${item.text}`}
           isOpen={isOpen}
-          handleClose={handleClose}
+          handleClose={() => setIsOpen(false)}
         />
       </StyledDropdown>
     </>
