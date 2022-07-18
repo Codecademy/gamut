@@ -45,7 +45,7 @@ const StyledAnchor = styled(Anchor)(
 const renderHeaderSection = (
   item: AppHeaderSectionItem,
   action: AppHeaderClickHandler,
-  handleCloseSubMenu: () => void
+  handleCloseMainMenu: () => void
 ) => {
   switch (item.type) {
     case 'catalog-dropdown':
@@ -53,11 +53,16 @@ const renderHeaderSection = (
         <AppHeaderCatalogSection
           action={action}
           item={item}
-          handleClose={handleCloseSubMenu}
+          handleClose={handleCloseMainMenu}
         />
       );
     case 'experimental-resources-dropdown':
-      return <AppHeaderResourcesSection action={action} />;
+      return (
+        <AppHeaderResourcesSection
+          action={action}
+          handleClose={handleCloseMainMenu}
+        />
+      );
     default:
       return (
         <AppHeaderLinkSections action={action} item={item} showIcon mobile />
