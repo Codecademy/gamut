@@ -66,7 +66,7 @@ export const TagWrapper = styled(Background)<BaseTagProps>(
   colorVariants
 );
 
-export const DeleteButton = styled(ButtonBase)(
+export const DismissButton = styled(ButtonBase)(
   variant({
     defaultVariant: 'default',
     base: {

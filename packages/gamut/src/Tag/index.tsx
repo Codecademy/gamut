@@ -3,7 +3,7 @@ import { useCurrentMode } from '@codecademy/gamut-styles';
 import React from 'react';
 
 import { Text } from '../Typography';
-import { DeleteButton, Outline, TagWrapper } from './elements';
+import { DismissButton, Outline, TagWrapper } from './elements';
 import { TagProps } from './types';
 
 export const Tag: React.FC<TagProps> = ({
@@ -37,12 +37,12 @@ export const Tag: React.FC<TagProps> = ({
           {children}
         </Text>
         {!readonly && (
-          <DeleteButton
-            aria-label={`Delete ${children} Tag`}
+          <DismissButton
+            aria-label={`Dismiss ${children} Tag`}
             onClick={onDismiss || undefined}
           >
             <MiniDeleteIcon size={12} />
-          </DeleteButton>
+          </DismissButton>
         )}
       </TagWrapper>
     </Outline>
