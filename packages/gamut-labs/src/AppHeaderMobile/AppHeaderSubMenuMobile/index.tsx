@@ -24,6 +24,7 @@ export type AppHeaderSubMenuMobileProps = (
   | AppHeaderResourceDropdownProps
 ) & {
   handleClose: () => void;
+  handleCloseMainMenu: () => void;
 };
 
 type AppHeaderSectionItem =
@@ -68,6 +69,7 @@ export const AppHeaderSubMenuMobile: React.FC<AppHeaderSubMenuMobileProps> = ({
   action,
   handleClose,
   item,
+  handleCloseMainMenu,
 }) => {
   return (
     <AppHeaderListItem aria-labelledby={`${item.text} menu`}>
@@ -90,7 +92,7 @@ export const AppHeaderSubMenuMobile: React.FC<AppHeaderSubMenuMobileProps> = ({
       >
         {item.type === 'profile-dropdown' ? item.userDisplayName : item.text}
       </Text>
-      {renderHeaderSection(item, action, handleClose)}
+      {renderHeaderSection(item, action, handleCloseMainMenu)}
     </AppHeaderListItem>
   );
 };

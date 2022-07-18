@@ -177,6 +177,7 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
               onSearch={onSearch}
               getItemType={onItemType}
               isAnon={isAnon}
+              closeMainMenu={() => setMobileMenuOpen(false)}
             />
           </StyledContentContainer>
         </HeaderHeightArea>
