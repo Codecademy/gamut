@@ -25,7 +25,7 @@ export type AppHeaderMainMenuMobileProps = {
   onSearch: (query: string) => void;
   getItemType: (type: string | undefined) => void;
   isAnon: boolean;
-  closeMainMenu: () => void;
+  handleCloseMainMenu: () => void;
 };
 
 export const AppHeaderMainMenuMobile: React.FC<AppHeaderMainMenuMobileProps> = ({
@@ -34,7 +34,7 @@ export const AppHeaderMainMenuMobile: React.FC<AppHeaderMainMenuMobileProps> = (
   onSearch,
   getItemType,
   isAnon,
-  closeMainMenu,
+  handleCloseMainMenu,
 }) => {
   const [subMenuItem, setSubMenuItem] = useState<AppHeaderDropdownItem>();
 
@@ -108,7 +108,7 @@ export const AppHeaderMainMenuMobile: React.FC<AppHeaderMainMenuMobileProps> = (
       handleClose={closeSubMenu}
       action={action}
       item={subMenuItem}
-      closeMainMenu={closeMainMenu}
+      handleCloseMainMenu={handleCloseMainMenu}
     />
   ) : (
     <Box>
