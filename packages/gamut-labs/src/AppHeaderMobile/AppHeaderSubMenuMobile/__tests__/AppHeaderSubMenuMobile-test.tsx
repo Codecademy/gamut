@@ -9,7 +9,8 @@ import { AppHeaderSubMenuMobile, AppHeaderSubMenuMobileProps } from '../index';
 const sublink1Href = 'https://google.com';
 const sublink2Href = 'https://medium.com';
 const action = jest.fn();
-const handleClose = jest.fn();
+const handleCloseSubMenu = jest.fn();
+const handleCloseMainMenu = jest.fn();
 
 const props: AppHeaderSubMenuMobileProps = {
   action,
@@ -24,7 +25,8 @@ const props: AppHeaderSubMenuMobileProps = {
       createMockAppHeaderLinkItem('sublink-2', sublink2Href, 'blog'),
     ],
   },
-  handleClose,
+  handleCloseSubMenu,
+  handleCloseMainMenu,
 };
 
 const renderAppHeaderSubMenuMobile = () => {
