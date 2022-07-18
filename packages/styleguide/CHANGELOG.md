@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [58.3.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@58.2.1...@codecademy/styleguide@58.3.0) (2022-07-15)
+
+
+### Features
+
+* **Tooltip:** Add tooltip placements ([8bb047c](https://github.com/Codecademy/gamut/commit/8bb047c61f783b919b04b7c0cc08c5e88fbed00b))
+
+
+
+### [58.2.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@58.2.0...@codecademy/styleguide@58.2.1) (2022-07-14)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
 ## [58.2.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@58.1.11...@codecademy/styleguide@58.2.0) (2022-07-14)
 
 

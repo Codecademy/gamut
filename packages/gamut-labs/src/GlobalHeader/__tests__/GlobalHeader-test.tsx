@@ -478,6 +478,11 @@ describe('GlobalHeader', () => {
         view.getByText(communityDropdown.text);
       });
 
+      it('renders business solutions', () => {
+        const { view } = renderView(freeHeaderProps);
+        view.getByText(businessSolutions.text);
+      });
+
       it('renders profileDropdown', () => {
         const { view } = renderView(proHeaderProps);
         view.getByTestId('avatar-container');

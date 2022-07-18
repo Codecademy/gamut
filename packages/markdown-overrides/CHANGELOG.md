@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [0.9.4](https://github.com/Codecademy/gamut/compare/@codecademy/markdown-overrides@0.9.3...@codecademy/markdown-overrides@0.9.4) (2022-07-15)
+
+**Note:** Version bump only for package @codecademy/markdown-overrides
+
+
+
+
+
 ### [0.9.3](https://github.com/Codecademy/gamut/compare/@codecademy/markdown-overrides@0.9.2...@codecademy/markdown-overrides@0.9.3) (2022-05-24)
 
 **Note:** Version bump only for package @codecademy/markdown-overrides
