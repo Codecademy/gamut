@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [48.2.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@48.1.0...@codecademy/gamut@48.2.0) (2022-07-18)
+
+
+### Features
+
+* **Tag:** add Tag component ([10e5b11](https://github.com/Codecademy/gamut/commit/10e5b11e2f807478cfb838525c300efcd4be38d4))
+
+
+
 ## [48.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@48.0.6...@codecademy/gamut@48.1.0) (2022-07-15)
 
 
