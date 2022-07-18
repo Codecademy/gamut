@@ -23,7 +23,7 @@ export type AppHeaderSubMenuMobileProps = (
   | AppHeaderCatalogDropdownProps
   | AppHeaderResourceDropdownProps
 ) & {
-  handleClose: () => void;
+  handleCloseSubMenu: () => void;
   handleCloseMainMenu: () => void;
 };
 
@@ -45,7 +45,7 @@ const StyledAnchor = styled(Anchor)(
 const renderHeaderSection = (
   item: AppHeaderSectionItem,
   action: AppHeaderClickHandler,
-  handleClose: () => void
+  handleCloseSubMenu: () => void
 ) => {
   switch (item.type) {
     case 'catalog-dropdown':
@@ -53,7 +53,7 @@ const renderHeaderSection = (
         <AppHeaderCatalogSection
           action={action}
           item={item}
-          handleClose={handleClose}
+          handleClose={handleCloseSubMenu}
         />
       );
     case 'experimental-resources-dropdown':
@@ -67,14 +67,14 @@ const renderHeaderSection = (
 
 export const AppHeaderSubMenuMobile: React.FC<AppHeaderSubMenuMobileProps> = ({
   action,
-  handleClose,
-  item,
+  handleCloseSubMenu,
   handleCloseMainMenu,
+  item,
 }) => {
   return (
     <AppHeaderListItem aria-labelledby={`${item.text} menu`}>
       <StyledAnchor
-        onClick={handleClose}
+        onClick={handleCloseSubMenu}
         variant="interface"
         as="button"
         ml={{ _: 16, xs: 32, sm: 64, md: 48 }}

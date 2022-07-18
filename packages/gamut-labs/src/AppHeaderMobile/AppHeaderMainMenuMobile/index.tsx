@@ -105,7 +105,7 @@ export const AppHeaderMainMenuMobile: React.FC<AppHeaderMainMenuMobileProps> = (
 
   return subMenuItem ? (
     <AppHeaderSubMenuMobile
-      handleClose={closeSubMenu}
+      handleCloseSubMenu={closeSubMenu}
       action={action}
       item={subMenuItem}
       handleCloseMainMenu={handleCloseMainMenu}
