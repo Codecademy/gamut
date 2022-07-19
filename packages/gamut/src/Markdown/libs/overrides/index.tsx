@@ -153,9 +153,17 @@ export const standardOverrides = [
       return false;
     },
     processNode(node: HTMLToReactNode) {
+      // skip text after checkboxes since they are labels for the checkboxes
+      if (
+        node?.prev?.name === 'input' &&
+        node?.prev?.attribs?.type === 'checkbox'
+      ) {
+        return false;
+      }
       return processText(node.data);
     },
   },
+
   {
     shouldProcessNode() {
       return true;

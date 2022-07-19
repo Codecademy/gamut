@@ -1,10 +1,11 @@
 import React, { HTMLAttributes, useState } from 'react';
 
 import { Checkbox } from '../../../../Form';
-import { HTMLToReactNode } from '..';
 
 export interface MarkdownCheckboxProps
-  extends HTMLAttributes<HTMLInputElement> {}
+  extends HTMLAttributes<HTMLInputElement> {
+  label?: string;
+}
 
 /**
  * Details element
@@ -13,9 +14,10 @@ export interface MarkdownCheckboxProps
  */
 
 export const MarkdownCheckbox: React.FC<MarkdownCheckboxProps> = ({
+  label,
   ...props
 }) => {
-  console.log(props);
+  // console.log(props);
   const [currentChecked, setCurrentChecked] = useState(false);
 
   const changeHandler = () => {
@@ -26,8 +28,8 @@ export const MarkdownCheckbox: React.FC<MarkdownCheckboxProps> = ({
     <Checkbox
       checked={currentChecked}
       onChange={changeHandler}
-      htmlFor="updog"
-      label="a checkbox"
+      htmlFor={label}
+      label={label}
     />
   );
 };

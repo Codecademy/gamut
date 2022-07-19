@@ -120,7 +120,8 @@ export class Markdown extends PureComponent<MarkdownProps> {
         createTagOverride('input', {
           component: MarkdownCheckbox,
           processNode: (node, props) => {
-            console.log(node);
+            const label = node.next.data;
+            return <MarkdownCheckbox label={label} {...props} />;
           },
         }),
       ...overrides,
@@ -166,8 +167,6 @@ export class Markdown extends PureComponent<MarkdownProps> {
       processingInstructions,
       preprocessingInstructions
     );
-
-    console.log('RAW:', rawHtml, 'COOKED', html);
 
     return (
       <Wrapper
