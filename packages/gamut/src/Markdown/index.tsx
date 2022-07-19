@@ -7,6 +7,7 @@ import sanitizeMarkdown from 'sanitize-markdown';
 import { omitProps } from '../utils/omitProps';
 import {
   createCodeBlockOverride,
+  createInputOverride,
   createTagOverride,
   ManyOverrideSettings,
   standardOverrides,
@@ -117,12 +118,8 @@ export class Markdown extends PureComponent<MarkdownProps> {
           allowedAttributes: ['style', 'open'],
         }),
       !skipDefaultOverrides.checkbox &&
-        createTagOverride('input', {
+        createInputOverride('checkbox', {
           component: MarkdownCheckbox,
-          processNode: (node, props) => {
-            const label = node.next.data;
-            return <MarkdownCheckbox label={label} {...props} />;
-          },
         }),
       ...overrides,
       ...standardOverrides,

@@ -137,6 +137,28 @@ export const createCodeBlockOverride = (
     ...Override,
   });
 
+export const createInputOverride = (type: string, Override: OverrideSettings) =>
+  createTagOverride('input', {
+    shouldProcessNode(node: HTMLToReactNode) {
+      return (
+        (node?.name === 'input' && node?.attribs?.type === type) ||
+        (node?.prev?.name === 'input' && node?.prev?.attribs?.type === type)
+      );
+    },
+
+    processNode(node: HTMLToReactNode, props: any) {
+      const label = node?.next?.data;
+
+      if (!Override.component) return null;
+
+      if (node?.prev?.name === 'input' && node?.prev?.attribs?.type === type)
+        return null;
+
+      return <Override.component label={label} {...props} />;
+    },
+    ...Override,
+  });
+
 const processText = (text: string) => {
   // Replace &mdash; due to legacy markdown that didn't use smart dashes
   return text.replace(/&mdash;/g, '\u2014');
@@ -153,13 +175,6 @@ export const standardOverrides = [
       return false;
     },
     processNode(node: HTMLToReactNode) {
-      // skip text after checkboxes since they are labels for the checkboxes
-      if (
-        node?.prev?.name === 'input' &&
-        node?.prev?.attribs?.type === 'checkbox'
-      ) {
-        return false;
-      }
       return processText(node.data);
     },
   },
