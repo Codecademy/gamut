@@ -180,7 +180,7 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
       <FooterLinkItems>
         <FooterLinkItem>
           <Anchor
-            href="/pro/membership"
+            href="/pages/pro"
             onClick={(event) => onClick({ event, target: 'pro_membership' })}
             variant="interface"
           >
