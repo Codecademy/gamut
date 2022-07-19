@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [13.4.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@13.3.0...@codecademy/gamut-styles@13.4.0) (2022-07-19)
+
+
+### Features
+
+* **ColorMode:** Adding "system" option to ColorMode ([#2439](https://github.com/Codecademy/gamut/issues/2439)) ([a3e6a47](https://github.com/Codecademy/gamut/commit/a3e6a47d610b840b76b87f167e90777483482c99))
+
+
+
 ## [13.3.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@13.2.0...@codecademy/gamut-styles@13.3.0) (2022-07-15)
 
 

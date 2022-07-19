@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [58.5.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@58.4.2...@codecademy/styleguide@58.5.0) (2022-07-19)
+
+
+### Features
+
+* **ColorMode:** Adding "system" option to ColorMode ([#2439](https://github.com/Codecademy/gamut/issues/2439)) ([a3e6a47](https://github.com/Codecademy/gamut/commit/a3e6a47d610b840b76b87f167e90777483482c99))
+
+
+
 ### [58.4.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@58.4.1...@codecademy/styleguide@58.4.2) (2022-07-19)
 
 **Note:** Version bump only for package @codecademy/styleguide
