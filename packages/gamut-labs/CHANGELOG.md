@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [32.7.5](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@32.7.4...@codecademy/gamut-labs@32.7.5) (2022-07-19)
+
+
+### Bug Fixes
+
+* **GlobalHeader:** correct tracking ([c9f3579](https://github.com/Codecademy/gamut/commit/c9f35792060fb34f69e0a2c9b9505e3a9b6f5f60))
+
+
+
 ### [32.7.4](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@32.7.3...@codecademy/gamut-labs@32.7.4) (2022-07-19)
 
 
