@@ -1,42 +1,100 @@
 import { setupRtl } from '@codecademy/gamut-tests';
+import { fireEvent } from '@testing-library/dom';
 
 import { ToolTip } from '..';
 
 const children = 'Hello';
 
-const renderView = setupRtl(ToolTip, { children });
+const renderView = setupRtl(ToolTip, {
+  children,
+  id: 'test-id',
+  target: 'Target',
+});
 
 describe('ToolTip', () => {
-  it('does not give its container a tabIndex when it is not focusable', () => {
-    const { view } = renderView({ children, id: 'test-id' });
+  describe('inline placement', () => {
+    it('does not give its container a tabIndex when it is not focusable', () => {
+      const { view } = renderView({});
 
-    const container = view.getByLabelText(children);
+      expect(view.getByLabelText(children)).not.toHaveAttribute('tabIndex');
+    });
 
-    expect(container).not.toHaveAttribute('tabIndex');
+    it('gives the container a tabIndex when it is focusable', () => {
+      const children = 'Hello';
+      const { view } = renderView({ focusable: true });
+
+      expect(view.getByLabelText(children)).toHaveAttribute('tabIndex', '0');
+    });
+
+    it('does not give its container a role=button when it is not focusable', () => {
+      const { view } = renderView({});
+
+      expect(view.getByLabelText(children)).not.toHaveAttribute('role');
+    });
+
+    it('does give its container a role=button when it is focusable', () => {
+      const { view } = renderView({ focusable: true });
+
+      expect(view.getByRole('button'));
+    });
   });
 
-  it('gives the container a tabIndex when it is focusable', () => {
-    const children = 'Hello';
-    const { view } = renderView({ children, focusable: true, id: 'test-id' });
+  describe('floating placement', () => {
+    it('renders a ToolTip target and not the ToolTip until mouseover', () => {
+      const { view } = renderView({
+        placement: 'floating',
+      });
 
-    const container = view.getByLabelText(children);
+      expect(view.getByText('Target'));
+      expect(view.queryByText('Hello')).toBeNull();
+    });
 
-    expect(container).toHaveAttribute('tabIndex', '0');
-  });
+    it('renders the children on mouseover', () => {
+      const { view } = renderView({
+        placement: 'floating',
+      });
 
-  it('does not give its container a role=button when it is not focusable', () => {
-    const { view } = renderView({ children, id: 'test-id' });
+      const target = view.getByText('Target');
 
-    const container = view.getByLabelText(children);
+      fireEvent.mouseOver(target);
 
-    expect(container).not.toHaveAttribute('role');
-  });
+      expect(view.getByText('Hello'));
+    });
 
-  it('does give its container a role=button when it is focusable', () => {
-    const { view } = renderView({ children, focusable: true, id: 'test-id' });
+    it('does not give its container a tabIndex when it is not focusable', () => {
+      const { view } = renderView({
+        placement: 'floating',
+      });
 
-    const container = view.getByRole('button');
+      expect(view.getByText('Target')).not.toHaveAttribute('tabIndex');
+    });
 
-    expect(container).toBeDefined();
+    it('gives the container a tabIndex when it is focusable', () => {
+      const { view } = renderView({
+        focusable: true,
+        placement: 'floating',
+      });
+
+      expect(view.getByText('Target')).toHaveAttribute('tabIndex', '0');
+    });
+
+    it('does not give its container a role=button when it is not focusable', () => {
+      const { view } = renderView({
+        placement: 'floating',
+      });
+
+      expect(view.getByText('Target')).not.toHaveAttribute('role');
+    });
+
+    it('does give its container a role=button when it is focusable', () => {
+      const { view } = renderView({
+        focusable: true,
+        placement: 'floating',
+      });
+
+      const container = view.getByRole('button');
+
+      expect(container).toBeDefined();
+    });
   });
 });

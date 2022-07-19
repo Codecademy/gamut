@@ -5,7 +5,7 @@ import React from 'react';
 
 import { newHeaderResourcesList } from '../../../lib/resourcesList';
 import { LayoutGridAntiAliased } from '../../shared';
-import { AppHeaderClickHandler } from '../types';
+import { AppHeaderClickHandler, AppHeaderLinkItem } from '../types';
 
 export type AppHeaderResourcesSectionProps = {
   action: AppHeaderClickHandler;
@@ -14,6 +14,7 @@ export type AppHeaderResourcesSectionProps = {
   id?: string;
   keyDownEvents?: (event: React.KeyboardEvent) => void;
   isOpen?: boolean;
+  handleClose?: () => void;
 };
 
 const StyledColumn = styled(Column)(
@@ -26,8 +27,16 @@ const StyledColumn = styled(Column)(
 export const AppHeaderResourcesSection = React.forwardRef<
   HTMLDivElement,
   AppHeaderResourcesSectionProps
->(({ action, isOpen, keyDownEvents }, ref) => {
+>(({ action, isOpen, keyDownEvents, handleClose }, ref) => {
   const tabIndex = isOpen === false ? -1 : 0;
+
+  const onClick = (
+    event: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
+    linkItem: AppHeaderLinkItem
+  ) => {
+    handleClose?.();
+    return action(event, linkItem);
+  };
 
   const DescriptionSection: React.FunctionComponent<{
     title: string;
@@ -71,7 +80,7 @@ export const AppHeaderResourcesSection = React.forwardRef<
                     textAlign={{ _: 'center', md: 'left' }}
                     href={section.link.href}
                     data-focusableresource="true"
-                    onClick={(event) => action(event, section.link!)}
+                    onClick={(event) => onClick(event, section.link!)}
                     tabIndex={tabIndex}
                     mt={{ _: 24, lg: section.description ? 24 : 48 }}
                     target={section.link.newTab ? '_blank' : '_self'}
@@ -91,7 +100,7 @@ export const AppHeaderResourcesSection = React.forwardRef<
                         data-focusableresource="true"
                         variant="interface"
                         href={href}
-                        onClick={(event) => action(event, item)}
+                        onClick={(event) => onClick(event, item)}
                         tabIndex={tabIndex}
                         pb={0}
                         target={newTab ? '_blank' : '_self'}
