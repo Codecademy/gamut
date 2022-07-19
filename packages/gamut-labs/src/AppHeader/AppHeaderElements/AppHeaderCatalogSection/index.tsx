@@ -200,7 +200,7 @@ export const AppHeaderCatalogSection = React.forwardRef<
                 textAlign={{ _: 'center', md: 'left' }}
                 href={catalogAnchorData.href}
                 data-focusablecatalog="true"
-                onClick={(event) => onClick(event, item as AppHeaderItem)}
+                onClick={(event) => onClick(event, catalogAnchorData)}
                 tabIndex={tabIndex}
                 mt={96}
                 pt={24}
