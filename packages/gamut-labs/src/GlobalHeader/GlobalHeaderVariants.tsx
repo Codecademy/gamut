@@ -18,8 +18,8 @@ import {
   myHome,
   pricingDropdown,
   pricingLink,
-  proLogo,
   proProfile,
+  refreshedResourcesDropdown,
   resourcesDropdown,
   signUp,
   tryProForFree,
@@ -32,6 +32,9 @@ const catalogComponent = (user?: User) =>
   user?.useNewCatalogDropdown
     ? catalogDropdown(user?.hideCareerPaths)
     : courseCatalog;
+
+const resourcesComponent = (user?: User) =>
+  user?.useNewCatalogDropdown ? refreshedResourcesDropdown : resourcesDropdown;
 
 // Simplify pricing dropdown to a normal link for users in India
 const pricingComponent = (user?: User) =>
@@ -47,7 +50,7 @@ const anonHeaderItems = (
   const leftItems: AppHeaderItem[] = [
     logo,
     catalogComponent(user),
-    resourcesDropdown,
+    resourcesComponent(user),
     communityDropdown,
     ...(hidePricing ? [] : [pricingComponent(user)]),
     businessSolutions,
@@ -92,7 +95,7 @@ const anonMobileHeaderItems = (
 
   const mainMenuItems: AppHeaderItem[] = [
     catalogComponent(user),
-    resourcesDropdown,
+    resourcesComponent(user),
     communityDropdown,
     ...(hidePricing ? [] : [pricingComponent(user)]),
     businessSolutions,
@@ -179,7 +182,7 @@ export const freeHeaderItems = (
     logo,
     myHome,
     catalogComponent(user),
-    resourcesDropdown,
+    resourcesComponent(user),
     communityDropdown,
     ...(hidePricing ? [] : [pricingComponent(user)]),
     businessSolutions,
@@ -216,7 +219,7 @@ export const freeMobileHeaderItems = (
   const mainMenuItems: AppHeaderItem[] = [
     myHome,
     catalogComponent(user),
-    resourcesDropdown,
+    resourcesComponent(user),
     communityDropdown,
     ...(hidePricing ? [] : [pricingComponent(user)]),
     businessSolutions,
@@ -243,11 +246,12 @@ export const proHeaderItems = (
   renderBookmarks?: () => ReactNode
 ): FormattedAppHeaderItems => {
   const leftItems: AppHeaderItem[] = [
-    user.hasNewSkuSubscription ? logo : proLogo,
+    logo,
     myHome,
     catalogComponent(user),
-    resourcesDropdown,
+    resourcesComponent(user),
     communityDropdown,
+    businessSolutions,
   ];
 
   const rightItems: AppHeaderItem[] = [];
@@ -273,16 +277,15 @@ export const proMobileHeaderItems = (
   user: User,
   renderBookmarks?: () => ReactNode
 ): FormattedMobileAppHeaderItems => {
-  const leftItems: AppHeaderItem[] = [
-    user.hasNewSkuSubscription ? logo : proLogo,
-  ];
+  const leftItems: AppHeaderItem[] = [logo];
   const rightItems: AppHeaderItem[] = [];
 
   const mainMenuItems: AppHeaderItem[] = [
     myHome,
     catalogComponent(user),
-    resourcesDropdown,
+    resourcesComponent(user),
     communityDropdown,
+    businessSolutions,
     proProfile(user),
   ];
 

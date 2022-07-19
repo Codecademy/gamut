@@ -82,6 +82,8 @@ We provide a single package to manage the versions of a few core dependencies: `
 
 Every PR that changes files in a package publishes alpha releases that you can use to test your changes across applications.
 
+> NOTE: in case an alpha build is not published upon opening of the PR or Draft PR, re-run the `build-test` check and that will re-run the alpha build publishing flows
+
 1.  Create a PR or Draft PR.
     - This will kickoff a Circle-CI workflow which will publish an alpha build. (This will appear in Github as the "Deploy")
 1.  After the alpha build is published, the `codecademydev` bot should comment on your PR with the names of the published alpha packages. <br/>

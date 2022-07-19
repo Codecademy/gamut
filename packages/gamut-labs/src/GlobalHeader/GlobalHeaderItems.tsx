@@ -20,6 +20,7 @@ import {
   AppHeaderLogoItem,
   AppHeaderProfileDropdownItem,
   AppHeaderRenderElementItem,
+  AppHeaderResourcesDropdownItem,
   AppHeaderSimpleDropdownItem,
   AppHeaderTextButtonItem,
 } from '../AppHeader/AppHeaderElements/types';
@@ -31,15 +32,6 @@ export const logo: AppHeaderLogoItem = {
   id: 'logo',
   href: '/',
   pro: false,
-  trackingTarget: 'topnav_logo',
-  type: 'logo',
-};
-
-export const proLogo: AppHeaderLogoItem = {
-  dataTestId: 'header-pro-logo',
-  href: '/',
-  id: 'pro-logo',
-  pro: true,
   trackingTarget: 'topnav_logo',
   type: 'logo',
 };
@@ -71,7 +63,7 @@ export const catalogDropdown = (
   icon: BookFlipPageIcon,
   id: 'catalog-dropdown',
   text: 'Catalog',
-  trackingTarget: 'topnav_catalog_dropdown',
+  trackingTarget: 'topnav_catalog',
   type: 'catalog-dropdown',
   hideCareerPaths,
 });
@@ -83,6 +75,15 @@ export const resourcesDropdown: AppHeaderSimpleDropdownItem = {
   popover: headerResourcesList,
   trackingTarget: 'topnav_resources',
   type: 'dropdown',
+};
+
+export const refreshedResourcesDropdown: AppHeaderResourcesDropdownItem = {
+  dataTestId: 'header-resources',
+  icon: NotebookIcon,
+  id: 'experimental-resources-dropdown',
+  text: 'Resources',
+  trackingTarget: 'topnav_resources',
+  type: 'experimental-resources-dropdown',
 };
 
 export const communityDropdown: AppHeaderSimpleDropdownItem = {
@@ -368,7 +369,7 @@ export const tryProForFree = (
   dataTestId: 'upgrade-link',
   id: 'try-pro',
   text: 'Try Pro For Free',
-  href: checkoutUrl || '/pro/membership',
+  href: checkoutUrl || '/pages/pro',
   trackingTarget: 'topnav_pro_trial',
   type: 'fill-button',
 });
@@ -379,7 +380,7 @@ export const upgradeToPro = (
   dataTestId: 'upgrade-link',
   id: 'upgrade-to-pro',
   text: 'Upgrade to Pro',
-  href: checkoutUrl || '/pro/membership',
+  href: checkoutUrl || '/pages/pro',
   trackingTarget: 'topnav_pro_upgrade',
   type: 'fill-button',
 });
