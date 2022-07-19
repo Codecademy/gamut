@@ -5,6 +5,7 @@ import {
   BackgroundExample,
   ColorModeExample,
   PrefersDarkModeExample,
+  SystemColorModeExample,
 } from './examples';
 
 <Meta
@@ -55,6 +56,22 @@ import { ColorMode } from '@codecademy/gamut-styles';
 
 const Page = ({ children }) => (
   <ColorMode mode="light">{children}</ColorMode>;
+);
+```
+
+### `system` Color Mode
+
+You can also provide `ColorMode` with `mode="system"` and it will automatically set the color mode based on the users preference.
+
+<SystemColorModeExample />
+
+### Usage
+
+```tsx
+import { ColorMode } from '@codecademy/gamut-styles';
+
+const Page = ({ children }) => (
+  <ColorMode mode="system">{children}</ColorMode>;
 );
 ```
 
