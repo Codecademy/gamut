@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [32.7.4](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@32.7.3...@codecademy/gamut-labs@32.7.4) (2022-07-19)
+
+
+### Bug Fixes
+
+* **GlobalHeader:** close dropdown on link click ([e1f0ff6](https://github.com/Codecademy/gamut/commit/e1f0ff6343d4eeff56c2a9594d8175a89679c774))
+
+
+
 ### [32.7.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@32.7.2...@codecademy/gamut-labs@32.7.3) (2022-07-18)
 
 **Note:** Version bump only for package @codecademy/gamut-labs
