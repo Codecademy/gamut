@@ -1,0 +1,18 @@
+{
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/eslint-plugin-gamut/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "outputs": ["{options.outputPath}"],
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "packages/eslint-plugin-gamut",
+        "outputPath": ["./dist"],
+        "commands": ["rm -rf ./dist", "tsc"],
+        "parallel": false
+      }
+    }
+  },
+  "tags": []
+}

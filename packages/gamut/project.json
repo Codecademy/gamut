@@ -1,0 +1,22 @@
+{
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/gamut/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "outputs": ["{options.outputPath}"],
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "packages/gamut",
+        "outputPath": ["./dist"],
+        "commands": [
+          "rm -rf ./dist",
+          "babel ./src --out-dir ./dist --copy-files --extensions \".ts,.tsx\"",
+          "tsc --emitDeclarationOnly"
+        ],
+        "parallel": false
+      }
+    }
+  },
+  "tags": []
+}

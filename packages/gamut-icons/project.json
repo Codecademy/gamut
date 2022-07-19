@@ -1,0 +1,24 @@
+{
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/gamut-icons/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "outputs": ["{options.outputPath}"],
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "packages/gamut-icons",
+        "outputPath": ["./dist", "./src/icons"],
+        "commands": [
+          "rm -rf ./dist",
+          "find ./src/svg -depth -type f \\( -name '*.svg' ! -name '*-icon.svg' \\) -exec sh -c 'mv \"$1\" \"${1%.svg}-icon.svg\"' _ {} \\;",
+          "rm -rf ./src/icons && svgr --out-dir ./src/icons --ext 'tsx' ./src/svg",
+          "babel ./src --out-dir ./dist --copy-files --extensions \".ts,.tsx\"",
+          "tsc --emitDeclarationOnly"
+        ],
+        "parallel": false
+      }
+    }
+  },
+  "tags": []
+}

@@ -13,19 +13,18 @@
     "test": "jest",
     "lint": "eslint --ignore-path .eslintignore \"./**/*.{mdx,js,ts,tsx,json}\" --max-warnings 0",
     "lint:fix": "yarn lint --fix",
-    "lerna": "lerna",
     "prettier": "prettier --ignore-path .prettierignore \"./**/*.{mdx,js,ts,tsx,json,css,scss}\"",
     "format": "yarn lint:fix && yarn prettier --write",
     "format:verify": "yarn prettier --check",
-    "verify": "turbo run verify --concurrency=3",
+    "verify": "lerna run verify --concurrency=3",
     "verify-all": "yarn verify",
     "clear-modules": "lerna clean -y && rm -rf node_modules",
-    "build": "turbo run build --concurrency=3",
+    "build": "lerna run build --concurrency=3",
     "build:graph": "yarn build --graph=build-graph.html",
     "build-all": "yarn build",
     "start": "yarn && yarn start:storybook",
     "start:storybook": "cd ./packages/styleguide && yarn start",
-    "build-storybook": "turbo run build-storybook && turbo run copy-storybook",
+    "build-storybook": "lerna run build-storybook && lerna run copy-storybook",
     "deploy": "cp -r ./dist/static/* ./dist/docs && gh-pages -b gh-pages -d dist"
   },
   "lint-staged": {
@@ -56,7 +55,8 @@
     "conventional-changelog-cli": "^2.0.34",
     "conventional-changelog-conventionalcommits": "^4.3.0",
     "gh-pages": "^2.2.0",
-    "lerna": "3.22.1"
+    "lerna": "5.1.8",
+    "nx": "14.4.3"
   },
   "devDependencies": {
     "@babel/cli": "7.17.10",
@@ -102,12 +102,12 @@
     "jest-junit": "^12.0.0",
     "lint-staged": "10.4.0",
     "mutationobserver-shim": "^0.3.3",
+    "node-sass": "7.0.1",
     "prettier": "2.2.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-helmet": "6.1.0",
     "react-test-renderer": "^17.0.2",
-    "turbo": "^1.1.2",
     "typescript": "4.4.2"
   },
   "resolutions": {
