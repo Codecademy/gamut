@@ -21,7 +21,24 @@ interface ModalView {
   confirmCta?: DialogButtonProps;
   cancelCta?: DialogButtonProps;
 }
-export interface ModalProps extends ModalBaseProps {
+export interface SingleViewModalProps extends ModalBaseProps {
+  size?: ComponentProps<typeof ModalContainer>['size'];
+  /**
+   * Whether to hide the default close button and pass your own through children
+   */
+  hideCloseButton?: boolean;
+  /**
+   * Whether to show scrollbar on content overflow
+   */
+  scrollable?: boolean;
+  views?: never;
+  /**
+   * Whether to disable X button at top right of modal
+   */
+  closeDisabled?: boolean;
+}
+
+export interface MultiViewModalProps extends ModalBaseProps {
   size?: ComponentProps<typeof ModalContainer>['size'];
   /**
    * Whether to hide the default close button and pass your own through children
@@ -34,12 +51,14 @@ export interface ModalProps extends ModalBaseProps {
   /**
    * Optional array of multiple screens
    */
-  views?: ModalView[];
+  views: ModalView[];
   /**
    * Whether to disable X button at top right of modal
    */
   closeDisabled?: boolean;
 }
+
+export type ModalProps = SingleViewModalProps | MultiViewModalProps;
 
 export const Modal: React.FC<ModalProps> = ({
   'aria-label': ariaLabel,
@@ -98,7 +117,7 @@ export const Modal: React.FC<ModalProps> = ({
           />
         )}
         <Box overflowY={scrollable ? 'auto' : 'visible'} gridArea="content">
-          {views && views?.length > 0 ? views[currentView].children : children}
+          {views?.[currentView].children || children}
         </Box>
         {views?.[currentView].cancelCta && (
           <TextButton
