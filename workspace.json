@@ -11,10 +11,10 @@
     "@codecademy/gamut-patterns": "packages/gamut-patterns",
     "@codecademy/gamut-styles": "packages/gamut-styles",
     "@codecademy/gamut-tests": "packages/gamut-tests",
-    "macros": "packages/macros",
+    "@codecademy/macros": "packages/macros",
     "@codecademy/markdown-overrides": "packages/markdown-overrides",
     "@codecademy/monaco": "packages/monaco",
-    "styleguide": "packages/styleguide",
+    "@codecademy/styleguide": "packages/styleguide",
     "@codecademy/variance": "packages/variance"
   }
 }

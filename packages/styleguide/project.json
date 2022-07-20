@@ -6,12 +6,12 @@
     "build-storybook": {
       "outputs": ["{options.outputPath}"],
       "executor": "nx:run-commands",
+      "dependsOn": ["^build"],
       "options": {
         "cwd": "packages/styleguide",
         "outputPath": ["./dist"],
         "commands": [
-          "rm -rf ./dist",
-          "NODE_ENV=production build-storybook --quiet -c .storybook -o ./dist"
+          "NODE_ENV=production ./node_modules/.bin/build-storybook --quiet -c .storybook -o ./dist"
         ],
         "parallel": false
       }
