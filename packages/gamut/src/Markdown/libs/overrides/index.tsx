@@ -4,7 +4,7 @@ import { get } from 'lodash';
 import React from 'react';
 
 import { PlainLi } from './Checkbox/elements';
-import { isCheckboxParent, isLabelText } from './utils';
+import { isCheckboxParent, isInput, isLabelText } from './utils';
 
 const processNodeDefinitions = new HtmlToReact.ProcessNodeDefinitions();
 
@@ -145,7 +145,7 @@ export const createInputOverride = (type: string, Override: OverrideSettings) =>
     shouldProcessNode(node: HTMLToReactNode) {
       return (
         isCheckboxParent(node, type) ||
-        (node?.name === 'input' && node?.attribs?.type === type) ||
+        isInput(node, type) ||
         isLabelText(node, type)
       );
     },
