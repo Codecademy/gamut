@@ -22,7 +22,7 @@ interface ModalView {
   cancelCta?: DialogButtonProps;
 }
 export interface SingleViewModalProps extends Omit<ModalBaseProps, 'children'> {
-  children?: Element | string;
+  children?: Element | React.ReactElement | string;
   size?: ComponentProps<typeof ModalContainer>['size'];
   /**
    * Whether to hide the default close button and pass your own through children
