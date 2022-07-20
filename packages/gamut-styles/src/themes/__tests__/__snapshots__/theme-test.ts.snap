@@ -74,6 +74,7 @@ Object {
     "modes": Object {
       "dark": Object {
         "background": "#10162F",
+        "background-contrast": "#000000",
         "background-current": "#10162F",
         "background-disabled": "#707382",
         "background-hover": "#585C6D",
@@ -98,6 +99,7 @@ Object {
       },
       "light": Object {
         "background": "#ffffff",
+        "background-contrast": "#ffffff",
         "background-current": "#ffffff",
         "background-disabled": "#DBDCE0",
         "background-hover": "#DBDCE0",
@@ -125,6 +127,7 @@ Object {
   "_variables": Object {
     "mode": Object {
       "--color-background": "var(--color-white)",
+      "--color-background-contrast": "var(--color-white)",
       "--color-background-current": "var(--color-white)",
       "--color-background-disabled": "var(--color-navy-200)",
       "--color-background-hover": "var(--color-navy-200)",
@@ -238,6 +241,7 @@ Object {
   },
   "colors": Object {
     "background": "var(--color-background)",
+    "background-contrast": "var(--color-background-contrast)",
     "background-current": "var(--color-background-current)",
     "background-disabled": "var(--color-background-disabled)",
     "background-hover": "var(--color-background-hover)",
@@ -360,6 +364,7 @@ monospace",
   "modes": Object {
     "dark": Object {
       "background": "navy-800",
+      "background-contrast": "black",
       "background-current": "navy-800",
       "background-disabled": "navy-500",
       "background-hover": "navy-600",
@@ -384,6 +389,7 @@ monospace",
     },
     "light": Object {
       "background": "white",
+      "background-contrast": "white",
       "background-current": "white",
       "background-disabled": "navy-200",
       "background-hover": "navy-200",
@@ -497,6 +503,7 @@ Object {
     "modes": Object {
       "dark": Object {
         "background": "#10162F",
+        "background-contrast": "#000000",
         "background-current": "#10162F",
         "background-disabled": "#707382",
         "background-hover": "#585C6D",
@@ -521,6 +528,7 @@ Object {
       },
       "light": Object {
         "background": "#ffffff",
+        "background-contrast": "#ffffff",
         "background-current": "#ffffff",
         "background-disabled": "#DBDCE0",
         "background-hover": "#DBDCE0",
@@ -548,6 +556,7 @@ Object {
   "_variables": Object {
     "mode": Object {
       "--color-background": "var(--color-white)",
+      "--color-background-contrast": "var(--color-white)",
       "--color-background-current": "var(--color-white)",
       "--color-background-disabled": "var(--color-navy-200)",
       "--color-background-hover": "var(--color-navy-200)",
@@ -661,6 +670,7 @@ Object {
   },
   "colors": Object {
     "background": "var(--color-background)",
+    "background-contrast": "var(--color-background-contrast)",
     "background-current": "var(--color-background-current)",
     "background-disabled": "var(--color-background-disabled)",
     "background-hover": "var(--color-background-hover)",
@@ -783,6 +793,7 @@ monospace",
   "modes": Object {
     "dark": Object {
       "background": "navy-800",
+      "background-contrast": "black",
       "background-current": "navy-800",
       "background-disabled": "navy-500",
       "background-hover": "navy-600",
@@ -807,6 +818,7 @@ monospace",
     },
     "light": Object {
       "background": "white",
+      "background-contrast": "white",
       "background-current": "white",
       "background-disabled": "navy-200",
       "background-hover": "navy-200",
@@ -930,6 +942,7 @@ Object {
     "modes": Object {
       "dark": Object {
         "background": "#10162F",
+        "background-contrast": "#000000",
         "background-current": "#10162F",
         "background-disabled": "#707382",
         "background-hover": "#585C6D",
@@ -979,6 +992,7 @@ Object {
       },
       "light": Object {
         "background": "#ffffff",
+        "background-contrast": "#ffffff",
         "background-current": "#ffffff",
         "background-disabled": "#DBDCE0",
         "background-hover": "#DBDCE0",
@@ -1031,6 +1045,7 @@ Object {
   "_variables": Object {
     "mode": Object {
       "--color-background": "var(--color-navy-800)",
+      "--color-background-contrast": "var(--color-black)",
       "--color-background-current": "var(--color-navy-800)",
       "--color-background-disabled": "var(--color-navy-500)",
       "--color-background-hover": "var(--color-navy-600)",
@@ -1179,6 +1194,7 @@ Object {
   },
   "colors": Object {
     "background": "var(--color-background)",
+    "background-contrast": "var(--color-background-contrast)",
     "background-current": "var(--color-background-current)",
     "background-disabled": "var(--color-background-disabled)",
     "background-hover": "var(--color-background-hover)",
@@ -1336,6 +1352,7 @@ monospace",
   "modes": Object {
     "dark": Object {
       "background": "navy-800",
+      "background-contrast": "black",
       "background-current": "navy-800",
       "background-disabled": "navy-500",
       "background-hover": "navy-600",
@@ -1385,6 +1402,7 @@ monospace",
     },
     "light": Object {
       "background": "white",
+      "background-contrast": "white",
       "background-current": "white",
       "background-disabled": "navy-200",
       "background-hover": "navy-200",

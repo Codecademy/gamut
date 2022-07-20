@@ -35,9 +35,7 @@ export const PopoverExample = (args: PopoverProps) => {
           onRequestClose={() => setOpen(false)}
         >
           <FlexBox flexDirection="column" p={16} alignItems="flex-start">
-            <Box fontSize={16} mb={8}>
-              Hooray!
-            </Box>
+            <Box mb={8}>Hooray!</Box>
             <FillButton size="small" onClick={() => setOpen(false)}>
               Close Popover
             </FillButton>
@@ -67,9 +65,7 @@ export const PopoverWithoutFocus = (args: PopoverProps) => {
           onRequestClose={() => setOpen(false)}
         >
           <FlexBox flexDirection="column" p={16} alignItems="flex-start">
-            <Box fontSize={16} mb={8}>
-              Nothing clickable here but the container has fallback focus
-            </Box>
+            Nothing clickable here but the container has fallback focus
           </FlexBox>
         </Popover>
       </Container>
