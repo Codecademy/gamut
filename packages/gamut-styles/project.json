@@ -7,7 +7,7 @@
       "outputs": ["{options.outputPath}"],
       "executor": "nx:run-commands",
       "options": {
-        "cwd": "packages/gamut-tests",
+        "cwd": "packages/gamut-styles",
         "outputPath": ["./dist"],
         "commands": [
           "rm -rf ./dist",
