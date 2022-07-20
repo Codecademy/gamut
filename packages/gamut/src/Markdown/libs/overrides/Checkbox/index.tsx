@@ -33,3 +33,9 @@ export const MarkdownCheckbox: React.FC<MarkdownCheckboxProps> = ({
     />
   );
 };
+
+// TO DO, FIGURE OUT LI STUFF
+// type === 'checkbox' &&
+//   node.children &&
+//   node.children[0]?.name === 'input' &&
+//   node.children[0]?.attribs?.type === type;
