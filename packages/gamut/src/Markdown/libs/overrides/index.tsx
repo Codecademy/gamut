@@ -3,6 +3,8 @@ import camelCaseMap from 'html-to-react/lib/camel-case-attribute-names';
 import { get } from 'lodash';
 import React from 'react';
 
+import { PlainLi } from './Checkbox/elements';
+
 const processNodeDefinitions = new HtmlToReact.ProcessNodeDefinitions();
 
 export interface AttributesMap {
@@ -141,6 +143,10 @@ export const createInputOverride = (type: string, Override: OverrideSettings) =>
   createTagOverride('input', {
     shouldProcessNode(node: HTMLToReactNode) {
       return (
+        (type === 'checkbox' &&
+          node.children &&
+          node.children[0]?.name === 'input' &&
+          node.children[0]?.attribs?.type === type) ||
         (node?.name === 'input' && node?.attribs?.type === type) ||
         (node?.prev?.name === 'input' && node?.prev?.attribs?.type === type)
       );
@@ -150,6 +156,14 @@ export const createInputOverride = (type: string, Override: OverrideSettings) =>
       const label = node?.next?.data;
 
       if (!Override.component) return null;
+
+      if (
+        type === 'checkbox' &&
+        node.children &&
+        node.children[0]?.name === 'input' &&
+        node.children[0]?.attribs?.type === type
+      )
+        return <PlainLi {...props} />;
 
       if (node?.prev?.name === 'input' && node?.prev?.attribs?.type === type)
         return null;
