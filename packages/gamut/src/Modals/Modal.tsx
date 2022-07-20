@@ -39,6 +39,7 @@ export interface SingleViewModalProps extends ModalBaseProps {
 }
 
 export interface MultiViewModalProps extends ModalBaseProps {
+  children?: never;
   size?: ComponentProps<typeof ModalContainer>['size'];
   /**
    * Whether to hide the default close button and pass your own through children
