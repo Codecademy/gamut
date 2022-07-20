@@ -38,7 +38,7 @@ export interface SingleViewModalProps extends ModalBaseProps {
   closeDisabled?: boolean;
 }
 
-export interface MultiViewModalProps extends ModalBaseProps {
+export interface MultiViewModalProps extends Omit<ModalBaseProps, 'children'> {
   children?: never;
   size?: ComponentProps<typeof ModalContainer>['size'];
   /**
