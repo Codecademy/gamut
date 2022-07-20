@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [33.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@32.7.6...@codecademy/gamut-labs@33.0.0) (2022-07-20)
+
+
+### ⚠ BREAKING CHANGES
+
+* **HeaderTab and HeaderContainer:** remove old unused components
+
+### Miscellaneous Chores
+
+* **HeaderTab and HeaderContainer:** remove old unused components ([ce3608a](https://github.com/Codecademy/gamut/commit/ce3608a2e1fa30130f9f0a083740bcf46296edb5))
+
+
+
 ### [32.7.6](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@32.7.5...@codecademy/gamut-labs@32.7.6) (2022-07-19)
 
 **Note:** Version bump only for package @codecademy/gamut-labs
