@@ -4572,13 +4572,6 @@
   resolved "https://registry.npmjs.org/@types/konami-code-js/-/konami-code-js-0.8.0.tgz#dd7b3bd23266d0d1c6bfcad870232b1a3788a883"
   integrity sha512-7fhuggz5XuuQJxWhVL/5i3oQEQ80jjp3yvwaWlwNjFbM40BELnzV4qKeyPDLtjsHC9NG6E7XT22epH9eDZC3zg==
 
-"@types/loadable__component@^5.13.4":
-  version "5.13.4"
-  resolved "https://registry.npmjs.org/@types/loadable__component/-/loadable__component-5.13.4.tgz#a4646b2406b1283efac1a9d9485824a905b33d4a"
-  integrity sha512-YhoCCxyuvP2XeZNbHbi8Wb9EMaUJuA2VGHxJffcQYrJKIKSkymJrhbzsf9y4zpTmr5pExAAEh5hbF628PAZ8Dg==
-  dependencies:
-    "@types/react" "*"
-
 "@types/lodash@4.14.168":
   version "4.14.168"
   resolved "https://registry.npmjs.org/@types/lodash/-/lodash-4.14.168.tgz#fe24632e79b7ade3f132891afff86caa5e5ce008"
