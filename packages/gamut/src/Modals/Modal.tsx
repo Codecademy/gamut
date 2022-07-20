@@ -1,14 +1,27 @@
 import { MiniDeleteIcon } from '@codecademy/gamut-icons';
-import React, { ComponentProps } from 'react';
+import React, { ComponentProps, useRef, useState } from 'react';
 
 import { Box } from '../Box';
-import { IconButton } from '../Button';
+import { FillButton, IconButton, TextButton } from '../Button';
 import { Overlay } from '../Overlay';
 import { Text } from '../Typography';
 import { ModalContainer } from './elements';
 import { ModalBaseProps } from './types';
 
-export interface ModalProps extends ModalBaseProps {
+interface DialogButtonProps {
+  children: React.ReactNode;
+  href?: string;
+  onClick?: ComponentProps<typeof FillButton>['onClick'];
+  disabled?: boolean;
+}
+interface ModalView {
+  title?: string;
+  children: React.ReactNode;
+  nextCta?: DialogButtonProps;
+  confirmCta?: DialogButtonProps;
+  cancelCta?: DialogButtonProps;
+}
+export interface SingleViewModalProps extends ModalBaseProps {
   size?: ComponentProps<typeof ModalContainer>['size'];
   /**
    * Whether to hide the default close button and pass your own through children
@@ -18,7 +31,35 @@ export interface ModalProps extends ModalBaseProps {
    * Whether to show scrollbar on content overflow
    */
   scrollable?: boolean;
+  views?: never;
+  /**
+   * Whether to disable X button at top right of modal
+   */
+  closeDisabled?: boolean;
 }
+
+export interface MultiViewModalProps extends Omit<ModalBaseProps, 'children'> {
+  children?: never;
+  size?: ComponentProps<typeof ModalContainer>['size'];
+  /**
+   * Whether to hide the default close button and pass your own through children
+   */
+  hideCloseButton?: boolean;
+  /**
+   * Whether to show scrollbar on content overflow
+   */
+  scrollable?: boolean;
+  /**
+   * Optional array of multiple screens
+   */
+  views: ModalView[];
+  /**
+   * Whether to disable X button at top right of modal
+   */
+  closeDisabled?: boolean;
+}
+
+export type ModalProps = SingleViewModalProps | MultiViewModalProps;
 
 export const Modal: React.FC<ModalProps> = ({
   'aria-label': ariaLabel,
@@ -30,8 +71,12 @@ export const Modal: React.FC<ModalProps> = ({
   scrollable = false,
   size = 'fluid',
   title,
+  views,
+  closeDisabled,
   ...rest
 }) => {
+  const buttonRef = useRef<HTMLButtonElement | null>(null);
+  const [currentView, setCurrentView] = useState(0);
   return (
     <Overlay
       shroud
@@ -45,18 +90,19 @@ export const Modal: React.FC<ModalProps> = ({
         aria-hidden="false"
         aria-modal="true"
         role="dialog"
-        layout="standard"
+        layout={views && views?.length > 0 ? 'dialog' : 'standard'}
         size={size}
         aria-live="polite"
       >
-        {title && (
+        {(title || views?.[currentView].title) && (
           <Text
             as={headingLevel}
             fontSize={20}
             lineHeight="base"
             gridArea="title"
+            aria-live="assertive"
           >
-            {title}
+            {title || views?.[currentView].title}
           </Text>
         )}
         {!hideCloseButton && (
@@ -67,11 +113,51 @@ export const Modal: React.FC<ModalProps> = ({
             icon={MiniDeleteIcon}
             onClick={onRequestClose}
             gridArea="close"
+            disabled={closeDisabled}
+            ref={buttonRef}
           />
         )}
-        <Box overflowY={scrollable ? 'auto' : 'visible'} gridArea="content">
-          {children}
+        <Box
+          overflowY={scrollable ? 'auto' : 'visible'}
+          gridArea="content"
+          data-testid="modal-content"
+        >
+          {views?.[currentView].children || children}
         </Box>
+        {views?.[currentView].cancelCta && (
+          <TextButton
+            {...views?.[currentView].cancelCta}
+            variant="secondary"
+            onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+              views?.[currentView].cancelCta?.onClick?.(e);
+              onRequestClose();
+            }}
+            justifySelf="end"
+            gridArea="cancel"
+          />
+        )}
+        {views?.[currentView].nextCta && (
+          <FillButton
+            {...views?.[currentView].nextCta}
+            variant="primary"
+            onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+              setCurrentView(currentView + 1);
+              buttonRef.current?.focus();
+              views?.[currentView].nextCta?.onClick?.(e);
+            }}
+            gridArea="confirm"
+          />
+        )}
+        {views?.[currentView].confirmCta && (
+          <FillButton
+            {...views?.[currentView].confirmCta}
+            variant="primary"
+            onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+              views?.[currentView].confirmCta?.onClick?.(e);
+            }}
+            gridArea="confirm"
+          />
+        )}
       </ModalContainer>
     </Overlay>
   );
