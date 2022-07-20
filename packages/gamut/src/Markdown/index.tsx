@@ -157,7 +157,6 @@ export class Markdown extends PureComponent<MarkdownProps> {
 
     const html = sanitizeMarkdown(rawHtml, sanitizationConfig);
 
-    console.log('raw', rawHtml);
     // Render html to a react tree
     const react = htmlToReactParser.parseWithInstructions(
       html,

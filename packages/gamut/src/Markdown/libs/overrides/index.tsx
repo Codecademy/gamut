@@ -4,6 +4,7 @@ import { get } from 'lodash';
 import React from 'react';
 
 import { PlainLi } from './Checkbox/elements';
+import { isCheckboxParent, isLabelText } from './utils';
 
 const processNodeDefinitions = new HtmlToReact.ProcessNodeDefinitions();
 
@@ -143,12 +144,9 @@ export const createInputOverride = (type: string, Override: OverrideSettings) =>
   createTagOverride('input', {
     shouldProcessNode(node: HTMLToReactNode) {
       return (
-        (type === 'checkbox' &&
-          node.children &&
-          node.children[0]?.name === 'input' &&
-          node.children[0]?.attribs?.type === type) ||
+        isCheckboxParent(node, type) ||
         (node?.name === 'input' && node?.attribs?.type === type) ||
-        (node?.prev?.name === 'input' && node?.prev?.attribs?.type === type)
+        isLabelText(node, type)
       );
     },
 
@@ -157,16 +155,9 @@ export const createInputOverride = (type: string, Override: OverrideSettings) =>
 
       if (!Override.component) return null;
 
-      if (
-        type === 'checkbox' &&
-        node.children &&
-        node.children[0]?.name === 'input' &&
-        node.children[0]?.attribs?.type === type
-      )
-        return <PlainLi {...props} />;
+      if (isCheckboxParent(node, type)) return <PlainLi {...props} />;
 
-      if (node?.prev?.name === 'input' && node?.prev?.attribs?.type === type)
-        return null;
+      if (isLabelText(node, type)) return null;
 
       return <Override.component label={label} {...props} />;
     },
