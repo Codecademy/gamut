@@ -117,7 +117,11 @@ export const Modal: React.FC<ModalProps> = ({
             ref={buttonRef}
           />
         )}
-        <Box overflowY={scrollable ? 'auto' : 'visible'} gridArea="content">
+        <Box
+          overflowY={scrollable ? 'auto' : 'visible'}
+          gridArea="content"
+          data-testid="modal-content"
+        >
           {views?.[currentView].children || children}
         </Box>
         {views?.[currentView].cancelCta && (
