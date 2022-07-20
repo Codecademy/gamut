@@ -32,9 +32,6 @@
   "cli": {
     "defaultCollection": "@nrwl/react"
   },
-  "@nrwl/js": {
-    "analyzeSourceFiles": true
-  },
   "generators": {
     "@nrwl/js:library": {
       "buildable": true

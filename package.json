@@ -19,12 +19,12 @@
     "verify": "lerna run verify --concurrency=3",
     "verify-all": "yarn verify",
     "clear-modules": "lerna clean -y && rm -rf node_modules",
-    "build": "lerna run build --concurrency=3",
-    "build:graph": "yarn build --graph=build-graph.html",
+    "build": "nx run-many --target=build --concurrency=3",
+    "build:graph": "nx graph",
     "build-all": "yarn build",
     "start": "yarn && yarn start:storybook",
     "start:storybook": "cd ./packages/styleguide && yarn start",
-    "build-storybook": "lerna run build-storybook && lerna run copy-storybook",
+    "build-storybook": "nx run @codecademy/styleguide:build-storybook && nx run --target=copy-storybook",
     "deploy": "cp -r ./dist/static/* ./dist/docs && gh-pages -b gh-pages -d dist"
   },
   "lint-staged": {

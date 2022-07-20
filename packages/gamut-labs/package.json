@@ -41,7 +41,8 @@
     "react-use": "15.3.8"
   },
   "devDependencies": {
-    "@codecademy/gamut-tests": "^4.0.7"
+    "@codecademy/gamut-tests": "^4.0.7",
+    "@types/loadable__component": "5.13.4"
   },
   "scripts": {
     "verify": "tsc --noEmit",
