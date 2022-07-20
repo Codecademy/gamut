@@ -19,7 +19,7 @@
     "verify": "nx run-many --target=verify --concurrency=3",
     "verify-all": "yarn verify",
     "clear-modules": "lerna clean -y && rm -rf node_modules",
-    "build": "nx run-many --target=build --concurrency=3",
+    "build": "nx run-many --target=build --all",
     "build:graph": "nx graph",
     "build-all": "yarn build",
     "start": "yarn && yarn start:storybook",

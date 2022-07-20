@@ -22,12 +22,5 @@
     "@testing-library/react": "^12.1.2",
     "@types/katex": "0.11.0"
   },
-  "scripts": {
-    "build:clean": "rm -rf dist",
-    "build:compile": "babel ./src --out-dir ./dist --copy-files --extensions \".ts,.tsx\"",
-    "build:types": "tsc --emitDeclarationOnly",
-    "build": "yarn build:clean && yarn build:compile && yarn build:types",
-    "lernaBuildTask": "yarn build"
-  },
   "license": "MIT"
 }
