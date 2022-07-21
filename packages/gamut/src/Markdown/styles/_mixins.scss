@@ -74,6 +74,7 @@
       counter-increment: ordered-list;
 
       &::before {
+        background: transparent;
         content: counter(ordered-list) ".";
         position: absolute;
         top: 0;
