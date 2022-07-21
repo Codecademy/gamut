@@ -2,11 +2,11 @@ import { MiniChevronDownIcon, MiniDeleteIcon } from '@codecademy/gamut-icons';
 import { Background, system, timing, variant } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import { motion } from 'framer-motion';
-import React, { useState } from 'react';
+import React, { isValidElement, useState } from 'react';
+import TruncateMarkup from 'react-truncate-markup';
 
 import { Box } from '../Box';
 import { FillButton, IconButton } from '../Button';
-import { Truncate } from '../Truncate';
 import { alertVariants, placementVariants } from './variants';
 
 export type AlertType = keyof typeof alertVariants;
@@ -82,12 +82,28 @@ export const Alert: React.FC<AlertProps> = ({
   const toggleState = expanded || isInline ? 'expanded' : 'collapsed';
   const tabIndex = hidden ? -1 : undefined;
 
-  const content = isInline ? (
-    children
-  ) : (
-    <Truncate expanded={expanded} onTruncate={setTruncated} lines={1}>
+  const floatingContent = expanded ? (
+    <Box as="span" display="inline-block" width="100%">
       {children}
-    </Truncate>
+    </Box>
+  ) : (
+    <TruncateMarkup
+      tokenize="characters"
+      ellipsis={<span>...</span>}
+      lines={1}
+      onTruncate={setTruncated}
+    >
+      {/** Truncate markup expects a single child element */}
+      <Box as="span" display="inline-block" width="100%">
+        {React.Children.map(children, (child) =>
+          isValidElement(child) || typeof child === 'string' ? (
+            child
+          ) : (
+            <TruncateMarkup.Atom>{child}</TruncateMarkup.Atom>
+          )
+        )}
+      </Box>
+    </TruncateMarkup>
   );
 
   const expandButton = truncated && (
@@ -124,7 +140,7 @@ export const Alert: React.FC<AlertProps> = ({
         initial={toggleState}
         animate={toggleState}
       >
-        {content}
+        {isInline ? children : floatingContent}
       </CollapsableContent>
       <Box>{expandButton}</Box>
       <Box alignSelf="center">{ctaButton}</Box>
