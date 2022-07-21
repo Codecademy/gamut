@@ -184,6 +184,43 @@ All of these methods default to true for accessibility reasons, and rely on sett
   </Story>
 </Canvas>
 
+## Multiple views
+
+<Canvas>
+  <Story
+    name="Multiple views"
+    args={{
+      title: undefined,
+      showCloseButton: true,
+      size: 'medium',
+      scrollable: true,
+      views: [
+        {
+          title: 'First view',
+          nextCta: { children: 'Next' },
+          cancelCta: { children: 'Close' },
+          children: <>Hey for the first time</>,
+        },
+        {
+          title: 'Second view',
+          nextCta: { children: 'Next' },
+          cancelCta: { children: 'Close' },
+          children: <>Hey for the second time</>,
+        },
+        {
+          title: 'Third view',
+          confirmCta: { children: 'Done' },
+          cancelCta: { children: 'Close' },
+          children: <>Last one</>,
+        },
+      ],
+    }}
+    height="750px"
+  >
+    {(args) => <Modal {...args} />}
+  </Story>
+</Canvas>
+
 ### Code Playground
 
 Edit attributes and see what’s possible to do with this component or get the exact output you want.

@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [59.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@58.5.0...@codecademy/styleguide@59.0.0) (2022-07-20)
+
+
+### ⚠ BREAKING CHANGES
+
+* **HeaderTab and HeaderContainer:** remove old unused components
+
+### Features
+
+* **Modal:** create TwoScreenModal variant ([6290cb9](https://github.com/Codecademy/gamut/commit/6290cb94297ff1d861b598ef368acced13008d83))
+
+
+### Miscellaneous Chores
+
+* **HeaderTab and HeaderContainer:** remove old unused components ([ce3608a](https://github.com/Codecademy/gamut/commit/ce3608a2e1fa30130f9f0a083740bcf46296edb5))
+
+
+
 ## [58.5.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@58.4.2...@codecademy/styleguide@58.5.0) (2022-07-19)
 
 
