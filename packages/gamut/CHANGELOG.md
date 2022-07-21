@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [48.3.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@48.2.1...@codecademy/gamut@48.3.0) (2022-07-20)
+
+
+### Features
+
+* **Modal:** create TwoScreenModal variant ([6290cb9](https://github.com/Codecademy/gamut/commit/6290cb94297ff1d861b598ef368acced13008d83))
+
+
+
 ### [48.2.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@48.2.0...@codecademy/gamut@48.2.1) (2022-07-19)
 
 **Note:** Version bump only for package @codecademy/gamut

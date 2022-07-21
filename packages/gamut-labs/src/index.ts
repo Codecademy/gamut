@@ -23,8 +23,6 @@ export * from './ErrorContents';
 export * from './GlobalFooter';
 export * from './GlobalHeader';
 export * from './GlobalPage';
-export * from './Header/HeaderContainer';
-export * from './Header/HeaderTab';
 export * from './HorizontalScrollMenu';
 export * from './HubCard';
 export * from './InfoCard';
