@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 
 import { Checkbox, CheckboxProps } from '../../../../Form';
 
-export const MarkdownCheckbox: React.FC<CheckboxProps> = ({
+export type MarkdownCheckboxProps = Pick<CheckboxProps, 'checked'> & {
+  label: string;
+};
+
+export const MarkdownCheckbox: React.FC<MarkdownCheckboxProps> = ({
   checked = false,
   label,
-  ...props
 }) => {
-  const sanitizedHtmlFor = typeof label === 'string' ? label : label.toString();
-
   const [currentChecked, setCurrentChecked] = useState(checked);
 
   const changeHandler = () => {
@@ -18,7 +19,7 @@ export const MarkdownCheckbox: React.FC<CheckboxProps> = ({
   return (
     <Checkbox
       checked={currentChecked}
-      htmlFor={sanitizedHtmlFor}
+      htmlFor={label}
       label={label}
       onChange={changeHandler}
       spacing="tight"
