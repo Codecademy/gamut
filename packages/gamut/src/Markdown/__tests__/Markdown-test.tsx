@@ -35,6 +35,12 @@ const youtubeMarkdown = `
 <iframe src="https://www.youtube.com/embed/KvgrQIK1yPY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 `;
 
+const checkboxMarkdown = `
+- [ ] checkbox
+- [x] default checked checkbox
+- [ ] third checkbox
+`;
+
 const renderWrapper = setupEnzyme(Markdown);
 
 describe('<Markdown />', () => {
@@ -330,6 +336,47 @@ var test = true;
       expect(text).not.toEqual(expectedText);
       const { wrapper } = renderWrapper({ inline: true, text });
       expect(wrapper.text().trim()).toEqual(expectedText);
+    });
+  });
+
+  describe('MarkdownCheckbox', () => {
+    it('replaces checkbox inputs with the MarkdownCheckbox element', () => {
+      const { wrapper } = renderWrapper({
+        text: checkboxMarkdown,
+      });
+
+      expect(wrapper.find('MarkdownCheckbox').length).toEqual(3);
+    });
+
+    it('replaces parent li with PlainLi component', () => {
+      const { wrapper } = renderWrapper({
+        text: checkboxMarkdown,
+      });
+
+      expect(wrapper.find('PlainLi').length).toEqual(3);
+    });
+
+    it('sets the default checked state correctly', () => {
+      const { wrapper } = renderWrapper({
+        text: ` - [x] default checked checkbox
+`,
+      });
+
+      expect(wrapper.find('input').props().checked).toBe(true);
+    });
+
+    it('allows checkboxes to be checked and unchecked', () => {
+      const { wrapper } = renderWrapper({
+        text: ` - [ ] default checked checkbox
+`,
+      });
+
+      const checkboxInput = wrapper.find('input');
+      expect(checkboxInput.props().checked).toBe(false);
+
+      checkboxInput.simulate('change');
+
+      expect(wrapper.find('input').props().checked).toBe(true);
     });
   });
 });
