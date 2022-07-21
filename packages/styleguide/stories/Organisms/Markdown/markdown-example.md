@@ -218,6 +218,7 @@ List items may consist of `ul` and `ol` nested items:
   3. And a third
 
 - A second unordered list item.
+- A third!
 
 To put a blockquote within a list item, the blockquote's `>`
 delimiters need to be indented:
