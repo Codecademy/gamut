@@ -3,6 +3,67 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [59.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@58.5.0...@codecademy/styleguide@59.0.0) (2022-07-20)
+
+
+### ⚠ BREAKING CHANGES
+
+* **HeaderTab and HeaderContainer:** remove old unused components
+
+### Features
+
+* **Modal:** create TwoScreenModal variant ([6290cb9](https://github.com/Codecademy/gamut/commit/6290cb94297ff1d861b598ef368acced13008d83))
+
+
+### Miscellaneous Chores
+
+* **HeaderTab and HeaderContainer:** remove old unused components ([ce3608a](https://github.com/Codecademy/gamut/commit/ce3608a2e1fa30130f9f0a083740bcf46296edb5))
+
+
+
+## [58.5.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@58.4.2...@codecademy/styleguide@58.5.0) (2022-07-19)
+
+
+### Features
+
+* **ColorMode:** Adding "system" option to ColorMode ([#2439](https://github.com/Codecademy/gamut/issues/2439)) ([a3e6a47](https://github.com/Codecademy/gamut/commit/a3e6a47d610b840b76b87f167e90777483482c99))
+
+
+
+### [58.4.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@58.4.1...@codecademy/styleguide@58.4.2) (2022-07-19)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [58.4.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@58.4.0...@codecademy/styleguide@58.4.1) (2022-07-19)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [58.4.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@58.3.0...@codecademy/styleguide@58.4.0) (2022-07-18)
+
+
+### Features
+
+* **Tag:** add Tag component ([10e5b11](https://github.com/Codecademy/gamut/commit/10e5b11e2f807478cfb838525c300efcd4be38d4))
+
+
+
+## [58.3.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@58.2.1...@codecademy/styleguide@58.3.0) (2022-07-15)
+
+
+### Features
+
+* **Tooltip:** Add tooltip placements ([8bb047c](https://github.com/Codecademy/gamut/commit/8bb047c61f783b919b04b7c0cc08c5e88fbed00b))
+
+
+
 ### [58.2.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@58.2.0...@codecademy/styleguide@58.2.1) (2022-07-14)
 
 **Note:** Version bump only for package @codecademy/styleguide

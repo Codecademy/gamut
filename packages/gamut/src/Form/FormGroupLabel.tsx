@@ -4,18 +4,9 @@ import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
 import React, { HTMLAttributes } from 'react';
 
-import { FlexBox } from '..';
+import { Box, FlexBox } from '..';
 import { ToolTip, ToolTipProps } from '../ToolTip';
 import { formBaseStyles, formFieldTextDisabledStyles } from './styles';
-
-const StyledToolTipContainer = styled.span`
-  position: absolute;
-  left: calc(100% - 1.1rem);
-`;
-
-const StyledToolTip = styled(ToolTip)`
-  z-index: 1;
-`;
 
 const labelSizeVariants = variant({
   defaultVariant: 'small',
@@ -82,8 +73,8 @@ export const FormGroupLabel: React.FC<FormGroupLabelProps> = ({
         {showRequired ? ' *' : ''}
       </Label>
       {tooltip && (
-        <StyledToolTipContainer>
-          <StyledToolTip
+        <Box as="span" position="absolute" left="calc(100% - 1.1rem)">
+          <ToolTip
             alignment="bottom-right"
             focusable
             target={
@@ -91,7 +82,7 @@ export const FormGroupLabel: React.FC<FormGroupLabelProps> = ({
             }
             {...tooltip}
           />
-        </StyledToolTipContainer>
+        </Box>
       )}
     </FlexBox>
   );

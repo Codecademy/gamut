@@ -369,7 +369,7 @@ export const tryProForFree = (
   dataTestId: 'upgrade-link',
   id: 'try-pro',
   text: 'Try Pro For Free',
-  href: checkoutUrl || '/pro/membership',
+  href: checkoutUrl || '/pages/pro',
   trackingTarget: 'topnav_pro_trial',
   type: 'fill-button',
 });
@@ -380,7 +380,7 @@ export const upgradeToPro = (
   dataTestId: 'upgrade-link',
   id: 'upgrade-to-pro',
   text: 'Upgrade to Pro',
-  href: checkoutUrl || '/pro/membership',
+  href: checkoutUrl || '/pages/pro',
   trackingTarget: 'topnav_pro_upgrade',
   type: 'fill-button',
 });

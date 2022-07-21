@@ -1,5 +1,4 @@
 import { Popover } from '@codecademy/gamut-labs/src';
-import { ColorMode } from '@codecademy/gamut-styles/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
@@ -55,26 +54,12 @@ Using the beak prop, you can add a beak to the popover.
 ## Outline
 
 Using the outline prop, you can add an outline to the popover.
-The outline color is theme.colors.secondary
+The outline color is theme.colors.secondary so in Dark Mode, the outline will be white. Please swap the ColorMode in the toolbar above to check this out in action!
 
 <Canvas>
   <Story name="Outline">
     {(args) => {
       return <PopoverExample {...args} outline />;
-    }}
-  </Story>
-</Canvas>
-
-In dark mode, outline will be white.
-
-<Canvas>
-  <Story name="Dark" args={{ mode: 'dark' }}>
-    {(args) => {
-      return (
-        <ColorMode mode="dark">
-          <PopoverExample {...args} outline />
-        </ColorMode>
-      );
     }}
   </Story>
 </Canvas>
@@ -100,6 +85,30 @@ This is to resolve the error that the focus trap throws when there is no focusab
   <Story name="Popover (without focusable element)">
     {(args) => {
       return <PopoverWithoutFocus {...args} />;
+    }}
+  </Story>
+</Canvas>
+
+## Animation
+
+Adds a 'fade' animation to Popovers - should only be usef when specified within designs.
+
+<Canvas>
+  <Story name="Animation">
+    {(args) => {
+      return <PopoverWithoutFocus animation="fade" {...args} />;
+    }}
+  </Story>
+</Canvas>
+
+## Variant
+
+Popovers have a secondary, tooltip-esque variant style that have a smaller beak, padding, + base font size, and different background colors. Check it out in light mode and dark mode!
+
+<Canvas>
+  <Story name="Variant">
+    {(args) => {
+      return <PopoverWithoutFocus variant="secondary" {...args} />;
     }}
   </Story>
 </Canvas>
