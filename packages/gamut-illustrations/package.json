@@ -29,9 +29,6 @@
     "type": "git",
     "url": "git+ssh://git@github.com/Codecademy/gamut.git"
   },
-  "scripts": {
-    "verify": "tsc --noEmit"
-  },
   "sideEffects": [
     "dist/**/[A-Z]**/[A-Z]*.js",
     "dist/**/[A-Z]**/index.js"
