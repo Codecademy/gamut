@@ -191,6 +191,26 @@ Text has some special props with common use cases to make your life easier.
   </LayoutGrid>
 </Story>
 
+### Highlight
+
+<Story name="Highlight">
+  <LayoutGrid gap={32} mt={24} mb={48}>
+    {typographyUtilities.screenreader.map((variant) => (
+      <Fragment key={variant}>
+        <Column size={3} alignItems="center">
+          <Text>
+            A{' '}
+            <Text as="span" highlight>
+              highlighted
+            </Text>{' '}
+            example
+          </Text>
+        </Column>
+      </Fragment>
+    ))}
+  </LayoutGrid>
+</Story>
+
 ## Code Playground
 
 Edit attributes and see what’s possible to do with this component or get the exact output you want.
