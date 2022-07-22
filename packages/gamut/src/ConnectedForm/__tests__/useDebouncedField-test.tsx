@@ -152,7 +152,7 @@ describe('ConnectedForm - useDebouncedField', () => {
 
     expect(input.value).toEqual(mockChangeValue);
   });
-  it('can handle non-string values', async () => {
+  it('can handle non-string values (aka a checkbox)', async () => {
     const { view } = renderCheckboxView();
 
     const input = view.getByRole('checkbox') as HTMLInputElement;
