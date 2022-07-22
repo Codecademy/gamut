@@ -5,6 +5,9 @@
   "author": "Jake Hiller <jake@codecademy.com>",
   "main": "dist/index.js",
   "module": "dist/index.js",
+  "scripts": {
+    "build": "nx build @codecademy/gamut-styles"
+  },
   "repository": {
     "type": "git",
     "url": "git@github.com:Codecademy/gamut.git"

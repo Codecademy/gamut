@@ -29,7 +29,8 @@
     "url": "git+https://github.com/Codecademy/gamut.git"
   },
   "scripts": {
-    "verify": "tsc --noEmit"
+    "verify": "tsc --noEmit",
+    "build": "nx build @codecademy/gamut-tests"
   },
   "types": "./dist/index.d.ts"
 }

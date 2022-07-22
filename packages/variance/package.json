@@ -22,11 +22,7 @@
     "url": "git+https://github.com/Codecademy/gamut.git"
   },
   "scripts": {
-    "build:clean": "rm -rf ./dist",
-    "build:compile": "tsc -b",
-    "build:transpile": "babel ./src --out-dir ./dist --copy-files --extensions \".ts,.tsx\"",
-    "build": "yarn build:clean && yarn build:compile && yarn build:transpile",
-    "lernaBuildTask": "yarn build"
+    "build": "nx build @codecademy/variance"
   },
   "peerDependencies": {
     "@emotion/react": "*",

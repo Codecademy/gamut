@@ -29,6 +29,9 @@
     "type": "git",
     "url": "git+ssh://git@github.com/Codecademy/gamut.git"
   },
+  "scripts": {
+    "build": "nx build @codecademy/gamut-illustrations"
+  },
   "sideEffects": [
     "dist/**/[A-Z]**/[A-Z]*.js",
     "dist/**/[A-Z]**/index.js"

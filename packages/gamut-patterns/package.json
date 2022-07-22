@@ -34,8 +34,8 @@
     "url": "git+ssh://git@github.com/Codecademy/gamut.git"
   },
   "scripts": {
-    "verify": "tsc --noEmit",
-    "format": "svgo -f ./src/svg --pretty --config=.svgo.yml"
+    "format": "svgo -f ./src/svg --pretty --config=.svgo.yml",
+    "build": "nx build @codecademy/gamut-patterns"
   },
   "sideEffects": false,
   "version": "0.8.8"
