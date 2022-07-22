@@ -54,7 +54,8 @@ export type CheckboxProps = Omit<
      * }` being submitted to your (non-`Connected`) form when the checkbox is checked.
      * However, if due to how your HOC is organized, the Checkbox recieves a value
      * of the boolean `false` when it is unchecked, NOTHING will be submitted. You
-     * _will not_ get `{ isPro: "false" }`.
+     * _will not_ get `{ isPro: "false" }` on submit. However, the `value` of your input
+     * will be "false"
      *
      * As the MDN documentation above states:
      * "If a checkbox is unchecked when its form is submitted, there is no value submitted to the server to represent its unchecked state (e.g. value=unchecked); the value is not submitted to the server at all"

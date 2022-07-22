@@ -41,21 +41,18 @@ const FormWrapper: React.FC = ({ children }) => (
       [mockInputKey]: mockDefaultValue,
       [mockChangeKey]:
         'Final Fantasy VII Remake is a 2020 action role-playing game developed and published by Square Enix.',
-      [mockCheckboxKey]: null,
+      [mockCheckboxKey]: false,
     }}
   >
     {children}
   </ConnectedForm>
 );
 
-interface TestInputProps {
-  useCheckbox?: boolean;
-}
-
-const TestInput: React.FC<TestInputProps> = ({ useCheckbox }) => {
+const TestTextInput: React.FC = () => {
   const { onBlur, onChange, value } = useDebouncedField({
-    name: useCheckbox ? mockCheckboxKey : mockInputKey,
+    name: mockInputKey,
     watchUpdateKeyName: mockChangeKey,
+    type: 'text',
   });
   const { reset } = useFormState();
 
@@ -69,25 +66,14 @@ const TestInput: React.FC<TestInputProps> = ({ useCheckbox }) => {
 
   return (
     <>
-      {useCheckbox ? (
-        <Checkbox
-          onChange={onChange}
-          onBlur={onBlur}
-          value={false}
-          checked={Boolean(value)}
-          label="Checkbox"
-          htmlFor={mockCheckboxKey}
-        />
-      ) : (
-        <Input
-          name={mockInputKey}
-          type="text"
-          onChange={onChange}
-          onBlur={onBlur}
-          value={value}
-          htmlFor={mockInputKey}
-        />
-      )}
+      <Input
+        name={mockInputKey}
+        type="text"
+        onChange={onChange}
+        onBlur={onBlur}
+        value={value}
+        htmlFor={mockInputKey}
+      />
       <button type="button" onClick={contrivedOnClick}>
         Click Me
       </button>
@@ -95,63 +81,84 @@ const TestInput: React.FC<TestInputProps> = ({ useCheckbox }) => {
   );
 };
 
-const renderView = setupRtl(TestInput).options({ wrapper: FormWrapper });
+const TestCheckboxInput: React.FC = () => {
+  const { onBlur, onChange, value } = useDebouncedField({
+    name: mockCheckboxKey,
+    type: 'checkbox',
+  });
+
+  return (
+    <Checkbox
+      onChange={onChange}
+      onBlur={onBlur}
+      checked={Boolean(value)}
+      label="Checkbox"
+      htmlFor={mockCheckboxKey}
+    />
+  );
+};
+
+const renderView = setupRtl(TestTextInput).options({ wrapper: FormWrapper });
+const renderCheckboxView = setupRtl(TestCheckboxInput).options({
+  wrapper: FormWrapper,
+});
 
 describe('ConnectedForm - useDebouncedField', () => {
-  // it('should properly receive the default value', () => {
-  //   const { view } = renderView();
+  it('should properly receive the default value', () => {
+    const { view } = renderView();
 
-  //   const input = view.getByRole('textbox') as HTMLInputElement;
-  //   expect(input.value).toEqual(mockDefaultValue);
-  // });
-  // it('should allow users to change the value', async () => {
-  //   const { view } = renderView();
-  //   const input = view.getByRole('textbox') as HTMLInputElement;
-  //   fireEvent.change(input, { target: { value: mockChangeValue } });
+    const input = view.getByRole('textbox') as HTMLInputElement;
+    expect(input.value).toEqual(mockDefaultValue);
+  });
+  it('should allow users to change the value', async () => {
+    const { view } = renderView();
+    const input = view.getByRole('textbox') as HTMLInputElement;
+    fireEvent.change(input, { target: { value: mockChangeValue } });
 
-  //   expect(input.value).toEqual(mockChangeValue);
-  // });
-  // it("should ONLY update the input's value on the form on blur of input", async () => {
-  //   const { view } = renderView();
+    expect(input.value).toEqual(mockChangeValue);
+  });
+  it("should ONLY update the input's value on the form on blur of input", async () => {
+    const { view } = renderView();
 
-  //   const input = view.getByRole('textbox') as HTMLInputElement;
+    const input = view.getByRole('textbox') as HTMLInputElement;
 
-  //   input.focus();
-  //   expect(mockedSetValue).toHaveBeenCalledTimes(0);
-  //   await act(async () => {
-  //     fireEvent.change(input, { target: { value: 't' } });
-  //     fireEvent.change(input, { target: { value: 'ti' } });
-  //     fireEvent.change(input, { target: { value: 'tif' } });
-  //     fireEvent.change(input, { target: { value: 'tifa' } });
-  //   });
-  //   // Form has been dirtied by changing input
-  //   expect(mockedSetValue).toHaveBeenCalledTimes(1);
-  //   expect(mockedSetValue).lastCalledWith('', '', { shouldDirty: true });
+    input.focus();
+    expect(mockedSetValue).toHaveBeenCalledTimes(0);
+    await act(async () => {
+      fireEvent.change(input, { target: { value: 't' } });
+      fireEvent.change(input, { target: { value: 'ti' } });
+      fireEvent.change(input, { target: { value: 'tif' } });
+      fireEvent.change(input, { target: { value: 'tifa' } });
+    });
+    // Form has been dirtied by changing input
+    expect(mockedSetValue).toHaveBeenCalledTimes(1);
+    expect(mockedSetValue).lastCalledWith('', '', { shouldDirty: true });
 
-  //   input.blur();
-  //   // Now it has finally been called to update the data
-  //   expect(mockedSetValue).toHaveBeenCalledTimes(2);
-  //   expect(mockedSetValue).lastCalledWith(mockInputKey, 'tifa');
-  // });
-  // it('should update the "initial" value of the input based on a change to the `watchUpdateKeyName` value', async () => {
-  //   const { view } = renderView();
-  //   const input = view.getByRole('textbox') as HTMLInputElement;
-  //   const changeButton = view.getByRole('button');
+    input.blur();
+    // Now it has finally been called to update the data
+    expect(mockedSetValue).toHaveBeenCalledTimes(2);
+    expect(mockedSetValue).lastCalledWith(mockInputKey, 'tifa');
+  });
+  it('should update the "initial" value of the input based on a change to the `watchUpdateKeyName` value', async () => {
+    const { view } = renderView();
+    const input = view.getByRole('textbox') as HTMLInputElement;
+    const changeButton = view.getByRole('button');
 
-  //   expect(input.value).toEqual(mockDefaultValue);
+    expect(input.value).toEqual(mockDefaultValue);
 
-  //   await act(async () => {
-  //     fireEvent.click(changeButton);
-  //   });
+    await act(async () => {
+      fireEvent.click(changeButton);
+    });
 
-  //   expect(input.value).toEqual(mockChangeValue);
-  // });
+    expect(input.value).toEqual(mockChangeValue);
+  });
   it('can handle non-string values', async () => {
-    const { view } = renderView({ useCheckbox: true });
+    const { view } = renderCheckboxView();
 
     const input = view.getByRole('checkbox') as HTMLInputElement;
     expect(input.checked).toBe(false);
-    expect(input.value).toBeFalsy();
+
+    expect(mockedSetValue).toHaveBeenCalledTimes(0);
 
     input.focus();
 
@@ -159,8 +166,24 @@ describe('ConnectedForm - useDebouncedField', () => {
       fireEvent.click(input);
     });
 
-    console.log('test input value: ', input.value);
+    expect(mockedSetValue).toHaveBeenCalledTimes(1);
 
+    input.blur();
+
+    expect(mockedSetValue).toHaveBeenLastCalledWith(mockCheckboxKey, true);
     expect(input.checked).toBe(true);
+    expect(mockedSetValue).toHaveBeenCalledTimes(2);
+
+    input.focus();
+
+    await act(async () => {
+      fireEvent.click(input);
+    });
+
+    input.blur();
+
+    expect(mockedSetValue).toHaveBeenLastCalledWith(mockCheckboxKey, false);
+    expect(input.checked).toBe(false);
+    expect(mockedSetValue).toHaveBeenCalledTimes(3);
   });
 });

@@ -277,11 +277,10 @@ export const useMakeSetFormDirty = () => {
 };
 
 /**
- * TODO:
  * The HTMLInputTypeAttribute type includes
  * (string | {}) which is a "hack" that allows ts autocomplete
  * to suggest the actual input types while also accepting any random string.
- * However, this type pollutes the autocomplete for the `type` prop below
+ * However, this type breaks down the overall type for the `type` prop below
  * due to it being passed through a few layers of <T extends ...>
  * and it ends up just being a string with no autocomplete.
  *
