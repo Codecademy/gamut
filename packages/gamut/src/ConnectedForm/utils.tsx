@@ -276,11 +276,47 @@ export const useMakeSetFormDirty = () => {
   };
 };
 
-// TODO: This isn't working, but there's SOMETHING here
-// type test<T> = string & {} extends T ? never : T;
-// type test2 = test<HTMLInputTypeAttribute>;
-
-type InputTypes = HTMLInputTypeAttribute | 'textarea' | 'select';
+/**
+ * TODO:
+ * The HTMLInputTypeAttribute type includes
+ * (string | {}) which is a "hack" that allows ts autocomplete
+ * to suggest the actual input types while also accepting any random string.
+ * However, this type pollutes the autocomplete for the `type` prop below
+ * due to it being passed through a few layers of <T extends ...>
+ * and it ends up just being a string with no autocomplete.
+ *
+ * I'm extracting the relevant, usable types here from HTMLInputTypeAttribute
+ * but would love to figure out a programatic solution.
+ *
+ * See https://github.com/Microsoft/TypeScript/issues/12215#issuecomment-414783301
+ * for something that I think could be modified to make this better
+ * but I couldn't get it to work
+ */
+type InputTypes =
+  | Extract<
+      HTMLInputTypeAttribute,
+      | 'number'
+      | 'color'
+      | 'date'
+      | 'datetime-local'
+      | 'time'
+      | 'image'
+      | 'checkbox'
+      | 'text'
+      | 'hidden'
+      | 'password'
+      | 'radio'
+      | 'range'
+      | 'email'
+      | 'search'
+      | 'month'
+      | 'tel'
+      | 'time'
+      | 'url'
+      | 'week'
+    >
+  | 'textarea'
+  | 'select';
 
 type DebouncedFieldProps<T extends InputTypes> = Omit<
   GetInitialFormValueProps,
@@ -312,9 +348,11 @@ export function useDebouncedField<T extends InputTypes>({
 
   const setFormDirty = useMakeSetFormDirty();
 
-  const onChange: ChangeEventHandler<T> = (e) => {
+  const onChange: ChangeEventHandler<
+    HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+  > = (e) => {
     // Per React Hook Form
-    // these are the only two Event value options
+    // these are the only two relevant Event value options
     // See https://github.dev/react-hook-form/react-hook-form/blob/f52f2ddbdd13d968926765408ac734a2a42cad2a/src/logic/getEventValue.ts#L6
     setLocalValue(
       type === 'checkbox'
