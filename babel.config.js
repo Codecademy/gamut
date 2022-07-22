@@ -1,4 +1,5 @@
 module.exports = {
+  babelrcRoots: ['*'],
   presets: ['codecademy', '@babel/preset-typescript'],
   plugins: [
     'macros',

@@ -1,0 +1,30 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "lib": ["es2017", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@codecademy/gamut-labs": ["packages/gamut-labs/src/index.ts"],
+      "@codecademy/gamut": ["packages/gamut/src/index.ts"],
+      "@codecademy/gamut-icons": ["packages/gamut-icons/src/index.ts"],
+      "@codecademy/gamut-patterns": ["packages/gamut-patterns/src/index.ts"],
+      "@codecademy/gamut-illustrations": [
+        "packages/gamut-illustrations/src/index.ts"
+      ],
+      "@codecademy/gamut-styles": ["packages/gamut-styles/src/index.ts"],
+      "@codecademy/gamut-tests": ["packages/gamut-tests/src/index.tsx"]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}

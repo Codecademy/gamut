@@ -1,13 +1,26 @@
 {
-  "extends": "../../tsconfig.json",
-  "include": [
-    "../../typings/*.d.ts",
-    "./src/**/*.ts",
-    "./src/**/*.tsx",
-    "../../packages/gamut-styles/dist/typings/theme.d.ts",
-    "typings/react-freezeframe.d.ts"
-  ],
+  "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "outDir": "./dist"
-  }
+    "jsx": "react-jsx",
+    "jsxImportSource": "@emotion/react",
+    "allowJs": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "noImplicitOverride": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true
+  },
+  "files": [],
+  "include": [],
+  "references": [
+    {
+      "path": "./tsconfig.lib.json"
+    },
+    {
+      "path": "./tsconfig.spec.json"
+    }
+  ]
 }

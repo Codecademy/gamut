@@ -1,6 +1,8 @@
+const nxPreset = require('@nrwl/jest/preset').default;
 const path = require('path');
 
 module.exports = (packageName, overrides) => ({
+  ...nxPreset,
   testEnvironment: 'jest-environment-jsdom',
   clearMocks: true,
   verbose: true,
