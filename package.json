@@ -16,7 +16,7 @@
     "prettier": "prettier --ignore-path .prettierignore \"./**/*.{mdx,js,ts,tsx,json,css,scss}\"",
     "format": "yarn lint:fix && yarn prettier --write",
     "format:verify": "yarn prettier --check",
-    "verify": "nx run-many --target=verify --concurrency=3 --all",
+    "verify": "nx run-many --target=verify --parallel=3 --all",
     "verify-all": "yarn verify",
     "clear-modules": "lerna clean -y && rm -rf node_modules",
     "build": "nx run-many --target=build --all",
