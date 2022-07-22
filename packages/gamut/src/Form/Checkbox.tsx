@@ -22,7 +22,10 @@ import {
 export type CheckboxTextProps = StyleProps<typeof checkboxTextStates>;
 export type CheckboxPaddingProps = StyleProps<typeof checkboxPadding>;
 
-export type CheckboxProps = InputHTMLAttributes<HTMLInputElement> &
+export type CheckboxProps = Omit<
+  InputHTMLAttributes<HTMLInputElement>,
+  'value'
+> &
   CheckboxPaddingProps & {
     /**
      * If the label is a ReactNode, an aria-label must be added.
@@ -37,7 +40,32 @@ export type CheckboxProps = InputHTMLAttributes<HTMLInputElement> &
     htmlFor: string;
     name?: string;
     required?: boolean;
-    value?: string;
+    /**
+     * @remarks
+     * The `value` prop here gets passed to the underlying `input` component
+     * and functions exactly like the HTML spec for checkboxes defines
+     * (which may not be as you expect):
+     * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/checkbox#value=
+     *
+     * Of note is that `value` ends up being the string that your field name key
+     * is set to when the checkbox is checked. So a `value` of the boolean `true` and
+     * a `name` of "isPro" will result in `{
+     *  isPro: "true"
+     * }` being submitted to your (non-`Connected`) form when the checkbox is checked.
+     * However, if due to how your HOC is organized, the Checkbox recieves a value
+     * of the boolean `false` when it is unchecked, NOTHING will be submitted. You
+     * _will not_ get `{ isPro: "false" }`.
+     *
+     * As the MDN documentation above states:
+     * "If a checkbox is unchecked when its form is submitted, there is no value submitted to the server to represent its unchecked state (e.g. value=unchecked); the value is not submitted to the server at all"
+     *
+     * This behavior may not matter to you if you're handling your own form values
+     * externally (i.e. not relying on default lower-case-`form`/`input` submit behavior)
+     * or you're using `register` from Gamut's `useField` hook,
+     * which uses `react-hook-form`'s logic to sidestep this behavior by not passing
+     * a value to the underlying checkbox at all.
+     */
+    value?: string | boolean;
     id?: string;
   };
 
@@ -89,6 +117,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
       checked,
       disabled,
       spacing,
+      value,
       ...rest
     },
     ref
@@ -108,6 +137,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
                 : undefined
               : ariaLabel
           }
+          value={`${value}`}
           {...rest}
           ref={ref}
         />

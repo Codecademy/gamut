@@ -1,5 +1,8 @@
+import { omit } from 'lodash';
 import {
+  ChangeEvent,
   ChangeEventHandler,
+  HTMLInputTypeAttribute,
   useContext,
   useEffect,
   useMemo,
@@ -273,17 +276,33 @@ export const useMakeSetFormDirty = () => {
   };
 };
 
-interface DebouncedFieldProps
-  extends Omit<GetInitialFormValueProps, 'setLocalValue'>,
-    Pick<useFieldProps, 'loading' | 'disabled' | 'name'> {}
+// TODO: This isn't working, but there's SOMETHING here
+// type test<T> = string & {} extends T ? never : T;
+// type test2 = test<HTMLInputTypeAttribute>;
 
-export function useDebouncedField<
-  T extends HTMLInputElement | HTMLTextAreaElement
->({ name, watchUpdateKeyName, disabled, loading }: DebouncedFieldProps) {
+type InputTypes = HTMLInputTypeAttribute | 'textarea' | 'select';
+
+type DebouncedFieldProps<T extends InputTypes> = Omit<
+  GetInitialFormValueProps,
+  'setLocalValue'
+> &
+  Pick<useFieldProps, 'loading' | 'disabled' | 'name'> & {
+    type: T;
+  };
+
+export function useDebouncedField<T extends InputTypes>({
+  name,
+  watchUpdateKeyName,
+  disabled,
+  loading,
+  type,
+}: DebouncedFieldProps<T>) {
   const useFieldPayload = useField({ name, disabled, loading });
 
   // START - Specific to useDebouncedField - START
-  const [localValue, setLocalValue] = useState('');
+  const [localValue, setLocalValue] = useState(
+    type === 'checkbox' ? false : ''
+  );
 
   useGetInitialFormValue({
     name,
@@ -294,17 +313,23 @@ export function useDebouncedField<
   const setFormDirty = useMakeSetFormDirty();
 
   const onChange: ChangeEventHandler<T> = (e) => {
-    setLocalValue(e.target.value);
+    // Per React Hook Form
+    // these are the only two Event value options
+    // See https://github.dev/react-hook-form/react-hook-form/blob/f52f2ddbdd13d968926765408ac734a2a42cad2a/src/logic/getEventValue.ts#L6
+    setLocalValue(
+      type === 'checkbox'
+        ? (e as ChangeEvent<HTMLInputElement>).target.checked
+        : e.target.value
+    );
     setFormDirty();
   };
   const onBlur = () => useFieldPayload.setValue(name, localValue);
   // END - Specific to useDebouncedField - END
 
-  // Fields we might want to not include: register, setValue (from form)
   return {
-    ...useFieldPayload,
+    ...omit(useFieldPayload, ['register', 'setValue']),
     onBlur,
     onChange,
-    value: localValue,
+    value: localValue as T extends 'checkbox' ? boolean : string,
   };
 }
