@@ -24,7 +24,9 @@
     "stylis": "^4.0.7"
   },
   "devDependencies": {
-    "@types/react-helmet": "^6.1.0"
+    "@emotion/jest": "^11.3.0",
+    "@types/react-helmet": "^6.1.0",
+    "component-test-setup": "^0.3.1"
   },
   "license": "MIT",
   "publishConfig": {

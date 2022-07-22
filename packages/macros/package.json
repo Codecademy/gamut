@@ -28,5 +28,8 @@
   },
   "dependencies": {
     "babel-plugin-macros": "^3.0.1"
+  },
+  "devDependencies": {
+    "@babel/core": "*"
   }
 }
