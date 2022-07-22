@@ -11,7 +11,8 @@
         "outputPath": ["./dist", "./src/patterns"],
         "commands": [
           "rm -rf ./dist",
-          "rm -rf ./src/patterns && svgr --out-dir ./src/patterns --ext 'tsx' ./src/svg",
+          "rm -rf ./src/patterns",
+          "svgr --out-dir ./src/patterns --ext 'tsx' ./src/svg",
           "babel ./src --out-dir ./dist --copy-files --extensions \".ts,.tsx\"",
           "tsc --emitDeclarationOnly"
         ],
