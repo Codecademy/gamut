@@ -20,7 +20,8 @@
       "runner": "nx/tasks-runners/default",
       "options": {
         "cacheableOperations": ["build", "test", "verify", "build-storybook"],
-        "parallel": 3
+        "parallel": 3,
+        "useDaemonProcess": false
       }
     }
   },

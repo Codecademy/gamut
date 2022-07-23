@@ -9,7 +9,7 @@
       "dependsOn": ["^build"],
       "options": {
         "cwd": "packages/styleguide",
-        "outputPath": ["./dist"],
+        "outputPath": "./dist",
         "commands": [
           "NODE_ENV=production ./node_modules/.bin/build-storybook --quiet -c .storybook -o ./dist"
         ],

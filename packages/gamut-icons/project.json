@@ -4,18 +4,18 @@
   "projectType": "library",
   "targets": {
     "build": {
-      "outputs": ["{options.outputPath}"],
+      "outputs": ["./dist", "./src/icons"],
       "executor": "nx:run-commands",
       "options": {
         "cwd": "packages/gamut-icons",
-        "outputPath": ["./dist"],
+        "outputPath": ["./dist", "./src/icons"],
         "commands": [
           "rm -rf ./dist",
+          "rm -rf ./src/icons",
           "find ./src/svg -depth -type f \\( -name '*.svg' ! -name '*-icon.svg' \\) -exec sh -c 'mv \"$1\" \"${1%.svg}-icon.svg\"' _ {} \\;",
           "svgr --out-dir ./src/icons --ext 'tsx' ./src/svg",
           "babel ./src --out-dir ./dist --copy-files --extensions \".ts,.tsx\"",
-          "tsc --emitDeclarationOnly",
-          "rm -rf ./src/icons"
+          "tsc --emitDeclarationOnly"
         ],
         "parallel": false
       }

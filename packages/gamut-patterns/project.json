@@ -4,17 +4,17 @@
   "projectType": "library",
   "targets": {
     "build": {
-      "outputs": ["{options.outputPath}"],
+      "outputs": ["./dist", "./src/patterns"],
       "executor": "nx:run-commands",
       "options": {
         "cwd": "packages/gamut-patterns",
-        "outputPath": ["./dist"],
+        "outputPath": ["./dist", "./src/patterns"],
         "commands": [
           "rm -rf ./dist",
+          "rm -rf ./src/patterns",
           "svgr --out-dir ./src/patterns --ext 'tsx' ./src/svg",
           "babel ./src --out-dir ./dist --copy-files --extensions \".ts,.tsx\"",
-          "tsc --emitDeclarationOnly",
-          "rm -rf ./src/patterns"
+          "tsc --emitDeclarationOnly"
         ],
         "parallel": false
       }
