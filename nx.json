@@ -42,11 +42,6 @@
       "publishable": true,
       "style": "@emotion/styled",
       "linter": "eslint"
-    },
-    "@nrwl/react": {
-      "application": {
-        "babel": true
-      }
     }
   }
 }
