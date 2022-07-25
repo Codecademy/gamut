@@ -367,7 +367,7 @@ var test = true;
 
     it('allows checkboxes to be checked and unchecked', () => {
       const { wrapper } = renderWrapper({
-        text: ` - [ ] default checked checkbox
+        text: ` - [ ] default checkbox
 `,
       });
 
@@ -377,6 +377,17 @@ var test = true;
       checkboxInput.simulate('change');
 
       expect(wrapper.find('input').props().checked).toBe(true);
+    });
+
+    it('allows  elements to intersperse checkboxes', () => {
+      const { wrapper } = renderWrapper({
+        text: `
+- [ ] checkbox
+an element
+- [x] default checked checkbox
+`,
+      });
+      expect(wrapper.find('MarkdownCheckbox').length).toEqual(2);
     });
   });
 });
