@@ -151,7 +151,7 @@ export const createInputOverride = (type: string, Override: OverrideSettings) =>
     },
 
     processNode(node: HTMLToReactNode, props: any) {
-      const label = node?.next?.data.trim();
+      const label = node?.next?.data;
 
       if (!Override.component) return null;
 
