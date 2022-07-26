@@ -36,6 +36,7 @@ export type DropdownButtonProps = {
   onClick?: (event: React.MouseEvent) => void;
   verticalOffset?: number;
   horizontalOffset?: number;
+  spacing?: 'normal' | 'condensed';
 };
 
 export const DropdownButton: React.FC<DropdownButtonProps> = ({
@@ -46,6 +47,7 @@ export const DropdownButton: React.FC<DropdownButtonProps> = ({
   onClick,
   verticalOffset,
   horizontalOffset,
+  spacing,
 }) => {
   const targetRef = useRef<HTMLDivElement>(null);
   const [isOpen, setIsOpen] = useState(false);
@@ -123,6 +125,7 @@ export const DropdownButton: React.FC<DropdownButtonProps> = ({
           <DropdownList
             dropdownItems={dropdownItems}
             onClose={handleRequestClosed}
+            spacing={spacing}
           />
         </Popover>
       )}
