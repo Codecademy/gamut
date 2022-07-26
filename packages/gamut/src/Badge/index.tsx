@@ -34,10 +34,10 @@ const colorVariants = variant({
       color: 'text-disabled',
       bg: 'transparent',
     },
-    strokeNavy: {
+    strokeContrast: {
       border: 1,
-      borderColor: 'navy',
-      color: 'navy',
+      borderColor: 'text',
+      color: 'text',
       bg: 'transparent',
     },
   },
