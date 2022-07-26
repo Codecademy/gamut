@@ -8,7 +8,7 @@
       "executor": "nx:run-commands",
       "options": {
         "cwd": "packages/eslint-plugin-gamut",
-        "outputPath": ["./dist"],
+        "outputPath": "./dist",
         "commands": ["rm -rf ./dist", "tsc"],
         "parallel": false
       }

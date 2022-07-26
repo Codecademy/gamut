@@ -18,9 +18,9 @@ references:
   webpack_cache_key_1: &webpack_cache_key_1 v1-webpack-{{ arch }}-{{ checksum "yarn.lock" }}-{{ .Branch }}-{{ .Revision }}
   webpack_cache_key_2: &webpack_cache_key_2 v1-webpack-{{ arch }}-{{ checksum "yarn.lock" }}-{{ .Branch }}
 
-  nx_cache_key_1: &nx_cache_key_1 v1-nx-{{ arch }}-{{ checksum "yarn.lock" }}-{{ .Branch }}-{{ epoch }}
-  nx_cache_key_2: &nx_cache_key_2 v1-nx-{{ arch }}-{{ checksum "yarn.lock" }}-{{ .Branch }}
-  nx_cache_key_3: &nx_cache_key_3 v1-nx-{{ arch }}-{{ checksum "yarn.lock" }}
+  nx_cache_key_1: &nx_cache_key_1 v2-nx-{{ arch }}-{{ checksum "yarn.lock" }}-{{ .Branch }}-{{ epoch }}
+  nx_cache_key_2: &nx_cache_key_2 v2-nx-{{ arch }}-{{ checksum "yarn.lock" }}-{{ .Branch }}
+  nx_cache_key_3: &nx_cache_key_3 v2-nx-{{ arch }}-{{ checksum "yarn.lock" }}
 
   restore_yarn_cache: &restore_yarn_cache
     restore_cache:

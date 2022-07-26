@@ -8,7 +8,8 @@
   "types": "dist/index.d.ts",
   "sideEffects": false,
   "scripts": {
-    "format": "svgo -f ./src/svg --pretty --config=.svgo.yml"
+    "format": "svgo -f ./src/svg --pretty --config=.svgo.yml",
+    "build": "nx build @codecademy/gamut-icons"
   },
   "repository": {
     "type": "git",

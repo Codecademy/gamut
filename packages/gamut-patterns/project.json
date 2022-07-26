@@ -4,7 +4,7 @@
   "projectType": "library",
   "targets": {
     "build": {
-      "outputs": ["{options.outputPath}"],
+      "outputs": ["./dist", "./src/patterns"],
       "executor": "nx:run-commands",
       "options": {
         "cwd": "packages/gamut-patterns",

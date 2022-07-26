@@ -63,6 +63,8 @@
     "@emotion/react": "^11.4.0",
     "@emotion/styled": "^11.3.0",
     "@nrwl/jest": "^14.4.3",
+    "@nrwl/cli": "^14.4.3",
+    "@nrwl/workspace": "^14.4.3",
     "@svgr/cli": "5.5.0",
     "@testing-library/dom": "^8.11.1",
     "@testing-library/jest-dom": "^5.16.1",
