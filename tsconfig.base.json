@@ -7,12 +7,16 @@
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
     "importHelpers": true,
-    "target": "es2015",
+    "target": "esnext",
     "module": "esnext",
     "lib": ["es2017", "dom"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
     "baseUrl": ".",
     "paths": {
       "@codecademy/gamut-labs": ["packages/gamut-labs/src/index.ts"],
@@ -23,8 +27,10 @@
         "packages/gamut-illustrations/src/index.ts"
       ],
       "@codecademy/gamut-styles": ["packages/gamut-styles/src/index.ts"],
-      "@codecademy/gamut-tests": ["packages/gamut-tests/src/index.tsx"]
+      "@codecademy/gamut-tests": ["packages/gamut-tests/src/index.tsx"],
+      "@codecademy/variance": ["packages/variance/src/index.ts"],
+      "@codecademy/monaco": ["packages/monaco/src/index.ts"]
     }
   },
-  "exclude": ["node_modules", "tmp"]
+  "exclude": ["**/node_modules", "tmp"]
 }

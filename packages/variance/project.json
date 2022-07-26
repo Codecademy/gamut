@@ -11,7 +11,7 @@
         "outputPath": "./dist",
         "commands": [
           "rm -rf ./dist",
-          "tsc -b",
+          "tsc --project tsconfig.lib.json",
           "babel ./src --out-dir ./dist --copy-files --extensions \".ts,.tsx\""
         ],
         "parallel": false

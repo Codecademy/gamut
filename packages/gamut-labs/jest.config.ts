@@ -6,4 +6,5 @@ export default {
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
   coverageDirectory: '../../coverage/packages/gamut-labs',
+  snapshotSerializers: ['enzyme-to-json/serializer'],
 };

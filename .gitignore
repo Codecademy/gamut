@@ -42,6 +42,9 @@ tmp
 dist/storybook
 dist/docs
 
+# NX
+dist/out-tsc
+
 packages/gamut-styles/demo-styles
 
 # For vim users
