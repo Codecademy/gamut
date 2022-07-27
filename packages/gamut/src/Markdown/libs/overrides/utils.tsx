@@ -1,3 +1,5 @@
+import { find } from 'lodash';
+
 import { HTMLToReactNode } from '.';
 
 export const isCheckboxParent = (node: HTMLToReactNode, type: string) =>
@@ -14,10 +16,17 @@ export const isInput = (node: HTMLToReactNode, type: string) =>
   node?.name === 'input' && node?.attribs?.type === type;
 
 export const getLabel = (node: HTMLToReactNode) => {
-  console.log(node);
-  if (node?.next?.data === '\n') {
-    console.log('next', node.next);
-    getLabel(node?.next);
-  }
-  return node?.next?.data;
+  const vanillaLabel = node?.next?.data;
+  if (vanillaLabel !== ' ' && vanillaLabel !== '\n') return vanillaLabel;
+
+  const closestParagraphChild = find(
+    node?.parent?.children,
+    (o) => o.name === 'p'
+  );
+  const labelText = find(
+    closestParagraphChild?.children,
+    (o) => o.type === 'text'
+  );
+
+  return labelText?.data;
 };

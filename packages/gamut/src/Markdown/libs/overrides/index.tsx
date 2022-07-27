@@ -1,6 +1,6 @@
 import HtmlToReact from 'html-to-react';
 import camelCaseMap from 'html-to-react/lib/camel-case-attribute-names';
-import { get } from 'lodash';
+import { find, get } from 'lodash';
 import React from 'react';
 
 import { PlainLi } from './Checkbox/elements';
@@ -151,7 +151,7 @@ export const createInputOverride = (type: string, Override: OverrideSettings) =>
     },
 
     processNode(node: HTMLToReactNode, props: any) {
-      const label = node?.next?.data;
+      const label = getLabel(node);
 
       if (!Override.component) return null;
 
