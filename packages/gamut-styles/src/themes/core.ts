@@ -51,6 +51,7 @@ export const coreTheme = createTheme({
       primary: {
         _: 'hyper-500',
         hover: 'hyper-400',
+        inverse: 'yellow-500',
       },
       secondary: {
         _: 'navy-800',
@@ -88,6 +89,7 @@ export const coreTheme = createTheme({
       primary: {
         _: 'yellow-500',
         hover: 'yellow-400',
+        inverse: 'hyper-500',
       },
       secondary: {
         _: 'white',
