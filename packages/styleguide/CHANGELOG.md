@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [59.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@59.0.0...@codecademy/styleguide@59.1.0) (2022-07-27)
+
+
+### Features
+
+* **Badge:** add navy stroke variant ([8e3df04](https://github.com/Codecademy/gamut/commit/8e3df04d6a0dbafe5037036bfdbebca22fa344ac))
+
+
+
 ## [59.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@58.5.0...@codecademy/styleguide@59.0.0) (2022-07-20)
 
 
