@@ -4,7 +4,7 @@ import { get } from 'lodash';
 import React from 'react';
 
 import { PlainLi } from './Checkbox/elements';
-import { isCheckboxParent, isInput, isLabelText } from './utils';
+import { getLabel, isCheckboxParent, isInput, isLabelText } from './utils';
 
 const processNodeDefinitions = new HtmlToReact.ProcessNodeDefinitions();
 

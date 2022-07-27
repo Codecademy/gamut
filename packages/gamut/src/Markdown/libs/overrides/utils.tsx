@@ -12,3 +12,12 @@ export const isLabelText = (node: HTMLToReactNode, type: string) =>
 
 export const isInput = (node: HTMLToReactNode, type: string) =>
   node?.name === 'input' && node?.attribs?.type === type;
+
+export const getLabel = (node: HTMLToReactNode) => {
+  console.log(node);
+  if (node?.next?.data === '\n') {
+    console.log('next', node.next);
+    getLabel(node?.next);
+  }
+  return node?.next?.data;
+};
