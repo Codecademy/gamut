@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [48.4.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@48.3.0...@codecademy/gamut@48.4.0) (2022-07-27)
+
+
+### Features
+
+* **Badge:** add navy stroke variant ([8e3df04](https://github.com/Codecademy/gamut/commit/8e3df04d6a0dbafe5037036bfdbebca22fa344ac))
+
+
+
 ## [48.3.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@48.2.1...@codecademy/gamut@48.3.0) (2022-07-20)
 
 
