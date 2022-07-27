@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo } from 'react';
+import React, { forwardRef, useEffect, useMemo } from 'react';
 import {
   FieldValues,
   FormProvider,
@@ -82,19 +82,22 @@ export const FormPropsContext = React.createContext<Partial<FormContextProps>>(
 );
 const PropsProvider = FormPropsContext.Provider;
 
-export function ConnectedForm<Values extends FormValues<Values>>({
-  children,
-  onSubmit,
-  defaultValues,
-  validation = 'onChange',
-  disableFieldsOnSubmit = false,
-  resetOnSubmit = false,
-  showRequired = false,
-  validationRules,
-  wasSubmitSuccessful = undefined,
-  watchedFields,
-  ...rest
-}: ConnectedFormProps<Values>) {
+function ConnectedFormComponent<Values extends FormValues<Values>>(
+  {
+    children,
+    onSubmit,
+    defaultValues,
+    validation = 'onChange',
+    disableFieldsOnSubmit = false,
+    resetOnSubmit = false,
+    showRequired = false,
+    validationRules,
+    wasSubmitSuccessful = undefined,
+    watchedFields,
+    ...rest
+  }: ConnectedFormProps<Values>,
+  ref: React.ForwardedRef<HTMLFormElement>
+) {
   const {
     clearErrors,
     handleSubmit,
@@ -157,10 +160,17 @@ export function ConnectedForm<Values extends FormValues<Values>>({
         watch={watch}
         {...methods}
       >
-        <Form onSubmit={handleSubmit(onSubmit, onError)} {...rest}>
+        <Form onSubmit={handleSubmit(onSubmit, onError)} {...rest} ref={ref}>
           {children}
         </Form>
       </FormProvider>
     </PropsProvider>
   );
 }
+
+export const ConnectedForm = forwardRef(ConnectedFormComponent) as <
+  Values extends FormValues<Values>
+>(
+  props: ConnectedFormProps<Values>,
+  ref: React.ForwardedRef<HTMLFormElement>
+) => ReturnType<typeof ConnectedFormComponent>;
