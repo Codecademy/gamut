@@ -26,7 +26,7 @@ export const DropdownList: React.FC<DropdownListProps> = ({
       variant="action"
       border="none"
       minWidth="max-content"
-      py={12}
+      py={spacing === 'condensed' ? 0 : 12}
       spacing={spacing}
     >
       {dropdownItems.map((item) => {
