@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [0.6.61](http://github.com///compare/@codecademy/monaco@0.6.60...@codecademy/monaco@0.6.61) (2022-07-27)
+
+**Note:** Version bump only for package @codecademy/monaco
+
+
+
+
+
 ### [0.6.60](http://github.com///compare/@codecademy/monaco@0.6.59...@codecademy/monaco@0.6.60) (2022-07-27)
 
 **Note:** Version bump only for package @codecademy/monaco

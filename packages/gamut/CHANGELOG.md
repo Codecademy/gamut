@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [49.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@48.4.0...@codecademy/gamut@49.0.0) (2022-07-27)
+
+
+### ⚠ BREAKING CHANGES
+
+* **Text:** highlighted text
+
+### Features
+
+* **Text:** highlighted text ([4b1d299](https://github.com/Codecademy/gamut/commit/4b1d2995267e90fe21cb7934598f140963fd4780))
+
+
+
 ## [48.4.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@48.3.0...@codecademy/gamut@48.4.0) (2022-07-27)
 
 

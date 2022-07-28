@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [60.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@59.1.0...@codecademy/styleguide@60.0.0) (2022-07-27)
+
+
+### ⚠ BREAKING CHANGES
+
+* **Text:** highlighted text
+
+### Features
+
+* **Text:** highlighted text ([4b1d299](https://github.com/Codecademy/gamut/commit/4b1d2995267e90fe21cb7934598f140963fd4780))
+
+
+
 ## [59.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@59.0.0...@codecademy/styleguide@59.1.0) (2022-07-27)
 
 
