@@ -17,9 +17,9 @@ references:
   webpack_cache_key_1: &webpack_cache_key_1 v1-webpack-{{ arch }}-{{ checksum "yarn.lock" }}-{{ .Branch }}-{{ .Revision }}
   webpack_cache_key_2: &webpack_cache_key_2 v1-webpack-{{ arch }}-{{ checksum "yarn.lock" }}-{{ .Branch }}
 
-  turbo_cache_key_1: &turbo_cache_key_1 v1-turbo-{{ arch }}-{{ checksum "yarn.lock" }}-{{ .Branch }}-{{ epoch }}
-  turbo_cache_key_2: &turbo_cache_key_2 v1-turbo-{{ arch }}-{{ checksum "yarn.lock" }}-{{ .Branch }}
-  turbo_cache_key_3: &turbo_cache_key_3 v1-turbo-{{ arch }}-{{ checksum "yarn.lock" }}
+  turbo_cache_key_1: &turbo_cache_key_1 v2-turbo-{{ arch }}-{{ checksum "yarn.lock" }}-{{ .Branch }}-{{ epoch }}
+  turbo_cache_key_2: &turbo_cache_key_2 v2-turbo-{{ arch }}-{{ checksum "yarn.lock" }}-{{ .Branch }}
+  turbo_cache_key_3: &turbo_cache_key_3 v2-turbo-{{ arch }}-{{ checksum "yarn.lock" }}
 
   restore_yarn_cache: &restore_yarn_cache
     restore_cache:
