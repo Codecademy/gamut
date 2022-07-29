@@ -156,6 +156,9 @@ jobs:
       - run:
           name: Lerna Publish
           command: yarn lerna publish --yes --conventional-commits --changelog-preset conventionalcommits --include-merged-tags --create-release=github
+      - store_artifacts:
+          path: packages
+          destination: built-packages
 
   deploy:
     <<: *default_env
