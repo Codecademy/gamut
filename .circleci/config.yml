@@ -17,9 +17,9 @@ references:
   webpack_cache_key_1: &webpack_cache_key_1 v1-webpack-{{ arch }}-{{ checksum "yarn.lock" }}-{{ .Branch }}-{{ .Revision }}
   webpack_cache_key_2: &webpack_cache_key_2 v1-webpack-{{ arch }}-{{ checksum "yarn.lock" }}-{{ .Branch }}
 
-  turbo_cache_key_1: &turbo_cache_key_1 v1-turbo-{{ arch }}-{{ checksum "yarn.lock" }}-{{ .Branch }}-{{ epoch }}
-  turbo_cache_key_2: &turbo_cache_key_2 v1-turbo-{{ arch }}-{{ checksum "yarn.lock" }}-{{ .Branch }}
-  turbo_cache_key_3: &turbo_cache_key_3 v1-turbo-{{ arch }}-{{ checksum "yarn.lock" }}
+  nx_cache_key_1: &nx_cache_key_1 v2-nx-{{ arch }}-{{ checksum "yarn.lock" }}-{{ .Branch }}-{{ epoch }}
+  nx_cache_key_2: &nx_cache_key_2 v2-nx-{{ arch }}-{{ checksum "yarn.lock" }}-{{ .Branch }}
+  nx_cache_key_3: &nx_cache_key_3 v2-nx-{{ arch }}-{{ checksum "yarn.lock" }}
 
   restore_yarn_cache: &restore_yarn_cache
     restore_cache:
@@ -45,18 +45,18 @@ references:
         - node_modules/.cache
         - packages/styleguide/node_modules/.cache
 
-  save_turbo_cache: &save_turbo_cache
+  save_nx_cache: &save_nx_cache
     save_cache:
-      key: *turbo_cache_key_1
+      key: *nx_cache_key_1
       paths:
-        - node_modules/.cache/turbo
+        - node_modules/.cache/nx
 
-  restore_turbo_cache: &restore_turbo_cache
+  restore_nx_cache: &restore_nx_cache
     restore_cache:
       keys:
-        - *turbo_cache_key_1
-        - *turbo_cache_key_2
-        - *turbo_cache_key_3
+        - *nx_cache_key_1
+        - *nx_cache_key_2
+        - *nx_cache_key_3
 
   save_node_modules: &save_node_modules
     persist_to_workspace:
@@ -124,9 +124,9 @@ jobs:
     steps:
       - checkout
       - *restore_node_modules
-      - *restore_turbo_cache
+      - *restore_nx_cache
       - *build_all_packages
-      - *save_turbo_cache
+      - *save_nx_cache
       - run:
           name: Run test suite
           command: |
@@ -150,9 +150,9 @@ jobs:
       - checkout
       - *restore_node_modules
       - *set_npm_token
-      - *restore_turbo_cache
+      - *restore_nx_cache
       - *build_all_packages
-      - *save_turbo_cache
+      - *save_nx_cache
       - run:
           name: Lerna Publish
           command: yarn lerna publish --yes --conventional-commits --changelog-preset conventionalcommits --include-merged-tags --create-release=github
@@ -165,7 +165,7 @@ jobs:
       - *set_git_user
       - checkout
       - *restore_node_modules
-      - *restore_turbo_cache
+      - *restore_nx_cache
       - *restore_webpack_cache
       - run:
           name: build storybook
@@ -173,7 +173,7 @@ jobs:
       - run:
           name: deploy
           command: yarn deploy
-      - *save_turbo_cache
+      - *save_nx_cache
       - *save_webpack_cache
 
   deploy_alpha:
@@ -185,12 +185,12 @@ jobs:
       - *set_git_user
       - checkout
       - *restore_node_modules
-      - *restore_turbo_cache
+      - *restore_nx_cache
       - *restore_webpack_cache
       - run:
           name: build storybook
           command: yarn build-storybook
-      - *save_turbo_cache
+      - *save_nx_cache
       - *save_webpack_cache
       - run:
           name: deploy
@@ -233,9 +233,9 @@ jobs:
       - checkout
       - *restore_node_modules
       - *set_npm_token
-      - *restore_turbo_cache
+      - *restore_nx_cache
       - *build_all_packages
-      - *save_turbo_cache
+      - *save_nx_cache
       - run:
           name: lerna publish (alpha)
           command: yarn lerna publish --exact --yes --include-merged-tags --no-push --no-git-reset --conventional-commits --conventional-prerelease --preid=alpha.${CIRCLE_SHA1:0:6} --dist-tag=alpha.${CIRCLE_SHA1:0:6}
