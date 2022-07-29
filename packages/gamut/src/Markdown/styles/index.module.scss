@@ -9,3 +9,9 @@
 .spacing-tight {
   @include markdown-style();
 }
+
+// li checkbox parent overrides
+
+.checkbox-parent::before {
+  display: none;
+}
