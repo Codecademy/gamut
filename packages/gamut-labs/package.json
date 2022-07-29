@@ -53,12 +53,9 @@
   },
   "scripts": {
     "verify": "tsc --noEmit",
-    "build:compile": "babel ./src --out-dir ./dist --copy-files --extensions \".ts,.tsx\"",
-    "build:clean": "rm -rf dist",
-    "build:types": "tsc --emitDeclarationOnly",
-    "build": "yarn build:clean && yarn build:compile && yarn build:types",
-    "build:watch": "yarn build && onchange ./src -- yarn build:compile && yarn build:types",
-    "lernaBuildTask": "yarn build"
+    "compile": "babel ./src --out-dir ./dist --copy-files --extensions \".ts,.tsx\"",
+    "build:watch": "rm -rf dist && yarn compile && tsc --emitDeclarationOnly && onchange ./src -- yarn build:compile && yarn build:types",
+    "build": "nx build"
   },
   "license": "MIT",
   "publishConfig": {

@@ -30,11 +30,7 @@
   },
   "scripts": {
     "verify": "tsc --noEmit",
-    "build:compile": "babel ./src --out-dir ./dist --copy-files --extensions \".ts,.tsx\"",
-    "build:clean": "rm -rf dist",
-    "build:types": "tsc --emitDeclarationOnly",
-    "build": "yarn build:clean && yarn build:compile && yarn build:types",
-    "lernaBuildTask": "yarn build"
+    "build": "nx build @codecademy/gamut-tests"
   },
   "types": "./dist/index.d.ts"
 }

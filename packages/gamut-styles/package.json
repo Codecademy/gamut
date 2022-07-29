@@ -6,11 +6,7 @@
   "main": "dist/index.js",
   "module": "dist/index.js",
   "scripts": {
-    "build:clean": "rm -rf ./dist",
-    "build:compile": "tsc",
-    "build:transpile": "babel ./src --out-dir ./dist --copy-files --extensions \".ts,.tsx\"",
-    "build": "yarn build:clean && yarn build:compile && yarn build:transpile",
-    "lernaBuildTask": "yarn build"
+    "build": "nx build @codecademy/gamut-styles"
   },
   "repository": {
     "type": "git",

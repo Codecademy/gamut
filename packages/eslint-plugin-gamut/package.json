@@ -21,17 +21,10 @@
   },
   "scripts": {
     "verify": "tsc --noEmit",
-    "build:compile": "tsc",
-    "build:clean": "rm -rf dist",
-    "build": "yarn build:clean && yarn build:compile",
-    "lernaBuildTask": "yarn build"
+    "build": "nx build eslint-plugin-gamut"
   },
   "types": "./dist/index.d.ts",
   "dependencies": {
     "@typescript-eslint/utils": "^5.15.0"
-  },
-  "devDependencies": {
-    "@types/eslint": "^8.4.1",
-    "eslint": "^8.11.0"
   }
 }
