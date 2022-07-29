@@ -1,5 +1,22 @@
 module.exports = {
-  presets: ['codecademy', '@babel/preset-typescript'],
-  include: ['./src/**/*'],
-  ignore: ['__tests__', './**/*.d.ts'],
+  presets: [
+    [
+      '@nrwl/react/babel',
+      {
+        runtime: 'automatic',
+        useBuiltIns: 'usage',
+        importSource: '@emotion/react',
+      },
+    ],
+  ],
+  plugins: [
+    [
+      '@emotion/babel-plugin',
+      {
+        sourceMap: true,
+        autoLabel: 'always',
+        labelFormat: '[local]',
+      },
+    ],
+  ],
 };
