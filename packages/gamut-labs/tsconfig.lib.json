@@ -4,7 +4,7 @@
     "declaration": true,
     "jsx": "react",
     "outDir": "./dist",
-    "rootDir": "./src",
+    "rootDirs": ["./src", "./typings"],
     "paths": {}
   },
   "files": [
@@ -22,5 +22,10 @@
     "**/*.spec.jsx",
     "**/*.test.jsx"
   ],
-  "include": ["src/**/*.js", "src/**/*.jsx", "src/**/*.ts", "src/**/*.tsx"]
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "typings/**/*.ts",
+    "../../packages/gamut-styles/dist/typings/theme.d.ts"
+  ]
 }
