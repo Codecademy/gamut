@@ -10,8 +10,8 @@
   @include markdown-style();
 }
 
-// li checkbox parent overrides
+// // This is a stopgap measure until Markdown V2 and we can deprecate all css + scss. See WEB-1776 for more details.
 
 .checkbox-parent::before {
-  display: none;
+  display: none !important;
 }

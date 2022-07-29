@@ -6,7 +6,6 @@ import React from 'react';
 
 // eslint-disable-next-line gamut/no-css-standalone
 import styles from '../../styles/index.module.scss';
-import { PlainLi } from './Checkbox/elements';
 import { getLabel, isCheckboxParent, isInput, isLabelText } from './utils';
 
 const processNodeDefinitions = new HtmlToReact.ProcessNodeDefinitions();
@@ -162,7 +161,7 @@ export const createInputOverride = (type: string, Override: OverrideSettings) =>
         const { className, ...rest } = props;
         const plainLiClass = cx(styles[`checkbox-parent`], className);
 
-        return <PlainLi className={plainLiClass} {...rest} />;
+        return <li className={plainLiClass} {...rest} />;
       }
 
       if (isLabelText(node, type)) return null;
