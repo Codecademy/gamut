@@ -3,6 +3,36 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [60.0.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@60.0.0...@codecademy/styleguide@60.0.1) (2022-07-29)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [60.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@59.1.0...@codecademy/styleguide@60.0.0) (2022-07-27)
+
+
+### ⚠ BREAKING CHANGES
+
+* **Text:** highlighted text
+
+### Features
+
+* **Text:** highlighted text ([4b1d299](https://github.com/Codecademy/gamut/commit/4b1d2995267e90fe21cb7934598f140963fd4780))
+
+
+
+## [59.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@59.0.0...@codecademy/styleguide@59.1.0) (2022-07-27)
+
+
+### Features
+
+* **Badge:** add navy stroke variant ([8e3df04](https://github.com/Codecademy/gamut/commit/8e3df04d6a0dbafe5037036bfdbebca22fa344ac))
+
+
+
 ## [59.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@58.5.0...@codecademy/styleguide@59.0.0) (2022-07-20)
 
 

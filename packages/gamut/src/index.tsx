@@ -27,7 +27,6 @@ export * from './FocusTrap';
 export * from './Form';
 export * from './GridForm';
 export * from './HiddenText';
-export * from './HighlightedText';
 export * from './InputStepper';
 export * from './Layout/Column';
 export * from './Layout/LayoutGrid';
