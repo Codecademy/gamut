@@ -1,6 +1,6 @@
 import base from '../../jest.config.base';
 
-export default base('gamut-labs', {
+export default base('gamut', {
   transform: {
     '^.+\\.[tj]sx?$': 'babel-jest',
   },
