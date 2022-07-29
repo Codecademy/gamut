@@ -6,6 +6,9 @@
     "../../packages/gamut-styles/dist/typings/theme.d.ts"
   ],
   "compilerOptions": {
-    "outDir": "./dist"
+    "declaration": true,
+    "jsx": "react",
+    "outDir": "./dist",
+    "rootDir": "./src"
   }
 }

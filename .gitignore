@@ -44,6 +44,7 @@ dist/docs
 
 # NX
 dist/out-tsc
+*.tsbuildinfo
 
 packages/gamut-styles/demo-styles
 

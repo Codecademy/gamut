@@ -25,9 +25,17 @@
       }
     }
   },
+  "namedInputs": {
+    "default": ["{projectRoot}/**/*"],
+    "prod": [
+      "!{projectRoot}/**/*.(test|spec).ts{,.snap}",
+      "!{projectRoot}/**/__tests__/**/*"
+    ]
+  },
   "targetDefaults": {
     "build": {
-      "dependsOn": ["^build"]
+      "dependsOn": ["^build"],
+      "inputs": ["prod", "^prod"]
     }
   },
   "cli": {

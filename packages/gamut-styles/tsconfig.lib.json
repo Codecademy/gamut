@@ -4,7 +4,9 @@
     "declaration": true,
     "emitDeclarationOnly": true,
     "rootDir": "./src",
-    "outDir": "./dist"
+    "outDir": "./dist",
+    // disable import paths for lerna packages
+    "paths": {}
   },
   "files": [
     "../../node_modules/@nrwl/react/typings/cssmodule.d.ts",

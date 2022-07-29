@@ -12,7 +12,7 @@
         "commands": [
           "rm -rf ./dist",
           "babel ./src --out-dir ./dist --copy-files --extensions \".ts,.tsx\"",
-          "tsc --emitDeclarationOnly"
+          "tsc --emitDeclarationOnly --project ./tsconfig.lib.json"
         ],
         "parallel": false
       }

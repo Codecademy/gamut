@@ -17,20 +17,7 @@
     "skipDefaultLibCheck": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "baseUrl": ".",
-    "paths": {
-      "@codecademy/gamut-labs": ["packages/gamut-labs/src/index.ts"],
-      "@codecademy/gamut": ["packages/gamut/src/index.ts"],
-      "@codecademy/gamut-icons": ["packages/gamut-icons/src/index.ts"],
-      "@codecademy/gamut-patterns": ["packages/gamut-patterns/src/index.ts"],
-      "@codecademy/gamut-illustrations": [
-        "packages/gamut-illustrations/src/index.ts"
-      ],
-      "@codecademy/gamut-styles": ["packages/gamut-styles/src/index.ts"],
-      "@codecademy/gamut-tests": ["packages/gamut-tests/src/index.tsx"],
-      "@codecademy/variance": ["packages/variance/src/index.ts"],
-      "@codecademy/monaco": ["packages/monaco/src/index.ts"]
-    }
+    "baseUrl": "."
   },
   "exclude": ["**/node_modules", "tmp"]
 }
