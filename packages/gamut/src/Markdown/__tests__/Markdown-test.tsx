@@ -348,12 +348,13 @@ var test = true;
       expect(wrapper.find('MarkdownCheckbox').length).toEqual(3);
     });
 
-    it('replaces parent li with PlainLi component', () => {
+    it(`doesn't render bulletpoints for checkbox elements`, () => {
       const { wrapper } = renderWrapper({
-        text: checkboxMarkdown,
+        text: ` - [ ] default checkbox
+`,
       });
 
-      expect(wrapper.find('PlainLi').length).toEqual(3);
+      expect(wrapper.find('li').props().className).toBe('checkbox-parent li');
     });
 
     it('sets the default checked state correctly', () => {
