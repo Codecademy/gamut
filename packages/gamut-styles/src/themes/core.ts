@@ -37,6 +37,7 @@ export const coreTheme = createTheme({
       },
       background: {
         _: 'white',
+        contrast: 'white',
         current: 'white',
         primary: 'beige',
         selected: 'navy-100',
@@ -50,6 +51,7 @@ export const coreTheme = createTheme({
       primary: {
         _: 'hyper-500',
         hover: 'hyper-400',
+        inverse: 'yellow-500',
       },
       secondary: {
         _: 'navy-800',
@@ -73,6 +75,7 @@ export const coreTheme = createTheme({
       },
       background: {
         _: 'navy-800',
+        contrast: 'black',
         current: 'navy-800',
         primary: 'navy-900',
         selected: 'navy-700',
@@ -86,6 +89,7 @@ export const coreTheme = createTheme({
       primary: {
         _: 'yellow-500',
         hover: 'yellow-400',
+        inverse: 'hyper-500',
       },
       secondary: {
         _: 'white',

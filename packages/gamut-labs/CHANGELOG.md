@@ -3,6 +3,104 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [33.0.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@33.0.1...@codecademy/gamut-labs@33.0.2) (2022-07-27)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [33.0.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@33.0.0...@codecademy/gamut-labs@33.0.1) (2022-07-27)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+## [33.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@32.7.6...@codecademy/gamut-labs@33.0.0) (2022-07-20)
+
+
+### ⚠ BREAKING CHANGES
+
+* **HeaderTab and HeaderContainer:** remove old unused components
+
+### Miscellaneous Chores
+
+* **HeaderTab and HeaderContainer:** remove old unused components ([ce3608a](https://github.com/Codecademy/gamut/commit/ce3608a2e1fa30130f9f0a083740bcf46296edb5))
+
+
+
+### [32.7.6](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@32.7.5...@codecademy/gamut-labs@32.7.6) (2022-07-19)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [32.7.5](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@32.7.4...@codecademy/gamut-labs@32.7.5) (2022-07-19)
+
+
+### Bug Fixes
+
+* **GlobalHeader:** correct tracking ([c9f3579](https://github.com/Codecademy/gamut/commit/c9f35792060fb34f69e0a2c9b9505e3a9b6f5f60))
+
+
+
+### [32.7.4](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@32.7.3...@codecademy/gamut-labs@32.7.4) (2022-07-19)
+
+
+### Bug Fixes
+
+* **GlobalHeader:** close dropdown on link click ([e1f0ff6](https://github.com/Codecademy/gamut/commit/e1f0ff6343d4eeff56c2a9594d8175a89679c774))
+
+
+
+### [32.7.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@32.7.2...@codecademy/gamut-labs@32.7.3) (2022-07-18)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [32.7.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@32.7.1...@codecademy/gamut-labs@32.7.2) (2022-07-15)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [32.7.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@32.7.0...@codecademy/gamut-labs@32.7.1) (2022-07-14)
+
+
+### Bug Fixes
+
+* **GlobalHeader:** add `business solutions` for Trial / Pro learners ([0b578e2](https://github.com/Codecademy/gamut/commit/0b578e2a5ee42af3bbef95a4f718ff99c6cb3ee9))
+
+
+
+## [32.7.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@32.6.1...@codecademy/gamut-labs@32.7.0) (2022-07-14)
+
+
+### Features
+
+* **PageSingleFeature:** Allow image to act as a link ([ef3547f](https://github.com/Codecademy/gamut/commit/ef3547fd909c7b556bbba5c6e9a9e873991f5b1c))
+
+
+
+### [32.6.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@32.6.0...@codecademy/gamut-labs@32.6.1) (2022-07-13)
+
+
+### Bug Fixes
+
+* **GlobalHeader:** Catalog and Resources dropdown fast follows  ([2a264ea](https://github.com/Codecademy/gamut/commit/2a264ea9d6795828658544129c8fcc2f1e2d9734))
+
+
+
 ## [32.6.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@32.5.1...@codecademy/gamut-labs@32.6.0) (2022-07-08)
 
 

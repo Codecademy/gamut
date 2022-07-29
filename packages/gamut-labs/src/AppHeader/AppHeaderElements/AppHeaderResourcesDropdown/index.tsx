@@ -45,9 +45,8 @@ export const AppHeaderResourcesDropdown: React.FC<AppHeaderResourceDropdownProps
   const [focusIndex, setFocusIndex] = useState(0);
 
   const items = newHeaderResourcesList.map((item) => item.data.length);
-  const itemsCount = items.reduce(
-    (prevLength, currLength) => prevLength + currLength
-  );
+  const itemsCount =
+    items.reduce((prevLength, currLength) => prevLength + currLength) + 4; // extra for hardcoded headers and descriptions
   const focusFirstItem = () => setFocusIndex(0);
   const focusLastItem = () => setFocusIndex(itemsCount);
 
@@ -226,6 +225,7 @@ export const AppHeaderResourcesDropdown: React.FC<AppHeaderResourceDropdownProps
           keyDownEvents={menuHandleKeyEvents}
           id={`menu-container${item.text}`}
           isOpen={isOpen}
+          handleClose={() => setIsOpen(false)}
         />
       </StyledDropdown>
     </>

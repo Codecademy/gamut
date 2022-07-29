@@ -18,7 +18,6 @@ import {
   myHome,
   pricingDropdown,
   pricingLink,
-  proLogo,
   proProfile,
   refreshedResourcesDropdown,
   resourcesDropdown,
@@ -247,11 +246,12 @@ export const proHeaderItems = (
   renderBookmarks?: () => ReactNode
 ): FormattedAppHeaderItems => {
   const leftItems: AppHeaderItem[] = [
-    user.hasNewSkuSubscription ? logo : proLogo,
+    logo,
     myHome,
     catalogComponent(user),
     resourcesComponent(user),
     communityDropdown,
+    businessSolutions,
   ];
 
   const rightItems: AppHeaderItem[] = [];
@@ -277,9 +277,7 @@ export const proMobileHeaderItems = (
   user: User,
   renderBookmarks?: () => ReactNode
 ): FormattedMobileAppHeaderItems => {
-  const leftItems: AppHeaderItem[] = [
-    user.hasNewSkuSubscription ? logo : proLogo,
-  ];
+  const leftItems: AppHeaderItem[] = [logo];
   const rightItems: AppHeaderItem[] = [];
 
   const mainMenuItems: AppHeaderItem[] = [
@@ -287,6 +285,7 @@ export const proMobileHeaderItems = (
     catalogComponent(user),
     resourcesComponent(user),
     communityDropdown,
+    businessSolutions,
     proProfile(user),
   ];
 

@@ -3,6 +3,63 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [49.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@48.4.0...@codecademy/gamut@49.0.0) (2022-07-27)
+
+
+### ⚠ BREAKING CHANGES
+
+* **Text:** highlighted text
+
+### Features
+
+* **Text:** highlighted text ([4b1d299](https://github.com/Codecademy/gamut/commit/4b1d2995267e90fe21cb7934598f140963fd4780))
+
+
+
+## [48.4.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@48.3.0...@codecademy/gamut@48.4.0) (2022-07-27)
+
+
+### Features
+
+* **Badge:** add navy stroke variant ([8e3df04](https://github.com/Codecademy/gamut/commit/8e3df04d6a0dbafe5037036bfdbebca22fa344ac))
+
+
+
+## [48.3.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@48.2.1...@codecademy/gamut@48.3.0) (2022-07-20)
+
+
+### Features
+
+* **Modal:** create TwoScreenModal variant ([6290cb9](https://github.com/Codecademy/gamut/commit/6290cb94297ff1d861b598ef368acced13008d83))
+
+
+
+### [48.2.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@48.2.0...@codecademy/gamut@48.2.1) (2022-07-19)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [48.2.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@48.1.0...@codecademy/gamut@48.2.0) (2022-07-18)
+
+
+### Features
+
+* **Tag:** add Tag component ([10e5b11](https://github.com/Codecademy/gamut/commit/10e5b11e2f807478cfb838525c300efcd4be38d4))
+
+
+
+## [48.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@48.0.6...@codecademy/gamut@48.1.0) (2022-07-15)
+
+
+### Features
+
+* **Tooltip:** Add tooltip placements ([8bb047c](https://github.com/Codecademy/gamut/commit/8bb047c61f783b919b04b7c0cc08c5e88fbed00b))
+
+
+
 ### [48.0.6](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@48.0.5...@codecademy/gamut@48.0.6) (2022-06-27)
 
 **Note:** Version bump only for package @codecademy/gamut

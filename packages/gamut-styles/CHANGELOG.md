@@ -3,6 +3,37 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [14.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@13.4.0...@codecademy/gamut-styles@14.0.0) (2022-07-27)
+
+
+### ⚠ BREAKING CHANGES
+
+* **Text:** highlighted text
+
+### Features
+
+* **Text:** highlighted text ([4b1d299](https://github.com/Codecademy/gamut/commit/4b1d2995267e90fe21cb7934598f140963fd4780))
+
+
+
+## [13.4.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@13.3.0...@codecademy/gamut-styles@13.4.0) (2022-07-19)
+
+
+### Features
+
+* **ColorMode:** Adding "system" option to ColorMode ([#2439](https://github.com/Codecademy/gamut/issues/2439)) ([a3e6a47](https://github.com/Codecademy/gamut/commit/a3e6a47d610b840b76b87f167e90777483482c99))
+
+
+
+## [13.3.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@13.2.0...@codecademy/gamut-styles@13.3.0) (2022-07-15)
+
+
+### Features
+
+* **Tooltip:** Add tooltip placements ([8bb047c](https://github.com/Codecademy/gamut/commit/8bb047c61f783b919b04b7c0cc08c5e88fbed00b))
+
+
+
 ## [13.2.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@13.1.1...@codecademy/gamut-styles@13.2.0) (2022-05-24)
 
 

@@ -447,11 +447,6 @@ describe('GlobalHeader', () => {
     });
 
     describe('default', () => {
-      it('renders proLogo', () => {
-        const { view } = renderView(proHeaderProps);
-        view.getAllByTestId('header-pro-logo');
-      });
-
       it('renders myHome', () => {
         const { view } = renderView(proHeaderProps);
         view.getAllByText(myHome.text);
@@ -481,6 +476,11 @@ describe('GlobalHeader', () => {
       it('renders communityDropdown', () => {
         const { view } = renderView(proHeaderProps);
         view.getByText(communityDropdown.text);
+      });
+
+      it('renders business solutions', () => {
+        const { view } = renderView(freeHeaderProps);
+        view.getByText(businessSolutions.text);
       });
 
       it('renders profileDropdown', () => {
