@@ -1,4 +1,9 @@
-import { styledOptions, system, variant } from '@codecademy/gamut-styles';
+import {
+  states,
+  styledOptions,
+  system,
+  variant,
+} from '@codecademy/gamut-styles';
 import { StyleProps, variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
 
@@ -59,12 +64,33 @@ const truncateLinesProps = variance.create({
   },
 });
 
-const textStates = system.states({
+const textStates = states({
   center: {
     textAlign: 'center',
   },
   block: {
     display: 'block',
+  },
+  highlight: {
+    fontWeight: 'bold',
+    minWidth: '0.4rem',
+    position: 'relative',
+    zIndex: 1,
+    // the text is more legible against the background color with text smoothing
+    MozOsxFontSmoothing: 'grayscale',
+    WebkitFontSmoothing: 'antialiased',
+    '&:after': {
+      bg: 'primary-inverse',
+      content: '""',
+      display: 'block',
+      height: '32.5%',
+      left: '0',
+      ml: '-0.2rem' as any,
+      position: 'absolute',
+      top: '50%',
+      width: 'calc(100% + 0.4rem)',
+      zIndex: -1,
+    },
   },
   screenreader: {
     display: 'inline-block',

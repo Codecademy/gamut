@@ -1,7 +1,7 @@
 {
   "name": "@codecademy/markdown-overrides",
   "description": "Markdown overrides React Components for Codecademy",
-  "version": "0.9.5",
+  "version": "0.9.8",
   "author": "Codecademy Engineering",
   "main": "dist/index.js",
   "module": "dist/index.js",
@@ -9,25 +9,21 @@
     "type": "git",
     "url": "git+https://github.com/Codecademy/gamut.git"
   },
+  "scripts": {
+    "build": "nx build @codecademy/markdown-overrides"
+  },
   "peerDependencies": {
     "react": ">=17.0.2",
     "react-dom": ">=17.0.2"
   },
   "dependencies": {
-    "@codecademy/gamut-styles": "^13.4.0",
+    "@codecademy/gamut-styles": "^14.0.2",
     "classnames": "^2.2.5",
     "katex": "0.9.0"
   },
   "devDependencies": {
     "@testing-library/react": "^12.1.2",
     "@types/katex": "0.11.0"
-  },
-  "scripts": {
-    "build:clean": "rm -rf dist",
-    "build:compile": "babel ./src --out-dir ./dist --copy-files --extensions \".ts,.tsx\"",
-    "build:types": "tsc --emitDeclarationOnly",
-    "build": "yarn build:clean && yarn build:compile && yarn build:types",
-    "lernaBuildTask": "yarn build"
   },
   "license": "MIT"
 }
