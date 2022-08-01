@@ -12,6 +12,9 @@ export const AppHeaderLogo: React.FC<AppHeaderLogoProps> = ({
   action,
   item,
 }) => {
+  const windowWidth = window.innerWidth || document.documentElement.clientWidth;
+  const showMiniLogo = windowWidth <= 1260 && windowWidth >= 1200;
+
   return (
     <Anchor
       variant="interface"
@@ -24,7 +27,7 @@ export const AppHeaderLogo: React.FC<AppHeaderLogoProps> = ({
     >
       <Logo
         color="currentColor"
-        variant={item.pro ? 'pro' : 'default'}
+        variant={item.pro ? 'pro' : showMiniLogo ? 'mini' : 'default'}
         height={27}
         verticalAlign="text-bottom"
       />
