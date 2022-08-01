@@ -1,1 +1,3 @@
-module.exports = require('../../jest.config.base')('styleguide');
+import base from '../../jest.config.base';
+
+export default base('styleguide', {});
