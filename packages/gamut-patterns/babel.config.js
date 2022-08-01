@@ -1,5 +1,11 @@
 module.exports = {
-  presets: ['codecademy', '@babel/preset-typescript'],
-  include: ['./src/**/*'],
-  ignore: ['__tests__', './**/*.d.ts'],
+  presets: [
+    [
+      '@nrwl/react/babel',
+      {
+        runtime: 'automatic',
+        useBuiltIns: 'usage',
+      },
+    ],
+  ],
 };

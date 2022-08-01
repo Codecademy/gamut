@@ -18,6 +18,15 @@
         ],
         "parallel": false
       }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/packages/gamut-patterns"],
+      "dependsOn": ["build"],
+      "options": {
+        "jestConfig": "packages/gamut-patterns/jest.config.ts",
+        "passWithNoTests": true
+      }
     }
   },
   "tags": []
