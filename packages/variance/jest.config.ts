@@ -1,1 +1,8 @@
-module.exports = require('../../jest.config.base')('variance');
+import base from '../../jest.config.base';
+
+export default base('variance', {
+  transform: {
+    '^.+\\.[tj]sx?$': 'babel-jest',
+  },
+  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
+});
