@@ -53,7 +53,7 @@ export const PopoverPortal: React.FC<
   Pick<PopoverProps, 'animation' | 'isOpen'>
 > = ({ animation, isOpen, ...rest }) =>
   animation ? (
-    <AnimatePresence>
+    <AnimatePresence aria-hidden={!isOpen}>
       {isOpen && (
         <BodyPortal>
           <motion.div
