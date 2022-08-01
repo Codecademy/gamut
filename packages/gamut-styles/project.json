@@ -13,7 +13,7 @@
           "rm -rf ./dist",
           "tsc --emitDeclarationOnly --project tsconfig.lib.json",
           "babel ./src --out-dir ./dist --extensions \".ts,.tsx\"",
-          "cpy 'src/**/*.d.ts' ./dist"
+          "cpy './src/**/*.d.ts' './src/**/*.scss' ./dist"
         ],
         "parallel": false
       }

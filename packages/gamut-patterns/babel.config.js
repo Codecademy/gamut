@@ -1,12 +1,4 @@
 module.exports = {
   extends: '../../babel.defaults.js',
-  presets: [
-    [
-      '@nrwl/react/babel',
-      {
-        runtime: 'automatic',
-        useBuiltIns: 'usage',
-      },
-    ],
-  ],
+  presets: ['codecademy', '@babel/preset-typescript'],
 };
