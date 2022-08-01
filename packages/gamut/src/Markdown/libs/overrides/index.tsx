@@ -1,10 +1,12 @@
+import cx from 'classnames';
 import HtmlToReact from 'html-to-react';
 import camelCaseMap from 'html-to-react/lib/camel-case-attribute-names';
 import { get } from 'lodash';
 import React from 'react';
 
-import { PlainLi } from './Checkbox/elements';
-import { isCheckboxParent, isInput, isLabelText } from './utils';
+// eslint-disable-next-line gamut/no-css-standalone
+import styles from '../../styles/index.module.scss';
+import { getLabel, isCheckboxParent, isInput, isLabelText } from './utils';
 
 const processNodeDefinitions = new HtmlToReact.ProcessNodeDefinitions();
 
@@ -151,11 +153,16 @@ export const createInputOverride = (type: string, Override: OverrideSettings) =>
     },
 
     processNode(node: HTMLToReactNode, props: any) {
-      const label = node?.next?.data.trim();
+      const label = getLabel(node);
 
       if (!Override.component) return null;
 
-      if (isCheckboxParent(node, type)) return <PlainLi {...props} />;
+      if (isCheckboxParent(node, type)) {
+        const { className, ...rest } = props;
+        const plainLiClass = cx(styles[`checkbox-parent`], className);
+
+        return <li className={plainLiClass} {...rest} />;
+      }
 
       if (isLabelText(node, type)) return null;
 

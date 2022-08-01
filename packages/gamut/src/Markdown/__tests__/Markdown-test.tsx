@@ -348,12 +348,13 @@ var test = true;
       expect(wrapper.find('MarkdownCheckbox').length).toEqual(3);
     });
 
-    it('replaces parent li with PlainLi component', () => {
+    it(`doesn't render bulletpoints for checkbox elements`, () => {
       const { wrapper } = renderWrapper({
-        text: checkboxMarkdown,
+        text: ` - [ ] default checkbox
+`,
       });
 
-      expect(wrapper.find('PlainLi').length).toEqual(3);
+      expect(wrapper.find('li').props().className).toBe('checkbox-parent li');
     });
 
     it('sets the default checked state correctly', () => {
@@ -367,7 +368,7 @@ var test = true;
 
     it('allows checkboxes to be checked and unchecked', () => {
       const { wrapper } = renderWrapper({
-        text: ` - [ ] default checked checkbox
+        text: ` - [ ] default checkbox
 `,
       });
 
@@ -377,6 +378,17 @@ var test = true;
       checkboxInput.simulate('change');
 
       expect(wrapper.find('input').props().checked).toBe(true);
+    });
+
+    it('allows  elements to intersperse checkboxes', () => {
+      const { wrapper } = renderWrapper({
+        text: `
+- [ ] checkbox
+an element
+- [x] default checked checkbox
+`,
+      });
+      expect(wrapper.find('MarkdownCheckbox').length).toEqual(2);
     });
   });
 });
