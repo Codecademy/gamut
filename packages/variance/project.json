@@ -16,6 +16,14 @@
         ],
         "parallel": false
       }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/packages/variance"],
+      "options": {
+        "jestConfig": "packages/variance/jest.config.ts",
+        "passWithNoTests": true
+      }
     }
   },
   "tags": []
