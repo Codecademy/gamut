@@ -10,7 +10,7 @@
   @include markdown-style();
 }
 
-// // This is a stopgap measure until Markdown V2 and we can deprecate all css + scss. See WEB-1776 for more details.
+// his is a stopgap measure until Markdown V2 and we can deprecate all css + scss. See WEB-1776 for more details.
 
 .checkbox-parent::before {
   display: none !important;
