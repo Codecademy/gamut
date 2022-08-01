@@ -12,7 +12,9 @@
     "noUnusedParameters": false,
     "sourceMap": true,
     "strictFunctionTypes": false,
-    "strictPropertyInitialization": false
+    "strictPropertyInitialization": false,
+    // disable import paths for lerna packages
+    "paths": {}
   },
   "files": [],
   "include": [],
