@@ -1,23 +1,19 @@
 {
   "name": "@codecademy/gamut-styles",
   "description": "Styleguide & Component library for codecademy.com",
-  "version": "13.4.0",
+  "version": "14.0.2",
   "author": "Jake Hiller <jake@codecademy.com>",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "scripts": {
-    "build:clean": "rm -rf ./dist",
-    "build:compile": "tsc",
-    "build:transpile": "babel ./src --out-dir ./dist --copy-files --extensions \".ts,.tsx\"",
-    "build": "yarn build:clean && yarn build:compile && yarn build:transpile",
-    "lernaBuildTask": "yarn build"
+    "build": "nx build @codecademy/gamut-styles"
   },
   "repository": {
     "type": "git",
     "url": "git@github.com:Codecademy/gamut.git"
   },
   "dependencies": {
-    "@codecademy/variance": "^0.20.0",
+    "@codecademy/variance": "^0.20.2",
     "@emotion/is-prop-valid": "^1.1.0",
     "polished": "^4.1.2"
   },

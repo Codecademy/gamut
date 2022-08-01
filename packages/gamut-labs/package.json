@@ -1,7 +1,7 @@
 {
   "name": "@codecademy/gamut-labs",
   "description": "Brand and experimental component library for Codecademy",
-  "version": "33.0.0",
+  "version": "33.0.4",
   "author": "Codecademy Engineering <dev@codecademy.com>",
   "sideEffects": [
     "*.css",
@@ -22,12 +22,12 @@
     "react-dom": ">=17.0.2"
   },
   "dependencies": {
-    "@codecademy/gamut": "^48.3.0",
-    "@codecademy/gamut-icons": "^7.4.2",
-    "@codecademy/gamut-illustrations": "^0.28.2",
-    "@codecademy/gamut-patterns": "^0.8.8",
-    "@codecademy/gamut-styles": "^13.4.0",
-    "@codecademy/variance": "^0.20.0",
+    "@codecademy/gamut": "^49.1.0",
+    "@codecademy/gamut-icons": "^7.4.5",
+    "@codecademy/gamut-illustrations": "^0.28.5",
+    "@codecademy/gamut-patterns": "^0.8.11",
+    "@codecademy/gamut-styles": "^14.0.2",
+    "@codecademy/variance": "^0.20.2",
     "@loadable/component": "^5.15.2",
     "classnames": "^2.2.5",
     "framer-motion": "^4.1.17",
@@ -41,7 +41,7 @@
     "react-use": "15.3.8"
   },
   "devDependencies": {
-    "@codecademy/gamut-tests": "^4.0.7",
+    "@codecademy/gamut-tests": "^4.0.10",
     "@emotion/jest": "^11.3.0",
     "@testing-library/dom": "^8.11.1",
     "@testing-library/react": "^12.1.2",
@@ -53,12 +53,9 @@
   },
   "scripts": {
     "verify": "tsc --noEmit",
-    "build:compile": "babel ./src --out-dir ./dist --copy-files --extensions \".ts,.tsx\"",
-    "build:clean": "rm -rf dist",
-    "build:types": "tsc --emitDeclarationOnly",
-    "build": "yarn build:clean && yarn build:compile && yarn build:types",
-    "build:watch": "yarn build && onchange ./src -- yarn build:compile && yarn build:types",
-    "lernaBuildTask": "yarn build"
+    "compile": "babel ./src --out-dir ./dist --copy-files --extensions \".ts,.tsx\"",
+    "build:watch": "rm -rf dist && yarn compile && tsc --emitDeclarationOnly && onchange ./src -- yarn build:compile && yarn build:types",
+    "build": "nx build"
   },
   "license": "MIT",
   "publishConfig": {
