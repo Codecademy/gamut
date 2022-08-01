@@ -27,7 +27,7 @@
     "monaco-editor-webpack-plugin": "1.9.1"
   },
   "scripts": {
-    "compile": "babel ./src --out-dir ./dist --copy-files --extensions \".ts,.tsx\"",
+    "compile": "babel ./src --out-dir ./dist --extensions \".ts,.tsx\"",
     "build:watch": "rm -rf dist && yarn compile && tsc --emitDeclarationOnly && onchange ./src -- yarn compile && tsc --emitDeclarationOnly",
     "build": "nx build @codecademy/monaco"
   },

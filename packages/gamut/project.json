@@ -11,8 +11,9 @@
         "outputPath": "./dist",
         "commands": [
           "rm -rf ./dist",
-          "babel ./src --out-dir ./dist --copy-files --extensions \".ts,.tsx\"",
-          "tsc --emitDeclarationOnly --project ./tsconfig.lib.json"
+          "babel ./src --out-dir ./dist --extensions \".ts,.tsx\"",
+          "tsc --emitDeclarationOnly --project ./tsconfig.lib.json",
+          "cpy './src/**/*.d.ts' ./dist"
         ],
         "parallel": false
       }

@@ -12,7 +12,7 @@
         "commands": [
           "rm -rf ./dist",
           "tsc --project tsconfig.lib.json",
-          "babel ./src --out-dir ./dist --copy-files --extensions \".ts,.tsx\""
+          "babel ./src --out-dir ./dist --extensions \".ts,.tsx\""
         ],
         "parallel": false
       }

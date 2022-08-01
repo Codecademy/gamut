@@ -53,7 +53,7 @@
   },
   "scripts": {
     "verify": "tsc --noEmit",
-    "compile": "babel ./src --out-dir ./dist --copy-files --extensions \".ts,.tsx\"",
+    "compile": "babel ./src --out-dir ./dist --extensions \".ts,.tsx\"",
     "build:watch": "rm -rf dist && yarn compile && tsc --emitDeclarationOnly && onchange ./src -- yarn build:compile && yarn build:types",
     "build": "nx build"
   },
