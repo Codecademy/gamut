@@ -16,6 +16,14 @@
         ],
         "parallel": false
       }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/packages/gamut-tests"],
+      "options": {
+        "jestConfig": "packages/gamut-tests/jest.config.ts",
+        "passWithNoTests": true
+      }
     }
   },
   "tags": []
