@@ -66,7 +66,7 @@ export const mapItemToElement = (
   redirectParam?: string,
   renderBookmarks?: RenderBookmarks,
   onKeyDown?: (event: React.KeyboardEvent) => void,
-  mobile = false,
+  mobile = false
 ): ReactNode => {
   switch (item.type) {
     case 'logo':
