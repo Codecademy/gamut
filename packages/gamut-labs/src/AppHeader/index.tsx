@@ -4,6 +4,7 @@ import styled from '@emotion/styled';
 import React, { ReactNode, useEffect, useMemo, useRef, useState } from 'react';
 
 import { AppBar } from '../AppBar';
+import { RenderBookmarks } from '../GlobalHeader/types';
 import { formatUrlWithRedirect } from '../GlobalHeader/urlHelpers';
 import { HeaderHeightArea } from '../HeaderHeightArea';
 import { NotificationsPopover } from '../Notifications/NotificationsPopover';
@@ -63,11 +64,12 @@ export const mapItemToElement = (
   isAnon: boolean,
   redirectParam?: string,
   onKeyDown?: (event: React.KeyboardEvent) => void,
-  mobile = false
+  mobile = false,
+  renderBookmarks?: RenderBookmarks,
 ): ReactNode => {
   switch (item.type) {
     case 'logo':
-      return <AppHeaderLogo action={action} item={item} />;
+      return <AppHeaderLogo action={action} item={item} renderBookmarks={renderBookmarks} />;
     case 'link':
       return <AppHeaderLink tabIndex="-1" mx={0} action={action} item={item} />;
     case 'dropdown':

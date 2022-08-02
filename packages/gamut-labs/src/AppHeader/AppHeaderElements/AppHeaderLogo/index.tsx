@@ -1,19 +1,22 @@
 import { Anchor, Logo } from '@codecademy/gamut';
 import React from 'react';
 
+import { RenderBookmarks } from '../../../GlobalHeader/types';
 import { AppHeaderClickHandler, AppHeaderLogoItem } from '../types';
 
 export type AppHeaderLogoProps = {
   action: AppHeaderClickHandler;
   item: AppHeaderLogoItem;
+  renderBookmarks?: RenderBookmarks;
 };
 
 export const AppHeaderLogo: React.FC<AppHeaderLogoProps> = ({
   action,
   item,
+  renderBookmarks,
 }) => {
   const windowWidth = window.innerWidth || document.documentElement.clientWidth;
-  const showMiniLogo = windowWidth <= 1260 && windowWidth >= 1200;
+  const showMiniLogo = renderBookmarks && (windowWidth <= 1260 && windowWidth >= 1200);
 
   return (
     <Anchor

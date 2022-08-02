@@ -11,7 +11,7 @@ type RenderFavorites = {
   desktop: () => ReactNode;
 };
 
-type RenderBookmarks = () => ReactNode;
+export type RenderBookmarks = () => ReactNode;
 
 type RenderProfile = { desktop: () => ReactNode; mobile: () => ReactNode };
 
