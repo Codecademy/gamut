@@ -8,6 +8,7 @@
   ],
   "compilerOptions": {
     "declaration": true,
+    "strictFunctionTypes": false,
     "jsx": "react",
     "outDir": "./dist",
     "rootDir": "./src"

@@ -7,7 +7,6 @@
     "esModuleInterop": true,
     "experimentalDecorators": true,
     "forceConsistentCasingInFileNames": true,
-    "jsx": "react",
     "lib": ["es2017", "dom"],
     "module": "esnext",
     "moduleResolution": "node",

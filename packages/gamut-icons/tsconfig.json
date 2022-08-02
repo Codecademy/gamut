@@ -4,7 +4,9 @@
     "declaration": true,
     "jsx": "react",
     "rootDir": "./src",
-    "outDir": "./dist"
+    "outDir": "./dist",
+    "strict": true,
+    "strictFunctionTypes": false
   },
   "include": [
     "../../typings/*.d.ts",
