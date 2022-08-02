@@ -126,8 +126,6 @@ jobs:
       - *restore_node_modules
       - *restore_nx_cache
       - nx/set-shas
-      - *build_all_packages
-      - *save_nx_cache
       - run:
           name: Run test suite
           command: |
@@ -135,6 +133,7 @@ jobs:
           environment:
             JEST_JUNIT_OUTPUT_DIR: /tmp/test-results/junit
             JEST_JUNIT_ADD_FILE_ATTRIBUTE: 'true'
+      - *save_nx_cache
       - store_test_results:
           path: /tmp/test-results
       - store_artifacts:
