@@ -16,8 +16,7 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "baseUrl": "."
+    "noUnusedParameters": true
   },
   "exclude": ["**/node_modules", "tmp"]
 }

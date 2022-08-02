@@ -2,7 +2,6 @@
 
 exports[`Gamut Exported Keys 1`] = `
 Array [
-  "__esModule",
   "Accordion",
   "AccordionArea",
   "AccordionButton",
