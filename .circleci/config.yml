@@ -1,7 +1,6 @@
 version: 2.1
 orbs:
   queue: eddiewebb/queue@1.5.0
-  nx: nrwl/nx@1.5.1
 
 references:
   default_env: &default_env
@@ -126,7 +125,6 @@ jobs:
       - checkout
       - *restore_node_modules
       - *restore_nx_cache
-      - nx/set-shas
       - *build_all_packages
       - *save_nx_cache
       - run:
@@ -153,7 +151,6 @@ jobs:
       - *restore_node_modules
       - *set_npm_token
       - *restore_nx_cache
-      - nx/set-shas
       - *build_all_packages
       - *save_nx_cache
       - run:
@@ -170,7 +167,6 @@ jobs:
       - *restore_node_modules
       - *restore_nx_cache
       - *restore_webpack_cache
-      - nx/set-shas
       - run:
           name: build storybook
           command: yarn build-storybook
@@ -191,7 +187,6 @@ jobs:
       - *restore_node_modules
       - *restore_nx_cache
       - *restore_webpack_cache
-      - nx/set-shas
       - run:
           name: build storybook
           command: yarn build-storybook
@@ -239,7 +234,6 @@ jobs:
       - *restore_node_modules
       - *set_npm_token
       - *restore_nx_cache
-      - nx/set-shas
       - *build_all_packages
       - *save_nx_cache
       - run:
