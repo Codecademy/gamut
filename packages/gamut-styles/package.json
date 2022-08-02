@@ -9,7 +9,9 @@
     "dist",
     "core",
     "fonts",
-    "utils"
+    "utils",
+    "core.scss",
+    "utils.scss"
   ],
   "scripts": {
     "build": "nx build @codecademy/gamut-styles"
