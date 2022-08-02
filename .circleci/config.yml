@@ -119,7 +119,6 @@ jobs:
 
   tests:
     <<: *default_env
-    parallelism: 7
     resource_class: large
     steps:
       - checkout
@@ -130,8 +129,7 @@ jobs:
       - run:
           name: Run test suite
           command: |
-            export TESTFILES=$(yarn --silent test --listTests | xargs realpath -q --relative-to=$PWD "$1" | sort | circleci tests split --split-by=timings)
-            yarn test --ci --runInBand --runTestsByPath ${TESTFILES} --coverage --reporters="default" --reporters="jest-junit"
+            yarn nx affected --base=$NX_BASE --head=$NX_HEAD --target=test --parallel=3 --ci --coverage --reporters="default" --reporters="jest-junit"
           environment:
             JEST_JUNIT_OUTPUT_DIR: /tmp/test-results/junit
             JEST_JUNIT_ADD_FILE_ATTRIBUTE: 'true'
