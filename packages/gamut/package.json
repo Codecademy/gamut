@@ -15,6 +15,9 @@
     "type": "git",
     "url": "git@github.com:Codecademy/gamut.git"
   },
+  "files": [
+    "dist"
+  ],
   "peerDependencies": {
     "@emotion/react": "^11.4.0",
     "@emotion/styled": "^11.3.0",

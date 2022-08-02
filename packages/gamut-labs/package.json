@@ -11,6 +11,9 @@
   ],
   "module": "./dist/index.js",
   "main": "./dist/index.js",
+  "files": [
+    "dist"
+  ],
   "repository": {
     "type": "git",
     "url": "git@github.com:Codecademy/gamut.git"

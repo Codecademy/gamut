@@ -5,6 +5,12 @@
   "author": "Jake Hiller <jake@codecademy.com>",
   "main": "dist/index.js",
   "module": "dist/index.js",
+  "files": [
+    "dist",
+    "core",
+    "fonts",
+    "utils"
+  ],
   "scripts": {
     "build": "nx build @codecademy/gamut-styles"
   },

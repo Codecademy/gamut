@@ -16,8 +16,11 @@
   "name": "@codecademy/gamut-tests",
   "version": "4.0.10",
   "license": "MIT",
-  "main": "./dist/index.js",
+  "main": "dist/index.js",
   "module": "dist/index.js",
+  "files": [
+    "dist"
+  ],
   "peerDependencies": {
     "react": ">=17.0.2"
   },
