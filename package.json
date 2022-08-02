@@ -52,7 +52,7 @@
       "**/storybook-*/**"
     ]
   },
-  "devDependencies": {
+  "dependencies": {
     "@babel/cli": "7.17.10",
     "@babel/core": "7.13.10",
     "@babel/preset-typescript": "^7.13.0",
@@ -130,6 +130,5 @@
       "pre-commit": "lint-staged"
     }
   },
-  "packageManager": "yarn@1.22.10",
-  "dependencies": {}
+  "packageManager": "yarn@1.22.10"
 }
