@@ -4,7 +4,7 @@
     "declaration": true,
     "jsx": "react",
     "outDir": "./dist",
-    "rootDirs": ["./src", "./typings"],
+    "rootDir": "./src",
     "paths": {}
   },
   "files": [
