@@ -9,7 +9,6 @@
     "experimentalDecorators": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    "importHelpers": true,
     "target": "esnext",
     "module": "esnext",
     "lib": ["es2017", "dom"],
