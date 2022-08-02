@@ -65,18 +65,18 @@ describe('Alert', () => {
     const buttons = wrapper.find(IconButton);
 
     expect(buttons.length).toBe(2);
-    expect(wrapper.find('Truncate').prop('expanded')).toBe(false);
+    expect(wrapper.find('TruncateMarkup').length).toBe(1);
 
     buttons.at(0).simulate('click');
 
     wrapper.update();
 
-    expect(wrapper.find('Truncate').prop('expanded')).toBe(true);
+    expect(wrapper.find('TruncateMarkup').length).toBe(0);
 
     buttons.at(0).simulate('click');
 
     wrapper.update();
 
-    expect(wrapper.find('Truncate').prop('expanded')).toBe(false);
+    expect(wrapper.find('TruncateMarkup').length).toBe(1);
   });
 });

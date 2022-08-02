@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [61.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@60.1.1...@codecademy/styleguide@61.0.0) (2022-08-02)
+
+
+### ⚠ BREAKING CHANGES
+
+* **Truncate:** Remove `Truncate`
+
+### Miscellaneous Chores
+
+* **Truncate:** Remove `Truncate` ([5c0812d](https://github.com/Codecademy/gamut/commit/5c0812d80d7c16f3d0ae555cd260fb2100474a10))
+
+
+
+### [60.1.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@60.1.0...@codecademy/styleguide@60.1.1) (2022-08-01)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
 ## [60.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@60.0.1...@codecademy/styleguide@60.1.0) (2022-07-29)
 
 
