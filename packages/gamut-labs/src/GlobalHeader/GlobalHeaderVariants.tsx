@@ -46,6 +46,7 @@ const anonHeaderItems = (
   hidePricing?: boolean,
   user?: User,
   renderBookmarks?: RenderBookmarks
+  // crossDeviceHeaderItemPairs:
 ): FormattedAppHeaderItems => {
   const leftItems: AppHeaderItem[] = [
     logo,
