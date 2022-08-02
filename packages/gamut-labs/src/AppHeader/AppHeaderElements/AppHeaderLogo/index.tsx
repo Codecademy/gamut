@@ -1,5 +1,5 @@
 import { Anchor, Logo } from '@codecademy/gamut';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { RenderBookmarks } from '../../../GlobalHeader/types';
 import { AppHeaderClickHandler, AppHeaderLogoItem } from '../types';
@@ -17,9 +17,9 @@ export const AppHeaderLogo: React.FC<AppHeaderLogoProps> = ({
 }) => {
   const [windowWidth, setWindowWidth] = useState(0);
 
-  if (typeof window !== undefined) {
+  useEffect(() => {
     setWindowWidth(window.innerWidth || document.documentElement.clientWidth);
-  }
+  }, []);
 
   const showMiniLogo =
     renderBookmarks && windowWidth <= 1260 && windowWidth >= 1200;
