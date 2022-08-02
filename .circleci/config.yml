@@ -129,7 +129,7 @@ jobs:
       - run:
           name: Run test suite
           command: |
-            yarn nx affected --base=$NX_BASE --head=$NX_HEAD --target=test --parallel=3 --ci --coverage --reporters="default" --reporters="jest-junit"
+            yarn nx affected --base=$NX_BASE --head=$NX_HEAD --target=test --parallel=3 --ci
           environment:
             JEST_JUNIT_OUTPUT_DIR: /tmp/test-results/junit
             JEST_JUNIT_ADD_FILE_ATTRIBUTE: 'true'
