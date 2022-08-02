@@ -65,11 +65,17 @@ export const mapItemToElement = (
   redirectParam?: string,
   onKeyDown?: (event: React.KeyboardEvent) => void,
   mobile = false,
-  renderBookmarks?: RenderBookmarks,
+  renderBookmarks?: RenderBookmarks
 ): ReactNode => {
   switch (item.type) {
     case 'logo':
-      return <AppHeaderLogo action={action} item={item} renderBookmarks={renderBookmarks} />;
+      return (
+        <AppHeaderLogo
+          action={action}
+          item={item}
+          renderBookmarks={renderBookmarks}
+        />
+      );
     case 'link':
       return <AppHeaderLink tabIndex="-1" mx={0} action={action} item={item} />;
     case 'dropdown':

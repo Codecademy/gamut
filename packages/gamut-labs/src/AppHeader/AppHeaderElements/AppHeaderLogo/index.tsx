@@ -18,10 +18,11 @@ export const AppHeaderLogo: React.FC<AppHeaderLogoProps> = ({
   const [windowWidth, setWindowWidth] = useState(0);
 
   if (typeof window !== undefined) {
-    setWindowWidth(window.innerWidth || document.documentElement.clientWidth)
+    setWindowWidth(window.innerWidth || document.documentElement.clientWidth);
   }
 
-  const showMiniLogo = renderBookmarks && (windowWidth <= 1260 && windowWidth >= 1200);
+  const showMiniLogo =
+    renderBookmarks && windowWidth <= 1260 && windowWidth >= 1200;
 
   return (
     <Anchor
