@@ -13,6 +13,7 @@ import {
 import { appHeaderMobileBreakpoint } from '../AppHeader/shared';
 import { FormattedMobileAppHeaderItems } from '../AppHeader/types';
 import { AppHeaderMainMenuMobile } from '../AppHeaderMobile/AppHeaderMainMenuMobile';
+import { RenderBookmarks } from '../GlobalHeader/types';
 import { HeaderHeightArea } from '../HeaderHeightArea';
 import { NotificationsContents } from '../Notifications/NotificationsContents';
 import { AppHeaderNotifications } from '../Notifications/types';
@@ -23,6 +24,7 @@ export type AppHeaderMobileProps = {
   items: FormattedMobileAppHeaderItems;
   notifications?: AppHeaderNotifications;
   redirectParam?: string;
+  renderBookmarks?: RenderBookmarks;
   onSearch: (query: string) => void;
   isAnon: boolean;
 };
@@ -55,6 +57,7 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
   notifications,
   onSearch,
   redirectParam,
+  renderBookmarks,
   isAnon,
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
@@ -91,6 +94,7 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
             item,
             isAnon,
             redirectParam,
+            renderBookmarks,
             undefined,
             true
           )}

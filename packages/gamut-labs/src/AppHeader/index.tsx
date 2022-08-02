@@ -29,6 +29,7 @@ export type AppHeaderProps = {
   items: FormattedAppHeaderItems;
   notifications?: AppHeaderNotifications;
   redirectParam?: string;
+  renderBookmarks?: RenderBookmarks;
   search: AppHeaderSearch;
   isAnon: boolean;
 };
@@ -63,9 +64,9 @@ export const mapItemToElement = (
   item: AppHeaderItem,
   isAnon: boolean,
   redirectParam?: string,
+  renderBookmarks?: RenderBookmarks,
   onKeyDown?: (event: React.KeyboardEvent) => void,
   mobile = false,
-  renderBookmarks?: RenderBookmarks
 ): ReactNode => {
   switch (item.type) {
     case 'logo':
@@ -141,6 +142,7 @@ export const AppHeader: React.FC<AppHeaderProps> = ({
   items,
   notifications,
   redirectParam,
+  renderBookmarks,
   search,
   isAnon,
 }) => {
@@ -251,7 +253,7 @@ export const AppHeader: React.FC<AppHeaderProps> = ({
         onFocus={() => setIsFocused(true)}
         onBlur={() => setIsFocused(false)}
       >
-        {mapItemToElement(action, item, isAnon, redirectParam)}
+        {mapItemToElement(action, item, isAnon, redirectParam, renderBookmarks)}
       </AppHeaderListItem>
     ));
   };
