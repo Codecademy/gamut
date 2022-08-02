@@ -83,21 +83,27 @@ export type ToolTipAccessibiltyProps = Pick<
   ToolTipProps,
   'focusable' | 'id'
 > & {
-  anotherThing?: boolean;
+  isOpenPopoverToolTip?: boolean;
 };
 
 export const getAccessibilityProps = ({
   focusable,
   id,
-  anotherThing,
+  isOpenPopoverToolTip,
 }: ToolTipAccessibiltyProps) => {
-  // ToolTips sometimes contain actual <button>s, which cannot be a child of a button.
-  // This element still needs tab focus so we must use the `tabIndex=0` hack.
+  // Since PopoverToolTips are removed from the DOM, when they are inactive they need an aria-label instead of aria-labelledby
   const ariaLabel = {
     'aria-labelledby':
-      anotherThing === undefined || anotherThing ? id : undefined,
-    'aria-label': anotherThing === undefined || anotherThing ? undefined : id,
+      isOpenPopoverToolTip === undefined || isOpenPopoverToolTip
+        ? id
+        : undefined,
+    'aria-label':
+      isOpenPopoverToolTip === undefined || isOpenPopoverToolTip
+        ? undefined
+        : id,
   };
+  // ToolTips sometimes contain actual <button>s, which cannot be a child of a button.
+  // This element still needs tab focus so we must use the `tabIndex=0` hack.
   return {
     ...ariaLabel,
     role: focusable ? 'button' : undefined,

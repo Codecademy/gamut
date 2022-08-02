@@ -32,7 +32,7 @@ export const FloatingToolTip: React.FC<ToolTipPlacementComponentProps> = ({
   const accessibilityProps = getAccessibilityProps({
     focusable,
     id,
-    anotherThing: isOpen,
+    isOpenPopoverToolTip: isOpen,
   });
   const popoverAlignments = getPopoverAlignment({ alignment });
 
