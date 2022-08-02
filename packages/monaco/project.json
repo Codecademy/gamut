@@ -12,7 +12,8 @@
         "commands": [
           "rm -rf ./dist",
           "babel ./src --out-dir ./dist --extensions \".ts,.tsx\"",
-          "tsc --emitDeclarationOnly"
+          "tsc --emitDeclarationOnly",
+          "cpy './src/**/*.d.ts' ./dist"
         ],
         "parallel": false
       }

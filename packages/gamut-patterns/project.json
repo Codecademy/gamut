@@ -14,7 +14,8 @@
           "rm -rf ./src/patterns",
           "svgr --out-dir ./src/patterns --ext 'tsx' ./src/svg",
           "babel ./src --out-dir ./dist --extensions \".ts,.tsx\"",
-          "tsc --emitDeclarationOnly"
+          "tsc --emitDeclarationOnly",
+          "cpy './src/**/*.svg' ./dist"
         ],
         "parallel": false
       }
