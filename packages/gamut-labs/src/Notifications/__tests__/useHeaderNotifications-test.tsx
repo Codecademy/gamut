@@ -73,16 +73,23 @@ describe('useHeaderNotifications', () => {
       userEvent.click(buttonView.getByRole('menuitem'));
     });
 
+    // verify button click would tell react to update state
     expect(mockSetOpenCrossDeviceItemId).toBeCalledTimes(1);
     expect(mockSetOpenCrossDeviceItemId).toBeCalledWith('notifications');
 
     defaultProps.openCrossDeviceItemId = 'notifications';
 
-    // const paneView = render(
-    //  <MockGamutProvider>{hook.result.current[1]}</MockGamutProvider>
-    // );
+    // simulate React telling the component there was a change to its prop (openCrossDeviceItemId) and therefore trigger a rerender
+    const secondRenderOfHook = renderHook(() =>
+      useHeaderNotifications({ ...defaultProps, settings: newSettings })
+    );
+    const paneView = render(
+      <MockGamutProvider>
+        {secondRenderOfHook.result.current[1]}
+      </MockGamutProvider>
+    );
 
-    // expect(settingsProps.onEnable).toHaveBeenCalled();
-    // expect(paneView.container).not.toBeEmptyDOMElement();
+    expect(settingsProps.onEnable).toHaveBeenCalled();
+    expect(paneView.container).not.toBeEmptyDOMElement();
   });
 });
