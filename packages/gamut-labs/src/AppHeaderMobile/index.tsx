@@ -1,4 +1,4 @@
-import { ContentContainer, IconButton, Overlay } from '@codecademy/gamut';
+import { Box, ContentContainer, IconButton, Overlay } from '@codecademy/gamut';
 import { CloseIcon, MenuIcon } from '@codecademy/gamut-icons';
 import { css } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
@@ -187,7 +187,9 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
           </StyledContentContainer>
         </HeaderHeightArea>
       </StyledOverlay>
-      {notificationsView}
+      <Box display={{ _: `block`, [appHeaderMobileBreakpoint]: `none` }}>
+        {notificationsView}
+      </Box>
     </>
   );
 };
