@@ -5,7 +5,7 @@ import {
   AppHeaderItemWithHref,
 } from '../AppHeader/AppHeaderElements/types';
 import { AppHeaderSearch } from '../AppHeader/Search/useHeaderSearch';
-import { AppHeaderNotifications } from '../Notifications/types';
+import { AppHeaderNotificationSettings } from '../Notifications/types';
 
 type RenderFavorites = {
   desktop: () => ReactNode;
@@ -47,7 +47,7 @@ export type User = {
 };
 
 type LoggedInHeader = BaseHeader & {
-  notifications: AppHeaderNotifications;
+  notifications: AppHeaderNotificationSettings;
   renderProfile?: RenderProfile;
   renderFavorites?: RenderFavorites;
   user: User;
@@ -73,4 +73,9 @@ export type ProHeader = LoggedInHeader & {
 
 export type LoadingHeader = BaseHeader & {
   type: 'loading';
+};
+
+export type CrossDeviceStateProps = {
+  openCrossDeviceItemId: string;
+  setOpenCrossDeviceItemId: React.Dispatch<React.SetStateAction<string>>;
 };

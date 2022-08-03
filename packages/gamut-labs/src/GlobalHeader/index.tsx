@@ -1,6 +1,6 @@
 import { Box } from '@codecademy/gamut';
 import { useTheme } from '@emotion/react';
-import React, { useCallback } from 'react';
+import React, { useCallback, useState } from 'react';
 
 import { AppHeader, AppHeaderMobile } from '..';
 import {
@@ -140,9 +140,13 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
     [action, onLinkAction]
   );
 
+  const [openCrossDeviceItemId, setOpenCrossDeviceItemId] = useState('');
+
   return (
     <Box as="header" position="sticky" top={0} zIndex={theme.elements.headerZ}>
       <AppHeader
+        openCrossDeviceItemId={openCrossDeviceItemId}
+        setOpenCrossDeviceItemId={setOpenCrossDeviceItemId}
         action={combinedAction}
         items={getAppHeaderItems(props)}
         search={props.search}
@@ -158,6 +162,8 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
         isAnon={props.type === 'anon'}
       />
       <AppHeaderMobile
+        openCrossDeviceItemId={openCrossDeviceItemId}
+        setOpenCrossDeviceItemId={setOpenCrossDeviceItemId}
         action={combinedAction}
         items={getMobileAppHeaderItems(props)}
         {...(props.type === 'anon' || props.type === 'loading'

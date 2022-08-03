@@ -13,19 +13,20 @@ import {
 import { appHeaderMobileBreakpoint } from '../AppHeader/shared';
 import { FormattedMobileAppHeaderItems } from '../AppHeader/types';
 import { AppHeaderMainMenuMobile } from '../AppHeaderMobile/AppHeaderMainMenuMobile';
+import { CrossDeviceStateProps } from '../GlobalHeader/types';
 import { HeaderHeightArea } from '../HeaderHeightArea';
 import { NotificationsContents } from '../Notifications/NotificationsContents';
-import { AppHeaderNotifications } from '../Notifications/types';
+import { AppHeaderNotificationSettings } from '../Notifications/types';
 import { useHeaderNotifications } from '../Notifications/useHeaderNotifications';
 
 export type AppHeaderMobileProps = {
   action: AppHeaderClickHandler;
   items: FormattedMobileAppHeaderItems;
-  notifications?: AppHeaderNotifications;
+  notifications?: AppHeaderNotificationSettings;
   redirectParam?: string;
   onSearch: (query: string) => void;
   isAnon: boolean;
-};
+} & CrossDeviceStateProps;
 
 const StyledOverlay = styled(Overlay)(
   css({
@@ -50,6 +51,8 @@ const StyledContentContainer = styled(ContentContainer)(
 );
 
 export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
+  openCrossDeviceItemId,
+  setOpenCrossDeviceItemId,
   action,
   items,
   notifications,
@@ -60,10 +63,12 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
   const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
   const [allowScroll, setAllowScroll] = useState<boolean>(false);
 
-  const [notificationsBell, notificationsView] = useHeaderNotifications(
-    notifications,
-    NotificationsContents
-  );
+  const [notificationsBell, notificationsView] = useHeaderNotifications({
+    settings: notifications,
+    Renderer: NotificationsContents,
+    openCrossDeviceItemId,
+    setOpenCrossDeviceItemId,
+  });
   const openMobileMenu = () => {
     setMobileMenuOpen(true);
   };

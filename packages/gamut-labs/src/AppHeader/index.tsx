@@ -7,7 +7,7 @@ import { AppBar } from '../AppBar';
 import { formatUrlWithRedirect } from '../GlobalHeader/urlHelpers';
 import { HeaderHeightArea } from '../HeaderHeightArea';
 import { NotificationsPopover } from '../Notifications/NotificationsPopover';
-import { AppHeaderNotifications } from '../Notifications/types';
+import { AppHeaderNotificationSettings } from '../Notifications/types';
 import { useHeaderNotifications } from '../Notifications/useHeaderNotifications';
 import { AppHeaderCatalogDropdown } from './AppHeaderElements/AppHeaderCatalogDropdown';
 import { AppHeaderDropdown } from './AppHeaderElements/AppHeaderDropdown';
@@ -24,9 +24,11 @@ import { appHeaderMobileBreakpoint } from './shared';
 import { FormattedAppHeaderItems } from './types';
 
 export type AppHeaderProps = {
+  openCrossDeviceItemId: string;
+  setOpenCrossDeviceItemId: React.Dispatch<React.SetStateAction<string>>;
   action: AppHeaderClickHandler;
   items: FormattedAppHeaderItems;
-  notifications?: AppHeaderNotifications;
+  notifications?: AppHeaderNotificationSettings;
   redirectParam?: string;
   search: AppHeaderSearch;
   isAnon: boolean;
@@ -129,6 +131,8 @@ export const mapItemToElement = (
 };
 
 export const AppHeader: React.FC<AppHeaderProps> = ({
+  openCrossDeviceItemId,
+  setOpenCrossDeviceItemId,
   action,
   items,
   notifications,
@@ -138,10 +142,12 @@ export const AppHeader: React.FC<AppHeaderProps> = ({
 }) => {
   const menuContainerRef = useRef<HTMLUListElement>(null);
 
-  const [notificationsBell, notificationsView] = useHeaderNotifications(
-    notifications,
-    NotificationsPopover
-  );
+  const [notificationsBell, notificationsView] = useHeaderNotifications({
+    settings: notifications,
+    Renderer: NotificationsPopover,
+    openCrossDeviceItemId,
+    setOpenCrossDeviceItemId,
+  });
   const [searchButton, searchPane] = useHeaderSearch(search);
 
   const right = useMemo(

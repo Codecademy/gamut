@@ -1,15 +1,26 @@
 import { ButtonBaseElements } from '@codecademy/gamut';
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 
 import { AnimatedHeaderZone } from '../AppHeader/shared';
+import { CrossDeviceStateProps } from '../GlobalHeader/types';
 import { NotificationBell } from './NotificationBell';
-import { AppHeaderNotifications, NotificationsRendererProps } from './types';
+import {
+  AppHeaderNotificationSettings,
+  NotificationsRendererProps,
+} from './types';
 
-export const useHeaderNotifications = (
-  settings: AppHeaderNotifications | undefined,
-  Renderer: React.ComponentType<NotificationsRendererProps>
-) => {
-  const [isPaneVisible, setIsPaneVisible] = useState(false);
+type HeaderNotificationProps = CrossDeviceStateProps & {
+  settings: AppHeaderNotificationSettings | undefined;
+  Renderer: React.ComponentType<NotificationsRendererProps>;
+};
+
+export const useHeaderNotifications = ({
+  settings,
+  Renderer,
+  openCrossDeviceItemId,
+  setOpenCrossDeviceItemId,
+}: HeaderNotificationProps) => {
+  // const [isPaneVisible, setIsPaneVisible] = useState(false);
   const bellRef = useRef<ButtonBaseElements>(null);
 
   if (!settings) {
@@ -17,11 +28,15 @@ export const useHeaderNotifications = (
   }
 
   const togglePane = () => {
-    if (!isPaneVisible) {
+    if (openCrossDeviceItemId !== 'notifications') {
       settings.onEnable();
     }
 
-    setIsPaneVisible((oldIsPaneVisible) => !oldIsPaneVisible);
+    const newVal =
+      openCrossDeviceItemId === 'notifications' ? '' : 'notifications';
+
+    setOpenCrossDeviceItemId(newVal);
+    // setIsPaneVisible((oldIsPaneVisible) => !oldIsPaneVisible);
   };
 
   return [
@@ -36,7 +51,7 @@ export const useHeaderNotifications = (
         />
       ),
     },
-    <AnimatedHeaderZone visible={isPaneVisible}>
+    <AnimatedHeaderZone visible={openCrossDeviceItemId === 'notifications'}>
       <Renderer
         actions={settings.actions}
         bellRef={bellRef}

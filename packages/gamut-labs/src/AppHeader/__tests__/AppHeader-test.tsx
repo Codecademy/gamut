@@ -17,6 +17,8 @@ const defaultProps = {
     onTrackingClick: jest.fn(),
   },
   isAnon: true,
+  openCrossDeviceItemId: '',
+  setOpenCrossDeviceItemId: jest.fn(),
 };
 
 const logoProps: AppHeaderProps = {

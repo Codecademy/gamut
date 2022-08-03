@@ -45,5 +45,5 @@ export * from './TabsExperimental';
 export * from './Testimonial';
 export * from './TestimonialDeprecated';
 export type { AnonHeaderVariant } from './GlobalHeader/types';
-export type { AppHeaderNotifications } from './Notifications/types';
+export type { AppHeaderNotificationSettings } from './Notifications/types';
 export type { AppHeaderSearch } from './AppHeader/Search/useHeaderSearch';

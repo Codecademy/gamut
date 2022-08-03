@@ -24,6 +24,8 @@ const logoProps: AppHeaderMobileProps = {
   },
   onSearch: jest.fn(),
   isAnon: true,
+  openCrossDeviceItemId: '',
+  setOpenCrossDeviceItemId: jest.fn(),
 };
 
 const linkProps: AppHeaderMobileProps = {
@@ -43,6 +45,8 @@ const linkProps: AppHeaderMobileProps = {
   },
   onSearch: jest.fn(),
   isAnon: true,
+  openCrossDeviceItemId: '',
+  setOpenCrossDeviceItemId: jest.fn(),
 };
 
 const mainMenuProps: AppHeaderMobileProps = {
@@ -69,6 +73,8 @@ const mainMenuProps: AppHeaderMobileProps = {
   },
   onSearch: jest.fn(),
   isAnon: true,
+  openCrossDeviceItemId: '',
+  setOpenCrossDeviceItemId: jest.fn(),
 };
 
 const renderAppHeader = (props: AppHeaderMobileProps) => {
