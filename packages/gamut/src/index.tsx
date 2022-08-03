@@ -55,7 +55,6 @@ export * from './Toast/Toast';
 export * from './Toaster';
 export * from './Toggle';
 export * from './ToolTip';
-export * from './Truncate';
 export * from './typings/responsive-properties';
 export * from './Typography/HeadingDeprecated';
 export * from './Typography/Text';
