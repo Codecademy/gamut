@@ -1,6 +1,7 @@
 import {
   Box,
   ButtonBaseElements,
+  FlexBox,
   IconButton,
   Popover,
 } from '@codecademy/gamut';
@@ -68,7 +69,7 @@ export const useBookmarkComponentsPair = ({
           onRequestClose={toggleVisible}
           targetRef={buttonRef}
         >
-          <Box>{bookmarkParts.desktop()}</Box>
+          <FlexBox bg="white">{bookmarkParts.desktop}</FlexBox>
         </Popover>
       ) : (
         bookmarkParts.mobile()
