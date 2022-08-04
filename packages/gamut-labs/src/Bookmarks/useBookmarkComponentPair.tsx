@@ -1,5 +1,4 @@
 import {
-  Box,
   ButtonBaseElements,
   FlexBox,
   IconButton,
