@@ -129,5 +129,8 @@
       "pre-commit": "lint-staged"
     }
   },
-  "packageManager": "yarn@1.22.10"
+  "packageManager": "yarn@1.22.10",
+  "devDependencies": {
+    "@nrwl/nx-cloud": "^14.3.0"
+  }
 }
