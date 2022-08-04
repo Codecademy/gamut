@@ -36,11 +36,6 @@ export const useHeaderNotifications = ({
     );
   };
 
-  // const wrappedTogglePane = () => {
-  //  // eslint-disable-next-line
-  //  console.log('closed from onClose handler');
-  //  togglePane();
-  // };
   return [
     {
       id: 'notifications',

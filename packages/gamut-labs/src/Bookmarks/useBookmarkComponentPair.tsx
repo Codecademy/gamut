@@ -1,9 +1,4 @@
-import {
-  ButtonBaseElements,
-  FlexBox,
-  IconButton,
-  Popover,
-} from '@codecademy/gamut';
+import { ButtonBaseElements, IconButton, Popover } from '@codecademy/gamut';
 import React, { useRef } from 'react';
 
 import { AnimatedHeaderZone } from '../AppHeader/shared';
@@ -63,10 +58,9 @@ export const useBookmarkComponentsPair = ({
           verticalOffset={1}
           outline
           isOpen
-          onRequestClose={toggleVisible}
           targetRef={buttonRef}
         >
-          <FlexBox bg="white">{bookmarkParts.desktop()}</FlexBox>
+          <>{bookmarkParts.desktop()}</>
         </Popover>
       ) : (
         bookmarkParts.mobile()
