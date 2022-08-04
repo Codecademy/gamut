@@ -14,8 +14,6 @@
     "url": "git@github.com:Codecademy/gamut.git"
   },
   "dependencies": {
-    "@babel/cli": "^7.13.10",
-    "@babel/core": "^7.13.10",
     "@codecademy/gamut": "^50.1.0",
     "@codecademy/gamut-icons": "^7.5.0",
     "@codecademy/gamut-illustrations": "^0.28.5",

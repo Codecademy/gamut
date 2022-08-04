@@ -8,6 +8,7 @@
     "libsDir": "packages"
   },
   "implicitDependencies": {
+    "yarn.lock": "*",
     "package.json": {
       "dependencies": "*",
       "devDependencies": "*"
