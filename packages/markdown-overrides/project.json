@@ -13,7 +13,7 @@
           "rm -rf ./dist",
           "babel ./src --out-dir ./dist --extensions \".ts,.tsx\"",
           "tsc --emitDeclarationOnly",
-          "cpy './src/**/*.d.ts' './src/**/*.scss' ./dist"
+          "cpy './src/**/*.{d.ts,scss,svg,png}' ./dist"
         ],
         "parallel": false
       }
