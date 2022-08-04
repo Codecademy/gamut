@@ -13,9 +13,7 @@ type RenderFavorites = {
 };
 
 // TODO: REACH-1977 remove after switch to crossDeviceBookmarkParts
-export type RenderBookmarks = {
-  desktop: () => ReactNode;
-};
+export type RenderBookmarks = () => ReactNode;
 
 type RenderProfile = { desktop: () => ReactNode; mobile: () => ReactNode };
 

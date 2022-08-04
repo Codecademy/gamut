@@ -58,7 +58,7 @@ const anonHeaderItems = (
 
   const rightItems: AppHeaderItem[] = [];
   if (renderBookmarks) {
-    rightItems.push(bookmarks(renderBookmarks.desktop));
+    rightItems.push(bookmarks(renderBookmarks));
   }
   if (renderLogin) {
     rightItems.push(login);
@@ -84,7 +84,7 @@ const anonMobileHeaderItems = (
 
   const rightItems: AppHeaderItem[] = [];
   if (renderBookmarks) {
-    rightItems.push(bookmarks(renderBookmarks.desktop));
+    rightItems.push(bookmarks(renderBookmarks));
   }
   if (renderLogin) {
     rightItems.push(login);
@@ -193,7 +193,7 @@ export const freeHeaderItems = (
     rightItems.push(favorites(renderFavorites));
   } else if (renderBookmarks) {
     // only allow bookmarks render if user wasn't also part of favs
-    rightItems.push(bookmarks(renderBookmarks.desktop));
+    rightItems.push(bookmarks(renderBookmarks));
   }
 
   rightItems.push(freeProfile(user));
@@ -230,7 +230,7 @@ export const freeMobileHeaderItems = (
   ];
 
   if (renderBookmarks) {
-    rightItems.push(bookmarks(renderBookmarks.desktop));
+    rightItems.push(bookmarks(renderBookmarks));
   }
 
   return {
@@ -259,7 +259,7 @@ export const proHeaderItems = (
     rightItems.push(favorites(renderFavorites));
   } else if (renderBookmarks) {
     // only allow bookmarks render if user wasn't also part of favs
-    rightItems.push(bookmarks(renderBookmarks.desktop));
+    rightItems.push(bookmarks(renderBookmarks));
   }
 
   rightItems.push(proProfile(user));
@@ -294,7 +294,7 @@ export const proMobileHeaderItems = (
   }
 
   if (renderBookmarks) {
-    rightItems.push(bookmarks(renderBookmarks.desktop));
+    rightItems.push(bookmarks(renderBookmarks));
   }
 
   return {

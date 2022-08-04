@@ -223,9 +223,7 @@ describe('GlobalHeader', () => {
     it('renders bookmarks if passed in props', () => {
       const { view } = renderView({
         ...anonHeaderProps,
-        renderBookmarks: {
-          desktop: () => <div data-testid="bookmarks" />,
-        },
+        renderBookmarks: () => <div data-testid="bookmarks" />,
       });
       view.getAllByTestId('bookmarks');
     });
@@ -251,9 +249,7 @@ describe('GlobalHeader', () => {
       it('renders bookmarks if passed in props', () => {
         const { view } = renderView({
           ...anonLandingHeaderProps,
-          renderBookmarks: {
-            desktop: () => <div data-testid="bookmarks" />,
-          },
+          renderBookmarks: () => <div data-testid="bookmarks" />,
         });
         view.getAllByTestId('bookmarks');
       });
@@ -278,9 +274,7 @@ describe('GlobalHeader', () => {
       it('renders bookmarks if passed in props', () => {
         const { view } = renderView({
           ...anonLoginHeaderProps,
-          renderBookmarks: {
-            desktop: () => <div data-testid="bookmarks" />,
-          },
+          renderBookmarks: () => <div data-testid="bookmarks" />,
         });
         view.getAllByTestId('bookmarks');
       });
@@ -305,9 +299,7 @@ describe('GlobalHeader', () => {
       it('renders bookmarks if passed in props', () => {
         const { view } = renderView({
           ...anonSignUpHeaderProps,
-          renderBookmarks: {
-            desktop: () => <div data-testid="bookmarks" />,
-          },
+          renderBookmarks: () => <div data-testid="bookmarks" />,
         });
         view.getAllByTestId('bookmarks');
       });
@@ -328,9 +320,7 @@ describe('GlobalHeader', () => {
     it('renders bookmarks if passed in props', () => {
       const { view } = renderView({
         ...freeHeaderProps,
-        renderBookmarks: {
-          desktop: () => <div data-testid="bookmarks" />,
-        },
+        renderBookmarks: () => <div data-testid="bookmarks" />,
       });
       view.getAllByTestId('bookmarks');
     });
@@ -451,9 +441,7 @@ describe('GlobalHeader', () => {
     it('renders bookmarks if passed in props', () => {
       const { view } = renderView({
         ...proHeaderProps,
-        renderBookmarks: {
-          desktop: () => <div data-testid="bookmarks" />,
-        },
+        renderBookmarks: () => <div data-testid="bookmarks" />,
       });
       view.getAllByTestId('bookmarks');
     });
