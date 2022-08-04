@@ -7,6 +7,9 @@
     "styles",
     "gamut-styles"
   ],
+  "files": [
+    "dist"
+  ],
   "name": "eslint-plugin-gamut",
   "version": "2.0.1",
   "license": "MIT",

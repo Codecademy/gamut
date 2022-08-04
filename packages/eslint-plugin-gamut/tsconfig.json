@@ -1,10 +1,13 @@
 {
   "extends": "../../tsconfig.base.json",
-  "include": ["./src/**/*.ts", "./src/**/*.tsx"],
-  "compilerOptions": {
-    "declaration": true,
-    "module": "CommonJS",
-    "outDir": "./dist",
-    "rootDir": "./src"
-  }
+  "files": [],
+  "include": [],
+  "references": [
+    {
+      "path": "./tsconfig.lib.json"
+    },
+    {
+      "path": "./tsconfig.spec.json"
+    }
+  ]
 }
