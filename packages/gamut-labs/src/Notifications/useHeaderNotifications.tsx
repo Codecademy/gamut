@@ -20,7 +20,6 @@ export const useHeaderNotifications = ({
   openCrossDeviceItemId,
   setOpenCrossDeviceItemId,
 }: HeaderNotificationProps) => {
-  // const [isPaneVisible, setIsPaneVisible] = useState(false);
   const bellRef = useRef<ButtonBaseElements>(null);
 
   if (!settings) {
@@ -36,7 +35,6 @@ export const useHeaderNotifications = ({
       openCrossDeviceItemId === 'notifications' ? '' : 'notifications';
 
     setOpenCrossDeviceItemId(newVal);
-    // setIsPaneVisible((oldIsPaneVisible) => !oldIsPaneVisible);
   };
 
   return [

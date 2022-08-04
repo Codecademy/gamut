@@ -140,13 +140,14 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
     [action, onLinkAction]
   );
 
+  // manages global toggle state for items (only 1 open at a time)
   const [openCrossDeviceItemId, setOpenCrossDeviceItemId] = useState('');
+
+  const { crossDeviceBookmarkParts } = props;
 
   return (
     <Box as="header" position="sticky" top={0} zIndex={theme.elements.headerZ}>
       <AppHeader
-        openCrossDeviceItemId={openCrossDeviceItemId}
-        setOpenCrossDeviceItemId={setOpenCrossDeviceItemId}
         action={combinedAction}
         items={getAppHeaderItems(props)}
         search={props.search}
@@ -160,10 +161,11 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
               notifications: props.notifications,
             })}
         isAnon={props.type === 'anon'}
-      />
-      <AppHeaderMobile
         openCrossDeviceItemId={openCrossDeviceItemId}
         setOpenCrossDeviceItemId={setOpenCrossDeviceItemId}
+        crossDeviceBookmarkParts={crossDeviceBookmarkParts}
+      />
+      <AppHeaderMobile
         action={combinedAction}
         items={getMobileAppHeaderItems(props)}
         {...(props.type === 'anon' || props.type === 'loading'
@@ -174,6 +176,9 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
         onSearch={props.search.onSearch}
         redirectParam={props.type === 'anon' ? props.redirectParam : undefined}
         isAnon={props.type === 'anon'}
+        openCrossDeviceItemId={openCrossDeviceItemId}
+        setOpenCrossDeviceItemId={setOpenCrossDeviceItemId}
+        crossDeviceBookmarkParts={crossDeviceBookmarkParts}
       />
       {props.children}
     </Box>

@@ -13,6 +13,8 @@ import {
 import { appHeaderMobileBreakpoint } from '../AppHeader/shared';
 import { FormattedMobileAppHeaderItems } from '../AppHeader/types';
 import { AppHeaderMainMenuMobile } from '../AppHeaderMobile/AppHeaderMainMenuMobile';
+import { CrossDeviceBookmarkParts } from '../Bookmarks/types';
+import { useBookmarkComponentsPair } from '../Bookmarks/useBookmarkComponentPair';
 import { CrossDeviceStateProps } from '../GlobalHeader/types';
 import { HeaderHeightArea } from '../HeaderHeightArea';
 import { NotificationsContents } from '../Notifications/NotificationsContents';
@@ -26,6 +28,7 @@ export type AppHeaderMobileProps = {
   redirectParam?: string;
   onSearch: (query: string) => void;
   isAnon: boolean;
+  crossDeviceBookmarkParts?: CrossDeviceBookmarkParts;
 } & CrossDeviceStateProps;
 
 const StyledOverlay = styled(Overlay)(
@@ -51,14 +54,15 @@ const StyledContentContainer = styled(ContentContainer)(
 );
 
 export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
-  openCrossDeviceItemId,
-  setOpenCrossDeviceItemId,
   action,
   items,
   notifications,
   onSearch,
   redirectParam,
   isAnon,
+  openCrossDeviceItemId,
+  setOpenCrossDeviceItemId,
+  crossDeviceBookmarkParts,
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
   const [allowScroll, setAllowScroll] = useState<boolean>(false);
@@ -69,6 +73,15 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
     openCrossDeviceItemId,
     setOpenCrossDeviceItemId,
   });
+
+  const [bookmarksButton, bookmarksContent] = useBookmarkComponentsPair({
+    openCrossDeviceItemId,
+    setOpenCrossDeviceItemId,
+    bookmarkParts: crossDeviceBookmarkParts,
+    view: 'mobile',
+    isAnon,
+  });
+
   const openMobileMenu = () => {
     setMobileMenuOpen(true);
   };
@@ -106,6 +119,7 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
 
   const right = [
     ...(notificationsBell ? [notificationsBell] : []),
+    ...(bookmarksButton ? [bookmarksButton] : []),
     ...items.right,
   ];
 
@@ -189,6 +203,7 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
       </StyledOverlay>
       <Box display={{ _: `block`, [appHeaderMobileBreakpoint]: `none` }}>
         {notificationsView}
+        {bookmarksContent}
       </Box>
     </>
   );

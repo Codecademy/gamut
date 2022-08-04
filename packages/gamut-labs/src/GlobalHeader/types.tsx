@@ -5,12 +5,14 @@ import {
   AppHeaderItemWithHref,
 } from '../AppHeader/AppHeaderElements/types';
 import { AppHeaderSearch } from '../AppHeader/Search/useHeaderSearch';
+import { CrossDeviceBookmarkParts } from '../Bookmarks/types';
 import { AppHeaderNotificationSettings } from '../Notifications/types';
 
 type RenderFavorites = {
   desktop: () => ReactNode;
 };
 
+// TODO: REACH-1977 remove after switch to crossDeviceBookmarkParts
 export type RenderBookmarks = {
   desktop: () => ReactNode;
 };
@@ -26,6 +28,7 @@ type BaseHeader = {
   hidePricing?: boolean;
   search: AppHeaderSearch;
   renderBookmarks?: RenderBookmarks;
+  crossDeviceBookmarkParts?: CrossDeviceBookmarkParts;
 };
 
 export type User = {
