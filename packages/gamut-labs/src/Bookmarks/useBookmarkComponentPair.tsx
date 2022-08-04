@@ -33,9 +33,7 @@ export const useBookmarkComponentsPair = ({
   const id = 'bookmarks';
 
   const toggleVisible = () => {
-    const newVal = openCrossDeviceItemId === id ? '' : id;
-
-    setOpenCrossDeviceItemId(newVal);
+    setOpenCrossDeviceItemId((oldVal) => (oldVal === id ? '' : id));
   };
 
   return [

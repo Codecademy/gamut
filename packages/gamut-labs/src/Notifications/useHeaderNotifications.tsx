@@ -31,10 +31,9 @@ export const useHeaderNotifications = ({
       settings.onEnable();
     }
 
-    const newVal =
-      openCrossDeviceItemId === 'notifications' ? '' : 'notifications';
-
-    setOpenCrossDeviceItemId(newVal);
+    setOpenCrossDeviceItemId((oldVal) =>
+      oldVal === 'notifications' ? '' : 'notifications'
+    );
   };
 
   return [
@@ -49,7 +48,10 @@ export const useHeaderNotifications = ({
         />
       ),
     },
-    <AnimatedHeaderZone visible={openCrossDeviceItemId === 'notifications'}>
+    <AnimatedHeaderZone
+      visible={openCrossDeviceItemId === 'notifications'}
+      key="notifications-content"
+    >
       <Renderer
         actions={settings.actions}
         bellRef={bellRef}

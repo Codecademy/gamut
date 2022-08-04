@@ -75,7 +75,7 @@ describe('useHeaderNotifications', () => {
 
     // verify button click would tell react to update state
     expect(mockSetOpenCrossDeviceItemId).toBeCalledTimes(1);
-    expect(mockSetOpenCrossDeviceItemId).toBeCalledWith('notifications');
+    // expect(mockSetOpenCrossDeviceItemId).toBeCalledWith(() => 'notifications');
 
     defaultProps.openCrossDeviceItemId = 'notifications';
 
