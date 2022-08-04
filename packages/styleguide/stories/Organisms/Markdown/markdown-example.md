@@ -239,7 +239,7 @@ You can also create a list of checkboxes that will render as the styled Gamut [C
 
 - [ ] checkbox
 - [x] default checked checkbox
-- [ ] another checkbox just for fun
+- [ ] another checkbox
 
 ### Code Blocks
 

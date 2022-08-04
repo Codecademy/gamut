@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.5.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@7.4.5...@codecademy/gamut-icons@7.5.0) (2022-08-01)
+
+
+### Features
+
+* **MiniRibbonIcon:** add MiniRibbonIcon ([731dfdc](https://github.com/Codecademy/gamut/commit/731dfdc87e7f203b87bb19b668244f7e8b71bcb1))
+
+
+
 ### [7.4.5](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@7.4.4...@codecademy/gamut-icons@7.4.5) (2022-07-29)
 
 **Note:** Version bump only for package @codecademy/gamut-icons
