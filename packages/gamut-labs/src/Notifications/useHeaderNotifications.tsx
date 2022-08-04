@@ -36,11 +36,11 @@ export const useHeaderNotifications = ({
     );
   };
 
-  const wrappedTogglePane = () => {
-    // eslint-disable-next-line
-    console.log('closed from onClose handler');
-    togglePane();
-  };
+  // const wrappedTogglePane = () => {
+  //  // eslint-disable-next-line
+  //  console.log('closed from onClose handler');
+  //  togglePane();
+  // };
   return [
     {
       id: 'notifications',
@@ -61,7 +61,6 @@ export const useHeaderNotifications = ({
         actions={settings.actions}
         bellRef={bellRef}
         notifications={settings.notifications}
-        onClose={wrappedTogglePane}
       />
     </AnimatedHeaderZone>,
   ] as const;

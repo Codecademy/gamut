@@ -66,7 +66,7 @@ export const useBookmarkComponentsPair = ({
           onRequestClose={toggleVisible}
           targetRef={buttonRef}
         >
-          <FlexBox bg="white">{bookmarkParts.desktop}</FlexBox>
+          <FlexBox bg="white">{bookmarkParts.desktop()}</FlexBox>
         </Popover>
       ) : (
         bookmarkParts.mobile()
