@@ -1,7 +1,12 @@
+import cx from 'classnames';
 import HtmlToReact from 'html-to-react';
 import camelCaseMap from 'html-to-react/lib/camel-case-attribute-names';
 import { get } from 'lodash';
 import React from 'react';
+
+// eslint-disable-next-line gamut/no-css-standalone
+import styles from '../../styles/index.module.scss';
+import { getLabel, isCheckboxParent, isInput, isLabelText } from './utils';
 
 const processNodeDefinitions = new HtmlToReact.ProcessNodeDefinitions();
 
@@ -137,6 +142,35 @@ export const createCodeBlockOverride = (
     ...Override,
   });
 
+export const createInputOverride = (type: string, Override: OverrideSettings) =>
+  createTagOverride('input', {
+    shouldProcessNode(node: HTMLToReactNode) {
+      return (
+        isCheckboxParent(node, type) ||
+        isInput(node, type) ||
+        isLabelText(node, type)
+      );
+    },
+
+    processNode(node: HTMLToReactNode, props: any) {
+      const label = getLabel(node);
+
+      if (!Override.component) return null;
+
+      if (isCheckboxParent(node, type)) {
+        const { className, ...rest } = props;
+        const plainLiClass = cx(styles[`checkbox-parent`], className);
+
+        return <li className={plainLiClass} {...rest} />;
+      }
+
+      if (isLabelText(node, type)) return null;
+
+      return <Override.component label={label} {...props} />;
+    },
+    ...Override,
+  });
+
 const processText = (text: string) => {
   // Replace &mdash; due to legacy markdown that didn't use smart dashes
   return text.replace(/&mdash;/g, '\u2014');
@@ -156,6 +190,7 @@ export const standardOverrides = [
       return processText(node.data);
     },
   },
+
   {
     shouldProcessNode() {
       return true;

@@ -7,10 +7,12 @@ import sanitizeMarkdown from 'sanitize-markdown';
 import { omitProps } from '../utils/omitProps';
 import {
   createCodeBlockOverride,
+  createInputOverride,
   createTagOverride,
   ManyOverrideSettings,
   standardOverrides,
 } from './libs/overrides';
+import { MarkdownCheckbox } from './libs/overrides/Checkbox';
 import { Details } from './libs/overrides/Details';
 import { Iframe } from './libs/overrides/Iframe';
 import {
@@ -33,9 +35,10 @@ const isValidNode = () => true;
 
 export type SkipDefaultOverridesSettings = {
   a?: boolean;
+  checkbox?: boolean;
+  details?: boolean;
   iframe?: boolean;
   table?: boolean;
-  details?: boolean;
 };
 
 export type MarkdownProps = {
@@ -113,6 +116,10 @@ export class Markdown extends PureComponent<MarkdownProps> {
         createTagOverride('details', {
           component: Details,
           allowedAttributes: ['style', 'open'],
+        }),
+      !skipDefaultOverrides.checkbox &&
+        createInputOverride('checkbox', {
+          component: MarkdownCheckbox,
         }),
       ...overrides,
       ...standardOverrides,
