@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.6.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@7.5.0...@codecademy/gamut-icons@7.6.0) (2022-08-04)
+
+
+### Features
+
+* **CubeIcon:** add cube icon ([a86462c](https://github.com/Codecademy/gamut/commit/a86462cc985f38964e3c1bae6ba117b00965bb86))
+
+
+
 ## [7.5.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@7.4.5...@codecademy/gamut-icons@7.5.0) (2022-08-01)
 
 
