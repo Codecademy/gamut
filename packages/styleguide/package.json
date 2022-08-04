@@ -55,7 +55,8 @@
     "sass-loader": "^10.1.1",
     "storybook-addon-designs": "^6.0.1",
     "style-loader": "^1.2.0",
-    "typescript": "*"
+    "typescript": "*",
+    "webpack": "4.46.0"
   },
   "license": "MIT",
   "publishConfig": {
