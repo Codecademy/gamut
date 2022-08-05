@@ -50,6 +50,7 @@ export const StyledMenuBar = styled.ul(
     listStyle: `none`,
     margin: 0,
     width: `100%`,
+    alignItems: 'flex-start',
   })
 );
 

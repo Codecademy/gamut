@@ -178,6 +178,7 @@ But if you want to be lazy, you don't have to:
 - Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
   Aliquam hendrerit mi posuere lectus. Vestibulum enim wisi,
   viverra nec, fringilla in, laoreet vitae, risus.
+
 - Donec sit amet nisl. Aliquam semper ipsum sit amet velit.
   Suspendisse id sem consectetuer libero luctus adipiscing.
 
@@ -208,6 +209,17 @@ lazy:
 
 - Another item in the same list.
 
+List items may consist of `ul` and `ol` nested items:
+
+- This is an unordered list item.
+
+  1. This is an ordered list item.
+  2. And another ordered list item.
+  3. And a third
+
+- A second unordered list item.
+- A third!
+
 To put a blockquote within a list item, the blockquote's `>`
 delimiters need to be indented:
 
@@ -222,6 +234,12 @@ to be indented _twice_ -- 8 spaces or two tabs:
 - A list item with a code block:
 
       <code goes here>
+
+You can also create a list of checkboxes that will render as the styled Gamut [Checkboxes](https://gamut.codecademy.com/?path=/docs/atoms-forminputs-checkbox--checkbox). Checking these checkboxes in Markdown will only change the default state of the checkbox and they will still be interactive.
+
+- [ ] checkbox
+- [x] default checked checkbox
+- [ ] another checkbox
 
 ### Code Blocks
 
