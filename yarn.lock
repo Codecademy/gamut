@@ -10855,11 +10855,6 @@ hastscript@^6.0.0:
     property-information "^5.0.0"
     space-separated-tokens "^1.0.0"
 
-he@0.5.0:
-  version "0.5.0"
-  resolved "https://registry.npmjs.org/he/-/he-0.5.0.tgz#2c05ffaef90b68e860f3fd2b54ef580989277ee2"
-  integrity sha1-LAX/rvkLaOhg8/0rVO9YCYknfuI=
-
 he@^1.2.0:
   version "1.2.0"
   resolved "https://registry.npmjs.org/he/-/he-1.2.0.tgz#84ae65fa7eafb165fddb61566ae14baf05664f0f"
@@ -17331,12 +17326,11 @@ sane@^4.0.3:
     walker "~1.0.5"
 
 sanitize-markdown@^2.6.6:
-  version "2.6.6"
-  resolved "https://registry.npmjs.org/sanitize-markdown/-/sanitize-markdown-2.6.6.tgz#7d1b1e9d13601403b86c00be627040f5a934cb1e"
-  integrity sha512-YFS/3rzUnqtizs65vTV7d5c7dqFQPqhXRyM6/89zVzK2CHjeMjxiRxHE48x5EkxRuvO5Qb978zSNTmasTYO1Zw==
+  version "2.6.7"
+  resolved "https://registry.npmjs.org/sanitize-markdown/-/sanitize-markdown-2.6.7.tgz#335d7627fe15339cf5be5a0ae78590c097007e33"
+  integrity sha512-w0exIpQ6Zk/q4yUZNgYcxz5sO1o+y3zYeJlHXp+AGKUPOy9wUoKUpu6/+qVlW6oGMvQ72N/6Gx8q/tZG/CKxSA==
   dependencies:
     assignment "2.0.0"
-    he "0.5.0"
 
 sass-graph@2.2.5:
   version "2.2.5"
