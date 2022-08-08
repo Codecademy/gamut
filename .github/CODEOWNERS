@@ -3,3 +3,6 @@
 
 # -- Documentation changes
 packages/styleguide/ @songstephen @Codecademy/gamut
+
+yarn.lock
+packages/gamut-labs
