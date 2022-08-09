@@ -31,9 +31,7 @@ const listVariants = variant({
       gap: 16,
     },
     plain: {},
-    tight: {
-      gap: 0,
-    },
+    tight: {},
   },
 });
 
@@ -118,6 +116,25 @@ export interface RowProps
     StyleProps<typeof spacingVariants>,
     StyleProps<typeof rowStates> {}
 
+const breakpointVariant = variant({
+  prop: 'breakpoint',
+  base: {},
+  variants: {
+    default: {
+      flexDirection: { _: 'column', xs: 'row' },
+    },
+    sm: {
+      flexDirection: { _: 'column', sm: 'row' },
+    },
+    md: {
+      flexDirection: { _: 'column', md: 'row' },
+    },
+    lg: {
+      flexDirection: { _: 'column', lg: 'row' },
+    },
+  },
+});
+
 export const RowEl = styled('li', styledOptions<'li'>())<RowProps>(
   css({
     py: { _: 8, xs: 0 },
@@ -129,7 +146,8 @@ export const RowEl = styled('li', styledOptions<'li'>())<RowProps>(
   }),
   rowVariants,
   spacingVariants,
-  rowStates
+  rowStates,
+  breakpointVariant
 );
 
 const headerVariants = variant({
