@@ -23,7 +23,7 @@
         "cacheableOperations": ["build", "test", "verify", "build-storybook"],
         "parallel": 3,
         "useDaemonProcess": false,
-        "accessToken": "MzZiY2M0NzQtY2NmMS00NDNkLTg2YjUtZTE1ZTJlOWQ5MWEyfHJlYWQtd3JpdGU="
+        "accessToken": "ZmVjZWYxNzctYTdmZC00ODYzLTg4MzEtZTE1YTVmZDdkZmY1fHJlYWQ="
       }
     }
   },
