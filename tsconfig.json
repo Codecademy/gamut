@@ -1,11 +1,8 @@
 {
-  "extends": "@codecademy/tsconfig",
+  "extends": "./tsconfig.base.json",
   "compilerOptions": {
-    "declaration": true,
-    "noUnusedParameters": false,
-    "sourceMap": true,
-    "strictFunctionTypes": false,
-    "strictPropertyInitialization": false
-  },
-  "exclude": ["**/node_modules"]
+    "jsx": "react",
+    "baseUrl": ".",
+    "paths": {}
+  }
 }

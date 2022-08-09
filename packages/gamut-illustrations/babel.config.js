@@ -1,8 +1,9 @@
 module.exports = {
+  extends: '../../babel.defaults.js',
   presets: ['codecademy', '@babel/preset-typescript'],
   plugins: [
     [
-      '@emotion',
+      '@emotion/babel-plugin',
       {
         sourceMap: true,
         autoLabel: 'always',
@@ -10,6 +11,4 @@ module.exports = {
       },
     ],
   ],
-  include: ['./src/**/*'],
-  ignore: ['__tests__', './**/*.d.ts'],
 };

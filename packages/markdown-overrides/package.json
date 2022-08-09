@@ -9,6 +9,9 @@
     "type": "git",
     "url": "git+https://github.com/Codecademy/gamut.git"
   },
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "nx build @codecademy/markdown-overrides"
   },

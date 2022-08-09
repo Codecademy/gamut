@@ -15,6 +15,9 @@
     "type": "git",
     "url": "git@github.com:Codecademy/gamut.git"
   },
+  "files": [
+    "dist"
+  ],
   "peerDependencies": {
     "@emotion/react": "^11.4.0",
     "@emotion/styled": "^11.3.0",
@@ -48,7 +51,7 @@
   },
   "scripts": {
     "verify": "tsc --noEmit",
-    "compile": "babel ./src --out-dir ./dist --copy-files --extensions \".ts,.tsx\"",
+    "compile": "babel ./src --out-dir ./dist --extensions \".ts,.tsx\"",
     "build:watch": "rm -rf dist && yarn compile && tsc --emitDeclarationOnly && onchange ./src -- yarn build:compile && yarn build:types",
     "build": "nx build @codecademy/gamut"
   },

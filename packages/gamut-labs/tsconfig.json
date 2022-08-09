@@ -1,13 +1,28 @@
 {
-  "extends": "../../tsconfig.json",
-  "include": [
-    "../../typings/*.d.ts",
-    "./src/**/*.ts",
-    "./src/**/*.tsx",
-    "../../packages/gamut-styles/dist/typings/theme.d.ts",
-    "typings/react-freezeframe.d.ts"
-  ],
+  "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "outDir": "./dist"
-  }
+    "allowJs": false,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "noImplicitOverride": false,
+    "noPropertyAccessFromIndexSignature": false,
+    "noImplicitReturns": false,
+    "noFallthroughCasesInSwitch": true,
+    "strictFunctionTypes": false,
+    "strictPropertyInitialization": true,
+    "noUnusedParameters": false,
+    "noUnusedLocals": true
+  },
+  "files": [],
+  "include": [],
+  "references": [
+    {
+      "path": "./tsconfig.lib.json"
+    },
+    {
+      "path": "./tsconfig.spec.json"
+    }
+  ]
 }
