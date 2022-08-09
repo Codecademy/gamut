@@ -5,7 +5,7 @@ import { AnimatedHeaderZone } from '../AppHeader/shared';
 import { CrossDeviceStateProps } from '../GlobalHeader/types';
 import { CrossDeviceBookmarkParts } from './types';
 
-type BookmarkComponentsPairProps = CrossDeviceStateProps & {
+export type BookmarkComponentsPairProps = CrossDeviceStateProps & {
   bookmarkParts?: CrossDeviceBookmarkParts;
   view: 'desktop' | 'mobile';
   isAnon: boolean;
@@ -27,7 +27,7 @@ export const useBookmarkComponentsPair = ({
   const id = 'bookmarks';
 
   const toggleVisible = () => {
-    setOpenCrossDeviceItemId((oldVal) => (oldVal === id ? '' : id));
+    setOpenCrossDeviceItemId(openCrossDeviceItemId === id ? '' : id);
   };
 
   return [

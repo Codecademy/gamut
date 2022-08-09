@@ -5,7 +5,7 @@ import React, { ReactNode, useEffect, useMemo, useRef, useState } from 'react';
 
 import { AppBar } from '../AppBar';
 import { CrossDeviceBookmarkParts } from '../Bookmarks/types';
-import { useBookmarkComponentsPair } from '../Bookmarks/useBookmarkComponentPair';
+import { useBookmarkComponentsPair } from '../Bookmarks/useBookmarkComponentsPair';
 import { formatUrlWithRedirect } from '../GlobalHeader/urlHelpers';
 import { HeaderHeightArea } from '../HeaderHeightArea';
 import { NotificationsPopover } from '../Notifications/NotificationsPopover';

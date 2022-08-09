@@ -31,8 +31,8 @@ export const useHeaderNotifications = ({
       settings.onEnable();
     }
 
-    setOpenCrossDeviceItemId((oldVal) =>
-      oldVal === 'notifications' ? '' : 'notifications'
+    setOpenCrossDeviceItemId(
+      openCrossDeviceItemId === 'notifications' ? '' : 'notifications'
     );
   };
 

@@ -14,7 +14,7 @@ import { appHeaderMobileBreakpoint } from '../AppHeader/shared';
 import { FormattedMobileAppHeaderItems } from '../AppHeader/types';
 import { AppHeaderMainMenuMobile } from '../AppHeaderMobile/AppHeaderMainMenuMobile';
 import { CrossDeviceBookmarkParts } from '../Bookmarks/types';
-import { useBookmarkComponentsPair } from '../Bookmarks/useBookmarkComponentPair';
+import { useBookmarkComponentsPair } from '../Bookmarks/useBookmarkComponentsPair';
 import { CrossDeviceStateProps } from '../GlobalHeader/types';
 import { HeaderHeightArea } from '../HeaderHeightArea';
 import { NotificationsContents } from '../Notifications/NotificationsContents';
