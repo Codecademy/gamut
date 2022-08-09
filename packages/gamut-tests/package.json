@@ -1,7 +1,7 @@
 {
   "author": "Codecademy Engineering <dev@codecademy.com>",
   "dependencies": {
-    "@codecademy/gamut-styles": "^14.0.2",
+    "@codecademy/gamut-styles": "^14.0.3",
     "component-test-setup": "*",
     "lodash": "^4.17.5"
   },
@@ -14,7 +14,7 @@
     "rtl"
   ],
   "name": "@codecademy/gamut-tests",
-  "version": "4.0.10",
+  "version": "4.0.11",
   "license": "MIT",
   "main": "dist/index.js",
   "module": "dist/index.js",
