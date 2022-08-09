@@ -115,9 +115,10 @@ export interface RowProps
 export const RowEl = styled('li', styledOptions<'li'>())<RowProps>(
   css({
     py: { _: 8, xs: 0 },
-    display: { _: 'grid', xs: 'flex' },
+    display: { _: 'flex', xs: 'flex' },
     gridAutoRows: 'minmax(1.5rem, max-content)',
     gridTemplateColumns: 'minmax(0, 1fr) max-content',
+    flexDirection: { _: 'row', xs: 'row' },
     bg: 'inherit',
   }),
   rowVariants,
