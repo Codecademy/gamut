@@ -31,6 +31,9 @@ const listVariants = variant({
       gap: 16,
     },
     plain: {},
+    tight: {
+      gap: 0,
+    },
   },
 });
 
@@ -75,6 +78,7 @@ const spacingVariants = variant({
       fontSize: 16,
       gap: { _: 8, xs: 32 },
     },
+    tight: { gap: 0 },
   },
 });
 
@@ -103,6 +107,9 @@ const rowVariants = variant({
       borderRadius: '2px',
     },
     plain: {},
+    tight: {
+      flexDirection: { _: 'column', md: 'row' },
+    },
   },
 });
 
@@ -135,6 +142,7 @@ const headerVariants = variant({
       borderBottom: 2,
     },
     plain: {},
+    tight: {},
   },
 });
 
