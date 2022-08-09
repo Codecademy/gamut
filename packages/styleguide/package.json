@@ -14,8 +14,6 @@
     "url": "git@github.com:Codecademy/gamut.git"
   },
   "dependencies": {
-    "@babel/cli": "^7.13.10",
-    "@babel/core": "^7.13.10",
     "@codecademy/gamut": "^50.1.1",
     "@codecademy/gamut-icons": "^7.6.0",
     "@codecademy/gamut-illustrations": "^0.28.5",
@@ -53,11 +51,11 @@
     "postcss-loader": "^3.0.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "sass": "1.53.0",
     "sass-loader": "^10.1.1",
     "storybook-addon-designs": "^6.0.1",
     "style-loader": "^1.2.0",
-    "typescript": "*"
+    "typescript": "*",
+    "webpack": "4.46.0"
   },
   "license": "MIT",
   "publishConfig": {

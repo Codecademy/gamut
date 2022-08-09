@@ -8,6 +8,7 @@
     "libsDir": "packages"
   },
   "implicitDependencies": {
+    "yarn.lock": "*",
     "package.json": {
       "dependencies": "*",
       "devDependencies": "*"
@@ -17,11 +18,12 @@
   },
   "tasksRunnerOptions": {
     "default": {
-      "runner": "nx/tasks-runners/default",
+      "runner": "@nrwl/nx-cloud",
       "options": {
         "cacheableOperations": ["build", "test", "verify", "build-storybook"],
         "parallel": 3,
-        "useDaemonProcess": false
+        "useDaemonProcess": false,
+        "accessToken": "ZmVjZWYxNzctYTdmZC00ODYzLTg4MzEtZTE1YTVmZDdkZmY1fHJlYWQ="
       }
     }
   },
