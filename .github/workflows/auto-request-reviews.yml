@@ -1,0 +1,20 @@
+name: Auto Request Review
+
+on:
+  pull_request:
+    types: [opened, ready_for_review, reopened]
+    branches:
+      - 'main'
+
+jobs:
+  auto-request-review:
+    name: Auto Request Review
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.draft == false
+    steps:
+      - uses: actions/checkout@v2
+      - name: Request review based on files changed
+        uses: ohnogumi/auto-reviewers@v0.0.1
+        with:
+          token: ${{ secrets.ACTIONS_GITHUB_TOKEN }}
+          config: .github/CODEKNOWERS # Config file location override

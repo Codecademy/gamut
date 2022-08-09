@@ -1,0 +1,4 @@
+# Maintain visibility on code changes that don't require Gamut team review
+* @codecademy/gamut
+
+yarn.lock @codecademy-engineering/frontend-dependencies
