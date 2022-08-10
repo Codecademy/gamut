@@ -15,15 +15,14 @@ export const AppHeaderLogo: React.FC<AppHeaderLogoProps> = ({
   const [showMini, setShowMini] = useState(false);
 
   useEffect(() => {
-    // use non es6 func so doesn't share state with parent
-    function handleResize() {
+    const handleResize = () => {
       const shouldShowMini =
         window.innerWidth <= 1260 && window.innerWidth >= 1200;
       // avoid unnecessary setState actions if val doesnt change
       if (showMini !== shouldShowMini) {
         setShowMini(shouldShowMini);
       }
-    }
+    };
     window.addEventListener('resize', handleResize);
     handleResize();
     // Remove event listener on cleanup

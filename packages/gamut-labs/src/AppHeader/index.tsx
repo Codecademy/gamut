@@ -9,6 +9,7 @@ import {
   CrossDeviceBookmarksView,
 } from '../Bookmarks/types';
 import { useBookmarkComponentsPair } from '../Bookmarks/useBookmarkComponentsPair';
+import { CrossDeviceStateProps } from '../GlobalHeader/types';
 import { formatUrlWithRedirect } from '../GlobalHeader/urlHelpers';
 import { HeaderHeightArea } from '../HeaderHeightArea';
 import { NotificationsPopover } from '../Notifications/NotificationsPopover';
@@ -29,8 +30,6 @@ import { appHeaderMobileBreakpoint } from './shared';
 import { FormattedAppHeaderItems } from './types';
 
 export type AppHeaderProps = {
-  openCrossDeviceItemId: string;
-  setOpenCrossDeviceItemId: React.Dispatch<React.SetStateAction<string>>;
   action: AppHeaderClickHandler;
   items: FormattedAppHeaderItems;
   notifications?: AppHeaderNotificationSettings;
@@ -38,7 +37,7 @@ export type AppHeaderProps = {
   search: AppHeaderSearch;
   isAnon: boolean;
   crossDeviceBookmarkParts?: CrossDeviceBookmarkParts;
-};
+} & CrossDeviceStateProps;
 
 export const StyledAppBar = styled(AppBar)(
   css({

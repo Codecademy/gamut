@@ -27,7 +27,13 @@ import {
   proHeaderItems,
   proMobileHeaderItems,
 } from './GlobalHeaderVariants';
-import { AnonHeader, FreeHeader, LoadingHeader, ProHeader } from './types';
+import {
+  AnonHeader,
+  CrossDeviceItemId,
+  FreeHeader,
+  LoadingHeader,
+  ProHeader,
+} from './types';
 
 export type GlobalHeaderProps =
   | AnonHeader
@@ -141,7 +147,9 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
   );
 
   // manages global toggle state for items (only 1 open at a time)
-  const [openCrossDeviceItemId, setOpenCrossDeviceItemId] = useState('');
+  const [openCrossDeviceItemId, setOpenCrossDeviceItemId] = useState(
+    CrossDeviceItemId.UNSET
+  );
 
   const { crossDeviceBookmarkParts } = props;
 
