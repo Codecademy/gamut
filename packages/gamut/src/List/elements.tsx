@@ -136,14 +136,14 @@ export interface RowProps
     StyleProps<typeof rowStates> {}
 
 export const RowEl = styled('li', styledOptions<'li'>())<RowProps>(
+  rowBreakpointVariants,
   css({
     py: { _: 8, xs: 0 },
     bg: 'inherit',
   }),
   rowVariants,
   spacingVariants,
-  rowStates,
-  rowBreakpointVariants
+  rowStates
 );
 
 const headerVariants = variant({
