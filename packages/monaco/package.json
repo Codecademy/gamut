@@ -1,10 +1,13 @@
 {
   "name": "@codecademy/monaco",
   "description": "Monaco editor with Codecademy specific configuration",
-  "version": "0.6.67",
+  "version": "0.6.68",
   "author": "Codecademy Engineering",
   "main": "dist/index.js",
   "module": "dist/index.js",
+  "files": [
+    "dist"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Codecademy/gamut/packages/monaco.git"
@@ -14,8 +17,8 @@
     "react-dom": ">=17.0.2"
   },
   "dependencies": {
-    "@codecademy/gamut": "^50.1.1",
-    "@codecademy/gamut-styles": "^14.0.2",
+    "@codecademy/gamut": "^50.1.2",
+    "@codecademy/gamut-styles": "^14.0.3",
     "@emotion/react": "^11.4.0",
     "@emotion/styled": "^11.3.0",
     "monaco-editor": "0.20.0",
@@ -27,7 +30,7 @@
     "monaco-editor-webpack-plugin": "1.9.1"
   },
   "scripts": {
-    "compile": "babel ./src --out-dir ./dist --copy-files --extensions \".ts,.tsx\"",
+    "compile": "babel ./src --out-dir ./dist --extensions \".ts,.tsx\"",
     "build:watch": "rm -rf dist && yarn compile && tsc --emitDeclarationOnly && onchange ./src -- yarn compile && tsc --emitDeclarationOnly",
     "build": "nx build @codecademy/monaco"
   },

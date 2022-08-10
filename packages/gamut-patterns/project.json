@@ -1,5 +1,5 @@
 {
-  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/gamut-patterns/src",
   "projectType": "library",
   "targets": {
@@ -13,10 +13,20 @@
           "rm -rf ./dist",
           "rm -rf ./src/patterns",
           "svgr --out-dir ./src/patterns --ext 'tsx' ./src/svg",
-          "babel ./src --out-dir ./dist --copy-files --extensions \".ts,.tsx\"",
-          "tsc --emitDeclarationOnly"
+          "babel ./src --out-dir ./dist --extensions \".ts,.tsx\"",
+          "tsc --emitDeclarationOnly",
+          "cpy './src/**/*.svg' ./dist"
         ],
         "parallel": false
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/packages/gamut-patterns"],
+      "dependsOn": ["build"],
+      "options": {
+        "jestConfig": "packages/gamut-patterns/jest.config.ts",
+        "passWithNoTests": true
       }
     }
   },

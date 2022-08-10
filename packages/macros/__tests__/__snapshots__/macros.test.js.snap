@@ -1,29 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`title.macro should transform a js file 1`] = `
-"\\"use strict\\";
-
-Object.defineProperty(exports, \\"__esModule\\", {
-  value: true
-});
-exports.meta = void 0;
-const meta = {
+"export const meta = {
   default: \\"World/Hello.js\\",
   title: \\"World/Hello.js\\"
-};
-exports.meta = meta;"
+};"
 `;
 
 exports[`title.macro should transform a story file 1`] = `
-"\\"use strict\\";
-
-Object.defineProperty(exports, \\"__esModule\\", {
-  value: true
-});
-exports.meta = void 0;
-const meta = {
+"export const meta = {
   default: \\"World/Example\\",
   title: \\"World/Example\\"
-};
-exports.meta = meta;"
+};"
 `;

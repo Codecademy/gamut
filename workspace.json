@@ -2,7 +2,6 @@
   "$schema": "./node_modules/nx/schemas/workspace-schema.json",
   "version": 2,
   "projects": {
-    "eslint-plugin-gamut": "packages/eslint-plugin-gamut",
     "@codecademy/gamut": "packages/gamut",
     "@codecademy/gamut-icons": "packages/gamut-icons",
     "@codecademy/gamut-illustrations": "packages/gamut-illustrations",
@@ -15,6 +14,7 @@
     "@codecademy/markdown-overrides": "packages/markdown-overrides",
     "@codecademy/monaco": "packages/monaco",
     "@codecademy/styleguide": "packages/styleguide",
-    "@codecademy/variance": "packages/variance"
+    "@codecademy/variance": "packages/variance",
+    "eslint-plugin-gamut": "packages/eslint-plugin-gamut"
   }
 }

@@ -1,5 +1,14 @@
 module.exports = {
+  extends: '../../babel.defaults.js',
   presets: ['codecademy', '@babel/preset-typescript'],
-  include: ['./src/**/*'],
-  ignore: ['__tests__', './**/*.d.ts'],
+  plugins: [
+    [
+      '@emotion/babel-plugin',
+      {
+        sourceMap: true,
+        autoLabel: 'always',
+        labelFormat: '[local]',
+      },
+    ],
+  ],
 };

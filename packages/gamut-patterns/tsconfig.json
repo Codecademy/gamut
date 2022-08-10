@@ -1,5 +1,5 @@
 {
-  "extends": "../../tsconfig.json",
+  "extends": "../../tsconfig.base.json",
   "include": [
     "../../typings/*.d.ts",
     "./src/**/*.ts",
@@ -7,6 +7,10 @@
     "../gamut-styles/dist/typings/theme.d.ts"
   ],
   "compilerOptions": {
-    "outDir": "./dist"
+    "declaration": true,
+    "strictFunctionTypes": false,
+    "jsx": "react",
+    "outDir": "./dist",
+    "rootDir": "./src"
   }
 }

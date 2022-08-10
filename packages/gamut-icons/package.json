@@ -1,12 +1,15 @@
 {
   "name": "@codecademy/gamut-icons",
   "description": "Icon library for codecademy.com",
-  "version": "7.6.0",
+  "version": "7.6.1",
   "author": "Codecademy <dev@codecademy.com>",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
   "sideEffects": false,
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "format": "svgo -f ./src/svg --pretty --config=.svgo.yml",
     "build": "nx build @codecademy/gamut-icons"
@@ -27,8 +30,8 @@
     "access": "public"
   },
   "dependencies": {
-    "@codecademy/gamut-styles": "^14.0.2",
-    "@codecademy/variance": "^0.20.2"
+    "@codecademy/gamut-styles": "^14.0.3",
+    "@codecademy/variance": "^0.20.3"
   },
   "peerDependencies": {
     "@emotion/react": "^11.4.0",

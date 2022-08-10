@@ -10,7 +10,7 @@
     "yarn": "^1.21.1"
   },
   "scripts": {
-    "test": "jest",
+    "test": "nx run-many --target=test --all",
     "lint": "eslint --ignore-path .eslintignore \"./**/*.{mdx,js,ts,tsx,json}\" --max-warnings 0",
     "lint:fix": "yarn lint --fix",
     "prettier": "prettier --ignore-path .prettierignore \"./**/*.{mdx,js,ts,tsx,json,css,scss}\"",
@@ -51,7 +51,7 @@
       "**/storybook-*/**"
     ]
   },
-  "devDependencies": {
+  "dependencies": {
     "@babel/cli": "7.17.10",
     "@babel/core": "7.13.10",
     "@babel/preset-typescript": "^7.13.0",
@@ -62,8 +62,10 @@
     "@emotion/jest": "^11.3.0",
     "@emotion/react": "^11.4.0",
     "@emotion/styled": "^11.3.0",
-    "@nrwl/cli": "^14.4.3",
-    "@nrwl/workspace": "^14.4.3",
+    "@nrwl/cli": "^14.5.2",
+    "@nrwl/nx-cloud": "^14.3.0",
+    "@nrwl/jest": "^14.5.2",
+    "@nrwl/react": "^14.5.2",
     "@svgr/cli": "5.5.0",
     "@testing-library/dom": "^8.11.1",
     "@testing-library/jest-dom": "^5.16.1",
@@ -89,6 +91,7 @@
     "conventional-changelog-cli": "^2.0.34",
     "conventional-changelog-conventionalcommits": "^4.3.0",
     "core-js": "3.7.0",
+    "cpy-cli": "^4.1.0",
     "enzyme": "^3.11.0",
     "enzyme-to-json": "3.3.5",
     "eslint": "^8.11.0",
@@ -112,6 +115,9 @@
     "react-helmet": "6.1.0",
     "react-test-renderer": "^17.0.2",
     "svgo": "^1.3.2",
+    "ts-jest": "^28.0.7",
+    "ts-node": "^10.9.1",
+    "tslib": "2.4.0",
     "typescript": "4.4.2"
   },
   "resolutions": {
