@@ -215,6 +215,9 @@ const columnJustify = variant({
     left: {
       justifyContent: { xs: 'flex-start' },
     },
+    center: {
+      justifyContent: { xs: 'center' },
+    },
     right: {
       justifyContent: { xs: 'flex-end' },
       '& div': {
