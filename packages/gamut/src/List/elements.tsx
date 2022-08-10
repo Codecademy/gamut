@@ -112,18 +112,37 @@ export interface RowProps
     StyleProps<typeof spacingVariants>,
     StyleProps<typeof rowStates> {}
 
+const breakpointVariants = variant({
+  prop: 'variant',
+  base: {
+    display: { _: 'grid', xs: 'flex' },
+    gridAutoRows: 'minmax(1.5rem, max-content)',
+    gridTemplateColumns: 'minmax(0, 1fr) max-content',
+    flexDirection: { _: 'column', xs: 'row' },
+  },
+  variants: {
+    default: {},
+    table: {
+      display: { _: 'grid', md: 'flex' },
+      gridAutoRows: 'minmax(1.5rem, max-content)',
+      gridTemplateColumns: 'minmax(0, 1fr) max-content',
+      flexDirection: { _: 'column', md: 'row' },
+    },
+    card: {},
+    block: {},
+    plain: {},
+  },
+});
+
 export const RowEl = styled('li', styledOptions<'li'>())<RowProps>(
   css({
     py: { _: 8, xs: 0 },
-    display: { _: 'flex', xs: 'flex' },
-    gridAutoRows: 'minmax(1.5rem, max-content)',
-    gridTemplateColumns: 'minmax(0, 1fr) max-content',
-    flexDirection: { _: 'row', xs: 'row' },
     bg: 'inherit',
   }),
   rowVariants,
   spacingVariants,
-  rowStates
+  rowStates,
+  breakpointVariants
 );
 
 const headerVariants = variant({
