@@ -75,7 +75,7 @@ const spacingVariants = variant({
       fontSize: 16,
       gap: { _: 8, xs: 32 },
     },
-    compact: { gap: 0 },
+    compact: { gap: 0, py: 0 },
   },
 });
 
@@ -123,13 +123,12 @@ const rowBreakpointVariants = variant({
       flexDirection: { _: 'column', xs: 'row' },
     },
     md: {
-      display: { _: 'grid', xs: 'grid', md: 'flex' },
-      flexDirection: { _: 'column', xs: 'column', md: 'row' },
-      color: 'red',
+      display: { _: 'grid', md: 'flex' },
+      flexDirection: { _: 'column', md: 'row' },
     },
     lg: {
-      display: { _: 'grid', xs: 'grid', md: 'grid', lg: 'flex' },
-      flexDirection: { _: 'column', xs: 'column', md: 'column', lg: 'row' },
+      display: { _: 'grid', lg: 'flex' },
+      flexDirection: { _: 'column', lg: 'row' },
     },
   },
 });
