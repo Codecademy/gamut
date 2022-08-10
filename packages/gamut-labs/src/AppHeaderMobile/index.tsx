@@ -13,6 +13,7 @@ import {
 import { appHeaderMobileBreakpoint } from '../AppHeader/shared';
 import { FormattedMobileAppHeaderItems } from '../AppHeader/types';
 import { AppHeaderMainMenuMobile } from '../AppHeaderMobile/AppHeaderMainMenuMobile';
+import { CrossDeviceBookmarksView } from '../Bookmarks/types';
 import { CrossDeviceBookmarkParts } from '../Bookmarks/types';
 import { useBookmarkComponentsPair } from '../Bookmarks/useBookmarkComponentsPair';
 import { CrossDeviceStateProps } from '../GlobalHeader/types';
@@ -78,7 +79,7 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
     openCrossDeviceItemId,
     setOpenCrossDeviceItemId,
     bookmarkParts: crossDeviceBookmarkParts,
-    view: 'mobile',
+    view: CrossDeviceBookmarksView.MOBILE,
     isAnon,
   });
 

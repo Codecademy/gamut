@@ -5,7 +5,7 @@ import { ThemeProvider } from '@emotion/react';
 import { fireEvent, render, screen } from '@testing-library/react';
 import React from 'react';
 
-import { mockBookmarkParts } from '../../Bookmarks/useBookmarkComponentsPair.test';
+import { mockBookmarkParts } from '../../Bookmarks/fixtures';
 import { AppHeader, AppHeaderProps } from '..';
 
 const action = jest.fn();
@@ -135,6 +135,7 @@ const crossDeviceBookmarkProps: AppHeaderProps = {
   ...fillButtonProps,
   crossDeviceBookmarkParts: mockBookmarkParts,
 };
+
 const renderAppHeader = (props: AppHeaderProps) => {
   return render(
     <ThemeProvider theme={theme}>

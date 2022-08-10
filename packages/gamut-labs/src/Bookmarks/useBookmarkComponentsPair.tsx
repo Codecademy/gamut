@@ -3,11 +3,11 @@ import React, { useRef } from 'react';
 
 import { AnimatedHeaderZone } from '../AppHeader/shared';
 import { CrossDeviceStateProps } from '../GlobalHeader/types';
-import { CrossDeviceBookmarkParts } from './types';
+import { CrossDeviceBookmarkParts, CrossDeviceBookmarksView } from './types';
 
 export type BookmarkComponentsPairProps = CrossDeviceStateProps & {
   bookmarkParts?: CrossDeviceBookmarkParts;
-  view: 'desktop' | 'mobile';
+  view: CrossDeviceBookmarksView;
   isAnon: boolean;
 };
 

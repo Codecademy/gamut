@@ -4,6 +4,7 @@ import styled from '@emotion/styled';
 import React, { ReactNode, useEffect, useMemo, useRef, useState } from 'react';
 
 import { AppBar } from '../AppBar';
+import { CrossDeviceBookmarksView } from '../Bookmarks/types';
 import { CrossDeviceBookmarkParts } from '../Bookmarks/types';
 import { useBookmarkComponentsPair } from '../Bookmarks/useBookmarkComponentsPair';
 import { formatUrlWithRedirect } from '../GlobalHeader/urlHelpers';
@@ -159,7 +160,7 @@ export const AppHeader: React.FC<AppHeaderProps> = ({
     openCrossDeviceItemId,
     setOpenCrossDeviceItemId,
     bookmarkParts: crossDeviceBookmarkParts,
-    view: 'desktop',
+    view: CrossDeviceBookmarksView.DESKTOP,
     isAnon,
   });
 
