@@ -330,6 +330,12 @@ const columnSpacing = variant({
       py: { _: 0, xs: 8 },
     },
     compact: {
+      '&:first-of-type': {
+        pl: 0,
+      },
+      '&:last-of-type': {
+        pr: 0,
+      },
       py: { _: 0, xs: 0 },
     },
   },
