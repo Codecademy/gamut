@@ -32,6 +32,8 @@ export type OverlayProps = {
   shroud?: boolean;
   /** Whether the overlay allows scroll */
   allowScroll?: boolean;
+  /** */
+  darkShroud?: boolean;
 };
 
 const OverlayContainer = styled(FlexBox)(
@@ -41,6 +43,9 @@ const OverlayContainer = styled(FlexBox)(
     },
     inline: {
       position: 'absolute',
+    },
+    darkShroud: {
+      bg: 'shadow-black-heavy',
     },
   })
 );
@@ -55,6 +60,7 @@ export const Overlay: React.FC<OverlayProps> = ({
   onRequestClose,
   isOpen,
   allowScroll = false,
+  darkShroud = false,
 }) => {
   const handleOutsideClick = useCallback(() => {
     if (clickOutsideCloses) {
@@ -79,6 +85,7 @@ export const Overlay: React.FC<OverlayProps> = ({
       className={className}
       inline={inline}
       shroud={shroud}
+      darkShroud={darkShroud}
     >
       <FocusTrap
         active={!inline}

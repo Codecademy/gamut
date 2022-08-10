@@ -79,7 +79,7 @@ export const Modal: React.FC<ModalProps> = ({
   const [currentView, setCurrentView] = useState(0);
   return (
     <Overlay
-      shroud
+      darkShroud
       onRequestClose={onRequestClose}
       data-testid="modal"
       {...rest}
