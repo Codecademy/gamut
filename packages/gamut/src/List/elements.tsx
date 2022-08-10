@@ -141,10 +141,10 @@ export const RowEl = styled('li', styledOptions<'li'>())<RowProps>(
     py: { _: 8, xs: 0 },
     bg: 'inherit',
   }),
+  rowBreakpointVariants,
   rowVariants,
   spacingVariants,
-  rowStates,
-  rowBreakpointVariants
+  rowStates
 );
 
 const headerVariants = variant({
