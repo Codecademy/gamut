@@ -22,5 +22,4 @@ export type NotificationsContentsProps = {
 
 export type NotificationsRendererProps = NotificationsContentsProps & {
   bellRef: React.RefObject<ButtonBaseElements>;
-  onClose?: () => void;
 };

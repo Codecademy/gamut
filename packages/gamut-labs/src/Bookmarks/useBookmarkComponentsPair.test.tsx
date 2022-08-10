@@ -4,6 +4,7 @@ import { act, renderHook } from '@testing-library/react-hooks';
 import userEvent from '@testing-library/user-event';
 import React from 'react';
 
+import { CrossDeviceItemId } from '../GlobalHeader/types';
 import { mockBookmarkParts } from './fixtures';
 import { CrossDeviceBookmarksView } from './types';
 import {
@@ -14,7 +15,7 @@ import {
 const mockSetOpenCrossDeviceItemId = jest.fn();
 
 const defaultProps: BookmarkComponentsPairProps = {
-  openCrossDeviceItemId: '',
+  openCrossDeviceItemId: CrossDeviceItemId.UNSET,
   setOpenCrossDeviceItemId: mockSetOpenCrossDeviceItemId,
   bookmarkParts: mockBookmarkParts,
   view: CrossDeviceBookmarksView.DESKTOP,
@@ -107,7 +108,7 @@ describe('useBookmarkComponentsPair', () => {
           useBookmarkComponentsPair({
             ...defaultProps,
             view: convertedEnum,
-            openCrossDeviceItemId: 'bookmarks',
+            openCrossDeviceItemId: CrossDeviceItemId.BOOKMARKS,
           })
         );
 

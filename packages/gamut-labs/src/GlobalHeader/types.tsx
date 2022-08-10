@@ -76,7 +76,13 @@ export type LoadingHeader = BaseHeader & {
   type: 'loading';
 };
 
+export enum CrossDeviceItemId {
+  NOTIFICATIONS = 'notifications',
+  BOOKMARKS = 'bookmarks',
+  UNSET = '',
+}
+
 export type CrossDeviceStateProps = {
-  openCrossDeviceItemId: string;
+  openCrossDeviceItemId: CrossDeviceItemId;
   setOpenCrossDeviceItemId: React.Dispatch<React.SetStateAction<string>>;
 };

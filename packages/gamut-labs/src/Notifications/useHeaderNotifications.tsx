@@ -2,7 +2,10 @@ import { ButtonBaseElements } from '@codecademy/gamut';
 import React, { useRef } from 'react';
 
 import { AnimatedHeaderZone } from '../AppHeader/shared';
-import { CrossDeviceStateProps } from '../GlobalHeader/types';
+import {
+  CrossDeviceItemId,
+  CrossDeviceStateProps,
+} from '../GlobalHeader/types';
 import { NotificationBell } from './NotificationBell';
 import {
   AppHeaderNotificationSettings,
@@ -26,19 +29,21 @@ export const useHeaderNotifications = ({
     return [null, null];
   }
 
+  const id = CrossDeviceItemId.NOTIFICATIONS;
+
   const togglePane = () => {
-    if (openCrossDeviceItemId !== 'notifications') {
+    if (openCrossDeviceItemId !== id) {
       settings.onEnable();
     }
 
     setOpenCrossDeviceItemId(
-      openCrossDeviceItemId === 'notifications' ? '' : 'notifications'
+      openCrossDeviceItemId === id ? CrossDeviceItemId.UNSET : id
     );
   };
 
   return [
     {
-      id: 'notifications',
+      id,
       type: 'render-element',
       renderElement: () => (
         <NotificationBell
@@ -49,7 +54,7 @@ export const useHeaderNotifications = ({
       ),
     },
     <AnimatedHeaderZone
-      visible={openCrossDeviceItemId === 'notifications'}
+      visible={openCrossDeviceItemId === id}
       key="notifications-content"
     >
       <Renderer

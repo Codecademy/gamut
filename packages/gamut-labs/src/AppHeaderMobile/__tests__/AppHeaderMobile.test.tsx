@@ -78,7 +78,7 @@ const mainMenuProps: AppHeaderMobileProps = {
   setOpenCrossDeviceItemId: jest.fn(),
 };
 
-const crossDeviceBookmarkProps: AppHeaderMobileProps = {
+const appHeaderMobilePropsWithBookmarkParts: AppHeaderMobileProps = {
   ...mainMenuProps,
   crossDeviceBookmarkParts: mockBookmarkParts,
 };
@@ -135,7 +135,7 @@ describe('AppHeaderMobile', () => {
     describe('NO crossDeviceBookmarkParts prop provided', () => {
       it('does NOT render a bookmarks button or content', () => {
         renderAppHeader({
-          ...crossDeviceBookmarkProps,
+          ...appHeaderMobilePropsWithBookmarkParts,
           crossDeviceBookmarkParts: undefined,
         });
         expect(screen.queryByText('IMA BOOKMARKS BUTTON')).toBeNull();
@@ -145,7 +145,7 @@ describe('AppHeaderMobile', () => {
 
     describe('crossDeviceBookmarkParts prop IS provided', () => {
       it('renders the button but does NOT render bookmarks content if openCrossDeviceItemId is NOT set to bookmarks', () => {
-        renderAppHeader(crossDeviceBookmarkProps);
+        renderAppHeader(appHeaderMobilePropsWithBookmarkParts);
 
         screen.getByText('IMA BOOKMARKS BUTTON');
         expect(screen.queryByText('MOBILE BOOKMARKS CONTENT')).toBeNull();
@@ -153,7 +153,7 @@ describe('AppHeaderMobile', () => {
 
       it('renders both the button and bookmarks content if openCrossDeviceItemId is set to bookmarks', () => {
         renderAppHeader({
-          ...crossDeviceBookmarkProps,
+          ...appHeaderMobilePropsWithBookmarkParts,
           openCrossDeviceItemId: 'bookmarks',
         });
 

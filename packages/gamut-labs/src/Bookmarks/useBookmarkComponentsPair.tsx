@@ -2,7 +2,10 @@ import { ButtonBaseElements, IconButton, Popover } from '@codecademy/gamut';
 import React, { useRef } from 'react';
 
 import { AnimatedHeaderZone } from '../AppHeader/shared';
-import { CrossDeviceStateProps } from '../GlobalHeader/types';
+import {
+  CrossDeviceItemId,
+  CrossDeviceStateProps,
+} from '../GlobalHeader/types';
 import { CrossDeviceBookmarkParts, CrossDeviceBookmarksView } from './types';
 
 export type BookmarkComponentsPairProps = CrossDeviceStateProps & {
@@ -24,10 +27,12 @@ export const useBookmarkComponentsPair = ({
     return [null, null];
   }
 
-  const id = 'bookmarks';
+  const id = CrossDeviceItemId.BOOKMARKS;
 
   const toggleVisible = () => {
-    setOpenCrossDeviceItemId(openCrossDeviceItemId === id ? '' : id);
+    setOpenCrossDeviceItemId(
+      openCrossDeviceItemId === id ? CrossDeviceItemId.UNSET : id
+    );
   };
 
   return [
