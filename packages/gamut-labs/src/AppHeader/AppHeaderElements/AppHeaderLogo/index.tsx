@@ -17,11 +17,10 @@ export const AppHeaderLogo: React.FC<AppHeaderLogoProps> = ({
   const showMini = () => windowWidth <= 1260 && windowWidth >= 1200;
 
   useEffect(() => {
-    // Handler to call on window resize
+    // use non es6 func so doesn't share state with parent
     function handleResize() {
       setWindowWidth(window.innerWidth);
     }
-    // Add event listener
     window.addEventListener('resize', handleResize);
     handleResize();
     // Remove event listener on cleanup

@@ -35,7 +35,23 @@ describe('AppHeaderLogo', () => {
     expect(icon.find('title').text()).toContain('Codecademy Logo');
   });
 
+  it('shows mini logo when window width is within 1200-1260 range', () => {
+    global.innerWidth = 1200;
+
+    const wrapper = renderAppHeaderLogo({ pro: true });
+    const icon = wrapper.find('svg');
+    expect(icon.find('title').text()).toEqual('Codecademy Logo Mini');
+
+    global.innerWidth = 1260;
+
+    const secondwrapper = renderAppHeaderLogo({ pro: true });
+    const secondicon = secondwrapper.find('svg');
+    expect(secondicon.find('title').text()).toEqual('Codecademy Logo Mini');
+  });
+
   it('shows the pro logo when user has pro subscription', () => {
+    global.innerWidth = 1261;
+
     const wrapper = renderAppHeaderLogo({ pro: true });
     const icon = wrapper.find('svg');
     expect(icon.find('title').text()).toEqual('Codecademy Pro Logo');
