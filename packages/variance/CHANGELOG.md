@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [0.20.3](https://github.com/Codecademy/gamut/compare/@codecademy/variance@0.20.2...@codecademy/variance@0.20.3) (2022-08-09)
+
+**Note:** Version bump only for package @codecademy/variance
+
+
+
+
+
 ### [0.20.2](https://github.com/Codecademy/gamut/compare/@codecademy/variance@0.20.1...@codecademy/variance@0.20.2) (2022-07-29)
 
 **Note:** Version bump only for package @codecademy/variance

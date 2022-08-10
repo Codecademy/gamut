@@ -1,5 +1,5 @@
 {
-  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/variance/src",
   "projectType": "library",
   "targets": {
@@ -11,10 +11,18 @@
         "outputPath": "./dist",
         "commands": [
           "rm -rf ./dist",
-          "tsc -b",
-          "babel ./src --out-dir ./dist --copy-files --extensions \".ts,.tsx\""
+          "tsc --project tsconfig.lib.json",
+          "babel ./src --out-dir ./dist --extensions \".ts,.tsx\""
         ],
         "parallel": false
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/packages/variance"],
+      "options": {
+        "jestConfig": "packages/variance/jest.config.ts",
+        "passWithNoTests": true
       }
     }
   },

@@ -4,7 +4,7 @@
     "url": "https://github.com/Codecademy/gamut/issues"
   },
   "dependencies": {
-    "@codecademy/gamut-styles": "^14.0.2",
+    "@codecademy/gamut-styles": "^14.0.3",
     "classnames": "^2.2.5"
   },
   "description": "Illustrations library for Codecademy",
@@ -15,6 +15,9 @@
   "name": "@codecademy/gamut-illustrations",
   "module": "./dist/index.js",
   "main": "./dist/index.js",
+  "files": [
+    "dist"
+  ],
   "license": "MIT",
   "peerDependencies": {
     "@emotion/react": "^11.4.0",
@@ -36,5 +39,5 @@
     "dist/**/[A-Z]**/[A-Z]*.js",
     "dist/**/[A-Z]**/index.js"
   ],
-  "version": "0.28.5"
+  "version": "0.29.0"
 }

@@ -1,5 +1,5 @@
 {
-  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/gamut-illustrations/src",
   "projectType": "library",
   "targets": {
@@ -11,10 +11,18 @@
         "outputPath": "./dist",
         "commands": [
           "rm -rf ./dist",
-          "babel ./src --out-dir ./dist --copy-files --extensions \".ts,.tsx\"",
+          "babel ./src --out-dir ./dist --extensions \".ts,.tsx\"",
           "tsc --emitDeclarationOnly"
         ],
         "parallel": false
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/packages/gamut-illustrations"],
+      "options": {
+        "jestConfig": "packages/gamut-illustrations/jest.config.ts",
+        "passWithNoTests": true
       }
     }
   },

@@ -1,12 +1,29 @@
 {
-  "extends": "../../tsconfig.json",
-  "include": [
-    "../../typings/*.d.ts",
-    "./src/**/*.ts",
-    "./src/**/*.tsx",
-    "../../packages/gamut-styles/dist/typings/theme.d.ts"
-  ],
+  "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "outDir": "./dist"
-  }
+    "jsx": "react",
+    "allowJs": false,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "noImplicitOverride": false,
+    "noPropertyAccessFromIndexSignature": false,
+    "noImplicitReturns": false,
+    "noFallthroughCasesInSwitch": false,
+    "strictFunctionTypes": false,
+    "strictPropertyInitialization": false,
+    "noUnusedParameters": false,
+    "noUnusedLocals": true
+  },
+  "files": [],
+  "include": [],
+  "references": [
+    {
+      "path": "./tsconfig.lib.json"
+    },
+    {
+      "path": "./tsconfig.spec.json"
+    }
+  ]
 }

@@ -1,5 +1,5 @@
 {
-  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/styleguide/stories",
   "projectType": "application",
   "targets": {
@@ -14,6 +14,14 @@
           "NODE_ENV=production ./node_modules/.bin/build-storybook --quiet -c .storybook -o ./dist"
         ],
         "parallel": false
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/packages/styleguide"],
+      "options": {
+        "jestConfig": "packages/styleguide/jest.config.ts",
+        "passWithNoTests": true
       }
     }
   },

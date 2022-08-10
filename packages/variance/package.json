@@ -1,7 +1,7 @@
 {
   "name": "@codecademy/variance",
   "description": "Constraint based CSS in JS for building scalable design systems",
-  "version": "0.20.2",
+  "version": "0.20.3",
   "keywords": [
     "emotion",
     "css",
@@ -14,6 +14,9 @@
   "main": "dist/index.js",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "publishConfig": {
     "access": "public"
   },

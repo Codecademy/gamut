@@ -1,5 +1,5 @@
 {
-  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/gamut/src",
   "projectType": "library",
   "targets": {
@@ -11,10 +11,19 @@
         "outputPath": "./dist",
         "commands": [
           "rm -rf ./dist",
-          "babel ./src --out-dir ./dist --copy-files --extensions \".ts,.tsx\"",
-          "tsc --emitDeclarationOnly"
+          "babel ./src --out-dir ./dist --extensions \".ts,.tsx\"",
+          "tsc --emitDeclarationOnly --project ./tsconfig.lib.json",
+          "cpy './src/**/*.{d.ts,scss,svg,png}' ./dist"
         ],
         "parallel": false
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/packages/gamut"],
+      "options": {
+        "jestConfig": "packages/gamut/jest.config.ts",
+        "passWithNoTests": true
       }
     }
   },

@@ -1,7 +1,29 @@
 {
-  "extends": "../../tsconfig.json",
+  "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "outDir": "./dist"
+    "jsx": "react",
+    "allowJs": true,
+    "declaration": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUnusedParameters": false,
+    "sourceMap": true,
+    "strictFunctionTypes": false,
+    "strictPropertyInitialization": false,
+    // disable import paths for lerna packages
+    "paths": {}
   },
-  "include": ["../../typings/*.d.ts", "./src/**/*.ts", "./src/**/*.tsx"]
+  "files": [],
+  "include": [],
+  "references": [
+    {
+      "path": "./tsconfig.lib.json"
+    },
+    {
+      "path": "./tsconfig.spec.json"
+    }
+  ]
 }

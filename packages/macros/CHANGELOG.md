@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [3.0.2](https://github.com/Codecademy/gamut/compare/@codecademy/macros@3.0.1...@codecademy/macros@3.0.2) (2022-08-09)
+
+**Note:** Version bump only for package @codecademy/macros
+
+
+
+
+
 ### [3.0.1](https://github.com/Codecademy/gamut/compare/@codecademy/macros@3.0.0...@codecademy/macros@3.0.1) (2022-07-29)
 
 **Note:** Version bump only for package @codecademy/macros

@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.29.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.28.6...@codecademy/gamut-illustrations@0.29.0) (2022-08-10)
+
+
+### Features
+
+* **Illustration:** add coffee illlustration ([f2670d3](https://github.com/Codecademy/gamut/commit/f2670d3815e0a8df2d03d9593b2a28a85483c446))
+
+
+
+### [0.28.6](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.28.5...@codecademy/gamut-illustrations@0.28.6) (2022-08-09)
+
+**Note:** Version bump only for package @codecademy/gamut-illustrations
+
+
+
+
+
 ### [0.28.5](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.28.4...@codecademy/gamut-illustrations@0.28.5) (2022-07-29)
 
 **Note:** Version bump only for package @codecademy/gamut-illustrations
