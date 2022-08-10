@@ -110,14 +110,18 @@ const rowVariants = variant({
 const rowBreakpointVariants = variant({
   prop: 'breakpoint',
   base: {
-    display: { _: 'grid', xs: 'flex' },
     gridAutoRows: 'minmax(1.5rem, max-content)',
     gridTemplateColumns: 'minmax(0, 1fr) max-content',
-    flexDirection: { _: 'column', xs: 'row' },
   },
   variants: {
-    default: {},
-    xs: {},
+    default: {
+      display: { _: 'grid', xs: 'flex' },
+      flexDirection: { _: 'column', xs: 'row' },
+    },
+    xs: {
+      display: { _: 'grid', xs: 'flex' },
+      flexDirection: { _: 'column', xs: 'row' },
+    },
     md: {
       display: { _: 'grid', xs: 'grid', md: 'flex' },
       flexDirection: { _: 'column', xs: 'column', md: 'row' },
