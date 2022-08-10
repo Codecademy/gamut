@@ -119,13 +119,13 @@ const rowBreakpointVariants = variant({
     default: {},
     xs: {},
     md: {
-      display: { _: 'grid', md: 'flex' },
-      flexDirection: { _: 'column', md: 'row' },
+      display: { _: 'grid', xs: 'grid', md: 'flex' },
+      flexDirection: { _: 'column', xs: 'column', md: 'row' },
       color: 'red',
     },
     lg: {
-      display: { _: 'grid', lg: 'flex' },
-      flexDirection: { _: 'column', lg: 'row' },
+      display: { _: 'grid', xs: 'grid', md: 'grid', lg: 'flex' },
+      flexDirection: { _: 'column', xs: 'column', md: 'column', lg: 'row' },
     },
   },
 });
