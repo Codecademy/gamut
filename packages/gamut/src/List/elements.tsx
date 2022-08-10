@@ -329,7 +329,9 @@ const columnSpacing = variant({
     condensed: {
       py: { _: 0, xs: 8 },
     },
-    compact: {},
+    compact: {
+      py: { _: 0, xs: 0 },
+    },
   },
 });
 
