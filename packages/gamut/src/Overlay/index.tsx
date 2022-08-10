@@ -28,7 +28,7 @@ export type OverlayProps = {
   isOpen?: boolean;
   /** Whether the overlay renders inline to its container or creates a portal to the end of the body */
   inline?: boolean;
-  /** Whether the overlay has a transparent or a shrouded background with of slight opacity */
+  /** Whether the overlay has a transparent or a shrouded background with slight opacity */
   shroud?: boolean;
   /** Whether the overlay allows scroll */
   allowScroll?: boolean;
