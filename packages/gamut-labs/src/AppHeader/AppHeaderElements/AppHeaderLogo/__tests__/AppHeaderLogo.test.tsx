@@ -44,9 +44,9 @@ describe('AppHeaderLogo', () => {
 
     global.innerWidth = 1260;
 
-    const secondwrapper = renderAppHeaderLogo({ pro: true });
-    const secondicon = secondwrapper.find('svg');
-    expect(secondicon.find('title').text()).toEqual('Codecademy Logo Mini');
+    const secondWrapper = renderAppHeaderLogo({ pro: true });
+    const secondIcon = secondWrapper.find('svg');
+    expect(secondIcon.find('title').text()).toEqual('Codecademy Logo Mini');
   });
 
   it('shows the pro logo when user has pro subscription', () => {
