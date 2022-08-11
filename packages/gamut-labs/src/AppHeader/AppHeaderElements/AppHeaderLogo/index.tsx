@@ -15,6 +15,9 @@ export const AppHeaderLogo: React.FC<AppHeaderLogoProps> = ({
   const [showMini, setShowMini] = useState(false);
 
   useEffect(() => {
+    if (!item.checkMini) {
+      return;
+    }
     const handleResize = () => {
       const shouldShowMini =
         window.innerWidth <= 1260 && window.innerWidth >= 1200;
@@ -27,7 +30,16 @@ export const AppHeaderLogo: React.FC<AppHeaderLogoProps> = ({
     handleResize();
     // Remove event listener on cleanup
     return () => window.removeEventListener('resize', handleResize);
-  }, [showMini]);
+  }, [item.checkMini, showMini]);
+
+  const getVariant = () => {
+    switch (item.checkMini) {
+      case true:
+        return showMini ? 'mini' : item.pro ? 'pro' : 'default';
+      default:
+        return item.pro ? 'pro' : 'default';
+    }
+  };
 
   return (
     <Anchor
@@ -41,7 +53,7 @@ export const AppHeaderLogo: React.FC<AppHeaderLogoProps> = ({
     >
       <Logo
         color="currentColor"
-        variant={showMini ? 'mini' : item.pro ? 'pro' : 'default'}
+        variant={getVariant()}
         height={27}
         verticalAlign="text-bottom"
       />
