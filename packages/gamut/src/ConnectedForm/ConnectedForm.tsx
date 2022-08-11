@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo } from 'react';
+import React, { forwardRef, useEffect, useMemo } from 'react';
 import {
   FieldValues,
   FormProvider,
@@ -82,85 +82,93 @@ export const FormPropsContext = React.createContext<Partial<FormContextProps>>(
 );
 const PropsProvider = FormPropsContext.Provider;
 
-export function ConnectedForm<Values extends FormValues<Values>>({
-  children,
-  onSubmit,
-  defaultValues,
-  validation = 'onChange',
-  disableFieldsOnSubmit = false,
-  resetOnSubmit = false,
-  showRequired = false,
-  validationRules,
-  wasSubmitSuccessful = undefined,
-  watchedFields,
-  ...rest
-}: ConnectedFormProps<Values>) {
-  const {
-    clearErrors,
-    handleSubmit,
-    formState,
-    reset,
-    trigger,
-    watch,
-    ...methods
-  } = useForm<FieldValues>({
-    defaultValues,
-    mode: validation,
-  });
+export const ConnectedForm = forwardRef(
+  <Values extends FormValues<Values>>(
+    {
+      children,
+      onSubmit,
+      defaultValues,
+      validation = 'onChange',
+      disableFieldsOnSubmit = false,
+      resetOnSubmit = false,
+      showRequired = false,
+      validationRules,
+      wasSubmitSuccessful = undefined,
+      watchedFields,
+      ...rest
+    }: ConnectedFormProps<Values>,
+    ref: React.ForwardedRef<HTMLFormElement>
+  ) => {
+    const {
+      clearErrors,
+      handleSubmit,
+      formState,
+      reset,
+      trigger,
+      watch,
+      ...methods
+    } = useForm<FieldValues>({
+      defaultValues,
+      mode: validation,
+    });
 
-  const onError = async () => {
-    clearErrors();
-    await trigger();
-  };
+    const onError = async () => {
+      clearErrors();
+      await trigger();
+    };
 
-  const isSubmitSuccessful = submitSuccessStatus(
-    wasSubmitSuccessful,
-    formState.isSubmitSuccessful
-  );
+    const isSubmitSuccessful = submitSuccessStatus(
+      wasSubmitSuccessful,
+      formState.isSubmitSuccessful
+    );
 
-  if (watchedFields) {
-    // we're pretty exhaustively type-checking the props as they're passed in, so its fine to cast here.
-    const fields = watch(watchedFields.fields);
-    watchedFields.watchHandler(fields as any);
-  }
-
-  useEffect(() => {
-    if (isSubmitSuccessful && resetOnSubmit) {
-      reset(defaultValues);
+    if (watchedFields) {
+      // we're pretty exhaustively type-checking the props as they're passed in, so its fine to cast here.
+      const fields = watch(watchedFields.fields);
+      watchedFields.watchHandler(fields as any);
     }
-  }, [isSubmitSuccessful, resetOnSubmit, reset, defaultValues]);
 
-  const contextValues = useMemo(() => {
-    return {
+    useEffect(() => {
+      if (isSubmitSuccessful && resetOnSubmit) {
+        reset(defaultValues);
+      }
+    }, [isSubmitSuccessful, resetOnSubmit, reset, defaultValues]);
+
+    const contextValues = useMemo(() => {
+      return {
+        disableFieldsOnSubmit,
+        resetOnSubmit,
+        showRequired,
+        validationRules,
+        wasSubmitSuccessful,
+      };
+    }, [
       disableFieldsOnSubmit,
       resetOnSubmit,
       showRequired,
       validationRules,
       wasSubmitSuccessful,
-    };
-  }, [
-    disableFieldsOnSubmit,
-    resetOnSubmit,
-    showRequired,
-    validationRules,
-    wasSubmitSuccessful,
-  ]);
+    ]);
 
-  return (
-    <PropsProvider value={contextValues}>
-      <FormProvider
-        clearErrors={clearErrors}
-        handleSubmit={handleSubmit}
-        formState={formState}
-        reset={reset}
-        trigger={trigger}
-        watch={watch}
-        {...methods}
-      >
-        <Form onSubmit={handleSubmit(onSubmit, onError)} {...rest}>
-          {children}
-        </Form>
-      </FormProvider>
-    </PropsProvider>
-  );
-}
+    return (
+      <PropsProvider value={contextValues}>
+        <FormProvider
+          clearErrors={clearErrors}
+          handleSubmit={handleSubmit}
+          formState={formState}
+          reset={reset}
+          trigger={trigger}
+          watch={watch}
+          {...methods}
+        >
+          <Form onSubmit={handleSubmit(onSubmit, onError)} {...rest} ref={ref}>
+            {children}
+          </Form>
+        </FormProvider>
+      </PropsProvider>
+    );
+  }
+) as <Values extends FormValues<Values>>(
+  props: ConnectedFormProps<Values>,
+  ref: React.ForwardedRef<HTMLFormElement>
+) => React.ReactElement;
