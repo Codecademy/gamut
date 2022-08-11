@@ -4,7 +4,7 @@ import { css } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React, { useState } from 'react';
 
-import { mapItemToElement, StyledAppBar, StyledMenuBar } from '../AppHeader';
+import { mapItemToElement, StyledAppBar } from '../AppHeader';
 import { AppHeaderListItem } from '../AppHeader/AppHeaderElements/AppHeaderListItem';
 import {
   AppHeaderClickHandler,
@@ -53,6 +53,17 @@ const StyledContentContainer = styled(ContentContainer)(
     display: `flex`,
     flexDirection: `column`,
     p: 0,
+  })
+);
+
+const StyledMenuBar = styled.ul(
+  css({
+    display: `flex`,
+    padding: 0,
+    listStyle: `none`,
+    margin: 0,
+    width: `100%`,
+    alignItems: 'center',
   })
 );
 
