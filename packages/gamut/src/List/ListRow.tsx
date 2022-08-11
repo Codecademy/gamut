@@ -48,7 +48,7 @@ export const ListRow = forwardRef<HTMLLIElement, ListRowProps>(
     { children, expanded, expandedRowAriaLabel, renderExpanded, ...rest },
     ref
   ) => {
-    const { variant, scrollable, ...rowConfig } = useListContext();
+    const { variant, scrollable, breakpoint, ...rowConfig } = useListContext();
     const wrapperProps = !renderExpanded ? rowConfig : {};
     let content = children;
 
@@ -75,6 +75,7 @@ export const ListRow = forwardRef<HTMLLIElement, ListRowProps>(
         variant={variant}
         expanded={!!renderExpanded}
         scrollable={scrollable}
+        breakpoint={breakpoint}
         {...wrapperProps}
       >
         {content}

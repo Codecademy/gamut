@@ -19,7 +19,12 @@ export function useListContext() {
   return context;
 }
 
-export function useList({ spacing, variant, scrollable }: PrivateListProps) {
+export function useList({
+  spacing,
+  variant,
+  scrollable,
+  breakpoint,
+}: PrivateListProps) {
   const {
     depth = 0,
     variant: parentVariant,
@@ -34,8 +39,9 @@ export function useList({ spacing, variant, scrollable }: PrivateListProps) {
       scrollable,
       variant: activeVariant,
       spacing: activeSpacing,
+      breakpoint,
       depth: depth + 1,
     }),
-    [scrollable, activeVariant, activeSpacing, depth]
+    [scrollable, activeVariant, activeSpacing, depth, breakpoint]
   );
 }

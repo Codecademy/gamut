@@ -106,6 +106,29 @@ const rowVariants = variant({
   },
 });
 
+const rowBreakpointVariants = variant({
+  prop: 'breakpoint',
+  base: {
+    gridAutoRows: 'minmax(1.5rem, max-content)',
+    gridTemplateColumns: 'minmax(0, 1fr) max-content',
+  },
+  defaultVariant: 'xs',
+  variants: {
+    xs: {
+      display: { _: 'grid', xs: 'flex' },
+      flexDirection: { _: 'column', xs: 'row' },
+    },
+    sm: {
+      display: { _: 'grid', sm: 'flex' },
+      flexDirection: { _: 'column', sm: 'row' },
+    },
+    md: {
+      display: { _: 'grid', md: 'flex' },
+      flexDirection: { _: 'column', md: 'row' },
+    },
+  },
+});
+
 export interface RowProps
   extends StyleProps<typeof rowVariants>,
     StyleProps<typeof spacingVariants>,
@@ -114,12 +137,9 @@ export interface RowProps
 export const RowEl = styled('li', styledOptions<'li'>())<RowProps>(
   css({
     py: { _: 8, xs: 0 },
-    display: { _: 'grid', xs: 'flex' },
-    gridAutoRows: 'minmax(1.5rem, max-content)',
-    gridTemplateColumns: 'minmax(0, 1fr) max-content',
-    flexDirection: { _: 'column', xs: 'row' },
     bg: 'inherit',
   }),
+  rowBreakpointVariants,
   rowVariants,
   spacingVariants,
   rowStates
