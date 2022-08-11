@@ -131,6 +131,7 @@ const rowBreakpointVariants = variant({
 
 export interface RowProps
   extends StyleProps<typeof rowVariants>,
+    StyleProps<typeof rowBreakpointVariants>,
     StyleProps<typeof spacingVariants>,
     StyleProps<typeof rowStates> {}
 
