@@ -75,6 +75,9 @@ const spacingVariants = variant({
       fontSize: 16,
       gap: { _: 8, xs: 32 },
     },
+    compact: {
+      compact: { gap: 0, py: 0 },
+    },
   },
 });
 

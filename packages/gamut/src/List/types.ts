@@ -1,6 +1,6 @@
 export interface PrivateListProps {
   scrollable?: boolean;
-  spacing?: 'normal' | 'condensed';
+  spacing?: 'normal' | 'condensed' | 'compact';
   variant?: 'default' | 'table' | 'card' | 'block' | 'plain';
   breakpoint?: 'xs' | 'sm' | 'md';
 }
