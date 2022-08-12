@@ -76,7 +76,8 @@ const spacingVariants = variant({
       gap: { _: 8, xs: 32 },
     },
     compact: {
-      compact: { gap: 0, py: 0 },
+      gap: 0,
+      py: { _: 0 },
     },
   },
 });
@@ -325,6 +326,7 @@ const columnSpacing = variant({
     condensed: {
       py: { _: 0, xs: 8 },
     },
+    compact: {},
   },
 });
 
