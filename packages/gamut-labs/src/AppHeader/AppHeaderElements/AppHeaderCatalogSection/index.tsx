@@ -252,7 +252,7 @@ export const AppHeaderCatalogSection = React.forwardRef<
                       data-focusablecatalog="true"
                       variant="interface"
                       href={item.href}
-                      onClick={(event) => action(event, item as AppHeaderItem)}
+                      onClick={(event) => onClick(event, item as AppHeaderItem)}
                       tabIndex={tabIndex}
                     >
                       {item.text}
