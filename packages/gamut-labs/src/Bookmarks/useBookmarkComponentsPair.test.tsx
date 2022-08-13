@@ -86,17 +86,11 @@ describe('useBookmarkComponentsPair', () => {
 
     test.each(viewCases)(
       'returns a wrapped %s content component as second element in pair that respects the value of openCrossDeviceItemId to determine whether it displays the inner content',
-      (view, contentText) => {
-        // jest forces a string conv, need to conv back
-        const convertedEnum =
-          view === 'desktop'
-            ? CrossDeviceBookmarksView.DESKTOP
-            : CrossDeviceBookmarksView.MOBILE;
-
+      (view: CrossDeviceItemId, contentText) => {
         const hook = renderHook(() =>
           useBookmarkComponentsPair({
             ...defaultProps,
-            view: convertedEnum,
+            view,
           })
         );
 
@@ -107,7 +101,7 @@ describe('useBookmarkComponentsPair', () => {
         const postUpdateHook = renderHook(() =>
           useBookmarkComponentsPair({
             ...defaultProps,
-            view: convertedEnum,
+            view,
             openCrossDeviceItemId: CrossDeviceItemId.BOOKMARKS,
           })
         );
