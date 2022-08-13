@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [33.0.14](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@33.0.13...@codecademy/gamut-labs@33.0.14) (2022-08-12)
+
+
+### Bug Fixes
+
+* **AppHeaderCatalogDropdown:** add click handler for subject links ([321f695](https://github.com/Codecademy/gamut/commit/321f6953943393f56254b6aa89c09be514870dcc))
+
+
+
 ### [33.0.13](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@33.0.12...@codecademy/gamut-labs@33.0.13) (2022-08-11)
 
 **Note:** Version bump only for package @codecademy/gamut-labs
