@@ -53,7 +53,7 @@ export const AppHeaderLogo: React.FC<AppHeaderLogoProps> = ({
     >
       <Logo
         color="currentColor"
-        variant={getVariant()}
+        variant={item.checkMini && showMini ? 'mini' : item.pro ? 'pro' : 'default'}
         height={27}
         verticalAlign="text-bottom"
       />
