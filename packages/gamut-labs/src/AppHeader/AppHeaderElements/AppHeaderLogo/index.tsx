@@ -32,15 +32,6 @@ export const AppHeaderLogo: React.FC<AppHeaderLogoProps> = ({
     return () => window.removeEventListener('resize', handleResize);
   }, [item.checkMini, showMini]);
 
-  const getVariant = () => {
-    switch (item.checkMini) {
-      case true:
-        return showMini ? 'mini' : item.pro ? 'pro' : 'default';
-      default:
-        return item.pro ? 'pro' : 'default';
-    }
-  };
-
   return (
     <Anchor
       variant="interface"
@@ -53,7 +44,9 @@ export const AppHeaderLogo: React.FC<AppHeaderLogoProps> = ({
     >
       <Logo
         color="currentColor"
-        variant={item.checkMini && showMini ? 'mini' : item.pro ? 'pro' : 'default'}
+        variant={
+          item.checkMini && showMini ? 'mini' : item.pro ? 'pro' : 'default'
+        }
         height={27}
         verticalAlign="text-bottom"
       />
