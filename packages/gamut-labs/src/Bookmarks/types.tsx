@@ -11,4 +11,5 @@ export type CrossDeviceBookmarkParts = {
   buttonAriaLabel: string;
   desktop: () => ReactNode;
   mobile: () => ReactNode;
+  onEnable: () => void;
 };

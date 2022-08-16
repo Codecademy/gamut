@@ -30,6 +30,10 @@ export const useBookmarkComponentsPair = ({
   const id = CrossDeviceItemId.BOOKMARKS;
 
   const toggleVisible = () => {
+    if (openCrossDeviceItemId !== id) {
+      bookmarkParts.onEnable();
+    }
+
     setOpenCrossDeviceItemId(
       openCrossDeviceItemId === id ? CrossDeviceItemId.UNSET : id
     );

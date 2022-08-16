@@ -7,4 +7,5 @@ export const mockBookmarkParts: CrossDeviceBookmarkParts = {
   buttonAriaLabel: 'Bookmarks - greatest thing since sliced bread',
   desktop: jest.fn(() => <div>DESKTOP BOOKMARKS CONTENT</div>),
   mobile: jest.fn(() => <div>MOBILE BOOKMARKS CONTENT</div>),
+  onEnable: jest.fn(),
 };
