@@ -4,10 +4,16 @@ import styled from '@emotion/styled';
 import React, { ReactNode, useEffect, useMemo, useRef, useState } from 'react';
 
 import { AppBar } from '../AppBar';
+import {
+  CrossDeviceBookmarkParts,
+  CrossDeviceBookmarksView,
+} from '../Bookmarks/types';
+import { useBookmarkComponentsPair } from '../Bookmarks/useBookmarkComponentsPair';
+import { CrossDeviceStateProps } from '../GlobalHeader/types';
 import { formatUrlWithRedirect } from '../GlobalHeader/urlHelpers';
 import { HeaderHeightArea } from '../HeaderHeightArea';
 import { NotificationsPopover } from '../Notifications/NotificationsPopover';
-import { AppHeaderNotifications } from '../Notifications/types';
+import { AppHeaderNotificationSettings } from '../Notifications/types';
 import { useHeaderNotifications } from '../Notifications/useHeaderNotifications';
 import { AppHeaderCatalogDropdown } from './AppHeaderElements/AppHeaderCatalogDropdown';
 import { AppHeaderDropdown } from './AppHeaderElements/AppHeaderDropdown';
@@ -26,11 +32,12 @@ import { FormattedAppHeaderItems } from './types';
 export type AppHeaderProps = {
   action: AppHeaderClickHandler;
   items: FormattedAppHeaderItems;
-  notifications?: AppHeaderNotifications;
+  notifications?: AppHeaderNotificationSettings;
   redirectParam?: string;
   search: AppHeaderSearch;
   isAnon: boolean;
-};
+  crossDeviceBookmarkParts?: CrossDeviceBookmarkParts;
+} & CrossDeviceStateProps;
 
 export const StyledAppBar = styled(AppBar)(
   css({
@@ -130,6 +137,9 @@ export const mapItemToElement = (
 };
 
 export const AppHeader: React.FC<AppHeaderProps> = ({
+  openCrossDeviceItemId,
+  setOpenCrossDeviceItemId,
+  crossDeviceBookmarkParts,
   action,
   items,
   notifications,
@@ -139,19 +149,30 @@ export const AppHeader: React.FC<AppHeaderProps> = ({
 }) => {
   const menuContainerRef = useRef<HTMLUListElement>(null);
 
-  const [notificationsBell, notificationsView] = useHeaderNotifications(
-    notifications,
-    NotificationsPopover
-  );
+  const [notificationsBell, notificationsView] = useHeaderNotifications({
+    settings: notifications,
+    Renderer: NotificationsPopover,
+    openCrossDeviceItemId,
+    setOpenCrossDeviceItemId,
+  });
   const [searchButton, searchPane] = useHeaderSearch(search);
+
+  const [bookmarksButton, bookmarksContent] = useBookmarkComponentsPair({
+    openCrossDeviceItemId,
+    setOpenCrossDeviceItemId,
+    bookmarkParts: crossDeviceBookmarkParts,
+    view: CrossDeviceBookmarksView.DESKTOP,
+    isAnon,
+  });
 
   const right = useMemo(
     () => [
       searchButton,
       ...(notificationsBell ? [notificationsBell] : []),
+      ...(bookmarksButton ? [bookmarksButton] : []),
       ...items.right,
     ],
-    [searchButton, notificationsBell, items]
+    [searchButton, notificationsBell, bookmarksButton, items]
   );
 
   const itemsCount = [...items.left, ...right].length - 1;
@@ -268,6 +289,7 @@ export const AppHeader: React.FC<AppHeaderProps> = ({
         </StyledMenuBar>
       </StyledAppBar>
       {notificationsView}
+      {bookmarksContent}
       {searchPane}
     </HeaderHeightArea>
   );

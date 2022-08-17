@@ -5,6 +5,7 @@ import userEvent from '@testing-library/user-event';
 import { times } from 'lodash';
 import React from 'react';
 
+import { CrossDeviceItemId } from '../../GlobalHeader/types';
 import { createStubNotification } from '../__fixtures__/stubs';
 import { useHeaderNotifications } from '../useHeaderNotifications';
 
@@ -24,7 +25,7 @@ const settingsProps = {
 const defaultProps = {
   settings: settingsProps,
   Renderer: () => <div>hi!</div>,
-  openCrossDeviceItemId: '',
+  openCrossDeviceItemId: CrossDeviceItemId.UNSET,
   setOpenCrossDeviceItemId: jest.fn(),
 };
 
@@ -77,11 +78,16 @@ describe('useHeaderNotifications', () => {
     expect(mockSetOpenCrossDeviceItemId).toBeCalledTimes(1);
     expect(mockSetOpenCrossDeviceItemId).toBeCalledWith('notifications');
 
-    defaultProps.openCrossDeviceItemId = 'notifications';
-
+    const overriddenDefaultProps = {
+      ...defaultProps,
+      openCrossDeviceItemId: CrossDeviceItemId.NOTIFICATIONS,
+    };
     // simulate React telling the component there was a change to its prop (openCrossDeviceItemId) and therefore trigger a rerender
     const secondRenderOfHook = renderHook(() =>
-      useHeaderNotifications({ ...defaultProps, settings: newSettings })
+      useHeaderNotifications({
+        ...overriddenDefaultProps,
+        settings: newSettings,
+      })
     );
     const paneView = render(
       <MockGamutProvider>

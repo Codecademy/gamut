@@ -1,5 +1,5 @@
 import { Anchor, Logo } from '@codecademy/gamut';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { AppHeaderClickHandler, AppHeaderLogoItem } from '../types';
 
@@ -12,6 +12,26 @@ export const AppHeaderLogo: React.FC<AppHeaderLogoProps> = ({
   action,
   item,
 }) => {
+  const [showMini, setShowMini] = useState(false);
+
+  useEffect(() => {
+    if (!item.checkMini) {
+      return;
+    }
+    const handleResize = () => {
+      const shouldShowMini =
+        window.innerWidth <= 1260 && window.innerWidth >= 1200;
+      // avoid unnecessary setState actions if val doesnt change
+      if (showMini !== shouldShowMini) {
+        setShowMini(shouldShowMini);
+      }
+    };
+    window.addEventListener('resize', handleResize);
+    handleResize();
+    // Remove event listener on cleanup
+    return () => window.removeEventListener('resize', handleResize);
+  }, [item.checkMini, showMini]);
+
   return (
     <Anchor
       variant="interface"
@@ -24,7 +44,9 @@ export const AppHeaderLogo: React.FC<AppHeaderLogoProps> = ({
     >
       <Logo
         color="currentColor"
-        variant={item.pro ? 'pro' : 'default'}
+        variant={
+          item.checkMini && showMini ? 'mini' : item.pro ? 'pro' : 'default'
+        }
         height={27}
         verticalAlign="text-bottom"
       />
