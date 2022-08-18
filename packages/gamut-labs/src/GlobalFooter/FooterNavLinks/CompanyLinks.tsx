@@ -53,6 +53,7 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
           <Anchor
             href="https://discuss.codecademy.com"
             onClick={(event) => onClick({ event, target: 'forums' })}
+            target="_blank"
             variant="interface"
           >
             Forums
@@ -62,6 +63,7 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
           <Anchor
             href="https://discord.com/invite/codecademy"
             onClick={(event) => onClick({ event, target: 'discord' })}
+            target="_blank"
             variant="interface"
           >
             Discord
@@ -71,6 +73,7 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
           <Anchor
             href="https://community.codecademy.com/chapters"
             onClick={(event) => onClick({ event, target: 'chapters' })}
+            target="_blank"
             variant="interface"
           >
             Chapters
@@ -142,6 +145,7 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
             <Anchor
               href="https://shop.codecademy.com"
               onClick={(event) => onClick({ event, target: 'shop' })}
+              target="_blank"
               variant="interface"
             >
               Shop
@@ -276,6 +280,7 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
           <Anchor
             href="https://help.codecademy.com"
             onClick={(event) => onClick({ event, target: 'help' })}
+            target="_blank"
             variant="interface"
           >
             Help Center

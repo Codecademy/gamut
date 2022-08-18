@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [33.1.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@33.1.0...@codecademy/gamut-labs@33.1.1) (2022-08-18)
+
+
+### Bug Fixes
+
+* **GlobalFooter:** open external links in new tab ([f8e00c9](https://github.com/Codecademy/gamut/commit/f8e00c9b247dcc7e7cc88d63911d156a0dcb19e7))
+
+
+
 ## [33.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@33.0.14...@codecademy/gamut-labs@33.1.0) (2022-08-17)
 
 
