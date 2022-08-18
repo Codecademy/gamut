@@ -25,12 +25,14 @@ describe('List', () => {
     const wrappingRow = wrapper.find('RowEl').at(0);
     expect(wrappingRow.prop('variant')).toBe('default');
     expect(wrappingRow.prop('spacing')).toBe('normal');
+    expect(wrappingRow.prop('breakpoint')).toBe('xs');
   });
   it('configures columns with the correct variants', () => {
     const { wrapper } = renderWrapper();
 
     expect(wrapper.find('ColEl').prop('variant')).toBe('default');
     expect(wrapper.find('ColEl').prop('spacing')).toBe('normal');
+    expect(wrapper.find('ColEl').prop('breakpoint')).toBe('xs');
     expect(wrapper.find('ColEl').prop('sticky')).toBe(false);
   });
   it('fixes the row header column when scrollable - but not other columns', () => {
