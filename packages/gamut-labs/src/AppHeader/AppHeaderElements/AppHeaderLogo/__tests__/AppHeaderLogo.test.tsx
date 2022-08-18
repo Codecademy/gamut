@@ -35,6 +35,53 @@ describe('AppHeaderLogo', () => {
     expect(icon.find('title').text()).toContain('Codecademy Logo');
   });
 
+  describe('when item.checkMini is set to true', () => {
+    it('shows mini logo when window width is within 1200-1260 range', () => {
+      global.innerWidth = 1200;
+
+      const wrapper = renderAppHeaderLogo({ pro: true, checkMini: true });
+      const icon = wrapper.find('svg');
+      expect(icon.find('title').text()).toEqual('Codecademy Logo Mini');
+
+      global.innerWidth = 1260;
+
+      const secondWrapper = renderAppHeaderLogo({ pro: true, checkMini: true });
+      const secondIcon = secondWrapper.find('svg');
+      expect(secondIcon.find('title').text()).toEqual('Codecademy Logo Mini');
+    });
+
+    it('does NOT show the mini logo when window width is outside the 1200-1260 range', () => {
+      global.innerWidth = 1199;
+
+      const wrapper = renderAppHeaderLogo({ pro: false, checkMini: true });
+      const icon = wrapper.find('svg');
+      expect(icon.find('title').text()).toEqual('Codecademy Logo');
+
+      global.innerWidth = 1261;
+
+      const secondWrapper = renderAppHeaderLogo({ pro: true, checkMini: true });
+      const secondIcon = secondWrapper.find('svg');
+      expect(secondIcon.find('title').text()).toEqual('Codecademy Pro Logo');
+    });
+  });
+
+  describe('when item.checkMini is not set / false', () => {
+    it('does NOT show the mini logo even if in the 1200-1260 range', () => {
+      global.innerWidth = 1230;
+
+      const wrapper = renderAppHeaderLogo({ pro: false });
+      const icon = wrapper.find('svg');
+      expect(icon.find('title').text()).toEqual('Codecademy Logo');
+
+      const secondWrapper = renderAppHeaderLogo({
+        pro: true,
+        checkMini: false,
+      });
+      const secondIcon = secondWrapper.find('svg');
+      expect(secondIcon.find('title').text()).toEqual('Codecademy Pro Logo');
+    });
+  });
+
   it('shows the pro logo when user has pro subscription', () => {
     const wrapper = renderAppHeaderLogo({ pro: true });
     const icon = wrapper.find('svg');

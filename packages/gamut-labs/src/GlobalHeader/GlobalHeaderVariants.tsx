@@ -178,8 +178,10 @@ export const freeHeaderItems = (
   renderFavorites?: () => ReactNode,
   renderBookmarks?: () => ReactNode
 ): FormattedAppHeaderItems => {
+  const specialLogo = { ...logo, checkMini: true };
+
   const leftItems: AppHeaderItem[] = [
-    logo,
+    specialLogo,
     myHome,
     catalogComponent(user),
     resourcesComponent(user),
@@ -214,7 +216,8 @@ export const freeMobileHeaderItems = (
   hidePricing?: boolean,
   renderBookmarks?: () => ReactNode
 ): FormattedMobileAppHeaderItems => {
-  const leftItems: AppHeaderItem[] = [logo];
+  const specialLogo = { ...logo, checkMini: true };
+  const leftItems: AppHeaderItem[] = [specialLogo];
   const rightItems: AppHeaderItem[] = [];
   const mainMenuItems: AppHeaderItem[] = [
     myHome,

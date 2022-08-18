@@ -3,6 +3,33 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [33.1.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@33.1.0...@codecademy/gamut-labs@33.1.1) (2022-08-18)
+
+
+### Bug Fixes
+
+* **GlobalFooter:** open external links in new tab ([f8e00c9](https://github.com/Codecademy/gamut/commit/f8e00c9b247dcc7e7cc88d63911d156a0dcb19e7))
+
+
+
+## [33.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@33.0.14...@codecademy/gamut-labs@33.1.0) (2022-08-17)
+
+
+### Features
+
+* **MobileBookmarks:** Add support for mobile screen window pane ([6ff2636](https://github.com/Codecademy/gamut/commit/6ff2636675efbaeeb76c7d0f5652cded2299615d))
+
+
+
+### [33.0.14](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@33.0.13...@codecademy/gamut-labs@33.0.14) (2022-08-12)
+
+
+### Bug Fixes
+
+* **AppHeaderCatalogDropdown:** add click handler for subject links ([321f695](https://github.com/Codecademy/gamut/commit/321f6953943393f56254b6aa89c09be514870dcc))
+
+
+
 ### [33.0.13](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@33.0.12...@codecademy/gamut-labs@33.0.13) (2022-08-11)
 
 **Note:** Version bump only for package @codecademy/gamut-labs

@@ -6,7 +6,6 @@ import { NotificationsRendererProps } from './types';
 
 export const NotificationsPopover: React.FC<NotificationsRendererProps> = ({
   bellRef,
-  onClose,
   ...props
 }) => {
   return (
@@ -15,7 +14,6 @@ export const NotificationsPopover: React.FC<NotificationsRendererProps> = ({
       verticalOffset={1}
       outline
       isOpen
-      onRequestClose={onClose}
       targetRef={bellRef}
     >
       <FlexBox bg="white" textAlign="left" width={360}>

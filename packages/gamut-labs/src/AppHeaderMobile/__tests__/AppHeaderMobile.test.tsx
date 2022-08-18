@@ -3,6 +3,7 @@ import { ThemeProvider } from '@emotion/react';
 import { render, screen } from '@testing-library/react';
 import React from 'react';
 
+import { mockBookmarkParts } from '../../Bookmarks/fixtures';
 import { AppHeaderMobile, AppHeaderMobileProps } from '..';
 
 const action = jest.fn();
@@ -24,6 +25,8 @@ const logoProps: AppHeaderMobileProps = {
   },
   onSearch: jest.fn(),
   isAnon: true,
+  openCrossDeviceItemId: '',
+  setOpenCrossDeviceItemId: jest.fn(),
 };
 
 const linkProps: AppHeaderMobileProps = {
@@ -43,6 +46,8 @@ const linkProps: AppHeaderMobileProps = {
   },
   onSearch: jest.fn(),
   isAnon: true,
+  openCrossDeviceItemId: '',
+  setOpenCrossDeviceItemId: jest.fn(),
 };
 
 const mainMenuProps: AppHeaderMobileProps = {
@@ -69,6 +74,13 @@ const mainMenuProps: AppHeaderMobileProps = {
   },
   onSearch: jest.fn(),
   isAnon: true,
+  openCrossDeviceItemId: '',
+  setOpenCrossDeviceItemId: jest.fn(),
+};
+
+const appHeaderMobilePropsWithBookmarkParts: AppHeaderMobileProps = {
+  ...mainMenuProps,
+  crossDeviceBookmarkParts: mockBookmarkParts,
 };
 
 const renderAppHeader = (props: AppHeaderMobileProps) => {
@@ -116,6 +128,38 @@ describe('AppHeaderMobile', () => {
       const closeButton = screen.getByLabelText('close menu');
       closeButton.click();
       expect(screen.queryByTestId('header-mobile-menu')).toBeInTheDocument();
+    });
+  });
+
+  describe('bookmarks', () => {
+    describe('NO crossDeviceBookmarkParts prop provided', () => {
+      it('does NOT render a bookmarks button or content', () => {
+        renderAppHeader({
+          ...appHeaderMobilePropsWithBookmarkParts,
+          crossDeviceBookmarkParts: undefined,
+        });
+        expect(screen.queryByText('IMA BOOKMARKS BUTTON')).toBeNull();
+        expect(screen.queryByText('MOBILE BOOKMARKS CONTENT')).toBeNull();
+      });
+    });
+
+    describe('crossDeviceBookmarkParts prop IS provided', () => {
+      it('renders the button but does NOT render bookmarks content if openCrossDeviceItemId is NOT set to bookmarks', () => {
+        renderAppHeader(appHeaderMobilePropsWithBookmarkParts);
+
+        screen.getByText('IMA BOOKMARKS BUTTON');
+        expect(screen.queryByText('MOBILE BOOKMARKS CONTENT')).toBeNull();
+      });
+
+      it('renders both the button and bookmarks content if openCrossDeviceItemId is set to bookmarks', () => {
+        renderAppHeader({
+          ...appHeaderMobilePropsWithBookmarkParts,
+          openCrossDeviceItemId: 'bookmarks',
+        });
+
+        screen.getByText('IMA BOOKMARKS BUTTON');
+        screen.getByText('MOBILE BOOKMARKS CONTENT');
+      });
     });
   });
 });

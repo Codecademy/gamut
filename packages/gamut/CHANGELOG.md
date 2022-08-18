@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [50.3.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@50.2.0...@codecademy/gamut@50.3.0) (2022-08-17)
+
+
+### Features
+
+* **MobileBookmarks:** Add support for mobile screen window pane ([6ff2636](https://github.com/Codecademy/gamut/commit/6ff2636675efbaeeb76c7d0f5652cded2299615d))
+
+
+
 ## [50.2.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@50.1.4...@codecademy/gamut@50.2.0) (2022-08-11)
 
 

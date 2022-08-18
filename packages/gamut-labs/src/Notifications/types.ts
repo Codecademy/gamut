@@ -8,7 +8,7 @@ export type NotificationActions = {
   track: (target: string) => void;
 };
 
-export type AppHeaderNotifications = {
+export type AppHeaderNotificationSettings = {
   actions: NotificationActions;
   notifications: Notification[];
   onEnable: () => void;
@@ -22,5 +22,4 @@ export type NotificationsContentsProps = {
 
 export type NotificationsRendererProps = NotificationsContentsProps & {
   bellRef: React.RefObject<ButtonBaseElements>;
-  onClose: () => void;
 };
