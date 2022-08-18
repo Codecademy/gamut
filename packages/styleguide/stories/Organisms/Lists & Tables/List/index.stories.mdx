@@ -85,7 +85,7 @@ import { List, ListRow, ListCol } from '@codecademy/gamut';
 
 ## Spacing
 
-Lists come with 2 spacing variants `normal` and `condensed`.
+Lists come with 3 spacing variants `normal`, `condensed`, and `compact`.
 
 ```tsx
 <List spacing="condensed" />
@@ -104,6 +104,14 @@ For mixed content use the normal size to ensure that there is enough space for c
 For a more compact list use the condensed spacing
 
 <Story name="Spacing - Condensed" args={{ spacing: 'condensed' }}>
+  {DemoTemplate.bind({})}
+</Story>
+
+### Compact
+
+For an even more compact list use the compact spacing
+
+<Story name="Spacing - Compact" args={{ spacing: 'compact' }}>
   {DemoTemplate.bind({})}
 </Story>
 
@@ -221,6 +229,8 @@ List rows will switch to a mobile layout at screen widths less than smallest bre
 - `header`: The column of the row with any critical indifying information goes at the top of the view.
 - `control`: A column for buttons or other interactive elements. Typically these may be icon buttons with expandable menus with more options for controlling anything represented in the row.
 - `content`: All other columns in the row are treated as content and will render in order they were specified.
+
+Optionally, you can pass a `breakpoint` prop to the List to alter this behavior.
 
 <GridBox gridTemplateColumns="repeat(2, minmax(0, 479px))" gap={64}>
 
