@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [50.4.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@50.3.0...@codecademy/gamut@50.4.0) (2022-08-19)
+
+
+### Features
+
+* **List:** add breakpoint prop and variants ([67b36cf](https://github.com/Codecademy/gamut/commit/67b36cff375c533e2ad2eb3c124c6daac2f4776f))
+
+
+
 ## [50.3.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@50.2.0...@codecademy/gamut@50.3.0) (2022-08-17)
 
 
