@@ -57,7 +57,12 @@ export const ListRow = forwardRef<HTMLLIElement, ListRowProps>(
     },
     ref
   ) => {
-    const { variant, scrollable, breakpoint, ...rowConfig } = useListContext();
+    const {
+      variant,
+      scrollable,
+      rowBreakpoint,
+      ...rowConfig
+    } = useListContext();
     const wrapperProps = !renderExpanded
       ? rowConfig
       : { spacing: keepSpacingWhileExpanded ? rowConfig.spacing : undefined };
@@ -86,7 +91,7 @@ export const ListRow = forwardRef<HTMLLIElement, ListRowProps>(
         variant={variant}
         expanded={!!renderExpanded}
         scrollable={scrollable}
-        breakpoint={breakpoint}
+        rowBreakpoint={rowBreakpoint}
         {...wrapperProps}
       >
         {content}

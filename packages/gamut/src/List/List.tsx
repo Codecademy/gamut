@@ -37,7 +37,7 @@ export const List = forwardRef<HTMLUListElement, ListProps>(
       id,
       variant = 'default',
       spacing = 'normal',
-      breakpoint = 'xs',
+      rowBreakpoint = 'xs',
       scrollable = false,
       shadow = false,
       height,
@@ -53,7 +53,7 @@ export const List = forwardRef<HTMLUListElement, ListProps>(
     const isEmpty = !children || (isArray(children) && children.length === 0);
     const [isEnd, setIsEnd] = useState(false);
     const showShadow = shadow && scrollable && !isEnd;
-    const value = useList({ variant, spacing, scrollable, breakpoint });
+    const value = useList({ variant, spacing, scrollable, rowBreakpoint });
 
     const topOfTable = useRef<HTMLDivElement>(null);
 

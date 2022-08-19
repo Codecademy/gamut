@@ -111,7 +111,7 @@ const rowVariants = variant({
 });
 
 const rowBreakpointVariants = variant({
-  prop: 'breakpoint',
+  prop: 'rowBreakpoint',
   base: {
     gridAutoRows: 'minmax(1.5rem, max-content)',
     gridTemplateColumns: 'minmax(0, 1fr) max-content',

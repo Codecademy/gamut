@@ -23,7 +23,7 @@ export function useList({
   spacing,
   variant,
   scrollable,
-  breakpoint,
+  rowBreakpoint,
 }: PrivateListProps) {
   const {
     depth = 0,
@@ -39,9 +39,9 @@ export function useList({
       scrollable,
       variant: activeVariant,
       spacing: activeSpacing,
-      breakpoint,
+      rowBreakpoint,
       depth: depth + 1,
     }),
-    [scrollable, activeVariant, activeSpacing, depth, breakpoint]
+    [scrollable, activeVariant, activeSpacing, depth, rowBreakpoint]
   );
 }
