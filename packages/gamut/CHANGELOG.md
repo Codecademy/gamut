@@ -3,6 +3,49 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [50.4.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@50.4.1...@codecademy/gamut@50.4.2) (2022-08-22)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [50.4.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@50.4.0...@codecademy/gamut@50.4.1) (2022-08-19)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [50.4.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@50.3.0...@codecademy/gamut@50.4.0) (2022-08-19)
+
+
+### Features
+
+* **List:** add breakpoint prop and variants ([67b36cf](https://github.com/Codecademy/gamut/commit/67b36cff375c533e2ad2eb3c124c6daac2f4776f))
+
+
+
+## [50.3.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@50.2.0...@codecademy/gamut@50.3.0) (2022-08-17)
+
+
+### Features
+
+* **MobileBookmarks:** Add support for mobile screen window pane ([6ff2636](https://github.com/Codecademy/gamut/commit/6ff2636675efbaeeb76c7d0f5652cded2299615d))
+
+
+
+## [50.2.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@50.1.4...@codecademy/gamut@50.2.0) (2022-08-11)
+
+
+### Features
+
+* **ConnectedForm:** forward ref to html form element in ConnectedForm and Form ([e90150f](https://github.com/Codecademy/gamut/commit/e90150f19732bdf71bf6c8997319e7257448b5ff))
+
+
+
 ### [50.1.4](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@50.1.3...@codecademy/gamut@50.1.4) (2022-08-10)
 
 

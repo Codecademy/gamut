@@ -30,7 +30,7 @@ export const editorColors = {
   green: '#b4d353',
   orange: '#ff8973',
   purple: '#b3ccff',
-  red: '#e85d7f',
+  red: '#ea6c8b',
   yellow: '#ffe083',
 } as const;
 

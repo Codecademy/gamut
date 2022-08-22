@@ -3,6 +3,46 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [0.6.75](https://github.com/Codecademy/gamut/packages/monaco/compare/@codecademy/monaco@0.6.74...@codecademy/monaco@0.6.75) (2022-08-22)
+
+**Note:** Version bump only for package @codecademy/monaco
+
+
+
+
+
+### [0.6.74](https://github.com/Codecademy/gamut/packages/monaco/compare/@codecademy/monaco@0.6.73...@codecademy/monaco@0.6.74) (2022-08-19)
+
+**Note:** Version bump only for package @codecademy/monaco
+
+
+
+
+
+### [0.6.73](https://github.com/Codecademy/gamut/packages/monaco/compare/@codecademy/monaco@0.6.72...@codecademy/monaco@0.6.73) (2022-08-19)
+
+**Note:** Version bump only for package @codecademy/monaco
+
+
+
+
+
+### [0.6.72](https://github.com/Codecademy/gamut/packages/monaco/compare/@codecademy/monaco@0.6.71...@codecademy/monaco@0.6.72) (2022-08-17)
+
+**Note:** Version bump only for package @codecademy/monaco
+
+
+
+
+
+### [0.6.71](https://github.com/Codecademy/gamut/packages/monaco/compare/@codecademy/monaco@0.6.70...@codecademy/monaco@0.6.71) (2022-08-11)
+
+**Note:** Version bump only for package @codecademy/monaco
+
+
+
+
+
 ### [0.6.70](https://github.com/Codecademy/gamut/packages/monaco/compare/@codecademy/monaco@0.6.69...@codecademy/monaco@0.6.70) (2022-08-10)
 
 **Note:** Version bump only for package @codecademy/monaco

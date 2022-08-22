@@ -31,6 +31,7 @@ type AppHeaderBaseHrefItem<Type extends string> = AppHeaderBaseItem<Type> & {
 
 export type AppHeaderLogoItem = AppHeaderBaseHrefItem<'logo'> & {
   pro: boolean;
+  checkMini?: boolean;
 };
 
 export type AppHeaderLinkItem = AppHeaderBaseHrefItem<'link'> & {

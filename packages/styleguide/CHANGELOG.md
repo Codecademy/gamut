@@ -3,6 +3,63 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [61.2.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@61.2.1...@codecademy/styleguide@61.2.2) (2022-08-22)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [61.2.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@61.2.0...@codecademy/styleguide@61.2.1) (2022-08-19)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [61.2.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@61.1.10...@codecademy/styleguide@61.2.0) (2022-08-19)
+
+
+### Features
+
+* **List:** add breakpoint prop and variants ([67b36cf](https://github.com/Codecademy/gamut/commit/67b36cff375c533e2ad2eb3c124c6daac2f4776f))
+
+
+
+### [61.1.10](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@61.1.9...@codecademy/styleguide@61.1.10) (2022-08-18)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [61.1.9](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@61.1.8...@codecademy/styleguide@61.1.9) (2022-08-17)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [61.1.8](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@61.1.7...@codecademy/styleguide@61.1.8) (2022-08-12)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [61.1.7](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@61.1.6...@codecademy/styleguide@61.1.7) (2022-08-11)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
 ### [61.1.6](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@61.1.5...@codecademy/styleguide@61.1.6) (2022-08-10)
 
 **Note:** Version bump only for package @codecademy/styleguide

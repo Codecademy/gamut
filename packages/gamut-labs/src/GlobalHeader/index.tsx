@@ -1,6 +1,6 @@
 import { Box } from '@codecademy/gamut';
 import { useTheme } from '@emotion/react';
-import React, { useCallback } from 'react';
+import React, { useCallback, useState } from 'react';
 
 import { AppHeader, AppHeaderMobile } from '..';
 import {
@@ -27,7 +27,13 @@ import {
   proHeaderItems,
   proMobileHeaderItems,
 } from './GlobalHeaderVariants';
-import { AnonHeader, FreeHeader, LoadingHeader, ProHeader } from './types';
+import {
+  AnonHeader,
+  CrossDeviceItemId,
+  FreeHeader,
+  LoadingHeader,
+  ProHeader,
+} from './types';
 
 export type GlobalHeaderProps =
   | AnonHeader
@@ -140,6 +146,13 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
     [action, onLinkAction]
   );
 
+  // manages global toggle state for items (only 1 open at a time)
+  const [openCrossDeviceItemId, setOpenCrossDeviceItemId] = useState(
+    CrossDeviceItemId.UNSET
+  );
+
+  const { crossDeviceBookmarkParts } = props;
+
   return (
     <Box as="header" position="sticky" top={0} zIndex={theme.elements.headerZ}>
       <AppHeader
@@ -156,6 +169,9 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
               notifications: props.notifications,
             })}
         isAnon={props.type === 'anon'}
+        openCrossDeviceItemId={openCrossDeviceItemId}
+        setOpenCrossDeviceItemId={setOpenCrossDeviceItemId}
+        crossDeviceBookmarkParts={crossDeviceBookmarkParts}
       />
       <AppHeaderMobile
         action={combinedAction}
@@ -168,6 +184,9 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
         onSearch={props.search.onSearch}
         redirectParam={props.type === 'anon' ? props.redirectParam : undefined}
         isAnon={props.type === 'anon'}
+        openCrossDeviceItemId={openCrossDeviceItemId}
+        setOpenCrossDeviceItemId={setOpenCrossDeviceItemId}
+        crossDeviceBookmarkParts={crossDeviceBookmarkParts}
       />
       {props.children}
     </Box>
