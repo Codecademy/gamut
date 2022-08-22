@@ -249,8 +249,12 @@ export const useGetInitialFormValue = ({
   }, [initialValue, setLocalValue]);
 };
 
+export const USE_DEBOUNCED_FIELD_DIRTY_KEY = '';
+
 /**
  * @remarks
+ * see https://github.com/react-hook-form/react-hook-form/discussions/4522
+ *
  * This fn is used to solve a purely UX issue rather than a functional one:
  * Imagine a user who begins typing in an input but notices that the
  * dirty state on the form hasn't changed (maybe a "Save" button doesn't light up).
@@ -263,15 +267,23 @@ export const useGetInitialFormValue = ({
  *
  * This is very hacky, but in our testing we couldn't find any problems with it.
  */
-export const useMakeSetFormDirty = () => {
+const useMakeSetFormDirty = (shouldDirtyOnChange = true, resetKey = '') => {
   const hasDirtiedRef = useRef(false);
 
-  const { isDirty, setValue } = useFormState();
+  const { isDirty, setValue, watch } = useFormState();
+
+  const resetVal = watch(resetKey);
+
+  useEffect(() => {
+    hasDirtiedRef.current = false;
+  }, [resetVal]);
 
   return () => {
     if (!isDirty && !hasDirtiedRef.current) {
       hasDirtiedRef.current = true;
-      setValue('', '', { shouldDirty: true });
+      if (shouldDirtyOnChange) {
+        setValue(USE_DEBOUNCED_FIELD_DIRTY_KEY, '', { shouldDirty: true });
+      }
     }
   };
 };
@@ -323,6 +335,7 @@ type DebouncedFieldProps<T extends InputTypes> = Omit<
 > &
   Pick<useFieldProps, 'loading' | 'disabled' | 'name'> & {
     type: T;
+    shouldDirtyOnChange?: boolean;
   };
 
 export function useDebouncedField<T extends InputTypes>({
@@ -331,6 +344,7 @@ export function useDebouncedField<T extends InputTypes>({
   disabled,
   loading,
   type,
+  shouldDirtyOnChange,
 }: DebouncedFieldProps<T>) {
   const useFieldPayload = useField({ name, disabled, loading });
 
@@ -345,7 +359,10 @@ export function useDebouncedField<T extends InputTypes>({
     watchUpdateKeyName,
   });
 
-  const setFormDirty = useMakeSetFormDirty();
+  const setFormDirty = useMakeSetFormDirty(
+    shouldDirtyOnChange,
+    watchUpdateKeyName
+  );
 
   const onChange: ChangeEventHandler<
     HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
