@@ -39,6 +39,12 @@ export const useBookmarkComponentsPair = ({
     );
   };
 
+  // const keyUpHandler = (evt: KeyboardEvent) => {
+  //   if (evt.key === 'Escape') {
+  //     setOpenCrossDeviceItemId(CrossDeviceItemId.UNSET);
+  //   };
+  // };
+
   return [
     {
       id,
@@ -68,6 +74,8 @@ export const useBookmarkComponentsPair = ({
           outline
           isOpen
           targetRef={buttonRef}
+          onRequestClose={toggleVisible}
+          // onKeyUp={keyUpHandler}
         >
           <>{bookmarkParts.desktop()}</>
         </Popover>
