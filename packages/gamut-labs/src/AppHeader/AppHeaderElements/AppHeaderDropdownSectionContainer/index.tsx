@@ -40,16 +40,10 @@ export const KEY_CODES = {
 
 export const AppHeaderDropdownSectionContainer: React.FC<AppHeaderDropdownSectionContainerProps> = ({
   action,
-<<<<<<< HEAD
-  // dataFocusable,
-  item,
-  itemsCount,
-=======
   dataFocusable,
   item,
   itemsCount,
   children,
->>>>>>> b42cfdb08 (refactor-app-header-dropdown)
   styles,
 }) => {
   const { text, dataTestId } = item;
@@ -78,13 +72,6 @@ export const AppHeaderDropdownSectionContainer: React.FC<AppHeaderDropdownSectio
     }
   };
 
-<<<<<<< HEAD
-  const getNode = useCallback((index: number) => {
-    return containerRef.current?.querySelectorAll<HTMLElement>(
-      '[data-focusablecatalog=true]'
-    )[index];
-  }, []);
-=======
   const getNode = useCallback(
     (index: number) => {
       return containerRef.current?.querySelectorAll<HTMLElement>(dataFocusable)[
@@ -93,7 +80,6 @@ export const AppHeaderDropdownSectionContainer: React.FC<AppHeaderDropdownSectio
     },
     [dataFocusable]
   );
->>>>>>> b42cfdb08 (refactor-app-header-dropdown)
 
   const buttonHandleKeyEvents = (event: React.KeyboardEvent) => {
     switch (event.key) {
@@ -244,6 +230,14 @@ export const AppHeaderDropdownSectionContainer: React.FC<AppHeaderDropdownSectio
           onKeyDown={menuHandleKeyEvents}
           onClick={() => setIsOpen(false)}
         >
+          <>
+            {React.Children.map(children, (child) => {
+              if (React.isValidElement(child)) {
+                return React.cloneElement(child, { isOpen });
+              }
+              return child;
+            })}
+          </>
         </LayoutGridAntiAliased>
       </StyledDropdown>
     </>
