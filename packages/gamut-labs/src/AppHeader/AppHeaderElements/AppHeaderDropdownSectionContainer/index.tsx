@@ -7,11 +7,16 @@ import {
   StyledDropdown,
   StyledText,
 } from '../../shared';
-import { AppHeaderClickHandler, AppHeaderDropdownItem } from '../types';
+import { AppHeaderCatalogSection } from '../AppHeaderCatalogSection';
+import {
+  AppHeaderCatalogDropdownItem,
+  AppHeaderClickHandler,
+  AppHeaderResourcesDropdownItem,
+} from '../types';
 
 export type AppHeaderDropdownSectionContainerProps = {
   action: AppHeaderClickHandler;
-  item: AppHeaderDropdownItem;
+  item: AppHeaderResourcesDropdownItem | AppHeaderCatalogDropdownItem;
   itemsCount: number;
   styles: {};
   dataFocusable: string;
@@ -30,12 +35,11 @@ export const KEY_CODES = {
   TAB: 'Tab',
 } as const;
 
-export const AppHeaderDropdownMenu: React.FC<AppHeaderDropdownSectionContainerProps> = ({
+export const AppHeaderDropdownSectionContainer: React.FC<AppHeaderDropdownSectionContainerProps> = ({
   action,
-  dataFocusable,
+  // dataFocusable,
   item,
   itemsCount,
-  children,
   styles,
 }) => {
   const { text, dataTestId } = item;
@@ -64,14 +68,11 @@ export const AppHeaderDropdownMenu: React.FC<AppHeaderDropdownSectionContainerPr
     }
   };
 
-  const getNode = useCallback(
-    (index: number) => {
-      return containerRef.current?.querySelectorAll<HTMLElement>(dataFocusable)[
-        index
-      ];
-    },
-    [dataFocusable]
-  );
+  const getNode = useCallback((index: number) => {
+    return containerRef.current?.querySelectorAll<HTMLElement>(
+      '[data-focusablecatalog=true]'
+    )[index];
+  }, []);
 
   const buttonHandleKeyEvents = (event: React.KeyboardEvent) => {
     switch (event.key) {
@@ -222,14 +223,12 @@ export const AppHeaderDropdownMenu: React.FC<AppHeaderDropdownSectionContainerPr
           onKeyDown={menuHandleKeyEvents}
           onClick={() => setIsOpen(false)}
         >
-          <>
-            {React.Children.map(children, (child) => {
-              if (React.isValidElement(child)) {
-                return React.cloneElement(child, { isOpen });
-              }
-              return child;
-            })}
-          </>
+          <AppHeaderCatalogSection
+            action={action}
+            item={item}
+            role="menu"
+            id={`menu-container${item.text}`}
+          />
         </LayoutGridAntiAliased>
       </StyledDropdown>
     </>

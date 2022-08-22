@@ -4,31 +4,28 @@ import { css } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React from 'react';
 
-import { AppHeaderCatalogDropdownProps } from '../../AppHeader/AppHeaderElements/AppHeaderCatalogDropdown';
 import { AppHeaderCatalogSection } from '../../AppHeader/AppHeaderElements/AppHeaderCatalogSection';
 import { AppHeaderDropdownProps } from '../../AppHeader/AppHeaderElements/AppHeaderDropdown';
 import { AppHeaderLinkSections } from '../../AppHeader/AppHeaderElements/AppHeaderLinkSections';
 import { AppHeaderListItem } from '../../AppHeader/AppHeaderElements/AppHeaderListItem';
-import { AppHeaderResourceDropdownProps } from '../../AppHeader/AppHeaderElements/AppHeaderResourcesDropdown';
 import { AppHeaderResourcesSection } from '../../AppHeader/AppHeaderElements/AppHeaderResourcesSection';
 import {
   AppHeaderCatalogDropdownItem,
   AppHeaderClickHandler,
   AppHeaderDropdownItem,
+  AppHeaderDropdownItemProps,
   AppHeaderResourcesDropdownItem,
 } from '../../AppHeader/AppHeaderElements/types';
 
 export type AppHeaderSubMenuMobileProps = (
   | AppHeaderDropdownProps
-  | AppHeaderCatalogDropdownProps
-  | AppHeaderResourceDropdownProps
+  | AppHeaderDropdownItemProps
 ) & {
   handleCloseSubMenu: () => void;
   handleCloseMainMenu: () => void;
 };
 
 type AppHeaderSectionItem =
-  | AppHeaderDropdownItem
   | AppHeaderCatalogDropdownItem
   | AppHeaderResourcesDropdownItem;
 
@@ -43,7 +40,7 @@ const StyledAnchor = styled(Anchor)(
 );
 
 const renderHeaderSection = (
-  item: AppHeaderSectionItem,
+  item: AppHeaderSectionItem | AppHeaderDropdownItem,
   action: AppHeaderClickHandler,
   handleCloseMainMenu: () => void
 ) => {

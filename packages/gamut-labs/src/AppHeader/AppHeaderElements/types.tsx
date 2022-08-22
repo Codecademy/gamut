@@ -52,9 +52,7 @@ export type AppHeaderFillButtonItem = AppHeaderBaseHrefItem<'fill-button'> & {
 
 export type AppHeaderDropdownItem =
   | AppHeaderSimpleDropdownItem
-  | AppHeaderProfileDropdownItem
-  | AppHeaderCatalogDropdownItem
-  | AppHeaderResourcesDropdownItem;
+  | AppHeaderProfileDropdownItem;
 
 export type AppHeaderSimpleDropdownItem = AppHeaderBaseItem<'dropdown'> & {
   icon?: React.ComponentType<GamutIconProps>;
@@ -107,4 +105,10 @@ export type AppHeaderResourcesDataItem = {
   description?: string;
   link?: AppHeaderLinkItem;
   data: (AppHeaderLinkItem | AppHeaderDescriptiveLinkItem)[];
+};
+
+export type AppHeaderDropdownItemProps = {
+  action: AppHeaderClickHandler;
+  item: AppHeaderCatalogDropdownItem;
+  isAnon: boolean;
 };

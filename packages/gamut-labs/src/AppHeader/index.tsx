@@ -19,13 +19,14 @@ import { AppHeaderNotificationSettings } from '../Notifications/types';
 import { useHeaderNotifications } from '../Notifications/useHeaderNotifications';
 import { AppHeaderCatalogSection } from './AppHeaderElements/AppHeaderCatalogSection';
 import { AppHeaderDropdown } from './AppHeaderElements/AppHeaderDropdown';
-import { AppHeaderDropdownMenu } from './AppHeaderElements/AppHeaderDropdownSectionContainer';
+import { AppHeaderDropdownSectionContainer } from './AppHeaderElements/AppHeaderDropdownSectionContainer';
 import { AppHeaderLink } from './AppHeaderElements/AppHeaderLink';
 import { AppHeaderListItem } from './AppHeaderElements/AppHeaderListItem';
 import { AppHeaderLogo } from './AppHeaderElements/AppHeaderLogo';
 import { AppHeaderResourcesSection } from './AppHeaderElements/AppHeaderResourcesSection';
 import {
   AppHeaderClickHandler,
+  AppHeaderDropdownItem,
   AppHeaderItem,
 } from './AppHeaderElements/types';
 import { AppHeaderSearch, useHeaderSearch } from './Search/useHeaderSearch';
@@ -70,7 +71,7 @@ const KEY_CODES = {
 
 export const mapItemToElement = (
   action: AppHeaderClickHandler,
-  item: AppHeaderItem,
+  item: AppHeaderItem | AppHeaderDropdownItem,
   isAnon: boolean,
   redirectParam?: string,
   onKeyDown?: (event: React.KeyboardEvent) => void,
@@ -89,7 +90,7 @@ export const mapItemToElement = (
     case 'catalog-dropdown':
       const catalogItemCount = languageAndSubjectCount(item);
       return (
-        <AppHeaderDropdownMenu
+        <AppHeaderDropdownSectionContainer
           action={action}
           item={item}
           dataFocusable="[data-focusablecatalog=true]"
@@ -106,11 +107,11 @@ export const mapItemToElement = (
             role="menu"
             id={`menu-container${item.text}`}
           />
-        </AppHeaderDropdownMenu>
+        </AppHeaderDropdownSectionContainer>
       );
     case 'experimental-resources-dropdown':
       return (
-        <AppHeaderDropdownMenu
+        <AppHeaderDropdownSectionContainer
           action={action}
           item={item}
           dataFocusable="[data-focusableresource=true]"
@@ -126,7 +127,7 @@ export const mapItemToElement = (
             role="menu"
             id={`menu-container${item.text}`}
           />
-        </AppHeaderDropdownMenu>
+        </AppHeaderDropdownSectionContainer>
       );
     case 'render-element':
       return item.renderElement();
