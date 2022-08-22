@@ -12,15 +12,18 @@ import { useBookmarkComponentsPair } from '../Bookmarks/useBookmarkComponentsPai
 import { CrossDeviceStateProps } from '../GlobalHeader/types';
 import { formatUrlWithRedirect } from '../GlobalHeader/urlHelpers';
 import { HeaderHeightArea } from '../HeaderHeightArea';
+import { languageAndSubjectCount } from '../lib/catalogList';
+import { resourcesItemCount } from '../lib/resourcesList';
 import { NotificationsPopover } from '../Notifications/NotificationsPopover';
 import { AppHeaderNotificationSettings } from '../Notifications/types';
 import { useHeaderNotifications } from '../Notifications/useHeaderNotifications';
-import { AppHeaderCatalogDropdown } from './AppHeaderElements/AppHeaderCatalogDropdown';
+import { AppHeaderCatalogSection } from './AppHeaderElements/AppHeaderCatalogSection';
 import { AppHeaderDropdown } from './AppHeaderElements/AppHeaderDropdown';
+import { AppHeaderDropdownMenu } from './AppHeaderElements/AppHeaderDropdownMenu';
 import { AppHeaderLink } from './AppHeaderElements/AppHeaderLink';
 import { AppHeaderListItem } from './AppHeaderElements/AppHeaderListItem';
 import { AppHeaderLogo } from './AppHeaderElements/AppHeaderLogo';
-import { AppHeaderResourcesDropdown } from './AppHeaderElements/AppHeaderResourcesDropdown';
+import { AppHeaderResourcesSection } from './AppHeaderElements/AppHeaderResourcesSection';
 import {
   AppHeaderClickHandler,
   AppHeaderItem,
@@ -84,16 +87,46 @@ export const mapItemToElement = (
         <AppHeaderDropdown onKeyDown={onKeyDown} action={action} item={item} />
       );
     case 'catalog-dropdown':
+      const catalogItemCount = languageAndSubjectCount(item);
       return (
-        <AppHeaderCatalogDropdown action={action} item={item} isAnon={isAnon} />
+        <AppHeaderDropdownMenu
+          action={action}
+          item={item}
+          dataFocusable="[data-focusablecatalog=true]"
+          itemsCount={catalogItemCount}
+          styles={{
+            top: '3.5rem',
+            minWidth: '64rem',
+            left: isAnon ? '-9rem' : '-14rem',
+          }}
+        >
+          <AppHeaderCatalogSection
+            action={action}
+            item={item}
+            role="menu"
+            id={`menu-container${item.text}`}
+          />
+        </AppHeaderDropdownMenu>
       );
     case 'experimental-resources-dropdown':
       return (
-        <AppHeaderResourcesDropdown
+        <AppHeaderDropdownMenu
           action={action}
           item={item}
-          isAnon={isAnon}
-        />
+          dataFocusable="[data-focusableresource=true]"
+          itemsCount={resourcesItemCount}
+          styles={{
+            top: '3.5rem',
+            minWidth: '64rem',
+            left: isAnon ? '-14.5rem' : '-19.5rem',
+          }}
+        >
+          <AppHeaderResourcesSection
+            action={action}
+            role="menu"
+            id={`menu-container${item.text}`}
+          />
+        </AppHeaderDropdownMenu>
       );
     case 'render-element':
       return item.renderElement();

@@ -235,7 +235,6 @@ export const AppHeaderCatalogDropdown: React.FC<AppHeaderCatalogDropdownProps> =
           item={item}
           role="menu"
           ref={containerRef}
-          keyDownEvents={menuHandleKeyEvents}
           id={`menu-container${item.text}`}
           isOpen={isOpen}
           handleClose={() => setIsOpen(false)}

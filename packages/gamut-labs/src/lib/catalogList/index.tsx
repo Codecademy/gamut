@@ -1,4 +1,8 @@
-import { AppHeaderLinkItem } from '../../AppHeader/AppHeaderElements/types';
+import {
+  AppHeaderCatalogDropdownItem,
+  AppHeaderLinkItem,
+  AppHeaderResourcesDropdownItem,
+} from '../../AppHeader/AppHeaderElements/types';
 
 export const careerPaths: AppHeaderLinkItem[] = [
   {
@@ -176,3 +180,12 @@ export const topSubjects: AppHeaderLinkItem[] = [
     type: 'link',
   },
 ];
+
+export const languageAndSubjectCount = (
+  item: AppHeaderCatalogDropdownItem | AppHeaderResourcesDropdownItem
+) => {
+  const languageAndSubjectCount = topLanguages.length + topSubjects.length + 4; // extra two for hard coded headers
+  return item.hideCareerPaths
+    ? languageAndSubjectCount
+    : languageAndSubjectCount + careerPaths.length;
+};

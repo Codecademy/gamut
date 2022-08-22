@@ -222,7 +222,6 @@ export const AppHeaderResourcesDropdown: React.FC<AppHeaderResourceDropdownProps
           action={action}
           role="menu"
           ref={containerRef}
-          keyDownEvents={menuHandleKeyEvents}
           id={`menu-container${item.text}`}
           isOpen={isOpen}
           handleClose={() => setIsOpen(false)}

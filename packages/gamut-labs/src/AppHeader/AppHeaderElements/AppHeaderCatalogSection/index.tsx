@@ -16,20 +16,18 @@ import {
   topLanguages,
   topSubjects,
 } from '../../../lib/catalogList';
-import { LayoutGridAntiAliased } from '../../shared';
 import {
-  AppHeaderCatalogDropdownItem,
   AppHeaderClickHandler,
   AppHeaderItem,
+  AppHeaderSimpleDropdownItem,
 } from '../types';
 
 export type AppHeaderCatalogSectionProps = {
   action: AppHeaderClickHandler;
-  item: AppHeaderCatalogDropdownItem;
+  item: AppHeaderSimpleDropdownItem;
   ref?: React.RefObject<HTMLUListElement>;
   role?: string;
   id?: string;
-  keyDownEvents?: (event: React.KeyboardEvent) => void;
   isOpen?: boolean;
   handleClose?: () => void;
 };
@@ -97,14 +95,13 @@ const responsiveGridTemplate = `'languageHeader'
 export const AppHeaderCatalogSection = React.forwardRef<
   HTMLDivElement,
   AppHeaderCatalogSectionProps
->(({ action, item, isOpen, keyDownEvents, handleClose }, ref) => {
+>(({ action, item, isOpen, handleClose }, ref) => {
   const tabIndex = isOpen === false ? -1 : 0;
 
   const onClick = (
     event: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
     linkItem: AppHeaderItem
   ) => {
-    handleClose?.();
     return action(event, linkItem);
   };
 
@@ -142,7 +139,7 @@ export const AppHeaderCatalogSection = React.forwardRef<
   );
 
   return (
-    <LayoutGridAntiAliased onKeyDown={keyDownEvents} ref={ref} as="ul" p={0}>
+    <>
       {!item.hideCareerPaths && (
         <StyledColumn size={12} key="Top career paths" as="li">
           <LayoutGrid>
@@ -283,6 +280,6 @@ export const AppHeaderCatalogSection = React.forwardRef<
           </Anchor>
         </Box>
       </StyledResponsiveColumn>
-    </LayoutGridAntiAliased>
+    </>
   );
 });

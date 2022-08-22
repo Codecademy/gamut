@@ -4,7 +4,6 @@ import styled from '@emotion/styled';
 import React from 'react';
 
 import { newHeaderResourcesList } from '../../../lib/resourcesList';
-import { LayoutGridAntiAliased } from '../../shared';
 import { AppHeaderClickHandler, AppHeaderLinkItem } from '../types';
 
 export type AppHeaderResourcesSectionProps = {
@@ -27,7 +26,7 @@ const StyledColumn = styled(Column)(
 export const AppHeaderResourcesSection = React.forwardRef<
   HTMLDivElement,
   AppHeaderResourcesSectionProps
->(({ action, isOpen, keyDownEvents, handleClose }, ref) => {
+>(({ action, isOpen, keyDownEvents, handleClose }) => {
   const tabIndex = isOpen === false ? -1 : 0;
 
   const onClick = (
@@ -57,7 +56,7 @@ export const AppHeaderResourcesSection = React.forwardRef<
   );
 
   return (
-    <LayoutGridAntiAliased onKeyDown={keyDownEvents} ref={ref} as="ul" p={0}>
+    <>
       {newHeaderResourcesList.map((section) => (
         <StyledColumn size={12} key={section.title} as="li">
           <LayoutGrid>
@@ -136,6 +135,6 @@ export const AppHeaderResourcesSection = React.forwardRef<
           </LayoutGrid>
         </StyledColumn>
       ))}
-    </LayoutGridAntiAliased>
+    </>
   );
 });

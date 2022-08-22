@@ -311,3 +311,8 @@ export const newHeaderResourcesList: AppHeaderResourcesDataItem[] = [
     ],
   },
 ];
+
+export const resourcesItemCount =
+  newHeaderResourcesList
+    .map((item) => item.data.length)
+    .reduce((prevLength, currLength) => prevLength + currLength) + 4; // extra for hardcoded headers and descriptions
