@@ -19,7 +19,7 @@ import { AppHeaderNotificationSettings } from '../Notifications/types';
 import { useHeaderNotifications } from '../Notifications/useHeaderNotifications';
 import { AppHeaderCatalogSection } from './AppHeaderElements/AppHeaderCatalogSection';
 import { AppHeaderDropdown } from './AppHeaderElements/AppHeaderDropdown';
-import { AppHeaderDropdownMenu } from './AppHeaderElements/AppHeaderDropdownMenu';
+import { AppHeaderDropdownMenu } from './AppHeaderElements/AppHeaderDropdownSectionContainer';
 import { AppHeaderLink } from './AppHeaderElements/AppHeaderLink';
 import { AppHeaderListItem } from './AppHeaderElements/AppHeaderListItem';
 import { AppHeaderLogo } from './AppHeaderElements/AppHeaderLogo';

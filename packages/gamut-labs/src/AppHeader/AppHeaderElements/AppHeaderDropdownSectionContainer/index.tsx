@@ -1,29 +1,20 @@
-import React, {
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 
-import {
-  careerPaths,
-  topLanguages,
-  topSubjects,
-} from '../../../lib/catalogList';
 import {
   DropdownAnchor,
   DropdownIcon,
+  LayoutGridAntiAliased,
   StyledDropdown,
   StyledText,
 } from '../../shared';
-import { AppHeaderCatalogSection } from '../AppHeaderCatalogSection';
-import { AppHeaderCatalogDropdownItem, AppHeaderClickHandler } from '../types';
+import { AppHeaderClickHandler, AppHeaderDropdownItem } from '../types';
 
-export type AppHeaderCatalogDropdownProps = {
+export type AppHeaderDropdownSectionContainerProps = {
   action: AppHeaderClickHandler;
-  item: AppHeaderCatalogDropdownItem;
-  isAnon: boolean;
+  item: AppHeaderDropdownItem;
+  itemsCount: number;
+  styles: {};
+  dataFocusable: string;
 };
 
 export const KEY_CODES = {
@@ -39,10 +30,13 @@ export const KEY_CODES = {
   TAB: 'Tab',
 } as const;
 
-export const AppHeaderCatalogDropdown: React.FC<AppHeaderCatalogDropdownProps> = ({
+export const AppHeaderDropdownMenu: React.FC<AppHeaderDropdownSectionContainerProps> = ({
   action,
+  dataFocusable,
   item,
-  isAnon,
+  itemsCount,
+  children,
+  styles,
 }) => {
   const { text, dataTestId } = item;
   const containerRef = useRef<HTMLDivElement | null>(null);
@@ -53,14 +47,6 @@ export const AppHeaderCatalogDropdown: React.FC<AppHeaderCatalogDropdownProps> =
 
   const focusFirstItem = () => setFocusIndex(0);
   const focusLastItem = () => setFocusIndex(itemsCount);
-
-  const itemsCount = useMemo(() => {
-    const languageAndSubjectCount =
-      topLanguages.length + topSubjects.length + 4; // extra two for hard coded headers
-    return item.hideCareerPaths
-      ? languageAndSubjectCount
-      : languageAndSubjectCount + careerPaths.length;
-  }, [item]);
 
   const focusNextItem = () => {
     if (focusIndex === itemsCount) {
@@ -78,11 +64,14 @@ export const AppHeaderCatalogDropdown: React.FC<AppHeaderCatalogDropdownProps> =
     }
   };
 
-  const getNode = (index: number) => {
-    return containerRef.current?.querySelectorAll<HTMLElement>(
-      '[data-focusablecatalog=true]'
-    )[index];
-  };
+  const getNode = useCallback(
+    (index: number) => {
+      return containerRef.current?.querySelectorAll<HTMLElement>(dataFocusable)[
+        index
+      ];
+    },
+    [dataFocusable]
+  );
 
   const buttonHandleKeyEvents = (event: React.KeyboardEvent) => {
     switch (event.key) {
@@ -168,7 +157,7 @@ export const AppHeaderCatalogDropdown: React.FC<AppHeaderCatalogDropdownProps> =
         }
       }
     }
-  }, [focusIndex, isOpen, itemsCount]);
+  }, [focusIndex, isOpen, itemsCount, getNode]);
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent | Event) {
@@ -216,11 +205,7 @@ export const AppHeaderCatalogDropdown: React.FC<AppHeaderCatalogDropdownProps> =
         <DropdownIcon aria-label="dropdown" open={isOpen} size={12} />
       </DropdownAnchor>
       <StyledDropdown
-        style={{
-          top: '3.5rem',
-          minWidth: '64rem',
-          left: isAnon ? '-9rem' : '-14rem',
-        }}
+        style={styles}
         initial={{ borderWidth: 0, height: 0 }}
         animate={{
           borderWidth: isOpen ? 1 : 0,
@@ -228,17 +213,24 @@ export const AppHeaderCatalogDropdown: React.FC<AppHeaderCatalogDropdownProps> =
         }}
         transition={{ duration: 0.175 }}
         aria-hidden={!isOpen}
-        data-testid="catalog-menu-dropdown"
+        data-testid={dataTestId}
       >
-        <AppHeaderCatalogSection
-          action={action}
-          item={item}
-          role="menu"
+        <LayoutGridAntiAliased
           ref={containerRef}
-          id={`menu-container${item.text}`}
-          isOpen={isOpen}
-          handleClose={() => setIsOpen(false)}
-        />
+          as="ul"
+          p={0}
+          onKeyDown={menuHandleKeyEvents}
+          onClick={() => setIsOpen(false)}
+        >
+          <>
+            {React.Children.map(children, (child) => {
+              if (React.isValidElement(child)) {
+                return React.cloneElement(child, { isOpen });
+              }
+              return child;
+            })}
+          </>
+        </LayoutGridAntiAliased>
       </StyledDropdown>
     </>
   );

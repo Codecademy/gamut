@@ -26,7 +26,7 @@ const StyledColumn = styled(Column)(
 export const AppHeaderResourcesSection = React.forwardRef<
   HTMLDivElement,
   AppHeaderResourcesSectionProps
->(({ action, isOpen, keyDownEvents, handleClose }) => {
+>(({ action, isOpen, handleClose }) => {
   const tabIndex = isOpen === false ? -1 : 0;
 
   const onClick = (

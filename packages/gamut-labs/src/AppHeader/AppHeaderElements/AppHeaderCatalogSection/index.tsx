@@ -17,14 +17,15 @@ import {
   topSubjects,
 } from '../../../lib/catalogList';
 import {
+  AppHeaderCatalogDropdownItem,
   AppHeaderClickHandler,
   AppHeaderItem,
-  AppHeaderSimpleDropdownItem,
+  AppHeaderResourcesDropdownItem,
 } from '../types';
 
 export type AppHeaderCatalogSectionProps = {
   action: AppHeaderClickHandler;
-  item: AppHeaderSimpleDropdownItem;
+  item: AppHeaderCatalogDropdownItem | AppHeaderResourcesDropdownItem;
   ref?: React.RefObject<HTMLUListElement>;
   role?: string;
   id?: string;
@@ -95,7 +96,7 @@ const responsiveGridTemplate = `'languageHeader'
 export const AppHeaderCatalogSection = React.forwardRef<
   HTMLDivElement,
   AppHeaderCatalogSectionProps
->(({ action, item, isOpen, handleClose }, ref) => {
+>(({ action, item, isOpen }) => {
   const tabIndex = isOpen === false ? -1 : 0;
 
   const onClick = (

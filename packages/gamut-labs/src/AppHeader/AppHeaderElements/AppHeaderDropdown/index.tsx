@@ -18,7 +18,11 @@ import {
   StyledText,
 } from '../../shared';
 import { AppHeaderLinkSections } from '../AppHeaderLinkSections';
-import { AppHeaderClickHandler, AppHeaderDropdownItem } from '../types';
+import {
+  AppHeaderClickHandler,
+  AppHeaderProfileDropdownItem,
+  AppHeaderSimpleDropdownItem,
+} from '../types';
 
 const StyledLinkSection = styled(AppHeaderLinkSections)(
   css({
@@ -29,7 +33,7 @@ const StyledLinkSection = styled(AppHeaderLinkSections)(
 
 export type AppHeaderDropdownProps = {
   action: AppHeaderClickHandler;
-  item: AppHeaderDropdownItem;
+  item: AppHeaderSimpleDropdownItem | AppHeaderProfileDropdownItem;
   onKeyDown?: (event: React.KeyboardEvent) => void;
 };
 

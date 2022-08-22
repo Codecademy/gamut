@@ -4,9 +4,12 @@ import { ReactNode } from 'react';
 
 export type AppHeaderItem =
   | AppHeaderItemWithHref
+  | AppHeaderSimpleDropdownItem
+  | AppHeaderProfileDropdownItem
   | AppHeaderRenderElementItem
+  | AppHeaderCatalogDropdownItem
   | AppHeaderDescriptiveLinkItem
-  | AppHeaderDropdownItem;
+  | AppHeaderResourcesDropdownItem;
 
 export type AppHeaderItemWithHref =
   | AppHeaderLogoItem
@@ -49,13 +52,27 @@ export type AppHeaderFillButtonItem = AppHeaderBaseHrefItem<'fill-button'> & {
 
 export type AppHeaderDropdownItem =
   | AppHeaderSimpleDropdownItem
-  | AppHeaderProfileDropdownItem;
+  | AppHeaderProfileDropdownItem
+  | AppHeaderCatalogDropdownItem
+  | AppHeaderResourcesDropdownItem;
 
 export type AppHeaderSimpleDropdownItem = AppHeaderBaseItem<'dropdown'> & {
   icon?: React.ComponentType<GamutIconProps>;
   popover: AppHeaderLinkItem[];
   text: string;
   trackingTarget: string;
+};
+
+export type AppHeaderProfileDropdownItem = AppHeaderBaseItem<'profile-dropdown'> & {
+  avatar: string;
+  userDisplayName: string;
+  popover: AppHeaderLinkItem[][];
+  text: string;
+  trackingTarget: string;
+};
+
+export type AppHeaderRenderElementItem = AppHeaderBaseItem<'render-element'> & {
+  renderElement: () => ReactNode;
 };
 
 export type AppHeaderCatalogDropdownItem = AppHeaderBaseItem<'catalog-dropdown'> & {
@@ -70,18 +87,6 @@ export type AppHeaderResourcesDropdownItem = AppHeaderBaseItem<'experimental-res
   text: string;
   trackingTarget: string;
   hideCareerPaths?: boolean;
-};
-
-export type AppHeaderProfileDropdownItem = AppHeaderBaseItem<'profile-dropdown'> & {
-  avatar: string;
-  userDisplayName: string;
-  popover: AppHeaderLinkItem[][];
-  text: string;
-  trackingTarget: string;
-};
-
-export type AppHeaderRenderElementItem = AppHeaderBaseItem<'render-element'> & {
-  renderElement: () => ReactNode;
 };
 
 export type AppHeaderClickHandler<ItemType = AppHeaderItem> = (
