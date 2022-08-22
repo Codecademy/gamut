@@ -48,11 +48,14 @@ const FormWrapper: React.FC = ({ children }) => (
   </ConnectedForm>
 );
 
-const TestTextInput: React.FC = () => {
+const TestTextInput: React.FC<{ shouldDirtyOnChange?: boolean }> = ({
+  shouldDirtyOnChange,
+}) => {
   const { onBlur, onChange, value } = useDebouncedField({
     name: mockInputKey,
     watchUpdateKeyName: mockChangeKey,
     type: 'text',
+    shouldDirtyOnChange,
   });
   const { reset } = useFormState();
 
@@ -137,6 +140,26 @@ describe('ConnectedForm - useDebouncedField', () => {
     input.blur();
     // Now it has finally been called to update the data
     expect(mockedSetValue).toHaveBeenCalledTimes(2);
+    expect(mockedSetValue).lastCalledWith(mockInputKey, 'tifa');
+  });
+  it("doesn't call the dirty function on change if shouldDirtyOnChange is false", async () => {
+    const { view } = renderView({ shouldDirtyOnChange: false });
+
+    const input = view.getByRole('textbox') as HTMLInputElement;
+    input.focus();
+    expect(mockedSetValue).toHaveBeenCalledTimes(0);
+
+    await act(async () => {
+      fireEvent.change(input, { target: { value: 't' } });
+      fireEvent.change(input, { target: { value: 'ti' } });
+      fireEvent.change(input, { target: { value: 'tif' } });
+      fireEvent.change(input, { target: { value: 'tifa' } });
+    });
+    // Form has NOT been dirtied by changing input
+    expect(mockedSetValue).toHaveBeenCalledTimes(0);
+
+    input.blur();
+    expect(mockedSetValue).toHaveBeenCalledTimes(1);
     expect(mockedSetValue).lastCalledWith(mockInputKey, 'tifa');
   });
   it('should update the "initial" value of the input based on a change to the `watchUpdateKeyName` value', async () => {
