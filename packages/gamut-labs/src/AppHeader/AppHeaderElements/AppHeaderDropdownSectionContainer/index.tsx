@@ -7,7 +7,10 @@ import {
   StyledDropdown,
   StyledText,
 } from '../../shared';
+<<<<<<< HEAD
 import { AppHeaderCatalogSection } from '../AppHeaderCatalogSection';
+=======
+>>>>>>> b42cfdb08 (refactor-app-header-dropdown)
 import {
   AppHeaderCatalogDropdownItem,
   AppHeaderClickHandler,
@@ -37,9 +40,16 @@ export const KEY_CODES = {
 
 export const AppHeaderDropdownSectionContainer: React.FC<AppHeaderDropdownSectionContainerProps> = ({
   action,
+<<<<<<< HEAD
   // dataFocusable,
   item,
   itemsCount,
+=======
+  dataFocusable,
+  item,
+  itemsCount,
+  children,
+>>>>>>> b42cfdb08 (refactor-app-header-dropdown)
   styles,
 }) => {
   const { text, dataTestId } = item;
@@ -68,11 +78,22 @@ export const AppHeaderDropdownSectionContainer: React.FC<AppHeaderDropdownSectio
     }
   };
 
+<<<<<<< HEAD
   const getNode = useCallback((index: number) => {
     return containerRef.current?.querySelectorAll<HTMLElement>(
       '[data-focusablecatalog=true]'
     )[index];
   }, []);
+=======
+  const getNode = useCallback(
+    (index: number) => {
+      return containerRef.current?.querySelectorAll<HTMLElement>(dataFocusable)[
+        index
+      ];
+    },
+    [dataFocusable]
+  );
+>>>>>>> b42cfdb08 (refactor-app-header-dropdown)
 
   const buttonHandleKeyEvents = (event: React.KeyboardEvent) => {
     switch (event.key) {
@@ -223,12 +244,6 @@ export const AppHeaderDropdownSectionContainer: React.FC<AppHeaderDropdownSectio
           onKeyDown={menuHandleKeyEvents}
           onClick={() => setIsOpen(false)}
         >
-          <AppHeaderCatalogSection
-            action={action}
-            item={item}
-            role="menu"
-            id={`menu-container${item.text}`}
-          />
         </LayoutGridAntiAliased>
       </StyledDropdown>
     </>
