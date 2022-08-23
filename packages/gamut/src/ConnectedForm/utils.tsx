@@ -267,23 +267,24 @@ export const USE_DEBOUNCED_FIELD_DIRTY_KEY = '';
  *
  * This is very hacky, but in our testing we couldn't find any problems with it.
  */
-const useMakeSetFormDirty = (shouldDirtyOnChange = true, resetKey = '') => {
+const useMakeSetFormDirty = (
+  resetKey?: string,
+  shouldDirtyOnChange?: boolean
+) => {
   const hasDirtiedRef = useRef(false);
 
   const { isDirty, setValue, watch } = useFormState();
 
-  const resetVal = watch(resetKey);
+  const resetVal = resetKey ? watch(resetKey) : undefined;
 
   useEffect(() => {
     hasDirtiedRef.current = false;
   }, [resetVal]);
 
   return () => {
-    if (!isDirty && !hasDirtiedRef.current) {
+    if (shouldDirtyOnChange && !isDirty && !hasDirtiedRef.current) {
       hasDirtiedRef.current = true;
-      if (shouldDirtyOnChange) {
-        setValue(USE_DEBOUNCED_FIELD_DIRTY_KEY, '', { shouldDirty: true });
-      }
+      setValue(USE_DEBOUNCED_FIELD_DIRTY_KEY, '', { shouldDirty: true });
     }
   };
 };
@@ -360,8 +361,8 @@ export function useDebouncedField<T extends InputTypes>({
   });
 
   const setFormDirty = useMakeSetFormDirty(
-    shouldDirtyOnChange,
-    watchUpdateKeyName
+    watchUpdateKeyName,
+    shouldDirtyOnChange
   );
 
   const onChange: ChangeEventHandler<
