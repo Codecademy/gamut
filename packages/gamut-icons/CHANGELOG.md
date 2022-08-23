@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.7.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@7.6.2...@codecademy/gamut-icons@7.7.0) (2022-08-23)
+
+
+### Features
+
+* **DiamondIcon:** add diamond icon ([f8a3cc9](https://github.com/Codecademy/gamut/commit/f8a3cc956c430410e21f26234435e8164e10f683))
+
+
+
 ### [7.6.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@7.6.1...@codecademy/gamut-icons@7.6.2) (2022-08-19)
 
 **Note:** Version bump only for package @codecademy/gamut-icons
