@@ -6,7 +6,6 @@ import React from 'react';
 
 import { AppHeaderCatalogSection } from '../../AppHeader/AppHeaderElements/AppHeaderCatalogSection';
 import { AppHeaderDropdownProps } from '../../AppHeader/AppHeaderElements/AppHeaderDropdown';
-import { AppHeaderDropdownSectionContainer } from '../../AppHeader/AppHeaderElements/AppHeaderDropdownSectionContainer';
 import { AppHeaderLinkSections } from '../../AppHeader/AppHeaderElements/AppHeaderLinkSections';
 import { AppHeaderListItem } from '../../AppHeader/AppHeaderElements/AppHeaderListItem';
 import { AppHeaderResourcesSection } from '../../AppHeader/AppHeaderElements/AppHeaderResourcesSection';
@@ -17,8 +16,6 @@ import {
   AppHeaderDropdownItemProps,
   AppHeaderResourcesDropdownItem,
 } from '../../AppHeader/AppHeaderElements/types';
-import { languageAndSubjectCount } from '../../lib/catalogList';
-import { resourcesItemCount } from '../../lib/resourcesList';
 
 export type AppHeaderSubMenuMobileProps = (
   | AppHeaderDropdownProps
@@ -44,44 +41,20 @@ const StyledAnchor = styled(Anchor)(
 
 const renderHeaderSection = (
   item: AppHeaderSectionItem | AppHeaderDropdownItem,
-  action: AppHeaderClickHandler,
-  handleCloseMainMenu: () => void
+  action: AppHeaderClickHandler
 ) => {
   switch (item.type) {
     case 'catalog-dropdown':
-      const catalogItemCount = languageAndSubjectCount(item);
       return (
-        <AppHeaderDropdownSectionContainer
-          action={action}
-          item={item}
-          dataFocusable="[data-focusablecatalog=true]"
-          itemsCount={catalogItemCount}
-          styles={{
-            top: '3.5rem',
-            minWidth: '64rem',
-          }}
-        >
-          <AppHeaderCatalogSection action={action} item={item} role="menu" />
-        </AppHeaderDropdownSectionContainer>
+        <AppHeaderCatalogSection action={action} item={item} role="menu" />
       );
     case 'experimental-resources-dropdown':
       return (
-        <AppHeaderDropdownSectionContainer
+        <AppHeaderResourcesSection
           action={action}
-          item={item}
-          dataFocusable="[data-focusableresource=true]"
-          itemsCount={resourcesItemCount}
-          styles={{
-            top: '3.5rem',
-            minWidth: '64rem',
-          }}
-        >
-          <AppHeaderResourcesSection
-            action={action}
-            role="menu"
-            id={`menu-container${item.text}`}
-          />
-        </AppHeaderDropdownSectionContainer>
+          role="menu"
+          id={`menu-container${item.text}`}
+        />
       );
     default:
       return (
@@ -93,7 +66,6 @@ const renderHeaderSection = (
 export const AppHeaderSubMenuMobile: React.FC<AppHeaderSubMenuMobileProps> = ({
   action,
   handleCloseSubMenu,
-  handleCloseMainMenu,
   item,
 }) => {
   return (
@@ -117,7 +89,7 @@ export const AppHeaderSubMenuMobile: React.FC<AppHeaderSubMenuMobileProps> = ({
       >
         {item.type === 'profile-dropdown' ? item.userDisplayName : item.text}
       </Text>
-      {renderHeaderSection(item, action, handleCloseMainMenu)}
+      {renderHeaderSection(item, action)}
     </AppHeaderListItem>
   );
 };
