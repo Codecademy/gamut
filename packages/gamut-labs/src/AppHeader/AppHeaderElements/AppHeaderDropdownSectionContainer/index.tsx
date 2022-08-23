@@ -7,10 +7,6 @@ import {
   StyledDropdown,
   StyledText,
 } from '../../shared';
-<<<<<<< HEAD
-import { AppHeaderCatalogSection } from '../AppHeaderCatalogSection';
-=======
->>>>>>> b42cfdb08 (refactor-app-header-dropdown)
 import {
   AppHeaderCatalogDropdownItem,
   AppHeaderClickHandler,
