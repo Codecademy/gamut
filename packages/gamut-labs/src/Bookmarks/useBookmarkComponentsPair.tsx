@@ -40,17 +40,14 @@ export const useBookmarkComponentsPair = ({
   };
 
   const onRequestCloseHandler = () => {
-    const currentView = document.body.offsetWidth < 1200 ? 'mobile' : 'desktop';
+    const currentView =
+      window.innerWidth < 1200
+        ? CrossDeviceBookmarksView.MOBILE
+        : CrossDeviceBookmarksView.DESKTOP;
     if (view === currentView) {
       setOpenCrossDeviceItemId(CrossDeviceItemId.UNSET);
     }
   };
-
-  // const keyUpHandler = (evt: KeyboardEvent) => {
-  //   if (evt.key === 'Escape') {
-  //     setOpenCrossDeviceItemId(CrossDeviceItemId.UNSET);
-  //   };
-  // };
 
   return [
     {
@@ -82,7 +79,6 @@ export const useBookmarkComponentsPair = ({
           isOpen
           targetRef={buttonRef}
           onRequestClose={onRequestCloseHandler}
-          // onKeyUp={keyUpHandler}
         >
           <>{bookmarkParts.desktop()}</>
         </Popover>
