@@ -229,7 +229,7 @@ export const AppHeaderDropdownSectionContainer: React.FC<AppHeaderDropdownSectio
           <>
             {React.Children.map(children, (child) => {
               if (React.isValidElement(child)) {
-                return React.cloneElement(child, { isOpen });
+                return React.cloneElement(child, { isOpen, handleClose });
               }
               return child;
             })}

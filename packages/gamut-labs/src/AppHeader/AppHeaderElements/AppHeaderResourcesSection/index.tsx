@@ -8,7 +8,9 @@ import { AppHeaderClickHandler, AppHeaderLinkItem } from '../types';
 
 export type AppHeaderResourcesSectionProps = {
   action: AppHeaderClickHandler;
+  id: string;
   isOpen?: boolean;
+  role: string;
 };
 
 const StyledColumn = styled(Column)(

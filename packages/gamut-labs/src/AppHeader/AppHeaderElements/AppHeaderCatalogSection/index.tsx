@@ -84,6 +84,7 @@ const responsiveGridTemplate = `'languageHeader'
                             'subject'`;
 export type AppHeaderCatalogSectionProps = {
   action: AppHeaderClickHandler;
+  role: string;
   item: AppHeaderCatalogDropdownItem | AppHeaderResourcesDropdownItem;
   isOpen?: boolean;
 };
@@ -161,7 +162,9 @@ export const AppHeaderCatalogSection: React.FC<AppHeaderCatalogSectionProps> = (
                       data-focusablecatalog="true"
                       variant="interface"
                       href={item.href}
-                      onClick={(event) => onClick(event, item as AppHeaderItem)}
+                      onClick={(
+                        event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
+                      ) => onClick(event, item as AppHeaderItem)}
                       tabIndex={tabIndex}
                     >
                       {item.text}
@@ -194,7 +197,9 @@ export const AppHeaderCatalogSection: React.FC<AppHeaderCatalogSectionProps> = (
                 textAlign={{ _: 'center', md: 'left' }}
                 href={catalogAnchorData.href}
                 data-focusablecatalog="true"
-                onClick={(event) => onClick(event, catalogAnchorData)}
+                onClick={(
+                  event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
+                ) => onClick(event, catalogAnchorData)}
                 tabIndex={tabIndex}
                 mt={96}
                 pt={24}
@@ -228,7 +233,9 @@ export const AppHeaderCatalogSection: React.FC<AppHeaderCatalogSectionProps> = (
                       data-focusablecatalog="true"
                       variant="interface"
                       href={item.href}
-                      onClick={(event) => onClick(event, item as AppHeaderItem)}
+                      onClick={(
+                        event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
+                      ) => onClick(event, item as AppHeaderItem)}
                       tabIndex={tabIndex}
                     >
                       {item.text}
@@ -246,7 +253,9 @@ export const AppHeaderCatalogSection: React.FC<AppHeaderCatalogSectionProps> = (
                       data-focusablecatalog="true"
                       variant="interface"
                       href={item.href}
-                      onClick={(event) => onClick(event, item as AppHeaderItem)}
+                      onClick={(
+                        event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
+                      ) => onClick(event, item as AppHeaderItem)}
                       tabIndex={tabIndex}
                     >
                       {item.text}
@@ -270,7 +279,9 @@ export const AppHeaderCatalogSection: React.FC<AppHeaderCatalogSectionProps> = (
             fontWeight="title"
             href={catalogAnchorData.href}
             data-focusablecatalog="true"
-            onClick={(event) => onClick(event, catalogAnchorData)}
+            onClick={(event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) =>
+              onClick(event, catalogAnchorData)
+            }
             tabIndex={tabIndex}
           >
             {catalogAnchorData.text}

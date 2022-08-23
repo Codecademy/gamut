@@ -6,6 +6,7 @@ import React from 'react';
 
 import { AppHeaderCatalogSection } from '../../AppHeader/AppHeaderElements/AppHeaderCatalogSection';
 import { AppHeaderDropdownProps } from '../../AppHeader/AppHeaderElements/AppHeaderDropdown';
+import { AppHeaderDropdownSectionContainer } from '../../AppHeader/AppHeaderElements/AppHeaderDropdownSectionContainer';
 import { AppHeaderLinkSections } from '../../AppHeader/AppHeaderElements/AppHeaderLinkSections';
 import { AppHeaderListItem } from '../../AppHeader/AppHeaderElements/AppHeaderListItem';
 import { AppHeaderResourcesSection } from '../../AppHeader/AppHeaderElements/AppHeaderResourcesSection';
@@ -16,6 +17,8 @@ import {
   AppHeaderDropdownItemProps,
   AppHeaderResourcesDropdownItem,
 } from '../../AppHeader/AppHeaderElements/types';
+import { languageAndSubjectCount } from '../../lib/catalogList';
+import { resourcesItemCount } from '../../lib/resourcesList';
 
 export type AppHeaderSubMenuMobileProps = (
   | AppHeaderDropdownProps
@@ -46,19 +49,39 @@ const renderHeaderSection = (
 ) => {
   switch (item.type) {
     case 'catalog-dropdown':
+      const catalogItemCount = languageAndSubjectCount(item);
       return (
-        <AppHeaderCatalogSection
+        <AppHeaderDropdownSectionContainer
           action={action}
           item={item}
-          handleClose={handleCloseMainMenu}
-        />
+          dataFocusable="[data-focusablecatalog=true]"
+          itemsCount={catalogItemCount}
+          styles={{
+            top: '3.5rem',
+            minWidth: '64rem',
+          }}
+        >
+          <AppHeaderCatalogSection action={action} item={item} role="menu" />
+        </AppHeaderDropdownSectionContainer>
       );
     case 'experimental-resources-dropdown':
       return (
-        <AppHeaderResourcesSection
+        <AppHeaderDropdownSectionContainer
           action={action}
-          handleClose={handleCloseMainMenu}
-        />
+          item={item}
+          dataFocusable="[data-focusableresource=true]"
+          itemsCount={resourcesItemCount}
+          styles={{
+            top: '3.5rem',
+            minWidth: '64rem',
+          }}
+        >
+          <AppHeaderResourcesSection
+            action={action}
+            role="menu"
+            id={`menu-container${item.text}`}
+          />
+        </AppHeaderDropdownSectionContainer>
       );
     default:
       return (

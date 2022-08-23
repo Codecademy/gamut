@@ -101,12 +101,7 @@ export const mapItemToElement = (
             left: isAnon ? '-9rem' : '-14rem',
           }}
         >
-          <AppHeaderCatalogSection
-            action={action}
-            item={item}
-            role="menu"
-            id={`menu-container${item.text}`}
-          />
+          <AppHeaderCatalogSection action={action} item={item} role="menu" />
         </AppHeaderDropdownSectionContainer>
       );
     case 'experimental-resources-dropdown':
