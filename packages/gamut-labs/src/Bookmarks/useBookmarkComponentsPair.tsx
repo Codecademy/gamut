@@ -39,6 +39,12 @@ export const useBookmarkComponentsPair = ({
     );
   };
 
+  const onRequestCloseHandler = () => {
+    if (view === 'desktop') {
+      setOpenCrossDeviceItemId(CrossDeviceItemId.UNSET);
+    }
+  };
+
   // const keyUpHandler = (evt: KeyboardEvent) => {
   //   if (evt.key === 'Escape') {
   //     setOpenCrossDeviceItemId(CrossDeviceItemId.UNSET);
@@ -74,7 +80,7 @@ export const useBookmarkComponentsPair = ({
           outline
           isOpen
           targetRef={buttonRef}
-          onRequestClose={toggleVisible}
+          onRequestClose={onRequestCloseHandler}
           // onKeyUp={keyUpHandler}
         >
           <>{bookmarkParts.desktop()}</>
