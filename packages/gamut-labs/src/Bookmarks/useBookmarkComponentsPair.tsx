@@ -40,7 +40,8 @@ export const useBookmarkComponentsPair = ({
   };
 
   const onRequestCloseHandler = () => {
-    if (view === 'desktop') {
+    const currentView = document.body.offsetWidth < 1200 ? 'mobile' : 'desktop';
+    if (view !== currentView) {
       setOpenCrossDeviceItemId(CrossDeviceItemId.UNSET);
     }
   };
