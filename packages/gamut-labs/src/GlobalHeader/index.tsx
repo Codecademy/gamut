@@ -61,74 +61,57 @@ function getAppHeaderItems(
     case 'anon':
       switch (props.variant) {
         case 'landing':
-          if (mobile) {
-            return anonLandingMobileHeaderItems(
-              hidePricing,
-              props.user,
-              renderBookmarks
-            );
-          }
-          return anonLandingHeaderItems(
-            hidePricing,
-            props.user,
-            renderBookmarks
-          );
+          return mobile
+            ? anonLandingMobileHeaderItems(
+                hidePricing,
+                props.user,
+                renderBookmarks
+              )
+            : anonLandingHeaderItems(hidePricing, props.user, renderBookmarks);
         case 'login':
-          if (mobile) {
-            return anonLoginMobileHeaderItems(
-              hidePricing,
-              props.user,
-              renderBookmarks
-            );
-          }
-          return anonLoginHeaderItems(hidePricing, props.user, renderBookmarks);
+          return mobile
+            ? anonLoginMobileHeaderItems(
+                hidePricing,
+                props.user,
+                renderBookmarks
+              )
+            : anonLoginHeaderItems(hidePricing, props.user, renderBookmarks);
         case 'signup':
-          if (mobile) {
-            return anonSignupMobileHeaderItems(
-              hidePricing,
-              props.user,
-              renderBookmarks
-            );
-          }
-          return anonSignupHeaderItems(
-            hidePricing,
-            props.user,
-            renderBookmarks
-          );
+          return mobile
+            ? anonSignupMobileHeaderItems(
+                hidePricing,
+                props.user,
+                renderBookmarks
+              )
+            : anonSignupHeaderItems(hidePricing, props.user, renderBookmarks);
         default:
-          if (mobile) {
-            return anonDefaultMobileHeaderItems(
-              hidePricing,
-              props.user,
-              renderBookmarks
-            );
-          }
-          return anonDefaultHeaderItems(
-            hidePricing,
-            props.user,
-            renderBookmarks
-          );
+          return mobile
+            ? anonDefaultMobileHeaderItems(
+                hidePricing,
+                props.user,
+                renderBookmarks
+              )
+            : anonDefaultHeaderItems(hidePricing, props.user, renderBookmarks);
       }
     case 'free':
-      if (mobile) {
-        return freeMobileHeaderItems(props.user, hidePricing, renderBookmarks);
-      }
-      return freeHeaderItems(
-        props.user,
-        hidePricing,
-        props.renderFavorites?.desktop,
-        renderBookmarks
-      );
+      return mobile
+        ? freeMobileHeaderItems(props.user, hidePricing, renderBookmarks)
+        : freeHeaderItems(
+            props.user,
+            hidePricing,
+            props.renderFavorites?.desktop,
+            renderBookmarks
+          );
     case 'pro':
-      if (mobile) return proMobileHeaderItems(props.user, renderBookmarks);
-      return proHeaderItems(
-        props.user,
-        props.renderFavorites?.desktop,
-        renderBookmarks
-      );
+      return mobile
+        ? proMobileHeaderItems(props.user, renderBookmarks)
+        : proHeaderItems(
+            props.user,
+            props.renderFavorites?.desktop,
+            renderBookmarks
+          );
     case 'loading':
-      if (mobile) return loadingMobileHeaderItems;
-      return loadingHeaderItems;
+      return mobile ? loadingMobileHeaderItems : loadingHeaderItems;
   }
 }
 
