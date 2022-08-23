@@ -23,16 +23,6 @@ import {
   AppHeaderResourcesDropdownItem,
 } from '../types';
 
-export type AppHeaderCatalogSectionProps = {
-  action: AppHeaderClickHandler;
-  item: AppHeaderCatalogDropdownItem | AppHeaderResourcesDropdownItem;
-  ref?: React.RefObject<HTMLUListElement>;
-  role?: string;
-  id?: string;
-  isOpen?: boolean;
-  handleClose?: () => void;
-};
-
 const StyledColumn = styled(Column)(
   css({
     borderBottom: 1,
@@ -92,11 +82,17 @@ const responsiveGridTemplate = `'languageHeader'
                             'subject'
                             'subject'
                             'subject'`;
+export type AppHeaderCatalogSectionProps = {
+  action: AppHeaderClickHandler;
+  item: AppHeaderCatalogDropdownItem | AppHeaderResourcesDropdownItem;
+  isOpen?: boolean;
+};
 
-export const AppHeaderCatalogSection = React.forwardRef<
-  HTMLDivElement,
-  AppHeaderCatalogSectionProps
->(({ action, item, isOpen }) => {
+export const AppHeaderCatalogSection: React.FC<AppHeaderCatalogSectionProps> = ({
+  action,
+  item,
+  isOpen,
+}) => {
   const tabIndex = isOpen === false ? -1 : 0;
 
   const onClick = (
@@ -283,4 +279,4 @@ export const AppHeaderCatalogSection = React.forwardRef<
       </StyledResponsiveColumn>
     </>
   );
-});
+};
