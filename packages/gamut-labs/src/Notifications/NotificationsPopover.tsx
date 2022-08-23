@@ -7,11 +7,11 @@ import { NotificationsRendererProps } from './types';
 
 export const NotificationsPopover: React.FC<NotificationsRendererProps> = ({
   bellRef,
-  openCrossDeviceItemId,
   setOpenCrossDeviceItemId,
   ...props
 }) => {
   const onRequestCloseHandler = () => {
+    // When on the mobile view, we don't want the desktop handler to fire.
     if (window.innerWidth >= 1200) {
       setOpenCrossDeviceItemId?.(CrossDeviceItemId.UNSET);
     }

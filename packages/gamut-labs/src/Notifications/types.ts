@@ -1,7 +1,4 @@
 import { ButtonBaseElements, Notification } from '@codecademy/gamut';
-import React from 'react';
-
-import { CrossDeviceItemId } from '../GlobalHeader/types';
 
 export type NotificationActions = {
   clear: () => void;
@@ -21,7 +18,6 @@ export type NotificationsContentsProps = {
   actions: NotificationActions;
   notifications: Notification[];
   notificationListRef?: React.RefObject<HTMLDivElement>;
-  openCrossDeviceItemId?: CrossDeviceItemId;
   setOpenCrossDeviceItemId?: React.Dispatch<React.SetStateAction<string>>;
 };
 

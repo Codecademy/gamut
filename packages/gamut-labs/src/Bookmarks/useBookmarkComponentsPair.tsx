@@ -40,6 +40,7 @@ export const useBookmarkComponentsPair = ({
   };
 
   const onRequestCloseHandler = () => {
+    // When on the mobile view, we don't want the desktop handler to fire.
     const currentView =
       window.innerWidth < 1200
         ? CrossDeviceBookmarksView.MOBILE

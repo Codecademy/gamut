@@ -61,7 +61,6 @@ export const useHeaderNotifications = ({
         actions={settings.actions}
         bellRef={bellRef}
         notifications={settings.notifications}
-        openCrossDeviceItemId={openCrossDeviceItemId}
         setOpenCrossDeviceItemId={setOpenCrossDeviceItemId}
       />
     </AnimatedHeaderZone>,
