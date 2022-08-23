@@ -121,7 +121,7 @@ describe('ConnectedForm - useDebouncedField', () => {
     expect(input.value).toEqual(mockChangeValue);
   });
   it("should ONLY update the input's value on the form on blur of input", async () => {
-    const { view } = renderView();
+    const { view } = renderView({ shouldDirtyOnChange: true });
 
     const input = view.getByRole('textbox') as HTMLInputElement;
 
@@ -143,7 +143,7 @@ describe('ConnectedForm - useDebouncedField', () => {
     expect(mockedSetValue).lastCalledWith(mockInputKey, 'tifa');
   });
   it("doesn't call the dirty function on change if shouldDirtyOnChange is false", async () => {
-    const { view } = renderView({ shouldDirtyOnChange: false });
+    const { view } = renderView();
 
     const input = view.getByRole('textbox') as HTMLInputElement;
     input.focus();
@@ -176,7 +176,7 @@ describe('ConnectedForm - useDebouncedField', () => {
     expect(input.value).toEqual(mockChangeValue);
   });
   it('should allow the form to be re-dirtied after a change to the `watchUpdateKeyName` value', async () => {
-    const { view } = renderView();
+    const { view } = renderView({ shouldDirtyOnChange: true });
 
     const input = view.getByRole('textbox') as HTMLInputElement;
     const changeButton = view.getByRole('button');
@@ -221,13 +221,11 @@ describe('ConnectedForm - useDebouncedField', () => {
       fireEvent.click(input);
     });
 
-    expect(mockedSetValue).toHaveBeenCalledTimes(1);
-
     input.blur();
 
     expect(mockedSetValue).toHaveBeenLastCalledWith(mockCheckboxKey, true);
     expect(input.checked).toBe(true);
-    expect(mockedSetValue).toHaveBeenCalledTimes(2);
+    expect(mockedSetValue).toHaveBeenCalledTimes(1);
 
     input.focus();
 
@@ -239,6 +237,6 @@ describe('ConnectedForm - useDebouncedField', () => {
 
     expect(mockedSetValue).toHaveBeenLastCalledWith(mockCheckboxKey, false);
     expect(input.checked).toBe(false);
-    expect(mockedSetValue).toHaveBeenCalledTimes(3);
+    expect(mockedSetValue).toHaveBeenCalledTimes(2);
   });
 });
