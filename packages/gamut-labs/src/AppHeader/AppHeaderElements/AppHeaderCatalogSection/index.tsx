@@ -122,13 +122,13 @@ export const AppHeaderCatalogSection: React.FC<AppHeaderCatalogSectionProps> = (
 
   return (
     <>
-      <Column size={12} key="Popular course topics" as="li">
+      <StyledColumn size={12} key="Popular course topics" as="li">
         <LayoutGrid>
           <Column size={{ xs: 12, lg: 3 }}>
             <Background
               bg="navy-800"
               color="blue-0"
-              px={{ _: 16, xs: 32, sm: 64, md: 48, lg: 40 }}
+              px={{ _: 16, xs: 32, sm: 64, md: 48, lg: 24 }}
               py={{ _: 16, sm: 32 }}
             >
               <DescriptionSection
@@ -138,8 +138,6 @@ export const AppHeaderCatalogSection: React.FC<AppHeaderCatalogSectionProps> = (
               <FillButton
                 display={{ _: 'none', lg: 'block' }}
                 mode="dark"
-                fontSize={14}
-                fontWeight={700}
                 textAlign={{ _: 'center', md: 'left' }}
                 href={catalogAnchorData.href}
                 data-focusablecatalog="true"
@@ -148,7 +146,7 @@ export const AppHeaderCatalogSection: React.FC<AppHeaderCatalogSectionProps> = (
                 // ) => onClick(event, catalogAnchorData)}
                 tabIndex={tabIndex}
                 mt={96}
-                pt={24}
+                maxWidth={170}
               >
                 {catalogAnchorData.text}
               </FillButton>
@@ -171,7 +169,7 @@ export const AppHeaderCatalogSection: React.FC<AppHeaderCatalogSectionProps> = (
                 gridTemplateColumns={{ _: '1fr', lg: 'repeat(2, 1fr)' }}
               >
                 {topLanguages.map((item) => (
-                  <Box width="12rem" key={item.id} minHeight={36}>
+                  <Box width="12rem" key={item.id} minHeight={32}>
                     <Anchor
                       data-focusablecatalog="true"
                       variant="interface"
@@ -206,7 +204,7 @@ export const AppHeaderCatalogSection: React.FC<AppHeaderCatalogSectionProps> = (
             </GridBox>
           </Column>
         </LayoutGrid>
-      </Column>
+      </StyledColumn>
       {!item.hideCareerPaths && (
         <StyledColumn size={12} key="Top career paths" as="li">
           <LayoutGrid>
@@ -214,7 +212,7 @@ export const AppHeaderCatalogSection: React.FC<AppHeaderCatalogSectionProps> = (
               <Background
                 bg="navy-800"
                 color="blue-0"
-                px={{ _: 16, xs: 32, sm: 64, md: 48, lg: 40 }}
+                px={{ _: 16, xs: 32, sm: 64, md: 48, lg: 24 }}
                 py={{ _: 16, sm: 32 }}
               >
                 <DescriptionSection
@@ -245,6 +243,7 @@ export const AppHeaderCatalogSection: React.FC<AppHeaderCatalogSectionProps> = (
           </LayoutGrid>
         </StyledColumn>
       )}
+      <StyledColumn>Not sure where to begin?</StyledColumn>
       <StyledResponsiveColumn
         size={12}
         p={16}
