@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [33.1.9](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@33.1.8...@codecademy/gamut-labs@33.1.9) (2022-08-24)
+
+
+### Bug Fixes
+
+* bookmarks and notification popovers esc key a11y ([d77aeda](https://github.com/Codecademy/gamut/commit/d77aedad0670712e840321b87ccca0615b8cea17))
+
+
+
 ### [33.1.8](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@33.1.7...@codecademy/gamut-labs@33.1.8) (2022-08-24)
 
 **Note:** Version bump only for package @codecademy/gamut-labs
