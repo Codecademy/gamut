@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [50.5.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@50.5.0...@codecademy/gamut@50.5.1) (2022-08-24)
+
+
+### Bug Fixes
+
+* **Tooltip:** fix useLayoutEffect ssr warning ([9377266](https://github.com/Codecademy/gamut/commit/9377266a116b7e2cbee4712729ac0a75a93d042c))
+
+
+
+## [50.5.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@50.4.3...@codecademy/gamut@50.5.0) (2022-08-24)
+
+
+### Features
+
+* **ConnectedForm:** pass onError prop through to react-hook-form ([07973a3](https://github.com/Codecademy/gamut/commit/07973a37cd7074ebf2520cb6dbc20fdd601c07f0))
+
+
+
 ### [50.4.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@50.4.2...@codecademy/gamut@50.4.3) (2022-08-23)
 
 **Note:** Version bump only for package @codecademy/gamut
