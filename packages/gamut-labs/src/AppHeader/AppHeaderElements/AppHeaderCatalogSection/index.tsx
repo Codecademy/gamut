@@ -2,6 +2,7 @@ import {
   Anchor,
   Box,
   Column,
+  FillButton,
   FlexBox,
   GridBox,
   LayoutGrid,
@@ -47,14 +48,14 @@ const StyledAnchorColumn = styled(Column)(
 );
 
 const catalogAnchorData: AppHeaderItem = {
-  text: 'Explore full catalog',
+  text: 'Explore all courses',
   id: 'catalog',
   type: 'text-button',
   href: '/catalog',
   trackingTarget: 'topnav_catalog_explore_full',
 };
 
-const gridTemplate = `'languageHeader gap subjectHeader'
+const gridTemplate = `
                     'language language subject'
                     'language language subject'
                     'language language subject'
@@ -62,7 +63,7 @@ const gridTemplate = `'languageHeader gap subjectHeader'
                     'language language subject'
                     'language language subject'`;
 
-const responsiveGridTemplate = `'languageHeader'
+const responsiveGridTemplate = `
                             'language'
                             'language'
                             'language'
@@ -75,7 +76,6 @@ const responsiveGridTemplate = `'languageHeader'
                             'language'
                             'language'
                             'language'
-                            'subjectHeader'
                             'subject'
                             'subject'
                             'subject'
@@ -120,24 +120,93 @@ export const AppHeaderCatalogSection: React.FC<AppHeaderCatalogSectionProps> = (
     </FlexBox>
   );
 
-  const Subheader: React.FunctionComponent<{ title: string }> = ({ title }) => (
-    <Text
-      data-focusablecatalog="true"
-      as="h3"
-      key={item.id}
-      width="12rem"
-      tabIndex={-1}
-      variant="p-small"
-      color="navy-700"
-      pb={{ _: 16, lg: 8 }}
-      fontFamily="accent"
-    >
-      {title}
-    </Text>
-  );
-
   return (
     <>
+      <Column size={12} key="Popular course topics" as="li">
+        <LayoutGrid>
+          <Column size={{ xs: 12, lg: 3 }}>
+            <Background
+              bg="navy-800"
+              color="blue-0"
+              px={{ _: 16, xs: 32, sm: 64, md: 48, lg: 40 }}
+              py={{ _: 16, sm: 32 }}
+            >
+              <DescriptionSection
+                title="Popular course topics"
+                subtitle="Find courses in languages or subjects that interest you."
+              />
+              <FillButton
+                display={{ _: 'none', lg: 'block' }}
+                mode="dark"
+                fontSize={14}
+                fontWeight={700}
+                textAlign={{ _: 'center', md: 'left' }}
+                href={catalogAnchorData.href}
+                data-focusablecatalog="true"
+                // onClick={(
+                //   event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
+                // ) => onClick(event, catalogAnchorData)}
+                tabIndex={tabIndex}
+                mt={96}
+                pt={24}
+              >
+                {catalogAnchorData.text}
+              </FillButton>
+            </Background>
+          </Column>
+          <Column
+            size={{ xs: 12, lg: 8 }}
+            py={32}
+            pl={{ _: 16, xs: 32, sm: 64, md: 48 }}
+          >
+            <GridBox
+              gridTemplateAreas={{
+                _: responsiveGridTemplate,
+                lg: gridTemplate,
+              }}
+            >
+              <Box
+                gridArea="language"
+                display="grid"
+                gridTemplateColumns={{ _: '1fr', lg: 'repeat(2, 1fr)' }}
+              >
+                {topLanguages.map((item) => (
+                  <Box width="12rem" key={item.id} minHeight={36}>
+                    <Anchor
+                      data-focusablecatalog="true"
+                      variant="interface"
+                      href={item.href}
+                      onClick={(
+                        event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
+                      ) => onClick(event, item as AppHeaderItem)}
+                      tabIndex={tabIndex}
+                    >
+                      {item.text}
+                    </Anchor>
+                  </Box>
+                ))}
+              </Box>
+              <Box gridArea="subject" display="grid" gridTemplateColumns="1fr">
+                {topSubjects.map((item) => (
+                  <Box width="12rem" key={item.id} minHeight={36}>
+                    <Anchor
+                      data-focusablecatalog="true"
+                      variant="interface"
+                      href={item.href}
+                      onClick={(
+                        event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
+                      ) => onClick(event, item as AppHeaderItem)}
+                      tabIndex={tabIndex}
+                    >
+                      {item.text}
+                    </Anchor>
+                  </Box>
+                ))}
+              </Box>
+            </GridBox>
+          </Column>
+        </LayoutGrid>
+      </Column>
       {!item.hideCareerPaths && (
         <StyledColumn size={12} key="Top career paths" as="li">
           <LayoutGrid>
@@ -150,7 +219,7 @@ export const AppHeaderCatalogSection: React.FC<AppHeaderCatalogSectionProps> = (
               >
                 <DescriptionSection
                   title="Top career paths"
-                  subtitle="Land a role in tech with step-by-step guidance."
+                  subtitle="Choose your career. We'll teach you the skills to get job-ready."
                 />
               </Background>
             </Column>
@@ -176,97 +245,6 @@ export const AppHeaderCatalogSection: React.FC<AppHeaderCatalogSectionProps> = (
           </LayoutGrid>
         </StyledColumn>
       )}
-      <Column size={12} key="Popular languages and subjects" as="li">
-        <LayoutGrid>
-          <Column size={{ xs: 12, lg: 3 }}>
-            <Background
-              bg="navy-800"
-              color="blue-0"
-              px={{ _: 16, xs: 32, sm: 64, md: 48, lg: 40 }}
-              py={{ _: 16, sm: 32 }}
-            >
-              <DescriptionSection
-                title="Popular languages and subjects"
-                subtitle="Find courses in languages or subjects that interest you."
-              />
-              <Anchor
-                display={{ _: 'none', lg: 'block' }}
-                variant="standard"
-                fontSize={14}
-                fontWeight={700}
-                textAlign={{ _: 'center', md: 'left' }}
-                href={catalogAnchorData.href}
-                data-focusablecatalog="true"
-                onClick={(
-                  event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
-                ) => onClick(event, catalogAnchorData)}
-                tabIndex={tabIndex}
-                mt={96}
-                pt={24}
-              >
-                {catalogAnchorData.text} →
-              </Anchor>
-            </Background>
-          </Column>
-          <Column
-            size={{ xs: 12, lg: 8 }}
-            py={32}
-            pl={{ _: 16, xs: 32, sm: 64, md: 48 }}
-          >
-            <GridBox
-              gridTemplateAreas={{
-                _: responsiveGridTemplate,
-                lg: gridTemplate,
-              }}
-            >
-              <Box gridArea="languageHeader">
-                <Subheader title="Top Languages" />
-              </Box>
-              <Box
-                gridArea="language"
-                display="grid"
-                gridTemplateColumns={{ _: '1fr', lg: 'repeat(2, 1fr)' }}
-              >
-                {topLanguages.map((item) => (
-                  <Box width="12rem" key={item.id} minHeight={36}>
-                    <Anchor
-                      data-focusablecatalog="true"
-                      variant="interface"
-                      href={item.href}
-                      onClick={(
-                        event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
-                      ) => onClick(event, item as AppHeaderItem)}
-                      tabIndex={tabIndex}
-                    >
-                      {item.text}
-                    </Anchor>
-                  </Box>
-                ))}
-              </Box>
-              <Box pt={{ _: 16, lg: 0 }} gridArea="subjectHeader">
-                <Subheader title="Top Subjects" />
-              </Box>
-              <Box gridArea="subject" display="grid" gridTemplateColumns="1fr">
-                {topSubjects.map((item) => (
-                  <Box width="12rem" key={item.id} minHeight={36}>
-                    <Anchor
-                      data-focusablecatalog="true"
-                      variant="interface"
-                      href={item.href}
-                      onClick={(
-                        event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
-                      ) => onClick(event, item as AppHeaderItem)}
-                      tabIndex={tabIndex}
-                    >
-                      {item.text}
-                    </Anchor>
-                  </Box>
-                ))}
-              </Box>
-            </GridBox>
-          </Column>
-        </LayoutGrid>
-      </Column>
       <StyledResponsiveColumn
         size={12}
         p={16}
