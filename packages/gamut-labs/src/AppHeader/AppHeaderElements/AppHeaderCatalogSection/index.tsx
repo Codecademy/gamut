@@ -31,13 +31,6 @@ const StyledColumn = styled(Column)(
   })
 );
 
-const StyledResponsiveColumn = styled(Column)(
-  css({
-    borderTop: 1,
-    borderColor: 'navy-300',
-  })
-);
-
 const StyledAnchorColumn = styled(Column)(
   css({
     pb: 16,
@@ -82,6 +75,7 @@ const responsiveGridTemplate = `
                             'subject'
                             'subject'
                             'subject'`;
+
 export type AppHeaderCatalogSectionProps = {
   action: AppHeaderClickHandler;
   role: string;
@@ -97,7 +91,7 @@ export const AppHeaderCatalogSection: React.FC<AppHeaderCatalogSectionProps> = (
   const tabIndex = isOpen === false ? -1 : 0;
 
   const onClick = (
-    event: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
+    event: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement, MouseEvent>,
     linkItem: AppHeaderItem
   ) => {
     return action(event, linkItem);
@@ -136,16 +130,15 @@ export const AppHeaderCatalogSection: React.FC<AppHeaderCatalogSectionProps> = (
                 subtitle="Find courses in languages or subjects that interest you."
               />
               <FillButton
-                display={{ _: 'none', lg: 'block' }}
                 mode="dark"
                 textAlign={{ _: 'center', md: 'left' }}
                 href={catalogAnchorData.href}
                 data-focusablecatalog="true"
-                // onClick={(
-                //   event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
-                // ) => onClick(event, catalogAnchorData)}
+                onClick={(
+                  event: React.MouseEvent<HTMLButtonElement, MouseEvent>
+                ) => onClick(event, item as AppHeaderItem)}
                 tabIndex={tabIndex}
-                mt={96}
+                mt={{ _: 16, lg: 96 }}
                 maxWidth={170}
               >
                 {catalogAnchorData.text}
@@ -166,7 +159,9 @@ export const AppHeaderCatalogSection: React.FC<AppHeaderCatalogSectionProps> = (
               <Box
                 gridArea="language"
                 display="grid"
-                gridTemplateColumns={{ _: '1fr', lg: 'repeat(2, 1fr)' }}
+                gridTemplateColumns={{ _: '1fr', lg: 'repeat(3, 1fr)' }}
+                gridTemplateRows={{ _: '1fr', lg: 'repeat(6, 1fr)' }}
+                gridAutoFlow={{ lg: 'column' }}
               >
                 {topLanguages.map((item) => (
                   <Box width="12rem" key={item.id} minHeight={32}>
@@ -243,28 +238,31 @@ export const AppHeaderCatalogSection: React.FC<AppHeaderCatalogSectionProps> = (
           </LayoutGrid>
         </StyledColumn>
       )}
-      <StyledColumn>Not sure where to begin?</StyledColumn>
-      <StyledResponsiveColumn
-        size={12}
-        p={16}
-        display={{ _: 'block', lg: 'none' }}
-      >
-        <Box textAlign="center">
+      <Column px={{ _: 16, xs: 32, sm: 64, md: 48, lg: 24 }} py={16}>
+        <FlexBox
+          alignItems={{ _: 'left', lg: 'center' }}
+          flexDirection={{ _: 'column', lg: 'row' }}
+        >
+          Not sure where to begin?
           <Anchor
             variant="standard"
-            fontSize={16}
-            fontWeight="title"
+            fontSize={14}
+            fontWeight={700}
+            textAlign={{ _: 'left', lg: 'center' }}
+            // TODO: get correct link
             href={catalogAnchorData.href}
             data-focusablecatalog="true"
-            onClick={(event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) =>
-              onClick(event, catalogAnchorData)
-            }
+            // TODO: get correct tracking data
+            onClick={(event) => onClick(event, catalogAnchorData)}
             tabIndex={tabIndex}
+            ml={{ _: 0, lg: 16 }}
+            pt={{ _: 8, lg: 0 }}
           >
-            {catalogAnchorData.text}
+            Take our quiz →
           </Anchor>
-        </Box>
-      </StyledResponsiveColumn>
+          {/* TODO: add image */}
+        </FlexBox>
+      </Column>
     </>
   );
 };
