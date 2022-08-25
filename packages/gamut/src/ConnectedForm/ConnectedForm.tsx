@@ -6,6 +6,7 @@ import {
   Mode,
   Path,
   RegisterOptions,
+  SubmitErrorHandler,
   SubmitHandler,
   useForm,
   UseFormProps,
@@ -41,13 +42,18 @@ export interface FormContextProps {
 
 export interface ConnectedFormProps<Values extends {}>
   extends Omit<FormContextProps, 'validationRules'>,
-    Omit<FormProps, 'onSubmit'> {
+    Omit<FormProps, 'onSubmit' | 'onError'> {
   children?: React.ReactNode;
 
   /**
    * Function called with field values on submit, if all validations have passed.
    */
   onSubmit: SubmitHandler<Values>;
+
+  /**
+   * Function called with field errors on submit, if validations have failed.
+   */
+  onError?: SubmitErrorHandler<Values>;
 
   /**
    * Default values are highly recommended for reliable form behavior, particularly resets.
@@ -87,6 +93,7 @@ export const ConnectedForm = forwardRef(
     {
       children,
       onSubmit,
+      onError,
       defaultValues,
       validation = 'onChange',
       disableFieldsOnSubmit = false,
@@ -112,7 +119,8 @@ export const ConnectedForm = forwardRef(
       mode: validation,
     });
 
-    const onError = async () => {
+    const onInvalid: SubmitErrorHandler<Values> = async (errors, event) => {
+      onError?.(errors, event);
       clearErrors();
       await trigger();
     };
@@ -161,7 +169,11 @@ export const ConnectedForm = forwardRef(
           watch={watch}
           {...methods}
         >
-          <Form onSubmit={handleSubmit(onSubmit, onError)} {...rest} ref={ref}>
+          <Form
+            onSubmit={handleSubmit(onSubmit, onInvalid)}
+            {...rest}
+            ref={ref}
+          >
             {children}
           </Form>
         </FormProvider>

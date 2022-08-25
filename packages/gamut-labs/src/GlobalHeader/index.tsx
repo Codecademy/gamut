@@ -56,60 +56,39 @@ function getAppHeaderItems(
   props: GlobalHeaderProps,
   mobile: Boolean
 ): FormattedAppHeaderItems | FormattedMobileAppHeaderItems {
-  const { renderBookmarks, hidePricing } = props;
+  const { hidePricing } = props;
   switch (props.type) {
     case 'anon':
       switch (props.variant) {
         case 'landing':
           return mobile
-            ? anonLandingMobileHeaderItems(
-                hidePricing,
-                props.user,
-                renderBookmarks
-              )
-            : anonLandingHeaderItems(hidePricing, props.user, renderBookmarks);
+            ? anonLandingMobileHeaderItems(hidePricing, props.user)
+            : anonLandingHeaderItems(hidePricing, props.user);
         case 'login':
           return mobile
-            ? anonLoginMobileHeaderItems(
-                hidePricing,
-                props.user,
-                renderBookmarks
-              )
-            : anonLoginHeaderItems(hidePricing, props.user, renderBookmarks);
+            ? anonLoginMobileHeaderItems(hidePricing, props.user)
+            : anonLoginHeaderItems(hidePricing, props.user);
         case 'signup':
           return mobile
-            ? anonSignupMobileHeaderItems(
-                hidePricing,
-                props.user,
-                renderBookmarks
-              )
-            : anonSignupHeaderItems(hidePricing, props.user, renderBookmarks);
+            ? anonSignupMobileHeaderItems(hidePricing, props.user)
+            : anonSignupHeaderItems(hidePricing, props.user);
         default:
           return mobile
-            ? anonDefaultMobileHeaderItems(
-                hidePricing,
-                props.user,
-                renderBookmarks
-              )
-            : anonDefaultHeaderItems(hidePricing, props.user, renderBookmarks);
+            ? anonDefaultMobileHeaderItems(hidePricing, props.user)
+            : anonDefaultHeaderItems(hidePricing, props.user);
       }
     case 'free':
       return mobile
-        ? freeMobileHeaderItems(props.user, hidePricing, renderBookmarks)
+        ? freeMobileHeaderItems(props.user, hidePricing)
         : freeHeaderItems(
             props.user,
             hidePricing,
-            props.renderFavorites?.desktop,
-            renderBookmarks
+            props.renderFavorites?.desktop
           );
     case 'pro':
       return mobile
-        ? proMobileHeaderItems(props.user, renderBookmarks)
-        : proHeaderItems(
-            props.user,
-            props.renderFavorites?.desktop,
-            renderBookmarks
-          );
+        ? proMobileHeaderItems(props.user)
+        : proHeaderItems(props.user, props.renderFavorites?.desktop);
     case 'loading':
       return mobile ? loadingMobileHeaderItems : loadingHeaderItems;
   }

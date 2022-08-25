@@ -155,6 +155,7 @@ export const RadioWatchExample = () => {
           radioGroup: `${radioGroup}`,
         });
       }}
+      onError={(errors) => console.log(errors)}
       resetOnSubmit
       {...connectedFormProps}
     >
