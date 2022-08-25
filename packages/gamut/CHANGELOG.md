@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [50.5.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@50.5.1...@codecademy/gamut@50.5.2) (2022-08-25)
+
+
+### Bug Fixes
+
+* **useDebouncedField:** Exporting dirtying key, fixing re-dirty on watch key change, adding `shouldDirtyOnChange` arg ([9625b35](https://github.com/Codecademy/gamut/commit/9625b359411d87bd1819c4aaf3b96ed226193b88))
+
+
+
 ### [50.5.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@50.5.0...@codecademy/gamut@50.5.1) (2022-08-24)
 
 
