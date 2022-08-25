@@ -78,6 +78,7 @@ const responsiveGridTemplate = `
                             'language'
                             'language'
                             'language'
+                            'space'
                             'subject'
                             'subject'
                             'subject'
@@ -188,6 +189,11 @@ export const AppHeaderCatalogSection: React.FC<AppHeaderCatalogSectionProps> = (
                   </Box>
                 ))}
               </Box>
+              <Box
+                display={{ _: 'block', lg: 'none' }}
+                py={16}
+                gridArea="space"
+              />
               <Box gridArea="subject" display="grid" gridTemplateColumns="1fr">
                 {topSubjects.map((item) => (
                   <Box width="12rem" key={item.id} minHeight={36}>
