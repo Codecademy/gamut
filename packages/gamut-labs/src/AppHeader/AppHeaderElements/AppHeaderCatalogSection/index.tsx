@@ -8,6 +8,7 @@ import {
   LayoutGrid,
   Text,
 } from '@codecademy/gamut';
+import { NumberBlocks } from '@codecademy/gamut-illustrations';
 import { Background, css } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React from 'react';
@@ -40,12 +41,20 @@ const StyledAnchorColumn = styled(Column)(
   })
 );
 
-const catalogAnchorData: AppHeaderItem = {
+const catalogButtonData: AppHeaderItem = {
   text: 'Explore all courses',
   id: 'catalog',
   type: 'text-button',
   href: '/catalog',
   trackingTarget: 'topnav_catalog_explore_full',
+};
+
+const quizAnchorData: AppHeaderItem = {
+  text: 'Take our quiz →',
+  id: 'quiz',
+  type: 'text-button',
+  href: '/explore/sorting-quiz',
+  trackingTarget: 'sorting_quiz',
 };
 
 const gridTemplate = `
@@ -132,7 +141,7 @@ export const AppHeaderCatalogSection: React.FC<AppHeaderCatalogSectionProps> = (
               <FillButton
                 mode="dark"
                 textAlign={{ _: 'center', md: 'left' }}
-                href={catalogAnchorData.href}
+                href={catalogButtonData.href}
                 data-focusablecatalog="true"
                 onClick={(
                   event: React.MouseEvent<HTMLButtonElement, MouseEvent>
@@ -141,7 +150,7 @@ export const AppHeaderCatalogSection: React.FC<AppHeaderCatalogSectionProps> = (
                 mt={{ _: 16, lg: 96 }}
                 maxWidth={170}
               >
-                {catalogAnchorData.text}
+                {catalogButtonData.text}
               </FillButton>
             </Background>
           </Column>
@@ -240,27 +249,31 @@ export const AppHeaderCatalogSection: React.FC<AppHeaderCatalogSectionProps> = (
       )}
       <Column px={{ _: 16, xs: 32, sm: 64, md: 48, lg: 24 }} py={16}>
         <FlexBox
-          alignItems={{ _: 'left', lg: 'center' }}
-          flexDirection={{ _: 'column', lg: 'row' }}
+          alignItems="flex-start"
+          flexDirection={{ _: 'column', sm: 'row' }}
         >
-          Not sure where to begin?
-          <Anchor
-            variant="standard"
-            fontSize={14}
-            fontWeight={700}
-            textAlign={{ _: 'left', lg: 'center' }}
-            // TODO: get correct link
-            href={catalogAnchorData.href}
-            data-focusablecatalog="true"
-            // TODO: get correct tracking data
-            onClick={(event) => onClick(event, catalogAnchorData)}
-            tabIndex={tabIndex}
-            ml={{ _: 0, lg: 16 }}
-            pt={{ _: 8, lg: 0 }}
-          >
-            Take our quiz →
-          </Anchor>
-          {/* TODO: add image */}
+          <FlexBox alignItems="flex-start">
+            <Box mr={8}>
+              <NumberBlocks height={20} width={20} />
+            </Box>
+            <Box>Not sure where to begin?</Box>
+          </FlexBox>
+          <Box>
+            <Anchor
+              variant="standard"
+              fontSize={14}
+              fontWeight={700}
+              textAlign={{ _: 'left', lg: 'center' }}
+              href={quizAnchorData.href}
+              data-focusablecatalog="true"
+              onClick={(event) => onClick(event, quizAnchorData)}
+              tabIndex={tabIndex}
+              ml={{ _: 0, sm: 16 }}
+              pt={{ _: 8, sm: 0 }}
+            >
+              {quizAnchorData.text}
+            </Anchor>
+          </Box>
         </FlexBox>
       </Column>
     </>
