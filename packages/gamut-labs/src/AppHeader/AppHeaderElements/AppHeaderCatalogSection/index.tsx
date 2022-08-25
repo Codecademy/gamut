@@ -8,7 +8,7 @@ import {
   LayoutGrid,
   Text,
 } from '@codecademy/gamut';
-import { NumberBlocks } from '@codecademy/gamut-illustrations';
+import { TinyBlocks } from '@codecademy/gamut-illustrations';
 import { Background, css } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React from 'react';
@@ -254,7 +254,7 @@ export const AppHeaderCatalogSection: React.FC<AppHeaderCatalogSectionProps> = (
         >
           <FlexBox alignItems="flex-start">
             <Box mr={8}>
-              <NumberBlocks height={20} width={20} />
+              <TinyBlocks height={26} width={26} />
             </Box>
             <Box>Not sure where to begin?</Box>
           </FlexBox>
