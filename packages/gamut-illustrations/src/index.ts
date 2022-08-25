@@ -32,5 +32,4 @@ export * from './Puzzle';
 export * from './Python';
 export * from './Sun';
 export * from './Target';
-export * from './TinyBlocks';
 export * from './types';
