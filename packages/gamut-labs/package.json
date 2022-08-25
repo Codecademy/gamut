@@ -56,9 +56,8 @@
   },
   "scripts": {
     "verify": "tsc --noEmit",
-    "compile": "babel ./src --out-dir ./dist --extensions \".ts,.tsx\"",
-    "build:watch": "rm -rf dist && yarn compile && tsc --emitDeclarationOnly && onchange ./src -- yarn build:compile && yarn build:types",
-    "build": "nx build"
+    "build:watch": "yarn build && onchange ./src -- yarn build",
+    "build": "nx build @codecademy/gamut-labs"
   },
   "license": "MIT",
   "publishConfig": {
