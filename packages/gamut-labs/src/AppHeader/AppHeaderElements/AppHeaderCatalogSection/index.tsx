@@ -8,7 +8,7 @@ import {
   LayoutGrid,
   Text,
 } from '@codecademy/gamut';
-import { NumberBlocks } from '@codecademy/gamut-illustrations';
+import { TinyBlocks } from '@codecademy/gamut-illustrations';
 import { Background, css } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React from 'react';
@@ -145,7 +145,7 @@ export const AppHeaderCatalogSection: React.FC<AppHeaderCatalogSectionProps> = (
                 data-focusablecatalog="true"
                 onClick={(
                   event: React.MouseEvent<HTMLButtonElement, MouseEvent>
-                ) => onClick(event, item as AppHeaderItem)}
+                ) => onClick(event, catalogButtonData)}
                 tabIndex={tabIndex}
                 mt={{ _: 16, lg: 96 }}
                 maxWidth={170}
@@ -254,7 +254,7 @@ export const AppHeaderCatalogSection: React.FC<AppHeaderCatalogSectionProps> = (
         >
           <FlexBox alignItems="flex-start">
             <Box mr={8}>
-              <NumberBlocks height={20} width={20} />
+              <TinyBlocks height={20} width={20} />
             </Box>
             <Box>Not sure where to begin?</Box>
           </FlexBox>
@@ -266,7 +266,9 @@ export const AppHeaderCatalogSection: React.FC<AppHeaderCatalogSectionProps> = (
               textAlign={{ _: 'left', lg: 'center' }}
               href={quizAnchorData.href}
               data-focusablecatalog="true"
-              onClick={(event) => onClick(event, quizAnchorData)}
+              onClick={(
+                event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
+              ) => onClick(event, quizAnchorData)}
               tabIndex={tabIndex}
               ml={{ _: 0, sm: 16 }}
               pt={{ _: 8, sm: 0 }}
