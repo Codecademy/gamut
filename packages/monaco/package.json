@@ -30,8 +30,7 @@
     "monaco-editor-webpack-plugin": "1.9.1"
   },
   "scripts": {
-    "compile": "babel ./src --out-dir ./dist --extensions \".ts,.tsx\"",
-    "build:watch": "rm -rf dist && yarn compile && tsc --emitDeclarationOnly && onchange ./src -- yarn compile && tsc --emitDeclarationOnly",
+    "build:watch": "yarn build && onchange ./src -- yarn build",
     "build": "nx build @codecademy/monaco"
   },
   "license": "MIT",
