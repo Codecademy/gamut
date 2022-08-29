@@ -22,7 +22,7 @@
     "@codecademy/gamut-styles": "^14.0.4",
     "@codecademy/macros": "^3.0.2",
     "@codecademy/variance": "^0.20.3",
-    "@codecademy/webpack-config": "^6.0.1",
+    "@codecademy/webpack-config": "6.2.0",
     "@emotion/cache": "^11.4.0",
     "@emotion/react": "^11.4.0",
     "@emotion/styled": "^11.3.0",
