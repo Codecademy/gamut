@@ -282,9 +282,17 @@ export const freeProfile = (
   isMobile?: boolean
 ): AppHeaderProfileDropdownItem => {
   const topSection = [profileMyProfile];
+  const isSkillsoftUser = user?.isSkillsoftUser;
+  const skillsoftBamProfileFeatureFlag = user?.skillsoftBamProfileFeatureFlag;
 
   if (user.isBusinessAdmin || !user.isBusinessSsoUser) {
-    topSection.push(profileAccount);
+    if (isSkillsoftUser) {
+      if (skillsoftBamProfileFeatureFlag) {
+        topSection.push(profileBusinessAccount);
+      }
+    } else {
+      topSection.push(profileBusinessAccount);
+    }
   }
 
   topSection.push(profileMyHome);
@@ -311,6 +319,8 @@ export const freeProfile = (
 
 export const proProfile = (user: User): AppHeaderProfileDropdownItem => {
   const topSection = [profileMyProfile];
+  const isSkillsoftUser = user?.isSkillsoftUser;
+  const skillsoftBamProfileFeatureFlag = user?.skillsoftBamProfileFeatureFlag;
 
   if (user.isBusinessAdmin || !user.isBusinessSsoUser) {
     topSection.push(profileAccount);
@@ -319,7 +329,13 @@ export const proProfile = (user: User): AppHeaderProfileDropdownItem => {
   topSection.push(profileMyHome);
 
   if (user?.isAccountManager || user?.isBusinessAdmin) {
-    topSection.push(profileBusinessAccount);
+    if (isSkillsoftUser) {
+      if (skillsoftBamProfileFeatureFlag) {
+        topSection.push(profileBusinessAccount);
+      }
+    } else {
+      topSection.push(profileBusinessAccount);
+    }
   }
   if (user.showReferrals) {
     topSection.push(referrals);
