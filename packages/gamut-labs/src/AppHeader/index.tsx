@@ -88,13 +88,12 @@ export const mapItemToElement = (
         <AppHeaderDropdown onKeyDown={onKeyDown} action={action} item={item} />
       );
     case 'catalog-dropdown':
-      const catalogItemCount = languageAndSubjectCount(item);
       return (
         <AppHeaderDropdownSectionContainer
           action={action}
           item={item}
           dataFocusable="[data-focusablecatalog=true]"
-          itemsCount={catalogItemCount}
+          itemsCount={languageAndSubjectCount(item)}
           styles={{
             top: '3.5rem',
             minWidth: '64rem',
