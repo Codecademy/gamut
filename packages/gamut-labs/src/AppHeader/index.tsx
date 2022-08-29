@@ -93,7 +93,7 @@ export const mapItemToElement = (
           action={action}
           item={item}
           dataFocusable="[data-focusablecatalog=true]"
-          itemsCount={catalogItemCount}
+          itemsCount={languageAndSubjectCount(item)}
           styles={{
             top: '3.5rem',
             minWidth: '64rem',
