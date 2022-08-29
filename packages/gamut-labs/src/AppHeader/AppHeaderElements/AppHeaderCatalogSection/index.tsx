@@ -57,16 +57,14 @@ const quizAnchorData: AppHeaderItem = {
   trackingTarget: 'sorting_quiz',
 };
 
-const gridTemplate = `
-                    'language language subject'
+const gridTemplate = `'language language subject'
                     'language language subject'
                     'language language subject'
                     'language language subject'
                     'language language subject'
                     'language language subject'`;
 
-const responsiveGridTemplate = `
-                            'language'
+const responsiveGridTemplate = `'language'
                             'language'
                             'language'
                             'language'
@@ -169,7 +167,7 @@ export const AppHeaderCatalogSection: React.FC<AppHeaderCatalogSectionProps> = (
               <Box
                 gridArea="language"
                 display="grid"
-                gridTemplateColumns={{ _: '1fr', lg: 'repeat(3, 1fr)' }}
+                gridTemplateColumns={{ _: '1fr', lg: 'repeat(2, 1fr)' }}
                 gridTemplateRows={{ _: '1fr', lg: 'repeat(6, 1fr)' }}
                 gridAutoFlow={{ lg: 'column' }}
               >
@@ -254,12 +252,9 @@ export const AppHeaderCatalogSection: React.FC<AppHeaderCatalogSectionProps> = (
         </StyledColumn>
       )}
       <Column px={{ _: 16, xs: 32, sm: 64, md: 48, lg: 24 }} py={16}>
-        <FlexBox
-          alignItems="flex-start"
-          flexDirection={{ _: 'column', sm: 'row' }}
-        >
-          <FlexBox alignItems="flex-start">
-            <Box mr={8}>
+        <FlexBox alignItems="center" flexDirection={{ _: 'column', sm: 'row' }}>
+          <FlexBox alignItems="center">
+            <Box mr={12}>
               <TinyBlocks height={26} width={26} />
             </Box>
             <Box>Not sure where to begin?</Box>
