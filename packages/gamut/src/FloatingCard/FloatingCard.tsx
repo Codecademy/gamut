@@ -1,5 +1,5 @@
 import { CheckerDense, PatternProps } from '@codecademy/gamut-patterns';
-import { styledOptions, system } from '@codecademy/gamut-styles';
+import { styledOptions, system, theme } from '@codecademy/gamut-styles';
 import { StyleProps, variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
 import { Properties } from 'csstype';
@@ -110,6 +110,7 @@ export const FloatingCard = forwardRef<HTMLDivElement, FloatingCardWithWrapper>(
         top="0.5rem"
         left={shadow === 'bottomLeft' ? '-0.5rem' : undefined}
         right={shadow === 'bottomRight' ? '-0.5rem' : undefined}
+        fill={theme.colors.white}
       />
       <CardBody className={className} {...rest} ref={ref}>
         {children}
