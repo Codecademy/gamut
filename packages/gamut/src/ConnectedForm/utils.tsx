@@ -1,4 +1,4 @@
-import { omit } from 'lodash';
+import { isNull, isUndefined, omit } from 'lodash';
 import {
   ChangeEvent,
   ChangeEventHandler,
@@ -244,7 +244,7 @@ export const useGetInitialFormValue = ({
   ]);
 
   useEffect(() => {
-    if (initialValue) {
+    if (!(isNull(initialValue) || isUndefined(initialValue))) {
       setLocalValue(initialValue);
     } else {
       setValue(name, defaultValue);
