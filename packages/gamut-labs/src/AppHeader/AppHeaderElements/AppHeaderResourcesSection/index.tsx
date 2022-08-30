@@ -8,9 +8,10 @@ import { AppHeaderClickHandler, AppHeaderLinkItem } from '../types';
 
 export type AppHeaderResourcesSectionProps = {
   action: AppHeaderClickHandler;
-  id: string;
+  id?: string;
   isOpen?: boolean;
-  role: string;
+  role?: string;
+  handleClose?: () => void;
 };
 
 const StyledColumn = styled(Column)(
@@ -23,6 +24,7 @@ const StyledColumn = styled(Column)(
 export const AppHeaderResourcesSection: React.FC<AppHeaderResourcesSectionProps> = ({
   action,
   isOpen,
+  handleClose,
 }) => {
   const tabIndex = isOpen === false ? -1 : 0;
 
@@ -30,6 +32,7 @@ export const AppHeaderResourcesSection: React.FC<AppHeaderResourcesSectionProps>
     event: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
     linkItem: AppHeaderLinkItem
   ) => {
+    handleClose?.();
     return action(event, linkItem);
   };
 
