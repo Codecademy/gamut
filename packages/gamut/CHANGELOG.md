@@ -3,6 +3,100 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [50.6.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@50.5.4...@codecademy/gamut@50.6.0) (2022-08-29)
+
+
+### Features
+
+* **Modal:** change overlay shroud opacity and make modals use dark by default  ([#2499](https://github.com/Codecademy/gamut/issues/2499)) ([74e9301](https://github.com/Codecademy/gamut/commit/74e93010035c430bec921108d20ae27bd833bc01))
+
+
+
+### [50.5.4](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@50.5.3...@codecademy/gamut@50.5.4) (2022-08-29)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [50.5.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@50.5.2...@codecademy/gamut@50.5.3) (2022-08-25)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [50.5.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@50.5.1...@codecademy/gamut@50.5.2) (2022-08-25)
+
+
+### Bug Fixes
+
+* **useDebouncedField:** Exporting dirtying key, fixing re-dirty on watch key change, adding `shouldDirtyOnChange` arg ([9625b35](https://github.com/Codecademy/gamut/commit/9625b359411d87bd1819c4aaf3b96ed226193b88))
+
+
+
+### [50.5.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@50.5.0...@codecademy/gamut@50.5.1) (2022-08-24)
+
+
+### Bug Fixes
+
+* **Tooltip:** fix useLayoutEffect ssr warning ([9377266](https://github.com/Codecademy/gamut/commit/9377266a116b7e2cbee4712729ac0a75a93d042c))
+
+
+
+## [50.5.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@50.4.3...@codecademy/gamut@50.5.0) (2022-08-24)
+
+
+### Features
+
+* **ConnectedForm:** pass onError prop through to react-hook-form ([07973a3](https://github.com/Codecademy/gamut/commit/07973a37cd7074ebf2520cb6dbc20fdd601c07f0))
+
+
+
+### [50.4.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@50.4.2...@codecademy/gamut@50.4.3) (2022-08-23)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [50.4.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@50.4.1...@codecademy/gamut@50.4.2) (2022-08-22)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [50.4.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@50.4.0...@codecademy/gamut@50.4.1) (2022-08-19)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [50.4.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@50.3.0...@codecademy/gamut@50.4.0) (2022-08-19)
+
+
+### Features
+
+* **List:** add breakpoint prop and variants ([67b36cf](https://github.com/Codecademy/gamut/commit/67b36cff375c533e2ad2eb3c124c6daac2f4776f))
+
+
+
+## [50.3.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@50.2.0...@codecademy/gamut@50.3.0) (2022-08-17)
+
+
+### Features
+
+* **MobileBookmarks:** Add support for mobile screen window pane ([6ff2636](https://github.com/Codecademy/gamut/commit/6ff2636675efbaeeb76c7d0f5652cded2299615d))
+
+
+
 ## [50.2.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@50.1.4...@codecademy/gamut@50.2.0) (2022-08-11)
 
 

@@ -1,32 +1,49 @@
 import { ButtonBaseElements } from '@codecademy/gamut';
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 
 import { AnimatedHeaderZone } from '../AppHeader/shared';
+import {
+  CrossDeviceItemId,
+  CrossDeviceStateProps,
+} from '../GlobalHeader/types';
 import { NotificationBell } from './NotificationBell';
-import { AppHeaderNotifications, NotificationsRendererProps } from './types';
+import {
+  AppHeaderNotificationSettings,
+  NotificationsRendererProps,
+} from './types';
 
-export const useHeaderNotifications = (
-  settings: AppHeaderNotifications | undefined,
-  Renderer: React.ComponentType<NotificationsRendererProps>
-) => {
-  const [isPaneVisible, setIsPaneVisible] = useState(false);
+type HeaderNotificationProps = CrossDeviceStateProps & {
+  settings: AppHeaderNotificationSettings | undefined;
+  Renderer: React.ComponentType<NotificationsRendererProps>;
+};
+
+export const useHeaderNotifications = ({
+  settings,
+  Renderer,
+  openCrossDeviceItemId,
+  setOpenCrossDeviceItemId,
+}: HeaderNotificationProps) => {
   const bellRef = useRef<ButtonBaseElements>(null);
 
   if (!settings) {
     return [null, null];
   }
 
+  const id = CrossDeviceItemId.NOTIFICATIONS;
+
   const togglePane = () => {
-    if (!isPaneVisible) {
+    if (openCrossDeviceItemId !== id) {
       settings.onEnable();
     }
 
-    setIsPaneVisible((oldIsPaneVisible) => !oldIsPaneVisible);
+    setOpenCrossDeviceItemId(
+      openCrossDeviceItemId === id ? CrossDeviceItemId.UNSET : id
+    );
   };
 
   return [
     {
-      id: 'notifications',
+      id,
       type: 'render-element',
       renderElement: () => (
         <NotificationBell
@@ -36,12 +53,15 @@ export const useHeaderNotifications = (
         />
       ),
     },
-    <AnimatedHeaderZone visible={isPaneVisible}>
+    <AnimatedHeaderZone
+      visible={openCrossDeviceItemId === id}
+      key="notifications-content"
+    >
       <Renderer
         actions={settings.actions}
         bellRef={bellRef}
         notifications={settings.notifications}
-        onClose={togglePane}
+        setOpenCrossDeviceItemId={setOpenCrossDeviceItemId}
       />
     </AnimatedHeaderZone>,
   ] as const;

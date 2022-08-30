@@ -15,12 +15,14 @@ export interface ExpandableRowProps extends RowProps {
   expanded: boolean;
   renderExpanded: () => React.ReactNode;
   expandedRowAriaLabel?: string;
+  keepSpacingWhileExpanded?: boolean;
 }
 
 export interface SimpleRowProps extends RowProps {
   expanded?: never;
   renderExpanded?: never;
   expandedRowAriaLabel?: never;
+  keepSpacingWhileExpanded?: never;
 }
 
 export type ListRowProps = ExpandableRowProps | SimpleRowProps;
@@ -45,11 +47,25 @@ const ExpandInCollapseOut: React.FC = ({ children }) => {
 
 export const ListRow = forwardRef<HTMLLIElement, ListRowProps>(
   (
-    { children, expanded, expandedRowAriaLabel, renderExpanded, ...rest },
+    {
+      children,
+      expanded,
+      expandedRowAriaLabel,
+      renderExpanded,
+      keepSpacingWhileExpanded,
+      ...rest
+    },
     ref
   ) => {
-    const { variant, scrollable, ...rowConfig } = useListContext();
-    const wrapperProps = !renderExpanded ? rowConfig : {};
+    const {
+      variant,
+      scrollable,
+      rowBreakpoint,
+      ...rowConfig
+    } = useListContext();
+    const wrapperProps = !renderExpanded
+      ? rowConfig
+      : { spacing: keepSpacingWhileExpanded ? rowConfig.spacing : undefined };
     let content = children;
 
     if (renderExpanded) {
@@ -75,6 +91,7 @@ export const ListRow = forwardRef<HTMLLIElement, ListRowProps>(
         variant={variant}
         expanded={!!renderExpanded}
         scrollable={scrollable}
+        rowBreakpoint={rowBreakpoint}
         {...wrapperProps}
       >
         {content}

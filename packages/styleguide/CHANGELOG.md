@@ -3,6 +3,129 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [61.4.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@61.4.0...@codecademy/styleguide@61.4.1) (2022-08-29)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [61.4.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@61.3.5...@codecademy/styleguide@61.4.0) (2022-08-29)
+
+
+### Features
+
+* **Footer:** remove shop link from footer ([1f308af](https://github.com/Codecademy/gamut/commit/1f308afa87682ab1cccf018d68b61b2cd2a20edc))
+
+
+
+### [61.3.5](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@61.3.4...@codecademy/styleguide@61.3.5) (2022-08-29)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [61.3.4](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@61.3.3...@codecademy/styleguide@61.3.4) (2022-08-25)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [61.3.3](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@61.3.2...@codecademy/styleguide@61.3.3) (2022-08-25)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [61.3.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@61.3.1...@codecademy/styleguide@61.3.2) (2022-08-24)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [61.3.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@61.3.0...@codecademy/styleguide@61.3.1) (2022-08-24)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [61.3.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@61.2.4...@codecademy/styleguide@61.3.0) (2022-08-24)
+
+
+### Features
+
+* **ConnectedForm:** pass onError prop through to react-hook-form ([07973a3](https://github.com/Codecademy/gamut/commit/07973a37cd7074ebf2520cb6dbc20fdd601c07f0))
+
+
+
+### [61.2.4](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@61.2.3...@codecademy/styleguide@61.2.4) (2022-08-23)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [61.2.3](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@61.2.2...@codecademy/styleguide@61.2.3) (2022-08-23)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [61.2.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@61.2.1...@codecademy/styleguide@61.2.2) (2022-08-22)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [61.2.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@61.2.0...@codecademy/styleguide@61.2.1) (2022-08-19)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [61.2.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@61.1.10...@codecademy/styleguide@61.2.0) (2022-08-19)
+
+
+### Features
+
+* **List:** add breakpoint prop and variants ([67b36cf](https://github.com/Codecademy/gamut/commit/67b36cff375c533e2ad2eb3c124c6daac2f4776f))
+
+
+
+### [61.1.10](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@61.1.9...@codecademy/styleguide@61.1.10) (2022-08-18)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [61.1.9](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@61.1.8...@codecademy/styleguide@61.1.9) (2022-08-17)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
 ### [61.1.8](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@61.1.7...@codecademy/styleguide@61.1.8) (2022-08-12)
 
 **Note:** Version bump only for package @codecademy/styleguide

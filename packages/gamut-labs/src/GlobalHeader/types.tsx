@@ -5,13 +5,12 @@ import {
   AppHeaderItemWithHref,
 } from '../AppHeader/AppHeaderElements/types';
 import { AppHeaderSearch } from '../AppHeader/Search/useHeaderSearch';
-import { AppHeaderNotifications } from '../Notifications/types';
+import { CrossDeviceBookmarkParts } from '../Bookmarks/types';
+import { AppHeaderNotificationSettings } from '../Notifications/types';
 
 type RenderFavorites = {
   desktop: () => ReactNode;
 };
-
-type RenderBookmarks = () => ReactNode;
 
 type RenderProfile = { desktop: () => ReactNode; mobile: () => ReactNode };
 
@@ -23,7 +22,7 @@ type BaseHeader = {
   className?: string;
   hidePricing?: boolean;
   search: AppHeaderSearch;
-  renderBookmarks?: RenderBookmarks;
+  crossDeviceBookmarkParts?: CrossDeviceBookmarkParts;
 };
 
 export type User = {
@@ -45,7 +44,7 @@ export type User = {
 };
 
 type LoggedInHeader = BaseHeader & {
-  notifications: AppHeaderNotifications;
+  notifications: AppHeaderNotificationSettings;
   renderProfile?: RenderProfile;
   renderFavorites?: RenderFavorites;
   user: User;
@@ -71,4 +70,15 @@ export type ProHeader = LoggedInHeader & {
 
 export type LoadingHeader = BaseHeader & {
   type: 'loading';
+};
+
+export enum CrossDeviceItemId {
+  NOTIFICATIONS = 'notifications',
+  BOOKMARKS = 'bookmarks',
+  UNSET = '',
+}
+
+export type CrossDeviceStateProps = {
+  openCrossDeviceItemId: CrossDeviceItemId;
+  setOpenCrossDeviceItemId: React.Dispatch<React.SetStateAction<string>>;
 };

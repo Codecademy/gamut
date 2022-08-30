@@ -1,3 +1,4 @@
+export * from './Announcement';
 export * from './Bee';
 export * from './Bell';
 export * from './BinaryBlocks';
@@ -30,5 +31,6 @@ export * from './PracticeProject';
 export * from './Puzzle';
 export * from './Python';
 export * from './Sun';
+export * from './TinyBlocks';
 export * from './Target';
 export * from './types';

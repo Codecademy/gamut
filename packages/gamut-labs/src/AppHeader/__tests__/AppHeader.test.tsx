@@ -5,6 +5,7 @@ import { ThemeProvider } from '@emotion/react';
 import { fireEvent, render, screen } from '@testing-library/react';
 import React from 'react';
 
+import { mockBookmarkParts } from '../../Bookmarks/fixtures';
 import { AppHeader, AppHeaderProps } from '..';
 
 const action = jest.fn();
@@ -17,6 +18,12 @@ const defaultProps = {
     onTrackingClick: jest.fn(),
   },
   isAnon: true,
+  openCrossDeviceItemId: '',
+  setOpenCrossDeviceItemId: jest.fn(),
+  items: {
+    left: [],
+    right: [],
+  },
 };
 
 const logoProps: AppHeaderProps = {
@@ -128,6 +135,11 @@ const fillButtonProps: AppHeaderProps = {
   },
 };
 
+const appHeaderPropsWithBookmarkParts: AppHeaderProps = {
+  ...defaultProps,
+  crossDeviceBookmarkParts: mockBookmarkParts,
+};
+
 const renderAppHeader = (props: AppHeaderProps) => {
   return render(
     <ThemeProvider theme={theme}>
@@ -171,5 +183,37 @@ describe('AppHeader', () => {
     renderAppHeader(fillButtonProps);
     fireEvent.click(screen.getByText('FillButton'));
     expect(action).toHaveBeenCalledTimes(1);
+  });
+
+  describe('bookmarks', () => {
+    describe('NO crossDeviceBookmarkParts prop provided', () => {
+      it('does NOT render a bookmarks button or content', () => {
+        renderAppHeader({
+          ...appHeaderPropsWithBookmarkParts,
+          crossDeviceBookmarkParts: undefined,
+        });
+        expect(screen.queryByText('IMA BOOKMARKS BUTTON')).toBeNull();
+        expect(screen.queryByText('DESKTOP BOOKMARKS CONTENT')).toBeNull();
+      });
+    });
+
+    describe('crossDeviceBookmarkParts prop IS provided', () => {
+      it('renders the button but does NOT render bookmarks content if openCrossDeviceItemId is NOT set to bookmarks', () => {
+        renderAppHeader(appHeaderPropsWithBookmarkParts);
+
+        screen.getByText('IMA BOOKMARKS BUTTON');
+        expect(screen.queryByText('DESKTOP BOOKMARKS CONTENT')).toBeNull();
+      });
+
+      it('renders both the button and bookmarks content if openCrossDeviceItemId is set to bookmarks', () => {
+        renderAppHeader({
+          ...appHeaderPropsWithBookmarkParts,
+          openCrossDeviceItemId: 'bookmarks',
+        });
+
+        screen.getByText('IMA BOOKMARKS BUTTON');
+        screen.getByText('DESKTOP BOOKMARKS CONTENT');
+      });
+    });
   });
 });

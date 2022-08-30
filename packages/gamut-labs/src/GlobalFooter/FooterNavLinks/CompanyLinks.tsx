@@ -18,7 +18,6 @@ import { SocialMediaLinks } from './SocialMediaLinks';
 export type CompanyLinksProps = {
   hidePricing?: boolean;
   onClick: GlobalFooterClickHandler;
-  userGeo: string;
 };
 
 const MobileImageItem = styled(Box)();
@@ -43,7 +42,6 @@ MobileImageLink.defaultProps = {
 export const CompanyLinks: React.FC<CompanyLinksProps> = ({
   hidePricing,
   onClick,
-  userGeo,
 }) => {
   const community = (
     <Box>
@@ -53,6 +51,7 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
           <Anchor
             href="https://discuss.codecademy.com"
             onClick={(event) => onClick({ event, target: 'forums' })}
+            target="_blank"
             variant="interface"
           >
             Forums
@@ -62,6 +61,7 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
           <Anchor
             href="https://discord.com/invite/codecademy"
             onClick={(event) => onClick({ event, target: 'discord' })}
+            target="_blank"
             variant="interface"
           >
             Discord
@@ -71,6 +71,7 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
           <Anchor
             href="https://community.codecademy.com/chapters"
             onClick={(event) => onClick({ event, target: 'chapters' })}
+            target="_blank"
             variant="interface"
           >
             Chapters
@@ -137,17 +138,6 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
             Affiliates
           </Anchor>
         </FooterLinkItem>
-        {userGeo !== 'IN' && (
-          <FooterLinkItem>
-            <Anchor
-              href="https://shop.codecademy.com"
-              onClick={(event) => onClick({ event, target: 'shop' })}
-              variant="interface"
-            >
-              Shop
-            </Anchor>
-          </FooterLinkItem>
-        )}
         <FooterLinkItem>
           <SocialMediaLinks />
         </FooterLinkItem>
@@ -276,6 +266,7 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
           <Anchor
             href="https://help.codecademy.com"
             onClick={(event) => onClick({ event, target: 'help' })}
+            target="_blank"
             variant="interface"
           >
             Help Center
