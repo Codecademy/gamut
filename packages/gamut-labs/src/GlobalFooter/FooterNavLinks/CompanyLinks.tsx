@@ -18,7 +18,6 @@ import { SocialMediaLinks } from './SocialMediaLinks';
 export type CompanyLinksProps = {
   hidePricing?: boolean;
   onClick: GlobalFooterClickHandler;
-  userGeo: string;
 };
 
 const MobileImageItem = styled(Box)();
@@ -43,7 +42,6 @@ MobileImageLink.defaultProps = {
 export const CompanyLinks: React.FC<CompanyLinksProps> = ({
   hidePricing,
   onClick,
-  userGeo,
 }) => {
   const community = (
     <Box>
@@ -140,18 +138,6 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
             Affiliates
           </Anchor>
         </FooterLinkItem>
-        {userGeo !== 'IN' && (
-          <FooterLinkItem>
-            <Anchor
-              href="https://shop.codecademy.com"
-              onClick={(event) => onClick({ event, target: 'shop' })}
-              target="_blank"
-              variant="interface"
-            >
-              Shop
-            </Anchor>
-          </FooterLinkItem>
-        )}
         <FooterLinkItem>
           <SocialMediaLinks />
         </FooterLinkItem>

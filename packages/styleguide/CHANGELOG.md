@@ -3,6 +3,47 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [61.4.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@61.4.0...@codecademy/styleguide@61.4.1) (2022-08-29)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [61.4.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@61.3.5...@codecademy/styleguide@61.4.0) (2022-08-29)
+
+
+### Features
+
+* **Footer:** remove shop link from footer ([1f308af](https://github.com/Codecademy/gamut/commit/1f308afa87682ab1cccf018d68b61b2cd2a20edc))
+
+
+
+### [61.3.5](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@61.3.4...@codecademy/styleguide@61.3.5) (2022-08-29)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [61.3.4](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@61.3.3...@codecademy/styleguide@61.3.4) (2022-08-25)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [61.3.3](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@61.3.2...@codecademy/styleguide@61.3.3) (2022-08-25)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
 ### [61.3.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@61.3.1...@codecademy/styleguide@61.3.2) (2022-08-24)
 
 **Note:** Version bump only for package @codecademy/styleguide
