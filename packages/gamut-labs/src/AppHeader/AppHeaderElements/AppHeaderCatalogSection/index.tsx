@@ -135,7 +135,7 @@ export const AppHeaderCatalogSection: React.FC<AppHeaderCatalogSectionProps> = (
             >
               <DescriptionSection
                 title="Popular course topics"
-                subtitle="Find courses in languages or subjects that interest you."
+                subtitle="Explore free or paid courses in topics that interest you."
               />
               <FillButton
                 mode="dark"
