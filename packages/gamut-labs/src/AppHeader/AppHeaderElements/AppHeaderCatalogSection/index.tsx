@@ -84,17 +84,15 @@ const responsiveGridTemplate = `'languageHeader'
                             'subject'`;
 export type AppHeaderCatalogSectionProps = {
   action: AppHeaderClickHandler;
+  role: string;
   item: AppHeaderCatalogDropdownItem | AppHeaderResourcesDropdownItem;
-  role?: string;
   isOpen?: boolean;
-  handleClose?: () => void;
 };
 
 export const AppHeaderCatalogSection: React.FC<AppHeaderCatalogSectionProps> = ({
   action,
   item,
   isOpen,
-  handleClose,
 }) => {
   const tabIndex = isOpen === false ? -1 : 0;
 
@@ -102,7 +100,6 @@ export const AppHeaderCatalogSection: React.FC<AppHeaderCatalogSectionProps> = (
     event: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
     linkItem: AppHeaderItem
   ) => {
-    handleClose?.();
     return action(event, linkItem);
   };
 
