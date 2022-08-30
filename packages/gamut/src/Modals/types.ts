@@ -6,7 +6,11 @@ import { ModalContainer } from './elements';
 export interface ModalOverlayProps
   extends Pick<
     OverlayProps,
-    'isOpen' | 'onRequestClose' | 'clickOutsideCloses' | 'escapeCloses'
+    | 'isOpen'
+    | 'onRequestClose'
+    | 'clickOutsideCloses'
+    | 'escapeCloses'
+    | 'shroud'
   > {}
 
 export interface ModalBaseProps
