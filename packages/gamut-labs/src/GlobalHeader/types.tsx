@@ -43,7 +43,6 @@ export type User = {
   // TODO: DISC-547 - remove after feature flag test for catalog is complete
   useNewCatalogDropdown?: boolean;
   skillsoftBamProfileFeatureFlag?: boolean;
-  hasNewSkuSubscription?: boolean;
 };
 
 type LoggedInHeader = BaseHeader & {
