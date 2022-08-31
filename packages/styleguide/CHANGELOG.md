@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [61.5.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@61.4.2...@codecademy/styleguide@61.5.0) (2022-08-31)
+
+
+### Features
+
+* update webpack-config to 6.2.0 ([#2527](https://github.com/Codecademy/gamut/issues/2527)) ([fa596ab](https://github.com/Codecademy/gamut/commit/fa596abcd220dea694f1d96ba2229726f10c672c))
+
+
+
 ### [61.4.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@61.4.1...@codecademy/styleguide@61.4.2) (2022-08-31)
 
 **Note:** Version bump only for package @codecademy/styleguide
