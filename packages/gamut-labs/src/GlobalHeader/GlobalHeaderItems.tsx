@@ -284,8 +284,9 @@ export const freeProfile = (
   const topSection = [profileMyProfile];
 
   if (
-    !user.hideBusinessAccount &&
-    (user.isBusinessAdmin || !user.isBusinessSsoUser)
+    !user.hideBusinessAccount ||
+    user.isBusinessAdmin ||
+    !user.isBusinessSsoUser
   ) {
     topSection.push(profileBusinessAccount);
   }
@@ -322,8 +323,9 @@ export const proProfile = (user: User): AppHeaderProfileDropdownItem => {
   topSection.push(profileMyHome);
 
   if (
-    !user.hideBusinessAccount &&
-    (user.isBusinessAdmin || !user.isBusinessSsoUser)
+    !user.hideBusinessAccount ||
+    user.isBusinessAdmin ||
+    !user.isBusinessSsoUser
   ) {
     topSection.push(profileBusinessAccount);
   }
