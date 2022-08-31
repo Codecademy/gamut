@@ -282,12 +282,12 @@ export const freeProfile = (
   isMobile?: boolean
 ): AppHeaderProfileDropdownItem => {
   const topSection = [profileMyProfile];
-  const isSkillsoftUser = user?.isSkillsoftUser;
-  const skillsoftBamProfileFeatureFlag = user?.skillsoftBamProfileFeatureFlag;
+  const showBusinessAccount = user?.showBusinessAccount;
+  const showBusinessAccountFeatureFlag = user?.showBusinessAccountFeatureFlag;
 
   if (user.isBusinessAdmin || !user.isBusinessSsoUser) {
-    if (isSkillsoftUser) {
-      if (skillsoftBamProfileFeatureFlag) {
+    if (showBusinessAccount) {
+      if (showBusinessAccountFeatureFlag) {
         topSection.push(profileBusinessAccount);
       }
     } else {
@@ -319,8 +319,8 @@ export const freeProfile = (
 
 export const proProfile = (user: User): AppHeaderProfileDropdownItem => {
   const topSection = [profileMyProfile];
-  const isSkillsoftUser = user?.isSkillsoftUser;
-  const skillsoftBamProfileFeatureFlag = user?.skillsoftBamProfileFeatureFlag;
+  const showBusinessAccount = user?.showBusinessAccount;
+  const showBusinessAccountFeatureFlag = user?.showBusinessAccountFeatureFlag;
 
   if (user.isBusinessAdmin || !user.isBusinessSsoUser) {
     topSection.push(profileAccount);
@@ -329,8 +329,8 @@ export const proProfile = (user: User): AppHeaderProfileDropdownItem => {
   topSection.push(profileMyHome);
 
   if (user?.isAccountManager || user?.isBusinessAdmin) {
-    if (isSkillsoftUser) {
-      if (skillsoftBamProfileFeatureFlag) {
+    if (showBusinessAccount) {
+      if (showBusinessAccountFeatureFlag) {
         topSection.push(profileBusinessAccount);
       }
     } else {

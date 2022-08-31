@@ -32,7 +32,6 @@ export type User = {
   isAdmin?: boolean;
   isBusinessAdmin?: boolean;
   isBusinessSsoUser?: boolean;
-  isSkillsoftUser?: boolean;
   isCustomerSupport?: boolean;
   isAccountManager?: boolean;
   isPaused?: boolean;
@@ -42,7 +41,8 @@ export type User = {
   hideCareerPaths?: boolean;
   // TODO: DISC-547 - remove after feature flag test for catalog is complete
   useNewCatalogDropdown?: boolean;
-  skillsoftBamProfileFeatureFlag?: boolean;
+  showBusinessAccount?: boolean;
+  showBusinessAccountFeatureFlag?: boolean;
 };
 
 type LoggedInHeader = BaseHeader & {
