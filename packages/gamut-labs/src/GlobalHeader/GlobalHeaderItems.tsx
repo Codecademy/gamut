@@ -282,17 +282,12 @@ export const freeProfile = (
   isMobile?: boolean
 ): AppHeaderProfileDropdownItem => {
   const topSection = [profileMyProfile];
-  const showBusinessAccount = user?.showBusinessAccount;
-  const showBusinessAccountFeatureFlag = user?.showBusinessAccountFeatureFlag;
 
-  if (user.isBusinessAdmin || !user.isBusinessSsoUser) {
-    if (showBusinessAccount) {
-      if (showBusinessAccountFeatureFlag) {
-        topSection.push(profileBusinessAccount);
-      }
-    } else {
-      topSection.push(profileBusinessAccount);
-    }
+  if (
+    !user.hideBusinessAccount &&
+    (user.isBusinessAdmin || !user.isBusinessSsoUser)
+  ) {
+    topSection.push(profileBusinessAccount);
   }
 
   topSection.push(profileMyHome);
@@ -319,8 +314,6 @@ export const freeProfile = (
 
 export const proProfile = (user: User): AppHeaderProfileDropdownItem => {
   const topSection = [profileMyProfile];
-  const showBusinessAccount = user?.showBusinessAccount;
-  const showBusinessAccountFeatureFlag = user?.showBusinessAccountFeatureFlag;
 
   if (user.isBusinessAdmin || !user.isBusinessSsoUser) {
     topSection.push(profileAccount);
@@ -328,14 +321,11 @@ export const proProfile = (user: User): AppHeaderProfileDropdownItem => {
 
   topSection.push(profileMyHome);
 
-  if (user?.isAccountManager || user?.isBusinessAdmin) {
-    if (showBusinessAccount) {
-      if (showBusinessAccountFeatureFlag) {
-        topSection.push(profileBusinessAccount);
-      }
-    } else {
-      topSection.push(profileBusinessAccount);
-    }
+  if (
+    !user.hideBusinessAccount &&
+    (user.isBusinessAdmin || !user.isBusinessSsoUser)
+  ) {
+    topSection.push(profileBusinessAccount);
   }
   if (user.showReferrals) {
     topSection.push(referrals);
