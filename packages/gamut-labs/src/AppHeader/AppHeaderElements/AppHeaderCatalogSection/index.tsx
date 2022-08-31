@@ -257,7 +257,7 @@ export const AppHeaderCatalogSection = React.forwardRef<
       )}
       <Column px={{ _: 16, xs: 32, sm: 64, md: 48, lg: 24 }} py={16}>
         <FlexBox
-          alignItems={{ _: 'flex-start', lg: 'center' }}
+          alignItems={{ _: 'flex-start', sm: 'center' }}
           flexDirection={{ _: 'column', sm: 'row' }}
         >
           <FlexBox alignItems="center">
@@ -274,7 +274,12 @@ export const AppHeaderCatalogSection = React.forwardRef<
               textAlign={{ _: 'left', lg: 'center' }}
               href={quizAnchorData.href}
               data-focusablecatalog="true"
-              onClick={(event) => onClick(event, quizAnchorData)}
+              onClick={(
+                event: React.MouseEvent<
+                  HTMLAnchorElement | HTMLButtonElement,
+                  MouseEvent
+                >
+              ) => onClick(event, quizAnchorData)}
               tabIndex={tabIndex}
               ml={{ _: 0, sm: 16 }}
               pt={{ _: 8, sm: 0 }}
