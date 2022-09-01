@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [33.3.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@33.2.3...@codecademy/gamut-labs@33.3.0) (2022-09-01)
+
+
+### Features
+
+* **GlobalHeader:** Add business logic for Skillsoft users for BAM profile menu item ([e6b947e](https://github.com/Codecademy/gamut/commit/e6b947e3848a4f375dfcce69e70353a82a581d2f))
+
+
+
 ### [33.2.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@33.2.2...@codecademy/gamut-labs@33.2.3) (2022-08-31)
 
 **Note:** Version bump only for package @codecademy/gamut-labs
