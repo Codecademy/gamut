@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [33.3.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@33.3.1...@codecademy/gamut-labs@33.3.2) (2022-09-07)
+
+
+### Bug Fixes
+
+* **GlobalHeader:** BAM profile menu changes Revert ([16cb6c7](https://github.com/Codecademy/gamut/commit/16cb6c71e6fd8ad468d4f37d3fb1135dcbb79016))
+
+
+
 ### [33.3.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@33.3.0...@codecademy/gamut-labs@33.3.1) (2022-09-06)
 
 **Note:** Version bump only for package @codecademy/gamut-labs
