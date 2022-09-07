@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.32.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.31.0...@codecademy/gamut-illustrations@0.32.0) (2022-09-06)
+
+
+### Features
+
+* **SyllabusIllustration:** add new illustration ([69b9bf3](https://github.com/Codecademy/gamut/commit/69b9bf383c0b20c3f3d16c1561e3890932ca2825))
+
+
+
 ## [0.31.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.30.0...@codecademy/gamut-illustrations@0.31.0) (2022-08-25)
 
 

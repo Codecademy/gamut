@@ -322,11 +322,7 @@ export const proProfile = (user: User): AppHeaderProfileDropdownItem => {
 
   topSection.push(profileMyHome);
 
-  if (
-    !user.hideBusinessAccount ||
-    user.isAccountManager ||
-    user.isBusinessAdmin
-  ) {
+  if (user?.isAccountManager || user?.isBusinessAdmin) {
     topSection.push(profileBusinessAccount);
   }
   if (user.showReferrals) {

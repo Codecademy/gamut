@@ -129,7 +129,7 @@ export const newHeaderResourcesList: AppHeaderResourcesDataItem[] = [
   {
     title: 'Docs',
     description:
-      'Find quick answers to coding questions with community-driven code documentation.',
+      'Find definitions, code syntax, and more -- or contribute your own code documentation.',
     link: {
       text: 'View all docs →',
       href: '/resources/docs',

@@ -129,7 +129,7 @@ const catalogDropdownTest = (props: GlobalHeaderProps) => {
   const { view } = renderView(props);
 
   view.getByText(catalogDropdown().text).click();
-  view.getByText('Explore full catalog →');
+  view.getByText('Explore all courses');
 };
 
 const refreshedResourcesDropdownTest = (props: GlobalHeaderProps) => {
