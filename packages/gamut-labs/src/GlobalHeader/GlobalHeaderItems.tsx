@@ -294,9 +294,6 @@ export const freeProfile = (
 
   topSection.push(profileMyHome);
 
-  // if (!isMobile && user.isAccountManager) {
-  //   topSection.push(profileBusinessAccount);
-  // }
   topSection.push(profileHelpCenter);
 
   const bottomSection = [profileLogOut];
