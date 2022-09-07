@@ -283,17 +283,15 @@ export const freeProfile = (
 ): AppHeaderProfileDropdownItem => {
   const topSection = [profileMyProfile];
 
-  if (
-    !user.hideBusinessAccount ||
-    user.isBusinessAdmin ||
-    !user.isBusinessSsoUser ||
-    (!isMobile && user.isAccountManager)
-  ) {
-    topSection.push(profileBusinessAccount);
+  if (user?.isBusinessAdmin || !user?.isBusinessSsoUser) {
+    topSection.push(profileAccount);
   }
 
   topSection.push(profileMyHome);
 
+  if (!isMobile && user?.isAccountManager && user?.hideBusinessAccount) {
+    topSection.push(profileBusinessAccount);
+  }
   topSection.push(profileHelpCenter);
 
   const bottomSection = [profileLogOut];
@@ -321,12 +319,11 @@ export const proProfile = (user: User): AppHeaderProfileDropdownItem => {
   topSection.push(profileMyHome);
 
   if (
-    !user.hideBusinessAccount &&
-    (user.isAccountManager || user.isBusinessAdmin)
+    (user?.isAccountManager || user?.isBusinessAdmin) &&
+    user?.hideBusinessAccount
   ) {
     topSection.push(profileBusinessAccount);
   }
-
   if (user.showReferrals) {
     topSection.push(referrals);
   }
