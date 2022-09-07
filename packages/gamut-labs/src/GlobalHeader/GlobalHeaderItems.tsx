@@ -286,16 +286,17 @@ export const freeProfile = (
   if (
     !user.hideBusinessAccount ||
     user.isBusinessAdmin ||
-    !user.isBusinessSsoUser
+    !user.isBusinessSsoUser ||
+    (!isMobile && user.isAccountManager)
   ) {
     topSection.push(profileBusinessAccount);
   }
 
   topSection.push(profileMyHome);
 
-  if (!isMobile && user.isAccountManager) {
-    topSection.push(profileBusinessAccount);
-  }
+  // if (!isMobile && user.isAccountManager) {
+  //   topSection.push(profileBusinessAccount);
+  // }
   topSection.push(profileHelpCenter);
 
   const bottomSection = [profileLogOut];
