@@ -289,7 +289,7 @@ export const freeProfile = (
 
   topSection.push(profileMyHome);
 
-  if (!isMobile && user?.isAccountManager && user?.hideBusinessAccount) {
+  if (!isMobile && user?.isAccountManager && !user?.hideBusinessAccount) {
     topSection.push(profileBusinessAccount);
   }
   topSection.push(profileHelpCenter);
@@ -320,7 +320,7 @@ export const proProfile = (user: User): AppHeaderProfileDropdownItem => {
 
   if (
     (user?.isAccountManager || user?.isBusinessAdmin) &&
-    user?.hideBusinessAccount
+    !user?.hideBusinessAccount
   ) {
     topSection.push(profileBusinessAccount);
   }
