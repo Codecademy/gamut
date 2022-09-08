@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [50.6.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@50.6.2...@codecademy/gamut@50.6.3) (2022-09-08)
+
+
+### Bug Fixes
+
+* **AccordionRow, ListRow:** remove incorrect aria-expanded ([f347777](https://github.com/Codecademy/gamut/commit/f3477779899ba45ed2d9758a478397aea498928e))
+
+
+
 ### [50.6.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@50.6.1...@codecademy/gamut@50.6.2) (2022-09-06)
 
 **Note:** Version bump only for package @codecademy/gamut
