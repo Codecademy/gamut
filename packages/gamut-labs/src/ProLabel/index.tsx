@@ -50,12 +50,10 @@ const Svg = styled(
 export const ProLabel: React.FC<React.ComponentProps<typeof Svg>> = ({
   mode,
   height = 16,
-  ...props
 }) => {
   const active = useCurrentMode(mode);
   return (
     <StarFilledIcon
-      {...props}
       height={height}
       mode={active}
       viewBox="0 0 30 16"
