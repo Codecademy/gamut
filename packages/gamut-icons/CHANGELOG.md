@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.8.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@7.7.0...@codecademy/gamut-icons@7.8.0) (2022-09-14)
+
+
+### Features
+
+* **Icon:** add StarFilledCircleIcon ([53bc57c](https://github.com/Codecademy/gamut/commit/53bc57c0f7b59b6fefe5a81521b6b8f84d3f5f56))
+
+
+
 ## [7.7.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@7.6.2...@codecademy/gamut-icons@7.7.0) (2022-08-23)
 
 
