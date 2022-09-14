@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [33.4.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@33.3.5...@codecademy/gamut-labs@33.4.0) (2022-09-14)
+
+
+### Features
+
+* **GlobalHeader:** Update business logic for BAM profile menu ([979d49a](https://github.com/Codecademy/gamut/commit/979d49a9503be0fb2a1ef8299f32c8c693614be0))
+
+
+
 ### [33.3.5](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@33.3.4...@codecademy/gamut-labs@33.3.5) (2022-09-14)
 
 **Note:** Version bump only for package @codecademy/gamut-labs
