@@ -283,13 +283,13 @@ export const freeProfile = (
 ): AppHeaderProfileDropdownItem => {
   const topSection = [profileMyProfile];
 
-  if (user.isBusinessAdmin || !user.isBusinessSsoUser) {
+  if (user?.isBusinessAdmin || !user?.isBusinessSsoUser) {
     topSection.push(profileAccount);
   }
 
   topSection.push(profileMyHome);
 
-  if (!isMobile && user.isAccountManager) {
+  if (!isMobile && user?.isAccountManager && !user?.hideBusinessAccount) {
     topSection.push(profileBusinessAccount);
   }
   topSection.push(profileHelpCenter);
@@ -318,7 +318,10 @@ export const proProfile = (user: User): AppHeaderProfileDropdownItem => {
 
   topSection.push(profileMyHome);
 
-  if (user?.isAccountManager || user?.isBusinessAdmin) {
+  if (
+    (user?.isAccountManager || user?.isBusinessAdmin) &&
+    !user?.hideBusinessAccount
+  ) {
     topSection.push(profileBusinessAccount);
   }
   if (user.showReferrals) {

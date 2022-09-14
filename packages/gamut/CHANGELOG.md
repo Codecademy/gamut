@@ -3,6 +3,48 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [50.6.5](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@50.6.4...@codecademy/gamut@50.6.5) (2022-09-14)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [50.6.4](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@50.6.3...@codecademy/gamut@50.6.4) (2022-09-12)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [50.6.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@50.6.2...@codecademy/gamut@50.6.3) (2022-09-08)
+
+
+### Bug Fixes
+
+* **AccordionRow, ListRow:** remove incorrect aria-expanded ([f347777](https://github.com/Codecademy/gamut/commit/f3477779899ba45ed2d9758a478397aea498928e))
+
+
+
+### [50.6.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@50.6.1...@codecademy/gamut@50.6.2) (2022-09-06)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [50.6.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@50.6.0...@codecademy/gamut@50.6.1) (2022-08-31)
+
+
+### Bug Fixes
+
+* **useDebouncedField:** fixing helpers logic ([0273258](https://github.com/Codecademy/gamut/commit/0273258e3c3fb2cb4d63d50aa1e67efac5bef0cd))
+
+
+
 ## [50.6.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@50.5.4...@codecademy/gamut@50.6.0) (2022-08-29)
 
 

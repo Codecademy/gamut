@@ -54,7 +54,6 @@ export const AccordionArea: React.FC<AccordionAreaProps> = ({
     <div className={className}>
       {top}
       <StyledAccordionBody
-        aria-expanded={expanded}
         initial={expanded ? 'expanded' : 'folded'}
         animate={expanded ? 'expanded' : 'folded'}
         variants={variants}

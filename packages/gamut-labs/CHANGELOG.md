@@ -3,6 +3,81 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [33.4.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@33.3.5...@codecademy/gamut-labs@33.4.0) (2022-09-14)
+
+
+### Features
+
+* **GlobalHeader:** Update business logic for BAM profile menu ([979d49a](https://github.com/Codecademy/gamut/commit/979d49a9503be0fb2a1ef8299f32c8c693614be0))
+
+
+
+### [33.3.5](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@33.3.4...@codecademy/gamut-labs@33.3.5) (2022-09-14)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [33.3.4](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@33.3.3...@codecademy/gamut-labs@33.3.4) (2022-09-12)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [33.3.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@33.3.2...@codecademy/gamut-labs@33.3.3) (2022-09-08)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [33.3.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@33.3.1...@codecademy/gamut-labs@33.3.2) (2022-09-07)
+
+
+### Bug Fixes
+
+* **GlobalHeader:** BAM profile menu changes Revert ([16cb6c7](https://github.com/Codecademy/gamut/commit/16cb6c71e6fd8ad468d4f37d3fb1135dcbb79016))
+
+
+
+### [33.3.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@33.3.0...@codecademy/gamut-labs@33.3.1) (2022-09-06)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+## [33.3.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@33.2.3...@codecademy/gamut-labs@33.3.0) (2022-09-01)
+
+
+### Features
+
+* **GlobalHeader:** Add business logic for Skillsoft users for BAM profile menu item ([e6b947e](https://github.com/Codecademy/gamut/commit/e6b947e3848a4f375dfcce69e70353a82a581d2f))
+
+
+
+### [33.2.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@33.2.2...@codecademy/gamut-labs@33.2.3) (2022-08-31)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [33.2.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@33.2.1...@codecademy/gamut-labs@33.2.2) (2022-08-31)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
 ### [33.2.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@33.2.0...@codecademy/gamut-labs@33.2.1) (2022-08-29)
 
 **Note:** Version bump only for package @codecademy/gamut-labs

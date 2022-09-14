@@ -3,6 +3,96 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [61.5.9](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@61.5.8...@codecademy/styleguide@61.5.9) (2022-09-14)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [61.5.8](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@61.5.7...@codecademy/styleguide@61.5.8) (2022-09-14)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [61.5.7](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@61.5.6...@codecademy/styleguide@61.5.7) (2022-09-12)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [61.5.6](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@61.5.5...@codecademy/styleguide@61.5.6) (2022-09-08)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [61.5.5](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@61.5.4...@codecademy/styleguide@61.5.5) (2022-09-08)
+
+
+### Bug Fixes
+
+* **modals:** fixing children in modals ([#2538](https://github.com/Codecademy/gamut/issues/2538)) ([6c2ffbc](https://github.com/Codecademy/gamut/commit/6c2ffbc1250bc49412998e54154379398f2f2a78))
+
+
+
+### [61.5.4](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@61.5.3...@codecademy/styleguide@61.5.4) (2022-09-07)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [61.5.3](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@61.5.2...@codecademy/styleguide@61.5.3) (2022-09-06)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [61.5.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@61.5.1...@codecademy/styleguide@61.5.2) (2022-09-01)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [61.5.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@61.5.0...@codecademy/styleguide@61.5.1) (2022-08-31)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [61.5.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@61.4.2...@codecademy/styleguide@61.5.0) (2022-08-31)
+
+
+### Features
+
+* update webpack-config to 6.2.0 ([#2527](https://github.com/Codecademy/gamut/issues/2527)) ([fa596ab](https://github.com/Codecademy/gamut/commit/fa596abcd220dea694f1d96ba2229726f10c672c))
+
+
+
+### [61.4.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@61.4.1...@codecademy/styleguide@61.4.2) (2022-08-31)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
 ### [61.4.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@61.4.0...@codecademy/styleguide@61.4.1) (2022-08-29)
 
 **Note:** Version bump only for package @codecademy/styleguide
