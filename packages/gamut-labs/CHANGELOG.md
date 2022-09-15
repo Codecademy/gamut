@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [33.4.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@33.4.0...@codecademy/gamut-labs@33.4.1) (2022-09-15)
+
+
+### Bug Fixes
+
+* **DropdownList:** Make dropdown list items focusable ([f4803ba](https://github.com/Codecademy/gamut/commit/f4803bacc2797d4fd1bda0a3bbe1e522dfe9cf04))
+
+
+
 ## [33.4.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@33.3.5...@codecademy/gamut-labs@33.4.0) (2022-09-14)
 
 
