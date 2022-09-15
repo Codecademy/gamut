@@ -35,6 +35,7 @@ export const DropdownList: React.FC<DropdownListProps> = ({
             onClick={onClick}
             href={href}
             icon={icon}
+            tabIndex={0}
             target={target}
           >
             {text}
