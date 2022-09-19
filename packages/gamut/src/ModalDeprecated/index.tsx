@@ -13,7 +13,7 @@ export type ModalDeprecatedOverlayProps = Partial<
   Pick<OverlayProps, 'clickOutsideCloses' | 'escapeCloses' | 'className'>
 >;
 
-// this should be deleted with the re
+// this should be deleted with the removal of ModalDeprecated
 const CardShell = styled.div(
   variant({
     defaultVariant: 'shadowed',
