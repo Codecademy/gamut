@@ -8,7 +8,9 @@ import React from 'react';
 
 // See https://www.notion.so/codecademy/Frontend-Unit-Tests-1cbf4e078a6647559b4583dfb6d3cb18
 
-export const MockGamutProvider: React.FC = ({ children }) => {
+export const MockGamutProvider: React.FC<React.PropsWithChildren<{}>> = ({
+  children,
+}) => {
   return (
     <GamutProvider useGlobals={false} useCache={false} theme={theme}>
       {children}
@@ -38,4 +40,6 @@ export const setupEnzyme = overArgs(
 export const setupRtl = overArgs(
   setupRtlBase,
   withMockGamutProvider
-) as typeof setupRtlBase;
+) as typeof setupRtlBase & {
+  wrapper: React.ComponentType<React.PropsWithChildren<{}>>;
+};

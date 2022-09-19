@@ -18,6 +18,7 @@ export interface GamutProviderProps {
   theme: Theme;
   variables?: Record<string, CSSObject>;
   cache?: EmotionCache;
+  children?: React.ReactNode;
 }
 
 export const GamutContext = React.createContext<{
