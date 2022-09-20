@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [0.6.204](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-kit@0.6.203...@codecademy/gamut-kit@0.6.204) (2022-09-15)
+
+**Note:** Version bump only for package @codecademy/gamut-kit
+
+
+
+
+
+### [0.6.203](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-kit@0.6.202...@codecademy/gamut-kit@0.6.203) (2022-09-15)
+
+**Note:** Version bump only for package @codecademy/gamut-kit
+
+
+
+
+
 ### [0.6.202](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-kit@0.6.201...@codecademy/gamut-kit@0.6.202) (2022-09-14)
 
 **Note:** Version bump only for package @codecademy/gamut-kit

@@ -7,8 +7,7 @@ export type DropdownItem = {
   icon?: React.ComponentType<GamutIconProps>;
   text: string;
   clickHandler?: (event: React.MouseEvent) => void;
-  href?: string;
-};
+} & Partial<Pick<HTMLAnchorElement, 'href' | 'target'>>;
 
 export type DropdownListProps = {
   dropdownItems: DropdownItem[];
@@ -22,7 +21,7 @@ export const DropdownList: React.FC<DropdownListProps> = ({
   return (
     <Menu variant="action" border="none" minWidth="max-content" py={12}>
       {dropdownItems.map((item) => {
-        const { id, text, href, clickHandler, icon } = item;
+        const { id, text, href, clickHandler, icon, target } = item;
 
         const onClick = (event: React.MouseEvent) => {
           clickHandler?.(event);
@@ -36,6 +35,8 @@ export const DropdownList: React.FC<DropdownListProps> = ({
             onClick={onClick}
             href={href}
             icon={icon}
+            tabIndex={0}
+            target={target}
           >
             {text}
           </MenuItem>
