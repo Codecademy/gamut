@@ -30,7 +30,17 @@ export interface ReactSelectAdditionalProps
   extends WrapperStyleProps,
     SharedProps,
     SelectDropdownSizes {}
-export interface IconOption {
+export interface ExtendedOption {
+  label: string;
+  value: string;
+  icon?: React.ComponentType<GamutIconProps>;
+  subtitle?: string;
+  disabled: boolean;
+  rightLabel?: string;
+  size?: string;
+}
+
+export interface ExtendedOptions {
   label: string;
   value: string;
   icon?: React.ComponentType<GamutIconProps>;
@@ -42,7 +52,7 @@ export type SelectDropdownBaseProps = Omit<
 > &
   SelectDropdownSizes;
 
-export type SelectDropdownOptions = SelectOptions | IconOption[];
+export type SelectDropdownOptions = SelectOptions | ExtendedOption[];
 
 export interface SelectDropdownCoreProps
   extends SelectDropdownBaseProps,

@@ -126,3 +126,86 @@ export const SelectDropdownIconExample: React.FC = () => (
     </Background>
   </Box>
 );
+
+export const SelectDropdownOptionVariantsExample: React.FC = () => (
+  <>
+    <Box p={16} width="100%" height="12rem" border={1} bg="palePink">
+      <FormGroup
+        label="I might have disabled options"
+        htmlFor="disabled-dropdown"
+      >
+        <SelectDropdown
+          name="disabled-dropdown"
+          options={[
+            {
+              label: 'I am disabled',
+              value: 'xxx',
+              disabled: true,
+            },
+            {
+              label: 'I am not',
+              value: 'yyy',
+            },
+            {
+              label: `Nor am I`,
+              value: 'zzz',
+              disabled: false,
+            },
+          ]}
+        />
+      </FormGroup>
+    </Box>
+    <Box p={16} width="100%" height="12rem" border={1} bg="palePink">
+      <FormGroup
+        label="I have subtitle and extended info options"
+        htmlFor="disabled-dropdown"
+      >
+        <SelectDropdown
+          name="disabled-dropdown"
+          options={[
+            {
+              options: [
+                {
+                  label: 'king@chess.com',
+                  subtitle: 'The King of Chess',
+                  value: 'xxx',
+                  disabled: true,
+                },
+                {
+                  label: 'queen@chess.com',
+                  rightLabel: 'The Queen of Chess',
+                  value: 'yyy',
+                },
+                {
+                  label: 'bishop@chess.com',
+                  subtitle: 'Bishop Chess',
+                  rightLabel: 'I can move diagonally',
+                  value: 'zzz',
+                  disabled: false,
+                },
+              ],
+            },
+            {
+              label: 'divider',
+              divider: true,
+              options: [
+                {
+                  label: 'knight@chess.com',
+                  subtitle: 'Sir Chess',
+                  rightLabel: 'By leaps and bounds',
+                  value: 'zzz',
+                  disabled: true,
+                },
+                {
+                  label: 'pawn@chess.com',
+                  value: 'zzz',
+                  disabled: false,
+                },
+              ],
+            },
+          ]}
+        />
+      </FormGroup>
+    </Box>
+  </>
+);

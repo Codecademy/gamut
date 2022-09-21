@@ -8,10 +8,11 @@ import {
 } from 'react-select';
 
 import { getMemoizedStyles } from '../styles';
-import { parseOptions, SelectOptionBase } from '../utils';
+import { isOptionDisabled, parseOptions, SelectOptionBase } from '../utils';
 import {
   ChevronDropdown,
   CustomContainer,
+  formatGroupLabel,
   formatOptionLabel,
   TypedReactSelect,
 } from './elements';
@@ -151,12 +152,15 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
       onChange={changeHandler}
       inputProps={{ ...inputProps, name }}
       placeholder={placeholder}
+      menuIsOpen
       styles={memoizedStyles}
       isMulti={multiple}
+      isOptionDisabled={isOptionDisabled}
       isDisabled={disabled}
       isSearchable={isSearchable}
       size={size}
       shownOptionsLimit={shownOptionsLimit}
+      formatGroupLabel={formatGroupLabel}
       {...rest}
     />
   );

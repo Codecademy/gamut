@@ -2,7 +2,7 @@ import { each, isObject } from 'lodash';
 import React from 'react';
 
 import {
-  IconOption,
+  ExtendedOption,
   OptionStrict,
   SelectDropdownOptions,
   SelectDropdownSizes,
@@ -40,7 +40,7 @@ export const parseOptions = ({
 }: ParseOptionProps) => {
   const parsedOptions: SelectOptionBase[] = [];
   if (Array.isArray(options)) {
-    options.forEach((value: string | IconOption) => {
+    options.forEach((value: string | ExtendedOption) => {
       if (isObject(value)) {
         const key = id ? `${id}-${value?.value}` : value?.value;
         parsedOptions.push({ ...value, key, size });
@@ -61,3 +61,5 @@ export const parseOptions = ({
 export const parseSelectOptions = (props: ParseSelectOptionProps) => {
   return parseOptions({ ...props, labelAsKey: true }).map(formatAsOptions);
 };
+
+export const isOptionDisabled = (option: ExtendedOption) => option.disabled;
