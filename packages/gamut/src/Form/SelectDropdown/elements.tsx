@@ -10,12 +10,11 @@ import ReactSelect, {
 } from 'react-select';
 
 import { Box } from '../../Box';
-import { MenuSeparator } from '../../Menu';
-import { SelectOptionBase } from '../utils';
 import {
   CustomContainerProps,
   ExtendedOption,
   ReactSelectAdditionalProps,
+  SelectDropdownGroup,
   SizedIndicatorProps,
 } from './types';
 
@@ -109,10 +108,7 @@ export const formatOptionLabel = ({
   );
 };
 
-export const formatGroupLabel = ({
-  label,
-  divider,
-}: GroupBase<SelectOptionBase>) => {
+export const formatGroupLabel = ({ label, divider }: SelectDropdownGroup) => {
   if (divider) {
     return (
       <Box display="flex" justify-content="center">

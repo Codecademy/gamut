@@ -16,6 +16,10 @@ export interface SharedProps {
   shownOptionsLimit?: 1 | 2 | 3 | 4 | 5 | 6;
 }
 
+export interface SelectDropdownGroup extends GroupBase<OptionStrict> {
+  divider: boolean;
+}
+
 export interface WrapperStyleProps
   extends Pick<
     StyleProps<typeof conditionalBorderStates>,

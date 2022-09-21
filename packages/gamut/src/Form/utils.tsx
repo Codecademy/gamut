@@ -11,6 +11,7 @@ import {
 export interface SelectOptionBase extends OptionStrict, SelectDropdownSizes {
   key?: string;
 }
+
 export interface ParseSelectOptionProps extends SelectDropdownSizes {
   id?: string | number;
   options?: SelectDropdownOptions;
