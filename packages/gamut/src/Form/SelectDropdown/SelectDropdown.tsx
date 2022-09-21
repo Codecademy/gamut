@@ -152,7 +152,6 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
       onChange={changeHandler}
       inputProps={{ ...inputProps, name }}
       placeholder={placeholder}
-      menuIsOpen
       styles={memoizedStyles}
       isMulti={multiple}
       isOptionDisabled={isOptionDisabled}

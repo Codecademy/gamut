@@ -113,7 +113,6 @@ export const formatGroupLabel = ({
   label,
   divider,
 }: GroupBase<SelectOptionBase>) => {
-  console.log(label, divider);
   if (divider) {
     return (
       <Box display="flex" justify-content="center">
@@ -125,7 +124,6 @@ export const formatGroupLabel = ({
           borderRadius="2px"
           mx={16}
         />
-        )
       </Box>
     );
   }

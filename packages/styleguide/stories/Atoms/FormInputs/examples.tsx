@@ -186,7 +186,6 @@ export const SelectDropdownOptionVariantsExample: React.FC = () => (
               ],
             },
             {
-              label: 'divider',
               divider: true,
               options: [
                 {
