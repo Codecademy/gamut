@@ -158,10 +158,10 @@ export const SelectDropdownOptionVariantsExample: React.FC = () => (
     <Box p={16} width="100%" height="12rem" border={1} bg="palePink">
       <FormGroup
         label="I have subtitle and extended info options"
-        htmlFor="disabled-dropdown"
+        htmlFor="extended-dropdown"
       >
         <SelectDropdown
-          name="disabled-dropdown"
+          name="extended-dropdown"
           options={[
             {
               options: [
