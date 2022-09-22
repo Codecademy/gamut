@@ -20,6 +20,11 @@ export const Details: React.FC<MarkdownDetailsProps> = ({
   const isMissingSummary = useMemo(() => {
     return children?.every((e) => e.type !== 'summary');
   }, [children]);
+
+  const getSummary = useMemo(() => {
+    return children?.find((e) => e.type === 'summary');
+  }, [children]);
+
   const summary = isMissingSummary ? <summary>Details</summary> : null;
   return (
     <details data-testid="gamut-md-details" {...props}>
