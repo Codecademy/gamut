@@ -208,3 +208,83 @@ export const SelectDropdownOptionVariantsExample: React.FC = () => (
     </Box>
   </>
 );
+
+export const SelectDropdownMultipleExample: React.FC = () => {
+  const [selectOptions, setSelectOptions] = useState<string[]>([]);
+  const handleChange = (options) => {
+    setSelectOptions(options.map((option) => option.value));
+  };
+  return (
+    <Box p={16} width="100%" height="12rem" border={1} bg="palePink">
+      <FormGroup
+        label="I have multiple select options"
+        htmlFor="multi-dropdown"
+      >
+        <SelectDropdown
+          onChange={handleChange}
+          value={selectOptions}
+          name="multi-dropdown"
+          multiple
+          options={[
+            {
+              label: 'Select Me',
+              value: 'xxx',
+              disabled: true,
+            },
+            {
+              label: 'Multi Select',
+              value: 'yyy',
+            },
+            {
+              label: `Select All?`,
+              value: 'zzz',
+            },
+          ]}
+        />
+      </FormGroup>
+      <FormGroup
+        label="I have multiple select options and option groups"
+        htmlFor="multi-group-dropdown"
+      >
+        <SelectDropdown
+          onChange={handleChange}
+          value={selectOptions}
+          name="multi-group-dropdown"
+          multiple
+          options={[
+            {
+              label: 'Group one',
+              options: [
+                {
+                  label: 'Select Me',
+                  value: 'one',
+                },
+                {
+                  label: 'Multi Select',
+                  value: 'two',
+                },
+                {
+                  label: `Select All?`,
+                  value: 'three',
+                },
+              ],
+            },
+            {
+              label: 'Group 2',
+              options: [
+                {
+                  label: 'Item one',
+                  value: 'xx',
+                },
+                {
+                  label: 'Item two',
+                  value: 'yy',
+                },
+              ],
+            },
+          ]}
+        />
+      </FormGroup>
+    </Box>
+  );
+};

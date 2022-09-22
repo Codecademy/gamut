@@ -16,7 +16,7 @@ export interface SharedProps {
   shownOptionsLimit?: 1 | 2 | 3 | 4 | 5 | 6;
 }
 
-export interface SelectDropdownGroup extends GroupBase<OptionStrict> {
+export interface SelectDropdownGroup extends GroupBase<ExtendedOption> {
   divider: boolean;
 }
 
@@ -34,12 +34,14 @@ export interface ReactSelectAdditionalProps
   extends WrapperStyleProps,
     SharedProps,
     SelectDropdownSizes {}
-export interface ExtendedOption {
+export interface IconOption {
   label: string;
   value: string;
   icon?: React.ComponentType<GamutIconProps>;
+}
+export interface ExtendedOption extends IconOption {
   subtitle?: string;
-  disabled: boolean;
+  disabled?: boolean;
   rightLabel?: string;
   size?: string;
 }
@@ -56,7 +58,10 @@ export type SelectDropdownBaseProps = Omit<
 > &
   SelectDropdownSizes;
 
-export type SelectDropdownOptions = SelectOptions | ExtendedOption[];
+export type SelectDropdownOptions =
+  | SelectOptions
+  | IconOption[]
+  | ExtendedOption[];
 
 export interface SelectDropdownCoreProps
   extends SelectDropdownBaseProps,
@@ -79,7 +84,7 @@ export interface SelectDropdownCoreProps
     SharedProps {
   name: string;
   placeholder?: string;
-  options?: SelectDropdownOptions;
+  options?: SelectDropdownOptions | SelectDropdownGroup[];
 }
 
 export interface SingleSelectDropdownProps extends SelectDropdownCoreProps {

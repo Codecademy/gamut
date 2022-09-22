@@ -18,8 +18,10 @@ import {
 } from './elements';
 import {
   BaseOnChangeProps,
+  ExtendedOption,
   MultiSelectDropdownProps,
   OptionStrict,
+  SelectDropdownGroup,
   SelectDropdownProps,
   SingleSelectDropdownProps,
 } from './types';
@@ -45,14 +47,30 @@ const defaultProps = {
 
 const onChangeAction = 'select-option';
 
+const isOptionGroup = (obj: any): obj is SelectDropdownGroup =>
+  obj.options !== undefined;
+
 const filterValueFromOptions = (
-  options: SelectOptionBase[],
-  value: SelectDropdownProps['value']
-) =>
-  options.filter(
-    (option) =>
+  options: SelectOptionBase[] | SelectDropdownGroup[],
+  value: SelectDropdownProps['value'],
+  optionsAreGrouped: boolean
+) => {
+  if (optionsAreGrouped) {
+    return (options as SelectDropdownGroup[])
+      .map((optionGroup) =>
+        optionGroup.options.filter(
+          (option) =>
+            option.value === value ||
+            (value as string[])?.includes(option.value)
+        )
+      )
+      .flat();
+  }
+  return (options as SelectOptionBase[]).filter(
+    (option: SelectOptionBase) =>
       option.value === value || (value as string[])?.includes(option.value)
   );
+};
 
 export const SelectDropdown: React.FC<SelectDropdownProps> = ({
   options,
@@ -77,11 +95,14 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
    */
   const rawInputId = useId();
   const inputId = name ?? `${id}-select-dropdown-${rawInputId}`;
+  const optionsAreGrouped = useMemo(() => {
+    return (options as any)?.some((option: any) => isOptionGroup(option));
+  }, [options]);
 
   const [activated, setActivated] = useState(false);
 
   const selectOptions = useMemo(() => {
-    return parseOptions({ options, id, size });
+    return parseOptions({ options: options as ExtendedOption[], id, size });
   }, [options, id, size]);
 
   const parsedValue = useMemo(
@@ -91,12 +112,16 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
 
   const [multiValues, setMultiValues] = useState(
     multiple && // To keep this efficient for non-multiSelect
-      filterValueFromOptions(selectOptions, value)
+      filterValueFromOptions(selectOptions, value, optionsAreGrouped)
   );
 
   // If the caller changes the initial value, let's update our value to match.
   useEffect(() => {
-    const newMultiValues = filterValueFromOptions(selectOptions, value);
+    const newMultiValues = filterValueFromOptions(
+      selectOptions,
+      value,
+      optionsAreGrouped
+    );
     if (newMultiValues !== multiValues) setMultiValues(newMultiValues);
 
     // For now, only handle the "change the value" case.
@@ -154,7 +179,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
       placeholder={placeholder}
       styles={memoizedStyles}
       isMulti={multiple}
-      isOptionDisabled={isOptionDisabled}
+      isOptionDisabled={(option) => option.disabled}
       isDisabled={disabled}
       isSearchable={isSearchable}
       size={size}

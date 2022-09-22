@@ -62,5 +62,3 @@ export const parseOptions = ({
 export const parseSelectOptions = (props: ParseSelectOptionProps) => {
   return parseOptions({ ...props, labelAsKey: true }).map(formatAsOptions);
 };
-
-export const isOptionDisabled = (option: ExtendedOption) => option.disabled;

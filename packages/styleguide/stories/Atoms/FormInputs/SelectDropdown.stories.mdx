@@ -8,6 +8,7 @@ import { PropsTable } from '~styleguide/blocks';
 import {
   SelectDropdownIconExample,
   SelectDropdownOptionVariantsExample,
+  SelectDropdownMultipleExample,
 } from './examples';
 
 export const fruitOptions = [
@@ -454,6 +455,42 @@ export const SelectDropdownOptionVariantsExample: React.FC = () => (
       />
     </FormGroup>
   </Box>
+);
+```
+
+### SelectDropdown Multiple Select
+
+To add some pizzazz to your dropdown, you can add any of our <LinkTo kind='Atoms/Icons'>gamut-icons</LinkTo> to your options.
+
+<SelectDropdownMultipleExample />
+
+```tsx
+import { Box, FormGroup, SelectDropdown } from '@codecademy/gamut/src';
+import { RadarIcon, ResponsiveIcon, RocketIcon } from '@codecademy/gamut-icons';
+import React from 'react';
+
+export const SelectDropdownMultipleExample: React.FC = () => (
+  <Box p={16} width="100%" height="12rem" border={1} bg="palePink">
+    <FormGroup label="I have multiple select options" htmlFor="multi-dropdown">
+      <SelectDropdown
+        name="multi-dropdown"
+        multiple
+        options={[
+          {
+            label: 'Select Me',
+            value: 'xxx',
+          },
+          {
+            label: 'Multi Select',
+            value: 'yyy',
+          },
+          {
+            label: `Select All?`,
+            value: 'zzz',
+          },
+        ]}
+      />
+    </FormGroup>
 );
 ```
 
