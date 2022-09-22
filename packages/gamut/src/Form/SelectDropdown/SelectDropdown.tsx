@@ -8,7 +8,7 @@ import {
 } from 'react-select';
 
 import { getMemoizedStyles } from '../styles';
-import { isOptionDisabled, parseOptions, SelectOptionBase } from '../utils';
+import { parseOptions, SelectOptionBase } from '../utils';
 import {
   ChevronDropdown,
   CustomContainer,
