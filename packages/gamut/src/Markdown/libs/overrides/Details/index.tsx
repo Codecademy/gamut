@@ -17,19 +17,27 @@ export const Details: React.FC<MarkdownDetailsProps> = ({
   children,
   ...props
 }) => {
-  const isMissingSummary = useMemo(() => {
-    return children?.every((e) => e.type !== 'summary');
+  const editedDetails = useMemo(() => {
+    const summaryIndex = children?.findIndex((e) => e.type === 'summary');
+    const hasSummary = summaryIndex && summaryIndex > 0 && children;
+
+    const realChildren = hasSummary
+      ? children?.splice(summaryIndex, 1)
+      : children;
+
+    const realSummary = hasSummary ? (
+      children[summaryIndex]
+    ) : (
+      <summary>Details</summary>
+    );
+
+    return { summary: realSummary, children: realChildren };
   }, [children]);
 
-  const getSummary = useMemo(() => {
-    return children?.find((e) => e.type === 'summary');
-  }, [children]);
-
-  const summary = isMissingSummary ? <summary>Details</summary> : null;
   return (
     <details data-testid="gamut-md-details" {...props}>
-      {summary}
-      {children}
+      {/* {editedDetails.summary} */}
+      {editedDetails.children}
     </details>
   );
 };
