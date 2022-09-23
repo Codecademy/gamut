@@ -18,7 +18,6 @@ export * from './Coachmark';
 export * from './ConnectedForm';
 export * from './ContentContainer';
 export * from './DataList';
-export * from './DeprecatedCard/CardShell';
 export * from './Drawer';
 export * from './FloatingCard/FloatingCard';
 export * from './Flyout';
