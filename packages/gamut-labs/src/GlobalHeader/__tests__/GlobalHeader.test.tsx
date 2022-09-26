@@ -26,13 +26,6 @@ const user: User = {
   showReferrals: true,
 };
 
-const userInExperiment: User = {
-  avatar:
-    'https://www.gravatar.com/avatar/1c959a9a1e2f9f9f1ac06b05cccc1d60?s=150&d=retro',
-  displayName: 'Codey',
-  showReferrals: true,
-};
-
 const defaultProps = {
   action,
   notifications: {
