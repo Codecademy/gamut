@@ -24,7 +24,6 @@ import {
   AppHeaderSimpleDropdownItem,
   AppHeaderTextButtonItem,
 } from '../AppHeader/AppHeaderElements/types';
-import { headerResourcesList } from '../lib/resourcesList';
 import { User } from './types';
 
 export const logo: AppHeaderLogoItem = {
@@ -46,16 +45,6 @@ export const myHome: AppHeaderLinkItem = {
   type: 'link',
 };
 
-export const courseCatalog: AppHeaderLinkItem = {
-  dataTestId: 'header-catalog',
-  icon: BookFlipPageIcon,
-  id: 'course-catalog',
-  text: 'Catalog',
-  href: '/catalog',
-  trackingTarget: 'topnav_catalog',
-  type: 'link',
-};
-
 export const catalogDropdown = (
   hideCareerPaths?: boolean
 ): AppHeaderCatalogDropdownItem => ({
@@ -68,22 +57,13 @@ export const catalogDropdown = (
   hideCareerPaths,
 });
 
-export const resourcesDropdown: AppHeaderSimpleDropdownItem = {
-  icon: NotebookIcon,
-  id: 'resources',
-  text: 'Resources',
-  popover: headerResourcesList,
-  trackingTarget: 'topnav_resources',
-  type: 'dropdown',
-};
-
-export const refreshedResourcesDropdown: AppHeaderResourcesDropdownItem = {
+export const resourcesDropdown: AppHeaderResourcesDropdownItem = {
   dataTestId: 'header-resources',
   icon: NotebookIcon,
-  id: 'experimental-resources-dropdown',
+  id: 'resources-dropdown',
   text: 'Resources',
   trackingTarget: 'topnav_resources',
-  type: 'experimental-resources-dropdown',
+  type: 'resources-dropdown',
 };
 
 export const communityDropdown: AppHeaderSimpleDropdownItem = {
