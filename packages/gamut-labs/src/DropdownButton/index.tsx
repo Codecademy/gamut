@@ -63,7 +63,11 @@ export const DropdownButton: React.FC<DropdownButtonProps> = ({
   switch (buttonType) {
     case 'fill':
       clickTarget = (
-        <FillButton onClick={handleClick} data-testid="dropdown-fill-button">
+        <FillButton
+          aria-expanded={isOpen}
+          onClick={handleClick}
+          data-testid="dropdown-fill-button"
+        >
           {children}
           <DownArrow isOpen={isOpen} size={12} aria-label="dropdown" />
         </FillButton>
@@ -72,6 +76,7 @@ export const DropdownButton: React.FC<DropdownButtonProps> = ({
     case 'stroke':
       clickTarget = (
         <StrokeButton
+          aria-expanded={isOpen}
           onClick={handleClick}
           data-testid="dropdown-stroke-button"
         >
@@ -83,6 +88,7 @@ export const DropdownButton: React.FC<DropdownButtonProps> = ({
     case 'kebab':
       clickTarget = (
         <IconButton
+          aria-expanded={isOpen}
           aria-label="More options"
           icon={MiniKebabMenuIcon}
           size="small"
@@ -95,6 +101,7 @@ export const DropdownButton: React.FC<DropdownButtonProps> = ({
     case 'horizontalKebab':
       clickTarget = (
         <IconButton
+          aria-expanded={isOpen}
           aria-label="More options"
           icon={HorizontalKebabIcon}
           size="small"
