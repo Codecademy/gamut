@@ -32,7 +32,7 @@ const getStyledDetailChildren = ({
 
     return {
       summary,
-      children: [<Box ml={16}>{copiedChildren.map((elem) => elem)}</Box>],
+      children: [<Box ml={24}>{copiedChildren.map((elem) => elem)}</Box>],
     };
   }
 };
