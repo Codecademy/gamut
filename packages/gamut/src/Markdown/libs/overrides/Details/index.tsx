@@ -1,5 +1,6 @@
 import React, { HTMLAttributes, useMemo } from 'react';
 
+import { Box } from '../../../../Box';
 import { HTMLToReactNode } from '..';
 // import styles from '../../../styles/_'
 export interface MarkdownDetailsProps
@@ -8,10 +9,38 @@ export interface MarkdownDetailsProps
   children?: HTMLToReactNode[];
 }
 
+interface GetDetailChildrenProps extends MarkdownDetailsProps {
+  summaryIndex?: number;
+  hasSummary: boolean;
+}
+
+const getStyledDetailChildren = ({
+  summaryIndex,
+  hasSummary,
+  children,
+}: GetDetailChildrenProps) => {
+  if (children && summaryIndex) {
+    const copiedChildren = hasSummary
+      ? children.slice(0, summaryIndex).concat(children.slice(summaryIndex + 1))
+      : children;
+
+    const summary = hasSummary ? (
+      children[summaryIndex]
+    ) : (
+      <summary>Details</summary>
+    );
+
+    return {
+      summary,
+      children: [<Box ml={16}>{copiedChildren.map((elem) => elem)}</Box>],
+    };
+  }
+};
+
 /**
  * Details element
  * By default, the <summary> element is not required, but the default "details" text is not easily styled
- * This ensures we always have a summary element to style.
+ * This ensures we always have a summary element to style and that the details are indented
  */
 export const Details: React.FC<MarkdownDetailsProps> = ({
   children,
@@ -19,25 +48,15 @@ export const Details: React.FC<MarkdownDetailsProps> = ({
 }) => {
   const editedDetails = useMemo(() => {
     const summaryIndex = children?.findIndex((e) => e.type === 'summary');
-    const hasSummary = summaryIndex && summaryIndex > 0 && children;
+    const hasSummary = Boolean(summaryIndex && summaryIndex > 0 && children);
 
-    const realChildren = hasSummary
-      ? children?.splice(summaryIndex, 1)
-      : children;
-
-    const realSummary = hasSummary ? (
-      children[summaryIndex]
-    ) : (
-      <summary>Details</summary>
-    );
-
-    return { summary: realSummary, children: realChildren };
+    return getStyledDetailChildren({ summaryIndex, hasSummary, children });
   }, [children]);
 
   return (
     <details data-testid="gamut-md-details" {...props}>
-      {editedDetails.summary}
-      {editedDetails.children}
+      {editedDetails?.summary}
+      {editedDetails?.children}
     </details>
   );
 };
