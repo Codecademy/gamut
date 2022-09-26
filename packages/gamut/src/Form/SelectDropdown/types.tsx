@@ -17,7 +17,7 @@ export interface SharedProps {
 }
 
 export interface SelectDropdownGroup extends GroupBase<ExtendedOption> {
-  divider: boolean;
+  divider?: boolean;
 }
 
 export interface WrapperStyleProps
