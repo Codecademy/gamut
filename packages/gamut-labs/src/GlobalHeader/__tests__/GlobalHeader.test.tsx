@@ -372,7 +372,7 @@ describe('GlobalHeader', () => {
       });
 
       it('renders business solutions', () => {
-        const { view } = renderView(freeHeaderProps);
+        const { view } = renderView(proHeaderProps);
         view.getByText(businessSolutions.text);
       });
 
