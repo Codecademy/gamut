@@ -9,7 +9,6 @@ import {
   businessSolutions,
   catalogDropdown,
   communityDropdown,
-  courseCatalog,
   favorites,
   freeProfile,
   login,
@@ -18,7 +17,6 @@ import {
   pricingDropdown,
   pricingLink,
   proProfile,
-  refreshedResourcesDropdown,
   resourcesDropdown,
   signUp,
   tryProForFree,
@@ -26,14 +24,6 @@ import {
   upgradeToPro,
 } from './GlobalHeaderItems';
 import { User } from './types';
-
-const catalogComponent = (user?: User) =>
-  user?.useNewCatalogDropdown
-    ? catalogDropdown(user?.hideCareerPaths)
-    : courseCatalog;
-
-const resourcesComponent = (user?: User) =>
-  user?.useNewCatalogDropdown ? refreshedResourcesDropdown : resourcesDropdown;
 
 // Simplify pricing dropdown to a normal link for users in India
 const pricingComponent = (user?: User) =>
@@ -47,8 +37,8 @@ const anonHeaderItems = (
 ): FormattedAppHeaderItems => {
   const leftItems: AppHeaderItem[] = [
     logo,
-    catalogComponent(user),
-    resourcesComponent(user),
+    catalogDropdown(user?.hideCareerPaths),
+    resourcesDropdown,
     communityDropdown,
     ...(hidePricing ? [] : [pricingComponent(user)]),
     businessSolutions,
@@ -85,8 +75,8 @@ const anonMobileHeaderItems = (
   }
 
   const mainMenuItems: AppHeaderItem[] = [
-    catalogComponent(user),
-    resourcesComponent(user),
+    catalogDropdown(user?.hideCareerPaths),
+    resourcesDropdown,
     communityDropdown,
     ...(hidePricing ? [] : [pricingComponent(user)]),
     businessSolutions,
@@ -165,8 +155,8 @@ export const freeHeaderItems = (
   const leftItems: AppHeaderItem[] = [
     specialLogo,
     myHome,
-    catalogComponent(user),
-    resourcesComponent(user),
+    catalogDropdown(user?.hideCareerPaths),
+    resourcesDropdown,
     communityDropdown,
     ...(hidePricing ? [] : [pricingComponent(user)]),
     businessSolutions,
@@ -198,8 +188,8 @@ export const freeMobileHeaderItems = (
   const rightItems: AppHeaderItem[] = [];
   const mainMenuItems: AppHeaderItem[] = [
     myHome,
-    catalogComponent(user),
-    resourcesComponent(user),
+    catalogDropdown(user?.hideCareerPaths),
+    resourcesDropdown,
     communityDropdown,
     ...(hidePricing ? [] : [pricingComponent(user)]),
     businessSolutions,
@@ -223,8 +213,8 @@ export const proHeaderItems = (
   const leftItems: AppHeaderItem[] = [
     logo,
     myHome,
-    catalogComponent(user),
-    resourcesComponent(user),
+    catalogDropdown(user?.hideCareerPaths),
+    resourcesDropdown,
     communityDropdown,
     businessSolutions,
   ];
@@ -252,8 +242,8 @@ export const proMobileHeaderItems = (
 
   const mainMenuItems: AppHeaderItem[] = [
     myHome,
-    catalogComponent(user),
-    resourcesComponent(user),
+    catalogDropdown(user?.hideCareerPaths),
+    resourcesDropdown,
     communityDropdown,
     businessSolutions,
     proProfile(user),
