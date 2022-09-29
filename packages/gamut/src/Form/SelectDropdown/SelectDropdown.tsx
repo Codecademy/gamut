@@ -96,7 +96,10 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
   const rawInputId = useId();
   const inputId = name ?? `${id}-select-dropdown-${rawInputId}`;
   const optionsAreGrouped = useMemo(() => {
-    return (options as any)?.some((option: any) => isOptionGroup(option));
+    if (options?.length) {
+      return (options as any)?.some((option: any) => isOptionGroup(option));
+    }
+    return false;
   }, [options]);
 
   const [activated, setActivated] = useState(false);
