@@ -10,11 +10,13 @@ import { mapValues, pick } from 'lodash';
 import React, {
   ComponentProps,
   forwardRef,
+  useContext,
   useEffect,
   useMemo,
   useState,
 } from 'react';
 
+import { theme } from '.';
 import {
   background,
   border,
@@ -63,14 +65,23 @@ export const modeColorProps = ({
   ).variables;
 };
 
+const BackgroundCurrentContext = React.createContext({});
+
 export function useColorModes(): [
   ColorModes,
   ColorModeShape,
   ColorModeConfig,
-  (color: Colors) => string
+  (color: Colors) => string,
+  any
 ] {
+  const bgCurrent = useContext(BackgroundCurrentContext);
   const { mode, modes, _getColorValue: getColorValue } = useTheme() || {};
-  return [mode, modes?.[mode], modes, getColorValue];
+
+  if (bgCurrent) {
+    modes[mode]['background-current'] = bgCurrent as any;
+  }
+
+  return [mode, modes?.[mode], modes, getColorValue, bgCurrent];
 }
 
 export function useCurrentMode(mode?: ColorModes) {
@@ -149,7 +160,9 @@ export const ColorMode = forwardRef<
       : pick(variables, ['--color-background-current']);
 
     return (
-      <VariableProvider {...rest} variables={vars} bg={contextBg} ref={ref} />
+      <BackgroundCurrentContext.Provider value={{ 'background-current': bg }}>
+        <VariableProvider {...rest} variables={vars} bg={contextBg} ref={ref} />
+      </BackgroundCurrentContext.Provider>
     );
   }
 

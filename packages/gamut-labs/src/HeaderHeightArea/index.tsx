@@ -51,6 +51,7 @@ export const HeaderHeightArea: React.FC<HeaderHeightAreaProps> = ({
       faded={isInHeaderRegion}
       title={title}
     >
+      <Box bg="background-current"> HI CASSIE </Box>
       {children}
     </HeaderHeightAreaBase>
   );
