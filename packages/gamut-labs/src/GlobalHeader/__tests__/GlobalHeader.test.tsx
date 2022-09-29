@@ -5,13 +5,11 @@ import {
   businessSolutions,
   catalogDropdown,
   communityDropdown,
-  courseCatalog,
   login,
   myHome,
   pricingDropdown,
   pricingLink,
   referrals,
-  refreshedResourcesDropdown,
   resourcesDropdown,
   signUp,
   tryProForFree,
@@ -26,14 +24,6 @@ const user: User = {
     'https://www.gravatar.com/avatar/1c959a9a1e2f9f9f1ac06b05cccc1d60?s=150&d=retro',
   displayName: 'Codey',
   showReferrals: true,
-};
-
-const userInExperiment: User = {
-  avatar:
-    'https://www.gravatar.com/avatar/1c959a9a1e2f9f9f1ac06b05cccc1d60?s=150&d=retro',
-  displayName: 'Codey',
-  showReferrals: true,
-  useNewCatalogDropdown: true,
 };
 
 const defaultProps = {
@@ -132,10 +122,10 @@ const catalogDropdownTest = (props: GlobalHeaderProps) => {
   view.getByText('Explore all courses');
 };
 
-const refreshedResourcesDropdownTest = (props: GlobalHeaderProps) => {
+const resourcesDropdownTest = (props: GlobalHeaderProps) => {
   const { view } = renderView(props);
 
-  view.getByText(refreshedResourcesDropdown.text).click();
+  view.getByText(resourcesDropdown.text).click();
   view.getByText('View all topics →');
 };
 
@@ -160,33 +150,12 @@ describe('GlobalHeader', () => {
       expect(logoElements[1]).toBeVisible();
     });
 
-    it('renders courseCatalog link when user is not in experiment', () => {
-      const { view } = renderView(anonHeaderProps);
-      expect(view.getByText(courseCatalog.text).closest('a')).toHaveAttribute(
-        'href',
-        courseCatalog.href
-      );
-    });
-
-    it('renders catalogDropdown when user is in experiment', () => {
-      const props = {
-        ...anonHeaderProps,
-        user: userInExperiment,
-      };
-      catalogDropdownTest(props);
-    });
-
-    it('renders catalogDropdown when user is in experiment', () => {
-      const props = {
-        ...anonHeaderProps,
-        user: userInExperiment,
-      };
-      refreshedResourcesDropdownTest(props);
+    it('renders catalogDropdown', () => {
+      catalogDropdownTest(anonHeaderProps);
     });
 
     it('renders resourcesDropdown', () => {
-      const { view } = renderView(anonHeaderProps);
-      view.getAllByText(resourcesDropdown.text);
+      resourcesDropdownTest(anonHeaderProps);
     });
 
     it('renders communityDropdown', () => {
@@ -294,26 +263,12 @@ describe('GlobalHeader', () => {
         const { view } = renderView(freeHeaderProps);
         view.getAllByText(myHome.text);
       });
-
-      it('renders courseCatalog link when user is not in experiment', () => {
-        const { view } = renderView(freeHeaderProps);
-        expect(view.getByText(courseCatalog.text).closest('a')).toHaveAttribute(
-          'href',
-          courseCatalog.href
-        );
-      });
-
-      it('renders catalogDropdown when user is in experiment', () => {
-        const props = {
-          ...freeHeaderProps,
-          user: userInExperiment,
-        };
-        catalogDropdownTest(props);
+      it('renders catalogDropdown', () => {
+        catalogDropdownTest(freeHeaderProps);
       });
 
       it('renders resourcesDropdown', () => {
-        const { view } = renderView(freeHeaderProps);
-        view.getByText(resourcesDropdown.text);
+        resourcesDropdownTest(freeHeaderProps);
       });
 
       it('renders communityDropdown', () => {
@@ -403,25 +358,12 @@ describe('GlobalHeader', () => {
         view.getAllByText(myHome.text);
       });
 
-      it('renders courseCatalog link when user is not in experiment', () => {
-        const { view } = renderView(proHeaderProps);
-        expect(view.getByText(courseCatalog.text).closest('a')).toHaveAttribute(
-          'href',
-          courseCatalog.href
-        );
-      });
-
-      it('renders catalogDropdown when user is in experiment', () => {
-        const props = {
-          ...proHeaderProps,
-          user: userInExperiment,
-        };
-        catalogDropdownTest(props);
+      it('renders catalogDropdown', () => {
+        catalogDropdownTest(proHeaderProps);
       });
 
       it('renders resourcesDropdown', () => {
-        const { view } = renderView(proHeaderProps);
-        view.getByText(resourcesDropdown.text);
+        resourcesDropdownTest(proHeaderProps);
       });
 
       it('renders communityDropdown', () => {
@@ -430,7 +372,7 @@ describe('GlobalHeader', () => {
       });
 
       it('renders business solutions', () => {
-        const { view } = renderView(freeHeaderProps);
+        const { view } = renderView(proHeaderProps);
         view.getByText(businessSolutions.text);
       });
 
