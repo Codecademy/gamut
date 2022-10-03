@@ -2,8 +2,10 @@ import React, { HTMLAttributes, useMemo } from 'react';
 
 import { HTMLToReactNode } from '..';
 // import styles from '../../../styles/_'
-export interface MarkdownDetailsProps
-  extends HTMLAttributes<HTMLDetailsElement> {
+
+interface MarkdownHTMLDetailsAttributes
+  extends Omit<HTMLAttributes<HTMLDetailsElement>, 'children'> {}
+export interface MarkdownDetailsProps extends MarkdownHTMLDetailsAttributes {
   open?: boolean;
   children?: HTMLToReactNode[];
 }
@@ -21,10 +23,13 @@ export const Details: React.FC<MarkdownDetailsProps> = ({
     return children?.every((e) => e.type !== 'summary');
   }, [children]);
   const summary = isMissingSummary ? <summary>Details</summary> : null;
+
   return (
     <details data-testid="gamut-md-details" {...props}>
-      {summary}
-      {children}
+      <>
+        {summary}
+        {children}
+      </>
     </details>
   );
 };

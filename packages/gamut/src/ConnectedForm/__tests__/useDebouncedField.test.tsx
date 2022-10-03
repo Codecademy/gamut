@@ -6,6 +6,7 @@ import { act } from 'react-dom/test-utils';
 import {
   Checkbox,
   ConnectedForm,
+  GenericChildrenType,
   Input,
   useDebouncedField,
   useFormState,
@@ -34,7 +35,7 @@ const mockChangeValue =
 const mockChangeKey = 'remake-intergrade';
 const mockCheckboxKey = 'episode-inter-mission';
 
-const FormWrapper: React.FC = ({ children }) => (
+const FormWrapper: React.FC<GenericChildrenType> = ({ children }) => (
   <ConnectedForm
     onSubmit={() => null}
     defaultValues={{
