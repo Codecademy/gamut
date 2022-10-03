@@ -56,7 +56,7 @@ const renderHeaderSection = (
           handleClose={handleCloseMainMenu}
         />
       );
-    case 'experimental-resources-dropdown':
+    case 'resources-dropdown':
       return (
         <AppHeaderResourcesSection
           action={action}
