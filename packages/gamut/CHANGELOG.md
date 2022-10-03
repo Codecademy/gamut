@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [50.7.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@50.6.6...@codecademy/gamut@50.7.0) (2022-10-03)
+
+
+### Features
+
+* **Markdown:** add indentation to details  ([8aded87](https://github.com/Codecademy/gamut/commit/8aded876a22b906838675ba88a7060174b99d531))
+
+
+
 ### [50.6.6](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@50.6.5...@codecademy/gamut@50.6.6) (2022-09-22)
 
 **Note:** Version bump only for package @codecademy/gamut
