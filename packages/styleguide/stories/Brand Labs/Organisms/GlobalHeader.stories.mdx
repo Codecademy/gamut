@@ -1,5 +1,6 @@
 import { Box } from '@codecademy/gamut/src';
 import { GlobalHeader } from '@codecademy/gamut-labs/src';
+import { Background } from '@codecademy/gamut-styles/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
@@ -93,7 +94,7 @@ The following are available variations for the GlobalHeader component.
 <Canvas>
   <Story name="Free User - Default">
     {() => (
-      <Box position="relative" zIndex={0}>
+      <Background bg="background-primary" position="relative" zIndex={0}>
         <GlobalHeader
           action={() => {}}
           notifications={{
@@ -130,7 +131,7 @@ The following are available variations for the GlobalHeader component.
           }}
         />
         <Box>Page content would go here</Box>
-      </Box>
+      </Background>
     )}
   </Story>
 </Canvas>
