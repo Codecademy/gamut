@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [61.6.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@61.5.15...@codecademy/styleguide@61.6.0) (2022-10-04)
+
+
+### Features
+
+* **ColorMode:** correct background-current from useColorMode hook ([6e20044](https://github.com/Codecademy/gamut/commit/6e20044679771b0f8fd1b4faecf17de0a14202d2))
+
+
+
 ### [61.5.15](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@61.5.14...@codecademy/styleguide@61.5.15) (2022-10-03)
 
 **Note:** Version bump only for package @codecademy/styleguide
