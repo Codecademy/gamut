@@ -10,7 +10,8 @@
     },
     "allowJs": true,
     "noEmit": true,
-    "declaration": false
+    "declaration": false,
+    "jsx": "react"
   },
   "include": [
     "../../typings/*.d.ts",
