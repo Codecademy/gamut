@@ -135,7 +135,7 @@ export const getMemoizedStyles = (
     option: (provided, state: any) => {
       return {
         padding: state.selectProps.size === 'small' ? '3px 14px' : '11px 14px',
-        cursor: state.isDisabled ? 'default' : 'pointer',
+        cursor: state.isDisabled ? 'not-allowed' : 'pointer',
         ...getOptionBackground(state.isSelected, state.isFocused)({ theme }),
         display: 'flex',
         alignItems: 'center',
