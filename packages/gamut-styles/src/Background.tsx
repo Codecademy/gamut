@@ -39,6 +39,7 @@ export const Background = forwardRef<HTMLDivElement, BackgroundProps>(
 
     const getTextContrast = useCallback(
       (foreground: Colors) => {
+        console.log('foreground', foreground, 'true color', trueColor);
         return getContrast(getColorValue(foreground), getColorValue(trueColor));
       },
       [trueColor, getColorValue]
