@@ -154,11 +154,13 @@ export const ColorMode = forwardRef<
   const contextBg = bg ? 'background-current' : undefined;
 
   // This makes sure the background-current context is always set to the correct color + not the semantic color name.
-  const [activeMode, , parentMode] = useColorModes();
+  const currentParentBg = useContext(BackgroundCurrentContext);
 
   const bgCurrent =
     bg === 'background-current'
-      ? parentMode[activeMode]['background-current']
+      ? currentParentBg['background-current']
+        ? currentParentBg['background-current']
+        : modes[active]['background-current']
       : bg;
 
   /** Serialize color variables for the current mode
