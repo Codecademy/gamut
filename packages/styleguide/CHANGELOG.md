@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [61.7.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@61.6.0...@codecademy/styleguide@61.7.0) (2022-10-05)
+
+
+### Features
+
+* **Selectdropdown:**  Add subtitle, rightlabel, disabled, and divider options ([1a1b9b6](https://github.com/Codecademy/gamut/commit/1a1b9b6b510ebac183be092c15f36091b1b462c2))
+
+
+
 ## [61.6.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@61.5.15...@codecademy/styleguide@61.6.0) (2022-10-04)
 
 

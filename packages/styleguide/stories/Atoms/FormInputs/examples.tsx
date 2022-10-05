@@ -126,3 +126,165 @@ export const SelectDropdownIconExample: React.FC = () => (
     </Background>
   </Box>
 );
+
+export const SelectDropdownOptionVariantsExample: React.FC = () => (
+  <>
+    <Box p={16} width="100%" height="12rem" border={1} bg="palePink">
+      <FormGroup
+        label="I might have disabled options"
+        htmlFor="disabled-dropdown"
+      >
+        <SelectDropdown
+          name="disabled-dropdown"
+          options={[
+            {
+              label: 'I am disabled',
+              value: 'xxx',
+              disabled: true,
+            },
+            {
+              label: 'I am not',
+              value: 'yyy',
+            },
+            {
+              label: `Nor am I`,
+              value: 'zzz',
+              disabled: false,
+            },
+          ]}
+        />
+      </FormGroup>
+    </Box>
+    <Box p={16} width="100%" height="12rem" border={1} bg="palePink">
+      <FormGroup
+        label="I have subtitle and extended info options"
+        htmlFor="extended-dropdown"
+      >
+        <SelectDropdown
+          name="extended-dropdown"
+          options={[
+            {
+              options: [
+                {
+                  label: 'king@chess.com',
+                  subtitle: 'The King of Chess',
+                  value: 'xxx',
+                  disabled: true,
+                },
+                {
+                  label: 'queen@chess.com',
+                  rightLabel: 'The Queen of Chess',
+                  value: 'yyy',
+                },
+                {
+                  label: 'bishop@chess.com',
+                  subtitle: 'Bishop Chess',
+                  rightLabel: 'I can move diagonally',
+                  value: 'zzz',
+                  disabled: false,
+                },
+              ],
+            },
+            {
+              divider: true,
+              options: [
+                {
+                  label: 'knight@chess.com',
+                  subtitle: 'Sir Chess',
+                  rightLabel: 'By leaps and bounds',
+                  value: 'zzz',
+                  disabled: true,
+                },
+                {
+                  label: 'pawn@chess.com',
+                  value: 'zzz',
+                  disabled: false,
+                },
+              ],
+            },
+          ]}
+        />
+      </FormGroup>
+    </Box>
+  </>
+);
+
+export const SelectDropdownMultipleExample: React.FC = () => {
+  const [selectOptions, setSelectOptions] = useState<string[]>([]);
+  const handleChange = (options) => {
+    setSelectOptions(options.map((option) => option.value));
+  };
+  return (
+    <Box p={16} width="100%" height="12rem" border={1} bg="palePink">
+      <FormGroup
+        label="I have multiple select options"
+        htmlFor="multi-dropdown"
+      >
+        <SelectDropdown
+          onChange={handleChange}
+          value={selectOptions}
+          name="multi-dropdown"
+          multiple
+          options={[
+            {
+              label: 'Select Me',
+              value: 'xxx',
+              disabled: true,
+            },
+            {
+              label: 'Multi Select',
+              value: 'yyy',
+            },
+            {
+              label: `Select All?`,
+              value: 'zzz',
+            },
+          ]}
+        />
+      </FormGroup>
+      <FormGroup
+        label="I have multiple select options and option groups"
+        htmlFor="multi-group-dropdown"
+      >
+        <SelectDropdown
+          onChange={handleChange}
+          value={selectOptions}
+          name="multi-group-dropdown"
+          multiple
+          options={[
+            {
+              label: 'Group one',
+              options: [
+                {
+                  label: 'Select Me',
+                  value: 'one',
+                },
+                {
+                  label: 'Multi Select',
+                  value: 'two',
+                },
+                {
+                  label: `Select All?`,
+                  value: 'three',
+                },
+              ],
+            },
+            {
+              label: 'Group 2',
+              options: [
+                {
+                  label: 'Item one',
+                  value: 'xx',
+                },
+                {
+                  label: 'Item two',
+                  value: 'yy',
+                },
+              ],
+            },
+          ]}
+        />
+      </FormGroup>
+    </Box>
+  );
+};
