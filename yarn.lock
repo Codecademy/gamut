@@ -19964,10 +19964,10 @@ react-transition-group@^4.3.0:
     loose-envify "^1.4.0"
     prop-types "^15.6.2"
 
-react-truncate-markup@^5.1.0:
-  version "5.1.0"
-  resolved "https://registry.npmjs.org/react-truncate-markup/-/react-truncate-markup-5.1.0.tgz#632f263a7d70925ab6368d5620ef32f066c2857a"
-  integrity sha512-TTp8gj63w/o5jQC7HnLMEeAHp9jjSxFlA5lzklvPzcSubcurkEI4g0YjW67YG1yNAJHqQwCadj4mTUvz58S1wQ==
+react-truncate-markup@^5.1.2:
+  version "5.1.2"
+  resolved "https://registry.npmjs.org/react-truncate-markup/-/react-truncate-markup-5.1.2.tgz#bf09785854d95e20028b257831ffdf32d08c8fa7"
+  integrity sha512-eEq6T8Rs+wz98cRYzQECGFNBfXwRYraLg/kz52f6DRBKmzxqB+GYLeDkVe/zrC+2vh5AEwM6nSYFvDWEBljd0w==
   dependencies:
     line-height "0.3.1"
     memoize-one "^5.1.1"

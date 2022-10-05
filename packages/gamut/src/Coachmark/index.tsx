@@ -1,8 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
 
+import { GenericChildrenType } from '..';
 import { Popover, PopoverProps } from '../Popover';
 
-export type CoachmarkProps = {
+export interface CoachmarkProps extends GenericChildrenType {
   /**
    * Applied to the element to which the coachmark points.
    */
@@ -24,7 +25,7 @@ export type CoachmarkProps = {
    * Props to be passed into the popover component.
    */
   popoverProps?: Partial<PopoverProps>;
-};
+}
 
 export const Coachmark: React.FC<CoachmarkProps> = ({
   children,
