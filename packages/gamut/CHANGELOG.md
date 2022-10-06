@@ -3,6 +3,40 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [50.8.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@50.8.0...@codecademy/gamut@50.8.1) (2022-10-06)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [50.8.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@50.7.1...@codecademy/gamut@50.8.0) (2022-10-05)
+
+
+### Features
+
+* **Selectdropdown:**  Add subtitle, rightlabel, disabled, and divider options ([1a1b9b6](https://github.com/Codecademy/gamut/commit/1a1b9b6b510ebac183be092c15f36091b1b462c2))
+
+
+
+### [50.7.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@50.7.0...@codecademy/gamut@50.7.1) (2022-10-04)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [50.7.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@50.6.6...@codecademy/gamut@50.7.0) (2022-10-03)
+
+
+### Features
+
+* **Markdown:** add indentation to details  ([8aded87](https://github.com/Codecademy/gamut/commit/8aded876a22b906838675ba88a7060174b99d531))
+
+
+
 ### [50.6.6](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@50.6.5...@codecademy/gamut@50.6.6) (2022-09-22)
 
 **Note:** Version bump only for package @codecademy/gamut

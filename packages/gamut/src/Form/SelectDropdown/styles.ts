@@ -132,13 +132,16 @@ export const getMemoizedStyles = (
       ...provided,
       ...placeholderColor({ theme }),
     }),
-    option: (provided, state: any) => ({
-      padding: state.selectProps.size === 'small' ? '3px 14px' : '11px 14px',
-      cursor: 'pointer',
-      ...getOptionBackground(state.isSelected, state.isFocused)({ theme }),
-      display: 'flex',
-      alignItems: 'center',
-    }),
+    option: (provided, state: any) => {
+      return {
+        padding: state.selectProps.size === 'small' ? '3px 14px' : '11px 14px',
+        cursor: state.isDisabled ? 'not-allowed' : 'pointer',
+        ...getOptionBackground(state.isSelected, state.isFocused)({ theme }),
+        display: 'flex',
+        alignItems: 'center',
+        color: state.isDisabled ? 'text-disabled' : 'default',
+      };
+    },
     singleValue: (provided) => ({
       ...provided,
       ...textColor({ theme }),

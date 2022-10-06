@@ -12,7 +12,9 @@ import ReactSelect, {
 import { Box } from '../../Box';
 import {
   CustomContainerProps,
+  ExtendedOption,
   ReactSelectAdditionalProps,
+  SelectDropdownGroup,
   SizedIndicatorProps,
 } from './types';
 
@@ -64,15 +66,65 @@ export const CustomContainer = ({
   );
 };
 
-export const formatOptionLabel = ({ label, icon: Icon, size }: any) => {
+export const formatOptionLabel = ({
+  label,
+  icon: Icon,
+  size,
+  subtitle,
+  rightLabel,
+  disabled,
+}: ExtendedOption) => {
+  const textColor = disabled ? 'text-disabled' : 'inherit';
   return (
-    <>
-      {Icon && <Icon size={size === 'small' ? 16 : 24} color="text" ml={4} />}
-      <Box as="span" pl={Icon ? 16 : 0}>
-        {label}
+    <Box
+      color={textColor}
+      display="flex"
+      justifyContent="space-between"
+      width="100%"
+    >
+      <Box display="flex" flexDirection="column">
+        <Box>
+          {Icon && (
+            <Icon size={size === 'small' ? 16 : 24} color="text" ml={4} />
+          )}
+          <Box color={textColor} as="span" pl={Icon ? 16 : 0}>
+            {label}
+          </Box>
+        </Box>
+        <Box as="span" fontSize={14} color="text-disabled">
+          {subtitle}
+        </Box>
       </Box>
-    </>
+      <Box
+        display="flex"
+        alignItems="center"
+        justifyContent="flex-end"
+        flexGrow={1}
+        textAlign="right"
+        fontSize={14}
+      >
+        {rightLabel}
+      </Box>
+    </Box>
   );
+};
+
+export const formatGroupLabel = ({ label, divider }: SelectDropdownGroup) => {
+  if (divider) {
+    return (
+      <Box display="flex" justify-content="center">
+        <Box
+          width="100%"
+          fit
+          height="1px"
+          bg="text-disabled"
+          borderRadius="2px"
+          mx={16}
+        />
+      </Box>
+    );
+  }
+  return label;
 };
 
 export function TypedReactSelect<

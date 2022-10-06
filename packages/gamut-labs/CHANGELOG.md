@@ -3,6 +3,39 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [33.6.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@33.6.1...@codecademy/gamut-labs@33.6.2) (2022-10-06)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [33.6.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@33.6.0...@codecademy/gamut-labs@33.6.1) (2022-10-05)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+## [33.6.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@33.5.4...@codecademy/gamut-labs@33.6.0) (2022-10-04)
+
+
+### Features
+
+* **ColorMode:** correct background-current from useColorMode hook ([6e20044](https://github.com/Codecademy/gamut/commit/6e20044679771b0f8fd1b4faecf17de0a14202d2))
+
+
+
+### [33.5.4](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@33.5.3...@codecademy/gamut-labs@33.5.4) (2022-10-03)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
 ### [33.5.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@33.5.2...@codecademy/gamut-labs@33.5.3) (2022-09-28)
 
 **Note:** Version bump only for package @codecademy/gamut-labs
