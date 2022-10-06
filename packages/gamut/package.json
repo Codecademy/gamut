@@ -30,7 +30,7 @@
     "@codecademy/gamut-patterns": "^0.8.15",
     "@codecademy/gamut-styles": "^14.1.1",
     "@codecademy/variance": "^0.20.3",
-    "@reach/auto-id": "^0.16.0",
+    "@reach/auto-id": "^0.17.0",
     "@reach/tabs": "^0.16.4",
     "@types/marked": "^1.1.0",
     "classnames": "^2.2.5",
