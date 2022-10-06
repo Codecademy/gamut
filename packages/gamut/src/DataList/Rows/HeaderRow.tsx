@@ -56,7 +56,7 @@ export const Header: HeaderComponent = ({
         {columns.map(({ key, header, sortable, filters, ...colProps }) => {
           const rowProperty = key as string;
           const renderKey = prefixId(`header-col-${rowProperty}`);
-          const columnText = header || key;
+          const columnText = String(header || key);
 
           return (
             <ListCol key={renderKey} {...colProps} columnHeader>

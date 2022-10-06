@@ -39,7 +39,7 @@ const SortIcon = styled(ArrowChevronDownFilledIcon)(
 interface SortControlProps {
   columnKey: string;
   onSort?: OnSort<any>;
-  children: string | number | symbol;
+  children: string;
 }
 
 const defaultSortOrder = ['asc', 'desc', 'none'] as SortOrder;
