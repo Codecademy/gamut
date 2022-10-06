@@ -57,8 +57,10 @@ export const Details: React.FC<MarkdownDetailsProps> = ({
 
   return (
     <details data-testid="gamut-md-details" {...props}>
-      {editedDetails?.summary}
-      {editedDetails?.children}
+      <>
+        {editedDetails?.summary}
+        {editedDetails?.children}
+      </>
     </details>
   );
 };
