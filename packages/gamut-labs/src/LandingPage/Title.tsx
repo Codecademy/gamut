@@ -1,9 +1,9 @@
-import { Text } from '@codecademy/gamut';
+import { GenericChildrenType, Text } from '@codecademy/gamut';
 import React from 'react';
 
-export type TitleProps = {
+export interface TitleProps extends GenericChildrenType {
   isPageHeading?: boolean;
-};
+}
 
 const titleProps = {
   heading: {

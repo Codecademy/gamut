@@ -1,5 +1,6 @@
 import {
   AppWrapper,
+  GenericChildrenType,
   SkipToContent,
   SkipToContentTarget,
 } from '@codecademy/gamut';
@@ -20,7 +21,7 @@ export type GlobalPageBackgroundColor =
   | 'paleYellow'
   | 'white';
 
-export type GlobalPageProps = {
+export interface GlobalPageProps extends GenericChildrenType {
   backgroundColor?: GlobalPageBackgroundColor;
 
   /**
@@ -47,7 +48,7 @@ export type GlobalPageProps = {
    * Custom element ID to link to by the SkipToContent control, if not a default one at the beginning of the page.
    */
   skipToContentId?: string;
-};
+}
 
 const defaultSkipToContentId = 'page-skip-to-content-target';
 

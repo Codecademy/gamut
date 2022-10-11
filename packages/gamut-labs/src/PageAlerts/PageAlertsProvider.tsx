@@ -1,3 +1,4 @@
+import { GenericChildrenType } from '@codecademy/gamut';
 import { noop } from 'lodash/fp';
 import React, { useCallback, useContext, useState } from 'react';
 
@@ -17,7 +18,9 @@ export const PageAlertsContext = React.createContext<PageAlertsContextValue>({
   closeAlert: noop,
 });
 
-export const PageAlertsProvider: React.FC = ({ children }) => {
+export const PageAlertsProvider: React.FC<GenericChildrenType> = ({
+  children,
+}) => {
   const [alerts, setAlerts] = useState<PageAlert[]>([]);
 
   const addAlert = useCallback((newAlert: PageAlert) => {

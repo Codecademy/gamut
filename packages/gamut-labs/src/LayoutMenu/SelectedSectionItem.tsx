@@ -1,7 +1,9 @@
-import { Box, Text } from '@codecademy/gamut';
+import { Box, GenericChildrenType, Text } from '@codecademy/gamut';
 import React from 'react';
 
-export const SelectedSectionItem: React.FC = ({ children }) => {
+export const SelectedSectionItem: React.FC<GenericChildrenType> = ({
+  children,
+}) => {
   return (
     <Box borderLeft={1} borderWidthLeft="6px" pl={12} aria-current="true">
       <Text fontWeight="title">{children}</Text>

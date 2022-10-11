@@ -1,10 +1,11 @@
+import { GenericChildrenType } from '@codecademy/gamut';
 import { theme } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React, { Children, useState } from 'react';
 
 import { PageSection, SectionButton } from '..';
 
-export type ListSectionProps = {
+export interface ListSectionProps extends GenericChildrenType {
   title: string;
   headerButton?: SectionButton;
   headerSecondaryButton?: SectionButton;
@@ -21,7 +22,7 @@ export type ListSectionProps = {
    * This is usually used for things like metrics tracking.
    */
   onShowAllOrLessClick?: (showAll: boolean) => void;
-};
+}
 
 const UnstyledUnorderedList = styled.ul`
   list-style: none;

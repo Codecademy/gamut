@@ -1,3 +1,4 @@
+import { GenericChildrenType } from '@codecademy/gamut';
 import { ReactNode } from 'react';
 
 import {
@@ -14,7 +15,7 @@ type RenderFavorites = {
 
 type RenderProfile = { desktop: () => ReactNode; mobile: () => ReactNode };
 
-type BaseHeader = {
+interface BaseHeader extends GenericChildrenType {
   /** A method to be called on click/activating a header item */
   action: AppHeaderClickHandler;
   /** A method to be called only on click/activating a *link* header item */
@@ -23,7 +24,7 @@ type BaseHeader = {
   hidePricing?: boolean;
   search: AppHeaderSearch;
   crossDeviceBookmarkParts?: CrossDeviceBookmarkParts;
-};
+}
 
 export type User = {
   avatar: string;
